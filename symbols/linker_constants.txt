@@ -1063,6 +1063,19 @@ lGMStageClearSpriteBonusNormalClear = 0x000143C8;
 lGMStageClearSpriteBonusHardClear = 0x000145A8;
 lGMStageClearSpriteBonusVeryHardClear = 0x00014788;
 
+lMNCommonOptionTabLeftSprite = 0x000001E8;
+lMNCommonOptionTabMiddleSprite = 0x00000330;
+lMNCommonOptionTabRightSprite = 0x00000568;
+lMNCommonPaperTearSprite = 0x00002A30;
+lMNCommonSmashLogoSprite = 0x000031F8;
+lMNCommonCircleSprite = 0x00018000;
+
+lMNDataCharacterOptionSprite = 0x000014E0;
+lMNDataVSRecordOptionSprite = 0x00001900;
+lMNDataSoundTestOptionSprite = 0x00001D20;
+lMNDataHeaderTextSprite = 0x000023A8;
+lMNDataNotebookSprite = 0x00004A78;
+
 lMNSoundTestDigit0Sprite = 0x00000148;
 lMNSoundTestDigit1Sprite = 0x000002D8;
 lMNSoundTestDigit2Sprite = 0x00000500;

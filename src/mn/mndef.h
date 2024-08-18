@@ -34,13 +34,13 @@ typedef enum mnSoundTestOptions
 
 typedef enum mnDataOptions
 {
-	mnData_Option_Start,
-	mnData_Option_Characters = mnData_Option_Start,
-	mnData_Option_VSRecord,
-	mnData_Option_SoundTest,
-	mnData_Option_End = mnData_Option_SoundTest,
+	nMNDataOptionStart,
+	nMNDataOptionCharacters = nMNDataOptionStart,
+	nMNDataOptionVSRecord,
+	nMNDataOptionSoundTest,
+	nMNDataOptionEnd = nMNDataOptionSoundTest,
 
-	mnData_Option_EnumMax
+	nMNDataOptionEnumMax
 
 } mnDataOptions;
 
@@ -58,10 +58,10 @@ typedef enum mnOptionOptions
 
 typedef enum mnOptionTabStatus
 {
-	mnOptionTab_Status_Not,
-	mnOptionTab_Status_Highlight,
-	mnOptionTab_Status_Selected,
-	mnOptionTab_Status_EnumMax
+	nMNOptionTabStatusNot,
+	nMNOptionTabStatusHighlight,
+	nMNOptionTabStatusSelected,
+	nMNOptionTabStatusEnumMax
 
 } mnOptionTabStatus;
 

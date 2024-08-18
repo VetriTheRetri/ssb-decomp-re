@@ -142,7 +142,7 @@ void mnDebugFallsInit()
 // 800D6688
 void mnDebugFallsStartScene()
 {
-	D_ovl15_800D68A4.zbuffer = (uintptr_t)((uintptr_t)&scmanager_BSS_END - 6400);
+	D_ovl15_800D68A4.zbuffer = syDisplayGetZBuffer(6400);
 	func_80007024(&D_ovl15_800D68A4);
 	D_ovl15_800D68C0.arena_size = (u32) ((uintptr_t)&lOverlay15ArenaHi - (uintptr_t)&lOverlay15ArenaLo);
 	gsGTLSceneInit(&D_ovl15_800D68C0);

@@ -1988,7 +1988,7 @@ void sc1PStageClearInitAll()
 // 80134E84
 void sc1PStageClearStartScene()
 {
-	D_ovl56_801351EC.zbuffer = ((uintptr_t)&scmanager_BSS_END - 6400);
+	D_ovl56_801351EC.zbuffer = syDisplayGetZBuffer(6400);
 
 	func_80007024(&D_ovl56_801351EC);
 

@@ -737,7 +737,7 @@ void sc1PBonusGameStartScene()
 	u32 tasks_complete;
 	s32 i;
 
-	D_ovl6_8018F080.zbuffer = (void*)((uintptr_t)&scmanager_BSS_END - 6400);
+	D_ovl6_8018F080.zbuffer = syDisplayGetZBuffer(6400);
 
 	func_80007024(&D_ovl6_8018F080);
 

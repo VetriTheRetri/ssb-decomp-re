@@ -263,7 +263,7 @@ void mnCongraStartScene()
 		sMNCongraFighterKind = gTransferBattleState.players[0].ft_kind;
 		break;
 	}
-	D_ovl57_80132208.zbuffer = ((uintptr_t)&scmanager_BSS_END - 6400);
+	D_ovl57_80132208.zbuffer = syDisplayGetZBuffer(6400);
 	func_80007024(&D_ovl57_80132208);
 	D_ovl57_80132224.arena_size = (0x80325400 - (uintptr_t)&ovl57_BSS_END);
 	gsGTLSceneInit(&D_ovl57_80132224); subsys_arena_lo = (uintptr_t)&gSCSubsysFramebuffer1; // WARNING: Newline memes!

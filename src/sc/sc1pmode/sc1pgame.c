@@ -2857,7 +2857,7 @@ void sc1PGameStartScene(void)
     gBattleState = &gSCManager1PGameBattleState;
     gBattleState->game_type = nSCBattleGameType1PGame;
 
-    dSC1PGameDisplaySetup.zbuffer = (u16*) ((uintptr_t)&scmanager_BSS_END - 6400);
+    dSC1PGameDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dSC1PGameDisplaySetup);
 
     dSC1PGameGtlSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer1 - (uintptr_t)&ovl65_BSS_END);

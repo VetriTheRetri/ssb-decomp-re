@@ -3,6 +3,7 @@
 
 #include <ssb_types.h>
 #include <sys/objdef.h>
+#include <PR/gbi.h>
 #include <mn/mndef.h>
 
 extern void mnSoundTestUpdateOptionColors(void);

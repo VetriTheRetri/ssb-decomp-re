@@ -1755,7 +1755,7 @@ void mnSoundTestInitVars(void)
 // 0x801338F8
 void mnSoundTestProcStart(void)
 {
-    gcMakeGObjSPAfter(nOMObjCommonKindMenuProc, mnSoundTestMenuProcRun, 1, GOBJ_LINKORDER_DEFAULT);
+    gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, mnSoundTestMenuProcRun, 1, GOBJ_LINKORDER_DEFAULT);
     func_8000B9FC(4, 0x80000000, 0x64, 2, 0xFF);
     mnSoundTestSetupFiles();
     mnSoundTestInitVars();
@@ -1772,7 +1772,7 @@ void mnSoundTestProcLights(Gfx **dls)
 // 0x80133988
 void mnSoundTestStartScene(void)
 {
-    dMNSoundTestDisplaySetup.zbuffer = (u16*) ((uintptr_t)&scmanager_BSS_END - 6400);
+    dMNSoundTestDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMNSoundTestDisplaySetup);
     dMNSoundTestGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_TEXT_START - (uintptr_t)&ovl62_BSS_END);
     gsGTLSceneInit(&dMNSoundTestGtlSetup);

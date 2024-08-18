@@ -6,6 +6,8 @@
 
 #define SYDISPLAY_DEFINE_DEFAULT() { gSCSubsysFramebuffer1, gSCSubsysFramebuffer2, gSCSubsysFramebuffer3, NULL, 320, 240, 0x16A99 }
 
+#define syDisplayGetZBuffer(start) ((u16*) ((uintptr_t)&scmanager_BSS_END - (start)))
+
 /*
  * Seems to deal with setting the screen size and zbuffer?
  */

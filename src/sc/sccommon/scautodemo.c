@@ -710,7 +710,7 @@ void scAutoDemoProcLights(Gfx **dls)
 // 0x8018E014
 void scAutoDemoStartScene(void)
 {
-	dSCAutoDemoDisplaySetup.zbuffer = (u16*) ((uintptr_t)&scmanager_BSS_END - 6400);
+	dSCAutoDemoDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
 
 	func_80007024(&dSCAutoDemoDisplaySetup);
 

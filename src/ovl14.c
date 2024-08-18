@@ -485,7 +485,7 @@ void mnDebugBattleInit()
 // 80132638
 void mnDebugBattleStartScene()
 {
-	D_ovl14_80132934.zbuffer = (uintptr_t)((uintptr_t)&D_NF_800A5240 - 0x1900);
+	D_ovl14_80132934.zbuffer = syDisplayGetZBuffer(6400);
 	func_80007024(&D_ovl14_80132934);
 	D_ovl14_80132950.arena_size = (u32) ((uintptr_t)&lOverlay14ArenaHi - (uintptr_t)&lOverlay14ArenaLo);
 	gsGTLSceneInit(&D_ovl14_80132950);

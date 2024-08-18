@@ -874,7 +874,7 @@ void jtgt_ovl63_8018E594(void)
 // 0x8018E5C0
 void scExplainStartScene(void)
 {
-    dSCExplainDisplaySetup.zbuffer = (u16*) ((uintptr_t)&scmanager_BSS_END - 6400);
+    dSCExplainDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
 
     func_80007024(&dSCExplainDisplaySetup);
 

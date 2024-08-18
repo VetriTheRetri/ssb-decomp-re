@@ -85,7 +85,9 @@ void mnN64LogoProcUpdate(GObj *gobj)
 	{
 		step = 16 - i;
 		sobj->pos.y = 65.0F - ((-(38.75F / 64.0F) * step) * step);
+
 		gcStopCurrentProcess(1);
+		
 		i++;
 	}
 	sobj->pos.y = 65.0F;
@@ -192,7 +194,7 @@ void mnN64AddLightsDisplayList(Gfx **dl)
 void mnN64StartScene()
 {
 	auStopBGM();
-	D_ovl58_80131F98.zbuffer = ((uintptr_t)&scmanager_BSS_END - 6400);
+	D_ovl58_80131F98.zbuffer = syDisplayGetZBuffer(6400);
 	func_80007024(&D_ovl58_80131F98);
 	D_ovl58_80131FB4.arena_size = (size_t) ((uintptr_t)&lMNN64ArenaHi - (uintptr_t)&lMNN64ArenaLo);
 	gsGTLSceneInit(&D_ovl58_80131FB4);

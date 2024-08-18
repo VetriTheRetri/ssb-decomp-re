@@ -10,6 +10,7 @@ extern void *D_80044FA8_407B8;
 
 extern uintptr_t ovl1_TEXT_START;
 extern uintptr_t ovl56_BSS_END;
+
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 extern void ftRenderLightsDrawReflect(Gfx **display_list, f32 arg1, f32 arg2);
 extern f32 scSubsysFighterGetLightAngleX();
@@ -1550,7 +1551,7 @@ void sc1PStageClearUpdateTotal1PGameScore()
 void func_ovl56_80133F00()
 {
 	sc1PStageClearMakeScoreSObjs();
-	func_800269C0_275C0(0xA8);
+	func_800269C0_275C0(nSYAudioFGMUnkMetallic2);
 }
 
 // 80133F28

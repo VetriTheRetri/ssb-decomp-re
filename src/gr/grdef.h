@@ -6,7 +6,8 @@ typedef enum grKind
 	nGRKindCommonStart,							// Start of common stages
 	
 	nGRKindBattleStart = nGRKindCommonStart,	// Start of VS Mode Stages
-	nGRKindCastle = nGRKindBattleStart, 		// Peach's Castle
+	nGRkindStarterStart = nGRKindBattleStart,	// Start of starter stages
+	nGRKindCastle = nGRkindStarterStart, 		// Peach's Castle
 	nGRKindSector,								// Sector Z
 	nGRKindJungle,								// Kongo Jungle
 	nGRKindZebes,								// Planet Zebes
@@ -14,8 +15,11 @@ typedef enum grKind
 	nGRKindYoster,	  							// Yoshi's Island
 	nGRKindPupupu,	 							// Dream Land
 	nGRKindYamabuki, 							// Saffron City
-	nGRKindInishie,  							// Mushroom Kingdom
-	nGRKindBattleEnd = nGRKindInishie,			// End of VS Mode Stages
+	nGRKindStarterEnd = nGRKindYamabuki,		// End of starter stages
+	nGRKindUnlockStart,							// Start of unlockable stages
+	nGRKindInishie = nGRKindUnlockStart,  		// Mushroom Kingdom
+	nGRKindUnlockEnd = nGRKindInishie,			// End of unlockable stages
+	nGRKindBattleEnd = nGRKindUnlockEnd,		// End of VS Mode Stages
 
 	nGRKindPupupuSmall,							// Beta Dream Land
 	nGRKindPupupuNew,							// Test Stage

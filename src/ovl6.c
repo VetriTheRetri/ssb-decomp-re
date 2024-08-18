@@ -357,7 +357,7 @@ void scBonusGame_InitInterface(GObj* interface_gobj)
 	gcStopCurrentProcess(60);
 	ifCommonAnnounceGoMakeInterface();
 	ifCommonPlayerDamageSetShowInterface();
-	func_800269C0_275C0(0x1EA);
+	func_800269C0_275C0(nSYAudioVoiceAnnounceGo);
 	ifCommonAnnounceGoSetStatus();
 	gcEjectGObj(NULL);
 	gcStopCurrentProcess(1);
@@ -639,7 +639,7 @@ void scBonusGame_InitBonusGame()
 	scBonusGame_InitBonusGameSprites();
 	scBonusGame_MakeInterface();
 	mpCollisionSetPlayBGM();
-	func_800269C0_275C0(0x272U);
+	func_800269C0_275C0(nSYAudioVoicePublicityExcited);
 	func_ovl6_8018E344();
 	scBonusGame_InitCameraVars();
 

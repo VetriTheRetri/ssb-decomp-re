@@ -174,7 +174,7 @@ void scBattle_StartStockBattle()
 	ifCommonPlayerStockInitInterface();
 	ifCommonEntryAllMakeInterface();
 	mpCollisionSetPlayBGM();
-	func_800269C0_275C0(0x272U);
+	func_800269C0_275C0(nSYAudioVoicePublicityExcited);
 	ifCommonTimerMakeInterface(ifCommonAnnounceTimeUpInitInterface);
 	ifCommonTimerMakeDigitSObjs();
 
@@ -442,7 +442,7 @@ void scBattle_StartSDBattle()
 	ifCommonPlayerStockInitInterface();
 	ifCommonSuddenDeathMakeInterface();
 	mpCollisionSetPlayBGM();
-	func_800269C0_275C0(0x272U);
+	func_800269C0_275C0(nSYAudioVoicePublicityExcited);
 	ifCommonTimerMakeInterface(ifCommonAnnounceTimeUpInitInterface);
 	ifCommonTimerMakeDigitSObjs();
 

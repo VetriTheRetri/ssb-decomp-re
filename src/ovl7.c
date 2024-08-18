@@ -41,7 +41,7 @@ void scTrainingMode_CheckEnterTrainingMenu()
 
 			gBattleState->game_status = 2;
 
-			func_800269C0_275C0(0x116U);
+			func_800269C0_275C0(nSYAudioFGMGamePause);
 			auSetBGMVolume(0, 0x3C00);
 
 			gTrainingModeStruct.is_read_menu_inputs = 0;
@@ -123,7 +123,7 @@ void func_ovl7_8018D3DC()
 {
 	scTrainingMode_UpdateOptionArrows();
 	scTrainingMode_UpdateCursorUnderline();
-	func_800269C0_275C0(0xA4U);
+	func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 }
 
 // 8018D40C
@@ -202,11 +202,11 @@ sb32 scTrainingMode_UpdateItemOption()
 				pos.z = 0.0F;
 
 				itManagerMakeItemSetupCommon(NULL, gTrainingModeStruct.item_menu_option + 3, &pos, &vel, 4);
-				func_800269C0_275C0(0x9EU);
+				func_800269C0_275C0(nSYAudioFGMMenuSelect);
 				gTrainingModeStruct.item_spawn_wait = 8;
 			}
 			else
-				func_800269C0_275C0(0xA5U);
+				func_800269C0_275C0(nSYAudioFGMMenuDenied);
 		}
 	}
 	else
@@ -262,7 +262,7 @@ sb32 scTrainingMode_UpdateResetOption()
 	{
 		gTrainingModeStruct.exit_or_reset = 1;
 		func_800266A0_272A0();
-		func_800269C0_275C0(0xA2U);
+		func_800269C0_275C0(nSYAudioFGMTrainingSel2);
 		auSetBGMVolume(0, 0x7800);
 		leoInitUnit_atten();
 		return TRUE;
@@ -277,7 +277,7 @@ sb32 scTrainingMode_UpdateExitOption()
 	if (gPlayerControllers[gSceneData.spgame_player].button_tap & A_BUTTON)
 	{
 		func_800266A0_272A0();
-		func_800269C0_275C0(0xA2U);
+		func_800269C0_275C0(nSYAudioFGMTrainingSel2);
 		leoInitUnit_atten();
 		return TRUE;
 	}
@@ -300,7 +300,7 @@ void scTrainingMode_UpdateMainOption()
 
 		scTrainingMode_UpdateCursorPosition();
 		func_ovl7_8018D3DC();
-		func_800269C0_275C0(0xA4U);
+		func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 	}
 }
 
@@ -1402,7 +1402,7 @@ void scTrainingMode_InitTrainingMode()
 	scTrainingMode_InitTrainingMenuAll();
 	scTrainingMode_SetPlayDefaultMusicID();
 	func_800266A0_272A0();
-	func_800269C0_275C0(0x272);
+	func_800269C0_275C0(nSYAudioVoicePublicityExcited);
 
 	sp54 = D_ovl7_8019086C;
 

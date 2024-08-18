@@ -480,10 +480,17 @@ u16 dIFCommonTimerDigitsUnitLengths[/* */] =
 };
 
 // 0x8013EF40 - Unused?
-u8 dIFCommonUnused8013EF40[/* */] = { 0x00, 0x01, 0x03, 0x04, 0x00, 0x00, 0x00, 0x00 };
+u8 dIFCommonUnused0x8013EF40[/* */] = { 0x00, 0x01, 0x03, 0x04, 0x00, 0x00, 0x00, 0x00 };
 
 // 0x8012EF48
-u16 dIFCommonAnnounceTimerVoiceIDs[/* */] = { 0x1D3, 0x1D5, 0x1D6, 0x1D7, 0x1D8 };
+u16 dIFCommonAnnounceTimerVoiceIDs[/* */] = 
+{
+    nSYAudioVoiceAnnounceOne,
+    nSYAudioVoiceAnnounceTwo, 
+    nSYAudioVoiceAnnounceThree, 
+    nSYAudioVoiceAnnounceFour,
+    nSYAudioVoiceAnnounceFive
+};
 
 // 0x8012EF54
 intptr_t dIFCommonBattlePausePlayerNumSpriteOffsets[/* */] =
@@ -594,7 +601,13 @@ ifACharacter dIFCommonAnnounceCompleteSpriteData[/* */] =
 syColorRGBPair dIFCommonAnnounceCompleteSpriteColors = { { 0xFF, 0xFF, 0xFF }, { 0xFF, 0x00, 0x00 } };
 
 // 0x8012F184
-u16 dIFCommonAnnounceDefeatedVoiceIDs[/* */] = { 0x1F7, 0x1F8, 0x1F9, 0x1FA };
+u16 dIFCommonAnnounceDefeatedVoiceIDs[/* */] =
+{
+    nSYAudioVoiceAnnouncePlayer1,
+    nSYAudioVoiceAnnouncePlayer2,
+    nSYAudioVoiceAnnouncePlayer3,
+    nSYAudioVoiceAnnouncePlayer4
+};
 
 // // // // // // // // // // // //
 //                               //
@@ -2182,19 +2195,19 @@ void ifCommonCountdownThread(GObj *interface_gobj)
         case I_SEC_TO_FRAMES(2):
             main_status = lamp_status = 6;
 
-            func_800269C0_275C0(0x1D6);
+            func_800269C0_275C0(nSYAudioVoiceAnnounceThree);
             break;
 
         case I_SEC_TO_FRAMES(3):
             main_status = lamp_status = 7;
 
-            func_800269C0_275C0(0x1D5);
+            func_800269C0_275C0(nSYAudioVoiceAnnounceTwo);
             break;
 
         case I_SEC_TO_FRAMES(4):
             main_status = lamp_status = 8;
 
-            func_800269C0_275C0(0x1D3);
+            func_800269C0_275C0(nSYAudioVoiceAnnounceOne);
             break;
 
         case I_SEC_TO_FRAMES(5):
@@ -2204,7 +2217,7 @@ void ifCommonCountdownThread(GObj *interface_gobj)
 
             main_status = lamp_status = 9;
 
-            func_800269C0_275C0(0x1EA);
+            func_800269C0_275C0(nSYAudioVoiceAnnounceGo);
 
             break;
 
@@ -2433,7 +2446,7 @@ void ifCommonSuddenDeathThread(GObj *interface_gobj)
     ifCommonAnnounceGoMakeInterface();
     ifCommonPlayerDamageSetShowInterface();
     ifCommonAnnounceGoSetStatus();
-    func_800269C0_275C0(0x1EA);
+    func_800269C0_275C0(nSYAudioVoiceAnnounceGo);
     gcEjectGObj(NULL);
     gcStopCurrentProcess(1);
 }
@@ -2465,7 +2478,7 @@ void ifCommonSuddenDeathMakeInterface(void)
     gcAddGObjCommonProc(interface_gobj, ifCommonSuddenDeathThread, nOMObjProcessKindThread, 5);
     ifCommonAnnounceSetAttr(interface_gobj, 7, dIFCommonAnnounceSuddenDeathSpriteData, ARRAY_COUNT(dIFCommonAnnounceSuddenDeathSpriteData));
     ifCommonAnnounceSetColors(interface_gobj, &dIFCommonAnnounceSuddenDeathSpriteColors);
-    func_800269C0_275C0(0x202);
+    func_800269C0_275C0(nSYAudioVoiceAnnounceSuddenDeath);
 
     gBattleState->game_status = nSCBattleGameStatusWait;
 }
@@ -2842,9 +2855,9 @@ void ifCommonBattleUpdateScoreStocks(ftStruct *fp)
         {
             ftPublicityDefeatedAddID(dIFCommonAnnounceDefeatedVoiceIDs[fp->player]);
         }
-        else ftPublicityDefeatedAddID(0x1E0);
+        else ftPublicityDefeatedAddID(nSYAudioVoiceAnnounceComputerPlayer);
 
-        ftPublicityDefeatedAddID(0x1FF);
+        ftPublicityDefeatedAddID(nSYAudioVoiceAnnounceDefeated);
     }
 }
 

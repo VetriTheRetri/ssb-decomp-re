@@ -1,5 +1,6 @@
 #include <sc/scene.h>
 #include <gr/ground.h>
+#include <gm/gmsound.h> // temporary, until this finds a proper place
 #include <sys/system_00.h>
 #include <ovl0/reloc_data_mgr.h>
 
@@ -1244,7 +1245,7 @@ void mnStageHandleButtonPresses(s32 arg0)
 		if (scSubsysControllerGetFirstTapButtons(A_BUTTON | START_BUTTON) != FALSE)
 		{
 			mnStageSaveSceneData2();
-			func_800269C0_275C0(0x9FU);
+			func_800269C0_275C0(nSYAudioFGMStageSelect);
 
 			if (gMNStageIsTrainingMode == TRUE)
 			{
@@ -1286,7 +1287,7 @@ void mnStageHandleButtonPresses(s32 arg0)
 			{
 				if ((gMNStageCursorSlotId >= 5) && (mnStageGetIsLocked(mnStageGetStageID(gMNStageCursorSlotId - 5)) == FALSE))
 				{
-					func_800269C0_275C0(0xA4U);
+					func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 
 					gMNStageCursorSlotId -= 5;
 
@@ -1309,7 +1310,7 @@ void mnStageHandleButtonPresses(s32 arg0)
 			{
 				if ((gMNStageCursorSlotId < 5) && (mnStageGetIsLocked(mnStageGetStageID(gMNStageCursorSlotId + 5)) == FALSE))
 				{
-					func_800269C0_275C0(0xA4U);
+					func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 
 					gMNStageCursorSlotId += 5;
 
@@ -1341,7 +1342,7 @@ void mnStageHandleButtonPresses(s32 arg0)
 						gMNStageCursorSlotId -= 1;
 				}
 
-				func_800269C0_275C0(0xA4U);
+				func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 				mnStageCreateStageNameAndLogo(gMNStageCursorSlotId);
 				mnStagePositionCursor(gMNStageCursorGobj, gMNStageCursorSlotId);
 				mnStageCreateStagePreview(mnStageGetStageID(gMNStageCursorSlotId));
@@ -1373,7 +1374,7 @@ void mnStageHandleButtonPresses(s32 arg0)
 						gMNStageCursorSlotId += 1;
 				}
 
-				func_800269C0_275C0(0xA4U);
+				func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 				mnStageCreateStageNameAndLogo(gMNStageCursorSlotId);
 				mnStagePositionCursor(gMNStageCursorGobj, gMNStageCursorSlotId);
 				mnStageCreateStagePreview(mnStageGetStageID(gMNStageCursorSlotId));

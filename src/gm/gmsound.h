@@ -239,7 +239,7 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMUnkMechanical1, 	// Menu sound?
 	nSYAudioFGMTitlePressStart,
 	nSYAudioFGMMenuSelect,
-	nSYAudioFGMMapSelect,
+	nSYAudioFGMStageSelect,
 	nSYAudioFGM1PGameContinue,
 	nSYAudioFGM1PGameContinueMulti,
 	nSYAudioFGMTrainingSel2,

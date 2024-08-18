@@ -1647,7 +1647,7 @@ void mnVsRecordsMain(GObj* arg0)
 		}
 		else
 		{
-			func_800269C0_275C0(0x1C);
+			func_800269C0_275C0(nSYAudioFGMBurnS);
 
 			gMNVsRecordsStatsKind--;
 			gMNVsRecordsRedrawSubtitle = TRUE;
@@ -1663,7 +1663,7 @@ void mnVsRecordsMain(GObj* arg0)
 		(gMNVsRecordsStatsKind < 2)
 	)
 	{
-		func_800269C0_275C0(0x1C);
+		func_800269C0_275C0(nSYAudioFGMBurnS);
 
 		gMNVsRecordsStatsKind++;
 		gMNVsRecordsRedrawSubtitle = TRUE;
@@ -1679,7 +1679,7 @@ void mnVsRecordsMain(GObj* arg0)
 			mnCommonCheckGetOptionStickInputUD(gMNVsRecordsChangeWait, stick_range, 20, 1)
 		)
 		{
-			func_800269C0_275C0(0x6B);
+			func_800269C0_275C0(nSYAudioFGMFoxFoot);
 
 			if (gMNVsRecordsCurrentIndex == 0)
 			{
@@ -1707,7 +1707,7 @@ void mnVsRecordsMain(GObj* arg0)
 			mnCommonCheckGetOptionStickInputUD(gMNVsRecordsChangeWait, stick_range, -20, 0)
 		)
 		{
-			func_800269C0_275C0(0x6B);
+			func_800269C0_275C0(nSYAudioFGMFoxFoot);
 
 			if (gMNVsRecordsCurrentIndex == 11)
 			{
@@ -1735,7 +1735,7 @@ void mnVsRecordsMain(GObj* arg0)
 			mnCommonCheckGetOptionStickInputLR(gMNVsRecordsChangeWait, stick_range, 20, 1)
 		)
 		{
-			func_800269C0_275C0(0x6B);
+			func_800269C0_275C0(nSYAudioFGMFoxFoot);
 
 			if (gMNVsRecordsFirstColumn == vsRecordsRankingColumnKindWinPercentage)
 			{
@@ -1757,7 +1757,7 @@ void mnVsRecordsMain(GObj* arg0)
 			mnCommonCheckGetOptionStickInputLR(gMNVsRecordsChangeWait, stick_range, -20, 0)
 		)
 		{
-			func_800269C0_275C0(0x6B);
+			func_800269C0_275C0(nSYAudioFGMFoxFoot);
 
 			if (gMNVsRecordsFirstColumn == vsRecordsRankingColumnKindAverage)
 			{
@@ -1782,7 +1782,7 @@ void mnVsRecordsMain(GObj* arg0)
 			mnCommonCheckGetOptionStickInputLR(gMNVsRecordsChangeWait, stick_range, 20, 1)
 		)
 		{
-			func_800269C0_275C0(0x6B);
+			func_800269C0_275C0(nSYAudioFGMFoxFoot);
 
 			if (gMNVsRecordsCurrentIndex == 11)
 				gMNVsRecordsCurrentIndex = 0;
@@ -1811,7 +1811,7 @@ void mnVsRecordsMain(GObj* arg0)
 			mnCommonCheckGetOptionStickInputLR(gMNVsRecordsChangeWait, stick_range, -20, 0)
 		)
 		{
-			func_800269C0_275C0(0x6B);
+			func_800269C0_275C0(nSYAudioFGMFoxFoot);
 
 			if (gMNVsRecordsCurrentIndex == 0)
 				gMNVsRecordsCurrentIndex = 11;

@@ -1500,7 +1500,7 @@ void sc1PGameWaitStageBonus3Update(void)
     gcStopCurrentProcess(0x3C);
     ifCommonAnnounceGoMakeInterface();
     ifCommonPlayerDamageSetShowInterface();
-    func_800269C0_275C0(0x1EA);
+    func_800269C0_275C0(nSYAudioVoiceAnnounceGo);
     ifCommonAnnounceGoSetStatus();
     gcEjectGObj(NULL);
     gcStopCurrentProcess(1);
@@ -1956,7 +1956,7 @@ void sc1PGameBossDefeatInterfaceProcUpdate(void)
     auStopBGM();
     ifCommonBattleEndPlaySoundQueue();
     func_800269C0_275C0(nSYAudioFGMExplodeL);
-    func_800269C0_275C0(0x1EC);
+    func_800269C0_275C0(nSYAudioVoiceBossDead);
     func_800269C0_275C0(nSYAudioFGMBossDefeatL);
 
     sSC1PGameBossDefeatSoundTerminateTemp = D_8009EDD0_406D0.sfx_max;
@@ -2164,7 +2164,7 @@ void sc1PGameProcStart(void)
     else
     {
         mpCollisionSetPlayBGM();
-        func_800269C0_275C0(0x272);
+        func_800269C0_275C0(nSYAudioVoicePublicityExcited);
     }
     sc1PGameInitTimeUpMessage();
     ifCommonTimerMakeDigitSObjs();

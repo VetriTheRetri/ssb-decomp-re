@@ -842,7 +842,7 @@ void scExplainProcStart(void)
     scExplainSetPhaseSObjs();
     scExplainMakeSceneInterface();
     mpCollisionSetPlayBGM();
-    func_800269C0_275C0(0x1EE);
+    func_800269C0_275C0(nSYAudioVoiceAnnounceHowToPlay);
 
     sp58 = D_ovl63_8018E720;
 

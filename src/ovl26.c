@@ -1,4 +1,5 @@
 #include <ft/fighter.h>
+#include <gr/ground.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
 #include <ovl0/reloc_data_mgr.h>
@@ -59,7 +60,7 @@ void mnBattleSelectCharWithToken(s32 port_id, s32 select_button)
 
 		if (mnBattleIsCostumeInUse(gMnBattlePanels[held_port_id].char_id, held_port_id, costume_id) != FALSE)
 		{
-			func_800269C0_275C0(0xA5U);
+			func_800269C0_275C0(nSYAudioFGMMenuDenied);
 			return;
 		}
 
@@ -449,7 +450,7 @@ void mnUpdatePanelDoors(GObj* panel_doors)
 			if (gMnBattlePanels[port_id].door_offset >= max)
 			{
 				gMnBattlePanels[port_id].door_offset = max;
-				func_800269C0_275C0(0xA6U);
+				func_800269C0_275C0(nSYAudioFGMPlayerGateClose);
 			}
 			mnAnimatePanelDoors(port_id);
 		}
@@ -1282,12 +1283,12 @@ void mnHandleFFATeamBattleTogglePress()
 		gMnBattleIsTeamBattle = 1;
 	func_800266A0_272A0();
 
-	func_800269C0_275C0(0xA4U);
+	func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 
-	if (gMnBattleIsTeamBattle == 0)
-		func_800269C0_275C0(0x200U);
+	if (gMnBattleIsTeamBattle == FALSE)
+		func_800269C0_275C0(nSYAudioVoiceAnnounceFreeForAll);
 	else
-		func_800269C0_275C0(0x20EU);
+		func_800269C0_275C0(nSYAudioVoiceAnnounceTeamBattle);
 
 	func_8000B760(title_gobj);
 
@@ -1371,7 +1372,7 @@ sb32 mnCheckAnyTeamButtonPress(GObj* cursor_gobj, s32 cursor_port_id)
 				ftParamInitModelTexturePartsAll(gMnBattlePanels[port_id].player, gMnBattlePanels[port_id].costume_id, shade);
 			}
 
-			func_800269C0_275C0(0x9DU);
+			func_800269C0_275C0(nSYAudioFGMTitlePressStart);
 
 			return TRUE;
 		}
@@ -1399,7 +1400,7 @@ sb32 mnCheckAnyCPUHandicapArrowPress(GObj* cursor_gobj, s32 cursor_port_id)
 			{
 				if ((s32)*target < 9)
 				{
-					func_800269C0_275C0(0xA4U);
+					func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 					*target += 1;
 					mnDrawHandicapCPULevelValue(port_id);
 				}
@@ -1409,7 +1410,7 @@ sb32 mnCheckAnyCPUHandicapArrowPress(GObj* cursor_gobj, s32 cursor_port_id)
 			{
 				if ((s32)*target >= 2)
 				{
-					func_800269C0_275C0(0xA4U);
+					func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 					*target -= 1;
 					mnDrawHandicapCPULevelValue(port_id);
 				}
@@ -1835,7 +1836,7 @@ sb32 mnCheckAndHandlePlayerTypeButtonPress(GObj* cursor_gobj, s32 port_id, u32 p
 		{
 		case mnPanelTypeHuman:
 			gMnBattlePanels[panel_id].holder_port_id = panel_id;
-			func_800269C0_275C0(0xA7U);
+			func_800269C0_275C0(nSYAudioFGMPlayerGateWhoosh);
 			break;
 		case mnPanelTypeCPU:
 			gMnBattlePanels[panel_id].holder_port_id = 4;
@@ -1843,10 +1844,10 @@ sb32 mnCheckAndHandlePlayerTypeButtonPress(GObj* cursor_gobj, s32 port_id, u32 p
 			mnReplaceFighterNameWithHandicapCPULevel(panel_id);
 			mnBattleCreateWhiteSquare(panel_id);
 			break;
-		case mnPanelTypeNA: func_800269C0_275C0(0xA7U); break;
+		case mnPanelTypeNA: func_800269C0_275C0(nSYAudioFGMPlayerGateWhoosh); break;
 		}
 
-		func_800269C0_275C0(0x9DU);
+		func_800269C0_275C0(nSYAudioFGMTitlePressStart);
 		return TRUE;
 	}
 	return FALSE;
@@ -1876,7 +1877,7 @@ void mnBattleAnnounceFighter(s32 port_id, s32 panel_id)
 
 	func_80026738_27338(gMnBattlePanels[port_id].p_sfx);
 
-	func_800269C0_275C0(0x79U);
+	func_800269C0_275C0(nSYAudioFGMMarioDash);
 
 	gMnBattlePanels[port_id].p_sfx = func_800269C0_275C0(announcer_fgms[gMnBattlePanels[panel_id].char_id]);
 
@@ -2137,7 +2138,7 @@ sb32 mnBattleSelectChar(GObj* cursor_gobj, s32 port_id, s32 arg2, s32 select_but
 		return TRUE;
 	}
 
-	func_800269C0_275C0(0xA5U);
+	func_800269C0_275C0(nSYAudioFGMMenuDenied);
 	return FALSE;
 }
 
@@ -2247,7 +2248,7 @@ void mnBattleHandleCursorPickup(s32 port_id, s32 held_port_id)
 
 	panel_info->unk_0xA0 = TRUE;
 
-	func_800269C0_275C0(0x7FU);
+	func_800269C0_275C0(nSYAudioFGMSamusDash);
 
 	mnBattleRemoveHandicapCPULevel(held_port_id);
 	mnBattleRemoveWhiteSquare(held_port_id);
@@ -2470,7 +2471,7 @@ void mnTryCostumeChange(s32 port_id, s32 select_button)
 
 	if (mnBattleIsCostumeInUse(gMnBattlePanels[port_id].char_id, port_id, costume_id) != FALSE)
 	{
-		func_800269C0_275C0(0xA5U);
+		func_800269C0_275C0(nSYAudioFGMMenuDenied);
 		return;
 	}
 
@@ -2479,7 +2480,7 @@ void mnTryCostumeChange(s32 port_id, s32 select_button)
 
 	ftParamInitModelTexturePartsAll(gMnBattlePanels[port_id].player, costume_id, gMnBattlePanels[port_id].shade);
 
-	func_800269C0_275C0(0xA4U);
+	func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 }
 
 // 80137F9C
@@ -2623,7 +2624,7 @@ void mnBattleHandleButtonPresses(GObj* cursor_gobj)
 					gMnBattleStockValue = gMnBattleStockValue + 1;
 				mnDrawStockPicker(gMnBattleStockValue);
 			}
-			func_800269C0_275C0(0xA4U);
+			func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 		}
 		else if (mnCheckPickerLeftArrowPress(cursor_gobj) != FALSE)
 		{
@@ -2640,14 +2641,14 @@ void mnBattleHandleButtonPresses(GObj* cursor_gobj)
 					gMnBattleStockValue = gMnBattleStockValue - 1;
 				mnDrawStockPicker(gMnBattleStockValue);
 			}
-			func_800269C0_275C0(0xA4U);
+			func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 		}
 		else if (mnCheckFFATeamBattleTogglePress(cursor_gobj) != FALSE)
 			mnHandleFFATeamBattleTogglePress();
 		else if (mnCheckBackButtonPress(cursor_gobj) != FALSE)
 		{
 			mnGoBackToVSMenu();
-			func_800269C0_275C0(0xA4U);
+			func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 		}
 		else if (mnCheckAnyTeamButtonPress(cursor_gobj, port_id) == FALSE)
 			mnCheckAnyCPUHandicapArrowPress(cursor_gobj, port_id);
@@ -3577,7 +3578,7 @@ void mnBattleMain(s32 arg0)
 			else
 			{
 				gSceneData.scene_current = 0x16;
-				max_stage_id = (gSaveData.unlock_mask & 0x10) ? 9 : 8;
+				max_stage_id = (gSaveData.unlock_mask & SCBACKUP_UNLOCK_MASK_INISHIE) ? nGRKindInishie + 1 : nGRKindStarterEnd + 1;
 
 				do
 					stage_id = mtTrigGetRandomTimeUCharRange(max_stage_id);
@@ -3596,14 +3597,14 @@ void mnBattleMain(s32 arg0)
 		{
 			if (mnBattleIsReadyToFight() != FALSE)
 			{
-				func_800269C0_275C0(0x26AU);
+				func_800269C0_275C0(nSYAudioVoicePublicityCheer);
 				mnSetUnselectedPanelsToNA();
 				gMnBattleStartDelayTimer = 0x1E;
 				gMnBattleIsStartTriggered = TRUE;
 				mnBattleDestroyCursorAndTokenProcesses();
 			}
 			else
-				func_800269C0_275C0(0xA5U);
+				func_800269C0_275C0(nSYAudioFGMMenuDenied);
 		}
 
 		for (i = 0; i < 4; i++)
@@ -3875,17 +3876,17 @@ void mnBattleInitCSS()
 	if (gSceneData.scene_previous != 0x15)
 		auPlaySong(0, 0xA);
 
-	if (gTransferBattleState.is_team_battle == 0)
-		func_800269C0_275C0(0x200U);
+	if (gTransferBattleState.is_team_battle == FALSE)
+		func_800269C0_275C0(nSYAudioVoiceAnnounceFreeForAll);
 	else
-		func_800269C0_275C0(0x20EU);
+		func_800269C0_275C0(nSYAudioVoiceAnnounceTeamBattle);
 }
 
 // 8013B33C
 void vs_css_entry()
 {
-	D_ovl26_8013B980.zbuffer = (uintptr_t)((uintptr_t)&scmanager_BSS_END - 6400);
+	D_ovl26_8013B980.zbuffer = (u16*) ((uintptr_t)&scmanager_BSS_END - 6400);
 	func_80007024(&D_ovl26_8013B980);
-	D_ovl26_8013B99C.arena_size = (u32)((uintptr_t)&lOverlay26ArenaHi - (uintptr_t)&lOverlay26ArenaLo);
+	D_ovl26_8013B99C.arena_size = (size_t) ((uintptr_t)&lOverlay26ArenaHi - (uintptr_t)&lOverlay26ArenaLo);
 	func_800A2698(&D_ovl26_8013B99C);
 }

@@ -348,7 +348,7 @@ u32 dMNSoundTestSoundIDs[/* */] =
     nSYAudioFGMUnkMechanical1,
     nSYAudioFGMTitlePressStart,
     nSYAudioFGMMenuSelect,
-    nSYAudioFGMMapSelect,
+    nSYAudioFGMStageSelect,
     nSYAudioFGM1PGameContinue,
     nSYAudioFGMTrainingSel2,
     nSYAudioFGMMenuScroll1,
@@ -870,7 +870,7 @@ void mnSoundTestUpdateControllerInputs(void)
         case nMNSoundTestOptionMusic:
             if (sMNSoundTestOptionSelectID[sMNSoundTestOption] < 0)
             {
-                sMNSoundTestOptionSelectID[sMNSoundTestOption] = 44;
+                sMNSoundTestOptionSelectID[sMNSoundTestOption] = (ARRAY_COUNT(dMNSoundTestMusicIDs) - 1);
             }
             if (sMNSoundTestOptionSelectID[sMNSoundTestOption] == 0)
             {
@@ -881,7 +881,7 @@ void mnSoundTestUpdateControllerInputs(void)
         case nMNSoundTestOptionSound:
             if (sMNSoundTestOptionSelectID[sMNSoundTestOption] < 0)
             {
-                sMNSoundTestOptionSelectID[sMNSoundTestOption] = 193;
+                sMNSoundTestOptionSelectID[sMNSoundTestOption] = (ARRAY_COUNT(dMNSoundTestSoundIDs) - 1);
             }
             if (sMNSoundTestOptionSelectID[sMNSoundTestOption] == 0)
             {
@@ -892,7 +892,7 @@ void mnSoundTestUpdateControllerInputs(void)
         case nMNSoundTestOptionVoice:
             if (sMNSoundTestOptionSelectID[sMNSoundTestOption] < 0)
             {
-                sMNSoundTestOptionSelectID[sMNSoundTestOption] = 243;
+                sMNSoundTestOptionSelectID[sMNSoundTestOption] = (ARRAY_COUNT(dMNSoundTestVoiceIDs) - 1);
             }
             if (sMNSoundTestOptionSelectID[sMNSoundTestOption] == 0)
             {
@@ -919,33 +919,33 @@ void mnSoundTestUpdateControllerInputs(void)
         switch (sMNSoundTestOption)
         {
         case nMNSoundTestOptionMusic:
-            if (sMNSoundTestOptionSelectID[sMNSoundTestOption] > 44)
+            if (sMNSoundTestOptionSelectID[sMNSoundTestOption] > (ARRAY_COUNT(dMNSoundTestMusicIDs) - 1))
             {
                 sMNSoundTestOptionSelectID[sMNSoundTestOption] = 0;
             }
-            if (sMNSoundTestOptionSelectID[sMNSoundTestOption] == 44)
+            if (sMNSoundTestOptionSelectID[sMNSoundTestOption] == (ARRAY_COUNT(dMNSoundTestMusicIDs) - 1))
             {
                 sMNSoundTestOptionChangeWait += 20;
             }
             break;
 
         case nMNSoundTestOptionSound:
-            if (sMNSoundTestOptionSelectID[sMNSoundTestOption] > 193)
+            if (sMNSoundTestOptionSelectID[sMNSoundTestOption] > (ARRAY_COUNT(dMNSoundTestSoundIDs) - 1))
             {
                 sMNSoundTestOptionSelectID[sMNSoundTestOption] = 0;
             }
-            if (sMNSoundTestOptionSelectID[sMNSoundTestOption] == 193)
+            if (sMNSoundTestOptionSelectID[sMNSoundTestOption] == (ARRAY_COUNT(dMNSoundTestSoundIDs) - 1))
             {
                 sMNSoundTestOptionChangeWait += 20;
             }
             break;
 
         case nMNSoundTestOptionVoice:
-            if (sMNSoundTestOptionSelectID[sMNSoundTestOption] > 243)
+            if (sMNSoundTestOptionSelectID[sMNSoundTestOption] > (ARRAY_COUNT(dMNSoundTestVoiceIDs) - 1))
             {
                 sMNSoundTestOptionSelectID[sMNSoundTestOption] = 0;
             }
-            if (sMNSoundTestOptionSelectID[sMNSoundTestOption] == 243)
+            if (sMNSoundTestOptionSelectID[sMNSoundTestOption] == (ARRAY_COUNT(dMNSoundTestVoiceIDs) - 1))
             {
                 sMNSoundTestOptionChangeWait += 20;
             }

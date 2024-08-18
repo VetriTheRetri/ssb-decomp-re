@@ -695,7 +695,7 @@ void scAutoDemoProcStart(void)
 	ifCommonPlayerStockInitInterface();
 	scAutoDemoInitSObjs();
 	mpCollisionSetPlayBGM();
-	func_800269C0_275C0(0x272);
+	func_800269C0_275C0(nSYAudioVoicePublicityExcited);
 	scAutoDemoMakeFocusInterface();
 }
 

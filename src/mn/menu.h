@@ -2,6 +2,7 @@
 #define _MENU_H_
 
 #include "mntypes.h"
+#include "mnfunctions.h"
 
 extern intptr_t lMNSoundTestDigit0Sprite;            // 0x00000148
 extern intptr_t lMNSoundTestDigit1Sprite;            // 0x000002D8

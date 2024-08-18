@@ -2159,7 +2159,7 @@ void sc1PGameProcStart(void)
     if ((gSceneData.spgame_stage == nSC1PGameStageMetal) || (gSceneData.spgame_stage == nSC1PGameStageZako))
     {
         mpCollisionSetBGM();
-        func_800269C0_275C0(nSYAudioFGMPublicCheer1);
+        func_800269C0_275C0(nSYAudioFGMPublicityPrologue);
     }
     else
     {

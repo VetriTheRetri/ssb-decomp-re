@@ -87,7 +87,7 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMUnkDial1,
 	nSYAudioFGMChargeShotAll,
 	nSYAudioFGMUnkSmallPing1,
-	nSYAudioFGMBlaster,
+	nSYAudioFGMFoxBlaster,
 	nSYAudioFGMSamusJump1,
 	nSYAudioFGMDonkeySlap1,
 	nSYAudioFGMDonkeySlap2,
@@ -129,12 +129,12 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMItemMapCollide, // Item falls on ground
 	nSYAudioFGMBumperHit,
 	nSYAudioFGMFireFlowerBurn,
-	nSYAudioFGMItemPickup,
+	nSYAudioFGMItemGet,
 	nSYAudioFGMHammerSwing,
 	nSYAudioFGMHarisenHit,
 	nSYAudioFGMBatHit,
 	nSYAudioFGMStarMapCollide,
-	nSYAudioFGMStarCollect,
+	nSYAudioFGMStarGet,
 	nSYAudioFGMBombHeiWalkStart,
 	nSYAudioFGMShellHit,
 	nSYAudioFGMItemThrow,
@@ -152,17 +152,17 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMSwordSwing1,
 	nSYAudioFGMTaruBombHit, // Hit entity?
 	nSYAudioFGMTaruBombMap, // Collide with wall?
-	nSYAudioFGMFootstep1,
-	nSYAudioFGMFootstep2,
-	nSYAudioFGMFootstep3,
-	nSYAudioFGMFootstep4,
-	nSYAudioFGMFootstep5,
-	nSYAudioFGMFootstep6,
-	nSYAudioFGMFootstep7,
-	nSYAudioFGMFootstep8,
-	nSYAudioFGMFootstep9,
-	nSYAudioFGMSamusLandingClick,
-	nSYAudioFGMFootstep10,
+	nSYAudioFGMDonkeyLanding,
+	nSYAudioFGMCaptainLanding,
+	nSYAudioFGMFoxLanding,
+	nSYAudioFGMKirbyLanding,
+	nSYAudioFGMLinkLanding,
+	nSYAudioFGMMarioLanding,
+	nSYAudioFGMNessLanding,
+	nSYAudioFGMPikachuLanding,
+	nSYAudioFGMPurinLanding,
+	nSYAudioFGMSamusLanding,
+	nSYAudioFGMYoshiLanding,
 	nSYAudioFGMUnkGrind2,
 	nSYAudioFGMUnkGrind3,
 	nSYAudioFGMUnkGrind4,
@@ -212,7 +212,7 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMUnkEchoHit1,
 	nSYAudioFGMYoshiDash,
 	nSYAudioFGMDogasSmog,
-	nSYAudioFGMIwarkRockCreate,
+	nSYAudioFGMIwarkRockMake,
 	nSYAudioFGMKabigonFall,
 	nSYAudioFGMKabigonJump, // ???
 	nSYAudioFGMKamexHydro,
@@ -230,10 +230,10 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMDairantouPunchS,
 	nSYAudioFGMWindAmbient1,
 	nSYAudioFGMUnkWhirr3,
-	nSYAudioFGMPublicCheer1,
+	nSYAudioFGMPublicityPrologue,	// Cheer on Meta Crystal and Duel Zone before the music starts playing
 	nSYAudioFGMUnkBatS,
-	nSYAudioFGMUnkBatM,
-	nSYAudioFGMDeadPortalLw,	// Bottom map_bound warning sound?
+	nSYAudioFGMOpeningBatM,			// Plays on characters clashing scene in opening?
+	nSYAudioFGMAltitudeWarn,	// Bottom map_bound warning sound?
 	nSYAudioFGMMapBoundHitL, 	// One of many sounds that play when entering the blast zones
 	nSYAudioFGMMapBoundHitS,
 	nSYAudioFGMUnkMechanical1, 	// Menu sound?
@@ -254,7 +254,7 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMUnkSwoosh1,
 	nSYAudioFGMBossDefeatL,
 	nSYAudioFGMUnkGate1,
-	nSYAudioFGMBossYubi,
+	nSYAudioFGMBossBullet,
 	nSYAudioFGMBossSlam,
 	nSYAudioFGMBossUnk1,
 	nSYAudioFGMBossUnk2,
@@ -305,12 +305,12 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMNessPSI,
 	nSYAudioFGMNessPSIAgain, 		// Huh
 	nSYAudioFGMNessSpecialLwStart,
-	nSYAudioFGMNessSpecialHiCrack1, // Might be Pikachu's Thunder Jolt
-	nSYAudioFGMNessSpecialHiCrack2,
-	nSYAudioFGMNessSpecialHiCrack3,
-	nSYAudioFGMNessSpecialHiCrack4,
-	nSYAudioFGMNessSpecialHiCrack5,
-	nSYAudioFGMNessSpecialHiCrackLoop,
+	nSYAudioFGMPikachuElectric1, // Might be Pikachu's Thunder Jolt
+	nSYAudioFGMPikachuElectric2,
+	nSYAudioFGMPikachuElectric3,
+	nSYAudioFGMPikachuElectric4,
+	nSYAudioFGMPikachuElectric5,
+	nSYAudioFGMPikachuElectricLoop,
 	nSYAudioFGMPikachuSpecialHiStart,
 	nSYAudioFGMPikachuSpecialLwThunder,
 	nSYAudioFGMCharacterUnk2,
@@ -363,7 +363,7 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMBonus1TargetBreak, 			// Break Bonus 1 target
     nSYAudioFGMJungleTaruCannShoot,
     nSYAudioFGMJungleTaruCannEnter,
-	nSYAudioFGMHyruleTwisterSpawn,
+	nSYAudioFGMHyruleTwisterAppear,
 	nSYAudioFGMHyruleTwisterTrapped,
 	nSYAudioFGMPupupuWhispyWind, 			// Despawn?
 	nSYAudioFGMFloorDamageBurn,
@@ -409,7 +409,7 @@ typedef enum gmFGMVoiceID
 	nSYAudioVoiceDonkeySmash1,
 	nSYAudioVoiceDonkeySmash2,
 	nSYAudioVoiceDonkeySmash3,
-	nSYAudioVoiceDonkeySpecialNPunch,
+	nSYAudioVoiceDonkeySpecialN,
 	nSYAudioVoiceDonkeyDeadUp,
 	nSYAudioVoiceDonkeyFuraFura,
 	nSYAudioVoiceDonkeyDamage,
@@ -418,7 +418,7 @@ typedef enum gmFGMVoiceID
 	nSYAudioVoiceDonkeyHeavyUnk,
 	nSYAudioVoiceDonkeyDead2,
 	nSYAudioVoiceCaptainAppeal,
-	nSYAudioVoiceCaptainYes,
+	nSYAudioVoiceCaptainSpecialHi,
 	nSYAudioVoiceCaptainSmash1,
 	nSYAudioVoiceCaptainSmash2,
 	nSYAudioVoiceCaptainSmash3,
@@ -614,7 +614,7 @@ typedef enum gmFGMVoiceID
 	nSYAudioVoiceAnnounceYoshiTeam,
 	nSYAudioVoiceAnnounceVersus,
 	nSYAudioVoiceAnnounceWins,
-	nSYAudioVoiceAnnounceGameWinner,		// This game's winner is...
+	nSYAudioVoiceAnnounceWinnerIs,		// This game's winner is...
 	nSYAudioVoiceAnnounceYoshi,
 	nSYAudioVoicePikachuAppeal,
 	nSYAudioVoicePikachuSmash1,
@@ -710,17 +710,17 @@ typedef enum gmFGMVoiceID
 	nSYAudioVoicePublicityAbsorb,			// React to fighter absorbing projectiles (Ness)
 	nSYAudioVoicePublicityClapL,			// Louder audience clap
 	nSYAudioVoicePublicityClapS,			// Slight audience clap
-	nSYAudioVoicePublicityUnkZip1,			// ??? goes repeats for 10 more instances
-	nSYAudioVoicePublicityUnkZip2,
-	nSYAudioVoicePublicityUnkZip3,
-	nSYAudioVoicePublicityUnkZip4,
-	nSYAudioVoicePublicityUnkZip5,
-	nSYAudioVoicePublicityUnkZip6,
-	nSYAudioVoicePublicityUnkZip7,
-	nSYAudioVoicePublicityUnkZip8,
-	nSYAudioVoicePublicityUnkZip9,
-	nSYAudioVoicePublicityUnkZip10,
-	nSYAudioVoicePublicityUnkZip11,
+	nSYAudioFGMCharacterUnkZip1,			// ??? goes repeats for 10 more instances, character-based?
+	nSYAudioFGMCharacterUnkZip2,
+	nSYAudioFGMCharacterUnkZip3,
+	nSYAudioFGMCharacterUnkZip4,
+	nSYAudioFGMCharacterUnkZip5,
+	nSYAudioFGMCharacterUnkZip6,
+	nSYAudioFGMCharacterUnkZip7,
+	nSYAudioFGMCharacterUnkZip8,
+	nSYAudioFGMCharacterUnkZip9,
+	nSYAudioFGMCharacterUnkZip10,
+	nSYAudioFGMCharacterUnkZip11,
 	nSYAudioVoiceUnkExplode,				// ???
 	nSYAudioVoiceUnkSpin,					// ???
 	nSYAudioVoiceUnkBurn,					// ???

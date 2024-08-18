@@ -1801,7 +1801,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
 
     if ((fp->coll_data.pos_curr.y >= gMPCollisionGroundData->alt_warning) && (topn_translate->y < gMPCollisionGroundData->alt_warning) && (fp->ft_kind != nFTKindBoss))
     {
-        func_800269C0_275C0(nSYAudioFGMDeadPortalLw);
+        func_800269C0_275C0(nSYAudioFGMAltitudeWarn);
     }
     if (fp->publicity_knockback != 0)
     {
@@ -2486,7 +2486,7 @@ void ftMainUpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, f
 
             ftParamSetStarHitStatusInvincible(fp, ITSTAR_INVINCIBLE_TIME);
             ftParamTryPlayItemMusic(nSYAudioBGMStar);
-            func_800269C0_275C0(nSYAudioFGMStarCollect);
+            func_800269C0_275C0(nSYAudioFGMStarGet);
 
             if ((gBattleState->game_type == nSCBattleGameType1PGame) && (fp->player == gSceneData.spgame_player) && (gSC1PGameBonusStarCount < U8_MAX))
             {

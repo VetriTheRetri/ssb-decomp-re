@@ -3,6 +3,7 @@
 #include <sc/scene.h>
 #include <ovl0/reloc_data_mgr.h>
 #include <sys/system_00.h>
+#include <sys/thread6.h>
 
 extern void* func_800269C0_275C0(u16);
 extern void func_80007080(void*, f32, f32, f32, f32);
@@ -25,6 +26,18 @@ extern GObj* func_8000B93C
 );
 extern void func_ovl0_800CCF00(GObj*);
 extern void func_ovl0_800CD2CC(GObj*);
+
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
+extern uintptr_t D_NF_000000C5; 
+extern uintptr_t D_NF_000000A4;
+extern uintptr_t D_NF_00000020;
+extern uintptr_t D_NF_00000000;
+extern uintptr_t D_NF_000000C4;
 
 // // // // // // // // // // // //
 //                               //
@@ -102,7 +115,7 @@ void *sMNSoundTestFiles[5];
 // // // // // // // // // // // //
 
 // 0x801339E0
-extern u32 dMNSoundTestMusicIDs[45] /* =
+u32 dMNSoundTestMusicIDs[/* */] =
 {
     nSYAudioBGMOpening,
     nSYAudioBGMExplain,
@@ -149,30 +162,526 @@ extern u32 dMNSoundTestMusicIDs[45] /* =
     nSYAudioBGM1PGameEndChoice,
     nSYAudioBGM1PGameOver,
     nSYAudioBGMStaffRoll
-}
-*/;
+};
 
 // 0x80133A94
-extern u32 dMNSoundTestSoundIDs[194];
+u32 dMNSoundTestSoundIDs[/* */] =
+{
+    nSYAudioFGMWindAmbient1,
+    nSYAudioFGMUnkWhirr3,
+    nSYAudioFGMPublicityPrologue,
+    nSYAudioFGMOpeningBatM,
+    nSYAudioFGMAltitudeWarn,
+    nSYAudioFGMMapBoundHitL,
+    nSYAudioFGMMapBoundHitS,
+    nSYAudioFGMKickL,
+    nSYAudioFGMKickM,
+    nSYAudioFGMKickS,
+    nSYAudioFGMPunchL,
+    nSYAudioFGMPunchM,
+    nSYAudioFGMPunchS,
+    nSYAudioFGMLightSwingL,
+    nSYAudioFGMLightSwingM,
+    nSYAudioFGMLightSwingS,
+    nSYAudioFGMShockL,
+    nSYAudioFGMShockS,
+    nSYAudioFGMBurnL,
+    nSYAudioFGMBurnS,
+    nSYAudioFGMDonkeyLanding,
+    nSYAudioFGMUnkGrind2,
+    nSYAudioFGMKirbyPurinJump,
+    nSYAudioFGMDonkeyFoot,
+    nSYAudioFGMSamusFoot,
+    nSYAudioFGMMMarioFoot,
+    nSYAudioFGMNessDash,
+    nSYAudioFGMGroundBrakeGrind,
+    nSYAudioFGMGuardOn,
+    nSYAudioFGMGuardOff,
+    nSYAudioFGMShieldBreak,
+    nSYAudioFGMDonkeyDeadSlam,
+    nSYAudioFGMYoshiDownBounce,
+    nSYAudioFGMCharacterUnkZip1,
+    nSYAudioFGMHeavySwing1,
+    nSYAudioFGMLightSwingLw1,
+    nSYAudioFGMCatch,
+    nSYAudioFGMDeadUpStar,
+    nSYAudioFGMEscape,
+    nSYAudioFGMMSBombAttach,
+    nSYAudioFGMBombHeiFuse,
+    nSYAudioFGMItemMapCollide,
+    nSYAudioFGMBumperHit,
+    nSYAudioFGMFireFlowerBurn,
+    nSYAudioFGMItemGet,
+    nSYAudioFGMHammerSwing,
+    nSYAudioFGMHarisenHit,
+    nSYAudioFGMBatHit,
+    nSYAudioFGMStarMapCollide,
+    nSYAudioFGMStarGet,
+    nSYAudioFGMBombHeiWalkStart,
+    nSYAudioFGMShellHit,
+    nSYAudioFGMItemThrow,
+    nSYAudioFGMItemSpawn1,
+    nSYAudioFGMContainerSmash,
+    nSYAudioFGMFireFlowerShoot,
+    nSYAudioFGMLGunShoot,
+    nSYAudioFGMLGunEmpty,
+    nSYAudioFGMStarRodSwing4,
+    nSYAudioFGMStarRodSwing1,
+    nSYAudioFGMStarRodEmpty,
+    nSYAudioFGMSwordSwing4,
+    nSYAudioFGMSwordSwing1,
+    nSYAudioFGMTaruBombHit,
+    nSYAudioFGMTaruBombMap,
+    nSYAudioFGMExplodeL,
+    nSYAudioFGMFireShoot1,
+    nSYAudioFGMShockML, // Left off at: 0x80133BA4
+    nSYAudioFGMMarioAppealGrow,
+    nSYAudioFGMMarioAppealShrink,
+    nSYAudioFGMUnkDial1,
+    nSYAudioFGMMarioSpecialN,
+    nSYAudioFGMExplodeS,
+    nSYAudioFGMMarioSpecialHiJump,
+    nSYAudioFGMMarioSpecialHiCoin,
+    nSYAudioFGMMarioUnkSwing1,
+    nSYAudioFGMBossSlam,
+    nSYAudioFGMBossUnk1,
+    nSYAudioFGMBossUnk2,
+    nSYAudioFGMDonkeyCharge,
+    nSYAudioFGMLinkSpecialLwGet,
+    nSYAudioFGMLinkSpecialNReturn,
+    nSYAudioFGMLinkSpecialNShoot,
+    nSYAudioFGMLinkSpecialNGet,
+    nSYAudioFGMLinkSpecialHi,
+    nSYAudioFGMLinkCatchHookshot,
+    nSYAudioFGMLinkAppear,
+    nSYAudioFGMBladeSwing4,
+    nSYAudioFGMBladeSwing3,
+    nSYAudioFGMBladeSwing1,
+    nSYAudioFGMSlashL,
+    nSYAudioFGMSlashM,
+    nSYAudioFGMSlashS,
+    nSYAudioFGMBladeDraw,
+    nSYAudioFGMChargeShotAll,
+    nSYAudioFGMUnkSmallPing1,
+    nSYAudioFGMFoxBlaster,
+    nSYAudioFGMSamusJump1,
+    nSYAudioFGMSamusSpecialNShootL,
+    nSYAudioFGMSamusSpecialNShootS,
+    nSYAudioFGMSamusSpecialNCharge0,
+    nSYAudioFGMSamusSpecialNCharge7,
+    nSYAudioFGMSamusSpecialLw,
+    nSYAudioFGMSamusCatchGrappleBeam,
+    nSYAudioFGMSamusSpecialHi,
+    nSYAudioFGMSamusUnkSwing,
+    nSYAudioFGMSamusUnkCharge,
+    nSYAudioFGMYoshiEggShatter1,
+    nSYAudioFGMYoshiSpecialNTongue,
+    nSYAudioFGMYoshiEggShatter3,
+    nSYAudioFGMYoshiSpecialHiThrow,
+    nSYAudioFGMYoshiEggLayShatter, // Left off at: 0x80133C54
+    nSYAudioFGMUnkMechanical4,
+    nSYAudioFGMUnkLongWind,
+    nSYAudioFGMKirbySpecialLwLanding,
+    nSYAudioFGMKirbyAttackAirHi,
+    nSYAudioFGMKirbySpecialNThrow,
+    nSYAudioFGMKirbySpecialNCopyEat,
+    nSYAudioFGMKirbySpecialNCopyThrow,
+    nSYAudioFGMKirbySpecialNCopyUnk,
+    nSYAudioFGMKirbyStarPing2,
+    nSYAudioFGMKirbySpecialLwStart,
+    nSYAudioFGMKirbySpecialNStart,
+    nSYAudioFGMKirbySpecialNLoseCopy,
+    nSYAudioFGMFoxSpecialN,
+    nSYAudioFGMFoxSpecialHiStart,
+    nSYAudioFGMFoxSpecialHiFly,
+    nSYAudioFGMFoxSpecialLwHit,
+    nSYAudioFGMFoxSpecialLwStart,
+    nSYAudioFGMFoxAttackAirLw,
+    nSYAudioFGMFoxAppearArwing,
+    nSYAudioFGMUnkShoot1,
+    nSYAudioFGMPikachuElectric1,
+    nSYAudioFGMPikachuElectric2,
+    nSYAudioFGMPikachuElectric5,
+    nSYAudioFGMPikachuElectricLoop,
+    nSYAudioFGMPikachuSpecialHiStart,
+    nSYAudioFGMPikachuSpecialLwThunder,
+    nSYAudioFGMCaptainAppearCar1,
+    nSYAudioFGMCaptainAppearCar2,
+    nSYAudioFGMCaptainSpecialHi,
+    nSYAudioFGMCaptainSpecialNStart,
+    nSYAudioFGMCaptainSpecialNPunch,
+    nSYAudioFGMCharacterUnk1,
+    nSYAudioFGMNessPKThunderLoop,
+    nSYAudioFGMNessSpecialLwStart,
+    nSYAudioFGMCharacterUnk3,
+    nSYAudioFGMUnkSwoosh1,
+    nSYAudioFGMUnkGate1,
+    nSYAudioFGMBossBullet,
+    nSYAudioFGMSectorArwingLaser,
+    nSYAudioFGMSectorAmbient1,
+    nSYAudioFGMOptionsDataErase,
+    nSYAudioFGMMagnify,
+    nSYAudioFGMBonusComplete,
+    nSYAudioFGMPlayerHeal,
+    nSYAudioFGMYosterCloudVapor,
+    nSYAudioFGMStockSteal,
+    nSYAudioFGMBonus2PlatformLanding,
+    nSYAudioFGMGamePause,
+    nSYAudioFGMInishiePowerBlock,
+    nSYAudioFGMBonus1TargetBreak,
+    nSYAudioFGMJungleTaruCannShoot,
+    nSYAudioFGMHyruleTwisterAppear,
+    nSYAudioFGMHyruleTwisterTrapped,
+    nSYAudioFGMPupupuWhispyWind,
+    nSYAudioFGMFloorDamageBurn,
+    nSYAudioFGMDogasSmog,
+    nSYAudioFGMIwarkRockMake,
+    nSYAudioFGMKabigonFall,
+    nSYAudioFGMKabigonJump,
+    nSYAudioFGMKamexHydro,
+    nSYAudioFGMLizardonFlame,
+    nSYAudioFGMMewFly,
+    nSYAudioFGMNyarsCoin,
+    nSYAudioFGMMBallOpen,
+    nSYAudioFGMMonsterShoot,
+    nSYAudioFGMTosakintoSplash,
+    nSYAudioFGMUnkMechanical1,
+    nSYAudioFGMTitlePressStart,
+    nSYAudioFGMMenuSelect,
+    nSYAudioFGMMapSelect,
+    nSYAudioFGM1PGameContinue,
+    nSYAudioFGMTrainingSel2,
+    nSYAudioFGMMenuScroll1,
+    nSYAudioFGMMenuScroll2,
+    nSYAudioFGMMenuDenied,
+    nSYAudioFGMPlayerGateClose,
+    nSYAudioFGMPlayerGateWhoosh,
+    nSYAudioFGMUnkMetallic2,
+    nSYAudioFGMStageClearScoreRegister,
+    nSYAudioFGMStageClearScoreDisplay,
+    nSYAudioFGMDoorClose,
+    nSYAudioFGMTrainingSel
+};
 
 // 0x80133D9C
-extern u32 dMNSoundTestVoiceIDs[244];
+u32 dMNSoundTestVoiceIDs[/* */] =
+{
+    // MARIO
 
-// TO DO: fill out these arrays with the proper sound / music IDs
+    nSYAudioVoiceMarioSmash1,
+    nSYAudioVoiceMarioSmash2,
+    nSYAudioVoiceMarioSmash3,
+    nSYAudioVoiceMarioSpecialLw,
+    nSYAudioVoiceMarioDeadUp,
+    nSYAudioVoiceMarioJump,
+    nSYAudioVoiceMarioJumpAerial,
+    nSYAudioVoiceMarioHeavyGet,
+    nSYAudioVoiceMarioDead,
+    nSYAudioVoiceMarioDamage,
+    nSYAudioVoiceMarioHereWe,
+
+    // DONKEY KONG
+
+    nSYAudioVoiceDonkeyAppeal,
+    nSYAudioVoiceDonkeySmash1,
+    nSYAudioVoiceDonkeySmash2,
+    nSYAudioVoiceDonkeySmash3,
+    nSYAudioVoiceDonkeyDeadUp,
+    nSYAudioVoiceDonkeyDamage,
+    nSYAudioVoiceDonkeyDead1,
+    nSYAudioVoiceDonkeyHeavyGet,
+    nSYAudioVoiceDonkeyHeavyUnk,
+    nSYAudioVoiceDonkeyDead2,
+    
+    // LINK
+
+    nSYAudioVoiceLinkSmash1,
+    nSYAudioVoiceLinkSmash2,
+    nSYAudioVoiceLinkSmash3,
+    nSYAudioVoiceLinkSpecialHi,
+    nSYAudioVoiceLinkDeadUp,
+    nSYAudioVoiceLinkDamage,
+    nSYAudioVoiceLinkJump,
+    nSYAudioVoiceLinkJumpAerial,
+    nSYAudioVoiceLinkOttotto,
+    nSYAudioVoiceLinkDead,
+    nSYAudioVoiceLinkGrunt2,
+
+    // YOSHI
+
+    nSYAudioVoiceYoshiAppeal,
+    nSYAudioVoiceYoshiSmash2,
+    nSYAudioVoiceYoshiSmash3,
+    nSYAudioVoiceYoshiCatch,
+    nSYAudioVoiceYoshiDeadUp,
+    nSYAudioVoiceYoshiDamage,
+    nSYAudioVoiceYoshiJump,
+    nSYAudioVoiceYoshiJumpAerial,
+    nSYAudioVoiceYoshiFuraSleep,
+    nSYAudioVoiceYoshiSpecialLwJump,
+    nSYAudioVoiceYoshiSpecialLwFall,
+    nSYAudioVoiceYoshiUnkGrunt2,
+    nSYAudioVoiceYoshiThrow,
+    nSYAudioVoiceYoshiUnkVocalize,
+
+    // KIRBY
+
+    nSYAudioVoiceKirbyAppeal,
+    nSYAudioVoiceKirbySmash1,
+    nSYAudioVoiceKirbySmash2,
+    nSYAudioVoiceKirbySmash3,
+    nSYAudioVoiceKirbyCopyLinkSpecialN,
+    nSYAudioVoiceKirbyCopyPikachuSpecialN,
+    nSYAudioVoiceKirbySpecialHi,
+    nSYAudioVoiceKirbyCopyCaptainSpecialNFalcon,
+    nSYAudioVoiceKirbyCopyCaptainSpecialNPunch,
+    nSYAudioVoiceKirbyCopyDonkeySpecialN,
+    nSYAudioVoiceKirbyCopyPurinSpecialN,
+    nSYAudioVoiceKirbyDeadUp,
+    nSYAudioVoiceKirbyFuraFura,
+    nSYAudioVoiceKirbyDamage,
+    nSYAudioVoiceKirbyHeavyGet,
+    nSYAudioVoiceKirbyOttotto,
+    nSYAudioVoiceKirbyCopyNessSpecialN,
+    nSYAudioVoiceKirbyDead,
+    nSYAudioVoiceKirbyFuraSleep,
+    nSYAudioVoiceKirbySpecialLw,
+
+    // FOX
+
+    nSYAudioVoiceFoxDeadUp,
+    nSYAudioVoiceFoxSpecialHi,
+    nSYAudioVoiceFoxJumpAerial,
+    nSYAudioVoiceFoxEscape,
+    nSYAudioVoiceFoxSelected,
+    nSYAudioVoiceFoxHeavyGet,
+    nSYAudioVoiceFoxOttotto,
+    nSYAudioVoiceFoxDead,
+    nSYAudioVoiceFoxSmash1,
+    nSYAudioVoiceFoxSmash2,
+    nSYAudioVoiceFoxSmash3,
+    nSYAudioVoiceFoxDamage,
+    nSYAudioVoiceFoxFuraFura,
+
+    // PIKACHU
+
+    nSYAudioVoicePikachuAppeal,
+    nSYAudioVoicePikachuSmash1,
+    nSYAudioVoicePikachuSmash2,
+    nSYAudioVoicePikachuSmash3,
+    nSYAudioVoicePikachuSpecialN,
+    nSYAudioVoicePikachuSpecialLw,
+    nSYAudioVoicePikachuDeadUp,
+    nSYAudioVoicePikachuDamage,
+    nSYAudioVoicePikachuSpecialHi,
+    nSYAudioVoicePikachuHeavyGet,
+    nSYAudioVoicePikachuOttotto,
+    nSYAudioVoicePikachuDead,
+    nSYAudioVoicePikachuFuraSleep,
+
+    // LUIGI
+    
+    nSYAudioVoiceLuigiSmash1,
+    nSYAudioVoiceLuigiSmash2,
+    nSYAudioVoiceLuigiSmash3,
+    nSYAudioVoiceLuigiSpecialLw,
+    nSYAudioVoiceLuigiDeadUp,
+    nSYAudioVoiceLuigiFuraFura,
+    nSYAudioVoiceLuigiDamage,
+    nSYAudioVoiceLuigiJump,
+    nSYAudioVoiceLuigiJumpAerial,
+    nSYAudioVoiceLuigiHeavyGet,
+    nSYAudioVoiceLuigiDead,
+    nSYAudioVoiceLuigiHereWe,
+
+    // CAPTAIN FALCON
+
+    nSYAudioVoiceCaptainAppeal,
+    nSYAudioVoiceCaptainSpecialHi,
+    nSYAudioVoiceCaptainSmash1,
+    nSYAudioVoiceCaptainSmash2,
+    nSYAudioVoiceCaptainSmash3,
+    nSYAudioVoiceCaptainSmash5,
+    nSYAudioVoiceCaptainAttackS4,
+    nSYAudioVoiceCaptainSpecialLw,
+    nSYAudioVoiceCaptainSpecialNFalcon,
+    nSYAudioVoiceCaptainSpecialNPunch,
+    nSYAudioVoiceCaptainDeadUp,
+    nSYAudioVoiceCaptainFuraFura,
+    nSYAudioVoiceCaptainDamage,
+    nSYAudioVoiceCaptainJumpAerial,
+    nSYAudioVoiceCaptainHeavyGet,
+    nSYAudioVoiceCaptainDead,
+    nSYAudioVoiceCaptainFuraSleep,
+    nSYAudioVoiceCaptainUnkQuick,
+
+    // NESS
+
+    nSYAudioVoiceNessAppeal,
+    nSYAudioVoiceNessSmash1,
+    nSYAudioVoiceNessSmash2,
+    nSYAudioVoiceNessSmash3,
+    nSYAudioVoiceNessUnkGrunt,
+    nSYAudioVoiceNessDeadUp,
+    nSYAudioVoiceNessFuraFura,
+    nSYAudioVoiceNessDamage,
+    nSYAudioVoiceNessHeavyGet,
+    nSYAudioVoiceNessOttotto,
+    nSYAudioVoiceNessSpecialN,
+    nSYAudioVoiceNessSpecialHi,
+    nSYAudioVoiceNessDead,
+    nSYAudioVoiceNessFuraSleep,
+
+    // JIGGLYPUFF
+
+    nSYAudioVoicePurinAppeal,
+    nSYAudioVoicePurinSmash1,
+    nSYAudioVoicePurinSmash2,
+    nSYAudioVoicePurinSmash3,
+    nSYAudioVoicePurinSpecialN,
+    nSYAudioVoicePurinDeadUp,
+    nSYAudioVoicePurinFuraFura,
+    nSYAudioVoicePurinDamage,
+    nSYAudioVoicePurinUnkGrunt2,
+    nSYAudioVoicePurinUnkGrunt3,
+    nSYAudioVoicePurinUnkGrunt4,
+    nSYAudioVoicePurinFuraSleep,
+    nSYAudioVoicePurinSpecialLwSleep,
+    nSYAudioVoicePurinSpecialLwWake,
+    nSYAudioVoicePurinSpecialHi,
+
+    // MASTER HAND
+    
+    nSYAudioVoiceBossAppear,
+    nSYAudioVoiceBossDead,
+    
+    // ANNOUNCER
+    
+    nSYAudioVoiceAnnounceTitleWait,
+    nSYAudioVoiceAnnounceMario,
+    nSYAudioVoiceAnnounceDonkeyKong,
+    nSYAudioVoiceAnnounceSamus,
+    nSYAudioVoiceAnnounceFox,
+    nSYAudioVoiceAnnounceYoshi,
+    nSYAudioVoiceAnnounceLink,
+    nSYAudioVoiceAnnouncePikachu,
+    nSYAudioVoiceAnnounceKirby,
+    nSYAudioVoiceAnnounceLuigi,
+    nSYAudioVoiceAnnounceCaptain,
+    nSYAudioVoiceAnnounceNess,
+    nSYAudioVoiceAnnouncePurin,
+    nSYAudioVoiceAnnounceRedTeam,
+    nSYAudioVoiceAnnounceBlueTeam,
+    nSYAudioVoiceAnnounceGreenTeam,
+    nSYAudioVoiceAnnounceFreeForAll,
+    nSYAudioVoiceAnnounceTeamBattle,
+    nSYAudioVoiceAnnounceSelectPlayer,
+    nSYAudioVoiceAnnounceContinue,
+    nSYAudioVoiceAnnounceGameOver,
+    nSYAudioVoiceAnnounceGo,
+    nSYAudioVoiceAnnounceFive,
+    nSYAudioVoiceAnnounceFour,
+    nSYAudioVoiceAnnounceThree,
+    nSYAudioVoiceAnnounceTwo,
+    nSYAudioVoiceAnnounceOne,
+    nSYAudioVoiceAnnounceSuddenDeath,
+    nSYAudioVoiceAnnounceTimeUp,
+    nSYAudioVoiceAnnounceGameSet,
+    nSYAudioVoiceAnnounceWinnerIs,
+    nSYAudioVoiceAnnounceNoContest,
+    nSYAudioVoiceAnnouncePlayer1,
+    nSYAudioVoiceAnnouncePlayer2,
+    nSYAudioVoiceAnnouncePlayer3,
+    nSYAudioVoiceAnnouncePlayer4,
+    nSYAudioVoiceAnnounceComputerPlayer,
+    nSYAudioVoiceAnnounceVersus,
+    nSYAudioVoiceAnnounceYoshiTeam,
+    nSYAudioVoiceAnnounceKirbyTeam,
+    nSYAudioVoiceAnnounceGDonkey,
+    nSYAudioVoiceAnnounceMarioBros,
+    nSYAudioVoiceAnnounceBattleRoyal,
+    nSYAudioVoiceAnnouncePolygonTeam,
+    nSYAudioVoiceAnnounceBonusStage,
+    nSYAudioVoiceAnnounceBreakTheTargets,
+    nSYAudioVoiceAnnounceBoardThePlatforms,
+    nSYAudioVoiceAnnounceComplete,
+    nSYAudioVoiceAnnounceFailure,
+    nSYAudioVoiceAnnounceNewRecord,
+    nSYAudioVoiceAnnounceTrainingMode,
+    nSYAudioVoiceAnnounceHowToPlay,
+
+    // POKéBALL POKéMON
+
+    nSYAudioVoiceMBallDogasAppear,
+    nSYAudioVoiceMBallIwarkAppear,
+    nSYAudioVoiceMBallKabigonFall,
+    nSYAudioVoiceMBallKabigonAppear,
+    nSYAudioVoiceMBallKamexAppear,
+    nSYAudioVoiceMBallLuckyAppear,
+	nSYAudioVoiceMBallMewAppear,
+	nSYAudioVoiceMBallPippiAppear,
+	nSYAudioVoiceMBallLizardonAppear,
+	nSYAudioVoiceMBallSawamuraAppear,
+	nSYAudioVoiceMBallSawamuraKick,
+	nSYAudioVoiceMBallSpearAppear,
+	nSYAudioVoiceMBallSpearSwarm,
+	nSYAudioVoiceMBallStarmieAppear,
+	nSYAudioVoiceMBallTosakintoAppear,
+
+    // SAFFRON CITY POKéMON
+
+    nSYAudioVoiceYamabukiFushigibana,
+    nSYAudioVoiceYamabukiHitokage,
+	nSYAudioVoiceYamabukiLucky,         // No Electrode?
+	nSYAudioVoiceYamabukiPorygon,
+
+    // AUDIENCE CHANTS
+
+    nSYAudioVoicePublicityDonkey,
+	nSYAudioVoicePublicityCaptain,
+	nSYAudioVoicePublicityFox,
+	nSYAudioVoicePublicityKirby,
+	nSYAudioVoicePublicityLink,
+	nSYAudioVoicePublicityLuigi,
+	nSYAudioVoicePublicityMario,
+	nSYAudioVoicePublicityNess,
+	nSYAudioVoicePublicityPikachu,
+	nSYAudioVoicePublicityPurin,
+	nSYAudioVoicePublicitySamus,
+	nSYAudioVoicePublicityYoshi,
+
+    // AUDIENCE REACTIONS
+
+    nSYAudioVoicePublicityGaspL,
+    nSYAudioVoicePublicityGaspS,
+    nSYAudioVoicePublicityCheer,
+    nSYAudioVoicePublicityGaspClap,
+    nSYAudioVoicePublicityDamageL,
+    nSYAudioVoicePublicityDamageS,
+    nSYAudioVoicePublicityAbsorb,
+    nSYAudioVoicePublicityClapS
+};
 
 // 0x8013416C
-extern u32 dMNSoundTestFileIDs[5] /*= { 0xC5, 0xA4, 0x20, 0x00, 0xC4 }*/;
+u32 dMNSoundTestFileIDs[/* */] = 
+{ 
+    &D_NF_000000C5,
+    &D_NF_000000A4,
+    &D_NF_00000020,
+    &D_NF_00000000,
+    &D_NF_000000C4
+};
 
 // 0x80134180
-extern f32 dMNSoundTestArrowSpritePositions[/* */] /*=
+f32 dMNSoundTestArrowSpritePositions[/* */] =
 {
     162.0F,  73.0F, 224.0F,
     181.0F, 121.0F, 243.0F,
     201.0F, 168.0F, 263.0F
-}*/;
+};
 
 // 0x801341A4
-extern intptr_t dMNSoundTestDigitSpriteOffsets[/* */] /*=
+intptr_t dMNSoundTestDigitSpriteOffsets[/* */] =
 {
     &lMNSoundTestDigit0Sprite,
     &lMNSoundTestDigit1Sprite,
@@ -184,27 +693,64 @@ extern intptr_t dMNSoundTestDigitSpriteOffsets[/* */] /*=
     &lMNSoundTestDigit7Sprite,
     &lMNSoundTestDigit8Sprite,
     &lMNSoundTestDigit9Sprite
-} */;
+};
 
 // 0x801341CC
-extern s32 dMNSoundTestDigitSpriteWidths[/* */] /*= { 14, 9, 15, 14, 15, 13, 15, 14, 15, 15, 17, 20 }*/;
+s32 dMNSoundTestDigitSpriteWidths[/* */] = { 14, 9, 15, 14, 15, 13, 15, 14, 15, 15, 17, 20 };
 
 // 0x80134200
-extern Lights1 dMNSoundTestLights1 /*= gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x0A, 0x32, 0x32)*/;
+Lights1 dMNSoundTestLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x0A, 0x32, 0x32);
 
 // 0x80134218
-extern Gfx dMNSoundTestDisplayList[/* */] /*=
+Gfx dMNSoundTestDisplayList[/* */] =
 {
     gsSPSetGeometryMode(G_LIGHTING),
     gsSPSetLights1(dMNSoundTestLights1),
     gsSPEndDisplayList()
-}*/;
+};
 
 // 0x80134240
-extern syDisplaySetup dMNSoundTestDisplaySetup /*= SYDISPLAY_DEFINE_DEFAULT()*/;
+syDisplaySetup dMNSoundTestDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8013425C
-extern scRuntimeInfo dMNSoundTestGtlSetup;
+scRuntimeInfo dMNSoundTestGtlSetup =
+{
+    0x00000000,
+    func_8000A5E4,
+    func_8000A340,
+    &ovl62_BSS_END,
+    0,
+    1,
+    1,
+    0x4000,
+    0x400,
+    0,
+    0,
+    0x1000,
+    0x20000,
+    0x1000,
+    mnSoundTestProcLights,
+    update_contdata,
+    0x10,
+    0x600,
+    0x10,
+    0,
+    0x40,
+    0x40,
+    0x88,
+    0x100,
+    0,
+    0,
+    0x20,
+    0x10,
+    0x400,
+    0x88,
+    0x100,
+    0x6C,
+    0x8,
+    0x90,
+    mnSoundTestProcStart
+};
 
 // // // // // // // // // // // //
 //                               //

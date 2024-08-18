@@ -760,7 +760,7 @@ GObj* wpPikachuThunderJoltGroundMakeWeapon(GObj *prev_gobj, Vec3f *pos, s32 coll
         break;
     }
     efManagerPikachuThunderJoltMakeEffect(&DObjGetStruct(new_gobj)->translate.vec.f, DObjGetStruct(new_gobj)->rotate.vec.f.z);
-    wpMainPlaySFX(new_wp, nSYAudioFGMNessSpecialHiCrackLoop); // Bruh
+    wpMainPlaySFX(new_wp, nSYAudioFGMPikachuElectricLoop); // Bruh
 
     return new_gobj;
 }

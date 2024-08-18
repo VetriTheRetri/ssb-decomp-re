@@ -378,7 +378,7 @@ sb32 itIwarkWeaponRockProcMap(GObj *weapon_gobj)
 
             wp->weapon_vars.rock.ground_line_id = coll_data->ground_line_id;
 
-            func_800269C0_275C0(nSYAudioFGMIwarkRockCreate);
+            func_800269C0_275C0(nSYAudioFGMIwarkRockMake);
 
             pos.y += WPIWARK_ROCK_COLLIDE_ADD_VEL_Y;
 

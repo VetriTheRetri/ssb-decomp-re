@@ -1854,7 +1854,7 @@ void sc1PStageClearSceneProcUpdate(GObj *gobj)
 
 	if (D_ovl56_801352CC >= 10)
 	{
-		if (scSubsysControllerGetFirstTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
+		if (scSubsysControllerCheckAllTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
 		{
 			if (D_ovl56_8013533C != 0)
 			{

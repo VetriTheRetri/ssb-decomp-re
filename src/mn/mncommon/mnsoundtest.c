@@ -804,8 +804,8 @@ void mnSoundTestUpdateControllerInputs(void)
     (
         (scSubsysControllerCheckAllStickInRangeLR(-32, 32) != FALSE) &&
         (scSubsysControllerCheckAllStickInRangeUD(-32, 32) != FALSE) &&
-        (scSubsysControllerGetFirstHoldButtons(U_JPAD | R_JPAD | R_TRIG | U_CBUTTONS | R_CBUTTONS) == FALSE) &&
-        (scSubsysControllerGetFirstHoldButtons(D_JPAD | L_JPAD | L_TRIG | D_CBUTTONS | L_CBUTTONS) == FALSE)
+        (scSubsysControllerCheckAllHoldButtons(U_JPAD | R_JPAD | R_TRIG | U_CBUTTONS | R_CBUTTONS) == FALSE) &&
+        (scSubsysControllerCheckAllHoldButtons(D_JPAD | L_JPAD | L_TRIG | D_CBUTTONS | L_CBUTTONS) == FALSE)
     )
     {
         sMNSoundTestOptionChangeWait = 0;
@@ -976,7 +976,7 @@ void mnSoundTestUpdateFunctions(void)
     }
     else auSetBGMVolume(0, 0x7000);
 
-    if (scSubsysControllerGetFirstTapButtons(A_BUTTON) != FALSE)
+    if (scSubsysControllerCheckAllTapButtons(A_BUTTON) != FALSE)
     {
         switch (sMNSoundTestOption)
         {
@@ -1000,12 +1000,12 @@ void mnSoundTestUpdateFunctions(void)
             break;
         }
     }
-    else if (scSubsysControllerGetFirstTapButtons(Z_TRIG) != FALSE)
+    else if (scSubsysControllerCheckAllTapButtons(Z_TRIG) != FALSE)
     {
         auStopBGM();
         func_800266A0_272A0();
     }
-    else if (scSubsysControllerGetFirstTapButtons(START_BUTTON) != FALSE)
+    else if (scSubsysControllerCheckAllTapButtons(START_BUTTON) != FALSE)
     {
         auSetBGMVolumeSmooth(0, 0, 120);
         sMNSoundTestFadeOutWait = 120;
@@ -1018,7 +1018,7 @@ void mnSoundTestMenuProcRun(GObj *gobj)
 {
     mnSoundTestUpdateOptionColors();
 
-    if (scSubsysControllerGetFirstTapButtons(B_BUTTON) != FALSE)
+    if (scSubsysControllerCheckAllTapButtons(B_BUTTON) != FALSE)
     {
         gSceneData.scene_previous = gSceneData.scene_current;
         gSceneData.scene_current = nSCKindData;

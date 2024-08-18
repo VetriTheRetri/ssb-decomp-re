@@ -3593,7 +3593,7 @@ void mnBattleMain(s32 arg0)
 	}
 	else
 	{
-		if ((scSubsysControllerGetFirstTapButtons(START_BUTTON) != FALSE) && (gMnBattleFramesElapsed >= 0x3D))
+		if ((scSubsysControllerCheckAllTapButtons(START_BUTTON) != FALSE) && (gMnBattleFramesElapsed >= 0x3D))
 		{
 			if (mnBattleIsReadyToFight() != FALSE)
 			{

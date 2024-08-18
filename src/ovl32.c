@@ -1624,8 +1624,8 @@ void mnVsRecordsMain(GObj* arg0)
 		(gMNVsRecordsStatsKind == vsRecordsKindIndividual) &&
 		(scSubsysControllerCheckAllStickInRangeLR(-0x14, 0x14) != FALSE) &&
 		(scSubsysControllerCheckAllStickInRangeUD(-0x14, 0x14) != FALSE) &&
-		(scSubsysControllerGetFirstHoldButtons(R_JPAD | U_JPAD | R_TRIG | R_CBUTTONS | U_CBUTTONS) == FALSE) &&
-		(scSubsysControllerGetFirstHoldButtons(L_JPAD | D_JPAD | L_TRIG | L_CBUTTONS | D_CBUTTONS) == FALSE)
+		(scSubsysControllerCheckAllHoldButtons(R_JPAD | U_JPAD | R_TRIG | R_CBUTTONS | U_CBUTTONS) == FALSE) &&
+		(scSubsysControllerCheckAllHoldButtons(L_JPAD | D_JPAD | L_TRIG | L_CBUTTONS | D_CBUTTONS) == FALSE)
 	)
 	{
 		gMNVsRecordsChangeWait = 0;
@@ -1636,7 +1636,7 @@ void mnVsRecordsMain(GObj* arg0)
 		gMNVsRecordsRedrawSubtitle = FALSE;
 	}
 
-	if (scSubsysControllerGetFirstTapButtons(B_BUTTON) != FALSE)
+	if (scSubsysControllerCheckAllTapButtons(B_BUTTON) != FALSE)
 	{
 		if (gMNVsRecordsStatsKind == vsRecordsKindBattleScore)
 		{
@@ -1658,8 +1658,8 @@ void mnVsRecordsMain(GObj* arg0)
 
 	if
 	(
-		((scSubsysControllerGetFirstTapButtons(A_BUTTON) != FALSE) ||
-		(scSubsysControllerGetFirstTapButtons(START_BUTTON) != FALSE)) &&
+		((scSubsysControllerCheckAllTapButtons(A_BUTTON) != FALSE) ||
+		(scSubsysControllerCheckAllTapButtons(START_BUTTON) != FALSE)) &&
 		(gMNVsRecordsStatsKind < 2)
 	)
 	{

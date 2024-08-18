@@ -32,7 +32,7 @@ sb32 scSubsysControllerCheckExpectStatus(s32 status)
 }
 
 // 0x8039076C - Get first controller pressing expected button(s)
-s32 scSubsysControllerGetFirstTapButtons(u32 buttons)
+s32 scSubsysControllerCheckAllTapButtons(u32 buttons)
 {
     s32 i;
 
@@ -47,7 +47,7 @@ s32 scSubsysControllerGetFirstTapButtons(u32 buttons)
 }
 
 // 0x80390804
-s32 scSubsysControllerGetFirstHoldButtons(u32 buttons)
+s32 scSubsysControllerCheckAllHoldButtons(u32 buttons)
 {
     s32 i;
 
@@ -62,7 +62,7 @@ s32 scSubsysControllerGetFirstHoldButtons(u32 buttons)
 }
 
 // 0x8039089C
-s32 scSubsysControllerGetFirstStickLR(s8 range, sb32 right_or_left)
+s32 scSubsysControllerCheckAllStickLR(s8 range, sb32 right_or_left)
 {
     s32 i;
     
@@ -87,7 +87,7 @@ s32 scSubsysControllerGetFirstStickLR(s8 range, sb32 right_or_left)
 }
 
 // 0x80390950
-s32 scSubsysControllerGetFirstStickUD(s8 range, sb32 up_or_down)
+s32 scSubsysControllerCheckAllStickUD(s8 range, sb32 up_or_down)
 {
     s32 i;
     
@@ -179,7 +179,7 @@ sb32 scSubsysControllerCheckNoInputAll(void)
         (scSubsysControllerCheckAllStickInRangeLR(-20, 20) != FALSE) && 
         (scSubsysControllerCheckAllStickInRangeUD(-20, 20) != FALSE) && 
         (
-            scSubsysControllerGetFirstHoldButtons
+            scSubsysControllerCheckAllHoldButtons
             (
                 A_BUTTON   | B_BUTTON   | START_BUTTON | 
                 L_TRIG     | R_TRIG     | Z_TRIG       |

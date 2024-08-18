@@ -410,7 +410,7 @@ void mvOpeningMarioMainProc(GObj* arg0)
 
 	gMvOpeningMarioFramesElapsed += 1;
 
-	if (scSubsysControllerGetFirstTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
+	if (scSubsysControllerCheckAllTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 1U;

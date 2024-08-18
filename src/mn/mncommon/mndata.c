@@ -658,13 +658,13 @@ void mnDataMainProcUpdate(GObj *gobj)
         (
             (scSubsysControllerCheckAllStickInRangeLR(-20, 20) != FALSE) &&
             (scSubsysControllerCheckAllStickInRangeUD(-20, 20) != FALSE) &&
-            (scSubsysControllerGetFirstHoldButtons(U_JPAD | U_CBUTTONS) == FALSE) &&
-            (scSubsysControllerGetFirstHoldButtons(D_JPAD | D_CBUTTONS) == FALSE)
+            (scSubsysControllerCheckAllHoldButtons(U_JPAD | U_CBUTTONS) == FALSE) &&
+            (scSubsysControllerCheckAllHoldButtons(D_JPAD | D_CBUTTONS) == FALSE)
         )
         {
             sMNDataOptionChangeWait = 0;
         }
-        if (scSubsysControllerGetFirstTapButtons(A_BUTTON | START_BUTTON) != FALSE)
+        if (scSubsysControllerCheckAllTapButtons(A_BUTTON | START_BUTTON) != FALSE)
         {
             switch (sMNDataOption)
             {
@@ -699,7 +699,7 @@ void mnDataMainProcUpdate(GObj *gobj)
                 return;
             }
         }
-        if (scSubsysControllerGetFirstTapButtons(B_BUTTON) != FALSE)
+        if (scSubsysControllerCheckAllTapButtons(B_BUTTON) != FALSE)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindMainMenu;

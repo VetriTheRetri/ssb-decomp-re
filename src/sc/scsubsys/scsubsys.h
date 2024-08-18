@@ -19,10 +19,10 @@ extern void func_ovl1_803905F4(GObj *this_gobj, GObj *other_gobj);
 extern void scSubsysFighterApplyVelTransN(GObj *fighter_gobj);
 
 extern sb32 scSubsysControllerCheckExpectStatus(s32 status);
-extern s32 scSubsysControllerGetFirstTapButtons(u32 buttons);
-extern s32 scSubsysControllerGetFirstHoldButtons(u32 buttons);
-extern s32 scSubsysControllerGetFirstStickLR(s8 range, sb32 right_or_left);
-extern s32 scSubsysControllerGetFirstStickUD(s8 range, sb32 up_or_down);
+extern s32 scSubsysControllerCheckAllTapButtons(u32 buttons);
+extern s32 scSubsysControllerCheckAllHoldButtons(u32 buttons);
+extern s32 scSubsysControllerCheckAllStickLR(s8 range, sb32 right_or_left);
+extern s32 scSubsysControllerCheckAllStickUD(s8 range, sb32 up_or_down);
 extern sb32 scSubsysControllerCheckAllStickInRangeLR(s32 range_l_min, s32 range_r_min);
 extern sb32 scSubsysControllerCheckAllStickInRangeUD(s32 range_d_min, s32 range_u_min);
 extern sb32 scSubsysControllerCheckNoInputAll(void);

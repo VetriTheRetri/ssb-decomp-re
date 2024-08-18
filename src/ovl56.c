@@ -1961,26 +1961,26 @@ void sc1PStageClearInitAll()
 	switch (sGMStageClear1PGameStage)
 	{
 	case nSC1PGameStageBoss:
-		auPlaySong(0, 0x1D);
+		auPlaySong(0, nSYAudioBGM1PGameClear);
 		break;
 
 	case nSC1PGameStageBonus1:
 	case nSC1PGameStageBonus2:
 		if (D_800A4B08 == 10)
-			auPlaySong(0, 0x1C);
+			auPlaySong(0, nSYAudioBGM1PBonusGameClear);
 		else
-			auPlaySong(0, 0x1E);
+			auPlaySong(0, nSYAudioBGM1PBonusGameFailure);
 		break;
 
 	case nSC1PGameStageBonus3:
 		if (D_800A4AEC != 0)
-			auPlaySong(0, 0x1C);
+			auPlaySong(0, nSYAudioBGM1PBonusGameClear);
 		else
-			auPlaySong(0, 0x1E);
+			auPlaySong(0, nSYAudioBGM1PBonusGameFailure);
 		break;
 
 	default:
-		auPlaySong(0, 0x1B);
+		auPlaySong(0, nSYAudioBGM1PStageClear);
 		break;
 	}
 }

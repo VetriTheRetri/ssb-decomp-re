@@ -3874,7 +3874,7 @@ void mnBattleInitCSS()
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
 	if (gSceneData.scene_previous != 0x15)
-		auPlaySong(0, 0xA);
+		auPlaySong(0, nSYAudioBGMBattleSelect);
 
 	if (gTransferBattleState.is_team_battle == FALSE)
 		func_800269C0_275C0(nSYAudioVoiceAnnounceFreeForAll);

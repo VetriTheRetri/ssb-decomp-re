@@ -1870,7 +1870,7 @@ void mnVsRecordsInit()
 	mnVsRecordsCreateStats(gMNVsRecordsStatsKind);
 	mnVsRecordsCreateRankingRowHighlight();
 
-	auPlaySong(0, 0x2B);
+	auPlaySong(0, nSYAudioBGMData);
 }
 
 // 801365D0

@@ -37,7 +37,7 @@ typedef enum gmMusicID
 	nSYAudioBGMYamabuki,					// Saffron City
 	nSYAudioBGMYoster,						// Yoshi's Island
 	nSYAudioBGMHyrule,						// Hyrule Castle
-	nSYAudioBGMMenuFGSelect,				// Character / Stage Select
+	nSYAudioBGMBattleSelect,				// Character / Stage Select
 	nSYAudioBGMUnusedClear,					// Unused fanfare?
 	nSYAudioBGMWinMario,					// Mario Victory
 	nSYAudioBGMWinMetroid,					// Samus Victory

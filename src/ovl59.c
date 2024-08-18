@@ -1465,7 +1465,7 @@ void gmCreditsInitAll()
 	gmCreditsMakeStaffRollGObj();
 	gmCreditsMakeCamera();
 	auStopBGM();
-	auPlaySong(0, 0x27);
+	auPlaySong(0, nSYAudioBGMStaffRoll);
 }
 
 // 801350F4

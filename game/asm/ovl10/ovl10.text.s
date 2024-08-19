@@ -12,7 +12,7 @@
 # Text Sections
 #  0x80131B00 -> 0x801341E0
 
-glabel func_ovl10_80131B00
+glabel mnTitleGetUnlockedCharsCountForMask
   /* 117180 80131B00 AFA40000 */        sw $a0, ($sp)
   /* 117184 80131B04 3084FFFF */      andi $a0, $a0, 0xffff
   /* 117188 80131B08 00001025 */        or $v0, $zero, $zero
@@ -49,7 +49,7 @@ glabel func_ovl10_80131B00
   /* 1171F0 80131B70 03E00008 */        jr $ra
   /* 1171F4 80131B74 00601025 */        or $v0, $v1, $zero
 
-glabel func_ovl10_80131B78
+glabel mnTitleGetMissingFtKind
   /* 1171F8 80131B78 AFA50004 */        sw $a1, 4($sp)
   /* 1171FC 80131B7C 30A5FFFF */      andi $a1, $a1, 0xffff
   /* 117200 80131B80 AFA40000 */        sw $a0, ($sp)
@@ -72,7 +72,7 @@ glabel func_ovl10_80131B78
   /* 11723C 80131BBC 03E00008 */        jr $ra
   /* 117240 80131BC0 00601025 */        or $v0, $v1, $zero
 
-glabel func_ovl10_80131BC4
+glabel mnTitleSetDemoFtKinds
   /* 117244 80131BC4 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 117248 80131BC8 AFB20020 */        sw $s2, 0x20($sp)
   /* 11724C 80131BCC 3C12800A */       lui $s2, %hi((gSaveData + 0x458))
@@ -90,26 +90,26 @@ glabel func_ovl10_80131BC4
   /* 11727C 80131BFC AFB1001C */        sw $s1, 0x1c($sp)
   /* 117280 80131C00 A600000A */        sh $zero, 0xa($s0) # gSceneData + 10
   .L80131C04:
-  /* 117284 80131C04 0C04C6C0 */       jal func_ovl10_80131B00
+  /* 117284 80131C04 0C04C6C0 */       jal mnTitleGetUnlockedCharsCountForMask
   /* 117288 80131C08 3244FFFF */      andi $a0, $s2, 0xffff
   /* 11728C 80131C0C 00408825 */        or $s1, $v0, $zero
-  /* 117290 80131C10 0C04C6C0 */       jal func_ovl10_80131B00
+  /* 117290 80131C10 0C04C6C0 */       jal mnTitleGetUnlockedCharsCountForMask
   /* 117294 80131C14 9604000A */       lhu $a0, 0xa($s0) # gSceneData + 10
   /* 117298 80131C18 0051082A */       slt $at, $v0, $s1
   /* 11729C 80131C1C 14200002 */      bnez $at, .L80131C28
   /* 1172A0 80131C20 00000000 */       nop
   /* 1172A4 80131C24 A600000A */        sh $zero, 0xa($s0) # gSceneData + 10
   .L80131C28:
-  /* 1172A8 80131C28 0C04C6C0 */       jal func_ovl10_80131B00
+  /* 1172A8 80131C28 0C04C6C0 */       jal mnTitleGetUnlockedCharsCountForMask
   /* 1172AC 80131C2C 3244FFFF */      andi $a0, $s2, 0xffff
   /* 1172B0 80131C30 00408825 */        or $s1, $v0, $zero
-  /* 1172B4 80131C34 0C04C6C0 */       jal func_ovl10_80131B00
+  /* 1172B4 80131C34 0C04C6C0 */       jal mnTitleGetUnlockedCharsCountForMask
   /* 1172B8 80131C38 9604000A */       lhu $a0, 0xa($s0) # gSceneData + 10
   /* 1172BC 80131C3C 0C006265 */       jal lbRandom_GetIntRange
   /* 1172C0 80131C40 02222023 */      subu $a0, $s1, $v0
   /* 1172C4 80131C44 3244FFFF */      andi $a0, $s2, 0xffff
   /* 1172C8 80131C48 9605000A */       lhu $a1, 0xa($s0) # gSceneData + 10
-  /* 1172CC 80131C4C 0C04C6DE */       jal func_ovl10_80131B78
+  /* 1172CC 80131C4C 0C04C6DE */       jal mnTitleGetMissingFtKind
   /* 1172D0 80131C50 00403025 */        or $a2, $v0, $zero
   /* 1172D4 80131C54 9603000A */       lhu $v1, 0xa($s0) # gSceneData + 10
   /* 1172D8 80131C58 A202000D */        sb $v0, 0xd($s0) # gSceneData + 13
@@ -122,10 +122,10 @@ glabel func_ovl10_80131BC4
   /* 1172F0 80131C70 3244FFFF */      andi $a0, $s2, 0xffff
   /* 1172F4 80131C74 01095004 */      sllv $t2, $t1, $t0
   /* 1172F8 80131C78 006A5825 */        or $t3, $v1, $t2
-  /* 1172FC 80131C7C 0C04C6C0 */       jal func_ovl10_80131B00
+  /* 1172FC 80131C7C 0C04C6C0 */       jal mnTitleGetUnlockedCharsCountForMask
   /* 117300 80131C80 A60B000A */        sh $t3, 0xa($s0) # gSceneData + 10
   /* 117304 80131C84 00408825 */        or $s1, $v0, $zero
-  /* 117308 80131C88 0C04C6C0 */       jal func_ovl10_80131B00
+  /* 117308 80131C88 0C04C6C0 */       jal mnTitleGetUnlockedCharsCountForMask
   /* 11730C 80131C8C 9604000A */       lhu $a0, 0xa($s0) # gSceneData + 10
   /* 117310 80131C90 02222023 */      subu $a0, $s1, $v0
   /* 117314 80131C94 14800004 */      bnez $a0, .L80131CA8
@@ -138,7 +138,7 @@ glabel func_ovl10_80131BC4
   /* 11732C 80131CAC 00000000 */       nop
   /* 117330 80131CB0 3244FFFF */      andi $a0, $s2, 0xffff
   /* 117334 80131CB4 9605000A */       lhu $a1, 0xa($s0) # gSceneData + 10
-  /* 117338 80131CB8 0C04C6DE */       jal func_ovl10_80131B78
+  /* 117338 80131CB8 0C04C6DE */       jal mnTitleGetMissingFtKind
   /* 11733C 80131CBC 00403025 */        or $a2, $v0, $zero
   /* 117340 80131CC0 960D000A */       lhu $t5, 0xa($s0) # gSceneData + 10
   /* 117344 80131CC4 304E00FF */      andi $t6, $v0, 0xff
@@ -373,7 +373,7 @@ glabel func_ovl10_80131FD0
   /* 11767C 80131FFC 24070002 */     addiu $a3, $zero, 2
   /* 117680 80132000 0C002E7F */       jal func_8000B9FC
   /* 117684 80132004 A3AE002F */        sb $t6, 0x2f($sp)
-  /* 117688 80132008 0C04C6F1 */       jal func_ovl10_80131BC4
+  /* 117688 80132008 0C04C6F1 */       jal mnTitleSetDemoFtKinds
   /* 11768C 8013200C 00000000 */       nop
   /* 117690 80132010 0C0099A8 */       jal func_800266A0
   /* 117694 80132014 00000000 */       nop
@@ -626,7 +626,7 @@ glabel func_ovl10_80132320
   /* 117A04 80132384 0C0026A1 */       jal omEjectGObj
   /* 117A08 80132388 00000000 */       nop
   .L8013238C:
-  /* 117A0C 8013238C 0C04C8EB */       jal func_ovl10_801323AC
+  /* 117A0C 8013238C 0C04C8EB */       jal mnTitleEnableAllInGroup
   /* 117A10 80132390 24040006 */     addiu $a0, $zero, 6
   /* 117A14 80132394 0C04C884 */       jal func_ovl10_80132210
   /* 117A18 80132398 00000000 */       nop
@@ -635,7 +635,7 @@ glabel func_ovl10_80132320
   /* 117A24 801323A4 03E00008 */        jr $ra
   /* 117A28 801323A8 00000000 */       nop
 
-glabel func_ovl10_801323AC
+glabel mnTitleEnableAllInGroup
   /* 117A2C 801323AC 00047080 */       sll $t6, $a0, 2
   /* 117A30 801323B0 3C028004 */       lui $v0, %hi(gOMObjCommonLinks)
   /* 117A34 801323B4 004E1021 */      addu $v0, $v0, $t6
@@ -745,7 +745,7 @@ glabel func_ovl10_80132448
   .L8013251C:
   /* 117B9C 8013251C 0C04C79A */       jal func_ovl10_80131E68
   /* 117BA0 80132520 00000000 */       nop
-  /* 117BA4 80132524 0C04C8EB */       jal func_ovl10_801323AC
+  /* 117BA4 80132524 0C04C8EB */       jal mnTitleEnableAllInGroup
   /* 117BA8 80132528 24040008 */     addiu $a0, $zero, 8
   /* 117BAC 8013252C 0C04C8F7 */       jal func_ovl10_801323DC
   /* 117BB0 80132530 00000000 */       nop
@@ -759,7 +759,7 @@ glabel func_ovl10_80132448
   /* 117BCC 8013254C 1000001E */         b .L801325C8
   /* 117BD0 80132550 8FBF0014 */        lw $ra, 0x14($sp)
   .L80132554:
-  /* 117BD4 80132554 0C04C8EB */       jal func_ovl10_801323AC
+  /* 117BD4 80132554 0C04C8EB */       jal mnTitleEnableAllInGroup
   /* 117BD8 80132558 24040009 */     addiu $a0, $zero, 9
   /* 117BDC 8013255C 1000001A */         b .L801325C8
   /* 117BE0 80132560 8FBF0014 */        lw $ra, 0x14($sp)
@@ -798,7 +798,7 @@ glabel func_ovl10_80132448
   /* 117C4C 801325CC 03E00008 */        jr $ra
   /* 117C50 801325D0 00000000 */       nop
 
-glabel func_ovl10_801325D4
+glabel mnTitleAnimateGObj
   /* 117C54 801325D4 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 117C58 801325D8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 117C5C 801325DC 00802825 */        or $a1, $a0, $zero
@@ -854,14 +854,14 @@ glabel func_ovl10_801325D4
   /* 117D1C 8013269C 03E00008 */        jr $ra
   /* 117D20 801326A0 00000000 */       nop
 
-glabel func_ovl10_801326A4
+glabel mnTitleAnimatePressStart
   /* 117D24 801326A4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 117D28 801326A8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 117D2C 801326AC 8C8E007C */        lw $t6, 0x7c($a0)
   /* 117D30 801326B0 24010001 */     addiu $at, $zero, 1
   /* 117D34 801326B4 51C10004 */      beql $t6, $at, .L801326C8
   /* 117D38 801326B8 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 117D3C 801326BC 0C04C975 */       jal func_ovl10_801325D4
+  /* 117D3C 801326BC 0C04C975 */       jal mnTitleAnimateGObj
   /* 117D40 801326C0 00000000 */       nop
   /* 117D44 801326C4 8FBF0014 */        lw $ra, 0x14($sp)
   .L801326C8:
@@ -869,14 +869,14 @@ glabel func_ovl10_801326A4
   /* 117D4C 801326CC 03E00008 */        jr $ra
   /* 117D50 801326D0 00000000 */       nop
 
-glabel func_ovl10_801326D4
+glabel mnTitleAnimateTitle
   /* 117D54 801326D4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 117D58 801326D8 AFBF0014 */        sw $ra, 0x14($sp)
   /* 117D5C 801326DC 8C8E007C */        lw $t6, 0x7c($a0)
   /* 117D60 801326E0 24010001 */     addiu $at, $zero, 1
   /* 117D64 801326E4 51C10004 */      beql $t6, $at, .L801326F8
   /* 117D68 801326E8 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 117D6C 801326EC 0C04C975 */       jal func_ovl10_801325D4
+  /* 117D6C 801326EC 0C04C975 */       jal mnTitleAnimateGObj
   /* 117D70 801326F0 00000000 */       nop
   /* 117D74 801326F4 8FBF0014 */        lw $ra, 0x14($sp)
   .L801326F8:
@@ -917,8 +917,8 @@ glabel func_ovl10_80132764
   /* 117DE8 80132768 00064080 */       sll $t0, $a2, 2
   /* 117DEC 8013276C 00067080 */       sll $t6, $a2, 2
   /* 117DF0 80132770 01C67023 */      subu $t6, $t6, $a2
-  /* 117DF4 80132774 3C0F8013 */       lui $t7, %hi(D_ovl10_80134268)
-  /* 117DF8 80132778 25EF4268 */     addiu $t7, $t7, %lo(D_ovl10_80134268)
+  /* 117DF4 80132774 3C0F8013 */       lui $t7, %hi(dMNTitleTextureConfigs)
+  /* 117DF8 80132778 25EF4268 */     addiu $t7, $t7, %lo(dMNTitleTextureConfigs)
   /* 117DFC 8013277C 000E7080 */       sll $t6, $t6, 2
   /* 117E00 80132780 01CF1021 */      addu $v0, $t6, $t7
   /* 117E04 80132784 8C580000 */        lw $t8, ($v0)
@@ -940,9 +940,9 @@ glabel func_ovl10_80132764
   .L801327C4:
   /* 117E44 801327C4 84AB0014 */        lh $t3, 0x14($a1)
   /* 117E48 801327C8 01064023 */      subu $t0, $t0, $a2
-  /* 117E4C 801327CC 3C098013 */       lui $t1, %hi(D_ovl10_80134268)
+  /* 117E4C 801327CC 3C098013 */       lui $t1, %hi(dMNTitleTextureConfigs)
   /* 117E50 801327D0 448B9000 */      mtc1 $t3, $f18
-  /* 117E54 801327D4 25294268 */     addiu $t1, $t1, %lo(D_ovl10_80134268)
+  /* 117E54 801327D4 25294268 */     addiu $t1, $t1, %lo(dMNTitleTextureConfigs)
   /* 117E58 801327D8 00084080 */       sll $t0, $t0, 2
   /* 117E5C 801327DC 46809120 */   cvt.s.w $f4, $f18
   /* 117E60 801327E0 01091021 */      addu $v0, $t0, $t1
@@ -1207,7 +1207,7 @@ glabel func_ovl10_80132B38
   /* 1181E8 80132B68 03E00008 */        jr $ra
   /* 1181EC 80132B6C 00000000 */       nop
 
-glabel func_ovl10_80132B70
+glabel mnTitleCreateFire
   /* 1181F0 80132B70 27BDFF90 */     addiu $sp, $sp, -0x70
   /* 1181F4 80132B74 AFB00050 */        sw $s0, 0x50($sp)
   /* 1181F8 80132B78 3C108000 */       lui $s0, %hi(D_NF_80000001)
@@ -1383,7 +1383,7 @@ glabel func_ovl10_80132D5C
   /* 118474 80132DF4 03E00008 */        jr $ra
   /* 118478 80132DF8 E470005C */      swc1 $f16, 0x5c($v1)
 
-glabel func_ovl10_80132DFC
+glabel mnTitleRenderLogoNoIntro
   /* 11847C 80132DFC 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 118480 80132E00 AFBF0014 */        sw $ra, 0x14($sp)
   /* 118484 80132E04 AFA40020 */        sw $a0, 0x20($sp)
@@ -1469,16 +1469,16 @@ glabel func_ovl10_80132EDC
   /* 1185B4 80132F34 03E00008 */        jr $ra
   /* 1185B8 80132F38 00000000 */       nop
 
-glabel func_ovl10_80132F3C
+glabel mnTitleCreateLogoNoIntro
   /* 1185BC 80132F3C 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 1185C0 80132F40 3C188013 */       lui $t8, %hi(D_ovl10_801342D0)
   /* 1185C4 80132F44 3C198013 */       lui $t9, %hi(D_ovl10_801345A0)
   /* 1185C8 80132F48 8F3945A0 */        lw $t9, %lo(D_ovl10_801345A0)($t9)
   /* 1185CC 80132F4C 8F1842D0 */        lw $t8, %lo(D_ovl10_801342D0)($t8)
-  /* 1185D0 80132F50 3C0E8013 */       lui $t6, %hi(func_ovl10_80132DFC)
+  /* 1185D0 80132F50 3C0E8013 */       lui $t6, %hi(mnTitleRenderLogoNoIntro)
   /* 1185D4 80132F54 AFBF0034 */        sw $ra, 0x34($sp)
   /* 1185D8 80132F58 3C078000 */       lui $a3, 0x8000
-  /* 1185DC 80132F5C 25CE2DFC */     addiu $t6, $t6, %lo(func_ovl10_80132DFC)
+  /* 1185DC 80132F5C 25CE2DFC */     addiu $t6, $t6, %lo(mnTitleRenderLogoNoIntro)
   /* 1185E0 80132F60 240FFFFF */     addiu $t7, $zero, -1
   /* 1185E4 80132F64 24090001 */     addiu $t1, $zero, 1
   /* 1185E8 80132F68 240A0001 */     addiu $t2, $zero, 1
@@ -1510,7 +1510,7 @@ glabel func_ovl10_80132F3C
   /* 118650 80132FD0 03E00008 */        jr $ra
   /* 118654 80132FD4 00000000 */       nop
 
-glabel func_ovl10_80132FD8
+glabel mnTitleCreateLogo
   /* 118658 80132FD8 27BDFF98 */     addiu $sp, $sp, -0x68
   /* 11865C 80132FDC 3C0E800A */       lui $t6, %hi((gSceneData + 0x1))
   /* 118660 80132FE0 91CE4AD1 */       lbu $t6, %lo((gSceneData + 0x1))($t6)
@@ -1526,7 +1526,7 @@ glabel func_ovl10_80132FD8
   /* 118688 80133008 F7B60040 */      sdc1 $f22, 0x40($sp)
   /* 11868C 8013300C 11C10005 */       beq $t6, $at, .L80133024
   /* 118690 80133010 F7B40038 */      sdc1 $f20, 0x38($sp)
-  /* 118694 80133014 0C04CBCF */       jal func_ovl10_80132F3C
+  /* 118694 80133014 0C04CBCF */       jal mnTitleCreateLogoNoIntro
   /* 118698 80133018 00000000 */       nop
   /* 11869C 8013301C 1000006C */         b .L801331D0
   /* 1186A0 80133020 8FBF0064 */        lw $ra, 0x64($sp)
@@ -1570,8 +1570,8 @@ glabel func_ovl10_80132FD8
   /* 118734 801330B4 00003025 */        or $a2, $zero, $zero
   /* 118738 801330B8 0C00277D */       jal omAddGObjRenderProc
   /* 11873C 801330BC 3C078000 */       lui $a3, 0x8000
-  /* 118740 801330C0 3C058013 */       lui $a1, %hi(func_ovl10_801325D4)
-  /* 118744 801330C4 24A525D4 */     addiu $a1, $a1, %lo(func_ovl10_801325D4)
+  /* 118740 801330C0 3C058013 */       lui $a1, %hi(mnTitleAnimateGObj)
+  /* 118744 801330C4 24A525D4 */     addiu $a1, $a1, %lo(mnTitleAnimateGObj)
   /* 118748 801330C8 02402025 */        or $a0, $s2, $zero
   /* 11874C 801330CC 24060001 */     addiu $a2, $zero, 1
   /* 118750 801330D0 0C002062 */       jal omAddGObjCommonProc
@@ -1605,10 +1605,10 @@ glabel func_ovl10_80132FD8
   /* 1187BC 8013313C 3C188013 */       lui $t8, %hi(D_ovl10_801341EC)
   /* 1187C0 80133140 8F1841EC */        lw $t8, %lo(D_ovl10_801341EC)($t8)
   /* 1187C4 80133144 8EB90000 */        lw $t9, ($s5) # D_ovl10_801345A0 + 0
-  /* 1187C8 80133148 3C0D8013 */       lui $t5, %hi(func_ovl10_80132DFC)
+  /* 1187C8 80133148 3C0D8013 */       lui $t5, %hi(mnTitleRenderLogoNoIntro)
   /* 1187CC 8013314C 3C098013 */       lui $t1, %hi(func_ovl10_80132D5C)
   /* 1187D0 80133150 25292D5C */     addiu $t1, $t1, %lo(func_ovl10_80132D5C)
-  /* 1187D4 80133154 25AD2DFC */     addiu $t5, $t5, %lo(func_ovl10_80132DFC)
+  /* 1187D4 80133154 25AD2DFC */     addiu $t5, $t5, %lo(mnTitleRenderLogoNoIntro)
   /* 1187D8 80133158 3C058013 */       lui $a1, %hi(func_ovl10_80132EDC)
   /* 1187DC 8013315C 3C0E8000 */       lui $t6, 0x8000
   /* 1187E0 80133160 240FFFFF */     addiu $t7, $zero, -1
@@ -1652,6 +1652,7 @@ glabel func_ovl10_80132FD8
   /* 118874 801331F4 03E00008 */        jr $ra
   /* 118878 801331F8 27BD0068 */     addiu $sp, $sp, 0x68
 
+glabel func_ovl10_801331FC
   /* 11887C 801331FC 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 118880 80133200 AFB00020 */        sw $s0, 0x20($sp)
   /* 118884 80133204 3C108000 */       lui $s0, %hi(D_NF_80000001)
@@ -1676,15 +1677,15 @@ glabel func_ovl10_80132FD8
   /* 1188D0 80133250 24060001 */     addiu $a2, $zero, 1
   /* 1188D4 80133254 0C00277D */       jal omAddGObjRenderProc
   /* 1188D8 80133258 02003825 */        or $a3, $s0, $zero
-  /* 1188DC 8013325C 3C118013 */       lui $s1, %hi(D_ovl10_80134268)
+  /* 1188DC 8013325C 3C118013 */       lui $s1, %hi(dMNTitleTextureConfigs)
   /* 1188E0 80133260 3C138013 */       lui $s3, %hi(D_ovl10_801345A0)
   /* 1188E4 80133264 267345A0 */     addiu $s3, $s3, %lo(D_ovl10_801345A0)
-  /* 1188E8 80133268 26314268 */     addiu $s1, $s1, %lo(D_ovl10_80134268)
+  /* 1188E8 80133268 26314268 */     addiu $s1, $s1, %lo(dMNTitleTextureConfigs)
   /* 1188EC 8013326C 00008025 */        or $s0, $zero, $zero
   /* 1188F0 80133270 24150007 */     addiu $s5, $zero, 7
   /* 1188F4 80133274 24140001 */     addiu $s4, $zero, 1
   .L80133278:
-  /* 1188F8 80133278 8E2F0008 */        lw $t7, 8($s1) # D_ovl10_80134268 + 8
+  /* 1188F8 80133278 8E2F0008 */        lw $t7, 8($s1) # dMNTitleTextureConfigs + 8
   /* 1188FC 8013327C 8E780000 */        lw $t8, ($s3) # D_ovl10_801345A0 + 0
   /* 118900 80133280 02C02025 */        or $a0, $s6, $zero
   /* 118904 80133284 0C0333F7 */       jal gcAppendSObjWithSprite
@@ -1762,21 +1763,21 @@ glabel func_ovl10_801332E4
   /* 118A1C 8013339C 24060001 */     addiu $a2, $zero, 1
   /* 118A20 801333A0 0C00277D */       jal omAddGObjRenderProc
   /* 118A24 801333A4 3C078000 */       lui $a3, 0x8000
-  /* 118A28 801333A8 3C058013 */       lui $a1, %hi(func_ovl10_801326D4)
-  /* 118A2C 801333AC 24A526D4 */     addiu $a1, $a1, %lo(func_ovl10_801326D4)
+  /* 118A28 801333A8 3C058013 */       lui $a1, %hi(mnTitleAnimateTitle)
+  /* 118A2C 801333AC 24A526D4 */     addiu $a1, $a1, %lo(mnTitleAnimateTitle)
   /* 118A30 801333B0 02A02025 */        or $a0, $s5, $zero
   /* 118A34 801333B4 24060001 */     addiu $a2, $zero, 1
   /* 118A38 801333B8 0C002062 */       jal omAddGObjCommonProc
   /* 118A3C 801333BC 24070001 */     addiu $a3, $zero, 1
   /* 118A40 801333C0 AEB40084 */        sw $s4, 0x84($s5)
   /* 118A44 801333C4 8E890074 */        lw $t1, 0x74($s4)
-  /* 118A48 801333C8 3C128013 */       lui $s2, %hi(D_ovl10_80134268)
-  /* 118A4C 801333CC 26524268 */     addiu $s2, $s2, %lo(D_ovl10_80134268)
+  /* 118A48 801333C8 3C128013 */       lui $s2, %hi(dMNTitleTextureConfigs)
+  /* 118A4C 801333CC 26524268 */     addiu $s2, $s2, %lo(dMNTitleTextureConfigs)
   /* 118A50 801333D0 00008025 */        or $s0, $zero, $zero
   /* 118A54 801333D4 24160001 */     addiu $s6, $zero, 1
   /* 118A58 801333D8 8D330010 */        lw $s3, 0x10($t1)
   .L801333DC:
-  /* 118A5C 801333DC 8E4A0008 */        lw $t2, 8($s2) # D_ovl10_80134268 + 8
+  /* 118A5C 801333DC 8E4A0008 */        lw $t2, 8($s2) # dMNTitleTextureConfigs + 8
   /* 118A60 801333E0 8EEB0000 */        lw $t3, ($s7) # D_ovl10_801345A0 + 0
   /* 118A64 801333E4 02A02025 */        or $a0, $s5, $zero
   /* 118A68 801333E8 0C0333F7 */       jal gcAppendSObjWithSprite
@@ -1898,8 +1899,8 @@ glabel func_ovl10_80133504
   /* 118C2C 801335AC 24060001 */     addiu $a2, $zero, 1
   /* 118C30 801335B0 0C00277D */       jal omAddGObjRenderProc
   /* 118C34 801335B4 3C078000 */       lui $a3, 0x8000
-  /* 118C38 801335B8 3C058013 */       lui $a1, %hi(func_ovl10_801326A4)
-  /* 118C3C 801335BC 24A526A4 */     addiu $a1, $a1, %lo(func_ovl10_801326A4)
+  /* 118C38 801335B8 3C058013 */       lui $a1, %hi(mnTitleAnimatePressStart)
+  /* 118C3C 801335BC 24A526A4 */     addiu $a1, $a1, %lo(mnTitleAnimatePressStart)
   /* 118C40 801335C0 02202025 */        or $a0, $s1, $zero
   /* 118C44 801335C4 24060001 */     addiu $a2, $zero, 1
   /* 118C48 801335C8 0C002062 */       jal omAddGObjCommonProc
@@ -1934,6 +1935,7 @@ glabel func_ovl10_80133634
   /* 118CB4 80133634 03E00008 */        jr $ra
   /* 118CB8 80133638 00000000 */       nop
 
+glabel func_ovl10_8013363C
   /* 118CBC 8013363C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 118CC0 80133640 AFBF0014 */        sw $ra, 0x14($sp)
   /* 118CC4 80133644 8C8E007C */        lw $t6, 0x7c($a0)
@@ -2566,7 +2568,7 @@ glabel func_ovl10_80133F3C
   /* 119608 80133F88 03E00008 */        jr $ra
   /* 11960C 80133F8C 27BD0018 */     addiu $sp, $sp, 0x18
 
-glabel func_ovl10_80133F90
+glabel mnTitleInit
   /* 119610 80133F90 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 119614 80133F94 AFB10018 */        sw $s1, 0x18($sp)
   /* 119618 80133F98 AFB00014 */        sw $s0, 0x14($sp)
@@ -2579,7 +2581,7 @@ glabel func_ovl10_80133F90
   /* 119630 80133FB0 26100001 */     addiu $s0, $s0, 1
   /* 119634 80133FB4 1611FFFC */       bne $s0, $s1, .L80133FA8
   /* 119638 80133FB8 00000000 */       nop
-  /* 11963C 80133FBC 0C04D050 */       jal func_ovl10_80134140
+  /* 11963C 80133FBC 0C04D050 */       jal mnTitleLoadFiles
   /* 119640 80133FC0 00000000 */       nop
   /* 119644 80133FC4 0C04CFCF */       jal func_ovl10_80133F3C
   /* 119648 80133FC8 00000000 */       nop
@@ -2591,9 +2593,9 @@ glabel func_ovl10_80133F90
   /* 119660 80133FE0 00000000 */       nop
   /* 119664 80133FE4 0C04C73D */       jal func_ovl10_80131CF4
   /* 119668 80133FE8 00000000 */       nop
-  /* 11966C 80133FEC 0C04CADC */       jal func_ovl10_80132B70
+  /* 11966C 80133FEC 0C04CADC */       jal mnTitleCreateFire
   /* 119670 80133FF0 00000000 */       nop
-  /* 119674 80133FF4 0C04CBF6 */       jal func_ovl10_80132FD8
+  /* 119674 80133FF4 0C04CBF6 */       jal mnTitleCreateLogo
   /* 119678 80133FF8 00000000 */       nop
   /* 11967C 80133FFC 0C04CCB9 */       jal func_ovl10_801332E4
   /* 119680 80134000 00000000 */       nop
@@ -2628,7 +2630,7 @@ glabel func_ovl10_80133F90
   /* 1196EC 8013406C 03E00008 */        jr $ra
   /* 1196F0 80134070 27BD0020 */     addiu $sp, $sp, 0x20
 
-glabel func_ovl10_80134074
+glabel mnTitleSetupDisplayList
   /* 1196F4 80134074 8C830000 */        lw $v1, ($a0)
   /* 1196F8 80134078 3C188013 */       lui $t8, %hi(D_ovl10_80134348)
   /* 1196FC 8013407C 27184348 */     addiu $t8, $t8, %lo(D_ovl10_80134348)
@@ -2649,7 +2651,7 @@ glabel func_ovl10_80134098
   /* 119730 801340B0 03E00008 */        jr $ra
   /* 119734 801340B4 00000000 */       nop
 
-glabel title_screen_entry
+glabel mnTitleStartScene
   /* 119738 801340B8 3C0E800A */       lui $t6, %hi(D_NF_800A5240)
   /* 11973C 801340BC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 119740 801340C0 3C048013 */       lui $a0, %hi(D_ovl10_80134370)
@@ -2686,7 +2688,7 @@ glabel title_screen_entry
   /* 1197B8 80134138 03E00008 */        jr $ra
   /* 1197BC 8013413C 00000000 */       nop
 
-glabel func_ovl10_80134140
+glabel mnTitleLoadFiles
   /* 1197C0 80134140 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 1197C4 80134144 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 1197C8 80134148 3C0F0000 */       lui $t7, %hi(D_NF_00000854)

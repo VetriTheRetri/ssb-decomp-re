@@ -95,7 +95,7 @@ void start_scene_manager(UNUSED u32 set) {
                 load_overlay(&D_800A3070[10]);
                 load_overlay(&D_800A3070[8]);
                 load_overlay(&D_800A3070[9]);
-                title_screen_entry();
+                mnTitleStartScene();
                 break;
             case 2:
                 load_overlay(&D_800A3070[12]);

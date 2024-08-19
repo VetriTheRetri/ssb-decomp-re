@@ -15,7 +15,7 @@ glabel D_ovl10_801341EC
 glabel D_ovl10_801341F0
   .incbin "ovl10.raw.bin", 0x26F0, 0x78
 
-glabel D_ovl10_80134268
+glabel dMNTitleTextureConfigs
   .incbin "ovl10.raw.bin", 0x2768, 0x3C
 
 glabel D_ovl10_801342A4
@@ -74,10 +74,10 @@ glabel D_ovl10_8013438C
   /* 2894 119A14 80134394 */  .4byte func_8000A340
   /* 2898 119A18 80134398 */  .4byte D_NF_801345B0
   .incbin "ovl10.raw.bin", 0x289C, 0x28
-  /* 28C4 119A44 801343C4 */  .4byte func_ovl10_80134074
+  /* 28C4 119A44 801343C4 */  .4byte mnTitleSetupDisplayList
   /* 28C8 119A48 801343C8 */  .4byte update_contdata
   .incbin "ovl10.raw.bin", 0x28CC, 0x48
-  /* 2914 119A94 80134414 */  .4byte func_ovl10_80133F90
+  /* 2914 119A94 80134414 */  .4byte mnTitleInit
   .incbin "ovl10.raw.bin", 0x2918, 0x8
 
 glabel D_ovl10_80134420

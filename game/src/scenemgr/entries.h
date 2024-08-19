@@ -3,7 +3,7 @@
 
 // these will eventually find a home in their actual headers
 
-extern void title_screen_entry(void);         // ovl 10
+extern void mnTitleStartScene(void);         // ovl 10
 extern void mnNoControllerStartScene(void);             // ovl 11
 extern void mnDebugStageSelectStartScene(void);            // ovl 12
 extern void mnDebugCubeStartScene(void);         // ovl 13

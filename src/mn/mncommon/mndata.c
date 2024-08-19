@@ -256,7 +256,7 @@ void mnDataMakeCharactersSObj(void)
         posy = 57;
     }
 
-    sMNDataCharactersGObj = gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, NULL, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNDataCharactersGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -296,7 +296,7 @@ void mnDataMakeVSRecordSObj(void)
         posy = 126;
     }
 
-    sMNDataVSRecordGObj = gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, NULL, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNDataVSRecordGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -323,7 +323,7 @@ void mnDataMakeSoundTestSObj(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMNDataSoundTestGObj = gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, NULL, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNDataSoundTestGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -375,7 +375,7 @@ void mnDataMakeMenuGObj(void)
         { 113.0F, 194.0F }
     };
 
-    sMNDataMenuGObj = gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, NULL, 5, GOBJ_LINKORDER_DEFAULT);
+    sMNDataMenuGObj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_LINKORDER_DEFAULT);
 }
 
 // 0x80132164
@@ -401,7 +401,7 @@ void mnDataMakeHeaderSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, NULL, 3, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjRenderProc(gobj, mnDataHeaderProcRender, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -436,7 +436,7 @@ void mnDataMakeDecalSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, NULL, 2, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNDataFiles[0], &lMNCommonCircleSprite));
@@ -488,7 +488,7 @@ void mnDataMakeLink3Camera(void)
     (
         func_8000B93C
         (
-            nOMObjCommonKindMenuElement,
+            1,
             NULL,
             1,
             GOBJ_LINKORDER_DEFAULT,
@@ -513,7 +513,7 @@ void mnDataMakeLink2Camera(void)
     (
         func_8000B93C
         (
-            nOMObjCommonKindMenuElement,
+            1,
             NULL,
             1,
             GOBJ_LINKORDER_DEFAULT,
@@ -538,7 +538,7 @@ void mnDataMakeLink1Camera(void)
     (
         func_8000B93C
         (
-            nOMObjCommonKindMenuElement,
+            1,
             NULL,
             1,
             GOBJ_LINKORDER_DEFAULT,
@@ -563,7 +563,7 @@ void mnDataMakeLink0Camera(void)
     (
         func_8000B93C
         (
-            nOMObjCommonKindMenuElement,
+            1,
             NULL,
             1,
             GOBJ_LINKORDER_DEFAULT,
@@ -797,7 +797,7 @@ void mnDataProcStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, mnDataProcRun, 0, GOBJ_LINKORDER_DEFAULT);
+    gcMakeGObjSPAfter(0, mnDataProcRun, 0, GOBJ_LINKORDER_DEFAULT);
     func_8000B9FC(0, 0x80000000, 0x64, 0, 0);
 
     mnDataInitVars();

@@ -123,7 +123,7 @@ void func_80006FB8(s32 width, s32 height, u32 arg2)
 
 void func_80007024(syDisplaySetup *display_setup)
 {
-    syDisplayUpdateFramebufs(display_setup->framebuf1, display_setup->framebuf2, display_setup->framebuf3);
+    syDisplayUpdateFramebufs(display_setup->framebuf0, display_setup->framebuf1, display_setup->framebuf2);
     gSYDisplayZBuffer = display_setup->zbuffer;
     func_80006FB8(display_setup->width, display_setup->height, display_setup->unk18);
 }

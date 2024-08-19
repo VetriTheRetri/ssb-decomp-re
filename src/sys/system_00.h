@@ -4,7 +4,9 @@
 #include <sys/thread3.h>
 #include <ssb_types.h>
 
-#define SYDISPLAY_DEFINE_DEFAULT() { gSCSubsysFramebuffer1, gSCSubsysFramebuffer2, gSCSubsysFramebuffer3, NULL, 320, 240, 0x16A99 }
+#define SYDISPLAY_DEFINE_FRAMEBUF_ADDR(width, height, n) (0x80400000 - (((width) * (height) * sizeof(u16)) * (3 - (n))))
+
+#define SYDISPLAY_DEFINE_DEFAULT() { gSCSubsysFramebuffer0, gSCSubsysFramebuffer1, gSCSubsysFramebuffer2, NULL, 320, 240, 0x16A99 }
 
 #define syDisplayGetZBuffer(start) ((u16*) ((uintptr_t)&scmanager_BSS_END - (start)))
 
@@ -13,9 +15,9 @@
  */
 typedef struct syDisplaySetup
 {
-    /* 0x00 */ void *framebuf1;
-    /* 0x04 */ void *framebuf2;
-    /* 0x08 */ void *framebuf3;
+    /* 0x00 */ void *framebuf0;
+    /* 0x04 */ void *framebuf1;
+    /* 0x08 */ void *framebuf2;
     /* 0x0C */ u16 *zbuffer;
     /* 0x10 */ u32 width;
     /* 0x14 */ u32 height;
@@ -25,9 +27,10 @@ typedef struct syDisplaySetup
 } syDisplaySetup; // size >= 0x18
 
 extern uintptr_t scmanager_BSS_END;         // Z-Buffer pointer = this - 6400 (or 12800 in ovl59)
+
+extern u16 gSCSubsysFramebuffer0[/* */];
 extern u16 gSCSubsysFramebuffer1[/* */];
 extern u16 gSCSubsysFramebuffer2[/* */];
-extern u16 gSCSubsysFramebuffer3[/* */];
 
 extern u16 *gSYDisplayZBuffer;
 // zbuffer pixel size?

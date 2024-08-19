@@ -266,7 +266,7 @@ void mnOptionMakeSoundOptionSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMNOptionSoundOptionGObj = gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, NULL, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNOptionSoundOptionGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionMonoTextSprite));
@@ -306,7 +306,7 @@ void mnOptionMakeSoundTextSObj(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMNOptionSoundGObj = gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, NULL, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNOptionSoundGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     mnOptionMakeOptionTabSObjs(gobj, 113.0F, 42.0F, 17);
@@ -331,7 +331,7 @@ void mnOptionMakeScreenAdjustSObj(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMNOptionScreenAdjustGObj = gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, NULL, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNOptionScreenAdjustGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -358,7 +358,7 @@ void mnOptionMakeBackupClearSObj(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMNOptionBackupClearGObj = gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, NULL, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNOptionBackupClearGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
     mnOptionMakeOptionTabSObjs(gobj, 69.0F, 136.0F, 17);
@@ -409,7 +409,7 @@ void mnOptionMakeMenuGObj(void)
         { 103.0F, 195.0F }
     };
 
-    sMNOptionMenuGObj = gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, NULL, 5, GOBJ_LINKORDER_DEFAULT);
+    sMNOptionMenuGObj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_LINKORDER_DEFAULT);
 }
 
 // 0x80132248
@@ -435,7 +435,7 @@ void mnOptionMakeHeaderSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, NULL, 3, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjRenderProc(gobj, mnOptionHeaderProcRender, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -470,7 +470,7 @@ void mnOptionMakeDecalSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, NULL, 2, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonCircleSprite));
@@ -603,7 +603,7 @@ void mnOptionMakeSoundUnderlineGObj(void)
     (
         gcMakeGObjSPAfter
         (
-            nOMObjCommonKindMenuDefault,
+            0,
             NULL,
             5,
             GOBJ_LINKORDER_DEFAULT
@@ -622,7 +622,7 @@ void mnOptionMakeLink3Camera(void)
     (
         func_8000B93C
         (
-            nOMObjCommonKindMenuElement,
+            1,
             NULL,
             1,
             GOBJ_LINKORDER_DEFAULT,
@@ -647,7 +647,7 @@ void mnOptionMakeLink4Camera(void)
     (
         func_8000B93C
         (
-            nOMObjCommonKindMenuElement,
+            1,
             NULL,
             1,
             GOBJ_LINKORDER_DEFAULT,
@@ -672,7 +672,7 @@ void mnOptionMakeLink2Camera(void)
     (
         func_8000B93C
         (
-            nOMObjCommonKindMenuElement,
+            1,
             NULL,
             1,
             GOBJ_LINKORDER_DEFAULT,
@@ -697,7 +697,7 @@ void mnOptionMakeLink1Camera(void)
     (
         func_8000B93C
         (
-            nOMObjCommonKindMenuElement,
+            1,
             NULL,
             1,
             GOBJ_LINKORDER_DEFAULT,
@@ -722,7 +722,7 @@ void mnOptionMakeLink0Camera(void)
     (
         func_8000B93C
         (
-            nOMObjCommonKindMenuElement,
+            1,
             NULL,
             1,
             GOBJ_LINKORDER_DEFAULT,
@@ -1009,7 +1009,7 @@ void mnOptionProcStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, mnOptionProcRun, 0, GOBJ_LINKORDER_DEFAULT);
+    gcMakeGObjSPAfter(0, mnOptionProcRun, 0, GOBJ_LINKORDER_DEFAULT);
     func_8000B9FC(0, 0x80000000, 0x64, 0, 0);
     mnOptionInitVars();
     mnOptionMakeLink0Camera();

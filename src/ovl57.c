@@ -266,6 +266,6 @@ void mnCongraStartScene()
 	D_ovl57_80132208.zbuffer = syDisplayGetZBuffer(6400);
 	func_80007024(&D_ovl57_80132208);
 	D_ovl57_80132224.arena_size = (0x80325400 - (uintptr_t)&ovl57_BSS_END);
-	gsGTLSceneInit(&D_ovl57_80132224); subsys_arena_lo = (uintptr_t)&gSCSubsysFramebuffer1; // WARNING: Newline memes!
+	gsGTLSceneInit(&D_ovl57_80132224); subsys_arena_lo = (uintptr_t)&gSCSubsysFramebuffer0; // WARNING: Newline memes!
 	while ((uintptr_t)subsys_arena_lo < 0x80400000) { *subsys_arena_lo++ = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01); }
 }

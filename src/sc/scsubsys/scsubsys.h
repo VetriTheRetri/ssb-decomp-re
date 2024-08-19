@@ -6,9 +6,9 @@
 #include <PR/gbi.h>
 #include <sc/scdef.h>
 
+extern u16 gSCSubsysFramebuffer0[/* */];
 extern u16 gSCSubsysFramebuffer1[/* */];
 extern u16 gSCSubsysFramebuffer2[/* */];
-extern u16 gSCSubsysFramebuffer3[/* */];
 
 extern void scSubsysFighterSetLightParams(f32 light_angle_x, f32 light_angle_y, u8 r, u8 g, u8 b, u8 a);
 extern f32 scSubsysFighterGetLightAngleX(void);

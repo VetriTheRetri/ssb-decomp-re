@@ -3,8 +3,6 @@
 
 typedef enum GObjKind
 {
-    nOMObjCommonKindMenuDefault,        // 0000
-    nOMObjCommonKindMenuElement,        // 0001
     nOMObjCommonKindFighter = 1000,     // 1000
     nOMObjCommonKindFighterParts,       // 1001
     nOMObjCommonKindMainCamera = 1002,  // 1002

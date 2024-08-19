@@ -172,7 +172,7 @@ extern void syMatrixRotRpyR_f(Mtx4f *mf, f32 r, f32 p, f32 h);
 extern void syMatrixRotRpyR(Mtx *m, f32 r, f32 p, f32 h);
 extern void syMatrixTraRotRpyR_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h);
 extern void syMatrixTraRotRpyR(Mtx *m, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h);
-extern void syMatrixTraRotRpyRSca_f(
+extern void syMatrixTraRotRpyRScaF(
     Mtx4f *mf,
     f32 dx,
     f32 dy,

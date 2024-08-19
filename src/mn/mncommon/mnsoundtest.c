@@ -1070,7 +1070,7 @@ SObj* mnSoundTestMakeHeaderSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuElement, NULL, 2, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(1, NULL, 2, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -1153,7 +1153,7 @@ SObj* mnSoundTestMakeMusicSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuElement, NULL, 3, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(1, NULL, 3, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     gobj->user_data.s = nMNSoundTestOptionMusic;
@@ -1163,7 +1163,7 @@ SObj* mnSoundTestMakeMusicSObjs(void)
     (
         gcMakeGObjSPAfter
         (
-            nOMObjCommonKindMenuElement,
+            1,
             NULL,
             3,
             GOBJ_LINKORDER_DEFAULT
@@ -1220,7 +1220,7 @@ SObj* mnSoundTestMakeSoundSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuElement, NULL, 3, GOBJ_DLLINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(1, NULL, 3, GOBJ_DLLINKORDER_DEFAULT);
     gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjCommonProc(gobj, mnSoundTestOptionThreadUpdate, nOMObjProcessKindThread, 1);
 
@@ -1230,7 +1230,7 @@ SObj* mnSoundTestMakeSoundSObjs(void)
     (
         gcMakeGObjSPAfter
         (
-            nOMObjCommonKindMenuElement,
+            1,
             NULL,
             3,
             GOBJ_LINKORDER_DEFAULT
@@ -1287,7 +1287,7 @@ SObj* mnSoundTestMakeVoiceSObjs(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuElement, NULL, 3, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(1, NULL, 3, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjCommonProc(gobj, mnSoundTestOptionThreadUpdate, nOMObjProcessKindThread, 1);
 
@@ -1297,7 +1297,7 @@ SObj* mnSoundTestMakeVoiceSObjs(void)
     (
         gcMakeGObjSPAfter
         (
-            nOMObjCommonKindMenuElement,
+            1,
             NULL,
             3,
             GOBJ_LINKORDER_DEFAULT
@@ -1437,7 +1437,7 @@ SObj* mnSoundTestMakeBFunctionSObj(GObj *gobj)
 // 0x80132EC8
 void mnSoundTestMakeButtonSObjs(void)
 {
-    GObj *gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuElement, NULL, 3, GOBJ_LINKORDER_DEFAULT);
+    GObj *gobj = gcMakeGObjSPAfter(1, NULL, 3, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
     mnSoundTestMakeAButtonSObj(gobj);
@@ -1584,20 +1584,20 @@ void mnSoundTestSelectIDThreadUpdate(GObj *gobj)
 // 0x80133398
 void mnSoundTestMakeSelectIDGObjs(void)
 {
-    GObj *gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuElement, NULL, 5, GOBJ_LINKORDER_DEFAULT);
+    GObj *gobj = gcMakeGObjSPAfter(1, NULL, 5, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjCommonProc(gobj, mnSoundTestSelectIDThreadUpdate, nOMObjProcessKindThread, 1);
 
     gobj->user_data.s = nMNSoundTestOptionMusic;
 
-    gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuElement, NULL, 6, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(1, NULL, 6, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjCommonProc(gobj, mnSoundTestSelectIDThreadUpdate, nOMObjProcessKindThread, 1);
 
     gobj->user_data.s = nMNSoundTestOptionSound;
 
-    gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuElement, NULL, 7, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(1, NULL, 7, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjCommonProc(gobj, mnSoundTestSelectIDThreadUpdate, nOMObjProcessKindThread, 1);
 
@@ -1644,7 +1644,7 @@ void mnSoundTestArrowsThreadUpdate(GObj *gobj)
 // 0x801335C8
 void mnSoundTestMakeArrowSObjs(void)
 {
-    GObj *gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuElement, NULL, 2, GOBJ_LINKORDER_DEFAULT);
+    GObj *gobj = gcMakeGObjSPAfter(1, NULL, 2, GOBJ_LINKORDER_DEFAULT);
     SObj *sobj;
 
     gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
@@ -1755,7 +1755,7 @@ void mnSoundTestInitVars(void)
 // 0x801338F8
 void mnSoundTestProcStart(void)
 {
-    gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, mnSoundTestProcRun, 1, GOBJ_LINKORDER_DEFAULT);
+    gcMakeGObjSPAfter(0, mnSoundTestProcRun, 1, GOBJ_LINKORDER_DEFAULT);
     func_8000B9FC(4, 0x80000000, 0x64, 2, 0xFF);
     mnSoundTestSetupFiles();
     mnSoundTestInitVars();

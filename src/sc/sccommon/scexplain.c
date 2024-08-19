@@ -880,7 +880,7 @@ void scExplainStartScene(void)
 
     set_lcg_seed_ptr(&dSCExplainRandomSeed1);
 
-    dSCExplainGtlSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer1 - (uintptr_t)&ovl63_BSS_END);
+    dSCExplainGtlSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl63_BSS_END);
     dSCExplainGtlSetup.proc_start = scExplainProcStart;
 
     func_800A2698(&dSCExplainGtlSetup);

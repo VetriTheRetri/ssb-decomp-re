@@ -2860,7 +2860,7 @@ void sc1PGameStartScene(void)
     dSC1PGameDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dSC1PGameDisplaySetup);
 
-    dSC1PGameGtlSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer1 - (uintptr_t)&ovl65_BSS_END);
+    dSC1PGameGtlSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl65_BSS_END);
     dSC1PGameGtlSetup.proc_start = sc1PGameProcStart;
     func_800A2698(&dSC1PGameGtlSetup);
     sc1PGameInitBonusStats();

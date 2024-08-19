@@ -15,6 +15,25 @@
 #define GMHITCOLLISION_FLAG_ALL (GMHITCOLLISION_FLAG_FIGHTER | GMHITCOLLISION_FLAG_WEAPON | GMHITCOLLISION_FLAG_ITEM)
 #define GMHITRECORD_NUM_MAX 4
 
+#define GMCREDITS_COLON_PARAGRAPH_FONT_INDEX              0x34
+#define GMCREDITS_PERIOD_PARAGRAPH_FONT_INDEX             0x3F
+#define GMCREDITS_DASH_PARAGRAPH_FONT_INDEX               0x40
+#define GMCREDITS_COMMA_PARAGRAPH_FONT_INDEX              0x41
+#define GMCREDITS_AMPERSAND_PARAGRAPH_FONT_INDEX          0x42
+#define GMCREDITS_DOUBLE_QUOTES_PARAGRAPH_FONT_INDEX      0x43
+#define GMCREDITS_SLASH_PARAGRAPH_FONT_INDEX              0x44
+#define GMCREDITS_APOSTROPHE_PARAGRAPH_FONT_INDEX         0x45
+#define GMCREDITS_QUESTION_MARK_PARAGRAPH_FONT_INDEX      0x46
+#define GMCREDITS_OPEN_PARENTHESIS_PARAGRAPH_FONT_INDEX   0x47
+#define GMCREDITS_CLOSE_PARENTHESIS_PARAGRAPH_FONT_INDEX  0x48
+#define GMCREDITS_E_ACCENT_PARAGRAPH_FONT_INDEX           0x49
+
+// Both title and paragraph fonts use same indices for letters (A-Za-z)
+#define GMCREDITS_ASCII_LETTER_TO_FONT_INDEX(c) ((c) > 'Z' ? ((c) - 0x47) : ((c) - 0x41))
+
+// Only paragraph font has all ASCII numbers. Title font has only number 4 at 0x37
+#define GMCREDITS_ASCII_NUMBER_TO_PARAGRAPH_FONT_INDEX(c) (0x35 + ('9' - (c)))
+
 #define gmColEventAdvance(event, type) ((event) = (void*)((uintptr_t)event + sizeof(type)))
 
 #define gmColEventCast(event, type) ((type*)(event))
@@ -248,6 +267,23 @@ typedef enum gmRumbleEventKind
 
 } gmRumbleEventKind;
 
+typedef enum gmCreditsCompany
+{
+	nGMCreditsCompanyNull = -1,
+	nGMCreditsCompanyHAL,
+	nGMCreditsCompanyNINTENDO,
+	nGMCreditsCompanyCreatures,
+	nGMCreditsCompanyGAMEFREAK,
+	nGMCreditsCompanyRare,
+	nGMCreditsCompanyMickeys,
+	nGMCreditsCompanyKENProd,
+	nGMCreditsCompanyAONIProd,
+	nGMCreditsCompanyARTSVISION,
+	nGMCreditsCompanyEZAKIProd,
+	nGMCreditsCompanyNOA
+
+} gmCreditsCompany;
+
 typedef struct gmHitCollisionFlags          gmHitCollisionFlags;
 typedef struct gmHitRecord                  gmHitRecord;
 typedef union  gmStatFlags                  gmStatFlags;
@@ -282,5 +318,13 @@ typedef struct gmRumbleEventDefault         gmRumbleEventDefault;
 typedef struct gmRumbleScript               gmRumbleScript;
 typedef struct gmRumbleLink                 gmRumbleLink;
 typedef struct gmRumblePlayer               gmRumblePlayer;
+typedef struct gmCreditsMatrix				gmCreditsMatrix;
+typedef struct gmCreditsText				gmCreditsText;
+typedef struct gmCreditsSprite				gmCreditsSprite;
+typedef struct gmCreditsStaff				gmCreditsStaff;
+typedef struct gmCreditsName				gmCreditsName;
+typedef struct gmCreditsJob					gmCreditsJob;
+typedef struct gmCreditsSetup				gmCreditsSetup;
+typedef struct gmCreditsProjection			gmCreditsProjection;
 
 #endif

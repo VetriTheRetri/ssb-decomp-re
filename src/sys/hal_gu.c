@@ -1115,7 +1115,7 @@ void syMatrixTraRotRpyR(Mtx *m, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h) {
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_gu/syMatrixTraRotRpyR.s")
 #endif
 
-void syMatrixTraRotRpyRSca_f(
+void syMatrixTraRotRpyRScaF(
     Mtx4f *mf,
     f32 dx,
     f32 dy,

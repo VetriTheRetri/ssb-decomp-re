@@ -714,7 +714,7 @@ void scAutoDemoStartScene(void)
 
 	func_80007024(&dSCAutoDemoDisplaySetup);
 
-	dSCAutoDemoGtlSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer1 - (uintptr_t)&ovl64_BSS_END);
+	dSCAutoDemoGtlSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl64_BSS_END);
 	dSCAutoDemoGtlSetup.proc_start = scAutoDemoProcStart;
 
 	func_800A2698(&dSCAutoDemoGtlSetup);

@@ -1279,12 +1279,13 @@ segments:
 
   - name: ovl60
     type: code
-    start: 0x11f2b0
+    start: 0x11F2B0
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x11f2b0, asm, ovl60]
-      - [0x120DD0, data, ovl60]
+      - [0x11F2B0, c, mn/mncommon/mnoption]
+      - [0x120DD0, .data, mn/mncommon/mnoption]
+      - { start: auto, type: .bss, name: mn/mncommon/mnoption, vram: 0x801337A0 }
 
   - name: ovl61
     type: code

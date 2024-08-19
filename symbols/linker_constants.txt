@@ -1070,6 +1070,15 @@ lMNCommonPaperTearSprite = 0x00002A30;
 lMNCommonSmashLogoSprite = 0x000031F8;
 lMNCommonCircleSprite = 0x00018000;
 
+lMNOptionMonoTextSprite = 0x000071F8;
+lMNOptionStereoTextSprite = 0x000073A8;
+lMNOptionSoundTextSprite = 0x00007628;
+lMNOptionScreenAdjustTextSprite = 0x00008138;
+lMNOptionBackupClearTextSprite = 0x00008780;
+lMNOptionHeaderTextSprite = 0x00009288;
+lMNOptionKnobSprite = 0x0000B958;
+lMNOptionSoundSlashSprite = 0x0000BA28;
+
 lMNDataCharacterOptionSprite = 0x000014E0;
 lMNDataVSRecordOptionSprite = 0x00001900;
 lMNDataSoundTestOptionSprite = 0x00001D20;

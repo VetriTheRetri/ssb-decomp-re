@@ -15,7 +15,7 @@ mnDataMakeLink2Camera = 0x801325D4; // segment:ovl61
 mnDataMakeLink1Camera = 0x80132674; // segment:ovl61
 mnDataMakeLink0Camera = 0x80132714; // segment:ovl61
 mnDataInitVars = 0x801327B4; // segment:ovl61
-mnDataMainProcUpdate = 0x80132874; // segment:ovl61
+mnDataProcRun = 0x80132874; // segment:ovl61
 mnDataProcStart = 0x80132D64; // segment:ovl61
 mnDataStartScene = 0x80132EC0; // segment:ovl61
 

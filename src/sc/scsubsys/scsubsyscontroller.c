@@ -32,7 +32,7 @@ sb32 scSubsysControllerCheckExpectStatus(s32 status)
 }
 
 // 0x8039076C - Get first controller pressing expected button(s)
-s32 scSubsysControllerCheckAllTapButtons(u32 buttons)
+s32 scSubsysControllerGetPlayerTapButtons(u32 buttons)
 {
     s32 i;
 
@@ -47,7 +47,7 @@ s32 scSubsysControllerCheckAllTapButtons(u32 buttons)
 }
 
 // 0x80390804
-s32 scSubsysControllerCheckAllHoldButtons(u32 buttons)
+s32 scSubsysControllerGetPlayerHoldButtons(u32 buttons)
 {
     s32 i;
 
@@ -62,7 +62,7 @@ s32 scSubsysControllerCheckAllHoldButtons(u32 buttons)
 }
 
 // 0x8039089C
-s32 scSubsysControllerCheckAllStickLR(s8 range, sb32 right_or_left)
+s32 scSubsysControllerGetPlayerStickLR(s8 range, sb32 right_or_left)
 {
     s32 i;
     
@@ -87,7 +87,7 @@ s32 scSubsysControllerCheckAllStickLR(s8 range, sb32 right_or_left)
 }
 
 // 0x80390950
-s32 scSubsysControllerCheckAllStickUD(s8 range, sb32 up_or_down)
+s32 scSubsysControllerGetPlayerStickUD(s8 range, sb32 up_or_down)
 {
     s32 i;
     
@@ -112,7 +112,7 @@ s32 scSubsysControllerCheckAllStickUD(s8 range, sb32 up_or_down)
 }
 
 // 0x80390A04
-sb32 scSubsysControllerCheckAllStickInRangeLR(s32 range_l_min, s32 range_r_min)
+sb32 scSubsysControllerGetPlayerStickInRangeLR(s32 range_l_min, s32 range_r_min)
 {
     s32 i;
 
@@ -142,7 +142,7 @@ sb32 scSubsysControllerCheckAllStickInRangeLR(s32 range_l_min, s32 range_r_min)
 }
 
 // 0x80390AC0
-sb32 scSubsysControllerCheckAllStickInRangeUD(s32 range_d_min, s32 range_u_min)
+sb32 scSubsysControllerGetPlayerStickInRangeUD(s32 range_d_min, s32 range_u_min)
 {
     s32 i;
 
@@ -176,10 +176,10 @@ sb32 scSubsysControllerCheckNoInputAll(void)
 {
     if
     (
-        (scSubsysControllerCheckAllStickInRangeLR(-20, 20) != FALSE) && 
-        (scSubsysControllerCheckAllStickInRangeUD(-20, 20) != FALSE) && 
+        (scSubsysControllerGetPlayerStickInRangeLR(-20, 20) != FALSE) && 
+        (scSubsysControllerGetPlayerStickInRangeUD(-20, 20) != FALSE) && 
         (
-            scSubsysControllerCheckAllHoldButtons
+            scSubsysControllerGetPlayerHoldButtons
             (
                 A_BUTTON   | B_BUTTON   | START_BUTTON | 
                 L_TRIG     | R_TRIG     | Z_TRIG       |

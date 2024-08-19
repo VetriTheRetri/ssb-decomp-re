@@ -122,7 +122,7 @@ void mnN64ActorProcUpdate(GObj *gobj)
 	if (sMNN64SkipAllowWait != 0)
 		sMNN64SkipAllowWait--;
 
-	if ((sMNN64SkipAllowWait == 0) && (scSubsysControllerCheckAllTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE))
+	if ((sMNN64SkipAllowWait == 0) && (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE))
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = nSCKindTitle;

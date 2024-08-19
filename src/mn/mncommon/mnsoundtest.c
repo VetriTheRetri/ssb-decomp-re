@@ -802,10 +802,10 @@ void mnSoundTestUpdateControllerInputs(void)
     }
     if
     (
-        (scSubsysControllerCheckAllStickInRangeLR(-32, 32) != FALSE) &&
-        (scSubsysControllerCheckAllStickInRangeUD(-32, 32) != FALSE) &&
-        (scSubsysControllerCheckAllHoldButtons(U_JPAD | R_JPAD | R_TRIG | U_CBUTTONS | R_CBUTTONS) == FALSE) &&
-        (scSubsysControllerCheckAllHoldButtons(D_JPAD | L_JPAD | L_TRIG | D_CBUTTONS | L_CBUTTONS) == FALSE)
+        (scSubsysControllerGetPlayerStickInRangeLR(-32, 32) != FALSE) &&
+        (scSubsysControllerGetPlayerStickInRangeUD(-32, 32) != FALSE) &&
+        (scSubsysControllerGetPlayerHoldButtons(U_JPAD | R_JPAD | R_TRIG | U_CBUTTONS | R_CBUTTONS) == FALSE) &&
+        (scSubsysControllerGetPlayerHoldButtons(D_JPAD | L_JPAD | L_TRIG | D_CBUTTONS | L_CBUTTONS) == FALSE)
     )
     {
         sMNSoundTestOptionChangeWait = 0;
@@ -976,7 +976,7 @@ void mnSoundTestUpdateFunctions(void)
     }
     else auSetBGMVolume(0, 0x7000);
 
-    if (scSubsysControllerCheckAllTapButtons(A_BUTTON) != FALSE)
+    if (scSubsysControllerGetPlayerTapButtons(A_BUTTON) != FALSE)
     {
         switch (sMNSoundTestOption)
         {
@@ -1000,12 +1000,12 @@ void mnSoundTestUpdateFunctions(void)
             break;
         }
     }
-    else if (scSubsysControllerCheckAllTapButtons(Z_TRIG) != FALSE)
+    else if (scSubsysControllerGetPlayerTapButtons(Z_TRIG) != FALSE)
     {
         auStopBGM();
         func_800266A0_272A0();
     }
-    else if (scSubsysControllerCheckAllTapButtons(START_BUTTON) != FALSE)
+    else if (scSubsysControllerGetPlayerTapButtons(START_BUTTON) != FALSE)
     {
         auSetBGMVolumeSmooth(0, 0, 120);
         sMNSoundTestFadeOutWait = 120;
@@ -1014,11 +1014,11 @@ void mnSoundTestUpdateFunctions(void)
 }
 
 // 0x80132244
-void mnSoundTestMenuProcRun(GObj *gobj)
+void mnSoundTestProcRun(GObj *gobj)
 {
     mnSoundTestUpdateOptionColors();
 
-    if (scSubsysControllerCheckAllTapButtons(B_BUTTON) != FALSE)
+    if (scSubsysControllerGetPlayerTapButtons(B_BUTTON) != FALSE)
     {
         gSceneData.scene_previous = gSceneData.scene_current;
         gSceneData.scene_current = nSCKindData;
@@ -1755,7 +1755,7 @@ void mnSoundTestInitVars(void)
 // 0x801338F8
 void mnSoundTestProcStart(void)
 {
-    gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, mnSoundTestMenuProcRun, 1, GOBJ_LINKORDER_DEFAULT);
+    gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, mnSoundTestProcRun, 1, GOBJ_LINKORDER_DEFAULT);
     func_8000B9FC(4, 0x80000000, 0x64, 2, 0xFF);
     mnSoundTestSetupFiles();
     mnSoundTestInitVars();

@@ -617,7 +617,7 @@ void mnDataInitVars(void)
 }
 
 // 0x80132874
-void mnDataMainProcUpdate(GObj *gobj)
+void mnDataProcRun(GObj *gobj)
 {
     GObj *select_gobj;
     s32 stick_range;
@@ -656,15 +656,15 @@ void mnDataMainProcUpdate(GObj *gobj)
         }
         if
         (
-            (scSubsysControllerCheckAllStickInRangeLR(-20, 20) != FALSE) &&
-            (scSubsysControllerCheckAllStickInRangeUD(-20, 20) != FALSE) &&
-            (scSubsysControllerCheckAllHoldButtons(U_JPAD | U_CBUTTONS) == FALSE) &&
-            (scSubsysControllerCheckAllHoldButtons(D_JPAD | D_CBUTTONS) == FALSE)
+            (scSubsysControllerGetPlayerStickInRangeLR(-20, 20) != FALSE) &&
+            (scSubsysControllerGetPlayerStickInRangeUD(-20, 20) != FALSE) &&
+            (scSubsysControllerGetPlayerHoldButtons(U_JPAD | U_CBUTTONS) == FALSE) &&
+            (scSubsysControllerGetPlayerHoldButtons(D_JPAD | D_CBUTTONS) == FALSE)
         )
         {
             sMNDataOptionChangeWait = 0;
         }
-        if (scSubsysControllerCheckAllTapButtons(A_BUTTON | START_BUTTON) != FALSE)
+        if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | START_BUTTON) != FALSE)
         {
             switch (sMNDataOption)
             {
@@ -699,7 +699,7 @@ void mnDataMainProcUpdate(GObj *gobj)
                 return;
             }
         }
-        if (scSubsysControllerCheckAllTapButtons(B_BUTTON) != FALSE)
+        if (scSubsysControllerGetPlayerTapButtons(B_BUTTON) != FALSE)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindMainMenu;
@@ -797,7 +797,7 @@ void mnDataProcStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, mnDataMainProcUpdate, 0, GOBJ_LINKORDER_DEFAULT);
+    gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, mnDataProcRun, 0, GOBJ_LINKORDER_DEFAULT);
     func_8000B9FC(0, 0x80000000, 0x64, 0, 0);
 
     mnDataInitVars();

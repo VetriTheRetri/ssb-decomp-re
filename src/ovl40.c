@@ -276,7 +276,7 @@ void mvOpeningLinkMainProc(GObj* arg0)
 {
 	gMvOpeningLinkFramesElapsed += 1;
 
-	if (scSubsysControllerCheckAllTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
+	if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 1U;

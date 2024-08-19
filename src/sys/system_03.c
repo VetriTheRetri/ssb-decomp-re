@@ -1,82 +1,105 @@
-#include "system_03.h"
-
 #include <sys/obj.h>
 #include <sys/system_03_1.h>
+#include <stddef.h>
 
-#include <macros.h>
-
-#include <PR/ultratypes.h>
-
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunknown-pragmas"
-
-#ifdef NON_MATCHING
-s32 func_8000ACD0(struct GObjCommon *arg0, s32 arg1, struct GObjCommon *arg2) {
-    if (arg0 == NULL) { arg0 = D_80046A54; }
-
-    if (arg2 == NULL) { arg2 = D_80046A54; }
-
-    if (arg0->unk70 == ARRAY_COUNT(arg0->unk48)) { return -1; }
-
-    arg0->unk48[arg0->unk70].unk04 = arg1;
-    arg0->unk48[arg0->unk70].unk00 = arg2;
-    arg0->unk70++;
+s32 func_8000ACD0(GObj *gobj, s32 arg1, GObj *next)
+{
+    if (gobj == NULL)
+    {
+        gobj = D_80046A54;
+    }
+    if (next == NULL)
+    {
+        next = D_80046A54;
+    }
+    if (gobj->gobjlinks_num == ARRAY_COUNT(gobj->gobjlinks))
+    {
+        return -1;
+    }
+    gobj->gobjlinks[gobj->gobjlinks_num].unk_gobjlink_0x4 = arg1;
+    gobj->gobjlinks[gobj->gobjlinks_num].next = next;
+    
+    gobj->gobjlinks_num++;
 
     return 0;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03/func_8000ACD0.s")
-#endif
 
-#ifdef NON_MATCHING
-struct GObjCommon *func_8000AD38(struct GObjCommon *obj, void *link) {
-    return (struct GObjCommon *)func_8000ACD0(
-        obj, ((struct MaybeCommonLink *)link)->unk04, ((struct MaybeCommonLink *)link)->unk00);
+GObj* func_8000AD38(GObj *gobj, GObjLink *gobjlink)
+{
+    return func_8000ACD0(gobj, gobjlink->unk_gobjlink_0x4, gobjlink->next);
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03/func_8000AD38.s")
-#endif
 
-#ifdef NON_MATCHING
-void unref_8000AD60(s32 idx, s32 arg1, struct GObjCommon *arg2) {
-    struct MaybeCommonLink link;
+void unref_8000AD60(s32 id, s32 arg1, GObj *gobj)
+{
+    GObjLink gobjlink;
+    
+    gobjlink.next = (gobj != NULL) ? gobj : D_80046A54;
+    gobjlink.unk_gobjlink_0x4 = arg1;
 
-    link.unk00 = arg2 != NULL ? arg2 : D_80046A54;
-    link.unk04 = arg1;
-
-    func_8000AFE4(idx, func_8000AD38, &link, 0);
+    func_8000AFE4(id, func_8000AD38, &gobjlink, 0);
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03/unref_8000AD60.s")
-#endif
 
-#ifdef NON_MATCHING
-s32 func_8000ADB0(void (*defaultHandler)(struct MaybeCommonLink)) {
-    struct GObjCommon *s0;
-    struct MaybeCommonLink *csr;
+s32 func_8000ADB0(void (*proc)(GObjLink)) 
+{
+    GObj *gobj = D_80046A54;
+
+#if defined (AVOID_UB) || defined (NON_MATCHING)
+    GObjLink *gobjlink = gobj->gobjlinks;
+
+#else 
+    GObjLink *gobjlink = gobj = gobj->gobjlinks;
+
+#endif
     s32 i;
 
-    // nonmatching: s0 is transformed into the same pointer as csr (base + 0x48),
-    //              but then it reads the len at csr + 0x28 (aka base + 0x70) for the loop
-    s0  = D_80046A54;
-    csr = s0->unk48;
-    for (i = 0; i < s0->unk70; i++) {
-        switch (csr[i].unk04 + 5) {
-            case 4: gcEjectGObj(NULL); return 1;
-            case 3: func_8000B284(NULL); break;
-            case 2: func_8000B2B8(NULL); break;
-            case 1: D_80046A54->unk7C |= 1; break;
-            case 0: D_80046A54->unk7C &= ~1; break;
-            default:
-                if (defaultHandler != NULL) { defaultHandler(csr[i]); }
-                break;
+    /* FAKE MATCH: gobj is transformed into the same pointer as gobjlink (base + 0x48), 
+     * but then it reads the len at gobjlink + 0x28 (aka base + 0x70) for the loop;
+     * match involves hacks, please use the solution inside the AVOID_UB guard for real applications.
+     */
+#if defined (AVOID_UB) || defined (NON_MATCHING)
+    for (i = 0; i < gobj->gobjlinks_num; i++)
+
+#else
+    for (i = 0; i < *(s32*)((uintptr_t)gobj + (offsetof(GObj, gobjlinks_num) - offsetof(GObj, gobjlinks))); i++)
+
+#endif
+    {
+        switch (gobjlink[i].unk_gobjlink_0x4 + ARRAY_COUNT(gobj->gobjlinks)) 
+        {
+        case 4: 
+            gcEjectGObj(NULL); 
+            return 1;
+            
+        case 3: 
+            func_8000B284(NULL); 
+            break;
+            
+        case 2: 
+            func_8000B2B8(NULL); 
+            break;
+            
+        case 1: 
+            D_80046A54->flags |= GOBJ_FLAG_NORENDER; 
+            break;
+            
+        case 0: 
+            D_80046A54->flags &= ~GOBJ_FLAG_NORENDER; 
+            break;
+            
+        default:
+            if (proc != NULL) 
+            {
+                proc(gobjlink[i]); 
+            }
+            break;
         }
     }
-    s0->unk70 = 0;
+#if defined (AVOID_UB) || defined (NON_MATCHING)
+    gobj->gobjlinks_num = 0;
 
+#else
+    *(s32*)((uintptr_t)gobj + (offsetof(GObj, gobjlinks_num) - offsetof(GObj, gobjlinks))) = 0;
+
+#endif
     return 0;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03/func_8000ADB0.s")
-#endif
-#pragma GCC diagnostic pop

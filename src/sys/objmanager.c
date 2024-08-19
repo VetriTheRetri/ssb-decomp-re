@@ -1616,7 +1616,7 @@ GObj* gcInitGObjCommon(u32 id, void (*proc_run)(GObj*), u8 link, u32 order)
 	new_gobj->proc_run = proc_run;
 	new_gobj->gobjproc_head = NULL;
 	new_gobj->gobjproc_tail = NULL;
-	new_gobj->gobjlink_len = 0;
+	new_gobj->gobjlinks_num = 0;
 	new_gobj->flags = GOBJ_FLAG_NONE;
 
 	new_gobj->obj_kind = nOMObjCommonAppendNone;

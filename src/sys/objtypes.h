@@ -179,7 +179,7 @@ struct GObj
     s32 unk_gobj_0x38;                  // 0xFFFFFFFF, textures or series of flags?
     u64 unk_gobj_0x40;
     GObjLink gobjlinks[5];
-    s32 gobjlink_len;                   // Length/number of active members of gobjlinks
+    s32 gobjlinks_num;                   // Length/number of active members of gobjlinks
     void *obj;                          // Can be: NULL, DObj, SObj or Camera
     f32 anim_frame;                     // Current frame of animation?
     u32 flags;                          // GObj logic flags (e.g. 0x1 = skip rendering)

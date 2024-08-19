@@ -23,7 +23,7 @@ extern void mnDataMakeLink2Camera(void);
 extern void mnDataMakeLink1Camera(void);
 extern void mnDataMakeLink0Camera(void);
 extern void mnDataInitVars(void);
-extern void mnDataMainProcUpdate(GObj *gobj);
+extern void mnDataProcRun(GObj *gobj);
 extern void mnDataProcStart(void);
 
 #endif

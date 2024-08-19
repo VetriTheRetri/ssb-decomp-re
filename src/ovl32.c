@@ -1547,7 +1547,7 @@ void mnVsRecordsCreateStats(s32 stats_kind)
 // 801359EC
 void mnVsRecordsCreateTableValuesViewport()
 {
-	GObj *camera_gobj = func_8000B93C(1, NULL, 1, 0x80000000U, func_ovl0_800CD2CC, 0x28, 0x00000020, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(nOMObjCommonKindMenuElement, NULL, 1, GOBJ_LINKORDER_DEFAULT, func_ovl0_800CD2CC, 0x28, 0x00000020, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1555,7 +1555,7 @@ void mnVsRecordsCreateTableValuesViewport()
 // 80135A8C
 void mnVsRecordsCreateTableHeadersViewport()
 {
-	GObj *camera_gobj = func_8000B93C(1, NULL, 1, 0x80000000U, func_ovl0_800CD2CC, 0x14, 0x00000010, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(nOMObjCommonKindMenuElement, NULL, 1, GOBJ_LINKORDER_DEFAULT, func_ovl0_800CD2CC, 0x14, 0x00000010, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1563,7 +1563,7 @@ void mnVsRecordsCreateTableHeadersViewport()
 // 80135B2C
 void mnVsRecordsCreateTableGridViewport()
 {
-	GObj *camera_gobj = func_8000B93C(1, NULL, 1, 0x80000000U, func_ovl0_800CD2CC, 0x3C, 0x00000008, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(nOMObjCommonKindMenuElement, NULL, 1, GOBJ_LINKORDER_DEFAULT, func_ovl0_800CD2CC, 0x3C, 0x00000008, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1571,7 +1571,7 @@ void mnVsRecordsCreateTableGridViewport()
 // 80135BCC
 void mnVsRecordsCreateRankingRowHighlightViewport()
 {
-	GObj *camera_gobj = func_8000B93C(1, NULL, 1, 0x80000000U, func_ovl0_800CD2CC, 0x46, 0x00000004, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(nOMObjCommonKindMenuElement, NULL, 1, GOBJ_LINKORDER_DEFAULT, func_ovl0_800CD2CC, 0x46, 0x00000004, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1579,7 +1579,7 @@ void mnVsRecordsCreateRankingRowHighlightViewport()
 // 80135C6C
 void mnVsRecordsCreateTitleViewport()
 {
-	GObj *camera_gobj = func_8000B93C(1, NULL, 1, 0x80000000U, func_ovl0_800CD2CC, 0x50, 0x00000002, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(nOMObjCommonKindMenuElement, NULL, 1, GOBJ_LINKORDER_DEFAULT, func_ovl0_800CD2CC, 0x50, 0x00000002, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1622,10 +1622,10 @@ void mnVsRecordsMain(GObj* arg0)
 	if
 	(
 		(gMNVsRecordsStatsKind == vsRecordsKindIndividual) &&
-		(scSubsysControllerCheckAllStickInRangeLR(-0x14, 0x14) != FALSE) &&
-		(scSubsysControllerCheckAllStickInRangeUD(-0x14, 0x14) != FALSE) &&
-		(scSubsysControllerCheckAllHoldButtons(R_JPAD | U_JPAD | R_TRIG | R_CBUTTONS | U_CBUTTONS) == FALSE) &&
-		(scSubsysControllerCheckAllHoldButtons(L_JPAD | D_JPAD | L_TRIG | L_CBUTTONS | D_CBUTTONS) == FALSE)
+		(scSubsysControllerGetPlayerStickInRangeLR(-0x14, 0x14) != FALSE) &&
+		(scSubsysControllerGetPlayerStickInRangeUD(-0x14, 0x14) != FALSE) &&
+		(scSubsysControllerGetPlayerHoldButtons(R_JPAD | U_JPAD | R_TRIG | R_CBUTTONS | U_CBUTTONS) == FALSE) &&
+		(scSubsysControllerGetPlayerHoldButtons(L_JPAD | D_JPAD | L_TRIG | L_CBUTTONS | D_CBUTTONS) == FALSE)
 	)
 	{
 		gMNVsRecordsChangeWait = 0;
@@ -1636,7 +1636,7 @@ void mnVsRecordsMain(GObj* arg0)
 		gMNVsRecordsRedrawSubtitle = FALSE;
 	}
 
-	if (scSubsysControllerCheckAllTapButtons(B_BUTTON) != FALSE)
+	if (scSubsysControllerGetPlayerTapButtons(B_BUTTON) != FALSE)
 	{
 		if (gMNVsRecordsStatsKind == vsRecordsKindBattleScore)
 		{
@@ -1658,8 +1658,8 @@ void mnVsRecordsMain(GObj* arg0)
 
 	if
 	(
-		((scSubsysControllerCheckAllTapButtons(A_BUTTON) != FALSE) ||
-		(scSubsysControllerCheckAllTapButtons(START_BUTTON) != FALSE)) &&
+		((scSubsysControllerGetPlayerTapButtons(A_BUTTON) != FALSE) ||
+		(scSubsysControllerGetPlayerTapButtons(START_BUTTON) != FALSE)) &&
 		(gMNVsRecordsStatsKind < 2)
 	)
 	{

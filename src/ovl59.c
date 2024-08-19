@@ -384,7 +384,7 @@ void gmCreditsMakeStaffRoleTextSObjs(GObj *text_gobj, GObj *staff_gobj)
 		{
 			hvar = 0.0F;
 
-			sobj = gcAppendSObjWithSprite(text_gobj, spGetSpriteFromFile(gCreditsFiles[0], dCreditsTextBoxSpriteInfo[dCreditsStaffRoleCharacters[character_id]].offset));
+			sobj = gcAppendSObjWithSprite(text_gobj, gcGetDataFromFile(Sprite*, gCreditsFiles[0], dCreditsTextBoxSpriteInfo[dCreditsStaffRoleCharacters[character_id]].offset));
 
 			sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -499,7 +499,7 @@ void gmCreditsMakeCompanyTextSObjs(GObj *text_gobj, GObj *staff_gobj)
 		{
 			if (dCreditsCompanyCharacters[character_id] != GMCREDITS_ASCII_LETTER_TO_FONT_INDEX(' '))
 			{
-				sobj = gcAppendSObjWithSprite(text_gobj, spGetSpriteFromFile(gCreditsFiles[0], dCreditsTextBoxSpriteInfo[dCreditsCompanyCharacters[character_id]].offset));
+				sobj = gcAppendSObjWithSprite(text_gobj, gcGetDataFromFile(Sprite*, gCreditsFiles[0], dCreditsTextBoxSpriteInfo[dCreditsCompanyCharacters[character_id]].offset));
 
 				hvar = 0.0F;
 
@@ -1221,7 +1221,7 @@ void gmCreditsMakeCrosshairGObj()
 
 	gcAddGObjCommonProc(gobj, gmCreditsCrosshairProcUpdate, 0, 1);
 
-	sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gCreditsFiles[0], &lCreditsCrosshairSprite));
+	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, gCreditsFiles[0], &lCreditsCrosshairSprite));
 
 	gCreditsCrosshairGObj = gobj;
 
@@ -1246,13 +1246,13 @@ void gmCreditsMakeTextBoxBracketSObjs()
 
 	gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 7, 0x80000000, -1);
 
-	left_sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gCreditsFiles[0], &lCreditsTextBoxBracketLeft));
+	left_sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, gCreditsFiles[0], &lCreditsTextBoxBracketLeft));
 
 	gobj = gcMakeGObjSPAfter(3, NULL, 8, 0x80000000);
 
 	gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 7, 0x80000000, -1);
 
-	right_sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(gCreditsFiles[0], &lCreditsTextBoxBracketRight));
+	right_sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, gCreditsFiles[0], &lCreditsTextBoxBracketRight));
 
 	left_sobj->sprite.attr = right_sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -1389,7 +1389,7 @@ void gmCreditsInitNameAndJobDisplayLists()
 		gDPLoadTextureBlock_4b
 		(
 			dl++, // pkt
-			spGetSpriteFromFile(gCreditsFiles[0], dCreditsNameAndJobSpriteInfo[i].offset), // timg
+			gcGetDataFromFile(Sprite*, gCreditsFiles[0], dCreditsNameAndJobSpriteInfo[i].offset), // timg
 			G_IM_FMT_I, // fmt
 			((dCreditsNameAndJobSpriteInfo[i].width + 15) / 16) * 16, // width
 			dCreditsNameAndJobSpriteInfo[i].height, // height

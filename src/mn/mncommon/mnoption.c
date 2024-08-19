@@ -199,7 +199,7 @@ void mnOptionUpdateOptionTabSObjs(GObj *gobj, s32 status)
 // 0x80131BFC
 void mnOptionMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
 {
-    SObj *sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[0], &lMNCommonOptionTabLeftSprite));
+    SObj *sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonOptionTabLeftSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -207,7 +207,7 @@ void mnOptionMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
     sobj->pos.x = posx;
     sobj->pos.y = posy;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[0], &lMNCommonOptionTabMiddleSprite));
+    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonOptionTabMiddleSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -224,7 +224,7 @@ void mnOptionMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
     sobj->lrs = lrs * 8;
     sobj->lrt = 29;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[0], &lMNCommonOptionTabRightSprite));
+    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonOptionTabRightSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -269,7 +269,7 @@ void mnOptionMakeSoundOptionSObjs(void)
     sMNOptionSoundOptionGObj = gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, NULL, 4, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[1], &lMNOptionMonoTextSprite));
+    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionMonoTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -277,7 +277,7 @@ void mnOptionMakeSoundOptionSObjs(void)
     sobj->pos.x = 179.0F;
     sobj->pos.y = 48.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[1], &lMNOptionStereoTextSprite));
+    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionStereoTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -285,7 +285,7 @@ void mnOptionMakeSoundOptionSObjs(void)
     sobj->pos.x = 236.0F;
     sobj->pos.y = 48.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[0], &lMNOptionSoundSlashSprite));
+    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNOptionSoundSlashSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -312,7 +312,7 @@ void mnOptionMakeSoundTextSObj(void)
     mnOptionMakeOptionTabSObjs(gobj, 113.0F, 42.0F, 17);
     mnOptionUpdateOptionTabSObjs(gobj, sMNOptionOption == nMNOptionOptionSound);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[1], &lMNOptionSoundTextSprite));
+    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionSoundTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -339,7 +339,7 @@ void mnOptionMakeScreenAdjustSObj(void)
 
     mnOptionUpdateOptionTabSObjs(gobj, sMNOptionOption == nMNOptionOptionScreenAdjust);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[1], &lMNOptionScreenAdjustTextSprite));
+    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionScreenAdjustTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -364,7 +364,7 @@ void mnOptionMakeBackupClearSObj(void)
     mnOptionMakeOptionTabSObjs(gobj, 69.0F, 136.0F, 17);
     mnOptionUpdateOptionTabSObjs(gobj, sMNOptionOption == nMNOptionOptionBackupClear);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[1], &lMNOptionBackupClearTextSprite));
+    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionBackupClearTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -439,7 +439,7 @@ void mnOptionMakeHeaderSObjs(void)
 
     gcAddGObjRenderProc(gobj, mnOptionHeaderProcRender, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[0], &lMNCommonSmashLogoSprite));
+    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonSmashLogoSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -451,7 +451,7 @@ void mnOptionMakeHeaderSObjs(void)
     sobj->pos.x = 235.0F;
     sobj->pos.y = 158.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[1], &lMNOptionHeaderTextSprite));
+    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionHeaderTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -473,12 +473,12 @@ void mnOptionMakeDecalSObjs(void)
     gobj = gcMakeGObjSPAfter(nOMObjCommonKindMenuDefault, NULL, 2, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[0], &lMNCommonCircleSprite));
+    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonCircleSprite));
 
     sobj->pos.x = 10.0F;
     sobj->pos.y = 10.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[0], &lMNCommonPaperTearSprite));
+    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonPaperTearSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -490,7 +490,7 @@ void mnOptionMakeDecalSObjs(void)
     sobj->pos.x = 140.0F;
     sobj->pos.y = 143.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[0], &lMNCommonPaperTearSprite));
+    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonPaperTearSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -502,7 +502,7 @@ void mnOptionMakeDecalSObjs(void)
     sobj->pos.x = 225.0F;
     sobj->pos.y = 56.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, spGetSpriteFromFile(sMNOptionFiles[1], &lMNOptionKnobSprite));
+    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionKnobSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;

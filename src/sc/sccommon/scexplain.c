@@ -546,7 +546,7 @@ SObj* scExplainMakeSObjOffset(intptr_t offset)
     );
     gcAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    sobj = gcAppendSObjWithSprite(interface_gobj, spGetSpriteFromFile(sSCExplainGraphicsFileHead, offset));
+    sobj = gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, sSCExplainGraphicsFileHead, offset));
 
     sobj->sprite.attr |= SP_HIDDEN;
 

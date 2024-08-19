@@ -237,7 +237,7 @@ sb32 itEggThrownProcUpdate(GObj *item_gobj)
 // 0x801817F8
 sb32 itEggThrownProcMap(GObj *item_gobj)
 {
-    if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_KIND_MAIN_MASK) != FALSE)
+    if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_MAIN_MASK) != FALSE)
     {
         if (itMainMakeContainerItem(item_gobj) != FALSE)
         {

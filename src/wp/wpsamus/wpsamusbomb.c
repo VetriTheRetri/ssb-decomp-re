@@ -139,7 +139,7 @@ sb32 wpSamusBombProcMap(GObj *weapon_gobj)
     {
         is_collide = wpMapTestAllCheckGround(weapon_gobj);
 
-        if (wpMapCheckAllRebound(weapon_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), WPSAMUSBOMB_WAIT_COLLIDE_MOD_VEL, NULL) != FALSE)
+        if (wpMapCheckAllRebound(weapon_gobj, (MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL), WPSAMUSBOMB_WAIT_COLLIDE_MOD_VEL, NULL) != FALSE)
         {
             wpMainVelSetLR(weapon_gobj);
         }

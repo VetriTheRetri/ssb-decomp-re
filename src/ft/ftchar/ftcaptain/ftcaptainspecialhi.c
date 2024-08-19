@@ -115,7 +115,7 @@ void ftCaptainSpecialHiProcMap(GObj *fighter_gobj)
             fp->command_vars.flags.flag2--;
         }
     }
-    else if ((mpCommonCheckFighterCeilHeavyCliff(fighter_gobj) != FALSE) && (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK))
+    else if ((mpCommonCheckFighterCeilHeavyCliff(fighter_gobj) != FALSE) && (fp->coll_data.coll_mask_stat & MPCOLL_FLAG_CLIFF_MASK))
     {
         ftCommonCliffCatchSetStatus(fighter_gobj);
     }

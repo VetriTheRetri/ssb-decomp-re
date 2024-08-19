@@ -410,25 +410,25 @@ sb32 wpLinkBoomerangProcMap(GObj *weapon_gobj)
     {
         wpMapTestAll(weapon_gobj);
 
-        coll_flags = (wp->coll_data.coll_mask_prev ^ wp->coll_data.coll_mask_curr) & wp->coll_data.coll_mask_curr & MPCOLL_KIND_MAIN_MASK;
+        coll_flags = (wp->coll_data.coll_mask_prev ^ wp->coll_data.coll_mask_curr) & wp->coll_data.coll_mask_curr & MPCOLL_FLAG_MAIN_MASK;
 
         if (coll_flags)
         {
             efManagerDustCollideMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
 
-            if (coll_flags & MPCOLL_KIND_LWALL)
+            if (coll_flags & MPCOLL_FLAG_LWALL)
             {
                 is_collide |= wpLinkBoomerangCheckBound(wp, &wp->coll_data.lwall_angle);
             }
-            if (coll_flags & MPCOLL_KIND_RWALL)
+            if (coll_flags & MPCOLL_FLAG_RWALL)
             {
                 is_collide |= wpLinkBoomerangCheckBound(wp, &wp->coll_data.rwall_angle);
             }
-            if (coll_flags & MPCOLL_KIND_CEIL)
+            if (coll_flags & MPCOLL_FLAG_CEIL)
             {
                 is_collide |= wpLinkBoomerangCheckBound(wp, &wp->coll_data.ceil_angle);
             }
-            if (coll_flags & MPCOLL_KIND_GROUND)
+            if (coll_flags & MPCOLL_FLAG_GROUND)
             {
                 is_collide |= wpLinkBoomerangCheckBound(wp, &wp->coll_data.ground_angle);
             }

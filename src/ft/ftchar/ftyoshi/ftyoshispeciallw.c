@@ -53,18 +53,18 @@ void ftYoshiSpecialLwStartProcMap(GObj *fighter_gobj)
     {
         if (mpCommonCheckFighterCeilHeavyCliff(fighter_gobj) != FALSE)
         {
-            if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_GROUND)
+            if (fp->coll_data.coll_mask_stat & MPCOLL_FLAG_GROUND)
             {
                 mpCommonSetFighterGround(fp);
                 ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialLwLanding, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
             }
-            else if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
+            else if (fp->coll_data.coll_mask_stat & MPCOLL_FLAG_CLIFF_MASK)
             {
                 ftCommonCliffCatchSetStatus(fighter_gobj);
             }
         }
     }
-    else if ((mpCommonCheckFighterCeilHeavy(fighter_gobj) != FALSE) && (fp->coll_data.coll_mask_curr & MPCOLL_KIND_CEILHEAVY))
+    else if ((mpCommonCheckFighterCeilHeavy(fighter_gobj) != FALSE) && (fp->coll_data.coll_mask_curr & MPCOLL_FLAG_CEILHEAVY))
     {
         ftYoshiSpecialAirLwLoopSetStatus(fighter_gobj);
     }
@@ -77,12 +77,12 @@ void ftYoshiSpecialAirLwLoopProcMap(GObj *fighter_gobj)
 
     if (mpCommonCheckFighterCeilHeavyCliff(fighter_gobj) != FALSE)
     {
-        if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_GROUND)
+        if (fp->coll_data.coll_mask_stat & MPCOLL_FLAG_GROUND)
         {
             mpCommonSetFighterGround(fp);
             ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialLwLanding, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
         }
-        else if (fp->coll_data.coll_mask_stat & MPCOLL_KIND_CLIFF_MASK)
+        else if (fp->coll_data.coll_mask_stat & MPCOLL_FLAG_CLIFF_MASK)
         {
             ftCommonCliffCatchSetStatus(fighter_gobj);
         }

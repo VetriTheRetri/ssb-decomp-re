@@ -395,7 +395,7 @@ void itBoxHoldSetStatus(GObj *item_gobj)
 // 0x8017982C
 sb32 itBoxThrownProcMap(GObj *item_gobj)
 {
-    if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_KIND_MAIN_MASK) != FALSE)
+    if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_MAIN_MASK) != FALSE)
     {
         if (itBoxCommonCheckSpawnItems(item_gobj) != FALSE)
         {

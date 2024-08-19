@@ -272,7 +272,7 @@ void ftCommonDamageAirCommonProcMap(GObj *fighter_gobj)
     (
         (mpCommonCheckFighterDamageCollision(fighter_gobj) != FALSE)        &&
         (ftCommonWallDamageCheckGoto(fighter_gobj) == FALSE)                &&
-        (fp->status_vars.common.damage.coll_mask_curr & MPCOLL_KIND_GROUND) &&
+        (fp->status_vars.common.damage.coll_mask_curr & MPCOLL_FLAG_GROUND) &&
         (ftCommonPassiveStandCheckInterruptDamage(fighter_gobj) == FALSE)   &&
         (ftCommonPassiveCheckInterruptDamage(fighter_gobj) == FALSE)
     )

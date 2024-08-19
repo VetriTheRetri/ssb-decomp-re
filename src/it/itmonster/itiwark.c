@@ -289,7 +289,7 @@ sb32 itIwarkCommonProcMap(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_KIND_GROUND) != FALSE)
+    if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_GROUND) != FALSE)
     {
         ip->phys_info.vel_air.y = 0.0F;
 
@@ -369,7 +369,7 @@ sb32 itIwarkWeaponRockProcMap(GObj *weapon_gobj)
 
     wpMapTestAllCheckCollEnd(weapon_gobj);
 
-    if (coll_data->coll_mask_curr & MPCOLL_KIND_GROUND)
+    if (coll_data->coll_mask_curr & MPCOLL_FLAG_GROUND)
     {
         if (line_id != coll_data->ground_line_id)
         {

@@ -1,17 +1,17 @@
 #ifndef _MPDEF_H_
 #define _MPDEF_H_
 
-#define MPCOLL_KIND_LWALL (1 << 0)		// 0x1
-#define MPCOLL_KIND_RWALL (1 << 5)		// 0x20
-#define MPCOLL_KIND_CEIL (1 << 10)		// 0x400
-#define MPCOLL_KIND_GROUND (1 << 11)	// 0x800
-#define MPCOLL_KIND_LCLIFF (1 << 12)	// 0x1000
-#define MPCOLL_KIND_RCLIFF (1 << 13)	// 0x2000
-#define MPCOLL_KIND_CEILHEAVY (1 << 14) // 0x4000 - head bonk?
+#define MPCOLL_FLAG_LWALL (1 << 0)		// 0x1
+#define MPCOLL_FLAG_RWALL (1 << 5)		// 0x20
+#define MPCOLL_FLAG_CEIL (1 << 10)		// 0x400
+#define MPCOLL_FLAG_GROUND (1 << 11)	// 0x800
+#define MPCOLL_FLAG_LCLIFF (1 << 12)	// 0x1000
+#define MPCOLL_FLAG_RCLIFF (1 << 13)	// 0x2000
+#define MPCOLL_FLAG_CEILHEAVY (1 << 14) // 0x4000 - hard ceiling, can't pass through
 
-#define MPCOLL_KIND_MAIN_MASK                                                                                          \
-	(MPCOLL_KIND_GROUND | MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL) // Mask every main collision flag
-#define MPCOLL_KIND_CLIFF_MASK (MPCOLL_KIND_LCLIFF | MPCOLL_KIND_RCLIFF)			// Mask all ledge flags
+#define MPCOLL_FLAG_MAIN_MASK                                                                                          \
+	(MPCOLL_FLAG_GROUND | MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL) // Mask every main collision flag
+#define MPCOLL_FLAG_CLIFF_MASK (MPCOLL_FLAG_LCLIFF | MPCOLL_FLAG_RCLIFF)			// Mask all ledge flags
 
 #define MPCOLL_VERTEX_ATTR_BITS 8
 

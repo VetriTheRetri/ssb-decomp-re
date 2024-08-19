@@ -407,7 +407,7 @@ sb32 itGShellSpinProcMap(GObj *item_gobj)
 {
     itMapCheckLRWallProcGround(item_gobj, itGShellFallSetStatus);
 
-    if (itMapCheckCollideAllRebound(item_gobj, (MPCOLL_KIND_CEIL | MPCOLL_KIND_RWALL | MPCOLL_KIND_LWALL), 0.2F, NULL) != FALSE)
+    if (itMapCheckCollideAllRebound(item_gobj, (MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL), 0.2F, NULL) != FALSE)
     {
         itMainVelSetRotateStepLR(item_gobj);
         itMainClearOwnerStats(item_gobj);

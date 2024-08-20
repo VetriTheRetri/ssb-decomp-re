@@ -4,17 +4,9 @@
 #include <ovl0/reloc_data_mgr.h>
 
 // Externs
-extern u8 D_800A4B08;
-extern s32 D_800A4AEC;
 extern void *D_80044FA8_407B8;
 
-extern uintptr_t ovl1_TEXT_START;
-extern uintptr_t ovl56_BSS_END;
-
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
-extern void ftRenderLightsDrawReflect(Gfx **display_list, f32 arg1, f32 arg2);
-extern f32 scSubsysFighterGetLightAngleX();
-extern f32 scSubsysFighterGetLightAngleY();
 extern void func_ovl0_800CD2CC();
 extern GObj* func_8000B93C(
 	u32 id,
@@ -30,12 +22,6 @@ extern GObj* func_8000B93C(
 	void *arg11,
 	u32 arg12,
 	s32 arg13);
-
-
-extern intptr_t lGMStageClearArenaLo;                       // 801355B0
-extern intptr_t lGMStageClearArenaHi;                       // 803903E0
-extern intptr_t D_NF_001AC870;
-extern intptr_t D_NF_00000854;
 
 extern intptr_t lGMStageClearSpritePlatform;                // 0x000000C0
 extern intptr_t lGMStageClearSpriteTarget;                  // 0x000001D0
@@ -512,13 +498,13 @@ intptr_t dGMStageClearDifficultySpriteOffsets[] =
 syColorRGBPair dGMStageClearScoreDigitColors = { { 0x00, 0x00, 0x00 }, { 0xFF, 0xFF, 0x00 } };
 
 // 801351EC
-syDisplaySetup D_ovl56_801351EC = {
+syDisplaySetup dGM1PStageClearDisplaySetup = {
 	0x80392A00, 0x803B6900, 0x803DA800,
 	0x00000000, 0x00000140, 0x000000F0, 0x00016A99
 };
 
 // 80135208
-scRuntimeInfo D_ovl56_80135208 = {
+scRuntimeInfo dGM1PStageClearGtlSetup = {
 	0x00000000, 0x8000A5E4, 0x8000A340, 0x801355B0,
 	0x00000000, 0x00000001, 0x00000002, 0x00004E20,
 	0x00001000, 0x00000000, 0x00000000, 0x00008000,
@@ -1844,7 +1830,7 @@ void sc1PStageClearUpdateResultScore()
 }
 
 // 801349F0
-void sc1PStageClearSceneProcUpdate(GObj *gobj)
+void sc1PStageClearProcRun(GObj *gobj)
 {
 	D_ovl56_801352CC++;
 
@@ -1935,20 +1921,20 @@ void gm1PStageClearCopyFramebufToWallpaper(void)
 void sc1PStageClearInitAll()
 {
 	s32 unused;
-	rdSetup rldm_setup;
+	rdSetup rd_setup;
 
-	rldm_setup.table_addr = &D_NF_001AC870;
-	rldm_setup.table_files_num = &D_NF_00000854;
-	rldm_setup.file_heap = NULL;
-	rldm_setup.file_heap_size = 0;
-	rldm_setup.status_buf = sGMStageClearStatusBuf;
-	rldm_setup.status_buf_size = ARRAY_COUNT(sGMStageClearStatusBuf);
-	rldm_setup.force_buf = sGMStageClearForceBuf;
-	rldm_setup.force_buf_size = ARRAY_COUNT(sGMStageClearForceBuf);
+	rd_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;
+	rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
+	rd_setup.file_heap = NULL;
+	rd_setup.file_heap_size = 0;
+	rd_setup.status_buf = sGMStageClearStatusBuf;
+	rd_setup.status_buf_size = ARRAY_COUNT(sGMStageClearStatusBuf);
+	rd_setup.force_buf = sGMStageClearForceBuf;
+	rd_setup.force_buf_size = ARRAY_COUNT(sGMStageClearForceBuf);
 
-	rdManagerInitSetup(&rldm_setup);
+	rdManagerInitSetup(&rd_setup);
 	rdManagerLoadFiles(dGMStageClearFileIDs, ARRAY_COUNT(dGMStageClearFileIDs), sGMStageClearFiles, gsMemoryAlloc(rdManagerGetAllocSize(dGMStageClearFileIDs, ARRAY_COUNT(dGMStageClearFileIDs)), 0x10));
-	gcMakeGObjSPAfter(0, sc1PStageClearSceneProcUpdate, 0, GOBJ_LINKORDER_DEFAULT);
+	gcMakeGObjSPAfter(0, sc1PStageClearProcRun, 0, GOBJ_LINKORDER_DEFAULT);
 	gm1PStageClearCopyFramebufToWallpaper();
 	func_8000B9FC(0, 0x80000000, 0x64, 0, 0);
 	func_ovl56_80133C88();
@@ -1966,14 +1952,14 @@ void sc1PStageClearInitAll()
 
 	case nSC1PGameStageBonus1:
 	case nSC1PGameStageBonus2:
-		if (D_800A4B08 == 10)
+		if (gSceneData.bonus_tasks_current == 10)
 			auPlaySong(0, nSYAudioBGM1PBonusGameClear);
 		else
 			auPlaySong(0, nSYAudioBGM1PBonusGameFailure);
 		break;
 
 	case nSC1PGameStageBonus3:
-		if (D_800A4AEC != 0)
+		if (gSceneData.spgame_time_seconds != 0)
 			auPlaySong(0, nSYAudioBGM1PBonusGameClear);
 		else
 			auPlaySong(0, nSYAudioBGM1PBonusGameFailure);
@@ -1988,11 +1974,11 @@ void sc1PStageClearInitAll()
 // 80134E84
 void sc1PStageClearStartScene()
 {
-	D_ovl56_801351EC.zbuffer = syDisplayGetZBuffer(6400);
+	dGM1PStageClearDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
 
-	func_80007024(&D_ovl56_801351EC);
+	func_80007024(&dGM1PStageClearDisplaySetup);
 
-	D_ovl56_80135208.arena_size = (size_t) ((uintptr_t)&ovl1_TEXT_START - (uintptr_t)&ovl56_BSS_END);
+	dGM1PStageClearGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_TEXT_START - (uintptr_t)&ovl56_BSS_END);
 
-	gsGTLSceneInit(&D_ovl56_80135208);
+	gsGTLSceneInit(&dGM1PStageClearGtlSetup);
 }

@@ -118,7 +118,7 @@ extern intptr_t D_NF_0002074C;                              // 0x0002074C
 u32 D_ovl56_801352C0[3];
 
 // 801352CC
-u32 D_ovl56_801352CC;
+u32 sSC1PStageClearTotalTimeTics;
 
 // 801352D0
 u32 D_ovl56_801352D0;
@@ -1054,9 +1054,9 @@ void sc1PStageClearMakeTargetTextSObjs()
 // 80132DC0
 void func_ovl56_80132DC0(GObj *gobj)
 {
-	gobj->flags = (gobj->user_data.u < D_ovl56_801352CC) ? GOBJ_FLAG_NONE : GOBJ_FLAG_NORENDER;
+	gobj->flags = (gobj->user_data.u < sSC1PStageClearTotalTimeTics) ? GOBJ_FLAG_NONE : GOBJ_FLAG_NORENDER;
 
-	if (gobj->user_data.u == D_ovl56_801352CC)
+	if (gobj->user_data.u == sSC1PStageClearTotalTimeTics)
 	{
 		func_800269C0_275C0(nSYAudioFGMStageClearScoreRegister);
 		gcEjectGObj(sGMStageClearScoreTextGObj);
@@ -1076,7 +1076,7 @@ void func_ovl56_80132E40(f32 x, f32 y, s32 objective_num)
 	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	gcAddGObjProcess(gobj, func_ovl56_80132DC0, 1, 1);
 
-	gobj->user_data.u = (objective_num * 10) + D_ovl56_801352CC;
+	gobj->user_data.u = (objective_num * 10) + sSC1PStageClearTotalTimeTics;
 
 	switch (sGMStageClear1PGameStage)
 	{
@@ -1184,10 +1184,10 @@ s32 sc1PStageClearGetNoMissMultiplier(s32 stage)
 // 80133188
 void sc1PStageClearCommonProcUpdate(GObj *gobj)
 {
-	if (gobj->user_data.u == D_ovl56_801352CC)
+	if (gobj->user_data.u == sSC1PStageClearTotalTimeTics)
 		func_800269C0_275C0(nSYAudioFGMStageClearScoreDisplay);
 
-	gobj->flags = (gobj->user_data.u < D_ovl56_801352CC) ? GOBJ_FLAG_NONE : GOBJ_FLAG_NORENDER;
+	gobj->flags = (gobj->user_data.u < sSC1PStageClearTotalTimeTics) ? GOBJ_FLAG_NONE : GOBJ_FLAG_NORENDER;
 }
 
 // 801331EC
@@ -1205,7 +1205,7 @@ s32 sc1PStageClearAppendBonusStatGetPoints(s32 bonus_id, s32 bonus_num, f32 x, f
 	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	gcAddGObjProcess(gobj, sc1PStageClearCommonProcUpdate, 1, 1);
 
-	gobj->user_data.u = (bonus_num * 10) + D_ovl56_801352CC;
+	gobj->user_data.u = (bonus_num * 10) + sSC1PStageClearTotalTimeTics;
 
 	if (bonus_id == nSC1PGameBonusGameClear)
 		sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sGMStageClearFiles[0], offsets[sGMStageClearDifficulty]));
@@ -1287,7 +1287,7 @@ void sc1PStageClearMakeBonusPageArrow()
 	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	gcAddGObjProcess(gobj, sc1PStageClearCommonProcUpdate, 1, 1);
 
-	gobj->user_data.u = D_ovl56_801352CC + 90;
+	gobj->user_data.u = sSC1PStageClearTotalTimeTics + 90;
 
 	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sGMStageClearFiles[0], &sGMStageClearSpriteBonusPageArrow));
 
@@ -1450,7 +1450,7 @@ void func_ovl56_80133C88()
 {
 	s32 i;
 
-	D_ovl56_801352CC = 0;
+	sSC1PStageClearTotalTimeTics = 0;
 	D_ovl56_801352D0 = 0;
 
 	sGMStageClear1PGameStage = gSceneData.spgame_stage;
@@ -1551,7 +1551,7 @@ void func_ovl56_80133F50()
 {
 	s32 i;
 
-	if (D_ovl56_80135340 == D_ovl56_801352CC)
+	if (D_ovl56_80135340 == sSC1PStageClearTotalTimeTics)
 	{
 		for (i = 0; i < ARRAY_COUNT(sGMStageClearBonusStatGObjs); i++)
 		{
@@ -1562,9 +1562,9 @@ void func_ovl56_80133F50()
 
 		if (sGMStageClearScoreTotal < 0)
 			sGMStageClearScoreTotal = 0;
-		D_ovl56_80135344 = (sGMStageClearBonusNum * 10) + D_ovl56_801352CC + 20;
+		D_ovl56_80135344 = (sGMStageClearBonusNum * 10) + sSC1PStageClearTotalTimeTics + 20;
 	}
-	else if (D_ovl56_80135344 == D_ovl56_801352CC)
+	else if (D_ovl56_80135344 == sSC1PStageClearTotalTimeTics)
 	{
 		gcEjectGObj(sGMStageClearScoreTextGObj);
 		func_ovl56_80133F00();
@@ -1572,9 +1572,9 @@ void func_ovl56_80133F50()
 		D_ovl56_80135334 = 1;
 
 		if (sGMStageClearIsAdvance != FALSE)
-			D_ovl56_80135348 = D_ovl56_801352CC + 20;
+			D_ovl56_80135348 = sSC1PStageClearTotalTimeTics + 20;
 	}
-	else if (D_ovl56_80135348 == D_ovl56_801352CC)
+	else if (D_ovl56_80135348 == sSC1PStageClearTotalTimeTics)
 		D_ovl56_8013533C = 1;
 }
 
@@ -1586,16 +1586,16 @@ void sc1PStageClearUpdateGameClearScore()
 
 	if (sc1PStageClearCheckHaveTimer() == FALSE)
 	{
-		if (D_ovl56_801352CC == D_ovl56_801353A8)
+		if (sSC1PStageClearTotalTimeTics == D_ovl56_801353A8)
 			sc1PStageClearMakeTimerTextSObjs(94.0F);
-		if (D_ovl56_801352CC == D_ovl56_801353AC)
+		if (sSC1PStageClearTotalTimeTics == D_ovl56_801353AC)
 			sc1PStageClearMakeTimerDigitSObjs(94.0F);
-		if (D_ovl56_801352CC == D_ovl56_801353B0)
+		if (sSC1PStageClearTotalTimeTics == D_ovl56_801353B0)
 		{
 			gcEjectGObj(sGMStageClearTimerMultiplierGObj);
 			sGMStageClearScoreTotal += sc1PStageClearGetAppendTotalTimeScore(94.0F);
 		}
-		if (D_ovl56_801352CC == D_ovl56_801353B4)
+		if (sSC1PStageClearTotalTimeTics == D_ovl56_801353B4)
 		{
 			gcEjectGObj(sGMStageClearScoreTextGObj);
 			func_ovl56_80133F00();
@@ -1603,29 +1603,29 @@ void sc1PStageClearUpdateGameClearScore()
 	}
 	y = (sc1PStageClearCheckHaveTimer() == FALSE) ? 126.0F : 94.0F;
 
-	if (D_ovl56_801352CC == D_ovl56_801353B8)
+	if (sSC1PStageClearTotalTimeTics == D_ovl56_801353B8)
 		sc1PStageClearMakeDamageTextSObjs(y);
 
-	if (D_ovl56_801352CC == D_ovl56_801353BC)
+	if (sSC1PStageClearTotalTimeTics == D_ovl56_801353BC)
 		sc1PStageClearMakeDamageDigitSObjs(y);
 
-	if (D_ovl56_801352CC == D_ovl56_801353C0)
+	if (sSC1PStageClearTotalTimeTics == D_ovl56_801353C0)
 	{
 		gcEjectGObj(sGMStageClearDamageMultiplierGObj);
 		sGMStageClearScoreTotal += sc1PStageClearGetAppendTotalDamageScore(y);
 	}
-	if (D_ovl56_801352CC == D_ovl56_801353C4)
+	if (sSC1PStageClearTotalTimeTics == D_ovl56_801353C4)
 	{
 		gcEjectGObj(sGMStageClearScoreTextGObj);
 		func_ovl56_80133F00();
 
 		if (D_ovl56_801352D8 != 0)
 		{
-			D_ovl56_80135340 = D_ovl56_80135344 = D_ovl56_80135348 = D_ovl56_801352CC + 10;
+			D_ovl56_80135340 = D_ovl56_80135344 = D_ovl56_80135348 = sSC1PStageClearTotalTimeTics + 10;
 		}
 		else D_ovl56_8013533C = 1;
 	}
-	if ((D_ovl56_801352D8 != 0) && (sGMStageClearBonusTextGObj != NULL) && (D_ovl56_80135340 == D_ovl56_801352CC))
+	if ((D_ovl56_801352D8 != 0) && (sGMStageClearBonusTextGObj != NULL) && (D_ovl56_80135340 == sSC1PStageClearTotalTimeTics))
 	{
 		gcEjectGObj(sGMStageClearBonusTextGObj);
 		sGMStageClearBonusTextGObj = NULL;
@@ -1658,18 +1658,18 @@ void sc1PStageClearUpdateStageClearScore()
 
 	if (sc1PStageClearCheckHaveTimer() == FALSE)
 	{
-		if (D_ovl56_801352CC == D_ovl56_801353A8)
+		if (sSC1PStageClearTotalTimeTics == D_ovl56_801353A8)
 			sc1PStageClearMakeTimerTextSObjs(94.0F);
 
-		if (D_ovl56_801352CC == D_ovl56_801353AC)
+		if (sSC1PStageClearTotalTimeTics == D_ovl56_801353AC)
 			sc1PStageClearMakeTimerDigitSObjs(94.0F);
 
-		if (D_ovl56_801352CC == D_ovl56_801353B0)
+		if (sSC1PStageClearTotalTimeTics == D_ovl56_801353B0)
 		{
 			gcEjectGObj(sGMStageClearTimerMultiplierGObj);
 			sGMStageClearScoreTotal += sc1PStageClearGetAppendTotalTimeScore(94.0F);
 		}
-		if (D_ovl56_801352CC == D_ovl56_801353B4)
+		if (sSC1PStageClearTotalTimeTics == D_ovl56_801353B4)
 		{
 			gcEjectGObj(sGMStageClearScoreTextGObj);
 			func_ovl56_80133F00();
@@ -1677,28 +1677,28 @@ void sc1PStageClearUpdateStageClearScore()
 	}
 	y = (sc1PStageClearCheckHaveTimer() == FALSE) ? 126.0F : 94.0F;
 
-	if (D_ovl56_801352CC == D_ovl56_801353B8)
+	if (sSC1PStageClearTotalTimeTics == D_ovl56_801353B8)
 		sc1PStageClearMakeDamageTextSObjs(y);
 
-	if (D_ovl56_801352CC == D_ovl56_801353BC)
+	if (sSC1PStageClearTotalTimeTics == D_ovl56_801353BC)
 		sc1PStageClearMakeDamageDigitSObjs(y);
 
-	if (D_ovl56_801352CC == D_ovl56_801353C0)
+	if (sSC1PStageClearTotalTimeTics == D_ovl56_801353C0)
 	{
 		gcEjectGObj(sGMStageClearDamageMultiplierGObj);
 		sGMStageClearScoreTotal += sc1PStageClearGetAppendTotalDamageScore(y);
 	}
-	if (D_ovl56_801352CC == D_ovl56_801353C4)
+	if (sSC1PStageClearTotalTimeTics == D_ovl56_801353C4)
 	{
 		gcEjectGObj(sGMStageClearScoreTextGObj);
 		func_ovl56_80133F00();
 
 		if (D_ovl56_801352D8 != 0)
-			D_ovl56_80135340 = D_ovl56_80135344 = D_ovl56_80135348 = D_ovl56_801352CC + 10;
+			D_ovl56_80135340 = D_ovl56_80135344 = D_ovl56_80135348 = sSC1PStageClearTotalTimeTics + 10;
 		else
 			D_ovl56_8013533C = 1;
 	}
-	if ((D_ovl56_801352D8 != 0) && (sGMStageClearBonusTextGObj != NULL) && (D_ovl56_80135340 == D_ovl56_801352CC))
+	if ((D_ovl56_801352D8 != 0) && (sGMStageClearBonusTextGObj != NULL) && (D_ovl56_80135340 == sSC1PStageClearTotalTimeTics))
 	{
 		gcEjectGObj(sGMStageClearBonusTextGObj);
 		sGMStageClearBonusTextGObj = NULL;
@@ -1730,30 +1730,30 @@ void sc1PStageClearUpdateResultScore()
 
 	if (sGMStageClear1PGameStage != nSC1PGameStageBonus3)
 	{
-		if (D_ovl56_801352CC == 10)
+		if (sSC1PStageClearTotalTimeTics == 10)
 			sc1PStageClearMakeTargetTextSObjs();
-		else if (D_ovl56_801352CC == 20)
+		else if (sSC1PStageClearTotalTimeTics == 20)
 		{
 			func_ovl56_80132F78();
-			D_ovl56_801353A0 = (sGMStageClearBonusObjectivesCleared * 10) + D_ovl56_801352CC;
+			D_ovl56_801353A0 = (sGMStageClearBonusObjectivesCleared * 10) + sSC1PStageClearTotalTimeTics;
 		}
 	}
-	else if (D_ovl56_801352CC == 10)
-		D_ovl56_801353A0 = D_ovl56_801352CC;
+	else if (sSC1PStageClearTotalTimeTics == 10)
+		D_ovl56_801353A0 = sSC1PStageClearTotalTimeTics;
 
 	if (D_ovl56_801353A0 != 0)
 	{
 		if ((sc1PStageClearCheckHaveTimer() != FALSE) && (sGMStageClear1PGameStage != nSC1PGameStageBonus3))
 		{
-			if (D_ovl56_801353A0 == D_ovl56_801352CC)
+			if (D_ovl56_801353A0 == sSC1PStageClearTotalTimeTics)
 			{
 				if (D_ovl56_801352D8 != 0)
-					D_ovl56_80135340 = D_ovl56_80135344 = D_ovl56_80135348 = D_ovl56_801352CC + 10;
+					D_ovl56_80135340 = D_ovl56_80135344 = D_ovl56_80135348 = sSC1PStageClearTotalTimeTics + 10;
 				else
 					D_ovl56_8013533C = 1;
 			}
 		}
-		else if (D_ovl56_801352CC == (D_ovl56_801353A0 + 10))
+		else if (sSC1PStageClearTotalTimeTics == (D_ovl56_801353A0 + 10))
 		{
 			if (sGMStageClear1PGameStage == nSC1PGameStageBonus3)
 				sc1PStageClearMakeTimerTextSObjs(94.0F);
@@ -1761,7 +1761,7 @@ void sc1PStageClearUpdateResultScore()
 			else if (sGMStageClearBonusObjectivesCleared == ARRAY_COUNT(sGMStageClearBonusObjectiveGObjs))
 				sc1PStageClearMakeTimerTextSObjs(126.0F);
 		}
-		else if (D_ovl56_801352CC == (D_ovl56_801353A0 + 30))
+		else if (sSC1PStageClearTotalTimeTics == (D_ovl56_801353A0 + 30))
 		{
 			if (sGMStageClear1PGameStage == nSC1PGameStageBonus3)
 				sc1PStageClearMakeTimerDigitSObjs(94.0F);
@@ -1769,7 +1769,7 @@ void sc1PStageClearUpdateResultScore()
 			else if (sGMStageClearBonusObjectivesCleared == 10)
 				sc1PStageClearMakeTimerDigitSObjs(126.0F);
 		}
-		else if (D_ovl56_801352CC == (D_ovl56_801353A0 + 50))
+		else if (sSC1PStageClearTotalTimeTics == (D_ovl56_801353A0 + 50))
 		{
 			if (sGMStageClear1PGameStage == nSC1PGameStageBonus3)
 			{
@@ -1783,7 +1783,7 @@ void sc1PStageClearUpdateResultScore()
 				sGMStageClearScoreTotal += sc1PStageClearGetAppendTotalTimeScore(126.0F);
 			}
 		}
-		else if (D_ovl56_801352CC == (D_ovl56_801353A0 + 70))
+		else if (sSC1PStageClearTotalTimeTics == (D_ovl56_801353A0 + 70))
 		{
 			if ((sGMStageClearBonusObjectivesCleared == ARRAY_COUNT(sGMStageClearBonusObjectiveGObjs)) || (sGMStageClear1PGameStage == nSC1PGameStageBonus3))
 			{
@@ -1791,12 +1791,12 @@ void sc1PStageClearUpdateResultScore()
 				func_ovl56_80133F00();
 			}
 			if (D_ovl56_801352D8 != 0)
-				D_ovl56_80135340 = D_ovl56_80135344 = D_ovl56_80135348 = D_ovl56_801352CC + 10;
+				D_ovl56_80135340 = D_ovl56_80135344 = D_ovl56_80135348 = sSC1PStageClearTotalTimeTics + 10;
 			else
 				D_ovl56_8013533C = 1;
 		}
 	}
-	if ((D_ovl56_801352D8 != 0) && (sGMStageClearBonusTextGObj != NULL) && (D_ovl56_80135340 == D_ovl56_801352CC))
+	if ((D_ovl56_801352D8 != 0) && (sGMStageClearBonusTextGObj != NULL) && (D_ovl56_80135340 == sSC1PStageClearTotalTimeTics))
 	{
 		gcEjectGObj(sGMStageClearBonusTextGObj);
 		sGMStageClearBonusTextGObj = NULL;
@@ -1832,9 +1832,9 @@ void sc1PStageClearUpdateResultScore()
 // 801349F0
 void sc1PStageClearProcRun(GObj *gobj)
 {
-	D_ovl56_801352CC++;
+	sSC1PStageClearTotalTimeTics++;
 
-	if (D_ovl56_801352CC >= 10)
+	if (sSC1PStageClearTotalTimeTics >= 10)
 	{
 		if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
 		{
@@ -1844,11 +1844,12 @@ void sc1PStageClearProcRun(GObj *gobj)
 				gSceneData.scene_current = nSCKindTitle;
 
 				sc1PStageClearUpdateTotal1PGameScore();
+				
 				leoInitUnit_atten();
 			}
 			else if ((D_ovl56_80135334 != 0) && (sGMStageClearIsAdvance == FALSE))
 			{
-				D_ovl56_80135340 = D_ovl56_801352CC;
+				D_ovl56_80135340 = sSC1PStageClearTotalTimeTics;
 			}
 		}
 		switch (sGMStageClearKind)
@@ -1869,7 +1870,7 @@ void sc1PStageClearProcRun(GObj *gobj)
 }
 
 // 80134AF4
-void gm1PStageClearCopyFramebufToWallpaper(void)
+void sc1PStageClearCopyFramebufToWallpaper(void)
 {
 	s32 i, j;
 	// syPixelPair holds four 16-bit pixels, or two 32-bit pixels
@@ -1935,7 +1936,7 @@ void sc1PStageClearInitAll()
 	rdManagerInitSetup(&rd_setup);
 	rdManagerLoadFiles(dGMStageClearFileIDs, ARRAY_COUNT(dGMStageClearFileIDs), sGMStageClearFiles, gsMemoryAlloc(rdManagerGetAllocSize(dGMStageClearFileIDs, ARRAY_COUNT(dGMStageClearFileIDs)), 0x10));
 	gcMakeGObjSPAfter(0, sc1PStageClearProcRun, 0, GOBJ_LINKORDER_DEFAULT);
-	gm1PStageClearCopyFramebufToWallpaper();
+	sc1PStageClearCopyFramebufToWallpaper();
 	func_8000B9FC(0, 0x80000000, 0x64, 0, 0);
 	func_ovl56_80133C88();
 	func_ovl56_80133B48();

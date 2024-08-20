@@ -306,7 +306,7 @@ $(BUILD_DIR)/%.o: %.c
 	$(V)$(PYTHON) tools/patchMips3Objects.py $@
 
 # Staff roll specific
-src/gm/gmcredits.c: src/credits/staff.credits.encoded src/credits/titles.credits.encoded src/credits/info.credits.encoded src/credits/companies.credits.encoded
+src/gm/gmstaffroll.c: src/credits/staff.credits.encoded src/credits/titles.credits.encoded src/credits/info.credits.encoded src/credits/companies.credits.encoded
 src/credits/staff.credits.encoded: src/credits/staff.credits.txt tools/creditsTextConverter.py
 	$(call print_2,Creating staff roll data for:,$<,$(PURPLE))
 	$(V)$(PYTHON) tools/creditsTextConverter.py $< -titleFont

@@ -3,6 +3,6 @@
 
 #include "gmcollision.h"
 #include "gmrumble.h"
-#include "gmcredits.h"
+#include "gmstaffroll.h"
 
 #endif

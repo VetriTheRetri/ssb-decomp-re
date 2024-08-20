@@ -4,7 +4,22 @@
 #include <sys/thread3.h>
 #include <ssb_types.h>
 
-#define SYDISPLAY_DEFINE_FRAMEBUF_ADDR(width, height, n) (0x80400000 - (((width) * (height) * sizeof(u16)) * (3 - (n))))
+// Get total size of empty width framebuffer pixels from resolution edge
+#define SYDISPLAY_BORDER_SIZE_WIDTH(height, pixels, type) \
+((height) * (pixels) * sizeof(type))
+
+// Get total size of empty height framebuffer pixels from resolution edge
+#define SYDISPLAY_BORDER_SIZE_HEIGHT(width, pixels, type) \
+((width) * (pixels) * sizeof(type))
+
+#define SYDISPLAY_DEFINE_FRAMEBUF_ADDR(width, height, w_border, h_border, type, id) \
+(                                                                                   \
+    (0x80400000 - (((width) * (height) * sizeof(type)) * (3 - (id)))) -             \
+    (                                                                               \
+        SYDISPLAY_BORDER_SIZE_WIDTH(height, w_border, type) +                       \
+        SYDISPLAY_BORDER_SIZE_HEIGHT(width, h_border, type)                         \
+    )                                                                               \
+)
 
 #define SYDISPLAY_DEFINE_DEFAULT() { gSCSubsysFramebuffer0, gSCSubsysFramebuffer1, gSCSubsysFramebuffer2, NULL, 320, 240, 0x16A99 }
 

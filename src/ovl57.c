@@ -49,8 +49,15 @@ Gfx dMNCongraDisplayList[] =
 };
 
 // 80132208
-syDisplaySetup D_ovl57_80132208 = {
-	0x80325400, 0x8036d200, 0x803b5000, 0x00000000, 0x00000140, 0x000000f0, 0x00015aa9
+syDisplaySetup D_ovl57_80132208 =
+{
+	SYDISPLAY_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 0),
+	SYDISPLAY_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 1),
+	SYDISPLAY_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 2),
+	NULL,
+	320,
+	240, 
+	0x15AA9
 };
 
 // 80132224
@@ -245,7 +252,7 @@ void mnCongraStartScene()
 	u16 *subsys_arena_lo;
 	u32 *congra_arena_hi;
 
-	congra_arena_hi = (u32*)0x80325400;
+	congra_arena_hi = (u32*)SYDISPLAY_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 0);
 
 	while ((uintptr_t)congra_arena_hi < 0x80400000) { *congra_arena_hi++ = 0x000000FF; } // WARNING: Newline memes!
 
@@ -265,7 +272,7 @@ void mnCongraStartScene()
 	}
 	D_ovl57_80132208.zbuffer = syDisplayGetZBuffer(6400);
 	func_80007024(&D_ovl57_80132208);
-	D_ovl57_80132224.arena_size = (0x80325400 - (uintptr_t)&ovl57_BSS_END);
+	D_ovl57_80132224.arena_size = (SYDISPLAY_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 0) - (uintptr_t)&ovl57_BSS_END);
 	gsGTLSceneInit(&D_ovl57_80132224); subsys_arena_lo = (uintptr_t)&gSCSubsysFramebuffer0; // WARNING: Newline memes!
 	while ((uintptr_t)subsys_arena_lo < 0x80400000) { *subsys_arena_lo++ = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01); }
 }

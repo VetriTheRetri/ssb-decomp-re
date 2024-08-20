@@ -2324,9 +2324,9 @@ void func_ovl59_80135118(void)
 // 0x8013A708
 syDisplaySetup dGMStaffrollDisplaySetup =
 {
-	SYDISPLAY_DEFINE_FRAMEBUF_ADDR(640, 480, 0),
-	SYDISPLAY_DEFINE_FRAMEBUF_ADDR(640, 480, 1),
-	SYDISPLAY_DEFINE_FRAMEBUF_ADDR(640, 480, 2),
+	SYDISPLAY_DEFINE_FRAMEBUF_ADDR(640, 480, 0, 0, u16, 0),
+	SYDISPLAY_DEFINE_FRAMEBUF_ADDR(640, 480, 0, 0, u16, 1),
+	SYDISPLAY_DEFINE_FRAMEBUF_ADDR(640, 480, 0, 0, u16, 2),
 	NULL,
 	640,
 	480,
@@ -2386,7 +2386,7 @@ void gmStaffrollStartScene(void)
 	 * being only a concept as seen here with the custom 640x480 framebuffer?
 	 */
 
-	u32 *arena32 = (u32*)SYDISPLAY_DEFINE_FRAMEBUF_ADDR(640, 480, 0);
+	u32 *arena32 = (u32*)SYDISPLAY_DEFINE_FRAMEBUF_ADDR(640, 480, 0, 0, u16, 0);
 	u16 *arena16;
 
 	while ((uintptr_t)arena32 < 0x80400000) { *arena32++ = 0x00000000; }
@@ -2394,7 +2394,7 @@ void gmStaffrollStartScene(void)
 	dGMStaffrollDisplaySetup.zbuffer = syDisplayGetZBuffer(12800);
 	func_80007024(&dGMStaffrollDisplaySetup);
 
-	dGMStaffrollGtlSetup.arena_size = (size_t) ((uintptr_t)SYDISPLAY_DEFINE_FRAMEBUF_ADDR(640, 480, 0) - (uintptr_t)&ovl59_BSS_END);
+	dGMStaffrollGtlSetup.arena_size = (size_t) ((uintptr_t)SYDISPLAY_DEFINE_FRAMEBUF_ADDR(640, 480, 0, 0, u16, 0) - (uintptr_t)&ovl59_BSS_END);
 	gsGTLSceneInit(&dGMStaffrollGtlSetup);
 
 	arena16 = gSCSubsysFramebuffer0;

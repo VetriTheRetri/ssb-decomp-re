@@ -445,7 +445,7 @@ void mnDebugBattleInit()
 	rdManagerInitSetup(&rldmSetup);
 
 	main_gobj = gcMakeGObjSPAfter(0, mnDebugBattleMain, 0xF, 0x80000000);
-	gcAddGObjCommonProc(main_gobj, mnDebugBattleSyncCostumes, 1, 0);
+	gcAddGObjProcess(main_gobj, mnDebugBattleSyncCostumes, 1, 0);
 
 	func_8000B9FC(0xF, 0x80000000, 0x64, 2, 0xFF);
 	efAllocInitParticleBank();

@@ -1504,7 +1504,7 @@ GObj* efGroundMakeEffect(efCreateDesc *effect_desc, s32 lr)
     }
     else
     {
-        gcAddGObjRenderProc(effect_gobj, effect_desc->proc_render, effect_desc->dl_link, 2, -1);
+        gcAddGObjDisplay(effect_gobj, effect_desc->proc_render, effect_desc->dl_link, 2, -1);
         gcMoveGObjDLHead(effect_gobj, effect_desc->dl_link, GOBJ_DLLINKORDER_DEFAULT);
 
         o_mobsjub = effect_desc->o_mobjsub;
@@ -1684,7 +1684,7 @@ void efGroundMakeEffectSpawnActor(void)
 
         if (effect_gobj != NULL)
         {
-            gcAddGObjCommonProc(effect_gobj, efGroundActorProcUpdate, nOMObjProcessKindProc, 1);
+            gcAddGObjProcess(effect_gobj, efGroundActorProcUpdate, nOMObjProcessKindProc, 1);
 
             effect_gobj->user_data.p = &sEFGroundActor;
 

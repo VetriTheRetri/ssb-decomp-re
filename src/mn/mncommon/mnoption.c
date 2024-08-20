@@ -267,7 +267,7 @@ void mnOptionMakeSoundOptionSObjs(void)
     SObj *sobj;
 
     sMNOptionSoundOptionGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionMonoTextSprite));
 
@@ -307,7 +307,7 @@ void mnOptionMakeSoundTextSObj(void)
     SObj *sobj;
 
     sMNOptionSoundGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     mnOptionMakeOptionTabSObjs(gobj, 113.0F, 42.0F, 17);
     mnOptionUpdateOptionTabSObjs(gobj, sMNOptionOption == nMNOptionOptionSound);
@@ -333,7 +333,7 @@ void mnOptionMakeScreenAdjustSObj(void)
 
     sMNOptionScreenAdjustGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     mnOptionMakeOptionTabSObjs(gobj, 91.0F, 89.0F, 17);
 
@@ -360,7 +360,7 @@ void mnOptionMakeBackupClearSObj(void)
 
     sMNOptionBackupClearGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
     mnOptionMakeOptionTabSObjs(gobj, 69.0F, 136.0F, 17);
     mnOptionUpdateOptionTabSObjs(gobj, sMNOptionOption == nMNOptionOptionBackupClear);
 
@@ -437,7 +437,7 @@ void mnOptionMakeHeaderSObjs(void)
 
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjRenderProc(gobj, mnOptionHeaderProcRender, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, mnOptionHeaderProcRender, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonSmashLogoSprite));
 
@@ -471,7 +471,7 @@ void mnOptionMakeDecalSObjs(void)
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonCircleSprite));
 
@@ -599,7 +599,7 @@ void mnOptionSoundUnderlineProcRender(GObj *gobj)
 // 0x801329F4
 void mnOptionMakeSoundUnderlineGObj(void)
 {
-    gcAddGObjRenderProc
+    gcAddGObjDisplay
     (
         gcMakeGObjSPAfter
         (

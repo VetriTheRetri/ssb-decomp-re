@@ -197,7 +197,7 @@ void itBoxContainerSmashMakeEffect(Vec3f *pos)
 
         if (effect_gobj != NULL)
         {
-            gcAddGObjRenderProc(effect_gobj, gcDrawDObjTreeForGObj, 11, GOBJ_DLLINKORDER_DEFAULT, -1);
+            gcAddGObjDisplay(effect_gobj, gcDrawDObjTreeForGObj, 11, GOBJ_DLLINKORDER_DEFAULT, -1);
 
             dl = (Gfx*) ((*(uintptr_t*) ((uintptr_t)*dITBoxItemDesc.p_file + dITBoxItemDesc.o_attributes) - (intptr_t)&lITBoxDataStart) + (intptr_t)&lITBoxEffectDisplayList); // Linker thing
 
@@ -221,7 +221,7 @@ void itBoxContainerSmashMakeEffect(Vec3f *pos)
 
             effect_gobj->user_data.p = ep;
 
-            gcAddGObjCommonProc(effect_gobj, itBoxContainerSmashUpdateEffect, 1, 3);
+            gcAddGObjProcess(effect_gobj, itBoxContainerSmashUpdateEffect, 1, 3);
         }
     }
 }

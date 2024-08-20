@@ -258,7 +258,7 @@ void mnDataMakeCharactersSObj(void)
 
     sMNDataCharactersGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     mnDataMakeOptionTabSObjs(gobj, posx, posy, 16);
 
@@ -298,7 +298,7 @@ void mnDataMakeVSRecordSObj(void)
 
     sMNDataVSRecordGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     mnDataMakeOptionTabSObjs(gobj, posx, posy, 16);
 
@@ -325,7 +325,7 @@ void mnDataMakeSoundTestSObj(void)
 
     sMNDataSoundTestGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     mnDataMakeOptionTabSObjs(gobj, 69.0F, 136.0F, 16);
 
@@ -403,7 +403,7 @@ void mnDataMakeHeaderSObjs(void)
 
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjRenderProc(gobj, mnDataHeaderProcRender, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, mnDataHeaderProcRender, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNDataFiles[0], &lMNCommonSmashLogoSprite));
 
@@ -437,7 +437,7 @@ void mnDataMakeDecalSObjs(void)
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNDataFiles[0], &lMNCommonCircleSprite));
 

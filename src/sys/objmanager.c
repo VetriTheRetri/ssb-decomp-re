@@ -734,7 +734,7 @@ void gcSetCameraPrevAlloc(Camera* cam)
 }
 
 // 80008188
-GObjProcess* gcAddGObjCommonProc(GObj* gobj, void (*proc)(GObj*), u8 kind, u32 priority)
+GObjProcess* gcAddGObjProcess(GObj* gobj, void (*proc)(GObj*), u8 kind, u32 priority)
 {
 	OMThreadStackNode* stack_node;
 	GObjThread* gobjthread;
@@ -1796,7 +1796,7 @@ void gcLinkGObjDLCommon(GObj* gobj, void (*proc_render)(GObj*), u8 dl_link, u32 
 }
 
 // 80009DF4
-void gcAddGObjRenderProc(GObj *gobj, void (*proc_render)(GObj*), u8 dl_link, u32 order, s32 arg4)
+void gcAddGObjDisplay(GObj *gobj, void (*proc_render)(GObj*), u8 dl_link, u32 order, s32 arg4)
 {
 	if (gobj == NULL)
 		gobj = D_80046A54;

@@ -65,7 +65,7 @@ typedef enum GObjLinkIndex
     nOMObjCommonLinkIDEffect,             // ID 6: Effect type 1 object (other ID is 8 but idk what it does)
     nOMObjCommonLinkIDSpecialEffect = 8,  // ID 8: Effect type 2 object
     nOMObjCommonLinkIDHighlight = 9,      // ID 9: Credits shootout rectangles that zoom in on crosshair
-    nOMObjCommonLinkIDBattleCamera = 9,   // ID 9: Primary in-game cameras (?)
+    nOMObjCommonLinkIDCamera = 9,         // ID 9: Cameras?
     nOMObjCommonLinkIDInterfaceActor = 10,// ID 10: Traffic lamp on match start
     nOMObjCommonLinkIDInterface = 11,     // ID 11: HUD elements object
     nOMObjCommonLinkIDMagnify = 12,       // ID 12: HUD magnifying glass

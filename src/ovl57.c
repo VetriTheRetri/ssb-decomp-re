@@ -168,7 +168,7 @@ void mnCongraInitAll()
 
 	gobj = gcMakeGObjSPAfter(nOMObjCommonKindWallpaper, NULL, nOMObjCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0, 0x80000000, -1);
+	gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 0, 0x80000000, -1);
 
 	sobj = gcAppendSObjWithSprite
 	(

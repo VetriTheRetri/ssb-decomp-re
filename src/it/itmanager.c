@@ -265,7 +265,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, 
     }
     else proc_render = (attributes->is_render_xlu) ? itRenderProcRenderXLU : itRenderProcRenderOPA;
 
-    gcAddGObjRenderProc(item_gobj, proc_render, 11, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(item_gobj, proc_render, 11, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     item_gobj->user_data.p = ip;
 
@@ -414,9 +414,9 @@ GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, 
     ip->coll_data.vel_push.y        = 0.0F;
     ip->coll_data.vel_push.z        = 0.0F;
 
-    gcAddGObjCommonProc(item_gobj, itProcessProcItemMain, nOMObjProcessKindProc, 3);
-    gcAddGObjCommonProc(item_gobj, itProcessProcSearchHitAll, nOMObjProcessKindProc, 1);
-    gcAddGObjCommonProc(item_gobj, itProcessProcHitCollisions, nOMObjProcessKindProc, 0);
+    gcAddGObjProcess(item_gobj, itProcessProcItemMain, nOMObjProcessKindProc, 3);
+    gcAddGObjProcess(item_gobj, itProcessProcSearchHitAll, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(item_gobj, itProcessProcHitCollisions, nOMObjProcessKindProc, 0);
 
     ip->proc_update     = item_desc->proc_update;
     ip->proc_map        = item_desc->proc_map;
@@ -590,7 +590,7 @@ GObj* itManagerMakeItemSpawnActor(void)
                 }
                 gobj = gcMakeGObjSPAfter(nOMObjCommonKindItem, NULL, nOMObjCommonLinkIDItemActor, GOBJ_LINKORDER_DEFAULT);
 
-                gcAddGObjCommonProc(gobj, itManagerMakeRandomItem, nOMObjProcessKindProc, 3);
+                gcAddGObjProcess(gobj, itManagerMakeRandomItem, nOMObjProcessKindProc, 3);
 
                 item_count_toggles = gBattleState->item_toggles;
 

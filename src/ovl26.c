@@ -209,8 +209,8 @@ void mnBattleCreateLockedPortrait(s32 portrait_id)
 
 	// portrait bg (fire)
 	texture_gobj = gcMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
-	gcAddGObjRenderProc(texture_gobj, func_ovl0_800CCF00, 0x1BU, 0x80000000U, -1);
-	gcAddGObjCommonProc(texture_gobj, mnBattleSetPortraitX, 1, 1);
+	gcAddGObjDisplay(texture_gobj, func_ovl0_800CCF00, 0x1BU, 0x80000000U, -1);
+	gcAddGObjProcess(texture_gobj, mnBattleSetPortraitX, 1, 1);
 
 	texture_sobj = gcAppendSObjWithSprite(texture_gobj, gFile013 + (intptr_t)&FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET);
 	texture_sobj->pos.x = (f32)(((portrait_id >= 6 ? portrait_id - 6 : portrait_id) * 0x2D) + 0x19);
@@ -221,8 +221,8 @@ void mnBattleCreateLockedPortrait(s32 portrait_id)
 
 	// portrait
 	texture_gobj = gcMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
-	gcAddGObjRenderProc(texture_gobj, mnBattleRenderPortraitWithNoise, 0x1BU, 0x80000000U, -1);
-	gcAddGObjCommonProc(texture_gobj, mnBattleSetPortraitX, 1, 1);
+	gcAddGObjDisplay(texture_gobj, mnBattleRenderPortraitWithNoise, 0x1BU, 0x80000000U, -1);
+	gcAddGObjProcess(texture_gobj, mnBattleSetPortraitX, 1, 1);
 
 	texture_sobj
 		= gcAppendSObjWithSprite(texture_gobj, (gFile013 + locked_portrait_offsets[mnBattleGetFtKind(portrait_id)]));
@@ -234,8 +234,8 @@ void mnBattleCreateLockedPortrait(s32 portrait_id)
 
 	// question mark
 	texture_gobj = gcMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
-	gcAddGObjRenderProc(texture_gobj, func_ovl0_800CCF00, 0x1BU, 0x80000000U, -1);
-	gcAddGObjCommonProc(texture_gobj, mnBattleSetPortraitX, 1, 1);
+	gcAddGObjDisplay(texture_gobj, func_ovl0_800CCF00, 0x1BU, 0x80000000U, -1);
+	gcAddGObjProcess(texture_gobj, mnBattleSetPortraitX, 1, 1);
 
 	texture_sobj
 		= gcAppendSObjWithSprite(texture_gobj, gFile013 + (intptr_t)&FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET);
@@ -266,9 +266,9 @@ void mnBattleCreatePortrait(s32 portrait_id)
 	{
 		// portrait bg (fire)
 		portrait_bg_gobj = gcMakeGObjSPAfter(0U, NULL, 0x1DU, 0x80000000U);
-		gcAddGObjRenderProc(portrait_bg_gobj, func_ovl0_800CCF00, 0x24U, 0x80000000U, -1);
+		gcAddGObjDisplay(portrait_bg_gobj, func_ovl0_800CCF00, 0x24U, 0x80000000U, -1);
 		portrait_bg_gobj->user_data.p = portrait_id;
-		gcAddGObjCommonProc(portrait_bg_gobj, mnBattleSetPortraitX, 1, 1);
+		gcAddGObjProcess(portrait_bg_gobj, mnBattleSetPortraitX, 1, 1);
 
 		texture_sobj
 			= gcAppendSObjWithSprite(portrait_bg_gobj, gFile013 + (intptr_t)&FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET);
@@ -276,8 +276,8 @@ void mnBattleCreatePortrait(s32 portrait_id)
 
 		// portrait
 		portrait_gobj = gcMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
-		gcAddGObjRenderProc(portrait_gobj, func_ovl0_800CCF00, 0x1BU, 0x80000000U, -1);
-		gcAddGObjCommonProc(portrait_gobj, mnBattleSetPortraitX, 1, 1);
+		gcAddGObjDisplay(portrait_gobj, func_ovl0_800CCF00, 0x1BU, 0x80000000U, -1);
+		gcAddGObjProcess(portrait_gobj, mnBattleSetPortraitX, 1, 1);
 
 		texture_sobj
 			= gcAppendSObjWithSprite(portrait_gobj, (gFile013 + portrait_offsets[mnBattleGetFtKind(portrait_id)]));
@@ -310,7 +310,7 @@ void mnCreateTeamButton(s32 team_id, s32 port_id)
 	s32 team_color_button_offsets[3] = dMnBattleTeamButtonOffsets;
 
 	team_button_gobj = gMnBattlePanels[port_id].team_color_button = gcMakeGObjSPAfter(0U, NULL, 0x1BU, 0x80000000U);
-	gcAddGObjRenderProc(team_button_gobj, func_ovl0_800CCF00, 0x22U, 0x80000000U, -1);
+	gcAddGObjDisplay(team_button_gobj, func_ovl0_800CCF00, 0x22U, 0x80000000U, -1);
 
 	team_button_sobj = gcAppendSObjWithSprite(team_button_gobj, gFile011 + team_color_button_offsets[team_id]);
 	team_button_sobj->pos.x = (f32)((port_id * 0x45) + 0x22);
@@ -610,7 +610,7 @@ void mnBattleCreateTypeImage(s32 port_id)
 	f32 floats[4] = dMnBattleTypeOffsetsX;
 
 	gMnBattlePanels[port_id].type = type_gobj = gcMakeGObjSPAfter(0U, NULL, 0x16U, 0x80000000U);
-	gcAddGObjRenderProc(type_gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
+	gcAddGObjDisplay(type_gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
 
 	if (gMnBattlePanels[port_id].player_type == mnPanelTypeCPU)
 	{
@@ -689,7 +689,7 @@ void mnBattleCreatePanel(s32 port_id)
 	// name/logo
 	temp_gobj = gcMakeGObjSPAfter(0U, NULL, 0x16U, 0x80000000U);
 	gMnBattlePanels[port_id].name_logo = temp_gobj;
-	gcAddGObjRenderProc(temp_gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
+	gcAddGObjDisplay(temp_gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
 
 	mnBattleSyncNameAndLogo(port_id);
 
@@ -876,7 +876,7 @@ void mnBattleCreateBackground()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
 	background_gobj = gcMakeGObjSPAfter(0U, NULL, 0x11U, 0x80000000U);
-	gcAddGObjRenderProc(background_gobj, func_ovl0_800CCF00, 0x1AU, 0x80000000U, -1);
+	gcAddGObjDisplay(background_gobj, func_ovl0_800CCF00, 0x1AU, 0x80000000U, -1);
 	background_sobj
 		= gcAppendSObjWithSprite(background_gobj, GetAddressFromOffset(gFile015, &FILE_015_BACKGROUND_IMAGE_OFFSET));
 	background_sobj->cmt = G_TX_WRAP;
@@ -1082,7 +1082,7 @@ void mnBattleSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 cost
 
 		gMnBattlePanels[port_id].player = fighter_gobj;
 
-		gcAddGObjCommonProc(fighter_gobj, mnBattleRotateFighter, 1, 1);
+		gcAddGObjProcess(fighter_gobj, mnBattleRotateFighter, 1, 1);
 
 		DObjGetStruct(fighter_gobj)->translate.vec.f.x = (port_id * 840) - 1250;
 		DObjGetStruct(fighter_gobj)->translate.vec.f.y = -850.0F;
@@ -1795,9 +1795,9 @@ void mnBattleCreateWhiteSquare(s32 port_id)
 
 	white_square_gobj = gcMakeGObjSPAfter(0U, NULL, 0x1EU, 0x80000000U);
 	gMnBattlePanels[port_id].white_square = white_square_gobj;
-	gcAddGObjRenderProc(white_square_gobj, func_ovl0_800CCF00, 0x25U, 0x80000000U, -1);
+	gcAddGObjDisplay(white_square_gobj, func_ovl0_800CCF00, 0x25U, 0x80000000U, -1);
 	white_square_gobj->user_data.p = port_id;
-	gcAddGObjCommonProc(white_square_gobj, mnBattleFlashWhiteSquare, 0, 1);
+	gcAddGObjProcess(white_square_gobj, mnBattleFlashWhiteSquare, 0, 1);
 
 	white_square_sobj
 		= gcAppendSObjWithSprite(white_square_gobj, GetAddressFromOffset(gFile013, &FILE_013_WHITE_SQUARE));
@@ -2021,9 +2021,9 @@ void mnBattleDrawHandicapCPULevel(s32 port_id)
 
 	handicap_cpu_level_gobj = gcMakeGObjSPAfter(0U, NULL, 0x1CU, 0x80000000U);
 	gMnBattlePanels[port_id].handicap_cpu_level = handicap_cpu_level_gobj;
-	gcAddGObjRenderProc(handicap_cpu_level_gobj, func_ovl0_800CCF00, 0x23U, 0x80000000U, -1);
+	gcAddGObjDisplay(handicap_cpu_level_gobj, func_ovl0_800CCF00, 0x23U, 0x80000000U, -1);
 	handicap_cpu_level_gobj->user_data.p = port_id;
-	gcAddGObjCommonProc(handicap_cpu_level_gobj, mnBattleSyncHandicapCPULevelDisplay, 1, 1);
+	gcAddGObjProcess(handicap_cpu_level_gobj, mnBattleSyncHandicapCPULevelDisplay, 1, 1);
 
 	if (gMnBattlePanels[port_id].player_type == 0)
 	{
@@ -2075,7 +2075,7 @@ void mnDrawHandicapCPULevelValue(s32 port_id)
 
 	handicap_cpu_level_gobj = gcMakeGObjSPAfter(0U, NULL, 0x1CU, 0x80000000U);
 	gMnBattlePanels[port_id].handicap_cpu_level_value = handicap_cpu_level_gobj;
-	gcAddGObjRenderProc(handicap_cpu_level_gobj, func_ovl0_800CCF00, 0x23U, 0x80000000U, -1);
+	gcAddGObjDisplay(handicap_cpu_level_gobj, func_ovl0_800CCF00, 0x23U, 0x80000000U, -1);
 
 	handicap_cpu_level_sobj
 		= gcAppendSObjWithSprite(handicap_cpu_level_gobj, GetAddressFromOffset(gFile000, offsets[value]));
@@ -2101,9 +2101,9 @@ void mnReplaceFighterNameWithHandicapCPULevel(s32 port_id)
 	{
 		arrow_gobj = gcMakeGObjSPAfter(0U, NULL, 0x1CU, 0x80000000U);
 		gMnBattlePanels[port_id].arrows = arrow_gobj;
-		gcAddGObjRenderProc(arrow_gobj, func_ovl0_800CCF00, 0x23U, 0x80000000U, -1);
+		gcAddGObjDisplay(arrow_gobj, func_ovl0_800CCF00, 0x23U, 0x80000000U, -1);
 		arrow_gobj->user_data.s = port_id;
-		gcAddGObjCommonProc(arrow_gobj, mnBattleSyncAndBlinkArrows, 0, 1);
+		gcAddGObjProcess(arrow_gobj, mnBattleSyncAndBlinkArrows, 0, 1);
 	}
 	mnDrawHandicapCPULevelValue(port_id);
 }
@@ -3079,7 +3079,7 @@ void mnBattleAutopositionToken(s32 port_id)
 // 8013992C
 void mnBattleCreateTokenAutopositionRoutine()
 {
-	gcAddGObjCommonProc(gcMakeGObjSPAfter(0U, NULL, 0x1AU, 0x80000000U), mnBattleAutopositionToken, 1, 1);
+	gcAddGObjProcess(gcMakeGObjSPAfter(0U, NULL, 0x1AU, 0x80000000U), mnBattleAutopositionToken, 1, 1);
 }
 
 // 80139970
@@ -3110,7 +3110,7 @@ void mnBattleUpdateTokenShinePulseColor(GObj* unused)
 // 801399E8
 void mnBattleCreateTokenShinePulseRoutine()
 {
-	gcAddGObjCommonProc(gcMakeGObjSPAfter(0U, NULL, 0x1AU, 0x80000000U), mnBattleUpdateTokenShinePulseColor, 1, 1);
+	gcAddGObjProcess(gcMakeGObjSPAfter(0U, NULL, 0x1AU, 0x80000000U), mnBattleUpdateTokenShinePulseColor, 1, 1);
 }
 
 // 80139A2C
@@ -3156,7 +3156,7 @@ void mnBattleSyncShadeAndCostume(s32 unused)
 // 80139B4C
 void mnBattleCreateSyncShadeAndCostumeRoutine()
 {
-	gcAddGObjCommonProc(gcMakeGObjSPAfter(0U, NULL, 0x1FU, 0x80000000U), mnBattleSyncShadeAndCostume, 1, 1);
+	gcAddGObjProcess(gcMakeGObjSPAfter(0U, NULL, 0x1FU, 0x80000000U), mnBattleSyncShadeAndCostume, 1, 1);
 }
 
 // 80139B90
@@ -3191,13 +3191,13 @@ void mnBattleCreateWhiteCircles()
 		gcSetupCommonDObjs(white_circle_gobj, GetAddressFromOffset(gMnBattleFilesArray[6], &FILE_016_WHITE_CIRCLE_OFFSET_2),
 					  0);
 
-		gcAddGObjRenderProc(white_circle_gobj, gcDrawDObjTreeDLLinksForGObj, 9U, 0x80000000U, -1);
+		gcAddGObjDisplay(white_circle_gobj, gcDrawDObjTreeDLLinksForGObj, 9U, 0x80000000U, -1);
 
 		white_circle_gobj->user_data.s = i;
 
 		gcAddMObjAll(white_circle_gobj, GetAddressFromOffset(gMnBattleFilesArray[6], &FILE_016_WHITE_CIRCLE_OFFSET_1));
 
-		gcAddGObjCommonProc(white_circle_gobj, mnBattleSyncWhiteCircleSizeAndDisplay, 1, 1);
+		gcAddGObjProcess(white_circle_gobj, mnBattleSyncWhiteCircleSizeAndDisplay, 1, 1);
 
 		gcPlayAnimAll(white_circle_gobj);
 
@@ -3237,8 +3237,8 @@ void mnBattleCreateReadyToFightObjects()
 
 	// Ready to Fight banner
 	gobj = gcMakeGObjSPAfter(0U, NULL, 0x20U, 0x80000000U);
-	gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x26U, 0x80000000U, -1);
-	gcAddGObjCommonProc(gobj, mnBattleBlinkIfReadyToFight, 1, 1);
+	gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 0x26U, 0x80000000U, -1);
+	gcAddGObjProcess(gobj, mnBattleBlinkIfReadyToFight, 1, 1);
 
 	// Ready to Fight banner bg
 	sobj = gcAppendSObjWithSprite(gobj, GetAddressFromOffset(gFile011, &FILE_011_READY_TO_FIGHT_BG_IMAGE_OFFSET));
@@ -3274,8 +3274,8 @@ void mnBattleCreateReadyToFightObjects()
 
 	// Press Start indicator
 	gobj = gcMakeGObjSPAfter(0U, NULL, 0x16U, 0x80000000U);
-	gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
-	gcAddGObjCommonProc(gobj, mnBattleBlinkIfReadyToFight, 1, 1);
+	gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
+	gcAddGObjProcess(gobj, mnBattleBlinkIfReadyToFight, 1, 1);
 
 	// "Press"
 	sobj = gcAppendSObjWithSprite(gobj, GetAddressFromOffset(gFile011, &FILE_011_PRESS_IMAGE_OFFSET));

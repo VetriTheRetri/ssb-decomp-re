@@ -685,7 +685,7 @@ void sc1PStageClearMakeTextSObjs()
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sGMStageClearFiles[0], &lGMStageClearSpriteTextShadow));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -754,7 +754,7 @@ void sc1PStageClearMakeTextSObjs()
 	}
 	sGMStageClearBonusTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sGMStageClearFiles[0], &lGMStageClearSpriteTextBonus));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -776,7 +776,7 @@ void sc1PStageClearMakeScoreSObjs()
 
 	sGMStageClearScoreTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sGMStageClearFiles[1], &lGMStageClearSpriteTextScore));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -804,7 +804,7 @@ void sc1PStageClearMakeTimerTextSObjs(f32 y)
 
 	sGMStageClearTimerTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sGMStageClearFiles[0], &lGMStageClearSpriteTextTimer));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -851,7 +851,7 @@ void sc1PStageClearMakeTimerDigitSObjs(f32 y)
 
 	sGMStageClearTimerMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sGMStageClearFiles[3], &lGMStageClearSpriteTextMultiplySign));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -899,7 +899,7 @@ s32 sc1PStageClearGetAppendTotalTimeScore(f32 y)
 
 	sGMStageClearTimerMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	switch (sGMStageClear1PGameStage)
 	{
@@ -931,7 +931,7 @@ void sc1PStageClearMakeDamageTextSObjs(f32 y)
 	s32 unused;
 
 	sGMStageClearDamageTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
-	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sGMStageClearFiles[0], &lGMStageClearSpriteTextDamage));
 
@@ -980,7 +980,7 @@ void sc1PStageClearMakeDamageDigitSObjs(f32 y)
 
 	sGMStageClearDamageMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	sc1PStageClearMakeScoreDigitSObjs(gobj, sGMStageClearDamageDealt, x, (s32)y - 1, NULL, 1, 0, 0, 4, FALSE);
 	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sGMStageClearFiles[3], &lGMStageClearSpriteTextMultiplySign));
@@ -1011,7 +1011,7 @@ s32 sc1PStageClearGetAppendTotalDamageScore(f32 y)
 
 	sGMStageClearDamageMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_LINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_LINKORDER_DEFAULT, -1);
 	damage_score_total = sGMStageClearDamageDealt * 10;
 
 	sc1PStageClearMakeScoreDigitSObjs(gobj, damage_score_total, 200.0F, (s32)y - 1, NULL, 1, 0, 0, 5, FALSE);
@@ -1029,7 +1029,7 @@ void sc1PStageClearMakeTargetTextSObjs()
 
 	sGMStageClearTargetGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sGMStageClearFiles[0], &lGMStageClearSpriteTextTarget));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1087,8 +1087,8 @@ void func_ovl56_80132E40(f32 x, f32 y, s32 objective_num)
 
 	sGMStageClearBonusObjectiveGObjs[objective_num] = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjCommonProc(gobj, func_ovl56_80132DC0, 1, 1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjProcess(gobj, func_ovl56_80132DC0, 1, 1);
 
 	gobj->user_data.u = (objective_num * 10) + D_ovl56_801352CC;
 
@@ -1216,8 +1216,8 @@ s32 sc1PStageClearAppendBonusStatGetPoints(s32 bonus_id, s32 bonus_num, f32 x, f
 
 	sGMStageClearBonusStatGObjs[bonus_num] = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjCommonProc(gobj, sc1PStageClearCommonProcUpdate, 1, 1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjProcess(gobj, sc1PStageClearCommonProcUpdate, 1, 1);
 
 	gobj->user_data.u = (bonus_num * 10) + D_ovl56_801352CC;
 
@@ -1298,8 +1298,8 @@ void sc1PStageClearMakeBonusPageArrow()
 
 	sGMStageClearBonusStatGObjs[9] = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjCommonProc(gobj, sc1PStageClearCommonProcUpdate, 1, 1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjProcess(gobj, sc1PStageClearCommonProcUpdate, 1, 1);
 
 	gobj->user_data.u = D_ovl56_801352CC + 90;
 
@@ -1381,7 +1381,7 @@ void sc1PStageClearMakeBonusTable()
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sGMStageClearFiles[0], &lGMStageClearSpriteBonusBorder));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1436,7 +1436,7 @@ void sc1PStageClearMakeFrameCopyBackground()
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 0x12, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjRenderProc(gobj, sc1PStageClearFrameCopyBackgroundProcRender, 0x1B, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearFrameCopyBackgroundProcRender, 0x1B, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sGMStageClearFiles[6], &D_NF_00020718));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;

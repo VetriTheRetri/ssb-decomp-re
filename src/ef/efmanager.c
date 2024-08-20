@@ -2160,10 +2160,10 @@ void efManagerProcRun(GObj *effect_gobj)
     {
         if (ep->proc_update != NULL)
         {
-            gcAddGObjCommonProc(effect_gobj, ep->proc_update, nOMObjProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, ep->proc_update, nOMObjProcessKindProc, 3);
         }
     }
-    else gcAddGObjCommonProc(effect_gobj, efManagerNoStructProcUpdate, nOMObjProcessKindProc, 3);
+    else gcAddGObjProcess(effect_gobj, efManagerNoStructProcUpdate, nOMObjProcessKindProc, 3);
 
     effect_gobj->proc_run = NULL;
 }
@@ -2215,7 +2215,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
     {
         return effect_gobj;
     }
-    gcAddGObjRenderProc(effect_gobj, effect_desc->proc_render, effect_desc->dl_link, 2, -1);
+    gcAddGObjDisplay(effect_gobj, effect_desc->proc_render, effect_desc->dl_link, 2, -1);
 
     o_mobjsub = effect_desc->o_mobjsub;
     o_anim_joint = effect_desc->o_anim_joint;
@@ -2398,7 +2398,7 @@ efParticle* efManagerDamageNormalLightMakeEffect(Vec3f *pos, s32 player, s32 siz
             {
                 return NULL;
             }
-            gcAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.common.eftrans = eftrans;
 
@@ -2542,7 +2542,7 @@ efParticle* efManagerImpactShockMakeEffect(Vec3f *pos, s32 size)
             {
                 return NULL;
             }
-            gcAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.common.eftrans = eftrans;
 
@@ -2630,7 +2630,7 @@ efParticle* efManagerDamageFireMakeEffect(Vec3f *pos, s32 size)
             {
                 return NULL;
             }
-            gcAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.common.eftrans = eftrans;
 
@@ -2698,7 +2698,7 @@ efParticle* efManagerDamageElectricMakeEffect(Vec3f *pos, s32 size)
             {
                 return NULL;
             }
-            gcAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.common.eftrans = eftrans;
 
@@ -2792,7 +2792,7 @@ efParticle* efManagerFlameLRMakeEffect(Vec3f *pos, s32 lr)
             {
                 return NULL;
             }
-            gcAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.common.eftrans = eftrans;
 
@@ -2859,7 +2859,7 @@ efParticle* efManagerFlameRandgcMakeEffect(Vec3f *pos)
             {
                 return NULL;
             }
-            gcAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.common.eftrans = eftrans;
 
@@ -2923,7 +2923,7 @@ efParticle* efManagerFlameStaticMakeEffect(Vec3f *pos)
             {
                 return NULL;
             }
-            gcAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.common.eftrans = eftrans;
 
@@ -2985,7 +2985,7 @@ efParticle* efManagerDustCollideMakeEffect(Vec3f *pos)
             {
                 return NULL;
             }
-            gcAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.common.eftrans = eftrans;
 
@@ -3122,7 +3122,7 @@ efParticle* efManagerDustLightMakeEffect(Vec3f *pos, sb32 is_invert_vel, f32 f_i
             {
                 return NULL;
             }
-            gcAddGObjCommonProc(effect_gobj, efManagerDustLightProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDustLightProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.dust_light.eftrans = eftrans;
 
@@ -3253,7 +3253,7 @@ efParticle* efManagerDustHeavyDoubleMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
 
         if (eftrans != NULL)
         {
-            gcAddGObjCommonProc(effect_gobj, efManagerDustHeavyDoubleProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDustHeavyDoubleProcUpdate, nOMObjProcessKindProc, 3);
 
             eftrans->effect_gobj = effect_gobj;
 
@@ -3359,7 +3359,7 @@ efParticle* efManagerDustExpandSmallMakeEffect(Vec3f *pos, f32 f_index)
             {
                 return NULL;
             }
-            gcAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.common.eftrans = eftrans;
 
@@ -4045,7 +4045,7 @@ void efManagerQuakeAddProcUpdate(GObj *effect_gobj)
 {
     efStruct *ep = efGetStruct(effect_gobj);
 
-    gcAddGObjCommonProc(effect_gobj, efManagerQuakeProcUpdate, 1, ep->effect_vars.quake.priority);
+    gcAddGObjProcess(effect_gobj, efManagerQuakeProcUpdate, 1, ep->effect_vars.quake.priority);
 
     effect_gobj->proc_run = NULL;
 }
@@ -4213,7 +4213,7 @@ efParticle* efManagerSetOffMakeEffect(Vec3f *pos, s32 size)
             {
                 return NULL;
             }
-            gcAddGObjCommonProc(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->effect_vars.common.eftrans = eftrans;
 
@@ -6383,7 +6383,7 @@ efParticle* efManagerKirbyInhaleWindMakeEffect(GObj *fighter_gobj)
 
             effect_gobj->user_data.p = ep; // y u do dis again
 
-            gcAddGObjCommonProc(effect_gobj, efManagerKirbyInhaleWindProcUpdate, nOMObjProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerKirbyInhaleWindProcUpdate, nOMObjProcessKindProc, 3);
 
             ep->eftrans = efpart->effect_info;
 

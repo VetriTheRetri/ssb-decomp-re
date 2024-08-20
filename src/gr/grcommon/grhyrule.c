@@ -428,7 +428,7 @@ GObj* grHyruleMakeGround(void)
 {
     GObj *ground_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjCommonProc(ground_gobj, grHyruleTwisterProcUpdate, nOMObjProcessKindProc, 4);
+    gcAddGObjProcess(ground_gobj, grHyruleTwisterProcUpdate, nOMObjProcessKindProc, 4);
     grHyruleTwisterInitVars();
 
     return ground_gobj;

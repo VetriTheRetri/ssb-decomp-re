@@ -456,7 +456,7 @@ void sc1PGameBossMakeCamera(void)
         (
             nOMObjCommonKindUnkCamera3, 
             NULL,
-            nOMObjCommonLinkIDBattleCamera,
+            nOMObjCommonLinkIDCamera,
             GOBJ_LINKORDER_DEFAULT,
             func_80017EC0,
             40,
@@ -485,7 +485,7 @@ void sc1PGameBossMakeCamera(void)
         (
             nOMObjCommonKindUnkCamera3,
             NULL,
-            nOMObjCommonLinkIDBattleCamera,
+            nOMObjCommonLinkIDCamera,
             GOBJ_DLLINKORDER_DEFAULT,
             func_80017EC0,
             60,
@@ -923,7 +923,7 @@ GObj* sc1PGameBossMakeWallpaperEffect(s32 effect_id, s32 anim_id, s32 plan_id)
     addr = (uintptr_t)sSC1PGameBossMain.file_head;
     o_mobjsub = sSC1PGameBossMain.bosswallpaper->bosseffect[effect_id].o_mobjsub;
 
-    gcAddGObjRenderProc
+    gcAddGObjDisplay
     (
         effect_gobj, 
         sSC1PGameBossMain.bosswallpaper->bosseffect[effect_id].proc_render, 
@@ -939,7 +939,7 @@ GObj* sc1PGameBossMakeWallpaperEffect(s32 effect_id, s32 anim_id, s32 plan_id)
         nOMTransformTraRotRpyRSca
     );
     gcSetAllAnimSpeed(effect_gobj, sSC1PGameBossMain.bosswallpaper->bossanim[anim_id].anim_speed);
-    gcAddGObjCommonProc(effect_gobj, sSC1PGameBossMain.bosswallpaper->bosseffect[effect_id].proc_update, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(effect_gobj, sSC1PGameBossMain.bosswallpaper->bosseffect[effect_id].proc_update, nOMObjProcessKindProc, 1);
 
     dobj = DObjGetStruct(effect_gobj);
 
@@ -1062,7 +1062,7 @@ void sc1PGameBossInitWallpaper(void)
 
     if (gobj != NULL)
     {
-        gcAddGObjCommonProc(gobj, sc1PGameBossWallpaperProcUpdate, nOMObjProcessKindProc, 3);
+        gcAddGObjProcess(gobj, sc1PGameBossWallpaperProcUpdate, nOMObjProcessKindProc, 3);
 
         sc1PGameBossMakeCamera();
         sc1PGameBossSetBossPlayer();

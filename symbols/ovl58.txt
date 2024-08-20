@@ -1,6 +1,6 @@
-mnN64LogoProcUpdate = 0x80131B00; // segment:ovl58
-mnN64ActorProcUpdate = 0x80131C20; // segment:ovl58
-mnN64InitAll = 0x80131CB8; // segment:ovl58
+mnN64LogoThreadUpdate = 0x80131B00; // segment:ovl58
+mnN64ActorProcRun = 0x80131C20; // segment:ovl58
+mnN64ProcStart = 0x80131CB8; // segment:ovl58
 mnN64AddLightsDisplayList = 0x80131ECC; // segment:ovl58
 mnN64StartScene = 0x80131EF0; // segment:ovl58
 
@@ -9,5 +9,5 @@ D_ovl58_80131F54 = 0x80131F54; // segment:ovl58
 D_ovl58_80131F58 = 0x80131F58; // segment:ovl58
 D_ovl58_80131F60 = 0x80131F60; // segment:ovl58
 D_ovl58_80131F70 = 0x80131F70; // segment:ovl58
-D_ovl58_80131F98 = 0x80131F98; // segment:ovl58
-D_ovl58_80131FB4 = 0x80131FB4; // segment:ovl58
+dMNN64DisplaySetup = 0x80131F98; // segment:ovl58
+dMNN64GtlSetup = 0x80131FB4; // segment:ovl58

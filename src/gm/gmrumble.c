@@ -610,7 +610,7 @@ void gmRumbleMakeActor(void)
     s32 l;
     s32 player;
 
-    gcAddGObjCommonProc(gcMakeGObjSPAfter(nOMObjCommonKindRumble, NULL, nOMObjCommonLinkIDRumble, GOBJ_LINKORDER_DEFAULT), gmRumbleActorProcUpdate, nOMObjProcessKindProc, 0);
+    gcAddGObjProcess(gcMakeGObjSPAfter(nOMObjCommonKindRumble, NULL, nOMObjCommonLinkIDRumble, GOBJ_LINKORDER_DEFAULT), gmRumbleActorProcUpdate, nOMObjProcessKindProc, 0);
 
     /* DEBUGGER NOTES */
 

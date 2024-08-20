@@ -951,6 +951,8 @@ lITLinkBombBloatScales = 0x000000A8;
 
 lITMonsterAnimBankStart = 0x00013624;
 
+lMNN64LogoSprite = 0x000073C0;
+
 lGMStaffrollNameAndJobAUpperSprite = 0x00000008;
 lGMStaffrollNameAndJobBUpperSprite = 0x00000218;
 lGMStaffrollNameAndJobCUpperSprite = 0x00000398;

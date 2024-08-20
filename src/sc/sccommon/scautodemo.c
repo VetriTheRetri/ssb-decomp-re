@@ -588,7 +588,7 @@ void scAutoDemoInitSObjs(void)
 		nOMObjCommonLinkIDInterface, 
 		GOBJ_LINKORDER_DEFAULT
 	);
-	gcAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	for (player = 0; player < ARRAY_COUNT(gSceneData.demo_ft_kind); player++)
 	{

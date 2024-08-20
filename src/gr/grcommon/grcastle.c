@@ -42,12 +42,12 @@ void grCastleInitAll(void)
 
     ground_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjCommonProc(ground_gobj, grCastleBumperProcUpdate, nOMObjProcessKindProc, 4);
+    gcAddGObjProcess(ground_gobj, grCastleBumperProcUpdate, nOMObjProcessKindProc, 4);
 
     dobj = gcAddDObjForGObj(ground_gobj, NULL);
     dobj->translate.vec.f.x = dobj->translate.vec.f.y = dobj->translate.vec.f.z = 0.0F;
 
-    gcAddGObjCommonProc(ground_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
+    gcAddGObjProcess(ground_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
 
     gcAddAnimJointAll(ground_gobj, gMPCollisionGroundData->map_nodes, 0.0F);
     gcPlayAnimAll(ground_gobj);

@@ -232,7 +232,7 @@ GObj* grGeometryMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **
     }
     else proc_render = dGRGeometryDescs[gr_desc_id].proc_renderpri;
 
-    gcAddGObjRenderProc(ground_gobj, proc_render, dGRGeometryDescs[gr_desc_id].dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(ground_gobj, proc_render, dGRGeometryDescs[gr_desc_id].dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcSetupCustomDObjs(ground_gobj, gr_desc->dobj_desc, p_dobj, nOMTransformTraRotRpyRSca, nOMTransformNull, nOMTransformNull);
 
     if (gr_desc->p_mobjsubs != NULL)
@@ -242,12 +242,12 @@ GObj* grGeometryMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **
     if ((gr_desc->anim_joints != NULL) || (gr_desc->p_matanim_joints != NULL))
     {
         gcAddAnimAll(ground_gobj, gr_desc->anim_joints, gr_desc->p_matanim_joints, 0.0F);
-        gcAddGObjCommonProc(ground_gobj, dGRGeometryDescs[gr_desc_id].proc_update, nOMObjProcessKindProc, 4);
+        gcAddGObjProcess(ground_gobj, dGRGeometryDescs[gr_desc_id].proc_update, nOMObjProcessKindProc, 4);
         gcPlayAnimAll(ground_gobj);
     }
     else if (gr_desc_id == 1)
     {
-        gcAddGObjCommonProc(ground_gobj, mpCollisionAdvanceUpdateFrame, nOMObjProcessKindProc, 4);
+        gcAddGObjProcess(ground_gobj, mpCollisionAdvanceUpdateFrame, nOMObjProcessKindProc, 4);
     }
     grGeometryDObjSetNoAnimMtx(ground_gobj, gr_desc->dobj_desc);
 

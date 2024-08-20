@@ -231,7 +231,7 @@ void grYosterInitAll(void)
 
         gGRCommonStruct.yoster.clouds[i].gobj = map_gobj;
 
-        gcAddGObjRenderProc(map_gobj, gcDrawDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
+        gcAddGObjDisplay(map_gobj, gcDrawDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
         gcSetupCustomDObjs
         (
             map_gobj, 
@@ -241,7 +241,7 @@ void grYosterInitAll(void)
             nOMTransformNull, 
             nOMTransformNull
         );
-        gcAddGObjCommonProc(map_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
+        gcAddGObjProcess(map_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
 
         gcAddAnimJointAll(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000001E0, 0);
 
@@ -280,7 +280,7 @@ GObj* grYosterMakeGround(void)
     GObj *ground_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     grYosterInitAll();
-    gcAddGObjCommonProc(ground_gobj, grYosterProcUpdate, nOMObjProcessKindProc, 4);
+    gcAddGObjProcess(ground_gobj, grYosterProcUpdate, nOMObjProcessKindProc, 4);
 
     return ground_gobj;
 }

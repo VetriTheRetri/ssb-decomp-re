@@ -76,7 +76,7 @@ void grBonus3TaruBombMakeActor(void)
 {
     s32 pos_ids;
 
-    gcAddGObjCommonProc(gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT), grBonus3TaruBombProcUpdate, nOMObjProcessKindProc, 4);
+    gcAddGObjProcess(gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT), grBonus3TaruBombProcUpdate, nOMObjProcessKindProc, 4);
 
     if (mpCollisionGetMapObjCountKind(nMPMapObjKind1PGameBonus3TaruBomb) != 1)
     {
@@ -107,7 +107,7 @@ void grBonus3FinishProcUpdate(GObj *ground_gobj)
 // 0x8010B784
 void grBonus3FinishMakeActor(void)
 {
-    gcAddGObjCommonProc(gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT), grBonus3FinishProcUpdate, 1, 4);
+    gcAddGObjProcess(gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT), grBonus3FinishProcUpdate, 1, 4);
 }
 
 // 0x8010B7C8

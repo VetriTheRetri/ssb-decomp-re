@@ -238,7 +238,7 @@ void grWallpaperSectorMakeSObj(void)
 
     sGRWallpaperGObj = bg_gobj = gcMakeGObjSPAfter(nOMObjCommonKindWallpaper, NULL, nOMObjCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjRenderProc(bg_gobj, func_ovl0_800CCF00, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(bg_gobj, func_ovl0_800CCF00, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     bg_sobj = gcAppendSObjWithSprite(bg_gobj, gMPCollisionGroundData->wallpaper);
 
@@ -247,7 +247,7 @@ void grWallpaperSectorMakeSObj(void)
 
     bg_sobj->sprite.attr = SP_TEXSHUF;
 
-    gcAddGObjCommonProc(bg_gobj, grWallpaperSectorUpdatePersp, nOMObjProcessKindProc, 3);
+    gcAddGObjProcess(bg_gobj, grWallpaperSectorUpdatePersp, nOMObjProcessKindProc, 3);
 }
 
 // 0x80104B58
@@ -263,7 +263,7 @@ void grWallpaperBonus3MakeSObj(void)
 
     sGRWallpaperGObj = bg_gobj = gcMakeGObjSPAfter(nOMObjCommonKindWallpaper, NULL, nOMObjCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjRenderProc(bg_gobj, grWallpaperBonus3AddDL, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(bg_gobj, grWallpaperBonus3AddDL, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
 
 // 0x80104BDC

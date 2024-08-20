@@ -45,7 +45,7 @@ void mvOpeningLinkDrawName()
 	s32 i;
 
 	gMvOpeningLinkNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcAddGObjRenderProc(name_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000, -1);
+	gcAddGObjDisplay(name_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000, -1);
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
@@ -89,7 +89,7 @@ void mvOpeningLinkCreateStageViewport(Vec3f arg0)
 	func_80007080(&cam->viewport, 10.0F, 90.0F, 310.0F, 230.0F);
 	cam->projection.persp.aspect = 15.0F / 7.0F;
 	func_8000B39C(gMvOpeningLinkStageCameraGObj);
-	gcAddGObjCommonProc(gMvOpeningLinkStageCameraGObj, mvOpeningLinkAnimateStageCamera, 1, 1);
+	gcAddGObjProcess(gMvOpeningLinkStageCameraGObj, mvOpeningLinkAnimateStageCamera, 1, 1);
 
 	dMvOpeningLinkCameraSettingsAdjustedStart.eye.x += arg0.x;
 	dMvOpeningLinkCameraSettingsAdjustedStart.eye.y += arg0.y;
@@ -189,7 +189,7 @@ void mvOpeningLinkRenderPosedFighterBackground(GObj *gobj)
 // 8018D924
 void mvOpeningLinkCreatePosedFighterBackground()
 {
-	gcAddGObjRenderProc(gcMakeGObjSPAfter(0, 0, 0x13, 0x80000000), mvOpeningLinkRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
+	gcAddGObjDisplay(gcMakeGObjSPAfter(0, 0, 0x13, 0x80000000), mvOpeningLinkRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
 }
 
 // 8018D970
@@ -234,7 +234,7 @@ void mvOpeningLinkCreatePosedFighter()
 	fighter_gobj = ftManagerMakeFighter(&spawn_info);
 	scSubsysFighterSetStatus(fighter_gobj, 0x1000C);
 	gcMoveGObjDL(fighter_gobj, 0x1A, -1);
-	gcAddGObjCommonProc(fighter_gobj, mvOpeningLinkAnimatePosedFighter, 1, 1);
+	gcAddGObjProcess(fighter_gobj, mvOpeningLinkAnimatePosedFighter, 1, 1);
 
 	DObjGetStruct(fighter_gobj)->scale.vec.f.x = 1.0f;
 	DObjGetStruct(fighter_gobj)->scale.vec.f.y = 1.0f;
@@ -257,7 +257,7 @@ void mvOpeningLinkCreatePosedFighterViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 90.0F);
 	cam->projection.persp.aspect = 3.75F;
 	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningLinkFilesArray[1], &FILE_041_LINK_CAMERA_PARAMS_OFFSET), 0.0F);
-	gcAddGObjCommonProc(camera_gobj, gcUpdateCameraCamAnim, 1, 1);
+	gcAddGObjProcess(camera_gobj, gcUpdateCameraCamAnim, 1, 1);
 }
 
 // 8018DCD0

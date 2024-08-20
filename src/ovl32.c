@@ -599,7 +599,7 @@ void mnVsRecordsCreateTitle()
 	SObj* title_sobj;
 
 	title_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjRenderProc(title_gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
+	gcAddGObjDisplay(title_gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
 
 	title_sobj = gcAppendSObjWithSprite(title_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[1], &FILE_020_DATA_HEADER_IMAGE_OFFSET));
 	title_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -651,8 +651,8 @@ void mnVsRecordsCreateSubtitle()
 	SObj* subtitle_sobj;
 
 	subtitle_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjRenderProc(subtitle_gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
-	gcAddGObjCommonProc(subtitle_gobj, mnVsRecordsRenderSubtitle, 1, 1);
+	gcAddGObjDisplay(subtitle_gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
+	gcAddGObjProcess(subtitle_gobj, mnVsRecordsRenderSubtitle, 1, 1);
 
 	subtitle_sobj = gcAppendSObjWithSprite(subtitle_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_SUBTITLE_BATTLE_SCORE_IMAGE_OFFSET));
 	subtitle_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -677,8 +677,8 @@ void mnVsRecordsCreatePortraitAndStatsArrows()
 	SObj* portrait_arrows_sobj;
 
 	portrait_arrows_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjRenderProc(portrait_arrows_gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
-	gcAddGObjCommonProc(portrait_arrows_gobj, mnVsRecordsUpdatePortraitArrowsDisplay, 1, 1);
+	gcAddGObjDisplay(portrait_arrows_gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
+	gcAddGObjProcess(portrait_arrows_gobj, mnVsRecordsUpdatePortraitArrowsDisplay, 1, 1);
 
 	// left arrow
 	portrait_arrows_sobj = gcAppendSObjWithSprite(portrait_arrows_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[1], &FILE_020_ARROW_LEFT_IMAGE_OFFSET));
@@ -714,8 +714,8 @@ void mnVsRecordsCreateResortArrows()
 	SObj* resort_arrows_sobj;
 
 	resort_arrows_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjRenderProc(resort_arrows_gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
-	gcAddGObjCommonProc(resort_arrows_gobj, mnVsRecordsUpdateResortArrowsDisplay, 1, 1);
+	gcAddGObjDisplay(resort_arrows_gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
+	gcAddGObjProcess(resort_arrows_gobj, mnVsRecordsUpdateResortArrowsDisplay, 1, 1);
 
 	resort_arrows_sobj = gcAppendSObjWithSprite(resort_arrows_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_DOUBLE_DOWN_ARROW_IMAGE_OFFSET));
 	resort_arrows_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -740,8 +740,8 @@ void mnVsRecordsCreateColumnArrows()
 	SObj* column_arrows_sobj;
 
 	column_arrows_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjRenderProc(column_arrows_gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
-	gcAddGObjCommonProc(column_arrows_gobj, mnVsRecordsUpdateColumnArrowsDisplay, 1, 1);
+	gcAddGObjDisplay(column_arrows_gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
+	gcAddGObjProcess(column_arrows_gobj, mnVsRecordsUpdateColumnArrowsDisplay, 1, 1);
 
 	column_arrows_sobj = gcAppendSObjWithSprite(column_arrows_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_LEFT_AND_RIGHT_ARROW_IMAGE_OFFSET));
 	column_arrows_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -856,7 +856,7 @@ void mnVsRecordsRenderTableGrid(GObj* table_border_gobj)
 void mnVsRecordsCreateStatsGrid()
 {
 	GObj* table_border_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjRenderProc(table_border_gobj, mnVsRecordsRenderTableGrid, 3, 0x80000000, -1);
+	gcAddGObjDisplay(table_border_gobj, mnVsRecordsRenderTableGrid, 3, 0x80000000, -1);
 }
 
 // 80133438
@@ -1192,7 +1192,7 @@ GObj* mnVsRecordsCreateBattleScoreTableValues()
 	s32 i, j;
 
 	values_gobj = gcMakeGObjSPAfter(0, 0, 6, 0x80000000);
-	gcAddGObjRenderProc(values_gobj, func_ovl0_800CCF00, 5, 0x80000000, -1);
+	gcAddGObjDisplay(values_gobj, func_ovl0_800CCF00, 5, 0x80000000, -1);
 
 	for (i = 0; i < 12; i++)
 	{
@@ -1223,7 +1223,7 @@ s32 mnVsRecordsCreateBattleScoreTableHeaders()
 	SObj* headers_sobj;
 
 	headers_gobj = gcMakeGObjSPAfter(0, 0, 5, 0x80000000);
-	gcAddGObjRenderProc(headers_gobj, func_ovl0_800CCF00, 4, 0x80000000, -1);
+	gcAddGObjDisplay(headers_gobj, func_ovl0_800CCF00, 4, 0x80000000, -1);
 
 	headers_sobj = gcAppendSObjWithSprite(headers_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_TOTAL_TEXTURE_IMAGE_OFFSET));
 	headers_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1263,7 +1263,7 @@ void mnVsRecordsRenderRankingRowHighlight(GObj* row_highlight_gobj)
 void mnVsRecordsCreateRankingRowHighlight()
 {
 	GObj* row_highlight_gobj = gcMakeGObjSPAfter(0, 0, 3, 0x80000000);
-	gcAddGObjRenderProc(row_highlight_gobj, mnVsRecordsRenderRankingRowHighlight, 2, 0x80000000, -1);
+	gcAddGObjDisplay(row_highlight_gobj, mnVsRecordsRenderRankingRowHighlight, 2, 0x80000000, -1);
 }
 
 // 801348B4
@@ -1336,7 +1336,7 @@ GObj* mnVsRecordsCreateRankingTableValues(s32 column)
 	}
 
 	table_values_gobj = gcMakeGObjSPAfter(0, 0, 6, 0x80000000);
-	gcAddGObjRenderProc(table_values_gobj, func_ovl0_800CCF00, 5, 0x80000000, -1);
+	gcAddGObjDisplay(table_values_gobj, func_ovl0_800CCF00, 5, 0x80000000, -1);
 
 	for (i = 0; i < 12; i++)
 	{
@@ -1412,7 +1412,7 @@ GObj* mnVsRecordsCreateRankingTableHeaders(s32 column)
 	}
 
 	table_headers_gobj = gcMakeGObjSPAfter(0, 0, 5, 0x80000000);
-	gcAddGObjRenderProc(table_headers_gobj, func_ovl0_800CCF00, 4, 0x80000000, -1);
+	gcAddGObjDisplay(table_headers_gobj, func_ovl0_800CCF00, 4, 0x80000000, -1);
 
 	x = 0x30;
 	for (i = 0; i < ARRAY_COUNT(offsets); i++)
@@ -1471,7 +1471,7 @@ s32 mnVsRecordsCreateIndividualTableValues()
 	s32 unused, unused2;
 
 	table_values_gobj = gcMakeGObjSPAfter(0, 0, 6, 0x80000000);
-	gcAddGObjRenderProc(table_values_gobj, func_ovl0_800CCF00, 5, 0x80000000, -1);
+	gcAddGObjDisplay(table_values_gobj, func_ovl0_800CCF00, 5, 0x80000000, -1);
 
 	for (i = 0; i < 12; i++)
 	{
@@ -1498,7 +1498,7 @@ s32 mnVsRecordsCreateIndividualPortraitStatsAndTableHeaders()
 	s32 i;
 
 	individual_stats_gobj = gcMakeGObjSPAfter(0, 0, 5, 0x80000000);
-	gcAddGObjRenderProc(individual_stats_gobj, func_ovl0_800CCF00, 4, 0x80000000, -1);
+	gcAddGObjDisplay(individual_stats_gobj, func_ovl0_800CCF00, 4, 0x80000000, -1);
 
 	for (i = 0; i < 4; i++)
 	{

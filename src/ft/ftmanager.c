@@ -706,7 +706,7 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
 
     fighter_gobj = gcMakeGObjSPAfter(nOMObjCommonKindFighter, NULL, nOMObjCommonLinkIDFighter, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjRenderProc(fighter_gobj, ft_desc->proc_render, FTRENDER_DLLINK_DEFAULT, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(fighter_gobj, ft_desc->proc_render, FTRENDER_DLLINK_DEFAULT, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     fp = ftManagerGetNextStructAlloc();
 
@@ -869,14 +869,14 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
 
     if (fp->status_info.pl_kind != nFTPlayerKindDemo)
     {
-        gcAddGObjCommonProc(fighter_gobj, ftMainProcInterruptMain, nOMObjProcessKindProc, 5);
-        gcAddGObjCommonProc(fighter_gobj, ftMainProcPhysicsMapDefault, nOMObjProcessKindProc, 4);
-        gcAddGObjCommonProc(fighter_gobj, ftMainProcPhysicsMapCapture, nOMObjProcessKindProc, 3);
-        gcAddGObjCommonProc(fighter_gobj, ftMainProcSearchAllCatch, nOMObjProcessKindProc, 2);
-        gcAddGObjCommonProc(fighter_gobj, ftMainProcSearchAllHit, nOMObjProcessKindProc, 1);
-        gcAddGObjCommonProc(fighter_gobj, ftMainProcUpdateMain, nOMObjProcessKindProc, 0);
+        gcAddGObjProcess(fighter_gobj, ftMainProcInterruptMain, nOMObjProcessKindProc, 5);
+        gcAddGObjProcess(fighter_gobj, ftMainProcPhysicsMapDefault, nOMObjProcessKindProc, 4);
+        gcAddGObjProcess(fighter_gobj, ftMainProcPhysicsMapCapture, nOMObjProcessKindProc, 3);
+        gcAddGObjProcess(fighter_gobj, ftMainProcSearchAllCatch, nOMObjProcessKindProc, 2);
+        gcAddGObjProcess(fighter_gobj, ftMainProcSearchAllHit, nOMObjProcessKindProc, 1);
+        gcAddGObjProcess(fighter_gobj, ftMainProcUpdateMain, nOMObjProcessKindProc, 0);
     }
-    else gcAddGObjCommonProc(fighter_gobj, scSubsysFighterProcUpdate, nOMObjProcessKindProc, 5);
+    else gcAddGObjProcess(fighter_gobj, scSubsysFighterProcUpdate, nOMObjProcessKindProc, 5);
 
     ftManagerInitFighter(fighter_gobj, ft_desc);
 

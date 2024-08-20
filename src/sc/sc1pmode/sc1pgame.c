@@ -1606,7 +1606,7 @@ void sc1PGameWaitThreadUpdate(GObj *gobj)
 // 0x8018EB68
 void sc1PGameSetGameStatusWait(void)
 {
-    gcAddGObjCommonProc
+    gcAddGObjProcess
     (
         gcMakeGObjSPAfter
         (
@@ -1732,7 +1732,7 @@ void sc1PGameInitTeamStockDisplay(void)
     make_gobj:
         interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
-        gcAddGObjRenderProc(interface_gobj, sc1PGameTeamStockDisplayProcRender, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+        gcAddGObjDisplay(interface_gobj, sc1PGameTeamStockDisplayProcRender, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
         for (i = 0; i < sSC1PGameEnemyStocksRemaining; i++)
         {

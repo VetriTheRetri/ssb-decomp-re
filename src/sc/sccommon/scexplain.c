@@ -272,7 +272,7 @@ void func_ovl63_8018D3D8(void)
     (
         nOMObjCommonKindScissorCamera,
         NULL,
-        nOMObjCommonLinkIDBattleCamera,
+        nOMObjCommonLinkIDCamera,
         GOBJ_LINKORDER_DEFAULT,
         func_ovl63_8018D2D0,
         15,
@@ -326,7 +326,7 @@ GObj* func_ovl63_8018D500(void)
     (
         nOMObjCommonKindScissorCamera,
         NULL,
-        nOMObjCommonLinkIDBattleCamera,
+        nOMObjCommonLinkIDCamera,
         GOBJ_LINKORDER_DEFAULT,
         func_80017EC0,
         15,
@@ -391,7 +391,7 @@ GObj* scExplainMakeControlStickInterface(void)
         nOMObjCommonLinkIDInterface,
         GOBJ_LINKORDER_DEFAULT
     );
-    gcAddGObjRenderProc(interface_gobj, scExplainControlStickProcRender, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, scExplainControlStickProcRender, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcSetupCustomDObjs
     (
         interface_gobj, 
@@ -411,7 +411,7 @@ GObj* scExplainMakeControlStickInterface(void)
             &lSCExplainStickMObjSub
         )
     );
-    gcAddGObjCommonProc(interface_gobj, scExplainProcUpdateControlStickSprite, nOMObjProcessKindProc, 5);
+    gcAddGObjProcess(interface_gobj, scExplainProcUpdateControlStickSprite, nOMObjProcessKindProc, 5);
 
     interface_gobj->flags = GOBJ_FLAG_NORENDER;
 
@@ -471,11 +471,11 @@ GObj* scExplainMakeTapSpark(void)
 {
     GObj *interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjRenderProc(interface_gobj, scExplainTapSparkProcRender, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, scExplainTapSparkProcRender, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjForGObj(interface_gobj, (void*) ((uintptr_t)sSCExplainGraphicsFileHead + (intptr_t)&lSCExplainTapSparkDisplayList));
     gcAddOMMtxForDObjFixed(DObjGetStruct(interface_gobj), nOMTransformTra, 0);
     gcAddMObjAll(interface_gobj, gcGetDataFromFile(MObjSub***, sSCExplainGraphicsFileHead, &lSCExplainTapSparkMObjSub));
-    gcAddGObjCommonProc(interface_gobj, scExplainTapSparkProcUpdate, nOMObjProcessKindProc, 5);
+    gcAddGObjProcess(interface_gobj, scExplainTapSparkProcUpdate, nOMObjProcessKindProc, 5);
 
     interface_gobj->flags = GOBJ_FLAG_NORENDER;
 
@@ -514,7 +514,7 @@ GObj* scExplainMakeSpecialMoveRGB(void)
         nOMObjCommonLinkIDInterface,
         GOBJ_LINKORDER_DEFAULT
     );
-    gcAddGObjRenderProc(interface_gobj, scExplainTapSparkProcRender, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, scExplainTapSparkProcRender, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjForGObj(interface_gobj, gcGetDataFromFile(void*, sSCExplainGraphicsFileHead, &lSCExplainSpecialMoveRGBDisplayList));
     gcAddOMMtxForDObjFixed(DObjGetStruct(interface_gobj), nOMTransformTra, 0);
 
@@ -544,7 +544,7 @@ SObj* scExplainMakeSObjOffset(intptr_t offset)
         nOMObjCommonLinkIDInterface,
         GOBJ_LINKORDER_DEFAULT
     );
-    gcAddGObjRenderProc(interface_gobj, func_ovl0_800CCF00, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, sSCExplainGraphicsFileHead, offset));
 
@@ -724,7 +724,7 @@ GObj* scExplainMakeSceneInterface(void)
         nOMObjCommonLinkIDInterface, 
         GOBJ_LINKORDER_DEFAULT
     );
-    gcAddGObjCommonProc(interface_gobj, scExplainSceneInterfaceProcUpdate, nOMObjProcessKindProc, 5);
+    gcAddGObjProcess(interface_gobj, scExplainSceneInterfaceProcUpdate, nOMObjProcessKindProc, 5);
 
     sSCExplainStruct.phase_advance_wait = 0;
     sSCExplainStruct.phase = 0;

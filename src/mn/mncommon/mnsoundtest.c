@@ -1072,7 +1072,7 @@ SObj* mnSoundTestMakeHeaderSObjs(void)
 
     gobj = gcMakeGObjSPAfter(1, NULL, 2, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNSoundTestFiles[2], &lMNSoundTestDataTextSprite));
 
@@ -1154,12 +1154,12 @@ SObj* mnSoundTestMakeMusicSObjs(void)
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(1, NULL, 3, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     gobj->user_data.s = nMNSoundTestOptionMusic;
 
-    gcAddGObjCommonProc(gobj, mnSoundTestOptionThreadUpdate, nOMObjProcessKindThread, 1);
-    gcAddGObjRenderProc
+    gcAddGObjProcess(gobj, mnSoundTestOptionThreadUpdate, nOMObjProcessKindThread, 1);
+    gcAddGObjDisplay
     (
         gcMakeGObjSPAfter
         (
@@ -1221,12 +1221,12 @@ SObj* mnSoundTestMakeSoundSObjs(void)
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(1, NULL, 3, GOBJ_DLLINKORDER_DEFAULT);
-    gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjCommonProc(gobj, mnSoundTestOptionThreadUpdate, nOMObjProcessKindThread, 1);
+    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjProcess(gobj, mnSoundTestOptionThreadUpdate, nOMObjProcessKindThread, 1);
 
     gobj->user_data.s = nMNSoundTestOptionSound;
 
-    gcAddGObjRenderProc
+    gcAddGObjDisplay
     (
         gcMakeGObjSPAfter
         (
@@ -1288,12 +1288,12 @@ SObj* mnSoundTestMakeVoiceSObjs(void)
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(1, NULL, 3, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjCommonProc(gobj, mnSoundTestOptionThreadUpdate, nOMObjProcessKindThread, 1);
+    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjProcess(gobj, mnSoundTestOptionThreadUpdate, nOMObjProcessKindThread, 1);
 
     gobj->user_data.s = nMNSoundTestOptionVoice;
 
-    gcAddGObjRenderProc
+    gcAddGObjDisplay
     (
         gcMakeGObjSPAfter
         (
@@ -1439,7 +1439,7 @@ void mnSoundTestMakeButtonSObjs(void)
 {
     GObj *gobj = gcMakeGObjSPAfter(1, NULL, 3, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
     mnSoundTestMakeAButtonSObj(gobj);
     mnSoundTestMakeBButtonSObj(gobj);
     mnSoundTestMakeStartButtonSObj(gobj);
@@ -1586,20 +1586,20 @@ void mnSoundTestMakeSelectIDGObjs(void)
 {
     GObj *gobj = gcMakeGObjSPAfter(1, NULL, 5, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjCommonProc(gobj, mnSoundTestSelectIDThreadUpdate, nOMObjProcessKindThread, 1);
+    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjProcess(gobj, mnSoundTestSelectIDThreadUpdate, nOMObjProcessKindThread, 1);
 
     gobj->user_data.s = nMNSoundTestOptionMusic;
 
     gobj = gcMakeGObjSPAfter(1, NULL, 6, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjCommonProc(gobj, mnSoundTestSelectIDThreadUpdate, nOMObjProcessKindThread, 1);
+    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjProcess(gobj, mnSoundTestSelectIDThreadUpdate, nOMObjProcessKindThread, 1);
 
     gobj->user_data.s = nMNSoundTestOptionSound;
 
     gobj = gcMakeGObjSPAfter(1, NULL, 7, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjCommonProc(gobj, mnSoundTestSelectIDThreadUpdate, nOMObjProcessKindThread, 1);
+    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjProcess(gobj, mnSoundTestSelectIDThreadUpdate, nOMObjProcessKindThread, 1);
 
     gobj->user_data.s = nMNSoundTestOptionVoice;
 }
@@ -1647,8 +1647,8 @@ void mnSoundTestMakeArrowSObjs(void)
     GObj *gobj = gcMakeGObjSPAfter(1, NULL, 2, GOBJ_LINKORDER_DEFAULT);
     SObj *sobj;
 
-    gcAddGObjRenderProc(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjCommonProc(gobj, mnSoundTestArrowsThreadUpdate, nOMObjProcessKindThread, 1);
+    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjProcess(gobj, mnSoundTestArrowsThreadUpdate, nOMObjProcessKindThread, 1);
 
     sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNSoundTestFiles[3], &lMNSoundTestLeftArrowSprite));
 

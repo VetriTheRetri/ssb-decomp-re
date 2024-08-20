@@ -476,7 +476,7 @@ void sc1PManagerUpdateScene(void)
         gSceneData.scene_previous = nSCKind1PGame;
         gSceneData.scene_current = nSCKindCredits;
 
-        gmCreditsStartScene();
+        gmStaffrollStartScene();
 
         syDmaLoadOverlay(&dSC1PManagerCongraOverlay);
 

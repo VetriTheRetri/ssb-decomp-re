@@ -161,7 +161,7 @@ u32 dMNSoundTestMusicIDs[/* */] =
     nSYAudioBGMEnding,
     nSYAudioBGM1PGameEndChoice,
     nSYAudioBGM1PGameOver,
-    nSYAudioBGMStaffRoll
+    nSYAudioBGMStaffroll
 };
 
 // 0x80133A94

@@ -66,7 +66,7 @@ typedef enum gmMusicID
 	nSYAudioBGMZako,						// Battlefield
 	nSYAudioBGMMetal,						// Meta Crystal
 	nSYAudioBGMEnding,						// Ending Movie
-	nSYAudioBGMStaffRoll,					// Credits
+	nSYAudioBGMStaffroll,					// Credits
 	nSYAudioBGMMessage,						// Secret Found
 	nSYAudioBGMChallenger,					// Challenger Approaching
 	nSYAudioBGMTrainingMode,				// Training Mode

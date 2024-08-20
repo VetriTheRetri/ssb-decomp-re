@@ -244,7 +244,7 @@ void menu_backup_clear_entry();
 void mvEndingStartScene();
 void gmContinueStartScene();
 void sc1PStageClearStartScene();
-void gmCreditsStartScene();
+void gmStaffrollStartScene();
 void mnCongraStartScene();
 void mnSoundTestStartScene();
 void scExplainStartScene();
@@ -593,7 +593,7 @@ void start_scene_manager(u32 set)
 				break;
 			case 56:
 				syDmaLoadOverlay(&D_800A3070[59]);
-				gmCreditsStartScene();
+				gmStaffrollStartScene();
 				break;
 			case 55:
 				syDmaLoadOverlay(&D_800A3070[57]);

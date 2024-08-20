@@ -260,7 +260,7 @@ struct gmRumblePlayer
 	gmRumbleLink *rlink;
 };
 
-struct gmCreditsMatrix
+struct gmStaffrollMatrix
 {
 	u8 filler_0x0[0xC];
 	f32 unk_gmcreditsmtx_0xC;
@@ -268,28 +268,28 @@ struct gmCreditsMatrix
 	f32 unk_gmcreditsmtx_0x14;
 };
 
-struct gmCreditsText
+struct gmStaffrollText
 {
 	s32 character_start;        // Where to begin reading text from in main character array
 	s32 character_count;        // Number of characters in credits role card to display
 };
 
-struct gmCreditsSprite
+struct gmStaffrollSprite
 {
 	u8 width;
 	u8 height;
 	intptr_t offset;
 };
 
-struct gmCreditsStaff
+struct gmStaffrollStaff
 {
 	u8 filler_0x0[0x4];
 	s32 staff_id;
 };
 
-struct gmCreditsName
+struct gmStaffrollName
 {
-	gmCreditsName *next;
+	gmStaffrollName *next;
 	s32 name_id;
 	sb32 job_or_name;   // 0 = job (e.g. Director), 1 = name (e.g. Masahiro Sakurai)
 	f32 offset_x;
@@ -299,14 +299,14 @@ struct gmCreditsName
 	s32 unkgmcreditsstruct0x1C;
 };
 
-struct gmCreditsJob
+struct gmStaffrollJob
 {
 	s32 prefix_id;    // e.g. "Chief" -> Chief Programmers
 	s32 job_id;       // Job text to use
 	s32 staff_count;  // Number of staff members to roll until new job is shown
 };
 
-struct gmCreditsSetup
+struct gmStaffrollSetup
 {
 	f32 unk_gmcreditsunk_0x0;
 	DObj *dobj;
@@ -315,7 +315,7 @@ struct gmCreditsSetup
 	f32 unk_gmcreditsunk_0x10;
 };
 
-struct gmCreditsProjection
+struct gmStaffrollProjection
 {
 	Vec3f pv0;
 	Vec3f pv1;

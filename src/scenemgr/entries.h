@@ -58,7 +58,7 @@ extern void menu_backup_clear_entry(void);          // ovl 53
 extern void mvEndingStartScene(void);               // ovl 54
 extern void gmContinueStartScene(void);             // ovl 55
 extern void sc1PStageClearStartScene(void);           // ovl 56
-extern void gmCreditsStartScene(void);              // ovl 59
+extern void gmStaffrollStartScene(void);              // ovl 59
 extern void mnCongraStartScene(void);               // ovl 57
 extern void mnSoundTestStartScene(void);            // ovl 62
 extern void scExplainStartScene(void);              // ovl 63

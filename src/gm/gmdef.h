@@ -15,24 +15,24 @@
 #define GMHITCOLLISION_FLAG_ALL (GMHITCOLLISION_FLAG_FIGHTER | GMHITCOLLISION_FLAG_WEAPON | GMHITCOLLISION_FLAG_ITEM)
 #define GMHITRECORD_NUM_MAX 4
 
-#define GMCREDITS_COLON_PARAGRAPH_FONT_INDEX              0x34
-#define GMCREDITS_PERIOD_PARAGRAPH_FONT_INDEX             0x3F
-#define GMCREDITS_DASH_PARAGRAPH_FONT_INDEX               0x40
-#define GMCREDITS_COMMA_PARAGRAPH_FONT_INDEX              0x41
-#define GMCREDITS_AMPERSAND_PARAGRAPH_FONT_INDEX          0x42
-#define GMCREDITS_DOUBLE_QUOTES_PARAGRAPH_FONT_INDEX      0x43
-#define GMCREDITS_SLASH_PARAGRAPH_FONT_INDEX              0x44
-#define GMCREDITS_APOSTROPHE_PARAGRAPH_FONT_INDEX         0x45
-#define GMCREDITS_QUESTION_MARK_PARAGRAPH_FONT_INDEX      0x46
-#define GMCREDITS_OPEN_PARENTHESIS_PARAGRAPH_FONT_INDEX   0x47
-#define GMCREDITS_CLOSE_PARENTHESIS_PARAGRAPH_FONT_INDEX  0x48
-#define GMCREDITS_E_ACCENT_PARAGRAPH_FONT_INDEX           0x49
+#define GMSTAFFROLL_COLON_PARA_FONT_INDEX              0x34
+#define GMSTAFFROLL_PERIOD_PARA_FONT_INDEX             0x3F
+#define GMSTAFFROLL_DASH_PARA_FONT_INDEX               0x40
+#define GMSTAFFROLL_COMMA_PARA_FONT_INDEX              0x41
+#define GMSTAFFROLL_AMPERSAND_PARA_FONT_INDEX          0x42
+#define GMSTAFFROLL_DOUBLE_QUOTES_PARA_FONT_INDEX      0x43
+#define GMSTAFFROLL_SLASH_PARA_FONT_INDEX              0x44
+#define GMSTAFFROLL_APOSTROPHE_PARA_FONT_INDEX         0x45
+#define GMSTAFFROLL_QUESTION_MARK_PARA_FONT_INDEX      0x46
+#define GMSTAFFROLL_OPEN_PARENTHESIS_PARA_FONT_INDEX   0x47
+#define GMSTAFFROLL_CLOSE_PARENTHESIS_PARA_FONT_INDEX  0x48
+#define GMSTAFFROLL_E_ACCENT_PARA_FONT_INDEX           0x49
 
 // Both title and paragraph fonts use same indices for letters (A-Za-z)
-#define GMCREDITS_ASCII_LETTER_TO_FONT_INDEX(c) ((c) > 'Z' ? ((c) - 0x47) : ((c) - 0x41))
+#define GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX(c) ((c) > 'Z' ? ((c) - 0x47) : ((c) - 0x41))
 
 // Only paragraph font has all ASCII numbers. Title font has only number 4 at 0x37
-#define GMCREDITS_ASCII_NUMBER_TO_PARAGRAPH_FONT_INDEX(c) (0x35 + ('9' - (c)))
+#define GMSTAFFROLL_ASCII_NUMBER_TO_PARA_FONT_INDEX(c) (0x35 + ('9' - (c)))
 
 #define gmColEventAdvance(event, type) ((event) = (void*)((uintptr_t)event + sizeof(type)))
 
@@ -267,22 +267,22 @@ typedef enum gmRumbleEventKind
 
 } gmRumbleEventKind;
 
-typedef enum gmCreditsCompany
+typedef enum gmStaffrollCompany
 {
-	nGMCreditsCompanyNull = -1,
-	nGMCreditsCompanyHAL,
-	nGMCreditsCompanyNINTENDO,
-	nGMCreditsCompanyCreatures,
-	nGMCreditsCompanyGAMEFREAK,
-	nGMCreditsCompanyRare,
-	nGMCreditsCompanyMickeys,
-	nGMCreditsCompanyKENProd,
-	nGMCreditsCompanyAONIProd,
-	nGMCreditsCompanyARTSVISION,
-	nGMCreditsCompanyEZAKIProd,
-	nGMCreditsCompanyNOA
+	nGMStaffrollCompanyNull = -1,
+	nGMStaffrollCompanyHAL,
+	nGMStaffrollCompanyNINTENDO,
+	nGMStaffrollCompanyCreatures,
+	nGMStaffrollCompanyGAMEFREAK,
+	nGMStaffrollCompanyRare,
+	nGMStaffrollCompanyMickeys,
+	nGMStaffrollCompanyKENProd,
+	nGMStaffrollCompanyAONIProd,
+	nGMStaffrollCompanyARTSVISION,
+	nGMStaffrollCompanyEZAKIProd,
+	nGMStaffrollCompanyNOA
 
-} gmCreditsCompany;
+} gmStaffrollCompany;
 
 typedef struct gmHitCollisionFlags          gmHitCollisionFlags;
 typedef struct gmHitRecord                  gmHitRecord;
@@ -318,13 +318,13 @@ typedef struct gmRumbleEventDefault         gmRumbleEventDefault;
 typedef struct gmRumbleScript               gmRumbleScript;
 typedef struct gmRumbleLink                 gmRumbleLink;
 typedef struct gmRumblePlayer               gmRumblePlayer;
-typedef struct gmCreditsMatrix				gmCreditsMatrix;
-typedef struct gmCreditsText				gmCreditsText;
-typedef struct gmCreditsSprite				gmCreditsSprite;
-typedef struct gmCreditsStaff				gmCreditsStaff;
-typedef struct gmCreditsName				gmCreditsName;
-typedef struct gmCreditsJob					gmCreditsJob;
-typedef struct gmCreditsSetup				gmCreditsSetup;
-typedef struct gmCreditsProjection			gmCreditsProjection;
+typedef struct gmStaffrollMatrix				gmStaffrollMatrix;
+typedef struct gmStaffrollText				gmStaffrollText;
+typedef struct gmStaffrollSprite				gmStaffrollSprite;
+typedef struct gmStaffrollStaff				gmStaffrollStaff;
+typedef struct gmStaffrollName				gmStaffrollName;
+typedef struct gmStaffrollJob					gmStaffrollJob;
+typedef struct gmStaffrollSetup				gmStaffrollSetup;
+typedef struct gmStaffrollProjection			gmStaffrollProjection;
 
 #endif

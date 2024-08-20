@@ -1434,7 +1434,7 @@ void sc1PStageClearMakeFrameCopyBackground()
 	GObj *gobj;
 	SObj *sobj;
 
-	gobj = gcMakeGObjSPAfter(0, NULL, 0x12, GOBJ_LINKORDER_DEFAULT);
+	gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_LINKORDER_DEFAULT);
 
 	gcAddGObjDisplay(gobj, sc1PStageClearFrameCopyBackgroundProcRender, 0x1B, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sGMStageClearFiles[6], &D_NF_00020718));
@@ -1883,47 +1883,51 @@ void sc1PStageClearSceneProcUpdate(GObj *gobj)
 }
 
 // 80134AF4
-void func_ovl56_80134AF4()
+void gm1PStageClearCopyFramebufToWallpaper(void)
 {
 	s32 i, j;
-	gsPixelComponent *this_pixel;
-	gsPixelComponent *width_pixel;
-	gsPixelComponent *other_pixel;
-	s32 temp1, temp2;
+	// syPixelPair holds four 16-bit pixels, or two 32-bit pixels
+	syPixelPair *framebuf_pixels;
+	syPixelPair *row_pixels;
+	syPixelPair *wallpaper_pixels;
+	u32 chunk0, chunk1;
 
-	this_pixel = (uintptr_t)D_80044FA8_407B8 + 0x1914;
-	other_pixel = (*(gsPixelComponent***)((uintptr_t)sGMStageClearFiles[6] + (intptr_t)&D_NF_0002074C))[2];
+	// D_80044FA8_407B8 = framebuf0; start farther in, skipping border
+	framebuf_pixels = (uintptr_t)D_80044FA8_407B8 + SYDISPLAY_BORDER_SIZE(320, 10, u16) + SYDISPLAY_BORDER_SIZE(1, 10, u16);
+	wallpaper_pixels = (*(syPixelPair***)((uintptr_t)sGMStageClearFiles[6] + (intptr_t)&D_NF_0002074C))[2];
 
 	for (i = 0; i < 220; i++)
 	{
-		width_pixel = this_pixel;
+		row_pixels = framebuf_pixels;
 
 		for (j = 0; j < 75; j++)
 		{
-			temp1 = this_pixel->unk_framebuffer_0x0;
-			temp2 = this_pixel->unk_framebuffer_0x4;
+			chunk0 = framebuf_pixels->chunk0;
+			chunk1 = framebuf_pixels->chunk1;
 
-			this_pixel++;
+			framebuf_pixels++;
 
 			if (i & 1)
 			{
-				other_pixel->unk_framebuffer_0x0 = temp2;
-				other_pixel->unk_framebuffer_0x4 = temp1;
+				wallpaper_pixels->chunk0 = chunk1;
+				wallpaper_pixels->chunk1 = chunk0;
 
-				other_pixel++;
+				wallpaper_pixels++;
 			}
 			else
 			{
-				other_pixel->unk_framebuffer_0x0 = temp1;
-				other_pixel->unk_framebuffer_0x4 = temp2;
+				wallpaper_pixels->chunk0 = chunk0;
+				wallpaper_pixels->chunk1 = chunk1;
 
-				other_pixel++;
+				wallpaper_pixels++;
 			}
 		}
-		this_pixel = width_pixel + 80;
+		framebuf_pixels = row_pixels + 80;
 
 		if (((i + 1) % 6) == 0)
-			other_pixel++;
+		{
+			wallpaper_pixels++;
+		}
 	}
 }
 
@@ -1945,7 +1949,7 @@ void sc1PStageClearInitAll()
 	rdManagerInitSetup(&rldm_setup);
 	rdManagerLoadFiles(dGMStageClearFileIDs, ARRAY_COUNT(dGMStageClearFileIDs), sGMStageClearFiles, gsMemoryAlloc(rdManagerGetAllocSize(dGMStageClearFileIDs, ARRAY_COUNT(dGMStageClearFileIDs)), 0x10));
 	gcMakeGObjSPAfter(0, sc1PStageClearSceneProcUpdate, 0, GOBJ_LINKORDER_DEFAULT);
-	func_ovl56_80134AF4();
+	gm1PStageClearCopyFramebufToWallpaper();
 	func_8000B9FC(0, 0x80000000, 0x64, 0, 0);
 	func_ovl56_80133C88();
 	func_ovl56_80133B48();

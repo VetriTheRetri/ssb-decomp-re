@@ -106,12 +106,12 @@ typedef struct syRectangle
 
 } syRectangle;
 
-typedef struct gsPixelComponent
+typedef struct syPixelPair
 {
-    s32 unk_framebuffer_0x0;
-    s32 unk_framebuffer_0x4;
+    u32 chunk0;
+    u32 chunk1;
 
-} gsPixelComponent;
+} syPixelPair;
 
 typedef struct CameraVec7
 {

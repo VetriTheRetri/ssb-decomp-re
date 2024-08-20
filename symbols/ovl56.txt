@@ -40,7 +40,7 @@ sc1PStageClearUpdateGameClearScore = 0x8013407C; // segment:ovl56
 sc1PStageClearUpdateStageClearScore = 0x80134340; // segment:ovl56
 sc1PStageClearUpdateResultScore = 0x80134604; // segment:ovl56
 sc1PStageClearSceneProcUpdate = 0x801349F0; // segment:ovl56
-func_ovl56_80134AF4 = 0x80134AF4; // segment:ovl56
+gm1PStageClearCopyFramebufToWallpaper = 0x80134AF4; // segment:ovl56
 sc1PStageClearInitAll = 0x80134CC4; // segment:ovl56
 sc1PStageClearStartScene = 0x80134E84; // segment:ovl56
 

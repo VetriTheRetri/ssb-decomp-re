@@ -18,7 +18,7 @@ extern void scSubsysFighterProcUpdate(GObj *fighter_gobj);
 extern void func_ovl1_803905F4(GObj *this_gobj, GObj *other_gobj);
 extern void scSubsysFighterApplyVelTransN(GObj *fighter_gobj);
 
-extern sb32 scSubsysControllerCheckExpectStatus(s32 status);
+extern sb32 scSubsysControllerCheckConnected(s32 status);
 extern s32 scSubsysControllerGetPlayerTapButtons(u32 buttons);
 extern s32 scSubsysControllerGetPlayerHoldButtons(u32 buttons);
 extern s32 scSubsysControllerGetPlayerStickLR(s8 range, sb32 right_or_left);

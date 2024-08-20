@@ -65,6 +65,6 @@ typedef enum mnOptionTabStatus
 
 } mnOptionTabStatus;
 
-typedef struct mnCongraFile             mnCongraFile;
+typedef struct mnCongraPicture             mnCongraPicture;
 
 #endif

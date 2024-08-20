@@ -951,6 +951,56 @@ lITLinkBombBloatScales = 0x000000A8;
 
 lITMonsterAnimBankStart = 0x00013624;
 
+lMNCongraKirbyBottomFileID = 0x000000AA;
+lMNCongraKirbyTopFileID = 0x000000AB;
+lMNCongraYoshiBottomFileID = 0x000000AC;
+lMNCongraYoshiTopFileID = 0x000000AD;
+lMNCongraPikachuBottomFileID = 0x000000AE;
+lMNCongraPikachuTopFileID = 0x000000AF;
+lMNCongraSamusBottomFileID = 0x000000B0;
+lMNCongraSamusTopFileID = 0x000000B1;
+lMNCongraLinkBottomFileID = 0x000000B2;
+lMNCongraLinkTopFileID = 0x000000B3;
+lMNCongraPurinBottomFileID = 0x000000B4;
+lMNCongraPurinTopFileID = 0x000000B5;
+lMNCongraCaptainBottomFileID = 0x000000B6;
+lMNCongraCaptainTopFileID = 0x000000B7;
+lMNCongraDonkeyBottomFileID = 0x000000B8;
+lMNCongraDonkeyTopFileID = 0x000000B9;
+lMNCongraMarioBottomFileID = 0x000000BA;
+lMNCongraMarioTopFileID = 0x000000BB;
+lMNCongraLuigiBottomFileID = 0x000000BC;
+lMNCongraLuigiTopFileID = 0x000000BD;
+lMNCongraFoxBottomFileID = 0x000000BE;
+lMNCongraFoxTopFileID = 0x000000BF;
+lMNCongraNessBottomFileID = 0x000000C0;
+lMNCongraNessTopFileID = 0x000000C1;
+
+lMNCongraKirbyBottomSprite = 0x00020718;
+lMNCongraKirbyTopSprite = 0x00020718;
+lMNCongraYoshiBottomSprite = 0x00020718;
+lMNCongraYoshiTopSprite = 0x00020718;
+lMNCongraPikachuBottomSprite = 0x00020718;
+lMNCongraPikachuTopSprite = 0x00020718;
+lMNCongraSamusBottomSprite = 0x00020718;
+lMNCongraSamusTopSprite = 0x00020718;
+lMNCongraLinkBottomSprite = 0x00020718;
+lMNCongraLinkTopSprite = 0x00020718;
+lMNCongraPurinBottomSprite = 0x00020718;
+lMNCongraPurinTopSprite = 0x00020718;
+lMNCongraCaptainBottomSprite = 0x00020718;
+lMNCongraCaptainTopSprite = 0x00020718;
+lMNCongraDonkeyBottomSprite = 0x00020718;
+lMNCongraDonkeyTopSprite = 0x00020718;
+lMNCongraMarioBottomSprite = 0x00020718;
+lMNCongraMarioTopSprite = 0x00020718;
+lMNCongraLuigiBottomSprite = 0x00020718;
+lMNCongraLuigiTopSprite = 0x00020718;
+lMNCongraFoxBottomSprite = 0x00020718;
+lMNCongraFoxTopSprite = 0x00020718;
+lMNCongraNessBottomSprite = 0x00020718;
+lMNCongraNessTopSprite = 0x00020718;
+
 lMNN64LogoSprite = 0x000073C0;
 
 lGMStaffrollNameAndJobAUpperSprite = 0x00000008;

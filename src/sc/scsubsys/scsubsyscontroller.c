@@ -17,13 +17,13 @@ s32 sSCSubsysPad0x803929F0;
 // // // // // // // // // // // //
 
 // 0x80390700
-sb32 scSubsysControllerCheckExpectStatus(s32 status)
+sb32 scSubsysControllerCheckConnected(s32 player)
 {
     s32 i;
     
     for (i = 0; i < ARRAY_COUNT(gPlayerControllerPortStatuses); i++)
     {
-        if (status == gPlayerControllerPortStatuses[i])
+        if (player == gPlayerControllerPortStatuses[i])
         {
             return TRUE;
         }
@@ -38,7 +38,7 @@ s32 scSubsysControllerGetPlayerTapButtons(u32 buttons)
 
     for (i = 0; i < ARRAY_COUNT(gPlayerControllers); i++)
     {
-        if ((scSubsysControllerCheckExpectStatus(i) != FALSE) && (gPlayerControllers[i].button_tap & buttons)) 
+        if ((scSubsysControllerCheckConnected(i) != FALSE) && (gPlayerControllers[i].button_tap & buttons)) 
         {
             return i + 1;
         }
@@ -53,7 +53,7 @@ s32 scSubsysControllerGetPlayerHoldButtons(u32 buttons)
 
     for (i = 0; i < ARRAY_COUNT(gPlayerControllers); i++)
     {
-        if ((scSubsysControllerCheckExpectStatus(i) != FALSE) && (gPlayerControllers[i].button_hold & buttons)) 
+        if ((scSubsysControllerCheckConnected(i) != FALSE) && (gPlayerControllers[i].button_hold & buttons)) 
         {
             return i + 1;
         }
@@ -68,7 +68,7 @@ s32 scSubsysControllerGetPlayerStickLR(s8 range, sb32 right_or_left)
     
     for (i = 0; i < ARRAY_COUNT(gPlayerControllers); i++)
     {
-        if (scSubsysControllerCheckExpectStatus(i) != FALSE)
+        if (scSubsysControllerCheckConnected(i) != FALSE)
         {
             if (right_or_left != 0)
             {
@@ -93,7 +93,7 @@ s32 scSubsysControllerGetPlayerStickUD(s8 range, sb32 up_or_down)
     
     for (i = 0; i < ARRAY_COUNT(gPlayerControllers); i++)
     {
-        if (scSubsysControllerCheckExpectStatus(i) != FALSE)
+        if (scSubsysControllerCheckConnected(i) != FALSE)
         {
             if (up_or_down != 0)
             {
@@ -118,7 +118,7 @@ sb32 scSubsysControllerGetPlayerStickInRangeLR(s32 range_l_min, s32 range_r_min)
 
     for (i = 0; i < ARRAY_COUNT(gPlayerControllers); i++)
     {
-        if (scSubsysControllerCheckExpectStatus(i) != FALSE)
+        if (scSubsysControllerCheckConnected(i) != FALSE)
         {
             sb32 is_out_range;
             
@@ -148,7 +148,7 @@ sb32 scSubsysControllerGetPlayerStickInRangeUD(s32 range_d_min, s32 range_u_min)
 
     for (i = 0; i < ARRAY_COUNT(gPlayerControllers); i++)
     {
-        if (scSubsysControllerCheckExpectStatus(i) != FALSE)
+        if (scSubsysControllerCheckConnected(i) != FALSE)
         {
             sb32 is_out_range;
             

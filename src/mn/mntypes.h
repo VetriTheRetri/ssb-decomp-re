@@ -7,12 +7,12 @@
 #include <gm/generic.h>
 #include <mn/mndef.h>
 
-struct mnCongraFile
+struct mnCongraPicture
 {
-	u32 image1_file_id;
-	intptr_t image1_offset;
-	u32 image2_file_id;
-	intptr_t image2_offset;
+	u32 bottom_file_id;
+	intptr_t bottom_offset;
+	u32 top_file_id;
+	intptr_t top_offset;
 };
 
 #endif

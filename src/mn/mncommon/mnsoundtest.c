@@ -356,7 +356,7 @@ u32 dMNSoundTestSoundIDs[/* */] =
     nSYAudioFGMMenuDenied,
     nSYAudioFGMPlayerGateClose,
     nSYAudioFGMPlayerGateWhoosh,
-    nSYAudioFGMUnkMetallic2,
+    nSYAudioFGMScoreDisplayBonus,
     nSYAudioFGMStageClearScoreRegister,
     nSYAudioFGMStageClearScoreDisplay,
     nSYAudioFGMDoorClose,

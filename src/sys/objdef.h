@@ -3,26 +3,27 @@
 
 typedef enum GObjKind
 {
-    nOMObjCommonKindFighter = 1000,     // 1000
-    nOMObjCommonKindFighterParts,       // 1001
-    nOMObjCommonKindMainCamera = 1002,  // 1002
-    nOMObjCommonKindWallpaperCamera,    // 1003 - Used to render stage backgrounds?
-    nOMObjCommonKindScissorCamera,      // 1004 - Camera scissor?
-    nOMObjCommonKindUnkCamera1,         // 1005 - ???
-    nOMObjCommonKindUnkCamera2,         // 1006 - ???
-    nOMObjCommonKindUnkCamera3,         // 1007
-    nOMObjCommonKindWallpaper = 1008,   // 1008 - Stage background?
-    nOMObjCommonKindGrRender,           // 1009 - Stage renderer?
-    nOMObjCommonKindGround,             // 1010
-    nOMObjCommonKindEffect,             // 1011
-    nOMObjCommonKindWeapon,             // 1012
-    nOMObjCommonKindItem,               // 1013
-    nOMObjCommonKindInterface = 1016,   // 1016
-    nOMObjCommonKindRumble,             // 1017
-    nOMObjCommonKindPublicity,          // 1018 - Audience reaction
-    nOMObjCommonKindPauseMenu = 1019,   // 1019
-    nOMObjCommonKindShadow,             // 1020
-    nOMObjCommonKindBossWallpaper = 1023
+    nOMObjCommonKindFighter = 1000,             // 1000
+    nOMObjCommonKindFighterParts,               // 1001
+    nOMObjCommonKindMainCamera = 1002,          // 1002
+    nOMObjCommonKindWallpaperCamera,            // 1003 - Used to render stage backgrounds?
+    nOMObjCommonKindScissorCamera,              // 1004 - Camera scissor?
+    nOMObjCommonKindUnkCamera1,                 // 1005 - ???
+    nOMObjCommonKindUnkCamera2,                 // 1006 - ???
+    nOMObjCommonKindUnkCamera3,                 // 1007
+    nOMObjCommonKindWallpaper = 1008,           // 1008 - Stage background?
+    nOMObjCommonKindGrRender,                   // 1009 - Stage renderer?
+    nOMObjCommonKindGround,                     // 1010
+    nOMObjCommonKindEffect,                     // 1011
+    nOMObjCommonKindWeapon,                     // 1012
+    nOMObjCommonKindItem,                       // 1013
+    nOMObjCommonKindInterface = 1016,           // 1016
+    nOMObjCommonKindRumble,                     // 1017
+    nOMObjCommonKindPublicity,                  // 1018 - Audience reaction
+    nOMObjCommonKindPauseMenu = 1019,           // 1019
+    nOMObjCommonKindShadow,                     // 1020
+    nOMObjCommonKindBossWallpaper = 1023,       // 1023
+    nOMObjCommonKindStageClearCamera = 1025     // 1025
 
 } GObjKind;
 

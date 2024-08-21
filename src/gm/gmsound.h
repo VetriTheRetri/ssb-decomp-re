@@ -248,7 +248,7 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMMenuDenied,
 	nSYAudioFGMPlayerGateClose,  	// Plays when player's character portrait is closed on the CSS?
 	nSYAudioFGMPlayerGateWhoosh, 	// Might be unrelated
-	nSYAudioFGMUnkMetallic2,
+	nSYAudioFGMScoreDisplayBonus,
 	nSYAudioFGMStageClearScoreRegister,
 	nSYAudioFGMStageClearScoreDisplay,
 	nSYAudioFGMUnkSwoosh1,

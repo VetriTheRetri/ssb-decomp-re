@@ -1,6 +1,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
+#include <sys/thread6.h>
 #include <ovl0/reloc_data_mgr.h>
 
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
@@ -35,128 +36,6 @@ extern uintptr_t D_NF_000000A5;								// 0x000000A5
 extern uintptr_t D_NF_00000024;								// 0x00000024
 extern uintptr_t D_NF_00000097;								// 0x00000097
 extern uintptr_t D_NF_0000001A;								// 0x0000001A
-
-// Digit sprites used for timer and damage points
-extern intptr_t lSC1PStageClearTimerDamageDigit0;	      	// 0x0000B808
-extern intptr_t lSC1PStageClearTimerDamageDigit1;			// 0x0000B968
-extern intptr_t lSC1PStageClearTimerDamageDigit2;			// 0x0000BAC8
-extern intptr_t lSC1PStageClearTimerDamageDigit3;			// 0x0000BC28
-extern intptr_t lSC1PStageClearTimerDamageDigit4;			// 0x0000BD88
-extern intptr_t lSC1PStageClearTimerDamageDigit5;			// 0x0000BEE8
-extern intptr_t lSC1PStageClearTimerDamageDigit6;			// 0x0000C048
-extern intptr_t lSC1PStageClearTimerDamageDigit7;			// 0x0000C1A8
-extern intptr_t lSC1PStageClearTimerDamageDigit8;			// 0x0000C308
-extern intptr_t lSC1PStageClearTimerDamageDigit9;			// 0x0000C468
-
-// Digit sprites used for bonus stat points
-extern intptr_t lSC1PStageClearBonusStatDigit0;				// 0x00000068
-extern intptr_t lSC1PStageClearBonusStatDigit1;				// 0x00000118
-extern intptr_t lSC1PStageClearBonusStatDigit2;				// 0x000001C8
-extern intptr_t lSC1PStageClearBonusStatDigit3;				// 0x00000278
-extern intptr_t lSC1PStageClearBonusStatDigit4;				// 0x00000328
-extern intptr_t lSC1PStageClearBonusStatDigit5;				// 0x000003D8
-extern intptr_t lSC1PStageClearBonusStatDigit6;				// 0x00000488
-extern intptr_t lSC1PStageClearBonusStatDigit7;				// 0x00000538
-extern intptr_t lSC1PStageClearBonusStatDigit8;				// 0x000005E8
-extern intptr_t lSC1PStageClearBonusStatDigit9;				// 0x00000698
-
-// Digit sprites uesd for total score points
-extern intptr_t lSC1PStageClearScoreDigit0;					// 0x00000148
-extern intptr_t lSC1PStageClearScoreDigit1;					// 0x000002D8
-extern intptr_t lSC1PStageClearScoreDigit2;					// 0x00000500
-extern intptr_t lSC1PStageClearScoreDigit3;					// 0x00000698
-extern intptr_t lSC1PStageClearScoreDigit4;					// 0x000008C0
-extern intptr_t lSC1PStageClearScoreDigit5;					// 0x00000A58
-extern intptr_t lSC1PStageClearScoreDigit6;					// 0x00000C80
-extern intptr_t lSC1PStageClearScoreDigit7;					// 0x00000E18
-extern intptr_t lSC1PStageClearScoreDigit8;					// 0x00001040
-extern intptr_t lSC1PStageClearScoreDigit9;					// 0x00001270
-
-extern intptr_t lSC1PStageClearPlatform;            	    // 0x000000C0
-extern intptr_t lSC1PStageClearTarget;                      // 0x000001D0
-extern intptr_t lSC1PStageClearTextScore;                   // 0x00000408
-extern intptr_t lSC1PStageClearPointsNSign;                 // 0x00000710
-extern intptr_t lSC1PStageClearBonusMultiplySign;           // 0x00000828
-extern intptr_t lSC1PStageClearBonusColon;                  // 0x000008D8
-extern intptr_t lSC1PStageClearTextStage;                   // 0x000009D8
-extern intptr_t lSC1PStageClearTextMultiplySign;            // 0x00001018
-extern intptr_t lSC1PStageClearTextGame;                    // 0x00001338
-extern intptr_t lSC1PStageClearTextClear;                   // 0x00001D58
-extern intptr_t lSC1PStageClearTextSpecialBonus;            // 0x00002060
-extern intptr_t lSC1PStageClearTextColon;                   // 0x00002120
-extern intptr_t lSC1PStageClearTextTimer;                   // 0x000025E8
-extern intptr_t lSC1PStageClearTextDamage;                  // 0x00002B48
-extern intptr_t lSC1PStageClearBonusBorder;                 // 0x0000A4B8
-extern intptr_t lSC1PStageClearTextResult;                  // 0x0000AF98
-extern intptr_t lSC1PStageClearTextTarget;                  // 0x0000B4F8
-extern intptr_t sSC1PStageClearSpriteBonusPageArrow;        // 0x0000B6A8
-extern intptr_t lSC1PStageClearTextShadow;                  // 0x0000D1C8
-extern intptr_t lSC1PStageClearTextBonus;                   // 0x0000D340
-
-// Bonus stat text sprites
-extern intptr_t lSC1PStageClearBonusCheapShot;              // 0x0000D528
-extern intptr_t lSC1PStageClearBonusStarFinish;             // 0x0000D708
-extern intptr_t lSC1PStageClearBonusNoItem;                 // 0x0000D8E8
-extern intptr_t lSC1PStageClearBonusShieldBreaker;          // 0x0000DAC8
-extern intptr_t lSC1PStageClearBonusJudoWarrior;            // 0x0000DCA8
-extern intptr_t lSC1PStageClearBonusHawk;                   // 0x0000DE88
-extern intptr_t lSC1PStageClearBonusShooter;                // 0x0000E068
-extern intptr_t lSC1PStageClearBonusHeavyDamage;            // 0x0000E248
-extern intptr_t lSC1PStageClearBonusAllVariations;          // 0x0000E428
-extern intptr_t lSC1PStageClearBonusItemStrike;             // 0x0000E608
-extern intptr_t lSC1PStageClearBonusDoubleKO;               // 0x0000E7E8
-extern intptr_t lSC1PStageClearBonusTrickster;              // 0x0000E9C8
-extern intptr_t lSC1PStageClearBonusGiantImpact;            // 0x0000EBA8
-extern intptr_t lSC1PStageClearBonusSpeedster;              // 0x0000ED88
-extern intptr_t lSC1PStageClearBonusItemThrow;              // 0x0000EF68
-extern intptr_t lSC1PStageClearBonusTripleKO;               // 0x0000F148
-extern intptr_t lSC1PStageClearBonusLastChance;             // 0x0000F328
-extern intptr_t lSC1PStageClearBonusPacifist;               // 0x0000F508
-extern intptr_t lSC1PStageClearBonusPerfect;                // 0x0000F6E8
-extern intptr_t lSC1PStageClearBonusNoMiss;                 // 0x0000F8C8
-extern intptr_t lSC1PStageClearBonusNoDamage;               // 0x0000FAA8
-extern intptr_t lSC1PStageClearBonusFullPower;              // 0x0000FC88
-extern intptr_t lSC1PStageClearBonusGameClear;              // 0x00014008
-extern intptr_t lSC1PStageClearBonusNoMissClear;            // 0x00013888
-extern intptr_t lSC1PStageClearBonusNoDamageClear;          // 0x00013A68
-extern intptr_t lSC1PStageClearBonusSpeedKing;              // 0x00013C48
-extern intptr_t lSC1PStageClearBonusSpeedDemon;             // 0x00013E28
-extern intptr_t lSC1PStageClearBonusMewCatcher;             // 0x0000FE68
-extern intptr_t lSC1PStageClearBonusStarClear;              // 0x00010048
-extern intptr_t lSC1PStageClearBonusVegetarian;             // 0x00010228
-extern intptr_t lSC1PStageClearBonusHeartThrob;             // 0x00010408
-extern intptr_t lSC1PStageClearBonusThrowDown;              // 0x000105E8
-extern intptr_t lSC1PStageClearBonusSmashMania;             // 0x000107C8
-extern intptr_t lSC1PStageClearBonusSmashless;              // 0x000109A8
-extern intptr_t lSC1PStageClearBonusSpecialMove;            // 0x00010B88
-extern intptr_t lSC1PStageClearBonusSingleMove;             // 0x00010D68
-extern intptr_t lSC1PStageClearBonusPokemonFinish;          // 0x00010F48
-extern intptr_t lSC1PStageClearBonusBoobyTrap;              // 0x00011128
-extern intptr_t lSC1PStageClearBonusFighterStance;          // 0x00011308
-extern intptr_t lSC1PStageClearBonusMystic;                 // 0x000114E8
-extern intptr_t lSC1PStageClearBonusCometMystic;            // 0x000116C8
-extern intptr_t lSC1PStageClearBonusAcidClear;              // 0x000118A8
-extern intptr_t lSC1PStageClearBonusBumperClear;            // 0x00011A88
-extern intptr_t lSC1PStageClearBonusTornadoClear;           // 0x00011C68
-extern intptr_t lSC1PStageClearBonusArwingClear;            // 0x00011E48
-extern intptr_t lSC1PStageClearBonusCounterAttack;          // 0x00012028
-extern intptr_t lSC1PStageClearBonusMeteorSmash;            // 0x00012208
-extern intptr_t lSC1PStageClearBonusAerial;                 // 0x000123E8
-extern intptr_t lSC1PStageClearBonusLastSecond;             // 0x000125C8
-extern intptr_t lSC1PStageClearBonusLucky3;                 // 0x000127A8
-extern intptr_t lSC1PStageClearBonusJackpot;                // 0x00012988
-extern intptr_t lSC1PStageClearBonusYoshiRainbow;           // 0x00012B68
-extern intptr_t lSC1PStageClearBonusKirbyRanks;             // 0x00012D48
-extern intptr_t lSC1PStageClearBonusBrosCalamity;           // 0x00012F28
-extern intptr_t lSC1PStageClearBonusDKDefender;             // 0x00013108
-extern intptr_t lSC1PStageClearBonusDKPerfect;              // 0x000132E8
-extern intptr_t lSC1PStageClearBonusGoodFriend;             // 0x000134C8
-extern intptr_t lSC1PStageClearBonusTrueFriend;             // 0x000136A8
-extern intptr_t lSC1PStageClearBonusVeryEasyClear;          // 0x00014008
-extern intptr_t lSC1PStageClearBonusEasyClear;              // 0x000141E8
-extern intptr_t lSC1PStageClearBonusNormalClear;            // 0x000143C8
-extern intptr_t lSC1PStageClearBonusHardClear;              // 0x000145A8
-extern intptr_t lSC1PStageClearBonusVeryHardClear;        	// 0x00014788
 
 extern intptr_t lGRWallpaperTraining0Sprite;                // 0x00020718
 
@@ -509,9 +388,6 @@ Lights1 dSC1PStageClearLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0
 //                               //
 // // // // // // // // // // // //
 
-// Temp forward declaration
-sb32 sc1PStageClearCheckHaveTimer(void);
-
 // 0x80131B00
 void sc1PStageClearProcLights(Gfx **dls)
 {
@@ -520,22 +396,23 @@ void sc1PStageClearProcLights(Gfx **dls)
 }
 
 // 0x80131B58
-s32 func_ovl56_80131B58(s32 arg0, s32 arg1)
+s32 sc1PStageClearGetPowerOf(s32 base, s32 exp)
 {
-	s32 var_v1 = arg0;
-	s32 var_v0;
+	s32 raised = base;
+	s32 i;
 
-	if (arg1 == 0)
-		return 1;
-
-	var_v0 = arg1;
-
-	while (var_v0 > 1)
+	if (exp == 0)
 	{
-		var_v0--;
-		var_v1 *= arg0;
+		return 1;
 	}
-	return var_v1;
+	i = exp;
+
+	while (i > 1)
+	{
+		i--;
+		raised *= base;
+	}
+	return raised;
 }
 
 // 0x80131BF8
@@ -594,7 +471,7 @@ s32 sc1PStageClearGetScoreDigitCount(s32 points, s32 digit_count_max)
 
 	while (digit_count_current > 0)
 	{
-		s32 digit = (func_ovl56_80131B58(10, digit_count_current - 1) != 0) ? points / func_ovl56_80131B58(10, digit_count_current - 1) : 0;
+		s32 digit = (sc1PStageClearGetPowerOf(10, digit_count_current - 1) != 0) ? points / sc1PStageClearGetPowerOf(10, digit_count_current - 1) : 0;
 
 		if (digit != 0)
 		{
@@ -635,7 +512,19 @@ Sprite* sc1PStageClearGetScoreDigitSprite(s32 digit_kind, s32 digit)
 }
 
 // 0x80131E10
-void sc1PStageClearMakeScoreDigitSObjs(GObj *gobj, s32 points, f32 x, f32 y, syColorRGBPair *colors, s32 offset_x, s32 digit_kind, s32 sub, s32 digit_count_max, sb32 is_fixed_digit_count)
+void sc1PStageClearMakeScoreDigitSObjs
+(
+	GObj *gobj,
+	s32 points,
+	f32 x,
+	f32 y,
+	syColorRGBPair *colors,
+	s32 offset_x,
+	s32 digit_kind,
+	s32 sub,
+	s32 digit_count_max,
+	sb32 is_fixed_digit_count
+)
 {
 	SObj *sobj;
 	f32 calc_x;
@@ -648,7 +537,9 @@ void sc1PStageClearMakeScoreDigitSObjs(GObj *gobj, s32 points, f32 x, f32 y, syC
 	if (points < 0)
 	{
 		if ((digit_kind == 2) || (digit_kind == 0))
+		{
 			points = 0;
+		}
 		else
 		{
 			points = -points;
@@ -666,7 +557,7 @@ void sc1PStageClearMakeScoreDigitSObjs(GObj *gobj, s32 points, f32 x, f32 y, syC
 
 	for (i = 1; i < ((is_fixed_digit_count != FALSE) ? digit_count_max : sc1PStageClearGetScoreDigitCount(points, digit_count_max)); i++)
 	{
-		digit = (func_ovl56_80131B58(10, i) != 0) ? points / func_ovl56_80131B58(10, i) : 0;
+		digit = (sc1PStageClearGetPowerOf(10, i) != 0) ? points / sc1PStageClearGetPowerOf(10, i) : 0;
 
 		sobj = gcAppendSObjWithSprite(gobj, sc1PStageClearGetScoreDigitSprite(digit_kind, digit % 10));
 
@@ -826,9 +717,9 @@ void sc1PStageClearMakeTimerTextSObjs(f32 y)
 	GObj *gobj;
 	SObj *sobj;
 
-	sSC1PStageClearTimerTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+	sSC1PStageClearTimerTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextTimer));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -954,8 +845,8 @@ void sc1PStageClearMakeDamageTextSObjs(f32 y)
 	SObj *sobj;
 	s32 unused;
 
-	sSC1PStageClearDamageTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
-	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	sSC1PStageClearDamageTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextDamage));
 
@@ -1002,9 +893,9 @@ void sc1PStageClearMakeDamageDigitSObjs(f32 y)
 
 	x = (sSC1PStageClearDamageDealt > 1000) ? 184 : 171;
 
-	sSC1PStageClearDamageMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+	sSC1PStageClearDamageMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	sc1PStageClearMakeScoreDigitSObjs(gobj, sSC1PStageClearDamageDealt, x, (s32)y - 1, NULL, 1, 0, 0, 4, FALSE);
 	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[3], &lSC1PStageClearTextMultiplySign));
@@ -1035,7 +926,7 @@ s32 sc1PStageClearGetAppendTotalDamageScore(f32 y)
 
 	sSC1PStageClearDamageMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_LINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 26, GOBJ_LINKORDER_DEFAULT, -1);
 	damage_score_total = sSC1PStageClearDamageDealt * 10;
 
 	sc1PStageClearMakeScoreDigitSObjs(gobj, damage_score_total, 200.0F, (s32)y - 1, NULL, 1, 0, 0, 5, FALSE);
@@ -1188,10 +1079,13 @@ sb32 sc1PStageClearCheckHaveBonusStats(void)
 		i++;
 
 		if (sSC1PStageClearBonusFlags[bonus.bonus_array_id] & (1 << bonus.bonus_id))
+		{
 			return TRUE;
-
+		}
 		if (i == GS_BITCOUNT(sSC1PStageClearBonusFlags))
+		{
 			return FALSE;
+		}
 	}
 }
 
@@ -1232,7 +1126,7 @@ void sc1PStageClearCommonProcUpdate(GObj *gobj)
 }
 
 // 0x801331EC
-s32 sc1PStageClearAppendBonusStatGetPoints(s32 bonus_id, s32 bonus_num, f32 x, f32 y)
+s32 sc1PStageClearGetAppendBonusStatPoints(s32 bonus_id, s32 bonus_num, f32 x, f32 y)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -1251,17 +1145,18 @@ s32 sc1PStageClearAppendBonusStatGetPoints(s32 bonus_id, s32 bonus_num, f32 x, f
 	// 0x801351E4
 	syColorRGBPair colors = { { 0x00, 0x00, 0x00 }, { 0xFF, 0xFF, 0x00 } };
 
-	sSC1PStageClearBonusStatGObjs[bonus_num] = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+	sSC1PStageClearBonusStatGObjs[bonus_num] = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 	gcAddGObjProcess(gobj, sc1PStageClearCommonProcUpdate, nOMObjProcessKindProc, 1);
 
 	gobj->user_data.u = (bonus_num * 10) + sSC1PStageClearTotalTimeTics;
 
 	if (bonus_id == nSC1PGameBonusGameClear)
+	{
 		sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], offsets[sSC1PStageClearDifficulty]));
-	else
-		sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], dSC1PStageClearBonusData[bonus_id].offset));
+	}
+	else sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], dSC1PStageClearBonusData[bonus_id].offset));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1350,7 +1245,7 @@ void sc1PStageClearMakeBonusPageArrow(void)
 }
 
 // 0x80133668
-sb32 sc1PStageClearCheckHaveBonusID(s32 bonus_id)
+sb32 sc1PStageClearCheckHaveBonusStatID(s32 bonus_id)
 {
 	sc1PStageClearStats bonus;
 
@@ -1369,7 +1264,7 @@ sb32 sc1PStageClearCheckHaveBonusID(s32 bonus_id)
 }
 
 // 0x801336F8
-s32 sc1PStageClearUpdateGetBonusStatPointsAll(void)
+s32 sc1PStageClearGetUpdateBonusStatPointsAll(void)
 {
 	s32 unused[2];
 	s32 i;
@@ -1394,7 +1289,7 @@ s32 sc1PStageClearUpdateGetBonusStatPointsAll(void)
 		}
 		if (sSC1PStageClearBonusNum == (ARRAY_COUNT(sSC1PStageClearBonusStatGObjs) - 1))
 		{
-			if (sc1PStageClearCheckHaveBonusID(sSC1PStageClearBonusID) == FALSE)
+			if (sc1PStageClearCheckHaveBonusStatID(sSC1PStageClearBonusID) == FALSE)
 			{
 				sSC1PStageClearIsAdvance = TRUE;
 				return points;
@@ -1406,7 +1301,7 @@ s32 sc1PStageClearUpdateGetBonusStatPointsAll(void)
 
 		if (sSC1PStageClearBonusFlags[bonus.bonus_array_id] & (1 << bonus.bonus_id))
 		{
-			points += sc1PStageClearAppendBonusStatGetPoints(sSC1PStageClearBonusID, sSC1PStageClearBonusNum, 80.0F, (sSC1PStageClearBonusNum * 11) + 86);
+			points += sc1PStageClearGetAppendBonusStatPoints(sSC1PStageClearBonusID, sSC1PStageClearBonusNum, 80.0F, (sSC1PStageClearBonusNum * 11) + 86);
 			sSC1PStageClearBonusNum++;
 		}
 		sSC1PStageClearBonusID++;
@@ -1456,7 +1351,7 @@ void sc1PStageClearMakeBonusTable(void)
 }
 
 // 0x801339C0
-void sc1PStageClearFrameCopyBackgroundProcRender(GObj *gobj)
+void sc1PStageClearFramebufWallpaperProcRender(GObj *gobj)
 {
 	gDPPipeSync(gDisplayListHead[0]++);
 	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
@@ -1469,14 +1364,14 @@ void sc1PStageClearFrameCopyBackgroundProcRender(GObj *gobj)
 }
 
 // 0x80133AC0
-void sc1PStageClearMakeFrameCopyBackground(void)
+void sc1PStageClearMakeFramebufWallpaper(void)
 {
 	GObj *gobj;
 	SObj *sobj;
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearFrameCopyBackgroundProcRender, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearFramebufWallpaperProcRender, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite
 	(
 		gobj,
@@ -1494,21 +1389,57 @@ void sc1PStageClearMakeFrameCopyBackground(void)
 }
 
 // 0x80133B48
-void func_ovl56_80133B48(void)
+void sc1PStageClearMakeLink26Camera(void)
 {
-	Camera *cam = CameraGetStruct(func_8000B93C(0x401, NULL, 0x10, 0x80000000, func_ovl0_800CD2CC, 0x50, CAMERA_MASK_DLLINK(26), -1, 0, 1, 0, 1, 0));
+	Camera *cam = CameraGetStruct
+	(
+		func_8000B93C
+		(
+			nOMObjCommonKindStageClearCamera,
+			NULL,
+			16,
+			GOBJ_LINKORDER_DEFAULT,
+			func_ovl0_800CD2CC,
+			80,
+			CAMERA_MASK_DLLINK(26),
+			-1,
+			0,
+			1,
+			NULL,
+			1,
+			0
+		)
+	);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80133BE8
-void func_ovl56_80133BE8(void)
+void sc1PStageClearMakeLink27Camera(void)
 {
-	Camera *cam = CameraGetStruct(func_8000B93C(0x401, NULL, 0x10, 0x80000000, func_ovl0_800CD2CC, 0x5A, CAMERA_MASK_DLLINK(27), -1, 0, 1, 0, 1, 0));
+	Camera *cam = CameraGetStruct
+	(
+		func_8000B93C
+		(
+			nOMObjCommonKindStageClearCamera,
+			NULL,
+			16,
+			GOBJ_LINKORDER_DEFAULT,
+			func_ovl0_800CD2CC,
+			90,
+			CAMERA_MASK_DLLINK(27),
+			-1,
+			0,
+			1,
+			NULL,
+			1,
+			0
+		)
+	);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80133C88
-void func_ovl56_80133C88(void)
+void sc1PStageClearInitVars(void)
 {
 	s32 i;
 
@@ -1594,10 +1525,10 @@ void sc1PStageClearUpdateTotal1PGameScore(void)
 }
 
 // 0x80133F00
-void func_ovl56_80133F00(void)
+void sc1PStageClearUpdateBonusScore(void)
 {
 	sc1PStageClearMakeScoreSObjs();
-	func_800269C0_275C0(nSYAudioFGMUnkMetallic2);
+	func_800269C0_275C0(nSYAudioFGMScoreDisplayBonus);
 }
 
 // 0x80133F28
@@ -1611,7 +1542,7 @@ sb32 sc1PStageClearCheckHaveTimer(void)
 }
 
 // 0x80133F50
-void func_ovl56_80133F50(void)
+void sc1PStageUpdateBonusStatAll(void)
 {
 	s32 i;
 
@@ -1624,7 +1555,7 @@ void func_ovl56_80133F50(void)
 				gcEjectGObj(sSC1PStageClearBonusStatGObjs[i]);
 			}
 		}
-		sSC1PStageClearScoreTotal += sc1PStageClearUpdateGetBonusStatPointsAll();
+		sSC1PStageClearScoreTotal += sc1PStageClearGetUpdateBonusStatPointsAll();
 
 		if (sSC1PStageClearScoreTotal < 0)
 		{
@@ -1635,7 +1566,7 @@ void func_ovl56_80133F50(void)
 	else if (sSC1PStageClearBonusShowNextTic == sSC1PStageClearTotalTimeTics)
 	{
 		gcEjectGObj(sSC1PStageClearScoreTextGObj);
-		func_ovl56_80133F00();
+		sc1PStageClearUpdateBonusScore();
 
 		sSC1PStageClearIsSetCommonAdvanceTic = TRUE;
 
@@ -1674,7 +1605,7 @@ void sc1PStageClearUpdateGameClearScore(void)
 		if (sSC1PStageClearTotalTimeTics == sSC1PStageClearTimerEjectTic)
 		{
 			gcEjectGObj(sSC1PStageClearScoreTextGObj);
-			func_ovl56_80133F00();
+			sc1PStageClearUpdateBonusScore();
 		}
 	}
 	y = (sc1PStageClearCheckHaveTimer() == FALSE) ? 126.0F : 94.0F;
@@ -1695,7 +1626,7 @@ void sc1PStageClearUpdateGameClearScore(void)
 	if (sSC1PStageClearTotalTimeTics == sSC1PStageClearDamageEjectTic)
 	{
 		gcEjectGObj(sSC1PStageClearScoreTextGObj);
-		func_ovl56_80133F00();
+		sc1PStageClearUpdateBonusScore();
 
 		if (sSC1PStageClearIsHaveBonusStats != FALSE)
 		{
@@ -1733,7 +1664,7 @@ void sc1PStageClearUpdateGameClearScore(void)
 	}
 	if (sSC1PStageClearIsHaveBonusStats != FALSE)
 	{
-		func_ovl56_80133F50();
+		sc1PStageUpdateBonusStatAll();
 	}
 }
 
@@ -1759,7 +1690,7 @@ void sc1PStageClearUpdateStageClearScore(void)
 		if (sSC1PStageClearTotalTimeTics == sSC1PStageClearTimerEjectTic)
 		{
 			gcEjectGObj(sSC1PStageClearScoreTextGObj);
-			func_ovl56_80133F00();
+			sc1PStageClearUpdateBonusScore();
 		}
 	}
 	y = (sc1PStageClearCheckHaveTimer() == FALSE) ? 126.0F : 94.0F;
@@ -1780,7 +1711,7 @@ void sc1PStageClearUpdateStageClearScore(void)
 	if (sSC1PStageClearTotalTimeTics == sSC1PStageClearDamageEjectTic)
 	{
 		gcEjectGObj(sSC1PStageClearScoreTextGObj);
-		func_ovl56_80133F00();
+		sc1PStageClearUpdateBonusScore();
 
 		if (sSC1PStageClearIsHaveBonusStats != FALSE)
 		{
@@ -1818,7 +1749,7 @@ void sc1PStageClearUpdateStageClearScore(void)
 	}
 	if (sSC1PStageClearIsHaveBonusStats != FALSE)
 	{
-		func_ovl56_80133F50();
+		sc1PStageUpdateBonusStatAll();
 	}
 }
 
@@ -1903,7 +1834,7 @@ void sc1PStageClearUpdateResultScore(void)
 			)
 			{
 				gcEjectGObj(sSC1PStageClearScoreTextGObj);
-				func_ovl56_80133F00();
+				sc1PStageClearUpdateBonusScore();
 			}
 			if (sSC1PStageClearIsHaveBonusStats != FALSE)
 			{
@@ -1950,7 +1881,7 @@ void sc1PStageClearUpdateResultScore(void)
 	}
 	if (sSC1PStageClearIsHaveBonusStats != FALSE)
 	{
-		func_ovl56_80133F50();
+		sc1PStageUpdateBonusStatAll();
 	}
 }
 
@@ -2087,10 +2018,10 @@ void sc1PStageClearProcStart(void)
 	gcMakeGObjSPAfter(0, sc1PStageClearProcRun, 0, GOBJ_LINKORDER_DEFAULT);
 	sc1PStageClearCopyFramebufToWallpaper();
 	func_8000B9FC(0, 0x80000000, 0x64, 0, 0);
-	func_ovl56_80133C88();
-	func_ovl56_80133B48();
-	func_ovl56_80133BE8();
-	sc1PStageClearMakeFrameCopyBackground();
+	sc1PStageClearInitVars();
+	sc1PStageClearMakeLink26Camera();
+	sc1PStageClearMakeLink27Camera();
+	sc1PStageClearMakeFramebufWallpaper();
 	sc1PStageClearMakeTextSObjs();
 	sc1PStageClearMakeScoreSObjs();
 
@@ -2129,15 +2060,41 @@ syDisplaySetup dGM1PStageClearDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 // 0x80135208
 scRuntimeInfo dGM1PStageClearGtlSetup =
 {
-	0x00000000, func_8000A5E4, func_8000A340, &ovl56_BSS_END,
-	0x00000000, 0x00000001, 0x00000002, 0x00004E20,
-	0x00001000, 0x00000000, 0x00000000, 0x00008000,
-	0x00020000, 0x0000C000, sc1PStageClearProcLights, 0x80004310,
-	0x00000000, 0x00000600, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000088, 0x00000000,
-	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000088, 0x00000000, 0x0000006C,
-	0x00000000, 0x00000090, sc1PStageClearProcStart
+	0x00000000,
+	func_8000A5E4,
+	func_8000A340,
+	&ovl56_BSS_END,
+	0x00000000,
+	0x00000001,
+	0x00000002,
+	0x00004E20,
+	0x00001000,
+	0x00000000,
+	0x00000000,
+	0x00008000,
+	0x00020000,
+	0x0000C000,
+	sc1PStageClearProcLights,
+	update_contdata,
+	0x00000000,
+	0x00000600,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000088,
+	0x00000000,
+	0x800D5CAC,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000088,
+	0x00000000,
+	0x0000006C,
+	0x00000000,
+	0x00000090,
+	sc1PStageClearProcStart
 };
 
 // 0x80134E84

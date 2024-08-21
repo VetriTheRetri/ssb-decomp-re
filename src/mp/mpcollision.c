@@ -3471,17 +3471,17 @@ s32 mpCollisionGetEdgeLeftDLineID(s32 line_id)
 // 0x800FAF64
 void mpCollisionGetPlayerMapObjPosition(s32 player, Vec3f *pos)
 {
-    if (!gMPCollisionGeometry->mapobj_count)
+    if (!(gMPCollisionGeometry->mapobj_count))
     {
         pos->x = pos->y = pos->z = 0.0F;
     }
     else
     {
-        s32 i, index = player;
+        s32 i, id = player;
 
         for (i = 0; i < gMPCollisionGeometry->mapobj_count; i++)
         {
-            if (index == gMPCollisionMapObjs->mapobjs[i].mapobj_kind)
+            if (id == gMPCollisionMapObjs->mapobjs[i].mapobj_kind)
             {
                 pos->x = gMPCollisionMapObjs->mapobjs[i].pos.x;
                 pos->y = gMPCollisionMapObjs->mapobjs[i].pos.y;

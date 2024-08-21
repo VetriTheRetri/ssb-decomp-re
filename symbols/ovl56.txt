@@ -1,4 +1,4 @@
-func_ovl56_80131B00 = 0x80131B00; // segment:ovl56
+sc1PStageClearProcLights = 0x80131B00; // segment:ovl56
 func_ovl56_80131B58 = 0x80131B58; // segment:ovl56
 sc1PStageClearSetDigitSpriteColor = 0x80131BF8; // segment:ovl56
 sc1PStageClearGetScoreDigitCount = 0x80131CC4; // segment:ovl56
@@ -41,7 +41,7 @@ sc1PStageClearUpdateStageClearScore = 0x80134340; // segment:ovl56
 sc1PStageClearUpdateResultScore = 0x80134604; // segment:ovl56
 sc1PStageClearProcRun = 0x801349F0; // segment:ovl56
 sc1PStageClearCopyFramebufToWallpaper = 0x80134AF4; // segment:ovl56
-sc1PStageClearInitAll = 0x80134CC4; // segment:ovl56
+sc1PStageClearProcStart = 0x80134CC4; // segment:ovl56
 sc1PStageClearStartScene = 0x80134E84; // segment:ovl56
 
 D_ovl56_80134EE0 = 0x80134EE0; // segment:ovl56

@@ -626,6 +626,7 @@ Sprite* sc1PStageClearGetScoreDigitSprite(s32 digit_kind, s32 digit)
 		{ &lSC1PStageClearTimerDamageDigit8, &lSC1PStageClearBonusStatDigit8, &lSC1PStageClearScoreDigit8 },
 		{ &lSC1PStageClearTimerDamageDigit9, &lSC1PStageClearBonusStatDigit9, &lSC1PStageClearScoreDigit9 }
 	};
+
 	return gcGetDataFromFile
 	(
 		Sprite*,
@@ -701,7 +702,7 @@ void sc1PStageClearTextProcRender(GObj *gobj)
 }
 
 // 0x8013213C
-void sc1PStageClearMakeTextSObjs()
+void sc1PStageClearMakeTextSObjs(void)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -757,9 +758,10 @@ void sc1PStageClearMakeTextSObjs()
 		sobj->pos.y = 24.0F;
 
 		if (sSC1PStageClearKind == nSC1PStageClearKindStage)
+		{
 			sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextStage));
-		else
-			sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextGame));
+		}
+		else sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextGame));
 
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
@@ -775,9 +777,9 @@ void sc1PStageClearMakeTextSObjs()
 		sobj->pos.x = 53.0F;
 		sobj->pos.y = 24.0F;
 	}
-	sSC1PStageClearBonusTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+	sSC1PStageClearBonusTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextBonus));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -792,14 +794,14 @@ void sc1PStageClearMakeTextSObjs()
 }
 
 // 0x801323F8
-void sc1PStageClearMakeScoreSObjs()
+void sc1PStageClearMakeScoreSObjs(void)
 {
 	GObj *gobj;
 	SObj *sobj;
 
-	sSC1PStageClearScoreTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+	sSC1PStageClearScoreTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[1], &lSC1PStageClearTextScore));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -872,9 +874,9 @@ void sc1PStageClearMakeTimerDigitSObjs(f32 y)
 	s32 multiplier;
 	s32 unused;
 
-	sSC1PStageClearTimerMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+	sSC1PStageClearTimerMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[3], &lSC1PStageClearTextMultiplySign));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1044,7 +1046,7 @@ s32 sc1PStageClearGetAppendTotalDamageScore(f32 y)
 }
 
 // 0x80132C80
-void sc1PStageClearMakeTargetTextSObjs()
+void sc1PStageClearMakeTargetTextSObjs(void)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -1111,7 +1113,7 @@ void func_ovl56_80132E40(f32 x, f32 y, s32 objective_num)
 	sSC1PStageClearBonusObjectiveGObjs[objective_num] = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 
 	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjProcess(gobj, func_ovl56_80132DC0, 1, 1);
+	gcAddGObjProcess(gobj, func_ovl56_80132DC0, nOMObjProcessKindProc, 1);
 
 	gobj->user_data.u = (objective_num * 10) + sSC1PStageClearTotalTimeTics;
 
@@ -1253,7 +1255,7 @@ s32 sc1PStageClearAppendBonusStatGetPoints(s32 bonus_id, s32 bonus_num, f32 x, f
 	sSC1PStageClearBonusStatGObjs[bonus_num] = gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
 
 	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjProcess(gobj, sc1PStageClearCommonProcUpdate, 1, 1);
+	gcAddGObjProcess(gobj, sc1PStageClearCommonProcUpdate, nOMObjProcessKindProc, 1);
 
 	gobj->user_data.u = (bonus_num * 10) + sSC1PStageClearTotalTimeTics;
 
@@ -1327,7 +1329,7 @@ s32 sc1PStageClearAppendBonusStatGetPoints(s32 bonus_id, s32 bonus_num, f32 x, f
 }
 
 // 0x801335A0
-void sc1PStageClearMakeBonusPageArrow()
+void sc1PStageClearMakeBonusPageArrow(void)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -1335,7 +1337,7 @@ void sc1PStageClearMakeBonusPageArrow()
 	sSC1PStageClearBonusStatGObjs[9] = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 
 	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjProcess(gobj, sc1PStageClearCommonProcUpdate, 1, 1);
+	gcAddGObjProcess(gobj, sc1PStageClearCommonProcUpdate, nOMObjProcessKindProc, 1);
 
 	gobj->user_data.u = sSC1PStageClearTotalTimeTics + 90;
 
@@ -1368,7 +1370,7 @@ sb32 sc1PStageClearCheckHaveBonusID(s32 bonus_id)
 }
 
 // 0x801336F8
-s32 sc1PStageClearUpdateGetBonusStatPointsAll()
+s32 sc1PStageClearUpdateGetBonusStatPointsAll(void)
 {
 	s32 unused[2];
 	s32 i;
@@ -1378,8 +1380,9 @@ s32 sc1PStageClearUpdateGetBonusStatPointsAll()
 	points = 0;
 
 	for (i = 0; i < ARRAY_COUNT(sSC1PStageClearBonusStatGObjs); i++)
+	{
 		sSC1PStageClearBonusStatGObjs[i] = NULL;
-
+	}
 	sSC1PStageClearIsSetCommonAdvanceTic = 0;
 	sSC1PStageClearBonusNum = 0;
 
@@ -1412,14 +1415,14 @@ s32 sc1PStageClearUpdateGetBonusStatPointsAll()
 }
 
 // 0x801338A0
-void sc1PStageClearMakeBonusTable()
+void sc1PStageClearMakeBonusTable(void)
 {
 	GObj *gobj;
 	SObj *sobj;
 
-	gobj = gcMakeGObjSPAfter(0, NULL, 0x11, GOBJ_LINKORDER_DEFAULT);
+	gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 0x1A, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearBonusBorder));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1492,14 +1495,14 @@ void sc1PStageClearMakeFrameCopyBackground(void)
 }
 
 // 0x80133B48
-void func_ovl56_80133B48()
+void func_ovl56_80133B48(void)
 {
 	Camera *cam = CameraGetStruct(func_8000B93C(0x401, NULL, 0x10, 0x80000000, func_ovl0_800CD2CC, 0x50, CAMERA_MASK_DLLINK(26), -1, 0, 1, 0, 1, 0));
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80133BE8
-void func_ovl56_80133BE8()
+void func_ovl56_80133BE8(void)
 {
 	Camera *cam = CameraGetStruct(func_8000B93C(0x401, NULL, 0x10, 0x80000000, func_ovl0_800CD2CC, 0x5A, CAMERA_MASK_DLLINK(27), -1, 0, 1, 0, 1, 0));
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -1592,7 +1595,7 @@ void sc1PStageClearUpdateTotal1PGameScore(void)
 }
 
 // 0x80133F00
-void func_ovl56_80133F00()
+void func_ovl56_80133F00(void)
 {
 	sc1PStageClearMakeScoreSObjs();
 	func_800269C0_275C0(nSYAudioFGMUnkMetallic2);
@@ -1649,7 +1652,7 @@ void func_ovl56_80133F50(void)
 }
 
 // 0x8013407C
-void sc1PStageClearUpdateGameClearScore()
+void sc1PStageClearUpdateGameClearScore(void)
 {
 	s32 unused;
 	f32 y;
@@ -1821,7 +1824,7 @@ void sc1PStageClearUpdateStageClearScore(void)
 }
 
 // 0x80134604
-void sc1PStageClearUpdateResultScore()
+void sc1PStageClearUpdateResultScore(void)
 {
 	s32 i;
 
@@ -1903,7 +1906,7 @@ void sc1PStageClearUpdateResultScore()
 				gcEjectGObj(sSC1PStageClearScoreTextGObj);
 				func_ovl56_80133F00();
 			}
-			if (sSC1PStageClearIsHaveBonusStats != 0)
+			if (sSC1PStageClearIsHaveBonusStats != FALSE)
 			{
 				sSC1PStageClearCommonAdvanceTic =
 				sSC1PStageClearBonusShowNextTic =
@@ -1961,7 +1964,7 @@ void sc1PStageClearProcRun(GObj *gobj)
 	{
 		if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
 		{
-			if (sSC1PStageClearIsAllowProceedNext != 0)
+			if (sSC1PStageClearIsAllowProceedNext != FALSE)
 			{
 				gSceneData.scene_previous = gSceneData.scene_current;
 				gSceneData.scene_current = nSCKindTitle;

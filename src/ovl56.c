@@ -159,7 +159,6 @@ extern intptr_t lSC1PStageClearBonusHardClear;              // 0x000145A8
 extern intptr_t lSC1PStageClearBonusVeryHardClear;        	// 0x00014788
 
 extern intptr_t lGRWallpaperTraining0Sprite;                // 0x00020718
-extern intptr_t lGRWallpaperTraining0BitmapPointer;        	// 0x0002074C - pointer to bitmap in wallpaper sprite
 
 // // // // // // // // // // // //
 //                               //
@@ -2012,15 +2011,12 @@ void sc1PStageClearCopyFramebufToWallpaper(void)
 		SYDISPLAY_BORDER_SIZE(320, 10, u16) + 
 		SYDISPLAY_BORDER_SIZE(1, 10, u16)
 	);
-	wallpaper_pixels = (syPixelPair*)
+	wallpaper_pixels = (syPixelPair*)gcGetDataFromFile
 	(
-		*gcGetDataFromFile
-		(
-			Bitmap**,
-			sSC1PStageClearFiles[6],
-			&lGRWallpaperTraining0BitmapPointer
-		)
-	)->buf;
+		Sprite*,
+		sSC1PStageClearFiles[6],
+		&lGRWallpaperTraining0Sprite
+	)->bitmap->buf;
 
 	for (i = 0; i < 220; i++)
 	{

@@ -29,6 +29,8 @@ struct efGenerator
 {
     u8 filler_0x0[0x14];
     Vec3f pos;
+    f32 filler_0x20[10];
+    DObj *dobj;
 };
 
 struct efTransform

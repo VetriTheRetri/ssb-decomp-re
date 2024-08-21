@@ -4,6 +4,8 @@ lOverlay6ArenaLo = 0x8018F710;
 lOverlay6ArenaHi = 0x80392A00;
 lOverlay7ArenaLo = 0x80190FA0;
 lOverlay7ArenaHi = 0x80392A00;
+lOverlay10ArenaLo = 0x801345B0;
+lOverlay10ArenaHi = 0x80369240;
 lOverlay14ArenaLo = 0x80133130;
 lOverlay14ArenaHi = 0x80369240;
 lOverlay15ArenaLo = 0x800D6A00;
@@ -505,6 +507,11 @@ lGRBonus3MapHead = 0x00000000;
 lGRBonus3ItemHead = 0x00000000;
 lGRBonus3BumpersDObjDesc = 0x00000000;
 lGRBonus3BumpersAnimJoint = 0x00000110;
+
+lTitleScreenParticleBankHeaderLo = 0x00B22C30;
+lTitleScreenParticleBankHeaderHi = 0x00B22D40;
+lTitleScreenParticleBankTextureLo = 0x00B22D40;
+lTitleScreenParticleBankTextureHi = 0x00B277B0;
 
 lIFCommonPlayerArrowsDObjDesc = 0x00000188;
 lIFCommonPlayerArrowsAnimJoint = 0x00000270;

@@ -42,7 +42,7 @@ extern void func_8000CCBC(struct DObj *dobj);
 extern void func_8000CF6C(struct MObj *mobj);
 extern void func_8000DA40(struct MObj *mobj);
 extern void func_8000DF34(struct GObjCommon *);
-extern void func_8000F120(struct GObjCommon *, struct UnkEC64Arg3 *, struct DObj **);
+extern void gcSetupCommonDObjs(struct GObjCommon *, struct UnkEC64Arg3 *, struct DObj **);
 extern void func_8000F2FC(struct DObj *, u8, u8, u8);
 extern void func_8000F364(struct DObj *, u8, u8, u8, s32);
 // extern void gcSetupCustomDObjs(struct GObjCommon *, struct UnkEC64Arg3 *, struct DObj **, u8, u8, u8);

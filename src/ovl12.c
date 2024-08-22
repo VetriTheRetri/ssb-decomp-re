@@ -16,7 +16,6 @@ extern void mnDebugMenuCreateMenu(s32, s32, s32, void*, s32);
 extern void mnDebugMenuDestroyMenu();
 
 // DATA
-
 // 800D6680
 sb32 dMNDebugStageSelectInterrupt = FALSE;
 
@@ -120,51 +119,54 @@ scRuntimeInfo D_ovl12_800D6780 = {
 	0x800D65AC
 };
 
+// Rodata
+const char text0[] = "Mario";
+const char text1[] = "Fox";
+const char text2[] = "Donkey";
+const char text3[] = "Samus";
+const char text4[] = "Link";
+const char text5[] = "Yoshi";
+const char text6[] = "Kirby";
+const char text7[] = "Pikacyu";
+const char text8[] = "OldMario";
+const char text9[] = "Small";
+const char text10[] = "New";
+const char text11[] = "Explain";
+const char text12[] = "SYoshi";
+const char text13[] = "Metal";
+const char text14[] = "Zako";
+const char text15[] = "Bonus3";
+const char text16[] = "Boss";
+const char text17[] = "Bonus1Mario";
+const char text18[] = "Bonus1Fox";
+const char text19[] = "Bonus1Donkey";
+const char text20[] = "Bonus1Samus";
+const char text21[] = "Bonus1Luigi";
+const char text22[] = "Bonus1Link";
+const char text23[] = "Bonus1Yoshi";
+const char text24[] = "Bonus1Captain";
+const char text25[] = "Bonus1Kirby";
+const char text26[] = "Bonus1Pikachu";
+const char text27[] = "Bonus1Purin";
+const char text28[] = "Bonus1Nes";
+const char text29[] = "Bonus2Mario";
+const char text30[] = "Bonus2Fox";
+const char text31[] = "Bonus2Donkey";
+const char text32[] = "Bonus2Samus";
+const char text33[] = "Bonus2Luigi";
+const char text34[] = "Bonus2Link";
+const char text35[] = "Bonus2Yoshi";
+const char text36[] = "Bonus2Captain";
+const char text37[] = "Bonus2Kirby";
+const char text38[] = "Bonus2Pikachu";
+const char text39[] = "Bonus2Purin";
+const char text40[] = "Bonus2Nes";
+const char text41[] = "Exit";
+
+
 // 800D6490
 void mnDebugStageSelectTriggerInterrupt()
 {
-	const char* text0 = "Mario";
-	const char* text1 = "Fox";
-	const char* text2 = "Donkey";
-	const char* text3 = "Samus";
-	const char* text4 = "Link";
-	const char* text5 = "Yoshi";
-	const char* text6 = "Kirby";
-	const char* text7 = "Pikacyu";
-	const char* text8 = "OldMario";
-	const char* text9 = "Small";
-	const char* text10 = "New";
-	const char* text11 = "Explain";
-	const char* text12 = "SYoshi";
-	const char* text13 = "Metal";
-	const char* text14 = "Zako";
-	const char* text15 = "Bonus3";
-	const char* text16 = "Boss";
-	const char* text17 = "Bonus1Mario";
-	const char* text18 = "Bonus1Fox";
-	const char* text19 = "Bonus1Donkey";
-	const char* text20 = "Bonus1Samus";
-	const char* text21 = "Bonus1Luigi";
-	const char* text22 = "Bonus1Link";
-	const char* text23 = "Bonus1Yoshi";
-	const char* text24 = "Bonus1Captain";
-	const char* text25 = "Bonus1Kirby";
-	const char* text26 = "Bonus1Pikachu";
-	const char* text27 = "Bonus1Purin";
-	const char* text28 = "Bonus1Nes";
-	const char* text29 = "Bonus2Mario";
-	const char* text30 = "Bonus2Fox";
-	const char* text31 = "Bonus2Donkey";
-	const char* text32 = "Bonus2Samus";
-	const char* text33 = "Bonus2Luigi";
-	const char* text34 = "Bonus2Link";
-	const char* text35 = "Bonus2Yoshi";
-	const char* text36 = "Bonus2Captain";
-	const char* text37 = "Bonus2Kirby";
-	const char* text38 = "Bonus2Pikachu";
-	const char* text39 = "Bonus2Purin";
-	const char* text40 = "Bonus2Nes";
-	const char* text41 = "Exit";
 	dMNDebugStageSelectInterrupt = TRUE;
 }
 

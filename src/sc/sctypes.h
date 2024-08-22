@@ -339,12 +339,12 @@ struct scCommonData
 	u8 training_man_costume;
 	u8 training_com_ft_kind;
 	u8 training_com_costume;
-	u8 unk3F;
+	ub8 wait_longer_to_show_demo;
 	u8 demo_ground_order;
 	u8 stagesel_battle_gr_kind;
 	u8 stagesel_training_gr_kind;
 	u8 challenger_level_drop;	// Subtract from default CP level?
-	u8 unk44;
+	ub8 main_title_animation_viewed;
 	u8 unk45;
 	u8 unk46;
 	u8 unk47;

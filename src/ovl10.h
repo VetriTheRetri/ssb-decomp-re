@@ -9,6 +9,30 @@ typedef struct mnTitleTextureConfig
 
 } mnTitleTextureConfig;
 
+typedef enum mnTitleLayout
+{
+    nMNTitleLayoutIntro,        // logo animation intro
+    nMNTitleLayoutAnimate,      // Super Smash Bros. animation
+    nMNTitleLayoutFinal         // final layout
+
+} mnTitleLayout;
+
+
+typedef enum mnTitleTextureIndex
+{
+    nMNTitleTextureIndexDropShadow,
+    nMNTitleTextureIndexSmash,
+    nMNTitleTextureIndexSuper,
+    nMNTitleTextureIndexBros,
+    nMNTitleTextureIndexTM,
+    nMNTitleTextureIndexFooter,
+    nMNTitleTextureIndexHeader,
+    nMNTitleTextureIndexPressStart,
+    nMNTitleTextureIndexLogo,
+    nMNTitleTextureIndexTM2
+
+} mnTitleTextureIndex;
+
 #define gmSaveChrMask(kind) (1 << (kind))
 
 #define TAKE_MAX(a, b) \

@@ -311,18 +311,6 @@ void mnStageAllocateStageModelHeaps()
 	u32 size;
 	u32 max = 0;
 	s32 i;
-	char* text0 = "IN THE SKY OF";
-	char* text1 = "SECTOR Z";
-	char* text2 = "CONGO JUNGLE";
-	char* text3 = "PLANET ZEBES";
-	char* text4 = "CASTLE OF HYRULE";
-	char* text5 = "YOSHI'S ISLAND";
-	char* text6 = "PUPUPU LAND";
-	char* text7 = "YAMABUKI CITY";
-	char* text8 = "CLASSIC MUSHROOM";
-	char* text9 = "CASTLE PEACH";
-	char* text10 = "ABOARD A GREAT FOX";
-	char* text11 = "KINGDOM";
 
 	for (i = 0; i < ARRAY_COUNT(dMNStageFileInfoArray); i++)
 	{
@@ -697,7 +685,18 @@ void mnStageCreateStageName(GObj* name_logo_gobj, s32 stage_id)
 // 801327E0 - Unused?
 void func_ovl30_801327E0()
 {
-	return;
+	char* text0 = "IN THE SKY OF";
+	char* text1 = "SECTOR Z";
+	char* text2 = "CONGO JUNGLE";
+	char* text3 = "PLANET ZEBES";
+	char* text4 = "CASTLE OF HYRULE";
+	char* text5 = "YOSHI'S ISLAND";
+	char* text6 = "PUPUPU LAND";
+	char* text7 = "YAMABUKI CITY";
+	char* text8 = "CLASSIC MUSHROOM";
+	char* text9 = "CASTLE PEACH";
+	char* text10 = "ABOARD A GREAT FOX";
+	char* text11 = "KINGDOM";
 }
 
 // 801327E8 - Unused?

@@ -26,6 +26,8 @@
 
 extern ftStatusDesc dFTFoxSpecialStatusDescs[/* */];
 
+extern intptr_t lFTFoxSpecialLwReflector;       // 0x000019B0
+
 extern void *gFTDataFoxMain;
 extern void *gFTDataFoxMainMotion;
 extern void *gFTDataFoxModel;

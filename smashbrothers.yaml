@@ -1661,9 +1661,10 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x1774A0, asm, ovl54]
-      - [0x178470, data, ovl54]
-      - [0x178550, rodata, ovl54]
+      - [0x1774A0, c, mv/mvending/mvending]
+      - [0x178470, .data, mv/mvending/mvending]
+      - [0x178550, .rodata, mv/mvending/mvending]
+      - { start: auto, type: .bss, name: mv/mvending/mvending, vram: 0x80132BC0 }
 
   - name: ovl55
     type: code

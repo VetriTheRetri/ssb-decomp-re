@@ -963,6 +963,21 @@ lITLinkBombBloatScales = 0x000000A8;
 
 lITMonsterAnimBankStart = 0x00013624;
 
+lMVCommonRoomBackgroundMObjSub = 0x000042F8;
+lMVCommonRoomBackgroundDObjDesc = 0x00007E98;
+lMVCommonRoomBackgroundMatAnimJoint = 0x00008788;
+lMVCommonRoomDeskDObjDesc = 0x00008DF8;
+lMVCommonRoomBooksDObjDesc = 0x0000A6F8;
+lMVCommonRoomBooksAnimJoint = 0x0000A7B0;
+lMVCommonRoomPencilsDObjDesc = 0x0000AEB8;
+lMVCommonRoomPencilsAnimJoint = 0x0000AF70;
+lMVCommonRoomLampDObjDesc = 0x0000BDC0;
+lMVCommonRoomLampAnimJoint = 0x0000BEA0;
+lMVCommonRoomTissuesDisplayList = 0x0000C690;
+lMVCommonRoomTissuesAnimJoint = 0x0000C884;
+
+lMVEndingOperatorCamAnimJoint = 0x00000000;
+
 lMNCongraKirbyBottomFileID = 0x000000AA;
 lMNCongraKirbyTopFileID = 0x000000AB;
 lMNCongraYoshiBottomFileID = 0x000000AC;

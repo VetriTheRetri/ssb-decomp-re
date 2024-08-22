@@ -1,15 +1,15 @@
-func_ovl9_80369240 = 0x80369240; // segment:ovl9
-func_ovl9_80369310 = 0x80369310; // segment:ovl9
-func_ovl9_80369358 = 0x80369358; // segment:ovl9
-func_ovl9_8036944C = 0x8036944C; // segment:ovl9
-func_ovl9_803694C8 = 0x803694C8; // segment:ovl9
-func_ovl9_80369600 = 0x80369600; // segment:ovl9
-func_ovl9_80369680 = 0x80369680; // segment:ovl9
-func_ovl9_803696D4 = 0x803696D4; // segment:ovl9
-func_ovl9_8036975C = 0x8036975C; // segment:ovl9
-func_ovl9_80369D78 = 0x80369D78; // segment:ovl9
-func_ovl9_80369EC0 = 0x80369EC0; // segment:ovl9
-func_ovl9_80369EE0 = 0x80369EE0; // segment:ovl9
+mnDebugMenuUpdateMenuInputs = 0x80369240; // segment:ovl9
+mnDebugMenuDrawString = 0x80369310; // segment:ovl9
+mnDebugMenuDrawBorder = 0x80369358; // segment:ovl9
+mnDebugMenuDrawBackground = 0x8036944C; // segment:ovl9
+mnDebugMenuDrawMenuItem = 0x803694C8; // segment:ovl9
+mnDebugMenuDrawMenuItems = 0x80369600; // segment:ovl9
+mnDebugMenuDrawCursor = 0x80369680; // segment:ovl9
+gMNDebugMenuRenderMenu = 0x803696D4; // segment:ovl9
+mnDebugMenuHandleInputs = 0x8036975C; // segment:ovl9
+mnDebugMenuCreateMenu = 0x80369D78; // segment:ovl9
+mnDebugMenuDestroyMenu = 0x80369EC0; // segment:ovl9
+mnDebugMenuInitMenu = 0x80369EE0; // segment:ovl9
 
 D_ovl9_80369F60 = 0x80369F60; // segment:ovl9
 D_ovl9_80369F64 = 0x80369F64; // segment:ovl9

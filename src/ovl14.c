@@ -17,9 +17,9 @@ extern intptr_t lOverlay14ArenaHi;  // 80369240
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 extern void func_8000B1C4();
 extern ftCreateDesc dFTManagerDefaultFighterDesc;
-extern sb32 D_ovl9_80371420; // isMenuShown
-extern void func_ovl9_80369D78(s32, s32, s32, void*, s32);
-extern func_ovl9_80369EC0();
+extern sb32 gMNDebugMenuIsMenuOpen; // isMenuShown
+extern void mnDebugMenuCreateMenu(s32, s32, s32, void*, s32);
+extern mnDebugMenuDestroyMenu();
 
 // Forward declarations
 void mnDebugBattleStartBattle();
@@ -300,10 +300,10 @@ void mnDebugBattleMain(GObj* arg0)
 
 	if (gSysController.button_tap & START_BUTTON)
 	{
-		if (D_ovl9_80371420 != FALSE)
+		if (gMNDebugMenuIsMenuOpen != FALSE)
 			mnDebugBattleStartBattle();
 		else
-			func_ovl9_80369D78(0x1E, 0x14, 0x55, &dMNDebugBattleMenuItems, 0xF);
+			mnDebugMenuCreateMenu(0x1E, 0x14, 0x55, &dMNDebugBattleMenuItems, 0xF);
 	}
 
 	for (i = 0; i < 4; i++)
@@ -349,7 +349,7 @@ void mnDebugBattleMain(GObj* arg0)
 
 	if (gMNDebugBattleExitInterrupt != 0)
 	{
-		func_ovl9_80369EC0();
+		mnDebugMenuDestroyMenu();
 
 		gSceneData.scene_previous = gSceneData.scene_current;
 
@@ -472,8 +472,8 @@ void mnDebugBattleInit()
 		gMNDebugBattleFighters[i].costume_index = gTransferBattleState.players[i].costume;
 	}
 
-	func_ovl9_80369EE0();
-	func_ovl9_80369D78(0x1E, 0x14, 0x55, &dMNDebugBattleMenuItems, 0xF);
+	mnDebugMenuInitMenu();
+	mnDebugMenuCreateMenu(0x1E, 0x14, 0x55, &dMNDebugBattleMenuItems, 0xF);
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 }
 

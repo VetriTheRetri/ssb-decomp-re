@@ -13,8 +13,8 @@ extern intptr_t lOverlay15ArenaLo;  // 800D6A00
 extern intptr_t lOverlay15ArenaHi;  // 80392A00
 extern void func_8000B1C4();
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
-extern void func_ovl9_80369D78(s32, s32, s32, void*, s32);
-extern func_ovl9_80369EC0();
+extern void mnDebugMenuCreateMenu(s32, s32, s32, void*, s32);
+extern mnDebugMenuDestroyMenu();
 
 // Forward declarations
 void mnDebugFallsExit();
@@ -98,11 +98,11 @@ void mnDebugFallsMain(GObj* arg0)
 	u8 temp_t0;
 
 	if (gSysController.button_tap & START_BUTTON)
-		func_ovl9_80369D78(0x32, 0x32, 0x64, &dMNDebugFallsMenuItems, 0xD);
+		mnDebugMenuCreateMenu(0x32, 0x32, 0x64, &dMNDebugFallsMenuItems, 0xD);
 
 	if (gMNDebugFallsExitInterrupt != 0)
 	{
-		func_ovl9_80369EC0();
+		mnDebugMenuDestroyMenu();
 
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 4;
@@ -135,8 +135,8 @@ void mnDebugFallsInit()
 	gcMakeGObjSPAfter(0, mnDebugFallsMain, 0, 0x80000000);
 	func_8000B9FC(0, 0x80000000, 0x64, 2, 0xFF);
 	mnDebugFallsCreateViewport(0);
-	func_ovl9_80369EE0();
-	func_ovl9_80369D78(0x32, 0x32, 0x64, &dMNDebugFallsMenuItems, 0xD);
+	mnDebugMenuInitMenu();
+	mnDebugMenuCreateMenu(0x32, 0x32, 0x64, &dMNDebugFallsMenuItems, 0xD);
 }
 
 // 800D6688

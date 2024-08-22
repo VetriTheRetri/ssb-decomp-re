@@ -24,6 +24,7 @@ typedef struct dbMenuItem
 	void (*proc_a)();
 	char* label;
 	union {
+		s32 *s;
 		u32 *w;
 		u8 *b;
 		f32 *f;
@@ -31,9 +32,18 @@ typedef struct dbMenuItem
 	} value;
 	f32 min;
 	f32 max;
-	s32 unknown18;
+	f32 unknown18;
 
 } dbMenuItem;
+
+typedef struct dbMenuPosition
+{
+	s16 x;
+	s16 y;
+	u16 w;
+	u16 h;
+
+} dbMenuPosition;
 
 typedef struct dbFighter
 {
@@ -53,6 +63,14 @@ typedef enum dbBattleScene
 	dbBattleSceneCongra
 
 } dbBattleScene;
+
+typedef struct dbUnk80369EE0_1
+{
+	void *unk_80369EE0_1_0x0;
+	u32 unk_80369EE0_1_0x4;
+	u32 unk_80369EE0_1_0x8;
+
+} dbUnk80369EE0_1;
 
 #define gmSaveChrMask(kind) (1 << (kind))
 

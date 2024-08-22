@@ -247,7 +247,6 @@ uintptr_t gMNTitleFile1;
 // 80131B00
 s32 mnTitleGetUnlockedCharsCountForMask(u16 mask)
 {
-	char* lal = "English";
 	s32 i;
 	s32 unlocked_chars;
 
@@ -1122,8 +1121,11 @@ void mnTitleCreatePressStart()
 	press_start_gobj->flags = 1;
 }
 
-// 80133634
-void func_ovl10_80133634() {}
+// 80133634 - discarded language selection?
+void func_ovl10_80133634()
+{
+	char* lang = "English";
+}
 
 // 8013363C - Unused?
 void mnTitleAnimateSlashEffectGFX(GObj* gobj)

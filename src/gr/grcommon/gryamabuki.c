@@ -5,17 +5,6 @@
 
 // // // // // // // // // // // //
 //                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lGRYamabukiGateOpenAnimJoint;           // 0x000009B0
-extern intptr_t lGRYamabukiGateCloseAnimJoint;          // 0x00000A20
-extern intptr_t lGRYamabukiItemHead;                    // 0x00000014
-extern intptr_t lGRYamabukiMapHead;                     // 0x000008A0
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //

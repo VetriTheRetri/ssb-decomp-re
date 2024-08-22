@@ -2,8 +2,8 @@
 #define _FTCOMMON_FUNCTIONS_H_
 
 #include <ssb_types.h>
-#include <ft/ftdef.h>
 #include <sys/objdef.h>
+#include <ft/ftdef.h>
 
 // DeadDown / DeadLeft / DeadRight / DeadUpStar / DeadUpFall
 void ftCommonDeadAddDeadSFXSoundQueue(u16 sfx_id);

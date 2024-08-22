@@ -5,6 +5,11 @@
 #include <sys/objdef.h>
 #include <gr/grdef.h>
 
+extern intptr_t lGRJungleMapHead;                       // 0x00000A98
+extern intptr_t lGRJungleTaruCannDefaultAnimJoint;      // 0x00000B20
+extern intptr_t lGRJungleTaruCannFillAnimJoint;         // 0x00000B68
+extern intptr_t lGRJungleTaruCannShootAnimJoint;        // 0x00000BF8
+
 extern void grJungleTaruCannAddAnimOffset(GObj *ground_gobj, intptr_t offset);
 extern void grJungleTaruCannAddAnimFill(GObj *ground_gobj);
 extern void grJungleTaruCannAddAnimShoot(GObj *ground_gobj);

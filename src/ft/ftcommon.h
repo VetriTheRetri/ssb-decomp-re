@@ -646,6 +646,16 @@ typedef struct ftCommonCaptureYoshiStatusVars
 
 } ftCommonCaptureYoshiStatusVars;
 
+typedef struct ftCommonYoshiEggDesc
+{
+    f32 effect_size;
+    Vec3f offset;
+    Vec3f size;
+
+} ftCommonYoshiEggDesc;
+
+extern ftCommonYoshiEggDesc dFTCommonYoshiEggHurtboxDescs[/* */];
+
 typedef struct ftCommonCaptureCaptainStatusVars
 {
 	u16 capture_flag; // Collection of bit flags, only seen 0x4 and 0x2 used

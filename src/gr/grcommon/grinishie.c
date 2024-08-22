@@ -5,17 +5,6 @@
 
 // // // // // // // // // // // //
 //                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lGRInishieScaleDObjDesc;                // 0x00000380
-extern intptr_t lGRInishieMapHead;                      // 0x000005F0
-extern intptr_t lGRInishieScaleRetractAnimJoint;        // 0x00000734
-extern intptr_t lGRInishiePowerBlockHit;                // 0x000000BC
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //

@@ -3,17 +3,6 @@
 
 // // // // // // // // // // // //
 //                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lGRJungleMapHead;                       // 0x00000A98
-extern intptr_t lGRJungleTaruCannDefaultAnimJoint;      // 0x00000B20
-extern intptr_t lGRJungleTaruCannFillAnimJoint;         // 0x00000B68
-extern intptr_t lGRJungleTaruCannShootAnimJoint;        // 0x00000BF8
-
-// // // // // // // // // // // //
-//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //

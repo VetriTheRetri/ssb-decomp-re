@@ -32,15 +32,6 @@ extern GObj* func_8000B93C(
 
 extern f32 D_ovl1_80390D90[/* */];
 
-extern intptr_t lSC1PContinueTextScore;                 // 0x00000408
-extern intptr_t lSC1PContinueTextContinue;              // 0x000018F0
-extern intptr_t lSC1PContinueTextYes;                   // 0x00001E08
-extern intptr_t lSC1PContinueTextNo;                    // 0x00002318
-extern intptr_t lSC1PContinueCursor;                    // 0x00002DF8
-extern intptr_t lSC1PContinueRoom;                      // 0x0001E3D8
-extern intptr_t lSC1PContinueSpotlight;                 // 0x00021900
-extern intptr_t lSC1PContinueShadow;                    // 0x000224F8
-
 extern uintptr_t D_NF_0000004F;                         // 0x0000004F
 extern uintptr_t D_NF_00000050;							// 0x00000050
 extern uintptr_t D_NF_00000051;							// 0x00000051

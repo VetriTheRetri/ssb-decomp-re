@@ -10,7 +10,7 @@ extern void gcSetDObjAnimSpeed(GObj*, f32);
 // // // // // // // // // // // //
 
 // 0x80188720
-ftYoshiEggDesc dFTCommonYoshiEggHurtboxDescs[/* */] =
+ftCommonYoshiEggDesc dFTCommonYoshiEggHurtboxDescs[/* */] =
 {
     { 2.0F, { 0.0F, 157.0F, 0.0F }, { 180.0F, 180.0F, 180.0F } },   // Mario
     { 1.9F, { 0.0F, 155.0F, 0.0F }, { 171.0F, 171.0F, 171.0F } },   // Fox
@@ -315,7 +315,7 @@ void ftCommonYoshiEggSetHurtCollisions(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftHurtbox *ft_hurt = &fp->fighter_hurt[0];
-    ftYoshiEggDesc *egg = &dFTCommonYoshiEggHurtboxDescs[fp->ft_kind];
+    ftCommonYoshiEggDesc *egg = &dFTCommonYoshiEggHurtboxDescs[fp->ft_kind];
     s32 i;
 
     ft_hurt->joint = fp->joints[nFTPartsJointTopN];

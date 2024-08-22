@@ -5,17 +5,6 @@
 
 // // // // // // // // // // // //
 //                               //
-//       EXTERNAL VARIABLES      //
-//                               //
-// // // // // // // // // // // //
-
-extern intptr_t lGRHyruleParticleBankHeaderLo;            // 0x00B1F960
-extern intptr_t lGRHyruleParticleBankHeaderHi;            // 0x00B1FC80
-extern intptr_t lGRHyruleParticleBankTextureLo;           // 0x00B1FC80
-extern intptr_t lGRHyruleParticleBankTextureHi;           // 0x00B22980
-
-// // // // // // // // // // // //
-//                               //
 //          ENUMERATORS          //
 //                               //
 // // // // // // // // // // // //

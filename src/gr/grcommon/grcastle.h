@@ -5,6 +5,8 @@
 #include <sys/objdef.h>
 #include <gr/grdef.h>
 
+extern intptr_t lGRCastleMapHead;               // 0x00000000
+
 extern void grCastleBumperProcUpdate(GObj *ground_gobj);
 extern void grCastleInitAll(void);
 extern GObj* grCastleMakeGround(void);

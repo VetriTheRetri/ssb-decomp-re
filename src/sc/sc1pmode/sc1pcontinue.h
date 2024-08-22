@@ -7,6 +7,15 @@
 #include <PR/sp.h>
 #include <sc/scdef.h>
 
+extern intptr_t lSC1PContinueTextScore;                 // 0x00000408
+extern intptr_t lSC1PContinueTextContinue;              // 0x000018F0
+extern intptr_t lSC1PContinueTextYes;                   // 0x00001E08
+extern intptr_t lSC1PContinueTextNo;                    // 0x00002318
+extern intptr_t lSC1PContinueCursor;                    // 0x00002DF8
+extern intptr_t lSC1PContinueRoom;                      // 0x0001E3D8
+extern intptr_t lSC1PContinueSpotlight;                 // 0x00021900
+extern intptr_t lSC1PContinueShadow;                    // 0x000224F8
+
 extern void sc1PContinueProcLights(Gfx **dls);
 extern s32 sc1PContinueGetPowerOf(s32 base, s32 exp);
 extern void sc1PContinueScoreDigitInitSprite(SObj *sobj);

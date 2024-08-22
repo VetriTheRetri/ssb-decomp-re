@@ -190,7 +190,7 @@ char D_800A41C0[/* */] = "Mar 16 1999 18:26:57";
 
 void n64_logo_entry();
 void mnTitleStartScene();
-void debug_sss_entry();
+void mnDebugStageSelectStartScene();
 void debug_system_entry();
 void mnDebugBattleStartScene();
 void mnDebugFallsStartScene();
@@ -313,7 +313,7 @@ void start_scene_manager(u32 set)
 				syDmaLoadOverlay(&D_800A3070[12]);
 				syDmaLoadOverlay(&D_800A3070[8]);
 				syDmaLoadOverlay(&D_800A3070[9]);
-				debug_sss_entry();
+				mnDebugStageSelectStartScene();
 				break;
 			case 3:
 				syDmaLoadOverlay(&D_800A3070[2]);

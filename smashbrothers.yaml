@@ -1235,9 +1235,9 @@ segments:
     vram: 0x800D6490
     exclusive_ram_id: overlay_800D6490
     subsegments:
-      - [0x119DF0, asm, ovl12]
-      - [0x119FE0, data, ovl12]
-      - [0x11A170, rodata, ovl12]
+      - [0x119DF0, c, ovl12]
+      - [0x119FE0, .data, ovl12]
+      - [0x11A170, .rodata, ovl12]
 
   - name: ovl13
     type: code

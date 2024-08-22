@@ -23,7 +23,7 @@ typedef enum GObjKind
     nOMObjCommonKindPauseMenu = 1019,           // 1019
     nOMObjCommonKindShadow,                     // 1020
     nOMObjCommonKindBossWallpaper = 1023,       // 1023
-    nOMObjCommonKindStageClearCamera = 1025     // 1025
+    nOMObjCommonKindSceneCamera = 1025           // 1025
 
 } GObjKind;
 

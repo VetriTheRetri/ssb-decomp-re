@@ -11,8 +11,7 @@ extern void func_ovl0_800CCF00();
 extern void func_ovl0_800CD2CC();
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
-extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
-extern u32 gFTManagerAnimHeapSize; // 80130D9C
+
 // Offsets
 extern intptr_t FILE_041_MARIO_CAMERA_PARAMS_OFFSET; // 00000000 file 0x041 offset for Mario's fighter pose camera settings
 

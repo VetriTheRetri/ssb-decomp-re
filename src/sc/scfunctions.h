@@ -11,6 +11,7 @@
 
 // 1P Game scenes
 #include <sc/sc1pmode/sc1pmanager.h>
+#include <sc/sc1pmode/sc1pcontinue.h>
 #include <sc/sc1pmode/sc1pstageclear.h>
 #include <sc/sc1pmode/sc1pgame.h>
 #include <sc/sc1pmode/sc1pgameboss.h>

@@ -5,23 +5,8 @@
 #include "ftfunctions.h"
 #include "ftcommondata.h"
 
-// Globals
-
-extern void *gFTManagerCommonFile;
-
 extern sb32 gFTMainIsHurtDetect[4];
 extern sb32 gFTMainIsHitDetect[4];
-
-extern s32 gFighterHitLogIndex;
-extern ftHitlog gFighterHitLogTable[/* */];
-
-extern u16 gFTManagerMotionCount;
-extern u16 gFTManagerStatUpdateCount; // Updated each time an entity's status is changed? e.g. PK Fire pillar increments this twice, desyncing it from gFTManagerMotionCount
-
-// Data - 0x80116DD0
-extern ftCreateDesc dFTManagerDefaultFighterDesc;
-extern f32 dMPCollisionMaterialFrictions[/* */];
-extern ftData *dFTManagerDataFiles[/* */];
 
 extern Gfx dFTRenderMainHurtCollisionCuboidDL[/* */];
 extern Gfx dFTRenderMainHitCollisionEdgeDL[/* */];

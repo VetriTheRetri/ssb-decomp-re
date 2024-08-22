@@ -4,6 +4,7 @@
 #include <ssb_types.h>
 #include <sys/objdef.h>
 #include <PR/gbi.h>
+#include <PR/sp.h>
 #include <sc/scdef.h>
 
 // Digit sprites used for timer and damage points

@@ -731,6 +731,13 @@ struct ftCostume
     u8 develop;
 };
 
+struct ftDemoDesc
+{
+    s32 ft_kind;
+    s32 costume;
+    s32 shade;
+};
+
 struct ftAfterImage
 {
     s16 translate_x;

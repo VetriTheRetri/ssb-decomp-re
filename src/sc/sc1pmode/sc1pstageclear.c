@@ -1395,7 +1395,7 @@ void sc1PStageClearMakeLink26Camera(void)
 	(
 		func_8000B93C
 		(
-			nOMObjCommonKindStageClearCamera,
+			nOMObjCommonKindSceneCamera,
 			NULL,
 			16,
 			GOBJ_LINKORDER_DEFAULT,
@@ -1420,7 +1420,7 @@ void sc1PStageClearMakeLink27Camera(void)
 	(
 		func_8000B93C
 		(
-			nOMObjCommonKindStageClearCamera,
+			nOMObjCommonKindSceneCamera,
 			NULL,
 			16,
 			GOBJ_LINKORDER_DEFAULT,
@@ -1786,7 +1786,7 @@ void sc1PStageClearUpdateResultScore(void)
 					sSC1PStageClearBonusShowNextTic =
 					sSC1PStageClearBonusAdvanceTic  = sSC1PStageClearTotalTimeTics + 10;
 				}
-				else sSC1PStageClearIsAllowProceedNext = 1;
+				else sSC1PStageClearIsAllowProceedNext = TRUE;
 			}
 		}
 		else if (sSC1PStageClearTotalTimeTics == (sSC1PStageClearBaseIntervalTic + 10))

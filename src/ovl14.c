@@ -14,14 +14,9 @@ extern uintptr_t D_NF_00000854;
 extern intptr_t D_NF_800A5240;      // 800A5240
 extern intptr_t lOverlay14ArenaLo;  // 80133130
 extern intptr_t lOverlay14ArenaHi;  // 80369240
-extern void scSubsysFighterSetStatus(GObj*, s32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 extern void func_8000B1C4();
-extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
-extern f32 scSubsysFighterGetLightAngleX();
-extern f32 scSubsysFighterGetLightAngleY();
 extern ftCreateDesc dFTManagerDefaultFighterDesc;
-extern u32 gFTManagerAnimHeapSize; // 80130D9C
 extern sb32 D_ovl9_80371420; // isMenuShown
 extern void func_ovl9_80369D78(s32, s32, s32, void*, s32);
 extern func_ovl9_80369EC0();

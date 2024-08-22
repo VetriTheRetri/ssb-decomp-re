@@ -100,7 +100,6 @@ extern SObj* gcAppendSObjWithSprite(GObj*, void*);
 extern f32 menu_zoom[12]; // D_ovl1_80390D90
 // ovl2
 extern u8 D_ovl2_8012EF40[4];
-extern u32 gFTManagerAnimHeapSize;
 
 // ovl26 stuff
 

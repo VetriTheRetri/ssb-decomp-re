@@ -409,6 +409,14 @@ typedef enum sc1PGameBonus
 
 } sc1PGameBonus;
 
+typedef enum sc1PContinueOption
+{
+    nSC1PContinueOptionYes,
+    nSC1PContinueOptionNo,
+    nSC1PContinueOptionEnumMax
+
+} sc1PContinueOption;
+
 typedef enum sc1PStageClearKind
 {
 	nSC1PStageClearKindStage,        // Normal stage clear

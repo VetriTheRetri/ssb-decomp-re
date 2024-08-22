@@ -1206,6 +1206,7 @@ typedef struct ftParts                          ftParts;
 typedef struct ftWithheldPart			        ftWithheldPart;
 typedef struct ftShadow                         ftShadow;
 typedef struct ftCostume                        ftCostume;
+typedef struct ftDemoDesc                       ftDemoDesc;
 typedef struct ftSkeleton                       ftSkeleton;
 typedef struct ftAfterImage				        ftAfterImage;
 typedef struct ftCamera                         ftCamera;

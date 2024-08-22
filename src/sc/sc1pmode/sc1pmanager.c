@@ -398,7 +398,7 @@ void sc1PManagerUpdateScene(void)
                 syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
                 syDmaLoadOverlay(&dSC1PManager1PContinueOverlay);
 
-                gmContinueStartScene();
+                sc1PContinueStartScene();
 
                 if (gSceneData.is_select_continue != FALSE)
                 {

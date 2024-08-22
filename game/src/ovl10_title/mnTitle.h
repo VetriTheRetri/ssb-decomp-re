@@ -6,13 +6,37 @@
 
 // EXTERN
 extern intptr_t D_NF_800A5240;      // 0x800A5240
-extern intptr_t lOverlay10ArenaLo;  // 0x801350D0
-extern intptr_t lOverlay10ArenaHi;  // 0x803903E0
+extern intptr_t lOverlay10ArenaLo;  // 0x801345B0
+extern intptr_t lOverlay10ArenaHi;  // 0x80369240
 
 // DATA
 // TODO!
 
 // Stuff - where does it go?!?
+typedef enum mnTitleLayout
+{
+    nMNTitleLayoutIntro,        // logo animation intro
+    nMNTitleLayoutAnimate,      // Super Smash Bros. animation
+    nMNTitleLayoutFinal         // final layout
+
+} mnTitleLayout;
+
+
+typedef enum mnTitleTextureIndex
+{
+    nMNTitleTextureIndexDropShadow,
+    nMNTitleTextureIndexSmash,
+    nMNTitleTextureIndexSuper,
+    nMNTitleTextureIndexBros,
+    nMNTitleTextureIndexTM,
+    nMNTitleTextureIndexFooter,
+    nMNTitleTextureIndexHeader,
+    nMNTitleTextureIndexPressStart,
+    nMNTitleTextureIndexLogo,
+    nMNTitleTextureIndexTM2
+
+} mnTitleTextureIndex;
+
 typedef struct mnTitleTextureConfig
 {
     s32 x;

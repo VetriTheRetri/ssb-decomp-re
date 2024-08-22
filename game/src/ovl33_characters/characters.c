@@ -1050,7 +1050,7 @@ void mnCharsHandleInputDemoMode()
     {
         gSceneData.scene_previous = gSceneData.scene_current;
         gSceneData.scene_current = scMajor_Kind_Title;
-        gSceneData.unk3F = 1;
+        gSceneData.wait_longer_to_show_demo = TRUE;
 
         func_80005C74();
     }

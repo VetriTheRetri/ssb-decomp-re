@@ -389,7 +389,8 @@ typedef enum scMajorScene
     scMajor_Kind_Characters,        // Character data screen
     scMajor_Kind_N64,               // N64 logo
     scMajor_Kind_OpeningRoom,       // Room with Master Hand and figures coming to life
-    scMajor_Kind_BackupClear = 47,  // Save data clear
+    scMajor_Kind_IntroHiddenChars = 46, // Last intro scene with hidden characters
+    scMajor_Kind_BackupClear,       // Save data clear
     scMajor_Kind_Ending,            // Ending cutscene
     scMajor_Kind_1PContinue,        // "Continue?" screen
     scMajor_Kind_1PScoreUnk = 50,   // Stage clear bonus thing?
@@ -903,12 +904,12 @@ typedef struct gmSceneInfo
     u8 training_human_costume_id;
     u8 training_cpu_char_id;
     u8 training_cpu_costume_id;
-    u8 unk3F;
+    ub8 wait_longer_to_show_demo;
     u8 demo_ground_order;
     u8 sss_battle_gr_kind;
     u8 sss_training_gr_kind;
     u8 unk43;
-    u8 unk44;
+    ub8 main_title_animation_viewed;
     u8 unk45;
     u8 unk46;
     u8 unk47;

@@ -155,52 +155,52 @@ glabel mnTitleSetDemoFtKinds
   /* 11736C 80131CEC 03E00008 */        jr $ra
   /* 117370 80131CF0 27BD0028 */     addiu $sp, $sp, 0x28
 
-glabel func_ovl10_80131CF4
+glabel mnTitleInitVars
   /* 117374 80131CF4 3C0E800A */       lui $t6, %hi((gSceneData + 0x1))
   /* 117378 80131CF8 91CE4AD1 */       lbu $t6, %lo((gSceneData + 0x1))($t6)
   /* 11737C 80131CFC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 117380 80131D00 2401002E */     addiu $at, $zero, 0x2e
   /* 117384 80131D04 15C10011 */       bne $t6, $at, .L80131D4C
   /* 117388 80131D08 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 11738C 80131D0C 3C018013 */       lui $at, %hi(D_ovl10_80134450)
+  /* 11738C 80131D0C 3C018013 */       lui $at, %hi(gMNTitleLayout)
   /* 117390 80131D10 44800000 */      mtc1 $zero, $f0
-  /* 117394 80131D14 AC204450 */        sw $zero, %lo(D_ovl10_80134450)($at)
-  /* 117398 80131D18 3C038013 */       lui $v1, %hi(D_ovl10_80134484)
-  /* 11739C 80131D1C 3C018013 */       lui $at, %hi(D_ovl10_8013445C)
-  /* 1173A0 80131D20 24634484 */     addiu $v1, $v1, %lo(D_ovl10_80134484)
-  /* 1173A4 80131D24 AC20445C */        sw $zero, %lo(D_ovl10_8013445C)($at)
-  /* 1173A8 80131D28 E4600000 */      swc1 $f0, ($v1) # D_ovl10_80134484 + 0
-  /* 1173AC 80131D2C C4640000 */      lwc1 $f4, ($v1) # D_ovl10_80134484 + 0
-  /* 1173B0 80131D30 3C048013 */       lui $a0, %hi(D_ovl10_80134480)
-  /* 1173B4 80131D34 24844480 */     addiu $a0, $a0, %lo(D_ovl10_80134480)
-  /* 1173B8 80131D38 E4840000 */      swc1 $f4, ($a0) # D_ovl10_80134480 + 0
-  /* 1173BC 80131D3C C4860000 */      lwc1 $f6, ($a0) # D_ovl10_80134480 + 0
-  /* 1173C0 80131D40 3C018013 */       lui $at, %hi(D_ovl10_8013447C)
+  /* 117394 80131D14 AC204450 */        sw $zero, %lo(gMNTitleLayout)($at)
+  /* 117398 80131D18 3C038013 */       lui $v1, %hi(gMNTitleFireBGOverlayBlue)
+  /* 11739C 80131D1C 3C018013 */       lui $at, %hi(gMNTitleTransitionFramesElapsed)
+  /* 1173A0 80131D20 24634484 */     addiu $v1, $v1, %lo(gMNTitleFireBGOverlayBlue)
+  /* 1173A4 80131D24 AC20445C */        sw $zero, %lo(gMNTitleTransitionFramesElapsed)($at)
+  /* 1173A8 80131D28 E4600000 */      swc1 $f0, ($v1) # gMNTitleFireBGOverlayBlue + 0
+  /* 1173AC 80131D2C C4640000 */      lwc1 $f4, ($v1) # gMNTitleFireBGOverlayBlue + 0
+  /* 1173B0 80131D30 3C048013 */       lui $a0, %hi(gMNTitleFireBGOverlayGreen)
+  /* 1173B4 80131D34 24844480 */     addiu $a0, $a0, %lo(gMNTitleFireBGOverlayGreen)
+  /* 1173B8 80131D38 E4840000 */      swc1 $f4, ($a0) # gMNTitleFireBGOverlayGreen + 0
+  /* 1173BC 80131D3C C4860000 */      lwc1 $f6, ($a0) # gMNTitleFireBGOverlayGreen + 0
+  /* 1173C0 80131D40 3C018013 */       lui $at, %hi(gMNTitleFireBGOverlayRed)
   /* 1173C4 80131D44 10000036 */         b .L80131E20
-  /* 1173C8 80131D48 E426447C */      swc1 $f6, %lo(D_ovl10_8013447C)($at)
+  /* 1173C8 80131D48 E426447C */      swc1 $f6, %lo(gMNTitleFireBGOverlayRed)($at)
   .L80131D4C:
   /* 1173CC 80131D4C 0C00829D */       jal func_80020A74
   /* 1173D0 80131D50 00000000 */       nop
   /* 1173D4 80131D54 0C0099A8 */       jal func_800266A0
   /* 1173D8 80131D58 00000000 */       nop
   /* 1173DC 80131D5C 240F0001 */     addiu $t7, $zero, 1
-  /* 1173E0 80131D60 3C018013 */       lui $at, %hi(D_ovl10_80134450)
-  /* 1173E4 80131D64 AC2F4450 */        sw $t7, %lo(D_ovl10_80134450)($at)
-  /* 1173E8 80131D68 3C018013 */       lui $at, %hi(D_ovl10_8013445C)
+  /* 1173E0 80131D60 3C018013 */       lui $at, %hi(gMNTitleLayout)
+  /* 1173E4 80131D64 AC2F4450 */        sw $t7, %lo(gMNTitleLayout)($at)
+  /* 1173E8 80131D68 3C018013 */       lui $at, %hi(gMNTitleTransitionFramesElapsed)
   /* 1173EC 80131D6C 241800A9 */     addiu $t8, $zero, 0xa9
-  /* 1173F0 80131D70 AC38445C */        sw $t8, %lo(D_ovl10_8013445C)($at)
+  /* 1173F0 80131D70 AC38445C */        sw $t8, %lo(gMNTitleTransitionFramesElapsed)($at)
   /* 1173F4 80131D74 0C00628C */       jal lbRandom_GetTimeByteRange
   /* 1173F8 80131D78 24040007 */     addiu $a0, $zero, 7
-  /* 1173FC 80131D7C 3C198013 */       lui $t9, %hi(D_ovl10_80134318)
+  /* 1173FC 80131D7C 3C198013 */       lui $t9, %hi(dMNTitleFireBGOverlayColorArrayRed)
   /* 117400 80131D80 0322C821 */      addu $t9, $t9, $v0
-  /* 117404 80131D84 93394318 */       lbu $t9, %lo(D_ovl10_80134318)($t9)
-  /* 117408 80131D88 3C038013 */       lui $v1, %hi(D_ovl10_80134484)
-  /* 11740C 80131D8C 3C048013 */       lui $a0, %hi(D_ovl10_80134480)
+  /* 117404 80131D84 93394318 */       lbu $t9, %lo(dMNTitleFireBGOverlayColorArrayRed)($t9)
+  /* 117408 80131D88 3C038013 */       lui $v1, %hi(gMNTitleFireBGOverlayBlue)
+  /* 11740C 80131D8C 3C048013 */       lui $a0, %hi(gMNTitleFireBGOverlayGreen)
   /* 117410 80131D90 44994000 */      mtc1 $t9, $f8
-  /* 117414 80131D94 3C018013 */       lui $at, %hi(D_ovl10_80134494)
-  /* 117418 80131D98 24844480 */     addiu $a0, $a0, %lo(D_ovl10_80134480)
-  /* 11741C 80131D9C 24634484 */     addiu $v1, $v1, %lo(D_ovl10_80134484)
-  /* 117420 80131DA0 AC224494 */        sw $v0, %lo(D_ovl10_80134494)($at)
+  /* 117414 80131D94 3C018013 */       lui $at, %hi(gMNTitleFireBGOverlayIndex)
+  /* 117418 80131D98 24844480 */     addiu $a0, $a0, %lo(gMNTitleFireBGOverlayGreen)
+  /* 11741C 80131D9C 24634484 */     addiu $v1, $v1, %lo(gMNTitleFireBGOverlayBlue)
+  /* 117420 80131DA0 AC224494 */        sw $v0, %lo(gMNTitleFireBGOverlayIndex)($at)
   /* 117424 80131DA4 07210005 */      bgez $t9, .L80131DBC
   /* 117428 80131DA8 468042A0 */   cvt.s.w $f10, $f8
   /* 11742C 80131DAC 3C014F80 */       lui $at, (0x4F800000 >> 16) # 4294967300.0
@@ -208,13 +208,13 @@ glabel func_ovl10_80131CF4
   /* 117434 80131DB4 00000000 */       nop
   /* 117438 80131DB8 46105280 */     add.s $f10, $f10, $f16
   .L80131DBC:
-  /* 11743C 80131DBC 3C088013 */       lui $t0, %hi(D_ovl10_80134320)
+  /* 11743C 80131DBC 3C088013 */       lui $t0, %hi(dMNTitleFireBGOverlayColorArrayGreen)
   /* 117440 80131DC0 01024021 */      addu $t0, $t0, $v0
-  /* 117444 80131DC4 91084320 */       lbu $t0, %lo(D_ovl10_80134320)($t0)
-  /* 117448 80131DC8 3C018013 */       lui $at, %hi(D_ovl10_8013447C)
-  /* 11744C 80131DCC E42A447C */      swc1 $f10, %lo(D_ovl10_8013447C)($at)
+  /* 117444 80131DC4 91084320 */       lbu $t0, %lo(dMNTitleFireBGOverlayColorArrayGreen)($t0)
+  /* 117448 80131DC8 3C018013 */       lui $at, %hi(gMNTitleFireBGOverlayRed)
+  /* 11744C 80131DCC E42A447C */      swc1 $f10, %lo(gMNTitleFireBGOverlayRed)($at)
   /* 117450 80131DD0 44889000 */      mtc1 $t0, $f18
-  /* 117454 80131DD4 3C098013 */       lui $t1, %hi(D_ovl10_80134328)
+  /* 117454 80131DD4 3C098013 */       lui $t1, %hi(dMNTitleFireBGOverlayColorArrayBlue)
   /* 117458 80131DD8 05010005 */      bgez $t0, .L80131DF0
   /* 11745C 80131DDC 46809120 */   cvt.s.w $f4, $f18
   /* 117460 80131DE0 3C014F80 */       lui $at, (0x4F800000 >> 16) # 4294967300.0
@@ -222,9 +222,9 @@ glabel func_ovl10_80131CF4
   /* 117468 80131DE8 00000000 */       nop
   /* 11746C 80131DEC 46062100 */     add.s $f4, $f4, $f6
   .L80131DF0:
-  /* 117470 80131DF0 E4840000 */      swc1 $f4, ($a0) # D_ovl10_80134480 + 0
+  /* 117470 80131DF0 E4840000 */      swc1 $f4, ($a0) # gMNTitleFireBGOverlayGreen + 0
   /* 117474 80131DF4 01224821 */      addu $t1, $t1, $v0
-  /* 117478 80131DF8 91294328 */       lbu $t1, %lo(D_ovl10_80134328)($t1)
+  /* 117478 80131DF8 91294328 */       lbu $t1, %lo(dMNTitleFireBGOverlayColorArrayBlue)($t1)
   /* 11747C 80131DFC 44800000 */      mtc1 $zero, $f0
   /* 117480 80131E00 44894000 */      mtc1 $t1, $f8
   /* 117484 80131E04 05210005 */      bgez $t1, .L80131E1C
@@ -234,28 +234,28 @@ glabel func_ovl10_80131CF4
   /* 117494 80131E14 00000000 */       nop
   /* 117498 80131E18 460A8400 */     add.s $f16, $f16, $f10
   .L80131E1C:
-  /* 11749C 80131E1C E4700000 */      swc1 $f16, ($v1) # D_ovl10_80134484 + 0
+  /* 11749C 80131E1C E4700000 */      swc1 $f16, ($v1) # gMNTitleFireBGOverlayBlue + 0
   .L80131E20:
-  /* 1174A0 80131E20 3C018013 */       lui $at, %hi(D_ovl10_80134478)
-  /* 1174A4 80131E24 AC204478 */        sw $zero, %lo(D_ovl10_80134478)($at)
-  /* 1174A8 80131E28 3C018013 */       lui $at, %hi(D_ovl10_80134470)
-  /* 1174AC 80131E2C AC204470 */        sw $zero, %lo(D_ovl10_80134470)($at)
-  /* 1174B0 80131E30 3C018013 */       lui $at, %hi(D_ovl10_80134474)
+  /* 1174A0 80131E20 3C018013 */       lui $at, %hi(gMNTitleFireBGOverlayTimer)
+  /* 1174A4 80131E24 AC204478 */        sw $zero, %lo(gMNTitleFireBGOverlayTimer)($at)
+  /* 1174A8 80131E28 3C018013 */       lui $at, %hi(gMNTitleChangeSceneInterrupt)
+  /* 1174AC 80131E2C AC204470 */        sw $zero, %lo(gMNTitleChangeSceneInterrupt)($at)
+  /* 1174B0 80131E30 3C018013 */       lui $at, %hi(gMNTitleChangeSceneTimer)
   /* 1174B4 80131E34 240A0003 */     addiu $t2, $zero, 3
-  /* 1174B8 80131E38 AC2A4474 */        sw $t2, %lo(D_ovl10_80134474)($at)
-  /* 1174BC 80131E3C 3C018013 */       lui $at, %hi(D_ovl10_80134460)
-  /* 1174C0 80131E40 AC204460 */        sw $zero, %lo(D_ovl10_80134460)($at)
-  /* 1174C4 80131E44 3C018013 */       lui $at, %hi(D_ovl10_80134488)
-  /* 1174C8 80131E48 E4204488 */      swc1 $f0, %lo(D_ovl10_80134488)($at)
+  /* 1174B8 80131E38 AC2A4474 */        sw $t2, %lo(gMNTitleChangeSceneTimer)($at)
+  /* 1174BC 80131E3C 3C018013 */       lui $at, %hi(gMNTitleEnableMain)
+  /* 1174C0 80131E40 AC204460 */        sw $zero, %lo(gMNTitleEnableMain)($at)
+  /* 1174C4 80131E44 3C018013 */       lui $at, %hi(gMNTitleFireBGOverlayDeltaRed)
+  /* 1174C8 80131E48 E4204488 */      swc1 $f0, %lo(gMNTitleFireBGOverlayDeltaRed)($at)
   /* 1174CC 80131E4C 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 1174D0 80131E50 3C018013 */       lui $at, %hi(D_ovl10_8013448C)
-  /* 1174D4 80131E54 E420448C */      swc1 $f0, %lo(D_ovl10_8013448C)($at)
-  /* 1174D8 80131E58 3C018013 */       lui $at, %hi(D_ovl10_80134490)
-  /* 1174DC 80131E5C E4204490 */      swc1 $f0, %lo(D_ovl10_80134490)($at)
+  /* 1174D0 80131E50 3C018013 */       lui $at, %hi(gMNTitleFireBGOverlayDeltaGreen)
+  /* 1174D4 80131E54 E420448C */      swc1 $f0, %lo(gMNTitleFireBGOverlayDeltaGreen)($at)
+  /* 1174D8 80131E58 3C018013 */       lui $at, %hi(gMNTitleFireBGOverlayDeltaBlue)
+  /* 1174DC 80131E5C E4204490 */      swc1 $f0, %lo(gMNTitleFireBGOverlayDeltaBlue)($at)
   /* 1174E0 80131E60 03E00008 */        jr $ra
   /* 1174E4 80131E64 27BD0018 */     addiu $sp, $sp, 0x18
 
-glabel func_ovl10_80131E68
+glabel mnTitleSetFinalLogoPosition
   /* 1174E8 80131E68 3C0E800A */       lui $t6, %hi((gSceneData + 0x1))
   /* 1174EC 80131E6C 91CE4AD1 */       lbu $t6, %lo((gSceneData + 0x1))($t6)
   /* 1174F0 80131E70 27BDFFE0 */     addiu $sp, $sp, -0x20
@@ -272,16 +272,16 @@ glabel func_ovl10_80131E68
   /* 117518 80131E98 8CE50074 */        lw $a1, 0x74($a3)
   /* 11751C 80131E9C 00002025 */        or $a0, $zero, $zero
   /* 117520 80131EA0 24060008 */     addiu $a2, $zero, 8
-  /* 117524 80131EA4 0C04C9D9 */       jal func_ovl10_80132764
+  /* 117524 80131EA4 0C04C9D9 */       jal mnTitleSetPosition
   /* 117528 80131EA8 AFA50018 */        sw $a1, 0x18($sp)
   /* 11752C 80131EAC 8FA50018 */        lw $a1, 0x18($sp)
   /* 117530 80131EB0 3C013F80 */       lui $at, (0x3F800000 >> 16) # 1.0
   /* 117534 80131EB4 44810000 */      mtc1 $at, $f0 # 1.0 to cop1
   /* 117538 80131EB8 240F00FF */     addiu $t7, $zero, 0xff
-  /* 11753C 80131EBC 3C018013 */       lui $at, %hi(D_ovl10_8013446C)
+  /* 11753C 80131EBC 3C018013 */       lui $at, %hi(gMNTitleLogoAlpha)
   /* 117540 80131EC0 2418004C */     addiu $t8, $zero, 0x4c
   /* 117544 80131EC4 ACAF0054 */        sw $t7, 0x54($a1)
-  /* 117548 80131EC8 AC38446C */        sw $t8, %lo(D_ovl10_8013446C)($at)
+  /* 117548 80131EC8 AC38446C */        sw $t8, %lo(gMNTitleLogoAlpha)($at)
   /* 11754C 80131ECC E4A00018 */      swc1 $f0, 0x18($a1)
   /* 117550 80131ED0 E4A0001C */      swc1 $f0, 0x1c($a1)
   /* 117554 80131ED4 8FBF0014 */        lw $ra, 0x14($sp)
@@ -289,7 +289,7 @@ glabel func_ovl10_80131E68
   /* 11755C 80131EDC 03E00008 */        jr $ra
   /* 117560 80131EE0 00000000 */       nop
 
-glabel func_ovl10_80131EE4
+glabel mnTitleSetFinalLayout
   /* 117564 80131EE4 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 117568 80131EE8 AFB0001C */        sw $s0, 0x1c($sp)
   /* 11756C 80131EEC 3C108004 */       lui $s0, %hi(gOMObjCommonLinks + (0x06 * 4))
@@ -303,7 +303,7 @@ glabel func_ovl10_80131EE4
   .L80131F0C:
   /* 11758C 80131F0C 562E0004 */      bnel $s1, $t6, .L80131F20
   /* 117590 80131F10 8E100004 */        lw $s0, 4($s0)
-  /* 117594 80131F14 0C04CA96 */       jal func_ovl10_80132A58
+  /* 117594 80131F14 0C04CA96 */       jal mnTitleShowFire
   /* 117598 80131F18 02002025 */        or $a0, $s0, $zero
   /* 11759C 80131F1C 8E100004 */        lw $s0, 4($s0)
   .L80131F20:
@@ -339,10 +339,10 @@ glabel func_ovl10_80131EE4
   /* 117604 80131F84 00002025 */        or $a0, $zero, $zero
   .L80131F88:
   /* 117608 80131F88 02002825 */        or $a1, $s0, $zero
-  /* 11760C 80131F8C 0C04C9D9 */       jal func_ovl10_80132764
+  /* 11760C 80131F8C 0C04C9D9 */       jal mnTitleSetPosition
   /* 117610 80131F90 02203025 */        or $a2, $s1, $zero
   /* 117614 80131F94 02002025 */        or $a0, $s0, $zero
-  /* 117618 80131F98 0C04CA0B */       jal func_ovl10_8013282C
+  /* 117618 80131F98 0C04CA0B */       jal mnTitleSetColors
   /* 11761C 80131F9C 02202825 */        or $a1, $s1, $zero
   /* 117620 80131FA0 E614001C */      swc1 $f20, 0x1c($s0)
   /* 117624 80131FA4 E6140018 */      swc1 $f20, 0x18($s0)
@@ -358,7 +358,7 @@ glabel func_ovl10_80131EE4
   /* 117648 80131FC8 03E00008 */        jr $ra
   /* 11764C 80131FCC 27BD0030 */     addiu $sp, $sp, 0x30
 
-glabel func_ovl10_80131FD0
+glabel mnTitleGoToNextDemo
   /* 117650 80131FD0 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 117654 80131FD4 AFB00020 */        sw $s0, 0x20($sp)
   /* 117658 80131FD8 3C10800A */       lui $s0, %hi(gSceneData)
@@ -406,13 +406,13 @@ glabel func_ovl10_80131FD0
   /* 1176F0 80132070 240A0001 */     addiu $t2, $zero, 1
   /* 1176F4 80132074 A20A003F */        sb $t2, 0x3f($s0) # gSceneData + 63
   /* 1176F8 80132078 240B0001 */     addiu $t3, $zero, 1
-  /* 1176FC 8013207C 3C018013 */       lui $at, %hi(D_ovl10_80134470)
+  /* 1176FC 8013207C 3C018013 */       lui $at, %hi(gMNTitleChangeSceneInterrupt)
   /* 117700 80132080 8FB00020 */        lw $s0, 0x20($sp)
-  /* 117704 80132084 AC2B4470 */        sw $t3, %lo(D_ovl10_80134470)($at)
+  /* 117704 80132084 AC2B4470 */        sw $t3, %lo(gMNTitleChangeSceneInterrupt)($at)
   /* 117708 80132088 03E00008 */        jr $ra
   /* 11770C 8013208C 27BD0030 */     addiu $sp, $sp, 0x30
 
-glabel func_ovl10_80132090
+glabel mnTitleGoToMainMenu
   /* 117710 80132090 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 117714 80132094 AFBF001C */        sw $ra, 0x1c($sp)
   /* 117718 80132098 240E00FF */     addiu $t6, $zero, 0xff
@@ -433,32 +433,32 @@ glabel func_ovl10_80132090
   /* 117754 801320D4 2404009D */     addiu $a0, $zero, 0x9d
   /* 117758 801320D8 8FBF001C */        lw $ra, 0x1c($sp)
   /* 11775C 801320DC 24190001 */     addiu $t9, $zero, 1
-  /* 117760 801320E0 3C018013 */       lui $at, %hi(D_ovl10_80134470)
-  /* 117764 801320E4 AC394470 */        sw $t9, %lo(D_ovl10_80134470)($at)
+  /* 117760 801320E0 3C018013 */       lui $at, %hi(gMNTitleChangeSceneInterrupt)
+  /* 117764 801320E4 AC394470 */        sw $t9, %lo(gMNTitleChangeSceneInterrupt)($at)
   /* 117768 801320E8 03E00008 */        jr $ra
   /* 11776C 801320EC 27BD0020 */     addiu $sp, $sp, 0x20
 
-glabel func_ovl10_801320F0
-  /* 117770 801320F0 3C038013 */       lui $v1, %hi(D_ovl10_80134460)
-  /* 117774 801320F4 24634460 */     addiu $v1, $v1, %lo(D_ovl10_80134460)
-  /* 117778 801320F8 8C620000 */        lw $v0, ($v1) # D_ovl10_80134460 + 0
+glabel mnTitleMain
+  /* 117770 801320F0 3C038013 */       lui $v1, %hi(gMNTitleEnableMain)
+  /* 117774 801320F4 24634460 */     addiu $v1, $v1, %lo(gMNTitleEnableMain)
+  /* 117778 801320F8 8C620000 */        lw $v0, ($v1) # gMNTitleEnableMain + 0
   /* 11777C 801320FC 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 117780 80132100 AFBF0014 */        sw $ra, 0x14($sp)
   /* 117784 80132104 14400004 */      bnez $v0, .L80132118
   /* 117788 80132108 AFA40018 */        sw $a0, 0x18($sp)
   /* 11778C 8013210C 244E0001 */     addiu $t6, $v0, 1
   /* 117790 80132110 1000003B */         b .L80132200
-  /* 117794 80132114 AC6E0000 */        sw $t6, ($v1) # D_ovl10_80134460 + 0
+  /* 117794 80132114 AC6E0000 */        sw $t6, ($v1) # gMNTitleEnableMain + 0
   .L80132118:
-  /* 117798 80132118 3C0F8013 */       lui $t7, %hi(D_ovl10_80134470)
-  /* 11779C 8013211C 8DEF4470 */        lw $t7, %lo(D_ovl10_80134470)($t7)
+  /* 117798 80132118 3C0F8013 */       lui $t7, %hi(gMNTitleChangeSceneInterrupt)
+  /* 11779C 8013211C 8DEF4470 */        lw $t7, %lo(gMNTitleChangeSceneInterrupt)($t7)
   /* 1177A0 80132120 11E0000A */      beqz $t7, .L8013214C
-  /* 1177A4 80132124 3C028013 */       lui $v0, %hi(D_ovl10_80134474)
-  /* 1177A8 80132128 24424474 */     addiu $v0, $v0, %lo(D_ovl10_80134474)
-  /* 1177AC 8013212C 8C580000 */        lw $t8, ($v0) # D_ovl10_80134474 + 0
+  /* 1177A4 80132124 3C028013 */       lui $v0, %hi(gMNTitleChangeSceneTimer)
+  /* 1177A8 80132128 24424474 */     addiu $v0, $v0, %lo(gMNTitleChangeSceneTimer)
+  /* 1177AC 8013212C 8C580000 */        lw $t8, ($v0) # gMNTitleChangeSceneTimer + 0
   /* 1177B0 80132130 2719FFFF */     addiu $t9, $t8, -1
   /* 1177B4 80132134 17200032 */      bnez $t9, .L80132200
-  /* 1177B8 80132138 AC590000 */        sw $t9, ($v0) # D_ovl10_80134474 + 0
+  /* 1177B8 80132138 AC590000 */        sw $t9, ($v0) # gMNTitleChangeSceneTimer + 0
   /* 1177BC 8013213C 0C00171D */       jal func_80005C74
   /* 1177C0 80132140 00000000 */       nop
   /* 1177C4 80132144 1000002F */         b .L80132204
@@ -468,8 +468,8 @@ glabel func_ovl10_801320F0
   /* 1177D0 80132150 3C088004 */       lui $t0, %hi(gUpdateContData)
   /* 1177D4 80132154 3C078000 */       lui $a3, %hi(D_NF_8000030C)
   /* 1177D8 80132158 3C06800A */       lui $a2, %hi(gSceneData)
-  /* 1177DC 8013215C 3C058013 */       lui $a1, %hi(D_ovl10_80134450)
-  /* 1177E0 80132160 24A54450 */     addiu $a1, $a1, %lo(D_ovl10_80134450)
+  /* 1177DC 8013215C 3C058013 */       lui $a1, %hi(gMNTitleLayout)
+  /* 1177E0 80132160 24A54450 */     addiu $a1, $a1, %lo(gMNTitleLayout)
   /* 1177E4 80132164 24C64AD0 */     addiu $a2, $a2, %lo(gSceneData)
   /* 1177E8 80132168 24E7030C */     addiu $a3, $a3, %lo(D_NF_8000030C)
   /* 1177EC 8013216C 25085250 */     addiu $t0, $t0, %lo(gUpdateContData)
@@ -480,7 +480,7 @@ glabel func_ovl10_801320F0
   /* 1177FC 8013217C 308AD000 */      andi $t2, $a0, 0xd000
   /* 117800 80132180 1140001D */      beqz $t2, .L801321F8
   /* 117804 80132184 00000000 */       nop
-  /* 117808 80132188 8CAB0000 */        lw $t3, ($a1) # D_ovl10_80134450 + 0
+  /* 117808 80132188 8CAB0000 */        lw $t3, ($a1) # gMNTitleLayout + 0
   /* 11780C 8013218C 308E4000 */      andi $t6, $a0, 0x4000
   /* 117810 80132190 5160000E */      beql $t3, $zero, .L801321CC
   /* 117814 80132194 240F00A9 */     addiu $t7, $zero, 0xa9
@@ -493,16 +493,16 @@ glabel func_ovl10_801320F0
   .L801321B0:
   /* 117830 801321B0 15C00011 */      bnez $t6, .L801321F8
   /* 117834 801321B4 00000000 */       nop
-  /* 117838 801321B8 0C04C824 */       jal func_ovl10_80132090
+  /* 117838 801321B8 0C04C824 */       jal mnTitleGoToMainMenu
   /* 11783C 801321BC 00000000 */       nop
   /* 117840 801321C0 10000010 */         b .L80132204
   /* 117844 801321C4 8FBF0014 */        lw $ra, 0x14($sp)
   /* 117848 801321C8 240F00A9 */     addiu $t7, $zero, 0xa9
   .L801321CC:
-  /* 11784C 801321CC 3C018013 */       lui $at, %hi(D_ovl10_8013445C)
-  /* 117850 801321D0 AC2F445C */        sw $t7, %lo(D_ovl10_8013445C)($at)
+  /* 11784C 801321CC 3C018013 */       lui $at, %hi(gMNTitleTransitionFramesElapsed)
+  /* 117850 801321D0 AC2F445C */        sw $t7, %lo(gMNTitleTransitionFramesElapsed)($at)
   /* 117854 801321D4 24180001 */     addiu $t8, $zero, 1
-  /* 117858 801321D8 0C04C8C8 */       jal func_ovl10_80132320
+  /* 117858 801321D8 0C04C8C8 */       jal mnTitleTransitionFromFireLogo
   /* 11785C 801321DC ACB80000 */        sw $t8, ($a1)
   /* 117860 801321E0 0C00829D */       jal func_80020A74
   /* 117864 801321E4 00000000 */       nop
@@ -520,7 +520,7 @@ glabel func_ovl10_801320F0
   /* 117888 80132208 03E00008 */        jr $ra
   /* 11788C 8013220C 00000000 */       nop
 
-glabel func_ovl10_80132210
+glabel mnTitleUpdateFireBGOverlayVars
   /* 117890 80132210 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 117894 80132214 AFBF0014 */        sw $ra, 0x14($sp)
   /* 117898 80132218 0C00628C */       jal lbRandom_GetTimeByteRange
@@ -528,22 +528,22 @@ glabel func_ovl10_80132210
   /* 1178A0 80132220 3C0142A0 */       lui $at, (0x42A00000 >> 16) # 80.0
   /* 1178A4 80132224 44802000 */      mtc1 $zero, $f4
   /* 1178A8 80132228 44816000 */      mtc1 $at, $f12 # 80.0 to cop1
-  /* 1178AC 8013222C 3C038013 */       lui $v1, %hi(D_ovl10_80134484)
-  /* 1178B0 80132230 3C018013 */       lui $at, %hi(D_ovl10_80134494)
-  /* 1178B4 80132234 24634484 */     addiu $v1, $v1, %lo(D_ovl10_80134484)
-  /* 1178B8 80132238 AC224494 */        sw $v0, %lo(D_ovl10_80134494)($at)
-  /* 1178BC 8013223C E4640000 */      swc1 $f4, ($v1) # D_ovl10_80134484 + 0
-  /* 1178C0 80132240 C4600000 */      lwc1 $f0, ($v1) # D_ovl10_80134484 + 0
-  /* 1178C4 80132244 3C048013 */       lui $a0, %hi(D_ovl10_80134480)
-  /* 1178C8 80132248 24844480 */     addiu $a0, $a0, %lo(D_ovl10_80134480)
-  /* 1178CC 8013224C E4800000 */      swc1 $f0, ($a0) # D_ovl10_80134480 + 0
-  /* 1178D0 80132250 C4820000 */      lwc1 $f2, ($a0) # D_ovl10_80134480 + 0
-  /* 1178D4 80132254 3C058013 */       lui $a1, %hi(D_ovl10_8013447C)
-  /* 1178D8 80132258 24A5447C */     addiu $a1, $a1, %lo(D_ovl10_8013447C)
-  /* 1178DC 8013225C 3C0E8013 */       lui $t6, %hi(D_ovl10_80134318)
+  /* 1178AC 8013222C 3C038013 */       lui $v1, %hi(gMNTitleFireBGOverlayBlue)
+  /* 1178B0 80132230 3C018013 */       lui $at, %hi(gMNTitleFireBGOverlayIndex)
+  /* 1178B4 80132234 24634484 */     addiu $v1, $v1, %lo(gMNTitleFireBGOverlayBlue)
+  /* 1178B8 80132238 AC224494 */        sw $v0, %lo(gMNTitleFireBGOverlayIndex)($at)
+  /* 1178BC 8013223C E4640000 */      swc1 $f4, ($v1) # gMNTitleFireBGOverlayBlue + 0
+  /* 1178C0 80132240 C4600000 */      lwc1 $f0, ($v1) # gMNTitleFireBGOverlayBlue + 0
+  /* 1178C4 80132244 3C048013 */       lui $a0, %hi(gMNTitleFireBGOverlayGreen)
+  /* 1178C8 80132248 24844480 */     addiu $a0, $a0, %lo(gMNTitleFireBGOverlayGreen)
+  /* 1178CC 8013224C E4800000 */      swc1 $f0, ($a0) # gMNTitleFireBGOverlayGreen + 0
+  /* 1178D0 80132250 C4820000 */      lwc1 $f2, ($a0) # gMNTitleFireBGOverlayGreen + 0
+  /* 1178D4 80132254 3C058013 */       lui $a1, %hi(gMNTitleFireBGOverlayRed)
+  /* 1178D8 80132258 24A5447C */     addiu $a1, $a1, %lo(gMNTitleFireBGOverlayRed)
+  /* 1178DC 8013225C 3C0E8013 */       lui $t6, %hi(dMNTitleFireBGOverlayColorArrayRed)
   /* 1178E0 80132260 01C27021 */      addu $t6, $t6, $v0
-  /* 1178E4 80132264 E4A20000 */      swc1 $f2, ($a1) # D_ovl10_8013447C + 0
-  /* 1178E8 80132268 91CE4318 */       lbu $t6, %lo(D_ovl10_80134318)($t6)
+  /* 1178E4 80132264 E4A20000 */      swc1 $f2, ($a1) # gMNTitleFireBGOverlayRed + 0
+  /* 1178E8 80132268 91CE4318 */       lbu $t6, %lo(dMNTitleFireBGOverlayColorArrayRed)($t6)
   /* 1178EC 8013226C 3C014F80 */       lui $at, (0x4F800000 >> 16) # 4294967300.0
   /* 1178F0 80132270 448E3000 */      mtc1 $t6, $f6
   /* 1178F4 80132274 05C10004 */      bgez $t6, .L80132288
@@ -552,34 +552,34 @@ glabel func_ovl10_80132210
   /* 117900 80132280 00000000 */       nop
   /* 117904 80132284 460A4200 */     add.s $f8, $f8, $f10
   .L80132288:
-  /* 117908 80132288 C4B00000 */      lwc1 $f16, ($a1) # D_ovl10_8013447C + 0
-  /* 11790C 8013228C 3C0F8013 */       lui $t7, %hi(D_ovl10_80134320)
+  /* 117908 80132288 C4B00000 */      lwc1 $f16, ($a1) # gMNTitleFireBGOverlayRed + 0
+  /* 11790C 8013228C 3C0F8013 */       lui $t7, %hi(dMNTitleFireBGOverlayColorArrayGreen)
   /* 117910 80132290 01E27821 */      addu $t7, $t7, $v0
   /* 117914 80132294 46104481 */     sub.s $f18, $f8, $f16
-  /* 117918 80132298 91EF4320 */       lbu $t7, %lo(D_ovl10_80134320)($t7)
-  /* 11791C 8013229C 3C018013 */       lui $at, %hi(D_ovl10_80134488)
+  /* 117918 80132298 91EF4320 */       lbu $t7, %lo(dMNTitleFireBGOverlayColorArrayGreen)($t7)
+  /* 11791C 8013229C 3C018013 */       lui $at, %hi(gMNTitleFireBGOverlayDeltaRed)
   /* 117920 801322A0 460C9103 */     div.s $f4, $f18, $f12
   /* 117924 801322A4 448F3000 */      mtc1 $t7, $f6
   /* 117928 801322A8 00000000 */       nop
   /* 11792C 801322AC 468032A0 */   cvt.s.w $f10, $f6
   /* 117930 801322B0 05E10005 */      bgez $t7, .L801322C8
-  /* 117934 801322B4 E4244488 */      swc1 $f4, %lo(D_ovl10_80134488)($at)
+  /* 117934 801322B4 E4244488 */      swc1 $f4, %lo(gMNTitleFireBGOverlayDeltaRed)($at)
   /* 117938 801322B8 3C014F80 */       lui $at, (0x4F800000 >> 16) # 4294967300.0
   /* 11793C 801322BC 44814000 */      mtc1 $at, $f8 # 4294967300.0 to cop1
   /* 117940 801322C0 00000000 */       nop
   /* 117944 801322C4 46085280 */     add.s $f10, $f10, $f8
   .L801322C8:
   /* 117948 801322C8 46025401 */     sub.s $f16, $f10, $f2
-  /* 11794C 801322CC 3C188013 */       lui $t8, %hi(D_ovl10_80134328)
+  /* 11794C 801322CC 3C188013 */       lui $t8, %hi(dMNTitleFireBGOverlayColorArrayBlue)
   /* 117950 801322D0 0302C021 */      addu $t8, $t8, $v0
-  /* 117954 801322D4 93184328 */       lbu $t8, %lo(D_ovl10_80134328)($t8)
+  /* 117954 801322D4 93184328 */       lbu $t8, %lo(dMNTitleFireBGOverlayColorArrayBlue)($t8)
   /* 117958 801322D8 460C8483 */     div.s $f18, $f16, $f12
-  /* 11795C 801322DC 3C018013 */       lui $at, %hi(D_ovl10_8013448C)
+  /* 11795C 801322DC 3C018013 */       lui $at, %hi(gMNTitleFireBGOverlayDeltaGreen)
   /* 117960 801322E0 44982000 */      mtc1 $t8, $f4
   /* 117964 801322E4 00000000 */       nop
   /* 117968 801322E8 468021A0 */   cvt.s.w $f6, $f4
   /* 11796C 801322EC 07010005 */      bgez $t8, .L80132304
-  /* 117970 801322F0 E432448C */      swc1 $f18, %lo(D_ovl10_8013448C)($at)
+  /* 117970 801322F0 E432448C */      swc1 $f18, %lo(gMNTitleFireBGOverlayDeltaGreen)($at)
   /* 117974 801322F4 3C014F80 */       lui $at, (0x4F800000 >> 16) # 4294967300.0
   /* 117978 801322F8 44814000 */      mtc1 $at, $f8 # 4294967300.0 to cop1
   /* 11797C 801322FC 00000000 */       nop
@@ -587,13 +587,13 @@ glabel func_ovl10_80132210
   .L80132304:
   /* 117984 80132304 46003281 */     sub.s $f10, $f6, $f0
   /* 117988 80132308 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 11798C 8013230C 3C018013 */       lui $at, %hi(D_ovl10_80134490)
+  /* 11798C 8013230C 3C018013 */       lui $at, %hi(gMNTitleFireBGOverlayDeltaBlue)
   /* 117990 80132310 27BD0018 */     addiu $sp, $sp, 0x18
   /* 117994 80132314 460C5403 */     div.s $f16, $f10, $f12
   /* 117998 80132318 03E00008 */        jr $ra
-  /* 11799C 8013231C E4304490 */      swc1 $f16, %lo(D_ovl10_80134490)($at)
+  /* 11799C 8013231C E4304490 */      swc1 $f16, %lo(gMNTitleFireBGOverlayDeltaBlue)($at)
 
-glabel func_ovl10_80132320
+glabel mnTitleTransitionFromFireLogo
   /* 1179A0 80132320 3C068004 */       lui $a2, %hi(gOMObjCommonLinks)
   /* 1179A4 80132324 24C666F0 */     addiu $a2, $a2, %lo(gOMObjCommonLinks)
   /* 1179A8 80132328 8CC2001C */        lw $v0, 0x1c($a2) # gOMObjCommonLinks + 28
@@ -628,7 +628,7 @@ glabel func_ovl10_80132320
   .L8013238C:
   /* 117A0C 8013238C 0C04C8EB */       jal mnTitleEnableAllInGroup
   /* 117A10 80132390 24040006 */     addiu $a0, $zero, 6
-  /* 117A14 80132394 0C04C884 */       jal func_ovl10_80132210
+  /* 117A14 80132394 0C04C884 */       jal mnTitleUpdateFireBGOverlayVars
   /* 117A18 80132398 00000000 */       nop
   /* 117A1C 8013239C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 117A20 801323A0 27BD0018 */     addiu $sp, $sp, 0x18
@@ -651,10 +651,10 @@ glabel mnTitleEnableAllInGroup
   /* 117A54 801323D4 03E00008 */        jr $ra
   /* 117A58 801323D8 00000000 */       nop
 
-glabel func_ovl10_801323DC
-  /* 117A5C 801323DC 3C038013 */       lui $v1, %hi(D_ovl10_80134450)
-  /* 117A60 801323E0 24634450 */     addiu $v1, $v1, %lo(D_ovl10_80134450)
-  /* 117A64 801323E4 8C620000 */        lw $v0, ($v1) # D_ovl10_80134450 + 0
+glabel mnTitleNextLayout
+  /* 117A5C 801323DC 3C038013 */       lui $v1, %hi(gMNTitleLayout)
+  /* 117A60 801323E0 24634450 */     addiu $v1, $v1, %lo(gMNTitleLayout)
+  /* 117A64 801323E4 8C620000 */        lw $v0, ($v1) # gMNTitleLayout + 0
   /* 117A68 801323E8 3C04800A */       lui $a0, %hi(gSceneData)
   /* 117A6C 801323EC 24844AD0 */     addiu $a0, $a0, %lo(gSceneData)
   /* 117A70 801323F0 14400006 */      bnez $v0, .L8013240C
@@ -666,34 +666,34 @@ glabel func_ovl10_801323DC
   /* 117A88 80132408 A080003F */        sb $zero, 0x3f($a0) # gSceneData + 63
   .L8013240C:
   /* 117A8C 8013240C 03E00008 */        jr $ra
-  /* 117A90 80132410 AC6F0000 */        sw $t7, ($v1) # D_ovl10_80134450 + 0
+  /* 117A90 80132410 AC6F0000 */        sw $t7, ($v1) # gMNTitleLayout + 0
 
-glabel func_ovl10_80132414
-  /* 117A94 80132414 3C0E8013 */       lui $t6, %hi(D_ovl10_80134450)
-  /* 117A98 80132418 8DCE4450 */        lw $t6, %lo(D_ovl10_80134450)($t6)
+glabel mnTitleSetMainMenuFramesToWait
+  /* 117A94 80132414 3C0E8013 */       lui $t6, %hi(gMNTitleLayout)
+  /* 117A98 80132418 8DCE4450 */        lw $t6, %lo(gMNTitleLayout)($t6)
   /* 117A9C 8013241C 24010002 */     addiu $at, $zero, 2
   /* 117AA0 80132420 240F0118 */     addiu $t7, $zero, 0x118
   /* 117AA4 80132424 15C10004 */       bne $t6, $at, .L80132438
   /* 117AA8 80132428 2418016C */     addiu $t8, $zero, 0x16c
-  /* 117AAC 8013242C 3C018013 */       lui $at, %hi(D_ovl10_80134498)
+  /* 117AAC 8013242C 3C018013 */       lui $at, %hi(gMNTitleMainMenuFramesToWait)
   /* 117AB0 80132430 03E00008 */        jr $ra
-  /* 117AB4 80132434 AC2F4498 */        sw $t7, %lo(D_ovl10_80134498)($at)
+  /* 117AB4 80132434 AC2F4498 */        sw $t7, %lo(gMNTitleMainMenuFramesToWait)($at)
 
   .L80132438:
-  /* 117AB8 80132438 3C018013 */       lui $at, %hi(D_ovl10_80134498)
-  /* 117ABC 8013243C AC384498 */        sw $t8, %lo(D_ovl10_80134498)($at)
+  /* 117AB8 80132438 3C018013 */       lui $at, %hi(gMNTitleMainMenuFramesToWait)
+  /* 117ABC 8013243C AC384498 */        sw $t8, %lo(gMNTitleMainMenuFramesToWait)($at)
   /* 117AC0 80132440 03E00008 */        jr $ra
   /* 117AC4 80132444 00000000 */       nop
 
-glabel func_ovl10_80132448
-  /* 117AC8 80132448 3C028013 */       lui $v0, %hi(D_ovl10_8013445C)
-  /* 117ACC 8013244C 2442445C */     addiu $v0, $v0, %lo(D_ovl10_8013445C)
-  /* 117AD0 80132450 8C4E0000 */        lw $t6, ($v0) # D_ovl10_8013445C + 0
-  /* 117AD4 80132454 3C188013 */       lui $t8, %hi(D_ovl10_80134498)
+glabel mnTitleHandleTransitions
+  /* 117AC8 80132448 3C028013 */       lui $v0, %hi(gMNTitleTransitionFramesElapsed)
+  /* 117ACC 8013244C 2442445C */     addiu $v0, $v0, %lo(gMNTitleTransitionFramesElapsed)
+  /* 117AD0 80132450 8C4E0000 */        lw $t6, ($v0) # gMNTitleTransitionFramesElapsed + 0
+  /* 117AD4 80132454 3C188013 */       lui $t8, %hi(gMNTitleMainMenuFramesToWait)
   /* 117AD8 80132458 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 117ADC 8013245C 25C30001 */     addiu $v1, $t6, 1
-  /* 117AE0 80132460 AC430000 */        sw $v1, ($v0) # D_ovl10_8013445C + 0
-  /* 117AE4 80132464 8F184498 */        lw $t8, %lo(D_ovl10_80134498)($t8)
+  /* 117AE0 80132460 AC430000 */        sw $v1, ($v0) # gMNTitleTransitionFramesElapsed + 0
+  /* 117AE4 80132464 8F184498 */        lw $t8, %lo(gMNTitleMainMenuFramesToWait)($t8)
   /* 117AE8 80132468 AFBF0014 */        sw $ra, 0x14($sp)
   /* 117AEC 8013246C AFA40018 */        sw $a0, 0x18($sp)
   /* 117AF0 80132470 17030005 */       bne $t8, $v1, .L80132488
@@ -738,23 +738,23 @@ glabel func_ovl10_80132448
   /* 117B84 80132504 10000030 */         b .L801325C8
   /* 117B88 80132508 8FBF0014 */        lw $ra, 0x14($sp)
   .L8013250C:
-  /* 117B8C 8013250C 0C04C8C8 */       jal func_ovl10_80132320
+  /* 117B8C 8013250C 0C04C8C8 */       jal mnTitleTransitionFromFireLogo
   /* 117B90 80132510 00000000 */       nop
   /* 117B94 80132514 1000002C */         b .L801325C8
   /* 117B98 80132518 8FBF0014 */        lw $ra, 0x14($sp)
   .L8013251C:
-  /* 117B9C 8013251C 0C04C79A */       jal func_ovl10_80131E68
+  /* 117B9C 8013251C 0C04C79A */       jal mnTitleSetFinalLogoPosition
   /* 117BA0 80132520 00000000 */       nop
   /* 117BA4 80132524 0C04C8EB */       jal mnTitleEnableAllInGroup
   /* 117BA8 80132528 24040008 */     addiu $a0, $zero, 8
-  /* 117BAC 8013252C 0C04C8F7 */       jal func_ovl10_801323DC
+  /* 117BAC 8013252C 0C04C8F7 */       jal mnTitleNextLayout
   /* 117BB0 80132530 00000000 */       nop
-  /* 117BB4 80132534 0C04C905 */       jal func_ovl10_80132414
+  /* 117BB4 80132534 0C04C905 */       jal mnTitleSetMainMenuFramesToWait
   /* 117BB8 80132538 00000000 */       nop
   /* 117BBC 8013253C 10000022 */         b .L801325C8
   /* 117BC0 80132540 8FBF0014 */        lw $ra, 0x14($sp)
   .L80132544:
-  /* 117BC4 80132544 0C04C7B9 */       jal func_ovl10_80131EE4
+  /* 117BC4 80132544 0C04C7B9 */       jal mnTitleSetFinalLayout
   /* 117BC8 80132548 00000000 */       nop
   /* 117BCC 8013254C 1000001E */         b .L801325C8
   /* 117BD0 80132550 8FBF0014 */        lw $ra, 0x14($sp)
@@ -781,7 +781,7 @@ glabel func_ovl10_80132448
   /* 117C14 80132594 9089003F */       lbu $t1, 0x3f($a0)
   /* 117C18 80132598 5520000B */      bnel $t1, $zero, .L801325C8
   /* 117C1C 8013259C 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 117C20 801325A0 0C04C7F4 */       jal func_ovl10_80131FD0
+  /* 117C20 801325A0 0C04C7F4 */       jal mnTitleGoToNextDemo
   /* 117C24 801325A4 00000000 */       nop
   /* 117C28 801325A8 10000007 */         b .L801325C8
   /* 117C2C 801325AC 8FBF0014 */        lw $ra, 0x14($sp)
@@ -789,7 +789,7 @@ glabel func_ovl10_80132448
   .L801325B4:
   /* 117C34 801325B4 51400004 */      beql $t2, $zero, .L801325C8
   /* 117C38 801325B8 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 117C3C 801325BC 0C04C7F4 */       jal func_ovl10_80131FD0
+  /* 117C3C 801325BC 0C04C7F4 */       jal mnTitleGoToNextDemo
   /* 117C40 801325C0 00000000 */       nop
   .L801325C4:
   /* 117C44 801325C4 8FBF0014 */        lw $ra, 0x14($sp)
@@ -884,9 +884,9 @@ glabel mnTitleAnimateTitle
   /* 117D7C 801326FC 03E00008 */        jr $ra
   /* 117D80 80132700 00000000 */       nop
 
-glabel func_ovl10_80132704
-  /* 117D84 80132704 3C0E8013 */       lui $t6, %hi(D_ovl10_80134450)
-  /* 117D88 80132708 8DCE4450 */        lw $t6, %lo(D_ovl10_80134450)($t6)
+glabel mnTitleUpdateHeaderAndFooterPosition
+  /* 117D84 80132704 3C0E8013 */       lui $t6, %hi(gMNTitleLayout)
+  /* 117D88 80132708 8DCE4450 */        lw $t6, %lo(gMNTitleLayout)($t6)
   /* 117D8C 8013270C 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 117D90 80132710 AFBF0014 */        sw $ra, 0x14($sp)
   /* 117D94 80132714 15C00005 */      bnez $t6, .L8013272C
@@ -899,12 +899,12 @@ glabel func_ovl10_80132704
   /* 117DAC 8013272C 00002025 */        or $a0, $zero, $zero
   /* 117DB0 80132730 00E02825 */        or $a1, $a3, $zero
   /* 117DB4 80132734 24060005 */     addiu $a2, $zero, 5
-  /* 117DB8 80132738 0C04C9D9 */       jal func_ovl10_80132764
+  /* 117DB8 80132738 0C04C9D9 */       jal mnTitleSetPosition
   /* 117DBC 8013273C AFA7001C */        sw $a3, 0x1c($sp)
   /* 117DC0 80132740 8FA7001C */        lw $a3, 0x1c($sp)
   /* 117DC4 80132744 00002025 */        or $a0, $zero, $zero
   /* 117DC8 80132748 24060006 */     addiu $a2, $zero, 6
-  /* 117DCC 8013274C 0C04C9D9 */       jal func_ovl10_80132764
+  /* 117DCC 8013274C 0C04C9D9 */       jal mnTitleSetPosition
   /* 117DD0 80132750 8CE50008 */        lw $a1, 8($a3)
   .L80132754:
   /* 117DD4 80132754 8FBF0014 */        lw $ra, 0x14($sp)
@@ -912,7 +912,7 @@ glabel func_ovl10_80132704
   /* 117DDC 8013275C 03E00008 */        jr $ra
   /* 117DE0 80132760 00000000 */       nop
 
-glabel func_ovl10_80132764
+glabel mnTitleSetPosition
   /* 117DE4 80132764 10800017 */      beqz $a0, .L801327C4
   /* 117DE8 80132768 00064080 */       sll $t0, $a2, 2
   /* 117DEC 8013276C 00067080 */       sll $t6, $a2, 2
@@ -965,7 +965,7 @@ glabel func_ovl10_80132764
   /* 117EA4 80132824 03E00008 */        jr $ra
   /* 117EA8 80132828 E4A8005C */      swc1 $f8, 0x5c($a1)
 
-glabel func_ovl10_8013282C
+glabel mnTitleSetColors
   /* 117EAC 8013282C 28A10005 */      slti $at, $a1, 5
   /* 117EB0 80132830 50200013 */      beql $at, $zero, .L80132880
   /* 117EB4 80132834 24010005 */     addiu $at, $zero, 5
@@ -1049,7 +1049,7 @@ glabel func_ovl10_8013282C
   /* 117FB8 80132938 03E00008 */        jr $ra
   /* 117FBC 8013293C 00000000 */       nop
 
-glabel func_ovl10_80132940
+glabel mnTitleRenderFire
   /* 117FC0 80132940 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 117FC4 80132944 AFB70030 */        sw $s7, 0x30($sp)
   /* 117FC8 80132948 AFB6002C */        sw $s6, 0x2c($sp)
@@ -1061,13 +1061,13 @@ glabel func_ovl10_80132940
   /* 117FE0 80132960 AFBF0034 */        sw $ra, 0x34($sp)
   /* 117FE4 80132964 AFB10018 */        sw $s1, 0x18($sp)
   /* 117FE8 80132968 3C108004 */       lui $s0, %hi(gDisplayListHead)
-  /* 117FEC 8013296C 3C148013 */       lui $s4, %hi(D_ovl10_80134464)
+  /* 117FEC 8013296C 3C148013 */       lui $s4, %hi(gMNTitleFireAlpha)
   /* 117FF0 80132970 3C15FCFF */       lui $s5, (0xFCFF97FF >> 16) # 4244609023
   /* 117FF4 80132974 3C16FF2C */       lui $s6, (0xFF2CFE7F >> 16) # 4281138815
   /* 117FF8 80132978 8C910074 */        lw $s1, 0x74($a0)
   /* 117FFC 8013297C 36D6FE7F */       ori $s6, $s6, (0xFF2CFE7F & 0xFFFF) # 4281138815
   /* 118000 80132980 36B597FF */       ori $s5, $s5, (0xFCFF97FF & 0xFFFF) # 4244609023
-  /* 118004 80132984 26944464 */     addiu $s4, $s4, %lo(D_ovl10_80134464)
+  /* 118004 80132984 26944464 */     addiu $s4, $s4, %lo(gMNTitleFireAlpha)
   /* 118008 80132988 261065B0 */     addiu $s0, $s0, %lo(gDisplayListHead)
   /* 11800C 8013298C 00009025 */        or $s2, $zero, $zero
   /* 118010 80132990 3C13FA00 */       lui $s3, 0xfa00
@@ -1082,7 +1082,7 @@ glabel func_ovl10_80132940
   /* 118030 801329B0 244E0008 */     addiu $t6, $v0, 8
   /* 118034 801329B4 AE0E0000 */        sw $t6, ($s0) # gDisplayListHead + 0
   /* 118038 801329B8 AC530000 */        sw $s3, ($v0)
-  /* 11803C 801329BC 8E8F0000 */        lw $t7, ($s4) # D_ovl10_80134464 + 0
+  /* 11803C 801329BC 8E8F0000 */        lw $t7, ($s4) # gMNTitleFireAlpha + 0
   /* 118040 801329C0 31F800FF */      andi $t8, $t7, 0xff
   /* 118044 801329C4 AC580004 */        sw $t8, 4($v0)
   /* 118048 801329C8 8E020000 */        lw $v0, ($s0) # gDisplayListHead + 0
@@ -1108,37 +1108,37 @@ glabel func_ovl10_80132940
   /* 118098 80132A18 03E00008 */        jr $ra
   /* 11809C 80132A1C 27BD0038 */     addiu $sp, $sp, 0x38
 
-glabel func_ovl10_80132A20
+glabel mnTitleFadeInFire
   /* 1180A0 80132A20 8C8E007C */        lw $t6, 0x7c($a0)
   /* 1180A4 80132A24 24010001 */     addiu $at, $zero, 1
-  /* 1180A8 80132A28 3C028013 */       lui $v0, %hi(D_ovl10_80134464)
+  /* 1180A8 80132A28 3C028013 */       lui $v0, %hi(gMNTitleFireAlpha)
   /* 1180AC 80132A2C 11C10008 */       beq $t6, $at, .L80132A50
-  /* 1180B0 80132A30 24424464 */     addiu $v0, $v0, %lo(D_ovl10_80134464)
-  /* 1180B4 80132A34 8C4F0000 */        lw $t7, ($v0) # D_ovl10_80134464 + 0
+  /* 1180B0 80132A30 24424464 */     addiu $v0, $v0, %lo(gMNTitleFireAlpha)
+  /* 1180B4 80132A34 8C4F0000 */        lw $t7, ($v0) # gMNTitleFireAlpha + 0
   /* 1180B8 80132A38 240800FF */     addiu $t0, $zero, 0xff
   /* 1180BC 80132A3C 25F8000D */     addiu $t8, $t7, 0xd
   /* 1180C0 80132A40 2B010100 */      slti $at, $t8, 0x100
   /* 1180C4 80132A44 14200002 */      bnez $at, .L80132A50
-  /* 1180C8 80132A48 AC580000 */        sw $t8, ($v0) # D_ovl10_80134464 + 0
-  /* 1180CC 80132A4C AC480000 */        sw $t0, ($v0) # D_ovl10_80134464 + 0
+  /* 1180C8 80132A48 AC580000 */        sw $t8, ($v0) # gMNTitleFireAlpha + 0
+  /* 1180CC 80132A4C AC480000 */        sw $t0, ($v0) # gMNTitleFireAlpha + 0
   .L80132A50:
   /* 1180D0 80132A50 03E00008 */        jr $ra
   /* 1180D4 80132A54 00000000 */       nop
 
-glabel func_ovl10_80132A58
+glabel mnTitleShowFire
   /* 1180D8 80132A58 240E00FF */     addiu $t6, $zero, 0xff
-  /* 1180DC 80132A5C 3C018013 */       lui $at, %hi(D_ovl10_80134464)
-  /* 1180E0 80132A60 AC2E4464 */        sw $t6, %lo(D_ovl10_80134464)($at)
+  /* 1180DC 80132A5C 3C018013 */       lui $at, %hi(gMNTitleFireAlpha)
+  /* 1180E0 80132A60 AC2E4464 */        sw $t6, %lo(gMNTitleFireAlpha)($at)
   /* 1180E4 80132A64 03E00008 */        jr $ra
   /* 1180E8 80132A68 AC80007C */        sw $zero, 0x7c($a0)
 
-glabel func_ovl10_80132A6C
+glabel mnTitleChangeFireTexture
   /* 1180EC 80132A6C 8C8E0054 */        lw $t6, 0x54($a0)
-  /* 1180F0 80132A70 3C188013 */       lui $t8, %hi(D_ovl10_801341F0)
+  /* 1180F0 80132A70 3C188013 */       lui $t8, %hi(dMNTitleFireTextureOffsets)
   /* 1180F4 80132A74 3C198013 */       lui $t9, %hi(D_ovl10_801345A4)
   /* 1180F8 80132A78 000E7880 */       sll $t7, $t6, 2
   /* 1180FC 80132A7C 030FC021 */      addu $t8, $t8, $t7
-  /* 118100 80132A80 8F1841F0 */        lw $t8, %lo(D_ovl10_801341F0)($t8)
+  /* 118100 80132A80 8F1841F0 */        lw $t8, %lo(dMNTitleFireTextureOffsets)($t8)
   /* 118104 80132A84 8F3945A4 */        lw $t9, %lo(D_ovl10_801345A4)($t9)
   /* 118108 80132A88 00805825 */        or $t3, $a0, $zero
   /* 11810C 80132A8C 3C014140 */       lui $at, 0x4140
@@ -1191,16 +1191,16 @@ glabel func_ovl10_80132A6C
   /* 1181B0 80132B30 03E00008 */        jr $ra
   /* 1181B4 80132B34 00000000 */       nop
 
-glabel func_ovl10_80132B38
+glabel mnTitleAnimateFire
   /* 1181B8 80132B38 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 1181BC 80132B3C AFBF0014 */        sw $ra, 0x14($sp)
   /* 1181C0 80132B40 8C840074 */        lw $a0, 0x74($a0)
   /* 1181C4 80132B44 00002825 */        or $a1, $zero, $zero
   /* 1181C8 80132B48 8C8E0008 */        lw $t6, 8($a0)
-  /* 1181CC 80132B4C 0C04CA9B */       jal func_ovl10_80132A6C
+  /* 1181CC 80132B4C 0C04CA9B */       jal mnTitleChangeFireTexture
   /* 1181D0 80132B50 AFAE0018 */        sw $t6, 0x18($sp)
   /* 1181D4 80132B54 8FA40018 */        lw $a0, 0x18($sp)
-  /* 1181D8 80132B58 0C04CA9B */       jal func_ovl10_80132A6C
+  /* 1181D8 80132B58 0C04CA9B */       jal mnTitleChangeFireTexture
   /* 1181DC 80132B5C 24050001 */     addiu $a1, $zero, 1
   /* 1181E0 80132B60 8FBF0014 */        lw $ra, 0x14($sp)
   /* 1181E4 80132B64 27BD0020 */     addiu $sp, $sp, 0x20
@@ -1212,7 +1212,7 @@ glabel mnTitleCreateFire
   /* 1181F4 80132B74 AFB00050 */        sw $s0, 0x50($sp)
   /* 1181F8 80132B78 3C108000 */       lui $s0, %hi(D_NF_80000001)
   /* 1181FC 80132B7C AFBF006C */        sw $ra, 0x6c($sp)
-  /* 118200 80132B80 3C058013 */       lui $a1, %hi(func_ovl10_80132A20)
+  /* 118200 80132B80 3C058013 */       lui $a1, %hi(mnTitleFadeInFire)
   /* 118204 80132B84 AFB60068 */        sw $s6, 0x68($sp)
   /* 118208 80132B88 AFB50064 */        sw $s5, 0x64($sp)
   /* 11820C 80132B8C AFB40060 */        sw $s4, 0x60($sp)
@@ -1225,23 +1225,23 @@ glabel mnTitleCreateFire
   /* 118228 80132BA8 F7B80030 */      sdc1 $f24, 0x30($sp)
   /* 11822C 80132BAC F7B60028 */      sdc1 $f22, 0x28($sp)
   /* 118230 80132BB0 F7B40020 */      sdc1 $f20, 0x20($sp)
-  /* 118234 80132BB4 24A52A20 */     addiu $a1, $a1, %lo(func_ovl10_80132A20)
+  /* 118234 80132BB4 24A52A20 */     addiu $a1, $a1, %lo(mnTitleFadeInFire)
   /* 118238 80132BB8 02003825 */        or $a3, $s0, $zero
   /* 11823C 80132BBC 24040005 */     addiu $a0, $zero, 5
   /* 118240 80132BC0 0C00265A */       jal omMakeGObjSPAfter
   /* 118244 80132BC4 24060006 */     addiu $a2, $zero, 6
   /* 118248 80132BC8 10400054 */      beqz $v0, .L80132D1C
   /* 11824C 80132BCC 00409025 */        or $s2, $v0, $zero
-  /* 118250 80132BD0 3C058013 */       lui $a1, %hi(func_ovl10_80132940)
+  /* 118250 80132BD0 3C058013 */       lui $a1, %hi(mnTitleRenderFire)
   /* 118254 80132BD4 240EFFFF */     addiu $t6, $zero, -1
   /* 118258 80132BD8 AFAE0010 */        sw $t6, 0x10($sp)
-  /* 11825C 80132BDC 24A52940 */     addiu $a1, $a1, %lo(func_ovl10_80132940)
+  /* 11825C 80132BDC 24A52940 */     addiu $a1, $a1, %lo(mnTitleRenderFire)
   /* 118260 80132BE0 00402025 */        or $a0, $v0, $zero
   /* 118264 80132BE4 00003025 */        or $a2, $zero, $zero
   /* 118268 80132BE8 0C00277D */       jal omAddGObjRenderProc
   /* 11826C 80132BEC 02003825 */        or $a3, $s0, $zero
-  /* 118270 80132BF0 3C058013 */       lui $a1, %hi(func_ovl10_80132B38)
-  /* 118274 80132BF4 24A52B38 */     addiu $a1, $a1, %lo(func_ovl10_80132B38)
+  /* 118270 80132BF0 3C058013 */       lui $a1, %hi(mnTitleAnimateFire)
+  /* 118274 80132BF4 24A52B38 */     addiu $a1, $a1, %lo(mnTitleAnimateFire)
   /* 118278 80132BF8 02402025 */        or $a0, $s2, $zero
   /* 11827C 80132BFC 24060001 */     addiu $a2, $zero, 1
   /* 118280 80132C00 0C002062 */       jal omAddGObjCommonProc
@@ -1258,9 +1258,9 @@ glabel mnTitleCreateFire
   /* 1182AC 80132C2C 4481B000 */      mtc1 $at, $f22 # 9.5 to cop1
   /* 1182B0 80132C30 3C014100 */       lui $at, (0x41000000 >> 16) # 8.0
   /* 1182B4 80132C34 3C148013 */       lui $s4, %hi(D_ovl10_801345A0)
-  /* 1182B8 80132C38 3C138013 */       lui $s3, %hi(D_ovl10_801341F0)
+  /* 1182B8 80132C38 3C138013 */       lui $s3, %hi(dMNTitleFireTextureOffsets)
   /* 1182BC 80132C3C 4481A000 */      mtc1 $at, $f20 # 8.0 to cop1
-  /* 1182C0 80132C40 267341F0 */     addiu $s3, $s3, %lo(D_ovl10_801341F0)
+  /* 1182C0 80132C40 267341F0 */     addiu $s3, $s3, %lo(dMNTitleFireTextureOffsets)
   /* 1182C4 80132C44 269445A0 */     addiu $s4, $s4, %lo(D_ovl10_801345A0)
   /* 1182C8 80132C48 00008025 */        or $s0, $zero, $zero
   /* 1182CC 80132C4C 24160001 */     addiu $s6, $zero, 1
@@ -1309,18 +1309,18 @@ glabel mnTitleCreateFire
   /* 11835C 80132CDC 26100001 */     addiu $s0, $s0, %lo(D_NF_80000001)
   /* 118360 80132CE0 1615FFDC */       bne $s0, $s5, .L80132C54
   /* 118364 80132CE4 AC510054 */        sw $s1, 0x54($v0)
-  /* 118368 80132CE8 3C028013 */       lui $v0, %hi(D_ovl10_80134468)
-  /* 11836C 80132CEC 24424468 */     addiu $v0, $v0, %lo(D_ovl10_80134468)
-  /* 118370 80132CF0 AC400000 */        sw $zero, ($v0) # D_ovl10_80134468 + 0
-  /* 118374 80132CF4 3C018013 */       lui $at, %hi(D_ovl10_80134464)
-  /* 118378 80132CF8 AC204464 */        sw $zero, %lo(D_ovl10_80134464)($at)
+  /* 118368 80132CE8 3C028013 */       lui $v0, %hi(gMNTitleFireAlphaUnused)
+  /* 11836C 80132CEC 24424468 */     addiu $v0, $v0, %lo(gMNTitleFireAlphaUnused)
+  /* 118370 80132CF0 AC400000 */        sw $zero, ($v0) # gMNTitleFireAlphaUnused + 0
+  /* 118374 80132CF4 3C018013 */       lui $at, %hi(gMNTitleFireAlpha)
+  /* 118378 80132CF8 AC204464 */        sw $zero, %lo(gMNTitleFireAlpha)($at)
   /* 11837C 80132CFC AE56007C */        sw $s6, 0x7c($s2)
   /* 118380 80132D00 3C0A800A */       lui $t2, %hi((gSceneData + 0x1))
   /* 118384 80132D04 914A4AD1 */       lbu $t2, %lo((gSceneData + 0x1))($t2)
   /* 118388 80132D08 2401002E */     addiu $at, $zero, 0x2e
   /* 11838C 80132D0C 51410004 */      beql $t2, $at, .L80132D20
   /* 118390 80132D10 8FBF006C */        lw $ra, 0x6c($sp)
-  /* 118394 80132D14 0C04CA96 */       jal func_ovl10_80132A58
+  /* 118394 80132D14 0C04CA96 */       jal mnTitleShowFire
   /* 118398 80132D18 02402025 */        or $a0, $s2, $zero
   .L80132D1C:
   /* 11839C 80132D1C 8FBF006C */        lw $ra, 0x6c($sp)
@@ -1341,7 +1341,7 @@ glabel mnTitleCreateFire
   /* 1183D4 80132D54 03E00008 */        jr $ra
   /* 1183D8 80132D58 27BD0070 */     addiu $sp, $sp, 0x70
 
-glabel func_ovl10_80132D5C
+glabel mnTitleAnimateLogo
   /* 1183DC 80132D5C 8C820084 */        lw $v0, 0x84($a0)
   /* 1183E0 80132D60 8C830074 */        lw $v1, 0x74($a0)
   /* 1183E4 80132D64 3C013F00 */       lui $at, (0x3F000000 >> 16) # 0.5
@@ -1416,8 +1416,8 @@ glabel mnTitleRenderLogoNoIntro
   /* 1184F0 80132E70 90AB0029 */       lbu $t3, 0x29($a1)
   /* 1184F4 80132E74 90AF002A */       lbu $t7, 0x2a($a1)
   /* 1184F8 80132E78 00084E00 */       sll $t1, $t0, 0x18
-  /* 1184FC 80132E7C 3C088013 */       lui $t0, %hi(D_ovl10_8013446C)
-  /* 118500 80132E80 8D08446C */        lw $t0, %lo(D_ovl10_8013446C)($t0)
+  /* 1184FC 80132E7C 3C088013 */       lui $t0, %hi(gMNTitleLogoAlpha)
+  /* 118500 80132E80 8D08446C */        lw $t0, %lo(gMNTitleLogoAlpha)($t0)
   /* 118504 80132E84 000B6400 */       sll $t4, $t3, 0x10
   /* 118508 80132E88 012C6825 */        or $t5, $t1, $t4
   /* 11850C 80132E8C 000FC200 */       sll $t8, $t7, 8
@@ -1442,7 +1442,7 @@ glabel mnTitleRenderLogoNoIntro
   /* 118554 80132ED4 03E00008 */        jr $ra
   /* 118558 80132ED8 00000000 */       nop
 
-glabel func_ovl10_80132EDC
+glabel mnTitleFadeOutLogo
   /* 11855C 80132EDC 8C820074 */        lw $v0, 0x74($a0)
   /* 118560 80132EE0 3C018013 */       lui $at, %hi(D_ovl10_8013443C)
   /* 118564 80132EE4 C420443C */      lwc1 $f0, %lo(D_ovl10_8013443C)($at)
@@ -1452,19 +1452,19 @@ glabel func_ovl10_80132EDC
   /* 118574 80132EF4 4501000F */      bc1t .L80132F34
   /* 118578 80132EF8 00000000 */       nop
   /* 11857C 80132EFC C446001C */      lwc1 $f6, 0x1c($v0)
-  /* 118580 80132F00 3C028013 */       lui $v0, %hi(D_ovl10_8013446C)
-  /* 118584 80132F04 2442446C */     addiu $v0, $v0, %lo(D_ovl10_8013446C)
+  /* 118580 80132F00 3C028013 */       lui $v0, %hi(gMNTitleLogoAlpha)
+  /* 118584 80132F04 2442446C */     addiu $v0, $v0, %lo(gMNTitleLogoAlpha)
   /* 118588 80132F08 4600303C */    c.lt.s $f6, $f0
   /* 11858C 80132F0C 00000000 */       nop
   /* 118590 80132F10 45010008 */      bc1t .L80132F34
   /* 118594 80132F14 00000000 */       nop
-  /* 118598 80132F18 8C4E0000 */        lw $t6, ($v0) # D_ovl10_8013446C + 0
+  /* 118598 80132F18 8C4E0000 */        lw $t6, ($v0) # gMNTitleLogoAlpha + 0
   /* 11859C 80132F1C 2419004C */     addiu $t9, $zero, 0x4c
   /* 1185A0 80132F20 25CFFFFC */     addiu $t7, $t6, -4
   /* 1185A4 80132F24 29E1004D */      slti $at, $t7, 0x4d
   /* 1185A8 80132F28 10200002 */      beqz $at, .L80132F34
-  /* 1185AC 80132F2C AC4F0000 */        sw $t7, ($v0) # D_ovl10_8013446C + 0
-  /* 1185B0 80132F30 AC590000 */        sw $t9, ($v0) # D_ovl10_8013446C + 0
+  /* 1185AC 80132F2C AC4F0000 */        sw $t7, ($v0) # gMNTitleLogoAlpha + 0
+  /* 1185B0 80132F30 AC590000 */        sw $t9, ($v0) # gMNTitleLogoAlpha + 0
   .L80132F34:
   /* 1185B4 80132F34 03E00008 */        jr $ra
   /* 1185B8 80132F38 00000000 */       nop
@@ -1503,7 +1503,7 @@ glabel mnTitleCreateLogoNoIntro
   /* 118634 80132FB4 A4AB0024 */        sh $t3, 0x24($a1)
   /* 118638 80132FB8 A0AC0028 */        sb $t4, 0x28($a1)
   /* 11863C 80132FBC A0A00029 */        sb $zero, 0x29($a1)
-  /* 118640 80132FC0 0C04C9D9 */       jal func_ovl10_80132764
+  /* 118640 80132FC0 0C04C9D9 */       jal mnTitleSetPosition
   /* 118644 80132FC4 A0A0002A */        sb $zero, 0x2a($a1)
   /* 118648 80132FC8 8FBF0034 */        lw $ra, 0x34($sp)
   /* 11864C 80132FCC 27BD0038 */     addiu $sp, $sp, 0x38
@@ -1578,15 +1578,15 @@ glabel mnTitleCreateLogo
   /* 118754 801330D4 24070001 */     addiu $a3, $zero, 1
   /* 118758 801330D8 AE560084 */        sw $s6, 0x84($s2)
   /* 11875C 801330DC 8ECA0074 */        lw $t2, 0x74($s6)
-  /* 118760 801330E0 3C108013 */       lui $s0, %hi(D_ovl10_801341E0)
-  /* 118764 801330E4 3C148013 */       lui $s4, %hi(D_ovl10_801341EC)
+  /* 118760 801330E0 3C108013 */       lui $s0, %hi(dMNTitleAnimatedLogoOffsets)
+  /* 118764 801330E4 3C148013 */       lui $s4, %hi(dMNTitleLogoOffset)
   /* 118768 801330E8 4480A000 */      mtc1 $zero, $f20
-  /* 11876C 801330EC 269441EC */     addiu $s4, $s4, %lo(D_ovl10_801341EC)
-  /* 118770 801330F0 261041E0 */     addiu $s0, $s0, %lo(D_ovl10_801341E0)
+  /* 11876C 801330EC 269441EC */     addiu $s4, $s4, %lo(dMNTitleLogoOffset)
+  /* 118770 801330F0 261041E0 */     addiu $s0, $s0, %lo(dMNTitleAnimatedLogoOffsets)
   /* 118774 801330F4 24130001 */     addiu $s3, $zero, 1
   /* 118778 801330F8 8D510010 */        lw $s1, 0x10($t2)
   .L801330FC:
-  /* 11877C 801330FC 8E0B0000 */        lw $t3, ($s0) # D_ovl10_801341E0 + 0
+  /* 11877C 801330FC 8E0B0000 */        lw $t3, ($s0) # dMNTitleAnimatedLogoOffsets + 0
   /* 118780 80133100 8EAC0000 */        lw $t4, ($s5) # D_ovl10_801345A0 + 0
   /* 118784 80133104 02402025 */        or $a0, $s2, $zero
   /* 118788 80133108 0C0333F7 */       jal gcAppendSObjWithSprite
@@ -1602,21 +1602,21 @@ glabel mnTitleCreateLogo
   /* 1187B0 80133130 E6360020 */      swc1 $f22, 0x20($s1)
   /* 1187B4 80133134 1614FFF1 */       bne $s0, $s4, .L801330FC
   /* 1187B8 80133138 8E310008 */        lw $s1, 8($s1)
-  /* 1187BC 8013313C 3C188013 */       lui $t8, %hi(D_ovl10_801341EC)
-  /* 1187C0 80133140 8F1841EC */        lw $t8, %lo(D_ovl10_801341EC)($t8)
+  /* 1187BC 8013313C 3C188013 */       lui $t8, %hi(dMNTitleLogoOffset)
+  /* 1187C0 80133140 8F1841EC */        lw $t8, %lo(dMNTitleLogoOffset)($t8)
   /* 1187C4 80133144 8EB90000 */        lw $t9, ($s5) # D_ovl10_801345A0 + 0
   /* 1187C8 80133148 3C0D8013 */       lui $t5, %hi(mnTitleRenderLogoNoIntro)
-  /* 1187CC 8013314C 3C098013 */       lui $t1, %hi(func_ovl10_80132D5C)
-  /* 1187D0 80133150 25292D5C */     addiu $t1, $t1, %lo(func_ovl10_80132D5C)
+  /* 1187CC 8013314C 3C098013 */       lui $t1, %hi(mnTitleAnimateLogo)
+  /* 1187D0 80133150 25292D5C */     addiu $t1, $t1, %lo(mnTitleAnimateLogo)
   /* 1187D4 80133154 25AD2DFC */     addiu $t5, $t5, %lo(mnTitleRenderLogoNoIntro)
-  /* 1187D8 80133158 3C058013 */       lui $a1, %hi(func_ovl10_80132EDC)
+  /* 1187D8 80133158 3C058013 */       lui $a1, %hi(mnTitleFadeOutLogo)
   /* 1187DC 8013315C 3C0E8000 */       lui $t6, 0x8000
   /* 1187E0 80133160 240FFFFF */     addiu $t7, $zero, -1
   /* 1187E4 80133164 03194021 */      addu $t0, $t8, $t9
   /* 1187E8 80133168 AFA80020 */        sw $t0, 0x20($sp)
   /* 1187EC 8013316C AFAF001C */        sw $t7, 0x1c($sp)
   /* 1187F0 80133170 AFAE0018 */        sw $t6, 0x18($sp)
-  /* 1187F4 80133174 24A52EDC */     addiu $a1, $a1, %lo(func_ovl10_80132EDC)
+  /* 1187F4 80133174 24A52EDC */     addiu $a1, $a1, %lo(mnTitleFadeOutLogo)
   /* 1187F8 80133178 AFAD0010 */        sw $t5, 0x10($sp)
   /* 1187FC 8013317C AFA90028 */        sw $t1, 0x28($sp)
   /* 118800 80133180 2404000B */     addiu $a0, $zero, 0xb
@@ -1636,8 +1636,8 @@ glabel mnTitleCreateLogo
   /* 118838 801331B8 E636001C */      swc1 $f22, 0x1c($s1)
   /* 11883C 801331BC E6360020 */      swc1 $f22, 0x20($s1)
   /* 118840 801331C0 AC560084 */        sw $s6, 0x84($v0)
-  /* 118844 801331C4 3C018013 */       lui $at, %hi(D_ovl10_8013446C)
-  /* 118848 801331C8 AC2B446C */        sw $t3, %lo(D_ovl10_8013446C)($at)
+  /* 118844 801331C4 3C018013 */       lui $at, %hi(gMNTitleLogoAlpha)
+  /* 118848 801331C8 AC2B446C */        sw $t3, %lo(gMNTitleLogoAlpha)($at)
   /* 11884C 801331CC 8FBF0064 */        lw $ra, 0x64($sp)
   .L801331D0:
   /* 118850 801331D0 D7B40038 */      ldc1 $f20, 0x38($sp)
@@ -1652,7 +1652,7 @@ glabel mnTitleCreateLogo
   /* 118874 801331F4 03E00008 */        jr $ra
   /* 118878 801331F8 27BD0068 */     addiu $sp, $sp, 0x68
 
-glabel func_ovl10_801331FC
+glabel mnTitleCreateTextures
   /* 11887C 801331FC 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 118880 80133200 AFB00020 */        sw $s0, 0x20($sp)
   /* 118884 80133204 3C108000 */       lui $s0, %hi(D_NF_80000001)
@@ -1694,10 +1694,10 @@ glabel func_ovl10_801331FC
   /* 118910 80133290 A4540024 */        sh $s4, 0x24($v0)
   /* 118914 80133294 00002025 */        or $a0, $zero, $zero
   /* 118918 80133298 00402825 */        or $a1, $v0, $zero
-  /* 11891C 8013329C 0C04C9D9 */       jal func_ovl10_80132764
+  /* 11891C 8013329C 0C04C9D9 */       jal mnTitleSetPosition
   /* 118920 801332A0 02003025 */        or $a2, $s0, $zero
   /* 118924 801332A4 02402025 */        or $a0, $s2, $zero
-  /* 118928 801332A8 0C04CA0B */       jal func_ovl10_8013282C
+  /* 118928 801332A8 0C04CA0B */       jal mnTitleSetColors
   /* 11892C 801332AC 02002825 */        or $a1, $s0, $zero
   /* 118930 801332B0 26100001 */     addiu $s0, $s0, %lo(D_NF_80000001)
   /* 118934 801332B4 1615FFF0 */       bne $s0, $s5, .L80133278
@@ -1713,7 +1713,7 @@ glabel func_ovl10_801331FC
   /* 11895C 801332DC 03E00008 */        jr $ra
   /* 118960 801332E0 27BD0040 */     addiu $sp, $sp, 0x40
 
-glabel func_ovl10_801332E4
+glabel mnTitleCreateTitleHeaderAndFooter
   /* 118964 801332E4 27BDFFA8 */     addiu $sp, $sp, -0x58
   /* 118968 801332E8 AFBF003C */        sw $ra, 0x3c($sp)
   /* 11896C 801332EC AFB70038 */        sw $s7, 0x38($sp)
@@ -1786,10 +1786,10 @@ glabel func_ovl10_801332E4
   /* 118A74 801333F4 A4560024 */        sh $s6, 0x24($v0)
   /* 118A78 801333F8 02602025 */        or $a0, $s3, $zero
   /* 118A7C 801333FC 00402825 */        or $a1, $v0, $zero
-  /* 118A80 80133400 0C04C9D9 */       jal func_ovl10_80132764
+  /* 118A80 80133400 0C04C9D9 */       jal mnTitleSetPosition
   /* 118A84 80133404 02003025 */        or $a2, $s0, $zero
   /* 118A88 80133408 02202025 */        or $a0, $s1, $zero
-  /* 118A8C 8013340C 0C04CA0B */       jal func_ovl10_8013282C
+  /* 118A8C 8013340C 0C04CA0B */       jal mnTitleSetColors
   /* 118A90 80133410 02002825 */        or $a1, $s0, $zero
   /* 118A94 80133414 26100001 */     addiu $s0, $s0, 1
   /* 118A98 80133418 2A010005 */      slti $at, $s0, 5
@@ -1810,8 +1810,8 @@ glabel func_ovl10_801332E4
   /* 118AD4 80133454 32C600FF */      andi $a2, $s6, 0xff
   /* 118AD8 80133458 0C00277D */       jal omAddGObjRenderProc
   /* 118ADC 8013345C 3C078000 */       lui $a3, 0x8000
-  /* 118AE0 80133460 3C058013 */       lui $a1, %hi(func_ovl10_80132704)
-  /* 118AE4 80133464 24A52704 */     addiu $a1, $a1, %lo(func_ovl10_80132704)
+  /* 118AE0 80133460 3C058013 */       lui $a1, %hi(mnTitleUpdateHeaderAndFooterPosition)
+  /* 118AE4 80133464 24A52704 */     addiu $a1, $a1, %lo(mnTitleUpdateHeaderAndFooterPosition)
   /* 118AE8 80133468 02A02025 */        or $a0, $s5, $zero
   /* 118AEC 8013346C 32C600FF */      andi $a2, $s6, 0xff
   /* 118AF0 80133470 0C002062 */       jal omAddGObjCommonProc
@@ -1831,10 +1831,10 @@ glabel func_ovl10_801332E4
   /* 118B24 801334A4 A4560024 */        sh $s6, 0x24($v0)
   /* 118B28 801334A8 02602025 */        or $a0, $s3, $zero
   /* 118B2C 801334AC 00402825 */        or $a1, $v0, $zero
-  /* 118B30 801334B0 0C04C9D9 */       jal func_ovl10_80132764
+  /* 118B30 801334B0 0C04C9D9 */       jal mnTitleSetPosition
   /* 118B34 801334B4 02003025 */        or $a2, $s0, $zero
   /* 118B38 801334B8 02202025 */        or $a0, $s1, $zero
-  /* 118B3C 801334BC 0C04CA0B */       jal func_ovl10_8013282C
+  /* 118B3C 801334BC 0C04CA0B */       jal mnTitleSetColors
   /* 118B40 801334C0 02002825 */        or $a1, $s0, $zero
   /* 118B44 801334C4 26100001 */     addiu $s0, $s0, 1
   /* 118B48 801334C8 2652000C */     addiu $s2, $s2, 0xc
@@ -1853,7 +1853,7 @@ glabel func_ovl10_801332E4
   /* 118B7C 801334FC 03E00008 */        jr $ra
   /* 118B80 80133500 27BD0058 */     addiu $sp, $sp, 0x58
 
-glabel func_ovl10_80133504
+glabel mnTitleCreatePressStart
   /* 118B84 80133504 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 118B88 80133508 AFBF0024 */        sw $ra, 0x24($sp)
   /* 118B8C 8013350C AFB10020 */        sw $s1, 0x20($sp)
@@ -1918,10 +1918,10 @@ glabel func_ovl10_80133504
   /* 118C78 801335F8 00408025 */        or $s0, $v0, $zero
   /* 118C7C 801335FC 8FA4002C */        lw $a0, 0x2c($sp)
   /* 118C80 80133600 00402825 */        or $a1, $v0, $zero
-  /* 118C84 80133604 0C04C9D9 */       jal func_ovl10_80132764
+  /* 118C84 80133604 0C04C9D9 */       jal mnTitleSetPosition
   /* 118C88 80133608 24060007 */     addiu $a2, $zero, 7
   /* 118C8C 8013360C 02002025 */        or $a0, $s0, $zero
-  /* 118C90 80133610 0C04CA0B */       jal func_ovl10_8013282C
+  /* 118C90 80133610 0C04CA0B */       jal mnTitleSetColors
   /* 118C94 80133614 24050007 */     addiu $a1, $zero, 7
   /* 118C98 80133618 240E0001 */     addiu $t6, $zero, 1
   /* 118C9C 8013361C AE2E007C */        sw $t6, 0x7c($s1)
@@ -1935,7 +1935,7 @@ glabel func_ovl10_80133634
   /* 118CB4 80133634 03E00008 */        jr $ra
   /* 118CB8 80133638 00000000 */       nop
 
-glabel func_ovl10_8013363C
+glabel mnTitleAnimateSlashEffectGFX
   /* 118CBC 8013363C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 118CC0 80133640 AFBF0014 */        sw $ra, 0x14($sp)
   /* 118CC4 80133644 8C8E007C */        lw $t6, 0x7c($a0)
@@ -1950,7 +1950,7 @@ glabel func_ovl10_8013363C
   /* 118CE4 80133664 03E00008 */        jr $ra
   /* 118CE8 80133668 00000000 */       nop
 
-glabel func_ovl10_8013366C
+glabel mnTitleCreateSlashEffectGFX
   /* 118CEC 8013366C 3C0E800A */       lui $t6, %hi((gSceneData + 0x1))
   /* 118CF0 80133670 91CE4AD1 */       lbu $t6, %lo((gSceneData + 0x1))($t6)
   /* 118CF4 80133674 27BDFFD0 */     addiu $sp, $sp, -0x30
@@ -2018,12 +2018,12 @@ glabel func_ovl10_8013366C
   /* 118DE8 80133768 03E00008 */        jr $ra
   /* 118DEC 8013376C 00000000 */       nop
 
-glabel func_ovl10_80133770
-  /* 118DF0 80133770 3C028013 */       lui $v0, %hi(D_ovl10_8013445C)
-  /* 118DF4 80133774 8C42445C */        lw $v0, %lo(D_ovl10_8013445C)($v0)
+glabel mnTitleUpdateFireBGOverlayColor
+  /* 118DF0 80133770 3C028013 */       lui $v0, %hi(gMNTitleTransitionFramesElapsed)
+  /* 118DF4 80133774 8C42445C */        lw $v0, %lo(gMNTitleTransitionFramesElapsed)($v0)
   /* 118DF8 80133778 27BDFFE0 */     addiu $sp, $sp, -0x20
-  /* 118DFC 8013377C 3C0E8013 */       lui $t6, %hi(D_ovl10_80134448)
-  /* 118E00 80133780 8DCE4448 */        lw $t6, %lo(D_ovl10_80134448)($t6)
+  /* 118DFC 8013377C 3C0E8013 */       lui $t6, %hi(gMNTitleFireBGOverlayCameraGObj)
+  /* 118E00 80133780 8DCE4448 */        lw $t6, %lo(gMNTitleFireBGOverlayCameraGObj)($t6)
   /* 118E04 80133784 AFBF0014 */        sw $ra, 0x14($sp)
   /* 118E08 80133788 AFA40020 */        sw $a0, 0x20($sp)
   /* 118E0C 8013378C 28410028 */      slti $at, $v0, 0x28
@@ -2031,67 +2031,67 @@ glabel func_ovl10_80133770
   /* 118E14 80133794 8DC60074 */        lw $a2, 0x74($t6)
   /* 118E18 80133798 2841006F */      slti $at, $v0, 0x6f
   /* 118E1C 8013379C 10200019 */      beqz $at, .L80133804
-  /* 118E20 801337A0 3C048013 */       lui $a0, %hi(D_ovl10_8013447C)
+  /* 118E20 801337A0 3C048013 */       lui $a0, %hi(gMNTitleFireBGOverlayRed)
   /* 118E24 801337A4 3C01437F */       lui $at, (0x437F0000 >> 16) # 255.0
   /* 118E28 801337A8 44811000 */      mtc1 $at, $f2 # 255.0 to cop1
-  /* 118E2C 801337AC 2484447C */     addiu $a0, $a0, %lo(D_ovl10_8013447C)
+  /* 118E2C 801337AC 2484447C */     addiu $a0, $a0, %lo(gMNTitleFireBGOverlayRed)
   /* 118E30 801337B0 3C014080 */       lui $at, (0x40800000 >> 16) # 4.0
   /* 118E34 801337B4 44813000 */      mtc1 $at, $f6 # 4.0 to cop1
-  /* 118E38 801337B8 C4840000 */      lwc1 $f4, ($a0) # D_ovl10_8013447C + 0
-  /* 118E3C 801337BC 3C088013 */       lui $t0, %hi(D_ovl10_80134484)
-  /* 118E40 801337C0 3C078013 */       lui $a3, %hi(D_ovl10_80134480)
+  /* 118E38 801337B8 C4840000 */      lwc1 $f4, ($a0) # gMNTitleFireBGOverlayRed + 0
+  /* 118E3C 801337BC 3C088013 */       lui $t0, %hi(gMNTitleFireBGOverlayBlue)
+  /* 118E40 801337C0 3C078013 */       lui $a3, %hi(gMNTitleFireBGOverlayGreen)
   /* 118E44 801337C4 46062200 */     add.s $f8, $f4, $f6
-  /* 118E48 801337C8 24E74480 */     addiu $a3, $a3, %lo(D_ovl10_80134480)
-  /* 118E4C 801337CC 25084484 */     addiu $t0, $t0, %lo(D_ovl10_80134484)
-  /* 118E50 801337D0 3C018013 */       lui $at, %hi(D_ovl10_80134480)
-  /* 118E54 801337D4 E4880000 */      swc1 $f8, ($a0) # D_ovl10_8013447C + 0
-  /* 118E58 801337D8 C4800000 */      lwc1 $f0, ($a0) # D_ovl10_8013447C + 0
+  /* 118E48 801337C8 24E74480 */     addiu $a3, $a3, %lo(gMNTitleFireBGOverlayGreen)
+  /* 118E4C 801337CC 25084484 */     addiu $t0, $t0, %lo(gMNTitleFireBGOverlayBlue)
+  /* 118E50 801337D0 3C018013 */       lui $at, %hi(gMNTitleFireBGOverlayGreen)
+  /* 118E54 801337D4 E4880000 */      swc1 $f8, ($a0) # gMNTitleFireBGOverlayRed + 0
+  /* 118E58 801337D8 C4800000 */      lwc1 $f0, ($a0) # gMNTitleFireBGOverlayRed + 0
   /* 118E5C 801337DC 4600103C */    c.lt.s $f2, $f0
   /* 118E60 801337E0 00000000 */       nop
   /* 118E64 801337E4 45000003 */      bc1f .L801337F4
   /* 118E68 801337E8 00000000 */       nop
-  /* 118E6C 801337EC E4820000 */      swc1 $f2, ($a0) # D_ovl10_8013447C + 0
-  /* 118E70 801337F0 C4800000 */      lwc1 $f0, ($a0) # D_ovl10_8013447C + 0
+  /* 118E6C 801337EC E4820000 */      swc1 $f2, ($a0) # gMNTitleFireBGOverlayRed + 0
+  /* 118E70 801337F0 C4800000 */      lwc1 $f0, ($a0) # gMNTitleFireBGOverlayRed + 0
   .L801337F4:
-  /* 118E74 801337F4 C4224480 */      lwc1 $f2, %lo(D_ovl10_80134480)($at)
-  /* 118E78 801337F8 3C018013 */       lui $at, %hi(D_ovl10_80134484)
+  /* 118E74 801337F4 C4224480 */      lwc1 $f2, %lo(gMNTitleFireBGOverlayGreen)($at)
+  /* 118E78 801337F8 3C018013 */       lui $at, %hi(gMNTitleFireBGOverlayBlue)
   /* 118E7C 801337FC 1000006D */         b .L801339B4
-  /* 118E80 80133800 C42C4484 */      lwc1 $f12, %lo(D_ovl10_80134484)($at)
+  /* 118E80 80133800 C42C4484 */      lwc1 $f12, %lo(gMNTitleFireBGOverlayBlue)($at)
   .L80133804:
-  /* 118E84 80133804 3C038013 */       lui $v1, %hi(D_ovl10_80134478)
-  /* 118E88 80133808 24634478 */     addiu $v1, $v1, %lo(D_ovl10_80134478)
-  /* 118E8C 8013380C 8C620000 */        lw $v0, ($v1) # D_ovl10_80134478 + 0
+  /* 118E84 80133804 3C038013 */       lui $v1, %hi(gMNTitleFireBGOverlayTimer)
+  /* 118E88 80133808 24634478 */     addiu $v1, $v1, %lo(gMNTitleFireBGOverlayTimer)
+  /* 118E8C 8013380C 8C620000 */        lw $v0, ($v1) # gMNTitleFireBGOverlayTimer + 0
   /* 118E90 80133810 1440004C */      bnez $v0, .L80133944
   /* 118E94 80133814 240F0104 */     addiu $t7, $zero, 0x104
-  /* 118E98 80133818 AC6F0000 */        sw $t7, ($v1) # D_ovl10_80134478 + 0
+  /* 118E98 80133818 AC6F0000 */        sw $t7, ($v1) # gMNTitleFireBGOverlayTimer + 0
   /* 118E9C 8013381C 24040007 */     addiu $a0, $zero, 7
   /* 118EA0 80133820 0C00628C */       jal lbRandom_GetTimeByteRange
   /* 118EA4 80133824 AFA6001C */        sw $a2, 0x1c($sp)
-  /* 118EA8 80133828 3C058013 */       lui $a1, %hi(D_ovl10_80134494)
-  /* 118EAC 8013382C 24A54494 */     addiu $a1, $a1, %lo(D_ovl10_80134494)
-  /* 118EB0 80133830 8CB80000 */        lw $t8, ($a1) # D_ovl10_80134494 + 0
+  /* 118EA8 80133828 3C058013 */       lui $a1, %hi(gMNTitleFireBGOverlayIndex)
+  /* 118EAC 8013382C 24A54494 */     addiu $a1, $a1, %lo(gMNTitleFireBGOverlayIndex)
+  /* 118EB0 80133830 8CB80000 */        lw $t8, ($a1) # gMNTitleFireBGOverlayIndex + 0
   /* 118EB4 80133834 8FA6001C */        lw $a2, 0x1c($sp)
   /* 118EB8 80133838 00401825 */        or $v1, $v0, $zero
   /* 118EBC 8013383C 14580006 */       bne $v0, $t8, .L80133858
-  /* 118EC0 80133840 3C048013 */       lui $a0, %hi(D_ovl10_8013447C)
+  /* 118EC0 80133840 3C048013 */       lui $a0, %hi(gMNTitleFireBGOverlayRed)
   /* 118EC4 80133844 24430001 */     addiu $v1, $v0, 1
   /* 118EC8 80133848 28610007 */      slti $at, $v1, 7
   /* 118ECC 8013384C 14200002 */      bnez $at, .L80133858
   /* 118ED0 80133850 00000000 */       nop
   /* 118ED4 80133854 00001825 */        or $v1, $zero, $zero
   .L80133858:
-  /* 118ED8 80133858 3C198013 */       lui $t9, %hi(D_ovl10_80134318)
-  /* 118EDC 8013385C ACA30000 */        sw $v1, ($a1) # D_ovl10_80134494 + 0
+  /* 118ED8 80133858 3C198013 */       lui $t9, %hi(dMNTitleFireBGOverlayColorArrayRed)
+  /* 118EDC 8013385C ACA30000 */        sw $v1, ($a1) # gMNTitleFireBGOverlayIndex + 0
   /* 118EE0 80133860 0323C821 */      addu $t9, $t9, $v1
-  /* 118EE4 80133864 93394318 */       lbu $t9, %lo(D_ovl10_80134318)($t9)
+  /* 118EE4 80133864 93394318 */       lbu $t9, %lo(dMNTitleFireBGOverlayColorArrayRed)($t9)
   /* 118EE8 80133868 3C0142A0 */       lui $at, (0x42A00000 >> 16) # 80.0
   /* 118EEC 8013386C 44810000 */      mtc1 $at, $f0 # 80.0 to cop1
   /* 118EF0 80133870 44995000 */      mtc1 $t9, $f10
-  /* 118EF4 80133874 3C078013 */       lui $a3, %hi(D_ovl10_80134480)
-  /* 118EF8 80133878 3C088013 */       lui $t0, %hi(D_ovl10_80134484)
-  /* 118EFC 8013387C 25084484 */     addiu $t0, $t0, %lo(D_ovl10_80134484)
-  /* 118F00 80133880 24E74480 */     addiu $a3, $a3, %lo(D_ovl10_80134480)
-  /* 118F04 80133884 2484447C */     addiu $a0, $a0, %lo(D_ovl10_8013447C)
+  /* 118EF4 80133874 3C078013 */       lui $a3, %hi(gMNTitleFireBGOverlayGreen)
+  /* 118EF8 80133878 3C088013 */       lui $t0, %hi(gMNTitleFireBGOverlayBlue)
+  /* 118EFC 8013387C 25084484 */     addiu $t0, $t0, %lo(gMNTitleFireBGOverlayBlue)
+  /* 118F00 80133880 24E74480 */     addiu $a3, $a3, %lo(gMNTitleFireBGOverlayGreen)
+  /* 118F04 80133884 2484447C */     addiu $a0, $a0, %lo(gMNTitleFireBGOverlayRed)
   /* 118F08 80133888 07210005 */      bgez $t9, .L801338A0
   /* 118F0C 8013388C 46805420 */   cvt.s.w $f16, $f10
   /* 118F10 80133890 3C014F80 */       lui $at, (0x4F800000 >> 16) # 4294967300.0
@@ -2099,79 +2099,79 @@ glabel func_ovl10_80133770
   /* 118F18 80133898 00000000 */       nop
   /* 118F1C 8013389C 46128400 */     add.s $f16, $f16, $f18
   .L801338A0:
-  /* 118F20 801338A0 C4840000 */      lwc1 $f4, ($a0) # D_ovl10_8013447C + 0
-  /* 118F24 801338A4 3C098013 */       lui $t1, %hi(D_ovl10_80134320)
+  /* 118F20 801338A0 C4840000 */      lwc1 $f4, ($a0) # gMNTitleFireBGOverlayRed + 0
+  /* 118F24 801338A4 3C098013 */       lui $t1, %hi(dMNTitleFireBGOverlayColorArrayGreen)
   /* 118F28 801338A8 01234821 */      addu $t1, $t1, $v1
   /* 118F2C 801338AC 46048181 */     sub.s $f6, $f16, $f4
-  /* 118F30 801338B0 91294320 */       lbu $t1, %lo(D_ovl10_80134320)($t1)
-  /* 118F34 801338B4 3C018013 */       lui $at, %hi(D_ovl10_80134488)
+  /* 118F30 801338B0 91294320 */       lbu $t1, %lo(dMNTitleFireBGOverlayColorArrayGreen)($t1)
+  /* 118F34 801338B4 3C018013 */       lui $at, %hi(gMNTitleFireBGOverlayDeltaRed)
   /* 118F38 801338B8 46003203 */     div.s $f8, $f6, $f0
   /* 118F3C 801338BC 44895000 */      mtc1 $t1, $f10
   /* 118F40 801338C0 00000000 */       nop
   /* 118F44 801338C4 468054A0 */   cvt.s.w $f18, $f10
   /* 118F48 801338C8 05210005 */      bgez $t1, .L801338E0
-  /* 118F4C 801338CC E4284488 */      swc1 $f8, %lo(D_ovl10_80134488)($at)
+  /* 118F4C 801338CC E4284488 */      swc1 $f8, %lo(gMNTitleFireBGOverlayDeltaRed)($at)
   /* 118F50 801338D0 3C014F80 */       lui $at, (0x4F800000 >> 16) # 4294967300.0
   /* 118F54 801338D4 44818000 */      mtc1 $at, $f16 # 4294967300.0 to cop1
   /* 118F58 801338D8 00000000 */       nop
   /* 118F5C 801338DC 46109480 */     add.s $f18, $f18, $f16
   .L801338E0:
-  /* 118F60 801338E0 C4E40000 */      lwc1 $f4, ($a3) # D_ovl10_80134480 + 0
-  /* 118F64 801338E4 3C0A8013 */       lui $t2, %hi(D_ovl10_80134328)
+  /* 118F60 801338E0 C4E40000 */      lwc1 $f4, ($a3) # gMNTitleFireBGOverlayGreen + 0
+  /* 118F64 801338E4 3C0A8013 */       lui $t2, %hi(dMNTitleFireBGOverlayColorArrayBlue)
   /* 118F68 801338E8 01435021 */      addu $t2, $t2, $v1
   /* 118F6C 801338EC 46049181 */     sub.s $f6, $f18, $f4
-  /* 118F70 801338F0 914A4328 */       lbu $t2, %lo(D_ovl10_80134328)($t2)
-  /* 118F74 801338F4 3C018013 */       lui $at, %hi(D_ovl10_8013448C)
+  /* 118F70 801338F0 914A4328 */       lbu $t2, %lo(dMNTitleFireBGOverlayColorArrayBlue)($t2)
+  /* 118F74 801338F4 3C018013 */       lui $at, %hi(gMNTitleFireBGOverlayDeltaGreen)
   /* 118F78 801338F8 46003203 */     div.s $f8, $f6, $f0
   /* 118F7C 801338FC 448A5000 */      mtc1 $t2, $f10
   /* 118F80 80133900 00000000 */       nop
   /* 118F84 80133904 46805420 */   cvt.s.w $f16, $f10
   /* 118F88 80133908 05410005 */      bgez $t2, .L80133920
-  /* 118F8C 8013390C E428448C */      swc1 $f8, %lo(D_ovl10_8013448C)($at)
+  /* 118F8C 8013390C E428448C */      swc1 $f8, %lo(gMNTitleFireBGOverlayDeltaGreen)($at)
   /* 118F90 80133910 3C014F80 */       lui $at, (0x4F800000 >> 16) # 4294967300.0
   /* 118F94 80133914 44819000 */      mtc1 $at, $f18 # 4294967300.0 to cop1
   /* 118F98 80133918 00000000 */       nop
   /* 118F9C 8013391C 46128400 */     add.s $f16, $f16, $f18
   .L80133920:
-  /* 118FA0 80133920 C5040000 */      lwc1 $f4, ($t0) # D_ovl10_80134484 + 0
-  /* 118FA4 80133924 3C018013 */       lui $at, %hi(D_ovl10_80134490)
-  /* 118FA8 80133928 3C028013 */       lui $v0, %hi(D_ovl10_80134478)
+  /* 118FA0 80133920 C5040000 */      lwc1 $f4, ($t0) # gMNTitleFireBGOverlayBlue + 0
+  /* 118FA4 80133924 3C018013 */       lui $at, %hi(gMNTitleFireBGOverlayDeltaBlue)
+  /* 118FA8 80133928 3C028013 */       lui $v0, %hi(gMNTitleFireBGOverlayTimer)
   /* 118FAC 8013392C 46048181 */     sub.s $f6, $f16, $f4
-  /* 118FB0 80133930 3C038013 */       lui $v1, %hi(D_ovl10_80134478)
-  /* 118FB4 80133934 24634478 */     addiu $v1, $v1, %lo(D_ovl10_80134478)
-  /* 118FB8 80133938 8C424478 */        lw $v0, %lo(D_ovl10_80134478)($v0)
+  /* 118FB0 80133930 3C038013 */       lui $v1, %hi(gMNTitleFireBGOverlayTimer)
+  /* 118FB4 80133934 24634478 */     addiu $v1, $v1, %lo(gMNTitleFireBGOverlayTimer)
+  /* 118FB8 80133938 8C424478 */        lw $v0, %lo(gMNTitleFireBGOverlayTimer)($v0)
   /* 118FBC 8013393C 46003203 */     div.s $f8, $f6, $f0
-  /* 118FC0 80133940 E4284490 */      swc1 $f8, %lo(D_ovl10_80134490)($at)
+  /* 118FC0 80133940 E4284490 */      swc1 $f8, %lo(gMNTitleFireBGOverlayDeltaBlue)($at)
   .L80133944:
-  /* 118FC4 80133944 3C048013 */       lui $a0, %hi(D_ovl10_8013447C)
-  /* 118FC8 80133948 3C078013 */       lui $a3, %hi(D_ovl10_80134480)
-  /* 118FCC 8013394C 3C088013 */       lui $t0, %hi(D_ovl10_80134484)
-  /* 118FD0 80133950 25084484 */     addiu $t0, $t0, %lo(D_ovl10_80134484)
-  /* 118FD4 80133954 24E74480 */     addiu $a3, $a3, %lo(D_ovl10_80134480)
-  /* 118FD8 80133958 2484447C */     addiu $a0, $a0, %lo(D_ovl10_8013447C)
+  /* 118FC4 80133944 3C048013 */       lui $a0, %hi(gMNTitleFireBGOverlayRed)
+  /* 118FC8 80133948 3C078013 */       lui $a3, %hi(gMNTitleFireBGOverlayGreen)
+  /* 118FCC 8013394C 3C088013 */       lui $t0, %hi(gMNTitleFireBGOverlayBlue)
+  /* 118FD0 80133950 25084484 */     addiu $t0, $t0, %lo(gMNTitleFireBGOverlayBlue)
+  /* 118FD4 80133954 24E74480 */     addiu $a3, $a3, %lo(gMNTitleFireBGOverlayGreen)
+  /* 118FD8 80133958 2484447C */     addiu $a0, $a0, %lo(gMNTitleFireBGOverlayRed)
   /* 118FDC 8013395C 28410050 */      slti $at, $v0, 0x50
-  /* 118FE0 80133960 C4800000 */      lwc1 $f0, ($a0) # D_ovl10_8013447C + 0
-  /* 118FE4 80133964 C4E20000 */      lwc1 $f2, ($a3) # D_ovl10_80134480 + 0
+  /* 118FE0 80133960 C4800000 */      lwc1 $f0, ($a0) # gMNTitleFireBGOverlayRed + 0
+  /* 118FE4 80133964 C4E20000 */      lwc1 $f2, ($a3) # gMNTitleFireBGOverlayGreen + 0
   /* 118FE8 80133968 14200010 */      bnez $at, .L801339AC
-  /* 118FEC 8013396C C50C0000 */      lwc1 $f12, ($t0) # D_ovl10_80134484 + 0
-  /* 118FF0 80133970 3C018013 */       lui $at, %hi(D_ovl10_80134488)
-  /* 118FF4 80133974 C42A4488 */      lwc1 $f10, %lo(D_ovl10_80134488)($at)
-  /* 118FF8 80133978 3C018013 */       lui $at, %hi(D_ovl10_8013448C)
+  /* 118FEC 8013396C C50C0000 */      lwc1 $f12, ($t0) # gMNTitleFireBGOverlayBlue + 0
+  /* 118FF0 80133970 3C018013 */       lui $at, %hi(gMNTitleFireBGOverlayDeltaRed)
+  /* 118FF4 80133974 C42A4488 */      lwc1 $f10, %lo(gMNTitleFireBGOverlayDeltaRed)($at)
+  /* 118FF8 80133978 3C018013 */       lui $at, %hi(gMNTitleFireBGOverlayDeltaGreen)
   /* 118FFC 8013397C 460A0480 */     add.s $f18, $f0, $f10
-  /* 119000 80133980 E4920000 */      swc1 $f18, ($a0) # D_ovl10_8013447C + 0
-  /* 119004 80133984 C430448C */      lwc1 $f16, %lo(D_ovl10_8013448C)($at)
-  /* 119008 80133988 3C018013 */       lui $at, %hi(D_ovl10_80134490)
-  /* 11900C 8013398C C4800000 */      lwc1 $f0, ($a0) # D_ovl10_8013447C + 0
+  /* 119000 80133980 E4920000 */      swc1 $f18, ($a0) # gMNTitleFireBGOverlayRed + 0
+  /* 119004 80133984 C430448C */      lwc1 $f16, %lo(gMNTitleFireBGOverlayDeltaGreen)($at)
+  /* 119008 80133988 3C018013 */       lui $at, %hi(gMNTitleFireBGOverlayDeltaBlue)
+  /* 11900C 8013398C C4800000 */      lwc1 $f0, ($a0) # gMNTitleFireBGOverlayRed + 0
   /* 119010 80133990 46101100 */     add.s $f4, $f2, $f16
-  /* 119014 80133994 E4E40000 */      swc1 $f4, ($a3) # D_ovl10_80134480 + 0
-  /* 119018 80133998 C4264490 */      lwc1 $f6, %lo(D_ovl10_80134490)($at)
-  /* 11901C 8013399C C4E20000 */      lwc1 $f2, ($a3) # D_ovl10_80134480 + 0
+  /* 119014 80133994 E4E40000 */      swc1 $f4, ($a3) # gMNTitleFireBGOverlayGreen + 0
+  /* 119018 80133998 C4264490 */      lwc1 $f6, %lo(gMNTitleFireBGOverlayDeltaBlue)($at)
+  /* 11901C 8013399C C4E20000 */      lwc1 $f2, ($a3) # gMNTitleFireBGOverlayGreen + 0
   /* 119020 801339A0 46066200 */     add.s $f8, $f12, $f6
-  /* 119024 801339A4 E5080000 */      swc1 $f8, ($t0) # D_ovl10_80134484 + 0
-  /* 119028 801339A8 C50C0000 */      lwc1 $f12, ($t0) # D_ovl10_80134484 + 0
+  /* 119024 801339A4 E5080000 */      swc1 $f8, ($t0) # gMNTitleFireBGOverlayBlue + 0
+  /* 119028 801339A8 C50C0000 */      lwc1 $f12, ($t0) # gMNTitleFireBGOverlayBlue + 0
   .L801339AC:
   /* 11902C 801339AC 244BFFFF */     addiu $t3, $v0, -1
-  /* 119030 801339B0 AC6B0000 */        sw $t3, ($v1) # D_ovl10_80134478 + 0
+  /* 119030 801339B0 AC6B0000 */        sw $t3, ($v1) # gMNTitleFireBGOverlayTimer + 0
   .L801339B4:
   /* 119034 801339B4 3C01437F */       lui $at, (0x437F0000 >> 16) # 255.0
   /* 119038 801339B8 44817000 */      mtc1 $at, $f14 # 255.0 to cop1
@@ -2180,22 +2180,22 @@ glabel func_ovl10_80133770
   /* 119044 801339C4 00000000 */       nop
   /* 119048 801339C8 45020004 */     bc1fl .L801339DC
   /* 11904C 801339CC 4602703C */    c.lt.s $f14, $f2
-  /* 119050 801339D0 E48E0000 */      swc1 $f14, ($a0) # D_ovl10_8013447C + 0
-  /* 119054 801339D4 C4800000 */      lwc1 $f0, ($a0) # D_ovl10_8013447C + 0
+  /* 119050 801339D0 E48E0000 */      swc1 $f14, ($a0) # gMNTitleFireBGOverlayRed + 0
+  /* 119054 801339D4 C4800000 */      lwc1 $f0, ($a0) # gMNTitleFireBGOverlayRed + 0
   /* 119058 801339D8 4602703C */    c.lt.s $f14, $f2
   .L801339DC:
   /* 11905C 801339DC 00000000 */       nop
   /* 119060 801339E0 45020004 */     bc1fl .L801339F4
   /* 119064 801339E4 460C703C */    c.lt.s $f14, $f12
-  /* 119068 801339E8 E4EE0000 */      swc1 $f14, ($a3) # D_ovl10_80134480 + 0
-  /* 11906C 801339EC C4E20000 */      lwc1 $f2, ($a3) # D_ovl10_80134480 + 0
+  /* 119068 801339E8 E4EE0000 */      swc1 $f14, ($a3) # gMNTitleFireBGOverlayGreen + 0
+  /* 11906C 801339EC C4E20000 */      lwc1 $f2, ($a3) # gMNTitleFireBGOverlayGreen + 0
   /* 119070 801339F0 460C703C */    c.lt.s $f14, $f12
   .L801339F4:
   /* 119074 801339F4 00000000 */       nop
   /* 119078 801339F8 45020004 */     bc1fl .L80133A0C
   /* 11907C 801339FC 44807000 */      mtc1 $zero, $f14
-  /* 119080 80133A00 E50E0000 */      swc1 $f14, ($t0) # D_ovl10_80134484 + 0
-  /* 119084 80133A04 C50C0000 */      lwc1 $f12, ($t0) # D_ovl10_80134484 + 0
+  /* 119080 80133A00 E50E0000 */      swc1 $f14, ($t0) # gMNTitleFireBGOverlayBlue + 0
+  /* 119084 80133A04 C50C0000 */      lwc1 $f12, ($t0) # gMNTitleFireBGOverlayBlue + 0
   /* 119088 80133A08 44807000 */      mtc1 $zero, $f14
   .L80133A0C:
   /* 11908C 80133A0C 00000000 */       nop
@@ -2203,22 +2203,22 @@ glabel func_ovl10_80133770
   /* 119094 80133A14 00000000 */       nop
   /* 119098 80133A18 45020004 */     bc1fl .L80133A2C
   /* 11909C 80133A1C 460E103C */    c.lt.s $f2, $f14
-  /* 1190A0 80133A20 E48E0000 */      swc1 $f14, ($a0) # D_ovl10_8013447C + 0
-  /* 1190A4 80133A24 C4800000 */      lwc1 $f0, ($a0) # D_ovl10_8013447C + 0
+  /* 1190A0 80133A20 E48E0000 */      swc1 $f14, ($a0) # gMNTitleFireBGOverlayRed + 0
+  /* 1190A4 80133A24 C4800000 */      lwc1 $f0, ($a0) # gMNTitleFireBGOverlayRed + 0
   /* 1190A8 80133A28 460E103C */    c.lt.s $f2, $f14
   .L80133A2C:
   /* 1190AC 80133A2C 4600028D */ trunc.w.s $f10, $f0
   /* 1190B0 80133A30 45020004 */     bc1fl .L80133A44
   /* 1190B4 80133A34 460E603C */    c.lt.s $f12, $f14
-  /* 1190B8 80133A38 E4EE0000 */      swc1 $f14, ($a3) # D_ovl10_80134480 + 0
-  /* 1190BC 80133A3C C4E20000 */      lwc1 $f2, ($a3) # D_ovl10_80134480 + 0
+  /* 1190B8 80133A38 E4EE0000 */      swc1 $f14, ($a3) # gMNTitleFireBGOverlayGreen + 0
+  /* 1190BC 80133A3C C4E20000 */      lwc1 $f2, ($a3) # gMNTitleFireBGOverlayGreen + 0
   /* 1190C0 80133A40 460E603C */    c.lt.s $f12, $f14
   .L80133A44:
   /* 1190C4 80133A44 4600148D */ trunc.w.s $f18, $f2
   /* 1190C8 80133A48 45020004 */     bc1fl .L80133A5C
   /* 1190CC 80133A4C 4600640D */ trunc.w.s $f16, $f12
-  /* 1190D0 80133A50 E50E0000 */      swc1 $f14, ($t0) # D_ovl10_80134484 + 0
-  /* 1190D4 80133A54 C50C0000 */      lwc1 $f12, ($t0) # D_ovl10_80134484 + 0
+  /* 1190D0 80133A50 E50E0000 */      swc1 $f14, ($t0) # gMNTitleFireBGOverlayBlue + 0
+  /* 1190D4 80133A54 C50C0000 */      lwc1 $f12, ($t0) # gMNTitleFireBGOverlayBlue + 0
   /* 1190D8 80133A58 4600640D */ trunc.w.s $f16, $f12
   .L80133A5C:
   /* 1190DC 80133A5C 440D5000 */      mfc1 $t5, $f10
@@ -2237,7 +2237,7 @@ glabel func_ovl10_80133770
   /* 11910C 80133A8C 03E00008 */        jr $ra
   /* 119110 80133A90 00000000 */       nop
 
-glabel func_ovl10_80133A94
+glabel mnTitleCreateViewports
   /* 119114 80133A94 27BDFF98 */     addiu $sp, $sp, -0x68
   /* 119118 80133A98 AFBF004C */        sw $ra, 0x4c($sp)
   /* 11911C 80133A9C 240E00FF */     addiu $t6, $zero, 0xff
@@ -2249,11 +2249,11 @@ glabel func_ovl10_80133A94
   /* 119134 80133AB4 24060064 */     addiu $a2, $zero, 0x64
   /* 119138 80133AB8 0C002E7F */       jal func_8000B9FC
   /* 11913C 80133ABC 24070003 */     addiu $a3, $zero, 3
-  /* 119140 80133AC0 3C038013 */       lui $v1, %hi(D_ovl10_80134448)
-  /* 119144 80133AC4 24634448 */     addiu $v1, $v1, %lo(D_ovl10_80134448)
-  /* 119148 80133AC8 3C058013 */       lui $a1, %hi(func_ovl10_80133770)
-  /* 11914C 80133ACC AC620000 */        sw $v0, ($v1) # D_ovl10_80134448 + 0
-  /* 119150 80133AD0 24A53770 */     addiu $a1, $a1, %lo(func_ovl10_80133770)
+  /* 119140 80133AC0 3C038013 */       lui $v1, %hi(gMNTitleFireBGOverlayCameraGObj)
+  /* 119144 80133AC4 24634448 */     addiu $v1, $v1, %lo(gMNTitleFireBGOverlayCameraGObj)
+  /* 119148 80133AC8 3C058013 */       lui $a1, %hi(mnTitleUpdateFireBGOverlayColor)
+  /* 11914C 80133ACC AC620000 */        sw $v0, ($v1) # gMNTitleFireBGOverlayCameraGObj + 0
+  /* 119150 80133AD0 24A53770 */     addiu $a1, $a1, %lo(mnTitleUpdateFireBGOverlayColor)
   /* 119154 80133AD4 00402025 */        or $a0, $v0, $zero
   /* 119158 80133AD8 24060001 */     addiu $a2, $zero, 1
   /* 11915C 80133ADC 0C002062 */       jal omAddGObjCommonProc
@@ -2393,7 +2393,7 @@ glabel func_ovl10_80133A94
   /* 119374 80133CF4 03E00008 */        jr $ra
   /* 119378 80133CF8 27BD0068 */     addiu $sp, $sp, 0x68
 
-glabel func_ovl10_80133CFC
+glabel mnTitleRenderLogoFireEffect
   /* 11937C 80133CFC 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 119380 80133D00 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)
   /* 119384 80133D04 8C620000 */        lw $v0, ($v1) # gDisplayListHead + 0
@@ -2451,7 +2451,7 @@ glabel func_ovl10_80133CFC
   /* 119454 80133DD4 03E00008 */        jr $ra
   /* 119458 80133DD8 00000000 */       nop
 
-glabel func_ovl10_80133DDC
+glabel mnTitleCreateLogoFire
   /* 11945C 80133DDC 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 119460 80133DE0 AFBF001C */        sw $ra, 0x1c($sp)
   /* 119464 80133DE4 2404000F */     addiu $a0, $zero, 0xf
@@ -2459,11 +2459,11 @@ glabel func_ovl10_80133DDC
   /* 11946C 80133DEC 24060004 */     addiu $a2, $zero, 4
   /* 119470 80133DF0 0C00265A */       jal omMakeGObjSPAfter
   /* 119474 80133DF4 3C078000 */       lui $a3, 0x8000
-  /* 119478 80133DF8 3C058013 */       lui $a1, %hi(func_ovl10_80133CFC)
+  /* 119478 80133DF8 3C058013 */       lui $a1, %hi(mnTitleRenderLogoFireEffect)
   /* 11947C 80133DFC 240EFFFF */     addiu $t6, $zero, -1
   /* 119480 80133E00 AFA20024 */        sw $v0, 0x24($sp)
   /* 119484 80133E04 AFAE0010 */        sw $t6, 0x10($sp)
-  /* 119488 80133E08 24A53CFC */     addiu $a1, $a1, %lo(func_ovl10_80133CFC)
+  /* 119488 80133E08 24A53CFC */     addiu $a1, $a1, %lo(mnTitleRenderLogoFireEffect)
   /* 11948C 80133E0C 00402025 */        or $a0, $v0, $zero
   /* 119490 80133E10 24060003 */     addiu $a2, $zero, 3
   /* 119494 80133E14 0C00277D */       jal omAddGObjRenderProc
@@ -2483,12 +2483,12 @@ glabel func_ovl10_80133DDC
   /* 1194CC 80133E4C 0C04567E */       jal efAlloc_SetParticleBank
   /* 1194D0 80133E50 ADF80030 */        sw $t8, 0x30($t7)
   /* 1194D4 80133E54 8FBF001C */        lw $ra, 0x1c($sp)
-  /* 1194D8 80133E58 3C018013 */       lui $at, %hi(D_ovl10_8013444C)
-  /* 1194DC 80133E5C AC22444C */        sw $v0, %lo(D_ovl10_8013444C)($at)
+  /* 1194D8 80133E58 3C018013 */       lui $at, %hi(gMNTitleParticleBankId)
+  /* 1194DC 80133E5C AC22444C */        sw $v0, %lo(gMNTitleParticleBankId)($at)
   /* 1194E0 80133E60 03E00008 */        jr $ra
   /* 1194E4 80133E64 27BD0028 */     addiu $sp, $sp, 0x28
 
-glabel func_ovl10_80133E68
+glabel mnTitleLogoFireMakeEffect
   /* 1194E8 80133E68 3C0E800A */       lui $t6, %hi((gSceneData + 0x1))
   /* 1194EC 80133E6C 91CE4AD1 */       lbu $t6, %lo((gSceneData + 0x1))($t6)
   /* 1194F0 80133E70 27BDFFE0 */     addiu $sp, $sp, -0x20
@@ -2526,8 +2526,8 @@ glabel func_ovl10_80133E68
   /* 119570 80133EF0 24060001 */     addiu $a2, $zero, 1
   /* 119574 80133EF4 0C002062 */       jal omAddGObjCommonProc
   /* 119578 80133EF8 24070001 */     addiu $a3, $zero, 1
-  /* 11957C 80133EFC 3C048013 */       lui $a0, %hi(D_ovl10_8013444C)
-  /* 119580 80133F00 8C84444C */        lw $a0, %lo(D_ovl10_8013444C)($a0)
+  /* 11957C 80133EFC 3C048013 */       lui $a0, %hi(gMNTitleParticleBankId)
+  /* 119580 80133F00 8C84444C */        lw $a0, %lo(gMNTitleParticleBankId)($a0)
   /* 119584 80133F04 0C034D77 */       jal func_ovl0_800D35DC
   /* 119588 80133F08 00002825 */        or $a1, $zero, $zero
   /* 11958C 80133F0C 50400007 */      beql $v0, $zero, .L80133F2C
@@ -2545,26 +2545,26 @@ glabel func_ovl10_80133E68
   /* 1195B4 80133F34 03E00008 */        jr $ra
   /* 1195B8 80133F38 00000000 */       nop
 
-glabel func_ovl10_80133F3C
+glabel mnTitleCreateMainRoutines
   /* 1195BC 80133F3C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 1195C0 80133F40 AFBF0014 */        sw $ra, 0x14($sp)
-  /* 1195C4 80133F44 3C058013 */       lui $a1, %hi(func_ovl10_801320F0)
-  /* 1195C8 80133F48 24A520F0 */     addiu $a1, $a1, %lo(func_ovl10_801320F0)
+  /* 1195C4 80133F44 3C058013 */       lui $a1, %hi(mnTitleMain)
+  /* 1195C8 80133F48 24A520F0 */     addiu $a1, $a1, %lo(mnTitleMain)
   /* 1195CC 80133F4C 00002025 */        or $a0, $zero, $zero
   /* 1195D0 80133F50 24060001 */     addiu $a2, $zero, 1
   /* 1195D4 80133F54 0C00265A */       jal omMakeGObjSPAfter
   /* 1195D8 80133F58 3C078000 */       lui $a3, 0x8000
-  /* 1195DC 80133F5C 3C018013 */       lui $at, %hi(D_ovl10_80134458)
-  /* 1195E0 80133F60 3C058013 */       lui $a1, %hi(func_ovl10_80132448)
-  /* 1195E4 80133F64 AC224458 */        sw $v0, %lo(D_ovl10_80134458)($at)
-  /* 1195E8 80133F68 24A52448 */     addiu $a1, $a1, %lo(func_ovl10_80132448)
+  /* 1195DC 80133F5C 3C018013 */       lui $at, %hi(gMNTitleMainGObj)
+  /* 1195E0 80133F60 3C058013 */       lui $a1, %hi(mnTitleHandleTransitions)
+  /* 1195E4 80133F64 AC224458 */        sw $v0, %lo(gMNTitleMainGObj)($at)
+  /* 1195E8 80133F68 24A52448 */     addiu $a1, $a1, %lo(mnTitleHandleTransitions)
   /* 1195EC 80133F6C 00002025 */        or $a0, $zero, $zero
   /* 1195F0 80133F70 2406000F */     addiu $a2, $zero, 0xf
   /* 1195F4 80133F74 0C00265A */       jal omMakeGObjSPAfter
   /* 1195F8 80133F78 3C078000 */       lui $a3, 0x8000
   /* 1195FC 80133F7C 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 119600 80133F80 3C018013 */       lui $at, %hi(D_ovl10_80134454)
-  /* 119604 80133F84 AC224454 */        sw $v0, %lo(D_ovl10_80134454)($at)
+  /* 119600 80133F80 3C018013 */       lui $at, %hi(gMNTitleTransitionsGObj)
+  /* 119604 80133F84 AC224454 */        sw $v0, %lo(gMNTitleTransitionsGObj)($at)
   /* 119608 80133F88 03E00008 */        jr $ra
   /* 11960C 80133F8C 27BD0018 */     addiu $sp, $sp, 0x18
 
@@ -2583,29 +2583,29 @@ glabel mnTitleInit
   /* 119638 80133FB8 00000000 */       nop
   /* 11963C 80133FBC 0C04D050 */       jal mnTitleLoadFiles
   /* 119640 80133FC0 00000000 */       nop
-  /* 119644 80133FC4 0C04CFCF */       jal func_ovl10_80133F3C
+  /* 119644 80133FC4 0C04CFCF */       jal mnTitleCreateMainRoutines
   /* 119648 80133FC8 00000000 */       nop
   /* 11964C 80133FCC 0C045624 */       jal func_ovl2_80115890
   /* 119650 80133FD0 00000000 */       nop
-  /* 119654 80133FD4 0C04CF77 */       jal func_ovl10_80133DDC
+  /* 119654 80133FD4 0C04CF77 */       jal mnTitleCreateLogoFire
   /* 119658 80133FD8 00000000 */       nop
-  /* 11965C 80133FDC 0C04CEA5 */       jal func_ovl10_80133A94
+  /* 11965C 80133FDC 0C04CEA5 */       jal mnTitleCreateViewports
   /* 119660 80133FE0 00000000 */       nop
-  /* 119664 80133FE4 0C04C73D */       jal func_ovl10_80131CF4
+  /* 119664 80133FE4 0C04C73D */       jal mnTitleInitVars
   /* 119668 80133FE8 00000000 */       nop
   /* 11966C 80133FEC 0C04CADC */       jal mnTitleCreateFire
   /* 119670 80133FF0 00000000 */       nop
   /* 119674 80133FF4 0C04CBF6 */       jal mnTitleCreateLogo
   /* 119678 80133FF8 00000000 */       nop
-  /* 11967C 80133FFC 0C04CCB9 */       jal func_ovl10_801332E4
+  /* 11967C 80133FFC 0C04CCB9 */       jal mnTitleCreateTitleHeaderAndFooter
   /* 119680 80134000 00000000 */       nop
   /* 119684 80134004 0C04CD8D */       jal func_ovl10_80133634
   /* 119688 80134008 00000000 */       nop
-  /* 11968C 8013400C 0C04CD41 */       jal func_ovl10_80133504
+  /* 11968C 8013400C 0C04CD41 */       jal mnTitleCreatePressStart
   /* 119690 80134010 00000000 */       nop
-  /* 119694 80134014 0C04CD9B */       jal func_ovl10_8013366C
+  /* 119694 80134014 0C04CD9B */       jal mnTitleCreateSlashEffectGFX
   /* 119698 80134018 00000000 */       nop
-  /* 11969C 8013401C 0C04CF9A */       jal func_ovl10_80133E68
+  /* 11969C 8013401C 0C04CF9A */       jal mnTitleLogoFireMakeEffect
   /* 1196A0 80134020 00000000 */       nop
   /* 1196A4 80134024 3C0E800A */       lui $t6, %hi((gSceneData + 0x1))
   /* 1196A8 80134028 91CE4AD1 */       lbu $t6, %lo((gSceneData + 0x1))($t6)
@@ -2632,8 +2632,8 @@ glabel mnTitleInit
 
 glabel mnTitleSetupDisplayList
   /* 1196F4 80134074 8C830000 */        lw $v1, ($a0)
-  /* 1196F8 80134078 3C188013 */       lui $t8, %hi(D_ovl10_80134348)
-  /* 1196FC 8013407C 27184348 */     addiu $t8, $t8, %lo(D_ovl10_80134348)
+  /* 1196F8 80134078 3C188013 */       lui $t8, %hi(dMNTitleDisplayList)
+  /* 1196FC 8013407C 27184348 */     addiu $t8, $t8, %lo(dMNTitleDisplayList)
   /* 119700 80134080 246E0008 */     addiu $t6, $v1, 8
   /* 119704 80134084 AC8E0000 */        sw $t6, ($a0)
   /* 119708 80134088 3C0FDE00 */       lui $t7, 0xde00
@@ -2641,7 +2641,7 @@ glabel mnTitleSetupDisplayList
   /* 119710 80134090 03E00008 */        jr $ra
   /* 119714 80134094 AC780004 */        sw $t8, 4($v1)
 
-glabel func_ovl10_80134098
+glabel mnTitleAdvanceFrame
   /* 119718 80134098 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 11971C 8013409C AFBF0014 */        sw $ra, 0x14($sp)
   /* 119720 801340A0 0C002979 */       jal func_8000A5E4

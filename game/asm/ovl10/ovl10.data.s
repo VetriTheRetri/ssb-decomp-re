@@ -6,13 +6,13 @@
 #  801341E0 -> 80134440
 
 
-glabel D_ovl10_801341E0
+glabel dMNTitleAnimatedLogoOffsets
   .incbin "ovl10.raw.bin", 0x26E0, 0xC
 
-glabel D_ovl10_801341EC
+glabel dMNTitleLogoOffset
   .incbin "ovl10.raw.bin", 0x26EC, 0x4
 
-glabel D_ovl10_801341F0
+glabel dMNTitleFireTextureOffsets
   .incbin "ovl10.raw.bin", 0x26F0, 0x78
 
 glabel dMNTitleTextureConfigs
@@ -31,16 +31,16 @@ glabel D_ovl10_801342D0
   /* 2804 119984 80134304 */  .4byte D_800A41C0
   .incbin "ovl10.raw.bin", 0x2808, 0x10
 
-glabel D_ovl10_80134318
+glabel dMNTitleFireBGOverlayColorArrayRed
   .incbin "ovl10.raw.bin", 0x2818, 0x8
 
-glabel D_ovl10_80134320
+glabel dMNTitleFireBGOverlayColorArrayGreen
   .incbin "ovl10.raw.bin", 0x2820, 0x8
 
-glabel D_ovl10_80134328
+glabel dMNTitleFireBGOverlayColorArrayBlue
   .incbin "ovl10.raw.bin", 0x2828, 0x8
 
-glabel D_ovl10_80134330
+glabel dMNTitleLights1
   /* 2830 1199B0 80134330 */
   .asciz "   "
   .balign 4
@@ -55,11 +55,11 @@ glabel D_ovl10_80134338
   .balign 4
   .incbin "ovl10.raw.bin", 0x2844, 0x4
 
-glabel D_ovl10_80134348
+glabel dMNTitleDisplayList
   .incbin "ovl10.raw.bin", 0x2848, 0x14
   /* 285C 1199DC 8013435C */  .4byte D_ovl10_80134338
   .incbin "ovl10.raw.bin", 0x2860, 0x4
-  /* 2864 1199E4 80134364 */  .4byte D_ovl10_80134330
+  /* 2864 1199E4 80134364 */  .4byte dMNTitleLights1
   .incbin "ovl10.raw.bin", 0x2868, 0x8
 
 glabel D_ovl10_80134370
@@ -70,7 +70,7 @@ glabel D_ovl10_80134370
 
 glabel D_ovl10_8013438C
   .incbin "ovl10.raw.bin", 0x288C, 0x4
-  /* 2890 119A10 80134390 */  .4byte func_ovl10_80134098
+  /* 2890 119A10 80134390 */  .4byte mnTitleAdvanceFrame
   /* 2894 119A14 80134394 */  .4byte func_8000A340
   /* 2898 119A18 80134398 */  .4byte D_NF_801345B0
   .incbin "ovl10.raw.bin", 0x289C, 0x28

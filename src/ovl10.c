@@ -110,7 +110,7 @@ s32 D_ovl10_801342D4[] = {
 	0x009d,
 	0xf398,
 	0, 0,
-	0x80134430,
+	(s32)"English",
 	0, 0, 0, 0, 0, 0,
 	0x800a41c0, 0, 0, 0, 0
 };
@@ -1122,10 +1122,7 @@ void mnTitleCreatePressStart()
 }
 
 // 80133634 - discarded language selection?
-void func_ovl10_80133634()
-{
-	char* lang = "English";
-}
+void func_ovl10_80133634() {}
 
 // 8013363C - Unused?
 void mnTitleAnimateSlashEffectGFX(GObj* gobj)

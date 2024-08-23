@@ -562,7 +562,7 @@ void mnDebugMenuHandleInputs(GObj *gobj)
 }
 
 // 80369D78
-void mnDebugMenuCreateMenu(s32 x, s32 y, s32 w, dbMenuItem *menu_items, s32 menu_items_count)
+void mnDebugMenuCreateMenu(s32 x, s32 y, s32 w, dbMenuItem* menu_items, s32 menu_items_count)
 {
 	if (gMNDebugMenuIsMenuOpen == FALSE)
 	{

@@ -1378,7 +1378,7 @@ segments:
       - [0x139CB0, .rodata, ovl26]
       - { start: 0x139D00, type: .bss, vram: 0x8013ba80, name: ovl26 }
 
-  - name: ovl27
+  - name: ovl27 # to be moved from main branch
     type: code
     start: 0x139D00
     vram: 0x80131B00
@@ -1388,7 +1388,7 @@ segments:
       - [0x1407B0, data, ovl27]
       - [0x140F60, rodata, ovl27]
 
-  - name: ovl28
+  - name: ovl28 # to be moved from main branch
     type: code
     start: 0x1410E0
     vram: 0x80131B00
@@ -1398,7 +1398,7 @@ segments:
       - [0x147540, data, ovl28]
       - [0x147AC0, rodata, ovl28]
 
-  - name: ovl29
+  - name: ovl29 # to be moved from main branch
     type: code
     start: 0x147B30
     vram: 0x80131B00
@@ -1430,7 +1430,7 @@ segments:
       - [0x150C00, .rodata, ovl15]
       - { start: auto, type: .bss, vram: 0x800D69F0, name: ovl15 }
 
-  - name: ovl31
+  - name: ovl31 # to be moved from main branch
     type: code
     start: 0x150CA0
     vram: 0x80131B00
@@ -1452,7 +1452,7 @@ segments:
       - [0x15D9C0, .rodata, ovl32]
       - { start: auto, type: .bss, vram: 0x80136C10, name: ovl32 }
 
-  - name: ovl33
+  - name: ovl33 # to be moved from main branch
     type: code
     start: 0x15DB50
     vram: 0x80131B00
@@ -1462,7 +1462,7 @@ segments:
       - [0x160100, data, ovl33]
       - [0x162600, rodata, ovl33]
 
-  - name: ovl34
+  - name: ovl34 # to be moved from main branch
     type: code
     start: 0x162640
     vram: 0x80131B00
@@ -1472,7 +1472,7 @@ segments:
       - [0x165560, data, ovl34]
       - [0x1657C0, rodata, ovl34]
 
-  - name: ovl35
+  - name: ovl35 # to be moved from main branch
     type: code
     start: 0x165810
     vram: 0x80131B00
@@ -1492,7 +1492,7 @@ segments:
       - [0x167800, .rodata, ovl36]
       - { start: 0x167830, type: .bss, vram: 0x8018E200, name: ovl36 }
 
-  - name: ovl37
+  - name: ovl37 # to be moved from main branch
     type: code
     start: 0x167830
     vram: 0x8018D0C0
@@ -1502,7 +1502,7 @@ segments:
       - [0x1687E0, data, ovl37]
       - [0x168900, rodata, ovl37]
 
-  - name: ovl38
+  - name: ovl38 # to be moved from main branch
     type: code
     start: 0x168930
     vram: 0x8018D0C0
@@ -1512,7 +1512,7 @@ segments:
       - [0x169990, data, ovl38]
       - [0x169AB0, rodata, ovl38]
 
-  - name: ovl39
+  - name: ovl39 # to be moved from main branch
     type: code
     start: 0x169AE0
     vram: 0x8018D0C0
@@ -1533,7 +1533,7 @@ segments:
       - [0x16BCE0, .rodata, ovl40]
       - { start: 0x16BD10, type: .bss, vram: 0x8018E1C0, name: ovl40 }
 
-  - name: ovl41
+  - name: ovl41 # to be moved from main branch
     type: code
     start: 0x16BD10
     vram: 0x8018D0C0
@@ -1543,7 +1543,7 @@ segments:
       - [0x16CD10, data, ovl41]
       - [0x16CE40, rodata, ovl41]
 
-  - name: ovl42
+  - name: ovl42 # to be moved from main branch
     type: code
     start: 0x16CE70
     vram: 0x8018D0C0
@@ -1553,7 +1553,7 @@ segments:
       - [0x16DE70, data, ovl42]
       - [0x16DFA0, rodata, ovl42]
 
-  - name: ovl43
+  - name: ovl43 # to be moved from main branch
     type: code
     start: 0x16DFD0
     vram: 0x8018D0C0
@@ -1563,7 +1563,7 @@ segments:
       - [0x16EFC0, data, ovl43]
       - [0x16F100, rodata, ovl43]
 
-  - name: ovl44
+  - name: ovl44 # to be moved from main branch
     type: code
     start: 0x16F130
     vram: 0x80131B00
@@ -1573,7 +1573,7 @@ segments:
       - [0x16FC00, data, ovl44]
       - [0x16FD30, rodata, ovl44]
 
-  - name: ovl45
+  - name: ovl45 # to be moved from main branch
     type: code
     start: 0x16FD40
     vram: 0x80131B00
@@ -1582,7 +1582,7 @@ segments:
       - [0x16FD40, asm, ovl45]
       - [0x170570, data, ovl45]
       - [0x170660]
-  - name: ovl46
+  - name: ovl46 # to be moved from main branch
     type: code
     start: 0x170660
     vram: 0x80131B00
@@ -1592,7 +1592,7 @@ segments:
       - [0x171230, data, ovl46]
       - [0x171310, rodata, ovl46]
 
-  - name: ovl47
+  - name: ovl47 # to be moved from main branch
     type: code
     start: 0x171320
     vram: 0x80131B00
@@ -1602,7 +1602,7 @@ segments:
       - [0x1720F0, data, ovl47]
       - [0x1721D0, rodata, ovl47]
 
-  - name: ovl48
+  - name: ovl48 # to be moved from main branch
     type: code
     start: 0x1721E0
     vram: 0x80131B00
@@ -1611,7 +1611,7 @@ segments:
       - [0x1721E0, asm, ovl48]
       - [0x172A80, data, ovl48]
 
-  - name: ovl49
+  - name: ovl49 # to be moved from main branch
     type: code
     start: 0x172B60
     vram: 0x80131B00
@@ -1620,7 +1620,7 @@ segments:
       - [0x172B60, asm, ovl49]
       - [0x173930, data, ovl49]
 
-  - name: ovl50 # needs rodata symbols
+  - name: ovl50 # to be moved from main branch
     type: code
     start: 0x173A30
     vram: 0x80131B00
@@ -1630,7 +1630,7 @@ segments:
       - [0x174820, data, ovl50]
       - [0x174920, rodata, ovl50]
 
-  - name: ovl51
+  - name: ovl51 # to be moved from main branch
     type: code
     start: 0x174940
     vram: 0x8018D0C0
@@ -1639,7 +1639,7 @@ segments:
       - [0x174940, asm, ovl51]
       - [0x1750F0, data, ovl51]
 
-  - name: ovl52
+  - name: ovl52 # to be moved from main branch
     type: code
     start: 0x1752C0
     vram: 0x80131B00

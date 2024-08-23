@@ -188,7 +188,7 @@ u32 D_800A41BC = 0;
 char D_800A41C0[/* */] = "Mar 16 1999 18:26:57";
 
 
-void n64_logo_entry();
+void mnNoControllerStartScene();
 void mnTitleStartScene();
 void mnDebugStageSelectStartScene();
 void debug_system_entry();
@@ -300,7 +300,7 @@ void start_scene_manager(u32 set)
 		switch (gSceneData.scene_current) {
 			case 0:
 				syDmaLoadOverlay(&D_800A3070[11]);
-				n64_logo_entry();
+				mnNoControllerStartScene();
 				break;
 			case 1:
 				syDmaLoadOverlay(&D_800A3070[2]);

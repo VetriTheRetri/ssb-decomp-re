@@ -349,7 +349,7 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMSectorAmbient1,
 	nSYAudioFGMSectorAmbient2,
 	nSYAudioFGMSectorAmbient3,
-	nSYAudioFGMOptionsDataErase,
+	nSYAudioFGMOptionBackupClear,
 	nSYAudioFGMYamabukiGate, 				// Empty?
 	nSYAudioFGMMagnify,
 	nSYAudioFGMShinePingUnk,

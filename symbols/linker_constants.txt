@@ -969,6 +969,28 @@ lITLinkBombBloatScales = 0x000000A8;
 
 lITMonsterAnimBankStart = 0x00013624;
 
+lMNBackupClearHeaderOptionSprite = 0x00000B40;
+lMNBackupClearHeaderBackupClearSprite = 0x00000B60;
+lMNBackupClearOptionNewcomersSprite = 0x00003A00;
+lMNBackupClearOption1PHighScoreSprite = 0x00004050;
+lMNBackupClearOptionVSRecordSprite = 0x000046A0;
+lMNBackupClearOptionPrizeSprite = 0x00005340;
+lMNBackupClearOptionAllDataClearSprite = 0x00005990;
+lMNBackupClearOptionBonusStageTimeSprite = 0x00007020;
+lMNBackupClearOptionCircleSprite = 0x00005DB8;
+
+lMNBackupClearOptionYesHighlightPalette = 0x00007500;
+lMNBackupClearOptionYesNotPalette = 0x00007528;
+lMNBackupClearOptionYesSprite = 0x00007580;
+lMNBackupClearOptionNoHighlightPalette = 0x00007A60;
+lMNBackupClearOptionNoNotPalette = 0x00007A88;
+lMNBackupClearOptionNoSprite = 0x00007AB8;
+
+lMNBackupClearTextIsOkaySprite = 0x000063C8;
+lMNBackupClearTextAreYouSureSprite = 0x000069D8;
+
+lMNBackupClearOptionConfirmPalette = 0x00007550;
+
 lMVCommonRoomBackgroundMObjSub = 0x000042F8;
 lMVCommonRoomBackgroundDObjDesc = 0x00007E98;
 lMVCommonRoomBackgroundMatAnimJoint = 0x00008788;

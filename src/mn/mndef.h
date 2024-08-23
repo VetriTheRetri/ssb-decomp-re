@@ -56,6 +56,21 @@ typedef enum mnOptionOptions
 
 } mnOptionOptions;
 
+typedef enum mnBackupClearOptions
+{
+	nMNBackupClearOptionStart,
+	nMNBackupClearOptionNewcomers = nMNBackupClearOptionStart,
+	nMNBackupClearOption1PHighScore,
+	nMNBackupClearOptionBonusStageTime,
+	nMNBackupClearOptionVSRecord,
+	nMNBackupClearOptionPrize,
+	nMNBackupClearOptionAllDataClear,
+	nMNBackupClearOptionEnd = nMNBackupClearOptionAllDataClear,
+	
+	nMNBackupClearOptionEnumMax
+
+} mnBackupClearOptions;
+
 typedef enum mnOptionTabStatus
 {
 	nMNOptionTabStatusNot,

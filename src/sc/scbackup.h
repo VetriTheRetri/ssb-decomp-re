@@ -11,11 +11,11 @@ extern void scBackupWrite(void);
 extern sb32 scBackupIsSramValid(void);
 extern void scBackupApplyOptions(void);
 extern void scBackupCorrectErrors(void);
-extern void scBackupBackupClearNewcomers(void);
-extern void scBackupBackupClear1PHighScore(void);
-extern void scBackupBackupClearVSRecord(void);
-extern void scBackupBackupClearBonusStageTime(void);
-extern void scBackupBackupClearPrize(void);
-extern void scBackupBackupClearAllData(void);
+extern void scBackupClearNewcomers(void);
+extern void scBackupClear1PHighScore(void);
+extern void scBackupClearVSRecord(void);
+extern void scBackupClearBonusStageTime(void);
+extern void scBackupClearPrize(void);
+extern void scBackupClearAllData(void);
 
 #endif

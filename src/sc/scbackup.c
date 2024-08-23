@@ -120,7 +120,7 @@ void scBackupCorrectErrors(void)
 }
 
 // 0x800D48E0
-void scBackupBackupClearNewcomers(void)
+void scBackupClearNewcomers(void)
 {
     gSaveData.unlock_mask &= ~SCBACKUP_UNLOCK_MASK_NEWCOMERS;
     gSaveData.unlock_mask |= gDefaultSaveData.unlock_mask;
@@ -129,7 +129,7 @@ void scBackupBackupClearNewcomers(void)
 }
 
 // 0x800D4914
-void scBackupBackupClear1PHighScore(void)
+void scBackupClear1PHighScore(void)
 {
     s32 i;
 
@@ -144,7 +144,7 @@ void scBackupBackupClear1PHighScore(void)
 }
 
 //0x800D49E0
-void scBackupBackupClearVSRecord(void)
+void scBackupClearVSRecord(void)
 {
     s32 i;
 
@@ -156,7 +156,7 @@ void scBackupBackupClearVSRecord(void)
 }
 
 // 0x800D4B60
-void scBackupBackupClearBonusStageTime(void)
+void scBackupClearBonusStageTime(void)
 {
     s32 i;
 
@@ -170,7 +170,7 @@ void scBackupBackupClearBonusStageTime(void)
 }
 
 // 0x800D4C0C
-void scBackupBackupClearPrize(void)
+void scBackupClearPrize(void)
 {
     gSaveData.unlock_mask &= ~SCBACKUP_UNLOCK_MASK_PRIZE;
     gSaveData.unlock_mask |= gDefaultSaveData.unlock_mask;
@@ -180,7 +180,7 @@ void scBackupBackupClearPrize(void)
 }
 
 // 0x800D4C48
-void scBackupBackupClearAllData(void)
+void scBackupClearAllData(void)
 {
     gSaveData = gDefaultSaveData;
 }

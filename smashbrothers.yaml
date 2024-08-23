@@ -1655,9 +1655,10 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x175F00, asm, ovl53]
-      - [0x177280, data, ovl53]
-      - [0x177470, rodata, ovl53]
+      - [0x175F00, c, mn/mncommon/mnbackupclear]
+      - [0x177280, .data, mn/mncommon/mnbackupclear]
+      - [0x177470, .rodata, mn/mncommon/mnbackupclear]
+      - { start: auto, type: .bss, name: mn/mncommon/mnbackupclear, vram: 0x801330A0 }
 
   - name: ovl54
     type: code

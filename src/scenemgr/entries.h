@@ -54,7 +54,7 @@ extern void intro_hidden_chars_entry(void);         // ovl 52
 extern void classic_css_entry(void);                // ovl 27
 extern void training_css_entry(void);               // ovl 28
 extern void bonus_css_entry(void);                  // ovl 29
-extern void menu_backup_clear_entry(void);          // ovl 53
+extern void mnBackupClearStartScene(void);          // ovl 53
 extern void mvEndingStartScene(void);               // ovl 54
 extern void sc1PContinueStartScene(void);             // ovl 55
 extern void sc1PStageClearStartScene(void);           // ovl 56

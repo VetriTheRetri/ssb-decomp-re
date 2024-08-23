@@ -1,6 +1,7 @@
 #ifndef _MNFUNCTIONS_H_
 #define _MNFUNCTIONS_H_
 
+#include <mn/mncommon/mnbackupclear.h>
 #include <mn/mncommon/mncongra.h>
 #include <mn/mncommon/mnn64.h>
 #include <mn/mncommon/mnoption.h>

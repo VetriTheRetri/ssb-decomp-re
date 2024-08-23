@@ -240,7 +240,7 @@ void classic_css_entry();
 void training_css_entry();
 void bonus_css_entry();
 void bonus_css_entry();
-void menu_backup_clear_entry();
+void mnBackupClearStartScene();
 void mvEndingStartScene();
 void sc1PContinueStartScene();
 void sc1PStageClearStartScene();
@@ -565,7 +565,7 @@ void start_scene_manager(u32 set)
 				syDmaLoadOverlay(&D_800A3070[2]);
 				syDmaLoadOverlay(&D_800A3070[1]);
 				syDmaLoadOverlay(&D_800A3070[53]);
-				menu_backup_clear_entry();
+				mnBackupClearStartScene();
 				break;
 			case 48:
 				syDmaLoadOverlay(&D_800A3070[2]);

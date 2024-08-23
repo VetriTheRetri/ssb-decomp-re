@@ -319,7 +319,7 @@ u32 dMNSoundTestSoundIDs[/* */] =
     nSYAudioFGMBossBullet,
     nSYAudioFGMSectorArwingLaser,
     nSYAudioFGMSectorAmbient1,
-    nSYAudioFGMOptionsDataErase,
+    nSYAudioFGMOptionBackupClear,
     nSYAudioFGMMagnify,
     nSYAudioFGMBonusComplete,
     nSYAudioFGMPlayerHeal,

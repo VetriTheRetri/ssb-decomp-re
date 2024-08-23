@@ -191,7 +191,7 @@ char D_800A41C0[/* */] = "Mar 16 1999 18:26:57";
 void mnNoControllerStartScene();
 void mnTitleStartScene();
 void mnDebugStageSelectStartScene();
-void debug_system_entry();
+void mnDebugCubeStartScene();
 void mnDebugBattleStartScene();
 void mnDebugFallsStartScene();
 void debug_button_test_entry();
@@ -320,7 +320,7 @@ void start_scene_manager(u32 set)
 				syDmaLoadOverlay(&D_800A3070[13]);
 				syDmaLoadOverlay(&D_800A3070[8]);
 				syDmaLoadOverlay(&D_800A3070[9]);
-				debug_system_entry();
+				mnDebugCubeStartScene();
 				break;
 			case 4:
 				syDmaLoadOverlay(&D_800A3070[2]);

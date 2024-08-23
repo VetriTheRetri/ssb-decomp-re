@@ -1258,7 +1258,7 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
 
         case nFTPlayerKindKey:
         case nFTPlayerKindGameKey:
-            ftExplainProcessInputSequence(fighter_gobj);
+            ftExplainProcessGameKeyuence(fighter_gobj);
 
         next:
             cp = &this_fp->input.cp;
@@ -1360,13 +1360,13 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
             this_fp->hold_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
         }
     }
-    if (this_fp->time_since_last_z < FTINPUT_ZTRIGLAST_FRAMES_MAX)
+    if (this_fp->tics_since_last_z < FTINPUT_ZTRIGLAST_FRAMES_MAX)
     {
-        this_fp->time_since_last_z++;
+        this_fp->tics_since_last_z++;
     }
     if (this_fp->input.pl.button_tap & this_fp->input.button_mask_z)
     {
-        this_fp->time_since_last_z = 0;
+        this_fp->tics_since_last_z = 0;
     }
     if (this_fp->hitlag_timer != 0)
     {

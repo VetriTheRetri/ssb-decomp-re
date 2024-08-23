@@ -33,10 +33,10 @@ CameraVec7 dMvOpeningLinkCameraSettingsEnd = {
 };
 
 // 8018E0A8
-ftExplainCommand dMvOpeningLinkInputSeq[/* */] =
+ftGameKeyCommand dMvOpeningLinkGameKey[/* */] =
 {
-    FTEXPLAIN_EVENT_BUTTON(L_TRIG, 1),             // 0x1001, 0x0020
-    FTEXPLAIN_EVENT_END()                          // 0x0000
+    FTGAMEKEY_EVENT_BUTTON(L_TRIG, 1),             // 0x1001, 0x0020
+    FTGAMEKEY_EVENT_END()                          // 0x0000
 };
 
 rdFileID D_ovl40_8018E0B0[2] = {0x00000025, 0x00000041};

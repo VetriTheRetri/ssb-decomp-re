@@ -7,11 +7,11 @@
 // // // // // // // // // // // //
 
 // 0x80115B10
-void ftExplainProcessInputSequence(GObj *fighter_gobj)
+void ftExplainProcessGameKeyuence(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftComputerInput *cp_input = &fp->input.cp;
-    ftExplainInput *explain = &fp->explain;
+    ftGameKey *explain = &fp->explain;
 
     if (explain->input_seq != NULL)
     {

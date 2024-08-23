@@ -864,7 +864,7 @@ struct ftComputerInput
     Vec2b stick_range; // CPU stick input?
 };
 
-union ftExplainCommand
+union ftGameKeyCommand
 {
     u16 halfword;
 
@@ -878,10 +878,10 @@ union ftExplainCommand
     Vec2b stick_range;
 };
 
-struct ftExplainInput
+struct ftGameKey
 {
     s32 input_wait;
-    ftExplainCommand *input_seq;
+    ftGameKeyCommand *input_seq;
 };
 
 struct ftAttributes
@@ -1058,7 +1058,7 @@ struct ftStruct
     s32 attack1_status_id;
     s32 attack1_input_count;
     s32 cliffcatch_wait;
-    s32 time_since_last_z;  // Frames since last Z-press, resets to 65536 on action state change
+    s32 tics_since_last_z;  // Frames since last Z-press, resets to 65536 on action state change
     s32 acid_wait;          // Wait this many frames before fighter can be hurt by Planet Zebes acid again
     s32 twister_wait;       // Wait this many frames before fighter can be picked up by the Hyrule Tornado again
     s32 tarucann_wait;      // Wait this many frames before fighter can enter Barrel Cannon again
@@ -1180,9 +1180,9 @@ struct ftStruct
     ftKind throw_ft_kind;               // Kind of opponent that threw this fighter
     u8 throw_team;                      // Team of opponent that threw this fighter
     u8 throw_player;                    // Port of opponent that threw this fighter
-    s32 throw_player_number;            // Pnum of opponent that threw this fighter
+    s32 throw_player_number;            // Player number of opponent that threw this fighter
 
-    u32 attack_id;                      // 
+    u32 attack_id;                      // Also used in staling queue
     u16 motion_count;                   // This is used to tell the game not to stale multihit attacks
     gmStatFlags stat_flags;
     u16 stat_count;
@@ -1276,7 +1276,7 @@ struct ftStruct
     void(*proc_map)(GObj*);
     void(*proc_slope)(GObj*);   // Slope Contour update
     void(*proc_damage)(GObj*);
-    void(*proc_trap)(GObj*);    // Used only by Yoshi Egg so far
+    void(*proc_trap)(GObj*);    // Used only by Yoshi Egg?
     void(*proc_shield)(GObj*);
     void(*proc_hit)(GObj*);
     void(*proc_effect)(GObj*);
@@ -1297,7 +1297,7 @@ struct ftStruct
     syColorRGBA fog_color;      // Used only by Master Hand, when in the background on the -Z plane?
     syColorRGBA shade_color;    // Shade colors of character costume
 
-    ftExplainInput explain;     // "How To Play" tutorial command struct
+    ftGameKey explain;          // "How To Play" tutorial command struct
 
     struct ftAfterImageInfo
     {

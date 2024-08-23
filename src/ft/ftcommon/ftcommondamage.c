@@ -641,7 +641,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
     }
 
     this_fp->is_hitstun = TRUE;
-    this_fp->time_since_last_z = FTINPUT_ZTRIGLAST_FRAMES_MAX;
+    this_fp->tics_since_last_z = FTINPUT_ZTRIGLAST_FRAMES_MAX;
 
     if ((damage_level == 3) && (knockback >= FTCOMMON_DAMAGE_FIGHTER_PLAYERTAG_KNOCKBACK_MIN))
     {

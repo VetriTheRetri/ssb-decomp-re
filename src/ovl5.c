@@ -8,22 +8,22 @@ extern uintptr_t ovl5_BSS_END; 	// 8018D950
 // DATA
 
 // 8018D580
-ftExplainCommand D_ovl5_8018D580[] =
+ftGameKeyCommand D_ovl5_8018D580[] =
 {
-	FTEXPLAIN_EVENT_BUTTON(0, 180),                                       // 0x10B4, 0x0000
-	FTEXPLAIN_EVENT_STICK(30, 0, 60),                                     // 0x203C, 0x1E00
-	FTEXPLAIN_EVENT_STICK(0, 0, 0),                                       // 0x2000, 0x0000
-	FTEXPLAIN_EVENT_BUTTON(A_BUTTON, 1),                                  // 0x1001, 0x8000
-	FTEXPLAIN_EVENT_BUTTON(0, 12),                                        // 0x100C, 0x0000
-	FTEXPLAIN_EVENT_BUTTON(A_BUTTON, 1),                                  // 0x1001, 0x8000
-	FTEXPLAIN_EVENT_BUTTON(0, 12),                                        // 0x100C, 0x0000
-	FTEXPLAIN_EVENT_BUTTON(A_BUTTON, 1),                                  // 0x1001, 0x8000
-	FTEXPLAIN_EVENT_BUTTON(0, 30),                                        // 0x101E, 0x0000
-	FTEXPLAIN_EVENT_STICK(0, I_CONTROLLER_RANGE_MAX, 0),                  // 0x2000, 0x0050
-	FTEXPLAIN_EVENT_BUTTON(B_BUTTON, 1),                                  // 0x1001, 0x4000
-	FTEXPLAIN_EVENT_STICK(0, 0, 0),                                       // 0x2000, 0x0000
-	FTEXPLAIN_EVENT_BUTTON(0, 180),                                       // 0x10B4, 0x0000
-	FTEXPLAIN_EVENT_END()                                                 // 0x0000
+	FTGAMEKEY_EVENT_BUTTON(0, 180),                                       // 0x10B4, 0x0000
+	FTGAMEKEY_EVENT_STICK(30, 0, 60),                                     // 0x203C, 0x1E00
+	FTGAMEKEY_EVENT_STICK(0, 0, 0),                                       // 0x2000, 0x0000
+	FTGAMEKEY_EVENT_BUTTON(A_BUTTON, 1),                                  // 0x1001, 0x8000
+	FTGAMEKEY_EVENT_BUTTON(0, 12),                                        // 0x100C, 0x0000
+	FTGAMEKEY_EVENT_BUTTON(A_BUTTON, 1),                                  // 0x1001, 0x8000
+	FTGAMEKEY_EVENT_BUTTON(0, 12),                                        // 0x100C, 0x0000
+	FTGAMEKEY_EVENT_BUTTON(A_BUTTON, 1),                                  // 0x1001, 0x8000
+	FTGAMEKEY_EVENT_BUTTON(0, 30),                                        // 0x101E, 0x0000
+	FTGAMEKEY_EVENT_STICK(0, I_CONTROLLER_RANGE_MAX, 0),                  // 0x2000, 0x0050
+	FTGAMEKEY_EVENT_BUTTON(B_BUTTON, 1),                                  // 0x1001, 0x4000
+	FTGAMEKEY_EVENT_STICK(0, 0, 0),                                       // 0x2000, 0x0000
+	FTGAMEKEY_EVENT_BUTTON(0, 180),                                       // 0x10B4, 0x0000
+	FTGAMEKEY_EVENT_END()                                                 // 0x0000
 };
 
 Unk800D4060 D_ovl5_8018D5B8 = { 0 };
@@ -75,7 +75,7 @@ void func_ovl5_8018D0C0()
 // 8018D160
 void func_ovl5_8018D160(GObj *gobj)
 {
-	if (ftParamCheckExplainInputSeq(gUnkExplainFighterGObj) == FALSE)
+	if (ftParamCheckHaveExplainGameKey(gUnkExplainFighterGObj) == FALSE)
 	{
 		func_800269C0_275C0(nSYAudioFGMTitlePressStart);
 		leoInitUnit_atten();
@@ -150,7 +150,7 @@ void func_ovl5_8018D1A0()
 		gUnkExplainFighterGObj = fighter_gobj;
 
 		ftParamInitPlayerBattleStats(player, fighter_gobj);
-		ftParamSetExplainInputSeq(fighter_gobj, D_ovl5_8018D580);
+		ftParamSetExplainGameKey(fighter_gobj, D_ovl5_8018D580);
 	}
 	unk_struct = D_ovl5_8018D5B8;
 	func_ovl0_800D4060(0x3FD, 0xD, 0xA, &unk_struct, 0xC, 1, 0);

@@ -333,7 +333,7 @@
 #define FTCOMMON_ATTACKLW4_STICK_RANGE_MIN (-53)
 #define FTCOMMON_ATTACKLW4_BUFFER_FRAMES_MAX 4
 
-#define FTCOMMON_ATTACKAIR_SMOOTH_LANDING_BUFFER_FRAMES_MAX 10
+#define FTCOMMON_ATTACKAIR_SMOOTHLANDING_TICS_MAX 10
 #define FTCOMMON_ATTACKAIR_SKIPLANDING_VEL_Y_MAX (-20.0F)
 #define FTCOMMON_ATTACKAIR_DIRECTION_STICK_RANGE_MIN                                                                   \
 	20 // Minimum control stick range required for directional aerial attacks

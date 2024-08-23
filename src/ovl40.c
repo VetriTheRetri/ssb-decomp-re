@@ -169,7 +169,7 @@ void mvOpeningLinkInitFighterStagePanel()
 		gMvOpeningLinkStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
-		ftParamSetExplainInputSeq(fighter_gobj, dMvOpeningLinkInputSeq);
+		ftParamSetExplainGameKey(fighter_gobj, dMvOpeningLinkGameKey);
 	}
 }
 

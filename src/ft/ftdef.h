@@ -108,10 +108,10 @@
 #define FTCOMPUTER_EVENT_PKTHUNDER()            (FTCOMPUTER_COMMAND_PKTHUNDER)
 #define FTCOMPUTER_EVENT_END()                  (FTCOMPUTER_COMMAND_END)
 
-#define FTEXPLAIN_EVENT_INSTRUCTION(k, t)       ( ((((k) << 12) & 0xF000) | ((t) & 0xFFF)) & U16_MAX )
-#define FTEXPLAIN_EVENT_STICK(x, y, t)          FTEXPLAIN_EVENT_INSTRUCTION(nFTExplainCommandStick, t), (((((x) << 8) & 0xFF00) | (((y) << 0) & 0x00FF)) & U16_MAX)
-#define FTEXPLAIN_EVENT_BUTTON(b, t)            FTEXPLAIN_EVENT_INSTRUCTION(nFTExplainCommandButton, t), ((b) & U16_MAX)
-#define FTEXPLAIN_EVENT_END()                   FTEXPLAIN_EVENT_INSTRUCTION(nFTExplainCommandEnd, 0)
+#define FTGAMEKEY_EVENT_INSTRUCTION(k, t)       ( ((((k) << 12) & 0xF000) | ((t) & 0xFFF)) & U16_MAX )
+#define FTGAMEKEY_EVENT_STICK(x, y, t)          FTGAMEKEY_EVENT_INSTRUCTION(nFTExplainCommandStick, t), (((((x) << 8) & 0xFF00) | (((y) << 0) & 0x00FF)) & U16_MAX)
+#define FTGAMEKEY_EVENT_BUTTON(b, t)            FTGAMEKEY_EVENT_INSTRUCTION(nFTExplainCommandButton, t), ((b) & U16_MAX)
+#define FTGAMEKEY_EVENT_END()                   FTGAMEKEY_EVENT_INSTRUCTION(nFTExplainCommandEnd, 0)
 
 #define ftMotionEventAdvance(event, type) ((event)->p_script = (void*)((uintptr_t)(event)->p_script + (sizeof(type))))
 
@@ -328,16 +328,23 @@ typedef enum ftCommonMotion
     nFTCommonMotionAttackS4Lw,
     nFTCommonMotionAttackHi4,
     nFTCommonMotionAttackLw4,
-    nFTCommonMotionAttackAirN,
+
+    nFTCommonMotionAttackAirStart,
+    nFTCommonMotionAttackAirN = nFTCommonMotionAttackAirStart,
     nFTCommonMotionAttackAirF,
     nFTCommonMotionAttackAirB,
     nFTCommonMotionAttackAirHi,
     nFTCommonMotionAttackAirLw,
-    nFTCommonMotionLandingAirN,
+    nFTCommonMotionAttackAirEnd = nFTCommonMotionAttackAirLw,
+
+    nFTCommonMotionLandingAirStart,
+    nFTCommonMotionLandingAirN = nFTCommonMotionLandingAirStart,
     nFTCommonMotionLandingAirF,
     nFTCommonMotionLandingAirB,
     nFTCommonMotionLandingAirHi,
     nFTCommonMotionLandingAirLw,
+    nFTCommonMotionLandingAirEnd = nFTCommonMotionLandingAirLw,
+
     nFTCommonMotionLandingAirNull,
     nFTCommonMotionSpecialStart
 
@@ -585,11 +592,14 @@ typedef enum ftCommonStatus
     nFTCommonStatusAttackS4Lw,
     nFTCommonStatusAttackHi4,
     nFTCommonStatusAttackLw4,
-    nFTCommonStatusAttackAirN,
+
+    nFTCommonStatusAttackAirStart,
+    nFTCommonStatusAttackAirN = nFTCommonStatusAttackAirStart,
     nFTCommonStatusAttackAirF,
     nFTCommonStatusAttackAirB,
     nFTCommonStatusAttackAirHi,
     nFTCommonStatusAttackAirLw,
+    nFTCommonStatusAttackAirEnd = nFTCommonStatusAttackAirLw,
 
     nFTCommonStatusLandingAirStart,
     nFTCommonStatusLandingAirN = nFTCommonStatusLandingAirStart,
@@ -1092,13 +1102,13 @@ typedef enum ftComputerObjectiveKind
 
 } ftComputerObjectiveKind;
 
-typedef enum ftExplainCommandKind
+typedef enum ftGameKeyCommandKind
 {
     nFTExplainCommandEnd,
     nFTExplainCommandButton,
     nFTExplainCommandStick
 
-} ftExplainCommandKind;
+} ftGameKeyCommandKind;
 
 typedef enum ftAnimCommandKind
 {
@@ -1215,8 +1225,8 @@ typedef struct ftComputer				        ftComputer;
 typedef struct ftPlayerInput                    ftPlayerInput;
 typedef struct ftComputerInput                  ftComputerInput;
 typedef struct ftComputerAttack                 ftComputerAttack;
-typedef union  ftExplainCommand                 ftExplainCommand;
-typedef struct ftExplainInput                   ftExplainInput;
+typedef union  ftGameKeyCommand                 ftGameKeyCommand;
+typedef struct ftGameKey                   ftGameKey;
 typedef struct ftAttributes				        ftAttributes;
 typedef struct ftMesh		                    ftMesh;
 

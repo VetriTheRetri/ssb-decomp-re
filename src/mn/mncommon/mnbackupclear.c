@@ -86,7 +86,7 @@ GObj *sMNBackupClearUnusedGObj;
 GObj *sMNBackupClearOptionConfirmGObj;
 
 // 0x801330CC
-s32 sMNBackupClearOptionConfirmYesOrNo;
+sb32 sMNBackupClearOptionConfirmYesOrNo;
 
 // 0x801330D0
 s32 sMNBackupClearOptionMenuKind;
@@ -657,8 +657,12 @@ void mnBackupClearUpdateOptionConfirmMenu(sb32 confirm_kind)
             else
             {
                 sMNBackupClearOptionConfirmLUTOrigin = SObjGetStruct(sMNBackupClearOptionConfirmGObj)->sprite.LUT;
-                SObjGetStruct(sMNBackupClearOptionConfirmGObj)->sprite.LUT = gcGetDataFromFile(int*, sMNBackupClearFiles[1], &lMNBackupClearOptionConfirmPalette);
-
+                SObjGetStruct(sMNBackupClearOptionConfirmGObj)->sprite.LUT = gcGetDataFromFile
+                (
+                    int*,
+                    sMNBackupClearFiles[1],
+                    &lMNBackupClearOptionConfirmPalette
+                );
                 sMNBackupClearOptionMenuKind = 0;
                 sMNBackupClearOptionConfirmAnimLength = 60;
 

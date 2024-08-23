@@ -32,16 +32,16 @@ CameraVec7 dMvOpeningMarioCameraSettingsEnd = {
 };
 
 // 8018E0C8
-ftExplainCommand dMvOpeningMarioInputSeq[] =
+ftGameKeyCommand dMvOpeningMarioGameKey[] =
 {
-	FTEXPLAIN_EVENT_STICK(0, 0, 0),                         // 0x2000, 0x0000
-	FTEXPLAIN_EVENT_BUTTON(A_BUTTON, 1),                    // 0x1001, 0x8000
-	FTEXPLAIN_EVENT_BUTTON(0, 11),                          // 0x100B, 0x0000
-	FTEXPLAIN_EVENT_BUTTON(A_BUTTON, 1),                    // 0x1001, 0x8000
-	FTEXPLAIN_EVENT_BUTTON(0, 20),                          // 0x1014, 0x0000
-	FTEXPLAIN_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0),   // 0x2000, 0x00B0
-	FTEXPLAIN_EVENT_BUTTON(A_BUTTON, 1),                    // 0x1001, 0x8000
-	FTEXPLAIN_EVENT_END()                                   // 0x0000
+	FTGAMEKEY_EVENT_STICK(0, 0, 0),                         // 0x2000, 0x0000
+	FTGAMEKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 0x1001, 0x8000
+	FTGAMEKEY_EVENT_BUTTON(0, 11),                          // 0x100B, 0x0000
+	FTGAMEKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 0x1001, 0x8000
+	FTGAMEKEY_EVENT_BUTTON(0, 20),                          // 0x1014, 0x0000
+	FTGAMEKEY_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0),   // 0x2000, 0x00B0
+	FTGAMEKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 0x1001, 0x8000
+	FTGAMEKEY_EVENT_END()                                   // 0x0000
 };
 
 // 8018E0E8
@@ -297,7 +297,7 @@ void mvOpeningMarioInitFighterStagePanel()
 		gMvOpeningMarioStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
-		ftParamSetExplainInputSeq(fighter_gobj, dMvOpeningMarioInputSeq);
+		ftParamSetExplainGameKey(fighter_gobj, dMvOpeningMarioGameKey);
 	}
 }
 

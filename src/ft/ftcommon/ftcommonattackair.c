@@ -56,13 +56,15 @@ void ftCommonAttackAirProcMap(GObj *fighter_gobj)
 
     if (mpCommonCheckFighterLanding(fighter_gobj) != FALSE)
     {
-        if ((fp->command_vars.flags.flag1 != 0) && (fp->time_since_last_z > FTCOMMON_ATTACKAIR_SMOOTH_LANDING_BUFFER_FRAMES_MAX))
+        if ((fp->command_vars.flags.flag1 != 0) && (fp->tics_since_last_z > FTCOMMON_ATTACKAIR_SMOOTHLANDING_TICS_MAX))
         {
-            if (fp->ft_data->mainmotion->script_info[fp->status_info.motion_id + (nFTCommonStatusLandingAirN - nFTCommonStatusAttackAirN)].anim_file_id != 0)
+            s32 landing_motion_id = nFTCommonMotionLandingAirStart - nFTCommonMotionAttackAirStart;
+
+            if (fp->ft_data->mainmotion->script_info[fp->status_info.motion_id + landing_motion_id].anim_file_id != 0)
             {
                 ftCommonLandingAirSetStatus(fighter_gobj);
             }
-            else ftCommonLandingAirNullSetStatus(fighter_gobj, fp->command_vars.flags.flag1 * 0.01F);
+            else ftCommonLandingAirNullSetStatus(fighter_gobj, F_PCT_TO_DEC(fp->command_vars.flags.flag1));
         }
         else if (fp->phys_info.vel_air.y > FTCOMMON_ATTACKAIR_SKIPLANDING_VEL_Y_MAX)
         {
@@ -197,7 +199,7 @@ sb32 ftCommonAttackAirCheckInterruptCommon(GObj *fighter_gobj)
                 }
                 ftMainPlayAnimNoEffect(fighter_gobj);
 
-                fp->time_since_last_z = FTINPUT_ZTRIGLAST_FRAMES_MAX;
+                fp->tics_since_last_z = FTINPUT_ZTRIGLAST_FRAMES_MAX;
 
                 return TRUE;
             }

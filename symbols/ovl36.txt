@@ -19,7 +19,7 @@ intro_focus_mario_entry = 0x8018E030; // segment:ovl36
 
 dMvOpeningMarioCameraSettingsStart = 0x8018E090; // segment:ovl36
 dMvOpeningMarioCameraSettingsEnd = 0x8018E0AC; // segment:ovl36
-dMvOpeningMarioInputSeq = 0x8018E0C8; // segment:ovl36
+dMvOpeningMarioGameKey = 0x8018E0C8; // segment:ovl36
 D_ovl36_8018E0E8 = 0x8018E0E8; // segment:ovl36
 dMvOpeningMarioNameOffsets = 0x8018E0F0; // segment:ovl36
 dMvOpeningMarioNameCharXPositions = 0x8018E108; // segment:ovl36

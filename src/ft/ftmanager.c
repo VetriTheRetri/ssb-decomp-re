@@ -492,7 +492,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *ft_desc)
     fp->is_ignore_jostle = FALSE;
 
     fp->cliffcatch_wait = 0;
-    fp->time_since_last_z = 0;
+    fp->tics_since_last_z = 0;
 
     fp->acid_wait = fp->twister_wait = fp->tarucann_wait = fp->damagefloor_wait = 0;
 

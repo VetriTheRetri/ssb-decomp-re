@@ -33,10 +33,10 @@ extern GObj* func_8000B93C
 
 extern intptr_t D_NF_000000C6;
 extern intptr_t D_NF_000000FC;
-extern intptr_t lSCExplainInputSequence0;                   // 0x00000000
-extern intptr_t lSCExplainInputSequence1;                   // 0x000009D4
-extern intptr_t lSCExplainInputSequence2;                   // 0x000013FC
-extern intptr_t lSCExplainInputSequence3;                   // 0x00001400
+extern intptr_t lSCExplainGameKeyuence0;                   // 0x00000000
+extern intptr_t lSCExplainGameKeyuence1;                   // 0x000009D4
+extern intptr_t lSCExplainGameKeyuence2;                   // 0x000013FC
+extern intptr_t lSCExplainGameKeyuence3;                   // 0x00001400
 extern intptr_t lSCExplainPhases;                           // 0x00001404
 extern intptr_t lSCExplainStickMObjSub;                     // 0x00005028
 extern intptr_t lSCExplainStickDObjDesc;                    // 0x00005300
@@ -102,12 +102,12 @@ intptr_t dSCExplainStickMatAnimJoints[/* */] =
 };
 
 // 0x8018E710
-intptr_t dSCExplainInputSequences[/* */] = 
+intptr_t dSCExplainGameKeyuences[/* */] = 
 {
-    &lSCExplainInputSequence0,
-    &lSCExplainInputSequence1,
-    &lSCExplainInputSequence2,
-    &lSCExplainInputSequence3
+    &lSCExplainGameKeyuence0,
+    &lSCExplainGameKeyuence1,
+    &lSCExplainGameKeyuence2,
+    &lSCExplainGameKeyuence3
 };
 
 // 0x8018E720
@@ -808,14 +808,14 @@ void scExplainProcStart(void)
 
         ftParamInitPlayerBattleStats(player, fighter_gobj);
 
-        ftParamSetExplainInputSeq
+        ftParamSetExplainGameKey
         (
             fighter_gobj,
             gcGetDataFromFile
             (
-                ftExplainCommand*,
+                ftGameKeyCommand*,
                 sSCExplainMainFileHead,
-                dSCExplainInputSequences[player]
+                dSCExplainGameKeyuences[player]
             )
         );
     }

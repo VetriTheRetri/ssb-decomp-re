@@ -27,10 +27,10 @@ extern intptr_t FILE_011_ARROW_R_IMAGE_OFFSET; // file 0x011 image offset for ri
 extern intptr_t FILE_011_READY_TO_FIGHT_IMAGE_OFFSET; // Ready to Fight banner text
 extern intptr_t FILE_011_READY_TO_FIGHT_BG_IMAGE_OFFSET; // Ready to Fight banner bg
 extern intptr_t FILE_011_BACK_IMAGE_OFFSET; // file 0x011 image offset for
-extern s32 FILE_013_XBOX_IMAGE_OFFSET; // file 0x013 image offset
+extern intptr_t FILE_013_XBOX_IMAGE_OFFSET; // file 0x013 image offset
 extern intptr_t FILE_013_WHITE_SQUARE; // white square
-extern s32 FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET; // file 0x013 image offset for portrait question mark image
-extern s32 FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET; // file 0x013 image offset for portrait bg (fire) image
+extern intptr_t FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET; // file 0x013 image offset for portrait question mark image
+extern intptr_t FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET; // file 0x013 image offset for portrait bg (fire) image
 extern intptr_t FILE_015_BACKGROUND_IMAGE_OFFSET; // file 0x015 image offset for background tile
 extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_1; // AObj? for white circle
 extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_2; // DObjDesc for white circle
@@ -49,10 +49,10 @@ extern intptr_t FILE_011_CURSOR_POINTER_IMAGE_OFFSET;
 extern GObj* func_ovl0_800CD050(s32, void*, s32, u32, void*, s32, u32, s32, void*, u32, void*, u32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
-extern void gcDrawDObjTreeDLLinksForGObj(GObj *gobj);
-extern void func_80007080(void*, f32, f32, f32, f32);
 extern f32 scSubsysFighterGetLightAngleX();
 extern f32 scSubsysFighterGetLightAngleY();
+extern void gcDrawDObjTreeDLLinksForGObj(GObj *gobj);
+extern void func_80007080(void*, f32, f32, f32, f32);
 extern void func_ovl0_800CCF00();
 extern void func_ovl0_800CD2CC();
 

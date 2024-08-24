@@ -2,7 +2,7 @@ import sys
 import struct
 
 if len(sys.argv) < 2:
-	printf("Usage: hexToFloat <floatInHex> [<moreFloatsInHex>...]")
+	print("Usage: hexToFloat <floatInHex> [<moreFloatsInHex>...]")
 	sys.exit(1)
 
 for arg in sys.argv[1:]:

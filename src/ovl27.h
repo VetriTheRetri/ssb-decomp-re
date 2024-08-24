@@ -70,6 +70,4 @@ typedef enum mnCursorState
 
 } mnCursorState;
 
-#define F_DEG_TO_RAD(x) ((f32)(((x) * PI32) / 180.0F))
-
 #endif

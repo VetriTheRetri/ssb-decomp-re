@@ -4,10 +4,7 @@
 #include <sys/system_00.h>
 #include <ovl0/reloc_data_mgr.h>
 
-#define F_DEG_TO_RAD(x) ((f32)(((x) * PI32) / 180.0F))
-
 // EXTERN
-      // 800A5240
 extern intptr_t lOverlay30ArenaLo;  // 80134E30
 extern intptr_t lOverlay30ArenaHi;  // 803903E0
 // Offsets
@@ -1117,7 +1114,7 @@ void mnStageAdjustStagePreviewY(GObj* stage_preview_cam_gobj)
 
 	while (TRUE)
 	{
-		cam->vec.at.y = __sinf(F_DEG_TO_RAD(deg)) * 40.0F + y;
+		cam->vec.at.y = __sinf(F_CLC_DTOR32(deg)) * 40.0F + y;
 
 		deg = (deg + 2.0F > 360.0F) ? deg + 2.0F - 360.0F : deg + 2.0F;
 

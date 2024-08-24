@@ -256,8 +256,8 @@ void grInishieScaleUpdateStep(void)
     {
         gGRCommonStruct.inishie.splat_status = nGRInishieScaleStatusRetract;
 
-        gcAddDObjAnimJoint(gGRCommonStruct.inishie.scale[0].platform_dobj, (AObjStream*) ((intptr_t)&lGRInishieScaleRetractAnimJoint + (uintptr_t)gGRCommonStruct.inishie.map_head), 0.0F);
-        gcAddDObjAnimJoint(gGRCommonStruct.inishie.scale[1].platform_dobj, (AObjStream*) ((intptr_t)&lGRInishieScaleRetractAnimJoint + (uintptr_t)gGRCommonStruct.inishie.map_head), 0.0F);
+        gcAddDObjAnimJoint(gGRCommonStruct.inishie.scale[0].platform_dobj, (AObjEvent*) ((intptr_t)&lGRInishieScaleRetractAnimJoint + (uintptr_t)gGRCommonStruct.inishie.map_head), 0.0F);
+        gcAddDObjAnimJoint(gGRCommonStruct.inishie.scale[1].platform_dobj, (AObjEvent*) ((intptr_t)&lGRInishieScaleRetractAnimJoint + (uintptr_t)gGRCommonStruct.inishie.map_head), 0.0F);
     }
 }
 

@@ -168,7 +168,7 @@ u32 dMNSoundTestMusicIDs[/* */] =
 u32 dMNSoundTestSoundIDs[/* */] =
 {
     nSYAudioFGMWindAmbient1,
-    nSYAudioFGMUnkWhirr3,
+    nSYAudioFGMOpeningNewcomers,
     nSYAudioFGMPublicityPrologue,
     nSYAudioFGMOpeningBatM,
     nSYAudioFGMAltitudeWarn,

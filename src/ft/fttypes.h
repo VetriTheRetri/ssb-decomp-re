@@ -146,8 +146,8 @@ struct ftModelPart
 {
     void *display_list;
     MObjSub **mobjsubs;
-    AObjStream **costume_matanim_joints;
-    AObjStream **main_matanim_joint;
+    AObjEvent **costume_matanim_joints;
+    AObjEvent **main_matanim_joint;
     u8 flags;
 };
 
@@ -155,7 +155,7 @@ struct ftCommonPart
 {
     DObjDesc *dobj_desc;
     MObjSub ***p_mobjsubs;
-    AObjStream ***p_costume_matanim_joints;
+    AObjEvent ***p_costume_matanim_joints;
     u8 flags;
 };
 
@@ -997,7 +997,7 @@ struct ftMesh
     s32 joint_id;
     Gfx *dl;
     MObjSub **mobjsubs;
-    AObjStream **costume_matanim_joints;
+    AObjEvent **costume_matanim_joints;
 };
 
 // Main fighter struct

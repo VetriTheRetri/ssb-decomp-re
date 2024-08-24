@@ -12,11 +12,11 @@ func_ovl52_801322E8 = 0x801322E8; // segment:ovl52
 func_ovl52_80132388 = 0x80132388; // segment:ovl52
 func_ovl52_801323A4 = 0x801323A4; // segment:ovl52
 func_ovl52_80132490 = 0x80132490; // segment:ovl52
-intro_hidden_chars_entry = 0x801325E0; // segment:ovl52
+mvOpeningNewcomersStartScene = 0x801325E0; // segment:ovl52
 
-D_ovl52_80132640 = 0x80132640; // segment:ovl52
-D_ovl52_80132678 = 0x80132678; // segment:ovl52
-D_ovl52_80132694 = 0x80132694; // segment:ovl52
+dMVOpeningNewcomersFileIDs = 0x80132640; // segment:ovl52
+dMVOpeningNewcomersDisplaySetup = 0x80132678; // segment:ovl52
+dMVOpeningNewcomersGtlSetup = 0x80132694; // segment:ovl52
 
 D_ovl52_80132720 = 0x80132720; // segment:ovl52
 D_ovl52_80132724 = 0x80132724; // segment:ovl52

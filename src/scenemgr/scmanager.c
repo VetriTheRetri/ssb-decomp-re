@@ -235,7 +235,7 @@ void intro_pika_pokeball_entry();
 void intro_sex_kicks_entry();
 void intro_great_fox_entry();
 void mvOpeningDKVsSamusStartScene();
-void intro_hidden_chars_entry();
+void mvOpeningNewcomersStartScene();
 void classic_css_entry();
 void training_css_entry();
 void bonus_css_entry();
@@ -535,7 +535,7 @@ void start_scene_manager(u32 set)
 				break;
 			case 46:
 				syDmaLoadOverlay(&D_800A3070[52]);
-				intro_hidden_chars_entry();
+				mvOpeningNewcomersStartScene();
 				break;
 			case 17:
 				syDmaLoadOverlay(&D_800A3070[2]);

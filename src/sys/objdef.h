@@ -226,7 +226,7 @@ typedef enum AObjTrackKind
 } AObjTrackKind;
 
 typedef union  AObjFigatree         AObjFigatree;
-typedef union  AObjStream        AObjStream;
+typedef union  AObjEvent        AObjEvent;
 typedef struct GObj                 GObj;
 typedef struct GObjLink             GObjLink;
 typedef struct _GObjProcess         GObjProcess;

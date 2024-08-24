@@ -1647,9 +1647,10 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x1752C0, asm, ovl52]
-      - [0x175E00, data, ovl52]
-      - [0x175EE0, rodata, ovl52]
+      - [0x1752C0, c, mv/mvopening/mvopeningnewcomers]
+      - [0x175E00, .data, mv/mvopening/mvopeningnewcomers]
+      - [0x175EE0, .rodata, mv/mvopening/mvopeningnewcomers]
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningnewcomers, vram: 0x80132740 }
 
   - name: ovl53
     type: code

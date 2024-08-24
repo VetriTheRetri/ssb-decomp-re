@@ -2070,7 +2070,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
         }
         if ((o_anim_joint != 0) || (o_matanim_joint != 0))
         {
-            gcAddAnimAll(effect_gobj, (o_anim_joint != 0) ? (AObjStream**) (addr + o_anim_joint) : NULL, (o_matanim_joint != 0) ? (AObjStream***) (addr + o_matanim_joint) : NULL, 0.0F);
+            gcAddAnimAll(effect_gobj, (o_anim_joint != 0) ? (AObjEvent**) (addr + o_anim_joint) : NULL, (o_matanim_joint != 0) ? (AObjEvent***) (addr + o_matanim_joint) : NULL, 0.0F);
             gcPlayAnimAll(effect_gobj);
         }
     }
@@ -3856,19 +3856,19 @@ GObj* efManagerQuakeMakeEffect(s32 magnitude) // Linker things here
     switch (magnitude)
     {
     case 0:
-        gcAddAnimJointAll(effect_gobj, gcGetDataFromFile(AObjStream**, sEFManagerTexturesFile1, &lEFManagerQuakeMag0AnimJoint), 0.0F);
+        gcAddAnimJointAll(effect_gobj, gcGetDataFromFile(AObjEvent**, sEFManagerTexturesFile1, &lEFManagerQuakeMag0AnimJoint), 0.0F);
         break;
 
     case 1:
-        gcAddAnimJointAll(effect_gobj, gcGetDataFromFile(AObjStream**, sEFManagerTexturesFile1, &lEFManagerQuakeMag1AnimJoint), 0.0F);
+        gcAddAnimJointAll(effect_gobj, gcGetDataFromFile(AObjEvent**, sEFManagerTexturesFile1, &lEFManagerQuakeMag1AnimJoint), 0.0F);
         break;
 
     case 2:
-        gcAddAnimJointAll(effect_gobj, gcGetDataFromFile(AObjStream**, sEFManagerTexturesFile1, &lEFManagerQuakeMag2AnimJoint), 0.0F);
+        gcAddAnimJointAll(effect_gobj, gcGetDataFromFile(AObjEvent**, sEFManagerTexturesFile1, &lEFManagerQuakeMag2AnimJoint), 0.0F);
         break;
 
     case 3: // Used by POW Block 
-        gcAddAnimJointAll(effect_gobj, gcGetDataFromFile(AObjStream**, sEFManagerTexturesFile1, &lEFManagerQuakeMag3AnimJoint), 0.0F);
+        gcAddAnimJointAll(effect_gobj, gcGetDataFromFile(AObjEvent**, sEFManagerTexturesFile1, &lEFManagerQuakeMag3AnimJoint), 0.0F);
         break;
 
     default:
@@ -4054,7 +4054,7 @@ void efManagerFoxReflectorSetAnimID(GObj *effect_gobj, s32 anim_id)
 
     ep->effect_vars.reflector.index = anim_id;
 
-    gcAddAnimJointAll(effect_gobj, gcGetDataFromFile(AObjStream**, gFTDataFoxSpecial2, dEFManagerFoxReflectorAnimJointOffsets[anim_id]), 0.0F);
+    gcAddAnimJointAll(effect_gobj, gcGetDataFromFile(AObjEvent**, gFTDataFoxSpecial2, dEFManagerFoxReflectorAnimJointOffsets[anim_id]), 0.0F);
     gcPlayAnimAll(effect_gobj);
 }
 
@@ -4460,8 +4460,8 @@ GObj* efManagerPikachuThunderShockMakeEffect(GObj *fighter_gobj, Vec3f *pos, s32
         gcAddAnimAll
         (
             effect_gobj, 
-            gcGetDataFromFile(AObjStream**, gFTDataPikachuSpecial2, &lEFManagerPikachuThunderShock1AnimJoint), 
-            gcGetDataFromFile(AObjStream***, gFTDataPikachuSpecial2, &lEFManagerPikachuThunderShock1MatAnimJoint), 
+            gcGetDataFromFile(AObjEvent**, gFTDataPikachuSpecial2, &lEFManagerPikachuThunderShock1AnimJoint), 
+            gcGetDataFromFile(AObjEvent***, gFTDataPikachuSpecial2, &lEFManagerPikachuThunderShock1MatAnimJoint), 
             0.0F
         );
         gcPlayAnimAll(effect_gobj);
@@ -4471,8 +4471,8 @@ GObj* efManagerPikachuThunderShockMakeEffect(GObj *fighter_gobj, Vec3f *pos, s32
         gcAddAnimAll
         (
             effect_gobj, 
-            gcGetDataFromFile(AObjStream**, gFTDataPikachuSpecial2, &lEFManagerPikachuThunderShock2AnimJoint), 
-            gcGetDataFromFile(AObjStream***, gFTDataPikachuSpecial2, &lEFManagerPikachuThunderShock2MatAnimJoint), 
+            gcGetDataFromFile(AObjEvent**, gFTDataPikachuSpecial2, &lEFManagerPikachuThunderShock2AnimJoint), 
+            gcGetDataFromFile(AObjEvent***, gFTDataPikachuSpecial2, &lEFManagerPikachuThunderShock2MatAnimJoint), 
             0.0F
         );
         gcPlayAnimAll(effect_gobj);
@@ -5658,7 +5658,7 @@ GObj* efManagerCaptainEntryCarMakeEffect(Vec3f *pos, s32 lr)
     }
     dobj = DObjGetStruct(effect_gobj);
 
-    gcAddAnimJointAll(effect_gobj, gcGetDataFromFile(AObjStream**, gFTDataCaptainSpecial2, &D_NF_00006200), 0.0F);
+    gcAddAnimJointAll(effect_gobj, gcGetDataFromFile(AObjEvent**, gFTDataCaptainSpecial2, &D_NF_00006200), 0.0F);
 
     node_dobj = dobj->child->child->child;
 
@@ -5666,11 +5666,11 @@ GObj* efManagerCaptainEntryCarMakeEffect(Vec3f *pos, s32 lr)
     {
         gcAddOMMtxForDObjFixed(node_dobj, nOMTransformRecalcRotRpyRSca, 0);
 
-        gcAddDObjAnimJoint(node_dobj, gcGetDataFromFile(AObjStream*, gFTDataCaptainSpecial2, &D_NF_00006518), 0.0F);
+        gcAddDObjAnimJoint(node_dobj, gcGetDataFromFile(AObjEvent*, gFTDataCaptainSpecial2, &D_NF_00006518), 0.0F);
 
         node_dobj = node_dobj->sib_next;
 
-        gcAddDObjAnimJoint(node_dobj, gcGetDataFromFile(AObjStream*, gFTDataCaptainSpecial2, &D_NF_00006598), 0.0F);
+        gcAddDObjAnimJoint(node_dobj, gcGetDataFromFile(AObjEvent*, gFTDataCaptainSpecial2, &D_NF_00006598), 0.0F);
 
         node_dobj = node_dobj->sib_next;
     }
@@ -5752,7 +5752,7 @@ GObj* efManagerFoxEntryArwingMakeEffect(Vec3f *pos, s32 lr)
     what = dobj->child->child->child->sib_next->sib_next->sib_next->sib_next->sib_next->sib_next->child;
 
     gcAddOMMtxForDObjFixed(what, 0x2C, 0);
-    gcAddDObjAnimJoint(what, gcGetDataFromFile(AObjStream*, gFTDataFoxSpecial3, &D_NF_00002E74), 0.0F); // Linker thing
+    gcAddDObjAnimJoint(what, gcGetDataFromFile(AObjEvent*, gFTDataFoxSpecial3, &D_NF_00002E74), 0.0F); // Linker thing
 
     if (lr == nGMFacingR)
     {

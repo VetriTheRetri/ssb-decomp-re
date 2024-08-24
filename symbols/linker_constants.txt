@@ -973,6 +973,22 @@ lITLinkBombBloatScales = 0x000000A8;
 
 lITMonsterAnimBankStart = 0x00013624;
 
+lMVOpeningNewcomersPurinShowDisplayList = 0x00005C28;
+lMVOpeningNewcomersPurinAnimJoint = 0x00005E44;
+lMVOpeningNewcomersPurinHiddenDisplayList = 0x000203A8;
+
+lMVOpeningNewcomersLuigiShowDisplayList = 0x0001C838;
+lMVOpeningNewcomersLuigiAnimJoint = 0x0001CE94;
+lMVOpeningNewcomersLuigiHiddenDisplayList = 0x00028C28;
+
+lMVOpeningNewcomersCaptainShowDisplayList = 0x0001C238;
+lMVOpeningNewcomersCaptainAnimJoint = 0x0001C9D4;
+lMVOpeningNewcomersCaptainHiddenDisplayList = 0x000355C0;
+
+lMVOpeningNewcomersNessShowDisplayList = 0x0002A448;
+lMVOpeningNewcomersNessAnimJoint = 0x0002A864;
+lMVOpeningNewcomersNessHiddenDisplayList = 0x0003BAF8;
+
 lMNBackupClearHeaderOptionSprite = 0x00000B40;
 lMNBackupClearHeaderBackupClearSprite = 0x00000B60;
 lMNBackupClearOptionNewcomersSprite = 0x00003A00;

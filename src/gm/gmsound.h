@@ -229,7 +229,7 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMDairantouPunchM,
 	nSYAudioFGMDairantouPunchS,
 	nSYAudioFGMWindAmbient1,
-	nSYAudioFGMUnkWhirr3,
+	nSYAudioFGMOpeningNewcomers,
 	nSYAudioFGMPublicityPrologue,	// Cheer on Meta Crystal and Duel Zone before the music starts playing
 	nSYAudioFGMUnkBatS,
 	nSYAudioFGMOpeningBatM,			// Plays on characters clashing scene in opening?

@@ -74,7 +74,7 @@ union AObjFigatree
     u16 uhalf;
 };
 
-union AObjStream
+union AObjEvent
 {
     f32 f;
     s32 s;
@@ -323,7 +323,7 @@ struct _MObj
     f32 palette_id;
     u8 filler_0x8C[0x90 - 0x8C];
     AObj *aobj;
-    AObjStream *matanim_joint;
+    AObjEvent *matanim_joint;
     f32 anim_remain;            // Animation frames remaining, multi-purpose?
     f32 anim_speed;              // Animation playback rate / interpolation, multi-purpose?
     f32 anim_frame;             // Current animation frame, multi-purpose?
@@ -408,7 +408,7 @@ struct _DObj
 
     union AObjScripts
     {
-        AObjStream *anim_joint;
+        AObjEvent *anim_joint;
         AObjFigatree *figatree;
     };
     
@@ -474,7 +474,7 @@ struct _Camera
     OMMtx *ommtx[2];
 
     AObj *aobj;
-    AObjStream *camanim_joint;
+    AObjEvent *camanim_joint;
 
     f32 anim_remain;
     f32 anim_speed;

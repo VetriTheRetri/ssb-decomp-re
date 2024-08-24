@@ -546,11 +546,33 @@ typedef enum nSCTrainingMenuOptionSprites
 	nSCTrainingMenuOptionSpriteIndicatorStart,
 	nSCTrainingMenuOptionSpriteLeftArrow = nSCTrainingMenuOptionSpriteIndicatorStart,
 	nSCTrainingMenuOptionSpriteRightArrow,
-	nSCTrainingMenuOptionSpriteCursor, // Red orb + underline
+	nSCTrainingMenuOptionSpriteCursor, 	// Red orb + underline
 
 	nSCTrainingMenuOptionSpriteEnumMax
 
 } nSCTrainingMenuOptionSprites;
+
+typedef enum scBackupUnlock
+{
+	nSCBackupUnlockLuigi,	 			// Luigi
+	nSCBackupUnlockNess,				// Ness
+	nSCBackupUnlockCaptain,	 			// Captain Falcon
+	nSCBackupUnlockPurin,	 			// Jigglypuff
+	nSCBackupUnlockInishie,	 			// Mushroom Kingdom
+	nSCBackupUnlockSoundTest, 			// Sound Test menu
+	nSCBackupUnlockItemSwitch, 			// Item Switch menu
+	nSCBackupUnlockEnumMax
+
+} scBackupUnlock;
+
+typedef enum scBackupErrors
+{
+	nSCBackupErrorRandomKnockback,
+	nSCBackupErrorHalfStickRange,
+	nSCBackupError1PGameMario,
+	nSCBackupErrorBattleCastle
+
+} scBackupErrors;
 
 typedef struct sc1PGameComputer				sc1PGameComputer;
 typedef struct sc1PGameStage				sc1PGameStage;

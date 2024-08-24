@@ -1644,7 +1644,7 @@ void ifCommonPlayerArrowsRightProcRender(GObj *interface_gobj)
 // 0x801115BC
 void ifCommonPlayerArrowsAddAnim(GObj *interface_gobj)
 {
-    gcAddAnimJointAll(interface_gobj, (AObjStream**) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&lIFCommonPlayerArrowsAnimJoint), 0.0F);
+    gcAddAnimJointAll(interface_gobj, (AObjEvent**) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&lIFCommonPlayerArrowsAnimJoint), 0.0F);
     gcPlayAnimAll(interface_gobj);
 }
 

@@ -60,13 +60,13 @@ typedef struct grCommonGroundVarsPupupu
 
 typedef struct grSectorDesc
 {
-	AObjStream* anim_joint_0x0;
+	AObjEvent* anim_joint_0x0;
 	u8 filler_0x4[0x1C - 0x4];
-	AObjStream* anim_joint_0x1C;
+	AObjEvent* anim_joint_0x1C;
 	void* unk_sectordesc_0x20;
-	AObjStream* anim_joint_0x24;
+	AObjEvent* anim_joint_0x24;
 	void* unk_sectordesc_0x28;
-	AObjStream* anim_joint_0x2C;
+	AObjEvent* anim_joint_0x2C;
 
 } grSectorDesc;
 

@@ -120,28 +120,6 @@
 #define gmColCommandSetSkeletonID(skeleton_id)                                                                       \
 	(GC_FIELDSET(nGMColEventKindSetSkeletonID, 26, 6) | GC_FIELDSET(skeleton_id, 0, 26))
 
-typedef enum scBackupUnlock
-{
-	nSCBackupUnlockLuigi,	 	// Luigi
-	nSCBackupUnlockNess,		// Ness
-	nSCBackupUnlockCaptain,	 	// Captain Falcon
-	nSCBackupUnlockPurin,	 	// Jigglypuff
-	nSCBackupUnlockInishie,	 	// Mushroom Kingdom
-	nSCBackupUnlockSoundTest, 	// Sound Test menu
-	nSCBackupUnlockItemSwitch, 	// Item Switch menu
-	nSCBackupUnlockEnumMax
-
-} scBackupUnlock;
-
-typedef enum scBackupErrors
-{
-	nSCBackupErrorRandomKnockback,
-	nSCBackupErrorHalfStickRange,
-	nSCBackupError1PGameMario,
-	nSCBackupErrorBattleCastle
-
-} scBackupErrors;
-
 typedef enum gmDirectionSign
 {
 	nGMFacingL = -1,

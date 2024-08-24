@@ -75,7 +75,7 @@ void gcRemoveMatAnimJointAll(GObj *gobj)
     }
 }
 
-void gcAddDObjAnimJoint(DObj *dobj, AObjStream *anim_joint, f32 anim_frame) 
+void gcAddDObjAnimJoint(DObj *dobj, AObjEvent *anim_joint, f32 anim_frame) 
 {
     AObj *aobj = dobj->aobj;
 
@@ -89,7 +89,7 @@ void gcAddDObjAnimJoint(DObj *dobj, AObjStream *anim_joint, f32 anim_frame)
     dobj->anim_frame = anim_frame;
 }
 
-void gcAddMObjMatAnimJoint(MObj *mobj, AObjStream *matanim_joint, f32 anim_frame) 
+void gcAddMObjMatAnimJoint(MObj *mobj, AObjEvent *matanim_joint, f32 anim_frame) 
 {
     AObj *aobj = mobj->aobj;
 
@@ -103,7 +103,7 @@ void gcAddMObjMatAnimJoint(MObj *mobj, AObjStream *matanim_joint, f32 anim_frame
     mobj->anim_frame = anim_frame;
 }
 
-void gcAddAnimJointAll(GObj *gobj, AObjStream **anim_joints, f32 anim_frame) 
+void gcAddAnimJointAll(GObj *gobj, AObjEvent **anim_joints, f32 anim_frame) 
 {
     DObj *dobj = DObjGetStruct(gobj);
     ub8 is_anim_root = TRUE;
@@ -128,7 +128,7 @@ void gcAddAnimJointAll(GObj *gobj, AObjStream **anim_joints, f32 anim_frame)
     }
 }
 
-void gcAddMatAnimJointAll(GObj *gobj, AObjStream ***p_matanim_joints, f32 anim_frame)
+void gcAddMatAnimJointAll(GObj *gobj, AObjEvent ***p_matanim_joints, f32 anim_frame)
 {
     DObj *dobj = DObjGetStruct(gobj);
     
@@ -140,7 +140,7 @@ void gcAddMatAnimJointAll(GObj *gobj, AObjStream ***p_matanim_joints, f32 anim_f
         {
             if (*p_matanim_joints != NULL)
             {
-                AObjStream **matanim_joints = *p_matanim_joints;
+                AObjEvent **matanim_joints = *p_matanim_joints;
                 MObj *mobj = dobj->mobj;
 
                 while (mobj != NULL)
@@ -159,7 +159,7 @@ void gcAddMatAnimJointAll(GObj *gobj, AObjStream ***p_matanim_joints, f32 anim_f
     }
 }
 
-void gcAddAnimAll(GObj *gobj, AObjStream **anim_joints, AObjStream ***p_matanim_joints, f32 anim_frame)
+void gcAddAnimAll(GObj *gobj, AObjEvent **anim_joints, AObjEvent ***p_matanim_joints, f32 anim_frame)
 {
     DObj *dobj = DObjGetStruct(gobj);
     ub8 is_anim_root = TRUE;
@@ -187,7 +187,7 @@ void gcAddAnimAll(GObj *gobj, AObjStream **anim_joints, AObjStream ***p_matanim_
         {
             if (*p_matanim_joints != NULL) 
             {
-                AObjStream **matanim_joints = *p_matanim_joints;
+                AObjEvent **matanim_joints = *p_matanim_joints;
                 MObj *mobj = dobj->mobj;
 
                 while (mobj != NULL) 
@@ -1730,7 +1730,7 @@ void gcGetAObjTrackAnimTimeMax(s32 track, f32 translate, f32 rotate, f32 scale, 
 f32 gcGetDObjTempAnimTimeMax
 (
     DObj *dobj,
-    AObjStream **anim_joints,
+    AObjEvent **anim_joints,
     f32 anim_frame,
     DObjDesc *dobj_desc,
     s32 rate_kind,
@@ -1876,7 +1876,7 @@ f32 gcGetDObjTempAnimTimeMax
 f32 func_8000EC64_F864
 (
     GObj *gobj,
-    AObjStream **anim_joints,
+    AObjEvent **anim_joints,
     f32 anim_frame,
     DObjDesc *dobj_desc,
     s32 rate_kind,
@@ -1955,7 +1955,7 @@ f32 func_8000EC64_F864
     return length_max;
 }
 
-void func_8000EE40_FA40(GObj *gobj, AObjStream **anim_joints, f32 anim_frame, DObjDesc *dobj_desc)
+void func_8000EE40_FA40(GObj *gobj, AObjEvent **anim_joints, f32 anim_frame, DObjDesc *dobj_desc)
 {
     s32 i;
     DObj *dobj;
@@ -2412,7 +2412,7 @@ void gcSetDObjTransformsForGObj(GObj *gobj, DObjDesc *dobj_desc)
     }
 }
 
-void gcAddCameraCamAnimJoint(Camera *cam, AObjStream *camanim_joint, f32 anim_frame)
+void gcAddCameraCamAnimJoint(Camera *cam, AObjEvent *camanim_joint, f32 anim_frame)
 {
     AObj *aobj = cam->aobj;
 
@@ -2862,9 +2862,9 @@ void gcUpdateCameraCamAnim(GObj *gobj)
     gcPlayCameraCamAnim(cam);
 }
 
-s32 gcGetAnimTotalLength(AObjStream **anim_joints)
+s32 gcGetAnimTotalLength(AObjEvent **anim_joints)
 {
-    AObjStream *anim_joint;
+    AObjEvent *anim_joint;
     u32 flags;
     s32 total = 0;
     s32 i;

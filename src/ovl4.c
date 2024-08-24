@@ -4,31 +4,52 @@
 #include <sc/scene.h>
 #include <sys/system_00.h>
 
-
+// Externs
 extern uintptr_t D_NF_8018E7E0;
 extern uintptr_t D_NF_80392A00;
 extern intptr_t D_NF_00000000;
 extern intptr_t D_NF_00000030;
 extern intptr_t D_NF_000000C7;
+extern void func_800A26B8();
 
+// Forward declarations
+void scBattle_SetGeometryRenderLights(Gfx **display_list);
+void scBattle_StartStockBattle();
+
+
+// Data
+// 8018E3D0
 Unk800D4060 D_ovl4_8018E3D0 = { 0 };
+
+// 8018E3D4
 Unk800D4060 D_ovl4_8018E3D4 = { 0 };
 
+// 8018E3D8
 syDisplaySetup D_ovl4_8018E3D8 = {
-	0x80392a00, 0x803b6900, 0x803da800, 0x00000000,
-	0x00000140, 0x000000f0, 0x00016a99,
+
+	gSCSubsysFramebuffer0,
+	gSCSubsysFramebuffer1,
+	gSCSubsysFramebuffer2,
+	0x00000000,
+	0x00000140,
+	0x000000F0,
+	0x00016A99
 };
 
+// 8018E3F4
 scRuntimeInfo D_ovl4_8018E3F4 = {
-	0x00000000, 0x8018d0c0, 0x800a26b8,
-	0x8018e7e0, 0x00000000, 0x00000001, 0x00000002,
-	0x0000f000, 0x00005000, 0x00000000, 0x00000000,
-	0x0000d000, 0x00020000, 0x0000c000, 0x8018e144,
-	0x80004310, 0x00000000, 0x00000600, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, 0x00000088,
-	0x00000000, 0x800d5cac, 0x00000000, 0x00000000,
+
+	0x00000000, 0x8018d0c0,
+	func_800A26B8, 0x8018e7e0,
+	0x00000000, 0x00000001, 0x00000002, 0x0000f000, 0x00005000,
+	0x00000000, 0x00000000, 0x0000d000, 0x00020000, 0x0000c000,
+	scBattle_SetGeometryRenderLights, update_contdata,
+	0x00000000, 0x00000600, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
-	0x0000006c, 0x00000000, 0x00000090, 0x8018d228
+	0x800d5cac, 0x00000000, 0x00000000, 0x00000000,
+	0x00000000, 0x00000088, 0x00000000, 0x0000006c,
+	0x00000000, 0x00000090,
+	scBattle_StartStockBattle
 };
 
 // 8018D0C0
@@ -132,9 +153,8 @@ void scBattle_StartStockBattle()
 		player_spawn = dFTManagerDefaultFighterDesc;
 
 		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot)
-		{
 			continue;
-		}
+
 		ftManagerSetupFilesAllKind(gBattleState->players[player].ft_kind);
 		player_spawn.ft_kind = gBattleState->players[player].ft_kind;
 
@@ -208,7 +228,8 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 	case FALSE:
 		for (result_count = i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
 		{
-			if (gBattleState->players[i].pl_kind == nFTPlayerKindNot) continue;
+			if (gBattleState->players[i].pl_kind == nFTPlayerKindNot)
+				continue;
 
 			player_results[result_count].tko = gBattleState->players[i].score - gBattleState->players[i].falls;
 			player_results[result_count].kos = gBattleState->players[i].score;
@@ -216,10 +237,9 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 			player_results[result_count].unk_battleres_0x9 = FALSE;
 
 			if (gBattleState->players[i].pl_kind == nFTPlayerKindMan)
-			{
 				player_results[result_count].is_human_player = TRUE;
-			}
-			else player_results[result_count].is_human_player = FALSE;
+			else
+				player_results[result_count].is_human_player = FALSE;
 
 			result_count++;
 		}
@@ -245,10 +265,10 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 				tied_players++;
 			}
 		}
+
 		if (tied_players < 2)
-		{
 			return FALSE;
-		}
+
 		for (i = 0; i < tied_players; i++)
 		{
 			D_800A4EF8.players[player_results[i].player_or_team].pl_kind = gBattleState->players[player_results[i].player_or_team].pl_kind;
@@ -269,7 +289,8 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 	case TRUE:
 		for (result_count = i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
 		{
-			if (gBattleState->players[i].pl_kind == nFTPlayerKindNot) continue;
+			if (gBattleState->players[i].pl_kind == nFTPlayerKindNot)
+				continue;
 
 			for (j = 0; j < result_count; j++)
 			{
@@ -278,7 +299,7 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 					player_results[j].tko += gBattleState->players[i].score - gBattleState->players[i].falls;
 					player_results[j].kos += gBattleState->players[i].score;
 
-					if ((player_results[j].is_human_player != FALSE) || (gBattleState->players[i].pl_kind == nFTPlayerKindMan))
+					if (player_results[j].is_human_player || (gBattleState->players[i].pl_kind == nFTPlayerKindMan))
 					{
 						player_results[j].is_human_player = TRUE;
 					}
@@ -292,11 +313,12 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 			player_results[result_count].player_or_team = gBattleState->players[i].team;
 			player_results[result_count].unk_battleres_0x9 = FALSE;
 
-			if ((player_results[result_count].is_human_player != FALSE) || (gBattleState->players[i].pl_kind == nFTPlayerKindMan))
+			if (player_results[result_count].is_human_player || (gBattleState->players[i].pl_kind == nFTPlayerKindMan))
 			{
 				player_results[result_count].is_human_player = TRUE;
 			}
-			else player_results[result_count].is_human_player = FALSE;
+			else
+				player_results[result_count].is_human_player = FALSE;
 
 			result_count++;
 
@@ -325,15 +347,16 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 				tied_players++;
 			}
 		}
+
 		if (tied_players < 2)
-		{
 			return FALSE;
-		}
+
 		for (i = 0; i < tied_players; i++)
 		{
 			for (j = 0; j < ARRAY_COUNT(gBattleState->players); j++)
 			{
-				if (gBattleState->players[j].pl_kind == nFTPlayerKindNot) continue;
+				if (gBattleState->players[j].pl_kind == nFTPlayerKindNot)
+					continue;
 
 				if (gBattleState->players[j].team == player_results[i].player_or_team)
 				{
@@ -395,7 +418,8 @@ void scBattle_StartSDBattle()
 	{
 		player_spawn = dFTManagerDefaultFighterDesc;
 
-		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot) continue;
+		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot)
+			continue;
 
 		ftManagerSetupFilesAllKind(gBattleState->players[player].ft_kind);
 		player_spawn.ft_kind = gBattleState->players[player].ft_kind;
@@ -469,9 +493,8 @@ void scBattleRoyalStartScene()
 	gBattleState->gr_kind = gSceneData.gr_kind;
 
 	if (gSaveData.error_flags & SCBACKUP_ERROR_BATTLECASTLE)
-	{
 		gBattleState->gr_kind = nGRKindCastle;
-	}
+
 	D_ovl4_8018E3D8.zbuffer = syDisplayGetZBuffer(6400);
 	func_80007024(&D_ovl4_8018E3D8);
 	D_ovl4_8018E3F4.arena_size = (uintptr_t)((uintptr_t)&D_NF_80392A00 - (uintptr_t)&D_NF_8018E7E0);
@@ -479,15 +502,14 @@ void scBattleRoyalStartScene()
 	func_800A2698(&D_ovl4_8018E3F4);
 	auStopBGM();
 
-	while (auIsBGMPlaying(0) != FALSE)
-	{
+	while (auIsBGMPlaying(0))
 		continue;
-	}
+
 	auSetBGMVolume(0, 0x7800);
 	func_800266A0_272A0();
 	gmRumbleInitPlayers();
 
-	if ((gSceneData.is_reset == FALSE) && (scBattle_CheckSDSetTimeBattleResults() != FALSE))
+	if (!gSceneData.is_reset && scBattle_CheckSDSetTimeBattleResults())
 	{
 		gBattleState = &D_800A4EF8;
 
@@ -498,10 +520,9 @@ void scBattleRoyalStartScene()
 		func_800A2698(&D_ovl4_8018E3F4);
 		auStopBGM();
 
-		while (auIsBGMPlaying(0) != FALSE)
-		{
+		while (auIsBGMPlaying(0))
 			continue;
-		}
+
 		auSetBGMVolume(0, 0x7800);
 		func_800266A0_272A0();
 		gmRumbleInitPlayers();

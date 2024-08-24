@@ -1,10 +1,11 @@
-#include <sc/scene.h>
 #include <gr/ground.h>
 #include <gm/gmsound.h> // temporary, until this finds a proper place
-#include <sys/system_00.h>
+#include <sc/scene.h>
 #include <ovl0/reloc_data_mgr.h>
+#include <sys/system_00.h>
+#include <sys/thread6.h>
 
-// EXTERN
+// Externs
 extern intptr_t lOverlay30ArenaLo;  // 80134E30
 extern intptr_t lOverlay30ArenaHi;  // 803903E0
 // Offsets
@@ -23,8 +24,16 @@ extern intptr_t FILE_01E_RANDOM_STAGE_PREVIEW_BG_IMAGE_OFFSET; // file 0x1E imag
 
 extern void func_ovl0_800CCF00();
 extern void func_ovl0_800CD2CC();
+extern void func_800A26B8();
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
+
+
+// Forward declarations
+void mnStageInitSSS();
+void mnStageSetLighting(Gfx** display_list);
+void mnStagePositionStagePreviewCamera(Camera* stage_preview_cam, s32 stage_id);
+
 
 // Stuff - where does it go?!?
 typedef struct mnStageFileInfo
@@ -33,6 +42,7 @@ typedef struct mnStageFileInfo
 	/* 0x04 */ u32 header_size;
 
 } mnStageFileInfo;
+
 
 // DATA
 // 801344D0
@@ -112,11 +122,12 @@ s32 dMNStageIDOrder[10] = {
 intptr_t dMNStageImageOffsets[10] = {
 
 	0x00004d88, 0x00005b68, 0x00006948, 0x00007728, 0x00008508,
-	0x000092e8, 0x0000bc88, 0x0000a0c8, 0x0000aea8,	0x0000cb10
+	0x000092e8, 0x0000bc88, 0x0000a0c8, 0x0000aea8, 0x0000cb10
 };
 
 // 80134694
 Vec2f dMNStageNamePositions[9] = {
+
 	{ 195.00f, 196.00f },
 	{ 202.00f, 196.00f },
 	{ 190.00f, 196.00f },
@@ -152,22 +163,32 @@ char* D_ovl30_80134700[] = {
 	"ABOARD A GREAT FOX",
 };
 
+// 8013472C
 uintptr_t D_ovl30_8013472C[6] = { NULL };
 
+// 80134744
 char* D_ovl30_80134744 = "KINGDOM";
 
-char* D_ovl30_80134748[] = {
+// 80134748
+f32 D_ovl30_80134748[] = {
 
-	0x43400000, 0x43270000, 0x43560000, 0x43270000,
-	0x434A0000, 0x43290000, 0x434A0000, 0x43290000,
-	0x43410000, 0x43290000, 0x43460000, 0x43290000,
-	0x434D0000, 0x43290000, 0x43470000, 0x43290000,
-	0x433F0000, 0x43270000, 0x43510000, 0x432E0000,
-	0x433C0000, 0x432E0000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x434B0000, 0x432E0000, 0x43550000, 0x432E0000,
-	0x000000FF, 0x000000FF, 0x000000FF
+	192.0, 167.0, 214.0, 167.0, 202.0, 169.0, 202.0, 169.0, 193.0, 169.0, 198.0,
+	169.0, 205.0, 169.0, 199.0, 169.0, 191.0, 167.0, 209.0, 174.0, 188.0, 174.0
+};
+
+// 801347A0
+s32 D_ovl30_801347A0[10] = { 0 };
+
+// 801347C8
+f32 D_ovl30_801347C8[4] = {
+
+	203.0, 174.0, 213.0, 174.0
+};
+
+// 801347D8
+s32 D_ovl30_801347D8[3] = {
+
+	255, 255, 255
 };
 
 // 801347E4
@@ -195,13 +216,15 @@ intptr_t dMNStageLogoOffsets[9] = {
 
 // 80134858
 f32 dMNStagePreviewScale[9] = {
-	0.50f , 0.20f,
-	0.60f , 0.50f, 0.30f, 0.60f,
-	0.50f , 0.40f, 0.20f
+
+	0.50f, 0.20f, 0.60f,
+	0.50f, 0.30f, 0.60f,
+	0.50f, 0.40f, 0.20f
 };
 
 // 8013487C
 Vec3f dMNStagePreviewTranslations[9] = {
+
 	{ 1700.00f, 1800.00f, 0.00f },
 	{ 1600.00f, 1600.00f, 0.00f },
 	{ 1600.00f, 1600.00f, 0.00f },
@@ -215,37 +238,35 @@ Vec3f dMNStagePreviewTranslations[9] = {
 
 // 801348E8
 s32 D_801348E8_150458[9] = {
+
  	6, 3, 0, 8, 2, 1, 5, 7, 4
 };
 
 // 8013490C
 syDisplaySetup D_ovl30_8013490C = {
-	0x80392A00, 0x803B6900,
-	0x803DA800, 0x00000000,
-	0x00000140, 0x000000F0,
+
+	gSCSubsysFramebuffer0,
+	gSCSubsysFramebuffer1,
+	gSCSubsysFramebuffer2,
+	0x00000000,
+	0x00000140,
+	0x000000F0,
 	0x00016A99,
 };
 
 // 80134928
 scRuntimeInfo D_ovl30_80134928 = {
 	0x00000000, 0x8000A5E4,
-	0x800A26B8, 0x80134E30,
-	0x00000000, 0x00000001,
-	0x00000002, 0x00004268,
-	0x00001000, 0x00000000,
-	0x00000000, 0x00008000,
-	0x00020000, 0x00008000,
-	0x80131B88, 0x80004310,
-	0x00000000, 0x00000200,
-	0x00000000, 0x00000000,
-	0x00000000,	0x00000000,
-	0x00000088,	0x00000000,
-	0x00000000,	0x00000000,
-	0x00000000,	0x00000000,
-	0x00000000,	0x00000088,
-	0x00000000,	0x0000006C,
-	0x00000000,	0x00000090,
-	0x80134304
+	func_800A26B8, &lOverlay30ArenaLo,
+	0x00000000, 0x00000001, 0x00000002, 0x00004268, 0x00001000,
+	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x00008000,
+	mnStageSetLighting, update_contdata,
+	0x00000000, 0x00000200, 0x00000000, 0x00000000,
+	0x00000000, 0x00000000, 0x00000088, 0x00000000,
+	0x00000000, 0x00000000, 0x00000000, 0x00000000,
+	0x00000000, 0x00000088, 0x00000000, 0x0000006C,
+	0x00000000, 0x00000090,
+	mnStageInitSSS
 };
 
 // 80
@@ -316,10 +337,6 @@ uintptr_t gMNStageModelHeap0Ptr;
 
 // 80134E28;
 uintptr_t gMNStageModelHeap1Ptr;
-
-
-// Forward declarations
-void mnStagePositionStagePreviewCamera(Camera* stage_preview_cam, s32 stage_id);
 
 
 // 80131B00

@@ -43,6 +43,7 @@ extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_2; // DObjDesc for white circle
 
 extern intptr_t FILE_017_PANEL_IMAGE_OFFSET;
 extern intptr_t FILE_017_CPU_PANEL_LUT_OFFSET; // D_NF_00003238; // CPU panel LUT
+extern void func_800A26B8();
 extern void func_ovl0_800CCF00(GObj*);
 extern void func_ovl0_800CD2CC(GObj*);
 extern void func_80007080(void*, f32, f32, f32, f32);
@@ -51,6 +52,7 @@ extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32,
 
 
 // Forward declarations
+void mnTrainingSetupDisplayList(Gfx **display_list);
 void mnTrainingCreateWhiteSquare(s32 port_id);
 void mnTrainingSyncNameAndLogo(s32 port_id);
 sb32 mnTrainingIsCostumeInUse(s32 ft_kind, s32 port_id, s32 costume_id);
@@ -59,6 +61,7 @@ void mnTrainingRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state);
 void mnTrainingDrawHandicapCPULevel(s32 port_id);
 void mnTrainingReorderCursorsOnPlacement(s32 port_id, s32 held_token_id);
 void mnTrainingSaveMatchInfo();
+void mnTrainingInitCSS();
 
 
 // DATA
@@ -437,9 +440,9 @@ f32 dMNTrainingWhiteCircleSizes[12] = {
 // 8013842C
 syDisplaySetup D_ovl28_8013842C = {
 
-	0x80392A00,
-	0x803B6900,
-	0x803DA800,
+	gSCSubsysFramebuffer0,
+	gSCSubsysFramebuffer1,
+	gSCSubsysFramebuffer2,
 	0x00000000,
 	0x00000140,
 	0x000000F0,
@@ -449,13 +452,17 @@ syDisplaySetup D_ovl28_8013842C = {
 // 80138448
 scRuntimeInfo D_ovl28_80138448 = {
 
-	0x00000000, 0x8000A5E4, 0x800A26B8, 0x80138CC0, 0x00000000,
-	0x00000001, 0x00000002, 0x000055F0, 0x00000200, 0x00000000,
-	0x00000000, 0x00008000, 0x00020000, 0x00008000, 0x80131B00,
-	0x80004310, 0x00000000, 0x00000200, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000088, 0x00000000, 0x800D5CAC,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000088,
-	0x00000000, 0x0000006C, 0x00000000, 0x00000090, 0x80137CAC
+	0x00000000, 0x8000A5E4,
+	func_800A26B8, &lOverlay28ArenaLo,
+	0x00000000, 0x00000001, 0x00000002, 0x000055F0, 0x00000200,
+	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x00008000,
+	mnTrainingSetupDisplayList, update_contdata,
+	0x00000000, 0x00000200, 0x00000000, 0x00000000,
+	0x00000000, 0x00000000, 0x00000088, 0x00000000,
+	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
+	0x00000000, 0x00000088, 0x00000000, 0x0000006C,
+	0x00000000, 0x00000090,
+	mnTrainingInitCSS
 };
 
 

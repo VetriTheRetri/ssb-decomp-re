@@ -62,6 +62,7 @@ void mn1PRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state);
 void mn1PAnnounceFighter(s32 port_id, s32 panel_id);
 s32 mn1PGetFtKindFromTokenPositionEvenIfLocked();
 void mn1PReorderCursorsOnPlacement(s32 port_id);
+void mn1PSetupDisplayList(Gfx **display_list);
 void mn1PDrawStock(s32 stock, s32 ft_kind);
 void mn1PCreateWhiteSquare(s32 port_id);
 void mn1PSyncNameAndLogo(s32 port_id);
@@ -69,6 +70,7 @@ s32 mn1PGetPrevTimerValue(s32 arg0);
 s32 mn1PGetNextTimerValue(s32 arg0);
 sb32 mn1PIsReadyToFight();
 void mn1PSaveMatchInfo();
+void mn1PInitCSS();
 
 // DATA
 // 801385B0
@@ -575,9 +577,9 @@ f32 dMN1PWhiteCircleSizes[12] = {
 
 syDisplaySetup D_ovl27_80138C90 = {
 
-	0x80392A00,
-	0x803B6900,
-	0x803DA800,
+	gSCSubsysFramebuffer0,
+	gSCSubsysFramebuffer1,
+	gSCSubsysFramebuffer2,
 	0x00000000,
 	0x00000140,
 	0x000000F0,
@@ -586,13 +588,17 @@ syDisplaySetup D_ovl27_80138C90 = {
 
 scRuntimeInfo D_ovl27_80138CAC = {
 
-	0x00000000, 0x8000A5E4, 0x8000A340, 0x801396D0, 0x00000000,
-	0x00000001, 0x00000002, 0x00004A38, 0x00000200, 0x00000000,
-	0x00000000, 0x00008000, 0x00020000, 0x00008000, 0x80131B00,
-	0x80004310, 0x00000000, 0x00000100, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000088, 0x00000000, 0x800D5CAC,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00000088,
-	0x00000000, 0x0000006C, 0x00000000, 0x00000090, 0x80138334
+	0x00000000, 0x8000A5E4,
+	func_8000A340, &lOverlay27ArenaLo,
+	0x00000000, 0x00000001, 0x00000002, 0x00004A38, 0x00000200,
+	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x00008000,
+	mn1PSetupDisplayList, update_contdata,
+	0x00000000, 0x00000100, 0x00000000, 0x00000000,
+	0x00000000, 0x00000000, 0x00000088, 0x00000000,
+	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
+	0x00000000, 0x00000088, 0x00000000, 0x0000006C,
+	0x00000000, 0x00000090,
+	mn1PInitCSS
 };
 
 

@@ -6,7 +6,6 @@
 #include "ovl32.h"
 
 // Externs
-
 extern uintptr_t D_NF_001AC870;
 extern uintptr_t D_NF_00000854;
 
@@ -30,21 +29,36 @@ extern void func_ovl0_800CD2CC();
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 
+// Forward declarations
+void mnVsRecordsInit();
+void mnVsRecordsSetLighting(Gfx **display_list);
+s32 mnVsRecordsIsUnlocked(s32 ft_kind);
+s32 mnVsRecordsGetCharIndex(u8);
+f32 mnVsRecordsGetUsePercentage(s32 ft_kind);
+f32 mnVsRecordsGetAverage(s32 ft_kind);
+f32 mnVsRecordsGetSDPercentage(s32 ft_kind);
+f32 mnVsRecordsGetWinPercentageAgainst(s32 ft_kind, s32 ft_kind_opponent);
+
 
 // DATA
-
 // 80136630
-s32 dMNVsRecordsRankingColumnWidths[7] = { 33, 33, 33, 33, 46, 35, 34 };
+s32 dMNVsRecordsRankingColumnWidths[7] = {
+
+	33, 33, 33, 33, 46, 35, 34
+};
 
 // 8013664C
-rdFileID D_ovl32_8013664C[4] = { 0x1f, 0x20, 0x13, 0x21 };
+rdFileID D_ovl32_8013664C[4] = {
+
+	0x1f, 0x20, 0x13, 0x21
+};
 
 // 80136660
 Lights1 dMNVsRecordsLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
 
 // 80136678
-Gfx dMNVsRecordsDisplayList[] =
-{
+Gfx dMNVsRecordsDisplayList[] = {
+
 	gsSPSetGeometryMode(G_LIGHTING),
 	gsSPSetLights1(dMNVsRecordsLights1),
 	gsSPEndDisplayList()
@@ -52,6 +66,7 @@ Gfx dMNVsRecordsDisplayList[] =
 
 // 801366A0
 s32 dMNVsRecordsFtKindOrder[12] = {
+
 	nFTKindMario,
 	nFTKindDonkey,
 	nFTKindLink,
@@ -67,10 +82,15 @@ s32 dMNVsRecordsFtKindOrder[12] = {
 };
 
 // 801366D0
-intptr_t dMNVsRecordsNumberOffsets[10] = { 0x2F0, 0x390, 0x430, 0x4D0, 0x570, 0x610, 0x6B0, 0x750, 0x7F0, 0x890 };
+intptr_t dMNVsRecordsNumberOffsets[10] = {
+
+	0x2F0, 0x390, 0x430, 0x4D0, 0x570,
+	0x610, 0x6B0, 0x750, 0x7F0, 0x890
+};
 
 // 801366F8
 intptr_t dMNVsRecordsChrOffsets[29] = {
+
 	0x40, 0xD0, 0x160, 0x1F0, 0x280, 0x310,
 	0x3A0, 0x430, 0x4C0, 0x550, 0x5E0, 0x670,
 	0x700, 0x790, 0x820, 0x8B0, 0x940, 0x9D0,
@@ -79,10 +99,14 @@ intptr_t dMNVsRecordsChrOffsets[29] = {
 };
 
 // 8013676C
-intptr_t dMNVsRecordsSubtitleOffsets[4] = { &FILE_01F_SUBTITLE_BATTLE_SCORE_IMAGE_OFFSET, 0x1458, 0x1318, 0 };
+intptr_t dMNVsRecordsSubtitleOffsets[4] = {
+
+	&FILE_01F_SUBTITLE_BATTLE_SCORE_IMAGE_OFFSET, 0x1458, 0x1318, 0
+};
 
 // 8013677C
 Vec2f dMNVsRecordsIconColumnPositionOffsets[12] = {
+
 	{ 1.0f, -5.0f },
 	{ 1.0f, -6.0f },
 	{ 0.0f, -6.0f },
@@ -99,6 +123,7 @@ Vec2f dMNVsRecordsIconColumnPositionOffsets[12] = {
 
 // 801367DC
 intptr_t dMNVsRecordsColumnIconOffsets[12] = {
+
 	0x1918, 0x1A98, 0x1CA8, 0x1E88,
 	0x2008, 0x2370, 0x2178, 0x2540,
 	0x2930, 0x2B30, 0x27C8, 0x2698
@@ -106,6 +131,7 @@ intptr_t dMNVsRecordsColumnIconOffsets[12] = {
 
 // 8013680C
 Vec2f dMNVsRecordsIconRowPositionOffsets[12] = {
+
 	{ 5.0f, 0.0f },
 	{ 5.0f, 0.0f },
 	{ 0.0f, 0.0f },
@@ -122,6 +148,7 @@ Vec2f dMNVsRecordsIconRowPositionOffsets[12] = {
 
 // 8013686C
 intptr_t dMNVsRecordsRowIconOffsets[12] = {
+
 	0x2D18, 0x2EF8, 0x3198, 0x3438,
 	0x3618, 0x3A38, 0x37F8, 0x3CD8,
 	0x4308, 0x45A8, 0x4098, 0x3EB8
@@ -129,43 +156,75 @@ intptr_t dMNVsRecordsRowIconOffsets[12] = {
 
 // 8013689C
 intptr_t dMNVsRecordsPortraitOffsets[12] = {
+
 	0x4728, 0xD068, 0x8BC8, 0xAE18,
 	0x6978, 0x11508, 0x13758, 0x19E48,
 	0xF2B8, 0x159A8, 0x1C098, 0x17BF8
 };
 
 // 801368CC
-s32 dMNVsRecordsIndividualChrColors[3] = { 0x8A, 0x88, 0x92 };
+s32 dMNVsRecordsIndividualChrColors[3] = {
+
+	0x8A, 0x88, 0x92
+};
 
 // 801368D8
-s32 dMNVsRecordsIndividualTopNumberColors[6] = { 0x0, 0x0, 0x0, 0x8A, 0x88, 0x92 };
+s32 dMNVsRecordsIndividualTopNumberColors[6] = {
+
+	0x0, 0x0, 0x0, 0x8A, 0x88, 0x92
+};
 
 // 801368F0
-s32 dMNVsRecordsBattleScoreNumberColors[6] = { 0x0, 0x0, 0x0, 0xE5, 0xD1, 0x99 };
+s32 dMNVsRecordsBattleScoreNumberColors[6] = {
+
+	0x0, 0x0, 0x0, 0xE5, 0xD1, 0x99
+};
 
 // 80136908
-s32 dMNVsRecordsRankingColumnValueWidths[7] = { 27, 30, 30, 23, 35, 27, 39 };
+s32 dMNVsRecordsRankingColumnValueWidths[7] = {
+
+	27, 30, 30, 23, 35, 27, 39
+};
 
 // 80136924
-s32 dMNVsRecordsRankingNumberColors[6] = { 0x0, 0x0, 0x0, 0xE5, 0xD1, 0x99 };
+s32 dMNVsRecordsRankingNumberColors[6] = {
+
+	0x0, 0x0, 0x0, 0xE5, 0xD1, 0x99
+};
 
 // 8013693C
-intptr_t dMNVsRecordsRankingTableHeaderOffsets[7] = { 0xA08, 0xAF8, 0xBE8, 0xCD8, 0xE10, 0xF08, 0x1008 };
+intptr_t dMNVsRecordsRankingTableHeaderOffsets[7] = {
+
+	0xA08, 0xAF8, 0xBE8, 0xCD8, 0xE10, 0xF08, 0x1008
+};
 
 // 80136958
-s32 dMNVsRecordsRankingTableHeaderXOffsets[7] = { 2, 2, 2, 4, 4, 3, 1 };
+s32 dMNVsRecordsRankingTableHeaderXOffsets[7] = {
+
+	2, 2, 2, 4, 4, 3, 1
+};
 
 // 80136974
-f32 dMNVsRecordsIndividualStatsYPositions[4] = { 160.0f, 172.0f, 184.0f, 196.0f };
+f32 dMNVsRecordsIndividualStatsYPositions[4] = {
+
+	160.0f, 172.0f, 184.0f, 196.0f
+};
 
 // 80136984
-s32 dMNVsRecordsIndividualNumberColors[6] = { 0x0, 0x0, 0x0, 0xE5, 0xD1, 0x99 };
+s32 dMNVsRecordsIndividualNumberColors[6] = {
+
+	0x0, 0x0, 0x0, 0xE5, 0xD1, 0x99
+};
 
 // 8013699C
-intptr_t dMNVsRecordsIndividualTableRowHeaderOffsets[4] = { 0xA08, 0xAF8, 0x1140, 0x1008 };
+intptr_t dMNVsRecordsIndividualTableRowHeaderOffsets[4] = {
+
+	0xA08, 0xAF8, 0x1140, 0x1008
+};
 
 // 801369AC
 Vec2f dMNVsRecordsIndividualTableRowHeaderPositions[4] = {
+
 	{ 29.0f, 159.0f },
 	{ 28.0f, 171.0f },
 	{ 25.0f, 183.0f },
@@ -174,25 +233,33 @@ Vec2f dMNVsRecordsIndividualTableRowHeaderPositions[4] = {
 
 // 801369CC
 syDisplaySetup D_ovl32_801369CC = {
-	0x80392A00, 0x803B6900, 0x803DA800, 0x00000000, 0x00000140, 0x000000F0, 0x16a99
+
+	gSCSubsysFramebuffer0,
+	gSCSubsysFramebuffer1,
+	gSCSubsysFramebuffer2,
+	0x00000000,
+	0x00000140,
+	0x000000F0,
+	0x00016A99
 };
 
 // 801369E8
 scRuntimeInfo D_ovl32_801369E8 = {
 	0x00000000, 0x8000A5E4,
-	0x8000A340, 0x80136DA0, 0x00000000, 0x00000001,
-	0x00000002, 0x0000EA60, 0x00000000, 0x00000000,
-	0x00000000, 0x00008000, 0x00020000, 0x0000C000,
-	0x80131B00, 0x80004310, 0x00000000, 0x00000600,
+	func_8000A340, &lOverlay32ArenaLo,
+	0x00000000, 0x00000001, 0x00000002, 0x0000EA60, 0x00000000,
+	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000C000,
+	mnVsRecordsSetLighting, update_contdata,
+	0x00000000, 0x00000600, 0x00000000, 0x00000000,
+	0x00000000, 0x00000000, 0x00000088, 0x00000000,
 	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000088, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, 0x00000088,
-	0x00000000, 0x0000006C, 0x00000000, 0x00000090,
-	0x80136488,
+	0x00000000, 0x00000088, 0x00000000, 0x0000006C,
+	0x00000000, 0x00000090,
+	mnVsRecordsInit,
 };
 
-// BSS
 
+// BSS
 // 80136C10
 s32 D_ovl32_80136C10[2];
 
@@ -238,13 +305,6 @@ u32 D_ovl32_80136CE0[42]; // unknown
 // 80136D88
 s32 gMNVsRecordsFilesArray[4];
 
-// Forward declarations
-s32 mnVsRecordsIsUnlocked(s32 ft_kind);
-s32 mnVsRecordsGetCharIndex(u8);
-f32 mnVsRecordsGetUsePercentage(s32 ft_kind);
-f32 mnVsRecordsGetAverage(s32 ft_kind);
-f32 mnVsRecordsGetSDPercentage(s32 ft_kind);
-f32 mnVsRecordsGetWinPercentageAgainst(s32 ft_kind, s32 ft_kind_opponent);
 
 // 80131B00
 void mnVsRecordsSetLighting(Gfx **display_list)

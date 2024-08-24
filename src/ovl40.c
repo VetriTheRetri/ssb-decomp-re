@@ -3,7 +3,140 @@
 #include <sys/system_00.h>
 #include <ovl0/reloc_data_mgr.h>
 
-#include "ovl40.h"
+// Externs
+extern intptr_t FILE_041_LINK_CAMERA_PARAMS_OFFSET; // 0xC0
+extern intptr_t lOverlay40ArenaHi;  // 803903E0
+extern intptr_t lOverlay40ArenaLo;  // 8018E5E0
+extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
+extern void func_80007080(void*, f32, f32, f32, f32);
+extern func_ovl0_800CCF00();
+extern func_ovl0_800CD2CC();
+
+
+// Forward declarations
+void mvOpeningLinkInit();
+void gMvOpeningLinkSetupDisplayList(Gfx **display_list);
+
+
+// DATA
+// 8018E070
+CameraVec7 dMvOpeningLinkCameraSettingsStart = {
+
+	{ -800.0, 180.0, 800.0 },
+	{ 0.0, 180.0, 0.0 },
+	0.0
+};
+
+// 8018E08C
+CameraVec7 dMvOpeningLinkCameraSettingsEnd = {
+
+	{ 200.0, 0.0, 400.0 },
+	{ 0.0, 240.0, 0.0 },
+	0.4
+};
+
+// 8018E0A8
+ftGameKeyCommand dMvOpeningLinkGameKey[] = {
+
+    FTGAMEKEY_EVENT_BUTTON(L_TRIG, 1),  // 0x1001, 0x0020
+    FTGAMEKEY_EVENT_END()               // 0x0000
+};
+
+rdFileID D_ovl40_8018E0B0[2] = {
+
+	0x00000025, 0x00000041
+};
+
+// 8018E0B8
+intptr_t dMvOpeningLinkNameOffsets[5] = {
+
+	0x00003358, 0x000026b8,
+	0x00003e88, 0x00002f98, 0x00000000
+};
+
+// 8018E0CC
+f32 dMvOpeningLinkNameCharXPositions[4] = {
+
+	0.0, 30.0, 45.0, 80.0
+};
+
+// 8018E0DC
+syDisplaySetup D_ovl40_8018E0DC = {
+
+	gSCSubsysFramebuffer0,
+	gSCSubsysFramebuffer1,
+	gSCSubsysFramebuffer2,
+	0x00000000,
+	0x00000140,
+	0x000000F0,
+	0x00016A99
+};
+
+// 8018E0F8
+scRuntimeInfo D_ovl40_8018E0F8 = {
+
+	0x00000000, 0x8000a5e4,
+	0x800a26b8, &lOverlay40ArenaLo,
+	0x00000000, 0x00000001, 0x00000002, 0x00004000, 0x00002000,
+	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000c000,
+	gMvOpeningLinkSetupDisplayList, update_contdata,
+	0x00000000, 0x00000600, 0x00000000, 0x00000000,
+	0x00000000, 0x00000000, 0x00000088, 0x00000000,
+	0x800d5cac, 0x00000000, 0x00000000, 0x00000000,
+	0x00000000, 0x00000088, 0x00000000, 0x0000006c,
+	0x00000000, 0x00000090,
+	mvOpeningLinkInit
+};
+
+// BSS
+// 8018E1C0
+s32 D_ovl40_8018E1C0;
+
+// 8018E1C4
+s32 D_ovl40_8018E1C4;
+
+// 8018E1C8
+s32 gMvOpeningLinkFramesElapsed;
+
+// 8018E1CC
+GObj* gMvOpeningLinkNameGObj;
+
+// 8018E1D0
+GObj* gMvOpeningLinkStageFighterGObj;
+
+// 8018E1D4
+s32 D_ovl40_8018E1D4;
+
+// 8018E1D8
+GObj* gMvOpeningLinkStageCameraGObj;
+
+// 8018E1DC
+void* gMvOpeningLinkAnimHeap;
+
+// 8018E1E0
+f32 gMvOpeningLinkPosedFighterXSpeed;
+
+// 8018E1E4
+s32 D_ovl40_8018E1E4;
+
+// 8018E1E8
+CameraVec7 dMvOpeningLinkCameraSettingsAdjustedStart;
+
+// 8018E208
+CameraVec7 dMvOpeningLinkCameraSettingsAdjustedEnd;
+
+// 8018E228
+rdFileNode D_ovl40_8018E228[48];
+
+// 8018E3A8
+rdFileNode D_ovl40_8018E3A8[7];
+
+// 8018E3E0
+uintptr_t gMvOpeningLinkFilesArray[2];
+
+// 8018E3E8
+scBattleState gMvOpeningLinkBattleState;
+
 
 // 8018D0C0
 void mvOpeningLinkLoadFiles()
@@ -340,10 +473,7 @@ void mvOpeningLinkInit()
 	mvOpeningLinkCreatePosedFighterViewport();
 	mvOpeningLinkDrawName();
 
-	while (func_8000092C() < 1695U)
-	{
-		// sleep
-	}
+	while (func_8000092C() < 1695U);
 }
 
 // 8018DFCC

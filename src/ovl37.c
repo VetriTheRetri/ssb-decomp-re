@@ -396,7 +396,7 @@ void mvOpeningDKCreatePosedFighterViewport()
 	func_80007080(&cam->viewport, 210.0F, 10.0F, 310.0F, 230.0F);
 	cam->projection.persp.aspect = 5.0F / 11.0F;
 	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningDKFilesArray[1], &FILE_041_DK_CAMERA_PARAMS_OFFSET), 0.0F);
-	gcAddGObjProcess(camera_gobj, gcUpdateCameraCamAnim, 1, 1);
+	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
 // 8018DCD8

@@ -784,7 +784,7 @@ void func_ovl2_8010CBE4(GObj *camera_gobj)
 {
     Camera *cam;
 
-    gcUpdateCameraCamAnim(camera_gobj);
+    gcPlayCamAnim(camera_gobj);
 
     cam = CameraGetStruct(camera_gobj);
 

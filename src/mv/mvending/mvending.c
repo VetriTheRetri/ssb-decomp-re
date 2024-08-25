@@ -415,7 +415,7 @@ void mvEndingSetupOperatorCamera(GObj *gobj)
     cam->projection.persp.far = 16384.0F;
 
     gcAddCameraCamAnimJoint(cam, gcGetDataFromFile(AObjEvent*, sMVEndingFiles[1], &lMVEndingOperatorCamAnimJoint), 0.0F);
-    gcAddGObjProcess(gobj, gcUpdateCameraCamAnim, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(gobj, gcPlayCamAnim, nOMObjProcessKindProc, 1);
 }
 
 // 0x80132630

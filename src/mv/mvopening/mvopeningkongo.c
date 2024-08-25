@@ -270,9 +270,9 @@ void mvOpeningKongoMakeStageViewport(Vec3f unused)
     cam->projection.persp.far = 15000.0F;
 
     gcAddCameraCamAnimJoint(cam, gcGetDataFromFile(AObjEvent*, sMVOpeningKongoFiles[1], &lMVOpeningKongoCamAnimJoint), 0.0F);
-    gcAddGObjProcess(sMVOpeningKongoStageCameraGObj, gcUpdateCameraCamAnim, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(sMVOpeningKongoStageCameraGObj, gcPlayCamAnim, nOMObjProcessKindProc, 1);
 
-    gcUpdateCameraCamAnim(sMVOpeningKongoStageCameraGObj);
+    gcPlayCamAnim(sMVOpeningKongoStageCameraGObj);
 }
 
 // 0x8018D2DC

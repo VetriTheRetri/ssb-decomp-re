@@ -2854,7 +2854,7 @@ void gcPlayCameraCamAnim(Camera *cam)
     }
 }
 
-void gcUpdateCameraCamAnim(GObj *gobj)
+void gcPlayCamAnim(GObj *gobj)
 {
     Camera *cam = CameraGetStruct(gobj);
 

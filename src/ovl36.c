@@ -389,7 +389,7 @@ void mvOpeningMarioCreatePosedFighterViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
 	cam->projection.persp.aspect = 5.0F / 11.0F;
 	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningMarioFilesArray[1], &FILE_041_MARIO_CAMERA_PARAMS_OFFSET), 0.0F);
-	gcAddGObjProcess(camera_gobj, gcUpdateCameraCamAnim, 1, 1);
+	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
 // 8018DCEC

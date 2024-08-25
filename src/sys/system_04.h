@@ -60,7 +60,7 @@ extern void gcSetDObjTransformsForGObj(struct GObjCommon *, struct UnkEC64Arg3 *
 */
 
 // extern void gcAddCameraCamAnimJoint(struct DObj *dobj, union AnimCmd *, f32);
-// extern void gcUpdateCameraCamAnim(struct GObjCommon *obj);
+// extern void gcPlayCamAnim(struct GObjCommon *obj);
 // extern void gcSetMatrixProcess(void *);
 
 // possible real start of system_05

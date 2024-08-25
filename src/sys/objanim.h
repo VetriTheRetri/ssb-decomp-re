@@ -156,7 +156,7 @@ extern void gcParseCameraCamAnimJoint(Camera *cam);
 extern void gcPlayCameraCamAnim(Camera *cam);
 
 // Parse and update CamAnimJoint on GObj's Camera
-extern void gcUpdateCameraCamAnim(GObj *gobj);
+extern void gcPlayCamAnim(GObj *gobj);
 
 // Get total animation length
 extern s32 gcGetAnimTotalLength(AObjEvent **anim_joints);

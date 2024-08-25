@@ -87,14 +87,8 @@ void *sMVOpeningSectorFiles[3];
 // 0x801328F0
 u32 dMVOpeningSectorFileIDs[/* */] = { &D_NF_00000049, &D_NF_000000A1, &D_NF_0000004A };
 
-// 0x801328FC
-// s32 dMVOpeningPad0x801328FC = 0;
-
 // 0x80132900
 Lights1 dMVOpeningSectorLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
-
-// 0x80132914
-// s32 dMVOpeningPad0x80132914 = 0;
 
 // 0x80132918
 Lights1 dMVOpeningSectorLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);

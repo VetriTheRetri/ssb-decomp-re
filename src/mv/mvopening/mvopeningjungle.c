@@ -43,43 +43,43 @@ extern uintptr_t D_NF_00000040;
 // // // // // // // // // // // //
 
 // 0x8018DA40
-s32 sMVOpeningKongoPad0x8018DA40[2];
+s32 sMVOpeningJunglePad0x8018DA40[2];
 
 // 0x8018DA48
-s32 sMVOpeningKongoTotalTimeTics;
+s32 sMVOpeningJungleTotalTimeTics;
 
 // 0x8018DA4C
-s32 sMVOpeningKongoPad0x8018DA4C;
+s32 sMVOpeningJunglePad0x8018DA4C;
 
 // 0x8018DA50
-GObj* sMVOpeningKongoFighterGObj;
+GObj* sMVOpeningJungleFighterGObj;
 
 // 0x8018DA54
-s32 sMVOpeningKongoPad0x8018DA54;
+s32 sMVOpeningJunglePad0x8018DA54;
 
 // 0x8018DA58
-GObj* sMVOpeningKongoStageCameraGObj;
+GObj* sMVOpeningJungleStageCameraGObj;
 
 // 0x8018DA5C
-s32 sMVOpeningKongoPad0x8018DA5C[2];
+s32 sMVOpeningJunglePad0x8018DA5C[2];
 
 // 0x8018DA68
-CameraDesc sMVOpeningKongoUnusedCameraDescAdjustedStart;
+CameraDesc sMVOpeningJungleUnusedCameraDescAdjustedStart;
 
 // 0x8018DA88
-CameraDesc sMVOpeningKongoUnusedCameraDescAdjustedEnd;
+CameraDesc sMVOpeningJungleUnusedCameraDescAdjustedEnd;
 
 // 0x8018DAA8
-rdFileNode sMVOpeningKongoStatusBuf[48];
+rdFileNode sMVOpeningJungleStatusBuf[48];
 
 // 0x8018DC28
-rdFileNode sMVOpeningKongoForceBuf[7];
+rdFileNode sMVOpeningJungleForceBuf[7];
 
 // 0x8018DC60
-void *sMVOpeningKongoFiles[2];
+void *sMVOpeningJungleFiles[2];
 
 // 0x8018DC68
-scBattleState sMVOpeningKongoBattleState;
+scBattleState sMVOpeningJungleBattleState;
 
 // // // // // // // // // // // //
 //                               //
@@ -88,7 +88,7 @@ scBattleState sMVOpeningKongoBattleState;
 // // // // // // // // // // // //
 
 // 0x8018D870
-CameraDesc dMVOpeningKongoCameraDescStart =
+CameraDesc dMVOpeningJungleCameraDescStart =
 {
     // Eye
     { 1000.0F, 900.0F, 3600.0F },
@@ -101,7 +101,7 @@ CameraDesc dMVOpeningKongoCameraDescStart =
 };
 
 // 0x8018D88C
-CameraDesc dMVOpeningKongoCameraDescEnd =
+CameraDesc dMVOpeningJungleCameraDescEnd =
 {
     // Eye
     { -1800.0F, 800.0F, 1500.0F },
@@ -114,7 +114,7 @@ CameraDesc dMVOpeningKongoCameraDescEnd =
 };
 
 // 0x8018D8A8
-ftKeyCommand dMVOpeningKongoDonkeyInputSeq[/* */] =
+ftKeyCommand dMVOpeningJungleDonkeyInputSeq[/* */] =
 {
     FTKEY_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0),   // 0x2000, 0x00B0
     FTKEY_EVENT_BUTTON(B_BUTTON, 1),                    // 0x1001, 0x4000
@@ -137,7 +137,7 @@ ftKeyCommand dMVOpeningKongoDonkeyInputSeq[/* */] =
 };
 
 // 0x8018D8F0
-ftKeyCommand dMVOpeningKongoSamusInputSeq[/* */] =
+ftKeyCommand dMVOpeningJungleSamusInputSeq[/* */] =
 {
     FTKEY_EVENT_STICK(-I_CONTROLLER_RANGE_MAX, 0, 20),  // 0x2014, 0xB000
     FTKEY_EVENT_STICK(0, 0, 75),                        // 0x204B, 0x0000
@@ -159,13 +159,13 @@ ftKeyCommand dMVOpeningKongoSamusInputSeq[/* */] =
 };
 
 // 0x8018D934?
-u32 dMVOpeningKongoFileIDs[/* */] = { &D_NF_00000025, &D_NF_00000040 };
+u32 dMVOpeningJungleFileIDs[/* */] = { &D_NF_00000025, &D_NF_00000040 };
 
 // 0x8018D93C
-syDisplaySetup dMVOpeningKongoDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syDisplaySetup dMVOpeningJungleDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8018D958
-scRuntimeInfo dMVOpeningKongoGtlSetup =
+scRuntimeInfo dMVOpeningJungleGtlSetup =
 {
     0x00000000,
 	func_8000A5E4,
@@ -181,7 +181,7 @@ scRuntimeInfo dMVOpeningKongoGtlSetup =
 	0x00008000,
 	0x00020000,
 	0x0000C000,
-	mvOpeningKongoProcLights,
+	mvOpeningJungleProcLights,
 	update_contdata,
 	0x00000000,
 	0x00000600,
@@ -201,7 +201,7 @@ scRuntimeInfo dMVOpeningKongoGtlSetup =
 	0x0000006C,
 	0x00000000,
 	0x00000090,
-	mvOpeningKongoProcStart
+	mvOpeningJungleProcStart
 };
 
 // // // // // // // // // // // //
@@ -211,7 +211,7 @@ scRuntimeInfo dMVOpeningKongoGtlSetup =
 // // // // // // // // // // // //
 
 // 0x8018D0C0
-void mvOpeningKongoSetupFiles(void)
+void mvOpeningJungleSetupFiles(void)
 {
     rdSetup rd_setup;
 
@@ -219,23 +219,23 @@ void mvOpeningKongoSetupFiles(void)
     rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
     rd_setup.file_heap = 0;
     rd_setup.file_heap_size = 0;
-    rd_setup.status_buf = sMVOpeningKongoStatusBuf;
-    rd_setup.status_buf_size = ARRAY_COUNT(sMVOpeningKongoStatusBuf);
-    rd_setup.force_buf = sMVOpeningKongoForceBuf;
-    rd_setup.force_buf_size = ARRAY_COUNT(sMVOpeningKongoForceBuf);
+    rd_setup.status_buf = sMVOpeningJungleStatusBuf;
+    rd_setup.status_buf_size = ARRAY_COUNT(sMVOpeningJungleStatusBuf);
+    rd_setup.force_buf = sMVOpeningJungleForceBuf;
+    rd_setup.force_buf_size = ARRAY_COUNT(sMVOpeningJungleForceBuf);
 
     rdManagerInitSetup(&rd_setup);
     rdManagerLoadFiles
     (
-        dMVOpeningKongoFileIDs,
-        ARRAY_COUNT(dMVOpeningKongoFileIDs),
-        sMVOpeningKongoFiles,
+        dMVOpeningJungleFileIDs,
+        ARRAY_COUNT(dMVOpeningJungleFileIDs),
+        sMVOpeningJungleFiles,
         gsMemoryAlloc
         (
             rdManagerGetAllocSize
             (
-                dMVOpeningKongoFileIDs, 
-                ARRAY_COUNT(dMVOpeningKongoFileIDs)
+                dMVOpeningJungleFileIDs, 
+                ARRAY_COUNT(dMVOpeningJungleFileIDs)
             ),
             0x10
         )
@@ -249,34 +249,34 @@ void func_ovl49_8018D160(void)
 }
 
 // 0x8018D168
-void mvOpeningKongoMakeStageViewport(Vec3f unused)
+void mvOpeningJungleMakeStageViewport(Vec3f unused)
 {
     Camera *cam;
 
-    sMVOpeningKongoUnusedCameraDescAdjustedStart = dMVOpeningKongoCameraDescStart;
-    sMVOpeningKongoUnusedCameraDescAdjustedEnd = dMVOpeningKongoCameraDescEnd;
+    sMVOpeningJungleUnusedCameraDescAdjustedStart = dMVOpeningJungleCameraDescStart;
+    sMVOpeningJungleUnusedCameraDescAdjustedEnd = dMVOpeningJungleCameraDescEnd;
 
-    sMVOpeningKongoStageCameraGObj = func_ovl2_8010DB2C(NULL);
+    sMVOpeningJungleStageCameraGObj = func_ovl2_8010DB2C(NULL);
 
-    cam = CameraGetStruct(sMVOpeningKongoStageCameraGObj);
+    cam = CameraGetStruct(sMVOpeningJungleStageCameraGObj);
 
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
     cam->projection.persp.aspect = 15.0F / 11.0F;
 
-    func_8000B39C(sMVOpeningKongoStageCameraGObj);
+    func_8000B39C(sMVOpeningJungleStageCameraGObj);
 
     cam->projection.persp.near = 50.0F;
     cam->projection.persp.far = 15000.0F;
 
-    gcAddCameraCamAnimJoint(cam, gcGetDataFromFile(AObjEvent*, sMVOpeningKongoFiles[1], &lMVOpeningKongoCamAnimJoint), 0.0F);
-    gcAddGObjProcess(sMVOpeningKongoStageCameraGObj, gcPlayCamAnim, nOMObjProcessKindProc, 1);
+    gcAddCameraCamAnimJoint(cam, gcGetDataFromFile(AObjEvent*, sMVOpeningJungleFiles[1], &lMVOpeningJungleCamAnimJoint), 0.0F);
+    gcAddGObjProcess(sMVOpeningJungleStageCameraGObj, gcPlayCamAnim, nOMObjProcessKindProc, 1);
 
-    gcPlayCamAnim(sMVOpeningKongoStageCameraGObj);
+    gcPlayCamAnim(sMVOpeningJungleStageCameraGObj);
 }
 
 // 0x8018D2DC
-void mvOpeningKongoMakeFighters(void)
+void mvOpeningJungleMakeFighters(void)
 {
     GObj* fighter_gobj;
     s32 i;
@@ -312,7 +312,7 @@ void mvOpeningKongoMakeFighters(void)
 
     spawn_position[0].x += 1100.0F;
 
-    mvOpeningKongoMakeStageViewport(spawn_position[1]);
+    mvOpeningJungleMakeStageViewport(spawn_position[1]);
 
     gmRumbleMakeActor();
     ftPublicityMakeActor();
@@ -360,7 +360,7 @@ void mvOpeningKongoMakeFighters(void)
         ft_desc.controller = &gPlayerControllers[i];
         ft_desc.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->players[i].ft_kind);
 
-        sMVOpeningKongoFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);
+        sMVOpeningJungleFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);
 
         if (gBattleState->players[i].ft_kind == nFTKindDonkey)
         {
@@ -378,16 +378,16 @@ void mvOpeningKongoMakeFighters(void)
 
         if (gBattleState->players[i].ft_kind == nFTKindDonkey)
         {
-            ftParamSetKey(fighter_gobj, dMVOpeningKongoDonkeyInputSeq);
+            ftParamSetKey(fighter_gobj, dMVOpeningJungleDonkeyInputSeq);
         }
-        else ftParamSetKey(fighter_gobj, dMVOpeningKongoSamusInputSeq);
+        else ftParamSetKey(fighter_gobj, dMVOpeningJungleSamusInputSeq);
     }
 }
 
 // 0x8018D5E4
-void mvOpeningKongoProcRun(GObj *gobj)
+void mvOpeningJungleProcRun(GObj *gobj)
 {
-    sMVOpeningKongoTotalTimeTics++;
+    sMVOpeningJungleTotalTimeTics++;
 
     if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
     {
@@ -396,7 +396,7 @@ void mvOpeningKongoProcRun(GObj *gobj)
 
         leoInitUnit_atten();
     }
-    if (sMVOpeningKongoTotalTimeTics == 320)
+    if (sMVOpeningJungleTotalTimeTics == 320)
     {
         gSceneData.scene_previous = gSceneData.scene_current;
         gSceneData.scene_current = nSCKindOpeningYoster;
@@ -412,10 +412,10 @@ void func_ovl51_8018D668(void)
 }
 
 // 0x8018D670
-void mvOpeningKongoProcStart(void)
+void mvOpeningJungleProcStart(void)
 {
-    sMVOpeningKongoBattleState = gDefaultBattleState;
-    gBattleState = &sMVOpeningKongoBattleState;
+    sMVOpeningJungleBattleState = gDefaultBattleState;
+    gBattleState = &sMVOpeningJungleBattleState;
 
     gBattleState->game_type = nSCBattleGameTypeOpening;
 
@@ -427,8 +427,8 @@ void mvOpeningKongoProcStart(void)
     gBattleState->players[1].ft_kind = nFTKindSamus;
     gBattleState->players[1].pl_kind = nFTPlayerKindKey;
 
-    mvOpeningKongoSetupFiles();
-    gcMakeGObjSPAfter(nOMObjCommonKindMovie, mvOpeningKongoProcRun, 13, GOBJ_LINKORDER_DEFAULT);
+    mvOpeningJungleSetupFiles();
+    gcMakeGObjSPAfter(nOMObjCommonKindMovie, mvOpeningJungleProcRun, 13, GOBJ_LINKORDER_DEFAULT);
     func_8000B9FC(9, 0x80000000, 0x64, 3, 0xFF);
     efAllocInitParticleBank();
     ftParamInitGame();
@@ -440,7 +440,7 @@ void mvOpeningKongoProcStart(void)
     itManagerInitItems();
     efManagerInitEffects();
     ifScreenFlashMakeInterface(0xFF);
-    mvOpeningKongoMakeFighters();
+    mvOpeningJungleMakeFighters();
 
     while (func_8000092C() < 2880)
     {
@@ -449,18 +449,18 @@ void mvOpeningKongoProcStart(void)
 }
 
 // 0x8018D7CC
-void mvOpeningKongoProcLights(Gfx **dls)
+void mvOpeningJungleProcLights(Gfx **dls)
 {
     gSPSetGeometryMode(dls[0]++, G_LIGHTING);
     ftRenderLightsDrawReflect(dls, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
 // 0x8018D818
-void mvOpeningKongoStartScene(void)
+void mvOpeningJungleStartScene(void)
 {
-    dMVOpeningKongoDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    func_80007024(&dMVOpeningKongoDisplaySetup);
+    dMVOpeningJungleDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
+    func_80007024(&dMVOpeningJungleDisplaySetup);
 
-    dMVOpeningKongoGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_TEXT_START - (uintptr_t)&ovl51_BSS_END);
-    gsGTLSceneInit(&dMVOpeningKongoGtlSetup);
+    dMVOpeningJungleGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_TEXT_START - (uintptr_t)&ovl51_BSS_END);
+    gsGTLSceneInit(&dMVOpeningJungleGtlSetup);
 }

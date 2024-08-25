@@ -461,7 +461,7 @@ void mvOpeningNewcomersProcStart(void)
 
     scSubsysFighterSetLightParams(0.0F, 0.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-    func_800269C0_275C0(nSYAudioFGMOpeningNewcomers);
+    func_800269C0_275C0(nSYAudioFGMOpeningNewcomersClash);
     func_800269C0_275C0(nSYAudioVoiceAnnounceTitleWait);
 
     while (func_8000092C() < 4155)

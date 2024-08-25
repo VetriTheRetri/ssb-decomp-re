@@ -228,15 +228,15 @@ typedef enum gmFGMVoiceID
 	nSYAudioFGMDairantouPunchL,
 	nSYAudioFGMDairantouPunchM,
 	nSYAudioFGMDairantouPunchS,
-	nSYAudioFGMWindAmbient1,
-	nSYAudioFGMOpeningNewcomers,
-	nSYAudioFGMPublicityPrologue,	// Cheer on Meta Crystal and Duel Zone before the music starts playing
+	nSYAudioFGMOpeningSectorAmbient,
+	nSYAudioFGMOpeningNewcomersClash,
+	nSYAudioFGMPublicityPrologue,		// Cheer on Meta Crystal and Duel Zone before the music starts playing
 	nSYAudioFGMUnkBatS,
-	nSYAudioFGMOpeningBatM,			// Plays on characters clashing scene in opening?
-	nSYAudioFGMAltitudeWarn,	// Bottom map_bound warning sound?
-	nSYAudioFGMMapBoundHitL, 	// One of many sounds that play when entering the blast zones
+	nSYAudioFGMOpeningBatM,				// Plays on characters clashing scene in opening?
+	nSYAudioFGMAltitudeWarn,			// Bottom map_bound warning sound?
+	nSYAudioFGMMapBoundHitL, 			// One of many sounds that play when entering the blast zones
 	nSYAudioFGMMapBoundHitS,
-	nSYAudioFGMUnkMechanical1, 	// Menu sound?
+	nSYAudioFGMUnkMechanical1, 			// Menu sound?
 	nSYAudioFGMTitlePressStart,
 	nSYAudioFGMMenuSelect,
 	nSYAudioFGMStageSelect,

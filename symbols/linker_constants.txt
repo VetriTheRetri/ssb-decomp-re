@@ -977,7 +977,21 @@ lITLinkBombBloatScales = 0x000000A8;
 
 lITMonsterAnimBankStart = 0x00013624;
 
-lMVOpeningKongoCamAnimJoint = 0x00000000;
+lMVOpeningSectorGreatFoxDObjDesc = 0x0000D820;
+lMVOpeningSectorGreatFoxAnimJoint = 0x0000DA10;
+
+lMVOpeningSectorCamAnimJoint = 0x0000F9A0;
+
+lMVOpeningSectorCockpitSprite = 0x0003CC90;
+
+lMVOpeningSectorArwingDObjDesc = 0x00002C30;
+lMVOpeningSectorArwing0AnimJoint = 0x0000E110;
+lMVOpeningSectorArwing1AnimJoint = 0x0000E910;
+lMVOpeningSectorArwing2AnimJoint = 0x0000F1C0;
+
+lMVOpeningSectorWallpaperSprite = 0x00026C88;
+
+lMVOpeningJungleCamAnimJoint = 0x00000000;
 
 lMVOpeningNewcomersPurinShowDisplayList = 0x00005C28;
 lMVOpeningNewcomersPurinAnimJoint = 0x00005E44;

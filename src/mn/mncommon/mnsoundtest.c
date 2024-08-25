@@ -167,8 +167,8 @@ u32 dMNSoundTestMusicIDs[/* */] =
 // 0x80133A94
 u32 dMNSoundTestSoundIDs[/* */] =
 {
-    nSYAudioFGMWindAmbient1,
-    nSYAudioFGMOpeningNewcomers,
+    nSYAudioFGMOpeningSectorAmbient,
+    nSYAudioFGMOpeningNewcomersClash,
     nSYAudioFGMPublicityPrologue,
     nSYAudioFGMOpeningBatM,
     nSYAudioFGMAltitudeWarn,

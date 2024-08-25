@@ -808,12 +808,12 @@ void scExplainProcStart(void)
 
         ftParamInitPlayerBattleStats(player, fighter_gobj);
 
-        ftParamSetExplainGameKey
+        ftParamSetKey
         (
             fighter_gobj,
             gcGetDataFromFile
             (
-                ftGameKeyCommand*,
+                ftKeyCommand*,
                 sSCExplainMainFileHead,
                 dSCExplainGameKeyuences[player]
             )

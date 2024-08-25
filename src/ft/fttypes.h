@@ -864,7 +864,7 @@ struct ftComputerInput
     Vec2b stick_range; // CPU stick input?
 };
 
-union ftGameKeyCommand
+union ftKeyCommand
 {
     u16 halfword;
 
@@ -878,10 +878,10 @@ union ftGameKeyCommand
     Vec2b stick_range;
 };
 
-struct ftGameKey
+struct ftKey
 {
     s32 input_wait;
-    ftGameKeyCommand *input_seq;
+    ftKeyCommand *input_seq;
 };
 
 struct ftAttributes
@@ -1297,7 +1297,7 @@ struct ftStruct
     syColorRGBA fog_color;      // Used only by Master Hand, when in the background on the -Z plane?
     syColorRGBA shade_color;    // Shade colors of character costume
 
-    ftGameKey explain;          // "How To Play" tutorial command struct
+    ftKey key;                  // Automatic input sequence struct
 
     struct ftAfterImageInfo
     {

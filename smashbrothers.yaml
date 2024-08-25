@@ -1634,16 +1634,18 @@ segments:
       - [0x174820, data, ovl50]
       - [0x174920, rodata, ovl50]
 
-  - name: ovl51 # to be moved from main branch
+  - name: ovl51
     type: code
     start: 0x174940
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x174940, asm, ovl51]
-      - [0x1750F0, data, ovl51]
+      - [0x174940, c, mv/mvopening/mvopeningkongo]
+      - [0x1750F0, .data, mv/mvopening/mvopeningkongo]
+      - [0x175270, .rodata, mv/mvopening/mvopeningkongo]
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningkongo, vram: 0x8018DA40 }
 
-  - name: ovl52 # to be moved from main branch
+  - name: ovl52
     type: code
     start: 0x1752C0
     vram: 0x80131B00

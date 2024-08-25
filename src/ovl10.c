@@ -324,7 +324,7 @@ void mnTitleInitVars()
 {
 	s32 index;
 
-	if (gSceneData.scene_previous == nSCKindIntroHiddenChars)
+	if (gSceneData.scene_previous == nSCKindOpeningNewcomers)
 	{
 		gMNTitleLayout = nMNTitleLayoutIntro;
 		gMNTitleTransitionFramesElapsed = 0;
@@ -364,7 +364,7 @@ void mnTitleSetFinalLogoPosition()
 
 	smash_logo_gobj = gOMObjCommonLinks[10];
 
-	if (gSceneData.scene_previous == nSCKindIntroHiddenChars)
+	if (gSceneData.scene_previous == nSCKindOpeningNewcomers)
 	{
 		func_8000B39C(smash_logo_gobj);
 	}
@@ -586,7 +586,7 @@ void mnTitleEnableAllInGroup(s32 link_id)
 // 801323DC
 void mnTitleNextLayout()
 {
-	if ((gMNTitleLayout == nMNTitleLayoutIntro) && (gSceneData.scene_previous == nSCKindIntroHiddenChars))
+	if ((gMNTitleLayout == nMNTitleLayoutIntro) && (gSceneData.scene_previous == nSCKindOpeningNewcomers))
 		gSceneData.wait_longer_to_show_demo = FALSE;
 
 	gMNTitleLayout++;
@@ -697,7 +697,7 @@ void mnTitleUpdateHeaderAndFooterPosition(GObj* header_footer_gobj)
 {
 	SObj* header_footer_sobj = SObjGetStruct(header_footer_gobj);
 
-	if ((gMNTitleLayout != nMNTitleLayoutIntro) || (gSceneData.scene_previous != nSCKindIntroHiddenChars))
+	if ((gMNTitleLayout != nMNTitleLayoutIntro) || (gSceneData.scene_previous != nSCKindOpeningNewcomers))
 	{
 		mnTitleSetPosition(NULL, header_footer_sobj, nMNTitleTextureIndexFooter);
 		mnTitleSetPosition(NULL, header_footer_sobj->next, nMNTitleTextureIndexHeader);
@@ -896,7 +896,7 @@ void mnTitleCreateFire()
 		gMNTitleFireAlpha = gMNTitleFireAlphaUnused = 0;
 		fire_gobj->flags = 1;
 
-		if (gSceneData.scene_previous != nSCKindIntroHiddenChars)
+		if (gSceneData.scene_previous != nSCKindOpeningNewcomers)
 			func_ovl10_80132A58(fire_gobj);
 	}
 }
@@ -969,7 +969,7 @@ void mnTitleCreateLogo()
 	SObj* logo_sobj;
 	DObj* fire_logo_dobj;
 
-	if (gSceneData.scene_previous != nSCKindIntroHiddenChars)
+	if (gSceneData.scene_previous != nSCKindOpeningNewcomers)
 		mnTitleCreateLogoNoIntro();
 	else
 	{
@@ -1136,7 +1136,7 @@ void mnTitleCreateSlashEffectGFX()
 {
 	GObj* slash_gfx_gobj;
 
-	if (gSceneData.scene_previous == nSCKindIntroHiddenChars)
+	if (gSceneData.scene_previous == nSCKindOpeningNewcomers)
 	{
 		slash_gfx_gobj = gcMakeGObjSPAfter(0xC, 0, 0xE, 0x80000000);
 		gcAddGObjDisplay(slash_gfx_gobj, gcDrawDObjTreeDLLinksForGObj, 2, 0x80000000, -1);
@@ -1283,7 +1283,7 @@ void mnTitleLogoFireMakeEffect()
 	GObj* logo_fire_effect_gobj;
 	efGenerator *efgen;
 
-	if (gSceneData.scene_previous == nSCKindIntroHiddenChars)
+	if (gSceneData.scene_previous == nSCKindOpeningNewcomers)
 	{
 		logo_fire_effect_gobj = gcMakeGObjSPAfter(0xE, 0, 5, 0x80000000);
 		gcSetupCommonDObjs(logo_fire_effect_gobj, GetAddressFromOffset(gMNTitleFile0, &FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_1), 0);
@@ -1328,7 +1328,7 @@ void mnTitleInit()
 	mnTitleCreateSlashEffectGFX();
 	mnTitleLogoFireMakeEffect();
 
-	if (gSceneData.scene_previous == nSCKindIntroHiddenChars)
+	if (gSceneData.scene_previous == nSCKindOpeningNewcomers)
 		while (func_8000092C() < 0x1077U);
 }
 

@@ -27,27 +27,27 @@ void mvOpeningDKInit();
 
 // Data
 // 8018E070
-CameraVec7 dMvOpeningDKCameraSettingsStart = {
+CameraDesc dMvOpeningDKCameraDescStart = {
 
 	{ -1100.0, 150.0, 400.0 },
 	{ 0.0,     150.0, 0.0   }, 0.0
 };
 
 // 8018E08C
-CameraVec7 dMvOpeningDKCameraSettingsEnd = {
+CameraDesc dMvOpeningDKCameraDescEnd = {
 
 	{ -900.0, 500.0, 1800.0 },
 	{ 0.0,    500.0, 0.0    }, 0.0
 };
 
 // 8018E0A8
-ftGameKeyCommand dMvOpeningDKInputSeq[] =
+ftKeyCommand dMvOpeningDKInputSeq[] =
 {
-	FTGAMEKEY_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0), // 0x2000, 0x00B0
-	FTGAMEKEY_EVENT_BUTTON(B_BUTTON, 1),                  // 0x1001, 0x4000
-	FTGAMEKEY_EVENT_BUTTON(0, 1),                         // 0x1001, 0x0000
-	FTGAMEKEY_EVENT_BUTTON(B_BUTTON, 1),                  // 0x1001, 0x4000
-	FTGAMEKEY_EVENT_END()                                 // 0x0000
+	FTKEY_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0), // 0x2000, 0x00B0
+	FTKEY_EVENT_BUTTON(B_BUTTON, 1),                  // 0x1001, 0x4000
+	FTKEY_EVENT_BUTTON(0, 1),                         // 0x1001, 0x0000
+	FTKEY_EVENT_BUTTON(B_BUTTON, 1),                  // 0x1001, 0x4000
+	FTKEY_EVENT_END()                                 // 0x0000
 };
 
 // 8018E0BC
@@ -124,10 +124,10 @@ void* gMvOpeningDKAnimHeap;
 f32 gMvOpeningDKPosedFighterYSpeed;
 
 // 8018E1E8
-CameraVec7 dMvOpeningDKCameraSettingsAdjustedStart;
+CameraDesc dMvOpeningDKCameraDescAdjustedStart;
 
 // 8018E208
-CameraVec7 dMvOpeningDKCameraSettingsAdjustedEnd;
+CameraDesc dMvOpeningDKCameraDescAdjustedEnd;
 
 // 8018E228
 rdFileNode D_ovl37_8018E228[48];
@@ -203,13 +203,13 @@ void mvOpeningDKAnimateStageCamera(GObj* camera_gobj)
 
 	if (gMvOpeningDKFramesElapsed >= 15)
 	{
-		cam->vec.eye.x += (((dMvOpeningDKCameraSettingsAdjustedEnd.eye.x - dMvOpeningDKCameraSettingsAdjustedStart.eye.x) / 45.0F));
-		cam->vec.eye.y += (((dMvOpeningDKCameraSettingsAdjustedEnd.eye.y - dMvOpeningDKCameraSettingsAdjustedStart.eye.y) / 45.0F));
-		cam->vec.eye.z += (((dMvOpeningDKCameraSettingsAdjustedEnd.eye.z - dMvOpeningDKCameraSettingsAdjustedStart.eye.z) / 45.0F));
-		cam->vec.at.x += (((dMvOpeningDKCameraSettingsAdjustedEnd.at.x - dMvOpeningDKCameraSettingsAdjustedStart.at.x) / 45.0F));
-		cam->vec.at.y += (((dMvOpeningDKCameraSettingsAdjustedEnd.at.y - dMvOpeningDKCameraSettingsAdjustedStart.at.y) / 45.0F));
-		cam->vec.at.z += (((dMvOpeningDKCameraSettingsAdjustedEnd.at.z - dMvOpeningDKCameraSettingsAdjustedStart.at.z) / 45.0F));
-		cam->vec.up.x += (((dMvOpeningDKCameraSettingsAdjustedEnd.upx - dMvOpeningDKCameraSettingsAdjustedStart.upx) / 45.0F));
+		cam->vec.eye.x += (((dMvOpeningDKCameraDescAdjustedEnd.eye.x - dMvOpeningDKCameraDescAdjustedStart.eye.x) / 45.0F));
+		cam->vec.eye.y += (((dMvOpeningDKCameraDescAdjustedEnd.eye.y - dMvOpeningDKCameraDescAdjustedStart.eye.y) / 45.0F));
+		cam->vec.eye.z += (((dMvOpeningDKCameraDescAdjustedEnd.eye.z - dMvOpeningDKCameraDescAdjustedStart.eye.z) / 45.0F));
+		cam->vec.at.x += (((dMvOpeningDKCameraDescAdjustedEnd.at.x - dMvOpeningDKCameraDescAdjustedStart.at.x) / 45.0F));
+		cam->vec.at.y += (((dMvOpeningDKCameraDescAdjustedEnd.at.y - dMvOpeningDKCameraDescAdjustedStart.at.y) / 45.0F));
+		cam->vec.at.z += (((dMvOpeningDKCameraDescAdjustedEnd.at.z - dMvOpeningDKCameraDescAdjustedStart.at.z) / 45.0F));
+		cam->vec.up.x += (((dMvOpeningDKCameraDescAdjustedEnd.upx - dMvOpeningDKCameraDescAdjustedStart.upx) / 45.0F));
 	}
 }
 
@@ -218,8 +218,8 @@ void mvOpeningDKCreateStageViewport(Vec3f arg0)
 {
 	Camera *cam;
 
-	dMvOpeningDKCameraSettingsAdjustedStart = dMvOpeningDKCameraSettingsStart;
-	dMvOpeningDKCameraSettingsAdjustedEnd = dMvOpeningDKCameraSettingsEnd;
+	dMvOpeningDKCameraDescAdjustedStart = dMvOpeningDKCameraDescStart;
+	dMvOpeningDKCameraDescAdjustedEnd = dMvOpeningDKCameraDescEnd;
 
 	gMvOpeningDKStageCameraGObj = func_ovl2_8010DB2C(0);
 	cam = CameraGetStruct(gMvOpeningDKStageCameraGObj);
@@ -228,27 +228,27 @@ void mvOpeningDKCreateStageViewport(Vec3f arg0)
 	func_8000B39C(gMvOpeningDKStageCameraGObj);
 	gcAddGObjProcess(gMvOpeningDKStageCameraGObj, mvOpeningDKAnimateStageCamera, 1, 1);
 
-	dMvOpeningDKCameraSettingsAdjustedStart.eye.x += arg0.x;
-	dMvOpeningDKCameraSettingsAdjustedStart.eye.y += arg0.y;
-	dMvOpeningDKCameraSettingsAdjustedStart.eye.z += arg0.z;
-	dMvOpeningDKCameraSettingsAdjustedStart.at.x += arg0.x;
-	dMvOpeningDKCameraSettingsAdjustedStart.at.y += arg0.y;
-	dMvOpeningDKCameraSettingsAdjustedStart.at.z += arg0.z;
+	dMvOpeningDKCameraDescAdjustedStart.eye.x += arg0.x;
+	dMvOpeningDKCameraDescAdjustedStart.eye.y += arg0.y;
+	dMvOpeningDKCameraDescAdjustedStart.eye.z += arg0.z;
+	dMvOpeningDKCameraDescAdjustedStart.at.x += arg0.x;
+	dMvOpeningDKCameraDescAdjustedStart.at.y += arg0.y;
+	dMvOpeningDKCameraDescAdjustedStart.at.z += arg0.z;
 
-	dMvOpeningDKCameraSettingsAdjustedEnd.eye.x += arg0.x;
-	dMvOpeningDKCameraSettingsAdjustedEnd.eye.y += arg0.y;
-	dMvOpeningDKCameraSettingsAdjustedEnd.eye.z += arg0.z;
-	dMvOpeningDKCameraSettingsAdjustedEnd.at.x += arg0.x;
-	dMvOpeningDKCameraSettingsAdjustedEnd.at.y += arg0.y;
-	dMvOpeningDKCameraSettingsAdjustedEnd.at.z += arg0.z;
+	dMvOpeningDKCameraDescAdjustedEnd.eye.x += arg0.x;
+	dMvOpeningDKCameraDescAdjustedEnd.eye.y += arg0.y;
+	dMvOpeningDKCameraDescAdjustedEnd.eye.z += arg0.z;
+	dMvOpeningDKCameraDescAdjustedEnd.at.x += arg0.x;
+	dMvOpeningDKCameraDescAdjustedEnd.at.y += arg0.y;
+	dMvOpeningDKCameraDescAdjustedEnd.at.z += arg0.z;
 
-	cam->vec.eye.x = dMvOpeningDKCameraSettingsAdjustedStart.eye.x;
-	cam->vec.eye.y = dMvOpeningDKCameraSettingsAdjustedStart.eye.y;
-	cam->vec.eye.z = dMvOpeningDKCameraSettingsAdjustedStart.eye.z;
-	cam->vec.at.x = dMvOpeningDKCameraSettingsAdjustedStart.at.x;
-	cam->vec.at.y = dMvOpeningDKCameraSettingsAdjustedStart.at.y;
-	cam->vec.at.z = dMvOpeningDKCameraSettingsAdjustedStart.at.z;
-	cam->vec.up.x = dMvOpeningDKCameraSettingsAdjustedStart.upx;
+	cam->vec.eye.x = dMvOpeningDKCameraDescAdjustedStart.eye.x;
+	cam->vec.eye.y = dMvOpeningDKCameraDescAdjustedStart.eye.y;
+	cam->vec.eye.z = dMvOpeningDKCameraDescAdjustedStart.eye.z;
+	cam->vec.at.x = dMvOpeningDKCameraDescAdjustedStart.at.x;
+	cam->vec.at.y = dMvOpeningDKCameraDescAdjustedStart.at.y;
+	cam->vec.at.z = dMvOpeningDKCameraDescAdjustedStart.at.z;
+	cam->vec.up.x = dMvOpeningDKCameraDescAdjustedStart.upx;
 }
 
 // 8018D604
@@ -263,7 +263,7 @@ void mvOpeningDKInitFighterStagePanel()
 	grWallpaperMakeGroundWallpaper();
 	grCommonSetupInitAll();
 
-	if (mpCollisionGetMapObjCountKind(nMPMapObjKindUnk0x15) != 1)
+	if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieSpawn1) != 1)
 	{
 		while (TRUE)
 		{
@@ -272,7 +272,7 @@ void mvOpeningDKInitFighterStagePanel()
 		}
 	}
 
-	mpCollisionGetMapObjIDsKind(nMPMapObjKindUnk0x15, &pos_ids);
+	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieSpawn1, &pos_ids);
 	mpCollisionGetMapObjPositionID(pos_ids, &spawn_position);
 	mvOpeningDKCreateStageViewport(spawn_position);
 	gmRumbleMakeActor();
@@ -307,7 +307,7 @@ void mvOpeningDKInitFighterStagePanel()
 		gMvOpeningDKStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
-		ftParamSetExplainGameKey(fighter_gobj, dMvOpeningDKInputSeq);
+		ftParamSetKey(fighter_gobj, dMvOpeningDKInputSeq);
 	}
 }
 

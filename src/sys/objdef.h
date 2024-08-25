@@ -17,6 +17,7 @@ typedef enum GObjKind
     nOMObjCommonKindEffect,                     // 1011
     nOMObjCommonKindWeapon,                     // 1012
     nOMObjCommonKindItem,                       // 1013
+    nOMObjCommonKindMovie = 1015,               // 1015 - Opening movie?
     nOMObjCommonKindInterface = 1016,           // 1016
     nOMObjCommonKindRumble,                     // 1017
     nOMObjCommonKindPublicity,                  // 1018 - Audience reaction
@@ -226,7 +227,7 @@ typedef enum AObjTrackKind
 } AObjTrackKind;
 
 typedef union  AObjFigatree         AObjFigatree;
-typedef union  AObjEvent        AObjEvent;
+typedef union  AObjEvent            AObjEvent;
 typedef struct GObj                 GObj;
 typedef struct GObjLink             GObjLink;
 typedef struct _GObjProcess         GObjProcess;
@@ -244,6 +245,7 @@ typedef struct _MObj                MObj;
 typedef struct _MObjSub             MObjSub;
 typedef struct _SObj                SObj;
 typedef struct CameraVec            CameraVec;
+typedef struct CameraDesc           CameraDesc;
 typedef struct _Camera              Camera;
 typedef struct _OMMtx               OMMtx;
 typedef struct OMGfxLink            OMGfxLink;

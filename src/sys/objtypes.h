@@ -453,6 +453,13 @@ struct CameraVec
     Vec3f up;
 };
 
+struct CameraDesc
+{
+    Vec3f eye;
+    Vec3f at;
+    f32 upx;
+};
+
 struct _Camera
 {
     Camera *next;

@@ -225,7 +225,8 @@ typedef enum scKind
 	nSCKindCharacters,        	  // Character data screen
 	nSCKindN64,               	  // N64 logo
 	nSCKindOpeningRoom,       	  // Room with Master Hand and figures coming to life
-	nSCKindIntroHiddenChars = 46, // Last intro scene with hidden characters
+	nSCKindOpeningYoster = 39,	  // Yoshi in nest with eggs on Yoshi's Island
+	nSCKindOpeningNewcomers = 46, // Last intro scene with hidden characters
 	nSCKindBackupClear = 47,  	  // Save data clear
 	nSCKindEnding,            	  // Ending cutscene
 	nSCKind1PContinue,        	  // "Continue?" screen

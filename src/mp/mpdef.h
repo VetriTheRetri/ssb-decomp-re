@@ -104,9 +104,9 @@ typedef enum mpMapObjKind
     nMPMapObjKindBumper,                                                                        // 0x13
     nMPMapObjKindDokanWall,                                                                     // 0x14
 
-    nMPMapObjKindUnk0x15,
-    nMPMapObjKindUnk0x16,
-    nMPMapObjKindUnk0x17,
+    nMPMapObjKindMovieSpawn1,                                                                   // 0x15
+    nMPMapObjKindMovieSpawn2,                                                                   // 0x16
+    nMPMapObjKindMovieSpawn3,                                                                   // 0x17
 
     nMPMapObjKindAutoDemoSpawn1,                                                                // 0x18
     nMPMapObjKindAutoDemoSpawn2,                                                                // 0x19

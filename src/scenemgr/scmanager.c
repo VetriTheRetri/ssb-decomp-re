@@ -234,7 +234,7 @@ void intro_mario_vs_kirby_entry();
 void intro_pika_pokeball_entry();
 void intro_sex_kicks_entry();
 void intro_great_fox_entry();
-void mvOpeningDKVsSamusStartScene();
+void mvOpeningKongoStartScene();
 void mvOpeningNewcomersStartScene();
 void classic_css_entry();
 void training_css_entry();
@@ -531,7 +531,7 @@ void start_scene_manager(u32 set)
 			case 45:
 				syDmaLoadOverlay(&D_800A3070[3]);
 				syDmaLoadOverlay(&D_800A3070[51]);
-				mvOpeningDKVsSamusStartScene();
+				mvOpeningKongoStartScene();
 				break;
 			case 46:
 				syDmaLoadOverlay(&D_800A3070[52]);

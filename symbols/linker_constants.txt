@@ -977,6 +977,8 @@ lITLinkBombBloatScales = 0x000000A8;
 
 lITMonsterAnimBankStart = 0x00013624;
 
+lMVOpeningKongoCamAnimJoint = 0x00000000;
+
 lMVOpeningNewcomersPurinShowDisplayList = 0x00005C28;
 lMVOpeningNewcomersPurinAnimJoint = 0x00005E44;
 lMVOpeningNewcomersPurinHiddenDisplayList = 0x000203A8;

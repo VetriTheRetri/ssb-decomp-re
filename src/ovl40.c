@@ -20,7 +20,7 @@ void gMvOpeningLinkSetupDisplayList(Gfx **display_list);
 
 // DATA
 // 8018E070
-CameraVec7 dMvOpeningLinkCameraSettingsStart = {
+CameraDesc dMvOpeningLinkCameraDescStart = {
 
 	{ -800.0, 180.0, 800.0 },
 	{ 0.0, 180.0, 0.0 },
@@ -28,7 +28,7 @@ CameraVec7 dMvOpeningLinkCameraSettingsStart = {
 };
 
 // 8018E08C
-CameraVec7 dMvOpeningLinkCameraSettingsEnd = {
+CameraDesc dMvOpeningLinkCameraDescEnd = {
 
 	{ 200.0, 0.0, 400.0 },
 	{ 0.0, 240.0, 0.0 },
@@ -36,10 +36,10 @@ CameraVec7 dMvOpeningLinkCameraSettingsEnd = {
 };
 
 // 8018E0A8
-ftGameKeyCommand dMvOpeningLinkGameKey[] = {
+ftKeyCommand dMvOpeningLinkGameKey[] = {
 
-    FTGAMEKEY_EVENT_BUTTON(L_TRIG, 1),  // 0x1001, 0x0020
-    FTGAMEKEY_EVENT_END()               // 0x0000
+    FTKEY_EVENT_BUTTON(L_TRIG, 1),  // 0x1001, 0x0020
+    FTKEY_EVENT_END()               // 0x0000
 };
 
 rdFileID D_ovl40_8018E0B0[2] = {
@@ -120,10 +120,10 @@ f32 gMvOpeningLinkPosedFighterXSpeed;
 s32 D_ovl40_8018E1E4;
 
 // 8018E1E8
-CameraVec7 dMvOpeningLinkCameraSettingsAdjustedStart;
+CameraDesc dMvOpeningLinkCameraDescAdjustedStart;
 
 // 8018E208
-CameraVec7 dMvOpeningLinkCameraSettingsAdjustedEnd;
+CameraDesc dMvOpeningLinkCameraDescAdjustedEnd;
 
 // 8018E228
 rdFileNode D_ovl40_8018E228[48];
@@ -199,13 +199,13 @@ void mvOpeningLinkAnimateStageCamera(GObj* camera_gobj)
 
 	if (gMvOpeningLinkFramesElapsed >= 15)
 	{
-		cam->vec.eye.x += (((dMvOpeningLinkCameraSettingsAdjustedEnd.eye.x - dMvOpeningLinkCameraSettingsAdjustedStart.eye.x) / 45.0F));
-		cam->vec.eye.y += (((dMvOpeningLinkCameraSettingsAdjustedEnd.eye.y - dMvOpeningLinkCameraSettingsAdjustedStart.eye.y) / 45.0F));
-		cam->vec.eye.z += (((dMvOpeningLinkCameraSettingsAdjustedEnd.eye.z - dMvOpeningLinkCameraSettingsAdjustedStart.eye.z) / 45.0F));
-		cam->vec.at.x += (((dMvOpeningLinkCameraSettingsAdjustedEnd.at.x - dMvOpeningLinkCameraSettingsAdjustedStart.at.x) / 45.0F));
-		cam->vec.at.y += (((dMvOpeningLinkCameraSettingsAdjustedEnd.at.y - dMvOpeningLinkCameraSettingsAdjustedStart.at.y) / 45.0F));
-		cam->vec.at.z += (((dMvOpeningLinkCameraSettingsAdjustedEnd.at.z - dMvOpeningLinkCameraSettingsAdjustedStart.at.z) / 45.0F));
-		cam->vec.up.x += (((dMvOpeningLinkCameraSettingsAdjustedEnd.upx - dMvOpeningLinkCameraSettingsAdjustedStart.upx) / 45.0F));
+		cam->vec.eye.x += (((dMvOpeningLinkCameraDescAdjustedEnd.eye.x - dMvOpeningLinkCameraDescAdjustedStart.eye.x) / 45.0F));
+		cam->vec.eye.y += (((dMvOpeningLinkCameraDescAdjustedEnd.eye.y - dMvOpeningLinkCameraDescAdjustedStart.eye.y) / 45.0F));
+		cam->vec.eye.z += (((dMvOpeningLinkCameraDescAdjustedEnd.eye.z - dMvOpeningLinkCameraDescAdjustedStart.eye.z) / 45.0F));
+		cam->vec.at.x += (((dMvOpeningLinkCameraDescAdjustedEnd.at.x - dMvOpeningLinkCameraDescAdjustedStart.at.x) / 45.0F));
+		cam->vec.at.y += (((dMvOpeningLinkCameraDescAdjustedEnd.at.y - dMvOpeningLinkCameraDescAdjustedStart.at.y) / 45.0F));
+		cam->vec.at.z += (((dMvOpeningLinkCameraDescAdjustedEnd.at.z - dMvOpeningLinkCameraDescAdjustedStart.at.z) / 45.0F));
+		cam->vec.up.x += (((dMvOpeningLinkCameraDescAdjustedEnd.upx - dMvOpeningLinkCameraDescAdjustedStart.upx) / 45.0F));
 	}
 }
 
@@ -214,8 +214,8 @@ void mvOpeningLinkCreateStageViewport(Vec3f arg0)
 {
 	Camera *cam;
 
-	dMvOpeningLinkCameraSettingsAdjustedStart = dMvOpeningLinkCameraSettingsStart;
-	dMvOpeningLinkCameraSettingsAdjustedEnd = dMvOpeningLinkCameraSettingsEnd;
+	dMvOpeningLinkCameraDescAdjustedStart = dMvOpeningLinkCameraDescStart;
+	dMvOpeningLinkCameraDescAdjustedEnd = dMvOpeningLinkCameraDescEnd;
 
 	gMvOpeningLinkStageCameraGObj = func_ovl2_8010DB2C(0);
 	cam = CameraGetStruct(gMvOpeningLinkStageCameraGObj);
@@ -224,27 +224,27 @@ void mvOpeningLinkCreateStageViewport(Vec3f arg0)
 	func_8000B39C(gMvOpeningLinkStageCameraGObj);
 	gcAddGObjProcess(gMvOpeningLinkStageCameraGObj, mvOpeningLinkAnimateStageCamera, 1, 1);
 
-	dMvOpeningLinkCameraSettingsAdjustedStart.eye.x += arg0.x;
-	dMvOpeningLinkCameraSettingsAdjustedStart.eye.y += arg0.y;
-	dMvOpeningLinkCameraSettingsAdjustedStart.eye.z += arg0.z;
-	dMvOpeningLinkCameraSettingsAdjustedStart.at.x += arg0.x;
-	dMvOpeningLinkCameraSettingsAdjustedStart.at.y += arg0.y;
-	dMvOpeningLinkCameraSettingsAdjustedStart.at.z += arg0.z;
+	dMvOpeningLinkCameraDescAdjustedStart.eye.x += arg0.x;
+	dMvOpeningLinkCameraDescAdjustedStart.eye.y += arg0.y;
+	dMvOpeningLinkCameraDescAdjustedStart.eye.z += arg0.z;
+	dMvOpeningLinkCameraDescAdjustedStart.at.x += arg0.x;
+	dMvOpeningLinkCameraDescAdjustedStart.at.y += arg0.y;
+	dMvOpeningLinkCameraDescAdjustedStart.at.z += arg0.z;
 
-	dMvOpeningLinkCameraSettingsAdjustedEnd.eye.x += arg0.x;
-	dMvOpeningLinkCameraSettingsAdjustedEnd.eye.y += arg0.y;
-	dMvOpeningLinkCameraSettingsAdjustedEnd.eye.z += arg0.z;
-	dMvOpeningLinkCameraSettingsAdjustedEnd.at.x += arg0.x;
-	dMvOpeningLinkCameraSettingsAdjustedEnd.at.y += arg0.y;
-	dMvOpeningLinkCameraSettingsAdjustedEnd.at.z += arg0.z;
+	dMvOpeningLinkCameraDescAdjustedEnd.eye.x += arg0.x;
+	dMvOpeningLinkCameraDescAdjustedEnd.eye.y += arg0.y;
+	dMvOpeningLinkCameraDescAdjustedEnd.eye.z += arg0.z;
+	dMvOpeningLinkCameraDescAdjustedEnd.at.x += arg0.x;
+	dMvOpeningLinkCameraDescAdjustedEnd.at.y += arg0.y;
+	dMvOpeningLinkCameraDescAdjustedEnd.at.z += arg0.z;
 
-	cam->vec.eye.x = dMvOpeningLinkCameraSettingsAdjustedStart.eye.x;
-	cam->vec.eye.y = dMvOpeningLinkCameraSettingsAdjustedStart.eye.y;
-	cam->vec.eye.z = dMvOpeningLinkCameraSettingsAdjustedStart.eye.z;
-	cam->vec.at.x = dMvOpeningLinkCameraSettingsAdjustedStart.at.x;
-	cam->vec.at.y = dMvOpeningLinkCameraSettingsAdjustedStart.at.y;
-	cam->vec.at.z = dMvOpeningLinkCameraSettingsAdjustedStart.at.z;
-	cam->vec.up.x = dMvOpeningLinkCameraSettingsAdjustedStart.upx;
+	cam->vec.eye.x = dMvOpeningLinkCameraDescAdjustedStart.eye.x;
+	cam->vec.eye.y = dMvOpeningLinkCameraDescAdjustedStart.eye.y;
+	cam->vec.eye.z = dMvOpeningLinkCameraDescAdjustedStart.eye.z;
+	cam->vec.at.x = dMvOpeningLinkCameraDescAdjustedStart.at.x;
+	cam->vec.at.y = dMvOpeningLinkCameraDescAdjustedStart.at.y;
+	cam->vec.at.z = dMvOpeningLinkCameraDescAdjustedStart.at.z;
+	cam->vec.up.x = dMvOpeningLinkCameraDescAdjustedStart.upx;
 }
 
 // 8018D5F4
@@ -259,7 +259,7 @@ void mvOpeningLinkInitFighterStagePanel()
 	grWallpaperMakeGroundWallpaper();
 	grCommonSetupInitAll();
 
-	if (mpCollisionGetMapObjCountKind(nMPMapObjKindUnk0x15) != 1)
+	if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieSpawn1) != 1)
 	{
 		while (TRUE)
 		{
@@ -268,7 +268,7 @@ void mvOpeningLinkInitFighterStagePanel()
 		}
 	}
 
-	mpCollisionGetMapObjIDsKind(nMPMapObjKindUnk0x15, &pos_ids);
+	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieSpawn1, &pos_ids);
 	mpCollisionGetMapObjPositionID(pos_ids, &spawn_position);
 	mvOpeningLinkCreateStageViewport(spawn_position);
 	gmRumbleMakeActor();
@@ -302,7 +302,7 @@ void mvOpeningLinkInitFighterStagePanel()
 		gMvOpeningLinkStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
-		ftParamSetExplainGameKey(fighter_gobj, dMvOpeningLinkGameKey);
+		ftParamSetKey(fighter_gobj, dMvOpeningLinkGameKey);
 	}
 }
 

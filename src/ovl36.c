@@ -18,30 +18,30 @@ extern intptr_t FILE_041_MARIO_CAMERA_PARAMS_OFFSET; // 00000000 file 0x041 offs
 
 // DATA
 // 8018E090
-CameraVec7 dMvOpeningMarioCameraSettingsStart = {
+CameraDesc dMvOpeningMarioCameraDescStart = {
 	{ 300.0f, 500.0f, 1700.0f },
 	{ 0.0f, 100.0f, 0.0f },
 	0.15f
 };
 
 // 8018E0AC
-CameraVec7 dMvOpeningMarioCameraSettingsEnd = {
+CameraDesc dMvOpeningMarioCameraDescEnd = {
 	{ 800.0f, 500.0f, 1300.0f },
 	{ 100.0f, 100.0f, 0.0f },
 	0.15f
 };
 
 // 8018E0C8
-ftGameKeyCommand dMvOpeningMarioGameKey[] =
+ftKeyCommand dMvOpeningMarioGameKey[] =
 {
-	FTGAMEKEY_EVENT_STICK(0, 0, 0),                         // 0x2000, 0x0000
-	FTGAMEKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 0x1001, 0x8000
-	FTGAMEKEY_EVENT_BUTTON(0, 11),                          // 0x100B, 0x0000
-	FTGAMEKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 0x1001, 0x8000
-	FTGAMEKEY_EVENT_BUTTON(0, 20),                          // 0x1014, 0x0000
-	FTGAMEKEY_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0),   // 0x2000, 0x00B0
-	FTGAMEKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 0x1001, 0x8000
-	FTGAMEKEY_EVENT_END()                                   // 0x0000
+	FTKEY_EVENT_STICK(0, 0, 0),                         // 0x2000, 0x0000
+	FTKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 0x1001, 0x8000
+	FTKEY_EVENT_BUTTON(0, 11),                          // 0x100B, 0x0000
+	FTKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 0x1001, 0x8000
+	FTKEY_EVENT_BUTTON(0, 20),                          // 0x1014, 0x0000
+	FTKEY_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0),   // 0x2000, 0x00B0
+	FTKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 0x1001, 0x8000
+	FTKEY_EVENT_END()                                   // 0x0000
 };
 
 // 8018E0E8
@@ -115,10 +115,10 @@ f32 gMvOpeningMarioPosedFighterYSpeed;
 // s32 D_ovl36_8018E224;
 
 // 8018E228
-CameraVec7 dMvOpeningMarioCameraSettingsAdjustedStart;
+CameraDesc dMvOpeningMarioCameraDescAdjustedStart;
 
 // 8018E248
-CameraVec7 dMvOpeningMarioCameraSettingsAdjustedEnd;
+CameraDesc dMvOpeningMarioCameraDescAdjustedEnd;
 
 // 8018E268
 rdFileNode D_ovl36_8018E268[48];
@@ -194,13 +194,13 @@ void mvOpeningMarioAnimateStageCamera(GObj* camera_gobj)
 
 	if (gMvOpeningMarioFramesElapsed >= 15)
 	{
-		cam->vec.eye.x += (((dMvOpeningMarioCameraSettingsAdjustedEnd.eye.x - dMvOpeningMarioCameraSettingsAdjustedStart.eye.x) / 45.0F));
-		cam->vec.eye.y += (((dMvOpeningMarioCameraSettingsAdjustedEnd.eye.y - dMvOpeningMarioCameraSettingsAdjustedStart.eye.y) / 45.0F));
-		cam->vec.eye.z += (((dMvOpeningMarioCameraSettingsAdjustedEnd.eye.z - dMvOpeningMarioCameraSettingsAdjustedStart.eye.z) / 45.0F));
-		cam->vec.at.x += (((dMvOpeningMarioCameraSettingsAdjustedEnd.at.x - dMvOpeningMarioCameraSettingsAdjustedStart.at.x) / 45.0F));
-		cam->vec.at.y += (((dMvOpeningMarioCameraSettingsAdjustedEnd.at.y - dMvOpeningMarioCameraSettingsAdjustedStart.at.y) / 45.0F));
-		cam->vec.at.z += (((dMvOpeningMarioCameraSettingsAdjustedEnd.at.z - dMvOpeningMarioCameraSettingsAdjustedStart.at.z) / 45.0F));
-		cam->vec.up.x += (((dMvOpeningMarioCameraSettingsAdjustedEnd.upx - dMvOpeningMarioCameraSettingsAdjustedStart.upx) / 45.0F));
+		cam->vec.eye.x += (((dMvOpeningMarioCameraDescAdjustedEnd.eye.x - dMvOpeningMarioCameraDescAdjustedStart.eye.x) / 45.0F));
+		cam->vec.eye.y += (((dMvOpeningMarioCameraDescAdjustedEnd.eye.y - dMvOpeningMarioCameraDescAdjustedStart.eye.y) / 45.0F));
+		cam->vec.eye.z += (((dMvOpeningMarioCameraDescAdjustedEnd.eye.z - dMvOpeningMarioCameraDescAdjustedStart.eye.z) / 45.0F));
+		cam->vec.at.x += (((dMvOpeningMarioCameraDescAdjustedEnd.at.x - dMvOpeningMarioCameraDescAdjustedStart.at.x) / 45.0F));
+		cam->vec.at.y += (((dMvOpeningMarioCameraDescAdjustedEnd.at.y - dMvOpeningMarioCameraDescAdjustedStart.at.y) / 45.0F));
+		cam->vec.at.z += (((dMvOpeningMarioCameraDescAdjustedEnd.at.z - dMvOpeningMarioCameraDescAdjustedStart.at.z) / 45.0F));
+		cam->vec.up.x += (((dMvOpeningMarioCameraDescAdjustedEnd.upx - dMvOpeningMarioCameraDescAdjustedStart.upx) / 45.0F));
 	}
 }
 
@@ -209,8 +209,8 @@ void mvOpeningMarioCreateStageViewport(Vec3f arg0)
 {
 	Camera *cam;
 
-	dMvOpeningMarioCameraSettingsAdjustedStart = dMvOpeningMarioCameraSettingsStart;
-	dMvOpeningMarioCameraSettingsAdjustedEnd = dMvOpeningMarioCameraSettingsEnd;
+	dMvOpeningMarioCameraDescAdjustedStart = dMvOpeningMarioCameraDescStart;
+	dMvOpeningMarioCameraDescAdjustedEnd = dMvOpeningMarioCameraDescEnd;
 
 	gMvOpeningMarioStageCameraGObj = func_ovl2_8010DB2C(0);
 	cam = CameraGetStruct(gMvOpeningMarioStageCameraGObj);
@@ -219,27 +219,27 @@ void mvOpeningMarioCreateStageViewport(Vec3f arg0)
 	func_8000B39C(gMvOpeningMarioStageCameraGObj);
 	gcAddGObjProcess(gMvOpeningMarioStageCameraGObj, mvOpeningMarioAnimateStageCamera, 1, 1);
 
-	dMvOpeningMarioCameraSettingsAdjustedStart.eye.x += arg0.x;
-	dMvOpeningMarioCameraSettingsAdjustedStart.eye.y += arg0.y;
-	dMvOpeningMarioCameraSettingsAdjustedStart.eye.z += arg0.z;
-	dMvOpeningMarioCameraSettingsAdjustedStart.at.x += arg0.x;
-	dMvOpeningMarioCameraSettingsAdjustedStart.at.y += arg0.y;
-	dMvOpeningMarioCameraSettingsAdjustedStart.at.z += arg0.z;
+	dMvOpeningMarioCameraDescAdjustedStart.eye.x += arg0.x;
+	dMvOpeningMarioCameraDescAdjustedStart.eye.y += arg0.y;
+	dMvOpeningMarioCameraDescAdjustedStart.eye.z += arg0.z;
+	dMvOpeningMarioCameraDescAdjustedStart.at.x += arg0.x;
+	dMvOpeningMarioCameraDescAdjustedStart.at.y += arg0.y;
+	dMvOpeningMarioCameraDescAdjustedStart.at.z += arg0.z;
 
-	dMvOpeningMarioCameraSettingsAdjustedEnd.eye.x += arg0.x;
-	dMvOpeningMarioCameraSettingsAdjustedEnd.eye.y += arg0.y;
-	dMvOpeningMarioCameraSettingsAdjustedEnd.eye.z += arg0.z;
-	dMvOpeningMarioCameraSettingsAdjustedEnd.at.x += arg0.x;
-	dMvOpeningMarioCameraSettingsAdjustedEnd.at.y += arg0.y;
-	dMvOpeningMarioCameraSettingsAdjustedEnd.at.z += arg0.z;
+	dMvOpeningMarioCameraDescAdjustedEnd.eye.x += arg0.x;
+	dMvOpeningMarioCameraDescAdjustedEnd.eye.y += arg0.y;
+	dMvOpeningMarioCameraDescAdjustedEnd.eye.z += arg0.z;
+	dMvOpeningMarioCameraDescAdjustedEnd.at.x += arg0.x;
+	dMvOpeningMarioCameraDescAdjustedEnd.at.y += arg0.y;
+	dMvOpeningMarioCameraDescAdjustedEnd.at.z += arg0.z;
 
-	cam->vec.eye.x = dMvOpeningMarioCameraSettingsAdjustedStart.eye.x;
-	cam->vec.eye.y = dMvOpeningMarioCameraSettingsAdjustedStart.eye.y;
-	cam->vec.eye.z = dMvOpeningMarioCameraSettingsAdjustedStart.eye.z;
-	cam->vec.at.x = dMvOpeningMarioCameraSettingsAdjustedStart.at.x;
-	cam->vec.at.y = dMvOpeningMarioCameraSettingsAdjustedStart.at.y;
-	cam->vec.at.z = dMvOpeningMarioCameraSettingsAdjustedStart.at.z;
-	cam->vec.up.x = dMvOpeningMarioCameraSettingsAdjustedStart.upx;
+	cam->vec.eye.x = dMvOpeningMarioCameraDescAdjustedStart.eye.x;
+	cam->vec.eye.y = dMvOpeningMarioCameraDescAdjustedStart.eye.y;
+	cam->vec.eye.z = dMvOpeningMarioCameraDescAdjustedStart.eye.z;
+	cam->vec.at.x = dMvOpeningMarioCameraDescAdjustedStart.at.x;
+	cam->vec.at.y = dMvOpeningMarioCameraDescAdjustedStart.at.y;
+	cam->vec.at.z = dMvOpeningMarioCameraDescAdjustedStart.at.z;
+	cam->vec.up.x = dMvOpeningMarioCameraDescAdjustedStart.upx;
 }
 
 // 8018D614
@@ -254,7 +254,7 @@ void mvOpeningMarioInitFighterStagePanel()
 	grWallpaperMakeGroundWallpaper();
 	grCommonSetupInitAll();
 
-	if (mpCollisionGetMapObjCountKind(nMPMapObjKindUnk0x15) != 1)
+	if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieSpawn1) != 1)
 	{
 		while (TRUE)
 		{
@@ -263,7 +263,7 @@ void mvOpeningMarioInitFighterStagePanel()
 		}
 	}
 
-	mpCollisionGetMapObjIDsKind(nMPMapObjKindUnk0x15, &pos_ids);
+	mpCollisionGetMapObjIDsKind(nMPMapObjKindMovieSpawn1, &pos_ids);
 	mpCollisionGetMapObjPositionID(pos_ids, &spawn_position);
 	mvOpeningMarioCreateStageViewport(spawn_position);
 	gmRumbleMakeActor();
@@ -297,7 +297,7 @@ void mvOpeningMarioInitFighterStagePanel()
 		gMvOpeningMarioStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
-		ftParamSetExplainGameKey(fighter_gobj, dMvOpeningMarioGameKey);
+		ftParamSetKey(fighter_gobj, dMvOpeningMarioGameKey);
 	}
 }
 

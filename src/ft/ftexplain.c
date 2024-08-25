@@ -11,7 +11,7 @@ void ftExplainProcessGameKeyuence(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftComputerInput *cp_input = &fp->input.cp;
-    ftGameKey *explain = &fp->explain;
+    ftKey *explain = &fp->key;
 
     if (explain->input_seq != NULL)
     {

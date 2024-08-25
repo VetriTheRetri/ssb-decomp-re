@@ -49,7 +49,7 @@ extern void intro_mario_vs_kirby_entry(void);       // ovl 47
 extern void intro_pika_pokeball_entry(void);        // ovl 48
 extern void intro_sex_kicks_entry(void);            // ovl 49
 extern void intro_great_fox_entry(void);            // ovl 50
-extern void mvOpeningDKVsSamusStartScene(void);     // ovl 51
+extern void mvOpeningKongoStartScene(void);     // ovl 51
 extern void mvOpeningNewcomersStartScene(void);         // ovl 52
 extern void classic_css_entry(void);                // ovl 27
 extern void training_css_entry(void);               // ovl 28

@@ -1330,21 +1330,21 @@ sb32 ftParamCheckSetSkeletonColAnimID(GObj *fighter_gobj, s32 colanim_id)
     return ftParamCheckSetFighterColAnimID(fighter_gobj, dFTParamSkeletonColAnimIDs[fp->ft_kind] + colanim_id, 0);
 }
 
-// 0x800E9B30 - Set How to Play input sequence
-void ftParamSetExplainGameKey(GObj *fighter_gobj, ftGameKeyCommand *input_seq)
+// 0x800E9B30 - Set automatic input sequence
+void ftParamSetKey(GObj *fighter_gobj, ftKeyCommand *input_seq)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->explain.input_wait = 0;
-    fp->explain.input_seq = input_seq;
+    fp->key.input_wait = 0;
+    fp->key.input_seq = input_seq;
 }
 
-// 0x800E9B40 - Check if How to Play input sequence exists
-sb32 ftParamCheckHaveExplainGameKey(GObj *fighter_gobj)
+// 0x800E9B40 - Check if automatic input sequence exists
+sb32 ftParamCheckHaveKey(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->explain.input_seq != NULL)
+    if (fp->key.input_seq != NULL)
     {
         return TRUE;
     }

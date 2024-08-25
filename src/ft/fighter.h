@@ -27,11 +27,11 @@ extern ftOpeningDesc D_ovl1_80390BE8;
 	itMainSetFighterDrop((fp)->item_hold, &vel, 1.0F);	\
 }
 
-#define ftGameKeyCommandCast(input_seq, type) ((type*)(input_seq))
+#define ftKeyCommandCast(input_seq, type) ((type*)(input_seq))
 
-#define ftExplainGetCpButtons(input_seq) (*(ftGameKeyCommandCast((input_seq), u16)))
+#define ftExplainGetCpButtons(input_seq) (*(ftKeyCommandCast((input_seq), u16)))
 
-#define ftExplainGetCpStickRange(input_seq) (ftGameKeyCommandCast((input_seq), Vec2b))
+#define ftExplainGetCpStickRange(input_seq) (ftKeyCommandCast((input_seq), Vec2b))
 
 #define ftGetComTargetFighter(ft_com) \
 ((ftStruct*)(ft_com)->target_user)

@@ -817,7 +817,7 @@ s32 sc1PGameGetNextFreeCostume(s32 com)
     // WARNING: Newline memes. get_costume should be on the same line as used_costume = 0, player = 0;
     used_costume = 0, player = 0; get_costume:
 
-    cp_costume = ftParamGetCostumeRoyalID(cp_ft_kind, used_costume);
+    cp_costume = ftParamGetCostumeCommonID(cp_ft_kind, used_costume);
 
     while (player != ARRAY_COUNT(gBattleState->players))
     {
@@ -1181,7 +1181,7 @@ void sc1PGameSetupStageAll(void)
             sSC1PGameEnemyKirbyCostume = gBattleState->players[player].costume =
 
             ((gSceneData.ft_kind == nFTKindKirby) && (gSceneData.costume == gBattleState->players[player].costume)) ? 
-                                                                          ftParamGetCostumeRoyalID(nFTKindKirby, 1) : 
+                                                                          ftParamGetCostumeCommonID(nFTKindKirby, 1) : 
                                                                                                                   0 ;
 
             sSC1PGamePlayerSetups[player].team_order = sSC1PGameCurrentEnemyVariation;

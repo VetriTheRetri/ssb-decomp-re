@@ -915,7 +915,7 @@ void mn1PDrawString(GObj* gobj, const char *str, f32 x, f32 y, s32 color[3])
 void mn1PSelectCharWithToken(s32 port_id, s32 select_button)
 {
 	s32 held_port_id = gMN1PPanel.held_port_id,
-		costume_id = ftParamGetCostumeRoyalID(gMN1PPanel.char_id, select_button);
+		costume_id = ftParamGetCostumeCommonID(gMN1PPanel.char_id, select_button);
 
 	ftParamInitModelTexturePartsAll(gMN1PPanel.player, costume_id, 0);
 
@@ -1874,7 +1874,7 @@ void func_ovl27_80134EB8() {}
 // 80134EC0
 s32 mn1PGetAvailableCostume(s32 ft_kind, s32 select_button)
 {
-	return ftParamGetCostumeRoyalID(ft_kind, select_button);
+	return ftParamGetCostumeCommonID(ft_kind, select_button);
 }
 
 // 80134EE0
@@ -2685,7 +2685,7 @@ sb32 mn1PCheckAnyStockArrowPress(GObj* cursor_gobj)
 // 80136B44
 void mn1PSyncShadeAndCostume(s32 arg0, s32 select_button)
 {
-	s32 costume_id = ftParamGetCostumeRoyalID(gMN1PPanel.char_id, select_button);
+	s32 costume_id = ftParamGetCostumeCommonID(gMN1PPanel.char_id, select_button);
 
 	ftParamInitModelTexturePartsAll(gMN1PPanel.player, costume_id, 0);
 

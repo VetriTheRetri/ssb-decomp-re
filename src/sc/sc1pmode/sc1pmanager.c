@@ -323,7 +323,7 @@ void sc1PManagerUpdateScene(void)
 
                 if (gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].ft_kind == nFTKindLuigi)
                 {
-                    gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].costume = ftParamGetCostumeRoyalID(nFTKindLuigi, 1);
+                    gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].costume = ftParamGetCostumeCommonID(nFTKindLuigi, 1);
                 }
                 else gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].costume = 0;
 

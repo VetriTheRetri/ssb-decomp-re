@@ -358,7 +358,7 @@ void mvOpeningLinkCreatePosedFighter()
 	ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	spawn_info.ft_kind = nFTKindLink;
-	spawn_info.costume = ftParamGetCostumeRoyalID(nFTKindLink, 0);
+	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindLink, 0);
 	spawn_info.anim_heap = gMvOpeningLinkAnimHeap;
 	spawn_info.pos.x = 600.0f;
 	spawn_info.pos.y = 0.0f;

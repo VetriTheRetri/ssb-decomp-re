@@ -639,7 +639,7 @@ void mnBattleSelectCharWithToken(s32 port_id, s32 select_button)
 
 	if (select_button != mnSelect_A)
 	{
-		costume_id = ftParamGetCostumeRoyalID(gMnBattlePanels[held_port_id].char_id, select_button);
+		costume_id = ftParamGetCostumeCommonID(gMnBattlePanels[held_port_id].char_id, select_button);
 
 		if (mnBattleIsCostumeInUse(gMnBattlePanels[held_port_id].char_id, held_port_id, costume_id) != FALSE)
 		{
@@ -1560,7 +1560,7 @@ s32 mnBattleGetAvailableCostumeFFA(s32 ft_kind, s32 port_id)
 			{
 				for (j = 0; j < 4; j++)
 				{
-					if (ftParamGetCostumeRoyalID(ft_kind, j) == panel_info->costume_id)
+					if (ftParamGetCostumeCommonID(ft_kind, j) == panel_info->costume_id)
 						some_array[j] = TRUE;
 				}
 			}
@@ -1578,7 +1578,7 @@ s32 mnBattleGetAvailableCostumeFFA(s32 ft_kind, s32 port_id)
 s32 mnBattleGetAvailableCostume(s32 ft_kind, s32 port_id)
 {
 	if (gMnBattleIsTeamBattle == FALSE)
-		return ftParamGetCostumeRoyalID(ft_kind, mnBattleGetAvailableCostumeFFA(ft_kind, port_id));
+		return ftParamGetCostumeCommonID(ft_kind, mnBattleGetAvailableCostumeFFA(ft_kind, port_id));
 	else if (gMnBattleIsTeamBattle == TRUE)
 		return ftParamGetCostumeTeamID(ft_kind, gMnBattlePanels[port_id].team);
 }
@@ -1801,7 +1801,7 @@ void mnBattleUpdatePanelsAndFighterCostumes()
 			mnUpdatePanel(gMnBattlePanels[i].panel, color_indexes[i], gMnBattlePanels[i].player_type);
 			if (gMnBattlePanels[i].char_id != nFTKindNull)
 			{
-				gMnBattlePanels[i].costume_id = ftParamGetCostumeRoyalID(
+				gMnBattlePanels[i].costume_id = ftParamGetCostumeCommonID(
 					gMnBattlePanels[i].char_id, mnBattleGetAvailableCostumeFFA(gMnBattlePanels[i].char_id, i));
 				gMnBattlePanels[i].shade = mnBattleGetShade(i);
 				ftParamInitModelTexturePartsAll(gMnBattlePanels[i].player, gMnBattlePanels[i].costume_id, gMnBattlePanels[i].shade);
@@ -3050,7 +3050,7 @@ void mnBattleSyncCursorDisplay(GObj* cursor_gobj, s32 port_id)
 // 80137EFC
 void mnTryCostumeChange(s32 port_id, s32 select_button)
 {
-	u32 costume_id = ftParamGetCostumeRoyalID(gMnBattlePanels[port_id].char_id, select_button);
+	u32 costume_id = ftParamGetCostumeCommonID(gMnBattlePanels[port_id].char_id, select_button);
 
 	if (mnBattleIsCostumeInUse(gMnBattlePanels[port_id].char_id, port_id, costume_id) != FALSE)
 	{
@@ -3722,7 +3722,7 @@ void mnBattleSyncShadeAndCostume(s32 unused)
 			if ((gMnBattlePanels[i].char_id != nFTKindNull)
 				&& (mnBattleGetAdditionalSelectedCount(gMnBattlePanels[i].char_id) == 0))
 			{
-				costume_id = ftParamGetCostumeRoyalID(gMnBattlePanels[i].char_id, 0);
+				costume_id = ftParamGetCostumeCommonID(gMnBattlePanels[i].char_id, 0);
 
 				if ((costume_id != gMnBattlePanels[i].costume_id) && (gMnBattlePanels[i].unk_0x88 == 0))
 				{

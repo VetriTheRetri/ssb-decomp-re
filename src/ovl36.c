@@ -357,7 +357,7 @@ void mvOpeningMarioCreatePosedFighter()
 	ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	spawn_info.ft_kind = nFTKindMario;
-	spawn_info.costume = ftParamGetCostumeRoyalID(nFTKindMario, 0);
+	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindMario, 0);
 	spawn_info.anim_heap = gMvOpeningMarioAnimHeap;
 	spawn_info.pos.x = 0.0f;
 	spawn_info.pos.y = 600.0f;

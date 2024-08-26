@@ -232,7 +232,7 @@ void intro_yoshi_nest_entry();
 void intro_link_hill_entry();
 void intro_mario_vs_kirby_entry();
 void intro_pika_pokeball_entry();
-void intro_sex_kicks_entry();
+void mvOpeningClashStartScene();
 void mvOpeningSectorStartScene();
 void mvOpeningJungleStartScene();
 void mvOpeningNewcomersStartScene();
@@ -522,7 +522,7 @@ void start_scene_manager(u32 set)
 				break;
 			case 43:
 				syDmaLoadOverlay(&D_800A3070[49]);
-				intro_sex_kicks_entry();
+				mvOpeningClashStartScene();
 				break;
 			case 44:
 				syDmaLoadOverlay(&D_800A3070[50]);

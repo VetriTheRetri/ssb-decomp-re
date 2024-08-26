@@ -979,6 +979,29 @@ lITLinkBombBloatScales = 0x000000A8;
 
 lITMonsterAnimBankStart = 0x00013624;
 
+lMVOpeningClashFightersCamAnimJoint = 0x00001440;
+lMVOpeningClashWallpaperCamAnimJoint = 0x00004AB0;
+
+lMVOpeningClashWallpaperLLMObjSub = 0x00003050;
+lMVOpeningClashWallpaperLLDisplayList = 0x000032A8;
+lMVOpeningClashWallpaperLLMatAnimJoint = 0x00003458;
+lMVOpeningClashWallpaperLLAnimJoint = 0x000036D0;
+
+lMVOpeningClashWallpaperLRMObjSub = 0x000036E0;
+lMVOpeningClashWallpaperLRDisplayList = 0x00003938;
+lMVOpeningClashWallpaperLRMatAnimJoint = 0x00003AE8;
+lMVOpeningClashWallpaperLRAnimJoint = 0x00003D60;
+
+lMVOpeningClashWallpaperULMObjSub = 0x00003D70;
+lMVOpeningClashWallpaperULDisplayList = 0x00003FC8;
+lMVOpeningClashWallpaperULMatAnimJoint = 0x00004180;
+lMVOpeningClashWallpaperULAnimJoint = 0x00004400;
+
+lMVOpeningClashWallpaperURMObjSub = 0x00004410;
+lMVOpeningClashWallpaperURDisplayList = 0x00004668;
+lMVOpeningClashWallpaperURMatAnimJoint = 0x00004820;
+lMVOpeningClashWallpaperURAnimJoint = 0x00004AA0;
+
 lMVOpeningSectorGreatFoxDObjDesc = 0x0000D820;
 lMVOpeningSectorGreatFoxAnimJoint = 0x0000DA10;
 

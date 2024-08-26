@@ -364,7 +364,7 @@ void mvOpeningDKCreatePosedFighter()
 	ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	spawn_info.ft_kind = nFTKindDonkey;
-	spawn_info.costume = ftParamGetCostumeRoyalID(nFTKindDonkey, 0);
+	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindDonkey, 0);
 	spawn_info.anim_heap = gMvOpeningDKAnimHeap;
 	spawn_info.pos.x = 0.0f;
 	spawn_info.pos.y = -600.0f;

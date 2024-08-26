@@ -1616,14 +1616,15 @@ segments:
       - [0x1721E0, asm, ovl48]
       - [0x172A80, data, ovl48]
 
-  - name: ovl49 # to be moved from main branch
+  - name: ovl49
     type: code
     start: 0x172B60
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x172B60, asm, ovl49]
-      - [0x173930, data, ovl49]
+      - [0x172B60, c, mv/mvopening/mvopeningclash]
+      - [0x173930, .data, mv/mvopening/mvopeningclash]
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningclash, vram: 0x801329D0 }
 
   - name: ovl50
     type: code

@@ -2635,7 +2635,7 @@ void func_ovl2_800EBD08(DObj *root_dobj, f32 arg1, Vec3f *vec, f32 arg3)
 }
 
 // 0x800EC0EC
-s32 ftParamGetCostumeRoyalID(s32 ft_kind, s32 color)
+s32 ftParamGetCostumeCommonID(s32 ft_kind, s32 color)
 {
     return dFTParamCostumeIDs[ft_kind].royal[color];
 }

@@ -1,6 +1,6 @@
 func_ovl49_80131B00 = 0x80131B00; // segment:ovl49
 func_ovl49_80131B60 = 0x80131B60; // segment:ovl49
-func_ovl49_80131CCC = 0x80131CCC; // segment:ovl49
+mvOpeningClashVoidProcRender = 0x80131CCC; // segment:ovl49
 func_ovl49_80131E08 = 0x80131E08; // segment:ovl49
 func_ovl49_80131E5C = 0x80131E5C; // segment:ovl49
 func_ovl49_80132204 = 0x80132204; // segment:ovl49
@@ -10,7 +10,7 @@ func_ovl49_8013246C = 0x8013246C; // segment:ovl49
 func_ovl49_80132550 = 0x80132550; // segment:ovl49
 func_ovl49_8013255C = 0x8013255C; // segment:ovl49
 func_ovl49_8013267C = 0x8013267C; // segment:ovl49
-intro_sex_kicks_entry = 0x80132874; // segment:ovl49
+mvOpeningClashStartScene = 0x80132874; // segment:ovl49
 
 D_ovl49_801328D0 = 0x801328D0; // segment:ovl49
 D_ovl49_80132908 = 0x80132908; // segment:ovl49

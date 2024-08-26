@@ -547,7 +547,7 @@ void mnTrainingSelectCharWithToken(s32 port_id, s32 select_button)
 
 	if (select_button != mnSelect_A)
 	{
-		costume_id = ftParamGetCostumeRoyalID(gMNTrainingPanels[held_port_id].char_id, select_button);
+		costume_id = ftParamGetCostumeCommonID(gMNTrainingPanels[held_port_id].char_id, select_button);
 
 		if (mnTrainingIsCostumeInUse(gMNTrainingPanels[held_port_id].char_id, held_port_id, costume_id))
 		{
@@ -1122,7 +1122,7 @@ s32 mnTrainingGetAvailableCostumeFFA(s32 ft_kind, s32 port_id)
 		{
 			for (j = 0; j < 4; j++)
 			{
-				if (ftParamGetCostumeRoyalID(ft_kind, j) == gMNTrainingPanels[gMNTrainingCPUPanelPort].costume_id)
+				if (ftParamGetCostumeCommonID(ft_kind, j) == gMNTrainingPanels[gMNTrainingCPUPanelPort].costume_id)
 					some_array[j] = TRUE;
 			}
 		}
@@ -1133,7 +1133,7 @@ s32 mnTrainingGetAvailableCostumeFFA(s32 ft_kind, s32 port_id)
 		{
 			for (k = 0; k < 4; k++)
 			{
-				if (ftParamGetCostumeRoyalID(ft_kind, k) == gMNTrainingPanels[gMNTrainingHumanPanelPort].costume_id)
+				if (ftParamGetCostumeCommonID(ft_kind, k) == gMNTrainingPanels[gMNTrainingHumanPanelPort].costume_id)
 					some_array[k] = TRUE;
 			}
 		}
@@ -1149,7 +1149,7 @@ s32 mnTrainingGetAvailableCostumeFFA(s32 ft_kind, s32 port_id)
 // 801335F0
 s32 mnTrainingGetAvailableCostume(s32 ft_kind, s32 port_id)
 {
-	return ftParamGetCostumeRoyalID(ft_kind, mnTrainingGetAvailableCostumeFFA(ft_kind, port_id));
+	return ftParamGetCostumeCommonID(ft_kind, mnTrainingGetAvailableCostumeFFA(ft_kind, port_id));
 }
 
 // 8013361C
@@ -1964,7 +1964,7 @@ void mnTrainingSyncCursorDisplay(GObj* cursor_gobj, s32 port_id)
 // 801355E0
 void mnTrainingTryCostumeChange(s32 port_id, s32 select_button)
 {
-	u32 costume_id = ftParamGetCostumeRoyalID(gMNTrainingPanels[port_id].char_id, select_button);
+	u32 costume_id = ftParamGetCostumeCommonID(gMNTrainingPanels[port_id].char_id, select_button);
 
 	if (mnTrainingIsCostumeInUse(gMNTrainingPanels[port_id].char_id, port_id, costume_id))
 	{
@@ -2501,7 +2501,7 @@ void mnTrainingSyncShadeAndCostume(s32 unused)
 	{
 		if ((gMNTrainingPanels[i].char_id != nFTKindNull) && (mnTrainingGetAdditionalSelectedCount(gMNTrainingPanels[i].char_id) == 0))
 		{
-			costume_id = ftParamGetCostumeRoyalID(gMNTrainingPanels[i].char_id, 0);
+			costume_id = ftParamGetCostumeCommonID(gMNTrainingPanels[i].char_id, 0);
 
 			if ((costume_id != gMNTrainingPanels[i].costume_id) && (gMNTrainingPanels[i].unk_0x88 == 0))
 			{
@@ -2861,10 +2861,10 @@ void mnTrainingLoadMatchInfo()
 			} while (mnTrainingCheckFighterIsXBoxed(ft_kind));
 		} while (mnTrainingGetIsLocked(ft_kind));
 
-		if (mnTrainingIsCostumeInUse(ft_kind, gMNTrainingCPUPanelPort, ftParamGetCostumeRoyalID(ft_kind, 0)))
-			costume_id = ftParamGetCostumeRoyalID(ft_kind, 1);
+		if (mnTrainingIsCostumeInUse(ft_kind, gMNTrainingCPUPanelPort, ftParamGetCostumeCommonID(ft_kind, 0)))
+			costume_id = ftParamGetCostumeCommonID(ft_kind, 1);
 		else
-			costume_id = ftParamGetCostumeRoyalID(ft_kind, 0);
+			costume_id = ftParamGetCostumeCommonID(ft_kind, 0);
 	}
 	else
 		costume_id = gSceneData.training_com_costume;

@@ -4,7 +4,7 @@
 #include <sys/system_00.h>
 #include <ovl0/reloc_data_mgr.h>
 
-#include "ovl26.h"
+#include "character_select.h"
 
 // Externs
 extern intptr_t lOverlay26ArenaLo; // 0x8013C4C0
@@ -580,6 +580,13 @@ u32 D_ovl26_8013C0E0[240];
 
 // 8013C4A0
 s32 gMnBattleFilesArray[7];
+#define gFile011 gMnBattleFilesArray[0] // 8013C4A0; // file 0x011 pointer
+#define gFile000 gMnBattleFilesArray[1] // 8013C4A4; // file 0x000 pointer
+#define gFile014 gMnBattleFilesArray[2] // 8013C4A8; // file 0x014 pointer
+#define gFile015 gMnBattleFilesArray[3] // 8013C4AC; // file 0x015 pointer
+#define gFile012 gMnBattleFilesArray[4] // 8013C4B0; // file 0x012 pointer
+#define gFile013 gMnBattleFilesArray[5] // 8013C4B4; // file 0x013 pointer
+#define gFile016 gMnBattleFilesArray[6] // 8013C4B8; // file 0x016 pointer
 
 
 // 80131B20

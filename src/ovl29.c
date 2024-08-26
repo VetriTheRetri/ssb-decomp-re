@@ -51,9 +51,11 @@ extern void func_ovl0_800CD2CC();
 
 
 // Forward declarations
+void mnBonusInitCSS();
 void mnBonusSaveMatchInfo();
 sb32 mnBonusAreAllCompleted();
 void mnBonusCreateWhiteSquare(s32 port_id);
+void mnBonusSetupDisplayList(Gfx **display_list);
 void mnBonusReorderCursorsOnPlacement(s32 port_id);
 s32 mnBonusGetFtKindFromTokenPositionEvenIfLocked();
 void mnBonusAnnounceFighter(s32 port_id, s32 panel_id);
@@ -490,16 +492,16 @@ syDisplaySetup D_ovl29_80137530 = {
 scRuntimeInfo D_ovl29_8013754C = {
 
 	0x00000000, 0x8000A5E4,
-	0x8000A340, 0x80137E30,
+	func_8000A340, &lOverlay29ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00004A38, 0x00000200,
 	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x00008000,
-	0x80131B00, 0x80004310,
+	mnBonusSetupDisplayList, update_contdata,
 	0x00000000, 0x00000100, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
 	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
 	0x00000000, 0x00000088, 0x00000000, 0x0000006C,
 	0x00000000, 0x00000090,
-	0x80136CD8
+	mnBonusInitCSS
 };
 
 

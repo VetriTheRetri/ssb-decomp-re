@@ -24,17 +24,17 @@ glabel D_ovl19_801347C0
   .balign 4
   .incbin "ovl19.raw.bin", 0x2CCC, 0x4
 
-glabel D_ovl19_801347D0
+glabel dMNVSDisplayList
   .incbin "ovl19.raw.bin", 0x2CD0, 0x14
   /* 2CE4 125194 801347E4 */  .4byte D_ovl19_801347C0
   .incbin "ovl19.raw.bin", 0x2CE8, 0x4
   /* 2CEC 12519C 801347EC */  .4byte D_ovl19_801347B8
   .incbin "ovl19.raw.bin", 0x2CF0, 0x8
 
-glabel D_ovl19_801347F8
+glabel dMNVSNumberOffsets
   .incbin "ovl19.raw.bin", 0x2CF8, 0x28
 
-glabel D_ovl19_80134820
+glabel dMNVSUnusedFloats
   /* 2D20 1251D0 80134820 */
   .asciz "A "
   .balign 4
@@ -51,26 +51,26 @@ glabel D_ovl19_80134820
   .asciz "A "
   .balign 4
 
-glabel D_ovl19_80134848
+glabel dMNVSButtonColorsSelected
   .incbin "ovl19.raw.bin", 0x2D48, 0x8
 
-glabel D_ovl19_80134850
+glabel dMNVSButtonColorsHighlighted
   .incbin "ovl19.raw.bin", 0x2D50, 0x8
 
-glabel D_ovl19_80134858
+glabel dMNVSButtonColorsDefault
   .incbin "ovl19.raw.bin", 0x2D58, 0x8
 
-glabel D_ovl19_80134860
+glabel dMNVSRuleValueColor
   .incbin "ovl19.raw.bin", 0x2D60, 0x4
 
-glabel D_ovl19_80134864
+glabel dMNVSTimeStockValueColor
   .incbin "ovl19.raw.bin", 0x2D64, 0xC
 
-glabel D_ovl19_80134870
-  /* 2D70 125220 80134870 */  .4byte D_ovl19_80134930
-  /* 2D74 125224 80134874 */  .4byte D_ovl19_80134934
-  /* 2D78 125228 80134878 */  .4byte D_ovl19_80134938
-  /* 2D7C 12522C 8013487C */  .4byte D_ovl19_8013493C
+glabel gMNVSButtons
+  /* 2D70 125220 80134870 */  .4byte gMNVSButtonGObjVSStart
+  /* 2D74 125224 80134874 */  .4byte gMNVSButtonGObjRule
+  /* 2D78 125228 80134878 */  .4byte gMNVSButtonGObjTimeStock
+  /* 2D7C 12522C 8013487C */  .4byte gMNVSButtonGObjVSOptions
 
 glabel D_ovl19_80134880
   /* 2D80 125230 80134880 */  .4byte D_NF_80392A00
@@ -84,8 +84,8 @@ glabel D_ovl19_8013489C
   /* 2DA4 125254 801348A4 */  .4byte func_8000A340
   /* 2DA8 125258 801348A8 */  .4byte D_NF_80134A50
   .incbin "ovl19.raw.bin", 0x2DAC, 0x28
-  /* 2DD4 125284 801348D4 */  .4byte func_ovl19_80131B00
+  /* 2DD4 125284 801348D4 */  .4byte mnVSSetupDisplayList
   /* 2DD8 125288 801348D8 */  .4byte update_contdata
   .incbin "ovl19.raw.bin", 0x2DDC, 0x48
-  /* 2E24 1252D4 80134924 */  .4byte func_ovl19_801345C4
+  /* 2E24 1252D4 80134924 */  .4byte mnVSInit
   .incbin "ovl19.raw.bin", 0x2E28, 0x8

@@ -12,10 +12,10 @@
 # Text Sections
 #  0x80131B00 -> 0x801347B0
 
-glabel func_ovl19_80131B00
+glabel mnVSSetupDisplayList
   /* 1224B0 80131B00 8C830000 */        lw $v1, ($a0)
-  /* 1224B4 80131B04 3C188013 */       lui $t8, %hi(D_ovl19_801347D0)
-  /* 1224B8 80131B08 271847D0 */     addiu $t8, $t8, %lo(D_ovl19_801347D0)
+  /* 1224B4 80131B04 3C188013 */       lui $t8, %hi(dMNVSDisplayList)
+  /* 1224B8 80131B08 271847D0 */     addiu $t8, $t8, %lo(dMNVSDisplayList)
   /* 1224BC 80131B0C 246E0008 */     addiu $t6, $v1, 8
   /* 1224C0 80131B10 AC8E0000 */        sw $t6, ($a0)
   /* 1224C4 80131B14 3C0FDE00 */       lui $t7, 0xde00
@@ -23,7 +23,7 @@ glabel func_ovl19_80131B00
   /* 1224CC 80131B1C 03E00008 */        jr $ra
   /* 1224D0 80131B20 AC780004 */        sw $t8, 4($v1)
 
-glabel func_ovl19_80131B24
+glabel mnVSPow
   /* 1224D4 80131B24 14A00003 */      bnez $a1, .L80131B34
   /* 1224D8 80131B28 00801825 */        or $v1, $a0, $zero
   /* 1224DC 80131B2C 03E00008 */        jr $ra
@@ -43,7 +43,7 @@ glabel func_ovl19_80131B24
   /* 122508 80131B58 2442FFFF */     addiu $v0, $v0, -1
   /* 12250C 80131B5C 00001812 */      mflo $v1
   /* 122510 80131B60 14C2FFFC */       bne $a2, $v0, .L80131B54
-  /* 122514 80131B64 00000000 */       nop 
+  /* 122514 80131B64 00000000 */       nop
   /* 122518 80131B68 24050001 */     addiu $a1, $zero, 1
   /* 12251C 80131B6C 10450012 */       beq $v0, $a1, .L80131BB8
   .L80131B70:
@@ -52,26 +52,26 @@ glabel func_ovl19_80131B24
   /* 122524 80131B74 00640019 */     multu $v1, $a0
   /* 122528 80131B78 2442FFFC */     addiu $v0, $v0, -4
   /* 12252C 80131B7C 00001812 */      mflo $v1
-  /* 122530 80131B80 00000000 */       nop 
-  /* 122534 80131B84 00000000 */       nop 
+  /* 122530 80131B80 00000000 */       nop
+  /* 122534 80131B84 00000000 */       nop
   /* 122538 80131B88 00640019 */     multu $v1, $a0
   /* 12253C 80131B8C 00001812 */      mflo $v1
-  /* 122540 80131B90 00000000 */       nop 
-  /* 122544 80131B94 00000000 */       nop 
+  /* 122540 80131B90 00000000 */       nop
+  /* 122544 80131B94 00000000 */       nop
   /* 122548 80131B98 00640019 */     multu $v1, $a0
   /* 12254C 80131B9C 00001812 */      mflo $v1
-  /* 122550 80131BA0 00000000 */       nop 
-  /* 122554 80131BA4 00000000 */       nop 
+  /* 122550 80131BA0 00000000 */       nop
+  /* 122554 80131BA4 00000000 */       nop
   /* 122558 80131BA8 00640019 */     multu $v1, $a0
   /* 12255C 80131BAC 00001812 */      mflo $v1
   /* 122560 80131BB0 1445FFF0 */       bne $v0, $a1, .L80131B74
-  /* 122564 80131BB4 00000000 */       nop 
+  /* 122564 80131BB4 00000000 */       nop
   .L80131BB8:
   /* 122568 80131BB8 00601025 */        or $v0, $v1, $zero
   /* 12256C 80131BBC 03E00008 */        jr $ra
-  /* 122570 80131BC0 00000000 */       nop 
+  /* 122570 80131BC0 00000000 */       nop
 
-glabel func_ovl19_80131BC4
+glabel mnVSSetTextureColors
   /* 122574 80131BC4 948E0024 */       lhu $t6, 0x24($a0)
   /* 122578 80131BC8 31D8FFDF */      andi $t8, $t6, 0xffdf
   /* 12257C 80131BCC A4980024 */        sh $t8, 0x24($a0)
@@ -85,7 +85,7 @@ glabel func_ovl19_80131BC4
   /* 12259C 80131BEC 03E00008 */        jr $ra
   /* 1225A0 80131BF0 A08A002A */        sb $t2, 0x2a($a0)
 
-glabel func_ovl19_80131BF4
+glabel mnVSGetNumberOfDigits
   /* 1225A4 80131BF4 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 1225A8 80131BF8 AFB20020 */        sw $s2, 0x20($sp)
   /* 1225AC 80131BFC AFB1001C */        sw $s1, 0x1c($sp)
@@ -97,31 +97,31 @@ glabel func_ovl19_80131BF4
   .L80131C14:
   /* 1225C4 80131C14 2630FFFF */     addiu $s0, $s1, -1
   /* 1225C8 80131C18 02002825 */        or $a1, $s0, $zero
-  /* 1225CC 80131C1C 0C04C6C9 */       jal func_ovl19_80131B24
+  /* 1225CC 80131C1C 0C04C6C9 */       jal mnVSPow
   /* 1225D0 80131C20 2404000A */     addiu $a0, $zero, 0xa
   /* 1225D4 80131C24 10400011 */      beqz $v0, .L80131C6C
   /* 1225D8 80131C28 00001825 */        or $v1, $zero, $zero
   /* 1225DC 80131C2C 2404000A */     addiu $a0, $zero, 0xa
-  /* 1225E0 80131C30 0C04C6C9 */       jal func_ovl19_80131B24
+  /* 1225E0 80131C30 0C04C6C9 */       jal mnVSPow
   /* 1225E4 80131C34 02002825 */        or $a1, $s0, $zero
   /* 1225E8 80131C38 0242001A */       div $zero, $s2, $v0
   /* 1225EC 80131C3C 00001812 */      mflo $v1
   /* 1225F0 80131C40 14400002 */      bnez $v0, .L80131C4C
-  /* 1225F4 80131C44 00000000 */       nop 
+  /* 1225F4 80131C44 00000000 */       nop
   /* 1225F8 80131C48 0007000D */     break 7
   .L80131C4C:
   /* 1225FC 80131C4C 2401FFFF */     addiu $at, $zero, -1
   /* 122600 80131C50 14410004 */       bne $v0, $at, .L80131C64
   /* 122604 80131C54 3C018000 */       lui $at, 0x8000
   /* 122608 80131C58 16410002 */       bne $s2, $at, .L80131C64
-  /* 12260C 80131C5C 00000000 */       nop 
+  /* 12260C 80131C5C 00000000 */       nop
   /* 122610 80131C60 0006000D */     break 6
   .L80131C64:
   /* 122614 80131C64 10000001 */         b .L80131C6C
-  /* 122618 80131C68 00000000 */       nop 
+  /* 122618 80131C68 00000000 */       nop
   .L80131C6C:
   /* 12261C 80131C6C 10600003 */      beqz $v1, .L80131C7C
-  /* 122620 80131C70 00000000 */       nop 
+  /* 122620 80131C70 00000000 */       nop
   /* 122624 80131C74 10000004 */         b .L80131C88
   /* 122628 80131C78 02201025 */        or $v0, $s1, $zero
   .L80131C7C:
@@ -137,14 +137,14 @@ glabel func_ovl19_80131BF4
   /* 122648 80131C98 03E00008 */        jr $ra
   /* 12264C 80131C9C 27BD0028 */     addiu $sp, $sp, 0x28
 
-glabel func_ovl19_80131CA0
+glabel mnVSCreateNumber
   /* 122650 80131CA0 27BDFF40 */     addiu $sp, $sp, -0xc0
   /* 122654 80131CA4 F7B80028 */      sdc1 $f24, 0x28($sp)
-  /* 122658 80131CA8 3C0E8013 */       lui $t6, %hi(D_ovl19_801347F8)
+  /* 122658 80131CA8 3C0E8013 */       lui $t6, %hi(dMNVSNumberOffsets)
   /* 12265C 80131CAC AFBE0050 */        sw $fp, 0x50($sp)
   /* 122660 80131CB0 AFB3003C */        sw $s3, 0x3c($sp)
   /* 122664 80131CB4 27A20098 */     addiu $v0, $sp, 0x98
-  /* 122668 80131CB8 25CE47F8 */     addiu $t6, $t6, %lo(D_ovl19_801347F8)
+  /* 122668 80131CB8 25CE47F8 */     addiu $t6, $t6, %lo(dMNVSNumberOffsets)
   /* 12266C 80131CBC 4487C000 */      mtc1 $a3, $f24
   /* 122670 80131CC0 00A09825 */        or $s3, $a1, $zero
   /* 122674 80131CC4 0080F025 */        or $fp, $a0, $zero
@@ -162,32 +162,32 @@ glabel func_ovl19_80131CA0
   /* 1226A4 80131CF4 25C80024 */     addiu $t0, $t6, 0x24
   /* 1226A8 80131CF8 0040C825 */        or $t9, $v0, $zero
   .L80131CFC:
-  /* 1226AC 80131CFC 8DD80000 */        lw $t8, ($t6) # D_ovl19_801347F8 + 0
+  /* 1226AC 80131CFC 8DD80000 */        lw $t8, ($t6) # dMNVSNumberOffsets + 0
   /* 1226B0 80131D00 25CE000C */     addiu $t6, $t6, 0xc
   /* 1226B4 80131D04 2739000C */     addiu $t9, $t9, 0xc
   /* 1226B8 80131D08 AF38FFF4 */        sw $t8, -0xc($t9)
-  /* 1226BC 80131D0C 8DCFFFF8 */        lw $t7, -8($t6) # D_ovl19_801347F8 + -8
+  /* 1226BC 80131D0C 8DCFFFF8 */        lw $t7, -8($t6) # dMNVSNumberOffsets + -8
   /* 1226C0 80131D10 AF2FFFF8 */        sw $t7, -8($t9)
-  /* 1226C4 80131D14 8DD8FFFC */        lw $t8, -4($t6) # D_ovl19_801347F8 + -4
+  /* 1226C4 80131D14 8DD8FFFC */        lw $t8, -4($t6) # dMNVSNumberOffsets + -4
   /* 1226C8 80131D18 15C8FFF8 */       bne $t6, $t0, .L80131CFC
   /* 1226CC 80131D1C AF38FFFC */        sw $t8, -4($t9)
-  /* 1226D0 80131D20 8DD80000 */        lw $t8, ($t6) # D_ovl19_801347F8 + 0
-  /* 1226D4 80131D24 3C0A8013 */       lui $t2, %hi(D_ovl19_80134820)
-  /* 1226D8 80131D28 254A4820 */     addiu $t2, $t2, %lo(D_ovl19_80134820)
+  /* 1226D0 80131D20 8DD80000 */        lw $t8, ($t6) # dMNVSNumberOffsets + 0
+  /* 1226D4 80131D24 3C0A8013 */       lui $t2, %hi(dMNVSUnusedFloats)
+  /* 1226D8 80131D28 254A4820 */     addiu $t2, $t2, %lo(dMNVSUnusedFloats)
   /* 1226DC 80131D2C 254D0024 */     addiu $t5, $t2, 0x24
   /* 1226E0 80131D30 27A90070 */     addiu $t1, $sp, 0x70
   /* 1226E4 80131D34 AF380000 */        sw $t8, ($t9)
   .L80131D38:
-  /* 1226E8 80131D38 8D4C0000 */        lw $t4, ($t2) # D_ovl19_80134820 + 0
+  /* 1226E8 80131D38 8D4C0000 */        lw $t4, ($t2) # dMNVSUnusedFloats + 0
   /* 1226EC 80131D3C 254A000C */     addiu $t2, $t2, 0xc
   /* 1226F0 80131D40 2529000C */     addiu $t1, $t1, 0xc
   /* 1226F4 80131D44 AD2CFFF4 */        sw $t4, -0xc($t1)
-  /* 1226F8 80131D48 8D4BFFF8 */        lw $t3, -8($t2) # D_ovl19_80134820 + -8
+  /* 1226F8 80131D48 8D4BFFF8 */        lw $t3, -8($t2) # dMNVSUnusedFloats + -8
   /* 1226FC 80131D4C AD2BFFF8 */        sw $t3, -8($t1)
-  /* 122700 80131D50 8D4CFFFC */        lw $t4, -4($t2) # D_ovl19_80134820 + -4
+  /* 122700 80131D50 8D4CFFFC */        lw $t4, -4($t2) # dMNVSUnusedFloats + -4
   /* 122704 80131D54 154DFFF8 */       bne $t2, $t5, .L80131D38
   /* 122708 80131D58 AD2CFFFC */        sw $t4, -4($t1)
-  /* 12270C 80131D5C 8D4C0000 */        lw $t4, ($t2) # D_ovl19_80134820 + 0
+  /* 12270C 80131D5C 8D4C0000 */        lw $t4, ($t2) # dMNVSUnusedFloats + 0
   /* 122710 80131D60 2416000A */     addiu $s6, $zero, 0xa
   /* 122714 80131D64 3C178013 */       lui $s7, %hi(D_ovl19_80134A48)
   /* 122718 80131D68 AD2C0000 */        sw $t4, ($t1)
@@ -204,23 +204,23 @@ glabel func_ovl19_80131CA0
   /* 122740 80131D90 8EF80000 */        lw $t8, ($s7) # D_ovl19_80134A48 + 0
   /* 122744 80131D94 03C02025 */        or $a0, $fp, $zero
   /* 122748 80131D98 16C00002 */      bnez $s6, .L80131DA4
-  /* 12274C 80131D9C 00000000 */       nop 
+  /* 12274C 80131D9C 00000000 */       nop
   /* 122750 80131DA0 0007000D */     break 7
   .L80131DA4:
   /* 122754 80131DA4 2401FFFF */     addiu $at, $zero, -1
   /* 122758 80131DA8 16C10004 */       bne $s6, $at, .L80131DBC
   /* 12275C 80131DAC 3C018000 */       lui $at, 0x8000
   /* 122760 80131DB0 16610002 */       bne $s3, $at, .L80131DBC
-  /* 122764 80131DB4 00000000 */       nop 
+  /* 122764 80131DB4 00000000 */       nop
   /* 122768 80131DB8 0006000D */     break 6
   .L80131DBC:
   /* 12276C 80131DBC 01F82821 */      addu $a1, $t7, $t8
   /* 122770 80131DC0 0C0333F7 */       jal gcAppendSObjWithSprite
-  /* 122774 80131DC4 00000000 */       nop 
+  /* 122774 80131DC4 00000000 */       nop
   /* 122778 80131DC8 8FB400D0 */        lw $s4, 0xd0($sp)
   /* 12277C 80131DCC 00408025 */        or $s0, $v0, $zero
   /* 122780 80131DD0 00402025 */        or $a0, $v0, $zero
-  /* 122784 80131DD4 0C04C6F1 */       jal func_ovl19_80131BC4
+  /* 122784 80131DD4 0C04C6F1 */       jal mnVSSetTextureColors
   /* 122788 80131DD8 02802825 */        or $a1, $s4, $zero
   /* 12278C 80131DDC 3C014130 */       lui $at, (0x41300000 >> 16) # 11.0
   /* 122790 80131DE0 4481B000 */      mtc1 $at, $f22 # 11.0 to cop1
@@ -237,7 +237,7 @@ glabel func_ovl19_80131CA0
   .L80131E0C:
   /* 1227BC 80131E0C 8FB200D4 */        lw $s2, 0xd4($sp)
   /* 1227C0 80131E10 02602025 */        or $a0, $s3, $zero
-  /* 1227C4 80131E14 0C04C6FD */       jal func_ovl19_80131BF4
+  /* 1227C4 80131E14 0C04C6FD */       jal mnVSGetNumberOfDigits
   /* 1227C8 80131E18 02402825 */        or $a1, $s2, $zero
   /* 1227CC 80131E1C 00401825 */        or $v1, $v0, $zero
   .L80131E20:
@@ -245,28 +245,28 @@ glabel func_ovl19_80131CA0
   /* 1227D4 80131E24 1420003A */      bnez $at, .L80131F10
   /* 1227D8 80131E28 02C02025 */        or $a0, $s6, $zero
   .L80131E2C:
-  /* 1227DC 80131E2C 0C04C6C9 */       jal func_ovl19_80131B24
+  /* 1227DC 80131E2C 0C04C6C9 */       jal mnVSPow
   /* 1227E0 80131E30 02202825 */        or $a1, $s1, $zero
   /* 1227E4 80131E34 10400011 */      beqz $v0, .L80131E7C
   /* 1227E8 80131E38 00001825 */        or $v1, $zero, $zero
   /* 1227EC 80131E3C 02C02025 */        or $a0, $s6, $zero
-  /* 1227F0 80131E40 0C04C6C9 */       jal func_ovl19_80131B24
+  /* 1227F0 80131E40 0C04C6C9 */       jal mnVSPow
   /* 1227F4 80131E44 02202825 */        or $a1, $s1, $zero
   /* 1227F8 80131E48 0262001A */       div $zero, $s3, $v0
   /* 1227FC 80131E4C 00001812 */      mflo $v1
   /* 122800 80131E50 14400002 */      bnez $v0, .L80131E5C
-  /* 122804 80131E54 00000000 */       nop 
+  /* 122804 80131E54 00000000 */       nop
   /* 122808 80131E58 0007000D */     break 7
   .L80131E5C:
   /* 12280C 80131E5C 2401FFFF */     addiu $at, $zero, -1
   /* 122810 80131E60 14410004 */       bne $v0, $at, .L80131E74
   /* 122814 80131E64 3C018000 */       lui $at, 0x8000
   /* 122818 80131E68 16610002 */       bne $s3, $at, .L80131E74
-  /* 12281C 80131E6C 00000000 */       nop 
+  /* 12281C 80131E6C 00000000 */       nop
   /* 122820 80131E70 0006000D */     break 6
   .L80131E74:
   /* 122824 80131E74 10000001 */         b .L80131E7C
-  /* 122828 80131E78 00000000 */       nop 
+  /* 122828 80131E78 00000000 */       nop
   .L80131E7C:
   /* 12282C 80131E7C 0076001A */       div $zero, $v1, $s6
   /* 122830 80131E80 00006810 */      mfhi $t5
@@ -276,22 +276,22 @@ glabel func_ovl19_80131CA0
   /* 122840 80131E90 8EEB0000 */        lw $t3, ($s7) # D_ovl19_80134A48 + 0
   /* 122844 80131E94 03C02025 */        or $a0, $fp, $zero
   /* 122848 80131E98 16C00002 */      bnez $s6, .L80131EA4
-  /* 12284C 80131E9C 00000000 */       nop 
+  /* 12284C 80131E9C 00000000 */       nop
   /* 122850 80131EA0 0007000D */     break 7
   .L80131EA4:
   /* 122854 80131EA4 2401FFFF */     addiu $at, $zero, -1
   /* 122858 80131EA8 16C10004 */       bne $s6, $at, .L80131EBC
   /* 12285C 80131EAC 3C018000 */       lui $at, 0x8000
   /* 122860 80131EB0 14610002 */       bne $v1, $at, .L80131EBC
-  /* 122864 80131EB4 00000000 */       nop 
+  /* 122864 80131EB4 00000000 */       nop
   /* 122868 80131EB8 0006000D */     break 6
   .L80131EBC:
   /* 12286C 80131EBC 012B2821 */      addu $a1, $t1, $t3
   /* 122870 80131EC0 0C0333F7 */       jal gcAppendSObjWithSprite
-  /* 122874 80131EC4 00000000 */       nop 
+  /* 122874 80131EC4 00000000 */       nop
   /* 122878 80131EC8 00408025 */        or $s0, $v0, $zero
   /* 12287C 80131ECC 00402025 */        or $a0, $v0, $zero
-  /* 122880 80131ED0 0C04C6F1 */       jal func_ovl19_80131BC4
+  /* 122880 80131ED0 0C04C6F1 */       jal mnVSSetTextureColors
   /* 122884 80131ED4 02802825 */        or $a1, $s4, $zero
   /* 122888 80131ED8 4616A501 */     sub.s $f20, $f20, $f22
   /* 12288C 80131EDC 26310001 */     addiu $s1, $s1, 1
@@ -302,7 +302,7 @@ glabel func_ovl19_80131CA0
   /* 1228A0 80131EF0 02401825 */        or $v1, $s2, $zero
   .L80131EF4:
   /* 1228A4 80131EF4 02602025 */        or $a0, $s3, $zero
-  /* 1228A8 80131EF8 0C04C6FD */       jal func_ovl19_80131BF4
+  /* 1228A8 80131EF8 0C04C6FD */       jal mnVSGetNumberOfDigits
   /* 1228AC 80131EFC 02402825 */        or $a1, $s2, $zero
   /* 1228B0 80131F00 00401825 */        or $v1, $v0, $zero
   .L80131F04:
@@ -326,29 +326,29 @@ glabel func_ovl19_80131CA0
   /* 1228F4 80131F44 03E00008 */        jr $ra
   /* 1228F8 80131F48 27BD00C0 */     addiu $sp, $sp, 0xc0
 
-glabel func_ovl19_80131F4C
-  /* 1228FC 80131F4C 3C0E8013 */       lui $t6, %hi(D_ovl19_80134848)
-  /* 122900 80131F50 25CE4848 */     addiu $t6, $t6, %lo(D_ovl19_80134848)
-  /* 122904 80131F54 8DD80000 */        lw $t8, ($t6) # D_ovl19_80134848 + 0
+glabel mnVSUpdateButton
+  /* 1228FC 80131F4C 3C0E8013 */       lui $t6, %hi(dMNVSButtonColorsSelected)
+  /* 122900 80131F50 25CE4848 */     addiu $t6, $t6, %lo(dMNVSButtonColorsSelected)
+  /* 122904 80131F54 8DD80000 */        lw $t8, ($t6) # dMNVSButtonColorsSelected + 0
   /* 122908 80131F58 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 12290C 80131F5C 27A30020 */     addiu $v1, $sp, 0x20
   /* 122910 80131F60 AC780000 */        sw $t8, ($v1)
-  /* 122914 80131F64 95D80004 */       lhu $t8, 4($t6) # D_ovl19_80134848 + 4
-  /* 122918 80131F68 3C198013 */       lui $t9, %hi(D_ovl19_80134850)
-  /* 12291C 80131F6C 27394850 */     addiu $t9, $t9, %lo(D_ovl19_80134850)
+  /* 122914 80131F64 95D80004 */       lhu $t8, 4($t6) # dMNVSButtonColorsSelected + 4
+  /* 122918 80131F68 3C198013 */       lui $t9, %hi(dMNVSButtonColorsHighlighted)
+  /* 12291C 80131F6C 27394850 */     addiu $t9, $t9, %lo(dMNVSButtonColorsHighlighted)
   /* 122920 80131F70 A4780004 */        sh $t8, 4($v1)
-  /* 122924 80131F74 8F290000 */        lw $t1, ($t9) # D_ovl19_80134850 + 0
+  /* 122924 80131F74 8F290000 */        lw $t1, ($t9) # dMNVSButtonColorsHighlighted + 0
   /* 122928 80131F78 27A60018 */     addiu $a2, $sp, 0x18
-  /* 12292C 80131F7C 3C0A8013 */       lui $t2, %hi(D_ovl19_80134858)
+  /* 12292C 80131F7C 3C0A8013 */       lui $t2, %hi(dMNVSButtonColorsDefault)
   /* 122930 80131F80 ACC90000 */        sw $t1, ($a2)
-  /* 122934 80131F84 97290004 */       lhu $t1, 4($t9) # D_ovl19_80134850 + 4
-  /* 122938 80131F88 254A4858 */     addiu $t2, $t2, %lo(D_ovl19_80134858)
+  /* 122934 80131F84 97290004 */       lhu $t1, 4($t9) # dMNVSButtonColorsHighlighted + 4
+  /* 122938 80131F88 254A4858 */     addiu $t2, $t2, %lo(dMNVSButtonColorsDefault)
   /* 12293C 80131F8C 27A70010 */     addiu $a3, $sp, 0x10
   /* 122940 80131F90 A4C90004 */        sh $t1, 4($a2)
-  /* 122944 80131F94 8D4C0000 */        lw $t4, ($t2) # D_ovl19_80134858 + 0
+  /* 122944 80131F94 8D4C0000 */        lw $t4, ($t2) # dMNVSButtonColorsDefault + 0
   /* 122948 80131F98 24010001 */     addiu $at, $zero, 1
   /* 12294C 80131F9C ACEC0000 */        sw $t4, ($a3)
-  /* 122950 80131FA0 954C0004 */       lhu $t4, 4($t2) # D_ovl19_80134858 + 4
+  /* 122950 80131FA0 954C0004 */       lhu $t4, 4($t2) # dMNVSButtonColorsDefault + 4
   /* 122954 80131FA4 10A00009 */      beqz $a1, .L80131FCC
   /* 122958 80131FA8 A4EC0004 */        sh $t4, 4($a3)
   /* 12295C 80131FAC 10A10005 */       beq $a1, $at, .L80131FC4
@@ -386,7 +386,7 @@ glabel func_ovl19_80131F4C
   /* 1229CC 8013201C 03E00008 */        jr $ra
   /* 1229D0 80132020 27BD0028 */     addiu $sp, $sp, 0x28
 
-glabel func_ovl19_80132024
+glabel mnVSCreateButton
   /* 1229D4 80132024 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 1229D8 80132028 3C0E8013 */       lui $t6, %hi(D_ovl19_80134A48)
   /* 1229DC 8013202C 8DCE4A48 */        lw $t6, %lo(D_ovl19_80134A48)($t6)
@@ -462,9 +462,9 @@ glabel func_ovl19_80132024
   /* 122AF4 80132144 8FBF0014 */        lw $ra, 0x14($sp)
   /* 122AF8 80132148 27BD0028 */     addiu $sp, $sp, 0x28
   /* 122AFC 8013214C 03E00008 */        jr $ra
-  /* 122B00 80132150 00000000 */       nop 
+  /* 122B00 80132150 00000000 */       nop
 
-glabel func_ovl19_80132154
+glabel mnVSCreateVSStartButton
   /* 122B04 80132154 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 122B08 80132158 AFBF001C */        sw $ra, 0x1c($sp)
   /* 122B0C 8013215C 00002025 */        or $a0, $zero, $zero
@@ -472,10 +472,10 @@ glabel func_ovl19_80132154
   /* 122B14 80132164 24060004 */     addiu $a2, $zero, 4
   /* 122B18 80132168 0C00265A */       jal omMakeGObjSPAfter
   /* 122B1C 8013216C 3C078000 */       lui $a3, 0x8000
-  /* 122B20 80132170 3C018013 */       lui $at, %hi(D_ovl19_80134930)
+  /* 122B20 80132170 3C018013 */       lui $at, %hi(gMNVSButtonGObjVSStart)
   /* 122B24 80132174 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 122B28 80132178 240EFFFF */     addiu $t6, $zero, -1
-  /* 122B2C 8013217C AC224930 */        sw $v0, %lo(D_ovl19_80134930)($at)
+  /* 122B2C 8013217C AC224930 */        sw $v0, %lo(gMNVSButtonGObjVSStart)($at)
   /* 122B30 80132180 AFA20024 */        sw $v0, 0x24($sp)
   /* 122B34 80132184 AFAE0010 */        sw $t6, 0x10($sp)
   /* 122B38 80132188 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -486,17 +486,17 @@ glabel func_ovl19_80132154
   /* 122B4C 8013219C 8FA40024 */        lw $a0, 0x24($sp)
   /* 122B50 801321A0 3C0542F0 */       lui $a1, 0x42f0
   /* 122B54 801321A4 3C0641F8 */       lui $a2, 0x41f8
-  /* 122B58 801321A8 0C04C809 */       jal func_ovl19_80132024
+  /* 122B58 801321A8 0C04C809 */       jal mnVSCreateButton
   /* 122B5C 801321AC 24070011 */     addiu $a3, $zero, 0x11
-  /* 122B60 801321B0 3C0F8013 */       lui $t7, %hi(D_ovl19_80134948)
-  /* 122B64 801321B4 8DEF4948 */        lw $t7, %lo(D_ovl19_80134948)($t7)
+  /* 122B60 801321B0 3C0F8013 */       lui $t7, %hi(gMNVSCursorIndex)
+  /* 122B64 801321B4 8DEF4948 */        lw $t7, %lo(gMNVSCursorIndex)($t7)
   /* 122B68 801321B8 00002825 */        or $a1, $zero, $zero
   /* 122B6C 801321BC 15E00003 */      bnez $t7, .L801321CC
-  /* 122B70 801321C0 00000000 */       nop 
+  /* 122B70 801321C0 00000000 */       nop
   /* 122B74 801321C4 10000001 */         b .L801321CC
   /* 122B78 801321C8 24050001 */     addiu $a1, $zero, 1
   .L801321CC:
-  /* 122B7C 801321CC 0C04C7D3 */       jal func_ovl19_80131F4C
+  /* 122B7C 801321CC 0C04C7D3 */       jal mnVSUpdateButton
   /* 122B80 801321D0 8FA40024 */        lw $a0, 0x24($sp)
   /* 122B84 801321D4 3C188013 */       lui $t8, %hi(D_ovl19_80134A4C)
   /* 122B88 801321D8 8F184A4C */        lw $t8, %lo(D_ovl19_80134A4C)($t8)
@@ -522,15 +522,15 @@ glabel func_ovl19_80132154
   /* 122BD8 80132228 8FBF001C */        lw $ra, 0x1c($sp)
   /* 122BDC 8013222C 27BD0028 */     addiu $sp, $sp, 0x28
   /* 122BE0 80132230 03E00008 */        jr $ra
-  /* 122BE4 80132234 00000000 */       nop 
+  /* 122BE4 80132234 00000000 */       nop
 
-glabel func_ovl19_80132238
+glabel mnVSCreateRuleValue
   /* 122BE8 80132238 27BDFFC8 */     addiu $sp, $sp, -0x38
-  /* 122BEC 8013223C 3C0F8013 */       lui $t7, %hi(D_ovl19_80134860)
+  /* 122BEC 8013223C 3C0F8013 */       lui $t7, %hi(dMNVSRuleValueColor)
   /* 122BF0 80132240 AFBF0024 */        sw $ra, 0x24($sp)
   /* 122BF4 80132244 AFB00020 */        sw $s0, 0x20($sp)
-  /* 122BF8 80132248 25EF4860 */     addiu $t7, $t7, %lo(D_ovl19_80134860)
-  /* 122BFC 8013224C 99F90002 */       lwr $t9, 2($t7) # D_ovl19_80134860 + 2
+  /* 122BF8 80132248 25EF4860 */     addiu $t7, $t7, %lo(dMNVSRuleValueColor)
+  /* 122BFC 8013224C 99F90002 */       lwr $t9, 2($t7) # dMNVSRuleValueColor + 2
   /* 122C00 80132250 27AE002C */     addiu $t6, $sp, 0x2c
   /* 122C04 80132254 00002025 */        or $a0, $zero, $zero
   /* 122C08 80132258 00002825 */        or $a1, $zero, $zero
@@ -538,10 +538,10 @@ glabel func_ovl19_80132238
   /* 122C10 80132260 3C078000 */       lui $a3, 0x8000
   /* 122C14 80132264 0C00265A */       jal omMakeGObjSPAfter
   /* 122C18 80132268 B9D90002 */       swr $t9, 2($t6)
-  /* 122C1C 8013226C 3C018013 */       lui $at, %hi(D_ovl19_80134958)
+  /* 122C1C 8013226C 3C018013 */       lui $at, %hi(gMNVSRuleValueGObj)
   /* 122C20 80132270 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 122C24 80132274 2408FFFF */     addiu $t0, $zero, -1
-  /* 122C28 80132278 AC224958 */        sw $v0, %lo(D_ovl19_80134958)($at)
+  /* 122C28 80132278 AC224958 */        sw $v0, %lo(gMNVSRuleValueGObj)($at)
   /* 122C2C 8013227C 00408025 */        or $s0, $v0, $zero
   /* 122C30 80132280 AFA80010 */        sw $t0, 0x10($sp)
   /* 122C34 80132284 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -549,8 +549,8 @@ glabel func_ovl19_80132238
   /* 122C3C 8013228C 24060003 */     addiu $a2, $zero, 3
   /* 122C40 80132290 0C00277D */       jal omAddGObjRenderProc
   /* 122C44 80132294 3C078000 */       lui $a3, 0x8000
-  /* 122C48 80132298 3C028013 */       lui $v0, %hi(D_ovl19_8013494C)
-  /* 122C4C 8013229C 8C42494C */        lw $v0, %lo(D_ovl19_8013494C)($v0)
+  /* 122C48 80132298 3C028013 */       lui $v0, %hi(gMNVSRule)
+  /* 122C4C 8013229C 8C42494C */        lw $v0, %lo(gMNVSRule)($v0)
   /* 122C50 801322A0 02002025 */        or $a0, $s0, $zero
   /* 122C54 801322A4 3C088013 */       lui $t0, 0x8013
   /* 122C58 801322A8 10400024 */      beqz $v0, .L8013233C
@@ -717,13 +717,13 @@ glabel func_ovl19_80132238
   /* 122EC4 80132514 8FB00020 */        lw $s0, 0x20($sp)
   /* 122EC8 80132518 27BD0038 */     addiu $sp, $sp, 0x38
   /* 122ECC 8013251C 03E00008 */        jr $ra
-  /* 122ED0 80132520 00000000 */       nop 
+  /* 122ED0 80132520 00000000 */       nop
 
-glabel func_ovl19_80132524
+glabel mnVSGetArrowSObj
   /* 122ED4 80132524 8C830074 */        lw $v1, 0x74($a0)
   /* 122ED8 80132528 00001025 */        or $v0, $zero, $zero
   /* 122EDC 8013252C 1060000E */      beqz $v1, .L80132568
-  /* 122EE0 80132530 00000000 */       nop 
+  /* 122EE0 80132530 00000000 */       nop
   /* 122EE4 80132534 8C6E0054 */        lw $t6, 0x54($v1)
   /* 122EE8 80132538 54AE0004 */      bnel $a1, $t6, .L8013254C
   /* 122EEC 8013253C 8C640008 */        lw $a0, 8($v1)
@@ -733,18 +733,18 @@ glabel func_ovl19_80132524
   /* 122EF8 80132548 8C640008 */        lw $a0, 8($v1)
   .L8013254C:
   /* 122EFC 8013254C 10800006 */      beqz $a0, .L80132568
-  /* 122F00 80132550 00000000 */       nop 
+  /* 122F00 80132550 00000000 */       nop
   /* 122F04 80132554 8C8F0054 */        lw $t7, 0x54($a0)
   /* 122F08 80132558 14AF0003 */       bne $a1, $t7, .L80132568
-  /* 122F0C 8013255C 00000000 */       nop 
+  /* 122F0C 8013255C 00000000 */       nop
   /* 122F10 80132560 03E00008 */        jr $ra
   /* 122F14 80132564 00801025 */        or $v0, $a0, $zero
 
   .L80132568:
   /* 122F18 80132568 03E00008 */        jr $ra
-  /* 122F1C 8013256C 00000000 */       nop 
+  /* 122F1C 8013256C 00000000 */       nop
 
-glabel func_ovl19_80132570
+glabel mnVSCreateLeftArrow
   /* 122F20 80132570 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 122F24 80132574 3C0E8013 */       lui $t6, %hi(D_ovl19_80134A48)
   /* 122F28 80132578 8DCE4A48 */        lw $t6, %lo(D_ovl19_80134A48)($t6)
@@ -773,9 +773,9 @@ glabel func_ovl19_80132570
   /* 122F84 801325D4 8FBF0014 */        lw $ra, 0x14($sp)
   /* 122F88 801325D8 27BD0018 */     addiu $sp, $sp, 0x18
   /* 122F8C 801325DC 03E00008 */        jr $ra
-  /* 122F90 801325E0 00000000 */       nop 
+  /* 122F90 801325E0 00000000 */       nop
 
-glabel func_ovl19_801325E4
+glabel mnVSCreateRightArrow
   /* 122F94 801325E4 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 122F98 801325E8 3C0E8013 */       lui $t6, %hi(D_ovl19_80134A48)
   /* 122F9C 801325EC 8DCE4A48 */        lw $t6, %lo(D_ovl19_80134A48)($t6)
@@ -805,9 +805,9 @@ glabel func_ovl19_801325E4
   /* 122FFC 8013264C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 123000 80132650 27BD0018 */     addiu $sp, $sp, 0x18
   /* 123004 80132654 03E00008 */        jr $ra
-  /* 123008 80132658 00000000 */       nop 
+  /* 123008 80132658 00000000 */       nop
 
-glabel func_ovl19_8013265C
+glabel mnVSAnimateRuleArrows
   /* 12300C 8013265C 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 123010 80132660 F7B80020 */      sdc1 $f24, 0x20($sp)
   /* 123014 80132664 3C014325 */       lui $at, (0x43250000 >> 16) # 165.0
@@ -825,29 +825,29 @@ glabel func_ovl19_8013265C
   /* 123044 80132694 AFB4003C */        sw $s4, 0x3c($sp)
   /* 123048 80132698 AFB20034 */        sw $s2, 0x34($sp)
   /* 12304C 8013269C AFB0002C */        sw $s0, 0x2c($sp)
-  /* 123050 801326A0 3C118013 */       lui $s1, %hi(D_ovl19_80134970)
-  /* 123054 801326A4 3C138013 */       lui $s3, %hi(D_ovl19_8013494C)
-  /* 123058 801326A8 3C158013 */       lui $s5, %hi(D_ovl19_80134948)
+  /* 123050 801326A0 3C118013 */       lui $s1, %hi(gMNVSRuleArrowBlinkTimer)
+  /* 123054 801326A4 3C138013 */       lui $s3, %hi(gMNVSRule)
+  /* 123058 801326A8 3C158013 */       lui $s5, %hi(gMNVSCursorIndex)
   /* 12305C 801326AC 4481A000 */      mtc1 $at, $f20 # 70.0 to cop1
   /* 123060 801326B0 00808025 */        or $s0, $a0, $zero
   /* 123064 801326B4 AFBF004C */        sw $ra, 0x4c($sp)
-  /* 123068 801326B8 26B54948 */     addiu $s5, $s5, %lo(D_ovl19_80134948)
-  /* 12306C 801326BC 2673494C */     addiu $s3, $s3, %lo(D_ovl19_8013494C)
-  /* 123070 801326C0 26314970 */     addiu $s1, $s1, %lo(D_ovl19_80134970)
+  /* 123068 801326B8 26B54948 */     addiu $s5, $s5, %lo(gMNVSCursorIndex)
+  /* 12306C 801326BC 2673494C */     addiu $s3, $s3, %lo(gMNVSRule)
+  /* 123070 801326C0 26314970 */     addiu $s1, $s1, %lo(gMNVSRuleArrowBlinkTimer)
   /* 123074 801326C4 24120001 */     addiu $s2, $zero, 1
   /* 123078 801326C8 24140001 */     addiu $s4, $zero, 1
   /* 12307C 801326CC 2416001E */     addiu $s6, $zero, 0x1e
   /* 123080 801326D0 24170003 */     addiu $s7, $zero, 3
-  /* 123084 801326D4 8EAE0000 */        lw $t6, ($s5) # D_ovl19_80134948 + 0
+  /* 123084 801326D4 8EAE0000 */        lw $t6, ($s5) # gMNVSCursorIndex + 0
   .L801326D8:
   /* 123088 801326D8 568E0039 */      bnel $s4, $t6, .L801327C0
   /* 12308C 801326DC AE12007C */        sw $s2, 0x7c($s0)
-  /* 123090 801326E0 8E2F0000 */        lw $t7, ($s1) # D_ovl19_80134970 + 0
+  /* 123090 801326E0 8E2F0000 */        lw $t7, ($s1) # gMNVSRuleArrowBlinkTimer + 0
   /* 123094 801326E4 00002825 */        or $a1, $zero, $zero
   /* 123098 801326E8 02002025 */        or $a0, $s0, $zero
   /* 12309C 801326EC 25F8FFFF */     addiu $t8, $t7, -1
   /* 1230A0 801326F0 17000008 */      bnez $t8, .L80132714
-  /* 1230A4 801326F4 AE380000 */        sw $t8, ($s1) # D_ovl19_80134970 + 0
+  /* 1230A4 801326F4 AE380000 */        sw $t8, ($s1) # gMNVSRuleArrowBlinkTimer + 0
   /* 1230A8 801326F8 8E08007C */        lw $t0, 0x7c($s0)
   /* 1230AC 801326FC 56480004 */      bnel $s2, $t0, .L80132710
   /* 1230B0 80132700 AE12007C */        sw $s2, 0x7c($s0)
@@ -855,64 +855,64 @@ glabel func_ovl19_8013265C
   /* 1230B8 80132708 AE00007C */        sw $zero, 0x7c($s0)
   /* 1230BC 8013270C AE12007C */        sw $s2, 0x7c($s0)
   .L80132710:
-  /* 1230C0 80132710 AE360000 */        sw $s6, ($s1) # D_ovl19_80134970 + 0
+  /* 1230C0 80132710 AE360000 */        sw $s6, ($s1) # gMNVSRuleArrowBlinkTimer + 0
   .L80132714:
-  /* 1230C4 80132714 8E690000 */        lw $t1, ($s3) # D_ovl19_8013494C + 0
+  /* 1230C4 80132714 8E690000 */        lw $t1, ($s3) # gMNVSRule + 0
   /* 1230C8 80132718 15200009 */      bnez $t1, .L80132740
-  /* 1230CC 8013271C 00000000 */       nop 
-  /* 1230D0 80132720 0C04C949 */       jal func_ovl19_80132524
+  /* 1230CC 8013271C 00000000 */       nop
+  /* 1230D0 80132720 0C04C949 */       jal mnVSGetArrowSObj
   /* 1230D4 80132724 02002025 */        or $a0, $s0, $zero
   /* 1230D8 80132728 1040000D */      beqz $v0, .L80132760
   /* 1230DC 8013272C 00402025 */        or $a0, $v0, $zero
   /* 1230E0 80132730 0C0025BB */       jal omEjectSObj
-  /* 1230E4 80132734 00000000 */       nop 
+  /* 1230E4 80132734 00000000 */       nop
   /* 1230E8 80132738 1000000A */         b .L80132764
-  /* 1230EC 8013273C 8E6A0000 */        lw $t2, ($s3) # D_ovl19_8013494C + 0
+  /* 1230EC 8013273C 8E6A0000 */        lw $t2, ($s3) # gMNVSRule + 0
   .L80132740:
-  /* 1230F0 80132740 0C04C949 */       jal func_ovl19_80132524
+  /* 1230F0 80132740 0C04C949 */       jal mnVSGetArrowSObj
   /* 1230F4 80132744 00002825 */        or $a1, $zero, $zero
   /* 1230F8 80132748 54400006 */      bnel $v0, $zero, .L80132764
-  /* 1230FC 8013274C 8E6A0000 */        lw $t2, ($s3) # D_ovl19_8013494C + 0
+  /* 1230FC 8013274C 8E6A0000 */        lw $t2, ($s3) # gMNVSRule + 0
   /* 123100 80132750 4405C000 */      mfc1 $a1, $f24
   /* 123104 80132754 4406A000 */      mfc1 $a2, $f20
-  /* 123108 80132758 0C04C95C */       jal func_ovl19_80132570
+  /* 123108 80132758 0C04C95C */       jal mnVSCreateLeftArrow
   /* 12310C 8013275C 02002025 */        or $a0, $s0, $zero
   .L80132760:
-  /* 123110 80132760 8E6A0000 */        lw $t2, ($s3) # D_ovl19_8013494C + 0
+  /* 123110 80132760 8E6A0000 */        lw $t2, ($s3) # gMNVSRule + 0
   .L80132764:
   /* 123114 80132764 02802825 */        or $a1, $s4, $zero
   /* 123118 80132768 02002025 */        or $a0, $s0, $zero
   /* 12311C 8013276C 16EA0009 */       bne $s7, $t2, .L80132794
-  /* 123120 80132770 00000000 */       nop 
-  /* 123124 80132774 0C04C949 */       jal func_ovl19_80132524
+  /* 123120 80132770 00000000 */       nop
+  /* 123124 80132774 0C04C949 */       jal mnVSGetArrowSObj
   /* 123128 80132778 02002025 */        or $a0, $s0, $zero
   /* 12312C 8013277C 10400010 */      beqz $v0, .L801327C0
   /* 123130 80132780 00402025 */        or $a0, $v0, $zero
   /* 123134 80132784 0C0025BB */       jal omEjectSObj
-  /* 123138 80132788 00000000 */       nop 
+  /* 123138 80132788 00000000 */       nop
   /* 12313C 8013278C 1000000C */         b .L801327C0
-  /* 123140 80132790 00000000 */       nop 
+  /* 123140 80132790 00000000 */       nop
   .L80132794:
-  /* 123144 80132794 0C04C949 */       jal func_ovl19_80132524
+  /* 123144 80132794 0C04C949 */       jal mnVSGetArrowSObj
   /* 123148 80132798 02802825 */        or $a1, $s4, $zero
   /* 12314C 8013279C 14400008 */      bnez $v0, .L801327C0
-  /* 123150 801327A0 00000000 */       nop 
+  /* 123150 801327A0 00000000 */       nop
   /* 123154 801327A4 4405B000 */      mfc1 $a1, $f22
   /* 123158 801327A8 4406A000 */      mfc1 $a2, $f20
-  /* 12315C 801327AC 0C04C979 */       jal func_ovl19_801325E4
+  /* 12315C 801327AC 0C04C979 */       jal mnVSCreateRightArrow
   /* 123160 801327B0 02002025 */        or $a0, $s0, $zero
   /* 123164 801327B4 10000002 */         b .L801327C0
-  /* 123168 801327B8 00000000 */       nop 
+  /* 123168 801327B8 00000000 */       nop
   /* 12316C 801327BC AE12007C */        sw $s2, 0x7c($s0)
   .L801327C0:
   /* 123170 801327C0 0C002C7A */       jal gsStopCurrentProcess
   /* 123174 801327C4 02802025 */        or $a0, $s4, $zero
   /* 123178 801327C8 1000FFC3 */         b .L801326D8
-  /* 12317C 801327CC 8EAE0000 */        lw $t6, ($s5) # D_ovl19_80134948 + 0
-  /* 123180 801327D0 00000000 */       nop 
-  /* 123184 801327D4 00000000 */       nop 
-  /* 123188 801327D8 00000000 */       nop 
-  /* 12318C 801327DC 00000000 */       nop 
+  /* 12317C 801327CC 8EAE0000 */        lw $t6, ($s5) # gMNVSCursorIndex + 0
+  /* 123180 801327D0 00000000 */       nop
+  /* 123184 801327D4 00000000 */       nop
+  /* 123188 801327D8 00000000 */       nop
+  /* 12318C 801327DC 00000000 */       nop
 # Maybe start of new file
   /* 123190 801327E0 8FBF004C */        lw $ra, 0x4c($sp)
   /* 123194 801327E4 D7B40010 */      ldc1 $f20, 0x10($sp)
@@ -929,27 +929,27 @@ glabel func_ovl19_8013265C
   /* 1231C0 80132810 03E00008 */        jr $ra
   /* 1231C4 80132814 27BD0050 */     addiu $sp, $sp, 0x50
 
-glabel func_ovl19_80132818
-  /* 1231C8 80132818 3C048013 */       lui $a0, %hi(D_ovl19_80134964)
-  /* 1231CC 8013281C 8C844964 */        lw $a0, %lo(D_ovl19_80134964)($a0)
+glabel mnVSCreateRuleArrows
+  /* 1231C8 80132818 3C048013 */       lui $a0, %hi(gMNVSRuleArrowsGObj)
+  /* 1231CC 8013281C 8C844964 */        lw $a0, %lo(gMNVSRuleArrowsGObj)($a0)
   /* 1231D0 80132820 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 1231D4 80132824 AFBF001C */        sw $ra, 0x1c($sp)
   /* 1231D8 80132828 50800006 */      beql $a0, $zero, .L80132844
   /* 1231DC 8013282C 00002025 */        or $a0, $zero, $zero
   /* 1231E0 80132830 0C0026A1 */       jal omEjectGObj
-  /* 1231E4 80132834 00000000 */       nop 
-  /* 1231E8 80132838 3C018013 */       lui $at, %hi(D_ovl19_80134964)
-  /* 1231EC 8013283C AC204964 */        sw $zero, %lo(D_ovl19_80134964)($at)
+  /* 1231E4 80132834 00000000 */       nop
+  /* 1231E8 80132838 3C018013 */       lui $at, %hi(gMNVSRuleArrowsGObj)
+  /* 1231EC 8013283C AC204964 */        sw $zero, %lo(gMNVSRuleArrowsGObj)($at)
   /* 1231F0 80132840 00002025 */        or $a0, $zero, $zero
   .L80132844:
   /* 1231F4 80132844 00002825 */        or $a1, $zero, $zero
   /* 1231F8 80132848 24060004 */     addiu $a2, $zero, 4
   /* 1231FC 8013284C 0C00265A */       jal omMakeGObjSPAfter
   /* 123200 80132850 3C078000 */       lui $a3, 0x8000
-  /* 123204 80132854 3C018013 */       lui $at, %hi(D_ovl19_80134964)
+  /* 123204 80132854 3C018013 */       lui $at, %hi(gMNVSRuleArrowsGObj)
   /* 123208 80132858 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 12320C 8013285C 240EFFFF */     addiu $t6, $zero, -1
-  /* 123210 80132860 AC224964 */        sw $v0, %lo(D_ovl19_80134964)($at)
+  /* 123210 80132860 AC224964 */        sw $v0, %lo(gMNVSRuleArrowsGObj)($at)
   /* 123214 80132864 AFA20024 */        sw $v0, 0x24($sp)
   /* 123218 80132868 AFAE0010 */        sw $t6, 0x10($sp)
   /* 12321C 8013286C 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -957,8 +957,8 @@ glabel func_ovl19_80132818
   /* 123224 80132874 24060002 */     addiu $a2, $zero, 2
   /* 123228 80132878 0C00277D */       jal omAddGObjRenderProc
   /* 12322C 8013287C 3C078000 */       lui $a3, 0x8000
-  /* 123230 80132880 3C058013 */       lui $a1, %hi(func_ovl19_8013265C)
-  /* 123234 80132884 24A5265C */     addiu $a1, $a1, %lo(func_ovl19_8013265C)
+  /* 123230 80132880 3C058013 */       lui $a1, %hi(mnVSAnimateRuleArrows)
+  /* 123234 80132884 24A5265C */     addiu $a1, $a1, %lo(mnVSAnimateRuleArrows)
   /* 123238 80132888 8FA40024 */        lw $a0, 0x24($sp)
   /* 12323C 8013288C 00003025 */        or $a2, $zero, $zero
   /* 123240 80132890 0C002062 */       jal omAddGObjCommonProc
@@ -966,9 +966,9 @@ glabel func_ovl19_80132818
   /* 123248 80132898 8FBF001C */        lw $ra, 0x1c($sp)
   /* 12324C 8013289C 27BD0028 */     addiu $sp, $sp, 0x28
   /* 123250 801328A0 03E00008 */        jr $ra
-  /* 123254 801328A4 00000000 */       nop 
+  /* 123254 801328A4 00000000 */       nop
 
-glabel func_ovl19_801328A8
+glabel mnVSAnimateTimeStockArrows
   /* 123258 801328A8 27BDFFD0 */     addiu $sp, $sp, -0x30
   /* 12325C 801328AC AFB40024 */        sw $s4, 0x24($sp)
   /* 123260 801328B0 AFB10018 */        sw $s1, 0x18($sp)
@@ -976,23 +976,23 @@ glabel func_ovl19_801328A8
   /* 123268 801328B8 AFB30020 */        sw $s3, 0x20($sp)
   /* 12326C 801328BC AFB2001C */        sw $s2, 0x1c($sp)
   /* 123270 801328C0 AFB00014 */        sw $s0, 0x14($sp)
-  /* 123274 801328C4 3C118013 */       lui $s1, %hi(D_ovl19_8013496C)
-  /* 123278 801328C8 3C148013 */       lui $s4, %hi(D_ovl19_80134948)
+  /* 123274 801328C4 3C118013 */       lui $s1, %hi(gMNVSTimeStockArrowBlinkTimer)
+  /* 123278 801328C8 3C148013 */       lui $s4, %hi(gMNVSCursorIndex)
   /* 12327C 801328CC 00808025 */        or $s0, $a0, $zero
   /* 123280 801328D0 AFBF002C */        sw $ra, 0x2c($sp)
-  /* 123284 801328D4 26944948 */     addiu $s4, $s4, %lo(D_ovl19_80134948)
-  /* 123288 801328D8 2631496C */     addiu $s1, $s1, %lo(D_ovl19_8013496C)
+  /* 123284 801328D4 26944948 */     addiu $s4, $s4, %lo(gMNVSCursorIndex)
+  /* 123288 801328D8 2631496C */     addiu $s1, $s1, %lo(gMNVSTimeStockArrowBlinkTimer)
   /* 12328C 801328DC 24120001 */     addiu $s2, $zero, 1
   /* 123290 801328E0 24130002 */     addiu $s3, $zero, 2
   /* 123294 801328E4 2415001E */     addiu $s5, $zero, 0x1e
-  /* 123298 801328E8 8E8E0000 */        lw $t6, ($s4) # D_ovl19_80134948 + 0
+  /* 123298 801328E8 8E8E0000 */        lw $t6, ($s4) # gMNVSCursorIndex + 0
   .L801328EC:
   /* 12329C 801328EC 566E000E */      bnel $s3, $t6, .L80132928
   /* 1232A0 801328F0 AE12007C */        sw $s2, 0x7c($s0)
-  /* 1232A4 801328F4 8E2F0000 */        lw $t7, ($s1) # D_ovl19_8013496C + 0
+  /* 1232A4 801328F4 8E2F0000 */        lw $t7, ($s1) # gMNVSTimeStockArrowBlinkTimer + 0
   /* 1232A8 801328F8 25F8FFFF */     addiu $t8, $t7, -1
   /* 1232AC 801328FC 1700000A */      bnez $t8, .L80132928
-  /* 1232B0 80132900 AE380000 */        sw $t8, ($s1) # D_ovl19_8013496C + 0
+  /* 1232B0 80132900 AE380000 */        sw $t8, ($s1) # gMNVSTimeStockArrowBlinkTimer + 0
   /* 1232B4 80132904 8E08007C */        lw $t0, 0x7c($s0)
   /* 1232B8 80132908 56480004 */      bnel $s2, $t0, .L8013291C
   /* 1232BC 8013290C AE12007C */        sw $s2, 0x7c($s0)
@@ -1001,15 +1001,15 @@ glabel func_ovl19_801328A8
   /* 1232C8 80132918 AE12007C */        sw $s2, 0x7c($s0)
   .L8013291C:
   /* 1232CC 8013291C 10000002 */         b .L80132928
-  /* 1232D0 80132920 AE350000 */        sw $s5, ($s1) # D_ovl19_8013496C + 0
+  /* 1232D0 80132920 AE350000 */        sw $s5, ($s1) # gMNVSTimeStockArrowBlinkTimer + 0
   /* 1232D4 80132924 AE12007C */        sw $s2, 0x7c($s0)
   .L80132928:
   /* 1232D8 80132928 0C002C7A */       jal gsStopCurrentProcess
   /* 1232DC 8013292C 24040001 */     addiu $a0, $zero, 1
   /* 1232E0 80132930 1000FFEE */         b .L801328EC
-  /* 1232E4 80132934 8E8E0000 */        lw $t6, ($s4) # D_ovl19_80134948 + 0
-  /* 1232E8 80132938 00000000 */       nop 
-  /* 1232EC 8013293C 00000000 */       nop 
+  /* 1232E4 80132934 8E8E0000 */        lw $t6, ($s4) # gMNVSCursorIndex + 0
+  /* 1232E8 80132938 00000000 */       nop
+  /* 1232EC 8013293C 00000000 */       nop
 # Maybe start of new file
   /* 1232F0 80132940 8FBF002C */        lw $ra, 0x2c($sp)
   /* 1232F4 80132944 8FB00014 */        lw $s0, 0x14($sp)
@@ -1021,27 +1021,27 @@ glabel func_ovl19_801328A8
   /* 12330C 8013295C 03E00008 */        jr $ra
   /* 123310 80132960 27BD0030 */     addiu $sp, $sp, 0x30
 
-glabel func_ovl19_80132964
-  /* 123314 80132964 3C048013 */       lui $a0, %hi(D_ovl19_80134968)
-  /* 123318 80132968 8C844968 */        lw $a0, %lo(D_ovl19_80134968)($a0)
+glabel mnVSCreateTimeStockArrows
+  /* 123314 80132964 3C048013 */       lui $a0, %hi(gMNVSTimeStockArrowsGObj)
+  /* 123318 80132968 8C844968 */        lw $a0, %lo(gMNVSTimeStockArrowsGObj)($a0)
   /* 12331C 8013296C 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 123320 80132970 AFBF0024 */        sw $ra, 0x24($sp)
   /* 123324 80132974 10800005 */      beqz $a0, .L8013298C
   /* 123328 80132978 AFB00020 */        sw $s0, 0x20($sp)
   /* 12332C 8013297C 0C0026A1 */       jal omEjectGObj
-  /* 123330 80132980 00000000 */       nop 
-  /* 123334 80132984 3C018013 */       lui $at, %hi(D_ovl19_80134968)
-  /* 123338 80132988 AC204968 */        sw $zero, %lo(D_ovl19_80134968)($at)
+  /* 123330 80132980 00000000 */       nop
+  /* 123334 80132984 3C018013 */       lui $at, %hi(gMNVSTimeStockArrowsGObj)
+  /* 123338 80132988 AC204968 */        sw $zero, %lo(gMNVSTimeStockArrowsGObj)($at)
   .L8013298C:
   /* 12333C 8013298C 00002025 */        or $a0, $zero, $zero
   /* 123340 80132990 00002825 */        or $a1, $zero, $zero
   /* 123344 80132994 24060004 */     addiu $a2, $zero, 4
   /* 123348 80132998 0C00265A */       jal omMakeGObjSPAfter
   /* 12334C 8013299C 3C078000 */       lui $a3, 0x8000
-  /* 123350 801329A0 3C018013 */       lui $at, %hi(D_ovl19_80134968)
+  /* 123350 801329A0 3C018013 */       lui $at, %hi(gMNVSTimeStockArrowsGObj)
   /* 123354 801329A4 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 123358 801329A8 240EFFFF */     addiu $t6, $zero, -1
-  /* 12335C 801329AC AC224968 */        sw $v0, %lo(D_ovl19_80134968)($at)
+  /* 12335C 801329AC AC224968 */        sw $v0, %lo(gMNVSTimeStockArrowsGObj)($at)
   /* 123360 801329B0 00408025 */        or $s0, $v0, $zero
   /* 123364 801329B4 AFAE0010 */        sw $t6, 0x10($sp)
   /* 123368 801329B8 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -1049,42 +1049,42 @@ glabel func_ovl19_80132964
   /* 123370 801329C0 24060002 */     addiu $a2, $zero, 2
   /* 123374 801329C4 0C00277D */       jal omAddGObjRenderProc
   /* 123378 801329C8 3C078000 */       lui $a3, 0x8000
-  /* 12337C 801329CC 3C058013 */       lui $a1, %hi(func_ovl19_801328A8)
-  /* 123380 801329D0 24A528A8 */     addiu $a1, $a1, %lo(func_ovl19_801328A8)
+  /* 12337C 801329CC 3C058013 */       lui $a1, %hi(mnVSAnimateTimeStockArrows)
+  /* 123380 801329D0 24A528A8 */     addiu $a1, $a1, %lo(mnVSAnimateTimeStockArrows)
   /* 123384 801329D4 02002025 */        or $a0, $s0, $zero
   /* 123388 801329D8 00003025 */        or $a2, $zero, $zero
   /* 12338C 801329DC 0C002062 */       jal omAddGObjCommonProc
   /* 123390 801329E0 24070001 */     addiu $a3, $zero, 1
-  /* 123394 801329E4 0C04CACE */       jal func_ovl19_80132B38
-  /* 123398 801329E8 00000000 */       nop 
+  /* 123394 801329E4 0C04CACE */       jal mnVSIsTime
+  /* 123398 801329E8 00000000 */       nop
   /* 12339C 801329EC 1040000B */      beqz $v0, .L80132A1C
   /* 1233A0 801329F0 02002025 */        or $a0, $s0, $zero
   /* 1233A4 801329F4 02002025 */        or $a0, $s0, $zero
   /* 1233A8 801329F8 3C05431B */       lui $a1, 0x431b
-  /* 1233AC 801329FC 0C04C95C */       jal func_ovl19_80132570
+  /* 1233AC 801329FC 0C04C95C */       jal mnVSCreateLeftArrow
   /* 1233B0 80132A00 3C0642DA */       lui $a2, 0x42da
   /* 1233B4 80132A04 02002025 */        or $a0, $s0, $zero
   /* 1233B8 80132A08 3C054366 */       lui $a1, 0x4366
-  /* 1233BC 80132A0C 0C04C979 */       jal func_ovl19_801325E4
+  /* 1233BC 80132A0C 0C04C979 */       jal mnVSCreateRightArrow
   /* 1233C0 80132A10 3C0642DA */       lui $a2, 0x42da
   /* 1233C4 80132A14 10000009 */         b .L80132A3C
   /* 1233C8 80132A18 8FBF0024 */        lw $ra, 0x24($sp)
   .L80132A1C:
   /* 1233CC 80132A1C 3C054325 */       lui $a1, 0x4325
-  /* 1233D0 80132A20 0C04C95C */       jal func_ovl19_80132570
+  /* 1233D0 80132A20 0C04C95C */       jal mnVSCreateLeftArrow
   /* 1233D4 80132A24 3C0642DA */       lui $a2, 0x42da
   /* 1233D8 80132A28 02002025 */        or $a0, $s0, $zero
   /* 1233DC 80132A2C 3C054366 */       lui $a1, 0x4366
-  /* 1233E0 80132A30 0C04C979 */       jal func_ovl19_801325E4
+  /* 1233E0 80132A30 0C04C979 */       jal mnVSCreateRightArrow
   /* 1233E4 80132A34 3C0642DA */       lui $a2, 0x42da
   /* 1233E8 80132A38 8FBF0024 */        lw $ra, 0x24($sp)
   .L80132A3C:
   /* 1233EC 80132A3C 8FB00020 */        lw $s0, 0x20($sp)
   /* 1233F0 80132A40 27BD0028 */     addiu $sp, $sp, 0x28
   /* 1233F4 80132A44 03E00008 */        jr $ra
-  /* 1233F8 80132A48 00000000 */       nop 
+  /* 1233F8 80132A48 00000000 */       nop
 
-glabel func_ovl19_80132A4C
+glabel mnVSCreateRuleButton
   /* 1233FC 80132A4C 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 123400 80132A50 AFBF001C */        sw $ra, 0x1c($sp)
   /* 123404 80132A54 00002025 */        or $a0, $zero, $zero
@@ -1092,10 +1092,10 @@ glabel func_ovl19_80132A4C
   /* 12340C 80132A5C 24060004 */     addiu $a2, $zero, 4
   /* 123410 80132A60 0C00265A */       jal omMakeGObjSPAfter
   /* 123414 80132A64 3C078000 */       lui $a3, 0x8000
-  /* 123418 80132A68 3C018013 */       lui $at, %hi(D_ovl19_80134934)
+  /* 123418 80132A68 3C018013 */       lui $at, %hi(gMNVSButtonGObjRule)
   /* 12341C 80132A6C 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 123420 80132A70 240EFFFF */     addiu $t6, $zero, -1
-  /* 123424 80132A74 AC224934 */        sw $v0, %lo(D_ovl19_80134934)($at)
+  /* 123424 80132A74 AC224934 */        sw $v0, %lo(gMNVSButtonGObjRule)($at)
   /* 123428 80132A78 AFA20024 */        sw $v0, 0x24($sp)
   /* 12342C 80132A7C AFAE0010 */        sw $t6, 0x10($sp)
   /* 123430 80132A80 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -1106,18 +1106,18 @@ glabel func_ovl19_80132A4C
   /* 123444 80132A94 8FA40024 */        lw $a0, 0x24($sp)
   /* 123448 80132A98 3C0542C2 */       lui $a1, 0x42c2
   /* 12344C 80132A9C 3C06428C */       lui $a2, 0x428c
-  /* 123450 80132AA0 0C04C809 */       jal func_ovl19_80132024
+  /* 123450 80132AA0 0C04C809 */       jal mnVSCreateButton
   /* 123454 80132AA4 24070011 */     addiu $a3, $zero, 0x11
-  /* 123458 80132AA8 3C0F8013 */       lui $t7, %hi(D_ovl19_80134948)
-  /* 12345C 80132AAC 8DEF4948 */        lw $t7, %lo(D_ovl19_80134948)($t7)
+  /* 123458 80132AA8 3C0F8013 */       lui $t7, %hi(gMNVSCursorIndex)
+  /* 12345C 80132AAC 8DEF4948 */        lw $t7, %lo(gMNVSCursorIndex)($t7)
   /* 123460 80132AB0 24010001 */     addiu $at, $zero, 1
   /* 123464 80132AB4 00002825 */        or $a1, $zero, $zero
   /* 123468 80132AB8 15E10003 */       bne $t7, $at, .L80132AC8
-  /* 12346C 80132ABC 00000000 */       nop 
+  /* 12346C 80132ABC 00000000 */       nop
   /* 123470 80132AC0 10000001 */         b .L80132AC8
   /* 123474 80132AC4 24050001 */     addiu $a1, $zero, 1
   .L80132AC8:
-  /* 123478 80132AC8 0C04C7D3 */       jal func_ovl19_80131F4C
+  /* 123478 80132AC8 0C04C7D3 */       jal mnVSUpdateButton
   /* 12347C 80132ACC 8FA40024 */        lw $a0, 0x24($sp)
   /* 123480 80132AD0 3C188013 */       lui $t8, %hi(D_ovl19_80134A4C)
   /* 123484 80132AD4 8F184A4C */        lw $t8, %lo(D_ovl19_80134A4C)($t8)
@@ -1139,19 +1139,19 @@ glabel func_ovl19_80132A4C
   /* 1234C4 80132B14 A0400029 */        sb $zero, 0x29($v0)
   /* 1234C8 80132B18 A040002A */        sb $zero, 0x2a($v0)
   /* 1234CC 80132B1C E4440058 */      swc1 $f4, 0x58($v0)
-  /* 1234D0 80132B20 0C04CA06 */       jal func_ovl19_80132818
+  /* 1234D0 80132B20 0C04CA06 */       jal mnVSCreateRuleArrows
   /* 1234D4 80132B24 E446005C */      swc1 $f6, 0x5c($v0)
   /* 1234D8 80132B28 8FBF001C */        lw $ra, 0x1c($sp)
   /* 1234DC 80132B2C 27BD0028 */     addiu $sp, $sp, 0x28
   /* 1234E0 80132B30 03E00008 */        jr $ra
-  /* 1234E4 80132B34 00000000 */       nop 
+  /* 1234E4 80132B34 00000000 */       nop
 
-glabel func_ovl19_80132B38
-  /* 1234E8 80132B38 3C028013 */       lui $v0, %hi(D_ovl19_8013494C)
-  /* 1234EC 80132B3C 8C42494C */        lw $v0, %lo(D_ovl19_8013494C)($v0)
+glabel mnVSIsTime
+  /* 1234E8 80132B38 3C028013 */       lui $v0, %hi(gMNVSRule)
+  /* 1234EC 80132B3C 8C42494C */        lw $v0, %lo(gMNVSRule)($v0)
   /* 1234F0 80132B40 24010002 */     addiu $at, $zero, 2
   /* 1234F4 80132B44 10400003 */      beqz $v0, .L80132B54
-  /* 1234F8 80132B48 00000000 */       nop 
+  /* 1234F8 80132B48 00000000 */       nop
   /* 1234FC 80132B4C 54410004 */      bnel $v0, $at, .L80132B60
   /* 123500 80132B50 00001025 */        or $v0, $zero, $zero
   .L80132B54:
@@ -1161,36 +1161,36 @@ glabel func_ovl19_80132B38
   /* 12350C 80132B5C 00001025 */        or $v0, $zero, $zero
   .L80132B60:
   /* 123510 80132B60 03E00008 */        jr $ra
-  /* 123514 80132B64 00000000 */       nop 
+  /* 123514 80132B64 00000000 */       nop
 
-glabel func_ovl19_80132B68
+glabel mnVSGetTimeStockValue
   /* 123518 80132B68 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 12351C 80132B6C AFBF0014 */        sw $ra, 0x14($sp)
-  /* 123520 80132B70 0C04CACE */       jal func_ovl19_80132B38
-  /* 123524 80132B74 00000000 */       nop 
+  /* 123520 80132B70 0C04CACE */       jal mnVSIsTime
+  /* 123524 80132B74 00000000 */       nop
   /* 123528 80132B78 10400004 */      beqz $v0, .L80132B8C
   /* 12352C 80132B7C 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 123530 80132B80 3C028013 */       lui $v0, %hi(D_ovl19_80134950)
+  /* 123530 80132B80 3C028013 */       lui $v0, %hi(gMNVSTime)
   /* 123534 80132B84 10000004 */         b .L80132B98
-  /* 123538 80132B88 8C424950 */        lw $v0, %lo(D_ovl19_80134950)($v0)
+  /* 123538 80132B88 8C424950 */        lw $v0, %lo(gMNVSTime)($v0)
   .L80132B8C:
-  /* 12353C 80132B8C 3C028013 */       lui $v0, %hi(D_ovl19_80134954)
-  /* 123540 80132B90 8C424954 */        lw $v0, %lo(D_ovl19_80134954)($v0)
+  /* 12353C 80132B8C 3C028013 */       lui $v0, %hi(gMNVSStock)
+  /* 123540 80132B90 8C424954 */        lw $v0, %lo(gMNVSStock)($v0)
   /* 123544 80132B94 24420001 */     addiu $v0, $v0, 1
   .L80132B98:
   /* 123548 80132B98 03E00008 */        jr $ra
   /* 12354C 80132B9C 27BD0018 */     addiu $sp, $sp, 0x18
 
-glabel func_ovl19_80132BA0
+glabel mnVSCreateTimeStockValue
   /* 123550 80132BA0 27BDFFB8 */     addiu $sp, $sp, -0x48
-  /* 123554 80132BA4 3C0F8013 */       lui $t7, %hi(D_ovl19_80134864)
+  /* 123554 80132BA4 3C0F8013 */       lui $t7, %hi(dMNVSTimeStockValueColor)
   /* 123558 80132BA8 AFBF0024 */        sw $ra, 0x24($sp)
-  /* 12355C 80132BAC 25EF4864 */     addiu $t7, $t7, %lo(D_ovl19_80134864)
-  /* 123560 80132BB0 8DF90000 */        lw $t9, ($t7) # D_ovl19_80134864 + 0
+  /* 12355C 80132BAC 25EF4864 */     addiu $t7, $t7, %lo(dMNVSTimeStockValueColor)
+  /* 123560 80132BB0 8DF90000 */        lw $t9, ($t7) # dMNVSTimeStockValueColor + 0
   /* 123564 80132BB4 27AE0028 */     addiu $t6, $sp, 0x28
-  /* 123568 80132BB8 8DF80004 */        lw $t8, 4($t7) # D_ovl19_80134864 + 4
+  /* 123568 80132BB8 8DF80004 */        lw $t8, 4($t7) # dMNVSTimeStockValueColor + 4
   /* 12356C 80132BBC ADD90000 */        sw $t9, ($t6)
-  /* 123570 80132BC0 8DF90008 */        lw $t9, 8($t7) # D_ovl19_80134864 + 8
+  /* 123570 80132BC0 8DF90008 */        lw $t9, 8($t7) # dMNVSTimeStockValueColor + 8
   /* 123574 80132BC4 00002025 */        or $a0, $zero, $zero
   /* 123578 80132BC8 00002825 */        or $a1, $zero, $zero
   /* 12357C 80132BCC 24060005 */     addiu $a2, $zero, 5
@@ -1198,10 +1198,10 @@ glabel func_ovl19_80132BA0
   /* 123584 80132BD4 ADD80004 */        sw $t8, 4($t6)
   /* 123588 80132BD8 0C00265A */       jal omMakeGObjSPAfter
   /* 12358C 80132BDC ADD90008 */        sw $t9, 8($t6)
-  /* 123590 80132BE0 3C018013 */       lui $at, %hi(D_ovl19_8013495C)
+  /* 123590 80132BE0 3C018013 */       lui $at, %hi(gMNVSTimeStockValueGObj)
   /* 123594 80132BE4 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 123598 80132BE8 2408FFFF */     addiu $t0, $zero, -1
-  /* 12359C 80132BEC AC22495C */        sw $v0, %lo(D_ovl19_8013495C)($at)
+  /* 12359C 80132BEC AC22495C */        sw $v0, %lo(gMNVSTimeStockValueGObj)($at)
   /* 1235A0 80132BF0 AFA20044 */        sw $v0, 0x44($sp)
   /* 1235A4 80132BF4 AFA80010 */        sw $t0, 0x10($sp)
   /* 1235A8 80132BF8 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -1209,8 +1209,8 @@ glabel func_ovl19_80132BA0
   /* 1235B0 80132C00 24060003 */     addiu $a2, $zero, 3
   /* 1235B4 80132C04 0C00277D */       jal omAddGObjRenderProc
   /* 1235B8 80132C08 3C078000 */       lui $a3, 0x8000
-  /* 1235BC 80132C0C 0C04CADA */       jal func_ovl19_80132B68
-  /* 1235C0 80132C10 00000000 */       nop 
+  /* 1235BC 80132C0C 0C04CADA */       jal mnVSGetTimeStockValue
+  /* 1235C0 80132C10 00000000 */       nop
   /* 1235C4 80132C14 24010064 */     addiu $at, $zero, 0x64
   /* 1235C8 80132C18 1441001A */       bne $v0, $at, .L80132C84
   /* 1235CC 80132C1C 00402825 */        or $a1, $v0, $zero
@@ -1240,13 +1240,13 @@ glabel func_ovl19_80132BA0
   /* 12362C 80132C7C 1000001D */         b .L80132CF4
   /* 123630 80132C80 A059002A */        sb $t9, 0x2a($v0)
   .L80132C84:
-  /* 123634 80132C84 0C04CACE */       jal func_ovl19_80132B38
+  /* 123634 80132C84 0C04CACE */       jal mnVSIsTime
   /* 123638 80132C88 AFA5003C */        sw $a1, 0x3c($sp)
   /* 12363C 80132C8C 10400008 */      beqz $v0, .L80132CB0
   /* 123640 80132C90 8FA5003C */        lw $a1, 0x3c($sp)
   /* 123644 80132C94 28A1000A */      slti $at, $a1, 0xa
   /* 123648 80132C98 10200003 */      beqz $at, .L80132CA8
-  /* 12364C 80132C9C 00000000 */       nop 
+  /* 12364C 80132C9C 00000000 */       nop
   /* 123650 80132CA0 10000008 */         b .L80132CC4
   /* 123654 80132CA4 240200B9 */     addiu $v0, $zero, 0xb9
   .L80132CA8:
@@ -1269,15 +1269,15 @@ glabel func_ovl19_80132BA0
   /* 123690 80132CE0 3C0742E8 */       lui $a3, 0x42e8
   /* 123694 80132CE4 AFA00018 */        sw $zero, 0x18($sp)
   /* 123698 80132CE8 44064000 */      mfc1 $a2, $f8
-  /* 12369C 80132CEC 0C04C728 */       jal func_ovl19_80131CA0
-  /* 1236A0 80132CF0 00000000 */       nop 
+  /* 12369C 80132CEC 0C04C728 */       jal mnVSCreateNumber
+  /* 1236A0 80132CF0 00000000 */       nop
   .L80132CF4:
   /* 1236A4 80132CF4 8FBF0024 */        lw $ra, 0x24($sp)
   /* 1236A8 80132CF8 27BD0048 */     addiu $sp, $sp, 0x48
   /* 1236AC 80132CFC 03E00008 */        jr $ra
-  /* 1236B0 80132D00 00000000 */       nop 
+  /* 1236B0 80132D00 00000000 */       nop
 
-glabel func_ovl19_80132D04
+glabel mnVSCreateTimeStockButton
   /* 1236B4 80132D04 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 1236B8 80132D08 AFBF0024 */        sw $ra, 0x24($sp)
   /* 1236BC 80132D0C AFB00020 */        sw $s0, 0x20($sp)
@@ -1286,10 +1286,10 @@ glabel func_ovl19_80132D04
   /* 1236C8 80132D18 24060004 */     addiu $a2, $zero, 4
   /* 1236CC 80132D1C 0C00265A */       jal omMakeGObjSPAfter
   /* 1236D0 80132D20 3C078000 */       lui $a3, 0x8000
-  /* 1236D4 80132D24 3C018013 */       lui $at, %hi(D_ovl19_80134938)
+  /* 1236D4 80132D24 3C018013 */       lui $at, %hi(gMNVSButtonGObjTimeStock)
   /* 1236D8 80132D28 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 1236DC 80132D2C 240EFFFF */     addiu $t6, $zero, -1
-  /* 1236E0 80132D30 AC224938 */        sw $v0, %lo(D_ovl19_80134938)($at)
+  /* 1236E0 80132D30 AC224938 */        sw $v0, %lo(gMNVSButtonGObjTimeStock)($at)
   /* 1236E4 80132D34 00408025 */        or $s0, $v0, $zero
   /* 1236E8 80132D38 AFAE0010 */        sw $t6, 0x10($sp)
   /* 1236EC 80132D3C 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -1300,21 +1300,21 @@ glabel func_ovl19_80132D04
   /* 123700 80132D50 02002025 */        or $a0, $s0, $zero
   /* 123704 80132D54 3C054294 */       lui $a1, 0x4294
   /* 123708 80132D58 3C0642DA */       lui $a2, 0x42da
-  /* 12370C 80132D5C 0C04C809 */       jal func_ovl19_80132024
+  /* 12370C 80132D5C 0C04C809 */       jal mnVSCreateButton
   /* 123710 80132D60 24070011 */     addiu $a3, $zero, 0x11
-  /* 123714 80132D64 3C0F8013 */       lui $t7, %hi(D_ovl19_80134948)
-  /* 123718 80132D68 8DEF4948 */        lw $t7, %lo(D_ovl19_80134948)($t7)
+  /* 123714 80132D64 3C0F8013 */       lui $t7, %hi(gMNVSCursorIndex)
+  /* 123718 80132D68 8DEF4948 */        lw $t7, %lo(gMNVSCursorIndex)($t7)
   /* 12371C 80132D6C 24010002 */     addiu $at, $zero, 2
   /* 123720 80132D70 00002825 */        or $a1, $zero, $zero
   /* 123724 80132D74 15E10003 */       bne $t7, $at, .L80132D84
-  /* 123728 80132D78 00000000 */       nop 
+  /* 123728 80132D78 00000000 */       nop
   /* 12372C 80132D7C 10000001 */         b .L80132D84
   /* 123730 80132D80 24050001 */     addiu $a1, $zero, 1
   .L80132D84:
-  /* 123734 80132D84 0C04C7D3 */       jal func_ovl19_80131F4C
+  /* 123734 80132D84 0C04C7D3 */       jal mnVSUpdateButton
   /* 123738 80132D88 02002025 */        or $a0, $s0, $zero
-  /* 12373C 80132D8C 3C028013 */       lui $v0, %hi(D_ovl19_8013494C)
-  /* 123740 80132D90 8C42494C */        lw $v0, %lo(D_ovl19_8013494C)($v0)
+  /* 12373C 80132D8C 3C028013 */       lui $v0, %hi(gMNVSRule)
+  /* 123740 80132D90 8C42494C */        lw $v0, %lo(gMNVSRule)($v0)
   /* 123744 80132D94 24010002 */     addiu $at, $zero, 2
   /* 123748 80132D98 02002025 */        or $a0, $s0, $zero
   /* 12374C 80132D9C 10400003 */      beqz $v0, .L80132DAC
@@ -1385,15 +1385,15 @@ glabel func_ovl19_80132D04
   /* 123848 80132E98 E4500058 */      swc1 $f16, 0x58($v0)
   /* 12384C 80132E9C E452005C */      swc1 $f18, 0x5c($v0)
   .L80132EA0:
-  /* 123850 80132EA0 0C04CA59 */       jal func_ovl19_80132964
-  /* 123854 80132EA4 00000000 */       nop 
+  /* 123850 80132EA0 0C04CA59 */       jal mnVSCreateTimeStockArrows
+  /* 123854 80132EA4 00000000 */       nop
   /* 123858 80132EA8 8FBF0024 */        lw $ra, 0x24($sp)
   /* 12385C 80132EAC 8FB00020 */        lw $s0, 0x20($sp)
   /* 123860 80132EB0 27BD0028 */     addiu $sp, $sp, 0x28
   /* 123864 80132EB4 03E00008 */        jr $ra
-  /* 123868 80132EB8 00000000 */       nop 
+  /* 123868 80132EB8 00000000 */       nop
 
-glabel func_ovl19_80132EBC
+glabel mnVSCreateVSOptionsButton
   /* 12386C 80132EBC 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 123870 80132EC0 AFBF001C */        sw $ra, 0x1c($sp)
   /* 123874 80132EC4 00002025 */        or $a0, $zero, $zero
@@ -1401,10 +1401,10 @@ glabel func_ovl19_80132EBC
   /* 12387C 80132ECC 24060004 */     addiu $a2, $zero, 4
   /* 123880 80132ED0 0C00265A */       jal omMakeGObjSPAfter
   /* 123884 80132ED4 3C078000 */       lui $a3, 0x8000
-  /* 123888 80132ED8 3C018013 */       lui $at, %hi(D_ovl19_8013493C)
+  /* 123888 80132ED8 3C018013 */       lui $at, %hi(gMNVSButtonGObjVSOptions)
   /* 12388C 80132EDC 3C05800D */       lui $a1, %hi(func_ovl0_800CCF00)
   /* 123890 80132EE0 240EFFFF */     addiu $t6, $zero, -1
-  /* 123894 80132EE4 AC22493C */        sw $v0, %lo(D_ovl19_8013493C)($at)
+  /* 123894 80132EE4 AC22493C */        sw $v0, %lo(gMNVSButtonGObjVSOptions)($at)
   /* 123898 80132EE8 AFA20024 */        sw $v0, 0x24($sp)
   /* 12389C 80132EEC AFAE0010 */        sw $t6, 0x10($sp)
   /* 1238A0 80132EF0 24A5CF00 */     addiu $a1, $a1, %lo(func_ovl0_800CCF00)
@@ -1415,18 +1415,18 @@ glabel func_ovl19_80132EBC
   /* 1238B4 80132F04 8FA40024 */        lw $a0, 0x24($sp)
   /* 1238B8 80132F08 3C05424C */       lui $a1, 0x424c
   /* 1238BC 80132F0C 3C064314 */       lui $a2, 0x4314
-  /* 1238C0 80132F10 0C04C809 */       jal func_ovl19_80132024
+  /* 1238C0 80132F10 0C04C809 */       jal mnVSCreateButton
   /* 1238C4 80132F14 24070011 */     addiu $a3, $zero, 0x11
-  /* 1238C8 80132F18 3C0F8013 */       lui $t7, %hi(D_ovl19_80134948)
-  /* 1238CC 80132F1C 8DEF4948 */        lw $t7, %lo(D_ovl19_80134948)($t7)
+  /* 1238C8 80132F18 3C0F8013 */       lui $t7, %hi(gMNVSCursorIndex)
+  /* 1238CC 80132F1C 8DEF4948 */        lw $t7, %lo(gMNVSCursorIndex)($t7)
   /* 1238D0 80132F20 24010003 */     addiu $at, $zero, 3
   /* 1238D4 80132F24 00002825 */        or $a1, $zero, $zero
   /* 1238D8 80132F28 15E10003 */       bne $t7, $at, .L80132F38
-  /* 1238DC 80132F2C 00000000 */       nop 
+  /* 1238DC 80132F2C 00000000 */       nop
   /* 1238E0 80132F30 10000001 */         b .L80132F38
   /* 1238E4 80132F34 24050001 */     addiu $a1, $zero, 1
   .L80132F38:
-  /* 1238E8 80132F38 0C04C7D3 */       jal func_ovl19_80131F4C
+  /* 1238E8 80132F38 0C04C7D3 */       jal mnVSUpdateButton
   /* 1238EC 80132F3C 8FA40024 */        lw $a0, 0x24($sp)
   /* 1238F0 80132F40 3C188013 */       lui $t8, %hi(D_ovl19_80134A4C)
   /* 1238F4 80132F44 8F184A4C */        lw $t8, %lo(D_ovl19_80134A4C)($t8)
@@ -1452,8 +1452,9 @@ glabel func_ovl19_80132EBC
   /* 123944 80132F94 8FBF001C */        lw $ra, 0x1c($sp)
   /* 123948 80132F98 27BD0028 */     addiu $sp, $sp, 0x28
   /* 12394C 80132F9C 03E00008 */        jr $ra
-  /* 123950 80132FA0 00000000 */       nop 
+  /* 123950 80132FA0 00000000 */       nop
 
+glabel mnVSSetColorsUnused
   /* 123954 80132FA4 948E0024 */       lhu $t6, 0x24($a0)
   /* 123958 80132FA8 240200FF */     addiu $v0, $zero, 0xff
   /* 12395C 80132FAC A0800060 */        sb $zero, 0x60($a0)
@@ -1468,7 +1469,7 @@ glabel func_ovl19_80132EBC
   /* 123980 80132FD0 03E00008 */        jr $ra
   /* 123984 80132FD4 A082002A */        sb $v0, 0x2a($a0)
 
-glabel func_ovl19_80132FD8
+glabel mnVSCreateUnusedGObj
   /* 123988 80132FD8 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 12398C 80132FDC AFBF0014 */        sw $ra, 0x14($sp)
   /* 123990 80132FE0 00002025 */        or $a0, $zero, $zero
@@ -1477,12 +1478,12 @@ glabel func_ovl19_80132FD8
   /* 12399C 80132FEC 0C00265A */       jal omMakeGObjSPAfter
   /* 1239A0 80132FF0 3C078000 */       lui $a3, 0x8000
   /* 1239A4 80132FF4 8FBF0014 */        lw $ra, 0x14($sp)
-  /* 1239A8 80132FF8 3C018013 */       lui $at, %hi(D_ovl19_80134960)
-  /* 1239AC 80132FFC AC224960 */        sw $v0, %lo(D_ovl19_80134960)($at)
+  /* 1239A8 80132FF8 3C018013 */       lui $at, %hi(gMNVSUnusedGObj)
+  /* 1239AC 80132FFC AC224960 */        sw $v0, %lo(gMNVSUnusedGObj)($at)
   /* 1239B0 80133000 03E00008 */        jr $ra
   /* 1239B4 80133004 27BD0018 */     addiu $sp, $sp, 0x18
 
-glabel func_ovl19_80133008
+glabel mnVSRenderMenuName
   /* 1239B8 80133008 3C038004 */       lui $v1, %hi(gDisplayListHead)
   /* 1239BC 8013300C 246365B0 */     addiu $v1, $v1, %lo(gDisplayListHead)
   /* 1239C0 80133010 8C620000 */        lw $v0, ($v1) # gDisplayListHead + 0
@@ -1563,9 +1564,9 @@ glabel func_ovl19_80133008
   /* 123AEC 8013313C 8FBF0014 */        lw $ra, 0x14($sp)
   /* 123AF0 80133140 27BD0018 */     addiu $sp, $sp, 0x18
   /* 123AF4 80133144 03E00008 */        jr $ra
-  /* 123AF8 80133148 00000000 */       nop 
+  /* 123AF8 80133148 00000000 */       nop
 
-glabel func_ovl19_8013314C
+glabel mnVSCreateMenuName
   /* 123AFC 8013314C 27BDFFD8 */     addiu $sp, $sp, -0x28
   /* 123B00 80133150 AFBF001C */        sw $ra, 0x1c($sp)
   /* 123B04 80133154 00002025 */        or $a0, $zero, $zero
@@ -1573,11 +1574,11 @@ glabel func_ovl19_8013314C
   /* 123B0C 8013315C 24060003 */     addiu $a2, $zero, 3
   /* 123B10 80133160 0C00265A */       jal omMakeGObjSPAfter
   /* 123B14 80133164 3C078000 */       lui $a3, 0x8000
-  /* 123B18 80133168 3C058013 */       lui $a1, %hi(func_ovl19_80133008)
+  /* 123B18 80133168 3C058013 */       lui $a1, %hi(mnVSRenderMenuName)
   /* 123B1C 8013316C 240EFFFF */     addiu $t6, $zero, -1
   /* 123B20 80133170 AFA20024 */        sw $v0, 0x24($sp)
   /* 123B24 80133174 AFAE0010 */        sw $t6, 0x10($sp)
-  /* 123B28 80133178 24A53008 */     addiu $a1, $a1, %lo(func_ovl19_80133008)
+  /* 123B28 80133178 24A53008 */     addiu $a1, $a1, %lo(mnVSRenderMenuName)
   /* 123B2C 8013317C 00402025 */        or $a0, $v0, $zero
   /* 123B30 80133180 24060001 */     addiu $a2, $zero, 1
   /* 123B34 80133184 0C00277D */       jal omAddGObjRenderProc
@@ -1648,9 +1649,9 @@ glabel func_ovl19_8013314C
   /* 123C38 80133288 8FBF001C */        lw $ra, 0x1c($sp)
   /* 123C3C 8013328C 27BD0028 */     addiu $sp, $sp, 0x28
   /* 123C40 80133290 03E00008 */        jr $ra
-  /* 123C44 80133294 00000000 */       nop 
+  /* 123C44 80133294 00000000 */       nop
 
-glabel func_ovl19_80133298
+glabel mnVSCreateBackground
   /* 123C48 80133298 27BDFFC8 */     addiu $sp, $sp, -0x38
   /* 123C4C 8013329C AFBF0024 */        sw $ra, 0x24($sp)
   /* 123C50 801332A0 AFB00020 */        sw $s0, 0x20($sp)
@@ -1751,9 +1752,9 @@ glabel func_ovl19_80133298
   /* 123DCC 8013341C 8FB00020 */        lw $s0, 0x20($sp)
   /* 123DD0 80133420 27BD0038 */     addiu $sp, $sp, 0x38
   /* 123DD4 80133424 03E00008 */        jr $ra
-  /* 123DD8 80133428 00000000 */       nop 
+  /* 123DD8 80133428 00000000 */       nop
 
-glabel func_ovl19_8013342C
+glabel mnVSCreateButtonValuesViewport
   /* 123DDC 8013342C 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 123DE0 80133430 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 123DE4 80133434 AFBF003C */        sw $ra, 0x3c($sp)
@@ -1793,9 +1794,9 @@ glabel func_ovl19_8013342C
   /* 123E6C 801334BC 8FBF003C */        lw $ra, 0x3c($sp)
   /* 123E70 801334C0 27BD0040 */     addiu $sp, $sp, 0x40
   /* 123E74 801334C4 03E00008 */        jr $ra
-  /* 123E78 801334C8 00000000 */       nop 
+  /* 123E78 801334C8 00000000 */       nop
 
-glabel func_ovl19_801334CC
+glabel mnVSCreateButtonViewport
   /* 123E7C 801334CC 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 123E80 801334D0 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 123E84 801334D4 AFBF003C */        sw $ra, 0x3c($sp)
@@ -1835,9 +1836,9 @@ glabel func_ovl19_801334CC
   /* 123F0C 8013355C 8FBF003C */        lw $ra, 0x3c($sp)
   /* 123F10 80133560 27BD0040 */     addiu $sp, $sp, 0x40
   /* 123F14 80133564 03E00008 */        jr $ra
-  /* 123F18 80133568 00000000 */       nop 
+  /* 123F18 80133568 00000000 */       nop
 
-glabel func_ovl19_8013356C
+glabel mnVSCreateMenuNameViewport
   /* 123F1C 8013356C 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 123F20 80133570 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 123F24 80133574 AFBF003C */        sw $ra, 0x3c($sp)
@@ -1877,9 +1878,9 @@ glabel func_ovl19_8013356C
   /* 123FAC 801335FC 8FBF003C */        lw $ra, 0x3c($sp)
   /* 123FB0 80133600 27BD0040 */     addiu $sp, $sp, 0x40
   /* 123FB4 80133604 03E00008 */        jr $ra
-  /* 123FB8 80133608 00000000 */       nop 
+  /* 123FB8 80133608 00000000 */       nop
 
-glabel func_ovl19_8013360C
+glabel mnVSCreateBackgroundViewport
   /* 123FBC 8013360C 27BDFFC0 */     addiu $sp, $sp, -0x40
   /* 123FC0 80133610 3C0E800D */       lui $t6, %hi(func_ovl0_800CD2CC)
   /* 123FC4 80133614 AFBF003C */        sw $ra, 0x3c($sp)
@@ -1919,9 +1920,9 @@ glabel func_ovl19_8013360C
   /* 12404C 8013369C 8FBF003C */        lw $ra, 0x3c($sp)
   /* 124050 801336A0 27BD0040 */     addiu $sp, $sp, 0x40
   /* 124054 801336A4 03E00008 */        jr $ra
-  /* 124058 801336A8 00000000 */       nop 
+  /* 124058 801336A8 00000000 */       nop
 
-glabel func_ovl19_801336AC
+glabel mnVSInitVars
   /* 12405C 801336AC 3C0E800A */       lui $t6, %hi((gSceneData + 0x1))
   /* 124060 801336B0 91CE4AD1 */       lbu $t6, %lo((gSceneData + 0x1))($t6)
   /* 124064 801336B4 2401000A */     addiu $at, $zero, 0xa
@@ -1929,15 +1930,15 @@ glabel func_ovl19_801336AC
   /* 12406C 801336BC 15C10005 */       bne $t6, $at, .L801336D4
   /* 124070 801336C0 24634D08 */     addiu $v1, $v1, %lo(gTransferBattleState)
   /* 124074 801336C4 240F0003 */     addiu $t7, $zero, 3
-  /* 124078 801336C8 3C018013 */       lui $at, %hi(D_ovl19_80134948)
+  /* 124078 801336C8 3C018013 */       lui $at, %hi(gMNVSCursorIndex)
   /* 12407C 801336CC 10000003 */         b .L801336DC
-  /* 124080 801336D0 AC2F4948 */        sw $t7, %lo(D_ovl19_80134948)($at)
+  /* 124080 801336D0 AC2F4948 */        sw $t7, %lo(gMNVSCursorIndex)($at)
   .L801336D4:
-  /* 124084 801336D4 3C018013 */       lui $at, %hi(D_ovl19_80134948)
-  /* 124088 801336D8 AC204948 */        sw $zero, %lo(D_ovl19_80134948)($at)
+  /* 124084 801336D4 3C018013 */       lui $at, %hi(gMNVSCursorIndex)
+  /* 124088 801336D8 AC204948 */        sw $zero, %lo(gMNVSCursorIndex)($at)
   .L801336DC:
-  /* 12408C 801336DC 3C018013 */       lui $at, %hi(D_ovl19_8013497C)
-  /* 124090 801336E0 AC20497C */        sw $zero, %lo(D_ovl19_8013497C)($at)
+  /* 12408C 801336DC 3C018013 */       lui $at, %hi(gMNVSChangeWait)
+  /* 124090 801336E0 AC20497C */        sw $zero, %lo(gMNVSChangeWait)($at)
   /* 124094 801336E4 90620002 */       lbu $v0, 2($v1) # gTransferBattleState + 2
   /* 124098 801336E8 24040001 */     addiu $a0, $zero, 1
   /* 12409C 801336EC 50400006 */      beql $v0, $zero, .L80133708
@@ -1951,65 +1952,65 @@ glabel func_ovl19_801336AC
   /* 1240B8 80133708 24040001 */     addiu $a0, $zero, 1
   /* 1240BC 8013370C 3C018013 */       lui $at, 0x8013
   /* 1240C0 80133710 14980004 */       bne $a0, $t8, .L80133724
-  /* 1240C4 80133714 00000000 */       nop 
-  /* 1240C8 80133718 3C018013 */       lui $at, %hi(D_ovl19_8013494C)
+  /* 1240C4 80133714 00000000 */       nop
+  /* 1240C8 80133718 3C018013 */       lui $at, %hi(gMNVSRule)
   /* 1240CC 8013371C 1000000C */         b .L80133750
-  /* 1240D0 80133720 AC20494C */        sw $zero, %lo(D_ovl19_8013494C)($at)
+  /* 1240D0 80133720 AC20494C */        sw $zero, %lo(gMNVSRule)($at)
   .L80133724:
   /* 1240D4 80133724 1000000A */         b .L80133750
-  /* 1240D8 80133728 AC24494C */        sw $a0, %lo(D_ovl19_8013494C)($at)
+  /* 1240D8 80133728 AC24494C */        sw $a0, %lo(gMNVSRule)($at)
   /* 1240DC 8013372C 90790003 */       lbu $t9, 3($v1) # gTransferBattleState + 3
   .L80133730:
   /* 1240E0 80133730 24080002 */     addiu $t0, $zero, 2
   /* 1240E4 80133734 24090003 */     addiu $t1, $zero, 3
   /* 1240E8 80133738 14990004 */       bne $a0, $t9, .L8013374C
   /* 1240EC 8013373C 3C018013 */       lui $at, 0x8013
-  /* 1240F0 80133740 3C018013 */       lui $at, %hi(D_ovl19_8013494C)
+  /* 1240F0 80133740 3C018013 */       lui $at, %hi(gMNVSRule)
   /* 1240F4 80133744 10000002 */         b .L80133750
-  /* 1240F8 80133748 AC28494C */        sw $t0, %lo(D_ovl19_8013494C)($at)
+  /* 1240F8 80133748 AC28494C */        sw $t0, %lo(gMNVSRule)($at)
   .L8013374C:
-  /* 1240FC 8013374C AC29494C */        sw $t1, %lo(D_ovl19_8013494C)($at)
+  /* 1240FC 8013374C AC29494C */        sw $t1, %lo(gMNVSRule)($at)
   .L80133750:
   /* 124100 80133750 906A0006 */       lbu $t2, 6($v1) # gTransferBattleState + 6
   .L80133754:
-  /* 124104 80133754 3C018013 */       lui $at, %hi(D_ovl19_80134950)
-  /* 124108 80133758 3C028013 */       lui $v0, %hi(D_ovl19_80134980)
-  /* 12410C 8013375C AC2A4950 */        sw $t2, %lo(D_ovl19_80134950)($at)
+  /* 124104 80133754 3C018013 */       lui $at, %hi(gMNVSTime)
+  /* 124108 80133758 3C028013 */       lui $v0, %hi(gMNVSFramesElapsed)
+  /* 12410C 8013375C AC2A4950 */        sw $t2, %lo(gMNVSTime)($at)
   /* 124110 80133760 906B0007 */       lbu $t3, 7($v1) # gTransferBattleState + 7
-  /* 124114 80133764 3C018013 */       lui $at, %hi(D_ovl19_80134954)
-  /* 124118 80133768 24424980 */     addiu $v0, $v0, %lo(D_ovl19_80134980)
-  /* 12411C 8013376C AC2B4954 */        sw $t3, %lo(D_ovl19_80134954)($at)
-  /* 124120 80133770 3C018013 */       lui $at, %hi(D_ovl19_80134968)
-  /* 124124 80133774 AC204968 */        sw $zero, %lo(D_ovl19_80134968)($at)
-  /* 124128 80133778 3C018013 */       lui $at, %hi(D_ovl19_80134964)
-  /* 12412C 8013377C AC204964 */        sw $zero, %lo(D_ovl19_80134964)($at)
-  /* 124130 80133780 3C018013 */       lui $at, %hi(D_ovl19_80134978)
-  /* 124134 80133784 AC204978 */        sw $zero, %lo(D_ovl19_80134978)($at)
-  /* 124138 80133788 AC400000 */        sw $zero, ($v0) # D_ovl19_80134980 + 0
-  /* 12413C 8013378C 3C018013 */       lui $at, %hi(D_ovl19_80134974)
-  /* 124140 80133790 AC204974 */        sw $zero, %lo(D_ovl19_80134974)($at)
-  /* 124144 80133794 8C4C0000 */        lw $t4, ($v0) # D_ovl19_80134980 + 0
-  /* 124148 80133798 3C018013 */       lui $at, %hi(D_ovl19_80134984)
+  /* 124114 80133764 3C018013 */       lui $at, %hi(gMNVSStock)
+  /* 124118 80133768 24424980 */     addiu $v0, $v0, %lo(gMNVSFramesElapsed)
+  /* 12411C 8013376C AC2B4954 */        sw $t3, %lo(gMNVSStock)($at)
+  /* 124120 80133770 3C018013 */       lui $at, %hi(gMNVSTimeStockArrowsGObj)
+  /* 124124 80133774 AC204968 */        sw $zero, %lo(gMNVSTimeStockArrowsGObj)($at)
+  /* 124128 80133778 3C018013 */       lui $at, %hi(gMNVSRuleArrowsGObj)
+  /* 12412C 8013377C AC204964 */        sw $zero, %lo(gMNVSRuleArrowsGObj)($at)
+  /* 124130 80133780 3C018013 */       lui $at, %hi(gMNVSInputDirection)
+  /* 124134 80133784 AC204978 */        sw $zero, %lo(gMNVSInputDirection)($at)
+  /* 124138 80133788 AC400000 */        sw $zero, ($v0) # gMNVSFramesElapsed + 0
+  /* 12413C 8013378C 3C018013 */       lui $at, %hi(gMNVSExitInterrupt)
+  /* 124140 80133790 AC204974 */        sw $zero, %lo(gMNVSExitInterrupt)($at)
+  /* 124144 80133794 8C4C0000 */        lw $t4, ($v0) # gMNVSFramesElapsed + 0
+  /* 124148 80133798 3C018013 */       lui $at, %hi(gMNVSMaxFramesElapsed)
   /* 12414C 8013379C 258D4650 */     addiu $t5, $t4, 0x4650
-  /* 124150 801337A0 AC2D4984 */        sw $t5, %lo(D_ovl19_80134984)($at)
-  /* 124154 801337A4 3C018013 */       lui $at, %hi(D_ovl19_8013496C)
-  /* 124158 801337A8 AC20496C */        sw $zero, %lo(D_ovl19_8013496C)($at)
-  /* 12415C 801337AC 3C018013 */       lui $at, %hi(D_ovl19_80134970)
+  /* 124150 801337A0 AC2D4984 */        sw $t5, %lo(gMNVSMaxFramesElapsed)($at)
+  /* 124154 801337A4 3C018013 */       lui $at, %hi(gMNVSTimeStockArrowBlinkTimer)
+  /* 124158 801337A8 AC20496C */        sw $zero, %lo(gMNVSTimeStockArrowBlinkTimer)($at)
+  /* 12415C 801337AC 3C018013 */       lui $at, %hi(gMNVSRuleArrowBlinkTimer)
   /* 124160 801337B0 03E00008 */        jr $ra
-  /* 124164 801337B4 AC204970 */        sw $zero, %lo(D_ovl19_80134970)($at)
+  /* 124164 801337B4 AC204970 */        sw $zero, %lo(gMNVSRuleArrowBlinkTimer)($at)
 
-glabel func_ovl19_801337B8
-  /* 124168 801337B8 3C0E8013 */       lui $t6, %hi(D_ovl19_80134950)
-  /* 12416C 801337BC 8DCE4950 */        lw $t6, %lo(D_ovl19_80134950)($t6)
+glabel mnVSSaveSettings
+  /* 124168 801337B8 3C0E8013 */       lui $t6, %hi(gMNVSTime)
+  /* 12416C 801337BC 8DCE4950 */        lw $t6, %lo(gMNVSTime)($t6)
   /* 124170 801337C0 3C03800A */       lui $v1, %hi(gTransferBattleState)
   /* 124174 801337C4 24634D08 */     addiu $v1, $v1, %lo(gTransferBattleState)
-  /* 124178 801337C8 3C0F8013 */       lui $t7, %hi(D_ovl19_80134954)
+  /* 124178 801337C8 3C0F8013 */       lui $t7, %hi(gMNVSStock)
   /* 12417C 801337CC A06E0006 */        sb $t6, 6($v1) # gTransferBattleState + 6
-  /* 124180 801337D0 8DEF4954 */        lw $t7, %lo(D_ovl19_80134954)($t7)
-  /* 124184 801337D4 3C028013 */       lui $v0, %hi(D_ovl19_8013494C)
+  /* 124180 801337D0 8DEF4954 */        lw $t7, %lo(gMNVSStock)($t7)
+  /* 124184 801337D4 3C028013 */       lui $v0, %hi(gMNVSRule)
   /* 124188 801337D8 24010001 */     addiu $at, $zero, 1
   /* 12418C 801337DC A06F0007 */        sb $t7, 7($v1) # gTransferBattleState + 7
-  /* 124190 801337E0 8C42494C */        lw $v0, %lo(D_ovl19_8013494C)($v0)
+  /* 124190 801337E0 8C42494C */        lw $v0, %lo(gMNVSRule)($v0)
   /* 124194 801337E4 5040000E */      beql $v0, $zero, .L80133820
   /* 124198 801337E8 24020001 */     addiu $v0, $zero, 1
   /* 12419C 801337EC 10410008 */       beq $v0, $at, .L80133810
@@ -2020,7 +2021,7 @@ glabel func_ovl19_801337B8
   /* 1241B0 80133800 1041000A */       beq $v0, $at, .L8013382C
   /* 1241B4 80133804 24190002 */     addiu $t9, $zero, 2
   /* 1241B8 80133808 03E00008 */        jr $ra
-  /* 1241BC 8013380C 00000000 */       nop 
+  /* 1241BC 8013380C 00000000 */       nop
 
   .L80133810:
   /* 1241C0 80133810 A0600002 */        sb $zero, 2($v1)
@@ -2044,15 +2045,15 @@ glabel func_ovl19_801337B8
   /* 1241F0 80133840 A0620002 */        sb $v0, 2($v1)
   /* 1241F4 80133844 A0620003 */        sb $v0, 3($v1)
   /* 1241F8 80133848 03E00008 */        jr $ra
-  /* 1241FC 8013384C 00000000 */       nop 
+  /* 1241FC 8013384C 00000000 */       nop
 
-glabel func_ovl19_80133850
-  /* 124200 80133850 3C028013 */       lui $v0, %hi(D_ovl19_8013494C)
-  /* 124204 80133854 8C42494C */        lw $v0, %lo(D_ovl19_8013494C)($v0)
+glabel mnVSGetShade
+  /* 124200 80133850 3C028013 */       lui $v0, %hi(gMNVSRule)
+  /* 124204 80133854 8C42494C */        lw $v0, %lo(gMNVSRule)($v0)
   /* 124208 80133858 27BDFFE0 */     addiu $sp, $sp, -0x20
   /* 12420C 8013385C 24060001 */     addiu $a2, $zero, 1
   /* 124210 80133860 10400003 */      beqz $v0, .L80133870
-  /* 124214 80133864 00000000 */       nop 
+  /* 124214 80133864 00000000 */       nop
   /* 124218 80133868 14C20003 */       bne $a2, $v0, .L80133878
   /* 12421C 8013386C 27A30010 */     addiu $v1, $sp, 0x10
   .L80133870:
@@ -2095,11 +2096,11 @@ glabel func_ovl19_80133850
   .L801338F4:
   /* 1242A4 801338F4 28410004 */      slti $at, $v0, 4
   /* 1242A8 801338F8 1420FFE9 */      bnez $at, .L801338A0
-  /* 1242AC 801338FC 00000000 */       nop 
+  /* 1242AC 801338FC 00000000 */       nop
   /* 1242B0 80133900 8FAF0010 */        lw $t7, 0x10($sp)
   /* 1242B4 80133904 8FB80014 */        lw $t8, 0x14($sp)
   /* 1242B8 80133908 15E00003 */      bnez $t7, .L80133918
-  /* 1242BC 8013390C 00000000 */       nop 
+  /* 1242BC 8013390C 00000000 */       nop
   /* 1242C0 80133910 1000000C */         b .L80133944
   /* 1242C4 80133914 00001025 */        or $v0, $zero, $zero
   .L80133918:
@@ -2114,13 +2115,13 @@ glabel func_ovl19_80133850
   /* 1242E4 80133934 24020002 */     addiu $v0, $zero, 2
   .L80133938:
   /* 1242E8 80133938 15400002 */      bnez $t2, .L80133944
-  /* 1242EC 8013393C 00000000 */       nop 
+  /* 1242EC 8013393C 00000000 */       nop
   /* 1242F0 80133940 24020003 */     addiu $v0, $zero, 3
   .L80133944:
   /* 1242F4 80133944 03E00008 */        jr $ra
   /* 1242F8 80133948 27BD0020 */     addiu $sp, $sp, 0x20
 
-glabel func_ovl19_8013394C
+glabel mnVSGetCostume
   /* 1242FC 8013394C 27BDFF98 */     addiu $sp, $sp, -0x68
   /* 124300 80133950 AFB5002C */        sw $s5, 0x2c($sp)
   /* 124304 80133954 0080A825 */        or $s5, $a0, $zero
@@ -2189,7 +2190,7 @@ glabel func_ovl19_8013394C
   /* 1243E4 80133A34 8FAB004C */        lw $t3, 0x4c($sp)
   /* 1243E8 80133A38 8FAC0050 */        lw $t4, 0x50($sp)
   /* 1243EC 80133A3C 15600003 */      bnez $t3, .L80133A4C
-  /* 1243F0 80133A40 00000000 */       nop 
+  /* 1243F0 80133A40 00000000 */       nop
   /* 1243F4 80133A44 10000008 */         b .L80133A68
   /* 1243F8 80133A48 24020001 */     addiu $v0, $zero, 1
   .L80133A4C:
@@ -2213,10 +2214,10 @@ glabel func_ovl19_8013394C
   /* 124434 80133A84 03E00008 */        jr $ra
   /* 124438 80133A88 27BD0068 */     addiu $sp, $sp, 0x68
 
-glabel func_ovl19_80133A8C
+glabel mnVSSetCostumesAndShades
   /* 12443C 80133A8C 27BDFFD8 */     addiu $sp, $sp, -0x28
-  /* 124440 80133A90 3C028013 */       lui $v0, %hi(D_ovl19_8013494C)
-  /* 124444 80133A94 8C42494C */        lw $v0, %lo(D_ovl19_8013494C)($v0)
+  /* 124440 80133A90 3C028013 */       lui $v0, %hi(gMNVSRule)
+  /* 124444 80133A94 8C42494C */        lw $v0, %lo(gMNVSRule)($v0)
   /* 124448 80133A98 AFBF0024 */        sw $ra, 0x24($sp)
   /* 12444C 80133A9C AFB30020 */        sw $s3, 0x20($sp)
   /* 124450 80133AA0 AFB2001C */        sw $s2, 0x1c($sp)
@@ -2230,7 +2231,7 @@ glabel func_ovl19_80133A8C
   /* 124470 80133AC0 00008825 */        or $s1, $zero, $zero
   /* 124474 80133AC4 24010003 */     addiu $at, $zero, 3
   /* 124478 80133AC8 10410019 */       beq $v0, $at, .L80133B30
-  /* 12447C 80133ACC 00000000 */       nop 
+  /* 12447C 80133ACC 00000000 */       nop
   /* 124480 80133AD0 10000028 */         b .L80133B74
   /* 124484 80133AD4 8FBF0024 */        lw $ra, 0x24($sp)
   .L80133AD8:
@@ -2243,13 +2244,13 @@ glabel func_ovl19_80133A8C
   /* 12449C 80133AEC 92040023 */       lbu $a0, 0x23($s0) # gTransferBattleState + 35
   /* 1244A0 80133AF0 5244000B */      beql $s2, $a0, .L80133B20
   /* 1244A4 80133AF4 26310001 */     addiu $s1, $s1, 1
-  /* 1244A8 80133AF8 0C04CE53 */       jal func_ovl19_8013394C
+  /* 1244A8 80133AF8 0C04CE53 */       jal mnVSGetCostume
   /* 1244AC 80133AFC 02202825 */        or $a1, $s1, $zero
   /* 1244B0 80133B00 92040023 */       lbu $a0, 0x23($s0) # gTransferBattleState + 35
   /* 1244B4 80133B04 0C03B03B */       jal ftCostume_GetIndexFFA
   /* 1244B8 80133B08 00402825 */        or $a1, $v0, $zero
   /* 1244BC 80133B0C A2020026 */        sb $v0, 0x26($s0) # gTransferBattleState + 38
-  /* 1244C0 80133B10 0C04CE14 */       jal func_ovl19_80133850
+  /* 1244C0 80133B10 0C04CE14 */       jal mnVSGetShade
   /* 1244C4 80133B14 02202025 */        or $a0, $s1, $zero
   /* 1244C8 80133B18 A2020027 */        sb $v0, 0x27($s0) # gTransferBattleState + 39
   /* 1244CC 80133B1C 26310001 */     addiu $s1, $s1, 1
@@ -2270,7 +2271,7 @@ glabel func_ovl19_80133A8C
   /* 1244FC 80133B4C 0C03B041 */       jal ftCostume_GetIndexTeam
   /* 124500 80133B50 92050024 */       lbu $a1, 0x24($s0) # gTransferBattleState + 36
   /* 124504 80133B54 A2020026 */        sb $v0, 0x26($s0) # gTransferBattleState + 38
-  /* 124508 80133B58 0C04CE14 */       jal func_ovl19_80133850
+  /* 124508 80133B58 0C04CE14 */       jal mnVSGetShade
   /* 12450C 80133B5C 02202025 */        or $a0, $s1, $zero
   /* 124510 80133B60 A2020027 */        sb $v0, 0x27($s0) # gTransferBattleState + 39
   /* 124514 80133B64 26310001 */     addiu $s1, $s1, 1
@@ -2286,67 +2287,67 @@ glabel func_ovl19_80133A8C
   /* 124534 80133B84 03E00008 */        jr $ra
   /* 124538 80133B88 27BD0028 */     addiu $sp, $sp, 0x28
 
-glabel func_ovl19_80133B8C
+glabel mnVSMain
   /* 12453C 80133B8C 27BDFFC0 */     addiu $sp, $sp, -0x40
-  /* 124540 80133B90 3C0F8013 */       lui $t7, %hi(D_ovl19_80134870)
+  /* 124540 80133B90 3C0F8013 */       lui $t7, %hi(gMNVSButtons)
   /* 124544 80133B94 AFBF0014 */        sw $ra, 0x14($sp)
   /* 124548 80133B98 AFA40040 */        sw $a0, 0x40($sp)
-  /* 12454C 80133B9C 25EF4870 */     addiu $t7, $t7, %lo(D_ovl19_80134870)
-  /* 124550 80133BA0 8DF90000 */        lw $t9, ($t7) # D_ovl19_80134870 + 0
-  /* 124554 80133BA4 8DF80004 */        lw $t8, 4($t7) # D_ovl19_80134870 + 4
+  /* 12454C 80133B9C 25EF4870 */     addiu $t7, $t7, %lo(gMNVSButtons)
+  /* 124550 80133BA0 8DF90000 */        lw $t9, ($t7) # gMNVSButtons + 0
+  /* 124554 80133BA4 8DF80004 */        lw $t8, 4($t7) # gMNVSButtons + 4
   /* 124558 80133BA8 27AE002C */     addiu $t6, $sp, 0x2c
   /* 12455C 80133BAC ADD90000 */        sw $t9, ($t6)
   /* 124560 80133BB0 ADD80004 */        sw $t8, 4($t6)
-  /* 124564 80133BB4 8DF8000C */        lw $t8, 0xc($t7) # D_ovl19_80134870 + 12
-  /* 124568 80133BB8 8DF90008 */        lw $t9, 8($t7) # D_ovl19_80134870 + 8
-  /* 12456C 80133BBC 3C038013 */       lui $v1, %hi(D_ovl19_80134980)
-  /* 124570 80133BC0 24634980 */     addiu $v1, $v1, %lo(D_ovl19_80134980)
+  /* 124564 80133BB4 8DF8000C */        lw $t8, 0xc($t7) # gMNVSButtons + 12
+  /* 124568 80133BB8 8DF90008 */        lw $t9, 8($t7) # gMNVSButtons + 8
+  /* 12456C 80133BBC 3C038013 */       lui $v1, %hi(gMNVSFramesElapsed)
+  /* 124570 80133BC0 24634980 */     addiu $v1, $v1, %lo(gMNVSFramesElapsed)
   /* 124574 80133BC4 ADD8000C */        sw $t8, 0xc($t6)
   /* 124578 80133BC8 ADD90008 */        sw $t9, 8($t6)
-  /* 12457C 80133BCC 8C680000 */        lw $t0, ($v1) # D_ovl19_80134980 + 0
-  /* 124580 80133BD0 3C0A8013 */       lui $t2, %hi(D_ovl19_80134984)
+  /* 12457C 80133BCC 8C680000 */        lw $t0, ($v1) # gMNVSFramesElapsed + 0
+  /* 124580 80133BD0 3C0A8013 */       lui $t2, %hi(gMNVSMaxFramesElapsed)
   /* 124584 80133BD4 25090001 */     addiu $t1, $t0, 1
   /* 124588 80133BD8 2921000A */      slti $at, $t1, 0xa
   /* 12458C 80133BDC 14200275 */      bnez $at, .L801345B4
-  /* 124590 80133BE0 AC690000 */        sw $t1, ($v1) # D_ovl19_80134980 + 0
-  /* 124594 80133BE4 8D4A4984 */        lw $t2, %lo(D_ovl19_80134984)($t2)
+  /* 124590 80133BE0 AC690000 */        sw $t1, ($v1) # gMNVSFramesElapsed + 0
+  /* 124594 80133BE4 8D4A4984 */        lw $t2, %lo(gMNVSMaxFramesElapsed)($t2)
   /* 124598 80133BE8 3C02800A */       lui $v0, %hi(gSceneData)
   /* 12459C 80133BEC 24424AD0 */     addiu $v0, $v0, %lo(gSceneData)
   /* 1245A0 80133BF0 15490009 */       bne $t2, $t1, .L80133C18
   /* 1245A4 80133BF4 240C0001 */     addiu $t4, $zero, 1
   /* 1245A8 80133BF8 904B0000 */       lbu $t3, ($v0) # gSceneData + 0
   /* 1245AC 80133BFC A04C0000 */        sb $t4, ($v0) # gSceneData + 0
-  /* 1245B0 80133C00 0C04CDEE */       jal func_ovl19_801337B8
+  /* 1245B0 80133C00 0C04CDEE */       jal mnVSSaveSettings
   /* 1245B4 80133C04 A04B0001 */        sb $t3, 1($v0) # gSceneData + 1
   /* 1245B8 80133C08 0C00171D */       jal func_80005C74
-  /* 1245BC 80133C0C 00000000 */       nop 
+  /* 1245BC 80133C0C 00000000 */       nop
   /* 1245C0 80133C10 10000269 */         b .L801345B8
   /* 1245C4 80133C14 8FBF0014 */        lw $ra, 0x14($sp)
   .L80133C18:
   /* 1245C8 80133C18 0C0E42DF */       jal func_ovl1_80390B7C
-  /* 1245CC 80133C1C 00000000 */       nop 
-  /* 1245D0 80133C20 3C038013 */       lui $v1, %hi(D_ovl19_80134980)
+  /* 1245CC 80133C1C 00000000 */       nop
+  /* 1245D0 80133C20 3C038013 */       lui $v1, %hi(gMNVSFramesElapsed)
   /* 1245D4 80133C24 14400005 */      bnez $v0, .L80133C3C
-  /* 1245D8 80133C28 24634980 */     addiu $v1, $v1, %lo(D_ovl19_80134980)
-  /* 1245DC 80133C2C 8C6D0000 */        lw $t5, ($v1) # D_ovl19_80134980 + 0
-  /* 1245E0 80133C30 3C018013 */       lui $at, %hi(D_ovl19_80134984)
+  /* 1245D8 80133C28 24634980 */     addiu $v1, $v1, %lo(gMNVSFramesElapsed)
+  /* 1245DC 80133C2C 8C6D0000 */        lw $t5, ($v1) # gMNVSFramesElapsed + 0
+  /* 1245E0 80133C30 3C018013 */       lui $at, %hi(gMNVSMaxFramesElapsed)
   /* 1245E4 80133C34 25AE4650 */     addiu $t6, $t5, 0x4650
-  /* 1245E8 80133C38 AC2E4984 */        sw $t6, %lo(D_ovl19_80134984)($at)
+  /* 1245E8 80133C38 AC2E4984 */        sw $t6, %lo(gMNVSMaxFramesElapsed)($at)
   .L80133C3C:
-  /* 1245EC 80133C3C 3C0F8013 */       lui $t7, %hi(D_ovl19_80134974)
-  /* 1245F0 80133C40 8DEF4974 */        lw $t7, %lo(D_ovl19_80134974)($t7)
+  /* 1245EC 80133C3C 3C0F8013 */       lui $t7, %hi(gMNVSExitInterrupt)
+  /* 1245F0 80133C40 8DEF4974 */        lw $t7, %lo(gMNVSExitInterrupt)($t7)
   /* 1245F4 80133C44 11E00003 */      beqz $t7, .L80133C54
-  /* 1245F8 80133C48 00000000 */       nop 
+  /* 1245F8 80133C48 00000000 */       nop
   /* 1245FC 80133C4C 0C00171D */       jal func_80005C74
-  /* 124600 80133C50 00000000 */       nop 
+  /* 124600 80133C50 00000000 */       nop
   .L80133C54:
-  /* 124604 80133C54 3C038013 */       lui $v1, %hi(D_ovl19_8013497C)
-  /* 124608 80133C58 2463497C */     addiu $v1, $v1, %lo(D_ovl19_8013497C)
-  /* 12460C 80133C5C 8C620000 */        lw $v0, ($v1) # D_ovl19_8013497C + 0
+  /* 124604 80133C54 3C038013 */       lui $v1, %hi(gMNVSChangeWait)
+  /* 124608 80133C58 2463497C */     addiu $v1, $v1, %lo(gMNVSChangeWait)
+  /* 12460C 80133C5C 8C620000 */        lw $v0, ($v1) # gMNVSChangeWait + 0
   /* 124610 80133C60 2404FFEC */     addiu $a0, $zero, -0x14
   /* 124614 80133C64 10400002 */      beqz $v0, .L80133C70
   /* 124618 80133C68 2458FFFF */     addiu $t8, $v0, -1
-  /* 12461C 80133C6C AC780000 */        sw $t8, ($v1) # D_ovl19_8013497C + 0
+  /* 12461C 80133C6C AC780000 */        sw $t8, ($v1) # gMNVSChangeWait + 0
   .L80133C70:
   /* 124620 80133C70 0C0E4281 */       jal func_ovl1_80390A04
   /* 124624 80133C74 24050014 */     addiu $a1, $zero, 0x14
@@ -2355,45 +2356,45 @@ glabel func_ovl19_80133B8C
   /* 124630 80133C80 0C0E42B0 */       jal func_ovl1_80390AC0
   /* 124634 80133C84 24050014 */     addiu $a1, $zero, 0x14
   /* 124638 80133C88 1040000C */      beqz $v0, .L80133CBC
-  /* 12463C 80133C8C 00000000 */       nop 
+  /* 12463C 80133C8C 00000000 */       nop
   /* 124640 80133C90 0C0E4201 */       jal func_ovl1_80390804
   /* 124644 80133C94 24040919 */     addiu $a0, $zero, 0x919
   /* 124648 80133C98 14400008 */      bnez $v0, .L80133CBC
-  /* 12464C 80133C9C 00000000 */       nop 
+  /* 12464C 80133C9C 00000000 */       nop
   /* 124650 80133CA0 0C0E4201 */       jal func_ovl1_80390804
   /* 124654 80133CA4 24040626 */     addiu $a0, $zero, 0x626
   /* 124658 80133CA8 14400004 */      bnez $v0, .L80133CBC
-  /* 12465C 80133CAC 3C018013 */       lui $at, %hi(D_ovl19_8013497C)
-  /* 124660 80133CB0 AC20497C */        sw $zero, %lo(D_ovl19_8013497C)($at)
-  /* 124664 80133CB4 3C018013 */       lui $at, %hi(D_ovl19_80134978)
-  /* 124668 80133CB8 AC204978 */        sw $zero, %lo(D_ovl19_80134978)($at)
+  /* 12465C 80133CAC 3C018013 */       lui $at, %hi(gMNVSChangeWait)
+  /* 124660 80133CB0 AC20497C */        sw $zero, %lo(gMNVSChangeWait)($at)
+  /* 124664 80133CB4 3C018013 */       lui $at, %hi(gMNVSInputDirection)
+  /* 124668 80133CB8 AC204978 */        sw $zero, %lo(gMNVSInputDirection)($at)
   .L80133CBC:
   /* 12466C 80133CBC 0C0E41DB */       jal func_ovl1_8039076C
   /* 124670 80133CC0 34049000 */       ori $a0, $zero, 0x9000
   /* 124674 80133CC4 1040002D */      beqz $v0, .L80133D7C
-  /* 124678 80133CC8 3C028013 */       lui $v0, %hi(D_ovl19_80134948)
-  /* 12467C 80133CCC 8C424948 */        lw $v0, %lo(D_ovl19_80134948)($v0)
+  /* 124678 80133CC8 3C028013 */       lui $v0, %hi(gMNVSCursorIndex)
+  /* 12467C 80133CCC 8C424948 */        lw $v0, %lo(gMNVSCursorIndex)($v0)
   /* 124680 80133CD0 24010003 */     addiu $at, $zero, 3
   /* 124684 80133CD4 10400005 */      beqz $v0, .L80133CEC
-  /* 124688 80133CD8 00000000 */       nop 
+  /* 124688 80133CD8 00000000 */       nop
   /* 12468C 80133CDC 10410015 */       beq $v0, $at, .L80133D34
-  /* 124690 80133CE0 00000000 */       nop 
+  /* 124690 80133CE0 00000000 */       nop
   /* 124694 80133CE4 10000025 */         b .L80133D7C
-  /* 124698 80133CE8 00000000 */       nop 
+  /* 124698 80133CE8 00000000 */       nop
   .L80133CEC:
   /* 12469C 80133CEC 0C009A70 */       jal func_800269C0
   /* 1246A0 80133CF0 2404009E */     addiu $a0, $zero, 0x9e
-  /* 1246A4 80133CF4 3C048013 */       lui $a0, %hi(D_ovl19_80134930)
-  /* 1246A8 80133CF8 8C844930 */        lw $a0, %lo(D_ovl19_80134930)($a0)
-  /* 1246AC 80133CFC 0C04C7D3 */       jal func_ovl19_80131F4C
+  /* 1246A4 80133CF4 3C048013 */       lui $a0, %hi(gMNVSButtonGObjVSStart)
+  /* 1246A8 80133CF8 8C844930 */        lw $a0, %lo(gMNVSButtonGObjVSStart)($a0)
+  /* 1246AC 80133CFC 0C04C7D3 */       jal mnVSUpdateButton
   /* 1246B0 80133D00 24050002 */     addiu $a1, $zero, 2
-  /* 1246B4 80133D04 0C04CDEE */       jal func_ovl19_801337B8
-  /* 1246B8 80133D08 00000000 */       nop 
+  /* 1246B4 80133D04 0C04CDEE */       jal mnVSSaveSettings
+  /* 1246B8 80133D08 00000000 */       nop
   /* 1246BC 80133D0C 3C02800A */       lui $v0, %hi(gSceneData)
   /* 1246C0 80133D10 24190001 */     addiu $t9, $zero, 1
-  /* 1246C4 80133D14 3C018013 */       lui $at, %hi(D_ovl19_80134974)
+  /* 1246C4 80133D14 3C018013 */       lui $at, %hi(gMNVSExitInterrupt)
   /* 1246C8 80133D18 24424AD0 */     addiu $v0, $v0, %lo(gSceneData)
-  /* 1246CC 80133D1C AC394974 */        sw $t9, %lo(D_ovl19_80134974)($at)
+  /* 1246CC 80133D1C AC394974 */        sw $t9, %lo(gMNVSExitInterrupt)($at)
   /* 1246D0 80133D20 90480000 */       lbu $t0, ($v0) # gSceneData + 0
   /* 1246D4 80133D24 24090010 */     addiu $t1, $zero, 0x10
   /* 1246D8 80133D28 A0490000 */        sb $t1, ($v0) # gSceneData + 0
@@ -2402,17 +2403,17 @@ glabel func_ovl19_80133B8C
   .L80133D34:
   /* 1246E4 80133D34 0C009A70 */       jal func_800269C0
   /* 1246E8 80133D38 2404009E */     addiu $a0, $zero, 0x9e
-  /* 1246EC 80133D3C 3C048013 */       lui $a0, %hi(D_ovl19_8013493C)
-  /* 1246F0 80133D40 8C84493C */        lw $a0, %lo(D_ovl19_8013493C)($a0)
-  /* 1246F4 80133D44 0C04C7D3 */       jal func_ovl19_80131F4C
+  /* 1246EC 80133D3C 3C048013 */       lui $a0, %hi(gMNVSButtonGObjVSOptions)
+  /* 1246F0 80133D40 8C84493C */        lw $a0, %lo(gMNVSButtonGObjVSOptions)($a0)
+  /* 1246F4 80133D44 0C04C7D3 */       jal mnVSUpdateButton
   /* 1246F8 80133D48 24050002 */     addiu $a1, $zero, 2
-  /* 1246FC 80133D4C 0C04CDEE */       jal func_ovl19_801337B8
-  /* 124700 80133D50 00000000 */       nop 
+  /* 1246FC 80133D4C 0C04CDEE */       jal mnVSSaveSettings
+  /* 124700 80133D50 00000000 */       nop
   /* 124704 80133D54 3C02800A */       lui $v0, %hi(gSceneData)
   /* 124708 80133D58 240A0001 */     addiu $t2, $zero, 1
-  /* 12470C 80133D5C 3C018013 */       lui $at, %hi(D_ovl19_80134974)
+  /* 12470C 80133D5C 3C018013 */       lui $at, %hi(gMNVSExitInterrupt)
   /* 124710 80133D60 24424AD0 */     addiu $v0, $v0, %lo(gSceneData)
-  /* 124714 80133D64 AC2A4974 */        sw $t2, %lo(D_ovl19_80134974)($at)
+  /* 124714 80133D64 AC2A4974 */        sw $t2, %lo(gMNVSExitInterrupt)($at)
   /* 124718 80133D68 904B0000 */       lbu $t3, ($v0) # gSceneData + 0
   /* 12471C 80133D6C 240C000A */     addiu $t4, $zero, 0xa
   /* 124720 80133D70 A04C0000 */        sb $t4, ($v0) # gSceneData + 0
@@ -2422,9 +2423,9 @@ glabel func_ovl19_80133B8C
   /* 12472C 80133D7C 0C0E41DB */       jal func_ovl1_8039076C
   /* 124730 80133D80 24044000 */     addiu $a0, $zero, 0x4000
   /* 124734 80133D84 1040000A */      beqz $v0, .L80133DB0
-  /* 124738 80133D88 00000000 */       nop 
-  /* 12473C 80133D8C 0C04CDEE */       jal func_ovl19_801337B8
-  /* 124740 80133D90 00000000 */       nop 
+  /* 124738 80133D88 00000000 */       nop
+  /* 12473C 80133D8C 0C04CDEE */       jal mnVSSaveSettings
+  /* 124740 80133D90 00000000 */       nop
   /* 124744 80133D94 3C02800A */       lui $v0, %hi(gSceneData)
   /* 124748 80133D98 24424AD0 */     addiu $v0, $v0, %lo(gSceneData)
   /* 12474C 80133D9C 904D0000 */       lbu $t5, ($v0) # gSceneData + 0
@@ -2433,16 +2434,16 @@ glabel func_ovl19_80133B8C
   /* 124758 80133DA8 0C00171D */       jal func_80005C74
   /* 12475C 80133DAC A04D0001 */        sb $t5, 1($v0) # gSceneData + 1
   .L80133DB0:
-  /* 124760 80133DB0 3C028013 */       lui $v0, %hi(D_ovl19_8013497C)
-  /* 124764 80133DB4 8C42497C */        lw $v0, %lo(D_ovl19_8013497C)($v0)
+  /* 124760 80133DB0 3C028013 */       lui $v0, %hi(gMNVSChangeWait)
+  /* 124764 80133DB4 8C42497C */        lw $v0, %lo(gMNVSChangeWait)($v0)
   /* 124768 80133DB8 14400007 */      bnez $v0, .L80133DD8
-  /* 12476C 80133DBC 00000000 */       nop 
+  /* 12476C 80133DBC 00000000 */       nop
   /* 124770 80133DC0 0C0E4201 */       jal func_ovl1_80390804
   /* 124774 80133DC4 24040808 */     addiu $a0, $zero, 0x808
   /* 124778 80133DC8 14400009 */      bnez $v0, .L80133DF0
   /* 12477C 80133DCC AFA20024 */        sw $v0, 0x24($sp)
-  /* 124780 80133DD0 3C028013 */       lui $v0, %hi(D_ovl19_8013497C)
-  /* 124784 80133DD4 8C42497C */        lw $v0, %lo(D_ovl19_8013497C)($v0)
+  /* 124780 80133DD0 3C028013 */       lui $v0, %hi(gMNVSChangeWait)
+  /* 124784 80133DD4 8C42497C */        lw $v0, %lo(gMNVSChangeWait)($v0)
   .L80133DD8:
   /* 124788 80133DD8 14400051 */      bnez $v0, .L80133F20
   /* 12478C 80133DDC 24040014 */     addiu $a0, $zero, 0x14
@@ -2454,12 +2455,12 @@ glabel func_ovl19_80133B8C
   /* 1247A0 80133DF0 0C009A70 */       jal func_800269C0
   /* 1247A4 80133DF4 240400A4 */     addiu $a0, $zero, 0xa4
   /* 1247A8 80133DF8 8FAF0024 */        lw $t7, 0x24($sp)
-  /* 1247AC 80133DFC 3C038013 */       lui $v1, %hi(D_ovl19_8013497C)
-  /* 1247B0 80133E00 2463497C */     addiu $v1, $v1, %lo(D_ovl19_8013497C)
+  /* 1247AC 80133DFC 3C038013 */       lui $v1, %hi(gMNVSChangeWait)
+  /* 1247B0 80133E00 2463497C */     addiu $v1, $v1, %lo(gMNVSChangeWait)
   /* 1247B4 80133E04 11E00003 */      beqz $t7, .L80133E14
   /* 1247B8 80133E08 2418000C */     addiu $t8, $zero, 0xc
   /* 1247BC 80133E0C 1000000B */         b .L80133E3C
-  /* 1247C0 80133E10 AC780000 */        sw $t8, ($v1) # D_ovl19_8013497C + 0
+  /* 1247C0 80133E10 AC780000 */        sw $t8, ($v1) # gMNVSChangeWait + 0
   .L80133E14:
   /* 1247C4 80133E14 8FB90028 */        lw $t9, 0x28($sp)
   /* 1247C8 80133E18 240800A0 */     addiu $t0, $zero, 0xa0
@@ -2467,83 +2468,83 @@ glabel func_ovl19_80133B8C
   /* 1247D0 80133E20 01194823 */      subu $t1, $t0, $t9
   /* 1247D4 80133E24 0121001A */       div $zero, $t1, $at
   /* 1247D8 80133E28 00005012 */      mflo $t2
-  /* 1247DC 80133E2C 3C018013 */       lui $at, %hi(D_ovl19_8013497C)
-  /* 1247E0 80133E30 3C038013 */       lui $v1, %hi(D_ovl19_8013497C)
-  /* 1247E4 80133E34 2463497C */     addiu $v1, $v1, %lo(D_ovl19_8013497C)
-  /* 1247E8 80133E38 AC2A497C */        sw $t2, %lo(D_ovl19_8013497C)($at)
+  /* 1247DC 80133E2C 3C018013 */       lui $at, %hi(gMNVSChangeWait)
+  /* 1247E0 80133E30 3C038013 */       lui $v1, %hi(gMNVSChangeWait)
+  /* 1247E4 80133E34 2463497C */     addiu $v1, $v1, %lo(gMNVSChangeWait)
+  /* 1247E8 80133E38 AC2A497C */        sw $t2, %lo(gMNVSChangeWait)($at)
   .L80133E3C:
-  /* 1247EC 80133E3C 3C028013 */       lui $v0, %hi(D_ovl19_80134948)
-  /* 1247F0 80133E40 8C424948 */        lw $v0, %lo(D_ovl19_80134948)($v0)
+  /* 1247EC 80133E3C 3C028013 */       lui $v0, %hi(gMNVSCursorIndex)
+  /* 1247F0 80133E40 8C424948 */        lw $v0, %lo(gMNVSCursorIndex)($v0)
   /* 1247F4 80133E44 24010001 */     addiu $at, $zero, 1
   /* 1247F8 80133E48 14410004 */       bne $v0, $at, .L80133E5C
   /* 1247FC 80133E4C 00026880 */       sll $t5, $v0, 2
-  /* 124800 80133E50 8C6B0000 */        lw $t3, ($v1) # D_ovl19_8013497C + 0
+  /* 124800 80133E50 8C6B0000 */        lw $t3, ($v1) # gMNVSChangeWait + 0
   /* 124804 80133E54 256C0008 */     addiu $t4, $t3, 8
-  /* 124808 80133E58 AC6C0000 */        sw $t4, ($v1) # D_ovl19_8013497C + 0
+  /* 124808 80133E58 AC6C0000 */        sw $t4, ($v1) # gMNVSChangeWait + 0
   .L80133E5C:
   /* 12480C 80133E5C 03AD7021 */      addu $t6, $sp, $t5
   /* 124810 80133E60 8DCE002C */        lw $t6, 0x2c($t6)
   /* 124814 80133E64 00002825 */        or $a1, $zero, $zero
-  /* 124818 80133E68 0C04C7D3 */       jal func_ovl19_80131F4C
+  /* 124818 80133E68 0C04C7D3 */       jal mnVSUpdateButton
   /* 12481C 80133E6C 8DC40000 */        lw $a0, ($t6)
-  /* 124820 80133E70 3C038013 */       lui $v1, %hi(D_ovl19_80134948)
-  /* 124824 80133E74 24634948 */     addiu $v1, $v1, %lo(D_ovl19_80134948)
-  /* 124828 80133E78 8C620000 */        lw $v0, ($v1) # D_ovl19_80134948 + 0
+  /* 124820 80133E70 3C038013 */       lui $v1, %hi(gMNVSCursorIndex)
+  /* 124824 80133E74 24634948 */     addiu $v1, $v1, %lo(gMNVSCursorIndex)
+  /* 124828 80133E78 8C620000 */        lw $v0, ($v1) # gMNVSCursorIndex + 0
   /* 12482C 80133E7C 240F0003 */     addiu $t7, $zero, 3
   /* 124830 80133E80 14400003 */      bnez $v0, .L80133E90
   /* 124834 80133E84 2458FFFF */     addiu $t8, $v0, -1
   /* 124838 80133E88 10000002 */         b .L80133E94
-  /* 12483C 80133E8C AC6F0000 */        sw $t7, ($v1) # D_ovl19_80134948 + 0
+  /* 12483C 80133E8C AC6F0000 */        sw $t7, ($v1) # gMNVSCursorIndex + 0
   .L80133E90:
-  /* 124840 80133E90 AC780000 */        sw $t8, ($v1) # D_ovl19_80134948 + 0
+  /* 124840 80133E90 AC780000 */        sw $t8, ($v1) # gMNVSCursorIndex + 0
   .L80133E94:
-  /* 124844 80133E94 8C680000 */        lw $t0, ($v1) # D_ovl19_80134948 + 0
+  /* 124844 80133E94 8C680000 */        lw $t0, ($v1) # gMNVSCursorIndex + 0
   /* 124848 80133E98 24050001 */     addiu $a1, $zero, 1
   /* 12484C 80133E9C 0008C880 */       sll $t9, $t0, 2
   /* 124850 80133EA0 03B94821 */      addu $t1, $sp, $t9
   /* 124854 80133EA4 8D29002C */        lw $t1, 0x2c($t1)
-  /* 124858 80133EA8 0C04C7D3 */       jal func_ovl19_80131F4C
+  /* 124858 80133EA8 0C04C7D3 */       jal mnVSUpdateButton
   /* 12485C 80133EAC 8D240000 */        lw $a0, ($t1)
-  /* 124860 80133EB0 3C048013 */       lui $a0, %hi(D_ovl19_80134960)
+  /* 124860 80133EB0 3C048013 */       lui $a0, %hi(gMNVSUnusedGObj)
   /* 124864 80133EB4 0C0026A1 */       jal omEjectGObj
-  /* 124868 80133EB8 8C844960 */        lw $a0, %lo(D_ovl19_80134960)($a0)
-  /* 12486C 80133EBC 0C04CBF6 */       jal func_ovl19_80132FD8
-  /* 124870 80133EC0 00000000 */       nop 
-  /* 124874 80133EC4 3C028013 */       lui $v0, %hi(D_ovl19_80134948)
-  /* 124878 80133EC8 8C424948 */        lw $v0, %lo(D_ovl19_80134948)($v0)
+  /* 124868 80133EB8 8C844960 */        lw $a0, %lo(gMNVSUnusedGObj)($a0)
+  /* 12486C 80133EBC 0C04CBF6 */       jal mnVSCreateUnusedGObj
+  /* 124870 80133EC0 00000000 */       nop
+  /* 124874 80133EC4 3C028013 */       lui $v0, %hi(gMNVSCursorIndex)
+  /* 124878 80133EC8 8C424948 */        lw $v0, %lo(gMNVSCursorIndex)($v0)
   /* 12487C 80133ECC 240A0001 */     addiu $t2, $zero, 1
-  /* 124880 80133ED0 3C018013 */       lui $at, %hi(D_ovl19_80134978)
-  /* 124884 80133ED4 AC2A4978 */        sw $t2, %lo(D_ovl19_80134978)($at)
+  /* 124880 80133ED0 3C018013 */       lui $at, %hi(gMNVSInputDirection)
+  /* 124884 80133ED4 AC2A4978 */        sw $t2, %lo(gMNVSInputDirection)($at)
   /* 124888 80133ED8 24010001 */     addiu $at, $zero, 1
   /* 12488C 80133EDC 14410008 */       bne $v0, $at, .L80133F00
-  /* 124890 80133EE0 3C0B8013 */       lui $t3, %hi(D_ovl19_80134964)
-  /* 124894 80133EE4 8D6B4964 */        lw $t3, %lo(D_ovl19_80134964)($t3)
+  /* 124890 80133EE0 3C0B8013 */       lui $t3, %hi(gMNVSRuleArrowsGObj)
+  /* 124894 80133EE4 8D6B4964 */        lw $t3, %lo(gMNVSRuleArrowsGObj)($t3)
   /* 124898 80133EE8 240C001E */     addiu $t4, $zero, 0x1e
-  /* 12489C 80133EEC 3C018013 */       lui $at, %hi(D_ovl19_80134970)
+  /* 12489C 80133EEC 3C018013 */       lui $at, %hi(gMNVSRuleArrowBlinkTimer)
   /* 1248A0 80133EF0 AD60007C */        sw $zero, 0x7c($t3)
-  /* 1248A4 80133EF4 3C028013 */       lui $v0, %hi(D_ovl19_80134948)
-  /* 1248A8 80133EF8 8C424948 */        lw $v0, %lo(D_ovl19_80134948)($v0)
-  /* 1248AC 80133EFC AC2C4970 */        sw $t4, %lo(D_ovl19_80134970)($at)
+  /* 1248A4 80133EF4 3C028013 */       lui $v0, %hi(gMNVSCursorIndex)
+  /* 1248A8 80133EF8 8C424948 */        lw $v0, %lo(gMNVSCursorIndex)($v0)
+  /* 1248AC 80133EFC AC2C4970 */        sw $t4, %lo(gMNVSRuleArrowBlinkTimer)($at)
   .L80133F00:
   /* 1248B0 80133F00 24010002 */     addiu $at, $zero, 2
   /* 1248B4 80133F04 14410006 */       bne $v0, $at, .L80133F20
-  /* 1248B8 80133F08 3C0D8013 */       lui $t5, %hi(D_ovl19_80134968)
-  /* 1248BC 80133F0C 8DAD4968 */        lw $t5, %lo(D_ovl19_80134968)($t5)
+  /* 1248B8 80133F08 3C0D8013 */       lui $t5, %hi(gMNVSTimeStockArrowsGObj)
+  /* 1248BC 80133F0C 8DAD4968 */        lw $t5, %lo(gMNVSTimeStockArrowsGObj)($t5)
   /* 1248C0 80133F10 240E001E */     addiu $t6, $zero, 0x1e
-  /* 1248C4 80133F14 3C018013 */       lui $at, %hi(D_ovl19_8013496C)
+  /* 1248C4 80133F14 3C018013 */       lui $at, %hi(gMNVSTimeStockArrowBlinkTimer)
   /* 1248C8 80133F18 ADA0007C */        sw $zero, 0x7c($t5)
-  /* 1248CC 80133F1C AC2E496C */        sw $t6, %lo(D_ovl19_8013496C)($at)
+  /* 1248CC 80133F1C AC2E496C */        sw $t6, %lo(gMNVSTimeStockArrowBlinkTimer)($at)
   .L80133F20:
-  /* 1248D0 80133F20 3C028013 */       lui $v0, %hi(D_ovl19_8013497C)
-  /* 1248D4 80133F24 8C42497C */        lw $v0, %lo(D_ovl19_8013497C)($v0)
+  /* 1248D0 80133F20 3C028013 */       lui $v0, %hi(gMNVSChangeWait)
+  /* 1248D4 80133F24 8C42497C */        lw $v0, %lo(gMNVSChangeWait)($v0)
   /* 1248D8 80133F28 14400007 */      bnez $v0, .L80133F48
-  /* 1248DC 80133F2C 00000000 */       nop 
+  /* 1248DC 80133F2C 00000000 */       nop
   /* 1248E0 80133F30 0C0E4201 */       jal func_ovl1_80390804
   /* 1248E4 80133F34 24040404 */     addiu $a0, $zero, 0x404
   /* 1248E8 80133F38 14400009 */      bnez $v0, .L80133F60
   /* 1248EC 80133F3C AFA20024 */        sw $v0, 0x24($sp)
-  /* 1248F0 80133F40 3C028013 */       lui $v0, %hi(D_ovl19_8013497C)
-  /* 1248F4 80133F44 8C42497C */        lw $v0, %lo(D_ovl19_8013497C)($v0)
+  /* 1248F0 80133F40 3C028013 */       lui $v0, %hi(gMNVSChangeWait)
+  /* 1248F4 80133F44 8C42497C */        lw $v0, %lo(gMNVSChangeWait)($v0)
   .L80133F48:
   /* 1248F8 80133F48 14400052 */      bnez $v0, .L80134094
   /* 1248FC 80133F4C 2404FFEC */     addiu $a0, $zero, -0x14
@@ -2555,107 +2556,107 @@ glabel func_ovl19_80133B8C
   /* 124910 80133F60 0C009A70 */       jal func_800269C0
   /* 124914 80133F64 240400A4 */     addiu $a0, $zero, 0xa4
   /* 124918 80133F68 8FAF0024 */        lw $t7, 0x24($sp)
-  /* 12491C 80133F6C 3C038013 */       lui $v1, %hi(D_ovl19_8013497C)
-  /* 124920 80133F70 2463497C */     addiu $v1, $v1, %lo(D_ovl19_8013497C)
+  /* 12491C 80133F6C 3C038013 */       lui $v1, %hi(gMNVSChangeWait)
+  /* 124920 80133F70 2463497C */     addiu $v1, $v1, %lo(gMNVSChangeWait)
   /* 124924 80133F74 11E00003 */      beqz $t7, .L80133F84
   /* 124928 80133F78 2418000C */     addiu $t8, $zero, 0xc
   /* 12492C 80133F7C 1000000A */         b .L80133FA8
-  /* 124930 80133F80 AC780000 */        sw $t8, ($v1) # D_ovl19_8013497C + 0
+  /* 124930 80133F80 AC780000 */        sw $t8, ($v1) # gMNVSChangeWait + 0
   .L80133F84:
   /* 124934 80133F84 8FA80028 */        lw $t0, 0x28($sp)
   /* 124938 80133F88 24010007 */     addiu $at, $zero, 7
-  /* 12493C 80133F8C 3C038013 */       lui $v1, %hi(D_ovl19_8013497C)
+  /* 12493C 80133F8C 3C038013 */       lui $v1, %hi(gMNVSChangeWait)
   /* 124940 80133F90 251900A0 */     addiu $t9, $t0, 0xa0
   /* 124944 80133F94 0321001A */       div $zero, $t9, $at
   /* 124948 80133F98 00004812 */      mflo $t1
-  /* 12494C 80133F9C 3C018013 */       lui $at, %hi(D_ovl19_8013497C)
-  /* 124950 80133FA0 AC29497C */        sw $t1, %lo(D_ovl19_8013497C)($at)
-  /* 124954 80133FA4 2463497C */     addiu $v1, $v1, %lo(D_ovl19_8013497C)
+  /* 12494C 80133F9C 3C018013 */       lui $at, %hi(gMNVSChangeWait)
+  /* 124950 80133FA0 AC29497C */        sw $t1, %lo(gMNVSChangeWait)($at)
+  /* 124954 80133FA4 2463497C */     addiu $v1, $v1, %lo(gMNVSChangeWait)
   .L80133FA8:
-  /* 124958 80133FA8 3C028013 */       lui $v0, %hi(D_ovl19_80134948)
-  /* 12495C 80133FAC 8C424948 */        lw $v0, %lo(D_ovl19_80134948)($v0)
+  /* 124958 80133FA8 3C028013 */       lui $v0, %hi(gMNVSCursorIndex)
+  /* 12495C 80133FAC 8C424948 */        lw $v0, %lo(gMNVSCursorIndex)($v0)
   /* 124960 80133FB0 24010002 */     addiu $at, $zero, 2
   /* 124964 80133FB4 14410004 */       bne $v0, $at, .L80133FC8
   /* 124968 80133FB8 00026080 */       sll $t4, $v0, 2
-  /* 12496C 80133FBC 8C6A0000 */        lw $t2, ($v1) # D_ovl19_8013497C + 0
+  /* 12496C 80133FBC 8C6A0000 */        lw $t2, ($v1) # gMNVSChangeWait + 0
   /* 124970 80133FC0 254B0008 */     addiu $t3, $t2, 8
-  /* 124974 80133FC4 AC6B0000 */        sw $t3, ($v1) # D_ovl19_8013497C + 0
+  /* 124974 80133FC4 AC6B0000 */        sw $t3, ($v1) # gMNVSChangeWait + 0
   .L80133FC8:
   /* 124978 80133FC8 03AC6821 */      addu $t5, $sp, $t4
   /* 12497C 80133FCC 8DAD002C */        lw $t5, 0x2c($t5)
   /* 124980 80133FD0 00002825 */        or $a1, $zero, $zero
-  /* 124984 80133FD4 0C04C7D3 */       jal func_ovl19_80131F4C
+  /* 124984 80133FD4 0C04C7D3 */       jal mnVSUpdateButton
   /* 124988 80133FD8 8DA40000 */        lw $a0, ($t5)
-  /* 12498C 80133FDC 3C028013 */       lui $v0, %hi(D_ovl19_80134948)
-  /* 124990 80133FE0 8C424948 */        lw $v0, %lo(D_ovl19_80134948)($v0)
+  /* 12498C 80133FDC 3C028013 */       lui $v0, %hi(gMNVSCursorIndex)
+  /* 124990 80133FE0 8C424948 */        lw $v0, %lo(gMNVSCursorIndex)($v0)
   /* 124994 80133FE4 24010003 */     addiu $at, $zero, 3
-  /* 124998 80133FE8 3C0F8013 */       lui $t7, %hi(D_ovl19_80134948)
+  /* 124998 80133FE8 3C0F8013 */       lui $t7, %hi(gMNVSCursorIndex)
   /* 12499C 80133FEC 14410004 */       bne $v0, $at, .L80134000
   /* 1249A0 80133FF0 244E0001 */     addiu $t6, $v0, 1
-  /* 1249A4 80133FF4 3C018013 */       lui $at, %hi(D_ovl19_80134948)
+  /* 1249A4 80133FF4 3C018013 */       lui $at, %hi(gMNVSCursorIndex)
   /* 1249A8 80133FF8 10000003 */         b .L80134008
-  /* 1249AC 80133FFC AC204948 */        sw $zero, %lo(D_ovl19_80134948)($at)
+  /* 1249AC 80133FFC AC204948 */        sw $zero, %lo(gMNVSCursorIndex)($at)
   .L80134000:
-  /* 1249B0 80134000 3C018013 */       lui $at, %hi(D_ovl19_80134948)
-  /* 1249B4 80134004 AC2E4948 */        sw $t6, %lo(D_ovl19_80134948)($at)
+  /* 1249B0 80134000 3C018013 */       lui $at, %hi(gMNVSCursorIndex)
+  /* 1249B4 80134004 AC2E4948 */        sw $t6, %lo(gMNVSCursorIndex)($at)
   .L80134008:
-  /* 1249B8 80134008 8DEF4948 */        lw $t7, %lo(D_ovl19_80134948)($t7)
+  /* 1249B8 80134008 8DEF4948 */        lw $t7, %lo(gMNVSCursorIndex)($t7)
   /* 1249BC 8013400C 24050001 */     addiu $a1, $zero, 1
   /* 1249C0 80134010 000FC080 */       sll $t8, $t7, 2
   /* 1249C4 80134014 03B84021 */      addu $t0, $sp, $t8
   /* 1249C8 80134018 8D08002C */        lw $t0, 0x2c($t0)
-  /* 1249CC 8013401C 0C04C7D3 */       jal func_ovl19_80131F4C
+  /* 1249CC 8013401C 0C04C7D3 */       jal mnVSUpdateButton
   /* 1249D0 80134020 8D040000 */        lw $a0, ($t0)
-  /* 1249D4 80134024 3C048013 */       lui $a0, %hi(D_ovl19_80134960)
+  /* 1249D4 80134024 3C048013 */       lui $a0, %hi(gMNVSUnusedGObj)
   /* 1249D8 80134028 0C0026A1 */       jal omEjectGObj
-  /* 1249DC 8013402C 8C844960 */        lw $a0, %lo(D_ovl19_80134960)($a0)
-  /* 1249E0 80134030 0C04CBF6 */       jal func_ovl19_80132FD8
-  /* 1249E4 80134034 00000000 */       nop 
-  /* 1249E8 80134038 3C028013 */       lui $v0, %hi(D_ovl19_80134948)
-  /* 1249EC 8013403C 8C424948 */        lw $v0, %lo(D_ovl19_80134948)($v0)
+  /* 1249DC 8013402C 8C844960 */        lw $a0, %lo(gMNVSUnusedGObj)($a0)
+  /* 1249E0 80134030 0C04CBF6 */       jal mnVSCreateUnusedGObj
+  /* 1249E4 80134034 00000000 */       nop
+  /* 1249E8 80134038 3C028013 */       lui $v0, %hi(gMNVSCursorIndex)
+  /* 1249EC 8013403C 8C424948 */        lw $v0, %lo(gMNVSCursorIndex)($v0)
   /* 1249F0 80134040 24190002 */     addiu $t9, $zero, 2
-  /* 1249F4 80134044 3C018013 */       lui $at, %hi(D_ovl19_80134978)
-  /* 1249F8 80134048 AC394978 */        sw $t9, %lo(D_ovl19_80134978)($at)
+  /* 1249F4 80134044 3C018013 */       lui $at, %hi(gMNVSInputDirection)
+  /* 1249F8 80134048 AC394978 */        sw $t9, %lo(gMNVSInputDirection)($at)
   /* 1249FC 8013404C 24010001 */     addiu $at, $zero, 1
   /* 124A00 80134050 14410008 */       bne $v0, $at, .L80134074
-  /* 124A04 80134054 3C098013 */       lui $t1, %hi(D_ovl19_80134964)
-  /* 124A08 80134058 8D294964 */        lw $t1, %lo(D_ovl19_80134964)($t1)
+  /* 124A04 80134054 3C098013 */       lui $t1, %hi(gMNVSRuleArrowsGObj)
+  /* 124A08 80134058 8D294964 */        lw $t1, %lo(gMNVSRuleArrowsGObj)($t1)
   /* 124A0C 8013405C 240A001E */     addiu $t2, $zero, 0x1e
-  /* 124A10 80134060 3C018013 */       lui $at, %hi(D_ovl19_80134970)
+  /* 124A10 80134060 3C018013 */       lui $at, %hi(gMNVSRuleArrowBlinkTimer)
   /* 124A14 80134064 AD20007C */        sw $zero, 0x7c($t1)
-  /* 124A18 80134068 3C028013 */       lui $v0, %hi(D_ovl19_80134948)
-  /* 124A1C 8013406C 8C424948 */        lw $v0, %lo(D_ovl19_80134948)($v0)
-  /* 124A20 80134070 AC2A4970 */        sw $t2, %lo(D_ovl19_80134970)($at)
+  /* 124A18 80134068 3C028013 */       lui $v0, %hi(gMNVSCursorIndex)
+  /* 124A1C 8013406C 8C424948 */        lw $v0, %lo(gMNVSCursorIndex)($v0)
+  /* 124A20 80134070 AC2A4970 */        sw $t2, %lo(gMNVSRuleArrowBlinkTimer)($at)
   .L80134074:
   /* 124A24 80134074 24010002 */     addiu $at, $zero, 2
   /* 124A28 80134078 14410006 */       bne $v0, $at, .L80134094
-  /* 124A2C 8013407C 3C0B8013 */       lui $t3, %hi(D_ovl19_80134968)
-  /* 124A30 80134080 8D6B4968 */        lw $t3, %lo(D_ovl19_80134968)($t3)
+  /* 124A2C 8013407C 3C0B8013 */       lui $t3, %hi(gMNVSTimeStockArrowsGObj)
+  /* 124A30 80134080 8D6B4968 */        lw $t3, %lo(gMNVSTimeStockArrowsGObj)($t3)
   /* 124A34 80134084 240C001E */     addiu $t4, $zero, 0x1e
-  /* 124A38 80134088 3C018013 */       lui $at, %hi(D_ovl19_8013496C)
+  /* 124A38 80134088 3C018013 */       lui $at, %hi(gMNVSTimeStockArrowBlinkTimer)
   /* 124A3C 8013408C AD60007C */        sw $zero, 0x7c($t3)
-  /* 124A40 80134090 AC2C496C */        sw $t4, %lo(D_ovl19_8013496C)($at)
+  /* 124A40 80134090 AC2C496C */        sw $t4, %lo(gMNVSTimeStockArrowBlinkTimer)($at)
   .L80134094:
-  /* 124A44 80134094 3C028013 */       lui $v0, %hi(D_ovl19_80134948)
-  /* 124A48 80134098 8C424948 */        lw $v0, %lo(D_ovl19_80134948)($v0)
+  /* 124A44 80134094 3C028013 */       lui $v0, %hi(gMNVSCursorIndex)
+  /* 124A48 80134098 8C424948 */        lw $v0, %lo(gMNVSCursorIndex)($v0)
   /* 124A4C 8013409C 24010001 */     addiu $at, $zero, 1
   /* 124A50 801340A0 10410005 */       beq $v0, $at, .L801340B8
   /* 124A54 801340A4 24010002 */     addiu $at, $zero, 2
   /* 124A58 801340A8 1041008D */       beq $v0, $at, .L801342E0
-  /* 124A5C 801340AC 00000000 */       nop 
+  /* 124A5C 801340AC 00000000 */       nop
   /* 124A60 801340B0 10000141 */         b .L801345B8
   /* 124A64 801340B4 8FBF0014 */        lw $ra, 0x14($sp)
   .L801340B8:
-  /* 124A68 801340B8 3C028013 */       lui $v0, %hi(D_ovl19_8013497C)
-  /* 124A6C 801340BC 8C42497C */        lw $v0, %lo(D_ovl19_8013497C)($v0)
+  /* 124A68 801340B8 3C028013 */       lui $v0, %hi(gMNVSChangeWait)
+  /* 124A6C 801340BC 8C42497C */        lw $v0, %lo(gMNVSChangeWait)($v0)
   /* 124A70 801340C0 14400007 */      bnez $v0, .L801340E0
-  /* 124A74 801340C4 00000000 */       nop 
+  /* 124A74 801340C4 00000000 */       nop
   /* 124A78 801340C8 0C0E4201 */       jal func_ovl1_80390804
   /* 124A7C 801340CC 24040222 */     addiu $a0, $zero, 0x222
   /* 124A80 801340D0 14400009 */      bnez $v0, .L801340F8
   /* 124A84 801340D4 AFA20024 */        sw $v0, 0x24($sp)
-  /* 124A88 801340D8 3C028013 */       lui $v0, %hi(D_ovl19_8013497C)
-  /* 124A8C 801340DC 8C42497C */        lw $v0, %lo(D_ovl19_8013497C)($v0)
+  /* 124A88 801340D8 3C028013 */       lui $v0, %hi(gMNVSChangeWait)
+  /* 124A8C 801340DC 8C42497C */        lw $v0, %lo(gMNVSChangeWait)($v0)
   .L801340E0:
   /* 124A90 801340E0 14400038 */      bnez $v0, .L801341C4
   /* 124A94 801340E4 2404FFEC */     addiu $a0, $zero, -0x14
@@ -2664,71 +2665,71 @@ glabel func_ovl19_80133B8C
   /* 124AA0 801340F0 10400034 */      beqz $v0, .L801341C4
   /* 124AA4 801340F4 AFA20028 */        sw $v0, 0x28($sp)
   .L801340F8:
-  /* 124AA8 801340F8 3C0D8013 */       lui $t5, %hi(D_ovl19_8013494C)
-  /* 124AAC 801340FC 8DAD494C */        lw $t5, %lo(D_ovl19_8013494C)($t5)
+  /* 124AA8 801340F8 3C0D8013 */       lui $t5, %hi(gMNVSRule)
+  /* 124AAC 801340FC 8DAD494C */        lw $t5, %lo(gMNVSRule)($t5)
   /* 124AB0 80134100 19A00030 */      blez $t5, .L801341C4
-  /* 124AB4 80134104 00000000 */       nop 
+  /* 124AB4 80134104 00000000 */       nop
   /* 124AB8 80134108 0C009A70 */       jal func_800269C0
   /* 124ABC 8013410C 240400A3 */     addiu $a0, $zero, 0xa3
-  /* 124AC0 80134110 3C038013 */       lui $v1, %hi(D_ovl19_8013494C)
-  /* 124AC4 80134114 2463494C */     addiu $v1, $v1, %lo(D_ovl19_8013494C)
-  /* 124AC8 80134118 8C6E0000 */        lw $t6, ($v1) # D_ovl19_8013494C + 0
+  /* 124AC0 80134110 3C038013 */       lui $v1, %hi(gMNVSRule)
+  /* 124AC4 80134114 2463494C */     addiu $v1, $v1, %lo(gMNVSRule)
+  /* 124AC8 80134118 8C6E0000 */        lw $t6, ($v1) # gMNVSRule + 0
   /* 124ACC 8013411C 24010001 */     addiu $at, $zero, 1
   /* 124AD0 80134120 25CFFFFF */     addiu $t7, $t6, -1
   /* 124AD4 80134124 15E10003 */       bne $t7, $at, .L80134134
-  /* 124AD8 80134128 AC6F0000 */        sw $t7, ($v1) # D_ovl19_8013494C + 0
-  /* 124ADC 8013412C 0C04CEA3 */       jal func_ovl19_80133A8C
-  /* 124AE0 80134130 00000000 */       nop 
+  /* 124AD8 80134128 AC6F0000 */        sw $t7, ($v1) # gMNVSRule + 0
+  /* 124ADC 8013412C 0C04CEA3 */       jal mnVSSetCostumesAndShades
+  /* 124AE0 80134130 00000000 */       nop
   .L80134134:
-  /* 124AE4 80134134 3C048013 */       lui $a0, %hi(D_ovl19_80134938)
+  /* 124AE4 80134134 3C048013 */       lui $a0, %hi(gMNVSButtonGObjTimeStock)
   /* 124AE8 80134138 0C0026A1 */       jal omEjectGObj
-  /* 124AEC 8013413C 8C844938 */        lw $a0, %lo(D_ovl19_80134938)($a0)
-  /* 124AF0 80134140 0C04CB41 */       jal func_ovl19_80132D04
-  /* 124AF4 80134144 00000000 */       nop 
-  /* 124AF8 80134148 3C048013 */       lui $a0, %hi(D_ovl19_80134958)
+  /* 124AEC 8013413C 8C844938 */        lw $a0, %lo(gMNVSButtonGObjTimeStock)($a0)
+  /* 124AF0 80134140 0C04CB41 */       jal mnVSCreateTimeStockButton
+  /* 124AF4 80134144 00000000 */       nop
+  /* 124AF8 80134148 3C048013 */       lui $a0, %hi(gMNVSRuleValueGObj)
   /* 124AFC 8013414C 0C0026A1 */       jal omEjectGObj
-  /* 124B00 80134150 8C844958 */        lw $a0, %lo(D_ovl19_80134958)($a0)
-  /* 124B04 80134154 0C04C88E */       jal func_ovl19_80132238
-  /* 124B08 80134158 00000000 */       nop 
-  /* 124B0C 8013415C 3C048013 */       lui $a0, %hi(D_ovl19_8013495C)
+  /* 124B00 80134150 8C844958 */        lw $a0, %lo(gMNVSRuleValueGObj)($a0)
+  /* 124B04 80134154 0C04C88E */       jal mnVSCreateRuleValue
+  /* 124B08 80134158 00000000 */       nop
+  /* 124B0C 8013415C 3C048013 */       lui $a0, %hi(gMNVSTimeStockValueGObj)
   /* 124B10 80134160 0C0026A1 */       jal omEjectGObj
-  /* 124B14 80134164 8C84495C */        lw $a0, %lo(D_ovl19_8013495C)($a0)
-  /* 124B18 80134168 0C04CAE8 */       jal func_ovl19_80132BA0
-  /* 124B1C 8013416C 00000000 */       nop 
+  /* 124B14 80134164 8C84495C */        lw $a0, %lo(gMNVSTimeStockValueGObj)($a0)
+  /* 124B18 80134168 0C04CAE8 */       jal mnVSCreateTimeStockValue
+  /* 124B1C 8013416C 00000000 */       nop
   /* 124B20 80134170 8FA80024 */        lw $t0, 0x24($sp)
   /* 124B24 80134174 8FA90028 */        lw $t1, 0x28($sp)
-  /* 124B28 80134178 3C048013 */       lui $a0, %hi(D_ovl19_80134960)
+  /* 124B28 80134178 3C048013 */       lui $a0, %hi(gMNVSUnusedGObj)
   /* 124B2C 8013417C 11000005 */      beqz $t0, .L80134194
   /* 124B30 80134180 252A00A0 */     addiu $t2, $t1, 0xa0
   /* 124B34 80134184 2419000C */     addiu $t9, $zero, 0xc
-  /* 124B38 80134188 3C018013 */       lui $at, %hi(D_ovl19_8013497C)
+  /* 124B38 80134188 3C018013 */       lui $at, %hi(gMNVSChangeWait)
   /* 124B3C 8013418C 10000006 */         b .L801341A8
-  /* 124B40 80134190 AC39497C */        sw $t9, %lo(D_ovl19_8013497C)($at)
+  /* 124B40 80134190 AC39497C */        sw $t9, %lo(gMNVSChangeWait)($at)
   .L80134194:
   /* 124B44 80134194 24010007 */     addiu $at, $zero, 7
   /* 124B48 80134198 0141001A */       div $zero, $t2, $at
   /* 124B4C 8013419C 00005812 */      mflo $t3
-  /* 124B50 801341A0 3C018013 */       lui $at, %hi(D_ovl19_8013497C)
-  /* 124B54 801341A4 AC2B497C */        sw $t3, %lo(D_ovl19_8013497C)($at)
+  /* 124B50 801341A0 3C018013 */       lui $at, %hi(gMNVSChangeWait)
+  /* 124B54 801341A4 AC2B497C */        sw $t3, %lo(gMNVSChangeWait)($at)
   .L801341A8:
   /* 124B58 801341A8 0C0026A1 */       jal omEjectGObj
-  /* 124B5C 801341AC 8C844960 */        lw $a0, %lo(D_ovl19_80134960)($a0)
-  /* 124B60 801341B0 0C04CBF6 */       jal func_ovl19_80132FD8
-  /* 124B64 801341B4 00000000 */       nop 
+  /* 124B5C 801341AC 8C844960 */        lw $a0, %lo(gMNVSUnusedGObj)($a0)
+  /* 124B60 801341B0 0C04CBF6 */       jal mnVSCreateUnusedGObj
+  /* 124B64 801341B4 00000000 */       nop
   /* 124B68 801341B8 240C0003 */     addiu $t4, $zero, 3
-  /* 124B6C 801341BC 3C018013 */       lui $at, %hi(D_ovl19_80134978)
-  /* 124B70 801341C0 AC2C4978 */        sw $t4, %lo(D_ovl19_80134978)($at)
+  /* 124B6C 801341BC 3C018013 */       lui $at, %hi(gMNVSInputDirection)
+  /* 124B70 801341C0 AC2C4978 */        sw $t4, %lo(gMNVSInputDirection)($at)
   .L801341C4:
-  /* 124B74 801341C4 3C028013 */       lui $v0, %hi(D_ovl19_8013497C)
-  /* 124B78 801341C8 8C42497C */        lw $v0, %lo(D_ovl19_8013497C)($v0)
+  /* 124B74 801341C4 3C028013 */       lui $v0, %hi(gMNVSChangeWait)
+  /* 124B78 801341C8 8C42497C */        lw $v0, %lo(gMNVSChangeWait)($v0)
   /* 124B7C 801341CC 14400007 */      bnez $v0, .L801341EC
-  /* 124B80 801341D0 00000000 */       nop 
+  /* 124B80 801341D0 00000000 */       nop
   /* 124B84 801341D4 0C0E4201 */       jal func_ovl1_80390804
   /* 124B88 801341D8 24040111 */     addiu $a0, $zero, 0x111
   /* 124B8C 801341DC 14400009 */      bnez $v0, .L80134204
   /* 124B90 801341E0 AFA20024 */        sw $v0, 0x24($sp)
-  /* 124B94 801341E4 3C028013 */       lui $v0, %hi(D_ovl19_8013497C)
-  /* 124B98 801341E8 8C42497C */        lw $v0, %lo(D_ovl19_8013497C)($v0)
+  /* 124B94 801341E4 3C028013 */       lui $v0, %hi(gMNVSChangeWait)
+  /* 124B98 801341E8 8C42497C */        lw $v0, %lo(gMNVSChangeWait)($v0)
   .L801341EC:
   /* 124B9C 801341EC 144000F1 */      bnez $v0, .L801345B4
   /* 124BA0 801341F0 24040014 */     addiu $a0, $zero, 0x14
@@ -2737,75 +2738,75 @@ glabel func_ovl19_80133B8C
   /* 124BAC 801341FC 104000ED */      beqz $v0, .L801345B4
   /* 124BB0 80134200 AFA20028 */        sw $v0, 0x28($sp)
   .L80134204:
-  /* 124BB4 80134204 3C0D8013 */       lui $t5, %hi(D_ovl19_8013494C)
-  /* 124BB8 80134208 8DAD494C */        lw $t5, %lo(D_ovl19_8013494C)($t5)
+  /* 124BB4 80134204 3C0D8013 */       lui $t5, %hi(gMNVSRule)
+  /* 124BB8 80134208 8DAD494C */        lw $t5, %lo(gMNVSRule)($t5)
   /* 124BBC 8013420C 29A10003 */      slti $at, $t5, 3
   /* 124BC0 80134210 502000E9 */      beql $at, $zero, .L801345B8
   /* 124BC4 80134214 8FBF0014 */        lw $ra, 0x14($sp)
   /* 124BC8 80134218 0C009A70 */       jal func_800269C0
   /* 124BCC 8013421C 240400A3 */     addiu $a0, $zero, 0xa3
-  /* 124BD0 80134220 3C0E8013 */       lui $t6, %hi(D_ovl19_8013494C)
-  /* 124BD4 80134224 8DCE494C */        lw $t6, %lo(D_ovl19_8013494C)($t6)
-  /* 124BD8 80134228 3C018013 */       lui $at, %hi(D_ovl19_8013494C)
+  /* 124BD0 80134220 3C0E8013 */       lui $t6, %hi(gMNVSRule)
+  /* 124BD4 80134224 8DCE494C */        lw $t6, %lo(gMNVSRule)($t6)
+  /* 124BD8 80134228 3C018013 */       lui $at, %hi(gMNVSRule)
   /* 124BDC 8013422C 25CF0001 */     addiu $t7, $t6, 1
-  /* 124BE0 80134230 AC2F494C */        sw $t7, %lo(D_ovl19_8013494C)($at)
+  /* 124BE0 80134230 AC2F494C */        sw $t7, %lo(gMNVSRule)($at)
   /* 124BE4 80134234 24010002 */     addiu $at, $zero, 2
   /* 124BE8 80134238 15E10003 */       bne $t7, $at, .L80134248
-  /* 124BEC 8013423C 00000000 */       nop 
-  /* 124BF0 80134240 0C04CEA3 */       jal func_ovl19_80133A8C
-  /* 124BF4 80134244 00000000 */       nop 
+  /* 124BEC 8013423C 00000000 */       nop
+  /* 124BF0 80134240 0C04CEA3 */       jal mnVSSetCostumesAndShades
+  /* 124BF4 80134244 00000000 */       nop
   .L80134248:
-  /* 124BF8 80134248 3C048013 */       lui $a0, %hi(D_ovl19_80134938)
+  /* 124BF8 80134248 3C048013 */       lui $a0, %hi(gMNVSButtonGObjTimeStock)
   /* 124BFC 8013424C 0C0026A1 */       jal omEjectGObj
-  /* 124C00 80134250 8C844938 */        lw $a0, %lo(D_ovl19_80134938)($a0)
-  /* 124C04 80134254 0C04CB41 */       jal func_ovl19_80132D04
-  /* 124C08 80134258 00000000 */       nop 
-  /* 124C0C 8013425C 3C048013 */       lui $a0, %hi(D_ovl19_80134958)
+  /* 124C00 80134250 8C844938 */        lw $a0, %lo(gMNVSButtonGObjTimeStock)($a0)
+  /* 124C04 80134254 0C04CB41 */       jal mnVSCreateTimeStockButton
+  /* 124C08 80134258 00000000 */       nop
+  /* 124C0C 8013425C 3C048013 */       lui $a0, %hi(gMNVSRuleValueGObj)
   /* 124C10 80134260 0C0026A1 */       jal omEjectGObj
-  /* 124C14 80134264 8C844958 */        lw $a0, %lo(D_ovl19_80134958)($a0)
-  /* 124C18 80134268 0C04C88E */       jal func_ovl19_80132238
-  /* 124C1C 8013426C 00000000 */       nop 
-  /* 124C20 80134270 3C048013 */       lui $a0, %hi(D_ovl19_8013495C)
+  /* 124C14 80134264 8C844958 */        lw $a0, %lo(gMNVSRuleValueGObj)($a0)
+  /* 124C18 80134268 0C04C88E */       jal mnVSCreateRuleValue
+  /* 124C1C 8013426C 00000000 */       nop
+  /* 124C20 80134270 3C048013 */       lui $a0, %hi(gMNVSTimeStockValueGObj)
   /* 124C24 80134274 0C0026A1 */       jal omEjectGObj
-  /* 124C28 80134278 8C84495C */        lw $a0, %lo(D_ovl19_8013495C)($a0)
-  /* 124C2C 8013427C 0C04CAE8 */       jal func_ovl19_80132BA0
-  /* 124C30 80134280 00000000 */       nop 
+  /* 124C28 80134278 8C84495C */        lw $a0, %lo(gMNVSTimeStockValueGObj)($a0)
+  /* 124C2C 8013427C 0C04CAE8 */       jal mnVSCreateTimeStockValue
+  /* 124C30 80134280 00000000 */       nop
   /* 124C34 80134284 8FB80024 */        lw $t8, 0x24($sp)
   /* 124C38 80134288 8FB90028 */        lw $t9, 0x28($sp)
   /* 124C3C 8013428C 240900A0 */     addiu $t1, $zero, 0xa0
   /* 124C40 80134290 13000005 */      beqz $t8, .L801342A8
-  /* 124C44 80134294 3C048013 */       lui $a0, %hi(D_ovl19_80134960)
+  /* 124C44 80134294 3C048013 */       lui $a0, %hi(gMNVSUnusedGObj)
   /* 124C48 80134298 2408000C */     addiu $t0, $zero, 0xc
-  /* 124C4C 8013429C 3C018013 */       lui $at, %hi(D_ovl19_8013497C)
+  /* 124C4C 8013429C 3C018013 */       lui $at, %hi(gMNVSChangeWait)
   /* 124C50 801342A0 10000007 */         b .L801342C0
-  /* 124C54 801342A4 AC28497C */        sw $t0, %lo(D_ovl19_8013497C)($at)
+  /* 124C54 801342A4 AC28497C */        sw $t0, %lo(gMNVSChangeWait)($at)
   .L801342A8:
   /* 124C58 801342A8 01395023 */      subu $t2, $t1, $t9
   /* 124C5C 801342AC 24010007 */     addiu $at, $zero, 7
   /* 124C60 801342B0 0141001A */       div $zero, $t2, $at
   /* 124C64 801342B4 00005812 */      mflo $t3
-  /* 124C68 801342B8 3C018013 */       lui $at, %hi(D_ovl19_8013497C)
-  /* 124C6C 801342BC AC2B497C */        sw $t3, %lo(D_ovl19_8013497C)($at)
+  /* 124C68 801342B8 3C018013 */       lui $at, %hi(gMNVSChangeWait)
+  /* 124C6C 801342BC AC2B497C */        sw $t3, %lo(gMNVSChangeWait)($at)
   .L801342C0:
   /* 124C70 801342C0 0C0026A1 */       jal omEjectGObj
-  /* 124C74 801342C4 8C844960 */        lw $a0, %lo(D_ovl19_80134960)($a0)
-  /* 124C78 801342C8 0C04CBF6 */       jal func_ovl19_80132FD8
-  /* 124C7C 801342CC 00000000 */       nop 
+  /* 124C74 801342C4 8C844960 */        lw $a0, %lo(gMNVSUnusedGObj)($a0)
+  /* 124C78 801342C8 0C04CBF6 */       jal mnVSCreateUnusedGObj
+  /* 124C7C 801342CC 00000000 */       nop
   /* 124C80 801342D0 240C0004 */     addiu $t4, $zero, 4
-  /* 124C84 801342D4 3C018013 */       lui $at, %hi(D_ovl19_80134978)
+  /* 124C84 801342D4 3C018013 */       lui $at, %hi(gMNVSInputDirection)
   /* 124C88 801342D8 100000B6 */         b .L801345B4
-  /* 124C8C 801342DC AC2C4978 */        sw $t4, %lo(D_ovl19_80134978)($at)
+  /* 124C8C 801342DC AC2C4978 */        sw $t4, %lo(gMNVSInputDirection)($at)
   .L801342E0:
-  /* 124C90 801342E0 3C028013 */       lui $v0, %hi(D_ovl19_8013497C)
-  /* 124C94 801342E4 8C42497C */        lw $v0, %lo(D_ovl19_8013497C)($v0)
+  /* 124C90 801342E0 3C028013 */       lui $v0, %hi(gMNVSChangeWait)
+  /* 124C94 801342E4 8C42497C */        lw $v0, %lo(gMNVSChangeWait)($v0)
   /* 124C98 801342E8 14400007 */      bnez $v0, .L80134308
-  /* 124C9C 801342EC 00000000 */       nop 
+  /* 124C9C 801342EC 00000000 */       nop
   /* 124CA0 801342F0 0C0E4201 */       jal func_ovl1_80390804
   /* 124CA4 801342F4 24040222 */     addiu $a0, $zero, 0x222
   /* 124CA8 801342F8 14400009 */      bnez $v0, .L80134320
   /* 124CAC 801342FC AFA20024 */        sw $v0, 0x24($sp)
-  /* 124CB0 80134300 3C028013 */       lui $v0, %hi(D_ovl19_8013497C)
-  /* 124CB4 80134304 8C42497C */        lw $v0, %lo(D_ovl19_8013497C)($v0)
+  /* 124CB0 80134300 3C028013 */       lui $v0, %hi(gMNVSChangeWait)
+  /* 124CB4 80134304 8C42497C */        lw $v0, %lo(gMNVSChangeWait)($v0)
   .L80134308:
   /* 124CB8 80134308 1440004F */      bnez $v0, .L80134448
   /* 124CBC 8013430C 2404FFEC */     addiu $a0, $zero, -0x14
@@ -2817,98 +2818,98 @@ glabel func_ovl19_80133B8C
   /* 124CD0 80134320 0C009A70 */       jal func_800269C0
   /* 124CD4 80134324 240400A3 */     addiu $a0, $zero, 0xa3
   /* 124CD8 80134328 8FAD0024 */        lw $t5, 0x24($sp)
-  /* 124CDC 8013432C 3C028013 */       lui $v0, %hi(D_ovl19_8013497C)
-  /* 124CE0 80134330 2442497C */     addiu $v0, $v0, %lo(D_ovl19_8013497C)
+  /* 124CDC 8013432C 3C028013 */       lui $v0, %hi(gMNVSChangeWait)
+  /* 124CE0 80134330 2442497C */     addiu $v0, $v0, %lo(gMNVSChangeWait)
   /* 124CE4 80134334 11A00003 */      beqz $t5, .L80134344
   /* 124CE8 80134338 240E000C */     addiu $t6, $zero, 0xc
   /* 124CEC 8013433C 1000000A */         b .L80134368
-  /* 124CF0 80134340 AC4E0000 */        sw $t6, ($v0) # D_ovl19_8013497C + 0
+  /* 124CF0 80134340 AC4E0000 */        sw $t6, ($v0) # gMNVSChangeWait + 0
   .L80134344:
   /* 124CF4 80134344 8FAF0028 */        lw $t7, 0x28($sp)
   /* 124CF8 80134348 2401000E */     addiu $at, $zero, 0xe
-  /* 124CFC 8013434C 3C028013 */       lui $v0, %hi(D_ovl19_8013497C)
+  /* 124CFC 8013434C 3C028013 */       lui $v0, %hi(gMNVSChangeWait)
   /* 124D00 80134350 25F800A0 */     addiu $t8, $t7, 0xa0
   /* 124D04 80134354 0301001A */       div $zero, $t8, $at
   /* 124D08 80134358 00004012 */      mflo $t0
-  /* 124D0C 8013435C 3C018013 */       lui $at, %hi(D_ovl19_8013497C)
-  /* 124D10 80134360 AC28497C */        sw $t0, %lo(D_ovl19_8013497C)($at)
-  /* 124D14 80134364 2442497C */     addiu $v0, $v0, %lo(D_ovl19_8013497C)
+  /* 124D0C 8013435C 3C018013 */       lui $at, %hi(gMNVSChangeWait)
+  /* 124D10 80134360 AC28497C */        sw $t0, %lo(gMNVSChangeWait)($at)
+  /* 124D14 80134364 2442497C */     addiu $v0, $v0, %lo(gMNVSChangeWait)
   .L80134368:
-  /* 124D18 80134368 3C098013 */       lui $t1, %hi(D_ovl19_80134978)
-  /* 124D1C 8013436C 8D294978 */        lw $t1, %lo(D_ovl19_80134978)($t1)
+  /* 124D18 80134368 3C098013 */       lui $t1, %hi(gMNVSInputDirection)
+  /* 124D1C 8013436C 8D294978 */        lw $t1, %lo(gMNVSInputDirection)($t1)
   /* 124D20 80134370 24010003 */     addiu $at, $zero, 3
   /* 124D24 80134374 11210004 */       beq $t1, $at, .L80134388
-  /* 124D28 80134378 00000000 */       nop 
-  /* 124D2C 8013437C 8C590000 */        lw $t9, ($v0) # D_ovl19_8013497C + 0
+  /* 124D28 80134378 00000000 */       nop
+  /* 124D2C 8013437C 8C590000 */        lw $t9, ($v0) # gMNVSChangeWait + 0
   /* 124D30 80134380 00195040 */       sll $t2, $t9, 1
-  /* 124D34 80134384 AC4A0000 */        sw $t2, ($v0) # D_ovl19_8013497C + 0
+  /* 124D34 80134384 AC4A0000 */        sw $t2, ($v0) # gMNVSChangeWait + 0
   .L80134388:
-  /* 124D38 80134388 0C04CACE */       jal func_ovl19_80132B38
-  /* 124D3C 8013438C 00000000 */       nop 
+  /* 124D38 80134388 0C04CACE */       jal mnVSIsTime
+  /* 124D3C 8013438C 00000000 */       nop
   /* 124D40 80134390 10400015 */      beqz $v0, .L801343E8
-  /* 124D44 80134394 3C038013 */       lui $v1, %hi(D_ovl19_80134950)
-  /* 124D48 80134398 24634950 */     addiu $v1, $v1, %lo(D_ovl19_80134950)
-  /* 124D4C 8013439C 8C620000 */        lw $v0, ($v1) # D_ovl19_80134950 + 0
+  /* 124D44 80134394 3C038013 */       lui $v1, %hi(gMNVSTime)
+  /* 124D48 80134398 24634950 */     addiu $v1, $v1, %lo(gMNVSTime)
+  /* 124D4C 8013439C 8C620000 */        lw $v0, ($v1) # gMNVSTime + 0
   /* 124D50 801343A0 24010001 */     addiu $at, $zero, 1
   /* 124D54 801343A4 240B0064 */     addiu $t3, $zero, 0x64
   /* 124D58 801343A8 14410003 */       bne $v0, $at, .L801343B8
   /* 124D5C 801343AC 244CFFFF */     addiu $t4, $v0, -1
   /* 124D60 801343B0 10000002 */         b .L801343BC
-  /* 124D64 801343B4 AC6B0000 */        sw $t3, ($v1) # D_ovl19_80134950 + 0
+  /* 124D64 801343B4 AC6B0000 */        sw $t3, ($v1) # gMNVSTime + 0
   .L801343B8:
-  /* 124D68 801343B8 AC6C0000 */        sw $t4, ($v1) # D_ovl19_80134950 + 0
+  /* 124D68 801343B8 AC6C0000 */        sw $t4, ($v1) # gMNVSTime + 0
   .L801343BC:
-  /* 124D6C 801343BC 8C6D0000 */        lw $t5, ($v1) # D_ovl19_80134950 + 0
+  /* 124D6C 801343BC 8C6D0000 */        lw $t5, ($v1) # gMNVSTime + 0
   /* 124D70 801343C0 24010001 */     addiu $at, $zero, 1
-  /* 124D74 801343C4 3C0E8013 */       lui $t6, %hi(D_ovl19_8013497C)
+  /* 124D74 801343C4 3C0E8013 */       lui $t6, %hi(gMNVSChangeWait)
   /* 124D78 801343C8 15A10005 */       bne $t5, $at, .L801343E0
-  /* 124D7C 801343CC 00000000 */       nop 
-  /* 124D80 801343D0 8DCE497C */        lw $t6, %lo(D_ovl19_8013497C)($t6)
-  /* 124D84 801343D4 3C018013 */       lui $at, %hi(D_ovl19_8013497C)
+  /* 124D7C 801343CC 00000000 */       nop
+  /* 124D80 801343D0 8DCE497C */        lw $t6, %lo(gMNVSChangeWait)($t6)
+  /* 124D84 801343D4 3C018013 */       lui $at, %hi(gMNVSChangeWait)
   /* 124D88 801343D8 25CF0008 */     addiu $t7, $t6, 8
-  /* 124D8C 801343DC AC2F497C */        sw $t7, %lo(D_ovl19_8013497C)($at)
+  /* 124D8C 801343DC AC2F497C */        sw $t7, %lo(gMNVSChangeWait)($at)
   .L801343E0:
   /* 124D90 801343E0 10000011 */         b .L80134428
-  /* 124D94 801343E4 00000000 */       nop 
+  /* 124D94 801343E4 00000000 */       nop
   .L801343E8:
-  /* 124D98 801343E8 3C058013 */       lui $a1, %hi(D_ovl19_80134954)
-  /* 124D9C 801343EC 24A54954 */     addiu $a1, $a1, %lo(D_ovl19_80134954)
-  /* 124DA0 801343F0 8CA20000 */        lw $v0, ($a1) # D_ovl19_80134954 + 0
+  /* 124D98 801343E8 3C058013 */       lui $a1, %hi(gMNVSStock)
+  /* 124D9C 801343EC 24A54954 */     addiu $a1, $a1, %lo(gMNVSStock)
+  /* 124DA0 801343F0 8CA20000 */        lw $v0, ($a1) # gMNVSStock + 0
   /* 124DA4 801343F4 14400003 */      bnez $v0, .L80134404
   /* 124DA8 801343F8 24180062 */     addiu $t8, $zero, 0x62
   /* 124DAC 801343FC 10000003 */         b .L8013440C
-  /* 124DB0 80134400 ACB80000 */        sw $t8, ($a1) # D_ovl19_80134954 + 0
+  /* 124DB0 80134400 ACB80000 */        sw $t8, ($a1) # gMNVSStock + 0
   .L80134404:
   /* 124DB4 80134404 2448FFFF */     addiu $t0, $v0, -1
-  /* 124DB8 80134408 ACA80000 */        sw $t0, ($a1) # D_ovl19_80134954 + 0
+  /* 124DB8 80134408 ACA80000 */        sw $t0, ($a1) # gMNVSStock + 0
   .L8013440C:
-  /* 124DBC 8013440C 8CA90000 */        lw $t1, ($a1) # D_ovl19_80134954 + 0
+  /* 124DBC 8013440C 8CA90000 */        lw $t1, ($a1) # gMNVSStock + 0
   /* 124DC0 80134410 15200005 */      bnez $t1, .L80134428
-  /* 124DC4 80134414 3C198013 */       lui $t9, %hi(D_ovl19_8013497C)
-  /* 124DC8 80134418 8F39497C */        lw $t9, %lo(D_ovl19_8013497C)($t9)
-  /* 124DCC 8013441C 3C018013 */       lui $at, %hi(D_ovl19_8013497C)
+  /* 124DC4 80134414 3C198013 */       lui $t9, %hi(gMNVSChangeWait)
+  /* 124DC8 80134418 8F39497C */        lw $t9, %lo(gMNVSChangeWait)($t9)
+  /* 124DCC 8013441C 3C018013 */       lui $at, %hi(gMNVSChangeWait)
   /* 124DD0 80134420 272A0008 */     addiu $t2, $t9, 8
-  /* 124DD4 80134424 AC2A497C */        sw $t2, %lo(D_ovl19_8013497C)($at)
+  /* 124DD4 80134424 AC2A497C */        sw $t2, %lo(gMNVSChangeWait)($at)
   .L80134428:
-  /* 124DD8 80134428 3C048013 */       lui $a0, %hi(D_ovl19_8013495C)
+  /* 124DD8 80134428 3C048013 */       lui $a0, %hi(gMNVSTimeStockValueGObj)
   /* 124DDC 8013442C 0C0026A1 */       jal omEjectGObj
-  /* 124DE0 80134430 8C84495C */        lw $a0, %lo(D_ovl19_8013495C)($a0)
-  /* 124DE4 80134434 0C04CAE8 */       jal func_ovl19_80132BA0
-  /* 124DE8 80134438 00000000 */       nop 
+  /* 124DE0 80134430 8C84495C */        lw $a0, %lo(gMNVSTimeStockValueGObj)($a0)
+  /* 124DE4 80134434 0C04CAE8 */       jal mnVSCreateTimeStockValue
+  /* 124DE8 80134438 00000000 */       nop
   /* 124DEC 8013443C 240B0003 */     addiu $t3, $zero, 3
-  /* 124DF0 80134440 3C018013 */       lui $at, %hi(D_ovl19_80134978)
-  /* 124DF4 80134444 AC2B4978 */        sw $t3, %lo(D_ovl19_80134978)($at)
+  /* 124DF0 80134440 3C018013 */       lui $at, %hi(gMNVSInputDirection)
+  /* 124DF4 80134444 AC2B4978 */        sw $t3, %lo(gMNVSInputDirection)($at)
   .L80134448:
-  /* 124DF8 80134448 3C028013 */       lui $v0, %hi(D_ovl19_8013497C)
-  /* 124DFC 8013444C 8C42497C */        lw $v0, %lo(D_ovl19_8013497C)($v0)
+  /* 124DF8 80134448 3C028013 */       lui $v0, %hi(gMNVSChangeWait)
+  /* 124DFC 8013444C 8C42497C */        lw $v0, %lo(gMNVSChangeWait)($v0)
   /* 124E00 80134450 14400007 */      bnez $v0, .L80134470
-  /* 124E04 80134454 00000000 */       nop 
+  /* 124E04 80134454 00000000 */       nop
   /* 124E08 80134458 0C0E4201 */       jal func_ovl1_80390804
   /* 124E0C 8013445C 24040111 */     addiu $a0, $zero, 0x111
   /* 124E10 80134460 14400009 */      bnez $v0, .L80134488
   /* 124E14 80134464 AFA20024 */        sw $v0, 0x24($sp)
-  /* 124E18 80134468 3C028013 */       lui $v0, %hi(D_ovl19_8013497C)
-  /* 124E1C 8013446C 8C42497C */        lw $v0, %lo(D_ovl19_8013497C)($v0)
+  /* 124E18 80134468 3C028013 */       lui $v0, %hi(gMNVSChangeWait)
+  /* 124E1C 8013446C 8C42497C */        lw $v0, %lo(gMNVSChangeWait)($v0)
   .L80134470:
   /* 124E20 80134470 14400050 */      bnez $v0, .L801345B4
   /* 124E24 80134474 24040014 */     addiu $a0, $zero, 0x14
@@ -2923,92 +2924,92 @@ glabel func_ovl19_80133B8C
   /* 124E44 80134494 8FAE0028 */        lw $t6, 0x28($sp)
   /* 124E48 80134498 240F00A0 */     addiu $t7, $zero, 0xa0
   /* 124E4C 8013449C 11800005 */      beqz $t4, .L801344B4
-  /* 124E50 801344A0 3C098013 */       lui $t1, %hi(D_ovl19_80134978)
+  /* 124E50 801344A0 3C098013 */       lui $t1, %hi(gMNVSInputDirection)
   /* 124E54 801344A4 240D000C */     addiu $t5, $zero, 0xc
-  /* 124E58 801344A8 3C018013 */       lui $at, %hi(D_ovl19_8013497C)
+  /* 124E58 801344A8 3C018013 */       lui $at, %hi(gMNVSChangeWait)
   /* 124E5C 801344AC 10000007 */         b .L801344CC
-  /* 124E60 801344B0 AC2D497C */        sw $t5, %lo(D_ovl19_8013497C)($at)
+  /* 124E60 801344B0 AC2D497C */        sw $t5, %lo(gMNVSChangeWait)($at)
   .L801344B4:
   /* 124E64 801344B4 01EEC023 */      subu $t8, $t7, $t6
   /* 124E68 801344B8 2401000E */     addiu $at, $zero, 0xe
   /* 124E6C 801344BC 0301001A */       div $zero, $t8, $at
   /* 124E70 801344C0 00004012 */      mflo $t0
-  /* 124E74 801344C4 3C018013 */       lui $at, %hi(D_ovl19_8013497C)
-  /* 124E78 801344C8 AC28497C */        sw $t0, %lo(D_ovl19_8013497C)($at)
+  /* 124E74 801344C4 3C018013 */       lui $at, %hi(gMNVSChangeWait)
+  /* 124E78 801344C8 AC28497C */        sw $t0, %lo(gMNVSChangeWait)($at)
   .L801344CC:
-  /* 124E7C 801344CC 8D294978 */        lw $t1, %lo(D_ovl19_80134978)($t1)
+  /* 124E7C 801344CC 8D294978 */        lw $t1, %lo(gMNVSInputDirection)($t1)
   /* 124E80 801344D0 24010004 */     addiu $at, $zero, 4
-  /* 124E84 801344D4 3C198013 */       lui $t9, %hi(D_ovl19_8013497C)
+  /* 124E84 801344D4 3C198013 */       lui $t9, %hi(gMNVSChangeWait)
   /* 124E88 801344D8 11210005 */       beq $t1, $at, .L801344F0
-  /* 124E8C 801344DC 00000000 */       nop 
-  /* 124E90 801344E0 8F39497C */        lw $t9, %lo(D_ovl19_8013497C)($t9)
-  /* 124E94 801344E4 3C018013 */       lui $at, %hi(D_ovl19_8013497C)
+  /* 124E8C 801344DC 00000000 */       nop
+  /* 124E90 801344E0 8F39497C */        lw $t9, %lo(gMNVSChangeWait)($t9)
+  /* 124E94 801344E4 3C018013 */       lui $at, %hi(gMNVSChangeWait)
   /* 124E98 801344E8 00195040 */       sll $t2, $t9, 1
-  /* 124E9C 801344EC AC2A497C */        sw $t2, %lo(D_ovl19_8013497C)($at)
+  /* 124E9C 801344EC AC2A497C */        sw $t2, %lo(gMNVSChangeWait)($at)
   .L801344F0:
-  /* 124EA0 801344F0 0C04CACE */       jal func_ovl19_80132B38
-  /* 124EA4 801344F4 00000000 */       nop 
+  /* 124EA0 801344F0 0C04CACE */       jal mnVSIsTime
+  /* 124EA4 801344F4 00000000 */       nop
   /* 124EA8 801344F8 10400015 */      beqz $v0, .L80134550
-  /* 124EAC 801344FC 3C048013 */       lui $a0, %hi(D_ovl19_8013495C)
-  /* 124EB0 80134500 3C038013 */       lui $v1, %hi(D_ovl19_80134950)
-  /* 124EB4 80134504 24634950 */     addiu $v1, $v1, %lo(D_ovl19_80134950)
-  /* 124EB8 80134508 8C620000 */        lw $v0, ($v1) # D_ovl19_80134950 + 0
+  /* 124EAC 801344FC 3C048013 */       lui $a0, %hi(gMNVSTimeStockValueGObj)
+  /* 124EB0 80134500 3C038013 */       lui $v1, %hi(gMNVSTime)
+  /* 124EB4 80134504 24634950 */     addiu $v1, $v1, %lo(gMNVSTime)
+  /* 124EB8 80134508 8C620000 */        lw $v0, ($v1) # gMNVSTime + 0
   /* 124EBC 8013450C 24010064 */     addiu $at, $zero, 0x64
   /* 124EC0 80134510 240B0001 */     addiu $t3, $zero, 1
   /* 124EC4 80134514 14410003 */       bne $v0, $at, .L80134524
   /* 124EC8 80134518 244C0001 */     addiu $t4, $v0, 1
   /* 124ECC 8013451C 10000002 */         b .L80134528
-  /* 124ED0 80134520 AC6B0000 */        sw $t3, ($v1) # D_ovl19_80134950 + 0
+  /* 124ED0 80134520 AC6B0000 */        sw $t3, ($v1) # gMNVSTime + 0
   .L80134524:
-  /* 124ED4 80134524 AC6C0000 */        sw $t4, ($v1) # D_ovl19_80134950 + 0
+  /* 124ED4 80134524 AC6C0000 */        sw $t4, ($v1) # gMNVSTime + 0
   .L80134528:
-  /* 124ED8 80134528 8C6D0000 */        lw $t5, ($v1) # D_ovl19_80134950 + 0
+  /* 124ED8 80134528 8C6D0000 */        lw $t5, ($v1) # gMNVSTime + 0
   /* 124EDC 8013452C 24010064 */     addiu $at, $zero, 0x64
-  /* 124EE0 80134530 3C0F8013 */       lui $t7, %hi(D_ovl19_8013497C)
+  /* 124EE0 80134530 3C0F8013 */       lui $t7, %hi(gMNVSChangeWait)
   /* 124EE4 80134534 15A10018 */       bne $t5, $at, .L80134598
-  /* 124EE8 80134538 00000000 */       nop 
-  /* 124EEC 8013453C 8DEF497C */        lw $t7, %lo(D_ovl19_8013497C)($t7)
-  /* 124EF0 80134540 3C018013 */       lui $at, %hi(D_ovl19_8013497C)
+  /* 124EE8 80134538 00000000 */       nop
+  /* 124EEC 8013453C 8DEF497C */        lw $t7, %lo(gMNVSChangeWait)($t7)
+  /* 124EF0 80134540 3C018013 */       lui $at, %hi(gMNVSChangeWait)
   /* 124EF4 80134544 25EE0008 */     addiu $t6, $t7, 8
   /* 124EF8 80134548 10000013 */         b .L80134598
-  /* 124EFC 8013454C AC2E497C */        sw $t6, %lo(D_ovl19_8013497C)($at)
+  /* 124EFC 8013454C AC2E497C */        sw $t6, %lo(gMNVSChangeWait)($at)
   .L80134550:
-  /* 124F00 80134550 3C038013 */       lui $v1, %hi(D_ovl19_80134954)
-  /* 124F04 80134554 24634954 */     addiu $v1, $v1, %lo(D_ovl19_80134954)
-  /* 124F08 80134558 8C620000 */        lw $v0, ($v1) # D_ovl19_80134954 + 0
+  /* 124F00 80134550 3C038013 */       lui $v1, %hi(gMNVSStock)
+  /* 124F04 80134554 24634954 */     addiu $v1, $v1, %lo(gMNVSStock)
+  /* 124F08 80134558 8C620000 */        lw $v0, ($v1) # gMNVSStock + 0
   /* 124F0C 8013455C 24010062 */     addiu $at, $zero, 0x62
-  /* 124F10 80134560 3C098013 */       lui $t1, %hi(D_ovl19_8013497C)
+  /* 124F10 80134560 3C098013 */       lui $t1, %hi(gMNVSChangeWait)
   /* 124F14 80134564 14410003 */       bne $v0, $at, .L80134574
   /* 124F18 80134568 24580001 */     addiu $t8, $v0, 1
   /* 124F1C 8013456C 10000002 */         b .L80134578
-  /* 124F20 80134570 AC600000 */        sw $zero, ($v1) # D_ovl19_80134954 + 0
+  /* 124F20 80134570 AC600000 */        sw $zero, ($v1) # gMNVSStock + 0
   .L80134574:
-  /* 124F24 80134574 AC780000 */        sw $t8, ($v1) # D_ovl19_80134954 + 0
+  /* 124F24 80134574 AC780000 */        sw $t8, ($v1) # gMNVSStock + 0
   .L80134578:
-  /* 124F28 80134578 8C680000 */        lw $t0, ($v1) # D_ovl19_80134954 + 0
+  /* 124F28 80134578 8C680000 */        lw $t0, ($v1) # gMNVSStock + 0
   /* 124F2C 8013457C 24010062 */     addiu $at, $zero, 0x62
   /* 124F30 80134580 15010005 */       bne $t0, $at, .L80134598
-  /* 124F34 80134584 00000000 */       nop 
-  /* 124F38 80134588 8D29497C */        lw $t1, %lo(D_ovl19_8013497C)($t1)
-  /* 124F3C 8013458C 3C018013 */       lui $at, %hi(D_ovl19_8013497C)
+  /* 124F34 80134584 00000000 */       nop
+  /* 124F38 80134588 8D29497C */        lw $t1, %lo(gMNVSChangeWait)($t1)
+  /* 124F3C 8013458C 3C018013 */       lui $at, %hi(gMNVSChangeWait)
   /* 124F40 80134590 25390008 */     addiu $t9, $t1, 8
-  /* 124F44 80134594 AC39497C */        sw $t9, %lo(D_ovl19_8013497C)($at)
+  /* 124F44 80134594 AC39497C */        sw $t9, %lo(gMNVSChangeWait)($at)
   .L80134598:
   /* 124F48 80134598 0C0026A1 */       jal omEjectGObj
-  /* 124F4C 8013459C 8C84495C */        lw $a0, %lo(D_ovl19_8013495C)($a0)
-  /* 124F50 801345A0 0C04CAE8 */       jal func_ovl19_80132BA0
-  /* 124F54 801345A4 00000000 */       nop 
+  /* 124F4C 8013459C 8C84495C */        lw $a0, %lo(gMNVSTimeStockValueGObj)($a0)
+  /* 124F50 801345A0 0C04CAE8 */       jal mnVSCreateTimeStockValue
+  /* 124F54 801345A4 00000000 */       nop
   /* 124F58 801345A8 240A0004 */     addiu $t2, $zero, 4
-  /* 124F5C 801345AC 3C018013 */       lui $at, %hi(D_ovl19_80134978)
-  /* 124F60 801345B0 AC2A4978 */        sw $t2, %lo(D_ovl19_80134978)($at)
+  /* 124F5C 801345AC 3C018013 */       lui $at, %hi(gMNVSInputDirection)
+  /* 124F60 801345B0 AC2A4978 */        sw $t2, %lo(gMNVSInputDirection)($at)
   .L801345B4:
   /* 124F64 801345B4 8FBF0014 */        lw $ra, 0x14($sp)
   .L801345B8:
   /* 124F68 801345B8 27BD0040 */     addiu $sp, $sp, 0x40
   /* 124F6C 801345BC 03E00008 */        jr $ra
-  /* 124F70 801345C0 00000000 */       nop 
+  /* 124F70 801345C0 00000000 */       nop
 
-glabel func_ovl19_801345C4
+glabel mnVSInit
   /* 124F74 801345C4 27BDFFB0 */     addiu $sp, $sp, -0x50
   /* 124F78 801345C8 3C0E001B */       lui $t6, %hi(D_NF_001AC870)
   /* 124F7C 801345CC 3C0F0000 */       lui $t7, %hi(D_NF_00000854)
@@ -3035,16 +3036,16 @@ glabel func_ovl19_801345C4
   /* 124FD0 80134620 248447B0 */     addiu $a0, $a0, %lo(D_ovl19_801347B0)
   /* 124FD4 80134624 30480001 */      andi $t0, $v0, 1
   /* 124FD8 80134628 1500000B */      bnez $t0, .L80134658
-  /* 124FDC 8013462C 00000000 */       nop 
+  /* 124FDC 8013462C 00000000 */       nop
   /* 124FE0 80134630 906905E3 */       lbu $t1, 0x5e3($v1) # gSaveData + 1507
   /* 124FE4 80134634 3C0A8004 */       lui $t2, %hi(gSPImemOkay)
   /* 124FE8 80134638 29210016 */      slti $at, $t1, 0x16
   /* 124FEC 8013463C 14200006 */      bnez $at, .L80134658
-  /* 124FF0 80134640 00000000 */       nop 
+  /* 124FF0 80134640 00000000 */       nop
   /* 124FF4 80134644 914A4D40 */       lbu $t2, %lo(gSPImemOkay)($t2)
   /* 124FF8 80134648 344B0001 */       ori $t3, $v0, 1
   /* 124FFC 8013464C 15400002 */      bnez $t2, .L80134658
-  /* 125000 80134650 00000000 */       nop 
+  /* 125000 80134650 00000000 */       nop
   /* 125004 80134654 A06B05E2 */        sb $t3, 0x5e2($v1) # gSaveData + 1506
   .L80134658:
   /* 125008 80134658 0C0337BB */       jal rdManagerGetAllocSize
@@ -3059,8 +3060,8 @@ glabel func_ovl19_801345C4
   /* 12502C 8013467C 24050002 */     addiu $a1, $zero, 2
   /* 125030 80134680 0C033781 */       jal rdManagerLoadFiles
   /* 125034 80134684 00403825 */        or $a3, $v0, $zero
-  /* 125038 80134688 3C058013 */       lui $a1, %hi(func_ovl19_80133B8C)
-  /* 12503C 8013468C 24A53B8C */     addiu $a1, $a1, %lo(func_ovl19_80133B8C)
+  /* 125038 80134688 3C058013 */       lui $a1, %hi(mnVSMain)
+  /* 12503C 8013468C 24A53B8C */     addiu $a1, $a1, %lo(mnVSMain)
   /* 125040 80134690 00002025 */        or $a0, $zero, $zero
   /* 125044 80134694 00003025 */        or $a2, $zero, $zero
   /* 125048 80134698 0C00265A */       jal omMakeGObjSPAfter
@@ -3071,34 +3072,34 @@ glabel func_ovl19_801345C4
   /* 12505C 801346AC 00003825 */        or $a3, $zero, $zero
   /* 125060 801346B0 0C002E7F */       jal func_8000B9FC
   /* 125064 801346B4 AFA00010 */        sw $zero, 0x10($sp)
-  /* 125068 801346B8 0C04CDAB */       jal func_ovl19_801336AC
-  /* 12506C 801346BC 00000000 */       nop 
-  /* 125070 801346C0 0C04CD83 */       jal func_ovl19_8013360C
-  /* 125074 801346C4 00000000 */       nop 
-  /* 125078 801346C8 0C04CD5B */       jal func_ovl19_8013356C
-  /* 12507C 801346CC 00000000 */       nop 
-  /* 125080 801346D0 0C04CD33 */       jal func_ovl19_801334CC
-  /* 125084 801346D4 00000000 */       nop 
-  /* 125088 801346D8 0C04CD0B */       jal func_ovl19_8013342C
-  /* 12508C 801346DC 00000000 */       nop 
-  /* 125090 801346E0 0C04CCA6 */       jal func_ovl19_80133298
-  /* 125094 801346E4 00000000 */       nop 
-  /* 125098 801346E8 0C04CC53 */       jal func_ovl19_8013314C
-  /* 12509C 801346EC 00000000 */       nop 
-  /* 1250A0 801346F0 0C04C855 */       jal func_ovl19_80132154
-  /* 1250A4 801346F4 00000000 */       nop 
-  /* 1250A8 801346F8 0C04CA93 */       jal func_ovl19_80132A4C
-  /* 1250AC 801346FC 00000000 */       nop 
-  /* 1250B0 80134700 0C04C88E */       jal func_ovl19_80132238
-  /* 1250B4 80134704 00000000 */       nop 
-  /* 1250B8 80134708 0C04CB41 */       jal func_ovl19_80132D04
-  /* 1250BC 8013470C 00000000 */       nop 
-  /* 1250C0 80134710 0C04CAE8 */       jal func_ovl19_80132BA0
-  /* 1250C4 80134714 00000000 */       nop 
-  /* 1250C8 80134718 0C04CBAF */       jal func_ovl19_80132EBC
-  /* 1250CC 8013471C 00000000 */       nop 
-  /* 1250D0 80134720 0C04CBF6 */       jal func_ovl19_80132FD8
-  /* 1250D4 80134724 00000000 */       nop 
+  /* 125068 801346B8 0C04CDAB */       jal mnVSInitVars
+  /* 12506C 801346BC 00000000 */       nop
+  /* 125070 801346C0 0C04CD83 */       jal mnVSCreateBackgroundViewport
+  /* 125074 801346C4 00000000 */       nop
+  /* 125078 801346C8 0C04CD5B */       jal mnVSCreateMenuNameViewport
+  /* 12507C 801346CC 00000000 */       nop
+  /* 125080 801346D0 0C04CD33 */       jal mnVSCreateButtonViewport
+  /* 125084 801346D4 00000000 */       nop
+  /* 125088 801346D8 0C04CD0B */       jal mnVSCreateButtonValuesViewport
+  /* 12508C 801346DC 00000000 */       nop
+  /* 125090 801346E0 0C04CCA6 */       jal mnVSCreateBackground
+  /* 125094 801346E4 00000000 */       nop
+  /* 125098 801346E8 0C04CC53 */       jal mnVSCreateMenuName
+  /* 12509C 801346EC 00000000 */       nop
+  /* 1250A0 801346F0 0C04C855 */       jal mnVSCreateVSStartButton
+  /* 1250A4 801346F4 00000000 */       nop
+  /* 1250A8 801346F8 0C04CA93 */       jal mnVSCreateRuleButton
+  /* 1250AC 801346FC 00000000 */       nop
+  /* 1250B0 80134700 0C04C88E */       jal mnVSCreateRuleValue
+  /* 1250B4 80134704 00000000 */       nop
+  /* 1250B8 80134708 0C04CB41 */       jal mnVSCreateTimeStockButton
+  /* 1250BC 8013470C 00000000 */       nop
+  /* 1250C0 80134710 0C04CAE8 */       jal mnVSCreateTimeStockValue
+  /* 1250C4 80134714 00000000 */       nop
+  /* 1250C8 80134718 0C04CBAF */       jal mnVSCreateVSOptionsButton
+  /* 1250CC 8013471C 00000000 */       nop
+  /* 1250D0 80134720 0C04CBF6 */       jal mnVSCreateUnusedGObj
+  /* 1250D4 80134724 00000000 */       nop
   /* 1250D8 80134728 3C0C800A */       lui $t4, %hi((gSceneData + 0x1))
   /* 1250DC 8013472C 918C4AD1 */       lbu $t4, %lo((gSceneData + 0x1))($t4)
   /* 1250E0 80134730 24010010 */     addiu $at, $zero, 0x10
@@ -3111,9 +3112,9 @@ glabel func_ovl19_801345C4
   .L8013474C:
   /* 1250FC 8013474C 27BD0050 */     addiu $sp, $sp, 0x50
   /* 125100 80134750 03E00008 */        jr $ra
-  /* 125104 80134754 00000000 */       nop 
+  /* 125104 80134754 00000000 */       nop
 
-glabel menu_vs_entry
+glabel mnVSStartScene
   /* 125108 80134758 3C0E800A */       lui $t6, %hi(D_NF_800A5240)
   /* 12510C 8013475C 27BDFFE8 */     addiu $sp, $sp, -0x18
   /* 125110 80134760 3C048013 */       lui $a0, %hi(D_ovl19_80134880)
@@ -3135,10 +3136,10 @@ glabel menu_vs_entry
   /* 125150 801347A0 8FBF0014 */        lw $ra, 0x14($sp)
   /* 125154 801347A4 27BD0018 */     addiu $sp, $sp, 0x18
   /* 125158 801347A8 03E00008 */        jr $ra
-  /* 12515C 801347AC 00000000 */       nop 
+  /* 12515C 801347AC 00000000 */       nop
 #
 #glabel D_ovl19_801347B0   # Routine parsed as data
-#  /* 125160 801347B0 00000000 */       nop 
+#  /* 125160 801347B0 00000000 */       nop
 #  /* 125164 801347B4 00000006 */      srlv $zero, $zero, $zero
 #glabel D_ovl19_801347B8   # Routine parsed as data
 #  /* 125168 801347B8 20202000 */      addi $zero, $at, 0x2000

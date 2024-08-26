@@ -13,9 +13,13 @@ To set up and build the rom, see below
 
 `bash ./installDependencies.sh`
 
+This script will also tell you where to place the ROM in case it's not found in the right location (`<repo root>/baserom.us.z64`). Having the ROM there is required to be able to run `make extract` which extracts assembly and assets from the ROM.
+
 ## Extract files, and run the initial build
 
 `make init` or `make clean && make extract && make`
+
+Extracting is required every time the splat yaml (`smashbrothers.yaml`) file is modified or anything inside the `symbols` folder (which is used by splat). So it's recommended to run `make init` every time you pull changes.
 
 ## Build the ROM
 

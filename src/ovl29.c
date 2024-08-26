@@ -680,7 +680,7 @@ void func_ovl29_80131F6C() {}
 void mnBonusSelectCharWithToken(s32 port_id, s32 select_button)
 {
 	s32 held_port_id = gMnBonusPanel.held_port_id,
-		costume_id = ftParamGetCostumeRoyalID(gMnBonusPanel.char_id, select_button);
+		costume_id = ftParamGetCostumeCommonID(gMnBonusPanel.char_id, select_button);
 
 	ftParamInitModelTexturePartsAll(gMnBonusPanel.player, costume_id, 0);
 
@@ -1427,7 +1427,7 @@ void func_ovl29_80133F54() {}
 // 80133F5C
 s32 mnBonusGetAvailableCostume(s32 ft_kind, s32 select_button)
 {
-	ftParamGetCostumeRoyalID(ft_kind, ftParamGetCostumeRoyalID(ft_kind, select_button));
+	ftParamGetCostumeCommonID(ft_kind, ftParamGetCostumeCommonID(ft_kind, select_button));
 }
 
 // 80133F88
@@ -2062,7 +2062,7 @@ void mnBonusSyncCursorDisplay(GObj* cursor_gobj, s32 port_id)
 // 801355E0
 void mnBonusSyncShadeAndCostume(s32 arg0, s32 select_button)
 {
-	s32 costume_id = ftParamGetCostumeRoyalID(gMnBonusPanel.char_id, select_button);
+	s32 costume_id = ftParamGetCostumeCommonID(gMnBonusPanel.char_id, select_button);
 
 	ftParamInitModelTexturePartsAll(gMnBonusPanel.player, costume_id, 0);
 

@@ -206,7 +206,7 @@ typedef enum scKind
 	nSCKindDebugChrSel,       	  // Debug character select
 	nSCKindDebugResScreen,    	  // Debug results screen
 	nSCKindDebugPadTest,      	  // Debug joystick test
-	nSCKindMainMenu,          	  // Main Menu
+	nSCKindModeSelect,            // Main Menu
 	nSCKind1PMode,            	  // 1P mode menu
 	nSCKindVSMode,        		  // VS mode
 	nSCKindVSOptions,         	  // VS mode options

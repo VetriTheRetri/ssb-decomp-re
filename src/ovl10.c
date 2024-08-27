@@ -446,7 +446,7 @@ void mnTitleGoToNextDemo()
 			auPlaySong(0, 0x22);
 
 			break;
-		case nSCKindMainMenu:
+		case nSCKindModeSelect:
 		case nSCKindDemo:
 			gSceneData.scene_current = nSCKindN64;
 			break;

@@ -702,7 +702,7 @@ void mnDataProcRun(GObj *gobj)
         if (scSubsysControllerGetPlayerTapButtons(B_BUTTON) != FALSE)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = nSCKindMainMenu;
+            gSceneData.scene_current = nSCKindModeSelect;
 
             leoInitUnit_atten();
 

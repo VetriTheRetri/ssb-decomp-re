@@ -110,7 +110,7 @@ s32 sMNVSModeMaxFramesElapsed;
 rdFileNode sMNVSModeStatusBuf[24];
 
 // 0x80134A48
-uintptr_t sMNVSModeFiles[2];
+void *sMNVSModeFiles[2];
 
 // // // // // // // // // // // //
 //                               //
@@ -132,42 +132,6 @@ Gfx dMNVSModeDisplayList[/* */] =
     gsSPEndDisplayList()
 };
 
-// 0x801347F8
-intptr_t dMNVSModeNumberOffsets[10] = {
-    &lMNCommonDigit0Sprite,
-    &lMNCommonDigit1Sprite,
-    &lMNCommonDigit2Sprite,
-    &lMNCommonDigit3Sprite,
-    &lMNCommonDigit4Sprite,
-    &lMNCommonDigit5Sprite,
-    &lMNCommonDigit6Sprite,
-    &lMNCommonDigit7Sprite,
-    &lMNCommonDigit8Sprite,
-    &lMNCommonDigit9Sprite
-};
-
-// 0x80134820
-f32 dMNVSModeUnusedFloats[10] = {
-    10.0F, 6.0F, 9.0F, 9.0F,
-    10.0F, 9.0F, 9.0F, 10.0F,
-    9.0F, 10.0F
-};
-
-// 0x80134848
-syColorRGBPair dMNVSModeButtonColorsSelected = { { 0x00, 0x00, 0x00 }, { 0xFF, 0xFF, 0xFF } };
-// 0x80134850
-syColorRGBPair dMNVSModeButtonColorsHighlighted = { { 0x82, 0x00, 0x28 }, { 0xFF, 0x00, 0x28 } };
-// 0x80134858
-syColorRGBPair dMNVSModeButtonColorsDefault = { { 0x00, 0x00, 0x00 }, { 0x82, 0x82, 0xAA } };
-
-// 0x80134860
-syColorRGB dMNVSModeRuleValueColor = { 0xFF, 0xFF, 0xFF };
-// 0x80134864
-u32 dMNVSModeTimeStockValueColor[3] = { 0x000000FF, 0x000000FF, 0x000000FF };
-
-// 0x80134870
-GObj** dMNVSModeButtons[4] = { &sMNVSModeButtonGObjVSStart, &sMNVSModeButtonGObjRule, &sMNVSModeButtonGObjTimeStock, &sMNVSModeButtonGObjVSOptions };
-
 // 0x80131B00
 void mnVSModeProcLights(Gfx **display_list)
 {
@@ -177,29 +141,34 @@ void mnVSModeProcLights(Gfx **display_list)
 // 0x80131B24
 s32 mnVSModePow(s32 num, s32 pow)
 {
-    if (pow == 0) return 1;
+    if (pow == 0) 
+    {
+        return 1;
+    }
     else
     {
         s32 result = num, i = pow;
 
         if (pow >= 2)
         {
-            do result *= num;
+            do
+            {
+                result *= num;
+            }
             while (--i != 1);
         }
-
         return result;
     }
 }
 
 // 0x80131BC4
-void mnVSModeSetTextureColors(SObj* sobj, u32 color[])
+void mnVSModeSetTextureColors(SObj* sobj, u32 *colors)
 {
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
-    sobj->sprite.red = color[0];
-    sobj->sprite.green = color[1];
-    sobj->sprite.blue = color[2];
+    sobj->sprite.red = colors[0];
+    sobj->sprite.green = colors[1];
+    sobj->sprite.blue = colors[2];
 }
 
 // 0x80131BF4
@@ -216,10 +185,33 @@ s32 mnVSModeGetNumberOfDigits(s32 num, s32 maxDigits)
 }
 
 // 0x80131CA0
-void mnVSModeCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors[], s32 maxDigits, sb32 pad)
+void mnVSModeMakeNumber(GObj* number_gobj, s32 num, f32 x, f32 y, u32 *colors, s32 maxDigits, sb32 pad)
 {
-    intptr_t number_offsets[10] = dMNVSModeNumberOffsets;
-    f32 unused_floats[10] = dMNVSModeUnusedFloats;
+    // 0x801347F8
+    intptr_t number_offsets[/* */] =
+    {
+        &lMNCommonDigit0Sprite,
+        &lMNCommonDigit1Sprite,
+        &lMNCommonDigit2Sprite,
+        &lMNCommonDigit3Sprite,
+        &lMNCommonDigit4Sprite,
+        &lMNCommonDigit5Sprite,
+        &lMNCommonDigit6Sprite,
+        &lMNCommonDigit7Sprite,
+        &lMNCommonDigit8Sprite,
+        &lMNCommonDigit9Sprite
+    };
+
+    // 0x80134820
+    Vec2f floats[/* */] =
+    {
+        { 10.0F,  6.0F }, 
+        {  9.0F,  9.0F },
+        { 10.0F,  9.0F }, 
+        {  9.0F, 10.0F },
+        {  9.0F, 10.0F }
+    };
+
     SObj* number_sobj;
     f32 left_x = x;
     s32 place;
@@ -228,7 +220,7 @@ void mnVSModeCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors[]
 
     if (num < 0) num = 0;
 
-    number_sobj = gcAppendSObjWithSprite(number_gobj, GetAddressFromOffset(sMNVSModeFiles[0], number_offsets[num % 10]));
+    number_sobj = gcAppendSObjWithSprite(number_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], number_offsets[num % 10]));
     mnVSModeSetTextureColors(number_sobj, colors);
     left_x -= 11.0F;
     number_sobj->pos.x = left_x;
@@ -243,7 +235,7 @@ void mnVSModeCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors[]
     {
         digit = (mnVSModePow(10, place) != 0) ? num / mnVSModePow(10, place) : 0;
 
-        number_sobj = gcAppendSObjWithSprite(number_gobj, GetAddressFromOffset(sMNVSModeFiles[0], number_offsets[digit % 10]));
+        number_sobj = gcAppendSObjWithSprite(number_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], number_offsets[digit % 10]));
         mnVSModeSetTextureColors(number_sobj, colors);
         left_x -= 11.0F;
         number_sobj->pos.x = left_x;
@@ -254,9 +246,15 @@ void mnVSModeCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors[]
 // 0x80131F4C
 void mnVSModeUpdateButton(GObj* button_gobj, s32 button_status)
 {
-    syColorRGBPair selected_colors = dMNVSModeButtonColorsSelected;
-    syColorRGBPair highlighted_colors = dMNVSModeButtonColorsHighlighted;
-    syColorRGBPair default_colors = dMNVSModeButtonColorsDefault;
+    // 0x80134848
+    syColorRGBPair selcolors = { { 0x00, 0x00, 0x00 }, { 0xFF, 0xFF, 0xFF } };
+
+    // 0x80134850
+    syColorRGBPair hicolors = { { 0x82, 0x00, 0x28 }, { 0xFF, 0x00, 0x28 } };
+
+    // 0x80134858
+    syColorRGBPair notcolors = { { 0x00, 0x00, 0x00 }, { 0x82, 0x82, 0xAA } };
+
     syColorRGBPair *colors;
     s32 i;
     SObj* button_sobj;
@@ -264,13 +262,13 @@ void mnVSModeUpdateButton(GObj* button_gobj, s32 button_status)
     switch (button_status)
     {
         case nMNOptionTabStatusHighlight:
-            colors = &highlighted_colors;
+            colors = &hicolors;
             break;
         case nMNOptionTabStatusNot:
-            colors = &default_colors;
+            colors = &notcolors;
             break;
         case nMNOptionTabStatusSelected:
-            colors = &selected_colors;
+            colors = &selcolors;
             break;
     }
 
@@ -290,20 +288,20 @@ void mnVSModeUpdateButton(GObj* button_gobj, s32 button_status)
 }
 
 // 0x80132024
-void mnVSModeCreateButton(GObj* button_gobj, f32 x, f32 y, s32 arg3)
+void mnVSModeMakeButton(GObj* button_gobj, f32 x, f32 y, s32 arg3)
 {
     SObj* button_sobj;
 
-    button_sobj = gcAppendSObjWithSprite(button_gobj, GetAddressFromOffset(sMNVSModeFiles[0], &lMNCommonOptionTabLeftSprite));
+    button_sobj = gcAppendSObjWithSprite(button_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonOptionTabLeftSprite));
     button_sobj->sprite.attr &= ~SP_FASTCOPY;
     button_sobj->sprite.attr |= SP_TRANSPARENT;
     button_sobj->pos.x = x;
     button_sobj->pos.y = y;
 
-    button_sobj = gcAppendSObjWithSprite(button_gobj, GetAddressFromOffset(sMNVSModeFiles[0], &lMNCommonOptionTabMiddleSprite));
+    button_sobj = gcAppendSObjWithSprite(button_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonOptionTabMiddleSprite));
     button_sobj->sprite.attr &= ~SP_FASTCOPY;
     button_sobj->sprite.attr |= SP_TRANSPARENT;
-    button_sobj->pos.x = x + 16.0f;
+    button_sobj->pos.x = x + 16.0F;
     button_sobj->pos.y = y;
     button_sobj->cmt = 0;
     button_sobj->cms = 0;
@@ -312,102 +310,104 @@ void mnVSModeCreateButton(GObj* button_gobj, f32 x, f32 y, s32 arg3)
     button_sobj->lrs = arg3 * 8;
     button_sobj->lrt = 0x1D;
 
-    button_sobj = gcAppendSObjWithSprite(button_gobj, GetAddressFromOffset(sMNVSModeFiles[0], &lMNCommonOptionTabRightSprite));
+    button_sobj = gcAppendSObjWithSprite(button_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonOptionTabRightSprite));
     button_sobj->sprite.attr &= ~SP_FASTCOPY;
     button_sobj->sprite.attr |= SP_TRANSPARENT;
-    button_sobj->pos.x = x + 16.0f + (arg3 * 8);
+    button_sobj->pos.x = x + 16.0F + (arg3 * 8);
     button_sobj->pos.y = y;
 }
 
 // 0x80132154
-void mnVSModeCreateVSStartButton()
+void mnVSModeMakeVSStartButton()
 {
     GObj* button_gobj;
     SObj* button_sobj;
 
-    sMNVSModeButtonGObjVSStart = button_gobj = gcMakeGObjSPAfter(0, 0, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNVSModeButtonGObjVSStart = button_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(button_gobj, func_ovl0_800CCF00, 2, GOBJ_LINKORDER_DEFAULT, -1);
-    mnVSModeCreateButton(button_gobj, 120.0F, 31.0F, 17);
+    mnVSModeMakeButton(button_gobj, 120.0F, 31.0F, 17);
 
     mnVSModeUpdateButton(button_gobj, (sMNVSModeCursorIndex == 0) ? nMNOptionTabStatusHighlight : nMNOptionTabStatusNot);
 
-    button_sobj = gcAppendSObjWithSprite(button_gobj, GetAddressFromOffset(sMNVSModeFiles[1], &lMNVSModeVSStartSprite));
+    button_sobj = gcAppendSObjWithSprite(button_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeVSStartSprite));
     button_sobj->sprite.attr &= ~SP_FASTCOPY;
     button_sobj->sprite.attr |= SP_TRANSPARENT;
-    button_sobj->sprite.red = 0;
-    button_sobj->sprite.green = 0;
-    button_sobj->sprite.blue = 0;
-    button_sobj->pos.x = 153.0f;
-    button_sobj->pos.y = 36.0f;
+    button_sobj->sprite.red = 0x00;
+    button_sobj->sprite.green = 0x00;
+    button_sobj->sprite.blue = 0x00;
+    button_sobj->pos.x = 153.0F;
+    button_sobj->pos.y = 36.0F;
 }
 
 // 0x80132238
-void mnVSModeCreateRuleValue()
+void mnVSModeMakeRuleValue()
 {
     GObj* rule_value_gobj;
     SObj* rule_value_sobj;
-    syColorRGB color = dMNVSModeRuleValueColor;
 
-    sMNVSModeRuleValueGObj = rule_value_gobj = gcMakeGObjSPAfter(0, 0, 5, GOBJ_LINKORDER_DEFAULT);
+    // 0x80134860
+    syColorRGB color = { 0xFF, 0xFF, 0xFF };
+
+    sMNVSModeRuleValueGObj = rule_value_gobj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjDisplay(rule_value_gobj, func_ovl0_800CCF00, 3, GOBJ_LINKORDER_DEFAULT, -1);
 
     switch (sMNVSModeRule)
     {
         case nMNVSModeRuleStock:
-            rule_value_sobj = gcAppendSObjWithSprite(rule_value_gobj, GetAddressFromOffset(sMNVSModeFiles[1], &lMNVSModeSmallStockSprite));
+            rule_value_sobj = gcAppendSObjWithSprite(rule_value_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeSmallStockSprite));
             rule_value_sobj->sprite.attr &= ~SP_FASTCOPY;
             rule_value_sobj->sprite.attr |= SP_TRANSPARENT;
-            rule_value_sobj->pos.x = 183.0f;
-            rule_value_sobj->pos.y = 78.0f;
+            rule_value_sobj->pos.x = 183.0F;
+            rule_value_sobj->pos.y = 78.0F;
             rule_value_sobj->sprite.red = color.r;
             rule_value_sobj->sprite.green = color.g;
             rule_value_sobj->sprite.blue = color.b;
             return;
         case nMNVSModeRuleTime:
-            rule_value_sobj = gcAppendSObjWithSprite(rule_value_gobj, GetAddressFromOffset(sMNVSModeFiles[1], &lMNVSModeSmallTimeSprite));
+            rule_value_sobj = gcAppendSObjWithSprite(rule_value_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeSmallTimeSprite));
             rule_value_sobj->sprite.attr &= ~SP_FASTCOPY;
             rule_value_sobj->sprite.attr |= SP_TRANSPARENT;
-            rule_value_sobj->pos.x = 187.0f;
-            rule_value_sobj->pos.y = 78.0f;
+            rule_value_sobj->pos.x = 187.0F;
+            rule_value_sobj->pos.y = 78.0F;
             rule_value_sobj->sprite.red = color.r;
             rule_value_sobj->sprite.green = color.g;
             rule_value_sobj->sprite.blue = color.b;
             return;
         case nMNVSModeRuleStockTeam:
-            rule_value_sobj = gcAppendSObjWithSprite(rule_value_gobj, GetAddressFromOffset(sMNVSModeFiles[1], &lMNVSModeSmallStockSprite));
+            rule_value_sobj = gcAppendSObjWithSprite(rule_value_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeSmallStockSprite));
             rule_value_sobj->sprite.attr &= ~SP_FASTCOPY;
             rule_value_sobj->sprite.attr |= SP_TRANSPARENT;
-            rule_value_sobj->pos.x = 165.0f;
-            rule_value_sobj->pos.y = 78.0f;
+            rule_value_sobj->pos.x = 165.0F;
+            rule_value_sobj->pos.y = 78.0F;
             rule_value_sobj->sprite.red = color.r;
             rule_value_sobj->sprite.green = color.g;
             rule_value_sobj->sprite.blue = color.b;
 
-            rule_value_sobj = gcAppendSObjWithSprite(rule_value_gobj, GetAddressFromOffset(sMNVSModeFiles[1], &lMNVSModeTeamSprite));
+            rule_value_sobj = gcAppendSObjWithSprite(rule_value_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeTeamSprite));
             rule_value_sobj->sprite.attr &= ~SP_FASTCOPY;
             rule_value_sobj->sprite.attr |= SP_TRANSPARENT;
-            rule_value_sobj->pos.x = 212.0f;
-            rule_value_sobj->pos.y = 78.0f;
+            rule_value_sobj->pos.x = 212.0F;
+            rule_value_sobj->pos.y = 78.0F;
             rule_value_sobj->sprite.red = color.r;
             rule_value_sobj->sprite.green = color.g;
             rule_value_sobj->sprite.blue = color.b;
             return;
         case nMNVSModeRuleTimeTeam:
-            rule_value_sobj = gcAppendSObjWithSprite(rule_value_gobj, GetAddressFromOffset(sMNVSModeFiles[1], &lMNVSModeSmallTimeSprite));
+            rule_value_sobj = gcAppendSObjWithSprite(rule_value_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeSmallTimeSprite));
             rule_value_sobj->sprite.attr &= ~SP_FASTCOPY;
             rule_value_sobj->sprite.attr |= SP_TRANSPARENT;
-            rule_value_sobj->pos.x = 168.0f;
-            rule_value_sobj->pos.y = 78.0f;
+            rule_value_sobj->pos.x = 168.0F;
+            rule_value_sobj->pos.y = 78.0F;
             rule_value_sobj->sprite.red = color.r;
             rule_value_sobj->sprite.green = color.g;
             rule_value_sobj->sprite.blue = color.b;
 
-            rule_value_sobj = gcAppendSObjWithSprite(rule_value_gobj, GetAddressFromOffset(sMNVSModeFiles[1], &lMNVSModeTeamSprite));
+            rule_value_sobj = gcAppendSObjWithSprite(rule_value_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeTeamSprite));
             rule_value_sobj->sprite.attr &= ~SP_FASTCOPY;
             rule_value_sobj->sprite.attr |= SP_TRANSPARENT;
-            rule_value_sobj->pos.x = 212.0f;
-            rule_value_sobj->pos.y = 78.0f;
+            rule_value_sobj->pos.x = 212.0F;
+            rule_value_sobj->pos.y = 78.0F;
             rule_value_sobj->sprite.red = color.r;
             rule_value_sobj->sprite.green = color.g;
             rule_value_sobj->sprite.blue = color.b;
@@ -429,7 +429,6 @@ SObj* mnVSModeGetArrowSObj(GObj* arrow_gobj, s32 direction)
         {
             return first_arrow_sobj;
         }
-
         next_arrow_sobj = first_arrow_sobj->next;
 
         if ((next_arrow_sobj != NULL) && (direction == next_arrow_sobj->user_data.s))
@@ -437,16 +436,15 @@ SObj* mnVSModeGetArrowSObj(GObj* arrow_gobj, s32 direction)
             return next_arrow_sobj;
         }
     }
-
     return NULL;
 }
 
 // 0x80132570
-void mnVSModeCreateLeftArrow(GObj* arrow_gobj, f32 x, f32 y)
+void mnVSModeMakeLeftArrow(GObj* arrow_gobj, f32 x, f32 y)
 {
     SObj* arrow_sobj;
 
-    arrow_sobj = gcAppendSObjWithSprite(arrow_gobj, GetAddressFromOffset(sMNVSModeFiles[0], &lMNCommonLeftArrowSprite));
+    arrow_sobj = gcAppendSObjWithSprite(arrow_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonLeftArrowSprite));
     arrow_sobj->user_data.s = 0;
     arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
     arrow_sobj->sprite.attr |= SP_TRANSPARENT;
@@ -454,15 +452,15 @@ void mnVSModeCreateLeftArrow(GObj* arrow_gobj, f32 x, f32 y)
     arrow_sobj->pos.y = y;
     arrow_sobj->sprite.red = 0xFF;
     arrow_sobj->sprite.green = 0xAE;
-    arrow_sobj->sprite.blue = 0;
+    arrow_sobj->sprite.blue = 0x00;
 }
 
 // 0x801325E4
-void mnVSModeCreateRightArrow(GObj* arrow_gobj, f32 x, f32 y)
+void mnVSModeMakeRightArrow(GObj* arrow_gobj, f32 x, f32 y)
 {
     SObj* arrow_sobj;
 
-    arrow_sobj = gcAppendSObjWithSprite(arrow_gobj, GetAddressFromOffset(sMNVSModeFiles[0], &lMNCommonRightArrowSprite));
+    arrow_sobj = gcAppendSObjWithSprite(arrow_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonRightArrowSprite));
     arrow_sobj->user_data.s = 1;
     arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
     arrow_sobj->sprite.attr |= SP_TRANSPARENT;
@@ -470,7 +468,7 @@ void mnVSModeCreateRightArrow(GObj* arrow_gobj, f32 x, f32 y)
     arrow_sobj->pos.y = y;
     arrow_sobj->sprite.red = 0xFF;
     arrow_sobj->sprite.green = 0xAE;
-    arrow_sobj->sprite.blue = 0;
+    arrow_sobj->sprite.blue = 0x00;
 }
 
 // 0x8013265C
@@ -506,7 +504,7 @@ void mnVSModeAnimateRuleArrows(GObj* rule_arrows_gobj)
             }
             else if (mnVSModeGetArrowSObj(rule_arrows_gobj, 0) == NULL)
             {
-                mnVSModeCreateLeftArrow(rule_arrows_gobj, 165.0F, 70.0F);
+                mnVSModeMakeLeftArrow(rule_arrows_gobj, 165.0F, 70.0F);
             }
 
             if (sMNVSModeRule == nMNVSModeRuleStockTeam)
@@ -520,7 +518,7 @@ void mnVSModeAnimateRuleArrows(GObj* rule_arrows_gobj)
             }
             else if (mnVSModeGetArrowSObj(rule_arrows_gobj, 1) == NULL)
             {
-                mnVSModeCreateRightArrow(rule_arrows_gobj, 250.0F, 70.0F);
+                mnVSModeMakeRightArrow(rule_arrows_gobj, 250.0F, 70.0F);
             }
         }
         else rule_arrows_gobj->flags = GOBJ_FLAG_NORENDER;
@@ -530,7 +528,7 @@ void mnVSModeAnimateRuleArrows(GObj* rule_arrows_gobj)
 }
 
 // 0X80132818
-void mnVSModeCreateRuleArrows()
+void mnVSModeMakeRuleArrows()
 {
     GObj* rule_arrows_gobj;
 
@@ -540,8 +538,7 @@ void mnVSModeCreateRuleArrows()
 
         sMNVSModeRuleArrowsGObj = NULL;
     }
-
-    sMNVSModeRuleArrowsGObj = rule_arrows_gobj = gcMakeGObjSPAfter(0, 0, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNVSModeRuleArrowsGObj = rule_arrows_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjDisplay(rule_arrows_gobj, func_ovl0_800CCF00, 2, GOBJ_LINKORDER_DEFAULT, -1);
     gcAddGObjProcess(rule_arrows_gobj, mnVSModeAnimateRuleArrows, 0, 1);
@@ -574,7 +571,7 @@ void mnVSModeAnimateTimeStockArrows(GObj* time_stock_arrows_gobj)
 }
 
 // 0x80132964
-void mnVSModeCreateTimeStockArrows()
+void mnVSModeMakeTimeStockArrows()
 {
     GObj* time_stock_arrows_gobj;
 
@@ -585,44 +582,44 @@ void mnVSModeCreateTimeStockArrows()
         sMNVSModeTimeStockArrowsGObj = NULL;
     }
 
-    sMNVSModeTimeStockArrowsGObj = time_stock_arrows_gobj = gcMakeGObjSPAfter(0, 0, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNVSModeTimeStockArrowsGObj = time_stock_arrows_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(time_stock_arrows_gobj, func_ovl0_800CCF00, 2, GOBJ_LINKORDER_DEFAULT, -1);
-    gcAddGObjProcess(time_stock_arrows_gobj, mnVSModeAnimateTimeStockArrows, 0, 1);
+    gcAddGObjProcess(time_stock_arrows_gobj, mnVSModeAnimateTimeStockArrows, nOMObjProcessKindThread, 1);
 
     if (mnVSModeIsTime() != FALSE)
     {
-        mnVSModeCreateLeftArrow(time_stock_arrows_gobj, 155.0F, 109.0F);
-        mnVSModeCreateRightArrow(time_stock_arrows_gobj, 230.0F, 109.0F);
+        mnVSModeMakeLeftArrow(time_stock_arrows_gobj, 155.0F, 109.0F);
+        mnVSModeMakeRightArrow(time_stock_arrows_gobj, 230.0F, 109.0F);
     }
     else
     {
-        mnVSModeCreateLeftArrow(time_stock_arrows_gobj, 165.0F, 109.0F);
-        mnVSModeCreateRightArrow(time_stock_arrows_gobj, 230.0F, 109.0F);
+        mnVSModeMakeLeftArrow(time_stock_arrows_gobj, 165.0F, 109.0F);
+        mnVSModeMakeRightArrow(time_stock_arrows_gobj, 230.0F, 109.0F);
     }
 }
 
 // 0x80132A4C
-void mnVSModeCreateRuleButton()
+void mnVSModeMakeRuleButton()
 {
     GObj* rule_button_gobj;
     SObj* button_sobj;
 
-    sMNVSModeButtonGObjRule = rule_button_gobj = gcMakeGObjSPAfter(0, 0, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNVSModeButtonGObjRule = rule_button_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(rule_button_gobj, func_ovl0_800CCF00, 2, GOBJ_LINKORDER_DEFAULT, -1);
-    mnVSModeCreateButton(rule_button_gobj, 97.0F, 70.0F, 17);
+    mnVSModeMakeButton(rule_button_gobj, 97.0F, 70.0F, 17);
 
     mnVSModeUpdateButton(rule_button_gobj, (sMNVSModeCursorIndex == nMNVSModeOptionRule) ? nMNOptionTabStatusHighlight : nMNOptionTabStatusNot);
 
-    button_sobj = gcAppendSObjWithSprite(rule_button_gobj, GetAddressFromOffset(sMNVSModeFiles[1], &lMNVSModeRuleSprite));
+    button_sobj = gcAppendSObjWithSprite(rule_button_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeRuleSprite));
     button_sobj->sprite.attr &= ~SP_FASTCOPY;
     button_sobj->sprite.attr |= SP_TRANSPARENT;
-    button_sobj->sprite.red = 0;
-    button_sobj->sprite.green = 0;
-    button_sobj->sprite.blue = 0;
-    button_sobj->pos.x = 108.0f;
-    button_sobj->pos.y = 75.0f;
+    button_sobj->sprite.red = 0x00;
+    button_sobj->sprite.green = 0x00;
+    button_sobj->sprite.blue = 0x00;
+    button_sobj->pos.x = 108.0F;
+    button_sobj->pos.y = 75.0F;
 
-    mnVSModeCreateRuleArrows();
+    mnVSModeMakeRuleArrows();
 }
 
 // 0x80132B38
@@ -646,30 +643,32 @@ s32 mnVSModeGetTimeStockValue()
 }
 
 // 0x80132BA0
-void mnVSModeCreateTimeStockValue()
+void mnVSModeMakeTimeStockValue()
 {
     GObj* time_stock_value_gobj;
     SObj* time_stock_value_sobj;
     s32 value;
     s32 x;
     s32 unused;
-    u32 color[3] = dMNVSModeTimeStockValueColor;
 
-    sMNVSModeTimeStockValueGObj = time_stock_value_gobj = gcMakeGObjSPAfter(0, 0, 5, GOBJ_LINKORDER_DEFAULT);
+    // 0x80134864
+    u32 colors[/* */] = { 0x000000FF, 0x000000FF, 0x000000FF };
+
+    sMNVSModeTimeStockValueGObj = time_stock_value_gobj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(time_stock_value_gobj, func_ovl0_800CCF00, 3, GOBJ_LINKORDER_DEFAULT, -1);
 
     value = mnVSModeGetTimeStockValue();
 
-    if (value == 100)
+    if (value == SCBATTLE_TIMELIMIT_INFINITE)
     {
-        time_stock_value_sobj = gcAppendSObjWithSprite(time_stock_value_gobj, GetAddressFromOffset(sMNVSModeFiles[0], &lMNCommonInfinitySprite));
+        time_stock_value_sobj = gcAppendSObjWithSprite(time_stock_value_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonInfinitySprite));
         time_stock_value_sobj->sprite.attr &= ~SP_FASTCOPY;
         time_stock_value_sobj->sprite.attr |= SP_TRANSPARENT;
-        time_stock_value_sobj->pos.x = 162.0f;
-        time_stock_value_sobj->pos.y = 118.0f;
-        time_stock_value_sobj->sprite.red = color[0];
-        time_stock_value_sobj->sprite.green = color[1];
-        time_stock_value_sobj->sprite.blue = color[2];
+        time_stock_value_sobj->pos.x = 162.0F;
+        time_stock_value_sobj->pos.y = 118.0F;
+        time_stock_value_sobj->sprite.red = colors[0];
+        time_stock_value_sobj->sprite.green = colors[1];
+        time_stock_value_sobj->sprite.blue = colors[2];
     }
     else
     {
@@ -681,77 +680,76 @@ void mnVSModeCreateTimeStockValue()
         {
             x = (value < 10) ? 210 : 215;
         }
-
-        mnVSModeCreateNumber(time_stock_value_gobj, value, (f32) x, 116.0F, &color, 2, 0);
+        mnVSModeMakeNumber(time_stock_value_gobj, value, (f32)x, 116.0F, colors, 2, 0);
     }
 }
 
 // 0x80132D04
-void mnVSModeCreateTimeStockButton()
+void mnVSModeMakeTimeStockButton()
 {
     GObj* time_stock_button_gobj;
     SObj* time_stock_button_sobj;
 
-    sMNVSModeButtonGObjTimeStock = time_stock_button_gobj = gcMakeGObjSPAfter(0, 0, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNVSModeButtonGObjTimeStock = time_stock_button_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(time_stock_button_gobj, func_ovl0_800CCF00, 2, GOBJ_LINKORDER_DEFAULT, -1);
-    mnVSModeCreateButton(time_stock_button_gobj, 74.0F, 109.0F, 17);
+    mnVSModeMakeButton(time_stock_button_gobj, 74.0F, 109.0F, 17);
 
     mnVSModeUpdateButton(time_stock_button_gobj, (sMNVSModeCursorIndex == nMNVSModeOptionTimeStock) ? nMNOptionTabStatusHighlight : nMNOptionTabStatusNot);
 
     if ((sMNVSModeRule == nMNVSModeRuleTime) || (sMNVSModeRule == nMNVSModeRuleTimeTeam))
     {
-        time_stock_button_sobj = gcAppendSObjWithSprite(time_stock_button_gobj, GetAddressFromOffset(sMNVSModeFiles[1], &lMNVSModeTimeSprite));
+        time_stock_button_sobj = gcAppendSObjWithSprite(time_stock_button_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeTimeSprite));
         time_stock_button_sobj->sprite.attr &= ~SP_FASTCOPY;
         time_stock_button_sobj->sprite.attr |= SP_TRANSPARENT;
-        time_stock_button_sobj->sprite.red = 0;
-        time_stock_button_sobj->sprite.green = 0;
-        time_stock_button_sobj->sprite.blue = 0;
-        time_stock_button_sobj->pos.x = 97.0f;
-        time_stock_button_sobj->pos.y = 113.0f;
+        time_stock_button_sobj->sprite.red = 0x00;
+        time_stock_button_sobj->sprite.green = 0x00;
+        time_stock_button_sobj->sprite.blue = 0x00;
+        time_stock_button_sobj->pos.x = 97.0F;
+        time_stock_button_sobj->pos.y = 113.0F;
 
-        time_stock_button_sobj = gcAppendSObjWithSprite(time_stock_button_gobj, GetAddressFromOffset(sMNVSModeFiles[1], &lMNVSModeMinSprite));
+        time_stock_button_sobj = gcAppendSObjWithSprite(time_stock_button_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeMinSprite));
         time_stock_button_sobj->sprite.attr &= ~SP_FASTCOPY;
         time_stock_button_sobj->sprite.attr |= SP_TRANSPARENT;
-        time_stock_button_sobj->sprite.red = 0;
-        time_stock_button_sobj->sprite.green = 0;
-        time_stock_button_sobj->sprite.blue = 0;
-        time_stock_button_sobj->pos.x = 197.0f;
-        time_stock_button_sobj->pos.y = 120.0f;
+        time_stock_button_sobj->sprite.red = 0x00;
+        time_stock_button_sobj->sprite.green = 0x00;
+        time_stock_button_sobj->sprite.blue = 0x00;
+        time_stock_button_sobj->pos.x = 197.0F;
+        time_stock_button_sobj->pos.y = 120.0F;
     }
     else
     {
-        time_stock_button_sobj = gcAppendSObjWithSprite(time_stock_button_gobj, GetAddressFromOffset(sMNVSModeFiles[1], &lMNVSModeStockSprite));
+        time_stock_button_sobj = gcAppendSObjWithSprite(time_stock_button_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeStockSprite));
         time_stock_button_sobj->sprite.attr &= ~SP_FASTCOPY;
         time_stock_button_sobj->sprite.attr |= SP_TRANSPARENT;
-        time_stock_button_sobj->sprite.red = 0;
-        time_stock_button_sobj->sprite.green = 0;
-        time_stock_button_sobj->sprite.blue = 0;
-        time_stock_button_sobj->pos.x = 106.0f;
-        time_stock_button_sobj->pos.y = 114.0f;
+        time_stock_button_sobj->sprite.red = 0x00;
+        time_stock_button_sobj->sprite.green = 0x00;
+        time_stock_button_sobj->sprite.blue = 0x00;
+        time_stock_button_sobj->pos.x = 106.0F;
+        time_stock_button_sobj->pos.y = 114.0F;
     }
 
-    mnVSModeCreateTimeStockArrows();
+    mnVSModeMakeTimeStockArrows();
 }
 
 // 0x80132EBC
-void mnVSModeCreateVSOptionsButton()
+void mnVSModeMakeVSOptionsButton(void)
 {
     GObj* button_gobj;
     SObj* button_sobj;
 
-    sMNVSModeButtonGObjVSOptions = button_gobj = gcMakeGObjSPAfter(0U, NULL, 4U, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(button_gobj, func_ovl0_800CCF00, 2U, GOBJ_LINKORDER_DEFAULT, -1);
-    mnVSModeCreateButton(button_gobj, 51.0F, 148.0F, 17);
+    sMNVSModeButtonGObjVSOptions = button_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
+    gcAddGObjDisplay(button_gobj, func_ovl0_800CCF00, 2, GOBJ_LINKORDER_DEFAULT, -1);
+    mnVSModeMakeButton(button_gobj, 51.0F, 148.0F, 17);
     mnVSModeUpdateButton(button_gobj, (sMNVSModeCursorIndex == nMNVSModeOptionOptions) ? nMNOptionTabStatusHighlight : nMNOptionTabStatusNot);
 
-    button_sobj = gcAppendSObjWithSprite(button_gobj, GetAddressFromOffset(sMNVSModeFiles[1], &lMNVSModeVSOptionsSprite));
+    button_sobj = gcAppendSObjWithSprite(button_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeVSOptionsSprite));
     button_sobj->sprite.attr &= ~SP_FASTCOPY;
     button_sobj->sprite.attr |= SP_TRANSPARENT;
-    button_sobj->sprite.red = 0;
-    button_sobj->sprite.green = 0;
-    button_sobj->sprite.blue = 0;
-    button_sobj->pos.x = 71.0f;
-    button_sobj->pos.y = 151.0f;
+    button_sobj->sprite.red = 0x00;
+    button_sobj->sprite.green = 0x00;
+    button_sobj->sprite.blue = 0x00;
+    button_sobj->pos.x = 71.0F;
+    button_sobj->pos.y = 151.0F;
 }
 
 // 0x80132FA4 - Unused?
@@ -768,9 +766,9 @@ void mnVSModeSetColorsUnused(SObj* sobj)
 }
 
 // 0x80132FD8
-void mnVSModeCreateUnusedGObj()
+void mnVSModeMakeUnusedGObj(void)
 {
-    sMNVSModeUnusedGObj = gcMakeGObjSPAfter(0U, NULL, 5U, GOBJ_LINKORDER_DEFAULT);
+    sMNVSModeUnusedGObj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_LINKORDER_DEFAULT);
 }
 
 // 0x80133008
@@ -778,7 +776,7 @@ void mnVSModeRenderMenuName(GObj* menu_name_gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 160, 120, 20, 230);
+    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xA0, 0x78, 0x14, 0xE6);
     gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
     gDPFillRectangle(gDisplayListHead[0]++, 225, 143, 310, 230);
@@ -791,87 +789,88 @@ void mnVSModeRenderMenuName(GObj* menu_name_gobj)
 }
 
 // 0x8013314C
-void mnVSModeCreateMenuName()
+void mnVSModeMakeMenuName()
 {
     GObj* menu_name_gobj;
     SObj* menu_name_sobj;
 
-    menu_name_gobj = gcMakeGObjSPAfter(0U, NULL, 3U, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(menu_name_gobj, mnVSModeRenderMenuName, 1U, GOBJ_LINKORDER_DEFAULT, -1);
+    menu_name_gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
+    gcAddGObjDisplay(menu_name_gobj, mnVSModeRenderMenuName, 1, GOBJ_LINKORDER_DEFAULT, -1);
 
-    menu_name_sobj = gcAppendSObjWithSprite(menu_name_gobj, GetAddressFromOffset(sMNVSModeFiles[0], &lMNCommonSmashLogoSprite));
+    menu_name_sobj = gcAppendSObjWithSprite(menu_name_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonSmashLogoSprite));
     menu_name_sobj->sprite.attr &= ~SP_FASTCOPY;
     menu_name_sobj->sprite.attr |= SP_TRANSPARENT;
-    menu_name_sobj->sprite.red = 0;
-    menu_name_sobj->sprite.green = 0;
-    menu_name_sobj->sprite.blue = 0;
-    menu_name_sobj->pos.x = 235.0f;
-    menu_name_sobj->pos.y = 158.0f;
+    menu_name_sobj->sprite.red = 0x00;
+    menu_name_sobj->sprite.green = 0x00;
+    menu_name_sobj->sprite.blue = 0x00;
+    menu_name_sobj->pos.x = 235.0F;
+    menu_name_sobj->pos.y = 158.0F;
 
-    menu_name_sobj = gcAppendSObjWithSprite(menu_name_gobj, GetAddressFromOffset(sMNVSModeFiles[1], &lMNVSModeVSSprite));
+    menu_name_sobj = gcAppendSObjWithSprite(menu_name_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeVSSprite));
     menu_name_sobj->sprite.attr &= ~SP_FASTCOPY;
     menu_name_sobj->sprite.attr |= SP_TRANSPARENT;
-    menu_name_sobj->sprite.red = 0;
-    menu_name_sobj->sprite.green = 0;
-    menu_name_sobj->sprite.blue = 0;
-    menu_name_sobj->pos.x = 158.0f;
-    menu_name_sobj->pos.y = 192.0f;
+    menu_name_sobj->sprite.red = 0x00;
+    menu_name_sobj->sprite.green = 0x00;
+    menu_name_sobj->sprite.blue = 0x00;
+    menu_name_sobj->pos.x = 158.0F;
+    menu_name_sobj->pos.y = 192.0F;
 
-    menu_name_sobj = gcAppendSObjWithSprite(menu_name_gobj, GetAddressFromOffset(sMNVSModeFiles[0], &lMNCommonGameModeSprite));
+    menu_name_sobj = gcAppendSObjWithSprite(menu_name_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonGameModeSprite));
     menu_name_sobj->sprite.attr &= ~SP_FASTCOPY;
     menu_name_sobj->sprite.attr |= SP_TRANSPARENT;
-    menu_name_sobj->sprite.red = 0;
-    menu_name_sobj->sprite.green = 0;
-    menu_name_sobj->sprite.blue = 0;
-    menu_name_sobj->pos.x = 189.0f;
-    menu_name_sobj->pos.y = 87.0f;
+    menu_name_sobj->sprite.red = 0x00;
+    menu_name_sobj->sprite.green = 0x00;
+    menu_name_sobj->sprite.blue = 0x00;
+    menu_name_sobj->pos.x = 189.0F;
+    menu_name_sobj->pos.y = 87.0F;
 }
 
 // 0x80133298
-void mnVSModeCreateBackground()
+void mnVSModeMakeBackground(void)
 {
     GObj* bg_gobj;
     SObj* bg_sobj;
 
-    bg_gobj = gcMakeGObjSPAfter(0U, NULL, 2U, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(bg_gobj, func_ovl0_800CCF00, 0U, GOBJ_LINKORDER_DEFAULT, -1);
+    bg_gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
+    gcAddGObjDisplay(bg_gobj, func_ovl0_800CCF00, 0, GOBJ_LINKORDER_DEFAULT, -1);
 
-    bg_sobj = gcAppendSObjWithSprite(bg_gobj, GetAddressFromOffset(sMNVSModeFiles[0], &lMNCommonCircleSprite));
-    bg_sobj->pos.x = 10.0f;
-    bg_sobj->pos.y = 10.0f;
+    bg_sobj = gcAppendSObjWithSprite(bg_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonCircleSprite));
+    bg_sobj->pos.x = 10.0F;
+    bg_sobj->pos.y = 10.0F;
 
-    bg_sobj = gcAppendSObjWithSprite(bg_gobj, GetAddressFromOffset(sMNVSModeFiles[0], &lMNCommonPaperTearSprite));
+    bg_sobj = gcAppendSObjWithSprite(bg_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonPaperTearSprite));
     bg_sobj->sprite.attr &= ~SP_FASTCOPY;
     bg_sobj->sprite.attr |= SP_TRANSPARENT;
     bg_sobj->sprite.red = 0xA0;
     bg_sobj->sprite.green = 0x78;
     bg_sobj->sprite.blue = 0x14;
-    bg_sobj->pos.x = 140.0f;
-    bg_sobj->pos.y = 143.0f;
+    bg_sobj->pos.x = 140.0F;
+    bg_sobj->pos.y = 143.0F;
 
-    bg_sobj = gcAppendSObjWithSprite(bg_gobj, GetAddressFromOffset(sMNVSModeFiles[0], &lMNCommonPaperTearSprite));
+    bg_sobj = gcAppendSObjWithSprite(bg_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonPaperTearSprite));
     bg_sobj->sprite.attr &= ~SP_FASTCOPY;
     bg_sobj->sprite.attr |= SP_TRANSPARENT;
     bg_sobj->sprite.red = 0xA0;
     bg_sobj->sprite.green = 0x78;
     bg_sobj->sprite.blue = 0x14;
-    bg_sobj->pos.x = 225.0f;
-    bg_sobj->pos.y = 56.0f;
+    bg_sobj->pos.x = 225.0F;
+    bg_sobj->pos.y = 56.0F;
 
-    bg_sobj = gcAppendSObjWithSprite(bg_gobj, GetAddressFromOffset(sMNVSModeFiles[1], &lMNVSModeN64ConsoleSprite));
+    bg_sobj = gcAppendSObjWithSprite(bg_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeN64ConsoleSprite));
     bg_sobj->sprite.attr &= ~SP_FASTCOPY;
     bg_sobj->sprite.attr |= SP_TRANSPARENT;
     bg_sobj->sprite.red = 0x99;
     bg_sobj->sprite.green = 0x99;
     bg_sobj->sprite.blue = 0x99;
-    bg_sobj->pos.x = 10.0f;
-    bg_sobj->pos.y = 10.0f;
+    bg_sobj->pos.x = 10.0F;
+    bg_sobj->pos.y = 10.0F;
 }
 
 // 0x8013342C
-void mnVSModeCreateButtonValuesViewport()
+void mnVSModeMakeButtonValuesViewport(void)
 {
-    GObj *camera_gobj = func_8000B93C(
+    GObj *camera_gobj = func_8000B93C
+    (
         1,
         NULL,
         1,
@@ -882,7 +881,7 @@ void mnVSModeCreateButtonValuesViewport()
         -1,
         0,
         1,
-        0,
+        NULL,
         1,
         0
     );
@@ -891,9 +890,10 @@ void mnVSModeCreateButtonValuesViewport()
 }
 
 // 0x801334CC
-void mnVSModeCreateButtonViewport()
+void mnVSModeMakeButtonViewport(void)
 {
-    GObj *camera_gobj = func_8000B93C(
+    GObj *camera_gobj = func_8000B93C
+    (
         1,
         NULL,
         1,
@@ -913,9 +913,10 @@ void mnVSModeCreateButtonViewport()
 }
 
 // 0x8013356C
-void mnVSModeCreateMenuNameViewport()
+void mnVSModeMakeMenuNameViewport(void)
 {
-    GObj *camera_gobj = func_8000B93C(
+    GObj *camera_gobj = func_8000B93C
+    (
         1,
         NULL,
         1,
@@ -926,7 +927,7 @@ void mnVSModeCreateMenuNameViewport()
         -1,
         0,
         1,
-        0,
+        NULL,
         1,
         0
     );
@@ -935,7 +936,7 @@ void mnVSModeCreateMenuNameViewport()
 }
 
 // 0x8013360C
-void mnVSModeCreateBackgroundViewport()
+void mnVSModeMakeBackgroundViewport()
 {
     GObj *camera_gobj = func_8000B93C(
         1,
@@ -959,7 +960,7 @@ void mnVSModeCreateBackgroundViewport()
 // 0x801336AC
 void mnVSModeProcStartVars()
 {
-    if (gSceneData.scene_previous == 0xA)
+    if (gSceneData.scene_previous == nSCKindVSOptions)
     {
         sMNVSModeCursorIndex = nMNVSModeOptionOptions;
     }
@@ -994,7 +995,7 @@ void mnVSModeProcStartVars()
     sMNVSModeInputDirection = nMNVSModeInputDirectionNone;
     sMNVSModeFramesElapsed = 0;
     sMNVSModeExitInterrupt = 0;
-    sMNVSModeMaxFramesElapsed = sMNVSModeFramesElapsed + 0x4650;
+    sMNVSModeMaxFramesElapsed = sMNVSModeFramesElapsed + I_MIN_TO_FRAMES(5);
     sMNVSModeTimeStockArrowBlinkTimer = 0;
     sMNVSModeRuleArrowBlinkTimer = 0;
 }
@@ -1027,29 +1028,31 @@ void mnVSModeSaveSettings()
 }
 
 // 0x80133850
-s32 mnVSModeGetShade(s32 port_id)
+s32 mnVSModeGetShade(s32 player)
 {
-    sb32 is_same_costume[4];
+    sb32 is_same_costume[GMCOMMON_PLAYERS_MAX];
     s32 i;
 
     if ((sMNVSModeRule == nMNVSModeRuleTime) || (sMNVSModeRule == nMNVSModeRuleStock))
     {
         return 0;
     }
-
     for (i = 0; i < ARRAY_COUNT(is_same_costume); i++)
     {
         is_same_costume[i] = FALSE;
     }
-
     for (i = 0; i < ARRAY_COUNT(is_same_costume); i++)
     {
-        if ((port_id != i) && (gTransferBattleState.players[port_id].ft_kind == gTransferBattleState.players[i].ft_kind) && (gTransferBattleState.players[port_id].team == gTransferBattleState.players[i].team))
+        if
+        (
+            (player != i) &&
+            (gTransferBattleState.players[player].ft_kind == gTransferBattleState.players[i].ft_kind) &&
+            (gTransferBattleState.players[player].team == gTransferBattleState.players[i].team)
+        )
         {
             is_same_costume[gTransferBattleState.players[i].shade] = TRUE;
         }
     }
-
     for (i = 0; i < ARRAY_COUNT(is_same_costume); i++)
     {
         if (is_same_costume[i] == FALSE)
@@ -1064,15 +1067,13 @@ s32 mnVSModeGetCostume(s32 ft_kind, s32 arg1)
 {
     s32 i;
     s32 j;
-    s32 unused;
-    s32 unused2;
-    sb32 is_same_costume[4];
+    s32 unused[2];
+    sb32 is_same_costume[GMCOMMON_PLAYERS_MAX];
 
     for (i = 0; i < ARRAY_COUNT(is_same_costume); i++)
     {
         is_same_costume[i] = FALSE;
     }
-
     for (i = 0; i < ARRAY_COUNT(is_same_costume); i++)
     {
         if (i != arg1)
@@ -1089,7 +1090,6 @@ s32 mnVSModeGetCostume(s32 ft_kind, s32 arg1)
             }
         }
     }
-
     for (i = 0; i < ARRAY_COUNT(is_same_costume); i++)
     {
         if (is_same_costume[i] == FALSE)
@@ -1100,7 +1100,7 @@ s32 mnVSModeGetCostume(s32 ft_kind, s32 arg1)
 }
 
 // 0x80133A8C
-void mnVSModeSetCostumesAndShades()
+void mnVSModeSetCostumesAndShades(void)
 {
     s32 i;
 
@@ -1108,7 +1108,7 @@ void mnVSModeSetCostumesAndShades()
     {
         case nMNVSModeRuleTime:
         case nMNVSModeRuleStock:
-            for (i = 0; i < 4; i++)
+            for (i = 0; i < ARRAY_COUNT(gTransferBattleState.players); i++)
             {
                 if (gTransferBattleState.players[i].ft_kind != nFTKindNull)
                 {
@@ -1119,7 +1119,7 @@ void mnVSModeSetCostumesAndShades()
             break;
         case nMNVSModeRuleTimeTeam:
         case nMNVSModeRuleStockTeam:
-            for (i = 0; i < 4; i++)
+            for (i = 0; i < ARRAY_COUNT(gTransferBattleState.players); i++)
             {
                 if (gTransferBattleState.players[i].ft_kind != nFTKindNull)
                 {
@@ -1132,10 +1132,13 @@ void mnVSModeSetCostumesAndShades()
 }
 
 // 0x80133B8C
-void mnVSModeMain(GObj* arg0)
+void mnVSModeMain(GObj *gobj)
 {
     s32 unused;
-    GObj** buttons[4] = dMNVSModeButtons;
+
+    // 0x80134870
+    GObj** buttons[/* */] = { &sMNVSModeButtonGObjVSStart, &sMNVSModeButtonGObjRule, &sMNVSModeButtonGObjTimeStock, &sMNVSModeButtonGObjVSOptions };
+    
     s32 stick_range;
     s32 is_button;
 
@@ -1146,63 +1149,60 @@ void mnVSModeMain(GObj* arg0)
         if (sMNVSModeFramesElapsed == sMNVSModeMaxFramesElapsed)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = 1;
+            gSceneData.scene_current = nSCKindTitle;
 
             mnVSModeSaveSettings();
             leoInitUnit_atten();
 
             return;
         }
-
         if (scSubsysControllerCheckNoInputAll() == FALSE)
         {
-            sMNVSModeMaxFramesElapsed = sMNVSModeFramesElapsed + 0x4650;
+            sMNVSModeMaxFramesElapsed = sMNVSModeFramesElapsed + I_MIN_TO_FRAMES(5);
         }
-
         if (sMNVSModeExitInterrupt != 0)
         {
             leoInitUnit_atten();
         }
-
         if (sMNVSModeChangeWait != 0)
         {
             sMNVSModeChangeWait--;
         }
-
-        if (
+        if
+        (
             (scSubsysControllerGetPlayerStickInRangeLR(-20, 20) != FALSE) &&
             (scSubsysControllerGetPlayerStickInRangeUD(-20, 20) != FALSE) &&
             (scSubsysControllerGetPlayerHoldButtons(U_JPAD | R_JPAD | R_TRIG | U_CBUTTONS | R_CBUTTONS) == FALSE) &&
-            (scSubsysControllerGetPlayerHoldButtons(D_JPAD | L_JPAD | L_TRIG | D_CBUTTONS | L_CBUTTONS) == FALSE))
+            (scSubsysControllerGetPlayerHoldButtons(D_JPAD | L_JPAD | L_TRIG | D_CBUTTONS | L_CBUTTONS) == FALSE)
+        )
         {
             sMNVSModeChangeWait = 0;
             sMNVSModeInputDirection = nMNVSModeInputDirectionNone;
         }
-
         if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | START_BUTTON) != FALSE)
         {
             switch (sMNVSModeCursorIndex)
             {
                 case nMNVSModeOptionStart:
-                    func_800269C0_275C0(0x9EU);
+                    func_800269C0_275C0(nSYAudioFGMMenuSelect);
                     mnVSModeUpdateButton(sMNVSModeButtonGObjVSStart, nMNOptionTabStatusSelected);
                     mnVSModeSaveSettings();
 
-                    sMNVSModeExitInterrupt = 1;
+                    sMNVSModeExitInterrupt = TRUE;
 
                     gSceneData.scene_previous = gSceneData.scene_current;
-                    gSceneData.scene_current = 0x10;
+                    gSceneData.scene_current = nSCKindVSChrSel;
 
                     return;
                 case nMNVSModeOptionOptions:
-                    func_800269C0_275C0(0x9EU);
+                    func_800269C0_275C0(nSYAudioFGMMenuSelect);
                     mnVSModeUpdateButton(sMNVSModeButtonGObjVSOptions, nMNOptionTabStatusSelected);
                     mnVSModeSaveSettings();
 
-                    sMNVSModeExitInterrupt = 1;
+                    sMNVSModeExitInterrupt = TRUE;
 
                     gSceneData.scene_previous = gSceneData.scene_current;
-                    gSceneData.scene_current = 0xA;
+                    gSceneData.scene_current = nSCKindVSOptions;
 
                     return;
             }
@@ -1213,17 +1213,17 @@ void mnVSModeMain(GObj* arg0)
             mnVSModeSaveSettings();
 
             gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = 7;
+            gSceneData.scene_current = nSCKindModeSelect;
 
             leoInitUnit_atten();
         }
-
-        if (
+        if
+        (
             mnCommonCheckGetOptionButtonInput(sMNVSModeChangeWait, is_button, U_JPAD | U_CBUTTONS) ||
             mnCommonCheckGetOptionStickInputUD(sMNVSModeChangeWait, stick_range, 20, 1)
         )
         {
-            func_800269C0_275C0(0xA4U);
+            func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 
             mnCommonSetOptionChangeWaitP(sMNVSModeChangeWait, is_button, stick_range, 7);
 
@@ -1231,18 +1231,17 @@ void mnVSModeMain(GObj* arg0)
             {
                 sMNVSModeChangeWait += 8;
             }
-
             mnVSModeUpdateButton(*buttons[sMNVSModeCursorIndex], nMNOptionTabStatusNot);
 
             if (sMNVSModeCursorIndex == nMNVSModeOptionStart)
             {
                 sMNVSModeCursorIndex = nMNVSModeOptionOptions;
             }
-            else sMNVSModeCursorIndex -= 1;
+            else sMNVSModeCursorIndex--;
 
             mnVSModeUpdateButton(*buttons[sMNVSModeCursorIndex], nMNOptionTabStatusHighlight);
             gcEjectGObj(sMNVSModeUnusedGObj);
-            mnVSModeCreateUnusedGObj();
+            mnVSModeMakeUnusedGObj();
 
             sMNVSModeInputDirection = nMNVSModeInputDirectionUp;
 
@@ -1259,12 +1258,13 @@ void mnVSModeMain(GObj* arg0)
             }
         }
 
-        if (
+        if
+        (
             mnCommonCheckGetOptionButtonInput(sMNVSModeChangeWait, is_button, D_JPAD | D_CBUTTONS) ||
             mnCommonCheckGetOptionStickInputUD(sMNVSModeChangeWait, stick_range, -20, 0)
         )
         {
-            func_800269C0_275C0(0xA4U);
+            func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 
             mnCommonSetOptionChangeWaitN(sMNVSModeChangeWait, is_button, stick_range, 7);
 
@@ -1283,7 +1283,7 @@ void mnVSModeMain(GObj* arg0)
 
             mnVSModeUpdateButton(*buttons[sMNVSModeCursorIndex], nMNOptionTabStatusHighlight);
             gcEjectGObj(sMNVSModeUnusedGObj);
-            mnVSModeCreateUnusedGObj();
+            mnVSModeMakeUnusedGObj();
 
             sMNVSModeInputDirection = nMNVSModeInputDirectionDown;
 
@@ -1303,14 +1303,15 @@ void mnVSModeMain(GObj* arg0)
         switch (sMNVSModeCursorIndex)
         {
             case nMNVSModeOptionRule:
-                if (
+                if
+                (
                     mnCommonCheckGetOptionButtonInput(sMNVSModeChangeWait, is_button, L_JPAD | L_TRIG | L_CBUTTONS) ||
                     mnCommonCheckGetOptionStickInputLR(sMNVSModeChangeWait, stick_range, -20, 0)
                 )
                 {
                     if (sMNVSModeRule > nMNVSModeRuleTime)
                     {
-                        func_800269C0_275C0(0xA3U);
+                        func_800269C0_275C0(nSYAudioFGMMenuScroll1);
 
                         sMNVSModeRule--;
 
@@ -1320,16 +1321,16 @@ void mnVSModeMain(GObj* arg0)
                         }
 
                         gcEjectGObj(sMNVSModeButtonGObjTimeStock);
-                        mnVSModeCreateTimeStockButton();
+                        mnVSModeMakeTimeStockButton();
                         gcEjectGObj(sMNVSModeRuleValueGObj);
-                        mnVSModeCreateRuleValue();
+                        mnVSModeMakeRuleValue();
                         gcEjectGObj(sMNVSModeTimeStockValueGObj);
-                        mnVSModeCreateTimeStockValue();
+                        mnVSModeMakeTimeStockValue();
 
                         mnCommonSetOptionChangeWaitN(sMNVSModeChangeWait, is_button, stick_range, 7);
 
                         gcEjectGObj(sMNVSModeUnusedGObj);
-                        mnVSModeCreateUnusedGObj();
+                        mnVSModeMakeUnusedGObj();
 
                         sMNVSModeInputDirection = nMNVSModeInputDirectionLeft;
                     }
@@ -1342,7 +1343,7 @@ void mnVSModeMain(GObj* arg0)
                 {
                     if (sMNVSModeRule < nMNVSModeRuleStockTeam)
                     {
-                        func_800269C0_275C0(0xA3U);
+                        func_800269C0_275C0(nSYAudioFGMMenuScroll1);
 
                         sMNVSModeRule++;
 
@@ -1352,16 +1353,16 @@ void mnVSModeMain(GObj* arg0)
                         }
 
                         gcEjectGObj(sMNVSModeButtonGObjTimeStock);
-                        mnVSModeCreateTimeStockButton();
+                        mnVSModeMakeTimeStockButton();
                         gcEjectGObj(sMNVSModeRuleValueGObj);
-                        mnVSModeCreateRuleValue();
+                        mnVSModeMakeRuleValue();
                         gcEjectGObj(sMNVSModeTimeStockValueGObj);
-                        mnVSModeCreateTimeStockValue();
+                        mnVSModeMakeTimeStockValue();
 
                         mnCommonSetOptionChangeWaitP(sMNVSModeChangeWait, is_button, stick_range, 7);
 
                         gcEjectGObj(sMNVSModeUnusedGObj);
-                        mnVSModeCreateUnusedGObj();
+                        mnVSModeMakeUnusedGObj();
 
                         sMNVSModeInputDirection = nMNVSModeInputDirectionRight;
 
@@ -1369,13 +1370,14 @@ void mnVSModeMain(GObj* arg0)
                     }
                 }
                 break;
+
             case nMNVSModeOptionTimeStock:
                 if (
                     mnCommonCheckGetOptionButtonInput(sMNVSModeChangeWait, is_button, L_JPAD | L_TRIG | L_CBUTTONS) ||
                     mnCommonCheckGetOptionStickInputLR(sMNVSModeChangeWait, stick_range, -20, 0)
                 )
                 {
-                    func_800269C0_275C0(0xA3U);
+                    func_800269C0_275C0(nSYAudioFGMMenuScroll1);
 
                     mnCommonSetOptionChangeWaitN(sMNVSModeChangeWait, is_button, stick_range, 14);
 
@@ -1388,7 +1390,7 @@ void mnVSModeMain(GObj* arg0)
                     {
                         if (sMNVSModeTime == 1)
                         {
-                            sMNVSModeTime = 100;
+                            sMNVSModeTime = SCBATTLE_TIMELIMIT_INFINITE;
                         }
                         else sMNVSModeTime--;
 
@@ -1410,19 +1412,18 @@ void mnVSModeMain(GObj* arg0)
                             sMNVSModeChangeWait += 8;
                         }
                     }
-
                     gcEjectGObj(sMNVSModeTimeStockValueGObj);
-                    mnVSModeCreateTimeStockValue();
+                    mnVSModeMakeTimeStockValue();
 
                     sMNVSModeInputDirection = nMNVSModeInputDirectionLeft;
                 }
-
-                if (
+                if
+                (
                     mnCommonCheckGetOptionButtonInput(sMNVSModeChangeWait, is_button, R_JPAD | R_TRIG | R_CBUTTONS) ||
                     mnCommonCheckGetOptionStickInputLR(sMNVSModeChangeWait, stick_range, 20, 1)
                 )
                 {
-                    func_800269C0_275C0(0xA3U);
+                    func_800269C0_275C0(nSYAudioFGMMenuScroll1);
 
                     mnCommonSetOptionChangeWaitP(sMNVSModeChangeWait, is_button, stick_range, 14);
 
@@ -1439,7 +1440,7 @@ void mnVSModeMain(GObj* arg0)
                         }
                         else sMNVSModeTime += 1;
 
-                        if (sMNVSModeTime == 100)
+                        if (sMNVSModeTime == SCBATTLE_TIMELIMIT_INFINITE)
                         {
                             sMNVSModeChangeWait += 8;
                         }
@@ -1457,9 +1458,8 @@ void mnVSModeMain(GObj* arg0)
                             sMNVSModeChangeWait += 8;
                         }
                     }
-
                     gcEjectGObj(sMNVSModeTimeStockValueGObj);
-                    mnVSModeCreateTimeStockValue();
+                    mnVSModeMakeTimeStockValue();
 
                     sMNVSModeInputDirection = nMNVSModeInputDirectionRight;
                 }
@@ -1469,7 +1469,7 @@ void mnVSModeMain(GObj* arg0)
 }
 
 // 0x801345C4
-void mnVSModeProcStart()
+void mnVSModeProcStart(void)
 {
     rdSetup rd_setup;
 
@@ -1483,11 +1483,18 @@ void mnVSModeProcStart()
     rd_setup.force_buf_size = 0;
 
     rdManagerInitSetup(&rd_setup);
-    if (!(gSaveData.error_flags & SCBACKUP_ERROR_RANDOMKNOCKBACK) && ((s32) gSaveData.unk5E3 >= 0x16) && (gSYMainIsSPImemOK == 0))
+
+    if
+    (
+        !(gSaveData.error_flags & SCBACKUP_ERROR_RANDOMKNOCKBACK) && 
+        (gSaveData.unk5E3 >= 22)                                  && 
+        (gSYMainIsSPImemOK == FALSE)
+    )
     {
         gSaveData.error_flags |= SCBACKUP_ERROR_RANDOMKNOCKBACK;
     }
-    rdManagerLoadFiles(
+    rdManagerLoadFiles
+    (
         dMNVSModeFileIDs,
         ARRAY_COUNT(dMNVSModeFileIDs),
         sMNVSModeFiles,
@@ -1501,22 +1508,23 @@ void mnVSModeProcStart()
             0x10
         )
     );
-    gcMakeGObjSPAfter(0U, mnVSModeMain, 0U, GOBJ_LINKORDER_DEFAULT);
+    gcMakeGObjSPAfter(0, mnVSModeMain, 0, GOBJ_LINKORDER_DEFAULT);
     func_8000B9FC(0, 0x80000000, 0x64, 0, 0);
+
     mnVSModeProcStartVars();
-    mnVSModeCreateBackgroundViewport();
-    mnVSModeCreateMenuNameViewport();
-    mnVSModeCreateButtonViewport();
-    mnVSModeCreateButtonValuesViewport();
-    mnVSModeCreateBackground();
-    mnVSModeCreateMenuName();
-    mnVSModeCreateVSStartButton();
-    mnVSModeCreateRuleButton();
-    mnVSModeCreateRuleValue();
-    mnVSModeCreateTimeStockButton();
-    mnVSModeCreateTimeStockValue();
-    mnVSModeCreateVSOptionsButton();
-    mnVSModeCreateUnusedGObj();
+    mnVSModeMakeBackgroundViewport();
+    mnVSModeMakeMenuNameViewport();
+    mnVSModeMakeButtonViewport();
+    mnVSModeMakeButtonValuesViewport();
+    mnVSModeMakeBackground();
+    mnVSModeMakeMenuName();
+    mnVSModeMakeVSStartButton();
+    mnVSModeMakeRuleButton();
+    mnVSModeMakeRuleValue();
+    mnVSModeMakeTimeStockButton();
+    mnVSModeMakeTimeStockValue();
+    mnVSModeMakeVSOptionsButton();
+    mnVSModeMakeUnusedGObj();
 
     if (gSceneData.scene_previous == nSCKindVSChrSel)
     {
@@ -1568,11 +1576,11 @@ scRuntimeInfo dMNVSModeGtlSetup =
 };
 
 // 0x80134758
-void mnVSModeStartScene()
+void mnVSModeStartScene(void)
 {
     dMNVSModeDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMNVSModeDisplaySetup);
 
-    dMNVSModeGtlSetup.arena_size = (u32) ((uintptr_t)&ovl1_TEXT_START - (uintptr_t)&ovl19_BSS_END);
+    dMNVSModeGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_TEXT_START - (uintptr_t)&ovl19_BSS_END);
     gsGTLSceneInit(&dMNVSModeGtlSetup);
 }

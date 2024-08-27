@@ -861,7 +861,7 @@ void mnOptionProcRun(GObj *gobj)
             mnOptionWriteBackup();
 
             gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = nSCKindMainMenu;
+            gSceneData.scene_current = nSCKindModeSelect;
 
             leoInitUnit_atten();
         }

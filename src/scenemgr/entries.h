@@ -46,7 +46,7 @@ extern void intro_chars_running_entry(void);        // ovl 44
 extern void intro_yoshi_nest_entry(void);           // ovl 45
 extern void intro_link_hill_entry(void);            // ovl 46
 extern void intro_mario_vs_kirby_entry(void);       // ovl 47
-extern void intro_pika_pokeball_entry(void);        // ovl 48
+extern void mvOpeningYamabukiStartScene(void);        // ovl 48
 extern void mvOpeningClashStartScene(void);            // ovl 49
 extern void mvOpeningSectorStartScene(void);            // ovl 50
 extern void mvOpeningJungleStartScene(void);     // ovl 51

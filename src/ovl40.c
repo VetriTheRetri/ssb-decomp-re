@@ -145,7 +145,7 @@ void mvOpeningLinkLoadFiles()
 
 	rldmSetup.table_addr = &lRDManagerTableAddr;
 	rldmSetup.table_files_num = &lRDManagerTableFilesNum;
-	rldmSetup.file_heap = 0;
+	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
 	rldmSetup.status_buf = D_ovl40_8018E228;
 	rldmSetup.status_buf_size = ARRAY_COUNT(D_ovl40_8018E228);

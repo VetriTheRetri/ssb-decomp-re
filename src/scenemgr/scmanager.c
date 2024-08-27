@@ -231,7 +231,7 @@ void intro_chars_running_entry();
 void intro_yoshi_nest_entry();
 void intro_link_hill_entry();
 void intro_mario_vs_kirby_entry();
-void intro_pika_pokeball_entry();
+void mvOpeningYamabukiStartScene();
 void mvOpeningClashStartScene();
 void mvOpeningSectorStartScene();
 void mvOpeningJungleStartScene();
@@ -518,7 +518,7 @@ void start_scene_manager(u32 set)
 				break;
 			case 42:
 				syDmaLoadOverlay(&D_800A3070[48]);
-				intro_pika_pokeball_entry();
+				mvOpeningYamabukiStartScene();
 				break;
 			case 43:
 				syDmaLoadOverlay(&D_800A3070[49]);

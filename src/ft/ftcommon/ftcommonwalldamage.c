@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 
-extern f32 ftPararmGetHitStun(f32);
+extern f32 ftParamGetHitStun(f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -46,7 +46,7 @@ void ftCommonWallDamageSetStatus(GObj *fighter_gobj, Vec3f *angle, Vec3f *pos)
 
     knockback = func_ovl0_800C7A84(&vel_air);
 
-    fp->status_vars.common.damage.hitstun_timer = ftPararmGetHitStun(knockback);
+    fp->status_vars.common.damage.hitstun_timer = ftParamGetHitStun(knockback);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusWallDamage, 0.0F, 2.0F, (FTSTATUS_PRESERVE_DAMAGEPLAYER | FTSTATUS_PRESERVE_PLAYERTAG));
 

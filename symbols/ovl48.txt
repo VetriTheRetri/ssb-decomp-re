@@ -9,7 +9,7 @@ func_ovl48_80132030 = 0x80132030; // segment:ovl48
 func_ovl48_801320D0 = 0x801320D0; // segment:ovl48
 func_ovl48_801320DC = 0x801320DC; // segment:ovl48
 func_ovl48_801321A8 = 0x801321A8; // segment:ovl48
-intro_pika_pokeball_entry = 0x80132344; // segment:ovl48
+mvOpeningYamabukiStartScene = 0x80132344; // segment:ovl48
 
 D_ovl48_801323A0 = 0x801323A0; // segment:ovl48
 D_ovl48_801323D8 = 0x801323D8; // segment:ovl48

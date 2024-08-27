@@ -1500,7 +1500,7 @@ f32 ftParamGetGroundHazardKnockback(s32 percent_damage, s32 recent_damage, s32 h
 }
 
 // 0x800EA1B0
-f32 ftPararmGetHitStun(f32 knockback)
+f32 ftParamGetHitStun(f32 knockback)
 {
     return knockback / 1.875F;
 }
@@ -1632,13 +1632,17 @@ void ftParamSetMotionID(ftStruct *fp, s32 attack_id)
 // 0x800EA614
 void ftParamUpdateStaleQueue(s32 attack_player, s32 defend_player, s32 attack_id, u16 motion_count)
 {
-    if ((attack_player != GMCOMMON_PLAYERS_MAX) && (attack_player != defend_player))
+    if ((attack_player != ARRAY_COUNT(gBattleState->players)) && (attack_player != defend_player))
     {
         s32 i, stale_id = gBattleState->players[attack_player].stale_id;
 
         for (i = 0; i < ARRAY_COUNT(gBattleState->players[attack_player].stale_info); i++)
         {
-            if ((attack_id == gBattleState->players[attack_player].stale_info[i].attack_id) && (motion_count == gBattleState->players[attack_player].stale_info[i].motion_count))
+            if
+            (
+                (attack_id    == gBattleState->players[attack_player].stale_info[i].attack_id) && 
+                (motion_count == gBattleState->players[attack_player].stale_info[i].motion_count)
+            )
             {
                 return;
             }

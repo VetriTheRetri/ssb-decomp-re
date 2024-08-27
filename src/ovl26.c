@@ -4405,7 +4405,7 @@ void mnBattleInitCSS()
 
 	rldmSetup.table_addr = &lRDManagerTableAddr;
 	rldmSetup.table_files_num = &lRDManagerTableFilesNum;
-	rldmSetup.file_heap = 0;
+	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
 	rldmSetup.status_buf = (rdFileNode*)&D_ovl26_8013C0E0;
 	rldmSetup.status_buf_size = 0x78;

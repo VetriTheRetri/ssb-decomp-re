@@ -70,7 +70,7 @@ extern void ftParamProcResumeEffect(GObj *fighter_gobj);
 extern void ftParamVelDamageTransferGround(ftStruct *fp);
 extern f32 ftParamGetCommonKnockback(s32 percent_damage, s32 recent_damage, s32 hit_damage, s32 knockback_weight, s32 knockback_scale, s32 knockback_base, f32 weight, s32 attack_handicap, s32 defend_handicap);
 extern f32 ftParamGetGroundHazardKnockback(s32 percent_damage, s32 recent_damage, s32 hit_damage, s32 knockback_weight, s32 knockback_scale, s32 knockback_base, f32 weight, s32 attack_handicap, s32 defend_handicap);
-extern f32 ftPararmGetHitStun(f32 knockback);
+extern f32 ftParamGetHitStun(f32 knockback);
 extern s32 ftParamGetHitLag(s32 damage, s32 status_id, f32 hitlag_mul);
 extern void ftParamUpdateDamage(ftStruct *fp, s32 damage);
 extern void ftParamSetHealDamage(ftStruct *fp, s32 heal);

@@ -979,6 +979,15 @@ lITLinkBombBloatScales = 0x000000A8;
 
 lITMonsterAnimBankStart = 0x00013624;
 
+lMVOpeningYamabukiLegsDObjDesc = 0x00009548;
+lMVOpeningYamabukiLegsAnimJoint = 0x000098C0;
+lMVOpeningYamabukiLegsShadowDObjDesc = 0x0000B2B0;
+lMVOpeningYamabukiLegsShadowAnimJoint = 0x0000B390;
+lMVOpeningYamabukiMBallDObjDesc = 0x0000C9E0;
+lMVOpeningYamabukiMBallAnimJoint = 0x0000CAC0;
+lMVOpeningYamabukiCamAnimJoint = 0x0000D330;
+lMVOpeningYamabukiWallpaperSprite = 0x0003EE58;
+
 lMVOpeningClashFightersCamAnimJoint = 0x00001440;
 lMVOpeningClashWallpaperCamAnimJoint = 0x00004AB0;
 

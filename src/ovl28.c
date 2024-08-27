@@ -2922,7 +2922,7 @@ void mnTrainingInitCSS()
 
 	rldmSetup.table_addr = &D_NF_001AC870;
 	rldmSetup.table_files_num = &D_NF_00000854;
-	rldmSetup.file_heap = 0;
+	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
 	rldmSetup.status_buf = (rdFileNode*) &D_ovl28_801388D8;
 	rldmSetup.status_buf_size = 0x78;

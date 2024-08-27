@@ -409,7 +409,7 @@ void mvOpeningClashProcStart(void)
 
     rd_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;
     rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
-    rd_setup.file_heap = 0;
+    rd_setup.file_heap = NULL;
     rd_setup.file_heap_size = 0;
     rd_setup.status_buf = sMVOpeningClashStatusBuf;
     rd_setup.status_buf_size = ARRAY_COUNT(sMVOpeningClashStatusBuf);

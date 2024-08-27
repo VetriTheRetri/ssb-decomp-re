@@ -436,7 +436,7 @@ sb32 ftCommonDamageCheckCatchResist(ftStruct *fp)
     }
     if ((fp->ft_kind == nFTKindDonkey) || (fp->ft_kind == nFTKindNDonkey) || (fp->ft_kind == nFTKindGDonkey))
     {
-        if ((fp->status_info.status_id >= nFTDonkeyStatusThrowFStartDamage) && (fp->status_info.status_id <= nFTDonkeyStatusThrowFEndDamage) && (ftCommonDamageGetDamageLevel(ftPararmGetHitStun(fp->damage_knockback)) < 3))
+        if ((fp->status_info.status_id >= nFTDonkeyStatusThrowFStartDamage) && (fp->status_info.status_id <= nFTDonkeyStatusThrowFEndDamage) && (ftCommonDamageGetDamageLevel(ftParamGetHitStun(fp->damage_knockback)) < 3))
         {
             return TRUE;
         }
@@ -480,7 +480,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
     f32 vel_x = __cosf(angle_end) * knockback;
     s32 unused2;
     f32 vel_y = __sinf(angle_end) * knockback;
-    f32 hitstun_timer = ftPararmGetHitStun(knockback);
+    f32 hitstun_timer = ftParamGetHitStun(knockback);
     s32 unused1;
     s32 damage_level;
     s32 status_id_set;
@@ -679,7 +679,7 @@ void ftCommonDamageGotoDamageStatus(GObj *fighter_gobj)
 // 0x801415F8
 void ftCommonDamageUpdateDamageColAnim(GObj *fighter_gobj, f32 knockback, s32 element)
 {
-    if (ftCommonDamageCheckElementSetColAnim(fighter_gobj, element, ftCommonDamageGetDamageLevel(ftPararmGetHitStun(knockback))) != 0)
+    if (ftCommonDamageCheckElementSetColAnim(fighter_gobj, element, ftCommonDamageGetDamageLevel(ftParamGetHitStun(knockback))) != 0)
     {
         ftMainRunUpdateColAnim(fighter_gobj);
     }

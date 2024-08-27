@@ -427,7 +427,7 @@ void mvOpeningNewcomersProcStart(void)
 
     rldmSetup.table_addr = (uintptr_t)&lRDManagerTableAddr;
     rldmSetup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
-    rldmSetup.file_heap = 0;
+    rldmSetup.file_heap = NULL;
     rldmSetup.file_heap_size = 0;
     rldmSetup.status_buf = dMVOpeningNewcomersStatusBuf;
     rldmSetup.status_buf_size = ARRAY_COUNT(dMVOpeningNewcomersStatusBuf);

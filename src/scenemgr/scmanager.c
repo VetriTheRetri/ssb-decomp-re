@@ -127,7 +127,7 @@ scBackupData gDefaultSaveData = {
 		{0, 0, 0, 0, 0x34BC0, 0, 0x34BC0, 0, 0}}, 0, 0, 0, 0, 0, 0x029a, 0, 0, 0
 };
 
-scCommonData gDefaultSceneData = 
+scCommonData gDefaultSceneData =
 {
 	0x1B, 0x1B,
 	{ nSCBackupUnlockEnumMax, nSCBackupUnlockEnumMax },
@@ -199,7 +199,7 @@ void menu_main_entry();
 void menu_1p_entry();
 void mnOptionStartScene();
 void mnDataStartScene();
-void menu_vs_entry();
+void mnVSModeStartScene();
 void options_vs_entry();
 void overlay_set11_entry();
 void mnMessageStartScene();
@@ -361,7 +361,7 @@ void start_scene_manager(u32 set)
 			case 9:
 				syDmaLoadOverlay(&D_800A3070[1]);
 				syDmaLoadOverlay(&D_800A3070[19]);
-				menu_vs_entry();
+				mnVSModeStartScene();
 				break;
 			case 10:
 				syDmaLoadOverlay(&D_800A3070[1]);
@@ -421,7 +421,7 @@ void start_scene_manager(u32 set)
 				syDmaLoadOverlay(&D_800A3070[5]);
 				overlay_set23_entry();
 				break;
-			case 52: 
+			case 52:
 				sc1PManagerUpdateScene();
 				break;
 			case 53:

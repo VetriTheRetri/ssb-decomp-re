@@ -66,10 +66,39 @@ typedef enum mnBackupClearOptions
 	nMNBackupClearOptionPrize,
 	nMNBackupClearOptionAllDataClear,
 	nMNBackupClearOptionEnd = nMNBackupClearOptionAllDataClear,
-	
+
 	nMNBackupClearOptionEnumMax
 
 } mnBackupClearOptions;
+
+typedef enum mnVSModeOptions
+{
+    nMNVSModeOptionStart,           // VS Start
+    nMNVSModeOptionRule,            // Rule
+    nMNVSModeOptionTimeStock,       // Time/Stock
+    nMNVSModeOptionOptions,         // VS Options
+	nMNVSModeOptionEnumMax
+
+} mnVSModeOptions;
+
+typedef enum mnVSModeRule
+{
+    nMNVSModeRuleTime,            // Time
+    nMNVSModeRuleStock,           // Stock
+    nMNVSModeRuleTimeTeam,        // Time Team
+    nMNVSModeRuleStockTeam,       // Stock Team
+
+} mnVSModeRule;
+
+typedef enum mnVSModeInputDirection
+{
+    nMNVSModeInputDirectionNone,  // None
+    nMNVSModeInputDirectionUp,    // Up
+    nMNVSModeInputDirectionDown,  // Down
+    nMNVSModeInputDirectionLeft,  // Left
+    nMNVSModeInputDirectionRight  // Right
+
+} mnVSModeInputDirection;
 
 typedef enum mnOptionTabStatus
 {

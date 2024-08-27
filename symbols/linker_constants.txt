@@ -388,7 +388,7 @@ lEFManagerShockSmallMatAnimJoint = 0x00001570;
 
 lEFManagerDamageFlyOrbsDObjSetup = 0x00007E80;
 lEFManagerDamageFlyOrbsAnimJoint = 0x00007F40;
-    
+
 lEFManagerImpactWaveMObjSub = 0x00007A80;
 lEFManagerImpactWaveDObjSetup = 0x00007C28;
 lEFManagerImpactWaveAnimJoint = 0x00007D40;
@@ -775,7 +775,7 @@ lWPMarioFireballMarioWeaponAttributes = 0x00000000;
 lWPMarioFireballLuigiWeaponAttributes = 0x00000000;
 
 lWPFoxBlasterWeaponAttributes = 0x00000000;
- 
+
 lWPSamusChargeShotWeaponAttributes = 0x00000000;
 
 lWPSamusBombWeaponAttributes = 0x0000000C;
@@ -1417,7 +1417,33 @@ lMNCommonOptionTabMiddleSprite = 0x00000330;
 lMNCommonOptionTabRightSprite = 0x00000568;
 lMNCommonPaperTearSprite = 0x00002A30;
 lMNCommonSmashLogoSprite = 0x000031F8;
+lMNCommonGameModeSprite = 0x0000D240;
+lMNCommonDigit0Sprite = 0x0000D310;
+lMNCommonDigit1Sprite = 0x0000D3E0;
+lMNCommonDigit2Sprite = 0x0000D4B0;
+lMNCommonDigit3Sprite = 0x0000D580;
+lMNCommonDigit4Sprite = 0x0000D650;
+lMNCommonDigit5Sprite = 0x0000D720;
+lMNCommonDigit6Sprite = 0x0000D7F0;
+lMNCommonDigit7Sprite = 0x0000D8C0;
+lMNCommonDigit8Sprite = 0x0000D990;
+lMNCommonDigit9Sprite = 0x0000DA60;
+lMNCommonInfinitySprite = 0x0000DC48;
+lMNCommonRightArrowSprite = 0x0000DD90;
+lMNCommonLeftArrowSprite = 0x0000DE30;
 lMNCommonCircleSprite = 0x00018000;
+
+lMNVSModeVSSprite = 0x00006118;;
+lMNVSModeVSStartSprite = 0x000024C8;;
+lMNVSModeSmallStockSprite = 0x00002A80;;
+lMNVSModeSmallTimeSprite = 0x000028E0;;
+lMNVSModeTeamSprite = 0x00002C20;;
+lMNVSModeRuleSprite = 0x00002748;;
+lMNVSModeTimeSprite = 0x00002EC8;;
+lMNVSModeMinSprite = 0x00002FC8;;
+lMNVSModeStockSprite = 0x00003248;;
+lMNVSModeVSOptionsSprite = 0x00003828;;
+lMNVSModeN64ConsoleSprite = 0x00005EB0;;
 
 lMNOptionMonoTextSprite = 0x000071F8;
 lMNOptionStereoTextSprite = 0x000073A8;
@@ -1456,8 +1482,6 @@ lMNSoundTestStartFunctionTextSprite = 0x00001348;
 lMNSoundTestAFunctionTextSprite = 0x00001450;
 lMNSoundTestHeaderTextSprite = 0x00001BB8;
 lMNSoundTestStartButtonSprite = 0x00001D50;
-lMNSoundTestRightArrowSprite = 0x0000DD90;
-lMNSoundTestLeftArrowSprite = 0x0000DE30;
 
 lSCExplainGameKeyuence0 = 0x00000000;
 lSCExplainGameKeyuence1 = 0x000009D4;

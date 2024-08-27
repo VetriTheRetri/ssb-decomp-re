@@ -33,7 +33,7 @@ extern void func_ovl0_800CD2CC(GObj*);
 //                               //
 // // // // // // // // // // // //
 
-extern uintptr_t D_NF_000000C5; 
+extern uintptr_t D_NF_000000C5;
 extern uintptr_t D_NF_000000A4;
 extern uintptr_t D_NF_00000020;
 extern uintptr_t D_NF_00000000;
@@ -87,7 +87,7 @@ s32 sMNSoundTestOptionColorB[nMNSoundTestOptionEnumMax];            // B color v
 // 0x8013433C
 s32 sMNSoundTestOptionChangeWait;                                   // Frames to wait before new sound test option can be selected
 
-// 0x80134340                                                   
+// 0x80134340
 s32 sMNSoundTestDirectionInputKind;                                 // Type of directional input: 0 = none, 1 = left, 2 = right, 3 = up, 4 = down
 
 // 0x80134344
@@ -392,7 +392,7 @@ u32 dMNSoundTestVoiceIDs[/* */] =
     nSYAudioVoiceDonkeyHeavyGet,
     nSYAudioVoiceDonkeyHeavyUnk,
     nSYAudioVoiceDonkeyDead2,
-    
+
     // LINK
 
     nSYAudioVoiceLinkSmash1,
@@ -480,7 +480,7 @@ u32 dMNSoundTestVoiceIDs[/* */] =
     nSYAudioVoicePikachuFuraSleep,
 
     // LUIGI
-    
+
     nSYAudioVoiceLuigiSmash1,
     nSYAudioVoiceLuigiSmash2,
     nSYAudioVoiceLuigiSmash3,
@@ -551,12 +551,12 @@ u32 dMNSoundTestVoiceIDs[/* */] =
     nSYAudioVoicePurinSpecialHi,
 
     // MASTER HAND
-    
+
     nSYAudioVoiceBossAppear,
     nSYAudioVoiceBossDead,
-    
+
     // ANNOUNCER
-    
+
     nSYAudioVoiceAnnounceTitleWait,
     nSYAudioVoiceAnnounceMario,
     nSYAudioVoiceAnnounceDonkeyKong,
@@ -663,8 +663,8 @@ u32 dMNSoundTestVoiceIDs[/* */] =
 };
 
 // 0x8013416C
-u32 dMNSoundTestFileIDs[/* */] = 
-{ 
+u32 dMNSoundTestFileIDs[/* */] =
+{
     &D_NF_000000C5,
     &D_NF_000000A4,
     &D_NF_00000020,
@@ -763,13 +763,13 @@ void mnSoundTestUpdateOptionColors(void)
 {
     s32 i;
 
-    for 
+    for
     (
         i = 0;
         i <
         (
-            ARRAY_COUNT(sMNSoundTestOptionColorR) + 
-            ARRAY_COUNT(sMNSoundTestOptionColorG) + 
+            ARRAY_COUNT(sMNSoundTestOptionColorR) +
+            ARRAY_COUNT(sMNSoundTestOptionColorG) +
             ARRAY_COUNT(sMNSoundTestOptionColorB)
         ) / 3;
         i++
@@ -1081,7 +1081,7 @@ SObj* mnSoundTestMakeHeaderSObjs(void)
     sobj->sprite.red   = 0x5F;
     sobj->sprite.green = 0x58;
     sobj->sprite.blue  = 0x46;
-    
+
     sobj->pos.x = 23.0F;
     sobj->pos.y = 17.0F;
 
@@ -1127,7 +1127,7 @@ void mnSoundTestMusicProcRender(GObj *gobj)
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
     gDPSetFillColor
     (
-        gDisplayListHead[0]++, 
+        gDisplayListHead[0]++,
         GCOMBINE32_RGBA5551
         (
             GCONVERT5551_RGBA8888
@@ -1167,7 +1167,7 @@ SObj* mnSoundTestMakeMusicSObjs(void)
             NULL,
             3,
             GOBJ_LINKORDER_DEFAULT
-        ), 
+        ),
         mnSoundTestMusicProcRender,
         2,
         GOBJ_DLLINKORDER_DEFAULT,
@@ -1261,7 +1261,7 @@ void mnSoundTestVoiceProcRender(GObj *gobj)
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
     gDPSetFillColor
     (
-        gDisplayListHead[0]++, 
+        gDisplayListHead[0]++,
         GCOMBINE32_RGBA5551
         (
             GCONVERT5551_RGBA8888
@@ -1509,7 +1509,7 @@ void mnSoundTestUpdateNumberPositions(GObj *gobj, f32 width)
 
     while ((sobj != NULL) && (sobj->sprite.attr != SP_HIDDEN))
     {
-        sobj->pos.x = pos_x + sobj->user_data.s + 
+        sobj->pos.x = pos_x + sobj->user_data.s +
         ((option == nMNSoundTestOptionMusic) ? 171.0F : ((option == nMNSoundTestOptionSound) ? 190.0F : 210.0F));
 
         sobj = sobj->next;
@@ -1555,7 +1555,7 @@ void mnSoundTestUpdateNumberSprites(GObj *gobj)
         {
             sobj = sobj->next;
         }
-    } 
+    }
     while (number != 0);
 
     mnSoundTestUpdateNumberPositions(gobj, width);
@@ -1650,7 +1650,7 @@ void mnSoundTestMakeArrowSObjs(void)
     gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(gobj, mnSoundTestArrowsThreadUpdate, nOMObjProcessKindThread, 1);
 
-    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNSoundTestFiles[3], &lMNSoundTestLeftArrowSprite));
+    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNSoundTestFiles[3], &lMNCommonLeftArrowSprite));
 
     sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -1661,7 +1661,7 @@ void mnSoundTestMakeArrowSObjs(void)
     sobj->sprite.green = 0xC3;
     sobj->sprite.blue  = 0x26;
 
-    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNSoundTestFiles[3], &lMNSoundTestRightArrowSprite));
+    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNSoundTestFiles[3], &lMNCommonRightArrowSprite));
 
     sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -1697,7 +1697,7 @@ void mnSoundTestMakeCameras(void)
             4,
             GOBJ_LINKORDER_DEFAULT,
             func_ovl0_800CD2CC,
-            30, 
+            30,
             CAMERA_MASK_DLLINK(1),
             -1,
             0,
@@ -1718,7 +1718,7 @@ void mnSoundTestMakeCameras(void)
             4,
             GOBJ_LINKORDER_DEFAULT,
             func_80017EC0,
-            50, 
+            50,
             CAMERA_MASK_DLLINK(2),
             -1,
             0,

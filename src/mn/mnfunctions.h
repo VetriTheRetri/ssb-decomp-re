@@ -7,5 +7,6 @@
 #include <mn/mncommon/mnoption.h>
 #include <mn/mncommon/mndata.h>
 #include <mn/mncommon/mnsoundtest.h>
+#include <mn/mncommon/mnvsmode.h>
 
 #endif

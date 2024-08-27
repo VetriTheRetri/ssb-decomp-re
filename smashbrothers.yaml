@@ -175,7 +175,7 @@ segments:
       - [0x026B50, c, libultra/sp/spscale]
       - [0x026BC0, c, libultra/n_audio/cspsetpriority]
       - [0x026C10, c, libultra/n_audio/cspsetfxmix]
-      - [0x026C70, c, libultra/n_audio/n_env] 
+      - [0x026C70, c, libultra/n_audio/n_env]
       - [0x02E220, c, libultra/n_audio/n_synaddplayer]
       - [0x02E380, c, libultra/n_audio/n_synstopvoice]
       - [0x02E3F0, c, libultra/n_audio/n_synallocvoice]
@@ -644,7 +644,7 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-    
+
     # ovl3 text
     # CPU player AI file
       - [0x0AC540, c, ft/ftcomputer]
@@ -1308,8 +1308,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x1224b0, asm, ovl19]
-      - [0x125160, data, ovl19]
+      - [0x1224b0, c, mn/mncommon/mnvsmode]
+      - [0x125160, .data, mn/mncommon/mnvsmode]
+      - { start: auto, type: .bss, name: mn/mncommon/mnvsmode, vram: 0x80134870 }
 
   - name: ovl20
     type: code

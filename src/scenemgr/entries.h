@@ -44,7 +44,7 @@ extern void intro_focus_pikachu_entry(void);        // ovl 42
 extern void intro_focus_kirby_entry(void);          // ovl 43
 extern void intro_chars_running_entry(void);        // ovl 44
 extern void intro_yoshi_nest_entry(void);           // ovl 45
-extern void intro_link_hill_entry(void);            // ovl 46
+extern void mvOpeningCliffStartScene(void);            // ovl 46
 extern void mvOpeningStandoffStartScene(void);       // ovl 47
 extern void mvOpeningYamabukiStartScene(void);        // ovl 48
 extern void mvOpeningClashStartScene(void);            // ovl 49

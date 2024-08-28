@@ -229,7 +229,7 @@ void intro_focus_pikachu_entry();
 void intro_focus_kirby_entry();
 void intro_chars_running_entry();
 void intro_yoshi_nest_entry();
-void intro_link_hill_entry();
+void mvOpeningCliffStartScene();
 void mvOpeningStandoffStartScene();
 void mvOpeningYamabukiStartScene();
 void mvOpeningClashStartScene();
@@ -510,7 +510,7 @@ void start_scene_manager(u32 set)
 				break;
 			case 40:
 				syDmaLoadOverlay(&D_800A3070[46]);
-				intro_link_hill_entry();
+				mvOpeningCliffStartScene();
 				break;
 			case 41:
 				syDmaLoadOverlay(&D_800A3070[47]);

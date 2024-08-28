@@ -11,7 +11,7 @@ func_ovl46_80132368 = 0x80132368; // segment:ovl46
 func_ovl46_80132408 = 0x80132408; // segment:ovl46
 func_ovl46_80132414 = 0x80132414; // segment:ovl46
 func_ovl46_801324E0 = 0x801324E0; // segment:ovl46
-intro_link_hill_entry = 0x80132674; // segment:ovl46
+mvOpeningCliffStartScene = 0x80132674; // segment:ovl46
 
 D_ovl46_801326D0 = 0x801326D0; // segment:ovl46
 D_ovl46_80132708 = 0x80132708; // segment:ovl46

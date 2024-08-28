@@ -473,7 +473,8 @@ s32 D_ovl28_80138CC0[2];
 // 80138558
 mnCharPanelTraining gMNTrainingPanels[2];
 
-s32 lal[102];
+// 801386C8
+s32 D_ovl28_801386C8[102];
 
 // 80138860
 s32 gMNTrainingStartDelayTimer;

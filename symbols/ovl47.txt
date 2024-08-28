@@ -13,7 +13,7 @@ func_ovl47_80132530 = 0x80132530; // segment:ovl47
 func_ovl47_801325D0 = 0x801325D0; // segment:ovl47
 func_ovl47_801325DC = 0x801325DC; // segment:ovl47
 func_ovl47_801326A8 = 0x801326A8; // segment:ovl47
-intro_mario_vs_kirby_entry = 0x8013286C; // segment:ovl47
+mvOpeningStandoffStartScene = 0x8013286C; // segment:ovl47
 
 D_ovl47_801328D0 = 0x801328D0; // segment:ovl47
 D_ovl47_80132908 = 0x80132908; // segment:ovl47

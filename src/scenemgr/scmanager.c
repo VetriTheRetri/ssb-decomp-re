@@ -230,7 +230,7 @@ void intro_focus_kirby_entry();
 void intro_chars_running_entry();
 void intro_yoshi_nest_entry();
 void intro_link_hill_entry();
-void intro_mario_vs_kirby_entry();
+void mvOpeningStandoffStartScene();
 void mvOpeningYamabukiStartScene();
 void mvOpeningClashStartScene();
 void mvOpeningSectorStartScene();
@@ -514,7 +514,7 @@ void start_scene_manager(u32 set)
 				break;
 			case 41:
 				syDmaLoadOverlay(&D_800A3070[47]);
-				intro_mario_vs_kirby_entry();
+				mvOpeningStandoffStartScene();
 				break;
 			case 42:
 				syDmaLoadOverlay(&D_800A3070[48]);

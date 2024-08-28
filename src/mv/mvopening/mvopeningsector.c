@@ -532,7 +532,7 @@ void mvOpeningSectorProcRun(GObj *gobj)
         if (sMVOpeningSectorTotalTimeTics == 160)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = nSCKindOpeningDark;
+            gSceneData.scene_current = nSCKindOpeningStandoff;
 
             leoInitUnit_atten();
         }

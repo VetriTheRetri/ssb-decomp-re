@@ -226,7 +226,8 @@ typedef enum scKind
 	nSCKindN64,               	  // N64 logo
 	nSCKindOpeningRoom,       	  // Room with Master Hand and figures coming to life
 	nSCKindOpeningYoster = 39,	  // Yoshi in nest with eggs on Yoshi's Island
-	nSCKindOpeningDark = 41,	  // Dark plains
+	nSCKindOpeningStandoff = 41,  // Dark plains with Mario and Kirby doing a standoff
+	nSCKindOpeningClash = 43,     // Characters clashing with each other, doing Neutral Aerials
 	nSCKindOpeningJungle = 45,	  // DK VS Samus scene
 	nSCKindOpeningNewcomers = 46, // Last intro scene with hidden characters
 	nSCKindBackupClear = 47,  	  // Save data clear

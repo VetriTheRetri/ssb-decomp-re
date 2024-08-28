@@ -979,6 +979,14 @@ lITLinkBombBloatScales = 0x000000A8;
 
 lITMonsterAnimBankStart = 0x00013624;
 
+lMVOpeningStandoffGroundDisplayList = 0x00001C10;
+lMVOpeningStandoffLightningMObjSub = 0x00006140;
+lMVOpeningStandoffLightningDObjDesc = 0x00006950;
+lMVOpeningStandoffLightningMatAnimJoint = 0x00006BB8;
+lMVOpeningStandoffLightningAnimJoint = 0x00006D60;
+lMVOpeningStandoffCamAnimJoint = 0x00007250;
+lMVOpeningStandoffWallpaperSprite = 0x0000B500;
+
 lMVOpeningYamabukiLegsDObjDesc = 0x00009548;
 lMVOpeningYamabukiLegsAnimJoint = 0x000098C0;
 lMVOpeningYamabukiLegsShadowDObjDesc = 0x0000B2B0;

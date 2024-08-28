@@ -1598,15 +1598,16 @@ segments:
       - [0x171230, data, ovl46]
       - [0x171310, rodata, ovl46]
 
-  - name: ovl47 # to be moved from main branch
+  - name: ovl47
     type: code
     start: 0x171320
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x171320, asm, ovl47]
-      - [0x1720F0, data, ovl47]
-      - [0x1721D0, rodata, ovl47]
+      - [0x171320, c, mv/mvopening/mvopeningstandoff]
+      - [0x1720F0, .data, mv/mvopening/mvopeningstandoff]
+      - [0x1721D0, .rodata, mv/mvopening/mvopeningstandoff]
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningstandoff, vram: 0x801329C0 }
 
   - name: ovl48
     type: code

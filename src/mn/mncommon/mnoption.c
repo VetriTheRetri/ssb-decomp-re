@@ -1081,6 +1081,6 @@ void mnOptionStartScene(void)
     dMNOptionDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMNOptionDisplaySetup);
 
-    dMNOptionGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_TEXT_START - (uintptr_t)&ovl60_BSS_END);
+    dMNOptionGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl60_BSS_END);
     gsGTLSceneInit(&dMNOptionGtlSetup);
 }

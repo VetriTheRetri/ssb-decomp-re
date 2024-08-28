@@ -226,16 +226,17 @@ typedef enum scKind
 	nSCKindN64,               	  // N64 logo
 	nSCKindOpeningRoom,       	  // Room with Master Hand and figures coming to life
 	nSCKindOpeningYoster = 39,	  // Yoshi in nest with eggs on Yoshi's Island
-	nSCKindOpeningStandoff = 41,  // Dark plains with Mario and Kirby doing a standoff
-	nSCKindOpeningYamabuki = 42,  // Pikachu rocking on Poké Ball
-	nSCKindOpeningClash = 43,     // Characters clashing with each other, doing Neutral Aerials
-	nSCKindOpeningJungle = 45,	  // DK VS Samus scene
-	nSCKindOpeningNewcomers = 46, // Last intro scene with hidden characters
-	nSCKindBackupClear = 47,  	  // Save data clear
+	nSCKindOpeningStandoff = 41,  // Dark plains with Mario and Kirby in a standoff
+	nSCKindOpeningYamabuki,  	  // Pikachu rocking on Poké Ball
+	nSCKindOpeningClash,          // Characters clashing with each other, doing Neutral Aerials
+	nSCKindOpeningSector,		  // Great Fox, Arwings and Fox scene
+	nSCKindOpeningJungle,	      // DK VS Samus scene
+	nSCKindOpeningNewcomers,      // Last intro scene with hidden characters
+	nSCKindBackupClear,  	      // Save data clear
 	nSCKindEnding,            	  // Ending cutscene
 	nSCKind1PContinue,        	  // "Continue?" screen
-	nSCKind1PScoreUnk = 50,   	  // Stage clear bonus thing?
-	nSCKind1PStageClear, 		  // Stage clear bonus score page 1?
+	nSCKind1PScoreUnk,   	  	  // Stage clear bonus thing?
+	nSCKind1PStageClear, 		  // Stage clear bonus score
 	nSCKind1PGame,            	  // 1P Game logic loop
 	nSCKind1PBonusGame,       	  // Bonus game in-game
 	nSCKind1PTraining,    		  // Training mode in-game

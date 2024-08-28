@@ -5,13 +5,13 @@
 #include <sys/objdef.h>
 #include <gr/grdef.h>
 
-extern void grWallpaperCalcPersp(SObj *bg_sobj);
-extern void grWallpaperCommonUpdatePersp(GObj *bg_gobj);
+extern void grWallpaperCalcPersp(SObj *wallpaper_sobj);
+extern void grWallpaperCommonUpdatePersp(GObj *wallpaper_gobj);
 extern void grWallpaperCommonMakeSObj(void);
 extern void grWallpaperStaticMakeSObj(void);
-extern void grWallpaperSectorUpdatePersp(GObj *bg_gobj);
+extern void grWallpaperSectorUpdatePersp(GObj *wallpaper_gobj);
 extern void grWallpaperSectorMakeSObj(void);
-extern void grWallpaperBonus3AddDL(GObj *bg_gobj);
+extern void grWallpaperBonus3AddDL(GObj *wallpaper_gobj);
 extern void grWallpaperBonus3MakeSObj(void);
 extern void grWallpaperMakeGroundWallpaper(void);
 extern void grWallpaperSetPausePerspUpdate(void);

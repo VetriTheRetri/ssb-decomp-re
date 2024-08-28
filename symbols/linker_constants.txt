@@ -981,6 +981,13 @@ lITLinkBombBloatScales = 0x000000A8;
 
 lITMonsterAnimBankStart = 0x00013624;
 
+lGRYosterWallpaperSprite = 0x00026C88;
+
+lMVOpeningYosterNestDObjDesc = 0x00009808;
+lMVOpeningYosterGroundDObjDesc = 0x0000B990;
+lMVOpeningYosterGroundAnimJoint = 0x0000BF70;
+lMVOpeningYosterCamAnimJoint = 0x0000C940;
+
 lMVOpeningCliffHillsDObjDesc = 0x000037A0;
 lMVOpeningCliffOcarinaDObjDesc = 0x000067A0;
 lMVOpeningCliffOcarinaAnimJoint = 0x00006850;

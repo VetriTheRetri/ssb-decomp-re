@@ -8,7 +8,7 @@ func_ovl45_80131F90 = 0x80131F90; // segment:ovl45
 func_ovl45_80132030 = 0x80132030; // segment:ovl45
 func_ovl45_8013203C = 0x8013203C; // segment:ovl45
 func_ovl45_80132108 = 0x80132108; // segment:ovl45
-intro_yoshi_nest_entry = 0x801322CC; // segment:ovl45
+mvOpeningYosterStartScene = 0x801322CC; // segment:ovl45
 
 D_ovl45_80132330 = 0x80132330; // segment:ovl45
 D_ovl45_80132368 = 0x80132368; // segment:ovl45

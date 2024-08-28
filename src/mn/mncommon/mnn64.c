@@ -273,6 +273,6 @@ void mnN64StartScene(void)
 	dMNN64DisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
 	func_80007024(&dMNN64DisplaySetup);
 
-	dMNN64GtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_TEXT_START - (uintptr_t)&ovl58_BSS_END);
+	dMNN64GtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl58_BSS_END);
 	gsGTLSceneInit(&dMNN64GtlSetup);
 }

@@ -1312,7 +1312,7 @@ void sc1PContinueStartScene(void)
 
     func_80007024(&dSC1PContinueDisplaySetup);
 
-    dSC1PContinueGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_TEXT_START - (uintptr_t)&ovl55_BSS_END);
+    dSC1PContinueGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl55_BSS_END);
 
     func_800A2698(&dSC1PContinueGtlSetup);
 

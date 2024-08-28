@@ -228,7 +228,7 @@ void intro_focus_yoshi_entry();
 void intro_focus_pikachu_entry();
 void intro_focus_kirby_entry();
 void intro_chars_running_entry();
-void intro_yoshi_nest_entry();
+void mvOpeningYosterStartScene();
 void mvOpeningCliffStartScene();
 void mvOpeningStandoffStartScene();
 void mvOpeningYamabukiStartScene();
@@ -506,7 +506,7 @@ void start_scene_manager(u32 set)
 				break;
 			case 39:
 				syDmaLoadOverlay(&D_800A3070[45]);
-				intro_yoshi_nest_entry();
+				mvOpeningYosterStartScene();
 				break;
 			case 40:
 				syDmaLoadOverlay(&D_800A3070[46]);

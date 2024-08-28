@@ -579,7 +579,7 @@ void mvEndingStartScene(void)
 
     func_80007024(&dMVEndingDisplaySetup);
 
-    dMVEndingGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_TEXT_START - (uintptr_t)&ovl54_BSS_END);
+    dMVEndingGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl54_BSS_END);
 
     gsGTLSceneInit(&dMVEndingGtlSetup);
 }

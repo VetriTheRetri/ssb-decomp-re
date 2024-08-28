@@ -636,6 +636,6 @@ void mvOpeningStandoffStartScene(void)
     dMVOpeningStandoffDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMVOpeningStandoffDisplaySetup);
 
-    dMVOpeningStandoffGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_TEXT_START - (uintptr_t)&ovl47_BSS_END);
+    dMVOpeningStandoffGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl47_BSS_END);
     gsGTLSceneInit(&dMVOpeningStandoffGtlSetup);
 }

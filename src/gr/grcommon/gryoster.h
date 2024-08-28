@@ -6,6 +6,8 @@
 #include <gr/grdef.h>
 #include <ef/efdef.h>
 
+extern intptr_t lGRYosterWallpaperSprite; // 0x00026C88
+
 extern efGenerator* grYosterCloudVaporMakeEffect(Vec3f *pos);
 extern sb32 grYosterCheckFighterCloudStand(s32 cloud_id);
 extern void grYosterUpdateCloudSolid(s32 cloud_id);

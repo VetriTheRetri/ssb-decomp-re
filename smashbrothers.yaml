@@ -1580,15 +1580,15 @@ segments:
       - [0x16FC00, data, ovl44]
       - [0x16FD30, rodata, ovl44]
 
-  - name: ovl45 # to be moved from main branch
+  - name: ovl45
     type: code
     start: 0x16FD40
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x16FD40, asm, ovl45]
-      - [0x170570, data, ovl45]
-      - [0x170660]
+      - [0x16FD40, c, mv/mvopening/mvopeningyoster]
+      - [0x170570, .data, mv/mvopening/mvopeningyoster]
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningyoster, vram: 0x80132420 }
   
   - name: ovl46
     type: code

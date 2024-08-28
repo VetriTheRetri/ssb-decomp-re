@@ -45,7 +45,7 @@ Gfx dGRWallpaperDisplayList[/* */] =
 // // // // // // // // // // // //
 
 // 0x80104620 - Calculate perspective of stage background image?
-void grWallpaperCalcPersp(SObj *bg_sobj)
+void grWallpaperCalcPersp(SObj *wallpaper_sobj)
 {
     f32 mag;
     Camera *cam;
@@ -86,7 +86,7 @@ void grWallpaperCalcPersp(SObj *bg_sobj)
     {
         scale = 2.0F;
     }
-    bg_sobj->sprite.scalex = bg_sobj->sprite.scaley = scale;
+    wallpaper_sobj->sprite.scalex = wallpaper_sobj->sprite.scaley = scale;
 
     width = 300.0F * scale;     // Background image width  is 300px 
     height = 220.0F * scale;    // Background image height is 220px
@@ -121,23 +121,23 @@ void grWallpaperCalcPersp(SObj *bg_sobj)
             pos_y = neg;
         }
     }
-    bg_sobj->pos.x = pos_x;
-    bg_sobj->pos.y = pos_y;
+    wallpaper_sobj->pos.x = pos_x;
+    wallpaper_sobj->pos.y = pos_y;
 }
 
 // 0x80104830
-void grWallpaperCommonUpdatePersp(GObj *bg_gobj)
+void grWallpaperCommonUpdatePersp(GObj *wallpaper_gobj)
 {
-    grWallpaperCalcPersp(SObjGetStruct(bg_gobj));
+    grWallpaperCalcPersp(SObjGetStruct(wallpaper_gobj));
 }
 
 // 0x80104850
 void grWallpaperCommonMakeSObj(void)
 {
-    GObj *bg_gobj;
-    SObj *bg_sobj;
+    GObj *wallpaper_gobj;
+    SObj *wallpaper_sobj;
 
-    sGRWallpaperGObj = bg_gobj = func_ovl0_800CD050
+    sGRWallpaperGObj = wallpaper_gobj = func_ovl0_800CD050
     (
         nOMObjCommonKindWallpaper, 
         NULL, 
@@ -152,22 +152,22 @@ void grWallpaperCommonMakeSObj(void)
         grWallpaperCommonUpdatePersp, 
         3
     );
-    bg_sobj = SObjGetStruct(bg_gobj);
+    wallpaper_sobj = SObjGetStruct(wallpaper_gobj);
 
-    bg_sobj->pos.x = 10.0F;
-    bg_sobj->pos.y = 10.0F;
+    wallpaper_sobj->pos.x = 10.0F;
+    wallpaper_sobj->pos.y = 10.0F;
 
-    bg_sobj->sprite.attr = SP_TEXSHUF;
-    bg_sobj->sprite.scalex = bg_sobj->sprite.scaley = 1.004F;
+    wallpaper_sobj->sprite.attr = SP_TEXSHUF;
+    wallpaper_sobj->sprite.scalex = wallpaper_sobj->sprite.scaley = 1.004F;
 }
 
 // 0x801048F8
 void grWallpaperStaticMakeSObj(void)
 {
-    GObj *bg_gobj;
-    SObj *bg_sobj;
+    GObj *wallpaper_gobj;
+    SObj *wallpaper_sobj;
 
-    sGRWallpaperGObj = bg_gobj = func_ovl0_800CD050
+    sGRWallpaperGObj = wallpaper_gobj = func_ovl0_800CD050
     (
         nOMObjCommonKindWallpaper, 
         NULL, 
@@ -182,20 +182,20 @@ void grWallpaperStaticMakeSObj(void)
         NULL, 
         3
     );
-    bg_sobj = SObjGetStruct(bg_gobj);
+    wallpaper_sobj = SObjGetStruct(wallpaper_gobj);
 
-    bg_sobj->pos.x = 10.0F;
-    bg_sobj->pos.y = 10.0F;
+    wallpaper_sobj->pos.x = 10.0F;
+    wallpaper_sobj->pos.y = 10.0F;
 
-    bg_sobj->sprite.attr = SP_TEXSHUF | SP_FASTCOPY;
-    bg_sobj->sprite.scalex = bg_sobj->sprite.scaley = 1.0F;
+    wallpaper_sobj->sprite.attr = SP_TEXSHUF | SP_FASTCOPY;
+    wallpaper_sobj->sprite.scalex = wallpaper_sobj->sprite.scaley = 1.0F;
 }
 
 // 0x80104998
-void grWallpaperSectorUpdatePersp(GObj *bg_gobj)
+void grWallpaperSectorUpdatePersp(GObj *wallpaper_gobj)
 {
     Camera *cam;
-    SObj *bg_sobj;
+    SObj *wallpaper_sobj;
     f32 sqrt;
     Vec3f sp28;
     f32 temp;
@@ -221,37 +221,37 @@ void grWallpaperSectorUpdatePersp(GObj *bg_gobj)
         }
         scale = (temp - 1.0F) * 0.5F;
 
-        bg_sobj = SObjGetStruct(bg_gobj);
+        wallpaper_sobj = SObjGetStruct(wallpaper_gobj);
 
-        bg_sobj->sprite.scalex = bg_sobj->sprite.scaley = temp;
+        wallpaper_sobj->sprite.scalex = wallpaper_sobj->sprite.scaley = temp;
 
-        bg_sobj->pos.x = 10.0F - (300.0F * scale);
-        bg_sobj->pos.y = 10.0F - (220.0F * scale);
+        wallpaper_sobj->pos.x = 10.0F - (300.0F * scale);
+        wallpaper_sobj->pos.y = 10.0F - (220.0F * scale);
     }
 }
 
 // 0x80104ABC
 void grWallpaperSectorMakeSObj(void)
 {
-    GObj *bg_gobj;
-    SObj *bg_sobj;
+    GObj *wallpaper_gobj;
+    SObj *wallpaper_sobj;
 
-    sGRWallpaperGObj = bg_gobj = gcMakeGObjSPAfter(nOMObjCommonKindWallpaper, NULL, nOMObjCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
+    sGRWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(nOMObjCommonKindWallpaper, NULL, nOMObjCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(bg_gobj, func_ovl0_800CCF00, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(wallpaper_gobj, func_ovl0_800CCF00, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    bg_sobj = gcAppendSObjWithSprite(bg_gobj, gMPCollisionGroundData->wallpaper);
+    wallpaper_sobj = gcAppendSObjWithSprite(wallpaper_gobj, gMPCollisionGroundData->wallpaper);
 
-    bg_sobj->pos.x = 10.0F;
-    bg_sobj->pos.y = 10.0F;
+    wallpaper_sobj->pos.x = 10.0F;
+    wallpaper_sobj->pos.y = 10.0F;
 
-    bg_sobj->sprite.attr = SP_TEXSHUF;
+    wallpaper_sobj->sprite.attr = SP_TEXSHUF;
 
-    gcAddGObjProcess(bg_gobj, grWallpaperSectorUpdatePersp, nOMObjProcessKindProc, 3);
+    gcAddGObjProcess(wallpaper_gobj, grWallpaperSectorUpdatePersp, nOMObjProcessKindProc, 3);
 }
 
 // 0x80104B58
-void grWallpaperBonus3AddDL(GObj *bg_gobj)
+void grWallpaperBonus3AddDL(GObj *wallpaper_gobj)
 {
     gSPDisplayList(gDisplayListHead[0]++, dGRWallpaperDisplayList);
 }
@@ -259,11 +259,11 @@ void grWallpaperBonus3AddDL(GObj *bg_gobj)
 // 0x80104B88
 void grWallpaperBonus3MakeSObj(void)
 {
-    GObj *bg_gobj;
+    GObj *wallpaper_gobj;
 
-    sGRWallpaperGObj = bg_gobj = gcMakeGObjSPAfter(nOMObjCommonKindWallpaper, NULL, nOMObjCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
+    sGRWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(nOMObjCommonKindWallpaper, NULL, nOMObjCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(bg_gobj, grWallpaperBonus3AddDL, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(wallpaper_gobj, grWallpaperBonus3AddDL, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
 
 // 0x80104BDC

@@ -1774,6 +1774,6 @@ void mnSoundTestStartScene(void)
 {
     dMNSoundTestDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMNSoundTestDisplaySetup);
-    dMNSoundTestGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_TEXT_START - (uintptr_t)&ovl62_BSS_END);
+    dMNSoundTestGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl62_BSS_END);
     gsGTLSceneInit(&dMNSoundTestGtlSetup);
 }

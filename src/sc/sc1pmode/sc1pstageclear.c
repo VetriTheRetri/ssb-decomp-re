@@ -2104,7 +2104,7 @@ void sc1PStageClearStartScene(void)
 
 	func_80007024(&dGM1PStageClearDisplaySetup);
 
-	dGM1PStageClearGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_TEXT_START - (uintptr_t)&ovl56_BSS_END);
+	dGM1PStageClearGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl56_BSS_END);
 
 	gsGTLSceneInit(&dGM1PStageClearGtlSetup);
 }

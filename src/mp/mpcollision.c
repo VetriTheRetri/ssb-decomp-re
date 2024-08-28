@@ -4034,17 +4034,19 @@ void mpCollisionInitGroundData(void)
 {
     mpGeometryInfo *geometry_info;
 
-    gMPCollisionGroundData = (mpGroundData*)
+    gMPCollisionGroundData = gcGetDataFromFile
     (
+        mpGroundData*,
         (uintptr_t)rdManagerGetFileWithExternHeap
         (
             dMPCollisionGroundFileInfos[gBattleState->gr_kind].file_id, 
             gsMemoryAlloc
             (
-                rdManagerGetFileSize(dMPCollisionGroundFileInfos[gBattleState->gr_kind].file_id), 0x10
+                rdManagerGetFileSize(dMPCollisionGroundFileInfos[gBattleState->gr_kind].file_id),
+                0x10
             )
-        )
-        + dMPCollisionGroundFileInfos[gBattleState->gr_kind].offset
+        ),
+        dMPCollisionGroundFileInfos[gBattleState->gr_kind].offset
     );
 
     gMPCollisionGeometry = gMPCollisionGroundData->map_geometry;

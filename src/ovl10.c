@@ -1,3 +1,4 @@
+#include <debug.h>
 #include <sys/develop.h>
 #include <ft/ftdef.h>
 #include <ft/fighter.h>

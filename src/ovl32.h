@@ -4,8 +4,6 @@
 #include <ssb_types.h>
 #include <sys/objdraw.h>
 
-#define gmSaveChrMask(kind) (1 << (kind))
-
 #define mnCommonCheckGetOptionButtonInput(wait, is_button, mask) (((wait) == 0) && ((is_button) = scSubsysControllerGetPlayerHoldButtons(mask), (is_button) != FALSE))
 #define mnCommonCheckGetOptionStickInputUD(wait, stick_range, min, b) (((wait) == 0) && ((stick_range) = scSubsysControllerGetPlayerStickUD(min, b), (stick_range) != 0))
 #define mnCommonCheckGetOptionStickInputLR(wait, stick_range, min, b) (((wait) == 0) && ((stick_range) = scSubsysControllerGetPlayerStickLR(min, b), (stick_range) != 0))
@@ -37,6 +35,7 @@ typedef enum vsRecordsRankingColumnKind
 	vsRecordsRankingColumnKindTime,             // Time
 	vsRecordsRankingColumnKindUsePercentage,    // Use %
 	vsRecordsRankingColumnKindAverage           // Avg
+
 } vsRecordsRankingColumnKind;
 
 #endif

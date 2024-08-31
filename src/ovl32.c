@@ -1,3 +1,4 @@
+#include <debug.h>
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>

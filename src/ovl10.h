@@ -33,8 +33,6 @@ typedef enum mnTitleTextureIndex
 
 } mnTitleTextureIndex;
 
-#define gmSaveChrMask(kind) (1 << (kind))
-
 #define TAKE_MAX(a, b) \
 if ((a) < (b)) (a) = (b) \
 

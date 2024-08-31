@@ -20,11 +20,6 @@ extern void func_ovl0_800CD2CC(GObj*);
 extern void func_ovl0_800CCF00();
 
 
-// Forward declarations
-void mvOpeningDKSetupDisplayList(Gfx **display_list);
-void mvOpeningDKInit();
-
-
 // Data
 // 8018E070
 CameraDesc dMvOpeningDKCameraDescStart = {
@@ -56,48 +51,6 @@ rdFileID D_ovl37_8018E0BC[2] = {
 	0x25, 0x41
 };
 
-// 8018E0C4
-intptr_t dMvOpeningDKNameOffsets[3] = {
-
-	0x1268,
-	0x2F98,
-	0x0000
-};
-
-// 8018E0D0
-Vec2f dMvOpeningDKNameCharPositions[2] = {
-
-	{ 0.0,  0.0 },
-	{ 40.0, 0.0 }
-};
-
-// 8018E0E0
-syDisplaySetup D_ovl37_8018E0E0 = {
-
-	gSCSubsysFramebuffer0,
-	gSCSubsysFramebuffer1,
-	gSCSubsysFramebuffer2,
-	0x00000000,
-	0x00000140,
-	0x000000F0,
-	0x00016A99
-};
-
-// 8018E0FC
-scRuntimeInfo D_ovl37_8018E0FC = {
-
-	0x00000000, 0x8000A5E4,
-	0x800A26B8, &lOverlay37ArenaLo,
-	0x00000000, 0x00000001, 0x00000002, 0x00004000, 0x00002000,
-	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000C000,
-	mvOpeningDKSetupDisplayList, update_contdata,
-	0x00000000, 0x00000600, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000088, 0x00000000,
-	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000088, 0x00000000, 0x0000006C,
-	0x00000000, 0x00000090,
-	mvOpeningDKInit
-};
 
 // BSS
 // 8018E1C0
@@ -177,8 +130,17 @@ void mvOpeningDKDrawName()
 {
 	GObj* name_gobj;
 	SObj* name_sobj;
-	intptr_t offsets[3] = dMvOpeningDKNameOffsets;
-	Vec2f positions[2] = dMvOpeningDKNameCharPositions;
+	intptr_t offsets[3] = {
+
+		0x1268,
+		0x2F98,
+		0x0000
+	};
+	Vec2f positions[2] = {
+
+		{ 0.0,  0.0 },
+		{ 40.0, 0.0 }
+	};
 	s32 i;
 
 	gMvOpeningDKNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
@@ -488,6 +450,34 @@ void mvOpeningDKSetupDisplayList(Gfx **display_list)
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 	ftRenderLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
+
+// 8018E0E0
+syDisplaySetup D_ovl37_8018E0E0 = {
+
+	gSCSubsysFramebuffer0,
+	gSCSubsysFramebuffer1,
+	gSCSubsysFramebuffer2,
+	0x00000000,
+	0x00000140,
+	0x000000F0,
+	0x00016A99
+};
+
+// 8018E0FC
+scRuntimeInfo D_ovl37_8018E0FC = {
+
+	0x00000000, 0x8000A5E4,
+	0x800A26B8, &lOverlay37ArenaLo,
+	0x00000000, 0x00000001, 0x00000002, 0x00004000, 0x00002000,
+	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000C000,
+	mvOpeningDKSetupDisplayList, update_contdata,
+	0x00000000, 0x00000600, 0x00000000, 0x00000000,
+	0x00000000, 0x00000000, 0x00000088, 0x00000000,
+	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
+	0x00000000, 0x00000088, 0x00000000, 0x0000006C,
+	0x00000000, 0x00000090,
+	mvOpeningDKInit
+};
 
 // 8018E018
 void intro_focus_dk_entry()

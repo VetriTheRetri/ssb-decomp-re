@@ -3,8 +3,7 @@
 #include <sys/system_00.h>
 #include <ovl0/reloc_data_mgr.h>
 
-// EXTERN
-      // 800A5240
+// Externs
 extern intptr_t lOverlay36ArenaLo;  // 8018E620
 extern intptr_t lOverlay36ArenaHi;  // 803903E0
 extern void func_ovl0_800CCF00();
@@ -19,6 +18,7 @@ extern intptr_t FILE_041_MARIO_CAMERA_PARAMS_OFFSET; // 00000000 file 0x041 offs
 // DATA
 // 8018E090
 CameraDesc dMvOpeningMarioCameraDescStart = {
+
 	{ 300.0f, 500.0f, 1700.0f },
 	{ 0.0f, 100.0f, 0.0f },
 	0.15f
@@ -26,14 +26,15 @@ CameraDesc dMvOpeningMarioCameraDescStart = {
 
 // 8018E0AC
 CameraDesc dMvOpeningMarioCameraDescEnd = {
+
 	{ 800.0f, 500.0f, 1300.0f },
 	{ 100.0f, 100.0f, 0.0f },
 	0.15f
 };
 
 // 8018E0C8
-ftKeyCommand dMvOpeningMarioGameKey[] =
-{
+ftKeyCommand dMvOpeningMarioGameKey[] = {
+
 	FTKEY_EVENT_STICK(0, 0, 0),                         // 0x2000, 0x0000
 	FTKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 0x1001, 0x8000
 	FTKEY_EVENT_BUTTON(0, 11),                          // 0x100B, 0x0000
@@ -46,44 +47,12 @@ ftKeyCommand dMvOpeningMarioGameKey[] =
 
 // 8018E0E8
 rdFileID D_ovl36_8018E0E8[2] = {
+
 	0x25, 0x41
-};
-
-// 8018E0F0
-intptr_t dMvOpeningMarioNameOffsets[6] = {
-	0x00003980, 0x000005e0, 0x00005418, 0x000026b8,
-	0x000044b0, 0x00000000
-};
-
-// 8018E108
-f32 dMvOpeningMarioNameCharXPositions[5] = {
-	0.0f, 40.0f, 80.0f, 110.0f, 125.0f
-};
-
-// 8018E11C
-syDisplaySetup D_ovl36_8018E11C = {
-	0x80392a00,
-	0x803b6900, 0x803da800, 0x00000000, 0x00000140,
-	0x000000f0, 0x00016a99
-};
-
-// 8018E138
-scRuntimeInfo D_ovl36_8018E138 = {
-	0x00000000, 0x8000a5e4,
-	0x800a26b8, 0x8018e620, 0x00000000, 0x00000001,
-	0x00000002, 0x00004000, 0x00002000, 0x00000000,
-	0x00000000, 0x00008000, 0x00020000, 0x0000c000,
-	0x8018dfe4, 0x80004310, 0x00000000, 0x00000600,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000088, 0x00000000, 0x800d5cac, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, 0x00000088,
-	0x00000000, 0x0000006c, 0x00000000, 0x00000090,
-	0x8018de64
 };
 
 
 // BSS
-
 // 8018E200
 s32 D_ovl36_8018E200;
 
@@ -168,8 +137,15 @@ void mvOpeningMarioDrawName()
 {
 	GObj* name_gobj;
 	SObj* name_sobj;
-	intptr_t offsets[6] = dMvOpeningMarioNameOffsets;
-	f32 x_positions[5] = dMvOpeningMarioNameCharXPositions;
+	intptr_t offsets[6] = {
+
+		0x00003980, 0x000005e0, 0x00005418,
+		0x000026b8, 0x000044b0, 0x00000000
+	};
+	f32 x_positions[5] = {
+
+		0.0f, 40.0f, 80.0f, 110.0f, 125.0f
+	};
 	s32 i;
 
 	gMvOpeningMarioNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, GOBJ_LINKORDER_DEFAULT);
@@ -473,10 +449,7 @@ void mvOpeningMarioInit()
 	mvOpeningMarioCreatePosedFighterViewport();
 	mvOpeningMarioDrawName();
 
-	while (func_8000092C() < 1515U)
-	{
-		// sleep
-	}
+	while (func_8000092C() < 1515U);
 }
 
 // 8018DFE4
@@ -485,6 +458,33 @@ void mvOpeningMarioSetupDisplayList(Gfx **display_list)
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 	ftRenderLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
+
+// 8018E11C
+syDisplaySetup D_ovl36_8018E11C = {
+
+	gSCSubsysFramebuffer0,
+	gSCSubsysFramebuffer1,
+	gSCSubsysFramebuffer2,
+	0x00000000,
+	0x00000140,
+	0x000000F0,
+	0x00016A99
+};
+
+// 8018E138
+scRuntimeInfo D_ovl36_8018E138 = {
+	0x00000000, 0x8000a5e4,
+	0x800a26b8, &lOverlay36ArenaLo,
+	0x00000000, 0x00000001, 0x00000002, 0x00004000, 0x00002000,
+	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000c000,
+	mvOpeningMarioSetupDisplayList, update_contdata,
+	0x00000000, 0x00000600, 0x00000000, 0x00000000,
+	0x00000000, 0x00000000, 0x00000088, 0x00000000,
+	0x800d5cac, 0x00000000, 0x00000000, 0x00000000,
+	0x00000000, 0x00000088, 0x00000000, 0x0000006c,
+	0x00000000, 0x00000090,
+	mvOpeningMarioInit
+};
 
 // 8018E030
 void intro_focus_mario_entry()

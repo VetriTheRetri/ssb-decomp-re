@@ -13,11 +13,6 @@ extern func_ovl0_800CCF00();
 extern func_ovl0_800CD2CC();
 
 
-// Forward declarations
-void mvOpeningLinkInit();
-void gMvOpeningLinkSetupDisplayList(Gfx **display_list);
-
-
 // DATA
 // 8018E070
 CameraDesc dMvOpeningLinkCameraDescStart = {
@@ -47,46 +42,6 @@ rdFileID D_ovl40_8018E0B0[2] = {
 	0x00000025, 0x00000041
 };
 
-// 8018E0B8
-intptr_t dMvOpeningLinkNameOffsets[5] = {
-
-	0x00003358, 0x000026b8,
-	0x00003e88, 0x00002f98, 0x00000000
-};
-
-// 8018E0CC
-f32 dMvOpeningLinkNameCharXPositions[4] = {
-
-	0.0, 30.0, 45.0, 80.0
-};
-
-// 8018E0DC
-syDisplaySetup D_ovl40_8018E0DC = {
-
-	gSCSubsysFramebuffer0,
-	gSCSubsysFramebuffer1,
-	gSCSubsysFramebuffer2,
-	0x00000000,
-	0x00000140,
-	0x000000F0,
-	0x00016A99
-};
-
-// 8018E0F8
-scRuntimeInfo D_ovl40_8018E0F8 = {
-
-	0x00000000, 0x8000a5e4,
-	0x800a26b8, &lOverlay40ArenaLo,
-	0x00000000, 0x00000001, 0x00000002, 0x00004000, 0x00002000,
-	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000c000,
-	gMvOpeningLinkSetupDisplayList, update_contdata,
-	0x00000000, 0x00000600, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000088, 0x00000000,
-	0x800d5cac, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000088, 0x00000000, 0x0000006c,
-	0x00000000, 0x00000090,
-	mvOpeningLinkInit
-};
 
 // BSS
 // 8018E1C0
@@ -173,8 +128,15 @@ void mvOpeningLinkDrawName()
 {
 	GObj* name_gobj;
 	SObj* name_sobj;
-	intptr_t offsets[5] = dMvOpeningLinkNameOffsets;
-	f32 x_positions[4] = dMvOpeningLinkNameCharXPositions;
+	intptr_t offsets[5] = {
+
+		0x00003358, 0x000026b8,
+		0x00003e88, 0x00002f98, 0x00000000
+	};
+	f32 x_positions[4] = {
+
+		0.0, 30.0, 45.0, 80.0
+	};
 	s32 i;
 
 	gMvOpeningLinkNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
@@ -482,6 +444,34 @@ void gMvOpeningLinkSetupDisplayList(Gfx **display_list)
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 	ftRenderLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
+
+// 8018E0DC
+syDisplaySetup D_ovl40_8018E0DC = {
+
+	gSCSubsysFramebuffer0,
+	gSCSubsysFramebuffer1,
+	gSCSubsysFramebuffer2,
+	0x00000000,
+	0x00000140,
+	0x000000F0,
+	0x00016A99
+};
+
+// 8018E0F8
+scRuntimeInfo D_ovl40_8018E0F8 = {
+
+	0x00000000, 0x8000a5e4,
+	0x800a26b8, &lOverlay40ArenaLo,
+	0x00000000, 0x00000001, 0x00000002, 0x00004000, 0x00002000,
+	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000c000,
+	gMvOpeningLinkSetupDisplayList, update_contdata,
+	0x00000000, 0x00000600, 0x00000000, 0x00000000,
+	0x00000000, 0x00000000, 0x00000088, 0x00000000,
+	0x800d5cac, 0x00000000, 0x00000000, 0x00000000,
+	0x00000000, 0x00000088, 0x00000000, 0x0000006c,
+	0x00000000, 0x00000090,
+	mvOpeningLinkInit
+};
 
 // 8018E018
 void intro_focus_link_entry()

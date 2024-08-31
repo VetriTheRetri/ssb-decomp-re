@@ -30,8 +30,6 @@ extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32,
 
 
 // Forward declarations
-void mnStageInitSSS();
-void mnStageSetLighting(Gfx** display_list);
 void mnStagePositionStagePreviewCamera(Camera* stage_preview_cam, s32 stage_id);
 
 
@@ -98,178 +96,6 @@ Gfx D_ovl30_801345A8[] =
 	gsSPEndDisplayList()
 };
 
-// 801345D0
-intptr_t dMNStageChrOffsets[29] = {
-
-	0x00000040, 0x000000d0, 0x00000160, 0x000001f0,
-	0x00000280, 0x00000310, 0x000003a0, 0x00000430,
-	0x000004c0, 0x00000550, 0x000005e0, 0x00000670,
-	0x00000700, 0x00000790, 0x00000820, 0x000008b0,
-	0x00000940, 0x000009d0, 0x00000a60, 0x00000af0,
-	0x00000b80, 0x00000c10, 0x00000ca0, 0x00000d30,
-	0x00000dc0, 0x00000e50, 0x00000ed0, 0x00000f60,
-	0x00000fd0
-};
-
-// 80134644
-s32 dMNStageIDOrder[10] = {
-
-	0x00, 0x02, 0x04, 0x03, 0x08,
-	0x05, 0x06, 0x01, 0x07, 0xde
-};
-
-// 8013466C
-intptr_t dMNStageImageOffsets[10] = {
-
-	0x00004d88, 0x00005b68, 0x00006948, 0x00007728, 0x00008508,
-	0x000092e8, 0x0000bc88, 0x0000a0c8, 0x0000aea8, 0x0000cb10
-};
-
-// 80134694
-Vec2f dMNStageNamePositions[9] = {
-
-	{ 195.00f, 196.00f },
-	{ 202.00f, 196.00f },
-	{ 190.00f, 196.00f },
-	{ 195.00f, 196.00f },
-	{ 198.00f, 196.00f },
-	{ 190.00f, 196.00f },
-	{ 195.00f, 196.00f },
-	{ 190.00f, 196.00f },
-	{ 190.00f, 196.00f },
-};
-
-// 801346DC
-intptr_t dMNStageNameImageOffsets[9] = {
-
-	0x000001f8, 0x00000438, 0x00000678,
-	0x000008b8, 0x00000b10, 0x00000d58,
-	0x00001418, 0x00000f98, 0x000011d8
-};
-
-// 80134700
-char* D_ovl30_80134700[] = {
-
-	"IN THE SKY OF",
-	"SECTOR Z",
-	"CONGO JUNGLE",
-	"PLANET ZEBES",
-	"CASTLE OF HYRULE",
-	"YOSHI'S ISLAND",
-	"PUPUPU LAND",
-	"YAMABUKI CITY",
-	"CLASSIC MUSHROOM",
-	"CASTLE PEACH",
-	"ABOARD A GREAT FOX",
-};
-
-// 8013472C
-uintptr_t D_ovl30_8013472C[6] = { NULL };
-
-// 80134744
-char* D_ovl30_80134744 = "KINGDOM";
-
-// 80134748
-f32 D_ovl30_80134748[] = {
-
-	192.0, 167.0, 214.0, 167.0, 202.0, 169.0, 202.0, 169.0, 193.0, 169.0, 198.0,
-	169.0, 205.0, 169.0, 199.0, 169.0, 191.0, 167.0, 209.0, 174.0, 188.0, 174.0
-};
-
-// 801347A0
-s32 D_ovl30_801347A0[10] = { 0 };
-
-// 801347C8
-f32 D_ovl30_801347C8[4] = {
-
-	203.0, 174.0, 213.0, 174.0
-};
-
-// 801347D8
-s32 D_ovl30_801347D8[3] = {
-
-	255, 255, 255
-};
-
-// 801347E4
-Vec2f dMNStageLogoPositions[10] = {
-	{ 3.00f ,19.00f },
-	{ 3.00f, 19.00f },
-	{ 3.00f, 20.00f },
-	{ 2.00f, 20.00f },
-	{ 3.00f, 17.00f },
-	{ -1.00f, 19.00f },
-	{ 1.00f, 20.00f },
-	{ 1.00f, 20.00f },
-	{ 3.00f, 19.00f },
-	{ 34.00f, 20.00f }
-};
-
-// 80134834
-intptr_t dMNStageLogoOffsets[9] = {
-	0x0618, 0x1938,
-	0x0C78, 0x12D8,
-	0x25F8, 0x2C58,
-	0x1F98, 0x3918,
-	0x0618
-};
-
-// 80134858
-f32 dMNStagePreviewScale[9] = {
-
-	0.50f, 0.20f, 0.60f,
-	0.50f, 0.30f, 0.60f,
-	0.50f, 0.40f, 0.20f
-};
-
-// 8013487C
-Vec3f dMNStagePreviewTranslations[9] = {
-
-	{ 1700.00f, 1800.00f, 0.00f },
-	{ 1600.00f, 1600.00f, 0.00f },
-	{ 1600.00f, 1600.00f, 0.00f },
-	{ 1600.00f, 1600.00f, 0.00f },
-	{ 1600.00f, 1500.00f, 0.00f },
-	{ 1600.00f, 1600.00f, 0.00f },
-	{ 1600.00f, 1500.00f, 0.00f },
-	{ 1600.00f, 1600.00f, 0.00f },
-	{ 1200.00f, 1600.00f, 0.00f },
-};
-
-// 801348E8
-s32 D_801348E8_150458[9] = {
-
- 	6, 3, 0, 8, 2, 1, 5, 7, 4
-};
-
-// 8013490C
-syDisplaySetup D_ovl30_8013490C = {
-
-	gSCSubsysFramebuffer0,
-	gSCSubsysFramebuffer1,
-	gSCSubsysFramebuffer2,
-	0x00000000,
-	0x00000140,
-	0x000000F0,
-	0x00016A99,
-};
-
-// 80134928
-scRuntimeInfo D_ovl30_80134928 = {
-	0x00000000, 0x8000A5E4,
-	func_800A26B8, &lOverlay30ArenaLo,
-	0x00000000, 0x00000001, 0x00000002, 0x00004268, 0x00001000,
-	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x00008000,
-	mnStageSetLighting, update_contdata,
-	0x00000000, 0x00000200, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000088, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000088, 0x00000000, 0x0000006C,
-	0x00000000, 0x00000090,
-	mnStageInitSSS
-};
-
-// 80
 
 // BSS
 // 80134BD0
@@ -469,14 +295,24 @@ f32 mnStageGetChrSpacing(const char *s, s32 c)
 // 80131D80 - Unused?
 void mnStageDrawString(GObj* gobj, const char *str, f32 x, f32 y, s32 color[3])
 {
-	intptr_t chrOffsets[29] = dMNStageChrOffsets;
+	intptr_t chrOffsets[29] = {
+
+		0x00000040, 0x000000d0, 0x00000160, 0x000001f0,
+		0x00000280, 0x00000310, 0x000003a0, 0x00000430,
+		0x000004c0, 0x00000550, 0x000005e0, 0x00000670,
+		0x00000700, 0x00000790, 0x00000820, 0x000008b0,
+		0x00000940, 0x000009d0, 0x00000a60, 0x00000af0,
+		0x00000b80, 0x00000c10, 0x00000ca0, 0x00000d30,
+		0x00000dc0, 0x00000e50, 0x00000ed0, 0x00000f60,
+		0x00000fd0
+	};
 	SObj* chr_sobj;
 	f32 start_x = x;
 	s32 i;
 
 	for (i = 0; str[i] != 0; i++)
 	{
-		if (((((str[i] >= '0') && (str[i] <= '9')) ? TRUE : FALSE) != FALSE) || (str[i] == ' '))
+		if (((((str[i] >= '0') && (str[i] <= '9')) ? TRUE : FALSE)) || (str[i] == ' '))
 		{
 			if (str[i] == ' ')
 				start_x += 4.0f;
@@ -618,7 +454,11 @@ void mnStageCreateStageSelectGfx()
 // 80132430
 s32 mnStageGetStageID(s32 slot_id)
 {
-	s32 stage_ids[10] = dMNStageIDOrder;
+	s32 stage_ids[10] = {
+
+		0x00, 0x02, 0x04, 0x03, 0x08,
+		0x05, 0x06, 0x01, 0x07, 0xde
+	};
 
 	if (slot_id == 9)
 		return 0xDE;
@@ -659,7 +499,11 @@ void mnStageCreateStageImages()
 {
 	GObj* stage_image_gobj;
 	SObj* stage_image_sobj;
-	intptr_t offsets[10] = dMNStageImageOffsets;
+	intptr_t offsets[10] = {
+
+		0x00004d88, 0x00005b68, 0x00006948, 0x00007728, 0x00008508,
+		0x000092e8, 0x0000bc88, 0x0000a0c8, 0x0000aea8, 0x0000cb10
+	};
 	s32 x;
 	s32 i;
 
@@ -694,7 +538,18 @@ void mnStageCreateStageImages()
 // 801326DC
 void mnStagePositionStageName(SObj* stage_name_sobj, s32 stage_id)
 {
-	Vec2f positions[9] = dMNStageNamePositions;
+	Vec2f positions[9] = {
+
+		{ 195.00f, 196.00f },
+		{ 202.00f, 196.00f },
+		{ 190.00f, 196.00f },
+		{ 195.00f, 196.00f },
+		{ 198.00f, 196.00f },
+		{ 190.00f, 196.00f },
+		{ 195.00f, 196.00f },
+		{ 190.00f, 196.00f },
+		{ 190.00f, 196.00f },
+	};
 
 	stage_name_sobj->pos.x = 183.0f;
 	stage_name_sobj->pos.y = 196.0f;
@@ -704,7 +559,12 @@ void mnStagePositionStageName(SObj* stage_name_sobj, s32 stage_id)
 void mnStageCreateStageName(GObj* name_logo_gobj, s32 stage_id)
 {
 	SObj* stage_name_sobj;
-	intptr_t offsets[9] = dMNStageNameImageOffsets;
+	intptr_t offsets[9] = {
+
+		0x000001f8, 0x00000438, 0x00000678,
+		0x000008b8, 0x00000b10, 0x00000d58,
+		0x00001418, 0x00000f98, 0x000011d8
+	};
 
 	stage_name_sobj = gcAppendSObjWithSprite(name_logo_gobj, GetAddressFromOffset(gMNStageFilesArray[2], offsets[stage_id]));
 	mnStagePositionStageName(stage_name_sobj, stage_id);
@@ -716,6 +576,50 @@ void mnStageCreateStageName(GObj* name_logo_gobj, s32 stage_id)
 	stage_name_sobj->sprite.blue = 0;
 }
 
+// 80134700
+char* D_ovl30_80134700[] = {
+
+	"IN THE SKY OF",
+	"SECTOR Z",
+	"CONGO JUNGLE",
+	"PLANET ZEBES",
+	"CASTLE OF HYRULE",
+	"YOSHI'S ISLAND",
+	"PUPUPU LAND",
+	"YAMABUKI CITY",
+	"CLASSIC MUSHROOM",
+	"CASTLE PEACH",
+	"ABOARD A GREAT FOX",
+};
+
+// 8013472C
+uintptr_t D_ovl30_8013472C[6] = { NULL };
+
+// 80134744
+char* D_ovl30_80134744 = "KINGDOM";
+
+// 80134748
+f32 D_ovl30_80134748[] = {
+
+	192.0, 167.0, 214.0, 167.0, 202.0, 169.0, 202.0, 169.0, 193.0, 169.0, 198.0,
+	169.0, 205.0, 169.0, 199.0, 169.0, 191.0, 167.0, 209.0, 174.0, 188.0, 174.0
+};
+
+// 801347A0
+s32 D_ovl30_801347A0[10] = { 0 };
+
+// 801347C8
+f32 D_ovl30_801347C8[4] = {
+
+	203.0, 174.0, 213.0, 174.0
+};
+
+// 801347D8
+s32 D_ovl30_801347D8[3] = {
+
+	255, 255, 255
+};
+
 // 801327E0 - Unused?
 void func_ovl30_801327E0() {}
 
@@ -725,7 +629,19 @@ void func_ovl30_801327E8() {}
 // 801327F0
 void mnStagePositionLogo(GObj* name_logo_gobj, s32 stage_id)
 {
-	Vec2f positions[10] = dMNStageLogoPositions;
+	Vec2f positions[10] = {
+
+		{ 3.00f ,19.00f },
+		{ 3.00f, 19.00f },
+		{ 3.00f, 20.00f },
+		{ 2.00f, 20.00f },
+		{ 3.00f, 17.00f },
+		{ -1.00f, 19.00f },
+		{ 1.00f, 20.00f },
+		{ 1.00f, 20.00f },
+		{ 3.00f, 19.00f },
+		{ 34.00f, 20.00f }
+	};
 
 	if (stage_id == 0xDE)
 	{
@@ -743,7 +659,14 @@ void mnStagePositionLogo(GObj* name_logo_gobj, s32 stage_id)
 void mnStageCreateLogo(GObj* name_logo_gobj, s32 stage_id)
 {
 	SObj* name_logo_sobj;
-	intptr_t offsets[9] = dMNStageLogoOffsets;
+	intptr_t offsets[9] = {
+
+		0x0618, 0x1938,
+		0x0C78, 0x12D8,
+		0x25F8, 0x2C58,
+		0x1F98, 0x3918,
+		0x0618
+	};
 
 	if (stage_id == 0xDE)
 	{
@@ -773,9 +696,7 @@ void mnStageCreateStageNameAndLogo(s32 slot_id)
 	GObj* name_logo_gobj;
 
 	if (gMNStageNameLogoGobj != NULL)
-	{
 		gcEjectGObj(gMNStageNameLogoGobj);
-	}
 
 	name_logo_gobj = gcMakeGObjSPAfter(0U, NULL, 4U, 0x80000000U);
 	gMNStageNameLogoGobj = name_logo_gobj;
@@ -783,9 +704,7 @@ void mnStageCreateStageNameAndLogo(s32 slot_id)
 	mnStageCreateLogo(gMNStageNameLogoGobj, mnStageGetStageID(slot_id));
 
 	if (slot_id != 9)
-	{
 		mnStageCreateStageName(gMNStageNameLogoGobj, mnStageGetStageID(slot_id));
-	}
 }
 
 // 80132A58
@@ -922,7 +841,12 @@ void mnStageRenderStagePreviewSecondary(GObj* stage_geo_gobj)
 GObj* mnStageCreateStageGeo(s32 stage_id, mpGroundData* stage_info, mpGroundDesc* stage_geo, s32 stage_geo_id)
 {
 	GObj* stage_geo_gobj;
-	f32 scale[9] = dMNStagePreviewScale;
+	f32 scale[9] = {
+
+		0.50f, 0.20f, 0.60f,
+		0.50f, 0.30f, 0.60f,
+		0.50f, 0.40f, 0.20f
+	};
 
 	if (stage_geo->dobj_desc == NULL)
 	{
@@ -1106,7 +1030,18 @@ void mnStageCreateCursorViewport()
 // 8013390C
 void mnStagePositionStagePreviewCamera(Camera* stage_preview_cam, s32 stage_id)
 {
-	Vec3f positions[9] = dMNStagePreviewTranslations;
+	Vec3f positions[9] = {
+
+		{ 1700.00f, 1800.00f, 0.00f },
+		{ 1600.00f, 1600.00f, 0.00f },
+		{ 1600.00f, 1600.00f, 0.00f },
+		{ 1600.00f, 1600.00f, 0.00f },
+		{ 1600.00f, 1500.00f, 0.00f },
+		{ 1600.00f, 1600.00f, 0.00f },
+		{ 1600.00f, 1500.00f, 0.00f },
+		{ 1600.00f, 1600.00f, 0.00f },
+		{ 1200.00f, 1600.00f, 0.00f },
+	};
 
 	if (stage_id == 0xDE)
 		stage_id = 0;
@@ -1160,7 +1095,10 @@ void mnStageCreateStagePreviewViewport()
 // 80133B78
 void mnStageSaveSceneData()
 {
-	s32 unused[9] = D_801348E8_150458;
+	s32 unused[9] = {
+
+	 	6, 3, 0, 8, 2, 1, 5, 7, 4
+	};
 	s32 stage_id;
 
 	if (gMNStageCursorSlotId == 9)
@@ -1168,7 +1106,7 @@ void mnStageSaveSceneData()
 		do
 		{
 			stage_id = mtTrigGetRandomTimeUCharRange(9);
-		} while (mnStageGetIsLocked(stage_id) != FALSE || stage_id == gSceneData.gr_kind);
+		} while (mnStageGetIsLocked(stage_id) || stage_id == gSceneData.gr_kind);
 
 		gSceneData.gr_kind = stage_id;
 	}
@@ -1249,8 +1187,8 @@ void mnStageHandleButtonPresses(s32 arg0)
 			gMNStageScrollBuffer -= 1;
 
 		if (
-			(scSubsysControllerGetPlayerStickInRangeLR(-0x14, 0x14) != FALSE)
-			&& (scSubsysControllerGetPlayerStickInRangeUD(-0x14, 0x14) != FALSE)
+			(scSubsysControllerGetPlayerStickInRangeLR(-0x14, 0x14))
+			&& (scSubsysControllerGetPlayerStickInRangeUD(-0x14, 0x14))
 			&& (scSubsysControllerGetPlayerHoldButtons(U_JPAD | R_JPAD | R_TRIG | U_CBUTTONS | R_CBUTTONS) == FALSE)
 			&& (scSubsysControllerGetPlayerHoldButtons(D_JPAD | L_JPAD | L_TRIG | D_CBUTTONS | L_CBUTTONS) == FALSE)
 		)
@@ -1258,7 +1196,7 @@ void mnStageHandleButtonPresses(s32 arg0)
 			gMNStageScrollBuffer = 0;
 		}
 
-		if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | START_BUTTON) != FALSE)
+		if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | START_BUTTON))
 		{
 			mnStageSaveSceneData2();
 			func_800269C0_275C0(nSYAudioFGMStageSelect);
@@ -1277,7 +1215,7 @@ void mnStageHandleButtonPresses(s32 arg0)
 			leoInitUnit_atten();
 		}
 
-		if (scSubsysControllerGetPlayerTapButtons(B_BUTTON) != FALSE)
+		if (scSubsysControllerGetPlayerTapButtons(B_BUTTON))
 		{
 			mnStageSaveSceneData2();
 
@@ -1299,7 +1237,7 @@ void mnStageHandleButtonPresses(s32 arg0)
 		{
 			button_input = scSubsysControllerGetPlayerHoldButtons(U_JPAD | U_CBUTTONS);
 
-			if ((button_input != FALSE) || (stick_input = scSubsysControllerGetPlayerStickUD(0x14, 1), (stick_input != 0)))
+			if ((button_input) || (stick_input = scSubsysControllerGetPlayerStickUD(0x14, 1), (stick_input != 0)))
 			{
 				if ((gMNStageCursorSlotId >= 5) && (mnStageGetIsLocked(mnStageGetStageID(gMNStageCursorSlotId - 5)) == FALSE))
 				{
@@ -1312,7 +1250,7 @@ void mnStageHandleButtonPresses(s32 arg0)
 					mnStageCreateStagePreview(mnStageGetStageID(gMNStageCursorSlotId));
 				}
 
-				if (button_input != FALSE)
+				if (button_input)
 					gMNStageScrollBuffer = 12;
 				else
 					gMNStageScrollBuffer = (0xA0 - stick_input) / 7;
@@ -1322,7 +1260,7 @@ void mnStageHandleButtonPresses(s32 arg0)
 
 			button_input = scSubsysControllerGetPlayerHoldButtons(D_JPAD | D_CBUTTONS);
 
-			if ((button_input != FALSE) || (stick_input = scSubsysControllerGetPlayerStickUD(-0x14, 0), (stick_input != 0)))
+			if ((button_input) || (stick_input = scSubsysControllerGetPlayerStickUD(-0x14, 0), (stick_input != 0)))
 			{
 				if ((gMNStageCursorSlotId < 5) && (mnStageGetIsLocked(mnStageGetStageID(gMNStageCursorSlotId + 5)) == FALSE))
 				{
@@ -1335,7 +1273,7 @@ void mnStageHandleButtonPresses(s32 arg0)
 					mnStageCreateStagePreview(mnStageGetStageID(gMNStageCursorSlotId));
 				}
 
-				if (button_input != FALSE)
+				if (button_input)
 					gMNStageScrollBuffer = 12;
 				else
 					gMNStageScrollBuffer = (stick_input + 0xA0) / 7;
@@ -1344,12 +1282,12 @@ void mnStageHandleButtonPresses(s32 arg0)
 
 			button_input = scSubsysControllerGetPlayerHoldButtons(L_JPAD | L_TRIG | L_CBUTTONS);
 
-			if ((button_input != FALSE) || (stick_input = scSubsysControllerGetPlayerStickLR(-0x14, 0), (stick_input != FALSE)))
+			if ((button_input) || (stick_input = scSubsysControllerGetPlayerStickLR(-0x14, 0), (stick_input)))
 			{
 				switch (gMNStageCursorSlotId)
 				{
 					case 0:
-						gMNStageCursorSlotId = (mnStageGetIsLocked(mnStageGetStageID(4)) != FALSE) ? 3 : 4;
+						gMNStageCursorSlotId = (mnStageGetIsLocked(mnStageGetStageID(4))) ? 3 : 4;
 						break;
 					case 5:
 						gMNStageCursorSlotId = 9;
@@ -1363,7 +1301,7 @@ void mnStageHandleButtonPresses(s32 arg0)
 				mnStagePositionCursor(gMNStageCursorGobj, gMNStageCursorSlotId);
 				mnStageCreateStagePreview(mnStageGetStageID(gMNStageCursorSlotId));
 
-				if (button_input != FALSE)
+				if (button_input)
 					gMNStageScrollBuffer = 12;
 				else
 					gMNStageScrollBuffer = (stick_input + 0xA0) / 7;
@@ -1373,12 +1311,12 @@ void mnStageHandleButtonPresses(s32 arg0)
 
 			button_input = scSubsysControllerGetPlayerHoldButtons(R_JPAD | R_TRIG | R_CBUTTONS);
 
-			if ((button_input != FALSE) || (stick_input = scSubsysControllerGetPlayerStickLR(0x14, 1), (stick_input != FALSE)))
+			if ((button_input) || (stick_input = scSubsysControllerGetPlayerStickLR(0x14, 1), (stick_input)))
 			{
 				switch (gMNStageCursorSlotId)
 				{
 					case 3:
-						gMNStageCursorSlotId = (mnStageGetIsLocked(mnStageGetStageID(4)) != FALSE) ? 0 : 4;
+						gMNStageCursorSlotId = (mnStageGetIsLocked(mnStageGetStageID(4))) ? 0 : 4;
 						break;
 					case 4:
 						gMNStageCursorSlotId = 0;
@@ -1444,6 +1382,33 @@ void mnStageInitSSS()
 	mnStageCreateCursor();
 	mnStageCreateStagePreview(mnStageGetStageID(gMNStageCursorSlotId));
 }
+
+// 8013490C
+syDisplaySetup D_ovl30_8013490C = {
+
+	gSCSubsysFramebuffer0,
+	gSCSubsysFramebuffer1,
+	gSCSubsysFramebuffer2,
+	0x00000000,
+	0x00000140,
+	0x000000F0,
+	0x00016A99,
+};
+
+// 80134928
+scRuntimeInfo D_ovl30_80134928 = {
+	0x00000000, 0x8000A5E4,
+	func_800A26B8, &lOverlay30ArenaLo,
+	0x00000000, 0x00000001, 0x00000002, 0x00004268, 0x00001000,
+	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x00008000,
+	mnStageSetLighting, update_contdata,
+	0x00000000, 0x00000200, 0x00000000, 0x00000000,
+	0x00000000, 0x00000000, 0x00000088, 0x00000000,
+	0x00000000, 0x00000000, 0x00000000, 0x00000000,
+	0x00000000, 0x00000088, 0x00000000, 0x0000006C,
+	0x00000000, 0x00000090,
+	mnStageInitSSS
+};
 
 // 8013446C
 void mnStageStartScene()

@@ -21,11 +21,6 @@ extern void func_80007080(void*, f32, f32, f32, f32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 
 
-// Forward declarations
-void mvPortraitsInit();
-void mvPortraitsSetupDisplayList(Gfx **display_list);
-
-
 // Data
 // 801328A0
 rdFileID D_ovl35_801328A0[2] = {
@@ -48,70 +43,6 @@ s32 D_ovl35_801328A8[] = {
 	0xFFFFFF00,
 	0x00140000,
 	0x00000000
-};
-
-// 801328D8
-intptr_t dIntroPortraitsPortraitOffsetsSet1[4] = {
-
-	0x09960,
-	0x13310,
-	0x1CCC0,
-	0x26670
-};
-
-// 801328E8
-Vec2f dIntroPortraitsPortraitPositionsSet1[4] = {
-
-	{ 10.0, 10.0  },
-	{ 10.0, 65.0  },
-	{ 10.0, 120.0 },
-	{ 10.0, 175.0 }
-};
-
-// 80132908
-intptr_t dIntroPortraitsPortraitOffsetsSet2[4] = {
-
-	0x09960,
-	0x13310,
-	0x1CCC0,
-	0x26670
-};
-
-// 80132918
-Vec2f dIntroPortraitsPortraitPositionsSet2[4] = {
-
-	{ 10.0, 10.0  },
-	{ 10.0, 65.0  },
-	{ 10.0, 120.0 },
-	{ 10.0, 175.0 }
-};
-
-// 80132938
-syDisplaySetup D_ovl35_80132938 = {
-
-	gSCSubsysFramebuffer0,
-	gSCSubsysFramebuffer1,
-	gSCSubsysFramebuffer2,
-	0x00000000,
-	0x00000140,
-	0x000000F0,
-	0x00016A99
-};
-
-// 80132954
-scRuntimeInfo D_ovl35_80132954 = {
-
-	0x00000000, 0x8000A5E4,
-	func_8000A340, &lOverlay35ArenaLo,
-	0x00000000, 0x00000001, 0x00000002, 0x00009C40, 0x00001000,
-	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000C000,
-	mvPortraitsSetupDisplayList, update_contdata,
-	0x00000008, 0x00000600, 0x00000008, 0x00000000,
-	0x00000080, 0x00000080, 0x00000088, 0x00000100,
-	0x800D5CAC, 0x00000000, 0x00000200, 0x000000A0,
-	0x00000100, 0x00000088, 0x00000080, 0x0000006C,
-	0x00000010, 0x00000090,
-	mvPortraitsInit
 };
 
 
@@ -157,8 +88,20 @@ void mvPortraitsCreatePortraitsSet1()
 	GObj* portraits_gobj;
 	SObj* portrait_sobj;
 	s32 i;
-	intptr_t offsets[4] = dIntroPortraitsPortraitOffsetsSet1;
-	Vec2f positions[4] = dIntroPortraitsPortraitPositionsSet1;
+	intptr_t offsets[4] = {
+
+		0x09960,
+		0x13310,
+		0x1CCC0,
+		0x26670
+	};
+	Vec2f positions[4] = {
+
+		{ 10.0, 10.0  },
+		{ 10.0, 65.0  },
+		{ 10.0, 120.0 },
+		{ 10.0, 175.0 }
+	};
 
 	gIntroPortraitsPortraitGObj = portraits_gobj = gcMakeGObjSPAfter(0, 0, 0x11, GOBJ_LINKORDER_DEFAULT);
 	gcAddGObjDisplay(portraits_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000U, -1);
@@ -178,8 +121,20 @@ void mvPortraitsCreatePortraitsSet2()
 	GObj* portraits_gobj;
 	SObj* portrait_sobj;
 	s32 i;
-	intptr_t offsets[4] = dIntroPortraitsPortraitOffsetsSet2;
-	Vec2f positions[4] = dIntroPortraitsPortraitPositionsSet2;
+	intptr_t offsets[4] = {
+
+		0x09960,
+		0x13310,
+		0x1CCC0,
+		0x26670
+	};
+	Vec2f positions[4] = {
+
+		{ 10.0, 10.0  },
+		{ 10.0, 65.0  },
+		{ 10.0, 120.0 },
+		{ 10.0, 175.0 }
+	};
 
 	gIntroPortraitsPortraitGObj = portraits_gobj = gcMakeGObjSPAfter(0, 0, 0x11, GOBJ_LINKORDER_DEFAULT);
 	gcAddGObjDisplay(portraits_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000U, -1);
@@ -459,6 +414,34 @@ void mvPortraitsInit()
 	while (func_8000092C() < 1335U)
 		continue;
 }
+
+// 80132938
+syDisplaySetup D_ovl35_80132938 = {
+
+	gSCSubsysFramebuffer0,
+	gSCSubsysFramebuffer1,
+	gSCSubsysFramebuffer2,
+	0x00000000,
+	0x00000140,
+	0x000000F0,
+	0x00016A99
+};
+
+// 80132954
+scRuntimeInfo D_ovl35_80132954 = {
+
+	0x00000000, 0x8000A5E4,
+	func_8000A340, &lOverlay35ArenaLo,
+	0x00000000, 0x00000001, 0x00000002, 0x00009C40, 0x00001000,
+	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000C000,
+	mvPortraitsSetupDisplayList, update_contdata,
+	0x00000008, 0x00000600, 0x00000008, 0x00000000,
+	0x00000080, 0x00000080, 0x00000088, 0x00000100,
+	0x800D5CAC, 0x00000000, 0x00000200, 0x000000A0,
+	0x00000100, 0x00000088, 0x00000080, 0x0000006C,
+	0x00000010, 0x00000090,
+	mvPortraitsInit
+};
 
 // 8013283C
 void mvPortraitsStartScene()

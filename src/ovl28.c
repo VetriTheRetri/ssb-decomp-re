@@ -52,7 +52,6 @@ extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32,
 
 
 // Forward declarations
-void mnTrainingSetupDisplayList(Gfx **display_list);
 void mnTrainingCreateWhiteSquare(s32 port_id);
 void mnTrainingSyncNameAndLogo(s32 port_id);
 sb32 mnTrainingIsCostumeInUse(s32 ft_kind, s32 port_id, s32 costume_id);
@@ -61,7 +60,6 @@ void mnTrainingRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state);
 void mnTrainingDrawHandicapCPULevel(s32 port_id);
 void mnTrainingReorderCursorsOnPlacement(s32 port_id, s32 held_token_id);
 void mnTrainingSaveMatchInfo();
-void mnTrainingInitCSS();
 
 
 // DATA
@@ -88,381 +86,6 @@ rdFileID D_ovl28_80137F60[20] = {
 	0xFFFFFF00,
 	0x00EC0000,
 	0x00000000
-};
-
-// 80137FB0
-f32 dMNTrainingPortraitPositionsX[12] = {
-
-	25.0, 70.0, 115.0, 160.0, 205.0, 250.0,
-	25.0, 70.0, 115.0, 160.0, 205.0, 250.0
-};
-
-// 80137FE0
-f32 dMNTrainingPortraitVelocities[12] = {
-
-	1.9, 3.9, 7.8, -7.8, -3.8, -1.8,
-	1.8, 3.8, 7.8, -7.8, -3.8, -1.8
-};
-
-// 80138010
-Vec2f dMNTrainingPortraitPositionsXY[12] = {
-
-	{ -35.0, 36.0 },
-	{ -35.0, 36.0 },
-	{ -35.0, 36.0 },
-	{ 310.0, 36.0 },
-	{ 310.0, 36.0 },
-	{ 310.0, 36.0 },
-	{ -35.0, 79.0 },
-	{ -35.0, 79.0 },
-	{ -35.0, 79.0 },
-	{ 310.0, 79.0 },
-	{ 310.0, 79.0 },
-	{ 310.0, 79.0 }
-};
-
-// 80138070
-s32 D_ovl28_80138070[] = {
-
-	0xC55252C5,
-	0xA6524294,
-	0x595252C5,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000
-};
-
-// 80138094
-s32 dMNTrainingFTKindOrder[12] = {
-
-	4, 0, 2, 5, 3, 7, 11, 6, 8, 1, 9, 10
-};
-
-// 801380C4
-s32 dMNTrainingPortraitOrder[12] = {
-
-	1, 9, 2, 4, 0, 3, 7, 5, 8, 10, 11, 6
-};
-
-// 801380F4
-intptr_t dMNTrainingLockedPortraitOffsets[12] = {
-
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00020538,
-	0x00000000,
-	0x00000000,
-	0x0001E2E8,
-	0x00000000,
-	0x00000000,
-	0x000249D8,
-	0x00022788
-};
-
-// 80138124
-intptr_t dMNTrainingPortraitOffsets[12] = {
-
-	0x00004728,
-	0x0000D068,
-	0x00008BC8,
-	0x0000AE18,
-	0x00006978,
-	0x00011508,
-	0x00013758,
-	0x00019E48,
-	0x0000F2B8,
-	0x000159A8,
-	0x0001C098,
-	0x00017BF8
-};
-
-// 80138154
-Vec2f dMNTrainingUnusedPositions[12] = {
-
-	{ 13.0, 28.0 },
-	{ 6.0 , 25.0 },
-	{ 5.0 , 25.0 },
-	{ 13.0, 25.0 },
-	{ 13.0, 28.0 },
-	{ 13.0, 28.0 },
-	{ 16.0, 25.0 },
-	{ 4.0 , 25.0 },
-	{ 13.0, 25.0 },
-	{ 13.0, 25.0 },
-	{ 13.0, 25.0 },
-	{ 13.0, 25.0 }
-};
-
-// 801381B4
-intptr_t dMNTrainingLogoOffsets[12] = {
-
-	0x0618,
-	0x1938,
-	0x0C78,
-	0x12D8,
-	0x0618,
-	0x25F8,
-	0x2C58,
-	0x32B8,
-	0x1F98,
-	0x3918,
-	0x3918,
-	0x3F78
-};
-
-// 801381E4
-intptr_t dMNTrainingNameOffsets[12] = {
-
-	0x1838,
-	0x25B8,
-	0x1FF8,
-	0x2358,
-	0x1B18,
-	0x2BA0,
-	0x2ED8,
-	0x3998,
-	0x28E8,
-	0x32F8,
-	0x3DB8,
-	0x35B0
-};
-
-// 80138214
-intptr_t dMNTrainingPanelLUTOffsets[4] = {
-
-	0x103F8,
-	0x10420,
-	0x10470,
-	0x10448
-};
-
-// 80138224
-intptr_t dMNTrainingTypeOffsets[4] = {
-
-	0x878,
-	0xA58,
-	0xC38,
-	0xE18
-};
-
-// 80138234
-f32 dMNTrainingTypeOffsetsX[4] = {
-
-	8.0, 5.0, 5.0, 5.0
-};
-
-// 80138244
-intptr_t dMNTrainingTypeOffsetsDuplicate[4] = {
-
-	0x878,
-	0xA58,
-	0xC38,
-	0xE18
-};
-
-// 80138254
-f32 dMNTrainingTypeOffsetsXDuplicate[4] = {
-
-	8.0, 5.0, 5.0, 5.0
-};
-
-// 80138264
-s32 D_ovl28_80138264[10] = {
-
-	0x5388,
-	0x5440,
-	0x5558,
-	0x5668,
-	0x5778,
-	0x5888,
-	0x5998,
-	0x5AA8,
-	0x5BB8,
-	0x5CC8
-};
-
-// 8013828C
-f32 D_ovl28_8013828C[10] = {
-
-	8.0, 6.0, 9.0, 8.0, 8.0, 9.0, 8.0, 8.0, 8.0, 9.0
-};
-
-// 801382B4 cursor type texture colors
-syColorRGBPair dMNTrainingCursorTypeColors[4] = {
-
-	{ { 0xE0, 0x15, 0x15 }, { 0x5B, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0xFB }, { 0x00, 0x00, 0x52 } },
-	{ { 0xCA, 0x94, 0x08 }, { 0x62, 0x3C, 0x00 } },
-	{ { 0x00, 0x91, 0x00 }, { 0x00, 0x4F, 0x00 } }
-};
-
-// 801382CC cursor type texture offsets
-intptr_t dMNTrainingCursorTypeOffsets[4] = {
-
-	0x8268,
-	0x8368,
-	0x8468,
-	0x8568
-};
-
-// 801382DC cursor offsets
-intptr_t dMNTrainingCursorOffsets[3] = {
-
-	0x6F88,
-	0x76E8,
-	0x8168
-};
-
-// 801382E8 x,y offset pairs for cursor type texture
-Vec2i dMNTrainingCursorTypePositions[3] = {
-
-	{ 0x7, 0xF },
-	{ 0x9, 0xA },
-	{ 0x9, 0xF }
-};
-
-// 80138300 panel color indexes
-s32 dMNTrainingPanelColorIndexesUnused[4] = {
-
-	0, 1, 2, 3
-};
-
-// 80138310
-u16 dMNTrainingAnnouncerNames[12] = {
-
-	0x01F3, 0x01E6,
-	0x01E3, 0x0201,
-	0x01F2, 0x01F1,
-	0x0217, 0x01E5,
-	0x01F0, 0x01FB,
-	0x01FC, 0x01F5
-};
-
-// 80138328
-s32 D_ovl28_80138328[10] = {
-
-	0xD310,
-	0xD3E0,
-	0xD4B0,
-	0xD580,
-	0xD650,
-	0xD720,
-	0xD7F0,
-	0xD8C0,
-	0xD990,
-	0xDA60
-};
-
-// 80138350
-s32 dMNTrainingTokenPickupDisplayOrders[4] = {
-
-	6, 4, 2, 0
-};
-
-// 80138360 display orders for cursors holding tokens on token placement
-s32 dMNTrainingTokenPlaceHeldDisplayOrders[4] = {
-
-	3, 2, 1, 0
-};
-
-// 80138370 display orders for cursors not holding tokens on token placement
-s32 dMNTrainingTokenPlaceUnheldDisplayOrders[4] = {
-
-	6, 4, 2, 0
-};
-
-// 80138380 x, y offset pairs for cursor type texture
-Vec2i dMNTrainingCursorTypePositions2[3] = {
-
-	{ 0x7, 0xF },
-	{ 0x9, 0xA },
-	{ 0x9, 0xF }
-};
-
-// 80138398 token offsets
-intptr_t dMNTrainingTokenOffsets[5] = {
-
-	0x9048,
-	0x9B28,
-	0xA608,
-	0xB0E8,
-	0xBBC8
-};
-
-// 801383AC cursor type texture offsets
-intptr_t dMNTrainingCursorTypeOffsetsUnused[4] = {
-
-	0x8268,
-	0x8368,
-	0x8468,
-	0x8568
-};
-
-// 801383BC display orders for cursors on initial load
-s32 dMNTrainingCursorStartingDisplayOrders[4] = {
-
-	6, 4, 2, 0
-};
-
-// 801383CC token offsets not including cpu
-intptr_t dMNTrainingTokenOffsetsNoCPU[4] = {
-
-	0x9048,
-	0x9B28,
-	0xA608,
-	0xB0E8
-};
-
-// 801383DC display orders for tokens on initial load
-s32 dMNTrainingTokenStartingDisplayOrders[4] = {
-
-	3, 2, 1, 0
-};
-
-// 801383EC display orders for tokens while being held initially?
-s32 dMNTrainingTokenHoldingDisplayOrders[4] = {
-
-	6, 4, 2, 0
-};
-
-// 801383FC
-f32 dMNTrainingWhiteCircleSizes[12] = {
-
-	1.5, 1.5, 2.0, 1.5, 1.5, 1.5,
-	1.5, 1.5, 1.5, 1.5, 1.5, 1.5
-};
-
-// 8013842C
-syDisplaySetup D_ovl28_8013842C = {
-
-	gSCSubsysFramebuffer0,
-	gSCSubsysFramebuffer1,
-	gSCSubsysFramebuffer2,
-	0x00000000,
-	0x00000140,
-	0x000000F0,
-	0x00016A99
-};
-
-// 80138448
-scRuntimeInfo D_ovl28_80138448 = {
-
-	0x00000000, 0x8000A5E4,
-	func_800A26B8, &lOverlay28ArenaLo,
-	0x00000000, 0x00000001, 0x00000002, 0x000055F0, 0x00000200,
-	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x00008000,
-	mnTrainingSetupDisplayList, update_contdata,
-	0x00000000, 0x00000200, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000088, 0x00000000,
-	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000088, 0x00000000, 0x0000006C,
-	0x00000000, 0x00000090,
-	mnTrainingInitCSS
 };
 
 
@@ -580,8 +203,16 @@ void mnTrainingSelectCharWithToken(s32 port_id, s32 select_button)
 // 80131C70
 f32 mnTrainingGetNextPortraitX(s32 portrait_id, f32 current_x_position)
 {
-	f32 portrait_x_position[12] = dMNTrainingPortraitPositionsX,
-		portrait_velocity[12] = dMNTrainingPortraitVelocities;
+	f32 portrait_x_position[12] = {
+
+		25.0, 70.0, 115.0, 160.0, 205.0, 250.0,
+		25.0, 70.0, 115.0, 160.0, 205.0, 250.0
+	},
+		portrait_velocity[12] = {
+
+		1.9, 3.9, 7.8, -7.8, -3.8, -1.8,
+		1.8, 3.8, 7.8, -7.8, -3.8, -1.8
+	};
 
 	if (current_x_position == portrait_x_position[portrait_id])
 	{
@@ -626,7 +257,13 @@ void mnTrainingSetPortraitX(GObj *portrait_gobj)
 // 80131E0C
 void mnTrainingInitializePortraitBackgroundPosition(SObj *portrait_bg_sobj, s32 portrait_id)
 {
-	Vec2f coordinates[12] = dMNTrainingPortraitPositionsXY;
+	Vec2f coordinates[12] = {
+
+		{ -35.0, 36.0 }, { -35.0, 36.0 }, { -35.0, 36.0 },
+		{ 310.0, 36.0 }, { 310.0, 36.0 }, { 310.0, 36.0 },
+		{ -35.0, 79.0 }, { -35.0, 79.0 }, { -35.0, 79.0 },
+		{ 310.0, 79.0 }, { 310.0, 79.0 }, { 310.0, 79.0 }
+	};
 
 	portrait_bg_sobj->pos.x = coordinates[portrait_id].x;
 	portrait_bg_sobj->pos.y = coordinates[portrait_id].y;
@@ -671,13 +308,30 @@ sb32 mnTrainingGetIsLocked(s32 char_id)
 	return FALSE;
 }
 
+// 80138070
+s32 D_ovl28_80138070[] = {
+
+	0xC55252C5,
+	0xA6524294,
+	0x595252C5,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000
+};
+
 // 80131FC8 - Unused?
 void func_ovl28_80131FC8() {}
 
 // 80131FD0
 s32 mnTrainingGetFtKind(s32 portrait_id)
 {
-	s32 ftKind_order[12] = dMNTrainingFTKindOrder;
+	s32 ftKind_order[12] = {
+
+		4, 0, 2, 5, 3, 7, 11, 6, 8, 1, 9, 10
+	};
 
 	return ftKind_order[portrait_id];
 }
@@ -685,7 +339,10 @@ s32 mnTrainingGetFtKind(s32 portrait_id)
 // 80132020
 s32 mnTrainingGetPortraitId(s32 ft_kind)
 {
-	s32 portrait_id_order[12] = dMNTrainingPortraitOrder;
+	s32 portrait_id_order[12] = {
+
+		1, 9, 2, 4, 0, 3, 7, 5, 8, 10, 11, 6
+	};
 
 	return portrait_id_order[ft_kind];
 }
@@ -706,7 +363,11 @@ void mnTrainingCreateLockedPortrait(s32 portrait_id)
 {
 	GObj* texture_gobj;
 	SObj* texture_sobj;
-	intptr_t locked_portrait_offsets[12] = dMNTrainingLockedPortraitOffsets;
+	intptr_t locked_portrait_offsets[12] = {
+
+		0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00020538, 0x00000000,
+		0x00000000, 0x0001E2E8, 0x00000000, 0x00000000, 0x000249D8, 0x00022788
+	};
 
 	// portrait bg (fire)
 	texture_gobj = gcMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
@@ -756,7 +417,11 @@ void mnTrainingCreatePortrait(s32 portrait_id)
 {
 	GObj *portrait_gobj, *portrait_bg_gobj;
 	SObj *texture_sobj;
-	intptr_t portrait_offsets[12] = dMNTrainingPortraitOffsets;
+	intptr_t portrait_offsets[12] = {
+
+		0x00004728, 0x0000D068, 0x00008BC8, 0x0000AE18, 0x00006978, 0x00011508,
+		0x00013758, 0x00019E48, 0x0000F2B8, 0x000159A8, 0x0001C098, 0x00017BF8
+	};
 
 	// if locked, render locked portrait instead
 	if (mnTrainingGetIsLocked(mnTrainingGetFtKind(portrait_id)))
@@ -799,18 +464,30 @@ void mnTrainingCreatePortraits()
 	s32 portrait_id;
 
 	for (portrait_id = 0; portrait_id < 12; portrait_id++)
-	{
 		mnTrainingCreatePortrait(portrait_id);
-	}
 }
 
 // 801325D4
 void mnTrainingSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
 {
 	SObj* sobj;
-	Vec2f coords[12] = dMNTrainingUnusedPositions;
-	intptr_t logo_offsets[12] = dMNTrainingLogoOffsets;
-	intptr_t name_offsets[12] = dMNTrainingNameOffsets;
+	Vec2f coords[12] = {
+
+		{ 13.0, 28.0 }, { 6.0 , 25.0 }, { 5.0 , 25.0 },
+		{ 13.0, 25.0 }, { 13.0, 28.0 }, { 13.0, 28.0 },
+		{ 16.0, 25.0 }, { 4.0 , 25.0 }, { 13.0, 25.0 },
+		{ 13.0, 25.0 }, { 13.0, 25.0 }, { 13.0, 25.0 }
+	};
+	intptr_t logo_offsets[12] = {
+
+		0x0618, 0x1938, 0x0C78, 0x12D8, 0x0618, 0x25F8,
+		0x2C58, 0x32B8, 0x1F98, 0x3918, 0x3918, 0x3F78
+	};
+	intptr_t name_offsets[12] = {
+
+		0x1838, 0x25B8, 0x1FF8, 0x2358, 0x1B18, 0x2BA0,
+		0x2ED8, 0x3998, 0x28E8, 0x32F8, 0x3DB8, 0x35B0
+	};
 
 	if (ft_kind != nFTKindNull)
 	{
@@ -916,13 +593,16 @@ void mnTrainingCreateTeamButtonViewPort()
 void mnTrainingUpdatePanel(GObj* panel_gobj, s32 port_id)
 {
 	SObj* panel_sobj;
-	intptr_t offsets[4] = dMNTrainingPanelLUTOffsets;
+	intptr_t lut_offsets[4] = {
+
+		0x103F8, 0x10420, 0x10470, 0x10448
+	};
 
 	panel_sobj = SObjGetStruct(panel_gobj);
 
 	if (port_id == gMNTrainingHumanPanelPort)
 	{
-		panel_sobj->sprite.LUT = GetAddressFromOffset(gMNTrainingFilesArray[0], offsets[gMNTrainingHumanPanelPort]);
+		panel_sobj->sprite.LUT = GetAddressFromOffset(gMNTrainingFilesArray[0], lut_offsets[gMNTrainingHumanPanelPort]);
 	}
 	else
 	{
@@ -935,8 +615,18 @@ void mnTrainingCreateTypeImage(s32 port_id)
 {
 	GObj* type_gobj;
 	SObj* type_sobj;
-	intptr_t offsets[4] = dMNTrainingTypeOffsets;
-	f32 floats[4] = dMNTrainingTypeOffsetsX;
+
+	intptr_t offsets[4] = {
+
+		0x878,
+		0xA58,
+		0xC38,
+		0xE18
+	};
+	f32 floats[4] = {
+
+		8.0, 5.0, 5.0, 5.0
+	};
 
 	gMNTrainingPanels[port_id].type = type_gobj = gcMakeGObjSPAfter(0U, NULL, 0x16U, 0x80000000U);
 	gcAddGObjDisplay(type_gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
@@ -966,8 +656,18 @@ void mnTrainingCreatePanel(s32 port_id)
 {
 	GObj* panel_gobj;
 	GObj* namelogo_gobj;
-	intptr_t type_offsets[4] = dMNTrainingTypeOffsetsDuplicate; // unused
-	f32 type_x_offsets[4] = dMNTrainingTypeOffsetsXDuplicate; // unused
+
+	// unused
+	intptr_t type_offsets[4] = {
+
+		0x878, 0xA58, 0xC38, 0xE18
+	};
+
+	// unused
+	f32 type_x_offsets[4] = {
+
+		8.0, 5.0, 5.0, 5.0
+	};
 
 	// create panel
 	panel_gobj = func_ovl0_800CD050(0, NULL, 0x16, 0x80000000, func_ovl0_800CCF00, 0x1C, 0x80000000, -1, GetAddressFromOffset(gMNTrainingFilesArray[1], &FILE_017_PANEL_IMAGE_OFFSET), 1, NULL, 1);
@@ -1055,6 +755,27 @@ void mnTrainingDrawTitleAndBack()
 	SObjGetStruct(back_gobj)->sprite.attr &= ~SP_FASTCOPY;
 	SObjGetStruct(back_gobj)->sprite.attr |= SP_TRANSPARENT;
 }
+
+// 80138264
+s32 D_ovl28_80138264[10] = {
+
+	0x5388,
+	0x5440,
+	0x5558,
+	0x5668,
+	0x5778,
+	0x5888,
+	0x5998,
+	0x5AA8,
+	0x5BB8,
+	0x5CC8
+};
+
+// 8013828C
+f32 D_ovl28_8013828C[10] = {
+
+	8.0, 6.0, 9.0, 8.0, 8.0, 9.0, 8.0, 8.0, 8.0, 9.0
+};
 
 // 801332C4 - Unused?
 void func_ovl28_801332C4() {}
@@ -1293,10 +1014,27 @@ void mnTrainingRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state)
 {
 	SObj* cursor_sobj;
 	f32 current_x, current_y;
-	syColorRGBPair type_colors[4] = dMNTrainingCursorTypeColors;
-	intptr_t type_offsets[4] = dMNTrainingCursorTypeOffsets;
-	intptr_t cursor_offsets[3] = dMNTrainingCursorOffsets;
-	Vec2i type_positions[3] = dMNTrainingCursorTypePositions;
+	syColorRGBPair type_colors[4] = {
+
+		{ { 0xE0, 0x15, 0x15 }, { 0x5B, 0x00, 0x00 } },
+		{ { 0x00, 0x00, 0xFB }, { 0x00, 0x00, 0x52 } },
+		{ { 0xCA, 0x94, 0x08 }, { 0x62, 0x3C, 0x00 } },
+		{ { 0x00, 0x91, 0x00 }, { 0x00, 0x4F, 0x00 } }
+	};
+	intptr_t type_offsets[4] = {
+
+		0x8268, 0x8368, 0x8468, 0x8568
+	};
+	intptr_t cursor_offsets[3] = {
+
+		0x6F88, 0x76E8, 0x8168
+	};
+	Vec2i type_positions[3] = {
+
+		{ 0x7, 0xF },
+		{ 0x9, 0xA },
+		{ 0x9, 0xF }
+	};
 
 	current_x = SObjGetStruct(cursor_gobj)->pos.x;
 	current_y = SObjGetStruct(cursor_gobj)->pos.y;
@@ -1329,7 +1067,12 @@ void func_ovl28_80133CA0() {}
 void mnTrainingUpdatePanels()
 {
 	s32 i;
-	s32 color_indexes[4] = dMNTrainingPanelColorIndexesUnused; // unused
+
+	// unused
+	s32 color_indexes[4] = {
+
+		0, 1, 2, 3
+	};
 
 	mnTrainingUpdatePanel(gMNTrainingPanels[gMNTrainingHumanPanelPort].panel, gMNTrainingHumanPanelPort);
 	mnTrainingUpdatePanel(gMNTrainingPanels[gMNTrainingCPUPanelPort].panel, gMNTrainingCPUPanelPort);
@@ -1456,7 +1199,15 @@ void mnTrainingCreateWhiteSquare(s32 port_id)
 // 801341B0
 void mnTrainingAnnounceFighter(s32 port_id, s32 panel_id)
 {
-	u16 announcer_fgms[12] = dMNTrainingAnnouncerNames;
+	u16 announcer_fgms[12] = {
+
+		0x01F3, 0x01E6,
+		0x01E3, 0x0201,
+		0x01F2, 0x01F1,
+		0x0217, 0x01E5,
+		0x01F0, 0x01FB,
+		0x01FC, 0x01F5
+	};
 
 	if (gMNTrainingPanels[port_id].p_sfx != NULL)
 	{
@@ -1627,6 +1378,21 @@ void mnTrainingDrawHandicapCPULevel(s32 port_id)
 	handicap_cpu_level_sobj->pos.y = 202.0F;
 }
 
+// 80138328
+s32 D_ovl28_80138328[10] = {
+
+	0xD310,
+	0xD3E0,
+	0xD4B0,
+	0xD580,
+	0xD650,
+	0xD720,
+	0xD7F0,
+	0xD8C0,
+	0xD990,
+	0xDA60
+};
+
 // 80134830 - Unused?
 void func_ovl28_80134830() {}
 
@@ -1658,7 +1424,10 @@ sb32 mnTrainingSelectChar(GObj* cursor_gobj, s32 port_id, s32 arg2, s32 select_b
 // 801348F0
 void mnTrainingReorderCursorsOnPickup(s32 port_id, s32 token_id)
 {
-	s32 diplay_orders[4] = dMNTrainingTokenPickupDisplayOrders;
+	s32 diplay_orders[4] = {
+
+		6, 4, 2, 0
+	};
 	s32 i, order_id;
 
 	gcMoveGObjDL(gMNTrainingPanels[port_id].cursor, 0x20U, diplay_orders[3]);
@@ -1680,7 +1449,15 @@ void mnTrainingReorderCursorsOnPickup(s32 port_id, s32 token_id)
 // 80134A4C
 void mnTrainingReorderCursorsOnPlacement(s32 port_id, s32 held_token_id)
 {
-	s32 held_orders[4] = dMNTrainingTokenPlaceHeldDisplayOrders, unheld_orders[4] = dMNTrainingTokenPlaceUnheldDisplayOrders;
+	s32 held_orders[4] = {
+
+		3, 2, 1, 0
+	},
+		unheld_orders[4] = {
+
+		6, 4, 2, 0
+	};
+
 	s32 *order;
 	s32 unused;
 	sb32 token_held[4];
@@ -1848,7 +1625,12 @@ s32 mnTrainingGetFtKindFromTokenPosition(s32 port_id)
 void mnTrainingAutoPositionCursor(GObj* cursor_gobj, s32 port_id)
 {
 	gsController* controller;
-	Vec2i coords[3] = dMNTrainingCursorTypePositions2;
+	Vec2i coords[3] = {
+
+		{ 0x7, 0xF },
+		{ 0x9, 0xA },
+		{ 0x9, 0xF }
+	};
 	f32 delta;
 	sb32 is_within_bounds;
 
@@ -2124,7 +1906,14 @@ void mnTrainingRedrawToken(GObj* token_gobj, s32 token_index)
 {
 	SObj* token_sobj;
 	f32 current_x, current_y;
-	intptr_t token_offsets[5] = dMNTrainingTokenOffsets;
+	intptr_t token_offsets[5] = {
+
+		0x9048,
+		0x9B28,
+		0xA608,
+		0xB0E8,
+		0xBBC8
+	};
 
 	current_x = SObjGetStruct(token_gobj)->pos.x;
 	current_y = SObjGetStruct(token_gobj)->pos.y;
@@ -2265,10 +2054,18 @@ void mnTrainingCreateCursor(s32 port_id)
 {
 	GObj* cursor_gobj;
 	s32 unused;
-	intptr_t unk1[4] = dMNTrainingCursorTypeOffsetsUnused;
-	s32 unk3[4] = dMNTrainingCursorStartingDisplayOrders;
 
-	cursor_gobj = func_ovl0_800CD050(0, NULL, 0x13, 0x80000000, func_ovl0_800CCF00, 0x20, unk3[port_id], -1, GetAddressFromOffset(gMNTrainingFilesArray[0], &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1, mnTrainingHandleButtonPresses, 2);
+	// unused
+	intptr_t cursor_type_offsets[4] = {
+
+		0x8268, 0x8368, 0x8468, 0x8568
+	};
+	s32 starting_display_orders[4] = {
+
+		6, 4, 2, 0
+	};
+
+	cursor_gobj = func_ovl0_800CD050(0, NULL, 0x13, 0x80000000, func_ovl0_800CCF00, 0x20, starting_display_orders[port_id], -1, GetAddressFromOffset(gMNTrainingFilesArray[0], &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1, mnTrainingHandleButtonPresses, 2);
 
 	gMNTrainingPanels[port_id].cursor = cursor_gobj;
 	cursor_gobj->user_data.s = port_id;
@@ -2298,11 +2095,20 @@ void mnTrainingCreateToken(s32 port_id)
 {
 	GObj* token_gobj;
 	mnCharPanelTraining* panel_info;
-	intptr_t offsets[4] = dMNTrainingTokenOffsetsNoCPU;
-	s32 orders1[4] = dMNTrainingTokenStartingDisplayOrders;
-	s32 orders2[4] = dMNTrainingTokenHoldingDisplayOrders;
+	intptr_t offsets_no_cpu[4] = {
 
-	gMNTrainingPanels[port_id].token = token_gobj = func_ovl0_800CD050(0, NULL, 0x14, 0x80000000, mnTrainingRenderToken, 0x21, orders1[port_id], -1, GetAddressFromOffset(gMNTrainingFilesArray[0], offsets[port_id]), 1, mnTrainingSyncTokenAndFighter, 1);
+		0x9048, 0x9B28, 0xA608, 0xB0E8
+	};
+	s32 starting_display_orders[4] = {
+
+		3, 2, 1, 0
+	};
+	s32 holding_display_orders[4] = {
+
+		6, 4, 2, 0
+	};
+
+	gMNTrainingPanels[port_id].token = token_gobj = func_ovl0_800CD050(0, NULL, 0x14, 0x80000000, mnTrainingRenderToken, 0x21, starting_display_orders[port_id], -1, GetAddressFromOffset(gMNTrainingFilesArray[0], offsets_no_cpu[port_id]), 1, mnTrainingSyncTokenAndFighter, 1);
 
 	panel_info = &gMNTrainingPanels[port_id];
 
@@ -2312,7 +2118,7 @@ void mnTrainingCreateToken(s32 port_id)
 		mnTrainingRedrawToken(token_gobj, 4);
 
 	if ((panel_info->player_type == mnPanelTypeHuman) && (panel_info->held_port_id != -1))
-		gcMoveGObjDL(panel_info->token, 0x20U, orders2[port_id] + 1);
+		gcMoveGObjDL(panel_info->token, 0x20U, holding_display_orders[port_id] + 1);
 
 	if (panel_info->char_id == nFTKindNull)
 	{
@@ -2523,7 +2329,11 @@ void mnTrainingCreateSyncShadeAndCostumeRoutine()
 void mnTrainingSyncWhiteCircleSizeAndDisplay(GObj* white_circle_gobj)
 {
 	s32 portrait_id = white_circle_gobj->user_data.s;
-	f32 sizes[12] = dMNTrainingWhiteCircleSizes;
+	f32 sizes[12] = {
+
+		1.5, 1.5, 2.0, 1.5, 1.5, 1.5,
+		1.5, 1.5, 1.5, 1.5, 1.5, 1.5
+	};
 
 	if ((gMNTrainingPanels[portrait_id].unk_0x88 == 0) && (gMNTrainingPanels[portrait_id].char_id != nFTKindNull))
 	{
@@ -2974,6 +2784,34 @@ void mnTrainingInitCSS()
 	func_800266A0_272A0();
 	func_800269C0_275C0(0x212U);
 }
+
+// 8013842C
+syDisplaySetup D_ovl28_8013842C = {
+
+	gSCSubsysFramebuffer0,
+	gSCSubsysFramebuffer1,
+	gSCSubsysFramebuffer2,
+	0x00000000,
+	0x00000140,
+	0x000000F0,
+	0x00016A99
+};
+
+// 80138448
+scRuntimeInfo D_ovl28_80138448 = {
+
+	0x00000000, 0x8000A5E4,
+	func_800A26B8, &lOverlay28ArenaLo,
+	0x00000000, 0x00000001, 0x00000002, 0x000055F0, 0x00000200,
+	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x00008000,
+	mnTrainingSetupDisplayList, update_contdata,
+	0x00000000, 0x00000200, 0x00000000, 0x00000000,
+	0x00000000, 0x00000000, 0x00000088, 0x00000000,
+	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
+	0x00000000, 0x00000088, 0x00000000, 0x0000006C,
+	0x00000000, 0x00000090,
+	mnTrainingInitCSS
+};
 
 // 80137F00
 void training_css_entry()

@@ -51,11 +51,9 @@ extern void func_ovl0_800CD2CC();
 
 
 // Forward declarations
-void mnBonusInitCSS();
 void mnBonusSaveMatchInfo();
 sb32 mnBonusAreAllCompleted();
 void mnBonusCreateWhiteSquare(s32 port_id);
-void mnBonusSetupDisplayList(Gfx **display_list);
 void mnBonusReorderCursorsOnPlacement(s32 port_id);
 s32 mnBonusGetFtKindFromTokenPositionEvenIfLocked();
 void mnBonusAnnounceFighter(s32 port_id, s32 panel_id);
@@ -86,422 +84,6 @@ s32 D_ovl29_80136F7C[] = {
 	0xFFFFFF00,
 	0x00EC0000,
 	0x00000000
-};
-
-// 80136FB0
-intptr_t dMnBonusSmallerNumberOffsets[10] = {
-
-	0x068,
-	0x118,
-	0x1C8,
-	0x278,
-	0x328,
-	0x3D8,
-	0x488,
-	0x538,
-	0x5E8,
-	0x698
-};
-
-// 80136FD8
-intptr_t dMnBonusChrOffsets[29] = {
-
-	0x040, 0x0D0, 0x160, 0x1F0, 0x280, 0x310, 0x3A0, 0x430, 0x4C0, 0x550,
-	0x5E0, 0x670, 0x700, 0x790, 0x820, 0x8B0, 0x940, 0x9D0, 0xA60, 0xAF0,
-	0xB80, 0xC10, 0xCA0, 0xD30, 0xDC0, 0xE50, 0xED0, 0xF60, 0xFD0
-};
-
-// 8013704C
-f32 dMnBonusChrWidths[29] = {
-
-	5.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 3.0, 4.0, 4.0, 4.0, 5.0, 5.0, 4.0,
-	4.0, 5.0, 4.0, 4.0, 5.0, 4.0, 5.0, 5.0, 5.0, 5.0, 4.0, 2.0, 7.0, 3.0
-};
-
-// 801370C0
-f32 dMnBonusPortraitPositionsX[12] = {
-
-	25.0, 70.0, 115.0, 160.0, 205.0, 250.0,
-	25.0, 70.0, 115.0, 160.0, 205.0, 250.0
-};
-
-// 801370F0
-f32 dMnBonusPortraitVelocities[12] = {
-
-	1.9, 3.9, 7.8, -7.8, -3.8, -1.8,
-	1.8, 3.8, 7.8, -7.8, -3.8, -1.8
-};
-
-// 80137120
-Vec2f dMnBonusPortraitPositionsXY[12] = {
-
-	{ -35.0, 36.0 },
-	{ -35.0, 36.0 },
-	{ -35.0, 36.0 },
-	{ 310.0, 36.0 },
-	{ 310.0, 36.0 },
-	{ 310.0, 36.0 },
-	{ -35.0, 79.0 },
-	{ -35.0, 79.0 },
-	{ -35.0, 79.0 },
-	{ 310.0, 79.0 },
-	{ 310.0, 79.0 },
-	{ 310.0, 79.0 }
-};
-
-// 80137180
-s32 D_ovl29_80137180[] = {
-
-	0xC55252C5,
-	0xA6524294,
-	0x595252C5,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000
-};
-
-// 801371A4
-s32 dMnBonusFtKindOrder[12] = {
-
-	4, 0, 2, 5, 3, 7, 11, 6, 8, 1, 9, 10
-};
-
-// 801371D4
-s32 dMnBonusPortraitOrder[12] = {
-
-	1, 9, 2, 4, 0, 3, 7, 5, 8, 10, 11, 6
-};
-
-// 80137204
-s32 dMnBonusLockedPortraitOffsets[12] = {
-
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00020538,
-	0x00000000,
-	0x00000000,
-	0x0001E2E8,
-	0x00000000,
-	0x00000000,
-	0x000249D8,
-	0x00022788
-};
-
-// 80137234
-s32 dMnBonusPortraitOffsets[12] = {
-
-	0x00004728,
-	0x0000D068,
-	0x00008BC8,
-	0x0000AE18,
-	0x00006978,
-	0x00011508,
-	0x00013758,
-	0x00019E48,
-	0x0000F2B8,
-	0x000159A8,
-	0x0001C098,
-	0x00017BF8
-};
-
-// 80137264
-Vec2f dMnBonusUnusedPositions[12] = {
-
-	{ 13.0, 28.0 },
-	{ 6.0 , 25.0 },
-	{ 5.0 , 25.0 },
-	{ 13.0, 25.0 },
-	{ 13.0, 28.0 },
-	{ 13.0, 28.0 },
-	{ 16.0, 25.0 },
-	{ 4.0 , 25.0 },
-	{ 13.0, 25.0 },
-	{ 13.0, 25.0 },
-	{ 13.0, 25.0 },
-	{ 13.0, 25.0 }
-};
-
-// 801372C4
-s32 dMnBonusLogoOffsets[12] = {
-
-	0x0618,
-	0x1938,
-	0x0C78,
-	0x12D8,
-	0x0618,
-	0x25F8,
-	0x2C58,
-	0x32B8,
-	0x1F98,
-	0x3918,
-	0x3918,
-	0x3F78
-};
-
-// 801372F4
-s32 dMnBonusNameOffsets[12] = {
-
-	0x1838,
-	0x25B8,
-	0x1FF8,
-	0x2358,
-	0x1B18,
-	0x2BA0,
-	0x2ED8,
-	0x3998,
-	0x28E8,
-	0x32F8,
-	0x3DB8,
-	0x35B0
-};
-
-// 80137324
-intptr_t dMnBonusPanelOffsets[4] = {
-
-	0x103F8,
-	0x10420,
-	0x10470,
-	0x10448
-};
-
-// 80137334
-intptr_t dMnBonusTypeOffsets[4] = {
-
-	0x878,
-	0xA58,
-	0xC38,
-	0xE18
-};
-
-// 80137344
-f32 dMnBonusTypeOffsetsX[4] = {
-
-	8.0, 5.0, 5.0, 5.0
-};
-
-// 80137354
-intptr_t dMnBonusNumberOffsets[10] = {
-
-	0x5388,
-	0x5440,
-	0x5558,
-	0x5668,
-	0x5778,
-	0x5888,
-	0x5998,
-	0x5AA8,
-	0x5BB8,
-	0x5CC8
-};
-
-// 80138A5C
-f32 dMnBonusNumberWidths[10] = {
-
-	8.0, 6.0, 9.0, 8.0, 8.0,
-	9.0, 8.0, 8.0, 8.0, 9.0
-};
-
-// 801373A4
-s32 dMnBonusBestTimeColorsUnused[3] = {
-
-	0xC5,
-	0xB6,
-	0xA7
-};
-
-// 801373B0
-s32 dMnBonusBestTimeColors[6] = {
-
-	0x00,
-	0x00,
-	0x00,
-	0x7E,
-	0x7C,
-	0x77
-};
-
-// 801373C8
-s32 dMnBonusBestCountColorsUnused[3] = {
-
-	0xC5,
-	0xB6,
-	0xA7
-};
-
-// 801373D4
-s32 dMnBonusBestCountColors[6] = {
-
-	0x00,
-	0x00,
-	0x00,
-	0x7E,
-	0x7C,
-	0x77
-};
-
-// 801373EC
-s32 dMnBonusTotalTimeColorsUnused[3] = {
-
-	0xC5,
-	0xB6,
-	0xA7
-};
-
-// 801373F8
-s32 dMnBonusTotalTimeColors[6] = {
-
-	0x00,
-	0x00,
-	0x00,
-	0x7E,
-	0x7C,
-	0x77
-};
-
-// 80137410 cursor type texture colors
-syColorRGBPair dMnBonusCursorTypeColors[4] = {
-
-	{ { 0xE0, 0x15, 0x15 }, { 0x5B, 0x00, 0x00 } },
-	{ { 0x00, 0x00, 0xFB }, { 0x00, 0x00, 0x52 } },
-	{ { 0xCA, 0x94, 0x08 }, { 0x62, 0x3C, 0x00 } },
-	{ { 0x00, 0x91, 0x00 }, { 0x00, 0x4F, 0x00 } }
-};
-
-// 80137428 cursor type texture offsets
-intptr_t dMnBonusCursorTypeOffsets[4] = {
-
-	0x8268,
-	0x8368,
-	0x8468,
-	0x8568
-};
-
-// 80137438 cursor offsets
-intptr_t dMnBonusCursorOffsets[3] = {
-
-	0x6F88,
-	0x76E8,
-	0x8168
-};
-
-// 80137444 x,y offset pairs for cursor type texture
-Vec2i dMnBonusCursorTypePositions[3] = {
-
-	{ 0x7, 0xF },
-	{ 0x9, 0xA },
-	{ 0x9, 0xF }
-};
-
-
-// 8013745C announcer names
-u16 dMnBonusAnnouncerNames[12] = {
-
-	0x01F3, 0x01E6,
-	0x01E3, 0x0201,
-	0x01F2, 0x01F1,
-	0x0217, 0x01E5,
-	0x01F0, 0x01FB,
-	0x01FC, 0x01F5
-};
-
-// 80137474 display orders for cursors on token pickup
-s32 dMnBonusTokenPickupDisplayOrders[4] = {
-
-	6, 4, 2, 0
-};
-
-// 80137484 display orders for cursors not holding tokens on token placement
-s32 dMnBonusTokenPlaceUnheldDisplayOrders[4] = {
-
-	3, 2, 1, 0
-};
-
-// 80137494 x,y offset pairs for cursor type texture
-Vec2i dMnBonusCursorTypePositions2[3] = {
-
-	{ 0x7, 0xF },
-	{ 0x9, 0xA },
-	{ 0x9, 0xF }
-};
-
-// 801374AC
-s32 D_ovl29_801374AC[] = {
-
-	0x00009048,
-	0x00009B28,
-	0x0000A608,
-	0x0000B0E8,
-	0x0000BBC8
-};
-
-// 801374C0 cursor type texture offsets
-intptr_t dMnBonusCursorTypeOffsetsUnused[4] = {
-
-	0x8268,
-	0x8368,
-	0x8468,
-	0x8568
-};
-
-// 801374D0 display orders for cursors on initial load
-s32 dMnBonusCursorStartingDisplayOrders[4] = {
-
-	6, 4, 2, 0
-};
-
-// 801374E0 token offsets not including cpu
-intptr_t dMnBonusTokenOffsetsNoCPU[4] = {
-
-	0x9048,
-	0x9B28,
-	0xA608,
-	0xB0E8
-};
-
-// 801374F0 display orders for tokens on initial load
-s32 dMnBonusTokenStartingDisplayOrders[4] = {
-
-	3, 2, 1, 0
-};
-
-// 80137500 white circle size
-f32 dMnBonusWhiteCircleSizes[12] = {
-
-	1.5, 1.5, 2.0, 1.5, 1.5, 1.5,
-	1.5, 1.5, 1.5, 1.5, 1.5, 1.5
-};
-
-// 80137530
-syDisplaySetup D_ovl29_80137530 = {
-
-	gSCSubsysFramebuffer0,
-	gSCSubsysFramebuffer1,
-	gSCSubsysFramebuffer2,
-	0x00000000,
-	0x00000140,
-	0x000000F0,
-	0x00016A99
-};
-
-// 8013754C
-scRuntimeInfo D_ovl29_8013754C = {
-
-	0x00000000, 0x8000A5E4,
-	func_8000A340, &lOverlay29ArenaLo,
-	0x00000000, 0x00000001, 0x00000002, 0x00004A38, 0x00000200,
-	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x00008000,
-	mnBonusSetupDisplayList, update_contdata,
-	0x00000000, 0x00000100, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000088, 0x00000000,
-	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000088, 0x00000000, 0x0000006C,
-	0x00000000, 0x00000090,
-	mnBonusInitCSS
 };
 
 
@@ -635,7 +217,11 @@ s32 mnBonusGetNumberOfDigits(s32 num, s32 maxDigits)
 // 80131CEC
 void mnBonusCreateSmallerNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors[], s32 maxDigits, sb32 pad)
 {
-	intptr_t number_offsets[10] = dMnBonusSmallerNumberOffsets;
+	intptr_t number_offsets[10] = {
+
+		0x068, 0x118, 0x1C8, 0x278, 0x328,
+		0x3D8, 0x488, 0x538, 0x5E8, 0x698
+	};
 	SObj* number_sobj;
 	f32 left_x = x;
 	s32 place;
@@ -666,6 +252,21 @@ void mnBonusCreateSmallerNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 co
 		number_sobj->pos.y = y;
 	}
 }
+
+// 80136FD8
+intptr_t dMnBonusChrOffsets[29] = {
+
+	0x040, 0x0D0, 0x160, 0x1F0, 0x280, 0x310, 0x3A0, 0x430, 0x4C0, 0x550,
+	0x5E0, 0x670, 0x700, 0x790, 0x820, 0x8B0, 0x940, 0x9D0, 0xA60, 0xAF0,
+	0xB80, 0xC10, 0xCA0, 0xD30, 0xDC0, 0xE50, 0xED0, 0xF60, 0xFD0
+};
+
+// 8013704C
+f32 dMnBonusChrWidths[29] = {
+
+	5.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 3.0, 4.0, 4.0, 4.0, 5.0, 5.0, 4.0,
+	4.0, 5.0, 4.0, 4.0, 5.0, 4.0, 5.0, 5.0, 5.0, 5.0, 4.0, 2.0, 7.0, 3.0
+};
 
 // 80131F5C - Unused?
 void func_ovl29_80131F5C() {}
@@ -704,8 +305,16 @@ void mnBonusSelectCharWithToken(s32 port_id, s32 select_button)
 // 80132030
 f32 mnBonusGetNextPortraitX(s32 portrait_id, f32 current_x_position)
 {
-	f32 portrait_x_position[12] = dMnBonusPortraitPositionsX,
-		portrait_velocity[12] = dMnBonusPortraitVelocities;
+	f32 portrait_x_position[12] = {
+
+		25.0, 70.0, 115.0, 160.0, 205.0, 250.0,
+		25.0, 70.0, 115.0, 160.0, 205.0, 250.0
+	},
+		portrait_velocity[12] = {
+
+		1.9, 3.9, 7.8, -7.8, -3.8, -1.8,
+		1.8, 3.8, 7.8, -7.8, -3.8, -1.8
+	};
 
 	if (current_x_position == portrait_x_position[portrait_id])
 	{
@@ -750,7 +359,13 @@ void mnBonusSetPortraitX(GObj *portrait_gobj)
 // 801321CC
 void mnBonusInitializePortraitBackgroundPosition(SObj *portrait_bg_sobj, s32 portrait_id)
 {
-	Vec2f coordinates[12] = dMnBonusPortraitPositionsXY;
+	Vec2f coordinates[12] = {
+
+		{ -35.0, 36.0 }, { -35.0, 36.0 }, { -35.0, 36.0 },
+		{ 310.0, 36.0 }, { 310.0, 36.0 }, { 310.0, 36.0 },
+		{ -35.0, 79.0 }, { -35.0, 79.0 }, { -35.0, 79.0 },
+		{ 310.0, 79.0 }, { 310.0, 79.0 }, { 310.0, 79.0 }
+	};
 
 	portrait_bg_sobj->pos.x = coordinates[portrait_id].x;
 	portrait_bg_sobj->pos.y = coordinates[portrait_id].y;
@@ -795,13 +410,30 @@ sb32 mnBonusGetIsLocked(s32 char_id)
 	return FALSE;
 }
 
+// 80137180
+s32 D_ovl29_80137180[] = {
+
+	0xC55252C5,
+	0xA6524294,
+	0x595252C5,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x00000000
+};
+
 // 80132388 - Unused?
 void func_ovl29_80132388() {}
 
 // 80132390
 s32 mnBonusGetFtKind(s32 portrait_id)
 {
-	s32 ftKind_order[12] = dMnBonusFtKindOrder;
+	s32 ftKind_order[12] = {
+
+		4, 0, 2, 5, 3, 7, 11, 6, 8, 1, 9, 10
+	};
 
 	return ftKind_order[portrait_id];
 }
@@ -809,7 +441,10 @@ s32 mnBonusGetFtKind(s32 portrait_id)
 // 801323E0
 s32 mnBonusGetPortraitId(s32 ft_kind)
 {
-	s32 portrait_id_order[12] = dMnBonusPortraitOrder;
+	s32 portrait_id_order[12] = {
+
+		1, 9, 2, 4, 0, 3, 7, 5, 8, 10, 11, 6
+	};
 
 	return portrait_id_order[ft_kind];
 }
@@ -830,7 +465,11 @@ void mnBonusCreateLockedPortrait(s32 portrait_id)
 {
 	GObj* texture_gobj;
 	SObj* texture_sobj;
-	intptr_t locked_portrait_offsets[12] = dMnBonusLockedPortraitOffsets;
+	intptr_t locked_portrait_offsets[12] = {
+
+		0x00000000, 0x00000000, 0x00000000, 0x00000000, 0x00020538, 0x00000000,
+		0x00000000, 0x0001E2E8, 0x00000000, 0x00000000, 0x000249D8, 0x00022788
+	};
 
 	// portrait bg (fire)
 	texture_gobj = gcMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
@@ -880,7 +519,11 @@ void mnBonusCreatePortrait(s32 portrait_id)
 {
 	GObj *portrait_gobj, *portrait_bg_gobj;
 	SObj *texture_sobj;
-	intptr_t portrait_offsets[12] = dMnBonusPortraitOffsets;
+	intptr_t portrait_offsets[12] = {
+
+		0x00004728, 0x0000D068, 0x00008BC8, 0x0000AE18, 0x00006978, 0x00011508,
+		0x00013758, 0x00019E48, 0x0000F2B8, 0x000159A8, 0x0001C098, 0x00017BF8
+	};
 
 	// if locked, render locked portrait instead
 	if (mnBonusGetIsLocked(mnBonusGetFtKind(portrait_id)))
@@ -935,9 +578,23 @@ void mnBonusCreatePortraits()
 void mnBonusSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
 {
 	SObj* sobj;
-	Vec2f coords[12] = dMnBonusUnusedPositions;
-	intptr_t logo_offsets[12] = dMnBonusLogoOffsets;
-	intptr_t name_offsets[12] = dMnBonusNameOffsets;
+	Vec2f coords[12] = {
+
+		{ 13.0, 28.0 }, { 6.0 , 25.0 }, { 5.0 , 25.0 },
+		{ 13.0, 25.0 }, { 13.0, 28.0 }, { 13.0, 28.0 },
+		{ 16.0, 25.0 }, { 4.0 , 25.0 }, { 13.0, 25.0 },
+		{ 13.0, 25.0 }, { 13.0, 25.0 }, { 13.0, 25.0 }
+	};
+	intptr_t logo_offsets[12] = {
+
+		0x0618, 0x1938, 0x0C78, 0x12D8, 0x0618, 0x25F8,
+		0x2C58, 0x32B8, 0x1F98, 0x3918, 0x3918, 0x3F78
+	};
+	intptr_t name_offsets[12] = {
+
+		0x1838, 0x25B8, 0x1FF8, 0x2358, 0x1B18, 0x2BA0,
+		0x2ED8, 0x3998, 0x28E8, 0x32F8, 0x3DB8, 0x35B0
+	};
 
 	if (ft_kind != nFTKindNull)
 	{
@@ -998,7 +655,10 @@ void mnBonusCreatePanelViewport()
 void mnBonusUpdatePanel(GObj* panel_gobj, s32 port_id)
 {
 	SObj* panel_sobj;
-	intptr_t offsets[4] = dMnBonusPanelOffsets;
+	intptr_t offsets[4] = {
+
+		0x103F8, 0x10420, 0x10470, 0x10448
+	};
 
 	panel_sobj = SObjGetStruct(panel_gobj);
 
@@ -1010,8 +670,14 @@ void mnBonusCreatePanel(s32 port_id)
 {
 	GObj* gobj;
 	SObj* type_sobj;
-	intptr_t type_offsets[4] = dMnBonusTypeOffsets;
-	f32 type_x_offsets[4] = dMnBonusTypeOffsetsX;
+	intptr_t type_offsets[4] = {
+
+		0x878, 0xA58, 0xC38, 0xE18
+	};
+	f32 type_x_offsets[4] = {
+
+		8.0, 5.0, 5.0, 5.0
+	};
 
 	// create panel
 	gobj = func_ovl0_800CD050(0, NULL, 0x16, 0x80000000, func_ovl0_800CCF00, 0x1C, 0x80000000, -1, GetAddressFromOffset(gMnBonusFilesArray[5], &FILE_017_PANEL_IMAGE_OFFSET), 1, NULL, 1);
@@ -1038,6 +704,28 @@ void mnBonusCreatePanel(s32 port_id)
 	gMnBonusPanel.name_logo = gobj;
 	gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
 }
+
+// 80137354
+intptr_t dMnBonusNumberOffsets[10] = {
+
+	0x5388,
+	0x5440,
+	0x5558,
+	0x5668,
+	0x5778,
+	0x5888,
+	0x5998,
+	0x5AA8,
+	0x5BB8,
+	0x5CC8
+};
+
+// 80138A5C
+f32 dMnBonusNumberWidths[10] = {
+
+	8.0, 6.0, 9.0, 8.0, 8.0,
+	9.0, 8.0, 8.0, 8.0, 9.0
+};
 
 // 801330C4 - Unused?
 void func_ovl29_801330C4() {}
@@ -1219,8 +907,14 @@ void mnBonusDrawBestTime()
 	SObj* temp_v0_2;
 	SObj* temp_v0_3;
 	SObj* temp_v0_4;
-	s32 colors1[3] = dMnBonusBestTimeColorsUnused;
-	s32 colors2[6] = dMnBonusBestTimeColors;
+	s32 colors1[3] = {
+
+		0xC5, 0xB6, 0xA7
+	};
+	s32 colors2[6] = {
+
+		0x00, 0x00, 0x00, 0x7E, 0x7C, 0x77
+	};
 	s32 best_time;
 	s32 ft_kind = mnBonusGetFtKindFromTokenPositionEvenIfLocked();
 
@@ -1293,8 +987,14 @@ void mnBonusDrawBestCount()
 	GObj* count_gobj;
 	SObj* label_sobj;
 	SObj *foo, *bar;
-	s32 colors1[3] = dMnBonusBestCountColorsUnused;
-	s32 colors2[6] = dMnBonusBestCountColors;
+	s32 colors1[3] = {
+
+		0xC5, 0xB6, 0xA7
+	};
+	s32 colors2[6] = {
+
+		0x00, 0x00, 0x00, 0x7E, 0x7C, 0x77
+	};
 	s32 ft_kind = mnBonusGetFtKindFromTokenPositionEvenIfLocked();
 
 	if (gMnBonusHighscoreGobj != NULL)
@@ -1364,8 +1064,14 @@ void mnDrawBonusTotalTime()
 	SObj* temp_v0_2;
 	SObj* temp_v0_4;
 	SObj* temp_v0_3;
-	s32 colors1[3] = dMnBonusTotalTimeColorsUnused;
-	s32 colors2[6] = dMnBonusTotalTimeColors;
+	s32 colors1[3] = {
+
+		0xC5, 0xB6, 0xA7
+	};
+	s32 colors2[6] = {
+
+		0x00, 0x00, 0x00, 0x7E, 0x7C, 0x77
+	};
 	s32 centiseconds;
 	s32 remainder;
 	s32 seconds;
@@ -1553,10 +1259,29 @@ void mnBonusRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state)
 {
 	SObj* cursor_sobj;
 	f32 current_x, current_y;
-	syColorRGBPair type_colors[4] = dMnBonusCursorTypeColors;
-	intptr_t type_offsets[4] = dMnBonusCursorTypeOffsets;
-	intptr_t cursor_offsets[3] = dMnBonusCursorOffsets;
-	Vec2i type_positions[3] = dMnBonusCursorTypePositions;
+	syColorRGBPair type_colors[4] = {
+
+		{ { 0xE0, 0x15, 0x15 }, { 0x5B, 0x00, 0x00 } },
+		{ { 0x00, 0x00, 0xFB }, { 0x00, 0x00, 0x52 } },
+		{ { 0xCA, 0x94, 0x08 }, { 0x62, 0x3C, 0x00 } },
+		{ { 0x00, 0x91, 0x00 }, { 0x00, 0x4F, 0x00 } }
+	};
+	intptr_t type_offsets[4] = {
+
+		0x8268, 0x8368, 0x8468, 0x8568
+	};
+	intptr_t cursor_offsets[3] = {
+
+		0x6F88,
+		0x76E8,
+		0x8168
+	};
+	Vec2i type_positions[3] = {
+
+		{ 0x7, 0xF },
+		{ 0x9, 0xA },
+		{ 0x9, 0xF }
+	};
 
 	current_x = SObjGetStruct(cursor_gobj)->pos.x;
 	current_y = SObjGetStruct(cursor_gobj)->pos.y;
@@ -1743,7 +1468,15 @@ void mnBonusCreateWhiteSquare(s32 port_id)
 // 80134A50
 void mnBonusAnnounceFighter(s32 port_id, s32 panel_id)
 {
-	u16 announcer_fgms[12] = dMnBonusAnnouncerNames;
+	u16 announcer_fgms[12] = {
+
+		0x01F3, 0x01E6,
+		0x01E3, 0x0201,
+		0x01F2, 0x01F1,
+		0x0217, 0x01E5,
+		0x01F0, 0x01FB,
+		0x01FC, 0x01F5
+	};
 
 	if (gMnBonusPanel.p_sfx != NULL)
 	{
@@ -1787,7 +1520,11 @@ sb32 mnBonusSelectChar(GObj* cursor_gobj, s32 port_id, s32 arg2, s32 select_butt
 // 80134BB0
 void mnBonusReorderCursorsOnPickup(s32 port_id, s32 token_id)
 {
-	s32 diplay_orders[4] = dMnBonusTokenPickupDisplayOrders;
+	// display orders for cursors on token pickup
+	s32 diplay_orders[4] = {
+
+		6, 4, 2, 0
+	};
 
 	gcMoveGObjDL(gMnBonusPanel.token, 0x1EU, diplay_orders[port_id] + 1);
 }
@@ -1795,7 +1532,11 @@ void mnBonusReorderCursorsOnPickup(s32 port_id, s32 token_id)
 // 80134C1C
 void mnBonusReorderCursorsOnPlacement(s32 port_id)
 {
-	s32 unheld_orders[4] = dMnBonusTokenPlaceUnheldDisplayOrders;
+	// display orders for cursors not holding tokens on token placement
+	s32 unheld_orders[4] = {
+
+		3, 2, 1, 0
+	};
 
 	gcMoveGObjDL(gMnBonusPanel.token, 0x1F, unheld_orders[port_id]);
 }
@@ -1944,7 +1685,12 @@ s32 mnBonusGetFtKindFromTokenPosition(s32 port_id)
 void mnBonusAutoPositionCursor(GObj* cursor_gobj, s32 port_id)
 {
 	gsController* controller;
-	Vec2i coords[3] = dMnBonusCursorTypePositions2;
+	Vec2i coords[3] = {
+
+		{ 0x7, 0xF },
+		{ 0x9, 0xA },
+		{ 0x9, 0xF }
+	};
 	f32 delta;
 	sb32 is_within_bounds;
 
@@ -2236,6 +1982,16 @@ void mnBonusHandleButtonPresses(GObj* cursor_gobj)
 		mnBonusSyncCursorDisplay(cursor_gobj, port_id);
 }
 
+// 801374AC
+s32 D_ovl29_801374AC[] = {
+
+	0x00009048,
+	0x00009B28,
+	0x0000A608,
+	0x0000B0E8,
+	0x0000BBC8
+};
+
 // 80135BA4 - Unused?
 void func_ovl29_80135BA4() {}
 
@@ -2319,10 +2075,19 @@ void mnBonusCreateCursor(s32 port_id)
 {
 	GObj* cursor_gobj;
 	s32 unused;
-	intptr_t unk1[4] = dMnBonusCursorTypeOffsetsUnused;
-	s32 unk3[4] = dMnBonusCursorStartingDisplayOrders;
+	intptr_t cursor_type_offsets[4] = {
 
-	cursor_gobj = func_ovl0_800CD050(0, NULL, 0x13, 0x80000000, func_ovl0_800CCF00, 0x1E, unk3[port_id], -1, GetAddressFromOffset(gMnBonusFilesArray[0], &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1, mnBonusHandleButtonPresses, 2);
+		0x8268,
+		0x8368,
+		0x8468,
+		0x8568
+	};
+	s32 cursor_starting_display_orders[4] = {
+
+		6, 4, 2, 0
+	};
+
+	cursor_gobj = func_ovl0_800CD050(0, NULL, 0x13, 0x80000000, func_ovl0_800CCF00, 0x1E, cursor_starting_display_orders[port_id], -1, GetAddressFromOffset(gMnBonusFilesArray[0], &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1, mnBonusHandleButtonPresses, 2);
 
 	cursor_gobj->user_data.s = port_id;
 	gMnBonusPanel.cursor = cursor_gobj;
@@ -2340,10 +2105,20 @@ void mnBonusCreateToken(s32 port_id)
 {
 	GObj* token_gobj;
 	mnCharPanelBonus* panel_info;
-	intptr_t offsets[4] = dMnBonusTokenOffsetsNoCPU;
-	s32 orders1[4] = dMnBonusTokenStartingDisplayOrders;
+	intptr_t offsets_no_cpu[4] = {
 
-	token_gobj = func_ovl0_800CD050(0, NULL, 0x14, 0x80000000, func_ovl0_800CCF00, 0x1F, orders1[port_id], -1, GetAddressFromOffset(gMnBonusFilesArray[0], offsets[port_id]), 1, mnBonusSyncTokenAndFighter, 1);
+		0x9048,
+		0x9B28,
+		0xA608,
+		0xB0E8
+	};
+	// display orders for tokens on initial load
+	s32 orders1[4] = {
+
+		3, 2, 1, 0
+	};
+
+	token_gobj = func_ovl0_800CD050(0, NULL, 0x14, 0x80000000, func_ovl0_800CCF00, 0x1F, orders1[port_id], -1, GetAddressFromOffset(gMnBonusFilesArray[0], offsets_no_cpu[port_id]), 1, mnBonusSyncTokenAndFighter, 1);
 
 	token_gobj->user_data.s = port_id;
 	gMnBonusPanel.token = token_gobj;
@@ -2449,7 +2224,11 @@ void mnBonusCreateTokenAutopositionRoutine()
 // 801364E0
 void mnBonusSyncWhiteCircleSizeAndDisplay(GObj* white_circle_gobj)
 {
-	f32 sizes[12] = dMnBonusWhiteCircleSizes;
+	f32 sizes[12] = {
+
+		1.5, 1.5, 2.0, 1.5, 1.5, 1.5,
+		1.5, 1.5, 1.5, 1.5, 1.5, 1.5
+	};
 
 	if ((gMnBonusPanel.unk_0x88 == 0) && (gMnBonusPanel.char_id != nFTKindNull))
 	{
@@ -2759,6 +2538,34 @@ void mnBonusInitCSS()
 	if (gSceneData.scene_previous != nSCKindVSMapSel)
 		auPlaySong(0, 0xA);
 }
+
+// 80137530
+syDisplaySetup D_ovl29_80137530 = {
+
+	gSCSubsysFramebuffer0,
+	gSCSubsysFramebuffer1,
+	gSCSubsysFramebuffer2,
+	0x00000000,
+	0x00000140,
+	0x000000F0,
+	0x00016A99
+};
+
+// 8013754C
+scRuntimeInfo D_ovl29_8013754C = {
+
+	0x00000000, 0x8000A5E4,
+	func_8000A340, &lOverlay29ArenaLo,
+	0x00000000, 0x00000001, 0x00000002, 0x00004A38, 0x00000200,
+	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x00008000,
+	mnBonusSetupDisplayList, update_contdata,
+	0x00000000, 0x00000100, 0x00000000, 0x00000000,
+	0x00000000, 0x00000000, 0x00000088, 0x00000000,
+	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
+	0x00000000, 0x00000088, 0x00000000, 0x0000006C,
+	0x00000000, 0x00000090,
+	mnBonusInitCSS
+};
 
 // 80136EF4
 void bonus_css_entry()

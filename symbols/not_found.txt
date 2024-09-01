@@ -732,6 +732,7 @@ menu_zoom = 0x80390D90;
 gcAppendSObjWithSprite = 0x800ccfdc;
 gSaveData = 0x800A44E0;
 D_ovl2_8012EF40 = 0x8012EF40;
+D_ovl2_801313E4 = 0x801313E4;
 func_ovl26_801365D0 = 0x801365D0;
 
 D_ovl7_80190770 = 0x80190770;

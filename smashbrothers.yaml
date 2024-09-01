@@ -1468,15 +1468,16 @@ segments:
       - [0x162600, .rodata, ovl33]
       - { start: auto, type: .bss, vram: 0x801365F0, name: ovl33 }
 
-  - name: ovl34 # to be moved from main branch
+  - name: ovl34
     type: code
     start: 0x162640
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x162640, asm, ovl34]
-      - [0x165560, data, ovl34]
-      - [0x1657C0, rodata, ovl34]
+      - [0x162640, c, ovl34]
+      - [0x165560, .data, ovl34]
+      - [0x1657C0, .rodata, ovl34]
+      - { start: auto, type: .bss, vram: 0x80134CD0, name: ovl34 }
 
   - name: ovl35
     type: code

@@ -42,9 +42,9 @@ CameraDesc dMvOpeningYoshiCameraSettingsEnd = {
 // 8018E0F8
 ftKeyCommand dMvOpeningYoshiInputSeq[] =
 {
-	FTKEY_EVENT_STICK(I_CONTROLLER_RANGE_MAX, 0, 20),   // 2014, 0x5000
-	FTKEY_EVENT_BUTTON(Z_TRIG, 1),                      // 1001, 0x2000
-	FTKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 1001, 0x8000
+	FTKEY_EVENT_STICK(I_CONTROLLER_RANGE_MAX, 0, 20),   // 2014, 5000
+	FTKEY_EVENT_BUTTON(Z_TRIG, 1),                      // 1001, 2000
+	FTKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 1001, 8000
 	FTKEY_EVENT_END()                                   // 0000
 };
 
@@ -251,7 +251,8 @@ void mvOpeningYoshiInitFighterStagePanel()
 	{
 		ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
-		if (gBattleState->players[i].pl_kind == nFTPlayerKindNot) continue;
+		if (gBattleState->players[i].pl_kind == nFTPlayerKindNot)
+			continue;
 
 		ftManagerSetupFilesAllKind(gBattleState->players[i].ft_kind);
 

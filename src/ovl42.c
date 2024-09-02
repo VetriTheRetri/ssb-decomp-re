@@ -50,47 +50,6 @@ rdFileID D_ovl42_8018E0FC[2] = {
 	0x25, 0x41
 };
 
-// 8018E104
-intptr_t dMvOpeningPikachuNameOffsets[8] = {
-
-	0x4890, 0x26B8, 0x2F98, 0x05E0,
-	0x0D80, 0x2408, 0x60D8, 0x0000
-};
-
-// 8018E124
-f32 dMvOpeningPikachuNameCharPositions[7] = {
-
-	0.0, 30.0, 45.0, 75.0, 110.0, 140.0, 170.0
-};
-
-// 8018E140
-syDisplaySetup D_ovl42_8018E140 = {
-
-	gSCSubsysFramebuffer0,
-	gSCSubsysFramebuffer1,
-	gSCSubsysFramebuffer2,
-	0x00000000,
-	0x00000140,
-	0x000000F0,
-	0x00016A99,
-};
-
-// 8018E15C
-scRuntimeInfo D_ovl42_8018E15C = {
-
-	0x00000000, 0x8000A5E4,
-	0x800A26B8, 0x8018E640,
-	0x00000000, 0x00000001, 0x00000002, 0x00004000, 0x00002000,
-	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000C000,
-	0x8018E010, 0x80004310,
-	0x00000000, 0x00000600, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000088, 0x00000000,
-	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000088, 0x00000000, 0x0000006C,
-	0x00000000, 0x00000090,
-	0x8018DE88
-};
-
 
 // BSS
 // 8018E220
@@ -174,8 +133,15 @@ void mvOpeningPikachuDrawName()
 {
 	GObj* name_gobj;
 	SObj* name_sobj;
-	intptr_t offsets[8] = dMvOpeningPikachuNameOffsets;
-	f32 x_positions[7] = dMvOpeningPikachuNameCharPositions;
+	intptr_t offsets[8] = {
+
+		0x4890, 0x26B8, 0x2F98, 0x05E0,
+		0x0D80, 0x2408, 0x60D8, 0x0000
+	};
+	f32 x_positions[7] = {
+
+		0.0, 30.0, 45.0, 75.0, 110.0, 140.0, 170.0
+	};
 	s32 i;
 
 	gMvOpeningPikachuNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
@@ -489,7 +455,35 @@ void gMvOpeningPikachuSetupDisplayList(Gfx **display_list)
 	ftRenderLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// intro_focus_pikachu_entry
+// 8018E140
+syDisplaySetup D_ovl42_8018E140 = {
+
+	gSCSubsysFramebuffer0,
+	gSCSubsysFramebuffer1,
+	gSCSubsysFramebuffer2,
+	0x00000000,
+	0x00000140,
+	0x000000F0,
+	0x00016A99,
+};
+
+// 8018E15C
+scRuntimeInfo D_ovl42_8018E15C = {
+
+	0x00000000, 0x8000A5E4,
+	0x800A26B8, &lOverlay42ArenaLo,
+	0x00000000, 0x00000001, 0x00000002, 0x00004000, 0x00002000,
+	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000C000,
+	gMvOpeningPikachuSetupDisplayList, update_contdata,
+	0x00000000, 0x00000600, 0x00000000, 0x00000000,
+	0x00000000, 0x00000000, 0x00000088, 0x00000000,
+	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
+	0x00000000, 0x00000088, 0x00000000, 0x0000006C,
+	0x00000000, 0x00000090,
+	mvOpeningPikachuInit
+};
+
+// 8018E05C
 void intro_focus_pikachu_entry()
 {
 	D_ovl42_8018E140.zbuffer = syDisplayGetZBuffer(6400);

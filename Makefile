@@ -206,6 +206,8 @@ build/src/libultra/libc/xlitob.o: OPTFLAGS := -O3 -mips2
 build/src/libultra/libc/xlitob.o: CC := $(IDO5)
 build/src/libultra/libc/ldiv.o: OPTFLAGS := -O3 -mips2
 build/src/libultra/libc/ldiv.o: CC := $(IDO5)
+build/src/libultra/audio/cents2ratio.o: OPTFLAGS := -O3 -mips2
+build/src/libultra/audio/cents2ratio.o: CC := $(IDO5)
 build/src/libultra/libc/llcvt.o: OPTFLAGS := -O1 -mips3 -32
 
 # Automatic dependency files

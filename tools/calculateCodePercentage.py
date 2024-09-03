@@ -1,8 +1,18 @@
 #!/usr/bin/python3
+import os
+import re
 import sys
 import yaml
 
-def calculateCodePercentage(splatYamlFilePath, includeLibultra = False):
+
+def filesInFolderRec(folder):
+	return [os.path.join(dp, f).replace('\\', '/') for dp, dn, filenames in os.walk(folder) for f in filenames]
+
+def calculateCodePercentage(includeLibultra = False):
+
+	splatYamlFilePath = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../", "smashbrothers.yaml")
+	nonmatchingsPath = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../", "asm", "nonmatchings")
+
 	with open(splatYamlFilePath, 'r') as file:
 		yamlObj = yaml.load(file.read(), Loader=yaml.SafeLoader)
 
@@ -40,6 +50,24 @@ def calculateCodePercentage(splatYamlFilePath, includeLibultra = False):
 	asmByteCount = sum([x[1] - x[0] for x in asmBlocks])
 	totalByteCount = cByteCount + asmByteCount
 
+	totalGlobalAsmInstructions = 0
+	globalAsmFunctionFiles = filesInFolderRec(nonmatchingsPath)
+	for filePath in globalAsmFunctionFiles:
+		with open(filePath, 'r') as file:
+			fileContents = file.read()
+			sections = fileContents.split(".section ")
+			if len(sections) == 1:
+				lines = fileContents.split("\n")
+			else:
+				lines = "\n".join([x for x in sections if x.startswith(".text")]).split("\n")
+			totalGlobalAsmInstructions += sum([1 if re.match(r"^/\* \w+ \w+ \w+ \*/.*$", line) else 0 for line in lines])
+
+	cByteCount -= 4 * totalGlobalAsmInstructions
+	asmByteCount += 4 * totalGlobalAsmInstructions
+
+	print()
+	print(f"Embedded assembly bytes: {totalGlobalAsmInstructions * 4}")
+
 	print()
 	print(f"Total code bytes: {totalByteCount}")
 	print(f"         C bytes: {cByteCount}")
@@ -47,4 +75,4 @@ def calculateCodePercentage(splatYamlFilePath, includeLibultra = False):
 	print(f"      Percentage: {cByteCount / totalByteCount * 100.0}% of code decompiled")
 
 if __name__ == "__main__":
-	calculateCodePercentage("smashbrothers.yaml", 'l' in sys.argv)
+	calculateCodePercentage('l' in sys.argv)

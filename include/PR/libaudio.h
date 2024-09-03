@@ -830,6 +830,7 @@ extern "C"
 		u8 maxChannels; /* number of MIDI channels          */
 		u8 debugFlags;	/* control which error get reported */
 		ALEvent nextEvent;
+		s32 unknown[2];
 		ALEventQueue evtq;
 		ALMicroTime frameTime;
 		ALChanState* chanState;	  /* 16 channels for MIDI             */

@@ -20,39 +20,36 @@
 
 #include <PR/libaudio.h>
 
-#if 0
 // Needs -O3
-// ALCSPlayer Needs 8 bytes of padding before evtq to match
 void alCSPSetBank(ALCSPlayer *seqp, ALBank *b)
 {
-    ALEvent evt;
+	ALEvent evt;
 
-    evt.type = AL_SEQP_BANK_EVT;
-    evt.msg.spbank.bank = b;
-
-    alEvtqPostEvent(&seqp->evtq, &evt, 0);
+	evt.type = AL_SEQP_BANK_EVT;
+	evt.msg.spbank.bank = b;
+	alEvtqPostEvent(&seqp->evtq, &evt, 0);
 }
 
 void alCSPSetBank_Alt(ALCSPlayer *seqp, ALBank *b, u8 arg2)
 {
-    ALEvent evt;
+	ALEvent evt;
 
-    if (arg2 == 0) {
-        evt.type = AL_SEQP_BANK_EVT;
-        evt.msg.spbank.bank = b;
-        alEvtqPostEvent(&seqp->evtq, &evt, 0);
-    } else if (arg2 == 1) {
-        evt.type = 0x18;
-        evt.msg.spbank.bank = b;
-        alEvtqPostEvent(&seqp->evtq, &evt, 0);
-    } else if (arg2 == 2) {
-        evt.type = 0x19;
-        evt.msg.spbank.bank = b;
-        alEvtqPostEvent(&seqp->evtq, &evt, 0);
-    }
-
+	if (arg2 == 0)
+	{
+		evt.type = AL_SEQP_BANK_EVT;
+		evt.msg.spbank.bank = b;
+		alEvtqPostEvent(&seqp->evtq, &evt, 0);
+	}
+	else if (arg2 == 1)
+	{
+		evt.type = 0x18;
+		evt.msg.spbank.bank = b;
+		alEvtqPostEvent(&seqp->evtq, &evt, 0);
+	}
+	else if (arg2 == 2)
+	{
+		evt.type = 0x19;
+		evt.msg.spbank.bank = b;
+		alEvtqPostEvent(&seqp->evtq, &evt, 0);
+	}
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/cspsetbank/alCSPSetBank_Alt.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/cspsetbank/alCSPSetBank.s")
-#endif

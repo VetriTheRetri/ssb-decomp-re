@@ -333,7 +333,7 @@ void wpLinkBoomerangCheckOwnerCatch(GObj *weapon_gobj, f32 distance)
 // 0x8016D40C
 sb32 wpLinkBoomerangCheckBound(wpStruct *wp, Vec3f *coll_angle)
 {
-    f32 angle = func_ovl0_800C7C0C(&wp->phys_info.vel_air, coll_angle);
+    f32 angle = halMathVector2Similarity(&wp->phys_info.vel_air, coll_angle);
 
     if (angle < 0.0F)
     {

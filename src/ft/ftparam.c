@@ -3,10 +3,10 @@
 #include <sc/scene.h>
 #include <ft/ftcommondata.h>
 
-extern f32 func_ovl0_800C7B58();
+extern f32 halMathVector3Similarity();
 extern alSoundEffect* func_800269C0_275C0(u16);
-extern f32 bitmap_sinf(f32);
-extern f32 bitmap_cosf(f32);
+extern f32 halMathSin(f32);
+extern f32 halMathCos(f32);
 extern void func_ovl0_800C8CB8(void*, void*, void*, void*, f32);
 
 // // // // // // // // // // // //
@@ -2472,7 +2472,7 @@ f32 func_ovl2_800EBB3C(Vec3f *arg0, Vec3f *arg1, Vec3f *arg2)
     }
     else func_ovl0_800CD5AC(arg0, arg1, &sp1C);
 
-    if (func_ovl0_800C7B58(&sp1C, arg2) < 0.0F)
+    if (halMathVector3Similarity(&sp1C, arg2) < 0.0F)
     {
         return -lbVector_Vec3fAngleDiff(arg1, arg0);
     }
@@ -2558,9 +2558,9 @@ void func_ovl2_800EBD08(DObj *root_dobj, f32 arg1, Vec3f *vec, f32 arg3)
 
     square_xy = sqrtf(square_xy);
 
-    sin_arg3 = bitmap_sinf(arg3);
+    sin_arg3 = halMathSin(arg3);
 
-    cos_arg3 = bitmap_cosf(arg3);
+    cos_arg3 = halMathCos(arg3);
 
     sp50 = sqrtxyz * sqrtxyz;
 

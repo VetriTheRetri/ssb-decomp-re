@@ -769,8 +769,8 @@ void ftNessSpecialAirHiJibakuBoundSetStatus(GObj *fighter_gobj, Vec3f *angle, Ve
     Vec3f *vel = &fp->phys_info.vel_air;
 
     func_ovl0_800C7B08(vel, angle);
-    func_ovl0_800C7AE0(vel, FTNESS_PKJIBAKU_REBOUND_VEL_MAG);
-    func_ovl0_800C7A84(vel);
+    halMathScaleVector(vel, FTNESS_PKJIBAKU_REBOUND_VEL_MAG);
+    halMathMagnitude(vel);
     ftPhysicsClampAirVelXMax(fp);
 
     fp->lr = (fp->phys_info.vel_air.x < 0.0F) ? nGMFacingR : nGMFacingL;

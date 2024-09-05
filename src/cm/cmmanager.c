@@ -495,14 +495,14 @@ void cmManagerGetAdjustAtAngle(Vec3f *at, Vec3f *vec, f32 x, f32 y)
 
     angle_x = gCMManagerPauseCameraEyeY + y + gMPCollisionGroundData->light_angle.z;
 
-    vec->y = -bitmap_sinf(angle_x);
-    vec->z = bitmap_cosf(angle_x);
+    vec->y = -halMathSin(angle_x);
+    vec->z = halMathCos(angle_x);
 
     angle_y = gCMManagerPauseCameraEyeX + x;
 
-    vec->x = (bitmap_sinf(angle_y) * vec->z);
+    vec->x = (halMathSin(angle_y) * vec->z);
 
-    vec->z *= bitmap_cosf(angle_y);
+    vec->z *= halMathCos(angle_y);
 }
 
 // 0x8010C3C0
@@ -726,10 +726,10 @@ void func_ovl2_8010C960(GObj *camera_gobj)
     sp54.y = gCMManagerPauseCameraEyeX + gCMManagerCameraStruct.unk_cmstruct_0x48;
     sp54.x = gCMManagerPauseCameraEyeY + gCMManagerCameraStruct.unk_cmstruct_0x4C;
 
-    sp48.y = -bitmap_sinf(sp54.x);
-    sp48.z = bitmap_cosf(sp54.x);
-    sp48.x = bitmap_sinf(sp54.y) * sp48.z;
-    sp48.z *= bitmap_cosf(sp54.y);
+    sp48.y = -halMathSin(sp54.x);
+    sp48.z = halMathCos(sp54.x);
+    sp48.x = halMathSin(sp54.y) * sp48.z;
+    sp48.z *= halMathCos(sp54.y);
 
     func_ovl2_8010C5C0(cam, &sp48);
     func_ovl2_8010C6B8(cam);
@@ -865,10 +865,10 @@ void jtgt_ovl2_8010CDAC(GObj *camera_gobj)
     sp58 = gCMManagerPauseCameraEyeX + gCMManagerCameraStruct.unk_cmstruct_0x78;
     temp_f12 = gCMManagerPauseCameraEyeY + gCMManagerCameraStruct.unk_cmstruct_0x7C;
 
-    sp48.y = -bitmap_sinf(temp_f12);
-    sp48.z = bitmap_cosf(temp_f12);
-    sp48.x = bitmap_sinf(sp58) * sp48.z;
-    sp48.z *= bitmap_cosf(sp58);
+    sp48.y = -halMathSin(temp_f12);
+    sp48.z = halMathCos(temp_f12);
+    sp48.x = halMathSin(sp58) * sp48.z;
+    sp48.z *= halMathCos(sp58);
     func_ovl2_8010C5C0(cam, &sp48);
     func_ovl2_8010C6B8(cam);
     func_ovl2_8010C6FC(cam);
@@ -1143,10 +1143,10 @@ GObj* cmManagerMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
 
     gCMManagerPauseCameraEyeY = gCMManagerPauseCameraEyeX = 0.0F;
 
-    sp4C.y = -bitmap_sinf(gCMManagerPauseCameraEyeY);
-    sp4C.z = bitmap_cosf(gCMManagerPauseCameraEyeY);
-    sp4C.x = bitmap_sinf(gCMManagerPauseCameraEyeX) * sp4C.z;
-    sp4C.z *= bitmap_cosf(gCMManagerPauseCameraEyeX);
+    sp4C.y = -halMathSin(gCMManagerPauseCameraEyeY);
+    sp4C.z = halMathCos(gCMManagerPauseCameraEyeY);
+    sp4C.x = halMathSin(gCMManagerPauseCameraEyeX) * sp4C.z;
+    sp4C.z *= halMathCos(gCMManagerPauseCameraEyeX);
 
     cam->vec.at.x = cam->vec.at.z = 0.0F;
     cam->vec.at.y = 300.0F;

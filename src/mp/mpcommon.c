@@ -2,7 +2,7 @@
 #include <wp/weapon.h>
 #include <it/item.h>
 
-extern f32 func_ovl0_800C7A84();
+extern f32 halMathMagnitude();
 
 // // // // // // // // // // // //
 //                               //
@@ -733,7 +733,7 @@ sb32 mpCommonProcFighterDamage(mpCollData *coll_data, GObj *fighter_gobj, u32 fl
     {
         mpProcessRunLWallCollisionAdjNew(coll_data);
 
-        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_FLAG_LWALL) && (func_ovl0_800C7A84(&coll_data->pos_correct) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_correct, &coll_data->lwall_angle) > F_CLC_DTOR32(110.0F))) // 1.9198622F
+        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_FLAG_LWALL) && (halMathMagnitude(&coll_data->pos_correct) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_correct, &coll_data->lwall_angle) > F_CLC_DTOR32(110.0F))) // 1.9198622F
         {
             fp->status_vars.common.damage.coll_mask_curr |= MPCOLL_FLAG_LWALL;
 
@@ -750,7 +750,7 @@ sb32 mpCommonProcFighterDamage(mpCollData *coll_data, GObj *fighter_gobj, u32 fl
     {
         mpProcessRunRWallCollisionAdjNew(coll_data);
 
-        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_FLAG_RWALL) && (func_ovl0_800C7A84(&coll_data->pos_correct) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_correct, &coll_data->rwall_angle) > F_CLC_DTOR32(110.0F))) // 1.9198622F
+        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_FLAG_RWALL) && (halMathMagnitude(&coll_data->pos_correct) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_correct, &coll_data->rwall_angle) > F_CLC_DTOR32(110.0F))) // 1.9198622F
         {
             fp->status_vars.common.damage.coll_mask_curr |= MPCOLL_FLAG_RWALL;
 
@@ -771,7 +771,7 @@ sb32 mpCommonProcFighterDamage(mpCollData *coll_data, GObj *fighter_gobj, u32 fl
         {
             mpProcessRunCeilEdgeAdjust(coll_data);
         }
-        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_FLAG_CEIL) && (func_ovl0_800C7A84(&coll_data->pos_correct) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_correct, &coll_data->ceil_angle) > F_CLC_DTOR32(110.0F)))
+        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_FLAG_CEIL) && (halMathMagnitude(&coll_data->pos_correct) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_correct, &coll_data->ceil_angle) > F_CLC_DTOR32(110.0F)))
         {
             fp->status_vars.common.damage.coll_mask_curr |= MPCOLL_FLAG_CEIL;
 

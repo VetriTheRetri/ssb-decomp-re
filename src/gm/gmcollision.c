@@ -2,8 +2,8 @@
 #include <wp/weapon.h>
 #include <it/item.h>
 
-extern f32 bitmap_sinf(f32);
-extern f32 bitmap_cosf(f32);
+extern f32 halMathSin(f32);
+extern f32 halMathCos(f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -37,14 +37,14 @@ void gmCollisionTransformMatrixAll(DObj *dobj, ftParts *ft_parts, Mtx44f mtx)
     f32 sinx, siny, sinz;
     f32 cosx, cosy, cosz;
 
-    sinx = bitmap_sinf(rotate->x);
-    cosx = bitmap_cosf(rotate->x);
+    sinx = halMathSin(rotate->x);
+    cosx = halMathCos(rotate->x);
 
-    siny = bitmap_sinf(rotate->y);
-    cosy = bitmap_cosf(rotate->y);
+    siny = halMathSin(rotate->y);
+    cosy = halMathCos(rotate->y);
 
-    sinz = bitmap_sinf(rotate->z);
-    cosz = bitmap_cosf(rotate->z);
+    sinz = halMathSin(rotate->z);
+    cosz = halMathCos(rotate->z);
 
     mtx[0][0] = cosy * cosz;
     mtx[0][1] = cosy * sinz;
@@ -100,14 +100,14 @@ void gmCollisionSetMatrixNcs(DObj *dobj, ftParts *ft_parts, Mtx44f mtx, Vec3f *s
     }
     else *nscale = *scale;
 
-    sinx = bitmap_sinf(rotate->x);
-    cosx = bitmap_cosf(rotate->x);
+    sinx = halMathSin(rotate->x);
+    cosx = halMathCos(rotate->x);
 
-    siny = bitmap_sinf(rotate->y);
-    cosy = bitmap_cosf(rotate->y);
+    siny = halMathSin(rotate->y);
+    cosy = halMathCos(rotate->y);
 
-    sinz = bitmap_sinf(rotate->z);
-    cosz = bitmap_cosf(rotate->z);
+    sinz = halMathSin(rotate->z);
+    cosz = halMathCos(rotate->z);
 
     mtx[0][0] = cosy * cosz;
     mtx[0][1] = cosy * sinz;

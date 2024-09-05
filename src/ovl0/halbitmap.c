@@ -1,9 +1,7 @@
-#ifndef OVL0_SIN_TABLE
-#define OVL0_SIN_TABLE
+#include "common.h"
 
-#include <PR/ultratypes.h>
+f32 sin_table[] = {
 
-f32 D_ovl0_800D4CA0[0x400] = {
 	0.000000000000000, 0.001534000039101, 0.003068000078201, 0.004602000117302,
 	0.006136000156403, 0.007670000195503, 0.009204000234604, 0.010738000273705,
 	0.012272000312805, 0.013805000111461, 0.015339000150561, 0.016873000189662,
@@ -262,4 +260,281 @@ f32 D_ovl0_800D4CA0[0x400] = {
 	0.999980986118317, 0.999988973140717, 0.999994993209839, 1.000000000000000,
 };
 
-#endif /* OVL0_SIN_TABLE */
+
+void* D_800D5CA0_51680[] = {
+
+	0x00000000,
+	0x00000000,
+	0x00000000,
+	0x800C96EC,
+	0x800C96EC,
+	0x800C9714,
+	0x800C9714,
+	0x800CA024,
+	0x800CA024,
+	0x800CA144,
+	0x800CA144,
+	0x800CA194,
+	0x800CA194,
+	0x800CA5C8,
+	0x800CA5C8,
+	0x800CAB48,
+	0x800CAB48,
+	0x800CB140,
+	0x800CB140,
+	0x800CB2F0,
+	0x800CB2F0,
+	0x800C973C,
+	0x800C973C,
+	0x8010D250,
+	0x8010D428,
+	0x8010DE48,
+	0x00000000,
+	0x8010E00C,
+	0x00000000,
+	0x800C994C,
+	0x800C994C,
+	0x800C99CC,
+	0x800C99CC,
+	0x800C9F30,
+	0x800C9F30,
+	0x800C9F70,
+	0x800C9F70,
+	0x80106904,
+	0x80106904,
+	0x8010E00C,
+	0x8010E10C
+};
+
+s32 D_800D5D44_51724 = 0x50A0F;
+
+
+// 800C7840
+f32 halMathSin(f32 angle)
+{
+	f32 result;
+	u32 index;
+
+	index = (s32) (angle * 651.8986206f) & 0xFFF & 0xFFFF;
+
+	if (index & 1024)
+		result = sin_table[1023 - index % 1024];
+	else
+		result = sin_table[index % 1024];
+
+	if (index & 2048)
+		return -result;
+
+	return result;
+}
+
+// 800C78B8
+f32 halMathCos(f32 angle)
+{
+	f32 result;
+	u32 index;
+
+	index = (s32) ((angle + F_CLC_DTOR32(90.0F)) * 651.8986206f) & 0xFFF & 0xFFFF;
+
+	if (index & 1024)
+		result = sin_table[1023 - index % 1024];
+	else
+		result = sin_table[index % 1024];
+
+	if (index & 2048)
+		return -result;
+
+	return result;
+}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C793C.s")
+
+// 800C7A00
+f32 halMathNormalize(Vec2f* vec)
+{
+	f32 magnitude;
+	f32 factor;
+
+	magnitude = sqrtf(vec->x * vec->x + vec->y * vec->y);
+
+	if (magnitude == 0.0f)
+		return 0.0f;
+
+	factor = 1.0f / magnitude;
+
+	vec->x = vec->x * factor;
+	vec->y = vec->y * factor;
+
+	return magnitude;
+}
+
+// 800C7A84
+void halMathMagnitude(Vec2f* vec)
+{
+	sqrtf(vec->x * vec->x + vec->y * vec->y);
+}
+
+// 800C7AB8
+Vec2f* halMathVectorAdd(Vec2f* a, Vec2f* b)
+{
+	a->x = a->x + b->x;
+	a->y = a->y + b->y;
+	return a;
+}
+
+// 800C7AE0
+Vec2f* halMathScaleVector(Vec2f* vec, f32 factor)
+{
+	vec->x = vec->x * factor;
+	vec->y = vec->y * factor;
+	return vec;
+}
+
+// 800C7B08
+Vec2f* func_ovl0_800C7B08(Vec2f* a, Vec2f* b)
+{
+	f32 negative_two_dot_product = (b->x * a->x + b->y * a->y) * -2.0f;
+	a->x = a->x + b->x * negative_two_dot_product;
+	a->y = a->y + b->y * negative_two_dot_product;
+	return a;
+}
+
+// 800C7B58
+f32 halMathVector3Similarity(Vec3f* a, Vec3f* b)
+{
+	f32 magnitude_a = sqrtf(a->x * a->x + a->y * a->y + a->z * a->z);
+	f32 magnitude_b = sqrtf(b->x * b->x + b->y * b->y + b->z * b->z);
+	return (a->x * b->x + a->y * b->y + a->z * b->z) / (magnitude_b + magnitude_a);
+}
+
+// 800C7C0C
+f32 halMathVector2Similarity(Vec2f* a, Vec2f* b)
+{
+	f32 magnitude_a = sqrtf(a->x * a->x + a->y * a->y);
+	f32 magnitude_b = sqrtf(b->x * b->x + b->y * b->y);
+	return (a->x * b->x + a->y * b->y) / (magnitude_b + magnitude_a);
+}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C7C98.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C7DB4.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C82AC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C8634.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C8654.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C86E8.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C8758.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C87F4.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C88AC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C89BC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C8A58.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C8B28.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C8CB8.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C8DB4.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9050.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9228.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C92C8.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9314.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C93D4.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9424.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9488.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C96DC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C96EC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9714.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C973C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C994C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C99CC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9A38.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9F30.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9F70.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CA024.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CA144.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CA194.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CA5C8.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CAB48.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB140.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB2F0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB360.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB4B0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB4E0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB608.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB644.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB674.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB738.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/D_ovl0_800D5E10.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB7D4.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CC118.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CC818.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CCEAC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CCED8.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CCF00.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CCF74.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/gcAppendSObjWithSprite.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CD050.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CD0D0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CD1F0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CD214.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CD2CC.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CD440.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CD4C0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CD538.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CD5AC.s")

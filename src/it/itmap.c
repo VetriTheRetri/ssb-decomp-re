@@ -164,7 +164,7 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
 
     if (coll_flags & check_flags & MPCOLL_FLAG_LWALL)
     {
-        if (func_ovl0_800C7C0C(&ip->phys_info.vel_air, &coll_data->lwall_angle) < 0.0F)
+        if (halMathVector2Similarity(&ip->phys_info.vel_air, &coll_data->lwall_angle) < 0.0F)
         {
             func_ovl0_800C7B08(&ip->phys_info.vel_air, &coll_data->lwall_angle);
 
@@ -178,7 +178,7 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
     }
     if (coll_flags & check_flags & MPCOLL_FLAG_RWALL)
     {
-        if (func_ovl0_800C7C0C(&ip->phys_info.vel_air, &coll_data->rwall_angle) < 0.0F)
+        if (halMathVector2Similarity(&ip->phys_info.vel_air, &coll_data->rwall_angle) < 0.0F)
         {
             func_ovl0_800C7B08(&ip->phys_info.vel_air, &coll_data->rwall_angle);
 
@@ -192,7 +192,7 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
     }
     if (coll_flags & check_flags & MPCOLL_FLAG_CEIL)
     {
-        if (func_ovl0_800C7C0C(&ip->phys_info.vel_air, &coll_data->ceil_angle) < 0.0F)
+        if (halMathVector2Similarity(&ip->phys_info.vel_air, &coll_data->ceil_angle) < 0.0F)
         {
             func_ovl0_800C7B08(&ip->phys_info.vel_air, &coll_data->ceil_angle);
 
@@ -204,7 +204,7 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
     }
     if (coll_flags & check_flags & MPCOLL_FLAG_GROUND)
     {
-        if (func_ovl0_800C7C0C(&ip->phys_info.vel_air, &coll_data->ground_angle) < 0.0F)
+        if (halMathVector2Similarity(&ip->phys_info.vel_air, &coll_data->ground_angle) < 0.0F)
         {
             func_ovl0_800C7B08(&ip->phys_info.vel_air, &coll_data->ground_angle);
 
@@ -218,7 +218,7 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
     }
     if (return_bool != FALSE)
     {
-        func_ovl0_800C7AE0(&ip->phys_info.vel_air, mod_vel);
+        halMathScaleVector(&ip->phys_info.vel_air, mod_vel);
 
         if (pos != NULL)
         {
@@ -237,7 +237,7 @@ void itMapSetGroundRebound(Vec3f *vel, Vec3f *ground_angle, f32 ground_rebound)
     f32 inverse;
     f32 rebound;
 
-    scale = func_ovl0_800C7A84(vel);
+    scale = halMathMagnitude(vel);
 
     if (scale != 0.0F)
     {
@@ -311,7 +311,7 @@ sb32 itMapCheckLanding(GObj *item_gobj, f32 common_rebound, f32 ground_rebound, 
     if (is_collide_ground != FALSE)
     {
         func_ovl0_800C7B08(&ip->phys_info.vel_air, &ip->coll_data.ground_angle);
-        func_ovl0_800C7AE0(&ip->phys_info.vel_air, ground_rebound);
+        halMathScaleVector(&ip->phys_info.vel_air, ground_rebound);
         itMainVelSetRotateStepLR(item_gobj);
 
         if (proc_map != NULL)
@@ -337,7 +337,7 @@ sb32 itMapCheckMapReboundProcAll(GObj *item_gobj, f32 common_rebound, f32 ground
     if (coll_data->coll_mask_curr & MPCOLL_FLAG_GROUND)
     {
         func_ovl0_800C7B08(&ip->phys_info.vel_air, &coll_data->ground_angle);
-        func_ovl0_800C7AE0(&ip->phys_info.vel_air, ground_rebound);
+        halMathScaleVector(&ip->phys_info.vel_air, ground_rebound);
         itMainVelSetRotateStepLR(item_gobj);
     }
     if (is_collide_any != FALSE)

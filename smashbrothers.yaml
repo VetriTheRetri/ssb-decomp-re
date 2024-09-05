@@ -416,16 +416,19 @@ segments:
     start: 0x043220
     vram: 0x800C7840
     subsegments:
-      - [0x043220, asm, ovl0/halbitmap]
+      - [0x043220, c, ovl0/halbitmap]
       - [0x049000, asm, ovl0/rldm]
-      - [0x049A20, asm, ovl0/hal_sprite]
+      - [0x049A20, asm, ovl0/halsprite]
       - [0x04F860, asm, ovl0/ovl0_2]
       - [0x04FB10, asm, ovl0/ovl0_3]
       - [0x04FF00, c, sc/scbackup]
-      - [0x050680, data, ovl0/float_table]
-      - [0x051680, rodata, ovl0/function_table]
-      - [0x051740, rodata, ovl0/halbitmap]
+      - [0x050680, .data, ovl0/halbitmap]
+      - [0x051730, data, ovl0/halsprite]
+      - [0x051740, data, ovl0/ovl0_3]
+      - [0x0517F0, .rodata, ovl0/halbitmap]
       - [0x0518C0, rodata, ovl0/rldm]
+      - [0x0519A0, rodata, ovl0/halsprite]
+      - [0x051C80, rodata, ovl0/ovl0_3]
 
   - name: ovl2
     type: code

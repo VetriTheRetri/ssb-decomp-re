@@ -148,10 +148,10 @@ sb32 wpSamusBombProcMap(GObj *weapon_gobj)
             vel = &wp->phys_info.vel_air;
 
             func_ovl0_800C7B08(vel, &wp->coll_data.ground_angle);
-            func_ovl0_800C7AE0(vel, 0.6F);
+            halMathScaleVector(vel, 0.6F);
             wpMainVelSetLR(weapon_gobj);
 
-            if (func_ovl0_800C7A84(vel) < 8.0F)
+            if (halMathMagnitude(vel) < 8.0F)
             {
                 wpMapSetGround(wp);
             }

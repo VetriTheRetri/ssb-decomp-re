@@ -1,4 +1,5 @@
-#include "common.h"
+#include <sys/objtypes.h>
+
 
 f32 sin_table[] = {
 
@@ -261,11 +262,13 @@ f32 sin_table[] = {
 };
 
 
-void* D_800D5CA0_51680[] = {
+Vec3f D_800D5CA0_51680 = {
 
-	0x00000000,
-	0x00000000,
-	0x00000000,
+	0.0f, 0.0f, 0.0f
+};
+
+void* D_800D5CAC_5168C[] = {
+
 	0x800C96EC,
 	0x800C96EC,
 	0x800C9714,
@@ -306,8 +309,6 @@ void* D_800D5CA0_51680[] = {
 	0x8010E10C
 };
 
-s32 D_800D5D44_51724 = 0x50A0F;
-
 
 // 800C7840
 f32 halMathSin(f32 angle)
@@ -347,6 +348,7 @@ f32 halMathCos(f32 angle)
 	return result;
 }
 
+// 800C793C
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C793C.s")
 
 // 800C7A00
@@ -421,7 +423,11 @@ f32 halMathVector2Similarity(Vec2f* a, Vec2f* b)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C82AC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C8634.s")
+// 800C8634
+void func_ovl0_800C8634()
+{
+	func_8000A5E4();
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C8654.s")
 
@@ -451,17 +457,39 @@ f32 halMathVector2Similarity(Vec2f* a, Vec2f* b)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9314.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C93D4.s")
+// 800C93D4
+void func_ovl0_800C93D4(DObj* arg, void* dvar)
+{
+	DObj* dobj = gcAddDObjForGObj(arg->parent_gobj, dvar);
+	dobj->sib_prev->sib_next = NULL;
+	dobj->sib_prev = NULL;
+	arg->child->parent = dobj;
+	dobj->child = arg->child;
+	arg->child = dobj;
+	dobj->parent = arg;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9424.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9488.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C96DC.s")
+// 800C96DC
+void func_ovl0_800C96DC(s32 arg0, s32 arg1, s32 arg2) {}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C96EC.s")
+// 800C96EC
+s32 func_ovl0_800C96EC(s32 arg0, s32 arg1, s32 arg2)
+{
+	func_ovl0_800C96DC(arg0, arg1, 0);
+	return 0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9714.s")
+// 800C9714
+s32 func_ovl0_800C9714(s32 arg0, s32 arg1, s32 arg2)
+{
+	func_ovl0_800C96DC(arg0, arg1, 1);
+	return 0;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C973C.s")
 
@@ -497,7 +525,16 @@ f32 halMathVector2Similarity(Vec2f* a, Vec2f* b)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB608.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB644.s")
+// 800CB644
+u8 func_ovl0_800CB644(u8 index)
+{
+	u8 array[] = {
+
+		0x00, 0x05, 0x0A, 0x0F
+	};
+
+	return array[index];
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB674.s")
 

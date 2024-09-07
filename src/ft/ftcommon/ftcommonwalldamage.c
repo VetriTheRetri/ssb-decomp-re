@@ -34,9 +34,9 @@ void ftCommonWallDamageSetStatus(GObj *fighter_gobj, Vec3f *angle, Vec3f *pos)
 
     vel_air = fp->phys_info.vel_air;
 
-    lbMathAdd2D(&vel_air, &fp->phys_info.vel_damage_air);
-    lbMathReflect2D(&vel_air, angle);
-    lbMathScale2D(&vel_air, 0.8F);
+    lbCommonAdd2D(&vel_air, &fp->phys_info.vel_damage_air);
+    lbCommonReflect2D(&vel_air, angle);
+    lbCommonScale2D(&vel_air, 0.8F);
 
     fp->phys_info.vel_damage_air = vel_air;
 
@@ -44,7 +44,7 @@ void ftCommonWallDamageSetStatus(GObj *fighter_gobj, Vec3f *angle, Vec3f *pos)
 
     fp->lr = (fp->phys_info.vel_damage_air.x < 0.0F) ? nGMFacingR : nGMFacingL;
 
-    knockback = lbMathMag2D(&vel_air);
+    knockback = lbCommonMag2D(&vel_air);
 
     fp->status_vars.common.damage.hitstun_timer = ftParamGetHitStun(knockback);
 

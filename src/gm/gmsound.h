@@ -22,6 +22,8 @@ typedef struct alSoundEffect
 	u16 unk_0x24;
 	u16 sfx_id;
 	u16 sfx_max; // End of SFX index list
+	u8 filler_0x2A[0x2F - 0x2A];
+	u8 balance;
 
 } alSoundEffect;
 

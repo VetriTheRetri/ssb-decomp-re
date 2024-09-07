@@ -2,8 +2,8 @@
 #include <wp/weapon.h>
 #include <it/item.h>
 
-extern f32 lbMathSin(f32);
-extern f32 lbMathCos(f32);
+extern f32 lbCommonSin(f32);
+extern f32 lbCommonCos(f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -37,14 +37,14 @@ void gmCollisionTransformMatrixAll(DObj *dobj, ftParts *ft_parts, Mtx44f mtx)
     f32 sinx, siny, sinz;
     f32 cosx, cosy, cosz;
 
-    sinx = lbMathSin(rotate->x);
-    cosx = lbMathCos(rotate->x);
+    sinx = lbCommonSin(rotate->x);
+    cosx = lbCommonCos(rotate->x);
 
-    siny = lbMathSin(rotate->y);
-    cosy = lbMathCos(rotate->y);
+    siny = lbCommonSin(rotate->y);
+    cosy = lbCommonCos(rotate->y);
 
-    sinz = lbMathSin(rotate->z);
-    cosz = lbMathCos(rotate->z);
+    sinz = lbCommonSin(rotate->z);
+    cosz = lbCommonCos(rotate->z);
 
     mtx[0][0] = cosy * cosz;
     mtx[0][1] = cosy * sinz;
@@ -100,14 +100,14 @@ void gmCollisionSetMatrixNcs(DObj *dobj, ftParts *ft_parts, Mtx44f mtx, Vec3f *s
     }
     else *nscale = *scale;
 
-    sinx = lbMathSin(rotate->x);
-    cosx = lbMathCos(rotate->x);
+    sinx = lbCommonSin(rotate->x);
+    cosx = lbCommonCos(rotate->x);
 
-    siny = lbMathSin(rotate->y);
-    cosy = lbMathCos(rotate->y);
+    siny = lbCommonSin(rotate->y);
+    cosy = lbCommonCos(rotate->y);
 
-    sinz = lbMathSin(rotate->z);
-    cosz = lbMathCos(rotate->z);
+    sinz = lbCommonSin(rotate->z);
+    cosz = lbCommonCos(rotate->z);
 
     mtx[0][0] = cosy * cosz;
     mtx[0][1] = cosy * sinz;

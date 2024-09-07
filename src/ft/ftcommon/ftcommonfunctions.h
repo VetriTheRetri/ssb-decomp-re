@@ -430,7 +430,7 @@ void ftCommonGuardOnSetHitStatusYoshi(GObj* fighter_gobj);
 void ftCommonGuardSetHitStatusYoshi(GObj* fighter_gobj);
 void ftCommonGuardOffSetHitStatusYoshi(GObj* fighter_gobj);
 void ftCommonGuardUpdateShieldVars(GObj* fighter_gobj);
-void ftCommonGuardUpdateShieldHitbox(ftStruct* fp);
+void ftCommonGuardUpdateShieldCollision(ftStruct* fp);
 void ftCommonGuardUpdateShieldAngle(ftStruct* fp);
 void ftCommonGuardGetJointTransform(DObj* joint, DObjDesc* joint_desc, f32 range);
 void ftCommonGuardGetJointTransformScale(DObj* joint, DObjDesc* joint_desc, f32 range, Vec3f* scale);

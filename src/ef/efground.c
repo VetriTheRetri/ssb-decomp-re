@@ -2,7 +2,7 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 
-extern void func_ovl0_800C88AC(DObj*, void*, void*, f32);
+extern void lbCommonAddDObjAnimAll(DObj*, void*, void*, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -1196,7 +1196,7 @@ void efGroundCommonProcUpdate(GObj *effect_gobj)
                 child_dobj->translate.vec.f.x = 0.0F;
                 child_dobj->translate.vec.f.y = 0.0F;
 
-                func_ovl0_800C88AC(child_dobj, ep->effect_vars.ground_effect.anim_joint, ep->effect_vars.ground_effect.matanim_joint, 0.0F);
+                lbCommonAddDObjAnimAll(child_dobj, ep->effect_vars.ground_effect.anim_joint, ep->effect_vars.ground_effect.matanim_joint, 0.0F);
                 gcPlayAnimAll(effect_gobj);
             }
         }
@@ -1441,7 +1441,7 @@ GObj* efGroundMakeEffect(efCreateDesc *effect_desc, s32 lr)
             }
             if ((o_anim_joint != 0) || (o_matanim_joint != 0))
             {
-                func_ovl0_800C88AC(main_dobj, (o_anim_joint != 0) ? (void*) (addr + o_anim_joint) : NULL, (o_matanim_joint != 0) ? (void*) (addr + o_matanim_joint) : NULL, 0.0F);
+                lbCommonAddDObjAnimAll(main_dobj, (o_anim_joint != 0) ? (void*) (addr + o_anim_joint) : NULL, (o_matanim_joint != 0) ? (void*) (addr + o_matanim_joint) : NULL, 0.0F);
                 gcPlayAnimAll(effect_gobj);
             }
         }

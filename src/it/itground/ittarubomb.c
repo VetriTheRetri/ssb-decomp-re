@@ -262,7 +262,7 @@ sb32 itTaruBombFallProcMap(GObj *item_gobj)
         }
         else
         {
-            lbMathReflect2D(&ip->phys_info.vel_air, &ip->coll_data.ground_angle);
+            lbCommonReflect2D(&ip->phys_info.vel_air, &ip->coll_data.ground_angle);
 
             ip->phys_info.vel_air.y *= 0.2F;
 

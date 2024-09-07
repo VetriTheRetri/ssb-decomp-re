@@ -895,7 +895,7 @@ void mnStageCreateStageGeos(s32 stage_id, mpGroundData* stage_info, s32 heap_id)
 
 	if (stage_id == nGRKindYoster)
 	{
-		for (next_dobj = stage_dobj = DObjGetStruct(stage_info_array[0]), i = 1; next_dobj != NULL; next_dobj = func_ovl0_800C86E8(next_dobj, stage_dobj), i += 1)
+		for (next_dobj = stage_dobj = DObjGetStruct(stage_info_array[0]), i = 1; next_dobj != NULL; next_dobj = lbCommonGetDObjDepthFirst(next_dobj, stage_dobj), i += 1)
 		{
 			if ((i == 0xF) || (i == 0x11))
 				next_dobj->flags = DOBJ_FLAG_NORENDER;

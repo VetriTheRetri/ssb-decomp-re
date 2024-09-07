@@ -18,7 +18,7 @@ extern intptr_t lGRYosterParticleBankHeaderHi;      // 0x00B22A00
 extern intptr_t lGRYosterParticleBankTextureLo;     // 0x00B22A00
 extern intptr_t lGRYosterParticleBankTextureHi;     // 0x00B22C30
 
-extern void func_ovl0_800C88AC(DObj*, void*, void*, f32);
+extern void lbCommonAddDObjAnimAll(DObj*, void*, void*, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -185,7 +185,7 @@ void grYosterUpdateCloudAnim(s32 cloud_id)
         {
             DObj *dobj = gGRCommonStruct.yoster.clouds[cloud_id].dobj[i];
 
-            func_ovl0_800C88AC(dobj, NULL, (void*) ((intptr_t)dGRYosterCloudMatAnimJoints[anim_id] + (uintptr_t)map_head), 0.0F);
+            lbCommonAddDObjAnimAll(dobj, NULL, (void*) ((intptr_t)dGRYosterCloudMatAnimJoints[anim_id] + (uintptr_t)map_head), 0.0F);
             gcPlayDObjAnim(dobj);
         }
         gGRCommonStruct.yoster.clouds[cloud_id].anim_id = -1;

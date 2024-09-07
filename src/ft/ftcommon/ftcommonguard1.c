@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 
-extern void func_ovl0_800C8758(DObj*, void*, f32);
+extern void lbCommonAddDObjAnimJointAll(DObj*, AObjEvent**, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -124,7 +124,7 @@ void ftCommonGuardUpdateShieldVars(GObj *fighter_gobj)
 }
 
 // 0x80148408
-void ftCommonGuardUpdateShieldHitbox(ftStruct *fp)
+void ftCommonGuardUpdateShieldCollision(ftStruct *fp)
 {
     Vec3f *scale = &fp->joints[nFTPartsJointYRotN]->scale.vec.f;
     f32 scale_final;
@@ -136,7 +136,13 @@ void ftCommonGuardUpdateShieldHitbox(ftStruct *fp)
     }
     else scale_mul = fp->shield_health / FTCOMMON_GUARD_SIZE_HEALTH_DIV;
 
-    scale_final = (((FTCOMMON_GUARD_SIZE_SCALE_MUL_INIT * scale_mul) + FTCOMMON_GUARD_SIZE_SCALE_MUL_ADD) * fp->attributes->shield_size) / FTCOMMON_GUARD_SIZE_SCALE_MUL_DIV;
+    scale_final =
+    (
+        (
+            (FTCOMMON_GUARD_SIZE_SCALE_MUL_INIT * scale_mul) +
+            FTCOMMON_GUARD_SIZE_SCALE_MUL_ADD
+        ) * fp->attributes->shield_size
+    ) / FTCOMMON_GUARD_SIZE_SCALE_MUL_DIV;
 
     scale->x = scale->y = scale->z = scale_final;
 }
@@ -231,7 +237,7 @@ void ftCommonGuardUpdateJoints(GObj *fighter_gobj)
         }
         joint_num--;
 
-        gcAddDObjAnimJoint(yrotn_joint, fp->attributes->shield_keys[fp->status_vars.common.guard.angle_i][joint_num], fp->status_vars.common.guard.angle_f);
+        gcAddDObjAnimJoint(yrotn_joint, fp->attributes->shield_anim_joints[fp->status_vars.common.guard.angle_i][joint_num], fp->status_vars.common.guard.angle_f);
         gcParseDObjAnimJoint(yrotn_joint);
 
         if (fp->is_have_translate_scale)
@@ -248,7 +254,7 @@ void ftCommonGuardUpdateJoints(GObj *fighter_gobj)
 
         yrotn_joint->anim_remain = AOBJ_ANIM_NULL;
 
-        ftCommonGuardUpdateShieldHitbox(fp);
+        ftCommonGuardUpdateShieldCollision(fp);
         func_ovl2_800EB528(fp->joints[nFTPartsJointYRotN]);
     }
 }
@@ -270,7 +276,12 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
     }
     fp->anim_desc.flags.is_anim_joint = TRUE;
 
-    func_ovl0_800C8758(fp->joints[nFTPartsJointXRotN], attributes->shield_keys[fp->status_vars.common.guard.angle_i], fp->status_vars.common.guard.angle_f);
+    lbCommonAddDObjAnimJointAll
+    (
+        fp->joints[nFTPartsJointXRotN],
+        attributes->shield_anim_joints[fp->status_vars.common.guard.angle_i],
+        fp->status_vars.common.guard.angle_f
+    );
     ftMainPlayAnimNoEffect(fighter_gobj);
 
     if (fp->is_have_translate_scale)
@@ -285,8 +296,12 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
             {
                 if (joint->anim_remain != AOBJ_ANIM_NULL)
                 {
-                    ftCommonGuardGetJointTransformScale(joint, dobj_desc, fp->status_vars.common.guard.shield_rotate_range, scale);
-
+                    ftCommonGuardGetJointTransformScale
+                    (
+                        joint,
+                        dobj_desc,
+                        fp->status_vars.common.guard.shield_rotate_range, scale
+                    );
                     joint->anim_remain = AOBJ_ANIM_NULL;
                 }
                 dobj_desc++;
@@ -296,8 +311,13 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
 
         if (joint->anim_remain != AOBJ_ANIM_NULL)
         {
-            ftCommonGuardGetJointTransformScale(joint, dobj_desc, fp->status_vars.common.guard.shield_rotate_range, &fp->attributes->translate_scales[nFTPartsJointYRotN]);
-
+            ftCommonGuardGetJointTransformScale
+            (
+                joint,
+                dobj_desc,
+                fp->status_vars.common.guard.shield_rotate_range,
+                &fp->attributes->translate_scales[nFTPartsJointYRotN]
+            );
             joint->anim_remain = AOBJ_ANIM_NULL;
         }
     }
@@ -311,8 +331,12 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
             {
                 if (joint->anim_remain != AOBJ_ANIM_NULL)
                 {
-                    ftCommonGuardGetJointTransform(joint, dobj_desc, fp->status_vars.common.guard.shield_rotate_range);
-
+                    ftCommonGuardGetJointTransform
+                    (
+                        joint,
+                        dobj_desc,
+                        fp->status_vars.common.guard.shield_rotate_range
+                    );
                     joint->anim_remain = AOBJ_ANIM_NULL;
                 }
                 dobj_desc++;
@@ -322,12 +346,16 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
 
         if (joint->anim_remain != AOBJ_ANIM_NULL)
         {
-            ftCommonGuardGetJointTransform(joint, dobj_desc, fp->status_vars.common.guard.shield_rotate_range);
-
+            ftCommonGuardGetJointTransform
+            (
+                joint,
+                dobj_desc,
+                fp->status_vars.common.guard.shield_rotate_range
+            );
             joint->anim_remain = AOBJ_ANIM_NULL;
         }
     }
-    ftCommonGuardUpdateShieldHitbox(fp);
+    ftCommonGuardUpdateShieldCollision(fp);
     func_ovl2_800EB648(fp->joints[nFTPartsJointXRotN]);
 }
 

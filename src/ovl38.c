@@ -246,7 +246,7 @@ void mvOpeningSamusInitFighterStagePanel()
 				next_dobj->ommtx[j]->kind = 0x25;
 		}
 
-		next_dobj = func_ovl0_800C86E8(next_dobj, stage_dobj);
+		next_dobj = lbCommonGetDObjDepthFirst(next_dobj, stage_dobj);
 	}
 
 	if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieSpawn1) != 1)

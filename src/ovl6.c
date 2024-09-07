@@ -28,9 +28,9 @@ extern scBattleState gDefaultBattleState;
 extern GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
 extern ftCreateDesc dFTManagerDefaultFighterDesc; // ovl2 80116DD0
 
-extern void func_ovl0_800C88AC(DObj*, void*, void*, f32);
+extern void lbCommonAddDObjAnimAll(DObj*, void*, void*, f32);
 extern void func_ovl0_800C9228(DObj*, void*);
-extern void func_ovl0_800C8758(DObj*, void*, f32);
+extern void lbCommonAddDObjAnimJointAll(DObj*, void*, f32);
 extern void func_ovl2_8010CFA8(GObj*, f32, f32, f32, f32, f32);
 extern void func_ovl0_800CCF00(GObj*);
 extern void itManagerInitItems();
@@ -424,7 +424,7 @@ void func_ovl6_8018D6A8(s32 line_id)
 	func_ovl0_800C9228(dobj->child, (void*)((uintptr_t)gGRCommonStruct.bonus2.unk_bonus2_0x4
 											+ (intptr_t)scBonusGame_Bonus2_PlatformOffsets[index].unk_bonus2nodes_0x8));
 
-	func_ovl0_800C88AC(dobj->child,
+	lbCommonAddDObjAnimAll(dobj->child,
 					   ((uintptr_t)gGRCommonStruct.bonus2.unk_bonus2_0x4
 						+ (intptr_t)scBonusGame_Bonus2_PlatformOffsets[index].unk_bonus2nodes_0x4),
 					   ((uintptr_t)gGRCommonStruct.bonus2.unk_bonus2_0x4
@@ -482,7 +482,7 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj* dobj)
 		dobj,
 		(void*)((uintptr_t)gGRCommonStruct.bonus2.unk_bonus2_0x4 + (intptr_t)D_ovl6_8018EFE4[index].unk_bonus2unk_0x0),
 		NULL, 0x44, 0, 0);
-	func_ovl0_800C8758(
+	lbCommonAddDObjAnimJointAll(
 		dobj->child,
 		(void*)((uintptr_t)gGRCommonStruct.bonus2.unk_bonus2_0x4 + (intptr_t)D_ovl6_8018EFE4[index].unk_bonus2unk_0x4),
 		0.0F);

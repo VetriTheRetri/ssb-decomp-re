@@ -8,8 +8,8 @@
 extern alSoundEffect* func_800269C0_275C0(u16);
 extern void gcSetDObjAnimSpeed(GObj*, f32);
 extern void func_ovl0_800C8CB8(void*, void*, void*, void*, f32);
-extern void func_ovl0_800C8654(u16, f32);
-extern void func_ovl0_800C87F4(void*, void*, f32);
+extern void lbCommonMakePositionFGM(u16, f32);
+extern void lbCommonAddFighterPartsAnimJointAll(void*, void*, f32);
 extern void func_ovl0_800C9A38();
 
 // // // // // // // // // // // //
@@ -2094,7 +2094,7 @@ void ftMainPlayHitSFX(ftStruct *fp, ftHitbox *ft_hit)
     }
     fp->p_sfx = NULL, fp->sfx_id = 0;
 
-    func_ovl0_800C8654(dFTMainHitCollisionFGMs[ft_hit->sfx_kind][ft_hit->sfx_level], fp->joints[nFTPartsJointTopN]->translate.vec.f.x);
+    lbCommonMakePositionFGM(dFTMainHitCollisionFGMs[ft_hit->sfx_kind][ft_hit->sfx_level], fp->joints[nFTPartsJointTopN]->translate.vec.f.x);
 }
 
 // 0x800E2CC0
@@ -4662,7 +4662,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
 
                 joint->flags = DOBJ_FLAG_NONE;
             }
-            func_ovl0_800C87F4(fp->joints[nFTPartsJointTopN]->child, fp->anim_bank, frame_begin);
+            lbCommonAddFighterPartsAnimJointAll(fp->joints[nFTPartsJointTopN]->child, fp->anim_bank, frame_begin);
 
             if (anim_speed != DObjGetStruct(fighter_gobj)->anim_speed)
             {

@@ -313,7 +313,7 @@ ftParts* ftManagerGetNextPartsAlloc(void)
     new_part->unk_dobjtrans_0x6 = 0;
 
     new_part->gobj = NULL;
-    new_part->unk_dobjtrans_0xE = 0;
+    new_part->is_have_anim = FALSE;
 
     return current_part;
 }

@@ -210,7 +210,7 @@ void grGeometryDObjSetNoAnimMtx(GObj *ground_gobj, DObjDesc *dobj_desc)
         }
         dobj_desc++;
 
-        next_dobj = func_ovl0_800C86E8(next_dobj, root_dobj);
+        next_dobj = lbCommonGetDObjDepthFirst(next_dobj, root_dobj);
     }
 }
 

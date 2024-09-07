@@ -333,13 +333,13 @@ void wpLinkBoomerangCheckOwnerCatch(GObj *weapon_gobj, f32 distance)
 // 0x8016D40C
 sb32 wpLinkBoomerangCheckBound(wpStruct *wp, Vec3f *coll_angle)
 {
-    f32 angle = lbMathSim2D(&wp->phys_info.vel_air, coll_angle);
+    f32 angle = lbCommonSim2D(&wp->phys_info.vel_air, coll_angle);
 
     if (angle < 0.0F)
     {
         if (angle > -__sinf(F_CST_DTOR32(30.0F))) // 0.5235988F
         {
-            lbMathReflect2D(&wp->phys_info.vel_air, coll_angle);
+            lbCommonReflect2D(&wp->phys_info.vel_air, coll_angle);
 
             wp->weapon_vars.boomerang.default_angle = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
 

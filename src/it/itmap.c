@@ -164,9 +164,9 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
 
     if (coll_flags & check_flags & MPCOLL_FLAG_LWALL)
     {
-        if (lbMathSim2D(&ip->phys_info.vel_air, &coll_data->lwall_angle) < 0.0F)
+        if (lbCommonSim2D(&ip->phys_info.vel_air, &coll_data->lwall_angle) < 0.0F)
         {
-            lbMathReflect2D(&ip->phys_info.vel_air, &coll_data->lwall_angle);
+            lbCommonReflect2D(&ip->phys_info.vel_air, &coll_data->lwall_angle);
 
             mod_pos.x = translate->x + coll_data->objcoll.width;
             mod_pos.y = translate->y + coll_data->objcoll.center;
@@ -178,9 +178,9 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
     }
     if (coll_flags & check_flags & MPCOLL_FLAG_RWALL)
     {
-        if (lbMathSim2D(&ip->phys_info.vel_air, &coll_data->rwall_angle) < 0.0F)
+        if (lbCommonSim2D(&ip->phys_info.vel_air, &coll_data->rwall_angle) < 0.0F)
         {
-            lbMathReflect2D(&ip->phys_info.vel_air, &coll_data->rwall_angle);
+            lbCommonReflect2D(&ip->phys_info.vel_air, &coll_data->rwall_angle);
 
             mod_pos.x = translate->x - coll_data->objcoll.width;
             mod_pos.y = translate->y + coll_data->objcoll.center;
@@ -192,9 +192,9 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
     }
     if (coll_flags & check_flags & MPCOLL_FLAG_CEIL)
     {
-        if (lbMathSim2D(&ip->phys_info.vel_air, &coll_data->ceil_angle) < 0.0F)
+        if (lbCommonSim2D(&ip->phys_info.vel_air, &coll_data->ceil_angle) < 0.0F)
         {
-            lbMathReflect2D(&ip->phys_info.vel_air, &coll_data->ceil_angle);
+            lbCommonReflect2D(&ip->phys_info.vel_air, &coll_data->ceil_angle);
 
             mod_pos.x = translate->x;
             mod_pos.y = translate->y + coll_data->objcoll.top;
@@ -204,9 +204,9 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
     }
     if (coll_flags & check_flags & MPCOLL_FLAG_GROUND)
     {
-        if (lbMathSim2D(&ip->phys_info.vel_air, &coll_data->ground_angle) < 0.0F)
+        if (lbCommonSim2D(&ip->phys_info.vel_air, &coll_data->ground_angle) < 0.0F)
         {
-            lbMathReflect2D(&ip->phys_info.vel_air, &coll_data->ground_angle);
+            lbCommonReflect2D(&ip->phys_info.vel_air, &coll_data->ground_angle);
 
             mod_pos.x = translate->x;
             mod_pos.y = translate->y + coll_data->objcoll.bottom;
@@ -218,7 +218,7 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
     }
     if (return_bool != FALSE)
     {
-        lbMathScale2D(&ip->phys_info.vel_air, mod_vel);
+        lbCommonScale2D(&ip->phys_info.vel_air, mod_vel);
 
         if (pos != NULL)
         {
@@ -237,14 +237,14 @@ void itMapSetGroundRebound(Vec3f *vel, Vec3f *ground_angle, f32 ground_rebound)
     f32 inverse;
     f32 rebound;
 
-    scale = lbMathMag2D(vel);
+    scale = lbCommonMag2D(vel);
 
     if (scale != 0.0F)
     {
         inverse = 1.0F / scale;
         rebound = scale * ground_rebound * 0.5F;
 
-        lbMathReflect2D(vel, ground_angle);
+        lbCommonReflect2D(vel, ground_angle);
 
         vel->x *= inverse;
         vel->y *= inverse;
@@ -310,8 +310,8 @@ sb32 itMapCheckLanding(GObj *item_gobj, f32 common_rebound, f32 ground_rebound, 
     }
     if (is_collide_ground != FALSE)
     {
-        lbMathReflect2D(&ip->phys_info.vel_air, &ip->coll_data.ground_angle);
-        lbMathScale2D(&ip->phys_info.vel_air, ground_rebound);
+        lbCommonReflect2D(&ip->phys_info.vel_air, &ip->coll_data.ground_angle);
+        lbCommonScale2D(&ip->phys_info.vel_air, ground_rebound);
         itMainVelSetRotateStepLR(item_gobj);
 
         if (proc_map != NULL)
@@ -336,8 +336,8 @@ sb32 itMapCheckMapReboundProcAll(GObj *item_gobj, f32 common_rebound, f32 ground
     }
     if (coll_data->coll_mask_curr & MPCOLL_FLAG_GROUND)
     {
-        lbMathReflect2D(&ip->phys_info.vel_air, &coll_data->ground_angle);
-        lbMathScale2D(&ip->phys_info.vel_air, ground_rebound);
+        lbCommonReflect2D(&ip->phys_info.vel_air, &coll_data->ground_angle);
+        lbCommonScale2D(&ip->phys_info.vel_air, ground_rebound);
         itMainVelSetRotateStepLR(item_gobj);
     }
     if (is_collide_any != FALSE)

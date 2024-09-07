@@ -1,4 +1,6 @@
-#include <sys/obj.h>
+#include <ft/fighter.h>
+
+extern void* func_80026A10_27610(u16);
 
 extern u16 gSinTable[/* */];
 
@@ -310,7 +312,7 @@ void *D_800D5CAC_5168C[/* */] = {
 
 
 // 0x800C7840
-f32 lbMathSin(f32 angle)
+f32 lbCommonSin(f32 angle)
 {
 	u16 index = ((s32) (angle * 651.8986206F)) & 0xFFF;
     f32 sin;
@@ -329,7 +331,7 @@ f32 lbMathSin(f32 angle)
 }
 
 // 0x800C78B8
-f32 lbMathCos(f32 angle)
+f32 lbCommonCos(f32 angle)
 {
     u16 index = ((s32) ((angle + F_CST_DTOR32(90.0F)) * 651.8986206F)) & 0xFFF;
     f32 cos;
@@ -348,7 +350,7 @@ f32 lbMathCos(f32 angle)
 }
 
 // 0x800C793C
-f32 lbMathTan(f32 angle)
+f32 lbCommonTan(f32 angle)
 {
     u16 index = ((s32) (angle * 651.8986206F)) & 0xFFF;
     f32 sin, cos;
@@ -379,7 +381,7 @@ f32 lbMathTan(f32 angle)
 }
 
 // 0x800C7A00
-f32 lbMathNormDist2D(Vec3f *vec)
+f32 lbCommonNormDist2D(Vec3f *vec)
 {
 	f32 magnitude;
 	f32 factor;
@@ -399,13 +401,13 @@ f32 lbMathNormDist2D(Vec3f *vec)
 }
 
 // 0x800C7A84
-f32 lbMathMag2D(Vec3f *vec)
+f32 lbCommonMag2D(Vec3f *vec)
 {
 	return sqrtf(SQUARE(vec->x) + SQUARE(vec->y));
 }
 
 // 0x800C7AB8
-Vec3f* lbMathAdd2D(Vec3f *a, Vec3f *b)
+Vec3f* lbCommonAdd2D(Vec3f *a, Vec3f *b)
 {
 	a->x = a->x + b->x;
 	a->y = a->y + b->y;
@@ -414,7 +416,7 @@ Vec3f* lbMathAdd2D(Vec3f *a, Vec3f *b)
 }
 
 // 0x800C7AE0
-Vec3f* lbMathScale2D(Vec3f *vec, f32 factor)
+Vec3f* lbCommonScale2D(Vec3f *vec, f32 factor)
 {
 	vec->x = vec->x * factor;
 	vec->y = vec->y * factor;
@@ -423,7 +425,7 @@ Vec3f* lbMathScale2D(Vec3f *vec, f32 factor)
 }
 
 // 0x800C7B08
-Vec3f* lbMathReflect2D(Vec3f *a, Vec3f *b)
+Vec3f* lbCommonReflect2D(Vec3f *a, Vec3f *b)
 {
 	f32 negative_two_dot_product = (b->x * a->x + b->y * a->y) * -2.0F;
 
@@ -434,7 +436,7 @@ Vec3f* lbMathReflect2D(Vec3f *a, Vec3f *b)
 }
 
 // 0x800C7B58
-f32 lbMathSim3D(Vec3f *a, Vec3f *b)
+f32 lbCommonSim3D(Vec3f *a, Vec3f *b)
 {
 	f32 magnitude_a = sqrtf(SQUARE(a->x) + SQUARE(a->y) + SQUARE(a->z));
 	f32 magnitude_b = sqrtf(SQUARE(b->x) + SQUARE(b->y) + SQUARE(b->z));
@@ -443,7 +445,7 @@ f32 lbMathSim3D(Vec3f *a, Vec3f *b)
 }
 
 // 0x800C7C0C
-f32 lbMathSim2D(Vec3f *a, Vec3f *b)
+f32 lbCommonSim2D(Vec3f *a, Vec3f *b)
 {
 	f32 magnitude_a = sqrtf(SQUARE(a->x) + SQUARE(a->y));
 	f32 magnitude_b = sqrtf(SQUARE(b->x) + SQUARE(b->y));
@@ -452,13 +454,13 @@ f32 lbMathSim2D(Vec3f *a, Vec3f *b)
 }
 
 // 0x800C7C98
-sb32 lbMathCheckAdjustSim2D(Vec3f *a, Vec3f *b, f32 angle)
+sb32 lbCommonCheckAdjustSim2D(Vec3f *a, Vec3f *b, f32 angle)
 {
     f32 similarity;
     f32 orientation;
     f32 magnitude;
     
-    similarity = lbMathSim2D(b, a);
+    similarity = lbCommonSim2D(b, a);
 
     if (similarity <= 0.0F)
     {
@@ -468,7 +470,7 @@ sb32 lbMathCheckAdjustSim2D(Vec3f *a, Vec3f *b, f32 angle)
             
             orientation = (orientation < 0.0F) ? -1.0F : 1.0F;
             
-            magnitude = lbMathMag2D(a) * orientation;
+            magnitude = lbCommonMag2D(a) * orientation;
             
             a->x = -b->y * magnitude;
             a->y = b->x * magnitude;
@@ -480,7 +482,7 @@ sb32 lbMathCheckAdjustSim2D(Vec3f *a, Vec3f *b, f32 angle)
 }
 
 // 0x800C7DB4
-void lbMathMatrixTraRotScaInv
+void lbCommonMatrixTraRotScaInv
 (
     Mtx *mtx,
     f32 trax,
@@ -607,7 +609,7 @@ void lbMathMatrixTraRotScaInv
 }
 
 // 0x800C82AC
-void lbMathMatrixRotSca(Mtx *mtx, f32 rotx, f32 roty, f32 rotz, f32 scax, f32 scay, f32 scaz)
+void lbCommonMatrixRotSca(Mtx *mtx, f32 rotx, f32 roty, f32 rotz, f32 scax, f32 scay, f32 scaz)
 {
     u32 e1, e2;
     s32 sinx, cosx;
@@ -713,15 +715,164 @@ void func_ovl0_800C8634()
 	func_8000A5E4();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C8654.s")
+// 0x800C8654
+alSoundEffect* lbCommonMakePositionFGM(u16 fgm, f32 pos)
+{
+    alSoundEffect *snd = func_80026A10_27610(fgm);
+    
+    if (snd != NULL)
+    {
+        s32 balance = ((pos / 8000.0F) * 60.0F);
+        
+        if (balance > 60)
+        {
+            balance = 60;
+        }
+        if (balance < -60)
+        {
+            balance = -60;
+        }
+        balance = 64 - balance;
+        
+        snd->balance = balance;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C86E8.s")
+        func_800267F4_273F4(snd);
+    }
+    return snd;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C8758.s")
+// 0x800C86E8
+DObj* lbCommonGetDObjDepthFirst(DObj *a, DObj *b)
+{
+    if (a->child != NULL)
+    {
+        a = a->child;
+    }
+    else if (a == b)
+    {
+        a = NULL;
+    }
+    else if (a->sib_next != NULL)
+    {
+        a = a->sib_next;
+    }
+    else while (TRUE)
+    {
+        if (a->parent == b)
+        {
+            a = NULL;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C87F4.s")
+            break;
+        }
+        else if (a->parent->sib_next != NULL)
+        {
+            a = a->parent->sib_next;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C88AC.s")
+            break;
+        }
+        else a = a->parent;
+    }
+    return a;
+}
+
+// 0x800C8758
+void lbCommonAddDObjAnimJointAll(DObj *root_dobj, AObjEvent **anim_joints, f32 anim_frame)
+{
+    DObj *current_dobj = root_dobj;
+    
+    root_dobj->parent_gobj->anim_frame = anim_frame;
+
+    while (current_dobj != NULL)
+    {
+        AObjEvent *anim_joint = *anim_joints;
+        
+        if (anim_joint != NULL)
+        {
+            gcAddDObjAnimJoint(current_dobj, anim_joint, anim_frame);
+        }
+        else current_dobj->anim_remain = AOBJ_ANIM_NULL;
+        
+        anim_joints++;
+        
+        current_dobj = lbCommonGetDObjDepthFirst(current_dobj, root_dobj);
+    }
+}
+
+// 0x800C87F4
+void lbCommonAddFighterPartsAnimJointAll(DObj *root_dobj, AObjEvent **anim_joints, f32 anim_frame)
+{
+    DObj *current_dobj = root_dobj;
+    
+    root_dobj->parent_gobj->anim_frame = anim_frame;
+
+    while (current_dobj != NULL)
+    {
+        AObjEvent *anim_joint = *anim_joints;
+        ftParts *ft_parts = current_dobj->user_data.p;
+        
+        if (anim_joint != NULL)
+        {
+            gcAddDObjAnimJoint(current_dobj, anim_joint, anim_frame);
+
+            ft_parts->is_have_anim = TRUE;
+        }
+        else
+        {
+            current_dobj->anim_remain = AOBJ_ANIM_NULL;
+
+            ft_parts->is_have_anim = FALSE;
+        }
+        anim_joints++;
+        
+        current_dobj = lbCommonGetDObjDepthFirst(current_dobj, root_dobj);
+    }
+}
+
+// 0x800C88AC
+void lbCommonAddDObjAnimAll(DObj *root_dobj, AObjEvent **anim_joints, AObjEvent ***p_matanim_joints, f32 anim_frame)
+{
+    DObj *current_dobj = root_dobj;
+    
+    root_dobj->parent_gobj->anim_frame = anim_frame;
+
+    while (current_dobj != NULL)
+    {
+        if (anim_joints != NULL)
+        {
+            AObjEvent *anim_joint = *anim_joints;
+
+            if (anim_joint != NULL)
+            {
+                gcAddDObjAnimJoint(current_dobj, anim_joint, anim_frame);
+            }
+            else current_dobj->anim_remain = AOBJ_ANIM_NULL;
+
+            anim_joints++;
+        }
+        if (p_matanim_joints != NULL)
+        {
+            if (*p_matanim_joints != NULL)
+            {
+                MObj *mobj = current_dobj->mobj;
+                AObjEvent **matanim_joints = *p_matanim_joints;
+
+                while (mobj != NULL)
+                {
+                    AObjEvent *matanim_joint = *matanim_joints;
+
+                    if (matanim_joint != NULL)
+                    {
+                        gcAddMObjMatAnimJoint(mobj, matanim_joint, anim_frame);
+                    }
+                    mobj = mobj->next;
+                    matanim_joints++;
+                }
+            }
+            p_matanim_joints++;
+        }
+        current_dobj = lbCommonGetDObjDepthFirst(current_dobj, root_dobj);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C89BC.s")
 
@@ -859,8 +1010,8 @@ u8 func_ovl0_800CB644(u8 index)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CD538.s")
 
-// 800CD5AC
-void halMathCross(Vec3f* a, Vec3f* b, Vec3f* out)
+// 0x800CD5AC
+void lbCommonCross3D(Vec3f *a, Vec3f *b, Vec3f *out)
 {
 	out->x = a->y * b->z - a->z * b->y;
 	out->y = a->z * b->x - a->x * b->z;

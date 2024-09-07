@@ -9,7 +9,7 @@
 
 extern intptr_t lFTKirbySpecialNCopyData;           // 0x00000000
 
-extern void func_ovl0_800C87F4(DObj*, void*, f32);
+extern void lbCommonAddFighterPartsAnimJointAll(DObj*, void*, f32);
 extern void ftParamSetHitStatusAll(GObj*, s32);
 
 // // // // // // // // // // // //
@@ -186,7 +186,7 @@ void ftCommonCaptureWaitKirbyUpdateBreakoutVars(ftStruct *this_fp, ftStruct *cap
         {
             if (capture_fp->anim_bank != NULL)
             {
-                func_ovl0_800C87F4(capture_fp->joints[nFTPartsJointTopN]->child, capture_fp->anim_bank, 0.0F);
+                lbCommonAddFighterPartsAnimJointAll(capture_fp->joints[nFTPartsJointTopN]->child, capture_fp->anim_bank, 0.0F);
             }
         }
     }
@@ -432,7 +432,7 @@ void ftCommonThrownCommonStarProcMap(GObj *fighter_gobj)
     {
         vel_bak = fp->phys_info.vel_air;
 
-        lbMathReflect2D(&fp->phys_info.vel_air, angle);
+        lbCommonReflect2D(&fp->phys_info.vel_air, angle);
 
         if (((fp->phys_info.vel_air.x * vel_bak.x) + (vel_bak.y * fp->phys_info.vel_air.y)) < 0.0F)
         {

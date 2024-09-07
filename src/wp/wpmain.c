@@ -92,10 +92,10 @@ void wpMainApplyGravityClampTVel(wpStruct *wp, f32 gravity, f32 terminal_velocit
 {
     wp->phys_info.vel_air.y -= gravity;
 
-    if (lbMathMag2D(&wp->phys_info.vel_air) > terminal_velocity)
+    if (lbCommonMag2D(&wp->phys_info.vel_air) > terminal_velocity)
     {
-        lbMathNormDist2D(&wp->phys_info.vel_air);
-        lbMathScale2D(&wp->phys_info.vel_air, terminal_velocity);
+        lbCommonNormDist2D(&wp->phys_info.vel_air);
+        lbCommonScale2D(&wp->phys_info.vel_air, terminal_velocity);
     }
 }
 
@@ -178,7 +178,7 @@ void wpMainReflectorRotateWeaponModel(GObj *weapon_gobj)
 
     lbVector_Vec3fNormalize(&vel);
 
-    halMathCross(&vel, &direction, &angle);
+    lbCommonCross3D(&vel, &direction, &angle);
 
     rotate = &DObjGetStruct(weapon_gobj)->rotate.vec.f;
 

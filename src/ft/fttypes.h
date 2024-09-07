@@ -688,7 +688,7 @@ struct ftParts
     ftParts *alloc_next;
     u8 flags;
     u8 joint_id;
-    u8 unk_dobjtrans_0xE;
+    ub8 is_have_anim;
     u8 unk_dobjtrans_0xF;
     Mtx44f unk_dobjtrans_0x10;
     Mtx44f mtx_translate;
@@ -973,7 +973,7 @@ struct ftAttributes
     ftWithheldPart *withheld_parts;
     ftCommonPartContainer *commonparts_container;
     DObjDesc *dobj_lookup; // WARNING: Not actually DObjDesc* but I don't know what this struct is or what its bounds are; bunch of consecutive floats
-    void **shield_keys[8];  // One for each ordinal direction
+    AObjEvent **shield_anim_joints[8];  // One for each ordinal direction
     s32 joint_rfoot_id; // What does this do?
     f32 joint_rfoot_rotate;
     s32 joint_lfoot_id;

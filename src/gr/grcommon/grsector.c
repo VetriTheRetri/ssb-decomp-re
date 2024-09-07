@@ -260,8 +260,8 @@ void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
         }
         lbVector_Vec3fNormalize(vec3);
     }
-    halMathCross(vec3, vec1, vec2);
-    halMathCross(vec1, vec2, vec3);
+    lbCommonCross3D(vec3, vec1, vec2);
+    lbCommonCross3D(vec1, vec2, vec3);
     lbVector_Vec3fNormalize(vec1);
     lbVector_Vec3fNormalize(vec2);
     lbVector_Vec3fNormalize(vec3);
@@ -613,8 +613,8 @@ void func_ovl2_8010719C(Vec3f *vel, Vec3f *rotate)
     sp20.y = __sinf(rot_z);
     sp20.z = __cosf(rot_z);
 
-    halMathCross(&sp20, vel, &sp2C);
-    halMathCross(vel, &sp2C, &sp20);
+    lbCommonCross3D(&sp20, vel, &sp2C);
+    lbCommonCross3D(vel, &sp2C, &sp20);
     lbVector_Vec3fNormalize(&sp2C);
     lbVector_Vec3fNormalize(&sp20);
     func_ovl2_801070A4(rotate, vel, &sp2C, &sp20);

@@ -3,7 +3,7 @@
 #include <if/interface.h>
 #include <sc/scene.h>
 
-extern void func_ovl0_800C88AC(void*, void*, void*, f32);
+extern void lbCommonAddDObjAnimAll(void*, void*, void*, f32);
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern void gcSetAllAnimSpeed(void*, f32);
 
@@ -917,7 +917,7 @@ GObj* sc1PGameBossMakeWallpaperEffect(s32 effect_id, s32 anim_id, s32 plan_id)
     }
     if ((o_anim_joint != 0) || (o_matanim_joint != 0))
     {
-        func_ovl0_800C88AC(dobj, (o_anim_joint != 0) ? (void*) (addr + o_anim_joint) : NULL, (o_matanim_joint != 0) ? (void*) (addr + o_matanim_joint) : NULL, 0.0F);
+        lbCommonAddDObjAnimAll(dobj, (o_anim_joint != 0) ? (void*) (addr + o_anim_joint) : NULL, (o_matanim_joint != 0) ? (void*) (addr + o_matanim_joint) : NULL, 0.0F);
         gcPlayAnimAll(effect_gobj);
     }
     DObjGetStruct(effect_gobj)->child->user_data.s = mtTrigGetRandomIntRange

@@ -3,8 +3,8 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 
-extern f32 lbMathCos(f32);
-extern f32 lbMathSin(f32);
+extern f32 lbCommonCos(f32);
+extern f32 lbCommonSin(f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -49,8 +49,8 @@ void ftCommonTwisterProcPhysics(GObj *fighter_gobj)
     angle_d = (fp->status_vars.common.twister.release_wait * 0.016666668F);
     mul = (((400.0F * angle_d) + 100.0F) * 0.5F);
 
-    pos.x += (mul * lbMathCos(F_CLC_DTOR32(1800.0F * angle_d)));
-    pos.z += (mul * lbMathSin(F_CLC_DTOR32(1800.0F * angle_d)));
+    pos.x += (mul * lbCommonCos(F_CLC_DTOR32(1800.0F * angle_d)));
+    pos.z += (mul * lbCommonSin(F_CLC_DTOR32(1800.0F * angle_d)));
     pos.y += 500.0F * angle_d;
 
     lbVector_Vec3fSubtract(&vel, &pos, &DObjGetStruct(fighter_gobj)->translate.vec.f);

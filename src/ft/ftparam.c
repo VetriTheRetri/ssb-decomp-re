@@ -3,10 +3,10 @@
 #include <sc/scene.h>
 #include <ft/ftcommondata.h>
 
-extern f32 lbMathSim3D();
+extern f32 lbCommonSim3D();
 extern alSoundEffect* func_800269C0_275C0(u16);
-extern f32 lbMathSin(f32);
-extern f32 lbMathCos(f32);
+extern f32 lbCommonSin(f32);
+extern f32 lbCommonCos(f32);
 extern void func_ovl0_800C8CB8(void*, void*, void*, void*, f32);
 
 // // // // // // // // // // // //
@@ -445,7 +445,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
             {
                 ft_parts = joint->user_data.p;
 
-                if ((ft_parts != NULL) && (ft_parts->unk_dobjtrans_0xE != 0))
+                if ((ft_parts != NULL) && (ft_parts->is_have_anim != FALSE))
                 {
                     anim_remain_bak = joint->anim_remain;
 
@@ -466,7 +466,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
         {
             ft_parts = joint->user_data.p;
 
-            if ((ft_parts != NULL) && (ft_parts->unk_dobjtrans_0xE != 0))
+            if ((ft_parts != NULL) && (ft_parts->is_have_anim != FALSE))
             {
                 anim_remain_bak = joint->anim_remain;
 
@@ -2470,9 +2470,9 @@ f32 func_ovl2_800EBB3C(Vec3f *arg0, Vec3f *arg1, Vec3f *arg2)
     {
         return 0.0F;
     }
-    else halMathCross(arg0, arg1, &sp1C);
+    else lbCommonCross3D(arg0, arg1, &sp1C);
 
-    if (lbMathSim3D(&sp1C, arg2) < 0.0F)
+    if (lbCommonSim3D(&sp1C, arg2) < 0.0F)
     {
         return -lbVector_Vec3fAngleDiff(arg1, arg0);
     }
@@ -2558,9 +2558,9 @@ void func_ovl2_800EBD08(DObj *root_dobj, f32 arg1, Vec3f *vec, f32 arg3)
 
     square_xy = sqrtf(square_xy);
 
-    sin_arg3 = lbMathSin(arg3);
+    sin_arg3 = lbCommonSin(arg3);
 
-    cos_arg3 = lbMathCos(arg3);
+    cos_arg3 = lbCommonCos(arg3);
 
     sp50 = sqrtxyz * sqrtxyz;
 

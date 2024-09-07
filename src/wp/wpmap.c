@@ -176,9 +176,9 @@ sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f
 
     if (coll_flags & check_flags & MPCOLL_FLAG_LWALL)
     {
-        if (lbMathSim2D(&wp->phys_info.vel_air, &coll_data->lwall_angle) < 0.0F)
+        if (lbCommonSim2D(&wp->phys_info.vel_air, &coll_data->lwall_angle) < 0.0F)
         {
-            lbMathReflect2D(&wp->phys_info.vel_air, &coll_data->lwall_angle);
+            lbCommonReflect2D(&wp->phys_info.vel_air, &coll_data->lwall_angle);
 
             return_bool = TRUE;
 
@@ -188,11 +188,11 @@ sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f
     }
     if (coll_flags & check_flags & MPCOLL_FLAG_RWALL)
     {
-        if (lbMathSim2D(&wp->phys_info.vel_air, &coll_data->rwall_angle) < 0.0F)
+        if (lbCommonSim2D(&wp->phys_info.vel_air, &coll_data->rwall_angle) < 0.0F)
         {
             return_bool = TRUE;
 
-            lbMathReflect2D(&wp->phys_info.vel_air, &coll_data->rwall_angle);
+            lbCommonReflect2D(&wp->phys_info.vel_air, &coll_data->rwall_angle);
 
             mod_pos.x = translate->x - coll_data->objcoll.width;
             mod_pos.y = translate->y + coll_data->objcoll.center;
@@ -200,11 +200,11 @@ sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f
     }
     if (coll_flags & check_flags & MPCOLL_FLAG_CEIL)
     {
-        if (lbMathSim2D(&wp->phys_info.vel_air, &coll_data->ceil_angle) < 0.0F)
+        if (lbCommonSim2D(&wp->phys_info.vel_air, &coll_data->ceil_angle) < 0.0F)
         {
             return_bool = TRUE;
 
-            lbMathReflect2D(&wp->phys_info.vel_air, &coll_data->ceil_angle);
+            lbCommonReflect2D(&wp->phys_info.vel_air, &coll_data->ceil_angle);
 
             mod_pos.x = translate->x;
             mod_pos.y = translate->y + coll_data->objcoll.top;
@@ -212,11 +212,11 @@ sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f
     }
     if (coll_flags & check_flags & MPCOLL_FLAG_GROUND)
     {
-        if (lbMathSim2D(&wp->phys_info.vel_air, &coll_data->ground_angle) < 0.0F)
+        if (lbCommonSim2D(&wp->phys_info.vel_air, &coll_data->ground_angle) < 0.0F)
         {
             return_bool = TRUE;
 
-            lbMathReflect2D(&wp->phys_info.vel_air, &coll_data->ground_angle);
+            lbCommonReflect2D(&wp->phys_info.vel_air, &coll_data->ground_angle);
 
             mod_pos.x = translate->x;
             mod_pos.y = translate->y + coll_data->objcoll.bottom;
@@ -224,7 +224,7 @@ sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f
     }
     if (return_bool != FALSE)
     {
-        lbMathScale2D(&wp->phys_info.vel_air, mod_vel);
+        lbCommonScale2D(&wp->phys_info.vel_air, mod_vel);
 
         if (pos != NULL)
         {

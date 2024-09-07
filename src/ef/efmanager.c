@@ -7,8 +7,8 @@
 #include <ovl0/reloc_data_mgr.h>
 
 extern void func_ovl0_800CB4B0(GObj*);
-extern void func_ovl0_800C88AC(void*, void*, void*, f32);
-extern void func_ovl0_800C8758(void*, void*, f32);
+extern void lbCommonAddDObjAnimAll(void*, void*, void*, f32);
+extern void lbCommonAddDObjAnimJointAll(void*, void*, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -2030,7 +2030,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
         }
         if ((o_anim_joint != 0) || (o_matanim_joint != 0))
         {
-            func_ovl0_800C88AC(main_dobj, (o_anim_joint != 0) ? (void*) (addr + o_anim_joint) : NULL, (o_matanim_joint != 0) ? (void*) (addr + o_matanim_joint) : NULL, 0.0F);
+            lbCommonAddDObjAnimAll(main_dobj, (o_anim_joint != 0) ? (void*) (addr + o_anim_joint) : NULL, (o_matanim_joint != 0) ? (void*) (addr + o_matanim_joint) : NULL, 0.0F);
             gcPlayAnimAll(effect_gobj);
         }
     }
@@ -2054,7 +2054,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
             {
                 gcAddDObjTriTransformKind(main_dobj, transform_types2->tk1, transform_types2->tk2, transform_types2->tk3);
 
-                main_dobj = func_ovl0_800C86E8(main_dobj, other_dobj);
+                main_dobj = lbCommonGetDObjDepthFirst(main_dobj, other_dobj);
             }
             gcSetDObjTransformsForGObj(effect_gobj, (void*) (addr + effect_desc->o_dobjsetup));
         }
@@ -4625,8 +4625,8 @@ GObj* efManagerKirbyVulcanJabMakeEffect(Vec3f *pos, s32 lr, f32 rotate, f32 vel,
 
     dobj->rotate.vec.f.z = F_CLC_DTOR32(rotate);
 
-    sin = lbMathSin(dobj->rotate.vec.f.z);
-    cos = lbMathCos(dobj->rotate.vec.f.z);
+    sin = lbCommonSin(dobj->rotate.vec.f.z);
+    cos = lbCommonCos(dobj->rotate.vec.f.z);
 
     ep->effect_vars.vulcan_jab.lifetime = 6;
 
@@ -5391,7 +5391,7 @@ void efManagerYoshiEggLaySetAnim(GObj *effect_gobj, s32 index)
 
     ep->effect_vars.yoshi_egg_lay.index = index;
 
-    func_ovl0_800C8758(DObjGetStruct(effect_gobj)->child, (uintptr_t)gFTDataYoshiSpecial3 + dEFManagerYoshiEggLayAnimJoints[index], 1.0F);
+    lbCommonAddDObjAnimJointAll(DObjGetStruct(effect_gobj)->child, (uintptr_t)gFTDataYoshiSpecial3 + dEFManagerYoshiEggLayAnimJoints[index], 1.0F);
 }
 
 // 0x80102FE4
@@ -5756,9 +5756,9 @@ GObj* efManagerFoxEntryArwingMakeEffect(Vec3f *pos, s32 lr)
 
     if (lr == nGMFacingR)
     {
-        func_ovl0_800C8758(dobj->child, (uintptr_t)gFTDataFoxSpecial2 + (intptr_t)&D_NF_000009E0, 0.0F); // Linker thing
+        lbCommonAddDObjAnimJointAll(dobj->child, (uintptr_t)gFTDataFoxSpecial2 + (intptr_t)&D_NF_000009E0, 0.0F); // Linker thing
     }
-    else func_ovl0_800C8758(dobj->child, (uintptr_t)gFTDataFoxSpecial2 + (intptr_t)&D_NF_00000590, 0.0F); // Linker thing
+    else lbCommonAddDObjAnimJointAll(dobj->child, (uintptr_t)gFTDataFoxSpecial2 + (intptr_t)&D_NF_00000590, 0.0F); // Linker thing
 
     gcPlayAnimAll(effect_gobj);
 

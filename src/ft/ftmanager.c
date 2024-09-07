@@ -784,7 +784,7 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
     topn_joint = gcAddDObjForGObj(fighter_gobj, NULL);
     fp->joints[nFTPartsJointTopN] = topn_joint;
 
-    func_ovl0_800C89BC(topn_joint, 0x4B, 0, 0);
+    lbCommonInitDObj(topn_joint, 0x4B, 0, 0);
 
     fp->joints[nFTPartsJointTopN]->ommtx[0]->unk05 = ft_desc->unk_rebirth_0x1D;
 

@@ -874,7 +874,15 @@ void lbCommonAddDObjAnimAll(DObj *root_dobj, AObjEvent **anim_joints, AObjEvent 
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C89BC.s")
+// 0x800C89BC
+void lbCommonInitDObj(DObj *dobj, u8 tk1, u8 tk2, u8 tk3)
+{
+    gcAddDObjTriTransformKind(dobj, tk1, tk2, tk3);
+    
+    dobj->translate.vec = dOMTranslateDefault.vec;
+    dobj->rotate.vec = dOMRotateDefaultRPY.vec;
+    dobj->scale.vec = dOMScaleDefault.vec;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C8A58.s")
 

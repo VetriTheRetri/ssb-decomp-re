@@ -267,7 +267,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
     }
     else
     {
-        func_ovl0_800C89BC(gcAddDObjForGObj(weapon_gobj, attributes->dobj_setup), wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.tk3);
+        lbCommonInitDObj(gcAddDObjForGObj(weapon_gobj, attributes->dobj_setup), wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.tk3);
 
         proc_render = (wp_desc->flags & WEAPON_FLAG_DOBJLINKS) ? wpRenderDObjDLLinks : wpRenderDLHead1;
     }

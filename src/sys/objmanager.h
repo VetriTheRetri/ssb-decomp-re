@@ -21,6 +21,27 @@ extern GObjProcess *D_80046A60;
 extern OSMesgQueue gOMMesgQueue;
 extern OMGfxLink D_80046A88[64];
 
+// 8003B878
+extern OMPersp dOMPerspDefault;
+
+// 8003B984
+extern OMOrtho dOMOrthoDefault;
+
+// 8003B8B4
+extern CameraVec dOMCameraVecDefault;
+
+// 8003B8DC
+extern OMTranslate dOMTranslateDefault;
+
+// 8003B8EC
+extern OMRotate dOMRotateDefaultAXYZ;
+
+// 8003B900
+extern OMRotate dOMRotateDefaultRPY;
+
+// 8003B914
+extern OMScale dOMScaleDefault;
+
 extern s32 gcGetGObjActiveCount(void);
 extern GObjThread *gcGetGObjThread(void);
 extern void gcSetGObjThreadPrevAlloc(GObjThread *gobjthread);

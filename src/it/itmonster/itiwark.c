@@ -373,8 +373,8 @@ sb32 itIwarkWeaponRockProcMap(GObj *weapon_gobj)
     {
         if (line_id != coll_data->ground_line_id)
         {
-            func_ovl0_800C7B08(&wp->phys_info.vel_air, &coll_data->ground_angle);
-            halMathScaleVector(&wp->phys_info.vel_air, WPIWARK_ROCK_COLLIDE_MUL_VEL_Y);
+            lbMathReflect2D(&wp->phys_info.vel_air, &coll_data->ground_angle);
+            lbMathScale2D(&wp->phys_info.vel_air, WPIWARK_ROCK_COLLIDE_MUL_VEL_Y);
 
             wp->weapon_vars.rock.ground_line_id = coll_data->ground_line_id;
 

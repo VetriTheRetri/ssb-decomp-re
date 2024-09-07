@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 
-extern sb32 func_ovl0_800C7C98(Vec3f*, Vec3f*, f32);
+extern sb32 lbMathCheckAdjustSim2D(Vec3f*, Vec3f*, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -228,7 +228,7 @@ void ftFoxSpecialAirHiProcMap(GObj *fighter_gobj)
     {
         coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask_curr) & fp->coll_data.coll_mask_curr & MPCOLL_FLAG_GROUND;
 
-        if (!(coll_mask & MPCOLL_FLAG_GROUND) || (func_ovl0_800C7C98(&fp->phys_info.vel_air, &fp->coll_data.ground_angle, FTFOX_FIREFOX_COLL_ANGLE_UNK) == FALSE))
+        if (!(coll_mask & MPCOLL_FLAG_GROUND) || (lbMathCheckAdjustSim2D(&fp->phys_info.vel_air, &fp->coll_data.ground_angle, FTFOX_FIREFOX_BOUND_ANGLE) == FALSE))
         {
             if (lbVector_Vec3fAngleDiff(&fp->coll_data.ground_angle, &fp->phys_info.vel_air) > F_CST_DTOR32(110.0F)) // 1.9198622F
             {
@@ -244,19 +244,19 @@ void ftFoxSpecialAirHiProcMap(GObj *fighter_gobj)
 
     if (coll_mask & MPCOLL_FLAG_CEIL)
     {
-        if (func_ovl0_800C7C98(&fp->phys_info.vel_air, &fp->coll_data.ceil_angle, FTFOX_FIREFOX_COLL_ANGLE_UNK) != FALSE)
+        if (lbMathCheckAdjustSim2D(&fp->phys_info.vel_air, &fp->coll_data.ceil_angle, FTFOX_FIREFOX_BOUND_ANGLE) != FALSE)
         {
             goto coll_end;
         }
     }
     else if (coll_mask & MPCOLL_FLAG_LWALL)
     {
-        if (func_ovl0_800C7C98(&fp->phys_info.vel_air, &fp->coll_data.lwall_angle, FTFOX_FIREFOX_COLL_ANGLE_UNK) != FALSE)
+        if (lbMathCheckAdjustSim2D(&fp->phys_info.vel_air, &fp->coll_data.lwall_angle, FTFOX_FIREFOX_BOUND_ANGLE) != FALSE)
         {
             goto coll_end;
         }
     }
-    else if ((coll_mask & MPCOLL_FLAG_RWALL) && (func_ovl0_800C7C98(&fp->phys_info.vel_air, &fp->coll_data.rwall_angle, FTFOX_FIREFOX_COLL_ANGLE_UNK) != FALSE))
+    else if ((coll_mask & MPCOLL_FLAG_RWALL) && (lbMathCheckAdjustSim2D(&fp->phys_info.vel_air, &fp->coll_data.rwall_angle, FTFOX_FIREFOX_BOUND_ANGLE) != FALSE))
     {
     coll_end:
         fp->lr = (fp->phys_info.vel_air.x >= 0.0F) ? nGMFacingR : nGMFacingL;

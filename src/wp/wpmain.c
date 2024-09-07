@@ -92,10 +92,10 @@ void wpMainApplyGravityClampTVel(wpStruct *wp, f32 gravity, f32 terminal_velocit
 {
     wp->phys_info.vel_air.y -= gravity;
 
-    if (halMathMagnitude(&wp->phys_info.vel_air) > terminal_velocity)
+    if (lbMathMag2D(&wp->phys_info.vel_air) > terminal_velocity)
     {
-        halMathNormalize(&wp->phys_info.vel_air);
-        halMathScaleVector(&wp->phys_info.vel_air, terminal_velocity);
+        lbMathNormDist2D(&wp->phys_info.vel_air);
+        lbMathScale2D(&wp->phys_info.vel_air, terminal_velocity);
     }
 }
 

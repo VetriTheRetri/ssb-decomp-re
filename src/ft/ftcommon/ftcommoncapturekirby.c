@@ -432,7 +432,7 @@ void ftCommonThrownCommonStarProcMap(GObj *fighter_gobj)
     {
         vel_bak = fp->phys_info.vel_air;
 
-        func_ovl0_800C7B08(&fp->phys_info.vel_air, angle);
+        lbMathReflect2D(&fp->phys_info.vel_air, angle);
 
         if (((fp->phys_info.vel_air.x * vel_bak.x) + (vel_bak.y * fp->phys_info.vel_air.y)) < 0.0F)
         {

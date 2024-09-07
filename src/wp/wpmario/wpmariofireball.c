@@ -116,7 +116,7 @@ sb32 wpMarioFireballProcMap(GObj *weapon_gobj)
 
     if (wpMapCheckAllRebound(weapon_gobj, MPCOLL_FLAG_MAIN_MASK, dWPMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].collide_rebound, &pos) != FALSE)
     {
-        if (halMathMagnitude(&wp->phys_info.vel_air) < dWPMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].vel_min)
+        if (lbMathMag2D(&wp->phys_info.vel_air) < dWPMarioFireballWeaponAttributes[wp->weapon_vars.fireball.index].vel_min)
         {
             efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
             return TRUE;

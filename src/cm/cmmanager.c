@@ -471,8 +471,8 @@ void cmManagerGetClampDimensionsMax(f32 hz, f32 vt, f32 *max)
 {
     f32 maxd;
 
-    vt /= halMathTan(F_CLC_DTOR32(gCMManagerCameraStruct.fovy * 0.5F));
-    hz /= ((halMathTan(F_CLC_DTOR32(gCMManagerCameraStruct.fovy * 0.5F)) * gCMManagerCameraStruct.viewport_width) / gCMManagerCameraStruct.viewport_height);
+    vt /= lbMathTan(F_CLC_DTOR32(gCMManagerCameraStruct.fovy * 0.5F));
+    hz /= ((lbMathTan(F_CLC_DTOR32(gCMManagerCameraStruct.fovy * 0.5F)) * gCMManagerCameraStruct.viewport_width) / gCMManagerCameraStruct.viewport_height);
 
     maxd = (hz > vt) ? hz : vt;
 
@@ -495,14 +495,14 @@ void cmManagerGetAdjustAtAngle(Vec3f *at, Vec3f *vec, f32 x, f32 y)
 
     angle_x = gCMManagerPauseCameraEyeY + y + gMPCollisionGroundData->light_angle.z;
 
-    vec->y = -halMathSin(angle_x);
-    vec->z = halMathCos(angle_x);
+    vec->y = -lbMathSin(angle_x);
+    vec->z = lbMathCos(angle_x);
 
     angle_y = gCMManagerPauseCameraEyeX + x;
 
-    vec->x = (halMathSin(angle_y) * vec->z);
+    vec->x = (lbMathSin(angle_y) * vec->z);
 
-    vec->z *= halMathCos(angle_y);
+    vec->z *= lbMathCos(angle_y);
 }
 
 // 0x8010C3C0
@@ -726,10 +726,10 @@ void func_ovl2_8010C960(GObj *camera_gobj)
     sp54.y = gCMManagerPauseCameraEyeX + gCMManagerCameraStruct.unk_cmstruct_0x48;
     sp54.x = gCMManagerPauseCameraEyeY + gCMManagerCameraStruct.unk_cmstruct_0x4C;
 
-    sp48.y = -halMathSin(sp54.x);
-    sp48.z = halMathCos(sp54.x);
-    sp48.x = halMathSin(sp54.y) * sp48.z;
-    sp48.z *= halMathCos(sp54.y);
+    sp48.y = -lbMathSin(sp54.x);
+    sp48.z = lbMathCos(sp54.x);
+    sp48.x = lbMathSin(sp54.y) * sp48.z;
+    sp48.z *= lbMathCos(sp54.y);
 
     func_ovl2_8010C5C0(cam, &sp48);
     func_ovl2_8010C6B8(cam);
@@ -865,10 +865,10 @@ void jtgt_ovl2_8010CDAC(GObj *camera_gobj)
     sp58 = gCMManagerPauseCameraEyeX + gCMManagerCameraStruct.unk_cmstruct_0x78;
     temp_f12 = gCMManagerPauseCameraEyeY + gCMManagerCameraStruct.unk_cmstruct_0x7C;
 
-    sp48.y = -halMathSin(temp_f12);
-    sp48.z = halMathCos(temp_f12);
-    sp48.x = halMathSin(sp58) * sp48.z;
-    sp48.z *= halMathCos(sp58);
+    sp48.y = -lbMathSin(temp_f12);
+    sp48.z = lbMathCos(temp_f12);
+    sp48.x = lbMathSin(sp58) * sp48.z;
+    sp48.z *= lbMathCos(sp58);
     func_ovl2_8010C5C0(cam, &sp48);
     func_ovl2_8010C6B8(cam);
     func_ovl2_8010C6FC(cam);
@@ -1143,10 +1143,10 @@ GObj* cmManagerMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
 
     gCMManagerPauseCameraEyeY = gCMManagerPauseCameraEyeX = 0.0F;
 
-    sp4C.y = -halMathSin(gCMManagerPauseCameraEyeY);
-    sp4C.z = halMathCos(gCMManagerPauseCameraEyeY);
-    sp4C.x = halMathSin(gCMManagerPauseCameraEyeX) * sp4C.z;
-    sp4C.z *= halMathCos(gCMManagerPauseCameraEyeX);
+    sp4C.y = -lbMathSin(gCMManagerPauseCameraEyeY);
+    sp4C.z = lbMathCos(gCMManagerPauseCameraEyeY);
+    sp4C.x = lbMathSin(gCMManagerPauseCameraEyeX) * sp4C.z;
+    sp4C.z *= lbMathCos(gCMManagerPauseCameraEyeX);
 
     cam->vec.at.x = cam->vec.at.z = 0.0F;
     cam->vec.at.y = 300.0F;

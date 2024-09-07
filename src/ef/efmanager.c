@@ -4625,8 +4625,8 @@ GObj* efManagerKirbyVulcanJabMakeEffect(Vec3f *pos, s32 lr, f32 rotate, f32 vel,
 
     dobj->rotate.vec.f.z = F_CLC_DTOR32(rotate);
 
-    sin = halMathSin(dobj->rotate.vec.f.z);
-    cos = halMathCos(dobj->rotate.vec.f.z);
+    sin = lbMathSin(dobj->rotate.vec.f.z);
+    cos = lbMathCos(dobj->rotate.vec.f.z);
 
     ep->effect_vars.vulcan_jab.lifetime = 6;
 

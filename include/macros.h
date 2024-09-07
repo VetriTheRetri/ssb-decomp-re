@@ -22,6 +22,9 @@
 #define DTOR32 ((float)DTOR64)
 #define RTOD32 ((float)RTOD64)
 
+#define COMBINE_INTEGRAL(a, b)   (((a)&0xffff0000) | (((b) >> 16)))
+#define COMBINE_FRACTIONAL(a, b) (((a) << 16)) | ((b)&0xffff)
+
 /* This is very stupid. I cannot find a single PI or DTOR constant that works everywhere.
  * Need to alternate between F_CST_DTOR32 and F_CLC_DTOR32. Use with caution when matching.
  */

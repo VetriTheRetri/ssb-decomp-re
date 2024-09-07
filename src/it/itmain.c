@@ -185,10 +185,10 @@ void itMainApplyGravityClampTVel(itStruct *ip, f32 gravity, f32 terminal_velocit
 {
     ip->phys_info.vel_air.y -= gravity;
 
-    if (halMathMagnitude(&ip->phys_info.vel_air) > terminal_velocity)
+    if (lbMathMag2D(&ip->phys_info.vel_air) > terminal_velocity)
     {
-        halMathNormalize(&ip->phys_info.vel_air);
-        halMathScaleVector(&ip->phys_info.vel_air, terminal_velocity);
+        lbMathNormDist2D(&ip->phys_info.vel_air);
+        lbMathScale2D(&ip->phys_info.vel_air, terminal_velocity);
     }
 }
 

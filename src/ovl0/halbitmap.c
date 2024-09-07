@@ -1,8 +1,10 @@
-#include <sys/objtypes.h>
+#include <sys/obj.h>
 
+extern u16 gSinTable[/* */];
 
-f32 sin_table[] = {
-
+// 0x800D4CA0
+f32 dLBMathSinFLookup[/* */] =
+{
 	0.000000000000000, 0.001534000039101, 0.003068000078201, 0.004602000117302,
 	0.006136000156403, 0.007670000195503, 0.009204000234604, 0.010738000273705,
 	0.012272000312805, 0.013805000111461, 0.015339000150561, 0.016873000189662,
@@ -258,16 +260,13 @@ f32 sin_table[] = {
 	0.999698996543884, 0.999734997749329, 0.999768972396851, 0.999800980091095,
 	0.999831020832062, 0.999858021736145, 0.999881982803345, 0.999904990196228,
 	0.999925017356873, 0.999942004680634, 0.999957978725433, 0.999970972537994,
-	0.999980986118317, 0.999988973140717, 0.999994993209839, 1.000000000000000,
+	0.999980986118317, 0.999988973140717, 0.999994993209839, 1.000000000000000
 };
 
+// 0x800D5CA0
+Vec3f D_800D5CA0_51680 = { 0.0F, 0.0F, 0.0F };
 
-Vec3f D_800D5CA0_51680 = {
-
-	0.0f, 0.0f, 0.0f
-};
-
-void* D_800D5CAC_5168C[] = {
+void *D_800D5CAC_5168C[/* */] = {
 
 	0x800C96EC,
 	0x800C96EC,
@@ -310,83 +309,88 @@ void* D_800D5CAC_5168C[] = {
 };
 
 
-// 800C7840
-f32 halMathSin(f32 angle)
+// 0x800C7840
+f32 lbMathSin(f32 angle)
 {
-	f32 result;
-	u32 index;
-
-	index = (s32) (angle * 651.8986206f) & 0xFFF & 0xFFFF;
-
-	if (index & 1024)
-		result = sin_table[1023 - index % 1024];
-	else
-		result = sin_table[index % 1024];
-
-	if (index & 2048)
-		return -result;
-
-	return result;
+	u16 index = ((s32) (angle * 651.8986206F)) & 0xFFF;
+    f32 sin;
+    
+    if (index & 0x400)
+    {
+        sin = dLBMathSinFLookup[0x3FF - (index & 0x3FF)];
+    }
+    else sin = dLBMathSinFLookup[index & 0x3FF];
+    
+    if (index & 0x800)
+    {
+        return -sin;
+    }
+    else return sin;
 }
 
-// 800C78B8
-f32 halMathCos(f32 angle)
+// 0x800C78B8
+f32 lbMathCos(f32 angle)
 {
-	f32 result;
-	u32 index;
-
-	index = (s32) ((angle + F_CLC_DTOR32(90.0F)) * 651.8986206f) & 0xFFF & 0xFFFF;
-
-	if (index & 1024)
-		result = sin_table[1023 - index % 1024];
-	else
-		result = sin_table[index % 1024];
-
-	if (index & 2048)
-		return -result;
-
-	return result;
+    u16 index = ((s32) ((angle + F_CST_DTOR32(90.0F)) * 651.8986206F)) & 0xFFF;
+    f32 cos;
+    
+    if (index & 0x400)
+    {
+        cos = dLBMathSinFLookup[0x3FF - (index & 0x3FF)];
+    }
+    else cos = dLBMathSinFLookup[index & 0x3FF];
+    
+    if (index & 0x800)
+    {
+        return -cos;
+    }
+    else return cos;
 }
 
-// 800C793C
-f32 halMathTan(f32 angle)
+// 0x800C793C
+f32 lbMathTan(f32 angle)
 {
-	u16 index;
-	f32 sin, cos;
-
-	index = ((s32) (angle * 651.8986206F)) & 0xFFF;
-
-	if (index & 0x400)
-		sin = sin_table[1023 - (index & 1023)];
-	else
-		sin = sin_table[index & 1023];
-	if (index & 0x800)
-		sin = -sin;
-
-	index = (index + 0x400) & 0xFFF;
-
-	if (index & 0x400)
-		cos = sin_table[1023 - (index & 1023)];
-	else
-		cos = sin_table[index & 1023];
-	if (index & 0x800)
-		cos = -cos;
-
-	return sin / cos;
+    u16 index = ((s32) (angle * 651.8986206F)) & 0xFFF;
+    f32 sin, cos;
+    
+    if (index & 0x400)
+    {
+        sin = dLBMathSinFLookup[0x3FF - (index & 0x3FF)];
+    }
+    else sin = dLBMathSinFLookup[index & 0x3FF];
+    
+    if (index & 0x800)
+    {
+        sin = -sin;
+    }
+    index = (index + 0x400) & 0xFFF;
+    
+    if (index & 0x400)
+    {
+        cos = dLBMathSinFLookup[0x3FF - (index & 0x3FF)];
+    }
+    else cos = dLBMathSinFLookup[index & 0x3FF];
+    
+    if (index & 0x800)
+    {
+        cos = -cos;
+    }
+    return sin / cos;
 }
 
-// 800C7A00
-f32 halMathNormalize(Vec2f* vec)
+// 0x800C7A00
+f32 lbMathNormDist2D(Vec3f *vec)
 {
 	f32 magnitude;
 	f32 factor;
 
-	magnitude = sqrtf(vec->x * vec->x + vec->y * vec->y);
+	magnitude = sqrtf(SQUARE(vec->x) + SQUARE(vec->y));
 
-	if (magnitude == 0.0f)
-		return 0.0f;
-
-	factor = 1.0f / magnitude;
+	if (magnitude == 0.0F)
+	{
+		return 0.0F;
+	}
+	factor = 1.0F / magnitude;
 
 	vec->x = vec->x * factor;
 	vec->y = vec->y * factor;
@@ -394,87 +398,316 @@ f32 halMathNormalize(Vec2f* vec)
 	return magnitude;
 }
 
-// 800C7A84
-f32 halMathMagnitude(Vec2f* vec)
+// 0x800C7A84
+f32 lbMathMag2D(Vec3f *vec)
 {
-	return sqrtf(vec->x * vec->x + vec->y * vec->y);
+	return sqrtf(SQUARE(vec->x) + SQUARE(vec->y));
 }
 
-// 800C7AB8
-Vec2f* halMathVectorAdd(Vec2f* a, Vec2f* b)
+// 0x800C7AB8
+Vec3f* lbMathAdd2D(Vec3f *a, Vec3f *b)
 {
 	a->x = a->x + b->x;
 	a->y = a->y + b->y;
+
 	return a;
 }
 
-// 800C7AE0
-Vec2f* halMathScaleVector(Vec2f* vec, f32 factor)
+// 0x800C7AE0
+Vec3f* lbMathScale2D(Vec3f *vec, f32 factor)
 {
 	vec->x = vec->x * factor;
 	vec->y = vec->y * factor;
+
 	return vec;
 }
 
-// 800C7B08
-Vec2f* func_ovl0_800C7B08(Vec2f* a, Vec2f* b)
+// 0x800C7B08
+Vec3f* lbMathReflect2D(Vec3f *a, Vec3f *b)
 {
-	f32 negative_two_dot_product = (b->x * a->x + b->y * a->y) * -2.0f;
+	f32 negative_two_dot_product = (b->x * a->x + b->y * a->y) * -2.0F;
+
 	a->x = a->x + b->x * negative_two_dot_product;
 	a->y = a->y + b->y * negative_two_dot_product;
+
 	return a;
 }
 
-// 800C7B58
-f32 halMathVector3Similarity(Vec3f* a, Vec3f* b)
+// 0x800C7B58
+f32 lbMathSim3D(Vec3f *a, Vec3f *b)
 {
-	f32 magnitude_a = sqrtf(a->x * a->x + a->y * a->y + a->z * a->z);
-	f32 magnitude_b = sqrtf(b->x * b->x + b->y * b->y + b->z * b->z);
+	f32 magnitude_a = sqrtf(SQUARE(a->x) + SQUARE(a->y) + SQUARE(a->z));
+	f32 magnitude_b = sqrtf(SQUARE(b->x) + SQUARE(b->y) + SQUARE(b->z));
+
 	return (a->x * b->x + a->y * b->y + a->z * b->z) / (magnitude_b + magnitude_a);
 }
 
-// 800C7C0C
-f32 halMathVector2Similarity(Vec2f* a, Vec2f* b)
+// 0x800C7C0C
+f32 lbMathSim2D(Vec3f *a, Vec3f *b)
 {
-	f32 magnitude_a = sqrtf(a->x * a->x + a->y * a->y);
-	f32 magnitude_b = sqrtf(b->x * b->x + b->y * b->y);
+	f32 magnitude_a = sqrtf(SQUARE(a->x) + SQUARE(a->y));
+	f32 magnitude_b = sqrtf(SQUARE(b->x) + SQUARE(b->y));
+	
 	return (a->x * b->x + a->y * b->y) / (magnitude_b + magnitude_a);
 }
 
-// 800C7C98
-s32 func_ovl0_800C7C98(Vec2f* a, Vec2f* b, f32 angle)
+// 0x800C7C98
+sb32 lbMathCheckAdjustSim2D(Vec3f *a, Vec3f *b, f32 angle)
 {
-	f32 similarity;
-	f32 orientation;
-	f32 magnitude_a;
+    f32 similarity;
+    f32 orientation;
+    f32 magnitude;
+    
+    similarity = lbMathSim2D(b, a);
 
-	similarity = halMathVector2Similarity(b, a);
-
-	if (similarity <= 0.0f)
-	{
-		if (__cosf(angle + 1.570796371f) <= similarity)
-		{
-			orientation = b->x * a->y - b->y * a->x;
-			if (orientation < 0)
-				orientation = -1.0f;
-			else
-				orientation = 1.0f;
-
-			magnitude_a = halMathMagnitude(a) * orientation;
-			a->x = -b->y * magnitude_a;
-			a->y = b->x * magnitude_a;
-			return 1;
-		}
-	}
-	return 0;
+    if (similarity <= 0.0F)
+    {
+        if (similarity >= cosf(angle + F_CST_DTOR32(90.0F)))
+        {
+            orientation = b->x * a->y - b->y * a->x;
+            
+            orientation = (orientation < 0.0F) ? -1.0F : 1.0F;
+            
+            magnitude = lbMathMag2D(a) * orientation;
+            
+            a->x = -b->y * magnitude;
+            a->y = b->x * magnitude;
+            
+            return TRUE;
+        }
+    }
+    return FALSE;
 }
 
+// 0x800C7DB4
+void lbMathMatrixTraRotScaInv
+(
+    Mtx *mtx,
+    f32 trax,
+    f32 tray,
+    f32 traz,
+    f32 rotx,
+    f32 roty,
+    f32 rotz,
+    f32 scax_inv,
+    f32 scay_inv,
+    f32 scaz_inv,
+    f32 scax,
+    f32 scay,
+    f32 scaz
+)
+{    
+    u32 e1, e2;
+    s32 sinx, cosx;
+    s32 siny, cosy;
+    s32 sinz, cosz;
+    s32 scay_l, scax_l, scaz_l;
+    s32 scax_inv_l, scay_inv_l, scaz_inv_l;
+    u16 idx, idy, idz;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C7DB4.s")
+    idx = ((s32) (rotx * 651.8986206F)) & 0xFFF;
+    
+    sinx = gSinTable[idx & 0x7FF];
+    
+    if (idx & 0x800)
+    {
+        sinx = -sinx;
+    }
+    idx += 0x400;
+    
+    cosx = gSinTable[idx & 0x7FF];
+    
+    if (idx & 0x800)
+    {
+        cosx = -cosx;
+    }
+    idy = ((s32) (roty * 651.8986206F)) & 0xFFF;
+    
+    siny = gSinTable[idy & 0x7FF];
+    
+    if (idy & 0x800)
+    {
+        siny = -siny;
+    }
+    idy += 0x400;
+    
+    cosy = gSinTable[idy & 0x7FF];
+    
+    if (idy & 0x800)
+    {
+        cosy = -cosy;
+    }
+    idz = ((s32) (rotz * 651.8986206F)) & 0xFFF;
+    
+    sinz = gSinTable[idz & 0x7FF];
+    
+    if (idz & 0x800)
+    {
+        sinz = -sinz;
+    }
+    idz += 0x400;
+    
+    cosz = gSinTable[idz & 0x7FF];
+    
+    if (idz & 0x800)
+    {
+        cosz = -cosz;
+    }
+    scax_l = (scax * 256.0F);
+    scay_l = (scay * 256.0F);
+    scaz_l = (scaz * 256.0F);
+    
+    scax_inv_l = ((1.0F / scax_inv) * 256.0F);
+    scay_inv_l = ((1.0F / scay_inv) * 256.0F);
+    scaz_inv_l = ((1.0F / scaz_inv) * 256.0F);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C82AC.s")
+    e1 = (((((cosy * cosz) >> 14) * scax_l) >> 8) * scax_inv_l) >> 8;
+    e2 = (((((cosy * sinz) >> 14) * scax_l) >> 8) * scay_inv_l) >> 8;
 
-// 800C8634
+    mtx->m[0][0] = COMBINE_INTEGRAL(e1, e2);
+    mtx->m[2][0] = COMBINE_FRACTIONAL(e1, e2);
+    
+    e1 = (((-siny * scax_l) >> 7) * scaz_inv_l) >> 8;
+    
+    mtx->m[0][1] = COMBINE_INTEGRAL(e1, 0);
+    mtx->m[2][1] = COMBINE_FRACTIONAL(e1, 0);
+    
+    e1 = ((((((((sinx * siny) >> 15) * cosz) >> 14) - ((cosx * sinz) >> 14)) * scay_l) >> 8) * scax_inv_l) >> 8;
+    e2 = ((((((((sinx * siny) >> 15) * sinz) >> 14) + ((cosx * cosz) >> 14)) * scay_l) >> 8) * scay_inv_l) >> 8;
+
+    mtx->m[0][2] = COMBINE_INTEGRAL(e1, e2);
+    mtx->m[2][2] = COMBINE_FRACTIONAL(e1, e2);
+    
+    e1 = (((((sinx * cosy) >> 14) * scay_l) >> 8) * scaz_inv_l) >> 8;
+
+    mtx->m[0][3] = COMBINE_INTEGRAL(e1, 0);
+    mtx->m[2][3] = COMBINE_FRACTIONAL(e1, 0);
+
+    e1 = ((((((((cosx * siny) >> 15) * cosz) >> 14) + ((sinx * sinz) >> 14)) * scaz_l) >> 8) * scax_inv_l) >> 8;
+    e2 = ((((((((cosx * siny) >> 15) * sinz) >> 14) - ((sinx * cosz) >> 14)) * scaz_l) >> 8) * scay_inv_l) >> 8;
+    
+    mtx->m[1][0] = COMBINE_INTEGRAL(e1, e2);
+    mtx->m[3][0] = COMBINE_FRACTIONAL(e1, e2);
+    
+    e1 = (((((cosx * cosy) >> 14) * scaz_l) >> 8) * scaz_inv_l) >> 8;
+
+    mtx->m[1][1] = COMBINE_INTEGRAL(e1, 0);
+    mtx->m[3][1] = COMBINE_FRACTIONAL(e1, 0);
+
+    e1 = (s32) (trax * 65536.0F);
+    e2 = (s32) (tray * 65536.0F);
+
+    mtx->m[1][2] = COMBINE_INTEGRAL(e1, e2);
+    mtx->m[3][2] = COMBINE_FRACTIONAL(e1, e2);
+
+    e1 = (s32) (traz * 65536.0F);
+    
+    mtx->m[1][3] = COMBINE_INTEGRAL(e1, 0x10000);
+    mtx->m[3][3] = COMBINE_FRACTIONAL(e1, 0);
+}
+
+// 0x800C82AC
+void lbMathMatrixRotSca(Mtx *mtx, f32 rotx, f32 roty, f32 rotz, f32 scax, f32 scay, f32 scaz)
+{
+    u32 e1, e2;
+    s32 sinx, cosx;
+    s32 siny, cosy;
+    s32 sinz, cosz;
+    s32 scay_l, scax_l, scaz_l;
+    u16 idx, idy, idz;
+
+    idx = ((s32) (rotx * 651.8986206F)) & 0xFFF;
+    
+    sinx = gSinTable[idx & 0x7FF];
+    
+    if (idx & 0x800)
+    {
+        sinx = -sinx;
+    }
+    idx += 0x400;
+    
+    cosx = gSinTable[idx & 0x7FF];
+    
+    if (idx & 0x800)
+    {
+        cosx = -cosx;
+    }
+    idy = ((s32) (roty * 651.8986206F)) & 0xFFF;
+    
+    siny = gSinTable[idy & 0x7FF];
+    
+    if (idy & 0x800)
+    {
+        siny = -siny;
+    }
+    idy += 0x400;
+    
+    cosy = gSinTable[idy & 0x7FF];
+    
+    if (idy & 0x800)
+    {
+        cosy = -cosy;
+    }
+    idz = ((s32) (rotz * 651.8986206F)) & 0xFFF;
+    
+    sinz = gSinTable[idz & 0x7FF];
+    
+    if (idz & 0x800)
+    {
+        sinz = -sinz;
+    }
+    idz += 0x400;
+    
+    cosz = gSinTable[idz & 0x7FF];
+    
+    if (idz & 0x800)
+    {
+        cosz = -cosz;
+    }
+    scax_l = (scax * 256.0F);
+    scay_l = (scay * 256.0F);
+    scaz_l = (scaz * 256.0F);
+
+    e1 = ((((cosy * cosz) >> 14) * scax_l) >> 8);
+    e2 = ((((cosy * sinz) >> 14) * scax_l) >> 8);
+
+    mtx->m[0][0] = COMBINE_INTEGRAL(e1, e2);
+    mtx->m[2][0] = COMBINE_FRACTIONAL(e1, e2);
+    
+    e1 = ((-siny * scax_l) >> 7);
+    
+    mtx->m[0][1] = COMBINE_INTEGRAL(e1, 0);
+    mtx->m[2][1] = COMBINE_FRACTIONAL(e1, 0);
+    
+    e1 = (((((((sinx * siny) >> 15) * cosz) >> 14) - ((cosx * sinz) >> 14)) * scay_l) >> 8);
+    e2 = (((((((sinx * siny) >> 15) * sinz) >> 14) + ((cosx * cosz) >> 14)) * scay_l) >> 8);
+
+    mtx->m[0][2] = COMBINE_INTEGRAL(e1, e2);
+    mtx->m[2][2] = COMBINE_FRACTIONAL(e1, e2);
+    
+    e1 = ((((sinx * cosy) >> 14) * scay_l) >> 8);
+
+    mtx->m[0][3] = COMBINE_INTEGRAL(e1, 0);
+    mtx->m[2][3] = COMBINE_FRACTIONAL(e1, 0);
+
+    e1 = (((((((cosx * siny) >> 15) * cosz) >> 14) + ((sinx * sinz) >> 14)) * scaz_l) >> 8);
+    e2 = (((((((cosx * siny) >> 15) * sinz) >> 14) - ((sinx * cosz) >> 14)) * scaz_l) >> 8);
+    
+    mtx->m[1][0] = COMBINE_INTEGRAL(e1, e2);
+    mtx->m[3][0] = COMBINE_FRACTIONAL(e1, e2);
+    
+    e1 = ((((cosx * cosy) >> 14) * scaz_l) >> 8);
+
+    mtx->m[1][1] = COMBINE_INTEGRAL(e1, 0);
+    mtx->m[3][1] = COMBINE_FRACTIONAL(e1, 0);
+
+    mtx->m[1][2] = COMBINE_INTEGRAL(0, 0);
+    mtx->m[3][2] = COMBINE_FRACTIONAL(0, 0);
+    mtx->m[1][3] = COMBINE_INTEGRAL(0, 0x10000);
+    mtx->m[3][3] = COMBINE_FRACTIONAL(0, 0);
+}
+
+// 0x800C8634
 void func_ovl0_800C8634()
 {
 	func_8000A5E4();
@@ -508,10 +741,11 @@ void func_ovl0_800C8634()
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9314.s")
 
-// 800C93D4
-void func_ovl0_800C93D4(DObj* arg, void* dvar)
+// 0x800C93D4
+void func_ovl0_800C93D4(DObj *arg, void* dvar)
 {
-	DObj* dobj = gcAddDObjForGObj(arg->parent_gobj, dvar);
+	DObj *dobj = gcAddDObjForGObj(arg->parent_gobj, dvar);
+
 	dobj->sib_prev->sib_next = NULL;
 	dobj->sib_prev = NULL;
 	arg->child->parent = dobj;
@@ -524,17 +758,17 @@ void func_ovl0_800C93D4(DObj* arg, void* dvar)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9488.s")
 
-// 800C96DC
+// 0x800C96DC
 void func_ovl0_800C96DC(s32 arg0, s32 arg1, s32 arg2) {}
 
-// 800C96EC
+// 0x800C96EC
 s32 func_ovl0_800C96EC(s32 arg0, s32 arg1, s32 arg2)
 {
 	func_ovl0_800C96DC(arg0, arg1, 0);
 	return 0;
 }
 
-// 800C9714
+// 0x800C9714
 s32 func_ovl0_800C9714(s32 arg0, s32 arg1, s32 arg2)
 {
 	func_ovl0_800C96DC(arg0, arg1, 1);
@@ -576,7 +810,7 @@ s32 func_ovl0_800C9714(s32 arg0, s32 arg1, s32 arg2)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB608.s")
 
-// 800CB644
+// 0x800CB644
 u8 func_ovl0_800CB644(u8 index)
 {
 	u8 array[] = {

@@ -14,9 +14,6 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 
-#define COMBINE_INTEGRAL(a, b)   (((a)&0xffff0000) | (((b) >> 16)))
-#define COMBINE_FRACTIONAL(a, b) (((a) << 16)) | ((b)&0xffff)
-
 void syMatrixF2L(Mtx4f *src, Mtx *dst)
 {
     u32 e1, e2;

@@ -11,7 +11,7 @@
 #define FTFOX_FIREFOX_DECELERATE_DELAY 2                // Frames required to pass for Firefox to being deceleration
 #define FTFOX_FIREFOX_DECELERATE_VEL 3.03571438789F     // Value removed from velocity per frame on deceleration
 #define FTFOX_FIREFOX_DECELERATE_END 1.5F               // Value removed from velocity per frame on end animation (ground only?)
-#define FTFOX_FIREFOX_COLL_ANGLE_UNK 0.349065870047F    // ???
+#define FTFOX_FIREFOX_BOUND_ANGLE F_CLC_DTOR32(20.0F)   // Maximum angle difference between Firefox angle and ground angle for rebound
 #define FTFOX_FIREFOX_TRAVEL_TIME 30                    // Frames Firefox travels
 #define FTFOX_FIREFOX_VEL_XY 115.0F
 #define FTFOX_FIREFOX_ANGLE_STICK_THRESHOLD 45          // Minimum stick range required to angle Firefox

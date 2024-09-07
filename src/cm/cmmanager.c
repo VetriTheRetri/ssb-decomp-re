@@ -471,8 +471,8 @@ void cmManagerGetClampDimensionsMax(f32 hz, f32 vt, f32 *max)
 {
     f32 maxd;
 
-    vt /= func_ovl0_800C793C(F_CLC_DTOR32(gCMManagerCameraStruct.fovy * 0.5F));
-    hz /= ((func_ovl0_800C793C(F_CLC_DTOR32(gCMManagerCameraStruct.fovy * 0.5F)) * gCMManagerCameraStruct.viewport_width) / gCMManagerCameraStruct.viewport_height);
+    vt /= halMathTan(F_CLC_DTOR32(gCMManagerCameraStruct.fovy * 0.5F));
+    hz /= ((halMathTan(F_CLC_DTOR32(gCMManagerCameraStruct.fovy * 0.5F)) * gCMManagerCameraStruct.viewport_width) / gCMManagerCameraStruct.viewport_height);
 
     maxd = (hz > vt) ? hz : vt;
 

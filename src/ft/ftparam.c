@@ -2470,7 +2470,7 @@ f32 func_ovl2_800EBB3C(Vec3f *arg0, Vec3f *arg1, Vec3f *arg2)
     {
         return 0.0F;
     }
-    else func_ovl0_800CD5AC(arg0, arg1, &sp1C);
+    else halMathCross(arg0, arg1, &sp1C);
 
     if (halMathVector3Similarity(&sp1C, arg2) < 0.0F)
     {

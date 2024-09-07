@@ -349,7 +349,31 @@ f32 halMathCos(f32 angle)
 }
 
 // 800C793C
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C793C.s")
+f32 halMathTan(f32 angle)
+{
+	u16 index;
+	f32 sin, cos;
+
+	index = ((s32) (angle * 651.8986206F)) & 0xFFF;
+
+	if (index & 0x400)
+		sin = sin_table[1023 - (index & 1023)];
+	else
+		sin = sin_table[index & 1023];
+	if (index & 0x800)
+		sin = -sin;
+
+	index = (index + 0x400) & 0xFFF;
+
+	if (index & 0x400)
+		cos = sin_table[1023 - (index & 1023)];
+	else
+		cos = sin_table[index & 1023];
+	if (index & 0x800)
+		cos = -cos;
+
+	return sin / cos;
+}
 
 // 800C7A00
 f32 halMathNormalize(Vec2f* vec)
@@ -371,9 +395,9 @@ f32 halMathNormalize(Vec2f* vec)
 }
 
 // 800C7A84
-void halMathMagnitude(Vec2f* vec)
+f32 halMathMagnitude(Vec2f* vec)
 {
-	sqrtf(vec->x * vec->x + vec->y * vec->y);
+	return sqrtf(vec->x * vec->x + vec->y * vec->y);
 }
 
 // 800C7AB8
@@ -417,7 +441,34 @@ f32 halMathVector2Similarity(Vec2f* a, Vec2f* b)
 	return (a->x * b->x + a->y * b->y) / (magnitude_b + magnitude_a);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C7C98.s")
+// 800C7C98
+s32 func_ovl0_800C7C98(Vec2f* a, Vec2f* b, f32 angle)
+{
+	f32 similarity;
+	f32 orientation;
+	f32 magnitude_a;
+
+	similarity = halMathVector2Similarity(b, a);
+
+	if (similarity <= 0.0f)
+	{
+		if (__cosf(angle + 1.570796371f) <= similarity)
+		{
+			orientation = b->x * a->y - b->y * a->x;
+			if (orientation < 0)
+				orientation = -1.0f;
+			else
+				orientation = 1.0f;
+
+			magnitude_a = halMathMagnitude(a) * orientation;
+			a->x = -b->y * magnitude_a;
+			a->y = b->x * magnitude_a;
+			return 1;
+		}
+	}
+	return 0;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C7DB4.s")
 
@@ -574,4 +625,10 @@ u8 func_ovl0_800CB644(u8 index)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CD538.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CD5AC.s")
+// 800CD5AC
+void halMathCross(Vec3f* a, Vec3f* b, Vec3f* out)
+{
+	out->x = a->y * b->z - a->z * b->y;
+	out->y = a->z * b->x - a->x * b->z;
+	out->z = a->x * b->y - a->y * b->x;
+}

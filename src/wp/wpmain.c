@@ -178,7 +178,7 @@ void wpMainReflectorRotateWeaponModel(GObj *weapon_gobj)
 
     lbVector_Vec3fNormalize(&vel);
 
-    func_ovl0_800CD5AC(&vel, &direction, &angle);
+    halMathCross(&vel, &direction, &angle);
 
     rotate = &DObjGetStruct(weapon_gobj)->rotate.vec.f;
 

@@ -1,6 +1,6 @@
 halMathSin = 0x800C7840; // segment:ovl0
 halMathCos = 0x800C78B8; // segment:ovl0
-func_ovl0_800C793C = 0x800C793C; // segment:ovl0
+halMathTan = 0x800C793C; // segment:ovl0
 halMathNormalize = 0x800C7A00; // segment:ovl0
 halMathMagnitude = 0x800C7A84; // segment:ovl0
 halMathVectorAdd = 0x800C7AB8; // segment:ovl0
@@ -68,7 +68,7 @@ func_ovl0_800CD2CC = 0x800CD2CC; // segment:ovl0
 func_ovl0_800CD440 = 0x800CD440; // segment:ovl0
 func_ovl0_800CD4C0 = 0x800CD4C0; // segment:ovl0
 func_ovl0_800CD538 = 0x800CD538; // segment:ovl0
-func_ovl0_800CD5AC = 0x800CD5AC; // segment:ovl0
+halMathCross = 0x800CD5AC; // segment:ovl0
 
 find_file_in_status_buf = 0x800CD620; // segment:ovl0
 rldm_get_file_standard = 0x800CD678; // segment:ovl0

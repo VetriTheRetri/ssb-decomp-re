@@ -6,7 +6,7 @@
 
 extern f32 halMathSin(f32 x);
 extern f32 halMathCos(f32 x);
-extern f32 func_ovl0_800C793C(f32 angle);
+extern f32 halMathTan(f32 angle);
 extern f32 halMathNormalize(Vec3f *p);
 extern f32 halMathMagnitude(Vec3f *p);
 extern Vec3f* halMathVectorAdd(Vec3f *dst, const Vec3f *p);

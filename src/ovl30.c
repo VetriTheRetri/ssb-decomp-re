@@ -321,7 +321,7 @@ void mnStageDrawString(GObj* gobj, const char *str, f32 x, f32 y, s32 color[3])
 		}
 		else
 		{
-			chr_sobj = gcAppendSObjWithSprite(gobj, GetAddressFromOffset(gMNStageFilesArray[3], chrOffsets[mnStageGetChrIndex(str[i])]));
+			chr_sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMNStageFilesArray[3], chrOffsets[mnStageGetChrIndex(str[i])]));
 			chr_sobj->pos.x = start_x;
 
 			start_x += chr_sobj->sprite.width + mnStageGetChrSpacing(str, i);
@@ -356,7 +356,7 @@ void mnStageCreateBackground()
 
 	background_gobj = gcMakeGObjSPAfter(0U, NULL, 0x2U, 0x80000000U);
 	gcAddGObjDisplay(background_gobj, func_ovl0_800CCF00, 0x0U, 0x80000000U, -1);
-	background_sobj = gcAppendSObjWithSprite(background_gobj, GetAddressFromOffset(gMNStageFilesArray[1], &FILE_015_BACKGROUND_IMAGE_OFFSET));
+	background_sobj = lbCommonMakeSObjForGObj(background_gobj, GetAddressFromOffset(gMNStageFilesArray[1], &FILE_015_BACKGROUND_IMAGE_OFFSET));
 	background_sobj->cmt = G_TX_WRAP;
 	background_sobj->cms = G_TX_WRAP;
 	background_sobj->maskt = 6;
@@ -376,7 +376,7 @@ void mnStageCreateWoodenCircle()
 	wooden_circle_gobj = gcMakeGObjSPAfter(0U, NULL, 8U, 0x80000000U);
 	gcAddGObjDisplay(wooden_circle_gobj, func_ovl0_800CCF00, 6U, 0x80000000U, -1);
 
-	wooden_circle_sobj = gcAppendSObjWithSprite(wooden_circle_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_WOODEN_CIRCLE_IMAGE_OFFSET));
+	wooden_circle_sobj = lbCommonMakeSObjForGObj(wooden_circle_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_WOODEN_CIRCLE_IMAGE_OFFSET));
 	wooden_circle_sobj->sprite.attr &= ~SP_FASTCOPY;
 	wooden_circle_sobj->sprite.attr |= SP_TRANSPARENT;
 	wooden_circle_sobj->pos.x = 189.0f;
@@ -416,7 +416,7 @@ void mnStageCreateStageSelectGfx()
 	gcAddGObjDisplay(stage_select_gobj, mnStageRenderStageSelectGfx, 4U, 0x80000000U, -1);
 
 	// Stage Select texture
-	stage_select_sobj = gcAppendSObjWithSprite(stage_select_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_STAGE_SELECT_IMAGE_OFFSET));
+	stage_select_sobj = lbCommonMakeSObjForGObj(stage_select_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_STAGE_SELECT_IMAGE_OFFSET));
 	stage_select_sobj->sprite.attr &= ~SP_FASTCOPY;
 	stage_select_sobj->sprite.attr |= SP_TRANSPARENT;
 	stage_select_sobj->shadow_color.r = 0;
@@ -429,7 +429,7 @@ void mnStageCreateStageSelectGfx()
 	stage_select_sobj->pos.y = 122.0f;
 
 	// Yellow oval left edge
-	yellow_oval_left_sobj = gcAppendSObjWithSprite(stage_select_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_YELLOW_OVAL_LEFT_IMAGE_OFFSET));
+	yellow_oval_left_sobj = lbCommonMakeSObjForGObj(stage_select_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_YELLOW_OVAL_LEFT_IMAGE_OFFSET));
 	yellow_oval_left_sobj->sprite.attr &= ~SP_FASTCOPY;
 	yellow_oval_left_sobj->sprite.attr |= SP_TRANSPARENT;
 	yellow_oval_left_sobj->pos.x = 174.0f;
@@ -438,13 +438,13 @@ void mnStageCreateStageSelectGfx()
 	// Yellow oval middle section
 	for (x = 0xBA; x < 0x106; x += 4)
 	{
-		yellow_oval_center_sobj = gcAppendSObjWithSprite(stage_select_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_YELLOW_OVAL_CENTER_IMAGE_OFFSET));
+		yellow_oval_center_sobj = lbCommonMakeSObjForGObj(stage_select_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_YELLOW_OVAL_CENTER_IMAGE_OFFSET));
 		yellow_oval_center_sobj->pos.x = x;
 		yellow_oval_center_sobj->pos.y = 191.0f;
 	}
 
 	// Yellow oval right edge
-	yellow_oval_right_sobj = gcAppendSObjWithSprite(stage_select_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_YELLOW_OVAL_RIGHT_IMAGE_OFFSET));
+	yellow_oval_right_sobj = lbCommonMakeSObjForGObj(stage_select_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_YELLOW_OVAL_RIGHT_IMAGE_OFFSET));
 	yellow_oval_right_sobj->sprite.attr &= ~SP_FASTCOPY;
 	yellow_oval_right_sobj->sprite.attr |= SP_TRANSPARENT;
 	yellow_oval_right_sobj->pos.x = 262.0f;
@@ -517,9 +517,9 @@ void mnStageCreateStageImages()
 			x = i * 50;
 
 			if (i == 9)
-				stage_image_sobj = gcAppendSObjWithSprite(stage_image_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_RANDOM_IMAGE_OFFSET));
+				stage_image_sobj = lbCommonMakeSObjForGObj(stage_image_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_RANDOM_IMAGE_OFFSET));
 			else
-				stage_image_sobj = gcAppendSObjWithSprite(stage_image_gobj, GetAddressFromOffset(gMNStageFilesArray[2], offsets[mnStageGetStageID(i)]));
+				stage_image_sobj = lbCommonMakeSObjForGObj(stage_image_gobj, GetAddressFromOffset(gMNStageFilesArray[2], offsets[mnStageGetStageID(i)]));
 
 			if (i < 5)
 			{
@@ -566,7 +566,7 @@ void mnStageCreateStageName(GObj* name_logo_gobj, s32 stage_id)
 		0x00001418, 0x00000f98, 0x000011d8
 	};
 
-	stage_name_sobj = gcAppendSObjWithSprite(name_logo_gobj, GetAddressFromOffset(gMNStageFilesArray[2], offsets[stage_id]));
+	stage_name_sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMNStageFilesArray[2], offsets[stage_id]));
 	mnStagePositionStageName(stage_name_sobj, stage_id);
 
 	stage_name_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -670,7 +670,7 @@ void mnStageCreateLogo(GObj* name_logo_gobj, s32 stage_id)
 
 	if (stage_id == 0xDE)
 	{
-		name_logo_sobj = gcAppendSObjWithSprite(name_logo_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_SMASH_LOGO_IMAGE_OFFSET));
+		name_logo_sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_SMASH_LOGO_IMAGE_OFFSET));
 		name_logo_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_logo_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_logo_sobj->sprite.red = 0x5C;
@@ -679,7 +679,7 @@ void mnStageCreateLogo(GObj* name_logo_gobj, s32 stage_id)
 	}
 	else
 	{
-		name_logo_sobj = gcAppendSObjWithSprite(name_logo_gobj, GetAddressFromOffset(gMNStageFilesArray[0], offsets[stage_id]));
+		name_logo_sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMNStageFilesArray[0], offsets[stage_id]));
 		name_logo_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_logo_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_logo_sobj->sprite.red = 0x5C;
@@ -731,7 +731,7 @@ void mnStageCreateCursor()
 	gMNStageCursorGobj = cursor_gobj = gcMakeGObjSPAfter(0U, NULL, 7U, 0x80000000U);
 	gcAddGObjDisplay(cursor_gobj, func_ovl0_800CCF00, 5U, 0x80000000U, -1);
 
-	cursor_sobj = gcAppendSObjWithSprite(cursor_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_CURSOR_IMAGE_OFFSET));
+	cursor_sobj = lbCommonMakeSObjForGObj(cursor_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_CURSOR_IMAGE_OFFSET));
 	cursor_sobj->sprite.attr &= ~SP_FASTCOPY;
 	cursor_sobj->sprite.attr |= SP_TRANSPARENT;
 	cursor_sobj->sprite.red = 0xFF;
@@ -777,7 +777,7 @@ GObj* mnStageCreateStagePreviewBackground(s32 stage_id)
 	// draw patterned bg
 	for (x = 0x2B; x < 0x9B; x += 0x10)
 	{
-		stage_preview_bg_sobj = gcAppendSObjWithSprite(stage_preview_bg_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_STAGE_PREVIEW_PATTERNED_BG_IMAGE_OFFSET));
+		stage_preview_bg_sobj = lbCommonMakeSObjForGObj(stage_preview_bg_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_STAGE_PREVIEW_PATTERNED_BG_IMAGE_OFFSET));
 		stage_preview_bg_sobj->pos.x = x;
 		stage_preview_bg_sobj->pos.y = 130.0f;
 
@@ -788,7 +788,7 @@ GObj* mnStageCreateStagePreviewBackground(s32 stage_id)
 	if (stage_id == 0xDE)
 	{
 		// If Random, use Random image
-		stage_preview_bg_sobj = gcAppendSObjWithSprite(stage_preview_bg_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_RANDOM_STAGE_PREVIEW_BG_IMAGE_OFFSET));
+		stage_preview_bg_sobj = lbCommonMakeSObjForGObj(stage_preview_bg_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_RANDOM_STAGE_PREVIEW_BG_IMAGE_OFFSET));
 		stage_preview_bg_sobj->pos.x = 40.0f;
 		stage_preview_bg_sobj->pos.y = 127.0f;
 	}
@@ -798,12 +798,12 @@ GObj* mnStageCreateStagePreviewBackground(s32 stage_id)
 		if (gMNStageIsTrainingMode == TRUE)
 		{
 			// If Training Mode, use Smash logo bg
-			stage_preview_bg_sobj = gcAppendSObjWithSprite(stage_preview_bg_gobj, GetAddressFromOffset(rldm_get_file_external_force_heap(dMNStageTrainingBackgroundFileNodes[dMNStageTrainingBackgroundIDs[stage_id]].id, (uintptr_t)gMNStageGroundInfo->wallpaper - dMNStageBackgroundFileOffsets[stage_id]), &FILE_01A_TRAINING_BACKGROUND_IMAGE_OFFSET));
+			stage_preview_bg_sobj = lbCommonMakeSObjForGObj(stage_preview_bg_gobj, GetAddressFromOffset(rldm_get_file_external_force_heap(dMNStageTrainingBackgroundFileNodes[dMNStageTrainingBackgroundIDs[stage_id]].id, (uintptr_t)gMNStageGroundInfo->wallpaper - dMNStageBackgroundFileOffsets[stage_id]), &FILE_01A_TRAINING_BACKGROUND_IMAGE_OFFSET));
 		}
 		else
 		{
 			// Use stage bg
-			stage_preview_bg_sobj = gcAppendSObjWithSprite(stage_preview_bg_gobj, gMNStageGroundInfo->wallpaper);
+			stage_preview_bg_sobj = lbCommonMakeSObjForGObj(stage_preview_bg_gobj, gMNStageGroundInfo->wallpaper);
 		}
 
 		stage_preview_bg_sobj->sprite.attr &= ~SP_FASTCOPY;

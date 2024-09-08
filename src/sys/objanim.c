@@ -680,7 +680,7 @@ void gcPlayDObjAnim(DObj *dobj)
                 {
                     switch (aobj->kind) 
                     {
-                    case nOMObjAnimKindLinear: 
+                    case nOMObjAnimKindLinear:
                         value = aobj->value_base + (aobj->length * aobj->rate_base); 
                         break;
                         

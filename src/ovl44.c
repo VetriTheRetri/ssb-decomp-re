@@ -173,14 +173,14 @@ void mvOpeningRunningCreateBackground()
 	bg_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
 	gcAddGObjDisplay(bg_gobj, func_ovl0_800CCF00, 0x1C, 0x80000000, -1);
 
-	left_bg_sobj = gcAppendSObjWithSprite(bg_gobj, GetAddressFromOffset(gMvOpeningRunningFilesArray[0], &FILE_037_BACKGROUND_IMAGE_OFFSET));
+	left_bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, GetAddressFromOffset(gMvOpeningRunningFilesArray[0], &FILE_037_BACKGROUND_IMAGE_OFFSET));
 	left_bg_sobj->sprite.attr &= ~SP_FASTCOPY;
 	left_bg_sobj->sprite.scalex = 2.0f;
 	left_bg_sobj->sprite.scaley = 2.0f;
 	left_bg_sobj->pos.x = -320.0f;
 	left_bg_sobj->pos.y = 0.0f;
 
-	right_bg_sobj = gcAppendSObjWithSprite(bg_gobj, GetAddressFromOffset(gMvOpeningRunningFilesArray[0], &FILE_037_BACKGROUND_IMAGE_OFFSET));
+	right_bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, GetAddressFromOffset(gMvOpeningRunningFilesArray[0], &FILE_037_BACKGROUND_IMAGE_OFFSET));
 	right_bg_sobj->sprite.attr &= ~SP_FASTCOPY;
 	right_bg_sobj->sprite.scalex = 2.0f;
 	right_bg_sobj->sprite.scaley = 2.0f;

@@ -194,7 +194,7 @@ void mvOpeningSectorMakeWallpaper(void)
     gcAddGObjDisplay(wallpaper_gobj, func_ovl0_800CCF00, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(wallpaper_gobj, mvOpeningSectorWallpaperProcUpdate, nOMObjProcessKindProc, 1);
 
-    wallpaper_sobj = gcAppendSObjWithSprite
+    wallpaper_sobj = lbCommonMakeSObjForGObj
     (
         wallpaper_gobj,
         gcGetDataFromFile
@@ -209,7 +209,7 @@ void mvOpeningSectorMakeWallpaper(void)
     wallpaper_sobj->pos.x = 10.0F;
     wallpaper_sobj->pos.y = 10.0F;
 
-    wallpaper_sobj = gcAppendSObjWithSprite
+    wallpaper_sobj = lbCommonMakeSObjForGObj
     (
         wallpaper_gobj,
         gcGetDataFromFile
@@ -224,7 +224,7 @@ void mvOpeningSectorMakeWallpaper(void)
     wallpaper_sobj->pos.x = 310.0F;
     wallpaper_sobj->pos.y = 10.0F;
 
-    wallpaper_sobj = gcAppendSObjWithSprite
+    wallpaper_sobj = lbCommonMakeSObjForGObj
     (
         wallpaper_gobj,
         gcGetDataFromFile
@@ -239,7 +239,7 @@ void mvOpeningSectorMakeWallpaper(void)
     wallpaper_sobj->pos.x = 10.0F;
     wallpaper_sobj->pos.y = 230.0F;
 
-    wallpaper_sobj = gcAppendSObjWithSprite
+    wallpaper_sobj = lbCommonMakeSObjForGObj
     (
         wallpaper_gobj,
         gcGetDataFromFile
@@ -352,7 +352,7 @@ void mvOpeningSectorMakeCockpit(void)
     gcAddGObjDisplay(cockpit_gobj, mvOpeningSectorCockpitProcRender, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(cockpit_gobj, mvOpeningSectorCockpitProcUpdate, nOMObjProcessKindProc, 1);
 
-    cockpit_sobj = gcAppendSObjWithSprite
+    cockpit_sobj = lbCommonMakeSObjForGObj
     (
         cockpit_gobj,
         gcGetDataFromFile

@@ -149,7 +149,7 @@ void mvOpeningPikachuDrawName()
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
-		name_sobj = gcAppendSObjWithSprite(name_gobj, GetAddressFromOffset(gMvOpeningPikachuFilesArray[0], offsets[i]));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMvOpeningPikachuFilesArray[0], offsets[i]));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = x_positions[i] + 65.0F;

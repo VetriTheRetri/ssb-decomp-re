@@ -23,7 +23,7 @@ void* mlSetBumpAlloc(mlRegion *bp, size_t size, u32 alignment)
 
     bp->ptr = (void*)(aligned + size);
 
-    if (bp->end < bp->ptr) 
+    if (bp->end < bp->ptr)
     {
         syErrorPrintf("ml : alloc overflow #%d\n", bp->id);
 

@@ -77,7 +77,7 @@ void mnNoControllerCreateNoControllerImage()
 	gobj = gcMakeGObjSPAfter(0x3E9, 0, 1, 0x80000000);
 	gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 0, 0x80000000, -1);
 
-	sobj = gcAppendSObjWithSprite(gobj, GetAddressFromOffset(gMNNoControllerFilesArray[0], &FILE_0A9_NO_CONTROLLER_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMNNoControllerFilesArray[0], &FILE_0A9_NO_CONTROLLER_IMAGE_OFFSET));
 	sobj->pos.x = 10.0f;
 	sobj->pos.y = 10.0f;
 }

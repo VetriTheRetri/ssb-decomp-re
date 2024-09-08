@@ -1146,7 +1146,7 @@ void gmStaffrollMakeStaffRoleTextSObjs(GObj *text_gobj, GObj *staff_gobj)
 		{
 			hvar = 0.0F;
 
-			sobj = gcAppendSObjWithSprite(text_gobj, gcGetDataFromFile(Sprite*, sGMStaffrollFiles[0], dGMStaffrollTextBoxSpriteInfo[dGMStaffrollStaffRoleCharacters[character_id]].offset));
+			sobj = lbCommonMakeSObjForGObj(text_gobj, gcGetDataFromFile(Sprite*, sGMStaffrollFiles[0], dGMStaffrollTextBoxSpriteInfo[dGMStaffrollStaffRoleCharacters[character_id]].offset));
 
 			sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -1261,7 +1261,7 @@ void gmStaffrollMakeCompanyTextSObjs(GObj *text_gobj, GObj *staff_gobj)
 		{
 			if (dGMStaffrollCompanyCharacters[character_id] != GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX(' '))
 			{
-				sobj = gcAppendSObjWithSprite(text_gobj, gcGetDataFromFile(Sprite*, sGMStaffrollFiles[0], dGMStaffrollTextBoxSpriteInfo[dGMStaffrollCompanyCharacters[character_id]].offset));
+				sobj = lbCommonMakeSObjForGObj(text_gobj, gcGetDataFromFile(Sprite*, sGMStaffrollFiles[0], dGMStaffrollTextBoxSpriteInfo[dGMStaffrollCompanyCharacters[character_id]].offset));
 
 				hvar = 0.0F;
 
@@ -1993,7 +1993,7 @@ void gmStaffrollMakeCrosshairGObj(void)
 	gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 4, GOBJ_DLLINKORDER_DEFAULT, -1);
 	gcAddGObjProcess(gobj, gmStaffrollCrosshairThreadUpdate, nOMObjProcessKindThread, 1);
 
-	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sGMStaffrollFiles[0], &lGMStaffrollCrosshairSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sGMStaffrollFiles[0], &lGMStaffrollCrosshairSprite));
 
 	sGMStaffrollCrosshairGObj = gobj;
 
@@ -2018,13 +2018,13 @@ void gmStaffrollMakeTextBoxBracketSObjs(void)
 
 	gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 7, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-	left_sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sGMStaffrollFiles[0], &lGMStaffrollTextBoxBracketLeftSprite));
+	left_sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sGMStaffrollFiles[0], &lGMStaffrollTextBoxBracketLeftSprite));
 
 	gobj = gcMakeGObjSPAfter(3, NULL, 8, GOBJ_LINKORDER_DEFAULT);
 
 	gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 7, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-	right_sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sGMStaffrollFiles[0], &lGMStaffrollTextBoxBracketRightSprite));
+	right_sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sGMStaffrollFiles[0], &lGMStaffrollTextBoxBracketRightSprite));
 
 	left_sobj->sprite.attr = right_sobj->sprite.attr = SP_TRANSPARENT;
 

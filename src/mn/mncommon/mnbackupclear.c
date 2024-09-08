@@ -207,7 +207,7 @@ void mnBackupClearMakeHeaderSObjs(void)
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
     
-    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[2], &lMNBackupClearHeaderOptionSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[2], &lMNBackupClearHeaderOptionSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -219,7 +219,7 @@ void mnBackupClearMakeHeaderSObjs(void)
     sobj->pos.x = 24.0F;
     sobj->pos.y = 17.0F;
     
-    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[1], &lMNBackupClearHeaderBackupClearSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[1], &lMNBackupClearHeaderBackupClearSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -303,7 +303,7 @@ void mnBackupClearUpdateOptionTabSObjs(void)
 
         gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
         
-        sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[1], offsets[i]));
+        sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[1], offsets[i]));
 
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -367,12 +367,12 @@ void mnBackupClearMakeOptionConfirmSObjs(sb32 confirm_kind, sb32 yes_or_no)
     
     if (yes_or_no == 0)
     {
-        sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[1], &lMNBackupClearOptionYesSprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[1], &lMNBackupClearOptionYesSprite));
         sobj->sprite.LUT = gcGetDataFromFile(int*, sMNBackupClearFiles[1], &lMNBackupClearOptionYesHighlightPalette);
     }
     else
     {
-        sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[1], &lMNBackupClearOptionYesSprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[1], &lMNBackupClearOptionYesSprite));
         sobj->sprite.LUT = gcGetDataFromFile(int*, sMNBackupClearFiles[1], &lMNBackupClearOptionYesNotPalette);
     }
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -383,12 +383,12 @@ void mnBackupClearMakeOptionConfirmSObjs(sb32 confirm_kind, sb32 yes_or_no)
     
     if (yes_or_no == 0)
     {
-        sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[1], &lMNBackupClearOptionNoSprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[1], &lMNBackupClearOptionNoSprite));
         sobj->sprite.LUT = gcGetDataFromFile(int*, sMNBackupClearFiles[1], &lMNBackupClearOptionNoNotPalette);
     }
     else
     {
-        sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[1], &lMNBackupClearOptionNoSprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[1], &lMNBackupClearOptionNoSprite));
         sobj->sprite.LUT = gcGetDataFromFile(int*, sMNBackupClearFiles[1], &lMNBackupClearOptionNoHighlightPalette);
     }
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -397,7 +397,7 @@ void mnBackupClearMakeOptionConfirmSObjs(sb32 confirm_kind, sb32 yes_or_no)
     sobj->pos.x = 83.0F;
     sobj->pos.y = 106.0F;
     
-    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[1], &lMNBackupClearOptionCircleSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[1], &lMNBackupClearOptionCircleSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -418,7 +418,7 @@ void mnBackupClearMakeOptionConfirmSObjs(sb32 confirm_kind, sb32 yes_or_no)
     
     if (confirm_kind == 1)
     {
-        sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[1], &lMNBackupClearTextIsOkaySprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[1], &lMNBackupClearTextIsOkaySprite));
         
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -432,7 +432,7 @@ void mnBackupClearMakeOptionConfirmSObjs(sb32 confirm_kind, sb32 yes_or_no)
     }
     else
     {
-        sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[1], &lMNBackupClearTextAreYouSureSprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[1], &lMNBackupClearTextAreYouSureSprite));
         
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;

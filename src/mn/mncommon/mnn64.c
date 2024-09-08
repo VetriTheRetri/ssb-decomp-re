@@ -247,7 +247,7 @@ void mnN64ProcStart(void)
 		),
 		&lMNN64LogoSprite
 	);
-	sobj = gcAppendSObjWithSprite(gobj, sprite);
+	sobj = lbCommonMakeSObjForGObj(gobj, sprite);
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 

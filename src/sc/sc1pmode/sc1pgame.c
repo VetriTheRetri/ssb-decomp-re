@@ -1736,7 +1736,7 @@ void sc1PGameInitTeamStockDisplay(void)
 
         for (i = 0; i < sSC1PGameEnemyStocksRemaining; i++)
         {
-            gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[4], &D_NF_00000068));
+            lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[4], &D_NF_00000068));
         }
         sSC1PGameEnemyStocksDisplay = sSC1PGameEnemyStocksRemaining + 1;
 

@@ -157,7 +157,7 @@ void mvOpeningYosterMakeWallpaper(void)
     wallpaper_gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(wallpaper_gobj, func_ovl0_800CCF00, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    wallpaper_sobj = gcAppendSObjWithSprite
+    wallpaper_sobj = lbCommonMakeSObjForGObj
     (
         wallpaper_gobj,
         gcGetDataFromFile

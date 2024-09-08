@@ -267,7 +267,7 @@ void mnVsRecordsCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 color
 		s32 decimal = num % 10;
 		num = num / 10;
 
-		number_sobj = gcAppendSObjWithSprite(number_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], number_offsets[decimal]));
+		number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], number_offsets[decimal]));
 		mnVsRecordsSetTextureColors(number_sobj, colors);
 
 		if (wide)
@@ -278,7 +278,7 @@ void mnVsRecordsCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 color
 		number_sobj->pos.x = left_x;
 		number_sobj->pos.y = y;
 
-		number_sobj = gcAppendSObjWithSprite(number_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_DECIMAL_POINT_IMAGE_OFFSET));
+		number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_DECIMAL_POINT_IMAGE_OFFSET));
 		mnVsRecordsSetTextureColors(number_sobj, colors);
 
 		if (wide)
@@ -290,7 +290,7 @@ void mnVsRecordsCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 color
 		number_sobj->pos.y = y + 4.0f;
 	}
 
-	number_sobj = gcAppendSObjWithSprite(number_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], number_offsets[num % 10]));
+	number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], number_offsets[num % 10]));
 	mnVsRecordsSetTextureColors(number_sobj, colors);
 
 	if (wide)
@@ -310,7 +310,7 @@ void mnVsRecordsCreateNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 color
 	{
 		digit = (mnVsRecordsPow(10, place) != 0) ? num / mnVsRecordsPow(10, place) : 0;
 
-		number_sobj = gcAppendSObjWithSprite(number_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], number_offsets[digit % 10]));
+		number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], number_offsets[digit % 10]));
 		mnVsRecordsSetTextureColors(number_sobj, colors);
 
 		if (wide)
@@ -437,7 +437,7 @@ void mnVsRecordsDrawString(GObj* gobj, const char *str, f32 x, f32 y, s32 color[
 		}
 		else
 		{
-			chr_sobj = gcAppendSObjWithSprite(gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[3], chrOffsets[mnVsRecordsGetCharIndex(str[i])]));
+			chr_sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[3], chrOffsets[mnVsRecordsGetCharIndex(str[i])]));
 			chr_sobj->pos.x = start_x;
 
 			start_x += chr_sobj->sprite.width + mnVsRecordsGetChrSpacing(str, i);
@@ -491,7 +491,7 @@ void mnVsRecordsCreateTitle()
 	title_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
 	gcAddGObjDisplay(title_gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
 
-	title_sobj = gcAppendSObjWithSprite(title_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[1], &FILE_020_DATA_HEADER_IMAGE_OFFSET));
+	title_sobj = lbCommonMakeSObjForGObj(title_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[1], &FILE_020_DATA_HEADER_IMAGE_OFFSET));
 	title_sobj->sprite.attr &= ~SP_FASTCOPY;
 	title_sobj->sprite.attr |= SP_TRANSPARENT;
 	title_sobj->sprite.red = 0x5F;
@@ -500,7 +500,7 @@ void mnVsRecordsCreateTitle()
 	title_sobj->pos.x = 24.0f;
 	title_sobj->pos.y = 17.0f;
 
-	title_sobj = gcAppendSObjWithSprite(title_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_VS_RECORD_IMAGE_OFFSET));
+	title_sobj = lbCommonMakeSObjForGObj(title_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_VS_RECORD_IMAGE_OFFSET));
 	title_sobj->sprite.attr &= ~SP_FASTCOPY;
 	title_sobj->sprite.attr |= SP_TRANSPARENT;
 	title_sobj->shadow_color.r = 0;
@@ -526,7 +526,7 @@ void mnVsRecordsRenderSubtitle(GObj* subtitle_gobj)
 	{
 		func_8000B760(subtitle_gobj);
 
-		subtitle_sobj = gcAppendSObjWithSprite(subtitle_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], offsets[gMNVsRecordsStatsKind]));
+		subtitle_sobj = lbCommonMakeSObjForGObj(subtitle_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], offsets[gMNVsRecordsStatsKind]));
 		subtitle_sobj->sprite.attr &= ~SP_FASTCOPY;
 		subtitle_sobj->sprite.attr |= SP_TRANSPARENT;
 		subtitle_sobj->sprite.red = 0;
@@ -547,7 +547,7 @@ void mnVsRecordsCreateSubtitle()
 	gcAddGObjDisplay(subtitle_gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
 	gcAddGObjProcess(subtitle_gobj, mnVsRecordsRenderSubtitle, 1, 1);
 
-	subtitle_sobj = gcAppendSObjWithSprite(subtitle_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_SUBTITLE_BATTLE_SCORE_IMAGE_OFFSET));
+	subtitle_sobj = lbCommonMakeSObjForGObj(subtitle_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_SUBTITLE_BATTLE_SCORE_IMAGE_OFFSET));
 	subtitle_sobj->sprite.attr &= ~SP_FASTCOPY;
 	subtitle_sobj->sprite.attr |= SP_TRANSPARENT;
 	subtitle_sobj->sprite.red = 0;
@@ -574,7 +574,7 @@ void mnVsRecordsCreatePortraitAndStatsArrows()
 	gcAddGObjProcess(portrait_arrows_gobj, mnVsRecordsUpdatePortraitArrowsDisplay, 1, 1);
 
 	// left arrow
-	portrait_arrows_sobj = gcAppendSObjWithSprite(portrait_arrows_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[1], &FILE_020_ARROW_LEFT_IMAGE_OFFSET));
+	portrait_arrows_sobj = lbCommonMakeSObjForGObj(portrait_arrows_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[1], &FILE_020_ARROW_LEFT_IMAGE_OFFSET));
 	portrait_arrows_sobj->sprite.attr &= ~SP_FASTCOPY;
 	portrait_arrows_sobj->sprite.attr |= SP_TRANSPARENT;
 	portrait_arrows_sobj->sprite.red = 0xE3;
@@ -584,7 +584,7 @@ void mnVsRecordsCreatePortraitAndStatsArrows()
 	portrait_arrows_sobj->pos.y = 78.0f;
 
 	// right arrow
-	portrait_arrows_sobj = gcAppendSObjWithSprite(portrait_arrows_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[1], &FILE_020_ARROW_RIGHT_IMAGE_OFFSET));
+	portrait_arrows_sobj = lbCommonMakeSObjForGObj(portrait_arrows_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[1], &FILE_020_ARROW_RIGHT_IMAGE_OFFSET));
 	portrait_arrows_sobj->sprite.attr &= ~SP_FASTCOPY;
 	portrait_arrows_sobj->sprite.attr |= SP_TRANSPARENT;
 	portrait_arrows_sobj->sprite.red = 0xE3;
@@ -610,7 +610,7 @@ void mnVsRecordsCreateResortArrows()
 	gcAddGObjDisplay(resort_arrows_gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
 	gcAddGObjProcess(resort_arrows_gobj, mnVsRecordsUpdateResortArrowsDisplay, 1, 1);
 
-	resort_arrows_sobj = gcAppendSObjWithSprite(resort_arrows_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_DOUBLE_DOWN_ARROW_IMAGE_OFFSET));
+	resort_arrows_sobj = lbCommonMakeSObjForGObj(resort_arrows_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_DOUBLE_DOWN_ARROW_IMAGE_OFFSET));
 	resort_arrows_sobj->sprite.attr &= ~SP_FASTCOPY;
 	resort_arrows_sobj->sprite.attr |= SP_TRANSPARENT;
 	resort_arrows_sobj->pos.x = 281.0f;
@@ -636,7 +636,7 @@ void mnVsRecordsCreateColumnArrows()
 	gcAddGObjDisplay(column_arrows_gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
 	gcAddGObjProcess(column_arrows_gobj, mnVsRecordsUpdateColumnArrowsDisplay, 1, 1);
 
-	column_arrows_sobj = gcAppendSObjWithSprite(column_arrows_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_LEFT_AND_RIGHT_ARROW_IMAGE_OFFSET));
+	column_arrows_sobj = lbCommonMakeSObjForGObj(column_arrows_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_LEFT_AND_RIGHT_ARROW_IMAGE_OFFSET));
 	column_arrows_sobj->sprite.attr &= ~SP_FASTCOPY;
 	column_arrows_sobj->sprite.attr |= SP_TRANSPARENT;
 	column_arrows_sobj->sprite.red = 0xE3;
@@ -798,7 +798,7 @@ SObj* mnVsRecordsCreateLockedIcon(GObj* icon_gobj)
 {
 	SObj* icon_sobj;
 
-	icon_sobj = gcAppendSObjWithSprite(icon_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_QUESTION_MARK_IMAGE_OFFSET));
+	icon_sobj = lbCommonMakeSObjForGObj(icon_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_QUESTION_MARK_IMAGE_OFFSET));
 	icon_sobj->sprite.attr &= ~SP_FASTCOPY;
 	icon_sobj->sprite.attr |= SP_TRANSPARENT;
 	icon_sobj->sprite.red = 0x8A;
@@ -835,7 +835,7 @@ void mnVsRecordsCreateColumnIcons(s32 icon_gobj)
 	{
 		if (mnVsRecordsIsUnlocked(ft_kinds[i]))
 		{
-			icon_sobj = gcAppendSObjWithSprite(icon_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], offsets[ft_kinds[i]]));
+			icon_sobj = lbCommonMakeSObjForGObj(icon_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], offsets[ft_kinds[i]]));
 			icon_sobj->sprite.attr &= ~SP_FASTCOPY;
 			icon_sobj->sprite.attr |= SP_TRANSPARENT;
 		}
@@ -909,7 +909,7 @@ void mnVsRecordsCreateRowIcons(GObj* icon_gobj)
 	{
 		if (mnVsRecordsIsUnlocked(ft_kinds[i]))
 		{
-			icon_sobj = gcAppendSObjWithSprite(icon_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], offsets[ft_kinds[i]]));
+			icon_sobj = lbCommonMakeSObjForGObj(icon_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], offsets[ft_kinds[i]]));
 			icon_sobj->sprite.attr &= ~SP_FASTCOPY;
 			icon_sobj->sprite.attr |= SP_TRANSPARENT;
 		}
@@ -985,13 +985,13 @@ void mnVsRecordsCreatePortraitAndStats(GObj* individual_stats_gobj, s32 ft_kind)
 		0x0, 0x0, 0x0, 0x8A, 0x88, 0x92
 	};
 
-	sobj = gcAppendSObjWithSprite(individual_stats_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_PORTRAIT_BACKGROUND_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(individual_stats_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_PORTRAIT_BACKGROUND_IMAGE_OFFSET));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->pos.x = 52.0f;
 	sobj->pos.y = 55.0f;
 
-	sobj = gcAppendSObjWithSprite(individual_stats_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[2], offsets[ft_kind]));
+	sobj = lbCommonMakeSObjForGObj(individual_stats_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[2], offsets[ft_kind]));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->pos.x = 57.0f;
@@ -1000,7 +1000,7 @@ void mnVsRecordsCreatePortraitAndStats(GObj* individual_stats_gobj, s32 ft_kind)
 	mnVsRecordsDrawString(individual_stats_gobj, "RANKING", 150, 60, color);
 	mnVsRecordsCreateNumber(individual_stats_gobj, 12, 265, 58, colors, FALSE, TRUE, 2, FALSE);
 
-	sobj = gcAppendSObjWithSprite(individual_stats_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_SLASH_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(individual_stats_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_SLASH_IMAGE_OFFSET));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->pos.x = 251.0f;
@@ -1152,7 +1152,7 @@ s32 mnVsRecordsCreateBattleScoreTableHeaders()
 	headers_gobj = gcMakeGObjSPAfter(0, 0, 5, 0x80000000);
 	gcAddGObjDisplay(headers_gobj, func_ovl0_800CCF00, 4, 0x80000000, -1);
 
-	headers_sobj = gcAppendSObjWithSprite(headers_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_TOTAL_TEXTURE_IMAGE_OFFSET));
+	headers_sobj = lbCommonMakeSObjForGObj(headers_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_TOTAL_TEXTURE_IMAGE_OFFSET));
 	headers_sobj->sprite.attr &= ~SP_FASTCOPY;
 	headers_sobj->sprite.attr |= SP_TRANSPARENT;
 	headers_sobj->sprite.red = 0x8A;
@@ -1299,7 +1299,7 @@ GObj* mnVsRecordsCreateRankingTableValues(s32 column)
 					case vsRecordsRankingColumnKindTime:
 						mnVsRecordsCreateNumber(table_values_gobj, (gSaveData.vs_records[gMNVsRecordsRankingFtKindOrder[i]].time_used % 3600) / 60, col_widths[column_order[j]] + x, y, colors, FALSE, FALSE, 2, TRUE);
 
-						table_values_sobj = gcAppendSObjWithSprite(table_values_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_COLON_IMAGE_OFFSET));
+						table_values_sobj = lbCommonMakeSObjForGObj(table_values_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_COLON_IMAGE_OFFSET));
 						mnVsRecordsSetTextureColors(table_values_sobj, colors);
 
 						table_values_sobj->pos.x = col_widths[column_order[j]] + x - 11;
@@ -1356,7 +1356,7 @@ GObj* mnVsRecordsCreateRankingTableHeaders(s32 column)
 	x = 0x30;
 	for (i = 0; i < ARRAY_COUNT(offsets); i++)
 	{
-		table_headers_sobj = gcAppendSObjWithSprite(table_headers_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], offsets[column_order[i]]));
+		table_headers_sobj = lbCommonMakeSObjForGObj(table_headers_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], offsets[column_order[i]]));
 		table_headers_sobj->sprite.attr &= ~SP_FASTCOPY;
 		table_headers_sobj->sprite.attr |= SP_TRANSPARENT;
 		table_headers_sobj->pos.x = x_padding[column_order[i]] + x;
@@ -1456,7 +1456,7 @@ s32 mnVsRecordsCreateIndividualPortraitStatsAndTableHeaders()
 
 	for (i = 0; i < 4; i++)
 	{
-		individual_stats_sobj = gcAppendSObjWithSprite(individual_stats_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], offsets[i]));
+		individual_stats_sobj = lbCommonMakeSObjForGObj(individual_stats_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], offsets[i]));
 		individual_stats_sobj->sprite.attr &= ~SP_FASTCOPY;
 		individual_stats_sobj->sprite.attr |= SP_TRANSPARENT;
 		individual_stats_sobj->pos.x = positions[i].x;

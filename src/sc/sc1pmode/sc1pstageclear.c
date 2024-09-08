@@ -546,7 +546,7 @@ void sc1PStageClearMakeScoreDigitSObjs
 			is_negative = TRUE;
 		}
 	}
-	sobj = gcAppendSObjWithSprite(gobj, sc1PStageClearGetScoreDigitSprite(digit_kind, points % 10));
+	sobj = lbCommonMakeSObjForGObj(gobj, sc1PStageClearGetScoreDigitSprite(digit_kind, points % 10));
 
 	sc1PStageClearSetDigitSpriteColor(sobj, digit_kind, colors);
 
@@ -559,7 +559,7 @@ void sc1PStageClearMakeScoreDigitSObjs
 	{
 		digit = (sc1PStageClearGetPowerOf(10, i) != 0) ? points / sc1PStageClearGetPowerOf(10, i) : 0;
 
-		sobj = gcAppendSObjWithSprite(gobj, sc1PStageClearGetScoreDigitSprite(digit_kind, digit % 10));
+		sobj = lbCommonMakeSObjForGObj(gobj, sc1PStageClearGetScoreDigitSprite(digit_kind, digit % 10));
 
 		sc1PStageClearSetDigitSpriteColor(sobj, digit_kind, colors);
 
@@ -572,7 +572,7 @@ void sc1PStageClearMakeScoreDigitSObjs
 	{
 		if (digit_kind == 1)
 		{
-			sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[4], &lSC1PStageClearPointsNSign));
+			sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[4], &lSC1PStageClearPointsNSign));
 		}
 		sc1PStageClearSetDigitSpriteColor(sobj, digit_kind, colors);
 
@@ -600,7 +600,7 @@ void sc1PStageClearMakeTextSObjs(void)
 	gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 
 	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
-	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextShadow));
+	sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextShadow));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -614,7 +614,7 @@ void sc1PStageClearMakeTextSObjs(void)
 
 	if (sSC1PStageClearKind == nSC1PStageClearKindResult)
 	{
-		sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextResult));
+		sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextResult));
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
 
@@ -631,7 +631,7 @@ void sc1PStageClearMakeTextSObjs(void)
 	}
 	else
 	{
-		sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextClear));
+		sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextClear));
 
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
@@ -649,9 +649,9 @@ void sc1PStageClearMakeTextSObjs(void)
 
 		if (sSC1PStageClearKind == nSC1PStageClearKindStage)
 		{
-			sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextStage));
+			sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextStage));
 		}
-		else sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextGame));
+		else sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextGame));
 
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
@@ -670,7 +670,7 @@ void sc1PStageClearMakeTextSObjs(void)
 	sSC1PStageClearBonusTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 
 	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
-	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextBonus));
+	sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextBonus));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -692,7 +692,7 @@ void sc1PStageClearMakeScoreSObjs(void)
 	sSC1PStageClearScoreTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 
 	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
-	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[1], &lSC1PStageClearTextScore));
+	sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[1], &lSC1PStageClearTextScore));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -720,7 +720,7 @@ void sc1PStageClearMakeTimerTextSObjs(f32 y)
 	sSC1PStageClearTimerTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 
 	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
-	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextTimer));
+	sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextTimer));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -736,7 +736,7 @@ void sc1PStageClearMakeTimerTextSObjs(f32 y)
 	sobj->sprite.green = 0xE4;
 	sobj->sprite.blue = 0xFF;
 
-	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextColon));
+	sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextColon));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -767,7 +767,7 @@ void sc1PStageClearMakeTimerDigitSObjs(f32 y)
 	sSC1PStageClearTimerMultiplierGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 
 	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
-	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[3], &lSC1PStageClearTextMultiplySign));
+	sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[3], &lSC1PStageClearTextMultiplySign));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -848,7 +848,7 @@ void sc1PStageClearMakeDamageTextSObjs(f32 y)
 	sSC1PStageClearDamageTextGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextDamage));
+	sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextDamage));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -864,7 +864,7 @@ void sc1PStageClearMakeDamageTextSObjs(f32 y)
 	sobj->sprite.green = 0xE4;
 	sobj->sprite.blue = 0xFF;
 
-	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextColon));
+	sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextColon));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -898,7 +898,7 @@ void sc1PStageClearMakeDamageDigitSObjs(f32 y)
 	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	sc1PStageClearMakeScoreDigitSObjs(gobj, sSC1PStageClearDamageDealt, x, (s32)y - 1, NULL, 1, 0, 0, 4, FALSE);
-	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[3], &lSC1PStageClearTextMultiplySign));
+	sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[3], &lSC1PStageClearTextMultiplySign));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -945,7 +945,7 @@ void sc1PStageClearMakeTargetTextSObjs(void)
 	sSC1PStageClearTargetGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 
 	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
-	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextTarget));
+	sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextTarget));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -961,7 +961,7 @@ void sc1PStageClearMakeTargetTextSObjs(void)
 	sobj->sprite.green = 0xE4;
 	sobj->sprite.blue = 0xFF;
 
-	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextColon));
+	sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextColon));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1010,11 +1010,11 @@ void func_ovl56_80132E40(f32 x, f32 y, s32 objective_num)
 	switch (sSC1PStageClear1PGameStage)
 	{
 	case nSC1PGameStageBonus1:
-		sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[5], &lSC1PStageClearTarget));
+		sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[5], &lSC1PStageClearTarget));
 		break;
 
 	case nSC1PGameStageBonus2:
-		sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[5], &lSC1PStageClearPlatform));
+		sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[5], &lSC1PStageClearPlatform));
 		break;
 	}
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1154,9 +1154,9 @@ s32 sc1PStageClearGetAppendBonusStatPoints(s32 bonus_id, s32 bonus_num, f32 x, f
 
 	if (bonus_id == nSC1PGameBonusGameClear)
 	{
-		sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], offsets[sSC1PStageClearDifficulty]));
+		sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], offsets[sSC1PStageClearDifficulty]));
 	}
-	else sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], dSC1PStageClearBonusData[bonus_id].offset));
+	else sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], dSC1PStageClearBonusData[bonus_id].offset));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1178,7 +1178,7 @@ s32 sc1PStageClearGetAppendBonusStatPoints(s32 bonus_id, s32 bonus_num, f32 x, f
 	}
 	if (bonus_id == nSC1PGameBonusNoMiss)
 	{
-		sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[4], &lSC1PStageClearBonusMultiplySign));
+		sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[4], &lSC1PStageClearBonusMultiplySign));
 
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1192,7 +1192,7 @@ s32 sc1PStageClearGetAppendBonusStatPoints(s32 bonus_id, s32 bonus_num, f32 x, f
 
 		sc1PStageClearMakeScoreDigitSObjs(gobj, sc1PStageClearGetNoMissMultiplier(sSC1PStageClear1PGameStage), (x + 40.0F) + 26.0F, y - 1.0F, &colors, 0, 1, 0, 2, FALSE);
 	}
-	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[4], &lSC1PStageClearBonusColon));
+	sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[4], &lSC1PStageClearBonusColon));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1235,7 +1235,7 @@ void sc1PStageClearMakeBonusPageArrow(void)
 
 	gobj->user_data.u = sSC1PStageClearTotalTimeTics + 90;
 
-	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &sSC1PStageClearSpriteBonusPageArrow));
+	sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &sSC1PStageClearSpriteBonusPageArrow));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1317,7 +1317,7 @@ void sc1PStageClearMakeBonusTable(void)
 	gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 
 	gcAddGObjDisplay(gobj, sc1PStageClearTextProcRender, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
-	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearBonusBorder));
+	sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearBonusBorder));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1333,7 +1333,7 @@ void sc1PStageClearMakeBonusTable(void)
 	sobj->pos.x = 52.0F;
 	sobj->pos.y = 62.0F;
 
-	sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextSpecialBonus));
+	sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PStageClearFiles[0], &lSC1PStageClearTextSpecialBonus));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1372,7 +1372,7 @@ void sc1PStageClearMakeFramebufWallpaper(void)
 	gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_LINKORDER_DEFAULT);
 
 	gcAddGObjDisplay(gobj, sc1PStageClearFramebufWallpaperProcRender, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
-	sobj = gcAppendSObjWithSprite
+	sobj = lbCommonMakeSObjForGObj
 	(
 		gobj,
 		gcGetDataFromFile

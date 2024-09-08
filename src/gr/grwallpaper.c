@@ -240,7 +240,7 @@ void grWallpaperSectorMakeSObj(void)
 
     gcAddGObjDisplay(wallpaper_gobj, func_ovl0_800CCF00, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    wallpaper_sobj = gcAppendSObjWithSprite(wallpaper_gobj, gMPCollisionGroundData->wallpaper);
+    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, gMPCollisionGroundData->wallpaper);
 
     wallpaper_sobj->pos.x = 10.0F;
     wallpaper_sobj->pos.y = 10.0F;

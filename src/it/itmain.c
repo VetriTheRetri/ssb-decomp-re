@@ -325,7 +325,7 @@ void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_fl
     Vec3f pos;
     s32 joint_id;
 
-    func_ovl0_800C9424(DObjGetStruct(item_gobj));
+    lbCommonEjectTreeDObj(DObjGetStruct(item_gobj));
 
     pos.x = pos.y = pos.z = 0.0F;
 

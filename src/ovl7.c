@@ -622,7 +622,7 @@ void scTrainingMode_InitMiscVars()
 // 8018DEDC
 SObj* scTrainingMode_MakeStatDisplaySObj(GObj* interface_gobj, scTrainingSprites* tms)
 {
-	SObj* sobj = gcAppendSObjWithSprite(interface_gobj, tms->sprite);
+	SObj* sobj = lbCommonMakeSObjForGObj(interface_gobj, tms->sprite);
 	sobj->pos.x = tms->pos.x;
 	sobj->pos.y = tms->pos.y;
 	return sobj;
@@ -735,12 +735,12 @@ void scTrainingMode_MakeDamageDisplayInterface()
 
 	for (i = 0; i < 3; i++)
 	{
-		sobj = gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.display_option_sprites[0]);
+		sobj = lbCommonMakeSObjForGObj(interface_gobj, gTrainingModeStruct.display_option_sprites[0]);
 		scTrainingMode_InitSObjColors(sobj);
 		sobj->pos.y = 20.0F;
 	}
 	scTrainingMode_UpdateDamageDisplay(interface_gobj, 0);
-	sobj = gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.display_option_sprites[38]);
+	sobj = lbCommonMakeSObjForGObj(interface_gobj, gTrainingModeStruct.display_option_sprites[38]);
 	scTrainingMode_InitSObjColors(sobj);
 
 	sobj->pos.y = 20.0F;
@@ -809,7 +809,7 @@ void scTrainingMode_MakeComboDisplayInterface()
 
 	for (i = 0; i < 2; i++)
 	{
-		SObj* sobj = gcAppendSObjWithSprite(interface_gobj, *gTrainingModeStruct.display_option_sprites);
+		SObj* sobj = lbCommonMakeSObjForGObj(interface_gobj, *gTrainingModeStruct.display_option_sprites);
 		scTrainingMode_InitSObjColors(sobj);
 		sobj->pos.y = 36.0F;
 	}
@@ -832,7 +832,7 @@ void scTrainingMode_MakeSpeedDisplayInterface()
 	gTrainingModeStruct.speed_display_gobj = interface_gobj
 		= gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xB, 0x80000000);
 	gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000U, -1);
-	sobj = gcAppendSObjWithSprite(
+	sobj = lbCommonMakeSObjForGObj(
 		interface_gobj, gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.speed_menu_option + 27]);
 
 	sobj->pos.x = 276.0F;
@@ -856,7 +856,7 @@ void scTrainingMode_MakeCPDisplayInterface()
 
 	gTrainingModeStruct.cp_display_gobj = interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xB, 0x80000000);
 	gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
-	sobj = gcAppendSObjWithSprite(interface_gobj,
+	sobj = lbCommonMakeSObjForGObj(interface_gobj,
 								  gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.cp_menu_option + 31]);
 
 	sobj->pos.x = 191.0F;
@@ -917,17 +917,17 @@ void scTrainingMode_MakeItemDisplayInterface()
 	gTrainingModeStruct.item_display_gobj = interface_gobj
 		= gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xB, 0x80000000);
 	gcAddGObjDisplay(interface_gobj, scTrainingMode_UpdateItemDisplay, 0x17, 0x80000000, -1);
-	sobj = gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.display_option_sprites[37]);
+	sobj = lbCommonMakeSObjForGObj(interface_gobj, gTrainingModeStruct.display_option_sprites[37]);
 
 	sobj->pos.x = 292.0F;
 	sobj->pos.y = 36.0F;
 	scTrainingMode_InitSObjColors(sobj);
 
-	sobj = gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.display_option_sprites[0]);
+	sobj = lbCommonMakeSObjForGObj(interface_gobj, gTrainingModeStruct.display_option_sprites[0]);
 	sobj->pos.y = 36.0F;
 	scTrainingMode_InitSObjColors(sobj);
 
-	sobj = gcAppendSObjWithSprite(interface_gobj, gTrainingModeStruct.display_option_sprites[36]);
+	sobj = lbCommonMakeSObjForGObj(interface_gobj, gTrainingModeStruct.display_option_sprites[36]);
 	sobj->pos.y = 36.0F;
 	scTrainingMode_InitSObjColors(sobj);
 }
@@ -1030,7 +1030,7 @@ void scTrainingMode_MakeCPOptionInterface()
 
 	gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
-	sobj = gcAppendSObjWithSprite(interface_gobj,
+	sobj = lbCommonMakeSObjForGObj(interface_gobj,
 								  gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.cp_menu_option
 																		  + nSCTrainingMenuOptionSpriteCPStart]);
 
@@ -1079,7 +1079,7 @@ void scTrainingMode_MakeItemOptionInterface()
 
 	gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
-	sobj = gcAppendSObjWithSprite(interface_gobj,
+	sobj = lbCommonMakeSObjForGObj(interface_gobj,
 								  gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.item_menu_option
 																		  + nSCTrainingMenuOptionSpriteItemStart]);
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
@@ -1127,7 +1127,7 @@ void scTrainingMode_MakeSpeedOptionInterface()
 
 	gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
-	sobj = gcAppendSObjWithSprite(interface_gobj,
+	sobj = lbCommonMakeSObjForGObj(interface_gobj,
 								  gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.speed_menu_option
 																		  + nSCTrainingMenuOptionSpriteSpeedStart]);
 
@@ -1174,7 +1174,7 @@ void scTrainingMode_MakeViewOptionInterface()
 
 	gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
 
-	sobj = gcAppendSObjWithSprite(interface_gobj,
+	sobj = lbCommonMakeSObjForGObj(interface_gobj,
 								  gTrainingModeStruct.menu_option_sprites[gTrainingModeStruct.view_menu_option
 																		  + nSCTrainingMenuOptionSpriteViewStart]);
 
@@ -1246,9 +1246,9 @@ void scTrainingMode_MakeOptionArrowInterface()
 	gTrainingModeStruct.arrow_option_gobj = interface_gobj
 		= gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xE, 0x80000000);
 	gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
-	scTrainingMode_InitOptionArrowColors(gcAppendSObjWithSprite(
+	scTrainingMode_InitOptionArrowColors(lbCommonMakeSObjForGObj(
 		interface_gobj, gTrainingModeStruct.menu_option_sprites[nSCTrainingMenuOptionSpriteLeftArrow]));
-	scTrainingMode_InitOptionArrowColors(gcAppendSObjWithSprite(
+	scTrainingMode_InitOptionArrowColors(lbCommonMakeSObjForGObj(
 		interface_gobj, gTrainingModeStruct.menu_option_sprites[nSCTrainingMenuOptionSpriteRightArrow]));
 
 	scTrainingMode_UpdateOptionArrows();
@@ -1257,7 +1257,7 @@ void scTrainingMode_MakeOptionArrowInterface()
 // 8018F7C8
 SObj* func_ovl7_8018F7C8(GObj* interface_gobj, scTrainingSprites* tms)
 {
-	SObj* sobj = gcAppendSObjWithSprite(interface_gobj, tms->sprite);
+	SObj* sobj = lbCommonMakeSObjForGObj(interface_gobj, tms->sprite);
 	sobj->pos.x = tms->pos.x;
 	return sobj;
 }
@@ -1363,7 +1363,7 @@ void scTrainingMode_MakeMenuCursorInterface()
 
 	gTrainingModeStruct.cursor_gobj = interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xE, 0x80000000);
 	gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
-	target_sprite = gcAppendSObjWithSprite(interface_gobj,
+	target_sprite = lbCommonMakeSObjForGObj(interface_gobj,
 										   gTrainingModeStruct.menu_option_sprites[nSCTrainingMenuOptionSpriteCursor]);
 	target_sprite->pos.x = 71.0F;
 

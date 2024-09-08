@@ -770,7 +770,7 @@ void mnResultsCreateBackground()
 	bg_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
 	gcAddGObjDisplay(bg_gobj, mnResultsRenderBackground, 0x1A, 0x80000000, -1);
 
-	bg_sobj = gcAppendSObjWithSprite(bg_gobj, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_BACKGROUND_IMAGE_OFFSET));
+	bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_BACKGROUND_IMAGE_OFFSET));
 
 	SObjGetStruct(bg_gobj)->pos.x = 10.0f;
 	SObjGetStruct(bg_gobj)->pos.y = 10.0f;
@@ -1087,7 +1087,7 @@ void mnResultsCreatePlayerIndicator(s32 port_id, s32 color_index)
 
 	if (gTransferBattleState.players[port_id].pl_kind == 0)
 	{
-		indicator_sobj = gcAppendSObjWithSprite(indicator_gobj, GetAddressFromOffset(gMNResultsFilesArray[1], offsets[port_id]));
+		indicator_sobj = lbCommonMakeSObjForGObj(indicator_gobj, GetAddressFromOffset(gMNResultsFilesArray[1], offsets[port_id]));
 		indicator_sobj->sprite.attr &= ~SP_FASTCOPY;
 		indicator_sobj->sprite.attr |= SP_TRANSPARENT;
 		indicator_sobj->shadow_color.r = dIFCommonPlayerTagShadowColorsR[color_index];
@@ -1099,7 +1099,7 @@ void mnResultsCreatePlayerIndicator(s32 port_id, s32 color_index)
 	}
 	else
 	{
-		indicator_sobj = gcAppendSObjWithSprite(indicator_gobj, GetAddressFromOffset(gMNResultsFilesArray[1], &FILE_026_INDICATOR_CP_IMAGE_OFFSET));
+		indicator_sobj = lbCommonMakeSObjForGObj(indicator_gobj, GetAddressFromOffset(gMNResultsFilesArray[1], &FILE_026_INDICATOR_CP_IMAGE_OFFSET));
 		indicator_sobj->sprite.attr &= ~SP_FASTCOPY;
 		indicator_sobj->sprite.attr |= SP_TRANSPARENT;
 		indicator_sobj->shadow_color.r = dIFCommonPlayerTagShadowColorsR[color_index];
@@ -1181,7 +1181,7 @@ void mnResultsDrawString(const char *str, f32 x, f32 y, s32 color_index, f32 sca
 			else
 			{
 
-				string_sobj = gcAppendSObjWithSprite(string_gobj, GetAddressFromOffset(gMNResultsFilesArray[6], offsets[char_index]));
+				string_sobj = lbCommonMakeSObjForGObj(string_gobj, GetAddressFromOffset(gMNResultsFilesArray[6], offsets[char_index]));
 				string_sobj->sprite.scalex = scale;
 				string_sobj->pos.x = current_x;
 
@@ -1387,7 +1387,7 @@ SObj* mnResultsCreateNumber(GObj* number_gobj, s32 number, s32 color_id)
 		{ { 0x00, 0x00, 0x00 }, { 0x4E, 0xB9, 0x4E } }
 	};
 
-	number_sobj = gcAppendSObjWithSprite(number_gobj, GetAddressFromOffset(gMNResultsFilesArray[5], offsets[number]));
+	number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMNResultsFilesArray[5], offsets[number]));
 	number_sobj->sprite.attr &= ~SP_FASTCOPY;
 	number_sobj->sprite.attr |= SP_TRANSPARENT;
 	mnResultsSetNumberColor(number_sobj, color_id);
@@ -1418,19 +1418,19 @@ SObj* mnResultsCreatePlaceNumber(GObj* place_gobj, s32 port_id, s32 place, s32 c
 		{
 			if ((mnResultsGetWinnerPort() == port_id) || (gMNResultsIsSharedWinner[port_id]))
 			{
-				place_sobj = gcAppendSObjWithSprite(place_gobj, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_FIRST_PLACE_ICON_IMAGE_OFFSET));
+				place_sobj = lbCommonMakeSObjForGObj(place_gobj, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_FIRST_PLACE_ICON_IMAGE_OFFSET));
 				place_sobj->user_data.s = 1;
 			}
 			else
 			{
-				place_sobj = gcAppendSObjWithSprite(place_gobj, GetAddressFromOffset(gMNResultsFilesArray[3], &FILE_0A4_1_IMAGE_OFFSET));
+				place_sobj = lbCommonMakeSObjForGObj(place_gobj, GetAddressFromOffset(gMNResultsFilesArray[3], &FILE_0A4_1_IMAGE_OFFSET));
 				place_sobj->user_data.s = 0;
 				mnResultsSetNumberColor(place_sobj, color_id);
 			}
 		}
 		else
 		{
-			place_sobj = gcAppendSObjWithSprite(place_gobj, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_FIRST_PLACE_ICON_IMAGE_OFFSET));
+			place_sobj = lbCommonMakeSObjForGObj(place_gobj, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_FIRST_PLACE_ICON_IMAGE_OFFSET));
 			place_sobj->user_data.s = 1;
 		}
 
@@ -1439,7 +1439,7 @@ SObj* mnResultsCreatePlaceNumber(GObj* place_gobj, s32 port_id, s32 place, s32 c
 	}
 	else
 	{
-		place_sobj = gcAppendSObjWithSprite(place_gobj, GetAddressFromOffset(gMNResultsFilesArray[3], offsets[place]));
+		place_sobj = lbCommonMakeSObjForGObj(place_gobj, GetAddressFromOffset(gMNResultsFilesArray[3], offsets[place]));
 		place_sobj->sprite.attr &= ~SP_FASTCOPY;
 		place_sobj->sprite.attr |= SP_TRANSPARENT;
 		mnResultsSetNumberColor(place_sobj, color_id);
@@ -1456,7 +1456,7 @@ void mnResultsDrawNumber(GObj* number_gobj, f32 x, f32 y, s32 number, s32 color_
 
 	if (number < 0)
 	{
-		number_sobj = gcAppendSObjWithSprite(number_gobj, GetAddressFromOffset(gMNResultsFilesArray[5], &FILE_024_DASH_IMAGE_OFFSET));
+		number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMNResultsFilesArray[5], &FILE_024_DASH_IMAGE_OFFSET));
 
 		if (mnResultsGetHundredsDigit(number) != 0)
 			number_sobj->pos.x = x;
@@ -1683,14 +1683,14 @@ void mnResultsCreateColumnHeaders()
 	{
 		if (gMNResultsIsPresent[i])
 		{
-			column_port_indicator_sobj = gcAppendSObjWithSprite(column_header_gobj, GetAddressFromOffset(gMNResultsFilesArray[0], offsets[i]));
+			column_port_indicator_sobj = lbCommonMakeSObjForGObj(column_header_gobj, GetAddressFromOffset(gMNResultsFilesArray[0], offsets[i]));
 			column_port_indicator_sobj->pos.x = mnResultsGetColumnX(i) + 17.0F;
 			column_port_indicator_sobj->pos.y = 49.0F;
 			mnResultsSetColumnPortIndicatorColors(column_port_indicator_sobj);
 
 			ft_struct = ftGetStruct(gMNResultsFighterGObjs[i]);
 
-			column_stock_icon_sobj = gcAppendSObjWithSprite(column_header_gobj, ftSpritesGetStruct(AttributesGetStruct(ft_struct))->stock_spr);
+			column_stock_icon_sobj = lbCommonMakeSObjForGObj(column_header_gobj, ftSpritesGetStruct(AttributesGetStruct(ft_struct))->stock_spr);
 			column_stock_icon_sobj->sprite.LUT = ftSpritesGetStruct(AttributesGetStruct(ft_struct))->stock_lut[ft_struct->costume];
 			column_stock_icon_sobj->sprite.attr &= ~SP_FASTCOPY;
 			column_stock_icon_sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1768,7 +1768,7 @@ void mnResultsDrawTKOs(s32 y)
 
 	if (gMNResultsGameRule != 4)
 	{
-		negative_symbol_sobj = gcAppendSObjWithSprite(tkos_row_gobj, GetAddressFromOffset(gMNResultsFilesArray[5], &FILE_024_DASH_IMAGE_OFFSET));
+		negative_symbol_sobj = lbCommonMakeSObjForGObj(tkos_row_gobj, GetAddressFromOffset(gMNResultsFilesArray[5], &FILE_024_DASH_IMAGE_OFFSET));
 		negative_symbol_sobj->pos.x = 90.0F;
 		negative_symbol_sobj->pos.y = y + 3;
 		negative_symbol_sobj->sprite.attr &= ~SP_FASTCOPY;

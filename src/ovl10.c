@@ -867,7 +867,7 @@ void mnTitleCreateFire()
 			else
 				target_texture = 12;
 
-			fire_sobj = gcAppendSObjWithSprite(fire_gobj, GetAddressFromOffset((&gMNTitleFile0)[1], dMNTitleFireTextureOffsets[target_texture]));
+			fire_sobj = lbCommonMakeSObjForGObj(fire_gobj, GetAddressFromOffset((&gMNTitleFile0)[1], dMNTitleFireTextureOffsets[target_texture]));
 
 			fire_sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -988,7 +988,7 @@ void mnTitleCreateLogo()
 
 		for (i = 0; i < ARRAY_COUNT(dMNTitleAnimatedLogoOffsets); i++)
 		{
-			fire_logo_sobj = gcAppendSObjWithSprite(fire_logo_gobj, GetAddressFromOffset(gMNTitleFile0, dMNTitleAnimatedLogoOffsets[i]));
+			fire_logo_sobj = lbCommonMakeSObjForGObj(fire_logo_gobj, GetAddressFromOffset(gMNTitleFile0, dMNTitleAnimatedLogoOffsets[i]));
 			fire_logo_sobj->sprite.attr = SP_TRANSPARENT;
 			fire_logo_sobj->pos.x = 0.0f;
 			fire_logo_sobj->pos.y = 0.0f;
@@ -1030,7 +1030,7 @@ void mnTitleCreateTextures()
 
 	for (i = 0; i < 7; i++)
 	{
-		sobj = gcAppendSObjWithSprite(gobj, GetAddressFromOffset(gMNTitleFile0, dMNTitleTextureConfigs[i].offset));
+		sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMNTitleFile0, dMNTitleTextureConfigs[i].offset));
 		sobj->sprite.attr = SP_TRANSPARENT;
 
 		mnTitleSetPosition(0, sobj, i);
@@ -1061,7 +1061,7 @@ void mnTitleCreateTitleHeaderAndFooter()
 	animation_dobj = DObjGetStruct(animation_gobj)->child;
 	for (i = 0; i < 5; i++)
 	{
-		texture_sobj = gcAppendSObjWithSprite(gobj, GetAddressFromOffset(gMNTitleFile0, dMNTitleTextureConfigs[i].offset));
+		texture_sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMNTitleFile0, dMNTitleTextureConfigs[i].offset));
 		texture_sobj->sprite.attr = SP_TRANSPARENT;
 
 		mnTitleSetPosition(animation_dobj, texture_sobj, i);
@@ -1080,7 +1080,7 @@ void mnTitleCreateTitleHeaderAndFooter()
 
 	for (i = 5; i < 7; i++)
 	{
-		texture_sobj = gcAppendSObjWithSprite(gobj, GetAddressFromOffset(gMNTitleFile0, dMNTitleTextureConfigs[i].offset));
+		texture_sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMNTitleFile0, dMNTitleTextureConfigs[i].offset));
 		texture_sobj->sprite.attr = SP_TRANSPARENT;
 
 		mnTitleSetPosition(animation_dobj, texture_sobj, i);
@@ -1113,7 +1113,7 @@ void mnTitleCreatePressStart()
 
 	press_start_gobj->user_data.p = press_start_anim_gobj;
 
-	press_start_sobj = gcAppendSObjWithSprite(press_start_gobj, GetAddressFromOffset(D_ovl10_801342C4, gMNTitleFile0));
+	press_start_sobj = lbCommonMakeSObjForGObj(press_start_gobj, GetAddressFromOffset(D_ovl10_801342C4, gMNTitleFile0));
 	press_start_sobj->sprite.attr = SP_TRANSPARENT;
 
 	mnTitleSetPosition(press_start_anim_dobj, press_start_sobj, nMNTitleTextureIndexPressStart);

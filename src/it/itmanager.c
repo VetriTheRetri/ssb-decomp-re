@@ -396,7 +396,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, 
             gcAddAnimAll(item_gobj, attributes->anim_joints, attributes->p_matanim_joints, 0.0F);
             gcPlayAnimAll(item_gobj);
         }
-        func_ovl0_800C9424(DObjGetStruct(item_gobj));
+        lbCommonEjectTreeDObj(DObjGetStruct(item_gobj));
     }
     else gcAddDObjForGObj(item_gobj, NULL);
     

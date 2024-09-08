@@ -1070,7 +1070,7 @@ void mnCharsCreateBio(s32 ft_kind)
 	gMNCharsBioGObj = bio_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
 	gcAddGObjDisplay(bio_gobj, func_ovl0_800CCF00, 0x1A, 0x80000000, -1);
 
-	bio_sobj = gcAppendSObjWithSprite(bio_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], &FILE_010_BIO_UNDERLAY_TEXTURE_IMAGE_OFFSET));
+	bio_sobj = lbCommonMakeSObjForGObj(bio_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], &FILE_010_BIO_UNDERLAY_TEXTURE_IMAGE_OFFSET));
 	bio_sobj->sprite.attr &= ~SP_FASTCOPY;
 	bio_sobj->sprite.attr |= SP_TRANSPARENT;
 	bio_sobj->sprite.red = 0;
@@ -1079,7 +1079,7 @@ void mnCharsCreateBio(s32 ft_kind)
 	bio_sobj->pos.x = 126.0f;
 	bio_sobj->pos.y = 54.0f;
 
-	bio_sobj = gcAppendSObjWithSprite(bio_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], offsets[ft_kind]));
+	bio_sobj = lbCommonMakeSObjForGObj(bio_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], offsets[ft_kind]));
 	bio_sobj->sprite.attr &= ~SP_FASTCOPY;
 	bio_sobj->sprite.attr |= SP_TRANSPARENT;
 	bio_sobj->sprite.red = 0xFF;
@@ -1099,7 +1099,7 @@ void mnCharsCreateHeader()
 	gcAddGObjDisplay(header_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000, -1);
 
 	// DATA header
-	header_sobj = gcAppendSObjWithSprite(header_gobj, GetAddressFromOffset(gMNCharsFilesArray[1], &FILE_020_DATA_HEADER_IMAGE_OFFSET));
+	header_sobj = lbCommonMakeSObjForGObj(header_gobj, GetAddressFromOffset(gMNCharsFilesArray[1], &FILE_020_DATA_HEADER_IMAGE_OFFSET));
 	header_sobj->sprite.attr &= ~SP_FASTCOPY;
 	header_sobj->sprite.attr |= SP_TRANSPARENT;
 	header_sobj->pos.x = 23.0f;
@@ -1109,7 +1109,7 @@ void mnCharsCreateHeader()
 	header_sobj->sprite.blue = 0x46;
 
 	// Characters header
-	header_sobj = gcAppendSObjWithSprite(header_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], &FILE_010_CHARACTERS_TEXTURE_IMAGE_OFFSET));
+	header_sobj = lbCommonMakeSObjForGObj(header_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], &FILE_010_CHARACTERS_TEXTURE_IMAGE_OFFSET));
 	header_sobj->sprite.attr &= ~SP_FASTCOPY;
 	header_sobj->sprite.attr |= SP_TRANSPARENT;
 	header_sobj->pos.x = 157.0f;
@@ -1122,7 +1122,7 @@ void mnCharsCreateHeader()
 	header_sobj->shadow_color.b = 0;
 
 	// left arrow
-	header_sobj = gcAppendSObjWithSprite(header_gobj, GetAddressFromOffset(gMNCharsFilesArray[1], &FILE_020_ARROW_LEFT_IMAGE_OFFSET));
+	header_sobj = lbCommonMakeSObjForGObj(header_gobj, GetAddressFromOffset(gMNCharsFilesArray[1], &FILE_020_ARROW_LEFT_IMAGE_OFFSET));
 	header_sobj->sprite.attr &= ~SP_FASTCOPY;
 	header_sobj->sprite.attr |= SP_TRANSPARENT;
 	header_sobj->pos.x = 257.0f;
@@ -1132,7 +1132,7 @@ void mnCharsCreateHeader()
 	header_sobj->sprite.blue = 0xC;
 
 	// right arrow
-	header_sobj = gcAppendSObjWithSprite(header_gobj, GetAddressFromOffset(gMNCharsFilesArray[1], &FILE_020_ARROW_RIGHT_IMAGE_OFFSET));
+	header_sobj = lbCommonMakeSObjForGObj(header_gobj, GetAddressFromOffset(gMNCharsFilesArray[1], &FILE_020_ARROW_RIGHT_IMAGE_OFFSET));
 	header_sobj->sprite.attr &= ~SP_FASTCOPY;
 	header_sobj->sprite.attr |= SP_TRANSPARENT;
 	header_sobj->pos.x = 275.0f;
@@ -1207,7 +1207,7 @@ void mnCharsCreateName(s32 ft_kind)
 
 	if ((ft_kind == nFTKindPurin) || (ft_kind == nFTKindCaptain))
 	{
-		name_sobj = gcAppendSObjWithSprite(name_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], &FILE_010_NAME_BORDER_TALL_IMAGE_OFFSET));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], &FILE_010_NAME_BORDER_TALL_IMAGE_OFFSET));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = 10.0f;
@@ -1218,7 +1218,7 @@ void mnCharsCreateName(s32 ft_kind)
 	}
 	else
 	{
-		name_sobj = gcAppendSObjWithSprite(name_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], &FILE_010_NAME_BORDER_IMAGE_OFFSET));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], &FILE_010_NAME_BORDER_IMAGE_OFFSET));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = 10.0f;
@@ -1228,7 +1228,7 @@ void mnCharsCreateName(s32 ft_kind)
 		name_sobj->sprite.blue = 0x07;
 	}
 
-	name_sobj = gcAppendSObjWithSprite(name_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], offsets[ft_kind]));
+	name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], offsets[ft_kind]));
 	name_sobj->sprite.attr &= ~SP_FASTCOPY;
 	name_sobj->sprite.attr |= SP_TRANSPARENT;
 	name_sobj->pos.x = coords[ft_kind].x;
@@ -1247,7 +1247,7 @@ void mnCharsCreateWorksBackground()
 	works_bg_gobj = gcMakeGObjSPAfter(0, 0, 0x15, 0x80000000);
 	gcAddGObjDisplay(works_bg_gobj, func_ovl0_800CCF00, 0x1E, 0x80000000, -1);
 
-	works_bg_sobj = gcAppendSObjWithSprite(works_bg_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], &FILE_010_WORKS_BACKGROUND_IMAGE_OFFSET));
+	works_bg_sobj = lbCommonMakeSObjForGObj(works_bg_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], &FILE_010_WORKS_BACKGROUND_IMAGE_OFFSET));
 	works_bg_sobj->sprite.attr &= ~SP_FASTCOPY;
 	works_bg_sobj->sprite.attr |= SP_TRANSPARENT;
 	works_bg_sobj->pos.x = 116.0f;
@@ -1271,7 +1271,7 @@ void mnCharsCreateWorks(s32 ft_kind)
 	gMNCharsWorksGObj = works_gobj = gcMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
 	gcAddGObjDisplay(works_gobj, func_ovl0_800CCF00, 0x1F, 0x80000000, -1);
 
-	works_sobj = gcAppendSObjWithSprite(works_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], works_offsets[ft_kind]));
+	works_sobj = lbCommonMakeSObjForGObj(works_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], works_offsets[ft_kind]));
 	works_sobj->sprite.attr &= ~SP_FASTCOPY;
 	works_sobj->sprite.attr |= SP_TRANSPARENT;
 	works_sobj->pos.x = 139.0f;
@@ -1640,7 +1640,7 @@ void mnCharsUpdateMoveName(GObj* move_name_gobj)
 
 	if (move_type != 3)
 	{
-		move_name_sobj = gcAppendSObjWithSprite(move_name_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], move_input_offsets[move_type]));
+		move_name_sobj = lbCommonMakeSObjForGObj(move_name_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], move_input_offsets[move_type]));
 		move_name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		move_name_sobj->sprite.attr |= SP_TRANSPARENT;
 		move_name_sobj->pos.x = 24.0f;
@@ -1649,7 +1649,7 @@ void mnCharsUpdateMoveName(GObj* move_name_gobj)
 		move_name_sobj->sprite.green = 0x7D;
 		move_name_sobj->sprite.blue = 0xC;
 
-		move_name_sobj = gcAppendSObjWithSprite(move_name_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], move_name_offsets[ft_kind][move_type]));
+		move_name_sobj = lbCommonMakeSObjForGObj(move_name_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], move_name_offsets[ft_kind][move_type]));
 		move_name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		move_name_sobj->sprite.attr |= SP_TRANSPARENT;
 		move_name_sobj->pos.x = 24.0f;

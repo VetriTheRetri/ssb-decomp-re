@@ -265,7 +265,7 @@ void mvOpeningCliffMakeWallpaper(void)
     gcAddGObjDisplay(wallpaper_gobj, func_ovl0_800CCF00, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(wallpaper_gobj, mvOpeningCliffWallpaperProcRender, nOMObjProcessKindProc, 1);
 
-    wallpaper_sobj = gcAppendSObjWithSprite(wallpaper_gobj, gcGetDataFromFile(Sprite*, sMVOpeningCliffFiles[1], &lMVOpeningCliffWallpaperSprite));
+    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, gcGetDataFromFile(Sprite*, sMVOpeningCliffFiles[1], &lMVOpeningCliffWallpaperSprite));
     wallpaper_sobj->sprite.attr &= ~SP_FASTCOPY;
 
     wallpaper_sobj->sprite.scalex = 2.0F;
@@ -274,7 +274,7 @@ void mvOpeningCliffMakeWallpaper(void)
     wallpaper_sobj->pos.x = 0.0F;
     wallpaper_sobj->pos.y = 0.0F;
 
-    wallpaper_sobj = gcAppendSObjWithSprite(wallpaper_gobj, gcGetDataFromFile(Sprite*, sMVOpeningCliffFiles[1], &lMVOpeningCliffWallpaperSprite));
+    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, gcGetDataFromFile(Sprite*, sMVOpeningCliffFiles[1], &lMVOpeningCliffWallpaperSprite));
     wallpaper_sobj->sprite.attr &= ~SP_FASTCOPY;
 
     wallpaper_sobj->sprite.scalex = 2.0F;

@@ -729,7 +729,7 @@ gBattleState = 0x800A50E8;
 gSceneData = 0x800A4AD0;
 
 menu_zoom = 0x80390D90;
-gcAppendSObjWithSprite = 0x800ccfdc;
+lbCommonMakeSObjForGObj = 0x800ccfdc;
 gSaveData = 0x800A44E0;
 D_ovl2_8012EF40 = 0x8012EF40;
 D_ovl2_801313E4 = 0x801313E4;

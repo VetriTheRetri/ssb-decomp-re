@@ -393,7 +393,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
                     }
                     else ftAnimParseDObjFigatree(joint);
                     
-                    func_ovl0_800C9488(joint, translate_scales);
+                    lbCommonPlayTranslateScaledDObjAnim(joint, translate_scales);
 
                     mobj = joint->mobj;
 
@@ -451,7 +451,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
 
                     joint->anim_remain = AOBJ_ANIM_END;
 
-                    func_ovl0_800C9488(joint, translate_scales);
+                    lbCommonPlayTranslateScaledDObjAnim(joint, translate_scales);
 
                     joint->anim_remain = anim_remain_bak;
                 }

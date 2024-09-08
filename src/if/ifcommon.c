@@ -9,7 +9,7 @@
 extern alSoundEffect* func_800269C0_275C0(u16);
 
 extern void func_ovl0_800CCF00(GObj*);
-extern SObj* gcAppendSObjWithSprite(GObj*, Sprite*);
+extern SObj* lbCommonMakeSObjForGObj(GObj*, Sprite*);
 extern void auSetBGMVolume(u32, u32);
 extern void func_80007080(void*, f32, f32, f32, f32);
 
@@ -935,7 +935,7 @@ void ifCommonPlayerDamageInitInterface(void)
 
             if ((ft_sprites != NULL) && (ft_sprites->emblem != NULL))
             {
-                sobj = gcAppendSObjWithSprite(interface_gobj, ft_sprites->emblem);
+                sobj = lbCommonMakeSObjForGObj(interface_gobj, ft_sprites->emblem);
 
                 sobj->pos.x = (s32)((gIFCommonPlayerInterface.ifplayers_pos_x[player] - (sobj->sprite.width  * dIFCommonPlayerDamageEmblemScales[player] * 0.5F)) + dIFCommonPlayerDamageEmblemOffsetsX[player]);
                 sobj->pos.y = (s32)((gIFCommonPlayerInterface.ifplayers_pos_y         - (sobj->sprite.height * dIFCommonPlayerDamageEmblemScales[player] * 0.5F)) + dIFCommonPlayerDamageEmblemOffsetsY[player]);
@@ -954,10 +954,10 @@ void ifCommonPlayerDamageInitInterface(void)
             {
                 gcAddSObjForGObj(interface_gobj, NULL)->sprite.attr = SP_HIDDEN;
             }
-            gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[2], &lIFCommonPlayerDamageDigit0))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[0];
-            gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[2], &lIFCommonPlayerDamageDigit0))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[1];
-            gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[2], &lIFCommonPlayerDamageDigit0))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[2];
-            gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[2], &lIFCommonPlayerDamageDigit0))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[3];
+            lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[2], &lIFCommonPlayerDamageDigit0))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[0];
+            lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[2], &lIFCommonPlayerDamageDigit0))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[1];
+            lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[2], &lIFCommonPlayerDamageDigit0))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[2];
+            lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[2], &lIFCommonPlayerDamageDigit0))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[3];
 
             // The above functions should all return SObj*
 
@@ -1135,12 +1135,12 @@ void ifCommonPlayerStockMultiMakeInterface(s32 player)
         GObj *interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
         gcAddGObjDisplay(interface_gobj, ifCommonPlayerStockMultiProcRender, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-        gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
-        gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
-        gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
-        gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
-        gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
-        gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
+        lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
+        lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
+        lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
+        lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
+        lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
+        lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
 
         sIFCommonPlayerStocksNum[player] = S8_MAX;
 
@@ -1182,7 +1182,7 @@ void ifCommonPlayerStockSingleMakeInterface(s32 player)
 
         gcAddGObjDisplay(interface_gobj, ifCommonPlayerStockSingleProcRender, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-        sobj = gcAppendSObjWithSprite(interface_gobj, fp->attributes->sprites->stock_spr);
+        sobj = lbCommonMakeSObjForGObj(interface_gobj, fp->attributes->sprites->stock_spr);
 
         sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
         sobj->sprite.LUT = fp->attributes->sprites->stock_lut[fp->costume];
@@ -1246,7 +1246,7 @@ void ifCommonPlayerStockStealMakeInterface(s32 thief, s32 stolen)
         gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
         gcAddGObjProcess(interface_gobj, ifCommonPlayerStockStealProcUpdate, nOMObjProcessKindProc, 0);
 
-        check_sobj = gcAppendSObjWithSprite(interface_gobj, fp->attributes->sprites->stock_spr);
+        check_sobj = lbCommonMakeSObjForGObj(interface_gobj, fp->attributes->sprites->stock_spr);
 
         if (check_sobj == NULL)
         {
@@ -1860,7 +1860,7 @@ void ifCommonPlayerTagMakeInterface(void)
 
             gcAddGObjDisplay(interface_gobj, ifCommonPlayerTagProcRender, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-            sobj = gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[6], dIFCommonPlayerTagSpriteOffsets[gBattleState->players[player].tag_kind]));
+            sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[6], dIFCommonPlayerTagSpriteOffsets[gBattleState->players[player].tag_kind]));
 
             sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -1917,7 +1917,7 @@ GObj* ifCommonItemArrowMakeInterface(itStruct *ip)
     {
         gcAddGObjDisplay(interface_gobj, ifCommonItemArrowProcRender, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-        if (gcAppendSObjWithSprite(interface_gobj, sIFCommonItemArrowSprite) != NULL)
+        if (lbCommonMakeSObjForGObj(interface_gobj, sIFCommonItemArrowSprite) != NULL)
         {
             interface_gobj->user_data.p = ip; // Give it up for... the GObj with the most flexible user_data assignments ever?
 
@@ -1965,7 +1965,7 @@ void ifCommonAnnounceSetAttr(GObj *interface_gobj, s32 file_id, ifACharacter *ch
 
     for (i = 0; i < sprite_count; i++)
     {
-        sobj = gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, sprite_head, character[i].offset));
+        sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, sprite_head, character[i].offset));
 
         sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -1986,7 +1986,7 @@ void ifCommonAnnounceGoMakeInterface(void)
 
     for (i = 0; i < ARRAY_COUNT(dIFCommonAnnounceGoSpriteData); i++)
     {
-        SObj *sobj = gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, sprite_head, dIFCommonAnnounceGoSpriteData[i].offset));
+        SObj *sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, sprite_head, dIFCommonAnnounceGoSpriteData[i].offset));
 
         sobj->sprite.attr = 0x1000 | SP_TEXSHUF; // 0x1000 doesn't exist in base sp.h though?
 
@@ -2023,7 +2023,7 @@ SObj* ifCommonTrafficMakeSObj(GObj *interface_gobj, s32 id)
 
     color_id = dIFCommonTrafficSpriteData[id].color_id;
 
-    sobj = gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[1], dIFCommonTrafficSpriteOffsets[color_id]));
+    sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[1], dIFCommonTrafficSpriteOffsets[color_id]));
 
     sobj->sprite.attr = 0x1000 | SP_TEXSHUF;
 
@@ -2196,14 +2196,14 @@ SObj* ifCommonCountdownMakeInterface(void)
     gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(interface_gobj, ifCommonCountdownThread, nOMObjProcessKindThread, 5);
 
-    sobj = gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[1], &lIFCommonTrafficRod));
+    sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[1], &lIFCommonTrafficRod));
 
     sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
     sobj->pos.x = 103.0F;
     sobj->pos.y = -57.0F;
 
-    sobj = gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[1], &lIFCommonTrafficFrame));
+    sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[1], &lIFCommonTrafficFrame));
 
     sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -2218,7 +2218,7 @@ SObj* ifCommonCountdownMakeInterface(void)
 
     ifCommonTrafficMakeSObj(interface_gobj, 10);
 
-    sobj = gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[1], &lIFCommonTrafficRodShadow));
+    sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[1], &lIFCommonTrafficRodShadow));
 
     sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -2449,12 +2449,12 @@ SObj* ifCommonTimerMakeDigitSObjs(void)
 
     gcAddGObjDisplay(interface_gobj, ifCommonTimerProcRender, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
-    gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
-    gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
-    gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
+    lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
+    lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
+    lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
+    lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
 
-    sobj = gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[3], &lIFCommonTimerSymbolColon));
+    sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[3], &lIFCommonTimerSymbolColon));
 
     sobj->pos.x = (s32)(260.0F - (sobj->sprite.width * 0.5F));
     sobj->pos.y = (s32)(30.0F - (sobj->sprite.height * 0.5F));
@@ -2768,7 +2768,7 @@ void ifCommonBattlePauseProcRender(GObj *interface_gobj)
 // 0x80113CF8
 void ifCommonBattlePausePlayerNumMakeSObj(GObj *interface_gobj, s32 player)
 {
-    SObj *sobj = gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[5], dIFCommonBattlePausePlayerNumSpriteOffsets[player]));
+    SObj *sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[5], dIFCommonBattlePausePlayerNumSpriteOffsets[player]));
 
     sobj->sprite.red   = 0xFF;
     sobj->sprite.green = 0xFF;
@@ -2783,7 +2783,7 @@ void ifCommonBattlePausePlayerNumMakeSObj(GObj *interface_gobj, s32 player)
 // 0x80113D60
 void ifCommonBattlePauseDecalMakeSObjID(GObj *interface_gobj, s32 id)
 {
-    SObj *sobj = gcAppendSObjWithSprite(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[5], dIFCommonBattlePauseDecalsSpriteData[id].offset));
+    SObj *sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[5], dIFCommonBattlePauseDecalsSpriteData[id].offset));
 
     sobj->pos.x = dIFCommonBattlePauseDecalsSpriteData[id].pos.x;
     sobj->pos.y = dIFCommonBattlePauseDecalsSpriteData[id].pos.y;

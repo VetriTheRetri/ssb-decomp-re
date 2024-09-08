@@ -150,7 +150,7 @@ void mvOpeningYamabukiMakeWallpaper(void)
     gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, func_ovl0_800CCF00, nOMTransformTraRotRpyRSca, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    sobj = gcAppendSObjWithSprite
+    sobj = lbCommonMakeSObjForGObj
     (
         gobj,
         gcGetDataFromFile

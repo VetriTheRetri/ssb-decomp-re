@@ -1,11 +1,12 @@
 #include <ft/fighter.h>
 
+extern void hal_interpolation_cubic(void*, void*, f32);
 extern void* func_80026A10_27610(u16);
 
 extern u16 gSinTable[/* */];
 
 // 0x800D4CA0
-f32 dLBMathSinFLookup[/* */] =
+f32 dLBCommonSinLookup[/* */] =
 {
 	0.000000000000000, 0.001534000039101, 0.003068000078201, 0.004602000117302,
 	0.006136000156403, 0.007670000195503, 0.009204000234604, 0.010738000273705,
@@ -319,9 +320,9 @@ f32 lbCommonSin(f32 angle)
     
     if (index & 0x400)
     {
-        sin = dLBMathSinFLookup[0x3FF - (index & 0x3FF)];
+        sin = dLBCommonSinLookup[0x3FF - (index & 0x3FF)];
     }
-    else sin = dLBMathSinFLookup[index & 0x3FF];
+    else sin = dLBCommonSinLookup[index & 0x3FF];
     
     if (index & 0x800)
     {
@@ -338,9 +339,9 @@ f32 lbCommonCos(f32 angle)
     
     if (index & 0x400)
     {
-        cos = dLBMathSinFLookup[0x3FF - (index & 0x3FF)];
+        cos = dLBCommonSinLookup[0x3FF - (index & 0x3FF)];
     }
-    else cos = dLBMathSinFLookup[index & 0x3FF];
+    else cos = dLBCommonSinLookup[index & 0x3FF];
     
     if (index & 0x800)
     {
@@ -357,9 +358,9 @@ f32 lbCommonTan(f32 angle)
     
     if (index & 0x400)
     {
-        sin = dLBMathSinFLookup[0x3FF - (index & 0x3FF)];
+        sin = dLBCommonSinLookup[0x3FF - (index & 0x3FF)];
     }
-    else sin = dLBMathSinFLookup[index & 0x3FF];
+    else sin = dLBCommonSinLookup[index & 0x3FF];
     
     if (index & 0x800)
     {
@@ -369,9 +370,9 @@ f32 lbCommonTan(f32 angle)
     
     if (index & 0x400)
     {
-        cos = dLBMathSinFLookup[0x3FF - (index & 0x3FF)];
+        cos = dLBCommonSinLookup[0x3FF - (index & 0x3FF)];
     }
-    else cos = dLBMathSinFLookup[index & 0x3FF];
+    else cos = dLBCommonSinLookup[index & 0x3FF];
     
     if (index & 0x800)
     {
@@ -1231,12 +1232,117 @@ void lbCommonInsertTreeDObjChild(DObj *root_dobj, void *dvar)
 	dobj->parent = root_dobj;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9424.s")
+// 0x800C9424
+void lbCommonEjectTreeDObj(DObj *dobj)
+{
+    DObj *child_dobj = dobj->child;
+    DObj *parent_dobj = dobj->parent;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9488.s")
+    dobj->child = NULL;
+    
+    gcEjectDObj(dobj);
+    
+    if (parent_dobj == DOBJ_PARENT_NULL)
+    {
+        child_dobj->parent_gobj->obj = child_dobj;
+        child_dobj->parent_gobj->obj_kind = nOMObjCommonAppendDObj;
+    } 
+    else parent_dobj->child = child_dobj;
+    
+    child_dobj->parent = parent_dobj;
+}
+
+// 0x800C9488
+void lbCommonPlayTranslateScaledDObjAnim(DObj *dobj, Vec3f *scale)
+{
+    f32 interp;
+
+    if (dobj->anim_remain != AOBJ_ANIM_NULL)
+    {
+        AObj *aobj = dobj->aobj;
+
+        while (aobj != NULL)
+        {
+            if (aobj->kind != nOMObjAnimKindNone)
+            {
+                if (dobj->anim_remain != AOBJ_ANIM_END)
+                {
+                    aobj->length += dobj->anim_speed;
+                }
+                if (!(dobj->parent_gobj->flags & GOBJ_FLAG_NOANIM))
+                {
+                    switch (aobj->track)
+                    {
+                    case nOMObjAnimTrackRotX:
+                        dobj->rotate.vec.f.x = gcGetAObjValue(aobj);
+                        break;
+
+                    case nOMObjAnimTrackRotY:
+                        dobj->rotate.vec.f.y = gcGetAObjValue(aobj);
+                        break;
+
+                    case nOMObjAnimTrackRotZ:
+                        dobj->rotate.vec.f.z = gcGetAObjValue(aobj);
+                        break;
+
+                    case nOMObjAnimTrackTraI:
+                        interp = gcGetAObjValue(aobj);
+
+                        if (interp < 0.0F)
+                        {
+                            interp = 0.0F;
+                        }
+                        else if (interp > 1.0F)
+                        {
+                            interp = 1.0F;
+                        }
+                        hal_interpolation_cubic(&dobj->translate.vec.f, aobj->interpolate, interp);
+
+                        dobj->translate.vec.f.x *= scale->x;
+                        dobj->translate.vec.f.y *= scale->y;
+                        dobj->translate.vec.f.z *= scale->z;
+                        break;
+
+                    case nOMObjAnimTrackTraX:
+                        dobj->translate.vec.f.x = gcGetAObjValue(aobj) * scale->x;
+                        break;
+
+                    case nOMObjAnimTrackTraY:
+                        dobj->translate.vec.f.y = gcGetAObjValue(aobj) * scale->y;
+                        break;
+
+                    case nOMObjAnimTrackTraZ:
+                        dobj->translate.vec.f.z = gcGetAObjValue(aobj) * scale->z;
+                        break;
+
+                    case nOMObjAnimTrackScaX:
+                        dobj->scale.vec.f.x = gcGetAObjValue(aobj);
+                        break;
+
+                    case nOMObjAnimTrackScaY:
+                        dobj->scale.vec.f.y = gcGetAObjValue(aobj);
+                        break;
+
+                    case nOMObjAnimTrackScaZ:
+                        dobj->scale.vec.f.z = gcGetAObjValue(aobj);
+                        break;
+                    }
+                }
+            }
+            aobj = aobj->next;
+        }
+        if (dobj->anim_remain == AOBJ_ANIM_END)
+        {
+            dobj->anim_remain = AOBJ_ANIM_NULL;
+        }
+    }
+}
 
 // 0x800C96DC
-void func_ovl0_800C96DC(s32 arg0, s32 arg1, s32 arg2) {}
+void func_ovl0_800C96DC(s32 arg0, s32 arg1, s32 arg2)
+{
+    return;
+}
 
 // 0x800C96EC
 s32 func_ovl0_800C96EC(s32 arg0, s32 arg1, s32 arg2)
@@ -1251,7 +1357,6 @@ s32 func_ovl0_800C9714(s32 arg0, s32 arg1, s32 arg2)
 	func_ovl0_800C96DC(arg0, arg1, 1);
 	return 0;
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C973C.s")
 
@@ -1318,7 +1423,28 @@ u8 func_ovl0_800CB644(u8 index)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CCF74.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/gcAppendSObjWithSprite.s")
+// 0x800CCFDC
+SObj* lbCommonMakeSObjForGObj(GObj *gobj, Sprite *sprite)
+{
+    SObj *sobj;
+
+    if (sprite->bmsiz == 4)
+    {
+        func_ovl0_800CB738(sprite);
+    }
+    sobj = gcAddSObjForGObj(gobj, sprite);
+    
+    sobj->shadow_color.r =
+    sobj->shadow_color.g =
+    sobj->shadow_color.b =
+    sobj->shadow_color.a = 0x00;
+    
+    sobj->masks = sobj->maskt = 0;
+    
+    sobj->cms = sobj->cmt = 2;
+    
+    sobj->pos.x = sobj->pos.y = 0.0F;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CD050.s")
 

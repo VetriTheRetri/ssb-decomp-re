@@ -302,7 +302,7 @@ void mnCongraProcStart(void)
 
 	gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-	sobj = gcAppendSObjWithSprite
+	sobj = lbCommonMakeSObjForGObj
 	(
 		gobj,
 		gcGetDataFromFile
@@ -328,7 +328,7 @@ void mnCongraProcStart(void)
 	sobj->pos.x = 10.0F;
 	sobj->pos.y = 120.0F;
 
-	sobj = gcAppendSObjWithSprite
+	sobj = lbCommonMakeSObjForGObj
 	(
 		gobj,
 		gcGetDataFromFile

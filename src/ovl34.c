@@ -634,7 +634,7 @@ void mvOpeningFirstDestinationCreateBackground()
 	gMvOpeningFirstDestinationBackgroundGObj = bg_gobj = gcMakeGObjSPAfter(0, 0, 0x14, 0x80000000);
 	gcAddGObjDisplay(bg_gobj, mvOpeningFirstDestinationRenderBackground, 0x1C, 0x80000000, -1);
 
-	bg_sobj = gcAppendSObjWithSprite(bg_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[7], &FILE_05A_BACKGROUND_IMAGE_OFFSET));
+	bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[7], &FILE_05A_BACKGROUND_IMAGE_OFFSET));
 	bg_sobj->pos.x = 10.0f;
 	bg_sobj->pos.y = 10.0f;
 }

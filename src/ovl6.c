@@ -637,7 +637,7 @@ void scBonusGame_InitBonus1TargetSprites()
 
 	for (i = 0; i < gGRCommonStruct.bonus1.target_count; i++)
 	{
-		sobj = gcAppendSObjWithSprite(interface_gobj, (void*)((uintptr_t)sprites + (intptr_t)&D_NF_000001D0));
+		sobj = lbCommonMakeSObjForGObj(interface_gobj, (void*)((uintptr_t)sprites + (intptr_t)&D_NF_000001D0));
 		sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 		sobj->pos.x = -(sobj->sprite.width / 2) + (((sobj->sprite.width + 3) * i) + 30);
 		sobj->pos.y = 30 - (sobj->sprite.height / 2);
@@ -660,7 +660,7 @@ void scBonusGame_InitBonus2PlatformSprites()
 
 	for (i = 0; i < gGRCommonStruct.bonus2.platform_count; i++)
 	{
-		sobj = gcAppendSObjWithSprite(interface_gobj, (void*)((uintptr_t)sprites + (intptr_t)&D_NF_000000C0));
+		sobj = lbCommonMakeSObjForGObj(interface_gobj, (void*)((uintptr_t)sprites + (intptr_t)&D_NF_000000C0));
 		sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 		sobj->pos.x = -(sobj->sprite.width / 2) + (((sobj->sprite.width + 3) * i) + 30);
 		sobj->pos.y = 30 - (sobj->sprite.height / 2);
@@ -759,7 +759,7 @@ void func_ovl6_8018E344()
 
 		for (i = 0; i < ARRAY_COUNT(gBonusTimerDigits); i++)
 		{
-			sobj = gcAppendSObjWithSprite(interface_gobj,
+			sobj = lbCommonMakeSObjForGObj(interface_gobj,
 										  (void*)((uintptr_t)gGMCommonFiles[3] + (intptr_t)&D_NF_00000138));
 			sobj->pos.x = scBonusGame_Timer_DigitPositions[i] - (sobj->sprite.width * 0.5F);
 			sobj->pos.y = 30.0F - (sobj->sprite.height * 0.5F);
@@ -768,12 +768,12 @@ void func_ovl6_8018E344()
 		sobj = SObjGetStruct(interface_gobj);
 		sobj->sprite.attr |= SP_HIDDEN;
 
-		sobj = gcAppendSObjWithSprite(interface_gobj,
+		sobj = lbCommonMakeSObjForGObj(interface_gobj,
 									  (void*)((uintptr_t)gGMCommonFiles[3] + (intptr_t)&D_NF_00001140));
 		sobj->pos.x = (s32)(231.0F - (sobj->sprite.width * 0.5F));
 		sobj->pos.y = (s32)(20.0F - (sobj->sprite.height * 0.5F));
 
-		sobj = gcAppendSObjWithSprite(interface_gobj,
+		sobj = lbCommonMakeSObjForGObj(interface_gobj,
 									  (void*)((uintptr_t)gGMCommonFiles[3] + (intptr_t)&D_NF_00001238));
 		sobj->pos.x = (s32)(264.0F - (sobj->sprite.width * 0.5F));
 		sobj->pos.y = (s32)(20.0F - (sobj->sprite.height * 0.5F));

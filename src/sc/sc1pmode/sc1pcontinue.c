@@ -283,7 +283,7 @@ void sc1PContinueMakeScoreDigitSObjs
     {
         points = 0;
     }
-    sobj = gcAppendSObjWithSprite(gobj, sc1PContinueScoreDigitGetSprite(points % 10));
+    sobj = lbCommonMakeSObjForGObj(gobj, sc1PContinueScoreDigitGetSprite(points % 10));
     sc1PContinueScoreDigitInitSprite(sobj);
 
     calc_x = (sub != 0) ? x - sub : x - (sobj->sprite.width + offset_x);
@@ -295,7 +295,7 @@ void sc1PContinueMakeScoreDigitSObjs
     {
         digit = (sc1PContinueGetPowerOf(10, i) != 0) ? points / sc1PContinueGetPowerOf(10, i) : 0;
 
-        sobj = gcAppendSObjWithSprite(gobj, sc1PContinueScoreDigitGetSprite(digit % 10));
+        sobj = lbCommonMakeSObjForGObj(gobj, sc1PContinueScoreDigitGetSprite(digit % 10));
         sc1PContinueScoreDigitInitSprite(sobj);
 
         calc_x = (sub != 0) ? calc_x - sub : calc_x - (sobj->sprite.width + offset_x);
@@ -314,7 +314,7 @@ void sc1PContinueMakeScoreDisplay(s32 points)
     sSC1PContinueScoreGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PContinueFiles[1], &lSC1PContinueTextScore));
+    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PContinueFiles[1], &lSC1PContinueTextScore));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -477,7 +477,7 @@ void sc1PContinueMakeRoom(void)
     sSC1PContinueRoomGObj = gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
-    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueRoom));
+    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueRoom));
 
     sobj->pos.x = 30.0F;
     sobj->pos.y = 28.0F;
@@ -491,7 +491,7 @@ void sc1PContinueMakeSpotlightSObjs(void)
 
     sSC1PContinueShadowGObj = gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 30, GOBJ_DLLINKORDER_DEFAULT, -1);
-    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueShadow));
+    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueShadow));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -505,7 +505,7 @@ void sc1PContinueMakeSpotlightSObjs(void)
 
     sSC1PContinueSpotlightGObj = gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 30, GOBJ_DLLINKORDER_DEFAULT, -1);
-    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueSpotlight));
+    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueSpotlight));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -526,7 +526,7 @@ void sc1PContinueMakeContinueSObj(void)
 
     sSC1PContinueContinueGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
-    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueTextContinue));
+    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueTextContinue));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -597,7 +597,7 @@ void sc1PContinueMakeOptionSObjs(void)
     gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(gobj, sc1PContinueOptionProcUpdate, nOMObjProcessKindProc, 1);
 
-    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueTextYes));
+    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueTextYes));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -605,7 +605,7 @@ void sc1PContinueMakeOptionSObjs(void)
     sobj->pos.x = 84.0F;
     sobj->pos.y = 129.0F;
 
-    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueTextNo));
+    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueTextNo));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -649,7 +649,7 @@ void sc1PContinueMakeCursorSObj(void)
 
     gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(gobj, sc1PContinueCursorProcUpdate, nOMObjProcessKindProc, 1);
-    sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueCursor));
+    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueCursor));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -743,7 +743,7 @@ void sc1PContinueMakeGameOverSObjs(void)
 
     for (i = 0; i < (ARRAY_COUNT(letters) + ARRAY_COUNT(positions_x)) / 2; i++)
     {
-        sobj = gcAppendSObjWithSprite(gobj, gcGetDataFromFile(Sprite*, sSC1PContinueFiles[2], letters[i]));
+        sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sSC1PContinueFiles[2], letters[i]));
 
         sobj->pos.x = positions_x[i];
         sobj->pos.y = 50.0F;

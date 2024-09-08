@@ -108,7 +108,7 @@ void mvPortraitsCreatePortraitsSet1()
 
 	for (i = 0; i < ARRAY_COUNT(offsets); i++)
 	{
-		portrait_sobj = gcAppendSObjWithSprite(portraits_gobj, GetAddressFromOffset(gIntroPortraitsFilesArray[0], offsets[i]));
+		portrait_sobj = lbCommonMakeSObjForGObj(portraits_gobj, GetAddressFromOffset(gIntroPortraitsFilesArray[0], offsets[i]));
 		portrait_sobj->sprite.attr &= ~SP_FASTCOPY;
 		portrait_sobj->pos.x = positions[i].x;
 		portrait_sobj->pos.y = positions[i].y;
@@ -141,7 +141,7 @@ void mvPortraitsCreatePortraitsSet2()
 
 	for (i = 0; i < ARRAY_COUNT(offsets); i++)
 	{
-		portrait_sobj = gcAppendSObjWithSprite(portraits_gobj, GetAddressFromOffset(gIntroPortraitsFilesArray[1], offsets[i]));
+		portrait_sobj = lbCommonMakeSObjForGObj(portraits_gobj, GetAddressFromOffset(gIntroPortraitsFilesArray[1], offsets[i]));
 		portrait_sobj->sprite.attr &= ~SP_FASTCOPY;
 		portrait_sobj->pos.x = positions[i].x;
 		portrait_sobj->pos.y = positions[i].y;
@@ -315,7 +315,7 @@ void mvPortraitsCreatePortraitOverlay()
 	portrait_overlay_gobj = gcMakeGObjSPAfter(0, 0, 0x12, 0x80000000);
 	gcAddGObjDisplay(portrait_overlay_gobj, &mvPortraitsRenderPortraitOverlay, 0x1C, 0x80000000, -1);
 
-	portrait_overlay_sobj = gcAppendSObjWithSprite(portrait_overlay_gobj, GetAddressFromOffset(gIntroPortraitsFilesArray[0], &FILE_035_PORTRAIT_OVERLAY_IMAGE_OFFSET));
+	portrait_overlay_sobj = lbCommonMakeSObjForGObj(portrait_overlay_gobj, GetAddressFromOffset(gIntroPortraitsFilesArray[0], &FILE_035_PORTRAIT_OVERLAY_IMAGE_OFFSET));
 	portrait_overlay_sobj->sprite.attr &= ~SP_FASTCOPY;
 	portrait_overlay_sobj->sprite.attr |= SP_TRANSPARENT;
 	portrait_overlay_sobj->sprite.red = 0;

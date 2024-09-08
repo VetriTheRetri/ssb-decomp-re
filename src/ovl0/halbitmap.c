@@ -3,6 +3,8 @@
 extern void hal_interpolation_cubic(void*, void*, f32);
 extern void* func_80026A10_27610(u16);
 
+extern Vec3f D_800D62D0;
+
 extern u16 gSinTable[/* */];
 
 // 0x800D4CA0
@@ -310,7 +312,6 @@ void *D_800D5CAC_5168C[/* */] = {
 	0x8010E00C,
 	0x8010E10C
 };
-
 
 // 0x800C7840
 f32 lbCommonSin(f32 angle)
@@ -1339,26 +1340,100 @@ void lbCommonPlayTranslateScaledDObjAnim(DObj *dobj, Vec3f *scale)
 }
 
 // 0x800C96DC
-void func_ovl0_800C96DC(s32 arg0, s32 arg1, s32 arg2)
+void func_ovl0_800C96DC(Mtx *mtx, DObj *dobj, s32 arg2)
 {
     return;
 }
 
 // 0x800C96EC
-s32 func_ovl0_800C96EC(s32 arg0, s32 arg1, s32 arg2)
+s32 func_ovl0_800C96EC(Mtx *mtx, DObj *dobj, s32 arg2)
 {
-	func_ovl0_800C96DC(arg0, arg1, 0);
+	func_ovl0_800C96DC(mtx, dobj, 0);
 	return 0;
 }
 
 // 0x800C9714
-s32 func_ovl0_800C9714(s32 arg0, s32 arg1, s32 arg2)
+s32 func_ovl0_800C9714(Mtx *mtx, DObj *dobj, s32 arg2)
 {
-	func_ovl0_800C96DC(arg0, arg1, 1);
+	func_ovl0_800C96DC(mtx, dobj, 1);
 	return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C973C.s")
+// 0x800C973C
+s32 lbCommonTransformFighterPartsMatrix(Mtx *mtx, DObj *dobj, s32 arg2)
+{
+    ub32 flag = ftGetStruct(dobj->parent_gobj)->is_use_animlocks;
+    ftParts *ft_parts = dobj->user_data.p;
+    
+    if (!(flag))
+    {
+        if (ft_parts->transform_update_mode != 0)
+        {
+            syMatrixF2LFixedW(&ft_parts->unk_dobjtrans_0x10, mtx);
+        }
+        else
+        {
+            if ((dobj->scale.vec.f.x != 1.0F) || (dobj->scale.vec.f.y != 1.0F) || (dobj->scale.vec.f.z != 1.0F))
+            {
+                syMatrixTraRotRpyRSca
+                (
+                    mtx,
+                    dobj->translate.vec.f.x,
+                    dobj->translate.vec.f.y,
+                    dobj->translate.vec.f.z,
+                    dobj->rotate.vec.f.x,
+                    dobj->rotate.vec.f.y,
+                    dobj->rotate.vec.f.z,
+                    dobj->scale.vec.f.x,
+                    dobj->scale.vec.f.y,
+                    dobj->scale.vec.f.z
+                );
+            }
+            else syMatrixTraRotRpyR
+            (
+                mtx,
+                dobj->translate.vec.f.x,
+                dobj->translate.vec.f.y,
+                dobj->translate.vec.f.z,
+                dobj->rotate.vec.f.x,
+                dobj->rotate.vec.f.y,
+                dobj->rotate.vec.f.z
+            );
+        }
+    }
+    else
+    {
+        if (ft_parts->transform_update_mode != 0)
+        {
+            syMatrixF2LFixedW(&ft_parts->unk_dobjtrans_0x10, mtx);
+        }
+        else
+        {
+            ft_parts->vec_scale.x = dobj->scale.vec.f.x * D_800D62D0.x;
+            ft_parts->vec_scale.y = dobj->scale.vec.f.y * D_800D62D0.y;
+            ft_parts->vec_scale.z = dobj->scale.vec.f.z * D_800D62D0.z;
+
+            lbCommonMatrixTraRotScaInv
+            (
+                mtx,
+                dobj->translate.vec.f.x,
+                dobj->translate.vec.f.y,
+                dobj->translate.vec.f.z,
+                dobj->rotate.vec.f.x,
+                dobj->rotate.vec.f.y,
+                dobj->rotate.vec.f.z,
+                D_800D62D0.x,
+                D_800D62D0.y,
+                D_800D62D0.z,
+                ft_parts->vec_scale.x,
+                ft_parts->vec_scale.y,
+                ft_parts->vec_scale.z
+            );
+        }
+        D_800D62D0 = ft_parts->vec_scale;
+    }
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C994C.s")
 

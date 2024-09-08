@@ -875,7 +875,7 @@ void lbCommonAddDObjAnimAll(DObj *root_dobj, AObjEvent **anim_joints, AObjEvent 
 }
 
 // 0x800C89BC
-void lbCommonInitDObj(DObj *dobj, u8 tk1, u8 tk2, u8 tk3)
+void lbCommonInitDObjTriTransform(DObj *dobj, u8 tk1, u8 tk2, u8 tk3)
 {
     gcAddDObjTriTransformKind(dobj, tk1, tk2, tk3);
     
@@ -884,33 +884,351 @@ void lbCommonInitDObj(DObj *dobj, u8 tk1, u8 tk2, u8 tk3)
     dobj->scale.vec = dOMScaleDefault.vec;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C8A58.s")
+// 0x800C8A58
+void lbCommonInitDObj(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, u8 arg4)
+{
+    if (tk1 != nOMTransformNull)
+    {
+        gcAddOMMtxForDObjFixed(dobj, tk1, arg4);
+    }
+    if (tk2 != nOMTransformNull)
+    {
+        gcAddOMMtxForDObjFixed(dobj, tk2, arg4);
+    }
+    if (tk3 != nOMTransformNull)
+    {
+        gcAddOMMtxForDObjFixed(dobj, tk3, arg4);
+    }
+    dobj->translate.vec = dOMTranslateDefault.vec;
+    dobj->rotate.vec = dOMRotateDefaultRPY.vec;
+    dobj->scale.vec = dOMScaleDefault.vec;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C8B28.s")
+// 0x800C8B28
+void lbCommonSetupTreeDObjs(DObj *root_dobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u8 tk2, u8 tk3)
+{
+    s32 i;
+    DObj *current_dobj;
+    s32 unused;
+    s32 id;
+    DObj *array_dobjs[DOBJ_ARRAY_MAX];
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C8CB8.s")
+    for (i = 0; i < ARRAY_COUNT(array_dobjs); i++)
+    {
+        array_dobjs[i] = NULL;
+    }
+    while (dobj_desc->index != ARRAY_COUNT(array_dobjs)) 
+    {
+        id = dobj_desc->index & 0xFFF;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C8DB4.s")
+        if (id != 0)
+        {
+            current_dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
+        } 
+        else current_dobj = array_dobjs[0] = gcAddChildForDObj(root_dobj, dobj_desc->display_list);
+        
+        if (dobj_desc->index & 0xF000) 
+        {
+            gcDecideDObjTriTransformKind(current_dobj, tk1, tk2, tk3, dobj_desc->index & 0xF000);
+        } 
+        else gcAddDObjTriTransformKind(current_dobj, tk1, tk2, tk3);
+        
+        current_dobj->translate.vec.f = dobj_desc->translate;
+        current_dobj->rotate.vec.f = dobj_desc->rotate;
+        current_dobj->scale.vec.f = dobj_desc->scale;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9050.s")
+        if (dobjs != NULL) 
+        {
+            *dobjs++ = current_dobj;
+        }
+        dobj_desc++;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9228.s")
+// 0x800C8CB8
+void lbCommonAddMObjForFighterPartsDObj
+(
+    DObj *dobj,
+    MObjSub **mobjsubs,
+    AObjEvent **costume_matanim_joints,
+    AObjEvent **main_matanim_joints,
+    f32 anim_frame
+)
+{
+    if (mobjsubs != NULL)
+    {
+        MObjSub *mobjsub = *mobjsubs;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C92C8.s")
+        while (mobjsub != NULL)
+        {
+            MObj *mobj = gcAddMObjForDObj(dobj, mobjsub);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9314.s")
+            if (costume_matanim_joints != NULL)
+            {
+                AObjEvent *costume_matanim_joint = *costume_matanim_joints;
+
+                if (costume_matanim_joint != NULL)
+                {
+                    gcAddMObjMatAnimJoint(mobj, costume_matanim_joint, anim_frame);
+                    gcParseMObjMatAnimJoint(mobj);
+                    gcPlayMObjMatAnim(mobj);
+                    gcRemoveAObjFromMObj(mobj);
+                }
+                costume_matanim_joints++;
+            }
+            if (main_matanim_joints != NULL)
+            {
+                AObjEvent *main_matanim_joint = *main_matanim_joints;
+
+                if (main_matanim_joint != NULL)
+                {
+                    gcAddMObjMatAnimJoint(mobj, main_matanim_joint, 0.0F);
+                    gcParseMObjMatAnimJoint(mobj);
+                    gcPlayMObjMatAnim(mobj);
+                }
+                main_matanim_joints++;
+            }
+            mobjsubs++;
+            mobjsub = *mobjsubs;
+        }
+    }
+}
+
+// 0x800C8DB4
+void lbCommonSetupFighterPartsDObjs
+(
+    DObj *root_dobj,
+    ftCommonPartContainer *commonparts_container,
+    s32 detail_current,
+    DObj **dobjs,
+    u32 *setup_parts,
+    u8 tk1,
+    u8 tk2,
+    u8 tk3,
+    f32 anim_frame,
+    u8 arg9
+)
+{
+    s32 id;
+    s32 i;
+    u32 flags0;
+    u32 flags1;
+    u32 current_flags;
+    DObj *array_dobjs[DOBJ_ARRAY_MAX];
+    s32 detail_id;
+    DObjDesc *dobj_desc;
+    DObj *current_dobj;
+
+    dobj_desc = commonparts_container->commonparts[detail_current - 1].dobj_desc;
+
+    flags0 = setup_parts[0], flags1 = setup_parts[1];
+
+    for (i = 0; i < ARRAY_COUNT(array_dobjs); i++)
+    {
+        array_dobjs[i] = NULL;
+    }
+    for (i = 0; ((flags0 != 0) || (flags1 != 0)) && (dobj_desc->index != ARRAY_COUNT(array_dobjs)); i++)
+    {
+        current_flags = (i < GS_BITCOUNT(u32)) ? flags0 : flags1;
+
+        if (current_flags & (1 << 31))
+        {
+            id = dobj_desc->index & 0xFFF;
+            
+            if
+            (
+                (detail_current == nFTPartsDetailHigh) ||
+                (commonparts_container->commonparts[nFTPartsDetailLow - nFTPartsDetailStart].dobj_desc[i].display_list == NULL)
+            )
+            {
+                detail_id = 0;
+            }
+            else detail_id = 1;
+
+            if (id != 0)
+            {
+                current_dobj = array_dobjs[id] = gcAddChildForDObj
+                (
+                    array_dobjs[id - 1],
+                    commonparts_container->commonparts[detail_id].dobj_desc[i].display_list
+                );
+            }
+            else current_dobj = array_dobjs[0] = gcAddChildForDObj
+            (
+                root_dobj,
+                commonparts_container->commonparts[detail_id].dobj_desc[i].display_list
+            );
+            if (dobj_desc->index & 0x8000)
+            {
+                gcDecideDObjTriTransformKind(current_dobj, tk1, tk2, tk3, 0x8000);
+            }
+            else lbCommonInitDObj(current_dobj, tk1, tk2, tk3, arg9);
+
+            current_dobj->translate.vec.f = dobj_desc->translate;
+            current_dobj->rotate.vec.f = dobj_desc->rotate;
+            current_dobj->scale.vec.f = dobj_desc->scale;
+
+            lbCommonAddMObjForFighterPartsDObj
+            (
+                current_dobj,
+                (commonparts_container->commonparts[detail_id].p_mobjsubs != NULL) ?
+                commonparts_container->commonparts[detail_id].p_mobjsubs[i] : NULL,
+                (commonparts_container->commonparts[detail_id].p_costume_matanim_joints != NULL) ?
+                commonparts_container->commonparts[detail_id].p_costume_matanim_joints[i] : NULL,
+                NULL,
+                anim_frame
+            );
+            if (dobjs != NULL)
+            {
+                *dobjs = current_dobj;
+            }
+        }
+        dobjs++;
+        dobj_desc++;
+
+        if (i < GS_BITCOUNT(u32))
+        {
+            flags0 <<= 1;
+        }
+        else flags1 <<= 1;
+    }
+}
+
+// 0x800C9050
+void lbCommonSetupCustomDObjsWithMObj
+(
+    DObj *root_dobj,
+    DObjDesc *dobj_desc,
+    MObjSub ***p_mobjsubs,
+    DObj **dobjs,
+    u8 tk1,
+    u8 tk2,
+    u8 tk3
+)
+{
+    s32 i;
+    DObj *dobj;
+    s32 id;
+    DObj *array_dobjs[DOBJ_ARRAY_MAX];
+
+    for (i = 0; i < ARRAY_COUNT(array_dobjs); i++)
+    {
+        array_dobjs[i] = NULL;
+    }
+    while (dobj_desc->index != ARRAY_COUNT(array_dobjs)) 
+    {
+        id = dobj_desc->index & 0xFFF;
+
+        if (id != 0)
+        {
+            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
+        } 
+        else dobj = array_dobjs[0] = gcAddChildForDObj(root_dobj, dobj_desc->display_list);
+        
+        if (dobj_desc->index & 0x8000) 
+        {
+            gcDecideDObjTriTransformKind(dobj, tk1, tk2, tk3, 0x8000);
+        } 
+        else gcAddDObjTriTransformKind(dobj, tk1, tk2, tk3);
+        
+        dobj->translate.vec.f = dobj_desc->translate;
+        dobj->rotate.vec.f = dobj_desc->rotate;
+        dobj->scale.vec.f = dobj_desc->scale;
+
+        if (p_mobjsubs != NULL)
+        {
+            if (*p_mobjsubs != NULL)
+            {
+                MObjSub **mobjsubs = *p_mobjsubs;
+                MObjSub *mobjsub = *mobjsubs;
+
+                while (mobjsub != NULL)
+                {
+                    gcAddMObjForDObj(dobj, mobjsub);
+
+                    mobjsubs++;
+
+                    mobjsub = *mobjsubs;
+                }
+            }
+            p_mobjsubs++;
+        }
+        if (dobjs != NULL)
+        {
+            *dobjs++ = dobj;
+        }
+        dobj_desc++;
+    }
+}
+
+// 0x800C9228
+void lbCommonAddMObjForTreeDObjs(DObj *root_dobj, MObjSub ***p_mobjsubs)
+{
+    DObj *current_dobj = root_dobj;
+    
+    while (current_dobj != NULL)
+    {
+        if (p_mobjsubs != NULL)
+        {
+            if (*p_mobjsubs != NULL)
+            {
+                MObjSub **mobjsubs = *p_mobjsubs;
+                MObjSub *mobjsub = *mobjsubs;
+                    
+                while (mobjsub != NULL)
+                {
+                    gcAddMObjForDObj(current_dobj, mobjsub);
+                        
+                    mobjsubs++;
+                    mobjsub = *mobjsubs;
+                }
+            }
+            p_mobjsubs++;
+        }
+        current_dobj = lbCommonGetDObjDepthFirst(current_dobj, root_dobj);
+    }
+}
+
+// 0x800C92C8
+void lbCommonPlayTreeDObjsAnim(DObj *root_dobj)
+{
+    DObj *current_dobj = root_dobj;
+    
+    while (current_dobj != NULL)
+    {
+        gcPlayDObjAnim(current_dobj);
+        current_dobj = lbCommonGetDObjDepthFirst(current_dobj, root_dobj);
+    }
+}
+
+// 0x800C9314
+void lbCommonSetDObjTransformsForTreeDObjs(DObj *root_dobj, DObjDesc *dobj_desc)
+{
+    DObj *current_dobj = root_dobj;
+    
+    while ((current_dobj != NULL) && (dobj_desc->index != DOBJ_ARRAY_MAX))
+    {
+        current_dobj->translate.vec.f = dobj_desc->translate;
+        current_dobj->rotate.vec.f = dobj_desc->rotate;
+        current_dobj->scale.vec.f = dobj_desc->scale;
+
+        dobj_desc++;
+        
+        current_dobj = lbCommonGetDObjDepthFirst(current_dobj, root_dobj);
+    }
+}
 
 // 0x800C93D4
-void func_ovl0_800C93D4(DObj *arg, void* dvar)
+void lbCommonInsertTreeDObjChild(DObj *root_dobj, void *dvar)
 {
-	DObj *dobj = gcAddDObjForGObj(arg->parent_gobj, dvar);
+	DObj *dobj = gcAddDObjForGObj(root_dobj->parent_gobj, dvar);
 
 	dobj->sib_prev->sib_next = NULL;
 	dobj->sib_prev = NULL;
-	arg->child->parent = dobj;
-	dobj->child = arg->child;
-	arg->child = dobj;
-	dobj->parent = arg;
+	root_dobj->child->parent = dobj;
+	dobj->child = root_dobj->child;
+	root_dobj->child = dobj;
+	dobj->parent = root_dobj;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9424.s")

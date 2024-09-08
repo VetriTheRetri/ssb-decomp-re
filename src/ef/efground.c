@@ -1419,7 +1419,7 @@ GObj* efGroundMakeEffect(efCreateDesc *effect_desc, s32 lr)
         {
             main_dobj = gcAddDObjForGObj(effect_gobj, NULL);
 
-            lbCommonInitDObj(main_dobj, rtypes1->tk1, rtypes1->tk2, rtypes1->tk3);
+            lbCommonInitDObjTriTransform(main_dobj, rtypes1->tk1, rtypes1->tk2, rtypes1->tk3);
 
             rtypes2 = &effect_desc->transform_types2;
 
@@ -1433,11 +1433,11 @@ GObj* efGroundMakeEffect(efCreateDesc *effect_desc, s32 lr)
             {
                 main_dobj = gcAddChildForDObj(main_dobj, (void*) (addr + effect_desc->o_dobjsetup));
 
-                lbCommonInitDObj(main_dobj, rtypes2->tk1, rtypes2->tk2, rtypes2->tk3);
+                lbCommonInitDObjTriTransform(main_dobj, rtypes2->tk1, rtypes2->tk2, rtypes2->tk3);
             }
             if (o_mobsjub != 0)
             {
-                func_ovl0_800C9228(main_dobj, (void*) (addr + o_mobsjub));
+                lbCommonAddMObjForTreeDObjs(main_dobj, (void*) (addr + o_mobsjub));
             }
             if ((o_anim_joint != 0) || (o_matanim_joint != 0))
             {

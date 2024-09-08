@@ -147,7 +147,7 @@ struct ftModelPart
     void *display_list;
     MObjSub **mobjsubs;
     AObjEvent **costume_matanim_joints;
-    AObjEvent **main_matanim_joint;
+    AObjEvent **main_matanim_joints;
     u8 flags;
 };
 
@@ -964,8 +964,8 @@ struct ftAttributes
     ub32 is_have_voice       : 1;
     ftHurtboxDesc fighter_hurt_desc[FTPARTS_HURT_NUM_MAX];
     Vec3f hit_detect_range;         // This is a radius around the fighter within which hitbox detection can occur
-    s32 unk_ftca_0x29C;
-    u32 *animlock;                 // Pointer to two sets of flags marking joints that should not be animated;
+    u32 *setup_parts;               // Pointer to two sets of flags marking joints that should be initialized on fighter creation
+    u32 *animlock;                  // Pointer to two sets of flags marking joints that should not be animated;
                                     // Ignores special joints, so count starts from 4
     s32 effect_joint_ids[5];        // The game will cycle through these joints when applying certain particles such as electricity and flames
     sb32 cliff_status_ga[5];        // Bool for whether fighter is grounded or airborne during each cliff state

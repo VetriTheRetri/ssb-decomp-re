@@ -259,7 +259,7 @@ void grYosterInitAll(void)
 
             gcAddOMMtxForDObjFixed(cloud_dobj, nOMTransformTra, 0);
             gcAddOMMtxForDObjFixed(cloud_dobj, nOMTransform48, 0);
-            func_ovl0_800C9228(cloud_dobj, (uintptr_t)map_head + (intptr_t)&D_NF_000004B8);
+            lbCommonAddMObjForTreeDObjs(cloud_dobj, (uintptr_t)map_head + (intptr_t)&D_NF_000004B8);
         }
         gcPlayAnimAll(map_gobj);
 

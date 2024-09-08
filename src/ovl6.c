@@ -29,7 +29,7 @@ extern GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
 extern ftCreateDesc dFTManagerDefaultFighterDesc; // ovl2 80116DD0
 
 extern void lbCommonAddDObjAnimAll(DObj*, void*, void*, f32);
-extern void func_ovl0_800C9228(DObj*, void*);
+extern void lbCommonAddMObjForTreeDObjs(DObj*, void*);
 extern void lbCommonAddDObjAnimJointAll(DObj*, void*, f32);
 extern void func_ovl2_8010CFA8(GObj*, f32, f32, f32, f32, f32);
 extern void func_ovl0_800CCF00(GObj*);
@@ -417,11 +417,11 @@ void func_ovl6_8018D6A8(s32 line_id)
 	dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[index];
 	index = scBonusGame_GetBonus2PlatformKind(line_id);
 
-	func_ovl0_800C8B28(dobj,
+	lbCommonSetupTreeDObjs(dobj,
 					   (void*)((uintptr_t)gGRCommonStruct.bonus2.unk_bonus2_0x4
 							   + (intptr_t)scBonusGame_Bonus2_PlatformOffsets[index].unk_bonus2nodes_0x0),
 					   NULL, 0x44, 0, 0);
-	func_ovl0_800C9228(dobj->child, (void*)((uintptr_t)gGRCommonStruct.bonus2.unk_bonus2_0x4
+	lbCommonAddMObjForTreeDObjs(dobj->child, (void*)((uintptr_t)gGRCommonStruct.bonus2.unk_bonus2_0x4
 											+ (intptr_t)scBonusGame_Bonus2_PlatformOffsets[index].unk_bonus2nodes_0x8));
 
 	lbCommonAddDObjAnimAll(dobj->child,
@@ -431,7 +431,7 @@ void func_ovl6_8018D6A8(s32 line_id)
 						+ (intptr_t)scBonusGame_Bonus2_PlatformOffsets[index].unk_bonus2nodes_0xC),
 					   0.0F);
 
-	func_ovl0_800C92C8(dobj->child);
+	lbCommonPlayTreeDObjsAnim(dobj->child);
 	dobj->child->user_data.s = index | 0x8000;
 }
 
@@ -478,7 +478,7 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj* dobj)
 
 	gcEjectDObj(dobj->child);
 
-	func_ovl0_800C8B28(
+	lbCommonSetupTreeDObjs(
 		dobj,
 		(void*)((uintptr_t)gGRCommonStruct.bonus2.unk_bonus2_0x4 + (intptr_t)D_ovl6_8018EFE4[index].unk_bonus2unk_0x0),
 		NULL, 0x44, 0, 0);
@@ -486,7 +486,7 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj* dobj)
 		dobj->child,
 		(void*)((uintptr_t)gGRCommonStruct.bonus2.unk_bonus2_0x4 + (intptr_t)D_ovl6_8018EFE4[index].unk_bonus2unk_0x4),
 		0.0F);
-	func_ovl0_800C92C8(dobj->child);
+	lbCommonPlayTreeDObjsAnim(dobj->child);
 
 	gGRCommonStruct.bonus2.platform_count--;
 

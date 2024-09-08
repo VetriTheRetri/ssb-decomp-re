@@ -7,7 +7,7 @@
 
 extern alSoundEffect* func_800269C0_275C0(u16);
 extern void gcSetDObjAnimSpeed(GObj*, f32);
-extern void func_ovl0_800C8CB8(void*, void*, void*, void*, f32);
+extern void lbCommonAddMObjForFighterPartsDObj(void*, void*, void*, void*, f32);
 extern void lbCommonMakePositionFGM(u16, f32);
 extern void lbCommonAddFighterPartsAnimJointAll(void*, void*, f32);
 extern void func_ovl0_800C9A38();
@@ -4083,7 +4083,7 @@ void ftMainUpdateWithheldPartID(ftStruct *fp, s32 withheld_part_id)
 
     if (dl != NULL)
     {
-        func_ovl0_800C8CB8(root_joint, commonpart->p_mobjsubs[withheld_part->root_joint_id - nFTPartsJointCommonStart], commonpart->p_costume_matanim_joints[withheld_part->root_joint_id - nFTPartsJointCommonStart], NULL, fp->costume);
+        lbCommonAddMObjForFighterPartsDObj(root_joint, commonpart->p_mobjsubs[withheld_part->root_joint_id - nFTPartsJointCommonStart], commonpart->p_costume_matanim_joints[withheld_part->root_joint_id - nFTPartsJointCommonStart], NULL, fp->costume);
     }
     if (commonpart != NULL)
     {
@@ -4159,7 +4159,7 @@ void ftMainUpdateWithheldPartID(ftStruct *fp, s32 withheld_part_id)
 
     if (withheld_part->partindex_0x8 != 0)
     {
-        func_ovl0_800C8A58(root_joint, 0x4B, 0, 0, fp->unk_ft_0x149);
+        lbCommonInitDObj(root_joint, 0x4B, 0, 0, fp->unk_ft_0x149);
     }
 }
 

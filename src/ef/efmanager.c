@@ -2008,13 +2008,13 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
     {
         main_dobj = gcAddDObjForGObj(effect_gobj, NULL);
 
-        lbCommonInitDObj(main_dobj, transform_types1->tk1, transform_types1->tk2, transform_types1->tk3);
+        lbCommonInitDObjTriTransform(main_dobj, transform_types1->tk1, transform_types1->tk2, transform_types1->tk3);
 
         transform_types2 = &effect_desc->transform_types2;
 
         if (effect_flags & 0x4)
         {
-            func_ovl0_800C8B28(main_dobj, (void*) (addr + effect_desc->o_dobjsetup), NULL, transform_types2->tk1, transform_types2->tk2, transform_types2->tk3);
+            lbCommonSetupTreeDObjs(main_dobj, (void*) (addr + effect_desc->o_dobjsetup), NULL, transform_types2->tk1, transform_types2->tk2, transform_types2->tk3);
 
             main_dobj = main_dobj->child;
         }
@@ -2022,11 +2022,11 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
         {
             main_dobj = gcAddChildForDObj(main_dobj, (void*) (addr + effect_desc->o_dobjsetup));
 
-            lbCommonInitDObj(main_dobj, transform_types2->tk1, transform_types2->tk2, transform_types2->tk3);
+            lbCommonInitDObjTriTransform(main_dobj, transform_types2->tk1, transform_types2->tk2, transform_types2->tk3);
         }
         if (o_mobjsub != 0)
         {
-            func_ovl0_800C9228(main_dobj, (void*) (addr + o_mobjsub));
+            lbCommonAddMObjForTreeDObjs(main_dobj, (void*) (addr + o_mobjsub));
         }
         if ((o_anim_joint != 0) || (o_matanim_joint != 0))
         {
@@ -2062,7 +2062,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
         {
             transform_types1 = &effect_desc->transform_types1;
 
-            lbCommonInitDObj(gcAddDObjForGObj(effect_gobj, (void*) (addr + effect_desc->o_dobjsetup)), transform_types1->tk1, transform_types1->tk2, transform_types1->tk3);
+            lbCommonInitDObjTriTransform(gcAddDObjForGObj(effect_gobj, (void*) (addr + effect_desc->o_dobjsetup)), transform_types1->tk1, transform_types1->tk2, transform_types1->tk3);
         }
         if (o_mobjsub != 0)
         {
@@ -4042,7 +4042,7 @@ GObj* efManagerFireSparkMakeEffect(GObj *fighter_gobj) // I really have no idea 
     dobj->translate.vec.f.y = 160.0F;
     dobj->user_data.p = fp->joints[16];
 
-    func_ovl0_800C9314(dobj->child, (uintptr_t)sEFManagerTexturesFile2 + (intptr_t)&lEFManagerFireSparkDObjSetup, effect_gobj); // Linker thing
+    lbCommonSetDObjTransformsForTreeDObjs(dobj->child, (uintptr_t)sEFManagerTexturesFile2 + (intptr_t)&lEFManagerFireSparkDObjSetup, effect_gobj); // Linker thing
 
     return effect_gobj;
 }
@@ -5441,7 +5441,7 @@ GObj* efManagerYoshiEggLayMakeEffect(GObj *fighter_gobj)
     dobj->child->child->ommtx[0]->kind = nOMTransformTra;
 
     gcAddOMMtxForDObjFixed(dobj->child->child, 0x2E, 0);
-    func_ovl0_800C9314(dobj->child, (uintptr_t)gFTDataYoshiSpecial3 + (intptr_t)&lEFManagerYoshiEggLayDObjSetup);
+    lbCommonSetDObjTransformsForTreeDObjs(dobj->child, (uintptr_t)gFTDataYoshiSpecial3 + (intptr_t)&lEFManagerYoshiEggLayDObjSetup);
 
     return effect_gobj;
 }

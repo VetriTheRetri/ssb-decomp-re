@@ -7,7 +7,7 @@ extern f32 lbCommonSim3D();
 extern alSoundEffect* func_800269C0_275C0(u16);
 extern f32 lbCommonSin(f32);
 extern f32 lbCommonCos(f32);
-extern void func_ovl0_800C8CB8(void*, void*, void*, void*, f32);
+extern void lbCommonAddMObjForFighterPartsDObj(void*, void*, void*, void*, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -779,7 +779,7 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 drawstatus)
 
                     joint->display_list = modelpart->display_list;
 
-                    func_ovl0_800C8CB8(joint, modelpart->mobjsubs, modelpart->costume_matanim_joints, modelpart->main_matanim_joint, fp->costume);
+                    lbCommonAddMObjForFighterPartsDObj(joint, modelpart->mobjsubs, modelpart->costume_matanim_joints, modelpart->main_matanim_joints, fp->costume);
 
                     ft_parts->flags = modelpart->flags;
                 }
@@ -805,7 +805,7 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 drawstatus)
                     }
                     else costume_matanim_joints = NULL;
 
-                    func_ovl0_800C8CB8(joint, mobjsubs, costume_matanim_joints, NULL, fp->costume);
+                    lbCommonAddMObjForFighterPartsDObj(joint, mobjsubs, costume_matanim_joints, NULL, fp->costume);
 
                     ft_parts->flags = commonparts_container->commonparts[detail_id].flags;
                 }
@@ -872,7 +872,7 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
 
                         joint->display_list = modelpart->display_list;
 
-                        func_ovl0_800C8CB8(joint, modelpart->mobjsubs, modelpart->costume_matanim_joints, modelpart->main_matanim_joint, fp->costume);
+                        lbCommonAddMObjForFighterPartsDObj(joint, modelpart->mobjsubs, modelpart->costume_matanim_joints, modelpart->main_matanim_joints, fp->costume);
 
                         ft_parts->flags = modelpart->flags;
                     }
@@ -898,7 +898,7 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
                         }
                         else costume_matanim_joints = NULL;
 
-                        func_ovl0_800C8CB8(joint, mobjsubs, costume_matanim_joints, NULL, fp->costume);
+                        lbCommonAddMObjForFighterPartsDObj(joint, mobjsubs, costume_matanim_joints, NULL, fp->costume);
 
                         ft_parts->flags = commonparts_container->commonparts[detail_id].flags;
                     }
@@ -1008,7 +1008,7 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
                 {
                     modelpart = &attributes->modelparts_container->modelparts_desc[i]->modelparts[modelpart_status->drawstatus_current][fp->detail_current - nFTPartsDetailStart];
 
-                    func_ovl0_800C8CB8(joint, modelpart->mobjsubs, modelpart->costume_matanim_joints, modelpart->main_matanim_joint, costume);
+                    lbCommonAddMObjForFighterPartsDObj(joint, modelpart->mobjsubs, modelpart->costume_matanim_joints, modelpart->main_matanim_joints, costume);
                 }
                 else
                 {
@@ -1030,7 +1030,7 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
                     }
                     else costume_matanim_joints = NULL;
 
-                    func_ovl0_800C8CB8(joint, mobjsubs, costume_matanim_joints, NULL, costume);
+                    lbCommonAddMObjForFighterPartsDObj(joint, mobjsubs, costume_matanim_joints, NULL, costume);
                 }
             }
             if ((ft_mesh != NULL) && ((i + nFTPartsJointCommonStart) == ft_mesh->joint_id))
@@ -1050,7 +1050,7 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
 
                     gcAddDObjForGObj(ft_parts_gobj, ft_mesh->dl);
 
-                    func_ovl0_800C8CB8(DObjGetStruct(ft_parts->gobj), ft_mesh->mobjsubs, ft_mesh->costume_matanim_joints, NULL, costume);
+                    lbCommonAddMObjForFighterPartsDObj(DObjGetStruct(ft_parts->gobj), ft_mesh->mobjsubs, ft_mesh->costume_matanim_joints, NULL, costume);
                 }
             }
         }

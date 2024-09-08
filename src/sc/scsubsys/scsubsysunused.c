@@ -1,6 +1,6 @@
 #include <sys/obj.h>
 
-extern void func_ovl0_800C8CB8(void*, void*, void*, void*, f32);
+extern void lbCommonAddMObjForFighterPartsDObj(void*, void*, void*, void*, f32);
 
 typedef struct scSubsysUnkACUnk8
 {
@@ -57,7 +57,7 @@ void func_ovl1_803903E0(GObj *gobj, s32 arg1)
         {
             gcRemoveMObjFromDObj(temp_s0);
 
-            func_ovl0_800C8CB8(temp_s0, (var_s1 != NULL) ? *var_s1 : NULL, (var_s2 != NULL) ? *var_s2 : NULL, NULL, user_data->unk_subsysud_0x9);
+            lbCommonAddMObjForFighterPartsDObj(temp_s0, (var_s1 != NULL) ? *var_s1 : NULL, (var_s2 != NULL) ? *var_s2 : NULL, NULL, user_data->unk_subsysud_0x9);
         }
         if (var_s1 != NULL)
         {

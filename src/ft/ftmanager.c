@@ -14,8 +14,8 @@ extern ftFileSize D_800A50F8[nFTKindEnumMax];
 extern intptr_t D_NF_000000A3;
 extern intptr_t D_NF_000000C9;
 
-extern void func_ovl0_800C8CB8(void*, void*, void*, void*, f32);
-extern void func_ovl0_800C8DB4(void*, void*, u8, void*, s32, s32, s32, s32, f32, s32);
+extern void lbCommonAddMObjForFighterPartsDObj(void*, void*, void*, void*, f32);
+extern void lbCommonSetupFighterPartsDObjs(void*, void*, u8, void*, s32, s32, s32, s32, f32, s32);
 
 // // // // // // // // // // // //
 //                               //
@@ -784,11 +784,11 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
     topn_joint = gcAddDObjForGObj(fighter_gobj, NULL);
     fp->joints[nFTPartsJointTopN] = topn_joint;
 
-    lbCommonInitDObj(topn_joint, 0x4B, 0, 0);
+    lbCommonInitDObjTriTransform(topn_joint, 0x4B, nOMTransformNull, nOMTransformNull);
 
     fp->joints[nFTPartsJointTopN]->ommtx[0]->unk05 = ft_desc->unk_rebirth_0x1D;
 
-    func_ovl0_800C8DB4(DObjGetStruct(fighter_gobj), attributes->commonparts_container, fp->detail_current, &fp->joints[nFTPartsJointCommonStart], attributes->unk_ftca_0x29C, 0x4B, 0, 0, fp->costume, fp->unk_ft_0x149);
+    lbCommonSetupFighterPartsDObjs(DObjGetStruct(fighter_gobj), attributes->commonparts_container, fp->detail_current, &fp->joints[nFTPartsJointCommonStart], attributes->setup_parts, 0x4B, 0, 0, fp->costume, fp->unk_ft_0x149);
 
     for (i = 0; i < ARRAY_COUNT(fp->joints); i++)
     {
@@ -809,7 +809,7 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
                     ft_parts->gobj = gcMakeGObjSPAfter(nOMObjCommonKindFighterParts, NULL, nOMObjCommonLinkIDFighterParts, GOBJ_LINKORDER_DEFAULT);
 
                     gcAddDObjForGObj(ft_parts->gobj, ft_mesh->dl);
-                    func_ovl0_800C8CB8(DObjGetStruct(ft_parts->gobj), ft_mesh->mobjsubs, ft_mesh->costume_matanim_joints, NULL, fp->costume);
+                    lbCommonAddMObjForFighterPartsDObj(DObjGetStruct(ft_parts->gobj), ft_mesh->mobjsubs, ft_mesh->costume_matanim_joints, NULL, fp->costume);
                 }
             }
         }

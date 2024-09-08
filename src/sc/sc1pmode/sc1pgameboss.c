@@ -799,27 +799,27 @@ void sc1PGameBossWallpaper3ProcUpdate1(GObj *gobj)
 // 0x80192078
 void sc1PGameBossSetupBackgroundDObjs(GObj *gobj, DObjDesc *dobj_desc, MObjSub ***p_mobjsubs, u8 transform_kind)
 {
-    s32 i, index;
+    s32 i, id;
     MObjSub **mobjsubs, *mobjsub;
-    DObj *array_dobjs[18], *dobj;
+    DObj *array_dobjs[DOBJ_ARRAY_MAX], *dobj;
 
     for (i = 0; i < ARRAY_COUNT(array_dobjs); i++)
     {
         array_dobjs[i] = NULL;
     }
-    index = (dobj_desc->index & 0xFFF);
+    id = (dobj_desc->index & 0xFFF);
 
-    while ((index ^ 0) != ARRAY_COUNT(array_dobjs)) // Ewwwww... we meet again, XOR hack.
+    while ((id ^ 0) != ARRAY_COUNT(array_dobjs)) // Ewwwww... we meet again, XOR hack.
     {
-        if (index != 0)
+        if (id != 0)
         {
-            dobj = array_dobjs[index] = gcAddChildForDObj(array_dobjs[index - 1], dobj_desc->display_list);
+            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
         }
         else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobj_desc->display_list);
         
-        index = dobj_desc->index & 0xF000;
+        id = dobj_desc->index & 0xF000;
 
-        if (index != 0)
+        if (id != 0)
         {
             gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);
             gcAddOMMtxForDObjFixed(dobj, nOMTransform46, 0);
@@ -849,7 +849,7 @@ void sc1PGameBossSetupBackgroundDObjs(GObj *gobj, DObjDesc *dobj_desc, MObjSub *
             }
             p_mobjsubs++;
         }
-        dobj_desc++, index = dobj_desc->index & 0xFFF;
+        dobj_desc++, id = dobj_desc->index & 0xFFF;
     }
 }
 

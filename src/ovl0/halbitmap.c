@@ -1795,9 +1795,157 @@ s32 func_ovl0_800CA5C8(Mtx *mtx, DObj *dobj, Gfx **dls)
     return 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CAB48.s")
+// 0x800CAB48
+s32 func_ovl0_800CAB48(Mtx *mtx, DObj *dobj, Gfx **dls)
+{
+    f32 scaley;
+    int e1, e2;
+    int *ai, *af;
+    f32 sinx, siny;
+    f32 cosx, cosy;
+    f32 *p;
+    f32 scalex;
+    Gfx *dl;
 
+    dl = dls[0];
+
+    ai = (int*)&mtx->m[0][0];
+    af = (int*)&mtx->m[2][0];
+
+    sinx = __sinf(dobj->rotate.vec.f.x);
+    cosx = __cosf(dobj->rotate.vec.f.x);
+
+    p = &dobj->scale.vec.f.x;
+    
+    siny = __sinf(dobj->rotate.vec.f.y);
+    cosy = __cosf(dobj->rotate.vec.f.y);
+
+    scaley = (dobj->scale.vec.f.y * gODScaleX);
+    scalex = gODScaleX *= *p;
+
+    e1 = FTOFIX32((gODMatrixPerspF[0][0] * cosy + gODMatrixPerspF[2][0] * -siny) * scalex);
+    e2 = FTOFIX32((gODMatrixPerspF[0][1] * cosy + gODMatrixPerspF[2][1] * -siny) * scalex);
+
+    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+
+    e1 = FTOFIX32((gODMatrixPerspF[0][2] * cosy + gODMatrixPerspF[2][2] * -siny) * scalex);
+    e2 = FTOFIX32((gODMatrixPerspF[0][3] * cosy + gODMatrixPerspF[2][3] * -siny) * scalex);
+
+    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+
+    e1 = FTOFIX32((gODMatrixPerspF[0][0] * sinx * siny + gODMatrixPerspF[1][0] * cosx + gODMatrixPerspF[2][0] * sinx * cosy) * scaley);
+    e2 = FTOFIX32((gODMatrixPerspF[0][1] * sinx * siny + gODMatrixPerspF[1][1] * cosx + gODMatrixPerspF[2][1] * sinx * cosy) * scaley);
+
+    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+
+    e1 = FTOFIX32((gODMatrixPerspF[0][2] * sinx * siny + gODMatrixPerspF[1][2] * cosx + gODMatrixPerspF[2][2] * sinx * cosy) * scaley);
+    e2 = FTOFIX32((gODMatrixPerspF[0][3] * sinx * siny + gODMatrixPerspF[1][3] * cosx + gODMatrixPerspF[2][3] * sinx * cosy) * scaley);
+
+    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+
+    e1 = FTOFIX32((gODMatrixPerspF[0][0] * cosx * siny + gODMatrixPerspF[1][0] * -sinx + gODMatrixPerspF[2][0] * cosx * cosy) * scalex);
+    e2 = FTOFIX32((gODMatrixPerspF[0][1] * cosx * siny + gODMatrixPerspF[1][1] * -sinx + gODMatrixPerspF[2][1] * cosx * cosy) * scalex);
+
+    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+
+    e1 = FTOFIX32((gODMatrixPerspF[0][2] * cosx * siny + gODMatrixPerspF[1][2] * -sinx + gODMatrixPerspF[2][2] * cosx * cosy) * scalex);
+    e2 = FTOFIX32((gODMatrixPerspF[0][3] * cosx * siny + gODMatrixPerspF[1][3] * -sinx + gODMatrixPerspF[2][3] * cosx * cosy) * scalex);
+
+    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+    
+    gSPMvpRecalc(dl++);
+    
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx->m[0][0]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx->m[0][1]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx->m[0][2]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx->m[0][3]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx->m[1][0]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx->m[1][1]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx->m[2][0]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx->m[2][1]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx->m[2][2]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx->m[2][3]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx->m[3][0]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx->m[3][1]);\
+    
+    dls[0] = dl;
+    
+    return 1;
+}
+
+#if defined (NON_MATCHING)
+// 0x800CB140 - NONMATCHING: 'f[2][2] = dist.z' line uses wrong FPR
+s32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
+{
+    Camera *cam;
+    DObj *attach_dobj;
+    ftParts *ft_parts;
+    Mtx44f f;
+    Vec3f sp50;
+    Vec3f dist;
+    Vec3f sp38;
+    f32 scale;
+
+    attach_dobj = dobj->user_data.p;
+    ft_parts = attach_dobj->user_data.p;
+    
+    func_ovl2_800EDBA4(attach_dobj);
+    
+    scale = sqrtf(SQUARE(ft_parts->mtx_translate[0][0]) + SQUARE(ft_parts->mtx_translate[0][1]) + SQUARE(ft_parts->mtx_translate[0][2]));
+    
+    if (scale == 0.0F)
+    {
+        while (TRUE)
+        {
+            syErrorPrintf("FPE : 0 div (adfDMatrixDirecXBillboardSca) \n");
+            scManagerRunPrintGObjStatus();
+        }
+    }
+    scale = 1.0F / scale;
+    
+    sp50.x = f[1][0] = ft_parts->mtx_translate[0][0] * scale;
+    sp50.y = f[1][1] = ft_parts->mtx_translate[0][1] * scale;
+    sp50.z = f[1][2] = ft_parts->mtx_translate[0][2] * scale;
+    
+    cam = CameraGetStruct(gOMObjCurrentRendering);
+    
+    lbVector_Vec3fSubtract(&dist, &cam->vec.eye, &cam->vec.at);
+    
+    if (lbCommonSim3D(&sp50, &dist) < 0.999F)
+    {
+        lbVector_Vec3fNormalizedCross(&sp50, &dist, &sp38);
+        lbCommonCross3D(&sp50, &sp38, &dist);
+    }
+    else
+    {
+        dist.x = dist.y = dist.z = 0.0F;
+        
+        sp38 = dist;
+    }
+    f[0][0] = sp38.x;
+    f[0][1] = sp38.y;
+    f[0][2] = sp38.z;
+
+    f[2][0] = dist.x;
+    f[2][1] = dist.y;
+    f[2][2] = dist.z;
+
+    f[3][1] = f[3][2] = 0.0F;
+    f[3][0] = 0.0F;
+    
+    syMatrixF2LFixedW(&f, mtx);
+    
+    return 0;
+}
+#else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB140.s")
+#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB2F0.s")
 

@@ -1645,9 +1645,155 @@ s32 func_ovl0_800CA144(Mtx *mtx, DObj *dobj, Gfx **dls)
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CA194.s")
+// 0x800CA194
+s32 func_ovl0_800CA194(Mtx *mtx, DObj *dobj, Gfx **dls)
+{
+    s32 unused;
+    int e1, e2;
+    int *ai, *af;
+    f32 sinz, cosz;
+    Gfx *dl;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CA5C8.s")
+    dl = dls[0];
+
+    ai = (int*)&mtx->m[0][0];
+    af = (int*)&mtx->m[2][0];
+    
+    sinz = __sinf(dobj->rotate.vec.f.z);
+    cosz = __cosf(dobj->rotate.vec.f.z);
+
+    e1 = FTOFIX32(gODMatrixPerspF[0][0] * cosz + gODMatrixPerspF[1][0] * sinz);
+    e2 = FTOFIX32(gODMatrixPerspF[0][1] * cosz + gODMatrixPerspF[1][1] * sinz);
+
+    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+
+    e1 = FTOFIX32(gODMatrixPerspF[0][2] * cosz + gODMatrixPerspF[1][2] * sinz);
+    e2 = FTOFIX32(gODMatrixPerspF[0][3] * cosz + gODMatrixPerspF[1][3] * sinz);
+
+    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+
+    e1 = FTOFIX32(gODMatrixPerspF[0][0] * -sinz + gODMatrixPerspF[1][0] * cosz);
+    e2 = FTOFIX32(gODMatrixPerspF[0][1] * -sinz + gODMatrixPerspF[1][1] * cosz);
+
+    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+
+    e1 = FTOFIX32(gODMatrixPerspF[0][2] * -sinz + gODMatrixPerspF[1][2] * cosz);
+    e2 = FTOFIX32(gODMatrixPerspF[0][3] * -sinz + gODMatrixPerspF[1][3] * cosz);
+
+    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+
+    e1 = FTOFIX32(gODMatrixPerspF[2][0]);
+    e2 = FTOFIX32(gODMatrixPerspF[2][1]);
+    
+    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+    
+    e1 = FTOFIX32(gODMatrixPerspF[2][2]);
+    e2 = FTOFIX32(gODMatrixPerspF[2][3]);
+    
+    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+    
+    gSPMvpRecalc(dl++);
+    
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx->m[0][0]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx->m[0][1]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx->m[0][2]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx->m[0][3]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx->m[1][0]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx->m[1][1]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx->m[2][0]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx->m[2][1]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx->m[2][2]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx->m[2][3]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx->m[3][0]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx->m[3][1]);\
+    
+    dls[0] = dl;
+    
+    return 1;
+}
+
+// 0x800CA5C8
+s32 func_ovl0_800CA5C8(Mtx *mtx, DObj *dobj, Gfx **dls)
+{
+    s32 unused;
+    int e1, e2;
+    int *ai, *af;
+    f32 sinx, siny;
+    f32 cosx, cosy;
+    Gfx *dl;
+
+    dl = dls[0];
+
+    ai = (int*)&mtx->m[0][0];
+    af = (int*)&mtx->m[2][0];
+    
+    sinx = __sinf(dobj->rotate.vec.f.x);
+    cosx = __cosf(dobj->rotate.vec.f.x);
+    
+    siny = __sinf(dobj->rotate.vec.f.y);
+    cosy = __cosf(dobj->rotate.vec.f.y);
+
+    e1 = FTOFIX32(gODMatrixPerspF[0][0] * cosy + gODMatrixPerspF[2][0] * -siny);
+    e2 = FTOFIX32(gODMatrixPerspF[0][1] * cosy + gODMatrixPerspF[2][1] * -siny);
+
+    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+
+    e1 = FTOFIX32(gODMatrixPerspF[0][2] * cosy + gODMatrixPerspF[2][2] * -siny);
+    e2 = FTOFIX32(gODMatrixPerspF[0][3] * cosy + gODMatrixPerspF[2][3] * -siny);
+
+    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+
+    e1 = FTOFIX32(gODMatrixPerspF[0][0] * sinx * siny + gODMatrixPerspF[1][0] * cosx + gODMatrixPerspF[2][0] * sinx * cosy);
+    e2 = FTOFIX32(gODMatrixPerspF[0][1] * sinx * siny + gODMatrixPerspF[1][1] * cosx + gODMatrixPerspF[2][1] * sinx * cosy);
+
+    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+
+    e1 = FTOFIX32(gODMatrixPerspF[0][2] * sinx * siny + gODMatrixPerspF[1][2] * cosx + gODMatrixPerspF[2][2] * sinx * cosy);
+    e2 = FTOFIX32(gODMatrixPerspF[0][3] * sinx * siny + gODMatrixPerspF[1][3] * cosx + gODMatrixPerspF[2][3] * sinx * cosy);
+
+    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+
+    e1 = FTOFIX32(gODMatrixPerspF[0][0] * cosx * siny + gODMatrixPerspF[1][0] * -sinx + gODMatrixPerspF[2][0] * cosx * cosy);
+    e2 = FTOFIX32(gODMatrixPerspF[0][1] * cosx * siny + gODMatrixPerspF[1][1] * -sinx + gODMatrixPerspF[2][1] * cosx * cosy);
+
+    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+
+    e1 = FTOFIX32(gODMatrixPerspF[0][2] * cosx * siny + gODMatrixPerspF[1][2] * -sinx + gODMatrixPerspF[2][2] * cosx * cosy);
+    e2 = FTOFIX32(gODMatrixPerspF[0][3] * cosx * siny + gODMatrixPerspF[1][3] * -sinx + gODMatrixPerspF[2][3] * cosx * cosy);
+
+    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+    
+    gSPMvpRecalc(dl++);
+    
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx->m[0][0]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, mtx->m[0][1]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx->m[0][2]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, mtx->m[0][3]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, mtx->m[1][0]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, mtx->m[1][1]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, mtx->m[2][0]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, mtx->m[2][1]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, mtx->m[2][2]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, mtx->m[2][3]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, mtx->m[3][0]);\
+    gMoveWd(dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, mtx->m[3][1]);\
+    
+    dls[0] = dl;
+    
+    return 1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CAB48.s")
 

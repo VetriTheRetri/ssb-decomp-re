@@ -2252,6 +2252,15 @@ typedef union {
 	gsMoveWd(G_MW_CLIP, G_MWO_CLIP_RPX, FR_POS_##r),		\
 	gsMoveWd(G_MW_CLIP, G_MWO_CLIP_RPY, FR_POS_##r)
 
+/* in F3DEX2 2.04H, there is a unique DList command for recalculating
+    the MVP matrix in the coprocessor
+*/
+
+#ifdef	F3DEX_GBI_2
+#define gSPMvpRecalc(pkt) gImmp21(pkt, G_SPECIAL_1, 0, 1, 0)
+#define gsSPMvpRecalc()   gsImmp21(G_SPECIAL_1, 0, 1, 0)
+#endif
+
 /*
  * Insert values into Matrix
  *

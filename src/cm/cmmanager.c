@@ -5,7 +5,7 @@
 #include <sc/scene.h>
 #include <sys/ml.h>
 
-extern Mtx44f sODMatrixPerspF;
+extern Mtx44f gODMatrixPerspF;
 extern mlRegion gSYGtlGraphicsHeap;
 
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, u64, s32, s32, s32, s32, s32, s32);
@@ -1002,25 +1002,25 @@ sb32 cmManagerCameraLookAt(Mtx *mtx, Camera *cam, Gfx **dl)
     temp_mtx = gSYGtlGraphicsHeap.ptr;
     gSYGtlGraphicsHeap.ptr = (Mtx*)gSYGtlGraphicsHeap.ptr + 1;
 
-    syMatrixPerspFastF(sODMatrixPerspF, &cam->projection.persp.norm, cam->projection.persp.fovy, cam->projection.persp.aspect, cam->projection.persp.near, cam->projection.persp.far, cam->projection.persp.scale);
-    syMatrixF2L(sODMatrixPerspF, temp_mtx);
+    syMatrixPerspFastF(gODMatrixPerspF, &cam->projection.persp.norm, cam->projection.persp.fovy, cam->projection.persp.aspect, cam->projection.persp.near, cam->projection.persp.far, cam->projection.persp.scale);
+    syMatrixF2L(gODMatrixPerspF, temp_mtx);
 
     sODMatrixProjectL = temp_mtx;
 
     syMatrixLookAtReflectF(sp5C, &gCMManagerCameraStruct.look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, cam->vec.up.y, cam->vec.up.z);
-    guMtxCatF(sp5C, sODMatrixPerspF, gCMManagerMtx);
+    guMtxCatF(sp5C, gODMatrixPerspF, gCMManagerMtx);
 
     max = cmManagerGetMtxMaxValue();
 
     if (max > 32000.0F)
     {
-        syMatrixPerspFastF(sODMatrixPerspF, &cam->projection.persp.norm, cam->projection.persp.fovy, cam->projection.persp.aspect, cam->projection.persp.near, cam->projection.persp.far, 32000.0F / max);
-        syMatrixF2L(sODMatrixPerspF, temp_mtx);
+        syMatrixPerspFastF(gODMatrixPerspF, &cam->projection.persp.norm, cam->projection.persp.fovy, cam->projection.persp.aspect, cam->projection.persp.near, cam->projection.persp.far, 32000.0F / max);
+        syMatrixF2L(gODMatrixPerspF, temp_mtx);
 
         sODMatrixProjectL = temp_mtx;
 
         syMatrixLookAtReflectF(sp5C, &gCMManagerCameraStruct.look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, cam->vec.up.y, cam->vec.up.z);
-        guMtxCatF(sp5C, sODMatrixPerspF, gCMManagerMtx);
+        guMtxCatF(sp5C, gODMatrixPerspF, gCMManagerMtx);
     }
     syMatrixF2L(gCMManagerMtx, mtx);
 
@@ -1258,7 +1258,7 @@ sb32 func_ovl2_8010DE48(Mtx *mtx, s32 arg1, Gfx **dl)
     var_z = eye->z - at->z;
 
     syMatrixLookAtF(sp64, 0.0F, 300.0F, sqrtf(SQUARE(var_x) + SQUARE(var_y) + SQUARE(var_z)), 0.0F, 300.0F, 0.0F, 0.0F, 1.0F, 0.0F);
-    guMtxCatF(sp64, sODMatrixPerspF, spA4);
+    guMtxCatF(sp64, gODMatrixPerspF, spA4);
 
     sp50.z = 0.0F;
     sp50.y = 900.0F;

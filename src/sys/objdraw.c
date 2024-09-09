@@ -29,7 +29,7 @@ Mtx *sODMatrixProjectL;
 f32 gODScaleX; // Sprite scale / depth? Appears to overlap objects in its own DLLink, so maybe depth?
 
 // 0x80046FA8
-Mtx44f sODMatrixPerspF;
+Mtx44f gODMatrixPerspF;
 
 // 0x80046FE8
 Mtx44f sODMatrixMvpF;
@@ -322,12 +322,6 @@ void func_80010C2C(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
-
-/* in F3DEX2 2.04H, there is a unique DList command for recalculating
-    the MVP matrix in the coprocessor
-*/
-#define gSPMvpRecalc(pkt) gImmp21(pkt, G_SPECIAL_1, 0, 1, 0)
-#define gsSPMvpRecalc()   gsImmp21(G_SPECIAL_1, 0, 1, 0)
 
 #ifdef NON_MATCHING
 s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
@@ -847,10 +841,10 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
 
                     gODScaleX *= dobj->scale.vec.f.x;
 
-                    sODMatrixMvpF[0][0] = sODMatrixPerspF[0][0] * gODScaleX;
-                    sODMatrixMvpF[1][1] = sODMatrixPerspF[1][1] * f12;
-                    sODMatrixMvpF[2][2] = sODMatrixPerspF[2][2] * gODScaleX;
-                    sODMatrixMvpF[2][3] = sODMatrixPerspF[2][3] * gODScaleX;
+                    sODMatrixMvpF[0][0] = gODMatrixPerspF[0][0] * gODScaleX;
+                    sODMatrixMvpF[1][1] = gODMatrixPerspF[1][1] * f12;
+                    sODMatrixMvpF[2][2] = gODMatrixPerspF[2][2] * gODScaleX;
+                    sODMatrixMvpF[2][3] = gODMatrixPerspF[2][3] * gODScaleX;
 
                     sODMatrixMvpF[0][1] = 0.0F;
                     sODMatrixMvpF[0][2] = 0.0F;
@@ -886,10 +880,10 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
 
                     gODScaleX *= dobj->scale.vec.f.x;
 
-                    sODMatrixMvpF[0][0] = sODMatrixPerspF[0][0] * gODScaleX;
-                    sODMatrixMvpF[1][1] = sODMatrixPerspF[1][1] * f12;
-                    sODMatrixMvpF[2][2] = sODMatrixPerspF[2][2] * gODScaleX;
-                    sODMatrixMvpF[2][3] = sODMatrixPerspF[2][3] * gODScaleX;
+                    sODMatrixMvpF[0][0] = gODMatrixPerspF[0][0] * gODScaleX;
+                    sODMatrixMvpF[1][1] = gODMatrixPerspF[1][1] * f12;
+                    sODMatrixMvpF[2][2] = gODMatrixPerspF[2][2] * gODScaleX;
+                    sODMatrixMvpF[2][3] = gODMatrixPerspF[2][3] * gODScaleX;
 
                     sODMatrixMvpF[0][1] = 0.0F;
                     sODMatrixMvpF[0][2] = 0.0F;
@@ -938,12 +932,12 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     sODMatrixMvpF[2][0] = 0.0F;
                     sODMatrixMvpF[2][1] = 0.0F;
 
-                    sODMatrixMvpF[0][0] = sODMatrixPerspF[0][0] * gODScaleX * cosx;
-                    sODMatrixMvpF[1][0] = sODMatrixPerspF[0][0] * gODScaleX * -sinx;
-                    sODMatrixMvpF[0][1] = sODMatrixPerspF[1][1] * f12 * sinx;
-                    sODMatrixMvpF[1][1] = sODMatrixPerspF[1][1] * f12 * cosx;
-                    sODMatrixMvpF[2][2] = sODMatrixPerspF[2][2] * gODScaleX;
-                    sODMatrixMvpF[2][3] = sODMatrixPerspF[2][3] * gODScaleX;
+                    sODMatrixMvpF[0][0] = gODMatrixPerspF[0][0] * gODScaleX * cosx;
+                    sODMatrixMvpF[1][0] = gODMatrixPerspF[0][0] * gODScaleX * -sinx;
+                    sODMatrixMvpF[0][1] = gODMatrixPerspF[1][1] * f12 * sinx;
+                    sODMatrixMvpF[1][1] = gODMatrixPerspF[1][1] * f12 * cosx;
+                    sODMatrixMvpF[2][2] = gODMatrixPerspF[2][2] * gODScaleX;
+                    sODMatrixMvpF[2][3] = gODMatrixPerspF[2][3] * gODScaleX;
 
                     syMatrixF2L(&sODMatrixMvpF, mtx_store.gbi);
 
@@ -982,12 +976,12 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     sODMatrixMvpF[2][0] = 0.0F;
                     sODMatrixMvpF[2][1] = 0.0F;
 
-                    sODMatrixMvpF[0][0] = sODMatrixPerspF[0][0] * gODScaleX * cosz;
-                    sODMatrixMvpF[1][0] = sODMatrixPerspF[0][0] * gODScaleX * -sinz;
-                    sODMatrixMvpF[0][1] = sODMatrixPerspF[1][1] * f12 * sinz;
-                    sODMatrixMvpF[1][1] = sODMatrixPerspF[1][1] * f12 * cosz;
-                    sODMatrixMvpF[2][2] = sODMatrixPerspF[2][2] * gODScaleX;
-                    sODMatrixMvpF[2][3] = sODMatrixPerspF[2][3] * gODScaleX;
+                    sODMatrixMvpF[0][0] = gODMatrixPerspF[0][0] * gODScaleX * cosz;
+                    sODMatrixMvpF[1][0] = gODMatrixPerspF[0][0] * gODScaleX * -sinz;
+                    sODMatrixMvpF[0][1] = gODMatrixPerspF[1][1] * f12 * sinz;
+                    sODMatrixMvpF[1][1] = gODMatrixPerspF[1][1] * f12 * cosz;
+                    sODMatrixMvpF[2][2] = gODMatrixPerspF[2][2] * gODScaleX;
+                    sODMatrixMvpF[2][3] = gODMatrixPerspF[2][3] * gODScaleX;
 
                     syMatrixF2L(&sODMatrixMvpF, mtx_store.gbi);
 
@@ -2883,7 +2877,7 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                     case nOMTransformPerspFastF:
                         syMatrixPerspFastF
                         (
-                            sODMatrixPerspF,
+                            gODMatrixPerspF,
                             &cam->projection.persp.norm,
                             cam->projection.persp.fovy,
                             cam->projection.persp.aspect,
@@ -2891,14 +2885,14 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                             cam->projection.persp.far,
                             cam->projection.persp.scale
                         );
-                        syMatrixF2L(sODMatrixPerspF, mtx_store.gbi);
+                        syMatrixF2L(gODMatrixPerspF, mtx_store.gbi);
                         sODMatrixProjectL = mtx_store.gbi;
                         break;
 
                     case nOMTransformPerspF:
                         syMatrixPerspF
                         (
-                            sODMatrixPerspF,
+                            gODMatrixPerspF,
                             &cam->projection.persp.norm,
                             cam->projection.persp.fovy,
                             cam->projection.persp.aspect,
@@ -2906,7 +2900,7 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                             cam->projection.persp.far,
                             cam->projection.persp.scale
                         );
-                        syMatrixF2L(sODMatrixPerspF, mtx_store.gbi);
+                        syMatrixF2L(gODMatrixPerspF, mtx_store.gbi);
                         sODMatrixProjectL = mtx_store.gbi;
                         break;
 
@@ -3122,7 +3116,7 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
             else
             {
                 syMatrixLookAtF(D_80047028, 0.0F, var1, var3, 0.0F, var2, 0.0F, 0.0F, 1.0F, 0.0F);
-                guMtxCatF(D_80047028, sODMatrixPerspF, D_80047028);
+                guMtxCatF(D_80047028, gODMatrixPerspF, D_80047028);
             }
         }
         if (spC8 != 0)
@@ -3150,7 +3144,7 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
             else
             {
                 syMatrixLookAtF(D_80047068, var1, 0.0F, var3, var2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
-                guMtxCatF(D_80047068, sODMatrixPerspF, D_80047068);
+                guMtxCatF(D_80047068, gODMatrixPerspF, D_80047068);
             }
         }
         dls[0] = dl;

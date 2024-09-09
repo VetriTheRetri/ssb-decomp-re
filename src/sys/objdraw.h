@@ -19,7 +19,7 @@ typedef struct syMtxProcess
 // gbi Mtx * ? pointer to some sort of matrix
 extern Mtx *sODMatrixProjectL;
 extern f32 gODScaleX;
-extern Mtx44f sODMatrixPerspF;
+extern Mtx44f gODMatrixPerspF;
 extern syMtxProcess *sODMatrixProcess;
 
 extern void gcSetCameraScissor(s32 top, s32 bottom, s32 left, s32 right);

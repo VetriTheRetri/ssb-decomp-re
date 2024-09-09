@@ -761,7 +761,7 @@ void ftRenderMainDrawDefault(DObj *dobj)
     DObj *sibling_dobj;
     Gfx **dls;
 
-    ft_parts = dobj->user_data.p;
+    ft_parts = ftGetParts(dobj);
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
@@ -857,7 +857,7 @@ void ftRenderMainDrawSkeleton(DObj *dobj)
     ftSkeleton *skeleton;
 
     fp = ftGetStruct(dobj->parent_gobj);
-    ft_parts = dobj->user_data.p;
+    ft_parts = ftGetParts(dobj);
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {

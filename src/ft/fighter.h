@@ -18,7 +18,8 @@ extern Gfx dFTRenderMainMapCollisionTopDL[/* */];
 extern ftOpeningDesc *D_ovl1_80390D20[/* */];
 extern ftOpeningDesc D_ovl1_80390BE8;
 
-#define ftGetStruct(fighter_gobj) ((ftStruct*)(fighter_gobj)->user_data.p)
+#define ftGetStruct(fighter_gobj) 	((ftStruct*)(fighter_gobj)->user_data.p)
+#define ftGetParts(fighter_dobj) 	((ftParts *)(fighter_dobj)->user_data.p)
 
 #define ftSetupDropItem(fp)                          	\
 {                                                     	\

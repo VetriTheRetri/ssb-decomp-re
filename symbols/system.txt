@@ -836,7 +836,7 @@ dODScreenUlyDefault = 0x8003B93C;
 
 
 sODMatrixProjectL = 0x80046FA0;
-sODScaleX = 0x80046FA4;
+gODScaleX = 0x80046FA4;
 sODMatrixPerspF = 0x80046FA8;
 sODMatrixMvpF = 0x80046FE8;
 D_80047028 = 0x80047028;

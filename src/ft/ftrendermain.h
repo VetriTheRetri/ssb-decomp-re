@@ -5,6 +5,8 @@
 #include <sys/objdef.h>
 #include <ft/ftdef.h>
 
+extern Vec2f dFTRenderMainShufflePositions[/* */][4];
+
 extern void ftRenderMainDrawAfterImage(ftStruct *fp);
 extern void ftRenderMainCalcFogColor(ftStruct *fp);
 extern void ftRenderMainSetFogColor(ftStruct *fp);

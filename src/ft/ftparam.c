@@ -443,7 +443,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
 
             if (joint != NULL)
             {
-                ft_parts = joint->user_data.p;
+                ft_parts = ftGetParts(joint);
 
                 if ((ft_parts != NULL) && (ft_parts->is_have_anim != FALSE))
                 {
@@ -464,7 +464,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
 
         if (joint != NULL)
         {
-            ft_parts = joint->user_data.p;
+            ft_parts = ftGetParts(joint);
 
             if ((ft_parts != NULL) && (ft_parts->is_have_anim != FALSE))
             {
@@ -761,7 +761,7 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 drawstatus)
     joint = fp->joints[joint_id];
     commonparts_container = attributes->commonparts_container;
     modelpart_status = &fp->modelpart_status[joint_id - nFTPartsJointCommonStart];
-    ft_parts = joint->user_data.p;
+    ft_parts = ftGetParts(joint);
 
     if (joint != NULL)
     {
@@ -864,7 +864,7 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
                 }
                 else
                 {
-                    ft_parts = joint->user_data.p;
+                    ft_parts = ftGetParts(joint);
 
                     if (attributes->modelparts_container->modelparts_desc[i] != NULL)
                     {
@@ -1035,7 +1035,7 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
             }
             if ((ft_mesh != NULL) && ((i + nFTPartsJointCommonStart) == ft_mesh->joint_id))
             {
-                ft_parts = joint->user_data.p;
+                ft_parts = ftGetParts(joint);
 
                 if (ft_parts->gobj != NULL)
                 {

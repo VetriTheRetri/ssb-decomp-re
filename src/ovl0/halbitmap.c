@@ -268,51 +268,6 @@ f32 dLBCommonSinLookup[/* */] =
 	0.999980986118317, 0.999988973140717, 0.999994993209839, 1.000000000000000
 };
 
-// 0x800D5CA0
-Vec3f D_800D5CA0_51680 = { 0.0F, 0.0F, 0.0F };
-
-void *D_800D5CAC_5168C[/* */] = {
-
-	0x800C96EC,
-	0x800C96EC,
-	0x800C9714,
-	0x800C9714,
-	0x800CA024,
-	0x800CA024,
-	0x800CA144,
-	0x800CA144,
-	0x800CA194,
-	0x800CA194,
-	0x800CA5C8,
-	0x800CA5C8,
-	0x800CAB48,
-	0x800CAB48,
-	0x800CB140,
-	0x800CB140,
-	0x800CB2F0,
-	0x800CB2F0,
-	0x800C973C,
-	0x800C973C,
-	0x8010D250,
-	0x8010D428,
-	0x8010DE48,
-	0x00000000,
-	0x8010E00C,
-	0x00000000,
-	0x800C994C,
-	0x800C994C,
-	0x800C99CC,
-	0x800C99CC,
-	0x800C9F30,
-	0x800C9F30,
-	0x800C9F70,
-	0x800C9F70,
-	0x80106904,
-	0x80106904,
-	0x8010E00C,
-	0x8010E10C
-};
-
 // 0x800C7840
 f32 lbCommonSin(f32 angle)
 {
@@ -1340,30 +1295,30 @@ void lbCommonPlayTranslateScaledDObjAnim(DObj *dobj, Vec3f *scale)
 }
 
 // 0x800C96DC
-void func_ovl0_800C96DC(Mtx *mtx, DObj *dobj, s32 arg2)
+void func_ovl0_800C96DC(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     return;
 }
 
 // 0x800C96EC
-s32 func_ovl0_800C96EC(Mtx *mtx, DObj *dobj, s32 arg2)
+s32 func_ovl0_800C96EC(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
 	func_ovl0_800C96DC(mtx, dobj, 0);
 	return 0;
 }
 
 // 0x800C9714
-s32 func_ovl0_800C9714(Mtx *mtx, DObj *dobj, s32 arg2)
+s32 func_ovl0_800C9714(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
 	func_ovl0_800C96DC(mtx, dobj, 1);
 	return 0;
 }
 
 // 0x800C973C
-s32 lbCommonTransformFighterPartsMatrix(Mtx *mtx, DObj *dobj, s32 arg2)
+s32 lbCommonTransformFighterPartsMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     ub32 flag = ftGetStruct(dobj->parent_gobj)->is_use_animlocks;
-    ftParts *ft_parts = dobj->user_data.p;
+    ftParts *ft_parts = ftGetParts(dobj);
     
     if (!(flag))
     {
@@ -1435,19 +1390,260 @@ s32 lbCommonTransformFighterPartsMatrix(Mtx *mtx, DObj *dobj, s32 arg2)
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C994C.s")
+// 0x800C994C
+s32 func_ovl0_800C994C(Mtx *mtx, DObj *dobj, Gfx **dls)
+{
+    s32 unused;
+    DObj *attach_dobj = dobj->user_data.p;
+    ftParts *ft_parts = attach_dobj->user_data.p;
+    Mtx44f f;
+    
+    func_ovl2_800EDBA4(attach_dobj);
+    gmCollisionCopyMatrix(f, ft_parts->mtx_translate);
+    gODScaleX = sqrtf(SQUARE(f[0][0]) + SQUARE(f[0][1]) + SQUARE(f[0][2]));
+    syMatrixF2LFixedW(&f, mtx);
+    
+    return 0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C99CC.s")
+// 0x800C99CC
+s32 func_ovl0_800C99CC(Mtx *mtx, DObj *dobj, Gfx **dls)
+{
+    s32 unused[2];
+    DObj *attach_dobj = dobj->user_data.p;
+    
+    // 0x800D5CA0
+    Vec3f translate_default = { 0.0F, 0.0F, 0.0F };
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9A38.s")
+    gmCollisionGetFighterPartsWorldPosition(attach_dobj, &translate_default);
+    
+    syMatrixTranslate(mtx, translate_default.x, translate_default.y, translate_default.z);
+    
+    return 0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9F30.s")
+// 0x800C9A38
+void func_ovl0_800C9A38(Mtx44f mtx, DObj *dobj)
+{
+    ftParts *ft_parts = ftGetParts(dobj);
+    ftStruct *fp = ftGetStruct(dobj->parent_gobj);
+    Mtx44f *p;
+    f32 scale;
+    DObj *parent_dobj;
+    Mtx44f f;
+    
+    if ((fp->is_use_animlocks) || (dobj->parent == DOBJ_PARENT_NULL))
+    {
+        func_ovl2_800EDBA4(dobj);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800C9F70.s")
+        p = &ft_parts->mtx_translate;
+        
+        scale = sqrtf(SQUARE((*p)[0][0]) + SQUARE((*p)[0][1]) + SQUARE((*p)[0][2]));
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CA024.s")
+        if (scale != 0.0F)
+        {
+            scale = 1.0F / scale;
+        }
+        mtx[0][0] = (*p)[0][0] * scale;
+        mtx[0][1] = (*p)[0][1] * scale;
+        mtx[0][2] = (*p)[0][2] * scale;
+        
+        scale = sqrtf(SQUARE((*p)[1][0]) + SQUARE((*p)[1][1]) + SQUARE((*p)[1][2]));
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CA144.s")
+        if (scale != 0.0F)
+        {
+            scale = 1.0F / scale;
+        }
+        mtx[1][0] = (*p)[1][0] * scale;
+        mtx[1][1] = (*p)[1][1] * scale;
+        mtx[1][2] = (*p)[1][2] * scale;
+        
+        scale = sqrtf(SQUARE((*p)[2][0]) + SQUARE((*p)[2][1]) + SQUARE((*p)[2][2]));
+
+        if (scale != 0.0F)
+        {
+            scale = 1.0F / scale;
+        }
+        mtx[2][0] = (*p)[2][0] * scale;
+        mtx[2][1] = (*p)[2][1] * scale;
+        mtx[2][2] = (*p)[2][2] * scale;
+        
+        mtx[3][0] = (*p)[3][0];
+        mtx[3][1] = (*p)[3][1];
+        mtx[3][2] = (*p)[3][2];
+    }
+    else
+    {
+        parent_dobj = dobj->parent;
+        
+        gmCollisionTransformMatrixAll(dobj, ft_parts, ft_parts->unk_dobjtrans_0x10);
+
+        p = &ft_parts->unk_dobjtrans_0x10;
+
+        scale = sqrtf(SQUARE((*p)[0][0]) + SQUARE((*p)[0][1]) + SQUARE((*p)[0][2]));
+
+        if (scale != 0.0F)
+        {
+            scale = 1.0F / scale;
+        }
+        f[0][0] = (*p)[0][0] * scale;
+        f[0][1] = (*p)[0][1] * scale;
+        f[0][2] = (*p)[0][2] * scale;
+
+        scale = sqrtf(SQUARE((*p)[1][0]) + SQUARE((*p)[1][1]) + SQUARE((*p)[1][2]));
+
+        if (scale != 0.0F)
+        {
+            scale = 1.0F / scale;
+        }
+        f[1][0] = (*p)[1][0] * scale;
+        f[1][1] = (*p)[1][1] * scale;
+        f[1][2] = (*p)[1][2] * scale;
+
+        scale = sqrtf(SQUARE((*p)[2][0]) + SQUARE((*p)[2][1]) + SQUARE((*p)[2][2]));
+
+        if (scale != 0.0F)
+        {
+            scale = 1.0F / scale;
+        }
+        f[2][0] = (*p)[2][0] * scale;
+        f[2][1] = (*p)[2][1] * scale;
+        f[2][2] = (*p)[2][2] * scale;
+
+        f[3][0] = (*p)[3][0];
+        f[3][1] = (*p)[3][1];
+        f[3][2] = (*p)[3][2];
+
+        func_ovl2_800EDBA4(parent_dobj);
+
+        p = &ftGetParts(parent_dobj)->mtx_translate;
+
+        scale = sqrtf(SQUARE((*p)[0][0]) + SQUARE((*p)[0][1]) + SQUARE((*p)[0][2]));
+
+        if (scale != 0.0F)
+        {
+            scale = 1.0F / scale;
+        }
+        f[0][0] *= scale;
+        f[1][0] *= scale;
+        f[2][0] *= scale;
+
+        scale = sqrtf(SQUARE((*p)[1][0]) + SQUARE((*p)[1][1]) + SQUARE((*p)[1][2]));
+
+        if (scale != 0.0F)
+        {
+            scale = 1.0F / scale;
+        }
+        f[0][1] *= scale;
+        f[1][1] *= scale;
+        f[2][1] *= scale;
+
+        scale = sqrtf(SQUARE((*p)[2][0]) + SQUARE((*p)[2][1]) + SQUARE((*p)[2][2]));
+
+        if (scale != 0.0F)
+        {
+            scale = 1.0F / scale;
+        }
+        f[0][2] *= scale;
+        f[1][2] *= scale;
+        f[2][2] *= scale;
+
+        func_ovl2_800ED490(mtx, *p, f);
+    }
+}
+
+// 0x800C9F30
+s32 func_ovl0_800C9F30(Mtx *mtx, DObj *dobj, Gfx **dls)
+{
+    Mtx44f f;
+
+    func_ovl0_800C9A38(f, dobj->user_data.p);
+    syMatrixF2LFixedW(&f, mtx);
+    
+    return 0;
+}
+
+// 0x800C9F70
+s32 func_ovl0_800C9F70(Mtx *mtx, DObj *dobj, Gfx **dls)
+{
+    DObj *attach_dobj = dobj->user_data.p;
+    ftStruct *fp = ftGetStruct(attach_dobj->parent_gobj);
+    Mtx44f f;
+    
+    func_ovl0_800C9A38(f, attach_dobj);
+    
+    if (fp->shuffle_timer != 0)
+    {
+        f[3][0] += dFTRenderMainShufflePositions[fp->is_shuffle_electric][fp->shuffle_frame_index].x;
+        f[3][1] += dFTRenderMainShufflePositions[fp->is_shuffle_electric][fp->shuffle_frame_index].y;
+    }
+    syMatrixF2LFixedW(&f, mtx);
+    
+    return 0;
+}
+
+// 0x800CA024
+s32 func_ovl0_800CA024(Mtx *mtx, DObj *dobj, Gfx **dls)
+{
+    s32 e1, e2;
+
+    e1 = FTOFIX32(dobj->scale.vec.f.x);
+    e2 = 0;
+
+    mtx->m[0][0] = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    mtx->m[2][0] = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+
+    mtx->m[0][1] = 0;
+    mtx->m[2][1] = 0;
+    
+    e1 = 0;
+    e2 = FTOFIX32(dobj->scale.vec.f.y);
+    
+    mtx->m[0][2] = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    mtx->m[2][2] = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+
+    mtx->m[0][3] = 0;
+    mtx->m[2][3] = 0;
+    
+    mtx->m[1][0] = 0;
+    mtx->m[3][0] = 0;
+    
+    e1 = FTOFIX32(dobj->scale.vec.f.z);
+    e2 = 0;
+
+    mtx->m[1][1] = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    mtx->m[3][1] = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);  
+    
+    e1 = FTOFIX32(dobj->translate.vec.f.x);
+    e2 = FTOFIX32(dobj->translate.vec.f.y);
+    
+    mtx->m[1][2] = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    mtx->m[3][2] = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+    
+    e1 = FTOFIX32(dobj->translate.vec.f.z);
+    e2 = 0x10000;
+
+    mtx->m[1][3] = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    mtx->m[3][3] = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+    
+    return 0;
+}
+
+// 0x800CA144
+s32 func_ovl0_800CA144(Mtx *mtx, DObj *dobj, Gfx **dls)
+{
+    lbCommonMatrixRotSca
+    (
+        mtx,
+        dobj->rotate.vec.f.x,
+        dobj->rotate.vec.f.y,
+        dobj->rotate.vec.f.z,
+        dobj->scale.vec.f.x,
+        dobj->scale.vec.f.y,
+        dobj->scale.vec.f.z
+    );
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CA194.s")
 
@@ -1466,6 +1662,48 @@ s32 lbCommonTransformFighterPartsMatrix(Mtx *mtx, DObj *dobj, s32 arg2)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB4E0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB608.s")
+
+void *D_800D5CAC_5168C[/* */] = {
+
+	0x800C96EC,
+	0x800C96EC,
+	0x800C9714,
+	0x800C9714,
+	0x800CA024,
+	0x800CA024,
+	0x800CA144,
+	0x800CA144,
+	0x800CA194,
+	0x800CA194,
+	0x800CA5C8,
+	0x800CA5C8,
+	0x800CAB48,
+	0x800CAB48,
+	0x800CB140,
+	0x800CB140,
+	0x800CB2F0,
+	0x800CB2F0,
+	0x800C973C,
+	0x800C973C,
+	0x8010D250,
+	0x8010D428,
+	0x8010DE48,
+	0x00000000,
+	0x8010E00C,
+	0x00000000,
+	0x800C994C,
+	0x800C994C,
+	0x800C99CC,
+	0x800C99CC,
+	0x800C9F30,
+	0x800C9F30,
+	0x800C9F70,
+	0x800C9F70,
+	0x80106904,
+	0x80106904,
+	0x8010E00C,
+	0x8010E10C
+};
 
 // 0x800CB644
 u8 func_ovl0_800CB644(u8 index)

@@ -1385,7 +1385,7 @@ sb32 gmCollisionCheckFighterHitFighterHurtCollide(ftHitbox *ft_hit, ftHurtbox *f
     DObj *dobj;
 
     dobj = ft_hurt->joint;
-    ft_parts = dobj->user_data.p;
+    ft_parts = ftGetParts(dobj);
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1430,7 +1430,7 @@ sb32 gmCollisionCheckFighterHitShieldCollide(ftHitbox *ft_hit, GObj *fighter_gob
     sp3C.y = 30.0F;
     sp3C.z = 30.0F;
 
-    ft_parts = dobj->user_data.p;
+    ft_parts = ftGetParts(dobj);
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1504,7 +1504,7 @@ sb32 gmCollisionCheckWeaponHitFighterHurtCollide(wpHitbox *wp_hit, s32 hit_id, f
     DObj *dobj;
 
     dobj = ft_hurt->joint;
-    ft_parts = dobj->user_data.p;
+    ft_parts = ftGetParts(dobj);
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1538,7 +1538,7 @@ sb32 gmCollisionCheckWeaponHitShieldCollide(wpHitbox *wp_hit, s32 hit_id, GObj *
     sp4C.y = 30.0F;
     sp4C.z = 30.0F;
 
-    ft_parts = dobj->user_data.p;
+    ft_parts = ftGetParts(dobj);
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1563,7 +1563,7 @@ sb32 gmCollisionCheckWeaponHitShieldCollide(wpHitbox *wp_hit, s32 hit_id, GObj *
 sb32 gmCollisionCheckWeaponHitSpecialCollide(wpHitbox *wp_hit, s32 hit_id, ftStruct *fp, ftSpecialHit *special_hit)
 {
     DObj *dobj = fp->joints[special_hit->joint_id];
-    ftParts *ft_parts = dobj->user_data.p;
+    ftParts *ft_parts = ftGetParts(dobj);
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1729,7 +1729,7 @@ sb32 gmCollisionCheckItemHitFighterHurtCollide(itHitbox *it_hit, s32 hit_id, ftH
     DObj *dobj;
 
     dobj = ft_hurt->joint;
-    ft_parts = dobj->user_data.p;
+    ft_parts = ftGetParts(dobj);
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1763,7 +1763,7 @@ sb32 gmCollisionCheckItemHitShieldCollide(itHitbox *it_hit, s32 hit_id, GObj *fi
     sp4C.y = 30.0F;
     sp4C.z = 30.0F;
 
-    ft_parts = dobj->user_data.p;
+    ft_parts = ftGetParts(dobj);
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1788,7 +1788,7 @@ sb32 gmCollisionCheckItemHitShieldCollide(itHitbox *it_hit, s32 hit_id, GObj *fi
 sb32 gmCollisionCheckItemHitSpecialCollide(itHitbox *it_hit, s32 hit_id, ftStruct *fp, ftSpecialHit *special_hit)
 {
     DObj *dobj = fp->joints[special_hit->joint_id];
-    ftParts *ft_parts = dobj->user_data.p;
+    ftParts *ft_parts = ftGetParts(dobj);
 
     func_ovl2_800EDE00(dobj);
     func_ovl2_800EDE5C(dobj);
@@ -1947,7 +1947,7 @@ void gmCollisionGetItemHitPosition(Vec3f *dst, itHitbox *it_hit, s32 hit_id)
 // 0x800F09F0
 void gmCollisionGetShieldPosition(Vec3f *dst, GObj *gobj, DObj *dobj)
 {
-    ftParts *ft_parts = dobj->user_data.p;
+    ftParts *ft_parts = ftGetParts(dobj);
 
     dst->x = 0.0F;
     dst->y = 0.0F;

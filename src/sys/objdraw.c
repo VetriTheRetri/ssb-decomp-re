@@ -26,7 +26,7 @@
 Mtx *sODMatrixProjectL;
 
 // 0x80046FA4
-f32 sODScaleX; // Sprite scale / depth? Appears to overlap objects in its own DLLink, so maybe depth?
+f32 gODScaleX; // Sprite scale / depth? Appears to overlap objects in its own DLLink, so maybe depth?
 
 // 0x80046FA8
 Mtx44f sODMatrixPerspF;
@@ -594,7 +594,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                         dobj->scale.vec.f.y,
                         dobj->scale.vec.f.z
                     );
-                    sODScaleX *= dobj->scale.vec.f.x;
+                    gODScaleX *= dobj->scale.vec.f.x;
                     break;
                 }
                 case nOMTransformRotRpyR:
@@ -631,7 +631,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                         dobj->scale.vec.f.y,
                         dobj->scale.vec.f.z
                     );
-                    sODScaleX *= dobj->scale.vec.f.x;
+                    gODScaleX *= dobj->scale.vec.f.x;
                     break;
                 }
                 case nOMTransformRotPyrR:
@@ -668,13 +668,13 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                         dobj->scale.vec.f.y,
                         dobj->scale.vec.f.z
                     );
-                    sODScaleX *= dobj->scale.vec.f.x;
+                    gODScaleX *= dobj->scale.vec.f.x;
                     break;
                 }
                 case nOMTransformSca:
                 {
                     syMatrixSca(mtx_store.gbi, dobj->scale.vec.f.x, dobj->scale.vec.f.y, dobj->scale.vec.f.z);
-                    sODScaleX *= dobj->scale.vec.f.x;
+                    gODScaleX *= dobj->scale.vec.f.x;
                     break;
                 }
                 case 33:
@@ -735,7 +735,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 case nOMTransformVecSca:
                 {
                     syMatrixSca(mtx_store.gbi, scale->vec.f.x, scale->vec.f.y, scale->vec.f.z);
-                    sODScaleX *= scale->vec.f.x;
+                    gODScaleX *= scale->vec.f.x;
                     break;
                 }
                 case nOMTransformVecTraRotR:
@@ -769,7 +769,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                         scale->vec.f.y,
                         scale->vec.f.z
                     );
-                    sODScaleX *= scale->vec.f.x;
+                    gODScaleX *= scale->vec.f.x;
                     break;
                 }
                 case nOMTransformVecTraRotRpyR:
@@ -801,7 +801,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                         scale->vec.f.y,
                         scale->vec.f.z
                     );
-                    sODScaleX *= scale->vec.f.x;
+                    gODScaleX *= scale->vec.f.x;
                     break;
                 }
                 case 41:
@@ -843,14 +843,14 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 case 43:
                 {
-                    f12 = dobj->scale.vec.f.y * sODScaleX;
+                    f12 = dobj->scale.vec.f.y * gODScaleX;
 
-                    sODScaleX *= dobj->scale.vec.f.x;
+                    gODScaleX *= dobj->scale.vec.f.x;
 
-                    sODMatrixMvpF[0][0] = sODMatrixPerspF[0][0] * sODScaleX;
+                    sODMatrixMvpF[0][0] = sODMatrixPerspF[0][0] * gODScaleX;
                     sODMatrixMvpF[1][1] = sODMatrixPerspF[1][1] * f12;
-                    sODMatrixMvpF[2][2] = sODMatrixPerspF[2][2] * sODScaleX;
-                    sODMatrixMvpF[2][3] = sODMatrixPerspF[2][3] * sODScaleX;
+                    sODMatrixMvpF[2][2] = sODMatrixPerspF[2][2] * gODScaleX;
+                    sODMatrixMvpF[2][3] = sODMatrixPerspF[2][3] * gODScaleX;
 
                     sODMatrixMvpF[0][1] = 0.0F;
                     sODMatrixMvpF[0][2] = 0.0F;
@@ -882,14 +882,14 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 case 44:
                 {
-                    f12 = dobj->scale.vec.f.y * sODScaleX;
+                    f12 = dobj->scale.vec.f.y * gODScaleX;
 
-                    sODScaleX *= dobj->scale.vec.f.x;
+                    gODScaleX *= dobj->scale.vec.f.x;
 
-                    sODMatrixMvpF[0][0] = sODMatrixPerspF[0][0] * sODScaleX;
+                    sODMatrixMvpF[0][0] = sODMatrixPerspF[0][0] * gODScaleX;
                     sODMatrixMvpF[1][1] = sODMatrixPerspF[1][1] * f12;
-                    sODMatrixMvpF[2][2] = sODMatrixPerspF[2][2] * sODScaleX;
-                    sODMatrixMvpF[2][3] = sODMatrixPerspF[2][3] * sODScaleX;
+                    sODMatrixMvpF[2][2] = sODMatrixPerspF[2][2] * gODScaleX;
+                    sODMatrixMvpF[2][3] = sODMatrixPerspF[2][3] * gODScaleX;
 
                     sODMatrixMvpF[0][1] = 0.0F;
                     sODMatrixMvpF[0][2] = 0.0F;
@@ -927,9 +927,9 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     cosx = cosf(dobj->rotate.vec.f.x); // sp1C8 ?
 
                     // f2 * f8 -> f12
-                    f12 = dobj->scale.vec.f.y * sODScaleX;
+                    f12 = dobj->scale.vec.f.y * gODScaleX;
                     // f2 * f10 -> f4 store reload -> f2
-                    sODScaleX *= dobj->scale.vec.f.x;
+                    gODScaleX *= dobj->scale.vec.f.x;
 
                     sODMatrixMvpF[0][2] = 0.0F;
                     sODMatrixMvpF[1][2] = 0.0F;
@@ -938,12 +938,12 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     sODMatrixMvpF[2][0] = 0.0F;
                     sODMatrixMvpF[2][1] = 0.0F;
 
-                    sODMatrixMvpF[0][0] = sODMatrixPerspF[0][0] * sODScaleX * cosx;
-                    sODMatrixMvpF[1][0] = sODMatrixPerspF[0][0] * sODScaleX * -sinx;
+                    sODMatrixMvpF[0][0] = sODMatrixPerspF[0][0] * gODScaleX * cosx;
+                    sODMatrixMvpF[1][0] = sODMatrixPerspF[0][0] * gODScaleX * -sinx;
                     sODMatrixMvpF[0][1] = sODMatrixPerspF[1][1] * f12 * sinx;
                     sODMatrixMvpF[1][1] = sODMatrixPerspF[1][1] * f12 * cosx;
-                    sODMatrixMvpF[2][2] = sODMatrixPerspF[2][2] * sODScaleX;
-                    sODMatrixMvpF[2][3] = sODMatrixPerspF[2][3] * sODScaleX;
+                    sODMatrixMvpF[2][2] = sODMatrixPerspF[2][2] * gODScaleX;
+                    sODMatrixMvpF[2][3] = sODMatrixPerspF[2][3] * gODScaleX;
 
                     syMatrixF2L(&sODMatrixMvpF, mtx_store.gbi);
 
@@ -971,9 +971,9 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     sinz = __sinf(dobj->rotate.vec.f.z); // sp190
                     cosz = cosf(dobj->rotate.vec.f.z); // sp188 ?
 
-                    f12 = dobj->scale.vec.f.y * sODScaleX;
+                    f12 = dobj->scale.vec.f.y * gODScaleX;
 
-                    sODScaleX *= dobj->scale.vec.f.x;
+                    gODScaleX *= dobj->scale.vec.f.x;
 
                     sODMatrixMvpF[0][2] = 0.0F;
                     sODMatrixMvpF[1][2] = 0.0F;
@@ -982,12 +982,12 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     sODMatrixMvpF[2][0] = 0.0F;
                     sODMatrixMvpF[2][1] = 0.0F;
 
-                    sODMatrixMvpF[0][0] = sODMatrixPerspF[0][0] * sODScaleX * cosz;
-                    sODMatrixMvpF[1][0] = sODMatrixPerspF[0][0] * sODScaleX * -sinz;
+                    sODMatrixMvpF[0][0] = sODMatrixPerspF[0][0] * gODScaleX * cosz;
+                    sODMatrixMvpF[1][0] = sODMatrixPerspF[0][0] * gODScaleX * -sinz;
                     sODMatrixMvpF[0][1] = sODMatrixPerspF[1][1] * f12 * sinz;
                     sODMatrixMvpF[1][1] = sODMatrixPerspF[1][1] * f12 * cosz;
-                    sODMatrixMvpF[2][2] = sODMatrixPerspF[2][2] * sODScaleX;
-                    sODMatrixMvpF[2][3] = sODMatrixPerspF[2][3] * sODScaleX;
+                    sODMatrixMvpF[2][2] = sODMatrixPerspF[2][2] * gODScaleX;
+                    sODMatrixMvpF[2][3] = sODMatrixPerspF[2][3] * gODScaleX;
 
                     syMatrixF2L(&sODMatrixMvpF, mtx_store.gbi);
 
@@ -1010,22 +1010,22 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 case 47:
                 {
-                    f12 = sODScaleX * dobj->scale.vec.f.y;
+                    f12 = gODScaleX * dobj->scale.vec.f.y;
 
-                    sODScaleX *= dobj->scale.vec.f.x;
+                    gODScaleX *= dobj->scale.vec.f.x;
 
-                    sODMatrixMvpF[0][0] = D_80047028[0][0] * sODScaleX;
-                    sODMatrixMvpF[0][1] = D_80047028[0][1] * sODScaleX;
-                    sODMatrixMvpF[0][2] = D_80047028[0][2] * sODScaleX;
-                    sODMatrixMvpF[0][3] = D_80047028[0][3] * sODScaleX;
+                    sODMatrixMvpF[0][0] = D_80047028[0][0] * gODScaleX;
+                    sODMatrixMvpF[0][1] = D_80047028[0][1] * gODScaleX;
+                    sODMatrixMvpF[0][2] = D_80047028[0][2] * gODScaleX;
+                    sODMatrixMvpF[0][3] = D_80047028[0][3] * gODScaleX;
                     sODMatrixMvpF[1][0] = D_80047028[1][0] * f12;
                     sODMatrixMvpF[1][1] = D_80047028[1][1] * f12;
                     sODMatrixMvpF[1][2] = D_80047028[1][2] * f12;
                     sODMatrixMvpF[1][3] = D_80047028[1][3] * f12;
-                    sODMatrixMvpF[2][0] = D_80047028[2][0] * sODScaleX;
-                    sODMatrixMvpF[2][1] = D_80047028[2][1] * sODScaleX;
-                    sODMatrixMvpF[2][2] = D_80047028[2][2] * sODScaleX;
-                    sODMatrixMvpF[2][3] = D_80047028[2][3] * sODScaleX;
+                    sODMatrixMvpF[2][0] = D_80047028[2][0] * gODScaleX;
+                    sODMatrixMvpF[2][1] = D_80047028[2][1] * gODScaleX;
+                    sODMatrixMvpF[2][2] = D_80047028[2][2] * gODScaleX;
+                    sODMatrixMvpF[2][3] = D_80047028[2][3] * gODScaleX;
 
                     syMatrixF2L(&sODMatrixMvpF, mtx_store.gbi);
 
@@ -1048,22 +1048,22 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 case 48:
                 {
-                    f12 = sODScaleX * dobj->scale.vec.f.y;
+                    f12 = gODScaleX * dobj->scale.vec.f.y;
 
-                    sODScaleX *= dobj->scale.vec.f.x;
+                    gODScaleX *= dobj->scale.vec.f.x;
 
-                    sODMatrixMvpF[0][0] = D_80047028[0][0] * sODScaleX;
-                    sODMatrixMvpF[0][1] = D_80047028[0][1] * sODScaleX;
-                    sODMatrixMvpF[0][2] = D_80047028[0][2] * sODScaleX;
-                    sODMatrixMvpF[0][3] = D_80047028[0][3] * sODScaleX;
+                    sODMatrixMvpF[0][0] = D_80047028[0][0] * gODScaleX;
+                    sODMatrixMvpF[0][1] = D_80047028[0][1] * gODScaleX;
+                    sODMatrixMvpF[0][2] = D_80047028[0][2] * gODScaleX;
+                    sODMatrixMvpF[0][3] = D_80047028[0][3] * gODScaleX;
                     sODMatrixMvpF[1][0] = D_80047028[1][0] * f12;
                     sODMatrixMvpF[1][1] = D_80047028[1][1] * f12;
                     sODMatrixMvpF[1][2] = D_80047028[1][2] * f12;
                     sODMatrixMvpF[1][3] = D_80047028[1][3] * f12;
-                    sODMatrixMvpF[2][0] = D_80047028[2][0] * sODScaleX;
-                    sODMatrixMvpF[2][1] = D_80047028[2][1] * sODScaleX;
-                    sODMatrixMvpF[2][2] = D_80047028[2][2] * sODScaleX;
-                    sODMatrixMvpF[2][3] = D_80047028[2][3] * sODScaleX;
+                    sODMatrixMvpF[2][0] = D_80047028[2][0] * gODScaleX;
+                    sODMatrixMvpF[2][1] = D_80047028[2][1] * gODScaleX;
+                    sODMatrixMvpF[2][2] = D_80047028[2][2] * gODScaleX;
+                    sODMatrixMvpF[2][3] = D_80047028[2][3] * gODScaleX;
 
                     syMatrixF2L(&sODMatrixMvpF, mtx_store.gbi);
 
@@ -1086,22 +1086,22 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 case 49:
                 {
-                    f12 = sODScaleX * dobj->scale.vec.f.y;
+                    f12 = gODScaleX * dobj->scale.vec.f.y;
 
-                    sODScaleX *= dobj->scale.vec.f.x;
+                    gODScaleX *= dobj->scale.vec.f.x;
 
-                    sODMatrixMvpF[0][0] = D_80047068[0][0] * sODScaleX;
-                    sODMatrixMvpF[0][1] = D_80047068[0][1] * sODScaleX;
-                    sODMatrixMvpF[0][2] = D_80047068[0][2] * sODScaleX;
-                    sODMatrixMvpF[0][3] = D_80047068[0][3] * sODScaleX;
+                    sODMatrixMvpF[0][0] = D_80047068[0][0] * gODScaleX;
+                    sODMatrixMvpF[0][1] = D_80047068[0][1] * gODScaleX;
+                    sODMatrixMvpF[0][2] = D_80047068[0][2] * gODScaleX;
+                    sODMatrixMvpF[0][3] = D_80047068[0][3] * gODScaleX;
                     sODMatrixMvpF[1][0] = D_80047068[1][0] * f12;
                     sODMatrixMvpF[1][1] = D_80047068[1][1] * f12;
                     sODMatrixMvpF[1][2] = D_80047068[1][2] * f12;
                     sODMatrixMvpF[1][3] = D_80047068[1][3] * f12;
-                    sODMatrixMvpF[2][0] = D_80047068[2][0] * sODScaleX;
-                    sODMatrixMvpF[2][1] = D_80047068[2][1] * sODScaleX;
-                    sODMatrixMvpF[2][2] = D_80047068[2][2] * sODScaleX;
-                    sODMatrixMvpF[2][3] = D_80047068[2][3] * sODScaleX;
+                    sODMatrixMvpF[2][0] = D_80047068[2][0] * gODScaleX;
+                    sODMatrixMvpF[2][1] = D_80047068[2][1] * gODScaleX;
+                    sODMatrixMvpF[2][2] = D_80047068[2][2] * gODScaleX;
+                    sODMatrixMvpF[2][3] = D_80047068[2][3] * gODScaleX;
 
                     syMatrixF2L(&sODMatrixMvpF, mtx_store.gbi);
 
@@ -1124,22 +1124,22 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 case 50:
                 {
-                    f12 = sODScaleX * dobj->scale.vec.f.y;
+                    f12 = gODScaleX * dobj->scale.vec.f.y;
 
-                    sODScaleX *= dobj->scale.vec.f.x;
+                    gODScaleX *= dobj->scale.vec.f.x;
 
-                    sODMatrixMvpF[0][0] = D_80047068[0][0] * sODScaleX;
-                    sODMatrixMvpF[0][1] = D_80047068[0][1] * sODScaleX;
-                    sODMatrixMvpF[0][2] = D_80047068[0][2] * sODScaleX;
-                    sODMatrixMvpF[0][3] = D_80047068[0][3] * sODScaleX;
+                    sODMatrixMvpF[0][0] = D_80047068[0][0] * gODScaleX;
+                    sODMatrixMvpF[0][1] = D_80047068[0][1] * gODScaleX;
+                    sODMatrixMvpF[0][2] = D_80047068[0][2] * gODScaleX;
+                    sODMatrixMvpF[0][3] = D_80047068[0][3] * gODScaleX;
                     sODMatrixMvpF[1][0] = D_80047068[1][0] * f12;
                     sODMatrixMvpF[1][1] = D_80047068[1][1] * f12;
                     sODMatrixMvpF[1][2] = D_80047068[1][2] * f12;
                     sODMatrixMvpF[1][3] = D_80047068[1][3] * f12;
-                    sODMatrixMvpF[2][0] = D_80047068[2][0] * sODScaleX;
-                    sODMatrixMvpF[2][1] = D_80047068[2][1] * sODScaleX;
-                    sODMatrixMvpF[2][2] = D_80047068[2][2] * sODScaleX;
-                    sODMatrixMvpF[2][3] = D_80047068[2][3] * sODScaleX;
+                    sODMatrixMvpF[2][0] = D_80047068[2][0] * gODScaleX;
+                    sODMatrixMvpF[2][1] = D_80047068[2][1] * gODScaleX;
+                    sODMatrixMvpF[2][2] = D_80047068[2][2] * gODScaleX;
+                    sODMatrixMvpF[2][3] = D_80047068[2][3] * gODScaleX;
 
                     syMatrixF2L(&sODMatrixMvpF, mtx_store.gbi);
 
@@ -1516,7 +1516,7 @@ void gcDrawDObjForGObj(GObj *gobj, Gfx **dl_head)
     s32 num;
     DObj *dobj = DObjGetStruct(gobj);
 
-    sODScaleX = 1.0F;
+    gODScaleX = 1.0F;
 
     if (dobj->display_list != NULL)
     {
@@ -1570,7 +1570,7 @@ void gcDrawDObjTree(DObj *this_dobj)
 
     if (!(this_dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = sODScaleX;
+        bak = gODScaleX;
         num = gcPrepDObjMatrix(gDisplayListHead, this_dobj);
 
         if ((this_dobj->display_list != NULL) && !(this_dobj->flags & DOBJ_FLAG_NOTEXTURE))
@@ -1589,7 +1589,7 @@ void gcDrawDObjTree(DObj *this_dobj)
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
         }
-        sODScaleX = bak;
+        gODScaleX = bak;
     }
     if (this_dobj->sib_prev == NULL) 
     {
@@ -1606,7 +1606,7 @@ void gcDrawDObjTree(DObj *this_dobj)
 // 0x80014038
 void gcDrawDObjTreeForGObj(GObj *gobj) 
 {
-    sODScaleX = 1.0F;
+    gODScaleX = 1.0F;
     gcDrawDObjTree(DObjGetStruct(gobj));
 }
 
@@ -1684,7 +1684,7 @@ void gcDrawDObjDLLinksForGObj(GObj *gobj)
 {
     DObj *dobj;
 
-    sODScaleX = 1.0F;
+    gODScaleX = 1.0F;
     dobj = DObjGetStruct(gobj);
     gcDrawDObjDLLinks(dobj, dobj->dl_link);
 }
@@ -1714,7 +1714,7 @@ void gcDrawDObjTreeDLLinks(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = sODScaleX;
+        bak = gODScaleX;
         dl_link = dobj->dl_link;
         dl = D_800470B0;
         num = gcPrepDObjMatrix(&D_800470B0, dobj);
@@ -1768,7 +1768,7 @@ void gcDrawDObjTreeDLLinks(DObj *dobj)
             }
             continue; // Required!
         }
-        sODScaleX = bak;
+        gODScaleX = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -1785,7 +1785,7 @@ void gcDrawDObjTreeDLLinks(DObj *dobj)
 // 0x80014768
 void gcDrawDObjTreeDLLinksForGObj(GObj *gobj)
 {
-    sODScaleX = 1.0F;
+    gODScaleX = 1.0F;
     gcDrawDObjTreeDLLinks(DObjGetStruct(gobj));
 }
 
@@ -1821,7 +1821,7 @@ void unref_800147E0(GObj *gobj)
         { 
             dist_dl++;
         }
-        sODScaleX = 1.0F;
+        gODScaleX = 1.0F;
 
         if (dist_dl->dl != NULL) 
         {
@@ -1852,7 +1852,7 @@ void gcDrawDObjTreeMultiList(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = sODScaleX;
+        bak = gODScaleX;
         num = gcPrepDObjMatrix(gDisplayListHead, dobj);
 
         if ((dls != NULL) && (dls[sODDetailLevel] != NULL)) 
@@ -1874,7 +1874,7 @@ void gcDrawDObjTreeMultiList(DObj *dobj)
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
         }
-        sODScaleX = bak;
+        gODScaleX = bak;
     }
     if (dobj->sib_prev == NULL) 
     {
@@ -1899,7 +1899,7 @@ void unref_80014A84(GObj *gobj)
     DObj *current_dobj;
 
     dobj = DObjGetStruct(gobj);
-    sODScaleX = 1.0F;
+    gODScaleX = 1.0F;
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
@@ -1956,7 +1956,7 @@ void unref_80014C38(GObj *gobj)
     DObj *dobj;
 
     dobj = DObjGetStruct(gobj);
-    sODScaleX = 1.0F;
+    gODScaleX = 1.0F;
 
     if (dobj->flags == DOBJ_FLAG_NONE) 
     {
@@ -1991,7 +1991,7 @@ void func_80014CD0(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = sODScaleX;
+        bak = gODScaleX;
         s0 = (DObjDLLink**)dobj->display_ptr;
         if (s0 != NULL)
         {
@@ -2049,7 +2049,7 @@ void func_80014CD0(DObj *dobj)
             }
             else continue; // Required! Both the "else" and the "continue"!
         }
-        sODScaleX = bak;
+        gODScaleX = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -2077,7 +2077,7 @@ void unref_80014FFC(GObj *gobj)
     DObj *current_dobj;
 
     dobj = DObjGetStruct(gobj);
-    sODScaleX = 1.0F;
+    gODScaleX = 1.0F;
     ptr = NULL;
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
@@ -2177,7 +2177,7 @@ void gcDrawDObjTreeDLArray(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = sODScaleX;
+        bak = gODScaleX;
 
         if ((dls != NULL) && (dls[0] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
@@ -2201,7 +2201,7 @@ void gcDrawDObjTreeDLArray(DObj *dobj)
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
         }
-        sODScaleX = bak;
+        gODScaleX = bak;
     }
     if (dobj->sib_prev == NULL) 
     {
@@ -2218,7 +2218,7 @@ void gcDrawDObjTreeDLArray(DObj *dobj)
 // 0x800154F0
 void unref_800154F0(GObj *gobj) 
 {
-    sODScaleX = 1.0F;
+    gODScaleX = 1.0F;
     gcDrawDObjTreeDLArray(DObjGetStruct(gobj));
 }
 
@@ -2238,7 +2238,7 @@ void func_80015520(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = sODScaleX;
+        bak = gODScaleX;
         multi_list = dobj->multi_list;
         dl = D_800470B0;
         num = gcPrepDObjMatrix(&D_800470B0, dobj);
@@ -2296,7 +2296,7 @@ void func_80015520(DObj *dobj)
                 else continue;
             }
         }
-        sODScaleX = bak;
+        gODScaleX = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -2313,7 +2313,7 @@ void func_80015520(DObj *dobj)
 // 0x80015860
 void unref_80015860(GObj *gobj) 
 {
-    sODScaleX = 1.0F;
+    gODScaleX = 1.0F;
     func_80015520(DObjGetStruct(gobj));
 }
 
@@ -2330,7 +2330,7 @@ void gcDrawDObjTreeDLDoubleArray(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER)) 
     {
-        bak = sODScaleX;
+        bak = gODScaleX;
 
         if (p_dls != NULL)
         { 
@@ -2358,7 +2358,7 @@ void gcDrawDObjTreeDLDoubleArray(DObj *dobj)
                 gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
             }
         }
-        sODScaleX = bak;
+        gODScaleX = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -2389,7 +2389,7 @@ void unref_80015A58(GObj *gobj)
 
         if (dist_dl != NULL)
         {
-            sODScaleX = 1.0F;
+            gODScaleX = 1.0F;
             sODDetailLevel = 0;
 
             dist = gcGetDObjDistFromEye(dobj);
@@ -2449,7 +2449,7 @@ void func_80015C0C(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        bak = sODScaleX;
+        bak = gODScaleX;
         p_multi_list = (DObjMultiList**)dobj->display_ptr;
 
         if (p_multi_list != NULL) 
@@ -2512,7 +2512,7 @@ void func_80015C0C(DObj *dobj)
                 continue; // Not required this time; this is for the sake of consistency.
             }
         }
-        sODScaleX = bak;
+        gODScaleX = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -2549,7 +2549,7 @@ void unref_80015F6C(GObj *gobj)
 
         if (dist_dl_link != NULL)
         {
-            sODScaleX = 1.0F;
+            gODScaleX = 1.0F;
             sODDetailLevel = 0;
             dist = gcGetDObjDistFromEye(dobj);
 

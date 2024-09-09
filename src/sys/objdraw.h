@@ -18,7 +18,7 @@ typedef struct syMtxProcess
 
 // gbi Mtx * ? pointer to some sort of matrix
 extern Mtx *sODMatrixProjectL;
-extern f32 sODScaleX;
+extern f32 gODScaleX;
 extern Mtx44f sODMatrixPerspF;
 extern syMtxProcess *sODMatrixProcess;
 

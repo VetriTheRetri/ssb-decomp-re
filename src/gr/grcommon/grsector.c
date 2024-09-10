@@ -268,13 +268,13 @@ void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
 }
 
 // 0x80106904
-sb32 func_ovl2_80106904(Mtx *o_mtx, DObj *dobj, f32 arg2)
+sb32 grSectorArwingLaser3DProcMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     f32 sx;
     Vec3f sp80;
     Vec3f sp74;
     Vec3f sp68;
-    Mtx44f n_mtx;
+    Mtx44f f;
     f32 tx;
     f32 ty;
     f32 tz;
@@ -297,25 +297,25 @@ sb32 func_ovl2_80106904(Mtx *o_mtx, DObj *dobj, f32 arg2)
     }
     else func_ovl2_80106730(dobj, &sp80, &sp74, &sp68);
 
-    n_mtx[0][0] = sp74.x; // sp28
-    n_mtx[0][1] = sp74.y; // sp2C
-    n_mtx[0][2] = sp74.z; // sp30
-    n_mtx[1][0] = sp68.x; // sp38
-    n_mtx[1][1] = sp68.y; // sp3C
-    n_mtx[1][2] = sp68.z; // sp40
-    n_mtx[2][0] = sp80.x; // sp48
-    n_mtx[2][1] = sp80.y; // sp4C
-    n_mtx[2][2] = sp80.z; // sp50
+    f[0][0] = sp74.x; // sp28
+    f[0][1] = sp74.y; // sp2C
+    f[0][2] = sp74.z; // sp30
+    f[1][0] = sp68.x; // sp38
+    f[1][1] = sp68.y; // sp3C
+    f[1][2] = sp68.z; // sp40
+    f[2][0] = sp80.x; // sp48
+    f[2][1] = sp80.y; // sp4C
+    f[2][2] = sp80.z; // sp50
 
-    n_mtx[0][3] = n_mtx[1][3] = n_mtx[2][3] = 0.0F;             // sp34, sp44, sp54
+    f[0][3] = f[1][3] = f[2][3] = 0.0F;             // sp34, sp44, sp54
 
-    n_mtx[3][0] = tx + gGRCommonStruct.sector.arwing_target_x;    // sp58
-    n_mtx[3][1] = ty;                                           // sp5C
-    n_mtx[3][2] = tz;                                           // sp60
+    f[3][0] = tx + gGRCommonStruct.sector.arwing_target_x;    // sp58
+    f[3][1] = ty;                                           // sp5C
+    f[3][2] = tz;                                           // sp60
 
-    n_mtx[3][3] = 1.0F;                                         // sp64
+    f[3][3] = 1.0F;                                         // sp64
 
-    guMtxF2L(n_mtx, o_mtx);
+    guMtxF2L(f, mtx);
 
     return 0;
 }

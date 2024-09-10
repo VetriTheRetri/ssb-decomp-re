@@ -1,4 +1,5 @@
 #include <ft/fighter.h>
+#include <gr/ground.h>
 
 extern void hal_interpolation_cubic(void*, void*, f32);
 extern void* func_80026A10_27610(u16);
@@ -1301,21 +1302,21 @@ void func_ovl0_800C96DC(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x800C96EC
-s32 func_ovl0_800C96EC(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 func_ovl0_800C96EC(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
 	func_ovl0_800C96DC(mtx, dobj, 0);
 	return 0;
 }
 
 // 0x800C9714
-s32 func_ovl0_800C9714(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 func_ovl0_800C9714(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
 	func_ovl0_800C96DC(mtx, dobj, 1);
 	return 0;
 }
 
 // 0x800C973C
-s32 lbCommonTransformFighterPartsMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 lbCommonFighterPartsProcMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     ub32 flag = ftGetStruct(dobj->parent_gobj)->is_use_animlocks;
     ftParts *ft_parts = ftGetParts(dobj);
@@ -1391,7 +1392,7 @@ s32 lbCommonTransformFighterPartsMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x800C994C
-s32 func_ovl0_800C994C(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 func_ovl0_800C994C(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     s32 unused;
     DObj *attach_dobj = dobj->user_data.p;
@@ -1407,7 +1408,7 @@ s32 func_ovl0_800C994C(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x800C99CC
-s32 func_ovl0_800C99CC(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 func_ovl0_800C99CC(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     s32 unused[2];
     DObj *attach_dobj = dobj->user_data.p;
@@ -1553,7 +1554,7 @@ void func_ovl0_800C9A38(Mtx44f mtx, DObj *dobj)
 }
 
 // 0x800C9F30
-s32 func_ovl0_800C9F30(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 func_ovl0_800C9F30(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     Mtx44f f;
 
@@ -1564,7 +1565,7 @@ s32 func_ovl0_800C9F30(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x800C9F70
-s32 func_ovl0_800C9F70(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 func_ovl0_800C9F70(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     DObj *attach_dobj = dobj->user_data.p;
     ftStruct *fp = ftGetStruct(attach_dobj->parent_gobj);
@@ -1583,7 +1584,7 @@ s32 func_ovl0_800C9F70(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x800CA024
-s32 func_ovl0_800CA024(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 func_ovl0_800CA024(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     s32 e1, e2;
 
@@ -1630,7 +1631,7 @@ s32 func_ovl0_800CA024(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x800CA144
-s32 func_ovl0_800CA144(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 func_ovl0_800CA144(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     lbCommonMatrixRotSca
     (
@@ -1646,7 +1647,7 @@ s32 func_ovl0_800CA144(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x800CA194
-s32 func_ovl0_800CA194(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 func_ovl0_800CA194(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     s32 unused;
     int e1, e2;
@@ -1719,7 +1720,7 @@ s32 func_ovl0_800CA194(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x800CA5C8
-s32 func_ovl0_800CA5C8(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 func_ovl0_800CA5C8(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     s32 unused;
     int e1, e2;
@@ -1796,7 +1797,7 @@ s32 func_ovl0_800CA5C8(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x800CAB48
-s32 func_ovl0_800CAB48(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 func_ovl0_800CAB48(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     f32 scaley;
     int e1, e2;
@@ -1879,9 +1880,11 @@ s32 func_ovl0_800CAB48(Mtx *mtx, DObj *dobj, Gfx **dls)
     return 1;
 }
 
+sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls);
+
 #if defined (NON_MATCHING)
 // 0x800CB140 - NONMATCHING: 'f[2][2] = dist.z' line uses wrong FPR
-s32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     Camera *cam;
     DObj *attach_dobj;
@@ -1947,62 +1950,167 @@ s32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB140.s")
 #endif
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB2F0.s")
+// 0x800CB2F0
+sb32 func_ovl0_800CB2F0(Mtx *mtx, DObj *dobj, Gfx **dls)
+{
+    s32 unused;
+    DObj *attach_dobj = dobj->user_data.p;
+    
+    func_ovl2_800EDBA4(attach_dobj);
+    
+    dobj->rotate.vec.f.z = (ftGetParts(attach_dobj)->mtx_translate[0][2] > 0.0F) ? 
+    
+    attach_dobj->rotate.vec.f.x : -attach_dobj->rotate.vec.f.x;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB360.s")
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB4B0.s")
+// 0x800CB360
+void func_ovl0_800CB360(DObj *dobj)
+{
+    s32 unused[2];
+    
+    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    {
+        f32 bak = gODScaleX;
+        s32 status = gcPrepDObjMatrix(&gDisplayListHead[1], dobj);
+        
+        if ((dobj->display_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
+        {
+            gcDrawMObjForDObj(dobj, &gDisplayListHead[1]);
+            
+            gSPDisplayList(gDisplayListHead[1]++, dobj->display_list);
+        }        
+        if (dobj->child != NULL)
+        {
+            func_ovl0_800CB360(dobj->child);
+        }
+        if (status != 0)
+        {
+            if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
+            {
+                gSPPopMatrix(gDisplayListHead[1]++, G_MTX_MODELVIEW);
+            }
+        }
+        gODScaleX = bak;
+    }
+    if (dobj->sib_prev == NULL)
+    {
+        DObj *sibling_dobj = dobj->sib_next;
+        
+        while (sibling_dobj != NULL)
+        {
+            func_ovl0_800CB360(sibling_dobj);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB4E0.s")
+            sibling_dobj = sibling_dobj->sib_next;
+        }
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB608.s")
+// 0x800CB4B0
+void func_ovl0_800CB4B0(GObj *gobj)
+{
+    gODScaleX = 1.0F;
+    
+    func_ovl0_800CB360(DObjGetStruct(gobj));
+}
 
-void *D_800D5CAC_5168C[/* */] = {
+// 0x800CB4E0
+void func_ovl0_800CB4E0(DObj *dobj)
+{
+    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    {
+        s32 status = gcPrepDObjMatrix(&gDisplayListHead[0], dobj);
+        
+        if ((dobj->display_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
+        {
+            gcDrawMObjForDObj(dobj, &gDisplayListHead[0]);
+            
+            gSPDisplayList(gDisplayListHead[0]++, dobj->display_list);
+        }        
+        if (dobj->child != NULL)
+        {
+            func_ovl0_800CB4E0(dobj->child);
+        }
+        if (status != 0)
+        {
+            if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
+            {
+                gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
+            }
+        }
+    }
+    if (dobj->sib_prev == NULL)
+    {
+        DObj *sibling_dobj = dobj->sib_next;
+        
+        while (sibling_dobj != NULL)
+        {
+            func_ovl0_800CB4E0(sibling_dobj);
 
-	0x800C96EC,
-	0x800C96EC,
-	0x800C9714,
-	0x800C9714,
-	0x800CA024,
-	0x800CA024,
-	0x800CA144,
-	0x800CA144,
-	0x800CA194,
-	0x800CA194,
-	0x800CA5C8,
-	0x800CA5C8,
-	0x800CAB48,
-	0x800CAB48,
-	0x800CB140,
-	0x800CB140,
-	0x800CB2F0,
-	0x800CB2F0,
-	0x800C973C,
-	0x800C973C,
-	0x8010D250,
-	0x8010D428,
-	0x8010DE48,
-	0x00000000,
-	0x8010E00C,
-	0x00000000,
-	0x800C994C,
-	0x800C994C,
-	0x800C99CC,
-	0x800C99CC,
-	0x800C9F30,
-	0x800C9F30,
-	0x800C9F70,
-	0x800C9F70,
-	0x80106904,
-	0x80106904,
-	0x8010E00C,
-	0x8010E10C
+            sibling_dobj = sibling_dobj->sib_next;
+        }
+    }
+}
+
+// 0x800CB608
+void lbCommonEjectGObjLinkedList(GObj *gobj)
+{
+    if (gobj->link_next != NULL)
+    {
+        lbCommonEjectGObjLinkedList(gobj->link_next);
+    }
+    gcEjectGObj(gobj);
+}
+
+// 0x800D5CAC
+sb32 (*dLBCommonProcMatrixList[/* */])(/* */) =
+{
+	func_ovl0_800C96EC,
+	func_ovl0_800C96EC,
+	func_ovl0_800C9714,
+	func_ovl0_800C9714,
+	func_ovl0_800CA024,
+	func_ovl0_800CA024,
+	func_ovl0_800CA144,
+	func_ovl0_800CA144,
+	func_ovl0_800CA194,
+	func_ovl0_800CA194,
+	func_ovl0_800CA5C8,
+	func_ovl0_800CA5C8,
+	func_ovl0_800CAB48,
+	func_ovl0_800CAB48,
+	func_ovl0_800CB140,
+	func_ovl0_800CB140,
+	func_ovl0_800CB2F0,
+	func_ovl0_800CB2F0,
+	lbCommonFighterPartsProcMatrix,
+	lbCommonFighterPartsProcMatrix,
+	cmManagerLookAtProcMatrix,
+	cmManagerPrepLookAtProcMatrix,
+	cmManagerPlayerMagnifyProcMatrix,
+	NULL,
+	cmManageOrthoLookAtProcMatrix,
+	NULL,
+	func_ovl0_800C994C,
+	func_ovl0_800C994C,
+	func_ovl0_800C99CC,
+	func_ovl0_800C99CC,
+	func_ovl0_800C9F30,
+	func_ovl0_800C9F30,
+	func_ovl0_800C9F70,
+	func_ovl0_800C9F70,
+	grSectorArwingLaser3DProcMatrix,
+	grSectorArwingLaser3DProcMatrix,
+	cmManageOrthoLookAtProcMatrix,
+	cmManagerPrepProjectionProcMatrix
 };
 
 // 0x800CB644
 u8 func_ovl0_800CB644(u8 index)
 {
-	u8 array[] = {
+	u8 array[/* */] =
+    {
 
 		0x00, 0x05, 0x0A, 0x0F
 	};

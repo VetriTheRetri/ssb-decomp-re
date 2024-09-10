@@ -991,7 +991,7 @@ f32 cmManagerGetMtxMaxValue(void)
 }
 
 // 0x8010D250
-sb32 cmManagerCameraLookAt(Mtx *mtx, Camera *cam, Gfx **dl)
+sb32 cmManagerLookAtProcMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
 {
     Mtx *temp_mtx;
     Mtx44f sp5C;
@@ -1028,20 +1028,20 @@ sb32 cmManagerCameraLookAt(Mtx *mtx, Camera *cam, Gfx **dl)
 }
 
 // 0x8010D428
-sb32 cmManagerCameraAddLookAtMtx(Mtx *mtx, Camera *cam, Gfx **dl)
+sb32 cmManagerPrepLookAtProcMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
 {
-    gSPLookAtX(dl[0]++, &gCMManagerCameraStruct.look_at.l[0]);
-    gSPLookAtY(dl[0]++, &gCMManagerCameraStruct.look_at.l[1]);
+    gSPLookAtX(dls[0]++, &gCMManagerCameraStruct.look_at.l[0]);
+    gSPLookAtY(dls[0]++, &gCMManagerCameraStruct.look_at.l[1]);
 
-    gSPMatrix(dl[0]++, mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(dls[0]++, mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
-    gSPPerspNormalize(dl[0]++, cam->projection.persp.norm);
+    gSPPerspNormalize(dls[0]++, cam->projection.persp.norm);
 
     return 0;
 }
 
 // 0x8010D4B0
-void func_ovl2_8010D4B0(Mtx *mtx, Camera *cam, Gfx **dl)
+void func_ovl2_8010D4B0(Mtx *mtx, Camera *cam, Gfx **dls)
 {
     return;
 }
@@ -1237,7 +1237,7 @@ void func_ovl2_8010DDC4(void)
 }
 
 // 0x8010DE48
-sb32 func_ovl2_8010DE48(Mtx *mtx, s32 arg1, Gfx **dl)
+sb32 cmManagerPlayerMagnifyProcMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
 {
     f32 unused1;
     Mtx44f spA4;
@@ -1280,7 +1280,7 @@ sb32 func_ovl2_8010DE48(Mtx *mtx, s32 arg1, Gfx **dl)
 }
 
 // 0x8010E00C
-sb32 func_ovl2_8010E00C(Mtx *mtx, s32 arg1, Gfx **dl)
+sb32 cmManageOrthoLookAtProcMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
 {
     Mtx44f sp78;
     Mtx44f sp38;
@@ -1300,9 +1300,9 @@ sb32 func_ovl2_8010E00C(Mtx *mtx, s32 arg1, Gfx **dl)
 }
 
 // 0x8010E10C
-sb32 func_ovl2_8010E10C(Mtx *mtx, s32 arg1, Gfx **dl)
+sb32 cmManagerPrepProjectionProcMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
 {
-    gSPMatrix(dl[0]++, mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(dls[0]++, mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
     return 0;
 }

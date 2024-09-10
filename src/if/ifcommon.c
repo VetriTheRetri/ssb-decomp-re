@@ -2837,9 +2837,9 @@ void ifCommonBattlePauseMakeInterface(s32 player)
 }
 
 // 0x80113F50
-void func_ovl2_80113F50(void)
+void ifCommonBattlePauseEjectGObjs(void)
 {
-    func_ovl0_800CB608(gOMObjCommonLinks[nOMObjCommonLinkIDPauseMenu]);
+    lbCommonEjectGObjLinkedList(gOMObjCommonLinks[nOMObjCommonLinkIDPauseMenu]);
 }
 
 // 0x80113F74
@@ -3075,7 +3075,7 @@ void ifCommonBattlePauseRestoreInterfaceAll(void)
 
         return;
     }
-    func_ovl2_80113F50();
+    ifCommonBattlePauseEjectGObjs();
     ifCommonInterfaceSetGObjFlagsAll(0);
     grWallpaperResetPausePerspUpdate();
 

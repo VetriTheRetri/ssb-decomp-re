@@ -210,7 +210,7 @@ extern void ifCommonBattlePausePlayerNumMakeSObj(GObj *interface_gobj, s32 playe
 extern void ifCommonBattlePauseDecalMakeSObjID(GObj *interface_gobj, s32 id);
 extern void ifCommonBattlePauseMakeSObjsAll(GObj *interface_gobj);
 extern void ifCommonBattlePauseMakeInterface(s32 player);
-extern void func_ovl2_80113F50(void);
+extern void ifCommonBattlePauseEjectGObjs(void);
 extern void ifCommonInterfaceSetGObjFlagsAll(u32 flags);
 extern void ifCommonBattlePauseSetGObjFlagsAll(u32 flags);
 extern void ifCommonBattlePauseInitInterface(s32 player);

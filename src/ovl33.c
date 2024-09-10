@@ -1117,9 +1117,9 @@ void mnCharsCreateHeader()
 	header_sobj->sprite.red = 0xF2;
 	header_sobj->sprite.green = 0xC7;
 	header_sobj->sprite.blue = 0xD;
-	header_sobj->shadow_color.r = 0;
-	header_sobj->shadow_color.g = 0;
-	header_sobj->shadow_color.b = 0;
+	header_sobj->env_color.r = 0;
+	header_sobj->env_color.g = 0;
+	header_sobj->env_color.b = 0;
 
 	// left arrow
 	header_sobj = lbCommonMakeSObjForGObj(header_gobj, GetAddressFromOffset(gMNCharsFilesArray[1], &FILE_020_ARROW_LEFT_IMAGE_OFFSET));

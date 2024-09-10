@@ -446,18 +446,18 @@ void sc1PStageClearSetDigitSpriteColor(SObj *sobj, s32 digit_kind, syColorRGBPai
 
 	if (colors_default == NULL)
 	{
-		sobj->shadow_color.r = colors_id->prim.r;
-		sobj->shadow_color.g = colors_id->prim.g;
-		sobj->shadow_color.b = colors_id->prim.b;
+		sobj->env_color.r = colors_id->prim.r;
+		sobj->env_color.g = colors_id->prim.g;
+		sobj->env_color.b = colors_id->prim.b;
 		sobj->sprite.red     = colors_id->env.r;
 		sobj->sprite.green   = colors_id->env.g;
 		sobj->sprite.blue    = colors_id->env.b;
 	}
 	else
 	{
-		sobj->shadow_color.r = colors_default->prim.r;
-		sobj->shadow_color.g = colors_default->prim.g;
-		sobj->shadow_color.b = colors_default->prim.b;
+		sobj->env_color.r = colors_default->prim.r;
+		sobj->env_color.g = colors_default->prim.g;
+		sobj->env_color.b = colors_default->prim.b;
 		sobj->sprite.red     = colors_default->env.r;
 		sobj->sprite.green   = colors_default->env.g;
 		sobj->sprite.blue    = colors_default->env.b;
@@ -618,9 +618,9 @@ void sc1PStageClearMakeTextSObjs(void)
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
 
-		sobj->shadow_color.r = 0xFF;
-		sobj->shadow_color.g = 0x00;
-		sobj->shadow_color.b = 0x00;
+		sobj->env_color.r = 0xFF;
+		sobj->env_color.g = 0x00;
+		sobj->env_color.b = 0x00;
 
 		sobj->sprite.red = 0xFF;
 		sobj->sprite.green = 0xC8;
@@ -636,9 +636,9 @@ void sc1PStageClearMakeTextSObjs(void)
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
 
-		sobj->shadow_color.r = 0xFF;
-		sobj->shadow_color.g = 0x00;
-		sobj->shadow_color.b = 0x00;
+		sobj->env_color.r = 0xFF;
+		sobj->env_color.g = 0x00;
+		sobj->env_color.b = 0x00;
 
 		sobj->sprite.red = 0xFF;
 		sobj->sprite.green = 0xC8;
@@ -656,9 +656,9 @@ void sc1PStageClearMakeTextSObjs(void)
 		sobj->sprite.attr &= ~SP_FASTCOPY;
 		sobj->sprite.attr |= SP_TRANSPARENT;
 
-		sobj->shadow_color.r = 0xFF;
-		sobj->shadow_color.g = 0x00;
-		sobj->shadow_color.b = 0x00;
+		sobj->env_color.r = 0xFF;
+		sobj->env_color.g = 0x00;
+		sobj->env_color.b = 0x00;
 
 		sobj->sprite.red = 0xFF;
 		sobj->sprite.green = 0xC8;
@@ -697,9 +697,9 @@ void sc1PStageClearMakeScoreSObjs(void)
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 
-	sobj->shadow_color.r = 0xFF;
-	sobj->shadow_color.g = 0x00;
-	sobj->shadow_color.b = 0x00;
+	sobj->env_color.r = 0xFF;
+	sobj->env_color.g = 0x00;
+	sobj->env_color.b = 0x00;
 
 	sobj->sprite.red = 0xFF;
 	sobj->sprite.green = 0xC8;
@@ -728,9 +728,9 @@ void sc1PStageClearMakeTimerTextSObjs(f32 y)
 	sobj->pos.x = 42.0F;
 	sobj->pos.y = y;
 
-	sobj->shadow_color.r = 0x00;
-	sobj->shadow_color.g = 0x00;
-	sobj->shadow_color.b = 0x00;
+	sobj->env_color.r = 0x00;
+	sobj->env_color.g = 0x00;
+	sobj->env_color.b = 0x00;
 
 	sobj->sprite.red = 0xB7;
 	sobj->sprite.green = 0xE4;
@@ -744,9 +744,9 @@ void sc1PStageClearMakeTimerTextSObjs(f32 y)
 	sobj->pos.x = 118.0F;
 	sobj->pos.y = y + 1.0F;
 
-	sobj->shadow_color.r = 0x00;
-	sobj->shadow_color.g = 0x00;
-	sobj->shadow_color.b = 0x00;
+	sobj->env_color.r = 0x00;
+	sobj->env_color.g = 0x00;
+	sobj->env_color.b = 0x00;
 
 	sobj->sprite.red = 0xB7;
 	sobj->sprite.green = 0xE4;
@@ -775,9 +775,9 @@ void sc1PStageClearMakeTimerDigitSObjs(f32 y)
 	sobj->pos.x = 181.0F;
 	sobj->pos.y = y + 2.0F;
 
-	sobj->shadow_color.r = 0x00;
-	sobj->shadow_color.g = 0x00;
-	sobj->shadow_color.b = 0x00;
+	sobj->env_color.r = 0x00;
+	sobj->env_color.g = 0x00;
+	sobj->env_color.b = 0x00;
 
 	sobj->sprite.red = 0xFF;
 	sobj->sprite.green = 0xFF;
@@ -856,9 +856,9 @@ void sc1PStageClearMakeDamageTextSObjs(f32 y)
 	sobj->pos.x = 42.0F;
 	sobj->pos.y = (s32)y;
 
-	sobj->shadow_color.r = 0x00;
-	sobj->shadow_color.g = 0x00;
-	sobj->shadow_color.b = 0x00;
+	sobj->env_color.r = 0x00;
+	sobj->env_color.g = 0x00;
+	sobj->env_color.b = 0x00;
 
 	sobj->sprite.red = 0xB7;
 	sobj->sprite.green = 0xE4;
@@ -872,9 +872,9 @@ void sc1PStageClearMakeDamageTextSObjs(f32 y)
 	sobj->pos.x = 118.0F;
 	sobj->pos.y = (s32)y + 2;
 
-	sobj->shadow_color.r = 0x00;
-	sobj->shadow_color.g = 0x00;
-	sobj->shadow_color.b = 0x00;
+	sobj->env_color.r = 0x00;
+	sobj->env_color.g = 0x00;
+	sobj->env_color.b = 0x00;
 
 	sobj->sprite.red = 0xB7;
 	sobj->sprite.green = 0xE4;
@@ -906,9 +906,9 @@ void sc1PStageClearMakeDamageDigitSObjs(f32 y)
 	sobj->pos.x = x + 10;
 	sobj->pos.y = (s32)y + 2;
 
-	sobj->shadow_color.r = 0x00;
-	sobj->shadow_color.g = 0x00;
-	sobj->shadow_color.b = 0x00;
+	sobj->env_color.r = 0x00;
+	sobj->env_color.g = 0x00;
+	sobj->env_color.b = 0x00;
 
 	sobj->sprite.red = 0xFF;
 	sobj->sprite.green = 0xFF;
@@ -953,9 +953,9 @@ void sc1PStageClearMakeTargetTextSObjs(void)
 	sobj->pos.x = 42.0F;
 	sobj->pos.y = y1;
 
-	sobj->shadow_color.r = 0x00;
-	sobj->shadow_color.g = 0x00;
-	sobj->shadow_color.b = 0x00;
+	sobj->env_color.r = 0x00;
+	sobj->env_color.g = 0x00;
+	sobj->env_color.b = 0x00;
 
 	sobj->sprite.red = 0xB7;
 	sobj->sprite.green = 0xE4;
@@ -969,9 +969,9 @@ void sc1PStageClearMakeTargetTextSObjs(void)
 	sobj->pos.x = 118.0F;
 	sobj->pos.y = y2;
 
-	sobj->shadow_color.r = 0x00;
-	sobj->shadow_color.g = 0x00;
-	sobj->shadow_color.b = 0x00;
+	sobj->env_color.r = 0x00;
+	sobj->env_color.g = 0x00;
+	sobj->env_color.b = 0x00;
 
 	sobj->sprite.red = 0xB7;
 	sobj->sprite.green = 0xE4;
@@ -1322,9 +1322,9 @@ void sc1PStageClearMakeBonusTable(void)
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 
-	sobj->shadow_color.r = 0x00;
-	sobj->shadow_color.g = 0x00;
-	sobj->shadow_color.b = 0x00;
+	sobj->env_color.r = 0x00;
+	sobj->env_color.g = 0x00;
+	sobj->env_color.b = 0x00;
 
 	sobj->sprite.red = 0xFA;
 	sobj->sprite.green = 0xE2;
@@ -1338,9 +1338,9 @@ void sc1PStageClearMakeBonusTable(void)
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 
-	sobj->shadow_color.r = 0xFF;
-	sobj->shadow_color.g = 0xFF;
-	sobj->shadow_color.b = 0x00;
+	sobj->env_color.r = 0xFF;
+	sobj->env_color.g = 0xFF;
+	sobj->env_color.b = 0x00;
 
 	sobj->sprite.red = 0xFF;
 	sobj->sprite.green = 0xFF;

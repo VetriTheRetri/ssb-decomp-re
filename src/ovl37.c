@@ -117,9 +117,9 @@ void mvOpeningDKSetNameColor(SObj* name_sobj)
 {
 	name_sobj->sprite.attr &= ~SP_FASTCOPY;
 	name_sobj->sprite.attr |= SP_TRANSPARENT;
-	name_sobj->shadow_color.r = 0xFF;
-	name_sobj->shadow_color.g = 0xFF;
-	name_sobj->shadow_color.b = 0xFF;
+	name_sobj->env_color.r = 0xFF;
+	name_sobj->env_color.g = 0xFF;
+	name_sobj->env_color.b = 0xFF;
 	name_sobj->sprite.red = 0xFF;
 	name_sobj->sprite.green = 0xFF;
 	name_sobj->sprite.blue = 0xFF;

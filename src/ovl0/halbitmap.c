@@ -1,7 +1,10 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 
+extern u16 sLBCommonExternSpriteAttr;
+extern u16 sLBCommonExternBitmapFmt;
 extern void *sLBCommonPrevBitmapBuf;
+extern void *sLBCommonPrevSpriteTLUT;
 extern s32 sLBCommonScissorXMax;
 extern s32 sLBCommonScissorYMax;
 extern s32 sLBCommonScissorXMin;
@@ -2446,7 +2449,150 @@ void lbCommonDrawSObjBitmap
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CC118.s")
+// 0x800CC118
+void func_ovl0_800CC118(Gfx **dls, SObj *sobj)
+{
+    Gfx *dl = dls[0];
+    Sprite *sprite = &sobj->sprite;
+    
+    if (sLBCommonExternSpriteAttr & SP_LOCAL)
+    {
+        gDPPipeSync(dl++);
+        
+        if (sprite->attr & SP_FASTCOPY)
+        {
+            gDPSetCycleType(dl++, G_CYC_COPY);
+        }
+        else gDPSetCycleType(dl++, G_CYC_1CYCLE);
+        
+        if (sprite->attr & SP_TRANSPARENT)
+        {
+            gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+        }
+        else if (sprite->attr & SP_TRANSPARENT)
+        {
+            gDPSetRenderMode(dl++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+        } 
+        else gDPSetRenderMode(dl++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
+        
+        if (sprite->attr & SP_TEXSHIFT)
+        {
+            gDPSetTextureFilter(dl++, G_TF_AVERAGE);
+        }
+        else gDPSetTextureFilter(dl++, G_TF_BILERP);
+        
+        if (sprite->bmfmt != G_IM_FMT_CI)
+        {
+            gDPSetTextureLUT(dl++, G_TT_NONE);
+        }
+    }
+    else
+    {
+        if (sLBCommonExternSpriteAttr & SP_EXTERN)
+        {
+            sLBCommonExternSpriteAttr = ~sprite->attr;
+        }
+        if (sprite->attr & SP_EXTERN)
+        {
+            sLBCommonExternSpriteAttr = sprite->attr;
+        }
+        if (sprite->attr != sLBCommonExternSpriteAttr)
+        {
+            if (sprite->attr & SP_FASTCOPY)
+            {
+                if (!(sLBCommonExternSpriteAttr & SP_FASTCOPY))
+                {
+                    gDPSetCycleType(dl++, G_CYC_COPY);
+                }
+            }
+            else if (sLBCommonExternSpriteAttr & SP_FASTCOPY)
+            {
+                gDPSetCycleType(dl++, G_CYC_1CYCLE);
+            }
+            if (sprite->attr & SP_TRANSPARENT)
+            {
+                if (!(sLBCommonExternSpriteAttr & SP_TRANSPARENT))
+                {
+                    gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+                }
+            }
+            else if (sprite->attr & SP_CLOUD)
+            {
+                if (!(sLBCommonExternSpriteAttr & SP_CLOUD))
+                {
+                    gDPSetRenderMode(dl++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+                }
+            }
+            else if (sLBCommonExternSpriteAttr & (SP_CLOUD | SP_TRANSPARENT))
+            {
+                gDPSetRenderMode(dl++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
+            }
+            if (sprite->attr & SP_TEXSHIFT)
+            {
+                if (!(sLBCommonExternSpriteAttr & SP_TEXSHIFT))
+                {
+                    gDPSetTextureFilter(dl++, G_TF_AVERAGE);
+                }
+            }
+            else if (sLBCommonExternSpriteAttr & SP_TEXSHIFT)
+            {
+                gDPSetTextureFilter(dl++, G_TF_BILERP);
+            }
+        }
+    }
+    if (sprite->bmfmt != sLBCommonExternBitmapFmt)
+    {
+        switch (sprite->bmfmt)
+        {
+        case G_IM_FMT_I:
+            gDPSetPrimColor(dl++, 0, 0, sprite->red, sprite->green, sprite->blue, sprite->alpha);
+            gDPSetCombineLERP(dl++, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0);
+            break;
+            
+        case G_IM_FMT_IA:
+            gDPSetPrimColor(dl++, 0, 0, sprite->red, sprite->green, sprite->blue, sprite->alpha);
+            gDPSetEnvColor(dl++, sobj->env_color.r, sobj->env_color.g, sobj->env_color.b, sobj->env_color.a);
+            gDPSetCombineLERP(dl++, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, TEXEL0, 0, PRIMITIVE, 0, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, TEXEL0, 0, PRIMITIVE, 0);
+            break;
+
+        case G_IM_FMT_CI:
+            gDPSetTextureLUT(dl++, G_TT_RGBA16);
+            gDPLoadTLUT(dl++, sprite->nTLUT, sprite->startTLUT + 256, sprite->LUT);
+            gDPLoadSync(dl++);
+
+        default:
+            gDPSetCombineMode(dl++, G_CC_DECALRGBA, G_CC_DECALRGBA);
+            break;
+        }
+        if (sprite->bmfmt != G_IM_FMT_CI)
+        {
+            if (sLBCommonExternBitmapFmt == G_IM_FMT_CI)
+            {
+                gDPSetTextureLUT(dl++, G_TT_NONE);
+            }
+        }
+    }
+    else switch (sprite->bmfmt)
+    {
+    case G_IM_FMT_I:
+        gDPSetPrimColor(dl++, 0, 0, sprite->red, sprite->green, sprite->blue, sprite->alpha);
+        break;
+        
+    case G_IM_FMT_IA:
+        gDPSetPrimColor(dl++, 0, 0, sprite->red, sprite->green, sprite->blue, sprite->alpha);
+        gDPSetEnvColor(dl++, sobj->env_color.r, sobj->env_color.g, sobj->env_color.b, sobj->env_color.a);
+        break;
+
+    case G_IM_FMT_CI:
+        if (sprite->LUT != sLBCommonPrevSpriteTLUT)
+        {
+            gDPLoadTLUT(dl++, sprite->nTLUT, sprite->startTLUT + 256, sprite->LUT);
+            gDPLoadSync(dl++);
+            break; 
+        }
+    }
+    dls[0] = dl;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CC818.s")
 
@@ -2469,10 +2615,10 @@ SObj* lbCommonMakeSObjForGObj(GObj *gobj, Sprite *sprite)
     }
     sobj = gcAddSObjForGObj(gobj, sprite);
     
-    sobj->shadow_color.r =
-    sobj->shadow_color.g =
-    sobj->shadow_color.b =
-    sobj->shadow_color.a = 0x00;
+    sobj->env_color.r =
+    sobj->env_color.g =
+    sobj->env_color.b =
+    sobj->env_color.a = 0x00;
     
     sobj->masks = sobj->maskt = 0;
     

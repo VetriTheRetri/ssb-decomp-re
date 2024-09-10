@@ -218,9 +218,9 @@ void mnVsRecordsSetTextureColors(SObj* sobj, u32 colors[])
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
-	sobj->shadow_color.r = (u8) colors[0];
-	sobj->shadow_color.g = (u8) colors[1];
-	sobj->shadow_color.b = (u8) colors[2];
+	sobj->env_color.r = (u8) colors[0];
+	sobj->env_color.g = (u8) colors[1];
+	sobj->env_color.b = (u8) colors[2];
 	sobj->sprite.red = (u8) colors[3];
 	sobj->sprite.green = (u8) colors[4];
 	sobj->sprite.blue = (u8) colors[5];
@@ -503,9 +503,9 @@ void mnVsRecordsCreateTitle()
 	title_sobj = lbCommonMakeSObjForGObj(title_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_VS_RECORD_IMAGE_OFFSET));
 	title_sobj->sprite.attr &= ~SP_FASTCOPY;
 	title_sobj->sprite.attr |= SP_TRANSPARENT;
-	title_sobj->shadow_color.r = 0;
-	title_sobj->shadow_color.g = 0;
-	title_sobj->shadow_color.b = 0;
+	title_sobj->env_color.r = 0;
+	title_sobj->env_color.g = 0;
+	title_sobj->env_color.b = 0;
 	title_sobj->sprite.red = 0xF2;
 	title_sobj->sprite.green = 0xC7;
 	title_sobj->sprite.blue = 0xD;

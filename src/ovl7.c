@@ -644,9 +644,9 @@ void scTrainingMode_InitStatDisplayTextInterface()
 		sobj->sprite.green = 0xAE;
 		sobj->sprite.blue = 0xDD;
 
-		sobj->shadow_color.r = 0;
-		sobj->shadow_color.g = 0;
-		sobj->shadow_color.b = 0;
+		sobj->env_color.r = 0;
+		sobj->env_color.g = 0;
+		sobj->env_color.b = 0;
 
 		sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 	}
@@ -716,9 +716,9 @@ void scTrainingMode_InitStatDisplayCharacterVars()
 // 8018E300
 void scTrainingMode_InitSObjColors(SObj* sobj)
 {
-	sobj->shadow_color.r = 0x00;
-	sobj->shadow_color.g = 0x00;
-	sobj->shadow_color.b = 0x00;
+	sobj->env_color.r = 0x00;
+	sobj->env_color.g = 0x00;
+	sobj->env_color.b = 0x00;
 }
 
 // 8018E310
@@ -963,9 +963,9 @@ void scTrainingMode_MakeMenuLabelsInterface()
 			sobj->sprite.green = 0xA7;
 			sobj->sprite.blue = 0x6A;
 
-			sobj->shadow_color.r = 0x00;
-			sobj->shadow_color.g = 0x00;
-			sobj->shadow_color.b = 0x00;
+			sobj->env_color.r = 0x00;
+			sobj->env_color.g = 0x00;
+			sobj->env_color.b = 0x00;
 		}
 		sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 	}
@@ -1037,9 +1037,9 @@ void scTrainingMode_MakeCPOptionInterface()
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
 	sobj->pos.y = 65.0F;
 
-	sobj->shadow_color.r = 0x4A;
-	sobj->shadow_color.g = 0x2E;
-	sobj->shadow_color.b = 0x60;
+	sobj->env_color.r = 0x4A;
+	sobj->env_color.g = 0x2E;
+	sobj->env_color.b = 0x60;
 }
 
 // 8018F040
@@ -1086,9 +1086,9 @@ void scTrainingMode_MakeItemOptionInterface()
 
 	scTrainingMode_InitItemOptionSprite();
 
-	sobj->shadow_color.r = 0x4A;
-	sobj->shadow_color.g = 0x2E;
-	sobj->shadow_color.b = 0x60;
+	sobj->env_color.r = 0x4A;
+	sobj->env_color.g = 0x2E;
+	sobj->env_color.b = 0x60;
 }
 
 // 8018F264
@@ -1134,9 +1134,9 @@ void scTrainingMode_MakeSpeedOptionInterface()
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
 	sobj->pos.y = 105.0F;
 
-	sobj->shadow_color.r = 0x4A;
-	sobj->shadow_color.g = 0x2E;
-	sobj->shadow_color.b = 0x60;
+	sobj->env_color.r = 0x4A;
+	sobj->env_color.g = 0x2E;
+	sobj->env_color.b = 0x60;
 }
 
 // 8018F41C
@@ -1181,9 +1181,9 @@ void scTrainingMode_MakeViewOptionInterface()
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
 	sobj->pos.y = 125.0F;
 
-	sobj->shadow_color.r = 0x4A;
-	sobj->shadow_color.g = 0x2E;
-	sobj->shadow_color.b = 0x60;
+	sobj->env_color.r = 0x4A;
+	sobj->env_color.g = 0x2E;
+	sobj->env_color.b = 0x60;
 
 	gcAddGObjProcess(interface_gobj, scTrainingMode_UpdateMagnifyWait, 1, 4);
 }
@@ -1204,9 +1204,9 @@ void scTrainingMode_InitOptionArrowColors(SObj* sobj)
 	sobj->sprite.green = 0x10;
 	sobj->sprite.blue = 0xE;
 
-	sobj->shadow_color.r = 0x00;
-	sobj->shadow_color.g = 0x00;
-	sobj->shadow_color.b = 0x00;
+	sobj->env_color.r = 0x00;
+	sobj->env_color.g = 0x00;
+	sobj->env_color.b = 0x00;
 }
 
 // 8018F630

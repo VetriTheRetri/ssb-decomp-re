@@ -154,6 +154,8 @@ typedef struct sprite Sprite;
 #define SP_FRACPOS		0x00000100
 #define SP_TEXSHUF		0x00000200
 #define SP_EXTERN		0x00000400
+#define SP_LOCAL		0x00000800
+#define SP_CLOUD		0x00001000
 
 /*
  * Function prototypes

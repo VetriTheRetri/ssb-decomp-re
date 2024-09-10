@@ -192,9 +192,9 @@ void mnBonusSetTextureColors(SObj* sobj, u32 colors[])
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
-	sobj->shadow_color.r = colors[0];
-	sobj->shadow_color.g = colors[1];
-	sobj->shadow_color.b = colors[2];
+	sobj->env_color.r = colors[0];
+	sobj->env_color.g = colors[1];
+	sobj->env_color.b = colors[2];
 	sobj->sprite.red = colors[3];
 	sobj->sprite.green = colors[4];
 	sobj->sprite.blue = colors[5];
@@ -503,9 +503,9 @@ void mnBonusCreateLockedPortrait(s32 portrait_id)
 	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, GetAddressFromOffset(gMnBonusFilesArray[4], &FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET));
 	texture_sobj->sprite.attr &= ~SP_FASTCOPY;
 	texture_sobj->sprite.attr |= SP_TRANSPARENT;
-	texture_sobj->shadow_color.r = 0x5B;
-	texture_sobj->shadow_color.g = 0x41;
-	texture_sobj->shadow_color.b = 0x33;
+	texture_sobj->env_color.r = 0x5B;
+	texture_sobj->env_color.g = 0x41;
+	texture_sobj->env_color.b = 0x33;
 	texture_sobj->sprite.red = 0xC4;
 	texture_sobj->sprite.green = 0xB9;
 	texture_sobj->sprite.blue = 0xA9;
@@ -947,9 +947,9 @@ void mnBonusDrawBestTime()
 		temp_v0_3->pos.y = 195.0f;
 		temp_v0_3->sprite.attr &= ~SP_FASTCOPY;
 		temp_v0_3->sprite.attr |= SP_TRANSPARENT;
-		temp_v0_3->shadow_color.r = 0;
-		temp_v0_3->shadow_color.g = 0;
-		temp_v0_3->shadow_color.b = 0;
+		temp_v0_3->env_color.r = 0;
+		temp_v0_3->env_color.g = 0;
+		temp_v0_3->env_color.b = 0;
 		temp_v0_3->sprite.red = 0x7E;
 		temp_v0_3->sprite.green = 0x7C;
 		temp_v0_3->sprite.blue = 0x77;
@@ -961,9 +961,9 @@ void mnBonusDrawBestTime()
 		temp_v0_4->pos.y = 195.0f;
 		temp_v0_4->sprite.attr &= ~SP_FASTCOPY;
 		temp_v0_4->sprite.attr |= SP_TRANSPARENT;
-		temp_v0_4->shadow_color.r = 0;
-		temp_v0_4->shadow_color.g = 0;
-		temp_v0_4->shadow_color.b = 0;
+		temp_v0_4->env_color.r = 0;
+		temp_v0_4->env_color.g = 0;
+		temp_v0_4->env_color.b = 0;
 		temp_v0_4->sprite.red = 0x7E;
 		temp_v0_4->sprite.green = 0x7C;
 		temp_v0_4->sprite.blue = 0x77;
@@ -1097,9 +1097,9 @@ void mnDrawBonusTotalTime()
 	temp_v0_4->pos.y = 206.0f;
 	temp_v0_4->sprite.attr &= ~SP_FASTCOPY;
 	temp_v0_4->sprite.attr |= SP_TRANSPARENT;
-	temp_v0_4->shadow_color.r = 0;
-	temp_v0_4->shadow_color.g = 0;
-	temp_v0_4->shadow_color.b = 0;
+	temp_v0_4->env_color.r = 0;
+	temp_v0_4->env_color.g = 0;
+	temp_v0_4->env_color.b = 0;
 	temp_v0_4->sprite.red = 0x7E;
 	temp_v0_4->sprite.green = 0x7C;
 	temp_v0_4->sprite.blue = 0x77;
@@ -1114,9 +1114,9 @@ void mnDrawBonusTotalTime()
 	temp_v0_3->pos.y = 206.0f;
 	temp_v0_3->sprite.attr &= ~SP_FASTCOPY;
 	temp_v0_3->sprite.attr |= SP_TRANSPARENT;
-	temp_v0_3->shadow_color.r = 0;
-	temp_v0_3->shadow_color.g = 0;
-	temp_v0_3->shadow_color.b = 0;
+	temp_v0_3->env_color.r = 0;
+	temp_v0_3->env_color.g = 0;
+	temp_v0_3->env_color.b = 0;
 	temp_v0_3->sprite.red = 0x7E;
 	temp_v0_3->sprite.green = 0x7C;
 	temp_v0_3->sprite.blue = 0x77;
@@ -1302,9 +1302,9 @@ void mnBonusRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state)
 	cursor_sobj->sprite.red = type_colors[port_id].prim.r;
 	cursor_sobj->sprite.green = type_colors[port_id].prim.g;
 	cursor_sobj->sprite.blue = type_colors[port_id].prim.b;
-	cursor_sobj->shadow_color.r = type_colors[port_id].env.r;
-	cursor_sobj->shadow_color.g = type_colors[port_id].env.g;
-	cursor_sobj->shadow_color.b = type_colors[port_id].env.b;
+	cursor_sobj->env_color.r = type_colors[port_id].env.r;
+	cursor_sobj->env_color.g = type_colors[port_id].env.g;
+	cursor_sobj->env_color.b = type_colors[port_id].env.b;
 }
 
 // 80134574 - Unused?
@@ -2298,9 +2298,9 @@ void mnBonusCreateReadyToFightObjects()
 	sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMnBonusFilesArray[0], &FILE_011_READY_TO_FIGHT_BG_IMAGE_OFFSET));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
-	sobj->shadow_color.r = 0;
-	sobj->shadow_color.g = 0;
-	sobj->shadow_color.b = 0;
+	sobj->env_color.r = 0;
+	sobj->env_color.g = 0;
+	sobj->env_color.b = 0;
 	sobj->sprite.red = 0xF4;
 	sobj->sprite.green = 0x56;
 	sobj->sprite.blue = 0x7F;
@@ -2317,9 +2317,9 @@ void mnBonusCreateReadyToFightObjects()
 	sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMnBonusFilesArray[0], &FILE_011_READY_TO_FIGHT_IMAGE_OFFSET));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
-	sobj->shadow_color.r = 0xFF;
-	sobj->shadow_color.g = 0xCA;
-	sobj->shadow_color.b = 0x13;
+	sobj->env_color.r = 0xFF;
+	sobj->env_color.g = 0xCA;
+	sobj->env_color.b = 0x13;
 	sobj->sprite.red = 0xFF;
 	sobj->sprite.green = 0xFF;
 	sobj->sprite.blue = 0x9D;

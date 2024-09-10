@@ -276,9 +276,9 @@ void mnVSModeUpdateButton(GObj* button_gobj, s32 button_status)
 
     for (i = 0; i < nMNOptionTabStatusEnumMax; i++)
     {
-        button_sobj->shadow_color.r = colors->prim.r;
-        button_sobj->shadow_color.g = colors->prim.g;
-        button_sobj->shadow_color.b = colors->prim.b;
+        button_sobj->env_color.r = colors->prim.r;
+        button_sobj->env_color.g = colors->prim.g;
+        button_sobj->env_color.b = colors->prim.b;
         button_sobj->sprite.red = colors->env.r;
         button_sobj->sprite.green = colors->env.g;
         button_sobj->sprite.blue = colors->env.b;
@@ -757,9 +757,9 @@ void mnVSModeSetColorsUnused(SObj* sobj)
 {
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
-    sobj->shadow_color.r = 0;
-    sobj->shadow_color.g = 0;
-    sobj->shadow_color.b = 0;
+    sobj->env_color.r = 0;
+    sobj->env_color.g = 0;
+    sobj->env_color.b = 0;
     sobj->sprite.red = 0xFF;
     sobj->sprite.green = 0xFF;
     sobj->sprite.blue = 0xFF;

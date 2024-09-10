@@ -419,9 +419,9 @@ void mnStageCreateStageSelectGfx()
 	stage_select_sobj = lbCommonMakeSObjForGObj(stage_select_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_STAGE_SELECT_IMAGE_OFFSET));
 	stage_select_sobj->sprite.attr &= ~SP_FASTCOPY;
 	stage_select_sobj->sprite.attr |= SP_TRANSPARENT;
-	stage_select_sobj->shadow_color.r = 0;
-	stage_select_sobj->shadow_color.g = 0;
-	stage_select_sobj->shadow_color.b = 0;
+	stage_select_sobj->env_color.r = 0;
+	stage_select_sobj->env_color.g = 0;
+	stage_select_sobj->env_color.b = 0;
 	stage_select_sobj->sprite.red = 0xAF;
 	stage_select_sobj->sprite.green = 0xB1;
 	stage_select_sobj->sprite.blue = 0xCC;

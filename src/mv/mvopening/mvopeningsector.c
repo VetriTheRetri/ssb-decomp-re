@@ -313,7 +313,7 @@ void mvOpeningSectorCockpitProcRender(GObj *cockpit_gobj)
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
     gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x00, 0x00, 0x00, sMVOpeningSectorCockpitAlpha);
-    gDPSetEnvColor(gDisplayListHead[0]++, cockpit_sobj->shadow_color.r, cockpit_sobj->shadow_color.g, cockpit_sobj->shadow_color.b, cockpit_sobj->shadow_color.a);
+    gDPSetEnvColor(gDisplayListHead[0]++, cockpit_sobj->env_color.r, cockpit_sobj->env_color.g, cockpit_sobj->env_color.b, cockpit_sobj->env_color.a);
     gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, TEXEL0,  0, 0, 0, PRIMITIVE,  0, 0, 0, TEXEL0,  0, 0, 0, PRIMITIVE);
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 

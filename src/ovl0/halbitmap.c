@@ -1,6 +1,12 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 
+extern void *sLBCommonPrevBitmapBuf;
+extern s32 sLBCommonScissorXMax;
+extern s32 sLBCommonScissorYMax;
+extern s32 sLBCommonScissorXMin;
+extern s32 sLBCommonScissorYMin;
+
 extern void hal_interpolation_cubic(void*, void*, f32);
 extern void* func_80026A10_27610(u16);
 
@@ -2107,24 +2113,338 @@ sb32 (*dLBCommonProcMatrixList[/* */])(/* */) =
 };
 
 // 0x800CB644
-u8 func_ovl0_800CB644(u8 index)
+u8 lbCommonGetBitmapDecodeNibble(u8 index)
 {
-	u8 array[/* */] =
-    {
-
-		0x00, 0x05, 0x0A, 0x0F
-	};
+	u8 array[/* */] = { 0x00, 0x05, 0x0A, 0x0F };
 
 	return array[index];
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB674.s")
+// 0x800CB674
+void lbCommonDecodeBitmapSiz4b(u8 *bitmap_csr, u8 *bitmap_buf, u8 *bitmap_start)
+{
+    while (bitmap_csr >= bitmap_start)
+    {
+        u8 temp;
+        
+        bitmap_buf[0] = lbCommonGetBitmapDecodeNibble(*bitmap_csr & 3);
+        bitmap_buf[0] |= lbCommonGetBitmapDecodeNibble((*bitmap_csr & 12) >> 2) << 4;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB738.s")
+        bitmap_buf[-1] =  lbCommonGetBitmapDecodeNibble((*bitmap_csr & 48) >> 4);
+
+        temp = lbCommonGetBitmapDecodeNibble((*bitmap_csr & 192) >> 6);
+        
+        bitmap_csr--;
+
+        bitmap_buf -= 2;
+
+        bitmap_buf[1] |= temp << 4;
+    }
+}
+
+// 0x800CB738
+void lbCommonDecodeSpriteBitmapsSiz4b(Sprite *sprite)
+{
+    s32 n;
+    Bitmap *bitmap;
+    
+    for (n = sprite->nbitmaps, bitmap = sprite->bitmap; n > 0; n--)
+    {
+        s32 res = (bitmap[n - 1].width_img / 2) * bitmap[n - 1].actualHeight;
+            
+        lbCommonDecodeBitmapSiz4b
+        (
+            (u8*) ((u8*)bitmap[n - 1].buf + (res / 2) - 1), 
+            (u8*) ((u8*)bitmap[n - 1].buf + (res - 1)),
+            (u8*) ((u8*)bitmap[n - 1].buf)
+        );
+    }
+    sprite->bmsiz = G_IM_SIZ_4b;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/D_ovl0_800D5E10.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB7D4.s")
+// 0x800CB7D4
+void lbCommonDrawSObjBitmap
+(
+    Gfx **dls,
+    SObj *sobj,
+    Sprite *sprite,
+    Bitmap *bitmap,
+    s32 x, s32 y,
+    s32 xx, s32 yy,
+    s32 fs, s32 ft,
+    s32 sx, s32 sy
+)
+{
+    s32 rs, rt;
+    s32 rxh, ryh;
+    s32 rxl, ryl;
+    Gfx *dl;
+    s32 tex_width, tex_height;
+    void *buf;
+
+    if (bitmap->buf == NULL)
+    {
+        while (TRUE)
+        {
+            syErrorPrintf("drawBitMap: no bitmap data!\n");
+            scManagerRunPrintGObjStatus();
+        }
+    }
+    if (yy >= sLBCommonScissorYMin)
+    {
+        if (sprite->attr & SP_FASTCOPY)
+        {
+            yy--;
+        }
+        dl = dls[0];
+        
+        if (sprite->attr & SP_TEXSHIFT)
+        {
+            fs += 16;
+            ft += 16;
+        }
+        tex_width = bitmap->width;
+        tex_height = bitmap->actualHeight;
+        
+        if (x < sLBCommonScissorXMin)
+        {
+            rxh = sLBCommonScissorXMin * 4;
+            rs = fs + (((sLBCommonScissorXMin - x) * sx) >> 5);
+        }
+        else
+        {
+            rxh = x * 4;
+            rs = fs;
+        }
+        if (y < sLBCommonScissorYMin)
+        {
+            ryh = sLBCommonScissorYMin * 4;
+            rt = ft + (((sLBCommonScissorYMin - y) * sy) >> 5);
+        }
+        else
+        {
+            ryh = y * 4;
+            rt = ft;
+        }
+        if (xx >= sLBCommonScissorXMax)
+        {
+            rxl = sLBCommonScissorXMax * 4;
+        }
+        else rxl = xx * 4;
+    
+        if (yy >= sLBCommonScissorYMax)
+        {
+            ryl = sLBCommonScissorYMax * 4;
+        }
+        else ryl = yy * 4;
+        
+        if (bitmap->buf != sLBCommonPrevBitmapBuf)
+        {
+            switch (sprite->bmsiz)
+            {
+            case G_IM_SIZ_4b:
+                gDPSetTextureImage(dl++, sprite->bmfmt, G_IM_SIZ_16b, 1, bitmap->buf);
+                gDPSetTile
+                (
+                    dl++,
+                    sprite->bmfmt,
+                    G_IM_SIZ_16b,
+                    0,
+                    0,
+                    G_TX_LOADTILE,
+                    NULL,
+                    sobj->cms,
+                    sobj->masks,
+                    G_TX_NOLOD,
+                    sobj->cmt,
+                    sobj->maskt,
+                    G_TX_NOLOD
+                );
+                gDPLoadSync(dl++);
+                gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, (((bitmap->width_img * tex_height) + 3) >> 2) - 1, 0);
+                gDPPipeSync(dl++);
+                gDPSetTile
+                (
+                    dl++,
+                    sprite->bmfmt,
+                    G_IM_SIZ_4b, 
+                    (((tex_width) >> 1) + 7) >> 3,
+                    0,
+                    G_TX_RENDERTILE,
+                    NULL,
+                    sobj->cms,
+                    sobj->masks,
+                    G_TX_NOLOD,
+                    sobj->cmt,
+                    sobj->maskt,
+                    G_TX_NOLOD
+                );
+                gDPSetTileSize
+                (
+                    dl++,
+                    G_TX_RENDERTILE,
+                    0,
+                    0,
+                    ((tex_width)-1) << G_TEXTURE_IMAGE_FRAC,
+                    ((tex_height)-1) << G_TEXTURE_IMAGE_FRAC
+                );
+                break;
+                
+            case G_IM_SIZ_8b:
+                gDPSetTextureImage(dl++, sprite->bmfmt, G_IM_SIZ_8b_LOAD_BLOCK, 1, bitmap->buf);
+                gDPSetTile
+                (
+                    dl++,
+                    sprite->bmfmt,
+                    G_IM_SIZ_8b_LOAD_BLOCK,
+                    0,
+                    0,
+                    G_TX_LOADTILE,
+                    NULL,
+                    sobj->cms,
+                    sobj->masks,
+                    G_TX_NOLOD,
+                    sobj->cmt,
+                    sobj->maskt,
+                    G_TX_NOLOD
+                );
+                gDPLoadSync(dl++);
+                gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, (((bitmap->width_img * tex_height) + 1) >> G_IM_SIZ_8b_SHIFT) - 1, 0);
+                gDPPipeSync(dl++);
+                gDPSetTile
+                (
+                    dl++,
+                    sprite->bmfmt,
+                    G_IM_SIZ_8b, 
+                    ((tex_width * G_IM_SIZ_8b_LINE_BYTES) + 7) >> 3,
+                    0,
+                    G_TX_RENDERTILE,
+                    NULL,
+                    sobj->cms,
+                    sobj->masks,
+                    G_TX_NOLOD,
+                    sobj->cmt,
+                    sobj->maskt,
+                    G_TX_NOLOD
+                );
+                gDPSetTileSize
+                (
+                    dl++,
+                    G_TX_RENDERTILE,
+                    0,
+                    0,
+                    ((tex_width)-1) << G_TEXTURE_IMAGE_FRAC,
+                    ((tex_height)-1) << G_TEXTURE_IMAGE_FRAC
+                );
+                break;
+                
+            case G_IM_SIZ_16b:
+                gDPSetTextureImage(dl++, sprite->bmfmt, G_IM_SIZ_16b_LOAD_BLOCK, 1, bitmap->buf);
+                gDPSetTile
+                (
+                    dl++,
+                    sprite->bmfmt,
+                    G_IM_SIZ_16b_LOAD_BLOCK,
+                    0,
+                    0,
+                    G_TX_LOADTILE,
+                    NULL,
+                    sobj->cms,
+                    sobj->masks,
+                    G_TX_NOLOD,
+                    sobj->cmt,
+                    sobj->maskt,
+                    G_TX_NOLOD
+                );
+                gDPLoadSync(dl++);
+                gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, (((bitmap->width_img * tex_height) + 1) >> G_IM_SIZ_16b_SHIFT) - 2, 0);
+                gDPPipeSync(dl++);
+                gDPSetTile
+                (
+                    dl++,
+                    sprite->bmfmt,
+                    G_IM_SIZ_16b, 
+                    ((tex_width * G_IM_SIZ_16b_LINE_BYTES) + 7) >> 3,
+                    0,
+                    G_TX_RENDERTILE,
+                    NULL,
+                    sobj->cms,
+                    sobj->masks,
+                    G_TX_NOLOD,
+                    sobj->cmt,
+                    sobj->maskt,
+                    G_TX_NOLOD
+                );
+                gDPSetTileSize
+                (
+                    dl++,
+                    G_TX_RENDERTILE,
+                    0,
+                    0,
+                    ((tex_width)-1) << G_TEXTURE_IMAGE_FRAC,
+                    ((tex_height)-1) << G_TEXTURE_IMAGE_FRAC
+                );
+                break;
+                
+            case G_IM_SIZ_32b:
+                gDPSetTextureImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_32b_LOAD_BLOCK, 1, bitmap->buf);
+                gDPSetTile
+                (
+                    dl++,
+                    G_IM_FMT_RGBA,
+                    G_IM_SIZ_32b_LOAD_BLOCK,
+                    0,
+                    0,
+                    G_TX_LOADTILE,
+                    NULL,
+                    sobj->cms,
+                    sobj->masks,
+                    G_TX_NOLOD,
+                    sobj->cmt,
+                    sobj->maskt,
+                    G_TX_NOLOD
+                );
+                gDPLoadSync(dl++);
+                gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, (((bitmap->width_img * tex_height) + 1) >> G_IM_SIZ_32b_SHIFT) - 2, 0);
+                gDPPipeSync(dl++);
+                gDPSetTile
+                (
+                    dl++,
+                    G_IM_FMT_RGBA,
+                    G_IM_SIZ_32b, 
+                    ((tex_width * G_IM_SIZ_32b_LINE_BYTES) + 7) >> 3,
+                    0,
+                    G_TX_RENDERTILE,
+                    NULL,
+                    sobj->cms,
+                    sobj->masks,
+                    G_TX_NOLOD,
+                    sobj->cmt,
+                    sobj->maskt,
+                    G_TX_NOLOD
+                );
+                gDPSetTileSize
+                (
+                    dl++,
+                    G_TX_RENDERTILE,
+                    0,
+                    0,
+                    ((tex_width)-1) << G_TEXTURE_IMAGE_FRAC,
+                    ((tex_height)-1) << G_TEXTURE_IMAGE_FRAC
+                );
+                break;
+            }
+            sLBCommonPrevBitmapBuf = bitmap->buf;
+        }        
+        gSPTextureRectangle(dl++, rxh, ryh, rxl, ryl, 0, rs, rt, sx, sy);
+
+        gDPPipeSync(dl++);
+        
+        dls[0] = dl;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CC118.s")
 
@@ -2145,7 +2465,7 @@ SObj* lbCommonMakeSObjForGObj(GObj *gobj, Sprite *sprite)
 
     if (sprite->bmsiz == 4)
     {
-        func_ovl0_800CB738(sprite);
+        lbCommonDecodeSpriteBitmapsSiz4b(sprite);
     }
     sobj = gcAddSObjForGObj(gobj, sprite);
     

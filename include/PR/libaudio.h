@@ -791,6 +791,7 @@ extern "C"
 		ALPlayer node; /* note: must be first in structure */
 		ALSynth* drvr; /* reference to the client driver   */
 		ALSeq* target; /* current sequence                 */
+		s32 unkA[2];
 		ALMicroTime curTime;
 		ALBank* bank;  /* current ALBank                   */
 		s32 uspt;	   /* microseconds per tick            */
@@ -809,6 +810,7 @@ extern "C"
 		ALVoiceState* vFreeList;  /* list of free voice state structs */
 		ALOscInit initOsc;
 		ALOscUpdate updateOsc;
+		s32 unkB;
 		ALOscStop stopOsc;
 		ALSeqMarker* loopStart;
 		ALSeqMarker* loopEnd;

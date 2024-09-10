@@ -146,9 +146,9 @@ mtTrigGetRandomTimeUChar = 0x800189D4;
 mtTrigGetRandomTimeFloat = 0x800189F8;
 mtTrigGetRandomTimeUCharRange = 0x80018A30;
 swap_mem = 0x80018A80;
-func_80018AB8 = 0x80018AB8;
-unref_80018C14 = 0x80018C14;
-unref_80018CEC = 0x80018CEC;
+qsortInternal = 0x80018AB8;
+qsort2 = 0x80018C14;
+find = 0x80018CEC;
 unref_80018E1C = 0x80018E1C;
 
 syMainGetThread4StackStart = 0x80000460;

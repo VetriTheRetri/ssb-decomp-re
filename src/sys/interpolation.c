@@ -56,41 +56,27 @@ void func_8001D610(Vec3f *out, Vec3f *ctrl, f32 s, f32 t) {
 #endif
 
 // quadratic spline?
-void func_8001D754(Vec3f *out, Vec3f *ctrl, f32 s, f32 t);
-#ifdef NON_MATCHING
-#define BASIS1(t, s) ((-3.0f * SQ((t)) + 4.0f * (t)-1.0f) * (s))
-#define BASIS2(t, s) ((2.0f - (s)) * 3.0f * SQ((t)) + 2.0f * ((s)-3.0f) * (t))
-#define BASIS3(t, s) (((s)-2.0f) * 3.0f * SQ((t)) + 2.0f * (3.0f - 2.0f * (s)) * (t) + (s))
-#define BASIS4(t, s) ((3.0f * SQ((t)) - 2.0f * (t)) * (s))
+void func_8001D754(Vec3f* out, Vec3f* ctrl, f32 s, f32 t) {
+    f32 tSq;
+    f32 b2;
+    f32 b3;
+    f32 b1;
+    f32 temp;
+    f32 other;
 
-void func_8001D754(Vec3f *out, Vec3f *ctrl, f32 s, f32 t) {
-    // f32 b1, b2, b3, b4;
-    f32 sX, sY, sZ;
+    tSq = t * t;
+    b1 = ((((-3.0f) * tSq) + (4.0f * t)) - 1.0f) * s;
+    temp = s - 3.0f;
+    other = s;
+    b2 = (((2.0f - other) * 3.0f) * tSq) + ((2.0f * temp) * t);
+    temp = 3.0f - (2.0f * other);
+    b3 = ((((other - 2.0f) * 3.0f) * tSq) + ((2.0f * temp) * t)) + other;
+    other = ((3.0f * tSq) - (2.0f * t)) * other;
 
-    // b1 = BASIS1(t,s);
-    // b2 = BASIS2(t,s);
-    // b3 = BASIS3(t,s);
-    // b4 = BASIS4(t,s);
-
-    sX = ctrl[0].x * BASIS1(t, s) + ctrl[1].x * BASIS2(t, s) + ctrl[2].x * BASIS3(t, s)
-       + ctrl[3].x * BASIS4(t, s);
-    sY = ctrl[0].y * BASIS1(t, s) + ctrl[1].y * BASIS2(t, s) + ctrl[2].y * BASIS3(t, s)
-       + ctrl[3].y * BASIS4(t, s);
-    sZ = ctrl[0].z * BASIS1(t, s) + ctrl[1].z * BASIS2(t, s) + ctrl[2].z * BASIS3(t, s)
-       + ctrl[3].z * BASIS4(t, s);
-
-    out->x = sX;
-    out->y = sY;
-    out->z = sZ;
+    out->x = (ctrl[0].x * b1) + (ctrl[1].x * b2) + (ctrl[2].x * b3) + (ctrl[3].x * other);
+    out->y = (ctrl[0].y * b1) + (ctrl[1].y * b2) + (ctrl[2].y * b3) + (ctrl[3].y * other);
+    out->z = (ctrl[0].z * b1) + (ctrl[1].z * b2) + (ctrl[2].z * b3) + (ctrl[3].z * other);
 }
-
-#undef BASIS1
-#undef BASIS2
-#undef BASIS3
-#undef BASIS4
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/interpolation/func_8001D754.s")
-#endif
 
 // some sort of bezier interpolation
 void func_8001D8E0(Vec3f *out, Vec3f *ctrl, f32 t);
@@ -122,9 +108,8 @@ void func_8001D8E0(Vec3f *out, Vec3f *ctrl, f32 t) {
 #endif
 
 // quadratic bezier with four control points (not three?)
-void func_8001DA40(Vec3f *out, Vec3f *ctrl, f32 t);
-#ifdef NON_MATCHING
-void func_8001DA40(Vec3f *out, Vec3f *ctrl, f32 t) {
+void func_8001DA40(Vec3f* out, Vec3f* ctrl, f32 t) {
+    UNUSED s32 pad[2];
     f32 tSq;
     f32 mt;
     f32 b2;
@@ -133,19 +118,16 @@ void func_8001DA40(Vec3f *out, Vec3f *ctrl, f32 t) {
     f32 b1;
 
     tSq = t * t;
-    mt  = 1.0f - t;
-    b4  = 0.5f * SQ(t);
-    b1  = -0.5f * SQ(1.0f - t);
-    b2  = ((3.0f * SQ(t)) - (4.0f * t)) * 0.5f;
-    b3  = ((-3.0f * SQ(t)) + (2.0f * t) + 1.0f) * 0.5f;
+    b1 = 1.0f - t;
+    b4 = -0.5f * b1 * b1;
+    mt = ((3.0f * tSq) - (4.0f * t)) * 0.5f;
+    b2 = ((-3.0f * tSq) + (2.0f * t) + 1.0f) * 0.5f;
+    b3 = 0.5f * tSq;
 
-    out->x = (ctrl[3].x * b4) + ((ctrl[0].x * b1) + (ctrl[1].x * b2) + (ctrl[2].x * b3));
-    out->y = (ctrl[3].y * b4) + ((ctrl[0].y * b1) + (ctrl[1].y * b2) + (ctrl[2].y * b3));
-    out->z = (ctrl[3].z * b4) + ((ctrl[0].z * b1) + (ctrl[1].z * b2) + (ctrl[2].z * b3));
+    out->x = (ctrl[0].x * b4) + (ctrl[1].x * mt) + (ctrl[2].x * b2) + (ctrl[3].x * b3);
+    out->y = (ctrl[0].y * b4) + (ctrl[1].y * mt) + (ctrl[2].y * b2) + (ctrl[3].y * b3);
+    out->z = (ctrl[0].z * b4) + (ctrl[1].z * mt) + (ctrl[2].z * b2) + (ctrl[3].z * b3);
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/interpolation/func_8001DA40.s")
-#endif
 
 // cubic bezier with scale factor of 3?
 void func_8001DB74(Vec3f *out, Vec3f *ctrl, f32 t);
@@ -175,9 +157,7 @@ void func_8001DB74(Vec3f *out, Vec3f *ctrl, f32 t) {
 #endif
 
 // four point quadratic bezier with scale of 3?
-void func_8001DC88(Vec3f *out, Vec3f *ctrl, f32 t);
-#ifdef NON_MATCHING
-void func_8001DC88(Vec3f *out, Vec3f *ctrl, f32 t) {
+void func_8001DC88(Vec3f* out, Vec3f* ctrl, f32 t) {
     f32 mt;
     f32 b1;
     f32 b2;
@@ -185,20 +165,17 @@ void func_8001DC88(Vec3f *out, Vec3f *ctrl, f32 t) {
     f32 b4;
 
     mt = t - 1.0f;
+    b4 = -3.0f * mt * mt;
+    b1 = SQ(t);
+    b1 = 3.0f * b1;
+    b2 = ((1.0f - (4.0f * t)) + b1) * 3.0f;
+    b3 = ((2.0f * t) - b1) * 3.0f;
 
-    b4 = 3.0f * SQ(t);
-    b1 = -3.0f * SQ(mt);
-    b2 = ((1.0f - (4.0f * t)) + (3.0f * SQ(t))) * 3.0f;
-    b3 = ((2.0f * t) - (3.0f * SQ(t))) * 3.0f;
-
-    out->x = (ctrl[3].x * b4) + ((ctrl[0].x * b1) + (ctrl[1].x * b2) + (ctrl[2].x * b3));
-    out->y = (ctrl[3].y * b4) + ((ctrl[0].y * b1) + (ctrl[1].y * b2) + (ctrl[2].y * b3));
-    out->z = (ctrl[3].z * b4) + ((ctrl[0].z * b1) + (ctrl[1].z * b2) + (ctrl[2].z * b3));
+    out->x = (ctrl[0].x * b4) + (ctrl[1].x * b2) + (ctrl[2].x * b3) + (ctrl[3].x * b1);
+    out->y = (ctrl[0].y * b4) + (ctrl[1].y * b2) + (ctrl[2].y * b3) + (ctrl[3].y * b1);
+    out->z = (ctrl[0].z * b4) + (ctrl[1].z * b2) + (ctrl[2].z * b3) + (ctrl[3].z * b1);
 }
 
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/interpolation/func_8001DC88.s")
-#endif
 
 // arg1->unk02 is total frames? elapsed frames?
 // delta time cubic interpolation?

@@ -13,8 +13,8 @@
 s32 sLcgSeed     = 1;
 s32 *sLcgSeedPtr = &sLcgSeed;
 
-s32 D_8003B948                = 0;
-s32 (*D_8003B94C)(u8 *, u8 *) = NULL;
+s32 qsortItemSize                = 0;
+s32 (*qsortCompareFunc)(const void*, const void*) = NULL;
 
 f32 tanf(f32 angle) {
     return __sinf(angle) / __cosf(angle);
@@ -164,40 +164,40 @@ void swap_mem(u8 *buf1, u8 *buf2, s32 len) {
     }
 }
 
-void func_80018AB8(u8 *arg0, u8 *arg1) {
+void qsortInternal(u8 *arg0, u8 *arg1) {
     u8 *s0;
     u8 *s1;
 
     s0 = arg0;
-    s1 = arg1 + D_8003B948;
+    s1 = arg1 + qsortItemSize;
 
     while (arg0 < arg1) {
     restart:
         do {
-            s0 += D_8003B948;
+            s0 += qsortItemSize;
             if (s0 >= arg1) { break; }
-        } while (D_8003B94C(s0, arg0) <= 0);
+        } while (qsortCompareFunc(s0, arg0) <= 0);
 
         do {
-            s1 -= D_8003B948;
+            s1 -= qsortItemSize;
             if (arg0 >= s1) { break; }
-        } while (D_8003B94C(s1, arg0) >= 0);
+        } while (qsortCompareFunc(s1, arg0) >= 0);
 
         if (s0 < s1) {
-            swap_mem(s0, s1, D_8003B948);
+            swap_mem(s0, s1, qsortItemSize);
             goto restart;
         }
 
-        swap_mem(arg0, s1, D_8003B948);
+        swap_mem(arg0, s1, qsortItemSize);
         if (s1 - arg0 >= arg1 - s1) {
-            func_80018AB8(s1 + D_8003B948, arg1);
-            arg1 = s1 - D_8003B948;
+            qsortInternal(s1 + qsortItemSize, arg1);
+            arg1 = s1 - qsortItemSize;
             s0   = arg0;
         } else {
-            func_80018AB8(arg0, s1 - D_8003B948);
-            arg0 = s1 + D_8003B948;
+            qsortInternal(arg0, s1 - qsortItemSize);
+            arg0 = s1 + qsortItemSize;
             s0   = arg0;
-            s1   = arg1 + D_8003B948;
+            s1   = arg1 + qsortItemSize;
         }
     }
 }
@@ -205,87 +205,81 @@ void func_80018AB8(u8 *arg0, u8 *arg1) {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 
-void unref_80018C14(u8 *arg0, s32 arg1, s32 arg2, s32 (*arg3)(u8 *, u8 *));
-#ifdef NON_MATCHING
-// nonmatching: regalloc around the while(s0--)
-void unref_80018C14(u8 *arg0, s32 arg1, s32 arg2, s32 (*arg3)(u8 *, u8 *)) {
-    u8 *s2, *s1;
+// 80018C14
+void qsort2(void* _base, u32 count, u32 itemSize, s32 (*compare)(const void*, const void*)) {
+    u8 *curr, *next;
     s32 s0;
-    s32 sp30;
+    s32 foundInversion;
+    s32 nv = 1; // required to match
 
-    s2   = arg0;
-    s1   = arg0 + arg2;
-    sp30 = FALSE;
+    u8* base = (u8*) _base;
 
-    if (arg1) {
-        s0 = arg1 - 1;
-        while (s0--) {
-            if (arg3(s2, s1) > 0) {
-                sp30 = TRUE;
-                break;
-            }
-            s2 = s1;
-            s1 += arg2;
-        }
-    }
-    // L80018C8C
-    if (sp30) {
-        D_8003B948 = arg2;
-        D_8003B94C = arg3;
-        func_80018AB8(arg0, arg0 + ((arg1 - 1) * D_8003B948));
-    }
-}
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/trig_rand/unref_80018C14.s")
-#endif
+    curr = base;
+    next = base + itemSize;
+    foundInversion = FALSE;
 
-#ifdef NON_MATCHING
-// nonmatching: too lazy to match; this seems to be doing something with pointers...
-u32 unref_80018CEC(s32 arg0, u32 arg1, u32 arg2, s32 arg3, s32 (*arg4)(u32, u32, u32)) {
-    u32 s6;
-    u32 s1;
-    u32 s0;
-    u32 a2;
-    s32 ret;
-
-    s6 = arg1 + ((arg2 - 1) * arg3);
-    while (s6 >= arg1) {
-        s1 = arg2 >> 1;
-        if (s1) {
-            s0  = (arg2 & 1 ? s1 : s1 - 1) * arg3 + arg1;
-            ret = arg4(arg0, s0, arg2);
-            a2  = s1;
-            if (ret == 0) { return s0; }
-            // L80018D8C
-            if (ret < 0) {
-                s6 = s0 - arg3;
-                if (arg2 & 1) {
-                    a2 = s1;
-                } else {
-                    a2 = s1 - 1;
+    if (count)
+    {
+        s0 = count - nv;
+        do { // required to match
+            while (s0--) {
+                if (compare(curr, next) > 0) {
+                    foundInversion = TRUE;
+                    break;
                 }
-            } else {
-                // L80018DAC
-                arg1 = s0 + arg3;
+                curr = next;
+                next += itemSize;
             }
-        } else {
-            // L80018DB4
-            if (arg2 == 0) { break; }
+        } while (FALSE);
+    }
 
-            if (arg4(arg0, arg1, arg2)) {
-                return 0;
-            } else {
-                return arg1; // s5
+    if (foundInversion)
+    {
+        qsortItemSize = itemSize;
+        qsortCompareFunc = compare;
+        qsortInternal(base, base + ((count - 1) * qsortItemSize));
+    }
+}
+
+// 80018CEC
+u8* find(u8* value, u8* array, u32 count, s32 itemSize, s32 (*compare)(u8*, u8*)) {
+    s32 newvar = (count - 1) * itemSize;
+    u8* low = array;
+    u8* high = array + newvar;
+
+    while (low <= high)
+    {
+        u32 midIndex = count >> 1;
+        u32 parity = count & 1;
+
+        if (midIndex != 0)
+        {
+            u8* mid = low + (parity ? midIndex : midIndex - 1) * itemSize;
+            s32 ret = compare(value, mid);
+
+            if (ret == 0)
+                return mid;
+            else if (ret < 0)
+            {
+                high = mid - itemSize;
+                count = parity ? midIndex : midIndex - 1;
+            }
+            else
+            {
+                low = mid + itemSize;
+                count = midIndex;
             }
         }
-        // L80018DDC
+        else
+        {
+            if (count == 0)
+                break;
+
+            return compare(value, low) ? NULL : low;
+        }
     }
-    // L80018DE8
-    return 0;
+    return NULL;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/trig_rand/unref_80018CEC.s")
-#endif
 
 #pragma GCC diagnostic pop
 

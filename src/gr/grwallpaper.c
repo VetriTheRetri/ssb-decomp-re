@@ -2,7 +2,7 @@
 #include <cm/camera.h>
 #include <sc/scene.h>
 
-extern void func_ovl0_800CCF00(GObj*);
+extern void lbCommonDrawSObjAttr(GObj*);
 
 // // // // // // // // // // // //
 //                               //
@@ -143,7 +143,7 @@ void grWallpaperCommonMakeSObj(void)
         NULL, 
         nOMObjCommonLinkIDWallpaper,
         GOBJ_LINKORDER_DEFAULT, 
-        func_ovl0_800CCF00,
+        lbCommonDrawSObjAttr,
         0, 
         GOBJ_DLLINKORDER_DEFAULT, 
         -1, 
@@ -173,7 +173,7 @@ void grWallpaperStaticMakeSObj(void)
         NULL, 
         nOMObjCommonLinkIDWallpaper,
         GOBJ_LINKORDER_DEFAULT, 
-        func_ovl0_800CCF00,
+        lbCommonDrawSObjAttr,
         0, 
         GOBJ_DLLINKORDER_DEFAULT, 
         -1, 
@@ -238,7 +238,7 @@ void grWallpaperSectorMakeSObj(void)
 
     sGRWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(nOMObjCommonKindWallpaper, NULL, nOMObjCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(wallpaper_gobj, func_ovl0_800CCF00, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, gMPCollisionGroundData->wallpaper);
 

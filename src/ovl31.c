@@ -52,8 +52,8 @@ extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 extern f32 scSubsysFighterGetLightAngleX();
 extern f32 scSubsysFighterGetLightAngleY();
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern void func_ovl0_800CCF00();
-extern void func_ovl0_800CD2CC();
+extern void lbCommonDrawSObjAttr();
+extern void lbCommonScissorSpriteCamera();
 extern void* func_800269C0_275C0(u16);
 extern void func_ovl0_800D4248();
 extern void func_ovl0_800D42C8();
@@ -714,7 +714,7 @@ void mnResultsRenderBackground(GObj* bg_gobj)
 	gDPSetCombineLERP(gDisplayListHead[0]++, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT,  0, 0, 0, 1,  PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT,  0, 0, 0, 1);
 	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
 
-	func_ovl0_800CCF74(bg_gobj);
+	lbCommonDrawSObjNoAttr(bg_gobj);
 }
 
 // 80132EA8
@@ -752,7 +752,7 @@ void mnResultsCreateBackground()
 	};
 	Camera *cam;
 
-	camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x50, 0x04000000, -1, 0, 1, 0, 1, 0);
+	camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x04000000, -1, 0, 1, 0, 1, 0);
 	cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
@@ -1083,7 +1083,7 @@ void mnResultsCreatePlayerIndicator(s32 port_id, s32 color_index)
 	};
 
 	indicator_gobj = gcMakeGObjSPAfter(0, 0, 0x12, 0x80000000);
-	gcAddGObjDisplay(indicator_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000, -1);
+	gcAddGObjDisplay(indicator_gobj, lbCommonDrawSObjAttr, 0x1B, 0x80000000, -1);
 
 	if (gTransferBattleState.players[port_id].pl_kind == 0)
 	{
@@ -1116,7 +1116,7 @@ void mnResultsCreatePlayerIndicator(s32 port_id, s32 color_index)
 // 80133E7C
 void mnResultsCreatePlayerIndicatorViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x1E, 0x08000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x1E, 0x08000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1166,7 +1166,7 @@ void mnResultsDrawString(const char *str, f32 x, f32 y, s32 color_index, f32 sca
 
 	current_x = x;
 	string_gobj = gcMakeGObjSPAfter(0, 0, 0x14, 0x80000000);
-	gcAddGObjDisplay(string_gobj, func_ovl0_800CCF00, 0x1D, 0x80000000, -1);
+	gcAddGObjDisplay(string_gobj, lbCommonDrawSObjAttr, 0x1D, 0x80000000, -1);
 
 	for (i = 0; str[i] != 0; i++)
 	{
@@ -1318,7 +1318,7 @@ void mnResultsDrawWinnerText()
 // 801345E8
 void mnResultsCreateWinnerTextViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x14, 0x20000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x14, 0x20000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1517,7 +1517,7 @@ void mnResultsRenderOverlay(GObj* overlay_gobj)
 	gDPPipeSync(gDisplayListHead[0]++);
 	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
-	func_ovl0_800CCEAC();
+	lbCommonClearExternSpriteParams();
 }
 
 // 80134DA0
@@ -1530,7 +1530,7 @@ void mnResultsCreateOverlay()
 // 80134DF4
 void mnResultsCreateOverlayViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000, func_ovl0_800CD2CC, 0x11, 0x40000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000, lbCommonScissorSpriteCamera, 0x11, 0x40000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1566,7 +1566,7 @@ void mnResultsCreateBackgroundOverlay()
 // 80135028
 void mnResultsCreateBackgroundOverlayViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000, func_ovl0_800CD2CC, 0x37, 0x800000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000, lbCommonScissorSpriteCamera, 0x37, 0x800000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1602,7 +1602,7 @@ void mnResultsCreateBackgroundOverlay2()
 // 8013525C
 void mnResultsCreateBackgroundOverlay2Viewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000, func_ovl0_800CD2CC, 0x46, 0x400000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000, lbCommonScissorSpriteCamera, 0x46, 0x400000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1677,7 +1677,7 @@ void mnResultsCreateColumnHeaders()
 	ftStruct* ft_struct;
 
 	column_header_gobj = gcMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
-	gcAddGObjDisplay(column_header_gobj, func_ovl0_800CCF00, 0x1F, 0x80000000, -1);
+	gcAddGObjDisplay(column_header_gobj, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1);
 
 	for (i = 0; i < 4; i++)
 	{
@@ -1714,7 +1714,7 @@ void mnResultsDrawKOs(s32 y)
 {
 	GObj* kos_row_gobj;
 
-	kos_row_gobj = func_ovl0_800CD050(0, 0, 0x16, 0x80000000, func_ovl0_800CCF00, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_KOS_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
+	kos_row_gobj = func_ovl0_800CD050(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_KOS_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
 	SObjGetStruct(kos_row_gobj)->pos.x = 26.0F;
 	SObjGetStruct(kos_row_gobj)->pos.y = y;
 	SObjGetStruct(kos_row_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -1754,7 +1754,7 @@ void mnResultsDrawTKOs(s32 y)
 	GObj* tkos_row_gobj;
 	SObj* negative_symbol_sobj;
 
-	tkos_row_gobj = func_ovl0_800CD050(0, 0, 0x16, 0x80000000, func_ovl0_800CCF00, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_TKO_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
+	tkos_row_gobj = func_ovl0_800CD050(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_TKO_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
 	SObjGetStruct(tkos_row_gobj)->pos.x = 26.0F;
 	SObjGetStruct(tkos_row_gobj)->pos.y = y;
 	SObjGetStruct(tkos_row_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -1805,7 +1805,7 @@ void mnResultsRenderHorizontalLine(GObj* line_gobj)
 	gDPPipeSync(gDisplayListHead[0]++);
 	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
-	func_ovl0_800CCEAC();
+	lbCommonClearExternSpriteParams();
 }
 
 // 80135D58
@@ -1829,7 +1829,7 @@ void mnResultsDrawPointsRow()
 {
 	GObj* points_row_gobj;
 
-	points_row_gobj = func_ovl0_800CD050(0, 0, 0x16, 0x80000000, func_ovl0_800CCF00, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_POINTS_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
+	points_row_gobj = func_ovl0_800CD050(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_POINTS_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
 	SObjGetStruct(points_row_gobj)->pos.x = 26.0F;
 	SObjGetStruct(points_row_gobj)->pos.y = 104.0F;
 	SObjGetStruct(points_row_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -1892,7 +1892,7 @@ void mnResultsDrawPlaceRow(s32 y)
 	GObj* place_row_gobj;
 	s32 i;
 
-	place_row_gobj = func_ovl0_800CD050(0, 0, 0x16, 0x80000000, func_ovl0_800CCF00, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_PLACE_TEXTURE_IMAGE_OFFSET), 1, NULL, 1);
+	place_row_gobj = func_ovl0_800CD050(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_PLACE_TEXTURE_IMAGE_OFFSET), 1, NULL, 1);
 	SObjGetStruct(place_row_gobj)->pos.x = 10.0F;
 	SObjGetStruct(place_row_gobj)->pos.y = y;
 	SObjGetStruct(place_row_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -2033,8 +2033,8 @@ void mnResultsRenderScreenTitle(s32 screen_title_gobj)
 	gDPPipeSync(gDisplayListHead[0]++);
 	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
-	func_ovl0_800CCEAC();
-	func_ovl0_800CCF00(screen_title_gobj);
+	lbCommonClearExternSpriteParams();
+	lbCommonDrawSObjAttr(screen_title_gobj);
 
 	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
 }
@@ -2075,7 +2075,7 @@ void mnResultsCreateScreenTitle()
 // 80136830
 void mnResultsCreateResultsViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0xF, 0x80000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0xF, 0x80000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }

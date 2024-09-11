@@ -46,8 +46,8 @@ extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 extern f32 scSubsysFighterGetLightAngleX();
 extern f32 scSubsysFighterGetLightAngleY();
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern void func_ovl0_800CCF00();
-extern void func_ovl0_800CD2CC();
+extern void lbCommonDrawSObjAttr();
+extern void lbCommonScissorSpriteCamera();
 
 
 // Forward declarations
@@ -457,7 +457,7 @@ void mnBonusRenderPortraitWithNoise(GObj *portrait_gobj)
 	gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x30, 0x30, 0x30, 0xFF);
 	gDPSetCombineLERP(gDisplayListHead[0]++, NOISE, TEXEL0, PRIMITIVE, TEXEL0, 0, 0, 0, TEXEL0, NOISE, TEXEL0, PRIMITIVE, TEXEL0,  0, 0, 0, TEXEL0);
 	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-	func_ovl0_800CCF74(portrait_gobj);
+	lbCommonDrawSObjNoAttr(portrait_gobj);
 }
 
 // 801324F0
@@ -473,7 +473,7 @@ void mnBonusCreateLockedPortrait(s32 portrait_id)
 
 	// portrait bg (fire)
 	texture_gobj = gcMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
-	gcAddGObjDisplay(texture_gobj, func_ovl0_800CCF00, 0x1BU, 0x80000000U, -1);
+	gcAddGObjDisplay(texture_gobj, lbCommonDrawSObjAttr, 0x1BU, 0x80000000U, -1);
 	gcAddGObjProcess(texture_gobj, mnBonusSetPortraitX, 1, 1);
 
 	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, GetAddressFromOffset(gMnBonusFilesArray[4], &FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET));
@@ -497,7 +497,7 @@ void mnBonusCreateLockedPortrait(s32 portrait_id)
 
 	// question mark
 	texture_gobj = gcMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
-	gcAddGObjDisplay(texture_gobj, func_ovl0_800CCF00, 0x1BU, 0x80000000U, -1);
+	gcAddGObjDisplay(texture_gobj, lbCommonDrawSObjAttr, 0x1BU, 0x80000000U, -1);
 	gcAddGObjProcess(texture_gobj, mnBonusSetPortraitX, 1, 1);
 
 	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, GetAddressFromOffset(gMnBonusFilesArray[4], &FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET));
@@ -534,7 +534,7 @@ void mnBonusCreatePortrait(s32 portrait_id)
 	{
 		// portrait bg (fire)
 		portrait_bg_gobj = gcMakeGObjSPAfter(0U, NULL, 0x19U, 0x80000000U);
-		gcAddGObjDisplay(portrait_bg_gobj, func_ovl0_800CCF00, 0x20U, 0x80000000U, -1);
+		gcAddGObjDisplay(portrait_bg_gobj, lbCommonDrawSObjAttr, 0x20U, 0x80000000U, -1);
 		portrait_bg_gobj->user_data.p = portrait_id;
 		gcAddGObjProcess(portrait_bg_gobj, mnBonusSetPortraitX, 1, 1);
 
@@ -546,7 +546,7 @@ void mnBonusCreatePortrait(s32 portrait_id)
 
 		// portrait
 		portrait_gobj = gcMakeGObjSPAfter(0U, NULL, 0x12U, 0x80000000U);
-		gcAddGObjDisplay(portrait_gobj, func_ovl0_800CCF00, 0x1BU, 0x80000000U, -1);
+		gcAddGObjDisplay(portrait_gobj, lbCommonDrawSObjAttr, 0x1BU, 0x80000000U, -1);
 		gcAddGObjProcess(portrait_gobj, mnBonusSetPortraitX, 1, 1);
 
 		texture_sobj = lbCommonMakeSObjForGObj(portrait_gobj, GetAddressFromOffset(gMnBonusFilesArray[4], portrait_offsets[mnBonusGetFtKind(portrait_id)]));
@@ -622,7 +622,7 @@ void mnBonusSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
 // 80132C14
 void mnBonusCreatePortraitViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x28, 0x08000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x28, 0x08000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -630,7 +630,7 @@ void mnBonusCreatePortraitViewport()
 // 80132CB4
 void mnBonusCreatePortraitBackgroundViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x3C, 0x100000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x3C, 0x100000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -638,7 +638,7 @@ void mnBonusCreatePortraitBackgroundViewport()
 // 80132D54
 void mnBonusCreatePortraitWhiteBackgroundViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x32, 0x200000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x32, 0x200000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -646,7 +646,7 @@ void mnBonusCreatePortraitWhiteBackgroundViewport()
 // 80132DF4
 void mnBonusCreatePanelViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x1E, 0x10000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x1E, 0x10000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -680,7 +680,7 @@ void mnBonusCreatePanel(s32 port_id)
 	};
 
 	// create panel
-	gobj = func_ovl0_800CD050(0, NULL, 0x16, 0x80000000, func_ovl0_800CCF00, 0x1C, 0x80000000, -1, GetAddressFromOffset(gMnBonusFilesArray[5], &FILE_017_PANEL_IMAGE_OFFSET), 1, NULL, 1);
+	gobj = func_ovl0_800CD050(0, NULL, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1C, 0x80000000, -1, GetAddressFromOffset(gMnBonusFilesArray[5], &FILE_017_PANEL_IMAGE_OFFSET), 1, NULL, 1);
 	SObjGetStruct(gobj)->pos.x = 58.0f;
 	SObjGetStruct(gobj)->pos.y = 127.0f;
 	SObjGetStruct(gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -702,7 +702,7 @@ void mnBonusCreatePanel(s32 port_id)
 	// name/logo
 	gobj = gcMakeGObjSPAfter(0U, NULL, 0x16U, 0x80000000U);
 	gMnBonusPanel.name_logo = gobj;
-	gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0x1CU, 0x80000000U, -1);
 }
 
 // 80137354
@@ -737,7 +737,7 @@ void mnBonusCreateBackground()
 	SObj* background_sobj;
 
 	background_gobj = gcMakeGObjSPAfter(0U, NULL, 0x11U, 0x80000000U);
-	gcAddGObjDisplay(background_gobj, func_ovl0_800CCF00, 0x1AU, 0x80000000U, -1);
+	gcAddGObjDisplay(background_gobj, lbCommonDrawSObjAttr, 0x1AU, 0x80000000U, -1);
 	background_sobj = lbCommonMakeSObjForGObj(background_gobj, GetAddressFromOffset(gMnBonusFilesArray[2], &FILE_015_BACKGROUND_IMAGE_OFFSET));
 	background_sobj->cmt = G_TX_WRAP;
 	background_sobj->cms = G_TX_WRAP;
@@ -752,7 +752,7 @@ void mnBonusCreateBackground()
 // 80133170
 void mnBonusCreateBackgroundViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x50, 0x4000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x4000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -769,7 +769,7 @@ void mnBonusDrawTitleAndBack()
 	void* unused;
 
 	gMnBonusTitleGObj = title_gobj = gcMakeGObjSPAfter(0U, NULL, 0x17U, 0x80000000U);
-	gcAddGObjDisplay(title_gobj, func_ovl0_800CCF00, 0x22U, 0x80000000U, -1);
+	gcAddGObjDisplay(title_gobj, lbCommonDrawSObjAttr, 0x22U, 0x80000000U, -1);
 
 	if (gMnBonusType == mnBonusTypeBTT)
 	{
@@ -803,7 +803,7 @@ void mnBonusDrawTitleAndBack()
 // 80133370
 void mnBonusCreateTitleOptionsAndBackViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x46, 0x400000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x46, 0x400000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -929,7 +929,7 @@ void mnBonusDrawBestTime()
 		best_time = mnBonusGetBestTime(ft_kind);
 
 		gMnBonusHighscoreGobj = best_time_gobj = gcMakeGObjSPAfter(0U, NULL, 0x17U, 0x80000000U);
-		gcAddGObjDisplay(best_time_gobj, func_ovl0_800CCF00, 0x1AU, 0x80000000U, -1);
+		gcAddGObjDisplay(best_time_gobj, lbCommonDrawSObjAttr, 0x1AU, 0x80000000U, -1);
 
 		temp_v0_2 = lbCommonMakeSObjForGObj(best_time_gobj, GetAddressFromOffset(gMnBonusFilesArray[5], &FILE_017_BEST_TIME_LABEL_IMAGE_OFFSET));
 		temp_v0_2->pos.x = 177.0f;
@@ -1006,7 +1006,7 @@ void mnBonusDrawBestCount()
 	if (ft_kind != nFTKindNull)
 	{
 		gMnBonusHighscoreGobj = count_gobj = gcMakeGObjSPAfter(0U, NULL, 0x17U, 0x80000000U);
-		gcAddGObjDisplay(count_gobj, func_ovl0_800CCF00, 0x1AU, 0x80000000U, -1);
+		gcAddGObjDisplay(count_gobj, lbCommonDrawSObjAttr, 0x1AU, 0x80000000U, -1);
 
 		if (gMnBonusType == 0)
 		{
@@ -1077,7 +1077,7 @@ void mnDrawBonusTotalTime()
 	s32 seconds;
 
 	gMnBonusTotalTimeGobj = best_time_gobj = gcMakeGObjSPAfter(0U, NULL, 0x17U, 0x80000000U);
-	gcAddGObjDisplay(best_time_gobj, func_ovl0_800CCF00, 0x1AU, 0x80000000U, -1);
+	gcAddGObjDisplay(best_time_gobj, lbCommonDrawSObjAttr, 0x1AU, 0x80000000U, -1);
 
 	temp_v0_2 = lbCommonMakeSObjForGObj(best_time_gobj, GetAddressFromOffset(gMnBonusFilesArray[5], &FILE_017_TOTAL_BEST_TIME_LABEL_IMAGE_OFFSET));
 	temp_v0_2->pos.x = 142.0f;
@@ -1456,7 +1456,7 @@ void mnBonusCreateWhiteSquare(s32 port_id)
 	mnBonusRemoveWhiteSquare(port_id);
 
 	gMnBonusPanel.white_square = white_square_gobj = gcMakeGObjSPAfter(0U, NULL, 0x1AU, 0x80000000U);
-	gcAddGObjDisplay(white_square_gobj, func_ovl0_800CCF00, 0x21U, 0x80000000U, -1);
+	gcAddGObjDisplay(white_square_gobj, lbCommonDrawSObjAttr, 0x21U, 0x80000000U, -1);
 	white_square_gobj->user_data.p = port_id;
 	gcAddGObjProcess(white_square_gobj, mnBonusFlashWhiteSquare, 0, 1);
 
@@ -2049,7 +2049,7 @@ void mnBonusSyncTokenAndFighter(GObj* token_gobj)
 // 80135D08
 void mnBonusCreateReadyToFightViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0xA, 0x800000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0xA, 0x800000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -2057,7 +2057,7 @@ void mnBonusCreateReadyToFightViewport()
 // 80135DA8
 void mnBonusCreateCursorViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0xD, 0x40000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0xD, 0x40000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -2065,7 +2065,7 @@ void mnBonusCreateCursorViewport()
 // 80135E48
 void mnBonusCreateDroppedTokenViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0xF, 0x80000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0xF, 0x80000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -2087,7 +2087,7 @@ void mnBonusCreateCursor(s32 port_id)
 		6, 4, 2, 0
 	};
 
-	cursor_gobj = func_ovl0_800CD050(0, NULL, 0x13, 0x80000000, func_ovl0_800CCF00, 0x1E, cursor_starting_display_orders[port_id], -1, GetAddressFromOffset(gMnBonusFilesArray[0], &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1, mnBonusHandleButtonPresses, 2);
+	cursor_gobj = func_ovl0_800CD050(0, NULL, 0x13, 0x80000000, lbCommonDrawSObjAttr, 0x1E, cursor_starting_display_orders[port_id], -1, GetAddressFromOffset(gMnBonusFilesArray[0], &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1, mnBonusHandleButtonPresses, 2);
 
 	cursor_gobj->user_data.s = port_id;
 	gMnBonusPanel.cursor = cursor_gobj;
@@ -2118,7 +2118,7 @@ void mnBonusCreateToken(s32 port_id)
 		3, 2, 1, 0
 	};
 
-	token_gobj = func_ovl0_800CD050(0, NULL, 0x14, 0x80000000, func_ovl0_800CCF00, 0x1F, orders1[port_id], -1, GetAddressFromOffset(gMnBonusFilesArray[0], offsets_no_cpu[port_id]), 1, mnBonusSyncTokenAndFighter, 1);
+	token_gobj = func_ovl0_800CD050(0, NULL, 0x14, 0x80000000, lbCommonDrawSObjAttr, 0x1F, orders1[port_id], -1, GetAddressFromOffset(gMnBonusFilesArray[0], offsets_no_cpu[port_id]), 1, mnBonusSyncTokenAndFighter, 1);
 
 	token_gobj->user_data.s = port_id;
 	gMnBonusPanel.token = token_gobj;
@@ -2291,7 +2291,7 @@ void mnBonusCreateReadyToFightObjects()
 
 	// Ready to Fight banner
 	gobj = gcMakeGObjSPAfter(0U, NULL, 0x1CU, 0x80000000U);
-	gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 0x23U, 0x80000000U, -1);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0x23U, 0x80000000U, -1);
 	gcAddGObjProcess(gobj, mnBonusBlinkIfReadyToFight, 1, 1);
 
 	// Ready to Fight banner bg
@@ -2328,7 +2328,7 @@ void mnBonusCreateReadyToFightObjects()
 
 	// Press Start indicator
 	gobj = gcMakeGObjSPAfter(0U, NULL, 0x16U, 0x80000000U);
-	gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 0x1CU, 0x80000000U, -1);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0x1CU, 0x80000000U, -1);
 	gcAddGObjProcess(gobj, mnBonusBlinkIfReadyToFight, 1, 1);
 
 	// "Press"

@@ -34,9 +34,9 @@ extern intptr_t FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_2; // 29010 file 0x0A7 offset f
 extern uintptr_t D_NF_001AC870; // AC870
 extern uintptr_t D_NF_00000854; // 00854
 
-extern func_ovl0_800CCF00(GObj*);
+extern lbCommonDrawSObjAttr(GObj*);
 extern GObj* func_ovl0_800CD050(s32, void*, s32, u32, void*, s32, u32, s32, void*, u32, void*, u32);
-extern void func_ovl0_800CD2CC();
+extern void lbCommonScissorSpriteCamera();
 extern void mnDebugMenuUpdateMenuInputs();
 extern void gcAddGObjDisplay(GObj *gobj, void (*proc_render)(GObj*), u8 dl_link, u32 order, s32 arg4);
 extern void func_80007080(void*, f32, f32, f32, f32);
@@ -781,13 +781,13 @@ void mnTitleRenderFire(GObj* fire_gobj)
 
 	for (i = 0; i < 2; i++)
 	{
-		func_ovl0_800CC118(gDisplayListHead, fire_sobj);
+		lbCommonPrepSObjSpriteAttrs(gDisplayListHead, fire_sobj);
 
 		gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0, 0, 0, gMNTitleFireAlpha);
 		gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, TEXEL0,  TEXEL0, 0, PRIMITIVE, 0,  0, 0, 0, TEXEL0,  TEXEL0, 0, PRIMITIVE, 0);
 
-		func_ovl0_800CC818(gDisplayListHead, fire_sobj);
-		func_ovl0_800CCEAC();
+		lbCommonPrepSObjDraw(gDisplayListHead, fire_sobj);
+		lbCommonClearExternSpriteParams();
 
 		fire_sobj = fire_sobj->next;
 	}
@@ -922,12 +922,12 @@ void mnTitleRenderLogoNoIntro(GObj* logo_gobj)
 
 	if (!(logo_sobj->sprite.scalex < 0.0001f) && !(logo_sobj->sprite.scaley < 0.0001f))
 	{
-		func_ovl0_800CC118(gDisplayListHead, logo_sobj);
+		lbCommonPrepSObjSpriteAttrs(gDisplayListHead, logo_sobj);
 
 		gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, logo_sobj->sprite.red, logo_sobj->sprite.green, logo_sobj->sprite.blue, gMNTitleLogoAlpha);
 		gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE,  TEXEL0, 0, PRIMITIVE, 0,  0, 0, 0, PRIMITIVE,  TEXEL0, 0, PRIMITIVE, 0);
 
-		func_ovl0_800CCF74(logo_gobj, logo_sobj);
+		lbCommonDrawSObjNoAttr(logo_gobj, logo_sobj);
 	}
 }
 
@@ -980,7 +980,7 @@ void mnTitleCreateLogo()
 		gcPlayAnimAll(animated_logo_gobj);
 
 		fire_logo_gobj = gcMakeGObjSPAfter(6, 0, 7, 0x80000000);
-		gcAddGObjDisplay(fire_logo_gobj, func_ovl0_800CCF00, 0, 0x80000000, -1);
+		gcAddGObjDisplay(fire_logo_gobj, lbCommonDrawSObjAttr, 0, 0x80000000, -1);
 		gcAddGObjProcess(fire_logo_gobj, mnTitleAnimateGObj, 1, 1);
 
 		fire_logo_gobj->user_data.p = animated_logo_gobj;
@@ -1026,7 +1026,7 @@ void mnTitleCreateTextures()
 	s32 i;
 
 	gobj = gcMakeGObjSPAfter(8, 0, 8, 0x80000000);
-	gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, 0x80000000, -1);
 
 	for (i = 0; i < 7; i++)
 	{
@@ -1053,7 +1053,7 @@ void mnTitleCreateTitleHeaderAndFooter()
 	gcPlayAnimAll(animation_gobj);
 
 	gobj = gcMakeGObjSPAfter(8, 0, 8, 0x80000000);
-	gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, 0x80000000, -1);
 	gcAddGObjProcess(gobj, mnTitleAnimateTitle, 1, 1);
 
 	gobj->user_data.p = animation_gobj;
@@ -1073,7 +1073,7 @@ void mnTitleCreateTitleHeaderAndFooter()
 	gobj->flags = 1;
 
 	gobj = gcMakeGObjSPAfter(9, 0, 8, 0x80000000);
-	gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, 0x80000000, -1);
 	gcAddGObjProcess(gobj, mnTitleUpdateHeaderAndFooterPosition, 1, 1);
 
 	gobj->user_data.p = animation_gobj;
@@ -1108,7 +1108,7 @@ void mnTitleCreatePressStart()
 	press_start_anim_dobj = DObjGetStruct(press_start_anim_gobj)->child;
 
 	press_start_gobj = gcMakeGObjSPAfter(8, 0, 9, 0x80000000);
-	gcAddGObjDisplay(press_start_gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
+	gcAddGObjDisplay(press_start_gobj, lbCommonDrawSObjAttr, 1, 0x80000000, -1);
 	gcAddGObjProcess(press_start_gobj, mnTitleAnimatePressStart, 1, 1);
 
 	press_start_gobj->user_data.p = press_start_anim_gobj;
@@ -1219,7 +1219,7 @@ s32 mnTitleCreateViewports()
 	gMNTitleFireBGOverlayCameraGObj = func_8000B9FC(2, 0x80000000, 0x64, 3, 0xFF);
 	gcAddGObjProcess(gMNTitleFireBGOverlayCameraGObj, mnTitleUpdateFireBGOverlayColor, 1, 1);
 
-	camera_gobj = func_8000B93C(2, 0, 3, 0x80000000, func_ovl0_800CD2CC, 0x3C, 0x00000003, -1, 0, 1, 0, 1, 0);
+	camera_gobj = func_8000B93C(2, 0, 3, 0x80000000, lbCommonScissorSpriteCamera, 0x3C, 0x00000003, -1, 0, 1, 0, 1, 0);
 	cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 

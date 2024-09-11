@@ -25,8 +25,8 @@ extern GObj* func_8000B93C
 	u32 arg12,
 	s32 arg13
 );
-extern void func_ovl0_800CCF00(GObj*);
-extern void func_ovl0_800CD2CC(GObj*);
+extern void lbCommonDrawSObjAttr(GObj*);
+extern void lbCommonScissorSpriteCamera(GObj*);
 
 // // // // // // // // // // // //
 //                               //
@@ -258,7 +258,7 @@ void mnDataMakeCharactersSObj(void)
 
     sMNDataCharactersGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     mnDataMakeOptionTabSObjs(gobj, posx, posy, 16);
 
@@ -298,7 +298,7 @@ void mnDataMakeVSRecordSObj(void)
 
     sMNDataVSRecordGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     mnDataMakeOptionTabSObjs(gobj, posx, posy, 16);
 
@@ -325,7 +325,7 @@ void mnDataMakeSoundTestSObj(void)
 
     sMNDataSoundTestGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     mnDataMakeOptionTabSObjs(gobj, 69.0F, 136.0F, 16);
 
@@ -391,8 +391,8 @@ void mnDataHeaderProcRender(GObj *gobj)
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
 
-    func_ovl0_800CCEAC();
-    func_ovl0_800CCF00(gobj);
+    lbCommonClearExternSpriteParams();
+    lbCommonDrawSObjAttr(gobj);
 }
 
 // 0x801322A8
@@ -437,7 +437,7 @@ void mnDataMakeDecalSObjs(void)
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNDataFiles[0], &lMNCommonCircleSprite));
 
@@ -492,7 +492,7 @@ void mnDataMakeLink3Camera(void)
             NULL,
             1,
             GOBJ_LINKORDER_DEFAULT,
-            func_ovl0_800CD2CC,
+            lbCommonScissorSpriteCamera,
             20,
             CAMERA_MASK_DLLINK(3),
             -1,
@@ -517,7 +517,7 @@ void mnDataMakeLink2Camera(void)
             NULL,
             1,
             GOBJ_LINKORDER_DEFAULT,
-            func_ovl0_800CD2CC,
+            lbCommonScissorSpriteCamera,
             40,
             CAMERA_MASK_DLLINK(2),
             -1,
@@ -542,7 +542,7 @@ void mnDataMakeLink1Camera(void)
             NULL,
             1,
             GOBJ_LINKORDER_DEFAULT,
-            func_ovl0_800CD2CC,
+            lbCommonScissorSpriteCamera,
             60,
             CAMERA_MASK_DLLINK(1),
             -1,
@@ -567,7 +567,7 @@ void mnDataMakeLink0Camera(void)
             NULL,
             1,
             GOBJ_LINKORDER_DEFAULT,
-            func_ovl0_800CD2CC,
+            lbCommonScissorSpriteCamera,
             80,
             CAMERA_MASK_DLLINK(0),
             -1,

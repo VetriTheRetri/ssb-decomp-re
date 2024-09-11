@@ -24,8 +24,8 @@ extern GObj* func_8000B93C
 	u32 arg12,
 	s32 arg13
 );
-extern void func_ovl0_800CCF00(GObj*);
-extern void func_ovl0_800CD2CC(GObj*);
+extern void lbCommonDrawSObjAttr(GObj*);
+extern void lbCommonScissorSpriteCamera(GObj*);
 
 // // // // // // // // // // // //
 //                               //
@@ -1072,7 +1072,7 @@ SObj* mnSoundTestMakeHeaderSObjs(void)
 
     gobj = gcMakeGObjSPAfter(1, NULL, 2, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNSoundTestFiles[2], &lMNSoundTestDataTextSprite));
 
@@ -1154,7 +1154,7 @@ SObj* mnSoundTestMakeMusicSObjs(void)
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(1, NULL, 3, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     gobj->user_data.s = nMNSoundTestOptionMusic;
 
@@ -1221,7 +1221,7 @@ SObj* mnSoundTestMakeSoundSObjs(void)
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(1, NULL, 3, GOBJ_DLLINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(gobj, mnSoundTestOptionThreadUpdate, nOMObjProcessKindThread, 1);
 
     gobj->user_data.s = nMNSoundTestOptionSound;
@@ -1288,7 +1288,7 @@ SObj* mnSoundTestMakeVoiceSObjs(void)
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(1, NULL, 3, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(gobj, mnSoundTestOptionThreadUpdate, nOMObjProcessKindThread, 1);
 
     gobj->user_data.s = nMNSoundTestOptionVoice;
@@ -1439,7 +1439,7 @@ void mnSoundTestMakeButtonSObjs(void)
 {
     GObj *gobj = gcMakeGObjSPAfter(1, NULL, 3, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
     mnSoundTestMakeAButtonSObj(gobj);
     mnSoundTestMakeBButtonSObj(gobj);
     mnSoundTestMakeStartButtonSObj(gobj);
@@ -1586,19 +1586,19 @@ void mnSoundTestMakeSelectIDGObjs(void)
 {
     GObj *gobj = gcMakeGObjSPAfter(1, NULL, 5, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(gobj, mnSoundTestSelectIDThreadUpdate, nOMObjProcessKindThread, 1);
 
     gobj->user_data.s = nMNSoundTestOptionMusic;
 
     gobj = gcMakeGObjSPAfter(1, NULL, 6, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(gobj, mnSoundTestSelectIDThreadUpdate, nOMObjProcessKindThread, 1);
 
     gobj->user_data.s = nMNSoundTestOptionSound;
 
     gobj = gcMakeGObjSPAfter(1, NULL, 7, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(gobj, mnSoundTestSelectIDThreadUpdate, nOMObjProcessKindThread, 1);
 
     gobj->user_data.s = nMNSoundTestOptionVoice;
@@ -1647,7 +1647,7 @@ void mnSoundTestMakeArrowSObjs(void)
     GObj *gobj = gcMakeGObjSPAfter(1, NULL, 2, GOBJ_LINKORDER_DEFAULT);
     SObj *sobj;
 
-    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(gobj, mnSoundTestArrowsThreadUpdate, nOMObjProcessKindThread, 1);
 
     sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNSoundTestFiles[3], &lMNCommonLeftArrowSprite));
@@ -1696,7 +1696,7 @@ void mnSoundTestMakeCameras(void)
             NULL,
             4,
             GOBJ_LINKORDER_DEFAULT,
-            func_ovl0_800CD2CC,
+            lbCommonScissorSpriteCamera,
             30,
             CAMERA_MASK_DLLINK(1),
             -1,

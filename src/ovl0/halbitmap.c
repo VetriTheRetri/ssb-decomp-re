@@ -1,10 +1,11 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
+#include <sys/system_00.h>
 
 extern u16 sLBCommonExternSpriteAttr;
 extern u16 sLBCommonExternBitmapFmt;
 extern void *sLBCommonPrevBitmapBuf;
-extern void *sLBCommonPrevSpriteTLUT;
+extern void *sLBCommonPrevSpriteLUT;
 extern s32 sLBCommonScissorXMax;
 extern s32 sLBCommonScissorYMax;
 extern s32 sLBCommonScissorXMin;
@@ -2450,7 +2451,7 @@ void lbCommonDrawSObjBitmap
 }
 
 // 0x800CC118
-void func_ovl0_800CC118(Gfx **dls, SObj *sobj)
+void lbCommonPrepSObjSpriteAttrs(Gfx **dls, SObj *sobj)
 {
     Gfx *dl = dls[0];
     Sprite *sprite = &sobj->sprite;
@@ -2560,6 +2561,8 @@ void func_ovl0_800CC118(Gfx **dls, SObj *sobj)
             gDPLoadTLUT(dl++, sprite->nTLUT, sprite->startTLUT + 256, sprite->LUT);
             gDPLoadSync(dl++);
 
+            /* fallthrough */
+
         default:
             gDPSetCombineMode(dl++, G_CC_DECALRGBA, G_CC_DECALRGBA);
             break;
@@ -2584,7 +2587,7 @@ void func_ovl0_800CC118(Gfx **dls, SObj *sobj)
         break;
 
     case G_IM_FMT_CI:
-        if (sprite->LUT != sLBCommonPrevSpriteTLUT)
+        if (sprite->LUT != sLBCommonPrevSpriteLUT)
         {
             gDPLoadTLUT(dl++, sprite->nTLUT, sprite->startTLUT + 256, sprite->LUT);
             gDPLoadSync(dl++);
@@ -2594,15 +2597,202 @@ void func_ovl0_800CC118(Gfx **dls, SObj *sobj)
     dls[0] = dl;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CC818.s")
+// 0x800CC818
+void lbCommonPrepSObjDraw(Gfx **dls, SObj *sobj);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CCEAC.s")
+#ifdef NON_MATCHING
+// 0x800CC818 - NONMATCHING: many regswaps, but appears to be equivalent
+void lbCommonPrepSObjDraw(Gfx **dls, SObj *sobj)
+{
+    Sprite *sprite;
+    Bitmap *bitmap;
+    f32 fheight;
+    f32 fy;
+    s32 fs = 0;
+    s32 yy;
+    s32 ft = 0;
+    s32 sx = 0x1000;
+    s32 sy = 0x400;
+    s32 x;
+    s32 xx;
+    s32 n;
+    s32 unused2;
+    s32 y;
+    s32 tempy;
+    s32 tempft;
+    s32 unused[3];
+    f32 scaley;
+    f32 posx, posy;
+    
+    sprite = &sobj->sprite;
+    
+    if (sprite->scalex < 0.0001F)
+    {
+        return;
+    }
+    if (sprite->scaley < 0.0001F)
+    {
+        return;
+    }
+    bitmap = sprite->bitmap;
+    
+    if (bitmap != NULL)
+    {
+        posx = sobj->pos.x;
+        x = (posx < 0.0F) ? (posx - 0.9999F) : (posx);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CCED8.s")
+        posy = sobj->pos.y;
+        tempy = (sobj->pos.y < 0.0F) ? (sobj->pos.y - 0.9999F) : (sobj->pos.y);
+        
+        if ((x < sLBCommonScissorXMax) && (tempy < sLBCommonScissorYMax))
+        {
+            s32 tempxx = (sobj->cmt == 2) ? (sprite->width) : (sobj->lrs);
+            yy = (sobj->cms == 2) ? (sprite->bmheight) : (sobj->lrt);
+            
+            if (sprite->attr & SP_FASTCOPY)
+            {
+                xx = posx + tempxx;
+                
+                y = tempy;
+                
+                if (xx >= sLBCommonScissorXMin)
+                {
+                    xx--;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CCF00.s")
+                    if (sprite->nbitmaps == 1)
+                    {
+                        lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, y, xx, tempy + yy, (s16)-fs, (s16)-ft, sx, sy);
+                    }
+                    else
+                    {
+                        for (n = 0; n < sprite->nbitmaps; n++, bitmap++)
+                        {
+                            lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, y, xx, y + yy, (s16)-fs, (s16)-ft, sx, sy);
+                            y += yy;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                s32 n;
+                f32 scalex = sprite->scalex;
+                
+                xx = (posx + (tempxx * scalex)) + 0.9999F;
+                
+                if (xx >= sLBCommonScissorXMin)
+                {
+                    f32 fposx = posx - x;
+                    f32 fposy = sobj->pos.y - tempy;
+                    
+                    scaley = sprite->scaley;
+                    
+                    if (sprite->nbitmaps == 1)
+                    {
+                        sx = (1024.0F / scalex) + 0.5F;
+                        fs = ((sx * fposx) + 16) / 32;
+                        
+                        sy = (1024.0F / scaley) + 0.5F;
+                        ft = ((sy * fposy) + 16) / 32;
+                        
+                        y = (sobj->pos.y + (yy * scaley)) + 0.9999F;
+                        
+                        lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, tempy, xx, y, (s16)-fs, (s16)-ft, sx, sy);
+                    }
+                    else
+                    {
+                        fheight = sprite->bmHreal * scaley;
+                        y = fy = sobj->pos.y + (yy * scaley);
+                        
+                        sx = (1024.0F / scalex) + 0.5F;
+                        sy = (1024.0F / scaley) + 0.5F;
+                        
+                        fs = ((sx * fposx) + 16) / 32;
+                        ft = ((sy * fposy) + 16) / 32;
+                        
+                        lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, tempy, xx, y, (s16)-fs, (s16)-ft, sx, sy);
+                        
+                        bitmap++;
+                        
+                        for (n = 1; n < (sprite->nbitmaps - 1); n++, bitmap++)
+                        {
+                            tempft = (sy * (fy - y));
+                            ft = (tempft + 16) / 32;
+                            
+                            tempy = y;
+                            y = fy + fheight;
+                            
+                            lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, tempy, xx, y, (s16)-fs, (s16)-ft, sx, sy);
+                            
+                            fy += yy * scaley;
+                        }
+                        tempft = (sy * (fy - y));
+                        ft = (tempft + 16) / 32;
+                        
+                        tempy = y;
+                        y = ((bitmap->actualHeight * scaley) + fy) + 0.9999F;
+                        
+                        lbCommonDrawSObjBitmap(dls, sobj, sprite, bitmap, x, tempy, xx, y, (s16)-fs, (s16)-ft, sx, sy);
+                    }
+                }
+            }
+        }
+    }
+}
+#else
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/lbCommonPrepSObjDraw.s")
+#endif
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CCF74.s")
+// 0x800CCEAC
+void lbCommonClearExternSpriteParams(void)
+{
+    sLBCommonExternSpriteAttr = SP_LOCAL;
+    sLBCommonExternBitmapFmt = -1;
+    
+    sLBCommonPrevBitmapBuf = NULL;
+    sLBCommonPrevSpriteLUT = NULL;
+}
+
+// 0x800CCED8
+void sLBCommonSetExternSpriteParams(Sprite *sprite)
+{
+    sLBCommonExternSpriteAttr = sprite->attr;
+    sLBCommonExternBitmapFmt = sprite->bmfmt;
+    sLBCommonPrevSpriteLUT = sprite->LUT;
+}
+
+// 0x800CCF00
+void lbCommonDrawSObjAttr(GObj *gobj)
+{
+    SObj *sobj = SObjGetStruct(gobj);
+    
+    while (sobj != NULL)
+    {
+        if (!(sobj->sprite.attr & SP_HIDDEN))
+        {
+            lbCommonPrepSObjSpriteAttrs(gDisplayListHead, sobj);
+            lbCommonPrepSObjDraw(gDisplayListHead, sobj);
+            sLBCommonSetExternSpriteParams(&sobj->sprite);
+        }
+        sobj = sobj->next;
+    }
+}
+
+// 0x800CCF74
+void lbCommonDrawSObjNoAttr(GObj *gobj)
+{
+    SObj *sobj = SObjGetStruct(gobj);
+    
+    while (sobj != NULL)
+    {
+        if (!(sobj->sprite.attr & SP_HIDDEN))
+        {
+            lbCommonPrepSObjDraw(gDisplayListHead, sobj);
+            lbCommonClearExternSpriteParams();
+        }
+        sobj = sobj->next;
+    }
+}
 
 // 0x800CCFDC
 SObj* lbCommonMakeSObjForGObj(GObj *gobj, Sprite *sprite)
@@ -2627,21 +2817,150 @@ SObj* lbCommonMakeSObjForGObj(GObj *gobj, Sprite *sprite)
     sobj->pos.x = sobj->pos.y = 0.0F;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CD050.s")
+// 0x800CD050
+GObj* func_ovl0_800CD050
+(
+    u32 id,
+    void (*proc_run)(GObj*),
+    s32 link,
+    u32 link_order,
+    void (*proc_render)(GObj*),
+    s32 dl_link,
+    u32 dl_link_order,
+    s32 arg7,
+    Sprite *sprite,
+    u8 gobjproc_kind,
+    void (*proc)(GObj*),
+    s32 priority
+)
+{
+    GObj *gobj = gcMakeGObjSPAfter(id, proc_run, link, link_order);
+        
+    if (gobj == NULL)
+    {
+        return NULL;
+    }
+    gcAddGObjDisplay(gobj, proc_render, dl_link, dl_link_order, arg7);
+    
+    lbCommonMakeSObjForGObj(gobj, sprite);
+        
+    if (proc != NULL)
+    {
+        gcAddGObjProcess(gobj, proc, gobjproc_kind, priority);
+    }
+    return gobj;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CD0D0.s")
+// 0x800CD0D0
+void lbCommonStartSprite(Gfx **dls)
+{
+    Gfx *dl = dls[0];
+    
+    lbCommonClearExternSpriteParams();
+    
+    gDPPipeSync(dl++);
+    gDPSetCycleType(dl++, G_CYC_1CYCLE);
+    gDPSetBlendColor(dl++, 0x00, 0x00, 0x00, 0x08)
+    gDPSetAlphaCompare(dl++, G_AC_THRESHOLD);
+    gDPSetTexturePersp(dl++, G_TP_NONE);
+    gDPSetTextureFilter(dl++, G_TF_BILERP);
+    gDPSetTextureConvert(dl++, G_TC_FILT);
+    gDPSetTextureDetail(dl++, G_TD_CLAMP);
+    gDPSetTextureLOD(dl++, G_TL_TILE);
+    gDPSetTextureLUT(dl++, G_TT_NONE);
+    gDPSetRenderMode(dl++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
+    
+    dls[0] = dl;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CD1F0.s")
+// 0x800CD1F0
+void lbCommonSetSpriteScissor(s32 xmin, s32 xmax, s32 ymin, s32 ymax)
+{
+    sLBCommonScissorXMin = xmin;
+    sLBCommonScissorYMin = ymin;
+    sLBCommonScissorXMax = xmax;
+    sLBCommonScissorYMax = ymax;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CD214.s")
+// 0x800CD214
+void lbCommonFinishSprite(Gfx **dls)
+{
+    Gfx *dl = dls[0];
+    
+    gDPSetCombineMode(dl++, G_CC_SHADE, G_CC_SHADE);
+    gDPSetAlphaCompare(dl++, G_AC_NONE);
+    gDPSetTexturePersp(dl++, G_TP_PERSP);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CD2CC.s")
+    if (sLBCommonExternSpriteAttr & SP_TRANSPARENT)
+    {
+        gDPSetRenderMode(dl++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
+    }
+    if (sLBCommonExternBitmapFmt == G_IM_FMT_CI)
+    {
+        gDPSetTextureLUT(dl++, G_TT_NONE);
+    }
+    dls[0] = dl;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CD440.s")
+// 0x800CD2CC
+void lbCommonScissorSpriteCamera(GObj *gobj)
+{
+    Camera *cam = CameraGetStruct(gobj);
+    Vp_t *viewport = &cam->viewport.vp;
+    s32 ulx = (viewport->vtrans[0] / 4) - (viewport->vscale[0] / 4);
+    s32 uly = (viewport->vtrans[1] / 4) - (viewport->vscale[1] / 4);
+    s32 lrx = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
+    s32 lry = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
+    
+    if (ulx < (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * 10)
+    {
+        ulx = (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * 10;
+    }
+    if (uly < (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * 10)
+    {
+        uly = (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * 10;
+    }
+    if (lrx > gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * 10))
+    {
+        lrx = gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * 10);
+    }
+    if (lry > gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * 10))
+    {
+        lry = gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * 10);
+    }
+    lbCommonStartSprite(gDisplayListHead);
+    lbCommonSetSpriteScissor(ulx, lrx, uly, lry);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CD4C0.s")
+    func_80017B80(gobj, (cam->flags & 8) ? 1 : 0);
+    lbCommonFinishSprite(gDisplayListHead);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CD538.s")
+// 0x800CD440
+void lbCommonInitCameraOrtho(Camera *cam, u8 tk, u8 arg2)
+{
+    OMMtx *ommtx = gcAddOMMtxForCamera(cam, tk, arg2);
+    
+    cam->projection.ortho = dOMOrthoDefault;
+    cam->projection.ortho.ommtx = ommtx;
+}
+
+// 0x800CD4C0
+void lbCommonInitCameraPersp(Camera *cam, u8 tk, u8 arg2)
+{
+    OMMtx *ommtx = gcAddOMMtxForCamera(cam, tk, arg2);
+    
+    cam->projection.persp = dOMPerspDefault;
+    cam->projection.persp.ommtx = ommtx;
+}
+
+// 0x800CD538
+void lbCommonInitCameraVec(Camera *cam, u8 tk, u8 arg2)
+{
+    OMMtx *ommtx = gcAddOMMtxForCamera(cam, tk, arg2);
+    
+    cam->vec = dOMCameraVecDefault;
+    cam->vec.ommtx = ommtx;
+}
 
 // 0x800CD5AC
 void lbCommonCross3D(Vec3f *a, Vec3f *b, Vec3f *out)

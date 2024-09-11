@@ -24,8 +24,8 @@ extern GObj* func_8000B93C
 	u32 arg12,
 	s32 arg13
 );
-extern void func_ovl0_800CCF00(GObj*);
-extern void func_ovl0_800CD2CC(GObj*);
+extern void lbCommonDrawSObjAttr(GObj*);
+extern void lbCommonScissorSpriteCamera(GObj*);
 
 // // // // // // // // // // // //
 //                               //
@@ -267,7 +267,7 @@ void mnOptionMakeSoundOptionSObjs(void)
     SObj *sobj;
 
     sMNOptionSoundOptionGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionMonoTextSprite));
 
@@ -307,7 +307,7 @@ void mnOptionMakeSoundTextSObj(void)
     SObj *sobj;
 
     sMNOptionSoundGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     mnOptionMakeOptionTabSObjs(gobj, 113.0F, 42.0F, 17);
     mnOptionUpdateOptionTabSObjs(gobj, sMNOptionOption == nMNOptionOptionSound);
@@ -333,7 +333,7 @@ void mnOptionMakeScreenAdjustSObj(void)
 
     sMNOptionScreenAdjustGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     mnOptionMakeOptionTabSObjs(gobj, 91.0F, 89.0F, 17);
 
@@ -360,7 +360,7 @@ void mnOptionMakeBackupClearSObj(void)
 
     sMNOptionBackupClearGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
     mnOptionMakeOptionTabSObjs(gobj, 69.0F, 136.0F, 17);
     mnOptionUpdateOptionTabSObjs(gobj, sMNOptionOption == nMNOptionOptionBackupClear);
 
@@ -425,8 +425,8 @@ void mnOptionHeaderProcRender(GObj *gobj)
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
 
-    func_ovl0_800CCEAC();
-    func_ovl0_800CCF00(gobj);
+    lbCommonClearExternSpriteParams();
+    lbCommonDrawSObjAttr(gobj);
 }
 
 // 0x8013238C
@@ -471,7 +471,7 @@ void mnOptionMakeDecalSObjs(void)
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonCircleSprite));
 
@@ -527,8 +527,8 @@ void func_ovl60_80132618(GObj *gobj)
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    func_ovl0_800CCEAC();
-    func_ovl0_800CCF00(gobj);
+    lbCommonClearExternSpriteParams();
+    lbCommonDrawSObjAttr(gobj);
 }
 
 // 0x8013275C
@@ -593,7 +593,7 @@ void mnOptionSoundUnderlineProcRender(GObj *gobj)
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    func_ovl0_800CCEAC();
+    lbCommonClearExternSpriteParams();
 }
 
 // 0x801329F4
@@ -626,7 +626,7 @@ void mnOptionMakeLink3Camera(void)
             NULL,
             1,
             GOBJ_LINKORDER_DEFAULT,
-            func_ovl0_800CD2CC,
+            lbCommonScissorSpriteCamera,
             20,
             CAMERA_MASK_DLLINK(3),
             -1,
@@ -651,7 +651,7 @@ void mnOptionMakeLink4Camera(void)
             NULL,
             1,
             GOBJ_LINKORDER_DEFAULT,
-            func_ovl0_800CD2CC,
+            lbCommonScissorSpriteCamera,
             10,
             CAMERA_MASK_DLLINK(4),
             -1,
@@ -676,7 +676,7 @@ void mnOptionMakeLink2Camera(void)
             NULL,
             1,
             GOBJ_LINKORDER_DEFAULT,
-            func_ovl0_800CD2CC,
+            lbCommonScissorSpriteCamera,
             40,
             CAMERA_MASK_DLLINK(2),
             -1,
@@ -701,7 +701,7 @@ void mnOptionMakeLink1Camera(void)
             NULL,
             1,
             GOBJ_LINKORDER_DEFAULT,
-            func_ovl0_800CD2CC,
+            lbCommonScissorSpriteCamera,
             60,
             CAMERA_MASK_DLLINK(1),
             -1,
@@ -726,7 +726,7 @@ void mnOptionMakeLink0Camera(void)
             NULL,
             1,
             GOBJ_LINKORDER_DEFAULT,
-            func_ovl0_800CD2CC,
+            lbCommonScissorSpriteCamera,
             80,
             CAMERA_MASK_DLLINK(0),
             -1,

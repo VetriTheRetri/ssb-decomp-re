@@ -1674,7 +1674,7 @@ void sc1PGameTeamStockDisplayProcRender(GObj *interface_gobj)
                 }
             }
         }
-        func_ovl0_800CCF00(interface_gobj);
+        lbCommonDrawSObjAttr(interface_gobj);
     }
 }
 

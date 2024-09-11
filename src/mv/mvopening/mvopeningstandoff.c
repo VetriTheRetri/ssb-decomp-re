@@ -7,9 +7,9 @@
 extern void leoInitUnit_atten();
 extern u32 func_8000092C();
 extern void func_800A26B8();
-extern void func_ovl0_800CCF00(GObj*);
+extern void lbCommonDrawSObjAttr(GObj*);
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
-extern void func_ovl0_800CD2CC();
+extern void lbCommonScissorSpriteCamera();
 extern GObj* func_8000B93C(
 	u32 id,
 	void (*arg1)(GObj *),
@@ -297,7 +297,7 @@ void mvOpeningStandoffMakeWallpaper(void)
     SObj* wallpaper_sobj;
 
     wallpaper_gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(wallpaper_gobj, func_ovl0_800CCF00, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(wallpaper_gobj, mvOpeningStandoffWallpaperProcUpdate, nOMObjProcessKindProc, 1);
 
     wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, gcGetDataFromFile(Sprite*, sMVOpeningStandoffFiles[1], &lMVOpeningStandoffWallpaperSprite));
@@ -440,7 +440,7 @@ void mvOpeningStandoffMakeLightningFlashViewport(void)
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
-            func_ovl0_800CD2CC,
+            lbCommonScissorSpriteCamera,
             20,
             CAMERA_MASK_DLLINK(28),
             -1,
@@ -512,7 +512,7 @@ void mvOpeningStandoffMakeWallpaperViewport(void)
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
-            func_ovl0_800CD2CC,
+            lbCommonScissorSpriteCamera,
             90,
             CAMERA_MASK_DLLINK(27),
             -1,

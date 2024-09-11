@@ -8,7 +8,7 @@
 
 extern alSoundEffect* func_800269C0_275C0(u16);
 
-extern void func_ovl0_800CCF00(GObj*);
+extern void lbCommonDrawSObjAttr(GObj*);
 extern SObj* lbCommonMakeSObjForGObj(GObj*, Sprite*);
 extern void auSetBGMVolume(u32, u32);
 extern void func_80007080(void*, f32, f32, f32, f32);
@@ -799,10 +799,10 @@ void ifCommonPlayerDamageProcRender(GObj *interface_gobj)
 
     sobj = SObjGetStruct(interface_gobj);
 
-    func_ovl0_800CC118(gDisplayListHead, sobj);
-    func_ovl0_800CC818(gDisplayListHead, sobj);
+    lbCommonPrepSObjSpriteAttrs(gDisplayListHead, sobj);
+    lbCommonPrepSObjDraw(gDisplayListHead, sobj);
 
-    func_ovl0_800CCED8(&sobj->sprite);
+    sLBCommonSetExternSpriteParams(&sobj->sprite);
 
     player = ifGetPlayer(interface_gobj);
 
@@ -844,13 +844,13 @@ void ifCommonPlayerDamageProcRender(GObj *interface_gobj)
         sobj->sprite.green = color_g;
         sobj->sprite.blue = color_b;
 
-        func_ovl0_800CC118(gDisplayListHead, sobj);
+        lbCommonPrepSObjSpriteAttrs(gDisplayListHead, sobj);
 
         if (color_id == GMCOMMON_PLAYERS_MAX)
         {
             gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0);
         }
-        func_ovl0_800CC818(gDisplayListHead, sobj);
+        lbCommonPrepSObjDraw(gDisplayListHead, sobj);
 
         sobj = sobj->next;
 
@@ -877,11 +877,11 @@ void ifCommonPlayerDamageProcRender(GObj *interface_gobj)
                 }
                 sobj->sprite.scalex = sobj->sprite.scaley = scale;
 
-                func_ovl0_800CC818(gDisplayListHead, sobj);
+                lbCommonPrepSObjDraw(gDisplayListHead, sobj);
             }
             sobj = sobj->next;
         }
-        func_ovl0_800CCEAC();
+        lbCommonClearExternSpriteParams();
     }
 }
 
@@ -1109,7 +1109,7 @@ void ifCommonPlayerStockMultiProcRender(GObj *interface_gobj)
             }
             sIFCommonPlayerStocksNum[player] = stock_count;
         }
-        func_ovl0_800CCF00(interface_gobj);
+        lbCommonDrawSObjAttr(interface_gobj);
     }
 }
 
@@ -1159,7 +1159,7 @@ void ifCommonPlayerStockSingleProcRender(GObj *interface_gobj)
 
     if (stocks != -1)
     {
-        func_ovl0_800CCF00(interface_gobj);
+        lbCommonDrawSObjAttr(interface_gobj);
     }
 }
 
@@ -1243,7 +1243,7 @@ void ifCommonPlayerStockStealMakeInterface(s32 thief, s32 stolen)
     {
         SObj *check_sobj, *sobj;
 
-        gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+        gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
         gcAddGObjProcess(interface_gobj, ifCommonPlayerStockStealProcUpdate, nOMObjProcessKindProc, 0);
 
         check_sobj = lbCommonMakeSObjForGObj(interface_gobj, fp->attributes->sprites->stock_spr);
@@ -1838,7 +1838,7 @@ void ifCommonPlayerTagProcRender(GObj *interface_gobj)
                 SObjGetStruct(interface_gobj)->pos.x = (s32) ((gCMManagerCameraStruct.viewport_center_x + x) - (SObjGetStruct(interface_gobj)->sprite.width * 0.5F));
                 SObjGetStruct(interface_gobj)->pos.y = (s32) ((gCMManagerCameraStruct.viewport_center_y - y) - SObjGetStruct(interface_gobj)->sprite.height);
 
-                func_ovl0_800CCF00(interface_gobj);
+                lbCommonDrawSObjAttr(interface_gobj);
             }
         }
     }
@@ -1903,7 +1903,7 @@ void ifCommonItemArrowProcRender(GObj *interface_gobj)
             sobj->pos.x = (s32) ((gCMManagerCameraStruct.viewport_center_x + x) - (sobj->sprite.width * 0.5F));
             sobj->pos.y = (s32) ((gCMManagerCameraStruct.viewport_center_y - y) - sobj->sprite.height);
 
-            func_ovl0_800CCF00(interface_gobj);
+            lbCommonDrawSObjAttr(interface_gobj);
         }
     }
 }
@@ -1981,7 +1981,7 @@ void ifCommonAnnounceGoMakeInterface(void)
     GObj *interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
     s32 i;
 
-    gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(interface_gobj, ifCommonAnnounceThread, nOMObjProcessKindThread, 5);
 
     for (i = 0; i < ARRAY_COUNT(dIFCommonAnnounceGoSpriteData); i++)
@@ -2193,7 +2193,7 @@ SObj* ifCommonCountdownMakeInterface(void)
 
     interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(interface_gobj, ifCommonCountdownThread, nOMObjProcessKindThread, 5);
 
     sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[1], &lIFCommonTrafficRod));
@@ -2240,7 +2240,7 @@ GObj* ifCommonAnnounceTimeUpMakeInterface(void)
 {
     GObj *interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     ifCommonAnnounceSetAttr(interface_gobj, 1, dIFCommonAnnounceTimeUpSpriteData, ARRAY_COUNT(dIFCommonAnnounceTimeUpSpriteData));
 
@@ -2354,7 +2354,7 @@ void ifCommonSuddenDeathMakeInterface(void)
 {
     GObj *interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(interface_gobj, ifCommonSuddenDeathThread, nOMObjProcessKindThread, 5);
     ifCommonAnnounceSetAttr(interface_gobj, 7, dIFCommonAnnounceSuddenDeathSpriteData, ARRAY_COUNT(dIFCommonAnnounceSuddenDeathSpriteData));
     ifCommonAnnounceSetColors(interface_gobj, &dIFCommonAnnounceSuddenDeathSpriteColors);
@@ -2407,7 +2407,7 @@ void ifCommonTimerProcRender(GObj *interface_gobj)
             }
         }
     }
-    func_ovl0_800CCF00(interface_gobj);
+    lbCommonDrawSObjAttr(interface_gobj);
 }
 
 // 0x80112EBC
@@ -2540,7 +2540,7 @@ GObj* ifCommonAnnounceGameSetMakeInterface(void)
 {
     GObj *interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     ifCommonAnnounceSetAttr(interface_gobj, 1, dIFCommonAnnounceGameSetSpriteData, ARRAY_COUNT(dIFCommonAnnounceGameSetSpriteData));
 
@@ -2762,7 +2762,7 @@ void ifCommonBattlePauseProcRender(GObj *interface_gobj)
             dIFCommonBattlePauseBorderRectangle[i].lry
         );
     }
-    func_ovl0_800CCEAC();
+    lbCommonClearExternSpriteParams();
 }
 
 // 0x80113CF8
@@ -2830,7 +2830,7 @@ void ifCommonBattlePauseMakeInterface(s32 player)
 
     interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindPauseMenu, NULL, nOMObjCommonLinkIDPauseMenu, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 24, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 24, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     ifCommonBattlePausePlayerNumMakeSObj(interface_gobj, player);
     ifCommonBattlePauseMakeSObjsAll(interface_gobj);
@@ -3229,7 +3229,7 @@ GObj* ifCommonAnnounceFailureMakeInterface(void)
 {
     GObj *interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
     ifCommonAnnounceSetAttr(interface_gobj, 7, dIFCommonAnnounceFailureSpriteData, ARRAY_COUNT(dIFCommonAnnounceFailureSpriteData));
     ifCommonAnnounceSetColors(interface_gobj, &dIFCommonAnnounceFailureSpriteColors);
 
@@ -3241,7 +3241,7 @@ GObj* ifCommonAnnounceCompleteMakeInterface(void)
 {
     GObj *interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
     ifCommonAnnounceSetAttr(interface_gobj, 7, dIFCommonAnnounceCompleteSpriteData, ARRAY_COUNT(dIFCommonAnnounceCompleteSpriteData));
     ifCommonAnnounceSetColors(interface_gobj, &dIFCommonAnnounceCompleteSpriteColors);
 

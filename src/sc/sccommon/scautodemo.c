@@ -4,7 +4,7 @@
 #include <sc/scene.h>
 #include <sys/system_00.h>
 
-extern void func_ovl0_800CCF00();
+extern void lbCommonDrawSObjAttr();
 
 // // // // // // // // // // // //
 //                               //
@@ -588,7 +588,7 @@ void scAutoDemoInitSObjs(void)
 		nOMObjCommonLinkIDInterface, 
 		GOBJ_LINKORDER_DEFAULT
 	);
-	gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	for (player = 0; player < ARRAY_COUNT(gSceneData.demo_ft_kind); player++)
 	{

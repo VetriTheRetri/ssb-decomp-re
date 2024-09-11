@@ -25,8 +25,8 @@ extern intptr_t FILE_020_DATA_HEADER_IMAGE_OFFSET;
 extern intptr_t FILE_020_ARROW_LEFT_IMAGE_OFFSET;
 extern intptr_t FILE_020_ARROW_RIGHT_IMAGE_OFFSET;
 
-extern void func_ovl0_800CCF00();
-extern void func_ovl0_800CD2CC();
+extern void lbCommonDrawSObjAttr();
+extern void lbCommonScissorSpriteCamera();
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 
@@ -489,7 +489,7 @@ void mnVsRecordsCreateTitle()
 	SObj* title_sobj;
 
 	title_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjDisplay(title_gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
+	gcAddGObjDisplay(title_gobj, lbCommonDrawSObjAttr, 1, 0x80000000, -1);
 
 	title_sobj = lbCommonMakeSObjForGObj(title_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[1], &FILE_020_DATA_HEADER_IMAGE_OFFSET));
 	title_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -544,7 +544,7 @@ void mnVsRecordsCreateSubtitle()
 	SObj* subtitle_sobj;
 
 	subtitle_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjDisplay(subtitle_gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
+	gcAddGObjDisplay(subtitle_gobj, lbCommonDrawSObjAttr, 1, 0x80000000, -1);
 	gcAddGObjProcess(subtitle_gobj, mnVsRecordsRenderSubtitle, 1, 1);
 
 	subtitle_sobj = lbCommonMakeSObjForGObj(subtitle_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_SUBTITLE_BATTLE_SCORE_IMAGE_OFFSET));
@@ -570,7 +570,7 @@ void mnVsRecordsCreatePortraitAndStatsArrows()
 	SObj* portrait_arrows_sobj;
 
 	portrait_arrows_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjDisplay(portrait_arrows_gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
+	gcAddGObjDisplay(portrait_arrows_gobj, lbCommonDrawSObjAttr, 1, 0x80000000, -1);
 	gcAddGObjProcess(portrait_arrows_gobj, mnVsRecordsUpdatePortraitArrowsDisplay, 1, 1);
 
 	// left arrow
@@ -607,7 +607,7 @@ void mnVsRecordsCreateResortArrows()
 	SObj* resort_arrows_sobj;
 
 	resort_arrows_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjDisplay(resort_arrows_gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
+	gcAddGObjDisplay(resort_arrows_gobj, lbCommonDrawSObjAttr, 1, 0x80000000, -1);
 	gcAddGObjProcess(resort_arrows_gobj, mnVsRecordsUpdateResortArrowsDisplay, 1, 1);
 
 	resort_arrows_sobj = lbCommonMakeSObjForGObj(resort_arrows_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_DOUBLE_DOWN_ARROW_IMAGE_OFFSET));
@@ -633,7 +633,7 @@ void mnVsRecordsCreateColumnArrows()
 	SObj* column_arrows_sobj;
 
 	column_arrows_gobj = gcMakeGObjSPAfter(0, 0, 2, 0x80000000);
-	gcAddGObjDisplay(column_arrows_gobj, func_ovl0_800CCF00, 1, 0x80000000, -1);
+	gcAddGObjDisplay(column_arrows_gobj, lbCommonDrawSObjAttr, 1, 0x80000000, -1);
 	gcAddGObjProcess(column_arrows_gobj, mnVsRecordsUpdateColumnArrowsDisplay, 1, 1);
 
 	column_arrows_sobj = lbCommonMakeSObjForGObj(column_arrows_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_LEFT_AND_RIGHT_ARROW_IMAGE_OFFSET));
@@ -742,7 +742,7 @@ void mnVsRecordsRenderTableGrid(GObj* table_border_gobj)
 	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
 
-	func_ovl0_800CCEAC();
+	lbCommonClearExternSpriteParams();
 }
 
 // 801333EC
@@ -1119,7 +1119,7 @@ GObj* mnVsRecordsCreateBattleScoreTableValues()
 	s32 i, j;
 
 	values_gobj = gcMakeGObjSPAfter(0, 0, 6, 0x80000000);
-	gcAddGObjDisplay(values_gobj, func_ovl0_800CCF00, 5, 0x80000000, -1);
+	gcAddGObjDisplay(values_gobj, lbCommonDrawSObjAttr, 5, 0x80000000, -1);
 
 	for (i = 0; i < 12; i++)
 	{
@@ -1150,7 +1150,7 @@ s32 mnVsRecordsCreateBattleScoreTableHeaders()
 	SObj* headers_sobj;
 
 	headers_gobj = gcMakeGObjSPAfter(0, 0, 5, 0x80000000);
-	gcAddGObjDisplay(headers_gobj, func_ovl0_800CCF00, 4, 0x80000000, -1);
+	gcAddGObjDisplay(headers_gobj, lbCommonDrawSObjAttr, 4, 0x80000000, -1);
 
 	headers_sobj = lbCommonMakeSObjForGObj(headers_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], &FILE_01F_TOTAL_TEXTURE_IMAGE_OFFSET));
 	headers_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1182,7 +1182,7 @@ void mnVsRecordsRenderRankingRowHighlight(GObj* row_highlight_gobj)
 		gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 		gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
 
-		func_ovl0_800CCEAC();
+		lbCommonClearExternSpriteParams();
 	}
 }
 
@@ -1269,7 +1269,7 @@ GObj* mnVsRecordsCreateRankingTableValues(s32 column)
 	}
 
 	table_values_gobj = gcMakeGObjSPAfter(0, 0, 6, 0x80000000);
-	gcAddGObjDisplay(table_values_gobj, func_ovl0_800CCF00, 5, 0x80000000, -1);
+	gcAddGObjDisplay(table_values_gobj, lbCommonDrawSObjAttr, 5, 0x80000000, -1);
 
 	for (i = 0; i < 12; i++)
 	{
@@ -1351,7 +1351,7 @@ GObj* mnVsRecordsCreateRankingTableHeaders(s32 column)
 	}
 
 	table_headers_gobj = gcMakeGObjSPAfter(0, 0, 5, 0x80000000);
-	gcAddGObjDisplay(table_headers_gobj, func_ovl0_800CCF00, 4, 0x80000000, -1);
+	gcAddGObjDisplay(table_headers_gobj, lbCommonDrawSObjAttr, 4, 0x80000000, -1);
 
 	x = 0x30;
 	for (i = 0; i < ARRAY_COUNT(offsets); i++)
@@ -1416,7 +1416,7 @@ s32 mnVsRecordsCreateIndividualTableValues()
 	s32 unused, unused2;
 
 	table_values_gobj = gcMakeGObjSPAfter(0, 0, 6, 0x80000000);
-	gcAddGObjDisplay(table_values_gobj, func_ovl0_800CCF00, 5, 0x80000000, -1);
+	gcAddGObjDisplay(table_values_gobj, lbCommonDrawSObjAttr, 5, 0x80000000, -1);
 
 	for (i = 0; i < 12; i++)
 	{
@@ -1452,7 +1452,7 @@ s32 mnVsRecordsCreateIndividualPortraitStatsAndTableHeaders()
 	s32 i;
 
 	individual_stats_gobj = gcMakeGObjSPAfter(0, 0, 5, 0x80000000);
-	gcAddGObjDisplay(individual_stats_gobj, func_ovl0_800CCF00, 4, 0x80000000, -1);
+	gcAddGObjDisplay(individual_stats_gobj, lbCommonDrawSObjAttr, 4, 0x80000000, -1);
 
 	for (i = 0; i < 4; i++)
 	{
@@ -1501,7 +1501,7 @@ void mnVsRecordsCreateStats(s32 stats_kind)
 // 801359EC
 void mnVsRecordsCreateTableValuesViewport()
 {
-	GObj *camera_gobj = func_8000B93C(1, NULL, 1, GOBJ_LINKORDER_DEFAULT, func_ovl0_800CD2CC, 0x28, 0x00000020, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(1, NULL, 1, GOBJ_LINKORDER_DEFAULT, lbCommonScissorSpriteCamera, 0x28, 0x00000020, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1509,7 +1509,7 @@ void mnVsRecordsCreateTableValuesViewport()
 // 80135A8C
 void mnVsRecordsCreateTableHeadersViewport()
 {
-	GObj *camera_gobj = func_8000B93C(1, NULL, 1, GOBJ_LINKORDER_DEFAULT, func_ovl0_800CD2CC, 0x14, 0x00000010, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(1, NULL, 1, GOBJ_LINKORDER_DEFAULT, lbCommonScissorSpriteCamera, 0x14, 0x00000010, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1517,7 +1517,7 @@ void mnVsRecordsCreateTableHeadersViewport()
 // 80135B2C
 void mnVsRecordsCreateTableGridViewport()
 {
-	GObj *camera_gobj = func_8000B93C(1, NULL, 1, GOBJ_LINKORDER_DEFAULT, func_ovl0_800CD2CC, 0x3C, 0x00000008, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(1, NULL, 1, GOBJ_LINKORDER_DEFAULT, lbCommonScissorSpriteCamera, 0x3C, 0x00000008, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1525,7 +1525,7 @@ void mnVsRecordsCreateTableGridViewport()
 // 80135BCC
 void mnVsRecordsCreateRankingRowHighlightViewport()
 {
-	GObj *camera_gobj = func_8000B93C(1, NULL, 1, GOBJ_LINKORDER_DEFAULT, func_ovl0_800CD2CC, 0x46, 0x00000004, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(1, NULL, 1, GOBJ_LINKORDER_DEFAULT, lbCommonScissorSpriteCamera, 0x46, 0x00000004, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1533,7 +1533,7 @@ void mnVsRecordsCreateRankingRowHighlightViewport()
 // 80135C6C
 void mnVsRecordsCreateTitleViewport()
 {
-	GObj *camera_gobj = func_8000B93C(1, NULL, 1, GOBJ_LINKORDER_DEFAULT, func_ovl0_800CD2CC, 0x50, 0x00000002, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(1, NULL, 1, GOBJ_LINKORDER_DEFAULT, lbCommonScissorSpriteCamera, 0x50, 0x00000002, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }

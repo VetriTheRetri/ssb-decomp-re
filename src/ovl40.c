@@ -9,8 +9,8 @@ extern intptr_t lOverlay40ArenaHi;  // 803903E0
 extern intptr_t lOverlay40ArenaLo;  // 8018E5E0
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern func_ovl0_800CCF00();
-extern func_ovl0_800CD2CC();
+extern lbCommonDrawSObjAttr();
+extern lbCommonScissorSpriteCamera();
 
 
 // DATA
@@ -140,7 +140,7 @@ void mvOpeningLinkDrawName()
 	s32 i;
 
 	gMvOpeningLinkNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcAddGObjDisplay(name_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000, -1);
+	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 0x1B, 0x80000000, -1);
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
@@ -339,7 +339,7 @@ void mvOpeningLinkCreatePosedFighter()
 // 8018DB40
 void mvOpeningLinkCreateNameViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }

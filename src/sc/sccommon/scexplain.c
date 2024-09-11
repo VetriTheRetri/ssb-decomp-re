@@ -4,8 +4,8 @@
 #include <sc/scene.h>
 #include <sys/system_00.h>
 
-extern void func_ovl0_800CCF00(GObj*);
-extern void func_ovl0_800CD2CC(GObj*);
+extern void lbCommonDrawSObjAttr(GObj*);
+extern void lbCommonScissorSpriteCamera(GObj*);
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern GObj* func_8000B9FC();
 extern GObj* func_8000B93C
@@ -302,7 +302,7 @@ GObj* func_ovl63_8018D460(void)
         NULL,
         9,
         GOBJ_LINKORDER_DEFAULT,
-        func_ovl0_800CD2CC,
+        lbCommonScissorSpriteCamera,
         15,
         CAMERA_MASK_DLLINK(26), 
         -1,
@@ -544,7 +544,7 @@ SObj* scExplainMakeSObjOffset(intptr_t offset)
         nOMObjCommonLinkIDInterface,
         GOBJ_LINKORDER_DEFAULT
     );
-    gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, sSCExplainGraphicsFileHead, offset));
 

@@ -5,10 +5,10 @@
 #include <sys/system_00.h>
 
 extern u32 func_8000092C();
-extern void func_ovl0_800CD2CC(GObj*);
-extern void func_ovl0_800CCF00(GObj*);
+extern void lbCommonScissorSpriteCamera(GObj*);
+extern void lbCommonDrawSObjAttr(GObj*);
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
-extern void func_ovl0_800CD2CC();
+extern void lbCommonScissorSpriteCamera();
 extern GObj* func_8000B93C(
 	u32 id,
 	void (*arg1)(GObj *),
@@ -356,7 +356,7 @@ void mvOpeningNewcomersMakeHideViewport(void)
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
-            func_ovl0_800CD2CC,
+            lbCommonScissorSpriteCamera,
             20,
             CAMERA_MASK_DLLINK(26),
             -1,

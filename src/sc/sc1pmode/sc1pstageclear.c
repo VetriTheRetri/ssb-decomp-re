@@ -5,7 +5,7 @@
 #include <ovl0/reloc_data_mgr.h>
 
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
-extern void func_ovl0_800CD2CC();
+extern void lbCommonScissorSpriteCamera();
 extern GObj* func_8000B93C(
 	u32 id,
 	void (*arg1)(GObj *),
@@ -587,7 +587,7 @@ void sc1PStageClearMakeScoreDigitSObjs
 void sc1PStageClearTextProcRender(GObj *gobj)
 {
 	gDPPipeSync(gDisplayListHead[0]++);
-	func_ovl0_800CCF00(gobj);
+	lbCommonDrawSObjAttr(gobj);
 	gDPPipeSync(gDisplayListHead[0]++);
 }
 
@@ -1358,7 +1358,7 @@ void sc1PStageClearFramebufWallpaperProcRender(GObj *gobj)
 	gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x80, 0x80, 0x80, 0xFF);
 	gDPSetCombineMode(gDisplayListHead[0]++, G_CC_MODULATEI_PRIM, G_CC_MODULATEI_PRIM);
 	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
-	func_ovl0_800CCF74(gobj);
+	lbCommonDrawSObjNoAttr(gobj);
 	gDPPipeSync(gDisplayListHead[0]++);
 	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
@@ -1399,7 +1399,7 @@ void sc1PStageClearMakeLink26Camera(void)
 			NULL,
 			16,
 			GOBJ_LINKORDER_DEFAULT,
-			func_ovl0_800CD2CC,
+			lbCommonScissorSpriteCamera,
 			80,
 			CAMERA_MASK_DLLINK(26),
 			-1,
@@ -1424,7 +1424,7 @@ void sc1PStageClearMakeLink27Camera(void)
 			NULL,
 			16,
 			GOBJ_LINKORDER_DEFAULT,
-			func_ovl0_800CD2CC,
+			lbCommonScissorSpriteCamera,
 			90,
 			CAMERA_MASK_DLLINK(27),
 			-1,

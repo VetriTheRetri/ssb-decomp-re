@@ -15,8 +15,8 @@ extern intptr_t lOverlay43ArenaLo;  // 8018E640
 extern intptr_t lOverlay43ArenaHi;  // 803903E0
 extern intptr_t FILE_041_KIRBY_CAMERA_PARAMS_OFFSET; // file 0x041 offset for Kirby's fighter pose camera settings
 
-extern void func_ovl0_800CCF00();
-extern void func_ovl0_800CD2CC();
+extern void lbCommonDrawSObjAttr();
+extern void lbCommonScissorSpriteCamera();
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
@@ -149,7 +149,7 @@ void mvOpeningKirbyDrawName()
 	s32 i;
 
 	gMvOpeningKirbyNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcAddGObjDisplay(name_gobj, func_ovl0_800CCF00, 0x1B, 0x80000000, -1);
+	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 0x1B, 0x80000000, -1);
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
@@ -354,7 +354,7 @@ void mvOpeningKirbyCreatePosedFighter()
 // 8018DB8C
 void mvOpeningKirbyCreateNameViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }

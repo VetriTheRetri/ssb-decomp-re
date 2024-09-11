@@ -74,7 +74,7 @@ extern intptr_t FILE_03F_TRANSITION_GFX_OUTLINE_OBJECT_OFFSET_2; // file 0x03F o
 extern intptr_t FILE_05A_BACKGROUND_IMAGE_OFFSET; // file 0x05A offset for background image footer
 
 extern void gcPlayCamAnim();
-extern void func_ovl0_800CD2CC();
+extern void lbCommonScissorSpriteCamera();
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
@@ -603,7 +603,7 @@ void mvOpeningFirstDestinationCreateCloseupOverlay()
 // 80132D48
 void mvOpeningFirstDestinationCreateOverlayViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x3C, 0x04000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x3C, 0x04000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -618,7 +618,7 @@ void mvOpeningFirstDestinationRenderBackground(GObj* bg_gobj)
 	gDPSetRenderMode(gDisplayListHead[0]++, AA_EN | Z_CMP | IM_RD | CVG_DST_CLAMP | ZMODE_OPA | ALPHA_CVG_SEL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_A_MEM), AA_EN | Z_CMP | IM_RD | CVG_DST_CLAMP | ZMODE_OPA | ALPHA_CVG_SEL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_A_MEM));
 	gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, TEXEL0,  0, 0, 0, TEXEL0,  0, 0, 0, TEXEL0,  0, 0, 0, TEXEL0);
 
-	func_ovl0_800CCF74(bg_gobj);
+	lbCommonDrawSObjNoAttr(bg_gobj);
 	gDPPipeSync(gDisplayListHead[0]++);
 	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
 	gDPSetDepthSource(gDisplayListHead[0]++, G_ZS_PIXEL);
@@ -831,7 +831,7 @@ void mvOpeningFirstDestinationCreateFourthSceneViewports()
 // 801339CC
 void mvOpeningFirstDestinationCreateBackgroundViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x5A, 0x10000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x5A, 0x10000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }

@@ -5,9 +5,9 @@
 #include <ovl0/reloc_data_mgr.h>
 
 extern u32 func_8000092C();
-extern void func_ovl0_800CCF00(GObj*);
+extern void lbCommonDrawSObjAttr(GObj*);
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
-extern void func_ovl0_800CD2CC();
+extern void lbCommonScissorSpriteCamera();
 extern GObj* func_8000B93C(
 	u32 id,
 	void (*arg1)(GObj *),
@@ -191,7 +191,7 @@ void mvOpeningSectorMakeWallpaper(void)
 
     sMVOpeningSectorWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(wallpaper_gobj, func_ovl0_800CCF00, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(wallpaper_gobj, mvOpeningSectorWallpaperProcUpdate, nOMObjProcessKindProc, 1);
 
     wallpaper_sobj = lbCommonMakeSObjForGObj
@@ -317,7 +317,7 @@ void mvOpeningSectorCockpitProcRender(GObj *cockpit_gobj)
     gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, TEXEL0,  0, 0, 0, PRIMITIVE,  0, 0, 0, TEXEL0,  0, 0, 0, PRIMITIVE);
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-    func_ovl0_800CCF74(cockpit_gobj);
+    lbCommonDrawSObjNoAttr(cockpit_gobj);
 }
 
 // 0x8013215C
@@ -454,7 +454,7 @@ void mvOpeningSectorMakeWallpaperViewport(void)
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
-            func_ovl0_800CD2CC,
+            lbCommonScissorSpriteCamera,
             90,
             CAMERA_MASK_DLLINK(28),
             -1,
@@ -479,7 +479,7 @@ void mvOpeningSectorMakeCockpitViewport(void)
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
-            func_ovl0_800CD2CC,
+            lbCommonScissorSpriteCamera,
             20,
             CAMERA_MASK_DLLINK(29),
             -1,

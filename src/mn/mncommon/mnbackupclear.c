@@ -24,8 +24,8 @@ extern GObj* func_8000B93C
 	u32 arg12,
 	s32 arg13
 );
-extern void func_ovl0_800CCF00(GObj*);
-extern void func_ovl0_800CD2CC(GObj*);
+extern void lbCommonDrawSObjAttr(GObj*);
+extern void lbCommonScissorSpriteCamera(GObj*);
 
 // // // // // // // // // // // //
 //                               //
@@ -205,7 +205,7 @@ void mnBackupClearMakeHeaderSObjs(void)
     SObj *sobj;
     
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[2], &lMNBackupClearHeaderOptionSprite));
     
@@ -301,7 +301,7 @@ void mnBackupClearUpdateOptionTabSObjs(void)
     {
         *option_gobj[i] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
-        gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+        gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
         
         sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[1], offsets[i]));
 
@@ -345,8 +345,8 @@ void mnBackupClearOptionConfirmProcRender(GObj *gobj)
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
     
-    func_ovl0_800CCEAC();
-    func_ovl0_800CCF00(gobj);
+    lbCommonClearExternSpriteParams();
+    lbCommonDrawSObjAttr(gobj);
 }
 
 // 0x80132124
@@ -457,7 +457,7 @@ void mnBackupClearMakeCamera(void)
             NULL,
             1,
             GOBJ_LINKORDER_DEFAULT,
-            func_ovl0_800CD2CC,
+            lbCommonScissorSpriteCamera,
             80,
             CAMERA_MASK_DLLINK(2) |
             CAMERA_MASK_DLLINK(1) |

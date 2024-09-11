@@ -3,8 +3,8 @@
 #include <sys/system_00.h>
 #include <ovl0/reloc_data_mgr.h>
 
-extern void func_ovl0_800CD2CC(GObj*);
-extern void func_ovl0_800CCF00();
+extern void lbCommonScissorSpriteCamera(GObj*);
+extern void lbCommonDrawSObjAttr();
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 extern void func_80007080(void*, f32, f32, f32, f32);
 
@@ -212,7 +212,7 @@ void mnN64ProcStart(void)
 			NULL,
 			nOMObjCommonLinkIDCamera,
 			GOBJ_LINKORDER_DEFAULT,
-			func_ovl0_800CD2CC,
+			lbCommonScissorSpriteCamera,
 			80,
 			CAMERA_MASK_DLLINK(0),
 			-1,
@@ -228,7 +228,7 @@ void mnN64ProcStart(void)
 	gobj = gcMakeGObjSPAfter(nOMObjCommonKindWallpaper, NULL, nOMObjCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
 
 	gcAddGObjProcess(gobj, mnN64LogoThreadUpdate, nOMObjProcessKindThread, 1);
-	gcAddGObjDisplay(gobj, func_ovl0_800CCF00, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	sprite = gcGetDataFromFile
 	(

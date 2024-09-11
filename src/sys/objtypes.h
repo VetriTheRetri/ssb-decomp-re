@@ -2,6 +2,7 @@
 #define _OBJTYPES_H_
 
 #include <macros.h>
+#include <config.h>
 #include <ssb_types.h>
 #include <PR/ultratypes.h>
 #include <PR/mbi.h>

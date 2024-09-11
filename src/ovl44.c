@@ -24,8 +24,8 @@ extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 extern f32 scSubsysFighterGetLightAngleX();
 extern f32 scSubsysFighterGetLightAngleY();
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern void func_ovl0_800CCF00();
-extern void func_ovl0_800CD2CC();
+extern void lbCommonDrawSObjAttr();
+extern void lbCommonScissorSpriteCamera();
 
 
 // Data
@@ -171,7 +171,7 @@ void mvOpeningRunningCreateBackground()
 	SObj* right_bg_sobj;
 
 	bg_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcAddGObjDisplay(bg_gobj, func_ovl0_800CCF00, 0x1C, 0x80000000, -1);
+	gcAddGObjDisplay(bg_gobj, lbCommonDrawSObjAttr, 0x1C, 0x80000000, -1);
 
 	left_bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, GetAddressFromOffset(gMvOpeningRunningFilesArray[0], &FILE_037_BACKGROUND_IMAGE_OFFSET));
 	left_bg_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -229,7 +229,7 @@ void mvOpeningRunningCreateTransitionGfxViewport()
 // 801321BC
 void mvOpeningRunningCreateBackgroundViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_ovl0_800CD2CC, 0x50, 0x10000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x10000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }

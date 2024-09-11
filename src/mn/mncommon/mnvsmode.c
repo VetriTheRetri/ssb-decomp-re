@@ -24,8 +24,8 @@ extern GObj* func_8000B93C
 	u32 arg12,
 	s32 arg13
 );
-extern void func_ovl0_800CCF00(GObj*);
-extern void func_ovl0_800CD2CC(GObj*);
+extern void lbCommonDrawSObjAttr(GObj*);
+extern void lbCommonScissorSpriteCamera(GObj*);
 
 // // // // // // // // // // // //
 //                               //
@@ -324,7 +324,7 @@ void mnVSModeMakeVSStartButton()
     SObj* button_sobj;
 
     sMNVSModeButtonGObjVSStart = button_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(button_gobj, func_ovl0_800CCF00, 2, GOBJ_LINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(button_gobj, lbCommonDrawSObjAttr, 2, GOBJ_LINKORDER_DEFAULT, -1);
     mnVSModeMakeButton(button_gobj, 120.0F, 31.0F, 17);
 
     mnVSModeUpdateButton(button_gobj, (sMNVSModeCursorIndex == 0) ? nMNOptionTabStatusHighlight : nMNOptionTabStatusNot);
@@ -350,7 +350,7 @@ void mnVSModeMakeRuleValue()
 
     sMNVSModeRuleValueGObj = rule_value_gobj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(rule_value_gobj, func_ovl0_800CCF00, 3, GOBJ_LINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(rule_value_gobj, lbCommonDrawSObjAttr, 3, GOBJ_LINKORDER_DEFAULT, -1);
 
     switch (sMNVSModeRule)
     {
@@ -540,7 +540,7 @@ void mnVSModeMakeRuleArrows()
     }
     sMNVSModeRuleArrowsGObj = rule_arrows_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(rule_arrows_gobj, func_ovl0_800CCF00, 2, GOBJ_LINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(rule_arrows_gobj, lbCommonDrawSObjAttr, 2, GOBJ_LINKORDER_DEFAULT, -1);
     gcAddGObjProcess(rule_arrows_gobj, mnVSModeAnimateRuleArrows, 0, 1);
 }
 
@@ -583,7 +583,7 @@ void mnVSModeMakeTimeStockArrows()
     }
 
     sMNVSModeTimeStockArrowsGObj = time_stock_arrows_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(time_stock_arrows_gobj, func_ovl0_800CCF00, 2, GOBJ_LINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(time_stock_arrows_gobj, lbCommonDrawSObjAttr, 2, GOBJ_LINKORDER_DEFAULT, -1);
     gcAddGObjProcess(time_stock_arrows_gobj, mnVSModeAnimateTimeStockArrows, nOMObjProcessKindThread, 1);
 
     if (mnVSModeIsTime() != FALSE)
@@ -605,7 +605,7 @@ void mnVSModeMakeRuleButton()
     SObj* button_sobj;
 
     sMNVSModeButtonGObjRule = rule_button_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(rule_button_gobj, func_ovl0_800CCF00, 2, GOBJ_LINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(rule_button_gobj, lbCommonDrawSObjAttr, 2, GOBJ_LINKORDER_DEFAULT, -1);
     mnVSModeMakeButton(rule_button_gobj, 97.0F, 70.0F, 17);
 
     mnVSModeUpdateButton(rule_button_gobj, (sMNVSModeCursorIndex == nMNVSModeOptionRule) ? nMNOptionTabStatusHighlight : nMNOptionTabStatusNot);
@@ -655,7 +655,7 @@ void mnVSModeMakeTimeStockValue()
     u32 colors[/* */] = { 0x000000FF, 0x000000FF, 0x000000FF };
 
     sMNVSModeTimeStockValueGObj = time_stock_value_gobj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(time_stock_value_gobj, func_ovl0_800CCF00, 3, GOBJ_LINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(time_stock_value_gobj, lbCommonDrawSObjAttr, 3, GOBJ_LINKORDER_DEFAULT, -1);
 
     value = mnVSModeGetTimeStockValue();
 
@@ -691,7 +691,7 @@ void mnVSModeMakeTimeStockButton()
     SObj* time_stock_button_sobj;
 
     sMNVSModeButtonGObjTimeStock = time_stock_button_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(time_stock_button_gobj, func_ovl0_800CCF00, 2, GOBJ_LINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(time_stock_button_gobj, lbCommonDrawSObjAttr, 2, GOBJ_LINKORDER_DEFAULT, -1);
     mnVSModeMakeButton(time_stock_button_gobj, 74.0F, 109.0F, 17);
 
     mnVSModeUpdateButton(time_stock_button_gobj, (sMNVSModeCursorIndex == nMNVSModeOptionTimeStock) ? nMNOptionTabStatusHighlight : nMNOptionTabStatusNot);
@@ -738,7 +738,7 @@ void mnVSModeMakeVSOptionsButton(void)
     SObj* button_sobj;
 
     sMNVSModeButtonGObjVSOptions = button_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(button_gobj, func_ovl0_800CCF00, 2, GOBJ_LINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(button_gobj, lbCommonDrawSObjAttr, 2, GOBJ_LINKORDER_DEFAULT, -1);
     mnVSModeMakeButton(button_gobj, 51.0F, 148.0F, 17);
     mnVSModeUpdateButton(button_gobj, (sMNVSModeCursorIndex == nMNVSModeOptionOptions) ? nMNOptionTabStatusHighlight : nMNOptionTabStatusNot);
 
@@ -784,8 +784,8 @@ void mnVSModeRenderMenuName(GObj* menu_name_gobj)
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
 
-    func_ovl0_800CCEAC();
-    func_ovl0_800CCF00(menu_name_gobj);
+    lbCommonClearExternSpriteParams();
+    lbCommonDrawSObjAttr(menu_name_gobj);
 }
 
 // 0x8013314C
@@ -832,7 +832,7 @@ void mnVSModeMakeBackground(void)
     SObj* bg_sobj;
 
     bg_gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(bg_gobj, func_ovl0_800CCF00, 0, GOBJ_LINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(bg_gobj, lbCommonDrawSObjAttr, 0, GOBJ_LINKORDER_DEFAULT, -1);
 
     bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonCircleSprite));
     bg_sobj->pos.x = 10.0F;
@@ -875,7 +875,7 @@ void mnVSModeMakeButtonValuesViewport(void)
         NULL,
         1,
         GOBJ_LINKORDER_DEFAULT,
-        func_ovl0_800CD2CC,
+        lbCommonScissorSpriteCamera,
         0x14,
         CAMERA_MASK_DLLINK(3),
         -1,
@@ -898,7 +898,7 @@ void mnVSModeMakeButtonViewport(void)
         NULL,
         1,
         GOBJ_LINKORDER_DEFAULT,
-        func_ovl0_800CD2CC,
+        lbCommonScissorSpriteCamera,
         40,
         CAMERA_MASK_DLLINK(2),
         -1,
@@ -921,7 +921,7 @@ void mnVSModeMakeMenuNameViewport(void)
         NULL,
         1,
         GOBJ_LINKORDER_DEFAULT,
-        func_ovl0_800CD2CC,
+        lbCommonScissorSpriteCamera,
         60,
         CAMERA_MASK_DLLINK(1),
         -1,
@@ -943,7 +943,7 @@ void mnVSModeMakeBackgroundViewport()
         NULL,
         1,
         GOBJ_LINKORDER_DEFAULT,
-        func_ovl0_800CD2CC,
+        lbCommonScissorSpriteCamera,
         80,
         CAMERA_MASK_DLLINK(0),
         -1,

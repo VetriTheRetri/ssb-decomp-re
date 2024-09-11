@@ -32,7 +32,7 @@ extern void lbCommonAddDObjAnimAll(DObj*, void*, void*, f32);
 extern void lbCommonAddMObjForTreeDObjs(DObj*, void*);
 extern void lbCommonAddDObjAnimJointAll(DObj*, void*, f32);
 extern void func_ovl2_8010CFA8(GObj*, f32, f32, f32, f32, f32);
-extern void func_ovl0_800CCF00(GObj*);
+extern void lbCommonDrawSObjAttr(GObj*);
 extern void itManagerInitItems();
 extern void wpManagerAllocWeapons();
 extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
@@ -633,7 +633,7 @@ void scBonusGame_InitBonus1TargetSprites()
 		= rdManagerGetFileWithExternHeap(&D_NF_00000097, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000097), 0x10));
 	gGRCommonStruct.bonus1.interface_gobj = interface_gobj
 		= gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xBU, 0x80000000);
-	gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
+	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 0x17, 0x80000000, -1);
 
 	for (i = 0; i < gGRCommonStruct.bonus1.target_count; i++)
 	{
@@ -656,7 +656,7 @@ void scBonusGame_InitBonus2PlatformSprites()
 		= rdManagerGetFileWithExternHeap(&D_NF_00000097, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000097), 0x10));
 	gGRCommonStruct.bonus2.interface_gobj = interface_gobj
 		= gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xBU, 0x80000000);
-	gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 0x17, 0x80000000, -1);
+	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 0x17, 0x80000000, -1);
 
 	for (i = 0; i < gGRCommonStruct.bonus2.platform_count; i++)
 	{
@@ -755,7 +755,7 @@ void func_ovl6_8018E344()
 		ifCommonTimerMakeInterface(NULL);
 		ifCommonTimerSetAttr();
 		interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xBU, 0x80000000U);
-		gcAddGObjDisplay(interface_gobj, func_ovl0_800CCF00, 0x17U, 0x80000000U, -1);
+		gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 0x17U, 0x80000000U, -1);
 
 		for (i = 0; i < ARRAY_COUNT(gBonusTimerDigits); i++)
 		{

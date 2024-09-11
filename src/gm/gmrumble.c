@@ -697,7 +697,7 @@ void func_ovl2_80115834(void)
     {
         if (rumble_gobj->gobj_id == nOMObjCommonKindRumble)
         {
-            func_8000B2B8(rumble_gobj);
+            gcResumeObjectProcesses(rumble_gobj);
         }
         rumble_gobj = rumble_gobj->link_next;
     }

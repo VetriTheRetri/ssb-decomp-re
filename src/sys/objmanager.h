@@ -14,7 +14,7 @@ extern OMScale dOMScaleDefault;
 
 extern GObj *gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
 extern GObj *gOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
-extern GObj *D_80046A54; // Something to do with an initial object to be passed to a new GObjProcess
+extern GObj *gOMObjCurrentObject; // Something to do with an initial object to be passed to a new GObjProcess
 extern GObj *gOMObjCurrentRendering; // Is this exclusively a camera GObj?
 extern GObj *D_80046A5C_40A7C;
 extern GObjProcess *D_80046A60;
@@ -85,7 +85,7 @@ extern Camera *gcGetCameraSetNextAlloc(void);
 extern void gcSetCameraPrevAlloc(Camera *cam);
 extern GObjProcess *gcAddGObjProcess(GObj *gobj, void (*proc)(GObj*), u8 kind, u32 pri);
 extern GObjProcess *unref_80008304(GObj *gobj, void (*proc)(GObj*), u32 pri, s32 thread_id, u32 stack_size);
-extern void func_8000848C(GObjProcess *gobjproc);
+extern void gcEndProcess(GObjProcess *gobjproc);
 extern OMMtx *gcAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id);
 extern OMMtx *gcAddOMMtxForDObjFixed(DObj *dobj, u8 kind, u8 arg2);
 extern OMMtx *gcAddOMMtxForCamera(Camera *cam, u8 kind, u8 arg2);

@@ -13,6 +13,8 @@
 // #include <macros.h> // (included in obj.h)
 #include <config.h>
 
+extern void gcUpdateDefault(UNUSED GObj* arg0);
+
 /*
 * These should no longer be here as they're included in objtypes.h
 #include <PR/mbi.h>
@@ -402,14 +404,14 @@ void syErrorDrawControllerInputs(GObj *gobj)
 
 GObj* func_80022368(s32 link, u32 arg1, s32 arg2)
 {
-    if (gcFindGObjID(-2U) != 0)
+    if (gcFindById(-2U) != 0)
     {
         return NULL;
     }
     else return func_8000B93C
     (
         -2U, 
-        (void (*)())func_8000B1C4, 
+        (void (*)())gcUpdateDefault, 
         link, 
         arg1,
         syErrorDrawControllerInputs, 

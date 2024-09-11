@@ -16,7 +16,7 @@ lWPPikachuThunderJoltAnimJoint;                         // 0x00001A20
 extern intptr_t 
 lWPPikachuThunderJoltMatAnimJoint;                      // 0x00001AE0
 
-extern void gcSetAllAnimSpeed(GObj*, f32);
+extern void animSetModelAndTextureAnimationSpeed(GObj*, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -721,7 +721,7 @@ GObj* wpPikachuThunderJoltGroundMakeWeapon(GObj *prev_gobj, Vec3f *pos, s32 coll
     new_wp->coll_data.lwall_line_id = prev_wp->coll_data.lwall_line_id;
     new_wp->coll_data.rwall_line_id = prev_wp->coll_data.rwall_line_id;
 
-    gcSetAllAnimSpeed(new_gobj, 0.5F);
+    animSetModelAndTextureAnimationSpeed(new_gobj, 0.5F);
 
     wpPikachuThunderJoltGroundProcMap(new_gobj);
 

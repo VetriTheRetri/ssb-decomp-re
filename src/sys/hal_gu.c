@@ -541,77 +541,70 @@ void syMatrixOrtho(Mtx *m, f32 l, f32 r, f32 b, f32 t, f32 n, f32 f, f32 scale) 
     syMatrixF2L(&mf, m);
 }
 
-#ifdef NON_MATCHING
 // this function seems to have larger changes than the prior `gu` functions
 void syMatrixPerspFastF(
-    Mtx4f *mf,
-    u16 *perspNorm,
+    Mtx4f mf,
+    u16* perspNorm,
     f32 fovy,
     f32 aspect,
     f32 near,
     f32 far,
     f32 scale) {
     f32 cot;
-    u16 sinAngle, cosAngle;
+    u16 sinAngle;
     f32 sinX, cosX;
+    s32 unused[4];
 
-    // fovy *= 3.1415926 / 180.0;
-    //  M_PI / 180.0f) / 2.0f = 0.008726646f
     fovy *= 0.008726646f;
-    sinAngle = (s32)(fovy * 651.8986f) & 0xFFF;
-    // is this being inlined?
-    sinX = (f32)gSinTable[sinAngle & (ARRAY_COUNT(gSinTable) - 1)];
-    if (sinAngle & 0x800) { sinX = -sinX; }
 
-    cosAngle = (s32)sinAngle + 0x400;
-    cosX     = (f32)gSinTable[cosAngle & (ARRAY_COUNT(gSinTable) - 1)];
-    if (cosAngle & 0x800) { cosX = -cosX; }
-
-    // cot = cosf (fovy/2) / sinf (fovy/2);
+    sinAngle = (s32) (fovy * 651.8986f) & 0xFFF;
+    // clang-format off
+    do { \
+        sinX = (f32) gSinTable[sinAngle & (ARRAY_COUNT(gSinTable) - 1)]; \
+        if (sinAngle & 0x800) { \
+            sinX = -sinX; \
+        } \
+        sinAngle += 0x400; \
+        cosX = (f32) gSinTable[sinAngle & (ARRAY_COUNT(gSinTable) - 1)]; \
+        if (sinAngle & 0x800) { \
+            cosX = -cosX; \
+        } \
+    } while (0);
+    // clang-format on
     cot = cosX / sinX;
 
-    /*
-    mf[0][0] = cot / aspect;
-    mf[1][1] = cot;
-    mf[2][2] = (near + far) / (near - far);
-    mf[2][3] = -1;
-    mf[3][2] = (2 * near * far) / (near - far);
-    mf[3][3] = 0;
+    mf[0][0] = (cot / aspect) * scale;
+    mf[1][1] = cot * scale;
+    mf[2][2] = ((near + far) * scale) / (near - far);
+    mf[2][3] = -scale;
+    mf[3][2] = (2.0f * near * far * scale) / (near - far);
+    mf[3][3] = 0.0f;
 
-    for (i=0; i<4; i++)
-        for (j=0; j<4; j++)
-        mf[i][j] *= scale;
-    */
+    mf[0][1] = 0;
+    mf[0][2] = 0;
+    mf[0][3] = 0;
 
-    (*mf)[0][0] = (cot / aspect) * scale;
-    (*mf)[0][1] = 0.0f;
-    (*mf)[0][2] = 0.0f;
-    (*mf)[0][3] = 0.0f;
-    (*mf)[1][0] = 0.0f;
-    (*mf)[1][1] = cot * scale;
-    (*mf)[1][2] = 0.0f;
-    (*mf)[1][3] = 0.0f;
-    (*mf)[2][0] = 0.0f;
-    (*mf)[2][1] = 0.0f;
-    (*mf)[2][2] = ((near + far) * scale) / (near - far);
-    (*mf)[2][3] = -scale;
-    (*mf)[3][0] = 0.0f;
-    (*mf)[3][1] = 0.0f;
-    (*mf)[3][2] = (2.0f * near * far * scale) / (near - far);
-    (*mf)[3][3] = 0.0f;
+    mf[1][0] = 0;
+    mf[1][2] = 0;
+    mf[1][3] = 0;
+
+    mf[2][0] = 0;
+    mf[2][1] = 0;
+
+    mf[3][0] = 0;
+    mf[3][1] = 0;
 
     if (perspNorm != NULL) {
         if (near + far <= 2.0f) {
-            *perspNorm = (u16)0xFFFF;
+            *perspNorm = (u16) 0xFFFF;
         } else {
-            *perspNorm = (u16)((2.0f * 65536.0f) / (near + far));
-            if (*perspNorm <= 0) { *perspNorm = (u16)0x0001; }
+            *perspNorm = (u16) ((2.0f * 65536.0f) / (near + far));
+            if (*perspNorm <= 0) {
+                *perspNorm = (u16) 0x0001;
+            }
         }
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_gu/syMatrixPerspFastF.s")
-#endif
 
 void syMatrixPerspFast(
     Mtx *m,
@@ -628,67 +621,58 @@ void syMatrixPerspFast(
     syMatrixF2L(&mf, m);
 }
 
-#ifdef NON_MATCHING
-// so close
 void syMatrixPerspF(
-    Mtx4f *mf,
-    u16 *perspNorm,
+    Mtx4f mf,
+    u16* perspNorm,
     f32 fovy,
     f32 aspect,
     f32 near,
     f32 far,
     f32 scale) {
-    f32 cot;
-    UNUSED s32 i, j;
+    s32 unused1;
+    f32 cotValue;
+    f32 sinValue;
+    f32 cosValue;
+    s32 unused3;
 
     fovy *= 3.1415926f / 180.0f;
-    cot = __cosf(fovy / 2) / __sinf(fovy / 2);
+    cosValue = cosf(fovy / 2);
+    sinValue = sinf(fovy / 2);
+    cotValue = cosValue / sinValue;
 
-    /*
-    (*mf)[0][0] = cot / aspect;
-    (*mf)[1][1] = cot;
-    (*mf)[2][2] = (near + far) / (near - far);
-    (*mf)[2][3] = -1.0f;
-    (*mf)[3][2] = (2.0f * near * far) / (near - far);
-    (*mf)[3][3] = 0.0;
+    mf[0][0] = (cotValue / aspect) * scale;
+    mf[1][1] = cotValue * scale;
+    mf[2][2] = ((near + far) * scale) / (near - far);
+    mf[2][3] = -scale;
+    mf[3][2] = (2.0f * near * far * scale) / (near - far);
+    mf[3][3] = 0.0f;
 
-    for (i=0; i<4; i++)
-        for (j=0; j<4; j++)
-        (*mf)[i][j] *= scale;
-    */
-    (*mf)[0][0] = (cot / aspect) * scale;
-    (*mf)[1][1] = cot * scale;
-    (*mf)[2][2] = ((near + far) * scale) / (near - far);
-    (*mf)[2][3] = -scale;
-    (*mf)[3][2] = (2.0f * near * far * scale) / (near - far);
-    (*mf)[3][3] = 0.0f;
+    mf[0][1] = 0;
+    mf[0][2] = 0;
+    mf[0][3] = 0;
 
-    (*mf)[0][1] = 0;
-    (*mf)[0][2] = 0;
-    (*mf)[0][3] = 0;
+    mf[1][0] = 0;
+    mf[1][2] = 0;
+    mf[1][3] = 0;
 
-    (*mf)[1][0] = 0;
-    (*mf)[1][2] = 0;
-    (*mf)[1][3] = 0;
+    mf[2][0] = 0;
+    mf[2][1] = 0;
 
-    (*mf)[2][0] = 0;
-    (*mf)[2][1] = 0;
-
-    (*mf)[3][0] = 0;
-    (*mf)[3][1] = 0;
+    mf[3][0] = 0;
+    mf[3][1] = 0;
 
     if (perspNorm != NULL) {
         if (near + far <= 2.0f) {
-            *perspNorm = (u16)0xFFFF;
+            *perspNorm = 0xFFFF;
         } else {
-            *perspNorm = (u16)((2.0f * 65536.0f) / (near + far));
-            if (*perspNorm <= 0) { *perspNorm = (u16)0x0001; }
+            *perspNorm = (2.0f * 65536.0f) / (near + far);
+            if (*perspNorm <= 0) {
+                *perspNorm = 1;
+            }
         }
     }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_gu/syMatrixPerspF.s")
-#endif
+
 
 void hal_perspective(Mtx *m, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale) {
     Mtx4f mf;

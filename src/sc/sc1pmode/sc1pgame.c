@@ -1942,15 +1942,15 @@ void func_ovl65_8018F5E4(void)
 // 0x8018F5EC
 void sc1PGameBossDefeatInterfaceProcUpdate(void)
 {
-    func_8000AEF0(3, sc1PGameBossAddBossInterface, 0);
-    func_8000AEF0(3, sc1PGameBossLockPlayerControl, 0);
-    func_8000AEF0(3, sc1PGameBossSetIgnorePlayerMapBounds, 0);
-    func_8000AF58(func_ovl2_80113638, 0);
+    gcApplyByLink(3, sc1PGameBossAddBossInterface, 0);
+    gcApplyByLink(3, sc1PGameBossLockPlayerControl, 0);
+    gcApplyByLink(3, sc1PGameBossSetIgnorePlayerMapBounds, 0);
+    gcApplyToAll(func_ovl2_80113638, 0);
 
-    func_8000AEF0(9, func_ovl2_8011366C, 0);
+    gcApplyByLink(9, func_ovl2_8011366C, 0);
     func_ovl2_80115834();
-    func_8000AEF0(0xB, func_ovl2_8011366C, 0);
-    func_8000AEF0(6, func_ovl2_8011366C, 0);
+    gcApplyByLink(0xB, func_ovl2_8011366C, 0);
+    gcApplyByLink(6, func_ovl2_8011366C, 0);
     func_ovl65_801910B0();
     func_800266A0_272A0();
     auStopBGM();
@@ -1972,7 +1972,7 @@ void func_ovl65_8018F6DC(void)
 // 0x8018F6F0
 void sc1PGameBossDefeatInterfaceProcSet(void)
 {
-    func_8000AF58(func_ovl2_8011366C, 0);
+    gcApplyToAll(func_ovl2_8011366C, 0);
     sc1PGameBossSetChangeWallpaper();
     func_ovl2_8010D030((void*) (((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobj_desc - (intptr_t)&D_NF_00004D48) + (intptr_t)&D_NF_00006450), 0.0F, &sSC1PGameBossDefeatZoomPosition);
     ifCommonBattleBossDefeatSetGameStatus();

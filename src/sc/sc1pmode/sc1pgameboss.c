@@ -5,7 +5,7 @@
 
 extern void lbCommonAddDObjAnimAll(void*, void*, void*, f32);
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern void gcSetAllAnimSpeed(void*, f32);
+extern void animSetModelAndTextureAnimationSpeed(void*, f32);
 
 extern GObj* func_8000B93C
 (
@@ -393,7 +393,7 @@ void func_ovl65_801910B0(void)
 {
     GObj *gobj;
 
-    func_8000B2B8(sSC1PGameBossWallpaperGObj);
+    gcResumeObjectProcesses(sSC1PGameBossWallpaperGObj);
 
     gobj = gOMObjCommonLinks[nOMObjCommonLinkIDWallpaper];
 
@@ -401,7 +401,7 @@ void func_ovl65_801910B0(void)
     {
         if (gobj->gobj_id == nOMObjCommonKindBossWallpaper)
         {
-            func_8000B2B8(gobj);
+            gcResumeObjectProcesses(gobj);
         }
         gobj = gobj->link_next;
     }
@@ -715,7 +715,7 @@ void sc1PGameBossWallpaper1ProcUpdate(GObj *gobj)
     {
         dobj->anim_speed += (-0.0012);
 
-        gcSetAllAnimSpeed(gobj, dobj->anim_speed);
+        animSetModelAndTextureAnimationSpeed(gobj, dobj->anim_speed);
     }
     else if (gobj->user_data.s < 0xFF)
     {
@@ -737,7 +737,7 @@ void sc1PGameBossWallpaper2ProcUpdate0(GObj *gobj)
     {
         dobj->anim_speed += 0.02;
 
-        gcSetAllAnimSpeed(gobj, dobj->anim_speed);
+        animSetModelAndTextureAnimationSpeed(gobj, dobj->anim_speed);
     }
     else if (gobj->user_data.s < 0xFF)
     {
@@ -788,7 +788,7 @@ void sc1PGameBossWallpaper3ProcUpdate1(GObj *gobj)
                 else if (gobj->proc_render == sc1PGameBossProcRenderFadeColor)
                 {
                     ifCommonBattleEndSetBossDefeat();
-                    func_8000AF58(func_ovl2_80113638, 0);
+                    gcApplyToAll(func_ovl2_80113638, 0);
                 }
             }
         }
@@ -904,7 +904,7 @@ GObj* sc1PGameBossMakeWallpaperEffect(s32 effect_id, s32 anim_id, s32 plan_id)
         (o_mobjsub != 0) ? (MObjSub***)(addr + o_mobjsub) : NULL, 
         nOMTransformTraRotRpyRSca
     );
-    gcSetAllAnimSpeed(effect_gobj, sSC1PGameBossMain.bosswallpaper->bossanim[anim_id].anim_speed);
+    animSetModelAndTextureAnimationSpeed(effect_gobj, sSC1PGameBossMain.bosswallpaper->bossanim[anim_id].anim_speed);
     gcAddGObjProcess(effect_gobj, sSC1PGameBossMain.bosswallpaper->bosseffect[effect_id].proc_update, nOMObjProcessKindProc, 1);
 
     dobj = DObjGetStruct(effect_gobj);

@@ -958,7 +958,7 @@ void func_80006350(FnBundle *self)
 	self->fn04();
 
 	if (func_80005C9C())
-		func_8000B7B4();
+		gcDeleteAllObjects();
 }
 
 // 800063A0
@@ -974,7 +974,7 @@ void func_800063A0(FnBundle *self)
 	func_80004EFC();
 
 	if (func_80005C9C() != 0)
-		func_8000B7B4();
+		gcDeleteAllObjects();
 }
 
 // 8000641C

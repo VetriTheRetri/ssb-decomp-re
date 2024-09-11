@@ -452,7 +452,7 @@ void func_ovl0_800D3C54(GObj* obj)
 
 	if (obj->obj_kind == 1)
 	{
-		for (node = obj->obj; node != NULL; node = func_8000BAA0(node))
+		for (node = obj->obj; node != NULL; node = animModelTreeNextNode(node))
 		{
 			for (it = D_800D639C[0]; it != NULL; it = next)
 			{

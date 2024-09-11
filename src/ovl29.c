@@ -598,7 +598,7 @@ void mnBonusSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
 
 	if (ft_kind != nFTKindNull)
 	{
-		func_8000B760(name_logo_gobj);
+		gcRemoveSObj(name_logo_gobj);
 
 		// logo
 		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMnBonusFilesArray[1], logo_offsets[ft_kind]));
@@ -1286,7 +1286,7 @@ void mnBonusRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state)
 	current_x = SObjGetStruct(cursor_gobj)->pos.x;
 	current_y = SObjGetStruct(cursor_gobj)->pos.y;
 
-	func_8000B760(cursor_gobj);
+	gcRemoveSObj(cursor_gobj);
 
 	cursor_sobj = lbCommonMakeSObjForGObj(cursor_gobj, GetAddressFromOffset(gMnBonusFilesArray[0], cursor_offsets[cursor_state]));
 	cursor_sobj->pos.x = current_x;

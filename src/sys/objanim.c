@@ -22,7 +22,7 @@ void gcSetMatAnimJointSpeed(GObj *gobj, f32 anim_speed)
             mobj->anim_speed = anim_speed;
             mobj = mobj->next;
         }
-        dobj = func_8000BAA0(dobj);
+        dobj = animModelTreeNextNode(dobj);
     }
 }
 
@@ -33,7 +33,7 @@ void gcRemoveAnimJointAll(GObj *gobj)
     while (dobj != NULL) 
     {
         gcRemoveAObjFromDObj(dobj);
-        dobj = func_8000BAA0(dobj);
+        dobj = animModelTreeNextNode(dobj);
     }
 }
 
@@ -54,7 +54,7 @@ void gcRemoveAnimAll(GObj *gobj)
             gcRemoveAObjFromMObj(mobj);
             mobj = mobj->next;
         }
-        dobj = func_8000BAA0(dobj);
+        dobj = animModelTreeNextNode(dobj);
     }
 }
 
@@ -71,7 +71,7 @@ void gcRemoveMatAnimJointAll(GObj *gobj)
             gcRemoveAObjFromMObj(mobj);
             mobj = mobj->next;
         }
-        dobj = func_8000BAA0(dobj);
+        dobj = animModelTreeNextNode(dobj);
     }
 }
 
@@ -124,7 +124,7 @@ void gcAddAnimJointAll(GObj *gobj, AObjEvent **anim_joints, f32 anim_frame)
             dobj->is_anim_root = FALSE;
         }
         anim_joints++;
-        dobj = func_8000BAA0(dobj);
+        dobj = animModelTreeNextNode(dobj);
     }
 }
 
@@ -155,7 +155,7 @@ void gcAddMatAnimJointAll(GObj *gobj, AObjEvent ***p_matanim_joints, f32 anim_fr
             }
             p_matanim_joints++;
         }
-        dobj = func_8000BAA0(dobj);
+        dobj = animModelTreeNextNode(dobj);
     }
 }
 
@@ -202,7 +202,7 @@ void gcAddAnimAll(GObj *gobj, AObjEvent **anim_joints, AObjEvent ***p_matanim_jo
             }
             p_matanim_joints++;
         }
-        dobj = func_8000BAA0(dobj);
+        dobj = animModelTreeNextNode(dobj);
     }
 }
 
@@ -1917,7 +1917,7 @@ f32 func_8000EC64_F864
             {
                 dobj_desc++;
             }
-            dobj = func_8000BAA0(dobj);
+            dobj = animModelTreeNextNode(dobj);
         }
         dobj = DObjGetStruct(gobj);
 
@@ -1933,7 +1933,7 @@ f32 func_8000EC64_F864
         {
             gcSetDObjAnimLength(dobj, length_max);
 
-            dobj = func_8000BAA0(dobj);
+            dobj = animModelTreeNextNode(dobj);
         }
     } 
     else while (dobj != NULL)
@@ -1948,7 +1948,7 @@ f32 func_8000EC64_F864
         {
             dobj_desc++;
         }
-        dobj = func_8000BAA0(dobj);
+        dobj = animModelTreeNextNode(dobj);
     }
     gobj->anim_frame = 0.0F;
     
@@ -2057,7 +2057,7 @@ void func_8000EE40_FA40(GObj *gobj, AObjEvent **anim_joints, f32 anim_frame, DOb
         {
             dobj_desc++;
         }
-        dobj = func_8000BAA0(dobj);
+        dobj = animModelTreeNextNode(dobj);
     }
 }
 
@@ -2392,7 +2392,7 @@ void gcAddMObjAll(GObj *gobj, MObjSub ***p_mobjsubs)
             }
             p_mobjsubs++;
         }
-        dobj = func_8000BAA0(dobj);
+        dobj = animModelTreeNextNode(dobj);
     }
 }
 
@@ -2408,7 +2408,7 @@ void gcSetDObjTransformsForGObj(GObj *gobj, DObjDesc *dobj_desc)
 
         dobj_desc++;
 
-        dobj = func_8000BAA0(dobj);
+        dobj = animModelTreeNextNode(dobj);
     }
 }
 

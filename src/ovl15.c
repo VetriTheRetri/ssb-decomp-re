@@ -11,7 +11,7 @@
 // Extern
 extern intptr_t lOverlay15ArenaLo;  // 800D6A00
 extern intptr_t lOverlay15ArenaHi;  // 80392A00
-extern void func_8000B1C4();
+extern void gcUpdateDefault(UNUSED GObj* arg0);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 extern void mnDebugMenuCreateMenu(s32, s32, s32, void*, s32);
 extern mnDebugMenuDestroyMenu();
@@ -114,7 +114,7 @@ void mnDebugFallsMain(GObj* arg0)
 // 800D6544
 GObj* mnDebugFallsCreateViewport(void (*proc)(GObj*))
 {
-	GObj *camera_gobj = func_8000B93C(0x10000002, func_8000B1C4, 0, 0x80000000U, func_80017DBC, 0x32, 0x00000001, -1, 1, 0, proc, 1, 0);
+	GObj *camera_gobj = func_8000B93C(0x10000002, gcUpdateDefault, 0, 0x80000000U, func_80017DBC, 0x32, 0x00000001, -1, 1, 0, proc, 1, 0);
 	Camera *cam;
 
 	if (camera_gobj == NULL)

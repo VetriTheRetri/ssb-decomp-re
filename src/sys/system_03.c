@@ -6,11 +6,11 @@ s32 func_8000ACD0(GObj *gobj, s32 arg1, GObj *next)
 {
     if (gobj == NULL)
     {
-        gobj = D_80046A54;
+        gobj = gOMObjCurrentObject;
     }
     if (next == NULL)
     {
-        next = D_80046A54;
+        next = gOMObjCurrentObject;
     }
     if (gobj->gobjlinks_num == ARRAY_COUNT(gobj->gobjlinks))
     {
@@ -33,15 +33,15 @@ void unref_8000AD60(s32 id, s32 arg1, GObj *gobj)
 {
     GObjLink gobjlink;
     
-    gobjlink.next = (gobj != NULL) ? gobj : D_80046A54;
+    gobjlink.next = (gobj != NULL) ? gobj : gOMObjCurrentObject;
     gobjlink.unk_gobjlink_0x4 = arg1;
 
-    func_8000AFE4(id, func_8000AD38, &gobjlink, 0);
+    gcApplyByLinkEx(id, func_8000AD38, &gobjlink, 0);
 }
 
-s32 func_8000ADB0(void (*proc)(GObjLink)) 
+s32 cmdProcessCommands(void (*proc)(GObjLink)) 
 {
-    GObj *gobj = D_80046A54;
+    GObj *gobj = gOMObjCurrentObject;
 
 #if defined (AVOID_UB) || defined (NON_MATCHING)
     GObjLink *gobjlink = gobj->gobjlinks;
@@ -71,19 +71,19 @@ s32 func_8000ADB0(void (*proc)(GObjLink))
             return 1;
             
         case 3: 
-            func_8000B284(NULL); 
+            gcPauseObjectProcesses(NULL); 
             break;
             
         case 2: 
-            func_8000B2B8(NULL); 
+            gcResumeObjectProcesses(NULL); 
             break;
             
         case 1: 
-            D_80046A54->flags |= GOBJ_FLAG_NORENDER; 
+            gOMObjCurrentObject->flags |= GOBJ_FLAG_NORENDER; 
             break;
             
         case 0: 
-            D_80046A54->flags &= ~GOBJ_FLAG_NORENDER; 
+            gOMObjCurrentObject->flags &= ~GOBJ_FLAG_NORENDER; 
             break;
             
         default:

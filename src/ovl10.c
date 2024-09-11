@@ -367,7 +367,7 @@ void mnTitleSetFinalLogoPosition()
 
 	if (gSceneData.scene_previous == nSCKindOpeningNewcomers)
 	{
-		func_8000B39C(smash_logo_gobj);
+		gcEndAllObjectProcesses(smash_logo_gobj);
 	}
 
 	smash_logo_sobj = SObjGetStruct(smash_logo_gobj);
@@ -410,7 +410,7 @@ void mnTitleSetFinalLayout()
 	}
 
 	// UB: texture_sobj may not be defined!
-	func_8000B39C(texture_sobj);
+	gcEndAllObjectProcesses(texture_sobj);
 
 	i = 0;
 	sobj = SObjGetStruct(texture_sobj);

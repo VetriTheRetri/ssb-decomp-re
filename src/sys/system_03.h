@@ -5,6 +5,6 @@
 
 #include <PR/ultratypes.h>
 
-extern s32 func_8000ADB0(void (*proc)());
+extern s32 cmdProcessCommands(void (*proc)());
 
 #endif /* SYS_SYSTEM_03_H */

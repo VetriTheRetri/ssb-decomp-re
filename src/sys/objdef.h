@@ -98,6 +98,7 @@ typedef enum OMMtxTransformKind
     nOMTransformPerspFastF = 3,     // Camera Fast FP perspective projection
     nOMTransformPerspF,             // Camera FP perspective projection
     nOMTransformOrtho,              // Camera Orthographic projection
+    nOMTransformLookAt,
     nOMTransformTra = 18,           // DObj Translate
     nOMTransformRotD,               // DObj Rotate degrees
     nOMTransformTraRotD,            // DObj Translate + rotate degrees

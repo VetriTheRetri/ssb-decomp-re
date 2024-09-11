@@ -2593,7 +2593,7 @@ void ifCommonBattleInitPlacement(void)
 // 0x80113638
 void func_ovl2_80113638(GObj *interface_gobj, s32 unused)
 {
-    func_8000B284(interface_gobj);
+    gcPauseObjectProcesses(interface_gobj);
 
     interface_gobj->flags |= GOBJ_FLAG_NOEJECT;
 }
@@ -2601,7 +2601,7 @@ void func_ovl2_80113638(GObj *interface_gobj, s32 unused)
 // 0x8011366C
 void func_ovl2_8011366C(GObj *interface_gobj, s32 unused)
 {
-    func_8000B2B8(interface_gobj);
+    gcResumeObjectProcesses(interface_gobj);
 
     interface_gobj->flags &= ~GOBJ_FLAG_NOEJECT;
 }
@@ -2609,10 +2609,10 @@ void func_ovl2_8011366C(GObj *interface_gobj, s32 unused)
 // 0x801136A4
 void ifCommonBattleInterfaceProcUpdate(void)
 {
-    func_8000AF58(func_ovl2_80113638, 0);
+    gcApplyToAll(func_ovl2_80113638, 0);
 
-    func_8000AEF0(8, func_ovl2_8011366C, 0);
-    func_8000AEF0(0xB, func_ovl2_8011366C, 0);
+    gcApplyByLink(8, func_ovl2_8011366C, 0);
+    gcApplyByLink(0xB, func_ovl2_8011366C, 0);
     func_ovl2_80115834();
     func_ovl2_8011366C(D_ovl2_80131A10, 0);
     func_ovl2_8011366C(D_ovl2_80131A14, 0);
@@ -2630,7 +2630,7 @@ void func_ovl2_80113744(GObj *fighter_gobj, s32 arg1)
     
     if (fp->ft_kind == nFTKindBoss) 
     {
-        func_8000B2B8();
+        gcResumeObjectProcesses();
         
         fighter_gobj->flags &= ~0x40;
     }
@@ -3036,7 +3036,7 @@ void ifCommonBattlePauseUpdateInterface(void)
         {
             gSceneData.is_reset = TRUE;
 
-            func_8000AF58(func_ovl2_80113638, 0);
+            gcApplyToAll(func_ovl2_80113638, 0);
             func_800266A0_272A0();
             gmRumbleInitPlayers();
             ifCommonBattlePauseSetGObjFlagsAll(GOBJ_FLAG_NORENDER);
@@ -3251,7 +3251,7 @@ GObj* ifCommonAnnounceCompleteMakeInterface(void)
 // 0x80114B40
 void ifCommonBonusInterfaceProcUpdate(void)
 {
-    func_8000AF58(func_ovl2_80113638, 0);
+    gcApplyToAll(func_ovl2_80113638, 0);
     gmRumbleInitPlayers();
     func_800266A0_272A0();
     ifCommonBattleEndPlaySoundQueue();
@@ -3288,7 +3288,7 @@ void ifCommonBattleBossDefeatSetGameStatus(void)
 // 0x80114C20
 void ifCommon1PGameInterfaceProcSet(void)
 {
-    func_8000AEF0(9, func_ovl2_8011366C, 0);
+    gcApplyByLink(9, func_ovl2_8011366C, 0);
     func_ovl2_80104D30();
     ifCommonInterfaceSetGObjFlagsAll(GOBJ_FLAG_NORENDER);
 

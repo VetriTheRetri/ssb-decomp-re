@@ -192,7 +192,7 @@ void mvOpeningSamusCreateStageViewport(Vec3f arg0)
 	cam = CameraGetStruct(gMvOpeningSamusStageCameraGObj);
 	func_80007080(&cam->viewport, 110.0F, 10.0F, 310.0F, 230.0F);
 	cam->projection.persp.aspect = 10.0F / 11.0F;
-	func_8000B39C(gMvOpeningSamusStageCameraGObj);
+	gcEndAllObjectProcesses(gMvOpeningSamusStageCameraGObj);
 	gcAddGObjProcess(gMvOpeningSamusStageCameraGObj, mvOpeningSamusAnimateStageCamera, 1, 1);
 
 	dMvOpeningSamusCameraSettingsAdjustedStart.eye.x += arg0.x;

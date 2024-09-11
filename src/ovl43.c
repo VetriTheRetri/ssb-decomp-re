@@ -192,7 +192,7 @@ void mvOpeningKirbyCreateStageViewport(Vec3f arg0)
 	cam = CameraGetStruct(gMvOpeningKirbyStageCameraGObj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 210.0F, 230.0F);
 	cam->projection.persp.aspect = 10.0F / 11.0F;
-	func_8000B39C(gMvOpeningKirbyStageCameraGObj);
+	gcEndAllObjectProcesses(gMvOpeningKirbyStageCameraGObj);
 	gcAddGObjProcess(gMvOpeningKirbyStageCameraGObj, mvOpeningKirbyAnimateStageCamera, 1, 1);
 
 	dMvOpeningKirbyCameraSettingsAdjustedStart.eye.x += arg0.x;

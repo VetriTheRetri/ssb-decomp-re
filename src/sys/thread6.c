@@ -36,7 +36,7 @@ OSContStatus sContStatus[MAXCONTROLLERS];
 OSContPad sContData[MAXCONTROLLERS];
 
 // 800451A0
-u32 D_800451A0;
+u32 gNumControllers;
 
 // 800451A4
 s8 gPlayerControllerPortStatuses[MAXCONTROLLERS];
@@ -75,42 +75,22 @@ UNUSED u32 unref80045468[2];
 gsController _gSysController; // needs to be plugged to linker manually (linker_constants.txt) otherwise this file doesn't match
 
 
-void func_80003C00(void);
-#ifdef NON_MATCHING
-void func_80003C00(void) {
-    s32 v0;
-    s32 v1;
-    // s32 a0;
-    s32 a1;
-    s32 a2;
+// 80003C00
+void update_controller_indices(void) {
+    s32 v0 = 0;
+    s32 i;
 
-    for (v0 = 0, v1 = 0; v1 < 4; v0++, v1++) {
-        if (sContInfo[v0].unk1C == 0) { gPlayerControllerPortStatuses[v0] = v1; }
-        // L80003C34
-    }
-    // 80003C40
-    D_800451A0 = v0;
-
-    if (v0 < 4) {
-        v1 = v0;
-        a2 = (4 - v0) & 3;
-        a1 = a2 + v0;
-
-        if (a2 != 0) {
-            do { gPlayerControllerPortStatuses[v1] = -1; } while (v1 != a1);
+    for (i = 0; i < MAXCONTROLLERS; i++) {
+        if (sContInfo[i].unk1C == 0) {
+            gPlayerControllerPortStatuses[v0++] = i;
         }
-
-        // 80003C88
-        if (v1 == 4) { return; }
-        // L80003C8C
-        for (; v1 < 4; v1++) { gPlayerControllerPortStatuses[v1] = -1; }
     }
+    gNumControllers = v0;
 
-    // L80003CBC
+    for (i = v0; i < MAXCONTROLLERS; i++) {
+        gPlayerControllerPortStatuses[i] = -1;
+    }
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/thread6/func_80003C00.s")
-#endif
 
 // 80003CC4
 void update_controller_status(void) {
@@ -197,7 +177,7 @@ void update_global_contdata(void)
             sContInfo[i].unk04 = sContInfo[i].unk08 = sContInfo[i].unk0C = 0;
         }
     }
-    func_80003C00();
+    update_controller_indices();
 
     players = &gPlayerControllers[gPlayerControllerPortStatuses[0]];
 
@@ -265,7 +245,7 @@ void initialize_controllers(void) {
         gPlayerControllers[i].unk08 = gPlayerControllers[i].unk09 = 0;
     }
 
-    func_80003C00();
+    update_controller_indices();
     gUpdateContData    = FALSE;
     sDelayedContUpdate = NULL;
     sReadContData      = TRUE;

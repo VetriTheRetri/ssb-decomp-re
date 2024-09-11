@@ -17,7 +17,7 @@
 #include <sys/thread6.h>
 
 extern s32 D_8003B874_3C474;
-extern GObj* D_80046A54;
+extern GObj* gOMObjCurrentObject;
 extern GObj* D_80046A5C_40A7C;
 
 // BSS
@@ -292,7 +292,7 @@ void start_scene_manager(u32 set)
 	while ((uintptr_t)csr < end)
 		*(csr++) = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01);
 
-	if (D_800451A0 == 0)
+	if (gNumControllers == 0)
 		gSceneData.scene_current = 0;
 
 	while (TRUE)
@@ -688,7 +688,7 @@ void func_800A26D8(GObj* arg0)
 // 800A2B18
 GObj* func_800A2B18(s32 link, u32 arg1, s32 arg2)
 {
-	if (gcFindGObjID(0xEFFFFFFF) != NULL)
+	if (gcFindById(0xEFFFFFFF) != NULL)
 		return NULL;
 
 	return func_8000B93C(0xEFFFFFFF, NULL, link, arg1, func_800A26D8, arg2, 0, 0, 0, 0, 0, 0, 0);
@@ -699,13 +699,13 @@ void unref_800A2BA8(s32 link, u32 arg1, s32 arg2) // set_up_debug_objs ? somethi
 {
 	GObj* com;
 
-	com = gcFindGObjID(0xFFFFFFFE);
+	com = gcFindById(0xFFFFFFFE);
 	if (com != NULL)
 		gcEjectGObj(com);
 	else
 		func_80022368(link, arg1, arg2);
 
-	com = gcFindGObjID(0xEFFFFFFF);
+	com = gcFindById(0xEFFFFFFF);
 	if (com != NULL)
 		gcEjectGObj(com);
 	else
@@ -791,17 +791,17 @@ void scManagerProcPrintGObjStatus()
 		case 1:
 		{
 			syErrorDebugPrintf("BF\n");
-			if (D_80046A54 != NULL)
+			if (gOMObjCurrentObject != NULL)
 			{
-				syErrorDebugPrintf("addr:%x\n", D_80046A54->proc_run);
-				scManagerInspectGObj(D_80046A54);
+				syErrorDebugPrintf("addr:%x\n", gOMObjCurrentObject->proc_run);
+				scManagerInspectGObj(gOMObjCurrentObject);
 			}
 			break;
 		}
 		case 2:
 		{
 			syErrorDebugPrintf("GP\n");
-			if (D_80046A54 != NULL)
+			if (gOMObjCurrentObject != NULL)
 			{
 				if (D_80046A60 != NULL)
 				{
@@ -815,7 +815,7 @@ void scManagerProcPrintGObjStatus()
 							break;
 					}
 				}
-				scManagerInspectGObj(D_80046A54);
+				scManagerInspectGObj(gOMObjCurrentObject);
 			}
 			break;
 		}

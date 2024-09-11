@@ -16,11 +16,11 @@ func_8000AFE4(s32, struct GObjCommon *(*)(struct GObjCommon *, void *), void *, 
 extern struct GObjCommon *gcFindGObjID(u32 id);
 extern void func_8000B1C4(UNUSED u32 arg0);
 extern void gcStopCurrentProcess(s32 timesToStop);
-extern void func_8000B284(struct GObjCommon *);
-extern void func_8000B2B8(struct GObjCommon *);
+extern void gcPauseObjectProcesses(struct GObjCommon *);
+extern void gcResumeObjectProcesses(struct GObjCommon *);
 extern void func_8000B39C(struct GObjCommon *);
 extern void func_8000B70C(struct GObjCommon *);
-extern void func_8000B760(struct GObjCommon *);
+extern void gcRemoveSObj(struct GObjCommon *);
 extern void func_8000B7B4(void);
 extern struct GObjCommon *func_8000B824(
     u32 arg0,
@@ -67,7 +67,7 @@ extern struct GObjCommon *func_8000B93C(
 extern struct GObjCommon *func_8000B9FC(s32 link, u32 arg1, s32 arg2, s32 arg3, s32 arg4);
 // these might in system_04
 extern struct DObj *func_8000BAA0(struct DObj *arg0);
-extern void gcSetDObjAnimSpeed(struct GObjCommon *arg0, f32 arg1);
-extern void gcSetAllAnimSpeed(struct GObjCommon *arg0, f32 arg1);
+extern void animSetModelAnimationSpeed(struct GObjCommon *arg0, f32 arg1);
+extern void animSetModelAndTextureAnimationSpeed(struct GObjCommon *arg0, f32 arg1);
 
 #endif /* SYS_SYSTEM_03_1_H */

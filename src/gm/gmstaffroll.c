@@ -693,13 +693,13 @@ sb32 gmStaffrollCheckUnpause(void)
 
 		if (sGMStaffrollScrollGObj != NULL)
 		{
-			func_8000B2B8(sGMStaffrollScrollGObj);
+			gcResumeObjectProcesses(sGMStaffrollScrollGObj);
 		}
 		name_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDCreditsName];
 
 		while (name_gobj != NULL)
 		{
-			func_8000B2B8(name_gobj);
+			gcResumeObjectProcesses(name_gobj);
 
 			name_gobj = name_gobj->link_next;
 		}
@@ -707,7 +707,7 @@ sb32 gmStaffrollCheckUnpause(void)
 
 		while (job_gobj != NULL)
 		{
-			func_8000B2B8(job_gobj);
+			gcResumeObjectProcesses(job_gobj);
 			job_gobj = job_gobj->link_next;
 		}
 		var_v1 = FALSE;
@@ -1427,13 +1427,13 @@ sb32 gmStaffrollCheckPause(void)
 		{
 			if (sGMStaffrollScrollGObj != NULL)
 			{
-				func_8000B284(sGMStaffrollScrollGObj);
+				gcPauseObjectProcesses(sGMStaffrollScrollGObj);
 			}
 			gobj = gOMObjCommonLinks[nOMObjCommonLinkIDCreditsName];
 
 			while (gobj != NULL)
 			{
-				func_8000B284(gobj);
+				gcPauseObjectProcesses(gobj);
 
 				gobj = gobj->link_next;
 			}
@@ -1441,7 +1441,7 @@ sb32 gmStaffrollCheckPause(void)
 
 			while (gobj != NULL)
 			{
-				func_8000B284(gobj);
+				gcPauseObjectProcesses(gobj);
 
 				gobj = gobj->link_next;
 			}

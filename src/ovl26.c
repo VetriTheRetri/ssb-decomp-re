@@ -589,7 +589,7 @@ void mnRecreateTypeButton(GObj* type_gobj, s32 port_id, s32 type_id)
 		0x00006048, 0x000063C8, 0x00006748
 	};
 
-	func_8000B760(type_gobj);
+	gcRemoveSObj(type_gobj);
 	type_sobj = lbCommonMakeSObjForGObj(type_gobj, gFile011 + type_button_offsets[type_id]);
 	type_sobj->pos.x = x;
 	type_sobj->pos.y = y;
@@ -629,7 +629,7 @@ void mnBattleSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
 
 	if (ft_kind != nFTKindNull)
 	{
-		func_8000B760(name_logo_gobj);
+		gcRemoveSObj(name_logo_gobj);
 
 		// logo
 		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, gFile014 + logo_offsets[ft_kind]);
@@ -1443,7 +1443,7 @@ void mnBattleRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state)
 	current_x = SObjGetStruct(cursor_gobj)->pos.x;
 	current_y = SObjGetStruct(cursor_gobj)->pos.y;
 
-	func_8000B760(cursor_gobj);
+	gcRemoveSObj(cursor_gobj);
 
 	cursor_sobj = lbCommonMakeSObjForGObj(cursor_gobj, GetAddressFromOffset(gFile011, cursor_offsets[cursor_state]));
 	cursor_sobj->pos.x = current_x;
@@ -1614,7 +1614,7 @@ void mnHandleFFATeamBattleTogglePress()
 	else
 		func_800269C0_275C0(nSYAudioVoiceAnnounceTeamBattle);
 
-	func_8000B760(title_gobj);
+	gcRemoveSObj(title_gobj);
 
 	title_sobj = lbCommonMakeSObjForGObj(title_gobj, GetAddressFromOffset(gFile012, offsets[gMnBattleIsTeamBattle]));
 	title_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -3067,7 +3067,7 @@ void mnBattleRedrawToken(GObj* token_gobj, s32 token_index)
 	current_x = SObjGetStruct(token_gobj)->pos.x;
 	current_y = SObjGetStruct(token_gobj)->pos.y;
 
-	func_8000B760(token_gobj);
+	gcRemoveSObj(token_gobj);
 
 	token_sobj = lbCommonMakeSObjForGObj(token_gobj, GetAddressFromOffset(gFile011, token_offsets[token_index]));
 	token_sobj->pos.x = current_x;
@@ -3923,12 +3923,12 @@ void mnBattleDestroyCursorAndTokenProcesses()
 		cursor_gobj = gMnBattlePanels[i].cursor;
 
 		if (cursor_gobj != NULL)
-			func_8000B2EC(cursor_gobj->gobjproc_head);
+			gcPauseProcess(cursor_gobj->gobjproc_head);
 
 		token_gobj = gMnBattlePanels[i].token;
 
 		if (token_gobj != NULL)
-			func_8000B2EC(token_gobj->gobjproc_head);
+			gcPauseProcess(token_gobj->gobjproc_head);
 	};
 }
 

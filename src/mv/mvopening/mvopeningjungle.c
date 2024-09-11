@@ -264,7 +264,7 @@ void mvOpeningJungleMakeStageViewport(Vec3f unused)
 
     cam->projection.persp.aspect = 15.0F / 11.0F;
 
-    func_8000B39C(sMVOpeningJungleStageCameraGObj);
+    gcEndAllObjectProcesses(sMVOpeningJungleStageCameraGObj);
 
     cam->projection.persp.near = 50.0F;
     cam->projection.persp.far = 15000.0F;

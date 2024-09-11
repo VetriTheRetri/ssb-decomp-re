@@ -21,21 +21,20 @@ void gcApplyByLink(s32 link, void (*func)(GObj*, void*), void* param) {
 }
 
 // 8000AF58
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/gcApplyToAll.s")
-// void gcApplyToAll(void (*cb)(GObj*, void*), void* param) {
-//     GObj* curr;
-//     GObj* next;
-//     s32 link;
+void gcApplyToAll(void (*cb)(GObj*, void*), void* param) {
+    GObj* curr;
+    GObj* next;
+    s32 link;
 
-//     for (link = 0; link < 32; link++) {
-//         curr = gOMObjCommonLinks[link]; // this line is the problem (instruction 0xbb88)
-//         while (curr != NULL) {
-//             next = curr->link_next;
-//             cb(curr, param);
-//             curr = next;
-//         }
-//     }
-// }
+    for (link = 0; link < ARRAY_COUNT(gOMObjCommonLinks); link++) {
+        curr = gOMObjCommonLinks[link];
+        while (curr != NULL) {
+            next = curr->link_next;
+            cb(curr, param);
+            curr = next;
+        }
+    }
+}
 
 // 8000AFE4
 GObj* gcApplyByLinkEx(s32 link, GObj* (*cb)(GObj*, void*), void* param, s32 onlyOne) {
@@ -63,33 +62,32 @@ GObj* gcApplyByLinkEx(s32 link, GObj* (*cb)(GObj*, void*), void* param, s32 only
 }
 
 // 8000B08C
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/gcApplyToAllEx.s")
-// GObj* gcApplyToAllEx(GObj* (*cb)(GObj*, void*), void* param, s32 onlyOne) {
-//     GObj* curr;
-//     GObj* next;
-//     s32 link;
-//     GObj* ret = NULL;
+GObj* gcApplyToAllEx(GObj* (*cb)(GObj*, void*), void* param, s32 onlyOne) {
+    GObj* curr;
+    GObj* next;
+    s32 link;
+    GObj* ret = NULL;
 
-//     for (link = 0; link < 32; link++) {
-//         curr = gOMObjCommonLinks[link]; // this line is the problem (instruction 0xbccc)
-//         while (curr != NULL) {
-//             GObj* retVal;
+    for (link = 0; link < ARRAY_COUNT(gOMObjCommonLinks); link++) {
+        curr = gOMObjCommonLinks[link];
+        while (curr != NULL) {
+            GObj* retVal;
 
-//             next = curr->link_next;
-//             retVal = cb(curr, param);
+            next = curr->link_next;
+            retVal = cb(curr, param);
 
-//             if (retVal != NULL) {
-//                 ret = retVal;
-//                 if (onlyOne == TRUE) {
-//                     return ret;
-//                 }
-//             }
-//             curr = next;
-//         }
-//     }
+            if (retVal != NULL) {
+                ret = retVal;
+                if (onlyOne == TRUE) {
+                    return ret;
+                }
+            }
+            curr = next;
+        }
+    }
 
-//     return ret;
-// }
+    return ret;
+}
 
 // 8000B14C
 GObj* gcCheckId(GObj* obj, void* id) {
@@ -326,22 +324,21 @@ void gcRemoveSObj(GObj* obj) {
 }
 
 
-// 8000B7B4 gcDeleteAllObjects
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/gcDeleteAllObjects.s")
-// void gcDeleteAllObjects(void) {
-//     GObj* curr;
-//     GObj* next;
-//     s32 i;
+// 8000B7B4
+void gcDeleteAllObjects(void) {
+    GObj* curr;
+    GObj* next;
+    s32 i;
 
-//     for (i = 0; i < 32; i++) {
-//         curr = gOMObjCommonLinks[i]; // this line is the problem (instruction 0xc3d4)
-//         while (curr != NULL) {
-//             next = curr->link_next;
-//             gcEjectGObj(curr);
-//             curr = next;
-//         }
-//     }
-// }
+    for (i = 0; i < ARRAY_COUNT(gOMObjCommonLinks); i++) {
+        curr = gOMObjCommonLinks[i];
+        while (curr != NULL) {
+            next = curr->link_next;
+            gcEjectGObj(curr);
+            curr = next;
+        }
+    }
+}
 
 
 // 8000B824

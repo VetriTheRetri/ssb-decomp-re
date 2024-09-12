@@ -6,8 +6,8 @@
 //                               //
 // // // // // // // // // // // //
 
-extern uintptr_t lEFCommonParticleBankHeaderLo;                 // 0x00AC7340
-extern uintptr_t lEFCommonParticleBankHeaderHi;                 // 0x00AC9DE0
+extern uintptr_t lEFCommonParticleBankGenLo;                 // 0x00AC7340
+extern uintptr_t lEFCommonParticleBankGenHi;                 // 0x00AC9DE0
 extern uintptr_t lEFCommonParticleBankTextureLo;                // 0x00AC9DE0
 extern uintptr_t lEFCommonParticleBankTextureHi;                // 0x00B16C80
 
@@ -134,8 +134,8 @@ void efDisplayInitAll(void)
 
     gEFManagerParticleBankID = efAllocGetAddParticleBankID
     (
-        &lEFCommonParticleBankHeaderLo,
-        &lEFCommonParticleBankHeaderHi,
+        &lEFCommonParticleBankGenLo,
+        &lEFCommonParticleBankGenHi,
         &lEFCommonParticleBankTextureLo,
         &lEFCommonParticleBankTextureHi
     );

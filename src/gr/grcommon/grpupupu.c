@@ -706,7 +706,7 @@ void grPupupuInitAll(void)
     gGRCommonStruct.pupupu.flowers_back_wait    = 15;
     gGRCommonStruct.pupupu.flowers_front_wait   = 22;
 
-    gGRCommonStruct.pupupu.particle_bank_id = efAllocGetAddParticleBankID(&lGRPupupuParticleBankHeaderLo, &lGRPupupuParticleBankHeaderHi, &lGRPupupuParticleBankTextureLo, &lGRPupupuParticleBankTextureHi);
+    gGRCommonStruct.pupupu.particle_bank_id = efAllocGetAddParticleBankID(&lGRPupupuParticleBankGenLo, &lGRPupupuParticleBankGenHi, &lGRPupupuParticleBankTextureLo, &lGRPupupuParticleBankTextureHi);
 }
 
 // 0x801066D4

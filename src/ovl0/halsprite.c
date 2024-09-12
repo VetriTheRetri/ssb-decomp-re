@@ -1,17 +1,21 @@
 #include "common.h"
-#include <sys/objtypes.h>
+#include <ef/effect.h>
+
+#define LBPARTICLE_BANKS_NUM_MAX 8
 
 // Equivalent file in pokemon snap: 4D880.c
 
 #define TAU 2.0f * M_PI
-#define SQ(x) ((x) * (x))
 
-typedef struct UnkGreenLeopard {
+typedef struct UnkGreenLeopard
+{
 	/* 0x00 */ s32 unk_00[7];
 	/* 0x1C */ Vec3f unk_1C;
 } UnkGreenLeopard;
 
-typedef struct UnkAsphaltLeopard {
+// efGenerator
+typedef struct UnkAsphaltLeopard
+{
 	/* 0x00 */ u16 unk_00;
 	/* 0x02 */ u16 unk_02;
 	/* 0x04 */ u16 unk_04;
@@ -27,6 +31,7 @@ typedef struct UnkAsphaltLeopard {
 	/* 0x30 */ u8 unk_30[1]; // variable length
 } UnkAsphaltLeopard;
 
+// Texture bank header?
 typedef struct UnkPinkLeopard {
 	/* 0x00 */ u32 unk_00;
 	/* 0x04 */ s32 unk_04;
@@ -60,6 +65,7 @@ typedef union UnkPinkRatSub {
 	} data2;
 } UnkPinkRatSub; // size = 0xC
 
+// efTransform? idk screw it I'm confused
 typedef struct UnkPinkRat {
 	/* 0x00 */ struct UnkPinkRat* next;
 	/* 0x04 */ u16 unk_04;
@@ -83,7 +89,7 @@ typedef struct UnkPinkRat {
 	/* 0x4C */ UnkPinkRatSub unk_4C;
 } UnkPinkRat; // size = 0x58
 
-
+// efParticle
 typedef struct UnkRustRat {
 	/* 0x00 */ struct UnkRustRat* next;
 	/* 0x04 */ u16 unk_04;
@@ -114,15 +120,21 @@ typedef struct UnkRustRat {
 	/* 0x58 */ UnkPinkRat* unk_58;
 } UnkRustRat; // size = 0x5C
 
-
 // extern UnkPinkRat D_800D639C[5];
 extern UnkPinkRat* D_800D639C[9];
 extern UnkRustRat* D_800D6358[16];
-extern s32 D_800D63C0[8];
-extern s32 D_800D63E0[8];
-extern UnkAsphaltLeopard** D_800D6400[];
-extern UnkPinkLeopard** D_800D6420[];
 
+// 0x800D63C0 - sLBParticleBankGeneratorsNum?
+extern s32 D_800D63C0[LBPARTICLE_BANKS_NUM_MAX];
+
+// 0x800D63E0 - sLBParticleBankTexturesNum?
+extern s32 D_800D63E0[LBPARTICLE_BANKS_NUM_MAX];
+
+// 0x800D6400 - sLBParticleBankGenerators?
+extern UnkAsphaltLeopard** D_800D6400[/* */];
+
+// 0x800D6420 - sLBParticleBankTextures?
+extern UnkPinkLeopard** D_800D6420[/* */];
 
 u8 D_ovl0_800D5D50[4] = { 0, 0, 0, 0 };
 u8 D_ovl0_800D5D54[4] = { 0, 0, 0, 0 };
@@ -139,41 +151,45 @@ u8 D_ovl0_800D5D5C = 0x7B;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CE218.s")
 
-void func_ovl0_800CE254(s32 arg0, s32* arg1, s32* arg2)
+// 0x800CE254
+void lbParticleSetupBankID(s32 bank_id, uintptr_t *gen_heap, uintptr_t *tex_heap)
 {
 	s32 i, j;
 
-	if (arg0 >= 8)
-		return;
-
-	D_800D63C0[arg0] = *arg1;
-	D_800D63E0[arg0] = *arg2;
-	D_800D6400[arg0] = (UnkAsphaltLeopard**) (arg1 + 1);
-	D_800D6420[arg0] = (UnkPinkLeopard**) (arg2 + 1);
-
-	for (i = 1; i <= D_800D63C0[arg0]; i++)
-		arg1[i] = (u32) (arg1) + arg1[i];
-
-	for (i = 1; i <= D_800D63E0[arg0]; i++)
-		arg2[i] = (u32) (arg2) + arg2[i];
-
-
-	for (i = 0; i < D_800D63E0[arg0]; i++)
+	if (bank_id >= LBPARTICLE_BANKS_NUM_MAX)
 	{
-		for (j = 0; j < D_800D6420[arg0][i]->unk_00; j++)
-			D_800D6420[arg0][i]->unk_18[j] += (u32) arg2;
+		return;
+	}
+	D_800D63C0[bank_id] = *gen_heap;
+	D_800D63E0[bank_id] = *tex_heap;
 
-		if (D_800D6420[arg0][i]->unk_04 == 2)
+	D_800D6400[bank_id] = (UnkAsphaltLeopard**) (gen_heap + 1);
+	D_800D6420[bank_id] = (UnkPinkLeopard**) (tex_heap + 1);
+
+	for (i = 1; i <= D_800D63C0[bank_id]; i++)
+	{
+		gen_heap[i] = (uintptr_t) (gen_heap) + gen_heap[i];
+	}
+	for (i = 1; i <= D_800D63E0[bank_id]; i++)
+	{
+		tex_heap[i] = (uintptr_t) (tex_heap) + tex_heap[i];
+	}
+	for (i = 0; i < D_800D63E0[bank_id]; i++)
+	{
+		for (j = 0; j < D_800D6420[bank_id][i]->unk_00; j++)
 		{
-			if (D_800D6420[arg0][i]->unk_14 & 1)
+			D_800D6420[bank_id][i]->unk_18[j] += (uintptr_t)tex_heap;
+		}
+		if (D_800D6420[bank_id][i]->unk_04 == 2)
+		{
+			if (D_800D6420[bank_id][i]->unk_14 & 1)
 			{
-				j = D_800D6420[arg0][i]->unk_00;
-				D_800D6420[arg0][i]->unk_18[j] += (u32) arg2;
+				j = D_800D6420[bank_id][i]->unk_00;
+				D_800D6420[bank_id][i]->unk_18[j] += (uintptr_t)tex_heap;
 			}
-			else
+			else for (j = D_800D6420[bank_id][i]->unk_00; j < 2 * D_800D6420[bank_id][i]->unk_00; j++)
 			{
-				for (j = D_800D6420[arg0][i]->unk_00; j < 2 * D_800D6420[arg0][i]->unk_00; j++)
-					D_800D6420[arg0][i]->unk_18[j] += (u32) arg2;
+				D_800D6420[bank_id][i]->unk_18[j] += (uintptr_t)tex_heap;
 			}
 		}
 	}
@@ -304,7 +320,7 @@ u8* func_ovl0_800CEBF8(u8* arg0, u16* arg1)
 // 	sp54 = atan2f(x, y * temp_f26 + z * sp4C);
 // 	sp48 = __sinf(sp54);
 // 	sp44 = __cosf(sp54);
-// 	sp5C = sqrtf(SQ(x) + SQ(y) + SQ(z));
+// 	sp5C = sqrtf(SQUARE(x) + SQUARE(y) + SQUARE(z));
 
 // 	temp_f20_2 = mtTrigGetRandomFloat() * TAU;
 // 	z = __sinf(arg1) * sp5C;
@@ -329,11 +345,11 @@ void func_ovl0_800CEDBC(UnkRustRat* arg0, UnkGreenLeopard* arg1)
 	dy = arg1->unk_1C.y - arg0->unk_20.y;
 	dz = arg1->unk_1C.z - arg0->unk_20.z;
 
-	f22 = sqrtf(SQ(arg0->unk_2C.x) + SQ(arg0->unk_2C.y) + SQ(arg0->unk_2C.z));
+	f22 = sqrtf(SQUARE(arg0->unk_2C.x) + SQUARE(arg0->unk_2C.y) + SQUARE(arg0->unk_2C.z));
 
-	if (SQ(dx) + SQ(dy) + SQ(dz) != 0.0f)
+	if (SQUARE(dx) + SQUARE(dy) + SQUARE(dz) != 0.0f)
 	{
-		f22 /= sqrtf(SQ(dx) + SQ(dy) + SQ(dz));
+		f22 /= sqrtf(SQUARE(dx) + SQUARE(dy) + SQUARE(dz));
 		arg0->unk_2C.x = dx * f22;
 		arg0->unk_2C.y = dy * f22;
 		arg0->unk_2C.z = dz * f22;
@@ -351,7 +367,7 @@ void func_ovl0_800CEEB8(UnkRustRat* arg0, UnkGreenLeopard* arg1, f32 arg2)
 	dy = arg1->unk_1C.y - arg0->unk_20.y;
 	dz = arg1->unk_1C.z - arg0->unk_20.z;
 
-	dist2 = SQ(dx) + SQ(dy) + SQ(dz);
+	dist2 = SQUARE(dx) + SQUARE(dy) + SQUARE(dz);
 
 	if (dist2 != 0.0f)
 	{

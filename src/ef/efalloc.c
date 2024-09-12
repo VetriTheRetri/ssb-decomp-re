@@ -16,7 +16,7 @@ GObj *D_ovl2_80131A14;
 s32 sEFAllocParticleBanksNum;
 
 // 0x80131A20
-uintptr_t sEFAllocParticleBanks[7];
+uintptr_t sEFAllocParticleGenBanks[7];
 
 // // // // // // // // // // // //
 //                               //
@@ -63,13 +63,13 @@ void func_ovl2_80115980(void)
 }
 
 // 0x801159B0
-s32 efAllocGetParticleBankID(uintptr_t hdrlo)
+s32 efAllocGetParticleBankID(uintptr_t genlo)
 {
     s32 i;
 
     for (i = 0; i < sEFAllocParticleBanksNum; i++)
     {
-        if (hdrlo == sEFAllocParticleBanks[i])
+        if (genlo == sEFAllocParticleGenBanks[i])
         {
             return i;
         }
@@ -78,13 +78,13 @@ s32 efAllocGetParticleBankID(uintptr_t hdrlo)
 }
 
 // 0x801159F8
-s32 efAllocGetAddParticleBankID(uintptr_t hdrlo, uintptr_t hdrhi, uintptr_t texlo, uintptr_t texhi)
+s32 efAllocGetAddParticleBankID(uintptr_t genlo, uintptr_t genhi, uintptr_t texlo, uintptr_t texhi)
 {
-    void *hdrheap, *texheap;
-    size_t hdrsize, texsize;
+    void *genheap, *texheap;
+    size_t gensize, texsize;
     s32 bank_id;
 
-    if (sEFAllocParticleBanksNum > ARRAY_COUNT(sEFAllocParticleBanks))
+    if (sEFAllocParticleBanksNum > ARRAY_COUNT(sEFAllocParticleGenBanks))
     {
         while (TRUE)
         {
@@ -92,27 +92,26 @@ s32 efAllocGetAddParticleBankID(uintptr_t hdrlo, uintptr_t hdrhi, uintptr_t texl
             scManagerRunPrintGObjStatus();
         }
     }
-    bank_id = efAllocGetParticleBankID(hdrlo);
+    bank_id = efAllocGetParticleBankID(genlo);
 
     if (bank_id != -1)
     {
         return bank_id;
     }
-
-    hdrsize = hdrhi - hdrlo;
+    gensize = genhi - genlo;
     texsize = texhi - texlo;
 
     bank_id = sEFAllocParticleBanksNum;
 
-    hdrheap = gsMemoryAlloc(hdrsize, 0x8);
+    genheap = gsMemoryAlloc(gensize, 0x8);
     texheap = gsMemoryAlloc(texsize, 0x8);
 
-    syDmaRomRead(hdrlo, hdrheap, hdrsize);
+    syDmaRomRead(genlo, genheap, gensize);
     syDmaRomRead(texlo, texheap, texsize);
 
-    func_ovl0_800CE254(sEFAllocParticleBanksNum++, hdrheap, texheap);
+    lbParticleSetupBankID(sEFAllocParticleBanksNum++, genheap, texheap);
 
-    sEFAllocParticleBanks[bank_id] = hdrlo;
+    sEFAllocParticleGenBanks[bank_id] = genlo;
 
     return bank_id;
 }

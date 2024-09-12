@@ -12,8 +12,8 @@
 // // // // // // // // // // // //
 
 extern intptr_t D_NF_000000FB;
-extern intptr_t lITManagerParticleBankHeaderLo;         // 0x00B1BCA0
-extern intptr_t lITManagerParticleBankHeaderHi;         // 0x00B1BDE0
+extern intptr_t lITManagerParticleBankGenLo;         // 0x00B1BCA0
+extern intptr_t lITManagerParticleBankGenHi;         // 0x00B1BDE0
 extern intptr_t lITManagerParticleBankTextureLo;        // 0x00B1BDE0
 extern intptr_t lITManagerParticleBankTextureHi;        // 0x00B1E640
 
@@ -160,8 +160,8 @@ void itManagerInitItems(void) // Many linker things here
 
     gITManagerParticleBankID = efAllocGetAddParticleBankID
     (
-        &lITManagerParticleBankHeaderLo, 
-        &lITManagerParticleBankHeaderHi,
+        &lITManagerParticleBankGenLo, 
+        &lITManagerParticleBankGenHi,
         &lITManagerParticleBankTextureLo, 
         &lITManagerParticleBankTextureHi
     );

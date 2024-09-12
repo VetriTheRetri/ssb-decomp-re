@@ -217,8 +217,8 @@ lGRBonus2PurinGroundFileID = 0x000125;
 lGRBonus2NessGroundFileID = 0x000126;
 lGRBonus3GroundFileID = 0x000127;
 
-lEFCommonParticleBankHeaderLo = 0x00AC7340;
-lEFCommonParticleBankHeaderHi = 0x00AC9DE0;
+lEFCommonParticleBankGenLo = 0x00AC7340;
+lEFCommonParticleBankGenHi = 0x00AC9DE0;
 lEFCommonParticleBankTextureLo = 0x00AC9DE0;
 lEFCommonParticleBankTextureHi = 0x00B16C80;
 
@@ -473,8 +473,8 @@ lGRPupupuWhispyEyesTransformKinds = 0x000010F0;
 lGRPupupuWhispyMouthTransformKinds = 0x00001770;
 lGRPupupuFlowersBackTrasnformKinds = 0x00002A80;
 lGRPupupuFlowersFrontTransformKinds = 0x000031F8;
-lGRPupupuParticleBankHeaderLo = 0x00B1E640;
-lGRPupupuParticleBankHeaderHi = 0x00B1E7E0;
+lGRPupupuParticleBankGenLo = 0x00B1E640;
+lGRPupupuParticleBankGenHi = 0x00B1E7E0;
 lGRPupupuParticleBankTextureLo = 0x00B1E7E0;
 lGRPupupuParticleBankTextureHi = 0x00B1F960;
 
@@ -510,8 +510,8 @@ D_NF_000004B8 = 0x000004B8;
 lGRYosterCloudDisplayList = 0x00000580;
 lGRYosterCloudSolidMatAnimJoint = 0x00000670;
 lGRYosterCloudEvaporateMatAnimJoint = 0x00000690;
-lGRYosterParticleBankHeaderLo = 0x00B22980;
-lGRYosterParticleBankHeaderHi = 0x00B22A00;
+lGRYosterParticleBankGenLo = 0x00B22980;
+lGRYosterParticleBankGenHi = 0x00B22A00;
 lGRYosterParticleBankTextureLo = 0x00B22A00;
 lGRYosterParticleBankTextureHi = 0x00B22C30;
 
@@ -525,8 +525,8 @@ lGRJungleTaruCannDefaultAnimJoint = 0x00000B20;
 lGRJungleTaruCannFillAnimJoint = 0x00000B68;
 lGRJungleTaruCannShootAnimJoint = 0x00000BF8;
 
-lGRHyruleParticleBankHeaderLo = 0x00B1F960;
-lGRHyruleParticleBankHeaderHi = 0x00B1FC80;
+lGRHyruleParticleBankGenLo = 0x00B1F960;
+lGRHyruleParticleBankGenHi = 0x00B1FC80;
 lGRHyruleParticleBankTextureLo = 0x00B1FC80;
 lGRHyruleParticleBankTextureHi = 0x00B22980;
 
@@ -542,8 +542,8 @@ lGRBonus3ItemHead = 0x00000000;
 lGRBonus3BumpersDObjDesc = 0x00000000;
 lGRBonus3BumpersAnimJoint = 0x00000110;
 
-lTitleScreenParticleBankHeaderLo = 0x00B22C30;
-lTitleScreenParticleBankHeaderHi = 0x00B22D40;
+lTitleScreenParticleBankGenLo = 0x00B22C30;
+lTitleScreenParticleBankGenHi = 0x00B22D40;
 lTitleScreenParticleBankTextureLo = 0x00B22D40;
 lTitleScreenParticleBankTextureHi = 0x00B277B0;
 
@@ -823,8 +823,8 @@ lWPLinkBoomerangWeaponAttributes = 0x00000000;
 lWPBossBulletNormalWeaponAttributes = 0x00000774;
 lWPBossBulletHardWeaponAttributes = 0x000007A8;
 
-lITManagerParticleBankHeaderLo = 0x00B1BCA0;
-lITManagerParticleBankHeaderHi = 0x00B1BDE0;
+lITManagerParticleBankGenLo = 0x00B1BCA0;
+lITManagerParticleBankGenHi = 0x00B1BDE0;
 lITManagerParticleBankTextureLo = 0x00B1BDE0;
 lITManagerParticleBankTextureHi = 0x00B1E640;
 

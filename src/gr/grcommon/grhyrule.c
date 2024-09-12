@@ -409,7 +409,7 @@ void grHyruleTwisterInitVars(void)
     }
 
     gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusSleep;
-    gGRCommonStruct.hyrule.particle_bank_id = efAllocGetAddParticleBankID((intptr_t)&lGRHyruleParticleBankHeaderLo, (intptr_t)&lGRHyruleParticleBankHeaderHi, (intptr_t)&lGRHyruleParticleBankTextureLo, (intptr_t)&lGRHyruleParticleBankTextureHi);
+    gGRCommonStruct.hyrule.particle_bank_id = efAllocGetAddParticleBankID((intptr_t)&lGRHyruleParticleBankGenLo, (intptr_t)&lGRHyruleParticleBankGenHi, (intptr_t)&lGRHyruleParticleBankTextureLo, (intptr_t)&lGRHyruleParticleBankTextureHi);
 }
 
 // 0x8010AB20

@@ -26,7 +26,13 @@ struct efCreateDesc
 
 struct efGenerator
 {
-    u8 filler_0x0[0x14];
+    u16 unk_efgen_0x0;
+	u16 unk_efgen_0x2;
+	u16 unk_efgen_0x4;
+	u16 unk_efgen_0x6;
+	s32 unk_efgen_0x8;
+	f32 unk_efgen_0xC;
+	f32 unk_efgen_0x10;
     Vec3f pos;
     f32 filler_0x20[10];
     DObj *dobj;
@@ -112,40 +118,37 @@ struct efStruct
     u16 unk_effectstruct_0x8;
     efTransform *eftrans;
 
-    u32 is_pause_effect : 1;
-    u32 effect_flags_b1 : 1;
-    u32 effect_flags_b2 : 1;
-    u32 effect_flags_b3 : 1;
+    ub32 is_pause_effect : 1;
 
-    void (*proc_update)(GObj *);
+    void (*proc_update)(GObj*);
 
-    union efManagerVars // Effect vars union?
+    union efEffectVars // Effect vars union?
     {
-        efParticle_EffectVars_Common common;
-        efParticle_EffectVars_ContainerSmash container;
-        efParticle_EffectVars_Basic2 basic2;
-        efParticle_EffectVars_DamageNormalHeavy damage_normal_heavy;
-        efParticle_EffectVars_DustLight dust_light;
-        efParticle_EffectVars_DustHeavy dust_heavy;
-        efParticle_EffectVars_DamageFlyOrbs damage_fly_orbs;
-        efParticle_EffectVars_DamageSpawnOrbs damage_spawn_orbs;
-        efParticle_EffectVars_ImpactWave impact_wave;
-        efParticle_EffectVars_StarRodSpark star_rod_spark;
-        efParticle_EffectVars_DamageFlySpark damage_fly_sparks;
-        efParticle_EffectVars_DamageSpawnSpark damage_spawn_sparks;
-        efParticle_EffectVars_DamageFlyMDust damage_fly_mdust;
-        efParticle_EffectVars_DamageSpawnMDust damage_spawn_mdust;
-        efParticle_EffectVars_Quake quake;
-        efParticle_EffectVars_Reflector reflector;
-        efParticle_EffectVars_Shield shield;
-        efParticle_EffectVars_Unknown1 unknown1;
-        efParticle_EffectVars_ThunderTrail thunder_trail;
-        efParticle_EffectVars_VulcanJab vulcan_jab;
-        efParticle_EffectVars_PKThunder pkthunder;
-        efParticle_EffectVars_YoshiEggLay yoshi_egg_lay;
-        efParticle_EffectVars_CaptureKirbyStar capture_kirby_star;
-        efParticle_EffectVars_LoseKirbyStar lose_kirby_star;
-        efParticle_EffectVars_GroundEffect ground_effect; // Used in efGroundCheckEffectInBounds
+        efCommonEffectVarsCommon common;
+        efCommonEffectVarsContainer container;
+        efCommonEffectVarsDamageNormalHeavy damage_normal_heavy;
+        efCommonEffectVarsDustLight dust_light;
+        efCommonEffectVarsDustHeavy dust_heavy;
+        efCommonEffectVarsDamageFlyOrbs damage_fly_orbs;
+        efCommonEffectVarsDamageSpawnOrbs damage_spawn_orbs;
+        efCommonEffectVarsImpactWave impact_wave;
+        efCommonEffectVarsStarRodSpark star_rod_spark;
+        efCommonEffectVarsDamageFlySpark damage_fly_sparks;
+        efCommonEffectVarsDamageSpawnSpark damage_spawn_sparks;
+        efCommonEffectVarsDamageFlyMDust damage_fly_mdust;
+        efCommonEffectVarsDamageSpawnMDust damage_spawn_mdust;
+        efCommonEffectVarsQuake quake;
+        efCommonEffectVarsReflector reflector;
+        efCommonEffectVarsShield shield;
+        efCommonEffectVarsUnknown1 unknown1;
+        efCommonEffectVarsThunderTrail thunder_trail;
+        efCommonEffectVarsVulcanJab vulcan_jab;
+        efCommonEffectVarsPKThunder pkthunder;
+        efCommonEffectVarsYoshiEggLay yoshi_egg_lay;
+        efCommonEffectVarsCaptureKirbyStar capture_kirby_star;
+        efCommonEffectVarsLoseKirbyStar lose_kirby_star;
+
+        efGroundEffectVarsCommon ground_effect; // Used in efGroundCheckEffectInBounds
 
     } effect_vars;
 };

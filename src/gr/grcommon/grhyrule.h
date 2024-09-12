@@ -6,8 +6,8 @@
 #include <gr/grdef.h>
 #include <ef/efdef.h>
 
-extern intptr_t lGRHyruleParticleBankHeaderLo;            // 0x00B1F960
-extern intptr_t lGRHyruleParticleBankHeaderHi;            // 0x00B1FC80
+extern intptr_t lGRHyruleParticleBankGenLo;            // 0x00B1F960
+extern intptr_t lGRHyruleParticleBankGenHi;            // 0x00B1FC80
 extern intptr_t lGRHyruleParticleBankTextureLo;           // 0x00B1FC80
 extern intptr_t lGRHyruleParticleBankTextureHi;           // 0x00B22980
 

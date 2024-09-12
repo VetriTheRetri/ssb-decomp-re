@@ -92,12 +92,12 @@
 #define EFPART_LOSEKIRBYSTAR_VEL_Y 80.0F
 #define EFPART_LOSEKIRBYSTAR_OFF_Y 210.0F
 
-typedef struct efParticle_EffectVars_ContainerSmash
+typedef struct efCommonEffectVarsContainer
 {
 	s32 lifetime;
 	s32 unk_ef_0x1C;
 
-} efParticle_EffectVars_ContainerSmash;
+} efCommonEffectVarsContainer;
 
 typedef struct efParticle_EffectVars_Basic2 // Stuff like the effect that is created when hit by a normal element attack
 {
@@ -109,164 +109,164 @@ typedef struct efParticle_EffectVars_Basic2 // Stuff like the effect that is cre
 
 } efParticle_EffectVars_Basic2;
 
-typedef struct efParticle_EffectVars_DamageNormalHeavy
+typedef struct efCommonEffectVarsDamageNormalHeavy
 {
     Vec3f pos;
     u8 player;
     s32 size;
 
-} efParticle_EffectVars_DamageNormalHeavy;
+} efCommonEffectVarsDamageNormalHeavy;
 
-typedef struct efParticle_EffectVars_Common
+typedef struct efCommonEffectVarsCommon
 {
     Vec3f vel;
     s32 size;
     efTransform *eftrans;
 
-} efParticle_EffectVars_Common;
+} efCommonEffectVarsCommon;
 
-typedef struct efParticle_EffectVars_DustLight
+typedef struct efCommonEffectVarsDustLight
 {
     Vec3f vel1, vel2;
     s32 lifetime;
     efTransform *eftrans;
 
-} efParticle_EffectVars_DustLight;
+} efCommonEffectVarsDustLight;
 
-typedef struct efParticle_EffectVars_DustHeavy
+typedef struct efCommonEffectVarsDustHeavy
 {
     Vec3f pos;
     s32 lr;
     s32 anim_frame;
     efTransform *eftrans;
 
-} efParticle_EffectVars_DustHeavy;
+} efCommonEffectVarsDustHeavy;
 
-typedef struct efParticle_EffectVars_DamageFlyOrbs
+typedef struct efCommonEffectVarsDamageFlyOrbs
 {
     Vec3f vel;
     s32 lifetime;
 
-} efParticle_EffectVars_DamageFlyOrbs;
+} efCommonEffectVarsDamageFlyOrbs;
 
-typedef struct efParticle_EffectVars_DamageSpawnOrbs
+typedef struct efCommonEffectVarsDamageSpawnOrbs
 {
     s32 lifetime;
     Vec3f pos;
 
-} efParticle_EffectVars_DamageSpawnOrbs;
+} efCommonEffectVarsDamageSpawnOrbs;
 
-typedef struct efParticle_EffectVars_ImpactWave
+typedef struct efCommonEffectVarsImpactWave
 {
     u8 index;
     f32 alpha;
     f32 decay;
 
-} efParticle_EffectVars_ImpactWave;
+} efCommonEffectVarsImpactWave;
 
-typedef struct efParticle_EffectVars_StarRodSpark
+typedef struct efCommonEffectVarsStarRodSpark
 {
     Vec3f vel, add;
     s32 add_timer;
 
-} efParticle_EffectVars_StarRodSpark;
+} efCommonEffectVarsStarRodSpark;
 
-typedef struct efParticle_EffectVars_DamageFlySpark
+typedef struct efCommonEffectVarsDamageFlySpark
 {
     Vec3f vel, add;
     s32 add_timer;
 
-} efParticle_EffectVars_DamageFlySpark;
+} efCommonEffectVarsDamageFlySpark;
 
-typedef struct efParticle_EffectVars_DamageSpawnSpark
+typedef struct efCommonEffectVarsDamageSpawnSpark
 {
     s32 lifetime;
     Vec3f pos;
     s32 lr;
 
-} efParticle_EffectVars_DamageSpawnSpark;
+} efCommonEffectVarsDamageSpawnSpark;
 
-typedef struct efParticle_EffectVars_DamageFlyMDust
+typedef struct efCommonEffectVarsDamageFlyMDust
 {
     Vec3f vel, add;
     s32 add_timer;
 
-} efParticle_EffectVars_DamageFlyMDust;
+} efCommonEffectVarsDamageFlyMDust;
 
-typedef struct efParticle_EffectVars_DamageSpawnMDust
+typedef struct efCommonEffectVarsDamageSpawnMDust
 {
     s32 lifetime;
     Vec3f pos;
     s32 lr;
 
-} efParticle_EffectVars_DamageSpawnMDust;
+} efCommonEffectVarsDamageSpawnMDust;
 
-typedef struct efParticle_EffectVars_Quake
+typedef struct efCommonEffectVarsQuake
 {
     u8 priority;
 
-} efParticle_EffectVars_Quake;
+} efCommonEffectVarsQuake;
 
-typedef struct efParticle_EffectVars_Reflector
+typedef struct efCommonEffectVarsReflector
 {
     s32 index, status;
 
-} efParticle_EffectVars_Reflector;
+} efCommonEffectVarsReflector;
 
-typedef struct efParticle_EffectVars_Shield
+typedef struct efCommonEffectVarsShield
 {
     s32 player;
     sb32 is_damage_shield;
 
-} efParticle_EffectVars_Shield;
+} efCommonEffectVarsShield;
 
-typedef struct efParticle_EffectVars_Unknown1
+typedef struct efCommonEffectVarsUnknown1
 {
     s32 efvars_unk1_0x0;
 
-} efParticle_EffectVars_Unknown1;
+} efCommonEffectVarsUnknown1;
 
-typedef struct efParticle_EffectVars_ThunderTrail
+typedef struct efCommonEffectVarsThunderTrail
 {
     s32 lifetime;
 
-} efParticle_EffectVars_ThunderTrail;
+} efCommonEffectVarsThunderTrail;
 
-typedef struct efParticle_EffectVars_VulcanJab
+typedef struct efCommonEffectVarsVulcanJab
 {
     s32 lifetime;
     Vec3f vel, add;
 
-} efParticle_EffectVars_VulcanJab;
+} efCommonEffectVarsVulcanJab;
 
-typedef struct efParticle_EffectVars_PKThunder
+typedef struct efCommonEffectVarsPKThunder
 {
     s32 status;
     GObj *owner_gobj;
 
-} efParticle_EffectVars_PKThunder;
+} efCommonEffectVarsPKThunder;
 
-typedef struct efParticle_EffectVars_YoshiEggLay
+typedef struct efCommonEffectVarsYoshiEggLay
 {
     s32 index, force_index;
 
-} efParticle_EffectVars_YoshiEggLay;
+} efCommonEffectVarsYoshiEggLay;
 
-typedef struct efParticle_EffectVars_CaptureKirbyStar
+typedef struct efCommonEffectVarsCaptureKirbyStar
 {
     s32 effect_timer;
 
-} efParticle_EffectVars_CaptureKirbyStar;
+} efCommonEffectVarsCaptureKirbyStar;
 
-typedef struct efParticle_EffectVars_LoseKirbyStar
+typedef struct efCommonEffectVarsLoseKirbyStar
 {
     Vec2f vel;
     s16 lifetime;
     s16 lr;
 
-} efParticle_EffectVars_LoseKirbyStar;
+} efCommonEffectVarsLoseKirbyStar;
 
-typedef struct efParticle_EffectVars_GroundEffect
+typedef struct efGroundEffectVarsCommon
 {
     Vec3f pos;
     s32 effect_status;
@@ -276,6 +276,6 @@ typedef struct efParticle_EffectVars_GroundEffect
     void *matanim_joint;
     u8 lr_bool;
 
-} efParticle_EffectVars_GroundEffect;
+} efGroundEffectVarsCommon;
 
 #endif

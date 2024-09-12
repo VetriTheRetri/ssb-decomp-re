@@ -11,8 +11,8 @@
 #include "ovl10.h"
 
 // Externs
-extern uintptr_t lTitleScreenParticleBankHeaderLo; // B22C30
-extern uintptr_t lTitleScreenParticleBankHeaderHi; // B22D40
+extern uintptr_t lTitleScreenParticleBankGenLo; // B22C30
+extern uintptr_t lTitleScreenParticleBankGenHi; // B22D40
 extern uintptr_t lTitleScreenParticleBankTextureLo; // B22D40
 extern uintptr_t lTitleScreenParticleBankTextureHi; // B277B0
 extern uintptr_t lOverlay10ArenaLo; // 801345B0
@@ -1275,7 +1275,7 @@ void mnTitleCreateLogoFire()
 
 	logo_fire_gobj->cam_mask = 0x00000001;
 
-	gMNTitleParticleBankId = efAllocGetAddParticleBankID(&lTitleScreenParticleBankHeaderLo, &lTitleScreenParticleBankHeaderHi, &lTitleScreenParticleBankTextureLo, &lTitleScreenParticleBankTextureHi);
+	gMNTitleParticleBankId = efAllocGetAddParticleBankID(&lTitleScreenParticleBankGenLo, &lTitleScreenParticleBankGenHi, &lTitleScreenParticleBankTextureLo, &lTitleScreenParticleBankTextureHi);
 }
 
 // 80133E68

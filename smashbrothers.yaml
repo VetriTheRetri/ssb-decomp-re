@@ -375,15 +375,15 @@ segments:
       - { start: 0x0402B0, type: databin, name: rsp/gspF3DEX2_fifo, linker_section_order: .rodata }
       - { start: auto, type: .bss, name: sys/main,                 vram: 0x8003FAD0 }
       - { start: auto, type: .bss, name: sys/thread3,              vram: 0x80044EC0 }
-      - { start: auto, type: .bss, name: sys/dma,                vram: 0x80045040 }
+      - { start: auto, type: .bss, name: sys/dma,                  vram: 0x80045040 }
       - { start: auto, type: .bss, name: sys/thread6,              vram: 0x800450F0 }
-      - { start: auto, type: .bss, name: sys/gtl,                vram: 0x80045480 }
+      - { start: auto, type: .bss, name: sys/gtl,                  vram: 0x80045480 }
       - { start: auto, type: .bss, name: sys/system_00,            vram: 0x80046670 }
       - { start: auto, type: .bss, name: sys/rdp_reset,            vram: 0x800466A0 }
-      - { start: auto, type: .bss, name: sys/objmanager,          vram: 0x800466B0 }
+      - { start: auto, type: .bss, name: sys/objmanager,           vram: 0x800466B0 }
       - { start: auto, type: .bss, name: sys/objdraw,              vram: 0x80046FA0 }
       - { start: auto, type:  bss, name: sys/hal_audio,            vram: 0x800472D0 }
-      - { start: auto, type: .bss, name: sys/error,              vram: 0x8009DA00 }
+      - { start: auto, type: .bss, name: sys/error,                vram: 0x8009DA00 }
       - { start: auto, type:  bss, name: libultra/sp/sprite,       vram: 0x8009EDC0 }
       - { start: auto, type:  bss, name: libultra/n_audio/n_env,   vram: 0x8009EDD0 }
       - { start: auto, type: .bss, name: libultra/io/sptask,       vram: 0x8009EE40 }

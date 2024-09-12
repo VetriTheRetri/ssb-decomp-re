@@ -1622,7 +1622,7 @@ void sc1PGameSetGameStatusWait(void)
 }
 
 // 0x8018EBB8
-void sc1PGameTeamStockDisplayProcRender(GObj *interface_gobj)
+void sc1PGameTeamStockDisplayProcDraw(GObj *interface_gobj)
 {
     SObj *sobj;
     s32 stock_num;
@@ -1731,7 +1731,7 @@ void sc1PGameInitTeamStockDisplay(void)
     make_gobj:
         interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
-        gcAddGObjDisplay(interface_gobj, sc1PGameTeamStockDisplayProcRender, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+        gcAddGObjDisplay(interface_gobj, sc1PGameTeamStockDisplayProcDraw, 23, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
         for (i = 0; i < sSC1PGameEnemyStocksRemaining; i++)
         {
@@ -2847,7 +2847,7 @@ void sc1PGameProcLights(Gfx **dls)
 {
     gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 
-    ftRenderLightsDrawReflect(dls, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
+    ftDisplayLightsDrawReflect(dls, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
 // 0x80190FD8

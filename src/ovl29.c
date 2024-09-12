@@ -42,7 +42,7 @@ extern intptr_t FILE_011_CURSOR_POINTER_IMAGE_OFFSET;
 extern void scSubsysFighterSetLightParams(f32 light_angle_x, f32 light_angle_y, u8 r, u8 g, u8 b, u8 a);
 
 
-extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
+extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
 extern f32 scSubsysFighterGetLightAngleX();
 extern f32 scSubsysFighterGetLightAngleY();
 extern void func_80007080(void*, f32, f32, f32, f32);
@@ -164,7 +164,7 @@ s32 gMnBonusFilesArray[11];
 void mnBonusSetupDisplayList(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
-	ftRenderLightsDrawReflect(display_list, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
+	ftDisplayLightsDrawReflect(display_list, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 }
 
 // 80131B58

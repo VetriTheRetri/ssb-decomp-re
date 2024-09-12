@@ -186,7 +186,7 @@ void mnBackupClearMakeHeaderSObjs(void)
     SObj *sobj;
     
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
     
     sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[2], &lMNBackupClearHeaderOptionSprite));
     
@@ -282,7 +282,7 @@ void mnBackupClearUpdateOptionTabSObjs(void)
     {
         *option_gobj[i] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
-        gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+        gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
         
         sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNBackupClearFiles[1], offsets[i]));
 
@@ -312,7 +312,7 @@ void mnBackupClearEjectOptionGObjs(void)
 }
 
 // 0x80131F98
-void mnBackupClearOptionConfirmProcRender(GObj *gobj)
+void mnBackupClearOptionConfirmProcDraw(GObj *gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
@@ -344,7 +344,7 @@ void mnBackupClearMakeOptionConfirmSObjs(sb32 confirm_kind, sb32 yes_or_no)
 
     sMNBackupClearOptionConfirmGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
     
-    gcAddGObjDisplay(gobj, mnBackupClearOptionConfirmProcRender, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, mnBackupClearOptionConfirmProcDraw, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
     
     if (yes_or_no == 0)
     {

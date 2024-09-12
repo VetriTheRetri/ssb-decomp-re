@@ -16,7 +16,7 @@ extern mlRegion gSYGtlGraphicsHeap;
 // // // // // // // // // // // //
 
 // 0x800FCB70
-void ftRenderLightsDrawReflect(Gfx **display_list, f32 light_angle_x, f32 light_angle_y)
+void ftDisplayLightsDrawReflect(Gfx **display_list, f32 light_angle_x, f32 light_angle_y)
 {
     Vec3f vec;
 

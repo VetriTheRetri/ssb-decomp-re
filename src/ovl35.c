@@ -12,7 +12,7 @@ extern uintptr_t D_NF_00000854;
 extern intptr_t lOverlay35ArenaLo;  // 80132BC0
 extern intptr_t lOverlay35ArenaHi;  // 803903E0
 extern intptr_t FILE_035_PORTRAIT_OVERLAY_IMAGE_OFFSET; // file 0x035 image offset for portrait overlay
-extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
+extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
 extern f32 scSubsysFighterGetLightAngleX();
 extern f32 scSubsysFighterGetLightAngleY();
 
@@ -79,7 +79,7 @@ s32 gIntroPortraitsFilesArray[2];
 void mvPortraitsSetupDisplayList(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
-	ftRenderLightsDrawReflect(display_list, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
+	ftDisplayLightsDrawReflect(display_list, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 }
 
 // 80131B58

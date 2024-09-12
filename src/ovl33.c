@@ -52,7 +52,7 @@ extern void gcRemoveSObjAll(GObj*);
 
 extern void func_80007080(void*, f32, f32, f32, f32);
 
-extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
+extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
 extern f32 scSubsysFighterGetLightAngleX();
 extern f32 scSubsysFighterGetLightAngleY();
 
@@ -1018,7 +1018,7 @@ s32 gMNCharsFilesArray[4];
 void mnCharsSetupDisplayList(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
-	ftRenderLightsDrawReflect(display_list, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
+	ftDisplayLightsDrawReflect(display_list, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 }
 
 // 80131B58

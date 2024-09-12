@@ -47,7 +47,7 @@ extern intptr_t FILE_019_POLYGON_STOCK_ICON_IMAGE_OFFSET;
 extern intptr_t FILE_011_CURSOR_POINTER_IMAGE_OFFSET;
 
 
-extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
+extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
 extern f32 scSubsysFighterGetLightAngleX();
 extern f32 scSubsysFighterGetLightAngleY();
 extern void gcDrawDObjTreeDLLinksForGObj(GObj *gobj);
@@ -194,7 +194,7 @@ s32 gMN1PFilesArray[11];
 void mn1PSetupDisplayList(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
-	ftRenderLightsDrawReflect(display_list, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
+	ftDisplayLightsDrawReflect(display_list, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 }
 
 // 80131B58

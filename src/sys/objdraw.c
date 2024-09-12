@@ -2885,7 +2885,7 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                             cam->projection.persp.far,
                             cam->projection.persp.scale
                         );
-                        syMatrixF2L(gODMatrixPerspF, mtx_store.gbi);
+                        syMatrixF2L(&gODMatrixPerspF, mtx_store.gbi);
                         sODMatrixProjectL = mtx_store.gbi;
                         break;
 
@@ -2900,7 +2900,7 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                             cam->projection.persp.far,
                             cam->projection.persp.scale
                         );
-                        syMatrixF2L(gODMatrixPerspF, mtx_store.gbi);
+                        syMatrixF2L(&gODMatrixPerspF, mtx_store.gbi);
                         sODMatrixProjectL = mtx_store.gbi;
                         break;
 
@@ -3094,57 +3094,57 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
         }
         if (var_s3 != 0)
         {
-            f32 var3, var1, var2;
+            f32 eye_z, eye_y, at_y;
 
             switch (var_s3)
             {
             case 1:
-                var3 = sqrtf(SQUARE(cam->vec.at.z - cam->vec.eye.z) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
-                var1 = cam->vec.eye.y;
-                var2 = cam->vec.at.y;
+                eye_z = sqrtf(SQUARE(cam->vec.at.z - cam->vec.eye.z) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
+                eye_y = cam->vec.eye.y;
+                at_y = cam->vec.at.y;
                 break;
 
             case 2:
-                var3 = sqrtf(SQUARE(cam->vec.at.y - cam->vec.eye.y) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
-                var1 = cam->vec.eye.z;
-                var2 = cam->vec.at.z;
+                eye_z = sqrtf(SQUARE(cam->vec.at.y - cam->vec.eye.y) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
+                eye_y = cam->vec.eye.z;
+                at_y = cam->vec.at.z;
                 break;
             }
-            if (var3 < 0.0001F)
+            if (eye_z < 0.0001F)
             {
-                syMatrixScaF(D_80047028, 0.0F, 0.0F, 0.0F);
+                syMatrixScaF(&D_80047028, 0.0F, 0.0F, 0.0F);
             }
             else
             {
-                syMatrixLookAtF(D_80047028, 0.0F, var1, var3, 0.0F, var2, 0.0F, 0.0F, 1.0F, 0.0F);
+                syMatrixLookAtF(&D_80047028, 0.0F, eye_y, eye_z, 0.0F, at_y, 0.0F, 0.0F, 1.0F, 0.0F);
                 guMtxCatF(D_80047028, gODMatrixPerspF, D_80047028);
             }
         }
         if (spC8 != 0)
         {
-            f32 var3, var1, var2;
+            f32 eye_z, eye_x, at_x;
 
             switch (spC8)
             {
             case 1:
-                var3 = sqrtf(SQUARE(cam->vec.at.y - cam->vec.eye.y) + SQUARE(cam->vec.at.z - cam->vec.eye.z));
-                var1 = cam->vec.eye.x;
-                var2 = cam->vec.at.x;
+                eye_z = sqrtf(SQUARE(cam->vec.at.y - cam->vec.eye.y) + SQUARE(cam->vec.at.z - cam->vec.eye.z));
+                eye_x = cam->vec.eye.x;
+                at_x = cam->vec.at.x;
                 break;
 
             case 2:
-                var3 = sqrtf(SQUARE(cam->vec.at.z - cam->vec.eye.z) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
-                var1 = cam->vec.eye.y;
-                var2 = cam->vec.at.y;
+                eye_z = sqrtf(SQUARE(cam->vec.at.z - cam->vec.eye.z) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
+                eye_x = cam->vec.eye.y;
+                at_x = cam->vec.at.y;
                 break;
             }
-            if (var3 < 0.0001F)
+            if (eye_z < 0.0001F)
             {
-                syMatrixScaF(D_80047068, 0.0F, 0.0F, 0.0F);
+                syMatrixScaF(&D_80047068, 0.0F, 0.0F, 0.0F);
             }
             else
             {
-                syMatrixLookAtF(D_80047068, var1, 0.0F, var3, var2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
+                syMatrixLookAtF(&D_80047068, eye_x, 0.0F, eye_z, at_x, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
                 guMtxCatF(D_80047068, gODMatrixPerspF, D_80047068);
             }
         }
@@ -3178,13 +3178,13 @@ void func_80017868(GObj *this_gobj, s32 link_id, s32 arg2)
         {
             if
             (
-                ((arg2 == 0) && (this_gobj->unk_gobj_0x38 &  current_gobj->unk_gobj_0x38)) ||
-                ((arg2 == 1) && (this_gobj->unk_gobj_0x38 == current_gobj->unk_gobj_0x38))
+                ((arg2 == 0) && (this_gobj->cam_tag &  current_gobj->cam_tag)) ||
+                ((arg2 == 1) && (this_gobj->cam_tag == current_gobj->cam_tag))
             )
             {
                 D_8003B874_3C474 = 4;
                 gOMObjCurrentDraw = current_gobj;
-                current_gobj->proc_render(current_gobj);
+                current_gobj->proc_draw(current_gobj);
                 D_8003B874_3C474 = 3;
                 current_gobj->frame_draw_last = dSYGtlFrameDrawCount;
             }
@@ -3243,32 +3243,32 @@ void func_80017AAC(s32 index)
 // 0x80017B80
 void func_80017B80(GObj *gobj, s32 arg1)
 {
-    s32 idx;
-    u64 sp38; // t6+t7
+    s32 id;
+    u64 cam_mask;
     u64 sp30;
 
-    sp38 = gobj->unk_gobj_0x30;
+    cam_mask = gobj->cam_mask;
     sp30 = gobj->unk_gobj_0x40;
 
-    idx = 0;
+    id = 0;
 
-    while (sp38) 
+    while (cam_mask) 
     {
-        if (sp38 & 1) 
+        if (cam_mask & 1) 
         {
             if (sp30 & 1)
             {
-                if ((u8)dSYGtlFrameDrawCount == D_80046A88[idx].id)
+                if ((u8)dSYGtlFrameDrawCount == D_80046A88[id].id)
                 {
-                    func_80017AAC(idx);
+                    func_80017AAC(id);
                 } 
-                else func_80017978(gobj, idx, arg1);
+                else func_80017978(gobj, id, arg1);
             } 
-            else func_80017868(gobj, idx, arg1);
+            else func_80017868(gobj, id, arg1);
         }
-        sp38 >>= 1;
+        cam_mask >>= 1;
         sp30 >>= 1;
-        idx++;
+        id++;
     }
 }
 

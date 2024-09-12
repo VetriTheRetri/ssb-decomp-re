@@ -104,7 +104,7 @@ void itPippiCommonSelectMonster(GObj *item_gobj)
     }
     if ((it_kind == nITKindSawamura) || (it_kind == nITKindStarmie))
     {
-        item_gobj->proc_render = itPippiCommonMoveDLProcRender;
+        item_gobj->proc_draw = itPippiCommonMoveDLProcDraw;
 
         gcMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_order);
     }
@@ -116,13 +116,13 @@ void itPippiCommonSelectMonster(GObj *item_gobj)
 }
 
 // 0x80183344
-void itPippiCommonProcRender(GObj *item_gobj)
+void itPippiCommonProcDraw(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     gDPPipeSync(gDisplayListHead[0]++);
 
-    if (itRenderCheckItemVisible(ip) != FALSE)
+    if (itDisplayCheckItemVisible(ip) != FALSE)
     {
         if ((ip->display_mode == nDBDisplayModeMaster) || (ip->is_hold))
         {
@@ -135,7 +135,7 @@ void itPippiCommonProcRender(GObj *item_gobj)
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
             gcDrawDObjTreeForGObj(item_gobj);
-            itRenderMapCollisions(item_gobj);
+            itDisplayMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
@@ -143,19 +143,19 @@ void itPippiCommonProcRender(GObj *item_gobj)
 
             gcDrawDObjTreeForGObj(item_gobj);
         }
-        else itRenderHitCollisions(item_gobj);
+        else itDisplayHitCollisions(item_gobj);
     }
     gDPPipeSync(gDisplayListHead[0]++);
 }
 
 // 0x801834A0 - Render routine of Hitmonlee / Starmie metronome abilities
-void itPippiCommonMoveDLProcRender(GObj *item_gobj)
+void itPippiCommonMoveDLProcDraw(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
     gDPPipeSync(gDisplayListHead[0]++);
 
-    if (itRenderCheckItemVisible(ip) != FALSE)
+    if (itDisplayCheckItemVisible(ip) != FALSE)
     {
         if ((ip->display_mode == nDBDisplayModeMaster) || (ip->is_hold))
         {
@@ -168,7 +168,7 @@ void itPippiCommonMoveDLProcRender(GObj *item_gobj)
             gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
             gcDrawDObjTreeForGObj(item_gobj);
-            itRenderMapCollisions(item_gobj);
+            itDisplayMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
@@ -176,7 +176,7 @@ void itPippiCommonMoveDLProcRender(GObj *item_gobj)
 
             gcDrawDObjTreeForGObj(item_gobj);
         }
-        else itRenderHitCollisions(item_gobj);
+        else itDisplayHitCollisions(item_gobj);
     }
     gDPPipeSync(gDisplayListHead[0]++);
 }
@@ -233,7 +233,7 @@ GObj* itPippiMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITPippiDataStart), 0.0F); // Linker thing
         func_800269C0_275C0(nSYAudioVoiceMBallPippiAppear);
 
-        item_gobj->proc_render = itPippiCommonProcRender;
+        item_gobj->proc_draw = itPippiCommonProcDraw;
     }
     return item_gobj;
 }

@@ -5,7 +5,7 @@
 #include "wpprocess.h"
 #include "wpmain.h"
 #include "wpmap.h"
-#include "wprender.h"
+#include "wpdisplay.h"
 
 // Fox weapons
 #include <wp/wpmario/wpmariofireball.h>

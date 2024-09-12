@@ -395,7 +395,7 @@ syColorRGBA dFTRenderMainItemAfterImageColor2 = { 0xFF, 0xFF, 0xFF, 0x00 };
 // // // // // // // // // // // //
 
 // 0x800F1020
-void ftRenderMainDrawAfterImage(ftStruct *fp)
+void ftDisplayMainDrawAfterImage(ftStruct *fp)
 {
     s32 i, j;
     s32 next_index;
@@ -598,7 +598,7 @@ void ftRenderMainDrawAfterImage(ftStruct *fp)
 }
 
 // 0x800F17E8
-void ftRenderMainCalcFogColor(ftStruct *fp)
+void ftDisplayMainCalcFogColor(ftStruct *fp)
 {
     s32 shade;
     s32 temp_color;
@@ -664,13 +664,13 @@ void ftRenderMainCalcFogColor(ftStruct *fp)
 }
 
 // 0x800F1B24
-void ftRenderMainSetFogColor(ftStruct *fp)
+void ftDisplayMainSetFogColor(ftStruct *fp)
 {
     gDPSetFogColor(gDisplayListHead[0]++, sFTRenderMainFogColor.r, sFTRenderMainFogColor.g, sFTRenderMainFogColor.b, sFTRenderMainFogColor.a);
 }
 
 // 0x800F1B7C
-void ftRenderMainDecideFogColor(ftStruct *fp)
+void ftDisplayMainDecideFogColor(ftStruct *fp)
 {
     if (fp->shade == 0)
     {
@@ -685,7 +685,7 @@ void ftRenderMainDecideFogColor(ftStruct *fp)
 }
 
 // 0x800F1C08
-void ftRenderMainDecideFogDraw(u8 flags, ftStruct *fp)
+void ftDisplayMainDecideFogDraw(u8 flags, ftStruct *fp)
 {
     gDPPipeSync(gDisplayListHead[0]++);
 
@@ -703,14 +703,14 @@ void ftRenderMainDecideFogDraw(u8 flags, ftStruct *fp)
                 {
                     sFTRenderMainIsShadeFog = TRUE;
 
-                    ftRenderMainDecideFogColor(fp);
+                    ftDisplayMainDecideFogColor(fp);
                 }
             }
             else if (sFTRenderMainIsShadeFog != FALSE)
             {
                 sFTRenderMainIsShadeFog = FALSE;
 
-                ftRenderMainSetFogColor(fp);
+                ftDisplayMainSetFogColor(fp);
             }
         }
         if (sFTRenderMainSkyFogAlpha == 0xFF)
@@ -722,7 +722,7 @@ void ftRenderMainDecideFogDraw(u8 flags, ftStruct *fp)
 }
 
 // 0x800F1D44
-void ftRenderMainDrawAccessory(ftStruct *fp, DObj *dobj, ftParts *ft_parts)
+void ftDisplayMainDrawAccessory(ftStruct *fp, DObj *dobj, ftParts *ft_parts)
 {
     DObj *root_dobj = DObjGetStruct(ft_parts->gobj);
 
@@ -732,7 +732,7 @@ void ftRenderMainDrawAccessory(ftStruct *fp, DObj *dobj, ftParts *ft_parts)
         if ((dobj->display_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
             gcDrawMObjForDObj(root_dobj, gDisplayListHead);
-            ftRenderMainDecideFogDraw(ft_parts->flags, fp);
+            ftDisplayMainDecideFogDraw(ft_parts->flags, fp);
 
             gSPDisplayList(gDisplayListHead[0]++, root_dobj->display_list);
         }
@@ -742,7 +742,7 @@ void ftRenderMainDrawAccessory(ftStruct *fp, DObj *dobj, ftParts *ft_parts)
         if ((dobj->dl_array != NULL) && (dobj->dl_array[1] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
             gcDrawMObjForDObj(root_dobj, gDisplayListHead);
-            ftRenderMainDecideFogDraw(ft_parts->flags, fp);
+            ftDisplayMainDecideFogDraw(ft_parts->flags, fp);
 
             gSPDisplayList(gDisplayListHead[0]++, root_dobj->display_list);
         }
@@ -751,7 +751,7 @@ void ftRenderMainDrawAccessory(ftStruct *fp, DObj *dobj, ftParts *ft_parts)
 }
 
 // 0x800F1E60
-void ftRenderMainDrawDefault(DObj *dobj)
+void ftDisplayMainDrawDefault(DObj *dobj)
 {
     ftStruct *fp = ftGetStruct(dobj->parent_gobj);
     s32 sp58;
@@ -776,12 +776,12 @@ void ftRenderMainDrawDefault(DObj *dobj)
 
                 if ((ft_parts != NULL) && (ft_parts->gobj != NULL) && (fp->ft_kind == nFTKindPurin))
                 {
-                    ftRenderMainDrawAccessory(fp, dobj, ft_parts);
+                    ftDisplayMainDrawAccessory(fp, dobj, ft_parts);
                 }
                 if ((dobj->display_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
                 {
                     gcDrawMObjForDObj(dobj, gDisplayListHead);
-                    ftRenderMainDecideFogDraw(ft_parts->flags, fp);
+                    ftDisplayMainDecideFogDraw(ft_parts->flags, fp);
 
                     gSPDisplayList(gDisplayListHead[0]++, dobj->display_list);
                 }
@@ -792,7 +792,7 @@ void ftRenderMainDrawDefault(DObj *dobj)
 
                 if ((dls != NULL) && (dls[0] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
                 {
-                    ftRenderMainDecideFogDraw(ft_parts->flags, fp);
+                    ftDisplayMainDecideFogDraw(ft_parts->flags, fp);
 
                     gSPDisplayList(gDisplayListHead[0]++, dls[0]);
                 }
@@ -801,7 +801,7 @@ void ftRenderMainDrawDefault(DObj *dobj)
                 if ((dls != NULL) && (dls[1] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
                 {
                     gcDrawMObjForDObj(dobj, gDisplayListHead);
-                    ftRenderMainDecideFogDraw(ft_parts->flags, fp);
+                    ftDisplayMainDecideFogDraw(ft_parts->flags, fp);
 
                     gSPDisplayList(gDisplayListHead[0]++, dls[1]);
                 }
@@ -814,16 +814,16 @@ void ftRenderMainDrawDefault(DObj *dobj)
 
             if ((ft_parts != NULL) && (ft_parts->gobj != NULL) && (fp->ft_kind == nFTKindPurin))
             {
-                ftRenderMainDrawAccessory(fp, dobj, ft_parts);
+                ftDisplayMainDrawAccessory(fp, dobj, ft_parts);
             }
         }
         if ((ft_parts != NULL) && (ft_parts->gobj != NULL) && (fp->ft_kind == nFTKindPikachu))
         {
-            ftRenderMainDrawAccessory(fp, dobj, ft_parts);
+            ftDisplayMainDrawAccessory(fp, dobj, ft_parts);
         }
         if (dobj->child != NULL)
         {
-            ftRenderMainDrawDefault(dobj->child);
+            ftDisplayMainDrawDefault(dobj->child);
         }
         if ((sp58 != FALSE) && ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL)))
         {
@@ -837,7 +837,7 @@ void ftRenderMainDrawDefault(DObj *dobj)
 
         while (sibling_dobj != NULL)
         {
-            ftRenderMainDrawDefault(sibling_dobj);
+            ftDisplayMainDrawDefault(sibling_dobj);
 
             sibling_dobj = sibling_dobj->sib_next;
         }
@@ -845,7 +845,7 @@ void ftRenderMainDrawDefault(DObj *dobj)
 }
 
 // 0x800F21B4
-void ftRenderMainDrawSkeleton(DObj *dobj)
+void ftDisplayMainDrawSkeleton(DObj *dobj)
 {
     ftStruct *fp;
     s32 sp60;
@@ -875,7 +875,7 @@ void ftRenderMainDrawSkeleton(DObj *dobj)
                 if (!(dobj->flags & DOBJ_FLAG_NOTEXTURE) && (skeleton->display_list != NULL))
                 {
                     gcDrawMObjForDObj(dobj, gDisplayListHead);
-                    ftRenderMainDecideFogDraw(skeleton->flags, fp);
+                    ftDisplayMainDecideFogDraw(skeleton->flags, fp);
 
                     gSPDisplayList(gDisplayListHead[0]++, skeleton->display_list);
                 }
@@ -886,7 +886,7 @@ void ftRenderMainDrawSkeleton(DObj *dobj)
 
                 if ((dls != NULL) && (dls[0] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
                 {
-                    ftRenderMainDecideFogDraw(skeleton->flags, fp);
+                    ftDisplayMainDecideFogDraw(skeleton->flags, fp);
 
                     gSPDisplayList(gDisplayListHead[0]++, dls[0]);
                 }
@@ -895,7 +895,7 @@ void ftRenderMainDrawSkeleton(DObj *dobj)
                 if ((dls != NULL) && (dls[1] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
                 {
                     gcDrawMObjForDObj(dobj, gDisplayListHead);
-                    ftRenderMainDecideFogDraw(skeleton->flags, fp);
+                    ftDisplayMainDecideFogDraw(skeleton->flags, fp);
 
                     gSPDisplayList(gDisplayListHead[0]++, dls[1]);
                 }
@@ -906,7 +906,7 @@ void ftRenderMainDrawSkeleton(DObj *dobj)
 
         if (dobj->child != NULL)
         {
-            ftRenderMainDrawSkeleton(dobj->child);
+            ftDisplayMainDrawSkeleton(dobj->child);
         }
         if ((sp60 != FALSE) && ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL)))
         {
@@ -920,14 +920,14 @@ void ftRenderMainDrawSkeleton(DObj *dobj)
 
         while (sibling_dobj != NULL)
         {
-            ftRenderMainDrawSkeleton(sibling_dobj);
+            ftDisplayMainDrawSkeleton(sibling_dobj);
             sibling_dobj = sibling_dobj->sib_next;
         }
     }
 }
 
 // 0x800F24A0
-void ftRenderMainDrawAll(GObj *fighter_gobj)
+void ftDisplayMainDrawAll(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
@@ -941,27 +941,27 @@ void ftRenderMainDrawAll(GObj *fighter_gobj)
         (fp->joints[(s32)(attributes->skeleton[0])]->display_list != NULL)             // What kind of Flintstones gummies were you on I need them right now
     )
     {
-        ftRenderMainDrawSkeleton(DObjGetStruct(fighter_gobj));
+        ftDisplayMainDrawSkeleton(DObjGetStruct(fighter_gobj));
     }
-    else ftRenderMainDrawDefault(DObjGetStruct(fighter_gobj));
+    else ftDisplayMainDrawDefault(DObjGetStruct(fighter_gobj));
 
     if (fp->afterimage.drawstatus >= 2)
     {
         switch (fp->afterimage.is_itemswing)
         {
         case FALSE:
-            ftRenderMainDrawAfterImage(fp);
+            ftDisplayMainDrawAfterImage(fp);
             break;
 
         case TRUE:
-            ftRenderMainDrawAfterImage(fp);
+            ftDisplayMainDrawAfterImage(fp);
             break;
         }
     }
 }
 
 // 0x800F2584
-void ftRenderMainDrawParts(DObj *dobj)
+void ftDisplayMainDrawParts(DObj *dobj)
 {
     ftStruct *fp;
     s32 sp90;
@@ -1045,7 +1045,7 @@ void ftRenderMainDrawParts(DObj *dobj)
     }
     if (dobj->child != NULL)
     {
-        ftRenderMainDrawParts(dobj->child);
+        ftDisplayMainDrawParts(dobj->child);
     }
     if (sp90 != FALSE)
     {
@@ -1062,7 +1062,7 @@ void ftRenderMainDrawParts(DObj *dobj)
 
         while (sibling_dobj != NULL)
         {
-            ftRenderMainDrawParts(sibling_dobj);
+            ftDisplayMainDrawParts(sibling_dobj);
 
             sibling_dobj = sibling_dobj->sib_next;
         }
@@ -1070,7 +1070,7 @@ void ftRenderMainDrawParts(DObj *dobj)
 }
 
 // 0x800F293C - WARNING: Fake match. sp110 snaps to sp114, cannot make room on stack to align it.
-void ftRenderMainProcRender(GObj *fighter_gobj)
+void ftDisplayMainProcDraw(GObj *fighter_gobj)
 {
     ftStruct *fp;
     ftAttributes *attributes;
@@ -1175,9 +1175,9 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
         {
             if (fp->status_info.pl_kind != nFTPlayerKindDemo)
             {
-                ftRenderLightsDrawReflect(gDisplayListHead, fp->lr * fp->colanim.light_angle1, fp->colanim.light_angle2);
+                ftDisplayLightsDrawReflect(gDisplayListHead, fp->lr * fp->colanim.light_angle1, fp->colanim.light_angle2);
             }
-            else ftRenderLightsDrawReflect(gDisplayListHead, F_CLC_RTOD32(DObjGetStruct(fighter_gobj)->rotate.vec.f.y) + fp->colanim.light_angle1, fp->colanim.light_angle2);
+            else ftDisplayLightsDrawReflect(gDisplayListHead, F_CLC_RTOD32(DObjGetStruct(fighter_gobj)->rotate.vec.f.y) + fp->colanim.light_angle1, fp->colanim.light_angle2);
         }
         gDPSetCycleType(gDisplayListHead[0]++, G_CYC_2CYCLE);
 
@@ -1205,10 +1205,10 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
 
         if (fp->colanim.is_use_maincolor)
         {
-            ftRenderMainCalcFogColor(fp);
-            ftRenderMainSetFogColor(fp);
+            ftDisplayMainCalcFogColor(fp);
+            ftDisplayMainSetFogColor(fp);
         }
-        else ftRenderMainDecideFogColor(fp);
+        else ftDisplayMainDecideFogColor(fp);
 
         if (fp->shuffle_timer != 0)
         {
@@ -1225,13 +1225,13 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
         }
         if ((fp->status_info.pl_kind == nFTPlayerKindDemo) || (fp->status_info.pl_kind == nFTPlayerKindKey) || (gOMObjCurrentCapture->gobj_id == nOMObjCommonKindMainCamera))
         {
-            ftRenderMainDrawAll(fighter_gobj);
+            ftDisplayMainDrawAll(fighter_gobj);
         }
         else
         {
             fp->joints[nFTPartsJointTopN]->ommtx[0]->kind = nOMTransformRotRpyR;
 
-            ftRenderMainDrawAll(fighter_gobj);
+            ftDisplayMainDrawAll(fighter_gobj);
 
             fp->joints[nFTPartsJointTopN]->ommtx[0]->kind = 0x4B;
         }
@@ -1247,9 +1247,9 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
 
         if (fp->status_info.pl_kind != nFTPlayerKindDemo)
         {
-            ftRenderLightsDrawReflect(gDisplayListHead, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
+            ftDisplayLightsDrawReflect(gDisplayListHead, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
         }
-        else ftRenderLightsDrawReflect(gDisplayListHead, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
+        else ftDisplayLightsDrawReflect(gDisplayListHead, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 
         if (fp->display_mode == nDBDisplayModeMapCollision)
         {
@@ -1332,13 +1332,13 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
     {
         if (gOMObjCurrentCapture->gobj_id == nOMObjCommonKindMainCamera)
         {
-            ftRenderMainDrawParts(DObjGetStruct(fighter_gobj));
+            ftDisplayMainDrawParts(DObjGetStruct(fighter_gobj));
         }
         else
         {
             fp->joints[nFTPartsJointTopN]->ommtx[0]->kind = nOMTransformRotRpyR;
 
-            ftRenderMainDrawParts(DObjGetStruct(fighter_gobj));
+            ftDisplayMainDrawParts(DObjGetStruct(fighter_gobj));
 
             fp->joints[nFTPartsJointTopN]->ommtx[0]->kind = 0x4B;
         }
@@ -1412,7 +1412,7 @@ void ftRenderMainProcRender(GObj *fighter_gobj)
         {
             if (!(fp->is_magnify_hide) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
             {
-                ifCommonPlayerMagnifyProcRender(fp);
+                ifCommonPlayerMagnifyProcDraw(fp);
             }
         }
     }

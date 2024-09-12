@@ -6,10 +6,10 @@
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t lEFCommonParticleBankHeaderLo;                  // 0x00AC7340
-extern intptr_t lEFCommonParticleBankHeaderHi;                  // 0x00AC9DE0
-extern intptr_t lEFCommonParticleBankTextureLo;                 // 0x00AC9DE0
-extern intptr_t lEFCommonParticleBankTextureHi;                 // 0x00B16C80
+extern uintptr_t lEFCommonParticleBankHeaderLo;                 // 0x00AC7340
+extern uintptr_t lEFCommonParticleBankHeaderHi;                 // 0x00AC9DE0
+extern uintptr_t lEFCommonParticleBankTextureLo;                // 0x00AC9DE0
+extern uintptr_t lEFCommonParticleBankTextureHi;                // 0x00B16C80
 
 // // // // // // // // // // // //
 //                               //
@@ -18,7 +18,7 @@ extern intptr_t lEFCommonParticleBankTextureHi;                 // 0x00B16C80
 // // // // // // // // // // // //
 
 // 0x800FCCC0
-void efRenderProcRenderBlendCLD(GObj *effect_gobj)
+void efDisplayProcDrawBlendCLD(GObj *effect_gobj)
 {
     gDPPipeSync(gDisplayListHead[1]++);
 
@@ -32,7 +32,7 @@ void efRenderProcRenderBlendCLD(GObj *effect_gobj)
 }
 
 // 0x800FCD64
-void efRenderProcRenderXLU(GObj *effect_gobj)
+void efDisplayProcDrawXLU(GObj *effect_gobj)
 {
     gDPPipeSync(gDisplayListHead[1]++);
 
@@ -44,21 +44,21 @@ void efRenderProcRenderXLU(GObj *effect_gobj)
 }
 
 // 0x800FCDEC
-void efRenderMakeBlendCLD(void)
+void efDisplayMakeBlendCLD(void)
 {
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efRenderProcRenderBlendCLD, 15, 3, -1);
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efRenderProcRenderBlendCLD, 18, 3, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayProcDrawBlendCLD, 15, 3, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayProcDrawBlendCLD, 18, 3, -1);
 }
 
 // 0x800FCE6C
-void efRenderMakeXLU(void)
+void efDisplayMakeXLU(void)
 {
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efRenderProcRenderXLU, 15, 0, -1);
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efRenderProcRenderXLU, 18, 0, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayProcDrawXLU, 15, 0, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayProcDrawXLU, 18, 0, -1);
 }
 
 // 0x800FCEEC
-void efRenderProcRenderZPerspXLU(GObj *effect_gobj)
+void efDisplayProcDrawZPerspXLU(GObj *effect_gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
 
@@ -76,7 +76,7 @@ void efRenderProcRenderZPerspXLU(GObj *effect_gobj)
 }
 
 // 0x800FCFCC
-void efRenderProcRenderZPerspCLD(GObj *effect_gobj)
+void efDisplayProcDrawZPerspCLD(GObj *effect_gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
 
@@ -94,7 +94,7 @@ void efRenderProcRenderZPerspCLD(GObj *effect_gobj)
 }
 
 // 0x800FD0AC
-void efRenderProcRenderZPerspAAXLU(GObj *effect_gobj)
+void efDisplayProcDrawZPerspAAXLU(GObj *effect_gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
 
@@ -112,25 +112,31 @@ void efRenderProcRenderZPerspAAXLU(GObj *effect_gobj)
 }
 
 // 0x800FD18C
-void efRenderInitAll(void)
+void efDisplayInitAll(void)
 {
     GObj *gobj;
 
     gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, efRenderProcRenderZPerspCLD, 18, 1, -1);
-    gobj->unk_gobj_0x30 = 5;
+    gcAddGObjDisplay(gobj, efDisplayProcDrawZPerspCLD, 18, 1, GOBJ_CAMTAG_DEFAULT);
+    gobj->cam_mask = (CAMERA_MASK_DLLINK(2) | CAMERA_MASK_DLLINK(0));
 
     gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, efRenderProcRenderZPerspCLD, 15, 1, -1);
-    gobj->unk_gobj_0x30 = 2;
+    gcAddGObjDisplay(gobj, efDisplayProcDrawZPerspCLD, 15, 1, GOBJ_CAMTAG_DEFAULT);
+    gobj->cam_mask = CAMERA_MASK_DLLINK(1);
 
     gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, efRenderProcRenderZPerspXLU, 25, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gobj->unk_gobj_0x30 = 8;
+    gcAddGObjDisplay(gobj, efDisplayProcDrawZPerspXLU, 25, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gobj->cam_mask = CAMERA_MASK_DLLINK(3);
 
     gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, efRenderProcRenderZPerspAAXLU, 10, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gobj->unk_gobj_0x30 = 16;
+    gcAddGObjDisplay(gobj, efDisplayProcDrawZPerspAAXLU, 10, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gobj->cam_mask = CAMERA_MASK_DLLINK(4);
 
-    gEFManagerParticleBankID = efAllocGetAddParticleBankID(&lEFCommonParticleBankHeaderLo, &lEFCommonParticleBankHeaderHi, &lEFCommonParticleBankTextureLo, &lEFCommonParticleBankTextureHi);
+    gEFManagerParticleBankID = efAllocGetAddParticleBankID
+    (
+        &lEFCommonParticleBankHeaderLo,
+        &lEFCommonParticleBankHeaderHi,
+        &lEFCommonParticleBankTextureLo,
+        &lEFCommonParticleBankTextureHi
+    );
 }

@@ -36,12 +36,12 @@ extern intptr_t lSC1PGameBossAnims3AnimJoint1;              // 0x000128E0
 extern void func_ovl65_801910B0(void);
 extern void sc1PGameBossSetChangeWallpaper(void);
 extern void sc1PGameBossMakeCamera(void);
-extern void sc1PGameBossWallpaper0ProcRender(GObj *gobj);
-extern void sc1PGameBossWallpaper1ProcRender(GObj *gobj);
-extern void sc1PGameBossWallpaper2ProcRender(GObj *gobj);
-extern void sc1PGameBossWallpaper3ProcRender0(GObj *gobj);
-extern void sc1PGameBossProcRenderFadeAlpha(GObj *gobj);
-extern void sc1PGameBossProcRenderFadeColor(GObj *gobj);
+extern void sc1PGameBossWallpaper0ProcDraw(GObj *gobj);
+extern void sc1PGameBossWallpaper1ProcDraw(GObj *gobj);
+extern void sc1PGameBossWallpaper2ProcDraw(GObj *gobj);
+extern void sc1PGameBossWallpaper3ProcDraw0(GObj *gobj);
+extern void sc1PGameBossProcDrawFadeAlpha(GObj *gobj);
+extern void sc1PGameBossProcDrawFadeColor(GObj *gobj);
 extern void sc1PGameBossUpdateWallpaperColorID(void);
 extern void sc1PGameBossWallpaper3ProcUpdate0(GObj *gobj);
 extern void func_ovl65_80191B44(GObj *gobj);

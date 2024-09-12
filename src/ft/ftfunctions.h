@@ -7,8 +7,8 @@
 #include "ftphysics.h"
 #include "ftparam.h"
 #include "ftanim.h"
-#include "ftrendermain.h"
-#include "ftrenderlights.h"
+#include "ftdisplaymain.h"
+#include "ftdisplaylights.h"
 #include "fthammer.h"
 
 #include "ftshadow.h"

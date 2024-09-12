@@ -459,15 +459,15 @@ segments:
     # General collision and position calculation
       - [0x068580, c, gm/gmcollision]
     # Fighter main renderer
-      - [0x06C820, c, ft/ftrendermain]
+      - [0x06C820, c, ft/ftdisplaymain]
     # Hammer stuff for fighters
       - [0x06EEE0, c, ft/fthammer]
     # Calculate map collisions and handle stage data
       - [0x06F1F0, c, mp/mpcollision]
     # Fighter lights renderer?
-      - [0x078370, c, ft/ftrenderlights]
+      - [0x078370, c, ft/ftdisplaylights]
     # Effect renderer
-      - [0x0784C0, c, ef/efrender]
+      - [0x0784C0, c, ef/efdisplay]
     # Effect manager and common effects
       - [0x078B00, c, ef/efmanager]
     # Stage background image setup
@@ -521,7 +521,7 @@ segments:
     # Model animation parser
       - [0x0A7110, .data, ft/ftanim]
     # Fighter main renderer
-      - [0x0A7130, .data, ft/ftrendermain]
+      - [0x0A7130, .data, ft/ftdisplaymain]
     # Calculate map collisions and handle stage data
       - [0x0A7CE0, .data, mp/mpcollision]
     # Common fighter data
@@ -568,11 +568,11 @@ segments:
     # General collision and position calculation
       - [0x0AB980, .rodata, gm/gmcollision]
     # Fighter main renderer
-      - [0x0ABA60, .rodata, ft/ftrendermain]
+      - [0x0ABA60, .rodata, ft/ftdisplaymain]
     # Calculate map collisions and handle stage data
       - [0x0ABA70, .rodata, mp/mpcollision]
     # Fighter lights renderer?
-      - [0x0AC110, .rodata, ft/ftrenderlights]
+      - [0x0AC110, .rodata, ft/ftdisplaylights]
     # Effect manager and common effects
       - [0x0AC120, .rodata, ef/efmanager]
     # Stage background image setup
@@ -629,7 +629,7 @@ segments:
       - { start: auto, type: .bss, name: ft/ftchar/ftnness/ftnness, vram: 0x80131150 }
       - { start: auto, type: .bss, name: ft/ftchar/ftboss/ftboss, vram: 0x80131170 }
       - { start: auto, type: .bss, name: ft/ftmain, vram: 0x80131180 }
-      - { start: auto, type: .bss, name: ft/ftrendermain, vram: 0x801312F0 }
+      - { start: auto, type: .bss, name: ft/ftdisplaymain, vram: 0x801312F0 }
       - { start: auto, type: .bss, name: mp/mpcollision, vram: 0x80131300 }
       - { start: auto, type: .bss, name: ef/efmanager, vram: 0x801313B0 }
       - { start: auto, type: .bss, name: gr/grwallpaper, vram: 0x801313D0 }
@@ -831,7 +831,7 @@ segments:
     # Weapon handler files
       - [0x0DFEF0, c, wp/wpmanager]
       - [0x0E0910, c, wp/wpprocess]
-      - [0x0E18C0, c, wp/wprender]
+      - [0x0E18C0, c, wp/wpdisplay]
       - [0x0E22C0, c, wp/wpmap]
       - [0x0E28F0, c, wp/wpmain]
     # Weapon entity files
@@ -854,7 +854,7 @@ segments:
       - [0x0E88E0, c, it/itmanager]
       - [0x0E9CC0, c, it/itprocess]
       - [0x0EBDF0, c, it/itvisuals]
-      - [0x0EBE50, c, it/itrender]
+      - [0x0EBE50, c, it/itdisplay]
       - [0x0ECD50, c, it/itmain]
       - [0x0EDEC0, c, it/itmap]
     # Item entity files
@@ -931,7 +931,7 @@ segments:
       - [0x103800, .data, ft/ftchar/ftboss/ftbosswait]
       - [0x103840, .data, ft/ftchar/ftkirby/ftkirbyspecialn]
     # Weapon handler files
-      - [0x103850, .data, wp/wprender]
+      - [0x103850, .data, wp/wpdisplay]
     # Weapon entity files
       - [0x103870, .data, wp/wpmario/wpmariofireball]
       - [0x103910, .data, wp/wpfox/wpfoxblaster]

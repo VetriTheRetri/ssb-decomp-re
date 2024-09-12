@@ -57,7 +57,7 @@ struct sc1PGameBossPlan
 {
     s32 unk_sc1pbossplan_0x0;
     u8 dl_link;
-    s32 unk_sc1pbossplan_0x8;
+    u32 cam_tag;
     Vec3f pos;
 };
 
@@ -71,7 +71,7 @@ struct sc1PGameBossAnim
 struct sc1PGameBossEffect
 {
     void (*proc_update)(GObj*);
-    void (*proc_render)(GObj*);
+    void (*proc_draw)(GObj*);
     intptr_t o_dobj_desc;
     intptr_t o_mobjsub;
 };

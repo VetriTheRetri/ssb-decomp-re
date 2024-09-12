@@ -78,7 +78,7 @@ Lights1 dMVOpeningClashLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0
 void mvOpeningClashProcLights(Gfx **dls)
 {
     gSPSetGeometryMode(dls[0]++, G_LIGHTING);
-    ftRenderLightsDrawReflect(dls, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
+    ftDisplayLightsDrawReflect(dls, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 }
 
 // 0x80131B58 - Unused?
@@ -129,7 +129,7 @@ void mvOpeningClashMakeFighters(void)
 }
 
 // 0x80131CCC
-void mvOpeningClashVoidProcRender(GObj *gobj)
+void mvOpeningClashVoidProcDraw(GObj *gobj)
 {
     if (sMVOpeningClashVoidAlpha < 0xFF)
     {
@@ -163,10 +163,10 @@ void mvOpeningClashMakeVoid(void)
             18,
             GOBJ_LINKORDER_DEFAULT
         ),
-        mvOpeningClashVoidProcRender,
+        mvOpeningClashVoidProcDraw,
         26,
         GOBJ_DLLINKORDER_DEFAULT,
-        -1
+        GOBJ_CAMTAG_DEFAULT
     );
 }
 
@@ -175,7 +175,7 @@ void mvOpeningClashMakeWallpaper(void)
 {
     // lower left quadrant
     GObj* gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
     gcAddOMMtxForDObjFixed(gcAddDObjForGObj(gobj, gcGetDataFromFile(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLDisplayList)), 0x1C, 0);
     gcAddMObjAll(gobj, gcGetDataFromFile(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLMObjSub));
     gcAddMatAnimJointAll(gobj, gcGetDataFromFile(AObjEvent***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLMatAnimJoint), 0.0F);
@@ -189,7 +189,7 @@ void mvOpeningClashMakeWallpaper(void)
 
     // lower right quadrant
     gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
     gcAddOMMtxForDObjFixed(gcAddDObjForGObj(gobj, gcGetDataFromFile(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRDisplayList)), 0x1C, 0);
     gcAddMObjAll(gobj, gcGetDataFromFile(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRMObjSub));
     gcAddMatAnimJointAll(gobj, gcGetDataFromFile(AObjEvent***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRMatAnimJoint), 0.0F);
@@ -203,7 +203,7 @@ void mvOpeningClashMakeWallpaper(void)
 
     // upper left quadrant
     gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
     gcAddOMMtxForDObjFixed(gcAddDObjForGObj(gobj, gcGetDataFromFile(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULDisplayList)), 0x1C, 0);
     gcAddMObjAll(gobj, gcGetDataFromFile(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULMObjSub));
     gcAddMatAnimJointAll(gobj, gcGetDataFromFile(AObjEvent***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULMatAnimJoint), 0.0F);
@@ -217,7 +217,7 @@ void mvOpeningClashMakeWallpaper(void)
 
     // upper right quadrant
     gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
     gcAddOMMtxForDObjFixed(gcAddDObjForGObj(gobj, gcGetDataFromFile(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURDisplayList)), 0x1C, 0);
     gcAddMObjAll(gobj, gcGetDataFromFile(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURMObjSub));
     gcAddMatAnimJointAll(gobj, gcGetDataFromFile(AObjEvent***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURMatAnimJoint), 0.0F);
@@ -291,7 +291,7 @@ void mvOpeningClashMakeVoidViewport(void)
 }
 
 // 0x801323C8
-void mvOpeningClashWallpaperProcRender(GObj *gobj)
+void mvOpeningClashWallpaperProcDraw(GObj *gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
@@ -311,7 +311,7 @@ void mvOpeningClashMakeWallpaperViewport(void)
         NULL,
         16,
         GOBJ_LINKORDER_DEFAULT,
-        mvOpeningClashWallpaperProcRender,
+        mvOpeningClashWallpaperProcDraw,
         90,
         CAMERA_MASK_DLLINK(29),
         -1,

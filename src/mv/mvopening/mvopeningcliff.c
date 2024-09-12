@@ -123,11 +123,11 @@ scRuntimeInfo dMVOpeningCliffGtlSetup =
 void mvOpeningCliffProcLights(Gfx **dls)
 {
     gSPSetGeometryMode(dls[0]++, G_LIGHTING);
-    ftRenderLightsDrawReflect(dls, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
+    ftDisplayLightsDrawReflect(dls, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 }
 
 // 0x80131B58
-void mvOpeningCliffHillsProcRender(GObj *hills_gobj)
+void mvOpeningCliffHillsProcDraw(GObj *hills_gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
@@ -155,7 +155,7 @@ void mvOpeningCliffMakeHills(void)
         ),
         NULL
     );
-    gcAddGObjDisplay(hills_gobj, mvOpeningCliffHillsProcRender, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(hills_gobj, mvOpeningCliffHillsProcDraw, 26, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 }
 
 // 0x80131CA4 - Unused?
@@ -189,7 +189,7 @@ void mvOpeningCliffMakeFighter(void)
 }
 
 // 0x80131D8C
-void mvOpeningCliffWallpaperProcRender(GObj *gobj)
+void mvOpeningCliffWallpaperProcDraw(GObj *gobj)
 {
     SObj *sobj = SObjGetStruct(gobj);
 
@@ -247,8 +247,8 @@ void mvOpeningCliffMakeWallpaper(void)
     SObj *wallpaper_sobj;
 
     wallpaper_gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjProcess(wallpaper_gobj, mvOpeningCliffWallpaperProcRender, nOMObjProcessKindProc, 1);
+    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjProcess(wallpaper_gobj, mvOpeningCliffWallpaperProcDraw, nOMObjProcessKindProc, 1);
 
     wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, gcGetDataFromFile(Sprite*, sMVOpeningCliffFiles[1], &lMVOpeningCliffWallpaperSprite));
     wallpaper_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -289,7 +289,7 @@ void mvOpeningCliffMakeOcarina(void)
         nOMTransformNull,
         nOMTransformNull
     );
-    gcAddGObjDisplay(ocarina_gobj, gcDrawDObjTreeForGObj, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(ocarina_gobj, gcDrawDObjTreeForGObj, 26, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
     DObjGetStruct(ocarina_gobj)->scale.vec.f.x = DObjGetStruct(sMVOpeningCliffFighterGObj)->scale.vec.f.x;
     DObjGetStruct(ocarina_gobj)->scale.vec.f.y = DObjGetStruct(sMVOpeningCliffFighterGObj)->scale.vec.f.y;

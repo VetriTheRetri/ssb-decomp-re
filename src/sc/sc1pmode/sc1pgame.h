@@ -72,7 +72,7 @@ extern void sc1PGameWaitStageBonus3Update(void);
 extern void sc1PGameWaitStageBossUpdate(void);
 extern void sc1PGameWaitThreadUpdate(GObj *gobj);
 extern void sc1PGameSetGameStatusWait(void);
-extern void sc1PGameTeamStockDisplayProcRender(GObj *interface_gobj);
+extern void sc1PGameTeamStockDisplayProcDraw(GObj *interface_gobj);
 extern void sc1PGameInitTeamStockDisplay(void);
 extern void sc1PGameSetPlayerDefeatStats(s32 player, s32 team_order);
 extern void sc1PGameTryInitPlayerArrows(void);

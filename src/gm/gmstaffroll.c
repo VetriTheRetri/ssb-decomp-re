@@ -832,7 +832,7 @@ void func_ovl59_8013202C(GObj *arg0)
 	if (gobj == NULL)
 	{
 		gobj = gcMakeGObjSPAfter(8, NULL, nOMObjCommonLinkID02, GOBJ_LINKORDER_DEFAULT);
-		gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 3, GOBJ_DLLINKORDER_DEFAULT, -1);
+		gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 3, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 		gcSetupCustomDObjs(gobj, sGMStaffrollDObjDesc, NULL, nOMTransformTraRotRpyRSca, nOMTransformNull, nOMTransformNull);
 		gcAddGObjProcess(gobj, func_ovl59_80131F34, nOMObjProcessKindProc, 1);
 
@@ -879,7 +879,7 @@ s32 gmStaffrollGetLockOnPositionY(s32 posy)
 }
 
 // 0x80132144
-void gmStaffrollHighlightProcRender(GObj *gobj)
+void gmStaffrollHighlightProcDraw(GObj *gobj)
 {
 	s32 unused;
 
@@ -951,7 +951,7 @@ void gmStaffrollMakeHighlightGObj(GObj *gobj)
 	{
 		highlight_gobj = gcMakeGObjSPAfter(9, NULL, 9, GOBJ_LINKORDER_DEFAULT);
 
-		gcAddGObjDisplay(highlight_gobj, gmStaffrollHighlightProcRender, 8, GOBJ_DLLINKORDER_DEFAULT, -1);
+		gcAddGObjDisplay(highlight_gobj, gmStaffrollHighlightProcDraw, 8, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 		gcAddGObjProcess(highlight_gobj, gmStaffrollHighlightThreadUpdate, nOMObjProcessKindThread, 1);
 
 		sGMStaffrollHighlightPositionX = sobj->pos.x + 8.0F;
@@ -1230,7 +1230,7 @@ void gmStaffrollMakeStaffRoleTextGObj(GObj *staff_gobj)
 	}
 	text_gobj = gcMakeGObjSPAfter(6, NULL, 10, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(text_gobj, lbCommonDrawSObjAttr, 5, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(text_gobj, lbCommonDrawSObjAttr, 5, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
 	sGMStaffrollStaffRoleTextGObj = text_gobj;
 
@@ -1334,7 +1334,7 @@ void gmStaffrollMakeCompanyTextGObj(GObj *staff_gobj)
 	}
 	text_gobj = gcMakeGObjSPAfter(7, NULL, 0xB, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(text_gobj, lbCommonDrawSObjAttr, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(text_gobj, lbCommonDrawSObjAttr, 6, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
 	sGMStaffrollCompanyTextGObj = text_gobj;
 
@@ -1573,7 +1573,7 @@ void gmStaffrollJobAndNameThreadUpdate(GObj *gobj)
 }
 
 // 0x80133854
-void gmStaffrollJobProcRender(GObj *gobj)
+void gmStaffrollJobProcDraw(GObj *gobj)
 {
 	if (gobj == gOMObjCommonLinks[nOMObjCommonLinkIDCreditsJob])
 	{
@@ -1587,7 +1587,7 @@ void gmStaffrollJobProcRender(GObj *gobj)
 }
 
 // 0x80133930
-void gmStaffrollNameProcRender(GObj *gobj)
+void gmStaffrollNameProcDraw(GObj *gobj)
 {
 	if (gobj == gOMObjCommonLinks[nOMObjCommonLinkIDCreditsName])
 	{
@@ -1767,7 +1767,7 @@ GObj* gmStaffrollMakeJobGObj(gmStaffrollJob *job)
 
 	gobj = gcMakeGObjSPAfter(1, NULL, nOMObjCommonLinkIDCreditsJob, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(gobj, gmStaffrollJobProcRender, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, gmStaffrollJobProcDraw, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
 	dobj = gcAddDObjForGObj(gobj, NULL);
 
@@ -1804,7 +1804,7 @@ GObj* gmStaffrollMakeNameGObjAndDObjs(void)
 
 	gobj = gcMakeGObjSPAfter(1, NULL, nOMObjCommonLinkIDCreditsName, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(gobj, gmStaffrollNameProcRender, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, gmStaffrollNameProcDraw, 1, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
 	new_dobj = dobj = gcAddDObjForGObj(gobj, NULL);
 
@@ -1988,7 +1988,7 @@ void gmStaffrollMakeCrosshairGObj(void)
 	SObj *sobj;
 
 	gobj = gcMakeGObjSPAfter(3, NULL, 6, GOBJ_LINKORDER_DEFAULT);
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 4, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 4, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 	gcAddGObjProcess(gobj, gmStaffrollCrosshairThreadUpdate, nOMObjProcessKindThread, 1);
 
 	sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sGMStaffrollFiles[0], &lGMStaffrollCrosshairSprite));
@@ -2014,13 +2014,13 @@ void gmStaffrollMakeTextBoxBracketSObjs(void)
 
 	gobj = gcMakeGObjSPAfter(3, NULL, 8, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 7, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 7, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
 	left_sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sGMStaffrollFiles[0], &lGMStaffrollTextBoxBracketLeftSprite));
 
 	gobj = gcMakeGObjSPAfter(3, NULL, 8, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 7, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 7, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
 	right_sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sGMStaffrollFiles[0], &lGMStaffrollTextBoxBracketRightSprite));
 
@@ -2044,7 +2044,7 @@ void gmStaffrollMakeTextBoxGObj(void)
 {
 	GObj *gobj = gcMakeGObjSPAfter(4, NULL, 7, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 9, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 9, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 	gcAddDObjForGObj(gobj, dGMStaffrollTextBoxDisplayList);
 }
 

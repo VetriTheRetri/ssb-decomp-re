@@ -580,7 +580,7 @@ struct ftCreateDesc
     u16 button_mask_z;
     u16 button_mask_l;
     void *anim_heap;                // Pointer to animation bank?
-    void *proc_render;
+    void *proc_draw;
 };
 
 struct ftHitMatrix

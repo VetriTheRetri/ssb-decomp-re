@@ -703,7 +703,7 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
 
     fighter_gobj = gcMakeGObjSPAfter(nOMObjCommonKindFighter, NULL, nOMObjCommonLinkIDFighter, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(fighter_gobj, ft_desc->proc_render, FTRENDER_DLLINK_DEFAULT, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(fighter_gobj, ft_desc->proc_draw, FTRENDER_DLLINK_DEFAULT, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
     fp = ftManagerGetNextStructAlloc();
 

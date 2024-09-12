@@ -28,6 +28,8 @@
 #define GOBJ_LINKORDER_DEFAULT      0x80000000
 #define GOBJ_DLLINKORDER_DEFAULT    0x80000000
 
+#define GOBJ_CAMTAG_DEFAULT         0xFFFFFFFF
+
 // DObj defines
 #define DOBJ_PARENT_NULL        ((DObj*)1)
 
@@ -175,16 +177,16 @@ struct GObj
     GObj *dl_link_next;
     GObj *dl_link_prev;
     u32 dl_link_order;
-    void (*proc_render)(GObj*);
-    u64 unk_gobj_0x30;
-    s32 unk_gobj_0x38;                  // 0xFFFFFFFF, textures or series of flags?
+    void (*proc_draw)(GObj*);
+    u64 cam_mask;
+    u32 cam_tag;                        // 0xFFFFFFFF, textures or series of flags?
     u64 unk_gobj_0x40;
     GObjLink gobjlinks[5];
-    s32 gobjlinks_num;                   // Length/number of active members of gobjlinks
+    s32 gobjlinks_num;                  // Length/number of active members of gobjlinks
     void *obj;                          // Can be: NULL, DObj, SObj or Camera
     f32 anim_frame;                     // Current frame of animation?
     u32 flags;                          // GObj logic flags (e.g. 0x1 = skip rendering)
-    void(*proc_anim)(DObj*, s32, f32);   // DObj animation renderer?
+    void(*proc_anim)(DObj*, s32, f32);  // DObj animation renderer?
     OMUserData user_data;
 };
 

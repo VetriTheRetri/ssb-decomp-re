@@ -13,7 +13,7 @@ extern mlRegion gSYGtlGraphicsHeap;
 // // // // // // // // // // // //
 
 // 0x80171410
-void itRenderHitCollisions(GObj *item_gobj)
+void itDisplayHitCollisions(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     s32 i;
@@ -120,7 +120,7 @@ void itRenderHitCollisions(GObj *item_gobj)
 }
 
 // 0x801719AC
-void itRenderMapCollisions(GObj *item_gobj)
+void itDisplayMapCollisions(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     Vec3f *translate = &DObjGetStruct(item_gobj)->translate.vec.f;
@@ -159,7 +159,7 @@ void itRenderMapCollisions(GObj *item_gobj)
 }
 
 // 0x80171C10
-sb32 itRenderCheckItemVisible(itStruct *ip)
+sb32 itDisplayCheckItemVisible(itStruct *ip)
 {
     ftStruct *fp;
 
@@ -186,11 +186,11 @@ sb32 itRenderCheckItemVisible(itStruct *ip)
 }
 
 // 0x80171C7C
-void itRenderProcRenderOPA(GObj *item_gobj)
+void itDisplayProcDrawOPA(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (itRenderCheckItemVisible(ip) != FALSE)
+    if (itDisplayCheckItemVisible(ip) != FALSE)
     {
         if ((ip->display_mode == nDBDisplayModeMaster) || (ip->is_hold))
         {
@@ -199,22 +199,22 @@ void itRenderProcRenderOPA(GObj *item_gobj)
         else if (ip->display_mode == nDBDisplayModeMapCollision)
         {
             gcDrawDObjTreeForGObj(item_gobj);
-            itRenderMapCollisions(item_gobj);
+            itDisplayMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
             gcDrawDObjTreeForGObj(item_gobj);
         }
-        else itRenderHitCollisions(item_gobj);
+        else itDisplayHitCollisions(item_gobj);
     }
 }
 
 // 0x80171D38
-void itRenderProcRenderXLU(GObj *item_gobj)
+void itDisplayProcDrawXLU(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (itRenderCheckItemVisible(ip) != FALSE)
+    if (itDisplayCheckItemVisible(ip) != FALSE)
     {
         if ((ip->display_mode == nDBDisplayModeMaster) || (ip->is_hold))
         {
@@ -223,18 +223,18 @@ void itRenderProcRenderXLU(GObj *item_gobj)
         else if (ip->display_mode == nDBDisplayModeMapCollision)
         {
             gcDrawDObjTreeDLLinksForGObj(item_gobj);
-            itRenderMapCollisions(item_gobj);
+            itDisplayMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
             gcDrawDObjTreeDLLinksForGObj(item_gobj);
         }
-        else itRenderHitCollisions(item_gobj);
+        else itDisplayHitCollisions(item_gobj);
     }
 }
 
 // 0x80171DF4
-void itRenderColAnimOPA(GObj *item_gobj)
+void itDisplayColAnimOPA(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -256,31 +256,31 @@ void itRenderColAnimOPA(GObj *item_gobj)
 }
 
 // 0x80171F4C
-void itRenderProcRenderColAnimOPA(GObj *item_gobj)
+void itDisplayProcDrawColAnimOPA(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (itRenderCheckItemVisible(ip) != FALSE)
+    if (itDisplayCheckItemVisible(ip) != FALSE)
     {
         if ((ip->display_mode == nDBDisplayModeMaster) || (ip->is_hold))
         {
-            itRenderColAnimOPA(item_gobj);
+            itDisplayColAnimOPA(item_gobj);
         }
         else if (ip->display_mode == nDBDisplayModeMapCollision)
         {
-            itRenderColAnimOPA(item_gobj);
-            itRenderMapCollisions(item_gobj);
+            itDisplayColAnimOPA(item_gobj);
+            itDisplayMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
-            itRenderColAnimOPA(item_gobj);
+            itDisplayColAnimOPA(item_gobj);
         }
-        else itRenderHitCollisions(item_gobj);
+        else itDisplayHitCollisions(item_gobj);
     }
 }
 
 // 0x80172008
-void itRenderColAnimXLU(GObj *item_gobj)
+void itDisplayColAnimXLU(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -312,25 +312,25 @@ void itRenderColAnimXLU(GObj *item_gobj)
 }
 
 // 0x8017224C
-void itRenderProcRenderColAnimXLU(GObj *item_gobj)
+void itDisplayProcDrawColAnimXLU(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (itRenderCheckItemVisible(ip) != FALSE)
+    if (itDisplayCheckItemVisible(ip) != FALSE)
     {
         if ((ip->display_mode == nDBDisplayModeMaster) || (ip->is_hold))
         {
-            itRenderColAnimXLU(item_gobj);
+            itDisplayColAnimXLU(item_gobj);
         }
         else if (ip->display_mode == nDBDisplayModeMapCollision)
         {
-            itRenderColAnimXLU(item_gobj);
-            itRenderMapCollisions(item_gobj);
+            itDisplayColAnimXLU(item_gobj);
+            itDisplayMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
-            itRenderColAnimXLU(item_gobj);
+            itDisplayColAnimXLU(item_gobj);
         }
-        else itRenderHitCollisions(item_gobj);
+        else itDisplayHitCollisions(item_gobj);
     }
 }

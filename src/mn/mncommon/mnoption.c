@@ -249,7 +249,7 @@ void mnOptionMakeSoundOptionSObjs(void)
     SObj *sobj;
 
     sMNOptionSoundOptionGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
     sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionMonoTextSprite));
 
@@ -289,7 +289,7 @@ void mnOptionMakeSoundTextSObj(void)
     SObj *sobj;
 
     sMNOptionSoundGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
     mnOptionMakeOptionTabSObjs(gobj, 113.0F, 42.0F, 17);
     mnOptionUpdateOptionTabSObjs(gobj, sMNOptionOption == nMNOptionOptionSound);
@@ -315,7 +315,7 @@ void mnOptionMakeScreenAdjustSObj(void)
 
     sMNOptionScreenAdjustGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
     mnOptionMakeOptionTabSObjs(gobj, 91.0F, 89.0F, 17);
 
@@ -342,7 +342,7 @@ void mnOptionMakeBackupClearSObj(void)
 
     sMNOptionBackupClearGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
     mnOptionMakeOptionTabSObjs(gobj, 69.0F, 136.0F, 17);
     mnOptionUpdateOptionTabSObjs(gobj, sMNOptionOption == nMNOptionOptionBackupClear);
 
@@ -395,7 +395,7 @@ void mnOptionMakeMenuGObj(void)
 }
 
 // 0x80132248
-void mnOptionHeaderProcRender(GObj *gobj)
+void mnOptionHeaderProcDraw(GObj *gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
@@ -419,7 +419,7 @@ void mnOptionMakeHeaderSObjs(void)
 
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, mnOptionHeaderProcRender, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, mnOptionHeaderProcDraw, 1, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
     sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonSmashLogoSprite));
 
@@ -453,7 +453,7 @@ void mnOptionMakeDecalSObjs(void)
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
     sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonCircleSprite));
 
@@ -540,7 +540,7 @@ void func_ovl60_801327CC(void)
 }
 
 // 0x801327D4
-void mnOptionSoundUnderlineProcRender(GObj *gobj)
+void mnOptionSoundUnderlineProcDraw(GObj *gobj)
 {
     // 0x801336AC
     syRectangle rect[/* */] =
@@ -590,10 +590,10 @@ void mnOptionMakeSoundUnderlineGObj(void)
             5,
             GOBJ_LINKORDER_DEFAULT
         ),
-        mnOptionSoundUnderlineProcRender,
+        mnOptionSoundUnderlineProcDraw,
         3,
         GOBJ_DLLINKORDER_DEFAULT,
-        -1
+        GOBJ_CAMTAG_DEFAULT
     );
 }
 

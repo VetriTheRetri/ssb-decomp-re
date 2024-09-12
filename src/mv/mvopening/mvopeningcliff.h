@@ -13,10 +13,10 @@ extern intptr_t lMVOpeningCliffCamAnimJoint;        // 0x00008910
 extern intptr_t lMVOpeningCliffWallpaperSprite;     // 0x0000B500
 
 extern void mvOpeningCliffProcLights(Gfx **dls);
-extern void mvOpeningCliffHillsProcRender(GObj *hills_gobj);
+extern void mvOpeningCliffHillsProcDraw(GObj *hills_gobj);
 extern void mvOpeningCliffMakeHills(void);
 extern void mvOpeningCliffMakeFighter(void);
-extern void mvOpeningCliffWallpaperProcRender(GObj *gobj);
+extern void mvOpeningCliffWallpaperProcDraw(GObj *gobj);
 extern void mvOpeningCliffMakeWallpaper(void);
 extern void mvOpeningCliffMakeOcarina(void);
 extern void mvOpeningCliffCameraProcUpdate(GObj *gobj);

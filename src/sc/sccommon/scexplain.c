@@ -339,7 +339,7 @@ GObj* func_ovl63_8018D500(void)
 }
 
 // 0x8018D5FC
-void scExplainControlStickProcRender(GObj *gobj)
+void scExplainControlStickProcDraw(GObj *gobj)
 {
     gDPPipeSync(gDisplayListHead[1]++);
     gSPClearGeometryMode(gDisplayListHead[1]++, G_ZBUFFER);
@@ -376,7 +376,7 @@ GObj* scExplainMakeControlStickInterface(void)
         nOMObjCommonLinkIDInterface,
         GOBJ_LINKORDER_DEFAULT
     );
-    gcAddGObjDisplay(interface_gobj, scExplainControlStickProcRender, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, scExplainControlStickProcDraw, 27, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
     gcSetupCustomDObjs
     (
         interface_gobj, 
@@ -404,7 +404,7 @@ GObj* scExplainMakeControlStickInterface(void)
 }
 
 // 0x8018D808
-void scExplainTapSparkProcRender(GObj *gobj)
+void scExplainTapSparkProcDraw(GObj *gobj)
 {
     gDPPipeSync(gDisplayListHead[1]++);
     gSPClearGeometryMode(gDisplayListHead[1]++, G_ZBUFFER);
@@ -456,7 +456,7 @@ GObj* scExplainMakeTapSpark(void)
 {
     GObj *interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, scExplainTapSparkProcRender, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, scExplainTapSparkProcDraw, 27, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
     gcAddDObjForGObj(interface_gobj, (void*) ((uintptr_t)sSCExplainGraphicsFileHead + (intptr_t)&lSCExplainTapSparkDisplayList));
     gcAddOMMtxForDObjFixed(DObjGetStruct(interface_gobj), nOMTransformTra, 0);
     gcAddMObjAll(interface_gobj, gcGetDataFromFile(MObjSub***, sSCExplainGraphicsFileHead, &lSCExplainTapSparkMObjSub));
@@ -499,7 +499,7 @@ GObj* scExplainMakeSpecialMoveRGB(void)
         nOMObjCommonLinkIDInterface,
         GOBJ_LINKORDER_DEFAULT
     );
-    gcAddGObjDisplay(interface_gobj, scExplainTapSparkProcRender, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, scExplainTapSparkProcDraw, 27, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
     gcAddDObjForGObj(interface_gobj, gcGetDataFromFile(void*, sSCExplainGraphicsFileHead, &lSCExplainSpecialMoveRGBDisplayList));
     gcAddOMMtxForDObjFixed(DObjGetStruct(interface_gobj), nOMTransformTra, 0);
 
@@ -529,7 +529,7 @@ SObj* scExplainMakeSObjOffset(intptr_t offset)
         nOMObjCommonLinkIDInterface,
         GOBJ_LINKORDER_DEFAULT
     );
-    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 26, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
     sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, sSCExplainGraphicsFileHead, offset));
 
@@ -839,7 +839,7 @@ void scExplainProcLights(Gfx **dls)
 {
     gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 
-    ftRenderLightsDrawReflect(dls, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
+    ftDisplayLightsDrawReflect(dls, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
 // 0x8018E568

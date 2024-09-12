@@ -6,8 +6,8 @@
 #include <it/itdef.h>
 
 extern void itPippiCommonSelectMonster(GObj *item_gobj);
-extern void itPippiCommonProcRender(GObj *item_gobj);
-extern void itPippiCommonMoveDLProcRender(GObj *item_gobj);
+extern void itPippiCommonProcDraw(GObj *item_gobj);
+extern void itPippiCommonMoveDLProcDraw(GObj *item_gobj);
 extern sb32 itPippiCommonProcUpdate(GObj *item_gobj);
 extern sb32 itPippiCommonProcMap(GObj *item_gobj);
 extern GObj* itPippiMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);

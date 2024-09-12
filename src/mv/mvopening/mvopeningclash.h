@@ -31,12 +31,12 @@ extern intptr_t lMVOpeningClashWallpaperURAnimJoint;            // 0x00004AA0
 
 extern void mvOpeningClashProcLights(Gfx **dls);
 extern void mvOpeningClashMakeFighters(void);
-extern void mvOpeningClashVoidProcRender(GObj *gobj);
+extern void mvOpeningClashVoidProcDraw(GObj *gobj);
 extern void mvOpeningClashMakeVoid(void);
 extern void mvOpeningClashMakeWallpaper(void);
 extern void mvOpeningClashMakeFightersViewport(void);
 extern void mvOpeningClashMakeVoidViewport(void);
-extern void mvOpeningClashWallpaperProcRender(GObj*);
+extern void mvOpeningClashWallpaperProcDraw(GObj*);
 extern void mvOpeningClashMakeWallpaperViewport(void);
 extern void mvOpeningClashInitTotalTimeTics(void);
 extern void mvOpeningClashProcRun(GObj *gobj);

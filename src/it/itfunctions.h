@@ -5,7 +5,7 @@
 #include "itprocess.h"
 #include "itvisuals.h"
 #include "itmain.h"
-#include "itrender.h"
+#include "itdisplay.h"
 #include "itmap.h"
 
 // Common item headers

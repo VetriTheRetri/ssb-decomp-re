@@ -6,7 +6,7 @@
 #include <if/ifdef.h>
 
 extern void ifScreenFlashSetColAnimID(s32 colanim_id, s32 colanim_duration);
-extern void ifScreenFlashProcRender(GObj *gobj);
+extern void ifScreenFlashProcDraw(GObj *gobj);
 extern void ifScreenFlashProcUpdate(GObj *fighter_gobj);
 extern void ifScreenFlashMakeInterface(u8 alpha);
 

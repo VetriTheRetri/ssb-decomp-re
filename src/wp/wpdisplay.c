@@ -25,7 +25,7 @@ syColorRGB dWPRenderPKThunderEnvColors[/* */] = { { 0x3A, 0x00, 0x83 }, { 0x5B, 
 // // // // // // // // // // // //
 
 // 0x80166E80
-void wpRenderHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
+void wpDisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     wpHitbox *weapon_hit = &wp->weapon_hit;
@@ -92,7 +92,7 @@ void wpRenderHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
 }
 
 // 0x801671F0
-void wpRenderMapCollisions(GObj *weapon_gobj) // Render weapon ECB?
+void wpDisplayMapCollisions(GObj *weapon_gobj) // Render weapon ECB?
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f *translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
@@ -135,7 +135,7 @@ void wpRenderMapCollisions(GObj *weapon_gobj) // Render weapon ECB?
 }
 
 // 0x80167454
-void wpRenderDrawNormal(void)
+void wpDisplayDrawNormal(void)
 {
     gDPPipeSync(gDisplayListHead[1]++);
 
@@ -145,7 +145,7 @@ void wpRenderDrawNormal(void)
 }
 
 // 0x801674B8
-void wpRenderDrawZBuffer(void)
+void wpDisplayDrawZBuffer(void)
 {
     gDPPipeSync(gDisplayListHead[1]++);
 
@@ -155,64 +155,64 @@ void wpRenderDrawZBuffer(void)
 }
 
 // 0x80167520
-void wpRenderMain(GObj *weapon_gobj, void(*proc_render)(GObj*))
+void wpDisplayMain(GObj *weapon_gobj, void(*proc_draw)(GObj*))
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
     if (wp->display_mode == nDBDisplayModeMapCollision)
     {
-        wpRenderDrawNormal();
+        wpDisplayDrawNormal();
 
-        proc_render(weapon_gobj);
+        proc_draw(weapon_gobj);
 
-        wpRenderDrawZBuffer();
+        wpDisplayDrawZBuffer();
 
-        wpRenderMapCollisions(weapon_gobj);
+        wpDisplayMapCollisions(weapon_gobj);
     }
     else if ((wp->display_mode == nDBDisplayModeMaster) || (wp->weapon_hit.update_state == nGMHitUpdateDisable))
     {
-        wpRenderDrawNormal();
+        wpDisplayDrawNormal();
 
-        proc_render(weapon_gobj);
+        proc_draw(weapon_gobj);
 
-        wpRenderDrawZBuffer();
+        wpDisplayDrawZBuffer();
     }
-    else wpRenderHitCollisions(weapon_gobj);
+    else wpDisplayHitCollisions(weapon_gobj);
 }
 
 // 0x801675D0
-void wpRenderDLHead1(GObj *weapon_gobj)
+void wpDisplayDLHead1(GObj *weapon_gobj)
 {
-    wpRenderMain(weapon_gobj, gcDrawDObjDLHead1);
+    wpDisplayMain(weapon_gobj, gcDrawDObjDLHead1);
 }
 
 // 0x801675F4
-void wpRenderDObjDLLinks(GObj *weapon_gobj)
+void wpDisplayDObjDLLinks(GObj *weapon_gobj)
 {
-    wpRenderMain(weapon_gobj, gcDrawDObjDLLinksForGObj);
+    wpDisplayMain(weapon_gobj, gcDrawDObjDLLinksForGObj);
 }
 
 // 0x80167618
 void func_ovl3_80167618(GObj *weapon_gobj)
 {
-    wpRenderMain(weapon_gobj, lbCommonDObjScaleXProcRender); // Unused?
+    wpDisplayMain(weapon_gobj, lbCommonDObjScaleXProcDraw); // Unused?
 }
 
 // 0x8016763C
-void wpRenderDObjTreeDLLinks(GObj *weapon_gobj)
+void wpDisplayDObjTreeDLLinks(GObj *weapon_gobj)
 {
-    wpRenderMain(weapon_gobj, gcDrawDObjTreeDLLinksForGObj);
+    wpDisplayMain(weapon_gobj, gcDrawDObjTreeDLLinksForGObj);
 }
 
 // 0x80167660
-void wpRenderPKThunder(GObj *weapon_gobj)
+void wpDisplayPKThunder(GObj *weapon_gobj)
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
     s32 index = wp->weapon_vars.pkthunder_trail.trail_index;
 
     if (wp->display_mode == nDBDisplayModeMapCollision)
     {
-        wpRenderDrawNormal();
+        wpDisplayDrawNormal();
 
         gDPPipeSync(gDisplayListHead[1]++);
 
@@ -222,13 +222,13 @@ void wpRenderPKThunder(GObj *weapon_gobj)
 
         gcDrawDObjDLLinksForGObj(weapon_gobj);
 
-        wpRenderDrawZBuffer();
+        wpDisplayDrawZBuffer();
 
-        wpRenderMapCollisions(weapon_gobj);
+        wpDisplayMapCollisions(weapon_gobj);
     }
     else if ((wp->display_mode == nDBDisplayModeMaster) || (wp->weapon_hit.update_state == nGMHitUpdateDisable))
     {
-        wpRenderDrawNormal();
+        wpDisplayDrawNormal();
 
         gDPPipeSync(gDisplayListHead[1]++);
 
@@ -238,7 +238,7 @@ void wpRenderPKThunder(GObj *weapon_gobj)
 
         gcDrawDObjDLLinksForGObj(weapon_gobj);
 
-        wpRenderDrawZBuffer();
+        wpDisplayDrawZBuffer();
     }
-    else wpRenderHitCollisions(weapon_gobj);
+    else wpDisplayHitCollisions(weapon_gobj);
 }

@@ -17,7 +17,7 @@ extern intptr_t FILE_041_KIRBY_CAMERA_PARAMS_OFFSET; // file 0x041 offset for Ki
 
 extern void func_80007080(void*, f32, f32, f32, f32);
 
-extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
+extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
 
 
 // Data
@@ -455,7 +455,7 @@ void mvOpeningKirbyInit()
 void gMvOpeningKirbySetupDisplayList(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
-	ftRenderLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
+	ftDisplayLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
 // 8018E13C

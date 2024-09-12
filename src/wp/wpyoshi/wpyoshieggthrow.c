@@ -250,13 +250,13 @@ sb32 wpYoshiEggThrowProcReflector(GObj *weapon_gobj)
 }
 
 // 0x8016C444
-void wpYoshiEggThrowProcRender(GObj *weapon_gobj)
+void wpYoshiEggThrowProcDraw(GObj *weapon_gobj)
 {
     gDPPipeSync(gDisplayListHead[1]++);
 
     gDPSetEnvColor(gDisplayListHead[1]++, 0x00, 0x00, 0x00, 0x00);
 
-    wpRenderDLHead1(weapon_gobj);
+    wpDisplayDLHead1(weapon_gobj);
 }
 
 // 0x8016C498
@@ -273,7 +273,7 @@ GObj* wpYoshiEggThrowMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     wp = wpGetStruct(weapon_gobj);
 
-    weapon_gobj->proc_render = wpYoshiEggThrowProcRender;
+    weapon_gobj->proc_draw = wpYoshiEggThrowProcDraw;
 
     wp->weapon_vars.egg_throw.is_throw = FALSE;
 

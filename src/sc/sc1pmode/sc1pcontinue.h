@@ -35,11 +35,11 @@ extern void sc1PContinueMakeScoreDigitSObjs
 extern void sc1PContinueMakeScoreDisplay(s32 points);
 extern void sc1PContinueSetFighterScale(GObj *gobj, s32 ft_kind);
 extern void sc1PContinueMakeFighter(s32 ft_kind);
-extern void sc1PContinueRoomFadeOutProcRender(GObj *gobj);
+extern void sc1PContinueRoomFadeOutProcDraw(GObj *gobj);
 extern void sc1PContinueMakeRoomFadeOut(void);
-extern void sc1PContinueRoomFadeInProcRender(GObj *gobj);
+extern void sc1PContinueRoomFadeInProcDraw(GObj *gobj);
 extern void sc1PContinueMakeRoomFadeIn(void);
-extern void sc1PContinueSpotlightFadeProcRender(GObj *gobj);
+extern void sc1PContinueSpotlightFadeProcDraw(GObj *gobj);
 extern void sc1PContinueMakeSpotlightFadeSObjs(void);
 extern void sc1PContinueMakeRoom(void);
 extern void sc1PContinueMakeSpotlightSObjs(void);

@@ -242,7 +242,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, 
     itStruct *ip = itManagerGetNextStructAlloc();
     GObj *item_gobj;
     itAttributes *attributes;
-    void (*proc_render)(GObj*);
+    void (*proc_draw)(GObj*);
     s32 unused[4];
 
     if (ip == NULL)
@@ -261,11 +261,11 @@ GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, 
 
     if (attributes->is_render_colanim)
     {
-        proc_render = (attributes->is_render_xlu) ? itRenderProcRenderColAnimXLU : itRenderProcRenderColAnimOPA;
+        proc_draw = (attributes->is_render_xlu) ? itDisplayProcDrawColAnimXLU : itDisplayProcDrawColAnimOPA;
     }
-    else proc_render = (attributes->is_render_xlu) ? itRenderProcRenderXLU : itRenderProcRenderOPA;
+    else proc_draw = (attributes->is_render_xlu) ? itDisplayProcDrawXLU : itDisplayProcDrawOPA;
 
-    gcAddGObjDisplay(item_gobj, proc_render, 11, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(item_gobj, proc_draw, 11, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
     item_gobj->user_data.p = ip;
 

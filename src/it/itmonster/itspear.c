@@ -383,9 +383,9 @@ void itPippiWeaponSwarmRenderSwarm(GObj *item_gobj)
 }
 
 // 0x80180480
-void itPippiWeaponSwarmProcRender(GObj *item_gobj)
+void itPippiWeaponSwarmProcDraw(GObj *item_gobj)
 {
-    wpRenderMain(item_gobj, itPippiWeaponSwarmRenderSwarm);
+    wpDisplayMain(item_gobj, itPippiWeaponSwarmRenderSwarm);
 }
 
 // 0x801804A4
@@ -420,7 +420,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
     }
     else
     {
-        weapon_gobj->proc_render = itPippiWeaponSwarmProcRender;
+        weapon_gobj->proc_draw = itPippiWeaponSwarmProcDraw;
 
         gcAddOMMtxForDObjFixed(dobj->child, 0x48, 0);
 

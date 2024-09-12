@@ -35,7 +35,6 @@ extern uintptr_t D_NF_001AC870; // AC870
 extern uintptr_t D_NF_00000854; // 00854
 
 extern void mnDebugMenuUpdateMenuInputs();
-extern void gcAddGObjDisplay(GObj *gobj, void (*proc_render)(GObj*), u8 dl_link, u32 order, s32 arg4);
 extern void func_80007080(void*, f32, f32, f32, f32);
 
 
@@ -1274,7 +1273,7 @@ void mnTitleCreateLogoFire()
 	logo_fire_gobj = gcMakeGObjSPAfter(0xF, 0, 4, 0x80000000);
 	gcAddGObjDisplay(logo_fire_gobj, mnTitleRenderLogoFireEffect, 3, 0x80000000, -1);
 
-	logo_fire_gobj->unk_gobj_0x30 = 0x00000001;
+	logo_fire_gobj->cam_mask = 0x00000001;
 
 	gMNTitleParticleBankId = efAllocGetAddParticleBankID(&lTitleScreenParticleBankHeaderLo, &lTitleScreenParticleBankHeaderHi, &lTitleScreenParticleBankTextureLo, &lTitleScreenParticleBankTextureHi);
 }

@@ -32,7 +32,7 @@ extern void func_ovl2_8010CFA8(GObj*, f32, f32, f32, f32, f32);
 
 extern void itManagerInitItems();
 extern void wpManagerAllocWeapons();
-extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
+extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
 extern void gmRumbleInitPlayers();
 extern void func_ovl6_8018ED70();
 
@@ -952,7 +952,7 @@ void scBonusGame_SetGeometryRenderLights(Gfx** display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 
-	ftRenderLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
+	ftDisplayLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
 // 8018EACC

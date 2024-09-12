@@ -20,7 +20,7 @@ extern intptr_t FILE_04B_TRANSITION_GFX_OFFSET_2; // file 0x04B offset for trans
 extern intptr_t FILE_04B_TRANSITION_GFX_OFFSET_3; // file 0x04B offset for transition gfx
 
 
-extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
+extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
 extern f32 scSubsysFighterGetLightAngleX();
 extern f32 scSubsysFighterGetLightAngleY();
 extern void func_80007080(void*, f32, f32, f32, f32);
@@ -84,7 +84,7 @@ void mvOpeningRunningSetupDisplayList(Gfx **dl)
 {
 	gSPSetGeometryMode(dl[0]++, G_LIGHTING);
 
-	ftRenderLightsDrawReflect(dl, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
+	ftDisplayLightsDrawReflect(dl, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 }
 
 // 80131B58

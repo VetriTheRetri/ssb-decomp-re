@@ -24,9 +24,6 @@ extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 extern f32 scSubsysFighterGetLightAngleX();
 extern f32 scSubsysFighterGetLightAngleY();
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern void lbCommonDrawSObjAttr();
-extern void lbCommonScissorSpriteCamera();
-
 
 // Data
 // 801325D0

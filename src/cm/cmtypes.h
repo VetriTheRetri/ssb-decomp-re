@@ -7,7 +7,6 @@
 #include <sys/vec.h>
 #include <gm/generic.h>
 #include <sys/trig_rand.h>
-#include <ovl0/halbitmap.h>
 
 #include <cm/cmdef.h>
 

@@ -9,9 +9,6 @@ extern intptr_t lOverlay40ArenaHi;  // 803903E0
 extern intptr_t lOverlay40ArenaLo;  // 8018E5E0
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern lbCommonDrawSObjAttr();
-extern lbCommonScissorSpriteCamera();
-
 
 // DATA
 // 8018E070

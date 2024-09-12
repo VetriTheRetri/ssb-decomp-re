@@ -2,8 +2,6 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 
-extern void lbCommonAddDObjAnimAll(DObj*, void*, void*, f32);
-
 // // // // // // // // // // // //
 //                               //
 //       EXTERNAL VARIABLES      //

@@ -4,8 +4,9 @@
 #include <ssb_types.h>
 #include <macros.h>
 #include <sys/obj.h>
-#include <gm/generic.h>
 #include <sc/scdef.h>
+
+#include <gm/generic.h>
 
 struct sc1PGameComputer
 {

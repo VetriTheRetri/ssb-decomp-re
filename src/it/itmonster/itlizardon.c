@@ -2,6 +2,8 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
+extern void* func_ovl0_800CE8C0(s32, s32, f32, f32, f32, f32, f32, f32);
+
 // // // // // // // // // // // //
 //                               //
 //       EXTERNAL VARIABLES      //

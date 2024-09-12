@@ -15,8 +15,8 @@ extern intptr_t FILE_035_PORTRAIT_OVERLAY_IMAGE_OFFSET; // file 0x035 image offs
 extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 extern f32 scSubsysFighterGetLightAngleX();
 extern f32 scSubsysFighterGetLightAngleY();
-extern void lbCommonScissorSpriteCamera(GObj*);
-extern void lbCommonDrawSObjAttr(GObj*);
+
+
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 

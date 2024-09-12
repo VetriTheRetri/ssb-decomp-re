@@ -1,7 +1,5 @@
 #include <ft/fighter.h>
 
-extern sb32 lbCommonCheckAdjustSim2D(Vec3f*, Vec3f*, f32);
-
 // // // // // // // // // // // //
 //                               //
 //           FUNCTIONS           //

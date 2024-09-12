@@ -11,9 +11,7 @@
 
 // Externs
 extern void auSetBGMVolume(s32 playerID, u32 vol);
-extern void lbCommonDrawSObjAttr(GObj*);
-extern void lbCommonDrawSObjAttr_overload(GObj*);
-extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
+
 extern u32 dGMCommonFileIDs[8];
 extern intptr_t D_NF_00000000;
 extern intptr_t D_NF_00000020;

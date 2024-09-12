@@ -3,8 +3,6 @@
 #include <sys/system_00.h>
 #include <ovl0/reloc_data_mgr.h>
 
-extern void lbCommonScissorSpriteCamera(GObj*);
-extern void lbCommonDrawSObjAttr();
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 extern void func_80007080(void*, f32, f32, f32, f32);
 

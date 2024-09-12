@@ -15,8 +15,6 @@ extern intptr_t lOverlay39ArenaHi;  // 803903E0
 // Offsets
 extern intptr_t FILE_041_FOX_CAMERA_PARAMS_OFFSET; // file 0x041 offset for Fox's fighter pose camera settings
 
-extern void lbCommonDrawSObjAttr();
-extern void lbCommonScissorSpriteCamera();
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);

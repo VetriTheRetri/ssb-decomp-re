@@ -2,8 +2,6 @@
 #include <cm/camera.h>
 #include <sc/scene.h>
 
-extern void lbCommonDrawSObjAttr(GObj*);
-
 // // // // // // // // // // // //
 //                               //
 //   GLOBAL / STATIC VARIABLES   //
@@ -137,19 +135,19 @@ void grWallpaperCommonMakeSObj(void)
     GObj *wallpaper_gobj;
     SObj *wallpaper_sobj;
 
-    sGRWallpaperGObj = wallpaper_gobj = func_ovl0_800CD050
+    sGRWallpaperGObj = wallpaper_gobj = lbCommonMakeSpriteGObj
     (
-        nOMObjCommonKindWallpaper, 
-        NULL, 
+        nOMObjCommonKindWallpaper,
+        NULL,
         nOMObjCommonLinkIDWallpaper,
-        GOBJ_LINKORDER_DEFAULT, 
+        GOBJ_LINKORDER_DEFAULT,
         lbCommonDrawSObjAttr,
-        0, 
-        GOBJ_DLLINKORDER_DEFAULT, 
-        -1, 
-        gMPCollisionGroundData->wallpaper, 
-        1, 
-        grWallpaperCommonUpdatePersp, 
+        0,
+        GOBJ_DLLINKORDER_DEFAULT,
+        -1,
+        gMPCollisionGroundData->wallpaper,
+        nOMObjProcessKindProc,
+        grWallpaperCommonUpdatePersp,
         3
     );
     wallpaper_sobj = SObjGetStruct(wallpaper_gobj);
@@ -167,7 +165,7 @@ void grWallpaperStaticMakeSObj(void)
     GObj *wallpaper_gobj;
     SObj *wallpaper_sobj;
 
-    sGRWallpaperGObj = wallpaper_gobj = func_ovl0_800CD050
+    sGRWallpaperGObj = wallpaper_gobj = lbCommonMakeSpriteGObj
     (
         nOMObjCommonKindWallpaper, 
         NULL, 
@@ -178,7 +176,7 @@ void grWallpaperStaticMakeSObj(void)
         GOBJ_DLLINKORDER_DEFAULT, 
         -1, 
         gMPCollisionGroundData->wallpaper, 
-        1, 
+        nOMObjProcessKindProc, 
         NULL, 
         3
     );

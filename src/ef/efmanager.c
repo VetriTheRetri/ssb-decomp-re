@@ -6,9 +6,7 @@
 #include <sc/scene.h>
 #include <ovl0/reloc_data_mgr.h>
 
-extern void func_ovl0_800CB4B0(GObj*);
-extern void lbCommonAddDObjAnimAll(void*, void*, void*, f32);
-extern void lbCommonAddDObjAnimJointAll(void*, void*, f32);
+extern void* func_ovl0_800CE8C0(s32, s32, f32, f32, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -170,7 +168,7 @@ efCreateDesc dEFManagerShockSmallEffectDesc =
     },
 
     efManagerVelAddDestroyAnimEnd,           // Proc Update
-    func_ovl0_800CB4B0,                     // Proc Render
+    lbCommonDObjScaleXProcRender,                     // Proc Render
 
     &lEFManagerShockSmallDObjSetup,                // DObj Setup attributes offset (?)
     &lEFManagerShockSmallMObjSub,                  // MObjSub offset
@@ -200,7 +198,7 @@ efCreateDesc dEFManagerDamageFlyOrbsEffectDesc =
     },
 
     efManagerDamageFlyOrbsProcUpdate,    // Proc Update
-    func_ovl0_800CB4B0,                     // Proc Render
+    lbCommonDObjScaleXProcRender,                     // Proc Render
 
     &lEFManagerDamageFlyOrbsDObjSetup,             // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -290,7 +288,7 @@ efCreateDesc dEFStarRodSparkEffectDesc =
     },
 
     efManagerStarRodSparkProcUpdate,     // Proc Update
-    func_ovl0_800CB4B0,                     // Proc Render
+    lbCommonDObjScaleXProcRender,                     // Proc Render
 
     &lEFManagerCommonSparkDObjSetup,              // DObj Setup attributes offset (?)
     &lEFManagerCommonSparkMObjSub,                // MObjSub offset
@@ -320,7 +318,7 @@ efCreateDesc dEFManagerDamageFlySparksEffectDesc =
     },
 
     efManagerDamageFlySparksProcUpdate,  // Proc Update
-    func_ovl0_800CB4B0,                     // Proc Render
+    lbCommonDObjScaleXProcRender,                     // Proc Render
 
     &lEFManagerCommonSparkDObjSetup,              // DObj Setup attributes offset (?)
     &lEFManagerCommonSparkMObjSub,                // MObjSub offset
@@ -440,7 +438,7 @@ efCreateDesc dEFFireSparkEffectDesc =
     },
 
     efManagerHaveStructProcUpdate,     // Proc Update
-    func_ovl0_800CB4B0,                     // Proc Render
+    lbCommonDObjScaleXProcRender,                     // Proc Render
 
     &lEFManagerFireSparkDObjSetup,                 // DObj Setup attributes offset (?)
     &lEFManagerFireSparkMObjSub,                   // MObjSub offset
@@ -849,7 +847,7 @@ efCreateDesc dEFManagerCaptainFalconPunchEffectDesc =
     },
 
     efManagerNoEjectProcUpdate,                     // Proc Update
-    func_ovl0_800CB4B0,                     // Proc Render
+    lbCommonDObjScaleXProcRender,                     // Proc Render
 
     &lEFManagerCaptainFalconPunchDObjSetup,               // DObj Setup attributes offset (?)
     &lEFManagerCaptainFalconPunchMObjSub,                 // MObjSub offset
@@ -1371,7 +1369,7 @@ efCreateDesc dEFManagerYoshiEntryEggEffectDesc =
     },
 
     efManagerHaveStructProcUpdate,     // Proc Update
-    func_ovl0_800CB4B0,                     // Proc Render
+    lbCommonDObjScaleXProcRender,                     // Proc Render
 
     &lEFManagerYoshiEntryEggDObjSetup,             // DObj Setup attributes offset (?)
     &lEFManagerYoshiEntryEggMObjSub,               // MObjSub offset
@@ -1647,7 +1645,7 @@ efCreateDesc dEFCaptureKirbyStarEffectDesc =
     },
 
     efManagerCaptureKirbyStarProcUpdate,    // Proc Update
-    func_ovl0_800CB4B0,                     // Proc Render
+    lbCommonDObjScaleXProcRender,                     // Proc Render
 
     &lEFManagerKirbyStarDObjSetup,                 // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1677,7 +1675,7 @@ efCreateDesc dEFManagerLoseKirbyStarEffectDesc =
     },
 
     efManagerLoseKirbyStarProcUpdate,       // Proc Update
-    func_ovl0_800CB4B0,                     // Proc Render
+    lbCommonDObjScaleXProcRender,                     // Proc Render
 
     &lEFManagerKirbyStarDObjSetup,                 // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -4042,7 +4040,7 @@ GObj* efManagerFireSparkMakeEffect(GObj *fighter_gobj) // I really have no idea 
     dobj->translate.vec.f.y = 160.0F;
     dobj->user_data.p = fp->joints[16];
 
-    lbCommonSetDObjTransformsForTreeDObjs(dobj->child, (uintptr_t)sEFManagerTexturesFile2 + (intptr_t)&lEFManagerFireSparkDObjSetup, effect_gobj); // Linker thing
+    lbCommonSetDObjTransformsForTreeDObjs(dobj->child, (uintptr_t)sEFManagerTexturesFile2 + (intptr_t)&lEFManagerFireSparkDObjSetup); // Linker thing
 
     return effect_gobj;
 }

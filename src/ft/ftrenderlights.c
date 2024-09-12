@@ -1,9 +1,6 @@
 #include <ft/fighter.h>
 #include <sys/ml.h>
 
-extern f32 lbCommonSin(f32);
-extern f32 lbCommonCos(f32);
-
 // // // // // // // // // // // //
 //                               //
 //       EXTERNAL VARIABLES      //
@@ -19,14 +16,14 @@ extern mlRegion gSYGtlGraphicsHeap;
 // // // // // // // // // // // //
 
 // 0x800FCB70
-void ftRenderLightsDrawReflect(Gfx **display_list, f32 arg1, f32 arg2)
+void ftRenderLightsDrawReflect(Gfx **display_list, f32 light_angle_x, f32 light_angle_y)
 {
     Vec3f vec;
 
-    vec.y = -lbCommonSin(-F_CLC_DTOR32(arg2));
-    vec.z = lbCommonCos(-F_CLC_DTOR32(arg2));
-    vec.x = lbCommonSin(F_CLC_DTOR32(arg1)) * vec.z;
-    vec.z *= lbCommonCos(F_CLC_DTOR32(arg1));
+    vec.y = -lbCommonSin(-F_CLC_DTOR32(light_angle_y));
+    vec.z = lbCommonCos(-F_CLC_DTOR32(light_angle_y));
+    vec.x = lbCommonSin(F_CLC_DTOR32(light_angle_x)) * vec.z;
+    vec.z *= lbCommonCos(F_CLC_DTOR32(light_angle_x));
 
     ((Light*)gSYGtlGraphicsHeap.ptr)->l.dir[0] = vec.x * 100.0F;
     ((Light*)gSYGtlGraphicsHeap.ptr)->l.dir[1] = vec.y * 100.0F;

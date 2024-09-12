@@ -40,14 +40,13 @@ extern intptr_t FILE_013_WHITE_SQUARE;
 extern intptr_t FILE_011_CURSOR_POINTER_IMAGE_OFFSET;
 
 extern void scSubsysFighterSetLightParams(f32 light_angle_x, f32 light_angle_y, u8 r, u8 g, u8 b, u8 a);
-extern GObj* func_ovl0_800CD050(s32, void*, s32, u32, void*, s32, u32, s32, void*, u32, void*, u32);
+
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 extern f32 scSubsysFighterGetLightAngleX();
 extern f32 scSubsysFighterGetLightAngleY();
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern void lbCommonDrawSObjAttr();
-extern void lbCommonScissorSpriteCamera();
+
 
 
 // Forward declarations
@@ -680,7 +679,7 @@ void mnBonusCreatePanel(s32 port_id)
 	};
 
 	// create panel
-	gobj = func_ovl0_800CD050(0, NULL, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1C, 0x80000000, -1, GetAddressFromOffset(gMnBonusFilesArray[5], &FILE_017_PANEL_IMAGE_OFFSET), 1, NULL, 1);
+	gobj = lbCommonMakeSpriteGObj(0, NULL, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1C, 0x80000000, -1, GetAddressFromOffset(gMnBonusFilesArray[5], &FILE_017_PANEL_IMAGE_OFFSET), 1, NULL, 1);
 	SObjGetStruct(gobj)->pos.x = 58.0f;
 	SObjGetStruct(gobj)->pos.y = 127.0f;
 	SObjGetStruct(gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -2087,7 +2086,7 @@ void mnBonusCreateCursor(s32 port_id)
 		6, 4, 2, 0
 	};
 
-	cursor_gobj = func_ovl0_800CD050(0, NULL, 0x13, 0x80000000, lbCommonDrawSObjAttr, 0x1E, cursor_starting_display_orders[port_id], -1, GetAddressFromOffset(gMnBonusFilesArray[0], &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1, mnBonusHandleButtonPresses, 2);
+	cursor_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x13, 0x80000000, lbCommonDrawSObjAttr, 0x1E, cursor_starting_display_orders[port_id], -1, GetAddressFromOffset(gMnBonusFilesArray[0], &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1, mnBonusHandleButtonPresses, 2);
 
 	cursor_gobj->user_data.s = port_id;
 	gMnBonusPanel.cursor = cursor_gobj;
@@ -2118,7 +2117,7 @@ void mnBonusCreateToken(s32 port_id)
 		3, 2, 1, 0
 	};
 
-	token_gobj = func_ovl0_800CD050(0, NULL, 0x14, 0x80000000, lbCommonDrawSObjAttr, 0x1F, orders1[port_id], -1, GetAddressFromOffset(gMnBonusFilesArray[0], offsets_no_cpu[port_id]), 1, mnBonusSyncTokenAndFighter, 1);
+	token_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x14, 0x80000000, lbCommonDrawSObjAttr, 0x1F, orders1[port_id], -1, GetAddressFromOffset(gMnBonusFilesArray[0], offsets_no_cpu[port_id]), 1, mnBonusSyncTokenAndFighter, 1);
 
 	token_gobj->user_data.s = port_id;
 	gMnBonusPanel.token = token_gobj;

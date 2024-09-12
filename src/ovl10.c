@@ -34,9 +34,6 @@ extern intptr_t FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_2; // 29010 file 0x0A7 offset f
 extern uintptr_t D_NF_001AC870; // AC870
 extern uintptr_t D_NF_00000854; // 00854
 
-extern lbCommonDrawSObjAttr(GObj*);
-extern GObj* func_ovl0_800CD050(s32, void*, s32, u32, void*, s32, u32, s32, void*, u32, void*, u32);
-extern void lbCommonScissorSpriteCamera();
 extern void mnDebugMenuUpdateMenuInputs();
 extern void gcAddGObjDisplay(GObj *gobj, void (*proc_render)(GObj*), u8 dl_link, u32 order, s32 arg4);
 extern void func_80007080(void*, f32, f32, f32, f32);
@@ -920,14 +917,18 @@ void mnTitleRenderLogoNoIntro(GObj* logo_gobj)
 {
 	SObj* logo_sobj = SObjGetStruct(logo_gobj);
 
-	if (!(logo_sobj->sprite.scalex < 0.0001f) && !(logo_sobj->sprite.scaley < 0.0001f))
+	if ((logo_sobj->sprite.scalex < 0.0001F) || (logo_sobj->sprite.scaley < 0.0001F))
+	{
+		return;
+	}
+	else
 	{
 		lbCommonPrepSObjSpriteAttrs(gDisplayListHead, logo_sobj);
 
 		gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, logo_sobj->sprite.red, logo_sobj->sprite.green, logo_sobj->sprite.blue, gMNTitleLogoAlpha);
 		gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE,  TEXEL0, 0, PRIMITIVE, 0,  0, 0, 0, PRIMITIVE,  TEXEL0, 0, PRIMITIVE, 0);
 
-		lbCommonDrawSObjNoAttr(logo_gobj, logo_sobj);
+		lbCommonDrawSObjNoAttr(logo_gobj);
 	}
 }
 
@@ -948,7 +949,7 @@ void mnTitleFadeOutLogo(GObj* logo_gobj)
 // 80132F3C
 void mnTitleCreateLogoNoIntro()
 {
-	GObj *logo_gobj = func_ovl0_800CD050(0xB, 0, 0xA, 0x80000000, mnTitleRenderLogoNoIntro, 0, 0x80000000, -1, D_ovl10_801342D0 + gMNTitleFile0, 1, 0, 1);
+	GObj *logo_gobj = lbCommonMakeSpriteGObj(0xB, 0, 0xA, 0x80000000, mnTitleRenderLogoNoIntro, 0, 0x80000000, -1, D_ovl10_801342D0 + gMNTitleFile0, 1, 0, 1);
 	SObj *logo_sobj = SObjGetStruct(logo_gobj);
 
 	logo_sobj->sprite.attr = SP_TRANSPARENT;
@@ -1001,7 +1002,7 @@ void mnTitleCreateLogo()
 			fire_logo_dobj = fire_logo_dobj->sib_next;
 		};
 
-		logo_gobj = func_ovl0_800CD050(0xB, mnTitleFadeOutLogo, 0xA, 0x80000000, mnTitleRenderLogoNoIntro, 0, 0x80000000, -1, dMNTitleLogoOffset + gMNTitleFile0, 1, mnTitleAnimateLogo, 1);
+		logo_gobj = lbCommonMakeSpriteGObj(0xB, mnTitleFadeOutLogo, 0xA, 0x80000000, mnTitleRenderLogoNoIntro, 0, 0x80000000, -1, dMNTitleLogoOffset + gMNTitleFile0, 1, mnTitleAnimateLogo, 1);
 
 		logo_sobj = SObjGetStruct(logo_gobj);
 		logo_sobj->sprite.attr = SP_TRANSPARENT;

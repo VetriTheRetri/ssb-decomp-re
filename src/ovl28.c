@@ -44,8 +44,8 @@ extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_2; // DObjDesc for white circle
 extern intptr_t FILE_017_PANEL_IMAGE_OFFSET;
 extern intptr_t FILE_017_CPU_PANEL_LUT_OFFSET; // D_NF_00003238; // CPU panel LUT
 extern void func_800A26B8();
-extern void lbCommonDrawSObjAttr(GObj*);
-extern void lbCommonScissorSpriteCamera(GObj*);
+
+
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
@@ -670,7 +670,7 @@ void mnTrainingCreatePanel(s32 port_id)
 	};
 
 	// create panel
-	panel_gobj = func_ovl0_800CD050(0, NULL, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1C, 0x80000000, -1, GetAddressFromOffset(gMNTrainingFilesArray[1], &FILE_017_PANEL_IMAGE_OFFSET), 1, NULL, 1);
+	panel_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1C, 0x80000000, -1, GetAddressFromOffset(gMNTrainingFilesArray[1], &FILE_017_PANEL_IMAGE_OFFSET), 1, NULL, 1);
 	gMNTrainingPanels[port_id].panel = panel_gobj;
 	SObjGetStruct(panel_gobj)->sprite.attr &= ~SP_FASTCOPY;
 	SObjGetStruct(panel_gobj)->sprite.attr |= SP_TRANSPARENT;
@@ -739,7 +739,7 @@ void mnTrainingDrawTitleAndBack()
 	GObj* title_gobj;
 	void* unused;
 
-	title_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, 0x80000000, -1, GetAddressFromOffset(gMNTrainingFilesArray[5], &FILE_012_TRAINING_MODE_IMAGE_OFFSET), 1, NULL, 1);
+	title_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, 0x80000000, -1, GetAddressFromOffset(gMNTrainingFilesArray[5], &FILE_012_TRAINING_MODE_IMAGE_OFFSET), 1, NULL, 1);
 	SObjGetStruct(title_gobj)->pos.x = 27.0F;
 	SObjGetStruct(title_gobj)->pos.y = 24.0F;
 	SObjGetStruct(title_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -749,7 +749,7 @@ void mnTrainingDrawTitleAndBack()
 	SObjGetStruct(title_gobj)->sprite.blue = 4;
 	gMNTrainingTitleGObj = title_gobj;
 
-	back_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, 0x80000000, -1, GetAddressFromOffset(gMNTrainingFilesArray[0], &FILE_011_BACK_IMAGE_OFFSET), 1, NULL, 1);
+	back_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, 0x80000000, -1, GetAddressFromOffset(gMNTrainingFilesArray[0], &FILE_011_BACK_IMAGE_OFFSET), 1, NULL, 1);
 	SObjGetStruct(back_gobj)->pos.x = 244.0F;
 	SObjGetStruct(back_gobj)->pos.y = 23.0F;
 	SObjGetStruct(back_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -2065,7 +2065,7 @@ void mnTrainingCreateCursor(s32 port_id)
 		6, 4, 2, 0
 	};
 
-	cursor_gobj = func_ovl0_800CD050(0, NULL, 0x13, 0x80000000, lbCommonDrawSObjAttr, 0x20, starting_display_orders[port_id], -1, GetAddressFromOffset(gMNTrainingFilesArray[0], &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1, mnTrainingHandleButtonPresses, 2);
+	cursor_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x13, 0x80000000, lbCommonDrawSObjAttr, 0x20, starting_display_orders[port_id], -1, GetAddressFromOffset(gMNTrainingFilesArray[0], &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1, mnTrainingHandleButtonPresses, 2);
 
 	gMNTrainingPanels[port_id].cursor = cursor_gobj;
 	cursor_gobj->user_data.s = port_id;
@@ -2108,7 +2108,7 @@ void mnTrainingCreateToken(s32 port_id)
 		6, 4, 2, 0
 	};
 
-	gMNTrainingPanels[port_id].token = token_gobj = func_ovl0_800CD050(0, NULL, 0x14, 0x80000000, mnTrainingRenderToken, 0x21, starting_display_orders[port_id], -1, GetAddressFromOffset(gMNTrainingFilesArray[0], offsets_no_cpu[port_id]), 1, mnTrainingSyncTokenAndFighter, 1);
+	gMNTrainingPanels[port_id].token = token_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x14, 0x80000000, mnTrainingRenderToken, 0x21, starting_display_orders[port_id], -1, GetAddressFromOffset(gMNTrainingFilesArray[0], offsets_no_cpu[port_id]), 1, mnTrainingSyncTokenAndFighter, 1);
 
 	panel_info = &gMNTrainingPanels[port_id];
 

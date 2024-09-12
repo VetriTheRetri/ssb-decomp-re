@@ -18,8 +18,6 @@ extern intptr_t lGRYosterParticleBankHeaderHi;      // 0x00B22A00
 extern intptr_t lGRYosterParticleBankTextureLo;     // 0x00B22A00
 extern intptr_t lGRYosterParticleBankTextureHi;     // 0x00B22C30
 
-extern void lbCommonAddDObjAnimAll(DObj*, void*, void*, f32);
-
 // // // // // // // // // // // //
 //                               //
 //       INITIALIZED DATA        //

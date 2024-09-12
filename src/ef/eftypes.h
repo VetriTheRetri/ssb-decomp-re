@@ -5,7 +5,6 @@
 #include <sys/obj.h>
 #include <cm/camera.h>
 #include <gm/generic.h>
-#include <ovl0/halbitmap.h>
 
 #include <ef/efdef.h>
 #include <ef/efvars.h>

@@ -2,8 +2,6 @@
 #include <wp/weapon.h>
 #include <it/item.h>
 
-extern f32 lbCommonMag2D();
-
 // // // // // // // // // // // //
 //                               //
 //   GLOBAL / STATIC VARIABLES   //

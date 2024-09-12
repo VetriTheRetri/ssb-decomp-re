@@ -1,6 +1,18 @@
+#include <ovl0/library.h>
 #include <ft/fighter.h>
 #include <gr/ground.h>
 #include <sys/system_00.h>
+
+extern void hal_interpolation_cubic(void*, void*, f32);
+extern void* func_80026A10_27610(u16);
+
+extern u16 gSinTable[/* */];
+
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
 
 extern u16 sLBCommonExternSpriteAttr;
 extern u16 sLBCommonExternBitmapFmt;
@@ -11,12 +23,13 @@ extern s32 sLBCommonScissorYMax;
 extern s32 sLBCommonScissorXMin;
 extern s32 sLBCommonScissorYMin;
 
-extern void hal_interpolation_cubic(void*, void*, f32);
-extern void* func_80026A10_27610(u16);
-
 extern Vec3f D_800D62D0;
 
-extern u16 gSinTable[/* */];
+// // // // // // // // // // // //
+//                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
 // 0x800D4CA0
 f32 dLBCommonSinLookup[/* */] =
@@ -278,6 +291,12 @@ f32 dLBCommonSinLookup[/* */] =
 	0.999925017356873, 0.999942004680634, 0.999957978725433, 0.999970972537994,
 	0.999980986118317, 0.999988973140717, 0.999994993209839, 1.000000000000000
 };
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x800C7840
 f32 lbCommonSin(f32 angle)
@@ -678,7 +697,7 @@ void lbCommonMatrixRotSca(Mtx *mtx, f32 rotx, f32 roty, f32 rotz, f32 scax, f32 
 }
 
 // 0x800C8634
-void func_ovl0_800C8634()
+void func_ovl0_800C8634(void)
 {
 	func_8000A5E4();
 }
@@ -1063,7 +1082,7 @@ void lbCommonSetupFighterPartsDObjs
 }
 
 // 0x800C9050
-void lbCommonSetupCustomDObjsWithMObj
+void lbCommonSetupCustomTreeDObjsWithMObj
 (
     DObj *root_dobj,
     DObjDesc *dobj_desc,
@@ -1315,6 +1334,7 @@ void func_ovl0_800C96DC(Mtx *mtx, DObj *dobj, Gfx **dls)
 sb32 func_ovl0_800C96EC(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
 	func_ovl0_800C96DC(mtx, dobj, 0);
+
 	return 0;
 }
 
@@ -1322,6 +1342,7 @@ sb32 func_ovl0_800C96EC(Mtx *mtx, DObj *dobj, Gfx **dls)
 sb32 func_ovl0_800C9714(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
 	func_ovl0_800C96DC(mtx, dobj, 1);
+
 	return 0;
 }
 
@@ -1641,7 +1662,7 @@ sb32 func_ovl0_800CA024(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x800CA144
-sb32 func_ovl0_800CA144(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 lbCommonRotScaProcMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     lbCommonMatrixRotSca
     (
@@ -1890,9 +1911,7 @@ sb32 func_ovl0_800CAB48(Mtx *mtx, DObj *dobj, Gfx **dls)
     return 1;
 }
 
-sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls);
-
-#if defined (NON_MATCHING)
+#ifdef NON_MATCHING
 // 0x800CB140 - NONMATCHING: 'f[2][2] = dist.z' line uses wrong FPR
 sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
@@ -1957,7 +1976,7 @@ sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
     return 0;
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/func_ovl0_800CB140.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/lbcommon/func_ovl0_800CB140.s")
 #endif
 
 // 0x800CB2F0
@@ -1976,7 +1995,7 @@ sb32 func_ovl0_800CB2F0(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x800CB360
-void func_ovl0_800CB360(DObj *dobj)
+void lbCommonDrawDObjScaleX(DObj *dobj)
 {
     s32 unused[2];
     
@@ -1993,7 +2012,7 @@ void func_ovl0_800CB360(DObj *dobj)
         }        
         if (dobj->child != NULL)
         {
-            func_ovl0_800CB360(dobj->child);
+            lbCommonDrawDObjScaleX(dobj->child);
         }
         if (status != 0)
         {
@@ -2010,7 +2029,7 @@ void func_ovl0_800CB360(DObj *dobj)
         
         while (sibling_dobj != NULL)
         {
-            func_ovl0_800CB360(sibling_dobj);
+            lbCommonDrawDObjScaleX(sibling_dobj);
 
             sibling_dobj = sibling_dobj->sib_next;
         }
@@ -2018,15 +2037,15 @@ void func_ovl0_800CB360(DObj *dobj)
 }
 
 // 0x800CB4B0
-void func_ovl0_800CB4B0(GObj *gobj)
+void lbCommonDObjScaleXProcRender(GObj *gobj)
 {
     gODScaleX = 1.0F;
     
-    func_ovl0_800CB360(DObjGetStruct(gobj));
+    lbCommonDrawDObjScaleX(DObjGetStruct(gobj));
 }
 
 // 0x800CB4E0
-void func_ovl0_800CB4E0(DObj *dobj)
+void lbCommonDrawDObjDefault(DObj *dobj)
 {
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
@@ -2040,7 +2059,7 @@ void func_ovl0_800CB4E0(DObj *dobj)
         }        
         if (dobj->child != NULL)
         {
-            func_ovl0_800CB4E0(dobj->child);
+            lbCommonDrawDObjDefault(dobj->child);
         }
         if (status != 0)
         {
@@ -2056,7 +2075,7 @@ void func_ovl0_800CB4E0(DObj *dobj)
         
         while (sibling_dobj != NULL)
         {
-            func_ovl0_800CB4E0(sibling_dobj);
+            lbCommonDrawDObjDefault(sibling_dobj);
 
             sibling_dobj = sibling_dobj->sib_next;
         }
@@ -2082,8 +2101,8 @@ sb32 (*dLBCommonProcMatrixList[/* */])(/* */) =
 	func_ovl0_800C9714,
 	func_ovl0_800CA024,
 	func_ovl0_800CA024,
-	func_ovl0_800CA144,
-	func_ovl0_800CA144,
+	lbCommonRotScaProcMatrix,
+	lbCommonRotScaProcMatrix,
 	func_ovl0_800CA194,
 	func_ovl0_800CA194,
 	func_ovl0_800CA5C8,
@@ -2166,7 +2185,7 @@ void lbCommonDecodeSpriteBitmapsSiz4b(Sprite *sprite)
     sprite->bmsiz = G_IM_SIZ_4b;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/D_ovl0_800D5E10.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/lbcommon/D_ovl0_800D5E10.s")
 
 // 0x800CB7D4
 void lbCommonDrawSObjBitmap
@@ -2456,7 +2475,7 @@ void lbCommonPrepSObjSpriteAttrs(Gfx **dls, SObj *sobj)
     Gfx *dl = dls[0];
     Sprite *sprite = &sobj->sprite;
     
-    if (sLBCommonExternSpriteAttr & SP_LOCAL)
+    if (sLBCommonExternSpriteAttr & SP_ARGUMENT)
     {
         gDPPipeSync(dl++);
         
@@ -2591,14 +2610,11 @@ void lbCommonPrepSObjSpriteAttrs(Gfx **dls, SObj *sobj)
         {
             gDPLoadTLUT(dl++, sprite->nTLUT, sprite->startTLUT + 256, sprite->LUT);
             gDPLoadSync(dl++);
-            break; 
         }
+        break; 
     }
     dls[0] = dl;
 }
-
-// 0x800CC818
-void lbCommonPrepSObjDraw(Gfx **dls, SObj *sobj);
 
 #ifdef NON_MATCHING
 // 0x800CC818 - NONMATCHING: many regswaps, but appears to be equivalent
@@ -2740,13 +2756,13 @@ void lbCommonPrepSObjDraw(Gfx **dls, SObj *sobj)
     }
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halbitmap/lbCommonPrepSObjDraw.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/lbcommon/lbCommonPrepSObjDraw.s")
 #endif
 
 // 0x800CCEAC
 void lbCommonClearExternSpriteParams(void)
 {
-    sLBCommonExternSpriteAttr = SP_LOCAL;
+    sLBCommonExternSpriteAttr = SP_ARGUMENT;
     sLBCommonExternBitmapFmt = -1;
     
     sLBCommonPrevBitmapBuf = NULL;
@@ -2754,7 +2770,7 @@ void lbCommonClearExternSpriteParams(void)
 }
 
 // 0x800CCED8
-void sLBCommonSetExternSpriteParams(Sprite *sprite)
+void lbCommonSetExternSpriteParams(Sprite *sprite)
 {
     sLBCommonExternSpriteAttr = sprite->attr;
     sLBCommonExternBitmapFmt = sprite->bmfmt;
@@ -2772,7 +2788,7 @@ void lbCommonDrawSObjAttr(GObj *gobj)
         {
             lbCommonPrepSObjSpriteAttrs(gDisplayListHead, sobj);
             lbCommonPrepSObjDraw(gDisplayListHead, sobj);
-            sLBCommonSetExternSpriteParams(&sobj->sprite);
+            lbCommonSetExternSpriteParams(&sobj->sprite);
         }
         sobj = sobj->next;
     }
@@ -2818,7 +2834,7 @@ SObj* lbCommonMakeSObjForGObj(GObj *gobj, Sprite *sprite)
 }
 
 // 0x800CD050
-GObj* func_ovl0_800CD050
+GObj* lbCommonMakeSpriteGObj
 (
     u32 id,
     void (*proc_run)(GObj*),
@@ -2831,7 +2847,7 @@ GObj* func_ovl0_800CD050
     Sprite *sprite,
     u8 gobjproc_kind,
     void (*proc)(GObj*),
-    s32 priority
+    u32 priority
 )
 {
     GObj *gobj = gcMakeGObjSPAfter(id, proc_run, link, link_order);

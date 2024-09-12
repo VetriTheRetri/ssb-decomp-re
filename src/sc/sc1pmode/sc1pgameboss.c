@@ -3,7 +3,6 @@
 #include <if/interface.h>
 #include <sc/scene.h>
 
-extern void lbCommonAddDObjAnimAll(void*, void*, void*, f32);
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern void animSetModelAndTextureAnimationSpeed(void*, f32);
 

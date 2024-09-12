@@ -46,15 +46,13 @@ extern intptr_t FILE_017_PANEL_IMAGE_OFFSET;
 extern intptr_t FILE_019_POLYGON_STOCK_ICON_IMAGE_OFFSET;
 extern intptr_t FILE_011_CURSOR_POINTER_IMAGE_OFFSET;
 
-extern GObj* func_ovl0_800CD050(s32, void*, s32, u32, void*, s32, u32, s32, void*, u32, void*, u32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 extern f32 scSubsysFighterGetLightAngleX();
 extern f32 scSubsysFighterGetLightAngleY();
 extern void gcDrawDObjTreeDLLinksForGObj(GObj *gobj);
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern void lbCommonDrawSObjAttr();
-extern void lbCommonScissorSpriteCamera();
+
 
 
 // Forward declarations
@@ -820,7 +818,7 @@ void mn1PCreatePanel(s32 port_id)
 	};
 
 	// create panel
-	gobj = func_ovl0_800CD050(0, NULL, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1C, 0x80000000, -1, GetAddressFromOffset(gMN1PFilesArray[5], &FILE_017_PANEL_IMAGE_OFFSET), 1, NULL, 1);
+	gobj = lbCommonMakeSpriteGObj(0, NULL, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1C, 0x80000000, -1, GetAddressFromOffset(gMN1PFilesArray[5], &FILE_017_PANEL_IMAGE_OFFSET), 1, NULL, 1);
 	SObjGetStruct(gobj)->pos.x = 25.0F;
 	SObjGetStruct(gobj)->pos.y = 127.0F;
 	SObjGetStruct(gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -935,7 +933,7 @@ void mn1PDrawTimerPicker(s32 num)
 	if (gMN1PPickerGObj != NULL)
 		gcEjectGObj(gMN1PPickerGObj);
 
-	picker_gobj = func_ovl0_800CD050(0, NULL, 0x17, 0x80000000, lbCommonDrawSObjAttr, 0x1A, 0x80000000, -1, GetAddressFromOffset(gMN1PFilesArray[0], &FILE_011_PICKER_TIME_IMAGE_OFFSET), 1, NULL, 1);
+	picker_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x17, 0x80000000, lbCommonDrawSObjAttr, 0x1A, 0x80000000, -1, GetAddressFromOffset(gMN1PFilesArray[0], &FILE_011_PICKER_TIME_IMAGE_OFFSET), 1, NULL, 1);
 	gMN1PPickerGObj = picker_gobj;
 
 	SObjGetStruct(picker_gobj)->pos.x = 140.0F;
@@ -1222,7 +1220,7 @@ void mn1PDrawPickerOptionsTitleAndBack()
 	GObj* picker_gobj;
 	SObj* picker_sobj;
 
-	picker_gobj = func_ovl0_800CD050(0, NULL, 0x17, 0x80000000, mn1PRenderOptionsSection, 0x22, 0x80000000, -1, GetAddressFromOffset(gMN1PFilesArray[5], &FILE_017_1_PLAYER_GAME_TITLE_IMAGE_OFFSET), 1, NULL, 1);
+	picker_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x17, 0x80000000, mn1PRenderOptionsSection, 0x22, 0x80000000, -1, GetAddressFromOffset(gMN1PFilesArray[5], &FILE_017_1_PLAYER_GAME_TITLE_IMAGE_OFFSET), 1, NULL, 1);
 	SObjGetStruct(picker_gobj)->pos.x = 27.0F;
 	SObjGetStruct(picker_gobj)->pos.y = 24.0F;
 	SObjGetStruct(picker_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -2640,7 +2638,7 @@ void mn1PCreateCursor(s32 port_id)
 		6, 4, 2, 0
 	};
 
-	cursor_gobj = func_ovl0_800CD050(0, NULL, 0x13, 0x80000000, lbCommonDrawSObjAttr, 0x1E, cursor_starting_display_orders[port_id], -1, GetAddressFromOffset(gMN1PFilesArray[0], &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1, mn1PHandleButtonPresses, 2);
+	cursor_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x13, 0x80000000, lbCommonDrawSObjAttr, 0x1E, cursor_starting_display_orders[port_id], -1, GetAddressFromOffset(gMN1PFilesArray[0], &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1, mn1PHandleButtonPresses, 2);
 
 	cursor_gobj->user_data.s = port_id;
 	gMN1PPanel.cursor = cursor_gobj;
@@ -2673,7 +2671,7 @@ void mn1PCreateToken(s32 port_id)
 	};
 	s32 foo;
 
-	token_gobj = func_ovl0_800CD050(0, NULL, 0x14, 0x80000000, lbCommonDrawSObjAttr, 0x1F, orders1[port_id], -1, GetAddressFromOffset(gMN1PFilesArray[0], offsets[port_id]), 1, mn1PSyncTokenAndFighter, 1);
+	token_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x14, 0x80000000, lbCommonDrawSObjAttr, 0x1F, orders1[port_id], -1, GetAddressFromOffset(gMN1PFilesArray[0], offsets[port_id]), 1, mn1PSyncTokenAndFighter, 1);
 
 	token_gobj->user_data.s = port_id;
 	gMN1PPanel.token = token_gobj;

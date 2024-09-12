@@ -46,14 +46,13 @@ extern intptr_t FILE_026_INDICATOR_CP_IMAGE_OFFSET; // file 0x026 image offset f
 extern intptr_t FILE_0A4_1_IMAGE_OFFSET; // file 0x0A4 image offset for number 1
 
 extern void scSubsysFighterSetLightParams(f32 light_angle_x, f32 light_angle_y, u8 r, u8 g, u8 b, u8 a);
-extern GObj* func_ovl0_800CD050(s32, void*, s32, u32, void*, s32, u32, s32, void*, u32, void*, u32);
+
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 extern f32 scSubsysFighterGetLightAngleX();
 extern f32 scSubsysFighterGetLightAngleY();
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern void lbCommonDrawSObjAttr();
-extern void lbCommonScissorSpriteCamera();
+
 extern void* func_800269C0_275C0(u16);
 extern void func_ovl0_800D4248();
 extern void func_ovl0_800D42C8();
@@ -1714,7 +1713,7 @@ void mnResultsDrawKOs(s32 y)
 {
 	GObj* kos_row_gobj;
 
-	kos_row_gobj = func_ovl0_800CD050(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_KOS_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
+	kos_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_KOS_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
 	SObjGetStruct(kos_row_gobj)->pos.x = 26.0F;
 	SObjGetStruct(kos_row_gobj)->pos.y = y;
 	SObjGetStruct(kos_row_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -1754,7 +1753,7 @@ void mnResultsDrawTKOs(s32 y)
 	GObj* tkos_row_gobj;
 	SObj* negative_symbol_sobj;
 
-	tkos_row_gobj = func_ovl0_800CD050(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_TKO_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
+	tkos_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_TKO_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
 	SObjGetStruct(tkos_row_gobj)->pos.x = 26.0F;
 	SObjGetStruct(tkos_row_gobj)->pos.y = y;
 	SObjGetStruct(tkos_row_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -1829,7 +1828,7 @@ void mnResultsDrawPointsRow()
 {
 	GObj* points_row_gobj;
 
-	points_row_gobj = func_ovl0_800CD050(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_POINTS_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
+	points_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_POINTS_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
 	SObjGetStruct(points_row_gobj)->pos.x = 26.0F;
 	SObjGetStruct(points_row_gobj)->pos.y = 104.0F;
 	SObjGetStruct(points_row_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -1892,7 +1891,7 @@ void mnResultsDrawPlaceRow(s32 y)
 	GObj* place_row_gobj;
 	s32 i;
 
-	place_row_gobj = func_ovl0_800CD050(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_PLACE_TEXTURE_IMAGE_OFFSET), 1, NULL, 1);
+	place_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFilesArray[0], &FILE_022_PLACE_TEXTURE_IMAGE_OFFSET), 1, NULL, 1);
 	SObjGetStruct(place_row_gobj)->pos.x = 10.0F;
 	SObjGetStruct(place_row_gobj)->pos.y = y;
 	SObjGetStruct(place_row_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -2062,7 +2061,7 @@ void mnResultsCreateScreenTitle()
 		mnResultsDrawResultsNoContest
 	};
 
-	screen_title_gobj = func_ovl0_800CD050(0, 0, 0x16, 0x80000000, mnResultsRenderScreenTitle, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFilesArray[2], offsets[mnResultsGetIsTeamBattle()]), 1, results_routines[gMNResultsGameRule], 1);
+	screen_title_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, mnResultsRenderScreenTitle, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFilesArray[2], offsets[mnResultsGetIsTeamBattle()]), 1, results_routines[gMNResultsGameRule], 1);
 	SObjGetStruct(screen_title_gobj)->pos.x = 32.0f;
 	SObjGetStruct(screen_title_gobj)->pos.y = 29.0f;
 	SObjGetStruct(screen_title_gobj)->sprite.attr &= ~SP_FASTCOPY;

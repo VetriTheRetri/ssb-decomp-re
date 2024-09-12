@@ -9,7 +9,6 @@ extern Mtx44f gODMatrixPerspF;
 extern mlRegion gSYGtlGraphicsHeap;
 
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, u64, s32, s32, s32, s32, s32, s32);
-extern void lbCommonScissorSpriteCamera(GObj*);
 extern void func_80007080(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //

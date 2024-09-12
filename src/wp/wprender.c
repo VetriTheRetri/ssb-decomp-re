@@ -6,8 +6,6 @@
 
 extern mlRegion gSYGtlGraphicsHeap;
 
-extern void func_ovl0_800CB4B0(GObj*);
-
 // // // // // // // // // // // //
 //                               //
 //       INITIALIZED DATA        //
@@ -197,7 +195,7 @@ void wpRenderDObjDLLinks(GObj *weapon_gobj)
 // 0x80167618
 void func_ovl3_80167618(GObj *weapon_gobj)
 {
-    wpRenderMain(weapon_gobj, func_ovl0_800CB4B0); // Unused?
+    wpRenderMain(weapon_gobj, lbCommonDObjScaleXProcRender); // Unused?
 }
 
 // 0x8016763C

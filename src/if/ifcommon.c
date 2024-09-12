@@ -8,8 +8,6 @@
 
 extern alSoundEffect* func_800269C0_275C0(u16);
 
-extern void lbCommonDrawSObjAttr(GObj*);
-extern SObj* lbCommonMakeSObjForGObj(GObj*, Sprite*);
 extern void auSetBGMVolume(u32, u32);
 extern void func_80007080(void*, f32, f32, f32, f32);
 
@@ -802,7 +800,7 @@ void ifCommonPlayerDamageProcRender(GObj *interface_gobj)
     lbCommonPrepSObjSpriteAttrs(gDisplayListHead, sobj);
     lbCommonPrepSObjDraw(gDisplayListHead, sobj);
 
-    sLBCommonSetExternSpriteParams(&sobj->sprite);
+    lbCommonSetExternSpriteParams(&sobj->sprite);
 
     player = ifGetPlayer(interface_gobj);
 

@@ -28,11 +28,8 @@ extern scBattleState gDefaultBattleState;
 extern GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
 extern ftCreateDesc dFTManagerDefaultFighterDesc; // ovl2 80116DD0
 
-extern void lbCommonAddDObjAnimAll(DObj*, void*, void*, f32);
-extern void lbCommonAddMObjForTreeDObjs(DObj*, void*);
-extern void lbCommonAddDObjAnimJointAll(DObj*, void*, f32);
 extern void func_ovl2_8010CFA8(GObj*, f32, f32, f32, f32, f32);
-extern void lbCommonDrawSObjAttr(GObj*);
+
 extern void itManagerInitItems();
 extern void wpManagerAllocWeapons();
 extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);

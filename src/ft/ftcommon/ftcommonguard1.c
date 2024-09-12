@@ -1,7 +1,5 @@
 #include <ft/fighter.h>
 
-extern void lbCommonAddDObjAnimJointAll(DObj*, AObjEvent**, f32);
-
 // // // // // // // // // // // //
 //                               //
 //             MACROS            //
@@ -13,8 +11,8 @@ extern void lbCommonAddDObjAnimJointAll(DObj*, AObjEvent**, f32);
     (ftCommonLightThrowCheckInterruptGuardOn(fighter_gobj) != FALSE)    ||  \
     (ftCommonEscapeCheckInterruptGuard(fighter_gobj) != FALSE)          ||  \
     (ftCommonCatchCheckInterruptGuard(fighter_gobj) != FALSE)           ||  \
-    (ftCommonGuardKneeBendCheckInterruptGuard(fighter_gobj) != FALSE) ||  \
-    (ftCommonGuardPassCheckInterruptGuard(fighter_gobj) != FALSE)         \
+    (ftCommonGuardKneeBendCheckInterruptGuard(fighter_gobj) != FALSE)   ||  \
+    (ftCommonGuardPassCheckInterruptGuard(fighter_gobj) != FALSE)           \
 )
 
 // // // // // // // // // // // //

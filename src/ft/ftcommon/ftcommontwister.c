@@ -3,9 +3,6 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 
-extern f32 lbCommonCos(f32);
-extern f32 lbCommonSin(f32);
-
 // // // // // // // // // // // //
 //                               //
 //       EXTERNAL VARIABLES      //

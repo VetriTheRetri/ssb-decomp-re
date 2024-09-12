@@ -9,9 +9,6 @@
 
 extern intptr_t lFTKirbySpecialNCopyData;           // 0x00000000
 
-extern void lbCommonAddFighterPartsAnimJointAll(DObj*, void*, f32);
-extern void ftParamSetHitStatusAll(GObj*, s32);
-
 // // // // // // // // // // // //
 //                               //
 //       INITIALIZED DATA        //

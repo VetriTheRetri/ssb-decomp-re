@@ -9,7 +9,6 @@
 #include <gm/gmsound.h>
 #include <cm/camera.h>
 #include <gm/generic.h>
-#include <ovl0/halbitmap.h>
 
 #include <it/itdef.h>
 #include <it/itvars.h>

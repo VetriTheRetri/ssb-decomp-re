@@ -1,6 +1,4 @@
-#include <sys/obj.h>
-
-extern void lbCommonAddMObjForFighterPartsDObj(void*, void*, void*, void*, f32);
+#include <ft/fighter.h>
 
 typedef struct scSubsysUnkACUnk8
 {
@@ -49,7 +47,7 @@ void func_ovl1_803903E0(GObj *gobj, s32 arg1)
     var_s2 = user_data->unk_subsysud_0xAC->unk_subsysAC_0x8[user_data->unk_subsysud_0x8 - 1].unk_subsysAC_8_0x0[2];
     user_data->unk_subsysud_0x9 = arg1;
     
-    for(i = 4; i < 37; i++)
+    for (i = 4; i < 37; i++)
     {
         temp_s0 = user_data->unk_subsysud_0x10[i + 2];
         

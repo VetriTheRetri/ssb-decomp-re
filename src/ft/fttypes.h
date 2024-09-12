@@ -12,7 +12,6 @@
 #include <cm/camera.h>
 #include <gm/generic.h>
 #include <gm/gmsound.h>
-#include <ovl0/halbitmap.h>
 
 #include <ft/ftdef.h>
 

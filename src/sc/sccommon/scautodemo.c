@@ -4,8 +4,6 @@
 #include <sc/scene.h>
 #include <sys/system_00.h>
 
-extern void lbCommonDrawSObjAttr();
-
 // // // // // // // // // // // //
 //                               //
 //       EXTERNAL VARIABLES      //

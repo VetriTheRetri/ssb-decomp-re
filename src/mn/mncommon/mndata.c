@@ -25,8 +25,6 @@ extern GObj* func_8000B93C
 	u32 arg12,
 	s32 arg13
 );
-extern void lbCommonDrawSObjAttr(GObj*);
-extern void lbCommonScissorSpriteCamera(GObj*);
 
 // // // // // // // // // // // //
 //                               //

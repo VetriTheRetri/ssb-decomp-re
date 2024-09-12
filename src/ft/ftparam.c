@@ -3,11 +3,7 @@
 #include <sc/scene.h>
 #include <ft/ftcommondata.h>
 
-extern f32 lbCommonSim3D();
 extern alSoundEffect* func_800269C0_275C0(u16);
-extern f32 lbCommonSin(f32);
-extern f32 lbCommonCos(f32);
-extern void lbCommonAddMObjForFighterPartsDObj(void*, void*, void*, void*, f32);
 
 // // // // // // // // // // // //
 //                               //

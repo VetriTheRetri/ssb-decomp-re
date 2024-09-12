@@ -7,9 +7,6 @@
 
 extern alSoundEffect* func_800269C0_275C0(u16);
 extern void animSetModelAnimationSpeed(GObj*, f32);
-extern void lbCommonAddMObjForFighterPartsDObj(void*, void*, void*, void*, f32);
-extern void lbCommonMakePositionFGM(u16, f32);
-extern void lbCommonAddFighterPartsAnimJointAll(void*, void*, f32);
 extern void func_ovl0_800C9A38();
 
 // // // // // // // // // // // //

@@ -10,7 +10,6 @@
 #include <gm/gmsound.h>
 #include <gm/generic.h>
 #include <sys/develop.h>
-#include <ovl0/halbitmap.h>
 
 #include <wp/wpdef.h>
 #include <wp/wpvars.h>

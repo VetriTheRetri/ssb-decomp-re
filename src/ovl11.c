@@ -9,9 +9,6 @@ extern intptr_t D_NF_800A5240;      // 800A5240
 extern intptr_t lOverlay11ArenaLo;  // 800D6B30
 extern intptr_t lOverlay11ArenaHi;  // 80392A00
 extern intptr_t FILE_0A9_NO_CONTROLLER_IMAGE_OFFSET; // 0x8460, file 0x0A9 image offset for no controller texture
-// ovl0
-extern void lbCommonDrawSObjAttr();
-extern void lbCommonScissorSpriteCamera();
 
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);

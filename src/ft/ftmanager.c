@@ -14,9 +14,6 @@ extern ftFileSize D_800A50F8[nFTKindEnumMax];
 extern intptr_t D_NF_000000A3;
 extern intptr_t D_NF_000000C9;
 
-extern void lbCommonAddMObjForFighterPartsDObj(void*, void*, void*, void*, f32);
-extern void lbCommonSetupFighterPartsDObjs(void*, void*, u8, void*, s32, s32, s32, s32, f32, s32);
-
 // // // // // // // // // // // //
 //                               //
 //   GLOBAL / STATIC VARIABLES   //

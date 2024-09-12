@@ -5,6 +5,8 @@
 #include <sys/objdef.h>
 #include <gm/gmdef.h>
 
+#include <ovl0/library.h>
+
 struct gmHitCollisionFlags
 {
 	u32 is_interact_hurt : 1;

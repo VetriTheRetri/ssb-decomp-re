@@ -12,11 +12,7 @@ extern intptr_t lOverlay26ArenaHi; // 0x803903E0
 extern f32 sqrtf(f32);
 extern void gcStopCurrentProcess(s32);
 extern void leoInitUnit_atten();
-extern void lbCommonScissorSpriteCamera();
-extern GObj* func_ovl0_800CD050(s32, void*, s32, s32, void*, s32, s32, s32, void*, s32, void*, s32);
-extern void lbCommonSetSpriteScissor(s32, s32, s32, s32);
-extern void lbCommonDrawSObjNoAttr(GObj*);
-extern SObj* lbCommonMakeSObjForGObj(GObj*, void*);
+
 extern f32 menu_zoom[12]; // D_ovl1_80390D90
 extern u8 D_ovl2_8012EF40[4];
 // Offsets
@@ -47,8 +43,8 @@ extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_1; // AObj? for white circle
 extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_2; // DObjDesc for white circle
 
 extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
-extern void lbCommonDrawSObjAttr(GObj*);
-extern void lbCommonScissorSpriteCamera();
+
+
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
@@ -848,7 +844,7 @@ void mnCreateTypeButton(s32 port_id)
 	};
 
 	type_button_gobj
-		= func_ovl0_800CD050(0, NULL, 0x18, 0x80000000, lbCommonDrawSObjAttr, 0x1E, 0x80000000, -1,
+		= lbCommonMakeSpriteGObj(0, NULL, 0x18, 0x80000000, lbCommonDrawSObjAttr, 0x1E, 0x80000000, -1,
 							 GetAddressFromOffset(gFile011, offsets[gMnBattlePanels[port_id].player_type]), 1, NULL, 1);
 
 	gMnBattlePanels[port_id].type_button = type_button_gobj;
@@ -921,7 +917,7 @@ void mnBattleCreatePanel(s32 port_id)
 	s32 start_x;
 
 	// create panel
-	temp_gobj = func_ovl0_800CD050(0, NULL, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1C, 0x80000000, -1,
+	temp_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1C, 0x80000000, -1,
 								   GetAddressFromOffset(gFile011, &FILE_011_PANEL_IMAGE_OFFSET), 1, NULL, 1);
 	gMnBattlePanels[port_id].panel = temp_gobj;
 	start_x = port_id * 0x45;
@@ -942,7 +938,7 @@ void mnBattleCreatePanel(s32 port_id)
 	mnBattleCreateTypeImage(port_id);
 
 	// create panel doors
-	temp_gobj = func_ovl0_800CD050(0, NULL, 0x17, 0x80000000, panelRenderRoutines[port_id], 0x1D, 0x80000000, -1,
+	temp_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x17, 0x80000000, panelRenderRoutines[port_id], 0x1D, 0x80000000, -1,
 								   GetAddressFromOffset(gFile011, &FILE_011_PANEL_DOOR_L_IMAGE_OFFSET), 1,
 								   mnUpdatePanelDoors, 1);
 	temp_gobj->user_data.p = port_id;
@@ -1103,7 +1099,7 @@ void mnDrawTimerPicker(s32 num)
 	if (gMnBattlePickerGObj != NULL)
 		gcEjectGObj(gMnBattlePickerGObj);
 
-	picker_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, 0x80000000, -1,
+	picker_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, 0x80000000, -1,
 									 GetAddressFromOffset(gFile011, &FILE_011_PICKER_TIME_IMAGE_OFFSET), 1, NULL, 1);
 	gMnBattlePickerGObj = picker_gobj;
 
@@ -1141,7 +1137,7 @@ void mnDrawStockPicker(s32 num)
 	if (gMnBattlePickerGObj != NULL)
 		gcEjectGObj(gMnBattlePickerGObj);
 
-	picker_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, 0x80000000, -1,
+	picker_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, 0x80000000, -1,
 									 GetAddressFromOffset(gFile011, &FILE_011_PICKER_STOCK_IMAGE_OFFSET), 1, NULL, 1);
 	gMnBattlePickerGObj = picker_gobj;
 
@@ -1194,7 +1190,7 @@ void mnBattleDrawTitleAndBack()
 		{ 0x61, 0xAD, 0x49 }
 	};
 
-	title_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, 0x80000000, -1,
+	title_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, 0x80000000, -1,
 									GetAddressFromOffset(gFile012, title_offsets[gMnBattleIsTeamBattle]), 1, NULL, 1);
 	SObjGetStruct(title_gobj)->pos.x = 27.0F;
 	SObjGetStruct(title_gobj)->pos.y = 24.0F;
@@ -1208,7 +1204,7 @@ void mnBattleDrawTitleAndBack()
 	(gMnBattleRule == SCBATTLE_GAMERULE_TIME) ? mnDrawTimerPicker(gMnBattleTimerValue)
 											 : mnDrawStockPicker(gMnBattleStockValue);
 
-	back_gobj = func_ovl0_800CD050(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, 0x80000000, -1,
+	back_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x19, 0x80000000, lbCommonDrawSObjAttr, 0x1A, 0x80000000, -1,
 								   GetAddressFromOffset(gFile011, &FILE_011_BACK_IMAGE_OFFSET), 1, NULL, 1);
 	SObjGetStruct(back_gobj)->pos.x = 244.0F;
 	SObjGetStruct(back_gobj)->pos.y = 23.0F;
@@ -3248,7 +3244,7 @@ void mnBattleCreateCursor(s32 port_id)
 		6, 4, 2, 0
 	};
 
-	cursor_gobj = func_ovl0_800CD050(0, NULL, 0x13, 0x80000000, lbCommonDrawSObjAttr, 0x20, starting_display_orders[port_id], -1,
+	cursor_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x13, 0x80000000, lbCommonDrawSObjAttr, 0x20, starting_display_orders[port_id], -1,
 									 GetAddressFromOffset(gFile011, &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1,
 									 mnBattleHandleButtonPresses, 2);
 
@@ -3297,7 +3293,7 @@ void mnBattleCreateToken(s32 port_id)
 	};
 
 	gMnBattlePanels[port_id].token = token_gobj
-		= func_ovl0_800CD050(0, NULL, 0x14, 0x80000000, mnBattleRenderToken, 0x21, start_display_orders[port_id], -1,
+		= lbCommonMakeSpriteGObj(0, NULL, 0x14, 0x80000000, mnBattleRenderToken, 0x21, start_display_orders[port_id], -1,
 							 GetAddressFromOffset(gFile011, offsets_no_cpu[port_id]), 1, mnBattleSyncTokenAndFighter, 1);
 
 	panel_info = &gMnBattlePanels[port_id];

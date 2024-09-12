@@ -180,7 +180,7 @@ void mvOpeningLinkCreateStageViewport(Vec3f arg0)
 	cam = CameraGetStruct(gMvOpeningLinkStageCameraGObj);
 	func_80007080(&cam->viewport, 10.0F, 90.0F, 310.0F, 230.0F);
 	cam->projection.persp.aspect = 15.0F / 7.0F;
-	gcEndAllObjectProcesses(gMvOpeningLinkStageCameraGObj);
+	gcEndAllProcesses(gMvOpeningLinkStageCameraGObj);
 	gcAddGObjProcess(gMvOpeningLinkStageCameraGObj, mvOpeningLinkAnimateStageCamera, 1, 1);
 
 	dMvOpeningLinkCameraDescAdjustedStart.eye.x += arg0.x;

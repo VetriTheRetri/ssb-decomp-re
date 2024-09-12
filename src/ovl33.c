@@ -48,7 +48,7 @@ extern intptr_t FILE_020_DATA_HEADER_IMAGE_OFFSET; // file 0x020 image offset fo
 extern intptr_t FILE_020_ARROW_LEFT_IMAGE_OFFSET; // file 0x020 image offset for left arrow
 extern intptr_t FILE_020_ARROW_RIGHT_IMAGE_OFFSET; // file 0x020 image offset for right arrow
 
-extern void gcRemoveSObj(GObj*);
+extern void gcRemoveSObjAll(GObj*);
 
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
@@ -1635,7 +1635,7 @@ void mnCharsUpdateMoveName(GObj* move_name_gobj)
 
 	move_type = mnCharsGetMoveType();
 	ft_kind = mnCharsGetFtKind(gMNCharsCurrentIndex);
-	gcRemoveSObj(move_name_gobj);
+	gcRemoveSObjAll(move_name_gobj);
 
 	if (move_type != 3)
 	{

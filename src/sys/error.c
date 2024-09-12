@@ -404,7 +404,7 @@ void syErrorDrawControllerInputs(GObj *gobj)
 
 GObj* func_80022368(s32 link, u32 arg1, s32 arg2)
 {
-    if (gcFindById(-2U) != 0)
+    if (gcFindByID(-2U) != 0)
     {
         return NULL;
     }

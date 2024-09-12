@@ -355,10 +355,10 @@ void mnStageCreateBackground()
 	background_gobj = gcMakeGObjSPAfter(0U, NULL, 0x2U, 0x80000000U);
 	gcAddGObjDisplay(background_gobj, lbCommonDrawSObjAttr, 0x0U, 0x80000000U, -1);
 	background_sobj = lbCommonMakeSObjForGObj(background_gobj, GetAddressFromOffset(gMNStageFilesArray[1], &FILE_015_BACKGROUND_IMAGE_OFFSET));
-	background_sobj->cmt = G_TX_WRAP;
 	background_sobj->cms = G_TX_WRAP;
-	background_sobj->maskt = 6;
-	background_sobj->masks = 5;
+	background_sobj->cmt = G_TX_WRAP;
+	background_sobj->masks = 6;
+	background_sobj->maskt = 5;
 	background_sobj->lrs = 300;
 	background_sobj->lrt = 220;
 	background_sobj->pos.x = 10.0F;
@@ -1068,7 +1068,7 @@ void mnStageAdjustStagePreviewY(GObj* stage_preview_cam_gobj)
 
 		deg = (deg + 2.0F > 360.0F) ? deg + 2.0F - 360.0F : deg + 2.0F;
 
-		gcStopCurrentProcess(1);
+		gcStopCurrentGObjThread(1);
 	}
 }
 

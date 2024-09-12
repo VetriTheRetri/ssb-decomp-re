@@ -213,11 +213,11 @@ void mnOptionMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
     sobj->pos.x = posx + 16.0F;
     sobj->pos.y = posy;
 
-    sobj->cmt = 0;
     sobj->cms = 0;
+    sobj->cmt = 0;
 
-    sobj->maskt = 4;
-    sobj->masks = 0;
+    sobj->masks = 4;
+    sobj->maskt = 0;
 
     sobj->lrs = lrs * 8;
     sobj->lrt = 29;

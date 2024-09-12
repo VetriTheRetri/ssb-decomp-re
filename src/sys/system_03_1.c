@@ -1,417 +1,518 @@
-#include "common.h"
+#include <sys/obj.h>
 
-#include <sys/objtypes.h>
-#include <sys/objmanager.h>
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
-extern GObj *gOMObjCommonLinks[OM_COMMON_MAX_LINKS]; // omGObjListHead
-extern GObjProcess* omCurrentProcess;
-extern GObj* gOMObjCurrentObject;
+// 0x8000AEF0
+void gcApplyByLink(s32 link, void (*proc)(GObj*, u32), u32 param)
+{
+    GObj *current_gobj = gOMObjCommonLinks[link];
 
-// 8000AEF0
-void gcApplyByLink(s32 link, void (*func)(GObj*, void*), void* param) {
-    GObj* curr;
-    GObj* next;
+    while (current_gobj != NULL)
+    {
+        GObj *next_gobj = current_gobj->link_next;
 
-    curr = gOMObjCommonLinks[link];
-    while (curr != NULL) {
-        next = curr->link_next;
-        func(curr, param);
-        curr = next;
+        proc(current_gobj, param);
+
+        current_gobj = next_gobj;
     }
 }
 
-// 8000AF58
-void gcApplyToAll(void (*cb)(GObj*, void*), void* param) {
-    GObj* curr;
-    GObj* next;
+// 0x8000AF58
+void gcApplyToAll(void (*proc)(GObj*, u32), u32 param)
+{
     s32 link;
 
-    for (link = 0; link < ARRAY_COUNT(gOMObjCommonLinks); link++) {
-        curr = gOMObjCommonLinks[link];
-        while (curr != NULL) {
-            next = curr->link_next;
-            cb(curr, param);
-            curr = next;
+    for (link = 0; link < ARRAY_COUNT(gOMObjCommonLinks); link++)
+    {
+        GObj *current_gobj = gOMObjCommonLinks[link];
+
+        while (current_gobj != NULL)
+        {
+            GObj *next_gobj = current_gobj->link_next;
+
+            proc(current_gobj, param);
+
+            current_gobj = next_gobj;
         }
     }
 }
 
-// 8000AFE4
-GObj* gcApplyByLinkEx(s32 link, GObj* (*cb)(GObj*, void*), void* param, s32 onlyOne) {
-    GObj* curr;
-    GObj* next;
-    GObj* ret = NULL;
+// 0x8000AFE4
+GObj* gcApplyByLinkEx(s32 link, GObj* (*proc)(GObj*, u32), u32 param, sb32 is_return_immediate)
+{
+    GObj *current_gobj;
+    GObj *next_gobj;
+    GObj *ret_gobj = NULL;
 
-    curr = gOMObjCommonLinks[link];
-    while (curr != NULL) {
-        GObj* retVal;
+    current_gobj = gOMObjCommonLinks[link];
 
-        next = curr->link_next;
-        retVal = cb(curr, param);
+    while (current_gobj != NULL)
+    {
+        GObj *find_gobj;
 
-        if (retVal != NULL) {
-            ret = retVal;
-            if (onlyOne == TRUE) {
-                return ret;
+        next_gobj = current_gobj->link_next;
+        find_gobj = proc(current_gobj, param);
+
+        if (find_gobj != NULL)
+        {
+            ret_gobj = find_gobj;
+
+            if (is_return_immediate == TRUE)
+            {
+                return ret_gobj;
             }
         }
-        curr = next;
+        current_gobj = next_gobj;
     }
-
-    return ret;
+    return ret_gobj;
 }
 
-// 8000B08C
-GObj* gcApplyToAllEx(GObj* (*cb)(GObj*, void*), void* param, s32 onlyOne) {
-    GObj* curr;
-    GObj* next;
+// 0x8000B08C
+GObj* gcApplyToAllEx(GObj* (*proc)(GObj*, u32), u32 param, sb32 is_return_immediate)
+{
+    GObj *current_gobj;
+    GObj *next_gobj;
     s32 link;
-    GObj* ret = NULL;
+    GObj *ret_gobj = NULL;
 
-    for (link = 0; link < ARRAY_COUNT(gOMObjCommonLinks); link++) {
-        curr = gOMObjCommonLinks[link];
-        while (curr != NULL) {
-            GObj* retVal;
+    for (link = 0; link < ARRAY_COUNT(gOMObjCommonLinks); link++)
+    {
+        current_gobj = gOMObjCommonLinks[link];
 
-            next = curr->link_next;
-            retVal = cb(curr, param);
+        while (current_gobj != NULL)
+        {
+            GObj *find_gobj;
 
-            if (retVal != NULL) {
-                ret = retVal;
-                if (onlyOne == TRUE) {
-                    return ret;
+            next_gobj = current_gobj->link_next;
+            find_gobj = proc(current_gobj, param);
+
+            if (find_gobj != NULL)
+            {
+                ret_gobj = find_gobj;
+
+                if (is_return_immediate == TRUE)
+                {
+                    return ret_gobj;
                 }
             }
-            curr = next;
+            current_gobj = next_gobj;
         }
     }
-
-    return ret;
+    return ret_gobj;
 }
 
-// 8000B14C
-GObj* gcCheckId(GObj* obj, void* id) {
-    return obj->gobj_id == (u32) id ? obj : NULL;
+// 0x8000B14C
+GObj* gcGetByID(GObj *gobj, u32 id)
+{
+    return (gobj->gobj_id == id) ? gobj : NULL;
 }
 
-// 8000B16C
-GObj* gcFindByLinkAndId(s32 link, u32 id) {
-    return gcApplyByLinkEx(link, gcCheckId, (void*) id, TRUE);
+// 0x8000B16C
+GObj* gcFindByLinkAndID(s32 link, u32 id)
+{
+    return gcApplyByLinkEx(link, gcGetByID, id, TRUE);
 }
 
-
-// 8000B198
-GObj* gcFindById(u32 id) {
-    return gcApplyToAllEx(gcCheckId, (void*) id, TRUE);
+// 0x8000B198
+GObj* gcFindByID(u32 id)
+{
+    return gcApplyToAllEx(gcGetByID, id, TRUE);
 }
 
-
-// 8000B1C4
-void gcUpdateDefault(UNUSED GObj* arg0) {
+// 0x8000B1C4
+void gcUpdateDefault(GObj *gobj)
+{
     cmdProcessCommands(NULL);
 }
 
-
-// 8000B1E8
-void gcStopCurrentProcess(s32 numFrames) {
-    if (omCurrentProcess->gobjthread->osstack[7] != 0xFEDCBA98) {
-        syErrorPrintf("gobjthread stack over  gobjid = %d\n", omCurrentProcess->parent_gobj->gobj_id);
+// 0x8000B1E8
+void gcStopCurrentGObjThread(s32 tics)
+{
+    if (gOMObjCurrentProcess->gobjthread->osstack[7] != 0xFEDCBA98)
+    {
+        syErrorPrintf("gobjthread stack over  gobjid = %d\n", gOMObjCurrentProcess->parent_gobj->gobj_id);
     }
-
-    while (numFrames) {
-        osSendMesg(&gOMMesgQueue, (OSMesg) 1, OS_MESG_NOBLOCK);
+    while (tics != 0)
+    {
+        osSendMesg(&gOMMesgQueue, (OSMesg)1, OS_MESG_NOBLOCK);
         osStopThread(NULL);
-        numFrames--;
+        tics--;
     }
 }
 
-// 8000B284
-void gcPauseObjectProcesses(GObj* obj) {
-    GObjProcess* proc;
+// 0x8000B284
+void gcPauseGObjProcessAll(GObj *gobj)
+{
+    GObjProcess *gobjproc;
 
-    if (obj == NULL) {
-        obj = gOMObjCurrentObject;
+    if (gobj == NULL)
+    {
+        gobj = gOMObjCurrentCommon;
     }
+    gobjproc = gobj->gobjproc_head;
 
-    proc = obj->gobjproc_head;
-    while (proc != NULL) {
-        proc->is_paused = TRUE;
-        proc = proc->link_next;
-    }
-}
-
-
-// 8000B2B8
-void gcResumeObjectProcesses(GObj* obj) {
-    GObjProcess* proc;
-
-    if (obj == NULL) {
-        obj = gOMObjCurrentObject;
-    }
-
-    proc = obj->gobjproc_head;
-    while (proc != NULL) {
-        proc->is_paused = FALSE;
-        proc = proc->link_next;
+    while (gobjproc != NULL)
+    {
+        gobjproc->is_paused = TRUE;
+        gobjproc = gobjproc->link_next;
     }
 }
 
+// 0x8000B2B8
+void gcResumeProcessAll(GObj *gobj)
+{
+    GObjProcess *gobjproc;
 
-// 8000B2EC
-void gcPauseProcess(GObjProcess* proc) {
-    if (proc == NULL) {
-        proc = omCurrentProcess;
+    if (gobj == NULL)
+    {
+        gobj = gOMObjCurrentCommon;
     }
+    gobjproc = gobj->gobjproc_head;
 
-    proc->is_paused = TRUE;
+    while (gobjproc != NULL)
+    {
+        gobjproc->is_paused = FALSE;
+        gobjproc = gobjproc->link_next;
+    }
 }
 
-// 8000B304
-void gcResumeProcess(GObjProcess* proc) {
-    if (proc == NULL) {
-        proc = omCurrentProcess;
+// 0x8000B2EC
+void gcPauseGObjProcess(GObjProcess *gobjproc)
+{
+    if (gobjproc == NULL)
+    {
+        gobjproc = gOMObjCurrentProcess;
     }
-
-    proc->is_paused = FALSE;
+    gobjproc->is_paused = TRUE;
 }
 
-// 8000B31C
-void gcPauseProcessByFunction(GObj* obj, void (*proc_common)(GObj*)) {
-    GObjProcess* proc;
-
-    if (obj == NULL) {
-        obj = gOMObjCurrentObject;
+// 0x8000B304
+void gcResumeProcess(GObjProcess *gobjproc)
+{
+    if (gobjproc == NULL)
+    {
+        gobjproc = gOMObjCurrentProcess;
     }
+    gobjproc->is_paused = FALSE;
+}
 
-    proc = obj->gobjproc_head;
-    while (proc != NULL) {
-        if (proc->proc_common == proc_common) {
-            proc->is_paused = TRUE;
+// 0x8000B31C
+void gcPauseProcessByProc(GObj *gobj, void (*proc_common)(GObj*))
+{
+    GObjProcess *gobjproc;
+
+    if (gobj == NULL)
+    {
+        gobj = gOMObjCurrentCommon;
+    }
+    gobjproc = gobj->gobjproc_head;
+
+    while (gobjproc != NULL)
+    {
+        if (gobjproc->proc_common == proc_common)
+        {
+            gobjproc->is_paused = TRUE;
         }
-        proc = proc->link_next;
+        gobjproc = gobjproc->link_next;
     }
 }
 
-// 8000B35C
-void gcResumeProcessByFunction(GObj* obj, void (*proc_common)(GObj*)) {
-    GObjProcess* proc;
+// 0x8000B35C
+void gcResumeProcessByProc(GObj *gobj, void (*proc_common)(GObj*))
+{
+    GObjProcess *gobjproc;
 
-    if (obj == NULL) {
-        obj = gOMObjCurrentObject;
+    if (gobj == NULL)
+    {
+        gobj = gOMObjCurrentCommon;
     }
+    gobjproc = gobj->gobjproc_head;
 
-    proc = obj->gobjproc_head;
-    while (proc != NULL) {
-        if (proc->proc_common == proc_common) {
-            proc->is_paused = FALSE;
+    while (gobjproc != NULL)
+    {
+        if (gobjproc->proc_common == proc_common)
+        {
+            gobjproc->is_paused = FALSE;
         }
-        proc = proc->link_next;
+        gobjproc = gobjproc->link_next;
     }
 }
 
-// 8000B39C
-void gcEndAllObjectProcesses(GObj* obj) {
-    GObjProcess *curr, *next;
+// 0x8000B39C
+void gcEndAllProcesses(GObj *gobj)
+{
+    GObjProcess *current_gobjproc, *next_gobjproc;
 
-    if (obj == NULL) {
-        obj = gOMObjCurrentObject;
+    if (gobj == NULL)
+    {
+        gobj = gOMObjCurrentCommon;
     }
+    current_gobjproc = gobj->gobjproc_head;
 
-    curr = obj->gobjproc_head;
-    while (curr != NULL) {
-        next = curr->link_next;
-        gcEndProcess(curr);
-        curr = next;
+    while (current_gobjproc != NULL)
+    {
+        next_gobjproc = current_gobjproc->link_next;
+
+        gcEndGObjProcess(current_gobjproc);
+
+        current_gobjproc = next_gobjproc;
     }
 }
 
-// 8000B3EC
-void gcCreateDefaultMatricesDeg(DObj* dobj) {
+// 0x8000B3EC
+void gcMakeDObjMatrixSetsRpyD(DObj* dobj)
+{
     gcAddOMMtxForDObjFixed(dobj, nOMTransformTra, 0);
     gcAddOMMtxForDObjFixed(dobj, nOMTransformRotRpyD, 0);
     gcAddOMMtxForDObjFixed(dobj, nOMTransformSca, 0);
 }
 
-// 8000B434
-void gcCreateDefaultMatricesRad(DObj* dobj) {
+// 0x8000B434
+void gcMakeDObjMatrixSetsRpyR(DObj *dobj)
+{
     gcAddOMMtxForDObjFixed(dobj, nOMTransformTra, 0);
     gcAddOMMtxForDObjFixed(dobj, nOMTransformRotRpyR, 0);
     gcAddOMMtxForDObjFixed(dobj, nOMTransformSca, 0);
 }
 
-// 8000B47C
-void gcCreateDefaultCameraMatrices(Camera* camera) {
-    gcAddOMMtxForCamera(camera, nOMTransformPerspFastF, 0);
-    gcAddOMMtxForCamera(camera, nOMTransformLookAt, 0);
+// 0x8000B47C
+void gcMakeCameraMatrixSets(Camera *cam)
+{
+    gcAddOMMtxForCamera(cam, nOMTransformPerspFastF, 0);
+    gcAddOMMtxForCamera(cam, nOMTransformLookAt, 0);
 }
 
-// 8000B4B4
-void gcDobjTreeRemoveAllMObjs(GObj* obj) {
-    DObj* curr;
+// 0x8000B4B4
+void gcRemoveTreeMObjAll(GObj *gobj)
+{
+    DObj *current_dobj = DObjGetStruct(gobj);
 
-    curr = obj->obj;
-    while (curr != NULL) {
-        gcRemoveMObjFromDObj(curr);
-        curr = animModelTreeNextNode(curr);
+    while (current_dobj != NULL)
+    {
+        gcRemoveMObjAll(current_dobj);
+
+        current_dobj = animModelTreeNextNode(current_dobj);
     }
 }
 
-// 8000B4F8
-DObj* gcAddDObjDeg(GObj* obj, void* arg1) {
-    DObj* ret = gcAddDObjForGObj(obj, arg1);
-    gcCreateDefaultMatricesDeg(ret);
-    return ret;
+// 0x8000B4F8
+DObj* gcAddDObjDeg(GObj *gobj, void *dvar)
+{
+    DObj *dobj = gcAddDObjForGObj(gobj, dvar);
+    gcMakeDObjMatrixSetsRpyD(dobj);
+
+    return dobj;
 }
 
+// 0x8000B528
+DObj* gcAddDObjSibling(DObj *dobj, void *dvar)
+{
+    DObj *sibling_dobj = gcAddSiblingForDObj(dobj, dvar);
+    gcMakeDObjMatrixSetsRpyD(sibling_dobj);
 
-// 8000B528
-DObj* gcAddDObjSibling(GObj* obj, void* arg1) {
-    DObj* ret = gcAddSiblingForDObj(obj, arg1);
-    gcCreateDefaultMatricesDeg(ret);
-    return ret;
+    return sibling_dobj;
 }
 
-// 8000B558
-DObj* gcAddDObjChildDeg(GObj* obj, void* arg1) {
-    DObj* ret = gcAddChildForDObj(obj, arg1);
-    gcCreateDefaultMatricesDeg(ret);
-    return ret;
+// 0x8000B558
+DObj* gcAddDObjChildDeg(DObj *dobj, void *dvar)
+{
+    DObj *child_dobj = gcAddChildForDObj(dobj, dvar);
+    gcMakeDObjMatrixSetsRpyD(child_dobj);
+
+    return child_dobj;
 }
 
-// 8000B588
-DObj* gcAddDObjRad(GObj* obj, void* arg1) {
-    DObj* ret = gcAddDObjForGObj(obj, arg1);
-    gcCreateDefaultMatricesRad(ret);
-    return ret;
+// 0x8000B588
+DObj* gcAddDObjRad(GObj *gobj, void *dvar)
+{
+    DObj *dobj = gcAddDObjForGObj(gobj, dvar);
+    gcMakeDObjMatrixSetsRpyR(dobj);
+
+    return dobj;
 }
 
+// 0x8000B5B8
+DObj* gcAddDObjSiblingRad(DObj *dobj, void *dvar)
+{
+    DObj *sibling_dobj = gcAddSiblingForDObj(dobj, dvar);
+    gcMakeDObjMatrixSetsRpyR(sibling_dobj);
 
-// 8000B5B8
-DObj* gcAddDObjSiblingRad(GObj* obj, void* arg1) {
-    DObj* ret = gcAddSiblingForDObj(obj, arg1);
-    gcCreateDefaultMatricesRad(ret);
-    return ret;
+    return sibling_dobj;
 }
 
-// 8000B5E8
-DObj* gcAddDObjChildRad(GObj* obj, void* arg1) {
-    DObj* ret = gcAddChildForDObj(obj, arg1);
-    gcCreateDefaultMatricesRad(ret);
-    return ret;
+// 0x8000B5E8
+DObj* gcAddDObjChildRad(DObj *dobj, void *dvar)
+{
+    DObj *child_dobj = gcAddChildForDObj(dobj, dvar);
+    gcMakeDObjMatrixSetsRpyR(child_dobj);
+    
+    return child_dobj;
 }
 
 // also missing in snap oh.c
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/unref_8000B618.s")
 
-// 8000B70C
-void gcRemoveDObj(GObj* obj) {
-    if (obj == NULL) {
-        obj = gOMObjCurrentObject;
+// 0x8000B70C
+void gcRemoveDObjAll(GObj *gobj)
+{
+    if (gobj == NULL)
+    {
+        gobj = gOMObjCurrentCommon;
     }
-    while (obj->obj != NULL) {
-        gcEjectDObj(obj->obj);
-    }
-}
-
-// 8000B760
-void gcRemoveSObj(GObj* obj) {
-    if (obj == NULL) {
-        obj = gOMObjCurrentObject;
-    }
-    while (obj->obj != NULL) {
-        gcEjectSObj(obj->obj);
+    while (DObjGetStruct(gobj) != NULL)
+    {
+        gcEjectDObj(DObjGetStruct(gobj));
     }
 }
 
+// 0x8000B760
+void gcRemoveSObjAll(GObj *gobj)
+{
+    if (gobj == NULL)
+    {
+        gobj = gOMObjCurrentCommon;
+    }
+    while (SObjGetStruct(gobj) != NULL)
+    {
+        gcEjectSObj(SObjGetStruct(gobj));
+    }
+}
 
-// 8000B7B4
-void gcDeleteAllObjects(void) {
-    GObj* curr;
-    GObj* next;
+// 0x8000B7B4
+void gcEjectAll(void)
+{
+    GObj *current_gobj;
+    GObj *next_gobj;
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(gOMObjCommonLinks); i++) {
-        curr = gOMObjCommonLinks[i];
-        while (curr != NULL) {
-            next = curr->link_next;
-            gcEjectGObj(curr);
-            curr = next;
+    for (i = 0; i < ARRAY_COUNT(gOMObjCommonLinks); i++)
+    {
+        current_gobj = gOMObjCommonLinks[i];
+
+        while (current_gobj != NULL)
+        {
+            next_gobj = current_gobj->link_next;
+
+            gcEjectGObj(current_gobj);
+
+            current_gobj = next_gobj;
         }
     }
 }
 
+// 0x8000B824
+GObj* gcMakeModelGObj
+(
+    u32 id,
+    void (*proc_run)(GObj*),
+    s32 link,
+    u32 link_order,
+    void (*proc_render)(GObj*),
+    u8 dl_link,
+    u32 dl_link_order,
+    s32 cam_tag,
+    void *dvar,
+    sb32 is_add_default_ommtx,
+    u8 gobjproc_kind,
+    void (*proc)(GObj*),
+    u32 gobjproc_priority
+)
+{
+    GObj *gobj;
+    DObj *dobj;
 
-// 8000B824
-GObj* gcCreateModel(s32 objId, void (*objFnUpdate)(GObj*), s32 objLink, s32 objPriority,
-                    void (*fnRender)(GObj*), u8 dlLink, s32 dlPriority, s32 cameraTag, void* dobjBP, s32 setMatrices,
-                    u8 procKind, void (*procFunc)(GObj*), s32 procPriority) {
-    GObj* obj;
-    DObj* dobj;
+    gobj = gcMakeGObjSPAfter(id, proc_run, link, link_order);
 
-    obj = gcMakeGObjSPAfter(objId, objFnUpdate, objLink, objPriority);
-    if (obj == NULL) {
+    if (gobj == NULL)
+    {
         return NULL;
     }
+    gcAddGObjDisplay(gobj, proc_render, dl_link, dl_link_order, cam_tag);
 
-    gcAddGObjDisplay(obj, fnRender, dlLink, dlPriority, cameraTag);
+    dobj = gcAddDObjForGObj(gobj, dvar);
 
-    dobj = gcAddDObjForGObj(obj, dobjBP);
-    if (setMatrices) {
-        gcCreateDefaultMatricesDeg(dobj);
+    if (is_add_default_ommtx != FALSE)
+    {
+        gcMakeDObjMatrixSetsRpyD(dobj);
     }
-    if (procFunc != NULL) {
-        gcAddGObjProcess(obj, procFunc, procKind, procPriority);
+    if (proc != NULL)
+    {
+        gcAddGObjProcess(gobj, proc, gobjproc_kind, gobjproc_priority);
     }
-    return obj;
+    return gobj;
 }
 
-
-// 8000B8BC
-GObj* gcCreateSprite(s32 objId, void (*objFnUpdate)(GObj*), s32 objLink, s32 objPriority,
-                     void (*fnRender)(GObj*), u8 dlLink, s32 dlPriority, s32 cameraTag, Sprite* sprite,
-                     u8 procKind, void (*procFunc)(GObj*), s32 procPriority) {
-    GObj* obj;
-
-    obj = gcMakeGObjSPAfter(objId, objFnUpdate, objLink, objPriority);
-    if (obj == NULL) {
+// 0x8000B8BC
+GObj* gcMakeSpriteGObj
+(
+    u32 id,
+    void (*proc_run)(GObj*),
+    s32 link,
+    u32 link_order,
+    void (*proc_render)(GObj*),
+    s32 dl_link,
+    u32 dl_link_order,
+    s32 cam_tag,
+    Sprite *sprite,
+    u8 gobjproc_kind,
+    void (*proc)(GObj*),
+    u32 priority
+)
+{
+    GObj *gobj = gcMakeGObjSPAfter(id, proc_run, link, link_order);
+        
+    if (gobj == NULL)
+    {
         return NULL;
     }
-
-    gcAddGObjDisplay(obj, fnRender, dlLink, dlPriority, cameraTag);
-    gcAddSObjForGObj(obj, sprite);
-    if (procFunc != NULL) {
-        gcAddGObjProcess(obj, procFunc, procKind, procPriority);
+    gcAddGObjDisplay(gobj, proc_render, dl_link, dl_link_order, cam_tag);
+    
+    gcAddSObjForGObj(gobj, sprite);
+        
+    if (proc != NULL)
+    {
+        gcAddGObjProcess(gobj, proc, gobjproc_kind, priority);
     }
-    return obj;
+    return gobj;
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/func_8000B93C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/func_8000B9FC.s")
 
-// 8000BAA0 non matching in snap anim.c (also probably missing split for anim.c file)
+// 0x8000BAA0 non matching in snap anim.c (also probably missing split for anim.c file)
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/animModelTreeNextNode.s")
 
-// 8000BB04
-void animSetModelAnimationSpeed(GObj* obj, f32 speed) {
-    DObj* dobj = obj->obj;
+// 0x8000BB04
+void gcSetDObjAnimSpeed(GObj *gobj, f32 anim_speed)
+{
+    DObj *dobj = DObjGetStruct(gobj);
 
-    while (dobj != NULL) {
-        dobj->anim_speed = speed;
+    while (dobj != NULL)
+    {
+        dobj->anim_speed = anim_speed;
         dobj = animModelTreeNextNode(dobj);
     }
 }
 
-// 8000BB4C
-void animSetModelAndTextureAnimationSpeed(GObj* obj, f32 speed) {
-    DObj* dobj = obj->obj;
+// 0x8000BB4C
+void gcSetAllAnimSpeed(GObj *gobj, f32 anim_speed)
+{
+    DObj *dobj = DObjGetStruct(gobj);
 
-    while (dobj != NULL) {
-        MObj* mobj = dobj->mobj;
-        dobj->anim_speed = speed;
-        while (mobj != NULL) {
-            mobj->anim_speed = speed;
+    while (dobj != NULL)
+    {
+        MObj *mobj = dobj->mobj;
+
+        dobj->anim_speed = anim_speed;
+
+        while (mobj != NULL)
+        {
+            mobj->anim_speed = anim_speed;
             mobj = mobj->next;
         }
         dobj = animModelTreeNextNode(dobj);

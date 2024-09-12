@@ -59,11 +59,11 @@ Camera* sOMCameraHead;
 u32 sOMCamerasActive;
 u16 sOMCameraSize;
 
-GObj* gOMObjCurrentObject;
+GObj* gOMObjCurrentCommon;
 GObj* gOMObjCurrentRendering; // Is this exclusively a camera GObj?
 GObj* D_80046A5C_40A7C;
 
-GObjProcess* D_80046A60;
+GObjProcess* gOMObjCurrentProcess;
 u32 D_80046A64;
 OSMesg sOMMesg[1];
 OSMesgQueue gOMMesgQueue;
@@ -318,13 +318,13 @@ void func_800077D0(GObjProcess* gobjproc)
 }
 
 // 80007840
-GObjProcess* unref_80007840() { return D_80046A60; }
+GObjProcess* unref_80007840() { return gOMObjCurrentProcess; }
 
 // 8000784C
 u64* unref_8000784C(GObjProcess* gobjproc)
 {
 	if (gobjproc == NULL)
-		gobjproc = D_80046A60;
+		gobjproc = gOMObjCurrentProcess;
 	if ((gobjproc != NULL) && (gobjproc->kind == 0))
 		return gobjproc->gobjthread->osstack;
 	else
@@ -335,7 +335,7 @@ u64* unref_8000784C(GObjProcess* gobjproc)
 u32 unref_80007884(GObjProcess* gobjproc)
 {
 	if (gobjproc == NULL)
-		gobjproc = D_80046A60;
+		gobjproc = gOMObjCurrentProcess;
 
 	if ((gobjproc != NULL) && (gobjproc->kind == 0))
 		return gobjproc->gobjthread->stack_size;
@@ -741,7 +741,7 @@ GObjProcess* gcAddGObjProcess(GObj* gobj, void (*proc)(GObj*), u8 kind, u32 prio
 	GObjProcess* gobjproc;
 
 	if (gobj == NULL)
-		gobj = gOMObjCurrentObject;
+		gobj = gOMObjCurrentCommon;
 	gobjproc = gcGetGObjProcess();
 
 	if (priority >= 6)
@@ -797,7 +797,7 @@ GObjProcess* unref_80008304(GObj* gobj, void (*proc)(GObj*), u32 pri, s32 thread
 	OSId tid;
 
 	if (gobj == NULL)
-		gobj = gOMObjCurrentObject;
+		gobj = gOMObjCurrentCommon;
 
 	gobjproc = gcGetGObjProcess();
 
@@ -833,16 +833,16 @@ GObjProcess* unref_80008304(GObj* gobj, void (*proc)(GObj*), u32 pri, s32 thread
 }
 
 // 8000848C
-void gcEndProcess(GObjProcess* gobjproc)
+void gcEndGObjProcess(GObjProcess* gobjproc)
 {
 	OMThreadStackNode* tnode;
 
-	if ((gobjproc == NULL) || (gobjproc == D_80046A60))
+	if ((gobjproc == NULL) || (gobjproc == gOMObjCurrentProcess))
 	{
 		D_80046A64 = 1;
 
-		if (D_80046A60->kind == nOMObjProcessKindThread)
-			gcStopCurrentProcess(1);
+		if (gOMObjCurrentProcess->kind == nOMObjProcessKindThread)
+			gcStopCurrentGObjThread(1);
 		return;
 	}
 
@@ -1271,7 +1271,7 @@ MObj* gcAddMObjForDObj(DObj* dobj, MObjSub* mobjsub)
 }
 
 // 800091F4
-void gcRemoveMObjFromDObj(DObj* dobj)
+void gcRemoveMObjAll(DObj* dobj)
 {
 	MObj* current_mobj;
 	MObj* next_mobj;
@@ -1326,7 +1326,7 @@ DObj* gcAddDObjForGObj(GObj* gobj, void* dvar)
 	DObj* current_dobj;
 
 	if (gobj == NULL)
-		gobj = gOMObjCurrentObject;
+		gobj = gOMObjCurrentCommon;
 
 	new_dobj = gcGetDObjSetNextAlloc();
 
@@ -1486,7 +1486,7 @@ SObj* gcAddSObjForGObj(GObj* gobj, Sprite* sprite)
 	SObj* new_sobj;
 
 	if (gobj == NULL)
-		gobj = gOMObjCurrentObject;
+		gobj = gOMObjCurrentCommon;
 	new_sobj = gcGetSObjSetNextAlloc();
 
 	if (SObjGetStruct(gobj) != NULL)
@@ -1537,7 +1537,7 @@ Camera* gcAddCameraForGObj(GObj* gobj)
 	Camera* new_cam;
 
 	if (gobj == NULL)
-		gobj = gOMObjCurrentObject;
+		gobj = gOMObjCurrentCommon;
 	gobj->obj_kind = nOMObjCommonAppendCamera;
 
 	new_cam = gcGetCameraSetNextAlloc();
@@ -1682,19 +1682,19 @@ GObj* gcMakeGObjBefore(u32 id, void (*proc_run)(GObj*), GObj* link_gobj)
 // 80009A84
 void gcEjectGObj(GObj* gobj)
 {
-	if ((gobj == NULL) || (gobj == gOMObjCurrentObject))
+	if ((gobj == NULL) || (gobj == gOMObjCurrentCommon))
 	{
 		D_80046A64 = 2;
 		return;
 	}
 
-	gcEndAllObjectProcesses(gobj);
+	gcEndAllProcesses(gobj);
 
 	switch (gobj->obj_kind)
 	{
-	case nOMObjCommonAppendDObj: gcRemoveDObj(gobj); break;
+	case nOMObjCommonAppendDObj: gcRemoveDObjAll(gobj); break;
 
-	case nOMObjCommonAppendSObj: gcRemoveSObj(gobj); break;
+	case nOMObjCommonAppendSObj: gcRemoveSObjAll(gobj); break;
 
 	case nOMObjCommonAppendCamera: gcEjectCamera(CameraGetStruct(gobj)); break;
 	}
@@ -1721,7 +1721,7 @@ void gcMoveGObjCommon(s32 sw, GObj* this_gobj, u8 link, u32 order, GObj* other_g
 	}
 
 	if (this_gobj == NULL)
-		this_gobj = gOMObjCurrentObject;
+		this_gobj = gOMObjCurrentCommon;
 
 	orig_gobjproc = this_gobj->gobjproc_head;
 
@@ -1799,7 +1799,7 @@ void gcLinkGObjDLCommon(GObj* gobj, void (*proc_render)(GObj*), u8 dl_link, u32 
 void gcAddGObjDisplay(GObj *gobj, void (*proc_render)(GObj*), u8 dl_link, u32 order, s32 arg4)
 {
 	if (gobj == NULL)
-		gobj = gOMObjCurrentObject;
+		gobj = gOMObjCurrentCommon;
 
 	gcLinkGObjDLCommon(gobj, proc_render, dl_link, order, arg4);
 	gcDLLinkGObjTail(gobj);
@@ -1809,7 +1809,7 @@ void gcAddGObjDisplay(GObj *gobj, void (*proc_render)(GObj*), u8 dl_link, u32 or
 void unref_80009E38(GObj* gobj, void (*proc_render)(GObj*), u8 dl_link, u32 order, s32 arg4)
 {
 	if (gobj == NULL)
-		gobj = gOMObjCurrentObject;
+		gobj = gOMObjCurrentCommon;
 
 	gcLinkGObjDLCommon(gobj, proc_render, dl_link, order, arg4);
 	gcDLLinkGObjHead(gobj);
@@ -1819,7 +1819,7 @@ void unref_80009E38(GObj* gobj, void (*proc_render)(GObj*), u8 dl_link, u32 orde
 void unref_80009E7C(GObj* this_gobj, void (*proc_render)(GObj*), s32 arg2, GObj* other_gobj)
 {
 	if (this_gobj == NULL)
-		this_gobj = gOMObjCurrentObject;
+		this_gobj = gOMObjCurrentCommon;
 
 	gcLinkGObjDLCommon(this_gobj, proc_render, other_gobj->dl_link_id, other_gobj->dl_link_order, arg2);
 	gcAppendGObjToDLLinkedList(this_gobj, other_gobj);
@@ -1829,7 +1829,7 @@ void unref_80009E7C(GObj* this_gobj, void (*proc_render)(GObj*), s32 arg2, GObj*
 void unref_80009ED0(GObj* this_gobj, void (*proc_render)(GObj*), s32 arg2, GObj* other_gobj)
 {
 	if (this_gobj == NULL)
-		this_gobj = gOMObjCurrentObject;
+		this_gobj = gOMObjCurrentCommon;
 
 	gcLinkGObjDLCommon(this_gobj, proc_render, other_gobj->dl_link_id, other_gobj->dl_link_order, arg2);
 	gcAppendGObjToDLLinkedList(this_gobj, other_gobj->link_prev);
@@ -1851,7 +1851,7 @@ void func_80009F28(GObj* gobj, void (*proc_render)(GObj*), u32 order, u64 arg3, 
 void func_80009F74(GObj* gobj, void (*proc_render)(GObj*), u32 order, u64 arg3, s32 arg4)
 {
 	if (gobj == NULL)
-		gobj = gOMObjCurrentObject;
+		gobj = gOMObjCurrentCommon;
 
 	func_80009F28(gobj, proc_render, order, arg3, arg4);
 	gcDLLinkGObjTail(gobj);
@@ -1861,7 +1861,7 @@ void func_80009F74(GObj* gobj, void (*proc_render)(GObj*), u32 order, u64 arg3, 
 void unref_80009FC0(GObj* gobj, void (*proc_render)(GObj*), u32 order, u64 arg3, s32 arg4)
 {
 	if (gobj == NULL)
-		gobj = gOMObjCurrentObject;
+		gobj = gOMObjCurrentCommon;
 
 	func_80009F28(gobj, proc_render, order, arg3, arg4);
 	gcDLLinkGObjHead(gobj);
@@ -1871,7 +1871,7 @@ void unref_80009FC0(GObj* gobj, void (*proc_render)(GObj*), u32 order, u64 arg3,
 void unref_8000A00C(GObj* this_gobj, void (*proc_render)(GObj*), u64 arg2, s32 arg3, GObj* other_gobj)
 {
 	if (this_gobj == NULL)
-		this_gobj = gOMObjCurrentObject;
+		this_gobj = gOMObjCurrentCommon;
 	func_80009F28(this_gobj, proc_render, other_gobj->dl_link_order, arg2, arg3);
 	gcAppendGObjToDLLinkedList(this_gobj, other_gobj);
 }
@@ -1880,7 +1880,7 @@ void unref_8000A00C(GObj* this_gobj, void (*proc_render)(GObj*), u64 arg2, s32 a
 void unref_8000A06C(GObj* this_gobj, void (*proc_render)(GObj*), u64 arg2, s32 arg3, GObj* other_gobj)
 {
 	if (this_gobj == NULL)
-		this_gobj = gOMObjCurrentObject;
+		this_gobj = gOMObjCurrentCommon;
 	func_80009F28(this_gobj, proc_render, other_gobj->dl_link_order, arg2, arg3);
 	gcAppendGObjToDLLinkedList(this_gobj, other_gobj->link_prev);
 }
@@ -2005,13 +2005,13 @@ GObj* func_8000A40C(GObj* gobj)
 	GObj* return_gobj;
 
 	D_8003B874_3C474 = 1;
-	gOMObjCurrentObject = gobj;
+	gOMObjCurrentCommon = gobj;
 
 	gobj->proc_run(gobj);
 
 	return_gobj = gobj->link_next;
 
-	gOMObjCurrentObject = NULL;
+	gOMObjCurrentCommon = NULL;
 	D_8003B874_3C474 = 0;
 
 	switch (D_80046A64)
@@ -2034,8 +2034,8 @@ GObjProcess* func_8000A49C(GObjProcess* gobjproc)
 	GObjProcess* return_gobjproc;
 
 	D_8003B874_3C474 = 2;
-	gOMObjCurrentObject = gobjproc->parent_gobj;
-	D_80046A60 = gobjproc;
+	gOMObjCurrentCommon = gobjproc->parent_gobj;
+	gOMObjCurrentProcess = gobjproc;
 
 	switch (gobjproc->kind)
 	{
@@ -2049,8 +2049,8 @@ GObjProcess* func_8000A49C(GObjProcess* gobjproc)
 
 	return_gobjproc = gobjproc->priority_next;
 
-	gOMObjCurrentObject = NULL;
-	D_80046A60 = NULL;
+	gOMObjCurrentCommon = NULL;
+	gOMObjCurrentProcess = NULL;
 	D_8003B874_3C474 = 0;
 
 	switch (D_80046A64)
@@ -2066,7 +2066,7 @@ GObjProcess* func_8000A49C(GObjProcess* gobjproc)
 
 	case 1:
 		D_80046A64 = 0;
-		gcEndProcess(gobjproc);
+		gcEndGObjProcess(gobjproc);
 		break;
 
 	case 0: break;
@@ -2084,8 +2084,8 @@ void func_8000A5E4()
 	GObjProcess* gobjproc;
 
 	D_80046A64 = 0;
-	gOMObjCurrentObject = NULL;
-	D_80046A60 = NULL;
+	gOMObjCurrentCommon = NULL;
+	gOMObjCurrentProcess = NULL;
 
 	for (i = 0; i < ARRAY_COUNT(gOMObjCommonLinks); i++)
 	{

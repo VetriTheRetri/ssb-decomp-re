@@ -671,7 +671,7 @@ s32 *dSC1PGameInterfaceCountPositions[/* */] =
 };
 
 // 0x80192B0C - Some kind of process ID list?
-u16 D_ovl65_80192B0C[/* */] = { 0x16, 0xF, 0x3C };
+u16 dSC1PGameStageCommonStopTics[/* */] = { 22, 15, 60 };
 
 // 0x80192B14
 Unk800D4060 D_ovl65_80192B14 = { 0 };
@@ -1410,25 +1410,25 @@ void sc1PGameWaitStageCommonUpdate(void)
     GObj *fighter_gobj;
     s32 random;
     s32 player_count;
-    s32 process_id;
+    s32 stop_tics;
     s32 player;
     s32 i;
 
-    random = mtTrigGetRandomIntRange(ARRAY_COUNT(D_ovl65_80192B0C));
-    gcStopCurrentProcess(0x5A);
+    random = mtTrigGetRandomIntRange(ARRAY_COUNT(dSC1PGameStageCommonStopTics));
+    gcStopCurrentGObjThread(90);
     ifCommonCountdownMakeInterface();
 
-    process_id = D_ovl65_80192B0C[random];
+    stop_tics = dSC1PGameStageCommonStopTics[random];
 
     if (random == 1)
     {
-        gcStopCurrentProcess(0x5A);
+        gcStopCurrentGObjThread(90);
     }
     player_count = gBattleState->pl_count + gBattleState->cp_count;
 
     if (player_count < 3)
     {
-        gcStopCurrentProcess(process_id);
+        gcStopCurrentGObjThread(stop_tics);
     }
     player = gSceneData.spgame_player;
 
@@ -1440,17 +1440,17 @@ void sc1PGameWaitStageCommonUpdate(void)
 
         if (random == 2)
         {
-            gcStopCurrentProcess(0x1E);
+            gcStopCurrentGObjThread(30);
             func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_camera_zoom, 0.1F, 28.0F);
-            gcStopCurrentProcess(process_id - 0x1E);
+            gcStopCurrentGObjThread(stop_tics - 30);
         }
-        else gcStopCurrentProcess(process_id);
+        else gcStopCurrentGObjThread(stop_tics);
 
         player = sc1PGameGetNextFreePlayerPort(player);
     }
     if (random == 2)
     {
-        gcStopCurrentProcess(0x1E);
+        gcStopCurrentGObjThread(30);
         cmManagerSetCameraStatusDefault();
     }
 }
@@ -1463,7 +1463,7 @@ void sc1PGameWaitStageTeamUpdate(void)
     s32 player;
     s32 i;
 
-    gcStopCurrentProcess(0x5A);
+    gcStopCurrentGObjThread(90);
     ifCommonCountdownMakeInterface();
 
     player_count = gBattleState->pl_count + gBattleState->cp_count;
@@ -1479,7 +1479,7 @@ void sc1PGameWaitStageTeamUpdate(void)
         }
         else ftCommonAppearSetPosition(fighter_gobj);
 
-        gcStopCurrentProcess(0x3C);
+        gcStopCurrentGObjThread(60);
 
         player = sc1PGameGetNextFreePlayerPort(player);
     }
@@ -1497,13 +1497,13 @@ void sc1PGameWaitStageBonus3Update(void)
         0.3F, 
         31.5F
     );
-    gcStopCurrentProcess(0x3C);
+    gcStopCurrentGObjThread(60);
     ifCommonAnnounceGoMakeInterface();
     ifCommonPlayerDamageSetShowInterface();
     func_800269C0_275C0(nSYAudioVoiceAnnounceGo);
     ifCommonAnnounceGoSetStatus();
     gcEjectGObj(NULL);
-    gcStopCurrentProcess(1);
+    gcStopCurrentGObjThread(1);
 }
 
 // 0x8018E9A4
@@ -1547,7 +1547,7 @@ void sc1PGameWaitStageBossUpdate(void)
 
     ftCommonAppearSetStatus(com_gobj);
 
-    gcStopCurrentProcess(0x258);
+    gcStopCurrentGObjThread(600);
 
     ftParamUnlockPlayerControl(player_gobj);
     ftParamUnlockPlayerControl(com_gobj);
@@ -1600,7 +1600,7 @@ void sc1PGameWaitThreadUpdate(GObj *gobj)
         break;
     }
     gcEjectGObj(NULL);
-    gcStopCurrentProcess(1);
+    gcStopCurrentGObjThread(1);
 }
 
 // 0x8018EB68

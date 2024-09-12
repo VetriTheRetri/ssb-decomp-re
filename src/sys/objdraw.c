@@ -354,17 +354,17 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
 
             case 1:
                 translate = (OMTranslate*)csr;
-                csr += sizeof(OMTranslate);
+                csr += sizeof(*translate);
                 break;
 
             case 2:
                 rotate = (OMRotate*)csr;
-                csr += sizeof(OMRotate);
+                csr += sizeof(*rotate);
                 break;
 
             case 3:
                 scale = (OMScale*)csr;
-                csr += sizeof(OMScale);
+                csr += sizeof(*scale);
                 break;
             }
         }
@@ -3040,6 +3040,7 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                 case 11:
                     gSPMatrix(dl++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
                     break;
+
                 default:
                     if ((ommtx->kind >= 66) && (sODMatrixProcess != NULL))
                     {

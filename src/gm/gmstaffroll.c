@@ -691,13 +691,13 @@ sb32 gmStaffrollCheckUnpause(void)
 
 		if (sGMStaffrollScrollGObj != NULL)
 		{
-			gcResumeObjectProcesses(sGMStaffrollScrollGObj);
+			gcResumeProcessAll(sGMStaffrollScrollGObj);
 		}
 		name_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDCreditsName];
 
 		while (name_gobj != NULL)
 		{
-			gcResumeObjectProcesses(name_gobj);
+			gcResumeProcessAll(name_gobj);
 
 			name_gobj = name_gobj->link_next;
 		}
@@ -705,7 +705,7 @@ sb32 gmStaffrollCheckUnpause(void)
 
 		while (job_gobj != NULL)
 		{
-			gcResumeObjectProcesses(job_gobj);
+			gcResumeProcessAll(job_gobj);
 			job_gobj = job_gobj->link_next;
 		}
 		var_v1 = FALSE;
@@ -933,11 +933,11 @@ void gmStaffrollHighlightThreadUpdate(GObj *gobj)
 		while (sGMStaffrollHighlightSize != 0)
 		{
 			sGMStaffrollHighlightSize--;
-			gcStopCurrentProcess(1);
+			gcStopCurrentGObjThread(1);
 		}
 	}
 	gcEjectGObj(NULL);
-	gcStopCurrentProcess(1);
+	gcStopCurrentGObjThread(1);
 }
 
 // 0x801327A4
@@ -1425,13 +1425,13 @@ sb32 gmStaffrollCheckPause(void)
 		{
 			if (sGMStaffrollScrollGObj != NULL)
 			{
-				gcPauseObjectProcesses(sGMStaffrollScrollGObj);
+				gcPauseGObjProcessAll(sGMStaffrollScrollGObj);
 			}
 			gobj = gOMObjCommonLinks[nOMObjCommonLinkIDCreditsName];
 
 			while (gobj != NULL)
 			{
-				gcPauseObjectProcesses(gobj);
+				gcPauseGObjProcessAll(gobj);
 
 				gobj = gobj->link_next;
 			}
@@ -1439,7 +1439,7 @@ sb32 gmStaffrollCheckPause(void)
 
 			while (gobj != NULL)
 			{
-				gcPauseObjectProcesses(gobj);
+				gcPauseGObjProcessAll(gobj);
 
 				gobj = gobj->link_next;
 			}
@@ -1540,7 +1540,7 @@ void gmStaffrollJobAndNameThreadUpdate(GObj *gobj)
 
 	while (sGMStaffrollStatus != 0)
 	{
-		gcStopCurrentProcess(1);
+		gcStopCurrentGObjThread(1);
 	}
 	gobj->flags = GOBJ_FLAG_NONE;
 
@@ -1561,7 +1561,7 @@ void gmStaffrollJobAndNameThreadUpdate(GObj *gobj)
 			cn->interpolation = 1.0F;
 		}
 		gcPlayAnimAll(gobj);
-		gcStopCurrentProcess(1);
+		gcStopCurrentGObjThread(1);
 	}
 	if (cn->status == -1)
 	{
@@ -1569,7 +1569,7 @@ void gmStaffrollJobAndNameThreadUpdate(GObj *gobj)
 	}
 	gmStaffrollNameSetPrevAlloc(cn);
 	gcEjectGObj(NULL);
-	gcStopCurrentProcess(1);
+	gcStopCurrentGObjThread(1);
 }
 
 // 0x80133854
@@ -1954,7 +1954,7 @@ void gmStaffrollCrosshairThreadUpdate(GObj *gobj)
 	{
 		sobj->pos.y += 10.5F;
 
-		gcStopCurrentProcess(1);
+		gcStopCurrentGObjThread(1);
 	} 
 	while (crosshair_center_wait--);
 
@@ -1977,7 +1977,7 @@ void gmStaffrollCrosshairThreadUpdate(GObj *gobj)
 		sGMStaffrollCrosshairPositionX = sobj->pos.x - base_x;
 		sGMStaffrollCrosshairPositionY = sobj->pos.y - base_y;
 
-		gcStopCurrentProcess(1);
+		gcStopCurrentGObjThread(1);
 	}
 }
 
@@ -2087,7 +2087,7 @@ void gmStaffrollScrollThreadUpdate(GObj *gobj)
 				is_queued_name = TRUE;
 			}
 		}
-		gcStopCurrentProcess(1);
+		gcStopCurrentGObjThread(1);
 	}
 	name = name_gobj->user_data.p;
 	name->status = -1;
@@ -2095,7 +2095,7 @@ void gmStaffrollScrollThreadUpdate(GObj *gobj)
 	sGMStaffrollScrollGObj = NULL;
 
 	gcEjectGObj(NULL);
-	gcStopCurrentProcess(1);
+	gcStopCurrentGObjThread(1);
 }
 
 // 0x8013498C

@@ -190,7 +190,7 @@ void mvOpeningYoshiCreateStageViewport(Vec3f arg0)
 	cam = CameraGetStruct(gMvOpeningYoshiStageCameraGObj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 150.0F);
 	cam->projection.persp.aspect = 15.0F / 7.0F;
-	gcEndAllObjectProcesses(gMvOpeningYoshiStageCameraGObj);
+	gcEndAllProcesses(gMvOpeningYoshiStageCameraGObj);
 	gcAddGObjProcess(gMvOpeningYoshiStageCameraGObj, mvOpeningYoshiAnimateStageCamera, 1, 1);
 
 	dMvOpeningYoshiCameraSettingsAdjustedStart.eye.x += arg0.x;

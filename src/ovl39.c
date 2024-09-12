@@ -192,7 +192,7 @@ void mvOpeningFoxCreateStageViewport(Vec3f arg0)
 	cam = CameraGetStruct(gMvOpeningFoxStageCameraGObj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 210.0F, 230.0F);
 	cam->projection.persp.aspect = 10.0F / 11.0F;
-	gcEndAllObjectProcesses(gMvOpeningFoxStageCameraGObj);
+	gcEndAllProcesses(gMvOpeningFoxStageCameraGObj);
 	gcAddGObjProcess(gMvOpeningFoxStageCameraGObj, mvOpeningFoxAnimateStageCamera, 1, 1);
 
 	dMvOpeningFoxCameraSettingsAdjustedStart.eye.x += arg0.x;

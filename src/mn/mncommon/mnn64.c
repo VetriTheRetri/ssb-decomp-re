@@ -122,7 +122,7 @@ void mnN64LogoThreadUpdate(GObj *gobj)
 		step = 16 - i;
 		sobj->pos.y = 65.0F - ((-(38.75F / 64.0F) * step) * step);
 
-		gcStopCurrentProcess(1);
+		gcStopCurrentGObjThread(1);
 		
 		i++;
 	}
@@ -132,7 +132,7 @@ void mnN64LogoThreadUpdate(GObj *gobj)
 
 	while (i < 24)
 	{
-		gcStopCurrentProcess(1);
+		gcStopCurrentGObjThread(1);
 		i++;
 	}
 	sp50 = D_ovl58_80131F50;
@@ -143,14 +143,14 @@ void mnN64LogoThreadUpdate(GObj *gobj)
 
 	while (i < 13)
 	{
-		gcStopCurrentProcess(1);
+		gcStopCurrentGObjThread(1);
 		i++;
 	}
 	sMNN64IsProceedOpening = TRUE;
 
 	while (TRUE)
 	{
-		gcStopCurrentProcess(1);
+		gcStopCurrentGObjThread(1);
 	}
 }
 

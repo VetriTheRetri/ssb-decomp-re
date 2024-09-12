@@ -271,11 +271,11 @@ ifACharacter dIFCommonAnnounceGameSetSpriteData[/* */] =
 };
 
 // 0x8012EE4C
-u16 dIFCommonFocusProcessIDs[/* */] =
+u16 dIFCommonFocusProcessStopTics[/* */] =
 {
-    0x0016,
-    0x000F,
-    0x003C
+    22,
+    15,
+    60
 };
 
 // 0x8012EE54
@@ -1947,11 +1947,11 @@ void ifCommonItemArrowSetAttr(void)
 // 0x80111FF0
 void ifCommonAnnounceThread(GObj *interface_gobj)
 {
-    gcStopCurrentProcess(0x3C);
+    gcStopCurrentGObjThread(60);
 
     gcEjectGObj(NULL);
 
-    gcStopCurrentProcess(1);
+    gcStopCurrentGObjThread(1);
 }
 
 // 0x80112024
@@ -2058,7 +2058,7 @@ void ifCommonCountdownThread(GObj *interface_gobj)
 
             sobj = sobj->next;
         }
-        gcStopCurrentProcess(1);
+        gcStopCurrentGObjThread(1);
     }
     sobj = ifGetSObj(interface_gobj);
 
@@ -2161,7 +2161,7 @@ void ifCommonCountdownThread(GObj *interface_gobj)
         }
         timer++;
 
-        gcStopCurrentProcess(1);
+        gcStopCurrentGObjThread(1);
 
         main_status = -1;
     }
@@ -2176,10 +2176,10 @@ finish:
 
             sobj = sobj->next;
         }
-        gcStopCurrentProcess(1);
+        gcStopCurrentGObjThread(1);
     }
     gcEjectGObj(NULL);
-    gcStopCurrentProcess(1);
+    gcStopCurrentGObjThread(1);
 }
 
 // 0x80112668
@@ -2250,18 +2250,18 @@ void ifCommonEntryFocusThread(GObj *interface_gobj)
 {
     GObj *fighter_gobj;
     s32 index = interface_gobj->user_data.s;
-    s32 process_id = dIFCommonFocusProcessIDs[index];
+    s32 stop_tics = dIFCommonFocusProcessStopTics[index];
     s32 count;
 
     if (index == 1)
     {
-        gcStopCurrentProcess(0x5A);
+        gcStopCurrentGObjThread(90);
     }
     count = gBattleState->pl_count + gBattleState->cp_count;
 
     if (count < 3)
     {
-        gcStopCurrentProcess(process_id);
+        gcStopCurrentGObjThread(stop_tics);
     }
     fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
 
@@ -2271,22 +2271,22 @@ void ifCommonEntryFocusThread(GObj *interface_gobj)
 
         if (index == 2)
         {
-            gcStopCurrentProcess(0x1E);
+            gcStopCurrentGObjThread(30);
 
             func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_camera_zoom, 0.1F, 28.0F);
-            gcStopCurrentProcess(process_id - 0x1E);
+            gcStopCurrentGObjThread(stop_tics - 30);
         }
-        else gcStopCurrentProcess(process_id);
+        else gcStopCurrentGObjThread(stop_tics);
 
         fighter_gobj = fighter_gobj->link_next;
     }
     if (index == 2)
     {
-        gcStopCurrentProcess(0x1E);
+        gcStopCurrentGObjThread(30);
         cmManagerSetCameraStatusDefault();
     }
     gcEjectGObj(NULL);
-    gcStopCurrentProcess(1);
+    gcStopCurrentGObjThread(1);
 }
 
 // 0x801129DC
@@ -2302,11 +2302,11 @@ void ifCommonEntryFocusMakeInterface(s32 id)
 // 0x80112A34
 void ifCommonEntryAllThread(GObj *interface_gobj)
 {
-    gcStopCurrentProcess(0x5A);
+    gcStopCurrentGObjThread(90);
     ifCommonCountdownMakeInterface();
     ifCommonEntryFocusMakeInterface(mtTrigGetRandomIntRange(3));
     gcEjectGObj(NULL);
-    gcStopCurrentProcess(1);
+    gcStopCurrentGObjThread(1);
 }
 
 // 0x80112A80
@@ -2320,13 +2320,13 @@ void ifCommonEntryAllMakeInterface(void)
 // 0x80112AD0
 void ifCommonSuddenDeathThread(GObj *interface_gobj)
 {
-    gcStopCurrentProcess(0x5A);
+    gcStopCurrentGObjThread(90);
     ifCommonAnnounceGoMakeInterface();
     ifCommonPlayerDamageSetShowInterface();
     ifCommonAnnounceGoSetStatus();
     func_800269C0_275C0(nSYAudioVoiceAnnounceGo);
     gcEjectGObj(NULL);
-    gcStopCurrentProcess(1);
+    gcStopCurrentGObjThread(1);
 }
 
 // 0x80112B24
@@ -2591,7 +2591,7 @@ void ifCommonBattleInitPlacement(void)
 // 0x80113638
 void func_ovl2_80113638(GObj *interface_gobj, s32 unused)
 {
-    gcPauseObjectProcesses(interface_gobj);
+    gcPauseGObjProcessAll(interface_gobj);
 
     interface_gobj->flags |= GOBJ_FLAG_NOEJECT;
 }
@@ -2599,7 +2599,7 @@ void func_ovl2_80113638(GObj *interface_gobj, s32 unused)
 // 0x8011366C
 void func_ovl2_8011366C(GObj *interface_gobj, s32 unused)
 {
-    gcResumeObjectProcesses(interface_gobj);
+    gcResumeProcessAll(interface_gobj);
 
     interface_gobj->flags &= ~GOBJ_FLAG_NOEJECT;
 }
@@ -2628,7 +2628,7 @@ void func_ovl2_80113744(GObj *fighter_gobj, s32 arg1)
     
     if (fp->ft_kind == nFTKindBoss) 
     {
-        gcResumeObjectProcesses();
+        gcResumeProcessAll();
         
         fighter_gobj->flags &= ~0x40;
     }

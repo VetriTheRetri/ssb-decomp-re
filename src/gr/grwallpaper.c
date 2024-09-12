@@ -341,7 +341,7 @@ void func_ovl2_80104D30(void)
     {
         if (gobj->gobj_id == nOMObjCommonKindWallpaper)
         {
-            gcResumeObjectProcesses(gobj);
+            gcResumeProcessAll(gobj);
         }
         gobj = gobj->link_next;
     }

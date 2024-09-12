@@ -2447,7 +2447,7 @@ void mnResultsLoadMatchInfo()
 void func_ovl31_801377C0(s32 arg0)
 {
 	while (D_8009D960_96D60->unk34 == 0)
-		gcStopCurrentProcess(1);
+		gcStopCurrentGObjThread(1);
 
 	while (TRUE)
 	{
@@ -2456,7 +2456,7 @@ void func_ovl31_801377C0(s32 arg0)
 			auPlaySong(0, 0x16);
 			gcEjectGObj(0);
 		}
-		gcStopCurrentProcess(1);
+		gcStopCurrentGObjThread(1);
 	}
 }
 
@@ -2481,7 +2481,7 @@ void func_ovl31_80137898(s32 arg0)
 			func_800044B4(winner);
 			func_80004494(winner);
 			gcEjectGObj(0);
-			gcStopCurrentProcess(1);
+			gcStopCurrentGObjThread(1);
 		}
 
 		if (frame & 1)
@@ -2489,7 +2489,7 @@ void func_ovl31_80137898(s32 arg0)
 		else
 			func_80004494(winner);
 
-		gcStopCurrentProcess(1);
+		gcStopCurrentGObjThread(1);
 	}
 }
 

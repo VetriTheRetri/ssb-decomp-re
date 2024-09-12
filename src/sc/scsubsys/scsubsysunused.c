@@ -53,7 +53,7 @@ void func_ovl1_803903E0(GObj *gobj, s32 arg1)
         
         if (temp_s0 != NULL)
         {
-            gcRemoveMObjFromDObj(temp_s0);
+            gcRemoveMObjAll(temp_s0);
 
             lbCommonAddMObjForFighterPartsDObj(temp_s0, (var_s1 != NULL) ? *var_s1 : NULL, (var_s2 != NULL) ? *var_s2 : NULL, NULL, user_data->unk_subsysud_0x9);
         }

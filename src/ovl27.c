@@ -736,7 +736,7 @@ void mn1PSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
 
 	if (ft_kind != nFTKindNull)
 	{
-		gcRemoveSObj(name_logo_gobj);
+		gcRemoveSObjAll(name_logo_gobj);
 
 		// logo
 		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMN1PFilesArray[1], logo_offsets[ft_kind]));
@@ -953,10 +953,10 @@ void mn1PCreateBackground()
 	background_gobj = gcMakeGObjSPAfter(0U, NULL, 0x11U, 0x80000000U);
 	gcAddGObjDisplay(background_gobj, lbCommonDrawSObjAttr, 0x1AU, 0x80000000U, -1);
 	background_sobj = lbCommonMakeSObjForGObj(background_gobj, GetAddressFromOffset(gMN1PFilesArray[2], &FILE_015_BACKGROUND_IMAGE_OFFSET));
-	background_sobj->cmt = G_TX_WRAP;
 	background_sobj->cms = G_TX_WRAP;
-	background_sobj->maskt = 6;
-	background_sobj->masks = 5;
+	background_sobj->cmt = G_TX_WRAP;
+	background_sobj->masks = 6;
+	background_sobj->maskt = 5;
 	background_sobj->lrs = 300;
 	background_sobj->lrt = 220;
 	background_sobj->pos.x = 10.0F;
@@ -1058,7 +1058,7 @@ void mn1PSyncAndBlinkLevelArrows(GObj* arrow_gobj)
 			arrow_sobj->sprite.attr |= SP_TRANSPARENT;
 			arrow_sobj->user_data.s = 1;
 		}
-		gcStopCurrentProcess(1);
+		gcStopCurrentGObjThread(1);
 	}
 }
 
@@ -1165,7 +1165,7 @@ void mn1PSyncAndBlinkStockArrows(GObj* arrow_gobj)
 			arrow_sobj->sprite.attr |= SP_TRANSPARENT;
 			arrow_sobj->user_data.s = 1;
 		}
-		gcStopCurrentProcess(1);
+		gcStopCurrentGObjThread(1);
 	}
 }
 
@@ -1258,10 +1258,10 @@ void mn1PDrawPickerOptionsTitleAndBack()
 	picker_sobj->sprite.red = 0x57;
 	picker_sobj->sprite.green = 0x60;
 	picker_sobj->sprite.blue = 0x88;
-	picker_sobj->cmt = G_TX_WRAP;
-	picker_sobj->cms = G_TX_MIRROR;
-	picker_sobj->maskt = 0;
-	picker_sobj->masks = 5;
+	picker_sobj->cms = G_TX_WRAP;
+	picker_sobj->cmt = G_TX_MIRROR;
+	picker_sobj->masks = 0;
+	picker_sobj->maskt = 5;
 	picker_sobj->lrs = 0xB8;
 	picker_sobj->lrt = 0x40;
 	picker_sobj->pos.x = 128.0F;
@@ -1661,7 +1661,7 @@ void mn1PRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state)
 	current_x = SObjGetStruct(cursor_gobj)->pos.x;
 	current_y = SObjGetStruct(cursor_gobj)->pos.y;
 
-	gcRemoveSObj(cursor_gobj);
+	gcRemoveSObjAll(cursor_gobj);
 
 	cursor_sobj = lbCommonMakeSObjForGObj(cursor_gobj, GetAddressFromOffset(gMN1PFilesArray[0], cursor_offsets[cursor_state]));
 	cursor_sobj->pos.x = current_x;
@@ -1852,7 +1852,7 @@ void mn1PFlashWhiteSquare(GObj* white_square_gobj)
 			white_square_gobj->flags = (white_square_gobj->flags == 1) ? 0 : 1;
 		}
 
-		gcStopCurrentProcess(1);
+		gcStopCurrentGObjThread(1);
 	}
 }
 
@@ -2860,10 +2860,10 @@ void mn1PCreateReadyToFightObjects()
 	sobj->sprite.red = 0xF4;
 	sobj->sprite.green = 0x56;
 	sobj->sprite.blue = 0x7F;
-	sobj->cmt = 0;
 	sobj->cms = 0;
-	sobj->maskt = 3;
-	sobj->masks = 0;
+	sobj->cmt = 0;
+	sobj->masks = 3;
+	sobj->maskt = 0;
 	sobj->lrs = 0x140;
 	sobj->lrt = 0x11;
 	sobj->pos.x = 0.0F;
@@ -2948,7 +2948,7 @@ void mn1PSaveMatchInfo()
 void mn1PDestroyCursorAndTokenProcesses()
 {
 	if (gMN1PPanel.cursor != NULL)
-		gcPauseProcess(gMN1PPanel.cursor->gobjproc_head);
+		gcPauseGObjProcess(gMN1PPanel.cursor->gobjproc_head);
 }
 
 // 80137FCC

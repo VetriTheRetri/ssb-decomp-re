@@ -425,11 +425,13 @@
 
 /*
  * G_SETIMG siz: set image pixel size
+ * G_IM_SIZ_4c: compressed 4b-sized bitmap?
  */
 #define G_IM_SIZ_4b	0
 #define G_IM_SIZ_8b	1
 #define G_IM_SIZ_16b	2
 #define G_IM_SIZ_32b	3
+#define G_IM_SIZ_4c		4
 #define G_IM_SIZ_DD	5
 
 #define G_IM_SIZ_4b_BYTES		0

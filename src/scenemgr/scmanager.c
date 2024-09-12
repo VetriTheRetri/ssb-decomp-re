@@ -17,7 +17,7 @@
 #include <sys/thread6.h>
 
 extern s32 D_8003B874_3C474;
-extern GObj* gOMObjCurrentObject;
+extern GObj* gOMObjCurrentCommon;
 extern GObj* D_80046A5C_40A7C;
 
 // BSS
@@ -688,7 +688,7 @@ void func_800A26D8(GObj* arg0)
 // 800A2B18
 GObj* func_800A2B18(s32 link, u32 arg1, s32 arg2)
 {
-	if (gcFindById(0xEFFFFFFF) != NULL)
+	if (gcFindByID(0xEFFFFFFF) != NULL)
 		return NULL;
 
 	return func_8000B93C(0xEFFFFFFF, NULL, link, arg1, func_800A26D8, arg2, 0, 0, 0, 0, 0, 0, 0);
@@ -699,13 +699,13 @@ void unref_800A2BA8(s32 link, u32 arg1, s32 arg2) // set_up_debug_objs ? somethi
 {
 	GObj* com;
 
-	com = gcFindById(0xFFFFFFFE);
+	com = gcFindByID(0xFFFFFFFE);
 	if (com != NULL)
 		gcEjectGObj(com);
 	else
 		func_80022368(link, arg1, arg2);
 
-	com = gcFindById(0xEFFFFFFF);
+	com = gcFindByID(0xEFFFFFFF);
 	if (com != NULL)
 		gcEjectGObj(com);
 	else
@@ -791,31 +791,31 @@ void scManagerProcPrintGObjStatus()
 		case 1:
 		{
 			syErrorDebugPrintf("BF\n");
-			if (gOMObjCurrentObject != NULL)
+			if (gOMObjCurrentCommon != NULL)
 			{
-				syErrorDebugPrintf("addr:%x\n", gOMObjCurrentObject->proc_run);
-				scManagerInspectGObj(gOMObjCurrentObject);
+				syErrorDebugPrintf("addr:%x\n", gOMObjCurrentCommon->proc_run);
+				scManagerInspectGObj(gOMObjCurrentCommon);
 			}
 			break;
 		}
 		case 2:
 		{
 			syErrorDebugPrintf("GP\n");
-			if (gOMObjCurrentObject != NULL)
+			if (gOMObjCurrentCommon != NULL)
 			{
-				if (D_80046A60 != NULL)
+				if (gOMObjCurrentProcess != NULL)
 				{
-					switch (D_80046A60->kind)
+					switch (gOMObjCurrentProcess->kind)
 					{
 						case 0:
-							syErrorDebugPrintf("thread:%x\n", D_80046A60->gobjthread->osthread.context.pc);
+							syErrorDebugPrintf("thread:%x\n", gOMObjCurrentProcess->gobjthread->osthread.context.pc);
 							break;
 						case 1:
-							syErrorDebugPrintf("func:%x\n", D_80046A60->proc_thread);
+							syErrorDebugPrintf("func:%x\n", gOMObjCurrentProcess->proc_thread);
 							break;
 					}
 				}
-				scManagerInspectGObj(gOMObjCurrentObject);
+				scManagerInspectGObj(gOMObjCurrentCommon);
 			}
 			break;
 		}

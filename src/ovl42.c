@@ -186,7 +186,7 @@ void mvOpeningPikachuCreateStageViewport(Vec3f arg0)
 	cam = CameraGetStruct(gMvOpeningPikachuStageCameraGObj);
 	func_80007080(&cam->viewport, 110.0F, 10.0F, 310.0F, 230.0F);
 	cam->projection.persp.aspect = 10.0F / 11.0F;
-	gcEndAllObjectProcesses(gMvOpeningPikachuStageCameraGObj);
+	gcEndAllProcesses(gMvOpeningPikachuStageCameraGObj);
 	gcAddGObjProcess(gMvOpeningPikachuStageCameraGObj, mvOpeningPikachuAnimateStageCamera, 1, 1);
 
 	dMvOpeningPikachuCameraSettingsAdjustedStart.eye.x += arg0.x;

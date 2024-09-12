@@ -1742,4 +1742,4 @@ FILE_05A_BACKGROUND_IMAGE_OFFSET = 0x26C88;
 
 
 gSysController = 0x80045470;
-omCurrentProcess = 0x80046A60;
+gOMObjCurrentProcess = 0x80046A60;

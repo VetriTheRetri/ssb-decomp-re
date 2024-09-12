@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 
-extern void animSetModelAnimationSpeed(GObj*, f32);
+extern void gcSetDObjAnimSpeed(GObj*, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -103,7 +103,7 @@ void ftPikachuSpecialHiInitMiscVars(GObj *fighter_gobj)
 
     ftParamCheckSetFighterColAnimID(fighter_gobj, FTPIKACHU_QUICKATTACK_COLANIM_ID, FTPIKACHU_QUICKATTACK_COLANIM_LENGTH); // Apply color animation
 
-    animSetModelAnimationSpeed(fighter_gobj, 0.0F); // Set animation speed (0.0F = freeze)
+    gcSetDObjAnimSpeed(fighter_gobj, 0.0F); // Set animation speed (0.0F = freeze)
 }
 
 // 0x801529A0

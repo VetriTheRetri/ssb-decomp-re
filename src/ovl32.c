@@ -522,7 +522,7 @@ void mnVsRecordsRenderSubtitle(GObj* subtitle_gobj)
 
 	if (gMNVsRecordsRedrawSubtitle)
 	{
-		gcRemoveSObj(subtitle_gobj);
+		gcRemoveSObjAll(subtitle_gobj);
 
 		subtitle_sobj = lbCommonMakeSObjForGObj(subtitle_gobj, GetAddressFromOffset(gMNVsRecordsFilesArray[0], offsets[gMNVsRecordsStatsKind]));
 		subtitle_sobj->sprite.attr &= ~SP_FASTCOPY;

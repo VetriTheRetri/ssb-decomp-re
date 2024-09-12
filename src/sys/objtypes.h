@@ -429,7 +429,7 @@ struct _DObj
     OMUserData user_data;
 };
 
-struct _SObj // Sprite object
+struct _SObj                    // Sprite object
 {
     SObj *alloc_free;           // Has to do with memory allocation
     GObj *parent_gobj;          // GObj that owns this SObj
@@ -437,12 +437,10 @@ struct _SObj // Sprite object
     SObj *prev;                 // Prev SObj in linked list
     Sprite sprite;              // Sprite data
     OMUserData user_data;       // Custom parameters attached to SObj
-    Vec2f pos;                  // Position on screen; Causes a ghosting effect if out of bounds; based on pixel position in width-height 2D array
-    syColorRGBA env_color;   // Color of outline around / under sprite?
-    u8 cms;                     // s-axis mirror, no-mirror, wrap and clamp flags
-    u8 cmt;                     // t-axis mirror, no-mirror, wrap and clamp flags
-    u8 masks;                   // s-axis mask
-    u8 maskt;                   // t-axis mask
+    Vec2f pos;                  // Position on screen; ghosting effect if out of camera scissor bounds?
+    syColorRGBA env_color;      // Color of outline around / under sprite?
+    u8 cmt, cms;                // t-axis and s-axis mirror, no-mirror, wrap and clamp flags
+    u8 maskt, masks;            // t-axis and s-axis mask
     u16 lrs, lrt;               // lower right s and t - used for wrap/mirror boundary
 };
 

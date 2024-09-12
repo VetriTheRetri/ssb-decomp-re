@@ -765,7 +765,7 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 drawstatus)
         {
             modelpart_status->drawstatus_current = drawstatus;
 
-            gcRemoveMObjFromDObj(joint);
+            gcRemoveMObjAll(joint);
 
             if (drawstatus != -1)
             {
@@ -852,7 +852,7 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
             {
                 modelpart_status->drawstatus_current = modelpart_status->drawstatus_default;
 
-                gcRemoveMObjFromDObj(joint);
+                gcRemoveMObjAll(joint);
 
                 if (modelpart_status->drawstatus_current == -1)
                 {
@@ -925,7 +925,7 @@ void ftParamHideModelPartAll(GObj *fighter_gobj)
             {
                 fp->modelpart_status[i - nFTPartsJointCommonStart].drawstatus_current = -1;
 
-                gcRemoveMObjFromDObj(joint);
+                gcRemoveMObjAll(joint);
 
                 joint->display_list = NULL;
             }
@@ -994,7 +994,7 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
 
         if (joint != NULL)
         {
-            gcRemoveMObjFromDObj(joint);
+            gcRemoveMObjAll(joint);
 
             modelpart_status = &fp->modelpart_status[i];
 

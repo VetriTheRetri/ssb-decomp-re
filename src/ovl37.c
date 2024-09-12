@@ -184,7 +184,7 @@ void mvOpeningDKCreateStageViewport(Vec3f arg0)
 	cam = CameraGetStruct(gMvOpeningDKStageCameraGObj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 210.0F, 230.0F);
 	cam->projection.persp.aspect = 10.0F / 11.0F;
-	gcEndAllObjectProcesses(gMvOpeningDKStageCameraGObj);
+	gcEndAllProcesses(gMvOpeningDKStageCameraGObj);
 	gcAddGObjProcess(gMvOpeningDKStageCameraGObj, mvOpeningDKAnimateStageCamera, 1, 1);
 
 	dMvOpeningDKCameraDescAdjustedStart.eye.x += arg0.x;

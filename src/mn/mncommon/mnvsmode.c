@@ -301,10 +301,10 @@ void mnVSModeMakeButton(GObj* button_gobj, f32 x, f32 y, s32 arg3)
     button_sobj->sprite.attr |= SP_TRANSPARENT;
     button_sobj->pos.x = x + 16.0F;
     button_sobj->pos.y = y;
-    button_sobj->cmt = 0;
     button_sobj->cms = 0;
-    button_sobj->maskt = 4;
-    button_sobj->masks = 0;
+    button_sobj->cmt = 0;
+    button_sobj->masks = 4;
+    button_sobj->maskt = 0;
     button_sobj->lrs = arg3 * 8;
     button_sobj->lrt = 0x1D;
 
@@ -521,7 +521,7 @@ void mnVSModeAnimateRuleArrows(GObj* rule_arrows_gobj)
         }
         else rule_arrows_gobj->flags = GOBJ_FLAG_NORENDER;
 
-        gcStopCurrentProcess(1);
+        gcStopCurrentGObjThread(1);
     }
 }
 
@@ -564,7 +564,7 @@ void mnVSModeAnimateTimeStockArrows(GObj* time_stock_arrows_gobj)
         }
         else time_stock_arrows_gobj->flags = GOBJ_FLAG_NORENDER;
 
-        gcStopCurrentProcess(1);
+        gcStopCurrentGObjThread(1);
     }
 }
 

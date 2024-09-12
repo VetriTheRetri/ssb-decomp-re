@@ -2153,7 +2153,7 @@ void lbCommonDecodeBitmapSiz4b(u8 *bitmap_csr, u8 *bitmap_buf, u8 *bitmap_start)
         bitmap_buf[0] = lbCommonGetBitmapDecodeNibble(*bitmap_csr & 3);
         bitmap_buf[0] |= lbCommonGetBitmapDecodeNibble((*bitmap_csr & 12) >> 2) << 4;
 
-        bitmap_buf[-1] =  lbCommonGetBitmapDecodeNibble((*bitmap_csr & 48) >> 4);
+        bitmap_buf[-1] = lbCommonGetBitmapDecodeNibble((*bitmap_csr & 48) >> 4);
 
         temp = lbCommonGetBitmapDecodeNibble((*bitmap_csr & 192) >> 6);
         
@@ -2278,11 +2278,11 @@ void lbCommonDrawSObjBitmap
                     0,
                     G_TX_LOADTILE,
                     NULL,
-                    sobj->cms,
-                    sobj->masks,
-                    G_TX_NOLOD,
                     sobj->cmt,
                     sobj->maskt,
+                    G_TX_NOLOD,
+                    sobj->cms,
+                    sobj->masks,
                     G_TX_NOLOD
                 );
                 gDPLoadSync(dl++);
@@ -2297,11 +2297,11 @@ void lbCommonDrawSObjBitmap
                     0,
                     G_TX_RENDERTILE,
                     NULL,
-                    sobj->cms,
-                    sobj->masks,
-                    G_TX_NOLOD,
                     sobj->cmt,
                     sobj->maskt,
+                    G_TX_NOLOD,
+                    sobj->cms,
+                    sobj->masks,
                     G_TX_NOLOD
                 );
                 gDPSetTileSize
@@ -2326,11 +2326,11 @@ void lbCommonDrawSObjBitmap
                     0,
                     G_TX_LOADTILE,
                     NULL,
-                    sobj->cms,
-                    sobj->masks,
-                    G_TX_NOLOD,
                     sobj->cmt,
                     sobj->maskt,
+                    G_TX_NOLOD,
+                    sobj->cms,
+                    sobj->masks,
                     G_TX_NOLOD
                 );
                 gDPLoadSync(dl++);
@@ -2345,11 +2345,11 @@ void lbCommonDrawSObjBitmap
                     0,
                     G_TX_RENDERTILE,
                     NULL,
-                    sobj->cms,
-                    sobj->masks,
-                    G_TX_NOLOD,
                     sobj->cmt,
                     sobj->maskt,
+                    G_TX_NOLOD,
+                    sobj->cms,
+                    sobj->masks,
                     G_TX_NOLOD
                 );
                 gDPSetTileSize
@@ -2374,11 +2374,11 @@ void lbCommonDrawSObjBitmap
                     0,
                     G_TX_LOADTILE,
                     NULL,
-                    sobj->cms,
-                    sobj->masks,
-                    G_TX_NOLOD,
                     sobj->cmt,
                     sobj->maskt,
+                    G_TX_NOLOD,
+                    sobj->cms,
+                    sobj->masks,
                     G_TX_NOLOD
                 );
                 gDPLoadSync(dl++);
@@ -2393,11 +2393,11 @@ void lbCommonDrawSObjBitmap
                     0,
                     G_TX_RENDERTILE,
                     NULL,
-                    sobj->cms,
-                    sobj->masks,
-                    G_TX_NOLOD,
                     sobj->cmt,
                     sobj->maskt,
+                    G_TX_NOLOD,
+                    sobj->cms,
+                    sobj->masks,
                     G_TX_NOLOD
                 );
                 gDPSetTileSize
@@ -2422,11 +2422,11 @@ void lbCommonDrawSObjBitmap
                     0,
                     G_TX_LOADTILE,
                     NULL,
-                    sobj->cms,
-                    sobj->masks,
-                    G_TX_NOLOD,
                     sobj->cmt,
                     sobj->maskt,
+                    G_TX_NOLOD,
+                    sobj->cms,
+                    sobj->masks,
                     G_TX_NOLOD
                 );
                 gDPLoadSync(dl++);
@@ -2441,11 +2441,11 @@ void lbCommonDrawSObjBitmap
                     0,
                     G_TX_RENDERTILE,
                     NULL,
-                    sobj->cms,
-                    sobj->masks,
-                    G_TX_NOLOD,
                     sobj->cmt,
                     sobj->maskt,
+                    G_TX_NOLOD,
+                    sobj->cms,
+                    sobj->masks,
                     G_TX_NOLOD
                 );
                 gDPSetTileSize
@@ -2662,8 +2662,8 @@ void lbCommonPrepSObjDraw(Gfx **dls, SObj *sobj)
         
         if ((x < sLBCommonScissorXMax) && (tempy < sLBCommonScissorYMax))
         {
-            s32 tempxx = (sobj->cmt == 2) ? (sprite->width) : (sobj->lrs);
-            yy = (sobj->cms == 2) ? (sprite->bmheight) : (sobj->lrt);
+            s32 tempxx = (sobj->cms == 2) ? (sprite->width) : (sobj->lrs);
+            yy = (sobj->cmt == 2) ? (sprite->bmheight) : (sobj->lrt);
             
             if (sprite->attr & SP_FASTCOPY)
             {
@@ -2815,7 +2815,7 @@ SObj* lbCommonMakeSObjForGObj(GObj *gobj, Sprite *sprite)
 {
     SObj *sobj;
 
-    if (sprite->bmsiz == 4)
+    if (sprite->bmsiz == G_IM_SIZ_4c)
     {
         lbCommonDecodeSpriteBitmapsSiz4b(sprite);
     }
@@ -2826,9 +2826,9 @@ SObj* lbCommonMakeSObjForGObj(GObj *gobj, Sprite *sprite)
     sobj->env_color.b =
     sobj->env_color.a = 0x00;
     
-    sobj->masks = sobj->maskt = 0;
+    sobj->maskt = sobj->masks = 0;
     
-    sobj->cms = sobj->cmt = 2;
+    sobj->cmt = sobj->cms = 2;
     
     sobj->pos.x = sobj->pos.y = 0.0F;
 }
@@ -2843,7 +2843,7 @@ GObj* lbCommonMakeSpriteGObj
     void (*proc_render)(GObj*),
     s32 dl_link,
     u32 dl_link_order,
-    s32 arg7,
+    s32 cam_tag,
     Sprite *sprite,
     u8 gobjproc_kind,
     void (*proc)(GObj*),
@@ -2856,7 +2856,7 @@ GObj* lbCommonMakeSpriteGObj
     {
         return NULL;
     }
-    gcAddGObjDisplay(gobj, proc_render, dl_link, dl_link_order, arg7);
+    gcAddGObjDisplay(gobj, proc_render, dl_link, dl_link_order, cam_tag);
     
     lbCommonMakeSObjForGObj(gobj, sprite);
         

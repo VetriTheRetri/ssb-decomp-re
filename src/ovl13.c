@@ -17,7 +17,7 @@ extern intptr_t lOverlay13ArenaHi;  // 80369240
 extern void gcUpdateDefault(UNUSED GObj* arg0);
 extern void* func_800269C0_275C0(u16);
 extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
-extern void animSetModelAnimationSpeed(s32, f32);
+extern void gcSetDObjAnimSpeed(s32, f32);
 extern void func_ovl0_800D4130(u32, s32, s32, s64);
 
 // ovl0
@@ -398,7 +398,7 @@ void mnDebugCubeRotateKirbyCube(GObj* cube_gobj)
 		cube_dobj->rotate.vec.f.y += dMNDebugCubeRotateVelY;
 		cube_dobj->rotate.vec.f.z += dMNDebugCubeRotateVelZ;
 
-		gcStopCurrentProcess(1);
+		gcStopCurrentGObjThread(1);
 	}
 }
 
@@ -499,7 +499,7 @@ void mnDebugCubeCheckAudioChange(s32 arg0)
 			}
 		}
 
-		gcStopCurrentProcess(1);
+		gcStopCurrentGObjThread(1);
 	}
 }
 
@@ -526,7 +526,7 @@ void mnDebugCubeMain(GObj* arg0)
 // 80131EA0
 GObj* mnDebugCubeCreateGObj(void* ptr, void* dvar)
 {
-	GObj* gobj = gcCreateModel(0x10000000, gcUpdateDefault, 0, 0x80000000, gcDrawDObjDLHead0, 0, 0x80000000, -1, dvar, 1, 0, ptr, 1);
+	GObj* gobj = gcMakeModelGObj(0x10000000, gcUpdateDefault, 0, 0x80000000, gcDrawDObjDLHead0, 0, 0x80000000, -1, dvar, 1, 0, ptr, 1);
 
 	return (gobj != NULL) ? gobj : NULL;
 }
@@ -569,7 +569,7 @@ void mnDebugCubeInit()
 	mnDebugCubeCreateGObj(mnDebugCubeRotateKirbyCube, &dMNDebugCubeKirbyCubeDisplayList);
 	func_ovl0_800D4404();
 	func_ovl0_800D4130(0x20000002, 0, 0x32, 0x00000002);
-	animSetModelAnimationSpeed(func_ovl0_800D430C(gMNDebugCubeMenuValueTransition, 0x20000000, 0, func_ovl0_800D4248, 1, func_ovl0_800D42C8), 0.25F);
+	gcSetDObjAnimSpeed(func_ovl0_800D430C(gMNDebugCubeMenuValueTransition, 0x20000000, 0, func_ovl0_800D4248, 1, func_ovl0_800D42C8), 0.25F);
 	gmRumbleMakeActor();
 	mnDebugMenuInitMenu();
 	mnDebugCubeCreateGObj(mnDebugCubeCheckAudioChange, NULL);

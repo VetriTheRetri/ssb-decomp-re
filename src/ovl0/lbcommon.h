@@ -132,7 +132,7 @@ extern GObj* lbCommonMakeSpriteGObj
     void (*proc_render)(GObj*),
     s32 dl_link,
     u32 dl_link_order,
-    s32 arg7,
+    s32 cam_tag,
     Sprite *sprite,
     u8 gobjproc_kind,
     void (*proc)(GObj*),

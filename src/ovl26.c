@@ -10,7 +10,7 @@
 extern intptr_t lOverlay26ArenaLo; // 0x8013C4C0
 extern intptr_t lOverlay26ArenaHi; // 0x803903E0
 extern f32 sqrtf(f32);
-extern void gcStopCurrentProcess(s32);
+extern void gcStopCurrentGObjThread(s32);
 extern void leoInitUnit_atten();
 
 extern f32 menu_zoom[12]; // D_ovl1_80390D90
@@ -585,7 +585,7 @@ void mnRecreateTypeButton(GObj* type_gobj, s32 port_id, s32 type_id)
 		0x00006048, 0x000063C8, 0x00006748
 	};
 
-	gcRemoveSObj(type_gobj);
+	gcRemoveSObjAll(type_gobj);
 	type_sobj = lbCommonMakeSObjForGObj(type_gobj, gFile011 + type_button_offsets[type_id]);
 	type_sobj->pos.x = x;
 	type_sobj->pos.y = y;
@@ -625,7 +625,7 @@ void mnBattleSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
 
 	if (ft_kind != nFTKindNull)
 	{
-		gcRemoveSObj(name_logo_gobj);
+		gcRemoveSObjAll(name_logo_gobj);
 
 		// logo
 		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, gFile014 + logo_offsets[ft_kind]);
@@ -1164,10 +1164,10 @@ void mnBattleCreateBackground()
 	gcAddGObjDisplay(background_gobj, lbCommonDrawSObjAttr, 0x1AU, 0x80000000U, -1);
 	background_sobj
 		= lbCommonMakeSObjForGObj(background_gobj, GetAddressFromOffset(gFile015, &FILE_015_BACKGROUND_IMAGE_OFFSET));
-	background_sobj->cmt = G_TX_WRAP;
 	background_sobj->cms = G_TX_WRAP;
-	background_sobj->maskt = 6;
-	background_sobj->masks = 5;
+	background_sobj->cmt = G_TX_WRAP;
+	background_sobj->masks = 6;
+	background_sobj->maskt = 5;
 	background_sobj->lrs = 300;
 	background_sobj->lrt = 220;
 	background_sobj->pos.x = 10.0F;
@@ -1439,7 +1439,7 @@ void mnBattleRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state)
 	current_x = SObjGetStruct(cursor_gobj)->pos.x;
 	current_y = SObjGetStruct(cursor_gobj)->pos.y;
 
-	gcRemoveSObj(cursor_gobj);
+	gcRemoveSObjAll(cursor_gobj);
 
 	cursor_sobj = lbCommonMakeSObjForGObj(cursor_gobj, GetAddressFromOffset(gFile011, cursor_offsets[cursor_state]));
 	cursor_sobj->pos.x = current_x;
@@ -1610,7 +1610,7 @@ void mnHandleFFATeamBattleTogglePress()
 	else
 		func_800269C0_275C0(nSYAudioVoiceAnnounceTeamBattle);
 
-	gcRemoveSObj(title_gobj);
+	gcRemoveSObjAll(title_gobj);
 
 	title_sobj = lbCommonMakeSObjForGObj(title_gobj, GetAddressFromOffset(gFile012, offsets[gMnBattleIsTeamBattle]));
 	title_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -2109,7 +2109,7 @@ void mnBattleFlashWhiteSquare(GObj* white_square_gobj)
 			white_square_gobj->flags = (white_square_gobj->flags == 1) ? 0 : 1;
 		}
 
-		gcStopCurrentProcess(1);
+		gcStopCurrentGObjThread(1);
 	}
 }
 
@@ -2325,7 +2325,7 @@ void mnBattleSyncAndBlinkArrows(GObj* arrow_gobj)
 			arrow_sobj->sprite.attr |= SP_TRANSPARENT;
 			arrow_sobj->user_data.s = 1;
 		}
-		gcStopCurrentProcess(1);
+		gcStopCurrentGObjThread(1);
 	}
 }
 
@@ -3063,7 +3063,7 @@ void mnBattleRedrawToken(GObj* token_gobj, s32 token_index)
 	current_x = SObjGetStruct(token_gobj)->pos.x;
 	current_y = SObjGetStruct(token_gobj)->pos.y;
 
-	gcRemoveSObj(token_gobj);
+	gcRemoveSObjAll(token_gobj);
 
 	token_sobj = lbCommonMakeSObjForGObj(token_gobj, GetAddressFromOffset(gFile011, token_offsets[token_index]));
 	token_sobj->pos.x = current_x;
@@ -3637,10 +3637,10 @@ void mnBattleCreateReadyToFightObjects()
 	sobj->sprite.red = 0xF4;
 	sobj->sprite.green = 0x56;
 	sobj->sprite.blue = 0x7F;
-	sobj->cmt = 0;
 	sobj->cms = 0;
-	sobj->maskt = 3;
-	sobj->masks = 0;
+	sobj->cmt = 0;
+	sobj->masks = 3;
+	sobj->maskt = 0;
 	sobj->lrs = 0x140;
 	sobj->lrt = 0x11;
 	sobj->pos.x = 0.0f;
@@ -3919,12 +3919,12 @@ void mnBattleDestroyCursorAndTokenProcesses()
 		cursor_gobj = gMnBattlePanels[i].cursor;
 
 		if (cursor_gobj != NULL)
-			gcPauseProcess(cursor_gobj->gobjproc_head);
+			gcPauseGObjProcess(cursor_gobj->gobjproc_head);
 
 		token_gobj = gMnBattlePanels[i].token;
 
 		if (token_gobj != NULL)
-			gcPauseProcess(token_gobj->gobjproc_head);
+			gcPauseGObjProcess(token_gobj->gobjproc_head);
 	};
 }
 

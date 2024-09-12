@@ -800,18 +800,20 @@ void scManagerProcPrintGObjStatus()
 		case 2:
 		{
 			syErrorDebugPrintf("GP\n");
+
 			if (gOMObjCurrentCommon != NULL)
 			{
 				if (gOMObjCurrentProcess != NULL)
 				{
 					switch (gOMObjCurrentProcess->kind)
 					{
-						case 0:
-							syErrorDebugPrintf("thread:%x\n", gOMObjCurrentProcess->gobjthread->osthread.context.pc);
-							break;
-						case 1:
-							syErrorDebugPrintf("func:%x\n", gOMObjCurrentProcess->proc_thread);
-							break;
+					case nOMObjProcessKindThread:
+						syErrorDebugPrintf("thread:%x\n", gOMObjCurrentProcess->gobjthread->thread.context.pc);
+						break;
+
+					case nOMObjProcessKindProc:
+						syErrorDebugPrintf("func:%x\n", gOMObjCurrentProcess->proc_thread);
+						break;
 					}
 				}
 				scManagerInspectGObj(gOMObjCurrentCommon);

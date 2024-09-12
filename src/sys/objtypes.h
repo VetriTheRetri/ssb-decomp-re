@@ -108,7 +108,7 @@ struct _AObj
 struct _GObjThread
 {
     GObjThread *next;
-    OSThread osthread;
+    OSThread thread;
     u64 *stack;
     size_t stack_size;
 };

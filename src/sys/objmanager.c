@@ -76,7 +76,7 @@ u8 D_80046F88[24];
 //                               //
 // // // // // // // // // // // //
 
-OSId sProcessThreadID = 10000000;
+OSId sOMObjProcessThreadID = 10000000;
 s32 D_8003B874_3C474 = 0;
 
 // 8003B878
@@ -756,7 +756,7 @@ GObjProcess* gcAddGObjProcess(GObj* gobj, void (*proc)(GObj*), u8 kind, u32 prio
 
 	switch (kind)
 	{
-	case nOMObjProcessKindThread: {
+	case nOMObjProcessKindThread:
 		gobjthread = gcGetGObjThread();
 		gobjproc->gobjthread = gobjthread;
 
@@ -764,23 +764,31 @@ GObjProcess* gcAddGObjProcess(GObj* gobj, void (*proc)(GObj*), u8 kind, u32 prio
 		gobjthread->stack = stack_node->stack;
 		gobjthread->stack_size = sOMThreadStackSize;
 
-		osCreateThread(&gobjthread->osthread, sProcessThreadID++, (void (*)(void*))proc, gobj,
-					   &gobjthread->stack[sOMThreadStackSize / sizeof(u64)], 51);
-
+		osCreateThread
+		(
+			&gobjthread->thread,
+			sOMObjProcessThreadID++,
+			(void (*)(void*))
+			proc,
+			gobj,
+			&gobjthread->stack[sOMThreadStackSize / sizeof(u64)],
+			51
+		);
 		gobjthread->stack[7] = 0xFEDCBA98;
 
-		if (sProcessThreadID >= 20000000)
-			sProcessThreadID = 10000000;
+		if (sOMObjProcessThreadID >= 20000000)
+		{
+			sOMObjProcessThreadID = 10000000;
+		}
 		break;
-	}
-	case nOMObjProcessKindProc: {
+
+	case nOMObjProcessKindProc:
 		gobjproc->proc_thread = proc;
 		break;
-	}
-	default: {
+	
+	default:
 		syErrorPrintf("om : GObjProcess's kind is bad value\n");
 		while (TRUE);
-	}
 	}
 	gcLinkGObjProcess(gobjproc);
 
@@ -817,15 +825,21 @@ GObjProcess* unref_80008304(GObj* gobj, void (*proc)(GObj*), u32 pri, s32 thread
 	stacknode = stack_size == 0 ? gcGetDefaultStack() : gcGetStackOfSize(stack_size);
 	gobjthread->stack = stacknode->stack;
 	gobjthread->stack_size = stack_size == 0 ? sOMThreadStackSize : stack_size;
-	tid = thread_id != -1 ? thread_id : sProcessThreadID++;
+	tid = (thread_id != -1) ? thread_id : sOMObjProcessThreadID++;
 
-	osCreateThread(&gobjthread->osthread, tid, (void (*)(void*))proc, gobj, &gobjthread->stack[gobjthread->stack_size / sizeof(u64)],
-				   51);
-
+	osCreateThread
+	(
+		&gobjthread->thread,
+		tid,
+		(void (*)(void*))proc,
+		gobj,
+		&gobjthread->stack[gobjthread->stack_size / sizeof(u64)],
+		51
+	);
 	gobjthread->stack[7] = 0xFEDCBA98;
 
-	if (sProcessThreadID >= 20000000)
-		sProcessThreadID = 10000000;
+	if (sOMObjProcessThreadID >= 20000000)
+		sOMObjProcessThreadID = 10000000;
 
 	gcLinkGObjProcess(gobjproc);
 	return gobjproc;
@@ -851,7 +865,7 @@ void gcEndGObjProcess(GObjProcess* gobjproc)
 	switch (gobjproc->kind)
 	{
 	case nOMObjProcessKindThread:
-		osDestroyThread(&gobjproc->gobjthread->osthread);
+		osDestroyThread(&gobjproc->gobjthread->thread);
 		// cast from stack pointer back to stack node
 		tnode = (OMThreadStackNode*)((uintptr_t)(gobjproc->gobjthread->stack) - offsetof(OMThreadStackNode, stack));
 		gcEjectStackNode(tnode);
@@ -2040,7 +2054,7 @@ GObjProcess* func_8000A49C(GObjProcess* gobjproc)
 	switch (gobjproc->kind)
 	{
 	case nOMObjProcessKindThread:
-		osStartThread(&gobjproc->gobjthread->osthread);
+		osStartThread(&gobjproc->gobjthread->thread);
 		osRecvMesg(&gOMMesgQueue, NULL, OS_MESG_BLOCK);
 		break;
 

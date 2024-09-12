@@ -18,7 +18,7 @@ extern f32 scSubsysFighterGetLightAngleY();
 
 
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
+
 
 
 // Data
@@ -329,7 +329,7 @@ void mvPortraitsCreatePortraitOverlay()
 // 801324D0
 void mvPortraitsCreatePortraitViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x8000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x8000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -337,7 +337,7 @@ void mvPortraitsCreatePortraitViewport()
 // 80132570
 void mvPortraitsCreatePortraitOverlayViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x3C, 0x10000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x3C, 0x10000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -404,7 +404,7 @@ void mvPortraitsInit()
 	rdManagerLoadFiles(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0), gIntroPortraitsFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0)), 0x10));
 
 	gcMakeGObjSPAfter(0, mvPortraitsMain, 0, GOBJ_LINKORDER_DEFAULT);
-	func_8000B9FC(0, 0x80000000, 0x64, 3, 0xFF);
+	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mvPortraitsInitVariables();
 	mvPortraitsCreatePortraitViewport();
 	mvPortraitsCreatePortraitOverlayViewport();

@@ -45,7 +45,7 @@ extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_2; // DObjDesc for white circle
 extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 
 
-extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
+
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
 
@@ -715,7 +715,7 @@ void mnUpdatePanelDoors(GObj* panel_doors)
 void mnBattleCreatePortraitViewport()
 {
 	GObj* camera_gobj
-		= func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x46, 0x08000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x46, 0x08000000, -1, 0, 1, 0, 1, 0);
 	Camera* cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -724,7 +724,7 @@ void mnBattleCreatePortraitViewport()
 void mnBattleCreatePortraitBackgroundViewport()
 {
 	GObj* camera_gobj
-		= func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x4B, 0x1000000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x4B, 0x1000000000, -1, 0, 1, 0, 1, 0);
 	Camera* cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -733,7 +733,7 @@ void mnBattleCreatePortraitBackgroundViewport()
 void mnBattleCreatePortraitWhiteBackgroundViewport()
 {
 	GObj* camera_gobj
-		= func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x49, 0x2000000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x49, 0x2000000000, -1, 0, 1, 0, 1, 0);
 	Camera* cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -742,7 +742,7 @@ void mnBattleCreatePortraitWhiteBackgroundViewport()
 void mnBattleCreatePanelDoorsViewport()
 {
 	GObj* camera_gobj
-		= func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x28, 0x20000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x28, 0x20000000, -1, 0, 1, 0, 1, 0);
 	Camera* cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -751,7 +751,7 @@ void mnBattleCreatePanelDoorsViewport()
 void mnBattleCreateTypeButtonViewport()
 {
 	GObj* camera_gobj
-		= func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x23, 0x40000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x23, 0x40000000, -1, 0, 1, 0, 1, 0);
 	Camera* cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -760,7 +760,7 @@ void mnBattleCreateTypeButtonViewport()
 void mnBattleCreatePanelViewport()
 {
 	GObj* camera_gobj
-		= func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x32, 0x10000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x32, 0x10000000, -1, 0, 1, 0, 1, 0);
 	Camera* cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -769,7 +769,7 @@ void mnBattleCreatePanelViewport()
 void mnBattleCreateTeamButtonViewPort()
 {
 	GObj* camera_gobj
-		= func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x2D, 0x400000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x2D, 0x400000000, -1, 0, 1, 0, 1, 0);
 	Camera* cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1156,7 +1156,7 @@ void mnBattleCreateBackground()
 	SObj* background_sobj;
 
 	GObj* camera_gobj
-		= func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x04000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x04000000, -1, 0, 1, 0, 1, 0);
 	Camera* cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
@@ -1394,7 +1394,7 @@ void mnBattleSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 cost
 void mnBattleCreateFighterViewport()
 {
 	Camera* cam = CameraGetStruct(
-		(GObj*)func_8000B93C(0x401U, NULL, 0x10, 0x80000000U, func_80017EC0, 0x1E, 0x48600, -1, 1, 1, 0, 1, 0));
+		(GObj*)gcMakeCameraGObj(0x401U, NULL, 0x10, 0x80000000U, func_80017EC0, 0x1E, 0x48600, -1, 1, 1, 0, 1, 0));
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 	cam->vec.eye.x = 0.0F;
 	cam->vec.eye.y = 0.0F;
@@ -3190,7 +3190,7 @@ void mnBattleSyncTokenAndFighter(GObj* token_gobj)
 void mnBattleCreateCursorViewport()
 {
 	GObj* camera_gobj
-		= func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x14, 0x100000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x14, 0x100000000, -1, 0, 1, 0, 1, 0);
 	Camera* cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -3199,7 +3199,7 @@ void mnBattleCreateCursorViewport()
 void mnBattleCreateDroppedTokenViewport()
 {
 	GObj* camera_gobj
-		= func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x19, 0x200000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x19, 0x200000000, -1, 0, 1, 0, 1, 0);
 	Camera* cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -3208,7 +3208,7 @@ void mnBattleCreateDroppedTokenViewport()
 void mnBattleCreateHandicapCPULevelViewport()
 {
 	GObj* camera_gobj
-		= func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x2B, 0x800000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x2B, 0x800000000, -1, 0, 1, 0, 1, 0);
 	Camera* cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -3217,7 +3217,7 @@ void mnBattleCreateHandicapCPULevelViewport()
 void mnBattleCreateReadyToFightViewport()
 {
 	GObj* camera_gobj
-		= func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0xA, 0x4000000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0xA, 0x4000000000, -1, 0, 1, 0, 1, 0);
 	Camera* cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -4232,7 +4232,7 @@ void mnBattleInitCSS()
 
 	gcMakeGObjSPAfter(0x400U, mnBattleMain, 0xFU, 0x80000000U);
 
-	func_8000B9FC(0x10, 0x80000000U, 0x64, 1, 0);
+	gcMakeDefaultCameraGObj(0x10, 0x80000000U, 0x64, 1, 0);
 
 	efAllocInitParticleBank();
 	efManagerInitEffects();

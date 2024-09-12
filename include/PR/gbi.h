@@ -292,9 +292,9 @@
 					 (((g)<<3) & 0x7c0) |		\
 					 (((b)>>2) & 0x3e) | ((a) & 0x1))
 
-#define GPACK_RGBA8888(r, g, b, a) ((((r)<<24) & 0xff000000) |	\
-					(((g)<<16) & 0xff0000) |		\
-					(((b)<<8) & 0xff00) | ((a) & 0xff))
+#define GPACK_RGBA8888(r, g, b, a) (((r)<<24) |		\
+					((g)<<16) |		\
+					((b)<<8) | (a))
 
 /*
 * Convert RGBA8888 to RGBA5551.
@@ -304,11 +304,12 @@
                     (((rgba8888)>>10) & 0x3e) | (((rgba8888)>>7) & 0x1))
 
  /*
- * Combine RGBA color values into 32-bit word without mask.
- */
+  * Combine RGBA color values into 32-bit word without mask.
+
 #define GCOMBINE32_RGBA8888(r, g, b, a) (((r)<<24) |	\
 					((g)<<16) |		\
 					((b)<<8) | (a))
+*/
 
 #define	GPACK_ZDZ(z, dz)		((z) << 2 | (dz))
 

@@ -24,7 +24,7 @@ extern intptr_t FILE_01E_RANDOM_STAGE_PREVIEW_BG_IMAGE_OFFSET; // file 0x1E imag
 
 extern void func_800A26B8();
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
+
 
 
 // Forward declarations
@@ -893,7 +893,7 @@ void mnStageCreateStageGeos(s32 stage_id, mpGroundData* stage_info, s32 heap_id)
 
 	if (stage_id == nGRKindYoster)
 	{
-		for (next_dobj = stage_dobj = DObjGetStruct(stage_info_array[0]), i = 1; next_dobj != NULL; next_dobj = lbCommonGetDObjDepthFirst(next_dobj, stage_dobj), i += 1)
+		for (next_dobj = stage_dobj = DObjGetStruct(stage_info_array[0]), i = 1; next_dobj != NULL; next_dobj = lbCommonGetTreeDObjNextFromRoot(next_dobj, stage_dobj), i += 1)
 		{
 			if ((i == 0xF) || (i == 0x11))
 				next_dobj->flags = DOBJ_FLAG_NORENDER;
@@ -972,7 +972,7 @@ void mnStageCreateStagePreview(s32 stage_id)
 // 801334AC
 void mnStageCreateBackgroundViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x00000001, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x00000001, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -980,7 +980,7 @@ void mnStageCreateBackgroundViewport()
 // 8013354C
 void mnStageCreateWoodenCircleViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x28, 0x00000040, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x28, 0x00000040, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -988,7 +988,7 @@ void mnStageCreateWoodenCircleViewport()
 // 801335EC
 void mnStageCreateStagePreviewBackgroundViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x46, 0x00000080, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x46, 0x00000080, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -996,7 +996,7 @@ void mnStageCreateStagePreviewBackgroundViewport()
 // 8013368C
 void mnStageCreateStageSelectGfxViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x1E, 0x00000010, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x1E, 0x00000010, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1004,7 +1004,7 @@ void mnStageCreateStageSelectGfxViewport()
 // 8013372C
 void mnStageCreateStageImagesViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x3C, 0x00000002, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x3C, 0x00000002, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1012,7 +1012,7 @@ void mnStageCreateStageImagesViewport()
 // 801337CC
 void mnStageCreateStageNameAndLogoViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x14, 0x00000004, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x14, 0x00000004, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1020,7 +1020,7 @@ void mnStageCreateStageNameAndLogoViewport()
 // 8013386C
 void mnStageCreateCursorViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x32, 0x00000020, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x32, 0x00000020, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1076,7 +1076,7 @@ void mnStageAdjustStagePreviewY(GObj* stage_preview_cam_gobj)
 void mnStageCreateStagePreviewViewport()
 {
 	int foo;
-	GObj* stage_preview_cam_gobj = func_8000B93C(1U, NULL, 1, 0x80000000U, &func_80017DBC, 0x41, 0x00000008, -1, 1, 0, 0, 1, 0);
+	GObj* stage_preview_cam_gobj = gcMakeCameraGObj(1U, NULL, 1, 0x80000000U, &func_80017DBC, 0x41, 0x00000008, -1, 1, 0, 0, 1, 0);
 	Camera* cam = CameraGetStruct(stage_preview_cam_gobj);
 
 	gMNStagePreviewCam = cam;
@@ -1362,7 +1362,7 @@ void mnStageInitSSS()
 	mnStageAllocateStageModelHeaps();
 
 	gcMakeGObjSPAfter(0U, mnStageHandleButtonPresses, 0U, 0x80000000U);
-	func_8000B9FC(1, 0x80000000U, 0x64, 1, 0);
+	gcMakeDefaultCameraGObj(1, 0x80000000U, 0x64, 1, 0);
 	mnStageLoadSceneData();
 	mnStageCreateBackgroundViewport();
 	mnStageCreateStageSelectGfxViewport();

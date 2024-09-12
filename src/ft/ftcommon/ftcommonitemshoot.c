@@ -1,8 +1,6 @@
 #include <ft/fighter.h>
 #include <it/item.h>
 
-extern void gcSetDObjAnimSpeed(GObj*, f32);
-
 // // // // // // // // // // // //
 //                               //
 //           FUNCTIONS           //
@@ -233,14 +231,14 @@ void ftCommonFireFlowerShootProcAccessory(GObj *fighter_gobj)
                 }
                 fp->command_vars.flags.flag0 = 2;
 
-                gcSetDObjAnimSpeed(fighter_gobj, 0.0F);
+                gcSetAnimSpeed(fighter_gobj, 0.0F);
             }
         }
         if ((fp->status_vars.common.fireflower.ammo_fire_count >= 5) && (fp->status_vars.common.fireflower.is_release != FALSE) && (fp->status_vars.common.fireflower.release_lag >= 20))
         {
             fp->command_vars.flags.flag0 = 0;
 
-            gcSetDObjAnimSpeed(fighter_gobj, 1.0F);
+            gcSetAnimSpeed(fighter_gobj, 1.0F);
         }
     }
 }

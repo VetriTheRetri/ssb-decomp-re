@@ -131,7 +131,7 @@ void scBattle_StartStockBattle()
 			gSaveData.error_flags |= SCBACKUP_ERROR_1PGAMEMARIO;
 		}
 	}
-	func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
+	gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
@@ -397,7 +397,7 @@ void scBattle_StartSDBattle()
 	gSceneData.is_reset = FALSE;
 
 	func_ovl4_8018E330();
-	func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
+	gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
 	ftParamInitGame();
 	mpCollisionInitGroundData();

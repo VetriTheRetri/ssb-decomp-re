@@ -8,7 +8,7 @@ extern intptr_t lOverlay36ArenaLo;  // 8018E620
 extern intptr_t lOverlay36ArenaHi;  // 803903E0
 
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
+
 
 // Offsets
 extern intptr_t FILE_041_MARIO_CAMERA_PARAMS_OFFSET; // 00000000 file 0x041 offset for Mario's fighter pose camera settings
@@ -191,7 +191,7 @@ void mvOpeningMarioCreateStageViewport(Vec3f arg0)
 	cam = CameraGetStruct(gMvOpeningMarioStageCameraGObj);
 	func_80007080(&cam->viewport, 110.0F, 10.0F, 310.0F, 230.0F);
 	cam->projection.persp.aspect = 10.0F / 11.0F;
-	gcEndAllProcesses(gMvOpeningMarioStageCameraGObj);
+	gcEndProcessAll(gMvOpeningMarioStageCameraGObj);
 	gcAddGObjProcess(gMvOpeningMarioStageCameraGObj, mvOpeningMarioAnimateStageCamera, 1, 1);
 
 	dMvOpeningMarioCameraDescAdjustedStart.eye.x += arg0.x;
@@ -351,7 +351,7 @@ void mvOpeningMarioCreatePosedFighter()
 // 8018DB5C
 void mvOpeningMarioCreateNameViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -359,7 +359,7 @@ void mvOpeningMarioCreateNameViewport()
 // 8018DBFC
 void mvOpeningMarioCreatePosedFighterViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
 	cam->projection.persp.aspect = 5.0F / 11.0F;
@@ -371,7 +371,7 @@ void mvOpeningMarioCreatePosedFighterViewport()
 void mvOpeningMarioCreatePosedFighterBackgroundViewport()
 {
 	Camera *cam;
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x10000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x10000000, -1, 0, 1, 0, 1, 0);
 
 	cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
@@ -429,7 +429,7 @@ void mvOpeningMarioInit()
 
 	mvOpeningMarioLoadFiles();
 	gcMakeGObjSPAfter(0x3F7, mvOpeningMarioMainProc, 0xD, 0x80000000);
-	func_8000B9FC(9, 0x80000000, 0x64, 3, 0xFF);
+	gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 3, 0xFF);
 	mvOpeningMarioInitFramesElapsed();
 	efAllocInitParticleBank();
 	ftParamInitGame();

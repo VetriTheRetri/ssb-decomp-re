@@ -5,7 +5,6 @@
 #include <sys/gtl.h>
 #include <sys/objdraw.h>
 #include <sys/rdp_reset.h>
-#include <sys/system_03_1.h>
 #include <stddef.h>
 
 // // // // // // // // // // // //
@@ -1688,7 +1687,7 @@ void gcEjectGObj(GObj* gobj)
 		return;
 	}
 
-	gcEndAllProcesses(gobj);
+	gcEndProcessAll(gobj);
 
 	switch (gobj->obj_kind)
 	{
@@ -1848,11 +1847,12 @@ void func_80009F28(GObj* gobj, void (*proc_render)(GObj*), u32 order, u64 arg3, 
 }
 
 // 80009F74
-void func_80009F74(GObj* gobj, void (*proc_render)(GObj*), u32 order, u64 arg3, s32 arg4)
+void func_80009F74(GObj *gobj, void (*proc_render)(GObj*), u32 order, u64 arg3, s32 arg4)
 {
 	if (gobj == NULL)
+	{
 		gobj = gOMObjCurrentCommon;
-
+	}
 	func_80009F28(gobj, proc_render, order, arg3, arg4);
 	gcDLLinkGObjTail(gobj);
 }

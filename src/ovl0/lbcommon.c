@@ -729,7 +729,7 @@ alSoundEffect* lbCommonMakePositionFGM(u16 fgm, f32 pos)
 }
 
 // 0x800C86E8
-DObj* lbCommonGetDObjDepthFirst(DObj *a, DObj *b)
+DObj* lbCommonGetTreeDObjNextFromRoot(DObj *a, DObj *b)
 {
     if (a->child != NULL)
     {
@@ -781,7 +781,7 @@ void lbCommonAddDObjAnimJointAll(DObj *root_dobj, AObjEvent **anim_joints, f32 a
         
         anim_joints++;
         
-        current_dobj = lbCommonGetDObjDepthFirst(current_dobj, root_dobj);
+        current_dobj = lbCommonGetTreeDObjNextFromRoot(current_dobj, root_dobj);
     }
 }
 
@@ -811,7 +811,7 @@ void lbCommonAddFighterPartsAnimJointAll(DObj *root_dobj, AObjEvent **anim_joint
         }
         anim_joints++;
         
-        current_dobj = lbCommonGetDObjDepthFirst(current_dobj, root_dobj);
+        current_dobj = lbCommonGetTreeDObjNextFromRoot(current_dobj, root_dobj);
     }
 }
 
@@ -857,7 +857,7 @@ void lbCommonAddDObjAnimAll(DObj *root_dobj, AObjEvent **anim_joints, AObjEvent 
             }
             p_matanim_joints++;
         }
-        current_dobj = lbCommonGetDObjDepthFirst(current_dobj, root_dobj);
+        current_dobj = lbCommonGetTreeDObjNextFromRoot(current_dobj, root_dobj);
     }
 }
 
@@ -1172,7 +1172,7 @@ void lbCommonAddMObjForTreeDObjs(DObj *root_dobj, MObjSub ***p_mobjsubs)
             }
             p_mobjsubs++;
         }
-        current_dobj = lbCommonGetDObjDepthFirst(current_dobj, root_dobj);
+        current_dobj = lbCommonGetTreeDObjNextFromRoot(current_dobj, root_dobj);
     }
 }
 
@@ -1184,7 +1184,7 @@ void lbCommonPlayTreeDObjsAnim(DObj *root_dobj)
     while (current_dobj != NULL)
     {
         gcPlayDObjAnim(current_dobj);
-        current_dobj = lbCommonGetDObjDepthFirst(current_dobj, root_dobj);
+        current_dobj = lbCommonGetTreeDObjNextFromRoot(current_dobj, root_dobj);
     }
 }
 
@@ -1201,7 +1201,7 @@ void lbCommonSetDObjTransformsForTreeDObjs(DObj *root_dobj, DObjDesc *dobj_desc)
 
         dobj_desc++;
         
-        current_dobj = lbCommonGetDObjDepthFirst(current_dobj, root_dobj);
+        current_dobj = lbCommonGetTreeDObjNextFromRoot(current_dobj, root_dobj);
     }
 }
 
@@ -2847,7 +2847,7 @@ GObj* lbCommonMakeSpriteGObj
     Sprite *sprite,
     u8 gobjproc_kind,
     void (*proc)(GObj*),
-    u32 priority
+    u32 gobjproc_priority
 )
 {
     GObj *gobj = gcMakeGObjSPAfter(id, proc_run, link, link_order);
@@ -2862,7 +2862,7 @@ GObj* lbCommonMakeSpriteGObj
         
     if (proc != NULL)
     {
-        gcAddGObjProcess(gobj, proc, gobjproc_kind, priority);
+        gcAddGObjProcess(gobj, proc, gobjproc_kind, gobjproc_priority);
     }
     return gobj;
 }

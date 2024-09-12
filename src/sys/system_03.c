@@ -1,5 +1,4 @@
 #include <sys/obj.h>
-#include <sys/system_03_1.h>
 #include <stddef.h>
 
 s32 func_8000ACD0(GObj *gobj, s32 arg1, GObj *next)
@@ -71,7 +70,7 @@ s32 cmdProcessCommands(void (*proc)(GObjLink))
             return 1;
             
         case 3: 
-            gcPauseGObjProcessAll(NULL); 
+            gcPauseProcessAll(NULL); 
             break;
             
         case 2: 

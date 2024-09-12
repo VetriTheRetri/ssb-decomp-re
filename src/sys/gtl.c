@@ -7,7 +7,6 @@
 #include <sys/obj.h>
 #include <sys/rdp_reset.h>
 #include <sys/system_00.h>
-#include <sys/system_03_1.h>
 #include <sys/thread3.h>
 #include <sys/thread6.h>
 

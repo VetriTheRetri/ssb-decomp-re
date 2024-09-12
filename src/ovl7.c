@@ -1499,7 +1499,7 @@ void scTrainingMode_InitTrainingMode()
 	func_ovl7_8018DA98();
 	scTrainingMode_LoadFiles();
 	scTrainingMode_LoadSprites();
-	func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
+	gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
 	ftParamInitGame();
 	mpCollisionInitGroundData();

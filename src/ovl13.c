@@ -16,8 +16,7 @@ extern intptr_t lOverlay13ArenaHi;  // 80369240
 
 extern void gcUpdateDefault(UNUSED GObj* arg0);
 extern void* func_800269C0_275C0(u16);
-extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
-extern void gcSetDObjAnimSpeed(s32, f32);
+
 extern void func_ovl0_800D4130(u32, s32, s32, s64);
 
 // ovl0
@@ -534,7 +533,7 @@ GObj* mnDebugCubeCreateGObj(void* ptr, void* dvar)
 // 80131F28
 GObj* mnDebugCubeCreateViewport(void (*proc)(GObj*))
 {
-	GObj *camera_gobj = func_8000B93C(0x10000002, gcUpdateDefault, 0, 0x80000000U, func_80017DBC, 0x32, 0x00000001, -1, 1, 0, proc, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x10000002, gcUpdateDefault, 0, 0x80000000U, func_80017DBC, 0x32, 0x00000001, -1, 1, 0, proc, 1, 0);
 
 	if (camera_gobj == NULL)
 		return NULL;
@@ -564,12 +563,25 @@ void mnDebugCubeInit()
 	rdManagerInitSetup(&rldmSetup);
 
 	gcMakeGObjSPAfter(0, mnDebugCubeMain, 0, 0x80000000);
-	func_8000B9FC(0, 0x80000000, 0x64, 2, (mtTrigGetRandomIntRange(0x80) << 0x18) | (mtTrigGetRandomIntRange(0x80) << 0x10) | (mtTrigGetRandomIntRange(0x80) << 0x8) | 0xFF);
+	gcMakeDefaultCameraGObj
+	(
+		0,
+		GOBJ_LINKORDER_DEFAULT,
+		100,
+		0x2,
+		GPACK_RGBA8888
+		(
+			mtTrigGetRandomIntRange(0x80),
+			mtTrigGetRandomIntRange(0x80),
+			mtTrigGetRandomIntRange(0x80),
+			0xFF
+		)
+	);
 	mnDebugCubeCreateViewport(0);
 	mnDebugCubeCreateGObj(mnDebugCubeRotateKirbyCube, &dMNDebugCubeKirbyCubeDisplayList);
 	func_ovl0_800D4404();
 	func_ovl0_800D4130(0x20000002, 0, 0x32, 0x00000002);
-	gcSetDObjAnimSpeed(func_ovl0_800D430C(gMNDebugCubeMenuValueTransition, 0x20000000, 0, func_ovl0_800D4248, 1, func_ovl0_800D42C8), 0.25F);
+	gcSetAnimSpeed(func_ovl0_800D430C(gMNDebugCubeMenuValueTransition, 0x20000000, 0, func_ovl0_800D4248, 1, func_ovl0_800D42C8), 0.25F);
 	gmRumbleMakeActor();
 	mnDebugMenuInitMenu();
 	mnDebugCubeCreateGObj(mnDebugCubeCheckAudioChange, NULL);

@@ -8,6 +8,65 @@ extern void hal_interpolation_cubic(Vec3f*, void*, f32);
 //                               //
 // // // // // // // // // // // //
 
+DObj* gcGetTreeDObjNext(DObj *dobj)
+{
+    if (dobj->child != NULL)
+    {
+        dobj = dobj->child;
+    }
+    else if (dobj->sib_next != NULL)
+    {
+        dobj = dobj->sib_next;
+    }
+    else while (TRUE)
+    {
+        if (dobj->parent == DOBJ_PARENT_NULL)
+        {
+            dobj = NULL;
+
+            break;
+        }
+        else if (dobj->parent->sib_next != NULL)
+        {
+            dobj = dobj->parent->sib_next;
+
+            break;
+        }
+        else dobj = dobj->parent;
+    }
+    return dobj;
+}
+
+void gcSetAnimSpeed(GObj *gobj, f32 anim_speed)
+{
+    DObj *dobj = DObjGetStruct(gobj);
+
+    while (dobj != NULL)
+    {
+        dobj->anim_speed = anim_speed;
+        dobj = gcGetTreeDObjNext(dobj);
+    }
+}
+
+void gcSetAllAnimSpeed(GObj *gobj, f32 anim_speed)
+{
+    DObj *dobj = DObjGetStruct(gobj);
+
+    while (dobj != NULL)
+    {
+        MObj *mobj = dobj->mobj;
+
+        dobj->anim_speed = anim_speed;
+
+        while (mobj != NULL)
+        {
+            mobj->anim_speed = anim_speed;
+            mobj = mobj->next;
+        }
+        dobj = gcGetTreeDObjNext(dobj);
+    }
+}
+
 void gcSetMatAnimJointSpeed(GObj *gobj, f32 anim_speed)
 {
     MObj *mobj;
@@ -22,7 +81,7 @@ void gcSetMatAnimJointSpeed(GObj *gobj, f32 anim_speed)
             mobj->anim_speed = anim_speed;
             mobj = mobj->next;
         }
-        dobj = animModelTreeNextNode(dobj);
+        dobj = gcGetTreeDObjNext(dobj);
     }
 }
 
@@ -33,7 +92,7 @@ void gcRemoveAnimJointAll(GObj *gobj)
     while (dobj != NULL) 
     {
         gcRemoveAObjFromDObj(dobj);
-        dobj = animModelTreeNextNode(dobj);
+        dobj = gcGetTreeDObjNext(dobj);
     }
 }
 
@@ -54,7 +113,7 @@ void gcRemoveAnimAll(GObj *gobj)
             gcRemoveAObjFromMObj(mobj);
             mobj = mobj->next;
         }
-        dobj = animModelTreeNextNode(dobj);
+        dobj = gcGetTreeDObjNext(dobj);
     }
 }
 
@@ -71,7 +130,7 @@ void gcRemoveMatAnimJointAll(GObj *gobj)
             gcRemoveAObjFromMObj(mobj);
             mobj = mobj->next;
         }
-        dobj = animModelTreeNextNode(dobj);
+        dobj = gcGetTreeDObjNext(dobj);
     }
 }
 
@@ -124,7 +183,7 @@ void gcAddAnimJointAll(GObj *gobj, AObjEvent **anim_joints, f32 anim_frame)
             dobj->is_anim_root = FALSE;
         }
         anim_joints++;
-        dobj = animModelTreeNextNode(dobj);
+        dobj = gcGetTreeDObjNext(dobj);
     }
 }
 
@@ -155,7 +214,7 @@ void gcAddMatAnimJointAll(GObj *gobj, AObjEvent ***p_matanim_joints, f32 anim_fr
             }
             p_matanim_joints++;
         }
-        dobj = animModelTreeNextNode(dobj);
+        dobj = gcGetTreeDObjNext(dobj);
     }
 }
 
@@ -202,7 +261,7 @@ void gcAddAnimAll(GObj *gobj, AObjEvent **anim_joints, AObjEvent ***p_matanim_jo
             }
             p_matanim_joints++;
         }
-        dobj = animModelTreeNextNode(dobj);
+        dobj = gcGetTreeDObjNext(dobj);
     }
 }
 
@@ -1917,7 +1976,7 @@ f32 func_8000EC64_F864
             {
                 dobj_desc++;
             }
-            dobj = animModelTreeNextNode(dobj);
+            dobj = gcGetTreeDObjNext(dobj);
         }
         dobj = DObjGetStruct(gobj);
 
@@ -1933,7 +1992,7 @@ f32 func_8000EC64_F864
         {
             gcSetDObjAnimLength(dobj, length_max);
 
-            dobj = animModelTreeNextNode(dobj);
+            dobj = gcGetTreeDObjNext(dobj);
         }
     } 
     else while (dobj != NULL)
@@ -1948,7 +2007,7 @@ f32 func_8000EC64_F864
         {
             dobj_desc++;
         }
-        dobj = animModelTreeNextNode(dobj);
+        dobj = gcGetTreeDObjNext(dobj);
     }
     gobj->anim_frame = 0.0F;
     
@@ -2057,7 +2116,7 @@ void func_8000EE40_FA40(GObj *gobj, AObjEvent **anim_joints, f32 anim_frame, DOb
         {
             dobj_desc++;
         }
-        dobj = animModelTreeNextNode(dobj);
+        dobj = gcGetTreeDObjNext(dobj);
     }
 }
 
@@ -2392,7 +2451,7 @@ void gcAddMObjAll(GObj *gobj, MObjSub ***p_mobjsubs)
             }
             p_mobjsubs++;
         }
-        dobj = animModelTreeNextNode(dobj);
+        dobj = gcGetTreeDObjNext(dobj);
     }
 }
 
@@ -2408,7 +2467,7 @@ void gcSetDObjTransformsForGObj(GObj *gobj, DObjDesc *dobj_desc)
 
         dobj_desc++;
 
-        dobj = animModelTreeNextNode(dobj);
+        dobj = gcGetTreeDObjNext(dobj);
     }
 }
 

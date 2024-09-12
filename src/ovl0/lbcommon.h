@@ -38,7 +38,7 @@ extern void lbCommonMatrixTraRotScaInv
 extern void lbCommonMatrixRotSca(Mtx *mtx, f32 rotx, f32 roty, f32 rotz, f32 scax, f32 scay, f32 scaz);
 extern void func_ovl0_800C8634(void);
 extern alSoundEffect* lbCommonMakePositionFGM(u16 fgm, f32 pos);
-extern DObj* lbCommonGetDObjDepthFirst(DObj *a, DObj *b);
+extern DObj* lbCommonGetTreeDObjNextFromRoot(DObj *a, DObj *b);
 extern void lbCommonAddDObjAnimJointAll(DObj *root_dobj, AObjEvent **anim_joints, f32 anim_frame);
 extern void lbCommonAddFighterPartsAnimJointAll(DObj *root_dobj, AObjEvent **anim_joints, f32 anim_frame);
 extern void lbCommonAddDObjAnimAll(DObj *root_dobj, AObjEvent **anim_joints, AObjEvent ***p_matanim_joints, f32 anim_frame);
@@ -136,7 +136,7 @@ extern GObj* lbCommonMakeSpriteGObj
     Sprite *sprite,
     u8 gobjproc_kind,
     void (*proc)(GObj*),
-    u32 priority
+    u32 gobjproc_priority
 );
 extern void lbCommonStartSprite(Gfx **dls);
 extern void lbCommonSetSpriteScissor(s32 xmin, s32 xmax, s32 ymin, s32 ymax);

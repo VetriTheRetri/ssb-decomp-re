@@ -1,6 +1,5 @@
 #include <ft/fighter.h>
 #include <wp/weapon.h>
-
 // // // // // // // // // // // //
 //                               //
 //             MACROS            //

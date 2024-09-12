@@ -106,21 +106,21 @@ GObj* gcApplyToAllEx(GObj* (*proc)(GObj*, u32), u32 param, sb32 is_return_immedi
 }
 
 // 0x8000B14C
-GObj* gcGetByID(GObj *gobj, u32 id)
+GObj* gcGetGObjByID(GObj *gobj, u32 id)
 {
     return (gobj->gobj_id == id) ? gobj : NULL;
 }
 
 // 0x8000B16C
-GObj* gcFindByLinkAndID(s32 link, u32 id)
+GObj* gcFindGObjByLinkAndID(s32 link, u32 id)
 {
-    return gcApplyByLinkEx(link, gcGetByID, id, TRUE);
+    return gcApplyByLinkEx(link, gcGetGObjByID, id, TRUE);
 }
 
 // 0x8000B198
-GObj* gcFindByID(u32 id)
+GObj* gcFindGObjByID(u32 id)
 {
-    return gcApplyToAllEx(gcGetByID, id, TRUE);
+    return gcApplyToAllEx(gcGetGObjByID, id, TRUE);
 }
 
 // 0x8000B1C4
@@ -145,7 +145,7 @@ void gcStopCurrentGObjThread(s32 tics)
 }
 
 // 0x8000B284
-void gcPauseGObjProcessAll(GObj *gobj)
+void gcPauseProcessAll(GObj *gobj)
 {
     GObjProcess *gobjproc;
 
@@ -191,7 +191,7 @@ void gcPauseGObjProcess(GObjProcess *gobjproc)
 }
 
 // 0x8000B304
-void gcResumeProcess(GObjProcess *gobjproc)
+void gcResumeGObjProcess(GObjProcess *gobjproc)
 {
     if (gobjproc == NULL)
     {
@@ -243,7 +243,7 @@ void gcResumeProcessByProc(GObj *gobj, void (*proc_common)(GObj*))
 }
 
 // 0x8000B39C
-void gcEndAllProcesses(GObj *gobj)
+void gcEndProcessAll(GObj *gobj)
 {
     GObjProcess *current_gobjproc, *next_gobjproc;
 
@@ -264,7 +264,7 @@ void gcEndAllProcesses(GObj *gobj)
 }
 
 // 0x8000B3EC
-void gcMakeDObjMatrixSetsRpyD(DObj* dobj)
+void gcAddDObjMatrixSetsRpyD(DObj* dobj)
 {
     gcAddOMMtxForDObjFixed(dobj, nOMTransformTra, 0);
     gcAddOMMtxForDObjFixed(dobj, nOMTransformRotRpyD, 0);
@@ -272,7 +272,7 @@ void gcMakeDObjMatrixSetsRpyD(DObj* dobj)
 }
 
 // 0x8000B434
-void gcMakeDObjMatrixSetsRpyR(DObj *dobj)
+void gcAddDObjMatrixSetsRpyR(DObj *dobj)
 {
     gcAddOMMtxForDObjFixed(dobj, nOMTransformTra, 0);
     gcAddOMMtxForDObjFixed(dobj, nOMTransformRotRpyR, 0);
@@ -280,7 +280,7 @@ void gcMakeDObjMatrixSetsRpyR(DObj *dobj)
 }
 
 // 0x8000B47C
-void gcMakeCameraMatrixSets(Camera *cam)
+void gcAddCameraMatrixSets(Camera *cam)
 {
     gcAddOMMtxForCamera(cam, nOMTransformPerspFastF, 0);
     gcAddOMMtxForCamera(cam, nOMTransformLookAt, 0);
@@ -295,66 +295,95 @@ void gcRemoveTreeMObjAll(GObj *gobj)
     {
         gcRemoveMObjAll(current_dobj);
 
-        current_dobj = animModelTreeNextNode(current_dobj);
+        current_dobj = gcGetTreeDObjNext(current_dobj);
     }
 }
 
 // 0x8000B4F8
-DObj* gcAddDObjDeg(GObj *gobj, void *dvar)
+DObj* gcAddDObjRpyD(GObj *gobj, void *dvar)
 {
     DObj *dobj = gcAddDObjForGObj(gobj, dvar);
-    gcMakeDObjMatrixSetsRpyD(dobj);
+    gcAddDObjMatrixSetsRpyD(dobj);
 
     return dobj;
 }
 
 // 0x8000B528
-DObj* gcAddDObjSibling(DObj *dobj, void *dvar)
+DObj* gcAddDObjSiblingRpyD(DObj *dobj, void *dvar)
 {
     DObj *sibling_dobj = gcAddSiblingForDObj(dobj, dvar);
-    gcMakeDObjMatrixSetsRpyD(sibling_dobj);
+    gcAddDObjMatrixSetsRpyD(sibling_dobj);
 
     return sibling_dobj;
 }
 
 // 0x8000B558
-DObj* gcAddDObjChildDeg(DObj *dobj, void *dvar)
+DObj* gcAddDObjChildRpyD(DObj *dobj, void *dvar)
 {
     DObj *child_dobj = gcAddChildForDObj(dobj, dvar);
-    gcMakeDObjMatrixSetsRpyD(child_dobj);
+    gcAddDObjMatrixSetsRpyD(child_dobj);
 
     return child_dobj;
 }
 
 // 0x8000B588
-DObj* gcAddDObjRad(GObj *gobj, void *dvar)
+DObj* gcAddDObjRpyR(GObj *gobj, void *dvar)
 {
     DObj *dobj = gcAddDObjForGObj(gobj, dvar);
-    gcMakeDObjMatrixSetsRpyR(dobj);
+    gcAddDObjMatrixSetsRpyR(dobj);
 
     return dobj;
 }
 
 // 0x8000B5B8
-DObj* gcAddDObjSiblingRad(DObj *dobj, void *dvar)
+DObj* gcAddDObjSiblingRpyR(DObj *dobj, void *dvar)
 {
     DObj *sibling_dobj = gcAddSiblingForDObj(dobj, dvar);
-    gcMakeDObjMatrixSetsRpyR(sibling_dobj);
+    gcAddDObjMatrixSetsRpyR(sibling_dobj);
 
     return sibling_dobj;
 }
 
 // 0x8000B5E8
-DObj* gcAddDObjChildRad(DObj *dobj, void *dvar)
+DObj* gcAddDObjChildRpyR(DObj *dobj, void *dvar)
 {
     DObj *child_dobj = gcAddChildForDObj(dobj, dvar);
-    gcMakeDObjMatrixSetsRpyR(child_dobj);
+    gcAddDObjMatrixSetsRpyR(child_dobj);
     
     return child_dobj;
 }
 
-// also missing in snap oh.c
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/unref_8000B618.s")
+// 0x8000B618
+void unref_8000B618(GObj *gobj, DObjTraDesc *dobj_tra, DObj **dobjs)
+{
+    s32 i;
+    DObj *dobj, *array_dobjs[18];
+    
+    for (i = 0; i < ARRAY_COUNT(array_dobjs); i++)
+    {
+        array_dobjs[i] = NULL;
+    }
+    while (dobj_tra->index != 18)
+    {
+        if (dobj_tra->index != 0)
+        {
+            dobj = array_dobjs[dobj_tra->index] = gcAddDObjChildRpyD
+            (
+                array_dobjs[dobj_tra->index - 1],
+                dobj_tra->display_list
+            );
+        }
+        else dobj = array_dobjs[0] = gcAddDObjRpyD(gobj, dobj_tra->display_list);
+        
+        dobj->translate.vec.f = dobj_tra->translate;
+
+        if (dobjs != NULL)
+        {
+            *dobjs++ = dobj;
+        }
+        dobj_tra++;
+    }
+}
 
 // 0x8000B70C
 void gcRemoveDObjAll(GObj *gobj)
@@ -437,7 +466,7 @@ GObj* gcMakeModelGObj
 
     if (is_add_default_ommtx != FALSE)
     {
-        gcMakeDObjMatrixSetsRpyD(dobj);
+        gcAddDObjMatrixSetsRpyD(dobj);
     }
     if (proc != NULL)
     {
@@ -460,7 +489,7 @@ GObj* gcMakeSpriteGObj
     Sprite *sprite,
     u8 gobjproc_kind,
     void (*proc)(GObj*),
-    u32 priority
+    u32 gobjproc_priority
 )
 {
     GObj *gobj = gcMakeGObjSPAfter(id, proc_run, link, link_order);
@@ -475,46 +504,87 @@ GObj* gcMakeSpriteGObj
         
     if (proc != NULL)
     {
-        gcAddGObjProcess(gobj, proc, gobjproc_kind, priority);
+        gcAddGObjProcess(gobj, proc, gobjproc_kind, gobjproc_priority);
     }
     return gobj;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/func_8000B93C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/func_8000B9FC.s")
-
-// 0x8000BAA0 non matching in snap anim.c (also probably missing split for anim.c file)
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/system_03_1/animModelTreeNextNode.s")
-
-// 0x8000BB04
-void gcSetDObjAnimSpeed(GObj *gobj, f32 anim_speed)
+// 0x8000B93C
+GObj* gcMakeCameraGObj
+(
+    u32 id,
+    void (*proc_run)(GObj*),
+    s32 link,
+    u32 link_order,
+    void (*proc_render)(GObj*),
+    u32 dl_link_order,
+    u64 cam_mask,
+    s32 cam_tag,
+    sb32 is_add_default_ommtx,
+    u8 gobjproc_kind,
+    void (*proc)(GObj*),
+    u32 gobjproc_priority,
+    sb32 argD
+)
 {
-    DObj *dobj = DObjGetStruct(gobj);
+    GObj *gobj;
+    Camera *cam;
 
-    while (dobj != NULL)
+    gobj = gcMakeGObjSPAfter(id, proc_run, link, link_order);
+    
+    if (gobj == NULL)
     {
-        dobj->anim_speed = anim_speed;
-        dobj = animModelTreeNextNode(dobj);
+        return NULL;
     }
+    func_80009F74(gobj, proc_render, dl_link_order, cam_mask, cam_tag);
+    
+    cam = gcAddCameraForGObj(gobj);
+
+    if (is_add_default_ommtx != FALSE)
+    {
+        gcAddCameraMatrixSets(cam);
+    }
+    if (proc != NULL)
+    {
+        gcAddGObjProcess(gobj, proc, gobjproc_kind, gobjproc_priority);
+    }
+    if (argD != 0)
+    {
+        cam->flags = 0x4 | 0x2 | 0x1;
+        cam->color = GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF);
+    }
+    return gobj;
 }
 
-// 0x8000BB4C
-void gcSetAllAnimSpeed(GObj *gobj, f32 anim_speed)
+// 0x8000B9FC
+GObj* gcMakeDefaultCameraGObj(s32 link, u32 link_order, u32 dl_link_order, u32 flags, u32 color)
 {
-    DObj *dobj = DObjGetStruct(gobj);
-
-    while (dobj != NULL)
+    GObj *gobj = gcMakeCameraGObj
+    (
+        -1,
+        gcUpdateDefault,
+        link,
+        link_order,
+        func_80017DBC,
+        dl_link_order,
+        0,
+        0,
+        FALSE,
+        nOMObjProcessKindThread,
+        NULL,
+        0,
+        FALSE
+    );
+    Camera *cam;
+    
+    if (gobj == NULL)
     {
-        MObj *mobj = dobj->mobj;
-
-        dobj->anim_speed = anim_speed;
-
-        while (mobj != NULL)
-        {
-            mobj->anim_speed = anim_speed;
-            mobj = mobj->next;
-        }
-        dobj = animModelTreeNextNode(dobj);
+        return NULL;
     }
+    cam = CameraGetStruct(gobj);
+    
+    cam->flags = flags;
+    cam->color = color;
+    
+    return gobj;
 }

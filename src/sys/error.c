@@ -6,7 +6,6 @@
 #include <sys/main.h>
 #include <sys/obj.h>
 #include <sys/system_00.h>
-#include <sys/system_03_1.h>
 #include <sys/thread3.h>
 #include <sys/thread6.h>
 
@@ -404,11 +403,11 @@ void syErrorDrawControllerInputs(GObj *gobj)
 
 GObj* func_80022368(s32 link, u32 arg1, s32 arg2)
 {
-    if (gcFindByID(-2U) != 0)
+    if (gcFindGObjByID(-2U) != 0)
     {
         return NULL;
     }
-    else return func_8000B93C
+    else return gcMakeCameraGObj
     (
         -2U, 
         (void (*)())gcUpdateDefault, 

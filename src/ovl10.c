@@ -37,7 +37,7 @@ extern uintptr_t D_NF_00000854; // 00854
 extern void mnDebugMenuUpdateMenuInputs();
 extern void gcAddGObjDisplay(GObj *gobj, void (*proc_render)(GObj*), u8 dl_link, u32 order, s32 arg4);
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
+
 
 // Forward declarations
 void mnTitleTransitionFromFireLogo();
@@ -364,7 +364,7 @@ void mnTitleSetFinalLogoPosition()
 
 	if (gSceneData.scene_previous == nSCKindOpeningNewcomers)
 	{
-		gcEndAllProcesses(smash_logo_gobj);
+		gcEndProcessAll(smash_logo_gobj);
 	}
 
 	smash_logo_sobj = SObjGetStruct(smash_logo_gobj);
@@ -407,7 +407,7 @@ void mnTitleSetFinalLayout()
 	}
 
 	// UB: texture_sobj may not be defined!
-	gcEndAllProcesses(texture_sobj);
+	gcEndProcessAll(texture_sobj);
 
 	i = 0;
 	sobj = SObjGetStruct(texture_sobj);
@@ -430,7 +430,7 @@ void mnTitleGoToNextDemo()
 {
 	u8 scene_previous = gSceneData.scene_previous;
 
-	func_8000B9FC(2, 0x80000000, 0, 2, 0xFF);
+	gcMakeDefaultCameraGObj(2, 0x80000000, 0, 2, 0xFF);
 	mnTitleSetDemoFtKinds();
 	func_800266A0_272A0();
 
@@ -460,7 +460,7 @@ void mnTitleGoToNextDemo()
 // 80132090
 void mnTitleGoToMainMenu()
 {
-	func_8000B9FC(2, 0x80000000, 0, 2, 0xFF);
+	gcMakeDefaultCameraGObj(2, 0x80000000, 0, 2, 0xFF);
 
 	gSceneData.scene_previous = gSceneData.scene_current;
 	gSceneData.scene_current = 7;
@@ -1217,14 +1217,14 @@ s32 mnTitleCreateViewports()
 	GObj *camera_gobj;
 	Camera *cam;
 
-	gMNTitleFireBGOverlayCameraGObj = func_8000B9FC(2, 0x80000000, 0x64, 3, 0xFF);
+	gMNTitleFireBGOverlayCameraGObj = gcMakeDefaultCameraGObj(2, 0x80000000, 0x64, 3, 0xFF);
 	gcAddGObjProcess(gMNTitleFireBGOverlayCameraGObj, mnTitleUpdateFireBGOverlayColor, 1, 1);
 
-	camera_gobj = func_8000B93C(2, 0, 3, 0x80000000, lbCommonScissorSpriteCamera, 0x3C, 0x00000003, -1, 0, 1, 0, 1, 0);
+	camera_gobj = gcMakeCameraGObj(2, 0, 3, 0x80000000, lbCommonScissorSpriteCamera, 0x3C, 0x00000003, -1, 0, 1, 0, 1, 0);
 	cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-	camera_gobj = func_8000B93C(3, 0, 3, 0x80000000, func_80017EC0, 0x28, 0x00000004, -1, 0, 1, 0, 1, 0);
+	camera_gobj = gcMakeCameraGObj(3, 0, 3, 0x80000000, func_80017EC0, 0x28, 0x00000004, -1, 0, 1, 0, 1, 0);
 	cam = CameraGetStruct(camera_gobj);
 	gcAddOMMtxForCamera(cam, 5, 0);
 	gcAddOMMtxForCamera(cam, 6, 0);
@@ -1237,7 +1237,7 @@ s32 mnTitleCreateViewports()
 	cam->vec.eye.y = 0.0F;
 	cam->vec.eye.x = 0.0F;
 
-	camera_gobj = func_8000B93C(3, 0, 3, 0x80000000, func_80017EC0, 0x50, 0x00000008, -1, 1, 1, 0, 1, 0);
+	camera_gobj = gcMakeCameraGObj(3, 0, 3, 0x80000000, func_80017EC0, 0x50, 0x00000008, -1, 1, 1, 0, 1, 0);
 	cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 

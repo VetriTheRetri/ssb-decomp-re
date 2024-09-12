@@ -7,23 +7,8 @@
 
 
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern GObj* func_8000B9FC();
-extern GObj* func_8000B93C
-(
-	u32 id,
-	void (*arg1)(GObj *),
-	s32 link,
-	u32 arg3,
-	void (*arg4)(GObj *),
-	u32 arg5,
-	s64 arg7,
-	s32 arg8,
-	s32 arg9,
-	s32 arg10,
-	void *arg11,
-	u32 arg12,
-	s32 arg13
-);
+
+
 
 // // // // // // // // // // // //
 //                               //
@@ -241,7 +226,7 @@ void scExplainStartBattle(void)
 // 0x8018D248
 void func_ovl63_8018D248(void)
 {
-    Camera *cam = CameraGetStruct(func_8000B9FC(9, 0x80000000U, 0x64, 1, 0xFF));
+    Camera *cam = CameraGetStruct(gcMakeDefaultCameraGObj(9, 0x80000000U, 0x64, 1, 0xFF));
 
     func_80007080
     (
@@ -268,7 +253,7 @@ void func_ovl63_8018D2D0(GObj *gobj)
 // 0x8018D3D8
 void func_ovl63_8018D3D8(void)
 {
-    func_8000B93C
+    gcMakeCameraGObj
     (
         nOMObjCommonKindScissorCamera,
         NULL,
@@ -296,7 +281,7 @@ void scExplainSetPlayerInterfacePositions(void)
 // 0x8018D460
 GObj* func_ovl63_8018D460(void)
 {
-    GObj *camera_gobj = func_8000B93C
+    GObj *camera_gobj = gcMakeCameraGObj
     (
         nOMObjCommonKindScissorCamera,
         NULL,
@@ -322,7 +307,7 @@ GObj* func_ovl63_8018D460(void)
 // 0x8018D500
 GObj* func_ovl63_8018D500(void)
 {
-    GObj *camera_gobj = func_8000B93C
+    GObj *camera_gobj = gcMakeCameraGObj
     (
         nOMObjCommonKindScissorCamera,
         NULL,

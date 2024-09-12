@@ -9,20 +9,7 @@ extern void func_800A26B8();
 
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
-extern GObj* func_8000B93C(
-	u32 id,
-	void (*arg1)(GObj *),
-	s32 link,
-	u32 arg3,
-	void (*arg4)(GObj *),
-	u32 arg5,
-	s64 arg7,
-	s32 arg8,
-	s32 arg9,
-	s32 arg10,
-	void *arg11,
-	u32 arg12,
-	s32 arg13);
+
 
 // // // // // // // // // // // //
 //                               //
@@ -37,7 +24,6 @@ extern uintptr_t D_NF_00000050;							// 0x00000050
 extern uintptr_t D_NF_00000051;							// 0x00000051
 extern uintptr_t D_NF_000000A4;							// 0x000000A4
 extern uintptr_t D_NF_00000025;							// 0x00000025
-
 // // // // // // // // // // // //
 //                               //
 //             MACROS            //
@@ -795,7 +781,7 @@ void sc1PContinueMakeLink26Camera(void)
 {
     Camera *cam = CameraGetStruct
     (
-        func_8000B93C
+        gcMakeCameraGObj
         (
             nOMObjCommonKindSceneCamera,
             NULL,
@@ -822,7 +808,7 @@ void sc1PContinueMakeLink31Camera(void)
 {
     Camera *cam = CameraGetStruct
     (
-        func_8000B93C
+        gcMakeCameraGObj
         (
             nOMObjCommonKindSceneCamera,
             NULL,
@@ -849,7 +835,7 @@ void sc1PContinueMakeLink32Camera(void)
 {
     Camera *cam = CameraGetStruct
     (
-        func_8000B93C
+        gcMakeCameraGObj
         (
             nOMObjCommonKindSceneCamera,
             NULL,
@@ -901,7 +887,7 @@ void sc1PContinueMakeLinkMultiCamera(void)
     // 0x08048600
     Camera *cam = CameraGetStruct
     (
-        func_8000B93C
+        gcMakeCameraGObj
         (
             nOMObjCommonKindSceneCamera,
             NULL,
@@ -928,7 +914,7 @@ void sc1PContinueMakeLink29Camera(void)
 {
     Camera *cam = CameraGetStruct
     (
-        func_8000B93C
+        gcMakeCameraGObj
         (
             nOMObjCommonKindSceneCamera,
             NULL,
@@ -953,7 +939,7 @@ void sc1PContinueMakeLink30Camera(void)
 {
     Camera *cam = CameraGetStruct
     (
-        func_8000B93C
+        gcMakeCameraGObj
         (
             nOMObjCommonKindSceneCamera,
             NULL,
@@ -980,7 +966,7 @@ void sc1PContinueMakeLink28Camera(void)
 {
     Camera *cam = CameraGetStruct
     (
-        func_8000B93C
+        gcMakeCameraGObj
         (
             nOMObjCommonKindSceneCamera,
             NULL,
@@ -1237,7 +1223,7 @@ void sc1PContinueProcStart(void)
         )
     );
     gcMakeGObjSPAfter(0, sc1PContinueProcRun, 0, GOBJ_LINKORDER_DEFAULT);
-    func_8000B9FC(0, 0x80000000, 0x64, 3, 0xFF);
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     efAllocInitParticleBank();
     sc1PContinueInitVars();
     efManagerInitEffects();

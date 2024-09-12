@@ -8,20 +8,7 @@ extern u32 func_8000092C();
 
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
-extern GObj* func_8000B93C(
-	u32 id,
-	void (*arg1)(GObj *),
-	s32 link,
-	u32 arg3,
-	void (*arg4)(GObj *),
-	u32 arg5,
-	s64 arg7,
-	s32 arg8,
-	s32 arg9,
-	s32 arg10,
-	void *arg11,
-	u32 arg12,
-	s32 arg13);
+
 
 // // // // // // // // // // // //
 //                               //
@@ -311,7 +298,7 @@ void mvOpeningNewcomersMakeCharacterViewport(void)
     s32 unused;
     Camera *cam = CameraGetStruct
     (
-        func_8000B93C
+        gcMakeCameraGObj
         (
             nOMObjCommonKindSceneCamera,
             NULL,
@@ -349,7 +336,7 @@ void mvOpeningNewcomersMakeHideViewport(void)
 {
     Camera *cam = CameraGetStruct
     (
-        func_8000B93C
+        gcMakeCameraGObj
         (
             nOMObjCommonKindSceneCamera,
             NULL,
@@ -451,7 +438,7 @@ void mvOpeningNewcomersProcStart(void)
     );
     gcMakeGObjSPAfter(0, mvOpeningNewcomersProcRun, 0, GOBJ_LINKORDER_DEFAULT);
 
-    func_8000B9FC(0, 0x80000000, 0x64, 3, -1);
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF));
 
     mvOpeningNewcomersInitVars();
     mvOpeningNewcomersMakeCharacterViewport();

@@ -1,7 +1,6 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 #include <ef/effect.h>
-
 // // // // // // // // // // // //
 //                               //
 //             MACROS            //

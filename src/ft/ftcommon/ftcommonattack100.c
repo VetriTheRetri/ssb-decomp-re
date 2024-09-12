@@ -7,7 +7,6 @@
 // // // // // // // // // // // //
 
 extern intptr_t lFTKirbyAttack100Effect;            // 0x00001220
-
 // // // // // // // // // // // //
 //                               //
 //             MACROS            //

@@ -8,20 +8,7 @@ extern u32 func_8000092C();
 
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
-extern GObj* func_8000B93C(
-	u32 id,
-	void (*arg1)(GObj *),
-	s32 link,
-	u32 arg3,
-	void (*arg4)(GObj *),
-	u32 arg5,
-	s64 arg7,
-	s32 arg8,
-	s32 arg9,
-	s32 arg10,
-	void *arg11,
-	u32 arg12,
-	s32 arg13);
+
 
 // // // // // // // // // // // //
 //                               //
@@ -416,7 +403,7 @@ void mvOpeningSectorCameraProcUpdate(GObj* camera_gobj)
 // 0x80132400
 void mvOpeningSectorMakeMainViewport(void)
 {
-    GObj *camera_gobj = func_8000B93C
+    GObj *camera_gobj = gcMakeCameraGObj
     (
         nOMObjCommonKindSceneCamera,
         NULL,
@@ -448,7 +435,7 @@ void mvOpeningSectorMakeWallpaperViewport(void)
 {
     Camera *cam = CameraGetStruct
     (
-        func_8000B93C
+        gcMakeCameraGObj
         (
             nOMObjCommonKindSceneCamera,
             NULL,
@@ -473,7 +460,7 @@ void mvOpeningSectorMakeCockpitViewport(void)
 {
     Camera *cam = CameraGetStruct
     (
-        func_8000B93C
+        gcMakeCameraGObj
         (
             nOMObjCommonKindSceneCamera,
             NULL,
@@ -572,7 +559,7 @@ void mvOpeningSectorProcStart(void)
     );
     gcMakeGObjSPAfter(0, mvOpeningSectorProcRun, 0, GOBJ_LINKORDER_DEFAULT);
 
-    func_8000B9FC(0, 0x80000000, 0x64, 1, 0);
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 
     mvOpeningSectorInitTotalTimeTics();
     mvOpeningSectorMakeMainViewport();

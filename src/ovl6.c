@@ -804,7 +804,7 @@ void scBonusGame_InitBonusGame()
 	func_ovl6_8018D0F0();
 	func_ovl6_8018ED70();
 	func_ovl6_8018D330();
-	func_8000B9FC(9, 0x80000000U, 0x64, 1, 0xFF);
+	gcMakeDefaultCameraGObj(9, 0x80000000U, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
 	ftParamInitGame();
 	mpCollisionInitGroundData();

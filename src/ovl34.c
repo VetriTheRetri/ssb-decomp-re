@@ -76,7 +76,7 @@ extern intptr_t FILE_05A_BACKGROUND_IMAGE_OFFSET; // file 0x05A offset for backg
 extern void gcPlayCamAnim();
 
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
+
 extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 extern f32 scSubsysFighterGetLightAngleX();
 extern f32 scSubsysFighterGetLightAngleY();
@@ -603,7 +603,7 @@ void mvOpeningFirstDestinationCreateCloseupOverlay()
 // 80132D48
 void mvOpeningFirstDestinationCreateOverlayViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x3C, 0x04000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x3C, 0x04000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -724,12 +724,12 @@ void mvOpeningFirstDestinationCreateFirstSceneViewports()
 {
 	GObj* camera_gobj;
 
-	gMvOpeningFirstDestinationMainCameraGObj = camera_gobj = func_8000B93C(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 0, 1, 0, 1, 0);
+	gMvOpeningFirstDestinationMainCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 0, 1, 0, 1, 0);
 	gcAddOMMtxForCamera(CameraGetStruct(camera_gobj), 3, 0);
 	gcAddOMMtxForCamera(CameraGetStruct(camera_gobj), 0xE, 0);
 	mvOpeningFirstDestinationConfigureFirstSceneViewport(camera_gobj);
 
-	gMvOpeningFirstDestinationFighterCameraGObj = camera_gobj = func_8000B93C(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x08000200, -1, 1, 1, 0, 1, 0);
+	gMvOpeningFirstDestinationFighterCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x08000200, -1, 1, 1, 0, 1, 0);
 	mvOpeningFirstDestinationConfigureFirstSceneViewport(camera_gobj);
 }
 
@@ -748,12 +748,12 @@ void mvOpeningFirstDestinationCreateSecondSceneViewports()
 {
 	GObj* camera_gobj;
 
-	gMvOpeningFirstDestinationMainCameraGObj = camera_gobj = func_8000B93C(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 0, 1, 0, 1, 0);
+	gMvOpeningFirstDestinationMainCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 0, 1, 0, 1, 0);
 	gcAddOMMtxForCamera(CameraGetStruct(camera_gobj), 3, 0);
 	gcAddOMMtxForCamera(CameraGetStruct(camera_gobj), 0x8, 0);
 	mvOpeningFirstDestinationConfigureSecondSceneViewport(camera_gobj);
 
-	gMvOpeningFirstDestinationFighterCameraGObj = camera_gobj = func_8000B93C(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x08000200, -1, 1, 1, 0, 1, 0);
+	gMvOpeningFirstDestinationFighterCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x08000200, -1, 1, 1, 0, 1, 0);
 	mvOpeningFirstDestinationConfigureSecondSceneViewport(camera_gobj);
 }
 
@@ -785,12 +785,12 @@ void mvOpeningFirstDestinationCreateThirdSceneViewports()
 	GObj* camera_gobj;
 	GObj* camera_gobj_2;
 
-	gMvOpeningFirstDestinationMainCameraGObj = camera_gobj = func_8000B93C(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 0, 1, 0, 1, 0);
+	gMvOpeningFirstDestinationMainCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 0, 1, 0, 1, 0);
 	gcAddOMMtxForCamera(CameraGetStruct(camera_gobj), 3, 0);
 	gcAddOMMtxForCamera(CameraGetStruct(camera_gobj), 0x8, 0);
 	mvOpeningFirstDestinationConfigureThirdSceneViewport(camera_gobj);
 
-	gMvOpeningFirstDestinationFighterCameraGObj = camera_gobj_2 = func_8000B93C(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x08000200, -1, 1, 1, 0, 1, 0);
+	gMvOpeningFirstDestinationFighterCameraGObj = camera_gobj_2 = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x08000200, -1, 1, 1, 0, 1, 0);
 	mvOpeningFirstDestinationConfigureThirdSceneViewport(camera_gobj_2);
 }
 
@@ -821,17 +821,17 @@ void mvOpeningFirstDestinationCreateFourthSceneViewports()
 	GObj* camera_gobj;
 	GObj* camera_gobj_2;
 
-	gMvOpeningFirstDestinationMainCameraGObj = camera_gobj = func_8000B93C(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 1, 1, 0, 1, 0);
+	gMvOpeningFirstDestinationMainCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 1, 1, 0, 1, 0);
 	mvOpeningFirstDestinationConfigureFourthSceneViewport(camera_gobj);
 
-	gMvOpeningFirstDestinationFighterCameraGObj = camera_gobj_2 = func_8000B93C(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x00000200, -1, 1, 1, 0, 1, 0);
+	gMvOpeningFirstDestinationFighterCameraGObj = camera_gobj_2 = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x00000200, -1, 1, 1, 0, 1, 0);
 	mvOpeningFirstDestinationConfigureFourthSceneViewport(camera_gobj_2);
 }
 
 // 801339CC
 void mvOpeningFirstDestinationCreateBackgroundViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x5A, 0x10000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x5A, 0x10000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -842,7 +842,7 @@ void mvOpeningFirstDestinationCreateHALLogoViewport()
 	GObj *camera_gobj;
 	Camera *cam;
 
-	gMvOpeningFirstDestinationHALLogoCameraGObj = camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x32, 0x20000000, -1, 1, 1, 0, 1, 0);
+	gMvOpeningFirstDestinationHALLogoCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x32, 0x20000000, -1, 1, 1, 0, 1, 0);
 	cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[2], &FILE_038_CAMERA_PARAMETERS_OFFSET), 0.0F);
@@ -911,7 +911,7 @@ void mvOpeningFirstDestinationCreateTransitionGFX()
 // 8013407C
 void mvOpeningFirstDestinationCreateTransitionGFXViewport()
 {
-	GObj* camera_gobj = func_8000B93C(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x5F, 0x40000000, -1, 1, 1, 0, 1, 0);
+	GObj* camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x5F, 0x40000000, -1, 1, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 	cam->vec.eye.x = 0.0F;
@@ -1125,7 +1125,7 @@ void mvOpeningFirstDestinationInit()
 	rdManagerLoadFiles(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20), gMvOpeningFirstDestinationFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20)), 0x10));
 
 	gcMakeGObjSPAfter(0, mvOpeningFirstDestinationMainProc, 0, 0x80000000);
-	gMvOpeningFirstDestinationCameraGObj = func_8000B9FC(0, 0x80000000, 0x64, 3, 0xFF);
+	gMvOpeningFirstDestinationCameraGObj = gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efAllocInitParticleBank();
 	mvOpeningFirstDestinationInitGlobals();
 	efManagerInitEffects();

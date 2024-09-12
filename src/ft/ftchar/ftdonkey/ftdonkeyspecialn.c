@@ -1,7 +1,5 @@
 #include <ft/fighter.h>
 
-extern void gcSetDObjAnimSpeed(GObj*, f32);
-
 // // // // // // // // // // // //
 //                               //
 //           FUNCTIONS           //
@@ -90,7 +88,7 @@ void ftDonkeySpecialNLoopProcUpdate(GObj *fighter_gobj)
 
                 if (fp->fighter_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX)
                 {
-                    gcSetDObjAnimSpeed(fighter_gobj, FTDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED);
+                    gcSetAnimSpeed(fighter_gobj, FTDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED);
 
                     ftParamCheckSetFighterColAnimID(fighter_gobj, FTDONKEY_GIANTPUNCH_CHARGE_COLANIM_ID, FTDONKEY_GIANTPUNCH_CHARGE_COLANIM_LENGTH);
 
@@ -153,7 +151,7 @@ void ftDonkeySpecialNLoopSetProcDamageAnimRate(GObj *fighter_gobj)
 
     if (fp->fighter_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX)
     {
-        gcSetDObjAnimSpeed(fighter_gobj, FTDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED);
+        gcSetAnimSpeed(fighter_gobj, FTDONKEY_GIANTPUNCH_CHRAGE_ANIM_SPEED);
     }
 }
 

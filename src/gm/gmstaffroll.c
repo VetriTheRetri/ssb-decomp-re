@@ -11,7 +11,7 @@ extern void syMatrixLookAtF(Mtx44f mf, f32 xEye, f32 yEye, f32 zEye, f32 xAt, f3
 extern void guMtxCatF(Mtx44f a, Mtx44f b, Mtx44f c);
 
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
+
 
 // // // // // // // // // // // //
 //                               //
@@ -1425,13 +1425,13 @@ sb32 gmStaffrollCheckPause(void)
 		{
 			if (sGMStaffrollScrollGObj != NULL)
 			{
-				gcPauseGObjProcessAll(sGMStaffrollScrollGObj);
+				gcPauseProcessAll(sGMStaffrollScrollGObj);
 			}
 			gobj = gOMObjCommonLinks[nOMObjCommonLinkIDCreditsName];
 
 			while (gobj != NULL)
 			{
-				gcPauseGObjProcessAll(gobj);
+				gcPauseProcessAll(gobj);
 
 				gobj = gobj->link_next;
 			}
@@ -1439,7 +1439,7 @@ sb32 gmStaffrollCheckPause(void)
 
 			while (gobj != NULL)
 			{
-				gcPauseGObjProcessAll(gobj);
+				gcPauseProcessAll(gobj);
 
 				gobj = gobj->link_next;
 			}
@@ -2208,7 +2208,7 @@ void gmStaffrollMakeCamera(void)
 {
 	Camera *cam = CameraGetStruct
 	(
-		func_8000B93C
+		gcMakeCameraGObj
 		(
 			5,
 			NULL,
@@ -2230,7 +2230,7 @@ void gmStaffrollMakeCamera(void)
 
 	sGMStaffrollCamera = cam = CameraGetStruct
 	(
-		func_8000B93C
+		gcMakeCameraGObj
 		(
 			5,
 			NULL,
@@ -2263,7 +2263,7 @@ void gmStaffrollMakeCamera(void)
 void gmStaffrollProcStart(void)
 {
 	gcMakeGObjSPAfter(0, func_ovl59_801334E4, 1, GOBJ_LINKORDER_DEFAULT);
-	func_8000B9FC(0xC, 0x80000000, 0x64, 2, 0xFF);
+	gcMakeDefaultCameraGObj(12, GOBJ_LINKORDER_DEFAULT, 100, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	gmStaffrollSetupFiles();
 	gmStaffrollInitNameAndJobDisplayLists();
 	gmStaffrollTryHideUnlocks();

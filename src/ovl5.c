@@ -102,7 +102,7 @@ void func_ovl5_8018D1A0()
 
 	func_ovl5_8018D0C0();
 	gcMakeGObjSPAfter(0x3F7U, func_ovl5_8018D160, 0xDU, GOBJ_LINKORDER_DEFAULT);
-	func_8000B9FC(9, 0x80000000, 0x64, 1, 0xFF);
+	gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 1, 0xFF);
 	efAllocInitParticleBank();
 	ftParamInitGame();
 	mpCollisionInitGroundData();

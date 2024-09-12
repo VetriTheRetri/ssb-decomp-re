@@ -7,23 +7,7 @@
 
 extern void* func_800269C0_275C0(u16);
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern GObj* func_8000B9FC();
-extern GObj* func_8000B93C
-(
-	u32 id,
-	void (*arg1)(GObj *),
-	s32 link,
-	u32 arg3,
-	void (*arg4)(GObj *),
-	u32 arg5,
-	s64 arg7,
-	s32 arg8,
-	s32 arg9,
-	s32 arg10,
-	void *arg11,
-	u32 arg12,
-	s32 arg13
-);
+
 
 // // // // // // // // // // // //
 //                               //
@@ -618,7 +602,7 @@ void mnOptionMakeLink3Camera(void)
 {
     Camera *cam = CameraGetStruct
     (
-        func_8000B93C
+        gcMakeCameraGObj
         (
             1,
             NULL,
@@ -643,7 +627,7 @@ void mnOptionMakeLink4Camera(void)
 {
     Camera *cam = CameraGetStruct
     (
-        func_8000B93C
+        gcMakeCameraGObj
         (
             1,
             NULL,
@@ -668,7 +652,7 @@ void mnOptionMakeLink2Camera(void)
 {
     Camera *cam = CameraGetStruct
     (
-        func_8000B93C
+        gcMakeCameraGObj
         (
             1,
             NULL,
@@ -693,7 +677,7 @@ void mnOptionMakeLink1Camera(void)
 {
     Camera *cam = CameraGetStruct
     (
-        func_8000B93C
+        gcMakeCameraGObj
         (
             1,
             NULL,
@@ -718,7 +702,7 @@ void mnOptionMakeLink0Camera(void)
 {
     Camera *cam = CameraGetStruct
     (
-        func_8000B93C
+        gcMakeCameraGObj
         (
             1,
             NULL,
@@ -1008,7 +992,7 @@ void mnOptionProcStart(void)
         )
     );
     gcMakeGObjSPAfter(0, mnOptionProcRun, 0, GOBJ_LINKORDER_DEFAULT);
-    func_8000B9FC(0, 0x80000000, 0x64, 0, 0);
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
     mnOptionInitVars();
     mnOptionMakeLink0Camera();
     mnOptionMakeLink1Camera();

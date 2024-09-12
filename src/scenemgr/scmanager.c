@@ -12,7 +12,6 @@
 #include <sys/gtl.h>
 #include <sys/hal_audio.h>
 #include <sys/system_00.h>
-#include <sys/system_03_1.h>
 #include <sc/sctypes.h> // Temporarily, until ovl defines are fixed
 #include <sys/thread6.h>
 
@@ -688,10 +687,10 @@ void func_800A26D8(GObj* arg0)
 // 800A2B18
 GObj* func_800A2B18(s32 link, u32 arg1, s32 arg2)
 {
-	if (gcFindByID(0xEFFFFFFF) != NULL)
+	if (gcFindGObjByID(0xEFFFFFFF) != NULL)
 		return NULL;
 
-	return func_8000B93C(0xEFFFFFFF, NULL, link, arg1, func_800A26D8, arg2, 0, 0, 0, 0, 0, 0, 0);
+	return gcMakeCameraGObj(0xEFFFFFFF, NULL, link, arg1, func_800A26D8, arg2, 0, 0, 0, 0, 0, 0, 0);
 }
 
 // 800A2BA8
@@ -699,13 +698,13 @@ void unref_800A2BA8(s32 link, u32 arg1, s32 arg2) // set_up_debug_objs ? somethi
 {
 	GObj* com;
 
-	com = gcFindByID(0xFFFFFFFE);
+	com = gcFindGObjByID(0xFFFFFFFE);
 	if (com != NULL)
 		gcEjectGObj(com);
 	else
 		func_80022368(link, arg1, arg2);
 
-	com = gcFindByID(0xEFFFFFFF);
+	com = gcFindGObjByID(0xEFFFFFFF);
 	if (com != NULL)
 		gcEjectGObj(com);
 	else

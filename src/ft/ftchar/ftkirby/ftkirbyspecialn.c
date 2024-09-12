@@ -7,7 +7,6 @@
 // // // // // // // // // // // //
 
 extern intptr_t lFTKirbySpecialNCopyData;       // 0x00000000
-
 // // // // // // // // // // // //
 //                               //
 //             MACROS            //

@@ -7,23 +7,6 @@
 
 extern void* func_800269C0_275C0(u16);
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern GObj* func_8000B9FC();
-extern GObj* func_8000B93C
-(
-	u32 id,
-	void (*arg1)(GObj *),
-	s32 link,
-	u32 arg3,
-	void (*arg4)(GObj *),
-	u32 arg5,
-	s64 arg7,
-	s32 arg8,
-	s32 arg9,
-	s32 arg10,
-	void *arg11,
-	u32 arg12,
-	s32 arg13
-);
 
 // // // // // // // // // // // //
 //                               //
@@ -449,7 +432,7 @@ void mnBackupClearMakeCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
-        func_8000B93C
+        gcMakeCameraGObj
         (
             1,
             NULL,
@@ -814,7 +797,7 @@ void mnBackupClearProcStart(void)
         )
     );
     gcMakeGObjSPAfter(0, mnBackupClearProcRun, 0, GOBJ_LINKORDER_DEFAULT);
-    func_8000B9FC(0, 0x80000000, 0x64, 2, 0xFF);
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     mnBackupClearInitVars();
     mnBackupClearMakeCamera();
     mnBackupClearMakeHeaderSObjs();

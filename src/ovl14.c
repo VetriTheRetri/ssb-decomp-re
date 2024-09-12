@@ -14,7 +14,7 @@ extern uintptr_t D_NF_00000854;
 extern intptr_t D_NF_800A5240;      // 800A5240
 extern intptr_t lOverlay14ArenaLo;  // 80133130
 extern intptr_t lOverlay14ArenaHi;  // 80369240
-extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
+
 extern void gcUpdateDefault(UNUSED GObj* arg0);
 extern ftCreateDesc dFTManagerDefaultFighterDesc;
 extern sb32 gMNDebugMenuIsMenuOpen; // isMenuShown
@@ -407,7 +407,7 @@ void mnDebugBattleSyncCostumes(s32 arg0)
 // 801322DC
 GObj* mnDebugBattleCreateViewport(void (*proc)(GObj*))
 {
-	GObj *camera_gobj = func_8000B93C(0x400, gcUpdateDefault, 0xF, 0x80000000U, func_80017DBC, 0x32, 0x00048600, -1, 1, 0, proc, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x400, gcUpdateDefault, 0xF, 0x80000000U, func_80017DBC, 0x32, 0x00048600, -1, 1, 0, proc, 1, 0);
 	Camera *cam;
 
 	if (camera_gobj == NULL)
@@ -442,7 +442,7 @@ void mnDebugBattleInit()
 	main_gobj = gcMakeGObjSPAfter(0, mnDebugBattleMain, 0xF, 0x80000000);
 	gcAddGObjProcess(main_gobj, mnDebugBattleSyncCostumes, 1, 0);
 
-	func_8000B9FC(0xF, 0x80000000, 0x64, 2, 0xFF);
+	gcMakeDefaultCameraGObj(0xF, 0x80000000, 0x64, 2, 0xFF);
 	efAllocInitParticleBank();
 	mnDebugBattleCreateViewport(0);
 	efManagerInitEffects();

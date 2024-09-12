@@ -3,7 +3,7 @@
 #include <sys/system_00.h>
 #include <ovl0/reloc_data_mgr.h>
 
-extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
+
 extern void func_80007080(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
@@ -200,11 +200,11 @@ void mnN64ProcStart(void)
 	rdManagerInitSetup(&rd_setup);
 
 	gcMakeGObjSPAfter(0, mnN64ActorProcRun, 0, GOBJ_LINKORDER_DEFAULT);
-	func_8000B9FC(0, 0x80000000, 0x64, 2, 0xFF);
+	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	cam = CameraGetStruct
 	(
-		func_8000B93C
+		gcMakeCameraGObj
 		(
 			nOMObjCommonKindWallpaperCamera,
 			NULL,

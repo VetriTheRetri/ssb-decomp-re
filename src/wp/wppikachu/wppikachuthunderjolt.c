@@ -16,8 +16,6 @@ lWPPikachuThunderJoltAnimJoint;                         // 0x00001A20
 extern intptr_t 
 lWPPikachuThunderJoltMatAnimJoint;                      // 0x00001AE0
 
-extern void gcSetAllAnimSpeed(GObj*, f32);
-
 // // // // // // // // // // // //
 //                               //
 //       INITIALIZED DATA        //

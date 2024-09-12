@@ -2589,15 +2589,15 @@ void ifCommonBattleInitPlacement(void)
 }
 
 // 0x80113638
-void func_ovl2_80113638(GObj *interface_gobj, s32 unused)
+void func_ovl2_80113638(GObj *interface_gobj, u32 unused)
 {
-    gcPauseGObjProcessAll(interface_gobj);
+    gcPauseProcessAll(interface_gobj);
 
     interface_gobj->flags |= GOBJ_FLAG_NOEJECT;
 }
 
 // 0x8011366C
-void func_ovl2_8011366C(GObj *interface_gobj, s32 unused)
+void func_ovl2_8011366C(GObj *interface_gobj, u32 unused)
 {
     gcResumeProcessAll(interface_gobj);
 
@@ -2622,13 +2622,13 @@ void ifCommonBattleInterfaceProcUpdate(void)
 }
 
 // 0x80113744 - Unused?
-void func_ovl2_80113744(GObj *fighter_gobj, s32 arg1) 
+void func_ovl2_80113744(GObj *fighter_gobj, u32 unused) 
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     
     if (fp->ft_kind == nFTKindBoss) 
     {
-        gcResumeProcessAll();
+        gcResumeProcessAll(fighter_gobj);
         
         fighter_gobj->flags &= ~0x40;
     }

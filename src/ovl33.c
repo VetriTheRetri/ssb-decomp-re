@@ -51,7 +51,7 @@ extern intptr_t FILE_020_ARROW_RIGHT_IMAGE_OFFSET; // file 0x020 image offset fo
 extern void gcRemoveSObjAll(GObj*);
 
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
+
 extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 extern f32 scSubsysFighterGetLightAngleX();
 extern f32 scSubsysFighterGetLightAngleY();
@@ -1673,7 +1673,7 @@ void mnCharsCreateMoveName()
 // 80133000
 void mnCharsCreateBioViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x46, 0x04000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x46, 0x04000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1681,7 +1681,7 @@ void mnCharsCreateBioViewport()
 // 801330A0
 void mnCharsCreateHeaderViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x3C, 0x08000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x3C, 0x08000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1690,7 +1690,7 @@ void mnCharsCreateHeaderViewport()
 void mnCharsCreateSeriesLogoViewport()
 {
 	Camera *cam;
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_80017DBC, 0x5A, 0x10000000, -1, 1, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017DBC, 0x5A, 0x10000000, -1, 1, 1, 0, 1, 0);
 
 	cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -1709,7 +1709,7 @@ void mnCharsCreateSeriesLogoViewport()
 // 80133224
 void mnCharsCreateNameViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x20000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x20000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1717,7 +1717,7 @@ void mnCharsCreateNameViewport()
 // 801332C4
 void mnCharsCreateWorksBackgroundViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x32, 0x40000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x32, 0x40000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1725,7 +1725,7 @@ void mnCharsCreateWorksBackgroundViewport()
 // 80133364
 void mnCharsCreateWorksViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x28, 0x80000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x28, 0x80000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1735,7 +1735,7 @@ void mnCharsCreateFighterViewport()
 {
 	Camera *cam;
 
-	gMNCharsFighterCameraGObj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_80017DBC, 0x1E, 0x00048600, -1, 1, 1, 0, 1, 0);
+	gMNCharsFighterCameraGObj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017DBC, 0x1E, 0x00048600, -1, 1, 1, 0, 1, 0);
 
 	cam = CameraGetStruct(gMNCharsFighterCameraGObj);
 	cam->flags = 1;
@@ -2070,7 +2070,7 @@ void mnCharsInit()
 	rdManagerLoadFiles(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228), gMNCharsFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228)), 0x10U));
 
 	gcMakeGObjSPAfter(0, mnCharsMain, 0, 0x80000000);
-	func_8000B9FC(0, 0x80000000, 0x64, 3, 0xFF);
+	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efAllocInitParticleBank();
 	mnCharsInitVars();
 	efManagerInitEffects();

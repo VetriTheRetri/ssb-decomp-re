@@ -3,6 +3,15 @@
 
 #include <sys/objtypes.h>
 
+// Get next depth-first DObj node from tree
+extern DObj* gcGetTreeDObjNext(DObj *dobj);
+
+// Set animation playback rate for all DObjs on a GObj
+extern void gcSetAnimSpeed(GObj *gobj, f32 anim_speed);
+
+// Set animation playback rate for all DObjs and MObjs on a GObj
+extern void gcSetAllAnimSpeed(GObj *gobj, f32 anim_speed);
+
 // Add animation script to specific DObj
 extern void gcAddDObjAnimJoint(DObj*, AObjEvent*, f32);
 

@@ -6,7 +6,6 @@
 #include <sys/thread6.h>
 
 extern alSoundEffect* func_800269C0_275C0(u16);
-extern void gcSetDObjAnimSpeed(GObj*, f32);
 extern void func_ovl0_800C9A38();
 
 // // // // // // // // // // // //
@@ -4663,7 +4662,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
 
             if (anim_speed != DObjGetStruct(fighter_gobj)->anim_speed)
             {
-                gcSetDObjAnimSpeed(fighter_gobj, anim_speed);
+                gcSetAnimSpeed(fighter_gobj, anim_speed);
             }
             if (fp->anim_desc.flags.is_use_transn_joint)
             {

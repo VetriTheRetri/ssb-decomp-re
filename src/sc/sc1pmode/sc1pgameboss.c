@@ -4,24 +4,6 @@
 #include <sc/scene.h>
 
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern void gcSetAllAnimSpeed(void*, f32);
-
-extern GObj* func_8000B93C
-(
-	u32 id,
-	void (*arg1)(GObj *),
-	s32 link,
-	u32 arg3,
-	void (*arg4)(GObj *),
-	u32 arg5,
-	s64 arg7,
-	s32 arg8,
-	s32 arg9,
-	s32 arg10,
-	void *arg11,
-	u32 arg12,
-	s32 arg13
-);
  
 // // // // // // // // // // // //
 //                               //
@@ -417,7 +399,7 @@ void sc1PGameBossMakeCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
-        func_8000B93C
+        gcMakeCameraGObj
         (
             nOMObjCommonKindUnkCamera3, 
             NULL,
@@ -446,7 +428,7 @@ void sc1PGameBossMakeCamera(void)
 
     cam = CameraGetStruct
     (
-        func_8000B93C
+        gcMakeCameraGObj
         (
             nOMObjCommonKindUnkCamera3,
             NULL,

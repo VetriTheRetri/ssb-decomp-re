@@ -16,7 +16,7 @@ extern intptr_t lOverlay41ArenaHi;  // 803903E0
 extern intptr_t FILE_041_YOSHI_CAMERA_PARAMS_OFFSET; // file 0x041 offset for Yoshi's fighter pose camera settings
 
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
+
 extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 
 
@@ -190,7 +190,7 @@ void mvOpeningYoshiCreateStageViewport(Vec3f arg0)
 	cam = CameraGetStruct(gMvOpeningYoshiStageCameraGObj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 150.0F);
 	cam->projection.persp.aspect = 15.0F / 7.0F;
-	gcEndAllProcesses(gMvOpeningYoshiStageCameraGObj);
+	gcEndProcessAll(gMvOpeningYoshiStageCameraGObj);
 	gcAddGObjProcess(gMvOpeningYoshiStageCameraGObj, mvOpeningYoshiAnimateStageCamera, 1, 1);
 
 	dMvOpeningYoshiCameraSettingsAdjustedStart.eye.x += arg0.x;
@@ -353,7 +353,7 @@ void mvOpeningYoshiCreatePosedFighter()
 // 8018DB90
 void mvOpeningYoshiCreateNameViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -361,7 +361,7 @@ void mvOpeningYoshiCreateNameViewport()
 // 8018DC30
 void mvOpeningYoshiCreatePosedFighterViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 150.0F, 310.0F, 230.0F);
 	cam->projection.persp.aspect = 3.75F;
@@ -373,7 +373,7 @@ void mvOpeningYoshiCreatePosedFighterViewport()
 void mvOpeningYoshiCreatePosedFighterBackgroundViewport()
 {
 	Camera *cam;
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x10000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x10000000, -1, 0, 1, 0, 1, 0);
 
 	cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 150.0F, 310.0F, 230.0F);
@@ -430,7 +430,7 @@ void mvOpeningYoshiInit()
 
 	mvOpeningYoshiLoadFiles();
 	gcMakeGObjSPAfter(0x3F7, mvOpeningYoshiMainProc, 0xD, 0x80000000);
-	func_8000B9FC(9, 0x80000000, 0x64, 3, 0xFF);
+	gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 3, 0xFF);
 	mvOpeningYoshiInitFramesElapsed();
 	efAllocInitParticleBank();
 	ftParamInitGame();

@@ -56,7 +56,6 @@ typedef enum wpLinkBoomerangFlags
     nWPLinkBoomerangFlagReflect
 
 } wpLinkBoomerangFlags;
-
 // // // // // // // // // // // //
 //                               //
 //             MACROS            //

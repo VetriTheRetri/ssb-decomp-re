@@ -19,7 +19,7 @@ extern intptr_t FILE_04B_TRANSITION_GFX_OFFSET_1; // file 0x04B offset for trans
 extern intptr_t FILE_04B_TRANSITION_GFX_OFFSET_2; // file 0x04B offset for transition gfx
 extern intptr_t FILE_04B_TRANSITION_GFX_OFFSET_3; // file 0x04B offset for transition gfx
 
-extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
+
 extern void ftRenderLightsDrawReflect(Gfx**, f32, f32);
 extern f32 scSubsysFighterGetLightAngleX();
 extern f32 scSubsysFighterGetLightAngleY();
@@ -220,13 +220,13 @@ void mvOpeningRunningConfigureTransitionGfxViewport(GObj* camera_gobj)
 // 80132138
 void mvOpeningRunningCreateTransitionGfxViewport()
 {
-	mvOpeningRunningConfigureTransitionGfxViewport(func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x3C, 0x48640, -1, 1, 1, 0, 1, 0));
+	mvOpeningRunningConfigureTransitionGfxViewport(gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x3C, 0x48640, -1, 1, 1, 0, 1, 0));
 }
 
 // 801321BC
 void mvOpeningRunningCreateBackgroundViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x10000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x10000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -300,7 +300,7 @@ void mvOpeningRunningInit()
 
 	gcMakeGObjSPAfter(0, mvOpeningRunningMainProc, 0, 0x80000000);
 
-	func_8000B9FC(0, 0x80000000, 0x64, 1, 0);
+	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 
 	efAllocInitParticleBank();
 	mvOpeningRunningInitFramesElapsed();

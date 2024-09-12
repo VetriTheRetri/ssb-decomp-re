@@ -12,20 +12,7 @@ extern void func_800A26B8();
 
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
-extern GObj* func_8000B93C(
-	u32 id,
-	void (*arg1)(GObj *),
-	s32 link,
-	u32 arg3,
-	void (*arg4)(GObj *),
-	u32 arg5,
-	s64 arg7,
-	s32 arg8,
-	s32 arg9,
-	s32 arg10,
-	void *arg11,
-	u32 arg12,
-	s32 arg13);
+
 
 // // // // // // // // // // // //
 //                               //
@@ -264,7 +251,7 @@ void mvOpeningJungleMakeStageViewport(Vec3f unused)
 
     cam->projection.persp.aspect = 15.0F / 11.0F;
 
-    gcEndAllProcesses(sMVOpeningJungleStageCameraGObj);
+    gcEndProcessAll(sMVOpeningJungleStageCameraGObj);
 
     cam->projection.persp.near = 50.0F;
     cam->projection.persp.far = 15000.0F;
@@ -429,7 +416,7 @@ void mvOpeningJungleProcStart(void)
 
     mvOpeningJungleSetupFiles();
     gcMakeGObjSPAfter(nOMObjCommonKindMovie, mvOpeningJungleProcRun, 13, GOBJ_LINKORDER_DEFAULT);
-    func_8000B9FC(9, 0x80000000, 0x64, 3, 0xFF);
+    gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 3, 0xFF);
     efAllocInitParticleBank();
     ftParamInitGame();
     mpCollisionInitGroundData();

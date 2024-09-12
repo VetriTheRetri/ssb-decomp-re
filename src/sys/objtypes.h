@@ -346,6 +346,13 @@ struct DObjDesc
     Vec3f scale;
 };
 
+struct DObjTraDesc
+{
+    s32 index;
+    void *display_list;
+    Vec3f translate;
+};
+
 struct DObjMultiList
 {
     s32 id;

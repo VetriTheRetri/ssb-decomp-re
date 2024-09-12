@@ -2052,7 +2052,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
             {
                 gcAddDObjTriTransformKind(main_dobj, transform_types2->tk1, transform_types2->tk2, transform_types2->tk3);
 
-                main_dobj = lbCommonGetDObjDepthFirst(main_dobj, other_dobj);
+                main_dobj = lbCommonGetTreeDObjNextFromRoot(main_dobj, other_dobj);
             }
             gcSetDObjTransformsForGObj(effect_gobj, (void*) (addr + effect_desc->o_dobjsetup));
         }

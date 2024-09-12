@@ -11,7 +11,7 @@ extern intptr_t lOverlay11ArenaHi;  // 80392A00
 extern intptr_t FILE_0A9_NO_CONTROLLER_IMAGE_OFFSET; // 0x8460, file 0x0A9 image offset for no controller texture
 
 extern void func_80007080(void*, f32, f32, f32, f32);
-extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
+
 
 
 // Forward declarations
@@ -58,7 +58,7 @@ rdFileNode D_ovl11_800D6AF8;
 // 800D6490
 GObj* mnNoControllerCreateViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x3E8, NULL, 0, 0x80000000U, lbCommonScissorSpriteCamera, 0x64, 0x00000001, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x3E8, NULL, 0, 0x80000000U, lbCommonScissorSpriteCamera, 0x64, 0x00000001, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
@@ -83,7 +83,7 @@ void mnNoControllerCreateNoControllerImage()
 void mnNoControllerInit()
 {
 	mnNoControllerLoadFiles();
-	func_8000B9FC(0, 0x80000000, 0x64, 0, 0xFF);
+	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mnNoControllerCreateViewport();
 	mnNoControllerCreateNoControllerImage();
 }

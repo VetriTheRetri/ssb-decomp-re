@@ -7,7 +7,7 @@
 extern intptr_t FILE_041_LINK_CAMERA_PARAMS_OFFSET; // 0xC0
 extern intptr_t lOverlay40ArenaHi;  // 803903E0
 extern intptr_t lOverlay40ArenaLo;  // 8018E5E0
-extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
+
 extern void func_80007080(void*, f32, f32, f32, f32);
 
 // DATA
@@ -180,7 +180,7 @@ void mvOpeningLinkCreateStageViewport(Vec3f arg0)
 	cam = CameraGetStruct(gMvOpeningLinkStageCameraGObj);
 	func_80007080(&cam->viewport, 10.0F, 90.0F, 310.0F, 230.0F);
 	cam->projection.persp.aspect = 15.0F / 7.0F;
-	gcEndAllProcesses(gMvOpeningLinkStageCameraGObj);
+	gcEndProcessAll(gMvOpeningLinkStageCameraGObj);
 	gcAddGObjProcess(gMvOpeningLinkStageCameraGObj, mvOpeningLinkAnimateStageCamera, 1, 1);
 
 	dMvOpeningLinkCameraDescAdjustedStart.eye.x += arg0.x;
@@ -336,7 +336,7 @@ void mvOpeningLinkCreatePosedFighter()
 // 8018DB40
 void mvOpeningLinkCreateNameViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -344,7 +344,7 @@ void mvOpeningLinkCreateNameViewport()
 // 8018DBE0
 void mvOpeningLinkCreatePosedFighterViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 90.0F);
 	cam->projection.persp.aspect = 3.75F;
@@ -356,7 +356,7 @@ void mvOpeningLinkCreatePosedFighterViewport()
 void mvOpeningLinkCreatePosedFighterBackgroundViewport()
 {
 	Camera *cam;
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x10000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x10000000, -1, 0, 1, 0, 1, 0);
 
 	cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 90.0F);
@@ -413,7 +413,7 @@ void mvOpeningLinkInit()
 
 	mvOpeningLinkLoadFiles();
 	gcMakeGObjSPAfter(0x3F7, mvOpeningLinkMainProc, 0xD, 0x80000000);
-	func_8000B9FC(9, 0x80000000, 0x64, 3, 0xFF);
+	gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 3, 0xFF);
 	mvOpeningLinkInitFramesElapsed();
 	efAllocInitParticleBank();
 	ftParamInitGame();

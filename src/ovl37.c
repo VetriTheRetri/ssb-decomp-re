@@ -14,7 +14,7 @@ extern intptr_t D_NF_800A5240;      // 800A5240
 extern intptr_t lOverlay37ArenaLo;  // 8018E5E0
 extern intptr_t lOverlay37ArenaHi;  // 803903E0
 extern intptr_t FILE_041_DK_CAMERA_PARAMS_OFFSET; // file 0x041 offset for DK's fighter pose camera settings
-extern GObj* func_8000B93C(u32, void*, s32, u32, void*, s32, s64, s32, s32, s32, s32, s32, s32);
+
 extern void func_80007080(void*, f32, f32, f32, f32);
 
 // Data
@@ -184,7 +184,7 @@ void mvOpeningDKCreateStageViewport(Vec3f arg0)
 	cam = CameraGetStruct(gMvOpeningDKStageCameraGObj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 210.0F, 230.0F);
 	cam->projection.persp.aspect = 10.0F / 11.0F;
-	gcEndAllProcesses(gMvOpeningDKStageCameraGObj);
+	gcEndProcessAll(gMvOpeningDKStageCameraGObj);
 	gcAddGObjProcess(gMvOpeningDKStageCameraGObj, mvOpeningDKAnimateStageCamera, 1, 1);
 
 	dMvOpeningDKCameraDescAdjustedStart.eye.x += arg0.x;
@@ -342,7 +342,7 @@ void mvOpeningDKCreatePosedFighter()
 // 8018DB50
 void mvOpeningDKCreateNameViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -350,7 +350,7 @@ void mvOpeningDKCreateNameViewport()
 // 8018DBF0
 void mvOpeningDKCreatePosedFighterViewport()
 {
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 210.0F, 10.0F, 310.0F, 230.0F);
 	cam->projection.persp.aspect = 5.0F / 11.0F;
@@ -362,7 +362,7 @@ void mvOpeningDKCreatePosedFighterViewport()
 void mvOpeningDKCreatePosedFighterBackgroundViewport()
 {
 	Camera *cam;
-	GObj *camera_gobj = func_8000B93C(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x10000000, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x10000000, -1, 0, 1, 0, 1, 0);
 
 	cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 210.0F, 10.0F, 310.0F, 230.0F);
@@ -419,7 +419,7 @@ void mvOpeningDKInit()
 
 	mvOpeningDKLoadFiles();
 	gcMakeGObjSPAfter(0x3F7, mvOpeningDKMainProc, 0xD, 0x80000000);
-	func_8000B9FC(9, 0x80000000, 0x64, 3, 0xFF);
+	gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 3, 0xFF);
 	mvOpeningDKInitFramesElapsed();
 	efAllocInitParticleBank();
 	ftParamInitGame();

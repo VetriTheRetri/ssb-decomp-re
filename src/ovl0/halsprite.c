@@ -230,15 +230,17 @@ void lbParticleSetupBankID(s32 bank_id, uintptr_t *gen_heap, uintptr_t *tex_heap
 // 	return ret;
 // }
 
-UnkRustRat* func_ovl0_800CE870(s32 arg0, s32 arg1)
+efParticle* func_ovl0_800CE870(s32 arg0, s32 arg1)
 {
-	UnkRustRat* ret;
+	efParticle *efpart;
 
-	ret = func_ovl0_800CE6B8(NULL, arg0, arg1);
-	if (ret != NULL)
-		func_ovl0_800CEF4C(ret, 0, arg0 >> 3);
+	efpart = func_ovl0_800CE6B8(NULL, arg0, arg1);
 
-	return ret;
+	if (efpart != NULL)
+	{
+		func_ovl0_800CEF4C(efpart, 0, arg0 >> 3);
+	}
+	return efpart;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CE8C0.s")
@@ -272,28 +274,32 @@ UnkRustRat* func_ovl0_800CE870(s32 arg0, s32 arg1)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CEB50.s")
 
-u8* func_ovl0_800CEBC0(u8* arg0, f32* arg1)
+u8* lbParticleParseFloatBE(u8 *csr, f32 *f)
 {
-	u8 sp4[4];
+	u8 bytes[4];
 
-	sp4[0] = *arg0++;
-	sp4[1] = *arg0++;
-	sp4[2] = *arg0++;
-	sp4[3] = *arg0++;
-	*arg1 = *(f32*) sp4;
-	return arg0;
+	bytes[0] = *csr++;
+	bytes[1] = *csr++;
+	bytes[2] = *csr++;
+	bytes[3] = *csr++;
+
+	*f = *(f32*)bytes;
+
+	return csr;
 }
 
-u8* func_ovl0_800CEBF8(u8* arg0, u16* arg1)
+// 0x800CEBF8
+u8* lbParticleParseShortBE(u8 *csr, u16 *s)
 {
-	u16 value;
+	u16 value = *csr++;
 
-	value = *arg0++;
 	if (value & 0x80)
-		value = ((value & 0x7F) << 8) + *arg0++;
+	{
+		value = ((value & 0x7F) << 8) + *csr++;
+	}
+	*s = value + 1;
 
-	*arg1 = value + 1;
-	return arg0;
+	return csr;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CEC34.s")
@@ -333,78 +339,85 @@ u8* func_ovl0_800CEBF8(u8* arg0, u16* arg1)
 // 	arg0->unk_2C.z = -x * sp4C * sp48 - y * temp_f26 + temp_f2 * sp4C * sp44;
 // }
 
-void func_ovl0_800CEDBC(UnkRustRat* arg0, UnkGreenLeopard* arg1)
+void func_ovl0_800CEDBC(efParticle *efpart, UnkGreenLeopard* arg1)
 {
-	f32 dx, dy, dz;
-	f32 f22;
+	f32 dx, dy, dz, dist;
 
 	if (arg1 == NULL)
-		return;
-
-	dx = arg1->unk_1C.x - arg0->unk_20.x;
-	dy = arg1->unk_1C.y - arg0->unk_20.y;
-	dz = arg1->unk_1C.z - arg0->unk_20.z;
-
-	f22 = sqrtf(SQUARE(arg0->unk_2C.x) + SQUARE(arg0->unk_2C.y) + SQUARE(arg0->unk_2C.z));
-
-	if (SQUARE(dx) + SQUARE(dy) + SQUARE(dz) != 0.0f)
 	{
-		f22 /= sqrtf(SQUARE(dx) + SQUARE(dy) + SQUARE(dz));
-		arg0->unk_2C.x = dx * f22;
-		arg0->unk_2C.y = dy * f22;
-		arg0->unk_2C.z = dz * f22;
+		return;
+	}
+	dx = arg1->unk_1C.x - efpart->pos.x;
+	dy = arg1->unk_1C.y - efpart->pos.y;
+	dz = arg1->unk_1C.z - efpart->pos.z;
+
+	dist = sqrtf(SQUARE(efpart->vel.x) + SQUARE(efpart->vel.y) + SQUARE(efpart->vel.z));
+
+	if ((SQUARE(dx) + SQUARE(dy) + SQUARE(dz)) != 0.0F)
+	{
+		dist /= sqrtf(SQUARE(dx) + SQUARE(dy) + SQUARE(dz));
+
+		efpart->vel.x = dx * dist;
+		efpart->vel.y = dy * dist;
+		efpart->vel.z = dz * dist;
 	}
 }
 
-void func_ovl0_800CEEB8(UnkRustRat* arg0, UnkGreenLeopard* arg1, f32 arg2)
+void func_ovl0_800CEEB8(efParticle *efpart, UnkGreenLeopard* arg1, f32 magnitude)
 {
-	f32 dx, dy, dz, dist2;
+	f32 dx, dy, dz, dist;
 
 	if (arg1 == NULL)
-		return;
-
-	dx = arg1->unk_1C.x - arg0->unk_20.x;
-	dy = arg1->unk_1C.y - arg0->unk_20.y;
-	dz = arg1->unk_1C.z - arg0->unk_20.z;
-
-	dist2 = SQUARE(dx) + SQUARE(dy) + SQUARE(dz);
-
-	if (dist2 != 0.0f)
 	{
-		dist2 = arg2 / dist2;
-		arg0->unk_2C.x += dist2 * dx;
-		arg0->unk_2C.y += dist2 * dy;
-		arg0->unk_2C.z += dist2 * dz;
+		return;
+	}
+	dx = arg1->unk_1C.x - efpart->pos.x;
+	dy = arg1->unk_1C.y - efpart->pos.y;
+	dz = arg1->unk_1C.z - efpart->pos.z;
+
+	dist = SQUARE(dx) + SQUARE(dy) + SQUARE(dz);
+
+	if (dist != 0.0F)
+	{
+		dist = magnitude / dist;
+
+		efpart->vel.x += dist * dx;
+		efpart->vel.y += dist * dy;
+		efpart->vel.z += dist * dz;
 	}
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CEF4C.s")
 
-void func_ovl0_800D0C74(GObj* camObj)
+// 0x800D0C74
+void func_ovl0_800D0C74(GObj *gobj)
 {
-	u32 flags = camObj->flags;
+	u32 flags = gobj->flags;
 	s32 i;
-	UnkRustRat* prev;
-	UnkRustRat* it;
-	UnkRustRat* next;
+	efParticle *prev_efpart;
+	efParticle *current_efpart;
+	efParticle *next_efpart;
 
 	for (i = 0; i < 16; i++, flags >>= 1)
 	{
 		if (flags & 0x10000)
-			continue;
-
-		prev = NULL;
-		it = D_800D6358[i];
-		while (it != NULL)
 		{
-			next = func_ovl0_800CEF4C(it, prev, i);
-			if (it->next == next)
+			continue;
+		}
+		prev_efpart = NULL;
+
+		current_efpart = D_800D6358[i];
+
+		while (current_efpart != NULL)
+		{
+			next_efpart = func_ovl0_800CEF4C(current_efpart, prev_efpart, i);
+
+			if (current_efpart->next == next_efpart)
 			{
-				prev = it;
-				it = next;
+				prev_efpart = current_efpart;
+				current_efpart = next_efpart;
 			}
-			else
-				it = next;
+			else current_efpart = next_efpart;
 		}
 	}
 }

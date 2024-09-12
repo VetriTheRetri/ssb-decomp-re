@@ -54,12 +54,14 @@ struct efTransform
 
 struct efParticle
 {
-    u8 filler_0x0[0x8];
+    efParticle *next;
+    u8 filler_0x4[0x4];
     u8 unk_efpart_0x8;
     u16 unk_efpart_0xA;
     u8 filler_0xC[0x20 - 0xC];
     Vec3f pos;
-    u8 filler_0x2C[0x48 - 0x2C];
+    Vec3f vel;                  // Velocity?
+    u8 filler_0x2C[0x48 - 0x38];
     syColorRGBA color1;
     s32 unk_efpart_0x4C;
     syColorRGBA color2;

@@ -19,6 +19,6 @@ extern void func_ovl2_801155C4(s32 player);
 extern void gmRumbleSetRumbleID(s32 player, s32 index);
 extern void gmRumbleMakeActor(void);
 extern void gmRumbleInitPlayers(void);
-extern void func_ovl2_80115834(void);
+extern void gmRumbleResumeProcessAll(void);
 
 #endif

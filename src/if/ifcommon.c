@@ -2611,7 +2611,7 @@ void ifCommonBattleInterfaceProcUpdate(void)
 
     gcApplyByLink(8, func_ovl2_8011366C, 0);
     gcApplyByLink(0xB, func_ovl2_8011366C, 0);
-    func_ovl2_80115834();
+    gmRumbleResumeProcessAll();
     func_ovl2_8011366C(D_ovl2_80131A10, 0);
     func_ovl2_8011366C(D_ovl2_80131A14, 0);
     func_ovl2_80115910();

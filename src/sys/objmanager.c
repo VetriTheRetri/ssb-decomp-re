@@ -325,7 +325,7 @@ u64* unref_8000784C(GObjProcess* gobjproc)
 	if (gobjproc == NULL)
 		gobjproc = gOMObjCurrentProcess;
 	if ((gobjproc != NULL) && (gobjproc->kind == 0))
-		return gobjproc->gobjthread->osstack;
+		return gobjproc->gobjthread->stack;
 	else
 		return NULL;
 }
@@ -761,13 +761,13 @@ GObjProcess* gcAddGObjProcess(GObj* gobj, void (*proc)(GObj*), u8 kind, u32 prio
 		gobjproc->gobjthread = gobjthread;
 
 		stack_node = gcGetDefaultStack();
-		gobjthread->osstack = stack_node->stack;
+		gobjthread->stack = stack_node->stack;
 		gobjthread->stack_size = sOMThreadStackSize;
 
-		osCreateThread(&gobjthread->osthread, sProcessThreadID++, proc, gobj,
-					   &gobjthread->osstack[sOMThreadStackSize / sizeof(u64)], 51);
+		osCreateThread(&gobjthread->osthread, sProcessThreadID++, (void (*)(void*))proc, gobj,
+					   &gobjthread->stack[sOMThreadStackSize / sizeof(u64)], 51);
 
-		gobjthread->osstack[7] = 0xFEDCBA98;
+		gobjthread->stack[7] = 0xFEDCBA98;
 
 		if (sProcessThreadID >= 20000000)
 			sProcessThreadID = 10000000;
@@ -815,14 +815,14 @@ GObjProcess* unref_80008304(GObj* gobj, void (*proc)(GObj*), u32 pri, s32 thread
 	gobjproc->kind = nOMObjProcessKindThread;
 
 	stacknode = stack_size == 0 ? gcGetDefaultStack() : gcGetStackOfSize(stack_size);
-	gobjthread->osstack = stacknode->stack;
+	gobjthread->stack = stacknode->stack;
 	gobjthread->stack_size = stack_size == 0 ? sOMThreadStackSize : stack_size;
 	tid = thread_id != -1 ? thread_id : sProcessThreadID++;
 
-	osCreateThread(&gobjthread->osthread, tid, proc, gobj, &gobjthread->osstack[gobjthread->stack_size / sizeof(u64)],
+	osCreateThread(&gobjthread->osthread, tid, (void (*)(void*))proc, gobj, &gobjthread->stack[gobjthread->stack_size / sizeof(u64)],
 				   51);
 
-	gobjthread->osstack[7] = 0xFEDCBA98;
+	gobjthread->stack[7] = 0xFEDCBA98;
 
 	if (sProcessThreadID >= 20000000)
 		sProcessThreadID = 10000000;
@@ -853,7 +853,7 @@ void gcEndGObjProcess(GObjProcess* gobjproc)
 	case nOMObjProcessKindThread:
 		osDestroyThread(&gobjproc->gobjthread->osthread);
 		// cast from stack pointer back to stack node
-		tnode = (OMThreadStackNode*)((uintptr_t)(gobjproc->gobjthread->osstack) - offsetof(OMThreadStackNode, stack));
+		tnode = (OMThreadStackNode*)((uintptr_t)(gobjproc->gobjthread->stack) - offsetof(OMThreadStackNode, stack));
 		gcEjectStackNode(tnode);
 		gcSetGObjThreadPrevAlloc(gobjproc->gobjthread);
 		break;

@@ -132,7 +132,7 @@ void gcUpdateDefault(GObj *gobj)
 // 0x8000B1E8
 void gcStopCurrentGObjThread(s32 tics)
 {
-    if (gOMObjCurrentProcess->gobjthread->osstack[7] != 0xFEDCBA98)
+    if (gOMObjCurrentProcess->gobjthread->stack[7] != 0xFEDCBA98)
     {
         syErrorPrintf("gobjthread stack over  gobjid = %d\n", gOMObjCurrentProcess->parent_gobj->gobj_id);
     }

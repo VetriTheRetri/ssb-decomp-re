@@ -1908,7 +1908,7 @@ void sc1PGameBossHidePlayerTagAll(void)
 }
 
 // 0x8018F574
-void sc1PGameBossAddBossInterface(GObj *fighter_gobj, s32 arg1)
+void sc1PGameBossAddBossInterface(GObj *fighter_gobj, u32 unused)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -1919,13 +1919,13 @@ void sc1PGameBossAddBossInterface(GObj *fighter_gobj, s32 arg1)
 }
 
 // 0x8018F5AC
-void sc1PGameBossLockPlayerControl(GObj *fighter_gobj, s32 arg1)
+void sc1PGameBossLockPlayerControl(GObj *fighter_gobj, u32 unused)
 {
     ftParamLockPlayerControl(fighter_gobj);
 }
 
 // 0x8018F5CC
-void sc1PGameBossSetIgnorePlayerMapBounds(GObj *fighter_gobj, s32 arg1)
+void sc1PGameBossSetIgnorePlayerMapBounds(GObj *fighter_gobj, u32 unused)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -1941,13 +1941,13 @@ void func_ovl65_8018F5E4(void)
 // 0x8018F5EC
 void sc1PGameBossDefeatInterfaceProcUpdate(void)
 {
-    gcApplyByLink(3, sc1PGameBossAddBossInterface, 0);
-    gcApplyByLink(3, sc1PGameBossLockPlayerControl, 0);
-    gcApplyByLink(3, sc1PGameBossSetIgnorePlayerMapBounds, 0);
+    gcApplyByLink(nOMObjCommonLinkIDFighter, sc1PGameBossAddBossInterface, 0);
+    gcApplyByLink(nOMObjCommonLinkIDFighter, sc1PGameBossLockPlayerControl, 0);
+    gcApplyByLink(nOMObjCommonLinkIDFighter, sc1PGameBossSetIgnorePlayerMapBounds, 0);
     gcApplyToAll(func_ovl2_80113638, 0);
 
     gcApplyByLink(9, func_ovl2_8011366C, 0);
-    func_ovl2_80115834();
+    gmRumbleResumeProcessAll();
     gcApplyByLink(0xB, func_ovl2_8011366C, 0);
     gcApplyByLink(6, func_ovl2_8011366C, 0);
     func_ovl65_801910B0();

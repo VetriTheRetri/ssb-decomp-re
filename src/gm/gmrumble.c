@@ -689,7 +689,7 @@ void gmRumbleInitPlayers(void)
 }
 
 // 0x80115834
-void func_ovl2_80115834(void)
+void gmRumbleResumeProcessAll(void)
 {
     GObj *rumble_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDRumble];
 

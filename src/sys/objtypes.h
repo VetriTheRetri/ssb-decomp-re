@@ -109,7 +109,7 @@ struct _GObjThread
 {
     GObjThread *next;
     OSThread osthread;
-    u64 *osstack;
+    u64 *stack;
     size_t stack_size;
 };
 

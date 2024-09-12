@@ -17,7 +17,7 @@
 
 extern s32 D_8003B874_3C474;
 extern GObj* gOMObjCurrentCommon;
-extern GObj* D_80046A5C_40A7C;
+extern GObj* gOMObjCurrentDraw;
 
 // BSS
 u8 D_800A44D0[16];
@@ -823,22 +823,26 @@ void scManagerProcPrintGObjStatus()
 		case 3:
 		{
 			syErrorDebugPrintf("DFC\n");
-			if (gOMObjCurrentRendering != NULL)
+
+			if (gOMObjCurrentCapture != NULL)
 			{
-				syErrorDebugPrintf("addr:%x\n", gOMObjCurrentRendering->proc_render);
-				scManagerInspectGObj(gOMObjCurrentRendering);
+				syErrorDebugPrintf("addr:%x\n", gOMObjCurrentCapture->proc_render);
+				scManagerInspectGObj(gOMObjCurrentCapture);
 			}
 			break;
 		}
 		case 4:
 		{
 			syErrorDebugPrintf("DFO\n");
-			if (gOMObjCurrentRendering != NULL)
-				syErrorDebugPrintf("cam addr:%x\n", gOMObjCurrentRendering->proc_render);
-			if (D_80046A5C_40A7C != NULL)
+
+			if (gOMObjCurrentCapture != NULL)
 			{
-				syErrorDebugPrintf("disp addr:%x\n", D_80046A5C_40A7C->proc_render);
-				scManagerInspectGObj(D_80046A5C_40A7C);
+				syErrorDebugPrintf("cam addr:%x\n", gOMObjCurrentCapture->proc_render);
+			}
+			if (gOMObjCurrentDraw != NULL)
+			{
+				syErrorDebugPrintf("disp addr:%x\n", gOMObjCurrentDraw->proc_render);
+				scManagerInspectGObj(gOMObjCurrentDraw);
 			}
 			break;
 		}

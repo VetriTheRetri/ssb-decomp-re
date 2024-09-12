@@ -1945,7 +1945,7 @@ sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
     sp50.y = f[1][1] = ft_parts->mtx_translate[0][1] * scale;
     sp50.z = f[1][2] = ft_parts->mtx_translate[0][2] * scale;
     
-    cam = CameraGetStruct(gOMObjCurrentRendering);
+    cam = CameraGetStruct(gOMObjCurrentCapture);
     
     lbVector_Vec3fSubtract(&dist, &cam->vec.eye, &cam->vec.at);
     

@@ -15,8 +15,8 @@ extern OMScale dOMScaleDefault;
 extern GObj *gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
 extern GObj *gOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
 extern GObj *gOMObjCurrentCommon; // Something to do with an initial object to be passed to a new GObjProcess
-extern GObj *gOMObjCurrentRendering; // Is this exclusively a camera GObj?
-extern GObj *D_80046A5C_40A7C;
+extern GObj *gOMObjCurrentCapture; // Is this exclusively a camera GObj?
+extern GObj *gOMObjCurrentDraw;
 extern GObjProcess *gOMObjCurrentProcess;
 extern OSMesgQueue gOMMesgQueue;
 extern OMGfxLink D_80046A88[64];

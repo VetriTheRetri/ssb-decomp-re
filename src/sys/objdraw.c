@@ -117,7 +117,7 @@ void func_80010748(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
     Camera *cam;
     f32 res;
 
-    cam = CameraGetStruct(gOMObjCurrentRendering);
+    cam = CameraGetStruct(gOMObjCurrentCapture);
 
     distx = dobj->translate.vec.f.x - cam->vec.eye.x;
     disty = dobj->translate.vec.f.y - cam->vec.eye.y;
@@ -176,7 +176,7 @@ void func_80010918(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
     Camera *cam;
     f32 res;
 
-    cam = CameraGetStruct(gOMObjCurrentRendering);
+    cam = CameraGetStruct(gOMObjCurrentCapture);
 
     distx = dobj->translate.vec.f.x - cam->vec.eye.x;
     disty = dobj->translate.vec.f.y - cam->vec.eye.y;
@@ -233,7 +233,7 @@ void func_80010AE8(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
     Camera *cam;
     f32 res;
 
-    cam = CameraGetStruct(gOMObjCurrentRendering);
+    cam = CameraGetStruct(gOMObjCurrentCapture);
 
     distx = dobj->translate.vec.f.x - cam->vec.eye.x;
     disty = dobj->translate.vec.f.y - cam->vec.eye.y;
@@ -281,7 +281,7 @@ void func_80010C2C(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
     Camera *cam;
     f32 res;
 
-    cam = CameraGetStruct(gOMObjCurrentRendering);
+    cam = CameraGetStruct(gOMObjCurrentCapture);
 
     distx = dobj->translate.vec.f.x - cam->vec.eye.x;
     distz = dobj->translate.vec.f.z - cam->vec.eye.z;
@@ -1787,7 +1787,7 @@ void gcDrawDObjTreeDLLinksForGObj(GObj *gobj)
 f32 gcGetDObjDistFromEye(DObj *dobj) 
 {
     f32 x, y, z;
-    Camera *cam = CameraGetStruct(gOMObjCurrentRendering);
+    Camera *cam = CameraGetStruct(gOMObjCurrentCapture);
 
     x = dobj->translate.vec.f.x - cam->vec.eye.x;
     y = dobj->translate.vec.f.y - cam->vec.eye.y;
@@ -3183,7 +3183,7 @@ void func_80017868(GObj *this_gobj, s32 link_id, s32 arg2)
             )
             {
                 D_8003B874_3C474 = 4;
-                D_80046A5C_40A7C = current_gobj;
+                gOMObjCurrentDraw = current_gobj;
                 current_gobj->proc_render(current_gobj);
                 D_8003B874_3C474 = 3;
                 current_gobj->frame_draw_last = dSYGtlFrameDrawCount;
@@ -3328,7 +3328,7 @@ void unref_80017E34(GObj *gobj)
 // 0x80017E5C
 void unref_80017E5C(void) 
 {
-    Camera *cam = CameraGetStruct(gOMObjCurrentRendering);
+    Camera *cam = CameraGetStruct(gOMObjCurrentCapture);
 
     func_800053CC();
     func_80004F78();
@@ -3392,7 +3392,7 @@ void func_80017EC0(GObj *gobj)
 // 0x8001810C
 void unref_8001810C(void)
 {
-    Camera *cam = CameraGetStruct(gOMObjCurrentRendering);
+    Camera *cam = CameraGetStruct(gOMObjCurrentCapture);
     s32 i;
 
     for (i = 1; i < (ARRAY_COUNT(gDisplayListHead) + ARRAY_COUNT(D_800472B0)) / 2; i++)

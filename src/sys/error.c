@@ -338,7 +338,7 @@ void syErrorDrawControllerInputs(GObj *gobj)
     func_80021908(offset_x, 195, D_8009D2D0 * 0.00390625F, 5, 2, TRUE);
     offset_x += 35;
 
-    func_80021908(offset_x, 195, D_80044FB8_407C8 * 0.00390625F, 5, 2, TRUE);
+    func_80021908(offset_x, 195, scTimeSpentAudio * 0.00390625F, 5, 2, TRUE);
 
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF)));
@@ -362,7 +362,7 @@ void syErrorDrawControllerInputs(GObj *gobj)
 
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0xFF, 0xFF)));
-    syErrorFillRectangle(gDisplayListHead[0]++, 30, offset_y, ((D_80044FB8_407C8 / 4 > 256) ? 256 : D_80044FB8_407C8 / 4) + 30, offset_y + 1);
+    syErrorFillRectangle(gDisplayListHead[0]++, 30, offset_y, ((scTimeSpentAudio / 4 > 256) ? 256 : scTimeSpentAudio / 4) + 30, offset_y + 1);
 
     // controller buttons
     gDPPipeSync(gDisplayListHead[0]++);

@@ -38,10 +38,10 @@ u32 syDisplayGetFillColor(u32 color) {
 }
 
 void syDisplayUpdateFramebufs(void *fb1, void *fb2, void *fb3) {
-    SCTaskType5 mesg;
+    SCTaskFb mesg;
 
-    mesg.info.unk00  = 5;
-    mesg.info.unk04  = 100;
+    mesg.info.type      = SC_TASK_TYPE_FRAMEBUFFERS;
+    mesg.info.priority  = 100;
     sSYDisplayFramebufs[0] = mesg.unk24[0] = fb1;
     sSYDisplayFramebufs[1] = mesg.unk24[1] = fb2;
     sSYDisplayFramebufs[2] = mesg.unk24[2] = fb3;
@@ -78,26 +78,26 @@ void syDisplaySetCenterOffsets(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
     D_80046684 = TRUE;
 }
 
-void func_80006EF4(SCTaskType4 *task) {
-    task->unk24 = gSYDisplayResWidth;
-    task->unk28 = gSYDisplayResHeight;
-    task->unk2C = D_80046680;
-    task->unk30 = D_80046694;
-    task->unk32 = D_80046696;
-    task->unk34 = D_80046698;
-    task->unk36 = D_8004669A;
+void func_80006EF4(SCTaskVi *task) {
+    task->width = gSYDisplayResWidth;
+    task->height = gSYDisplayResHeight;
+    task->flags = D_80046680;
+    task->edgeOffsetLeft = D_80046694;
+    task->edgeOffsetRight = D_80046696;
+    task->edgeOffsetTop = D_80046698;
+    task->edgeOffsetBottom = D_8004669A;
     D_80046680  = 0;
     D_80046684  = FALSE;
 }
 
-void func_80006F5C(SCTaskType4 *task) {
+void func_80006F5C(SCTaskVi *task) {
     if (D_80046684) {
-        task->info.unk00 = 4;
-        task->info.unk04 = 50;
-        task->info.func  = NULL;
-        task->info.unk20 = NULL;
+        task->info.type     = SC_TASK_TYPE_VI;
+        task->info.priority = 50;
+        task->info.fnCheck  = NULL;
+        task->info.mq       = NULL;
         func_80006EF4(task);
-        osSendMesg(&gScheduleTaskQueue, (OSMesg)task, OS_MESG_NOBLOCK);
+        osSendMesg(&scTaskQueue, (OSMesg)task, OS_MESG_NOBLOCK);
     }
 }
 
@@ -108,15 +108,15 @@ void func_80006F5C(SCTaskType4 *task) {
  */
 void func_80006FB8(s32 width, s32 height, u32 arg2)
 {
-    SCTaskType4 task;
+    SCTaskVi task;
 
     D_80046680 = 0;
     gSYDisplayPixelComponentSize = G_IM_SIZ_16b;
     func_80006E18(arg2);
     syDisplaySetResWidth(width);
     syDisplaySetResHeight(height);
-    task.info.unk00 = 4;
-    task.info.unk04 = 100;
+    task.info.type     = SC_TASK_TYPE_VI;
+    task.info.priority = 100;
     func_80006EF4(&task);
     func_80000970((void *)&task.info);
 }

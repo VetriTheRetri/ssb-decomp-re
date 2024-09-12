@@ -55,6 +55,6 @@ extern u32 syDisplayGetFillColor(u32 color);
 extern void func_80007024(syDisplaySetup *arg0);
 extern void func_80006E18(s32 arg0);
 extern void syDisplaySetCenterOffsets(s16 left, s16 right, s16 up, s16 down);
-extern void func_80006F5C(SCTaskType4 *task);
+extern void func_80006F5C(SCTaskVi *task);
 
 #endif /* SYS_SYSTEM_00_H */

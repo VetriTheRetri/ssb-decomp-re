@@ -15,9 +15,9 @@ typedef struct viFrameBuf
 
 
 // Externs
-extern void* D_80044F9C_407AC;
+extern void* scNextFrameBuffer;
 extern void* D_80044FA8_407B8;
-extern u32 D_80044FAC_407BC;
+extern u32 scTimestampSetFb;
 extern s32 D_800A50F0;
 extern uintptr_t D_NF_001AC870;
 extern uintptr_t D_NF_00000854;
@@ -975,7 +975,7 @@ sb32 mvOpeningFirstDestinationSetFrameBuffer(GObj* gobj)
 	s32 unused;
 	viFrameBuf *nextFb, *currFb;
 
-	if (D_80044F9C_407AC != NULL)
+	if (scNextFrameBuffer != NULL)
 		return TRUE;
 
 	nextFb = osViGetNextFramebuffer();
@@ -992,8 +992,8 @@ sb32 mvOpeningFirstDestinationSetFrameBuffer(GObj* gobj)
 
 	if ((currFb != &D_NF_80392A00[i]) && (nextFb != &D_NF_80392A00[i]))
 	{
-		D_80044F9C_407AC = &D_NF_80392A00[i];
-		D_80044FAC_407BC = osGetCount();
+		scNextFrameBuffer = &D_NF_80392A00[i];
+		scTimestampSetFb = osGetCount();
 		return TRUE;
 	}
 	

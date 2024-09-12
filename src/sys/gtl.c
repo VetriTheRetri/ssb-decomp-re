@@ -97,7 +97,7 @@ DObj *sDObjTasks[2];
 DObj *D_80046550[2];
 DObj *D_80046558[2];
 SCTaskGfxEnd *D_80046560[2];
-SCTaskType4 *D_80046568[2];
+SCTaskVi *D_80046568[2];
 // is the collection of four `DLBuffer`s something worthy of a typedef?
 gsDLBuffer D_80046570[2][4];
 Gfx *gDisplayListHead[4];
@@ -135,7 +135,7 @@ void func_800048D0(SCTaskGfxCallback arg0)
 	if (arg0 != NULL)
 		D_8004666C = (void*)arg0;
 	else
-		D_8004666C = (void*)unref_80000A34;
+		D_8004666C = (void*)scCheckGfxTaskDefault;
 }
 
 // 800048F8
@@ -241,17 +241,17 @@ void gsCheckGtlBufferLengths()
 // 80004C5C
 void func_80004C5C(void *arg0, u32 buffer_size)
 {
-	SCTaskType8 t;
+	SCTaskRDPBuffer t;
 
-	t.info.unk00 = 8;
-	t.info.unk04 = 50;
-	t.unk24      = arg0;
-	t.unk28      = buffer_size;
+	t.info.type     = SC_TASK_TYPE_RDP_BUFFER;
+	t.info.priority = 50;
+	t.buffer        = arg0;
+	t.size          = buffer_size;
 	func_80000970(&t.info);
 
-	if ((uintptr_t)&D_80044FC0_407D0 & 7)
+	if ((uintptr_t)&scUnknownU64 & 7)
 	{
-		syErrorPrintf("bad addr sc_rdp_output_len = %x\n", &D_80044FC0_407D0);
+		syErrorPrintf("bad addr sc_rdp_output_len = %x\n", &scUnknownU64);
 		while (TRUE);
 	}
 }
@@ -301,7 +301,7 @@ DObj* func_80004D2C()
 }
 
 // 80004DB4
-void func_80004DB4(DObj *arg0, s32 arg1, SCTaskGfxEnd *arg2, SCTaskType4 *arg3)
+void func_80004DB4(DObj *arg0, s32 arg1, SCTaskGfxEnd *arg2, SCTaskVi *arg3)
 {
 	s32 i;
 
@@ -312,22 +312,22 @@ void func_80004DB4(DObj *arg0, s32 arg1, SCTaskGfxEnd *arg2, SCTaskType4 *arg3)
 		D_80046558[i] = (DObj*) ((uintptr_t)arg0 + (arg1 * sizeof(DObj)) * (i + 1));
 
 		D_80046560[i] = (SCTaskGfxEnd*) ((uintptr_t)arg2 + (i * sizeof(SCTaskGfxEnd)));
-		D_80046568[i] = (SCTaskType4*)  ((uintptr_t)arg3 + (i * sizeof(SCTaskType4)));
+		D_80046568[i] = (SCTaskVi*)  ((uintptr_t)arg3 + (i * sizeof(SCTaskVi)));
 	}
 }
 
 // 80004E90
-void syGtlScheduleGfxEnd(SCTaskGfxEnd *mesg, void *arg1, u32 arg2, OSMesgQueue *mq)
+void syGtlScheduleGfxEnd(SCTaskGfxEnd *mesg, void *framebuffer, u32 retVal, OSMesgQueue *mq)
 {
-	mesg->info.unk00 = 6;
-	mesg->info.unk04 = 100;
-	mesg->info.func  = NULL;
-	mesg->info.unk20 = mq;
-	mesg->info.unk1C = arg2;
-	mesg->unk24      = arg1;
-	mesg->unk28      = gSYGtlTaskID;
+	mesg->info.type = SC_TASK_TYPE_GFX_END;
+	mesg->info.priority = 100;
+	mesg->info.fnCheck  = NULL;
+	mesg->info.mq       = mq;
+	mesg->info.retVal   = retVal;
+	mesg->fb            = framebuffer;
+	mesg->taskId        = gSYGtlTaskID;
 
-	osSendMesg(&gScheduleTaskQueue, (OSMesg)mesg, OS_MESG_NOBLOCK);
+	osSendMesg(&scTaskQueue, (OSMesg)mesg, OS_MESG_NOBLOCK);
 }
 
 // 80004EFC
@@ -371,33 +371,33 @@ void func_80005018(SCTaskGfx *t, s32 *arg1, u32 ucode_id, s32 arg3, u64 *arg4, u
 	// ...why?
 	s32 two = 2;
 
-	t->info.unk00 = 1;
-	t->info.unk04 = 50;
+	t->info.type = SC_TASK_TYPE_GFX;
+	t->info.priority = 50;
 
 	if (D_800454E8 != NULL)
 	{
-		t->info.func = D_8004666C;
+		t->info.fnCheck = D_8004666C;
 		t->unk68     = (void*)D_800454E8;
 		D_800454E8   = NULL;
 	}
 	else
 	{
-		t->info.func = NULL;
+		t->info.fnCheck = NULL;
 		t->unk68     = NULL;
 	}
-	t->unk6C = arg1;
-	t->unk70 = D_800465D4;
+	t->fb = arg1;
+	t->fbIdx = D_800465D4;
 
 	if (arg1 != 0)
 	{
-		t->info.unk20 = &D_80045500;
-		t->info.unk1C = arg3;
+		t->info.mq = &D_80045500;
+		t->info.retVal = arg3;
 	}
 	else
-		t->info.unk20 = NULL;
+		t->info.mq = NULL;
 
 	t->info.unk18 = two;
-	t->unk80      = gSYGtlTaskID;
+	t->taskId     = gSYGtlTaskID;
 	t->unk7C      = 0;
 
 	t->task.t.type            = M_GFXTASK;
@@ -447,7 +447,7 @@ void func_80005018(SCTaskGfx *t, s32 *arg1, u32 ucode_id, s32 arg3, u64 *arg4, u
 	t->task.t.yield_data_ptr  = OS_DCACHE_ROUNDUP_ADDR(&D_80045940);
 	t->task.t.yield_data_size = OS_YIELD_DATA_SIZE;
 	osWritebackDCacheAll();
-	osSendMesg(&gScheduleTaskQueue, (OSMesg)t, OS_MESG_NOBLOCK);
+	osSendMesg(&scTaskQueue, (OSMesg)t, OS_MESG_NOBLOCK);
 }
 
 // 800051E4
@@ -775,14 +775,14 @@ void func_80005BFC()
 	OSMesg msgs[1];
 	OSMesgQueue mq;
 
-	info.unk00 = 7;
-	info.unk04 = 50;
+	info.type = SC_TASK_TYPE_NOP;
+	info.priority = 50;
 	osCreateMesgQueue(&mq, msgs, ARRAY_COUNT(msgs));
-	info.func  = func_80000B54;
-	info.unk1C = 1;
-	info.unk20 = &mq;
+	info.fnCheck  = func_80000B54;
+	info.retVal = 1;
+	info.mq = &mq;
 
-	osSendMesg(&gScheduleTaskQueue, (OSMesg)&info, OS_MESG_NOBLOCK);
+	osSendMesg(&scTaskQueue, (OSMesg)&info, OS_MESG_NOBLOCK);
 	osRecvMesg(&mq, NULL, OS_MESG_BLOCK);
 }
 
@@ -812,8 +812,8 @@ s32 func_80005C9C()
 	case 2:
 		if (D_80044FA4_407B4 != 0)
 		{
-			info.unk00 = 11;
-			info.unk04 = 100;
+			info.type = SC_TASK_TYPE_11;
+			info.priority = 100;
 			func_80000970((void *)&info);
 			return 1;
 		}
@@ -1024,7 +1024,7 @@ void func_80006548(gsBufferSetup *arg0, void (*arg1)())
 		gsMemoryAlloc(arg0->unk14 * sizeof(DObj) * sSYGtlTasksNum, 8),
 		arg0->unk14,
 		gsMemoryAlloc(sizeof(SCTaskGfxEnd) * sSYGtlTasksNum, 8),
-		gsMemoryAlloc(sizeof(SCTaskType4) * sSYGtlTasksNum, 8)
+		gsMemoryAlloc(sizeof(SCTaskVi) * sSYGtlTasksNum, 8)
 	);
 	for (i = 0; i < sSYGtlTasksNum; i++)
 	{

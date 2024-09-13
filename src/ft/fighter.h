@@ -30,9 +30,9 @@ extern ftOpeningDesc D_ovl1_80390BE8;
 
 #define ftKeyCommandCast(input_seq, type) ((type*)(input_seq))
 
-#define ftExplainGetCpButtons(input_seq) (*(ftKeyCommandCast((input_seq), u16)))
+#define ftKeyGetButtons(input_seq) (*(ftKeyCommandCast((input_seq), u16)))
 
-#define ftExplainGetCpStickRange(input_seq) (ftKeyCommandCast((input_seq), Vec2b))
+#define ftKeyGetStickRange(input_seq) (ftKeyCommandCast((input_seq), Vec2b))
 
 #define ftGetComTargetFighter(ft_com) \
 ((ftStruct*)(ft_com)->target_user)

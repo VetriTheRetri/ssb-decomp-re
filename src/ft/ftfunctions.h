@@ -10,6 +10,7 @@
 #include "ftdisplaymain.h"
 #include "ftdisplaylights.h"
 #include "fthammer.h"
+#include "ftkey.h"
 
 #include "ftshadow.h"
 #include "ftcomputer.h"

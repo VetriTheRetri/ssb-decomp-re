@@ -501,7 +501,7 @@ segments:
     # Particle Bank alloc
       - [0x091090, c, ef/efalloc]
     # How to Play input parser
-      - [0x091310, c, ft/ftexplain]
+      - [0x091310, c, ft/ftkey]
     # Damage screen flash manager
       - [0x0913F0, c, if/ifscreenflash]
     # Stage effect manager

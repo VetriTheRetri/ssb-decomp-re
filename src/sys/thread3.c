@@ -56,7 +56,7 @@ struct ViSettings {
 };
 
 // bss
-MqListNode *scClientList;
+SCClient *scClientList;
 SCTaskInfo *scMainQueueHead; // largest priority/unk04?
 SCTaskInfo *D_80044EC8_406D8; // smallest priority/unk04?
 SCTaskGfx *scCurrentGfxTask;  // actually a pointer to SCTaskGfx?
@@ -86,7 +86,7 @@ u32 scRDPBufferCapacity; // size of scRDPBuffer
 u8 unref_80044FD4[4];
 OSMesg D_80044FD8_407E8[8];
 OSMesgQueue scTaskQueue;
-u32 scUseCustomSwapBufferFunc;
+sb32 scUseCustomSwapBufferFunc;
 OSMesgQueue *scCustomSwapBufferQueue;
 void (*D_80045018_40828)(void);
 s32 D_8004501C_4082C;
@@ -125,7 +125,7 @@ void func_80000970(SCTaskInfo *task) {
     osRecvMesg(&mq, NULL, OS_MESG_BLOCK);
 }
 
-void func_800009D8(MqListNode *arg0, OSMesgQueue *mq, OSMesg *msg, u32 count) {
+void func_800009D8(SCClient *arg0, OSMesgQueue *mq, OSMesg *msg, u32 count) {
     SCTaskAddClient t;
 
     osCreateMesgQueue(mq, msg, count);
@@ -701,11 +701,10 @@ void scExecuteAudioTask(SCTaskGfx *arg0) {
 }
 
 // 80001A00
-s32 scExecuteTask(SCTaskInfo *task);
-#ifdef NON_MATCHING
-s32 scExecuteTask(SCTaskInfo* task) {
+s32 scExecuteTask(SCTaskInfo* task)
+{
     s32 ret = 0;
-    UNUSED s32 pad[4]; // required to match
+     s32 pad[4]; // required to match
     SCTaskInfo* sp34[2];
 
     switch (task->type) {
@@ -714,11 +713,11 @@ s32 scExecuteTask(SCTaskInfo* task) {
 
             if (t->unk68 != NULL) {
                 *t->unk68 |= (uintptr_t) scNextFrameBuffer;
-                osWritebackDCache(t->unk68, sizeof(s32*));
+                osWritebackDCache(t->unk68, sizeof(t->unk68));
             }
             if ((uintptr_t) t->task.t.output_buff == (uintptr_t) -1) {
                 t->task.t.output_buff = (u64*) ((uintptr_t) scRDPBuffer + scRDPOutputBufferUsed);
-                osWritebackDCache(&t->task.t.output_buff, sizeof(u64*));
+                osWritebackDCache(&t->task.t.output_buff, sizeof(t->task.t.output_buff));
             }
             if (t->unk74 == 1) {
                 osInvalDCache(&scUnknownU64, sizeof(scUnknownU64));
@@ -855,7 +854,8 @@ s32 scExecuteTask(SCTaskInfo* task) {
 
             scUseCustomSwapBufferFunc = TRUE;
             scCustomSwapBufferQueue = t->unk24;
-            if (t->info.mq != NULL) {
+            if (t->info.mq != NULL)
+            {
                 osSendMesg(t->info.mq, (OSMesg) t->info.retVal, OS_MESG_NOBLOCK);
             }
             break;
@@ -887,10 +887,6 @@ s32 scExecuteTask(SCTaskInfo* task) {
     }
     return ret;
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/thread3/scExecuteTask.s")
-#endif /* NON_MATCHING */
-
 
 // 80001E64
 void scExecuteTasks(void) {
@@ -957,9 +953,9 @@ void func_80001FF4(void) {
 }
 
 void func_8000205C(void) {
-    MqListNode *cur;
+    SCClient *cur;
     // temp usages are needed to match
-    MqListNode *temp;
+    SCClient *temp;
 
     D_8004501C_4082C += 1;
     cur = scClientList;

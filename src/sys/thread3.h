@@ -42,13 +42,6 @@ typedef struct SCClient {
     /* 0x04 */ OSMesgQueue* mq;
 } SCClient; // size = 0x8
 
-typedef struct MqListNode
-{
-    /* 0x00 */ struct MqListNode *next;
-    /* 0x04 */ OSMesgQueue *mq;
-
-} MqListNode; // size = 0x8
-
 // This may be the real form of `struct SpMqInfo`, but I'll have to double check
 // thread3.c to see if I can replace all forms...
 typedef struct SCTaskInfo {
@@ -146,7 +139,7 @@ extern u64 scUnknownU64;
 extern s32 D_80045020_40830;
 
 extern void func_80000970(SCTaskInfo *arg0);
-extern void func_800009D8(MqListNode *arg0, OSMesgQueue *mq, OSMesg *msg, u32 count);
+extern void func_800009D8(SCClient *arg0, OSMesgQueue *mq, OSMesg *msg, u32 count);
 extern s32 scCheckGfxTaskDefault(SCTaskGfx *t);
 extern void thread3_scheduler(void *arg);
 extern s32 func_80000B54(UNUSED SCTaskInfo *t);

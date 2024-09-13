@@ -158,7 +158,7 @@ OSMesgQueue sSYErrorMesgQueueCPUFault;
 OSMesg sSYErrorMesgCPUFault[1];
 u32 sUnref8009E3D4;
 void (*sSYErrorFuncPrint)(void);
-MqListNode D_8009E3E0;
+SCClient D_8009E3E0;
 OSMesg D_8009E3E8[1];
 OSMesgQueue D_8009E3F0;
 OSThread sSYErrorThread8Hang;

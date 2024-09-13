@@ -84,7 +84,7 @@ u16 D_800454BA;
 u32 D_800454BC;
 OSMesg D_800454C0[1];
 OSMesgQueue D_800454C8;
-MqListNode D_800454E0;
+SCClient D_800454E0;
 unsigned int *D_800454E8; // pointer to Gfx.w1 (segment base addr?)
 OSMesg D_800454F0[3];
 OSMesgQueue D_80045500; // sctask end? or for all tasks?

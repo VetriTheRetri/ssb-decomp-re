@@ -15,7 +15,7 @@ OSMesgQueue sInitQueue; // Queue for OS controller Init, Status, and Read
 OSMesg sInitMesg[1]; // Message buffer for OS controller Init, Status, and Read
 
 // 80045110
-MqListNode D_80045110;
+SCClient D_80045110;
 
 // 80045118
 OSMesg sContEvtMesgs[7]; // used in MqList D_80045110

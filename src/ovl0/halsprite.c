@@ -198,37 +198,36 @@ void lbParticleSetupBankID(s32 bank_id, uintptr_t *gen_heap, uintptr_t *tex_heap
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CE418.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CE4E4.s")
+UnkRustRat* func_ovl0_800CE4E4(UnkRustRat** arg0, s32 arg1, s32 arg2, u16 arg3, u8* arg4, s32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, s32 argF, UnkPinkRat* arg10);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CE6B8.s")
-// UnkRustRat* func_ovl0_800CE6B8(UnkRustRat** arg0, s32 arg1, s32 arg2)
-// {
-// 	UnkAsphaltLeopard* temp_v0;
-// 	s32 id = arg1 & 7;
+UnkRustRat* func_ovl0_800CE6B8(UnkRustRat** arg0, s32 arg1, s32 arg2)
+{
+	UnkAsphaltLeopard* temp_v0;
+	s32 id = arg1 & 7;
 
-// 	if (id >= 8)
-// 		return NULL;
+	if (id >= 8)
+		return NULL;
 
-// 	if (arg2 >= D_800D63C0[id])
-// 		return NULL;
+	if (arg2 >= D_800D63C0[id])
+		return NULL;
 
-// 	temp_v0 = D_800D6400[id][arg2];
-// 	return func_ovl0_800CE4E4(arg0, arg1, temp_v0->unk_08, temp_v0->unk_02, temp_v0->unk_30, temp_v0->unk_06,
-// 						 0.0f, 0.0f, 0.0f, temp_v0->unk_14.x, temp_v0->unk_14.y, temp_v0->unk_14.z, temp_v0->unk_2C, temp_v0->unk_0C,
-// 						 temp_v0->unk_10, D_800D6420[id][temp_v0->unk_02]->unk_14, NULL);
-// }
+	temp_v0 = D_800D6400[id][arg2];
+	return func_ovl0_800CE4E4(arg0, arg1, temp_v0->unk_08, temp_v0->unk_02, temp_v0->unk_30, temp_v0->unk_06,
+						 0.0f, 0.0f, 0.0f, temp_v0->unk_14.x, temp_v0->unk_14.y, temp_v0->unk_14.z, temp_v0->unk_2C, temp_v0->unk_0C,
+						 temp_v0->unk_10, D_800D6420[id][temp_v0->unk_02]->unk_14, NULL);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CE7A8.s")
-// UnkRustRat* func_ovl0_800CE7A8(s32 arg0, s32 arg1, u16 arg2, u8* arg3, s32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, s32 argE, UnkPinkRat* argF)
-// {
-// 	UnkRustRat* ret;
+UnkRustRat* func_ovl0_800CE7A8(s32 arg0, s32 arg1, u16 arg2, u8* arg3, s32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, s32 argE, UnkPinkRat* argF)
+{
+	UnkRustRat* ret;
 
-// 	ret = func_ovl0_800CE4E4(NULL, arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, argF);
+	ret = func_ovl0_800CE4E4(NULL, arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, argF);
 
-// 	if (ret != NULL)
-// 		func_ovl0_800CEF4C(ret, 0, arg0 >> 3);
+	if (ret != NULL)
+		func_ovl0_800CEF4C(ret, 0, arg0 >> 3);
 
-// 	return ret;
-// }
+	return ret;
+}
 
 efParticle* func_ovl0_800CE870(s32 arg0, s32 arg1)
 {
@@ -243,28 +242,27 @@ efParticle* func_ovl0_800CE870(s32 arg0, s32 arg1)
 	return efpart;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CE8C0.s")
-// UnkRustRat* func_ovl0_800CE8C0(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7)
-// {
-// 	UnkRustRat* ret;
-// 	UnkAsphaltLeopard* temp_v0;
-// 	s32 id = arg0 & 7;
+UnkRustRat* func_ovl0_800CE8C0(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7)
+{
+	UnkRustRat* ret;
+	UnkAsphaltLeopard* temp_v0;
+	s32 id = arg0 & 7;
 
-// 	if (id >= 8)
-// 		return NULL;
+	if (id >= 8)
+		return NULL;
 
-// 	if (arg1 >= D_800D63C0[id])
-// 		return NULL;
+	if (arg1 >= D_800D63C0[id])
+		return NULL;
 
-// 	temp_v0 = D_800D6400[id][arg1];
-// 	ret = func_ovl0_800CE4E4(NULL, arg0, temp_v0->unk_08, temp_v0->unk_02, temp_v0->unk_30, temp_v0->unk_06,
-// 						arg2, arg3, arg4, arg5, arg6, arg7, temp_v0->unk_2C, temp_v0->unk_0C,
-// 						temp_v0->unk_10, D_800D6420[id][temp_v0->unk_02]->unk_14, NULL);
-// 	if (ret != NULL)
-// 		func_ovl0_800CEF4C(ret, 0, arg0 >> 3);
+	temp_v0 = D_800D6400[id][arg1];
+	ret = func_ovl0_800CE4E4(NULL, arg0, temp_v0->unk_08, temp_v0->unk_02, temp_v0->unk_30, temp_v0->unk_06,
+						arg2, arg3, arg4, arg5, arg6, arg7, temp_v0->unk_2C, temp_v0->unk_0C,
+						temp_v0->unk_10, D_800D6420[id][temp_v0->unk_02]->unk_14, NULL);
+	if (ret != NULL)
+		func_ovl0_800CEF4C(ret, 0, arg0 >> 3);
 
-// 	return ret;
-// }
+	return ret;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CE9E8.s")
 

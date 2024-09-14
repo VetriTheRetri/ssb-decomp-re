@@ -131,10 +131,10 @@ s32 sLBParticleScriptBanksNum[LBPARTICLE_BANKS_NUM_MAX];
 s32 sLBParticleTextureBanksNum[LBPARTICLE_BANKS_NUM_MAX];
 
 // 0x800D6400
-efScript **sLBParticleScriptBanks[/* */];
+efScript **sLBParticleScriptBanks[LBPARTICLE_BANKS_NUM_MAX];
 
 // 0x800D6420
-efTexture **sLBParticleTextureBanks[/* */];
+efTexture **sLBParticleTextureBanks[LBPARTICLE_BANKS_NUM_MAX];
 
 u8 D_ovl0_800D5D50[4] = { 0, 0, 0, 0 };
 u8 D_ovl0_800D5D54[4] = { 0, 0, 0, 0 };
@@ -227,16 +227,17 @@ efParticle* func_ovl0_800CE6B8(efParticle **efpart, s32 bank_id, s32 script_bank
 						 efscript->unk_efscript_0x10, sLBParticleTextureBanks[id][efscript->unk_efscript_0x2]->flags, NULL);
 }
 
-UnkRustRat* func_ovl0_800CE7A8(s32 arg0, s32 arg1, u16 arg2, u8* arg3, s32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, s32 argE, UnkPinkRat* argF)
+efParticle* func_ovl0_800CE7A8(s32 arg0, s32 arg1, u16 arg2, u8* arg3, s32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, s32 argE, UnkPinkRat* argF)
 {
-	UnkRustRat* ret;
+	efParticle *efpart;
 
-	ret = func_ovl0_800CE4E4(NULL, arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, argF);
+	efpart = func_ovl0_800CE4E4(NULL, arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, argF);
 
-	if (ret != NULL)
-		func_ovl0_800CEF4C(ret, 0, arg0 >> 3);
-
-	return ret;
+	if (efpart != NULL)
+	{
+		func_ovl0_800CEF4C(efpart, 0, arg0 >> 3);
+	}
+	return efpart;
 }
 
 efParticle* func_ovl0_800CE870(s32 arg0, s32 arg1)

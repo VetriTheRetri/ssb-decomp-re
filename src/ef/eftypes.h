@@ -33,15 +33,13 @@ struct efScriptDesc
 struct efScript
 {
     u16 unk_efscript_0x0;
-	u16 unk_efscript_0x2;   // Texture ID?
+	u16 texture_id;         // Texture ID?
     u16 unk_efscript_0x4;
 	u16 unk_efscript_0x6;   // Total frames?
-    u32 unk_efscript_0x8;   // Flags?
+    u32 flags;              // Flags?
 	f32 unk_efscript_0xC;
     f32 unk_efscript_0x10;
-    f32 unk_efscript_0x14;
-    f32 unk_efscript_0x18;
-    f32 unk_efscript_0x1C;
+    Vec3f vel;
     f32 unk_efscript_0x20;
     f32 unk_efscript_0x24;
     f32 unk_efscript_0x28;
@@ -67,59 +65,76 @@ struct efTexture
 
 struct efGenerator
 {
-    u16 unk_efgen_0x0;
-	u16 unk_efgen_0x2;
-	u16 unk_efgen_0x4;
-	u16 unk_efgen_0x6;
-	s32 unk_efgen_0x8;
-	f32 unk_efgen_0xC;
-	f32 unk_efgen_0x10;
+    efGenerator *next;
+	u16 unk_gtor_0x4;
+	u16 flags;
+	s32 unk_gtor_0x8;
+	f32 unk_gtor_0xC;
+	f32 unk_gtor_0x10;
     Vec3f pos;
-    f32 unk_efgen_0x20;
-    f32 unk_efgen_0x24;
-    f32 unk_efgen_0x28;
-    f32 unk_efgen_0x2C;
-    void *unk_efgen_0x30;
-    f32 unk_efgen_0x34;
-    f32 unk_efgen_0x38;
-    f32 unk_efgen_0x3C;
-    f32 unk_efgen_0x40;
-    f32 unk_efgen_0x44;
+    f32 unk_gtor_0x20;
+    f32 unk_gtor_0x24;
+    f32 unk_gtor_0x28;
+    f32 unk_gtor_0x2C;
+    f32 unk_gtor_0x30;
+    f32 unk_gtor_0x34;
+    f32 unk_gtor_0x38;
+    f32 unk_gtor_0x3C;
+    f32 unk_gtor_0x40;
+    f32 unk_gtor_0x44;
     DObj *dobj;
+    efTransform *tfrm;
 };
 
+// Might actually be the real efGenerator?
 struct efTransform
 {
     efTransform *next;
     Vec3f translate;
     Vec3f rotate;
     Vec3f scale;
-    u16 unk_effect_0x28;
-    u16 unk_effect_0x2A;
-    Mtx44f unk_eftrans_0x2C;
-    Mtx44f unk_eftrans_0x6C;
-    f32 unk_eftrans_0xAC;
-    f32 unk_eftrans_0xB0;
+    u8 unk_tfrm_0x28;
+    u8 unk_tfrm_0x29;
+    u16 users_num;              // Number of users using this particular efTransform struct?
+    Mtx44f unk_tfrm_0x2C;
+    Mtx44f unk_tfrm_0x6C;
+    f32 unk_tfrm_0xAC;
+    f32 unk_tfrm_0xB0;
     void (*proc_dead)(efTransform*);
-    u16 unk_effect_0xB8;
+    u16 unk_tfrm_0xB8;
     GObj *effect_gobj;
 };
 
 struct efParticle
 {
     efParticle *next;
-    u8 filler_0x4[0x4];
-    u8 unk_efpart_0x8;
-    u16 unk_efpart_0xA;
-    u8 filler_0xC[0x20 - 0xC];
+    u16 unk_ptcl_0x4;
+    u16 flags;                  // Flags?
+    u8 bank_id;
+    u8 unk_ptcl_0x9;
+    u8 unk_ptcl_0xA;
+    u8 unk_ptcl_0xB;
+    ub16 is_have_bytecode;      // Whether particle has bytecode script?
+    u16 unk_ptcl_0xE;
+    u16 unk_ptcl_0x10;
+    u16 unk_ptcl_0x12;
+    u8 *bytecode;
+    u16 unk_ptcl_0x18;
+    u16 unk_ptcl_0x1A;
+    u16 unk_ptcl_0x1C;
+    u16 unk_ptcl_0x1E;
     Vec3f pos;
     Vec3f vel;                  // Velocity?
-    u8 filler_0x2C[0x48 - 0x38];
+    f32 unk_ptcl_0x38;
+    f32 unk_ptcl_0x3C;
+    f32 unk_ptcl_0x40;
+    f32 unk_ptcl_0x44;
     syColorRGBA color1;
-    s32 unk_efpart_0x4C;
+    s32 unk_ptcl_0x4C;
     syColorRGBA color2;
-    u8 filler_0x54[0x5C - 0x54];
-    efTransform *effect_info;
+    s32 unk_ptcl_0x54;
+    efGenerator *gtor;
+    efTransform *tfrm;
 };
 
 typedef struct efGroundParam
@@ -170,8 +185,8 @@ struct efStruct
     efStruct *alloc_next;
     GObj *fighter_gobj;
 
-    u16 unk_effectstruct_0x8;
-    efTransform *eftrans;
+    u16 bank_id;
+    efTransform *tfrm;
 
     ub32 is_pause_effect : 1;
 

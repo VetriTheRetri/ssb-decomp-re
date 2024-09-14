@@ -104,7 +104,7 @@ typedef struct efParticle_EffectVars_Basic2 // Stuff like the effect that is cre
     Vec3f vel;
     u8 player;
     s32 size;
-    efTransform *eftrans;
+    efTransform *tfrm;
     u8 filler_0x2C[0x3C - 0x30];
 
 } efParticle_EffectVars_Basic2;
@@ -121,7 +121,7 @@ typedef struct efCommonEffectVarsCommon
 {
     Vec3f vel;
     s32 size;
-    efTransform *eftrans;
+    efTransform *tfrm;
 
 } efCommonEffectVarsCommon;
 
@@ -129,7 +129,7 @@ typedef struct efCommonEffectVarsDustLight
 {
     Vec3f vel1, vel2;
     s32 lifetime;
-    efTransform *eftrans;
+    efTransform *tfrm;
 
 } efCommonEffectVarsDustLight;
 
@@ -138,7 +138,7 @@ typedef struct efCommonEffectVarsDustHeavy
     Vec3f pos;
     s32 lr;
     s32 anim_frame;
-    efTransform *eftrans;
+    efTransform *tfrm;
 
 } efCommonEffectVarsDustHeavy;
 

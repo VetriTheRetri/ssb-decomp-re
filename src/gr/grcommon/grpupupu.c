@@ -213,36 +213,36 @@ void grPupupuWhispyUpdateSleep(void)
 // 0x80105B18
 void grPupupuWhispyLeavesMakeEffect(void)
 {
-    efParticle *efpart;
-    efTransform *eftrans;
+    efParticle *ptcl;
+    efTransform *tfrm;
 
-    eftrans = NULL;
-    efpart = func_ovl0_800CE9E8(gGRCommonStruct.pupupu.particle_bank_id | 8, 0);
+    tfrm = NULL;
+    ptcl = func_ovl0_800CE9E8(gGRCommonStruct.pupupu.particle_bank_id | 8, 0);
 
-    if (efpart != NULL)
+    if (ptcl != NULL)
     {
-        eftrans = func_ovl0_800CE1DC(efpart, 1);
+        tfrm = lbParticleAddTransformForParticle(ptcl, 1);
 
-        if (eftrans == NULL)
+        if (tfrm == NULL)
         {
-            func_ovl0_800CEA40(efpart);
+            func_ovl0_800CEA40(ptcl);
         }
         else
         {
-            func_ovl0_800CEA14(efpart);
+            func_ovl0_800CEA14(ptcl);
 
-            if (eftrans->unk_effect_0x2A == 0)
+            if (tfrm->users_num == 0)
             {
-                eftrans = NULL;
+                tfrm = NULL;
             }
             else
             {
-                eftrans->translate = dGRPupupuWhispyLeavesEffectAttributes[gGRCommonStruct.pupupu.lr_players].pos;
-                eftrans->rotate.y = dGRPupupuWhispyLeavesEffectAttributes[gGRCommonStruct.pupupu.lr_players].rotate;
+                tfrm->translate = dGRPupupuWhispyLeavesEffectAttributes[gGRCommonStruct.pupupu.lr_players].pos;
+                tfrm->rotate.y = dGRPupupuWhispyLeavesEffectAttributes[gGRCommonStruct.pupupu.lr_players].rotate;
             }
         }
     }
-    gGRCommonStruct.pupupu.leaves_eftrans = eftrans;
+    gGRCommonStruct.pupupu.leaves_tfrm = tfrm;
 }
 
 // 0x80105BE8
@@ -329,9 +329,9 @@ void grPupupuWhispyUpdateBlow(void)
 
         gGRCommonStruct.pupupu.whispy_status = nGRPupupuWhispyWindStatusStop;
 
-        if (gGRCommonStruct.pupupu.leaves_eftrans != NULL)
+        if (gGRCommonStruct.pupupu.leaves_tfrm != NULL)
         {
-            func_ovl0_800D39D4(gGRCommonStruct.pupupu.leaves_eftrans->unk_effect_0xB8, 1);
+            func_ovl0_800D39D4(gGRCommonStruct.pupupu.leaves_tfrm->unk_tfrm_0xB8, 1);
         }
     }
     grPupupuWhispyUpdateWindRumble();
@@ -472,37 +472,37 @@ void grPupupuFlowersFrontWindStart(void)
 // 0x801060E0
 void grPupupuWhispyDustMakeEffect(void)
 {
-    efParticle *efpart;
-    efTransform *eftrans;
+    efParticle *ptcl;
+    efTransform *tfrm;
 
-    eftrans = NULL;
-    efpart = func_ovl0_800CE9E8(gGRCommonStruct.pupupu.particle_bank_id | 8, 1);
+    tfrm = NULL;
+    ptcl = func_ovl0_800CE9E8(gGRCommonStruct.pupupu.particle_bank_id | 8, 1);
 
-    if (efpart != NULL)
+    if (ptcl != NULL)
     {
-        eftrans = func_ovl0_800CE1DC(efpart, 1);
+        tfrm = lbParticleAddTransformForParticle(ptcl, 1);
 
-        if (eftrans == NULL)
+        if (tfrm == NULL)
         {
-            func_ovl0_800CEA40(efpart);
+            func_ovl0_800CEA40(ptcl);
         }
         else
         {
-            func_ovl0_800CEA14(efpart);
+            func_ovl0_800CEA14(ptcl);
 
-            if (eftrans->unk_effect_0x2A == 0)
+            if (tfrm->users_num == 0)
             {
-                eftrans = NULL;
+                tfrm = NULL;
             }
             else
             {
-                eftrans->translate = dGRPupupuWhispyDustEffectPositions[gGRCommonStruct.pupupu.lr_players];
+                tfrm->translate = dGRPupupuWhispyDustEffectPositions[gGRCommonStruct.pupupu.lr_players];
 
-                eftrans->rotate.y = (gGRCommonStruct.pupupu.lr_players == 1) ? 0.0F : F_CST_DTOR32(180.0F);
+                tfrm->rotate.y = (gGRCommonStruct.pupupu.lr_players == 1) ? 0.0F : F_CST_DTOR32(180.0F);
             }
         }
     }
-    gGRCommonStruct.pupupu.dust_eftrans = eftrans;
+    gGRCommonStruct.pupupu.dust_tfrm = tfrm;
 }
 
 // 0x801061CC
@@ -529,9 +529,9 @@ void grPupupuFlowersFrontLoopEnd(void)
         gGRCommonStruct.pupupu.flowers_front_status = nGRPupupuFlowerStatusWindStop;
         gGRCommonStruct.pupupu.flowers_front_wait = 22;
 
-        if (gGRCommonStruct.pupupu.dust_eftrans != NULL)
+        if (gGRCommonStruct.pupupu.dust_tfrm != NULL)
         {
-            func_ovl0_800D39D4(gGRCommonStruct.pupupu.dust_eftrans->unk_effect_0xB8, 1);
+            func_ovl0_800D39D4(gGRCommonStruct.pupupu.dust_tfrm->unk_tfrm_0xB8, 1);
         }
     }
     else grPupupuWhispySetWindPush();

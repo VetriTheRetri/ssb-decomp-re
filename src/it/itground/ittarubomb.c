@@ -390,7 +390,7 @@ void itTaruBombExplodeSetStatus(GObj *item_gobj)
 // 0x801852B8
 void itTaruBombExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 {
-    efParticle *efpart;
+    efParticle *ptcl;
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
@@ -400,13 +400,13 @@ void itTaruBombExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
     ip->phys_info.vel_air.y = 0.0F;
     ip->phys_info.vel_air.z = 0.0F;
 
-    efpart = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
+    ptcl = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 
-    if (efpart != NULL)
+    if (ptcl != NULL)
     {
-        efpart->effect_info->scale.x =
-        efpart->effect_info->scale.y =
-        efpart->effect_info->scale.z = ITTARUBOMB_EXPLODE_EFFECT_SCALE;
+        ptcl->tfrm->scale.x =
+        ptcl->tfrm->scale.y =
+        ptcl->tfrm->scale.z = ITTARUBOMB_EXPLODE_EFFECT_SCALE;
     }
     efManagerQuakeMakeEffect(1);
 

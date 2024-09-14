@@ -27,9 +27,9 @@ uintptr_t sEFAllocParticleScriptBanks[7];
 // 0x80115890
 void efAllocInitParticleBank(void)
 {
-    D_ovl2_80131A10 = func_ovl0_800CE418(0x70);
+    D_ovl2_80131A10 = lbParticleAllocStructs(0x70);
     D_ovl2_80131A14 = func_ovl0_800D2758(0x18);
-    func_ovl0_800CE040(0x50, 0xC0);
+    lbParticleAllocTransforms(0x50, 0xC0);
     sEFAllocParticleBanksNum = 0;
 }
 

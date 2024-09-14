@@ -13,7 +13,6 @@ typedef struct UnkGreenLeopard
 	/* 0x1C */ Vec3f unk_1C;
 } UnkGreenLeopard;
 
-// efGenerator
 typedef struct UnkAsphaltLeopard
 {
 	/* 0x00 */ u16 unk_00;
@@ -65,7 +64,7 @@ typedef union UnkPinkRatSub {
 	} data2;
 } UnkPinkRatSub; // size = 0xC
 
-// efTransform? idk screw it I'm confused
+// efGenerator
 typedef struct UnkPinkRat {
 	/* 0x00 */ struct UnkPinkRat* next;
 	/* 0x04 */ u16 unk_04;
@@ -122,7 +121,15 @@ typedef struct UnkRustRat {
 
 // extern UnkPinkRat D_800D639C[5];
 extern UnkPinkRat* D_800D639C[9];
-extern UnkRustRat* D_800D6358[16];
+
+// 0x800D6350
+efParticle *sLBParticleStructsAllocFree;
+
+// 0x800D6358
+efParticle *sLBParticleStructsAllocBuf[16];
+
+// 0x800D639C
+efGenerator *sLBParticleGeneratorsAllocBuf[9];
 
 // 0x800D63C0
 s32 sLBParticleScriptBanksNum[LBPARTICLE_BANKS_NUM_MAX];
@@ -136,20 +143,115 @@ efScript **sLBParticleScriptBanks[LBPARTICLE_BANKS_NUM_MAX];
 // 0x800D6420
 efTexture **sLBParticleTextureBanks[LBPARTICLE_BANKS_NUM_MAX];
 
-u8 D_ovl0_800D5D50[4] = { 0, 0, 0, 0 };
-u8 D_ovl0_800D5D54[4] = { 0, 0, 0, 0 };
-s32 D_ovl0_800D5D58 = 0;
-u8 D_ovl0_800D5D5C = 0x7B;
+// 0x800D6448
+u16 sLBParticleStructsUsedNum;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CE040.s")
+// 0x800D644C
+u16 sLBParticleTransformsUsedNum;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CE0D8.s")
+// 0x800D644E
+u16 D_ovl0_800D644E;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CE188.s")
+// 0x800D6452
+u16 D_ovl0_800D6452;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CE1DC.s")
+// 0x800D6454
+efTransform *sLBParticleTransformsAllocFree;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CE218.s")
+// 0x800D5D50
+u8 dLBParticleColorDitherModes[/* */] = { G_CD_MAGICSQ, G_CD_MAGICSQ, G_CD_MAGICSQ, G_CD_MAGICSQ };
+
+// 0x800D5D54
+u8 dLBParticleAlphaDitherModes[/* */] = { G_AD_PATTERN, G_AD_PATTERN, G_AD_PATTERN, G_AD_PATTERN };
+
+// 0x800D5D58
+u16 D_ovl0_800D5D58[/* */] = { 0, 0 };
+
+// 0x800D5D5C
+u8 D_ovl0_800D5D5C[/* */] = { 0x7B, 0x00 };
+
+// 0x800CE040
+s32 lbParticleAllocTransforms(s32 num, size_t size)
+{
+    efTransform *tfrm;
+    s32 i;
+
+    sLBParticleTransformsAllocFree = NULL;
+	
+    for (i = 0; i < num; i++)
+	{
+        tfrm = gsMemoryAlloc(size, 0x4);
+
+        if (tfrm == NULL)
+		{
+			return i;
+		}
+        tfrm->next = sLBParticleTransformsAllocFree;
+        sLBParticleTransformsAllocFree = tfrm;
+    }
+    sLBParticleTransformsUsedNum = 0;
+    D_ovl0_800D6452 = 0;
+
+    return i;
+}
+
+// 0x800CE0D8
+efTransform* lbParticleGetNextTransformAlloc(u8 arg0, u16 arg1)
+{
+    efTransform *tfrm = sLBParticleTransformsAllocFree;
+
+    if (tfrm != NULL)
+	{
+        sLBParticleTransformsAllocFree = tfrm->next;
+        tfrm->users_num = 1;
+        tfrm->unk_tfrm_0x29 = D_ovl0_800D5D5C[0];
+        tfrm->proc_dead = NULL;
+
+        tfrm->translate.x = tfrm->translate.y = tfrm->translate.z = 0.0F;
+        tfrm->rotate.x = tfrm->rotate.y = tfrm->rotate.z = 0.0F;
+        tfrm->scale.x = tfrm->scale.y = tfrm->scale.z = 1.0F;
+
+        tfrm->unk_tfrm_0x28 = arg0;
+        tfrm->unk_tfrm_0xB8 = arg1;
+
+        sLBParticleTransformsUsedNum++;
+
+        if (D_ovl0_800D6452 < sLBParticleTransformsUsedNum)
+		{
+			D_ovl0_800D6452 = sLBParticleTransformsUsedNum;
+		}
+    }
+    return tfrm;
+}
+
+// 0x800CE188
+void lbParticleSetPrevTransformAlloc(efTransform *tfrm)
+{
+    if (tfrm->proc_dead != NULL)
+	{ 
+		tfrm->proc_dead(tfrm);
+	}
+    tfrm->next = sLBParticleTransformsAllocFree;
+    sLBParticleTransformsAllocFree = tfrm;
+
+    sLBParticleTransformsUsedNum--;
+}
+
+// 0x800CE1DC
+efTransform* lbParticleAddTransformForParticle(efParticle *ptcl, u8 arg1)
+{
+    ptcl->tfrm = lbParticleGetNextTransformAlloc(arg1, ptcl->unk_ptcl_0x4);
+
+    return ptcl->tfrm;
+}
+
+// 0x800CE218
+efTransform* lbParticleAddTransformForGenerator(efGenerator *gtor, u8 arg1)
+{
+    gtor->tfrm = lbParticleGetNextTransformAlloc(arg1, gtor->unk_gtor_0x4);
+
+    return gtor->tfrm;
+}
 
 // 0x800CE254
 void lbParticleSetupBankID(s32 bank_id, efScriptDesc *script_desc, efTextureDesc *texture_desc)
@@ -201,12 +303,149 @@ void lbParticleSetupBankID(s32 bank_id, efScriptDesc *script_desc, efTextureDesc
 	}
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CE418.s")
+// Temporary
+extern void lbParticleStructProcRun(GObj*);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CE4E4.s")
-efParticle* func_ovl0_800CE4E4(void** arg0, s32 arg1, s32 arg2, u16 arg3, u8* arg4, s32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, s32 argF, UnkPinkRat* arg10);
+// 0x800CE418
+GObj* lbParticleAllocStructs(s32 num)
+{
+    s32 i;
+    efParticle *ptcl;
 
-efParticle* func_ovl0_800CE6B8(efParticle **efpart, s32 bank_id, s32 script_bank_id)
+    sLBParticleStructsAllocFree = NULL;
+
+    for (i = 0; i < ARRAY_COUNT(sLBParticleStructsAllocBuf); i++)
+	{
+		sLBParticleStructsAllocBuf[i] = NULL;
+	}
+    for (i = num - 1; i >= 0; i--)
+	{
+        ptcl = gsMemoryAlloc(sizeof(*ptcl), 4);
+
+        if (ptcl == NULL)
+		{
+			return NULL;
+		}
+        ptcl->next = sLBParticleStructsAllocFree;
+        sLBParticleStructsAllocFree = ptcl;
+    }
+    sLBParticleStructsUsedNum = 0;
+    D_ovl0_800D644E = 0;
+
+    if (gcFindGObjByID(-6) != NULL)
+	{
+		return NULL;
+	}
+    return gcMakeGObjSPAfter(-6, lbParticleStructProcRun, 0, GOBJ_LINKORDER_DEFAULT);
+}
+
+// 0x800CE4E4
+efParticle* lbParticleMakeStruct
+(
+    efParticle *this_ptcl,
+    s32 bank_id,
+    u32 flags,
+    u16 arg3,
+    u8 *bytecode,
+    s32 arg5,
+    f32 pos_x,
+    f32 pos_y,
+    f32 pos_z,
+    f32 vel_x,
+    f32 vel_y,
+    f32 vel_z,
+    f32 argC,
+    f32 argD,
+    f32 argE,
+    u32 argF,
+    efGenerator *gtor
+)
+{
+    efParticle *new_ptcl;
+    s32 i;
+
+    new_ptcl = sLBParticleStructsAllocFree;
+    
+    if (new_ptcl == NULL)
+    {
+        return NULL;
+    }
+    sLBParticleStructsUsedNum++;
+    
+    if (D_ovl0_800D644E < sLBParticleStructsUsedNum) 
+    {
+        D_ovl0_800D644E = sLBParticleStructsUsedNum;
+    }
+    if (gtor != NULL)
+    {
+        new_ptcl->unk_ptcl_0x4 = gtor->unk_gtor_0x4;
+    } 
+    else new_ptcl->unk_ptcl_0x4 = ++D_ovl0_800D5D58[0];
+
+    if (gtor != NULL)
+    {
+        new_ptcl->tfrm = gtor->tfrm;
+        
+        if (new_ptcl->tfrm != NULL)
+        {
+            new_ptcl->tfrm->users_num++;
+        }
+    }
+    else new_ptcl->tfrm = NULL;
+    
+    sLBParticleStructsAllocFree = new_ptcl->next;
+    
+    if (this_ptcl == NULL) 
+    {
+        new_ptcl->next = sLBParticleStructsAllocBuf[bank_id >> 3];
+        sLBParticleStructsAllocBuf[bank_id >> 3] = new_ptcl;
+    } 
+    else 
+    {
+        new_ptcl->next = this_ptcl->next;
+        this_ptcl->next = new_ptcl;
+    }
+    new_ptcl->bank_id = bank_id;
+    new_ptcl->flags = flags;
+    new_ptcl->unk_ptcl_0xA = arg3;
+
+    new_ptcl->pos.x = pos_x;
+    new_ptcl->pos.y = pos_y;
+    new_ptcl->pos.z = pos_z;
+
+    new_ptcl->vel.x = vel_x;
+    new_ptcl->vel.y = vel_y;
+    new_ptcl->vel.z = vel_z;
+    
+    new_ptcl->unk_ptcl_0x40 = argC;
+    new_ptcl->unk_ptcl_0x38 = argD;
+    new_ptcl->unk_ptcl_0x3C = argE;
+
+    new_ptcl->unk_ptcl_0x1E = arg5 + 1;
+    new_ptcl->unk_ptcl_0x18 = new_ptcl->unk_ptcl_0x1A = 0;
+    
+    new_ptcl->bytecode = bytecode;
+
+    if (argF != FALSE) 
+    { 
+        new_ptcl->flags |= 0x10;
+    }
+    new_ptcl->is_have_bytecode = (bytecode != NULL) ? TRUE : FALSE;
+    
+    new_ptcl->unk_ptcl_0xB = 0;
+    
+    new_ptcl->color1.r = new_ptcl->color1.g = new_ptcl->color1.b = new_ptcl->color1.a = 0xFF;
+    new_ptcl->color2.r = new_ptcl->color2.g = new_ptcl->color2.b = new_ptcl->color2.a = 0x00;
+    
+    new_ptcl->unk_ptcl_0xE = new_ptcl->unk_ptcl_0x10 = new_ptcl->unk_ptcl_0x12 = 0;
+    
+    new_ptcl->gtor = gtor;
+
+    return new_ptcl;
+}
+
+// 0x800CE6B8
+efParticle* lbParticleMakeDefault(efParticle *ptcl, s32 bank_id, s32 script_bank_id)
 {
 	efScript *efscript;
 	s32 id = bank_id & 7;
@@ -221,41 +460,84 @@ efParticle* func_ovl0_800CE6B8(efParticle **efpart, s32 bank_id, s32 script_bank
 	}
 	efscript = sLBParticleScriptBanks[id][script_bank_id];
 
-	return func_ovl0_800CE4E4(efpart, bank_id, efscript->unk_efscript_0x8, efscript->unk_efscript_0x2, efscript->bytecode, efscript->unk_efscript_0x6,
-						 0.0F, 0.0F, 0.0F, efscript->unk_efscript_0x14, efscript->unk_efscript_0x18, efscript->unk_efscript_0x1C, 
-						 efscript->unk_efscript_0x2C, efscript->unk_efscript_0xC,
-						 efscript->unk_efscript_0x10, sLBParticleTextureBanks[id][efscript->unk_efscript_0x2]->flags, NULL);
+	return lbParticleMakeStruct
+	(
+		ptcl,
+		bank_id,
+		efscript->flags,
+		efscript->texture_id,
+		efscript->bytecode,
+		efscript->unk_efscript_0x6,
+		0.0F, 0.0F, 0.0F,
+		efscript->vel.x, efscript->vel.y, efscript->vel.z,
+		efscript->unk_efscript_0x2C,
+		efscript->unk_efscript_0xC,
+		efscript->unk_efscript_0x10,
+		sLBParticleTextureBanks[id][efscript->texture_id]->flags,
+		NULL
+	);
 }
 
-efParticle* func_ovl0_800CE7A8(s32 arg0, s32 arg1, u16 arg2, u8* arg3, s32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, s32 argE, UnkPinkRat* argF)
+// 0x800CE7A8
+efParticle* lbParticleMakeParam
+(
+	s32 bank_id,
+	u32 flags,
+	u16 texture_id,
+	u8 *bytecode,
+	s32 arg4,
+	f32 pos_x,
+	f32 pos_y,
+	f32 pos_z,
+	f32 vel_x,
+	f32 vel_y,
+	f32 vel_z,
+	f32 argB,
+	f32 argC,
+	f32 argD,
+	u32 argE,
+	efGenerator* gtor
+)
 {
-	efParticle *efpart;
-
-	efpart = func_ovl0_800CE4E4(NULL, arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, argF);
-
-	if (efpart != NULL)
+	efParticle *ptcl = lbParticleMakeStruct
+	(
+		NULL,
+		bank_id,
+		flags,
+		texture_id,
+		bytecode,
+		arg4,
+		pos_x, pos_y, pos_z,
+		vel_x, vel_y, vel_z,
+		argB,
+		argC,
+		argD,
+		argE,
+		gtor
+	);
+	if (ptcl != NULL)
 	{
-		func_ovl0_800CEF4C(efpart, 0, arg0 >> 3);
+		func_ovl0_800CEF4C(ptcl, 0, bank_id >> 3);
 	}
-	return efpart;
+	return ptcl;
 }
 
-efParticle* func_ovl0_800CE870(s32 arg0, s32 arg1)
+// 0x800CE870
+efParticle* func_ovl0_800CE870(s32 bank_id, s32 script_bank_id)
 {
-	efParticle *efpart;
+	efParticle *ptcl = lbParticleMakeDefault(NULL, bank_id, script_bank_id);
 
-	efpart = func_ovl0_800CE6B8(NULL, arg0, arg1);
-
-	if (efpart != NULL)
+	if (ptcl != NULL)
 	{
-		func_ovl0_800CEF4C(efpart, 0, arg0 >> 3);
+		func_ovl0_800CEF4C(ptcl, 0, bank_id >> 3);
 	}
-	return efpart;
+	return ptcl;
 }
 
-efParticle* func_ovl0_800CE8C0(s32 bank_id, s32 script_bank_id, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7)
+// 0x800CE8C0
+efParticle* lbParticleMakePosVel(s32 bank_id, s32 script_bank_id, f32 pos_x, f32 pos_y, f32 pos_z, f32 vel_x, f32 vel_y, f32 vel_z)
 {
-	efParticle *efpart;
+	efParticle *ptcl;
 	efScript *efscript;
 	s32 id = bank_id & 7;
 
@@ -269,16 +551,27 @@ efParticle* func_ovl0_800CE8C0(s32 bank_id, s32 script_bank_id, f32 arg2, f32 ar
 	}
 	efscript = sLBParticleScriptBanks[id][script_bank_id];
 
-	efpart = func_ovl0_800CE4E4(NULL, bank_id, efscript->unk_efscript_0x8, efscript->unk_efscript_0x2, efscript->bytecode, efscript->unk_efscript_0x6,
-						 arg2, arg3, arg4, arg5, arg6, arg7, 
-						 efscript->unk_efscript_0x2C, efscript->unk_efscript_0xC,
-						 efscript->unk_efscript_0x10, sLBParticleTextureBanks[id][efscript->unk_efscript_0x2]->flags, NULL);
-
-	if (efpart != NULL)
+	ptcl = lbParticleMakeStruct
+	(
+		NULL,
+		bank_id,
+		efscript->flags,
+		efscript->texture_id,
+		efscript->bytecode,
+		efscript->unk_efscript_0x6,
+		pos_x, pos_y, pos_z,
+		vel_x, vel_y, vel_z,
+		efscript->unk_efscript_0x2C,
+		efscript->unk_efscript_0xC,
+		efscript->unk_efscript_0x10,
+		sLBParticleTextureBanks[id][efscript->texture_id]->flags,
+		NULL
+	);
+	if (ptcl != NULL)
 	{
-		func_ovl0_800CEF4C(efpart, 0, bank_id >> 3);
+		func_ovl0_800CEF4C(ptcl, 0, bank_id >> 3);
 	}
-	return efpart;
+	return ptcl;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CE9E8.s")
@@ -354,7 +647,7 @@ u8* lbParticleParseShortBE(u8 *csr, u16 *s)
 // 	arg0->unk_2C.z = -x * sp4C * sp48 - y * temp_f26 + temp_f2 * sp4C * sp44;
 // }
 
-void func_ovl0_800CEDBC(efParticle *efpart, UnkGreenLeopard* arg1)
+void func_ovl0_800CEDBC(efParticle *ptcl, UnkGreenLeopard* arg1)
 {
 	f32 dx, dy, dz, dist;
 
@@ -362,23 +655,23 @@ void func_ovl0_800CEDBC(efParticle *efpart, UnkGreenLeopard* arg1)
 	{
 		return;
 	}
-	dx = arg1->unk_1C.x - efpart->pos.x;
-	dy = arg1->unk_1C.y - efpart->pos.y;
-	dz = arg1->unk_1C.z - efpart->pos.z;
+	dx = arg1->unk_1C.x - ptcl->pos.x;
+	dy = arg1->unk_1C.y - ptcl->pos.y;
+	dz = arg1->unk_1C.z - ptcl->pos.z;
 
-	dist = sqrtf(SQUARE(efpart->vel.x) + SQUARE(efpart->vel.y) + SQUARE(efpart->vel.z));
+	dist = sqrtf(SQUARE(ptcl->vel.x) + SQUARE(ptcl->vel.y) + SQUARE(ptcl->vel.z));
 
 	if ((SQUARE(dx) + SQUARE(dy) + SQUARE(dz)) != 0.0F)
 	{
 		dist /= sqrtf(SQUARE(dx) + SQUARE(dy) + SQUARE(dz));
 
-		efpart->vel.x = dx * dist;
-		efpart->vel.y = dy * dist;
-		efpart->vel.z = dz * dist;
+		ptcl->vel.x = dx * dist;
+		ptcl->vel.y = dy * dist;
+		ptcl->vel.z = dz * dist;
 	}
 }
 
-void func_ovl0_800CEEB8(efParticle *efpart, UnkGreenLeopard* arg1, f32 magnitude)
+void func_ovl0_800CEEB8(efParticle *ptcl, UnkGreenLeopard* arg1, f32 magnitude)
 {
 	f32 dx, dy, dz, dist;
 
@@ -386,9 +679,9 @@ void func_ovl0_800CEEB8(efParticle *efpart, UnkGreenLeopard* arg1, f32 magnitude
 	{
 		return;
 	}
-	dx = arg1->unk_1C.x - efpart->pos.x;
-	dy = arg1->unk_1C.y - efpart->pos.y;
-	dz = arg1->unk_1C.z - efpart->pos.z;
+	dx = arg1->unk_1C.x - ptcl->pos.x;
+	dy = arg1->unk_1C.y - ptcl->pos.y;
+	dz = arg1->unk_1C.z - ptcl->pos.z;
 
 	dist = SQUARE(dx) + SQUARE(dy) + SQUARE(dz);
 
@@ -396,58 +689,62 @@ void func_ovl0_800CEEB8(efParticle *efpart, UnkGreenLeopard* arg1, f32 magnitude
 	{
 		dist = magnitude / dist;
 
-		efpart->vel.x += dist * dx;
-		efpart->vel.y += dist * dy;
-		efpart->vel.z += dist * dz;
+		ptcl->vel.x += dist * dx;
+		ptcl->vel.y += dist * dy;
+		ptcl->vel.z += dist * dz;
 	}
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CEF4C.s")
 
 // 0x800D0C74
-void func_ovl0_800D0C74(GObj *gobj)
+void lbParticleStructProcRun(GObj *gobj)
 {
 	u32 flags = gobj->flags;
 	s32 i;
-	efParticle *prev_efpart;
-	efParticle *current_efpart;
-	efParticle *next_efpart;
+	efParticle *prev_ptcl;
+	efParticle *current_ptcl;
+	efParticle *next_ptcl;
 
-	for (i = 0; i < 16; i++, flags >>= 1)
+	for (i = 0; i < ARRAY_COUNT(sLBParticleStructsAllocBuf); i++, flags >>= 1)
 	{
 		if (flags & 0x10000)
 		{
 			continue;
 		}
-		prev_efpart = NULL;
+		prev_ptcl = NULL;
 
-		current_efpart = D_800D6358[i];
+		current_ptcl = sLBParticleStructsAllocBuf[i];
 
-		while (current_efpart != NULL)
+		while (current_ptcl != NULL)
 		{
-			next_efpart = func_ovl0_800CEF4C(current_efpart, prev_efpart, i);
+			next_ptcl = func_ovl0_800CEF4C(current_ptcl, prev_ptcl, i);
 
-			if (current_efpart->next == next_efpart)
+			if (current_ptcl->next == next_ptcl)
 			{
-				prev_efpart = current_efpart;
-				current_efpart = next_efpart;
+				prev_ptcl = current_ptcl;
+				current_ptcl = next_ptcl;
 			}
-			else current_efpart = next_efpart;
+			else current_ptcl = next_ptcl;
 		}
 	}
 }
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800D0D34.s")
 
-void func_ovl0_800D2720(s32 arg0, UnkPinkRat* arg1)
+// 0x800D2720
+void func_ovl0_800D2720(s32 gtor_id, efGenerator *gtor)
 {
-	if (arg0 > 0 && arg0 < ARRAY_COUNT(D_800D639C))
-		D_800D639C[arg0] = arg1;
+	if ((gtor_id > 0) && (gtor_id < ARRAY_COUNT(sLBParticleGeneratorsAllocBuf)))
+	{
+		sLBParticleGeneratorsAllocBuf[gtor_id] = gtor;
+	}
 }
 
-void func_ovl0_800D2744(s32 arg0, s32 arg1)
+// 0x800D2744
+void func_ovl0_800D2744(s32 colordither_mode, s32 alphadither_mode)
 {
-	D_ovl0_800D5D50[0] = arg0;
-	D_ovl0_800D5D54[0] = arg1;
+	dLBParticleColorDitherModes[0] = colordither_mode;
+	dLBParticleAlphaDitherModes[0] = alphadither_mode;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800D2758.s")
@@ -462,15 +759,18 @@ void func_ovl0_800D2744(s32 arg0, s32 arg1)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800D3884.s")
 
-void func_ovl0_800D3978()
+// 0x800D3978
+void func_ovl0_800D3978(void)
 {
-	UnkPinkRat* it = D_800D639C[0];
+	efGenerator *current_gtor = sLBParticleGeneratorsAllocBuf[0];
 
-	while (it != NULL)
+	while (current_gtor != NULL)
 	{
-		UnkPinkRat* next = it->next;
-		func_ovl0_800D3884(it);
-		it = next;
+		efGenerator *next_gtor = current_gtor->next;
+
+		func_ovl0_800D3884(current_gtor);
+
+		current_gtor = next_gtor;
 	}
 }
 
@@ -488,21 +788,24 @@ void func_ovl0_800D3C28(Unk_800A7114* arg0)
 	func_ovl0_800D39D4(arg0->unk_04, arg0->unk_09 >> 3);
 }
 
-void func_ovl0_800D3C54(GObj* obj)
+// 0x800D3C54
+void func_ovl0_800D3C54(GObj *gobj)
 {
-	DObj* node;
-	UnkPinkRat* it;
-	UnkPinkRat* next;
+	DObj *dobj;
+	efGenerator *current_gtor, *next_gtor;
 
-	if (obj->obj_kind == 1)
+	if (gobj->obj_kind == nOMObjCommonAppendDObj)
 	{
-		for (node = obj->obj; node != NULL; node = gcGetTreeDObjNext(node))
+		for (dobj = DObjGetStruct(gobj); dobj != NULL; dobj = gcGetTreeDObjNext(dobj))
 		{
-			for (it = D_800D639C[0]; it != NULL; it = next)
+			for (current_gtor = sLBParticleGeneratorsAllocBuf[0]; current_gtor != NULL; current_gtor = next_gtor)
 			{
-				next = it->next;
-				if (it->dobj == node)
-					func_ovl0_800D3884(it);
+				next_gtor = current_gtor->next;
+
+				if (current_gtor->dobj == dobj)
+				{
+					func_ovl0_800D3884(current_gtor);
+				}
 			}
 		}
 	}
@@ -511,21 +814,25 @@ void func_ovl0_800D3C54(GObj* obj)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800D3CE0.s")
 
-void func_ovl0_800D3D64(u16 arg0, s32 arg1)
+void func_ovl0_800D3D64(u16 arg0, s32 buf_id)
 {
-	UnkRustRat* ptr;
-	UnkPinkRat* ptr2;
+	efParticle *ptcl;
+	efGenerator *gtor;
 
-	for (ptr = D_800D6358[arg1]; ptr != NULL; ptr = ptr->next)
+	for (ptcl = sLBParticleStructsAllocBuf[buf_id]; ptcl != NULL; ptcl = ptcl->next)
 	{
-		if (ptr->unk_04 == arg0)
-			ptr->flags |= 0x800;
+		if (ptcl->unk_ptcl_0x4 == arg0)
+		{
+			ptcl->flags |= 0x800;
+		}
 	}
 
-	for (ptr2 = D_800D639C[0]; ptr2 != NULL; ptr2 = ptr2->next)
+	for (gtor = sLBParticleGeneratorsAllocBuf[0]; gtor != NULL; gtor = gtor->next)
 	{
-		if (ptr2->unk_04 == arg0)
-			ptr2->unk_06 |= 0x800;
+		if (gtor->unk_gtor_0x4 == arg0)
+		{
+			gtor->flags |= 0x800;
+		}
 	}
 }
 

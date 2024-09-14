@@ -2,7 +2,7 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void* func_ovl0_800CE8C0(s32, s32, f32, f32, f32, f32, f32, f32);
+extern void* lbParticleMakePosVel(s32, s32, f32, f32, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -315,8 +315,8 @@ sb32 itFFlowerWeaponFlameProcReflector(GObj *weapon_gobj)
 
     translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
 
-    func_ovl0_800CE8C0(gITManagerParticleBankID | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
-    func_ovl0_800CE8C0(gITManagerParticleBankID | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    lbParticleMakePosVel(gITManagerParticleBankID | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    lbParticleMakePosVel(gITManagerParticleBankID | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
 
     return FALSE;
 }
@@ -339,8 +339,8 @@ GObj* itFFlowerWeaponFlameMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 
     wp->lifetime = ITFFLOWER_AMMO_LIFETIME;
 
-    func_ovl0_800CE8C0(gITManagerParticleBankID | 8, 2, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
-    func_ovl0_800CE8C0(gITManagerParticleBankID | 8, 0, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    lbParticleMakePosVel(gITManagerParticleBankID | 8, 2, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    lbParticleMakePosVel(gITManagerParticleBankID | 8, 0, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
 
     return weapon_gobj;
 }

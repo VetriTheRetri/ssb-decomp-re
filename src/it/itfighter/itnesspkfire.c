@@ -140,7 +140,7 @@ sb32 itNessPKFireCommonUpdateAllCheckDestroy(GObj *item_gobj)
 
         if (effect != NULL)
         {
-            func_ovl0_800D39D4(effect->unk_effect_0xB8, 0);
+            func_ovl0_800D39D4(effect->unk_tfrm_0xB8, 0);
         }
         return TRUE;
     }
@@ -250,8 +250,8 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
     GObj *item_gobj;
     wpStruct *wp = wpGetStruct(weapon_gobj);
     itStruct *ip;
-    efParticle *efpart;
-    efTransform *eftrans;
+    efParticle *ptcl;
+    efTransform *tfrm;
 
     item_gobj = itManagerMakeItem(weapon_gobj, &dITNessPKFireItemDesc, pos, vel, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_WEAPON));
 
@@ -284,27 +284,27 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
 
     ip->lifetime = ITPKFIRE_LIFETIME;
 
-    efpart = func_ovl0_800CE9E8(gFTNessParticleBankID, 0);
+    ptcl = func_ovl0_800CE9E8(gFTNessParticleBankID, 0);
 
-    if (efpart != NULL)
+    if (ptcl != NULL)
     {
-        eftrans = func_ovl0_800CE1DC(efpart, 0);
+        tfrm = lbParticleAddTransformForParticle(ptcl, 0);
 
-        if (eftrans != NULL)
+        if (tfrm != NULL)
         {
-            ip->item_vars.pkfire.effect = eftrans;
+            ip->item_vars.pkfire.effect = tfrm;
 
-            func_ovl0_800CEA14(efpart);
+            func_ovl0_800CEA14(ptcl);
 
-            if (eftrans->unk_effect_0x2A == 0)
+            if (tfrm->users_num == 0)
             {
                 ip->item_vars.pkfire.effect = NULL;
             }
-            else eftrans->translate = *pos;
+            else tfrm->translate = *pos;
         }
         else
         {
-            func_ovl0_800CEA40(efpart);
+            func_ovl0_800CEA40(ptcl);
 
             ip->item_vars.pkfire.effect = NULL;
         }

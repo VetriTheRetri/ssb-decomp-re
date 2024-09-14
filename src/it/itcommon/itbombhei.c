@@ -195,17 +195,17 @@ void itBombHeiCommonSetExplode(GObj *item_gobj, u8 unused_arg)
     s32 unused;
     DObj *dobj = DObjGetStruct(item_gobj);
     itStruct *ip = itGetStruct(item_gobj);
-    efParticle *efpart;
+    efParticle *ptcl;
 
     itBombHeiCommonSetHitStatusNone(item_gobj);
 
-    efpart = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f); // WARNING: Actually some sprite struct
+    ptcl = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f); // WARNING: Actually some sprite struct
 
-    if (efpart != NULL)
+    if (ptcl != NULL)
     {
-        efpart->effect_info->scale.x = ITBOMBHEI_EXPLODE_SCALE;
-        efpart->effect_info->scale.y = ITBOMBHEI_EXPLODE_SCALE;
-        efpart->effect_info->scale.z = ITBOMBHEI_EXPLODE_SCALE;
+        ptcl->tfrm->scale.x = ITBOMBHEI_EXPLODE_SCALE;
+        ptcl->tfrm->scale.y = ITBOMBHEI_EXPLODE_SCALE;
+        ptcl->tfrm->scale.z = ITBOMBHEI_EXPLODE_SCALE;
     }
     efManagerQuakeMakeEffect(1);
 

@@ -29,27 +29,27 @@ enum grHyruleTwisterStatus
 // 0x8010A140
 efParticle* grHyruleTwisterMakeEffect(Vec3f *pos, s32 effect_id)
 {
-    efParticle *efpart = func_ovl0_800CE9E8(gGRCommonStruct.hyrule.particle_bank_id | 8, effect_id);
+    efParticle *ptcl = func_ovl0_800CE9E8(gGRCommonStruct.hyrule.particle_bank_id | 8, effect_id);
 
-    if (efpart != NULL)
+    if (ptcl != NULL)
     {
-        efTransform *eftrans = func_ovl0_800CE1DC(efpart, 0);
+        efTransform *tfrm = lbParticleAddTransformForParticle(ptcl, 0);
 
-        if (eftrans == NULL)
+        if (tfrm == NULL)
         {
-            func_ovl0_800CEA40(efpart);
+            func_ovl0_800CEA40(ptcl);
 
             return NULL;
         }
-        func_ovl0_800CEA14(efpart);
+        func_ovl0_800CEA14(ptcl);
 
-        if (eftrans->unk_effect_0x2A == 0)
+        if (tfrm->users_num == 0)
         {
             return NULL;
         }
-        eftrans->translate = *pos;
+        tfrm->translate = *pos;
     }
-    return efpart;
+    return ptcl;
 }
 
 // 0x8010A1E4
@@ -59,7 +59,7 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
     f32 ground_dist;
     GObj *twister_gobj;
     DObj *twister_dobj;
-    efParticle *efpart;
+    efParticle *ptcl;
     Vec3f edge_pos;
     s32 edge_under;
 
@@ -77,11 +77,11 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
 
         twister_dobj->translate.vec.f.y += ground_dist;
 
-        efpart = grHyruleTwisterMakeEffect(&twister_dobj->translate.vec.f, 3);
+        ptcl = grHyruleTwisterMakeEffect(&twister_dobj->translate.vec.f, 3);
 
-        if (efpart == NULL)
+        if (ptcl == NULL)
         {
-            gGRCommonStruct.hyrule.twister_eftrans = NULL;
+            gGRCommonStruct.hyrule.twister_tfrm = NULL;
 
             gcEjectGObj(twister_gobj);
 
@@ -109,7 +109,7 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
         }
         else gGRCommonStruct.hyrule.twister_rightedge_x = edge_pos.x - 300.0F;
         
-        gGRCommonStruct.hyrule.twister_eftrans = efpart->effect_info;
+        gGRCommonStruct.hyrule.twister_tfrm = ptcl->tfrm;
     }
     return twister_gobj;
 }
@@ -283,7 +283,7 @@ void grHyruleTwisterUpdateMove(void)
 
         pos->y += ground_level;
 
-        gGRCommonStruct.hyrule.twister_eftrans->translate = *pos;
+        gGRCommonStruct.hyrule.twister_tfrm->translate = *pos;
     }
 }
 
@@ -323,9 +323,9 @@ void grHyruleTwisterUpdateStop(void)
 
     ftMainClearGroundObstacle(gGRCommonStruct.hyrule.twister_gobj);
 
-    if (gGRCommonStruct.hyrule.twister_eftrans != NULL)
+    if (gGRCommonStruct.hyrule.twister_tfrm != NULL)
     {
-        grHyruleTwisterMakeEffect(&gGRCommonStruct.hyrule.twister_eftrans->translate, 7);
+        grHyruleTwisterMakeEffect(&gGRCommonStruct.hyrule.twister_tfrm->translate, 7);
     }
     gcEjectGObj(gGRCommonStruct.hyrule.twister_gobj);
 }
@@ -340,9 +340,9 @@ void grHyruleTwisterUpdateSubside(void)
         gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusWait;
         gGRCommonStruct.hyrule.twister_wait = mtTrigGetRandomIntRange(1200) + 1600;
 
-        if (gGRCommonStruct.hyrule.twister_eftrans != NULL)
+        if (gGRCommonStruct.hyrule.twister_tfrm != NULL)
         {
-            func_ovl0_800D39D4(gGRCommonStruct.hyrule.twister_eftrans->unk_effect_0xB8, 1);
+            func_ovl0_800D39D4(gGRCommonStruct.hyrule.twister_tfrm->unk_tfrm_0xB8, 1);
         }
     }
 }

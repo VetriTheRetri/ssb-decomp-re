@@ -1282,7 +1282,7 @@ void mnTitleCreateLogoFire()
 void mnTitleLogoFireMakeEffect()
 {
 	GObj* logo_fire_effect_gobj;
-	efGenerator *efgen;
+	efGenerator *gtor;
 
 	if (gSceneData.scene_previous == nSCKindOpeningNewcomers)
 	{
@@ -1292,9 +1292,9 @@ void mnTitleLogoFireMakeEffect()
 		gcPlayAnimAll(logo_fire_effect_gobj);
 		gcAddGObjProcess(logo_fire_effect_gobj, gcPlayAnimAll, 1, 1);
 
-		efgen = func_ovl0_800D35DC(gMNTitleParticleBankId, 0);
-		if (efgen != NULL)
-			efgen->dobj = DObjGetStruct(logo_fire_effect_gobj)->child->sib_next->child;
+		gtor = func_ovl0_800D35DC(gMNTitleParticleBankId, 0);
+		if (gtor != NULL)
+			gtor->dobj = DObjGetStruct(logo_fire_effect_gobj)->child->sib_next->child;
 	}
 }
 

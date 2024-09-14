@@ -1374,11 +1374,11 @@ void ftParamRunProcEffect(GObj *fighter_gobj, void (*proc)(GObj*, efStruct*))
 // 0x800E9BE8
 void ftParamStopEffect(GObj *effect_gobj, efStruct *ep)
 {
-    efTransform *einfo = ep->eftrans;
+    efTransform *einfo = ep->tfrm;
 
     if (einfo != NULL)
     {
-        func_ovl0_800D39D4(einfo->unk_effect_0xB8, ep->unk_effectstruct_0x8 >> 3);
+        func_ovl0_800D39D4(einfo->unk_tfrm_0xB8, ep->bank_id >> 3);
     }
     efManagerSetPrevStructAlloc(ep);
     gcEjectGObj(effect_gobj);
@@ -1793,7 +1793,7 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
     Vec3f effect_pos_mod;
     void *effect;
     f32 scale;
-    efParticle *efpart;
+    efParticle *ptcl;
 
     effect = NULL;
 
@@ -2047,11 +2047,11 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
         break;
 
     case nEFKindChargeSparkle:
-        efpart = efManagerSparkleWhiteScaleMakeEffect(&pos, 0.7F);
+        ptcl = efManagerSparkleWhiteScaleMakeEffect(&pos, 0.7F);
 
-        if (efpart != NULL)
+        if (ptcl != NULL)
         {
-            efpart->color1.a = 0xC0;
+            ptcl->color1.a = 0xC0;
         }
         break;
 

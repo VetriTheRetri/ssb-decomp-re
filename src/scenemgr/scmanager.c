@@ -642,7 +642,7 @@ void func_800A26D8(GObj* arg0)
 	gDPPipeSync((*gDisplayListHead)++);
 	gDPSetCycleType((*gDisplayListHead)++, G_CYC_FILL);
 	gDPSetRenderMode((*gDisplayListHead)++, G_RM_NOOP, G_RM_NOOP2);
-	width = ((D_ovl0_800D6448 / 112.0f) * 256.0f);
+	width = ((sLBParticleStructsUsedNum / 112.0f) * 256.0f);
 	if (width < 0)
 		width = 0;
 	if (width > 256)
@@ -662,7 +662,7 @@ void func_800A26D8(GObj* arg0)
 
 	barY += 2;
 	gDPPipeSync((*gDisplayListHead)++);
-	width = ((D_ovl0_800D644C / 80.0f) * 256.0f);
+	width = ((sLBParticleTransformsUsedNum / 80.0f) * 256.0f);
 	if (width < 0)
 		width = 0;
 	if (width > 256)

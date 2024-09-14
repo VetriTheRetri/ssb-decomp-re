@@ -3,10 +3,10 @@
 
 #include <PR/ultratypes.h>
 
-extern u16 D_ovl0_800D6448;
+extern u16 sLBParticleStructsUsedNum;
 extern u16 D_ovl0_800D644A;
-extern u16 D_ovl0_800D644C;
+extern u16 sLBParticleTransformsUsedNum;
 
-extern s32 func_ovl0_800CE040(s32 count, u32 size);
+extern s32 lbParticleAllocTransforms(s32 count, u32 size);
 
 #endif /* OVL0_HALSPRITE_H */

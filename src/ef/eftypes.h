@@ -68,7 +68,7 @@ struct efGenerator
     efGenerator *next;
 	u16 unk_gtor_0x4;
 	u16 flags;
-	s32 unk_gtor_0x8;
+	u8 unk_gtor_0x8;
 	f32 unk_gtor_0xC;
 	f32 unk_gtor_0x10;
     Vec3f pos;
@@ -84,6 +84,20 @@ struct efGenerator
     f32 unk_gtor_0x44;
     DObj *dobj;
     efTransform *tfrm;
+
+    union efGeneratorVars
+    {
+        Vec3f rotate;
+        Vec3f move;
+
+        struct efGeneratorUnkVars
+        {
+            u32 pad;
+            u16 halfword;
+
+        } unk_gtor_vars;
+
+    } gtor_vars;
 };
 
 // Might actually be the real efGenerator?
@@ -132,7 +146,7 @@ struct efParticle
     syColorRGBA color1;
     s32 unk_ptcl_0x4C;
     syColorRGBA color2;
-    s32 unk_ptcl_0x54;
+    u16 unk_ptcl_0x54;
     efGenerator *gtor;
     efTransform *tfrm;
 };

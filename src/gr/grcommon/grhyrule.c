@@ -29,7 +29,7 @@ enum grHyruleTwisterStatus
 // 0x8010A140
 efParticle* grHyruleTwisterMakeEffect(Vec3f *pos, s32 effect_id)
 {
-    efParticle *ptcl = func_ovl0_800CE9E8(gGRCommonStruct.hyrule.particle_bank_id | 8, effect_id);
+    efParticle *ptcl = lbParticleMakeDefaultID(gGRCommonStruct.hyrule.particle_bank_id | 8, effect_id);
 
     if (ptcl != NULL)
     {
@@ -37,7 +37,7 @@ efParticle* grHyruleTwisterMakeEffect(Vec3f *pos, s32 effect_id)
 
         if (tfrm == NULL)
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             return NULL;
         }

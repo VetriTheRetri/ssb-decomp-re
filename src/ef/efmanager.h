@@ -26,7 +26,6 @@ extern intptr_t lEFManagerPikachuThunderShock0MatAnimJoint;          // 0x00001A
 extern intptr_t lEFManagerPikachuThunderShock1MatAnimJoint;         // 0x00001AC0
 extern intptr_t lEFManagerPikachuThunderShock2MatAnimJoint;         // 0x00001B10
 
-
 extern intptr_t lEFManagerPikachuThunderTrailMObjSub;               // 0x00009420
 extern intptr_t lEFManagerPikachuThunderTrailDObjSetup;             // 0x000095B0
 
@@ -316,7 +315,7 @@ extern GObj* efManagerCaptainFalconPunchMakeEffect(GObj *fighter_gobj);
 extern efGenerator* efManagerKirbyStarMakeEffect(Vec3f *pos);
 extern efGenerator* efManagerStarSplashMakeEffect(Vec3f *pos, s32 lr);
 extern GObj* efManagerPurinSingMakeEffect(GObj *fighter_gobj);
-extern GObj* efManagerDeadExplodeMakeEffect(Vec3f *pos, s32 player, s32 type);
+extern GObj* efManagerDeadExplodeMakeEffect(Vec3f *pos, s32 player, u32 type);
 extern void func_ovl2_801023D4(Vec3f *pos);
 extern GObj* efManagerKirbyCutterUpMakeEffect(GObj *fighter_gobj);
 extern GObj* efManagerKirbyCutterDownMakeEffect(GObj *fighter_gobj);

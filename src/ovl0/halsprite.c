@@ -1,126 +1,14 @@
-#include "common.h"
 #include <ef/effect.h>
+
+// Equivalent file in Pokémon Snap: 4D880.c
 
 #define LBPARTICLE_BANKS_NUM_MAX 8
 
-// Equivalent file in pokemon snap: 4D880.c
-
-#define TAU 2.0f * M_PI
-
-typedef struct UnkGreenLeopard
-{
-	/* 0x00 */ s32 unk_00[7];
-	/* 0x1C */ Vec3f unk_1C;
-} UnkGreenLeopard;
-
-typedef struct UnkAsphaltLeopard
-{
-	/* 0x00 */ u16 unk_00;
-	/* 0x02 */ u16 unk_02;
-	/* 0x04 */ u16 unk_04;
-	/* 0x06 */ u16 unk_06;
-	/* 0x08 */ s32 unk_08;
-	/* 0x0C */ f32 unk_0C;
-	/* 0x10 */ f32 unk_10;
-	/* 0x14 */ Vec3f unk_14;
-	/* 0x20 */ f32 unk_20;
-	/* 0x24 */ f32 unk_24;
-	/* 0x28 */ f32 unk_28;
-	/* 0x2C */ f32 unk_2C;
-	/* 0x30 */ u8 unk_30[1]; // variable length
-} UnkAsphaltLeopard;
-
-// Texture bank header?
-typedef struct UnkPinkLeopard {
-	/* 0x00 */ u32 unk_00;
-	/* 0x04 */ s32 unk_04;
-	/* 0x08 */ s32 unk_08;
-	/* 0x0C */ s32 unk_0C;
-	/* 0x10 */ s32 unk_10;
-	/* 0x14 */ s32 unk_14;
-	/* 0x18 */ u32 unk_18[1]; // variable length
-} UnkPinkLeopard;
-
-typedef struct {
-	/* 0x0 */ u8 r;
-	/* 0x1 */ u8 g;
-	/* 0x2 */ u8 b;
-	/* 0x3 */ u8 a;
-} ucolor;
-
-typedef struct Unk_800A7114 {
-	/* 0x00 */ char unk_00[4];
-	/* 0x04 */ u16 unk_04;
-	/* 0x06 */ u16 unk_06;
-	/* 0x08 */ u8 unk_08;
-	/* 0x09 */ u8 unk_09;
-} Unk_800A7114; // size >= 0xC
-
-typedef union UnkPinkRatSub {
-	Vec3f data1;
-	struct {
-		f32 unk_00;
-		u16 unk_04;
-	} data2;
-} UnkPinkRatSub; // size = 0xC
-
-// efGenerator
-typedef struct UnkPinkRat {
-	/* 0x00 */ struct UnkPinkRat* next;
-	/* 0x04 */ u16 unk_04;
-	/* 0x06 */ u16 unk_06;
-	/* 0x08 */ u8 unk_08;
-	/* 0x09 */ u8 unk_09;
-	/* 0x0A */ s16 unk_0A;
-	/* 0x0C */ u16 unk_0C;
-	/* 0x0E */ u16 unk_0E;
-	/* 0x10 */ u8* unk_10;
-	/* 0x14 */ Vec3f unk_14;
-	/* 0x20 */ Vec3f unk_20;
-	/* 0x2C */ f32 unk_2C;
-	/* 0x30 */ f32 unk_30;
-	/* 0x34 */ f32 unk_34;
-	/* 0x38 */ f32 unk_38;
-	/* 0x3C */ f32 unk_3C;
-	/* 0x40 */ f32 unk_40;
-	/* 0x44 */ f32 unk_44;
-	/* 0x48 */ DObj* dobj;
-	/* 0x4C */ UnkPinkRatSub unk_4C;
-} UnkPinkRat; // size = 0x58
-
-// efParticle
-typedef struct UnkRustRat {
-	/* 0x00 */ struct UnkRustRat* next;
-	/* 0x04 */ u16 unk_04;
-	/* 0x06 */ u16 flags;
-	/* 0x08 */ u8 unk_08;
-	/* 0x09 */ u8 unk_09;
-	/* 0x0A */ u8 unk_0A;
-	/* 0x0B */ u8 unk_0B;
-	/* 0x0C */ u16 unk_0C;
-	/* 0x0E */ u16 unk_0E;
-	/* 0x10 */ u16 unk_10;
-	/* 0x12 */ u16 unk_12;
-	/* 0x14 */ u8* scriptPtr;
-	/* 0x18 */ u16 unk_18;
-	/* 0x1A */ u16 unk_1A;
-	/* 0x1C */ u16 unk_1C;
-	/* 0x1E */ u16 unk_1E;
-	/* 0x20 */ Vec3f unk_20;
-	/* 0x2C */ Vec3f unk_2C;
-	/* 0x38 */ f32 unk_38;
-	/* 0x3C */ f32 unk_3C;
-	/* 0x40 */ f32 unk_40;
-	/* 0x44 */ f32 unk_44;
-	/* 0x48 */ ucolor unk_48;
-	/* 0x4C */ ucolor unk_4C;
-	/* 0x50 */ ucolor unk_50;
-	/* 0x54 */ ucolor unk_54;
-	/* 0x58 */ UnkPinkRat* unk_58;
-} UnkRustRat; // size = 0x5C
-
-// extern UnkPinkRat D_800D639C[5];
-extern UnkPinkRat* D_800D639C[9];
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
 
 // 0x800D6350
 efParticle *sLBParticleStructsAllocFree;
@@ -158,6 +46,12 @@ u16 D_ovl0_800D6452;
 // 0x800D6454
 efTransform *sLBParticleTransformsAllocFree;
 
+// // // // // // // // // // // //
+//                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
 // 0x800D5D50
 u8 dLBParticleColorDitherModes[/* */] = { G_CD_MAGICSQ, G_CD_MAGICSQ, G_CD_MAGICSQ, G_CD_MAGICSQ };
 
@@ -169,6 +63,12 @@ u16 D_ovl0_800D5D58[/* */] = { 0, 0 };
 
 // 0x800D5D5C
 u8 D_ovl0_800D5D5C[/* */] = { 0x7B, 0x00 };
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x800CE040
 s32 lbParticleAllocTransforms(s32 num, size_t size)
@@ -574,14 +474,90 @@ efParticle* lbParticleMakePosVel(s32 bank_id, s32 script_bank_id, f32 pos_x, f32
 	return ptcl;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CE9E8.s")
+// 0x800CE9E8
+efParticle* lbParticleMakeDefaultID(s32 bank_id, s32 script_bank_id)
+{
+    return lbParticleMakeDefault(NULL, bank_id, script_bank_id);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CEA14.s")
+// 0x800CEA14
+void func_ovl0_800CEA14(efParticle *ptcl)
+{
+    if (ptcl != NULL)
+	{
+		func_ovl0_800CEF4C(ptcl, NULL, ptcl->bank_id >> 3);
+	}
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CEA40.s")
+// 0x800CEA40
+void lbParticleEjectStruct(efParticle *this_ptcl)
+{
+    efParticle *prev_ptcl, *current_ptcl;
+    efGenerator *gtor;
+    s32 bank_id;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CEB50.s")
+    bank_id = this_ptcl->bank_id >> 3;
+    current_ptcl = sLBParticleStructsAllocBuf[bank_id];
+    prev_ptcl = NULL;
 
+    while (current_ptcl != NULL)
+	{
+        if (current_ptcl == this_ptcl)
+		{
+            if (prev_ptcl == NULL)
+			{
+                sLBParticleStructsAllocBuf[bank_id] = current_ptcl->next;
+            }
+			else prev_ptcl->next = current_ptcl->next;
+
+            gtor = this_ptcl->gtor;
+
+            if ((gtor != NULL) && (this_ptcl->flags & 4) && (gtor->unk_gtor_0x8 == 2))
+			{
+				gtor->gtor_vars.unk_gtor_vars.halfword--;
+			}
+            if (this_ptcl->tfrm != NULL)
+			{
+                this_ptcl->tfrm->users_num--;
+
+                if (this_ptcl->tfrm->users_num == 0)
+				{
+					lbParticleSetPrevTransformAlloc(this_ptcl->tfrm);
+				}
+            }
+            current_ptcl->next = sLBParticleStructsAllocFree;
+            sLBParticleStructsAllocFree = current_ptcl;
+            sLBParticleStructsUsedNum--;
+
+            break;
+        }
+        prev_ptcl = current_ptcl;
+        current_ptcl = current_ptcl->next;
+    }
+}
+
+// 0x800CEB50 - unused? Eject all efParticle structs
+void lbParticleEjectStructAll(void)
+{
+    efParticle *current_ptcl, *next_ptcl;
+    s32 i;
+
+    for (i = 0; i < ARRAY_COUNT(sLBParticleStructsAllocBuf); i++)
+	{
+        current_ptcl = sLBParticleStructsAllocBuf[i];
+
+        while (current_ptcl != NULL)
+		{
+            next_ptcl = current_ptcl->next;
+
+            lbParticleEjectStruct(current_ptcl);
+
+            current_ptcl = next_ptcl;
+        }
+    }
+}
+
+// 0x800CEBC0
 u8* lbParticleParseFloatBE(u8 *csr, f32 *f)
 {
 	u8 bytes[4];
@@ -610,54 +586,61 @@ u8* lbParticleParseShortBE(u8 *csr, u16 *s)
 	return csr;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CEC34.s")
-// void func_ovl0_800CEC34(UnkRustRat* arg0, f32 arg1)
-// {
-// 	f32 unused;
-// 	f32 x, y, z;
-// 	f32 sp5C;
-// 	f32 sp58;
-// 	f32 sp54;
-// 	f32 temp_f26, sp4C;
-// 	f32 sp48, sp44;
-// 	f32 temp_f20_2;
-// 	f32 temp_f2;
+// 0x800CEC34
+void lbParticleRotateVel(efParticle *ptcl, f32 angle)
+{
+    Vec3f vel;
+    f32 sin_angle;
+    f32 magnitude;
+    f32 pitch;
+    f32 yaw;
+    f32 sin_pitch;
+    f32 cos_pitch;
+    f32 sin_yaw;
+    f32 cos_yaw;
+    f32 cos_angle;
+    
+    vel.x = ptcl->vel.x;
+    vel.y = ptcl->vel.y;
+    vel.z = ptcl->vel.z;
+    
+    pitch = atan2f(vel.y, vel.z);
+    sin_pitch = __sinf(pitch);
+    cos_pitch = __cosf(pitch);
+    
+    yaw = atan2f(vel.x, (vel.y * sin_pitch) + (vel.z * cos_pitch));
+    sin_yaw = __sinf(yaw);
+    cos_yaw = __cosf(yaw);
+    
+    magnitude = sqrtf(SQUARE(vel.x) + SQUARE(vel.y) + SQUARE(vel.z));
+    
+    vel.y = mtTrigGetRandomFloat() * F_CST_DTOR32(360.0F);
+    
+    sin_angle = __sinf(angle) * magnitude;
+    
+    vel.z = sin_yaw;
+    vel.x = __cosf(vel.y) * sin_angle;
+    vel.y = __sinf(vel.y) * sin_angle;
+    
+    cos_angle = __cosf(angle) * magnitude;
+    
+    ptcl->vel.x = (vel.x * cos_yaw) + (cos_angle * sin_yaw);
+    ptcl->vel.y = (((-vel.x * sin_pitch) * sin_yaw) + (vel.y * cos_pitch)) + ((cos_angle * sin_pitch) * cos_yaw);
+    ptcl->vel.z = (((-vel.x * cos_pitch) * vel.z) - (vel.y * sin_pitch)) + ((cos_angle * cos_pitch) * cos_yaw);
+}
 
-// 	x = arg0->unk_2C.x;
-// 	y = arg0->unk_2C.y;
-// 	z = unused = arg0->unk_2C.z;
-
-// 	sp58 = atan2f(y, z);
-// 	temp_f26 = __sinf(sp58);
-// 	sp4C = __cosf(sp58);
-
-// 	sp54 = atan2f(x, y * temp_f26 + z * sp4C);
-// 	sp48 = __sinf(sp54);
-// 	sp44 = __cosf(sp54);
-// 	sp5C = sqrtf(SQUARE(x) + SQUARE(y) + SQUARE(z));
-
-// 	temp_f20_2 = mtTrigGetRandomFloat() * TAU;
-// 	z = __sinf(arg1) * sp5C;
-// 	x = __cosf(temp_f20_2) * z;
-// 	y = __sinf(temp_f20_2) * z;
-// 	temp_f2 = __cosf(arg1) * sp5C;
-
-// 	arg0->unk_2C.x = x * sp44 + temp_f2 * sp48;
-// 	arg0->unk_2C.y = -x * temp_f26 * sp48 + y * sp4C + temp_f2 * temp_f26 * sp44;
-// 	arg0->unk_2C.z = -x * sp4C * sp48 - y * temp_f26 + temp_f2 * sp4C * sp44;
-// }
-
-void func_ovl0_800CEDBC(efParticle *ptcl, UnkGreenLeopard* arg1)
+// 0x800CEDBC
+void lbParticleSetDistVel(efParticle *ptcl, DObj *dobj)
 {
 	f32 dx, dy, dz, dist;
 
-	if (arg1 == NULL)
+	if (dobj == NULL)
 	{
 		return;
 	}
-	dx = arg1->unk_1C.x - ptcl->pos.x;
-	dy = arg1->unk_1C.y - ptcl->pos.y;
-	dz = arg1->unk_1C.z - ptcl->pos.z;
+	dx = dobj->translate.vec.f.x - ptcl->pos.x;
+	dy = dobj->translate.vec.f.y - ptcl->pos.y;
+	dz = dobj->translate.vec.f.z - ptcl->pos.z;
 
 	dist = sqrtf(SQUARE(ptcl->vel.x) + SQUARE(ptcl->vel.y) + SQUARE(ptcl->vel.z));
 
@@ -671,17 +654,18 @@ void func_ovl0_800CEDBC(efParticle *ptcl, UnkGreenLeopard* arg1)
 	}
 }
 
-void func_ovl0_800CEEB8(efParticle *ptcl, UnkGreenLeopard* arg1, f32 magnitude)
+// 0x800CEEB8
+void lbParticleAddDistVelMag(efParticle *ptcl, DObj *dobj, f32 magnitude)
 {
 	f32 dx, dy, dz, dist;
 
-	if (arg1 == NULL)
+	if (dobj == NULL)
 	{
 		return;
 	}
-	dx = arg1->unk_1C.x - ptcl->pos.x;
-	dy = arg1->unk_1C.y - ptcl->pos.y;
-	dz = arg1->unk_1C.z - ptcl->pos.z;
+	dx = dobj->translate.vec.f.x - ptcl->pos.x;
+	dy = dobj->translate.vec.f.y - ptcl->pos.y;
+	dz = dobj->translate.vec.f.z - ptcl->pos.z;
 
 	dist = SQUARE(dx) + SQUARE(dy) + SQUARE(dz);
 
@@ -732,7 +716,7 @@ void lbParticleStructProcRun(GObj *gobj)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800D0D34.s")
 
 // 0x800D2720
-void func_ovl0_800D2720(s32 gtor_id, efGenerator *gtor)
+void lbParticleAddGeneratorToBuf(s32 gtor_id, efGenerator *gtor)
 {
 	if ((gtor_id > 0) && (gtor_id < ARRAY_COUNT(sLBParticleGeneratorsAllocBuf)))
 	{
@@ -741,7 +725,7 @@ void func_ovl0_800D2720(s32 gtor_id, efGenerator *gtor)
 }
 
 // 0x800D2744
-void func_ovl0_800D2744(s32 colordither_mode, s32 alphadither_mode)
+void lbParticleSetDitherModes(s32 colordither_mode, s32 alphadither_mode)
 {
 	dLBParticleColorDitherModes[0] = colordither_mode;
 	dLBParticleAlphaDitherModes[0] = alphadither_mode;
@@ -778,14 +762,16 @@ void func_ovl0_800D3978(void)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800D39D4.s")
 
-void func_ovl0_800D3BFC(Unk_800A7114* arg0)
+// 0x800D3BFC
+void func_ovl0_800D3BFC(efParticle *ptcl)
 {
-	func_ovl0_800D39D4(arg0->unk_04, arg0->unk_08 >> 3);
+	func_ovl0_800D39D4(ptcl->unk_ptcl_0x4, ptcl->bank_id >> 3);
 }
 
-void func_ovl0_800D3C28(Unk_800A7114* arg0)
+// 0x800D3C28
+void func_ovl0_800D3C28(efParticle *ptcl)
 {
-	func_ovl0_800D39D4(arg0->unk_04, arg0->unk_09 >> 3);
+	func_ovl0_800D39D4(ptcl->unk_ptcl_0x4, ptcl->unk_ptcl_0x9 >> 3);
 }
 
 // 0x800D3C54
@@ -811,9 +797,9 @@ void func_ovl0_800D3C54(GObj *gobj)
 	}
 }
 
-
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800D3CE0.s")
 
+// 0x800D3D64
 void func_ovl0_800D3D64(u16 arg0, s32 buf_id)
 {
 	efParticle *ptcl;
@@ -826,7 +812,6 @@ void func_ovl0_800D3D64(u16 arg0, s32 buf_id)
 			ptcl->flags |= 0x800;
 		}
 	}
-
 	for (gtor = sLBParticleGeneratorsAllocBuf[0]; gtor != NULL; gtor = gtor->next)
 	{
 		if (gtor->unk_gtor_0x4 == arg0)
@@ -836,4 +821,24 @@ void func_ovl0_800D3D64(u16 arg0, s32 buf_id)
 	}
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800D3DE8.s")
+// 0x800D3DE8
+void func_ovl0_800D3DE8(u16 arg0, s32 buf_id)
+{
+	efParticle *ptcl;
+	efGenerator *gtor;
+
+	for (ptcl = sLBParticleStructsAllocBuf[buf_id]; ptcl != NULL; ptcl = ptcl->next)
+	{
+		if (ptcl->unk_ptcl_0x4 == arg0)
+		{
+			ptcl->flags &= ~0x800;
+		}
+	}
+	for (gtor = sLBParticleGeneratorsAllocBuf[0]; gtor != NULL; gtor = gtor->next)
+	{
+		if (gtor->unk_gtor_0x4 == arg0)
+		{
+			gtor->flags &= ~0x800;
+		}
+	}
+}

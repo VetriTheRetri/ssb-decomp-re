@@ -2092,7 +2092,7 @@ efParticle* efManagerDestroyParticleGObj(efParticle *ptcl, GObj *effect_gobj)
 {
     if (ptcl != NULL)
     {
-        func_ovl0_800CEA40(ptcl);
+        lbParticleEjectStruct(ptcl);
     }
     if (efGetStruct(effect_gobj) != NULL)
     {
@@ -2159,7 +2159,7 @@ efParticle* efManagerDamageNormalLightMakeEffect(Vec3f *pos, s32 player, s32 siz
     }
     effect_gobj->user_data.p = ep;
 
-    ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID, dEFManagerDamageNormalLightIDs[player]);
+    ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID, dEFManagerDamageNormalLightIDs[player]);
 
     if (ptcl != NULL)
     {
@@ -2235,7 +2235,7 @@ efParticle* efManagerDamageNormalHeavyMakeEffect(Vec3f *pos, s32 player, s32 siz
     }
     effect_gobj->user_data.p = ep;
 
-    ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x64);
+    ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID, 0x64);
 
     if (ptcl != NULL)
     {
@@ -2303,7 +2303,7 @@ efParticle* efManagerImpactShockMakeEffect(Vec3f *pos, s32 size)
     }
     effect_gobj->user_data.p = ep;
 
-    ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x25);
+    ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID, 0x25);
 
     if (ptcl != NULL)
     {
@@ -2391,7 +2391,7 @@ efParticle* efManagerDamageFireMakeEffect(Vec3f *pos, s32 size)
     }
     effect_gobj->user_data.p = ep;
 
-    ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x4D);
+    ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID, 0x4D);
 
     if (ptcl != NULL)
     {
@@ -2459,7 +2459,7 @@ efParticle* efManagerDamageElectricMakeEffect(Vec3f *pos, s32 size)
     }
     effect_gobj->user_data.p = ep;
 
-    ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x53);
+    ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID, 0x53);
 
     if (ptcl != NULL)
     {
@@ -2553,7 +2553,7 @@ efParticle* efManagerFlameLRMakeEffect(Vec3f *pos, s32 lr)
     }
     effect_gobj->user_data.p = ep;
 
-    ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x12);
+    ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID, 0x12);
 
     if (ptcl != NULL)
     {
@@ -2620,7 +2620,7 @@ efParticle* efManagerFlameRandgcMakeEffect(Vec3f *pos)
     }
     effect_gobj->user_data.p = ep;
 
-    ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x55);
+    ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID, 0x55);
 
     if (ptcl != NULL)
     {
@@ -2684,7 +2684,7 @@ efParticle* efManagerFlameStaticMakeEffect(Vec3f *pos)
     }
     effect_gobj->user_data.p = ep;
 
-    ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x55);
+    ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID, 0x55);
 
     if (ptcl != NULL)
     {
@@ -2746,7 +2746,7 @@ efParticle* efManagerDustCollideMakeEffect(Vec3f *pos)
     }
     effect_gobj->user_data.p = ep;
 
-    ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x55);
+    ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID, 0x55);
 
     if (ptcl != NULL)
     {
@@ -2883,7 +2883,7 @@ efParticle* efManagerDustLightMakeEffect(Vec3f *pos, sb32 is_invert_vel, f32 f_i
     }
     effect_gobj->user_data.p = ep;
 
-    ptcl = (f_index == 2.0F) ? func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x56) : func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x55);
+    ptcl = (f_index == 2.0F) ? lbParticleMakeDefaultID(gEFManagerParticleBankID | 8, 0x56) : lbParticleMakeDefaultID(gEFManagerParticleBankID | 8, 0x55);
 
     if (ptcl != NULL)
     {
@@ -2951,7 +2951,7 @@ efParticle* efManagerDustHeavyMakeEffect(Vec3f *pos, s32 lr)
     }
     effect_gobj->user_data.p = NULL;
 
-    ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x58);
+    ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID | 8, 0x58);
 
     if (ptcl != NULL)
     {
@@ -3023,7 +3023,7 @@ efParticle* efManagerDustHeavyDoubleMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
     }
     effect_gobj->user_data.p = ep;
 
-    ptcl = (f_index == 1.7F) ? func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x59) : func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x58); // Why such a specific check when a bool could've worked?
+    ptcl = (f_index == 1.7F) ? lbParticleMakeDefaultID(gEFManagerParticleBankID | 8, 0x59) : lbParticleMakeDefaultID(gEFManagerParticleBankID | 8, 0x58); // Why such a specific check when a bool could've worked?
 
     if (ptcl != NULL)
     {
@@ -3063,7 +3063,7 @@ efParticle* efManagerDustHeavyDoubleMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
 // 0x800FF590
 efParticle* efManagerDustExpandLargeMakeEffect(Vec3f *pos)
 {
-    efParticle *ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x57);
+    efParticle *ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID | 8, 0x57);
 
     if (ptcl != NULL)
     {
@@ -3085,7 +3085,7 @@ efParticle* efManagerDustExpandLargeMakeEffect(Vec3f *pos)
         }
         else
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             ptcl = NULL;
         }
@@ -3120,7 +3120,7 @@ efParticle* efManagerDustExpandSmallMakeEffect(Vec3f *pos, f32 f_index)
     }
     effect_gobj->user_data.p = ep;
 
-    ptcl = (f_index == 2.0F) ? func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x56) : func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x55);
+    ptcl = (f_index == 2.0F) ? lbParticleMakeDefaultID(gEFManagerParticleBankID | 8, 0x56) : lbParticleMakeDefaultID(gEFManagerParticleBankID | 8, 0x55);
 
     if (ptcl != NULL)
     {
@@ -3160,7 +3160,7 @@ efParticle* efManagerDustDashMakeEffect(Vec3f *pos, s32 lr, f32 scale)
     efTransform *tfrm;
     efStruct *ep;
 
-    ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x5A);
+    ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID | 8, 0x5A);
 
     if (ptcl != NULL)
     {
@@ -3189,7 +3189,7 @@ efParticle* efManagerDustDashMakeEffect(Vec3f *pos, s32 lr, f32 scale)
         }
         else
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             ptcl = NULL;
         }
@@ -3624,7 +3624,7 @@ GObj* efManagerDamageSpawnMDustRandgcMakeEffect(Vec3f *pos, s32 lr)
 // 0x80100480
 efParticle* efManagerSparkleWhiteMakeEffect(Vec3f *pos)
 {
-    efParticle *ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x73);
+    efParticle *ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID | 8, 0x73);
 
     if (ptcl != NULL)
     {
@@ -3642,7 +3642,7 @@ efParticle* efManagerSparkleWhiteMakeEffect(Vec3f *pos)
         }
         else
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             ptcl = NULL;
         }
@@ -3653,7 +3653,7 @@ efParticle* efManagerSparkleWhiteMakeEffect(Vec3f *pos)
 // 0x80100524
 efParticle* efManagerSparkleWhiteMultiMakeEffect(Vec3f *pos)
 {
-    efParticle *ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x1A);
+    efParticle *ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID | 8, 0x1A);
 
     if (ptcl != NULL)
     {
@@ -3671,7 +3671,7 @@ efParticle* efManagerSparkleWhiteMultiMakeEffect(Vec3f *pos)
         }
         else
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             ptcl = NULL;
         }
@@ -3682,7 +3682,7 @@ efParticle* efManagerSparkleWhiteMultiMakeEffect(Vec3f *pos)
 // 0x801005C8
 efParticle* efManagerSparkleWhiteMultiExplodeMakeEffect(Vec3f *pos)
 {
-    efParticle *ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x22);
+    efParticle *ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID | 8, 0x22);
 
     if (ptcl != NULL)
     {
@@ -3700,7 +3700,7 @@ efParticle* efManagerSparkleWhiteMultiExplodeMakeEffect(Vec3f *pos)
         }
         else
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             ptcl = NULL;
         }
@@ -3711,7 +3711,7 @@ efParticle* efManagerSparkleWhiteMultiExplodeMakeEffect(Vec3f *pos)
 // 0x8010066C
 efParticle* efManagerSparkleWhiteScaleMakeEffect(Vec3f *pos, f32 scale)
 {
-    efParticle *ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x5B);
+    efParticle *ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID, 0x5B);
 
     if (ptcl != NULL)
     {
@@ -3733,7 +3733,7 @@ efParticle* efManagerSparkleWhiteScaleMakeEffect(Vec3f *pos, f32 scale)
         }
         else
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             ptcl = NULL;
         }
@@ -3744,7 +3744,7 @@ efParticle* efManagerSparkleWhiteScaleMakeEffect(Vec3f *pos, f32 scale)
 // 0x80100720 - Plays when a fighter is Star KO'd
 efParticle* efManagerSparkleWhiteDeadMakeEffect(Vec3f *pos, f32 scale)
 {
-    efParticle *ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID | 0x10, 0x5C);
+    efParticle *ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID | 0x10, 0x5C);
 
     if (ptcl != NULL)
     {
@@ -3766,7 +3766,7 @@ efParticle* efManagerSparkleWhiteDeadMakeEffect(Vec3f *pos, f32 scale)
         }
         else
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             ptcl = NULL;
         }
@@ -3919,7 +3919,7 @@ efParticle* efManagerDamageCoinMakeEffect(Vec3f *pos)
     }
     effect_gobj->user_data.p = ep;
 
-    ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x60);
+    ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID, 0x60);
 
     if (ptcl != NULL)
     {
@@ -3974,7 +3974,7 @@ efParticle* efManagerSetOffMakeEffect(Vec3f *pos, s32 size)
     }
     effect_gobj->user_data.p = ep;
 
-    ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0x65);
+    ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID | 8, 0x65);
 
     if (ptcl != NULL)
     {
@@ -4222,7 +4222,7 @@ GObj* efManagerYoshiShieldMakeEffect(GObj *fighter_gobj)
 // 0x80101408
 efParticle* efManagerThunderAmpMakeEffect(Vec3f *pos)
 {
-    efParticle *ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x74);
+    efParticle *ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID, 0x74);
 
     if (ptcl != NULL)
     {
@@ -4240,7 +4240,7 @@ efParticle* efManagerThunderAmpMakeEffect(Vec3f *pos)
         }
         else
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             ptcl = NULL;
         }
@@ -4795,7 +4795,7 @@ GObj* efManagerPurinSingMakeEffect(GObj *fighter_gobj)
 }
 
 // 0x801021C0
-GObj* efManagerDeadExplodeMakeEffect(Vec3f *pos, s32 player, s32 type)
+GObj* efManagerDeadExplodeMakeEffect(Vec3f *pos, s32 player, u32 type)
 {
     s32 unused[4];
     GObj *effect_gobj;
@@ -4804,9 +4804,9 @@ GObj* efManagerDeadExplodeMakeEffect(Vec3f *pos, s32 player, s32 type)
     DObj *dobj;
     DObj *child_dobj;
     DObj *sibling_dobj;
-    u8 index = ((type & 1) * GMCOMMON_PLAYERS_MAX) + player; // WARNING: dEFManagerDeadExplodeGenID should be u8[2][GMCOMMON_PLAYERS_MAX], but it will not match this way; UB-risk
+    u8 index = ((type % 2) * GMCOMMON_PLAYERS_MAX) + player; // WARNING: dEFManagerDeadExplodeGenID should be u8[2][GMCOMMON_PLAYERS_MAX], but it will not match this way; UB-risk
 
-    ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID | 0x10, dEFManagerDeadExplodeGenID[index]);
+    ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID | 0x10, dEFManagerDeadExplodeGenID[index]);
 
     if (ptcl != NULL)
     {
@@ -4824,7 +4824,7 @@ GObj* efManagerDeadExplodeMakeEffect(Vec3f *pos, s32 player, s32 type)
 
             tfrm->rotate.z = F_CLC_DTOR32(dEFManagerDeadExplodeRotateD[type]);
         }
-        else func_ovl0_800CEA40(ptcl);
+        else lbParticleEjectStruct(ptcl);
     }
     dEFManagerDeadExplodeEffectDesc.o_matanim_joint = dEFManagerDeadExplodeMatAnimJoints[player];
 
@@ -5308,7 +5308,7 @@ GObj* efManagerMBallThrownMakeEffect(Vec3f *pos, s32 lr) // Many linker things h
 // 0x80102DEC
 efParticle* efManagerFireGrindMakeEffect(Vec3f *pos)
 {
-    efParticle *ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0xB);
+    efParticle *ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID | 8, 0xB);
 
     if (ptcl != NULL)
     {
@@ -5326,7 +5326,7 @@ efParticle* efManagerFireGrindMakeEffect(Vec3f *pos)
         }
         else
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             ptcl = NULL;
         }
@@ -5337,7 +5337,7 @@ efParticle* efManagerFireGrindMakeEffect(Vec3f *pos)
 // 0x80102E90
 efParticle* efManagerHealSparklesMakeEffect(Vec3f *pos)
 {
-    efParticle *ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID | 8, 0xE);
+    efParticle *ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID | 8, 0xE);
 
     if (ptcl != NULL)
     {
@@ -5355,7 +5355,7 @@ efParticle* efManagerHealSparklesMakeEffect(Vec3f *pos)
         }
         else
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             ptcl = NULL;
         }
@@ -5480,7 +5480,7 @@ GObj* efManagerYoshiEggEscapeMakeEffect(GObj *fighter_gobj)
 // 0x801031E0
 efParticle* func_ovl2_801031E0(Vec3f *pos)
 {
-    efParticle *ptcl = func_ovl0_800CE9E8(gFTDataKirbyParticleBankID, 2);
+    efParticle *ptcl = lbParticleMakeDefaultID(gFTDataKirbyParticleBankID, 2);
 
     if (ptcl != NULL)
     {
@@ -5498,7 +5498,7 @@ efParticle* func_ovl2_801031E0(Vec3f *pos)
         }
         else
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             ptcl = NULL;
         }
@@ -5509,7 +5509,7 @@ efParticle* func_ovl2_801031E0(Vec3f *pos)
 // 0x80103280
 efParticle* func_ovl2_80103280(Vec3f *pos)
 {
-    efParticle *ptcl = func_ovl0_800CE9E8(gFTDataKirbyParticleBankID, 5);
+    efParticle *ptcl = lbParticleMakeDefaultID(gFTDataKirbyParticleBankID, 5);
 
     if (ptcl != NULL)
     {
@@ -5527,7 +5527,7 @@ efParticle* func_ovl2_80103280(Vec3f *pos)
         }
         else
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             ptcl = NULL;
         }
@@ -5797,7 +5797,7 @@ void func_ovl2_801039B4(f32 arg0, f32 arg1)
 // 0x801039D4
 efParticle* efManagerMusicNoteMakeEffect(Vec3f *pos)
 {
-    efParticle *ptcl = func_ovl0_800CE9E8
+    efParticle *ptcl = lbParticleMakeDefaultID
     (
         gEFManagerParticleBankID | 8, 
         dEFManagerMusicNoteGenIDs[mtTrigGetRandomIntRange(ARRAY_COUNT(dEFManagerMusicNoteGenIDs))]
@@ -5819,7 +5819,7 @@ efParticle* efManagerMusicNoteMakeEffect(Vec3f *pos)
         }
         else
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             ptcl = NULL;
         }
@@ -5830,7 +5830,7 @@ efParticle* efManagerMusicNoteMakeEffect(Vec3f *pos)
 // 0x80103A88
 efParticle* efManagerYoshiEggExplodeMakeEffect(Vec3f *pos)
 {
-    efParticle *ptcl = func_ovl0_800CE9E8(gFTDataYoshiParticleBankID, 3);
+    efParticle *ptcl = lbParticleMakeDefaultID(gFTDataYoshiParticleBankID, 3);
 
     if (ptcl != NULL)
     {
@@ -5848,7 +5848,7 @@ efParticle* efManagerYoshiEggExplodeMakeEffect(Vec3f *pos)
         }
         else
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             ptcl = NULL;
         }
@@ -6044,7 +6044,7 @@ GObj* efManagerRebirthHaloMakeEffect(GObj *fighter_gobj, f32 scale)
 // 0x801040E0
 efParticle* efManagerBattleScoreMakeEffect(Vec3f *pos, s32 score)
 {
-    efParticle *ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID | 0x18, (score > 0) ? 0x43 : 0x44);
+    efParticle *ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID | 0x18, (score > 0) ? 0x43 : 0x44);
 
     if (ptcl != NULL)
     {
@@ -6052,7 +6052,7 @@ efParticle* efManagerBattleScoreMakeEffect(Vec3f *pos, s32 score)
 
         if (tfrm == NULL)
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             return NULL;
         }
@@ -6072,7 +6072,7 @@ efParticle* efManagerBattleScoreMakeEffect(Vec3f *pos, s32 score)
 // 0x801041A0
 efParticle* efManagerEggBreakMakeEffect(Vec3f *pos)
 {
-    efParticle *ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x54);
+    efParticle *ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID, 0x54);
 
     if (ptcl != NULL)
     {
@@ -6090,7 +6090,7 @@ efParticle* efManagerEggBreakMakeEffect(Vec3f *pos)
         }
         else
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             ptcl = NULL;
         }
@@ -6134,7 +6134,7 @@ efParticle* efManagerKirbyInhaleWindMakeEffect(GObj *fighter_gobj)
     }
     effect_gobj->user_data.p = ep;
 
-    ptcl = func_ovl0_800CE9E8(gFTDataKirbyParticleBankID | 8, 0xC);
+    ptcl = lbParticleMakeDefaultID(gFTDataKirbyParticleBankID | 8, 0xC);
 
     if (ptcl != NULL)
     {
@@ -6171,7 +6171,7 @@ efParticle* efManagerKirbyInhaleWindMakeEffect(GObj *fighter_gobj)
         }
         else
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             ptcl = NULL;
         }
@@ -6201,7 +6201,7 @@ GObj* efManagerItemGetSwirlProcUpdate(Vec3f *pos)
 // 0x801044B4
 efParticle* efManagerItemSpawnSwirlMakeEffect(Vec3f *pos)
 {
-    efParticle *ptcl = func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x69);
+    efParticle *ptcl = lbParticleMakeDefaultID(gEFManagerParticleBankID, 0x69);
 
     if (ptcl != NULL)
     {
@@ -6219,7 +6219,7 @@ efParticle* efManagerItemSpawnSwirlMakeEffect(Vec3f *pos)
         }
         else
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             ptcl = NULL;
         }
@@ -6230,7 +6230,7 @@ efParticle* efManagerItemSpawnSwirlMakeEffect(Vec3f *pos)
 // 0x80104554
 efParticle* func_ovl2_80104554(Vec3f *pos, s32 arg1)
 {
-    efParticle *ptcl = (arg1 != 0) ? func_ovl0_800CE9E8(gEFManagerParticleBankID, 0x70) : func_ovl0_800CE9E8(gEFManagerParticleBankID | 0x20, 0x70);
+    efParticle *ptcl = (arg1 != 0) ? lbParticleMakeDefaultID(gEFManagerParticleBankID, 0x70) : lbParticleMakeDefaultID(gEFManagerParticleBankID | 0x20, 0x70);
 
     if (ptcl != NULL)
     {
@@ -6248,7 +6248,7 @@ efParticle* func_ovl2_80104554(Vec3f *pos, s32 arg1)
         }
         else
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             ptcl = NULL;
         }

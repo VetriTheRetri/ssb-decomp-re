@@ -284,7 +284,7 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
 
     ip->lifetime = ITPKFIRE_LIFETIME;
 
-    ptcl = func_ovl0_800CE9E8(gFTNessParticleBankID, 0);
+    ptcl = lbParticleMakeDefaultID(gFTNessParticleBankID, 0);
 
     if (ptcl != NULL)
     {
@@ -304,7 +304,7 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
         }
         else
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             ip->item_vars.pkfire.effect = NULL;
         }

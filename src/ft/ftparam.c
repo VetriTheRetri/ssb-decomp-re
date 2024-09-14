@@ -751,7 +751,7 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 drawstatus)
     ftParts *ft_parts;
     DObj *joint;
     s32 detail_id;
-    void **costume_matanim_joints;
+    AObjEvent **costume_matanim_joints;
     MObjSub **mobjsubs;
 
     joint = fp->joints[joint_id];

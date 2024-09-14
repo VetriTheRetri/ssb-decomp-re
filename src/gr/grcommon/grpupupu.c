@@ -217,7 +217,7 @@ void grPupupuWhispyLeavesMakeEffect(void)
     efTransform *tfrm;
 
     tfrm = NULL;
-    ptcl = func_ovl0_800CE9E8(gGRCommonStruct.pupupu.particle_bank_id | 8, 0);
+    ptcl = lbParticleMakeDefaultID(gGRCommonStruct.pupupu.particle_bank_id | 8, 0);
 
     if (ptcl != NULL)
     {
@@ -225,7 +225,7 @@ void grPupupuWhispyLeavesMakeEffect(void)
 
         if (tfrm == NULL)
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
         }
         else
         {
@@ -476,7 +476,7 @@ void grPupupuWhispyDustMakeEffect(void)
     efTransform *tfrm;
 
     tfrm = NULL;
-    ptcl = func_ovl0_800CE9E8(gGRCommonStruct.pupupu.particle_bank_id | 8, 1);
+    ptcl = lbParticleMakeDefaultID(gGRCommonStruct.pupupu.particle_bank_id | 8, 1);
 
     if (ptcl != NULL)
     {
@@ -484,7 +484,7 @@ void grPupupuWhispyDustMakeEffect(void)
 
         if (tfrm == NULL)
         {
-            func_ovl0_800CEA40(ptcl);
+            lbParticleEjectStruct(ptcl);
         }
         else
         {

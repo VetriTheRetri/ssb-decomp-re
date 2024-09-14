@@ -124,17 +124,17 @@ typedef struct UnkRustRat {
 extern UnkPinkRat* D_800D639C[9];
 extern UnkRustRat* D_800D6358[16];
 
-// 0x800D63C0 - sLBParticleBankGeneratorsNum?
-extern s32 D_800D63C0[LBPARTICLE_BANKS_NUM_MAX];
+// 0x800D63C0
+s32 sLBParticleScriptBanksNum[LBPARTICLE_BANKS_NUM_MAX];
 
-// 0x800D63E0 - sLBParticleBankTexturesNum?
-extern s32 D_800D63E0[LBPARTICLE_BANKS_NUM_MAX];
+// 0x800D63E0
+s32 sLBParticleTextureBanksNum[LBPARTICLE_BANKS_NUM_MAX];
 
-// 0x800D6400 - sLBParticleBankGenerators?
-extern UnkAsphaltLeopard** D_800D6400[/* */];
+// 0x800D6400
+efScript **sLBParticleScriptBanks[/* */];
 
-// 0x800D6420 - sLBParticleBankTextures?
-extern UnkPinkLeopard** D_800D6420[/* */];
+// 0x800D6420
+efTexture **sLBParticleTextureBanks[/* */];
 
 u8 D_ovl0_800D5D50[4] = { 0, 0, 0, 0 };
 u8 D_ovl0_800D5D54[4] = { 0, 0, 0, 0 };
@@ -152,7 +152,7 @@ u8 D_ovl0_800D5D5C = 0x7B;
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CE218.s")
 
 // 0x800CE254
-void lbParticleSetupBankID(s32 bank_id, uintptr_t *gen_heap, uintptr_t *tex_heap)
+void lbParticleSetupBankID(s32 bank_id, efScriptDesc *script_desc, efTextureDesc *texture_desc)
 {
 	s32 i, j;
 
@@ -160,36 +160,42 @@ void lbParticleSetupBankID(s32 bank_id, uintptr_t *gen_heap, uintptr_t *tex_heap
 	{
 		return;
 	}
-	D_800D63C0[bank_id] = *gen_heap;
-	D_800D63E0[bank_id] = *tex_heap;
+	sLBParticleScriptBanksNum[bank_id] = script_desc->scripts_num;
+	sLBParticleTextureBanksNum[bank_id] = texture_desc->textures_num;
 
-	D_800D6400[bank_id] = (UnkAsphaltLeopard**) (gen_heap + 1);
-	D_800D6420[bank_id] = (UnkPinkLeopard**) (tex_heap + 1);
+	sLBParticleScriptBanks[bank_id] = script_desc->scripts;
+	sLBParticleTextureBanks[bank_id] = texture_desc->textures;
 
-	for (i = 1; i <= D_800D63C0[bank_id]; i++)
+	for (i = 1; i <= sLBParticleScriptBanksNum[bank_id]; i++)
 	{
-		gen_heap[i] = (uintptr_t) (gen_heap) + gen_heap[i];
+		/* By default, the scripts array is populated with the offsets of the scripts
+		 * in their respective file, so this is essentially making them into valid RAM pointers.
+		 */
+		script_desc->scripts[i - 1] = gcGetDataFromFile(efScript*, script_desc, script_desc->scripts[i - 1]);
 	}
-	for (i = 1; i <= D_800D63E0[bank_id]; i++)
+	for (i = 1; i <= sLBParticleTextureBanksNum[bank_id]; i++)
 	{
-		tex_heap[i] = (uintptr_t) (tex_heap) + tex_heap[i];
+		// Much like scripts, textures from the file are also being "pointerized" here.
+		texture_desc->textures[i - 1] = gcGetDataFromFile(efTexture*, texture_desc, texture_desc->textures[i - 1]); 
 	}
-	for (i = 0; i < D_800D63E0[bank_id]; i++)
+	for (i = 0; i < sLBParticleTextureBanksNum[bank_id]; i++)
 	{
-		for (j = 0; j < D_800D6420[bank_id][i]->unk_00; j++)
+		for (j = 0; j < sLBParticleTextureBanks[bank_id][i]->count; j++)
 		{
-			D_800D6420[bank_id][i]->unk_18[j] += (uintptr_t)tex_heap;
+			sLBParticleTextureBanks[bank_id][i]->data[j] = gcGetDataFromFile(void*, texture_desc, sLBParticleTextureBanks[bank_id][i]->data[j]);
 		}
-		if (D_800D6420[bank_id][i]->unk_04 == 2)
+		if (sLBParticleTextureBanks[bank_id][i]->format == G_IM_FMT_CI)
 		{
-			if (D_800D6420[bank_id][i]->unk_14 & 1)
+			if (sLBParticleTextureBanks[bank_id][i]->flags & 1)
 			{
-				j = D_800D6420[bank_id][i]->unk_00;
-				D_800D6420[bank_id][i]->unk_18[j] += (uintptr_t)tex_heap;
+				// One palette after the images
+				j = sLBParticleTextureBanks[bank_id][i]->count;
+
+				sLBParticleTextureBanks[bank_id][i]->data[j] = gcGetDataFromFile(void*, texture_desc, sLBParticleTextureBanks[bank_id][i]->data[j]);
 			}
-			else for (j = D_800D6420[bank_id][i]->unk_00; j < 2 * D_800D6420[bank_id][i]->unk_00; j++)
+			else for (j = sLBParticleTextureBanks[bank_id][i]->count; j < sLBParticleTextureBanks[bank_id][i]->count * 2; j++)
 			{
-				D_800D6420[bank_id][i]->unk_18[j] += (uintptr_t)tex_heap;
+				sLBParticleTextureBanks[bank_id][i]->data[j] = gcGetDataFromFile(void*, texture_desc, sLBParticleTextureBanks[bank_id][i]->data[j]);
 			}
 		}
 	}
@@ -198,23 +204,27 @@ void lbParticleSetupBankID(s32 bank_id, uintptr_t *gen_heap, uintptr_t *tex_heap
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CE418.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CE4E4.s")
-UnkRustRat* func_ovl0_800CE4E4(UnkRustRat** arg0, s32 arg1, s32 arg2, u16 arg3, u8* arg4, s32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, s32 argF, UnkPinkRat* arg10);
+efParticle* func_ovl0_800CE4E4(void** arg0, s32 arg1, s32 arg2, u16 arg3, u8* arg4, s32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, f32 argE, s32 argF, UnkPinkRat* arg10);
 
-UnkRustRat* func_ovl0_800CE6B8(UnkRustRat** arg0, s32 arg1, s32 arg2)
+efParticle* func_ovl0_800CE6B8(efParticle **efpart, s32 bank_id, s32 script_bank_id)
 {
-	UnkAsphaltLeopard* temp_v0;
-	s32 id = arg1 & 7;
+	efScript *efscript;
+	s32 id = bank_id & 7;
 
-	if (id >= 8)
+	if (id >= LBPARTICLE_BANKS_NUM_MAX)
+	{
 		return NULL;
-
-	if (arg2 >= D_800D63C0[id])
+	}
+	if (script_bank_id >= sLBParticleScriptBanksNum[id])
+	{
 		return NULL;
+	}
+	efscript = sLBParticleScriptBanks[id][script_bank_id];
 
-	temp_v0 = D_800D6400[id][arg2];
-	return func_ovl0_800CE4E4(arg0, arg1, temp_v0->unk_08, temp_v0->unk_02, temp_v0->unk_30, temp_v0->unk_06,
-						 0.0f, 0.0f, 0.0f, temp_v0->unk_14.x, temp_v0->unk_14.y, temp_v0->unk_14.z, temp_v0->unk_2C, temp_v0->unk_0C,
-						 temp_v0->unk_10, D_800D6420[id][temp_v0->unk_02]->unk_14, NULL);
+	return func_ovl0_800CE4E4(efpart, bank_id, efscript->unk_efscript_0x8, efscript->unk_efscript_0x2, efscript->bytecode, efscript->unk_efscript_0x6,
+						 0.0F, 0.0F, 0.0F, efscript->unk_efscript_0x14, efscript->unk_efscript_0x18, efscript->unk_efscript_0x1C, 
+						 efscript->unk_efscript_0x2C, efscript->unk_efscript_0xC,
+						 efscript->unk_efscript_0x10, sLBParticleTextureBanks[id][efscript->unk_efscript_0x2]->flags, NULL);
 }
 
 UnkRustRat* func_ovl0_800CE7A8(s32 arg0, s32 arg1, u16 arg2, u8* arg3, s32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, f32 argD, s32 argE, UnkPinkRat* argF)
@@ -242,26 +252,32 @@ efParticle* func_ovl0_800CE870(s32 arg0, s32 arg1)
 	return efpart;
 }
 
-UnkRustRat* func_ovl0_800CE8C0(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7)
+efParticle* func_ovl0_800CE8C0(s32 bank_id, s32 script_bank_id, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7)
 {
-	UnkRustRat* ret;
-	UnkAsphaltLeopard* temp_v0;
-	s32 id = arg0 & 7;
+	efParticle *efpart;
+	efScript *efscript;
+	s32 id = bank_id & 7;
 
-	if (id >= 8)
+	if (id >= LBPARTICLE_BANKS_NUM_MAX)
+	{
 		return NULL;
-
-	if (arg1 >= D_800D63C0[id])
+	}
+	if (script_bank_id >= sLBParticleScriptBanksNum[id])
+	{
 		return NULL;
+	}
+	efscript = sLBParticleScriptBanks[id][script_bank_id];
 
-	temp_v0 = D_800D6400[id][arg1];
-	ret = func_ovl0_800CE4E4(NULL, arg0, temp_v0->unk_08, temp_v0->unk_02, temp_v0->unk_30, temp_v0->unk_06,
-						arg2, arg3, arg4, arg5, arg6, arg7, temp_v0->unk_2C, temp_v0->unk_0C,
-						temp_v0->unk_10, D_800D6420[id][temp_v0->unk_02]->unk_14, NULL);
-	if (ret != NULL)
-		func_ovl0_800CEF4C(ret, 0, arg0 >> 3);
+	efpart = func_ovl0_800CE4E4(NULL, bank_id, efscript->unk_efscript_0x8, efscript->unk_efscript_0x2, efscript->bytecode, efscript->unk_efscript_0x6,
+						 arg2, arg3, arg4, arg5, arg6, arg7, 
+						 efscript->unk_efscript_0x2C, efscript->unk_efscript_0xC,
+						 efscript->unk_efscript_0x10, sLBParticleTextureBanks[id][efscript->unk_efscript_0x2]->flags, NULL);
 
-	return ret;
+	if (efpart != NULL)
+	{
+		func_ovl0_800CEF4C(efpart, 0, bank_id >> 3);
+	}
+	return efpart;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800CE9E8.s")

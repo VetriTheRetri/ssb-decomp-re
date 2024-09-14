@@ -24,6 +24,47 @@ struct efCreateDesc
     intptr_t o_matanim_joint;
 };
 
+struct efScriptDesc
+{
+    s32 scripts_num;        // Number of scripts in array?
+    efScript *scripts[1];   // Dynamic array
+};
+
+struct efScript
+{
+    u16 unk_efscript_0x0;
+	u16 unk_efscript_0x2;   // Texture ID?
+    u16 unk_efscript_0x4;
+	u16 unk_efscript_0x6;   // Total frames?
+    u32 unk_efscript_0x8;   // Flags?
+	f32 unk_efscript_0xC;
+    f32 unk_efscript_0x10;
+    f32 unk_efscript_0x14;
+    f32 unk_efscript_0x18;
+    f32 unk_efscript_0x1C;
+    f32 unk_efscript_0x20;
+    f32 unk_efscript_0x24;
+    f32 unk_efscript_0x28;
+    f32 unk_efscript_0x2C;
+    u8 bytecode[1];         // Particle bytecode
+};
+
+struct efTextureDesc
+{
+    s32 textures_num;
+    efTexture *textures[1];
+};
+
+struct efTexture
+{
+    u32 count;
+    s32 format;
+    s32 color_depth;
+    s32 width, height;
+    u32 flags;
+    void *data[1];        // Offsets to image, then palette data
+};
+
 struct efGenerator
 {
     u16 unk_efgen_0x0;
@@ -34,19 +75,31 @@ struct efGenerator
 	f32 unk_efgen_0xC;
 	f32 unk_efgen_0x10;
     Vec3f pos;
-    f32 filler_0x20[10];
+    f32 unk_efgen_0x20;
+    f32 unk_efgen_0x24;
+    f32 unk_efgen_0x28;
+    f32 unk_efgen_0x2C;
+    void *unk_efgen_0x30;
+    f32 unk_efgen_0x34;
+    f32 unk_efgen_0x38;
+    f32 unk_efgen_0x3C;
+    f32 unk_efgen_0x40;
+    f32 unk_efgen_0x44;
     DObj *dobj;
 };
 
 struct efTransform
 {
-    u8 filler_0x0[0x4];
+    efTransform *next;
     Vec3f translate;
     Vec3f rotate;
     Vec3f scale;
     u16 unk_effect_0x28;
     u16 unk_effect_0x2A;
-    u8 filler_0x2C[0xB4 - 0x2C];
+    Mtx44f unk_eftrans_0x2C;
+    Mtx44f unk_eftrans_0x6C;
+    f32 unk_eftrans_0xAC;
+    f32 unk_eftrans_0xB0;
     void (*proc_dead)(efTransform*);
     u16 unk_effect_0xB8;
     GObj *effect_gobj;

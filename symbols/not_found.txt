@@ -731,6 +731,11 @@ sLBCommonScissorYMax = 0x800D62C0;
 sLBCommonScissorXMin = 0x800D62C4;
 sLBCommonScissorYMin = 0x800D62C8;
 
+sLBParticleScriptBanksNum = 0x800D63C0;
+sLBParticleTextureBanksNum = 0x800D63E0;
+sLBParticleScriptBanks = 0x800D6400;
+sLBParticleTextureBanks = 0x800D6420;
+
 func_ovl2_800E7F68 = 0x800E7F68;
 gOMObjCommonLinks = 0x800466F0;
 gDefaultBattleState = 0x800A3fc8;

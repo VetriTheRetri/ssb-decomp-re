@@ -15,8 +15,8 @@ GObj *D_ovl2_80131A14;
 // 0x80131A18
 s32 sEFAllocParticleBanksNum;
 
-// 0x80131A20
-uintptr_t sEFAllocParticleGenBanks[7];
+// 0x80131A20 - Particle script banks that have already been loaded
+uintptr_t sEFAllocParticleScriptBanks[7];
 
 // // // // // // // // // // // //
 //                               //
@@ -63,13 +63,13 @@ void func_ovl2_80115980(void)
 }
 
 // 0x801159B0
-s32 efAllocGetParticleBankID(uintptr_t genlo)
+s32 efAllocGetParticleBankID(uintptr_t scripts_lo)
 {
     s32 i;
 
     for (i = 0; i < sEFAllocParticleBanksNum; i++)
     {
-        if (genlo == sEFAllocParticleGenBanks[i])
+        if (scripts_lo == sEFAllocParticleScriptBanks[i])
         {
             return i;
         }
@@ -78,13 +78,13 @@ s32 efAllocGetParticleBankID(uintptr_t genlo)
 }
 
 // 0x801159F8
-s32 efAllocGetAddParticleBankID(uintptr_t genlo, uintptr_t genhi, uintptr_t texlo, uintptr_t texhi)
+s32 efAllocGetAddParticleBankID(uintptr_t scripts_lo, uintptr_t scripts_hi, uintptr_t textures_lo, uintptr_t textures_hi)
 {
-    void *genheap, *texheap;
-    size_t gensize, texsize;
+    void *script_desc, *texture_desc;
+    size_t script_size, texture_size;
     s32 bank_id;
 
-    if (sEFAllocParticleBanksNum > ARRAY_COUNT(sEFAllocParticleGenBanks))
+    if (sEFAllocParticleBanksNum > ARRAY_COUNT(sEFAllocParticleScriptBanks))
     {
         while (TRUE)
         {
@@ -92,26 +92,26 @@ s32 efAllocGetAddParticleBankID(uintptr_t genlo, uintptr_t genhi, uintptr_t texl
             scManagerRunPrintGObjStatus();
         }
     }
-    bank_id = efAllocGetParticleBankID(genlo);
+    bank_id = efAllocGetParticleBankID(scripts_lo);
 
     if (bank_id != -1)
     {
         return bank_id;
     }
-    gensize = genhi - genlo;
-    texsize = texhi - texlo;
+    script_size = scripts_hi - scripts_lo;
+    texture_size = textures_hi - textures_lo;
 
     bank_id = sEFAllocParticleBanksNum;
 
-    genheap = gsMemoryAlloc(gensize, 0x8);
-    texheap = gsMemoryAlloc(texsize, 0x8);
+    script_desc = gsMemoryAlloc(script_size, 0x8);
+    texture_desc = gsMemoryAlloc(texture_size, 0x8);
 
-    syDmaRomRead(genlo, genheap, gensize);
-    syDmaRomRead(texlo, texheap, texsize);
+    syDmaRomRead(scripts_lo, script_desc, script_size);
+    syDmaRomRead(textures_lo, texture_desc, texture_size);
 
-    lbParticleSetupBankID(sEFAllocParticleBanksNum++, genheap, texheap);
+    lbParticleSetupBankID(sEFAllocParticleBanksNum++, script_desc, texture_desc);
 
-    sEFAllocParticleGenBanks[bank_id] = genlo;
+    sEFAllocParticleScriptBanks[bank_id] = scripts_lo;
 
     return bank_id;
 }

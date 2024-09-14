@@ -5,6 +5,7 @@ import sys
 import binascii
 import rabbitizer
 import disasm
+import parser
 
 patternInstr = r"^(\w+)\s+(.+)$"
 patternReg = r"\$\w+"
@@ -12,6 +13,7 @@ patternReg = r"\$\w+"
 INSTR_SIZE = 4
 LINE_SIZE = 4 * INSTR_SIZE
 BYTE_ORDER = 'big'
+
 
 def instructionsDiffer(bytesA, bytesB, onlyInstrAndRegisters = True):
 	if onlyInstrAndRegisters:
@@ -27,40 +29,51 @@ def instructionsDiffer(bytesA, bytesB, onlyInstrAndRegisters = True):
 			regsb = re.findall(patternReg, mb.group(2))
 			regssb = re.findall(patternReg, msb.group(2))
 			chunksDiffer = len(regsb) != len(regssb) or any([regsb[i] != regssb[i] for i in range(len(regsb))])
-		if chunksDiffer:
-			print(f"\033[91m{asmb}{' '*(45-len(asmb))} -- {asmsb}\033[0m")
-		else:
-			print(f"\033[92m{asmb}{' '*(45-len(asmb))} -- {asmsb}\033[0m")
 	else:
 		chunksDiffer = bytesA != bytesB
-		if chunksDiffer:
-			print(f"\033[91m{bytesA}{' '*(45-len(bytesA))} -- {bytesB}\033[0m")
+
 	return chunksDiffer
 
-def findSequence(binFilePath, byteSequence, onlyInstrAndRegisters = True):
-	print(f"byte sequence length: {hex(len(byteSequence))}")
-	if not onlyInstrAndRegisters:
-		print("finding exact match")
+
+def findSequence(binFilePath, byteSequence, onlyInstrAndRegisters = True, blocks = None):
 	with open(binFilePath, 'rb') as binFile:
-		binFile.seek(0, 2)
-		binFileSize = binFile.tell()
-		binFile.seek(0)
-		while True:
-			matched = True
-			curBinOffset = binFile.tell()
-			# print(f"current offset: {hex(curBinOffset)}")
-			for i in range(len(byteSequence) // INSTR_SIZE):
-				binInstr = binFile.read(INSTR_SIZE)
-				sequenceInstr = byteSequence[i * INSTR_SIZE:i * INSTR_SIZE + INSTR_SIZE]
-				if instructionsDiffer(sequenceInstr, binInstr, onlyInstrAndRegisters):
-					binFile.seek(-i * INSTR_SIZE, 1)
-					matched = False
-					break
-				# print("matched instr")
-			if matched:
-				return curBinOffset
-			if curBinOffset == binFileSize:
-				return -1
+		if blocks is None:
+			binFile.seek(0, 2)
+			binFileSize = binFile.tell()
+			binFile.seek(0)
+			while True:
+				matched = True
+				curBinOffset = binFile.tell()
+				for i in range(len(byteSequence) // INSTR_SIZE):
+					binInstr = binFile.read(INSTR_SIZE)
+					sequenceInstr = byteSequence[i * INSTR_SIZE:i * INSTR_SIZE + INSTR_SIZE]
+					if instructionsDiffer(sequenceInstr, binInstr, onlyInstrAndRegisters):
+						binFile.seek(-i * INSTR_SIZE, 1)
+						matched = False
+						break
+				if matched:
+					return curBinOffset
+				if curBinOffset == binFileSize:
+					return -1
+		else:
+			for block in blocks:
+				binFile.seek(block['begin'])
+				while True:
+					matched = True
+					curBinOffset = binFile.tell()
+					for i in range(len(byteSequence) // INSTR_SIZE):
+						binInstr = binFile.read(INSTR_SIZE)
+						sequenceInstr = byteSequence[i * INSTR_SIZE:i * INSTR_SIZE + INSTR_SIZE]
+						if instructionsDiffer(sequenceInstr, binInstr, onlyInstrAndRegisters):
+							binFile.seek(-i * INSTR_SIZE, 1)
+							matched = False
+							break
+					if matched:
+						return curBinOffset
+					if curBinOffset == block['end']:
+						break
+			return -1
+
 
 
 def searchCode(binWithSequenceFilePath, sequenceOffset, binToLookFilePath):
@@ -97,56 +110,57 @@ def functionAddressesFromAsmTextFile(asmTextPath):
 	return addresses
 
 
-def match(subBinFilePath, binFilePath, subBinStartOffset = 0x0, onlyInstrAndRegisters = True, printPercentageOnly = False, asmTextPath = None):
+matchPercentage = None
+matchBinaryAInstructionCount = None
+matchBinaryBInstructionCount = None
+matchDifferentRanges = None
+matchInstructionsMatched = 0
+def match(binAFilePath, binBFilePath, onlyInstrAndRegisters = True, printPercentageOnly = False, asmTextPath = None):
+	global matchPercentage
+	global matchBinaryAInstructionCount
+	global matchBinaryBInstructionCount
+	global matchDifferentRanges
+	global matchInstructionsMatched
+
 	functionAddresses = functionAddressesFromAsmTextFile(asmTextPath) if asmTextPath is not None else None
 
 	curBinOffset = 0x0
-	matchedInstructions = 0
-	differentRanges = []
+	matchInstructionsMatched = 0
+	matchDifferentRanges = []
 
-	subBinFileSize = 0
-	binFileSize = 0
-	with open(subBinFilePath, 'rb') as subBinFile:
-		subBinFile.seek(0, 2)
-		subBinFileSize = subBinFile.tell() - subBinStartOffset
-		subBinFile.seek(subBinStartOffset)
-		with open(binFilePath, 'rb') as binFile:
-			binFile.seek(0, 2)
-			binFileSize = binFile.tell()
-			binFile.seek(0)
-			if binFileSize < subBinFileSize:
-				binFile, subBinFile = subBinFile, binFile
-				binFileSize, subBinFileSize = subBinFileSize, binFileSize
+	binAFileSize = 0
+	binBFileSize = 0
+	with open(binAFilePath, 'rb') as binAFile:
+		binAFile.seek(0, 2)
+		binAFileSize = binAFile.tell()
+		binAFile.seek(0)
+		with open(binBFilePath, 'rb') as binBFile:
+			binBFile.seek(0, 2)
+			binBFileSize = binBFile.tell()
+			binBFile.seek(0)
+			if binBFileSize < binAFileSize:
+				binBFile, binAFile = binAFile, binBFile
+				binBFileSize, binAFileSize = binAFileSize, binBFileSize
 
-			while (binChunk := binFile.read(INSTR_SIZE)):
-				while (subBinChunk := subBinFile.read(INSTR_SIZE)):
+			while (binChunk := binBFile.read(INSTR_SIZE)):
+				while (subBinChunk := binAFile.read(INSTR_SIZE)):
 					if functionAddresses is not None and (functionAddresses[0] + curBinOffset) in functionAddresses:
 						print(f"----- {hex(functionAddresses[0] + curBinOffset)}")
 					if instructionsDiffer(binChunk, subBinChunk, onlyInstrAndRegisters):
-						if len(differentRanges) > 0 and differentRanges[-1][1] == hex(curBinOffset - INSTR_SIZE):
-							differentRanges[-1] = (differentRanges[-1][0], hex(curBinOffset))
+						if len(matchDifferentRanges) > 0 and matchDifferentRanges[-1][1] == (curBinOffset - INSTR_SIZE):
+							matchDifferentRanges[-1] = (matchDifferentRanges[-1][0], (curBinOffset))
 						else:
-							differentRanges.append((hex(curBinOffset), hex(curBinOffset)))
+							matchDifferentRanges.append((curBinOffset, curBinOffset))
 					else:
-						matchedInstructions += 1
-					binChunk = binFile.read(INSTR_SIZE)
+						matchInstructionsMatched += 1
+					binChunk = binBFile.read(INSTR_SIZE)
 					curBinOffset += INSTR_SIZE
 				curBinOffset += INSTR_SIZE
 
-	if printPercentageOnly:
-		print(f"{(100.0*matchedInstructions/(binFileSize//INSTR_SIZE)):.2f}%")
-		return
 
-	print(f"   binary instruction count:     {binFileSize//INSTR_SIZE}")
-	print(f"   sub-binary instruction count: {subBinFileSize//INSTR_SIZE}")
-	print(f"   matched {matchedInstructions} instructions out of {binFileSize//INSTR_SIZE} ({(100.0*matchedInstructions/(binFileSize//INSTR_SIZE)):.2f}%)")
-	if len(differentRanges) > 0:
-		print(f"   differences:")
-		for d in differentRanges:
-			if d[0] == d[1]:
-				print(f"     {d[0][2:]}")
-			else:
-				print(f"     {d[0][2:]} - {d[1][2:]}")
+	matchBinaryAInstructionCount = binAFileSize // INSTR_SIZE
+	matchBinaryBInstructionCount = binBFileSize // INSTR_SIZE
+	matchPercentage = 100.0 * (matchInstructionsMatched / matchBinaryBInstructionCount)
 
 
 if __name__ == "__main__":
@@ -171,7 +185,35 @@ if __name__ == "__main__":
 		searchCode(sys.argv[2], eval(sys.argv[3]), sys.argv[4])
 		sys.exit()
 
-	subBinFilePath = sys.argv[1]
-	binFilePath = sys.argv[2]
+	binAFilePath = sys.argv[1]
+	binBFilePath = sys.argv[2]
 
-	match(subBinFilePath, binFilePath, 0x0 if len(sys.argv) == 3 else eval(sys.argv[3]), not exactMatch, printPercentageOnly, asmTextPath)
+	match(binAFilePath, binBFilePath, not exactMatch, printPercentageOnly, asmTextPath)
+
+	if printPercentageOnly:
+		print(f"{matchPercentage:.2f}%")
+	else:
+		print(f"   binary A word count: {matchBinaryAInstructionCount}")
+		print(f"   binary B word count: {matchBinaryBInstructionCount}")
+		print(f"   matched {matchInstructionsMatched} instructions out of {matchBinaryBInstructionCount} ({matchPercentage:.2f}%)")
+		print("")
+		if len(matchDifferentRanges) > 0:
+			HEX_PADDING = 8 # fill hex with zeroes so it looks aligned
+			print(f"{matchBinaryBInstructionCount - matchInstructionsMatched} words differ:")
+			with open(binAFilePath, 'rb') as binAFile, open(binBFilePath, 'rb') as binBFile:
+				for d in matchDifferentRanges:
+					for i in range((d[1] - d[0] + INSTR_SIZE) // INSTR_SIZE):
+						currentOffset = d[0] + i * INSTR_SIZE
+						segment = parser.findSegmentForRomLocation(currentOffset)
+						binAFile.seek(currentOffset, 0)
+						binBFile.seek(currentOffset, 0)
+						wordA = binAFile.read(INSTR_SIZE)
+						wordB = binBFile.read(INSTR_SIZE)
+						if "data" in segment['type']:
+							diffText = f"\033[91m{wordB.hex()} -- {wordA.hex()}\033[0m"
+						else:
+							asmA = f"{rabbitizer.Instruction(int.from_bytes(wordA, byteorder=BYTE_ORDER))}"
+							asmB = f"{rabbitizer.Instruction(int.from_bytes(wordB, byteorder=BYTE_ORDER))}"
+							diffText = f"\033[91m{asmB} {' '*(50-len(asmB))} -- {asmA}\033[0m"
+						print(f"--- {segment['type']} {segment['name']} {currentOffset:#0{HEX_PADDING}x} {' '*(50-len(segment['name']))}   |   {diffText}")
+						

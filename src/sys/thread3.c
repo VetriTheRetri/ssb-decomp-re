@@ -125,7 +125,7 @@ void func_80000970(SCTaskInfo *task) {
     osRecvMesg(&mq, NULL, OS_MESG_BLOCK);
 }
 
-void func_800009D8(SCClient *arg0, OSMesgQueue *mq, OSMesg *msg, u32 count) {
+void scAddClient(SCClient *arg0, OSMesgQueue *mq, OSMesg *msg, u32 count) {
     SCTaskAddClient t;
 
     osCreateMesgQueue(mq, msg, count);

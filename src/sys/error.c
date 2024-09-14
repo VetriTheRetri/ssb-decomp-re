@@ -903,7 +903,7 @@ void syErrorFileLoaderThread8(void *arg)
     count = 0;
 
     mq = &D_8009E3F0;
-    func_800009D8(&D_8009E3E0, mq, D_8009E3E8, ARRAY_COUNT(D_8009E3E8));
+    scAddClient(&D_8009E3E0, mq, D_8009E3E8, ARRAY_COUNT(D_8009E3E8));
 
     while (TRUE)
     {

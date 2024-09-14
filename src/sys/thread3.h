@@ -139,7 +139,7 @@ extern u64 scUnknownU64;
 extern s32 D_80045020_40830;
 
 extern void func_80000970(SCTaskInfo *arg0);
-extern void func_800009D8(SCClient *arg0, OSMesgQueue *mq, OSMesg *msg, u32 count);
+extern void scAddClient(SCClient *arg0, OSMesgQueue *mq, OSMesg *msg, u32 count);
 extern s32 scCheckGfxTaskDefault(SCTaskGfx *t);
 extern void thread3_scheduler(void *arg);
 extern s32 func_80000B54(UNUSED SCTaskInfo *t);

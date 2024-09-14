@@ -408,7 +408,7 @@ void thread6_controllers(UNUSED void *arg) {
     OSMesg mesg;
 
     initialize_controllers();
-    func_800009D8(&D_80045110, &sContEventQueue, sContEvtMesgs, ARRAY_COUNT(sContEvtMesgs));
+    scAddClient(&D_80045110, &sContEventQueue, sContEvtMesgs, ARRAY_COUNT(sContEvtMesgs));
     osSendMesg(&sSYMainThreadingQueue, (OSMesg)1, OS_MESG_NOBLOCK);
 
     while (TRUE) {

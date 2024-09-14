@@ -164,7 +164,7 @@ segments:
       - [0x019AE0, c, sys/vec]
       - [0x01A870, c, sys/hal_gu]
       - [0x01E210, c, sys/interpolation]
-      - [0x01F1C0, asm, sys/hal_audio]
+      - [0x01F1C0, c, sys/hal_audio]
       - [0x021CC0, c, sys/error]
       - [0x024440, c, unref24440] # One func, that's entirely unreferenced.
       - [0x024470, c, libultra/sp/setattribute]
@@ -356,7 +356,7 @@ segments:
       - [0x03EF50, .rodata, sys/trig_rand]
       - [0x03EFA0, .rodata, sys/hal_gu]
       - [0x03EFF0, .rodata, sys/interpolation]
-      - [0x03F010, rodata, sys/hal_audio]
+      - [0x03F010, .rodata, sys/hal_audio]
       - [0x03F020, .rodata, sys/error]
       - [0x03F460, rodata, libultra/sp/sprite]
       - [0x03F470, .rodata, libultra/n_audio/n_env]

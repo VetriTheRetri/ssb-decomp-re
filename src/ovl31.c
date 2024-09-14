@@ -63,7 +63,7 @@ extern u8 dIFCommonPlayerTagShadowColorsB[];
 extern u8 dIFCommonPlayerTagSpriteColorsR[];
 extern u8 dIFCommonPlayerTagSpriteColorsG[];
 extern u8 dIFCommonPlayerTagSpriteColorsB[];
-extern halAudioUnknown* D_8009D960_96D60;
+extern halAudioUnknown* auBGMPlayers;
 
 
 // Forward declarations
@@ -2446,12 +2446,12 @@ void mnResultsLoadMatchInfo()
 // 801377C0
 void func_ovl31_801377C0(s32 arg0)
 {
-	while (D_8009D960_96D60->unk34 == 0)
+	while (auBGMPlayers->unk34 == 0)
 		gcStopCurrentGObjThread(1);
 
 	while (TRUE)
 	{
-		if (D_8009D960_96D60->unk34 == 0)
+		if (auBGMPlayers->unk34 == 0)
 		{
 			auPlaySong(0, 0x16);
 			gcEjectGObj(0);

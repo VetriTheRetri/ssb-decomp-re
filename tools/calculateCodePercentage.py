@@ -9,7 +9,13 @@ def filesInFolderRec(folder):
 
 def calculateCodePercentage(excludeLibultra = False):
 
-	codeBlocks = parser.codeBlocksFromYaml("libultra" if excludeLibultra else None )
+	assemblyFileList = parser.getAssemblyFilePathList(True, False, False, True, True, None, "/libultra/" if excludeLibultra else None)
+	print("Files considered for embedded assembly:")
+	for filePath in assemblyFileList:
+		print(f"  {filePath}")
+	embeddedAssemblyInstructionCount = parser.instructionCountFromAssembly(assemblyFileList)
+
+	codeBlocks = [x for x in parser.codeBlocksFromYaml(None, None, "libultra" if excludeLibultra else None) if x['type'] != "hasm"]
 
 	# fancy printing
 	HEX_PADDING = 8 # fill hex with zeroes so it looks aligned
@@ -22,8 +28,6 @@ def calculateCodePercentage(excludeLibultra = False):
 	cByteCount = sum([x['end'] - x['begin'] for x in codeBlocks if x['type'] == 'c'])
 	asmByteCount = sum([x['end'] - x['begin'] for x in codeBlocks if x['type'] == 'asm'])
 	totalByteCount = cByteCount + asmByteCount
-
-	embeddedAssemblyInstructionCount = parser.instructionCountFromAssembly()
 
 	cByteCount -= 4 * embeddedAssemblyInstructionCount
 	asmByteCount += 4 * embeddedAssemblyInstructionCount

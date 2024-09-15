@@ -11,9 +11,13 @@ def filesInFolderRec(folder):
 
 targetYamlPath = sys.argv[1]
 targetRomPath = parser.romPathFromYaml(targetYamlPath)
-functionDict = parser.functionsFromAssembly()
+asmFiles = parser.getAssemblyFilePathList(True, False, False, True, False)
+print("Looking for code:")
+for filePath in asmFiles:
+	print(f"  {filePath}")
+functionDict = parser.functionsFromAssembly(asmFiles)
 
-codeBlocks = [x for x in parser.codeBlocksFromYaml(None, targetYamlPath) if isinstance(x['begin'], int) and isinstance(x['end'], int)]
+codeBlocks = [x for x in parser.codeBlocksFromYaml(targetYamlPath) if x['type'] == 'c' and isinstance(x['begin'], int) and isinstance(x['end'], int)]
 jobData = [(i, k) for i, k in enumerate(functionDict.keys())]
 
 

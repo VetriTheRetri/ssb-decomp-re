@@ -23,7 +23,7 @@ def romPathFromYaml(targetYamlFilePath = None):
 		return os.path.join(os.path.dirname(targetFilePath), yamlObj['options']['target_path'])
 
 
-def codeBlocksFromYaml(filterOutString = None, targetYamlFilePath = None):
+def codeBlocksFromYaml(targetYamlFilePath = None, filterString = None, filterOutString = None):
 
 	targetFilePath = targetYamlFilePath if targetYamlFilePath is not None else SPLAT_YAML_FILE_PATH
 	with open(targetFilePath, 'r') as file:
@@ -31,30 +31,39 @@ def codeBlocksFromYaml(filterOutString = None, targetYamlFilePath = None):
 
 		blocks = []
 
+		prevWasHasm = False
+		prevWasAsm = False
+		prevWasC = False
+		prevStart = 0
+		prevName = None
 		for seg in yamlObj['segments']:
-			if isinstance(seg, dict) and seg['type'] == 'code':
-				prevWasAsm = False
-				prevWasC = False
-				prevStart = 0
-				prevName = None
-				for subseg in seg['subsegments']:
 
-					if filterOutString is not None and isinstance(subseg, list) and len(subseg) > 2 and filterOutString in subseg[2]:
-						continue
-					if isinstance(subseg, dict) and 'start' not in subseg.keys():
-						continue
+			if not isinstance(seg, dict) or seg['type'] != 'code':
+				continue
+			for subseg in seg['subsegments']:
 
-					start = subseg[0] if isinstance(subseg, list) else subseg['start']
+				if filterString is not None and isinstance(subseg, list) and len(subseg) > 2 and filterString not in subseg[2]:
+					continue
+				if filterOutString is not None and isinstance(subseg, list) and len(subseg) > 2 and filterOutString in subseg[2]:
+					continue
+				if isinstance(subseg, dict) and 'start' not in subseg.keys():
+					continue
 
-					if prevWasC:
-						blocks.append({'name': prevName, 'type': 'c', 'begin': prevStart, 'end': start})
-					if prevWasAsm:
-						blocks.append({'name': prevName, 'type': 'asm', 'begin': prevStart, 'end': start})
+				start = subseg[0] if isinstance(subseg, list) else subseg['start']
 
-					prevWasC = isinstance(subseg, list) and len(subseg) > 1  and subseg[1] == 'c'
-					prevWasAsm = isinstance(subseg, list) and len(subseg) > 1 and subseg[1] == 'asm'
-					prevName = subseg[2] if isinstance(subseg, list) and len(subseg) > 2 else None
-					prevStart = start
+				if prevWasC:
+					blocks.append({'name': prevName, 'type': 'c', 'begin': prevStart, 'end': start})
+				if prevWasAsm:
+					blocks.append({'name': prevName, 'type': 'asm', 'begin': prevStart, 'end': start})
+				if prevWasHasm:
+					blocks.append({'name': prevName, 'type': 'hasm', 'begin': prevStart, 'end': start})
+
+
+				prevWasC = isinstance(subseg, list) and len(subseg) > 1  and subseg[1] == 'c'
+				prevWasAsm = isinstance(subseg, list) and len(subseg) > 1 and subseg[1] == 'asm'
+				prevWasHasm = isinstance(subseg, list) and len(subseg) > 1 and subseg[1] == 'hasm'
+				prevName = subseg[2] if isinstance(subseg, list) and len(subseg) > 2 else None
+				prevStart = start
 	return blocks
 
 
@@ -76,9 +85,6 @@ def findSegmentForRomLocation(location, targetYamlFilePath = None):
 
 					start = subseg[0] if isinstance(subseg, list) else subseg['start']
 
-					# breakpoint()
-					# print(start)
-					# print(type(start))
 					if isinstance(start, int) and isinstance(prevStart, int):
 						if location < start and location > prevStart:
 							return {"type": prevType, "name": prevName}
@@ -89,19 +95,31 @@ def findSegmentForRomLocation(location, targetYamlFilePath = None):
 	return None
 
 
-def getAssemblyFilePathList(includeNonmatchings = True, includeMatchings = False, filterString = None):
+def getAssemblyFilePathList(includeNonmatchings = True, includeMatchings = False, includeData = False, excludeHasmBlocks = True, excludeAsmBlocks = True, filterString = None, filterOutString = None):
 
-	filePathList = filesInFolder(ASM_PATH)
+	filePathList = [x for x in filesInFolder(ASM_PATH) if not x.endswith("/header.s")]
 	for folderPath in foldersInFolder(ASM_PATH):
 		if not includeNonmatchings and folderPath.endswith("/nonmatchings"):
 			continue
 		if not includeMatchings and folderPath.endswith("/matchings"):
 			continue
+		if not includeData and folderPath.endswith("/data"):
+			continue
 		filePathList.extend(filesInFolderRec(folderPath))
 
 	if filterString is not None:
 		filePathList = [x for x in filePathList if filterString in x]
-	return filePathList
+	if filterOutString is not None:
+		filePathList = [x for x in filePathList if filterOutString not in x]
+
+	if excludeAsmBlocks:
+		hasmPaths = set([os.path.join(ASM_PATH, f"{x['name']}.s") for x in codeBlocksFromYaml() if x['type'] == "asm"])
+		filePathList = [x for x in filePathList if x not in hasmPaths]
+	if excludeHasmBlocks:
+		hasmPaths = set([os.path.join(ASM_PATH, f"{x['name']}.s") for x in codeBlocksFromYaml() if x['type'] == "hasm"])
+		filePathList = [x for x in filePathList if x not in hasmPaths]
+
+	return [os.path.abspath(x) for x in filePathList]
 
 
 def textSectionLinesFromAssembly(assemblyFileContents):
@@ -115,9 +133,7 @@ def textSectionLinesFromAssembly(assemblyFileContents):
 
 
 
-def functionAddressAndSymbolFromAssembly(includeNonmatchings = True, includeMatchings = False, filterString = None):
-
-	filePathList = getAssemblyFilePathList(includeNonmatchings, includeMatchings, filterString)
+def functionAddressAndSymbolFromAssembly(filePathList):
 
 	outList = []
 	for filePath in filePathList:
@@ -132,9 +148,7 @@ def functionAddressAndSymbolFromAssembly(includeNonmatchings = True, includeMatc
 	return outList
 
 
-def instructionCountFromAssembly(includeNonmatchings = True, includeMatchings = False, filterString = None):
-
-	filePathList = getAssemblyFilePathList(includeNonmatchings, includeMatchings, filterString)
+def instructionCountFromAssembly(filePathList):
 
 	instructionCount = 0
 	for filePath in filePathList:
@@ -144,9 +158,7 @@ def instructionCountFromAssembly(includeNonmatchings = True, includeMatchings = 
 	return instructionCount
 
 
-def functionsFromAssembly(includeNonmatchings = True, includeMatchings = False, filterString = None):
-
-	filePathList = getAssemblyFilePathList(includeNonmatchings, includeMatchings, filterString)
+def functionsFromAssembly(filePathList):
 
 	output = dict()
 	for filePath in filePathList:

@@ -1807,9 +1807,11 @@ segments:
       - [0x18DCB0, c, ovl8]
       - [0x18DFE0, c, ovl8_1]
       - [0x18DFF0, c, ovl8_2]
-      - [0x1A44F0, data, ovl8_2]
-      - [0x1AB650, .rodata, ovl8_2]
-      - { start: auto, type: bss, vram: 0x8038EE60, name: ovl8_2 }
+      - [0x18E800, c, ovl8_3]
+      - [0x18EFE0, c, ovl8_4]
+      - [0x1A44F0, data, ovl8_4]
+      - [0x1AB650, .rodata, ovl8_4]
+      - { start: auto, type: bss, vram: 0x8038EE60, name: ovl8_4 }
 
   - name: ovl9
     type: code

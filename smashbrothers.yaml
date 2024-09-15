@@ -1804,9 +1804,12 @@ segments:
     vram: 0x80371460
     exclusive_ram_id: overlay_80371460
     subsegments:
-      - [0x18DCB0, asm, ovl8]
-      - [0x1A44F0, data, ovl8]
-      - [0x1AB650, rodata, ovl8]
+      - [0x18DCB0, c, ovl8]
+      - [0x18DFE0, c, ovl8_1]
+      - [0x18DFF0, c, ovl8_2]
+      - [0x1A44F0, data, ovl8_2]
+      - [0x1AB650, .rodata, ovl8_2]
+      - { start: auto, type: bss, vram: 0x8038EE60, name: ovl8_2 }
 
   - name: ovl9
     type: code

@@ -22,8 +22,6 @@
 
 #include <PR/libaudio.h>
 
-#if 0
-// seqp->evtq needs a padding of 8 bytes before it in the struct. Need more info to figure out where.
 void alCSPPlay(ALCSPlayer *seqp)
 {
     ALEvent evt;
@@ -32,6 +30,3 @@ void alCSPPlay(ALCSPlayer *seqp)
                     
     alEvtqPostEvent(&seqp->evtq, &evt, 0);
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/cspplay/alCSPPlay.s")
-#endif

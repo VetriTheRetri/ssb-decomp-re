@@ -128,15 +128,16 @@ build/src/libultra/os/%.o: 		OPTFLAGS := -O1 -g0 -mips2
 build/src/libultra/rmon/%.o: 	OPTFLAGS := -O1 -g0 -mips2
 build/src/libultra/debug/%.o: 	OPTFLAGS := -O1 -g0 -mips2
 build/src/libultra/host/%.o:	OPTFLAGS := -O1 -g0 -mips2
-# build/src/libultra/n_audio/%.o:	OPTFLAGS := -O3 -g0
 
 # per file flags
-# build/src/libultra/n_audio/cspsetvol.o:	OPTFLAGS := -O3 -g0
-# build/src/libultra/n_audio/cspsetvol.o: CC := $(IDO7)
-# build/src/libultra/n_audio/cspsetpriority.o:	OPTFLAGS := -O3 -g0
-# build/src/libultra/n_audio/cspsetpriority.o: CC := $(IDO7)
-# build/src/libultra/n_audio/cspsetfxmix.o:	OPTFLAGS := -O3 -g0
-# build/src/libultra/n_audio/cspsetfxmix.o: CC := $(IDO7)
+build/src/libultra/n_audio/cspsetvol.o:	OPTFLAGS := -O3 -g0 -mips2
+build/src/libultra/n_audio/cspsetvol.o: CC := $(IDO7)
+build/src/libultra/n_audio/cspsetseq.o:	OPTFLAGS := -O3 -g0 -mips2
+build/src/libultra/n_audio/cspsetseq.o: CC := $(IDO7)
+build/src/libultra/n_audio/cspsetpriority.o:	OPTFLAGS := -O3 -g0 -mips2
+build/src/libultra/n_audio/cspsetpriority.o: CC := $(IDO7)
+build/src/libultra/n_audio/cspsetfxmix.o:	OPTFLAGS := -O3 -g0 -mips2
+build/src/libultra/n_audio/cspsetfxmix.o: CC := $(IDO7)
 build/src/libultra/n_audio/cspsetbank.o:	OPTFLAGS := -O3 -g0 -mips2
 build/src/libultra/n_audio/cspsetbank.o:	CC := $(IDO7)
 build/src/libultra/n_audio/n_synaddplayer.o: OPTFLAGS := -O3 -g0 -mips2

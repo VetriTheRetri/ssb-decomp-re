@@ -20,19 +20,13 @@
 
 #include <PR/libaudio.h>
 
-#if 0
-// Needs -O3
-// ALCSPlayer Needs 8 bytes of padding before evtq to match
 void alCSPSetChlPriority(ALCSPlayer *seqp, u8 chan, u8 priority)
 {
-    ALEvent evt;
+	ALEvent evt;
 
-    evt.type = AL_SEQP_PRIORITY_EVT;
-    evt.msg.sppriority.chan = chan;
-    evt.msg.sppriority.priority = priority;
+	evt.type = AL_SEQP_PRIORITY_EVT;
+	evt.msg.sppriority.chan = chan;
+	evt.msg.sppriority.priority = priority;
 
-    alEvtqPostEvent(&seqp->evtq, &evt, 0);
+	alEvtqPostEvent(&seqp->evtq, &evt, 0);
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/cspsetpriority/alCSPSetChlPriority.s")
-#endif

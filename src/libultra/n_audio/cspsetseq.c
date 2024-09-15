@@ -22,19 +22,12 @@
 
 #include <PR/libaudio.h>
 
-#if 0
-// Needs -O3
-// ALCSPlayer Needs 8 bytes of padding before evtq to match
 void alCSPSetSeq(ALCSPlayer *seqp, ALCSeq *seq)
 {
-    ALEvent evt;
+	ALEvent evt;
 
-    evt.type = AL_SEQP_SEQ_EVT;
-    evt.msg.spseq.seq = seq;
+	evt.type = AL_SEQP_SEQ_EVT;
+	evt.msg.spseq.seq = seq;
 
-    alEvtqPostEvent(&seqp->evtq, &evt, 0);
+	alEvtqPostEvent(&seqp->evtq, &evt, 0);
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/cspsetseq/alCSPSetSeq.s")
-#endif
-

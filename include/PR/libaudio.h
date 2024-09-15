@@ -822,6 +822,7 @@ extern "C"
 		ALPlayer node;	/* note: must be first in structure */
 		ALSynth* drvr;	/* reference to the client driver   */
 		ALCSeq* target; /* current sequence                 */
+		s32 unknown[2];
 		ALMicroTime curTime;
 		ALBank* bank;  /* current ALBank                   */
 		s32 uspt;	   /* microseconds per tick            */
@@ -832,7 +833,6 @@ extern "C"
 		u8 maxChannels; /* number of MIDI channels          */
 		u8 debugFlags;	/* control which error get reported */
 		ALEvent nextEvent;
-		s32 unknown[2];
 		ALEventQueue evtq;
 		ALMicroTime frameTime;
 		ALChanState* chanState;	  /* 16 channels for MIDI             */

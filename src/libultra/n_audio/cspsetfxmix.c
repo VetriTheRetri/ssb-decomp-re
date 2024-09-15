@@ -20,21 +20,15 @@
 
 #include <PR/libaudio.h>
 
-#if 0
-// Needs -O3
-// ALCSPlayer Needs 8 bytes of padding before evtq to match
 void alCSPSetChlFXMix(ALCSPlayer *seqp, u8 chan, u8 fxmix)
 {
-    ALEvent       evt; 
+	ALEvent       evt;
 
-    evt.type            = AL_SEQP_MIDI_EVT;
-    evt.msg.midi.ticks  = 0;
-    evt.msg.midi.status = AL_MIDI_ControlChange | chan;
-    evt.msg.midi.byte1  = AL_MIDI_FX1_CTRL;
-    evt.msg.midi.byte2  = fxmix;
-                    
-    alEvtqPostEvent(&seqp->evtq, &evt, 0);
+	evt.type            = AL_SEQP_MIDI_EVT;
+	evt.msg.midi.ticks  = 0;
+	evt.msg.midi.status = AL_MIDI_ControlChange | chan;
+	evt.msg.midi.byte1  = AL_MIDI_FX1_CTRL;
+	evt.msg.midi.byte2  = fxmix;
+
+	alEvtqPostEvent(&seqp->evtq, &evt, 0);
 }
-#else
-#pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/cspsetfxmix/alCSPSetChlFXMix.s")
-#endif

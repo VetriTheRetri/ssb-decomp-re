@@ -1257,7 +1257,7 @@ void mnTitleRenderLogoFireEffect()
 	gDPPipeSync(gDisplayListHead[0]++);
 	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-	func_ovl0_800D0D34();
+	lbParticleDrawTextures();
 
 	gDPSetTexturePersp(gDisplayListHead[0]++, G_TP_PERSP);
 	gDPSetDepthSource(gDisplayListHead[0]++, G_ZS_PIXEL);

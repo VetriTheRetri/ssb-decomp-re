@@ -2051,7 +2051,7 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
 
         if (ptcl != NULL)
         {
-            ptcl->color1.a = 0xC0;
+            ptcl->primcolor.a = 0xC0;
         }
         break;
 

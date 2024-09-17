@@ -57,6 +57,14 @@ typedef enum efKind
 
 } efKind;
 
+typedef enum lbTransformStatus
+{
+    nLBTransformStatusDefault,
+    nLBTransformStatusReady,
+    nLBTransformStatusFinished
+    
+} lbTransformStatus;
+
 typedef struct efStruct			efStruct;
 typedef struct efScript         efScript;
 typedef struct efScriptDesc     efScriptDesc;

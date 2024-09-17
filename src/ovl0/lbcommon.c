@@ -1977,6 +1977,7 @@ sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 #else
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/lbcommon/func_ovl0_800CB140.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/lbcommon/D_ovl0_800D5E10.s")
 #endif
 
 // 0x800CB2F0
@@ -2185,7 +2186,7 @@ void lbCommonDecodeSpriteBitmapsSiz4b(Sprite *sprite)
     sprite->bmsiz = G_IM_SIZ_4b;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/lbcommon/D_ovl0_800D5E10.s")
+// #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/lbcommon/D_ovl0_800D5E10.s")
 
 // 0x800CB7D4
 void lbCommonDrawSObjBitmap

@@ -2260,14 +2260,14 @@ efParticle* efManagerDamageNormalHeavyMakeEffect(Vec3f *pos, s32 player, s32 siz
             ep->effect_vars.damage_normal_heavy.player = player;
             ep->effect_vars.damage_normal_heavy.size = size;
 
-            ptcl->color1.r = dEFManagerDamageNormalHeavyPrimColorR[player];
-            ptcl->color1.g = dEFManagerDamageNormalHeavyPrimColorG[player];
-            ptcl->color1.b = dEFManagerDamageNormalHeavyPrimColorB[player];
-            ptcl->color1.a = 0xFF;
+            ptcl->primcolor.r = dEFManagerDamageNormalHeavyPrimColorR[player];
+            ptcl->primcolor.g = dEFManagerDamageNormalHeavyPrimColorG[player];
+            ptcl->primcolor.b = dEFManagerDamageNormalHeavyPrimColorB[player];
+            ptcl->primcolor.a = 0xFF;
 
-            ptcl->color2.r = dEFManagerDamageNormalHeavyEnvColorR[player];
-            ptcl->color2.g = dEFManagerDamageNormalHeavyEnvColorG[player];
-            ptcl->color2.b = dEFManagerDamageNormalHeavyEnvColorB[player];
+            ptcl->envcolor.r = dEFManagerDamageNormalHeavyEnvColorR[player];
+            ptcl->envcolor.g = dEFManagerDamageNormalHeavyEnvColorG[player];
+            ptcl->envcolor.b = dEFManagerDamageNormalHeavyEnvColorB[player];
         }
         else ptcl = efManagerDestroyParticleGObj(ptcl, effect_gobj);
     }

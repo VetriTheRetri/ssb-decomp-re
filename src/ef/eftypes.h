@@ -56,8 +56,8 @@ struct efTextureDesc
 struct efTexture
 {
     u32 count;
-    s32 format;
-    s32 color_depth;
+    s32 fmt;
+    s32 siz;
     s32 width, height;
     u32 flags;
     void *data[1];        // Offsets to image, then palette data
@@ -107,13 +107,13 @@ struct efTransform
     Vec3f translate;
     Vec3f rotate;
     Vec3f scale;
-    u8 unk_tfrm_0x28;
-    u8 unk_tfrm_0x29;
-    u16 users_num;              // Number of users using this particular efTransform struct?
-    Mtx44f unk_tfrm_0x2C;
-    Mtx44f unk_tfrm_0x6C;
-    f32 unk_tfrm_0xAC;
-    f32 unk_tfrm_0xB0;
+    u8 transform_status;        // 0 = ???, 1 = schedule for transformation, 2 = ready
+    u8 transform_id;
+    u16 users_num;              // Number of other structs using this particular efTransform struct?
+    Mtx44f affine;              // Translate + rotate + scale matrix
+    Mtx44f projection;          // Projection matrix
+    f32 pc0_magnitude;          // Projection matrix column 0 magnitude
+    f32 pc1_magnitude;          // Projection matrix column 1 magnitude
     void (*proc_dead)(efTransform*);
     u16 unk_tfrm_0xB8;
     GObj *effect_gobj;
@@ -126,14 +126,14 @@ struct efParticle
     u16 flags;                  // Flags?
     u8 bank_id;
     u8 unk_ptcl_0x9;
-    u8 unk_ptcl_0xA;
-    u8 unk_ptcl_0xB;
+    u8 texture_id;
+    u8 data_id;
     ub16 is_have_bytecode;      // Whether particle has bytecode script?
     u16 unk_ptcl_0xE;
     u16 unk_ptcl_0x10;
     u16 unk_ptcl_0x12;
     u8 *bytecode;
-    u16 unk_ptcl_0x18;
+    u16 bytecode_csr;
     u16 unk_ptcl_0x1A;
     u16 unk_ptcl_0x1C;
     u16 unk_ptcl_0x1E;
@@ -141,11 +141,11 @@ struct efParticle
     Vec3f vel;                  // Velocity?
     f32 unk_ptcl_0x38;
     f32 unk_ptcl_0x3C;
-    f32 unk_ptcl_0x40;
+    f32 mscale;                 // Scales efTransform affine matrix magnitude?
     f32 unk_ptcl_0x44;
-    syColorRGBA color1;
+    syColorRGBA primcolor;
     s32 unk_ptcl_0x4C;
-    syColorRGBA color2;
+    syColorRGBA envcolor;
     u16 unk_ptcl_0x54;
     efGenerator *gtor;
     efTransform *tfrm;

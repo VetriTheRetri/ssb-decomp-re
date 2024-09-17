@@ -45,7 +45,7 @@ extern void syMatrixLookAt(
     f32 xUp,
     f32 yUp,
     f32 zUp);
-extern void syMatrixModLookAt_f(
+extern void syMatrixModLookAtF(
     Mtx4f *mf,
     f32 xEye,
     f32 yEye,

@@ -64,7 +64,7 @@ void efDisplayProcDrawZPerspXLU(GObj *effect_gobj)
 
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
 
-    func_ovl0_800D0D34(effect_gobj);
+    lbParticleDrawTextures(effect_gobj);
 
     gDPPipeSync(gDisplayListHead[0]++);
 
@@ -82,7 +82,7 @@ void efDisplayProcDrawZPerspCLD(GObj *effect_gobj)
 
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
 
-    func_ovl0_800D0D34(effect_gobj);
+    lbParticleDrawTextures(effect_gobj);
 
     gDPPipeSync(gDisplayListHead[0]++);
 
@@ -100,7 +100,7 @@ void efDisplayProcDrawZPerspAAXLU(GObj *effect_gobj)
 
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    func_ovl0_800D0D34(effect_gobj);
+    lbParticleDrawTextures(effect_gobj);
 
     gDPPipeSync(gDisplayListHead[0]++);
 

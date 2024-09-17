@@ -201,7 +201,7 @@ void syMatrixLookAt(
 }
 
 // Modified version of guLookAtF that takes an extra f32 argument and calls func_80019438
-void syMatrixModLookAt_f(
+void syMatrixModLookAtF(
     Mtx4f *mf,
     f32 xEye,
     f32 yEye,
@@ -281,7 +281,7 @@ void syMatrixModLookAt(
     f32 zUp) {
     Mtx4f mf;
 
-    syMatrixModLookAt_f(&mf, xEye, yEye, zEye, xAt, yAt, zAt, arg7, xUp, yUp, zUp);
+    syMatrixModLookAtF(&mf, xEye, yEye, zEye, xAt, yAt, zAt, arg7, xUp, yUp, zUp);
 
     syMatrixF2L(&mf, m);
 }

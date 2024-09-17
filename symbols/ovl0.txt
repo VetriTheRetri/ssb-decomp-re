@@ -113,7 +113,7 @@ lbParticleSetDistVel = 0x800CEDBC; // segment:ovl0 size:0xfc
 lbParticleAddDistVelMag = 0x800CEEB8; // segment:ovl0 size:0x94
 func_ovl0_800CEF4C = 0x800CEF4C; // segment:ovl0 size:0x1d28
 lbParticleStructProcRun = 0x800D0C74; // segment:ovl0 size:0xc0
-func_ovl0_800D0D34 = 0x800D0D34; // segment:ovl0 size:0x19ec
+lbParticleDrawTextures = 0x800D0D34; // segment:ovl0 size:0x19ec
 lbParticleAddGeneratorToBuf = 0x800D2720; // segment:ovl0 size:0x24
 lbParticleSetDitherModes = 0x800D2744; // segment:ovl0 size:0x14
 func_ovl0_800D2758 = 0x800D2758; // segment:ovl0 size:0xa0
@@ -155,10 +155,10 @@ scBackupClearAllData = 0x800D4C48; // segment:ovl0
 func_ovl0_800D4C8C = 0x800D4C8C; // segment:ovl0
 
 dLBCommonSinFLookup = 0x800D4CA0; // segment:ovl0
-dLBParticleColorDitherModes = 0x800D5D50; // segment:ovl0
-dLBParticleAlphaDitherModes = 0x800D5D54; // segment:ovl0
+dLBParticleColorDitherMode = 0x800D5D50; // segment:ovl0
+dLBParticleAlphaDitherMode = 0x800D5D54; // segment:ovl0
 D_ovl0_800D5D58 = 0x800D5D58; // segment:ovl0
-D_ovl0_800D5D5C = 0x800D5D5C; // segment:ovl0
+sLBParticleCurrentTransformID = 0x800D5D5C; // segment:ovl0
 D_ovl0_800D5D60 = 0x800D5D60; // segment:ovl0
 
 D_ovl0_800D5E10 = 0x800D5E10; // segment:ovl0 type:asciz

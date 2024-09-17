@@ -733,14 +733,17 @@ sLBCommonScissorYMin = 0x800D62C8;
 
 sLBParticleStructsAllocFree = 0x800D6350;
 sLBParticleStructsAllocBuf = 0x800D6358;
+sLBParticleGeneratorsAllocFree = 0x800D6398;
 sLBParticleGeneratorsAllocBuf = 0x800D639C;
 sLBParticleScriptBanksNum = 0x800D63C0;
 sLBParticleTextureBanksNum = 0x800D63E0;
 sLBParticleScriptBanks = 0x800D6400;
 sLBParticleTextureBanks = 0x800D6420;
 sLBParticleStructsUsedNum = 0x800D6448;
+sLBParticleGeneratorsUsedNum = 0x800D644A;
 sLBParticleTransformsUsedNum = 0x800D644C;
 D_ovl0_800D644E = 0x800D644E;
+D_ovl0_800D6450 = 0x800D6450;
 D_ovl0_800D6452 = 0x800D6452;
 sLBParticleTransformsAllocFree = 0x800D6454;
 

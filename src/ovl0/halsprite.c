@@ -16,6 +16,9 @@ efParticle *sLBParticleStructsAllocFree;
 // 0x800D6358
 efParticle *sLBParticleStructsAllocBuf[16];
 
+// 0x800D6398
+efGenerator *sLBParticleGeneratorsAllocFree;
+
 // 0x800D639C
 efGenerator *sLBParticleGeneratorsAllocBuf[9];
 
@@ -40,11 +43,17 @@ s32 D_800D6444;
 // 0x800D6448
 u16 sLBParticleStructsUsedNum;
 
+// 0x800D644A
+u16 sLBParticleGeneratorsUsedNum;
+
 // 0x800D644C
 u16 sLBParticleTransformsUsedNum;
 
 // 0x800D644E
 u16 D_ovl0_800D644E;
+
+// 0x800D6450
+u16 D_ovl0_800D6450;
 
 // 0x800D6452
 u16 D_ovl0_800D6452;
@@ -1416,7 +1425,32 @@ void lbParticleSetDitherModes(s32 colordither_mode, s32 alphadither_mode)
 	dLBParticleAlphaDitherMode = alphadither_mode;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800D2758.s")
+extern void func_ovl0_800D2C4C(GObj*);
+
+// 0x800D2758
+GObj* lbParticleAllocGenerators(s32 num)
+{
+	s32 i;
+
+	sLBParticleGeneratorsAllocFree = sLBParticleGeneratorsAllocBuf[0] = NULL;
+
+	for (i = num - 1; i >= 0; i--)
+	{
+		efGenerator* gtor = gsMemoryAlloc(sizeof(*gtor), 0x4);
+
+		if (gtor == NULL)
+		{
+			return NULL;
+		}
+		gtor->next = sLBParticleGeneratorsAllocFree;
+
+		sLBParticleGeneratorsAllocFree = gtor;
+	}
+	sLBParticleGeneratorsUsedNum = 0;
+	D_ovl0_800D6450 = 0;
+
+	return gcMakeGObjSPAfter(-7, func_ovl0_800D2C4C, 0, GOBJ_LINKORDER_DEFAULT);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800D27F8.s")
 

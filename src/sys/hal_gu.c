@@ -745,7 +745,7 @@ void hal_rowscale_f(Mtx4f *mf, f32 x, f32 y, f32 z) {
     }
 }
 
-void syMatrixTranslate_f(Mtx4f *mf, f32 x, f32 y, f32 z) {
+void syMatrixTraF(Mtx4f *mf, f32 x, f32 y, f32 z) {
     int i, j;
 
     (*mf)[3][0] = x;
@@ -912,7 +912,7 @@ void syMatrixTraRotRSca(
 }
 
 // Return rotation matrix given roll, pitch, and yaw in radians
-void syMatrixRotRpyR_f(Mtx4f *mf, f32 r, f32 p, f32 h) {
+void syMatrixRotRpyRF(Mtx4f *mf, f32 r, f32 p, f32 h) {
     f32 sinr, sinp, sinh;
     f32 cosr, cosp, cosh;
 
@@ -1016,7 +1016,7 @@ void syMatrixRotRpyR(Mtx *m, f32 r, f32 p, f32 h) {
 #endif
 
 void syMatrixTraRotRpyR_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h) {
-    syMatrixRotRpyR_f(mf, r, p, h);
+    syMatrixRotRpyRF(mf, r, p, h);
     (*mf)[3][0] = dx;
     (*mf)[3][1] = dy;
     (*mf)[3][2] = dz;
@@ -1107,7 +1107,7 @@ void syMatrixTraRotRpyRScaF(
     f32 sx,
     f32 sy,
     f32 sz) {
-    syMatrixRotRpyR_f(mf, r, p, h);
+    syMatrixRotRpyRF(mf, r, p, h);
     (*mf)[3][0] = dx;
     (*mf)[3][1] = dy;
     (*mf)[3][2] = dz;
@@ -1521,14 +1521,14 @@ void syMatrixTraRotD(Mtx *m, f32 dx, f32 dy, f32 dz, f32 a, f32 rx, f32 ry, f32 
     syMatrixF2LFixedW(&mf, m);
 }
 
-void syMatrixRotRpyR_f_degrees(Mtx4f *mf, f32 r, f32 p, f32 h) {
-    syMatrixRotRpyR_f(mf, (r * M_PI_F) / 180.0f, (p * M_PI_F) / 180.0f, (h * M_PI_F) / 180.0f);
+void syMatrixRotRpyRF_degrees(Mtx4f *mf, f32 r, f32 p, f32 h) {
+    syMatrixRotRpyRF(mf, (r * M_PI_F) / 180.0f, (p * M_PI_F) / 180.0f, (h * M_PI_F) / 180.0f);
 }
 
 void syMatrixRotRpyD(Mtx *m, f32 r, f32 p, f32 h) {
     Mtx4f mf;
 
-    syMatrixRotRpyR_f(&mf, (r * M_PI_F) / 180.0f, (p * M_PI_F) / 180.0f, (h * M_PI_F) / 180.0f);
+    syMatrixRotRpyRF(&mf, (r * M_PI_F) / 180.0f, (p * M_PI_F) / 180.0f, (h * M_PI_F) / 180.0f);
     syMatrixF2LFixedW(&mf, m);
 }
 

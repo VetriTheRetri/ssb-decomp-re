@@ -137,7 +137,7 @@ extern void
 hal_perspective(Mtx *m, u16 *perspNorm, f32 fovy, f32 aspect, f32 near, f32 far, f32 scale);
 extern void syMatrixScaF(Mtx4f *mf, f32 x, f32 y, f32 z);
 extern void syMatrixSca(Mtx *m, f32 x, f32 y, f32 z);
-extern void syMatrixTranslate_f(Mtx4f *mf, f32 x, f32 y, f32 z);
+extern void syMatrixTraF(Mtx4f *mf, f32 x, f32 y, f32 z);
 extern void syMatrixTranslate(Mtx *m, f32 x, f32 y, f32 z);
 extern void syMatrixRotR_f(Mtx4f *mf, f32 a, f32 x, f32 y, f32 z);
 extern void syMatrixRotR(Mtx *m, f32 a, f32 x, f32 y, f32 z);
@@ -168,7 +168,7 @@ extern void syMatrixTraRotRSca(
     f32 sx,
     f32 sy,
     f32 sz);
-extern void syMatrixRotRpyR_f(Mtx4f *mf, f32 r, f32 p, f32 h);
+extern void syMatrixRotRpyRF(Mtx4f *mf, f32 r, f32 p, f32 h);
 extern void syMatrixRotRpyR(Mtx *m, f32 r, f32 p, f32 h);
 extern void syMatrixTraRotRpyR_f(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h);
 extern void syMatrixTraRotRpyR(Mtx *m, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h);
@@ -242,7 +242,7 @@ extern void
 syMatrixRotR_translate_f_degrees(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 a, f32 rx, f32 ry, f32 rz);
 extern void
 syMatrixTraRotD(Mtx *m, f32 dx, f32 dy, f32 dz, f32 a, f32 rx, f32 ry, f32 rz);
-extern void syMatrixRotRpyR_f_degrees(Mtx4f *mf, f32 r, f32 p, f32 h);
+extern void syMatrixRotRpyRF_degrees(Mtx4f *mf, f32 r, f32 p, f32 h);
 extern void syMatrixRotRpyD(Mtx *m, f32 r, f32 p, f32 h);
 extern void
 syMatrixTraRotRpyR_f_degrees(Mtx4f *mf, f32 dx, f32 dy, f32 dz, f32 r, f32 p, f32 h);

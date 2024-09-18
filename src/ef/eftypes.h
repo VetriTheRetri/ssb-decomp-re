@@ -43,7 +43,7 @@ struct efScript
     f32 unk_efscript_0x20;
     f32 unk_efscript_0x24;
     f32 unk_efscript_0x28;
-    f32 unk_efscript_0x2C;
+    f32 mscale;
     u8 bytecode[1];         // Particle bytecode
 };
 
@@ -68,16 +68,17 @@ struct efGenerator
     efGenerator *next;
 	u16 unk_gtor_0x4;
 	u16 flags;
-	u8 unk_gtor_0x8;
-	f32 unk_gtor_0xC;
+	u8 kind;
+    u8 bank_id;
+    u8 texture_id;
+	u16 unk_gtor_0xC;
+    u16 lifetime;
 	f32 unk_gtor_0x10;
     Vec3f pos;
-    f32 unk_gtor_0x20;
-    f32 unk_gtor_0x24;
-    f32 unk_gtor_0x28;
-    f32 unk_gtor_0x2C;
-    f32 unk_gtor_0x30;
-    f32 unk_gtor_0x34;
+    Vec3f vel;
+    f32 unk_gtor_0x2C;              // Base angle?
+    f32 unk_gtor_0x30;              // Target angle?
+    f32 mscale;
     f32 unk_gtor_0x38;
     f32 unk_gtor_0x3C;
     f32 unk_gtor_0x40;

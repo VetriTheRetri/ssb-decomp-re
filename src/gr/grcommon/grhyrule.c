@@ -41,7 +41,7 @@ efParticle* grHyruleTwisterMakeEffect(Vec3f *pos, s32 effect_id)
 
             return NULL;
         }
-        func_ovl0_800CEA14(ptcl);
+        lbParticleParseStructBytecode(ptcl);
 
         if (tfrm->users_num == 0)
         {
@@ -342,7 +342,7 @@ void grHyruleTwisterUpdateSubside(void)
 
         if (gGRCommonStruct.hyrule.twister_tfrm != NULL)
         {
-            func_ovl0_800D39D4(gGRCommonStruct.hyrule.twister_tfrm->unk_tfrm_0xB8, 1);
+            lbParticleEjectStructID(gGRCommonStruct.hyrule.twister_tfrm->generator_id, 1);
         }
     }
 }

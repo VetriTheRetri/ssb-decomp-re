@@ -1292,7 +1292,7 @@ void mnTitleLogoFireMakeEffect()
 		gcPlayAnimAll(logo_fire_effect_gobj);
 		gcAddGObjProcess(logo_fire_effect_gobj, gcPlayAnimAll, 1, 1);
 
-		gtor = func_ovl0_800D35DC(gMNTitleParticleBankId, 0);
+		gtor = lbParticleMakeGenerator(gMNTitleParticleBankId, 0);
 		if (gtor != NULL)
 			gtor->dobj = DObjGetStruct(logo_fire_effect_gobj)->child->sib_next->child;
 	}

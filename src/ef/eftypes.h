@@ -32,9 +32,9 @@ struct efScriptDesc
 
 struct efScript
 {
-    u16 unk_efscript_0x0;
+    u16 kind;               // Generator kind
 	u16 texture_id;         // Texture ID?
-    u16 unk_efscript_0x4;
+    u16 lifetime;
 	u16 unk_efscript_0x6;   // Total frames?
     u32 flags;              // Flags?
 	f32 unk_efscript_0xC;
@@ -66,14 +66,14 @@ struct efTexture
 struct efGenerator
 {
     efGenerator *next;
-	u16 unk_gtor_0x4;
+	u16 generator_id;
 	u16 flags;
 	u8 kind;
     u8 bank_id;
-    u8 texture_id;
+    u16 texture_id;
 	u16 unk_gtor_0xC;
     u16 lifetime;
-	f32 unk_gtor_0x10;
+	u8 *bytecode;
     Vec3f pos;
     Vec3f vel;
     f32 unk_gtor_0x2C;              // Base angle?
@@ -88,17 +88,22 @@ struct efGenerator
 
     union efGeneratorVars
     {
-        Vec3f rotate;
+        struct efGeneratorRotate
+        {
+            f32 base, target;
+
+        } rotate;
+
         Vec3f move;
 
         struct efGeneratorUnkVars
         {
-            u32 pad;
+            f32 f;
             u16 halfword;
 
         } unk_gtor_vars;
 
-    } gtor_vars;
+    } generator_vars;
 };
 
 // Might actually be the real efGenerator?
@@ -116,17 +121,17 @@ struct efTransform
     f32 pc0_magnitude;          // Projection matrix column 0 magnitude
     f32 pc1_magnitude;          // Projection matrix column 1 magnitude
     void (*proc_dead)(efTransform*);
-    u16 unk_tfrm_0xB8;
+    u16 generator_id;
     GObj *effect_gobj;
 };
 
 struct efParticle
 {
     efParticle *next;
-    u16 unk_ptcl_0x4;
+    u16 generator_id;
     u16 flags;                  // Flags?
     u8 bank_id;
-    u8 unk_ptcl_0x9;
+    u8 link_id;
     u8 texture_id;
     u8 data_id;
     ub16 is_have_bytecode;      // Whether particle has bytecode script?

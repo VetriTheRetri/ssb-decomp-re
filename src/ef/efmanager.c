@@ -2170,7 +2170,7 @@ efParticle* efManagerDamageNormalLightMakeEffect(Vec3f *pos, s32 player, s32 siz
             tfrm->effect_gobj = effect_gobj;
             tfrm->proc_dead = efManagerDefaultProcDead;
 
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -2246,7 +2246,7 @@ efParticle* efManagerDamageNormalHeavyMakeEffect(Vec3f *pos, s32 player, s32 siz
             tfrm->effect_gobj = effect_gobj;
             tfrm->proc_dead = efManagerDamageNormalHeavyProcDead;
 
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -2314,7 +2314,7 @@ efParticle* efManagerImpactShockMakeEffect(Vec3f *pos, s32 size)
             tfrm->effect_gobj = effect_gobj;
             tfrm->proc_dead = efManagerDefaultProcDead;
 
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -2402,7 +2402,7 @@ efParticle* efManagerDamageFireMakeEffect(Vec3f *pos, s32 size)
             tfrm->effect_gobj = effect_gobj;
             tfrm->proc_dead = efManagerDefaultProcDead;
 
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -2470,7 +2470,7 @@ efParticle* efManagerDamageElectricMakeEffect(Vec3f *pos, s32 size)
             tfrm->effect_gobj = effect_gobj;
             tfrm->proc_dead = efManagerDefaultProcDead;
 
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -2564,7 +2564,7 @@ efParticle* efManagerFlameLRMakeEffect(Vec3f *pos, s32 lr)
             tfrm->effect_gobj = effect_gobj;
             tfrm->proc_dead = efManagerDefaultProcDead;
 
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -2631,7 +2631,7 @@ efParticle* efManagerFlameRandgcMakeEffect(Vec3f *pos)
             tfrm->effect_gobj = effect_gobj;
             tfrm->proc_dead = efManagerDefaultProcDead;
 
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -2695,7 +2695,7 @@ efParticle* efManagerFlameStaticMakeEffect(Vec3f *pos)
             tfrm->effect_gobj = effect_gobj;
             tfrm->proc_dead = efManagerDefaultProcDead;
 
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -2757,7 +2757,7 @@ efParticle* efManagerDustCollideMakeEffect(Vec3f *pos)
             tfrm->effect_gobj = effect_gobj;
             tfrm->proc_dead = efManagerDefaultProcDead;
 
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -2894,7 +2894,7 @@ efParticle* efManagerDustLightMakeEffect(Vec3f *pos, sb32 is_invert_vel, f32 f_i
             tfrm->effect_gobj = effect_gobj;
             tfrm->proc_dead = efManagerDefaultProcDead;
 
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -3071,7 +3071,7 @@ efParticle* efManagerDustExpandLargeMakeEffect(Vec3f *pos)
 
         if (tfrm != NULL)
         {
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -3131,7 +3131,7 @@ efParticle* efManagerDustExpandSmallMakeEffect(Vec3f *pos, f32 f_index)
             tfrm->effect_gobj = effect_gobj;
             tfrm->proc_dead = efManagerDefaultProcDead;
 
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -3168,7 +3168,7 @@ efParticle* efManagerDustDashMakeEffect(Vec3f *pos, s32 lr, f32 scale)
 
         if (tfrm != NULL)
         {
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -3632,7 +3632,7 @@ efParticle* efManagerSparkleWhiteMakeEffect(Vec3f *pos)
 
         if (tfrm != NULL)
         {
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -3661,7 +3661,7 @@ efParticle* efManagerSparkleWhiteMultiMakeEffect(Vec3f *pos)
 
         if (tfrm != NULL)
         {
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -3690,7 +3690,7 @@ efParticle* efManagerSparkleWhiteMultiExplodeMakeEffect(Vec3f *pos)
 
         if (tfrm != NULL)
         {
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -3719,7 +3719,7 @@ efParticle* efManagerSparkleWhiteScaleMakeEffect(Vec3f *pos, f32 scale)
 
         if (tfrm != NULL)
         {
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -3752,7 +3752,7 @@ efParticle* efManagerSparkleWhiteDeadMakeEffect(Vec3f *pos, f32 scale)
 
         if (tfrm != NULL)
         {
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -3930,7 +3930,7 @@ efParticle* efManagerDamageCoinMakeEffect(Vec3f *pos)
             tfrm->effect_gobj = effect_gobj;
             tfrm->proc_dead = efManagerDamageCoinProcDead;
 
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -3985,7 +3985,7 @@ efParticle* efManagerSetOffMakeEffect(Vec3f *pos, s32 size)
             tfrm->effect_gobj = effect_gobj;
             tfrm->proc_dead = efManagerDefaultProcDead;
 
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -4230,7 +4230,7 @@ efParticle* efManagerThunderAmpMakeEffect(Vec3f *pos)
 
         if (tfrm != NULL)
         {
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -4251,7 +4251,7 @@ efParticle* efManagerThunderAmpMakeEffect(Vec3f *pos)
 // 0x801014A8
 efGenerator* efManagerRippleMakeEffect(Vec3f *pos)
 {
-    efGenerator *gtor = func_ovl0_800D35DC(gEFManagerParticleBankID, 0x61);
+    efGenerator *gtor = lbParticleMakeGenerator(gEFManagerParticleBankID, 0x61);
 
     if (gtor != NULL)
     {
@@ -4377,7 +4377,7 @@ efParticle* efManagerFlashLargeMakeEffect(Vec3f *pos)
 // 0x80101790
 efGenerator* efManagerShieldBreakMakeEffect(Vec3f *pos)
 {
-    efGenerator *gtor = func_ovl0_800D35DC(gEFManagerParticleBankID, 3);
+    efGenerator *gtor = lbParticleMakeGenerator(gEFManagerParticleBankID, 3);
 
     if (gtor != NULL)
     {
@@ -4727,7 +4727,7 @@ GObj* efManagerCaptainFalconPunchMakeEffect(GObj *fighter_gobj)
 // 0x80102018
 efGenerator* efManagerKirbyStarMakeEffect(Vec3f *pos)
 {
-    efGenerator *gtor = func_ovl0_800D35DC(gEFManagerParticleBankID, 0xF);
+    efGenerator *gtor = lbParticleMakeGenerator(gEFManagerParticleBankID, 0xF);
 
     if (gtor != NULL)
     {
@@ -4741,7 +4741,7 @@ efGenerator* efManagerKirbyStarMakeEffect(Vec3f *pos)
 // 0x80102070
 efGenerator* efManagerStarSplashMakeEffect(Vec3f *pos, s32 lr)
 {
-    efGenerator *gtor = (lr == nGMFacingL) ? func_ovl0_800D35DC(gEFManagerParticleBankID, 0x10) : func_ovl0_800D35DC(gEFManagerParticleBankID, 0x11);
+    efGenerator *gtor = (lr == nGMFacingL) ? lbParticleMakeGenerator(gEFManagerParticleBankID, 0x10) : lbParticleMakeGenerator(gEFManagerParticleBankID, 0x11);
 
     if (gtor != NULL)
     {
@@ -4814,7 +4814,7 @@ GObj* efManagerDeadExplodeMakeEffect(Vec3f *pos, s32 player, u32 type)
 
         if (tfrm != NULL)
         {
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -5316,7 +5316,7 @@ efParticle* efManagerFireGrindMakeEffect(Vec3f *pos)
 
         if (tfrm != NULL)
         {
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -5345,7 +5345,7 @@ efParticle* efManagerHealSparklesMakeEffect(Vec3f *pos)
 
         if (tfrm != NULL)
         {
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -5488,7 +5488,7 @@ efParticle* func_ovl2_801031E0(Vec3f *pos)
 
         if (tfrm != NULL)
         {
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -5517,7 +5517,7 @@ efParticle* func_ovl2_80103280(Vec3f *pos)
 
         if (tfrm != NULL)
         {
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -5809,7 +5809,7 @@ efParticle* efManagerMusicNoteMakeEffect(Vec3f *pos)
 
         if (tfrm != NULL)
         {
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -5838,7 +5838,7 @@ efParticle* efManagerYoshiEggExplodeMakeEffect(Vec3f *pos)
 
         if (tfrm != NULL)
         {
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -6056,7 +6056,7 @@ efParticle* efManagerBattleScoreMakeEffect(Vec3f *pos, s32 score)
 
             return NULL;
         }
-        func_ovl0_800CEA14(ptcl);
+        lbParticleParseStructBytecode(ptcl);
 
         if (tfrm->users_num == 0)
         {
@@ -6080,7 +6080,7 @@ efParticle* efManagerEggBreakMakeEffect(Vec3f *pos)
 
         if (tfrm != NULL)
         {
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -6142,7 +6142,7 @@ efParticle* efManagerKirbyInhaleWindMakeEffect(GObj *fighter_gobj)
 
         if (tfrm != NULL)
         {
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -6209,7 +6209,7 @@ efParticle* efManagerItemSpawnSwirlMakeEffect(Vec3f *pos)
 
         if (tfrm != NULL)
         {
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -6238,7 +6238,7 @@ efParticle* func_ovl2_80104554(Vec3f *pos, s32 arg1)
 
         if (tfrm != NULL)
         {
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {

@@ -229,7 +229,7 @@ void grPupupuWhispyLeavesMakeEffect(void)
         }
         else
         {
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -331,7 +331,7 @@ void grPupupuWhispyUpdateBlow(void)
 
         if (gGRCommonStruct.pupupu.leaves_tfrm != NULL)
         {
-            func_ovl0_800D39D4(gGRCommonStruct.pupupu.leaves_tfrm->unk_tfrm_0xB8, 1);
+            lbParticleEjectStructID(gGRCommonStruct.pupupu.leaves_tfrm->generator_id, 1);
         }
     }
     grPupupuWhispyUpdateWindRumble();
@@ -488,7 +488,7 @@ void grPupupuWhispyDustMakeEffect(void)
         }
         else
         {
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -531,7 +531,7 @@ void grPupupuFlowersFrontLoopEnd(void)
 
         if (gGRCommonStruct.pupupu.dust_tfrm != NULL)
         {
-            func_ovl0_800D39D4(gGRCommonStruct.pupupu.dust_tfrm->unk_tfrm_0xB8, 1);
+            lbParticleEjectStructID(gGRCommonStruct.pupupu.dust_tfrm->generator_id, 1);
         }
     }
     else grPupupuWhispySetWindPush();

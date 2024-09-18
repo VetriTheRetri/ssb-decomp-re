@@ -51,7 +51,7 @@ enum grYosterCloudStatus
 // 0x80108550
 efGenerator* grYosterCloudVaporMakeEffect(Vec3f *pos)
 {
-    efGenerator *gtor = func_ovl0_800D35DC(gGRCommonStruct.yoster.particle_bank_id, 0);
+    efGenerator *gtor = lbParticleMakeGenerator(gGRCommonStruct.yoster.particle_bank_id, 0);
 
     if (gtor != NULL)
     {

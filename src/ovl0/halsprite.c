@@ -14,13 +14,13 @@
 efParticle *sLBParticleStructsAllocFree;
 
 // 0x800D6358
-efParticle *sLBParticleStructsAllocBuf[16];
+efParticle *sLBParticleStructsAllocLinks[16];
 
 // 0x800D6398
 efGenerator *sLBParticleGeneratorsAllocFree;
 
 // 0x800D639C
-efGenerator *sLBParticleGeneratorsAllocBuf[9];
+efGenerator *sLBParticleGeneratorsAllocLinks[9];
 
 // 0x800D63C0
 s32 sLBParticleScriptBanksNum[LBPARTICLE_BANKS_NUM_MAX];
@@ -35,10 +35,10 @@ efScript **sLBParticleScriptBanks[LBPARTICLE_BANKS_NUM_MAX];
 efTexture **sLBParticleTextureBanks[LBPARTICLE_BANKS_NUM_MAX];
 
 // 0x800D6440
-void (*sLBParticleGeneratorProcDefault)();
+void (*sLBParticleGeneratorProcDefault)(efGenerator*, Vec3f*);
 
 // 0x800D6444
-s32 D_800D6444;
+void (*sLBParticleGeneratorProcSetup)(efGenerator*);
 
 // 0x800D6448
 u16 sLBParticleStructsUsedNum;
@@ -62,7 +62,7 @@ u16 D_ovl0_800D6452;
 efTransform *sLBParticleTransformsAllocFree;
 
 // 0x800D6458
-efGenerator *sLBParticleGeneratorProcessed;
+efGenerator *sLBParticleGeneratorsCurrent;
 
 // // // // // // // // // // // //
 //                               //
@@ -77,10 +77,10 @@ u8 dLBParticleColorDitherMode = G_CD_MAGICSQ;
 u8 dLBParticleAlphaDitherMode = G_AD_PATTERN;
 
 // 0x800D5D58
-u16 D_ovl0_800D5D58 = 0;
+u16 dLBParticleCurrentGeneratorID = 0;
 
 // 0x800D5D5C
-u8 sLBParticleCurrentTransformID = 123;
+u8 dLBParticleCurrentTransformID = 123;
 
 // // // // // // // // // // // //
 //                               //
@@ -114,7 +114,7 @@ s32 lbParticleAllocTransforms(s32 num, size_t size)
 }
 
 // 0x800CE0D8
-efTransform* lbParticleGetNextTransformAlloc(u8 status, u16 arg1)
+efTransform* lbParticleGetTransform(u8 status, u16 generator_id)
 {
 	efTransform *tfrm = sLBParticleTransformsAllocFree;
 
@@ -122,7 +122,7 @@ efTransform* lbParticleGetNextTransformAlloc(u8 status, u16 arg1)
 	{
         sLBParticleTransformsAllocFree = tfrm->next;
         tfrm->users_num = 1;
-        tfrm->transform_id = sLBParticleCurrentTransformID;
+        tfrm->transform_id = dLBParticleCurrentTransformID;
         tfrm->proc_dead = NULL;
 
 		tfrm->translate.x = tfrm->translate.y = tfrm->translate.z = 0.0F;
@@ -130,7 +130,7 @@ efTransform* lbParticleGetNextTransformAlloc(u8 status, u16 arg1)
 		tfrm->scale.x = tfrm->scale.y = tfrm->scale.z = 1.0F;
 
 		tfrm->transform_status = status;
-		tfrm->unk_tfrm_0xB8 = arg1;
+		tfrm->generator_id = generator_id;
 
 		sLBParticleTransformsUsedNum++;
 
@@ -143,7 +143,7 @@ efTransform* lbParticleGetNextTransformAlloc(u8 status, u16 arg1)
 }
 
 // 0x800CE188
-void lbParticleSetPrevTransformAlloc(efTransform *tfrm)
+void lbParticleEjectTransform(efTransform *tfrm)
 {
 	if (tfrm->proc_dead != NULL)
 	{
@@ -158,7 +158,7 @@ void lbParticleSetPrevTransformAlloc(efTransform *tfrm)
 // 0x800CE1DC
 efTransform* lbParticleAddTransformForParticle(efParticle *ptcl, u8 status)
 {
-    ptcl->tfrm = lbParticleGetNextTransformAlloc(status, ptcl->unk_ptcl_0x4);
+    ptcl->tfrm = lbParticleGetTransform(status, ptcl->generator_id);
 
 	return ptcl->tfrm;
 }
@@ -166,7 +166,7 @@ efTransform* lbParticleAddTransformForParticle(efParticle *ptcl, u8 status)
 // 0x800CE218
 efTransform* lbParticleAddTransformForGenerator(efGenerator* gtor, u8 status)
 {
-	gtor->tfrm = lbParticleGetNextTransformAlloc(status, gtor->unk_gtor_0x4);
+	gtor->tfrm = lbParticleGetTransform(status, gtor->generator_id);
 
 	return gtor->tfrm;
 }
@@ -232,9 +232,9 @@ GObj* lbParticleAllocStructs(s32 num)
 
 	sLBParticleStructsAllocFree = NULL;
 
-	for (i = 0; i < ARRAY_COUNT(sLBParticleStructsAllocBuf); i++)
+	for (i = 0; i < ARRAY_COUNT(sLBParticleStructsAllocLinks); i++)
 	{
-		sLBParticleStructsAllocBuf[i] = NULL;
+		sLBParticleStructsAllocLinks[i] = NULL;
 	}
 	for (i = num - 1; i >= 0; i--)
 	{
@@ -296,9 +296,9 @@ efParticle* lbParticleMakeStruct
     }
     if (gtor != NULL)
     {
-        new_ptcl->unk_ptcl_0x4 = gtor->unk_gtor_0x4;
+        new_ptcl->generator_id = gtor->generator_id;
     } 
-    else new_ptcl->unk_ptcl_0x4 = ++D_ovl0_800D5D58;
+    else new_ptcl->generator_id = ++dLBParticleCurrentGeneratorID;
 
     if (gtor != NULL)
     {
@@ -315,8 +315,8 @@ efParticle* lbParticleMakeStruct
     
     if (this_ptcl == NULL) 
     {
-        new_ptcl->next = sLBParticleStructsAllocBuf[bank_id >> 3];
-        sLBParticleStructsAllocBuf[bank_id >> 3] = new_ptcl;
+        new_ptcl->next = sLBParticleStructsAllocLinks[bank_id >> 3];
+        sLBParticleStructsAllocLinks[bank_id >> 3] = new_ptcl;
     } 
     else 
     {
@@ -363,7 +363,7 @@ efParticle* lbParticleMakeStruct
 }
 
 // 0x800CE6B8
-efParticle* lbParticleMakeDefault(efParticle *ptcl, s32 bank_id, s32 script_bank_id)
+efParticle* lbParticleMakeDefault(efParticle *ptcl, s32 bank_id, s32 script_id)
 {
 	efScript *efscript;
 	s32 id = bank_id & 7;
@@ -372,11 +372,11 @@ efParticle* lbParticleMakeDefault(efParticle *ptcl, s32 bank_id, s32 script_bank
 	{
 		return NULL;
 	}
-	if (script_bank_id >= sLBParticleScriptBanksNum[id])
+	if (script_id >= sLBParticleScriptBanksNum[id])
 	{
 		return NULL;
 	}
-	efscript = sLBParticleScriptBanks[id][script_bank_id];
+	efscript = sLBParticleScriptBanks[id][script_id];
 
 	return lbParticleMakeStruct
 	(
@@ -441,9 +441,9 @@ efParticle* lbParticleMakeParam
 }
 
 // 0x800CE870
-efParticle* func_ovl0_800CE870(s32 bank_id, s32 script_bank_id)
+efParticle* func_ovl0_800CE870(s32 bank_id, s32 script_id)
 {
-	efParticle *ptcl = lbParticleMakeDefault(NULL, bank_id, script_bank_id);
+	efParticle *ptcl = lbParticleMakeDefault(NULL, bank_id, script_id);
 
 	if (ptcl != NULL)
 	{
@@ -453,7 +453,7 @@ efParticle* func_ovl0_800CE870(s32 bank_id, s32 script_bank_id)
 }
 
 // 0x800CE8C0
-efParticle* lbParticleMakePosVel(s32 bank_id, s32 script_bank_id, f32 pos_x, f32 pos_y, f32 pos_z, f32 vel_x, f32 vel_y, f32 vel_z)
+efParticle* lbParticleMakePosVel(s32 bank_id, s32 script_id, f32 pos_x, f32 pos_y, f32 pos_z, f32 vel_x, f32 vel_y, f32 vel_z)
 {
 	efParticle *ptcl;
 	efScript *efscript;
@@ -463,11 +463,11 @@ efParticle* lbParticleMakePosVel(s32 bank_id, s32 script_bank_id, f32 pos_x, f32
 	{
 		return NULL;
 	}
-	if (script_bank_id >= sLBParticleScriptBanksNum[id])
+	if (script_id >= sLBParticleScriptBanksNum[id])
 	{
 		return NULL;
 	}
-	efscript = sLBParticleScriptBanks[id][script_bank_id];
+	efscript = sLBParticleScriptBanks[id][script_id];
 
 	ptcl = lbParticleMakeStruct
 	(
@@ -493,13 +493,13 @@ efParticle* lbParticleMakePosVel(s32 bank_id, s32 script_bank_id, f32 pos_x, f32
 }
 
 // 0x800CE9E8
-efParticle* lbParticleMakeDefaultID(s32 bank_id, s32 script_bank_id)
+efParticle* lbParticleMakeDefaultID(s32 bank_id, s32 script_id)
 {
-	return lbParticleMakeDefault(NULL, bank_id, script_bank_id);
+	return lbParticleMakeDefault(NULL, bank_id, script_id);
 }
 
 // 0x800CEA14
-void func_ovl0_800CEA14(efParticle *ptcl)
+void lbParticleParseStructBytecode(efParticle *ptcl)
 {
 	if (ptcl != NULL)
 	{
@@ -515,7 +515,7 @@ void lbParticleEjectStruct(efParticle *this_ptcl)
 	s32 bank_id;
 
 	bank_id = this_ptcl->bank_id >> 3;
-	current_ptcl = sLBParticleStructsAllocBuf[bank_id];
+	current_ptcl = sLBParticleStructsAllocLinks[bank_id];
 	prev_ptcl = NULL;
 
 	while (current_ptcl != NULL)
@@ -524,7 +524,7 @@ void lbParticleEjectStruct(efParticle *this_ptcl)
 		{
 			if (prev_ptcl == NULL)
 			{
-				sLBParticleStructsAllocBuf[bank_id] = current_ptcl->next;
+				sLBParticleStructsAllocLinks[bank_id] = current_ptcl->next;
 			}
 			else prev_ptcl->next = current_ptcl->next;
 
@@ -532,7 +532,7 @@ void lbParticleEjectStruct(efParticle *this_ptcl)
 
 			if ((gtor != NULL) && (this_ptcl->flags & 4) && (gtor->kind == 2))
 			{
-				gtor->gtor_vars.unk_gtor_vars.halfword--;
+				gtor->generator_vars.unk_gtor_vars.halfword--;
 			}
 			if (this_ptcl->tfrm != NULL)
 			{
@@ -540,7 +540,7 @@ void lbParticleEjectStruct(efParticle *this_ptcl)
 
 				if (this_ptcl->tfrm->users_num == 0)
 				{
-					lbParticleSetPrevTransformAlloc(this_ptcl->tfrm);
+					lbParticleEjectTransform(this_ptcl->tfrm);
 				}
 			}
 			current_ptcl->next = sLBParticleStructsAllocFree;
@@ -560,9 +560,9 @@ void lbParticleEjectStructAll(void)
 	efParticle *current_ptcl, *next_ptcl;
 	s32 i;
 
-	for (i = 0; i < ARRAY_COUNT(sLBParticleStructsAllocBuf); i++)
+	for (i = 0; i < ARRAY_COUNT(sLBParticleStructsAllocLinks); i++)
 	{
-		current_ptcl = sLBParticleStructsAllocBuf[i];
+		current_ptcl = sLBParticleStructsAllocLinks[i];
 
 		while (current_ptcl != NULL)
 		{
@@ -708,7 +708,7 @@ void lbParticleStructProcRun(GObj *gobj)
 	efParticle *current_ptcl;
 	efParticle *next_ptcl;
 
-	for (i = 0; i < ARRAY_COUNT(sLBParticleStructsAllocBuf); i++, flags >>= 1)
+	for (i = 0; i < ARRAY_COUNT(sLBParticleStructsAllocLinks); i++, flags >>= 1)
 	{
 		if (flags & 0x10000)
 		{
@@ -716,7 +716,7 @@ void lbParticleStructProcRun(GObj *gobj)
 		}
 		prev_ptcl = NULL;
 
-		current_ptcl = sLBParticleStructsAllocBuf[i];
+		current_ptcl = sLBParticleStructsAllocLinks[i];
 
 		while (current_ptcl != NULL)
 		{
@@ -959,13 +959,13 @@ void lbParticleDrawTextures(GObj *gobj)
     prev_alpha = -1;
     tlut = -1;
     
-    sLBParticleCurrentTransformID++;
+    dLBParticleCurrentTransformID++;
     
-    for (j = 0; j < ARRAY_COUNT(sLBParticleStructsAllocBuf); j++)
+    for (j = 0; j < ARRAY_COUNT(sLBParticleStructsAllocLinks); j++)
     {
         if (gobj->cam_mask & (1 << j))
         {
-            for (ptcl = sLBParticleStructsAllocBuf[j]; ptcl != NULL; ptcl = ptcl->next)
+            for (ptcl = sLBParticleStructsAllocLinks[j]; ptcl != NULL; ptcl = ptcl->next)
             {
                 if (ptcl->mscale != 0.0F)
                 {
@@ -975,7 +975,7 @@ void lbParticleDrawTextures(GObj *gobj)
                     
                     if (ptcl->tfrm != NULL)
                     {
-                        if (ptcl->tfrm->transform_id != sLBParticleCurrentTransformID)
+                        if (ptcl->tfrm->transform_id != dLBParticleCurrentTransformID)
                         {
 							if (ptcl->tfrm->transform_status != nLBTransformStatusFinished)
 							{
@@ -1011,7 +1011,7 @@ void lbParticleDrawTextures(GObj *gobj)
                                 SQUARE(ptcl->tfrm->projection[1][1]) +
                                 SQUARE(ptcl->tfrm->projection[2][1])
                             );
-                            ptcl->tfrm->transform_id = sLBParticleCurrentTransformID;
+                            ptcl->tfrm->transform_id = dLBParticleCurrentTransformID;
                         }
                         s = (ptcl->tfrm->affine[0][0] >= 0.0F) ? 0 : -1;
                         t = (ptcl->tfrm->affine[1][1] >= 0.0F) ? 0 : -1;
@@ -1415,9 +1415,9 @@ void lbParticleDrawTextures(GObj *gobj)
 // 0x800D2720
 void lbParticleAddGeneratorToBuf(s32 gtor_id, efGenerator *gtor)
 {
-	if ((gtor_id > 0) && (gtor_id < ARRAY_COUNT(sLBParticleGeneratorsAllocBuf)))
+	if ((gtor_id > 0) && (gtor_id < ARRAY_COUNT(sLBParticleGeneratorsAllocLinks)))
 	{
-		sLBParticleGeneratorsAllocBuf[gtor_id] = gtor;
+		sLBParticleGeneratorsAllocLinks[gtor_id] = gtor;
 	}
 }
 
@@ -1435,7 +1435,7 @@ GObj* lbParticleAllocGenerators(s32 num)
 {
 	s32 i;
 
-	sLBParticleGeneratorsAllocFree = sLBParticleGeneratorsAllocBuf[0] = NULL;
+	sLBParticleGeneratorsAllocFree = sLBParticleGeneratorsAllocLinks[0] = NULL;
 
 	for (i = num - 1; i >= 0; i--)
 	{
@@ -1456,7 +1456,7 @@ GObj* lbParticleAllocGenerators(s32 num)
 }
 
 // 0x800D27F8
-void func_ovl0_800D27F8(Vec3f *pos, Vec3f *tfm, DObj *dobj)
+void lbParticleGetPosVel(Vec3f *pos, Vec3f *vel, DObj *dobj)
 {
 	Mtx44f dst;
 	Mtx44f tmp;
@@ -1545,15 +1545,15 @@ void func_ovl0_800D27F8(Vec3f *pos, Vec3f *tfm, DObj *dobj)
 	pos->y = dst[3][1];
 	pos->z = dst[3][2];
 
-	x = tfm->x, y = tfm->y, z = tfm->z;
+	x = vel->x, y = vel->y, z = vel->z;
 
 	guNormalize(&dst[0][0], &dst[1][0], &dst[2][0]);
 	guNormalize(&dst[0][1], &dst[1][1], &dst[2][1]);
 	guNormalize(&dst[0][2], &dst[1][2], &dst[2][2]);
 
-	tfm->x = (dst[0][0] * x) + (dst[1][0] * y) + (dst[2][0] * z);
-	tfm->y = (dst[0][1] * x) + (dst[1][1] * y) + (dst[2][1] * z);
-	tfm->z = (dst[0][2] * x) + (dst[1][2] * y) + (dst[2][2] * z);
+	vel->x = (dst[0][0] * x) + (dst[1][0] * y) + (dst[2][0] * z);
+	vel->y = (dst[0][1] * x) + (dst[1][1] * y) + (dst[2][1] * z);
+	vel->z = (dst[0][2] * x) + (dst[1][2] * y) + (dst[2][2] * z);
 }
 
 #ifdef NON_MATCHING
@@ -1595,14 +1595,14 @@ void lbParticleGeneratorProcRun(GObj *gobj)
     f32 spB8;
     f32 vmag;
     
-    gtor = sLBParticleGeneratorsAllocBuf[0];
-    sLBParticleGeneratorProcessed = NULL;
+    gtor = sLBParticleGeneratorsAllocLinks[0];
+    sLBParticleGeneratorsCurrent = NULL;
     
     while (gtor != NULL)
     {
             if (gobj->flags & (1 << ((gtor->bank_id >> 3) + 0x10)))
             {
-                sLBParticleGeneratorProcessed = gtor;
+                sLBParticleGeneratorsCurrent = gtor;
 
                 gtor = gtor->next;
 
@@ -1610,7 +1610,7 @@ void lbParticleGeneratorProcRun(GObj *gobj)
             }
             if (gtor->flags & 0x800)
             {
-                sLBParticleGeneratorProcessed = gtor;
+                sLBParticleGeneratorsCurrent = gtor;
 
                 gtor = gtor->next;
 
@@ -1630,7 +1630,7 @@ void lbParticleGeneratorProcRun(GObj *gobj)
 
                 if (gtor->dobj != NULL)
                 {
-                    func_ovl0_800D27F8(&pos, &vel, gtor->dobj);
+                    lbParticleGetPosVel(&pos, &vel, gtor->dobj);
                     
                     gtor->pos.x = pos.x;
                     gtor->pos.y = pos.y;
@@ -1641,8 +1641,8 @@ void lbParticleGeneratorProcRun(GObj *gobj)
                 case 0:
                 case 3:
                 case 4:
-                    pv0 = gtor->gtor_vars.rotate.x + (mtTrigGetRandomFloat() * (gtor->gtor_vars.rotate.y - gtor->gtor_vars.rotate.x));
-                    spB8 = (gtor->gtor_vars.rotate.y - gtor->gtor_vars.rotate.x) / (s32) gtor->unk_gtor_0x44;
+                    pv0 = gtor->generator_vars.rotate.base + (mtTrigGetRandomFloat() * (gtor->generator_vars.rotate.target - gtor->generator_vars.rotate.base));
+                    spB8 = (gtor->generator_vars.rotate.target - gtor->generator_vars.rotate.base) / (s32) gtor->unk_gtor_0x44;
                     break;
 
                 default:
@@ -1696,7 +1696,7 @@ void lbParticleGeneratorProcRun(GObj *gobj)
                         }
                         else
                         {
-                            pv0 = gtor->gtor_vars.rotate.x + (mtTrigGetRandomFloat() * (gtor->gtor_vars.rotate.y - gtor->gtor_vars.rotate.x));
+                            pv0 = gtor->generator_vars.rotate.base + (mtTrigGetRandomFloat() * (gtor->generator_vars.rotate.target - gtor->generator_vars.rotate.base));
                             pv1 *= gtor->unk_gtor_0x3C;
                         }
                         zero = 0.0F;
@@ -1751,9 +1751,9 @@ void lbParticleGeneratorProcRun(GObj *gobj)
                         
                         pos_random = mtTrigGetRandomFloat();
 
-                        pos_x = gtor->pos.x + (pos_random * (gtor->gtor_vars.move.x - gtor->pos.x));
-                        pos_y = gtor->pos.y + (pos_random * (gtor->gtor_vars.move.y - gtor->pos.y));
-                        pos_z = gtor->pos.z + (pos_random * (gtor->gtor_vars.move.z - gtor->pos.z));
+                        pos_x = gtor->pos.x + (pos_random * (gtor->generator_vars.move.x - gtor->pos.x));
+                        pos_y = gtor->pos.y + (pos_random * (gtor->generator_vars.move.y - gtor->pos.y));
+                        pos_z = gtor->pos.z + (pos_random * (gtor->generator_vars.move.z - gtor->pos.z));
                         
                         lbParticleMakeParam
                         (
@@ -1793,7 +1793,7 @@ void lbParticleGeneratorProcRun(GObj *gobj)
 
                         pv0 = (gtor->unk_gtor_0x3C < 0.0F) ? pv0 + spB8 : mtTrigGetRandomFloat() * F_CST_DTOR32(360.0F);
 
-                        gtor->gtor_vars.unk_gtor_vars.f = magnitude;
+                        gtor->generator_vars.unk_gtor_vars.f = magnitude;
 
                         if
                         (
@@ -1818,11 +1818,12 @@ void lbParticleGeneratorProcRun(GObj *gobj)
                             ) != NULL
                         )
                         {
-                            gtor->gtor_vars.unk_gtor_vars.halfword++;
+                            gtor->generator_vars.unk_gtor_vars.halfword++;
                         }
                         break;
                         
                     default:
+                        // OK seriously this order swap is ridiculous
                         if (sLBParticleGeneratorProcDefault != NULL)
                         {
                             sLBParticleGeneratorProcDefault(gtor, &vel);
@@ -1835,22 +1836,22 @@ void lbParticleGeneratorProcRun(GObj *gobj)
             {
                 gtor->lifetime--;
 
-                if (gtor->gtor_vars.rotate.y); // bruh
+                if (gtor->generator_vars.rotate.target); // bruh
     
                 if (gtor->lifetime == 0)
                 {
-                    if ((gtor->kind == 2) && (gtor->gtor_vars.unk_gtor_vars.halfword != 0))
+                    if ((gtor->kind == 2) && (gtor->generator_vars.unk_gtor_vars.halfword != 0))
                     {
-                        gtor->lifetime = 1;
                         gtor->unk_gtor_0x40 = 0.0F;
+                        gtor->lifetime = 1;
                     }
                     else
                     {
-                        if (sLBParticleGeneratorProcessed == NULL)
+                        if (sLBParticleGeneratorsCurrent == NULL)
                         {
-                            sLBParticleGeneratorsAllocBuf[0] = gtor->next;
+                            sLBParticleGeneratorsAllocLinks[0] = gtor->next;
                         }
-                        else sLBParticleGeneratorProcessed->next = gtor->next;
+                        else sLBParticleGeneratorsCurrent->next = gtor->next;
                 
                         next_gtor = gtor->next;
                 
@@ -1860,7 +1861,7 @@ void lbParticleGeneratorProcRun(GObj *gobj)
                     
                             if (gtor->tfrm->users_num == 0)
                             {
-                                lbParticleSetPrevTransformAlloc(gtor->tfrm);
+                                lbParticleEjectTransform(gtor->tfrm);
                             }
                         }
                         gtor->next = sLBParticleGeneratorsAllocFree;
@@ -1868,13 +1869,13 @@ void lbParticleGeneratorProcRun(GObj *gobj)
                 
                         gtor = next_gtor;
                 
-                        D_ovl0_800D644A--;
+                        sLBParticleGeneratorsUsedNum--;
 
                         continue;
                     }
                 }
             }
-            sLBParticleGeneratorProcessed = gtor;
+            sLBParticleGeneratorsCurrent = gtor;
 
             gtor = gtor->next;
         }
@@ -1884,46 +1885,282 @@ void lbParticleGeneratorProcRun(GObj *gobj)
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/lbParticleGeneratorProcRun.s")
 #endif
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800D353C.s")
+// 0x800D353C
+efGenerator* lbParticleGetGenerator(void)
+{
+    efGenerator *gtor = sLBParticleGeneratorsAllocFree;
+    
+    if (sLBParticleGeneratorsAllocFree == NULL)
+    {
+        return NULL;
+    }
+    sLBParticleGeneratorsUsedNum++;
+    
+    if (D_ovl0_800D6450 < sLBParticleGeneratorsUsedNum)
+    {
+        D_ovl0_800D6450 = sLBParticleGeneratorsUsedNum;
+    }
+    sLBParticleGeneratorsAllocFree = gtor->next;
+    gtor->next = sLBParticleGeneratorsAllocLinks[0];
+    sLBParticleGeneratorsAllocLinks[0] = gtor;
+    
+    if (sLBParticleGeneratorsCurrent == NULL)
+    {
+        sLBParticleGeneratorsCurrent = gtor;
+    }
+    gtor->generator_id = ++dLBParticleCurrentGeneratorID;
+    gtor->tfrm = NULL;
+    
+    return gtor;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800D35DC.s")
+// 0x800D35DC
+efGenerator* lbParticleMakeGenerator(s32 bank_id, s32 script_id)
+{
+    efGenerator *gtor;
+    s32 id = bank_id & 7;  
+    s32 unused;
+    
+    if (id >= LBPARTICLE_BANKS_NUM_MAX)
+    {
+        return NULL;
+    }
+    if (script_id >= sLBParticleScriptBanksNum[id])
+    {
+        return NULL;
+    }
+    gtor = lbParticleGetGenerator();
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800D3884.s")
+    if (gtor != NULL)
+    {   
+        gtor->kind = sLBParticleScriptBanks[id][script_id]->kind;
+        gtor->bank_id = bank_id;
+        gtor->flags = sLBParticleScriptBanks[id][script_id]->flags;
+        gtor->texture_id = sLBParticleScriptBanks[id][script_id]->texture_id;
+        gtor->unk_gtor_0xC = sLBParticleScriptBanks[id][script_id]->unk_efscript_0x6;
+        gtor->lifetime = sLBParticleScriptBanks[id][script_id]->lifetime;
+        
+        gtor->pos.x = 0.0F;
+        gtor->pos.y = 0.0F;
+        gtor->pos.z = 0.0F;
+        
+        gtor->vel.x = sLBParticleScriptBanks[id][script_id]->vel.x;
+        gtor->vel.y = sLBParticleScriptBanks[id][script_id]->vel.y;
+        gtor->vel.z = sLBParticleScriptBanks[id][script_id]->vel.z;
+        
+        gtor->unk_gtor_0x2C = sLBParticleScriptBanks[id][script_id]->unk_efscript_0xC;
+        gtor->unk_gtor_0x30 = sLBParticleScriptBanks[id][script_id]->unk_efscript_0x10;
+        gtor->mscale = sLBParticleScriptBanks[id][script_id]->mscale;
+        
+        gtor->bytecode = sLBParticleScriptBanks[id][script_id]->bytecode;
+        
+        gtor->unk_gtor_0x38 = sLBParticleScriptBanks[id][script_id]->unk_efscript_0x20;
+        gtor->unk_gtor_0x3C = sLBParticleScriptBanks[id][script_id]->unk_efscript_0x24;
+        gtor->unk_gtor_0x40 = sLBParticleScriptBanks[id][script_id]->unk_efscript_0x28;
+        
+        gtor->unk_gtor_0x44 = 0.0F;
+        
+        if (sLBParticleTextureBanks[id][sLBParticleScriptBanks[id][script_id]->texture_id]->flags != 0)
+        {
+            gtor->flags |= 0x10;
+        }
+        gtor->dobj = NULL;
+        
+        switch (gtor->kind)
+        {
+        case 0:
+        case 3:
+        case 4:
+            gtor->generator_vars.rotate.base = 0;
+            gtor->generator_vars.rotate.target = F_CST_DTOR32(360.0F);
+            break;
+            
+        case 1:
+            gtor->generator_vars.move.x = gtor->pos.x + gtor->vel.x;
+            gtor->generator_vars.move.y = gtor->pos.y + gtor->vel.y;
+            gtor->generator_vars.move.z = gtor->pos.z + gtor->vel.z;
+            break;
+            
+        case 2:
+            gtor->generator_vars.unk_gtor_vars.halfword = 0;
+            break;
+            
+        default:
+            if (sLBParticleGeneratorProcSetup != NULL)
+            {
+                sLBParticleGeneratorProcSetup(gtor);
+            }
+            break;
+        }
+    }
+    return gtor;
+}
+
+// 0x800D3884
+void lbParticleEjectGenerator(efGenerator *this_gtor)
+{
+    efGenerator *prev_gtor = NULL, *current_gtor = sLBParticleGeneratorsAllocLinks[0];
+    
+    while (current_gtor != NULL)
+    {
+        if (current_gtor == this_gtor)
+        {
+            if ((this_gtor->kind == 2) && (this_gtor->generator_vars.unk_gtor_vars.halfword != 0))
+            {
+                this_gtor->unk_gtor_0x40 = 0.0F;
+                this_gtor->lifetime = 1;
+                
+                break;
+            }
+            if (prev_gtor == NULL)
+            {
+                sLBParticleGeneratorsAllocLinks[0] = current_gtor->next;
+            }
+            else prev_gtor->next = current_gtor->next;
+            
+            if (this_gtor->tfrm != NULL)
+            {
+                this_gtor->tfrm->users_num--;
+                
+                if (this_gtor->tfrm->users_num == 0)
+                {
+                    lbParticleEjectTransform(this_gtor->tfrm);
+                }
+            }
+            current_gtor->next = sLBParticleGeneratorsAllocFree;
+            sLBParticleGeneratorsAllocFree = current_gtor;
+            sLBParticleGeneratorsUsedNum--;
+            
+            break;
+        }
+        prev_gtor = current_gtor;
+        current_gtor = current_gtor->next;
+    }
+}
 
 // 0x800D3978
-void func_ovl0_800D3978(void)
+void lbParticleEjectGeneratorAll(void)
 {
-	efGenerator *current_gtor = sLBParticleGeneratorsAllocBuf[0];
+	efGenerator *current_gtor = sLBParticleGeneratorsAllocLinks[0];
 
 	while (current_gtor != NULL)
 	{
 		efGenerator *next_gtor = current_gtor->next;
 
-		func_ovl0_800D3884(current_gtor);
+		lbParticleEjectGenerator(current_gtor);
 
 		current_gtor = next_gtor;
 	}
 }
 
 // 0x800D39C0
-void func_ovl0_800D39C0(s32 arg0, s32 arg1)
+void lbParticleSetGeneratorProcs(void (*proc_setup)(efGenerator*), void (*proc_default)(efGenerator*, Vec3f*))
 {
-	D_800D6444 = arg0;
-	sLBParticleGeneratorProcDefault = arg1;
+	sLBParticleGeneratorProcSetup = proc_setup;
+	sLBParticleGeneratorProcDefault = proc_default;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800D39D4.s")
+// 0x800D39D4
+void lbParticleEjectStructID(u16 generator_id, s32 link_id)
+{
+    efParticle *next_ptcl;
+    efParticle *current_ptcl;
+    efParticle *prev_ptcl;
+
+    efGenerator *current_gtor;
+    efGenerator *prev_gtor;
+    efGenerator *next_gtor;
+
+    prev_ptcl = NULL;
+    current_ptcl = sLBParticleStructsAllocLinks[link_id];
+    
+    while (current_ptcl != NULL)
+    {
+        next_ptcl = current_ptcl->next;
+            
+        if (current_ptcl->generator_id == generator_id)
+        {
+            if (prev_ptcl == NULL)
+            {
+                sLBParticleStructsAllocLinks[link_id] = current_ptcl->next;
+            }
+            else prev_ptcl->next = current_ptcl->next;
+                
+            if ((current_ptcl->gtor != NULL) && (current_ptcl->flags & 0x4) && (current_ptcl->gtor->kind == 2))
+            {
+                current_ptcl->gtor->generator_vars.unk_gtor_vars.halfword--;
+            }
+            if (current_ptcl->tfrm != NULL)
+            {
+                current_ptcl->tfrm->users_num--;
+                    
+                if (current_ptcl->tfrm->users_num == 0)
+                {
+                    lbParticleEjectTransform(current_ptcl->tfrm);
+                }
+            }
+            current_ptcl->next = sLBParticleStructsAllocFree;
+            sLBParticleStructsAllocFree = current_ptcl;
+            sLBParticleStructsUsedNum--;
+        }
+        else prev_ptcl = current_ptcl;
+            
+        current_ptcl = next_ptcl;
+    }
+    prev_gtor = NULL;
+    current_gtor = sLBParticleGeneratorsAllocLinks[0];
+    
+    while (current_gtor != NULL)
+    {
+        next_gtor = current_gtor->next;
+        
+        if (current_gtor->generator_id == generator_id)
+        {
+            if ((current_gtor->kind == 2) && (current_gtor->generator_vars.unk_gtor_vars.halfword != 0))
+            {
+                current_gtor->unk_gtor_0x40 = 0.0F;
+                current_gtor->lifetime = 1;
+                
+                prev_gtor = current_gtor;
+            }
+            else
+            {
+                if (prev_gtor == NULL)
+                {
+                    sLBParticleGeneratorsAllocLinks[0] = current_gtor->next;
+                }
+                else prev_gtor->next = current_gtor->next;
+            
+                if (current_gtor->tfrm != NULL)
+                {
+                    current_gtor->tfrm->users_num--;
+                
+                    if (current_gtor->tfrm->users_num == 0)
+                    {
+                        lbParticleEjectTransform(current_gtor->tfrm);
+                    }
+                }
+                current_gtor->next = sLBParticleGeneratorsAllocFree;
+                sLBParticleGeneratorsAllocFree = current_gtor;
+                sLBParticleGeneratorsUsedNum--;
+            }
+        }
+        else prev_gtor = current_gtor;
+        
+        current_gtor = next_gtor;
+    }
+}
 
 // 0x800D3BFC
-void func_ovl0_800D3BFC(efParticle *ptcl)
+void lbParticleEjectStructBankID(efParticle *ptcl)
 {
-	func_ovl0_800D39D4(ptcl->unk_ptcl_0x4, ptcl->bank_id >> 3);
+	lbParticleEjectStructID(ptcl->generator_id, ptcl->bank_id >> 3);
 }
 
 // 0x800D3C28
-void func_ovl0_800D3C28(efParticle *ptcl)
+void lbParticleEjectStructLinkID(efParticle *ptcl)
 {
-	func_ovl0_800D39D4(ptcl->unk_ptcl_0x4, ptcl->unk_ptcl_0x9 >> 3);
+	lbParticleEjectStructID(ptcl->generator_id, ptcl->link_id >> 3);
 }
 
 // 0x800D3C54
@@ -1936,37 +2173,66 @@ void func_ovl0_800D3C54(GObj *gobj)
 	{
 		for (dobj = DObjGetStruct(gobj); dobj != NULL; dobj = gcGetTreeDObjNext(dobj))
 		{
-			for (current_gtor = sLBParticleGeneratorsAllocBuf[0]; current_gtor != NULL; current_gtor = next_gtor)
+			for (current_gtor = sLBParticleGeneratorsAllocLinks[0]; current_gtor != NULL; current_gtor = next_gtor)
 			{
 				next_gtor = current_gtor->next;
 
 				if (current_gtor->dobj == dobj)
 				{
-					func_ovl0_800D3884(current_gtor);
+					lbParticleEjectGenerator(current_gtor);
 				}
 			}
 		}
 	}
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/func_ovl0_800D3CE0.s")
+// 0x800D3CE0
+void lbParticleSetStructPosAll(f32 pos_x, f32 pos_y, f32 pos_z)
+{
+    efGenerator *gtor;
+    s32 i;
+    
+    for (i = 0; i < ARRAY_COUNT(sLBParticleStructsAllocLinks); i++)
+    {
+        efParticle *ptcl = sLBParticleStructsAllocLinks[i];
+        
+        while (ptcl != NULL)
+        {
+            ptcl->pos.x = pos_x;
+            ptcl->pos.y = pos_y;
+            ptcl->pos.z = pos_z;
+
+            ptcl = ptcl->next;
+        }
+    }
+    gtor = sLBParticleGeneratorsAllocLinks[0];
+    
+    while (gtor != NULL)
+    {
+        gtor->pos.x = pos_x;
+        gtor->pos.y = pos_y;
+        gtor->pos.z = pos_z;
+
+        gtor = gtor->next;
+    }
+}
 
 // 0x800D3D64
-void func_ovl0_800D3D64(u16 arg0, s32 buf_id)
+void func_ovl0_800D3D64(u16 generator_id, s32 link_id)
 {
 	efParticle *ptcl;
 	efGenerator *gtor;
 
-	for (ptcl = sLBParticleStructsAllocBuf[buf_id]; ptcl != NULL; ptcl = ptcl->next)
+	for (ptcl = sLBParticleStructsAllocLinks[link_id]; ptcl != NULL; ptcl = ptcl->next)
 	{
-		if (ptcl->unk_ptcl_0x4 == arg0)
+		if (ptcl->generator_id == generator_id)
 		{
 			ptcl->flags |= 0x800;
 		}
 	}
-	for (gtor = sLBParticleGeneratorsAllocBuf[0]; gtor != NULL; gtor = gtor->next)
+	for (gtor = sLBParticleGeneratorsAllocLinks[0]; gtor != NULL; gtor = gtor->next)
 	{
-		if (gtor->unk_gtor_0x4 == arg0)
+		if (gtor->generator_id == generator_id)
 		{
 			gtor->flags |= 0x800;
 		}
@@ -1974,21 +2240,21 @@ void func_ovl0_800D3D64(u16 arg0, s32 buf_id)
 }
 
 // 0x800D3DE8
-void func_ovl0_800D3DE8(u16 arg0, s32 buf_id)
+void func_ovl0_800D3DE8(u16 generator_id, s32 link_id)
 {
 	efParticle *ptcl;
 	efGenerator *gtor;
 
-	for (ptcl = sLBParticleStructsAllocBuf[buf_id]; ptcl != NULL; ptcl = ptcl->next)
+	for (ptcl = sLBParticleStructsAllocLinks[link_id]; ptcl != NULL; ptcl = ptcl->next)
 	{
-		if (ptcl->unk_ptcl_0x4 == arg0)
+		if (ptcl->generator_id == generator_id)
 		{
 			ptcl->flags &= ~0x800;
 		}
 	}
-	for (gtor = sLBParticleGeneratorsAllocBuf[0]; gtor != NULL; gtor = gtor->next)
+	for (gtor = sLBParticleGeneratorsAllocLinks[0]; gtor != NULL; gtor = gtor->next)
 	{
-		if (gtor->unk_gtor_0x4 == arg0)
+		if (gtor->generator_id == generator_id)
 		{
 			gtor->flags &= ~0x800;
 		}

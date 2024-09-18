@@ -102,7 +102,7 @@ sb32 itNessPKFireCommonUpdateAllCheckDestroy(GObj *item_gobj)
     f32 unused;
     f32 half = 0.5;
     f32 lifetime_scale = ((ip->lifetime * half) / 100.0F) + half;
-    efTransform *effect = ip->item_vars.pkfire.effect;
+    efTransform *tfrm = ip->item_vars.pkfire.tfrm;
 
     DObjGetStruct(item_gobj)->scale.vec.f.x = DObjGetStruct(item_gobj)->scale.vec.f.y = DObjGetStruct(item_gobj)->scale.vec.f.z = lifetime_scale;
 
@@ -124,13 +124,13 @@ sb32 itNessPKFireCommonUpdateAllCheckDestroy(GObj *item_gobj)
     ip->item_hurt.size.y = attributes->hurt_size.y * 0.5F * lifetime_scale;
     ip->item_hurt.size.z = attributes->hurt_size.z * 0.5F * lifetime_scale;
 
-    if (effect != NULL)
+    if (tfrm != NULL)
     {
-        effect->scale.x = DObjGetStruct(item_gobj)->scale.vec.f.x;
-        effect->scale.y = DObjGetStruct(item_gobj)->scale.vec.f.y;
-        effect->scale.z = DObjGetStruct(item_gobj)->scale.vec.f.z;
+        tfrm->scale.x = DObjGetStruct(item_gobj)->scale.vec.f.x;
+        tfrm->scale.y = DObjGetStruct(item_gobj)->scale.vec.f.y;
+        tfrm->scale.z = DObjGetStruct(item_gobj)->scale.vec.f.z;
 
-        effect->translate = DObjGetStruct(item_gobj)->translate.vec.f;
+        tfrm->translate = DObjGetStruct(item_gobj)->translate.vec.f;
     }
     ip->lifetime--;
 
@@ -138,9 +138,9 @@ sb32 itNessPKFireCommonUpdateAllCheckDestroy(GObj *item_gobj)
     {
         efManagerDustExpandSmallMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f, 1.0F);
 
-        if (effect != NULL)
+        if (tfrm != NULL)
         {
-            func_ovl0_800D39D4(effect->unk_tfrm_0xB8, 0);
+            lbParticleEjectStructID(tfrm->generator_id, 0);
         }
         return TRUE;
     }
@@ -292,13 +292,13 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
 
         if (tfrm != NULL)
         {
-            ip->item_vars.pkfire.effect = tfrm;
+            ip->item_vars.pkfire.tfrm = tfrm;
 
-            func_ovl0_800CEA14(ptcl);
+            lbParticleParseStructBytecode(ptcl);
 
             if (tfrm->users_num == 0)
             {
-                ip->item_vars.pkfire.effect = NULL;
+                ip->item_vars.pkfire.tfrm = NULL;
             }
             else tfrm->translate = *pos;
         }
@@ -306,10 +306,10 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
         {
             lbParticleEjectStruct(ptcl);
 
-            ip->item_vars.pkfire.effect = NULL;
+            ip->item_vars.pkfire.tfrm = NULL;
         }
     }
-    else ip->item_vars.pkfire.effect = NULL;
+    else ip->item_vars.pkfire.tfrm = NULL;
     
     return item_gobj;
 }

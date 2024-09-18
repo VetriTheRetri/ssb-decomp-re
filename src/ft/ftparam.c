@@ -1378,7 +1378,7 @@ void ftParamStopEffect(GObj *effect_gobj, efStruct *ep)
 
     if (einfo != NULL)
     {
-        func_ovl0_800D39D4(einfo->unk_tfrm_0xB8, ep->bank_id >> 3);
+        lbParticleEjectStructID(einfo->generator_id, ep->bank_id >> 3);
     }
     efManagerSetPrevStructAlloc(ep);
     gcEjectGObj(effect_gobj);

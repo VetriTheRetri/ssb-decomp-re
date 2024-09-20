@@ -169,7 +169,7 @@ void itMBallOpenClearAnim(GObj *item_gobj)
 {
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    dobj->child->sib_next->mobj->matanim_joint = NULL;
+    dobj->child->sib_next->mobj->matanim_joint.event32 = NULL;
 }
 
 // 0x8017C710

@@ -300,7 +300,7 @@ void mvOpeningCliffMakeOcarina(void)
         ocarina_gobj,
         gcGetDataFromFile
         (
-            AObjEvent**,
+            AObjEvent32**,
             sMVOpeningCliffFiles[0],
             &lMVOpeningCliffOcarinaAnimJoint
         ),
@@ -351,7 +351,7 @@ void mvOpeningCliffMakeMainViewport(void)
         cam,
         gcGetDataFromFile
         (
-            AObjEvent*,
+            AObjEvent32*,
             sMVOpeningCliffFiles[0],
             &lMVOpeningCliffCamAnimJoint
         ),
@@ -390,7 +390,7 @@ void mvOpeningCliffMakeMainViewport(void)
         cam,
         gcGetDataFromFile
         (
-            AObjEvent*,
+            AObjEvent32*,
             sMVOpeningCliffFiles[0],
             &lMVOpeningCliffCamAnimJoint
         ),

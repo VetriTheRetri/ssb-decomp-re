@@ -30,7 +30,7 @@ void grBonus3InitHeaders(void)
 // 0x8010B508
 void grBonus3MakeBumpers(void)
 {
-    AObjEvent **anim_joint;
+    AObjEvent32 **anim_joint;
     GObj *item_gobj;
     Vec3f vel;
     DObjDesc *dobj_desc;
@@ -39,7 +39,7 @@ void grBonus3MakeBumpers(void)
     vel.x = vel.y = vel.z = 0.0F;
 
     dobj_desc = (DObjDesc*) ((uintptr_t)gGRCommonStruct.bonus3.map_head + (intptr_t)&lGRBonus3BumpersDObjDesc);
-    anim_joint = (AObjEvent**) ((uintptr_t)gGRCommonStruct.bonus3.map_head + (intptr_t)&lGRBonus3BumpersAnimJoint);
+    anim_joint = (AObjEvent32**) ((uintptr_t)gGRCommonStruct.bonus3.map_head + (intptr_t)&lGRBonus3BumpersAnimJoint);
 
     anim_joint++, dobj_desc++;
 

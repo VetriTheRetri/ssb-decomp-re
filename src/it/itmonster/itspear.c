@@ -175,7 +175,7 @@ sb32 itSpearAppearProcUpdate(GObj *item_gobj)
 
     if (item_gobj->anim_frame == ITSPEAR_SWARM_CALL_WAIT)
     {
-        dobj->child->anim_joint = NULL;
+        dobj->child->anim_joint.event32 = NULL;
 
         itSpearFlySetStatus(item_gobj);
     }

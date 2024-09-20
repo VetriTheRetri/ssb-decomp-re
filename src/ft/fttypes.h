@@ -145,8 +145,8 @@ struct ftModelPart
 {
     void *display_list;
     MObjSub **mobjsubs;
-    AObjEvent **costume_matanim_joints;
-    AObjEvent **main_matanim_joints;
+    AObjEvent32 **costume_matanim_joints;
+    AObjEvent32 **main_matanim_joints;
     u8 flags;
 };
 
@@ -154,7 +154,7 @@ struct ftCommonPart
 {
     DObjDesc *dobj_desc;
     MObjSub ***p_mobjsubs;
-    AObjEvent ***p_costume_matanim_joints;
+    AObjEvent32 ***p_costume_matanim_joints;
     u8 flags;
 };
 
@@ -972,7 +972,7 @@ struct ftAttributes
     ftWithheldPart *withheld_parts;
     ftCommonPartContainer *commonparts_container;
     DObjDesc *dobj_lookup; // WARNING: Not actually DObjDesc* but I don't know what this struct is or what its bounds are; bunch of consecutive floats
-    AObjEvent **shield_anim_joints[8];  // One for each ordinal direction
+    AObjEvent32 **shield_anim_joints[8];  // One for each ordinal direction
     s32 joint_rfoot_id; // What does this do?
     f32 joint_rfoot_rotate;
     s32 joint_lfoot_id;
@@ -996,7 +996,7 @@ struct ftMesh
     s32 joint_id;
     Gfx *dl;
     MObjSub **mobjsubs;
-    AObjEvent **costume_matanim_joints;
+    AObjEvent32 **costume_matanim_joints;
 };
 
 // Main fighter struct

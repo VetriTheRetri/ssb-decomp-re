@@ -1275,7 +1275,7 @@ MObj* gcAddMObjForDObj(DObj* dobj, MObjSub* mobjsub)
 	mobj->texture_id_next = 0;
 	mobj->palette_id = 0;
 	mobj->aobj = NULL;
-	mobj->matanim_joint = NULL;
+	mobj->matanim_joint.event32 = NULL;
 	mobj->anim_remain = AOBJ_ANIM_NULL;
 	mobj->anim_speed = 1.0F;
 	mobj->anim_frame = 0.0F;
@@ -1324,7 +1324,7 @@ void gcInitDObj(DObj* dobj)
 		dobj->ommtx[i] = NULL;
 
 	dobj->aobj = NULL;
-	dobj->anim_joint = NULL;
+	dobj->anim_joint.event32 = NULL;
 	dobj->anim_remain = AOBJ_ANIM_NULL;
 	dobj->anim_speed = 1.0F;
 	dobj->anim_frame = 0.0F;
@@ -1550,7 +1550,9 @@ Camera* gcAddCameraForGObj(GObj* gobj)
 	Camera* new_cam;
 
 	if (gobj == NULL)
+	{
 		gobj = gOMObjCurrentCommon;
+	}
 	gobj->obj_kind = nOMObjCommonAppendCamera;
 
 	new_cam = gcGetCameraSetNextAlloc();
@@ -1562,15 +1564,16 @@ Camera* gcAddCameraForGObj(GObj* gobj)
 	new_cam->ommtx_len = 0;
 
 	for (i = 0; i < ARRAY_COUNT(new_cam->ommtx); i++)
+	{
 		new_cam->ommtx[i] = NULL;
-
+	}
 	new_cam->flags = 0;
 	new_cam->color = GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00);
 	new_cam->proc_camera = NULL;
 	new_cam->unk_camera_0x8C = 0;
 
 	new_cam->aobj = NULL;
-	new_cam->camanim_joint = NULL;
+	new_cam->camanim_joint.event32 = NULL;
 
 	new_cam->anim_remain = AOBJ_ANIM_NULL;
 	new_cam->anim_speed = 1.0F;

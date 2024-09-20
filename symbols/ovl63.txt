@@ -36,7 +36,7 @@ scExplainStartScene = 0x8018E5C0; // segment:ovl63
 scExplainSetupFiles = 0x8018E640; // segment:ovl63
 
 dExplainInterfacePositions = 0x8018E6E0; // segment:ovl63
-dExplainStickAObjEventOffsets = 0x8018E6F4; // segment:ovl63
+dExplainStickAObjScriptOffsets = 0x8018E6F4; // segment:ovl63
 dSCExplainGameKeyuences = 0x8018E710; // segment:ovl63
 D_ovl63_8018E720 = 0x8018E720; // segment:ovl63
 dSCExplainRandomSeed1 = 0x8018E724; // segment:ovl63

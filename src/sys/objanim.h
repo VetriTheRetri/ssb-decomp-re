@@ -13,19 +13,19 @@ extern void gcSetAnimSpeed(GObj *gobj, f32 anim_speed);
 extern void gcSetAllAnimSpeed(GObj *gobj, f32 anim_speed);
 
 // Add animation script to specific DObj
-extern void gcAddDObjAnimJoint(DObj*, AObjEvent*, f32);
+extern void gcAddDObjAnimJoint(DObj*, AObjEvent32*, f32);
 
 // Add material animation script to specific MObj
-extern void gcAddMObjMatAnimJoint(MObj*, AObjEvent*, f32);
+extern void gcAddMObjMatAnimJoint(MObj*, AObjEvent32*, f32);
 
 // Add animation script to all DObjs on a GObj
-extern void gcAddAnimJointAll(GObj *gobj, AObjEvent **anim_joints, f32 anim_frame);
+extern void gcAddAnimJointAll(GObj *gobj, AObjEvent32 **anim_joints, f32 anim_frame);
 
 // Add material animation script to all MObjs on a GObj
-extern void gcAddMatAnimJointAll(GObj *gobj, AObjEvent ***p_matanim_joints, f32 anim_frame);
+extern void gcAddMatAnimJointAll(GObj *gobj, AObjEvent32 ***p_matanim_joints, f32 anim_frame);
 
 // Add animation and material animation scripts to all DObjs and MObjs on a GObj
-extern void gcAddAnimAll(GObj *gobj, AObjEvent **anim_joints, AObjEvent ***p_matanim_joints, f32 anim_frame);
+extern void gcAddAnimAll(GObj *gobj, AObjEvent32 **anim_joints, AObjEvent32 ***p_matanim_joints, f32 anim_frame);
 
 // Parse AnimJoint on specific DObj
 extern void gcParseDObjAnimJoint(DObj *dobj);
@@ -85,7 +85,7 @@ extern void gcGetAObjTrackAnimTimeMax(s32 track, f32 translate, f32 rotate, f32 
 extern f32 gcGetDObjTempAnimTimeMax
 (
     DObj *dobj,
-    AObjEvent **anim_joints,
+    AObjEvent32 **anim_joints,
     f32 anim_frame,
     DObjDesc *dobj_desc,
     s32 rate_kind,
@@ -99,7 +99,7 @@ extern f32 gcGetDObjTempAnimTimeMax
 extern f32 func_8000EC64_F864
 (
     GObj *gobj,
-    AObjEvent **anim_joints,
+    AObjEvent32 **anim_joints,
     f32 anim_frame,
     DObjDesc *dobj_desc,
     s32 rate_kind,
@@ -111,7 +111,7 @@ extern f32 func_8000EC64_F864
 );
 
 // ???
-extern void func_8000EE40_FA40(GObj *gobj, AObjEvent **anim_joints, f32 anim_frame, DObjDesc *dobj_desc);
+extern void func_8000EE40_FA40(GObj *gobj, AObjEvent32 **anim_joints, f32 anim_frame, DObjDesc *dobj_desc);
 
 // Add Translate, Rotate and Scale OMMtxes for specific DObj
 extern void gcAddDObjTransformTraRotSca(DObj *dobj);
@@ -156,7 +156,7 @@ extern void gcAddMObjAll(GObj *gobj, MObjSub ***p_mobjsubs);
 extern void gcSetDObjTransformsForGObj(GObj *gobj, DObjDesc *dobj_desc);
 
 // Add CamAnimJoint to Camera
-extern void gcAddCameraCamAnimJoint(Camera *cam, AObjEvent *camanim_joint, f32 anim_frame); 
+extern void gcAddCameraCamAnimJoint(Camera *cam, AObjEvent32 *camanim_joint, f32 anim_frame); 
 
 // Parse CamAnimJoint on Camera
 extern void gcParseCameraCamAnimJoint(Camera *cam);
@@ -168,6 +168,6 @@ extern void gcPlayCameraCamAnim(Camera *cam);
 extern void gcPlayCamAnim(GObj *gobj);
 
 // Get total animation length
-extern s32 gcGetAnimTotalLength(AObjEvent **anim_joints);
+extern s32 gcGetAnimTotalLength(AObjEvent32 **anim_joints);
 
 #endif

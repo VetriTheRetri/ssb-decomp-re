@@ -434,7 +434,7 @@ void scExplainUpdateTapSparkEffect(void)
         dobj->translate.vec.f.x = pos->x + 15.0F;
         dobj->translate.vec.f.y = pos->y + 5.0F;
     }
-    gcAddAnimAll(gobj, NULL, gcGetDataFromFile(AObjEvent***, sSCExplainGraphicsFileHead, &lSCExplainTapSparkMatAnimJoint), 0.0F);
+    gcAddAnimAll(gobj, NULL, gcGetDataFromFile(AObjEvent32***, sSCExplainGraphicsFileHead, &lSCExplainTapSparkMatAnimJoint), 0.0F);
     gcPlayAnimAll(gobj);
 
     gobj->flags = GOBJ_FLAG_NONE;
@@ -584,7 +584,7 @@ void func_ovl63_8018DDBC(void)
         (
             stick_gobj,
             NULL,
-            gcGetDataFromFile(AObjEvent***, sSCExplainGraphicsFileHead, dSCExplainStickMatAnimJoints[sw]), 
+            gcGetDataFromFile(AObjEvent32***, sSCExplainGraphicsFileHead, dSCExplainStickMatAnimJoints[sw]), 
             0.0F
         );
         gcPlayAnimAll(stick_gobj);

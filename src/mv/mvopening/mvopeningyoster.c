@@ -184,7 +184,7 @@ void mvOpeningYosterMakeGround(void)
         gobj,
         gcGetDataFromFile
         (
-            AObjEvent**,
+            AObjEvent32**,
             sMVOpeningYosterFiles[0],
             &lMVOpeningYosterGroundAnimJoint
         ),
@@ -226,7 +226,7 @@ void mvOpeningYosterMakeMainViewport(void)
         cam, 
         gcGetDataFromFile
         (
-            AObjEvent*,
+            AObjEvent32*,
             sMVOpeningYosterFiles[0],
             &lMVOpeningYosterCamAnimJoint
         ),

@@ -63,8 +63,12 @@ union OMUserData
     void *p;
 };
 
-union AObjFigatree
+// Half-sized AObj event struct for bigger animation scripts (used by fighters only)
+union AObjEvent16
 {
+    s16 s;
+    u16 u;
+
     struct
     {
         u16 opcode : 5;
@@ -72,12 +76,10 @@ union AObjFigatree
         u16 toggle : 1;
 
     } command;
-
-    s16 shalf;
-    u16 uhalf;
 };
 
-union AObjEvent
+// Normal-sized AObj event struct for common animation scripts
+union AObjEvent32
 {
     f32 f;
     s32 s;
@@ -91,6 +93,12 @@ union AObjEvent
         u32 payload : 15;
         
     } command;
+};
+
+union AObjScript
+{
+    AObjEvent16 *event16;
+    AObjEvent32 *event32;
 };
 
 struct _AObj
@@ -318,7 +326,7 @@ struct _MObjSub
 struct _MObj
 {
     MObj *next;
-    GObj *parent_gobj;      // Unconfirmed
+    GObj *parent_gobj;              // Unconfirmed
     MObjSub sub;
     u16 texture_id_current;
     u16 texture_id_next;
@@ -326,11 +334,11 @@ struct _MObj
     f32 palette_id;
     u8 filler_0x8C[0x90 - 0x8C];
     AObj *aobj;
-    AObjEvent *matanim_joint;
-    f32 anim_remain;            // Animation frames remaining, multi-purpose?
-    f32 anim_speed;              // Animation playback rate / interpolation, multi-purpose?
-    f32 anim_frame;             // Current animation frame, multi-purpose?
-	OMUserData user_data;       // Actually just padding?
+    AObjScript matanim_joint;
+    f32 anim_remain;                // Animation frames remaining, multi-purpose?
+    f32 anim_speed;                 // Animation playback rate / interpolation, multi-purpose?
+    f32 anim_frame;                 // Current animation frame, multi-purpose?
+	OMUserData user_data;           // Actually just padding?
 };
 
 struct DObjTransformTypes
@@ -416,11 +424,7 @@ struct _DObj
     OMMtx *ommtx[5];
     AObj *aobj;
 
-    union
-    {
-        AObjEvent *anim_joint;
-        AObjFigatree *figatree;
-    };
+    AObjScript anim_joint;
     
     f32 anim_remain;    // Multi-purpose? Usually frames remaining, but used as rotation step in Crate/Barrel smash GFX?
     f32 anim_speed;      // Multi-purpose? Fighters use this as animation playback rate / interpolation, but it is used as rotation step in Crate/Barrel smash GFX?
@@ -489,7 +493,7 @@ struct _Camera
     OMMtx *ommtx[2];
 
     AObj *aobj;
-    AObjEvent *camanim_joint;
+    AObjScript camanim_joint;
 
     f32 anim_remain;
     f32 anim_speed;

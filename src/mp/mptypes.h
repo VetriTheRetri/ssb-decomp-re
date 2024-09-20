@@ -173,9 +173,9 @@ struct mpItemWeights
 struct mpGroundDesc
 {
 	void *dobj_desc;
-	AObjEvent **anim_joints;
+	AObjEvent32 **anim_joints;
 	MObjSub ***p_mobjsubs;
-	AObjEvent ***p_matanim_joints;
+	AObjEvent32 ***p_matanim_joints;
 };
 
 struct mpGroundData

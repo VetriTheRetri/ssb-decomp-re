@@ -203,7 +203,7 @@ void mvOpeningYamabukiMakeLegs(void)
         gobj,
         gcGetDataFromFile
         (
-            AObjEvent**,
+            AObjEvent32**,
             sMVOpeningYamabukiFiles[0],
             &lMVOpeningYamabukiLegsAnimJoint
         ),
@@ -241,7 +241,7 @@ void mvOpeningYamabukiMakeLegsShadow(void)
         gobj,
         gcGetDataFromFile
         (
-            AObjEvent**,
+            AObjEvent32**,
             sMVOpeningYamabukiFiles[0],
             &lMVOpeningYamabukiLegsShadowAnimJoint
         ),
@@ -279,7 +279,7 @@ void mvOpeningYamabukiMakeMBall(void)
         gobj,
         gcGetDataFromFile
         (
-            AObjEvent**,
+            AObjEvent32**,
             sMVOpeningYamabukiFiles[0],
             &lMVOpeningYamabukiMBallAnimJoint
         ),
@@ -320,7 +320,7 @@ void mvOpeningYamabukiMakeMainViewport(void)
         cam,
         gcGetDataFromFile
         (
-            AObjEvent*,
+            AObjEvent32*,
             sMVOpeningYamabukiFiles[0],
             &lMVOpeningYamabukiCamAnimJoint
         ),

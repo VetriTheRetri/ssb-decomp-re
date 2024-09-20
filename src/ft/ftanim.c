@@ -105,7 +105,7 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
         }
         do
         {
-            if (root_dobj->figatree == NULL)
+            if (root_dobj->anim_joint.event16 == NULL)
             {
                 current_aobj = root_dobj->aobj;
 
@@ -123,14 +123,14 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
 
                 return;
             }
-            command_kind = root_dobj->figatree->command.opcode;
+            command_kind = root_dobj->anim_joint.event16->command.opcode;
 
             switch (command_kind)
             {
             case nFTFigatreeCommandSetVal0RateBlock:
             case nFTFigatreeCommandSetVal0Rate:
-                flags = root_dobj->figatree->command.flags;
-                payload = (AObjAnimAdvance(root_dobj->figatree)->command.toggle) ? AObjAnimAdvance(root_dobj->figatree)->uhalf : 0.0F;
+                flags = root_dobj->anim_joint.event16->command.flags;
+                payload = (AObjAnimAdvance(root_dobj->anim_joint.event16)->command.toggle) ? AObjAnimAdvance(root_dobj->anim_joint.event16)->u : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
                 {
@@ -146,7 +146,7 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
 
-                        track_aobjs[i]->value_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->figatree)->shalf, i + nOMObjAnimTrackJointStart, 0);
+                        track_aobjs[i]->value_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->anim_joint.event16)->s, i + nOMObjAnimTrackJointStart, 0);
 
                         track_aobjs[i]->rate_base = track_aobjs[i]->rate_target;
                         track_aobjs[i]->rate_target = 0.0F;
@@ -167,8 +167,8 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
 
             case nFTFigatreeCommandSetValBlock:
             case nFTFigatreeCommandSetVal:
-                flags = root_dobj->figatree->command.flags;
-                payload = (AObjAnimAdvance(root_dobj->figatree)->command.toggle) ? AObjAnimAdvance(root_dobj->figatree)->uhalf : 0.0F;
+                flags = root_dobj->anim_joint.event16->command.flags;
+                payload = (AObjAnimAdvance(root_dobj->anim_joint.event16)->command.toggle) ? AObjAnimAdvance(root_dobj->anim_joint.event16)->u : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
                 {
@@ -184,7 +184,7 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
 
-                        track_aobjs[i]->value_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->figatree)->shalf, i + nOMObjAnimTrackJointStart, 0);
+                        track_aobjs[i]->value_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->anim_joint.event16)->s, i + nOMObjAnimTrackJointStart, 0);
 
                         track_aobjs[i]->kind = 2;
 
@@ -204,8 +204,8 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
 
             case nFTFigatreeCommandSetValRateBlock:
             case nFTFigatreeCommandSetValRate:
-                flags = root_dobj->figatree->command.flags;
-                payload = (AObjAnimAdvance(root_dobj->figatree)->command.toggle) ? AObjAnimAdvance(root_dobj->figatree)->uhalf : 0.0F;
+                flags = root_dobj->anim_joint.event16->command.flags;
+                payload = (AObjAnimAdvance(root_dobj->anim_joint.event16)->command.toggle) ? AObjAnimAdvance(root_dobj->anim_joint.event16)->u : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
                 {
@@ -221,11 +221,11 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
 
-                        track_aobjs[i]->value_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->figatree)->shalf, i + nOMObjAnimTrackJointStart, 0);
+                        track_aobjs[i]->value_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->anim_joint.event16)->s, i + nOMObjAnimTrackJointStart, 0);
 
                         track_aobjs[i]->rate_base = track_aobjs[i]->rate_target;
 
-                        track_aobjs[i]->rate_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->figatree)->shalf, i + nOMObjAnimTrackJointStart, 1);
+                        track_aobjs[i]->rate_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->anim_joint.event16)->s, i + nOMObjAnimTrackJointStart, 1);
 
                         track_aobjs[i]->kind = 3;
 
@@ -243,9 +243,9 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                 break;
 
             case nFTFigatreeCommandSetTargetRate:
-                flags = root_dobj->figatree->command.flags;
+                flags = root_dobj->anim_joint.event16->command.flags;
 
-                payload = (AObjAnimAdvance(root_dobj->figatree)->command.toggle) ? AObjAnimAdvance(root_dobj->figatree)->uhalf : 0.0F;
+                payload = (AObjAnimAdvance(root_dobj->anim_joint.event16)->command.toggle) ? AObjAnimAdvance(root_dobj->anim_joint.event16)->u : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
                 {
@@ -259,22 +259,22 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                         {
                             track_aobjs[i] = gcAddAObjForDObj(root_dobj, i + nOMObjAnimTrackJointStart);
                         }
-                        track_aobjs[i]->rate_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->figatree)->shalf, i + nOMObjAnimTrackJointStart, 1);
+                        track_aobjs[i]->rate_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->anim_joint.event16)->s, i + nOMObjAnimTrackJointStart, 1);
                     }
                 }
                 break;
 
             case nFTFigatreeCommandBlock:
-                if (AObjAnimAdvance(root_dobj->figatree)->command.toggle)
+                if (AObjAnimAdvance(root_dobj->anim_joint.event16)->command.toggle)
                 {
-                    root_dobj->anim_remain += AObjAnimAdvance(root_dobj->figatree)->uhalf;
+                    root_dobj->anim_remain += AObjAnimAdvance(root_dobj->anim_joint.event16)->u;
                 }
                 break;
 
             case nFTFigatreeCommandSetValAfterBlock:
             case nFTFigatreeCommandSetValAfter:
-                flags = root_dobj->figatree->command.flags;
-                payload = (AObjAnimAdvance(root_dobj->figatree)->command.toggle) ? AObjAnimAdvance(root_dobj->figatree)->uhalf : 0.0F;
+                flags = root_dobj->anim_joint.event16->command.flags;
+                payload = (AObjAnimAdvance(root_dobj->anim_joint.event16)->command.toggle) ? AObjAnimAdvance(root_dobj->anim_joint.event16)->u : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
                 {
@@ -290,7 +290,7 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
 
-                        track_aobjs[i]->value_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->figatree)->shalf, i + nOMObjAnimTrackJointStart, 0);
+                        track_aobjs[i]->value_target = ftAnimGetTargetFrac(AObjAnimAdvance(root_dobj->anim_joint.event16)->s, i + nOMObjAnimTrackJointStart, 0);
 
                         track_aobjs[i]->kind = 1;
 
@@ -308,9 +308,9 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                 break;
 
             case nFTFigatreeCommandLoop:
-                AObjAnimAdvance(root_dobj->figatree);
+                AObjAnimAdvance(root_dobj->anim_joint.event16);
 
-                root_dobj->figatree += root_dobj->figatree->shalf / 2;
+                root_dobj->anim_joint.event16 += root_dobj->anim_joint.event16->s / 2;
 
                 root_dobj->anim_frame = -root_dobj->anim_remain;
                 root_dobj->parent_gobj->anim_frame = -root_dobj->anim_remain;
@@ -325,9 +325,9 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                 break;
 
             case nFTFigatreeCommand11:
-                flags = root_dobj->figatree->command.flags;
+                flags = root_dobj->anim_joint.event16->command.flags;
 
-                payload = (AObjAnimAdvance(root_dobj->figatree)->command.toggle) ? AObjAnimAdvance(root_dobj->figatree)->uhalf : 0.0F;
+                payload = (AObjAnimAdvance(root_dobj->anim_joint.event16)->command.toggle) ? AObjAnimAdvance(root_dobj->anim_joint.event16)->u : 0.0F;
 
                 for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
                 {
@@ -347,15 +347,15 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                 break;
 
             case nFTFigatreeCommandSetTranslateInterp:
-                AObjAnimAdvance(root_dobj->figatree);
+                AObjAnimAdvance(root_dobj->anim_joint.event16);
 
                 if (track_aobjs[nOMObjAnimTrackTraI - nOMObjAnimTrackJointStart] == NULL)
                 {
                     track_aobjs[nOMObjAnimTrackTraI - nOMObjAnimTrackJointStart] = gcAddAObjForDObj(root_dobj, nOMObjAnimTrackTraI);
                 }
-                track_aobjs[nOMObjAnimTrackTraI - nOMObjAnimTrackJointStart]->interpolate = root_dobj->figatree + (root_dobj->figatree->shalf / 2);
+                track_aobjs[nOMObjAnimTrackTraI - nOMObjAnimTrackJointStart]->interpolate = root_dobj->anim_joint.event16 + (root_dobj->anim_joint.event16->s / 2);
 
-                AObjAnimAdvance(root_dobj->figatree);
+                AObjAnimAdvance(root_dobj->anim_joint.event16);
                 break;
 
             case nOMObjAnimCommandEnd:
@@ -383,11 +383,11 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                 return;
 
             case nFTFigatreeCommandSetFlags:
-                root_dobj->flags = root_dobj->figatree->command.flags;
+                root_dobj->flags = root_dobj->anim_joint.event16->command.flags;
 
-                if (AObjAnimAdvance(root_dobj->figatree)->command.toggle)
+                if (AObjAnimAdvance(root_dobj->anim_joint.event16)->command.toggle)
                 {
-                    root_dobj->anim_remain += AObjAnimAdvance(root_dobj->figatree)->uhalf;
+                    root_dobj->anim_remain += AObjAnimAdvance(root_dobj->anim_joint.event16)->u;
                 }
                 break;
 

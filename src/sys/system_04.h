@@ -31,8 +31,8 @@ extern s32 dODScreenUlxDefault;
 extern s32 dODScreenUlyDefault;
 
 // functions
-extern void gcAddDObjAnimJoint(DObj*, AObjEvent*, f32);
-extern void gcAddMObjMatAnimJoint(MObj*, AObjEvent*, f32);
+extern void gcAddDObjAnimJoint(DObj*, AObjEvent32*, f32);
+extern void gcAddMObjMatAnimJoint(MObj*, AObjEvent32*, f32);
 extern void func_8000BD8C(struct GObjCommon *, union AnimCmd **, f32);
 extern void func_8000BE28(struct GObjCommon *, union AnimCmd ***, f32);
 extern void func_8000BED8(struct GObjCommon *, union AnimCmd **, union AnimCmd ***, f32);

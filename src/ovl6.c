@@ -312,35 +312,36 @@ void func_ovl6_8018D330()
 void scBonusGame_InitBonus1Targets()
 {
 	grBonusDesc* bonus_desc = &scBonusGame_Bonus1_TargetOffsets[gBattleState->gr_kind - nGRKindBonus1Start];
-	void** anim_joint;
+	AObjEvent32 **anim_joints;
 	DObjDesc* dobj_desc;
-	Vec3f sp48;
+	Vec3f pos;
 
-	sp48.x = sp48.y = sp48.z = 0.0F;
+	pos.x = pos.y = pos.z = 0.0F;
 
 	dobj_desc = (DObjDesc*)((uintptr_t)((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobj_desc - (intptr_t)bonus_desc->o_main)
 							+ (intptr_t)bonus_desc->o_dobjdesc);
-	anim_joint = (void**)((uintptr_t)((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobj_desc - (intptr_t)bonus_desc->o_main)
+	anim_joints = (AObjEvent32**)((uintptr_t)((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobj_desc - (intptr_t)bonus_desc->o_main)
 					  + (intptr_t)bonus_desc->o_anim);
 
 	gGRCommonStruct.bonus1.target_count = 0;
-	dobj_desc++, anim_joint++;
+	dobj_desc++, anim_joints++;
 
-	while (dobj_desc->index != 0x12)
+	while (dobj_desc->index != DOBJ_ARRAY_MAX)
 	{
-		GObj* item_gobj = itManagerMakeItemSetupCommon(NULL, nITKindTarget, &dobj_desc->translate, &sp48, 1);
-		if (*anim_joint != NULL)
+		GObj* item_gobj = itManagerMakeItemSetupCommon(NULL, nITKindTarget, &dobj_desc->translate, &pos, 1);
+
+		if (*anim_joints != NULL)
 		{
-			gcAddDObjAnimJoint(DObjGetStruct(item_gobj), *anim_joint, 0.0F);
+			gcAddDObjAnimJoint(DObjGetStruct(item_gobj), *anim_joints, 0.0F);
 			gcPlayAnimAll(item_gobj);
 		}
-		dobj_desc++, anim_joint++, gGRCommonStruct.bonus1.target_count++;
+		dobj_desc++, anim_joints++, gGRCommonStruct.bonus1.target_count++;
 	}
 	if (gGRCommonStruct.bonus1.target_count != 10)
 	{
 		syErrorPrintf("Error : not %d targets!\n", 10);
-		while (TRUE)
-			;
+
+		while (TRUE);
 	}
 }
 
@@ -449,7 +450,7 @@ void scBonusGame_InitBonus2Platforms()
 		if ((mpCollisionGetVertexFlagsLineID(line_ids[i]) & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect)
 		{
 			room_id = mpCollisionSetDObjNoID(line_ids[i]);
-			if (gMPCollisionYakumonoDObjs->yakumono_dobj[room_id]->anim_joint == NULL)
+			if (gMPCollisionYakumonoDObjs->yakumono_dobj[room_id]->anim_joint.event32 == NULL)
 				mpCollisionSetYakumonoOnID(room_id);
 			func_ovl6_8018D6A8(line_ids[i]);
 			gGRCommonStruct.bonus2.platform_count++;
@@ -535,7 +536,7 @@ void scBonusGame_InitBonus2Bumpers()
 {
 	grBonus2Bumpers* bonus_desc;
 	DObjDesc* dobj_desc;
-	AObjEvent** anim_joint;
+	AObjEvent32** anim_joint;
 	Vec3f vel;
 	GObj* item_gobj;
 
@@ -549,7 +550,7 @@ void scBonusGame_InitBonus2Bumpers()
 			= (DObjDesc*)((uintptr_t)bonus_desc
 						  + (intptr_t)scBonusGame_Bonus2_BumperOffsets[gBattleState->gr_kind - nGRKindBonus2Start]
 								.o_main);
-		anim_joint = (AObjEvent**)((uintptr_t)bonus_desc
+		anim_joint = (AObjEvent32**)((uintptr_t)bonus_desc
 							+ (intptr_t)scBonusGame_Bonus2_BumperOffsets[gBattleState->gr_kind - nGRKindBonus2Start]
 								  .o_anim);
 		dobj_desc++, anim_joint++;

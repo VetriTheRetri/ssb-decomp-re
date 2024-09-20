@@ -710,7 +710,7 @@ void itBombHeiExplodeWaitInitItemVars(GObj *item_gobj)
 
     ip->it_multi = 0;
 
-    dobj->mobj->matanim_joint = NULL;
+    dobj->mobj->matanim_joint.event32 = NULL;
 
     itMainCheckSetColAnimID(item_gobj, ITBOMBHEI_EXPLODE_COLANIM_ID, ITBOMBHEI_EXPLODE_COLANIM_DURATION);
 }

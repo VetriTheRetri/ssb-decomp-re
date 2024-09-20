@@ -751,7 +751,7 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 drawstatus)
     ftParts *ft_parts;
     DObj *joint;
     s32 detail_id;
-    AObjEvent **costume_matanim_joints;
+    AObjEvent32 **costume_matanim_joints;
     MObjSub **mobjsubs;
 
     joint = fp->joints[joint_id];
@@ -834,7 +834,7 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
     ftParts *ft_parts;
     DObj *joint;
     s32 detail_id;
-    AObjEvent **costume_matanim_joints;
+    AObjEvent32 **costume_matanim_joints;
     MObjSub **mobjsubs;
     s32 i;
 
@@ -982,7 +982,7 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
     s32 detail_id;
     ftModelPart *modelpart;
     MObjSub **mobjsubs;
-    AObjEvent **costume_matanim_joints;
+    AObjEvent32 **costume_matanim_joints;
     s32 i;
 
     commonparts_container = attributes->commonparts_container;

@@ -39,9 +39,9 @@ extern void lbCommonMatrixRotSca(Mtx *mtx, f32 rotx, f32 roty, f32 rotz, f32 sca
 extern void func_ovl0_800C8634(void);
 extern alSoundEffect* lbCommonMakePositionFGM(u16 fgm, f32 pos);
 extern DObj* lbCommonGetTreeDObjNextFromRoot(DObj *a, DObj *b);
-extern void lbCommonAddDObjAnimJointAll(DObj *root_dobj, AObjEvent **anim_joints, f32 anim_frame);
-extern void lbCommonAddFighterPartsAnimJointAll(DObj *root_dobj, AObjEvent **anim_joints, f32 anim_frame);
-extern void lbCommonAddDObjAnimAll(DObj *root_dobj, AObjEvent **anim_joints, AObjEvent ***p_matanim_joints, f32 anim_frame);
+extern void lbCommonAddDObjAnimJointAll(DObj *root_dobj, AObjEvent32 **anim_joints, f32 anim_frame);
+extern void lbCommonAddFighterPartsAnimJointAll(DObj *root_dobj, AObjEvent32 **anim_joints, f32 anim_frame);
+extern void lbCommonAddDObjAnimAll(DObj *root_dobj, AObjEvent32 **anim_joints, AObjEvent32 ***p_matanim_joints, f32 anim_frame);
 extern void lbCommonInitDObjTriTransform(DObj *dobj, u8 tk1, u8 tk2, u8 tk3);
 extern void lbCommonInitDObj(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, u8 arg4);
 extern void lbCommonSetupTreeDObjs(DObj *root_dobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u8 tk2, u8 tk3);
@@ -49,8 +49,8 @@ extern void lbCommonAddMObjForFighterPartsDObj
 (
     DObj *dobj,
     MObjSub **mobjsubs,
-    AObjEvent **costume_matanim_joints,
-    AObjEvent **main_matanim_joints,
+    AObjEvent32 **costume_matanim_joints,
+    AObjEvent32 **main_matanim_joints,
     f32 anim_frame
 );
 extern void lbCommonSetupFighterPartsDObjs

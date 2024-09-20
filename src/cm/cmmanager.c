@@ -927,7 +927,7 @@ void cmManagerSetCameraStatusPrev(void)
 }
 
 // 0x8010D030
-void func_ovl2_8010D030(AObjEvent *camanim_joint, f32 anim_frame, Vec3f *arg2)
+void func_ovl2_8010D030(AObjEvent32 *camanim_joint, f32 anim_frame, Vec3f *arg2)
 {
     cmManagerSetCameraStatusID(2);
 

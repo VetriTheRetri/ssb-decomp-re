@@ -37,7 +37,7 @@ void grJungleTaruCannAddAnimOffset(GObj *ground_gobj, intptr_t offset)
 {
     DObj *dobj = DObjGetStruct(ground_gobj)->child;
 
-    gcAddDObjAnimJoint(dobj, (AObjEvent*) ((uintptr_t)gGRCommonStruct.jungle.map_head + (intptr_t)offset), 0.0F);
+    gcAddDObjAnimJoint(dobj, (AObjEvent32*) ((uintptr_t)gGRCommonStruct.jungle.map_head + (intptr_t)offset), 0.0F);
     gcParseDObjAnimJoint(dobj);
     gcPlayDObjAnim(dobj);
 }

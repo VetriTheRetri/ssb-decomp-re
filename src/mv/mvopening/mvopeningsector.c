@@ -274,7 +274,7 @@ void mvOpeningSectorMakeGreatFox(void)
         great_fox_gobj,
         gcGetDataFromFile
         (
-            AObjEvent**,
+            AObjEvent32**,
             sMVOpeningSectorFiles[0],
             &lMVOpeningSectorGreatFoxAnimJoint
         ),
@@ -389,7 +389,7 @@ void mvOpeningSectorMakeArwings(void)
             nOMTransformNull
         );
         gcAddGObjDisplay(arwing_gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
-        gcAddAnimJointAll(arwing_gobj, gcGetDataFromFile(AObjEvent**, sMVOpeningSectorFiles[0], anim_joints[i]), 0.0F);
+        gcAddAnimJointAll(arwing_gobj, gcGetDataFromFile(AObjEvent32**, sMVOpeningSectorFiles[0], anim_joints[i]), 0.0F);
         gcAddGObjProcess(arwing_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
     }
 }
@@ -426,7 +426,7 @@ void mvOpeningSectorMakeMainViewport(void)
     cam->projection.persp.near = 128.0F;
     cam->projection.persp.far = 30000.0F;
 
-    gcAddCameraCamAnimJoint(cam, gcGetDataFromFile(AObjEvent*, sMVOpeningSectorFiles[0], &lMVOpeningSectorCamAnimJoint), 0.0F);
+    gcAddCameraCamAnimJoint(cam, gcGetDataFromFile(AObjEvent32*, sMVOpeningSectorFiles[0], &lMVOpeningSectorCamAnimJoint), 0.0F);
     gcAddGObjProcess(camera_gobj, mvOpeningSectorCameraProcUpdate, nOMObjProcessKindProc, 1);
 }
 

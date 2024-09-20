@@ -341,7 +341,7 @@ void mvOpeningStandoffMakeLightning(void)
         lightning_gobj,
         gcGetDataFromFile
         (
-            AObjEvent***,
+            AObjEvent32***,
             sMVOpeningStandoffFiles[0],
             &lMVOpeningStandoffLightningMatAnimJoint
         ),
@@ -358,7 +358,7 @@ void mvOpeningStandoffMakeLightning(void)
         lightning_gobj,
         gcGetDataFromFile
         (
-            AObjEvent**,
+            AObjEvent32**,
             sMVOpeningStandoffFiles[0],
             &lMVOpeningStandoffLightningAnimJoint
         ),
@@ -479,7 +479,7 @@ void mvOpeningStandoffMakeMainViewport(void)
         cam,
         gcGetDataFromFile
         (
-            AObjEvent*,
+            AObjEvent32*,
             sMVOpeningStandoffFiles[0],
             &lMVOpeningStandoffCamAnimJoint
         ),

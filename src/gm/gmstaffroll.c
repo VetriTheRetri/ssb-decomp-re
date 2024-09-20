@@ -203,7 +203,7 @@ f32 sGMStaffrollCrosshairPositionX;
 f32 sGMStaffrollCrosshairPositionY;
 
 // 0x8013A8DC
-AObjEvent *sGMStaffrollNameAnimJoint;
+AObjEvent32 *sGMStaffrollNameAnimJoint;
 
 // 0x8013A8E0
 void *sGMStaffrollNameInterpolation;
@@ -2187,7 +2187,7 @@ void gmStaffrollInitVars(void)
 	sGMStaffrollNameAllocFree = NULL;
 	sGMStaffrollIsPaused = FALSE;
 	sGMStaffrollNameInterpolation = gcGetDataFromFile(void*, sGMStaffrollFiles[0], &lGMStaffrollInterpolation);
-	sGMStaffrollNameAnimJoint = gcGetDataFromFile(AObjEvent*, sGMStaffrollFiles[0], &lGMStaffrollAnimJoint);
+	sGMStaffrollNameAnimJoint = gcGetDataFromFile(AObjEvent32*, sGMStaffrollFiles[0], &lGMStaffrollAnimJoint);
 	sGMStaffrollDObjDesc = gcGetDataFromFile(DObjDesc*, sGMStaffrollFiles[0], &lGMStaffrollDObjDesc);
 	sGMStaffrollRollBeginWait = 0;
 	sGMStaffrollPlayer = gSceneData.spgame_player;

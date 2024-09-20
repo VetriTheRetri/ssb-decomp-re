@@ -763,7 +763,7 @@ DObj* lbCommonGetTreeDObjNextFromRoot(DObj *a, DObj *b)
 }
 
 // 0x800C8758
-void lbCommonAddDObjAnimJointAll(DObj *root_dobj, AObjEvent **anim_joints, f32 anim_frame)
+void lbCommonAddDObjAnimJointAll(DObj *root_dobj, AObjEvent32 **anim_joints, f32 anim_frame)
 {
     DObj *current_dobj = root_dobj;
     
@@ -771,7 +771,7 @@ void lbCommonAddDObjAnimJointAll(DObj *root_dobj, AObjEvent **anim_joints, f32 a
 
     while (current_dobj != NULL)
     {
-        AObjEvent *anim_joint = *anim_joints;
+        AObjEvent32 *anim_joint = *anim_joints;
         
         if (anim_joint != NULL)
         {
@@ -786,7 +786,7 @@ void lbCommonAddDObjAnimJointAll(DObj *root_dobj, AObjEvent **anim_joints, f32 a
 }
 
 // 0x800C87F4
-void lbCommonAddFighterPartsAnimJointAll(DObj *root_dobj, AObjEvent **anim_joints, f32 anim_frame)
+void lbCommonAddFighterPartsAnimJointAll(DObj *root_dobj, AObjEvent32 **anim_joints, f32 anim_frame)
 {
     DObj *current_dobj = root_dobj;
     
@@ -794,7 +794,7 @@ void lbCommonAddFighterPartsAnimJointAll(DObj *root_dobj, AObjEvent **anim_joint
 
     while (current_dobj != NULL)
     {
-        AObjEvent *anim_joint = *anim_joints;
+        AObjEvent32 *anim_joint = *anim_joints;
         ftParts *ft_parts = current_dobj->user_data.p;
         
         if (anim_joint != NULL)
@@ -816,7 +816,7 @@ void lbCommonAddFighterPartsAnimJointAll(DObj *root_dobj, AObjEvent **anim_joint
 }
 
 // 0x800C88AC
-void lbCommonAddDObjAnimAll(DObj *root_dobj, AObjEvent **anim_joints, AObjEvent ***p_matanim_joints, f32 anim_frame)
+void lbCommonAddDObjAnimAll(DObj *root_dobj, AObjEvent32 **anim_joints, AObjEvent32 ***p_matanim_joints, f32 anim_frame)
 {
     DObj *current_dobj = root_dobj;
     
@@ -826,7 +826,7 @@ void lbCommonAddDObjAnimAll(DObj *root_dobj, AObjEvent **anim_joints, AObjEvent 
     {
         if (anim_joints != NULL)
         {
-            AObjEvent *anim_joint = *anim_joints;
+            AObjEvent32 *anim_joint = *anim_joints;
 
             if (anim_joint != NULL)
             {
@@ -841,11 +841,11 @@ void lbCommonAddDObjAnimAll(DObj *root_dobj, AObjEvent **anim_joints, AObjEvent 
             if (*p_matanim_joints != NULL)
             {
                 MObj *mobj = current_dobj->mobj;
-                AObjEvent **matanim_joints = *p_matanim_joints;
+                AObjEvent32 **matanim_joints = *p_matanim_joints;
 
                 while (mobj != NULL)
                 {
-                    AObjEvent *matanim_joint = *matanim_joints;
+                    AObjEvent32 *matanim_joint = *matanim_joints;
 
                     if (matanim_joint != NULL)
                     {
@@ -937,8 +937,8 @@ void lbCommonAddMObjForFighterPartsDObj
 (
     DObj *dobj,
     MObjSub **mobjsubs,
-    AObjEvent **costume_matanim_joints,
-    AObjEvent **main_matanim_joints,
+    AObjEvent32 **costume_matanim_joints,
+    AObjEvent32 **main_matanim_joints,
     f32 anim_frame
 )
 {
@@ -952,7 +952,7 @@ void lbCommonAddMObjForFighterPartsDObj
 
             if (costume_matanim_joints != NULL)
             {
-                AObjEvent *costume_matanim_joint = *costume_matanim_joints;
+                AObjEvent32 *costume_matanim_joint = *costume_matanim_joints;
 
                 if (costume_matanim_joint != NULL)
                 {
@@ -965,7 +965,7 @@ void lbCommonAddMObjForFighterPartsDObj
             }
             if (main_matanim_joints != NULL)
             {
-                AObjEvent *main_matanim_joint = *main_matanim_joints;
+                AObjEvent32 *main_matanim_joint = *main_matanim_joints;
 
                 if (main_matanim_joint != NULL)
                 {

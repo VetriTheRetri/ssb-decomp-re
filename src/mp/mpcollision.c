@@ -287,7 +287,7 @@ sb32 mpCollisionGetUDCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flag
     }
     vlinks = &gMPCollisionVertexLinks[line_id];
 
-    if ((yakumono_dobj->anim_joint != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
+    if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
     {
         object_pos_x = object_pos->x - yakumono_dobj->translate.vec.f.x;
         object_pos_y = object_pos->y - yakumono_dobj->translate.vec.f.y;
@@ -416,7 +416,7 @@ sb32 mpCollisionGetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flag
     }
     vlinks = &gMPCollisionVertexLinks[line_id];
 
-    if ((yakumono_dobj->anim_joint != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
+    if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
     {
         object_pos_x = object_pos->x - yakumono_dobj->translate.vec.f.x;
         object_pos_y = object_pos->y - yakumono_dobj->translate.vec.f.y;
@@ -556,7 +556,7 @@ void mpCollisionGetLREdge(s32 line_id, Vec3f *object_pos, s32 lr)
     }
     object_pos->z = 0.0F;
 
-    if ((yakumono_dobj->anim_joint != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
+    if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
     {
         object_pos->x += yakumono_dobj->translate.vec.f.x;
         object_pos->y += yakumono_dobj->translate.vec.f.y;
@@ -643,7 +643,7 @@ void mpCollisionGetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud)
     }
     object_pos->z = 0.0F;
 
-    if ((yakumono_dobj->anim_joint != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
+    if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
     {
         object_pos->x += yakumono_dobj->translate.vec.f.x;
         object_pos->y += yakumono_dobj->translate.vec.f.y;
@@ -866,7 +866,7 @@ sb32 mpCollisionCheckGroundLineCollisionSame(Vec3f *position, Vec3f *translate, 
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
-            if ((yakumono_dobj->anim_joint != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
+            if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vedge_x = yakumono_dobj->translate.vec.f.x;
@@ -1025,7 +1025,7 @@ sb32 mpCollisionCheckGroundLineCollisionDiff(Vec3f *position, Vec3f *translate, 
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
-            if ((yakumono_dobj->anim_joint != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
+            if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vedge_x = yakumono_dobj->translate.vec.f.x;
@@ -1370,7 +1370,7 @@ sb32 mpCollisionCheckCeilLineCollisionSame(Vec3f *position, Vec3f *translate, Ve
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
-            if ((yakumono_dobj->anim_joint != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
+            if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vedge_x = yakumono_dobj->translate.vec.f.x;
@@ -1529,7 +1529,7 @@ sb32 mpCollisionCheckCeilLineCollisionDiff(Vec3f *position, Vec3f *translate, Ve
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
-            if ((yakumono_dobj->anim_joint != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
+            if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vedge_x = yakumono_dobj->translate.vec.f.x;
@@ -1690,7 +1690,7 @@ sb32 mpCollisionCheckRWallLineCollisionSame(Vec3f *position, Vec3f *translate, V
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
-            if ((yakumono_dobj->anim_joint != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
+            if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vedge_y = yakumono_dobj->translate.vec.f.x;
@@ -2010,7 +2010,7 @@ sb32 mpCollisionCheckRWallLineCollisionDiff(Vec3f *position, Vec3f *translate, V
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
-            if ((yakumono_dobj->anim_joint != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
+            if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vedge_y = yakumono_dobj->translate.vec.f.x;
@@ -2231,7 +2231,7 @@ sb32 mpCollisionCheckLWallLineCollisionSame(Vec3f *position, Vec3f *translate, V
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
-            if ((yakumono_dobj->anim_joint != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
+            if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vedge_y = yakumono_dobj->translate.vec.f.x;
@@ -2516,7 +2516,7 @@ sb32 mpCollisionCheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, V
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
-            if ((yakumono_dobj->anim_joint != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
+            if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vedge_y = yakumono_dobj->translate.vec.f.x;
@@ -2664,7 +2664,7 @@ sb32 func_ovl2_800F8FFC(Vec3f *position)
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
-            if ((yakumono_dobj->anim_joint != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
+            if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vpdist_x = (position->x - yakumono_dobj->translate.vec.f.x);
@@ -2735,7 +2735,7 @@ sb32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
-            if ((yakumono_dobj->anim_joint != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
+            if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vpdist_x = (position->x - yakumono_dobj->translate.vec.f.x);
@@ -2838,7 +2838,7 @@ sb32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
-            if ((yakumono_dobj->anim_joint != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
+            if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vpdist_x = (position->x - yakumono_dobj->translate.vec.f.x);
@@ -2941,7 +2941,7 @@ sb32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
-            if ((yakumono_dobj->anim_joint != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
+            if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vpdist_x = (position->x - yakumono_dobj->translate.vec.f.x);
@@ -3044,7 +3044,7 @@ sb32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
 
         if ((line_data->line_count != 0) && (yakumono_dobj->user_data.s < nMPYakumonoStatusOff))
         {
-            if ((yakumono_dobj->anim_joint != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
+            if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
             {
                 // This runs when the corner of the character's map collision diamond collides with a wall?
                 vpdist_x = (position->x - yakumono_dobj->translate.vec.f.x);
@@ -3179,7 +3179,7 @@ void mpCollisionGetVertexPositionID(s32 line_id, s32 vertex_id, Vec3f *pos)
 
     yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
 
-    if ((yakumono_dobj->anim_joint != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
+    if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
     {
         pos->x += yakumono_dobj->translate.vec.f.x;
         pos->y += yakumono_dobj->translate.vec.f.y;
@@ -3698,7 +3698,7 @@ void func_ovl2_800FB808(void)
     {
         yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[line_info->yakumono_id];
 
-        if ((yakumono_dobj->anim_joint != NULL) || (yakumono_dobj->user_data.s < nMPYakumonoStatusOff && yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
+        if ((yakumono_dobj->anim_joint.event32 != NULL) || (yakumono_dobj->user_data.s < nMPYakumonoStatusOff && yakumono_dobj->user_data.s != nMPYakumonoStatusNone))
         {
             f32 x = yakumono_dobj->translate.vec.f.x, y = yakumono_dobj->translate.vec.f.y;
 
@@ -3887,7 +3887,7 @@ void func_ovl2_800FBD14(void)
 
         if ((yakumono_dobj->user_data.s != nMPYakumonoStatusOn) && (yakumono_dobj->user_data.s != nMPYakumonoStatusOff))
         {
-            if (yakumono_dobj->anim_joint != NULL)
+            if (yakumono_dobj->anim_joint.event32 != NULL)
             {
                 tx = yakumono_dobj->translate.vec.f.x;
                 ty = yakumono_dobj->translate.vec.f.y;
@@ -3910,7 +3910,7 @@ void func_ovl2_800FBD14(void)
                         vx = gMPCollisionVertexData->vpos[gMPCollisionVertexIDs->vertex_id[l]].pos.x;
                         vy = gMPCollisionVertexData->vpos[gMPCollisionVertexIDs->vertex_id[l]].pos.y;
 
-                        if (yakumono_dobj->anim_joint == NULL)
+                        if (yakumono_dobj->anim_joint.event32 == NULL)
                         {
                             if (dir2.top < vy)
                             {
@@ -4284,7 +4284,7 @@ sb32 mpCollisionCheckExistPlatformLineID(s32 line_id)
     }
     yakumono_dobj = gMPCollisionYakumonoDObjs->yakumono_dobj[gMPCollisionVertexInfo->vertex_info[line_id].yakumono_id];
 
-    if ((yakumono_dobj->user_data.s != nMPYakumonoStatusNone) || (yakumono_dobj->anim_joint != NULL))
+    if ((yakumono_dobj->user_data.s != nMPYakumonoStatusNone) || (yakumono_dobj->anim_joint.event32 != NULL))
     {
         return TRUE;
     }

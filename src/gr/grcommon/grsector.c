@@ -321,7 +321,7 @@ sb32 grSectorArwingLaser3DProcMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x80106A40
-void func_ovl2_80106A40(DObj *dobj, AObjEvent *anim_joint, f32 arg2)
+void func_ovl2_80106A40(DObj *dobj, AObjEvent32 *anim_joint, f32 arg2)
 {
     if (anim_joint != NULL)
     {
@@ -453,7 +453,7 @@ void func_ovl2_80106D00(void)
         gGRCommonStruct.sector.map_dobj[9]->anim_remain = AOBJ_ANIM_NULL;
         gGRCommonStruct.sector.map_dobj[9]->flags = DOBJ_FLAG_NORENDER;
 
-        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[8], (AObjEvent*) ((uintptr_t)gGRCommonStruct.sector.map_file + (intptr_t)&D_NF_00002EB4), 0.0F); // Linker thing
+        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[8], (AObjEvent32*) ((uintptr_t)gGRCommonStruct.sector.map_file + (intptr_t)&D_NF_00002EB4), 0.0F); // Linker thing
     }
     else if (gGRCommonStruct.sector.map_dobj[8]->anim_remain == AOBJ_ANIM_NULL)
     {
@@ -505,7 +505,7 @@ void func_ovl2_80106DD8(void)
 
                 if (pilot_id != 0)
                 {
-                    func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[1], (AObjEvent*) ((intptr_t)dGRSectorArwingAnimJoints[pilot_id] + (uintptr_t)gGRCommonStruct.sector.map_head), 0.0F);
+                    func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[1], (AObjEvent32*) ((intptr_t)dGRSectorArwingAnimJoints[pilot_id] + (uintptr_t)gGRCommonStruct.sector.map_head), 0.0F);
                 }
                 gGRCommonStruct.sector.arwing_pilot_prev = gGRCommonStruct.sector.arwing_pilot_current = pilot_id;
             }
@@ -942,8 +942,8 @@ void func_ovl2_80107958(void)
             {
                 mh1 = gGRCommonStruct.sector.map_head;
 
-                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[4], (AObjEvent*)((uintptr_t)mh1 + (intptr_t)&D_NF_00001B84), 0.0F);
-                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[5], (AObjEvent*)((uintptr_t)mh1 + (intptr_t)&D_NF_00001B84), 0.0F);
+                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[4], (AObjEvent32*)((uintptr_t)mh1 + (intptr_t)&D_NF_00001B84), 0.0F);
+                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[5], (AObjEvent32*)((uintptr_t)mh1 + (intptr_t)&D_NF_00001B84), 0.0F);
 
                 gGRCommonStruct.sector.unk_sector_0x52++;
             }
@@ -953,8 +953,8 @@ void func_ovl2_80107958(void)
 
                 func_ovl2_80107910();
 
-                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[2], (AObjEvent*)((uintptr_t)mh2 + (intptr_t)&D_NF_00001B34), 0.0F);
-                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[3], (AObjEvent*)((uintptr_t)mh2 + (intptr_t)&D_NF_00001B34), 0.0F);
+                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[2], (AObjEvent32*)((uintptr_t)mh2 + (intptr_t)&D_NF_00001B34), 0.0F);
+                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[3], (AObjEvent32*)((uintptr_t)mh2 + (intptr_t)&D_NF_00001B34), 0.0F);
 
                 gGRCommonStruct.sector.arwing_laser_timer = 30;
                 gGRCommonStruct.sector.arwing_laser_ammo--;
@@ -976,7 +976,7 @@ void func_ovl2_80107B30(void)
 {
     if ((gGRCommonStruct.sector.map_dobj[8]->anim_remain == AOBJ_ANIM_NULL) && (gGRCommonStruct.sector.map_dobj[7]->flags == DOBJ_FLAG_NONE))
     {
-        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[8], (AObjEvent*)((uintptr_t)gGRCommonStruct.sector.map_file + (intptr_t)&D_NF_00002EB4), 0.0F); // Linker thing
+        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[8], (AObjEvent32*)((uintptr_t)gGRCommonStruct.sector.map_file + (intptr_t)&D_NF_00002EB4), 0.0F); // Linker thing
 
         func_800269C0_275C0(nSYAudioFGMSectorAmbient2);
     }
@@ -1106,7 +1106,7 @@ void grSectorInitAll(void)
 
     map_gobj->flags = GOBJ_FLAG_NORENDER;
 
-    gcAddDObjAnimJoint(gGRCommonStruct.sector.map_dobj[10], (AObjEvent*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002E74), 0.0F);
+    gcAddDObjAnimJoint(gGRCommonStruct.sector.map_dobj[10], (AObjEvent32*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002E74), 0.0F);
     gcPlayAnimAll(map_gobj);
     mpCollisionSetYakumonoOffID(1);
     gGRCommonStruct.sector.weapon_head = (void*) ((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart);

@@ -217,7 +217,7 @@ void grPupupuWhispyLeavesMakeEffect(void)
     efTransform *tfrm;
 
     tfrm = NULL;
-    ptcl = lbParticleMakeDefaultID(gGRCommonStruct.pupupu.particle_bank_id | 8, 0);
+    ptcl = lbParticleMakeScriptID(gGRCommonStruct.pupupu.particle_bank_id | 8, 0);
 
     if (ptcl != NULL)
     {
@@ -229,7 +229,7 @@ void grPupupuWhispyLeavesMakeEffect(void)
         }
         else
         {
-            lbParticleParseStructBytecode(ptcl);
+            lbParticleProcessStruct(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -476,7 +476,7 @@ void grPupupuWhispyDustMakeEffect(void)
     efTransform *tfrm;
 
     tfrm = NULL;
-    ptcl = lbParticleMakeDefaultID(gGRCommonStruct.pupupu.particle_bank_id | 8, 1);
+    ptcl = lbParticleMakeScriptID(gGRCommonStruct.pupupu.particle_bank_id | 8, 1);
 
     if (ptcl != NULL)
     {
@@ -488,7 +488,7 @@ void grPupupuWhispyDustMakeEffect(void)
         }
         else
         {
-            lbParticleParseStructBytecode(ptcl);
+            lbParticleProcessStruct(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -569,16 +569,11 @@ void grPupupuUpdateGObjAnims(void)
 
         gcAddAnimAll
         (
-            // arg0
             gGRCommonStruct.pupupu.map_gobj[0],
-
-            // arg1
-            dGRPupupuWhispyEyesAnims[gGRCommonStruct.pupupu.lr_players][gGRCommonStruct.pupupu.whispy_eyes_status][0] + (uintptr_t)gGRCommonStruct.pupupu.map_head,
-
-            // arg2
-            (offset != 0) ? (void*) ((uintptr_t)gGRCommonStruct.pupupu.map_head + offset) : NULL,
-
-            // arg3
+            (AObjEvent**)
+            (dGRPupupuWhispyEyesAnims[gGRCommonStruct.pupupu.lr_players][gGRCommonStruct.pupupu.whispy_eyes_status][0] + (uintptr_t)gGRCommonStruct.pupupu.map_head),
+            (AObjEvent***)
+            ((offset != 0) ? (void*) ((uintptr_t)gGRCommonStruct.pupupu.map_head + offset) : NULL),
             0.0F
         );
         gcPlayAnimAll(gGRCommonStruct.pupupu.map_gobj[0]);
@@ -589,16 +584,11 @@ void grPupupuUpdateGObjAnims(void)
     {
         gcAddAnimAll
         (
-            // arg0
             gGRCommonStruct.pupupu.map_gobj[1],
-
-            // arg1
-            dGRPupupuWhispyMouthAnims[gGRCommonStruct.pupupu.lr_players][gGRCommonStruct.pupupu.whispy_mouth_status][0] + (uintptr_t)gGRCommonStruct.pupupu.map_head,
-
-            // arg2
-            dGRPupupuWhispyMouthAnims[gGRCommonStruct.pupupu.lr_players][gGRCommonStruct.pupupu.whispy_mouth_status][1] + (uintptr_t)gGRCommonStruct.pupupu.map_head,
-
-            // arg3
+            (AObjEvent**)
+            (dGRPupupuWhispyMouthAnims[gGRCommonStruct.pupupu.lr_players][gGRCommonStruct.pupupu.whispy_mouth_status][0] + (uintptr_t)gGRCommonStruct.pupupu.map_head),
+            (AObjEvent***)
+            (dGRPupupuWhispyMouthAnims[gGRCommonStruct.pupupu.lr_players][gGRCommonStruct.pupupu.whispy_mouth_status][1] + (uintptr_t)gGRCommonStruct.pupupu.map_head),
             0.0F
         );
         gcPlayAnimAll(gGRCommonStruct.pupupu.map_gobj[1]);
@@ -609,13 +599,9 @@ void grPupupuUpdateGObjAnims(void)
     {
         gcAddAnimJointAll
         (
-            // arg0
             gGRCommonStruct.pupupu.map_gobj[2], 
-
-            // arg1
-            dGRPupupuWhispyMouthTextures[gGRCommonStruct.pupupu.lr_players][gGRCommonStruct.pupupu.whispy_mouth_texture] + (uintptr_t)gGRCommonStruct.pupupu.map_head, 
-
-            // arg2
+            (AObjEvent**)
+            (dGRPupupuWhispyMouthTextures[gGRCommonStruct.pupupu.lr_players][gGRCommonStruct.pupupu.whispy_mouth_texture] + (uintptr_t)gGRCommonStruct.pupupu.map_head), 
             0.0F
         );
         gcPlayAnimAll(gGRCommonStruct.pupupu.map_gobj[2]);
@@ -626,13 +612,9 @@ void grPupupuUpdateGObjAnims(void)
     {
         gcAddAnimJointAll
         (
-            // arg0
             gGRCommonStruct.pupupu.map_gobj[3],
-
-            // arg1
-            dGRPupupuWhispyEyesTextures[gGRCommonStruct.pupupu.lr_players][gGRCommonStruct.pupupu.whispy_eyes_texture] + (uintptr_t)gGRCommonStruct.pupupu.map_head, 
-            
-            // arg2
+            (AObjEvent**)
+            (dGRPupupuWhispyEyesTextures[gGRCommonStruct.pupupu.lr_players][gGRCommonStruct.pupupu.whispy_eyes_texture] + (uintptr_t)gGRCommonStruct.pupupu.map_head),
             0.0F
         );
         gcPlayAnimAll(gGRCommonStruct.pupupu.map_gobj[3]);
@@ -669,7 +651,7 @@ GObj* grPupupuMakeMapGObj(intptr_t o_dobj_desc, intptr_t o_mobjsub, void (*proc_
     );
     if (o_mobjsub != 0)
     {
-        gcAddMObjAll(ground_gobj, (MObjSub***) ((uintptr_t)gGRCommonStruct.pupupu.map_head + o_mobjsub));
+        gcAddMObjAll(ground_gobj, gcGetDataFromFile(MObjSub***, gGRCommonStruct.pupupu.map_head, o_mobjsub));
     }
     gcAddGObjProcess(ground_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
 

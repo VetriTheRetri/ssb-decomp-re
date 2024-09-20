@@ -25,6 +25,9 @@
 #define COMBINE_INTEGRAL(a, b)   (((a)&0xffff0000) | (((b) >> 16)))
 #define COMBINE_FRACTIONAL(a, b) (((a) << 16)) | ((b)&0xffff)
 
+#define SINTABLE_RAD_TO_ID(x)      ((s32)((x) * ((f32)ARRAY_COUNT(gSinTable) / PI32)))
+#define SINTABLE_MASK_ID (ARRAY_COUNT(gSinTable) - 1)
+
 /* This is very stupid. I cannot find a single PI or DTOR constant that works everywhere.
  * Need to alternate between F_CST_DTOR32 and F_CLC_DTOR32. Use with caution when matching.
  */

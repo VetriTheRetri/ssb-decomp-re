@@ -34,15 +34,15 @@ struct efScript
 {
     u16 kind;               // Generator kind
 	u16 texture_id;         // Texture ID?
-    u16 lifetime;
-	u16 unk_efscript_0x6;   // Total frames?
+    u16 generator_lifetime; // Total frames?
+    u16 particle_lifetime;  // Particle lifetime?
     u32 flags;              // Flags?
-	f32 unk_efscript_0xC;
-    f32 unk_efscript_0x10;
+	f32 gravity;
+    f32 friction;
     Vec3f vel;
-    f32 unk_efscript_0x20;
-    f32 unk_efscript_0x24;
-    f32 unk_efscript_0x28;
+    f32 unk_script_0x20;
+    f32 unk_script_0x24;
+    f32 unk_script_0x28;
     f32 mscale;
     u8 bytecode[1];         // Particle bytecode
 };
@@ -71,13 +71,13 @@ struct efGenerator
 	u8 kind;
     u8 bank_id;
     u16 texture_id;
-	u16 unk_gtor_0xC;
-    u16 lifetime;
+    u16 particle_lifetime;
+	u16 generator_lifetime;
 	u8 *bytecode;
     Vec3f pos;
     Vec3f vel;
-    f32 unk_gtor_0x2C;              // Base angle?
-    f32 unk_gtor_0x30;              // Target angle?
+    f32 gravity;
+    f32 friction;
     f32 mscale;
     f32 unk_gtor_0x38;
     f32 unk_gtor_0x3C;
@@ -113,7 +113,7 @@ struct efTransform
     Vec3f translate;
     Vec3f rotate;
     Vec3f scale;
-    u8 transform_status;        // 0 = ???, 1 = schedule for transformation, 2 = ready
+    u8 transform_status;        // 0 = ???, 1 = prepare matrix for transformation, 2 = finished transformation
     u8 transform_id;
     u16 users_num;              // Number of other structs using this particular efTransform struct?
     Mtx44f affine;              // Translate + rotate + scale matrix
@@ -134,25 +134,25 @@ struct efParticle
     u8 link_id;
     u8 texture_id;
     u8 data_id;
-    ub16 is_have_bytecode;      // Whether particle has bytecode script?
+    ub16 bytecode_timer;        // Wait timer before next bytecode event is parsed
     u16 unk_ptcl_0xE;
-    u16 unk_ptcl_0x10;
-    u16 unk_ptcl_0x12;
-    u8 *bytecode;
+    u16 blend_primcolor_length;
+    u16 blend_envcolor_length;
+    u8 *bytecode;               // Bytecode base
     u16 bytecode_csr;
-    u16 unk_ptcl_0x1A;
-    u16 unk_ptcl_0x1C;
-    u16 unk_ptcl_0x1E;
+    u16 branch_ptr;             // Jump to 
+    u16 subroutine_ptr;
+    u16 lifetime;
     Vec3f pos;
     Vec3f vel;                  // Velocity?
-    f32 unk_ptcl_0x38;
-    f32 unk_ptcl_0x3C;
+    f32 gravity;                // Gravity?
+    f32 friction;               // Friction?
     f32 mscale;                 // Scales efTransform affine matrix magnitude?
     f32 unk_ptcl_0x44;
     syColorRGBA primcolor;
-    s32 unk_ptcl_0x4C;
+    syColorRGBA blend_primcolor;
     syColorRGBA envcolor;
-    u16 unk_ptcl_0x54;
+    syColorRGBA blend_envcolor;
     efGenerator *gtor;
     efTransform *tfrm;
 };

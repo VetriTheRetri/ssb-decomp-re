@@ -284,7 +284,7 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
 
     ip->lifetime = ITPKFIRE_LIFETIME;
 
-    ptcl = lbParticleMakeDefaultID(gFTNessParticleBankID, 0);
+    ptcl = lbParticleMakeScriptID(gFTNessParticleBankID, 0);
 
     if (ptcl != NULL)
     {
@@ -294,7 +294,7 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
         {
             ip->item_vars.pkfire.tfrm = tfrm;
 
-            lbParticleParseStructBytecode(ptcl);
+            lbParticleProcessStruct(ptcl);
 
             if (tfrm->users_num == 0)
             {

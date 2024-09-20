@@ -735,6 +735,7 @@ sLBParticleStructsAllocFree = 0x800D6350;
 sLBParticleStructsAllocLinks = 0x800D6358;
 sLBParticleGeneratorsAllocFree = 0x800D6398;
 sLBParticleGeneratorsAllocLinks = 0x800D639C;
+sLBParticleAttachDObjs = 0x800D63A0;
 sLBParticleScriptBanksNum = 0x800D63C0;
 sLBParticleTextureBanksNum = 0x800D63E0;
 sLBParticleScriptBanks = 0x800D6400;

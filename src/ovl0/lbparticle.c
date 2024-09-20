@@ -44,13 +44,13 @@ void (*sLBParticleGeneratorProcDefault)(efGenerator*, Vec3f*);
 void (*sLBParticleGeneratorProcSetup)(efGenerator*);
 
 // 0x800D6448
-u16 sLBParticleStructsUsedNum;
+u16 gLBParticleStructsUsedNum;
 
 // 0x800D644A
-u16 sLBParticleGeneratorsUsedNum;
+u16 gLBParticleGeneratorsUsedNum;
 
 // 0x800D644C
-u16 sLBParticleTransformsUsedNum;
+u16 gLBParticleTransformsUsedNum;
 
 // 0x800D644E
 u16 D_ovl0_800D644E;
@@ -110,7 +110,7 @@ s32 lbParticleAllocTransforms(s32 num, size_t size)
 		tfrm->next = sLBParticleTransformsAllocFree;
 		sLBParticleTransformsAllocFree = tfrm;
 	}
-	sLBParticleTransformsUsedNum = 0;
+	gLBParticleTransformsUsedNum = 0;
 	D_ovl0_800D6452 = 0;
 
 	return i;
@@ -135,11 +135,11 @@ efTransform* lbParticleGetTransform(u8 status, u16 generator_id)
 		tfrm->transform_status = status;
 		tfrm->generator_id = generator_id;
 
-		sLBParticleTransformsUsedNum++;
+		gLBParticleTransformsUsedNum++;
 
-		if (D_ovl0_800D6452 < sLBParticleTransformsUsedNum)
+		if (D_ovl0_800D6452 < gLBParticleTransformsUsedNum)
 		{
-			D_ovl0_800D6452 = sLBParticleTransformsUsedNum;
+			D_ovl0_800D6452 = gLBParticleTransformsUsedNum;
 		}
 	}
 	return tfrm;
@@ -155,11 +155,11 @@ void lbParticleEjectTransform(efTransform *tfrm)
 	tfrm->next = sLBParticleTransformsAllocFree;
 	sLBParticleTransformsAllocFree = tfrm;
 
-	sLBParticleTransformsUsedNum--;
+	gLBParticleTransformsUsedNum--;
 }
 
 // 0x800CE1DC
-efTransform* lbParticleAddTransformForParticle(efParticle *ptcl, u8 status)
+efTransform* lbParticleAddTransformForStruct(efParticle *ptcl, u8 status)
 {
     ptcl->tfrm = lbParticleGetTransform(status, ptcl->generator_id);
 
@@ -224,9 +224,6 @@ void lbParticleSetupBankID(s32 bank_id, efScriptDesc *script_desc, efTextureDesc
 	}
 }
 
-// Temporary
-extern void lbParticleStructProcRun(GObj*);
-
 // 0x800CE418
 GObj* lbParticleAllocStructs(s32 num)
 {
@@ -250,7 +247,7 @@ GObj* lbParticleAllocStructs(s32 num)
 		ptcl->next = sLBParticleStructsAllocFree;
 		sLBParticleStructsAllocFree = ptcl;
 	}
-	sLBParticleStructsUsedNum = 0;
+	gLBParticleStructsUsedNum = 0;
 	D_ovl0_800D644E = 0;
 
 	if (gcFindGObjByID(-6) != NULL)
@@ -291,11 +288,11 @@ efParticle* lbParticleMakeStruct
     {
         return NULL;
     }
-    sLBParticleStructsUsedNum++;
+    gLBParticleStructsUsedNum++;
     
-    if (D_ovl0_800D644E < sLBParticleStructsUsedNum) 
+    if (D_ovl0_800D644E < gLBParticleStructsUsedNum) 
     {
-        D_ovl0_800D644E = sLBParticleStructsUsedNum;
+        D_ovl0_800D644E = gLBParticleStructsUsedNum;
     }
     if (gtor != NULL)
     {
@@ -366,7 +363,7 @@ efParticle* lbParticleMakeStruct
 }
 
 // 0x800CE6B8
-efParticle* lbParticleMakeScript(efParticle *ptcl, s32 bank_id, s32 script_id)
+efParticle* lbParticleMakeChildScriptID(efParticle *ptcl, s32 bank_id, s32 script_id)
 {
 	efScript *script;
 	s32 id = bank_id & 7;
@@ -438,7 +435,7 @@ efParticle* lbParticleMakeParam
 	);
 	if (ptcl != NULL)
 	{
-		lbParticleUpdateMain(ptcl, 0, bank_id >> 3);
+		lbParticleUpdateStruct(ptcl, 0, bank_id >> 3);
 	}
 	return ptcl;
 }
@@ -446,11 +443,11 @@ efParticle* lbParticleMakeParam
 // 0x800CE870
 efParticle* lbParticleMakeCommon(s32 bank_id, s32 script_id)
 {
-	efParticle *ptcl = lbParticleMakeScript(NULL, bank_id, script_id);
+	efParticle *ptcl = lbParticleMakeChildScriptID(NULL, bank_id, script_id);
 
 	if (ptcl != NULL)
 	{
-		lbParticleUpdateMain(ptcl, NULL, bank_id >> 3);
+		lbParticleUpdateStruct(ptcl, NULL, bank_id >> 3);
 	}
 	return ptcl;
 }
@@ -490,7 +487,7 @@ efParticle* lbParticleMakePosVel(s32 bank_id, s32 script_id, f32 pos_x, f32 pos_
 	);
 	if (ptcl != NULL)
 	{
-		lbParticleUpdateMain(ptcl, 0, bank_id >> 3);
+		lbParticleUpdateStruct(ptcl, 0, bank_id >> 3);
 	}
 	return ptcl;
 }
@@ -498,7 +495,7 @@ efParticle* lbParticleMakePosVel(s32 bank_id, s32 script_id, f32 pos_x, f32 pos_
 // 0x800CE9E8
 efParticle* lbParticleMakeScriptID(s32 bank_id, s32 script_id)
 {
-	return lbParticleMakeScript(NULL, bank_id, script_id);
+	return lbParticleMakeChildScriptID(NULL, bank_id, script_id);
 }
 
 // 0x800CEA14
@@ -506,7 +503,7 @@ void lbParticleProcessStruct(efParticle *ptcl)
 {
 	if (ptcl != NULL)
 	{
-		lbParticleUpdateMain(ptcl, NULL, ptcl->bank_id >> 3);
+		lbParticleUpdateStruct(ptcl, NULL, ptcl->bank_id >> 3);
 	}
 }
 
@@ -548,7 +545,7 @@ void lbParticleEjectStruct(efParticle *this_ptcl)
 			}
 			current_ptcl->next = sLBParticleStructsAllocFree;
 			sLBParticleStructsAllocFree = current_ptcl;
-			sLBParticleStructsUsedNum--;
+			gLBParticleStructsUsedNum--;
 
 			break;
 		}
@@ -651,7 +648,7 @@ void lbParticleRotateVel(efParticle *ptcl, f32 angle)
 }
 
 // 0x800CEDBC
-void lbParticleSetDistVel(efParticle *ptcl, DObj *dobj)
+void lbParticleSetDistVelDObj(efParticle *ptcl, DObj *dobj)
 {
 	f32 dx, dy, dz, dist;
 
@@ -676,7 +673,7 @@ void lbParticleSetDistVel(efParticle *ptcl, DObj *dobj)
 }
 
 // 0x800CEEB8
-void lbParticleAddDistVelMag(efParticle *ptcl, DObj *dobj, f32 magnitude)
+void lbParticleAddDistVelMagDObj(efParticle *ptcl, DObj *dobj, f32 magnitude)
 {
 	f32 dx, dy, dz, dist;
 
@@ -702,7 +699,7 @@ void lbParticleAddDistVelMag(efParticle *ptcl, DObj *dobj, f32 magnitude)
 
 #ifdef NON_MATCHING
 // 0x800CEF4C - NONMATCHING: v0 VS v1 regswap in switch statement initialization + floats are a mess near the end of the function
-efParticle* lbParticleUpdateMain(efParticle *this_ptcl, efParticle *other_ptcl, s32 bank_id)
+efParticle* lbParticleUpdateStruct(efParticle *this_ptcl, efParticle *other_ptcl, s32 bank_id)
 {
     efParticle *current_ptcl;
     efParticle *next_ptcl;
@@ -715,8 +712,8 @@ efParticle* lbParticleUpdateMain(efParticle *this_ptcl, efParticle *other_ptcl, 
     s32 svar1;  // sp88?
     s32 svar2;
     u8 opcode;
-    f32 fvar; // s3
-    f32 sp7C;
+    f32 fvar1; // s3
+    f32 fvar2;
     f32 unused1[2];
     f32 sp70;
     f32 unused2[2];
@@ -762,75 +759,75 @@ efParticle* lbParticleUpdateMain(efParticle *this_ptcl, efParticle *other_ptcl, 
 
                     switch (opcode)
                     {
-                    case 0x80:
+                    case LBPARTICLE_OPCODE_SETPOS:
                         if (command & 1) 
                         { 
-                            csr = lbParticleReadFloatBE(csr, &this_ptcl->pos.x);
+                            csr = lbParticleReadFloatBigEnd(csr, &this_ptcl->pos.x);
                         }
                         if (command & 2) 
                         { 
-                            csr = lbParticleReadFloatBE(csr, &this_ptcl->pos.y);
+                            csr = lbParticleReadFloatBigEnd(csr, &this_ptcl->pos.y);
                         }
                         if (command & 4)
                         { 
-                            csr = lbParticleReadFloatBE(csr, &this_ptcl->pos.z);
+                            csr = lbParticleReadFloatBigEnd(csr, &this_ptcl->pos.z);
                         }
                         break;
                         
-                    case 0x88:
+                    case LBPARTICLE_OPCODE_ADDPOS:
                         if (command & 1)
                         {
-                            csr = lbParticleReadFloatBE(csr, &fvar);
-                            this_ptcl->pos.x += fvar;
+                            csr = lbParticleReadFloatBigEnd(csr, &fvar1);
+                            this_ptcl->pos.x += fvar1;
                         }
                         if (command & 2)
                         {
-                            csr = lbParticleReadFloatBE(csr, &fvar);
-                            this_ptcl->pos.y += fvar;
+                            csr = lbParticleReadFloatBigEnd(csr, &fvar1);
+                            this_ptcl->pos.y += fvar1;
                         }
                         if (command & 4)
                         {
-                            csr = lbParticleReadFloatBE(csr, &fvar);
-                            this_ptcl->pos.z += fvar;
+                            csr = lbParticleReadFloatBigEnd(csr, &fvar1);
+                            this_ptcl->pos.z += fvar1;
                         }
                         break;
                         
-                    case 0x90:
+                    case LBPARTICLE_OPCODE_SETVEL:
                         if (command & 1)
                         {
-                            csr = lbParticleReadFloatBE(csr, &this_ptcl->vel.x);
+                            csr = lbParticleReadFloatBigEnd(csr, &this_ptcl->vel.x);
                         }
                         if (command & 2)
                         {
-                            csr = lbParticleReadFloatBE(csr, &this_ptcl->vel.y);
+                            csr = lbParticleReadFloatBigEnd(csr, &this_ptcl->vel.y);
                         }
                         if (command & 4)
                         {
-                            csr = lbParticleReadFloatBE(csr, &this_ptcl->vel.z);
+                            csr = lbParticleReadFloatBigEnd(csr, &this_ptcl->vel.z);
                         }
                         break;
                         
-                    case 0x98:
+                    case LBPARTICLE_OPCODE_ADDVEL:
                         if (command & 1)
                         {
-                            csr = lbParticleReadFloatBE(csr, &fvar);
-                            this_ptcl->vel.x += fvar;
+                            csr = lbParticleReadFloatBigEnd(csr, &fvar1);
+                            this_ptcl->vel.x += fvar1;
                         }
                         if (command & 2)
                         {
-                            csr = lbParticleReadFloatBE(csr, &fvar);
-                            this_ptcl->vel.y += fvar;
+                            csr = lbParticleReadFloatBigEnd(csr, &fvar1);
+                            this_ptcl->vel.y += fvar1;
                         }
                         if (command & 4)
                         {
-                            csr = lbParticleReadFloatBE(csr, &fvar);
-                            this_ptcl->vel.z += fvar;
+                            csr = lbParticleReadFloatBigEnd(csr, &fvar1);
+                            this_ptcl->vel.z += fvar1;
                         }
                         break;
                         
                     case 0xA0:
                         csr = lbParticleReadUShort(csr, &this_ptcl->unk_ptcl_0xE);
-                        csr = lbParticleReadFloatBE(csr, &this_ptcl->unk_ptcl_0x44);
+                        csr = lbParticleReadFloatBigEnd(csr, &this_ptcl->unk_ptcl_0x44);
 
                         if (this_ptcl->unk_ptcl_0xE == 1)
                         {
@@ -839,12 +836,12 @@ efParticle* lbParticleUpdateMain(efParticle *this_ptcl, efParticle *other_ptcl, 
                         }
                         break;
                         
-                    case 0xA1:
+                    case LBPARTICLE_OPCODE_SETFLAG:
                         this_ptcl->flags = *csr++;
                         break;
                         
-                    case 0xA2:
-                        csr = lbParticleReadFloatBE(csr, &this_ptcl->gravity);
+                    case LBPARTICLE_OPCODE_SETGRAVITY:
+                        csr = lbParticleReadFloatBigEnd(csr, &this_ptcl->gravity);
                         
                         if (this_ptcl->gravity == 0.0F)
                         {
@@ -853,22 +850,22 @@ efParticle* lbParticleUpdateMain(efParticle *this_ptcl, efParticle *other_ptcl, 
                         else this_ptcl->flags |= LBPARTICLE_FLAG_GRAVITY;
                         break;
                         
-                    case 0xA3:
-                        csr = lbParticleReadFloatBE(csr, &this_ptcl->friction);
+                    case LBPARTICLE_OPCODE_SETFRICTION:
+                        csr = lbParticleReadFloatBigEnd(csr, &this_ptcl->friction);
                             
                         if (this_ptcl->friction == 1.0F)
                         {
-                            this_ptcl->flags &= ~0x2;
+                            this_ptcl->flags &= ~LBPARTICLE_FLAG_FRICTION;
                         }
-                        else this_ptcl->flags |= 0x2;
+                        else this_ptcl->flags |= LBPARTICLE_FLAG_FRICTION;
                         break;
                         
-                    case 0xA4:
+                    case LBPARTICLE_OPCODE_MAKESCRIPT:
                         svar1 = *csr++;
                         svar1 <<= 8;
                         svar1 += *csr++;
 
-                        current_ptcl = lbParticleMakeScript(this_ptcl, this_ptcl->bank_id, svar1);
+                        current_ptcl = lbParticleMakeChildScriptID(this_ptcl, this_ptcl->bank_id, svar1);
                             
                         if (current_ptcl != NULL)
                         {
@@ -883,11 +880,11 @@ efParticle* lbParticleUpdateMain(efParticle *this_ptcl, efParticle *other_ptcl, 
                             {
                                 current_ptcl->tfrm->users_num++;
                             }
-                            lbParticleUpdateMain(current_ptcl, this_ptcl, this_ptcl->bank_id >> 3);
+                            lbParticleUpdateStruct(current_ptcl, this_ptcl, this_ptcl->bank_id >> 3);
                         }  
                         break;
                 
-                    case 0xA5:
+                    case LBPARTICLE_OPCODE_MAKEGENERATOR:
                         svar1 = *csr++;
                         svar1 <<= 8;
                         svar1 += *csr++;
@@ -909,7 +906,7 @@ efParticle* lbParticleUpdateMain(efParticle *this_ptcl, efParticle *other_ptcl, 
                         }    
                         break;
                         
-                    case 0xA6:
+                    case LBPARTICLE_OPCODE_SETLIFERAND:
                         svar1 = *csr++;
                         svar1 <<= 8;
                         svar1 += *csr++;
@@ -921,7 +918,7 @@ efParticle* lbParticleUpdateMain(efParticle *this_ptcl, efParticle *other_ptcl, 
                         this_ptcl->lifetime = svar1 + (s32) (svar2 * mtTrigGetRandomFloat());
                         break;
                         
-                    case 0xA7:
+                    case LBPARTICLE_OPCODE_TRYDEADRAND:
                         svar1 = *csr++;
                         svar2 = mtTrigGetRandomFloat() * 100.0F;
 
@@ -932,23 +929,23 @@ efParticle* lbParticleUpdateMain(efParticle *this_ptcl, efParticle *other_ptcl, 
                         else this_ptcl->lifetime = 1;
                         goto loop_break;
                         
-                    case 0xA8:    
-                        csr = lbParticleReadFloatBE(csr, &fvar);
-                        this_ptcl->pos.x += fvar * mtTrigGetRandomFloat();
+                    case LBPARTICLE_OPCODE_ADDVELRAND:    
+                        csr = lbParticleReadFloatBigEnd(csr, &fvar1);
+                        this_ptcl->pos.x += fvar1 * mtTrigGetRandomFloat();
 
-                        csr = lbParticleReadFloatBE(csr, &fvar);
-                        this_ptcl->pos.y += fvar * mtTrigGetRandomFloat();
+                        csr = lbParticleReadFloatBigEnd(csr, &fvar1);
+                        this_ptcl->pos.y += fvar1 * mtTrigGetRandomFloat();
 
-                        csr = lbParticleReadFloatBE(csr, &fvar);
-                        this_ptcl->pos.z += fvar * mtTrigGetRandomFloat();
+                        csr = lbParticleReadFloatBigEnd(csr, &fvar1);
+                        this_ptcl->pos.z += fvar1 * mtTrigGetRandomFloat();
                         break;
                         
-                    case 0xA9:
-                        csr = lbParticleReadFloatBE(csr, &fvar);
-                        lbParticleRotateVel(this_ptcl, fvar);
+                    case LBPARTICLE_OPCODE_SETVELANGLE:
+                        csr = lbParticleReadFloatBigEnd(csr, &fvar1);
+                        lbParticleRotateVel(this_ptcl, fvar1);
                         break;
                         
-                    case 0xAA:                        
+                    case LBPARTICLE_OPCODE_MAKERAND:                        
                         svar1 = *csr++;
                         svar1 <<= 8;
                         svar1 += *csr++;
@@ -959,7 +956,7 @@ efParticle* lbParticleUpdateMain(efParticle *this_ptcl, efParticle *other_ptcl, 
 
                         svar1 += (s32) (svar2 * mtTrigGetRandomFloat());
 
-                        current_ptcl = lbParticleMakeScript(this_ptcl, this_ptcl->bank_id, svar1);
+                        current_ptcl = lbParticleMakeChildScriptID(this_ptcl, this_ptcl->bank_id, svar1);
                             
                         if (current_ptcl != NULL)
                         {
@@ -974,24 +971,24 @@ efParticle* lbParticleUpdateMain(efParticle *this_ptcl, efParticle *other_ptcl, 
                             {
                                 current_ptcl->tfrm->users_num++;
                             }
-                            lbParticleUpdateMain(current_ptcl, this_ptcl, this_ptcl->bank_id >> 3);
+                            lbParticleUpdateStruct(current_ptcl, this_ptcl, this_ptcl->bank_id >> 3);
                         }
                         break;
                         
-                    case 0xAB:    
-                        csr = lbParticleReadFloatBE(csr, &fvar);
+                    case LBPARTICLE_OPCODE_MULVEL: 
+                        csr = lbParticleReadFloatBigEnd(csr, &fvar1);
                             
-                        this_ptcl->vel.x *= fvar;
-                        this_ptcl->vel.y *= fvar;
-                        this_ptcl->vel.z *= fvar;
+                        this_ptcl->vel.x *= fvar1;
+                        this_ptcl->vel.y *= fvar1;
+                        this_ptcl->vel.z *= fvar1;
                         break;
                         
                     case 0xAC:    
                         csr = lbParticleReadUShort(csr, &this_ptcl->unk_ptcl_0xE);
-                        csr = lbParticleReadFloatBE(csr, &this_ptcl->unk_ptcl_0x44);
-                        csr = lbParticleReadFloatBE(csr, &fvar);
+                        csr = lbParticleReadFloatBigEnd(csr, &this_ptcl->unk_ptcl_0x44);
+                        csr = lbParticleReadFloatBigEnd(csr, &fvar1);
                             
-                        this_ptcl->unk_ptcl_0x44 += fvar * mtTrigGetRandomFloat();
+                        this_ptcl->unk_ptcl_0x44 += fvar1 * mtTrigGetRandomFloat();
                             
                         if (this_ptcl->unk_ptcl_0xE == 1) 
                         {
@@ -1000,65 +997,65 @@ efParticle* lbParticleUpdateMain(efParticle *this_ptcl, efParticle *other_ptcl, 
                         }
                         break;
                         
-                    case 0xAD:
+                    case LBPARTICLE_OPCODE_ENVCOLOR:
                         this_ptcl->flags |= LBPARTICLE_FLAG_ENVCOLOR;
                         break;
                         
-                    case 0xAE:
+                    case LBPARTICLE_OPCODE_NOMASKST:
                         this_ptcl->flags &= ~(LBPARTICLE_FLAG_MASKT | LBPARTICLE_FLAG_MASKS);
                         break;
                         
-                    case 0xAF:            
+                    case LBPARTICLE_OPCODE_MASKS:            
                         this_ptcl->flags &= ~LBPARTICLE_FLAG_MASKT;
                         this_ptcl->flags |= LBPARTICLE_FLAG_MASKS;
                         break;
                         
-                    case 0xB0:
+                    case LBPARTICLE_OPCODE_MASKT:
                         this_ptcl->flags &= ~LBPARTICLE_FLAG_MASKS;
                         this_ptcl->flags |= LBPARTICLE_FLAG_MASKT;
                         break;
                             
-                    case 0xB1:
+                    case LBPARTICLE_OPCODE_MASKST:
                         this_ptcl->flags |= (LBPARTICLE_FLAG_MASKT | LBPARTICLE_FLAG_MASKS);
                         break;
                         
-                    case 0xB2:
+                    case LBPARTICLE_OPCODE_ALPHABLEND:
                         this_ptcl->flags |= LBPARTICLE_FLAG_ALPHABLEND;
                         break;
                         
-                    case 0xB3:
+                    case LBPARTICLE_OPCODE_NODITHER:
                         this_ptcl->flags &= ~LBPARTICLE_FLAG_DITHER;
                         break;
                         
-                    case 0xB4:
+                    case LBPARTICLE_OPCODE_DITHER:
                         this_ptcl->flags |= LBPARTICLE_FLAG_DITHER;
                         break;
                     
-                    case 0xB5:
+                    case LBPARTICLE_OPCODE_NONOISE:
                         this_ptcl->flags |= LBPARTICLE_FLAG_NOISE;
                         break;
                         
-                    case 0xB6:
+                    case LBPARTICLE_OPCODE_NOISE:
                         this_ptcl->flags &= ~LBPARTICLE_FLAG_NOISE;
                         break;
                         
-                    case 0xB7:
+                    case LBPARTICLE_OPCODE_SETDISTVEL:
                         svar1 = *csr++;
-                        lbParticleSetDistVel(this_ptcl, sLBParticleAttachDObjs[svar1 - 1]);
+                        lbParticleSetDistVelDObj(this_ptcl, sLBParticleAttachDObjs[svar1 - 1]);
                         break;
                         
-                    case 0xB8:
+                    case LBPARTICLE_OPCODE_ADDDISTVELMAG:
                         svar1 = *csr++;
-                        csr = lbParticleReadFloatBE(csr, &fvar);
-                        lbParticleAddDistVelMag(this_ptcl, sLBParticleAttachDObjs[svar1 - 1], fvar);
+                        csr = lbParticleReadFloatBigEnd(csr, &fvar1);
+                        lbParticleAddDistVelMagDObj(this_ptcl, sLBParticleAttachDObjs[svar1 - 1], fvar1);
                         break;
                         
-                    case 0xB9:
+                    case LBPARTICLE_OPCODE_MAKEID:
                         svar1 = *csr++;
                         svar1 <<= 8;
                         svar1 += *csr++;
 
-                        current_ptcl = lbParticleMakeScript(this_ptcl, this_ptcl->bank_id, svar1);
+                        current_ptcl = lbParticleMakeChildScriptID(this_ptcl, this_ptcl->bank_id, svar1);
 
                         if (current_ptcl != NULL)
                         {
@@ -1076,20 +1073,19 @@ efParticle* lbParticleUpdateMain(efParticle *this_ptcl, efParticle *other_ptcl, 
                             {
                                 current_ptcl->tfrm->users_num++;
                             }
-                            lbParticleUpdateMain(current_ptcl, this_ptcl, this_ptcl->bank_id >> 3);
+                            lbParticleUpdateStruct(current_ptcl, this_ptcl, this_ptcl->bank_id >> 3);
                         }
                         break;
                         
-                    case 0xBA:
-                        fvar = *csr++;
-                            
-                        this_ptcl->blend_primcolor.r += fvar * mtTrigGetRandomFloat();
-                        fvar = *csr++;
-                        this_ptcl->blend_primcolor.g += fvar * mtTrigGetRandomFloat();
-                        fvar = *csr++;
-                        this_ptcl->blend_primcolor.b += fvar * mtTrigGetRandomFloat();
-                        fvar = *csr++;
-                        this_ptcl->blend_primcolor.a += fvar * mtTrigGetRandomFloat();
+                    case LBPARTICLE_OPCODE_PRIMBLENDRAND:
+                        fvar1 = *csr++;
+                        this_ptcl->blend_primcolor.r += fvar1 * mtTrigGetRandomFloat();
+                        fvar1 = *csr++;
+                        this_ptcl->blend_primcolor.g += fvar1 * mtTrigGetRandomFloat();
+                        fvar1 = *csr++;
+                        this_ptcl->blend_primcolor.b += fvar1 * mtTrigGetRandomFloat();
+                        fvar1 = *csr++;
+                        this_ptcl->blend_primcolor.a += fvar1 * mtTrigGetRandomFloat();
                             
                         if (this_ptcl->blend_primcolor_length == 0)
                         {
@@ -1098,15 +1094,15 @@ efParticle* lbParticleUpdateMain(efParticle *this_ptcl, efParticle *other_ptcl, 
                         }
                         break;
                         
-                    case 0xBB:
-                        fvar = *csr++;
-                        this_ptcl->blend_envcolor.r += fvar * mtTrigGetRandomFloat();
-                        fvar = *csr++;
-                        this_ptcl->blend_envcolor.g += fvar * mtTrigGetRandomFloat();
-                        fvar = *csr++;
-                        this_ptcl->blend_envcolor.b += fvar * mtTrigGetRandomFloat();
-                        fvar = *csr++;
-                        this_ptcl->blend_envcolor.a += fvar * mtTrigGetRandomFloat();
+                    case LBPARTICLE_OPCODE_ENVBLENDRAND:
+                        fvar1 = *csr++;
+                        this_ptcl->blend_envcolor.r += fvar1 * mtTrigGetRandomFloat();
+                        fvar1 = *csr++;
+                        this_ptcl->blend_envcolor.g += fvar1 * mtTrigGetRandomFloat();
+                        fvar1 = *csr++;
+                        this_ptcl->blend_envcolor.b += fvar1 * mtTrigGetRandomFloat();
+                        fvar1 = *csr++;
+                        this_ptcl->blend_envcolor.a += fvar1 * mtTrigGetRandomFloat();
 
                         if (this_ptcl->blend_envcolor_length == 0)
                         {
@@ -1117,40 +1113,40 @@ efParticle* lbParticleUpdateMain(efParticle *this_ptcl, efParticle *other_ptcl, 
                         
                     case 0xBC:    
                         this_ptcl->data_id = *csr++;
-                        fvar = *csr++;
-                        this_ptcl->data_id += fvar * mtTrigGetRandomFloat();
+                        fvar1 = *csr++;
+                        this_ptcl->data_id += fvar1 * mtTrigGetRandomFloat();
                         break;
                         
-                    case 0xBD:    
-                        csr = lbParticleReadFloatBE(csr, &fvar);
-                        csr = lbParticleReadFloatBE(csr, &sp7C);
+                    case LBPARTICLE_OPCODE_SETVELMAG:
+                        csr = lbParticleReadFloatBigEnd(csr, &fvar1);
+                        csr = lbParticleReadFloatBigEnd(csr, &fvar2);
 
-                        fvar += sp7C * mtTrigGetRandomFloat();
+                        fvar1 += fvar2 * mtTrigGetRandomFloat();
 
-                        sp7C = sqrtf(SQUARE(this_ptcl->vel.x) + SQUARE(this_ptcl->vel.y) + SQUARE(this_ptcl->vel.z));
+                        fvar2 = sqrtf(SQUARE(this_ptcl->vel.x) + SQUARE(this_ptcl->vel.y) + SQUARE(this_ptcl->vel.z));
                         
-                        fvar /= sp7C;
+                        fvar1 /= fvar2;
 
-                        this_ptcl->vel.x *= fvar;
-                        this_ptcl->vel.y *= fvar;
-                        this_ptcl->vel.z *= fvar;
+                        this_ptcl->vel.x *= fvar1;
+                        this_ptcl->vel.y *= fvar1;
+                        this_ptcl->vel.z *= fvar1;
                         break;
                         
-                    case 0xBE:    
-                        csr = lbParticleReadFloatBE(csr, &fvar);
-                        this_ptcl->vel.x *= fvar;
-                        csr = lbParticleReadFloatBE(csr, &fvar);
-                        this_ptcl->vel.y *= fvar;
-                        csr = lbParticleReadFloatBE(csr, &fvar);
-                        this_ptcl->vel.z *= fvar;
+                    case LBPARTICLE_OPCODE_MULVELAXIS:    
+                        csr = lbParticleReadFloatBigEnd(csr, &fvar1);
+                        this_ptcl->vel.x *= fvar1;
+                        csr = lbParticleReadFloatBigEnd(csr, &fvar1);
+                        this_ptcl->vel.y *= fvar1;
+                        csr = lbParticleReadFloatBigEnd(csr, &fvar1);
+                        this_ptcl->vel.z *= fvar1;
                         break;
                         
-                        case 0xBF:
+                        case LBPARTICLE_OPCODE_SETATTACHID:
                         svar1 = *csr++ - 1;
                         this_ptcl->flags |= LBPARTICLE_SET_ATTACH_ID(svar1);
                         break;
                         
-                    case 0xC0:
+                    case LBPARTICLE_OPCODE_SETPRIMBLEND:
                         csr  = lbParticleReadUShort(csr, &this_ptcl->blend_primcolor_length);
                         this_ptcl->blend_primcolor = this_ptcl->primcolor;
                             
@@ -1178,8 +1174,8 @@ efParticle* lbParticleUpdateMain(efParticle *this_ptcl, efParticle *other_ptcl, 
                         }
                         break;
                         
-                    case 0xD0:
-                        csr  = lbParticleReadUShort(csr, &this_ptcl->blend_envcolor_length);
+                    case LBPARTICLE_OPCODE_SETENVBLEND:
+                        csr = lbParticleReadUShort(csr, &this_ptcl->blend_envcolor_length);
                         this_ptcl->blend_envcolor = this_ptcl->envcolor;
                             
                         if (command & 1)
@@ -1205,30 +1201,30 @@ efParticle* lbParticleUpdateMain(efParticle *this_ptcl, efParticle *other_ptcl, 
                         }
                         break;
                         
-                    case 0xFA:    
-                        this_ptcl->link_id = *csr++;
-                        this_ptcl->subroutine_ptr = (u16) ((uintptr_t)csr - (uintptr_t)this_ptcl->bytecode);
+                    case LBPARTICLE_OPCODE_SETLOOP:    
+                        this_ptcl->loop_count = *csr++;
+                        this_ptcl->loop_ptr = (u16) ((uintptr_t)csr - (uintptr_t)this_ptcl->bytecode);
                         break;
                         
-                    case 0xFB:    
-                        this_ptcl->link_id--;
+                    case LBPARTICLE_OPCODE_LOOP:    
+                        this_ptcl->loop_count--;
                             
-                        if (this_ptcl->link_id != 0)
+                        if (this_ptcl->loop_count != 0)
                         {
-                            csr = (u8*) (this_ptcl->bytecode + this_ptcl->subroutine_ptr);
+                            csr = (u8*) (this_ptcl->bytecode + this_ptcl->loop_ptr);
                         }
                         break;
                         
-                    case 0xFC:            
+                    case LBPARTICLE_OPCODE_SETRETURN:            
                         this_ptcl->branch_ptr = (u16) ((uintptr_t)csr - (uintptr_t)this_ptcl->bytecode);
                         break;
                         
-                    case 0xFD:
+                    case LBPARTICLE_OPCODE_RETURN:
                         csr = (u8*) (this_ptcl->bytecode + this_ptcl->branch_ptr);
                         break;
                         
-                    case 0xFE:
-                    case 0xFF:
+                    case LBPARTICLE_OPCODE_DEAD:
+                    case LBPARTICLE_OPCODE_END:
                         this_ptcl->lifetime = 1;
                         goto loop_break;
                     }
@@ -1329,7 +1325,7 @@ efParticle* lbParticleUpdateMain(efParticle *this_ptcl, efParticle *other_ptcl, 
         }
         this_ptcl->next = sLBParticleStructsAllocFree;
         sLBParticleStructsAllocFree = this_ptcl;
-        sLBParticleStructsUsedNum--;
+        gLBParticleStructsUsedNum--;
 
         return next_ptcl;
     }
@@ -1406,7 +1402,7 @@ efParticle* lbParticleUpdateMain(efParticle *this_ptcl, efParticle *other_ptcl, 
     return this_ptcl->next;
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/lbParticleUpdateMain.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/lbparticle/lbParticleUpdateStruct.s")
 #endif
 
 // 0x800D0C74
@@ -1430,7 +1426,7 @@ void lbParticleStructProcRun(GObj *gobj)
 
 		while (current_ptcl != NULL)
 		{
-			next_ptcl = lbParticleUpdateMain(current_ptcl, prev_ptcl, i);
+			next_ptcl = lbParticleUpdateStruct(current_ptcl, prev_ptcl, i);
 
 			if (current_ptcl->next == next_ptcl)
 			{
@@ -2119,7 +2115,7 @@ void lbParticleDrawTextures(GObj *gobj)
     }
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/lbParticleDrawTextures.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/lbparticle/lbParticleDrawTextures.s")
 #endif
 
 // 0x800D2720
@@ -2137,8 +2133,6 @@ void lbParticleSetDitherModes(s32 colordither_mode, s32 alphadither_mode)
 	dLBParticleColorDitherMode = colordither_mode;
 	dLBParticleAlphaDitherMode = alphadither_mode;
 }
-
-extern void lbParticleGeneratorProcRun(GObj*);
 
 // 0x800D2758
 GObj* lbParticleAllocGenerators(s32 num)
@@ -2159,14 +2153,14 @@ GObj* lbParticleAllocGenerators(s32 num)
 
 		sLBParticleGeneratorsAllocFree = gtor;
 	}
-	sLBParticleGeneratorsUsedNum = 0;
+	gLBParticleGeneratorsUsedNum = 0;
 	D_ovl0_800D6450 = 0;
 
 	return gcMakeGObjSPAfter(-7, lbParticleGeneratorProcRun, 0, GOBJ_LINKORDER_DEFAULT);
 }
 
 // 0x800D27F8
-void lbParticleGetPosVel(Vec3f *pos, Vec3f *vel, DObj *dobj)
+void lbParticleGetPosVelDObj(Vec3f *pos, Vec3f *vel, DObj *dobj)
 {
 	Mtx44f dst;
 	Mtx44f tmp;
@@ -2340,7 +2334,7 @@ void lbParticleGeneratorProcRun(GObj *gobj)
 
                 if (gtor->dobj != NULL)
                 {
-                    lbParticleGetPosVel(&pos, &vel, gtor->dobj);
+                    lbParticleGetPosVelDObj(&pos, &vel, gtor->dobj);
                     
                     gtor->pos.x = pos.x;
                     gtor->pos.y = pos.y;
@@ -2579,7 +2573,7 @@ void lbParticleGeneratorProcRun(GObj *gobj)
                 
                         gtor = next_gtor;
                 
-                        sLBParticleGeneratorsUsedNum--;
+                        gLBParticleGeneratorsUsedNum--;
 
                         continue;
                     }
@@ -2592,7 +2586,7 @@ void lbParticleGeneratorProcRun(GObj *gobj)
     
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/halsprite/lbParticleGeneratorProcRun.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/lbparticle/lbParticleGeneratorProcRun.s")
 #endif
 
 // 0x800D353C
@@ -2604,11 +2598,11 @@ efGenerator* lbParticleGetGenerator(void)
     {
         return NULL;
     }
-    sLBParticleGeneratorsUsedNum++;
+    gLBParticleGeneratorsUsedNum++;
     
-    if (D_ovl0_800D6450 < sLBParticleGeneratorsUsedNum)
+    if (D_ovl0_800D6450 < gLBParticleGeneratorsUsedNum)
     {
-        D_ovl0_800D6450 = sLBParticleGeneratorsUsedNum;
+        D_ovl0_800D6450 = gLBParticleGeneratorsUsedNum;
     }
     sLBParticleGeneratorsAllocFree = gtor->next;
     gtor->next = sLBParticleGeneratorsAllocLinks;
@@ -2739,7 +2733,7 @@ void lbParticleEjectGenerator(efGenerator *this_gtor)
             }
             current_gtor->next = sLBParticleGeneratorsAllocFree;
             sLBParticleGeneratorsAllocFree = current_gtor;
-            sLBParticleGeneratorsUsedNum--;
+            gLBParticleGeneratorsUsedNum--;
             
             break;
         }
@@ -2811,7 +2805,7 @@ void lbParticleEjectStructID(u16 generator_id, s32 link_id)
             }
             current_ptcl->next = sLBParticleStructsAllocFree;
             sLBParticleStructsAllocFree = current_ptcl;
-            sLBParticleStructsUsedNum--;
+            gLBParticleStructsUsedNum--;
         }
         else prev_ptcl = current_ptcl;
             
@@ -2852,7 +2846,7 @@ void lbParticleEjectStructID(u16 generator_id, s32 link_id)
                 }
                 current_gtor->next = sLBParticleGeneratorsAllocFree;
                 sLBParticleGeneratorsAllocFree = current_gtor;
-                sLBParticleGeneratorsUsedNum--;
+                gLBParticleGeneratorsUsedNum--;
             }
         }
         else prev_gtor = current_gtor;
@@ -2862,19 +2856,19 @@ void lbParticleEjectStructID(u16 generator_id, s32 link_id)
 }
 
 // 0x800D3BFC
-void lbParticleEjectStructBankID(efParticle *ptcl)
+void lbParticleEjectStructSelf(efParticle *ptcl)
 {
 	lbParticleEjectStructID(ptcl->generator_id, ptcl->bank_id >> 3);
 }
 
 // 0x800D3C28
-void lbParticleEjectStructLinkID(efParticle *ptcl)
+void lbParticleEjectStructGenerator(efGenerator *gtor)
 {
-	lbParticleEjectStructID(ptcl->generator_id, ptcl->link_id >> 3);
+	lbParticleEjectStructID(gtor->generator_id, gtor->bank_id >> 3);
 }
 
 // 0x800D3C54
-void func_ovl0_800D3C54(GObj *gobj)
+void lbParticleEjectGeneratorDObj(GObj *gobj)
 {
 	DObj *dobj;
 	efGenerator *current_gtor, *next_gtor;

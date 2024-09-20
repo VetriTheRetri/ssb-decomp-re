@@ -2,5 +2,6 @@
 #define _LBFUNCTIONS_H_
 
 #include "lbcommon.h"
+#include "lbparticle.h"
 
 #endif

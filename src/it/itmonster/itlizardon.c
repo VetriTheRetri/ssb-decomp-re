@@ -2,8 +2,6 @@
 #include <wp/weapon.h>
 #include <ft/fighter.h>
 
-extern void* lbParticleMakePosVel(s32, s32, f32, f32, f32, f32, f32, f32);
-
 // // // // // // // // // // // //
 //                               //
 //       EXTERNAL VARIABLES      //

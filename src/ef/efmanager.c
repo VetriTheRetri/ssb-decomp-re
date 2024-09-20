@@ -6,8 +6,6 @@
 #include <sc/scene.h>
 #include <ovl0/reloc_data_mgr.h>
 
-extern void* lbParticleMakePosVel(s32, s32, f32, f32, f32, f32, f32, f32);
-
 // // // // // // // // // // // //
 //                               //
 //       EXTERNAL VARIABLES      //
@@ -2163,7 +2161,7 @@ efParticle* efManagerDamageNormalLightMakeEffect(Vec3f *pos, s32 player, s32 siz
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForParticle(ptcl, 0);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 0);
 
         if (tfrm != NULL)
         {
@@ -2239,7 +2237,7 @@ efParticle* efManagerDamageNormalHeavyMakeEffect(Vec3f *pos, s32 player, s32 siz
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForParticle(ptcl, 0);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 0);
 
         if (tfrm != NULL)
         {
@@ -2307,7 +2305,7 @@ efParticle* efManagerImpactShockMakeEffect(Vec3f *pos, s32 size)
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForParticle(ptcl, 0);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 0);
 
         if (tfrm != NULL)
         {
@@ -2395,7 +2393,7 @@ efParticle* efManagerDamageFireMakeEffect(Vec3f *pos, s32 size)
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForParticle(ptcl, 0);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 0);
 
         if (tfrm != NULL)
         {
@@ -2463,7 +2461,7 @@ efParticle* efManagerDamageElectricMakeEffect(Vec3f *pos, s32 size)
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForParticle(ptcl, 0);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 0);
 
         if (tfrm != NULL)
         {
@@ -2557,7 +2555,7 @@ efParticle* efManagerFlameLRMakeEffect(Vec3f *pos, s32 lr)
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForParticle(ptcl, 0);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 0);
 
         if (tfrm != NULL)
         {
@@ -2624,7 +2622,7 @@ efParticle* efManagerFlameRandgcMakeEffect(Vec3f *pos)
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForParticle(ptcl, 0);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 0);
 
         if (tfrm != NULL)
         {
@@ -2688,7 +2686,7 @@ efParticle* efManagerFlameStaticMakeEffect(Vec3f *pos)
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForParticle(ptcl, 0);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 0);
 
         if (tfrm != NULL)
         {
@@ -2750,7 +2748,7 @@ efParticle* efManagerDustCollideMakeEffect(Vec3f *pos)
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForParticle(ptcl, 0);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 0);
 
         if (tfrm != NULL)
         {
@@ -2887,7 +2885,7 @@ efParticle* efManagerDustLightMakeEffect(Vec3f *pos, sb32 is_invert_vel, f32 f_i
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForParticle(ptcl, 0);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 0);
 
         if (tfrm != NULL)
         {
@@ -2955,7 +2953,7 @@ efParticle* efManagerDustHeavyMakeEffect(Vec3f *pos, s32 lr)
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForParticle(ptcl, 0);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 0);
 
         if (tfrm != NULL)
         {
@@ -3027,7 +3025,7 @@ efParticle* efManagerDustHeavyDoubleMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForParticle(ptcl, 0);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 0);
 
         if (tfrm != NULL)
         {
@@ -3067,7 +3065,7 @@ efParticle* efManagerDustExpandLargeMakeEffect(Vec3f *pos)
 
     if (ptcl != NULL)
     {
-        efTransform *tfrm = lbParticleAddTransformForParticle(ptcl, 1);
+        efTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm != NULL)
         {
@@ -3124,7 +3122,7 @@ efParticle* efManagerDustExpandSmallMakeEffect(Vec3f *pos, f32 f_index)
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForParticle(ptcl, 0);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 0);
 
         if (tfrm != NULL)
         {
@@ -3164,7 +3162,7 @@ efParticle* efManagerDustDashMakeEffect(Vec3f *pos, s32 lr, f32 scale)
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForParticle(ptcl, 0);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 0);
 
         if (tfrm != NULL)
         {
@@ -3628,7 +3626,7 @@ efParticle* efManagerSparkleWhiteMakeEffect(Vec3f *pos)
 
     if (ptcl != NULL)
     {
-        efTransform *tfrm = lbParticleAddTransformForParticle(ptcl, 1);
+        efTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm != NULL)
         {
@@ -3657,7 +3655,7 @@ efParticle* efManagerSparkleWhiteMultiMakeEffect(Vec3f *pos)
 
     if (ptcl != NULL)
     {
-        efTransform *tfrm = lbParticleAddTransformForParticle(ptcl, 1);
+        efTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm != NULL)
         {
@@ -3686,7 +3684,7 @@ efParticle* efManagerSparkleWhiteMultiExplodeMakeEffect(Vec3f *pos)
 
     if (ptcl != NULL)
     {
-        efTransform *tfrm = lbParticleAddTransformForParticle(ptcl, 1);
+        efTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm != NULL)
         {
@@ -3715,7 +3713,7 @@ efParticle* efManagerSparkleWhiteScaleMakeEffect(Vec3f *pos, f32 scale)
 
     if (ptcl != NULL)
     {
-        efTransform *tfrm = lbParticleAddTransformForParticle(ptcl, 1);
+        efTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm != NULL)
         {
@@ -3748,7 +3746,7 @@ efParticle* efManagerSparkleWhiteDeadMakeEffect(Vec3f *pos, f32 scale)
 
     if (ptcl != NULL)
     {
-        efTransform *tfrm = lbParticleAddTransformForParticle(ptcl, 1);
+        efTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm != NULL)
         {
@@ -3923,7 +3921,7 @@ efParticle* efManagerDamageCoinMakeEffect(Vec3f *pos)
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForParticle(ptcl, 0);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 0);
 
         if (tfrm != NULL)
         {
@@ -3978,7 +3976,7 @@ efParticle* efManagerSetOffMakeEffect(Vec3f *pos, s32 size)
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForParticle(ptcl, 1);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm != NULL)
         {
@@ -4226,7 +4224,7 @@ efParticle* efManagerThunderAmpMakeEffect(Vec3f *pos)
 
     if (ptcl != NULL)
     {
-        efTransform *tfrm = lbParticleAddTransformForParticle(ptcl, 1);
+        efTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm != NULL)
         {
@@ -4810,7 +4808,7 @@ GObj* efManagerDeadExplodeMakeEffect(Vec3f *pos, s32 player, u32 type)
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForParticle(ptcl, 1);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm != NULL)
         {
@@ -5312,7 +5310,7 @@ efParticle* efManagerFireGrindMakeEffect(Vec3f *pos)
 
     if (ptcl != NULL)
     {
-        efTransform *tfrm = lbParticleAddTransformForParticle(ptcl, 1);
+        efTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm != NULL)
         {
@@ -5341,7 +5339,7 @@ efParticle* efManagerHealSparklesMakeEffect(Vec3f *pos)
 
     if (ptcl != NULL)
     {
-        efTransform *tfrm = lbParticleAddTransformForParticle(ptcl, 1);
+        efTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm != NULL)
         {
@@ -5484,7 +5482,7 @@ efParticle* func_ovl2_801031E0(Vec3f *pos)
 
     if (ptcl != NULL)
     {
-        efTransform *tfrm = lbParticleAddTransformForParticle(ptcl, 1);
+        efTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm != NULL)
         {
@@ -5513,7 +5511,7 @@ efParticle* func_ovl2_80103280(Vec3f *pos)
 
     if (ptcl != NULL)
     {
-        efTransform *tfrm = lbParticleAddTransformForParticle(ptcl, 1);
+        efTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm != NULL)
         {
@@ -5805,7 +5803,7 @@ efParticle* efManagerMusicNoteMakeEffect(Vec3f *pos)
 
     if (ptcl != NULL)
     {
-        efTransform *tfrm = lbParticleAddTransformForParticle(ptcl, 1);
+        efTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm != NULL)
         {
@@ -5834,7 +5832,7 @@ efParticle* efManagerYoshiEggExplodeMakeEffect(Vec3f *pos)
 
     if (ptcl != NULL)
     {
-        efTransform *tfrm = lbParticleAddTransformForParticle(ptcl, 1);
+        efTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm != NULL)
         {
@@ -6048,7 +6046,7 @@ efParticle* efManagerBattleScoreMakeEffect(Vec3f *pos, s32 score)
 
     if (ptcl != NULL)
     {
-        efTransform *tfrm = lbParticleAddTransformForParticle(ptcl, 1);
+        efTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm == NULL)
         {
@@ -6076,7 +6074,7 @@ efParticle* efManagerEggBreakMakeEffect(Vec3f *pos)
 
     if (ptcl != NULL)
     {
-        efTransform *tfrm = lbParticleAddTransformForParticle(ptcl, 1);
+        efTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm != NULL)
         {
@@ -6138,7 +6136,7 @@ efParticle* efManagerKirbyInhaleWindMakeEffect(GObj *fighter_gobj)
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForParticle(ptcl, 0);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 0);
 
         if (tfrm != NULL)
         {
@@ -6205,7 +6203,7 @@ efParticle* efManagerItemSpawnSwirlMakeEffect(Vec3f *pos)
 
     if (ptcl != NULL)
     {
-        efTransform *tfrm = lbParticleAddTransformForParticle(ptcl, 1);
+        efTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm != NULL)
         {
@@ -6234,7 +6232,7 @@ efParticle* func_ovl2_80104554(Vec3f *pos, s32 arg1)
 
     if (ptcl != NULL)
     {
-        efTransform *tfrm = lbParticleAddTransformForParticle(ptcl, 1);
+        efTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm != NULL)
         {

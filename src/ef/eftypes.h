@@ -131,7 +131,7 @@ struct efParticle
     u16 generator_id;
     u16 flags;                  // Flags?
     u8 bank_id;
-    u8 link_id;
+    u8 loop_count;              // Loop count or bank id!?
     u8 texture_id;
     u8 data_id;
     ub16 bytecode_timer;        // Wait timer before next bytecode event is parsed
@@ -141,7 +141,7 @@ struct efParticle
     u8 *bytecode;               // Bytecode base
     u16 bytecode_csr;
     u16 branch_ptr;             // Jump to 
-    u16 subroutine_ptr;
+    u16 loop_ptr;
     u16 lifetime;
     Vec3f pos;
     Vec3f vel;                  // Velocity?

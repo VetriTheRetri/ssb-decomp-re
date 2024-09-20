@@ -1252,12 +1252,12 @@ s32 mnTitleCreateViewports()
 }
 
 // 80133CFC
-void mnTitleRenderLogoFireEffect()
+void mnTitleRenderLogoFireEffect(GObj *gobj)
 {
 	gDPPipeSync(gDisplayListHead[0]++);
 	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-	lbParticleDrawTextures();
+	lbParticleDrawTextures(gobj);
 
 	gDPSetTexturePersp(gDisplayListHead[0]++, G_TP_PERSP);
 	gDPSetDepthSource(gDisplayListHead[0]++, G_ZS_PIXEL);

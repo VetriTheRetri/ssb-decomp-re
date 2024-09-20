@@ -221,7 +221,7 @@ void grPupupuWhispyLeavesMakeEffect(void)
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForParticle(ptcl, 1);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm == NULL)
         {
@@ -480,7 +480,7 @@ void grPupupuWhispyDustMakeEffect(void)
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForParticle(ptcl, 1);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm == NULL)
         {

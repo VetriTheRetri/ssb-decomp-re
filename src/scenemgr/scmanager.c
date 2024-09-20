@@ -4,7 +4,7 @@
 #include <ft/fighter.h>
 #include <wp/weapon.h>
 #include <it/item.h>
-#include <ovl0/halsprite.h>
+#include <ovl0/lbparticle.h>
 #include <ovl0/ovl0.h>
 #include "scenemgr/entries.h"
 #include <sys/error.h>
@@ -631,6 +631,8 @@ void func_800A26B8()
 	func_8000A340();
 }
 
+extern D_ovl0_800D6448;
+
 // 800A26D8
 void func_800A26D8(GObj* arg0)
 {
@@ -642,7 +644,7 @@ void func_800A26D8(GObj* arg0)
 	gDPPipeSync((*gDisplayListHead)++);
 	gDPSetCycleType((*gDisplayListHead)++, G_CYC_FILL);
 	gDPSetRenderMode((*gDisplayListHead)++, G_RM_NOOP, G_RM_NOOP2);
-	width = ((sLBParticleStructsUsedNum / 112.0f) * 256.0f);
+	width = ((gLBParticleStructsUsedNum / 112.0f) * 256.0f);
 	if (width < 0)
 		width = 0;
 	if (width > 256)
@@ -652,7 +654,7 @@ void func_800A26D8(GObj* arg0)
 
 	barY += 2;
 	gDPPipeSync((*gDisplayListHead)++);
-	width = ((D_ovl0_800D644A / 24.0f) * 256.0f);
+	width = ((gLBParticleGeneratorsUsedNum / 24.0f) * 256.0f);
 	if (width < 0)
 		width = 0;
 	if (width > 256)
@@ -662,7 +664,7 @@ void func_800A26D8(GObj* arg0)
 
 	barY += 2;
 	gDPPipeSync((*gDisplayListHead)++);
-	width = ((sLBParticleTransformsUsedNum / 80.0f) * 256.0f);
+	width = ((gLBParticleTransformsUsedNum / 80.0f) * 256.0f);
 	if (width < 0)
 		width = 0;
 	if (width > 256)

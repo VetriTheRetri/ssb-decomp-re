@@ -3,8 +3,6 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 
-extern void* lbParticleMakePosVel(s32, s32, f32, f32, f32, f32, f32, f32);
-
 // // // // // // // // // // // //
 //                               //
 //       EXTERNAL VARIABLES      //

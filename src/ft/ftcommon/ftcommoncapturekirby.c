@@ -183,7 +183,7 @@ void ftCommonCaptureWaitKirbyUpdateBreakoutVars(ftStruct *this_fp, ftStruct *cap
         {
             if (capture_fp->anim_bank != NULL)
             {
-                lbCommonAddFighterPartsAnimJointAll(capture_fp->joints[nFTPartsJointTopN]->child, capture_fp->anim_bank, 0.0F);
+                lbCommonAddFighterPartsFigatree(capture_fp->joints[nFTPartsJointTopN]->child, capture_fp->anim_bank, 0.0F);
             }
         }
     }

@@ -95,6 +95,14 @@ union AObjEvent32
     } command;
 };
 
+/*
+ * This houses both types of AObj scripts; event32 is the standard type of script.
+ * 
+ * Only DObjs (and on top of that, only fighters) use the event16 script type, but
+ * might as well have a union of both for the sake of convenience.
+ * 
+ * Note: later games (or Melee, at least) refer to the event16 scripts as "figatrees"
+ */ 
 union AObjScript
 {
     AObjEvent16 *event16;

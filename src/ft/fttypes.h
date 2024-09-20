@@ -1265,8 +1265,8 @@ struct ftStruct
     ftData *ft_data;
     ftAttributes *attributes;
 
-    void *anim_bank;            // Main animation bank?
-    void *anim_load;            // Load animations into this?
+    void **anim_bank;           // Main animation bank?
+    void **anim_load;           // Load animations into this?
 
     void(*proc_update)(GObj*);
     void(*proc_accessory)(GObj*);

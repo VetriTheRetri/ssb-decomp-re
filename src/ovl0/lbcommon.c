@@ -786,7 +786,7 @@ void lbCommonAddDObjAnimJointAll(DObj *root_dobj, AObjEvent32 **anim_joints, f32
 }
 
 // 0x800C87F4
-void lbCommonAddFighterPartsAnimJointAll(DObj *root_dobj, AObjEvent32 **anim_joints, f32 anim_frame)
+void lbCommonAddFighterPartsFigatree(DObj *root_dobj, void **figatrees, f32 anim_frame)
 {
     DObj *current_dobj = root_dobj;
     
@@ -794,12 +794,12 @@ void lbCommonAddFighterPartsAnimJointAll(DObj *root_dobj, AObjEvent32 **anim_joi
 
     while (current_dobj != NULL)
     {
-        AObjEvent32 *anim_joint = *anim_joints;
+        void *figatree = *figatrees;
         ftParts *ft_parts = current_dobj->user_data.p;
         
-        if (anim_joint != NULL)
+        if (figatree != NULL)
         {
-            gcAddDObjAnimJoint(current_dobj, anim_joint, anim_frame);
+            gcAddDObjAnimJoint(current_dobj, figatree, anim_frame);
 
             ft_parts->is_have_anim = TRUE;
         }
@@ -809,7 +809,7 @@ void lbCommonAddFighterPartsAnimJointAll(DObj *root_dobj, AObjEvent32 **anim_joi
 
             ft_parts->is_have_anim = FALSE;
         }
-        anim_joints++;
+        figatrees++;
         
         current_dobj = lbCommonGetTreeDObjNextFromRoot(current_dobj, root_dobj);
     }

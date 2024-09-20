@@ -4658,7 +4658,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
 
                 joint->flags = DOBJ_FLAG_NONE;
             }
-            lbCommonAddFighterPartsAnimJointAll(fp->joints[nFTPartsJointTopN]->child, fp->anim_bank, frame_begin);
+            lbCommonAddFighterPartsFigatree(fp->joints[nFTPartsJointTopN]->child, fp->anim_bank, frame_begin);
 
             if (anim_speed != DObjGetStruct(fighter_gobj)->anim_speed)
             {

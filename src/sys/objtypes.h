@@ -301,14 +301,14 @@ struct _MObjSub
     f32 unk44;
     u8 pad48[0x4C - 0x48];
     u32 unk4C;
-    syColorRGBA primcolor;
+    syColorPack primcolor;
     u8 prim_l;
     u8 prim_m;
     u8 prim_pad[2];
-    syColorRGBA envcolor;
-    syColorRGBA blendcolor;
-    syColorRGBA light1color;
-    syColorRGBA light2color;
+    syColorPack envcolor;
+    syColorPack blendcolor;
+    syColorPack light1color;
+    syColorPack light2color;
     s32 unk68;
     s32 unk6C;
     s32 unk70;
@@ -416,7 +416,7 @@ struct _DObj
     OMMtx *ommtx[5];
     AObj *aobj;
 
-    union AObjScripts
+    union
     {
         AObjEvent *anim_joint;
         AObjFigatree *figatree;

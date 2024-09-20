@@ -1252,11 +1252,11 @@ void gcPlayMObjMatAnim(MObj *mobj)
     f32 temp_f14;
     f32 temp_f20;
     f32 temp_f22;
-    syColorRGBA color; // color
+    syColorPack color; // color
     f32 temp_f24;
     s32 interp;
-    syColorRGBA sp38; // sp38
-    syColorRGBA sp34; // sp34
+    syColorPack sp38; // sp38
+    syColorPack sp34; // sp34
 
     if (mobj->anim_remain != AOBJ_ANIM_NULL) 
     {
@@ -1364,33 +1364,33 @@ void gcPlayMObjMatAnim(MObj *mobj)
                         sp34.pack = 0;
                         sp38.pack = 0;
 
-                        sp38.g = ((u8*)&aobj->value_base)[0];
-                        sp38.a = ((u8*)&aobj->value_base)[1];
+                        sp38.s.g = ((u8*)&aobj->value_base)[0];
+                        sp38.s.a = ((u8*)&aobj->value_base)[1];
                         
-                        sp34.g = ((u8*)&aobj->value_target)[0];
-                        sp34.a = ((u8*)&aobj->value_target)[1];
+                        sp34.s.g = ((u8*)&aobj->value_target)[0];
+                        sp34.s.a = ((u8*)&aobj->value_target)[1];
 
                         sp38.pack = (256 - interp) * sp38.pack + sp34.pack * interp;
 
-                        color.r = sp38.r;
-                        color.g = sp38.b;
+                        color.s.r = sp38.s.r;
+                        color.s.g = sp38.s.b;
 
                         sp38.pack = 0;
                     
-                        sp38.g = ((u8*)&aobj->value_base)[2];
-                        sp38.a = ((u8*)&aobj->value_base)[3];
+                        sp38.s.g = ((u8*)&aobj->value_base)[2];
+                        sp38.s.a = ((u8*)&aobj->value_base)[3];
                     
-                        sp34.g = ((u8*)&aobj->value_target)[2];
-                        sp34.a = ((u8*)&aobj->value_target)[3];
+                        sp34.s.g = ((u8*)&aobj->value_target)[2];
+                        sp34.s.a = ((u8*)&aobj->value_target)[3];
 
                         sp38.pack = (256 - interp) * sp38.pack + sp34.pack * interp;
 
-                        color.b = sp38.r;
-                        color.a = sp38.b;
+                        color.s.b = sp38.s.r;
+                        color.s.a = sp38.s.b;
                         break;
                     
                     case nOMObjAnimKindStep:
-                        color = (aobj->length_invert <= aobj->length) ? *(syColorRGBA*)&aobj->value_target : *(syColorRGBA*)&aobj->value_base;
+                        color = (aobj->length_invert <= aobj->length) ? *(syColorPack*)&aobj->value_target : *(syColorPack*)&aobj->value_base;
                         break;
                     }
                     switch(aobj->track)

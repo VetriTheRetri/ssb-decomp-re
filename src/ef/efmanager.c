@@ -4175,12 +4175,12 @@ void efManagerYoshiShieldProcDraw(GObj *effect_gobj)
     {
         blend = 0.0F;
     }
-    color[syColorRGBIndexR] = 0xAE * blend;
-    color[syColorRGBIndexG] = 0xD6 * blend;
-    color[syColorRGBIndexB] = 0xD6 * blend;
+    color[nSYColorRGBAIndexR] = 0xAE * blend;
+    color[nSYColorRGBAIndexG] = 0xD6 * blend;
+    color[nSYColorRGBAIndexB] = 0xD6 * blend;
 
     gDPPipeSync(gDisplayListHead[1]++);
-    gDPSetEnvColor(gDisplayListHead[1]++, color[syColorRGBIndexR], color[syColorRGBIndexG], color[syColorRGBIndexB], 0x00);
+    gDPSetEnvColor(gDisplayListHead[1]++, color[nSYColorRGBAIndexR], color[nSYColorRGBAIndexG], color[nSYColorRGBAIndexB], 0x00);
 
     gcDrawDObjDLHead1(effect_gobj);
 
@@ -4841,15 +4841,15 @@ GObj* efManagerDeadExplodeMakeEffect(Vec3f *pos, s32 player, u32 type)
 
     sibling_dobj = dobj->child->sib_next->sib_next;
 
-    sibling_dobj->mobj->sub.envcolor.r = dEFManagerDeadExplodeEnvColorSiblingR[player];
-    sibling_dobj->mobj->sub.envcolor.g = dEFManagerDeadExplodeEnvColorSiblingG[player];
-    sibling_dobj->mobj->sub.envcolor.b = dEFManagerDeadExplodeEnvColorSiblingB[player];
+    sibling_dobj->mobj->sub.envcolor.s.r = dEFManagerDeadExplodeEnvColorSiblingR[player];
+    sibling_dobj->mobj->sub.envcolor.s.g = dEFManagerDeadExplodeEnvColorSiblingG[player];
+    sibling_dobj->mobj->sub.envcolor.s.b = dEFManagerDeadExplodeEnvColorSiblingB[player];
 
     sibling_dobj->mobj->sub.flags |= MOBJ_FLAG_ENVCOLOR;
 
-    child_dobj->mobj->sub.envcolor.r = dEFManagerDeadExplodeEnvColorChildR[player];
-    child_dobj->mobj->sub.envcolor.g = dEFManagerDeadExplodeEnvColorChildG[player];
-    child_dobj->mobj->sub.envcolor.b = dEFManagerDeadExplodeEnvColorChildB[player];
+    child_dobj->mobj->sub.envcolor.s.r = dEFManagerDeadExplodeEnvColorChildR[player];
+    child_dobj->mobj->sub.envcolor.s.g = dEFManagerDeadExplodeEnvColorChildG[player];
+    child_dobj->mobj->sub.envcolor.s.b = dEFManagerDeadExplodeEnvColorChildB[player];
 
     child_dobj->mobj->sub.flags |= MOBJ_FLAG_ENVCOLOR;
 

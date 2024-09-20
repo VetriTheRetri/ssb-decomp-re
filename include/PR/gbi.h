@@ -4538,6 +4538,7 @@ typedef union {
 }
 
 /* like gSPTextureRectangle but accepts negative position arguments */
+/* FIX: yl is not cast to s16 in the original file; this has been remedied here */
 #define gSPScisTextureRectangle(pkt, xl, yl, xh, yh, tile, s, t, dsdx, dtdy) \
 {                                                                            \
     Gfx *_g = (Gfx *)(pkt);                                                  \
@@ -4556,7 +4557,7 @@ typedef union {
 			    (MIN((((s16)(xl)*(s16)(dsdx))>>7),0))) : 0)),    \
 			 16, 16) |                                           \
                  _SHIFTL(((t) -                                              \
-                          (((yl) < 0) ?                                      \
+                          ((((s16)yl) < 0) ?                                 \
                            (((s16)(dtdy) < 0) ?                              \
                             (MAX((((s16)(yl)*(s16)(dtdy))>>7),0)) :          \
                             (MIN((((s16)(yl)*(s16)(dtdy))>>7),0))) : 0)),    \

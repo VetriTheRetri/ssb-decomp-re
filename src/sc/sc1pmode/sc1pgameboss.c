@@ -483,7 +483,7 @@ void sc1PGameBossWallpaper1ProcDraw(GObj *gobj)
 
     while (dobj != NULL)
     {
-        dobj->mobj->sub.primcolor.a = alpha;
+        dobj->mobj->sub.primcolor.s.a = alpha;
         dobj = dobj->child;
     }
     gDPPipeSync(gDisplayListHead[1]++);
@@ -508,7 +508,7 @@ void sc1PGameBossWallpaper2ProcDraw(GObj *gobj)
     {
         if (dobj->mobj != NULL) // NULL check here but not the function above? WTF?
         {
-            dobj->mobj->sub.primcolor.a = alpha;
+            dobj->mobj->sub.primcolor.s.a = alpha;
         }
         dobj = dobj->child;
     }
@@ -532,7 +532,7 @@ void sc1PGameBossWallpaper3ProcDraw0(GObj *gobj)
     {
         if (dobj->mobj != NULL)
         {
-            dobj->mobj->sub.primcolor.a = alpha;
+            dobj->mobj->sub.primcolor.s.a = alpha;
         }
         dobj = dobj->child;
     }

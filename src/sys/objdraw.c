@@ -1307,10 +1307,10 @@ void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)
                     branch_dl++,
                     mobj->sub.prim_m,
                     (mobj->lfrac - trunc) * 256.0F,
-                    mobj->sub.primcolor.r,
-                    mobj->sub.primcolor.g,
-                    mobj->sub.primcolor.b,
-                    mobj->sub.primcolor.a
+                    mobj->sub.primcolor.s.r,
+                    mobj->sub.primcolor.s.g,
+                    mobj->sub.primcolor.s.b,
+                    mobj->sub.primcolor.s.a
                 );
                 mobj->texture_id_current = trunc;
                 mobj->texture_id_next = trunc + 1;
@@ -1322,10 +1322,10 @@ void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)
                     branch_dl++,
                     mobj->sub.prim_m,
                     mobj->lfrac * 255.0F,
-                    mobj->sub.primcolor.r,
-                    mobj->sub.primcolor.g,
-                    mobj->sub.primcolor.b,
-                    mobj->sub.primcolor.a
+                    mobj->sub.primcolor.s.r,
+                    mobj->sub.primcolor.s.g,
+                    mobj->sub.primcolor.s.b,
+                    mobj->sub.primcolor.s.a
                 );
             }
         }
@@ -1334,10 +1334,10 @@ void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)
             gDPSetEnvColor
             (
                 branch_dl++,
-                mobj->sub.envcolor.r,
-                mobj->sub.envcolor.g,
-                mobj->sub.envcolor.b,
-                mobj->sub.envcolor.a
+                mobj->sub.envcolor.s.r,
+                mobj->sub.envcolor.s.g,
+                mobj->sub.envcolor.s.b,
+                mobj->sub.envcolor.s.a
             );
         }
         if (flags & MOBJ_FLAG_BLENDCOLOR)
@@ -1345,10 +1345,10 @@ void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)
             gDPSetBlendColor
             (
                 branch_dl++,
-                mobj->sub.blendcolor.r,
-                mobj->sub.blendcolor.g,
-                mobj->sub.blendcolor.b,
-                mobj->sub.blendcolor.a
+                mobj->sub.blendcolor.s.r,
+                mobj->sub.blendcolor.s.g,
+                mobj->sub.blendcolor.s.b,
+                mobj->sub.blendcolor.s.a
             );
         }
         if (flags & (0x10 | 0x2))

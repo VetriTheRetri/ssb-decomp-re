@@ -33,6 +33,7 @@ typedef struct dbUnkStruct dbUnkStruct;
 typedef struct dbUnknownStructS18 dbUnknownStructS18;
 typedef struct dbUnknownStruct2S18 dbUnknownStruct2S18;
 typedef struct dbUnknownStruct_803864CC dbUnknownStruct_803864CC;
+typedef struct dbUnknownStruct_80375C54 dbUnknownStruct_80375C54;
 
 struct dbMenuSprite
 {
@@ -208,16 +209,6 @@ struct dbUnknownStruct2S18
     s32 unk_0x10;
     u16 unk_0x14;
     u16 unk_0x16;
-};
-
-struct dbUnknownStruct_803864CC
-{
-    u16 unk0;
-    u16 unk2;
-    u16 unk4;
-    u16 unk6;
-    s32 unk8[7];
-    s32 unk24;
 };
 
 #endif

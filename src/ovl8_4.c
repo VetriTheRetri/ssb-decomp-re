@@ -2,6 +2,24 @@
 #include <sys/develop.h>
 #include <debug.h>
 
+
+struct dbUnknownStruct_803864CC
+{
+	u16 unk0;
+	u16 unk2;
+	u16 unk4;
+	u16 unk6;
+	s32 unk8[7];
+	s32 unk24;
+};
+
+struct dbUnknownStruct_80375C54
+{
+	GObj* unk0;
+	s32* unk4;
+};
+
+
 extern void *D_ovl8_80388E60[];
 extern dbFunction D_ovl8_80388F18[];
 extern dbUnknownLink D_ovl8_80389070[];
@@ -11,6 +29,7 @@ extern u16 D_8038F008[];
 extern u16 D_8038F046;
 extern s32 D_ovl8_80389F5C;
 extern s32 D_ovl8_80389F60;
+extern s32 D_ovl8_80389F64;
 extern GObj* D_ovl8_8038A860;
 extern u16 D_ovl8_8038E1E4;
 extern s32 D_803903C0;
@@ -686,9 +705,17 @@ void func_ovl8_80373ABC(s32 arg0) {}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_80375B04.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_80375B8C.s")
+void func_ovl8_80375B8C(u16* arg0, u16 arg1, u16 arg2)
+{
+	arg0[0x16/2] = arg2;
+	arg0[0x14/2] = arg1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_80375BA0.s")
+void func_ovl8_80375BA0(u16* arg0, u16* arg1, u16* arg2)
+{
+	*arg1 = arg0[0x14/2];
+	*arg2 = arg0[0x16/2];
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_80375BB4.s")
 
@@ -696,7 +723,18 @@ void func_ovl8_80373ABC(s32 arg0) {}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_80375BEC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_80375C54.s")
+void func_ovl8_80375C54(dbUnknownStruct_80375C54* arg0)
+{
+	if (arg0->unk0 != 0)
+		func_8000A24C(arg0->unk0, 0);
+
+	if (arg0->unk4 != NULL)
+	{
+		// unk4 is supposed to be GObj* but set to 32 to match
+		func_80009C90(arg0->unk4, 0, -1);
+		*arg0->unk4 = -0x1FE;
+	}
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_80375CB8.s")
 
@@ -749,7 +787,10 @@ s32 func_ovl8_803769AC(Vec3i* arg0)
 	return arg0[4].z;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_803769B4.s")
+void func_ovl8_803769B4(dbUnknownS38 *arg0, dbUnknownS38 *arg1)
+{
+	func_ovl8_80372A48(arg0, arg1);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_803769D4.s")
 
@@ -772,17 +813,90 @@ s32 func_ovl8_80376FB4()
 	return 2;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_80376FBC.s")
+// 80376FBC
+s32 stringLength(char* string)
+{
+	s32 length;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_80376FFC.s")
+	if (string == NULL)
+		return 0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_80377044.s")
+	for (length = 0; *string != '\0'; string++, length++);
+	return length;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_8037709C.s")
+// 80376FFC
+void stringCopy(char* target, char* source)
+{
+	char* sourceCurrent;
+	char* targetCurrent;
+
+	if (target == NULL || source == NULL)
+		return;
+	
+	while (*source != '\0')
+	{
+		targetCurrent = target;
+		sourceCurrent = source;
+		target += 1;
+		source += 1;
+		*targetCurrent = *sourceCurrent;
+	}
+	
+	*target = '\0';
+}
+
+// 80377044
+void stringCopyCount(char* target, char* source, s32 count)
+{
+	char* sourceCurrent;
+	char* targetCurrent;
+	
+	if (target == NULL || source == NULL)
+		return;
+	
+	while (count != 0 && *source != '\0')
+	{
+		targetCurrent = target;
+		sourceCurrent = source;
+		count -= 1;
+		target += 1;
+		source += 1;
+		*targetCurrent = *sourceCurrent;
+	}
+	
+	*target = '\0';
+}
+
+// 8037709C
+void stringConcat(char* target, char* source)
+{
+	char* sourceCurrent;
+	char* targetCurrent;
+
+	if (target == NULL || source == NULL)
+		return;
+	
+	target += stringLength(target);
+
+	while (*source != '\0')
+	{
+		targetCurrent = target;
+		sourceCurrent = source;
+		target += 1;
+		source += 1;
+		*targetCurrent = *sourceCurrent;
+	}
+	
+	*target = 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_80377108.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_80377134.s")
+void func_ovl8_80377134(s32 arg0, s32 arg1)
+{
+	func_ovl8_80376B60(arg1, arg0, &D_ovl8_80389F64, arg1);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_80377168.s")
 
@@ -1391,7 +1505,22 @@ s16 func_ovl8_80384C44(s16* arg0)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_80385024.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_80385180.s")
+s32 func_ovl8_80385180(s32 arg0, s32* arg1)
+{
+	s32 temp_v0;
+	s32 var_v1;
+
+	temp_v0 = func_ovl8_803717A0(0xCC);
+	if (temp_v0 != 0)
+	{
+		func_ovl8_803851E4(temp_v0, 0, 0, arg1, arg0, arg1[0x24/4]);
+		var_v1 = temp_v0;
+	}
+	else
+		var_v1 = 0;
+	
+	return var_v1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_803851E4.s")
 
@@ -1407,7 +1536,22 @@ s16 func_ovl8_80384C44(s16* arg0)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_80385598.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_80385640.s")
+s32 func_ovl8_80385640(s32 arg0, s32 arg1)
+{
+	s32 temp_v0;
+	s32 var_v1;
+
+	temp_v0 = func_ovl8_803717A0(0xC0);
+	if (temp_v0 != 0)
+	{
+		func_ovl8_80385758(temp_v0, 0, 0, arg1, arg0);
+		var_v1 = temp_v0;
+	}
+	else
+		var_v1 = 0;
+
+	return var_v1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_8038569C.s")
 

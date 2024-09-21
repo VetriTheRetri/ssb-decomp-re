@@ -26,6 +26,8 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8_5/func_ovl8_80387154.s")
 
+// 80387420 seems to copy too
+void func_ovl8_80387420(char* target, char* source, s32 count);
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8_5/func_ovl8_80387420.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8_5/func_ovl8_8038746C.s")

@@ -2169,7 +2169,7 @@ void sc1PGameProcStart(void)
     ifCommonTimerMakeDigitSObjs();
 
     color = dSC1PGameFadeColor;
-    lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
+    lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 }
 
 // 0x8018FD5C

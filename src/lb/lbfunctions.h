@@ -3,6 +3,7 @@
 
 #include "lbcommon.h"
 #include "lbparticle.h"
+#include "lbfade.h"
 #include "lbtransition.h"
 #include "lbbackup.h"
 

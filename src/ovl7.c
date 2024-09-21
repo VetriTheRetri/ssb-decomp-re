@@ -1559,7 +1559,7 @@ void scTrainingMode_InitTrainingMode()
 
 	color = dSCTrainingFadeColor;
 
-	lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
+	lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 }
 
 // 801905A8

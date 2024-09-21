@@ -61,7 +61,7 @@ struct db4Shorts
     {
         s16 arr[4];
         u16 uarr[4];
-    }
+    };
 };
 
 struct dbBytesContainer

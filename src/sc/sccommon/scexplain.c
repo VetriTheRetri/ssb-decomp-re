@@ -827,7 +827,7 @@ void scExplainProcStart(void)
 
     color = dSCExplainFadeColor;
 
-    lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
+    lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 }
 
 // 0x8018E51C

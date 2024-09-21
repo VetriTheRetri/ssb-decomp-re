@@ -416,19 +416,24 @@ segments:
     start: 0x043220
     vram: 0x800C7840
     subsegments:
+    # ovl0 text
       - [0x043220, c, lb/lbcommon]
       - [0x049000, asm, lb/rldm]
       - [0x049A20, c, lb/lbparticle]
-      - [0x04F860, c, lb/lbtransition]
-      - [0x04FB10, asm, lb/ovl0_3]
+      - [0x04F860, c, lb/lbfade]
+      - [0x04FB10, c, lb/lbtransition]
       - [0x04FF00, c, lb/lbbackup]
+
+    # ovl0 data
       - [0x050680, .data, lb/lbcommon]
       - [0x051730, .data, lb/lbparticle]
-      - [0x051740, data, lb/ovl0_3]
+      - [0x051740, data, lb/lbtransition]
+    
+    # ovl0 rodata
       - [0x0517F0, .rodata, lb/lbcommon]
       - [0x0518C0, rodata, lb/rldm]
       - [0x0519A0, .rodata, lb/lbparticle]
-      - [0x051C80, rodata, lb/ovl0_3]
+      - [0x051C80, .rodata, lb/lbtransition]
 
   - name: ovl2
     type: code

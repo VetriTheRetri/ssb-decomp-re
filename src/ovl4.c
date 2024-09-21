@@ -191,7 +191,7 @@ void scBattle_StartStockBattle()
 
 	color = dSCVSBattleCommonFadeColor;
 
-	lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
+	lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 }
 
 // 8018D5E0 - Sort time battle winners and check for sudden death
@@ -463,7 +463,7 @@ void scBattle_StartSDBattle()
 
 	color = dSCVSBattleSuddenDeathFadeColor;
 
-	lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
+	lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 }
 
 // 8018E144

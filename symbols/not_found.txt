@@ -751,12 +751,15 @@ D_ovl0_800D6452 = 0x800D6452;
 sLBParticleTransformsAllocFree = 0x800D6454;
 sLBParticleGeneratorsCurrent = 0x800D6458;
 
-sLBTransitionFadeAlphaMax = 0x800D6460;
-sLBTransitionFadeAlphaCurrent = 0x800D6464;
-sLBTransitionFadeLength = 0x800D6468;
-sLBTransitionColor = 0x800D646C;
-sLBTransitionIsProceedScene = 0x800D6470;
-sLBTransitionIsEjectGObj = 0x800D6474;
+sLBFadeAlphaMax = 0x800D6460;
+sLBFadeAlphaCurrent = 0x800D6464;
+sLBFadeLength = 0x800D6468;
+sLBFadeColor = 0x800D646C;
+sLBFadeIsProceedScene = 0x800D6470;
+sLBFadeIsEjectGObj = 0x800D6474;
+
+sLBTransitionFileHeap = 0x800D6484;
+sLBTransitionPhotoHeap = 0x800D6488;
 
 func_ovl2_800E7F68 = 0x800E7F68;
 gOMObjCommonLinks = 0x800466F0;

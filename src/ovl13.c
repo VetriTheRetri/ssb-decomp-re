@@ -17,12 +17,6 @@ extern intptr_t lOverlay13ArenaHi;  // 80369240
 extern void gcUpdateDefault(UNUSED GObj* arg0);
 extern void* func_800269C0_275C0(u16);
 
-extern void func_ovl0_800D4130(u32, s32, s32, s64);
-
-// ovl0
-extern void func_ovl0_800D4248();
-extern void func_ovl0_800D42C8();
-
 // ovl9
 extern void mnDebugMenuCreateMenu(s32, s32, s32, void*, s32);
 extern mnDebugMenuDestroyMenu();
@@ -579,9 +573,9 @@ void mnDebugCubeInit()
 	);
 	mnDebugCubeCreateViewport(0);
 	mnDebugCubeCreateGObj(mnDebugCubeRotateKirbyCube, &dMNDebugCubeKirbyCubeDisplayList);
-	func_ovl0_800D4404();
-	func_ovl0_800D4130(0x20000002, 0, 0x32, 0x00000002);
-	gcSetAnimSpeed(func_ovl0_800D430C(gMNDebugCubeMenuValueTransition, 0x20000000, 0, func_ovl0_800D4248, 1, func_ovl0_800D42C8), 0.25F);
+	lbTransitionSetupTransition();
+	lbTransitionMakeCamera(0x20000002, 0, 0x32, 0x00000002);
+	gcSetAnimSpeed(lbTransitionMakeTransition(gMNDebugCubeMenuValueTransition, 0x20000000, 0, lbTransitionProcDraw, 1, lbTransitionProcUpdate), 0.25F);
 	gmRumbleMakeActor();
 	mnDebugMenuInitMenu();
 	mnDebugCubeCreateGObj(mnDebugCubeCheckAudioChange, NULL);

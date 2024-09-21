@@ -5,8 +5,10 @@
 #include <sys/obj.h>
 #include <lb/lbdef.h>
 
-extern void lbTransitionProcUpdate(GObj *gobj);
+extern GObj* lbTransitionMakeCamera(u32 id, s32 link, u32 link_order, u64 cam_mask);
 extern void lbTransitionProcDraw(GObj *gobj);
-extern void lbTransitionMakeActor(u32 id, s32 link, u32 link_order, syColorRGBA *color, s32 fade_length, sb32 is_eject_gobj, sb32 *is_proceed_scene);
+extern void lbTransitionProcUpdate(GObj *gobj);
+extern GObj* lbTransitionMakeTransition(s32 transition_id, u32 id, s32 link, void (*proc_draw)(GObj*), u8 dl_link_id, void (*proc_common)(GObj*));
+extern void lbTransitionSetupTransition(void);
 
 #endif

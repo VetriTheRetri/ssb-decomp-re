@@ -100,7 +100,7 @@ scAutoDemoProc dSCAutoDemoProcList[/* */] =
 	// Pre-focus
 	{
 		340,                            // Wait frames until focus changes 
-		scAutoDemoMakeTransition,            // Function to run on focus change
+		scAutoDemoMakeFade,            // Function to run on focus change
 		NULL                            // Function to run when focusing
 	},
 
@@ -230,11 +230,11 @@ void scAutoDemoDetectExit(void)
 }
 
 // 0x8018D19C
-void scAutoDemoMakeTransition(void)
+void scAutoDemoMakeFade(void)
 {
 	syColorRGBA color = dSCAutoDemoFadeColor;
 
-	lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 30, TRUE, NULL);
+	lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 30, TRUE, NULL);
 }
 
 // 0x8018D1EC

@@ -183,6 +183,7 @@ typedef struct lbTextureDesc                lbTextureDesc;
 typedef struct lbTransform		            lbTransform;
 typedef struct lbGenerator		            lbGenerator;
 typedef struct lbParticle		            lbParticle;
+typedef struct lbTransitionDesc				lbTransitionDesc;
 typedef struct lbBackup1PRecord             lbBackup1PRecord;
 typedef struct lbBackupBattleRecord         lbBackupBattleRecord;
 typedef struct lbBackupData                 lbBackupData;

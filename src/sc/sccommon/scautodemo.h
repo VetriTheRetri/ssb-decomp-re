@@ -9,7 +9,7 @@
 extern void scAutoDemoProcScene(void);
 extern void scAutoDemoStartBattle(void);
 extern void scAutoDemoDetectExit(void);
-extern void scAutoDemoMakeTransition(void);
+extern void scAutoDemoMakeFade(void);
 extern sb32 scAutoDemoCheckStopFocusPlayer(ftStruct *fp);
 extern void scAutoDemoSetFocusPlayer1(void);
 extern void scAutoDemoProcFocusPlayer1(void);

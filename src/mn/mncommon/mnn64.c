@@ -137,7 +137,7 @@ void mnN64LogoThreadUpdate(GObj *gobj)
 	}
 	color = dMNN64EndFadeColor;
 
-	lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 10, FALSE, NULL);
+	lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 10, FALSE, NULL);
 
 	i = 0;
 
@@ -254,7 +254,7 @@ void mnN64ProcStart(void)
 
 	color = dMNN64StartFadeColor;
 
-	lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 16, TRUE, NULL);
+	lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 16, TRUE, NULL);
 }
 
 // 0x80131ECC

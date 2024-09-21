@@ -152,7 +152,7 @@ void func_ovl5_8018D1A0()
 	}
 	color = dSCUnusedMarioFadeColor;
 
-	lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
+	lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 }
 
 // 8018D4BC

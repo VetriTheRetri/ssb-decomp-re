@@ -864,7 +864,7 @@ void scBonusGame_InitBonusGame()
 
 	color = dSCBonusGameFadeColor;
 
-	lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
+	lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 	scBonusGame_MakeBonusTimerGObj();
 }
 

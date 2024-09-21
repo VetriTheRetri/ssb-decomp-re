@@ -139,6 +139,14 @@ struct lbParticle
     lbTransform *tfrm;
 };
 
+struct lbTransitionDesc
+{
+    u32 file_id;
+    intptr_t o_dobjdesc;
+    intptr_t o_anim_joint;
+    s32 unk_lbtransition_0xC;
+};
+
 struct lbBackupBattleRecord
 {
 	/* 0x00 */ u16 ko_count[GMCOMMON_FIGHTERS_PLAYABLE_NUM];

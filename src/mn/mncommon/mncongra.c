@@ -244,7 +244,7 @@ void mnCongraActorProcRun(GObj *gobj)
 	{
 		sMNCongraIsProceed = TRUE;
 		color = dMNCongraFadeColor;
-		lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 90, FALSE, &sMNCongraIsProceedScene);
+		lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 90, FALSE, &sMNCongraIsProceedScene);
 	}
 }
 

@@ -4,7 +4,7 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 #include <sys/system_00.h>
 #include <sys/gtl.h>
 
@@ -281,7 +281,7 @@ s32 mnTitleSetDemoFtKinds()
 	s32 unlocked_count;
 	s32 non_recently_demoed_count;
 
-	unlocked_mask = gSaveData.character_mask | SCBACKUP_CHARACTER_MASK_STARTER;
+	unlocked_mask = gSaveData.character_mask | LBBACKUP_CHARACTER_MASK_STARTER;
 
 	if (~unlocked_mask & gSceneData.recently_demoed_mask)
 		gSceneData.recently_demoed_mask = 0;
@@ -1282,7 +1282,7 @@ void mnTitleCreateLogoFire()
 void mnTitleLogoFireMakeEffect()
 {
 	GObj* logo_fire_effect_gobj;
-	efGenerator *gtor;
+	lbGenerator *gtor;
 
 	if (gSceneData.scene_previous == nSCKindOpeningNewcomers)
 	{
@@ -1354,7 +1354,7 @@ void mnTitleStartScene()
 	if ((!gSceneData.main_title_animation_viewed) && (gSaveData.unk5E3 < 0x100))
 	{
 		gSaveData.unk5E3++;
-		scBackupWrite();
+		lbBackupWrite();
 	}
 
 	D_ovl10_8013438C.arena_size = (u32) ((uintptr_t)&lOverlay10ArenaHi - (uintptr_t)&lOverlay10ArenaLo);

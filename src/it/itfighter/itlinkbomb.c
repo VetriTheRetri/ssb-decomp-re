@@ -178,7 +178,7 @@ void itLinkBombExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 	s32 unused;
 	DObj *dobj = DObjGetStruct(item_gobj);
 	itStruct *ip = itGetStruct(item_gobj);
-	efParticle *ptcl;
+	lbParticle *ptcl;
 
 	itLinkBombCommonSetHitStatusNone(item_gobj);
 

@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <mv/movie.h>
 #include <sc/scene.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 #include <sys/system_00.h>
 
 extern u32 func_8000092C();
@@ -133,16 +133,16 @@ sb32 mvOpeningNewcomersCheckLocked(s32 ft_kind)
     switch (ft_kind)
     {
     case nFTKindCaptain:
-        return (sMVOpeningNewcomersCharacterMask & SCBACKUP_FIGHTER_MASK_DEFINE(nFTKindCaptain)) ? FALSE : TRUE;
+        return (sMVOpeningNewcomersCharacterMask & LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindCaptain)) ? FALSE : TRUE;
 
     case nFTKindNess:
-        return (sMVOpeningNewcomersCharacterMask & SCBACKUP_FIGHTER_MASK_DEFINE(nFTKindNess)) ? FALSE : TRUE;
+        return (sMVOpeningNewcomersCharacterMask & LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindNess)) ? FALSE : TRUE;
 
     case nFTKindPurin:
-        return (sMVOpeningNewcomersCharacterMask & SCBACKUP_FIGHTER_MASK_DEFINE(nFTKindPurin)) ? FALSE : TRUE;
+        return (sMVOpeningNewcomersCharacterMask & LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindPurin)) ? FALSE : TRUE;
 
     case nFTKindLuigi:
-        return (sMVOpeningNewcomersCharacterMask & SCBACKUP_FIGHTER_MASK_DEFINE(nFTKindLuigi)) ? FALSE : TRUE;
+        return (sMVOpeningNewcomersCharacterMask & LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindLuigi)) ? FALSE : TRUE;
 
     default:
         return FALSE;

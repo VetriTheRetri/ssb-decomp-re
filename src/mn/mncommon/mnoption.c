@@ -1,7 +1,7 @@
 #include <mn/menu.h>
 #include <gm/gmsound.h>
 #include <sc/scene.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 #include <sys/system_00.h>
 #include <sys/thread6.h>
 
@@ -756,7 +756,7 @@ void mnOptionWriteBackup(void)
     gSaveData.is_allow_screenflash = sMNOptionIsScreenFlash;
     gSaveData.sound_mono_or_stereo = sMNOptionSoundMonoOrStereo;
 
-    scBackupWrite();
+    lbBackupWrite();
 }
 
 // 0x80132E4C

@@ -2,7 +2,7 @@
 #include <ft/fighter.h>
 #include <gm/gmsound.h>
 #include <gr/ground.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 
 #include "debug.h"
 

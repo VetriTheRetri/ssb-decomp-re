@@ -5,7 +5,7 @@
 #include <sys/objdef.h>
 #include <gm/gmdef.h>
 
-#include <ovl0/library.h>
+#include <lb/library.h>
 
 struct gmHitCollisionFlags
 {

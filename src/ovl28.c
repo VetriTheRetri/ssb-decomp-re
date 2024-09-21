@@ -2,7 +2,7 @@
 #include <ft/ftdef.h>
 #include <ft/fighter.h>
 #include <sc/scene.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 #include <sys/system_00.h>
 
 #include "character_select.h"
@@ -963,7 +963,7 @@ void mnTrainingSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 co
 		spawn_info.ft_kind = ft_kind;
 		gMNTrainingPanels[port_id].costume_id = spawn_info.costume = costume_id;
 		spawn_info.shade = 0;
-		spawn_info.anim_heap = gMNTrainingPanels[port_id].anim_heap;
+		spawn_info.figatree_heap = gMNTrainingPanels[port_id].figatree_heap;
 		spawn_info.player = port_id;
 		fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
@@ -2753,7 +2753,7 @@ void mnTrainingInitCSS()
 		ftManagerSetupFilesAllKind(i);
 
 	for (i = 0; i < 4; i++)
-		gMNTrainingPanels[i].anim_heap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10U);
+		gMNTrainingPanels[i].figatree_heap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10U);
 
 	mnTrainingCreatePortraitViewport();
 	mnTrainingCreateCursorViewport();

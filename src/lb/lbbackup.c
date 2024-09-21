@@ -1,4 +1,5 @@
 #include <ft/fighter.h>
+#include <lb/library.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
 
@@ -9,22 +10,22 @@
 // // // // // // // // // // // //
 
 // 0x800D4520
-s32 scBackupCreateChecksum(scBackupData *bp)
+s32 lbBackupCreateChecksum(lbBackupData *backup)
 {
     s32 i, checksum = 0;
-    u8 *bpbyte = (u8*)bp;
+    u8 *bytes = (u8*)backup;
 
-    for (i = 0; i < (sizeof(scBackupData) - sizeof(gSaveData.checksum)); i++)
+    for (i = 0; i < (sizeof(lbBackupData) - sizeof(gSaveData.checksum)); i++)
     {
-        checksum += *bpbyte++ * (i + 1);
+        checksum += *bytes++ * (i + 1);
     }
     return checksum;
 }
 
 // 0x800D45A4
-sb32 scBackupIsChecksumValid(void)
+sb32 lbBackupIsChecksumValid(void)
 {
-    if ((scBackupCreateChecksum(&gSaveData) == gSaveData.checksum) && (gSaveData.unk5E4 == 0x29A)) // :otstare:
+    if ((lbBackupCreateChecksum(&gSaveData) == gSaveData.checksum) && (gSaveData.unk5E4 == 0x29A)) // :otstare:
     {
         return TRUE;
     }
@@ -32,37 +33,37 @@ sb32 scBackupIsChecksumValid(void)
 }
 
 // 0x800D45F4
-void scBackupWrite(void)
+void lbBackupWrite(void)
 {
-    gSaveData.checksum = scBackupCreateChecksum(&gSaveData);
-    syDmaSramWrite(&gSaveData, ALIGN(sizeof(scBackupData),  0x0), sizeof(scBackupData));
-    syDmaSramWrite(&gSaveData, ALIGN(sizeof(scBackupData), 0x10), sizeof(scBackupData));
+    gSaveData.checksum = lbBackupCreateChecksum(&gSaveData);
+    syDmaSramWrite(&gSaveData, ALIGN(sizeof(lbBackupData),  0x0), sizeof(lbBackupData));
+    syDmaSramWrite(&gSaveData, ALIGN(sizeof(lbBackupData), 0x10), sizeof(lbBackupData));
 }
 
 // 0x800D4644
-sb32 scBackupIsSramValid(void)
+sb32 lbBackupIsSramValid(void)
 {
-    syDmaSramRead(ALIGN(sizeof(scBackupData), 0x0), &gSaveData, sizeof(scBackupData));
+    syDmaSramRead(ALIGN(sizeof(lbBackupData), 0x0), &gSaveData, sizeof(lbBackupData));
 
-    if (scBackupIsChecksumValid() == FALSE)
+    if (lbBackupIsChecksumValid() == FALSE)
     {
-        syDmaSramRead(ALIGN(sizeof(scBackupData), 0x10), &gSaveData, sizeof(scBackupData));
+        syDmaSramRead(ALIGN(sizeof(lbBackupData), 0x10), &gSaveData, sizeof(lbBackupData));
 
-        if (scBackupIsChecksumValid() == FALSE)
+        if (lbBackupIsChecksumValid() == FALSE)
         {
             gSaveData = gDefaultSaveData;
 
-            scBackupWrite();
+            lbBackupWrite();
 
             return FALSE;
         }
-        scBackupWrite();
+        lbBackupWrite();
     }
     return TRUE;
 }
 
 // 0x800D46F4
-void scBackupApplyOptions(void)
+void lbBackupApplyOptions(void)
 {
     auSetSoundQuality(gSaveData.sound_mono_or_stereo);
     syDisplaySetCenterOffsets
@@ -73,35 +74,35 @@ void scBackupApplyOptions(void)
 }
 
 // 0x800D473C
-void scBackupCorrectErrors(void)
+void lbBackupCorrectErrors(void)
 {
     s32 i;
 
-    if (!((gSaveData.character_mask | SCBACKUP_CHARACTER_MASK_STARTER) & (1 << gSaveData.bio_ft_kind)))
+    if (!((gSaveData.character_mask | LBBACKUP_CHARACTER_MASK_STARTER) & (1 << gSaveData.bio_ft_kind)))
     {
         gSaveData.bio_ft_kind = gDefaultSaveData.bio_ft_kind;
     }
-    if (!((gSaveData.character_mask | SCBACKUP_CHARACTER_MASK_STARTER) & (1 << gSceneData.ft_kind)))
+    if (!((gSaveData.character_mask | LBBACKUP_CHARACTER_MASK_STARTER) & (1 << gSceneData.ft_kind)))
     {
         gSceneData.ft_kind = nFTKindNull;
     }
-    if (!((gSaveData.character_mask | SCBACKUP_CHARACTER_MASK_STARTER) & (1 << gSceneData.training_man_ft_kind)))
+    if (!((gSaveData.character_mask | LBBACKUP_CHARACTER_MASK_STARTER) & (1 << gSceneData.training_man_ft_kind)))
     {
         gSceneData.training_man_ft_kind = nFTKindNull;
     }
-    if (!((gSaveData.character_mask | SCBACKUP_CHARACTER_MASK_STARTER) & (1 << gSceneData.training_com_ft_kind)))
+    if (!((gSaveData.character_mask | LBBACKUP_CHARACTER_MASK_STARTER) & (1 << gSceneData.training_com_ft_kind)))
     {
         gSceneData.training_com_ft_kind = nFTKindNull;
     }
     for (i = 0; i < ARRAY_COUNT(gTransferBattleState.players); i++)
     {
-        if (!((1 << gTransferBattleState.players[i].ft_kind) & (gSaveData.character_mask | SCBACKUP_CHARACTER_MASK_STARTER)))
+        if (!((1 << gTransferBattleState.players[i].ft_kind) & (gSaveData.character_mask | LBBACKUP_CHARACTER_MASK_STARTER)))
         {
             gTransferBattleState.players[i].ft_kind = nFTKindNull;
             gTransferBattleState.players[i].pl_kind = nFTPlayerKindMan;
         }
     }
-    if (!(gSaveData.unlock_mask & SCBACKUP_UNLOCK_MASK_INISHIE))
+    if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_INISHIE))
     {
         if (gSceneData.stagesel_battle_gr_kind == nGRKindInishie)
         {
@@ -112,7 +113,7 @@ void scBackupCorrectErrors(void)
             gSceneData.stagesel_training_gr_kind = gDefaultSceneData.stagesel_training_gr_kind;
         }
     }
-    if (!(gSaveData.unlock_mask & SCBACKUP_UNLOCK_MASK_ITEMSWITCH))
+    if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_ITEMSWITCH))
     {
         gTransferBattleState.item_toggles = gDefaultBattleState.item_toggles;
         gTransferBattleState.item_switch  = gDefaultBattleState.item_switch;
@@ -120,16 +121,16 @@ void scBackupCorrectErrors(void)
 }
 
 // 0x800D48E0
-void scBackupClearNewcomers(void)
+void lbBackupClearNewcomers(void)
 {
-    gSaveData.unlock_mask &= ~SCBACKUP_UNLOCK_MASK_NEWCOMERS;
+    gSaveData.unlock_mask &= ~LBBACKUP_UNLOCK_MASK_NEWCOMERS;
     gSaveData.unlock_mask |= gDefaultSaveData.unlock_mask;
 
     gSaveData.character_mask = gDefaultSaveData.character_mask;
 }
 
 // 0x800D4914
-void scBackupClear1PHighScore(void)
+void lbBackupClear1PHighScore(void)
 {
     s32 i;
 
@@ -144,7 +145,7 @@ void scBackupClear1PHighScore(void)
 }
 
 //0x800D49E0
-void scBackupClearVSRecord(void)
+void lbBackupClearVSRecord(void)
 {
     s32 i;
 
@@ -156,7 +157,7 @@ void scBackupClearVSRecord(void)
 }
 
 // 0x800D4B60
-void scBackupClearBonusStageTime(void)
+void lbBackupClearBonusStageTime(void)
 {
     s32 i;
 
@@ -170,9 +171,9 @@ void scBackupClearBonusStageTime(void)
 }
 
 // 0x800D4C0C
-void scBackupClearPrize(void)
+void lbBackupClearPrize(void)
 {
-    gSaveData.unlock_mask &= ~SCBACKUP_UNLOCK_MASK_PRIZE;
+    gSaveData.unlock_mask &= ~LBBACKUP_UNLOCK_MASK_PRIZE;
     gSaveData.unlock_mask |= gDefaultSaveData.unlock_mask;
 
     gSaveData.unlock_task_inishie    = gDefaultSaveData.unlock_task_inishie;
@@ -180,7 +181,7 @@ void scBackupClearPrize(void)
 }
 
 // 0x800D4C48
-void scBackupClearAllData(void)
+void lbBackupClearAllData(void)
 {
     gSaveData = gDefaultSaveData;
 }

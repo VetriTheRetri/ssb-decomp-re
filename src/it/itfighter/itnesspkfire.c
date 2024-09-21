@@ -102,7 +102,7 @@ sb32 itNessPKFireCommonUpdateAllCheckDestroy(GObj *item_gobj)
     f32 unused;
     f32 half = 0.5;
     f32 lifetime_scale = ((ip->lifetime * half) / 100.0F) + half;
-    efTransform *tfrm = ip->item_vars.pkfire.tfrm;
+    lbTransform *tfrm = ip->item_vars.pkfire.tfrm;
 
     DObjGetStruct(item_gobj)->scale.vec.f.x = DObjGetStruct(item_gobj)->scale.vec.f.y = DObjGetStruct(item_gobj)->scale.vec.f.z = lifetime_scale;
 
@@ -250,8 +250,8 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
     GObj *item_gobj;
     wpStruct *wp = wpGetStruct(weapon_gobj);
     itStruct *ip;
-    efParticle *ptcl;
-    efTransform *tfrm;
+    lbParticle *ptcl;
+    lbTransform *tfrm;
 
     item_gobj = itManagerMakeItem(weapon_gobj, &dITNessPKFireItemDesc, pos, vel, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_WEAPON));
 

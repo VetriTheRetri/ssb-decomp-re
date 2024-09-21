@@ -2,7 +2,7 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 #include <sys/system_00.h>
 
 // Externs

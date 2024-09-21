@@ -1,4 +1,5 @@
-#include <ef/effect.h>
+#include <lb/library.h>
+#include <sys/hal_gu.h>
 
 // Equivalent file in Pokémon Snap: 4D880.c
 
@@ -11,16 +12,16 @@ extern u16 gSinTable[0x800];
 // // // // // // // // // // // //
 
 // 0x800D6350
-efParticle *sLBParticleStructsAllocFree;
+lbParticle *sLBParticleStructsAllocFree;
 
 // 0x800D6358
-efParticle *sLBParticleStructsAllocLinks[16];
+lbParticle *sLBParticleStructsAllocLinks[16];
 
 // 0x800D6398
-efGenerator *sLBParticleGeneratorsAllocFree;
+lbGenerator *sLBParticleGeneratorsAllocFree;
 
 // 0x800D639C
-efGenerator *sLBParticleGeneratorsAllocLinks;
+lbGenerator *sLBParticleGeneratorsAllocLinks;
 
 // 0x800D63A0
 DObj *sLBParticleAttachDObjs[LBPARTICLE_ATTACH_DOBJ_NUM_MAX];
@@ -32,16 +33,16 @@ s32 sLBParticleScriptBanksNum[LBPARTICLE_BANKS_NUM_MAX];
 s32 sLBParticleTextureBanksNum[LBPARTICLE_BANKS_NUM_MAX];
 
 // 0x800D6400
-efScript **sLBParticleScriptBanks[LBPARTICLE_BANKS_NUM_MAX];
+lbScript **sLBParticleScriptBanks[LBPARTICLE_BANKS_NUM_MAX];
 
 // 0x800D6420
-efTexture **sLBParticleTextureBanks[LBPARTICLE_BANKS_NUM_MAX];
+lbTexture **sLBParticleTextureBanks[LBPARTICLE_BANKS_NUM_MAX];
 
 // 0x800D6440
-void (*sLBParticleGeneratorProcDefault)(efGenerator*, Vec3f*);
+void (*sLBParticleGeneratorProcDefault)(lbGenerator*, Vec3f*);
 
 // 0x800D6444
-void (*sLBParticleGeneratorProcSetup)(efGenerator*);
+void (*sLBParticleGeneratorProcSetup)(lbGenerator*);
 
 // 0x800D6448
 u16 gLBParticleStructsUsedNum;
@@ -62,10 +63,10 @@ u16 D_ovl0_800D6450;
 u16 D_ovl0_800D6452;
 
 // 0x800D6454
-efTransform *sLBParticleTransformsAllocFree;
+lbTransform *sLBParticleTransformsAllocFree;
 
 // 0x800D6458
-efGenerator *sLBParticleGeneratorsCurrent;
+lbGenerator *sLBParticleGeneratorsCurrent;
 
 // // // // // // // // // // // //
 //                               //
@@ -94,7 +95,7 @@ u8 dLBParticleCurrentTransformID = 123;
 // 0x800CE040
 s32 lbParticleAllocTransforms(s32 num, size_t size)
 {
-	efTransform *tfrm;
+	lbTransform *tfrm;
 	s32 i;
 
 	sLBParticleTransformsAllocFree = NULL;
@@ -117,9 +118,9 @@ s32 lbParticleAllocTransforms(s32 num, size_t size)
 }
 
 // 0x800CE0D8
-efTransform* lbParticleGetTransform(u8 status, u16 generator_id)
+lbTransform* lbParticleGetTransform(u8 status, u16 generator_id)
 {
-	efTransform *tfrm = sLBParticleTransformsAllocFree;
+	lbTransform *tfrm = sLBParticleTransformsAllocFree;
 
 	if (tfrm != NULL)
 	{
@@ -146,7 +147,7 @@ efTransform* lbParticleGetTransform(u8 status, u16 generator_id)
 }
 
 // 0x800CE188
-void lbParticleEjectTransform(efTransform *tfrm)
+void lbParticleEjectTransform(lbTransform *tfrm)
 {
 	if (tfrm->proc_dead != NULL)
 	{
@@ -159,7 +160,7 @@ void lbParticleEjectTransform(efTransform *tfrm)
 }
 
 // 0x800CE1DC
-efTransform* lbParticleAddTransformForStruct(efParticle *ptcl, u8 status)
+lbTransform* lbParticleAddTransformForStruct(lbParticle *ptcl, u8 status)
 {
     ptcl->tfrm = lbParticleGetTransform(status, ptcl->generator_id);
 
@@ -167,7 +168,7 @@ efTransform* lbParticleAddTransformForStruct(efParticle *ptcl, u8 status)
 }
 
 // 0x800CE218
-efTransform* lbParticleAddTransformForGenerator(efGenerator* gtor, u8 status)
+lbTransform* lbParticleAddTransformForGenerator(lbGenerator* gtor, u8 status)
 {
 	gtor->tfrm = lbParticleGetTransform(status, gtor->generator_id);
 
@@ -175,7 +176,7 @@ efTransform* lbParticleAddTransformForGenerator(efGenerator* gtor, u8 status)
 }
 
 // 0x800CE254
-void lbParticleSetupBankID(s32 bank_id, efScriptDesc *script_desc, efTextureDesc *texture_desc)
+void lbParticleSetupBankID(s32 bank_id, lbScriptDesc *script_desc, lbTextureDesc *texture_desc)
 {
 	s32 i, j;
 
@@ -194,12 +195,12 @@ void lbParticleSetupBankID(s32 bank_id, efScriptDesc *script_desc, efTextureDesc
 		/* By default, the scripts array is populated with the offsets of the scripts
 		 * in their respective file, so this is essentially making them into valid RAM pointers.
 		 */
-		script_desc->scripts[i - 1] = gcGetDataFromFile(efScript*, script_desc, script_desc->scripts[i - 1]);
+		script_desc->scripts[i - 1] = gcGetDataFromFile(lbScript*, script_desc, script_desc->scripts[i - 1]);
 	}
 	for (i = 1; i <= sLBParticleTextureBanksNum[bank_id]; i++)
 	{
 		// Much like scripts, textures from the file are also being "pointerized" here.
-		texture_desc->textures[i - 1] = gcGetDataFromFile(efTexture*, texture_desc, texture_desc->textures[i - 1]);
+		texture_desc->textures[i - 1] = gcGetDataFromFile(lbTexture*, texture_desc, texture_desc->textures[i - 1]);
 	}
 	for (i = 0; i < sLBParticleTextureBanksNum[bank_id]; i++)
 	{
@@ -228,7 +229,7 @@ void lbParticleSetupBankID(s32 bank_id, efScriptDesc *script_desc, efTextureDesc
 GObj* lbParticleAllocStructs(s32 num)
 {
 	s32 i;
-	efParticle *ptcl;
+	lbParticle *ptcl;
 
 	sLBParticleStructsAllocFree = NULL;
 
@@ -258,9 +259,9 @@ GObj* lbParticleAllocStructs(s32 num)
 }
 
 // 0x800CE4E4
-efParticle* lbParticleMakeStruct
+lbParticle* lbParticleMakeStruct
 (
-	efParticle *this_ptcl,
+	lbParticle *this_ptcl,
 	s32 bank_id,
 	u32 flags,
 	u16 texture_id,
@@ -276,10 +277,10 @@ efParticle* lbParticleMakeStruct
 	f32 gravity,
 	f32 friction,
 	u32 argF,
-	efGenerator *gtor
+	lbGenerator *gtor
 )
 {
-	efParticle *new_ptcl;
+	lbParticle *new_ptcl;
 	s32 i;
 
     new_ptcl = sLBParticleStructsAllocFree;
@@ -340,7 +341,7 @@ efParticle* lbParticleMakeStruct
     new_ptcl->friction = friction;
 
     new_ptcl->lifetime = lifetime + 1;
-    new_ptcl->bytecode_csr = new_ptcl->branch_ptr = 0;
+    new_ptcl->bytecode_csr = new_ptcl->return_ptr = 0;
     
     new_ptcl->bytecode = bytecode;
 
@@ -363,9 +364,9 @@ efParticle* lbParticleMakeStruct
 }
 
 // 0x800CE6B8
-efParticle* lbParticleMakeChildScriptID(efParticle *ptcl, s32 bank_id, s32 script_id)
+lbParticle* lbParticleMakeChildScriptID(lbParticle *ptcl, s32 bank_id, s32 script_id)
 {
-	efScript *script;
+	lbScript *script;
 	s32 id = bank_id & 7;
 
 	if (id >= LBPARTICLE_BANKS_NUM_MAX)
@@ -397,7 +398,7 @@ efParticle* lbParticleMakeChildScriptID(efParticle *ptcl, s32 bank_id, s32 scrip
 }
 
 // 0x800CE7A8
-efParticle* lbParticleMakeParam
+lbParticle* lbParticleMakeParam
 (
 	s32 bank_id,
 	u32 flags,
@@ -414,10 +415,10 @@ efParticle* lbParticleMakeParam
 	f32 gravity,
 	f32 friction,
 	u32 argE,
-	efGenerator *gtor
+	lbGenerator *gtor
 )
 {
-	efParticle *ptcl = lbParticleMakeStruct
+	lbParticle *ptcl = lbParticleMakeStruct
 	(
 		NULL,
 		bank_id,
@@ -441,9 +442,9 @@ efParticle* lbParticleMakeParam
 }
 
 // 0x800CE870
-efParticle* lbParticleMakeCommon(s32 bank_id, s32 script_id)
+lbParticle* lbParticleMakeCommon(s32 bank_id, s32 script_id)
 {
-	efParticle *ptcl = lbParticleMakeChildScriptID(NULL, bank_id, script_id);
+	lbParticle *ptcl = lbParticleMakeChildScriptID(NULL, bank_id, script_id);
 
 	if (ptcl != NULL)
 	{
@@ -453,10 +454,10 @@ efParticle* lbParticleMakeCommon(s32 bank_id, s32 script_id)
 }
 
 // 0x800CE8C0
-efParticle* lbParticleMakePosVel(s32 bank_id, s32 script_id, f32 pos_x, f32 pos_y, f32 pos_z, f32 vel_x, f32 vel_y, f32 vel_z)
+lbParticle* lbParticleMakePosVel(s32 bank_id, s32 script_id, f32 pos_x, f32 pos_y, f32 pos_z, f32 vel_x, f32 vel_y, f32 vel_z)
 {
-	efParticle *ptcl;
-	efScript *script;
+	lbParticle *ptcl;
+	lbScript *script;
 	s32 id = bank_id & 7;
 
 	if (id >= LBPARTICLE_BANKS_NUM_MAX)
@@ -493,13 +494,13 @@ efParticle* lbParticleMakePosVel(s32 bank_id, s32 script_id, f32 pos_x, f32 pos_
 }
 
 // 0x800CE9E8
-efParticle* lbParticleMakeScriptID(s32 bank_id, s32 script_id)
+lbParticle* lbParticleMakeScriptID(s32 bank_id, s32 script_id)
 {
 	return lbParticleMakeChildScriptID(NULL, bank_id, script_id);
 }
 
 // 0x800CEA14
-void lbParticleProcessStruct(efParticle *ptcl)
+void lbParticleProcessStruct(lbParticle *ptcl)
 {
 	if (ptcl != NULL)
 	{
@@ -508,10 +509,10 @@ void lbParticleProcessStruct(efParticle *ptcl)
 }
 
 // 0x800CEA40
-void lbParticleEjectStruct(efParticle *this_ptcl)
+void lbParticleEjectStruct(lbParticle *this_ptcl)
 {
-	efParticle *prev_ptcl, *current_ptcl;
-	efGenerator *gtor;
+	lbParticle *prev_ptcl, *current_ptcl;
+	lbGenerator *gtor;
 	s32 bank_id;
 
 	bank_id = this_ptcl->bank_id >> 3;
@@ -554,10 +555,10 @@ void lbParticleEjectStruct(efParticle *this_ptcl)
 	}
 }
 
-// 0x800CEB50 - unused? Eject all efParticle structs
+// 0x800CEB50 - unused? Eject all lbParticle structs
 void lbParticleEjectStructAll(void)
 {
-	efParticle *current_ptcl, *next_ptcl;
+	lbParticle *current_ptcl, *next_ptcl;
 	s32 i;
 
 	for (i = 0; i < ARRAY_COUNT(sLBParticleStructsAllocLinks); i++)
@@ -605,7 +606,7 @@ u8* lbParticleReadUShort(u8 *csr, u16 *s)
 }
 
 // 0x800CEC34
-void lbParticleRotateVel(efParticle *ptcl, f32 angle)
+void lbParticleRotateVel(lbParticle *ptcl, f32 angle)
 {
 	Vec3f vel;
 	f32 sin_angle;
@@ -648,7 +649,7 @@ void lbParticleRotateVel(efParticle *ptcl, f32 angle)
 }
 
 // 0x800CEDBC
-void lbParticleSetDistVelDObj(efParticle *ptcl, DObj *dobj)
+void lbParticleSetDistVelDObj(lbParticle *ptcl, DObj *dobj)
 {
 	f32 dx, dy, dz, dist;
 
@@ -673,7 +674,7 @@ void lbParticleSetDistVelDObj(efParticle *ptcl, DObj *dobj)
 }
 
 // 0x800CEEB8
-void lbParticleAddDistVelMagDObj(efParticle *ptcl, DObj *dobj, f32 magnitude)
+void lbParticleAddDistVelMagDObj(lbParticle *ptcl, DObj *dobj, f32 magnitude)
 {
 	f32 dx, dy, dz, dist;
 
@@ -699,11 +700,11 @@ void lbParticleAddDistVelMagDObj(efParticle *ptcl, DObj *dobj, f32 magnitude)
 
 #ifdef NON_MATCHING
 // 0x800CEF4C - NONMATCHING: v0 VS v1 regswap in switch statement initialization + floats are a mess near the end of the function
-efParticle* lbParticleUpdateStruct(efParticle *this_ptcl, efParticle *other_ptcl, s32 bank_id)
+lbParticle* lbParticleUpdateStruct(lbParticle *this_ptcl, lbParticle *other_ptcl, s32 bank_id)
 {
-    efParticle *current_ptcl;
-    efParticle *next_ptcl;
-    efGenerator *gtor;
+    lbParticle *current_ptcl;
+    lbParticle *next_ptcl;
+    lbGenerator *gtor;
     u8 *csr; // s1
     u8 command; // s0
     u16 bytecode_timer;
@@ -1216,11 +1217,11 @@ efParticle* lbParticleUpdateStruct(efParticle *this_ptcl, efParticle *other_ptcl
                         break;
                         
                     case LBPARTICLE_OPCODE_SETRETURN:            
-                        this_ptcl->branch_ptr = (u16) ((uintptr_t)csr - (uintptr_t)this_ptcl->bytecode);
+                        this_ptcl->return_ptr = (u16) ((uintptr_t)csr - (uintptr_t)this_ptcl->bytecode);
                         break;
                         
                     case LBPARTICLE_OPCODE_RETURN:
-                        csr = (u8*) (this_ptcl->bytecode + this_ptcl->branch_ptr);
+                        csr = (u8*) (this_ptcl->bytecode + this_ptcl->return_ptr);
                         break;
                         
                     case LBPARTICLE_OPCODE_DEAD:
@@ -1402,7 +1403,7 @@ efParticle* lbParticleUpdateStruct(efParticle *this_ptcl, efParticle *other_ptcl
     return this_ptcl->next;
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/lbparticle/lbParticleUpdateStruct.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/lb/lbparticle/lbParticleUpdateStruct.s")
 #endif
 
 // 0x800D0C74
@@ -1410,9 +1411,9 @@ void lbParticleStructProcRun(GObj *gobj)
 {
 	u32 flags = gobj->flags;
 	s32 i;
-	efParticle *prev_ptcl;
-	efParticle *current_ptcl;
-	efParticle *next_ptcl;
+	lbParticle *prev_ptcl;
+	lbParticle *current_ptcl;
+	lbParticle *next_ptcl;
 
 	for (i = 0; i < ARRAY_COUNT(sLBParticleStructsAllocLinks); i++, flags >>= 1)
 	{
@@ -1449,7 +1450,7 @@ void lbParticleStructProcRun(GObj *gobj)
 // 0x800D0D34
 void lbParticleDrawTextures(GObj *gobj)
 {
-    efParticle *ptcl;
+    lbParticle *ptcl;
     void *prev_image, *prev_palette;
     s32 prev_ac, prev_alpha;
     s32 tlut;
@@ -2115,7 +2116,7 @@ void lbParticleDrawTextures(GObj *gobj)
     }
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/lbparticle/lbParticleDrawTextures.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/lb/lbparticle/lbParticleDrawTextures.s")
 #endif
 
 // 0x800D2720
@@ -2143,7 +2144,7 @@ GObj* lbParticleAllocGenerators(s32 num)
 
 	for (i = num - 1; i >= 0; i--)
 	{
-		efGenerator *gtor = gsMemoryAlloc(sizeof(*gtor), 0x4);
+		lbGenerator *gtor = gsMemoryAlloc(sizeof(*gtor), 0x4);
 
 		if (gtor == NULL)
 		{
@@ -2268,7 +2269,7 @@ void lbParticleGetPosVelDObj(Vec3f *pos, Vec3f *vel, DObj *dobj)
 // 0x800D2C4C
 void lbParticleGeneratorProcRun(GObj *gobj)
 {
-    efGenerator *gtor, *next_gtor;
+    lbGenerator *gtor, *next_gtor;
     f32 pos_random;
     Vec3f pos;
     Vec3f vel;
@@ -2586,13 +2587,13 @@ void lbParticleGeneratorProcRun(GObj *gobj)
     
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/lbparticle/lbParticleGeneratorProcRun.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/lb/lbparticle/lbParticleGeneratorProcRun.s")
 #endif
 
 // 0x800D353C
-efGenerator* lbParticleGetGenerator(void)
+lbGenerator* lbParticleGetGenerator(void)
 {
-    efGenerator *gtor = sLBParticleGeneratorsAllocFree;
+    lbGenerator *gtor = sLBParticleGeneratorsAllocFree;
     
     if (sLBParticleGeneratorsAllocFree == NULL)
     {
@@ -2619,9 +2620,9 @@ efGenerator* lbParticleGetGenerator(void)
 }
 
 // 0x800D35DC
-efGenerator* lbParticleMakeGenerator(s32 bank_id, s32 script_id)
+lbGenerator* lbParticleMakeGenerator(s32 bank_id, s32 script_id)
 {
-    efGenerator *gtor;
+    lbGenerator *gtor;
     s32 id = bank_id & 7;  
     s32 unused;
     
@@ -2701,9 +2702,9 @@ efGenerator* lbParticleMakeGenerator(s32 bank_id, s32 script_id)
 }
 
 // 0x800D3884
-void lbParticleEjectGenerator(efGenerator *this_gtor)
+void lbParticleEjectGenerator(lbGenerator *this_gtor)
 {
-    efGenerator *prev_gtor = NULL, *current_gtor = sLBParticleGeneratorsAllocLinks;
+    lbGenerator *prev_gtor = NULL, *current_gtor = sLBParticleGeneratorsAllocLinks;
     
     while (current_gtor != NULL)
     {
@@ -2745,11 +2746,11 @@ void lbParticleEjectGenerator(efGenerator *this_gtor)
 // 0x800D3978
 void lbParticleEjectGeneratorAll(void)
 {
-	efGenerator *current_gtor = sLBParticleGeneratorsAllocLinks;
+	lbGenerator *current_gtor = sLBParticleGeneratorsAllocLinks;
 
 	while (current_gtor != NULL)
 	{
-		efGenerator *next_gtor = current_gtor->next;
+		lbGenerator *next_gtor = current_gtor->next;
 
 		lbParticleEjectGenerator(current_gtor);
 
@@ -2758,7 +2759,7 @@ void lbParticleEjectGeneratorAll(void)
 }
 
 // 0x800D39C0
-void lbParticleSetGeneratorProcs(void (*proc_setup)(efGenerator*), void (*proc_default)(efGenerator*, Vec3f*))
+void lbParticleSetGeneratorProcs(void (*proc_setup)(lbGenerator*), void (*proc_default)(lbGenerator*, Vec3f*))
 {
 	sLBParticleGeneratorProcSetup = proc_setup;
 	sLBParticleGeneratorProcDefault = proc_default;
@@ -2767,13 +2768,13 @@ void lbParticleSetGeneratorProcs(void (*proc_setup)(efGenerator*), void (*proc_d
 // 0x800D39D4
 void lbParticleEjectStructID(u16 generator_id, s32 link_id)
 {
-    efParticle *next_ptcl;
-    efParticle *current_ptcl;
-    efParticle *prev_ptcl;
+    lbParticle *next_ptcl;
+    lbParticle *current_ptcl;
+    lbParticle *prev_ptcl;
 
-    efGenerator *next_gtor;
-    efGenerator *current_gtor;
-    efGenerator *prev_gtor;
+    lbGenerator *next_gtor;
+    lbGenerator *current_gtor;
+    lbGenerator *prev_gtor;
 
     prev_ptcl = NULL;
     current_ptcl = sLBParticleStructsAllocLinks[link_id];
@@ -2856,13 +2857,13 @@ void lbParticleEjectStructID(u16 generator_id, s32 link_id)
 }
 
 // 0x800D3BFC
-void lbParticleEjectStructSelf(efParticle *ptcl)
+void lbParticleEjectStructSelf(lbParticle *ptcl)
 {
 	lbParticleEjectStructID(ptcl->generator_id, ptcl->bank_id >> 3);
 }
 
 // 0x800D3C28
-void lbParticleEjectStructGenerator(efGenerator *gtor)
+void lbParticleEjectStructGenerator(lbGenerator *gtor)
 {
 	lbParticleEjectStructID(gtor->generator_id, gtor->bank_id >> 3);
 }
@@ -2871,7 +2872,7 @@ void lbParticleEjectStructGenerator(efGenerator *gtor)
 void lbParticleEjectGeneratorDObj(GObj *gobj)
 {
 	DObj *dobj;
-	efGenerator *current_gtor, *next_gtor;
+	lbGenerator *current_gtor, *next_gtor;
 
 	if (gobj->obj_kind == nOMObjCommonAppendDObj)
 	{
@@ -2893,12 +2894,12 @@ void lbParticleEjectGeneratorDObj(GObj *gobj)
 // 0x800D3CE0
 void lbParticleSetStructPosAll(f32 pos_x, f32 pos_y, f32 pos_z)
 {
-    efGenerator *gtor;
+    lbGenerator *gtor;
     s32 i;
     
     for (i = 0; i < ARRAY_COUNT(sLBParticleStructsAllocLinks); i++)
     {
-        efParticle *ptcl = sLBParticleStructsAllocLinks[i];
+        lbParticle *ptcl = sLBParticleStructsAllocLinks[i];
         
         while (ptcl != NULL)
         {
@@ -2924,8 +2925,8 @@ void lbParticleSetStructPosAll(f32 pos_x, f32 pos_y, f32 pos_z)
 // 0x800D3D64
 void lbParticlePauseAllID(u16 generator_id, s32 link_id)
 {
-	efParticle *ptcl;
-	efGenerator *gtor;
+	lbParticle *ptcl;
+	lbGenerator *gtor;
 
 	for (ptcl = sLBParticleStructsAllocLinks[link_id]; ptcl != NULL; ptcl = ptcl->next)
 	{
@@ -2946,8 +2947,8 @@ void lbParticlePauseAllID(u16 generator_id, s32 link_id)
 // 0x800D3DE8
 void lbParticleResumeAllID(u16 generator_id, s32 link_id)
 {
-	efParticle *ptcl;
-	efGenerator *gtor;
+	lbParticle *ptcl;
+	lbGenerator *gtor;
 
 	for (ptcl = sLBParticleStructsAllocLinks[link_id]; ptcl != NULL; ptcl = ptcl->next)
 	{

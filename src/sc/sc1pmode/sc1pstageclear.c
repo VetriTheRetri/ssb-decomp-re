@@ -2,7 +2,7 @@
 #include <sc/scene.h>
 #include <sys/system_00.h>
 #include <sys/thread6.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 

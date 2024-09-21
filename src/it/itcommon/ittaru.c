@@ -448,7 +448,7 @@ void itTaruExplodeSetStatus(GObj *item_gobj)
 // 0x8017A30C
 void itTaruExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 {
-    efParticle *ptcl;
+    lbParticle *ptcl;
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 

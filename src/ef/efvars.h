@@ -99,15 +99,15 @@ typedef struct efCommonEffectVarsContainer
 
 } efCommonEffectVarsContainer;
 
-typedef struct efParticle_EffectVars_Basic2 // Stuff like the effect that is created when hit by a normal element attack
+typedef struct lbParticle_EffectVars_Basic2 // Stuff like the effect that is created when hit by a normal element attack
 {
     Vec3f vel;
     u8 player;
     s32 size;
-    efTransform *tfrm;
+    lbTransform *tfrm;
     u8 filler_0x2C[0x3C - 0x30];
 
-} efParticle_EffectVars_Basic2;
+} lbParticle_EffectVars_Basic2;
 
 typedef struct efCommonEffectVarsDamageNormalHeavy
 {
@@ -121,7 +121,7 @@ typedef struct efCommonEffectVarsCommon
 {
     Vec3f vel;
     s32 size;
-    efTransform *tfrm;
+    lbTransform *tfrm;
 
 } efCommonEffectVarsCommon;
 
@@ -129,7 +129,7 @@ typedef struct efCommonEffectVarsDustLight
 {
     Vec3f vel1, vel2;
     s32 lifetime;
-    efTransform *tfrm;
+    lbTransform *tfrm;
 
 } efCommonEffectVarsDustLight;
 
@@ -138,7 +138,7 @@ typedef struct efCommonEffectVarsDustHeavy
     Vec3f pos;
     s32 lr;
     s32 anim_frame;
-    efTransform *tfrm;
+    lbTransform *tfrm;
 
 } efCommonEffectVarsDustHeavy;
 

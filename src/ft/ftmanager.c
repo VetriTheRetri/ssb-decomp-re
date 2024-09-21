@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <sys/develop.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -714,7 +714,7 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
     fp->ft_kind = ft_desc->ft_kind;
     fp->ft_data = dFTManagerDataFiles[fp->ft_kind];
     attributes = fp->attributes = (ftAttributes*) ((uintptr_t)*fp->ft_data->p_file_main + (intptr_t)fp->ft_data->o_attributes);
-    fp->anim_load = ft_desc->anim_heap;
+    fp->figatree_heap = ft_desc->figatree_heap;
     fp->team = ft_desc->team;
     fp->player = ft_desc->player;
     fp->stock_count = ft_desc->stock_count;

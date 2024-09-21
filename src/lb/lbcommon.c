@@ -1,4 +1,4 @@
-#include <ovl0/library.h>
+#include <lb/library.h>
 #include <ft/fighter.h>
 #include <gr/ground.h>
 #include <sys/system_00.h>
@@ -1976,8 +1976,8 @@ sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
     return 0;
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/lbcommon/func_ovl0_800CB140.s")
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/lbcommon/D_ovl0_800D5E10.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/lb/lbcommon/func_ovl0_800CB140.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/lb/lbcommon/D_ovl0_800D5E10.s")
 #endif
 
 // 0x800CB2F0
@@ -2186,7 +2186,7 @@ void lbCommonDecodeSpriteBitmapsSiz4b(Sprite *sprite)
     sprite->bmsiz = G_IM_SIZ_4b;
 }
 
-// #pragma GLOBAL_ASM("asm/nonmatchings/ovl0/lbcommon/D_ovl0_800D5E10.s")
+// #pragma GLOBAL_ASM("asm/nonmatchings/lb/lbcommon/D_ovl0_800D5E10.s")
 
 // 0x800CB7D4
 void lbCommonDrawSObjBitmap
@@ -2757,7 +2757,7 @@ void lbCommonPrepSObjDraw(Gfx **dls, SObj *sobj)
     }
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl0/lbcommon/lbCommonPrepSObjDraw.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/lb/lbcommon/lbCommonPrepSObjDraw.s")
 #endif
 
 // 0x800CCEAC

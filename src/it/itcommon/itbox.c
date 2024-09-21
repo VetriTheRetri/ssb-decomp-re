@@ -507,7 +507,7 @@ void itBoxExplodeSetStatus(GObj *item_gobj)
 // 0x80179B08
 void itBoxExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 {
-    efParticle *ptcl;
+    lbParticle *ptcl;
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 

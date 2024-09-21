@@ -1,7 +1,5 @@
-#ifndef _LIBRARY_H_
-#define _LIBRARY_H_
-
-#include "lbfunctions.h"
+#ifndef _LBDEF_H_
+#define _LBDEF_H_
 
 #define LBPARTICLE_BANKS_NUM_MAX        8
 #define LBPARTICLE_ATTACH_DOBJ_NUM_MAX  8
@@ -87,5 +85,106 @@
         cos = -cos;                                   \
     }                                                 \
 }
+
+#define LBBACKUP_FIGHTER_MASK_DEFINE(kind) (1 << (kind))
+#define LBBACKUP_GROUND_MASK_DEFINE(kind) (1 << (kind))
+
+#define LBBACKUP_CHARACTER_MASK_ALL					\
+(									 				\
+	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindMario) 	|	\
+	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindFox) 	|	\
+	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindDonkey)	|	\
+	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindSamus) 	|	\
+	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindLuigi) 	|	\
+	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindLink) 	|	\
+	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindYoshi) 	|	\
+	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindCaptain)|	\
+	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindKirby)	|	\
+	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindPikachu)|	\
+	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindPurin) 	|	\
+	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindNess)		\
+)
+
+#define LBBACKUP_CHARACTER_MASK_UNLOCK				\
+(													\
+	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindNess) 	|	\
+	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindPurin) 	|	\
+	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindCaptain)| 	\
+	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindLuigi)		\
+)
+
+#define LBBACKUP_CHARACTER_MASK_STARTER (LBBACKUP_CHARACTER_MASK_ALL & ~LBBACKUP_CHARACTER_MASK_UNLOCK)
+
+#define LBBACKUP_UNLOCK_MASK_LUIGI (1 << nLBBackupUnlockLuigi)
+#define LBBACKUP_UNLOCK_MASK_NESS (1 << nLBBackupUnlockNess)
+#define LBBACKUP_UNLOCK_MASK_CAPTAIN (1 << nLBBackupUnlockCaptain)
+#define LBBACKUP_UNLOCK_MASK_PURIN (1 << nLBBackupUnlockPurin)
+#define LBBACKUP_UNLOCK_MASK_INISHIE (1 << nLBBackupUnlockInishie)
+#define LBBACKUP_UNLOCK_MASK_SOUNDTEST (1 << nLBBackupUnlockSoundTest)
+#define LBBACKUP_UNLOCK_MASK_ITEMSWITCH (1 << nLBBackupUnlockItemSwitch)
+
+#define LBBACKUP_UNLOCK_MASK_ALL 		\
+(										\
+	LBBACKUP_UNLOCK_MASK_ITEMSWITCH | 	\
+	LBBACKUP_UNLOCK_MASK_SOUNDTEST 	| 	\
+	LBBACKUP_UNLOCK_MASK_INISHIE   	|	\
+	LBBACKUP_UNLOCK_MASK_PURIN 		| 	\
+	LBBACKUP_UNLOCK_MASK_CAPTAIN 	| 	\
+	LBBACKUP_UNLOCK_MASK_NESS 		| 	\
+	LBBACKUP_UNLOCK_MASK_LUIGI			\
+)
+
+#define LBBACKUP_UNLOCK_MASK_NEWCOMERS (LBBACKUP_UNLOCK_MASK_LUIGI | LBBACKUP_UNLOCK_MASK_PURIN | LBBACKUP_UNLOCK_MASK_CAPTAIN | LBBACKUP_UNLOCK_MASK_NESS)
+#define LBBACKUP_UNLOCK_MASK_PRIZE (LBBACKUP_UNLOCK_MASK_ALL & ~LBBACKUP_UNLOCK_MASK_NEWCOMERS)
+
+#define LBBACKUP_GROUND_MASK_ALL 					\
+(													\
+	LBBACKUP_GROUND_MASK_DEFINE(nGRKindCastle) 	| 	\
+	LBBACKUP_GROUND_MASK_DEFINE(nGRKindSector) 	|	\
+	LBBACKUP_GROUND_MASK_DEFINE(nGRKindJungle) 	|	\
+	LBBACKUP_GROUND_MASK_DEFINE(nGRKindZebes) 	|	\
+	LBBACKUP_GROUND_MASK_DEFINE(nGRKindHyrule) 	|	\
+	LBBACKUP_GROUND_MASK_DEFINE(nGRKindYoster) 	|	\
+	LBBACKUP_GROUND_MASK_DEFINE(nGRKindPupupu) 	| 	\
+	LBBACKUP_GROUND_MASK_DEFINE(nGRKindYamabuki)	\
+)
+
+#define LBBACKUP_ERROR_RANDOMKNOCKBACK (1 << nLBBackupErrorRandomKnockback)		// 0x1 - Random knockback between 0.1 (?) and 1.0 x 200u
+#define LBBACKUP_ERROR_HALFSTICKRANGE  (1 << nLBBackupErrorHalfStickRange)		// 0x2 - Halves control stick input range
+#define LBBACKUP_ERROR_1PGAMEMARIO 	(1 << nLBBackupError1PGameMario) 			// 0x4 - Forces Mario in 1P Game
+#define LBBACKUP_ERROR_BATTLECASTLE (1 << nLBBackupErrorVSBattleCastle) 	    // 0x8 - Forces Peach's Castle in VS Mode
+
+typedef enum lbBackupUnlock
+{
+	nLBBackupUnlockLuigi,	 			    // Luigi
+	nLBBackupUnlockNess,				    // Ness
+	nLBBackupUnlockCaptain,	 			    // Captain Falcon
+	nLBBackupUnlockPurin,	 			    // Jigglypuff
+	nLBBackupUnlockInishie,	 			    // Mushroom Kingdom
+	nLBBackupUnlockSoundTest, 			    // Sound Test menu
+	nLBBackupUnlockItemSwitch, 			    // Item Switch menu
+	nLBBackupUnlockEnumMax
+
+} lbBackupUnlock;
+
+typedef enum lbBackupErrors
+{
+	nLBBackupErrorRandomKnockback,
+	nLBBackupErrorHalfStickRange,
+	nLBBackupError1PGameMario,
+	nLBBackupErrorVSBattleCastle
+
+} lbBackupErrors;
+
+typedef struct lbScript                     lbScript;
+typedef struct lbScriptDesc                 lbScriptDesc;
+typedef struct lbTexture                    lbTexture;
+typedef struct lbTextureDesc                lbTextureDesc;
+typedef struct lbTransform		            lbTransform;
+typedef struct lbGenerator		            lbGenerator;
+typedef struct lbParticle		            lbParticle;
+typedef struct lbBackup1PRecord             lbBackup1PRecord;
+typedef struct lbBackupBattleRecord         lbBackupBattleRecord;
+typedef struct lbBackupData                 lbBackupData;
 
 #endif

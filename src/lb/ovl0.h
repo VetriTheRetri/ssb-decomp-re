@@ -3,7 +3,7 @@
 
 #include <PR/ultratypes.h>
 
-extern s32 scBackupIsSramValid(void);
-extern void scBackupApplyOptions(void);
+extern s32 lbBackupIsSramValid(void);
+extern void lbBackupApplyOptions(void);
 
 #endif /* OVL0_OVL0_H */

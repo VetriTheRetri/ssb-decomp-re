@@ -2,7 +2,7 @@
 #include <ft/ftdef.h>
 #include <ft/fighter.h>
 #include <sc/scene.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 #include <sys/system_00.h>
 
 #include "character_select.h"
@@ -1219,7 +1219,7 @@ void mnBonusSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind)
 		spawn_info.ft_kind = ft_kind;
 		gMnBonusPanel.costume_id = spawn_info.costume = mnBonusGetAvailableCostume(ft_kind, 0);
 		// spawn_info.shade = 0;
-		spawn_info.anim_heap = gMnBonusAnimHeap;
+		spawn_info.figatree_heap = gMnBonusAnimHeap;
 		spawn_info.player = port_id;
 		gMnBonusPanel.player = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 

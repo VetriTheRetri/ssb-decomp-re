@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 
 // Externs
 extern intptr_t lOverlay36ArenaLo;  // 8018E620
@@ -267,7 +267,7 @@ void mvOpeningMarioInitFighterStagePanel()
 		spawn_info.damage = 0;
 		spawn_info.pl_kind = gBattleState->players[i].pl_kind;
 		spawn_info.controller = &gPlayerControllers[i];
-		spawn_info.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->players[i].ft_kind);
+		spawn_info.figatree_heap = ftManagerAllocAnimHeapKind(gBattleState->players[i].ft_kind);
 
 		gMvOpeningMarioStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
@@ -333,7 +333,7 @@ void mvOpeningMarioCreatePosedFighter()
 
 	spawn_info.ft_kind = nFTKindMario;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindMario, 0);
-	spawn_info.anim_heap = gMvOpeningMarioAnimHeap;
+	spawn_info.figatree_heap = gMvOpeningMarioAnimHeap;
 	spawn_info.pos.x = 0.0f;
 	spawn_info.pos.y = 600.0f;
 	spawn_info.pos.z = 0.0f;

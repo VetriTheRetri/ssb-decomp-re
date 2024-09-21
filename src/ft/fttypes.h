@@ -579,7 +579,7 @@ struct ftCreateDesc
     u16 button_mask_b;
     u16 button_mask_z;
     u16 button_mask_l;
-    void *anim_heap;                // Pointer to animation bank?
+    void *figatree_heap;                // Pointer to animation bank?
     void *proc_draw;
 };
 
@@ -1265,24 +1265,24 @@ struct ftStruct
     ftData *ft_data;
     ftAttributes *attributes;
 
-    void **anim_bank;           // Main animation bank?
-    void **anim_load;           // Load animations into this?
+    void **figatree;           // Main animation bank?
+    void **figatree_heap;           // Load animations into this?
 
-    void(*proc_update)(GObj*);
-    void(*proc_accessory)(GObj*);
-    void(*proc_interrupt)(GObj*);
-    void(*proc_physics)(GObj*);
-    void(*proc_map)(GObj*);
-    void(*proc_slope)(GObj*);   // Slope Contour update
-    void(*proc_damage)(GObj*);
-    void(*proc_trap)(GObj*);    // Used only by Yoshi Egg?
-    void(*proc_shield)(GObj*);
-    void(*proc_hit)(GObj*);
-    void(*proc_effect)(GObj*);
-    void(*proc_lagupdate)(GObj*);
-    void(*proc_lagstart)(GObj*);
-    void(*proc_lagend)(GObj*);
-    void(*proc_status)(GObj*);
+    void (*proc_update)(GObj*);
+    void (*proc_accessory)(GObj*);
+    void (*proc_interrupt)(GObj*);
+    void (*proc_physics)(GObj*);
+    void (*proc_map)(GObj*);
+    void (*proc_slope)(GObj*);   // Slope Contour update
+    void (*proc_damage)(GObj*);
+    void (*proc_trap)(GObj*);    // Used only by Yoshi Egg?
+    void (*proc_shield)(GObj*);
+    void (*proc_hit)(GObj*);
+    void (*proc_effect)(GObj*);
+    void (*proc_lagupdate)(GObj*);
+    void (*proc_lagstart)(GObj*);
+    void (*proc_lagend)(GObj*);
+    void (*proc_status)(GObj*);
 
     alSoundEffect *p_sfx;
     u16 sfx_id;

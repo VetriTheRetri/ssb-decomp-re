@@ -117,7 +117,7 @@ void scBattle_StartStockBattle()
 
 	func_ovl4_8018E330();
 
-	if (!(gSaveData.error_flags & SCBACKUP_ERROR_1PGAMEMARIO) && (gSaveData.unk5E3 >= 0x45))
+	if (!(gSaveData.error_flags & LBBACKUP_ERROR_1PGAMEMARIO) && (gSaveData.unk5E3 >= 0x45))
 	{
 		base_addr = rdManagerGetFileWithExternHeap((intptr_t)&D_NF_000000C7, gsMemoryAlloc(rdManagerGetFileSize((intptr_t)&D_NF_000000C7), 0x10));
 
@@ -128,7 +128,7 @@ void scBattle_StartStockBattle()
 
 		if (proc_cache() == FALSE)
 		{
-			gSaveData.error_flags |= SCBACKUP_ERROR_1PGAMEMARIO;
+			gSaveData.error_flags |= LBBACKUP_ERROR_1PGAMEMARIO;
 		}
 	}
 	gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 1, 0xFF);
@@ -175,7 +175,7 @@ void scBattle_StartStockBattle()
 		player_spawn.pl_kind = gBattleState->players[player].pl_kind;
 		player_spawn.controller = &gPlayerControllers[player];
 
-		player_spawn.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->players[player].ft_kind);
+		player_spawn.figatree_heap = ftManagerAllocAnimHeapKind(gBattleState->players[player].ft_kind);
 
 		ftParamInitPlayerBattleStats(player, ftManagerMakeFighter(&player_spawn));
 	}
@@ -443,7 +443,7 @@ void scBattle_StartSDBattle()
 		player_spawn.pl_kind = gBattleState->players[player].pl_kind;
 		player_spawn.controller = &gPlayerControllers[player];
 
-		player_spawn.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->players[player].ft_kind);
+		player_spawn.figatree_heap = ftManagerAllocAnimHeapKind(gBattleState->players[player].ft_kind);
 
 		fighter_gobj = ftManagerMakeFighter(&player_spawn);
 
@@ -492,7 +492,7 @@ void scBattleRoyalStartScene()
 
 	gBattleState->gr_kind = gSceneData.gr_kind;
 
-	if (gSaveData.error_flags & SCBACKUP_ERROR_BATTLECASTLE)
+	if (gSaveData.error_flags & LBBACKUP_ERROR_BATTLECASTLE)
 		gBattleState->gr_kind = nGRKindCastle;
 
 	D_ovl4_8018E3D8.zbuffer = syDisplayGetZBuffer(6400);

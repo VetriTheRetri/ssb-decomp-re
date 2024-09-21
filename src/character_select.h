@@ -13,7 +13,7 @@ typedef struct mnCharPanel1P
 	GObj *panel_doors;
 	GObj *panel;
 	GObj *white_square;
-	void* anim_heap;
+	void* figatree_heap;
 	s32 char_id;
 	u32 costume_id;
 	s32 cursor_state;
@@ -59,7 +59,7 @@ typedef struct mnCharPanelTraining
 	GObj *handicap_cpu_level_value;
 	GObj *white_square;
 	GObj *type;
-	void* anim_heap;
+	void* figatree_heap;
 	u32 cpu_level;
 	u32 handicap;
 	s32 team;
@@ -111,7 +111,7 @@ typedef struct mnCharPanelBattle
 	GObj* handicap_cpu_level_value;
 	GObj* white_square;
 	GObj* type;
-	void* anim_heap;
+	void* figatree_heap;
 	u32 cpu_level;
 	u32 handicap;
 	s32 team;
@@ -158,7 +158,7 @@ typedef struct mnCharPanelBonus
 	GObj *panel_doors;
 	GObj *panel;
 	GObj *white_square;
-	void* anim_heap;
+	void* figatree_heap;
 	s32 char_id;
 	u32 costume_id;
 	s32 cursor_state;

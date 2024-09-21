@@ -378,7 +378,7 @@ void itMSBombExplodeMakeEffect(GObj *item_gobj)
 // 0x801769AC
 void itMSBombExplodeInitStatusVars(GObj *item_gobj, sb32 is_make_effect)
 {
-    efParticle *ptcl;
+    lbParticle *ptcl;
     DObj *dobj = DObjGetStruct(item_gobj);
 
     if (is_make_effect != FALSE)

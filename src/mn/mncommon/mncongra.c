@@ -3,7 +3,7 @@
 #include <sc/scene.h> // includes sys/obj.h
 #include <sys/system_00.h>
 #include <sys/thread6.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 
 
 extern void func_80007080(void*, f32, f32, f32, f32);

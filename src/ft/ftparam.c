@@ -1374,7 +1374,7 @@ void ftParamRunProcEffect(GObj *fighter_gobj, void (*proc)(GObj*, efStruct*))
 // 0x800E9BE8
 void ftParamStopEffect(GObj *effect_gobj, efStruct *ep)
 {
-    efTransform *einfo = ep->tfrm;
+    lbTransform *einfo = ep->tfrm;
 
     if (einfo != NULL)
     {
@@ -1462,7 +1462,7 @@ f32 ftParamGetCommonKnockback(s32 percent_damage, s32 recent_damage, s32 hit_dam
     {
         knockback = 2500.0F;
     }
-    if (gSaveData.error_flags & SCBACKUP_ERROR_RANDOMKNOCKBACK)
+    if (gSaveData.error_flags & LBBACKUP_ERROR_RANDOMKNOCKBACK)
     {
         knockback = mtTrigGetRandomFloat() * 200.0F;
     }
@@ -1488,7 +1488,7 @@ f32 ftParamGetGroundHazardKnockback(s32 percent_damage, s32 recent_damage, s32 h
     {
         knockback = 2500.0F;
     }
-    if (gSaveData.error_flags & SCBACKUP_ERROR_RANDOMKNOCKBACK)
+    if (gSaveData.error_flags & LBBACKUP_ERROR_RANDOMKNOCKBACK)
     {
         knockback = mtTrigGetRandomFloat() * 200.0F;
     }
@@ -1793,7 +1793,7 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
     Vec3f effect_pos_mod;
     void *effect;
     f32 scale;
-    efParticle *ptcl;
+    lbParticle *ptcl;
 
     effect = NULL;
 

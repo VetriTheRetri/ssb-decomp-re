@@ -3,7 +3,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <gr/ground.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 #include <sys/system_00.h>
 
 
@@ -268,7 +268,7 @@ void mvOpeningKirbyInitFighterStagePanel()
 		spawn_info.damage = 0;
 		spawn_info.pl_kind = gBattleState->players[i].pl_kind;
 		spawn_info.controller = &gPlayerControllers[i];
-		spawn_info.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->players[i].ft_kind);
+		spawn_info.figatree_heap = ftManagerAllocAnimHeapKind(gBattleState->players[i].ft_kind);
 
 		gMvOpeningKirbyStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
@@ -334,7 +334,7 @@ void mvOpeningKirbyCreatePosedFighter()
 
 	spawn_info.ft_kind = nFTKindKirby;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindKirby, 0);
-	spawn_info.anim_heap = gMvOpeningKirbyAnimHeap;
+	spawn_info.figatree_heap = gMvOpeningKirbyAnimHeap;
 	spawn_info.pos.x = 0.0f;
 	spawn_info.pos.y = 600.0f;
 	spawn_info.pos.z = 0.0f;

@@ -4,7 +4,7 @@
 #include <mv/movie.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 
 extern void leoInitUnit_atten();
 extern u32 func_8000092C();
@@ -345,7 +345,7 @@ void mvOpeningJungleMakeFighters(void)
         ft_desc.stock_count = gBattleState->stock_setting;
         ft_desc.pl_kind = gBattleState->players[i].pl_kind;
         ft_desc.controller = &gPlayerControllers[i];
-        ft_desc.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->players[i].ft_kind);
+        ft_desc.figatree_heap = ftManagerAllocAnimHeapKind(gBattleState->players[i].ft_kind);
 
         sMVOpeningJungleFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);
 

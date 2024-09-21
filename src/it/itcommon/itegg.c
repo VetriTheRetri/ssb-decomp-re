@@ -380,7 +380,7 @@ void itEggExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
-    efParticle *ep;
+    lbParticle *ep;
 
     ip->item_hit.update_state = nGMHitUpdateDisable;
 

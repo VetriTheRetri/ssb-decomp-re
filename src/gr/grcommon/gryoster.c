@@ -49,9 +49,9 @@ enum grYosterCloudStatus
 // // // // // // // // // // // //
 
 // 0x80108550
-efGenerator* grYosterCloudVaporMakeEffect(Vec3f *pos)
+lbGenerator* grYosterCloudVaporMakeEffect(Vec3f *pos)
 {
-    efGenerator *gtor = lbParticleMakeGenerator(gGRCommonStruct.yoster.particle_bank_id, 0);
+    lbGenerator *gtor = lbParticleMakeGenerator(gGRCommonStruct.yoster.particle_bank_id, 0);
 
     if (gtor != NULL)
     {

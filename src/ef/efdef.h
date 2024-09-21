@@ -66,13 +66,6 @@ typedef enum lbTransformStatus
 } lbTransformStatus;
 
 typedef struct efStruct			efStruct;
-typedef struct efScript         efScript;
-typedef struct efScriptDesc     efScriptDesc;
-typedef struct efTexture        efTexture;
-typedef struct efTextureDesc    efTextureDesc;
-typedef struct efTransform		efTransform;	// This is Temp001 in lbparticle.c
-typedef struct efParticle		efParticle;		// This is Temp002 in lbparticle.c
-typedef struct efGenerator		efGenerator;	// This is Temp003 in lbparticle.c (?)
 typedef struct efCreateDesc		efCreateDesc;
 
 #endif

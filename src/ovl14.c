@@ -3,7 +3,7 @@
 #include <gm/gmsound.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 #include <sys/system_00.h>
 
 #include "debug.h"
@@ -265,7 +265,7 @@ s32 mnDebugBattleGetMissingFtKind(u16 mask_1, u16 mask_2, s32 missing_index)
 void mnDebugBattleSetDemoFtKinds()
 {
 	s32 non_recently_demoed_count;
-	u16 unlocked_mask = (gSaveData.character_mask | SCBACKUP_CHARACTER_MASK_STARTER);
+	u16 unlocked_mask = (gSaveData.character_mask | LBBACKUP_CHARACTER_MASK_STARTER);
 
 	if (unlocked_mask == gSceneData.recently_demoed_mask)
 		gSceneData.recently_demoed_mask = 0;
@@ -293,7 +293,7 @@ void mnDebugBattleSetDemoFtKinds()
 // 80131F3C
 void mnDebugBattleMain(GObj* arg0)
 {
-	void *anim_heap;
+	void **figatree_heap;
 	s32 i;
 	GObj* fighter_gobj;
 	ftStruct *fp;
@@ -314,7 +314,7 @@ void mnDebugBattleMain(GObj* arg0)
 			fighter_gobj = gMNDebugBattleFighters[i].fighter_gobj;
 			fp = ftGetStruct(fighter_gobj);
 
-			anim_heap = fp->anim_load;
+			figatree_heap = fp->figatree_heap;
 
 			ftManagerDestroyFighter(fighter_gobj);
 
@@ -326,7 +326,7 @@ void mnDebugBattleMain(GObj* arg0)
 
 			spawn_info.costume = gTransferBattleState.players[i].costume;
 			spawn_info.shade = mnDebugBattleSetShade(i);
-			spawn_info.anim_heap = anim_heap;
+			spawn_info.figatree_heap = figatree_heap;
 			gMNDebugBattleFighters[i].fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 			gMNDebugBattleFighters[i].ft_kind = gTransferBattleState.players[i].ft_kind;
@@ -465,7 +465,7 @@ void mnDebugBattleInit()
 		spawn_info.ft_kind = gTransferBattleState.players[i].ft_kind;
 		spawn_info.costume = gTransferBattleState.players[i].costume;
 		spawn_info.pos.x = (i * 400.0f) - 600.0f;
-		spawn_info.anim_heap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
+		spawn_info.figatree_heap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
 		gMNDebugBattleFighters[i].fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		gMNDebugBattleFighters[i].ft_kind = gTransferBattleState.players[i].ft_kind;

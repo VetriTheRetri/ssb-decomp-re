@@ -3,7 +3,7 @@
 #include <mv/movie.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 
 extern void leoInitUnit_atten();
 extern u32 func_8000092C();
@@ -117,7 +117,7 @@ void mvOpeningClashMakeFighters(void)
         ft_desc.pos.y = 0.0F;
         ft_desc.pos.z = 0.0F;
 
-        ft_desc.anim_heap = sMVOpeningClashFighterAnimHeaps[i];
+        ft_desc.figatree_heap = sMVOpeningClashFighterAnimHeaps[i];
         fighter_gobj = ftManagerMakeFighter(&ft_desc);
 
         scSubsysFighterSetStatus(fighter_gobj, 0x1000B);

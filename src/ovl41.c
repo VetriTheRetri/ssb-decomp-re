@@ -3,7 +3,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <gr/ground.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 #include <sys/system_00.h>
 
 
@@ -269,7 +269,7 @@ void mvOpeningYoshiInitFighterStagePanel()
 		spawn_info.damage = 0;
 		spawn_info.pl_kind = gBattleState->players[i].pl_kind;
 		spawn_info.controller = &gPlayerControllers[i];
-		spawn_info.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->players[i].ft_kind);
+		spawn_info.figatree_heap = ftManagerAllocAnimHeapKind(gBattleState->players[i].ft_kind);
 
 		gMvOpeningYoshiStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
@@ -335,7 +335,7 @@ void mvOpeningYoshiCreatePosedFighter()
 
 	spawn_info.ft_kind = nFTKindYoshi;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindYoshi, 0);
-	spawn_info.anim_heap = gMvOpeningYoshiAnimHeap;
+	spawn_info.figatree_heap = gMvOpeningYoshiAnimHeap;
 	spawn_info.pos.x = -600.0f;
 	spawn_info.pos.y = 0.0f;
 	spawn_info.pos.z = 0.0f;

@@ -3,7 +3,7 @@
 #include <mn/menu.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 
 extern void func_800A26B8();
 
@@ -347,7 +347,7 @@ void sc1PContinueMakeFighter(s32 ft_kind)
 
     ft_desc.costume = sSC1PContinueFighterDemoDesc.costume;
     ft_desc.shade = sSC1PContinueFighterDemoDesc.shade;
-    ft_desc.anim_heap = sSC1PContinueFighterAnimHeap;
+    ft_desc.figatree_heap = sSC1PContinueFighterAnimHeap;
 
     ft_desc.pos.y = 2070.0F;
     ft_desc.pos.z = 0.0F;

@@ -11,7 +11,7 @@ extern intptr_t lGRHyruleParticleBankGenHi;            // 0x00B1FC80
 extern intptr_t lGRHyruleParticleBankTextureLo;           // 0x00B1FC80
 extern intptr_t lGRHyruleParticleBankTextureHi;           // 0x00B22980
 
-extern efParticle* grHyruleTwisterMakeEffect(Vec3f *pos, s32 effect_id);
+extern lbParticle* grHyruleTwisterMakeEffect(Vec3f *pos, s32 effect_id);
 extern GObj* grHyruleMakeTwister(Vec3f *pos);
 extern void grHyruleTwisterUpdateSleep(void);
 extern void grHyruleTwisterUpdateWait(void);

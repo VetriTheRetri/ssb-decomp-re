@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 
 extern uintptr_t ovl5_BSS_END; 	// 8018D950
 
@@ -144,7 +144,7 @@ void func_ovl5_8018D1A0()
 		player_spawn.pl_kind = gBattleState->players[player].pl_kind;
 		player_spawn.controller = &gPlayerControllers[player];
 
-		player_spawn.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->players[player].ft_kind);
+		player_spawn.figatree_heap = ftManagerAllocAnimHeapKind(gBattleState->players[player].ft_kind);
 
 		fighter_gobj = ftManagerMakeFighter(&player_spawn);
 		gUnkExplainFighterGObj = fighter_gobj;

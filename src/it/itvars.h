@@ -699,7 +699,7 @@ typedef struct itGroundItemVarsTaruBomb
 
 typedef struct itFighterItemVarsPKFire
 {
-	efTransform *tfrm;
+	lbTransform *tfrm;
 
 } itFighterItemVarsPKFire;
 

@@ -3,7 +3,7 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 
 
 typedef struct gmResultsTemp
@@ -257,7 +257,7 @@ s32 mnResultsGetPlayerCount()
 // 80131B90
 void mnResultsSaveDataToSRAM()
 {
-	scBackupBattleRecord* vs_record;
+	lbBackupBattleRecord* vs_record;
 	s32 i, j;
 	u8 ft_kind, opp_ft_kind;
 
@@ -317,7 +317,7 @@ void mnResultsSaveDataToSRAM()
 		}
 	}
 
-	scBackupWrite();
+	lbBackupWrite();
 }
 
 // 80131E18
@@ -1000,7 +1000,7 @@ void mnResultsSpawnFighter(s32 port_id)
 	spawn_info.ft_kind = mnResultsGetFtKind(port_id);
 	spawn_info.costume = gTransferBattleState.players[port_id].costume;
 	spawn_info.shade = gTransferBattleState.players[port_id].shade;
-	spawn_info.anim_heap = gMNResultsAnimHeaps[port_id];
+	spawn_info.figatree_heap = gMNResultsAnimHeaps[port_id];
 	gMNResultsFighterGObjs[port_id] = ftManagerMakeFighter(&spawn_info);
 }
 
@@ -2865,15 +2865,15 @@ void mnResultsMain(s32 arg0)
 	{
 		unlocked_features = 0;
 
-		if (!(gSaveData.unlock_mask & SCBACKUP_UNLOCK_MASK_ITEMSWITCH) && (gSaveData.unlock_task_itemswitch >= 100))
+		if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_ITEMSWITCH) && (gSaveData.unlock_task_itemswitch >= 100))
 		{
-			gSceneData.prize_unlocks[unlocked_features] = nSCBackupUnlockItemSwitch;
+			gSceneData.prize_unlocks[unlocked_features] = nLBBackupUnlockItemSwitch;
 			unlocked_features = 1;
 		}
 
-		if (!(gSaveData.unlock_mask & SCBACKUP_UNLOCK_MASK_INISHIE))
+		if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_INISHIE))
 		{
-			if ((gSaveData.unlock_task_inishie & SCBACKUP_GROUND_MASK_ALL) == SCBACKUP_GROUND_MASK_ALL)
+			if ((gSaveData.unlock_task_inishie & LBBACKUP_GROUND_MASK_ALL) == LBBACKUP_GROUND_MASK_ALL)
 			{
 				for (i = 0, sp_game_complete_mask = 0; i < 12; i++)
 				{
@@ -2881,9 +2881,9 @@ void mnResultsMain(s32 arg0)
 						sp_game_complete_mask |= (1 << i);
 				}
 
-				if ((sp_game_complete_mask & SCBACKUP_CHARACTER_MASK_STARTER) == SCBACKUP_CHARACTER_MASK_STARTER)
+				if ((sp_game_complete_mask & LBBACKUP_CHARACTER_MASK_STARTER) == LBBACKUP_CHARACTER_MASK_STARTER)
 				{
-					gSceneData.prize_unlocks[unlocked_features] = nSCBackupUnlockInishie;
+					gSceneData.prize_unlocks[unlocked_features] = nLBBackupUnlockInishie;
 					unlocked_features += 1;
 				}
 			}

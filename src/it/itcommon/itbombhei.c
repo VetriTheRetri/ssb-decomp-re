@@ -195,7 +195,7 @@ void itBombHeiCommonSetExplode(GObj *item_gobj, u8 unused_arg)
     s32 unused;
     DObj *dobj = DObjGetStruct(item_gobj);
     itStruct *ip = itGetStruct(item_gobj);
-    efParticle *ptcl;
+    lbParticle *ptcl;
 
     itBombHeiCommonSetHitStatusNone(item_gobj);
 

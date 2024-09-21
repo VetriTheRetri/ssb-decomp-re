@@ -4,7 +4,7 @@
 #include <if/interface.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 
 #include "ovl6.h"
 
@@ -844,7 +844,7 @@ void scBonusGame_InitBonusGame()
 		player_spawn.pl_kind = gBattleState->players[player].pl_kind;
 		player_spawn.controller = &gPlayerControllers[player];
 
-		player_spawn.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->players[player].ft_kind);
+		player_spawn.figatree_heap = ftManagerAllocAnimHeapKind(gBattleState->players[player].ft_kind);
 		player_spawn.is_skip_entry = TRUE;
 
 		fighter_gobj = ftManagerMakeFighter(&player_spawn);
@@ -910,7 +910,7 @@ void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
 				{
 					gSaveData.spgame_records[ft_kind].bonus1_task_count = gSceneData.bonus_tasks_current;
 
-					scBackupWrite();
+					lbBackupWrite();
 				}
 			}
 			else
@@ -921,7 +921,7 @@ void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
 				{
 					gSaveData.spgame_records[ft_kind].bonus1_time = gBattleState->battle_time_current;
 
-					scBackupWrite();
+					lbBackupWrite();
 				}
 			}
 		}
@@ -931,7 +931,7 @@ void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
 			{
 				gSaveData.spgame_records[ft_kind].bonus2_task_count = gSceneData.bonus_tasks_current;
 
-				scBackupWrite();
+				lbBackupWrite();
 			}
 		}
 		else
@@ -942,7 +942,7 @@ void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
 			{
 				gSaveData.spgame_records[ft_kind].bonus2_time = gBattleState->battle_time_current;
 
-				scBackupWrite();
+				lbBackupWrite();
 			}
 		}
 	}
@@ -1011,15 +1011,15 @@ void sc1PBonusGameStartScene()
 
 				if (tasks_complete == SCBATTLE_BONUSGAME_TASK_MAX)
 				{
-					if (!(gSaveData.unlock_mask & SCBACKUP_UNLOCK_MASK_LUIGI))
+					if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_LUIGI))
 					{
 						for (bonus_complete_chars = i = 0; i < ARRAY_COUNT(gSaveData.spgame_records); i++)
 						{
 							if (gSaveData.spgame_records[i].bonus1_task_count == SCBATTLE_BONUSGAME_TASK_MAX)
 								bonus_complete_chars |= (1 << i);
 						}
-						if ((bonus_complete_chars & SCBACKUP_CHARACTER_MASK_STARTER)
-							== SCBACKUP_CHARACTER_MASK_STARTER)
+						if ((bonus_complete_chars & LBBACKUP_CHARACTER_MASK_STARTER)
+							== LBBACKUP_CHARACTER_MASK_STARTER)
 						{
 							gSceneData.ft_kind = gSceneData.bonus_ft_kind;
 							gSceneData.costume = gSceneData.bonus_costume;
@@ -1032,7 +1032,7 @@ void sc1PBonusGameStartScene()
 					}
 					if (sc1PManagerCheckUnlockSoundTest() != FALSE)
 					{
-						gSceneData.prize_unlocks[0] = nSCBackupUnlockSoundTest;
+						gSceneData.prize_unlocks[0] = nLBBackupUnlockSoundTest;
 						gSceneData.scene_current = 0xC;
 					}
 					break;
@@ -1045,7 +1045,7 @@ void sc1PBonusGameStartScene()
 
 				if ((tasks_complete == SCBATTLE_BONUSGAME_TASK_MAX) && (sc1PManagerCheckUnlockSoundTest() != FALSE))
 				{
-					gSceneData.prize_unlocks[0] = nSCBackupUnlockSoundTest;
+					gSceneData.prize_unlocks[0] = nLBBackupUnlockSoundTest;
 					gSceneData.scene_current = 0xC;
 				}
 				break;

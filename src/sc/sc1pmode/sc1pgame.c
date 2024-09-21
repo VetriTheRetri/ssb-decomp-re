@@ -4,7 +4,7 @@
 #include <cm/camera.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 
 extern void func_800A26B8();
 // // // // // // // // // // // //
@@ -984,7 +984,7 @@ void sc1PGameSetupStageAll(void)
 
     for (i = 0; i < (ARRAY_COUNT(gBattleState->players) + ARRAY_COUNT(sSC1PGamePlayerSetups)) / 2; i++)
     {
-        sSC1PGamePlayerSetups[i].anim_bank = NULL;
+        sSC1PGamePlayerSetups[i].figatree = NULL;
         sSC1PGamePlayerSetups[i].copy_kind = nFTKindKirby;
         sSC1PGamePlayerSetups[i].team_order = 0;
         sSC1PGamePlayerSetups[i].is_skip_entry = FALSE;
@@ -1283,7 +1283,7 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
     ftAttributes *attributes;
     void *unused2;
     ftCreateDesc player_spawn;
-    void *anim_bank;
+    void **figatree;
     GObj *com_gobj;
     s32 player;
     void *unused1;
@@ -1291,7 +1291,7 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
     fp = ftGetStruct(player_gobj);
     attributes = fp->attributes;
     player = fp->player;
-    anim_bank = fp->anim_load;
+    figatree = fp->figatree_heap;
 
     if (sSC1PGameTeamPlayersRemaining == 0)
     {
@@ -1360,7 +1360,7 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
 
         player_spawn.controller = &gPlayerControllers[player];
 
-        player_spawn.anim_heap = anim_bank;
+        player_spawn.figatree_heap = figatree;
 
         player_spawn.copy_kind = sSC1PGamePlayerSetups[player].copy_kind;
 
@@ -2007,7 +2007,7 @@ void sc1PGameProcStart(void)
     sc1PGameSetupStageAll();
     sc1PGameSetupFiles();
 
-    if (!(gSaveData.error_flags & SCBACKUP_ERROR_BATTLECASTLE) && (gSaveData.unk5E3 > 0x5C))
+    if (!(gSaveData.error_flags & LBBACKUP_ERROR_BATTLECASTLE) && (gSaveData.unk5E3 > 0x5C))
     {
         syDmaRomRead(0xF10, spA0, ARRAY_COUNT(spA0));
 
@@ -2020,7 +2020,7 @@ void sc1PGameProcStart(void)
 
         if (proc(spA0) == FALSE)
         {
-            gSaveData.error_flags |= SCBACKUP_ERROR_BATTLECASTLE;
+            gSaveData.error_flags |= LBBACKUP_ERROR_BATTLECASTLE;
         }
     }
     gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 1, 0xFF);
@@ -2080,7 +2080,7 @@ void sc1PGameProcStart(void)
             {
                 continue;
             }
-            else sSC1PGamePlayerSetups[i].anim_bank = gsMemoryAlloc(largest_size, 0x10);
+            else sSC1PGamePlayerSetups[i].figatree = gsMemoryAlloc(largest_size, 0x10);
         }
         break;
     }
@@ -2122,7 +2122,7 @@ void sc1PGameProcStart(void)
 
         player_spawn.controller = &gPlayerControllers[i];
 
-        player_spawn.anim_heap = (sSC1PGamePlayerSetups[i].anim_bank != NULL) ? sSC1PGamePlayerSetups[i].anim_bank : ftManagerAllocAnimHeapKind(gBattleState->players[i].ft_kind);
+        player_spawn.figatree_heap = (sSC1PGamePlayerSetups[i].figatree != NULL) ? sSC1PGamePlayerSetups[i].figatree : ftManagerAllocAnimHeapKind(gBattleState->players[i].ft_kind);
 
         player_spawn.copy_kind = sSC1PGamePlayerSetups[i].copy_kind;
 

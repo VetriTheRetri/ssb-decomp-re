@@ -2,7 +2,7 @@
 #include <gm/gmsound.h>
 #include <sys/system_00.h>
 #include <sys/thread6.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 
 extern void hal_interpolation_cubic(Vec3f*, void*, f32);
 extern void syMatrixTraRotRpyRScaF(Mtx44f mf,f32 dx,f32 dy,f32 dz,f32 r,f32 p,f32 h,f32 sx,f32 sy,f32 sz);
@@ -1093,25 +1093,25 @@ void gmStaffrollTryHideUnlocks(void)
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('o')
 	};
 
-	if (!(gSaveData.unlock_mask & SCBACKUP_UNLOCK_MASK_LUIGI))
+	if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_LUIGI))
 	{
 		gmStaffrollSetTextQuetions(luigi, ARRAY_COUNT(luigi));
 	}
-	if (!(gSaveData.unlock_mask & SCBACKUP_UNLOCK_MASK_PURIN))
+	if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_PURIN))
 	{
 		gmStaffrollSetTextQuetions(purin, ARRAY_COUNT(purin));
 	}
-	if (!(gSaveData.unlock_mask & SCBACKUP_UNLOCK_MASK_CAPTAIN))
+	if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_CAPTAIN))
 	{
 		gmStaffrollSetTextQuetions(captain, ARRAY_COUNT(captain));
 		gmStaffrollSetTextQuetions(fzero, ARRAY_COUNT(fzero));
 	}
-	if (!(gSaveData.unlock_mask & SCBACKUP_UNLOCK_MASK_NESS))
+	if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_NESS))
 	{
 		gmStaffrollSetTextQuetions(ness, ARRAY_COUNT(ness));
 		gmStaffrollSetTextQuetions(earthbound, ARRAY_COUNT(earthbound));
 	}
-	if (!(gSaveData.unlock_mask & SCBACKUP_UNLOCK_MASK_INISHIE))
+	if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_INISHIE))
 	{
 		gmStaffrollSetTextQuetions(classicmario, ARRAY_COUNT(classicmario));
 	}

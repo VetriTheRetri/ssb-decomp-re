@@ -4,7 +4,7 @@
 #include <sc/scene.h>
 #include <gr/ground.h>
 #include <mn/menu.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 #include <sys/system_00.h>
 
 
@@ -1552,7 +1552,7 @@ void mnCharsCreateFighter(s32 ft_kind)
 
 	spawn_info.ft_kind = mnCharsGetFtKind(gMNCharsCurrentIndex);
 	spawn_info.costume = ftParamGetCostumeCommonID(mnCharsGetFtKind(gMNCharsCurrentIndex), 0);
-	spawn_info.anim_heap = gMNCharsAnimHeap;
+	spawn_info.figatree_heap = gMNCharsAnimHeap;
 	gMNCharsFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 	gcAddGObjProcess(fighter_gobj, mnCharsUpdateFighter, 1, 1);
@@ -1812,7 +1812,7 @@ void mnCharsSaveFtKindToSRAM()
 {
 	gSaveData.bio_ft_kind = mnCharsGetFtKind(gMNCharsCurrentIndex);
 
-	scBackupWrite();
+	lbBackupWrite();
 }
 
 // 8013369C

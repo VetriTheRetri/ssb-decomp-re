@@ -3,7 +3,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <gr/ground.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 #include <sys/system_00.h>
 
 
@@ -367,7 +367,7 @@ void mvOpeningFirstDestinationCreateMasterHand()
 	spawn_info.pos.x = 0.0f;
 	spawn_info.pos.y = 0.0f;
 	spawn_info.pos.z = 0.0f;
-	spawn_info.anim_heap = gMvOpeningFirstDestinationMasterHandAnimHeap;
+	spawn_info.figatree_heap = gMvOpeningFirstDestinationMasterHandAnimHeap;
 	gMvOpeningFirstDestinationMasterHandGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 	scSubsysFighterSetStatus(fighter_gobj, 0x1000F);
@@ -411,7 +411,7 @@ void mvOpeningFirstDestinationCreatePluckedFighter(s32 ft_kind)
 	spawn_info.pos.x = 0.0f;
 	spawn_info.pos.y = 0.0f;
 	spawn_info.pos.z = 0.0f;
-	spawn_info.anim_heap = gMvOpeningFirstDestinationPluckedFighterAnimHeap;
+	spawn_info.figatree_heap = gMvOpeningFirstDestinationPluckedFighterAnimHeap;
 	gMvOpeningFirstDestinationPluckedFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 	DObjGetStruct(fighter_gobj)->scale.vec.f.x = 1.0f;
@@ -524,7 +524,7 @@ void mvOpeningFirstDestinationCreateDroppedFighter(s32 ft_kind)
 
 	spawn_info.ft_kind = ft_kind;
 	spawn_info.costume = ftParamGetCostumeCommonID(ft_kind, 0);
-	spawn_info.anim_heap = gMvOpeningFirstDestinationDroppedFighterAnimHeap;
+	spawn_info.figatree_heap = gMvOpeningFirstDestinationDroppedFighterAnimHeap;
 	spawn_info.pos.x = 872.3249512F;
 	spawn_info.pos.y = 4038.864014F;
 	spawn_info.pos.z = -4734.600098F;

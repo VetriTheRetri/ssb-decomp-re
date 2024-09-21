@@ -1,7 +1,7 @@
 #include <mn/menu.h>
 #include <gm/gmsound.h>
 #include <sc/scene.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 #include <sys/system_00.h>
 #include <sys/thread6.h>
 
@@ -1469,12 +1469,12 @@ void mnVSModeProcStart(void)
 
     if
     (
-        !(gSaveData.error_flags & SCBACKUP_ERROR_RANDOMKNOCKBACK) && 
+        !(gSaveData.error_flags & LBBACKUP_ERROR_RANDOMKNOCKBACK) && 
         (gSaveData.unk5E3 >= 22)                                  && 
         (gSYMainIsSPImemOK == FALSE)
     )
     {
-        gSaveData.error_flags |= SCBACKUP_ERROR_RANDOMKNOCKBACK;
+        gSaveData.error_flags |= LBBACKUP_ERROR_RANDOMKNOCKBACK;
     }
     rdManagerLoadFiles
     (

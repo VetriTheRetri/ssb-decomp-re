@@ -33,7 +33,7 @@ struct sc1PGameStage
 struct sc1PGameFighter
 {
 	s32 mapobj_kind; // Spawn position?
-	void* anim_bank;
+	void *figatree;
 	s32 copy_kind;
 	s32 team_order;
 	sb32 is_skip_entry;
@@ -349,65 +349,6 @@ struct scCommonData
 	u8 unk45;
 	u8 unk46;
 	u8 unk47;
-};
-
-struct scBackupBattleRecord
-{
-	/* 0x00 */ u16 ko_count[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
-	/* 0x18 */ u32 time_used; //< in seconds
-	/* 0x1C */ u32 damage_dealt;
-	/* 0x20 */ u32 damage_taken;
-	/* 0x24 */ u16 unk;
-	/* 0x26 */ u16 self_destructs;
-	/* 0x28 */ u16 games_played;
-	/* 0x2A */ u16 player_count_tally;
-	/* 0x2C */ u16 player_count_tallies[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
-	/* 0x44 */ u16 played_against[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
-};
-
-struct scBackup1PRecord
-{
-	u32 spgame_hiscore;
-	u32 spgame_continues;
-	u32 spgame_bonuses;
-	u8 spgame_best_difficulty;
-	u32 bonus1_time;	  // Break the Targets high score
-	u8 bonus1_task_count; // Targets broken
-	u32 bonus2_time;	  // Board the Platforms high score
-	u8 bonus2_task_count; // Platforms boarded
-	u8 spgame_complete;	  // Whether character has completed 1P Game or not
-};
-
-// is this the saved data structure?
-struct scBackupData
-{
-	scBackupBattleRecord vs_records[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
-	ub8 is_allow_screenflash; 	// Toggle for enabling white screen flash when,
-							  	// for example, a character takes too much
-							  	// damage. Leftover from unused "background
-							  	// flash" option? It is always toggled ON, even
-							  	// after clearing the save data.
-	ub8 sound_mono_or_stereo; 
-	s16 screen_adjust_hz;		// Offset from screen center horizontally
-	s16 screen_adjust_vt;		// Offset from screen center vertically
-	u8 bio_ft_kind;				// Last character viewed on Character Data menu
-	u8 unlock_mask;
-	u16 character_mask; 		// Mask of unlocked characters?
-	u8 spgame_difficulty;
-	u8 spgame_stock_count;
-	scBackup1PRecord spgame_records[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
-	u16 unlock_task_inishie;   	// Records mask of unique stages played in VS mode
-	u8 unlock_task_itemswitch; 	// Records number of VS games played for Item
-							   	// Switch unlock
-	u16 vs_total_battles;		   	// Total amount of VS games played?
-	u8 error_flags;		   		// Some kind of anti-piracy measure??? 0x1 results in
-							   	// random knockback velocity, 0x2 halves stick range, 0x4
-							   	// forces Mario in 1P game, 0x8 forces Peach's Castle
-	u8 unk5E3;
-	u16 unk5E4;
-	u8 unk5E6;
-	u8 unk5E7;
-	s32 checksum; 				// Checksum of save data
 };
 
 typedef struct scRuntimeInfo

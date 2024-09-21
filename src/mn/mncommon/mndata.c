@@ -1,7 +1,7 @@
 #include <mn/menu.h>
 #include <gm/gmsound.h>
 #include <sc/scene.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 #include <sys/system_00.h>
 #include <sys/thread6.h>
 
@@ -120,7 +120,7 @@ void mnDataProcLights(Gfx **dls)
 // 0x80131B24
 sb32 mnDataCheckSoundTestUnlocked(void)
 {
-    if (gSaveData.unlock_mask & SCBACKUP_UNLOCK_MASK_SOUNDTEST)
+    if (gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_SOUNDTEST)
     {
         return TRUE;
     }

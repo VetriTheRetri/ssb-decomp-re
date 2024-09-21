@@ -213,8 +213,8 @@ void grPupupuWhispyUpdateSleep(void)
 // 0x80105B18
 void grPupupuWhispyLeavesMakeEffect(void)
 {
-    efParticle *ptcl;
-    efTransform *tfrm;
+    lbParticle *ptcl;
+    lbTransform *tfrm;
 
     tfrm = NULL;
     ptcl = lbParticleMakeScriptID(gGRCommonStruct.pupupu.particle_bank_id | 8, 0);
@@ -472,8 +472,8 @@ void grPupupuFlowersFrontWindStart(void)
 // 0x801060E0
 void grPupupuWhispyDustMakeEffect(void)
 {
-    efParticle *ptcl;
-    efTransform *tfrm;
+    lbParticle *ptcl;
+    lbTransform *tfrm;
 
     tfrm = NULL;
     ptcl = lbParticleMakeScriptID(gGRCommonStruct.pupupu.particle_bank_id | 8, 1);

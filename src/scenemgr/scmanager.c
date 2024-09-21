@@ -4,8 +4,8 @@
 #include <ft/fighter.h>
 #include <wp/weapon.h>
 #include <it/item.h>
-#include <ovl0/lbparticle.h>
-#include <ovl0/ovl0.h>
+#include <lb/lbparticle.h>
+#include <lb/ovl0.h>
 #include "scenemgr/entries.h"
 #include <sys/error.h>
 #include <sys/dma.h>
@@ -21,7 +21,7 @@ extern GObj* gOMObjCurrentDraw;
 
 // BSS
 u8 D_800A44D0[16];
-scBackupData gSaveData;
+lbBackupData gSaveData;
 // current screen info
 scCommonData gSceneData;
 scBattleState gSCManager1PGameBattleState;
@@ -107,7 +107,7 @@ syOverlay D_800A3070[65] = {
 	GENERATE_OVERLAY_SECTION_DATA(64)
 };
 
-scBackupData gDefaultSaveData = {
+lbBackupData gDefaultSaveData = {
 	{{{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 0, 0, 0, 0, 0, 0, 0,
 		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -129,8 +129,8 @@ scBackupData gDefaultSaveData = {
 scCommonData gDefaultSceneData =
 {
 	0x1B, 0x1B,
-	{ nSCBackupUnlockEnumMax, nSCBackupUnlockEnumMax },
-	{ nSCBackupUnlockEnumMax, nSCBackupUnlockEnumMax, nSCBackupUnlockEnumMax, nSCBackupUnlockEnumMax, nSCBackupUnlockEnumMax },
+	{ nLBBackupUnlockEnumMax, nLBBackupUnlockEnumMax },
+	{ nLBBackupUnlockEnumMax, nLBBackupUnlockEnumMax, nLBBackupUnlockEnumMax, nLBBackupUnlockEnumMax, nLBBackupUnlockEnumMax },
 	0x04, 0x00,
 	0x001C,
 	{0x1C, 0x1C},
@@ -281,8 +281,8 @@ void start_scene_manager(u32 set)
 	auSetReverbType(6);
 	while (func_80021048()) { }
 
-	scBackupIsSramValid();
-	scBackupApplyOptions();
+	lbBackupIsSramValid();
+	lbBackupApplyOptions();
 
 	// it needs to be something like this to match
 	// csr = (void *)_ovl1SegNoloadEnd; // 0x80392A00

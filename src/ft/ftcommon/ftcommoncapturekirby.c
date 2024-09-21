@@ -181,9 +181,9 @@ void ftCommonCaptureWaitKirbyUpdateBreakoutVars(ftStruct *this_fp, ftStruct *cap
         }
         if (is_wiggle != FALSE)
         {
-            if (capture_fp->anim_bank != NULL)
+            if (capture_fp->figatree != NULL)
             {
-                lbCommonAddFighterPartsFigatree(capture_fp->joints[nFTPartsJointTopN]->child, capture_fp->anim_bank, 0.0F);
+                lbCommonAddFighterPartsFigatree(capture_fp->joints[nFTPartsJointTopN]->child, capture_fp->figatree, 0.0F);
             }
         }
     }

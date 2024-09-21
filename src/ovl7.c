@@ -5,7 +5,7 @@
 #include <sc/scene.h>
 #include <sys/system_00.h>
 #include <buttons.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 
 #include "ovl7.h"
 
@@ -1539,7 +1539,7 @@ void scTrainingMode_InitTrainingMode()
 		player_spawn.damage = 0;
 		player_spawn.pl_kind = gBattleState->players[player].pl_kind;
 		player_spawn.controller = &gPlayerControllers[player];
-		player_spawn.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->players[player].ft_kind);
+		player_spawn.figatree_heap = ftManagerAllocAnimHeapKind(gBattleState->players[player].ft_kind);
 		player_spawn.is_skip_entry = TRUE;
 		fighter_gobj = ftManagerMakeFighter(&player_spawn);
 		ftParamInitPlayerBattleStats(player, fighter_gobj);

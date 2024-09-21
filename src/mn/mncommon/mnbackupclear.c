@@ -3,7 +3,7 @@
 #include <gm/gmsound.h>
 #include <sys/system_00.h>
 #include <sys/thread6.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 
 extern void* func_800269C0_275C0(u16);
 extern void func_80007080(void*, f32, f32, f32, f32);
@@ -472,32 +472,32 @@ void mnBackupClearApplyOptionID(s32 option)
     switch (option)
     {
     case nMNBackupClearOptionNewcomers:
-        scBackupClearNewcomers();
+        lbBackupClearNewcomers();
         break;
         
     case nMNBackupClearOption1PHighScore:
-        scBackupClear1PHighScore();
+        lbBackupClear1PHighScore();
         break;
         
     case nMNBackupClearOptionVSRecord:
-        scBackupClearVSRecord();
+        lbBackupClearVSRecord();
         break;
         
     case nMNBackupClearOptionBonusStageTime:
-        scBackupClearBonusStageTime();
+        lbBackupClearBonusStageTime();
         break;
         
     case nMNBackupClearOptionPrize:
-        scBackupClearPrize();
+        lbBackupClearPrize();
         break;
         
     case nMNBackupClearOptionAllDataClear:
-        scBackupClearAllData();
-        scBackupApplyOptions();
+        lbBackupClearAllData();
+        lbBackupApplyOptions();
         break;
     }
-    scBackupCorrectErrors();
-    scBackupWrite();
+    lbBackupCorrectErrors();
+    lbBackupWrite();
     func_800269C0_275C0(nSYAudioFGMOptionBackupClear);
 }
 

@@ -77,7 +77,7 @@ enum itMarumineStatus
 void itMarumineExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 {
     s32 unused;
-    efParticle *ptcl;
+    lbParticle *ptcl;
     itStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 

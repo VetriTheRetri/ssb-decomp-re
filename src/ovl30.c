@@ -1,7 +1,7 @@
 #include <gr/ground.h>
 #include <gm/gmsound.h> // temporary, until this finds a proper place
 #include <sc/scene.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 #include <sys/system_00.h>
 #include <sys/thread6.h>
 
@@ -193,7 +193,7 @@ sb32 mnStageGetIsLocked(s32 stage_id)
 {
 	if (stage_id == nGRKindInishie)
 	{
-		if (gMNStageUnlockedMask & SCBACKUP_UNLOCK_MASK_INISHIE)
+		if (gMNStageUnlockedMask & LBBACKUP_UNLOCK_MASK_INISHIE)
 			return FALSE;
 
 		return TRUE;

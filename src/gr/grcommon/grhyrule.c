@@ -27,13 +27,13 @@ enum grHyruleTwisterStatus
 // // // // // // // // // // // //
 
 // 0x8010A140
-efParticle* grHyruleTwisterMakeEffect(Vec3f *pos, s32 effect_id)
+lbParticle* grHyruleTwisterMakeEffect(Vec3f *pos, s32 effect_id)
 {
-    efParticle *ptcl = lbParticleMakeScriptID(gGRCommonStruct.hyrule.particle_bank_id | 8, effect_id);
+    lbParticle *ptcl = lbParticleMakeScriptID(gGRCommonStruct.hyrule.particle_bank_id | 8, effect_id);
 
     if (ptcl != NULL)
     {
-        efTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 0);
+        lbTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 0);
 
         if (tfrm == NULL)
         {
@@ -59,7 +59,7 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
     f32 ground_dist;
     GObj *twister_gobj;
     DObj *twister_dobj;
-    efParticle *ptcl;
+    lbParticle *ptcl;
     Vec3f edge_pos;
     s32 edge_under;
 

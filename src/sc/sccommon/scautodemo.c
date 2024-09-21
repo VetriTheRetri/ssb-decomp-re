@@ -505,7 +505,7 @@ s32 scAutoDemoGetFighterKind(s32 player)
 	{
 		return gSceneData.demo_ft_kind[player];
 	}
-	character_flag = (gSaveData.character_mask | SCBACKUP_CHARACTER_MASK_STARTER);
+	character_flag = (gSaveData.character_mask | LBBACKUP_CHARACTER_MASK_STARTER);
 
 	character_count1 = scAutoDemoGetShuffledVariation(character_flag), 
 	character_count2 = scAutoDemoGetShuffledVariation(sSCAutoDemoCharacterFlag);
@@ -663,7 +663,7 @@ void scAutoDemoProcStart(void)
 
 		player_spawn.controller = &gPlayerControllers[player];
 
-		player_spawn.anim_heap = ftManagerAllocAnimHeapKind(gBattleState->players[player].ft_kind);
+		player_spawn.figatree_heap = ftManagerAllocAnimHeapKind(gBattleState->players[player].ft_kind);
 
 		player_spawn.is_skip_entry = TRUE;
 

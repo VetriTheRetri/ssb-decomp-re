@@ -2,7 +2,7 @@
 #include <ft/ftdef.h>
 #include <ft/fighter.h>
 #include <sc/scene.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 #include <sys/system_00.h>
 
 #include "character_select.h"
@@ -1597,7 +1597,7 @@ void mn1PSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 costume_
 		spawn_info.ft_kind = ft_kind;
 		gMN1PPanel.costume_id = spawn_info.costume = costume_id;
 		spawn_info.shade = 0;
-		spawn_info.anim_heap = gMN1PAnimHeap;
+		spawn_info.figatree_heap = gMN1PAnimHeap;
 		spawn_info.player = port_id;
 		gMN1PPanel.player = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
@@ -2941,7 +2941,7 @@ void mn1PSaveMatchInfo()
 
 	gSceneData.costume = gMN1PPanel.costume_id;
 
-	scBackupWrite();
+	lbBackupWrite();
 }
 
 // 80137F9C

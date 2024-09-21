@@ -1298,7 +1298,7 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
         {
             pl->stick_range.y = -I_CONTROLLER_RANGE_MAX;
         }
-        if (gSaveData.error_flags & SCBACKUP_ERROR_HALFSTICKRANGE)
+        if (gSaveData.error_flags & LBBACKUP_ERROR_HALFSTICKRANGE)
         {
             pl->stick_range.x *= 0.5F;
             pl->stick_range.y *= 0.5F;
@@ -4576,16 +4576,16 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
 
         if (script_info->anim_desc.flags.is_use_shieldpose)
         {
-            fp->anim_bank = (void*)((intptr_t)script_info->anim_file_id + (uintptr_t)fp->ft_data->p_file_shieldpose);
+            fp->figatree = (void*)((intptr_t)script_info->anim_file_id + (uintptr_t)fp->ft_data->p_file_shieldpose);
         }
         else if (script_info->anim_file_id != 0)
         {
-            rldm_get_file_external_force_heap(script_info->anim_file_id, fp->anim_load);
-            fp->anim_bank = fp->anim_load;
+            rldm_get_file_external_force_heap(script_info->anim_file_id, fp->figatree_heap);
+            fp->figatree = fp->figatree_heap;
         }
-        else fp->anim_bank = NULL;
+        else fp->figatree = NULL;
         
-        if (fp->anim_bank != NULL)
+        if (fp->figatree != NULL)
         {
             anim_desc_bak = fp->anim_desc.word & 0xFFFFFFE0;
             fp->anim_desc.word = script_info->anim_desc.word;
@@ -4658,7 +4658,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
 
                 joint->flags = DOBJ_FLAG_NONE;
             }
-            lbCommonAddFighterPartsFigatree(fp->joints[nFTPartsJointTopN]->child, fp->anim_bank, frame_begin);
+            lbCommonAddFighterPartsFigatree(fp->joints[nFTPartsJointTopN]->child, fp->figatree, frame_begin);
 
             if (anim_speed != DObjGetStruct(fighter_gobj)->anim_speed)
             {

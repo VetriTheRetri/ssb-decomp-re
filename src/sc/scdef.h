@@ -4,74 +4,6 @@
 #define SCBATTLE_TIMELIMIT_INFINITE 100
 #define SCBATTLE_BONUSGAME_TASK_MAX 10
 
-#define SCBACKUP_FIGHTER_MASK_DEFINE(kind) (1 << (kind))
-#define SCBACKUP_GROUND_MASK_DEFINE(kind) (1 << (kind))
-
-#define SCBACKUP_CHARACTER_MASK_ALL					\
-(									 				\
-	SCBACKUP_FIGHTER_MASK_DEFINE(nFTKindMario) 	|	\
-	SCBACKUP_FIGHTER_MASK_DEFINE(nFTKindFox) 	|	\
-	SCBACKUP_FIGHTER_MASK_DEFINE(nFTKindDonkey)	|	\
-	SCBACKUP_FIGHTER_MASK_DEFINE(nFTKindSamus) 	|	\
-	SCBACKUP_FIGHTER_MASK_DEFINE(nFTKindLuigi) 	|	\
-	SCBACKUP_FIGHTER_MASK_DEFINE(nFTKindLink) 	|	\
-	SCBACKUP_FIGHTER_MASK_DEFINE(nFTKindYoshi) 	|	\
-	SCBACKUP_FIGHTER_MASK_DEFINE(nFTKindCaptain)|	\
-	SCBACKUP_FIGHTER_MASK_DEFINE(nFTKindKirby)	|	\
-	SCBACKUP_FIGHTER_MASK_DEFINE(nFTKindPikachu)|	\
-	SCBACKUP_FIGHTER_MASK_DEFINE(nFTKindPurin) 	|	\
-	SCBACKUP_FIGHTER_MASK_DEFINE(nFTKindNess)		\
-)
-
-#define SCBACKUP_CHARACTER_MASK_UNLOCK				\
-(													\
-	SCBACKUP_FIGHTER_MASK_DEFINE(nFTKindNess) 	|	\
-	SCBACKUP_FIGHTER_MASK_DEFINE(nFTKindPurin) 	|	\
-	SCBACKUP_FIGHTER_MASK_DEFINE(nFTKindCaptain)| 	\
-	SCBACKUP_FIGHTER_MASK_DEFINE(nFTKindLuigi)		\
-)
-
-#define SCBACKUP_CHARACTER_MASK_STARTER (SCBACKUP_CHARACTER_MASK_ALL & ~SCBACKUP_CHARACTER_MASK_UNLOCK)
-
-#define SCBACKUP_UNLOCK_MASK_LUIGI (1 << nSCBackupUnlockLuigi)
-#define SCBACKUP_UNLOCK_MASK_NESS (1 << nSCBackupUnlockNess)
-#define SCBACKUP_UNLOCK_MASK_CAPTAIN (1 << nSCBackupUnlockCaptain)
-#define SCBACKUP_UNLOCK_MASK_PURIN (1 << nSCBackupUnlockPurin)
-#define SCBACKUP_UNLOCK_MASK_INISHIE (1 << nSCBackupUnlockInishie)
-#define SCBACKUP_UNLOCK_MASK_SOUNDTEST (1 << nSCBackupUnlockSoundTest)
-#define SCBACKUP_UNLOCK_MASK_ITEMSWITCH (1 << nSCBackupUnlockItemSwitch)
-
-#define SCBACKUP_UNLOCK_MASK_ALL 		\
-(										\
-	SCBACKUP_UNLOCK_MASK_ITEMSWITCH | 	\
-	SCBACKUP_UNLOCK_MASK_SOUNDTEST 	| 	\
-	SCBACKUP_UNLOCK_MASK_INISHIE   	|	\
-	SCBACKUP_UNLOCK_MASK_PURIN 		| 	\
-	SCBACKUP_UNLOCK_MASK_CAPTAIN 	| 	\
-	SCBACKUP_UNLOCK_MASK_NESS 		| 	\
-	SCBACKUP_UNLOCK_MASK_LUIGI			\
-)
-
-#define SCBACKUP_UNLOCK_MASK_NEWCOMERS (SCBACKUP_UNLOCK_MASK_LUIGI | SCBACKUP_UNLOCK_MASK_PURIN | SCBACKUP_UNLOCK_MASK_CAPTAIN | SCBACKUP_UNLOCK_MASK_NESS)
-#define SCBACKUP_UNLOCK_MASK_PRIZE (SCBACKUP_UNLOCK_MASK_ALL & ~SCBACKUP_UNLOCK_MASK_NEWCOMERS)
-
-#define SCBACKUP_GROUND_MASK_ALL 					\
-(													\
-	SCBACKUP_GROUND_MASK_DEFINE(nGRKindCastle) 	| 	\
-	SCBACKUP_GROUND_MASK_DEFINE(nGRKindSector) 	|	\
-	SCBACKUP_GROUND_MASK_DEFINE(nGRKindJungle) 	|	\
-	SCBACKUP_GROUND_MASK_DEFINE(nGRKindZebes) 	|	\
-	SCBACKUP_GROUND_MASK_DEFINE(nGRKindHyrule) 	|	\
-	SCBACKUP_GROUND_MASK_DEFINE(nGRKindYoster) 	|	\
-	SCBACKUP_GROUND_MASK_DEFINE(nGRKindPupupu) 	| 	\
-	SCBACKUP_GROUND_MASK_DEFINE(nGRKindYamabuki)	\
-)
-
-#define SCBACKUP_ERROR_RANDOMKNOCKBACK (1 << nSCBackupErrorRandomKnockback)		// 0x1 - Random knockback between 0.1 (?) and 1.0 x 200u
-#define SCBACKUP_ERROR_HALFSTICKRANGE  (1 << nSCBackupErrorHalfStickRange)		// 0x2 - Halves control stick input range
-#define SCBACKUP_ERROR_1PGAMEMARIO 	(1 << nSCBackupError1PGameMario) 			// 0x4 - Forces Mario in 1P Game
-#define SCBACKUP_ERROR_BATTLECASTLE (1 << nSCBackupErrorBattleCastle) 			// 0x8 - Forces Peach's Castle in VS Mode
-
 #define SC1PGAME_BONUS_MASK_CREATE(kind)    (1 << ((kind) - (((kind) / GS_BITCOUNT(u32, 1)) * GS_BITCOUNT(u32, 1))))
 
 #define SCBATTLE_GAMERULE_TIME 	            (1 << nSCBattleGameRuleTime)	        // 0x1
@@ -558,28 +490,6 @@ typedef enum nSCTrainingMenuOptionSprites
 
 } nSCTrainingMenuOptionSprites;
 
-typedef enum scBackupUnlock
-{
-	nSCBackupUnlockLuigi,	 			// Luigi
-	nSCBackupUnlockNess,				// Ness
-	nSCBackupUnlockCaptain,	 			// Captain Falcon
-	nSCBackupUnlockPurin,	 			// Jigglypuff
-	nSCBackupUnlockInishie,	 			// Mushroom Kingdom
-	nSCBackupUnlockSoundTest, 			// Sound Test menu
-	nSCBackupUnlockItemSwitch, 			// Item Switch menu
-	nSCBackupUnlockEnumMax
-
-} scBackupUnlock;
-
-typedef enum scBackupErrors
-{
-	nSCBackupErrorRandomKnockback,
-	nSCBackupErrorHalfStickRange,
-	nSCBackupError1PGameMario,
-	nSCBackupErrorBattleCastle
-
-} scBackupErrors;
-
 typedef struct sc1PGameComputer				sc1PGameComputer;
 typedef struct sc1PGameStage				sc1PGameStage;
 typedef struct sc1PGameFighter				sc1PGameFighter;
@@ -601,8 +511,5 @@ typedef struct scBattleResults				scBattleResults;
 typedef struct scPlayerData					scPlayerData;
 typedef struct scBattleState				scBattleState;
 typedef struct scCommonData					scCommonData;
-typedef struct scBackup1PRecord             scBackup1PRecord;
-typedef struct scBackupBattleRecord         scBackupBattleRecord;
-typedef struct scBackupData                 scBackupData;
 
 #endif

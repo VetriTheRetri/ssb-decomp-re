@@ -2,7 +2,7 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 
 #include "character_select.h"
 
@@ -1368,7 +1368,7 @@ void mnBattleSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 cost
 		spawn_info.ft_kind = ft_kind;
 		gMnBattlePanels[port_id].costume_id = spawn_info.costume = costume_id;
 		spawn_info.shade = gMnBattlePanels[port_id].shade;
-		spawn_info.anim_heap = gMnBattlePanels[port_id].anim_heap;
+		spawn_info.figatree_heap = gMnBattlePanels[port_id].figatree_heap;
 		spawn_info.player = port_id;
 		fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
@@ -3965,7 +3965,7 @@ void mnBattleMain(s32 arg0)
 			else
 			{
 				gSceneData.scene_current = 0x16;
-				max_stage_id = (gSaveData.unlock_mask & SCBACKUP_UNLOCK_MASK_INISHIE) ? nGRKindInishie + 1 : nGRKindStarterEnd + 1;
+				max_stage_id = (gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_INISHIE) ? nGRKindInishie + 1 : nGRKindStarterEnd + 1;
 
 				do
 					stage_id = mtTrigGetRandomTimeUCharRange(max_stage_id);
@@ -4244,7 +4244,7 @@ void mnBattleInitCSS()
 		ftManagerSetupFilesAllKind(i);
 
 	for (i = 0; i < 4; i++)
-		gMnBattlePanels[i].anim_heap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10U);
+		gMnBattlePanels[i].figatree_heap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10U);
 
 	mnBattleCreatePortraitViewport();
 	mnBattleCreateCursorViewport();

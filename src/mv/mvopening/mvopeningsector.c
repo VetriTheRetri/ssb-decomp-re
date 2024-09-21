@@ -2,7 +2,7 @@
 #include <sc/scene.h>
 #include <mv/movie.h>
 #include <sys/system_00.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 
 extern u32 func_8000092C();
 

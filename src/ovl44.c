@@ -3,7 +3,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <gr/ground.h>
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 #include <sys/system_00.h>
 
 
@@ -126,7 +126,7 @@ void mvOpeningRunningCreateFighters()
 		spawn_info.pos.x = 0.0F;
 		spawn_info.pos.y = 0.0F;
 		spawn_info.pos.z = 0.0F;
-		spawn_info.anim_heap = gMvOpeningRunningFighterAnimHeaps[i];
+		spawn_info.figatree_heap = gMvOpeningRunningFighterAnimHeaps[i];
 		fighter_gobj = fighter_proxy_gobj = ftManagerMakeFighter(&spawn_info);
 
 		if (ftKinds[i] == nFTKindLink)

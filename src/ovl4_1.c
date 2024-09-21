@@ -1,4 +1,4 @@
-#include <ovl0/reloc_data_mgr.h>
+#include <lb/reloc_data_mgr.h>
 
 extern void *gGMCommonFiles[];
 extern u32 dGMCommonFileIDs[8];

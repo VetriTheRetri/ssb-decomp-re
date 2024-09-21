@@ -23,8 +23,9 @@ typedef enum GObjKind
     nOMObjCommonKindPublicity,                  // 1018 - Audience reaction
     nOMObjCommonKindPauseMenu = 1019,           // 1019
     nOMObjCommonKindShadow,                     // 1020
+    nOMObjCommonKindTransition,                 // 1021 - Screen fadeout actor?
     nOMObjCommonKindBossWallpaper = 1023,       // 1023
-    nOMObjCommonKindSceneCamera = 1025           // 1025
+    nOMObjCommonKindSceneCamera = 1025          // 1025
 
 } GObjKind;
 
@@ -77,6 +78,7 @@ typedef enum GObjLinkIndex
     nOMObjCommonLinkIDWallpaperEffect=13, // ID 13: Stage background effect
     nOMObjCommonLinkIDFighterParts = 13,  // ID 13: FighterParts
     nOMObjCommonLinkIDShadow = 13,        // ID 13: Fighter shadows
+    nOMObjCommonLinkIDTransition = 13,    // ID 13: Screen fadeout transition
 
     nOMObjCommonLinkIDPauseMenu           // ID 14: Pause menu object?
 

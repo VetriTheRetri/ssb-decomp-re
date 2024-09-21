@@ -751,6 +751,13 @@ D_ovl0_800D6452 = 0x800D6452;
 sLBParticleTransformsAllocFree = 0x800D6454;
 sLBParticleGeneratorsCurrent = 0x800D6458;
 
+sLBTransitionFadeAlphaMax = 0x800D6460;
+sLBTransitionFadeAlphaCurrent = 0x800D6464;
+sLBTransitionFadeLength = 0x800D6468;
+sLBTransitionColor = 0x800D646C;
+sLBTransitionIsProceedScene = 0x800D6470;
+sLBTransitionIsEjectGObj = 0x800D6474;
+
 func_ovl2_800E7F68 = 0x800E7F68;
 gOMObjCommonLinks = 0x800466F0;
 gDefaultBattleState = 0x800A3fc8;
@@ -801,9 +808,6 @@ func_840010BC = 0x840010BC;
 func_8018D0C0 = 0x8018D0C0;
 .L800466E4 = 0x800466E4;
 .L80046728 = 0x80046728;
-
-.L800D6460 = 0x800D6460;
-.L800D6470 = 0x800D6470;
 
 .L800D381C = 0x800D381C;
 

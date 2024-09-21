@@ -26,12 +26,10 @@ ftKeyCommand D_ovl5_8018D580[] =
 	FTKEY_EVENT_END()                                                 // 0x0000
 };
 
-Unk800D4060 D_ovl5_8018D5B8 = { 0 };
+// 0x8018D5B8
+syColorRGBA dSCUnusedMarioFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
-syDisplaySetup D_ovl5_8018D5BC = {
-	0x80392a00, 0x803b6900, 0x803da800,
-	0x00000000, 0x00000140, 0x000000f0, 0x00016a99,
-};
+syDisplaySetup D_ovl5_8018D5BC = SYDISPLAY_DEFINE_DEFAULT();
 
 scRuntimeInfo D_ovl5_8018D5D8 = {
 	0x00000000, 0x8000a5e4,
@@ -89,7 +87,7 @@ void func_ovl5_8018D1A0()
 	GObj *fighter_gobj;
 	s32 player;
 	ftCreateDesc player_spawn;
-	Unk800D4060 unk_struct;
+	syColorRGBA color;
 
 	gUnkExplainBattleState = gDefaultBattleState;
 	gBattleState = &gUnkExplainBattleState;
@@ -152,8 +150,9 @@ void func_ovl5_8018D1A0()
 		ftParamInitPlayerBattleStats(player, fighter_gobj);
 		ftParamSetKey(fighter_gobj, D_ovl5_8018D580);
 	}
-	unk_struct = D_ovl5_8018D5B8;
-	func_ovl0_800D4060(0x3FD, 0xD, 0xA, &unk_struct, 0xC, 1, 0);
+	color = dSCUnusedMarioFadeColor;
+
+	lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 }
 
 // 8018D4BC

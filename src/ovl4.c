@@ -19,22 +19,13 @@ void scBattle_StartStockBattle();
 
 // Data
 // 8018E3D0
-Unk800D4060 D_ovl4_8018E3D0 = { 0 };
+syColorRGBA dSCVSBattleCommonFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 8018E3D4
-Unk800D4060 D_ovl4_8018E3D4 = { 0 };
+syColorRGBA dSCVSBattleSuddenDeathFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 8018E3D8
-syDisplaySetup D_ovl4_8018E3D8 = {
-
-	gSCSubsysFramebuffer0,
-	gSCSubsysFramebuffer1,
-	gSCSubsysFramebuffer2,
-	0x00000000,
-	0x00000140,
-	0x000000F0,
-	0x00016A99
-};
+syDisplaySetup D_ovl4_8018E3D8 = SYDISPLAY_DEFINE_DEFAULT();
 
 // 8018E3F4
 scRuntimeInfo D_ovl4_8018E3F4 = {
@@ -110,9 +101,9 @@ void scBattle_StartStockBattle()
 	sb32(*proc_cache)();
 	void *base_addr;
 	ftCreateDesc player_spawn;
-	Unk800D4060 unk_struct;
+	syColorRGBA color;
 
-	gSceneData.is_reset = 0;
+	gSceneData.is_reset = FALSE;
 	gSceneData.unk10 = 0;
 
 	func_ovl4_8018E330();
@@ -198,9 +189,9 @@ void scBattle_StartStockBattle()
 	ifCommonTimerMakeInterface(ifCommonAnnounceTimeUpInitInterface);
 	ifCommonTimerMakeDigitSObjs();
 
-	unk_struct = D_ovl4_8018E3D0;
+	color = dSCVSBattleCommonFadeColor;
 
-	func_ovl0_800D4060(0x3FD, 0xD, 0xA, &unk_struct, 0xC, 1, 0);
+	lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 }
 
 // 8018D5E0 - Sort time battle winners and check for sudden death
@@ -392,7 +383,7 @@ void scBattle_StartSDBattle()
 	GObj *fighter_gobj;
 	s32 player;
 	ftCreateDesc player_spawn;
-	Unk800D4060 unk_struct;
+	syColorRGBA color;
 
 	gSceneData.is_reset = FALSE;
 
@@ -470,9 +461,9 @@ void scBattle_StartSDBattle()
 	ifCommonTimerMakeInterface(ifCommonAnnounceTimeUpInitInterface);
 	ifCommonTimerMakeDigitSObjs();
 
-	unk_struct = D_ovl4_8018E3D4;
+	color = dSCVSBattleSuddenDeathFadeColor;
 
-	func_ovl0_800D4060(0x3FD, 0xD, 0xA, &unk_struct, 0xC, 1, 0);
+	lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 }
 
 // 8018E144

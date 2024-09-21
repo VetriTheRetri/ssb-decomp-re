@@ -4,11 +4,7 @@
 #include <sc/scene.h>
 #include <sys/system_00.h>
 
-
-
 extern void func_80007080(void*, f32, f32, f32, f32);
-
-
 
 // // // // // // // // // // // //
 //                               //
@@ -18,10 +14,10 @@ extern void func_80007080(void*, f32, f32, f32, f32);
 
 extern intptr_t D_NF_000000C6;
 extern intptr_t D_NF_000000FC;
-extern intptr_t lSCExplainGameKeyuence0;                   // 0x00000000
-extern intptr_t lSCExplainGameKeyuence1;                   // 0x000009D4
-extern intptr_t lSCExplainGameKeyuence2;                   // 0x000013FC
-extern intptr_t lSCExplainGameKeyuence3;                   // 0x00001400
+extern intptr_t lSCExplainKeyInputSequence0;                // 0x00000000
+extern intptr_t lSCExplainKeyInputSequence1;                // 0x000009D4
+extern intptr_t lSCExplainKeyInputSequence2;                // 0x000013FC
+extern intptr_t lSCExplainKeyInputSequence3;                // 0x00001400
 extern intptr_t lSCExplainPhases;                           // 0x00001404
 extern intptr_t lSCExplainStickMObjSub;                     // 0x00005028
 extern intptr_t lSCExplainStickDObjDesc;                    // 0x00005300
@@ -87,16 +83,16 @@ intptr_t dSCExplainStickMatAnimJoints[/* */] =
 };
 
 // 0x8018E710
-intptr_t dSCExplainGameKeyuences[/* */] = 
+intptr_t dSCExplainKeyInputSequences[/* */] = 
 {
-    &lSCExplainGameKeyuence0,
-    &lSCExplainGameKeyuence1,
-    &lSCExplainGameKeyuence2,
-    &lSCExplainGameKeyuence3
+    &lSCExplainKeyInputSequence0,
+    &lSCExplainKeyInputSequence1,
+    &lSCExplainKeyInputSequence2,
+    &lSCExplainKeyInputSequence3
 };
 
 // 0x8018E720
-Unk800D4060 D_ovl63_8018E720 = { 0 };
+syColorRGBA dSCExplainFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x8018E724
 s32 dSCExplainRandomSeed1 = 0x00000001;
@@ -726,7 +722,7 @@ void scExplainProcStart(void)
     GObj *fighter_gobj;
     s32 player;
     ftCreateDesc player_spawn;
-    Unk800D4060 sp58;
+    syColorRGBA color;
 
     scExplainSetBattleState();
     scExplainSetupFiles();
@@ -800,7 +796,7 @@ void scExplainProcStart(void)
             (
                 ftKeyCommand*,
                 sSCExplainMainFileHead,
-                dSCExplainGameKeyuences[player]
+                dSCExplainKeyInputSequences[player]
             )
         );
     }
@@ -829,9 +825,9 @@ void scExplainProcStart(void)
     mpCollisionSetPlayBGM();
     func_800269C0_275C0(nSYAudioVoiceAnnounceHowToPlay);
 
-    sp58 = D_ovl63_8018E720;
+    color = dSCExplainFadeColor;
 
-    func_ovl0_800D4060(0x3FD, 0xD, 0xA, &sp58, 0xC, 1, 0);
+    lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 }
 
 // 0x8018E51C

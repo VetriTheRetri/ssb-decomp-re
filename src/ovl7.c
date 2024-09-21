@@ -120,18 +120,10 @@ s32 scTrainingMode_Files_BackgroundImageIDs[] = {
 	2  // Mushroom Kingdom
 };
 
-Unk800D4060 D_ovl7_8019086C = { 0 };
+// 0x8019086C
+syColorRGBA dSCTrainingFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
-syDisplaySetup D_ovl7_80190870 = {
-
-	gSCSubsysFramebuffer0,
-	gSCSubsysFramebuffer1,
-	gSCSubsysFramebuffer2,
-	0x00000000,
-	0x00000140,
-	0x000000F0,
-	0x00016A99
-};
+syDisplaySetup D_ovl7_80190870 = SYDISPLAY_DEFINE_DEFAULT();
 
 scRuntimeInfo D_ovl7_8019088C = {
 
@@ -1494,7 +1486,7 @@ void scTrainingMode_InitTrainingMode()
 	GObj* fighter_gobj;
 	ftCreateDesc player_spawn;
 	s32 player;
-	Unk800D4060 sp54;
+	syColorRGBA color;
 
 	func_ovl7_8018DA98();
 	scTrainingMode_LoadFiles();
@@ -1565,9 +1557,9 @@ void scTrainingMode_InitTrainingMode()
 	func_800266A0_272A0();
 	func_800269C0_275C0(nSYAudioVoicePublicityExcited);
 
-	sp54 = D_ovl7_8019086C;
+	color = dSCTrainingFadeColor;
 
-	func_ovl0_800D4060(0x3FD, 0xD, 0xA, &sp54, 0xC, 1, 0);
+	lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 }
 
 // 801905A8

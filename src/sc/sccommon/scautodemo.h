@@ -9,7 +9,7 @@
 extern void scAutoDemoProcScene(void);
 extern void scAutoDemoStartBattle(void);
 extern void scAutoDemoDetectExit(void);
-extern void func_ovl64_8018D19C(void);
+extern void scAutoDemoMakeTransition(void);
 extern sb32 scAutoDemoCheckStopFocusPlayer(ftStruct *fp);
 extern void scAutoDemoSetFocusPlayer1(void);
 extern void scAutoDemoProcFocusPlayer1(void);

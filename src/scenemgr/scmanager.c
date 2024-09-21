@@ -5,7 +5,6 @@
 #include <wp/weapon.h>
 #include <it/item.h>
 #include <lb/lbparticle.h>
-#include <lb/ovl0.h>
 #include "scenemgr/entries.h"
 #include <sys/error.h>
 #include <sys/dma.h>

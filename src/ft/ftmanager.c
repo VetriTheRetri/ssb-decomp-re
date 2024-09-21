@@ -329,12 +329,12 @@ void ftManagerSetupFilesMainKind(s32 ft_kind)
 
     *ft_data->p_file_main = rdManagerGetFileWithExternHeap(ft_data->file_main_id, gsMemoryAlloc(rdManagerGetFileSize(ft_data->file_main_id), 0x10));
 
-    if (ft_data->particles_header_lo != 0)
+    if (ft_data->particles_script_lo != 0)
     {
         *ft_data->p_particle = efAllocGetAddParticleBankID
         (
-            ft_data->particles_header_lo, 
-            ft_data->particles_header_hi, 
+            ft_data->particles_script_lo, 
+            ft_data->particles_script_hi, 
             ft_data->particles_texture_lo, 
             ft_data->particles_texture_hi
         );
@@ -376,9 +376,9 @@ void ftManagerSetupFilesKind(s32 ft_kind)
     {
         *ft_data->p_file_special4 = rldm_get_file_standard(ft_data->file_special4_id);
     }
-    if (ft_data->particles_header_lo != 0)
+    if (ft_data->particles_script_lo != 0)
     {
-        *ft_data->p_particle = efAllocGetParticleBankID(ft_data->particles_header_lo);
+        *ft_data->p_particle = efAllocGetParticleBankID(ft_data->particles_script_lo);
     }
 }
 

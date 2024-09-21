@@ -5,7 +5,6 @@
 #include <sys/thread6.h>
 #include <lb/reloc_data_mgr.h>
 
-
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern void* func_800269C0_275C0(u16);
 
@@ -34,7 +33,7 @@ s32 sMNCongraSceneChangeWait;
 sb32 sMNCongraIsProceed;
 
 // 0x801322F0
-sb32 sMNCongraIsSceneChange;
+sb32 sMNCongraIsProceedScene;
 
 // // // // // // // // // // // //
 //                               //
@@ -119,10 +118,10 @@ mnCongraPicture dMNCongraPictures[/* */] =
 };
 
 // 0x801321C0
-Unk800D4060 D_ovl57_801321C0 = { 0xFF };
+syColorRGBA dMNCongraFadeColor = { 0x00, 0x00, 0x00, 0xFF };
 
 // 0x801321C4
-Unk800D4060 D_ovl57_801321C4 = { 0 };
+syColorRGBA D_ovl57_801321C4 = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x801321C8
 Lights1 dMNCongraLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x0A, 0x32, 0x32);
@@ -230,11 +229,12 @@ s32 mnCongraGetPlayerTapButtons(u32 buttons)
 // 0x80131C04
 void mnCongraActorProcRun(GObj *gobj)
 {
-	Unk800D4060 sp2C;
+	syColorRGBA color;
 
 	if (sMNCongraSkipWait != 0)
+	{
 		sMNCongraSkipWait--;
-
+	}
 	if
 	(
 		(sMNCongraSkipWait == 0) 		&& 
@@ -243,8 +243,8 @@ void mnCongraActorProcRun(GObj *gobj)
 	)
 	{
 		sMNCongraIsProceed = TRUE;
-		sp2C = D_ovl57_801321C0;
-		func_ovl0_800D4060(0x3FD, 0xD, 0xA, &sp2C, 0x5A, 0, &sMNCongraIsSceneChange);
+		color = dMNCongraFadeColor;
+		lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 90, FALSE, &sMNCongraIsProceedScene);
 	}
 }
 
@@ -259,7 +259,7 @@ void mnCongraProcStart(void)
 	sMNCongraSkipWait = 8;
 	sMNCongraSceneChangeWait = 0;
 	sMNCongraIsProceed = FALSE;
-	sMNCongraIsSceneChange = 0;
+	sMNCongraIsProceedScene = 0;
 
 	rd_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;
 	rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
@@ -365,9 +365,9 @@ void mnCongraUpdateScene(void)
 {
 	func_8000A340();
 
-	if (sMNCongraIsSceneChange != FALSE)
+	if (sMNCongraIsProceedScene != FALSE)
 	{
-		sMNCongraIsSceneChange = FALSE;
+		sMNCongraIsProceedScene = FALSE;
 
 		func_80006E18(0x100);
 

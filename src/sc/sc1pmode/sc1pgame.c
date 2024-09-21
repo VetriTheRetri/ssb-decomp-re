@@ -673,7 +673,7 @@ s32 *dSC1PGameInterfaceCountPositions[/* */] =
 u16 dSC1PGameStageCommonStopTics[/* */] = { 22, 15, 60 };
 
 // 0x80192B14
-Unk800D4060 D_ovl65_80192B14 = { 0 };
+syColorRGBA dSC1PGameFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x80192B18
 syDisplaySetup dSC1PGameDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
@@ -2002,7 +2002,7 @@ void sc1PGameProcStart(void)
     u8 spA0[0x10];
     s32 i;
     ftCreateDesc player_spawn;
-    Unk800D4060 sp58;
+    syColorRGBA color;
 
     sc1PGameSetupStageAll();
     sc1PGameSetupFiles();
@@ -2049,8 +2049,8 @@ void sc1PGameProcStart(void)
         rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_000000E6, gsMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_000000E6), 0x10));
         efAllocGetAddParticleBankID
         (
-            plns->particles_header_lo, 
-            plns->particles_header_hi, 
+            plns->particles_script_lo, 
+            plns->particles_script_hi, 
             plns->particles_texture_lo, 
             plns->particles_texture_hi
         );
@@ -2168,8 +2168,8 @@ void sc1PGameProcStart(void)
     sc1PGameInitTimeUpMessage();
     ifCommonTimerMakeDigitSObjs();
 
-    sp58 = D_ovl65_80192B14;
-    func_ovl0_800D4060(0x3FD, 0xD, 0xA, &sp58, 0xC, 1, 0);
+    color = dSC1PGameFadeColor;
+    lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 }
 
 // 0x8018FD5C

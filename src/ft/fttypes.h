@@ -129,8 +129,8 @@ struct ftData
     void **p_file_special3;
     void **p_file_special4;
     s32 *p_particle;
-    uintptr_t particles_header_lo;
-    uintptr_t particles_header_hi;
+    uintptr_t particles_script_lo;
+    uintptr_t particles_script_hi;
     uintptr_t particles_texture_lo;
     uintptr_t particles_texture_hi;
     intptr_t o_attributes; // Offset to fighter's attributes

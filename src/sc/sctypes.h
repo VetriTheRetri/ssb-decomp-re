@@ -391,10 +391,4 @@ typedef struct scRuntimeInfo
 
 } scRuntimeInfo; // This is actually something from gtl.c, will have to move at a later point
 
-typedef struct Unk800D4060
-{
-	u32 unk_b0;
-
-} Unk800D4060;
-
 #endif

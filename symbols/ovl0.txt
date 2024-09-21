@@ -132,9 +132,9 @@ lbParticleSetStructPosAll = 0x800D3CE0; // segment:ovl0 size:0x84
 lbParticlePauseAllID = 0x800D3D64; // segment:ovl0 size:0x84
 lbParticleResumeAllID = 0x800D3DE8; // segment:ovl0 size:0x98
 
-func_ovl0_800D3E80 = 0x800D3E80; // segment:ovl0
-func_ovl0_800D3F08 = 0x800D3F08; // segment:ovl0
-func_ovl0_800D4060 = 0x800D4060; // segment:ovl0
+lbTransitionProcUpdate = 0x800D3E80; // segment:ovl0
+lbTransitionProcDraw = 0x800D3F08; // segment:ovl0
+lbTransitionMakeActor = 0x800D4060; // segment:ovl0
 func_ovl0_800D4130 = 0x800D4130; // segment:ovl0
 func_ovl0_800D4248 = 0x800D4248; // segment:ovl0
 func_ovl0_800D42C8 = 0x800D42C8; // segment:ovl0

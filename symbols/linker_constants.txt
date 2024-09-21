@@ -1531,10 +1531,10 @@ lMNSoundTestAFunctionTextSprite = 0x00001450;
 lMNSoundTestHeaderTextSprite = 0x00001BB8;
 lMNSoundTestStartButtonSprite = 0x00001D50;
 
-lSCExplainGameKeyuence0 = 0x00000000;
-lSCExplainGameKeyuence1 = 0x000009D4;
-lSCExplainGameKeyuence2 = 0x000013FC;
-lSCExplainGameKeyuence3 = 0x00001400;
+lSCExplainKeyInputSequence0 = 0x00000000;
+lSCExplainKeyInputSequence1 = 0x000009D4;
+lSCExplainKeyInputSequence2 = 0x000013FC;
+lSCExplainKeyInputSequence3 = 0x00001400;
 lSCExplainPhases = 0x00001404;
 lSCExplainStickMObjSub = 0x00005028;
 lSCExplainStickDObjDesc = 0x00005300;

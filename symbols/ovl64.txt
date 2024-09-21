@@ -1,7 +1,7 @@
 scAutoDemoProcScene = 0x8018D0C0; // segment:ovl64
 scAutoDemoStartBattle = 0x8018D0E0; // segment:ovl64
 scAutoDemoDetectExit = 0x8018D134; // segment:ovl64
-func_ovl64_8018D19C = 0x8018D19C; // segment:ovl64
+scAutoDemoMakeTransition = 0x8018D19C; // segment:ovl64
 scAutoDemoCheckStopFocusPlayer = 0x8018D1EC; // segment:ovl64
 func_ovl64_8018D220 = 0x8018D220; // segment:ovl64
 scAutoDemoSetFocusPlayer1 = 0x8018D2CC; // segment:ovl64

@@ -153,7 +153,8 @@ f32 scBonusGame_Timer_UnitLengths[] = {
 	I_MIN_TO_FRAMES(1),
 	I_SEC_TO_FRAMES(10),
 	I_SEC_TO_FRAMES(1),
-	I_SEC_TO_FRAMES(1) / 10, 277.0F / 500.0F
+	I_SEC_TO_FRAMES(1) / 10,
+	277.0F / 500.0F
 };
 
 // 8018F014
@@ -174,7 +175,7 @@ s32 scBonusGame_Player_InterfacePositions[] = {
 };
 
 // 8018F03C
-Unk800D4060 D_ovl6_8018F03C = { 0 };
+syColorRGBA dSCBonusGameFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 8018F040
 s32 D_ovl6_8018F040[16] = {
@@ -186,16 +187,7 @@ s32 D_ovl6_8018F040[16] = {
 };
 
 // 8018F080
-syDisplaySetup D_ovl6_8018F080 = {
-
-	gSCSubsysFramebuffer0,
-	gSCSubsysFramebuffer1,
-	gSCSubsysFramebuffer2,
-	0x00000000,
-	0x00000140,
-	0x000000f0,
-	0x00016A99
-};
+syDisplaySetup D_ovl6_8018F080 = SYDISPLAY_DEFINE_DEFAULT();
 
 // 8018F09C
 scRuntimeInfo D_ovl6_8018F09C = {
@@ -800,7 +792,7 @@ void scBonusGame_InitBonusGame()
 	s32 player;
 	GObj* fighter_gobj;
 	ftCreateDesc player_spawn;
-	Unk800D4060 unk_struct;
+	syColorRGBA color;
 
 	func_ovl6_8018D0F0();
 	func_ovl6_8018ED70();
@@ -870,9 +862,9 @@ void scBonusGame_InitBonusGame()
 	func_ovl6_8018E344();
 	scBonusGame_InitCameraVars();
 
-	unk_struct = D_ovl6_8018F03C;
+	color = dSCBonusGameFadeColor;
 
-	func_ovl0_800D4060(0x3FD, 0xD, 0xA, &unk_struct, 0xC, 1, 0);
+	lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 	scBonusGame_MakeBonusTimerGObj();
 }
 

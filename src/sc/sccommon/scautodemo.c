@@ -100,7 +100,7 @@ scAutoDemoProc dSCAutoDemoProcList[/* */] =
 	// Pre-focus
 	{
 		340,                            // Wait frames until focus changes 
-		func_ovl64_8018D19C,            // Function to run on focus change
+		scAutoDemoMakeTransition,            // Function to run on focus change
 		NULL                            // Function to run when focusing
 	},
 
@@ -164,7 +164,7 @@ intptr_t dSCAutoDemoFighterNameSpriteOffsets[/* */] =
 };
 
 // 0x8018E230
-Unk800D4060 D_ovl64_8018E230 = { 0 };
+syColorRGBA dSCAutoDemoFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x8018E234
 syDisplaySetup dSCAutoDemoDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
@@ -230,11 +230,11 @@ void scAutoDemoDetectExit(void)
 }
 
 // 0x8018D19C
-void func_ovl64_8018D19C(void)
+void scAutoDemoMakeTransition(void)
 {
-	Unk800D4060 sp2C = D_ovl64_8018E230;
+	syColorRGBA color = dSCAutoDemoFadeColor;
 
-	func_ovl0_800D4060(0x3FD, 0xD, 0xA, &sp2C, 0x1E, 1, 0);
+	lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 30, TRUE, NULL);
 }
 
 // 0x8018D1EC

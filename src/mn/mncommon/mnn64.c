@@ -40,10 +40,10 @@ sb32 sMNN64IsProceedOpening;
 // // // // // // // // // // // //
 
 // 0x80131F50
-Unk800D4060 D_ovl58_80131F50 = { 0xFF };
+syColorRGBA dMNN64EndFadeColor = { 0x00, 0x00, 0x00, 0xFF };
 
 // 0x80131F54
-Unk800D4060 D_ovl58_80131F54 = { 0 };
+syColorRGBA dMNN64StartFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x80131F58
 Lights1 dMNN64Lights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x0A, 0x32, 0x32);
@@ -111,7 +111,7 @@ void mnN64LogoThreadUpdate(GObj *gobj)
 	f32 step;
 	s32 i;
 	SObj *sobj;
-	Unk800D4060 sp50;
+	syColorRGBA color;
 
 	sobj = SObjGetStruct(gobj);
 
@@ -135,9 +135,9 @@ void mnN64LogoThreadUpdate(GObj *gobj)
 		gcStopCurrentGObjThread(1);
 		i++;
 	}
-	sp50 = D_ovl58_80131F50;
+	color = dMNN64EndFadeColor;
 
-	func_ovl0_800D4060(0x3FD, 0xD, 0xA, &sp50, 0xA, 0, 0);
+	lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 10, FALSE, NULL);
 
 	i = 0;
 
@@ -183,7 +183,7 @@ void mnN64ProcStart(void)
 	GObj *gobj;
 	SObj *sobj;
 	Sprite *sprite;
-	Unk800D4060 sp4C;
+	syColorRGBA color;
 
 	sMNN64SkipAllowWait = 8;
 	sMNN64IsProceedOpening = FALSE;
@@ -252,9 +252,9 @@ void mnN64ProcStart(void)
 	sobj->pos.x = 96.0F;
 	sobj->pos.y = 220.0F;
 
-	sp4C = D_ovl58_80131F54;
+	color = dMNN64StartFadeColor;
 
-	func_ovl0_800D4060(0x3FD, 0xD, 0xA, &sp4C, 0x10, 1, 0);
+	lbTransitionMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 16, TRUE, NULL);
 }
 
 // 0x80131ECC

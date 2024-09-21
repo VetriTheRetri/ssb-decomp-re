@@ -189,21 +189,19 @@ void func_ovl8_80371C2C(dbUnknownLinkStruct* arg0, dbBytesContainer *arg1)
 	arg1->unk_dbbytescont_0x0 = arg0->unk_dbunkstruct_0x2;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8_2/func_ovl8_80371C50.s")
-// void func_ovl8_80371C50(dbUnknownLinkStruct* arg0, dbBytesContainer *arg1) 
-// {
-//     arg1->unk_dbbytescont_0x0 = arg0->unk_dbunkstruct_0x2;
-	
-//     if (arg0->unk_dbunkstruct_0x4C == NULL)
-//         arg1->unk_dbbytescont_0x0.arr[0] = arg1->unk_dbbytescont_0x0.arr[1] = 0;
-// }
+void func_ovl8_80371C50(dbUnknownLinkStruct* arg0, dbBytesContainer *arg1) 
+{
+	arg1->unk_dbbytescont_0x0 = arg0->unk_dbunkstruct_0x2;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8_2/func_ovl8_80371C8C.s")
-// void func_ovl8_80371C8C(dbUnknownLinkStruct* arg0, dbBytesContainer *arg1)
-// {
-//     arg1->unk_dbbytescont_0x0 = arg0->unk_dbunkstruct_0x2;
-//     arg1->unk_dbbytescont_0x0.arr[0] = arg1->unk_dbbytescont_0x0.arr[1] = 0;
-// }
+	if (arg0->unk_dbunkstruct_0x4C == NULL)
+		arg1->unk_dbbytescont_0x0.uarr[0] = arg1->unk_dbbytescont_0x0.uarr[1] = 0;
+}
+
+void func_ovl8_80371C8C(dbUnknownLinkStruct *arg0, dbBytesContainer *arg1)
+{
+	arg1->unk_dbbytescont_0x0 = arg0->unk_dbunkstruct_0x2;
+	arg1->unk_dbbytescont_0x0.uarr[0] = arg1->unk_dbbytescont_0x0.uarr[1] = 0;
+}
 
 sb32 func_ovl8_80371CB8(dbUnknownLinkStruct* arg0)
 {    

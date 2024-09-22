@@ -23,7 +23,9 @@ struct dbUnknownStruct_80375C54
 extern void *D_ovl8_80388E60[];
 extern dbFunction D_ovl8_80388F18[];
 extern dbUnknownLink D_ovl8_80389070[];
+extern s32 D_ovl8_8038A1B8;
 extern s32 D_ovl8_8038A1BC;
+extern GObj* D_ovl8_8038A1C0;
 extern s16 D_8038F000[];
 extern u16 D_8038F008[];
 extern u16 D_8038F046;
@@ -32,9 +34,14 @@ extern s32 D_ovl8_80389F60;
 extern s32 D_ovl8_80389F64;
 extern GObj* D_ovl8_8038A860;
 extern u16 D_ovl8_8038E1E4;
+extern u8 D_8038EFD0;
+extern s32 D_8038EFD4;
 extern s32 D_803903C0;
 extern s32 D_803903C4;
 extern s32 D_803903C8;
+
+
+
 
 s32 func_ovl8_8037E7A8(s32);
 void func_ovl8_8037488C(s32);
@@ -888,10 +895,14 @@ void stringConcat(char* target, char* source)
 		*targetCurrent = *sourceCurrent;
 	}
 	
-	*target = 0;
+	*target = '\0';
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_80377108.s")
+// void func_ovl8_80377108(char *a, int v, int b)
+// {
+// 	while (b--) { char *csr = a++; *csr = v; }
+// }
 
 void func_ovl8_80377134(s32 arg0, s32 arg1)
 {
@@ -1047,9 +1058,28 @@ void func_ovl8_80377AEC(char* arg0, s32 arg1, s32 arg2, s32 arg3)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_8037C440.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_8037C498.s")
+void func_ovl8_8037C498(s32** arg0, s32 arg1)
+{
+	arg0[2][0x84/4] = arg1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8_4/func_ovl8_8037C4A4.s")
+void func_ovl8_8037C4A4(void** arg0, s32 unused)
+{
+	void (*temp_v0)();
+
+	temp_v0 = arg0[1];
+
+	if (temp_v0 != NULL)
+		temp_v0();
+
+	if (D_ovl8_8038A1C0 != 0)
+	{
+		func_80009CC8(D_ovl8_8038A1C0, D_8038EFD0, D_8038EFD4);
+		D_ovl8_8038A1C0 = 0;
+		D_ovl8_8038A1B8 = 1;
+	}
+	D_ovl8_8038A1BC = 0;
+}
 
 s32 func_ovl8_8037C510(Vec3i* arg0)
 {

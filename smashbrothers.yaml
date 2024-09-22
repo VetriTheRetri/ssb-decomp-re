@@ -427,7 +427,7 @@ segments:
     # ovl0 data
       - [0x050680, .data, lb/lbcommon]
       - [0x051730, .data, lb/lbparticle]
-      - [0x051740, data, lb/lbtransition]
+      - [0x051740, .data, lb/lbtransition]
     
     # ovl0 rodata
       - [0x0517F0, .rodata, lb/lbcommon]

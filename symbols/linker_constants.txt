@@ -172,6 +172,50 @@ _ovl65DataEnd = 0x80192fa0;
 _ovl65SegNoloadStart = 0x80192fa0;
 _ovl65SegNoloadEnd = 0x80193900;
 
+lLBTransitionAeroplaneFileID = 0x00000028;
+lLBTransitionAeroplaneDObjDesc = 0x0000B3F8;
+lLBTransitionAeroplaneAnimJoint = 0x0000B710;
+
+lLBTransitionCheckFileID = 0x00000029;
+lLBTransitionCheckDObjDesc = 0x00003E80;
+lLBTransitionCheckAnimJoint = 0x00004038;
+
+lLBTransitionGakubuthiFileID = 0x0000002A;
+lLBTransitionGakubuthiDObjDesc = 0x00000F98;
+lLBTransitionGakubuthiAnimJoint = 0x0000101C;
+
+lLBTransitionKannonFileID = 0x0000002B;
+lLBTransitionKannonDObjDesc = 0x00001F00;
+lLBTransitionKannonAnimJoint = 0x00001FB0;
+
+lLBTransitionStarFileID = 0x0000002C;
+lLBTransitionStarDObjDesc = 0x00002450;
+lLBTransitionStarAnimJoint = 0x000024D4;
+
+lLBTransitionSudare1FileID = 0x0000002D;
+lLBTransitionSudare1DObjDesc = 0x000074A8;
+lLBTransitionSudare1AnimJoint = 0x00007660;
+
+lLBTransitionSudare2FileID = 0x0000002E;
+lLBTransitionSudare2DObjDesc = 0x00003EA0;
+lLBTransitionSudare2AnimJoint = 0x00003F50;
+
+lLBTransitionCameraFileID = 0x00000033;
+lLBTransitionCameraDObjDesc = 0x00003F90;
+lLBTransitionCameraAnimJoint = 0x00004148;
+
+lLBTransitionBlockFileID = 0x00000030;
+lLBTransitionBlockDObjDesc = 0x00004E18;
+lLBTransitionBlockAnimJoint = 0x0000536C;
+
+lLBTransitionRotScaleFileID = 0x00000031;
+lLBTransitionRotScaleDObjDesc = 0x00000F98;
+lLBTransitionRotScaleAnimJoint = 0x0000101C;
+
+lLBTransitionCurtainFileID = 0x00000032;
+lLBTransitionCurtainDObjDesc = 0x00007AE0;
+lLBTransitionCurtainAnimJoint = 0x00007C98;
+
 lGRWallpaperTraining0Sprite = 0x00020718;
 lGRWallpaperTraining0BitmapPointer = 0x0002074C;
 

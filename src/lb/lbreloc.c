@@ -145,7 +145,7 @@ void lbRelocLoadAndRelocFile(u32 file_id, void *ram_dst, u32 bytes_num, s32 loc)
     u8 file_ids[16];
     uintptr_t data_rom_offset;
 
-    data_rom_offset = (unsigned) sLBRelocInternBuf.rom_table_hi + (sLBRelocCurrentTableEntry->data_offset & ~0x80000000);
+    data_rom_offset =  sLBRelocInternBuf.rom_table_hi + (sLBRelocCurrentTableEntry->data_offset & ~0x80000000);
 
     if (sLBRelocCurrentTableEntry->data_offset >> 31)
     {
@@ -255,11 +255,11 @@ size_t lbRelocGetExternBytesNum(u32 file_id)
         
     sLBRelocExternFileIDs[sLBRelocExternFileIDsNum++] = file_id;
         
-    rom_end = (void*) ((unsigned)sLBRelocInternBuf.rom_table_hi + (sLBRelocCurrentTableEntry->data_offset & ~mask)); // Ew...
+    rom_end = (void*) (sLBRelocInternBuf.rom_table_hi + (sLBRelocCurrentTableEntry->data_offset & ~mask)); // Ew...
     
     rom_extern_csr = (u16*) ((uintptr_t)rom_end + compressed_size);
     
-    end = (u16*) ((unsigned)sLBRelocInternBuf.rom_table_hi + (sLBRelocNextTableEntry->data_offset & ~0x80000000));
+    end = (u16*) (sLBRelocInternBuf.rom_table_hi + (sLBRelocNextTableEntry->data_offset & ~0x80000000));
 
     file_id_read = (void*) LBRELOC_CACHE_ALIGN((uintptr_t)file_ids_buf);
     

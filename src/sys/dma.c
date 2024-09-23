@@ -112,12 +112,12 @@ void syDmaLoadOverlay(struct syOverlay *ovl)
     }
 }
 
-void syDmaReadRom(u32 rom_src, void *ram_dst, u32 bytes_num) 
+void syDmaReadRom(uintptr_t rom_src, void *ram_dst, u32 bytes_num) 
 {
     syDmaCopy(gRomPiHandle, rom_src, (uintptr_t)ram_dst, bytes_num, OS_READ);
 }
 
-void syDmaRomWrite(void *ram_src, uintptr_t rom_dst, u32 bytes_num) 
+void syDmaWriteRom(void *ram_src, uintptr_t rom_dst, u32 bytes_num) 
 {
     syDmaCopy(gRomPiHandle, rom_dst, (uintptr_t)ram_src, bytes_num, OS_WRITE);
 }
@@ -143,12 +143,12 @@ OSPiHandle* syDmaSramPiInit(void)
     return &sSramPiHandle;
 }
 
-void syDmaSramRead(u32 rom_src, void *ram_dst, u32 nbytes)
+void syDmaReadSram(u32 rom_src, void *ram_dst, u32 nbytes)
 {
     syDmaCopy(&sSramPiHandle, rom_src, (uintptr_t)ram_dst, nbytes, OS_READ);
 }
 
-void syDmaSramWrite(void *ram_src, u32 rom_dst, u32 nbytes)
+void syDmaWriteSram(void *ram_src, u32 rom_dst, u32 nbytes)
 {
     syDmaCopy(&sSramPiHandle, rom_dst, (uintptr_t)ram_src, nbytes, OS_WRITE);
 }

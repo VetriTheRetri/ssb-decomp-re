@@ -36,18 +36,18 @@ sb32 lbBackupIsChecksumValid(void)
 void lbBackupWrite(void)
 {
     gSaveData.checksum = lbBackupCreateChecksum(&gSaveData);
-    syDmaSramWrite(&gSaveData, ALIGN(sizeof(lbBackupData),  0x0), sizeof(lbBackupData));
-    syDmaSramWrite(&gSaveData, ALIGN(sizeof(lbBackupData), 0x10), sizeof(lbBackupData));
+    syDmaWriteSram(&gSaveData, ALIGN(sizeof(lbBackupData),  0x0), sizeof(lbBackupData));
+    syDmaWriteSram(&gSaveData, ALIGN(sizeof(lbBackupData), 0x10), sizeof(lbBackupData));
 }
 
 // 0x800D4644
 sb32 lbBackupIsSramValid(void)
 {
-    syDmaSramRead(ALIGN(sizeof(lbBackupData), 0x0), &gSaveData, sizeof(lbBackupData));
+    syDmaReadSram(ALIGN(sizeof(lbBackupData), 0x0), &gSaveData, sizeof(lbBackupData));
 
     if (lbBackupIsChecksumValid() == FALSE)
     {
-        syDmaSramRead(ALIGN(sizeof(lbBackupData), 0x10), &gSaveData, sizeof(lbBackupData));
+        syDmaReadSram(ALIGN(sizeof(lbBackupData), 0x10), &gSaveData, sizeof(lbBackupData));
 
         if (lbBackupIsChecksumValid() == FALSE)
         {

@@ -5,8 +5,8 @@
 
 // When building with IDO, define some stdint types
 #ifdef __sgi
-typedef u32 uintptr_t;
-typedef s32 intptr_t;
+typedef unsigned int uintptr_t;
+typedef signed int intptr_t;
 #else
 #include <stdint.h>
 #endif /* __sgi */

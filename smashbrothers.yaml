@@ -418,7 +418,8 @@ segments:
     subsegments:
     # ovl0 text
       - [0x043220, c, lb/lbcommon]
-      - [0x049000, asm, lb/rldm]
+      - [0x049000, c, lb/lbreloc]
+      - [0x049A00, pad, pad0x049A00]
       - [0x049A20, c, lb/lbparticle]
       - [0x04F860, c, lb/lbfade]
       - [0x04FB10, c, lb/lbtransition]
@@ -431,9 +432,17 @@ segments:
     
     # ovl0 rodata
       - [0x0517F0, .rodata, lb/lbcommon]
-      - [0x0518C0, rodata, lb/rldm]
+      - [0x0518C0, .rodata, lb/lbreloc]
       - [0x0519A0, .rodata, lb/lbparticle]
       - [0x051C80, .rodata, lb/lbtransition]
+
+    # ovl0 bss
+      - { start: auto, type: .bss, name: lb/lbcommon, vram: 0x800D62B0 }
+      - { start: auto, type: .bss, name: lb/lbreloc, vram: 0x800D62E0 }
+      - { start: auto, type: .bss, name: lb/lbparticle, vram: 0x800D6350 }
+      - { start: auto, type: .bss, name: lb/lbfade, vram: 0x800D6460 }
+      - { start: auto, type: .bss, name: lb/lbtransition, vram: 0x800D6460 }
+      - { start: auto, type: .bss, name: lb/lbtransition, vram: 0x800D6480 }
 
   - name: ovl2
     type: code

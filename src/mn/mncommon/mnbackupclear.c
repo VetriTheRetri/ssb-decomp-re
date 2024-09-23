@@ -3,7 +3,7 @@
 #include <gm/gmsound.h>
 #include <sys/system_00.h>
 #include <sys/thread6.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 extern void* func_800269C0_275C0(u16);
 extern void func_80007080(void*, f32, f32, f32, f32);
@@ -94,7 +94,7 @@ s32 sMNBackupClearOptionConfirmAnimLength;
 s32 sMNBackupClearReturnTic;
 
 // 0x801330F0
-rdFileNode sMNBackupClearStatusBuf[24];
+lbFileNode sMNBackupClearStatusBuf[24];
 
 // 0x801331B0
 void *sMNBackupClearFiles[3];
@@ -769,26 +769,26 @@ void mnBackupClearProcRun(GObj *gobj)
 // 0x80132D34
 void mnBackupClearProcStart(void)
 {
-    rdSetup rd_setup;
+    lbRelocSetup rl_setup;
 
-    rd_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;
-    rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
-    rd_setup.file_heap = NULL;
-    rd_setup.file_heap_size = 0;
-    rd_setup.status_buf = sMNBackupClearStatusBuf;
-    rd_setup.status_buf_size = ARRAY_COUNT(sMNBackupClearStatusBuf);
-    rd_setup.force_buf = NULL;
-    rd_setup.force_buf_size = 0;
+    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+    rl_setup.file_heap = NULL;
+    rl_setup.file_heap_size = 0;
+    rl_setup.status_buf = sMNBackupClearStatusBuf;
+    rl_setup.status_buf_size = ARRAY_COUNT(sMNBackupClearStatusBuf);
+    rl_setup.force_buf = NULL;
+    rl_setup.force_buf_size = 0;
     
-    rdManagerInitSetup(&rd_setup);
-    rdManagerLoadFiles
+    lbRelocInitSetup(&rl_setup);
+    lbRelocGetLoadFilesNum
     (
         dMNBackupClearFileIDs,
         ARRAY_COUNT(dMNBackupClearFileIDs),
         sMNBackupClearFiles,
         gsMemoryAlloc
         (
-            rdManagerGetAllocSize
+            lbRelocGetAllocSize
             (
                 dMNBackupClearFileIDs,
                 ARRAY_COUNT(dMNBackupClearFileIDs)

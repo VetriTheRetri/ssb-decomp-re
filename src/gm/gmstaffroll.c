@@ -2,7 +2,7 @@
 #include <gm/gmsound.h>
 #include <sys/system_00.h>
 #include <sys/thread6.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 extern void hal_interpolation_cubic(Vec3f*, void*, f32);
 extern void syMatrixTraRotRpyRScaF(Mtx44f mf,f32 dx,f32 dy,f32 dz,f32 r,f32 p,f32 h,f32 sx,f32 sy,f32 sz);
@@ -239,7 +239,7 @@ u8 sGMStaffrollPlayer;
 s32 sGMStaffrollRollEndWait;
 
 // 0x8013A910
-rdFileNode sGMStaffrollStatusBuf[32];
+lbFileNode sGMStaffrollStatusBuf[32];
 
 // 0x8013AA10
 void *sGMStaffrollFiles[1];
@@ -2111,10 +2111,10 @@ void gmStaffrollMakeScrollGObj(void)
 // 0x801349DC
 void gmStaffrollSetupFiles(void)
 {
-	rdSetup rldm_setup;
+	lbRelocSetup rldm_setup;
 
-	rldm_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;
-	rldm_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
+	rldm_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rldm_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
 	rldm_setup.file_heap = NULL;
 	rldm_setup.file_heap_size = 0;
 	rldm_setup.status_buf = sGMStaffrollStatusBuf;
@@ -2122,8 +2122,8 @@ void gmStaffrollSetupFiles(void)
 	rldm_setup.force_buf = NULL;
 	rldm_setup.force_buf_size = 0;
 
-	rdManagerInitSetup(&rldm_setup);
-	rdManagerLoadFiles(dGMStaffrollFileIDs, ARRAY_COUNT(dGMStaffrollFileIDs), sGMStaffrollFiles, gsMemoryAlloc(rdManagerGetAllocSize(dGMStaffrollFileIDs, ARRAY_COUNT(dGMStaffrollFileIDs)), 0x10));
+	lbRelocInitSetup(&rldm_setup);
+	lbRelocGetLoadFilesNum(dGMStaffrollFileIDs, ARRAY_COUNT(dGMStaffrollFileIDs), sGMStaffrollFiles, gsMemoryAlloc(lbRelocGetAllocSize(dGMStaffrollFileIDs, ARRAY_COUNT(dGMStaffrollFileIDs)), 0x10));
 }
 
 // 0x80134A70

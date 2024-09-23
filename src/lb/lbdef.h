@@ -1,6 +1,8 @@
 #ifndef _LBDEF_H_
 #define _LBDEF_H_
 
+#define LBRELOC_CACHE_ALIGN(x) (((x) + 0xf) & ~0xf)
+
 #define LBPARTICLE_BANKS_NUM_MAX        8
 #define LBPARTICLE_ATTACH_DOBJ_NUM_MAX  8
 
@@ -154,6 +156,15 @@
 #define LBBACKUP_ERROR_1PGAMEMARIO 	(1 << nLBBackupError1PGameMario) 			// 0x4 - Forces Mario in 1P Game
 #define LBBACKUP_ERROR_BATTLECASTLE (1 << nLBBackupErrorVSBattleCastle) 	    // 0x8 - Forces Peach's Castle in VS Mode
 
+typedef enum lbFileLocation
+{
+    nLBFileLocationExtern,
+    nLBFileLocationDefault,
+    nLBFileLocationForce,
+	nLBFileLocationEnumMax
+
+} lbFileLocation;
+
 typedef enum lbBackupUnlock
 {
 	nLBBackupUnlockLuigi,	 			    // Luigi
@@ -176,6 +187,11 @@ typedef enum lbBackupErrors
 
 } lbBackupErrors;
 
+typedef struct lbRelocSetup					lbRelocSetup;
+typedef union  lbRelocDesc					lbRelocDesc;
+typedef struct lbInternBuf					lbInternBuf;
+typedef struct lbFileNode					lbFileNode;
+typedef struct lbTableEntry 				lbTableEntry;
 typedef struct lbScript                     lbScript;
 typedef struct lbScriptDesc                 lbScriptDesc;
 typedef struct lbTexture                    lbTexture;

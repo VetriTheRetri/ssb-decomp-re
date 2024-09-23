@@ -1,5 +1,5 @@
 #include <sys/objtypes.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 #include <sys/objdef.h>
 #include <sys/obj.h>
 #include <gm/gmsound.h>
@@ -36,18 +36,18 @@ itCreateDesc dItTargetItemDesc = {
 };
 
 // 8018F3B0
-rdFileNode gOverlay6StatusBuf[100];
+lbFileNode gOverlay6StatusBuf[100];
 
 // 8018F6D0
-rdFileNode gOverlay6ForceBuf[7];
+lbFileNode gOverlay6ForceBuf[7];
 
 // 8018ED70
 void func_ovl6_8018ED70()
 {
-	rdSetup rldm_setup;
+	lbRelocSetup rldm_setup;
 
-	rldm_setup.table_addr = &lRDManagerTableAddr;
-	rldm_setup.table_files_num = &lRDManagerTableFilesNum;
+	rldm_setup.table_addr = &lLBRelocTableAddr;
+	rldm_setup.table_files_num = &lLBRelocTableFilesNum;
 	rldm_setup.file_heap = NULL;
 	rldm_setup.file_heap_size = 0;
 	rldm_setup.status_buf = gOverlay6StatusBuf;
@@ -55,9 +55,9 @@ void func_ovl6_8018ED70()
 	rldm_setup.force_buf = gOverlay6ForceBuf;
 	rldm_setup.force_buf_size = ARRAY_COUNT(gOverlay6ForceBuf);
 
-	rdManagerInitSetup(&rldm_setup);
-	rdManagerLoadFiles(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles,
-						 gsMemoryAlloc(rdManagerGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
+	lbRelocInitSetup(&rldm_setup);
+	lbRelocGetLoadFilesNum(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles,
+						 gsMemoryAlloc(lbRelocGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
 }
 
 // 8018EE10

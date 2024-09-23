@@ -1,7 +1,7 @@
 #include <mn/menu.h>
 #include <gm/gmsound.h>
 #include <sc/scene.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 #include <sys/system_00.h>
 #include <sys/thread6.h>
 
@@ -85,7 +85,7 @@ f32 sMNSoundTestSelectIDPositionsX[nMNSoundTestOptionEnumMax];      // X-Positio
 s32 sMNSoundTestFadeOutWait;                                        // Frames to wait until fadeout is complete
 
 // 0x80134368
-rdFileNode sMNSoundTestStatusBuf[32];
+lbFileNode sMNSoundTestStatusBuf[32];
 
 // 0x80134468
 void *sMNSoundTestFiles[5];
@@ -1017,26 +1017,26 @@ void mnSoundTestProcRun(GObj *gobj)
 // 0x801322B8
 void mnSoundTestSetupFiles(void)
 {
-    rdSetup rd_setup;
+    lbRelocSetup rl_setup;
 
-    rd_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;
-    rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
-    rd_setup.file_heap = NULL;
-    rd_setup.file_heap_size = 0;
-    rd_setup.status_buf = sMNSoundTestStatusBuf;
-    rd_setup.status_buf_size = ARRAY_COUNT(sMNSoundTestStatusBuf);
-    rd_setup.force_buf = NULL;
-    rd_setup.force_buf_size = 0;
+    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+    rl_setup.file_heap = NULL;
+    rl_setup.file_heap_size = 0;
+    rl_setup.status_buf = sMNSoundTestStatusBuf;
+    rl_setup.status_buf_size = ARRAY_COUNT(sMNSoundTestStatusBuf);
+    rl_setup.force_buf = NULL;
+    rl_setup.force_buf_size = 0;
 
-    rdManagerInitSetup(&rd_setup);
-    rdManagerLoadFiles
+    lbRelocInitSetup(&rl_setup);
+    lbRelocGetLoadFilesNum
     (
         dMNSoundTestFileIDs,
         ARRAY_COUNT(dMNSoundTestFileIDs),
         sMNSoundTestFiles,
         gsMemoryAlloc
         (
-            rdManagerGetAllocSize
+            lbRelocGetAllocSize
             (
                 dMNSoundTestFileIDs,
                 ARRAY_COUNT(dMNSoundTestFileIDs)

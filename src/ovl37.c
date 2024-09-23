@@ -3,7 +3,7 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 #include <sys/system_00.h>
 #include <sys/objdraw.h>
 
@@ -43,7 +43,7 @@ ftKeyCommand dMvOpeningDKInputSeq[] =
 };
 
 // 8018E0BC
-rdFileID D_ovl37_8018E0BC[2] = {
+u32 D_ovl37_8018E0BC[2] = {
 
 	0x25, 0x41
 };
@@ -80,10 +80,10 @@ CameraDesc dMvOpeningDKCameraDescAdjustedStart;
 CameraDesc dMvOpeningDKCameraDescAdjustedEnd;
 
 // 8018E228
-rdFileNode D_ovl37_8018E228[48];
+lbFileNode D_ovl37_8018E228[48];
 
 // 8018E3A8
-rdFileNode D_ovl37_8018E3A8[7];
+lbFileNode D_ovl37_8018E3A8[7];
 
 // 8018E3E0
 uintptr_t gMvOpeningDKFilesArray[2];
@@ -95,18 +95,18 @@ scBattleState gMvOpeningDKBattleState;
 // 8018D0C0
 void mvOpeningDKLoadFiles()
 {
-	rdSetup rldmSetup;
+	lbRelocSetup rldmSetup;
 
 	rldmSetup.table_addr = &D_NF_001AC870;
 	rldmSetup.table_files_num = &D_NF_00000854;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (rdFileNode*) &D_ovl37_8018E228;
+	rldmSetup.status_buf = (lbFileNode*) &D_ovl37_8018E228;
 	rldmSetup.status_buf_size = 0x30;
-	rldmSetup.force_buf = (rdFileNode*) &D_ovl37_8018E3A8;
+	rldmSetup.force_buf = (lbFileNode*) &D_ovl37_8018E3A8;
 	rldmSetup.force_buf_size = 7;
-	rdManagerInitSetup(&rldmSetup);
-	rdManagerLoadFiles(D_ovl37_8018E0BC, ARRAY_COUNT(D_ovl37_8018E0BC), gMvOpeningDKFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl37_8018E0BC, ARRAY_COUNT(D_ovl37_8018E0BC)), 0x10));
+	lbRelocInitSetup(&rldmSetup);
+	lbRelocGetLoadFilesNum(D_ovl37_8018E0BC, ARRAY_COUNT(D_ovl37_8018E0BC), gMvOpeningDKFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl37_8018E0BC, ARRAY_COUNT(D_ovl37_8018E0BC)), 0x10));
 }
 
 // 8018D160

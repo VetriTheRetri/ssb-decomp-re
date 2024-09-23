@@ -3,7 +3,7 @@
 #include <mn/menu.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 extern void func_800A26B8();
 
@@ -130,10 +130,10 @@ GObj *sSC1PContinueScoreGObj;
 s32 sSC1PContinueOptionChangeWait;
 
 // 0x80134370
-rdFileNode sSC1PContinueStatusBuf[48];
+lbFileNode sSC1PContinueStatusBuf[48];
 
 // 0x801344F0
-rdFileNode sSC1PContinueForceBuf[7];
+lbFileNode sSC1PContinueForceBuf[7];
 
 // 0x80134528
 void *sSC1PContinueFiles[5];
@@ -1195,26 +1195,26 @@ void sc1PContinueProcRun(GObj *gobj)
 void sc1PContinueProcStart(void)
 {
     s32 unused;
-    rdSetup rd_setup;
+    lbRelocSetup rl_setup;
 
-    rd_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;
-    rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
-    rd_setup.file_heap = NULL;
-    rd_setup.file_heap_size = 0;
-    rd_setup.status_buf = sSC1PContinueStatusBuf;
-    rd_setup.status_buf_size = ARRAY_COUNT(sSC1PContinueStatusBuf);
-    rd_setup.force_buf = sSC1PContinueForceBuf;
-    rd_setup.force_buf_size = ARRAY_COUNT(sSC1PContinueForceBuf);
+    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+    rl_setup.file_heap = NULL;
+    rl_setup.file_heap_size = 0;
+    rl_setup.status_buf = sSC1PContinueStatusBuf;
+    rl_setup.status_buf_size = ARRAY_COUNT(sSC1PContinueStatusBuf);
+    rl_setup.force_buf = sSC1PContinueForceBuf;
+    rl_setup.force_buf_size = ARRAY_COUNT(sSC1PContinueForceBuf);
 
-    rdManagerInitSetup(&rd_setup);
-    rdManagerLoadFiles
+    lbRelocInitSetup(&rl_setup);
+    lbRelocGetLoadFilesNum
     (
         dSC1PContinueFileIDs,
         ARRAY_COUNT(dSC1PContinueFileIDs),
         sSC1PContinueFiles,
         gsMemoryAlloc
         (
-            rdManagerGetAllocSize
+            lbRelocGetAllocSize
             (
                 dSC1PContinueFileIDs,
                 ARRAY_COUNT(dSC1PContinueFileIDs)

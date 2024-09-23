@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 // Externs
 extern intptr_t FILE_041_LINK_CAMERA_PARAMS_OFFSET; // 0xC0
@@ -34,7 +34,7 @@ ftKeyCommand dMvOpeningLinkGameKey[] = {
     FTKEY_EVENT_END()               // 0x0000
 };
 
-rdFileID D_ovl40_8018E0B0[2] = {
+u32 D_ovl40_8018E0B0[2] = {
 
 	0x00000025, 0x00000041
 };
@@ -78,10 +78,10 @@ CameraDesc dMvOpeningLinkCameraDescAdjustedStart;
 CameraDesc dMvOpeningLinkCameraDescAdjustedEnd;
 
 // 8018E228
-rdFileNode D_ovl40_8018E228[48];
+lbFileNode D_ovl40_8018E228[48];
 
 // 8018E3A8
-rdFileNode D_ovl40_8018E3A8[7];
+lbFileNode D_ovl40_8018E3A8[7];
 
 // 8018E3E0
 uintptr_t gMvOpeningLinkFilesArray[2];
@@ -93,18 +93,18 @@ scBattleState gMvOpeningLinkBattleState;
 // 8018D0C0
 void mvOpeningLinkLoadFiles()
 {
-	rdSetup rldmSetup;
+	lbRelocSetup rldmSetup;
 
-	rldmSetup.table_addr = &lRDManagerTableAddr;
-	rldmSetup.table_files_num = &lRDManagerTableFilesNum;
+	rldmSetup.table_addr = &lLBRelocTableAddr;
+	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
 	rldmSetup.status_buf = D_ovl40_8018E228;
 	rldmSetup.status_buf_size = ARRAY_COUNT(D_ovl40_8018E228);
 	rldmSetup.force_buf = D_ovl40_8018E3A8;
 	rldmSetup.force_buf_size = ARRAY_COUNT(D_ovl40_8018E3A8);
-	rdManagerInitSetup(&rldmSetup);
-	rdManagerLoadFiles(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0), gMvOpeningLinkFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0)), 0x10));
+	lbRelocInitSetup(&rldmSetup);
+	lbRelocGetLoadFilesNum(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0), gMvOpeningLinkFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0)), 0x10));
 }
 
 // 8018D160

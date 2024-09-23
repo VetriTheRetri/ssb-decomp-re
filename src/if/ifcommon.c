@@ -1935,7 +1935,7 @@ void ifCommonItemArrowSetAttr(void)
 {
     Sprite *sprite = sIFCommonItemArrowSprite =
 
-    gcGetDataFromFile(Sprite*, rdManagerGetFileWithExternHeap((intptr_t)&D_NF_00000057, gsMemoryAlloc(rdManagerGetFileSize((intptr_t)&D_NF_00000057), 0x10)), &lIFCommonItemArrow);
+    gcGetDataFromFile(Sprite*, lbRelocGetFileExternHeap((intptr_t)&D_NF_00000057, gsMemoryAlloc(lbRelocGetFileSize((intptr_t)&D_NF_00000057), 0x10)), &lIFCommonItemArrow);
 
     sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 

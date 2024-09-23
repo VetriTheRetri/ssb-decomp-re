@@ -4037,12 +4037,12 @@ void mpCollisionInitGroundData(void)
     gMPCollisionGroundData = gcGetDataFromFile
     (
         mpGroundData*,
-        (uintptr_t)rdManagerGetFileWithExternHeap
+        (uintptr_t)lbRelocGetFileExternHeap
         (
             dMPCollisionGroundFileInfos[gBattleState->gr_kind].file_id, 
             gsMemoryAlloc
             (
-                rdManagerGetFileSize(dMPCollisionGroundFileInfos[gBattleState->gr_kind].file_id),
+                lbRelocGetFileSize(dMPCollisionGroundFileInfos[gBattleState->gr_kind].file_id),
                 0x10
             )
         ),

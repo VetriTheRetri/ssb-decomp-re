@@ -2,7 +2,7 @@
 #include <mv/movie.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 extern void leoInitUnit_atten();
 extern u32 func_8000092C();
@@ -49,10 +49,10 @@ s32 sMVOpeningStandoffPad0x801329D8;
 s32 sMVOpeningStandoffUnused0x801329DC;
 
 // 0x801329E0
-rdFileNode sMVOpeningStandoffStatusBuf[48];
+lbFileNode sMVOpeningStandoffStatusBuf[48];
 
 // 0x80132B60
-rdFileNode sMVOpeningStandoffForceBuf[7];
+lbFileNode sMVOpeningStandoffForceBuf[7];
 
 // 0x80132B98
 void *sMVOpeningStandoffFiles[2];
@@ -559,26 +559,26 @@ void mvOpeningStandoffProcRun(GObj *gobj)
 void mvOpeningStandoffProcStart(void)
 {
     s32 unused;
-    rdSetup rd_setup;
+    lbRelocSetup rl_setup;
 
-    rd_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;
-    rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
-    rd_setup.file_heap = NULL;
-    rd_setup.file_heap_size = 0;
-    rd_setup.status_buf = sMVOpeningStandoffStatusBuf;
-    rd_setup.status_buf_size = ARRAY_COUNT(sMVOpeningStandoffStatusBuf);
-    rd_setup.force_buf = sMVOpeningStandoffForceBuf;
-    rd_setup.force_buf_size = ARRAY_COUNT(sMVOpeningStandoffForceBuf);
+    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+    rl_setup.file_heap = NULL;
+    rl_setup.file_heap_size = 0;
+    rl_setup.status_buf = sMVOpeningStandoffStatusBuf;
+    rl_setup.status_buf_size = ARRAY_COUNT(sMVOpeningStandoffStatusBuf);
+    rl_setup.force_buf = sMVOpeningStandoffForceBuf;
+    rl_setup.force_buf_size = ARRAY_COUNT(sMVOpeningStandoffForceBuf);
 
-    rdManagerInitSetup(&rd_setup);
-    rdManagerLoadFiles
+    lbRelocInitSetup(&rl_setup);
+    lbRelocGetLoadFilesNum
     (
         dMVOpeningStandoffFileIDs,
         ARRAY_COUNT(dMVOpeningStandoffFileIDs),
         sMVOpeningStandoffFiles,
         gsMemoryAlloc
         (
-            rdManagerGetAllocSize
+            lbRelocGetAllocSize
             (
                 dMVOpeningStandoffFileIDs,
                 ARRAY_COUNT(dMVOpeningStandoffFileIDs)

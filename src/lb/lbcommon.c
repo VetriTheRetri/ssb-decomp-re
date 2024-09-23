@@ -14,16 +14,35 @@ extern u16 gSinTable[/* */];
 //                               //
 // // // // // // // // // // // //
 
-extern u16 sLBCommonExternSpriteAttr;
-extern u16 sLBCommonExternBitmapFmt;
-extern void *sLBCommonPrevBitmapBuf;
-extern void *sLBCommonPrevSpriteLUT;
-extern s32 sLBCommonScissorXMax;
-extern s32 sLBCommonScissorYMax;
-extern s32 sLBCommonScissorXMin;
-extern s32 sLBCommonScissorYMin;
+// 0x800D62B0
+u16 sLBCommonExternSpriteAttr;
 
-extern Vec3f D_800D62D0;
+// 0x800D62B2
+u16 sLBCommonExternBitmapFmt;
+
+// 0x800D62B4
+void *sLBCommonPrevBitmapBuf;
+
+// 0x800D62B8
+void *sLBCommonPrevSpriteLUT;
+
+// 0x800D62BC
+s32 sLBCommonScissorXMax;
+
+// 0x800D62C0
+s32 sLBCommonScissorYMax;
+
+// 0x800D62C4
+s32 sLBCommonScissorXMin;
+
+// 0x800D62C8
+s32 sLBCommonScissorYMin;
+
+// 0x800D62CC
+s32 sLBCommonPad0x800D62CC;
+
+// 0x800D62D0
+Vec3f gLBCommonScale;
 
 // // // // // // // // // // // //
 //                               //
@@ -1396,9 +1415,9 @@ sb32 lbCommonFighterPartsProcMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
         }
         else
         {
-            ft_parts->vec_scale.x = dobj->scale.vec.f.x * D_800D62D0.x;
-            ft_parts->vec_scale.y = dobj->scale.vec.f.y * D_800D62D0.y;
-            ft_parts->vec_scale.z = dobj->scale.vec.f.z * D_800D62D0.z;
+            ft_parts->vec_scale.x = dobj->scale.vec.f.x * gLBCommonScale.x;
+            ft_parts->vec_scale.y = dobj->scale.vec.f.y * gLBCommonScale.y;
+            ft_parts->vec_scale.z = dobj->scale.vec.f.z * gLBCommonScale.z;
 
             lbCommonMatrixTraRotScaInv
             (
@@ -1409,15 +1428,15 @@ sb32 lbCommonFighterPartsProcMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
                 dobj->rotate.vec.f.x,
                 dobj->rotate.vec.f.y,
                 dobj->rotate.vec.f.z,
-                D_800D62D0.x,
-                D_800D62D0.y,
-                D_800D62D0.z,
+                gLBCommonScale.x,
+                gLBCommonScale.y,
+                gLBCommonScale.z,
                 ft_parts->vec_scale.x,
                 ft_parts->vec_scale.y,
                 ft_parts->vec_scale.z
             );
         }
-        D_800D62D0 = ft_parts->vec_scale;
+        gLBCommonScale = ft_parts->vec_scale;
     }
     return 0;
 }

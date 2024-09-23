@@ -5,7 +5,7 @@
 #include <sc/scene.h>
 #include <sys/system_00.h>
 #include <buttons.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 #include "ovl7.h"
 
@@ -156,10 +156,10 @@ scBattleState gTrainingModeBattleState;
 scTrainingMenu gTrainingModeStruct;
 
 // 80190C40
-rdFileNode gOverlay7StatusBuf[100];
+lbFileNode gOverlay7StatusBuf[100];
 
 // 80190F60
-rdFileNode gOverlay7ForceBuf[7];
+lbFileNode gOverlay7ForceBuf[7];
 
 
 // 8018D0C0
@@ -575,8 +575,8 @@ void func_ovl7_8018DA98()
 // 8018DD0C
 void scTrainingMode_LoadSprites()
 {
-	void* addr = rdManagerGetFileWithExternHeap((u32)&D_NF_000000FE,
-												  gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000FE), 0x10));
+	void* addr = lbRelocGetFileExternHeap((u32)&D_NF_000000FE,
+												  gsMemoryAlloc(lbRelocGetFileSize((u32)&D_NF_000000FE), 0x10));
 	gTrainingModeStruct.display_label_sprites = (void*)((uintptr_t)addr + (intptr_t)&D_NF_00000000);
 	gTrainingModeStruct.display_option_sprites = (void*)((uintptr_t)addr + (intptr_t)&D_NF_00000020);
 	gTrainingModeStruct.menu_label_sprites = (void*)((uintptr_t)addr + (intptr_t)&D_NF_000000BC);
@@ -588,15 +588,15 @@ void scTrainingMode_LoadSprites()
 // 8018DDB0
 void scTrainingMode_SetBackgroundSprite()
 {
-	gMPCollisionGroundData->wallpaper
-		= (void*)(rldm_get_file_external_force_heap(
-					  scTrainingMode_Files_BackgroundImageInfo
-						  [scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]]
-							  .file_id,
-					  (void*)((uintptr_t)gMPCollisionGroundData->wallpaper - (intptr_t)D_ovl7_801907B8[gBattleState->gr_kind]))
-				  + scTrainingMode_Files_BackgroundImageInfo
-						[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]]
-							.addr);
+	gMPCollisionGroundData->wallpaper = (void*)
+	(
+		(uintptr_t)lbRelocGetFileExternForceBufHeap
+		(
+			scTrainingMode_Files_BackgroundImageInfo[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]].file_id,
+			(void*)((uintptr_t)gMPCollisionGroundData->wallpaper - (intptr_t)D_ovl7_801907B8[gBattleState->gr_kind])
+		)
+		+ scTrainingMode_Files_BackgroundImageInfo[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]].addr
+	);
 }
 
 // 8018DE60
@@ -1598,10 +1598,10 @@ void scManager_TrainingMode_InitScene()
 // 801906D0
 void scTrainingMode_LoadFiles()
 {
-	rdSetup rldm_setup;
+	lbRelocSetup rldm_setup;
 
-	rldm_setup.table_addr = &lRDManagerTableAddr;
-	rldm_setup.table_files_num = &lRDManagerTableFilesNum;
+	rldm_setup.table_addr = &lLBRelocTableAddr;
+	rldm_setup.table_files_num = &lLBRelocTableFilesNum;
 	rldm_setup.file_heap = NULL;
 	rldm_setup.file_heap_size = 0;
 	rldm_setup.status_buf = gOverlay7StatusBuf;
@@ -1609,7 +1609,7 @@ void scTrainingMode_LoadFiles()
 	rldm_setup.force_buf = gOverlay7ForceBuf;
 	rldm_setup.force_buf_size = ARRAY_COUNT(gOverlay7ForceBuf);
 
-	rdManagerInitSetup(&rldm_setup);
-	rdManagerLoadFiles(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles,
-						 gsMemoryAlloc(rdManagerGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
+	lbRelocInitSetup(&rldm_setup);
+	lbRelocGetLoadFilesNum(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles,
+						 gsMemoryAlloc(lbRelocGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
 }

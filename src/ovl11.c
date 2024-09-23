@@ -1,7 +1,7 @@
 #include <sys/develop.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 #include <sys/system_00.h>
 
 // Externs
@@ -52,7 +52,7 @@ s32 gMNNoControllerFilesArray[1];
 u32 D_ovl11_800D67D8[200];
 
 // 800D6AF8
-rdFileNode D_ovl11_800D6AF8;
+lbFileNode D_ovl11_800D6AF8;
 
 
 // 800D6490

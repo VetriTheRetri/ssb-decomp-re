@@ -3,7 +3,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <gr/ground.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 #include <sys/system_00.h>
 
 
@@ -47,7 +47,7 @@ ftKeyCommand dMvOpeningSamusInputSeq[] =
 };
 
 // 8018E164
-rdFileID D_ovl38_8018E164[2] = {
+u32 D_ovl38_8018E164[2] = {
 
 	0x25, 0x41
 };
@@ -88,10 +88,10 @@ CameraDesc dMvOpeningSamusCameraSettingsAdjustedStart;
 CameraDesc dMvOpeningSamusCameraSettingsAdjustedEnd;
 
 // 8018E2D8
-rdFileNode D_ovl38_8018E2D8[48];
+lbFileNode D_ovl38_8018E2D8[48];
 
 // 8018E458
-rdFileNode D_ovl38_8018E458[7];
+lbFileNode D_ovl38_8018E458[7];
 
 // 8018E490
 uintptr_t gMvOpeningSamusFilesArray[2];
@@ -103,18 +103,18 @@ scBattleState gMvOpeningSamusBattleState;
 // 8018D0C0
 void mvOpeningSamusLoadFiles()
 {
-	rdSetup rldmSetup;
+	lbRelocSetup rldmSetup;
 
 	rldmSetup.table_addr = &D_NF_001AC870;
 	rldmSetup.table_files_num = &D_NF_00000854;
 	rldmSetup.file_heap = 0;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (rdFileNode*) &D_ovl38_8018E2D8;
+	rldmSetup.status_buf = (lbFileNode*) &D_ovl38_8018E2D8;
 	rldmSetup.status_buf_size = 0x30;
-	rldmSetup.force_buf = (rdFileNode*) &D_ovl38_8018E458;
+	rldmSetup.force_buf = (lbFileNode*) &D_ovl38_8018E458;
 	rldmSetup.force_buf_size = 7;
-	rdManagerInitSetup(&rldmSetup);
-	rdManagerLoadFiles(D_ovl38_8018E164, ARRAY_COUNT(D_ovl38_8018E164), gMvOpeningSamusFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl38_8018E164, ARRAY_COUNT(D_ovl38_8018E164)), 0x10));
+	lbRelocInitSetup(&rldmSetup);
+	lbRelocGetLoadFilesNum(D_ovl38_8018E164, ARRAY_COUNT(D_ovl38_8018E164), gMvOpeningSamusFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl38_8018E164, ARRAY_COUNT(D_ovl38_8018E164)), 0x10));
 }
 
 // 8018D160

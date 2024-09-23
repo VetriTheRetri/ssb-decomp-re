@@ -1,7 +1,7 @@
 #include <mn/menu.h>
 #include <sc/scene.h> // includes sys/obj.h
 #include <sys/system_00.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 
 extern void func_80007080(void*, f32, f32, f32, f32);
@@ -25,7 +25,7 @@ extern intptr_t lMNN64LogoSprite;			// 0x000073C0
 s32 sMNN64Pad0x80132040[2];
 
 // 0x80132048
-rdFileNode sMNN64StatusBuf[5];
+lbFileNode sMNN64StatusBuf[5];
 
 // 0x80132070 - Delay frames before N64 logo can be skipped
 s32 sMNN64SkipAllowWait;
@@ -178,7 +178,7 @@ void mnN64ActorProcRun(GObj *gobj)
 // 0x80131CB8
 void mnN64ProcStart(void)
 {
-	rdSetup rd_setup;
+	lbRelocSetup rl_setup;
 	Camera *cam;
 	GObj *gobj;
 	SObj *sobj;
@@ -188,16 +188,16 @@ void mnN64ProcStart(void)
 	sMNN64SkipAllowWait = 8;
 	sMNN64IsProceedOpening = FALSE;
 
-	rd_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;
-	rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
-	rd_setup.file_heap = NULL;
-	rd_setup.file_heap_size = 0;
-	rd_setup.status_buf = sMNN64StatusBuf;
-	rd_setup.status_buf_size = ARRAY_COUNT(sMNN64StatusBuf);
-	rd_setup.force_buf = NULL;
-	rd_setup.force_buf_size = 0;
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buf = sMNN64StatusBuf;
+	rl_setup.status_buf_size = ARRAY_COUNT(sMNN64StatusBuf);
+	rl_setup.force_buf = NULL;
+	rl_setup.force_buf_size = 0;
 
-	rdManagerInitSetup(&rd_setup);
+	lbRelocInitSetup(&rl_setup);
 
 	gcMakeGObjSPAfter(0, mnN64ActorProcRun, 0, GOBJ_LINKORDER_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
@@ -231,12 +231,12 @@ void mnN64ProcStart(void)
 	sprite = gcGetDataFromFile
 	(
 		Sprite*,
-		rdManagerGetFileWithExternHeap
+		lbRelocGetFileExternHeap
 		(
 			&D_NF_000000C2,
 			gsMemoryAlloc
 			(
-				rdManagerGetFileSize
+				lbRelocGetFileSize
 				(
 					&D_NF_000000C2
 				),

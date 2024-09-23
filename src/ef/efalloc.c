@@ -106,8 +106,8 @@ s32 efAllocGetAddParticleBankID(uintptr_t scripts_lo, uintptr_t scripts_hi, uint
     script_desc = gsMemoryAlloc(script_size, 0x8);
     texture_desc = gsMemoryAlloc(texture_size, 0x8);
 
-    syDmaRomRead(scripts_lo, script_desc, script_size);
-    syDmaRomRead(textures_lo, texture_desc, texture_size);
+    syDmaReadRom(scripts_lo, script_desc, script_size);
+    syDmaReadRom(textures_lo, texture_desc, texture_size);
 
     lbParticleSetupBankID(sEFAllocParticleBanksNum++, script_desc, texture_desc);
 

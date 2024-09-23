@@ -90,9 +90,9 @@ union ftAnimDesc
 
 struct ftMotionDesc
 {
-    intptr_t anim_file_id;  // Animation file ID
+    u32 anim_file_id;       // Animation file ID
     intptr_t offset;        // Offset?
-    ftAnimDesc anim_desc; // Animation flags
+    ftAnimDesc anim_desc;   // Animation flags
 };
 
 struct ftMotionDescArray
@@ -1265,7 +1265,7 @@ struct ftStruct
     ftData *ft_data;
     ftAttributes *attributes;
 
-    void **figatree;           // Main animation bank?
+    void **figatree;                // Main animation bank?
     void **figatree_heap;           // Load animations into this?
 
     void (*proc_update)(GObj*);

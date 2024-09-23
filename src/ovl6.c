@@ -4,7 +4,7 @@
 #include <if/interface.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 #include "ovl6.h"
 
@@ -296,8 +296,8 @@ void func_ovl6_8018D0F0()
 // 8018D330
 void func_ovl6_8018D330()
 {
-	gBonusGameFileData[0] = rdManagerGetFileWithExternHeap(
-		(u32)&D_NF_000000FD, gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_000000FD), 0x10));
+	gBonusGameFileData[0] = lbRelocGetFileExternHeap(
+		(u32)&D_NF_000000FD, gsMemoryAlloc(lbRelocGetFileSize((u32)&D_NF_000000FD), 0x10));
 }
 
 // 8018D374
@@ -376,8 +376,8 @@ void func_ovl6_8018D5C8()
 // 8018D5E8
 void func_ovl6_8018D5E8()
 {
-	gGRCommonStruct.bonus2.unk_bonus2_0x4 = rdManagerGetFileWithExternHeap(
-		(u32)&D_NF_00000088, gsMemoryAlloc(rdManagerGetFileSize((u32)&D_NF_00000088), 0x10U));
+	gGRCommonStruct.bonus2.unk_bonus2_0x4 = lbRelocGetFileExternHeap(
+		(u32)&D_NF_00000088, gsMemoryAlloc(lbRelocGetFileSize((u32)&D_NF_00000088), 0x10U));
 }
 
 // 8018D62C
@@ -620,7 +620,7 @@ void scBonusGame_InitBonus1TargetSprites()
 	s32 i;
 
 	sprites
-		= rdManagerGetFileWithExternHeap(&D_NF_00000097, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000097), 0x10));
+		= lbRelocGetFileExternHeap(&D_NF_00000097, gsMemoryAlloc(lbRelocGetFileSize(&D_NF_00000097), 0x10));
 	gGRCommonStruct.bonus1.interface_gobj = interface_gobj
 		= gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xBU, 0x80000000);
 	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 0x17, 0x80000000, -1);
@@ -643,7 +643,7 @@ void scBonusGame_InitBonus2PlatformSprites()
 	s32 i;
 
 	sprites
-		= rdManagerGetFileWithExternHeap(&D_NF_00000097, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000097), 0x10));
+		= lbRelocGetFileExternHeap(&D_NF_00000097, gsMemoryAlloc(lbRelocGetFileSize(&D_NF_00000097), 0x10));
 	gGRCommonStruct.bonus2.interface_gobj = interface_gobj
 		= gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xBU, 0x80000000);
 	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 0x17, 0x80000000, -1);

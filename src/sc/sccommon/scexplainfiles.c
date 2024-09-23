@@ -1,7 +1,7 @@
 
 
 #include <gm/generic.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -10,10 +10,10 @@
 // // // // // // // // // // // //
 
 // 0x8018EA30
-rdFileNode sSCExplainStatusBuf[50];
+lbFileNode sSCExplainStatusBuf[50];
 
 // 0x8018EBC0
-rdFileNode sSCExplainForceBuf[7];
+lbFileNode sSCExplainForceBuf[7];
 
 // // // // // // // // // // // //
 //                               //
@@ -24,26 +24,26 @@ rdFileNode sSCExplainForceBuf[7];
 // 0x8018E640
 void scExplainSetupFiles(void)
 {
-    rdSetup rd_setup;
+    lbRelocSetup rl_setup;
 
-    rd_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;
-    rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
-    rd_setup.file_heap = NULL;
-    rd_setup.file_heap_size = 0;
-    rd_setup.status_buf = sSCExplainStatusBuf;
-    rd_setup.status_buf_size = ARRAY_COUNT(sSCExplainStatusBuf);
-    rd_setup.force_buf = sSCExplainForceBuf;
-    rd_setup.force_buf_size = ARRAY_COUNT(sSCExplainForceBuf);
+    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+    rl_setup.file_heap = NULL;
+    rl_setup.file_heap_size = 0;
+    rl_setup.status_buf = sSCExplainStatusBuf;
+    rl_setup.status_buf_size = ARRAY_COUNT(sSCExplainStatusBuf);
+    rl_setup.force_buf = sSCExplainForceBuf;
+    rl_setup.force_buf_size = ARRAY_COUNT(sSCExplainForceBuf);
 
-    rdManagerInitSetup(&rd_setup);
-    rdManagerLoadFiles
+    lbRelocInitSetup(&rl_setup);
+    lbRelocGetLoadFilesNum
     (
         dGMCommonFileIDs, 
         ARRAY_COUNT(dGMCommonFileIDs), 
         gGMCommonFiles, 
         gsMemoryAlloc
         (
-            rdManagerGetAllocSize
+            lbRelocGetAllocSize
             (
                 dGMCommonFileIDs, 
                 ARRAY_COUNT(dGMCommonFileIDs)

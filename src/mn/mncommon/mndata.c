@@ -1,7 +1,7 @@
 #include <mn/menu.h>
 #include <gm/gmsound.h>
 #include <sc/scene.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 #include <sys/system_00.h>
 #include <sys/thread6.h>
 
@@ -80,7 +80,7 @@ s32 sMNDataReturnTic;
 // s32 sMNDataPad0x8013309C;
 
 // 0x801330A0
-rdFileNode sMNDataStatusBuf[24];
+lbFileNode sMNDataStatusBuf[24];
 
 // 0x80133160
 void *sMNDataFiles[2];
@@ -752,26 +752,26 @@ void mnDataProcRun(GObj *gobj)
 // 0x80132D64
 void mnDataProcStart(void)
 {
-    rdSetup rd_setup;
+    lbRelocSetup rl_setup;
 
-    rd_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;
-    rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
-    rd_setup.file_heap = NULL;
-    rd_setup.file_heap_size = 0;
-    rd_setup.status_buf = sMNDataStatusBuf;
-    rd_setup.status_buf_size = ARRAY_COUNT(sMNDataStatusBuf);
-    rd_setup.force_buf = NULL;
-    rd_setup.force_buf_size = 0;
+    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+    rl_setup.file_heap = NULL;
+    rl_setup.file_heap_size = 0;
+    rl_setup.status_buf = sMNDataStatusBuf;
+    rl_setup.status_buf_size = ARRAY_COUNT(sMNDataStatusBuf);
+    rl_setup.force_buf = NULL;
+    rl_setup.force_buf_size = 0;
 
-    rdManagerInitSetup(&rd_setup);
-    rdManagerLoadFiles
+    lbRelocInitSetup(&rl_setup);
+    lbRelocGetLoadFilesNum
     (
         dMNDataFileIDs,
         ARRAY_COUNT(dMNDataFileIDs),
         sMNDataFiles,
         gsMemoryAlloc
         (
-            rdManagerGetAllocSize
+            lbRelocGetAllocSize
             (
                 dMNDataFileIDs, 
                 ARRAY_COUNT(dMNDataFileIDs)

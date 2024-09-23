@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <sys/develop.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -48,7 +48,7 @@ void *gFTManagerCommonFile;
 size_t gFTManagerAnimHeapSize;
 
 // 0x80130DA0
-rdFileNode sFTManagerForceBuf[7];
+lbFileNode sFTManagerForceBuf[7];
 
 // // // // // // // // // // // //
 //                               //
@@ -107,19 +107,19 @@ void ftManagerSetupFileSize(void)
     size_t current_anim_size;
     ftData *ft_data;
     ftFileSize *ft_size;
-    rdSetup rd_setup;
+    lbRelocSetup rl_setup;
     ftMotionDesc *script_info;
 
-    rd_setup.table_addr = &lRDManagerTableAddr;
-    rd_setup.table_files_num = &lRDManagerTableFilesNum;
-    rd_setup.file_heap = NULL;
-    rd_setup.file_heap_size = 0;
-    rd_setup.status_buf = NULL;
-    rd_setup.status_buf_size = 0;
-    rd_setup.force_buf = sFTManagerForceBuf;
-    rd_setup.force_buf_size = ARRAY_COUNT(sFTManagerForceBuf);
+    rl_setup.table_addr = &lLBRelocTableAddr;
+    rl_setup.table_files_num = &lLBRelocTableFilesNum;
+    rl_setup.file_heap = NULL;
+    rl_setup.file_heap_size = 0;
+    rl_setup.status_buf = NULL;
+    rl_setup.status_buf_size = 0;
+    rl_setup.force_buf = sFTManagerForceBuf;
+    rl_setup.force_buf_size = ARRAY_COUNT(sFTManagerForceBuf);
 
-    rdManagerInitSetup(&rd_setup);
+    lbRelocInitSetup(&rl_setup);
 
     for (i = 0; i < ARRAY_COUNT(dFTManagerDataFiles); i++)
     {
@@ -128,7 +128,7 @@ void ftManagerSetupFileSize(void)
 
         largest_size = 0;
 
-        ft_size->main = rdManagerGetFileSize(ft_data->file_main_id);
+        ft_size->main = lbRelocGetFileSize(ft_data->file_main_id);
 
         for (j = 0; j < ft_data->mainmotion_array_count; j++)
         {
@@ -140,7 +140,7 @@ void ftManagerSetupFileSize(void)
             {
                 if (!(script_info->anim_desc.flags.is_use_shieldpose))
                 {
-                    current_anim_size = rdManagerGetFileSize(script_info->anim_file_id);
+                    current_anim_size = lbRelocGetFileSize(script_info->anim_file_id);
 
                     if (largest_size < current_anim_size)
                     {
@@ -161,7 +161,7 @@ void ftManagerSetupFileSize(void)
             {
                 if (!(script_info->anim_desc.flags.is_use_shieldpose))
                 {
-                    current_anim_size = rdManagerGetFileSize(script_info->anim_file_id);
+                    current_anim_size = lbRelocGetFileSize(script_info->anim_file_id);
 
                     if (largest_size < current_anim_size)
                     {
@@ -208,9 +208,9 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
     gFTManagerMotionCount = 1;
     gFTManagerStatUpdateCount = 1;
 
-    gFTManagerCommonFile = rdManagerGetFileWithExternHeap((rdFileID)&D_NF_000000A3, gsMemoryAlloc(rdManagerGetFileSize((rdFileID)&D_NF_000000A3), 0x10));
+    gFTManagerCommonFile = lbRelocGetFileExternHeap((u32)&D_NF_000000A3, gsMemoryAlloc(lbRelocGetFileSize((u32)&D_NF_000000A3), 0x10));
 
-    rdManagerGetFileWithExternHeap((rdFileID)&D_NF_000000C9, gsMemoryAlloc(rdManagerGetFileSize((rdFileID)&D_NF_000000C9), 0x10));
+    lbRelocGetFileExternHeap((u32)&D_NF_000000C9, gsMemoryAlloc(lbRelocGetFileSize((u32)&D_NF_000000C9), 0x10));
 
     for (i = 0; i < (ARRAY_COUNT(dFTManagerDataFiles) + ARRAY_COUNT(D_800A50F8)) / 2; i++)
     {
@@ -327,7 +327,7 @@ void ftManagerSetupFilesMainKind(s32 ft_kind)
 {
     ftData *ft_data = dFTManagerDataFiles[ft_kind];
 
-    *ft_data->p_file_main = rdManagerGetFileWithExternHeap(ft_data->file_main_id, gsMemoryAlloc(rdManagerGetFileSize(ft_data->file_main_id), 0x10));
+    *ft_data->p_file_main = lbRelocGetFileExternHeap(ft_data->file_main_id, gsMemoryAlloc(lbRelocGetFileSize(ft_data->file_main_id), 0x10));
 
     if (ft_data->particles_script_lo != 0)
     {
@@ -348,33 +348,33 @@ void ftManagerSetupFilesKind(s32 ft_kind)
 
     if (ft_data->file_mainmotion_id != 0)
     {
-        *ft_data->p_file_mainmotion = rldm_get_file_standard(ft_data->file_mainmotion_id);
+        *ft_data->p_file_mainmotion = lbRelocGetFileStatusBuf(ft_data->file_mainmotion_id);
     }
     if (ft_data->file_submotion_id != 0)
     {
-        *ft_data->p_file_submotion = rldm_get_file_standard(ft_data->file_submotion_id);
+        *ft_data->p_file_submotion = lbRelocGetFileStatusBuf(ft_data->file_submotion_id);
     }
-    *ft_data->p_file_model = rldm_get_file_standard(ft_data->file_model_id);
+    *ft_data->p_file_model = lbRelocGetFileStatusBuf(ft_data->file_model_id);
 
     if (ft_data->file_shieldpose_id != 0)
     {
-        ft_data->p_file_shieldpose = rldm_get_file_standard(ft_data->file_shieldpose_id);
+        ft_data->p_file_shieldpose = lbRelocGetFileStatusBuf(ft_data->file_shieldpose_id);
     }
     if (ft_data->file_special1_id != 0)
     {
-        *ft_data->p_file_special1 = rldm_get_file_standard(ft_data->file_special1_id);
+        *ft_data->p_file_special1 = lbRelocGetFileStatusBuf(ft_data->file_special1_id);
     }
     if (ft_data->file_special2_id != 0)
     {
-        *ft_data->p_file_special2 = rldm_get_file_standard(ft_data->file_special2_id);
+        *ft_data->p_file_special2 = lbRelocGetFileStatusBuf(ft_data->file_special2_id);
     }
     if (ft_data->file_special3_id != 0)
     {
-        *ft_data->p_file_special3 = rldm_get_file_standard(ft_data->file_special3_id);
+        *ft_data->p_file_special3 = lbRelocGetFileStatusBuf(ft_data->file_special3_id);
     }
     if (ft_data->file_special4_id != 0)
     {
-        *ft_data->p_file_special4 = rldm_get_file_standard(ft_data->file_special4_id);
+        *ft_data->p_file_special4 = lbRelocGetFileStatusBuf(ft_data->file_special4_id);
     }
     if (ft_data->particles_script_lo != 0)
     {

@@ -1,5 +1,5 @@
 #include <gm/generic.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -8,10 +8,10 @@
 // // // // // // // // // // // //
 
 // 8018E500
-rdFileNode sSCAutoDemoStatusBuf[100];
+lbFileNode sSCAutoDemoStatusBuf[100];
 
 // 8018E820
-rdFileNode sSCAutoDemoForceBuf[7];
+lbFileNode sSCAutoDemoForceBuf[7];
 
 // // // // // // // // // // // //
 //                               //
@@ -22,26 +22,26 @@ rdFileNode sSCAutoDemoForceBuf[7];
 // 0x8018E0C0
 void scAutoDemoSetupFiles(void)
 {
-	rdSetup rd_setup;
+	lbRelocSetup rl_setup;
 
-	rd_setup.table_addr = (intptr_t)&lRDManagerTableAddr;
-	rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
-	rd_setup.file_heap = NULL;
-	rd_setup.file_heap_size = 0;
-	rd_setup.status_buf = sSCAutoDemoStatusBuf;
-	rd_setup.status_buf_size = ARRAY_COUNT(sSCAutoDemoStatusBuf);
-	rd_setup.force_buf = sSCAutoDemoForceBuf;
-	rd_setup.force_buf_size = ARRAY_COUNT(sSCAutoDemoForceBuf);
+	rl_setup.table_addr = (intptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buf = sSCAutoDemoStatusBuf;
+	rl_setup.status_buf_size = ARRAY_COUNT(sSCAutoDemoStatusBuf);
+	rl_setup.force_buf = sSCAutoDemoForceBuf;
+	rl_setup.force_buf_size = ARRAY_COUNT(sSCAutoDemoForceBuf);
 
-	rdManagerInitSetup(&rd_setup);
-	rdManagerLoadFiles
+	lbRelocInitSetup(&rl_setup);
+	lbRelocGetLoadFilesNum
 	(
 		dGMCommonFileIDs,
 		ARRAY_COUNT(dGMCommonFileIDs),
 		gGMCommonFiles,
 		gsMemoryAlloc
 		(
-			rdManagerGetAllocSize
+			lbRelocGetAllocSize
 			(
 				dGMCommonFileIDs,
 				ARRAY_COUNT(dGMCommonFileIDs)

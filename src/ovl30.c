@@ -1,7 +1,7 @@
 #include <gr/ground.h>
 #include <gm/gmsound.h> // temporary, until this finds a proper place
 #include <sc/scene.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 #include <sys/system_00.h>
 #include <sys/thread6.h>
 
@@ -42,7 +42,7 @@ typedef struct mnStageFileInfo
 
 // DATA
 // 801344D0
-rdFileID D_ovl30_801344D0[5] = {
+u32 D_ovl30_801344D0[5] = {
 
 	0x14, 0x15, 0x1e, 0x21, 0x1a
 };
@@ -70,7 +70,7 @@ intptr_t dMNStageBackgroundFileOffsets[9] = {
 };
 
 // 80134550
-rdFileNode dMNStageTrainingBackgroundFileNodes[3] = {
+lbFileNode dMNStageTrainingBackgroundFileNodes[3] = {
 
 	{ 0x0000001a, 0x00000000 },
 	{ 0x0000001b, 0xee9e0600 },
@@ -151,7 +151,7 @@ s32 gMNStageMaxFramesElapsed;
 u32 D_ovl30_80134C30[60]; // 240 bytes
 
 // 80134D20
-rdFileNode D_ovl30_80134D20[30];
+lbFileNode D_ovl30_80134D20[30];
 
 // 80134E10
 s32 gMNStageFilesArray[5];
@@ -172,7 +172,7 @@ void mnStageAllocateStageModelHeaps()
 
 	for (i = 0; i < ARRAY_COUNT(dMNStageFileInfoArray); i++)
 	{
-		size = rdManagerGetFileSize(dMNStageFileInfoArray[i].id);
+		size = lbRelocGetFileSize(dMNStageFileInfoArray[i].id);
 
 		if (max < size)
 			max = size;
@@ -742,7 +742,7 @@ void mnStageCreateCursor()
 // 80132B84
 void mnStageLoadStageFile(s32 stage_id, u8* heapAddr)
 {
-	gMNStageGroundInfo = (s32)rldm_get_file_external_force_heap(dMNStageFileInfoArray[stage_id].id, heapAddr) + dMNStageFileInfoArray[stage_id].header_size;
+	gMNStageGroundInfo = (s32)lbRelocGetFileExternForceBufHeap(dMNStageFileInfoArray[stage_id].id, heapAddr) + dMNStageFileInfoArray[stage_id].header_size;
 }
 
 // 80132BC8
@@ -796,7 +796,7 @@ GObj* mnStageCreateStagePreviewBackground(s32 stage_id)
 		if (gMNStageIsTrainingMode == TRUE)
 		{
 			// If Training Mode, use Smash logo bg
-			stage_preview_bg_sobj = lbCommonMakeSObjForGObj(stage_preview_bg_gobj, GetAddressFromOffset(rldm_get_file_external_force_heap(dMNStageTrainingBackgroundFileNodes[dMNStageTrainingBackgroundIDs[stage_id]].id, (uintptr_t)gMNStageGroundInfo->wallpaper - dMNStageBackgroundFileOffsets[stage_id]), &FILE_01A_TRAINING_BACKGROUND_IMAGE_OFFSET));
+			stage_preview_bg_sobj = lbCommonMakeSObjForGObj(stage_preview_bg_gobj, GetAddressFromOffset(lbRelocGetFileExternForceBufHeap(dMNStageTrainingBackgroundFileNodes[dMNStageTrainingBackgroundIDs[stage_id]].id, (uintptr_t)gMNStageGroundInfo->wallpaper - dMNStageBackgroundFileOffsets[stage_id]), &FILE_01A_TRAINING_BACKGROUND_IMAGE_OFFSET));
 		}
 		else
 		{
@@ -1345,19 +1345,19 @@ void mnStageInitSSS()
 {
 	s32 foo;
 	s32 bar;
-	rdSetup rldmSetup;
+	lbRelocSetup rldmSetup;
 	s32 baz;
 
-	rldmSetup.table_addr = &lRDManagerTableAddr;
-	rldmSetup.table_files_num = &lRDManagerTableFilesNum;
+	rldmSetup.table_addr = &lLBRelocTableAddr;
+	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (rdFileNode*) &D_ovl30_80134C30;
+	rldmSetup.status_buf = (lbFileNode*) &D_ovl30_80134C30;
 	rldmSetup.status_buf_size = 0x1E;
-	rldmSetup.force_buf = (rdFileNode*) &D_ovl30_80134D20;
+	rldmSetup.force_buf = (lbFileNode*) &D_ovl30_80134D20;
 	rldmSetup.force_buf_size = 0x1E;
-	rdManagerInitSetup(&rldmSetup);
-	rdManagerLoadFiles(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0), gMNStageFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0)), 0x10));
+	lbRelocInitSetup(&rldmSetup);
+	lbRelocGetLoadFilesNum(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0), gMNStageFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0)), 0x10));
 
 	mnStageAllocateStageModelHeaps();
 

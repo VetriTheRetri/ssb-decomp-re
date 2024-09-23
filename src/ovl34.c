@@ -3,7 +3,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <gr/ground.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 #include <sys/system_00.h>
 
 
@@ -84,13 +84,13 @@ extern f32 scSubsysFighterGetLightAngleY();
 
 // Data
 // 80134A20
-rdFileID D_ovl34_80134A20[8] = {
+u32 D_ovl34_80134A20[8] = {
 
 	0x34, 0x3F, 0x38, 0x39, 0x3A, 0x3B, 0x4B, 0x5A
 };
 
 // 80134A40
-rdFileID D_ovl34_80134A40[12] = {
+u32 D_ovl34_80134A40[12] = {
 
 	0x20202000,
 	0x20202000,
@@ -208,10 +208,10 @@ GObj* gMvOpeningFirstDestinationCameraGObj;
 s32 gMvOpeningFirstDestinationUnusedCounter;
 
 // 80134D58
-rdFileNode D_ovl34_80134D58[100];
+lbFileNode D_ovl34_80134D58[100];
 
 // 80135078
-rdFileNode D_ovl34_80135078[7];
+lbFileNode D_ovl34_80135078[7];
 
 // 801350B0
 uintptr_t gMvOpeningFirstDestinationFilesArray[9];
@@ -1109,7 +1109,7 @@ void mvOpeningFirstDestinationMainProc(GObj* arg0)
 void mvOpeningFirstDestinationInit()
 {
 	s32 foo;
-	rdSetup rldmSetup;
+	lbRelocSetup rldmSetup;
 
 	func_800048D0(mvOpeningFirstDestinationSetFrameBuffer);
 
@@ -1117,12 +1117,12 @@ void mvOpeningFirstDestinationInit()
 	rldmSetup.table_files_num = &D_NF_00000854;
 	rldmSetup.file_heap = 0;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (rdFileNode*) &D_ovl34_80134D58;
+	rldmSetup.status_buf = (lbFileNode*) &D_ovl34_80134D58;
 	rldmSetup.status_buf_size = ARRAY_COUNT(D_ovl34_80134D58);
-	rldmSetup.force_buf = (rdFileNode*) &D_ovl34_80135078;
+	rldmSetup.force_buf = (lbFileNode*) &D_ovl34_80135078;
 	rldmSetup.force_buf_size = ARRAY_COUNT(D_ovl34_80135078);
-	rdManagerInitSetup(&rldmSetup);
-	rdManagerLoadFiles(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20), gMvOpeningFirstDestinationFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20)), 0x10));
+	lbRelocInitSetup(&rldmSetup);
+	lbRelocGetLoadFilesNum(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20), gMvOpeningFirstDestinationFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20)), 0x10));
 
 	gcMakeGObjSPAfter(0, mvOpeningFirstDestinationMainProc, 0, 0x80000000);
 	gMvOpeningFirstDestinationCameraGObj = gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));

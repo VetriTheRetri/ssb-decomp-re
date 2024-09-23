@@ -2,7 +2,7 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 #include "character_select.h"
 
@@ -79,7 +79,7 @@ sb32 mnIsHandicap();
 
 // Data
 // 8013B3A0
-rdFileID D_ovl26_8013B3A0[20] = {
+u32 D_ovl26_8013B3A0[20] = {
 
 	0x00000011, 0x00000000, 0x00000014, 0x00000015,
 	0x00000012, 0x00000013, 0x00000016, 0x00000000,
@@ -154,7 +154,7 @@ s32 gMnBattleMaxFramesElapsed;
 u8 D_ovl26_8013BDD4[0x2d0];
 
 // 8013C0A8
-rdFileNode D_ovl26_8013C0A8;
+lbFileNode D_ovl26_8013C0A8;
 
 // 8013C0B0
 u8 D_ovl26_8013C0B0[0x30];
@@ -4213,22 +4213,22 @@ void mnBattleInitPanels()
 void mnBattleInitCSS()
 {
 	s32 bar, baz;
-	rdSetup rldmSetup;
+	lbRelocSetup rldmSetup;
 	f32 foo;
 	s32 i;
 	s32 j;
 
-	rldmSetup.table_addr = &lRDManagerTableAddr;
-	rldmSetup.table_files_num = &lRDManagerTableFilesNum;
+	rldmSetup.table_addr = &lLBRelocTableAddr;
+	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (rdFileNode*)&D_ovl26_8013C0E0;
+	rldmSetup.status_buf = (lbFileNode*)&D_ovl26_8013C0E0;
 	rldmSetup.status_buf_size = 0x78;
-	rldmSetup.force_buf = (rdFileNode*)&D_ovl26_8013C0A8;
+	rldmSetup.force_buf = (lbFileNode*)&D_ovl26_8013C0A8;
 	rldmSetup.force_buf_size = 7;
-	rdManagerInitSetup(&rldmSetup);
-	rdManagerLoadFiles(D_ovl26_8013B3A0, 7U, gMnBattleFilesArray,
-						 gsMemoryAlloc(rdManagerGetAllocSize(D_ovl26_8013B3A0, 7U), 0x10U));
+	lbRelocInitSetup(&rldmSetup);
+	lbRelocGetLoadFilesNum(D_ovl26_8013B3A0, 7U, gMnBattleFilesArray,
+						 gsMemoryAlloc(lbRelocGetAllocSize(D_ovl26_8013B3A0, 7U), 0x10U));
 
 	gcMakeGObjSPAfter(0x400U, mnBattleMain, 0xFU, 0x80000000U);
 

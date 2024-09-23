@@ -3,7 +3,7 @@
 #include <sc/scene.h> // includes sys/obj.h
 #include <sys/system_00.h>
 #include <sys/thread6.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern void* func_800269C0_275C0(u16);
@@ -18,7 +18,7 @@ extern void* func_800269C0_275C0(u16);
 s32 sMNCongraPad0x801322B0[2];
 
 // 0x801322B8
-rdFileNode sMNCongraStatusBuf[5];
+lbFileNode sMNCongraStatusBuf[5];
 
 // 0x801322E0
 s32 sMNCongraFighterKind;
@@ -251,7 +251,7 @@ void mnCongraActorProcRun(GObj *gobj)
 // 0x80131CA4
 void mnCongraProcStart(void)
 {
-	rdSetup rd_setup;
+	lbRelocSetup rl_setup;
 	Camera *cam;
 	GObj *gobj;
 	SObj *sobj;
@@ -261,16 +261,16 @@ void mnCongraProcStart(void)
 	sMNCongraIsProceed = FALSE;
 	sMNCongraIsProceedScene = 0;
 
-	rd_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;
-	rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
-	rd_setup.file_heap = NULL;
-	rd_setup.file_heap_size = 0;
-	rd_setup.status_buf = sMNCongraStatusBuf;
-	rd_setup.status_buf_size = ARRAY_COUNT(sMNCongraStatusBuf);
-	rd_setup.force_buf = NULL;
-	rd_setup.force_buf_size = 0;
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buf = sMNCongraStatusBuf;
+	rl_setup.status_buf_size = ARRAY_COUNT(sMNCongraStatusBuf);
+	rl_setup.force_buf = NULL;
+	rl_setup.force_buf_size = 0;
 
-	rdManagerInitSetup(&rd_setup);
+	lbRelocInitSetup(&rl_setup);
 
 	gcMakeGObjSPAfter(0, mnCongraActorProcRun, 0, GOBJ_LINKORDER_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
@@ -306,12 +306,12 @@ void mnCongraProcStart(void)
 		gcGetDataFromFile
 		(
 			Sprite*,
-			rdManagerGetFileWithExternHeap
+			lbRelocGetFileExternHeap
 			(
 				dMNCongraPictures[sMNCongraFighterKind].bottom_file_id,
 				gsMemoryAlloc
 				(
-					rdManagerGetFileSize
+					lbRelocGetFileSize
 					(
 						dMNCongraPictures[sMNCongraFighterKind].bottom_file_id
 					),
@@ -332,12 +332,12 @@ void mnCongraProcStart(void)
 		gcGetDataFromFile
 		(
 			Sprite*,
-			rdManagerGetFileWithExternHeap
+			lbRelocGetFileExternHeap
 			(
 				dMNCongraPictures[sMNCongraFighterKind].top_file_id,
 				gsMemoryAlloc
 				(
-					rdManagerGetFileSize
+					lbRelocGetFileSize
 					(
 						dMNCongraPictures[sMNCongraFighterKind].top_file_id
 					),

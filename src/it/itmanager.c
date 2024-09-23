@@ -3,7 +3,7 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -156,7 +156,7 @@ void itManagerInitItems(void) // Many linker things here
     {
         ip[i].alloc_next = NULL;
     }
-    gITManagerFileData = (void*)rdManagerGetFileWithExternHeap(&D_NF_000000FB, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_000000FB), 0x10));
+    gITManagerFileData = (void*)lbRelocGetFileExternHeap(&D_NF_000000FB, gsMemoryAlloc(lbRelocGetFileSize(&D_NF_000000FB), 0x10));
 
     gITManagerParticleBankID = efAllocGetAddParticleBankID
     (

@@ -2,7 +2,7 @@
 #include <ft/ftdef.h>
 #include <ft/fighter.h>
 #include <sc/scene.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 #include <sys/system_00.h>
 
 #include "character_select.h"
@@ -84,7 +84,7 @@ s32 D_ovl27_801385B0[] = {
 };
 
 // 80138630
-rdFileID D_ovl27_80138630[11] = {
+u32 D_ovl27_80138630[11] = {
 
 	0x11, 0x14, 0x15, 0x12, 0x13, 0x17, 0x18, 0x19, 0x21, 0x24, 0x16
 };
@@ -182,7 +182,7 @@ s32 gMN1PFtKind;
 s32 gMN1PCostumeId[182];
 
 // 801392A8
-rdFileNode D_ovl27_801392A8[7];
+lbFileNode D_ovl27_801392A8[7];
 
 // 801392E0
 u32 D_ovl27_801392E0[240];
@@ -3088,7 +3088,7 @@ void mn1PInitPanel(s32 port_id)
 void mn1PInitCSS()
 {
 	s32 bar, baz;
-	rdSetup rldmSetup;
+	lbRelocSetup rldmSetup;
 	f32 foo;
 	s32 i;
 	s32 j;
@@ -3097,12 +3097,12 @@ void mn1PInitCSS()
 	rldmSetup.table_files_num = &D_NF_00000854;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (rdFileNode*) &D_ovl27_801392E0;
+	rldmSetup.status_buf = (lbFileNode*) &D_ovl27_801392E0;
 	rldmSetup.status_buf_size = 0x78;
-	rldmSetup.force_buf = (rdFileNode*) &D_ovl27_801392A8;
+	rldmSetup.force_buf = (lbFileNode*) &D_ovl27_801392A8;
 	rldmSetup.force_buf_size = 7;
-	rdManagerInitSetup(&rldmSetup);
-	rdManagerLoadFiles(D_ovl27_80138630, 11U, gMN1PFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl27_80138630, 11U), 0x10U));
+	lbRelocInitSetup(&rldmSetup);
+	lbRelocGetLoadFilesNum(D_ovl27_80138630, 11U, gMN1PFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl27_80138630, 11U), 0x10U));
 
 	gcMakeGObjSPAfter(0x400U, &mn1PMain, 0xFU, 0x80000000U);
 	gcMakeDefaultCameraGObj(0x10, 0x80000000U, 0x64, 1, 0);

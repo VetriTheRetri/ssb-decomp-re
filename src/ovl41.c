@@ -3,7 +3,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <gr/ground.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 #include <sys/system_00.h>
 
 
@@ -47,7 +47,7 @@ ftKeyCommand dMvOpeningYoshiInputSeq[] =
 };
 
 // 8018E108
-rdFileID D_ovl41_8018E108[2] = {
+u32 D_ovl41_8018E108[2] = {
 
 	0x25, 0x41
 };
@@ -88,10 +88,10 @@ CameraDesc dMvOpeningYoshiCameraSettingsAdjustedStart;
 CameraDesc dMvOpeningYoshiCameraSettingsAdjustedEnd;
 
 // 8018E288
-rdFileNode D_ovl41_8018E288[48];
+lbFileNode D_ovl41_8018E288[48];
 
 // 8018E408
-rdFileNode D_ovl41_8018E408[7];
+lbFileNode D_ovl41_8018E408[7];
 
 // 8018E440
 uintptr_t gMvOpeningYoshiFilesArray[2];
@@ -103,7 +103,7 @@ scBattleState gMvOpeningYoshiBattleState;
 // 8018D0C0
 void mvOpeningYoshiLoadFiles()
 {
-	rdSetup rldmSetup;
+	lbRelocSetup rldmSetup;
 
 	rldmSetup.table_addr = &D_NF_001AC870;
 	rldmSetup.table_files_num = &D_NF_00000854;
@@ -113,8 +113,8 @@ void mvOpeningYoshiLoadFiles()
 	rldmSetup.status_buf_size = ARRAY_COUNT(D_ovl41_8018E288);
 	rldmSetup.force_buf = D_ovl41_8018E408;
 	rldmSetup.force_buf_size = ARRAY_COUNT(D_ovl41_8018E408);
-	rdManagerInitSetup(&rldmSetup);
-	rdManagerLoadFiles(D_ovl41_8018E108, ARRAY_COUNT(D_ovl41_8018E108), gMvOpeningYoshiFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl41_8018E108, ARRAY_COUNT(D_ovl41_8018E108)), 0x10));
+	lbRelocInitSetup(&rldmSetup);
+	lbRelocGetLoadFilesNum(D_ovl41_8018E108, ARRAY_COUNT(D_ovl41_8018E108), gMvOpeningYoshiFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl41_8018E108, ARRAY_COUNT(D_ovl41_8018E108)), 0x10));
 }
 
 // 8018D160

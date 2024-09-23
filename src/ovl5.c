@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 extern uintptr_t ovl5_BSS_END; 	// 8018D950
 
@@ -47,18 +47,18 @@ scRuntimeInfo D_ovl5_8018D5D8 = {
 // BSS
 u32 D_8018D670;
 u32 D_ovl5_8018D674;
-rdFileNode D_ovl5_8018D678[20];
-rdFileNode D_ovl5_8018D718[7];
+lbFileNode D_ovl5_8018D678[20];
+lbFileNode D_ovl5_8018D718[7];
 GObj *gUnkExplainFighterGObj;
 scBattleState gUnkExplainBattleState;
 
 // 8018D0C0
 void func_ovl5_8018D0C0()
 {
-	rdSetup rldm_setup;
+	lbRelocSetup rldm_setup;
 
-	rldm_setup.table_addr = (s32)&lRDManagerTableAddr;
-	rldm_setup.table_files_num = (u32)&lRDManagerTableFilesNum;
+	rldm_setup.table_addr = (s32)&lLBRelocTableAddr;
+	rldm_setup.table_files_num = (u32)&lLBRelocTableFilesNum;
 	rldm_setup.file_heap = NULL;
 	rldm_setup.file_heap_size = 0;
 	rldm_setup.status_buf = D_ovl5_8018D678;
@@ -66,8 +66,8 @@ void func_ovl5_8018D0C0()
 	rldm_setup.force_buf = D_ovl5_8018D718;
 	rldm_setup.force_buf_size = ARRAY_COUNT(D_ovl5_8018D718);
 
-	rdManagerInitSetup(&rldm_setup);
-	rdManagerLoadFiles(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles, gsMemoryAlloc(rdManagerGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
+	lbRelocInitSetup(&rldm_setup);
+	lbRelocGetLoadFilesNum(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles, gsMemoryAlloc(lbRelocGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
 }
 
 // 8018D160

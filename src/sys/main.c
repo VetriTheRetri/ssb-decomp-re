@@ -132,7 +132,7 @@ void syMainThread5(UNUSED void *arg)
     osCreatePiManager(OS_PRIORITY_PIMGR, &sSYMainPiCmdQueue, sSYMainPiCmdMesg, ARRAY_COUNT(sSYMainPiCmdMesg));
     syDmaCreateMesgQueue();
     // load IP3 font? rsp boot text
-    syDmaRomRead(PHYSICAL_TO_ROM(0xB70), gSYMainRspBootCode, sizeof(gSYMainRspBootCode));
+    syDmaReadRom(PHYSICAL_TO_ROM(0xB70), gSYMainRspBootCode, sizeof(gSYMainRspBootCode));
     syMainCheckSPImemOK();
     syMainCheckSPDmemOK();
     osCreateMesgQueue(&sSYMainThreadingQueue, sSYMainBlockMesg, ARRAY_COUNT(sSYMainBlockMesg));

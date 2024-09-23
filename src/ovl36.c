@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 // Externs
 extern intptr_t lOverlay36ArenaLo;  // 8018E620
@@ -45,7 +45,7 @@ ftKeyCommand dMvOpeningMarioGameKey[] = {
 };
 
 // 8018E0E8
-rdFileID D_ovl36_8018E0E8[2] = {
+u32 D_ovl36_8018E0E8[2] = {
 
 	0x25, 0x41
 };
@@ -89,10 +89,10 @@ CameraDesc dMvOpeningMarioCameraDescAdjustedStart;
 CameraDesc dMvOpeningMarioCameraDescAdjustedEnd;
 
 // 8018E268
-rdFileNode D_ovl36_8018E268[48];
+lbFileNode D_ovl36_8018E268[48];
 
 // 8018E3E8
-rdFileNode D_ovl36_8018E3E8[7];
+lbFileNode D_ovl36_8018E3E8[7];
 
 // 8018E420
 uintptr_t gMvOpeningMarioFilesArray[2];
@@ -104,18 +104,18 @@ scBattleState gMvOpeningMarioBattleState;
 // 8018D0C0
 void mvOpeningMarioLoadFiles()
 {
-	rdSetup rldmSetup;
+	lbRelocSetup rldmSetup;
 
-	rldmSetup.table_addr = &lRDManagerTableAddr;
-	rldmSetup.table_files_num = &lRDManagerTableFilesNum;
+	rldmSetup.table_addr = &lLBRelocTableAddr;
+	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
 	rldmSetup.status_buf = D_ovl36_8018E268;
 	rldmSetup.status_buf_size = ARRAY_COUNT(D_ovl36_8018E268);
 	rldmSetup.force_buf = D_ovl36_8018E3E8;
 	rldmSetup.force_buf_size = ARRAY_COUNT(D_ovl36_8018E3E8);
-	rdManagerInitSetup(&rldmSetup);
-	rdManagerLoadFiles(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8), gMvOpeningMarioFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8)), 0x10));
+	lbRelocInitSetup(&rldmSetup);
+	lbRelocGetLoadFilesNum(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8), gMvOpeningMarioFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8)), 0x10));
 }
 
 // 8018D160

@@ -570,12 +570,12 @@ void scAutoDemoInitSObjs(void)
 	s32 player;
 	void *file;
 
-	file = rdManagerGetFileWithExternHeap
+	file = lbRelocGetFileExternHeap
 	(
 		(uintptr_t)&D_NF_0000000C, 
 		gsMemoryAlloc
 		(
-			rdManagerGetFileSize((uintptr_t)&D_NF_0000000C), 
+			lbRelocGetFileSize((uintptr_t)&D_NF_0000000C), 
 			0x10
 		)
 	);

@@ -2,7 +2,7 @@
 #include <ft/ftdef.h>
 #include <ft/fighter.h>
 #include <sc/scene.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 #include <sys/system_00.h>
 
 #include "character_select.h"
@@ -62,7 +62,7 @@ void mnBonusRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state);
 
 // Data
 // 80136F50
-rdFileID D_ovl29_80136F50[11] = {
+u32 D_ovl29_80136F50[11] = {
 
 	0x11, 0x14, 0x15, 0x12, 0x13, 0x17, 0x18, 0x19, 0x21, 0x24, 0x16
 };
@@ -151,7 +151,7 @@ s32 gMnBonusPressStartFlashTimer;
 s32 D_ovl29_80137730[180];
 
 // 80137A00
-rdFileNode D_ovl29_80137A00[7];
+lbFileNode D_ovl29_80137A00[7];
 
 // 80137A38
 u32 D_ovl29_80137A38[240];
@@ -2483,7 +2483,7 @@ sb32 mnBonusAreAllCompleted()
 void mnBonusInitCSS()
 {
 	s32 bar, baz;
-	rdSetup rldmSetup;
+	lbRelocSetup rldmSetup;
 	f32 foo;
 	s32 i;
 	s32 j;
@@ -2492,12 +2492,12 @@ void mnBonusInitCSS()
 	rldmSetup.table_files_num = &D_NF_00000854;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (rdFileNode*) &D_ovl29_80137A38;
+	rldmSetup.status_buf = (lbFileNode*) &D_ovl29_80137A38;
 	rldmSetup.status_buf_size = 0x78;
-	rldmSetup.force_buf = (rdFileNode*) &D_ovl29_80137A00;
+	rldmSetup.force_buf = (lbFileNode*) &D_ovl29_80137A00;
 	rldmSetup.force_buf_size = 7;
-	rdManagerInitSetup(&rldmSetup);
-	rdManagerLoadFiles(D_ovl29_80136F50, 11U, gMnBonusFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl29_80136F50, 11U), 0x10U));
+	lbRelocInitSetup(&rldmSetup);
+	lbRelocGetLoadFilesNum(D_ovl29_80136F50, 11U, gMnBonusFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl29_80136F50, 11U), 0x10U));
 
 	gcMakeGObjSPAfter(0x400U, mnBonusMain, 0xFU, 0x80000000U);
 	gcMakeDefaultCameraGObj(0x10, 0x80000000U, 0x64, 1, 0);

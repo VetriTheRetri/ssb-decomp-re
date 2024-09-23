@@ -4,7 +4,7 @@
 #include <sc/scene.h>
 #include <gr/ground.h>
 #include <mn/menu.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 #include <sys/system_00.h>
 
 
@@ -890,7 +890,7 @@ charsActionInfo D_ovl33_80135DA8[12][8] = {
 };
 
 // 80136228
-rdFileID D_ovl33_80136228[4] = {
+u32 D_ovl33_80136228[4] = {
 
 	0x0000010,
 	0x0000020,
@@ -1005,7 +1005,7 @@ s32 gMNCharsFramesElapsed;
 u32 D_ovl33_80136720[200];
 
 // 80136A40
-rdFileNode D_ovl33_80136A40;
+lbFileNode D_ovl33_80136A40;
 
 // 80136A48
 u32 D_ovl33_80136A48[12];
@@ -2056,18 +2056,18 @@ void mnCharsMain(GObj* arg0)
 void mnCharsInit()
 {
 	s32 i;
-	rdSetup rldmSetup;
+	lbRelocSetup rldmSetup;
 
 	rldmSetup.table_addr = &D_NF_001AC870;
 	rldmSetup.table_files_num = &D_NF_00000854;
 	rldmSetup.file_heap = 0;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (rdFileNode*) &D_ovl33_80136720;
+	rldmSetup.status_buf = (lbFileNode*) &D_ovl33_80136720;
 	rldmSetup.status_buf_size = 0x64;
-	rldmSetup.force_buf = (rdFileNode*) &D_ovl33_80136A40;
+	rldmSetup.force_buf = (lbFileNode*) &D_ovl33_80136A40;
 	rldmSetup.force_buf_size = 7;
-	rdManagerInitSetup(&rldmSetup);
-	rdManagerLoadFiles(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228), gMNCharsFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228)), 0x10U));
+	lbRelocInitSetup(&rldmSetup);
+	lbRelocGetLoadFilesNum(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228), gMNCharsFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228)), 0x10U));
 
 	gcMakeGObjSPAfter(0, mnCharsMain, 0, 0x80000000);
 	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));

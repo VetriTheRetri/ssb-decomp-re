@@ -152,24 +152,24 @@ scRuntimeInfo dSCExplainGtlSetup =
 // 0x8018D0C0
 void scExplainLoadExplainFiles(void)
 {
-    sSCExplainGraphicsFileHead = rdManagerGetFileWithExternHeap
+    sSCExplainGraphicsFileHead = lbRelocGetFileExternHeap
     (
         (uintptr_t)&D_NF_000000C6,
         gsMemoryAlloc
         (
-            rdManagerGetFileSize
+            lbRelocGetFileSize
             (
                 (uintptr_t)&D_NF_000000C6
             ),
             0x10
         )
     );
-    sSCExplainMainFileHead = rdManagerGetFileWithExternHeap
+    sSCExplainMainFileHead = lbRelocGetFileExternHeap
     (
         (uintptr_t)&D_NF_000000FC,
         gsMemoryAlloc
         (
-            rdManagerGetFileSize
+            lbRelocGetFileSize
             (
                 (uintptr_t)&D_NF_000000FC
             ), 

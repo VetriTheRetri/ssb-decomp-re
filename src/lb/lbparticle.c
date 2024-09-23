@@ -14,6 +14,9 @@ extern u16 gSinTable[0x800];
 // 0x800D6350
 lbParticle *sLBParticleStructsAllocFree;
 
+// 0x800D6354
+s32 sLBParticlePad0x800D6354;
+
 // 0x800D6358
 lbParticle *sLBParticleStructsAllocLinks[16];
 

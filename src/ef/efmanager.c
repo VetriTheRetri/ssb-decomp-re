@@ -4,7 +4,7 @@
 #include <wp/weapon.h>
 #include <cm/camera.h>
 #include <sc/scene.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -1747,7 +1747,7 @@ efCreateDesc dEFManagerItemGetSwirlEffectDesc =
 //                               //
 // // // // // // // // // // // //
 
-/* 0x800FD300 - OLD NOTE: To match this, rdManagerGetFileWithExternHeap and rdManagerGetFileSize must take intptr_t or other int type as first argument
+/* 0x800FD300 - OLD NOTE: To match this, lbRelocGetFileExternHeap and lbRelocGetFileSize must take intptr_t or other int type as first argument
  *              NEW NOTE: Not entirely correct, their types do need to be identical however
  */
 void efManagerInitEffects(void)
@@ -1770,9 +1770,9 @@ void efManagerInitEffects(void)
     efDisplayMakeBlendCLD();
     efDisplayMakeXLU();
 
-    sEFManagerTexturesFile1 = rdManagerGetFileWithExternHeap(&D_NF_00000053, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000053), 0x10));
-    sEFManagerTexturesFile2 = rdManagerGetFileWithExternHeap(&D_NF_00000054, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000054), 0x10));
-    sEFManagerTexturesFile3 = rdManagerGetFileWithExternHeap(&D_NF_00000055, gsMemoryAlloc(rdManagerGetFileSize(&D_NF_00000055), 0x10));
+    sEFManagerTexturesFile1 = lbRelocGetFileExternHeap(&D_NF_00000053, gsMemoryAlloc(lbRelocGetFileSize(&D_NF_00000053), 0x10));
+    sEFManagerTexturesFile2 = lbRelocGetFileExternHeap(&D_NF_00000054, gsMemoryAlloc(lbRelocGetFileSize(&D_NF_00000054), 0x10));
+    sEFManagerTexturesFile3 = lbRelocGetFileExternHeap(&D_NF_00000055, gsMemoryAlloc(lbRelocGetFileSize(&D_NF_00000055), 0x10));
 
     efDisplayInitAll();
 }

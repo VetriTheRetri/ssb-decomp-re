@@ -1005,7 +1005,7 @@ sb32 cmManagerLookAtProcMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
 
     sODMatrixProjectL = temp_mtx;
 
-    syMatrixLookAtReflectF(sp5C, &gCMManagerCameraStruct.look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, cam->vec.up.y, cam->vec.up.z);
+    syMatrixLookAtReflectF(&sp5C, &gCMManagerCameraStruct.look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, cam->vec.up.y, cam->vec.up.z);
     guMtxCatF(sp5C, gODMatrixPerspF, gCMManagerMtx);
 
     max = cmManagerGetMtxMaxValue();
@@ -1017,7 +1017,7 @@ sb32 cmManagerLookAtProcMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
 
         sODMatrixProjectL = temp_mtx;
 
-        syMatrixLookAtReflectF(sp5C, &gCMManagerCameraStruct.look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, cam->vec.up.y, cam->vec.up.z);
+        syMatrixLookAtReflectF(&sp5C, &gCMManagerCameraStruct.look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, cam->vec.up.y, cam->vec.up.z);
         guMtxCatF(sp5C, gODMatrixPerspF, gCMManagerMtx);
     }
     syMatrixF2L(gCMManagerMtx, mtx);
@@ -1255,7 +1255,7 @@ sb32 cmManagerPlayerMagnifyProcMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
     var_y = eye->y - at->y;
     var_z = eye->z - at->z;
 
-    syMatrixLookAtF(sp64, 0.0F, 300.0F, sqrtf(SQUARE(var_x) + SQUARE(var_y) + SQUARE(var_z)), 0.0F, 300.0F, 0.0F, 0.0F, 1.0F, 0.0F);
+    syMatrixLookAtF(&sp64, 0.0F, 300.0F, sqrtf(SQUARE(var_x) + SQUARE(var_y) + SQUARE(var_z)), 0.0F, 300.0F, 0.0F, 0.0F, 1.0F, 0.0F);
     guMtxCatF(sp64, gODMatrixPerspF, spA4);
 
     sp50.z = 0.0F;
@@ -1270,9 +1270,9 @@ sb32 cmManagerPlayerMagnifyProcMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
     {
         gIFCommonPlayerInterface.ifmagnify_scale = 3.0F;
     }
-    syMatrixOrthoF(spA4, -450.0F, 450.0F, -450.0F, 450.0F, 256.0F, 39936.0F, 1.0F);
+    syMatrixOrthoF(&spA4, -450.0F, 450.0F, -450.0F, 450.0F, 256.0F, 39936.0F, 1.0F);
     guMtxCatF(sp64, spA4, spA4);
-    syMatrixF2L(spA4, mtx);
+    syMatrixF2L(&spA4, mtx);
 
     return 0;
 }
@@ -1288,11 +1288,11 @@ sb32 cmManageOrthoLookAtProcMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
     width = (gCMManagerCameraStruct.viewport_width / 2);
     height = (gCMManagerCameraStruct.viewport_height / 2);
 
-    syMatrixOrthoF(sp78, -width, width, -height, height, 100.0F, 12800.0F, 1.0F);
+    syMatrixOrthoF(&sp78, -width, width, -height, height, 100.0F, 12800.0F, 1.0F);
     syMatrixLookAtF(sp38, 0.0F, 0.0F, 1000.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
 
     guMtxCatF(sp38, sp78, sp78);
-    syMatrixF2L(sp78, mtx);
+    syMatrixF2L(&sp78, mtx);
 
     return 0;
 }

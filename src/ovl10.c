@@ -4,7 +4,7 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 #include <sys/system_00.h>
 #include <sys/gtl.h>
 
@@ -232,7 +232,7 @@ s32 gMNTitleFireBGOverlayIndex;
 u32 gMNTitleMainMenuFramesToWait;
 
 // 801344A0
-rdFileNode D_ovl10_801344A0[32];
+lbFileNode D_ovl10_801344A0[32];
 
 // 801345A0
 uintptr_t gMNTitleFile0;
@@ -1364,16 +1364,16 @@ void mnTitleStartScene()
 // 80134140
 void mnTitleLoadFiles()
 {
-	rdSetup rldmSetup;
+	lbRelocSetup rldmSetup;
 
 	rldmSetup.table_addr = &D_NF_001AC870;
 	rldmSetup.table_files_num = &D_NF_00000854;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (rdFileNode*) D_ovl10_801344A0;
+	rldmSetup.status_buf = (lbFileNode*) D_ovl10_801344A0;
 	rldmSetup.status_buf_size = 0x20;
 	rldmSetup.force_buf = 0;
 	rldmSetup.force_buf_size = 0;
-	rdManagerInitSetup(&rldmSetup);
-	rdManagerLoadFiles(D_ovl10_80134420, ARRAY_COUNT(D_ovl10_80134420), &gMNTitleFile0, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl10_80134420, ARRAY_COUNT(D_ovl10_80134420)), 0x10));
+	lbRelocInitSetup(&rldmSetup);
+	lbRelocGetLoadFilesNum(D_ovl10_80134420, ARRAY_COUNT(D_ovl10_80134420), &gMNTitleFile0, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl10_80134420, ARRAY_COUNT(D_ovl10_80134420)), 0x10));
 }

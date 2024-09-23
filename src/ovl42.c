@@ -3,7 +3,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <gr/ground.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 #include <sys/system_00.h>
 
 // Externs
@@ -43,7 +43,7 @@ ftKeyCommand dMvOpeningPikachuInputSeq[] =
 };
 
 // 8018E0FC
-rdFileID D_ovl42_8018E0FC[2] = {
+u32 D_ovl42_8018E0FC[2] = {
 
 	0x25, 0x41
 };
@@ -84,10 +84,10 @@ CameraDesc dMvOpeningPikachuCameraSettingsAdjustedStart;
 CameraDesc dMvOpeningPikachuCameraSettingsAdjustedEnd;
 
 // 8018E288
-rdFileNode D_ovl42_8018E288[48];
+lbFileNode D_ovl42_8018E288[48];
 
 // 8018E408
-rdFileNode D_ovl42_8018E408[7];
+lbFileNode D_ovl42_8018E408[7];
 
 // 8018E440
 uintptr_t gMvOpeningPikachuFilesArray[2];
@@ -99,7 +99,7 @@ scBattleState gMvOpeningPikachuBattleState;
 // 8018D0C0
 void mvOpeningPikachuLoadFiles()
 {
-	rdSetup rldmSetup;
+	lbRelocSetup rldmSetup;
 
 	rldmSetup.table_addr = &D_NF_001AC870;
 	rldmSetup.table_files_num = &D_NF_00000854;
@@ -109,8 +109,8 @@ void mvOpeningPikachuLoadFiles()
 	rldmSetup.status_buf_size = ARRAY_COUNT(D_ovl42_8018E288);
 	rldmSetup.force_buf = D_ovl42_8018E408;
 	rldmSetup.force_buf_size = ARRAY_COUNT(D_ovl42_8018E408);
-	rdManagerInitSetup(&rldmSetup);
-	rdManagerLoadFiles(D_ovl42_8018E0FC, ARRAY_COUNT(D_ovl42_8018E0FC), gMvOpeningPikachuFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl42_8018E0FC, ARRAY_COUNT(D_ovl42_8018E0FC)), 0x10));
+	lbRelocInitSetup(&rldmSetup);
+	lbRelocGetLoadFilesNum(D_ovl42_8018E0FC, ARRAY_COUNT(D_ovl42_8018E0FC), gMvOpeningPikachuFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl42_8018E0FC, ARRAY_COUNT(D_ovl42_8018E0FC)), 0x10));
 }
 
 // 8018D160

@@ -2,7 +2,7 @@
 #include <mv/movie.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 extern void leoInitUnit_atten();
 extern u32 func_8000092C();
@@ -49,10 +49,10 @@ s32 sMVOpeningYamabukiPad0x80132498;
 s32 sMVOpeningYamabukiUnused0x8013249C;
 
 // 0x801324A0
-rdFileNode sMVOpeningYamabukiStatusBuf[48];
+lbFileNode sMVOpeningYamabukiStatusBuf[48];
 
 // 0x80132620
-rdFileNode sMVOpeningYamabukiForceBuf[7];
+lbFileNode sMVOpeningYamabukiForceBuf[7];
 
 // 0x80132658
 void *sMVOpeningYamabukiFiles[1];
@@ -400,26 +400,26 @@ void mvOpeningYamabukiProcRun(GObj *gobj)
 void mvOpeningYamabukiProcStart(void)
 {
     s32 unused;
-    rdSetup rd_setup;
+    lbRelocSetup rl_setup;
 
-    rd_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;
-    rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
-    rd_setup.file_heap = NULL;
-    rd_setup.file_heap_size = 0;
-    rd_setup.status_buf = sMVOpeningYamabukiStatusBuf;
-    rd_setup.status_buf_size = ARRAY_COUNT(sMVOpeningYamabukiStatusBuf);
-    rd_setup.force_buf = sMVOpeningYamabukiForceBuf;
-    rd_setup.force_buf_size = ARRAY_COUNT(sMVOpeningYamabukiForceBuf);
+    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+    rl_setup.file_heap = NULL;
+    rl_setup.file_heap_size = 0;
+    rl_setup.status_buf = sMVOpeningYamabukiStatusBuf;
+    rl_setup.status_buf_size = ARRAY_COUNT(sMVOpeningYamabukiStatusBuf);
+    rl_setup.force_buf = sMVOpeningYamabukiForceBuf;
+    rl_setup.force_buf_size = ARRAY_COUNT(sMVOpeningYamabukiForceBuf);
 
-    rdManagerInitSetup(&rd_setup);
-    rdManagerLoadFiles
+    lbRelocInitSetup(&rl_setup);
+    lbRelocGetLoadFilesNum
     (
         dMVOpeningYamabukiFileIDs,
         ARRAY_COUNT(dMVOpeningYamabukiFileIDs),
         sMVOpeningYamabukiFiles,
         gsMemoryAlloc
         (
-            rdManagerGetAllocSize
+            lbRelocGetAllocSize
             (
                 dMVOpeningYamabukiFileIDs,
                 ARRAY_COUNT(dMVOpeningYamabukiFileIDs)

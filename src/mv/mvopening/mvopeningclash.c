@@ -3,7 +3,7 @@
 #include <mv/movie.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 extern void leoInitUnit_atten();
 extern u32 func_8000092C();
@@ -45,10 +45,10 @@ s32 sMVOpeningClashVoidAlpha;
 s32 sMVOpeningClashUnused0x80132A10;
 
 // 0x80132A18
-rdFileNode sMVOpeningClashStatusBuf[100];
+lbFileNode sMVOpeningClashStatusBuf[100];
 
 // 0x80132D38
-rdFileNode sMVOpeningClashForceBuf[7];
+lbFileNode sMVOpeningClashForceBuf[7];
 
 // 0x80132D70
 void *sMVOpeningClashFiles[2];
@@ -390,26 +390,26 @@ void mvOpeningClashProcRun(GObj *gobj)
 void mvOpeningClashProcStart(void)
 {
     s32 i;
-    rdSetup rd_setup;
+    lbRelocSetup rl_setup;
 
-    rd_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;
-    rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
-    rd_setup.file_heap = NULL;
-    rd_setup.file_heap_size = 0;
-    rd_setup.status_buf = sMVOpeningClashStatusBuf;
-    rd_setup.status_buf_size = ARRAY_COUNT(sMVOpeningClashStatusBuf);
-    rd_setup.force_buf = sMVOpeningClashForceBuf;
-    rd_setup.force_buf_size = ARRAY_COUNT(sMVOpeningClashForceBuf);
+    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+    rl_setup.file_heap = NULL;
+    rl_setup.file_heap_size = 0;
+    rl_setup.status_buf = sMVOpeningClashStatusBuf;
+    rl_setup.status_buf_size = ARRAY_COUNT(sMVOpeningClashStatusBuf);
+    rl_setup.force_buf = sMVOpeningClashForceBuf;
+    rl_setup.force_buf_size = ARRAY_COUNT(sMVOpeningClashForceBuf);
 
-    rdManagerInitSetup(&rd_setup);
-    rdManagerLoadFiles
+    lbRelocInitSetup(&rl_setup);
+    lbRelocGetLoadFilesNum
     (
         dMVOpeningClashFileIDs,
         ARRAY_COUNT(dMVOpeningClashFileIDs),
         sMVOpeningClashFiles,
         gsMemoryAlloc
         (
-            rdManagerGetAllocSize
+            lbRelocGetAllocSize
             (
                 dMVOpeningClashFileIDs,
                 ARRAY_COUNT(dMVOpeningClashFileIDs)

@@ -175,7 +175,7 @@ GObj* lbTransitionMakeTransition(s32 transition_id, u32 id, s32 link, void (*pro
     lbTransitionDesc *transition_desc = &dLBTransitionDescs[transition_id];
     GObj *gobj;
 
-    rdManagerGetFileWithExternHeap(transition_desc->file_id, sLBTransitionFileHeap);
+    lbRelocGetFileExternHeap(transition_desc->file_id, sLBTransitionFileHeap);
     gobj = gcMakeGObjSPAfter(id, NULL, link, GOBJ_LINKORDER_DEFAULT);
     
     gobj->user_data.s = transition_desc->unk_lbtransition_0xC;
@@ -212,7 +212,7 @@ void lbTransitionSetupTransition(void)
     
     for (i = 0; i < ARRAY_COUNT(dLBTransitionDescs); i++)
     {
-        current_size = rdManagerGetFileSize(dLBTransitionDescs[i].file_id);
+        current_size = lbRelocGetFileSize(dLBTransitionDescs[i].file_id);
 
         if (largest_size < current_size)
         {

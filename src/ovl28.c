@@ -2,7 +2,7 @@
 #include <ft/ftdef.h>
 #include <ft/fighter.h>
 #include <sc/scene.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 #include <sys/system_00.h>
 
 #include "character_select.h"
@@ -64,7 +64,7 @@ void mnTrainingSaveMatchInfo();
 
 // DATA
 // 80137F60
-rdFileID D_ovl28_80137F60[20] = {
+u32 D_ovl28_80137F60[20] = {
 
 	0x00000011,
 	0x00000017,
@@ -145,7 +145,7 @@ s32 gMNTrainingHumanPanelPort;
 s32 gMNTrainingCPUPanelPort;
 
 // 801388A0
-rdFileNode D_ovl28_801388A0;
+lbFileNode D_ovl28_801388A0;
 
 // 801388A8
 s32 D_ovl28_801388A8[12];
@@ -2726,7 +2726,7 @@ void mnTrainingInitPanels()
 void mnTrainingInitCSS()
 {
 	s32 bar, baz;
-	rdSetup rldmSetup;
+	lbRelocSetup rldmSetup;
 	f32 foo;
 	s32 i;
 	s32 j;
@@ -2735,12 +2735,12 @@ void mnTrainingInitCSS()
 	rldmSetup.table_files_num = &D_NF_00000854;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (rdFileNode*) &D_ovl28_801388D8;
+	rldmSetup.status_buf = (lbFileNode*) &D_ovl28_801388D8;
 	rldmSetup.status_buf_size = 0x78;
-	rldmSetup.force_buf = (rdFileNode*) &D_ovl28_801388A0;
+	rldmSetup.force_buf = (lbFileNode*) &D_ovl28_801388A0;
 	rldmSetup.force_buf_size = 7;
-	rdManagerInitSetup(&rldmSetup);
-	rdManagerLoadFiles(D_ovl28_80137F60, 8U, gMNTrainingFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl28_80137F60, 8U), 0x10U));
+	lbRelocInitSetup(&rldmSetup);
+	lbRelocGetLoadFilesNum(D_ovl28_80137F60, 8U, gMNTrainingFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl28_80137F60, 8U), 0x10U));
 
 	gcMakeGObjSPAfter(0x400U, &mnTrainingMain, 0xFU, 0x80000000U);
 	gcMakeDefaultCameraGObj(0x10, 0x80000000U, 0x64, 1, 0);

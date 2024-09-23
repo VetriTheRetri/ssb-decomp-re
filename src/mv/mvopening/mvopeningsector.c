@@ -2,7 +2,7 @@
 #include <sc/scene.h>
 #include <mv/movie.h>
 #include <sys/system_00.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 extern u32 func_8000092C();
 
@@ -57,10 +57,10 @@ s32 sMVOpeningSectorCockpitAlpha;
 s32 sMVOpeningSectorUnused0x80132A40;
 
 // 0x80132A48
-rdFileNode sMVOpeningSectorStatusBuf[48];
+lbFileNode sMVOpeningSectorStatusBuf[48];
 
 // 0x80132BC8
-rdFileNode sMVOpeningSectorForceBuf[7];
+lbFileNode sMVOpeningSectorForceBuf[7];
 
 // 0x80132C00
 void *sMVOpeningSectorFiles[3];
@@ -530,10 +530,10 @@ void mvOpeningSectorProcRun(GObj *gobj)
 void mvOpeningSectorProcStart(void)
 {
     s32 i;
-    rdSetup rldmSetup;
+    lbRelocSetup rldmSetup;
 
-    rldmSetup.table_addr = (uintptr_t)&lRDManagerTableAddr;
-    rldmSetup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
+    rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
     rldmSetup.file_heap = NULL;
     rldmSetup.file_heap_size = 0;
     rldmSetup.status_buf = sMVOpeningSectorStatusBuf;
@@ -541,15 +541,15 @@ void mvOpeningSectorProcStart(void)
     rldmSetup.force_buf = sMVOpeningSectorForceBuf;
     rldmSetup.force_buf_size = ARRAY_COUNT(sMVOpeningSectorForceBuf);
 
-    rdManagerInitSetup(&rldmSetup);
-    rdManagerLoadFiles
+    lbRelocInitSetup(&rldmSetup);
+    lbRelocGetLoadFilesNum
     (
         dMVOpeningSectorFileIDs,
         ARRAY_COUNT(dMVOpeningSectorFileIDs),
         sMVOpeningSectorFiles,
         gsMemoryAlloc
         (
-            rdManagerGetAllocSize
+            lbRelocGetAllocSize
             (
                 dMVOpeningSectorFileIDs,
                 ARRAY_COUNT(dMVOpeningSectorFileIDs)

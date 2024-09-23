@@ -2,7 +2,7 @@
 #include <mv/movie.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 extern void leoInitUnit_atten();
 extern u32 func_8000092C();
@@ -47,10 +47,10 @@ f32 sMVOpeningCliffWallpaperScrollSpeed;
 s32 sMVOpeningCliffUnused0x801327DC;
 
 // 0x801327E0
-rdFileNode sMVOpeningCliffStatusBuf[48];
+lbFileNode sMVOpeningCliffStatusBuf[48];
 
 // 0x80132960
-rdFileNode sMVOpeningCliffForceBuf[7];
+lbFileNode sMVOpeningCliffForceBuf[7];
 
 // 0x80132998
 void *sMVOpeningCliffFiles[2];
@@ -470,26 +470,26 @@ void mvOpeningCliffProcRun(GObj *gobj)
 void mvOpeningCliffProcStart(void)
 {
     s32 unused;
-    rdSetup rd_setup;
+    lbRelocSetup rl_setup;
 
-    rd_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;
-    rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
-    rd_setup.file_heap = NULL;
-    rd_setup.file_heap_size = 0;
-    rd_setup.status_buf = sMVOpeningCliffStatusBuf;
-    rd_setup.status_buf_size = ARRAY_COUNT(sMVOpeningCliffStatusBuf);
-    rd_setup.force_buf = sMVOpeningCliffForceBuf;
-    rd_setup.force_buf_size = ARRAY_COUNT(sMVOpeningCliffForceBuf);
+    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+    rl_setup.file_heap = NULL;
+    rl_setup.file_heap_size = 0;
+    rl_setup.status_buf = sMVOpeningCliffStatusBuf;
+    rl_setup.status_buf_size = ARRAY_COUNT(sMVOpeningCliffStatusBuf);
+    rl_setup.force_buf = sMVOpeningCliffForceBuf;
+    rl_setup.force_buf_size = ARRAY_COUNT(sMVOpeningCliffForceBuf);
 
-    rdManagerInitSetup(&rd_setup);
-    rdManagerLoadFiles
+    lbRelocInitSetup(&rl_setup);
+    lbRelocGetLoadFilesNum
     (
         dMVOpeningCliffFileIDs,
         ARRAY_COUNT(dMVOpeningCliffFileIDs),
         sMVOpeningCliffFiles,
         gsMemoryAlloc
         (
-            rdManagerGetAllocSize
+            lbRelocGetAllocSize
             (
                 dMVOpeningCliffFileIDs,
                 ARRAY_COUNT(dMVOpeningCliffFileIDs)

@@ -730,6 +730,7 @@ sLBCommonScissorXMax = 0x800D62BC;
 sLBCommonScissorYMax = 0x800D62C0;
 sLBCommonScissorXMin = 0x800D62C4;
 sLBCommonScissorYMin = 0x800D62C8;
+gLBCommonScale = 0x800D62D0;
 
 sLBParticleStructsAllocFree = 0x800D6350;
 sLBParticleStructsAllocLinks = 0x800D6358;

@@ -4,7 +4,7 @@
 #include <cm/camera.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 extern void func_800A26B8();
 // // // // // // // // // // // //
@@ -87,10 +87,10 @@ s32 sSC1PGameEnemyKirbyCostume;
 void *sSC1PGameZakoStockSprite;
 
 // 0x80193068
-rdFileNode sSC1PGameStatusBuf[100];
+lbFileNode sSC1PGameStatusBuf[100];
 
 // 0x80193388
-rdFileNode sSC1PGameForceBuf[7];
+lbFileNode sSC1PGameForceBuf[7];
 
 // 0x801933C0
 sb32 sSC1PGameIsEndStage;
@@ -727,26 +727,26 @@ scRuntimeInfo dSC1PGameGtlSetup =
 // 0x8018D0C0
 void sc1PGameSetupFiles(void)
 {
-    rdSetup rd_setup;
+    lbRelocSetup rl_setup;
 
-    rd_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;
-    rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
-    rd_setup.file_heap = NULL;
-    rd_setup.file_heap_size = 0;
-    rd_setup.status_buf = sSC1PGameStatusBuf;
-    rd_setup.status_buf_size = ARRAY_COUNT(sSC1PGameStatusBuf);
-    rd_setup.force_buf = sSC1PGameForceBuf;
-    rd_setup.force_buf_size = ARRAY_COUNT(sSC1PGameForceBuf);
+    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+    rl_setup.file_heap = NULL;
+    rl_setup.file_heap_size = 0;
+    rl_setup.status_buf = sSC1PGameStatusBuf;
+    rl_setup.status_buf_size = ARRAY_COUNT(sSC1PGameStatusBuf);
+    rl_setup.force_buf = sSC1PGameForceBuf;
+    rl_setup.force_buf_size = ARRAY_COUNT(sSC1PGameForceBuf);
 
-    rdManagerInitSetup(&rd_setup);
-    rdManagerLoadFiles
+    lbRelocInitSetup(&rl_setup);
+    lbRelocGetLoadFilesNum
     (
         dGMCommonFileIDs, 
         ARRAY_COUNT(dGMCommonFileIDs), 
         gGMCommonFiles, 
         gsMemoryAlloc
         (
-            rdManagerGetAllocSize
+            lbRelocGetAllocSize
             (
                 dGMCommonFileIDs, 
                 ARRAY_COUNT(dGMCommonFileIDs)
@@ -1715,12 +1715,12 @@ void sc1PGameInitTeamStockDisplay(void)
         goto make_gobj;
 
     case nSC1PGameStageZako:
-        sSC1PGameZakoStockSprite = rdManagerGetFileWithExternHeap
+        sSC1PGameZakoStockSprite = lbRelocGetFileExternHeap
         (
             (uintptr_t)&D_NF_00000019, 
             gsMemoryAlloc
             (
-                rdManagerGetFileSize((uintptr_t)&D_NF_00000019), 
+                lbRelocGetFileSize((uintptr_t)&D_NF_00000019), 
                 0x10
             )
         );
@@ -2009,9 +2009,9 @@ void sc1PGameProcStart(void)
 
     if (!(gSaveData.error_flags & LBBACKUP_ERROR_BATTLECASTLE) && (gSaveData.unk5E3 > 0x5C))
     {
-        syDmaRomRead(0xF10, spA0, ARRAY_COUNT(spA0));
+        syDmaReadRom(0xF10, spA0, ARRAY_COUNT(spA0));
 
-        addr = rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_000000C8, gsMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_000000C8), 0x10));
+        addr = lbRelocGetFileExternHeap((uintptr_t)&D_NF_000000C8, gsMemoryAlloc(lbRelocGetFileSize((uintptr_t)&D_NF_000000C8), 0x10));
 
         proc = (sb32(*)(void*)) ((uintptr_t)addr + (intptr_t)&D_NF_00000000);
 
@@ -2046,7 +2046,7 @@ void sc1PGameProcStart(void)
         // Need to load PK Fire graphics from Ness' file
         plns = dFTManagerDataFiles[nFTKindNess];
 
-        rdManagerGetFileWithExternHeap((uintptr_t)&D_NF_000000E6, gsMemoryAlloc(rdManagerGetFileSize((uintptr_t)&D_NF_000000E6), 0x10));
+        lbRelocGetFileExternHeap((uintptr_t)&D_NF_000000E6, gsMemoryAlloc(lbRelocGetFileSize((uintptr_t)&D_NF_000000E6), 0x10));
         efAllocGetAddParticleBankID
         (
             plns->particles_script_lo, 

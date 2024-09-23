@@ -7,6 +7,65 @@
 
 #include <lb/lbdef.h>
 
+struct lbFileNode
+{
+    u32 id;
+    void *addr;
+};
+
+union lbRelocDesc
+{
+    struct lbRelocInfo
+    {
+        u16 reloc;
+        u16 words_num;
+
+    } info;
+
+    void *p;   
+};
+
+struct lbRelocSetup
+{
+    uintptr_t table_addr;        // ROM address
+    u32 table_files_num;         // Total number of files in table?
+    void *file_heap;         
+    size_t file_heap_size;
+    lbFileNode *status_buf;
+    size_t status_buf_size;
+    lbFileNode *force_buf;
+    size_t force_buf_size;
+};
+
+struct lbTableEntry
+{
+    u32 data_offset;
+    u16 reloc_intern_offset; // in words
+    u16 compressed_size;      // in words
+    u16 reloc_extern_offset; // in words
+    u16 decompressed_size;    // in words
+};
+
+struct lbInternBuf
+{
+    uintptr_t rom_table_lo; // Start of file table
+    u32 total_files_num;
+    uintptr_t rom_table_hi; // End of file table
+    void *heap_start;
+    void *heap_ptr;
+    void *heap_end;
+
+    // "status buffer"
+    s32 status_buf_num;
+    s32 status_buf_max;
+    lbFileNode *status_buf;
+
+    // "force status buffer"
+    s32 force_buf_num;
+    s32 force_buf_max;
+    lbFileNode *force_buf;
+};
+
 struct lbScriptDesc
 {
     s32 scripts_num;        // Number of scripts in array?

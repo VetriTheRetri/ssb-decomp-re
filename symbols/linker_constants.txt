@@ -1618,8 +1618,8 @@ lSC1PGameBossEffects3DObjDesc1 = 0x00012858;
 lSC1PGameBossAnims3MatAnimJoint0 = 0x000115C0;
 lSC1PGameBossAnims3AnimJoint1 = 0x000128E0;
 
-lRDManagerTableFilesNum = 0x000854;
-lRDManagerTableAddr = 0x1AC870;
+lLBRelocTableFilesNum = 0x000854;
+lLBRelocTableAddr = 0x1AC870;
 
 FILE_000_COLON_IMAGE_OFFSET = 0xDCF0;
 FILE_010_CHARACTERS_TEXTURE_IMAGE_OFFSET = 0x630;

@@ -4580,7 +4580,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
         }
         else if (script_info->anim_file_id != 0)
         {
-            rldm_get_file_external_force_heap(script_info->anim_file_id, fp->figatree_heap);
+            lbRelocGetFileExternForceBufHeap(script_info->anim_file_id, fp->figatree_heap);
             fp->figatree = fp->figatree_heap;
         }
         else fp->figatree = NULL;

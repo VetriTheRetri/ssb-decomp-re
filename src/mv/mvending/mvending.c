@@ -2,7 +2,7 @@
 #include <mv/movie.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
@@ -70,10 +70,10 @@ ftDemoDesc sMVEndingFighterDemoDesc;
 s32 sMVEndingUnused0x80132C14;
 
 // 0x80132C18
-rdFileNode sMVEndingStatusBuf[100];
+lbFileNode sMVEndingStatusBuf[100];
 
 // 0x80132F38
-rdFileNode sMVEndingForceBuf[7];
+lbFileNode sMVEndingForceBuf[7];
 
 // 0x80132F70
 void *sMVEndingFiles[2];
@@ -504,26 +504,26 @@ void mvEndingProcRun(GObj *gobj)
 void mvEndingProcStart(void)
 {
     s32 unused;
-    rdSetup rd_setup;
+    lbRelocSetup rl_setup;
 
-    rd_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;
-    rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
-    rd_setup.file_heap = NULL;
-    rd_setup.file_heap_size = 0;
-    rd_setup.status_buf = sMVEndingStatusBuf;
-    rd_setup.status_buf_size = ARRAY_COUNT(sMVEndingStatusBuf);
-    rd_setup.force_buf = sMVEndingForceBuf;
-    rd_setup.force_buf_size = ARRAY_COUNT(sMVEndingForceBuf);
+    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+    rl_setup.file_heap = NULL;
+    rl_setup.file_heap_size = 0;
+    rl_setup.status_buf = sMVEndingStatusBuf;
+    rl_setup.status_buf_size = ARRAY_COUNT(sMVEndingStatusBuf);
+    rl_setup.force_buf = sMVEndingForceBuf;
+    rl_setup.force_buf_size = ARRAY_COUNT(sMVEndingForceBuf);
 
-    rdManagerInitSetup(&rd_setup);
-    rdManagerLoadFiles
+    lbRelocInitSetup(&rl_setup);
+    lbRelocGetLoadFilesNum
     (
         dMVEndingFileIDs,
         ARRAY_COUNT(dMVEndingFileIDs),
         sMVEndingFiles,
         gsMemoryAlloc
         (
-            rdManagerGetAllocSize
+            lbRelocGetAllocSize
             (
                 dMVEndingFileIDs,
                 ARRAY_COUNT(dMVEndingFileIDs)

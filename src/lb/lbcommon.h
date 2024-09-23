@@ -8,6 +8,8 @@
 #include <ft/ftdef.h>
 #include <gm/gmsound.h>
 
+extern Vec3f gLBCommonScale;
+
 extern f32 lbCommonSin(f32 x);
 extern f32 lbCommonCos(f32 x);
 extern f32 lbCommonTan(f32 angle);

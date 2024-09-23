@@ -2,7 +2,7 @@
 #include <gm/gmsound.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 #include <sys/system_00.h>
 
 #include "debug.h"
@@ -543,18 +543,18 @@ void mnDebugCubeInit()
 {
 	s32 unused1;
 	s32 unused2;
-	rdSetup rldmSetup;
+	lbRelocSetup rldmSetup;
 	s32 unused3;
 
 	rldmSetup.table_addr = &D_NF_001AC870;
 	rldmSetup.table_files_num = &D_NF_00000854;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (rdFileNode*) &D_ovl13_80133140;
+	rldmSetup.status_buf = (lbFileNode*) &D_ovl13_80133140;
 	rldmSetup.status_buf_size = 5;
 	rldmSetup.force_buf = 0;
 	rldmSetup.force_buf_size = 0;
-	rdManagerInitSetup(&rldmSetup);
+	lbRelocInitSetup(&rldmSetup);
 
 	gcMakeGObjSPAfter(0, mnDebugCubeMain, 0, 0x80000000);
 	gcMakeDefaultCameraGObj

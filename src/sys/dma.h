@@ -34,7 +34,7 @@ extern OSPiHandle *gRomPiHandle;
 extern void syDmaCreateMesgQueue(void);
 extern void syDmaCopy(OSPiHandle *handle, uintptr_t physAddr, uintptr_t virtual, size_t size, u8 direction);
 extern void syDmaLoadOverlay(struct syOverlay *ovl);
-extern void syDmaRomRead(uintptr_t rom_src, void *ram_src, u32 bytes_num);
+extern void syDmaReadRom(uintptr_t rom_src, void *ram_src, u32 bytes_num);
 extern void syDmaRomWrite(void *ram_src, uintptr_t rom_dst, u32 bytes_num);
 extern OSPiHandle* syDmaSramPiInit(void);
 extern void syDmaSramRead(u32 romSrc, void *ram_dst, u32 bytes_num);

@@ -2,7 +2,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 #include "ovl32.h"
 
@@ -45,7 +45,7 @@ s32 dMNVsRecordsRankingColumnWidths[7] = {
 };
 
 // 8013664C
-rdFileID D_ovl32_8013664C[4] = {
+u32 D_ovl32_8013664C[4] = {
 
 	0x1f, 0x20, 0x13, 0x21
 };
@@ -1791,18 +1791,18 @@ void mnVsRecordsMain(GObj* arg0)
 // 80136488
 void mnVsRecordsInit()
 {
-	rdSetup rldmSetup;
+	lbRelocSetup rldmSetup;
 
 	rldmSetup.table_addr = &D_NF_001AC870;
 	rldmSetup.table_files_num = &D_NF_00000854;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (rdFileNode*) &D_ovl32_80136CC8;
+	rldmSetup.status_buf = (lbFileNode*) &D_ovl32_80136CC8;
 	rldmSetup.status_buf_size = 0x18;
 	rldmSetup.force_buf = 0;
 	rldmSetup.force_buf_size = 0;
-	rdManagerInitSetup(&rldmSetup);
-	rdManagerLoadFiles(D_ovl32_8013664C, ARRAY_COUNT(D_ovl32_8013664C), gMNVsRecordsFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl32_8013664C, ARRAY_COUNT(D_ovl32_8013664C)), 0x10U));
+	lbRelocInitSetup(&rldmSetup);
+	lbRelocGetLoadFilesNum(D_ovl32_8013664C, ARRAY_COUNT(D_ovl32_8013664C), gMNVsRecordsFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl32_8013664C, ARRAY_COUNT(D_ovl32_8013664C)), 0x10U));
 
 	gcMakeGObjSPAfter(0, mnVsRecordsMain, 0, 0x80000000);
 	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));

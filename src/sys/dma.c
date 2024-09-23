@@ -112,7 +112,7 @@ void syDmaLoadOverlay(struct syOverlay *ovl)
     }
 }
 
-void syDmaRomRead(u32 rom_src, void *ram_dst, u32 bytes_num) 
+void syDmaReadRom(u32 rom_src, void *ram_dst, u32 bytes_num) 
 {
     syDmaCopy(gRomPiHandle, rom_src, (uintptr_t)ram_dst, bytes_num, OS_READ);
 }
@@ -393,7 +393,7 @@ void syDmaInitVpk0Stream(u32 dev_addr, void *ram_addr, u32 bytes_num)
 
 void syDmaFillVpk0Buf(void)
 {
-    syDmaRomRead(sVpkBufRgcAddr, sVpkBufRamAddr, sVpkBufSize);
+    syDmaReadRom(sVpkBufRgcAddr, sVpkBufRamAddr, sVpkBufSize);
     sVpkBufRgcAddr += sVpkBufSize;
 }
 

@@ -3,7 +3,7 @@
 #include <gm/gmsound.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 #include <sys/system_00.h>
 
 #include "debug.h"
@@ -426,18 +426,18 @@ GObj* mnDebugBattleCreateViewport(void (*proc)(GObj*))
 void mnDebugBattleInit()
 {
 	s32 i;
-	rdSetup rldmSetup;
+	lbRelocSetup rldmSetup;
 	GObj *main_gobj;
 
 	rldmSetup.table_addr = &D_NF_001AC870;
 	rldmSetup.table_files_num = &D_NF_00000854;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (rdFileNode*) &D_ovl14_80132C28;
+	rldmSetup.status_buf = (lbFileNode*) &D_ovl14_80132C28;
 	rldmSetup.status_buf_size = 0x96;
-	rldmSetup.force_buf = (rdFileNode*) &D_ovl14_801330D8;
+	rldmSetup.force_buf = (lbFileNode*) &D_ovl14_801330D8;
 	rldmSetup.force_buf_size = 7;
-	rdManagerInitSetup(&rldmSetup);
+	lbRelocInitSetup(&rldmSetup);
 
 	main_gobj = gcMakeGObjSPAfter(0, mnDebugBattleMain, 0xF, 0x80000000);
 	gcAddGObjProcess(main_gobj, mnDebugBattleSyncCostumes, 1, 0);

@@ -2,7 +2,7 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 #include <sys/system_00.h>
 
 // Externs
@@ -23,7 +23,7 @@ extern void func_80007080(void*, f32, f32, f32, f32);
 
 // Data
 // 801328A0
-rdFileID D_ovl35_801328A0[2] = {
+u32 D_ovl35_801328A0[2] = {
 
 	0x35, 0x36
 };
@@ -66,7 +66,7 @@ s32 gIntroPortraitsUnusedCounter;
 u32 D_ovl35_801329F8[96];
 
 // 80132B78
-rdFileNode D_ovl35_80132B78;
+lbFileNode D_ovl35_80132B78;
 
 // 80132B80
 u32 D_ovl35_80132B80[12];
@@ -390,18 +390,18 @@ void mvPortraitsMain(GObj* arg0)
 void mvPortraitsInit()
 {
 	s32 foo;
-	rdSetup rldmSetup;
+	lbRelocSetup rldmSetup;
 
 	rldmSetup.table_addr = &D_NF_001AC870;
 	rldmSetup.table_files_num = &D_NF_00000854;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (rdFileNode*) &D_ovl35_801329F8;
+	rldmSetup.status_buf = (lbFileNode*) &D_ovl35_801329F8;
 	rldmSetup.status_buf_size = 0x30;
-	rldmSetup.force_buf = (rdFileNode*) &D_ovl35_80132B78;
+	rldmSetup.force_buf = (lbFileNode*) &D_ovl35_80132B78;
 	rldmSetup.force_buf_size = 7;
-	rdManagerInitSetup(&rldmSetup);
-	rdManagerLoadFiles(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0), gIntroPortraitsFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0)), 0x10));
+	lbRelocInitSetup(&rldmSetup);
+	lbRelocGetLoadFilesNum(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0), gIntroPortraitsFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0)), 0x10));
 
 	gcMakeGObjSPAfter(0, mvPortraitsMain, 0, GOBJ_LINKORDER_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));

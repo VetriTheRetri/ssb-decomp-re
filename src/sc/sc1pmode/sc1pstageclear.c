@@ -2,7 +2,7 @@
 #include <sc/scene.h>
 #include <sys/system_00.h>
 #include <sys/thread6.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
@@ -159,10 +159,10 @@ s32 sSC1PStageClearDamageEjectTic;
 s32 sSC1PStageClearPad0x801353C8[2];
 
 // 0x801353D0
-rdFileNode sSC1PStageClearStatusBuf[48];
+lbFileNode sSC1PStageClearStatusBuf[48];
 
 // 0x80135550
-rdFileNode sSC1PStageClearForceBuf[7];
+lbFileNode sSC1PStageClearForceBuf[7];
 
 // 0x80135588
 void *sSC1PStageClearFiles[7];
@@ -1975,26 +1975,26 @@ void sc1PStageClearCopyFramebufToWallpaper(void)
 void sc1PStageClearProcStart(void)
 {
 	s32 unused;
-	rdSetup rd_setup;
+	lbRelocSetup rl_setup;
 
-	rd_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;
-	rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
-	rd_setup.file_heap = NULL;
-	rd_setup.file_heap_size = 0;
-	rd_setup.status_buf = sSC1PStageClearStatusBuf;
-	rd_setup.status_buf_size = ARRAY_COUNT(sSC1PStageClearStatusBuf);
-	rd_setup.force_buf = sSC1PStageClearForceBuf;
-	rd_setup.force_buf_size = ARRAY_COUNT(sSC1PStageClearForceBuf);
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buf = sSC1PStageClearStatusBuf;
+	rl_setup.status_buf_size = ARRAY_COUNT(sSC1PStageClearStatusBuf);
+	rl_setup.force_buf = sSC1PStageClearForceBuf;
+	rl_setup.force_buf_size = ARRAY_COUNT(sSC1PStageClearForceBuf);
 
-	rdManagerInitSetup(&rd_setup);
-	rdManagerLoadFiles
+	lbRelocInitSetup(&rl_setup);
+	lbRelocGetLoadFilesNum
 	(
 		dSC1PStageClearFileIDs,
 		ARRAY_COUNT(dSC1PStageClearFileIDs),
 		sSC1PStageClearFiles,
 		gsMemoryAlloc
 		(
-			rdManagerGetAllocSize
+			lbRelocGetAllocSize
 			(
 				dSC1PStageClearFileIDs,
 				ARRAY_COUNT(dSC1PStageClearFileIDs)

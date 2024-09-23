@@ -1,7 +1,7 @@
 #include <mn/menu.h>
 #include <gm/gmsound.h>
 #include <sc/scene.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 #include <sys/system_00.h>
 #include <sys/thread6.h>
 
@@ -90,7 +90,7 @@ s32 sMNVSModeFramesElapsed;
 s32 sMNVSModeMaxFramesElapsed;
 
 // 0x80134988
-rdFileNode sMNVSModeStatusBuf[24];
+lbFileNode sMNVSModeStatusBuf[24];
 
 // 0x80134A48
 void *sMNVSModeFiles[2];
@@ -1454,18 +1454,18 @@ void mnVSModeMain(GObj *gobj)
 // 0x801345C4
 void mnVSModeProcStart(void)
 {
-    rdSetup rd_setup;
+    lbRelocSetup rl_setup;
 
-    rd_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;
-    rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
-    rd_setup.file_heap = NULL;
-    rd_setup.file_heap_size = 0;
-    rd_setup.status_buf = sMNVSModeStatusBuf;
-    rd_setup.status_buf_size = ARRAY_COUNT(sMNVSModeStatusBuf);
-    rd_setup.force_buf = NULL;
-    rd_setup.force_buf_size = 0;
+    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+    rl_setup.file_heap = NULL;
+    rl_setup.file_heap_size = 0;
+    rl_setup.status_buf = sMNVSModeStatusBuf;
+    rl_setup.status_buf_size = ARRAY_COUNT(sMNVSModeStatusBuf);
+    rl_setup.force_buf = NULL;
+    rl_setup.force_buf_size = 0;
 
-    rdManagerInitSetup(&rd_setup);
+    lbRelocInitSetup(&rl_setup);
 
     if
     (
@@ -1476,14 +1476,14 @@ void mnVSModeProcStart(void)
     {
         gSaveData.error_flags |= LBBACKUP_ERROR_RANDOMKNOCKBACK;
     }
-    rdManagerLoadFiles
+    lbRelocGetLoadFilesNum
     (
         dMNVSModeFileIDs,
         ARRAY_COUNT(dMNVSModeFileIDs),
         sMNVSModeFiles,
         gsMemoryAlloc
         (
-            rdManagerGetAllocSize
+            lbRelocGetAllocSize
             (
                 dMNVSModeFileIDs,
                 ARRAY_COUNT(dMNVSModeFileIDs)

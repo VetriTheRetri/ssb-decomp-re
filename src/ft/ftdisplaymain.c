@@ -13,7 +13,6 @@
 // // // // // // // // // // // //
 
 extern mlRegion gSYGtlGraphicsHeap;
-extern Vec3f D_800D62D0;
 
 // // // // // // // // // // // //
 //                               //
@@ -765,7 +764,7 @@ void ftDisplayMainDrawDefault(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        sp48 = D_800D62D0;
+        sp48 = gLBCommonScale;
 
         if (ft_parts != NULL)
         {
@@ -829,7 +828,7 @@ void ftDisplayMainDrawDefault(DObj *dobj)
         {
             gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
         }
-        D_800D62D0 = sp48;
+        gLBCommonScale = sp48;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -861,7 +860,7 @@ void ftDisplayMainDrawSkeleton(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        sp50 = D_800D62D0;
+        sp50 = gLBCommonScale;
 
         if ((ft_parts != NULL) && (ft_parts->joint_id >= nFTPartsJointCommonStart))
         {
@@ -912,7 +911,7 @@ void ftDisplayMainDrawSkeleton(DObj *dobj)
         {
             gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
         }
-        D_800D62D0 = sp50;
+        gLBCommonScale = sp50;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -973,7 +972,7 @@ void ftDisplayMainDrawParts(DObj *dobj)
 
     fp = ftGetStruct(dobj->parent_gobj);
 
-    sp74 = D_800D62D0;
+    sp74 = gLBCommonScale;
 
     sp90 = gcPrepDObjMatrix(gDisplayListHead, dobj);
 
@@ -1054,7 +1053,7 @@ void ftDisplayMainDrawParts(DObj *dobj)
             gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
         }
     }
-    D_800D62D0 = sp74;
+    gLBCommonScale = sp74;
 
     if (dobj->sib_prev == NULL)
     {
@@ -1165,7 +1164,7 @@ void ftDisplayMainProcDraw(GObj *fighter_gobj)
         }
         else return;
     }
-    D_800D62D0.x = D_800D62D0.y = D_800D62D0.z = 1.0F;
+    gLBCommonScale.x = gLBCommonScale.y = gLBCommonScale.z = 1.0F;
 
     if ((fp->display_mode == nDBDisplayModeMaster) || (fp->display_mode == nDBDisplayModeMapCollision))
     {

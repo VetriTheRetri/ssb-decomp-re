@@ -4,7 +4,7 @@
 #include <mv/movie.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 extern void leoInitUnit_atten();
 extern u32 func_8000092C();
@@ -57,10 +57,10 @@ CameraDesc sMVOpeningJungleUnusedCameraDescAdjustedStart;
 CameraDesc sMVOpeningJungleUnusedCameraDescAdjustedEnd;
 
 // 0x8018DAA8
-rdFileNode sMVOpeningJungleStatusBuf[48];
+lbFileNode sMVOpeningJungleStatusBuf[48];
 
 // 0x8018DC28
-rdFileNode sMVOpeningJungleForceBuf[7];
+lbFileNode sMVOpeningJungleForceBuf[7];
 
 // 0x8018DC60
 void *sMVOpeningJungleFiles[2];
@@ -200,26 +200,26 @@ scRuntimeInfo dMVOpeningJungleGtlSetup =
 // 0x8018D0C0
 void mvOpeningJungleSetupFiles(void)
 {
-    rdSetup rd_setup;
+    lbRelocSetup rl_setup;
 
-    rd_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;
-    rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
-    rd_setup.file_heap = NULL;
-    rd_setup.file_heap_size = 0;
-    rd_setup.status_buf = sMVOpeningJungleStatusBuf;
-    rd_setup.status_buf_size = ARRAY_COUNT(sMVOpeningJungleStatusBuf);
-    rd_setup.force_buf = sMVOpeningJungleForceBuf;
-    rd_setup.force_buf_size = ARRAY_COUNT(sMVOpeningJungleForceBuf);
+    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+    rl_setup.file_heap = NULL;
+    rl_setup.file_heap_size = 0;
+    rl_setup.status_buf = sMVOpeningJungleStatusBuf;
+    rl_setup.status_buf_size = ARRAY_COUNT(sMVOpeningJungleStatusBuf);
+    rl_setup.force_buf = sMVOpeningJungleForceBuf;
+    rl_setup.force_buf_size = ARRAY_COUNT(sMVOpeningJungleForceBuf);
 
-    rdManagerInitSetup(&rd_setup);
-    rdManagerLoadFiles
+    lbRelocInitSetup(&rl_setup);
+    lbRelocGetLoadFilesNum
     (
         dMVOpeningJungleFileIDs,
         ARRAY_COUNT(dMVOpeningJungleFileIDs),
         sMVOpeningJungleFiles,
         gsMemoryAlloc
         (
-            rdManagerGetAllocSize
+            lbRelocGetAllocSize
             (
                 dMVOpeningJungleFileIDs, 
                 ARRAY_COUNT(dMVOpeningJungleFileIDs)

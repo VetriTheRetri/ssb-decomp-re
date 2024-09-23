@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <mv/movie.h>
 #include <sc/scene.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 #include <sys/system_00.h>
 
 extern u32 func_8000092C();
@@ -41,10 +41,10 @@ u16 sMVOpeningNewcomersCharacterMask;
 s32 sMVOpeningNewcomersUnused0x80132754;
 
 // 0x80132758
-rdFileNode dMVOpeningNewcomersStatusBuf[48];
+lbFileNode dMVOpeningNewcomersStatusBuf[48];
 
 // 0x801328D8
-rdFileNode dMVOpeningNewcomersForceBuf[7];
+lbFileNode dMVOpeningNewcomersForceBuf[7];
 
 // 0x80132910
 void *sMVOpeningNewcomersFiles[2];
@@ -409,10 +409,10 @@ void mvOpeningNewcomersProcRun(GObj *gobj)
 void mvOpeningNewcomersProcStart(void)
 {
     s32 unused;
-    rdSetup rldmSetup;
+    lbRelocSetup rldmSetup;
 
-    rldmSetup.table_addr = (uintptr_t)&lRDManagerTableAddr;
-    rldmSetup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
+    rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
     rldmSetup.file_heap = NULL;
     rldmSetup.file_heap_size = 0;
     rldmSetup.status_buf = dMVOpeningNewcomersStatusBuf;
@@ -420,15 +420,15 @@ void mvOpeningNewcomersProcStart(void)
     rldmSetup.force_buf = dMVOpeningNewcomersForceBuf;
     rldmSetup.force_buf_size = ARRAY_COUNT(dMVOpeningNewcomersForceBuf);
 
-    rdManagerInitSetup(&rldmSetup);
-    rdManagerLoadFiles
+    lbRelocInitSetup(&rldmSetup);
+    lbRelocGetLoadFilesNum
     (
         dMVOpeningNewcomersFileIDs,
         ARRAY_COUNT(dMVOpeningNewcomersFileIDs),
         sMVOpeningNewcomersFiles,
         gsMemoryAlloc
         (
-            rdManagerGetAllocSize
+            lbRelocGetAllocSize
             (
                 dMVOpeningNewcomersFileIDs,
                 ARRAY_COUNT(dMVOpeningNewcomersFileIDs)

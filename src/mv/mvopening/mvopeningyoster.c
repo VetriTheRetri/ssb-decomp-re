@@ -3,7 +3,7 @@
 #include <mv/movie.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 
 extern void leoInitUnit_atten();
 extern u32 func_8000092C();
@@ -42,10 +42,10 @@ s32 sMVOpeningYosterTotalTimeTics;
 s32 sMVOpeningYosterUnused0x8013243C;
 
 // 0x80132440
-rdFileNode sMVOpeningYosterStatusBuf[48];
+lbFileNode sMVOpeningYosterStatusBuf[48];
 
 // 0x801325C0
-rdFileNode sMVOpeningYosterForceBuf[7];
+lbFileNode sMVOpeningYosterForceBuf[7];
 
 // 0x801325F8
 void *sMVOpeningYosterFiles[2];
@@ -57,7 +57,7 @@ void *sMVOpeningYosterFiles[2];
 // // // // // // // // // // // //
 
 // 0x80132330
-rdFileID dMVOpeningYosterFileIDs[/* */] = { &D_NF_00000043, &D_NF_0000005D };
+u32 dMVOpeningYosterFileIDs[/* */] = { &D_NF_00000043, &D_NF_0000005D };
 
 // 0x80132338
 Lights1 dMVOpeningYosterLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
@@ -307,26 +307,26 @@ void mvOpeningYosterMainProc(GObj *gobj)
 void mvOpeningYosterProcStart(void)
 {
     s32 i;
-    rdSetup rd_setup;
+    lbRelocSetup rl_setup;
 
-    rd_setup.table_addr = (uintptr_t)&lRDManagerTableAddr;
-    rd_setup.table_files_num = (uintptr_t)&lRDManagerTableFilesNum;
-    rd_setup.file_heap = NULL;
-    rd_setup.file_heap_size = 0;
-    rd_setup.status_buf = sMVOpeningYosterStatusBuf;
-    rd_setup.status_buf_size = ARRAY_COUNT(sMVOpeningYosterStatusBuf);
-    rd_setup.force_buf = sMVOpeningYosterForceBuf;
-    rd_setup.force_buf_size = ARRAY_COUNT(sMVOpeningYosterForceBuf);
+    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+    rl_setup.file_heap = NULL;
+    rl_setup.file_heap_size = 0;
+    rl_setup.status_buf = sMVOpeningYosterStatusBuf;
+    rl_setup.status_buf_size = ARRAY_COUNT(sMVOpeningYosterStatusBuf);
+    rl_setup.force_buf = sMVOpeningYosterForceBuf;
+    rl_setup.force_buf_size = ARRAY_COUNT(sMVOpeningYosterForceBuf);
 
-    rdManagerInitSetup(&rd_setup);
-    rdManagerLoadFiles
+    lbRelocInitSetup(&rl_setup);
+    lbRelocGetLoadFilesNum
     (
         dMVOpeningYosterFileIDs,
         ARRAY_COUNT(dMVOpeningYosterFileIDs),
         sMVOpeningYosterFiles,
         gsMemoryAlloc
         (
-            rdManagerGetAllocSize
+            lbRelocGetAllocSize
             (
                 dMVOpeningYosterFileIDs,
                 ARRAY_COUNT(dMVOpeningYosterFileIDs)

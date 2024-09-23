@@ -3,7 +3,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <gr/ground.h>
-#include <lb/reloc_data_mgr.h>
+#include <lb/library.h>
 #include <sys/system_00.h>
 
 
@@ -27,7 +27,7 @@ extern void func_80007080(void*, f32, f32, f32, f32);
 
 // Data
 // 801325D0
-rdFileID D_ovl44_801325D0[3] = {
+u32 D_ovl44_801325D0[3] = {
 
 	0x37, 0x3C, 0x4B
 };
@@ -70,10 +70,10 @@ s32 gMvOpeningRunningUnusedCounter;
 s32 D_ovl44_80132744;
 
 // 80132748
-rdFileNode D_ovl44_80132748[100];
+lbFileNode D_ovl44_80132748[100];
 
 // 80132A68
-rdFileNode D_ovl44_80132A68[7];
+lbFileNode D_ovl44_80132A68[7];
 
 // 80132AA0
 uintptr_t gMvOpeningRunningFilesArray[3];
@@ -285,7 +285,7 @@ void mvOpeningRunningMainProc(s32 arg0)
 void mvOpeningRunningInit()
 {
 	s32 i;
-	rdSetup rldmSetup;
+	lbRelocSetup rldmSetup;
 
 	rldmSetup.table_addr = &D_NF_001AC870;
 	rldmSetup.table_files_num = &D_NF_00000854;
@@ -295,8 +295,8 @@ void mvOpeningRunningInit()
 	rldmSetup.status_buf_size = ARRAY_COUNT(D_ovl44_80132748);
 	rldmSetup.force_buf = D_ovl44_80132A68;
 	rldmSetup.force_buf_size = ARRAY_COUNT(D_ovl44_80132A68);
-	rdManagerInitSetup(&rldmSetup);
-	rdManagerLoadFiles(D_ovl44_801325D0, ARRAY_COUNT(D_ovl44_801325D0), gMvOpeningRunningFilesArray, gsMemoryAlloc(rdManagerGetAllocSize(D_ovl44_801325D0, ARRAY_COUNT(D_ovl44_801325D0)), 0x10));
+	lbRelocInitSetup(&rldmSetup);
+	lbRelocGetLoadFilesNum(D_ovl44_801325D0, ARRAY_COUNT(D_ovl44_801325D0), gMvOpeningRunningFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl44_801325D0, ARRAY_COUNT(D_ovl44_801325D0)), 0x10));
 
 	gcMakeGObjSPAfter(0, mvOpeningRunningMainProc, 0, 0x80000000);
 

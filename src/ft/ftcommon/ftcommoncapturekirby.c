@@ -173,7 +173,7 @@ void ftCommonCaptureWaitKirbyUpdateBreakoutVars(ftStruct *this_fp, ftStruct *cap
             this_fp->tap_stick_x = FTINPUT_STICKBUFFER_FRAMES_MAX;
             is_wiggle = TRUE;
 
-            if (capture_fp->ga == FALSE)
+            if (capture_fp->ga == nMPKineticsGround)
             {
                 capture_fp->phys_info.vel_ground.x = (((this_fp->input.pl.stick_range.x < 0) ? -1 : 1) * capture_fp->lr) * FTCOMMON_CAPTUREKIRBY_WIGGLE_VEL_XY;
             }

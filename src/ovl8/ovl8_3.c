@@ -261,7 +261,7 @@ void func_ovl8_80372554(dbUnknownLink *arg0, u32 arg1)
 	}
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8_3/func_ovl8_803725DC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_3/func_ovl8_803725DC.s")
 // void func_ovl8_803725DC(dbTestMenu *arg0)
 // {
 // 	dbUnknownLinkStruct *db_unk10;

@@ -71,7 +71,7 @@ void func_ovl8_803718C4(dbUnknownLinkStruct* arg0, s32 arg1)
 	}
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/ovl8_2/func_ovl8_803718FC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_2/func_ovl8_803718FC.s")
 
 void func_ovl8_80371930(dbUnknownLinkStruct* arg0)
 {

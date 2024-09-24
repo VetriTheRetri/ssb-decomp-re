@@ -33,9 +33,6 @@
 // Function headers
 #include <sys/objfunctions.h>
 
-#define gcGetDataFromFile(type, file, offset) \
-((type) ((uintptr_t)(file) + (intptr_t)(offset)))
-
 #define AObjAnimAdvance(script) \
 ((script)++)
 

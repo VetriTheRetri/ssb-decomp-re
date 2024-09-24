@@ -1,5 +1,6 @@
 #ifndef _MNVSMODE_H_
 #define _MNVSMODE_H_
+
 #include <ssb_types.h>
 #include <sys/objdef.h>
 #include <PR/gbi.h>

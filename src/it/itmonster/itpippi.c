@@ -104,7 +104,7 @@ void itPippiCommonSelectMonster(GObj *item_gobj)
     }
     if ((it_kind == nITKindSawamura) || (it_kind == nITKindStarmie))
     {
-        item_gobj->proc_draw = itPippiCommonMoveDLProcDraw;
+        item_gobj->proc_display = itPippiCommonMoveDLProcDisplay;
 
         gcMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_order);
     }
@@ -116,7 +116,7 @@ void itPippiCommonSelectMonster(GObj *item_gobj)
 }
 
 // 0x80183344
-void itPippiCommonProcDraw(GObj *item_gobj)
+void itPippiCommonProcDisplay(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -149,7 +149,7 @@ void itPippiCommonProcDraw(GObj *item_gobj)
 }
 
 // 0x801834A0 - Render routine of Hitmonlee / Starmie metronome abilities
-void itPippiCommonMoveDLProcDraw(GObj *item_gobj)
+void itPippiCommonMoveDLProcDisplay(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -233,7 +233,7 @@ GObj* itPippiMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITPippiDataStart), 0.0F); // Linker thing
         func_800269C0_275C0(nSYAudioVoiceMBallPippiAppear);
 
-        item_gobj->proc_draw = itPippiCommonProcDraw;
+        item_gobj->proc_display = itPippiCommonProcDisplay;
     }
     return item_gobj;
 }

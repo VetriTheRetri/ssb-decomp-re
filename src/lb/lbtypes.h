@@ -243,8 +243,8 @@ struct lbBackupData
 							  	// flash" option? It is always toggled ON, even
 							  	// after clearing the save data.
 	ub8 sound_mono_or_stereo; 
-	s16 screen_adjust_hz;		// Offset from screen center horizontally
-	s16 screen_adjust_vt;		// Offset from screen center vertically
+	s16 screen_adjust_h;		// Offset from screen center horizontally
+	s16 screen_adjust_v;		// Offset from screen center vertically
 	u8 bio_ft_kind;				// Last character viewed on Character Data menu
 	u8 unlock_mask;
 	u16 character_mask; 		// Mask of unlocked characters?

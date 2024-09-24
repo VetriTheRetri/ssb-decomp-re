@@ -4034,7 +4034,7 @@ void mpCollisionInitGroundData(void)
 {
     mpGeometryInfo *geometry_info;
 
-    gMPCollisionGroundData = gcGetDataFromFile
+    gMPCollisionGroundData = lbGetDataFromFile
     (
         mpGroundData*,
         (uintptr_t)lbRelocGetFileExternHeap

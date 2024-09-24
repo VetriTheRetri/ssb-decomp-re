@@ -219,6 +219,9 @@ lLBTransitionCurtainAnimJoint = 0x00007C98;
 lGRWallpaperTraining0Sprite = 0x00020718;
 lGRWallpaperTraining0BitmapPointer = 0x0002074C;
 
+lMNScreenAdjustInstructionSprite = 0x00000918;
+lMNScreenAdjustGuideSprite = 0x000098A0;
+
 lGRPupupuGroundFileID = 0x0000FF;
 lGRPupupuSmallGroundFileID = 0x000100;
 lGRZebesGroundFileID = 0x000101;

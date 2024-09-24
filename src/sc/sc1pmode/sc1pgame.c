@@ -1622,7 +1622,7 @@ void sc1PGameSetGameStatusWait(void)
 }
 
 // 0x8018EBB8
-void sc1PGameTeamStockDisplayProcDraw(GObj *interface_gobj)
+void sc1PGameTeamStockDisplayProcDisplay(GObj *interface_gobj)
 {
     SObj *sobj;
     s32 stock_num;
@@ -1666,7 +1666,7 @@ void sc1PGameTeamStockDisplayProcDraw(GObj *interface_gobj)
                         break;
 
                     case nSC1PGameStageZako:
-                        sobj->sprite = *gcGetDataFromFile(Sprite*, sSC1PGameZakoStockSprite, &D_NF_00000080);
+                        sobj->sprite = *lbGetDataFromFile(Sprite*, sSC1PGameZakoStockSprite, &D_NF_00000080);
                         break;
                     }
                     sobj->sprite.attr &= ~SP_HIDDEN;
@@ -1724,18 +1724,18 @@ void sc1PGameInitTeamStockDisplay(void)
                 0x10
             )
         );
-        sprite = gcGetDataFromFile(Sprite*, sSC1PGameZakoStockSprite, &D_NF_00000080);
+        sprite = lbGetDataFromFile(Sprite*, sSC1PGameZakoStockSprite, &D_NF_00000080);
 
         sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 
     make_gobj:
         interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
-        gcAddGObjDisplay(interface_gobj, sc1PGameTeamStockDisplayProcDraw, 23, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+        gcAddGObjDisplay(interface_gobj, sc1PGameTeamStockDisplayProcDisplay, 23, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
         for (i = 0; i < sSC1PGameEnemyStocksRemaining; i++)
         {
-            lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[4], &D_NF_00000068));
+            lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[4], &D_NF_00000068));
         }
         sSC1PGameEnemyStocksDisplay = sSC1PGameEnemyStocksRemaining + 1;
 

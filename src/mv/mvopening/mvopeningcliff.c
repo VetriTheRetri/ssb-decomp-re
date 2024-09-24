@@ -127,7 +127,7 @@ void mvOpeningCliffProcLights(Gfx **dls)
 }
 
 // 0x80131B58
-void mvOpeningCliffHillsProcDraw(GObj *hills_gobj)
+void mvOpeningCliffHillsProcDisplay(GObj *hills_gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
@@ -147,7 +147,7 @@ void mvOpeningCliffMakeHills(void)
     gcSetupCommonDObjs
     (
         hills_gobj,
-        gcGetDataFromFile
+        lbGetDataFromFile
         (
             DObjDesc*,
             sMVOpeningCliffFiles[0],
@@ -155,7 +155,7 @@ void mvOpeningCliffMakeHills(void)
         ),
         NULL
     );
-    gcAddGObjDisplay(hills_gobj, mvOpeningCliffHillsProcDraw, 26, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(hills_gobj, mvOpeningCliffHillsProcDisplay, 26, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 }
 
 // 0x80131CA4 - Unused?
@@ -189,7 +189,7 @@ void mvOpeningCliffMakeFighter(void)
 }
 
 // 0x80131D8C
-void mvOpeningCliffWallpaperProcDraw(GObj *gobj)
+void mvOpeningCliffWallpaperProcDisplay(GObj *gobj)
 {
     SObj *sobj = SObjGetStruct(gobj);
 
@@ -248,9 +248,9 @@ void mvOpeningCliffMakeWallpaper(void)
 
     wallpaper_gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
-    gcAddGObjProcess(wallpaper_gobj, mvOpeningCliffWallpaperProcDraw, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(wallpaper_gobj, mvOpeningCliffWallpaperProcDisplay, nOMObjProcessKindProc, 1);
 
-    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, gcGetDataFromFile(Sprite*, sMVOpeningCliffFiles[1], &lMVOpeningCliffWallpaperSprite));
+    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbGetDataFromFile(Sprite*, sMVOpeningCliffFiles[1], &lMVOpeningCliffWallpaperSprite));
     wallpaper_sobj->sprite.attr &= ~SP_FASTCOPY;
 
     wallpaper_sobj->sprite.scalex = 2.0F;
@@ -259,7 +259,7 @@ void mvOpeningCliffMakeWallpaper(void)
     wallpaper_sobj->pos.x = 0.0F;
     wallpaper_sobj->pos.y = 0.0F;
 
-    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, gcGetDataFromFile(Sprite*, sMVOpeningCliffFiles[1], &lMVOpeningCliffWallpaperSprite));
+    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbGetDataFromFile(Sprite*, sMVOpeningCliffFiles[1], &lMVOpeningCliffWallpaperSprite));
     wallpaper_sobj->sprite.attr &= ~SP_FASTCOPY;
 
     wallpaper_sobj->sprite.scalex = 2.0F;
@@ -278,7 +278,7 @@ void mvOpeningCliffMakeOcarina(void)
     gcSetupCustomDObjs
     (
         ocarina_gobj,
-        gcGetDataFromFile
+        lbGetDataFromFile
         (
             DObjDesc*,
             sMVOpeningCliffFiles[0],
@@ -298,7 +298,7 @@ void mvOpeningCliffMakeOcarina(void)
     gcAddAnimJointAll
     (
         ocarina_gobj,
-        gcGetDataFromFile
+        lbGetDataFromFile
         (
             AObjEvent32**,
             sMVOpeningCliffFiles[0],
@@ -349,7 +349,7 @@ void mvOpeningCliffMakeMainViewport(void)
     gcAddCameraCamAnimJoint
     (
         cam,
-        gcGetDataFromFile
+        lbGetDataFromFile
         (
             AObjEvent32*,
             sMVOpeningCliffFiles[0],
@@ -388,7 +388,7 @@ void mvOpeningCliffMakeMainViewport(void)
     gcAddCameraCamAnimJoint
     (
         cam,
-        gcGetDataFromFile
+        lbGetDataFromFile
         (
             AObjEvent32*,
             sMVOpeningCliffFiles[0],

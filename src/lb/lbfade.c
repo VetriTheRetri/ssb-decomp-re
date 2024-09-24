@@ -56,7 +56,7 @@ void lbFadeProcUpdate(GObj *gobj)
 }
 
 // 0x800D3F08
-void lbFadeProcDraw(GObj *gobj)
+void lbFadeProcDisplay(GObj *gobj)
 {
     s32 alpha = ((f32) sLBFadeAlphaCurrent / (f32) sLBFadeAlphaMax) * 255.0F;
     
@@ -78,7 +78,7 @@ void lbFadeMakeActor(u32 id, s32 link, u32 link_order, syColorRGBA *color, s32 f
 {
     GObj *gobj = gcMakeGObjSPAfter(id, NULL, link, GOBJ_LINKORDER_DEFAULT);
 
-    func_80009F74(gobj, lbFadeProcDraw, link_order, 0, -1);
+    func_80009F74(gobj, lbFadeProcDisplay, link_order, 0, -1);
     gcAddGObjProcess(gobj, lbFadeProcUpdate, nOMObjProcessKindProc, 0);
     
     sLBFadeColor = *color;

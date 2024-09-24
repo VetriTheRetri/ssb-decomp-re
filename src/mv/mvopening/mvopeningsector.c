@@ -184,7 +184,7 @@ void mvOpeningSectorMakeWallpaper(void)
     wallpaper_sobj = lbCommonMakeSObjForGObj
     (
         wallpaper_gobj,
-        gcGetDataFromFile
+        lbGetDataFromFile
         (
             Sprite*,
             sMVOpeningSectorFiles[2],
@@ -199,7 +199,7 @@ void mvOpeningSectorMakeWallpaper(void)
     wallpaper_sobj = lbCommonMakeSObjForGObj
     (
         wallpaper_gobj,
-        gcGetDataFromFile
+        lbGetDataFromFile
         (
             Sprite*,
             sMVOpeningSectorFiles[2],
@@ -214,7 +214,7 @@ void mvOpeningSectorMakeWallpaper(void)
     wallpaper_sobj = lbCommonMakeSObjForGObj
     (
         wallpaper_gobj,
-        gcGetDataFromFile
+        lbGetDataFromFile
         (
             Sprite*,
             sMVOpeningSectorFiles[2],
@@ -229,7 +229,7 @@ void mvOpeningSectorMakeWallpaper(void)
     wallpaper_sobj = lbCommonMakeSObjForGObj
     (
         wallpaper_gobj,
-        gcGetDataFromFile
+        lbGetDataFromFile
         (
             Sprite*,
             sMVOpeningSectorFiles[2],
@@ -252,7 +252,7 @@ void mvOpeningSectorMakeGreatFox(void)
     gcSetupCustomDObjs
     (
         great_fox_gobj,
-        gcGetDataFromFile
+        lbGetDataFromFile
         (
             DObjDesc*,
             sMVOpeningSectorFiles[0],
@@ -272,7 +272,7 @@ void mvOpeningSectorMakeGreatFox(void)
     gcAddAnimJointAll
     (
         great_fox_gobj,
-        gcGetDataFromFile
+        lbGetDataFromFile
         (
             AObjEvent32**,
             sMVOpeningSectorFiles[0],
@@ -284,7 +284,7 @@ void mvOpeningSectorMakeGreatFox(void)
 }
 
 // 0x8013202C
-void mvOpeningSectorCockpitProcDraw(GObj *cockpit_gobj)
+void mvOpeningSectorCockpitProcDisplay(GObj *cockpit_gobj)
 {
     SObj* cockpit_sobj = SObjGetStruct(cockpit_gobj);
 
@@ -336,13 +336,13 @@ void mvOpeningSectorMakeCockpit(void)
 
     cockpit_gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(cockpit_gobj, mvOpeningSectorCockpitProcDraw, 29, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(cockpit_gobj, mvOpeningSectorCockpitProcDisplay, 29, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
     gcAddGObjProcess(cockpit_gobj, mvOpeningSectorCockpitProcUpdate, nOMObjProcessKindProc, 1);
 
     cockpit_sobj = lbCommonMakeSObjForGObj
     (
         cockpit_gobj,
-        gcGetDataFromFile
+        lbGetDataFromFile
         (
             Sprite*,
             sMVOpeningSectorFiles[0],
@@ -377,7 +377,7 @@ void mvOpeningSectorMakeArwings(void)
         gcSetupCustomDObjs
         (
             arwing_gobj,
-            gcGetDataFromFile
+            lbGetDataFromFile
             (
                 DObjDesc*,
                 sMVOpeningSectorFiles[1],
@@ -389,7 +389,7 @@ void mvOpeningSectorMakeArwings(void)
             nOMTransformNull
         );
         gcAddGObjDisplay(arwing_gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
-        gcAddAnimJointAll(arwing_gobj, gcGetDataFromFile(AObjEvent32**, sMVOpeningSectorFiles[0], anim_joints[i]), 0.0F);
+        gcAddAnimJointAll(arwing_gobj, lbGetDataFromFile(AObjEvent32**, sMVOpeningSectorFiles[0], anim_joints[i]), 0.0F);
         gcAddGObjProcess(arwing_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
     }
 }
@@ -426,7 +426,7 @@ void mvOpeningSectorMakeMainViewport(void)
     cam->projection.persp.near = 128.0F;
     cam->projection.persp.far = 30000.0F;
 
-    gcAddCameraCamAnimJoint(cam, gcGetDataFromFile(AObjEvent32*, sMVOpeningSectorFiles[0], &lMVOpeningSectorCamAnimJoint), 0.0F);
+    gcAddCameraCamAnimJoint(cam, lbGetDataFromFile(AObjEvent32*, sMVOpeningSectorFiles[0], &lMVOpeningSectorCamAnimJoint), 0.0F);
     gcAddGObjProcess(camera_gobj, mvOpeningSectorCameraProcUpdate, nOMObjProcessKindProc, 1);
 }
 

@@ -20,7 +20,7 @@ extern void mvOpeningStandoffMakeFighters(void);
 extern void mvOpeningStandoffWallpaperProcUpdate(GObj* wallpaper_gobj);
 extern void mvOpeningStandoffMakeWallpaper(void);
 extern void mvOpeningStandoffMakeLightning(void);
-extern void mvOpeningStandoffLightningFlashProcDraw(GObj *gobj);
+extern void mvOpeningStandoffLightningFlashProcDisplay(GObj *gobj);
 extern void mvOpeningStandoffMakeLightningFlash(void);
 extern void mvOpeningStandoffMakeLightningFlashViewport(void);
 extern void mvOpeningStandoffMakeMainViewport(void);

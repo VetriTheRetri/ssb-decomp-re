@@ -16,7 +16,7 @@ void wpDisplayDrawNormal();
 void wpDisplayDrawZBuffer();
 
 // Unknown
-void wpDisplayMain(GObj* weapon_gobj, void (*proc_draw)(GObj*));
+void wpDisplayMain(GObj* weapon_gobj, void (*proc_display)(GObj*));
 
 // Unknown
 void wpDisplayDLHead1(GObj* weapon_gobj);

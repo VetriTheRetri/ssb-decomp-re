@@ -203,7 +203,7 @@ void mnVSModeMakeNumber(GObj* number_gobj, s32 num, f32 x, f32 y, u32 *colors, s
 
     if (num < 0) num = 0;
 
-    number_sobj = lbCommonMakeSObjForGObj(number_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], number_offsets[num % 10]));
+    number_sobj = lbCommonMakeSObjForGObj(number_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[0], number_offsets[num % 10]));
     mnVSModeSetTextureColors(number_sobj, colors);
     left_x -= 11.0F;
     number_sobj->pos.x = left_x;
@@ -218,7 +218,7 @@ void mnVSModeMakeNumber(GObj* number_gobj, s32 num, f32 x, f32 y, u32 *colors, s
     {
         digit = (mnVSModePow(10, place) != 0) ? num / mnVSModePow(10, place) : 0;
 
-        number_sobj = lbCommonMakeSObjForGObj(number_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], number_offsets[digit % 10]));
+        number_sobj = lbCommonMakeSObjForGObj(number_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[0], number_offsets[digit % 10]));
         mnVSModeSetTextureColors(number_sobj, colors);
         left_x -= 11.0F;
         number_sobj->pos.x = left_x;
@@ -275,13 +275,13 @@ void mnVSModeMakeButton(GObj* button_gobj, f32 x, f32 y, s32 arg3)
 {
     SObj* button_sobj;
 
-    button_sobj = lbCommonMakeSObjForGObj(button_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonOptionTabLeftSprite));
+    button_sobj = lbCommonMakeSObjForGObj(button_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonOptionTabLeftSprite));
     button_sobj->sprite.attr &= ~SP_FASTCOPY;
     button_sobj->sprite.attr |= SP_TRANSPARENT;
     button_sobj->pos.x = x;
     button_sobj->pos.y = y;
 
-    button_sobj = lbCommonMakeSObjForGObj(button_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonOptionTabMiddleSprite));
+    button_sobj = lbCommonMakeSObjForGObj(button_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonOptionTabMiddleSprite));
     button_sobj->sprite.attr &= ~SP_FASTCOPY;
     button_sobj->sprite.attr |= SP_TRANSPARENT;
     button_sobj->pos.x = x + 16.0F;
@@ -293,7 +293,7 @@ void mnVSModeMakeButton(GObj* button_gobj, f32 x, f32 y, s32 arg3)
     button_sobj->lrs = arg3 * 8;
     button_sobj->lrt = 0x1D;
 
-    button_sobj = lbCommonMakeSObjForGObj(button_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonOptionTabRightSprite));
+    button_sobj = lbCommonMakeSObjForGObj(button_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonOptionTabRightSprite));
     button_sobj->sprite.attr &= ~SP_FASTCOPY;
     button_sobj->sprite.attr |= SP_TRANSPARENT;
     button_sobj->pos.x = x + 16.0F + (arg3 * 8);
@@ -312,7 +312,7 @@ void mnVSModeMakeVSStartButton()
 
     mnVSModeUpdateButton(button_gobj, (sMNVSModeCursorIndex == 0) ? nMNOptionTabStatusHighlight : nMNOptionTabStatusNot);
 
-    button_sobj = lbCommonMakeSObjForGObj(button_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeVSStartSprite));
+    button_sobj = lbCommonMakeSObjForGObj(button_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeVSStartSprite));
     button_sobj->sprite.attr &= ~SP_FASTCOPY;
     button_sobj->sprite.attr |= SP_TRANSPARENT;
     button_sobj->sprite.red = 0x00;
@@ -338,7 +338,7 @@ void mnVSModeMakeRuleValue()
     switch (sMNVSModeRule)
     {
         case nMNVSModeRuleStock:
-            rule_value_sobj = lbCommonMakeSObjForGObj(rule_value_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeSmallStockSprite));
+            rule_value_sobj = lbCommonMakeSObjForGObj(rule_value_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeSmallStockSprite));
             rule_value_sobj->sprite.attr &= ~SP_FASTCOPY;
             rule_value_sobj->sprite.attr |= SP_TRANSPARENT;
             rule_value_sobj->pos.x = 183.0F;
@@ -348,7 +348,7 @@ void mnVSModeMakeRuleValue()
             rule_value_sobj->sprite.blue = color.b;
             return;
         case nMNVSModeRuleTime:
-            rule_value_sobj = lbCommonMakeSObjForGObj(rule_value_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeSmallTimeSprite));
+            rule_value_sobj = lbCommonMakeSObjForGObj(rule_value_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeSmallTimeSprite));
             rule_value_sobj->sprite.attr &= ~SP_FASTCOPY;
             rule_value_sobj->sprite.attr |= SP_TRANSPARENT;
             rule_value_sobj->pos.x = 187.0F;
@@ -358,7 +358,7 @@ void mnVSModeMakeRuleValue()
             rule_value_sobj->sprite.blue = color.b;
             return;
         case nMNVSModeRuleStockTeam:
-            rule_value_sobj = lbCommonMakeSObjForGObj(rule_value_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeSmallStockSprite));
+            rule_value_sobj = lbCommonMakeSObjForGObj(rule_value_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeSmallStockSprite));
             rule_value_sobj->sprite.attr &= ~SP_FASTCOPY;
             rule_value_sobj->sprite.attr |= SP_TRANSPARENT;
             rule_value_sobj->pos.x = 165.0F;
@@ -367,7 +367,7 @@ void mnVSModeMakeRuleValue()
             rule_value_sobj->sprite.green = color.g;
             rule_value_sobj->sprite.blue = color.b;
 
-            rule_value_sobj = lbCommonMakeSObjForGObj(rule_value_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeTeamSprite));
+            rule_value_sobj = lbCommonMakeSObjForGObj(rule_value_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeTeamSprite));
             rule_value_sobj->sprite.attr &= ~SP_FASTCOPY;
             rule_value_sobj->sprite.attr |= SP_TRANSPARENT;
             rule_value_sobj->pos.x = 212.0F;
@@ -377,7 +377,7 @@ void mnVSModeMakeRuleValue()
             rule_value_sobj->sprite.blue = color.b;
             return;
         case nMNVSModeRuleTimeTeam:
-            rule_value_sobj = lbCommonMakeSObjForGObj(rule_value_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeSmallTimeSprite));
+            rule_value_sobj = lbCommonMakeSObjForGObj(rule_value_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeSmallTimeSprite));
             rule_value_sobj->sprite.attr &= ~SP_FASTCOPY;
             rule_value_sobj->sprite.attr |= SP_TRANSPARENT;
             rule_value_sobj->pos.x = 168.0F;
@@ -386,7 +386,7 @@ void mnVSModeMakeRuleValue()
             rule_value_sobj->sprite.green = color.g;
             rule_value_sobj->sprite.blue = color.b;
 
-            rule_value_sobj = lbCommonMakeSObjForGObj(rule_value_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeTeamSprite));
+            rule_value_sobj = lbCommonMakeSObjForGObj(rule_value_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeTeamSprite));
             rule_value_sobj->sprite.attr &= ~SP_FASTCOPY;
             rule_value_sobj->sprite.attr |= SP_TRANSPARENT;
             rule_value_sobj->pos.x = 212.0F;
@@ -427,7 +427,7 @@ void mnVSModeMakeLeftArrow(GObj* arrow_gobj, f32 x, f32 y)
 {
     SObj* arrow_sobj;
 
-    arrow_sobj = lbCommonMakeSObjForGObj(arrow_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonLeftArrowSprite));
+    arrow_sobj = lbCommonMakeSObjForGObj(arrow_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonLeftArrowSprite));
     arrow_sobj->user_data.s = 0;
     arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
     arrow_sobj->sprite.attr |= SP_TRANSPARENT;
@@ -443,7 +443,7 @@ void mnVSModeMakeRightArrow(GObj* arrow_gobj, f32 x, f32 y)
 {
     SObj* arrow_sobj;
 
-    arrow_sobj = lbCommonMakeSObjForGObj(arrow_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonRightArrowSprite));
+    arrow_sobj = lbCommonMakeSObjForGObj(arrow_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonRightArrowSprite));
     arrow_sobj->user_data.s = 1;
     arrow_sobj->sprite.attr &= ~SP_FASTCOPY;
     arrow_sobj->sprite.attr |= SP_TRANSPARENT;
@@ -593,7 +593,7 @@ void mnVSModeMakeRuleButton()
 
     mnVSModeUpdateButton(rule_button_gobj, (sMNVSModeCursorIndex == nMNVSModeOptionRule) ? nMNOptionTabStatusHighlight : nMNOptionTabStatusNot);
 
-    button_sobj = lbCommonMakeSObjForGObj(rule_button_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeRuleSprite));
+    button_sobj = lbCommonMakeSObjForGObj(rule_button_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeRuleSprite));
     button_sobj->sprite.attr &= ~SP_FASTCOPY;
     button_sobj->sprite.attr |= SP_TRANSPARENT;
     button_sobj->sprite.red = 0x00;
@@ -644,7 +644,7 @@ void mnVSModeMakeTimeStockValue()
 
     if (value == SCBATTLE_TIMELIMIT_INFINITE)
     {
-        time_stock_value_sobj = lbCommonMakeSObjForGObj(time_stock_value_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonInfinitySprite));
+        time_stock_value_sobj = lbCommonMakeSObjForGObj(time_stock_value_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonInfinitySprite));
         time_stock_value_sobj->sprite.attr &= ~SP_FASTCOPY;
         time_stock_value_sobj->sprite.attr |= SP_TRANSPARENT;
         time_stock_value_sobj->pos.x = 162.0F;
@@ -681,7 +681,7 @@ void mnVSModeMakeTimeStockButton()
 
     if ((sMNVSModeRule == nMNVSModeRuleTime) || (sMNVSModeRule == nMNVSModeRuleTimeTeam))
     {
-        time_stock_button_sobj = lbCommonMakeSObjForGObj(time_stock_button_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeTimeSprite));
+        time_stock_button_sobj = lbCommonMakeSObjForGObj(time_stock_button_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeTimeSprite));
         time_stock_button_sobj->sprite.attr &= ~SP_FASTCOPY;
         time_stock_button_sobj->sprite.attr |= SP_TRANSPARENT;
         time_stock_button_sobj->sprite.red = 0x00;
@@ -690,7 +690,7 @@ void mnVSModeMakeTimeStockButton()
         time_stock_button_sobj->pos.x = 97.0F;
         time_stock_button_sobj->pos.y = 113.0F;
 
-        time_stock_button_sobj = lbCommonMakeSObjForGObj(time_stock_button_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeMinSprite));
+        time_stock_button_sobj = lbCommonMakeSObjForGObj(time_stock_button_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeMinSprite));
         time_stock_button_sobj->sprite.attr &= ~SP_FASTCOPY;
         time_stock_button_sobj->sprite.attr |= SP_TRANSPARENT;
         time_stock_button_sobj->sprite.red = 0x00;
@@ -701,7 +701,7 @@ void mnVSModeMakeTimeStockButton()
     }
     else
     {
-        time_stock_button_sobj = lbCommonMakeSObjForGObj(time_stock_button_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeStockSprite));
+        time_stock_button_sobj = lbCommonMakeSObjForGObj(time_stock_button_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeStockSprite));
         time_stock_button_sobj->sprite.attr &= ~SP_FASTCOPY;
         time_stock_button_sobj->sprite.attr |= SP_TRANSPARENT;
         time_stock_button_sobj->sprite.red = 0x00;
@@ -725,7 +725,7 @@ void mnVSModeMakeVSOptionsButton(void)
     mnVSModeMakeButton(button_gobj, 51.0F, 148.0F, 17);
     mnVSModeUpdateButton(button_gobj, (sMNVSModeCursorIndex == nMNVSModeOptionOptions) ? nMNOptionTabStatusHighlight : nMNOptionTabStatusNot);
 
-    button_sobj = lbCommonMakeSObjForGObj(button_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeVSOptionsSprite));
+    button_sobj = lbCommonMakeSObjForGObj(button_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeVSOptionsSprite));
     button_sobj->sprite.attr &= ~SP_FASTCOPY;
     button_sobj->sprite.attr |= SP_TRANSPARENT;
     button_sobj->sprite.red = 0x00;
@@ -780,7 +780,7 @@ void mnVSModeMakeMenuName()
     menu_name_gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(menu_name_gobj, mnVSModeRenderMenuName, 1, GOBJ_LINKORDER_DEFAULT, -1);
 
-    menu_name_sobj = lbCommonMakeSObjForGObj(menu_name_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonSmashLogoSprite));
+    menu_name_sobj = lbCommonMakeSObjForGObj(menu_name_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonSmashLogoSprite));
     menu_name_sobj->sprite.attr &= ~SP_FASTCOPY;
     menu_name_sobj->sprite.attr |= SP_TRANSPARENT;
     menu_name_sobj->sprite.red = 0x00;
@@ -789,7 +789,7 @@ void mnVSModeMakeMenuName()
     menu_name_sobj->pos.x = 235.0F;
     menu_name_sobj->pos.y = 158.0F;
 
-    menu_name_sobj = lbCommonMakeSObjForGObj(menu_name_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeVSSprite));
+    menu_name_sobj = lbCommonMakeSObjForGObj(menu_name_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeVSSprite));
     menu_name_sobj->sprite.attr &= ~SP_FASTCOPY;
     menu_name_sobj->sprite.attr |= SP_TRANSPARENT;
     menu_name_sobj->sprite.red = 0x00;
@@ -798,7 +798,7 @@ void mnVSModeMakeMenuName()
     menu_name_sobj->pos.x = 158.0F;
     menu_name_sobj->pos.y = 192.0F;
 
-    menu_name_sobj = lbCommonMakeSObjForGObj(menu_name_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonGameModeSprite));
+    menu_name_sobj = lbCommonMakeSObjForGObj(menu_name_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonGameModeSprite));
     menu_name_sobj->sprite.attr &= ~SP_FASTCOPY;
     menu_name_sobj->sprite.attr |= SP_TRANSPARENT;
     menu_name_sobj->sprite.red = 0x00;
@@ -817,11 +817,11 @@ void mnVSModeMakeBackground(void)
     bg_gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(bg_gobj, lbCommonDrawSObjAttr, 0, GOBJ_LINKORDER_DEFAULT, -1);
 
-    bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonCircleSprite));
+    bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonCircleSprite));
     bg_sobj->pos.x = 10.0F;
     bg_sobj->pos.y = 10.0F;
 
-    bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonPaperTearSprite));
+    bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonPaperTearSprite));
     bg_sobj->sprite.attr &= ~SP_FASTCOPY;
     bg_sobj->sprite.attr |= SP_TRANSPARENT;
     bg_sobj->sprite.red = 0xA0;
@@ -830,7 +830,7 @@ void mnVSModeMakeBackground(void)
     bg_sobj->pos.x = 140.0F;
     bg_sobj->pos.y = 143.0F;
 
-    bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonPaperTearSprite));
+    bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonPaperTearSprite));
     bg_sobj->sprite.attr &= ~SP_FASTCOPY;
     bg_sobj->sprite.attr |= SP_TRANSPARENT;
     bg_sobj->sprite.red = 0xA0;
@@ -839,7 +839,7 @@ void mnVSModeMakeBackground(void)
     bg_sobj->pos.x = 225.0F;
     bg_sobj->pos.y = 56.0F;
 
-    bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, gcGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeN64ConsoleSprite));
+    bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[1], &lMNVSModeN64ConsoleSprite));
     bg_sobj->sprite.attr &= ~SP_FASTCOPY;
     bg_sobj->sprite.attr |= SP_TRANSPARENT;
     bg_sobj->sprite.red = 0x99;

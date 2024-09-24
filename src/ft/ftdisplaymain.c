@@ -1069,7 +1069,7 @@ void ftDisplayMainDrawParts(DObj *dobj)
 }
 
 // 0x800F293C - WARNING: Fake match. sp110 snaps to sp114, cannot make room on stack to align it.
-void ftDisplayMainProcDraw(GObj *fighter_gobj)
+void ftDisplayMainProcDisplay(GObj *fighter_gobj)
 {
     ftStruct *fp;
     ftAttributes *attributes;
@@ -1411,7 +1411,7 @@ void ftDisplayMainProcDraw(GObj *fighter_gobj)
         {
             if (!(fp->is_magnify_hide) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
             {
-                ifCommonPlayerMagnifyProcDraw(fp);
+                ifCommonPlayerMagnifyProcDisplay(fp);
             }
         }
     }

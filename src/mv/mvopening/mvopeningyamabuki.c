@@ -140,7 +140,7 @@ void mvOpeningYamabukiMakeWallpaper(void)
     sobj = lbCommonMakeSObjForGObj
     (
         gobj,
-        gcGetDataFromFile
+        lbGetDataFromFile
         (
             Sprite*,
             sMVOpeningYamabukiFiles[0],
@@ -181,7 +181,7 @@ void mvOpeningYamabukiMakeLegs(void)
     gcSetupCustomDObjs
     (
         gobj,
-        gcGetDataFromFile
+        lbGetDataFromFile
         (
             DObjDesc*,
             sMVOpeningYamabukiFiles[0],
@@ -201,7 +201,7 @@ void mvOpeningYamabukiMakeLegs(void)
     gcAddAnimJointAll
     (
         gobj,
-        gcGetDataFromFile
+        lbGetDataFromFile
         (
             AObjEvent32**,
             sMVOpeningYamabukiFiles[0],
@@ -219,7 +219,7 @@ void mvOpeningYamabukiMakeLegsShadow(void)
     gcSetupCustomDObjs
     (
         gobj,
-        gcGetDataFromFile
+        lbGetDataFromFile
         (
             void*,
             sMVOpeningYamabukiFiles[0],
@@ -239,7 +239,7 @@ void mvOpeningYamabukiMakeLegsShadow(void)
     gcAddAnimJointAll
     (
         gobj,
-        gcGetDataFromFile
+        lbGetDataFromFile
         (
             AObjEvent32**,
             sMVOpeningYamabukiFiles[0],
@@ -257,7 +257,7 @@ void mvOpeningYamabukiMakeMBall(void)
     gcSetupCustomDObjs
     (
         gobj,
-        gcGetDataFromFile
+        lbGetDataFromFile
         (
             DObjDesc*,
             sMVOpeningYamabukiFiles[0],
@@ -277,7 +277,7 @@ void mvOpeningYamabukiMakeMBall(void)
     gcAddAnimJointAll
     (
         gobj,
-        gcGetDataFromFile
+        lbGetDataFromFile
         (
             AObjEvent32**,
             sMVOpeningYamabukiFiles[0],
@@ -318,7 +318,7 @@ void mvOpeningYamabukiMakeMainViewport(void)
     gcAddCameraCamAnimJoint
     (
         cam,
-        gcGetDataFromFile
+        lbGetDataFromFile
         (
             AObjEvent32*,
             sMVOpeningYamabukiFiles[0],

@@ -54,7 +54,7 @@ extern f32 scSubsysFighterGetLightAngleY();
 extern void func_80007080(void*, f32, f32, f32, f32);
 
 extern void* func_800269C0_275C0(u16);
-extern void lbTransitionProcDraw();
+extern void lbTransitionProcDisplay();
 extern void lbTransitionProcUpdate();
 
 extern u8 dIFCommonPlayerTagShadowColorsR[];
@@ -2975,7 +2975,7 @@ void mnResultsInit()
 	{
 		lbTransitionSetupTransition();
 		lbTransitionMakeCamera(0x20000002, 0, 0xA, 0x100000000);
-		lbTransitionMakeTransition(mtTrigGetRandomIntRange(0xB), 0x20000000, 0, lbTransitionProcDraw, 0x20, lbTransitionProcUpdate);
+		lbTransitionMakeTransition(mtTrigGetRandomIntRange(0xB), 0x20000000, 0, lbTransitionProcDisplay, 0x20, lbTransitionProcUpdate);
 	}
 
 	mnResultsCreateLogoViewport();

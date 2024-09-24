@@ -203,7 +203,7 @@ void overlay_set11_entry();
 void mnMessageStartScene();
 void scChallengerStartScene();
 void sc1PStageCardStartScene();
-void screen_adjust_entry();
+void mnScreenAdjustStartScene();
 void vs_css_entry();
 void mnStageStartScene();
 void scBattleRoyalStartScene();
@@ -393,7 +393,7 @@ void start_scene_manager(u32 set)
 				syDmaLoadOverlay(&D_800A3070[2]);
 				syDmaLoadOverlay(&D_800A3070[1]);
 				syDmaLoadOverlay(&D_800A3070[25]);
-				screen_adjust_entry();
+				mnScreenAdjustStartScene();
 				break;
 			case 16:
 				syDmaLoadOverlay(&D_800A3070[2]);
@@ -827,7 +827,7 @@ void scManagerProcPrintGObjStatus()
 
 			if (gOMObjCurrentCapture != NULL)
 			{
-				syErrorDebugPrintf("addr:%x\n", gOMObjCurrentCapture->proc_draw);
+				syErrorDebugPrintf("addr:%x\n", gOMObjCurrentCapture->proc_display);
 				scManagerInspectGObj(gOMObjCurrentCapture);
 			}
 			break;
@@ -838,11 +838,11 @@ void scManagerProcPrintGObjStatus()
 
 			if (gOMObjCurrentCapture != NULL)
 			{
-				syErrorDebugPrintf("cam addr:%x\n", gOMObjCurrentCapture->proc_draw);
+				syErrorDebugPrintf("cam addr:%x\n", gOMObjCurrentCapture->proc_display);
 			}
 			if (gOMObjCurrentDraw != NULL)
 			{
-				syErrorDebugPrintf("disp addr:%x\n", gOMObjCurrentDraw->proc_draw);
+				syErrorDebugPrintf("disp addr:%x\n", gOMObjCurrentDraw->proc_display);
 				scManagerInspectGObj(gOMObjCurrentDraw);
 			}
 			break;

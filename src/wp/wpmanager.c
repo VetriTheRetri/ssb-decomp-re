@@ -87,7 +87,7 @@ u32 wpManagerGetGroupID()
 GObj* wpManagerMakeWeapon(GObj *parent_gobj, wpCreateDesc *wp_desc, Vec3f *spawn_pos, u32 flags)
 {
     GObj *weapon_gobj;
-    void (*proc_draw)(GObj*);
+    void (*proc_display)(GObj*);
     wpAttributes *attributes;
     wpStruct *wp;
     wpStruct *owner_wp;
@@ -263,15 +263,15 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
     {
         gcSetupCustomDObjs(weapon_gobj, attributes->dobj_setup, NULL, wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.tk3);
 
-        proc_draw = (wp_desc->flags & WEAPON_FLAG_DOBJLINKS) ? wpDisplayDObjTreeDLLinks : func_ovl3_80167618;
+        proc_display = (wp_desc->flags & WEAPON_FLAG_DOBJLINKS) ? wpDisplayDObjTreeDLLinks : func_ovl3_80167618;
     }
     else
     {
         lbCommonInitDObjTriTransform(gcAddDObjForGObj(weapon_gobj, attributes->dobj_setup), wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.tk3);
 
-        proc_draw = (wp_desc->flags & WEAPON_FLAG_DOBJLINKS) ? wpDisplayDObjDLLinks : wpDisplayDLHead1;
+        proc_display = (wp_desc->flags & WEAPON_FLAG_DOBJLINKS) ? wpDisplayDObjDLLinks : wpDisplayDLHead1;
     }
-    gcAddGObjDisplay(weapon_gobj, proc_draw, 14, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(weapon_gobj, proc_display, 14, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
     if (attributes->p_mobjsubs != NULL)
     {

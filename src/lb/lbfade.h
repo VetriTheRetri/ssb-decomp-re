@@ -6,7 +6,7 @@
 #include <lb/lbdef.h>
 
 extern void lbFadeProcUpdate(GObj *gobj);
-extern void lbFadeProcDraw(GObj *gobj);
+extern void lbFadeProcDisplay(GObj *gobj);
 extern void lbFadeMakeActor(u32 id, s32 link, u32 link_order, syColorRGBA *color, s32 fade_length, sb32 is_eject_gobj, sb32 *is_proceed_scene);
 
 #endif

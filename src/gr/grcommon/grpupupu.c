@@ -633,11 +633,11 @@ void grPupupuProcUpdate(GObj *ground_gobj)
 }
 
 // 0x801064C8
-GObj* grPupupuMakeMapGObj(intptr_t o_dobj_desc, intptr_t o_mobjsub, void (*proc_draw)(GObj*), u8 dl_link)
+GObj* grPupupuMakeMapGObj(intptr_t o_dobj_desc, intptr_t o_mobjsub, void (*proc_display)(GObj*), u8 dl_link)
 {
     GObj *ground_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(ground_gobj, proc_draw, dl_link, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(ground_gobj, proc_display, dl_link, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
     gcSetupCustomDObjs
     (
@@ -651,7 +651,7 @@ GObj* grPupupuMakeMapGObj(intptr_t o_dobj_desc, intptr_t o_mobjsub, void (*proc_
     );
     if (o_mobjsub != 0)
     {
-        gcAddMObjAll(ground_gobj, gcGetDataFromFile(MObjSub***, gGRCommonStruct.pupupu.map_head, o_mobjsub));
+        gcAddMObjAll(ground_gobj, lbGetDataFromFile(MObjSub***, gGRCommonStruct.pupupu.map_head, o_mobjsub));
     }
     gcAddGObjProcess(ground_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
 
@@ -665,10 +665,10 @@ void grPupupuInitAll(void)
 
     gGRCommonStruct.pupupu.map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRPupupuMapHead);
 
-    gGRCommonStruct.pupupu.map_gobj[0] = grPupupuMakeMapGObj(&lGRPupupuMapHead, &D_NF_00000F00, grGeometryLayer0ProcDrawPri, 4);
-    gGRCommonStruct.pupupu.map_gobj[1] = grPupupuMakeMapGObj(&lGRPupupuWhispyMouthTransformKinds, &D_NF_000013B0, grGeometryLayer0ProcDrawPri, 4);
-    gGRCommonStruct.pupupu.map_gobj[2] = grPupupuMakeMapGObj(&lGRPupupuFlowersBackTrasnformKinds, 0x0, grGeometryLayer0ProcDrawPri, 4);
-    gGRCommonStruct.pupupu.map_gobj[3] = grPupupuMakeMapGObj(&lGRPupupuFlowersFrontTransformKinds, 0x0, grGeometryLayer3ProcDrawPri, 16);
+    gGRCommonStruct.pupupu.map_gobj[0] = grPupupuMakeMapGObj(&lGRPupupuMapHead, &D_NF_00000F00, grGeometryLayer0ProcDisplayPri, 4);
+    gGRCommonStruct.pupupu.map_gobj[1] = grPupupuMakeMapGObj(&lGRPupupuWhispyMouthTransformKinds, &D_NF_000013B0, grGeometryLayer0ProcDisplayPri, 4);
+    gGRCommonStruct.pupupu.map_gobj[2] = grPupupuMakeMapGObj(&lGRPupupuFlowersBackTrasnformKinds, 0x0, grGeometryLayer0ProcDisplayPri, 4);
+    gGRCommonStruct.pupupu.map_gobj[3] = grPupupuMakeMapGObj(&lGRPupupuFlowersFrontTransformKinds, 0x0, grGeometryLayer3ProcDisplayPri, 16);
 
     gGRCommonStruct.pupupu.whispy_eyes_status   =
     gGRCommonStruct.pupupu.whispy_mouth_status  =

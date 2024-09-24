@@ -3184,7 +3184,7 @@ void func_80017868(GObj *this_gobj, s32 link_id, s32 arg2)
             {
                 D_8003B874_3C474 = 4;
                 gOMObjCurrentDraw = current_gobj;
-                current_gobj->proc_draw(current_gobj);
+                current_gobj->proc_display(current_gobj);
                 D_8003B874_3C474 = 3;
                 current_gobj->frame_draw_last = dSYGtlFrameDrawCount;
             }

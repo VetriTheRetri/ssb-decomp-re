@@ -879,7 +879,7 @@ s32 gmStaffrollGetLockOnPositionY(s32 posy)
 }
 
 // 0x80132144
-void gmStaffrollHighlightProcDraw(GObj *gobj)
+void gmStaffrollHighlightProcDisplay(GObj *gobj)
 {
 	s32 unused;
 
@@ -951,7 +951,7 @@ void gmStaffrollMakeHighlightGObj(GObj *gobj)
 	{
 		highlight_gobj = gcMakeGObjSPAfter(9, NULL, 9, GOBJ_LINKORDER_DEFAULT);
 
-		gcAddGObjDisplay(highlight_gobj, gmStaffrollHighlightProcDraw, 8, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+		gcAddGObjDisplay(highlight_gobj, gmStaffrollHighlightProcDisplay, 8, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 		gcAddGObjProcess(highlight_gobj, gmStaffrollHighlightThreadUpdate, nOMObjProcessKindThread, 1);
 
 		sGMStaffrollHighlightPositionX = sobj->pos.x + 8.0F;
@@ -1144,7 +1144,7 @@ void gmStaffrollMakeStaffRoleTextSObjs(GObj *text_gobj, GObj *staff_gobj)
 		{
 			hvar = 0.0F;
 
-			sobj = lbCommonMakeSObjForGObj(text_gobj, gcGetDataFromFile(Sprite*, sGMStaffrollFiles[0], dGMStaffrollTextBoxSpriteInfo[dGMStaffrollStaffRoleCharacters[character_id]].offset));
+			sobj = lbCommonMakeSObjForGObj(text_gobj, lbGetDataFromFile(Sprite*, sGMStaffrollFiles[0], dGMStaffrollTextBoxSpriteInfo[dGMStaffrollStaffRoleCharacters[character_id]].offset));
 
 			sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -1259,7 +1259,7 @@ void gmStaffrollMakeCompanyTextSObjs(GObj *text_gobj, GObj *staff_gobj)
 		{
 			if (dGMStaffrollCompanyCharacters[character_id] != GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX(' '))
 			{
-				sobj = lbCommonMakeSObjForGObj(text_gobj, gcGetDataFromFile(Sprite*, sGMStaffrollFiles[0], dGMStaffrollTextBoxSpriteInfo[dGMStaffrollCompanyCharacters[character_id]].offset));
+				sobj = lbCommonMakeSObjForGObj(text_gobj, lbGetDataFromFile(Sprite*, sGMStaffrollFiles[0], dGMStaffrollTextBoxSpriteInfo[dGMStaffrollCompanyCharacters[character_id]].offset));
 
 				hvar = 0.0F;
 
@@ -1573,7 +1573,7 @@ void gmStaffrollJobAndNameThreadUpdate(GObj *gobj)
 }
 
 // 0x80133854
-void gmStaffrollJobProcDraw(GObj *gobj)
+void gmStaffrollJobProcDisplay(GObj *gobj)
 {
 	if (gobj == gOMObjCommonLinks[nOMObjCommonLinkIDCreditsJob])
 	{
@@ -1587,7 +1587,7 @@ void gmStaffrollJobProcDraw(GObj *gobj)
 }
 
 // 0x80133930
-void gmStaffrollNameProcDraw(GObj *gobj)
+void gmStaffrollNameProcDisplay(GObj *gobj)
 {
 	if (gobj == gOMObjCommonLinks[nOMObjCommonLinkIDCreditsName])
 	{
@@ -1767,7 +1767,7 @@ GObj* gmStaffrollMakeJobGObj(gmStaffrollJob *job)
 
 	gobj = gcMakeGObjSPAfter(1, NULL, nOMObjCommonLinkIDCreditsJob, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(gobj, gmStaffrollJobProcDraw, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+	gcAddGObjDisplay(gobj, gmStaffrollJobProcDisplay, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
 	dobj = gcAddDObjForGObj(gobj, NULL);
 
@@ -1804,7 +1804,7 @@ GObj* gmStaffrollMakeNameGObjAndDObjs(void)
 
 	gobj = gcMakeGObjSPAfter(1, NULL, nOMObjCommonLinkIDCreditsName, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(gobj, gmStaffrollNameProcDraw, 1, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+	gcAddGObjDisplay(gobj, gmStaffrollNameProcDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
 	new_dobj = dobj = gcAddDObjForGObj(gobj, NULL);
 
@@ -1991,7 +1991,7 @@ void gmStaffrollMakeCrosshairGObj(void)
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 4, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 	gcAddGObjProcess(gobj, gmStaffrollCrosshairThreadUpdate, nOMObjProcessKindThread, 1);
 
-	sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sGMStaffrollFiles[0], &lGMStaffrollCrosshairSprite));
+	sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sGMStaffrollFiles[0], &lGMStaffrollCrosshairSprite));
 
 	sGMStaffrollCrosshairGObj = gobj;
 
@@ -2016,13 +2016,13 @@ void gmStaffrollMakeTextBoxBracketSObjs(void)
 
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 7, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
-	left_sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sGMStaffrollFiles[0], &lGMStaffrollTextBoxBracketLeftSprite));
+	left_sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sGMStaffrollFiles[0], &lGMStaffrollTextBoxBracketLeftSprite));
 
 	gobj = gcMakeGObjSPAfter(3, NULL, 8, GOBJ_LINKORDER_DEFAULT);
 
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 7, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
-	right_sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sGMStaffrollFiles[0], &lGMStaffrollTextBoxBracketRightSprite));
+	right_sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sGMStaffrollFiles[0], &lGMStaffrollTextBoxBracketRightSprite));
 
 	left_sobj->sprite.attr = right_sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -2159,7 +2159,7 @@ void gmStaffrollInitNameAndJobDisplayLists(void)
 		gDPLoadTextureBlock_4b
 		(
 			dl++, // pkt
-			gcGetDataFromFile(Sprite*, sGMStaffrollFiles[0], dGMStaffrollNameAndJobSpriteInfo[i].offset), // timg
+			lbGetDataFromFile(Sprite*, sGMStaffrollFiles[0], dGMStaffrollNameAndJobSpriteInfo[i].offset), // timg
 			G_IM_FMT_I, // fmt
 			((dGMStaffrollNameAndJobSpriteInfo[i].width + 15) / 16) * 16, // width
 			dGMStaffrollNameAndJobSpriteInfo[i].height, // height
@@ -2186,9 +2186,9 @@ void gmStaffrollInitVars(void)
 	sGMStaffrollRollSpeed = 0.0037500001F;
 	sGMStaffrollNameAllocFree = NULL;
 	sGMStaffrollIsPaused = FALSE;
-	sGMStaffrollNameInterpolation = gcGetDataFromFile(void*, sGMStaffrollFiles[0], &lGMStaffrollInterpolation);
-	sGMStaffrollNameAnimJoint = gcGetDataFromFile(AObjEvent32*, sGMStaffrollFiles[0], &lGMStaffrollAnimJoint);
-	sGMStaffrollDObjDesc = gcGetDataFromFile(DObjDesc*, sGMStaffrollFiles[0], &lGMStaffrollDObjDesc);
+	sGMStaffrollNameInterpolation = lbGetDataFromFile(void*, sGMStaffrollFiles[0], &lGMStaffrollInterpolation);
+	sGMStaffrollNameAnimJoint = lbGetDataFromFile(AObjEvent32*, sGMStaffrollFiles[0], &lGMStaffrollAnimJoint);
+	sGMStaffrollDObjDesc = lbGetDataFromFile(DObjDesc*, sGMStaffrollFiles[0], &lGMStaffrollDObjDesc);
 	sGMStaffrollRollBeginWait = 0;
 	sGMStaffrollPlayer = gSceneData.spgame_player;
 	sGMStaffrollRollEndWait = 60;

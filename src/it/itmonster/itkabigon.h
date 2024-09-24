@@ -6,11 +6,11 @@
 #include <it/itdef.h>
 
 extern sb32 itKabigonFallProcUpdate(GObj *item_gobj);
-extern void itKabigonFallProcDraw(GObj *item_gobj);
+extern void itKabigonFallProcDisplay(GObj *item_gobj);
 extern void itKabigonFallInitItemVars(GObj *item_gobj);
 extern void itKabigonFallSetStatus(GObj *item_gobj);
 extern sb32 itKabigonJumpProcUpdate(GObj *item_gobj);
-extern void itKabigonCommonProcDraw(GObj *item_gobj);
+extern void itKabigonCommonProcDisplay(GObj *item_gobj);
 extern void itKabigonJumpInitItemVars(GObj *item_gobj);
 extern void itKabigonJumpSetStatus(GObj *item_gobj);
 extern sb32 itKabigonCommonProcUpdate(GObj *item_gobj);

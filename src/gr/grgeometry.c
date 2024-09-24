@@ -11,32 +11,32 @@ grGeometryDesc dGRGeometryDescs[/* */] =
 {
     // Layer 0
     {
-        grGeometryLayer0ProcDrawPri,
-        grGeometryLayer0ProcDrawSec,
+        grGeometryLayer0ProcDisplayPri,
+        grGeometryLayer0ProcDisplaySec,
         4,
         gcPlayAnimAll
     },
 
     // Layer 1
     {
-        grGeometryLayer1ProcDrawPri,
-        grGeometryLayer1ProcDrawSec,
+        grGeometryLayer1ProcDisplayPri,
+        grGeometryLayer1ProcDisplaySec,
         6,
         func_ovl2_800FBAD0
     },
 
     // Layer 2
     {
-        grGeometryLayer2ProcDrawPri,
-        grGeometryLayer2ProcDrawSec,
+        grGeometryLayer2ProcDisplayPri,
+        grGeometryLayer2ProcDisplaySec,
         13,
         gcPlayAnimAll
     },
 
     // Layer 3
     {
-        grGeometryLayer3ProcDrawPri,
-        grGeometryLayer3ProcDrawSec,
+        grGeometryLayer3ProcDisplayPri,
+        grGeometryLayer3ProcDisplaySec,
         17,
         gcPlayAnimAll
     }
@@ -49,7 +49,7 @@ grGeometryDesc dGRGeometryDescs[/* */] =
 // // // // // // // // // // // //
 
 // 0x80104D90
-void grGeometryLayer0ProcDrawPri(GObj *ground_gobj)
+void grGeometryLayer0ProcDisplayPri(GObj *ground_gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
 
@@ -67,7 +67,7 @@ void grGeometryLayer0ProcDrawPri(GObj *ground_gobj)
 }
 
 // 0x80104E70
-void grGeometryLayer0ProcDrawSec(GObj *ground_gobj)
+void grGeometryLayer0ProcDisplaySec(GObj *ground_gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
 
@@ -97,7 +97,7 @@ void grGeometryLayer0ProcDrawSec(GObj *ground_gobj)
 }
 
 // 0x80104FD8
-void grGeometryLayer1ProcDrawPri(GObj *ground_gobj)
+void grGeometryLayer1ProcDisplayPri(GObj *ground_gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
 
@@ -113,7 +113,7 @@ void grGeometryLayer1ProcDrawPri(GObj *ground_gobj)
 }
 
 // 0x80105088
-void grGeometryLayer1ProcDrawSec(GObj *ground_gobj)
+void grGeometryLayer1ProcDisplaySec(GObj *ground_gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
 
@@ -131,7 +131,7 @@ void grGeometryLayer1ProcDrawSec(GObj *ground_gobj)
 }
 
 // 0x80105154
-void grGeometryLayer2ProcDrawPri(GObj *ground_gobj)
+void grGeometryLayer2ProcDisplayPri(GObj *ground_gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
 
@@ -143,7 +143,7 @@ void grGeometryLayer2ProcDrawPri(GObj *ground_gobj)
 }
 
 // 0x801051D0
-void grGeometryLayer2ProcDrawSec(GObj *ground_gobj)
+void grGeometryLayer2ProcDisplaySec(GObj *ground_gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
 
@@ -161,7 +161,7 @@ void grGeometryLayer2ProcDrawSec(GObj *ground_gobj)
 }
 
 // 0x80105290 - Identical to 0x80105154?
-void grGeometryLayer3ProcDrawPri(GObj *ground_gobj)
+void grGeometryLayer3ProcDisplayPri(GObj *ground_gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
 
@@ -173,7 +173,7 @@ void grGeometryLayer3ProcDrawPri(GObj *ground_gobj)
 }
 
 // 0x8010530C - Identical to 0x801051D0?
-void grGeometryLayer3ProcDrawSec(GObj *ground_gobj)
+void grGeometryLayer3ProcDisplaySec(GObj *ground_gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
 
@@ -218,7 +218,7 @@ void grGeometryDObjSetNoAnimMtx(GObj *ground_gobj, DObjDesc *dobj_desc)
 GObj* grGeometryMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **p_dobj)
 {
     GObj *ground_gobj;
-    void (*proc_draw)(GObj*);
+    void (*proc_display)(GObj*);
 
     if (gr_desc->dobj_desc == NULL)
     {
@@ -228,11 +228,11 @@ GObj* grGeometryMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **
 
     if (gMPCollisionGroundData->layer_mask & (1 << gr_desc_id))
     {
-        proc_draw = dGRGeometryDescs[gr_desc_id].proc_drawsec;
+        proc_display = dGRGeometryDescs[gr_desc_id].proc_displaysec;
     }
-    else proc_draw = dGRGeometryDescs[gr_desc_id].proc_drawpri;
+    else proc_display = dGRGeometryDescs[gr_desc_id].proc_displaypri;
 
-    gcAddGObjDisplay(ground_gobj, proc_draw, dGRGeometryDescs[gr_desc_id].dl_link, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(ground_gobj, proc_display, dGRGeometryDescs[gr_desc_id].dl_link, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
     gcSetupCustomDObjs(ground_gobj, gr_desc->dobj_desc, p_dobj, nOMTransformTraRotRpyRSca, nOMTransformNull, nOMTransformNull);
 
     if (gr_desc->p_mobjsubs != NULL)

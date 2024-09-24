@@ -101,7 +101,7 @@ extern sb32 func_ovl0_800CAB48(Mtx *mtx, DObj *dobj, Gfx **dls);
 extern sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls);
 extern sb32 func_ovl0_800CB2F0(Mtx *mtx, DObj *dobj, Gfx **dls);
 extern void lbCommonDrawDObjScaleX(DObj *dobj);
-extern void lbCommonDObjScaleXProcDraw(GObj *gobj);
+extern void lbCommonDObjScaleXProcDisplay(GObj *gobj);
 extern void lbCommonDrawDObjDefault(DObj *dobj);
 extern void lbCommonEjectGObjLinkedList(GObj *gobj);
 extern u8 lbCommonGetBitmapDecodeNibble(u8 index);
@@ -131,7 +131,7 @@ extern GObj* lbCommonMakeSpriteGObj
     void (*proc_run)(GObj*),
     s32 link,
     u32 link_order,
-    void (*proc_draw)(GObj*),
+    void (*proc_display)(GObj*),
     s32 dl_link,
     u32 dl_link_order,
     u32 cam_tag,

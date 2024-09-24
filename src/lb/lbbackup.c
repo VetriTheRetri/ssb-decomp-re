@@ -68,8 +68,8 @@ void lbBackupApplyOptions(void)
     auSetSoundQuality(gSaveData.sound_mono_or_stereo);
     syDisplaySetCenterOffsets
     (
-        gSaveData.screen_adjust_hz, gSaveData.screen_adjust_hz, 
-        gSaveData.screen_adjust_vt, gSaveData.screen_adjust_vt
+        gSaveData.screen_adjust_h, gSaveData.screen_adjust_h, 
+        gSaveData.screen_adjust_v, gSaveData.screen_adjust_v
     );
 }
 

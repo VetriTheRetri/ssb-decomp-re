@@ -781,7 +781,7 @@ void ifCommonPlayerDamageProcUpdate(GObj *interface_gobj)
 }
 
 // 0x8010EEFC
-void ifCommonPlayerDamageProcDraw(GObj *interface_gobj)
+void ifCommonPlayerDamageProcDisplay(GObj *interface_gobj)
 {
     f32 pos_x;
     f32 scale;
@@ -890,7 +890,7 @@ void ifCommonPlayerDamageSetDigitAttr(void)
 
     for (i = 0; i < ARRAY_COUNT(dIFCommonPlayerDamageDigitSpriteOffsets); i++)
     {
-        gcGetDataFromFile(Sprite*, gGMCommonFiles[2], dIFCommonPlayerDamageDigitSpriteOffsets[i])->attr = SP_TEXSHUF | SP_TRANSPARENT;
+        lbGetDataFromFile(Sprite*, gGMCommonFiles[2], dIFCommonPlayerDamageDigitSpriteOffsets[i])->attr = SP_TEXSHUF | SP_TRANSPARENT;
     }
 }
 
@@ -925,7 +925,7 @@ void ifCommonPlayerDamageInitInterface(void)
 
             sIFCommonPlayerDamageInterface[player].interface_gobj = interface_gobj;
 
-            gcAddGObjDisplay(interface_gobj, ifCommonPlayerDamageProcDraw, 23, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+            gcAddGObjDisplay(interface_gobj, ifCommonPlayerDamageProcDisplay, 23, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
             fp = ftGetStruct(gBattleState->players[player].fighter_gobj);
 
@@ -952,10 +952,10 @@ void ifCommonPlayerDamageInitInterface(void)
             {
                 gcAddSObjForGObj(interface_gobj, NULL)->sprite.attr = SP_HIDDEN;
             }
-            lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[2], &lIFCommonPlayerDamageDigit0))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[0];
-            lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[2], &lIFCommonPlayerDamageDigit0))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[1];
-            lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[2], &lIFCommonPlayerDamageDigit0))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[2];
-            lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[2], &lIFCommonPlayerDamageDigit0))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[3];
+            lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[2], &lIFCommonPlayerDamageDigit0))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[0];
+            lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[2], &lIFCommonPlayerDamageDigit0))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[1];
+            lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[2], &lIFCommonPlayerDamageDigit0))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[2];
+            lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[2], &lIFCommonPlayerDamageDigit0))->user_data.p = &sIFCommonPlayerDamageInterface[player].chars[3];
 
             // The above functions should all return SObj*
 
@@ -1002,7 +1002,7 @@ void ifCommonPlayerDamageStopBreakAnim(ftStruct *fp)
 }
 
 // 0x8010F878
-void ifCommonPlayerStockMultiProcDraw(GObj *interface_gobj)
+void ifCommonPlayerStockMultiProcDisplay(GObj *interface_gobj)
 {
     s32 player;
     ftStruct *fp;
@@ -1076,7 +1076,7 @@ void ifCommonPlayerStockMultiProcDraw(GObj *interface_gobj)
 
                 gt_sobj = gt_sobj->next;
 
-                gt_sobj->sprite = *gcGetDataFromFile(Sprite*, gGMCommonFiles[4], dIFCommonPlayerStockDigitSpriteOffsets[10]);
+                gt_sobj->sprite = *lbGetDataFromFile(Sprite*, gGMCommonFiles[4], dIFCommonPlayerStockDigitSpriteOffsets[10]);
 
                 gt_sobj->pos.x = ((trunc_pos_x + -10.5F) - (gt_sobj->sprite.width * 0.5F));
                 gt_sobj->pos.y = ((gIFCommonPlayerInterface.ifplayers_pos_y - 20) - (gt_sobj->sprite.height * 0.5F));
@@ -1091,7 +1091,7 @@ void ifCommonPlayerStockMultiProcDraw(GObj *interface_gobj)
                 {
                     if (digit_order < digit_count)
                     {
-                        gt_sobj->sprite = *gcGetDataFromFile(Sprite*, gGMCommonFiles[4], dIFCommonPlayerStockDigitSpriteOffsets[digits[digit_order]]);
+                        gt_sobj->sprite = *lbGetDataFromFile(Sprite*, gGMCommonFiles[4], dIFCommonPlayerStockDigitSpriteOffsets[digits[digit_order]]);
 
                         gt_sobj->pos.x = ((trunc_pos_x + (digit_order * 8)) - (gt_sobj->sprite.width * 0.5F));
                         gt_sobj->pos.y = ((gIFCommonPlayerInterface.ifplayers_pos_y - 20) - (gt_sobj->sprite.height * 0.5F));
@@ -1118,7 +1118,7 @@ void ifCommonPlayerStockSetIconAttr(void)
 
     for (i = 0; i < ARRAY_COUNT(dIFCommonPlayerStockDigitSpriteOffsets); i++)
     {
-        gcGetDataFromFile(Sprite*, gGMCommonFiles[4], dIFCommonPlayerStockDigitSpriteOffsets[i])->attr = SP_TEXSHUF | SP_TRANSPARENT;
+        lbGetDataFromFile(Sprite*, gGMCommonFiles[4], dIFCommonPlayerStockDigitSpriteOffsets[i])->attr = SP_TEXSHUF | SP_TRANSPARENT;
     }
 }
 
@@ -1131,14 +1131,14 @@ void ifCommonPlayerStockMultiMakeInterface(s32 player)
     if ((fp->attributes->sprites != NULL) && (fp->attributes->sprites->stock_spr != NULL))
     {
         GObj *interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
-        gcAddGObjDisplay(interface_gobj, ifCommonPlayerStockMultiProcDraw, 23, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+        gcAddGObjDisplay(interface_gobj, ifCommonPlayerStockMultiProcDisplay, 23, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
-        lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
-        lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
-        lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
-        lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
-        lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
-        lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
+        lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
+        lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
+        lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
+        lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
+        lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
+        lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
 
         sIFCommonPlayerStocksNum[player] = S8_MAX;
 
@@ -1150,7 +1150,7 @@ void ifCommonPlayerStockMultiMakeInterface(s32 player)
 }
 
 // 0x8010FF24
-void ifCommonPlayerStockSingleProcDraw(GObj *interface_gobj)
+void ifCommonPlayerStockSingleProcDisplay(GObj *interface_gobj)
 {
     s32 player = ifGetPlayer(interface_gobj);
     s32 stocks = gBattleState->players[player].stock_count;
@@ -1178,7 +1178,7 @@ void ifCommonPlayerStockSingleMakeInterface(s32 player)
     {
         sIFCommonPlayerStocksGObj[player] = interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
-        gcAddGObjDisplay(interface_gobj, ifCommonPlayerStockSingleProcDraw, 23, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+        gcAddGObjDisplay(interface_gobj, ifCommonPlayerStockSingleProcDisplay, 23, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
         sobj = lbCommonMakeSObjForGObj(interface_gobj, fp->attributes->sprites->stock_spr);
 
@@ -1408,7 +1408,7 @@ void ifCommonPlayerMagnifyUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly
     gSPClearGeometryMode(dl++, G_ZBUFFER);
 
     // This is a compound macro but I cannot find anything that would correspond to this
-    gDPSetTextureImage(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, gcGetDataFromFile(Sprite*, gGMCommonFiles[0], &lIFCommonPlayerMagnifyFrame));
+    gDPSetTextureImage(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, lbGetDataFromFile(Sprite*, gGMCommonFiles[0], &lIFCommonPlayerMagnifyFrame));
 
     // NEEDS TO BE ALL ON THE SAME LINE OR GLUED, OTHERWISE IT DOESN'T MATCH
     gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_MIRROR | G_TX_WRAP, 4, G_TX_NOLOD, G_TX_MIRROR | G_TX_WRAP, 4, G_TX_NOLOD);\
@@ -1565,7 +1565,7 @@ void ifCommonPlayerMagnifyUpdateViewport(Gfx **dls, ftStruct *fp)
 }
 
 // 0x801111A0
-void ifCommonPlayerMagnifyProcDraw(ftStruct *fp)
+void ifCommonPlayerMagnifyProcDisplay(ftStruct *fp)
 {
     GObj *interface_gobj;
     DObj *dobj;
@@ -1622,7 +1622,7 @@ void ifCommonPlayerMagnifyMakeInterface(void)
 }
 
 // 0x80111554
-void ifCommonPlayerArrowsLeftProcDraw(GObj *interface_gobj)
+void ifCommonPlayerArrowsLeftProcDisplay(GObj *interface_gobj)
 {
     if (gIFCommonPlayerInterface.arrows_flags & 1)
     {
@@ -1631,7 +1631,7 @@ void ifCommonPlayerArrowsLeftProcDraw(GObj *interface_gobj)
 }
 
 // 0x80111588
-void ifCommonPlayerArrowsRightProcDraw(GObj *interface_gobj)
+void ifCommonPlayerArrowsRightProcDisplay(GObj *interface_gobj)
 {
     if (gIFCommonPlayerInterface.arrows_flags & 2)
     {
@@ -1681,11 +1681,11 @@ void ifCommonPlayerArrowsRightProcUpdate(GObj *interface_gobj)
 }
 
 // 0x80111684
-GObj* ifCommonPlayerArrowsMakeInterface(void (*proc_draw)(GObj*), void (*proc_update)(GObj*))
+GObj* ifCommonPlayerArrowsMakeInterface(void (*proc_display)(GObj*), void (*proc_update)(GObj*))
 {
     GObj *interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, proc_draw, 8, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(interface_gobj, proc_display, 8, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
     gcSetupCustomDObjs
     (
         interface_gobj, 
@@ -1761,7 +1761,7 @@ void ifCommonPlayerArrowsProcRun(GObj *interface_gobj)
 }
 
 // 0x801118B4
-void ifCommonPlayerArrowsMainProcDraw(GObj *interface_gobj)
+void ifCommonPlayerArrowsMainProcDisplay(GObj *interface_gobj)
 {
     gSPDisplayList(gDisplayListHead[0]++, &dIFCommonPlayerArrowsGfx);
 }
@@ -1774,19 +1774,19 @@ void ifCommonPlayerArrowsInitInterface(void)
     gcAddGObjDisplay
     (
         gcMakeGObjSPAfter(nOMObjCommonKindInterface, ifCommonPlayerArrowsProcRun, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT), 
-        ifCommonPlayerArrowsMainProcDraw,
+        ifCommonPlayerArrowsMainProcDisplay,
         8, 
         GOBJ_DLLINKORDER_DEFAULT, 
         -1
     );
-    dobj = DObjGetStruct(ifCommonPlayerArrowsMakeInterface(ifCommonPlayerArrowsLeftProcDraw, ifCommonPlayerArrowsLeftProcUpdate));
+    dobj = DObjGetStruct(ifCommonPlayerArrowsMakeInterface(ifCommonPlayerArrowsLeftProcDisplay, ifCommonPlayerArrowsLeftProcUpdate));
 
     dobj->translate.vec.f.x = -134.0F;
     dobj->translate.vec.f.y = 0.0F;
 
     gIFCommonPlayerInterface.arrows_left_status = 0;
 
-    dobj = DObjGetStruct(ifCommonPlayerArrowsMakeInterface(ifCommonPlayerArrowsRightProcDraw, ifCommonPlayerArrowsRightProcUpdate));
+    dobj = DObjGetStruct(ifCommonPlayerArrowsMakeInterface(ifCommonPlayerArrowsRightProcDisplay, ifCommonPlayerArrowsRightProcUpdate));
 
     dobj->translate.vec.f.x = 134.0F;
     dobj->translate.vec.f.y = 0.0F;
@@ -1811,7 +1811,7 @@ void ifCommonPlayerArrowsUpdateFlags(f32 x, f32 y)
 }
 
 // 0x80111A3C
-void ifCommonPlayerTagProcDraw(GObj *interface_gobj)
+void ifCommonPlayerTagProcDisplay(GObj *interface_gobj)
 {
     s32 player = ifGetPlayer(interface_gobj);
     ftStruct *fp;
@@ -1856,9 +1856,9 @@ void ifCommonPlayerTagMakeInterface(void)
         {
             interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
-            gcAddGObjDisplay(interface_gobj, ifCommonPlayerTagProcDraw, 23, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+            gcAddGObjDisplay(interface_gobj, ifCommonPlayerTagProcDisplay, 23, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
-            sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[6], dIFCommonPlayerTagSpriteOffsets[gBattleState->players[player].tag_kind]));
+            sobj = lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[6], dIFCommonPlayerTagSpriteOffsets[gBattleState->players[player].tag_kind]));
 
             sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -1878,7 +1878,7 @@ void ifCommonPlayerTagMakeInterface(void)
 }
 
 // 0x80111D64
-void ifCommonItemArrowProcDraw(GObj *interface_gobj)
+void ifCommonItemArrowProcDisplay(GObj *interface_gobj)
 {
     itStruct *ip = itGetStruct(interface_gobj); // So I'm guessing this copies the corresponding item's user_data? Its classifier is 0x3F8.
     SObj *sobj;
@@ -1913,7 +1913,7 @@ GObj* ifCommonItemArrowMakeInterface(itStruct *ip)
 
     if (interface_gobj != NULL)
     {
-        gcAddGObjDisplay(interface_gobj, ifCommonItemArrowProcDraw, 23, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+        gcAddGObjDisplay(interface_gobj, ifCommonItemArrowProcDisplay, 23, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
         if (lbCommonMakeSObjForGObj(interface_gobj, sIFCommonItemArrowSprite) != NULL)
         {
@@ -1935,7 +1935,7 @@ void ifCommonItemArrowSetAttr(void)
 {
     Sprite *sprite = sIFCommonItemArrowSprite =
 
-    gcGetDataFromFile(Sprite*, lbRelocGetFileExternHeap((intptr_t)&D_NF_00000057, gsMemoryAlloc(lbRelocGetFileSize((intptr_t)&D_NF_00000057), 0x10)), &lIFCommonItemArrow);
+    lbGetDataFromFile(Sprite*, lbRelocGetFileExternHeap((intptr_t)&D_NF_00000057, gsMemoryAlloc(lbRelocGetFileSize((intptr_t)&D_NF_00000057), 0x10)), &lIFCommonItemArrow);
 
     sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -1963,7 +1963,7 @@ void ifCommonAnnounceSetAttr(GObj *interface_gobj, s32 file_id, ifACharacter *ch
 
     for (i = 0; i < sprite_count; i++)
     {
-        sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, sprite_head, character[i].offset));
+        sobj = lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, sprite_head, character[i].offset));
 
         sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -1984,7 +1984,7 @@ void ifCommonAnnounceGoMakeInterface(void)
 
     for (i = 0; i < ARRAY_COUNT(dIFCommonAnnounceGoSpriteData); i++)
     {
-        SObj *sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, sprite_head, dIFCommonAnnounceGoSpriteData[i].offset));
+        SObj *sobj = lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, sprite_head, dIFCommonAnnounceGoSpriteData[i].offset));
 
         sobj->sprite.attr = SP_CLOUD | SP_TEXSHUF; // 0x1000 doesn't exist in base sp.h though?
 
@@ -2021,7 +2021,7 @@ SObj* ifCommonTrafficMakeSObj(GObj *interface_gobj, s32 id)
 
     color_id = dIFCommonTrafficSpriteData[id].color_id;
 
-    sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[1], dIFCommonTrafficSpriteOffsets[color_id]));
+    sobj = lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[1], dIFCommonTrafficSpriteOffsets[color_id]));
 
     sobj->sprite.attr = SP_CLOUD | SP_TEXSHUF;
 
@@ -2194,14 +2194,14 @@ SObj* ifCommonCountdownMakeInterface(void)
     gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
     gcAddGObjProcess(interface_gobj, ifCommonCountdownThread, nOMObjProcessKindThread, 5);
 
-    sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[1], &lIFCommonTrafficRod));
+    sobj = lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[1], &lIFCommonTrafficRod));
 
     sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
     sobj->pos.x = 103.0F;
     sobj->pos.y = -57.0F;
 
-    sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[1], &lIFCommonTrafficFrame));
+    sobj = lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[1], &lIFCommonTrafficFrame));
 
     sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -2216,7 +2216,7 @@ SObj* ifCommonCountdownMakeInterface(void)
 
     ifCommonTrafficMakeSObj(interface_gobj, 10);
 
-    sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[1], &lIFCommonTrafficRodShadow));
+    sobj = lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[1], &lIFCommonTrafficRodShadow));
 
     sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -2362,7 +2362,7 @@ void ifCommonSuddenDeathMakeInterface(void)
 }
 
 // 0x80112C18
-void ifCommonTimerProcDraw(GObj *interface_gobj)
+void ifCommonTimerProcDisplay(GObj *interface_gobj)
 {
     s32 digit;
     s32 i;
@@ -2375,7 +2375,7 @@ void ifCommonTimerProcDraw(GObj *interface_gobj)
     {
         sobj = sobj->next->next->next;
 
-        sobj->sprite = *gcGetDataFromFile(Sprite*, gGMCommonFiles[3], dIFCommonTimerDigitSpriteOffsets[0]);
+        sobj->sprite = *lbGetDataFromFile(Sprite*, gGMCommonFiles[3], dIFCommonTimerDigitSpriteOffsets[0]);
 
         sobj->pos.x = (s32)(dIFCommonTimerDigitsSpritePositionsX[3] - (sobj->sprite.width * 0.5F));
         sobj->pos.y = (s32)(30.0F - (sobj->sprite.height * 0.5F));
@@ -2396,7 +2396,7 @@ void ifCommonTimerProcDraw(GObj *interface_gobj)
 
             if (sIFCommonTimerDigitsInterface[i] != digit)
             {
-                sobj->sprite = *gcGetDataFromFile(Sprite*, gGMCommonFiles[3], dIFCommonTimerDigitSpriteOffsets[digit]);
+                sobj->sprite = *lbGetDataFromFile(Sprite*, gGMCommonFiles[3], dIFCommonTimerDigitSpriteOffsets[digit]);
 
                 sobj->pos.x = (s32)(dIFCommonTimerDigitsSpritePositionsX[i] - (sobj->sprite.width * 0.5F));
                 sobj->pos.y = (s32)(30.0F - (sobj->sprite.height * 0.5F));
@@ -2415,7 +2415,7 @@ void ifCommonTimerSetAttr(void)
 
     for (i = 0; i < ARRAY_COUNT(dIFCommonTimerDigitSpriteOffsets); i++)
     {
-        gcGetDataFromFile(Sprite*, gGMCommonFiles[3], dIFCommonTimerDigitSpriteOffsets[i])->attr = SP_TEXSHUF | SP_TRANSPARENT;
+        lbGetDataFromFile(Sprite*, gGMCommonFiles[3], dIFCommonTimerDigitSpriteOffsets[i])->attr = SP_TEXSHUF | SP_TRANSPARENT;
     }
 }
 
@@ -2445,14 +2445,14 @@ SObj* ifCommonTimerMakeDigitSObjs(void)
 
     interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, ifCommonTimerProcDraw, 23, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(interface_gobj, ifCommonTimerProcDisplay, 23, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
-    lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
-    lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
-    lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
-    lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
+    lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
+    lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
+    lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
+    lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
 
-    sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[3], &lIFCommonTimerSymbolColon));
+    sobj = lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[3], &lIFCommonTimerSymbolColon));
 
     sobj->pos.x = (s32)(260.0F - (sobj->sprite.width * 0.5F));
     sobj->pos.y = (s32)(30.0F - (sobj->sprite.height * 0.5F));
@@ -2740,7 +2740,7 @@ void ifCommonBattleUpdateScoreStocks(ftStruct *fp)
 }
 
 // 0x80113AA8
-void ifCommonBattlePauseProcDraw(GObj *interface_gobj)
+void ifCommonBattlePauseProcDisplay(GObj *interface_gobj)
 {
     s32 i;
 
@@ -2766,7 +2766,7 @@ void ifCommonBattlePauseProcDraw(GObj *interface_gobj)
 // 0x80113CF8
 void ifCommonBattlePausePlayerNumMakeSObj(GObj *interface_gobj, s32 player)
 {
-    SObj *sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[5], dIFCommonBattlePausePlayerNumSpriteOffsets[player]));
+    SObj *sobj = lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[5], dIFCommonBattlePausePlayerNumSpriteOffsets[player]));
 
     sobj->sprite.red   = 0xFF;
     sobj->sprite.green = 0xFF;
@@ -2781,7 +2781,7 @@ void ifCommonBattlePausePlayerNumMakeSObj(GObj *interface_gobj, s32 player)
 // 0x80113D60
 void ifCommonBattlePauseDecalMakeSObjID(GObj *interface_gobj, s32 id)
 {
-    SObj *sobj = lbCommonMakeSObjForGObj(interface_gobj, gcGetDataFromFile(Sprite*, gGMCommonFiles[5], dIFCommonBattlePauseDecalsSpriteData[id].offset));
+    SObj *sobj = lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[5], dIFCommonBattlePauseDecalsSpriteData[id].offset));
 
     sobj->pos.x = dIFCommonBattlePauseDecalsSpriteData[id].pos.x;
     sobj->pos.y = dIFCommonBattlePauseDecalsSpriteData[id].pos.y;
@@ -2824,7 +2824,7 @@ void ifCommonBattlePauseMakeInterface(s32 player)
 {
     GObj *interface_gobj;
 
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindPauseMenu, NULL, nOMObjCommonLinkIDPauseMenu, GOBJ_LINKORDER_DEFAULT), ifCommonBattlePauseProcDraw, 24, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindPauseMenu, NULL, nOMObjCommonLinkIDPauseMenu, GOBJ_LINKORDER_DEFAULT), ifCommonBattlePauseProcDisplay, 24, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
     interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindPauseMenu, NULL, nOMObjCommonLinkIDPauseMenu, GOBJ_LINKORDER_DEFAULT);
 

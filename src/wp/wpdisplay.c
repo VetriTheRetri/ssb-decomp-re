@@ -155,7 +155,7 @@ void wpDisplayDrawZBuffer(void)
 }
 
 // 0x80167520
-void wpDisplayMain(GObj *weapon_gobj, void(*proc_draw)(GObj*))
+void wpDisplayMain(GObj *weapon_gobj, void(*proc_display)(GObj*))
 {
     wpStruct *wp = wpGetStruct(weapon_gobj);
 
@@ -163,7 +163,7 @@ void wpDisplayMain(GObj *weapon_gobj, void(*proc_draw)(GObj*))
     {
         wpDisplayDrawNormal();
 
-        proc_draw(weapon_gobj);
+        proc_display(weapon_gobj);
 
         wpDisplayDrawZBuffer();
 
@@ -173,7 +173,7 @@ void wpDisplayMain(GObj *weapon_gobj, void(*proc_draw)(GObj*))
     {
         wpDisplayDrawNormal();
 
-        proc_draw(weapon_gobj);
+        proc_display(weapon_gobj);
 
         wpDisplayDrawZBuffer();
     }
@@ -195,7 +195,7 @@ void wpDisplayDObjDLLinks(GObj *weapon_gobj)
 // 0x80167618
 void func_ovl3_80167618(GObj *weapon_gobj)
 {
-    wpDisplayMain(weapon_gobj, lbCommonDObjScaleXProcDraw); // Unused?
+    wpDisplayMain(weapon_gobj, lbCommonDObjScaleXProcDisplay); // Unused?
 }
 
 // 0x8016763C

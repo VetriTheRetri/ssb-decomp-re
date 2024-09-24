@@ -193,7 +193,7 @@ struct GObj
     GObj *dl_link_next;
     GObj *dl_link_prev;
     u32 dl_link_order;
-    void (*proc_draw)(GObj*);
+    void (*proc_display)(GObj*);
     u64 cam_mask;
     u32 cam_tag;                        // 0xFFFFFFFF, textures or series of flags?
     u64 unk_gobj_0x40;

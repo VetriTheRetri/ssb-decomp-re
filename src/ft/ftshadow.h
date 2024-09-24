@@ -6,7 +6,7 @@
 #include <ft/ftdef.h>
 
 extern f32 ftShadowGetAltitude(Vec3f *a, Vec3f *b, f32 f);
-extern void ftShadowProcDraw(GObj *shadow_gobj);
+extern void ftShadowProcDisplay(GObj *shadow_gobj);
 extern GObj* ftShadowMakeShadow(GObj *fighter_gobj);
 
 #endif

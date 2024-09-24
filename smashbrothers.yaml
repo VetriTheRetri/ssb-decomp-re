@@ -1259,9 +1259,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x11F2B0, c, mn/mncommon/mnoption]
-      - [0x120DD0, .data, mn/mncommon/mnoption]
-      - { start: auto, type: .bss, name: mn/mncommon/mnoption, vram: 0x801337A0 }
+      - [0x11F2B0, c, mn/mnoption/mnoption]
+      - [0x120DD0, .data, mn/mnoption/mnoption]
+      - { start: auto, type: .bss, name: mn/mnoption/mnoption, vram: 0x801337A0 }
 
   - name: ovl61
     type: code
@@ -1269,9 +1269,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x120F50, c, mn/mncommon/mndata]
-      - [0x122370, .data, mn/mncommon/mndata]
-      - { start: auto, type: .bss, name: mn/mncommon/mndata, vram: 0x80133060 }
+      - [0x120F50, c, mn/mndata/mndata]
+      - [0x122370, .data, mn/mndata/mndata]
+      - { start: auto, type: .bss, name: mn/mndata/mndata, vram: 0x80133060 }
 
   - name: ovl19
     type: code
@@ -1279,9 +1279,9 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x1224b0, c, mn/mncommon/mnvsmode]
-      - [0x125160, .data, mn/mncommon/mnvsmode]
-      - { start: auto, type: .bss, name: mn/mncommon/mnvsmode, vram: 0x80134870 }
+      - [0x1224b0, c, mn/mnvsmode/mnvsmode]
+      - [0x125160, .data, mn/mnvsmode/mnvsmode]
+      - { start: auto, type: .bss, name: mn/mnvsmode/mnvsmode, vram: 0x80134870 }
 
   - name: ovl20
     type: code
@@ -1340,14 +1340,13 @@ segments:
 
   - name: ovl25
     type: code
-    bss_size: 0x120
-    start: 0x12ef60
+    start: 0x12EF60
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x12ef60, asm, ovl25]
-      - [0x12FC90, data, ovl25]
-      - { start: auto, type: bss, vram: 0x80132920, name: ovl25 }
+      - [0x12EF60, c, mn/mnoption/mnscreenadjust]
+      - [0x12FC90, .data, mn/mnoption/mnscreenadjust]
+      - { start: auto, type: .bss, name: mn/mnoption/mnscreenadjust, vram: 0x80132920 }
 
   - name: ovl26
     type: code
@@ -1661,10 +1660,10 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x175F00, c, mn/mncommon/mnbackupclear]
-      - [0x177280, .data, mn/mncommon/mnbackupclear]
-      - [0x177470, .rodata, mn/mncommon/mnbackupclear]
-      - { start: auto, type: .bss, name: mn/mncommon/mnbackupclear, vram: 0x801330A0 }
+      - [0x175F00, c, mn/mnoption/mnbackupclear]
+      - [0x177280, .data, mn/mnoption/mnbackupclear]
+      - [0x177470, .rodata, mn/mnoption/mnbackupclear]
+      - { start: auto, type: .bss, name: mn/mnoption/mnbackupclear, vram: 0x801330A0 }
 
   - name: ovl54
     type: code
@@ -1736,10 +1735,10 @@ segments:
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x187ED0, c, mn/mncommon/mnsoundtest]
-      - [0x189DB0, .data, mn/mncommon/mnsoundtest]
-      - [0x18A6C0, .rodata, mn/mncommon/mnsoundtest]
-      - { start: auto, type: .bss, name: mn/mncommon/mnsoundtest, vram: 0x80134300 }
+      - [0x187ED0, c, mn/mndata/mnsoundtest]
+      - [0x189DB0, .data, mn/mndata/mnsoundtest]
+      - [0x18A6C0, .rodata, mn/mndata/mnsoundtest]
+      - { start: auto, type: .bss, name: mn/mndata/mnsoundtest, vram: 0x80134300 }
 
   - name: ovl63
     type: code

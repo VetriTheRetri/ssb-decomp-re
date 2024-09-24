@@ -584,8 +584,8 @@ void mnDebugMenuCreateMenu(s32 x, s32 y, s32 w, dbMenuItem* menu_items, s32 menu
 		mnDebugMenuDrawMenuItems(D_ovl9_80371404, menu_items, menu_items_count);
 		mnDebugMenuDrawCursor(D_ovl9_80371404, gMNDebugMenuCursorIndex);
 
-		gMNDebugMenuDefaultMenuRenderProc = gMNDebugMenuMenuGObj->proc_draw;
-		gMNDebugMenuMenuGObj->proc_draw = gMNDebugMenuRenderMenu;
+		gMNDebugMenuDefaultMenuRenderProc = gMNDebugMenuMenuGObj->proc_display;
+		gMNDebugMenuMenuGObj->proc_display = gMNDebugMenuRenderMenu;
 
 		gcAddGObjProcess(gMNDebugMenuMenuGObj, mnDebugMenuHandleInputs, 1, 1);
 

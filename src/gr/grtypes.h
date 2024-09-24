@@ -12,8 +12,8 @@
 
 struct grGeometryDesc
 {
-	void *proc_drawpri;
-	void *proc_drawsec;
+	void *proc_displaypri;
+	void *proc_displaysec;
 	u8 dl_link;
 	void *proc_update;
 };

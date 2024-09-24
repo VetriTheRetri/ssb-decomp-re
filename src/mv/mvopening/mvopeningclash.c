@@ -129,7 +129,7 @@ void mvOpeningClashMakeFighters(void)
 }
 
 // 0x80131CCC
-void mvOpeningClashVoidProcDraw(GObj *gobj)
+void mvOpeningClashVoidProcDisplay(GObj *gobj)
 {
     if (sMVOpeningClashVoidAlpha < 0xFF)
     {
@@ -163,7 +163,7 @@ void mvOpeningClashMakeVoid(void)
             18,
             GOBJ_LINKORDER_DEFAULT
         ),
-        mvOpeningClashVoidProcDraw,
+        mvOpeningClashVoidProcDisplay,
         26,
         GOBJ_DLLINKORDER_DEFAULT,
         GOBJ_CAMTAG_DEFAULT
@@ -176,57 +176,57 @@ void mvOpeningClashMakeWallpaper(void)
     // lower left quadrant
     GObj* gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
-    gcAddOMMtxForDObjFixed(gcAddDObjForGObj(gobj, gcGetDataFromFile(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLDisplayList)), 0x1C, 0);
-    gcAddMObjAll(gobj, gcGetDataFromFile(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLMObjSub));
-    gcAddMatAnimJointAll(gobj, gcGetDataFromFile(AObjEvent32***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLMatAnimJoint), 0.0F);
+    gcAddOMMtxForDObjFixed(gcAddDObjForGObj(gobj, lbGetDataFromFile(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLDisplayList)), 0x1C, 0);
+    gcAddMObjAll(gobj, lbGetDataFromFile(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLMObjSub));
+    gcAddMatAnimJointAll(gobj, lbGetDataFromFile(AObjEvent32***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLMatAnimJoint), 0.0F);
 
     DObjGetStruct(gobj)->translate.vec.f.x = 0.0F;
     DObjGetStruct(gobj)->translate.vec.f.y = 0.0F;
     DObjGetStruct(gobj)->translate.vec.f.z = 0.0F;
 
-    gcAddAnimJointAll(gobj, gcGetDataFromFile(AObjEvent32**, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLAnimJoint), 0.0F);
+    gcAddAnimJointAll(gobj, lbGetDataFromFile(AObjEvent32**, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLAnimJoint), 0.0F);
     gcAddGObjProcess(gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
 
     // lower right quadrant
     gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
-    gcAddOMMtxForDObjFixed(gcAddDObjForGObj(gobj, gcGetDataFromFile(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRDisplayList)), 0x1C, 0);
-    gcAddMObjAll(gobj, gcGetDataFromFile(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRMObjSub));
-    gcAddMatAnimJointAll(gobj, gcGetDataFromFile(AObjEvent32***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRMatAnimJoint), 0.0F);
+    gcAddOMMtxForDObjFixed(gcAddDObjForGObj(gobj, lbGetDataFromFile(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRDisplayList)), 0x1C, 0);
+    gcAddMObjAll(gobj, lbGetDataFromFile(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRMObjSub));
+    gcAddMatAnimJointAll(gobj, lbGetDataFromFile(AObjEvent32***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRMatAnimJoint), 0.0F);
 
     DObjGetStruct(gobj)->translate.vec.f.x = 0.0F;
     DObjGetStruct(gobj)->translate.vec.f.y = 0.0F;
     DObjGetStruct(gobj)->translate.vec.f.z = 0.0F;
 
-    gcAddAnimJointAll(gobj, gcGetDataFromFile(AObjEvent32**, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRAnimJoint), 0.0F);
+    gcAddAnimJointAll(gobj, lbGetDataFromFile(AObjEvent32**, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRAnimJoint), 0.0F);
     gcAddGObjProcess(gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
 
     // upper left quadrant
     gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
-    gcAddOMMtxForDObjFixed(gcAddDObjForGObj(gobj, gcGetDataFromFile(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULDisplayList)), 0x1C, 0);
-    gcAddMObjAll(gobj, gcGetDataFromFile(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULMObjSub));
-    gcAddMatAnimJointAll(gobj, gcGetDataFromFile(AObjEvent32***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULMatAnimJoint), 0.0F);
+    gcAddOMMtxForDObjFixed(gcAddDObjForGObj(gobj, lbGetDataFromFile(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULDisplayList)), 0x1C, 0);
+    gcAddMObjAll(gobj, lbGetDataFromFile(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULMObjSub));
+    gcAddMatAnimJointAll(gobj, lbGetDataFromFile(AObjEvent32***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULMatAnimJoint), 0.0F);
 
     DObjGetStruct(gobj)->translate.vec.f.x = 0.0F;
     DObjGetStruct(gobj)->translate.vec.f.y = 0.0F;
     DObjGetStruct(gobj)->translate.vec.f.z = 0.0F;
 
-    gcAddAnimJointAll(gobj, gcGetDataFromFile(AObjEvent32**, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULAnimJoint), 0.0F);
+    gcAddAnimJointAll(gobj, lbGetDataFromFile(AObjEvent32**, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULAnimJoint), 0.0F);
     gcAddGObjProcess(gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
 
     // upper right quadrant
     gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
-    gcAddOMMtxForDObjFixed(gcAddDObjForGObj(gobj, gcGetDataFromFile(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURDisplayList)), 0x1C, 0);
-    gcAddMObjAll(gobj, gcGetDataFromFile(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURMObjSub));
-    gcAddMatAnimJointAll(gobj, gcGetDataFromFile(AObjEvent32***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURMatAnimJoint), 0.0F);
+    gcAddOMMtxForDObjFixed(gcAddDObjForGObj(gobj, lbGetDataFromFile(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURDisplayList)), 0x1C, 0);
+    gcAddMObjAll(gobj, lbGetDataFromFile(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURMObjSub));
+    gcAddMatAnimJointAll(gobj, lbGetDataFromFile(AObjEvent32***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURMatAnimJoint), 0.0F);
 
     DObjGetStruct(gobj)->translate.vec.f.x = 0.0F;
     DObjGetStruct(gobj)->translate.vec.f.y = 0.0F;
     DObjGetStruct(gobj)->translate.vec.f.z = 0.0F;
 
-    gcAddAnimJointAll(gobj, gcGetDataFromFile(AObjEvent32**, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURAnimJoint), 0.0F);
+    gcAddAnimJointAll(gobj, lbGetDataFromFile(AObjEvent32**, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURAnimJoint), 0.0F);
     gcAddGObjProcess(gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
 }
 
@@ -259,7 +259,7 @@ void mvOpeningClashMakeFightersViewport(void)
     cam->projection.persp.near = 128.0F;
     cam->projection.persp.far = 16384.0F;
 
-    gcAddCameraCamAnimJoint(cam, gcGetDataFromFile(AObjEvent32*, sMVOpeningClashFiles[0], &lMVOpeningClashFightersCamAnimJoint), 0.0F);
+    gcAddCameraCamAnimJoint(cam, lbGetDataFromFile(AObjEvent32*, sMVOpeningClashFiles[0], &lMVOpeningClashFightersCamAnimJoint), 0.0F);
     gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nOMObjProcessKindProc, 1);
 }
 
@@ -291,7 +291,7 @@ void mvOpeningClashMakeVoidViewport(void)
 }
 
 // 0x801323C8
-void mvOpeningClashWallpaperProcDraw(GObj *gobj)
+void mvOpeningClashWallpaperProcDisplay(GObj *gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
@@ -311,7 +311,7 @@ void mvOpeningClashMakeWallpaperViewport(void)
         NULL,
         16,
         GOBJ_LINKORDER_DEFAULT,
-        mvOpeningClashWallpaperProcDraw,
+        mvOpeningClashWallpaperProcDisplay,
         90,
         CAMERA_MASK_DLLINK(29),
         -1,
@@ -324,7 +324,7 @@ void mvOpeningClashMakeWallpaperViewport(void)
     Camera *cam = CameraGetStruct(camera_gobj);
 
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-    gcAddCameraCamAnimJoint(cam, gcGetDataFromFile(AObjEvent32*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperCamAnimJoint), 0.0F);
+    gcAddCameraCamAnimJoint(cam, lbGetDataFromFile(AObjEvent32*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperCamAnimJoint), 0.0F);
 
     gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nOMObjProcessKindProc, 1);
 }

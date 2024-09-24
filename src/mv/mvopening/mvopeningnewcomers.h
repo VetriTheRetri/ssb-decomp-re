@@ -29,7 +29,7 @@ extern void mvOpeningNewcomersMakeCaptain(void);
 extern void mvOpeningNewcomersMakeLuigi(void);
 extern void mvOpeningNewcomersMakeNess(void);
 extern void mvOpeningNewcomersMakeAll(void);
-extern void mvOpeningNewcomersHideProcDraw(GObj *gobj);
+extern void mvOpeningNewcomersHideProcDisplay(GObj *gobj);
 extern void mvOpeningNewcomersMakeHide(void);
 extern void mvOpeningNewcomersMakeCharacterViewport(void);
 extern void mvOpeningNewcomersMakeHideViewport(void);

@@ -8,7 +8,6 @@
 extern void* func_800269C0_275C0(u16);
 extern void func_80007080(void*, f32, f32, f32, f32);
 
-
 // // // // // // // // // // // //
 //                               //
 //             MACROS            //
@@ -181,7 +180,7 @@ void mnOptionUpdateOptionTabSObjs(GObj *gobj, s32 status)
 // 0x80131BFC
 void mnOptionMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
 {
-    SObj *sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonOptionTabLeftSprite));
+    SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonOptionTabLeftSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -189,7 +188,7 @@ void mnOptionMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
     sobj->pos.x = posx;
     sobj->pos.y = posy;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonOptionTabMiddleSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonOptionTabMiddleSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -206,7 +205,7 @@ void mnOptionMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
     sobj->lrs = lrs * 8;
     sobj->lrt = 29;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonOptionTabRightSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonOptionTabRightSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -251,7 +250,7 @@ void mnOptionMakeSoundOptionSObjs(void)
     sMNOptionSoundOptionGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
-    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionMonoTextSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionMonoTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -259,7 +258,7 @@ void mnOptionMakeSoundOptionSObjs(void)
     sobj->pos.x = 179.0F;
     sobj->pos.y = 48.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionStereoTextSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionStereoTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -267,7 +266,7 @@ void mnOptionMakeSoundOptionSObjs(void)
     sobj->pos.x = 236.0F;
     sobj->pos.y = 48.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNOptionSoundSlashSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNOptionSoundSlashSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -294,7 +293,7 @@ void mnOptionMakeSoundTextSObj(void)
     mnOptionMakeOptionTabSObjs(gobj, 113.0F, 42.0F, 17);
     mnOptionUpdateOptionTabSObjs(gobj, sMNOptionOption == nMNOptionOptionSound);
 
-    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionSoundTextSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionSoundTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -321,7 +320,7 @@ void mnOptionMakeScreenAdjustSObj(void)
 
     mnOptionUpdateOptionTabSObjs(gobj, sMNOptionOption == nMNOptionOptionScreenAdjust);
 
-    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionScreenAdjustTextSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionScreenAdjustTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -346,7 +345,7 @@ void mnOptionMakeBackupClearSObj(void)
     mnOptionMakeOptionTabSObjs(gobj, 69.0F, 136.0F, 17);
     mnOptionUpdateOptionTabSObjs(gobj, sMNOptionOption == nMNOptionOptionBackupClear);
 
-    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionBackupClearTextSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionBackupClearTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -395,7 +394,7 @@ void mnOptionMakeMenuGObj(void)
 }
 
 // 0x80132248
-void mnOptionHeaderProcDraw(GObj *gobj)
+void mnOptionHeaderProcDisplay(GObj *gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
     gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
@@ -419,9 +418,9 @@ void mnOptionMakeHeaderSObjs(void)
 
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, mnOptionHeaderProcDraw, 1, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, mnOptionHeaderProcDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
-    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonSmashLogoSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonSmashLogoSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -433,7 +432,7 @@ void mnOptionMakeHeaderSObjs(void)
     sobj->pos.x = 235.0F;
     sobj->pos.y = 158.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionHeaderTextSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionHeaderTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -455,12 +454,12 @@ void mnOptionMakeDecalSObjs(void)
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
-    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonCircleSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonCircleSprite));
 
     sobj->pos.x = 10.0F;
     sobj->pos.y = 10.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonPaperTearSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonPaperTearSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -472,7 +471,7 @@ void mnOptionMakeDecalSObjs(void)
     sobj->pos.x = 140.0F;
     sobj->pos.y = 143.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonPaperTearSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonPaperTearSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -484,7 +483,7 @@ void mnOptionMakeDecalSObjs(void)
     sobj->pos.x = 225.0F;
     sobj->pos.y = 56.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, gcGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionKnobSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionKnobSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -540,7 +539,7 @@ void func_ovl60_801327CC(void)
 }
 
 // 0x801327D4
-void mnOptionSoundUnderlineProcDraw(GObj *gobj)
+void mnOptionSoundUnderlineProcDisplay(GObj *gobj)
 {
     // 0x801336AC
     syRectangle rect[/* */] =
@@ -590,7 +589,7 @@ void mnOptionMakeSoundUnderlineGObj(void)
             5,
             GOBJ_LINKORDER_DEFAULT
         ),
-        mnOptionSoundUnderlineProcDraw,
+        mnOptionSoundUnderlineProcDisplay,
         3,
         GOBJ_DLLINKORDER_DEFAULT,
         GOBJ_CAMTAG_DEFAULT

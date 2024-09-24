@@ -571,7 +571,7 @@ void mvOpeningStandoffProcStart(void)
     rl_setup.force_buf_size = ARRAY_COUNT(sMVOpeningStandoffForceBuf);
 
     lbRelocInitSetup(&rl_setup);
-    lbRelocGetLoadFilesNum
+    lbRelocLoadFilesExtern
     (
         dMVOpeningStandoffFileIDs,
         ARRAY_COUNT(dMVOpeningStandoffFileIDs),

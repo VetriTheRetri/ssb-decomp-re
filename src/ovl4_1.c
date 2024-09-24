@@ -21,5 +21,5 @@ void func_ovl4_8018E330(void)
 	rldm_setup.force_buf_size = ARRAY_COUNT(D_ovl4_8018E7A0);
 
 	lbRelocInitSetup(&rldm_setup);
-	lbRelocGetLoadFilesNum(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles, gsMemoryAlloc(lbRelocGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
+	lbRelocLoadFilesExtern(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles, gsMemoryAlloc(lbRelocGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
 }

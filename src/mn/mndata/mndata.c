@@ -764,7 +764,7 @@ void mnDataProcStart(void)
     rl_setup.force_buf_size = 0;
 
     lbRelocInitSetup(&rl_setup);
-    lbRelocGetLoadFilesNum
+    lbRelocLoadFilesExtern
     (
         dMNDataFileIDs,
         ARRAY_COUNT(dMNDataFileIDs),

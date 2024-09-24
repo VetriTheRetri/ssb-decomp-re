@@ -2067,7 +2067,7 @@ void mnCharsInit()
 	rldmSetup.force_buf = (lbFileNode*) &D_ovl33_80136A40;
 	rldmSetup.force_buf_size = 7;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocGetLoadFilesNum(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228), gMNCharsFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228)), 0x10U));
+	lbRelocLoadFilesExtern(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228), gMNCharsFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228)), 0x10U));
 
 	gcMakeGObjSPAfter(0, mnCharsMain, 0, 0x80000000);
 	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));

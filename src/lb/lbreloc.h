@@ -19,7 +19,7 @@
     rl_setup.force_buf = force_buf;                                         \
     rl_setup.force_buf_size = (force_buf) ? ARRAY_COUNT(force_buf) : 0;     \
     lbRelocInitSetup(&rl_setup);                                          \
-    lbRelocGetLoadFilesNum                                                      \
+    lbRelocLoadFilesExtern                                                      \
     (                                                                       \
         dGMCommonFileIDs,                                                   \
         ARRAY_COUNT(dGMCommonFileIDs),                                      \
@@ -54,9 +54,9 @@ extern void* lbRelocGetFileExternStatusBuf(u32 file_id);
 extern void* lbRelocGetFileExternHeap(u32 id, void *heap);
 extern void* lbRelocGetFileInternBuf(u32 file_id);
 extern void* lbRelocGetFileExternForceBuf(u32 file_id);
-extern void* lbRelocGetFileExternForceBufHeap(u32 id, u8 *heap);
-extern size_t lbRelocGetLoadFilesNum(u32 *ids, u32 len, void **files, u8 *heap);
-extern size_t lbRelocLoadFiles(u32 *ids, u32 len, void **files);
+extern void* lbRelocGetFileExternForceBufHeap(u32 id, void *heap);
+extern size_t lbRelocLoadFilesExtern(u32 *ids, u32 len, void **files, void *heap);
+extern size_t lbRelocLoadFilesIntern(u32 *ids, u32 len, void **files);
 extern size_t lbRelocGetAllocSize(u32 *ids, u32 len);
 extern void lbRelocInitSetup(lbRelocSetup *setup);
 

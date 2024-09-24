@@ -106,7 +106,7 @@ void mvOpeningDKLoadFiles()
 	rldmSetup.force_buf = (lbFileNode*) &D_ovl37_8018E3A8;
 	rldmSetup.force_buf_size = 7;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocGetLoadFilesNum(D_ovl37_8018E0BC, ARRAY_COUNT(D_ovl37_8018E0BC), gMvOpeningDKFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl37_8018E0BC, ARRAY_COUNT(D_ovl37_8018E0BC)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl37_8018E0BC, ARRAY_COUNT(D_ovl37_8018E0BC), gMvOpeningDKFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl37_8018E0BC, ARRAY_COUNT(D_ovl37_8018E0BC)), 0x10));
 }
 
 // 8018D160

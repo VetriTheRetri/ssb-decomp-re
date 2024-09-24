@@ -402,7 +402,7 @@ void mvOpeningClashProcStart(void)
     rl_setup.force_buf_size = ARRAY_COUNT(sMVOpeningClashForceBuf);
 
     lbRelocInitSetup(&rl_setup);
-    lbRelocGetLoadFilesNum
+    lbRelocLoadFilesExtern
     (
         dMVOpeningClashFileIDs,
         ARRAY_COUNT(dMVOpeningClashFileIDs),

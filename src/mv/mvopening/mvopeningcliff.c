@@ -482,7 +482,7 @@ void mvOpeningCliffProcStart(void)
     rl_setup.force_buf_size = ARRAY_COUNT(sMVOpeningCliffForceBuf);
 
     lbRelocInitSetup(&rl_setup);
-    lbRelocGetLoadFilesNum
+    lbRelocLoadFilesExtern
     (
         dMVOpeningCliffFileIDs,
         ARRAY_COUNT(dMVOpeningCliffFileIDs),

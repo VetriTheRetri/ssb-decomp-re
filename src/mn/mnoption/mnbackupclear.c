@@ -781,7 +781,7 @@ void mnBackupClearProcStart(void)
     rl_setup.force_buf_size = 0;
     
     lbRelocInitSetup(&rl_setup);
-    lbRelocGetLoadFilesNum
+    lbRelocLoadFilesExtern
     (
         dMNBackupClearFileIDs,
         ARRAY_COUNT(dMNBackupClearFileIDs),

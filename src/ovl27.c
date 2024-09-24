@@ -3102,7 +3102,7 @@ void mn1PInitCSS()
 	rldmSetup.force_buf = (lbFileNode*) &D_ovl27_801392A8;
 	rldmSetup.force_buf_size = 7;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocGetLoadFilesNum(D_ovl27_80138630, 11U, gMN1PFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl27_80138630, 11U), 0x10U));
+	lbRelocLoadFilesExtern(D_ovl27_80138630, 11U, gMN1PFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl27_80138630, 11U), 0x10U));
 
 	gcMakeGObjSPAfter(0x400U, &mn1PMain, 0xFU, 0x80000000U);
 	gcMakeDefaultCameraGObj(0x10, 0x80000000U, 0x64, 1, 0);

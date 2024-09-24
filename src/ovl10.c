@@ -1375,5 +1375,5 @@ void mnTitleLoadFiles()
 	rldmSetup.force_buf = 0;
 	rldmSetup.force_buf_size = 0;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocGetLoadFilesNum(D_ovl10_80134420, ARRAY_COUNT(D_ovl10_80134420), &gMNTitleFile0, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl10_80134420, ARRAY_COUNT(D_ovl10_80134420)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl10_80134420, ARRAY_COUNT(D_ovl10_80134420), &gMNTitleFile0, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl10_80134420, ARRAY_COUNT(D_ovl10_80134420)), 0x10));
 }

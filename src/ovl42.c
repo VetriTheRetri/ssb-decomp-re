@@ -110,7 +110,7 @@ void mvOpeningPikachuLoadFiles()
 	rldmSetup.force_buf = D_ovl42_8018E408;
 	rldmSetup.force_buf_size = ARRAY_COUNT(D_ovl42_8018E408);
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocGetLoadFilesNum(D_ovl42_8018E0FC, ARRAY_COUNT(D_ovl42_8018E0FC), gMvOpeningPikachuFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl42_8018E0FC, ARRAY_COUNT(D_ovl42_8018E0FC)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl42_8018E0FC, ARRAY_COUNT(D_ovl42_8018E0FC), gMvOpeningPikachuFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl42_8018E0FC, ARRAY_COUNT(D_ovl42_8018E0FC)), 0x10));
 }
 
 // 8018D160

@@ -85,8 +85,8 @@ lbRelocGetFileExternHeap = 0x800CDC88; // segment:ovl0
 lbRelocGetFileInternBuf = 0x800CDCAC; // segment:ovl0
 lbRelocGetFileExternForceBuf = 0x800CDD5C; // segment:ovl0
 lbRelocGetFileExternForceBufHeap = 0x800CDDD8; // segment:ovl0
-lbRelocGetLoadFilesNum = 0x800CDE04; // segment:ovl0
-lbRelocLoadFiles = 0x800CDE78; // segment:ovl0
+lbRelocLoadFilesExtern = 0x800CDE04; // segment:ovl0
+lbRelocLoadFilesIntern = 0x800CDE78; // segment:ovl0
 lbRelocGetAllocSize = 0x800CDEEC; // segment:ovl0
 lbRelocInitSetup = 0x800CDF78; // segment:ovl0
 

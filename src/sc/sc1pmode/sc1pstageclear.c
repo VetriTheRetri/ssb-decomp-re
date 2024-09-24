@@ -1987,7 +1987,7 @@ void sc1PStageClearProcStart(void)
 	rl_setup.force_buf_size = ARRAY_COUNT(sSC1PStageClearForceBuf);
 
 	lbRelocInitSetup(&rl_setup);
-	lbRelocGetLoadFilesNum
+	lbRelocLoadFilesExtern
 	(
 		dSC1PStageClearFileIDs,
 		ARRAY_COUNT(dSC1PStageClearFileIDs),

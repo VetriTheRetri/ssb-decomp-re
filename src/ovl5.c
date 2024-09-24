@@ -67,7 +67,7 @@ void func_ovl5_8018D0C0()
 	rldm_setup.force_buf_size = ARRAY_COUNT(D_ovl5_8018D718);
 
 	lbRelocInitSetup(&rldm_setup);
-	lbRelocGetLoadFilesNum(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles, gsMemoryAlloc(lbRelocGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
+	lbRelocLoadFilesExtern(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles, gsMemoryAlloc(lbRelocGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
 }
 
 // 8018D160

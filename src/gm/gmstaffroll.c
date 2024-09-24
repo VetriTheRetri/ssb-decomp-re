@@ -2123,7 +2123,7 @@ void gmStaffrollSetupFiles(void)
 	rldm_setup.force_buf_size = 0;
 
 	lbRelocInitSetup(&rldm_setup);
-	lbRelocGetLoadFilesNum(dGMStaffrollFileIDs, ARRAY_COUNT(dGMStaffrollFileIDs), sGMStaffrollFiles, gsMemoryAlloc(lbRelocGetAllocSize(dGMStaffrollFileIDs, ARRAY_COUNT(dGMStaffrollFileIDs)), 0x10));
+	lbRelocLoadFilesExtern(dGMStaffrollFileIDs, ARRAY_COUNT(dGMStaffrollFileIDs), sGMStaffrollFiles, gsMemoryAlloc(lbRelocGetAllocSize(dGMStaffrollFileIDs, ARRAY_COUNT(dGMStaffrollFileIDs)), 0x10));
 }
 
 // 0x80134A70

@@ -113,7 +113,7 @@ void mvOpeningKirbyLoadFiles()
 	rldmSetup.force_buf = D_ovl43_8018E408;
 	rldmSetup.force_buf_size = ARRAY_COUNT(D_ovl43_8018E408);
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocGetLoadFilesNum(D_ovl43_8018E0F4, ARRAY_COUNT(D_ovl43_8018E0F4), gMvOpeningKirbyFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl43_8018E0F4, ARRAY_COUNT(D_ovl43_8018E0F4)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl43_8018E0F4, ARRAY_COUNT(D_ovl43_8018E0F4), gMvOpeningKirbyFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl43_8018E0F4, ARRAY_COUNT(D_ovl43_8018E0F4)), 0x10));
 }
 
 // 8018D160

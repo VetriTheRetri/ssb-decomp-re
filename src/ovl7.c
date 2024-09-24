@@ -1610,6 +1610,6 @@ void scTrainingMode_LoadFiles()
 	rldm_setup.force_buf_size = ARRAY_COUNT(gOverlay7ForceBuf);
 
 	lbRelocInitSetup(&rldm_setup);
-	lbRelocGetLoadFilesNum(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles,
+	lbRelocLoadFilesExtern(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles,
 						 gsMemoryAlloc(lbRelocGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
 }

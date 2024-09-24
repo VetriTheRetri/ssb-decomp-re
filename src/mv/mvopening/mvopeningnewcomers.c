@@ -421,7 +421,7 @@ void mvOpeningNewcomersProcStart(void)
     rldmSetup.force_buf_size = ARRAY_COUNT(dMVOpeningNewcomersForceBuf);
 
     lbRelocInitSetup(&rldmSetup);
-    lbRelocGetLoadFilesNum
+    lbRelocLoadFilesExtern
     (
         dMVOpeningNewcomersFileIDs,
         ARRAY_COUNT(dMVOpeningNewcomersFileIDs),

@@ -1476,7 +1476,7 @@ void mnVSModeProcStart(void)
     {
         gSaveData.error_flags |= LBBACKUP_ERROR_RANDOMKNOCKBACK;
     }
-    lbRelocGetLoadFilesNum
+    lbRelocLoadFilesExtern
     (
         dMNVSModeFileIDs,
         ARRAY_COUNT(dMNVSModeFileIDs),

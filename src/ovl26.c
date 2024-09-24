@@ -4227,7 +4227,7 @@ void mnBattleInitCSS()
 	rldmSetup.force_buf = (lbFileNode*)&D_ovl26_8013C0A8;
 	rldmSetup.force_buf_size = 7;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocGetLoadFilesNum(D_ovl26_8013B3A0, 7U, gMnBattleFilesArray,
+	lbRelocLoadFilesExtern(D_ovl26_8013B3A0, 7U, gMnBattleFilesArray,
 						 gsMemoryAlloc(lbRelocGetAllocSize(D_ovl26_8013B3A0, 7U), 0x10U));
 
 	gcMakeGObjSPAfter(0x400U, mnBattleMain, 0xFU, 0x80000000U);

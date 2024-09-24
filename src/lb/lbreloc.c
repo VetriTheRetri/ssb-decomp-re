@@ -372,7 +372,7 @@ void* lbRelocGetFileExternForceBuf(u32 file_id)
     return file_alloc;
 }
 
-void* lbRelocGetFileExternForceBufHeap(u32 id, u8 *heap)
+void* lbRelocGetFileExternForceBufHeap(u32 id, void *heap)
 {
     sLBRelocExternFileHeap = heap;
     sLBRelocInternBuf.force_buf_num = 0;
@@ -380,7 +380,7 @@ void* lbRelocGetFileExternForceBufHeap(u32 id, u8 *heap)
     return lbRelocGetFileExternForceBuf(id);
 }
 
-size_t lbRelocGetLoadFilesNum(u32 *ids, u32 len, void **files, u8 *heap)
+size_t lbRelocLoadFilesExtern(u32 *ids, u32 len, void **files, void *heap)
 {
     sLBRelocExternFileHeap = heap;
 
@@ -398,7 +398,7 @@ size_t lbRelocGetLoadFilesNum(u32 *ids, u32 len, void **files, u8 *heap)
     return (size_t) ((uintptr_t)sLBRelocExternFileHeap - (uintptr_t)heap);
 }
 
-size_t lbRelocLoadFiles(u32 *ids, u32 len, void **files)
+size_t lbRelocLoadFilesIntern(u32 *ids, u32 len, void **files)
 {
     UNUSED s32 pad;
     void *heap = sLBRelocInternBuf.heap_ptr;

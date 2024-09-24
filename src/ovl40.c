@@ -104,7 +104,7 @@ void mvOpeningLinkLoadFiles()
 	rldmSetup.force_buf = D_ovl40_8018E3A8;
 	rldmSetup.force_buf_size = ARRAY_COUNT(D_ovl40_8018E3A8);
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocGetLoadFilesNum(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0), gMvOpeningLinkFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0), gMvOpeningLinkFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0)), 0x10));
 }
 
 // 8018D160

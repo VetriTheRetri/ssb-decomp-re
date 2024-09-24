@@ -1207,7 +1207,7 @@ void sc1PContinueProcStart(void)
     rl_setup.force_buf_size = ARRAY_COUNT(sSC1PContinueForceBuf);
 
     lbRelocInitSetup(&rl_setup);
-    lbRelocGetLoadFilesNum
+    lbRelocLoadFilesExtern
     (
         dSC1PContinueFileIDs,
         ARRAY_COUNT(dSC1PContinueFileIDs),

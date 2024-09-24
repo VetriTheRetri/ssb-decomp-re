@@ -423,7 +423,7 @@ void mnScreenAdjustProcStart(void)
     rl_setup.force_buf_size = ARRAY_COUNT(sMNScreenAdjustForceBuf);
     
     lbRelocInitSetup(&rl_setup);
-    lbRelocGetLoadFilesNum
+    lbRelocLoadFilesExtern
     (
         dMNScreenAdjustFileIDs,
         ARRAY_COUNT(dMNScreenAdjustFileIDs),

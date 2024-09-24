@@ -1357,7 +1357,7 @@ void mnStageInitSSS()
 	rldmSetup.force_buf = (lbFileNode*) &D_ovl30_80134D20;
 	rldmSetup.force_buf_size = 0x1E;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocGetLoadFilesNum(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0), gMNStageFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0), gMNStageFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0)), 0x10));
 
 	mnStageAllocateStageModelHeaps();
 

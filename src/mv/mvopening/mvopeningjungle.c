@@ -212,7 +212,7 @@ void mvOpeningJungleSetupFiles(void)
     rl_setup.force_buf_size = ARRAY_COUNT(sMVOpeningJungleForceBuf);
 
     lbRelocInitSetup(&rl_setup);
-    lbRelocGetLoadFilesNum
+    lbRelocLoadFilesExtern
     (
         dMVOpeningJungleFileIDs,
         ARRAY_COUNT(dMVOpeningJungleFileIDs),

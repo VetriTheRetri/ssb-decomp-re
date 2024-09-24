@@ -319,7 +319,7 @@ void mvOpeningYosterProcStart(void)
     rl_setup.force_buf_size = ARRAY_COUNT(sMVOpeningYosterForceBuf);
 
     lbRelocInitSetup(&rl_setup);
-    lbRelocGetLoadFilesNum
+    lbRelocLoadFilesExtern
     (
         dMVOpeningYosterFileIDs,
         ARRAY_COUNT(dMVOpeningYosterFileIDs),

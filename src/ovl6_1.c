@@ -56,7 +56,7 @@ void func_ovl6_8018ED70()
 	rldm_setup.force_buf_size = ARRAY_COUNT(gOverlay6ForceBuf);
 
 	lbRelocInitSetup(&rldm_setup);
-	lbRelocGetLoadFilesNum(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles,
+	lbRelocLoadFilesExtern(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles,
 						 gsMemoryAlloc(lbRelocGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
 }
 

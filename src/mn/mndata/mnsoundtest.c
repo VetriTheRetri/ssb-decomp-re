@@ -1029,7 +1029,7 @@ void mnSoundTestSetupFiles(void)
     rl_setup.force_buf_size = 0;
 
     lbRelocInitSetup(&rl_setup);
-    lbRelocGetLoadFilesNum
+    lbRelocLoadFilesExtern
     (
         dMNSoundTestFileIDs,
         ARRAY_COUNT(dMNSoundTestFileIDs),

@@ -114,7 +114,7 @@ void mvOpeningYoshiLoadFiles()
 	rldmSetup.force_buf = D_ovl41_8018E408;
 	rldmSetup.force_buf_size = ARRAY_COUNT(D_ovl41_8018E408);
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocGetLoadFilesNum(D_ovl41_8018E108, ARRAY_COUNT(D_ovl41_8018E108), gMvOpeningYoshiFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl41_8018E108, ARRAY_COUNT(D_ovl41_8018E108)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl41_8018E108, ARRAY_COUNT(D_ovl41_8018E108), gMvOpeningYoshiFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl41_8018E108, ARRAY_COUNT(D_ovl41_8018E108)), 0x10));
 }
 
 // 8018D160

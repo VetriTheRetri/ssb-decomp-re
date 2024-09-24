@@ -296,7 +296,7 @@ void mvOpeningRunningInit()
 	rldmSetup.force_buf = D_ovl44_80132A68;
 	rldmSetup.force_buf_size = ARRAY_COUNT(D_ovl44_80132A68);
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocGetLoadFilesNum(D_ovl44_801325D0, ARRAY_COUNT(D_ovl44_801325D0), gMvOpeningRunningFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl44_801325D0, ARRAY_COUNT(D_ovl44_801325D0)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl44_801325D0, ARRAY_COUNT(D_ovl44_801325D0), gMvOpeningRunningFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl44_801325D0, ARRAY_COUNT(D_ovl44_801325D0)), 0x10));
 
 	gcMakeGObjSPAfter(0, mvOpeningRunningMainProc, 0, 0x80000000);
 

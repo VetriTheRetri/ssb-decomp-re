@@ -115,7 +115,7 @@ void mvOpeningMarioLoadFiles()
 	rldmSetup.force_buf = D_ovl36_8018E3E8;
 	rldmSetup.force_buf_size = ARRAY_COUNT(D_ovl36_8018E3E8);
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocGetLoadFilesNum(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8), gMvOpeningMarioFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8), gMvOpeningMarioFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8)), 0x10));
 }
 
 // 8018D160

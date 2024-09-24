@@ -975,7 +975,7 @@ void mnOptionProcStart(void)
     rl_setup.force_buf_size = 0;
 
     lbRelocInitSetup(&rl_setup);
-    lbRelocGetLoadFilesNum
+    lbRelocLoadFilesExtern
     (
         dMNOptionFileIDs,
         ARRAY_COUNT(dMNOptionFileIDs),

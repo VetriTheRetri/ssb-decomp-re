@@ -2740,7 +2740,7 @@ void mnTrainingInitCSS()
 	rldmSetup.force_buf = (lbFileNode*) &D_ovl28_801388A0;
 	rldmSetup.force_buf_size = 7;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocGetLoadFilesNum(D_ovl28_80137F60, 8U, gMNTrainingFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl28_80137F60, 8U), 0x10U));
+	lbRelocLoadFilesExtern(D_ovl28_80137F60, 8U, gMNTrainingFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl28_80137F60, 8U), 0x10U));
 
 	gcMakeGObjSPAfter(0x400U, &mnTrainingMain, 0xFU, 0x80000000U);
 	gcMakeDefaultCameraGObj(0x10, 0x80000000U, 0x64, 1, 0);

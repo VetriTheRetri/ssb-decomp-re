@@ -412,7 +412,7 @@ void mvOpeningYamabukiProcStart(void)
     rl_setup.force_buf_size = ARRAY_COUNT(sMVOpeningYamabukiForceBuf);
 
     lbRelocInitSetup(&rl_setup);
-    lbRelocGetLoadFilesNum
+    lbRelocLoadFilesExtern
     (
         dMVOpeningYamabukiFileIDs,
         ARRAY_COUNT(dMVOpeningYamabukiFileIDs),

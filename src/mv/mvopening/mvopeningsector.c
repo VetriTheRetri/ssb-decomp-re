@@ -542,7 +542,7 @@ void mvOpeningSectorProcStart(void)
     rldmSetup.force_buf_size = ARRAY_COUNT(sMVOpeningSectorForceBuf);
 
     lbRelocInitSetup(&rldmSetup);
-    lbRelocGetLoadFilesNum
+    lbRelocLoadFilesExtern
     (
         dMVOpeningSectorFileIDs,
         ARRAY_COUNT(dMVOpeningSectorFileIDs),

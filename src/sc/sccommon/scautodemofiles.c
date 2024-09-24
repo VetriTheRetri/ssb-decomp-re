@@ -34,7 +34,7 @@ void scAutoDemoSetupFiles(void)
 	rl_setup.force_buf_size = ARRAY_COUNT(sSCAutoDemoForceBuf);
 
 	lbRelocInitSetup(&rl_setup);
-	lbRelocGetLoadFilesNum
+	lbRelocLoadFilesExtern
 	(
 		dGMCommonFileIDs,
 		ARRAY_COUNT(dGMCommonFileIDs),

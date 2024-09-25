@@ -31,9 +31,6 @@ extern intptr_t FILE_0A7_SLASH_EFFECT_GFX_OFFSET_4; // 25F60 file 0x0A7 offset f
 extern intptr_t FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_1; // 28EB0 file 0x0A7 offset for Slash Effect GFX
 extern intptr_t FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_2; // 29010 file 0x0A7 offset for Slash Effect GFX
 
-extern uintptr_t D_NF_001AC870; // AC870
-extern uintptr_t D_NF_00000854; // 00854
-
 extern void mnDebugMenuUpdateMenuInputs();
 extern void func_80007080(void*, f32, f32, f32, f32);
 
@@ -1366,8 +1363,8 @@ void mnTitleLoadFiles()
 {
 	lbRelocSetup rldmSetup;
 
-	rldmSetup.table_addr = &D_NF_001AC870;
-	rldmSetup.table_files_num = &D_NF_00000854;
+	rldmSetup.table_addr = &lLBRelocTableAddr;
+	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
 	rldmSetup.status_buf = (lbFileNode*) D_ovl10_801344A0;

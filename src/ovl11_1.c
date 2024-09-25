@@ -5,8 +5,6 @@
 #include <sys/system_00.h>
 
 // Externs
-extern uintptr_t D_NF_001AC870;
-extern uintptr_t D_NF_00000854;
 extern s32 gMNNoControllerFilesArray[];
 extern u32 D_ovl11_800D67D8[];
 extern lbFileNode D_ovl11_800D6AF8;
@@ -19,8 +17,8 @@ void mnNoControllerLoadFiles()
 {
 	lbRelocSetup rldmSetup;
 
-	rldmSetup.table_addr = &D_NF_001AC870;
-	rldmSetup.table_files_num = &D_NF_00000854;
+	rldmSetup.table_addr = &lLBRelocTableAddr;
+	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
 	rldmSetup.status_buf = (lbFileNode*) &D_ovl11_800D67D8;

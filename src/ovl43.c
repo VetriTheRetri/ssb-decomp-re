@@ -8,8 +8,6 @@
 
 
 // Externs
-extern uintptr_t D_NF_001AC870;
-extern uintptr_t D_NF_00000854;
 extern intptr_t D_NF_800A5240;      // 800A5240
 extern intptr_t lOverlay43ArenaLo;  // 8018E640
 extern intptr_t lOverlay43ArenaHi;  // 803903E0
@@ -104,8 +102,8 @@ void mvOpeningKirbyLoadFiles()
 {
 	lbRelocSetup rldmSetup;
 
-	rldmSetup.table_addr = &D_NF_001AC870;
-	rldmSetup.table_files_num = &D_NF_00000854;
+	rldmSetup.table_addr = &lLBRelocTableAddr;
+	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = 0;
 	rldmSetup.file_heap_size = 0;
 	rldmSetup.status_buf = D_ovl43_8018E288;

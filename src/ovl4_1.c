@@ -11,8 +11,8 @@ void func_ovl4_8018E330(void)
 {
 	lbRelocSetup rldm_setup;
 
-	rldm_setup.table_addr = (s32)&lLBRelocTableAddr;
-	rldm_setup.table_files_num = (u32)&lLBRelocTableFilesNum;
+	rldm_setup.table_addr = &lLBRelocTableAddr;
+	rldm_setup.table_files_num = &lLBRelocTableFilesNum;
 	rldm_setup.file_heap = NULL;
 	rldm_setup.file_heap_size = 0;
 	rldm_setup.status_buf = D_ovl4_8018E480;

@@ -33,8 +33,6 @@ extern f32 menu_zoom[12];           // 80390D90
 extern intptr_t D_NF_800A5240;      // 800A5240
 extern intptr_t lOverlay31ArenaLo;  // 8013A070
 extern intptr_t lOverlay31ArenaHi;  // 803903E0
-extern uintptr_t D_NF_001AC870;
-extern uintptr_t D_NF_00000854;
 extern intptr_t FILE_022_TKO_TEXTURE_IMAGE_OFFSET; // file 0x022 image offset for TKO texture
 extern intptr_t FILE_022_PLACE_TEXTURE_IMAGE_OFFSET; // file 0x022 image offset for Place texture
 extern intptr_t FILE_022_POINTS_TEXTURE_IMAGE_OFFSET; // file 0x022 image offset for Pts texture
@@ -2940,8 +2938,8 @@ void mnResultsInit()
 	lbRelocSetup rldmSetup;
 	s32 i;
 
-	rldmSetup.table_addr = &D_NF_001AC870;
-	rldmSetup.table_files_num = &D_NF_00000854;
+	rldmSetup.table_addr = &lLBRelocTableAddr;
+	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = 0;
 	rldmSetup.file_heap_size = 0;
 	rldmSetup.status_buf = (lbFileNode*) &D_ovl31_80139C50;

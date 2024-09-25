@@ -19,8 +19,6 @@ extern void* scNextFrameBuffer;
 extern void* D_80044FA8_407B8;
 extern u32 scTimestampSetFb;
 extern s32 D_800A50F0;
-extern uintptr_t D_NF_001AC870;
-extern uintptr_t D_NF_00000854;
 extern intptr_t D_NF_800A5240;      // 800A5240
 extern intptr_t lOverlay34ArenaLo;  // 801350D0
 extern intptr_t lOverlay34ArenaHi;  // 803903E0
@@ -1113,8 +1111,8 @@ void mvOpeningFirstDestinationInit()
 
 	func_800048D0(mvOpeningFirstDestinationSetFrameBuffer);
 
-	rldmSetup.table_addr = &D_NF_001AC870;
-	rldmSetup.table_files_num = &D_NF_00000854;
+	rldmSetup.table_addr = &lLBRelocTableAddr;
+	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = 0;
 	rldmSetup.file_heap_size = 0;
 	rldmSetup.status_buf = (lbFileNode*) &D_ovl34_80134D58;

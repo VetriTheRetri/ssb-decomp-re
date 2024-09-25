@@ -8,8 +8,6 @@
 #include <sys/objdraw.h>
 
 // Externs
-extern intptr_t D_NF_00000854;
-extern intptr_t D_NF_001AC870;
 extern intptr_t D_NF_800A5240;      // 800A5240
 extern intptr_t lOverlay37ArenaLo;  // 8018E5E0
 extern intptr_t lOverlay37ArenaHi;  // 803903E0
@@ -97,8 +95,8 @@ void mvOpeningDKLoadFiles()
 {
 	lbRelocSetup rldmSetup;
 
-	rldmSetup.table_addr = &D_NF_001AC870;
-	rldmSetup.table_files_num = &D_NF_00000854;
+	rldmSetup.table_addr = &lLBRelocTableAddr;
+	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
 	rldmSetup.status_buf = (lbFileNode*) &D_ovl37_8018E228;

@@ -9,24 +9,24 @@
 /* Can't actually use this in a matching build, newline memes :(
 #define rdManagerSetupCommonFiles(status_buf, force_buf)                    \
 {                                                                           \
-    lbRelocSetup rl_setup;                                                       \
-    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;                  \
-    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;         \
+    lbRelocSetup rl_setup;                                                  \
+    rl_setup.table_addr = &lLBRelocTableAddr;                               \
+    rl_setup.table_files_num = &lLBRelocTableFilesNum;                      \
     rl_setup.file_heap = NULL;                                              \
     rl_setup.file_heap_size = 0;                                            \
     rl_setup.status_buf = status_buf;                                       \
     rl_setup.status_buf_size = (status_buf) ? ARRAY_COUNT(status_buf) : 0;  \
     rl_setup.force_buf = force_buf;                                         \
     rl_setup.force_buf_size = (force_buf) ? ARRAY_COUNT(force_buf) : 0;     \
-    lbRelocInitSetup(&rl_setup);                                          \
-    lbRelocLoadFilesExtern                                                      \
+    lbRelocInitSetup(&rl_setup);                                            \
+    lbRelocLoadFilesExtern                                                  \
     (                                                                       \
         dGMCommonFileIDs,                                                   \
         ARRAY_COUNT(dGMCommonFileIDs),                                      \
         gGMCommonFiles,                                                     \
         gsMemoryAlloc                                                       \
         (                                                                   \
-            lbRelocGetAllocSize                                           \
+            lbRelocGetAllocSize                                             \
             (                                                               \
                 dGMCommonFileIDs,                                           \
                 ARRAY_COUNT(dGMCommonFileIDs)                               \

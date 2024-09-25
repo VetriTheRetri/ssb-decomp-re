@@ -1,3 +1,4 @@
+
 #include <sys/develop.h>
 #include <ft/ftdef.h>
 #include <ft/fighter.h>
@@ -10,8 +11,6 @@
 // Externs
 extern scBattleState D_800A4B18;
 extern f32 menu_zoom[12]; // D_ovl1_80390D90
-extern uintptr_t D_NF_001AC870;
-extern uintptr_t D_NF_00000854;
 extern uintptr_t D_NF_800A5240;
 extern intptr_t lOverlay29ArenaLo;  // 0x80137E30
 extern intptr_t lOverlay29ArenaHi;  // 0x803903E0
@@ -2488,8 +2487,8 @@ void mnBonusInitCSS()
 	s32 i;
 	s32 j;
 
-	rldmSetup.table_addr = &D_NF_001AC870;
-	rldmSetup.table_files_num = &D_NF_00000854;
+	rldmSetup.table_addr = &lLBRelocTableAddr;
+	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
 	rldmSetup.status_buf = (lbFileNode*) &D_ovl29_80137A38;

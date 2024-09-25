@@ -9,8 +9,6 @@
 #include "debug.h"
 
 // Externs
-extern uintptr_t D_NF_001AC870;
-extern uintptr_t D_NF_00000854;
 extern intptr_t D_NF_800A5240;      // 800A5240
 extern intptr_t lOverlay14ArenaLo;  // 80133130
 extern intptr_t lOverlay14ArenaHi;  // 80369240
@@ -429,8 +427,8 @@ void mnDebugBattleInit()
 	lbRelocSetup rldmSetup;
 	GObj *main_gobj;
 
-	rldmSetup.table_addr = &D_NF_001AC870;
-	rldmSetup.table_files_num = &D_NF_00000854;
+	rldmSetup.table_addr = &lLBRelocTableAddr;
+	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
 	rldmSetup.status_buf = (lbFileNode*) &D_ovl14_80132C28;

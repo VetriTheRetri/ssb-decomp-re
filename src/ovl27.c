@@ -8,8 +8,6 @@
 #include "character_select.h"
 
 // Externs
-extern uintptr_t D_NF_001AC870;
-extern uintptr_t D_NF_00000854;
 extern intptr_t D_NF_800A5240;      // 800A5240
 extern intptr_t lOverlay27ArenaLo;  // 801396D0
 extern intptr_t lOverlay27ArenaHi;  // 803903E0
@@ -3093,8 +3091,8 @@ void mn1PInitCSS()
 	s32 i;
 	s32 j;
 
-	rldmSetup.table_addr = &D_NF_001AC870;
-	rldmSetup.table_files_num = &D_NF_00000854;
+	rldmSetup.table_addr = &lLBRelocTableAddr;
+	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
 	rldmSetup.status_buf = (lbFileNode*) &D_ovl27_801392E0;

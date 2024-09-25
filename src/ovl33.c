@@ -35,8 +35,6 @@ typedef struct charsSpecialActionInfo
 // D_ovl1_80390D90
 extern f32 menu_zoom[12];
 extern intptr_t D_NF_800A5240;
-extern uintptr_t D_NF_001AC870;
-extern uintptr_t D_NF_00000854;
 extern intptr_t lOverlay33ArenaLo;  // 80136A90
 extern intptr_t lOverlay33ArenaHi;  // 803903E0
 extern intptr_t FILE_010_CHARACTERS_TEXTURE_IMAGE_OFFSET; // file 0x010 image offset for Characters texture
@@ -2058,8 +2056,8 @@ void mnCharsInit()
 	s32 i;
 	lbRelocSetup rldmSetup;
 
-	rldmSetup.table_addr = &D_NF_001AC870;
-	rldmSetup.table_files_num = &D_NF_00000854;
+	rldmSetup.table_addr = &lLBRelocTableAddr;
+	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = 0;
 	rldmSetup.file_heap_size = 0;
 	rldmSetup.status_buf = (lbFileNode*) &D_ovl33_80136720;

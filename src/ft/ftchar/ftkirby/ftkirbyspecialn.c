@@ -131,7 +131,7 @@ void ftKirbySpecialNCopyInitCopyVars(GObj *fighter_gobj)
             copy_id = fp->status_vars.kirby.specialn.copy_id;
             fp->fighter_vars.kirby.copy_id = copy_id;
 
-            ftParamSetModelPartDefaultID(fighter_gobj, FTKIRBY_COPY_MODELPARTS_JOINT, copy_data[copy_id].copy_drawstatus);
+            ftParamSetModelPartDefaultID(fighter_gobj, FTKIRBY_COPY_MODELPARTS_JOINT, copy_data[copy_id].copy_modelpart_id);
             ftParamResetModelPartAll(fighter_gobj);
             ftKirbySpecialNInitFighterVars(fp);
         }

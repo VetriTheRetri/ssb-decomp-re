@@ -579,7 +579,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, ftStruct *fp, ftMotionScript *ms
         (
             fighter_gobj, 
             ftParamGetJointID(fp, ftMotionEventCast(ms, ftMotionEventSetModelPartID)->joint_id), 
-            ftMotionEventCast(ms, ftMotionEventSetModelPartID)->drawstatus
+            ftMotionEventCast(ms, ftMotionEventSetModelPartID)->modelpart_id
         );
         ftMotionEventAdvance(ms, ftMotionEventSetModelPartID);
         break;
@@ -1121,8 +1121,8 @@ sb32 ftMainUpdateColAnim(gmColAnim *colanim, GObj *fighter_gobj, sb32 is_playing
             case nGMColEventKindSetLight:
                 colanim->is_use_light = TRUE;
 
-                colanim->light_angle1 = gmColEventCast(colanim->cs[i].p_script, gmColEventSetLight)->light1;
-                colanim->light_angle2 = gmColEventCast(colanim->cs[i].p_script, gmColEventSetLight)->light2;
+                colanim->light_angle_x = gmColEventCast(colanim->cs[i].p_script, gmColEventSetLight)->light1;
+                colanim->light_angle_y = gmColEventCast(colanim->cs[i].p_script, gmColEventSetLight)->light2;
 
                 gmColEventAdvance(colanim->cs[i].p_script, gmColEventSetLight);
                 break;
@@ -3982,7 +3982,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
         switch (fp->afterimage.is_itemswing)
         {
         case FALSE:
-            if ((fp->ft_kind == nFTKindLink) && (fp->modelpart_status[11 - nFTPartsJointCommonStart].drawstatus_current == 0))
+            if ((fp->ft_kind == nFTKindLink) && (fp->modelpart_status[11 - nFTPartsJointCommonStart].modelpart_id_current == 0))
             {
                 ftParts *ft_parts = fp->joints[11]->user_data.p;
 
@@ -4083,7 +4083,7 @@ void ftMainUpdateWithheldPartID(ftStruct *fp, s32 withheld_part_id)
     }
     if (commonpart != NULL)
     {
-        fp->modelpart_status[withheld_part->root_joint_id - nFTPartsJointCommonStart].drawstatus_default = fp->modelpart_status[withheld_part->root_joint_id - nFTPartsJointCommonStart].drawstatus_current = (dl != NULL) ? 0 : -1;
+        fp->modelpart_status[withheld_part->root_joint_id - nFTPartsJointCommonStart].modelpart_id_default = fp->modelpart_status[withheld_part->root_joint_id - nFTPartsJointCommonStart].modelpart_id_current = (dl != NULL) ? 0 : -1;
     }
     parent_joint = fp->joints[withheld_part->parent_joint_id];
 

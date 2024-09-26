@@ -133,7 +133,7 @@ struct wpStruct
     } phys_info;
 
     mpCollData coll_data;               // Weapon's collision data
-    mpKinetics ga;          // Ground or air bool
+    sb32 ga;          // Ground or air bool
 
     wpHitbox weapon_hit;                // Weapon's hitbox
 

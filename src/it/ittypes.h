@@ -232,7 +232,7 @@ struct itStruct 					// Common items, stage hazards, fighter items and Pokémon
 	} phys_info;
 
 	mpCollData coll_data;	   		// Item's collision data
-	mpKinetics ga; 					// Ground or air bool
+	sb32 ga; 					// Ground or air bool
 
 	itHitbox item_hit;	 			// Item's hitbox
 	itHurtbox item_hurt; 			// Item's hurtbox

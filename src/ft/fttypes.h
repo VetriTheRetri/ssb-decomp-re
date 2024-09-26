@@ -175,7 +175,7 @@ struct ftModelPartContainer
 
 struct ftModelPartStatus
 {
-    s8 drawstatus_default, drawstatus_current;
+    s8 modelpart_id_default, modelpart_id_current;
 };
 
 struct ftTexturePart
@@ -472,7 +472,7 @@ struct ftMotionEventSetModelPartID
 {
 	u32 opcode : 6;
 	s32 joint_id : 7;
-	s32 drawstatus : 19;
+	s32 modelpart_id : 19;
 };
 
 struct ftMotionEventSetTexturePartID
@@ -930,12 +930,10 @@ struct ftAttributes
     u16 deadup_sfx;  // Star-KO voice
     u16 damage_sfx;
     u16 smash_sfx[3]; // Random Smash SFX
-    // s16 unk_0xC2;
     ftItemPickup item_pickup;
     u16 item_throw_vel;
     u16 item_throw_mul;
     u16 heavyget_sfx;
-    // u16 unk_0xEA;
     f32 halo_size; // Respawn platform size?
     syColorRGBA shade_color[3];
     syColorRGBA fog_color;
@@ -1051,7 +1049,7 @@ struct ftStruct
 
     u8 jumps_used;
     u8 unk_ft_0x149;
-    mpKinetics ga;
+    sb32 ga;
 
     f32 attack1_followup_frames;
     s32 attack1_status_id;
@@ -1063,7 +1061,8 @@ struct ftStruct
     s32 tarucann_wait;      // Wait this many frames before fighter can enter Barrel Cannon again
     s32 damagefloor_wait;   // Wait this many frames before fighter can be hurt by damaging floors again (e.g. Mario's Board the Platforms stage)
     s32 playertag_wait;     // Wait this many frames before fighter's player indicator is shown again; tag is shown when this reaches 1 or is overridden by position on stage
-    s32 unk_ft_0x178;
+
+    s32 card_anim_frame_id;            // Index of fighter's role on 1P Stage Card scene? (e.g. player character, opponent, ally etc.)
 
     union ftCommandVars
     {

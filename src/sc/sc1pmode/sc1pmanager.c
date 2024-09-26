@@ -33,7 +33,7 @@ u8 sSC1PManagerLevelGuard;
 u8 gSC1PManagerKirbyTeamFinalCopy;
 
 // 0x80130D76
-u8 D_ovl2_80130D76;
+u8 gSC1PManagerKirbyTeamModelPartID;
 
 // // // // // // // // // // // //
 //                               //
@@ -78,11 +78,11 @@ syOverlay dSC1PManager1PBonusGameOverlay = SCMANAGER_OVERLAY_DEFINE(6);
 syOverlay dSC1PManager1PContinueOverlay = SCMANAGER_OVERLAY_DEFINE(55);
 
 // 0x80116DA0
-u8 D_ovl2_80116DA0[/* */] = 
+u8 dSC1PManagerKirbyTeamModelPartIDs[/* */] =
 {
-    12, 7, 4, 8,
-    11, 10, 5, 9,
-    0, 6, 3, 13
+    12,  7,  4,  8,
+    11, 10,  5,  9,
+     0,  6,  3, 13
 };
 
 // 0x80116DAC
@@ -347,7 +347,7 @@ void sc1PManagerUpdateScene(void)
 
                 gSC1PManagerKirbyTeamFinalCopy = sc1PManagerGetShuffledKirbyCopy(variation_flags, mtTrigGetRandomIntRange(sc1PManagerGetShuffledVariation(variation_flags)));
 
-                D_ovl2_80130D76 = D_ovl2_80116DA0[gSC1PManagerKirbyTeamFinalCopy];
+                gSC1PManagerKirbyTeamModelPartID = dSC1PManagerKirbyTeamModelPartIDs[gSC1PManagerKirbyTeamFinalCopy];
                 break;
             }
             syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);

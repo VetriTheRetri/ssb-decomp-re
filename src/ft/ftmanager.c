@@ -653,7 +653,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *ft_desc)
         {
             ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbySpecialNCopyData);
 
-            ftParamSetModelPartDefaultID(fighter_gobj, FTKIRBY_COPY_MODELPARTS_JOINT, copy_data[fp->fighter_vars.kirby.copy_id].copy_drawstatus);
+            ftParamSetModelPartDefaultID(fighter_gobj, FTKIRBY_COPY_MODELPARTS_JOINT, copy_data[fp->fighter_vars.kirby.copy_id].copy_modelpart_id);
         }
         break;
 
@@ -735,7 +735,7 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
     fp->handicap = ft_desc->handicap;
     fp->cp_level = ft_desc->cp_level;
 
-    fp->unk_ft_0x178 = 0;
+    fp->card_anim_frame_id = 0;
     fp->unk_ft_0x3C = 0;
     fp->anim_desc.word = 0;
 
@@ -815,8 +815,8 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
     {
         if (fp->joints[i] != NULL)
         {
-            fp->modelpart_status[i - nFTPartsJointCommonStart].drawstatus_default = 
-            fp->modelpart_status[i - nFTPartsJointCommonStart].drawstatus_current = (fp->joints[i]->display_ptr != NULL) ? 0 : -1;
+            fp->modelpart_status[i - nFTPartsJointCommonStart].modelpart_id_default = 
+            fp->modelpart_status[i - nFTPartsJointCommonStart].modelpart_id_current = (fp->joints[i]->display_ptr != NULL) ? 0 : -1;
         }
     }
     for (i = 0; i < ARRAY_COUNT(fp->texturepart_status); i++)

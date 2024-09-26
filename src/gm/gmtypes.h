@@ -60,8 +60,8 @@ struct gmColAnim
 	s32 length;
 	s32 colanim_id;
 	gmColKeys maincolor; 		// Used as both PrimColor and EnvColor? Screen flashes use it as Prim and items as Env
-	f32 light_angle1;
-	f32 light_angle2;
+	f32 light_angle_x;
+	f32 light_angle_y;
 	gmColKeys blendcolor;
 	ub8 is_use_maincolor : 1;
 	ub8 is_use_light : 1;

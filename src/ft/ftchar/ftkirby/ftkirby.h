@@ -281,7 +281,7 @@ typedef enum ftKirbyStatus
 typedef struct ftKirbyCopy
 {
     u16 copy_id;
-    s16 copy_drawstatus;
+    s16 copy_modelpart_id;
     f32 effect_scale; // Random position offset used for blue sparkle effect?
     s32 star_damage;
 

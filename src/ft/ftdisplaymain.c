@@ -1174,9 +1174,9 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
         {
             if (fp->status_info.pl_kind != nFTPlayerKindDemo)
             {
-                ftDisplayLightsDrawReflect(gDisplayListHead, fp->lr * fp->colanim.light_angle1, fp->colanim.light_angle2);
+                ftDisplayLightsDrawReflect(gDisplayListHead, fp->lr * fp->colanim.light_angle_x, fp->colanim.light_angle_y);
             }
-            else ftDisplayLightsDrawReflect(gDisplayListHead, F_CLC_RTOD32(DObjGetStruct(fighter_gobj)->rotate.vec.f.y) + fp->colanim.light_angle1, fp->colanim.light_angle2);
+            else ftDisplayLightsDrawReflect(gDisplayListHead, F_CLC_RTOD32(DObjGetStruct(fighter_gobj)->rotate.vec.f.y) + fp->colanim.light_angle_x, fp->colanim.light_angle_y);
         }
         gDPSetCycleType(gDisplayListHead[0]++, G_CYC_2CYCLE);
 

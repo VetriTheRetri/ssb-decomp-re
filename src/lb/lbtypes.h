@@ -39,11 +39,12 @@ struct lbRelocSetup
 
 struct lbTableEntry
 {
-    u32 data_offset;
-    u16 reloc_intern_offset; // in words
-    u16 compressed_size;      // in words
-    u16 reloc_extern_offset; // in words
-    u16 decompressed_size;    // in words
+    ub32 is_vpk0 : 1;
+    u32 data_offset : 31;
+    u16 reloc_intern_offset;    // in words
+    u16 compressed_size;        // in words
+    u16 reloc_extern_offset;    // in words
+    u16 decompressed_size;      // in words
 };
 
 struct lbInternBuf

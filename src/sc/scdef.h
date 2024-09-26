@@ -269,7 +269,7 @@ typedef enum sc1PGameStageKind
 	nSC1PGameStageBonus2,									// Board the Platforms
 	nSC1PGameStageKirby,									// VS Kirby Team
 	nSC1PGameStageSamus,									// VS Samus
-	nSC1PGameStageMetal,									// VS Metal Mario
+	nSC1PGameStageMMario,									// VS Metal Mario
 	nSC1PGameStageBonus3,									// Race to the Finish
 	nSC1PGameStageZako,										// VS Fighting Polygon Team
 	nSC1PGameStageBoss,										// VS Master Hand
@@ -501,6 +501,7 @@ typedef struct sc1PGameBossWallpaper		sc1PGameBossWallpaper;
 typedef struct sc1PGameBossMain				sc1PGameBossMain;
 typedef struct sc1PStageClearStats			sc1PStageClearStats;
 typedef struct sc1PStageClearScore			sc1PStageClearScore;
+typedef struct sc1PStageCardFighter			sc1PStageCardFighter;
 typedef struct scTrainingSprites			scTrainingSprites;
 typedef struct scTrainingFiles				scTrainingFiles;
 typedef struct scExplainMain				scExplainMain;

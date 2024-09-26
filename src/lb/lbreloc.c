@@ -145,9 +145,9 @@ void lbRelocLoadAndRelocFile(u32 file_id, void *ram_dst, u32 bytes_num, s32 loc)
     u8 file_ids[16];
     uintptr_t data_rom_offset;
 
-    data_rom_offset =  sLBRelocInternBuf.rom_table_hi + (sLBRelocCurrentTableEntry->data_offset & ~0x80000000);
+    data_rom_offset = sLBRelocInternBuf.rom_table_hi + sLBRelocCurrentTableEntry->data_offset;
 
-    if (sLBRelocCurrentTableEntry->data_offset >> 31)
+    if (sLBRelocCurrentTableEntry->is_vpk0)
     {
         syDmaReadVpk0(data_rom_offset, ram_dst);
     }
@@ -210,7 +210,6 @@ void lbRelocLoadAndRelocFile(u32 file_id, void *ram_dst, u32 bytes_num, s32 loc)
     }
 }
 
-// Somewhat stinky match but it works
 size_t lbRelocGetExternBytesNum(u32 file_id)
 {
     u16 *rom_extern_csr;
@@ -219,8 +218,7 @@ size_t lbRelocGetExternBytesNum(u32 file_id)
     u16 *end;     // s3
     size_t compressed_size;
     void *rom_end;
-    u32 mask;
-    u8 file_ids_buf[16];
+    u8 file_ids_buf[20];
     s32 i;
 
     if (lbRelocFindFileStatusBuf(file_id) != NULL)
@@ -246,8 +244,6 @@ size_t lbRelocGetExternBytesNum(u32 file_id)
             scManagerRunPrintGObjStatus();
         }
     }
-    mask = 0x80000000;
-        
     lbRelocReadDmaTableEntry(file_id);
     
     bytes_read = (u32) LBRELOC_CACHE_ALIGN(sLBRelocCurrentTableEntry->decompressed_size * sizeof(u32));
@@ -255,13 +251,11 @@ size_t lbRelocGetExternBytesNum(u32 file_id)
         
     sLBRelocExternFileIDs[sLBRelocExternFileIDsNum++] = file_id;
         
-    rom_end = (void*) (sLBRelocInternBuf.rom_table_hi + (sLBRelocCurrentTableEntry->data_offset & ~mask)); // Ew...
+    rom_end = (void*) (sLBRelocInternBuf.rom_table_hi + sLBRelocCurrentTableEntry->data_offset); // Ew...
 
-    mask = 0x80000000;
-    
     rom_extern_csr = (u16*) ((uintptr_t)rom_end + compressed_size);
     
-    end = (u16*) (sLBRelocInternBuf.rom_table_hi + (sLBRelocNextTableEntry->data_offset & ~mask));
+    end = (u16*) (sLBRelocInternBuf.rom_table_hi + sLBRelocNextTableEntry->data_offset);
 
     file_id_read = (void*) LBRELOC_CACHE_ALIGN((uintptr_t)file_ids_buf);
     

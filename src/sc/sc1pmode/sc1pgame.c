@@ -7,23 +7,6 @@
 #include <lb/library.h>
 
 extern void func_800A26B8();
-// // // // // // // // // // // //
-//                               //
-//             MACROS            //
-//                               //
-// // // // // // // // // // // //
-
-#define SC1PGAME_STAGE_MAX_TEAM_COUNT 30
-#define SC1PGAME_STAGE_MAX_VARIATIONS_COUNT 12
-
-#define SC1PGAME_STAGE_YOSHI_VARIATIONS_COUNT 6
-#define SC1PGAME_STAGE_YOSHI_TEAM_COUNT 18
-
-#define SC1PGAME_STAGE_KIRBY_VARIATIONS_COUNT 7
-#define SC1PGAME_STAGE_KIRBY_TEAM_COUNT	8
-#define SC1PGAME_STAGE_KIRBY_SIM_COUNT 2				// Number of opponents fought at once
-
-#define SC1PGAME_STAGE_MAX_OPPONENT_COUNT 3
 
 // // // // // // // // // // // //
 //                               //
@@ -761,7 +744,7 @@ void sc1PGameSetGameStart(void)
 {
     sSC1PGameIsStartStage = TRUE;
 
-    if ((gSceneData.spgame_stage == nSC1PGameStageMetal) || (gSceneData.spgame_stage == nSC1PGameStageZako))
+    if ((gSceneData.spgame_stage == nSC1PGameStageMMario) || (gSceneData.spgame_stage == nSC1PGameStageZako))
     {
         mpCollisionSetPlayBGM();
     }
@@ -1028,7 +1011,7 @@ void sc1PGameSetupStageAll(void)
     case nSC1PGameStagePikachu:
     case nSC1PGameStageDonkey:
     case nSC1PGameStageSamus:
-    case nSC1PGameStageMetal:
+    case nSC1PGameStageMMario:
     case nSC1PGameStageBoss:
     case nSC1PGameStageLuigi:
     case nSC1PGameStageNess:
@@ -1576,7 +1559,7 @@ void sc1PGameWaitThreadUpdate(GObj *gobj)
     case nSC1PGameStagePikachu:
     case nSC1PGameStageDonkey:
     case nSC1PGameStageSamus:
-    case nSC1PGameStageMetal:
+    case nSC1PGameStageMMario:
     case nSC1PGameStageLuigi:
     case nSC1PGameStageNess:
     case nSC1PGameStagePurin:
@@ -2155,7 +2138,7 @@ void sc1PGameProcStart(void)
     sc1PGameInitTeamStockDisplay();
     sc1PGameSetGameStatusWait();
 
-    if ((gSceneData.spgame_stage == nSC1PGameStageMetal) || (gSceneData.spgame_stage == nSC1PGameStageZako))
+    if ((gSceneData.spgame_stage == nSC1PGameStageMMario) || (gSceneData.spgame_stage == nSC1PGameStageZako))
     {
         mpCollisionSetBGM();
         func_800269C0_275C0(nSYAudioFGMPublicityPrologue);

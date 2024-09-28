@@ -1328,15 +1328,14 @@ segments:
 
   - name: ovl24
     type: code
-    bss_size: 0x450
-    start: 0x12ae40
+    start: 0x12AE40
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x12ae40, asm, ovl24]
-      - [0x12E130, data, ovl24]
-      - [0x12EF20, rodata, ovl24]
-      - { start: auto, type: bss, vram: 0x80135C20, name: ovl24 }
+      - [0x12AE40, c, sc/sc1pmode/sc1pstagecard]
+      - [0x12E130, .data, sc/sc1pmode/sc1pstagecard]
+      - [0x12EF20, .rodata, sc/sc1pmode/sc1pstagecard]
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pstagecard, vram: 0x80135C20 }
 
   - name: ovl25
     type: code

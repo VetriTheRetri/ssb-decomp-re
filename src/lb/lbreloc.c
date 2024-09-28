@@ -218,7 +218,8 @@ size_t lbRelocGetExternBytesNum(u32 file_id)
     u16 *end;     // s3
     size_t compressed_size;
     void *rom_end;
-    u8 file_ids_buf[20];
+    s32 unused;
+    u8 file_ids_buf[16];
     s32 i;
 
     if (lbRelocFindFileStatusBuf(file_id) != NULL)
@@ -236,11 +237,7 @@ size_t lbRelocGetExternBytesNum(u32 file_id)
     {
         while (TRUE)
         {
-            syErrorPrintf
-            (
-                "Relocatable Data Manager: External Data is over %d!!\n",
-                sLBRelocExternFileIDsMax
-            );
+            syErrorPrintf("Relocatable Data Manager: External Data is over %d!!\n", sLBRelocExternFileIDsMax);
             scManagerRunPrintGObjStatus();
         }
     }

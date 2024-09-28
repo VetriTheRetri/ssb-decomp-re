@@ -219,6 +219,100 @@ lLBTransitionCurtainAnimJoint = 0x00007C98;
 lGRWallpaperTraining0Sprite = 0x00020718;
 lGRWallpaperTraining0BitmapPointer = 0x0002074C;
 
+lSC1PStageCardDecalVSSprite = 0x00001F10;
+
+lSC1PStageCardNameMarioSprite = 0x00000138;
+lSC1PStageCardNameFoxSprite = 0x00000258;
+lSC1PStageCardNameDonkeySprite = 0x00000378;
+lSC1PStageCardNameSamusSprite = 0x000004F8;
+lSC1PStageCardNameLuigiSprite = 0x00000618;
+lSC1PStageCardNameLinkSprite = 0x00000738;
+lSC1PStageCardNameYoshiSprite = 0x00000858;
+lSC1PStageCardNameCaptainSprite = 0x00000A38;
+lSC1PStageCardNameKirbySprite = 0x00000BB8;
+lSC1PStageCardNamePikachuSprite = 0x00000D38;
+lSC1PStageCardNamePurinSprite = 0x00000F78;
+lSC1PStageCardNameNessSprite = 0x00001098;
+
+lSC1PStageCardVSNameYoshiTeamSprite = 0x00006938;
+lSC1PStageCardVSNameFoxSprite = 0x00005988;
+lSC1PStageCardVSNameMarioBrosSprite = 0x00005EC8;
+lSC1PStageCardVSNameGDonkeySprite = 0x00005748;
+lSC1PStageCardVSNameKirbyTeamSprite = 0x00005C88;
+lSC1PStageCardVSNameSamusSprite = 0x00006638;
+lSC1PStageCardVSNameMMarioSprite = 0x00005328;
+lSC1PStageCardVSNameZakoSprite = 0x000063F8;
+lSC1PStageCardVSNameBossSprite = 0x00005568;
+
+lSC1PStageCardBonus1TaskSprite = 0x00003B08;
+lSC1PStageCardBonus2TaskSprite = 0x00004388;
+lSC1PStageCardBonus3TaskSprite = 0x00004AC8;
+
+lSC1PStageCardNumber1Sprite = 0x00002018;
+lSC1PStageCardNumber2Sprite = 0x00002118;
+lSC1PStageCardNumber3Sprite = 0x00002218;
+lSC1PStageCardNumber4Sprite = 0x00002318;
+lSC1PStageCardNumber5Sprite = 0x00002418;
+lSC1PStageCardNumber6Sprite = 0x00002518;
+lSC1PStageCardNumber7Sprite = 0x00002618;
+lSC1PStageCardNumber8Sprite = 0x00002718;
+lSC1PStageCardNumber9Sprite = 0x00002818;
+lSC1PStageCardNumber10Sprite = 0x000029B8;
+
+lSC1PStageCardFigureLinkSprite = 0x000071D0;
+lSC1PStageCardFigureYoshiSprite = 0x00007320;
+lSC1PStageCardFigureFoxSprite = 0x00007470;
+lSC1PStageCardFigureMarioBrosSprite = 0x000075C0;
+lSC1PStageCardFigurePikachuSprite = 0x00007710;
+lSC1PStageCardFigureGDonkeySprite = 0x00007860;
+lSC1PStageCardFigureKirbySprite = 0x000079B0;
+lSC1PStageCardFigureSamusSprite = 0x00007B00;
+lSC1PStageCardFigureMMarioSprite = 0x00007C50;
+lSC1PStageCardFigureZakoSprite = 0x00007D60;
+lSC1PStageCardFigureBossSprite = 0x00007E70;
+lSC1PStageCardFigureBonusSprite = 0x00007F40;
+
+lSC1PStageCardStageTextSprite = 0x00002E38;
+lSC1PStageCardBonusTextSprite = 0x000030F8;
+lSC1PStageCardFinalTextSprite = 0x00003320;
+lSC1PStageCardDashTextSprite = 0x000050E8;
+lSC1PStageCardVSTextSprite = 0x000069F8;
+lSC1PStageCardAlly1TextSprite = 0x00006B18;
+lSC1PStageCardAlly2TextSprite = 0x00006C38;
+
+lSC1PStageCardBannerTopSprite = 0x0000C898;
+lSC1PStageCardBannerBottomSprite = 0x0000ED00;
+lSC1PStageCardSkySprite = 0x00014BF0;
+
+lSC1PStageCardPictureBonus1Sprite = 0x0000E980;
+lSC1PStageCardPictureBonus2Sprite = 0x00027388;
+lSC1PStageCardPictureBonus3Sprite = 0x0001A658;
+
+lSC1PStageCardStageLinkCamAnimJoint = 0x00006FE0;
+lSC1PStageCardStageYoshiCamAnimJoint = 0x00006EF0;
+lSC1PStageCardStageFoxCamAnimJoint = 0x00006F80;
+lSC1PStageCardStageMarioCamAnimJoint = 0x00007040;
+lSC1PStageCardStagePikachuCamAnimJoint = 0x00006FB0;
+lSC1PStageCardStageDonkeyCamAnimJoint = 0x00007010;
+lSC1PStageCardStageKirbyCamAnimJoint = 0x00006EC0;
+lSC1PStageCardStageSamusCamAnimJoint = 0x00006F50;
+lSC1PStageCardStageMMarioCamAnimJoint = 0x00007070;
+lSC1PStageCardStageZakoCamAnimJoint = 0x000070A0;
+lSC1PStageCardStageBossCamAnimJoint = 0x00006F20;
+
+lSC1PStageCardFighterMarioCamAnimJoint = 0x00006C80;
+lSC1PStageCardFighterFoxCamAnimJoint = 0x00006CB0;
+lSC1PStageCardFighterDonkeyCamAnimJoint = 0x00006CE0;
+lSC1PStageCardFighterSamusCamAnimJoint = 0x00006D10;
+lSC1PStageCardFighterLuigiCamAnimJoint = 0x00006D40;
+lSC1PStageCardFighterLinkCamAnimJoint = 0x00006D70;
+lSC1PStageCardFighterYoshiCamAnimJoint = 0x00006DA0;
+lSC1PStageCardFighterCaptainCamAnimJoint = 0x00006DD0;
+lSC1PStageCardFighterKirbyCamAnimJoint = 0x00006E00;
+lSC1PStageCardFighterPikachuCamAnimJoint = 0x00006E30;
+lSC1PStageCardFighterPurinCamAnimJoint = 0x00006E60;
+lSC1PStageCardFighterNessCamAnimJoint = 0x00006E90;
+
 lMNScreenAdjustInstructionSprite = 0x00000918;
 lMNScreenAdjustGuideSprite = 0x000098A0;
 

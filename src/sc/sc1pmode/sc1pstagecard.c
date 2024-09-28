@@ -1,84 +1,26 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
+#include <sys/system_00.h>
 
-extern intptr_t lSC1PStageCardNameMarioSprite;          // 0x00000138
-extern intptr_t lSC1PStageCardNameFoxSprite;            // 0x00000258
-extern intptr_t lSC1PStageCardNameDonkeySprite;         // 0x00000378
-extern intptr_t lSC1PStageCardNameSamusSprite;          // 0x000004F8
-extern intptr_t lSC1PStageCardNameLuigiSprite;          // 0x00000618
-extern intptr_t lSC1PStageCardNameLinkSprite;           // 0x00000738
-extern intptr_t lSC1PStageCardNameYoshiSprite;          // 0x00000858
-extern intptr_t lSC1PStageCardNameCaptainSprite;        // 0x00000A38
-extern intptr_t lSC1PStageCardNameKirbySprite;          // 0x00000BB8
-extern intptr_t lSC1PStageCardNamePikachuSprite;        // 0x00000D38
-extern intptr_t lSC1PStageCardNamePurinSprite;          // 0x00000F78
-extern intptr_t lSC1PStageCardNameNessSprite;           // 0x00001098
+extern void func_800A26B8();
+extern void func_800266A0_272A0();
+extern void* func_800269C0_275C0(u16);
+extern u32 func_8000092C();
+extern void func_80007080(void*, f32, f32, f32, f32);
 
-extern intptr_t lSC1PStageCardVSNameYoshiTeamSprite;    // 0x00006938
-extern intptr_t lSC1PStageCardVSNameFoxSprite;          // 0x00005988
-extern intptr_t lSC1PStageCardVSNameMarioBrosSprite;    // 0x00005EC8
-extern intptr_t lSC1PStageCardVSNameGDonkeySprite;      // 0x00005748
-extern intptr_t lSC1PStageCardVSNameKirbyTeamSprite;    // 0x00005C88
-extern intptr_t lSC1PStageCardVSNameSamusSprite;        // 0x00006638
-extern intptr_t lSC1PStageCardVSNameMMarioSprite;       // 0x00005328
-extern intptr_t lSC1PStageCardVSNameZakoSprite;         // 0x000063F8
-extern intptr_t lSC1PStageCardVSNameBossSprite;         // 0x00005568
+extern uintptr_t D_NF_0000000B;             // 0x0000000B
+extern uintptr_t D_NF_0000000C;             // 0x0000000C
+extern uintptr_t D_NF_0000000D;             // 0x0000000D
+extern uintptr_t D_NF_0000000E;             // 0x0000000E
 
-extern intptr_t lSC1PStageCardBonus1TaskSprite;         // 0x00003B08
-extern intptr_t lSC1PStageCardBonus2TaskSprite;         // 0x00004388
-extern intptr_t lSC1PStageCardBonus3TaskSprite;         // 0x00004AC8
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
 
-extern intptr_t lSC1PStageCardNumber1Sprite;            // 0x00002018
-extern intptr_t lSC1PStageCardNumber2Sprite;            // 0x00002118
-extern intptr_t lSC1PStageCardNumber3Sprite;            // 0x00002218
-extern intptr_t lSC1PStageCardNumber4Sprite;            // 0x00002318
-extern intptr_t lSC1PStageCardNumber5Sprite;            // 0x00002418
-extern intptr_t lSC1PStageCardNumber6Sprite;            // 0x00002518
-extern intptr_t lSC1PStageCardNumber7Sprite;            // 0x00002618
-extern intptr_t lSC1PStageCardNumber8Sprite;            // 0x00002718
-extern intptr_t lSC1PStageCardNumber9Sprite;            // 0x00002818
-extern intptr_t lSC1PStageCardNumber10Sprite;           // 0x000029B8
-
-extern intptr_t lSC1PStageCardFigureLinkSprite;         // 0x000071D0
-extern intptr_t lSC1PStageCardFigureYoshiSprite;        // 0x00007320
-extern intptr_t lSC1PStageCardFigureFoxSprite;          // 0x00007470
-extern intptr_t lSC1PStageCardFigureMarioBrosSprite;    // 0x000075C0
-extern intptr_t lSC1PStageCardFigurePikachuSprite;      // 0x00007710
-extern intptr_t lSC1PStageCardFigureGDonkeySprite;      // 0x00007860
-extern intptr_t lSC1PStageCardFigureKirbySprite;        // 0x000079B0
-extern intptr_t lSC1PStageCardFigureSamusSprite;        // 0x00007B00
-extern intptr_t lSC1PStageCardFigureMMarioSprite;       // 0x00007C50
-extern intptr_t lSC1PStageCardFigureZakoSprite;         // 0x00007D60
-extern intptr_t lSC1PStageCardFigureBossSprite;         // 0x00007E70
-extern intptr_t lSC1PStageCardFigureBonusSprite;        // 0x00007F40
-
-extern intptr_t lSC1PStageCardStageTextSprite;          // 0x00002E38
-extern intptr_t lSC1PStageCardBonusTextSprite;          // 0x000030F8
-extern intptr_t lSC1PStageCardFinalTextSprite;          // 0x00003320
-extern intptr_t lSC1PStageCardDashTextSprite;           // 0x000050E8
-extern intptr_t lSC1PStageCardVSTextSprite;             // 0x000069F8
-extern intptr_t lSC1PStageCardAlly1TextSprite;          // 0x00006B18
-extern intptr_t lSC1PStageCardAlly2TextSprite;          // 0x00006C38
-
-extern intptr_t lSC1PStageCardBannerTopSprite;          // 0x0000C898
-extern intptr_t lSC1PStageCardBannerBottomSprite;       // 0x0000ED00
-extern intptr_t lSC1PStageCardSkySprite;                // 0x00014BF0
-
-extern intptr_t lSC1PStageCardPictureBonus1Sprite;      // 0x0000E980
-extern intptr_t lSC1PStageCardPictureBonus2Sprite;      // 0x00027388
-extern intptr_t lSC1PStageCardPictureBonus3Sprite;      // 0x0001A658
-
-extern intptr_t lSC1PStageCardStageLinkCamAnimJoint;    // 0x00006FE0
-extern intptr_t lSC1PStageCardStageYoshiCamAnimJoint;   // 0x00006EF0
-extern intptr_t lSC1PStageCardStageFoxCamAnimJoint;     // 0x00006F80
-extern intptr_t lSC1PStageCardStageMarioCamAnimJoint;   // 0x00007040
-extern intptr_t lSC1PStageCardStagePikachuCamAnimJoint; // 0x00006FB0
-extern intptr_t lSC1PStageCardStageDonkeyCamAnimJoint;  // 0x00007010
-extern intptr_t lSC1PStageCardStageKirbyCamAnimJoint;   // 0x00006EC0
-extern intptr_t lSC1PStageCardStageSamusCamAnimJoint;   // 0x00006F50
-extern intptr_t lSC1PStageCardStageMMarioCamAnimJoint;  // 0x00007070
-extern intptr_t lSC1PStageCardStageZakoCamAnimJoint;    // 0x000070A0
-extern intptr_t lSC1PStageCardStageBossCamAnimJoint;    // 0x00006F20
+// 0x80135C20
+s32 sSC1PStageCardPad0x80135C20[2];
 
 // 0x80135C28
 s32 sSC1PStageCardStage;
@@ -89,20 +31,50 @@ GObj *sSC1PStageCardVSNameGObj;
 // 0x80135C30
 GObj *sSC1PStageCardNameGObj;
 
+// 0x80135C34
+s32 sSC1PStageCardPad0x80135C34;
+
 // 0x80135C38
-void *sSC1PStageCardFigatreeHeaps[36];
+void *sSC1PStageCardFigatreeHeaps[32];
+
+// 0x80135CB8
+sb32 sSC1PStageCardIsAnnouncedFighterName;
+
+// 0x80135CBC
+sb32 sSC1PStageCardIsAnnouncedVersus;
+
+// 0x80135CC0
+sb32 sSC1PStageCardIsAnnouncedVSFighterName;
+
+// 0x80135CC4
+s32 sSC1PStageCardPad0x80135CC4;
 
 // 0x80135CC8
 sc1PStageCardFighter sSC1PStageCardPlayerFighter;
 
+// 0x80135CD4
+s32 sSC1PStageCardPad0x80135CD4;
+
 // 0x80135CD8
 sc1PStageCardFighter sSC1PStageCardAlly1Fighter;
+
+// 0x80135CE4
+s32 sSC1PStageCardPad0x80135CE4;
 
 // 0x80135CE8
 sc1PStageCardFighter sSC1PStageCardAlly2Fighter;
 
+// 0x80135CF4
+s32 sSC1PStageCardUnk0x80135CF4;
+
 // 0x80135CF8
-s32 D_80135CF8_12F038;
+s32 sc1PStageCardTotalTimeTics;
+
+// 0x80135D00
+lbFileNode sSC1PStageCardForceBuf[7];
+
+// 0x80135D38
+lbFileNode sSC1PStageCardStatusBuf[100];
 
 // 0x80136058
 void *sSC1PStageCardFiles[4];
@@ -114,7 +86,7 @@ void *sSC1PStageCardFiles[4];
 // // // // // // // // // // // //
 
 // 0x80134DF0
-u32 dSC1PStageCardFileIDs[/* */] = { 0xB, 0xC, 0xD, 0xE };
+u32 dSC1PStageCardFileIDs[/* */] = { &D_NF_0000000B, &D_NF_0000000C, &D_NF_0000000D, &D_NF_0000000E };
 
 // 0x80134E00
 Lights1 dSC1PStageCardLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
@@ -173,7 +145,7 @@ void sc1PStageCardMakeBanners(void)
     sobj->pos.y = 182.0F;
 }
 
-// 0x80131C58
+// 0x80131C58 - unused?
 void func_ovl24_80131C58(GObj *gobj)
 {
     gDPPipeSync(gDisplayListHead[0]++);
@@ -217,6 +189,25 @@ void func_ovl24_80131C58(GObj *gobj)
 void func_ovl24_80131ECC(void)
 {
     return;
+}
+
+// 0x80131ED4
+void sc1PStageCardMakeVSDecal(void)
+{
+    GObj *gobj;
+    SObj *sobj;
+
+    gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
+
+    gcAddGObjDisplay(gobj, &lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardDecalVSSprite));
+    
+    sobj->sprite.attr &= ~SP_FASTCOPY;
+    sobj->sprite.attr |= SP_TRANSPARENT;
+    
+    sobj->pos.x = 135.0F;
+    sobj->pos.y = 104.0F;
 }
 
 // 0x80131F6C
@@ -750,7 +741,7 @@ f32 sc1PStageCardGetFighterPositionZ(s32 card_anim_frame_id)
 }
 
 // 0x80132C98
-void sc1PStageCardMakeFighter(s32 ft_kind, s32 costume, s32 shade, s32 card_anim_frame_id, void **figatree)
+void sc1PStageCardMakeFighter(sc1PStageCardFighter fighter, s32 card_anim_frame_id, void **figatree)
 {
     ftStruct *fp;
     GObj *fighter_gobj;
@@ -767,10 +758,9 @@ void sc1PStageCardMakeFighter(s32 ft_kind, s32 costume, s32 shade, s32 card_anim
         29
     };
     
-    ft_desc.ft_kind = ft_kind;
-
-    ft_desc.costume = costume;
-    ft_desc.shade = shade;
+    ft_desc.ft_kind = fighter.ft_kind;
+    ft_desc.costume = fighter.costume;
+    ft_desc.shade = fighter.shade;
     
     ft_desc.figatree_heap = *figatree;
     
@@ -794,11 +784,6 @@ void sc1PStageCardMakeFighter(s32 ft_kind, s32 costume, s32 shade, s32 card_anim
     DObjGetStruct(fighter_gobj)->scale.vec.f.x = 1.0F;
     DObjGetStruct(fighter_gobj)->scale.vec.f.y = 1.0F;
     DObjGetStruct(fighter_gobj)->scale.vec.f.z = 1.0F;
-
-    // ...what
-    if (ft_kind);
-    if (costume);
-    if (shade);
 }
 
 // 0x80132E04
@@ -861,7 +846,7 @@ f32 sc1PStageCardGetVSFighterVelocityZ(s32 stage, s32 ft_kind)
 }
 
 // 0x80132F84
-void sc1PStageCardZakoFighterProcUpdate(GObj *fighter_gobj)
+void sc1PStageCardVSFighterProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     DObj *dobj = DObjGetStruct(fighter_gobj);
@@ -870,11 +855,11 @@ void sc1PStageCardZakoFighterProcUpdate(GObj *fighter_gobj)
     switch (sSC1PStageCardStage)
     {
     case nSC1PGameStageYoshi:
-        fighter_gobj->flags = ((id * 3) < D_80135CF8_12F038) ? GOBJ_FLAG_NONE : GOBJ_FLAG_NORENDER;
+        fighter_gobj->flags = ((id * 3) < sc1PStageCardTotalTimeTics) ? GOBJ_FLAG_NONE : GOBJ_FLAG_NORENDER;
         break;
         
     case nSC1PGameStageKirby:
-        fighter_gobj->flags = ((id * 10) < D_80135CF8_12F038) ? GOBJ_FLAG_NONE : GOBJ_FLAG_NORENDER;
+        fighter_gobj->flags = ((id * 10) < sc1PStageCardTotalTimeTics) ? GOBJ_FLAG_NONE : GOBJ_FLAG_NORENDER;
         break;
 
     case nSC1PGameStageZako:
@@ -940,7 +925,7 @@ f32 sc1PStageCardGetVSFighterPositionZ(s32 stage, s32 ft_kind)
 }
 
 // 0x80133170
-void sc1PStageCardZakoFighterProcDisplay(GObj *fighter_gobj)
+void sc1PStageCardVSFighterProcDisplay(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -949,23 +934,23 @@ void sc1PStageCardZakoFighterProcDisplay(GObj *fighter_gobj)
     gDPSetRenderMode(gDisplayListHead[0]++, G_RM_PASS, G_RM_AA_ZB_OPA_SURF2);
     gDPSetEnvColor(gDisplayListHead[0]++, 0xFF, 0xFF, 0xFF, 0x00);
     
-    if (sSC1PStageCardStage == 12)
+    if (sSC1PStageCardStage == nSC1PGameStageZako)
     {
-        if (((fp->ft_kind * 2) - 28) < D_80135CF8_12F038)
+        if (((fp->ft_kind * 2) - 28) < sc1PStageCardTotalTimeTics)
         {
             ftMainSetFighterStatus(fighter_gobj, 0x1000E, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
             gcPlayAnimAll(fighter_gobj);
             gcEndProcessAll(fighter_gobj);
             ftDisplayMainProcDisplay(fighter_gobj);
         }
-        if (((fp->ft_kind * 2) - 8) < D_80135CF8_12F038)
+        if (((fp->ft_kind * 2) - 8) < sc1PStageCardTotalTimeTics)
         {
             ftMainSetFighterStatus(fighter_gobj, 0x1000E, 1.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
             gcPlayAnimAll(fighter_gobj);
             gcEndProcessAll(fighter_gobj);
             ftDisplayMainProcDisplay(fighter_gobj);
         }
-        if (((fp->ft_kind * 2) + 12) < D_80135CF8_12F038)
+        if (((fp->ft_kind * 2) + 12) < sc1PStageCardTotalTimeTics)
         {
             ftMainSetFighterStatus(fighter_gobj, 0x1000E, 2.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
             gcPlayAnimAll(fighter_gobj);
@@ -990,7 +975,7 @@ GObj* sc1PStageCardMakeVSFighter(s32 ft_kind, s32 stage, s32 card_anim_frame_id,
     ft_desc.ft_kind = ft_kind;
     ft_desc.costume = ftParamGetCostumeCommonID(ft_kind, 0);
     ft_desc.figatree_heap = *figatree;
-    ft_desc.proc_display = sc1PStageCardZakoFighterProcDisplay;
+    ft_desc.proc_display = sc1PStageCardVSFighterProcDisplay;
     ft_desc.player = 0;
     ft_desc.unk_rebirth_0x1C = 4;
     ft_desc.unk_rebirth_0x1D = 4;
@@ -1008,7 +993,7 @@ GObj* sc1PStageCardMakeVSFighter(s32 ft_kind, s32 stage, s32 card_anim_frame_id,
     fp->card_anim_frame_id = card_anim_frame_id;
     
     gcMoveGObjDL(fighter_gobj, dl_link, GOBJ_DLLINKORDER_DEFAULT);
-    gcAddGObjProcess(fighter_gobj, sc1PStageCardZakoFighterProcUpdate, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(fighter_gobj, sc1PStageCardVSFighterProcUpdate, nOMObjProcessKindProc, 1);
     
     DObjGetStruct(fighter_gobj)->translate.vec.f.x = 0.0F;
     DObjGetStruct(fighter_gobj)->translate.vec.f.y = 0.0F;
@@ -1076,7 +1061,7 @@ void sc1PStageCardMakeBonusPicture(s32 stage)
 }
 
 // 0x801336CC
-CameraDesc* sc1PStageCardGetCameraDesc(CameraDesc *cam_desc, s32 stage)
+CameraDesc* sc1PStageCardGetStageCameraDesc(CameraDesc *cam_desc, s32 stage)
 {
     // 0x80134FF8
     CameraDesc cam_descs[/* */] =
@@ -1094,7 +1079,7 @@ CameraDesc* sc1PStageCardGetCameraDesc(CameraDesc *cam_desc, s32 stage)
         { { 0.0F, 0.0F, 0.0F }, { 0.0F, 0.0F, 0.0F }, 0.0F },
 
         // VS Mario Bros.
-        { { 1053.95F, 404.97F, 364.82F }, { -311.21F, 309.63F, 45.02F }, 0.0F },
+        { { 1053.95F, 404.97F, 364.82F }, { -311.21F, 309.63F, 332.14F }, 0.0F },
 
         // VS Pikachu
         { { 0.0F, 0.0F, 0.0F }, { 0.0F, 0.0F, 0.0F }, 0.0F },
@@ -1183,7 +1168,7 @@ Camera* sc1PStageCardMakeStageCamera(s32 stage, u32 dl_link)
     switch (stage)
     {
     case nSC1PGameStageMario:
-        sc1PStageCardGetCameraDesc(&cam_desc, stage);
+        sc1PStageCardGetStageCameraDesc(&cam_desc, stage);
         
         cam->vec.eye.x = cam_desc.eye.x;
         cam->vec.eye.y = cam_desc.eye.y;
@@ -1253,16 +1238,16 @@ void sc1PStageCardInitVSFighters(s32 stage)
         nFTKindLink,
         nFTKindYoshi,
         nFTKindFox,
-        nFTKindMario,
+        0,
         nFTKindMario,
         nFTKindPikachu,
         nFTKindDonkey,
-        nFTKindMario,
+        0,
         nFTKindKirby,
         nFTKindSamus,
         nFTKindMMario,
-        nFTKindMario,
-        nFTKindMario,
+        0,
+        0,
         nFTKindBoss
     };
     
@@ -1354,4 +1339,701 @@ void sc1PStageCardInitVSFighters(s32 stage)
         }
         break;
     }
+}
+
+// 0x80133EE0
+CameraDesc* sc1PStageCardGetFighterCameraDesc(CameraDesc *cam_desc, s32 ft_kind, s32 cam_id)
+{
+    
+    // 0x801351F0
+    CameraDesc cam_descs[/* */][6] =
+    {
+        // Mario
+        {
+            { {  -729.13F,  349.20F,  270.28F }, {  -28.13F,  259.63F,  270.95F }, 0.0F },
+            { {  -827.69F,  449.49F,  337.69F }, {  -17.17F,  345.93F,  338.46F }, 0.0F },
+            { { -1075.95F,  302.25F,  470.96F }, {  -39.79F,  169.86F,  471.94F }, 0.0F },
+            { { -1276.62F,  569.83F,  543.27F }, {   -9.44F,  407.92F,  544.47F }, 0.0F },
+            { { -1877.44F,  454.02F,  814.20F }, {  -33.91F,  218.46F,  815.94F }, 0.0F },
+            { { -2326.52F,  229.09F, 1052.27F }, {  -69.62F,  -59.28F, 1054.41F }, 0.0F }
+        },
+
+        // Fox
+        {
+            { { -2012.70F,  664.39F,  272.85F }, {  -80.70F,  355.99F,  272.06F }, 0.0F },
+            { { -2158.35F,  797.01F,  304.41F }, {  -63.66F,  462.64F,  303.55F }, 0.0F },
+            { { -2642.66F,  703.19F,  461.11F }, {  -90.24F,  295.75F,  460.06F }, 0.0F },
+            { { -2606.32F,  932.33F,  458.59F }, {  -53.67F,  524.85F,  457.55F }, 0.0F },
+            { { -3580.93F,  919.81F,  644.49F }, {  -79.76F,  360.93F,  643.06F }, 0.0F },
+            { { -5104.57F,  926.59F,  931.62F }, { -116.45F,  100.35F,  929.59F }, 0.0F }
+        },
+
+        // Donkey Kong
+        {
+            { { -1264.73F,  -49.59F,  460.69F }, {   32.21F,   76.68F,  463.59F }, 0.0F },
+            { { -1429.57F,  104.68F,  555.82F }, {   15.58F,  245.38F,  559.05F }, 0.0F },
+            { { -2023.22F, -260.50F,  859.49F }, {   44.55F,  -59.18F,  864.11F }, 0.0F },
+            { { -2397.12F,   96.45F,  908.66F }, {    6.50F,  330.48F,  914.03F }, 0.0F },
+            { { -3077.75F, -292.25F, 1292.64F }, {   36.74F,   10.99F, 1299.60F }, 0.0F },
+            { { -3804.93F, -776.41F, 1675.02F }, {   75.76F, -398.57F, 1683.69F }, 0.0F }
+        },
+
+        // Samus
+        {
+            { { -1069.84F,  471.28F,  220.65F }, {   45.20F,  393.09F,  220.33F }, 0.0F },
+            { { -1071.18F,  585.65F,  236.15F }, {   53.18F,  506.81F,  235.83F }, 0.0F },
+            { { -1513.12F,  424.67F,  416.28F }, {   39.84F,  315.78F,  415.83F }, 0.0F },
+            { { -1822.46F,  690.46F,  517.87F }, {   56.90F,  558.69F,  517.32F }, 0.0F },
+            { { -2428.29F,  552.51F,  755.05F }, {   44.38F,  379.13F,  754.33F }, 0.0F },
+            { { -2998.73F,  317.84F,  977.22F }, {   25.28F,  105.80F,  976.33F }, 0.0F }
+        },
+
+        // Luigi
+        {
+            { { -4979.88F,  884.23F,  252.07F }, {  -17.97F,  317.93F,  251.95F }, 0.0F },
+            { { -6177.62F, 1103.97F,  269.10F }, {   -8.62F,  399.90F,  268.95F }, 0.0F },
+            { { -8189.23F, 1127.74F,  464.65F }, {  -31.80F,  196.71F,  464.45F }, 0.0F },
+            { {-10816.48F, 1705.40F,  581.71F }, {    -0.5F,  470.93F,  581.45F }, 0.0F },
+            { {-15142.78F, 1962.65F,  921.32F }, {  -27.14F,  237.45F,  920.95F }, 0.0F },
+            { {-16234.35F, 1823.03F, 1060.85F }, {  -56.91F,  -23.36F, 1060.45F }, 0.0F }
+        },
+        
+        // Link
+        {
+            { {  -968.97F,  165.73F,  181.09F }, {   42.61F,  301.45F,  187.51F }, 0.0F },
+            { { -1126.84F,  226.32F,  228.08F }, {   31.54F,  381.74F,  235.44F }, 0.0F },
+            { { -1700.41F,  -38.62F,  435.95F }, {   54.99F,  196.89F,  447.09F }, 0.0F },
+            { { -1625.61F,  212.50F,  372.92F }, {   23.62F,  433.77F,  383.39F }, 0.0F },
+            { { -2207.49F,   12.20F,  572.23F }, {   41.68F,  289.56F,  586.51F }, 0.0F },
+            { { -2697.16F, -294.17F,  744.12F }, {   69.09F,   76.97F,  761.69F }, 0.0F }
+        },
+        
+        // Yoshi
+        {
+            { { -1096.39F,  442.92F,  312.58F }, { -130.07F,  331.90F,  312.28F }, 0.0F },
+            { { -1134.16F,  544.90F,  339.59F }, { -118.99F,  428.26F,  339.27F }, 0.0F },
+            { { -1822.34F,  392.97F,  627.30F }, { -145.09F,  200.26F,  626.78F }, 0.0F },
+            { { -1917.37F,  709.39F,  674.83F }, { -110.43F,  501.78F,  674.27F }, 0.0F },
+            { { -2571.02F,  558.52F,  960.53F }, { -135.97F,  278.75F,  959.78F }, 0.0F },
+            { { -3304.35F,  301.56F, 1270.76F }, { -174.57F,  -58.04F, 1269.79F }, 0.0F }    
+        },
+
+        // Captain Falcon
+        {
+            { { -2980.81F,  431.00F,  270.55F }, {   20.49F,  312.77F,  273.81F }, 0.0F },
+            { { -3537.67F,  536.99F,  304.95F }, {   23.76F,  396.71F,  308.82F }, 0.0F },
+            { { -4625.33F,  412.20F,  453.26F }, {   17.00F,  229.34F,  458.31F }, 0.0F },
+            { { -5064.61F,  648.18F,  470.29F }, {   25.59F,  447.67F,  475.82F }, 0.0F },
+            { { -7368.79F,  565.30F,  743.78F }, {   18.46F,  274.30F,  751.81F }, 0.0F },
+            { { -8198.14F,  384.29F,  881.89F }, {    9.90F,   60.97F,  890.80F }, 0.0F }
+        },
+        
+        // Kirby
+        {
+            { { -1238.45F, -482.45F,  275.18F }, {   94.10F,  219.98F,  274.88F }, 0.0F },
+            { { -1619.20F, -583.12F,  340.26F }, {   52.84F,  298.27F,  339.89F }, 0.0F },
+            { { -2031.12F,-1077.24F,  552.85F }, {  167.14F,   81.54F,  552.37F }, 0.0F },
+            { { -2358.44F, -902.75F,  576.43F }, {   23.98F,  353.11F,  575.90F }, 0.0F },
+            { { -3283.15F,-1635.53F,  904.63F }, {  125.25F,  161.15F,  903.87F }, 0.0F },
+            { { -4012.13F,-2413.80F, 1200.30F }, {  287.82F, -147.14F, 1199.34F }, 0.0F }
+        },
+
+        // Pikachu
+        {
+            { { -3417.38F,  735.40F,  240.90F }, {   95.04F,  223.38F,  249.07F }, 0.0F },
+            { { -3723.29F,  879.00F,  279.28F }, {  109.08F,  320.36F,  288.10F }, 0.0F },
+            { { -5957.12F,  963.02F,  526.64F }, {   74.03F,   83.86F,  540.52F }, 0.0F },
+            { { -5691.34F, 1214.33F,  486.75F }, {  115.52F,  367.86F,  500.12F }, 0.0F },
+            { { -7985.64F, 1355.66F,  755.47F }, {   87.34F,  178.85F,  774.05F }, 0.0F },
+            { { -9876.19F, 1353.75F, 1021.62F }, {   47.12F,  -92.78F, 1044.46F }, 0.0F }
+        },
+    
+        // Jigglypuff
+        {
+            { { -2121.60F,  198.00F,  268.03F }, { -256.38F,  168.53F,  266.69F }, 0.0F },
+            { { -2329.80F,  292.30F,  314.68F }, { -254.91F,  259.52F,  313.18F }, 0.0F },
+            { { -3731.67F,  106.92F,  554.69F }, { -258.02F,   52.05F,  552.19F }, 0.0F },
+            { { -3735.01F,  407.01F,  494.20F }, { -253.32F,  352.01F,  491.68F }, 0.0F },
+            { { -5382.05F,  219.51F,  792.89F }, { -256.48F,  138.54F,  789.19F }, 0.0F },
+            { { -7459.81F,  -97.71F, 1159.38F }, { -261.75F, -211.42F, 1154.19F }, 0.0F }
+        },
+    
+        // Ness
+        {
+            { {  -847.72F,  177.76F,  328.15F }, {  -92.79F,  213.04F,  327.90F }, 0.0F },
+            { {  -953.41F,  250.40F,  368.18F }, {  -96.39F,  290.45F,  367.90F }, 0.0F },
+            { { -1368.12F,   54.33F,  565.32F }, {  -88.09F,  114.14F,  564.90F }, 0.0F },
+            { { -1444.96F,  329.54F,  562.34F }, { -101.09F,  392.34F,  561.90F }, 0.0F },
+            { { -2103.41F,   84.53F,  848.56F }, {  -91.01F,  178.57F,  847.90F }, 0.0F },
+            { { -2636.95F, -229.72F, 1121.23F }, {  -77.43F, -110.11F, 1120.39F }, 0.0F }
+        }
+    };
+
+    *cam_desc = cam_descs[ft_kind][cam_id];
+    
+    return cam_desc;
+}
+
+// 0x80133F88 - unused?
+void func_ovl24_80133F88(void)
+{
+    return;
+}
+
+// 0x80133F90
+void sc1PStageCardMakeFighterCamera(s32 ft_kind, s32 cam_id)
+{
+    GObj* gobj;
+    Camera *cam;
+    CameraDesc cam_desc;
+
+    // 0x801359D0
+    intptr_t camanim_joints[/* */] =
+    {
+        &lSC1PStageCardFighterMarioCamAnimJoint,
+        &lSC1PStageCardFighterFoxCamAnimJoint,
+        &lSC1PStageCardFighterDonkeyCamAnimJoint,
+        &lSC1PStageCardFighterSamusCamAnimJoint,
+        &lSC1PStageCardFighterLuigiCamAnimJoint,
+        &lSC1PStageCardFighterLinkCamAnimJoint,
+        &lSC1PStageCardFighterYoshiCamAnimJoint,
+        &lSC1PStageCardFighterCaptainCamAnimJoint,
+        &lSC1PStageCardFighterKirbyCamAnimJoint,
+        &lSC1PStageCardFighterPikachuCamAnimJoint,
+        &lSC1PStageCardFighterPurinCamAnimJoint,
+        &lSC1PStageCardFighterNessCamAnimJoint
+    };
+
+    // 0x80135A00 - col 0 is dl_link, col 1 is dl_link_order
+    s32 dl_links[/* */][2] =
+    {
+        { 31, 50 },
+        { 31, 50 },
+        { 30, 60 },
+        { 31, 50 },
+        { 30, 60 },
+        { 29, 70 }
+    };
+    s32 unused;
+
+    gobj = gcMakeCameraGObj
+    (
+        nOMObjCommonKindSceneCamera,
+        NULL,
+        16,
+        GOBJ_LINKORDER_DEFAULT,
+        func_80017EC0,
+        dl_links[cam_id][1],
+        CAMERA_MASK_DLLINK(dl_links[cam_id][0]) | CAMERA_MASK_DLLINK(15) |
+        CAMERA_MASK_DLLINK(10)                  | CAMERA_MASK_DLLINK(18),
+        -1,
+        FALSE,
+        nOMObjProcessKindProc,
+        NULL,
+        1,
+        FALSE
+    );
+    gcAddOMMtxForCamera(CameraGetStruct(gobj), nOMTransformPerspFastF, 0);
+    gcAddOMMtxForCamera(CameraGetStruct(gobj), 7, 0);
+
+    cam = CameraGetStruct(gobj);
+
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    
+    sc1PStageCardGetFighterCameraDesc(&cam_desc, ft_kind, cam_id);
+    
+    gcAddCameraCamAnimJoint(cam, lbGetDataFromFile(AObjEvent32*, sSC1PStageCardFiles[0], camanim_joints[ft_kind]), 0.0F);
+    gcPlayCamAnim(gobj);
+    
+    cam->vec.eye.x = cam_desc.eye.x;
+    cam->vec.eye.y = cam_desc.eye.y;
+    cam->vec.eye.z = cam_desc.eye.z;
+
+    cam->vec.at.x = cam_desc.at.x;
+    cam->vec.at.y = cam_desc.at.y;
+    cam->vec.at.z = cam_desc.at.z;
+
+    cam->projection.persp.near = 128.0F;
+    cam->projection.persp.far = 16384.0F;
+
+    cam->flags |= 0x1;
+}
+
+// 0x80134190
+void sc1PStageCardInitFighters(s32 stage)
+{
+    switch (stage)
+    {
+    case nSC1PGameStageDonkey:
+        sc1PStageCardMakeFighterCamera(sSC1PStageCardAlly2Fighter.ft_kind, 5);
+        sc1PStageCardMakeFighter(sSC1PStageCardAlly2Fighter, 5, &sSC1PStageCardFigatreeHeaps[2]);
+        sc1PStageCardMakeFighterCamera(sSC1PStageCardAlly1Fighter.ft_kind, 4);
+        sc1PStageCardMakeFighter(sSC1PStageCardAlly1Fighter, 4, &sSC1PStageCardFigatreeHeaps[1]);
+        sc1PStageCardMakeFighterCamera(sSC1PStageCardPlayerFighter.ft_kind, 3);
+        sc1PStageCardMakeFighter(sSC1PStageCardPlayerFighter, 3, &sSC1PStageCardFigatreeHeaps[0]);
+        sc1PStageCardMakeAllyText(stage);
+        break;
+
+    case nSC1PGameStageMario:
+        sc1PStageCardMakeFighterCamera(sSC1PStageCardAlly1Fighter.ft_kind, 2);
+        sc1PStageCardMakeFighter(sSC1PStageCardAlly1Fighter, 2, &sSC1PStageCardFigatreeHeaps[1]);
+        sc1PStageCardMakeFighterCamera(sSC1PStageCardPlayerFighter.ft_kind, 1);
+        sc1PStageCardMakeFighter(sSC1PStageCardPlayerFighter, 1, &sSC1PStageCardFigatreeHeaps[0]);
+        sc1PStageCardMakeAllyText(stage);
+        break;
+
+    default:
+        sc1PStageCardMakeFighterCamera(sSC1PStageCardPlayerFighter.ft_kind, 0);
+        sc1PStageCardMakeFighter(sSC1PStageCardPlayerFighter, 0, &sSC1PStageCardFigatreeHeaps[0]);
+        break;
+    }
+}
+
+// 0x8013438C
+void sc1PStageCardMakeBannersCamera(void)
+{
+    Camera *cam = CameraGetStruct
+    (
+        gcMakeCameraGObj
+        (
+            nOMObjCommonKindSceneCamera,
+            NULL,
+            16,
+            GOBJ_LINKORDER_DEFAULT,
+            lbCommonScissorSpriteCamera,
+            30,
+            CAMERA_MASK_DLLINK(28),
+            -1,
+            FALSE,
+            nOMObjProcessKindProc,
+            NULL,
+            1,
+            FALSE
+        )
+    );
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
+
+// 0x8013442C
+void sc1PStageCardMakeDecalsCamera(void)
+{
+    Camera *cam = CameraGetStruct
+    (
+        gcMakeCameraGObj
+        (
+            nOMObjCommonKindSceneCamera,
+            NULL,
+            16,
+            GOBJ_LINKORDER_DEFAULT,
+            lbCommonScissorSpriteCamera,
+            20,
+            CAMERA_MASK_DLLINK(27),
+            -1,
+            FALSE,
+            nOMObjProcessKindProc,
+            NULL,
+            1,
+            FALSE
+        )
+    );
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
+
+// 0x801344CC
+void sc1PStageCardMakePicturesCamera(void)
+{
+    Camera *cam = CameraGetStruct
+    (
+        gcMakeCameraGObj
+        (
+            nOMObjCommonKindSceneCamera,
+            NULL,
+            16,
+            GOBJ_LINKORDER_DEFAULT,
+            lbCommonScissorSpriteCamera,
+            80,
+            CAMERA_MASK_DLLINK(26),
+            -1,
+            FALSE,
+            nOMObjProcessKindProc,
+            NULL,
+            1,
+            FALSE
+        )
+    );
+    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+}
+
+// 0x8013456C
+s32 sc1PStageCardGetFighterAllocsNum(s32 stage)
+{
+    // 0x80135A30
+    s32 allocs_num[/* */] =
+    {
+        2,
+        21,
+        2,
+        0,
+        4,
+        2,
+        4,
+        0,
+        9,
+        2,
+        2,
+        0,
+        13,
+        2
+    };
+    return allocs_num[stage];
+}
+
+// 0x801345CC
+void sc1PStageCardUpdateAnnounce(void)
+{
+    // 0x80135A68
+    u32 fighter_voices[/* */] =
+    {
+        nSYAudioVoiceAnnounceMario,
+        nSYAudioVoiceAnnounceFox,
+        nSYAudioVoiceAnnounceDonkey,
+        nSYAudioVoiceAnnounceSamus,
+        nSYAudioVoiceAnnounceLuigi,
+        nSYAudioVoiceAnnounceLink,
+        nSYAudioVoiceAnnounceYoshi,
+        nSYAudioVoiceAnnounceCaptain,
+        nSYAudioVoiceAnnounceKirby,
+        nSYAudioVoiceAnnouncePikachu,
+        nSYAudioVoiceAnnouncePurin,
+        nSYAudioVoiceAnnounceNess
+    };
+
+    // 0x80135A98
+    u32 vs_fighter_voices[/* */] =
+    {
+        nSYAudioVoiceAnnounceLink,
+        nSYAudioVoiceAnnounceYoshiTeam,
+        nSYAudioVoiceAnnounceFox,
+        0,
+        nSYAudioVoiceAnnounceMarioBros,
+        nSYAudioVoiceAnnouncePikachu,
+        nSYAudioVoiceAnnounceGDonkey,
+        0,
+        nSYAudioVoiceAnnounceKirbyTeam,
+        nSYAudioVoiceAnnounceSamus,
+        nSYAudioVoiceAnnounceMMario,
+        0,
+        nSYAudioVoiceAnnounceZako,
+        nSYAudioVoiceAnnounceZako
+    };
+
+    // 0x80135AD0
+    u32 announce_wait_tics[/* */] =
+    {
+        50,
+        50,
+        70,
+        50,
+        50,
+        50,
+        50,
+        70,
+        50,
+        50,
+        50,
+        50
+    };
+    u32 tic = announce_wait_tics[sSC1PStageCardPlayerFighter.ft_kind] + 1;
+    
+    if ((sc1PStageCardCheckNotBonusStage(sSC1PStageCardStage) != FALSE) && (sSC1PStageCardStage != nSC1PGameStageBoss))
+    {
+        if ((func_8000092C() >= 2) && (sSC1PStageCardIsAnnouncedFighterName == FALSE))
+        {
+            func_800269C0_275C0(fighter_voices[sSC1PStageCardPlayerFighter.ft_kind]);
+
+            sSC1PStageCardIsAnnouncedFighterName = TRUE;
+        }
+        if ((tic < func_8000092C()) && (sSC1PStageCardIsAnnouncedVersus == FALSE))
+        {
+            func_800269C0_275C0(nSYAudioVoiceAnnounceVersus);
+
+            sSC1PStageCardIsAnnouncedVersus = TRUE;
+        }
+        if (((tic + 60) < func_8000092C()) && (sSC1PStageCardIsAnnouncedVSFighterName == FALSE))
+        {
+            func_800269C0_275C0(vs_fighter_voices[sSC1PStageCardStage]);
+
+            sSC1PStageCardIsAnnouncedVSFighterName = TRUE;
+        }
+    }
+    else if (sc1PStageCardTotalTimeTics == 1)
+    {
+        switch (sSC1PStageCardStage)
+        {
+        case nSC1PGameStageBonus1:
+            func_800269C0_275C0(nSYAudioVoiceAnnounceBreakTheTargets);
+            break;
+            
+        case nSC1PGameStageBonus2:
+            func_800269C0_275C0(nSYAudioVoiceAnnounceBoardThePlatforms);
+            break;
+            
+        case nSC1PGameStageBonus3:
+            func_800269C0_275C0(nSYAudioVoiceAnnounceRaceToTheFinish);
+            break;
+        }
+    }
+}
+
+// 0x80134810
+void sc1PStageCardInitVars(void)
+{
+    sSC1PStageCardStage = gSceneData.spgame_stage;
+
+    sSC1PStageCardPlayerFighter.ft_kind = gSCManager1PGameBattleState.players[gSceneData.spgame_player].ft_kind;
+    sSC1PStageCardPlayerFighter.costume = gSCManager1PGameBattleState.players[gSceneData.spgame_player].costume;
+    sSC1PStageCardPlayerFighter.shade = gSCManager1PGameBattleState.players[gSceneData.spgame_player].shade;
+    
+    sSC1PStageCardAlly1Fighter.ft_kind = gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].ft_kind;
+    sSC1PStageCardAlly1Fighter.costume = gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].costume;
+    sSC1PStageCardAlly1Fighter.shade = gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].shade;
+    
+    sSC1PStageCardAlly2Fighter.ft_kind = gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].ft_kind;
+    sSC1PStageCardAlly2Fighter.costume = gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].costume;
+    sSC1PStageCardAlly2Fighter.shade = gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].shade;
+    
+    sSC1PStageCardIsAnnouncedFighterName = FALSE;
+    sSC1PStageCardIsAnnouncedVersus = FALSE;
+    sSC1PStageCardIsAnnouncedVSFighterName = FALSE;
+    
+    sSC1PStageCardUnk0x80135CF4 = 0;
+    sc1PStageCardTotalTimeTics = 0;
+}
+
+// 0x801348EC - unused?
+void func_ovl24_801348EC(void)
+{
+    return;
+}
+
+// 0x801348F4
+void sc1PStageCardProcRun(GObj *gobj)
+{
+    sc1PStageCardTotalTimeTics++;
+    
+    sc1PStageCardUpdateAnnounce();
+    
+    if (func_8000092C() >= 60)
+    {
+        if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
+        {
+            func_800266A0_272A0();
+            
+            gSceneData.scene_previous = gSceneData.scene_current;
+            gSceneData.scene_current = nSCKindTitle;
+            
+            func_ovl24_801348EC();
+            leoInitUnit_atten();
+        }
+        if (sSC1PStageCardUnk0x80135CF4 != 0)
+        {
+            sSC1PStageCardUnk0x80135CF4--;
+        }
+        if ((scSubsysControllerGetPlayerStickInRangeLR(-30, 30) != 0) && (scSubsysControllerGetPlayerStickInRangeUD(-30, 30) != 0))
+        {
+            sSC1PStageCardUnk0x80135CF4 = 0;
+        }
+        if (func_8000092C() > 360)
+        {
+            func_800266A0_272A0();
+            
+            gSceneData.scene_previous = gSceneData.scene_current;
+            gSceneData.scene_current = nSCKindTitle;
+            
+            func_ovl24_801348EC();
+            leoInitUnit_atten();
+        }
+    }
+}
+
+// 0x801349F8
+void sc1PStageCardSetupFighterFiles(s32 stage)
+{    
+    // 0x80135B00
+    s32 ft_kinds[/* */] =
+    {
+        nFTKindLink,
+        nFTKindYoshi,
+        nFTKindFox,
+        0,
+        nFTKindMario,
+        nFTKindPikachu,
+        nFTKindDonkey,
+        0,
+        nFTKindKirby,
+        nFTKindSamus,
+        nFTKindMMario,
+        0,
+        0,
+        nFTKindBoss
+    };
+    s32 i;
+    
+    ftManagerSetupFilesAllKind(sSC1PStageCardPlayerFighter.ft_kind);
+    
+    switch (stage)
+    {
+    case nSC1PGameStageDonkey:
+        ftManagerSetupFilesAllKind(sSC1PStageCardAlly1Fighter.ft_kind);
+        ftManagerSetupFilesAllKind(sSC1PStageCardAlly2Fighter.ft_kind);
+        ftManagerSetupFilesAllKind(nFTKindDonkey);
+        break;
+        
+    case nSC1PGameStageMario:
+        ftManagerSetupFilesAllKind(sSC1PStageCardAlly1Fighter.ft_kind);
+        ftManagerSetupFilesAllKind(nFTKindMario);
+        ftManagerSetupFilesAllKind(nFTKindLuigi);
+        break;
+        
+    case nSC1PGameStageZako:
+        for (i = nFTKindNStart; i <= nFTKindNEnd; i++)
+        {
+            if ((i != nFTKindNLuigi) && (i != nFTKindNPurin))
+            {
+                ftManagerSetupFilesAllKind(i);
+            }
+        }
+        break;
+        
+    default:
+        ftManagerSetupFilesAllKind(ft_kinds[stage]);
+        break;
+    }
+}
+
+// 0x80134B38
+void sc1PStageCardProcStart(void)
+{
+    lbRelocSetup rl_setup;
+    s32 i;
+
+    rl_setup.table_addr = &lLBRelocTableAddr;
+    rl_setup.table_files_num = &lLBRelocTableFilesNum;
+    rl_setup.file_heap = NULL;
+    rl_setup.file_heap_size = 0;
+    rl_setup.status_buf = sSC1PStageCardStatusBuf;
+    rl_setup.status_buf_size = ARRAY_COUNT(sSC1PStageCardStatusBuf);
+    rl_setup.force_buf = sSC1PStageCardForceBuf;
+    rl_setup.force_buf_size = ARRAY_COUNT(sSC1PStageCardForceBuf);
+    
+    lbRelocInitSetup(&rl_setup);
+    lbRelocLoadFilesExtern
+    (
+        dSC1PStageCardFileIDs,
+        ARRAY_COUNT(dSC1PStageCardFileIDs),
+        sSC1PStageCardFiles,
+        gsMemoryAlloc
+        (
+            lbRelocGetAllocSize
+            (    dSC1PStageCardFileIDs,
+                ARRAY_COUNT(dSC1PStageCardFileIDs)
+            ),
+            0x10
+        )
+    );
+    gcMakeGObjSPAfter(0, sc1PStageCardProcRun, 0, GOBJ_LINKORDER_DEFAULT);
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 3, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    sc1PStageCardInitVars();
+    efAllocInitParticleBank();
+    efManagerInitEffects();
+    ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, sc1PStageCardGetFighterAllocsNum(sSC1PStageCardStage));
+    sc1PStageCardSetupFighterFiles(sSC1PStageCardStage);
+
+    for (i = 0; i < sc1PStageCardGetFighterAllocsNum(sSC1PStageCardStage); i++)
+    {
+        sSC1PStageCardFigatreeHeaps[i] = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
+    }
+    sc1PStageCardMakePicturesCamera();
+    sc1PStageCardMakeDecalsCamera();
+    sc1PStageCardMakeBannersCamera();
+    sc1PStageCardMakeSky();
+    sc1PStageCardMakeBanners();
+    
+    if (sc1PStageCardCheckNotBonusStage(sSC1PStageCardStage) != FALSE)
+    {
+        sc1PStageCardMakeVSDecal();
+    }
+    else sc1PStageCardMakeBonusPicture(sSC1PStageCardStage);
+    
+    sc1PStageCardMakeLabels(sSC1PStageCardStage);
+    sc1PStageCardMakeFigures(sSC1PStageCardStage);
+    sc1PStageCardMakeStageInfo(sSC1PStageCardStage);
+    
+    if (sc1PStageCardCheckNotBonusStage(sSC1PStageCardStage) != FALSE)
+    {
+        sc1PStageCardInitFighters(sSC1PStageCardStage);
+        sc1PStageCardInitVSFighters(sSC1PStageCardStage);
+    }
+    scSubsysFighterSetLightParams(-20.0F, 30.0F, 0xFF, 0xFF, 0xFF, 0xFF);
+    
+    if (sSC1PStageCardStage == nSC1PGameStageBoss)
+    {
+        auPlaySong(0, nSYAudioBGMBossStage);
+    }
+    else auPlaySong(0, nSYAudioBGM1PStageCard);
+    
+    func_80000920(0);
+}
+
+// 0x80135B38
+syDisplaySetup dSC1PStageCardDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+
+// 0x80135B54
+scRuntimeInfo dSC1PStageCardGtlSetup =
+{
+    0x00000000,
+    func_8000A5E4,
+    func_800A26B8,
+    &ovl24_BSS_END,
+    0,
+    1,
+    2,
+    0xC350,
+    0x400,
+    0,
+    0,
+    0x10000,
+    0x20000,
+    0xC000,
+    sc1PStageCardProcLights,
+    update_contdata,
+    0,
+    0x600,
+    0,
+    0,
+    0,
+    0,
+    0x88,
+    0,
+    0x800D5CAC,
+    0,
+    0,
+    0,
+    0,
+    0x88,
+    0,
+    0x6C,
+    0,
+    0x90,
+    sc1PStageCardProcStart
+};
+
+// 0x80134D98
+void sc1PStageCardStartScene(void)
+{
+    dSC1PStageCardDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
+    func_80007024(&dSC1PStageCardDisplaySetup);
+    
+    dSC1PStageCardGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl24_BSS_END);
+    func_800A2698(&dSC1PStageCardGtlSetup);
 }

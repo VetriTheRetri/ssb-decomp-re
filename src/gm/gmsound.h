@@ -544,7 +544,7 @@ typedef enum gmFGMVoiceID
 	nSYAudioVoiceAnnounceComplete,
 	nSYAudioVoiceAnnounceFailure,
 	nSYAudioVoiceAnnouncePurinUnused,		// ??? Says Jigglypuff, Purin is only for consistency with FTKind names
-	nSYAudioVoiceAnnounceBattleRoyal,
+	nSYAudioVoiceAnnounceMMario,
 	nSYAudioVoiceAnnounceTitleWait,			// ...Super... SMAAAAAAAAAASH Brotheeeeeeeeers!! (long wait at beginning?)
 	nSYAudioVoiceAnnounceNewRecord,
 	nSYAudioVoiceAnnounceCongra,			// Congratulations
@@ -564,8 +564,8 @@ typedef enum gmFGMVoiceID
 	nSYAudioVoiceAnnounceSelectPlayer,		// Choose your character
 	nSYAudioVoiceAnnounceComputerPlayer,
 	nSYAudioVoiceAnnounceContinue,
-	nSYAudioVoiceAnnouncePolygonTeam,		// Fighting Polygon Team
-	nSYAudioVoiceAnnounceDonkeyKong,
+	nSYAudioVoiceAnnounceZako,				// Fighting Polygon Team
+	nSYAudioVoiceAnnounceDonkey,
 	nSYAudioVoiceAnnounceDrawGame,			// Wat
 	nSYAudioVoiceAnnounceCaptain,
 	nSYAudioVoiceAnnounceFox,

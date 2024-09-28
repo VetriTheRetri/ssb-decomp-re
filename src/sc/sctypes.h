@@ -116,7 +116,7 @@ struct sc1PStageClearScore
 
 struct sc1PStageCardFighter
 {
-	s32 ft_kind, costume, unk_scstagecard_0x8, unk_scstagecard_0xC;
+	s32 ft_kind, costume, shade;
 };
 
 struct scTrainingSprites

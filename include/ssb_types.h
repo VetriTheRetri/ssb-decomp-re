@@ -110,11 +110,4 @@ typedef struct syRectangle
 
 } syRectangle;
 
-typedef struct syPixelPair
-{
-    u32 chunk0;
-    u32 chunk1;
-
-} syPixelPair;
-
 #endif /* SSB64_TYPES_H */

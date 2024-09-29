@@ -413,7 +413,7 @@ void mnCongraStartScene(void)
 		sMNCongraFighterKind = gSceneData.ft_kind;
 		break;
 
-	case nSCKindDebugChrSel:
+	case nSCKindDebugFighters:
 		sMNCongraFighterKind = gTransferBattleState.players[0].ft_kind;
 		break;
 	}

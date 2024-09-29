@@ -493,7 +493,7 @@ void mvEndingProcRun(GObj *gobj)
         if (sMVEndingTotalTimeTics == 660)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = nSCKindCredits;
+            gSceneData.scene_current = nSCKindStaffroll;
 
             leoInitUnit_atten();
         }

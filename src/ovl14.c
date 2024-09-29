@@ -354,7 +354,7 @@ void mnDebugBattleMain(GObj* arg0)
 		switch (gMNDebugBattleMenuValueScene)
 		{
 			case dbBattleSceneVsMode:
-				gSceneData.scene_current = nSCKindDebugMPSel;
+				gSceneData.scene_current = nSCKindDebugMaps;
 				break;
 			case dbBattleScene1PMode:
 				gSceneData.scene_current = nSCKind1PGame;
@@ -363,7 +363,7 @@ void mnDebugBattleMain(GObj* arg0)
 				gSceneData.costume = gTransferBattleState.players[0].costume;
 				break;
 			case dbBattleSceneStaffroll:
-				gSceneData.scene_current = nSCKindCredits;
+				gSceneData.scene_current = nSCKindStaffroll;
 				break;
 			case dbBattleSceneExplain:
 				gSceneData.scene_current = nSCKindExplain;
@@ -371,11 +371,11 @@ void mnDebugBattleMain(GObj* arg0)
 				break;
 			case dbBattleSceneAutoDemo:
 				mnDebugBattleSetDemoFtKinds();
-				gSceneData.scene_current = nSCKindDemo;
+				gSceneData.scene_current = nSCKindAutoDemo;
 				gTransferBattleState.is_team_battle = FALSE;
 				break;
 			case dbBattleSceneCongra:
-				gSceneData.scene_current = nSCKind1PCongra;
+				gSceneData.scene_current = nSCKindCongra;
 				break;
 		}
 

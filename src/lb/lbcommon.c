@@ -2591,7 +2591,7 @@ void lbCommonPrepSObjSpriteAttrs(Gfx **dls, SObj *sobj)
             
         case G_IM_FMT_IA:
             gDPSetPrimColor(dl++, 0, 0, sprite->red, sprite->green, sprite->blue, sprite->alpha);
-            gDPSetEnvColor(dl++, sobj->env_color.r, sobj->env_color.g, sobj->env_color.b, sobj->env_color.a);
+            gDPSetEnvColor(dl++, sobj->envcolor.r, sobj->envcolor.g, sobj->envcolor.b, sobj->envcolor.a);
             gDPSetCombineLERP(dl++, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, TEXEL0, 0, PRIMITIVE, 0, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, TEXEL0, 0, PRIMITIVE, 0);
             break;
 
@@ -2622,7 +2622,7 @@ void lbCommonPrepSObjSpriteAttrs(Gfx **dls, SObj *sobj)
         
     case G_IM_FMT_IA:
         gDPSetPrimColor(dl++, 0, 0, sprite->red, sprite->green, sprite->blue, sprite->alpha);
-        gDPSetEnvColor(dl++, sobj->env_color.r, sobj->env_color.g, sobj->env_color.b, sobj->env_color.a);
+        gDPSetEnvColor(dl++, sobj->envcolor.r, sobj->envcolor.g, sobj->envcolor.b, sobj->envcolor.a);
         break;
 
     case G_IM_FMT_CI:
@@ -2841,10 +2841,10 @@ SObj* lbCommonMakeSObjForGObj(GObj *gobj, Sprite *sprite)
     }
     sobj = gcAddSObjForGObj(gobj, sprite);
     
-    sobj->env_color.r =
-    sobj->env_color.g =
-    sobj->env_color.b =
-    sobj->env_color.a = 0x00;
+    sobj->envcolor.r =
+    sobj->envcolor.g =
+    sobj->envcolor.b =
+    sobj->envcolor.a = 0x00;
     
     sobj->maskt = sobj->masks = 0;
     

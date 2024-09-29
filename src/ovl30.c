@@ -417,9 +417,9 @@ void mnStageCreateStageSelectGfx()
 	stage_select_sobj = lbCommonMakeSObjForGObj(stage_select_gobj, GetAddressFromOffset(gMNStageFilesArray[2], &FILE_01E_STAGE_SELECT_IMAGE_OFFSET));
 	stage_select_sobj->sprite.attr &= ~SP_FASTCOPY;
 	stage_select_sobj->sprite.attr |= SP_TRANSPARENT;
-	stage_select_sobj->env_color.r = 0;
-	stage_select_sobj->env_color.g = 0;
-	stage_select_sobj->env_color.b = 0;
+	stage_select_sobj->envcolor.r = 0;
+	stage_select_sobj->envcolor.g = 0;
+	stage_select_sobj->envcolor.b = 0;
 	stage_select_sobj->sprite.red = 0xAF;
 	stage_select_sobj->sprite.green = 0xB1;
 	stage_select_sobj->sprite.blue = 0xCC;
@@ -1139,7 +1139,7 @@ void mnStageLoadSceneData()
 			gMNStageIsTrainingMode = TRUE;
 			gMNStageCursorSlotId = mnStageGetSlotID(gSceneData.stagesel_training_gr_kind);
 			break;
-		case nSCKindVSChrSel:
+		case nSCKindVSFighters:
 			gMNStageIsTrainingMode = FALSE;
 			gMNStageCursorSlotId = mnStageGetSlotID(gSceneData.stagesel_battle_gr_kind);
 			break;
@@ -1220,12 +1220,12 @@ void mnStageHandleButtonPresses(s32 arg0)
 			if (gMNStageIsTrainingMode == TRUE)
 			{
 				gSceneData.scene_previous = gSceneData.scene_current;
-				gSceneData.scene_current = nSCKindTrainingChrSel;
+				gSceneData.scene_current = nSCKind1PTrainingFighters;
 			}
 			else
 			{
 				gSceneData.scene_previous = gSceneData.scene_current;
-				gSceneData.scene_current = nSCKindVSChrSel;
+				gSceneData.scene_current = nSCKindVSFighters;
 			}
 
 			leoInitUnit_atten();

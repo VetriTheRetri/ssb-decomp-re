@@ -1868,9 +1868,9 @@ void ifCommonPlayerTagMakeInterface(void)
             sobj->sprite.green = dIFCommonPlayerTagSpriteColorsG[color_id];
             sobj->sprite.blue  = dIFCommonPlayerTagSpriteColorsB[color_id];
 
-            sobj->env_color.r = dIFCommonPlayerTagShadowColorsR[color_id];
-            sobj->env_color.g = dIFCommonPlayerTagShadowColorsG[color_id];
-            sobj->env_color.b = dIFCommonPlayerTagShadowColorsB[color_id];
+            sobj->envcolor.r = dIFCommonPlayerTagShadowColorsR[color_id];
+            sobj->envcolor.g = dIFCommonPlayerTagShadowColorsG[color_id];
+            sobj->envcolor.b = dIFCommonPlayerTagShadowColorsB[color_id];
 
             ifSetPlayer(interface_gobj, player);
         }
@@ -2123,9 +2123,9 @@ void ifCommonCountdownThread(GObj *interface_gobj)
                     child_sobj->sprite.green = dIFCommonTrafficGoBacklightG[1];
                     child_sobj->sprite.blue = dIFCommonTrafficGoBacklightB[1];
 
-                    child_sobj->env_color.r = dIFCommonTrafficGoShadowR[1];
-                    child_sobj->env_color.g = dIFCommonTrafficGoShadowG[1];
-                    child_sobj->env_color.b = dIFCommonTrafficGoShadowB[1];
+                    child_sobj->envcolor.r = dIFCommonTrafficGoShadowR[1];
+                    child_sobj->envcolor.g = dIFCommonTrafficGoShadowG[1];
+                    child_sobj->envcolor.b = dIFCommonTrafficGoShadowB[1];
 
                     if (other_sobj != NULL)
                     {
@@ -2226,9 +2226,9 @@ SObj* ifCommonCountdownMakeInterface(void)
     sobj->sprite.red   = dIFCommonTrafficGoBacklightR[0];
     sobj->sprite.green = dIFCommonTrafficGoBacklightG[0];
     sobj->sprite.blue  = dIFCommonTrafficGoBacklightB[0];
-    sobj->env_color.r = dIFCommonTrafficGoShadowR[0];
-    sobj->env_color.g = dIFCommonTrafficGoShadowG[0];
-    sobj->env_color.b = dIFCommonTrafficGoShadowB[0];
+    sobj->envcolor.r = dIFCommonTrafficGoShadowR[0];
+    sobj->envcolor.g = dIFCommonTrafficGoShadowG[0];
+    sobj->envcolor.b = dIFCommonTrafficGoShadowB[0];
 
     return sobj;
 }
@@ -2339,9 +2339,9 @@ void ifCommonAnnounceSetColors(GObj *interface_gobj, syColorRGBPair *colors)
         sobj->sprite.red   = colors->prim.r;
         sobj->sprite.green = colors->prim.g;
         sobj->sprite.blue  = colors->prim.b;
-        sobj->env_color.r = colors->env.r;
-        sobj->env_color.g = colors->env.g;
-        sobj->env_color.b = colors->env.b;
+        sobj->envcolor.r = colors->env.r;
+        sobj->envcolor.g = colors->env.g;
+        sobj->envcolor.b = colors->env.b;
 
         sobj = sobj->next;
     }
@@ -2790,9 +2790,9 @@ void ifCommonBattlePauseDecalMakeSObjID(GObj *interface_gobj, s32 id)
     sobj->sprite.green = dIFCommonBattlePauseDecalsSpriteData[id].colors.prim.g;
     sobj->sprite.blue  = dIFCommonBattlePauseDecalsSpriteData[id].colors.prim.b;
 
-    sobj->env_color.r = dIFCommonBattlePauseDecalsSpriteData[id].colors.env.r;
-    sobj->env_color.g = dIFCommonBattlePauseDecalsSpriteData[id].colors.env.g;
-    sobj->env_color.b = dIFCommonBattlePauseDecalsSpriteData[id].colors.env.b;
+    sobj->envcolor.r = dIFCommonBattlePauseDecalsSpriteData[id].colors.env.r;
+    sobj->envcolor.g = dIFCommonBattlePauseDecalsSpriteData[id].colors.env.g;
+    sobj->envcolor.b = dIFCommonBattlePauseDecalsSpriteData[id].colors.env.b;
 
     sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
 }

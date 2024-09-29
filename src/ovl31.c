@@ -707,7 +707,7 @@ void mnResultsRenderBackground(GObj* bg_gobj)
 	gDPPipeSync(gDisplayListHead[0]++);
 	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
 	gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, bg_sobj->sprite.red, bg_sobj->sprite.green, bg_sobj->sprite.blue, bg_sobj->sprite.alpha);
-	gDPSetEnvColor(gDisplayListHead[0]++, bg_sobj->env_color.r, bg_sobj->env_color.g, bg_sobj->env_color.b, bg_sobj->env_color.a);
+	gDPSetEnvColor(gDisplayListHead[0]++, bg_sobj->envcolor.r, bg_sobj->envcolor.g, bg_sobj->envcolor.b, bg_sobj->envcolor.a);
 	gDPSetCombineLERP(gDisplayListHead[0]++, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT,  0, 0, 0, 1,  PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT,  0, 0, 0, 1);
 	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
 
@@ -771,9 +771,9 @@ void mnResultsCreateBackground()
 
 	SObjGetStruct(bg_gobj)->pos.x = 10.0f;
 	SObjGetStruct(bg_gobj)->pos.y = 10.0f;
-	bg_sobj->env_color.r = colors[winner_port_id].prim.r;
-	bg_sobj->env_color.g = colors[winner_port_id].prim.g;
-	bg_sobj->env_color.b = colors[winner_port_id].prim.b;
+	bg_sobj->envcolor.r = colors[winner_port_id].prim.r;
+	bg_sobj->envcolor.g = colors[winner_port_id].prim.g;
+	bg_sobj->envcolor.b = colors[winner_port_id].prim.b;
 	bg_sobj->sprite.red = colors[winner_port_id].env.r;
 	bg_sobj->sprite.green = colors[winner_port_id].env.g;
 	bg_sobj->sprite.blue = colors[winner_port_id].env.b;
@@ -1087,9 +1087,9 @@ void mnResultsCreatePlayerIndicator(s32 port_id, s32 color_index)
 		indicator_sobj = lbCommonMakeSObjForGObj(indicator_gobj, GetAddressFromOffset(gMNResultsFilesArray[1], offsets[port_id]));
 		indicator_sobj->sprite.attr &= ~SP_FASTCOPY;
 		indicator_sobj->sprite.attr |= SP_TRANSPARENT;
-		indicator_sobj->env_color.r = dIFCommonPlayerTagShadowColorsR[color_index];
-		indicator_sobj->env_color.g = dIFCommonPlayerTagShadowColorsG[color_index];
-		indicator_sobj->env_color.b = dIFCommonPlayerTagShadowColorsB[color_index];
+		indicator_sobj->envcolor.r = dIFCommonPlayerTagShadowColorsR[color_index];
+		indicator_sobj->envcolor.g = dIFCommonPlayerTagShadowColorsG[color_index];
+		indicator_sobj->envcolor.b = dIFCommonPlayerTagShadowColorsB[color_index];
 		indicator_sobj->sprite.red = dIFCommonPlayerTagSpriteColorsR[color_index];
 		indicator_sobj->sprite.green = dIFCommonPlayerTagSpriteColorsG[color_index];
 		indicator_sobj->sprite.blue = dIFCommonPlayerTagSpriteColorsB[color_index];
@@ -1099,9 +1099,9 @@ void mnResultsCreatePlayerIndicator(s32 port_id, s32 color_index)
 		indicator_sobj = lbCommonMakeSObjForGObj(indicator_gobj, GetAddressFromOffset(gMNResultsFilesArray[1], &FILE_026_INDICATOR_CP_IMAGE_OFFSET));
 		indicator_sobj->sprite.attr &= ~SP_FASTCOPY;
 		indicator_sobj->sprite.attr |= SP_TRANSPARENT;
-		indicator_sobj->env_color.r = dIFCommonPlayerTagShadowColorsR[color_index];
-		indicator_sobj->env_color.g = dIFCommonPlayerTagShadowColorsG[color_index];
-		indicator_sobj->env_color.b = dIFCommonPlayerTagShadowColorsB[color_index];
+		indicator_sobj->envcolor.r = dIFCommonPlayerTagShadowColorsR[color_index];
+		indicator_sobj->envcolor.g = dIFCommonPlayerTagShadowColorsG[color_index];
+		indicator_sobj->envcolor.b = dIFCommonPlayerTagShadowColorsB[color_index];
 		indicator_sobj->sprite.red = dIFCommonPlayerTagSpriteColorsR[color_index];
 		indicator_sobj->sprite.green = dIFCommonPlayerTagSpriteColorsG[color_index];
 		indicator_sobj->sprite.blue = dIFCommonPlayerTagSpriteColorsB[color_index];
@@ -1189,9 +1189,9 @@ void mnResultsDrawString(const char *str, f32 x, f32 y, s32 color_index, f32 sca
 
 				string_sobj->sprite.attr &= ~SP_FASTCOPY;
 				string_sobj->sprite.attr |= SP_TRANSPARENT;
-				string_sobj->env_color.r = colors[color_index].prim.r;
-				string_sobj->env_color.g = colors[color_index].prim.g;
-				string_sobj->env_color.b = colors[color_index].prim.b;
+				string_sobj->envcolor.r = colors[color_index].prim.r;
+				string_sobj->envcolor.g = colors[color_index].prim.g;
+				string_sobj->envcolor.b = colors[color_index].prim.b;
 				string_sobj->sprite.red = colors[color_index].env.r;
 				string_sobj->sprite.green = colors[color_index].env.g;
 				string_sobj->sprite.blue = colors[color_index].env.b;
@@ -1359,9 +1359,9 @@ void mnResultsSetNumberColor(SObj* number_sobj, s32 color_index)
 		{ { 0x00, 0x00, 0x00 }, { 0xFF, 0xFF, 0xFF } }
 	};
 
-	number_sobj->env_color.r = colors[color_index].prim.r;
-	number_sobj->env_color.g = colors[color_index].prim.g;
-	number_sobj->env_color.b = colors[color_index].prim.b;
+	number_sobj->envcolor.r = colors[color_index].prim.r;
+	number_sobj->envcolor.g = colors[color_index].prim.g;
+	number_sobj->envcolor.b = colors[color_index].prim.b;
 	number_sobj->sprite.red = colors[color_index].env.r;
 	number_sobj->sprite.green = colors[color_index].env.g;
 	number_sobj->sprite.blue = colors[color_index].env.b;
@@ -1652,9 +1652,9 @@ void mnResultsSetColumnPortIndicatorColors(SObj* column_port_indicator_sobj)
 {
 	column_port_indicator_sobj->sprite.attr &= ~SP_FASTCOPY;
 	column_port_indicator_sobj->sprite.attr |= SP_TRANSPARENT;
-	column_port_indicator_sobj->env_color.r = 0;
-	column_port_indicator_sobj->env_color.g = 0;
-	column_port_indicator_sobj->env_color.b = 0;
+	column_port_indicator_sobj->envcolor.r = 0;
+	column_port_indicator_sobj->envcolor.g = 0;
+	column_port_indicator_sobj->envcolor.b = 0;
 	column_port_indicator_sobj->sprite.red = 0xFF;
 	column_port_indicator_sobj->sprite.green = 0xFF;
 	column_port_indicator_sobj->sprite.blue = 0xFF;

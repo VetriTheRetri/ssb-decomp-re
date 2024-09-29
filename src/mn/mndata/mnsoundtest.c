@@ -1075,9 +1075,9 @@ SObj* mnSoundTestMakeHeaderSObjs(void)
     sobj->sprite.green = 0xC7;
     sobj->sprite.blue  = 0x0D;
 
-    sobj->env_color.r = 0x00;
-    sobj->env_color.g = 0x00;
-    sobj->env_color.b = 0x00;
+    sobj->envcolor.r = 0x00;
+    sobj->envcolor.g = 0x00;
+    sobj->envcolor.b = 0x00;
 
     sobj->pos.x = 152.0F;
     sobj->pos.y = 23.0F;
@@ -1313,9 +1313,9 @@ SObj* mnSoundTestMakeAButtonSObj(GObj *gobj)
     sobj->sprite.green = 0x77;
     sobj->sprite.blue  = 0x75;
 
-    sobj->env_color.r = 0x21;
-    sobj->env_color.g = 0x40;
-    sobj->env_color.b = 0x3A;
+    sobj->envcolor.r = 0x21;
+    sobj->envcolor.g = 0x40;
+    sobj->envcolor.b = 0x3A;
 
     sobj->pos.x = 55.0F;
     sobj->pos.y = 205.0F;
@@ -1334,9 +1334,9 @@ SObj* mnSoundTestMakeBButtonSObj(GObj *gobj)
     sobj->sprite.green = 0x77;
     sobj->sprite.blue  = 0x5D;
 
-    sobj->env_color.r = 0x29;
-    sobj->env_color.g = 0x37;
-    sobj->env_color.b = 0x16;
+    sobj->envcolor.r = 0x29;
+    sobj->envcolor.g = 0x37;
+    sobj->envcolor.b = 0x16;
 
     sobj->pos.x = 218.0F;
     sobj->pos.y = 205.0F;
@@ -1355,9 +1355,9 @@ SObj* mnSoundTestMakeStartButtonSObj(GObj *gobj)
     sobj->sprite.green = 0x6A;
     sobj->sprite.blue  = 0x62;
 
-    sobj->env_color.r = 0x3B;
-    sobj->env_color.g = 0x20;
-    sobj->env_color.b = 0x16;
+    sobj->envcolor.r = 0x3B;
+    sobj->envcolor.g = 0x20;
+    sobj->envcolor.b = 0x16;
 
     sobj->pos.x = 121.0F;
     sobj->pos.y = 205.0F;
@@ -1525,9 +1525,9 @@ void mnSoundTestUpdateNumberSprites(GObj *gobj)
         sobj->sprite.green = 0x00;
         sobj->sprite.blue  = 0x00;
 
-        sobj->env_color.r = 0x00;
-        sobj->env_color.g = 0x00;
-        sobj->env_color.b = 0x00;
+        sobj->envcolor.r = 0x00;
+        sobj->envcolor.g = 0x00;
+        sobj->envcolor.b = 0x00;
 
         width += sobj->user_data.s;
 

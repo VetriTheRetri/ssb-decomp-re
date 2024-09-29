@@ -205,9 +205,9 @@ void mnBackupClearMakeHeaderSObjs(void)
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
     
-    sobj->env_color.r = 0x00;
-    sobj->env_color.g = 0x00;
-    sobj->env_color.b = 0x00;
+    sobj->envcolor.r = 0x00;
+    sobj->envcolor.g = 0x00;
+    sobj->envcolor.b = 0x00;
     
     sobj->sprite.red = 0xF2;
     sobj->sprite.green = 0xC7;

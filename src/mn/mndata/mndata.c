@@ -164,9 +164,9 @@ void mnDataUpdateOptionTabSObjs(GObj *gobj, s32 status)
 
     for (i = 0; i < nMNOptionTabStatusEnumMax; i++)
     {
-        sobj->env_color.r = colors->prim.r;
-        sobj->env_color.g = colors->prim.g;
-        sobj->env_color.b = colors->prim.b;
+        sobj->envcolor.r = colors->prim.r;
+        sobj->envcolor.g = colors->prim.g;
+        sobj->envcolor.b = colors->prim.b;
 
         sobj->sprite.red   = colors->env.r;
         sobj->sprite.green = colors->env.g;
@@ -332,9 +332,9 @@ void func_ovl61_801320A0(SObj *sobj)
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
 
-    sobj->env_color.r = 0x00;
-    sobj->env_color.g = 0x00;
-    sobj->env_color.b = 0x00;
+    sobj->envcolor.r = 0x00;
+    sobj->envcolor.g = 0x00;
+    sobj->envcolor.b = 0x00;
 
     sobj->sprite.red   = 0xFF;
     sobj->sprite.green = 0xFF;

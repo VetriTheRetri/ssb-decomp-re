@@ -259,9 +259,9 @@ void mnVSModeUpdateButton(GObj* button_gobj, s32 button_status)
 
     for (i = 0; i < nMNOptionTabStatusEnumMax; i++)
     {
-        button_sobj->env_color.r = colors->prim.r;
-        button_sobj->env_color.g = colors->prim.g;
-        button_sobj->env_color.b = colors->prim.b;
+        button_sobj->envcolor.r = colors->prim.r;
+        button_sobj->envcolor.g = colors->prim.g;
+        button_sobj->envcolor.b = colors->prim.b;
         button_sobj->sprite.red = colors->env.r;
         button_sobj->sprite.green = colors->env.g;
         button_sobj->sprite.blue = colors->env.b;
@@ -740,9 +740,9 @@ void mnVSModeSetColorsUnused(SObj* sobj)
 {
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
-    sobj->env_color.r = 0;
-    sobj->env_color.g = 0;
-    sobj->env_color.b = 0;
+    sobj->envcolor.r = 0;
+    sobj->envcolor.g = 0;
+    sobj->envcolor.b = 0;
     sobj->sprite.red = 0xFF;
     sobj->sprite.green = 0xFF;
     sobj->sprite.blue = 0xFF;
@@ -1174,7 +1174,7 @@ void mnVSModeMain(GObj *gobj)
                     sMNVSModeExitInterrupt = TRUE;
 
                     gSceneData.scene_previous = gSceneData.scene_current;
-                    gSceneData.scene_current = nSCKindVSChrSel;
+                    gSceneData.scene_current = nSCKindVSFighters;
 
                     return;
                 case nMNVSModeOptionOptions:
@@ -1509,7 +1509,7 @@ void mnVSModeProcStart(void)
     mnVSModeMakeVSOptionsButton();
     mnVSModeMakeUnusedGObj();
 
-    if (gSceneData.scene_previous == nSCKindVSChrSel)
+    if (gSceneData.scene_previous == nSCKindVSFighters)
     {
         auPlaySong(0, nSYAudioBGMModeSelect);
     }

@@ -474,14 +474,14 @@ void sc1PManagerUpdateScene(void)
         syDmaLoadOverlay(&dSC1PManagerCreditsOverlay);
 
         gSceneData.scene_previous = nSCKind1PGame;
-        gSceneData.scene_current = nSCKindCredits;
+        gSceneData.scene_current = nSCKindStaffroll;
 
         gmStaffrollStartScene();
 
         syDmaLoadOverlay(&dSC1PManagerCongraOverlay);
 
         gSceneData.scene_previous = nSCKind1PGame;
-        gSceneData.scene_current = nSCKind1PCongra;
+        gSceneData.scene_current = nSCKindCongra;
 
         mnCongraStartScene();
 
@@ -498,7 +498,7 @@ skip_main_stages:
         syDmaLoadOverlay(&dSC1PManagerChallengerOverlay);
 
         gSceneData.scene_previous = nSCKind1PGame;
-        gSceneData.scene_current = nSCKindChallenger;
+        gSceneData.scene_current = nSCKind1PChallenger;
 
         sc1PChallengerStartScene();
 
@@ -536,7 +536,7 @@ skip_main_stages:
         if (gSceneData.spgame_stage == nSC1PGameStageLuigi)
         {
             gSceneData.scene_previous = nSCKind1PBonusGame;
-            gSceneData.scene_current = nSCKindBonus1ChrSel;
+            gSceneData.scene_current = nSCKind1PBonus1Fighters;
             return;
         }
     }

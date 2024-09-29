@@ -441,7 +441,7 @@ void mnTitleGoToNextDemo()
 
 			break;
 		case nSCKindModeSelect:
-		case nSCKindDemo:
+		case nSCKindAutoDemo:
 			gSceneData.scene_current = nSCKindN64;
 			break;
 		default:
@@ -731,9 +731,9 @@ void mnTitleSetColors(SObj* sobj, s32 index)
 			sobj->sprite.red = 0xFF;
 			sobj->sprite.green = 0xFE;
 			sobj->sprite.blue = 0x2A;
-			sobj->env_color.r = 0;
-			sobj->env_color.g = 0;
-			sobj->env_color.b = 0;
+			sobj->envcolor.r = 0;
+			sobj->envcolor.g = 0;
+			sobj->envcolor.b = 0;
 		}
 	}
 	else switch (index) { /* irregular */
@@ -741,9 +741,9 @@ void mnTitleSetColors(SObj* sobj, s32 index)
 			sobj->sprite.red = 0xB7;
 			sobj->sprite.green = 0xAE;
 			sobj->sprite.blue = 0x7C;
-			sobj->env_color.r = 0x14;
-			sobj->env_color.g = 0x12;
-			sobj->env_color.b = 6;
+			sobj->envcolor.r = 0x14;
+			sobj->envcolor.g = 0x12;
+			sobj->envcolor.b = 6;
 			break;
 		case nMNTitleTextureIndexHeader:
 			sobj->sprite.red = 0x14;
@@ -754,9 +754,9 @@ void mnTitleSetColors(SObj* sobj, s32 index)
 			sobj->sprite.red = 0xFF;
 			sobj->sprite.green = 0xFF;
 			sobj->sprite.blue = 0xFF;
-			sobj->env_color.r = 0x17;
-			sobj->env_color.g = 0x10;
-			sobj->env_color.b = 0xA4;
+			sobj->envcolor.r = 0x17;
+			sobj->envcolor.g = 0x10;
+			sobj->envcolor.b = 0xA4;
 			break;
 		case nMNTitleTextureIndexTM2:
 			sobj->sprite.red = 0x15;

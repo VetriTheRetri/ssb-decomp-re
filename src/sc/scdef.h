@@ -133,31 +133,33 @@ typedef enum scKind
 {
 	nSCKindNoController,      	  // "No Controller" screen
 	nSCKindTitle,             	  // Title screen
-	nSCKindDebugMPSel,      	  // Debug stage select
+	nSCKindDebugMaps,      	  	  // Debug stage select
 	nSCKindDebugSystem,      	  // Debug main menu?
-	nSCKindDebugChrSel,       	  // Debug character select
-	nSCKindDebugResScreen,    	  // Debug results screen
+	nSCKindDebugFighters,      	  // Debug character select
+	nSCKindDebugVSResults,    	  // Debug results screen
 	nSCKindDebugPadTest,      	  // Debug joystick test
 	nSCKindModeSelect,            // Main Menu
 	nSCKind1PMode,            	  // 1P mode menu
 	nSCKindVSMode,        		  // VS mode
 	nSCKindVSOptions,         	  // VS mode options
-	nSCKindMessage = 12,		  // Unlock message 
-	nSCKindChallenger,   		  // Challenger approaching
-	nSCKind1PStageCard,       	  // 1P game "[character] VS [opponent(s)]" screen
+	nSCKindVSItemSwitch,		  // VS mode item switch
+	nSCKindMessage,		  	      // Unlock message 
+	nSCKind1PChallenger,   		  // Challenger approaching
+	nSCKind1PStageCard,       	  // 1P game "[player] VS [opponent]" screen
 	nSCKindScreenAdjust,      	  // Screen adjust
-	nSCKindVSChrSel,          	  // VS mode character select
-	nSCKindTrainingChrSel = 18,   // Training mode character select
-	nSCKindBonus1ChrSel,      	  // Bonus 1 character select
-	nSCKindBonus2ChrSel,      	  // Bonus 2 character select
-	nSCKindVSMapSel = 21,     	  // VS mode map select
+	nSCKindVSFighters,            // VS mode character select
+	nSCKind1PGameFighters,		  // 1P game character select
+	nSCKind1PTrainingFighters,    // Training mode character select
+	nSCKind1PBonus1Fighters,      // Bonus 1 practice character select
+	nSCKind1PBonus2Fighters,      // Bonus 2 practice character select
+	nSCKindVSMaps,     	  		  // VS mode map select
 	nSCKindVSBattle,          	  // VS mode in-game
 	nSCKindVSResults = 24,    	  // VS mode results
 	nSCKindVSRecord,          	  // Records screen
 	nSCKindCharacters,        	  // Character data screen
 	nSCKindN64,               	  // N64 logo
 	nSCKindOpeningRoom,       	  // Room with Master Hand and figures coming to life
-	nSCKindOpeningYoster = 39,	  // Yoshi in nest with eggs on Yoshi's Island
+	nSCKindOpeningYoster = 39,	  // Yoshis in nest with eggs on Yoshi's Island
 	nSCKindOpeningStandoff = 41,  // Dark plains with Mario and Kirby in a standoff
 	nSCKindOpeningYamabuki,  	  // Pikachu rocking on Poké Ball
 	nSCKindOpeningClash,          // Characters clashing with each other, doing Neutral Aerials
@@ -172,13 +174,13 @@ typedef enum scKind
 	nSCKind1PGame,            	  // 1P Game logic loop
 	nSCKind1PBonusGame,       	  // Bonus game in-game
 	nSCKind1PTraining,    		  // Training mode in-game
-	nSCKind1PCongra,	 		  // Congratulations screen
-	nSCKindCredits,           	  // Credits scene
+	nSCKindCongra,	 		  	  // Congratulations screen
+	nSCKindStaffroll,             // Credits scene
 	nSCKindOptions,           	  // Options menu
 	nSCKindData,              	  // Data menu
 	nSCKindSoundTest,        	  // Sound Test
 	nSCKindExplain,         	  // How to Play
-	nSCKindDemo              	  // Auto-Demo
+	nSCKindAutoDemo               // Auto-Demo
 
 } scKind;
 

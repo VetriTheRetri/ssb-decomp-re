@@ -200,9 +200,9 @@ void sc1PContinueScoreDigitInitSprite(SObj *sobj)
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
 
-    sobj->env_color.r = 0x00;
-    sobj->env_color.g = 0x00;
-    sobj->env_color.b = 0x00;
+    sobj->envcolor.r = 0x00;
+    sobj->envcolor.g = 0x00;
+    sobj->envcolor.b = 0x00;
 
     sobj->sprite.red = 0xFF;
     sobj->sprite.green = 0xEC;
@@ -305,9 +305,9 @@ void sc1PContinueMakeScoreDisplay(s32 points)
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
 
-    sobj->env_color.r = 0xFF;
-    sobj->env_color.g = 0x00;
-    sobj->env_color.b = 0x00;
+    sobj->envcolor.r = 0xFF;
+    sobj->envcolor.g = 0x00;
+    sobj->envcolor.b = 0x00;
 
     sobj->sprite.red = 0xFF;
     sobj->sprite.green = 0xC8;
@@ -517,9 +517,9 @@ void sc1PContinueMakeContinueSObj(void)
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
 
-    sobj->env_color.r = 0x00;
-    sobj->env_color.g = 0x00;
-    sobj->env_color.b = 0x00;
+    sobj->envcolor.r = 0x00;
+    sobj->envcolor.g = 0x00;
+    sobj->envcolor.b = 0x00;
 
     sobj->sprite.red = 0xFF;
     sobj->sprite.green = 0xFF;
@@ -546,9 +546,9 @@ void sc1PContinueOptionSetHighlightColors(GObj *gobj, s32 option)
 
     color = (option == nSC1PContinueOptionYes) ? &not : &highlight;
 
-    sobj->env_color.r = color->prim.r;
-    sobj->env_color.g = color->prim.g;
-    sobj->env_color.b = color->prim.b;
+    sobj->envcolor.r = color->prim.r;
+    sobj->envcolor.g = color->prim.g;
+    sobj->envcolor.b = color->prim.b;
 
     sobj->sprite.red = color->env.r;
     sobj->sprite.green = color->env.g;
@@ -558,9 +558,9 @@ void sc1PContinueOptionSetHighlightColors(GObj *gobj, s32 option)
 
     color = (option == nSC1PContinueOptionNo) ? &not : &highlight;
 
-    sobj->env_color.r = color->prim.r;
-    sobj->env_color.g = color->prim.g;
-    sobj->env_color.b = color->prim.b;
+    sobj->envcolor.r = color->prim.r;
+    sobj->envcolor.g = color->prim.g;
+    sobj->envcolor.b = color->prim.b;
 
     sobj->sprite.red = color->env.r;
     sobj->sprite.green = color->env.g;
@@ -640,9 +640,9 @@ void sc1PContinueMakeCursorSObj(void)
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
 
-    sobj->env_color.r = 0x00;
-    sobj->env_color.g = 0x00;
-    sobj->env_color.b = 0x00;
+    sobj->envcolor.r = 0x00;
+    sobj->envcolor.g = 0x00;
+    sobj->envcolor.b = 0x00;
 
     sobj->sprite.red = 0xFF;
     sobj->sprite.green = 0x00;
@@ -657,9 +657,9 @@ void sc1PContinueGameOverInitSprites(SObj *sobj)
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
 
-    sobj->env_color.r = 0x1A;
-    sobj->env_color.g = 0x00;
-    sobj->env_color.b = 0xE6;
+    sobj->envcolor.r = 0x1A;
+    sobj->envcolor.g = 0x00;
+    sobj->envcolor.b = 0xE6;
 
     sobj->sprite.red = 0xFF;
     sobj->sprite.green = 0xFF;
@@ -684,9 +684,9 @@ void sc1PContinueGameOverStepColors(GObj *gobj)
         }
         while (sobj != NULL)
         {
-            sobj->env_color.r = values[0] * sSC1PContinueGameOverColorStep;
-            sobj->env_color.g = values[1] * sSC1PContinueGameOverColorStep;
-            sobj->env_color.b = values[2] * sSC1PContinueGameOverColorStep;
+            sobj->envcolor.r = values[0] * sSC1PContinueGameOverColorStep;
+            sobj->envcolor.g = values[1] * sSC1PContinueGameOverColorStep;
+            sobj->envcolor.b = values[2] * sSC1PContinueGameOverColorStep;
 
             sobj->sprite.red = values[3] * sSC1PContinueGameOverColorStep;
             sobj->sprite.green = values[4] * sSC1PContinueGameOverColorStep;

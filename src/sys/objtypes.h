@@ -459,7 +459,7 @@ struct _SObj                    // Sprite object
     Sprite sprite;              // Sprite data
     OMUserData user_data;       // Custom parameters attached to SObj
     Vec2f pos;                  // Position on screen; ghosting effect if out of camera scissor bounds?
-    syColorRGBA env_color;      // Color of outline around / under sprite?
+    syColorRGBA envcolor;      // Color of outline around / under sprite?
     u8 cmt, cms;                // t-axis and s-axis mirror, no-mirror, wrap and clamp flags
     u8 maskt, masks;            // t-axis and s-axis mask
     u16 lrs, lrt;               // lower right s and t - used for wrap/mirror boundary

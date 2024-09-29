@@ -1,8 +1,8 @@
-func_ovl21_80131B00 = 0x80131B00; // segment:ovl21
-func_ovl21_80131B24 = 0x80131B24; // segment:ovl21
-func_ovl21_80131B98 = 0x80131B98; // segment:ovl21
-func_ovl21_80131CA4 = 0x80131CA4; // segment:ovl21
-func_ovl21_80131DE8 = 0x80131DE8; // segment:ovl21
+mnVSItemSwitchProcLights = 0x80131B00; // segment:ovl21
+mnVSItemSwitchSetToggleSpriteColors = 0x80131B24; // segment:ovl21
+mnVSItemSwitchMakeToggle = 0x80131B98; // segment:ovl21
+mnVSItemSwitchLabelsProcDisplay = 0x80131CA4; // segment:ovl21
+mnVSItemSwitchMakeLabels = 0x80131DE8; // segment:ovl21
 func_ovl21_80131EFC = 0x80131EFC; // segment:ovl21
 func_ovl21_80131F30 = 0x80131F30; // segment:ovl21
 func_ovl21_80131FDC = 0x80131FDC; // segment:ovl21

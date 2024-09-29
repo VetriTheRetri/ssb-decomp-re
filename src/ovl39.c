@@ -437,7 +437,7 @@ void mvOpeningFoxInit()
 	efManagerInitEffects();
 	ftManagerSetupFilesAllKind(nFTKindFox);
 
-	gMvOpeningFoxAnimHeap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
+	gMvOpeningFoxAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningFoxCreateNameViewport();
 	mvOpeningFoxCreatePosedFighterBackgroundViewport();
 	mvOpeningFoxCreatePosedFighterViewport();

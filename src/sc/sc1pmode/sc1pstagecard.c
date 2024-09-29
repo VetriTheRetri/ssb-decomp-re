@@ -255,7 +255,7 @@ void sc1PStageCardMakeLabels(s32 stage)
     
     if (sc1PStageCardCheckNotBonusStage(stage) == FALSE)
     {
-        sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardBonusTextSprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextBonusSprite));
 
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -269,7 +269,7 @@ void sc1PStageCardMakeLabels(s32 stage)
     }
     if (stage == nSC1PGameStageBoss)
     {
-        sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardFinalTextSprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextFinalSprite));
         
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -281,7 +281,7 @@ void sc1PStageCardMakeLabels(s32 stage)
         sobj->pos.x = 15.0F;
         sobj->pos.y = 17.0F;
     }
-    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardStageTextSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextStageSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -468,7 +468,7 @@ void sc1PStageCardMakeVSName(s32 stage)
     sSC1PStageCardVSNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardVSTextSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextVSSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -544,7 +544,7 @@ void sc1PStageCardMakeName(s32 stage)
     
     if (sc1PStageCardGetAlliesNum(stage) != 0)
     {
-        sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardDashTextSprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextDashSprite));
         
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -806,7 +806,7 @@ void sc1PStageCardMakeAllyText(s32 stage)
     
     if (stage == nSC1PGameStageMario)
     {
-        SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardAlly1TextSprite));
+        SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextAlly1Sprite));
         
         sobj->pos.x = 80.0F;
         sobj->pos.y = 80.0F;
@@ -815,14 +815,14 @@ void sc1PStageCardMakeAllyText(s32 stage)
     }
     else
     {
-        SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardAlly2TextSprite));
+        SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextAlly2Sprite));
         
         sobj->pos.x = 80.0F;
         sobj->pos.y = 70.0F;
         
         sc1PStageCardInitAllyTextParams(sobj);
         
-        sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardAlly1TextSprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextAlly1Sprite));
         
         sobj->pos.x = 90.0F;
         sobj->pos.y = 100.0F;
@@ -985,7 +985,7 @@ GObj* sc1PStageCardMakeVSFighter(s32 ft_kind, s32 stage, s32 card_anim_frame_id,
         ft_desc.detail = nFTPartsDetailLow;
     }
     fighter_gobj = ftManagerMakeFighter(&ft_desc);
-    ftMainSetFighterStatus(fighter_gobj, 0x1000E, card_anim_frame_id, 0.0F, 0);
+    ftMainSetFighterStatus(fighter_gobj, 0x1000E, card_anim_frame_id, 0.0F, FTSTATUS_PRESERVE_NONE);
     gcPlayAnimAll(fighter_gobj);
     gcEndProcessAll(fighter_gobj);
     
@@ -1839,7 +1839,7 @@ void sc1PStageCardProcRun(GObj *gobj)
         {
             sSC1PStageCardUnk0x80135CF4--;
         }
-        if ((scSubsysControllerGetPlayerStickInRangeLR(-30, 30) != 0) && (scSubsysControllerGetPlayerStickInRangeUD(-30, 30) != 0))
+        if ((scSubsysControllerGetPlayerStickInRangeLR(-30, 30) != FALSE) && (scSubsysControllerGetPlayerStickInRangeUD(-30, 30) != FALSE))
         {
             sSC1PStageCardUnk0x80135CF4 = 0;
         }
@@ -1951,7 +1951,7 @@ void sc1PStageCardProcStart(void)
 
     for (i = 0; i < sc1PStageCardGetFighterAllocsNum(sSC1PStageCardStage); i++)
     {
-        sSC1PStageCardFigatreeHeaps[i] = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
+        sSC1PStageCardFigatreeHeaps[i] = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
     }
     sc1PStageCardMakePicturesCamera();
     sc1PStageCardMakeDecalsCamera();

@@ -17,7 +17,7 @@ extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 //                               //
 // // // // // // // // // // // //
 
-extern f32 D_ovl1_80390D90[/* */];
+extern f32 dSCSubsysFighterScales[/* */];
 
 extern uintptr_t D_NF_0000004F;                         // 0x0000004F
 extern uintptr_t D_NF_00000050;							// 0x00000050
@@ -328,9 +328,9 @@ void func_ovl55_80132094(void)
 // 0x8013209C
 void sc1PContinueSetFighterScale(GObj *gobj, s32 ft_kind)
 {
-    DObjGetStruct(gobj)->scale.vec.f.x = D_ovl1_80390D90[ft_kind];
-    DObjGetStruct(gobj)->scale.vec.f.y = D_ovl1_80390D90[ft_kind];
-    DObjGetStruct(gobj)->scale.vec.f.z = D_ovl1_80390D90[ft_kind];
+    DObjGetStruct(gobj)->scale.vec.f.x = dSCSubsysFighterScales[ft_kind];
+    DObjGetStruct(gobj)->scale.vec.f.y = dSCSubsysFighterScales[ft_kind];
+    DObjGetStruct(gobj)->scale.vec.f.z = dSCSubsysFighterScales[ft_kind];
 }
 
 // 0x801320D4
@@ -759,9 +759,9 @@ void sc1PContinueGameOverProcUpdate(GObj *gobj)
 
         DObjGetStruct(sSC1PContinueFighterGObj)->translate.vec.f.y += 3.0F;
 
-        DObjGetStruct(sSC1PContinueFighterGObj)->scale.vec.f.x = D_ovl1_80390D90[sSC1PContinueFighterDemoDesc.ft_kind] * sSC1PContinueGameOverFadeOutScale;
-        DObjGetStruct(sSC1PContinueFighterGObj)->scale.vec.f.y = D_ovl1_80390D90[sSC1PContinueFighterDemoDesc.ft_kind] * sSC1PContinueGameOverFadeOutScale;
-        DObjGetStruct(sSC1PContinueFighterGObj)->scale.vec.f.z = D_ovl1_80390D90[sSC1PContinueFighterDemoDesc.ft_kind] * sSC1PContinueGameOverFadeOutScale;
+        DObjGetStruct(sSC1PContinueFighterGObj)->scale.vec.f.x = dSCSubsysFighterScales[sSC1PContinueFighterDemoDesc.ft_kind] * sSC1PContinueGameOverFadeOutScale;
+        DObjGetStruct(sSC1PContinueFighterGObj)->scale.vec.f.y = dSCSubsysFighterScales[sSC1PContinueFighterDemoDesc.ft_kind] * sSC1PContinueGameOverFadeOutScale;
+        DObjGetStruct(sSC1PContinueFighterGObj)->scale.vec.f.z = dSCSubsysFighterScales[sSC1PContinueFighterDemoDesc.ft_kind] * sSC1PContinueGameOverFadeOutScale;
     }
 }
 
@@ -1230,7 +1230,7 @@ void sc1PContinueProcStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(sSC1PContinueFighterDemoDesc.ft_kind);
     
-    sSC1PContinueFighterAnimHeap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
+    sSC1PContinueFighterAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
 
     sc1PContinueMakeLinkMultiCamera();
     sc1PContinueMakeLink26Camera();

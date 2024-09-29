@@ -435,7 +435,7 @@ void mvOpeningPikachuInit()
 	efManagerInitEffects();
 	ftManagerSetupFilesAllKind(nFTKindPikachu);
 
-	gMvOpeningPikachuAnimHeap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
+	gMvOpeningPikachuAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningPikachuCreateNameViewport();
 	mvOpeningPikachuCreatePosedFighterBackgroundViewport();
 	mvOpeningPikachuCreatePosedFighterViewport();

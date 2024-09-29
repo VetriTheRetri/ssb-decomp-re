@@ -13,7 +13,7 @@ extern f32 sqrtf(f32);
 extern void gcStopCurrentGObjThread(s32);
 extern void leoInitUnit_atten();
 
-extern f32 menu_zoom[12]; // D_ovl1_80390D90
+extern f32 menu_zoom[12]; // dSCSubsysFighterScales
 extern u8 D_ovl2_8012EF40[4];
 // Offsets
 extern intptr_t FILE_000_COLON_IMAGE_OFFSET; // file 0x000 image offset for colon
@@ -4244,7 +4244,7 @@ void mnBattleInitCSS()
 		ftManagerSetupFilesAllKind(i);
 
 	for (i = 0; i < 4; i++)
-		gMnBattlePanels[i].figatree_heap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10U);
+		gMnBattlePanels[i].figatree_heap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10U);
 
 	mnBattleCreatePortraitViewport();
 	mnBattleCreateCursorViewport();

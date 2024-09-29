@@ -18,7 +18,7 @@ extern void mnVSModeStartScene(void);                    // ovl 19
 extern void options_vs_entry(void);                 // ovl 20
 extern void overlay_set11_entry(void);              // ovl 21
 extern void mnMessageStartScene(void);              // ovl 22
-extern void scChallengerStartScene(void);              // ovl 23
+extern void sc1PChallengerStartScene(void);              // ovl 23
 extern void sc1PStageCardStartScene(void);                // ovl 24
 extern void mnScreenAdjustStartScene(void);              // ovl 25
 extern void vs_css_entry(void);                     // ovl 26

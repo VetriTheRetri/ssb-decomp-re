@@ -1131,9 +1131,9 @@ void mvOpeningFirstDestinationInit()
 	ftManagerSetupFilesAllKind(gMvOpeningFirstDestinationPluckedFighterKind);
 	ftManagerSetupFilesAllKind(gMvOpeningFirstDestinationDroppedFighterKind);
 	ftManagerSetupFilesAllKind(nFTKindBoss);
-	gMvOpeningFirstDestinationMasterHandAnimHeap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
-	gMvOpeningFirstDestinationPluckedFighterAnimHeap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
-	gMvOpeningFirstDestinationDroppedFighterAnimHeap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
+	gMvOpeningFirstDestinationMasterHandAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMvOpeningFirstDestinationPluckedFighterAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMvOpeningFirstDestinationDroppedFighterAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningFirstDestinationCreateFirstSceneViewports();
 	mvOpeningFirstDestinationCreateOverlayViewport();
 	mvOpeningFirstDestinationCreateBackgroundViewport();

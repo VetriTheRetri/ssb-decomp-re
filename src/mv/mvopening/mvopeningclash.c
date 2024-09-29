@@ -438,7 +438,7 @@ void mvOpeningClashProcStart(void)
 
     for (i = 0; i < ARRAY_COUNT(sMVOpeningClashFighterAnimHeaps); i++)
     {
-        sMVOpeningClashFighterAnimHeaps[i] = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
+        sMVOpeningClashFighterAnimHeaps[i] = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
     }
     mvOpeningClashMakeFightersViewport();
     mvOpeningClashMakeVoidViewport();

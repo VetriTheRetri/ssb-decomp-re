@@ -437,7 +437,7 @@ void mvOpeningYamabukiProcStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(nFTKindPikachu);
 
-    sMVOpeningYamabukiFighterAnimHeap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
+    sMVOpeningYamabukiFighterAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
 
     mvOpeningYamabukiMakeMainViewport();
     mvOpeningYamabukiMakeWallpaperViewport();

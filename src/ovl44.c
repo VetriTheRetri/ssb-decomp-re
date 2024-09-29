@@ -316,7 +316,7 @@ void mvOpeningRunningInit()
 
 	for (i = 0; i < ARRAY_COUNT(gMvOpeningRunningFighterAnimHeaps); i++)
 	{
-		gMvOpeningRunningFighterAnimHeaps[i] = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
+		gMvOpeningRunningFighterAnimHeaps[i] = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
 	}
 
 	mvOpeningRunningCreateTransitionGfxViewport();

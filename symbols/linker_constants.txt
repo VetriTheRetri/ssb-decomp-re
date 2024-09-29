@@ -219,6 +219,11 @@ lLBTransitionCurtainAnimJoint = 0x00007C98;
 lGRWallpaperTraining0Sprite = 0x00020718;
 lGRWallpaperTraining0BitmapPointer = 0x0002074C;
 
+lSC1PChallengerTextChallengerSprite = 0x000001F8;
+lSC1PChallengerTextApproachingSprite = 0x00000488;
+lSC1PChallengerTextWarningSprite = 0x00000968;
+lSC1PChallengerDecalExclaimSprite = 0x00000DB0;
+
 lSC1PStageCardDecalVSSprite = 0x00001F10;
 
 lSC1PStageCardNameMarioSprite = 0x00000138;
@@ -272,13 +277,13 @@ lSC1PStageCardFigureZakoSprite = 0x00007D60;
 lSC1PStageCardFigureBossSprite = 0x00007E70;
 lSC1PStageCardFigureBonusSprite = 0x00007F40;
 
-lSC1PStageCardStageTextSprite = 0x00002E38;
-lSC1PStageCardBonusTextSprite = 0x000030F8;
-lSC1PStageCardFinalTextSprite = 0x00003320;
-lSC1PStageCardDashTextSprite = 0x000050E8;
-lSC1PStageCardVSTextSprite = 0x000069F8;
-lSC1PStageCardAlly1TextSprite = 0x00006B18;
-lSC1PStageCardAlly2TextSprite = 0x00006C38;
+lSC1PStageCardTextStageSprite = 0x00002E38;
+lSC1PStageCardTextBonusSprite = 0x000030F8;
+lSC1PStageCardTextFinalSprite = 0x00003320;
+lSC1PStageCardTextDashSprite = 0x000050E8;
+lSC1PStageCardTextVSSprite = 0x000069F8;
+lSC1PStageCardTextAlly1Sprite = 0x00006B18;
+lSC1PStageCardTextAlly2Sprite = 0x00006C38;
 
 lSC1PStageCardBannerTopSprite = 0x0000C898;
 lSC1PStageCardBannerBottomSprite = 0x0000ED00;

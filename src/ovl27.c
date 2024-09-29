@@ -12,7 +12,7 @@ extern intptr_t D_NF_800A5240;      // 800A5240
 extern intptr_t lOverlay27ArenaLo;  // 801396D0
 extern intptr_t lOverlay27ArenaHi;  // 803903E0
 
-extern f32 menu_zoom[12]; // D_ovl1_80390D90
+extern f32 menu_zoom[12]; // dSCSubsysFighterScales
 extern scBattleState D_800A4B18;
 
 // Offsets
@@ -3111,7 +3111,7 @@ void mn1PInitCSS()
 	for (i = 0; i < 12; i++)
 		ftManagerSetupFilesAllKind(i);
 
-	gMN1PAnimHeap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10U);
+	gMN1PAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10U);
 
 	mn1PLoadMatchInfo();
 	mn1PCreatePortraitViewport();

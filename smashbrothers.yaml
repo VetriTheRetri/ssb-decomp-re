@@ -38,9 +38,6 @@ options:
     - symbols/ovl20.txt
     - symbols/ovl21.txt
     - symbols/ovl22.txt
-    - symbols/ovl23.txt
-    - symbols/ovl24.txt
-    - symbols/ovl25.txt
     - symbols/ovl8.txt
 
     - symbols/not_found.txt
@@ -1315,16 +1312,16 @@ segments:
       - [0x129970, asm, ovl22]
       - [0x12A370, data, ovl22]
       - { start: auto, type: bss, vram: 0x80132650, name: ovl22 }
+
   - name: ovl23
     type: code
-    bss_size: 0x380
-    start: 0x12a4c0
+    start: 0x12A4C0
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x12a4c0, asm, ovl23]
-      - [0x12AD30, data, ovl23]
-      - { start: auto, type: bss, vram: 0x80132480, name: ovl23 }
+      - [0x12A4C0, c, sc/sc1pmode/sc1pchallenger]
+      - [0x12AD30, .data, sc/sc1pmode/sc1pchallenger]
+      - { start: auto, type: .bss, name: sc/sc1pmode/sc1pchallenger, vram: 0x80132480 }
 
   - name: ovl24
     type: code

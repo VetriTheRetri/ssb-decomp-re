@@ -45,7 +45,7 @@ u16 gFTManagerStatUpdateCount;
 void *gFTManagerCommonFile;
 
 // 0x80130D9C
-size_t gFTManagerAnimHeapSize;
+size_t gFTManagerFigatreeHeapSize;
 
 // 0x80130DA0
 lbFileNode sFTManagerForceBuf[7];
@@ -248,7 +248,7 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
             heap_size = ft_data->file_anim_size;
         }
     }
-    gFTManagerAnimHeapSize = heap_size;
+    gFTManagerFigatreeHeapSize = heap_size;
 
     if (data_flags & FTDATA_FLAG_SUBMOTION)
     {

@@ -500,7 +500,7 @@ skip_main_stages:
         gSceneData.scene_previous = nSCKind1PGame;
         gSceneData.scene_current = nSCKindChallenger;
 
-        scChallengerStartScene();
+        sc1PChallengerStartScene();
 
         gSCManager1PGameBattleState.players[gSceneData.spgame_player].stock_count = 0;
 

@@ -70,7 +70,7 @@ typedef enum gmMusicID
 	nSYAudioBGMEnding,						// Ending Movie
 	nSYAudioBGMStaffroll,					// Credits
 	nSYAudioBGMMessage,						// Secret Found
-	nSYAudioBGMChallenger,					// Challenger Approaching
+	nSYAudioBGM1PChallenger,					// Challenger Approaching
 	nSYAudioBGMTrainingMode,				// Training Mode
 	nSYAudioBGMData,						// Character Data / VS Records
 	nSYAudioBGMModeSelect,					// Main Menu

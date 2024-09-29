@@ -539,7 +539,7 @@ void mvEndingProcStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(sMVEndingFighterDemoDesc.ft_kind);
 
-    sMVEndingFighterAnimHeap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
+    sMVEndingFighterAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
 
     mvEndingMakeMainCameras();
     mvEndingMakeRoomFadeInCamera();

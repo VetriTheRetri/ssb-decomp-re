@@ -426,7 +426,7 @@ void mvOpeningLinkInit()
 	efManagerInitEffects();
 	ftManagerSetupFilesAllKind(nFTKindLink);
 
-	gMvOpeningLinkAnimHeap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
+	gMvOpeningLinkAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningLinkCreateNameViewport();
 	mvOpeningLinkCreatePosedFighterBackgroundViewport();
 	mvOpeningLinkCreatePosedFighterViewport();

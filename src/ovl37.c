@@ -430,7 +430,7 @@ void mvOpeningDKInit()
 	efManagerInitEffects();
 	ftManagerSetupFilesAllKind(nFTKindDonkey);
 
-	gMvOpeningDKAnimHeap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
+	gMvOpeningDKAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningDKCreateNameViewport();
 	mvOpeningDKCreatePosedFighterBackgroundViewport();
 	mvOpeningDKCreatePosedFighterViewport();

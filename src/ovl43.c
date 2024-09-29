@@ -440,7 +440,7 @@ void mvOpeningKirbyInit()
 	efManagerInitEffects();
 	ftManagerSetupFilesAllKind(nFTKindKirby);
 
-	gMvOpeningKirbyAnimHeap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
+	gMvOpeningKirbyAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningKirbyCreateNameViewport();
 	mvOpeningKirbyCreatePosedFighterBackgroundViewport();
 	mvOpeningKirbyCreatePosedFighterViewport();

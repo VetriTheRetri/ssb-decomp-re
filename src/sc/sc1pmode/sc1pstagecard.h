@@ -59,13 +59,13 @@ extern intptr_t lSC1PStageCardFigureZakoSprite;             // 0x00007D60
 extern intptr_t lSC1PStageCardFigureBossSprite;             // 0x00007E70
 extern intptr_t lSC1PStageCardFigureBonusSprite;            // 0x00007F40
 
-extern intptr_t lSC1PStageCardStageTextSprite;              // 0x00002E38
-extern intptr_t lSC1PStageCardBonusTextSprite;              // 0x000030F8
-extern intptr_t lSC1PStageCardFinalTextSprite;              // 0x00003320
-extern intptr_t lSC1PStageCardDashTextSprite;               // 0x000050E8
-extern intptr_t lSC1PStageCardVSTextSprite;                 // 0x000069F8
-extern intptr_t lSC1PStageCardAlly1TextSprite;              // 0x00006B18
-extern intptr_t lSC1PStageCardAlly2TextSprite;              // 0x00006C38
+extern intptr_t lSC1PStageCardTextStageSprite;              // 0x00002E38
+extern intptr_t lSC1PStageCardTextBonusSprite;              // 0x000030F8
+extern intptr_t lSC1PStageCardTextFinalSprite;              // 0x00003320
+extern intptr_t lSC1PStageCardTextDashSprite;               // 0x000050E8
+extern intptr_t lSC1PStageCardTextVSSprite;                 // 0x000069F8
+extern intptr_t lSC1PStageCardTextAlly1Sprite;              // 0x00006B18
+extern intptr_t lSC1PStageCardTextAlly2Sprite;              // 0x00006C38
 
 extern intptr_t lSC1PStageCardBannerTopSprite;              // 0x0000C898
 extern intptr_t lSC1PStageCardBannerBottomSprite;           // 0x0000ED00

@@ -437,7 +437,7 @@ void sc1PGameBossMakeCamera(void)
             func_80017EC0,
             60,
             CAMERA_MASK_DLLINK(5),
-            0x2,
+            2,
             TRUE,
             nOMObjProcessKindProc,
             NULL,

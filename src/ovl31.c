@@ -2959,7 +2959,7 @@ void mnResultsInit()
 		ftManagerSetupFilesAllKind(i);
 
 	for (i = 0; i < ARRAY_COUNT(gMNResultsAnimHeaps); i++)
-		gMNResultsAnimHeaps[i] = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
+		gMNResultsAnimHeaps[i] = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
 
 	mnResultsSaveDataToSRAM();
 	mnResultsLoadMatchInfo();

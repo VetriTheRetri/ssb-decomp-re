@@ -13,7 +13,7 @@
 extern intptr_t lOverlay28ArenaLo;  // 0x80138CC0
 extern intptr_t lOverlay28ArenaHi;  // 0x803903E0
 // ovl1 stuff
-extern f32 menu_zoom[12]; // D_ovl1_80390D90
+extern f32 menu_zoom[12]; // dSCSubsysFighterScales
 
 extern intptr_t FILE_000_COLON_IMAGE_OFFSET; // file 0x000 image offset for colon
 
@@ -2753,7 +2753,7 @@ void mnTrainingInitCSS()
 		ftManagerSetupFilesAllKind(i);
 
 	for (i = 0; i < 4; i++)
-		gMNTrainingPanels[i].figatree_heap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10U);
+		gMNTrainingPanels[i].figatree_heap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10U);
 
 	mnTrainingCreatePortraitViewport();
 	mnTrainingCreateCursorViewport();

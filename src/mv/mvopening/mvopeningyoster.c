@@ -345,7 +345,7 @@ void mvOpeningYosterProcStart(void)
 
     for (i = 0; i < ARRAY_COUNT(sMVOpeningYosterFighterAnimHeaps); i++)
     {
-        sMVOpeningYosterFighterAnimHeaps[i] = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
+        sMVOpeningYosterFighterAnimHeaps[i] = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
     }
     mvOpeningYosterMakeMainViewport();
     mvOpeningYosterMakeWallpaperViewport();

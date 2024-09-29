@@ -507,7 +507,7 @@ void mvOpeningCliffProcStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(nFTKindLink);
 
-    sMVOpeningCliffFighterAnimHeap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
+    sMVOpeningCliffFighterAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
 
     mvOpeningCliffMakeMainViewport();
     mvOpeningCliffMakeWallpaperViewport();

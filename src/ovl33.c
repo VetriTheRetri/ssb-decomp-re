@@ -32,7 +32,7 @@ typedef struct charsSpecialActionInfo
 
 
 // Externs
-// D_ovl1_80390D90
+// dSCSubsysFighterScales
 extern f32 menu_zoom[12];
 extern intptr_t D_NF_800A5240;
 extern intptr_t lOverlay33ArenaLo;  // 80136A90
@@ -2077,7 +2077,7 @@ void mnCharsInit()
 	for (i = 0; i < 12; i++)
 		ftManagerSetupFilesAllKind(i);
 
-	gMNCharsAnimHeap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
+	gMNCharsAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
 	mnCharsCreateBioViewport();
 	mnCharsCreateHeaderViewport();
 	mnCharsCreateSeriesLogoViewport();

@@ -597,8 +597,8 @@ void mvOpeningStandoffProcStart(void)
     ftManagerSetupFilesAllKind(nFTKindMario);
     ftManagerSetupFilesAllKind(nFTKindKirby);
 
-    sMVOpeningStandoffMarioAnimHeap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
-    sMVOpeningStandoffKirbyAnimHeap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
+    sMVOpeningStandoffMarioAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
+    sMVOpeningStandoffKirbyAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
 
     mvOpeningStandoffMakeMainViewport();
     mvOpeningStandoffMakeWallpaperViewport();

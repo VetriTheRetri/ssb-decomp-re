@@ -138,7 +138,7 @@ u32 dMNSoundTestMusicIDs[/* */] =
     nSYAudioBGM1PBonusGameFailure,
     nSYAudioBGMZako,
     nSYAudioBGMMetal,
-    nSYAudioBGMChallenger,
+    nSYAudioBGM1PChallenger,
     nSYAudioBGMMessage,
     nSYAudioBGMEnding,
     nSYAudioBGM1PGameEndChoice,

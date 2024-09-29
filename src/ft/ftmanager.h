@@ -9,7 +9,7 @@ extern u32 gFTManagerPlayersNum;
 extern u16 gFTManagerMotionCount;
 extern u16 gFTManagerStatUpdateCount;
 extern void *gFTManagerCommonFile;
-extern size_t gFTManagerAnimHeapSize;
+extern size_t gFTManagerFigatreeHeapSize;
 
 extern ftCreateDesc dFTManagerDefaultFighterDesc;
 extern ftData *dFTManagerDataFiles[/* */];

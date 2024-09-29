@@ -10,7 +10,7 @@
 
 // Externs
 extern scBattleState D_800A4B18;
-extern f32 menu_zoom[12]; // D_ovl1_80390D90
+extern f32 menu_zoom[12]; // dSCSubsysFighterScales
 extern uintptr_t D_NF_800A5240;
 extern intptr_t lOverlay29ArenaLo;  // 0x80137E30
 extern intptr_t lOverlay29ArenaHi;  // 0x803903E0
@@ -2507,7 +2507,7 @@ void mnBonusInitCSS()
 	for (i = 0; i < 12; i++)
 		ftManagerSetupFilesAllKind(i);
 
-	gMnBonusAnimHeap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10U);
+	gMnBonusAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10U);
 
 	mnBonusLoadMatchInfo();
 	mnBonusCreatePortraitViewport();

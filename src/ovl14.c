@@ -463,7 +463,7 @@ void mnDebugBattleInit()
 		spawn_info.ft_kind = gTransferBattleState.players[i].ft_kind;
 		spawn_info.costume = gTransferBattleState.players[i].costume;
 		spawn_info.pos.x = (i * 400.0f) - 600.0f;
-		spawn_info.figatree_heap = gsMemoryAlloc(gFTManagerAnimHeapSize, 0x10);
+		spawn_info.figatree_heap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
 		gMNDebugBattleFighters[i].fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		gMNDebugBattleFighters[i].ft_kind = gTransferBattleState.players[i].ft_kind;

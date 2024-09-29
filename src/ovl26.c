@@ -4175,7 +4175,7 @@ void mnBattleLoadMatchInfo()
 		gMnBattlePanels[i].min_frames_elapsed_until_recall = 0;
 	};
 
-	gMnBattleCharacterUnlockedMask = gSaveData.character_mask;
+	gMnBattleCharacterUnlockedMask = gSaveData.fighter_mask;
 }
 
 // 8013AFC0

@@ -3065,7 +3065,7 @@ void mn1PLoadMatchInfo()
 	mn1PInitPort(gMN1PHumanPanelPort);
 
 	gMN1PPanel.min_frames_elapsed_until_recall = 0;
-	gMN1PCharacterUnlockedMask = gSaveData.character_mask;
+	gMN1PCharacterUnlockedMask = gSaveData.fighter_mask;
 }
 
 // 801382C8

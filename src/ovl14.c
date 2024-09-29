@@ -263,28 +263,28 @@ s32 mnDebugBattleGetMissingFtKind(u16 mask_1, u16 mask_2, s32 missing_index)
 void mnDebugBattleSetDemoFtKinds()
 {
 	s32 non_recently_demoed_count;
-	u16 unlocked_mask = (gSaveData.character_mask | LBBACKUP_CHARACTER_MASK_STARTER);
+	u16 unlocked_mask = (gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER);
 
-	if (unlocked_mask == gSceneData.recently_demoed_mask)
-		gSceneData.recently_demoed_mask = 0;
+	if (unlocked_mask == gSceneData.demo_mask_prev)
+		gSceneData.demo_mask_prev = 0;
 
-	non_recently_demoed_count = mnDebugBattleGetUnlockedCharsCountForMask(unlocked_mask) - mnDebugBattleGetUnlockedCharsCountForMask(gSceneData.recently_demoed_mask);
+	non_recently_demoed_count = mnDebugBattleGetUnlockedCharsCountForMask(unlocked_mask) - mnDebugBattleGetUnlockedCharsCountForMask(gSceneData.demo_mask_prev);
 
-	gSceneData.demo_ft_kind[0] = mnDebugBattleGetMissingFtKind(unlocked_mask, gSceneData.recently_demoed_mask, mtTrigGetRandomIntRange(non_recently_demoed_count));
+	gSceneData.demo_ft_kind[0] = mnDebugBattleGetMissingFtKind(unlocked_mask, gSceneData.demo_mask_prev, mtTrigGetRandomIntRange(non_recently_demoed_count));
 
-	if (gSceneData.recently_demoed_mask == 0)
-		gSceneData.first_demo_ft_kind = gSceneData.demo_ft_kind[0];
+	if (gSceneData.demo_mask_prev == 0)
+		gSceneData.demo_first_ft_kind = gSceneData.demo_ft_kind[0];
 
-	gSceneData.recently_demoed_mask |= gmSaveChrMask(gSceneData.demo_ft_kind[0]);
+	gSceneData.demo_mask_prev |= gmSaveChrMask(gSceneData.demo_ft_kind[0]);
 
-	non_recently_demoed_count = mnDebugBattleGetUnlockedCharsCountForMask(unlocked_mask) - mnDebugBattleGetUnlockedCharsCountForMask(gSceneData.recently_demoed_mask);
+	non_recently_demoed_count = mnDebugBattleGetUnlockedCharsCountForMask(unlocked_mask) - mnDebugBattleGetUnlockedCharsCountForMask(gSceneData.demo_mask_prev);
 
 	if (non_recently_demoed_count == 0)
-		gSceneData.demo_ft_kind[1] = gSceneData.first_demo_ft_kind;
+		gSceneData.demo_ft_kind[1] = gSceneData.demo_first_ft_kind;
 	else
 	{
-		gSceneData.demo_ft_kind[1] = mnDebugBattleGetMissingFtKind(unlocked_mask, gSceneData.recently_demoed_mask, mtTrigGetRandomIntRange(non_recently_demoed_count));
-		gSceneData.recently_demoed_mask |= gmSaveChrMask(gSceneData.demo_ft_kind[1]);
+		gSceneData.demo_ft_kind[1] = mnDebugBattleGetMissingFtKind(unlocked_mask, gSceneData.demo_mask_prev, mtTrigGetRandomIntRange(non_recently_demoed_count));
+		gSceneData.demo_mask_prev |= gmSaveChrMask(gSceneData.demo_ft_kind[1]);
 	}
 }
 

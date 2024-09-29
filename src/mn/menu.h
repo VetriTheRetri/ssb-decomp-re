@@ -4,6 +4,8 @@
 #include "mntypes.h"
 #include "mnfunctions.h"
 
+extern intptr_t lMNCommonWallpaperSprite;            // 0x00018000
+
 extern intptr_t lMNCommonOptionTabLeftSprite;        // 0x000001E8
 extern intptr_t lMNCommonOptionTabMiddleSprite;      // 0x00000330
 extern intptr_t lMNCommonOptionTabRightSprite;       // 0x00000568

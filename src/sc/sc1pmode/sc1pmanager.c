@@ -310,7 +310,7 @@ void sc1PManagerUpdateScene(void)
     {
         while (gSceneData.spgame_stage <= nSC1PGameStageCommonEnd)
         {
-            variation_flags = (gSaveData.character_mask | LBBACKUP_CHARACTER_MASK_STARTER) & ~(1 << gSceneData.ft_kind);
+            variation_flags = (gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER) & ~(1 << gSceneData.ft_kind);
 
             is_player_lose = FALSE;
 
@@ -343,7 +343,7 @@ void sc1PManagerUpdateScene(void)
                 break;
 
             case nSC1PGameStageKirby:
-                variation_flags = (gSaveData.character_mask | LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindKirby));
+                variation_flags = (gSaveData.fighter_mask | LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindKirby));
 
                 gSC1PManagerKirbyTeamFinalCopy = sc1PManagerGetShuffledKirbyCopy(variation_flags, mtTrigGetRandomIntRange(sc1PManagerGetShuffledVariation(variation_flags)));
 
@@ -519,7 +519,7 @@ skip_main_stages:
         if ((gSCManager1PGameBattleState.players[gSceneData.spgame_player].stock_count != -1) && (gSCManager1PGameBattleState.battle_time_remain != 0))
         {
             gSceneData.challenger_level_drop = gDefaultSceneData.challenger_level_drop;
-            gSceneData.prize_unlocks[0] = dSC1PManagerUnlockPrizes[gSceneData.spgame_stage - nSC1PGameStageChallengerStart];
+            gSceneData.unlock_messages[0] = dSC1PManagerUnlockPrizes[gSceneData.spgame_stage - nSC1PGameStageChallengerStart];
 
             syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
             syDmaLoadOverlay(&dSC1PManagerMessageOverlay);
@@ -553,7 +553,7 @@ skip_main_stages:
             }
             if ((spgame_characters_complete & LBBACKUP_CHARACTER_MASK_STARTER) == LBBACKUP_CHARACTER_MASK_STARTER)
             {
-                gSceneData.prize_unlocks[0] = nLBBackupUnlockInishie;
+                gSceneData.unlock_messages[0] = nLBBackupUnlockInishie;
 
                 syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
                 syDmaLoadOverlay(&dSC1PManagerMessageOverlay);

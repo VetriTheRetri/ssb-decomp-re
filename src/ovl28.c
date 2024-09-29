@@ -2651,7 +2651,7 @@ void mnTrainingLoadMatchInfo()
 	gMNTrainingMaxFramesElapsed = gMNTrainingFramesElapsed + I_MIN_TO_FRAMES(5);
 	gMNTrainingHumanPanelPort = gSceneData.spgame_player;
 	gMNTrainingCPUPanelPort = (gMNTrainingHumanPanelPort == 0) ? 1 : 0;
-	gMNTrainingCharacterUnlockedMask = gSaveData.character_mask;
+	gMNTrainingCharacterUnlockedMask = gSaveData.fighter_mask;
 
 	if (gSceneData.training_man_ft_kind == nFTKindNull)
 		mnTrainingResetPort(gMNTrainingHumanPanelPort);

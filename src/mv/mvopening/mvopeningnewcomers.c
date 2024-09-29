@@ -360,7 +360,7 @@ void mvOpeningNewcomersMakeHideViewport(void)
 void mvOpeningNewcomersInitVars(void)
 {
     sMVOpeningNewcomersTotalTimeTics = 0;
-    sMVOpeningNewcomersCharacterMask = gSaveData.character_mask;
+    sMVOpeningNewcomersCharacterMask = gSaveData.fighter_mask;
 }
 
 // 0x801323A4

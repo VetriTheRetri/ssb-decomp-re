@@ -1539,7 +1539,7 @@ void mnVsRecordsInitVars()
 	gMNVsRecordsRedrawSubtitle = FALSE;
 	gMNVsRecordsCurrentIndex = 0;
 	gMNVsRecordsChangeWait = 0;
-	gMNVsRecordsUnlockedMask = gSaveData.character_mask;
+	gMNVsRecordsUnlockedMask = gSaveData.fighter_mask;
 	gMNVsRecordsFirstColumn = vsRecordsRankingColumnKindWinPercentage;
 }
 

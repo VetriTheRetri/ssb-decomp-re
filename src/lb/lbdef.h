@@ -201,7 +201,7 @@ typedef struct lbGenerator		            lbGenerator;
 typedef struct lbParticle		            lbParticle;
 typedef struct lbTransitionDesc				lbTransitionDesc;
 typedef struct lbBackup1PRecord             lbBackup1PRecord;
-typedef struct lbBackupBattleRecord         lbBackupBattleRecord;
+typedef struct lbBackupVSRecord         lbBackupVSRecord;
 typedef struct lbBackupData                 lbBackupData;
 
 #endif

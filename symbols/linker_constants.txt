@@ -219,6 +219,15 @@ lLBTransitionCurtainAnimJoint = 0x00007C98;
 lGRWallpaperTraining0Sprite = 0x00020718;
 lGRWallpaperTraining0BitmapPointer = 0x0002074C;
 
+lMNMessageDecalExclaimSprite = 0x00005300;
+lMNMessageUnlockLuigiSprite = 0x000009E0;
+lMNMessageUnlockNessSprite = 0x00001148;
+lMNMessageUnlockCaptainSprite = 0x00001F50;
+lMNMessageUnlockPurinSprite = 0x00002E58;
+lMNMessageUnlockInishieSprite = 0x00003458;
+lMNMessageUnlockSoundTestSprite = 0x00004180;
+lMNMessageUnlockItemSwitchSprite = 0x00004EB0;
+
 lSC1PChallengerTextChallengerSprite = 0x000001F8;
 lSC1PChallengerTextApproachingSprite = 0x00000488;
 lSC1PChallengerTextWarningSprite = 0x00000968;
@@ -1606,6 +1615,7 @@ lSC1PStageClearBonusNormalClear = 0x000143C8;
 lSC1PStageClearBonusHardClear = 0x000145A8;
 lSC1PStageClearBonusVeryHardClear = 0x00014788;
 
+lMNCommonWallpaperSprite = 0x00018000;
 lMNCommonOptionTabLeftSprite = 0x000001E8;
 lMNCommonOptionTabMiddleSprite = 0x00000330;
 lMNCommonOptionTabRightSprite = 0x00000568;
@@ -1627,17 +1637,17 @@ lMNCommonRightArrowSprite = 0x0000DD90;
 lMNCommonLeftArrowSprite = 0x0000DE30;
 lMNCommonCircleSprite = 0x00018000;
 
-lMNVSModeVSSprite = 0x00006118;;
-lMNVSModeVSStartSprite = 0x000024C8;;
-lMNVSModeSmallStockSprite = 0x00002A80;;
-lMNVSModeSmallTimeSprite = 0x000028E0;;
-lMNVSModeTeamSprite = 0x00002C20;;
-lMNVSModeRuleSprite = 0x00002748;;
-lMNVSModeTimeSprite = 0x00002EC8;;
-lMNVSModeMinSprite = 0x00002FC8;;
-lMNVSModeStockSprite = 0x00003248;;
-lMNVSModeVSOptionsSprite = 0x00003828;;
-lMNVSModeN64ConsoleSprite = 0x00005EB0;;
+lMNVSModeVSSprite = 0x00006118;
+lMNVSModeVSStartSprite = 0x000024C8;
+lMNVSModeSmallStockSprite = 0x00002A80;
+lMNVSModeSmallTimeSprite = 0x000028E0;
+lMNVSModeTeamSprite = 0x00002C20;
+lMNVSModeRuleSprite = 0x00002748;
+lMNVSModeTimeSprite = 0x00002EC8;
+lMNVSModeMinSprite = 0x00002FC8;
+lMNVSModeStockSprite = 0x00003248;
+lMNVSModeVSOptionsSprite = 0x00003828;
+lMNVSModeN64ConsoleSprite = 0x00005EB0;
 
 lMNOptionMonoTextSprite = 0x000071F8;
 lMNOptionStereoTextSprite = 0x000073A8;

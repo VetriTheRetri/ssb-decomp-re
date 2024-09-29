@@ -2440,7 +2440,7 @@ void mnBonusLoadMatchInfo()
 	mnBonusInitPort();
 
 	gMnBonusPanel.min_frames_elapsed_until_recall = 0;
-	gMnBonusCharacterUnlockedMask = gSaveData.character_mask;
+	gMnBonusCharacterUnlockedMask = gSaveData.fighter_mask;
 
 	if (gSceneData.scene_current == 0x13)
 		gMnBonusType = 0;

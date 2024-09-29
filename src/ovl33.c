@@ -1787,11 +1787,11 @@ void mnCharsInitVars()
 	gMNCharsAutoRotateFighter = TRUE;
 	gMNCharsUnknown = 1;
 	gMNCharsCurrentActionTrack = 0;
-	gMNCharsUnlockedMask = gSaveData.character_mask;
+	gMNCharsUnlockedMask = gSaveData.fighter_mask;
 
 	if (gSceneData.scene_previous == nSCKindData)
 	{
-		gMNCharsCurrentIndex = mnCharsGetIndex(gSaveData.bio_ft_kind);
+		gMNCharsCurrentIndex = mnCharsGetIndex(gSaveData.characters_ft_kind);
 		gMNCharsIsDemoMode = FALSE;
 	}
 	else
@@ -1808,7 +1808,7 @@ void mnCharsInitVars()
 // 8013366C
 void mnCharsSaveFtKindToSRAM()
 {
-	gSaveData.bio_ft_kind = mnCharsGetFtKind(gMNCharsCurrentIndex);
+	gSaveData.characters_ft_kind = mnCharsGetFtKind(gMNCharsCurrentIndex);
 
 	lbBackupWrite();
 }

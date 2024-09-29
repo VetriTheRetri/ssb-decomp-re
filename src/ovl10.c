@@ -278,38 +278,38 @@ s32 mnTitleSetDemoFtKinds()
 	s32 unlocked_count;
 	s32 non_recently_demoed_count;
 
-	unlocked_mask = gSaveData.character_mask | LBBACKUP_CHARACTER_MASK_STARTER;
+	unlocked_mask = gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER;
 
-	if (~unlocked_mask & gSceneData.recently_demoed_mask)
-		gSceneData.recently_demoed_mask = 0;
-
-	unlocked_count = mnTitleGetUnlockedCharsCountForMask(unlocked_mask);
-
-	if (unlocked_count <= mnTitleGetUnlockedCharsCountForMask(gSceneData.recently_demoed_mask))
-		gSceneData.recently_demoed_mask = 0;
+	if (~unlocked_mask & gSceneData.demo_mask_prev)
+		gSceneData.demo_mask_prev = 0;
 
 	unlocked_count = mnTitleGetUnlockedCharsCountForMask(unlocked_mask);
 
-	gSceneData.demo_ft_kind[0] = mnTitleGetMissingFtKind(unlocked_mask, gSceneData.recently_demoed_mask, mtTrigGetRandomIntRange(unlocked_count - mnTitleGetUnlockedCharsCountForMask(gSceneData.recently_demoed_mask)));
+	if (unlocked_count <= mnTitleGetUnlockedCharsCountForMask(gSceneData.demo_mask_prev))
+		gSceneData.demo_mask_prev = 0;
 
-	if (!(gSceneData.recently_demoed_mask))
+	unlocked_count = mnTitleGetUnlockedCharsCountForMask(unlocked_mask);
+
+	gSceneData.demo_ft_kind[0] = mnTitleGetMissingFtKind(unlocked_mask, gSceneData.demo_mask_prev, mtTrigGetRandomIntRange(unlocked_count - mnTitleGetUnlockedCharsCountForMask(gSceneData.demo_mask_prev)));
+
+	if (!(gSceneData.demo_mask_prev))
 	{
-		gSceneData.first_demo_ft_kind = gSceneData.demo_ft_kind[0];
+		gSceneData.demo_first_ft_kind = gSceneData.demo_ft_kind[0];
 	}
-	gSceneData.recently_demoed_mask |= gmSaveChrMask(gSceneData.demo_ft_kind[0]);
+	gSceneData.demo_mask_prev |= gmSaveChrMask(gSceneData.demo_ft_kind[0]);
 
 	unlocked_count = mnTitleGetUnlockedCharsCountForMask(unlocked_mask);
 
-	non_recently_demoed_count = unlocked_count - mnTitleGetUnlockedCharsCountForMask(gSceneData.recently_demoed_mask);
+	non_recently_demoed_count = unlocked_count - mnTitleGetUnlockedCharsCountForMask(gSceneData.demo_mask_prev);
 
 	if (non_recently_demoed_count == 0)
 	{
-		gSceneData.demo_ft_kind[1] = gSceneData.first_demo_ft_kind;
+		gSceneData.demo_ft_kind[1] = gSceneData.demo_first_ft_kind;
 	}
 	else
 	{
-		gSceneData.demo_ft_kind[1] = mnTitleGetMissingFtKind(unlocked_mask, gSceneData.recently_demoed_mask, mtTrigGetRandomIntRange(non_recently_demoed_count));
-		gSceneData.recently_demoed_mask |= gmSaveChrMask(gSceneData.demo_ft_kind[1]);
+		gSceneData.demo_ft_kind[1] = mnTitleGetMissingFtKind(unlocked_mask, gSceneData.demo_mask_prev, mtTrigGetRandomIntRange(non_recently_demoed_count));
+		gSceneData.demo_mask_prev |= gmSaveChrMask(gSceneData.demo_ft_kind[1]);
 	}
 }
 

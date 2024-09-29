@@ -78,25 +78,25 @@ void lbBackupCorrectErrors(void)
 {
     s32 i;
 
-    if (!((gSaveData.character_mask | LBBACKUP_CHARACTER_MASK_STARTER) & (1 << gSaveData.bio_ft_kind)))
+    if (!((gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER) & (1 << gSaveData.characters_ft_kind)))
     {
-        gSaveData.bio_ft_kind = gDefaultSaveData.bio_ft_kind;
+        gSaveData.characters_ft_kind = gDefaultSaveData.characters_ft_kind;
     }
-    if (!((gSaveData.character_mask | LBBACKUP_CHARACTER_MASK_STARTER) & (1 << gSceneData.ft_kind)))
+    if (!((gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER) & (1 << gSceneData.ft_kind)))
     {
         gSceneData.ft_kind = nFTKindNull;
     }
-    if (!((gSaveData.character_mask | LBBACKUP_CHARACTER_MASK_STARTER) & (1 << gSceneData.training_man_ft_kind)))
+    if (!((gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER) & (1 << gSceneData.training_man_ft_kind)))
     {
         gSceneData.training_man_ft_kind = nFTKindNull;
     }
-    if (!((gSaveData.character_mask | LBBACKUP_CHARACTER_MASK_STARTER) & (1 << gSceneData.training_com_ft_kind)))
+    if (!((gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER) & (1 << gSceneData.training_com_ft_kind)))
     {
         gSceneData.training_com_ft_kind = nFTKindNull;
     }
     for (i = 0; i < ARRAY_COUNT(gTransferBattleState.players); i++)
     {
-        if (!((1 << gTransferBattleState.players[i].ft_kind) & (gSaveData.character_mask | LBBACKUP_CHARACTER_MASK_STARTER)))
+        if (!((1 << gTransferBattleState.players[i].ft_kind) & (gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER)))
         {
             gTransferBattleState.players[i].ft_kind = nFTKindNull;
             gTransferBattleState.players[i].pl_kind = nFTPlayerKindMan;
@@ -126,7 +126,7 @@ void lbBackupClearNewcomers(void)
     gSaveData.unlock_mask &= ~LBBACKUP_UNLOCK_MASK_NEWCOMERS;
     gSaveData.unlock_mask |= gDefaultSaveData.unlock_mask;
 
-    gSaveData.character_mask = gDefaultSaveData.character_mask;
+    gSaveData.fighter_mask = gDefaultSaveData.fighter_mask;
 }
 
 // 0x800D4914

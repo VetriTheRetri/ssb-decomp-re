@@ -1304,14 +1304,13 @@ segments:
 
   - name: ovl22
     type: code
-    bss_size: 0x340
     start: 0x129970
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x129970, asm, ovl22]
-      - [0x12A370, data, ovl22]
-      - { start: auto, type: bss, vram: 0x80132650, name: ovl22 }
+      - [0x129970, c, mn/mncommon/mnmessage]
+      - [0x12A370, .data, mn/mncommon/mnmessage]
+      - { start: auto, type: .bss, name: mn/mncommon/mnmessage, vram: 0x80132650 }
 
   - name: ovl23
     type: code

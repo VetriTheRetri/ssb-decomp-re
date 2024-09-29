@@ -255,7 +255,7 @@ s32 mnResultsGetPlayerCount()
 // 80131B90
 void mnResultsSaveDataToSRAM()
 {
-	lbBackupBattleRecord* vs_record;
+	lbBackupVSRecord* vs_record;
 	s32 i, j;
 	u8 ft_kind, opp_ft_kind;
 
@@ -2865,7 +2865,7 @@ void mnResultsMain(s32 arg0)
 
 		if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_ITEMSWITCH) && (gSaveData.unlock_task_itemswitch >= 100))
 		{
-			gSceneData.prize_unlocks[unlocked_features] = nLBBackupUnlockItemSwitch;
+			gSceneData.unlock_messages[unlocked_features] = nLBBackupUnlockItemSwitch;
 			unlocked_features = 1;
 		}
 
@@ -2881,7 +2881,7 @@ void mnResultsMain(s32 arg0)
 
 				if ((sp_game_complete_mask & LBBACKUP_CHARACTER_MASK_STARTER) == LBBACKUP_CHARACTER_MASK_STARTER)
 				{
-					gSceneData.prize_unlocks[unlocked_features] = nLBBackupUnlockInishie;
+					gSceneData.unlock_messages[unlocked_features] = nLBBackupUnlockInishie;
 					unlocked_features += 1;
 				}
 			}

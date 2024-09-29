@@ -1024,7 +1024,7 @@ void sc1PBonusGameStartScene()
 					}
 					if (sc1PManagerCheckUnlockSoundTest() != FALSE)
 					{
-						gSceneData.prize_unlocks[0] = nLBBackupUnlockSoundTest;
+						gSceneData.unlock_messages[0] = nLBBackupUnlockSoundTest;
 						gSceneData.scene_current = 0xC;
 					}
 					break;
@@ -1037,7 +1037,7 @@ void sc1PBonusGameStartScene()
 
 				if ((tasks_complete == SCBATTLE_BONUSGAME_TASK_MAX) && (sc1PManagerCheckUnlockSoundTest() != FALSE))
 				{
-					gSceneData.prize_unlocks[0] = nLBBackupUnlockSoundTest;
+					gSceneData.unlock_messages[0] = nLBBackupUnlockSoundTest;
 					gSceneData.scene_current = 0xC;
 				}
 				break;

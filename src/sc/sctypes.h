@@ -316,11 +316,11 @@ struct scCommonData
 {
 	u8 scene_current;
 	u8 scene_previous;
-	u8 prize_unlocks[2];		// Unlockable features part 1 (?)
+	u8 unlock_messages[2];		// Queued unlock messages?
 	u8 pad04[0x09 - 0x04];
 	u8 challenger_ft_kind;		// Opponent being fought in "Challenger Approaching" battle
-	u16 recently_demoed_mask;
-	u8 first_demo_ft_kind;
+	u16 demo_mask_prev;
+	u8 demo_first_ft_kind;
 	u8 demo_ft_kind[2];
 	u8 gr_kind;
 	u8 unk10;

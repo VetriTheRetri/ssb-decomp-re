@@ -207,18 +207,18 @@ struct lbTransitionDesc
     s32 unk_lbtransition_0xC;
 };
 
-struct lbBackupBattleRecord
+struct lbBackupVSRecord
 {
-	/* 0x00 */ u16 ko_count[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
-	/* 0x18 */ u32 time_used; //< in seconds
-	/* 0x1C */ u32 damage_dealt;
-	/* 0x20 */ u32 damage_taken;
-	/* 0x24 */ u16 unk;
-	/* 0x26 */ u16 self_destructs;
-	/* 0x28 */ u16 games_played;
-	/* 0x2A */ u16 player_count_tally;
-	/* 0x2C */ u16 player_count_tallies[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
-	/* 0x44 */ u16 played_against[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
+	u16 ko_count[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
+	u32 time_used;              // In seconds
+	u32 damage_dealt;
+	u32 damage_taken;
+	u16 unk;
+	u16 self_destructs;
+	u16 games_played;
+	u16 player_count_tally;
+	u16 player_count_tallies[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
+	u16 played_against[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
 };
 
 struct lbBackup1PRecord
@@ -234,30 +234,25 @@ struct lbBackup1PRecord
 	u8 spgame_complete;	        // Whether character has completed 1P Game or not
 };
 
-// is this the saved data structure?
+// Save Data structure
 struct lbBackupData
 {
-	lbBackupBattleRecord vs_records[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
-	ub8 is_allow_screenflash; 	// Toggle for enabling white screen flash when,
-							  	// for example, a character takes too much
-							  	// damage. Leftover from unused "background
-							  	// flash" option? It is always toggled ON, even
-							  	// after clearing the save data.
-	ub8 sound_mono_or_stereo; 
+	lbBackupVSRecord vs_records[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
+	ub8 is_allow_screenflash; 	// Toggle for enabling white screen flash when, for example, a character takes too much damage
+							  	// Likely tied to the unused "background flash" option? It is always toggled ON, even after clearing save data
+	ub8 sound_mono_or_stereo;   // Whether sound mode is mono or stereo
 	s16 screen_adjust_h;		// Offset from screen center horizontally
 	s16 screen_adjust_v;		// Offset from screen center vertically
-	u8 bio_ft_kind;				// Last character viewed on Character Data menu
-	u8 unlock_mask;
-	u16 character_mask; 		// Mask of unlocked characters?
-	u8 spgame_difficulty;
-	u8 spgame_stock_count;
+	u8 characters_ft_kind;		// Last character viewed on Character Data menu
+	u8 unlock_mask;             // Mask of unlocked features
+	u16 fighter_mask; 		    // Mask of available characters
+	u8 spgame_difficulty;       // Last 1P Game difficulty selected
+	u8 spgame_stock_count;      // Last 1P Game stock count selected
 	lbBackup1PRecord spgame_records[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
 	u16 unlock_task_inishie;   	// Records mask of unique stages played in VS mode
 	u8 unlock_task_itemswitch; 	// Records number of VS games played for Item Switch unlock
 	u16 vs_total_battles;		// Total amount of VS games played?
-	u8 error_flags;		   		// Some kind of anti-piracy/anti-tempering measure??? 
-                                // 0x1 results in random knockback velocity, 0x2 halves stick range, 
-                                // 0x4 forces Mario in 1P game, 0x8 forces Peach's Castle
+	u8 error_flags;		   		// Some kind of anti-piracy/anti-tempering measure?
 	u8 unk5E3;
 	u16 unk5E4;
 	u8 unk5E6;

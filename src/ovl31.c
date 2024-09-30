@@ -276,8 +276,8 @@ void mnResultsSaveDataToSRAM()
 
 			vs_record->time_used += (gTransferBattleState.battle_time_current / 60);
 
-			if (vs_record->time_used >= I_MIN_TO_FRAMES(1000))
-				vs_record->time_used = I_MIN_TO_FRAMES(1000) - 1;
+			if (vs_record->time_used >= I_MIN_TO_TICS(1000))
+				vs_record->time_used = I_MIN_TO_TICS(1000) - 1;
 
 			vs_record->damage_dealt += gTransferBattleState.players[i].total_damage_dealt;
 

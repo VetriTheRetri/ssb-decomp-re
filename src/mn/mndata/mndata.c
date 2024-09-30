@@ -595,7 +595,7 @@ void mnDataInitVars(void)
     sMNDataOptionChangeWait = 0;
     sMNDataTotalTimeTics = 0;
     sMNDataIsOptionSelected = FALSE;
-    sMNDataReturnTic = sMNDataTotalTimeTics + I_MIN_TO_FRAMES(5);
+    sMNDataReturnTic = sMNDataTotalTimeTics + I_MIN_TO_TICS(5);
 }
 
 // 0x80132874
@@ -624,7 +624,7 @@ void mnDataProcRun(GObj *gobj)
         }
         if (scSubsysControllerCheckNoInputAll() == FALSE)
         {
-            sMNDataReturnTic = sMNDataTotalTimeTics + I_MIN_TO_FRAMES(5);
+            sMNDataReturnTic = sMNDataTotalTimeTics + I_MIN_TO_TICS(5);
         }
         if (sMNDataIsOptionSelected != FALSE)
         {

@@ -96,7 +96,7 @@ void itGLuckyCommonUpdateEggSpawn(GObj *lucky_gobj)
     {
         if (lucky_ip->item_vars.glucky.egg_spawn_count != 0)
         {
-            if ((gBattleState->item_toggles & ITEM_TOGGLE_MASK_KIND(nITKindEgg)) && (gBattleState->item_switch != nSCBattleItemSwitchNone)) // Return to this when 0x8 is mapped
+            if ((gBattleState->item_toggles & ITEM_TOGGLE_MASK_KIND(nITKindEgg)) && (gBattleState->item_appearance_rate != nSCBattleItemSwitchNone)) // Return to this when 0x8 is mapped
             {
                 pos = dobj->translate.vec.f;
 

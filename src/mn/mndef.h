@@ -109,6 +109,13 @@ typedef enum mnOptionTabStatus
 
 } mnOptionTabStatus;
 
+typedef enum mnOptionTabOnOff
+{
+	nMNOptionTabStatusOff,
+	nMNOptionTabStatusOn
+
+} mnOptionTabOnOff;
+
 typedef struct mnCongraPicture             mnCongraPicture;
 
 #endif

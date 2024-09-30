@@ -244,7 +244,7 @@ void mnScreenAdjustInitVars(void)
     sMNScreenAdjustButtonHoldWait = 0;
     sMNScreenAdjustTotalTimeTics = 0;
     
-    sMNScreenAdjustReturnTic = sMNScreenAdjustTotalTimeTics + I_MIN_TO_FRAMES(5);
+    sMNScreenAdjustReturnTic = sMNScreenAdjustTotalTimeTics + I_MIN_TO_TICS(5);
 }
 
 // 0x8013204C

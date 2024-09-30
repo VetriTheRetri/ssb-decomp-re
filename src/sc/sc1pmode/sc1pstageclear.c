@@ -6,8 +6,6 @@
 
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
-
-
 // // // // // // // // // // // //
 //                               //
 //       EXTERNAL VARIABLES      //
@@ -436,18 +434,18 @@ void sc1PStageClearSetDigitSpriteColor(SObj *sobj, s32 digit_kind, syColorRGBPai
 		sobj->envcolor.r = colors_id->prim.r;
 		sobj->envcolor.g = colors_id->prim.g;
 		sobj->envcolor.b = colors_id->prim.b;
-		sobj->sprite.red     = colors_id->env.r;
-		sobj->sprite.green   = colors_id->env.g;
-		sobj->sprite.blue    = colors_id->env.b;
+		sobj->sprite.red = colors_id->env.r;
+		sobj->sprite.green = colors_id->env.g;
+		sobj->sprite.blue = colors_id->env.b;
 	}
 	else
 	{
 		sobj->envcolor.r = colors_default->prim.r;
 		sobj->envcolor.g = colors_default->prim.g;
 		sobj->envcolor.b = colors_default->prim.b;
-		sobj->sprite.red     = colors_default->env.r;
-		sobj->sprite.green   = colors_default->env.g;
-		sobj->sprite.blue    = colors_default->env.b;
+		sobj->sprite.red = colors_default->env.r;
+		sobj->sprite.green = colors_default->env.g;
+		sobj->sprite.blue = colors_default->env.b;
 	}
 }
 

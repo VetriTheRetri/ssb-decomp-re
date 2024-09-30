@@ -746,7 +746,7 @@ void mnOptionInitVars(void)
     sMNOptionTotalTimeTics = 0;
     D_ovl60_801337D4 = NULL;
     sMNOptionIsOptionSelected = FALSE;
-    sMNOptionReturnTic = sMNOptionTotalTimeTics + I_MIN_TO_FRAMES(5);
+    sMNOptionReturnTic = sMNOptionTotalTimeTics + I_MIN_TO_TICS(5);
 }
 
 // 0x80132E10
@@ -785,7 +785,7 @@ void mnOptionProcRun(GObj *gobj)
         }
         if (scSubsysControllerCheckNoInputAll() == FALSE)
         {
-            sMNOptionReturnTic = sMNOptionTotalTimeTics + I_MIN_TO_FRAMES(5);
+            sMNOptionReturnTic = sMNOptionTotalTimeTics + I_MIN_TO_TICS(5);
         }
         if (sMNOptionIsOptionSelected != FALSE)
         {

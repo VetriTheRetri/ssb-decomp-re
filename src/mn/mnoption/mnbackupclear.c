@@ -463,7 +463,7 @@ void mnBackupClearInitVars(void)
     sMNBackupClearTotalTimeTics = 0;
     sMNBackupClearUpdateWait = 10;
     sMNBackupClearOptionConfirmAnimLength = 0;
-    sMNBackupClearReturnTic = sMNBackupClearTotalTimeTics + I_MIN_TO_FRAMES(5);
+    sMNBackupClearReturnTic = sMNBackupClearTotalTimeTics + I_MIN_TO_TICS(5);
 }
 
 // 0x8013251C

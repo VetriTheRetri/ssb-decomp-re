@@ -1,6 +1,7 @@
 #ifndef _MNFUNCTIONS_H_
 #define _MNFUNCTIONS_H_
 
+#include <mn/mnvsmode/mnvsitemswitch.h>
 #include <mn/mnvsmode/mnvsmode.h>
 
 #include <mn/mncommon/mnmessage.h>

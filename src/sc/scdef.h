@@ -222,7 +222,8 @@ typedef enum scBattleItemSwitch
 	nSCBattleItemSwitchLow,
 	nSCBattleItemSwitchMiddle,
 	nSCBattleItemSwitchHigh,
-	nSCBattleItemSwitchVeryHigh
+	nSCBattleItemSwitchVeryHigh,
+	nSCBattleItemSwitchEnumMax
 
 } scBattleItemSwitch;
 

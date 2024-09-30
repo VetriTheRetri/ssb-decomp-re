@@ -11,7 +11,7 @@
 struct sc1PGameComputer
 {
 	ub8 is_team_attack;
-	u8 item_switch;
+	u8 item_appearance_rate;
 	u8 enemy_level[5];
 	u8 enemy_handicap[5];
 	u8 ally_level[5];
@@ -304,7 +304,7 @@ struct scBattleState
 	u8 unk_0x13;
 	u32 battle_time_remain;							// Frames remaining until timeout
 	u32 battle_time_current; 						// Current match frame, counts up from 0
-	u8 item_switch;									// Item appearance rate setting 
+	u8 item_appearance_rate;									// Item appearance rate setting 
 													// 0x3 on various stages, 0x4 on Polygon Team?
 	ub32 is_display_score : 1;						// Displays score when a fighter falls
 	ub32 is_not_teamshadows : 1;					// If FALSE, shadows are colored based on

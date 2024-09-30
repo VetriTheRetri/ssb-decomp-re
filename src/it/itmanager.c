@@ -56,23 +56,23 @@ s32 dITManagerMonsterSpawnID = 0;
 // 0x80189454
 u16 dITManagerAppearanceRatesMin[/* */] = 
 {
-    I_SEC_TO_FRAMES(0), 
-    I_SEC_TO_FRAMES(30),
-    I_SEC_TO_FRAMES(25),
-    I_SEC_TO_FRAMES(20),
-    I_SEC_TO_FRAMES(15),
-    I_SEC_TO_FRAMES(10)
+    I_SEC_TO_TICS(0), 
+    I_SEC_TO_TICS(30),
+    I_SEC_TO_TICS(25),
+    I_SEC_TO_TICS(20),
+    I_SEC_TO_TICS(15),
+    I_SEC_TO_TICS(10)
 };
 
 // 0x80189460
 u16 dITManagerAppearanceRatesMax[/* */] =
 {
-    I_SEC_TO_FRAMES(0),
-    I_SEC_TO_FRAMES(30) + 90,
-    I_SEC_TO_FRAMES(25) + 75,
-    I_SEC_TO_FRAMES(20) + 60,
-    I_SEC_TO_FRAMES(15) + 45,
-    I_SEC_TO_FRAMES(10) + 30
+    I_SEC_TO_TICS(0),
+    I_SEC_TO_TICS(30) + 90,
+    I_SEC_TO_TICS(25) + 75,
+    I_SEC_TO_TICS(20) + 60,
+    I_SEC_TO_TICS(15) + 45,
+    I_SEC_TO_TICS(10) + 30
 };
 
 // 0x8018946C
@@ -488,8 +488,8 @@ itStruct* itManagerGetCurrentAlloc(void)
 void itManagerSetItemSpawnWait(void)
 {
     gITManagerSpawnActor.item_spawn_wait = 
-    dITManagerAppearanceRatesMin[gBattleState->item_switch] + 
-    mtTrigGetRandomIntRange(dITManagerAppearanceRatesMax[gBattleState->item_switch] - dITManagerAppearanceRatesMin[gBattleState->item_switch]);
+    dITManagerAppearanceRatesMin[gBattleState->item_appearance_rate] + 
+    mtTrigGetRandomIntRange(dITManagerAppearanceRatesMax[gBattleState->item_appearance_rate] - dITManagerAppearanceRatesMin[gBattleState->item_appearance_rate]);
 }
 
 // 0x8016EB78
@@ -540,7 +540,7 @@ GObj* itManagerMakeItemSpawnActor(void)
     mpItemWeights *item_weight_qty;
     u32 item_num_toggles;
 
-    if (gBattleState->item_switch != nSCBattleItemSwitchNone)
+    if (gBattleState->item_appearance_rate != nSCBattleItemSwitchNone)
     {
         if (gBattleState->item_toggles != 0)
         {
@@ -645,7 +645,7 @@ void itManagerSetupContainerDrops(void)
     mpItemWeights *item_weight_qty;
     s32 item_tenth_round;
 
-    if ((gBattleState->item_switch != nSCBattleItemSwitchNone) && (gBattleState->item_toggles != 0) && (gMPCollisionGroundData->item_weights != NULL))
+    if ((gBattleState->item_appearance_rate != nSCBattleItemSwitchNone) && (gBattleState->item_toggles != 0) && (gMPCollisionGroundData->item_weights != NULL))
     {
         item_num_toggles = gBattleState->item_toggles >> nITKindUtilityStart;
         item_count_qty = gMPCollisionGroundData->item_weights;

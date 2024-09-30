@@ -1148,7 +1148,7 @@ void mnStageLoadSceneData()
 	gMNStageUnlockedMask = gSaveData.unlock_mask;
 	gMNStageCurrentHeap = 1;
 	gMNStageFramesElapsed = 0;
-	gMNStageMaxFramesElapsed = gMNStageFramesElapsed + I_MIN_TO_FRAMES(5);
+	gMNStageMaxFramesElapsed = gMNStageFramesElapsed + I_MIN_TO_TICS(5);
 }
 
 // 80133D60
@@ -1179,7 +1179,7 @@ void mnStageHandleButtonPresses(s32 arg0)
 		}
 
 		if (scSubsysControllerCheckNoInputAll() == FALSE)
-			gMNStageMaxFramesElapsed = gMNStageFramesElapsed + I_MIN_TO_FRAMES(5);
+			gMNStageMaxFramesElapsed = gMNStageFramesElapsed + I_MIN_TO_TICS(5);
 
 		if (gMNStageScrollBuffer != 0)
 			gMNStageScrollBuffer -= 1;

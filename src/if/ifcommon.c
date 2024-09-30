@@ -351,10 +351,10 @@ Gfx dIFCommonPlayerArrowsGfx[/* */] =
 // 0x8012EF38 - Length of time units in order: minute tens, minute ones, second tens, second ones (in frames)
 u16 dIFCommonTimerDigitsUnitLengths[/* */] = 
 { 
-    I_MIN_TO_FRAMES(10), 
-    I_MIN_TO_FRAMES(1), 
-    I_SEC_TO_FRAMES(10), 
-    I_SEC_TO_FRAMES(1) 
+    I_MIN_TO_TICS(10), 
+    I_MIN_TO_TICS(1), 
+    I_SEC_TO_TICS(10), 
+    I_SEC_TO_TICS(1) 
 };
 
 // 0x8013EF40 - Unused?
@@ -2070,25 +2070,25 @@ void ifCommonCountdownThread(GObj *interface_gobj)
     {
         switch (timer)
         {
-        case I_SEC_TO_FRAMES(2):
+        case I_SEC_TO_TICS(2):
             main_status = lamp_status = 6;
 
             func_800269C0_275C0(nSYAudioVoiceAnnounceThree);
             break;
 
-        case I_SEC_TO_FRAMES(3):
+        case I_SEC_TO_TICS(3):
             main_status = lamp_status = 7;
 
             func_800269C0_275C0(nSYAudioVoiceAnnounceTwo);
             break;
 
-        case I_SEC_TO_FRAMES(4):
+        case I_SEC_TO_TICS(4):
             main_status = lamp_status = 8;
 
             func_800269C0_275C0(nSYAudioVoiceAnnounceOne);
             break;
 
-        case I_SEC_TO_FRAMES(5):
+        case I_SEC_TO_TICS(5):
             ifCommonAnnounceGoMakeInterface();
             ifCommonAnnounceGoSetStatus();
             ifCommonPlayerDamageSetShowInterface();
@@ -2099,7 +2099,7 @@ void ifCommonCountdownThread(GObj *interface_gobj)
 
             break;
 
-        case I_SEC_TO_FRAMES(6):
+        case I_SEC_TO_TICS(6):
             goto finish;
         }
         if (lamp_status != -1)
@@ -2166,7 +2166,7 @@ void ifCommonCountdownThread(GObj *interface_gobj)
         main_status = -1;
     }
 finish:
-    for (timer = timer; timer < I_SEC_TO_FRAMES(7); timer++)
+    for (timer = timer; timer < I_SEC_TO_TICS(7); timer++)
     {
         sobj = SObjGetStruct(interface_gobj);
 
@@ -2490,13 +2490,13 @@ void ifCommonTimerProcRun(GObj *interface_gobj)
                     }
                     else gBattleState->battle_time_remain -= time_update;
 
-                    if ((gBattleState->gr_kind == nGRKindInishie) && (gBattleState->battle_time_remain <= I_SEC_TO_FRAMES(30)) && (gMPCollisionBGMDefault != nSYAudioBGMInishieHurry))
+                    if ((gBattleState->gr_kind == nGRKindInishie) && (gBattleState->battle_time_remain <= I_SEC_TO_TICS(30)) && (gMPCollisionBGMDefault != nSYAudioBGMInishieHurry))
                     {
                         gMPCollisionBGMDefault = nSYAudioBGMInishieHurry;
 
                         ftParamTryUpdateItemMusic();
                     }
-                    if (gBattleState->battle_time_remain <= I_SEC_TO_FRAMES(5))
+                    if (gBattleState->battle_time_remain <= I_SEC_TO_TICS(5))
                     {
                         if (gBattleState->battle_time_remain == 0)
                         {
@@ -2506,14 +2506,14 @@ void ifCommonTimerProcRun(GObj *interface_gobj)
                         }
                         else for (i = 0; i < ARRAY_COUNT(sIFCommonIsAnnouncedSecond); i++)
                         {
-                            if ((sIFCommonIsAnnouncedSecond[i] == FALSE) && (gBattleState->battle_time_remain <= (I_SEC_TO_FRAMES(i) + I_SEC_TO_FRAMES(1))))
+                            if ((sIFCommonIsAnnouncedSecond[i] == FALSE) && (gBattleState->battle_time_remain <= (I_SEC_TO_TICS(i) + I_SEC_TO_TICS(1))))
                             {
                                 func_800269C0_275C0(dIFCommonAnnounceTimerVoiceIDs[i]);
 
                                 sIFCommonIsAnnouncedSecond[i] = TRUE;
                             }
                         }
-                        auSetBGMVolume(0, ((gBattleState->battle_time_remain / F_SEC_TO_FRAMES(5)) * 20480.0F) + 10240.0F);
+                        auSetBGMVolume(0, ((gBattleState->battle_time_remain / F_SEC_TO_TICS(5)) * 20480.0F) + 10240.0F);
                     }
                 }
             }
@@ -2524,7 +2524,7 @@ void ifCommonTimerProcRun(GObj *interface_gobj)
 // 0x80113398
 void ifCommonTimerMakeInterface(void (*proc)(void))
 {
-    gBattleState->battle_time_remain = sIFCommonTimerLimit = I_MIN_TO_FRAMES(gBattleState->time_limit);
+    gBattleState->battle_time_remain = sIFCommonTimerLimit = I_MIN_TO_TICS(gBattleState->time_limit);
     gBattleState->battle_time_current = 0;
 
     sIFCommonTimerIsStarted = FALSE;

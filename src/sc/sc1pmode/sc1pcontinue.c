@@ -1045,7 +1045,7 @@ void sc1PContinueProcRun(GObj *gobj)
 		{
             sSC1PContinueOptionChangeWait = 0;
         }
-        if ((sSC1PContinueTotalTimeTics == I_SEC_TO_FRAMES(40)) && (sSC1PContinueStatus == 0))
+        if ((sSC1PContinueTotalTimeTics == I_SEC_TO_TICS(40)) && (sSC1PContinueStatus == 0))
         {
             gcEjectGObj(sSC1PContinueShadowGObj);
             gcEjectGObj(sSC1PContinueSpotlightGObj);
@@ -1058,8 +1058,8 @@ void sc1PContinueProcRun(GObj *gobj)
             sc1PContinueMakeGameOver();
 
             sSC1PContinueStatus = 2;
-            sSC1PContinueOptionNoGameOverInputWait = sSC1PContinueTotalTimeTics + I_SEC_TO_FRAMES(1.5);
-            sSC1PContinueOptionNoGameOverAutoWait = sSC1PContinueTotalTimeTics + I_SEC_TO_FRAMES(30);
+            sSC1PContinueOptionNoGameOverInputWait = sSC1PContinueTotalTimeTics + I_SEC_TO_TICS(1.5);
+            sSC1PContinueOptionNoGameOverAutoWait = sSC1PContinueTotalTimeTics + I_SEC_TO_TICS(30);
 
 			auPlaySong(0, nSYAudioBGM1PGameOver);
 			func_800269C0_275C0(nSYAudioVoiceAnnounceGameOver);
@@ -1068,7 +1068,7 @@ void sc1PContinueProcRun(GObj *gobj)
         {
             if
             (
-                (sSC1PContinueTotalTimeTics > I_SEC_TO_FRAMES(2.5)) && 
+                (sSC1PContinueTotalTimeTics > I_SEC_TO_TICS(2.5)) && 
                 (scSubsysControllerGetPlayerTapButtons(A_BUTTON | START_BUTTON) != FALSE)
             )
             {
@@ -1088,7 +1088,7 @@ void sc1PContinueProcRun(GObj *gobj)
 					scSubsysFighterSetStatus(sSC1PContinueFighterGObj, 0x1000A);
 
 					sSC1PContinueStatus = 1;
-                    sSC1PContinueOptionYesRetryTic = sSC1PContinueTotalTimeTics + I_SEC_TO_FRAMES(4);
+                    sSC1PContinueOptionYesRetryTic = sSC1PContinueTotalTimeTics + I_SEC_TO_TICS(4);
 
 					func_800269C0_275C0(nSYAudioFGM1PGameContinue);
 					break;
@@ -1104,8 +1104,8 @@ void sc1PContinueProcRun(GObj *gobj)
                     sc1PContinueMakeGameOver();
 
                     sSC1PContinueStatus = 2;
-                    sSC1PContinueOptionNoGameOverInputWait = sSC1PContinueTotalTimeTics + I_SEC_TO_FRAMES(1.5);
-                    sSC1PContinueOptionNoGameOverAutoWait = sSC1PContinueTotalTimeTics + I_SEC_TO_FRAMES(30);
+                    sSC1PContinueOptionNoGameOverInputWait = sSC1PContinueTotalTimeTics + I_SEC_TO_TICS(1.5);
+                    sSC1PContinueOptionNoGameOverAutoWait = sSC1PContinueTotalTimeTics + I_SEC_TO_TICS(30);
 
                     auPlaySong(0, nSYAudioBGM1PGameOver);
                     func_800269C0_275C0(nSYAudioVoiceAnnounceGameOver);

@@ -21,6 +21,7 @@ extern uintptr_t D_NF_000000A4;
 extern uintptr_t D_NF_00000020;
 extern uintptr_t D_NF_00000000;
 extern uintptr_t D_NF_000000C4;
+
 // // // // // // // // // // // //
 //                               //
 //             MACROS            //
@@ -1738,7 +1739,7 @@ void mnSoundTestInitVars(void)
 void mnSoundTestProcStart(void)
 {
     gcMakeGObjSPAfter(0, mnSoundTestProcRun, 1, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(4, 0x80000000, 0x64, 2, 0xFF);
+    gcMakeDefaultCameraGObj(4, GOBJ_LINKORDER_DEFAULT, 100, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     mnSoundTestSetupFiles();
     mnSoundTestInitVars();
     mnSoundTestMakeAllSObjs();

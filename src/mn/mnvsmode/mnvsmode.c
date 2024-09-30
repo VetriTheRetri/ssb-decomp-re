@@ -978,7 +978,7 @@ void mnVSModeProcStartVars()
     sMNVSModeInputDirection = nMNVSModeInputDirectionNone;
     sMNVSModeFramesElapsed = 0;
     sMNVSModeExitInterrupt = 0;
-    sMNVSModeMaxFramesElapsed = sMNVSModeFramesElapsed + I_MIN_TO_FRAMES(5);
+    sMNVSModeMaxFramesElapsed = sMNVSModeFramesElapsed + I_MIN_TO_TICS(5);
     sMNVSModeTimeStockArrowBlinkTimer = 0;
     sMNVSModeRuleArrowBlinkTimer = 0;
 }
@@ -1141,7 +1141,7 @@ void mnVSModeMain(GObj *gobj)
         }
         if (scSubsysControllerCheckNoInputAll() == FALSE)
         {
-            sMNVSModeMaxFramesElapsed = sMNVSModeFramesElapsed + I_MIN_TO_FRAMES(5);
+            sMNVSModeMaxFramesElapsed = sMNVSModeFramesElapsed + I_MIN_TO_TICS(5);
         }
         if (sMNVSModeExitInterrupt != 0)
         {

@@ -2530,7 +2530,7 @@ void mnTrainingMain(s32 arg0)
 	}
 
 	if (scSubsysControllerCheckNoInputAll() == 0)
-		gMNTrainingMaxFramesElapsed = gMNTrainingFramesElapsed + I_MIN_TO_FRAMES(5);
+		gMNTrainingMaxFramesElapsed = gMNTrainingFramesElapsed + I_MIN_TO_TICS(5);
 
 	if (gMNTrainingIsStartTriggered)
 	{
@@ -2648,7 +2648,7 @@ void mnTrainingLoadMatchInfo()
 
 	gMNTrainingFramesElapsed = 0;
 	gMNTrainingIsStartTriggered = FALSE;
-	gMNTrainingMaxFramesElapsed = gMNTrainingFramesElapsed + I_MIN_TO_FRAMES(5);
+	gMNTrainingMaxFramesElapsed = gMNTrainingFramesElapsed + I_MIN_TO_TICS(5);
 	gMNTrainingHumanPanelPort = gSceneData.spgame_player;
 	gMNTrainingCPUPanelPort = (gMNTrainingHumanPanelPort == 0) ? 1 : 0;
 	gMNTrainingCharacterUnlockedMask = gSaveData.fighter_mask;

@@ -959,7 +959,7 @@ void sc1PGameSetupStageAll(void)
         break;
     }
     gBattleState->item_toggles = stagesetup->item_toggles;
-    gBattleState->item_switch = comsetup->item_switch;
+    gBattleState->item_appearance_rate = comsetup->item_appearance_rate;
 
     sSC1PGameEnemyPlayerCount = sSC1PGameEnemyStocksRemaining = sSC1PGameTeamPlayersRemaining = stagesetup->opponent_count;
 
@@ -2223,7 +2223,7 @@ loop_item_strike:
 check_item_strike:
     if (!(gSceneData.bonus_get_mask[0] & SC1PGAME_BONUS_MASK0_ITEMSTRIKE))
     {
-        if (gBattleState->item_switch != nSCBattleItemSwitchNone)
+        if (gBattleState->item_appearance_rate != nSCBattleItemSwitchNone)
         {
             if ((gSC1PGameBonusTomatoCount == 0) && (gSC1PGameBonusHeartCount == 0) && (gSC1PGameBonusStarCount == 0))
             {

@@ -162,7 +162,7 @@ struct itAttributes
 {
 	void *dobj_setup; 					// Either DObjDesc or displaylist?
 	MObjSub ***p_mobjsubs;				// Array of MObjSubs for each MObj on each DObj
-	AObjEvent32 **anim_joints;		// Array of AnimJoints for each DObj
+	AObjEvent32 **anim_joints;			// Array of AnimJoints for each DObj
 	AObjEvent32 ***p_matanim_joints;	// Array of MatAnimJoints for each MObj on each DObj
 	ub32 is_render_xlu : 1;				// If TRUE, use transparency renderer
 	ub32 is_item_dobjs : 1;				// If TRUE, set up special item DObj node tree; otherwise set up common DObj node tree
@@ -232,7 +232,7 @@ struct itStruct 					// Common items, stage hazards, fighter items and Pokémon
 	} phys_info;
 
 	mpCollData coll_data;	   		// Item's collision data
-	sb32 ga; 					// Ground or air bool
+	sb32 ga; 						// Ground or air bool
 
 	itHitbox item_hit;	 			// Item's hitbox
 	itHurtbox item_hurt; 			// Item's hurtbox

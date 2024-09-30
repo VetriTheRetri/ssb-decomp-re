@@ -1637,6 +1637,21 @@ lMNCommonRightArrowSprite = 0x0000DD90;
 lMNCommonLeftArrowSprite = 0x0000DE30;
 lMNCommonCircleSprite = 0x00018000;
 
+lMNVSItemSwitchAppearanceNoneSprite = 0x00000CE8;
+lMNVSItemSwitchAppearanceVeryLowSprite = 0x00000EA8;
+lMNVSItemSwitchAppearanceLowSprite = 0x00000F98;
+lMNVSItemSwitchAppearanceMiddleSprite = 0x000010D0;
+lMNVSItemSwitchAppearanceHighSprite = 0x000011E8;
+lMNVSItemSwitchAppearanceVeryHighSprite = 0x000013A8;
+lMNVSItemSwitchLabelVSOptionsSprite = 0x000009A8;
+lMNVSItemSwitchLabelItemSwitchSprite = 0x00000B20;
+lMNVSItemSwitchToggleOnSprite = 0x00001488;
+lMNVSItemSwitchToggleOffSprite = 0x00001568;
+lMNVSItemSwitchToggleSlashSprite = 0x00001608;
+lMNVSItemSwitchDecalButtonSprite = 0x00003430;
+lMNVSItemSwitchItemListSprite = 0x00005E60;
+lMNVSItemSwitchCursorSprite = 0x000063A8;
+
 lMNVSModeVSSprite = 0x00006118;
 lMNVSModeVSStartSprite = 0x000024C8;
 lMNVSModeSmallStockSprite = 0x00002A80;

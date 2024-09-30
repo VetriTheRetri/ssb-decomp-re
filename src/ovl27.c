@@ -2966,7 +2966,7 @@ void mn1PMain(s32 arg0)
 	}
 
 	if (scSubsysControllerCheckNoInputAll() == 0)
-		gMN1PMaxFramesElapsed = gMN1PFramesElapsed + I_MIN_TO_FRAMES(5);
+		gMN1PMaxFramesElapsed = gMN1PFramesElapsed + I_MIN_TO_TICS(5);
 
 	if (gMN1PIsStartTriggered) // gMN1PIsStartTriggered
 	{
@@ -3047,7 +3047,7 @@ void func_ovl27_801381D0() {}
 void mn1PLoadMatchInfo()
 {
 	gMN1PFramesElapsed = 0;
-	gMN1PMaxFramesElapsed = gMN1PFramesElapsed + I_MIN_TO_FRAMES(5);
+	gMN1PMaxFramesElapsed = gMN1PFramesElapsed + I_MIN_TO_TICS(5);
 	gMN1PIsStartTriggered = 0;
 	gMN1PTimerValue = gSceneData.spgame_time_limit;
 	gMN1PHumanPanelPort = gSceneData.spgame_player;

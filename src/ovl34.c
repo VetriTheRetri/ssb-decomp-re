@@ -225,10 +225,10 @@ void mvOpeningFirstDestinationSetupDisplayList(Gfx **display_list)
 // 80131B58
 void mvOpeningFirstDestinationFadeOutAndDestroyRoomGeo(GObj* room_gobj)
 {
-	if (gMvOpeningFirstDestinationFramesElapsed > I_SEC_TO_FRAMES(18))
+	if (gMvOpeningFirstDestinationFramesElapsed > I_SEC_TO_TICS(18))
 		gcPlayAnimAll(room_gobj);
 
-	if (gMvOpeningFirstDestinationFramesElapsed == I_SEC_TO_FRAMES(19))
+	if (gMvOpeningFirstDestinationFramesElapsed == I_SEC_TO_TICS(19))
 		gcEjectGObj(room_gobj);
 }
 
@@ -1079,7 +1079,7 @@ void mvOpeningFirstDestinationMainProc(GObj* arg0)
 			mvOpeningFirstDestinationCreateDeskStage();
 			mvOpeningFirstDestinationCreateBackground();
 		}
-		if (gMvOpeningFirstDestinationFramesElapsed == I_SEC_TO_FRAMES(19))
+		if (gMvOpeningFirstDestinationFramesElapsed == I_SEC_TO_TICS(19))
 		{
 			mvOpeningFirstDestinationDestroyViewports();
 			mvOpeningFirstDestinationCreateCloseUpGFX();
@@ -1089,12 +1089,12 @@ void mvOpeningFirstDestinationMainProc(GObj* arg0)
 			scSubsysFighterSetStatus(gMvOpeningFirstDestinationPluckedFighterGObj, 0x1000A);
 			mvOpeningFirstDestinationCreateFourthSceneViewports();
 		}
-		if (gMvOpeningFirstDestinationFramesElapsed == I_SEC_TO_FRAMES(18))
+		if (gMvOpeningFirstDestinationFramesElapsed == I_SEC_TO_TICS(18))
 		{
 			gcEjectGObj(gMvOpeningFirstDestinationTransitionGFXOverlayGObj);
 			gcEjectGObj(gMvOpeningFirstDestinationTransitionGFXOutlineGObj);
 		}
-		if (gMvOpeningFirstDestinationFramesElapsed == I_SEC_TO_FRAMES(22))
+		if (gMvOpeningFirstDestinationFramesElapsed == I_SEC_TO_TICS(22))
 		{
 			gSceneData.scene_previous = gSceneData.scene_current;
 			gSceneData.scene_current = 0x1D;

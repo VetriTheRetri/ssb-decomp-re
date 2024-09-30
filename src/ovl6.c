@@ -149,11 +149,11 @@ grBonus2Unk D_ovl6_8018EFE4[] = {
 // 0x8018EFFC - last one is apparently 0.554000020027F but precision is lost
 f32 scBonusGame_Timer_UnitLengths[] = {
 
-	I_MIN_TO_FRAMES(10),
-	I_MIN_TO_FRAMES(1),
-	I_SEC_TO_FRAMES(10),
-	I_SEC_TO_FRAMES(1),
-	I_SEC_TO_FRAMES(1) / 10,
+	I_MIN_TO_TICS(10),
+	I_MIN_TO_TICS(1),
+	I_SEC_TO_TICS(10),
+	I_SEC_TO_TICS(1),
+	I_SEC_TO_TICS(1) / 10,
 	277.0F / 500.0F
 };
 
@@ -687,8 +687,8 @@ void scBonusGame_InitTimer(GObj* interface_gobj)
 	itime = gBattleState->battle_time_current;
 	sobj = SObjGetStruct(interface_gobj);
 
-	if (itime > I_TIME_TO_FRAMES(0, 59, 59, 59))
-		itime = I_TIME_TO_FRAMES(0, 59, 59, 59);
+	if (itime > I_TIME_TO_TICS(0, 59, 59, 59))
+		itime = I_TIME_TO_TICS(0, 59, 59, 59);
 	ftime = itime;
 
 	for (i = 0; i < ARRAY_COUNT(gBonusTimerDigits); i++)

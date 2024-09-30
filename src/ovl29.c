@@ -2387,7 +2387,7 @@ void mnBonusMain(s32 arg0)
 	}
 
 	if (!scSubsysControllerCheckNoInputAll())
-		gMnBonusMaxFramesElapsed = gMnBonusFramesElapsed + I_MIN_TO_FRAMES(5);
+		gMnBonusMaxFramesElapsed = gMnBonusFramesElapsed + I_MIN_TO_TICS(5);
 
 	if (gMnBonusCharSelected && !gMnBonusPanel.unk_0x88)
 		gMnBonusCharSelected = 0;
@@ -2429,7 +2429,7 @@ void mnBonusInitPort()
 void mnBonusLoadMatchInfo()
 {
 	gMnBonusFramesElapsed = 0;
-	gMnBonusMaxFramesElapsed = gMnBonusFramesElapsed + I_MIN_TO_FRAMES(5);
+	gMnBonusMaxFramesElapsed = gMnBonusFramesElapsed + I_MIN_TO_TICS(5);
 	D_ovl29_801376D4 = 5;
 	gMnBonusCharSelected = FALSE;
 	gMnBonusHumanPanelPort = gSceneData.spgame_player;

@@ -116,7 +116,7 @@ void lbBackupCorrectErrors(void)
     if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_ITEMSWITCH))
     {
         gTransferBattleState.item_toggles = gDefaultBattleState.item_toggles;
-        gTransferBattleState.item_switch  = gDefaultBattleState.item_switch;
+        gTransferBattleState.item_appearance_rate  = gDefaultBattleState.item_appearance_rate;
     }
 }
 

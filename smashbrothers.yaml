@@ -1293,14 +1293,13 @@ segments:
 
   - name: ovl21
     type: code
-    bss_size: 0x170
-    start: 0x1280a0
+    start: 0x1280A0
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x1280a0, asm, ovl21]
-      - [0x1297B0, data, ovl21]
-      - { start: auto, type: bss, vram: 0x801333D0, name: ovl21 }
+      - [0x1280A0, c, mn/mnvsmode/mnvsitemswitch]
+      - [0x1297B0, .data, mn/mnvsmode/mnvsitemswitch]
+      - { start: auto, type: .bss, name: mn/mnvsmode/mnvsitemswitch, vram: 0x801333D0 }
 
   - name: ovl22
     type: code

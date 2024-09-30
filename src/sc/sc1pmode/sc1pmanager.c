@@ -167,7 +167,7 @@ void sc1PManagerTrySetChallengers(void)
     {
         gSceneData.spgame_stage = nSC1PGameStageNess;
     }
-    else if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_CAPTAIN) && (gSC1PManagerTotalTimeTics < I_MIN_TO_FRAMES(12)))
+    else if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_CAPTAIN) && (gSC1PManagerTotalTimeTics < I_MIN_TO_TICS(12)))
     {
         // Captain Falcon's unlock criteria is 12 minutes instead of the reported 20???
         gSceneData.spgame_stage = nSC1PGameStageCaptain;

@@ -4,17 +4,15 @@
 #include "mntypes.h"
 #include "mnfunctions.h"
 
-extern intptr_t lMNCommonWallpaperSprite;            // 0x00018000
-
 extern intptr_t lMNCommonOptionTabLeftSprite;        // 0x000001E8
 extern intptr_t lMNCommonOptionTabMiddleSprite;      // 0x00000330
 extern intptr_t lMNCommonOptionTabRightSprite;       // 0x00000568
-extern intptr_t lMNCommonPaperTearSprite;            // 0x00002A30
+extern intptr_t lMNCommonDecalPaperSprite;            // 0x00002A30
 extern intptr_t lMNCommonSmashLogoSprite;            // 0x000031F8
 extern intptr_t lMNCommonTextOnSprite;               // 0x0000B818
 extern intptr_t lMNCommonTextOffSprite;              // 0x0000B958
 extern intptr_t lMNCommonTextSlashSprite;            // 0x0000BA28
-extern intptr_t lMNCommonGameModeSprite;             // 0x0000D240
+extern intptr_t lMNCommonLabelGameModeSprite;        // 0x0000D240
 extern intptr_t lMNCommonDigit0Sprite;               // 0x0000D310
 extern intptr_t lMNCommonDigit1Sprite;               // 0x0000D3E0
 extern intptr_t lMNCommonDigit2Sprite;               // 0x0000D4B0
@@ -30,7 +28,7 @@ extern intptr_t lMNCommonInfinitySprite;             // 0x0000DC48
 extern intptr_t lMNCommonRightArrowSprite;           // 0x0000DD90
 extern intptr_t lMNCommonLeftArrowSprite;            // 0x0000DE30
 extern intptr_t lMNCommonTextAutoSprite;             // 0x0000DF48
-extern intptr_t lMNCommonCircleSprite;               // 0x00018000
+extern intptr_t lMNCommonWallpaperSprite;            // 0x00018000
 
 extern intptr_t lMNVSModeVSSprite;                   // 0x00006118;
 extern intptr_t lMNVSModeVSStartSprite;              // 0x000024C8;

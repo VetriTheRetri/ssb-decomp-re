@@ -154,7 +154,7 @@
 #define LBBACKUP_ERROR_RANDOMKNOCKBACK (1 << nLBBackupErrorRandomKnockback)		// 0x1 - Random knockback between 0.1 (?) and 1.0 x 200u
 #define LBBACKUP_ERROR_HALFSTICKRANGE  (1 << nLBBackupErrorHalfStickRange)		// 0x2 - Halves control stick input range
 #define LBBACKUP_ERROR_1PGAMEMARIO 	(1 << nLBBackupError1PGameMario) 			// 0x4 - Forces Mario in 1P Game
-#define LBBACKUP_ERROR_BATTLECASTLE (1 << nLBBackupErrorVSBattleCastle) 	    // 0x8 - Forces Peach's Castle in VS Mode
+#define LBBACKUP_ERROR_VSBATTLECASTLE (1 << nLBBackupErrorVSBattleCastle) 	    // 0x8 - Forces Peach's Castle in VS Mode
 
 typedef enum lbFileLocation
 {

@@ -1990,7 +1990,7 @@ void sc1PGameProcStart(void)
     sc1PGameSetupStageAll();
     sc1PGameSetupFiles();
 
-    if (!(gSaveData.error_flags & LBBACKUP_ERROR_BATTLECASTLE) && (gSaveData.unk5E3 > 0x5C))
+    if (!(gSaveData.error_flags & LBBACKUP_ERROR_VSBATTLECASTLE) && (gSaveData.unk5E3 > 0x5C))
     {
         syDmaReadRom(0xF10, spA0, ARRAY_COUNT(spA0));
 
@@ -2003,7 +2003,7 @@ void sc1PGameProcStart(void)
 
         if (proc(spA0) == FALSE)
         {
-            gSaveData.error_flags |= LBBACKUP_ERROR_BATTLECASTLE;
+            gSaveData.error_flags |= LBBACKUP_ERROR_VSBATTLECASTLE;
         }
     }
     gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 1, 0xFF);

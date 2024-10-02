@@ -194,7 +194,7 @@ void mnDebugBattleStartScene();
 void mnDebugFallsStartScene();
 void debug_button_test_entry();
 void menu_main_entry();
-void menu_1p_entry();
+void mn1PModeStartScene();
 void mnOptionStartScene();
 void mnDataStartScene();
 void mnVSModeStartScene();
@@ -344,7 +344,7 @@ void start_scene_manager(u32 set)
 			case 8:
 				syDmaLoadOverlay(&D_800A3070[1]);
 				syDmaLoadOverlay(&D_800A3070[18]);
-				menu_1p_entry();
+				mn1PModeStartScene();
 				break;
 			case 57:
 				syDmaLoadOverlay(&D_800A3070[1]);

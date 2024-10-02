@@ -152,6 +152,16 @@ extern uintptr_t ovl6_RODATA_END;
 extern uintptr_t ovl6_BSS_START;
 extern uintptr_t ovl6_BSS_END;
 
+extern uintptr_t ovl18_ROM_START;
+extern uintptr_t ovl18_ROM_END;
+extern uintptr_t ovl18_VRAM;
+extern uintptr_t ovl18_TEXT_START;
+extern uintptr_t ovl18_TEXT_END;
+extern uintptr_t ovl18_DATA_START;
+extern uintptr_t ovl18_RODATA_END;
+extern uintptr_t ovl18_BSS_START;
+extern uintptr_t ovl18_BSS_END;
+
 extern uintptr_t ovl19_ROM_START;
 extern uintptr_t ovl19_ROM_END;
 extern uintptr_t ovl19_VRAM;

@@ -583,7 +583,7 @@ void mnVSOptionsMakeTeamAttackOption(void)
     pos_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 90 : 97;
 
     sMNVSOptionsOptionGObjs[nMNVSOptionsOptionTeamAttack] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, &lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNVSOptionsFiles[1], &lMNVSOptionsOptionTabSprite));
     
@@ -621,7 +621,7 @@ void mnVSOptionsMakeHandicapOption(void)
     pos_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 61 : 65;
 
     sMNVSOptionsOptionGObjs[nMNVSOptionsOptionHandicap] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, &lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNVSOptionsFiles[1], &lMNVSOptionsOptionTabSprite));
     
@@ -1362,8 +1362,8 @@ void mnVSOptionsProcStart(void)
 {
     lbRelocSetup rl_setup;
 
-    rl_setup.table_addr = &lLBRelocTableAddr;
-    rl_setup.table_files_num = &lLBRelocTableFilesNum;
+    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
     rl_setup.status_buf = sMNVSOptionsStatusBuf;

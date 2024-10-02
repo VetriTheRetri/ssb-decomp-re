@@ -76,7 +76,7 @@ GObj *D_ovl60_801337D4;
 s32 D_ovl60_801337D8;
 
 // 0x801337DC
-sb32 sMNOptionIsOptionSelected;
+sb32 sMNOptionIsProceedScene;
 
 // 0x801337E0
 s32 sMNOptionOptionChangeWait;
@@ -129,7 +129,7 @@ void mnOptionProcLights(Gfx **dls)
 }
 
 // 0x80131B24
-void mnOptionUpdateOptionTabSObjs(GObj *gobj, s32 status)
+void mnOptionSetOptionSpriteColors(GObj *gobj, s32 status)
 {
     // 0x80133668
     syColorRGBPair selcolors = { { 0x00, 0x00, 0x00 }, { 0xFF, 0xFF, 0xFF } };
@@ -163,7 +163,7 @@ void mnOptionUpdateOptionTabSObjs(GObj *gobj, s32 status)
     }
     sobj = SObjGetStruct(gobj);
 
-    for (i = 0; i < nMNOptionTabStatusEnumMax; i++)
+    for (i = 0; i < 3; i++)
     {
         sobj->envcolor.r = colors->prim.r;
         sobj->envcolor.g = colors->prim.g;
@@ -178,7 +178,7 @@ void mnOptionUpdateOptionTabSObjs(GObj *gobj, s32 status)
 }
 
 // 0x80131BFC
-void mnOptionMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
+void mnOptionMakeOptionTabs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
 {
     SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonOptionTabLeftSprite));
 
@@ -290,8 +290,8 @@ void mnOptionMakeSoundTextSObj(void)
     sMNOptionSoundGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
-    mnOptionMakeOptionTabSObjs(gobj, 113.0F, 42.0F, 17);
-    mnOptionUpdateOptionTabSObjs(gobj, sMNOptionOption == nMNOptionOptionSound);
+    mnOptionMakeOptionTabs(gobj, 113.0F, 42.0F, 17);
+    mnOptionSetOptionSpriteColors(gobj, sMNOptionOption == nMNOptionOptionSound);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionSoundTextSprite));
 
@@ -316,9 +316,9 @@ void mnOptionMakeScreenAdjustSObj(void)
 
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
-    mnOptionMakeOptionTabSObjs(gobj, 91.0F, 89.0F, 17);
+    mnOptionMakeOptionTabs(gobj, 91.0F, 89.0F, 17);
 
-    mnOptionUpdateOptionTabSObjs(gobj, sMNOptionOption == nMNOptionOptionScreenAdjust);
+    mnOptionSetOptionSpriteColors(gobj, sMNOptionOption == nMNOptionOptionScreenAdjust);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionScreenAdjustTextSprite));
 
@@ -342,8 +342,8 @@ void mnOptionMakeBackupClearSObj(void)
     sMNOptionBackupClearGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
-    mnOptionMakeOptionTabSObjs(gobj, 69.0F, 136.0F, 17);
-    mnOptionUpdateOptionTabSObjs(gobj, sMNOptionOption == nMNOptionOptionBackupClear);
+    mnOptionMakeOptionTabs(gobj, 69.0F, 136.0F, 17);
+    mnOptionSetOptionSpriteColors(gobj, sMNOptionOption == nMNOptionOptionBackupClear);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionBackupClearTextSprite));
 
@@ -454,12 +454,12 @@ void mnOptionMakeDecalSObjs(void)
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonCircleSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonWallpaperSprite));
 
     sobj->pos.x = 10.0F;
     sobj->pos.y = 10.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonPaperTearSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonDecalPaperSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -471,7 +471,7 @@ void mnOptionMakeDecalSObjs(void)
     sobj->pos.x = 140.0F;
     sobj->pos.y = 143.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonPaperTearSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonDecalPaperSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -745,7 +745,7 @@ void mnOptionInitVars(void)
     sMNOptionIsScreenFlash = gSaveData.is_allow_screenflash;
     sMNOptionTotalTimeTics = 0;
     D_ovl60_801337D4 = NULL;
-    sMNOptionIsOptionSelected = FALSE;
+    sMNOptionIsProceedScene = FALSE;
     sMNOptionReturnTic = sMNOptionTotalTimeTics + I_MIN_TO_TICS(5);
 }
 
@@ -787,7 +787,7 @@ void mnOptionProcRun(GObj *gobj)
         {
             sMNOptionReturnTic = sMNOptionTotalTimeTics + I_MIN_TO_TICS(5);
         }
-        if (sMNOptionIsOptionSelected != FALSE)
+        if (sMNOptionIsProceedScene != FALSE)
         {
             leoInitUnit_atten();
         }
@@ -814,12 +814,12 @@ void mnOptionProcRun(GObj *gobj)
 
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
 
-                mnOptionUpdateOptionTabSObjs(*option_gobj[sMNOptionOption], nMNOptionTabStatusSelected);
+                mnOptionSetOptionSpriteColors(*option_gobj[sMNOptionOption], nMNOptionTabStatusSelected);
 
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = nSCKindScreenAdjust;
 
-                sMNOptionIsOptionSelected = TRUE;
+                sMNOptionIsProceedScene = TRUE;
                 return;
 
             case nMNOptionOptionBackupClear:
@@ -827,12 +827,12 @@ void mnOptionProcRun(GObj *gobj)
 
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
 
-                mnOptionUpdateOptionTabSObjs(*option_gobj[sMNOptionOption], nMNOptionTabStatusSelected);
+                mnOptionSetOptionSpriteColors(*option_gobj[sMNOptionOption], nMNOptionTabStatusSelected);
 
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = nSCKindBackupClear;
 
-                sMNOptionIsOptionSelected = TRUE;
+                sMNOptionIsProceedScene = TRUE;
                 return;
             }
         }
@@ -856,7 +856,7 @@ void mnOptionProcRun(GObj *gobj)
 
             mnOptionSetOptionChangeWaitP(is_button, stick_range, 7);
 
-            mnOptionUpdateOptionTabSObjs(*option_gobj[sMNOptionOption], nMNOptionTabStatusNot);
+            mnOptionSetOptionSpriteColors(*option_gobj[sMNOptionOption], nMNOptionTabStatusNot);
 
             if (sMNOptionOption == nMNOptionOptionStart)
             {
@@ -864,7 +864,7 @@ void mnOptionProcRun(GObj *gobj)
             }
             else sMNOptionOption--;
 
-            mnOptionUpdateOptionTabSObjs(*option_gobj[sMNOptionOption], nMNOptionTabStatusHighlight);
+            mnOptionSetOptionSpriteColors(*option_gobj[sMNOptionOption], nMNOptionTabStatusHighlight);
             gcEjectGObj(sMNOptionMenuGObj);
             mnOptionMakeMenuGObj();
         }
@@ -882,7 +882,7 @@ void mnOptionProcRun(GObj *gobj)
             {
                 sMNOptionOptionChangeWait += 8;
             }
-            mnOptionUpdateOptionTabSObjs(*option_gobj[sMNOptionOption], nMNOptionTabStatusNot);
+            mnOptionSetOptionSpriteColors(*option_gobj[sMNOptionOption], nMNOptionTabStatusNot);
 
             if (sMNOptionOption == nMNOptionOptionEnd)
             {
@@ -890,7 +890,7 @@ void mnOptionProcRun(GObj *gobj)
             }
             else sMNOptionOption++;
 
-            mnOptionUpdateOptionTabSObjs(*option_gobj[sMNOptionOption], nMNOptionTabStatusHighlight);
+            mnOptionSetOptionSpriteColors(*option_gobj[sMNOptionOption], nMNOptionTabStatusHighlight);
             gcEjectGObj(sMNOptionMenuGObj);
             mnOptionMakeMenuGObj();
         }

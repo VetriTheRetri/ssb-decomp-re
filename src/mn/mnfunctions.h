@@ -1,6 +1,8 @@
 #ifndef _MNFUNCTIONS_H_
 #define _MNFUNCTIONS_H_
 
+#include <mn/mn1pmode/mn1pmode.h>
+
 #include <mn/mnvsmode/mnvsoptions.h>
 #include <mn/mnvsmode/mnvsitemswitch.h>
 #include <mn/mnvsmode/mnvsmode.h>

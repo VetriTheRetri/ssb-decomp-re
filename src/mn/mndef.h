@@ -102,14 +102,30 @@ typedef enum mnVSModeInputDirection
 
 typedef enum mnVSOptionsOptions
 {
-	nMNVSOptionsOptionHandicap,
+	nMNVSOptionsOptionStart,
+	nMNVSOptionsOptionHandicap = nMNVSOptionsOptionStart,
 	nMNVSOptionsOptionTeamAttack,
 	nMNVSOptionsOptionStageSelect,
 	nMNVSOptionsOptionDamage,
 	nMNVSOptionsOptionItemSwitch,
+	nMNVSOptionsOptionEnd = nMNVSOptionsOptionItemSwitch,
+
 	nMNVSOptionsOptionEnumMax
 
 } mnVSOptionsOptions;
+
+typedef enum mn1PModeOptions
+{
+	nMN1PModeOptionStart,
+	nMN1PModeOption1PGame = nMN1PModeOptionStart,
+	nMN1PModeOptionTrainingMode,
+	nMN1PModeOptionBonus1Practice,
+	nMN1PModeOptionBonus2Practice,
+	nMN1PModeOptionEnd = nMN1PModeOptionBonus2Practice,
+	
+	nMN1PModeOptionEnumMax
+
+} mn1PModeOptions;
 
 typedef enum mnOptionTabStatus
 {

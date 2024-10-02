@@ -32,7 +32,7 @@ extern void mnBackupClearProcLights(Gfx **dls);
 extern void mnBackupClearMakeUnused(s32 option);
 extern void mnBackupClearMakeHeaderSObjs(void);
 extern void mnBackupClearUpdateOptionTabColors(GObj *gobj, s32 status);
-extern void mnBackupClearUpdateOptionTabSObjs(void);
+extern void mnBackupClearSetOptionSpriteColors(void);
 extern void mnBackupClearEjectOptionGObjs(void);
 extern void mnBackupClearOptionConfirmProcDisplay(GObj *gobj);
 extern void mnBackupClearEjectOptionConfirmGObj(void);

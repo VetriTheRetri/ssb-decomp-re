@@ -238,7 +238,7 @@ void mnBackupClearUpdateOptionTabColors(GObj *gobj, s32 status)
 }
 
 // 0x80131D44
-void mnBackupClearUpdateOptionTabSObjs(void)
+void mnBackupClearSetOptionSpriteColors(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -654,7 +654,7 @@ void mnBackupClearUpdateOptionConfirmMenu(sb32 confirm_kind)
         case 1:
             sMNBackupClearOptionMenuKind = 0;
             mnBackupClearEjectOptionConfirmGObj();
-            mnBackupClearUpdateOptionTabSObjs();
+            mnBackupClearSetOptionSpriteColors();
             sMNBackupClearUpdateWait = 10;
             return;
         }
@@ -663,7 +663,7 @@ void mnBackupClearUpdateOptionConfirmMenu(sb32 confirm_kind)
     {
         sMNBackupClearOptionMenuKind = 0;
         mnBackupClearEjectOptionConfirmGObj();
-        mnBackupClearUpdateOptionTabSObjs();
+        mnBackupClearSetOptionSpriteColors();
         sMNBackupClearUpdateWait = 10;
     }
     else if
@@ -730,7 +730,7 @@ void mnBackupClearProcRun(GObj *gobj)
         if (sMNBackupClearOptionConfirmAnimLength == 0)
         {
             mnBackupClearEjectOptionConfirmGObj();
-            mnBackupClearUpdateOptionTabSObjs();
+            mnBackupClearSetOptionSpriteColors();
         }
     }
     else
@@ -802,7 +802,7 @@ void mnBackupClearProcStart(void)
     mnBackupClearMakeCamera();
     mnBackupClearMakeHeaderSObjs();
     mnBackupClearMakeUnused(sMNBackupClearOption);
-    mnBackupClearUpdateOptionTabSObjs();
+    mnBackupClearSetOptionSpriteColors();
 }
 
 // 0x80132FB8

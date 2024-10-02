@@ -483,7 +483,7 @@ void scBattleRoyalStartScene()
 
 	gBattleState->gr_kind = gSceneData.gr_kind;
 
-	if (gSaveData.error_flags & LBBACKUP_ERROR_BATTLECASTLE)
+	if (gSaveData.error_flags & LBBACKUP_ERROR_VSBATTLECASTLE)
 		gBattleState->gr_kind = nGRKindCastle;
 
 	D_ovl4_8018E3D8.zbuffer = syDisplayGetZBuffer(6400);

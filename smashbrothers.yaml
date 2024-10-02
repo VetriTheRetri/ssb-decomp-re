@@ -34,10 +34,6 @@ options:
     - symbols/ovl1.txt
     - symbols/ovl16.txt
     - symbols/ovl17.txt
-    - symbols/ovl18.txt
-    - symbols/ovl20.txt
-    - symbols/ovl21.txt
-    - symbols/ovl22.txt
     - symbols/ovl8.txt
 
     - symbols/not_found.txt
@@ -1241,14 +1237,13 @@ segments:
 
   - name: ovl18
     type: code
-    bss_size: 0x100
-    start: 0x11dc10
+    start: 0x11DC10
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x11dc10, asm, ovl18]
-      - [0x11F190, data, ovl18]
-      - { start: auto, type: bss, vram: 0x801331A0, name: ovl18 }
+      - [0x11DC10, c, mn/mn1pmode/mn1pmode]
+      - [0x11F190, .data, mn/mn1pmode/mn1pmode]
+      - { start: auto, type: .bss, name: mn/mn1pmode/mn1pmode, vram: 0x801331A0 }
 
   - name: ovl60
     type: code

@@ -244,24 +244,30 @@ void mnVSModeUpdateButton(GObj* button_gobj, s32 button_status)
 
     switch (button_status)
     {
-        case nMNOptionTabStatusHighlight:
-            colors = &hicolors;
-            break;
-        case nMNOptionTabStatusNot:
-            colors = &notcolors;
-            break;
-        case nMNOptionTabStatusSelected:
-            colors = &selcolors;
-            break;
+    case nMNOptionTabStatusHighlight:
+        colors = &hicolors;
+        break;
+    
+    case nMNOptionTabStatusNot:
+        colors = &notcolors;
+        break;
+
+    case nMNOptionTabStatusSelected:
+        colors = &selcolors;
+        break;
+
+    default:
+        break;
     }
 
     button_sobj = SObjGetStruct(button_gobj);
 
-    for (i = 0; i < nMNOptionTabStatusEnumMax; i++)
+    for (i = 0; i < 3; i++)
     {
         button_sobj->envcolor.r = colors->prim.r;
         button_sobj->envcolor.g = colors->prim.g;
         button_sobj->envcolor.b = colors->prim.b;
+        
         button_sobj->sprite.red = colors->env.r;
         button_sobj->sprite.green = colors->env.g;
         button_sobj->sprite.blue = colors->env.b;
@@ -798,7 +804,7 @@ void mnVSModeMakeMenuName()
     menu_name_sobj->pos.x = 158.0F;
     menu_name_sobj->pos.y = 192.0F;
 
-    menu_name_sobj = lbCommonMakeSObjForGObj(menu_name_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonGameModeSprite));
+    menu_name_sobj = lbCommonMakeSObjForGObj(menu_name_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonLabelGameModeSprite));
     menu_name_sobj->sprite.attr &= ~SP_FASTCOPY;
     menu_name_sobj->sprite.attr |= SP_TRANSPARENT;
     menu_name_sobj->sprite.red = 0x00;
@@ -817,11 +823,11 @@ void mnVSModeMakeBackground(void)
     bg_gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(bg_gobj, lbCommonDrawSObjAttr, 0, GOBJ_LINKORDER_DEFAULT, -1);
 
-    bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonCircleSprite));
+    bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonWallpaperSprite));
     bg_sobj->pos.x = 10.0F;
     bg_sobj->pos.y = 10.0F;
 
-    bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonPaperTearSprite));
+    bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonDecalPaperSprite));
     bg_sobj->sprite.attr &= ~SP_FASTCOPY;
     bg_sobj->sprite.attr |= SP_TRANSPARENT;
     bg_sobj->sprite.red = 0xA0;
@@ -830,7 +836,7 @@ void mnVSModeMakeBackground(void)
     bg_sobj->pos.x = 140.0F;
     bg_sobj->pos.y = 143.0F;
 
-    bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonPaperTearSprite));
+    bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, lbGetDataFromFile(Sprite*, sMNVSModeFiles[0], &lMNCommonDecalPaperSprite));
     bg_sobj->sprite.attr &= ~SP_FASTCOPY;
     bg_sobj->sprite.attr |= SP_TRANSPARENT;
     bg_sobj->sprite.red = 0xA0;

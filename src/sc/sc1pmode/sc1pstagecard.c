@@ -199,7 +199,7 @@ void sc1PStageCardMakeVSDecal(void)
 
     gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, &lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardDecalVSSprite));
     

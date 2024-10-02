@@ -7,8 +7,8 @@
 #include <mn/mndef.h>
 
 extern void mnOptionProcLights(Gfx **dls);
-extern void mnOptionUpdateOptionTabSObjs(GObj *gobj, s32 status);
-extern void mnOptionMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs);
+extern void mnOptionSetOptionSpriteColors(GObj *gobj, s32 status);
+extern void mnOptionMakeOptionTabs(GObj *gobj, f32 posx, f32 posy, s32 lrs);
 extern void mnOptionUpdateSoundOptionSObjs(GObj *gobj, sb32 mono_or_stereo);
 extern void mnOptionMakeSoundOptionSObjs(void);
 extern void mnOptionMakeSoundTextSObj(void);

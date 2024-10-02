@@ -65,7 +65,7 @@ s32 sMNDataLastAvailableOption;
 sb32 sMNDataIsSoundTestUnlocked;
 
 // 0x8013308C
-sb32 sMNDataIsOptionSelected;
+sb32 sMNDataIsProceedScene;
 
 // 0x80133090
 s32 sMNDataOptionChangeWait;
@@ -128,7 +128,7 @@ sb32 mnDataCheckSoundTestUnlocked(void)
 }
 
 // 0x80131B4C
-void mnDataUpdateOptionTabSObjs(GObj *gobj, s32 status)
+void mnDataSetOptionSpriteColors(GObj *gobj, s32 status)
 {
     // 0x80132F68
     syColorRGBPair selcolors = { { 0x00, 0x00, 0x00 }, { 0xFF, 0xFF, 0xFF } };
@@ -162,7 +162,7 @@ void mnDataUpdateOptionTabSObjs(GObj *gobj, s32 status)
     }
     sobj = SObjGetStruct(gobj);
 
-    for (i = 0; i < nMNOptionTabStatusEnumMax; i++)
+    for (i = 0; i < 3; i++)
     {
         sobj->envcolor.r = colors->prim.r;
         sobj->envcolor.g = colors->prim.g;
@@ -177,7 +177,7 @@ void mnDataUpdateOptionTabSObjs(GObj *gobj, s32 status)
 }
 
 // 0x80131C24
-void mnDataMakeOptionTabSObjs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
+void mnDataMakeOptionTabs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
 {
     SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNDataFiles[0], &lMNCommonOptionTabLeftSprite));
 
@@ -242,9 +242,9 @@ void mnDataMakeCharactersSObj(void)
 
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
-    mnDataMakeOptionTabSObjs(gobj, posx, posy, 16);
+    mnDataMakeOptionTabs(gobj, posx, posy, 16);
 
-    mnDataUpdateOptionTabSObjs(gobj, sMNDataOption == nMNDataOptionCharacters);
+    mnDataSetOptionSpriteColors(gobj, sMNDataOption == nMNDataOptionCharacters);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNDataFiles[1], &lMNDataCharacterOptionSprite));
 
@@ -282,9 +282,9 @@ void mnDataMakeVSRecordSObj(void)
 
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
-    mnDataMakeOptionTabSObjs(gobj, posx, posy, 16);
+    mnDataMakeOptionTabs(gobj, posx, posy, 16);
 
-    mnDataUpdateOptionTabSObjs(gobj, sMNDataOption == nMNDataOptionVSRecord);
+    mnDataSetOptionSpriteColors(gobj, sMNDataOption == nMNDataOptionVSRecord);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNDataFiles[1], &lMNDataVSRecordOptionSprite));
 
@@ -309,9 +309,9 @@ void mnDataMakeSoundTestSObj(void)
 
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
-    mnDataMakeOptionTabSObjs(gobj, 69.0F, 136.0F, 16);
+    mnDataMakeOptionTabs(gobj, 69.0F, 136.0F, 16);
 
-    mnDataUpdateOptionTabSObjs(gobj, sMNDataOption == nMNDataOptionSoundTest);
+    mnDataSetOptionSpriteColors(gobj, sMNDataOption == nMNDataOptionSoundTest);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNDataFiles[1], &lMNDataSoundTestOptionSprite));
 
@@ -421,12 +421,12 @@ void mnDataMakeDecalSObjs(void)
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNDataFiles[0], &lMNCommonCircleSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNDataFiles[0], &lMNCommonWallpaperSprite));
 
     sobj->pos.x = 10.0F;
     sobj->pos.y = 10.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNDataFiles[0], &lMNCommonPaperTearSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNDataFiles[0], &lMNCommonDecalPaperSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -438,7 +438,7 @@ void mnDataMakeDecalSObjs(void)
     sobj->pos.x = 140.0F;
     sobj->pos.y = 143.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNDataFiles[0], &lMNCommonPaperTearSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNDataFiles[0], &lMNCommonDecalPaperSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -594,7 +594,7 @@ void mnDataInitVars(void)
     }
     sMNDataOptionChangeWait = 0;
     sMNDataTotalTimeTics = 0;
-    sMNDataIsOptionSelected = FALSE;
+    sMNDataIsProceedScene = FALSE;
     sMNDataReturnTic = sMNDataTotalTimeTics + I_MIN_TO_TICS(5);
 }
 
@@ -626,7 +626,7 @@ void mnDataProcRun(GObj *gobj)
         {
             sMNDataReturnTic = sMNDataTotalTimeTics + I_MIN_TO_TICS(5);
         }
-        if (sMNDataIsOptionSelected != FALSE)
+        if (sMNDataIsProceedScene != FALSE)
         {
             leoInitUnit_atten();
 
@@ -652,32 +652,32 @@ void mnDataProcRun(GObj *gobj)
             {
             case nMNDataOptionCharacters:
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
-                mnDataUpdateOptionTabSObjs(*option_gobj[sMNDataOption], nMNOptionTabStatusSelected);
+                mnDataSetOptionSpriteColors(*option_gobj[sMNDataOption], nMNOptionTabStatusSelected);
                 auStopBGM();
 
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = nSCKindCharacters;
-                sMNDataIsOptionSelected = TRUE;
+                sMNDataIsProceedScene = TRUE;
                 return;
 
             case nMNDataOptionVSRecord:
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
-                mnDataUpdateOptionTabSObjs(*option_gobj[sMNDataOption], nMNOptionTabStatusSelected);
+                mnDataSetOptionSpriteColors(*option_gobj[sMNDataOption], nMNOptionTabStatusSelected);
                 auStopBGM();
 
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = nSCKindVSRecord;
-                sMNDataIsOptionSelected = TRUE;
+                sMNDataIsProceedScene = TRUE;
                 return;
 
             case nMNDataOptionSoundTest:
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
-                mnDataUpdateOptionTabSObjs(*option_gobj[sMNDataOption], nMNOptionTabStatusSelected);
+                mnDataSetOptionSpriteColors(*option_gobj[sMNDataOption], nMNOptionTabStatusSelected);
                 auStopBGM();
 
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = nSCKindSoundTest;
-                sMNDataIsOptionSelected = TRUE;
+                sMNDataIsProceedScene = TRUE;
                 return;
             }
         }
@@ -700,7 +700,7 @@ void mnDataProcRun(GObj *gobj)
 
             mnDataSetOptionChangeWaitP(is_button, stick_range, 7);
 
-            mnDataUpdateOptionTabSObjs(*option_gobj[sMNDataOption], nMNOptionTabStatusNot);
+            mnDataSetOptionSpriteColors(*option_gobj[sMNDataOption], nMNOptionTabStatusNot);
 
             if (sMNDataOption == sMNDataFirstAvailableOption)
             {
@@ -708,7 +708,7 @@ void mnDataProcRun(GObj *gobj)
             }
             else sMNDataOption--;
 
-            mnDataUpdateOptionTabSObjs(*option_gobj[sMNDataOption], nMNOptionTabStatusHighlight);
+            mnDataSetOptionSpriteColors(*option_gobj[sMNDataOption], nMNOptionTabStatusHighlight);
 
             if (sMNDataOption == sMNDataFirstAvailableOption)
             {
@@ -728,7 +728,7 @@ void mnDataProcRun(GObj *gobj)
 
             mnDataSetOptionChangeWaitN(is_button, stick_range, 7);
 
-            mnDataUpdateOptionTabSObjs(*option_gobj[sMNDataOption], nMNOptionTabStatusNot);
+            mnDataSetOptionSpriteColors(*option_gobj[sMNDataOption], nMNOptionTabStatusNot);
 
             if (sMNDataOption == sMNDataLastAvailableOption)
             {
@@ -736,7 +736,7 @@ void mnDataProcRun(GObj *gobj)
             }
             else sMNDataOption++;
 
-            mnDataUpdateOptionTabSObjs(*option_gobj[sMNDataOption], nMNOptionTabStatusHighlight);
+            mnDataSetOptionSpriteColors(*option_gobj[sMNDataOption], nMNOptionTabStatusHighlight);
 
             if (sMNDataOption == sMNDataLastAvailableOption)
             {

@@ -1226,14 +1226,13 @@ segments:
 
   - name: ovl17
     type: code
-    bss_size: 0xf0
-    start: 0x11ca90
+    start: 0x11CA90
     vram: 0x80131B00
     exclusive_ram_id: overlay_80131B00
     subsegments:
-      - [0x11ca90, asm, ovl17]
-      - [0x11DB20, data, ovl17]
-      - { start: auto, type: bss, vram: 0x80132C80, name: ovl17 }
+      - [0x11ca90, c, mn/mncommon/mnmodeselect]
+      - [0x11DB20, .data, mn/mncommon/mnmodeselect]
+      - { start: auto, type: .bss, name: mn/mncommon/mnmodeselect, vram: 0x80132C80 }
 
   - name: ovl18
     type: code

@@ -1641,6 +1641,23 @@ lMNCommonLeftArrowSprite = 0x0000DE30;
 lMNCommonTextAutoSprite = 0x0000DF48;
 lMNCommonWallpaperSprite = 0x00018000;
 
+lMNModeSelectOption1PModeHighlightSprite = 0x00001990;
+lMNModeSelectOptionVSModeHighlightSprite = 0x00002520;
+lMNModeSelectOptionDataHighlightSprite = 0x000030B0;
+lMNModeSelectDecalModeSelectSprite = 0x000040F0;
+lMNModeSelectOptionOptionHighlightSprite = 0x00004C80;
+lMNModeSelectLabel1PModeSprite = 0x00005570;
+lMNModeSelectLabelVSModeSprite = 0x000057E0;
+lMNModeSelectLabelDataSprite = 0x00005980;
+lMNModeSelectOption1PModeNotSprite = 0x00006048;
+lMNModeSelectOptionVSModeNotSprite = 0x00006708;
+lMNModeSelectOptionDataNotSprite = 0x00006DC8;
+lMNModeSelectDecalBarEdgeSprite = 0x000072E8;
+lMNModeSelectDecalSmashLogoSprite = 0x00007AA8;
+lMNModeSelectDecalBarMiddleSprite = 0x00007C38;
+lMNModeSelectOptionOptionNotSprite = 0x000082F8;
+lMNModeSelectLabelOptionSprite = 0x000084F8;
+
 lMN1PModeOptionTabSprite = 0x00001108;
 lMN1PModeText1PGameSprite = 0x00002A28;
 lMN1PModeDecalControllerSprite = 0x000050F8;

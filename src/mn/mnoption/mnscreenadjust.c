@@ -278,7 +278,7 @@ void mnScreenAdjustProcRun(GObj *gobj)
             func_800269C0_275C0(nSYAudioFGMMenuSelect);
             
             gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = nSCKindOptions;
+            gSceneData.scene_current = nSCKindOption;
 
             mnScreenAdjustBackupOffsets();
             leoInitUnit_atten();

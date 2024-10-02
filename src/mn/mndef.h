@@ -114,6 +114,19 @@ typedef enum mnVSOptionsOptions
 
 } mnVSOptionsOptions;
 
+typedef enum sMNModeSelectOptions
+{
+	nMNModeSelectOptionStart,
+	nMNModeSelectOption1PMode = nMNModeSelectOptionStart,
+	nMNModeSelectOptionVSMode,
+	nMNModeSelectOptionOption,
+	nMNModeSelectOptionData,
+	nMNModeSelectOptionEnd = nMNModeSelectOptionData,
+
+	nMNModeSelectOptionEnumMax
+
+} sMNModeSelectOptions;
+
 typedef enum mn1PModeOptions
 {
 	nMN1PModeOptionStart,

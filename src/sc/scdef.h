@@ -176,7 +176,7 @@ typedef enum scKind
 	nSCKind1PTraining,    		  // Training mode in-game
 	nSCKindCongra,	 		  	  // Congratulations screen
 	nSCKindStaffroll,             // Credits scene
-	nSCKindOptions,           	  // Options menu
+	nSCKindOption,           	  // Options menu
 	nSCKindData,              	  // Data menu
 	nSCKindSoundTest,        	  // Sound Test
 	nSCKindExplain,         	  // How to Play

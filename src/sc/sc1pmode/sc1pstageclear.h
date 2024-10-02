@@ -131,10 +131,10 @@ extern intptr_t lSC1PStageClearBonusVeryHardClear;        	// 0x00014788
 
 extern void sc1PStageClearProcLights(Gfx **dls);
 extern s32 sc1PStageClearGetPowerOf(s32 base, s32 exp);
-extern void sc1PStageClearSetDigitSpriteColor(SObj *sobj, s32 digit_kind, syColorRGBPair *colors_default);
+extern void sc1PStageClearSetDigitSpriteColors(SObj *sobj, s32 digit_kind, syColorRGBPair *colors_default);
 extern s32 sc1PStageClearGetScoreDigitCount(s32 points, s32 digit_count_max);
 extern Sprite* sc1PStageClearGetScoreDigitSprite(s32 digit_kind, s32 digit);
-extern void sc1PStageClearMakeScoreDigitSObjs
+extern void sc1PStageClearMakeScoreDigits
 (
 	GObj *gobj,
 	s32 points,
@@ -151,10 +151,10 @@ extern void sc1PStageClearTextProcDisplay(GObj *gobj);
 extern void sc1PStageClearMakeTextSObjs(void);
 extern void sc1PStageClearMakeScoreSObjs(void);
 extern void sc1PStageClearMakeTimerTextSObjs(f32 y);
-extern void sc1PStageClearMakeTimerDigitSObjs(f32 y);
+extern void sc1PStageClearMakeTimerDigits(f32 y);
 extern s32 sc1PStageClearGetAppendTotalTimeScore(f32 y);
 extern void sc1PStageClearMakeDamageTextSObjs(f32 y);
-extern void sc1PStageClearMakeDamageDigitSObjs(f32 y);
+extern void sc1PStageClearMakeDamageDigits(f32 y);
 extern s32 sc1PStageClearGetAppendTotalDamageScore(f32 y);
 extern void sc1PStageClearMakeTargetTextSObjs(void);
 extern void func_ovl56_80132DC0(GObj *gobj);

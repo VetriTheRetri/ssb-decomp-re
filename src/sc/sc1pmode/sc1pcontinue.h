@@ -21,7 +21,7 @@ extern s32 sc1PContinueGetPowerOf(s32 base, s32 exp);
 extern void sc1PContinueScoreDigitInitSprite(SObj *sobj);
 extern s32 sc1PContinueGetScoreDigitCount(s32 points, s32 digit_count_max);
 extern Sprite* sc1PContinueScoreDigitGetSprite(s32 digit);
-extern void sc1PContinueMakeScoreDigitSObjs
+extern void sc1PContinueMakeScoreDigits
 (
     GObj *gobj,
     s32 points,

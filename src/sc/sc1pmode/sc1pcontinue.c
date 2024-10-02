@@ -248,7 +248,7 @@ Sprite* sc1PContinueScoreDigitGetSprite(s32 digit)
 }
 
 // 0x80131D40
-void sc1PContinueMakeScoreDigitSObjs
+void sc1PContinueMakeScoreDigits
 (
     GObj *gobj,
     s32 points,
@@ -316,7 +316,7 @@ void sc1PContinueMakeScoreDisplay(s32 points)
     sobj->pos.x = 90.0F;
     sobj->pos.y = 200.0F;
 
-    sc1PContinueMakeScoreDigitSObjs(gobj, points, 295.0F, 197.0F, 0.0F, 16, 8, TRUE);
+    sc1PContinueMakeScoreDigits(gobj, points, 295.0F, 197.0F, 0.0F, 16, 8, TRUE);
 }
 
 // 0x80132094 - Unused?

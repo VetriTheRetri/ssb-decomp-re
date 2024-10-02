@@ -198,7 +198,7 @@ void menu_1p_entry();
 void mnOptionStartScene();
 void mnDataStartScene();
 void mnVSModeStartScene();
-void options_vs_entry();
+void mnVSOptionsStartScene();
 void mnVSItemSwitchStartScene();
 void mnMessageStartScene();
 void sc1PChallengerStartScene();
@@ -364,7 +364,7 @@ void start_scene_manager(u32 set)
 			case 10:
 				syDmaLoadOverlay(&D_800A3070[1]);
 				syDmaLoadOverlay(&D_800A3070[20]);
-				options_vs_entry();
+				mnVSOptionsStartScene();
 				break;
 			case 11:
 				syDmaLoadOverlay(&D_800A3070[1]);

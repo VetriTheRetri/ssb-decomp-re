@@ -215,6 +215,15 @@ typedef enum scBattleGameStatus
 
 } scBattleGameStatus;
 
+typedef enum scBattleHandicap
+{
+	nSCBattleHandicapOff,
+	nSCBattleHandicapOn,
+	nSCBattleHandicapAuto,
+	nSCBattleHandicapEnumMax
+
+} scBattleHandicap;
+
 typedef enum scBattleItemSwitch
 {
 	nSCBattleItemSwitchNone,

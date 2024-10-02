@@ -2149,7 +2149,7 @@ void sc1PGameProcStart(void)
         func_800269C0_275C0(nSYAudioVoicePublicityExcited);
     }
     sc1PGameInitTimeUpMessage();
-    ifCommonTimerMakeDigitSObjs();
+    ifCommonTimerMakeDigits();
 
     color = dSC1PGameFadeColor;
     lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);

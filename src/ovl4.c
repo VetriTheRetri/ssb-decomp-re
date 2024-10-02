@@ -187,7 +187,7 @@ void scBattle_StartStockBattle()
 	mpCollisionSetPlayBGM();
 	func_800269C0_275C0(nSYAudioVoicePublicityExcited);
 	ifCommonTimerMakeInterface(ifCommonAnnounceTimeUpInitInterface);
-	ifCommonTimerMakeDigitSObjs();
+	ifCommonTimerMakeDigits();
 
 	color = dSCVSBattleCommonFadeColor;
 
@@ -459,7 +459,7 @@ void scBattle_StartSDBattle()
 	mpCollisionSetPlayBGM();
 	func_800269C0_275C0(nSYAudioVoicePublicityExcited);
 	ifCommonTimerMakeInterface(ifCommonAnnounceTimeUpInitInterface);
-	ifCommonTimerMakeDigitSObjs();
+	ifCommonTimerMakeDigits();
 
 	color = dSCVSBattleSuddenDeathFadeColor;
 

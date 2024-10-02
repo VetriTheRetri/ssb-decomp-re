@@ -15,7 +15,7 @@ extern void menu_1p_entry(void);                    // ovl 18
 extern void mnOptionStartScene(void);               // ovl 60
 extern void mnDataStartScene(void);                 // ovl 61
 extern void mnVSModeStartScene(void);                    // ovl 19
-extern void options_vs_entry(void);                 // ovl 20
+extern void mnVSOptionsStartScene(void);                 // ovl 20
 extern void mnVSItemSwitchStartScene(void);              // ovl 21
 extern void mnMessageStartScene(void);              // ovl 22
 extern void sc1PChallengerStartScene(void);              // ovl 23

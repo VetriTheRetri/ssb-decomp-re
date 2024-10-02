@@ -774,7 +774,7 @@ void func_ovl6_8018E344()
 	else
 	{
 		ifCommonTimerMakeInterface(scBonusGame_SetTimeUp);
-		ifCommonTimerMakeDigitSObjs();
+		ifCommonTimerMakeDigits();
 	}
 }
 

@@ -192,7 +192,7 @@ extern void ifCommonSuddenDeathMakeInterface(void);
 extern void ifCommonTimerProcDisplay(GObj *interface_gobj);
 extern void ifCommonTimerSetAttr(void);
 extern void ifCommonTimerInitAnnouncedSeconds(void);
-extern SObj* ifCommonTimerMakeDigitSObjs(void);
+extern SObj* ifCommonTimerMakeDigits(void);
 extern void ifCommonTimerProcRun(GObj *interface_gobj);
 extern void ifCommonTimerMakeInterface(void (*proc)(void));
 extern GObj* ifCommonAnnounceGameSetMakeInterface(void);

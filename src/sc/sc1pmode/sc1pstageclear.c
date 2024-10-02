@@ -401,7 +401,7 @@ s32 sc1PStageClearGetPowerOf(s32 base, s32 exp)
 }
 
 // 0x80131BF8
-void sc1PStageClearSetDigitSpriteColor(SObj *sobj, s32 digit_kind, syColorRGBPair *colors_default)
+void sc1PStageClearSetDigitSpriteColors(SObj *sobj, s32 digit_kind, syColorRGBPair *colors_default)
 {
 	// 0x80135100
 	syColorRGBPair colors_all[/* */] =
@@ -497,7 +497,7 @@ Sprite* sc1PStageClearGetScoreDigitSprite(s32 digit_kind, s32 digit)
 }
 
 // 0x80131E10
-void sc1PStageClearMakeScoreDigitSObjs
+void sc1PStageClearMakeScoreDigits
 (
 	GObj *gobj,
 	s32 points,
@@ -533,7 +533,7 @@ void sc1PStageClearMakeScoreDigitSObjs
 	}
 	sobj = lbCommonMakeSObjForGObj(gobj, sc1PStageClearGetScoreDigitSprite(digit_kind, points % 10));
 
-	sc1PStageClearSetDigitSpriteColor(sobj, digit_kind, colors);
+	sc1PStageClearSetDigitSpriteColors(sobj, digit_kind, colors);
 
 	calc_x = (sub != 0) ? x - sub : x - (sobj->sprite.width + offset_x);
 
@@ -546,7 +546,7 @@ void sc1PStageClearMakeScoreDigitSObjs
 
 		sobj = lbCommonMakeSObjForGObj(gobj, sc1PStageClearGetScoreDigitSprite(digit_kind, digit % 10));
 
-		sc1PStageClearSetDigitSpriteColor(sobj, digit_kind, colors);
+		sc1PStageClearSetDigitSpriteColors(sobj, digit_kind, colors);
 
 		calc_x = (sub != 0) ? calc_x - sub : calc_x - (sobj->sprite.width + offset_x);
 
@@ -559,7 +559,7 @@ void sc1PStageClearMakeScoreDigitSObjs
 		{
 			sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageClearFiles[4], &lSC1PStageClearPointsNSign));
 		}
-		sc1PStageClearSetDigitSpriteColor(sobj, digit_kind, colors);
+		sc1PStageClearSetDigitSpriteColors(sobj, digit_kind, colors);
 
 		calc_x = (sub != 0) ? calc_x - sub : calc_x - (sobj->sprite.width + offset_x);
 
@@ -693,7 +693,7 @@ void sc1PStageClearMakeScoreSObjs(void)
 	sobj->pos.x = 90.0F;
 	sobj->pos.y = 200.0F;
 
-	sc1PStageClearMakeScoreDigitSObjs(gobj, sSC1PStageClearScoreTotal, 295.0F, 197.0F, NULL, 0, 2, 16, 8, TRUE);
+	sc1PStageClearMakeScoreDigits(gobj, sSC1PStageClearScoreTotal, 295.0F, 197.0F, NULL, 0, 2, 16, 8, TRUE);
 }
 
 // 0x801324FC
@@ -741,7 +741,7 @@ void sc1PStageClearMakeTimerTextSObjs(f32 y)
 }
 
 // 0x8013263C
-void sc1PStageClearMakeTimerDigitSObjs(f32 y)
+void sc1PStageClearMakeTimerDigits(f32 y)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -785,8 +785,8 @@ void sc1PStageClearMakeTimerDigitSObjs(f32 y)
 		x = 233.0F;
 		multiplier = 50;
 	}
-	sc1PStageClearMakeScoreDigitSObjs(gobj, multiplier, x, y - 1.0F, NULL, 1, 0, 0, 4, FALSE);
-	sc1PStageClearMakeScoreDigitSObjs(gobj, sSC1PStageClearSecondsRemain, 171.0F, y - 1.0F, NULL, 1, 0, 0, 3, FALSE);
+	sc1PStageClearMakeScoreDigits(gobj, multiplier, x, y - 1.0F, NULL, 1, 0, 0, 4, FALSE);
+	sc1PStageClearMakeScoreDigits(gobj, sSC1PStageClearSecondsRemain, 171.0F, y - 1.0F, NULL, 1, 0, 0, 3, FALSE);
 }
 
 // 0x801327D4
@@ -817,7 +817,7 @@ s32 sc1PStageClearGetAppendTotalTimeScore(f32 y)
 	}
 	time_score_total = sSC1PStageClearSecondsRemain * multiplier;
 
-	sc1PStageClearMakeScoreDigitSObjs(gobj, time_score_total, 200.0F, y - 1.0F, NULL, 1, 0, 0, 5, FALSE);
+	sc1PStageClearMakeScoreDigits(gobj, time_score_total, 200.0F, y - 1.0F, NULL, 1, 0, 0, 5, FALSE);
 	func_800269C0_275C0(nSYAudioFGMStageClearScoreRegister);
 
 	return time_score_total;
@@ -869,7 +869,7 @@ void sc1PStageClearMakeDamageTextSObjs(f32 y)
 }
 
 // 0x80132A20
-void sc1PStageClearMakeDamageDigitSObjs(f32 y)
+void sc1PStageClearMakeDamageDigits(f32 y)
 {
 	GObj *gobj;
 	SObj *sobj;
@@ -882,7 +882,7 @@ void sc1PStageClearMakeDamageDigitSObjs(f32 y)
 
 	gcAddGObjDisplay(gobj, sc1PStageClearTextProcDisplay, 26, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
 
-	sc1PStageClearMakeScoreDigitSObjs(gobj, sSC1PStageClearDamageDealt, x, (s32)y - 1, NULL, 1, 0, 0, 4, FALSE);
+	sc1PStageClearMakeScoreDigits(gobj, sSC1PStageClearDamageDealt, x, (s32)y - 1, NULL, 1, 0, 0, 4, FALSE);
 	sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageClearFiles[3], &lSC1PStageClearTextMultiplySign));
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -899,7 +899,7 @@ void sc1PStageClearMakeDamageDigitSObjs(f32 y)
 	sobj->sprite.green = 0xFF;
 	sobj->sprite.blue = 0xFF;
 
-	sc1PStageClearMakeScoreDigitSObjs(gobj, 10, x + 55, (s32)y - 1, NULL, 1, 0, 0, 2, TRUE);
+	sc1PStageClearMakeScoreDigits(gobj, 10, x + 55, (s32)y - 1, NULL, 1, 0, 0, 2, TRUE);
 }
 
 // 0x80132BB4
@@ -914,7 +914,7 @@ s32 sc1PStageClearGetAppendTotalDamageScore(f32 y)
 	gcAddGObjDisplay(gobj, sc1PStageClearTextProcDisplay, 26, GOBJ_LINKORDER_DEFAULT, -1);
 	damage_score_total = sSC1PStageClearDamageDealt * 10;
 
-	sc1PStageClearMakeScoreDigitSObjs(gobj, damage_score_total, 200.0F, (s32)y - 1, NULL, 1, 0, 0, 5, FALSE);
+	sc1PStageClearMakeScoreDigits(gobj, damage_score_total, 200.0F, (s32)y - 1, NULL, 1, 0, 0, 5, FALSE);
 	func_800269C0_275C0(nSYAudioFGMStageClearScoreRegister);
 
 	return damage_score_total;
@@ -1175,7 +1175,7 @@ s32 sc1PStageClearGetAppendBonusStatPoints(s32 bonus_id, s32 bonus_num, f32 x, f
 		sobj->sprite.green = 0xFF;
 		sobj->sprite.blue = 0x00;
 
-		sc1PStageClearMakeScoreDigitSObjs(gobj, sc1PStageClearGetNoMissMultiplier(sSC1PStageClear1PGameStage), (x + 40.0F) + 26.0F, y - 1.0F, &colors, 0, 1, 0, 2, FALSE);
+		sc1PStageClearMakeScoreDigits(gobj, sc1PStageClearGetNoMissMultiplier(sSC1PStageClear1PGameStage), (x + 40.0F) + 26.0F, y - 1.0F, &colors, 0, 1, 0, 2, FALSE);
 	}
 	sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageClearFiles[4], &lSC1PStageClearBonusColon));
 
@@ -1202,7 +1202,7 @@ s32 sc1PStageClearGetAppendBonusStatPoints(s32 bonus_id, s32 bonus_num, f32 x, f
 	default:
 		points = dSC1PStageClearBonusData[bonus_id].points;
 	}
-	sc1PStageClearMakeScoreDigitSObjs(gobj, points, 241.0F, y - 1.0F, NULL, 0, 1, 0, 6, FALSE);
+	sc1PStageClearMakeScoreDigits(gobj, points, 241.0F, y - 1.0F, NULL, 0, 1, 0, 6, FALSE);
 
 	return points;
 }
@@ -1580,7 +1580,7 @@ void sc1PStageClearUpdateGameClearScore(void)
 		}
 		if (sSC1PStageClearTotalTimeTics == sSC1PStageClearTimerDigitTic)
 		{
-			sc1PStageClearMakeTimerDigitSObjs(94.0F);
+			sc1PStageClearMakeTimerDigits(94.0F);
 		}
 		if (sSC1PStageClearTotalTimeTics == sSC1PStageClearTimerMultiplierTic)
 		{
@@ -1601,7 +1601,7 @@ void sc1PStageClearUpdateGameClearScore(void)
 	}
 	if (sSC1PStageClearTotalTimeTics == sSC1PStageClearDamageDigitTic)
 	{
-		sc1PStageClearMakeDamageDigitSObjs(y);
+		sc1PStageClearMakeDamageDigits(y);
 	}
 	if (sSC1PStageClearTotalTimeTics == sSC1PStageClearDamageMultiplierTic)
 	{
@@ -1665,7 +1665,7 @@ void sc1PStageClearUpdateStageClearScore(void)
 			sc1PStageClearMakeTimerTextSObjs(94.0F);
 
 		if (sSC1PStageClearTotalTimeTics == sSC1PStageClearTimerDigitTic)
-			sc1PStageClearMakeTimerDigitSObjs(94.0F);
+			sc1PStageClearMakeTimerDigits(94.0F);
 
 		if (sSC1PStageClearTotalTimeTics == sSC1PStageClearTimerMultiplierTic)
 		{
@@ -1686,7 +1686,7 @@ void sc1PStageClearUpdateStageClearScore(void)
 	}
 	if (sSC1PStageClearTotalTimeTics == sSC1PStageClearDamageDigitTic)
 	{
-		sc1PStageClearMakeDamageDigitSObjs(y);
+		sc1PStageClearMakeDamageDigits(y);
 	}
 	if (sSC1PStageClearTotalTimeTics == sSC1PStageClearDamageMultiplierTic)
 	{
@@ -1789,11 +1789,11 @@ void sc1PStageClearUpdateResultScore(void)
 		{
 			if (sSC1PStageClear1PGameStage == nSC1PGameStageBonus3)
 			{
-				sc1PStageClearMakeTimerDigitSObjs(94.0F);
+				sc1PStageClearMakeTimerDigits(94.0F);
 			}
 			else if (sSC1PStageClearBonusObjectivesCleared == 10)
 			{
-				sc1PStageClearMakeTimerDigitSObjs(126.0F);
+				sc1PStageClearMakeTimerDigits(126.0F);
 			}
 		}
 		else if (sSC1PStageClearTotalTimeTics == (sSC1PStageClearBaseIntervalTic + 50))

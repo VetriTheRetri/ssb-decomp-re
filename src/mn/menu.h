@@ -11,6 +11,9 @@ extern intptr_t lMNCommonOptionTabMiddleSprite;      // 0x00000330
 extern intptr_t lMNCommonOptionTabRightSprite;       // 0x00000568
 extern intptr_t lMNCommonPaperTearSprite;            // 0x00002A30
 extern intptr_t lMNCommonSmashLogoSprite;            // 0x000031F8
+extern intptr_t lMNCommonTextOnSprite;               // 0x0000B818
+extern intptr_t lMNCommonTextOffSprite;              // 0x0000B958
+extern intptr_t lMNCommonTextSlashSprite;            // 0x0000BA28
 extern intptr_t lMNCommonGameModeSprite;             // 0x0000D240
 extern intptr_t lMNCommonDigit0Sprite;               // 0x0000D310
 extern intptr_t lMNCommonDigit1Sprite;               // 0x0000D3E0
@@ -22,9 +25,11 @@ extern intptr_t lMNCommonDigit6Sprite;               // 0x0000D7F0
 extern intptr_t lMNCommonDigit7Sprite;               // 0x0000D8C0
 extern intptr_t lMNCommonDigit8Sprite;               // 0x0000D990
 extern intptr_t lMNCommonDigit9Sprite;               // 0x0000DA60
+extern intptr_t lMNCommonSymbolPercentSprite;        // 0x0000DB30
 extern intptr_t lMNCommonInfinitySprite;             // 0x0000DC48
 extern intptr_t lMNCommonRightArrowSprite;           // 0x0000DD90
 extern intptr_t lMNCommonLeftArrowSprite;            // 0x0000DE30
+extern intptr_t lMNCommonTextAutoSprite;             // 0x0000DF48
 extern intptr_t lMNCommonCircleSprite;               // 0x00018000
 
 extern intptr_t lMNVSModeVSSprite;                   // 0x00006118;
@@ -75,6 +80,5 @@ extern intptr_t lMNOptionScreenAdjustTextSprite;     // 0x00008138
 extern intptr_t lMNOptionBackupClearTextSprite;      // 0x00008780
 extern intptr_t lMNOptionHeaderTextSprite;           // 0x00009288
 extern intptr_t lMNOptionKnobSprite;                 // 0x0000B958
-extern intptr_t lMNOptionSoundSlashSprite;           // 0x0000BA28
 
 #endif

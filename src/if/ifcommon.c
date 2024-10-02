@@ -2431,7 +2431,7 @@ void ifCommonTimerInitAnnouncedSeconds(void)
 }
 
 // 0x80112F68
-SObj* ifCommonTimerMakeDigitSObjs(void)
+SObj* ifCommonTimerMakeDigits(void)
 {
     GObj *interface_gobj;
     SObj *sobj;

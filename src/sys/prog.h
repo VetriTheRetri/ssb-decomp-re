@@ -73,7 +73,7 @@ extern u32 D_80046610;
 extern u32 sSYProgFrameDeltaTime;
 extern u16 D_80046626;
 extern u16 D_80046628;
-extern s32 gSYProgID;
+extern s32 gSYProgTaskID;
 
 extern void func_800048D0(SCTaskGfxCallback arg0);
 extern void func_800048F8(Gfx **dl);

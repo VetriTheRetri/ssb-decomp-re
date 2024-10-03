@@ -446,7 +446,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                         }
                     }
                 }
-                else if (gSYProgID > 0)
+                else if (gSYProgTaskID > 0)
                 {
                     gSYProgGraphicsHeap.ptr = (mtx_store.f = gSYProgGraphicsHeap.ptr) + 1;
                 }
@@ -2861,7 +2861,7 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
 
                 if (ommtx->unk05 != 2)
                 {
-                    if (gSYProgID > 0)
+                    if (gSYProgTaskID > 0)
                     {
                         mtx_store.gbi = gSYProgGraphicsHeap.ptr;
                         gSYProgGraphicsHeap.ptr = mtx_store.gbi + 1;

@@ -70,10 +70,10 @@ ftDemoDesc sMVEndingFighterDemoDesc;
 s32 sMVEndingUnused0x80132C14;
 
 // 0x80132C18
-lbFileNode sMVEndingStatusBuf[100];
+lbFileNode sMVEndingStatusBuffer[100];
 
 // 0x80132F38
-lbFileNode sMVEndingForceBuf[7];
+lbFileNode sMVEndingForceStatusBuffer[7];
 
 // 0x80132F70
 void *sMVEndingFiles[2];
@@ -272,14 +272,14 @@ void mvEndingRoomFadeInProcDisplay(GObj *gobj)
             }
         }
     }
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x00, 0x00, 0x00, sMVEndingRoomFadeInAlpha);
-    gDPSetCombineMode(gDisplayListHead[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
-    gDPFillRectangle(gDisplayListHead[0]++, 10, 10, 310, 230);
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sMVEndingRoomFadeInAlpha);
+    gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80132144
@@ -331,14 +331,14 @@ void mvEndingRoomLightProcDisplay(GObj *gobj)
             sMVEndingRoomLightAlpha = 220.0F;
         }
     }
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xFF, 0xFF, 0xFF, (u8)sMVEndingRoomLightAlpha);
-    gDPSetCombineMode(gDisplayListHead[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
-    gDPFillRectangle(gDisplayListHead[0]++, 10, 10, 310, 230);
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, (u8)sMVEndingRoomLightAlpha);
+    gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x8013243C
@@ -495,7 +495,7 @@ void mvEndingProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindStaffroll;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
     }
 }
@@ -510,10 +510,10 @@ void mvEndingProcStart(void)
     rl_setup.table_files_num = &lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = sMVEndingStatusBuf;
-    rl_setup.status_buf_size = ARRAY_COUNT(sMVEndingStatusBuf);
-    rl_setup.force_buf = sMVEndingForceBuf;
-    rl_setup.force_buf_size = ARRAY_COUNT(sMVEndingForceBuf);
+    rl_setup.status_buffer = sMVEndingStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sMVEndingStatusBuffer);
+    rl_setup.force_status_buffer = sMVEndingForceStatusBuffer;
+    rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVEndingForceStatusBuffer);
 
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
@@ -521,7 +521,7 @@ void mvEndingProcStart(void)
         dMVEndingFileIDs,
         ARRAY_COUNT(dMVEndingFileIDs),
         sMVEndingFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (
@@ -539,7 +539,7 @@ void mvEndingProcStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(sMVEndingFighterDemoDesc.ft_kind);
 
-    sMVEndingFighterAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
+    sMVEndingFighterAnimHeap = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
     mvEndingMakeMainCameras();
     mvEndingMakeRoomFadeInCamera();

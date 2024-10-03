@@ -1,6 +1,6 @@
 #include "rdp_reset.h"
 
-#include <sys/gtl.h>
+#include <sys/task.h>
 #include <sys/system_00.h>
 
 #include <config.h>
@@ -14,6 +14,7 @@ Vp sViewport;
 
 // data
 void (*sScissorCallback)(Gfx**) = NULL;
+
 Mtx sIdentityMatrix              = 
 {
     {
@@ -33,7 +34,7 @@ Gfx sResetRdp[] =
 {
     gsDPPipeSync(),
     gsSPViewport(&sViewport),
-    gsSPClearGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN| G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH),
+    gsSPClearGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH),
     gsSPClipRatio(FRUSTRATIO_1),
     gsSPTexture(0, 0, 0, G_TX_RENDERTILE, G_OFF),
     gsSPSetGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH),
@@ -84,7 +85,7 @@ void dpSetViewport(Vp *vp)
 
 void dpSetScissorFunction(void (*cb)(Gfx**)) 
 {
-    sScissorCallback = cb;
+    sScissorCallback = cb; // Actually processes lights?
 }
 
 void dpResetSettings(Gfx **dlist)

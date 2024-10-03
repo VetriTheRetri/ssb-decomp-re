@@ -106,12 +106,12 @@ void mvOpeningKirbyLoadFiles()
 	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = 0;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = D_ovl43_8018E288;
-	rldmSetup.status_buf_size = ARRAY_COUNT(D_ovl43_8018E288);
-	rldmSetup.force_buf = D_ovl43_8018E408;
-	rldmSetup.force_buf_size = ARRAY_COUNT(D_ovl43_8018E408);
+	rldmSetup.status_buffer = D_ovl43_8018E288;
+	rldmSetup.status_buffer_size = ARRAY_COUNT(D_ovl43_8018E288);
+	rldmSetup.force_status_buffer = D_ovl43_8018E408;
+	rldmSetup.force_status_buffer_size = ARRAY_COUNT(D_ovl43_8018E408);
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl43_8018E0F4, ARRAY_COUNT(D_ovl43_8018E0F4), gMvOpeningKirbyFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl43_8018E0F4, ARRAY_COUNT(D_ovl43_8018E0F4)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl43_8018E0F4, ARRAY_COUNT(D_ovl43_8018E0F4), gMvOpeningKirbyFilesArray, syTaskMalloc(lbRelocGetAllocSize(D_ovl43_8018E0F4, ARRAY_COUNT(D_ovl43_8018E0F4)), 0x10));
 }
 
 // 8018D160
@@ -278,14 +278,14 @@ void mvOpeningKirbyInitFighterStagePanel()
 // 8018D870
 void mvOpeningKirbyRenderPosedFighterBackground(GObj *gobj)
 {
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 80, 170, 255, 255);
-	gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-	gDPFillRectangle(gDisplayListHead[0]++, 210, 10, 310, 230);
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 80, 170, 255, 255);
+	gDPSetCombineLERP(gSYTaskDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPFillRectangle(gSYTaskDLHeads[0]++, 210, 10, 310, 230);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 8018D970
@@ -386,7 +386,7 @@ void mvOpeningKirbyMainProc(GObj* arg0)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 1U;
-		leoInitUnit_atten();
+		syTaskSetLoadScene();
 	}
 
 	if (gMvOpeningKirbyFramesElapsed == 15)
@@ -401,7 +401,7 @@ void mvOpeningKirbyMainProc(GObj* arg0)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 0x21;
-		leoInitUnit_atten();
+		syTaskSetLoadScene();
 	}
 }
 
@@ -440,7 +440,7 @@ void mvOpeningKirbyInit()
 	efManagerInitEffects();
 	ftManagerSetupFilesAllKind(nFTKindKirby);
 
-	gMvOpeningKirbyAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMvOpeningKirbyAnimHeap = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningKirbyCreateNameViewport();
 	mvOpeningKirbyCreatePosedFighterBackgroundViewport();
 	mvOpeningKirbyCreatePosedFighterViewport();

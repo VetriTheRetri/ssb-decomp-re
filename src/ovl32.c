@@ -646,18 +646,18 @@ void mnVsRecordsRenderBattleScoreGrid()
 	s32 i;
 
 	for (i = 0; i < 14; i++)
-		gDPFillRectangle(gDisplayListHead[0]++, 24, 48 + i * 13, 295, 48 + i * 13);
+		gDPFillRectangle(gSYTaskDLHeads[0]++, 24, 48 + i * 13, 295, 48 + i * 13);
 
-	gDPFillRectangle(gDisplayListHead[0]++, 24, 48, 24, 217);
+	gDPFillRectangle(gSYTaskDLHeads[0]++, 24, 48, 24, 217);
 
 	for (i = 0; i < 14; i += 1)
 	{
 		if (i == 13)
 		{
-			gDPFillRectangle(gDisplayListHead[0]++, i * 18 + 61, 48, i * 18 + 61, 217);
+			gDPFillRectangle(gSYTaskDLHeads[0]++, i * 18 + 61, 48, i * 18 + 61, 217);
 		}
 		else
-			gDPFillRectangle(gDisplayListHead[0]++, i * 18 + 48, 48, i * 18 + 48, 217);
+			gDPFillRectangle(gSYTaskDLHeads[0]++, i * 18 + 48, 48, i * 18 + 48, 217);
 	}
 }
 
@@ -675,18 +675,18 @@ void mnVsRecordsRenderRankingGrid(s32 first_column)
 
 		indexes[i] = first_column++;
 	}
-	gDPFillRectangle(gDisplayListHead[0]++, 24, 46, 295, 46);
+	gDPFillRectangle(gSYTaskDLHeads[0]++, 24, 46, 295, 46);
 
 	for (i = 0; i < 13; i++)
-		gDPFillRectangle(gDisplayListHead[0]++, 24, 61 + i * 13, 295, 61 + i * 13);
+		gDPFillRectangle(gSYTaskDLHeads[0]++, 24, 61 + i * 13, 295, 61 + i * 13);
 
-	gDPFillRectangle(gDisplayListHead[0]++, 24, 46, 24, 217);
+	gDPFillRectangle(gSYTaskDLHeads[0]++, 24, 46, 24, 217);
 
 	x = 48;
 
 	for(i = 0; i < ARRAY_COUNT(indexes) + 1; i++)
 	{
-		gDPFillRectangle(gDisplayListHead[0]++, x, 46, x, 217);
+		gDPFillRectangle(gSYTaskDLHeads[0]++, x, 46, x, 217);
 
 		if (i < ARRAY_COUNT(indexes))
 			x += dMNVsRecordsRankingColumnWidths[indexes[i]];
@@ -698,15 +698,15 @@ void mnVsRecordsRenderIndividualGrid()
 {
 	s32 i;
 
-	gDPFillRectangle(gDisplayListHead[0]++, 26, 144, 293, 144);
+	gDPFillRectangle(gSYTaskDLHeads[0]++, 26, 144, 293, 144);
 
 	for (i = 0; i < 5; i++)
-		gDPFillRectangle(gDisplayListHead[0]++, 26, 157 + i * 12, 293, 157 + i * 12);
+		gDPFillRectangle(gSYTaskDLHeads[0]++, 26, 157 + i * 12, 293, 157 + i * 12);
 
-	gDPFillRectangle(gDisplayListHead[0]++, 26, 144, 26, 205);
+	gDPFillRectangle(gSYTaskDLHeads[0]++, 26, 144, 26, 205);
 
 	for (i = 0; i < 13; i++)
-		gDPFillRectangle(gDisplayListHead[0]++, 65 + i * 19, 144, 65 + i * 19, 205);
+		gDPFillRectangle(gSYTaskDLHeads[0]++, 65 + i * 19, 144, 65 + i * 19, 205);
 }
 
 // 8013328C
@@ -714,10 +714,10 @@ void mnVsRecordsRenderTableGrid(GObj* table_border_gobj)
 {
 	s32 unused;
 
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
-	gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(0x62626AFF));
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_FILL);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
+	gDPSetFillColor(gSYTaskDLHeads[0]++, syDisplayGetFillColor(0x62626AFF));
 
 	switch (gMNVsRecordsStatsKind)
 	{
@@ -732,9 +732,9 @@ void mnVsRecordsRenderTableGrid(GObj* table_border_gobj)
 			break;
 	}
 
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
 
 	lbCommonClearExternSpriteParams();
 }
@@ -1166,15 +1166,15 @@ void mnVsRecordsRenderRankingRowHighlight(GObj* row_highlight_gobj)
 {
 	if (gMNVsRecordsStatsKind == vsRecordsKindRanking)
 	{
-		gDPPipeSync(gDisplayListHead[0]++);
-		gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-		gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 39, 0, 255, 255);
-		gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-		gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-		gDPFillRectangle(gDisplayListHead[0]++, 24, 62 + (gMNVsRecordsCurrentIndex * 13), 295, 74 + (gMNVsRecordsCurrentIndex * 13));
-		gDPPipeSync(gDisplayListHead[0]++);
-		gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-		gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+		gDPPipeSync(gSYTaskDLHeads[0]++);
+		gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+		gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 39, 0, 255, 255);
+		gDPSetCombineLERP(gSYTaskDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+		gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+		gDPFillRectangle(gSYTaskDLHeads[0]++, 24, 62 + (gMNVsRecordsCurrentIndex * 13), 295, 74 + (gMNVsRecordsCurrentIndex * 13));
+		gDPPipeSync(gSYTaskDLHeads[0]++);
+		gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+		gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
 
 		lbCommonClearExternSpriteParams();
 	}
@@ -1591,7 +1591,7 @@ void mnVsRecordsMain(GObj* arg0)
 			gSceneData.scene_previous = gSceneData.scene_current;
 			gSceneData.scene_current =  0x3AU;
 
-			leoInitUnit_atten();
+			syTaskSetLoadScene();
 		}
 		else
 		{
@@ -1793,12 +1793,12 @@ void mnVsRecordsInit()
 	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (lbFileNode*) &D_ovl32_80136CC8;
-	rldmSetup.status_buf_size = 0x18;
-	rldmSetup.force_buf = 0;
-	rldmSetup.force_buf_size = 0;
+	rldmSetup.status_buffer = (lbFileNode*) &D_ovl32_80136CC8;
+	rldmSetup.status_buffer_size = 0x18;
+	rldmSetup.force_status_buffer = 0;
+	rldmSetup.force_status_buffer_size = 0;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl32_8013664C, ARRAY_COUNT(D_ovl32_8013664C), gMNVsRecordsFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl32_8013664C, ARRAY_COUNT(D_ovl32_8013664C)), 0x10U));
+	lbRelocLoadFilesExtern(D_ovl32_8013664C, ARRAY_COUNT(D_ovl32_8013664C), gMNVsRecordsFilesArray, syTaskMalloc(lbRelocGetAllocSize(D_ovl32_8013664C, ARRAY_COUNT(D_ovl32_8013664C)), 0x10U));
 
 	gcMakeGObjSPAfter(0, mnVsRecordsMain, 0, 0x80000000);
 	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));

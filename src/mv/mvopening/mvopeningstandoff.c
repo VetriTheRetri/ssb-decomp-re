@@ -4,7 +4,7 @@
 #include <sys/system_00.h>
 #include <lb/library.h>
 
-extern void leoInitUnit_atten();
+extern void syTaskSetLoadScene();
 extern u32 func_8000092C();
 extern void func_800A26B8();
 
@@ -49,10 +49,10 @@ s32 sMVOpeningStandoffPad0x801329D8;
 s32 sMVOpeningStandoffUnused0x801329DC;
 
 // 0x801329E0
-lbFileNode sMVOpeningStandoffStatusBuf[48];
+lbFileNode sMVOpeningStandoffStatusBuffer[48];
 
 // 0x80132B60
-lbFileNode sMVOpeningStandoffForceBuf[7];
+lbFileNode sMVOpeningStandoffForceStatusBuffer[7];
 
 // 0x80132B98
 void *sMVOpeningStandoffFiles[2];
@@ -370,8 +370,8 @@ void mvOpeningStandoffMakeLightning(void)
 // 0x801321D8
 void mvOpeningStandoffLightningFlashProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gDisplayListHead[1]++);
-    gDPSetCycleType(gDisplayListHead[1]++, G_CYC_1CYCLE);
+    gDPPipeSync(gSYTaskDLHeads[1]++);
+    gDPSetCycleType(gSYTaskDLHeads[1]++, G_CYC_1CYCLE);
 
     if
     (
@@ -380,15 +380,15 @@ void mvOpeningStandoffLightningFlashProcDisplay(GObj *gobj)
         ((sMVOpeningStandoffTotalTimeTics > 260) && (sMVOpeningStandoffTotalTimeTics < 264))
     )
     {
-        gDPSetPrimColor(gDisplayListHead[1]++, 0, 0, 0xFF, 0xFF, 0xFF, 0x40);
+        gDPSetPrimColor(gSYTaskDLHeads[1]++, 0, 0, 0xFF, 0xFF, 0xFF, 0x40);
     }
-    else gDPSetPrimColor(gDisplayListHead[1]++, 0, 0, 0xFF, 0xFF, 0xFF, 0x00);
+    else gDPSetPrimColor(gSYTaskDLHeads[1]++, 0, 0, 0xFF, 0xFF, 0xFF, 0x00);
 
-    gDPSetCombineLERP(gDisplayListHead[1]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gDisplayListHead[1]++, 10, 10, 310, 230);
-    gDPPipeSync(gDisplayListHead[1]++);
-    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCombineLERP(gSYTaskDLHeads[1]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskDLHeads[1]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYTaskDLHeads[1]++);
+    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80132330 - Unused?
@@ -543,14 +543,14 @@ void mvOpeningStandoffProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
         if (sMVOpeningStandoffTotalTimeTics == 320)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindOpeningClash;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
     }
 }
@@ -565,10 +565,10 @@ void mvOpeningStandoffProcStart(void)
     rl_setup.table_files_num = &lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = sMVOpeningStandoffStatusBuf;
-    rl_setup.status_buf_size = ARRAY_COUNT(sMVOpeningStandoffStatusBuf);
-    rl_setup.force_buf = sMVOpeningStandoffForceBuf;
-    rl_setup.force_buf_size = ARRAY_COUNT(sMVOpeningStandoffForceBuf);
+    rl_setup.status_buffer = sMVOpeningStandoffStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sMVOpeningStandoffStatusBuffer);
+    rl_setup.force_status_buffer = sMVOpeningStandoffForceStatusBuffer;
+    rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningStandoffForceStatusBuffer);
 
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
@@ -576,7 +576,7 @@ void mvOpeningStandoffProcStart(void)
         dMVOpeningStandoffFileIDs,
         ARRAY_COUNT(dMVOpeningStandoffFileIDs),
         sMVOpeningStandoffFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (
@@ -597,8 +597,8 @@ void mvOpeningStandoffProcStart(void)
     ftManagerSetupFilesAllKind(nFTKindMario);
     ftManagerSetupFilesAllKind(nFTKindKirby);
 
-    sMVOpeningStandoffMarioAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
-    sMVOpeningStandoffKirbyAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
+    sMVOpeningStandoffMarioAnimHeap = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
+    sMVOpeningStandoffKirbyAnimHeap = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
     mvOpeningStandoffMakeMainViewport();
     mvOpeningStandoffMakeWallpaperViewport();

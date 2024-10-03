@@ -3,7 +3,7 @@
 #include <it/item.h>
 #include <cm/camera.h>
 #include <sc/scene.h>
-#include <sys/ml.h>
+#include <sys/malloc.h>
 #include <sys/system_00.h>
 
 extern alSoundEffect* func_800269C0_275C0(u16);
@@ -19,7 +19,7 @@ extern void func_80007080(void*, f32, f32, f32, f32);
 
 extern intptr_t D_NF_00000057;                              // 0x00000057
 
-extern mlRegion gSYGtlGeneralHeap;
+extern syMallocRegion gSYTaskGeneralHeap;
 
 extern GObj *D_ovl2_80131A10; // I don't think these belong in this file
 extern GObj *D_ovl2_80131A14;
@@ -797,8 +797,8 @@ void ifCommonPlayerDamageProcDisplay(GObj *interface_gobj)
 
     sobj = SObjGetStruct(interface_gobj);
 
-    lbCommonPrepSObjSpriteAttrs(gDisplayListHead, sobj);
-    lbCommonPrepSObjDraw(gDisplayListHead, sobj);
+    lbCommonPrepSObjSpriteAttrs(gSYTaskDLHeads, sobj);
+    lbCommonPrepSObjDraw(gSYTaskDLHeads, sobj);
 
     lbCommonSetExternSpriteParams(&sobj->sprite);
 
@@ -842,13 +842,13 @@ void ifCommonPlayerDamageProcDisplay(GObj *interface_gobj)
         sobj->sprite.green = color_g;
         sobj->sprite.blue = color_b;
 
-        lbCommonPrepSObjSpriteAttrs(gDisplayListHead, sobj);
+        lbCommonPrepSObjSpriteAttrs(gSYTaskDLHeads, sobj);
 
         if (color_id == GMCOMMON_PLAYERS_MAX)
         {
-            gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0);
+            gDPSetCombineLERP(gSYTaskDLHeads[0]++, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0);
         }
-        lbCommonPrepSObjDraw(gDisplayListHead, sobj);
+        lbCommonPrepSObjDraw(gSYTaskDLHeads, sobj);
 
         sobj = sobj->next;
 
@@ -875,7 +875,7 @@ void ifCommonPlayerDamageProcDisplay(GObj *interface_gobj)
                 }
                 sobj->sprite.scalex = sobj->sprite.scaley = scale;
 
-                lbCommonPrepSObjDraw(gDisplayListHead, sobj);
+                lbCommonPrepSObjDraw(gSYTaskDLHeads, sobj);
             }
             sobj = sobj->next;
         }
@@ -1589,14 +1589,14 @@ void ifCommonPlayerMagnifyProcDisplay(ftStruct *fp)
 
         cam = CameraGetStruct(gCMManagerCameraGObj);
 
-        gSPViewport(gDisplayListHead[0]++, &cam->viewport);
-        gDPSetScissor(gDisplayListHead[0]++, G_SC_NON_INTERLACE, gCMManagerCameraStruct.viewport_ulx, gCMManagerCameraStruct.viewport_uly, gCMManagerCameraStruct.viewport_lrx, gCMManagerCameraStruct.viewport_lry);
-        gSPMatrix(gDisplayListHead[0]++, &CameraGetStruct(gOMObjCurrentCamera)->ommtx[1]->mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-        gSPClearGeometryMode(gDisplayListHead[0]++, G_ZBUFFER);
-        gDPPipeSync(gDisplayListHead[0]++);
-        gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
-        gDPSetAlphaCompare(gDisplayListHead[0]++, G_AC_NONE);
-        gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, dIFCommonPlayerMagnifyColorsR[ifmag->color_id], dIFCommonPlayerMagnifyColorsG[ifmag->color_id], dIFCommonPlayerMagnifyColorsB[ifmag->color_id], 0xFF);
+        gSPViewport(gSYTaskDLHeads[0]++, &cam->viewport);
+        gDPSetScissor(gSYTaskDLHeads[0]++, G_SC_NON_INTERLACE, gCMManagerCameraStruct.viewport_ulx, gCMManagerCameraStruct.viewport_uly, gCMManagerCameraStruct.viewport_lrx, gCMManagerCameraStruct.viewport_lry);
+        gSPMatrix(gSYTaskDLHeads[0]++, &CameraGetStruct(gOMObjCurrentCamera)->ommtx[1]->mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+        gSPClearGeometryMode(gSYTaskDLHeads[0]++, G_ZBUFFER);
+        gDPPipeSync(gSYTaskDLHeads[0]++);
+        gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
+        gDPSetAlphaCompare(gSYTaskDLHeads[0]++, G_AC_NONE);
+        gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, dIFCommonPlayerMagnifyColorsR[ifmag->color_id], dIFCommonPlayerMagnifyColorsG[ifmag->color_id], dIFCommonPlayerMagnifyColorsB[ifmag->color_id], 0xFF);
         gcDrawDObjDLHead0(interface_gobj);
     }
 }
@@ -1763,7 +1763,7 @@ void ifCommonPlayerArrowsProcRun(GObj *interface_gobj)
 // 0x801118B4
 void ifCommonPlayerArrowsMainProcDisplay(GObj *interface_gobj)
 {
-    gSPDisplayList(gDisplayListHead[0]++, &dIFCommonPlayerArrowsGfx);
+    gSPDisplayList(gSYTaskDLHeads[0]++, &dIFCommonPlayerArrowsGfx);
 }
 
 // 0x801118E4
@@ -1935,7 +1935,7 @@ void ifCommonItemArrowSetAttr(void)
 {
     Sprite *sprite = sIFCommonItemArrowSprite =
 
-    lbGetDataFromFile(Sprite*, lbRelocGetFileExternHeap((intptr_t)&D_NF_00000057, gsMemoryAlloc(lbRelocGetFileSize((intptr_t)&D_NF_00000057), 0x10)), &lIFCommonItemArrow);
+    lbGetDataFromFile(Sprite*, lbRelocGetFileExternHeap((intptr_t)&D_NF_00000057, syTaskMalloc(lbRelocGetFileSize((intptr_t)&D_NF_00000057), 0x10)), &lIFCommonItemArrow);
 
     sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -2744,16 +2744,16 @@ void ifCommonBattlePauseProcDisplay(GObj *interface_gobj)
 {
     s32 i;
 
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gDisplayListHead[0]++, GCOMBINE32_RGBA5551(GPACK_RGBA5551(0xFF, 0xFF, 0xFF, 0x01)));
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_FILL);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
+    gDPSetFillColor(gSYTaskDLHeads[0]++, GCOMBINE32_RGBA5551(GPACK_RGBA5551(0xFF, 0xFF, 0xFF, 0x01)));
 
     for (i = 0; i < ARRAY_COUNT(dIFCommonBattlePauseBorderRectangle); i++)
     {
         gDPFillRectangle
         (
-            gDisplayListHead[0]++, 
+            gSYTaskDLHeads[0]++, 
             dIFCommonBattlePauseBorderRectangle[i].ulx, 
             dIFCommonBattlePauseBorderRectangle[i].uly, 
             dIFCommonBattlePauseBorderRectangle[i].lrx, 
@@ -3046,7 +3046,7 @@ void ifCommonBattlePauseUpdateInterface(void)
         {
             func_800266A0_272A0();
             gmRumbleInitPlayers();
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
 
             return;
         }
@@ -3135,7 +3135,7 @@ void ifCommonBattleSetUpdateInterface(void)
     {
         sIFCommonBattlePauseCameraRestoreWait--;
     }
-    else leoInitUnit_atten();
+    else syTaskSetLoadScene();
 
     func_8000A5E4();
 }
@@ -3143,9 +3143,9 @@ void ifCommonBattleSetUpdateInterface(void)
 // 0x80114800
 void ifCommonSetMaxNumGObj(void)
 {
-    size_t free_space = (uintptr_t)gSYGtlGeneralHeap.end - (uintptr_t)gSYGtlGeneralHeap.ptr;
+    size_t free_space = (uintptr_t)gSYTaskGeneralHeap.end - (uintptr_t)gSYTaskGeneralHeap.ptr;
 
-    if ((gcGetMaxNumGObj() == -1) && (free_space < ML_BYTES_TO_KBYTES(25)))
+    if ((gcGetMaxNumGObj() == -1) && (free_space < (25 * 1024)))
     {
         gcSetMaxNumGObj(gcGetGObjActiveCount());
     }

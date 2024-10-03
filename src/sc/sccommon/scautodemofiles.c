@@ -8,10 +8,10 @@
 // // // // // // // // // // // //
 
 // 8018E500
-lbFileNode sSCAutoDemoStatusBuf[100];
+lbFileNode sSCAutoDemoStatusBuffer[100];
 
 // 8018E820
-lbFileNode sSCAutoDemoForceBuf[7];
+lbFileNode sSCAutoDemoForceStatusBuffer[7];
 
 // // // // // // // // // // // //
 //                               //
@@ -28,10 +28,10 @@ void scAutoDemoSetupFiles(void)
 	rl_setup.table_files_num = &lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buf = sSCAutoDemoStatusBuf;
-	rl_setup.status_buf_size = ARRAY_COUNT(sSCAutoDemoStatusBuf);
-	rl_setup.force_buf = sSCAutoDemoForceBuf;
-	rl_setup.force_buf_size = ARRAY_COUNT(sSCAutoDemoForceBuf);
+	rl_setup.status_buffer = sSCAutoDemoStatusBuffer;
+	rl_setup.status_buffer_size = ARRAY_COUNT(sSCAutoDemoStatusBuffer);
+	rl_setup.force_status_buffer = sSCAutoDemoForceStatusBuffer;
+	rl_setup.force_status_buffer_size = ARRAY_COUNT(sSCAutoDemoForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern
@@ -39,7 +39,7 @@ void scAutoDemoSetupFiles(void)
 		dGMCommonFileIDs,
 		ARRAY_COUNT(dGMCommonFileIDs),
 		gGMCommonFiles,
-		gsMemoryAlloc
+		syTaskMalloc
 		(
 			lbRelocGetAllocSize
 			(

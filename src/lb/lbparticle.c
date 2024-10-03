@@ -105,7 +105,7 @@ s32 lbParticleAllocTransforms(s32 num, size_t size)
 	
 	for (i = 0; i < num; i++)
 	{
-		tfrm = gsMemoryAlloc(size, 0x4);
+		tfrm = syTaskMalloc(size, 0x4);
 
 		if (tfrm == NULL)
 		{
@@ -242,7 +242,7 @@ GObj* lbParticleAllocStructs(s32 num)
 	}
 	for (i = num - 1; i >= 0; i--)
 	{
-		ptcl = gsMemoryAlloc(sizeof(*ptcl), 4);
+		ptcl = syTaskMalloc(sizeof(*ptcl), 4);
 
 		if (ptcl == NULL)
 		{
@@ -1656,11 +1656,11 @@ void lbParticleDrawTextures(GObj *gobj)
     pc0_magnitude = sqrtf(SQUARE(projection_f[0][0]) + SQUARE(projection_f[1][0]) + SQUARE(projection_f[2][0]));
     pc1_magnitude = sqrtf(SQUARE(projection_f[0][1]) + SQUARE(projection_f[1][1]) + SQUARE(projection_f[2][1]));
     
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetTexturePersp(gDisplayListHead[0]++, G_TP_NONE);
-    gDPSetDepthSource(gDisplayListHead[0]++, G_ZS_PRIM);
-    gDPSetColorDither(gDisplayListHead[0]++, G_CD_MAGICSQ | dLBParticleColorDitherMode);
-    gDPSetAlphaDither(gDisplayListHead[0]++, G_AD_PATTERN | dLBParticleAlphaDitherMode);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetTexturePersp(gSYTaskDLHeads[0]++, G_TP_NONE);
+    gDPSetDepthSource(gSYTaskDLHeads[0]++, G_ZS_PRIM);
+    gDPSetColorDither(gSYTaskDLHeads[0]++, G_CD_MAGICSQ | dLBParticleColorDitherMode);
+    gDPSetAlphaDither(gSYTaskDLHeads[0]++, G_AD_PATTERN | dLBParticleAlphaDitherMode);
 
     prev_image = NULL;
     prev_palette = NULL;
@@ -1936,20 +1936,20 @@ void lbParticleDrawTextures(GObj *gobj)
                             {
                                 if (palette != prev_palette)
                                 {
-                                    gDPLoadTLUT_pal256(gDisplayListHead[0]++, palette);
+                                    gDPLoadTLUT_pal256(gSYTaskDLHeads[0]++, palette);
                                     
                                     prev_palette = palette;
                                 }
                                 if (tlut != 1)
                                 {
-                                    gDPSetTextureLUT(gDisplayListHead[0]++, G_TT_RGBA16);
+                                    gDPSetTextureLUT(gSYTaskDLHeads[0]++, G_TT_RGBA16);
                                     
                                     tlut = 1;
                                 }
                             }
                             else if (tlut != 0)
                             {
-                                gDPSetTextureLUT(gDisplayListHead[0]++, G_TT_NONE);
+                                gDPSetTextureLUT(gSYTaskDLHeads[0]++, G_TT_NONE);
                                 
                                 tlut = 0;
                             }
@@ -1960,7 +1960,7 @@ void lbParticleDrawTextures(GObj *gobj)
                                 case G_IM_SIZ_4b:
                                     gDPLoadTextureBlock_4b
                                     (
-                                        gDisplayListHead[0]++,
+                                        gSYTaskDLHeads[0]++,
                                         image,
                                         fmt,
                                         width,
@@ -1982,7 +1982,7 @@ void lbParticleDrawTextures(GObj *gobj)
                                 case G_IM_SIZ_8b:
                                     gDPLoadTextureBlock
                                     (
-                                        gDisplayListHead[0]++,
+                                        gSYTaskDLHeads[0]++,
                                         image,
                                         fmt,
                                         G_IM_SIZ_8b,
@@ -2005,7 +2005,7 @@ void lbParticleDrawTextures(GObj *gobj)
                                 case G_IM_SIZ_16b:
                                     gDPLoadTextureBlock
                                     (
-                                        gDisplayListHead[0]++,
+                                        gSYTaskDLHeads[0]++,
                                         image,
                                         fmt,
                                         G_IM_SIZ_16b,
@@ -2028,7 +2028,7 @@ void lbParticleDrawTextures(GObj *gobj)
                                 case G_IM_SIZ_32b:
                                     gDPLoadTextureBlock
                                     (
-                                        gDisplayListHead[0]++,
+                                        gSYTaskDLHeads[0]++,
                                         image,
                                         fmt,
                                         G_IM_SIZ_32b,
@@ -2053,15 +2053,15 @@ void lbParticleDrawTextures(GObj *gobj)
                                 }
                                 prev_image = image;
                             }
-                            gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, ptcl->primcolor.r, ptcl->primcolor.g, ptcl->primcolor.b, ptcl->primcolor.a);
+                            gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, ptcl->primcolor.r, ptcl->primcolor.g, ptcl->primcolor.b, ptcl->primcolor.a);
                 
                             if (ptcl->flags & LBPARTICLE_FLAG_ENVCOLOR)
                             {
-                                gDPSetEnvColor(gDisplayListHead[0]++, ptcl->envcolor.r, ptcl->envcolor.g, ptcl->envcolor.b, ptcl->envcolor.a);
+                                gDPSetEnvColor(gSYTaskDLHeads[0]++, ptcl->envcolor.r, ptcl->envcolor.g, ptcl->envcolor.b, ptcl->envcolor.a);
                                 
                                 gDPSetCombineLERP
                                 (
-                                    gDisplayListHead[0]++,
+                                    gSYTaskDLHeads[0]++,
                                     PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT,
                                     PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT
                                 );
@@ -2070,12 +2070,12 @@ void lbParticleDrawTextures(GObj *gobj)
                             {
                                 gDPSetCombineLERP
                                 (
-                                    gDisplayListHead[0]++,
+                                    gSYTaskDLHeads[0]++,
                                     NOISE, 0, TEXEL0, 0, TEXEL0, 0, PRIMITIVE, 0,
                                     NOISE, 0, TEXEL0, 0, TEXEL0, 0, PRIMITIVE, 0
                                 );
                             }
-                            else gDPSetCombineMode(gDisplayListHead[0]++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+                            else gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
                             
                             if (ptcl->flags & LBPARTICLE_FLAG_DITHER)
                             {
@@ -2093,20 +2093,20 @@ void lbParticleDrawTextures(GObj *gobj)
                                 
                                 if (prev_alpha != alpha)
                                 {
-                                    gDPSetBlendColor(gDisplayListHead[0]++, 0x00, 0x00, 0x00, alpha);
+                                    gDPSetBlendColor(gSYTaskDLHeads[0]++, 0x00, 0x00, 0x00, alpha);
                 
                                     prev_alpha = alpha;
                                 }
                             }
                             if (prev_ac != ac)
                             {
-                                gDPSetAlphaCompare(gDisplayListHead[0]++, ac);
+                                gDPSetAlphaCompare(gSYTaskDLHeads[0]++, ac);
                                 
                                 prev_ac = ac;
                             }
-                            gDPSetPrimDepth(gDisplayListHead[0]++, (s32) (tz * 32.0F), 0);
+                            gDPSetPrimDepth(gSYTaskDLHeads[0]++, (s32) (tz * 32.0F), 0);
                 
-                            gSPScisTextureRectangle(gDisplayListHead[0]++, xl, yl, xh, yh, G_TX_RENDERTILE, s, t, dsdx, dtdy);
+                            gSPScisTextureRectangle(gSYTaskDLHeads[0]++, xl, yl, xh, yh, G_TX_RENDERTILE, s, t, dsdx, dtdy);
                         }
                     }
                 }
@@ -2115,7 +2115,7 @@ void lbParticleDrawTextures(GObj *gobj)
     }
     if (tlut != 0)
     {
-        gDPSetTextureLUT(gDisplayListHead[0]++, G_TT_NONE);
+        gDPSetTextureLUT(gSYTaskDLHeads[0]++, G_TT_NONE);
     }
 }
 #else
@@ -2147,7 +2147,7 @@ GObj* lbParticleAllocGenerators(s32 num)
 
 	for (i = num - 1; i >= 0; i--)
 	{
-		lbGenerator *gtor = gsMemoryAlloc(sizeof(*gtor), 0x4);
+		lbGenerator *gtor = syTaskMalloc(sizeof(*gtor), 0x4);
 
 		if (gtor == NULL)
 		{

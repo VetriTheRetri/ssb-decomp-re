@@ -373,13 +373,13 @@ sb32 itSpearWeaponSwarmProcUpdate(GObj *weapon_gobj)
 // 0x80180400
 void itPippiWeaponSwarmRenderSwarm(GObj *item_gobj)
 {
-    gDPPipeSync(gDisplayListHead[0]++);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
 
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
     gcDrawDObjTreeForGObj(item_gobj);
 
-    gDPPipeSync(gDisplayListHead[0]++);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
 }
 
 // 0x80180480

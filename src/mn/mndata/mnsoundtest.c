@@ -86,7 +86,7 @@ f32 sMNSoundTestSelectIDPositionsX[nMNSoundTestOptionEnumMax];      // X-Positio
 s32 sMNSoundTestFadeOutWait;                                        // Frames to wait until fadeout is complete
 
 // 0x80134368
-lbFileNode sMNSoundTestStatusBuf[32];
+lbFileNode sMNSoundTestStatusBuffer[32];
 
 // 0x80134468
 void *sMNSoundTestFiles[5];
@@ -1009,7 +1009,7 @@ void mnSoundTestProcRun(GObj *gobj)
         auStopBGM();
         func_800266A0_272A0();
         auSetBGMVolume(0, 0x7000);
-        leoInitUnit_atten();
+        syTaskSetLoadScene();
     }
     mnSoundTestUpdateControllerInputs();
     mnSoundTestUpdateFunctions();
@@ -1024,10 +1024,10 @@ void mnSoundTestSetupFiles(void)
     rl_setup.table_files_num = &lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = sMNSoundTestStatusBuf;
-    rl_setup.status_buf_size = ARRAY_COUNT(sMNSoundTestStatusBuf);
-    rl_setup.force_buf = NULL;
-    rl_setup.force_buf_size = 0;
+    rl_setup.status_buffer = sMNSoundTestStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sMNSoundTestStatusBuffer);
+    rl_setup.force_status_buffer = NULL;
+    rl_setup.force_status_buffer_size = 0;
 
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
@@ -1035,7 +1035,7 @@ void mnSoundTestSetupFiles(void)
         dMNSoundTestFileIDs,
         ARRAY_COUNT(dMNSoundTestFileIDs),
         sMNSoundTestFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (
@@ -1105,12 +1105,12 @@ void mnSoundTestOptionThreadUpdate(GObj *gobj)
 // 0x801324FC
 void mnSoundTestMusicProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_FILL);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
     gDPSetFillColor
     (
-        gDisplayListHead[0]++,
+        gSYTaskDLHeads[0]++,
         GCOMBINE32_RGBA5551
         (
             GCONVERT5551_RGBA8888
@@ -1125,9 +1125,9 @@ void mnSoundTestMusicProcDisplay(GObj *gobj)
             )
         )
     );
-    gDPFillRectangle(gDisplayListHead[0]++, 10, 56, 112, 57);
-    gDPFillRectangle(gDisplayListHead[0]++, 10, 95, 112, 96);
-    gDPPipeSync(gDisplayListHead[0]++);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 56, 112, 57);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 95, 112, 96);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
 }
 
 // 0x80132638
@@ -1172,12 +1172,12 @@ SObj* mnSoundTestMakeMusicSObjs(void)
 // 0x80132758
 void mnSoundTestSoundProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_FILL);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
     gDPSetFillColor
     (
-        gDisplayListHead[0]++,
+        gSYTaskDLHeads[0]++,
         GCOMBINE32_RGBA5551
         (
             GCONVERT5551_RGBA8888
@@ -1192,9 +1192,9 @@ void mnSoundTestSoundProcDisplay(GObj *gobj)
             )
         )
     );
-    gDPFillRectangle(gDisplayListHead[0]++, 10, 104, 132, 105);
-    gDPFillRectangle(gDisplayListHead[0]++, 10, 143, 132, 144);
-    gDPPipeSync(gDisplayListHead[0]++);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 104, 132, 105);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 143, 132, 144);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
 }
 
 // 0x80132894
@@ -1239,12 +1239,12 @@ SObj* mnSoundTestMakeSoundSObjs(void)
 // 0x801329B8
 void mnSoundTestVoiceProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_FILL);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
     gDPSetFillColor
     (
-        gDisplayListHead[0]++,
+        gSYTaskDLHeads[0]++,
         GCOMBINE32_RGBA5551
         (
             GCONVERT5551_RGBA8888
@@ -1259,9 +1259,9 @@ void mnSoundTestVoiceProcDisplay(GObj *gobj)
             )
         )
     );
-    gDPFillRectangle(gDisplayListHead[0]++, 10, 152, 152, 153);
-    gDPFillRectangle(gDisplayListHead[0]++, 10, 191, 152, 192);
-    gDPPipeSync(gDisplayListHead[0]++);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 152, 152, 153);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 191, 152, 192);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
 }
 
 // 0x80132AF4

@@ -1554,7 +1554,7 @@ void efGroundSetupRandomWeights(void)
     {
         j += (param + i)->effect_weight;
     }
-    sEFGroundActor.effect_ids = effect_ids = gsMemoryAlloc(j * (sizeof(*sEFGroundActor.effect_ids) | sizeof(*effect_ids)), 0x0);
+    sEFGroundActor.effect_ids = effect_ids = syTaskMalloc(j * (sizeof(*sEFGroundActor.effect_ids) | sizeof(*effect_ids)), 0x0);
     sEFGroundActor.effect_count = j;
 
     effect_weights = param->effect_weight;

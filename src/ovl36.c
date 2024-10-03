@@ -110,12 +110,12 @@ void mvOpeningMarioLoadFiles()
 	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = D_ovl36_8018E268;
-	rldmSetup.status_buf_size = ARRAY_COUNT(D_ovl36_8018E268);
-	rldmSetup.force_buf = D_ovl36_8018E3E8;
-	rldmSetup.force_buf_size = ARRAY_COUNT(D_ovl36_8018E3E8);
+	rldmSetup.status_buffer = D_ovl36_8018E268;
+	rldmSetup.status_buffer_size = ARRAY_COUNT(D_ovl36_8018E268);
+	rldmSetup.force_status_buffer = D_ovl36_8018E3E8;
+	rldmSetup.force_status_buffer_size = ARRAY_COUNT(D_ovl36_8018E3E8);
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8), gMvOpeningMarioFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8), gMvOpeningMarioFilesArray, syTaskMalloc(lbRelocGetAllocSize(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8)), 0x10));
 }
 
 // 8018D160
@@ -279,14 +279,14 @@ void mvOpeningMarioInitFighterStagePanel()
 // 8018D844
 void mvOpeningMarioRenderPosedFighterBackground(GObj *gobj)
 {
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 160, 170, 255, 255);
-	gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-	gDPFillRectangle(gDisplayListHead[0]++, 10, 10, 110, 230);
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 160, 170, 255, 255);
+	gDPSetCombineLERP(gSYTaskDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 10, 110, 230);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 8018D944
@@ -388,7 +388,7 @@ void mvOpeningMarioMainProc(GObj* arg0)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 1U;
-		leoInitUnit_atten();
+		syTaskSetLoadScene();
 	}
 
 	if (gMvOpeningMarioFramesElapsed == 15)
@@ -403,7 +403,7 @@ void mvOpeningMarioMainProc(GObj* arg0)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 0x1F;
-		leoInitUnit_atten();
+		syTaskSetLoadScene();
 	}
 }
 
@@ -442,7 +442,7 @@ void mvOpeningMarioInit()
 	efManagerInitEffects();
 	ftManagerSetupFilesAllKind(nFTKindMario);
 
-	gMvOpeningMarioAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMvOpeningMarioAnimHeap = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningMarioCreateNameViewport();
 	mvOpeningMarioCreatePosedFighterBackgroundViewport();
 	mvOpeningMarioCreatePosedFighterViewport();

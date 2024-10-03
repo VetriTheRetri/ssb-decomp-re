@@ -57,10 +57,10 @@ s32 sMVOpeningSectorCockpitAlpha;
 s32 sMVOpeningSectorUnused0x80132A40;
 
 // 0x80132A48
-lbFileNode sMVOpeningSectorStatusBuf[48];
+lbFileNode sMVOpeningSectorStatusBuffer[48];
 
 // 0x80132BC8
-lbFileNode sMVOpeningSectorForceBuf[7];
+lbFileNode sMVOpeningSectorForceStatusBuffer[7];
 
 // 0x80132C00
 void *sMVOpeningSectorFiles[3];
@@ -297,12 +297,12 @@ void mvOpeningSectorCockpitProcDisplay(GObj *cockpit_gobj)
             sMVOpeningSectorCockpitAlpha = 0xFF;
         }
     }
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x00, 0x00, 0x00, sMVOpeningSectorCockpitAlpha);
-    gDPSetEnvColor(gDisplayListHead[0]++, cockpit_sobj->envcolor.r, cockpit_sobj->envcolor.g, cockpit_sobj->envcolor.b, cockpit_sobj->envcolor.a);
-    gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, TEXEL0,  0, 0, 0, PRIMITIVE,  0, 0, 0, TEXEL0,  0, 0, 0, PRIMITIVE);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sMVOpeningSectorCockpitAlpha);
+    gDPSetEnvColor(gSYTaskDLHeads[0]++, cockpit_sobj->envcolor.r, cockpit_sobj->envcolor.g, cockpit_sobj->envcolor.b, cockpit_sobj->envcolor.a);
+    gDPSetCombineLERP(gSYTaskDLHeads[0]++, 0, 0, 0, TEXEL0,  0, 0, 0, PRIMITIVE,  0, 0, 0, TEXEL0,  0, 0, 0, PRIMITIVE);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
     lbCommonDrawSObjNoAttr(cockpit_gobj);
 }
@@ -510,7 +510,7 @@ void mvOpeningSectorProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
         if (sMVOpeningSectorTotalTimeTics == 120)
         {
@@ -521,7 +521,7 @@ void mvOpeningSectorProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindOpeningStandoff;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
     }
 }
@@ -536,10 +536,10 @@ void mvOpeningSectorProcStart(void)
     rldmSetup.table_files_num = &lLBRelocTableFilesNum;
     rldmSetup.file_heap = NULL;
     rldmSetup.file_heap_size = 0;
-    rldmSetup.status_buf = sMVOpeningSectorStatusBuf;
-    rldmSetup.status_buf_size = ARRAY_COUNT(sMVOpeningSectorStatusBuf);
-    rldmSetup.force_buf = sMVOpeningSectorForceBuf;
-    rldmSetup.force_buf_size = ARRAY_COUNT(sMVOpeningSectorForceBuf);
+    rldmSetup.status_buffer = sMVOpeningSectorStatusBuffer;
+    rldmSetup.status_buffer_size = ARRAY_COUNT(sMVOpeningSectorStatusBuffer);
+    rldmSetup.force_status_buffer = sMVOpeningSectorForceStatusBuffer;
+    rldmSetup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningSectorForceStatusBuffer);
 
     lbRelocInitSetup(&rldmSetup);
     lbRelocLoadFilesExtern
@@ -547,7 +547,7 @@ void mvOpeningSectorProcStart(void)
         dMVOpeningSectorFileIDs,
         ARRAY_COUNT(dMVOpeningSectorFileIDs),
         sMVOpeningSectorFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (

@@ -41,10 +41,10 @@ u16 sMVOpeningNewcomersCharacterMask;
 s32 sMVOpeningNewcomersUnused0x80132754;
 
 // 0x80132758
-lbFileNode dMVOpeningNewcomersStatusBuf[48];
+lbFileNode dMVOpeningNewcomersStatusBuffer[48];
 
 // 0x801328D8
-lbFileNode dMVOpeningNewcomersForceBuf[7];
+lbFileNode dMVOpeningNewcomersForceStatusBuffer[7];
 
 // 0x80132910
 void *sMVOpeningNewcomersFiles[2];
@@ -262,14 +262,14 @@ void mvOpeningNewcomersHideProcDisplay(GObj *gobj)
             sMVOpeningNewcomersOverlayAlpha = 0xFF;
         }
     }
-    gDPPipeSync(gDisplayListHead[1]++);
-    gDPSetCycleType(gDisplayListHead[1]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gDisplayListHead[1]++, 0, 0, 0x00, 0x00, 0x00, sMVOpeningNewcomersOverlayAlpha);
-    gDPSetCombineLERP(gDisplayListHead[1]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gDisplayListHead[1]++, 10, 10, 310, 230);
-    gDPPipeSync(gDisplayListHead[1]++);
-    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskDLHeads[1]++);
+    gDPSetCycleType(gSYTaskDLHeads[1]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskDLHeads[1]++, 0, 0, 0x00, 0x00, 0x00, sMVOpeningNewcomersOverlayAlpha);
+    gDPSetCombineLERP(gSYTaskDLHeads[1]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskDLHeads[1]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYTaskDLHeads[1]++);
+    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80132164
@@ -389,7 +389,7 @@ void mvOpeningNewcomersProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
         if (sMVOpeningNewcomersTotalTimeTics == 30)
         {
@@ -400,7 +400,7 @@ void mvOpeningNewcomersProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
     }
 }
@@ -415,10 +415,10 @@ void mvOpeningNewcomersProcStart(void)
     rldmSetup.table_files_num = &lLBRelocTableFilesNum;
     rldmSetup.file_heap = NULL;
     rldmSetup.file_heap_size = 0;
-    rldmSetup.status_buf = dMVOpeningNewcomersStatusBuf;
-    rldmSetup.status_buf_size = ARRAY_COUNT(dMVOpeningNewcomersStatusBuf);
-    rldmSetup.force_buf = dMVOpeningNewcomersForceBuf;
-    rldmSetup.force_buf_size = ARRAY_COUNT(dMVOpeningNewcomersForceBuf);
+    rldmSetup.status_buffer = dMVOpeningNewcomersStatusBuffer;
+    rldmSetup.status_buffer_size = ARRAY_COUNT(dMVOpeningNewcomersStatusBuffer);
+    rldmSetup.force_status_buffer = dMVOpeningNewcomersForceStatusBuffer;
+    rldmSetup.force_status_buffer_size = ARRAY_COUNT(dMVOpeningNewcomersForceStatusBuffer);
 
     lbRelocInitSetup(&rldmSetup);
     lbRelocLoadFilesExtern
@@ -426,7 +426,7 @@ void mvOpeningNewcomersProcStart(void)
         dMVOpeningNewcomersFileIDs,
         ARRAY_COUNT(dMVOpeningNewcomersFileIDs),
         sMVOpeningNewcomersFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (

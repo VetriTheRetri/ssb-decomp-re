@@ -70,10 +70,10 @@ s32 sSC1PGameEnemyKirbyCostume;
 void *sSC1PGameZakoStockSprite;
 
 // 0x80193068
-lbFileNode sSC1PGameStatusBuf[100];
+lbFileNode sSC1PGameStatusBuffer[100];
 
 // 0x80193388
-lbFileNode sSC1PGameForceBuf[7];
+lbFileNode sSC1PGameForceStatusBuffer[7];
 
 // 0x801933C0
 sb32 sSC1PGameIsEndStage;
@@ -716,10 +716,10 @@ void sc1PGameSetupFiles(void)
     rl_setup.table_files_num = &lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = sSC1PGameStatusBuf;
-    rl_setup.status_buf_size = ARRAY_COUNT(sSC1PGameStatusBuf);
-    rl_setup.force_buf = sSC1PGameForceBuf;
-    rl_setup.force_buf_size = ARRAY_COUNT(sSC1PGameForceBuf);
+    rl_setup.status_buffer = sSC1PGameStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sSC1PGameStatusBuffer);
+    rl_setup.force_status_buffer = sSC1PGameForceStatusBuffer;
+    rl_setup.force_status_buffer_size = ARRAY_COUNT(sSC1PGameForceStatusBuffer);
 
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
@@ -727,7 +727,7 @@ void sc1PGameSetupFiles(void)
         dGMCommonFileIDs, 
         ARRAY_COUNT(dGMCommonFileIDs), 
         gGMCommonFiles, 
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (
@@ -1701,7 +1701,7 @@ void sc1PGameInitTeamStockDisplay(void)
         sSC1PGameZakoStockSprite = lbRelocGetFileExternHeap
         (
             (uintptr_t)&D_NF_00000019, 
-            gsMemoryAlloc
+            syTaskMalloc
             (
                 lbRelocGetFileSize((uintptr_t)&D_NF_00000019), 
                 0x10
@@ -1994,7 +1994,7 @@ void sc1PGameProcStart(void)
     {
         syDmaReadRom(0xF10, spA0, ARRAY_COUNT(spA0));
 
-        addr = lbRelocGetFileExternHeap((uintptr_t)&D_NF_000000C8, gsMemoryAlloc(lbRelocGetFileSize((uintptr_t)&D_NF_000000C8), 0x10));
+        addr = lbRelocGetFileExternHeap((uintptr_t)&D_NF_000000C8, syTaskMalloc(lbRelocGetFileSize((uintptr_t)&D_NF_000000C8), 0x10));
 
         proc = (sb32(*)(void*)) ((uintptr_t)addr + (intptr_t)&D_NF_00000000);
 
@@ -2029,7 +2029,7 @@ void sc1PGameProcStart(void)
         // Need to load PK Fire graphics from Ness' file
         plns = dFTManagerDataFiles[nFTKindNess];
 
-        lbRelocGetFileExternHeap((uintptr_t)&D_NF_000000E6, gsMemoryAlloc(lbRelocGetFileSize((uintptr_t)&D_NF_000000E6), 0x10));
+        lbRelocGetFileExternHeap((uintptr_t)&D_NF_000000E6, syTaskMalloc(lbRelocGetFileSize((uintptr_t)&D_NF_000000E6), 0x10));
         efAllocGetAddParticleBankID
         (
             plns->particles_script_lo, 
@@ -2063,7 +2063,7 @@ void sc1PGameProcStart(void)
             {
                 continue;
             }
-            else sSC1PGamePlayerSetups[i].figatree = gsMemoryAlloc(largest_size, 0x10);
+            else sSC1PGamePlayerSetups[i].figatree = syTaskMalloc(largest_size, 0x10);
         }
         break;
     }

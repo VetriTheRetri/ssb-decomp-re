@@ -107,12 +107,12 @@ void mvOpeningSamusLoadFiles()
 	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = 0;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (lbFileNode*) &D_ovl38_8018E2D8;
-	rldmSetup.status_buf_size = 0x30;
-	rldmSetup.force_buf = (lbFileNode*) &D_ovl38_8018E458;
-	rldmSetup.force_buf_size = 7;
+	rldmSetup.status_buffer = (lbFileNode*) &D_ovl38_8018E2D8;
+	rldmSetup.status_buffer_size = 0x30;
+	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl38_8018E458;
+	rldmSetup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl38_8018E164, ARRAY_COUNT(D_ovl38_8018E164), gMvOpeningSamusFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl38_8018E164, ARRAY_COUNT(D_ovl38_8018E164)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl38_8018E164, ARRAY_COUNT(D_ovl38_8018E164), gMvOpeningSamusFilesArray, syTaskMalloc(lbRelocGetAllocSize(D_ovl38_8018E164, ARRAY_COUNT(D_ovl38_8018E164)), 0x10));
 }
 
 // 8018D160
@@ -295,14 +295,14 @@ void mvOpeningSamusInitFighterStagePanel()
 // 8018D8B0
 void mvOpeningSamusRenderPosedFighterBackground(GObj *gobj)
 {
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0, 0, 80, 255);
-	gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-	gDPFillRectangle(gDisplayListHead[0]++, 10, 10, 110, 230);
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0, 0, 80, 255);
+	gDPSetCombineLERP(gSYTaskDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 10, 110, 230);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 8018D9AC
@@ -401,7 +401,7 @@ void mvOpeningSamusMainProc(GObj* arg0)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 1U;
-		leoInitUnit_atten();
+		syTaskSetLoadScene();
 	}
 
 	if (gMvOpeningSamusFramesElapsed == 15)
@@ -416,7 +416,7 @@ void mvOpeningSamusMainProc(GObj* arg0)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 0x23;
-		leoInitUnit_atten();
+		syTaskSetLoadScene();
 	}
 }
 
@@ -456,7 +456,7 @@ void mvOpeningSamusInit()
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 	ftManagerSetupFilesAllKind(nFTKindSamus);
 
-	gMvOpeningSamusAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMvOpeningSamusAnimHeap = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningSamusCreateNameViewport();
 	mvOpeningSamusCreatePosedFighterBackgroundViewport();
 	mvOpeningSamusCreatePosedFighterViewport();

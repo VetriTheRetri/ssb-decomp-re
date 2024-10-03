@@ -3,7 +3,7 @@
 
 #include <sys/objtypes.h>
 
-extern Gfx *gDisplayListHead[4];
+extern Gfx *gSYTaskDLHeads[4];
 
 #define syMatrixStoreGbi(mtx_store, mtx_heap) \
 (mtx_store.gbi = mtx_heap.ptr, mtx_heap.ptr = (Mtx*)mtx_heap.ptr + 1) \

@@ -511,7 +511,7 @@ void dbCubeMain(GObj* arg0)
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 1U;
 
-		leoInitUnit_atten();
+		syTaskSetLoadScene();
 	}
 }
 
@@ -549,10 +549,10 @@ void dbCubeInit()
 	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (lbFileNode*) &D_ovl13_80133140;
-	rldmSetup.status_buf_size = 5;
-	rldmSetup.force_buf = 0;
-	rldmSetup.force_buf_size = 0;
+	rldmSetup.status_buffer = (lbFileNode*) &D_ovl13_80133140;
+	rldmSetup.status_buffer_size = 5;
+	rldmSetup.force_status_buffer = 0;
+	rldmSetup.force_status_buffer_size = 0;
 	lbRelocInitSetup(&rldmSetup);
 
 	gcMakeGObjSPAfter(0, dbCubeMain, 0, 0x80000000);

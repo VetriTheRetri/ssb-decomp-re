@@ -90,7 +90,7 @@ s32 sMNVSModeFramesElapsed;
 s32 sMNVSModeMaxFramesElapsed;
 
 // 0x80134988
-lbFileNode sMNVSModeStatusBuf[24];
+lbFileNode sMNVSModeStatusBuffer[24];
 
 // 0x80134A48
 void *sMNVSModeFiles[2];
@@ -763,15 +763,15 @@ void mnVSModeMakeUnusedGObj(void)
 // 0x80133008
 void mnVSModeRenderMenuName(GObj* menu_name_gobj)
 {
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xA0, 0x78, 0x14, 0xE6);
-    gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gDisplayListHead[0]++, 225, 143, 310, 230);
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0xA0, 0x78, 0x14, 0xE6);
+    gDPSetCombineLERP(gSYTaskDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 225, 143, 310, 230);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
 
     lbCommonClearExternSpriteParams();
     lbCommonDrawSObjAttr(menu_name_gobj);
@@ -1141,7 +1141,7 @@ void mnVSModeMain(GObj *gobj)
             gSceneData.scene_current = nSCKindTitle;
 
             mnVSModeSaveSettings();
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
 
             return;
         }
@@ -1151,7 +1151,7 @@ void mnVSModeMain(GObj *gobj)
         }
         if (sMNVSModeExitInterrupt != 0)
         {
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
         if (sMNVSModeChangeWait != 0)
         {
@@ -1204,7 +1204,7 @@ void mnVSModeMain(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindModeSelect;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
         if
         (
@@ -1466,10 +1466,10 @@ void mnVSModeProcStart(void)
     rl_setup.table_files_num = &lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = sMNVSModeStatusBuf;
-    rl_setup.status_buf_size = ARRAY_COUNT(sMNVSModeStatusBuf);
-    rl_setup.force_buf = NULL;
-    rl_setup.force_buf_size = 0;
+    rl_setup.status_buffer = sMNVSModeStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sMNVSModeStatusBuffer);
+    rl_setup.force_status_buffer = NULL;
+    rl_setup.force_status_buffer_size = 0;
 
     lbRelocInitSetup(&rl_setup);
 
@@ -1487,7 +1487,7 @@ void mnVSModeProcStart(void)
         dMNVSModeFileIDs,
         ARRAY_COUNT(dMNVSModeFileIDs),
         sMNVSModeFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (

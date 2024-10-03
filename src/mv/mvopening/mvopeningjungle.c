@@ -6,7 +6,7 @@
 #include <sys/system_00.h>
 #include <lb/library.h>
 
-extern void leoInitUnit_atten();
+extern void syTaskSetLoadScene();
 extern u32 func_8000092C();
 extern void func_800A26B8();
 
@@ -57,10 +57,10 @@ CameraDesc sMVOpeningJungleUnusedCameraDescAdjustedStart;
 CameraDesc sMVOpeningJungleUnusedCameraDescAdjustedEnd;
 
 // 0x8018DAA8
-lbFileNode sMVOpeningJungleStatusBuf[48];
+lbFileNode sMVOpeningJungleStatusBuffer[48];
 
 // 0x8018DC28
-lbFileNode sMVOpeningJungleForceBuf[7];
+lbFileNode sMVOpeningJungleForceStatusBuffer[7];
 
 // 0x8018DC60
 void *sMVOpeningJungleFiles[2];
@@ -206,10 +206,10 @@ void mvOpeningJungleSetupFiles(void)
     rl_setup.table_files_num = &lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = sMVOpeningJungleStatusBuf;
-    rl_setup.status_buf_size = ARRAY_COUNT(sMVOpeningJungleStatusBuf);
-    rl_setup.force_buf = sMVOpeningJungleForceBuf;
-    rl_setup.force_buf_size = ARRAY_COUNT(sMVOpeningJungleForceBuf);
+    rl_setup.status_buffer = sMVOpeningJungleStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sMVOpeningJungleStatusBuffer);
+    rl_setup.force_status_buffer = sMVOpeningJungleForceStatusBuffer;
+    rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningJungleForceStatusBuffer);
 
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
@@ -217,7 +217,7 @@ void mvOpeningJungleSetupFiles(void)
         dMVOpeningJungleFileIDs,
         ARRAY_COUNT(dMVOpeningJungleFileIDs),
         sMVOpeningJungleFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (
@@ -381,14 +381,14 @@ void mvOpeningJungleProcRun(GObj *gobj)
         gSceneData.scene_previous = gSceneData.scene_current;
         gSceneData.scene_current = nSCKindTitle;
 
-        leoInitUnit_atten();
+        syTaskSetLoadScene();
     }
     if (sMVOpeningJungleTotalTimeTics == 320)
     {
         gSceneData.scene_previous = gSceneData.scene_current;
         gSceneData.scene_current = nSCKindOpeningYoster;
 
-        leoInitUnit_atten();
+        syTaskSetLoadScene();
     }
 }
 

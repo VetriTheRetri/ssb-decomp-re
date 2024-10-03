@@ -80,7 +80,7 @@ s32 sMNDataReturnTic;
 // s32 sMNDataPad0x8013309C;
 
 // 0x801330A0
-lbFileNode sMNDataStatusBuf[24];
+lbFileNode sMNDataStatusBuffer[24];
 
 // 0x80133160
 void *sMNDataFiles[2];
@@ -363,15 +363,15 @@ void mnDataMakeMenuGObj(void)
 // 0x80132164
 void mnDataHeaderProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 160, 120, 20, 230);
-    gDPSetCombineMode(gDisplayListHead[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gDisplayListHead[0]++, 225, 143, 310, 230);
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 160, 120, 20, 230);
+    gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 225, 143, 310, 230);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
 
     lbCommonClearExternSpriteParams();
     lbCommonDrawSObjAttr(gobj);
@@ -618,7 +618,7 @@ void mnDataProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
 
             return;
         }
@@ -628,7 +628,7 @@ void mnDataProcRun(GObj *gobj)
         }
         if (sMNDataIsProceedScene != FALSE)
         {
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
 
             return;
         }
@@ -686,7 +686,7 @@ void mnDataProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindModeSelect;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
 
             return;
         }
@@ -758,10 +758,10 @@ void mnDataProcStart(void)
     rl_setup.table_files_num = &lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = sMNDataStatusBuf;
-    rl_setup.status_buf_size = ARRAY_COUNT(sMNDataStatusBuf);
-    rl_setup.force_buf = NULL;
-    rl_setup.force_buf_size = 0;
+    rl_setup.status_buffer = sMNDataStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sMNDataStatusBuffer);
+    rl_setup.force_status_buffer = NULL;
+    rl_setup.force_status_buffer_size = 0;
 
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
@@ -769,7 +769,7 @@ void mnDataProcStart(void)
         dMNDataFileIDs,
         ARRAY_COUNT(dMNDataFileIDs),
         sMNDataFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (

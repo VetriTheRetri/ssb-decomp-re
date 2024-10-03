@@ -178,8 +178,8 @@ void mnStageAllocateStageModelHeaps()
 			max = size;
 	}
 
-	gMNStageModelHeap0Ptr = gsMemoryAlloc(max, 0x10);
-	gMNStageModelHeap1Ptr = gsMemoryAlloc(max, 0x10);
+	gMNStageModelHeap0Ptr = syTaskMalloc(max, 0x10);
+	gMNStageModelHeap1Ptr = syTaskMalloc(max, 0x10);
 }
 
 // 80131B88
@@ -384,18 +384,18 @@ void mnStageCreateWoodenCircle()
 // 801320E0
 void mnStageRenderStageSelectGfx(GObj* stage_select_gobj)
 {
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x57, 0x60, 0x88, 0xFF);
-	gDPSetCombineMode(gDisplayListHead[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-	gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x57, 0x60, 0x88, 0xFF);
-	gDPFillRectangle(gDisplayListHead[0]++, 160, 128, 320, 134);
-	gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x00, 0x00, 0x00, 0x33);
-	gDPFillRectangle(gDisplayListHead[0]++, 194, 189, 268, 193);
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0x57, 0x60, 0x88, 0xFF);
+	gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0x57, 0x60, 0x88, 0xFF);
+	gDPFillRectangle(gSYTaskDLHeads[0]++, 160, 128, 320, 134);
+	gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, 0x33);
+	gDPFillRectangle(gSYTaskDLHeads[0]++, 194, 189, 268, 193);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
 	lbCommonClearExternSpriteParams();
 	lbCommonDrawSObjAttr(stage_select_gobj);
 }
@@ -742,22 +742,22 @@ void mnStageCreateCursor()
 // 80132B84
 void mnStageLoadStageFile(s32 stage_id, u8* heapAddr)
 {
-	gMNStageGroundInfo = (s32)lbRelocGetFileExternForceBufHeap(dMNStageFileInfoArray[stage_id].id, heapAddr) + dMNStageFileInfoArray[stage_id].header_size;
+	gMNStageGroundInfo = (s32)lbRelocGetFileExternForceStatusBufferHeap(dMNStageFileInfoArray[stage_id].id, heapAddr) + dMNStageFileInfoArray[stage_id].header_size;
 }
 
 // 80132BC8
 void mnStageRenderStagePreviewBackground(s32 stage_preview_bg_gobj)
 {
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x57, 0x60, 0x88, 0xFF);
-	gDPSetCombineMode(gDisplayListHead[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-	gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x00, 0x00, 0x00, 0x73);
-	gDPFillRectangle(gDisplayListHead[0]++, 43, 130, 152, 211);
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0x57, 0x60, 0x88, 0xFF);
+	gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, 0x73);
+	gDPFillRectangle(gSYTaskDLHeads[0]++, 43, 130, 152, 211);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
 	lbCommonClearExternSpriteParams();
 	lbCommonDrawSObjAttr(stage_preview_bg_gobj);
 }
@@ -796,7 +796,7 @@ GObj* mnStageCreateStagePreviewBackground(s32 stage_id)
 		if (gMNStageIsTrainingMode == TRUE)
 		{
 			// If Training Mode, use Smash logo bg
-			stage_preview_bg_sobj = lbCommonMakeSObjForGObj(stage_preview_bg_gobj, GetAddressFromOffset(lbRelocGetFileExternForceBufHeap(dMNStageTrainingBackgroundFileNodes[dMNStageTrainingBackgroundIDs[stage_id]].id, (uintptr_t)gMNStageGroundInfo->wallpaper - dMNStageBackgroundFileOffsets[stage_id]), &FILE_01A_TRAINING_BACKGROUND_IMAGE_OFFSET));
+			stage_preview_bg_sobj = lbCommonMakeSObjForGObj(stage_preview_bg_gobj, GetAddressFromOffset(lbRelocGetFileExternForceStatusBufferHeap(dMNStageTrainingBackgroundFileNodes[dMNStageTrainingBackgroundIDs[stage_id]].id, (uintptr_t)gMNStageGroundInfo->wallpaper - dMNStageBackgroundFileOffsets[stage_id]), &FILE_01A_TRAINING_BACKGROUND_IMAGE_OFFSET));
 		}
 		else
 		{
@@ -817,21 +817,21 @@ GObj* mnStageCreateStagePreviewBackground(s32 stage_id)
 // 80132EF0
 void mnStageRenderStagePreviewPrimary(GObj* stage_geo_gobj)
 {
-	gDPPipeSync(gDisplayListHead[0]++);
-	gSPSetGeometryMode(gDisplayListHead[0]++, G_ZBUFFER);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gSPSetGeometryMode(gSYTaskDLHeads[0]++, G_ZBUFFER);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 	gcDrawDObjTreeForGObj(stage_geo_gobj);
 }
 
 // 80132F70
 void mnStageRenderStagePreviewSecondary(GObj* stage_geo_gobj)
 {
-	gDPPipeSync(gDisplayListHead[0]++);
-	gSPSetGeometryMode(gDisplayListHead[0]++, G_ZBUFFER);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-	gDPPipeSync(gDisplayListHead[1]++);
-	gSPSetGeometryMode(gDisplayListHead[1]++, G_ZBUFFER);
-	gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gSPSetGeometryMode(gSYTaskDLHeads[0]++, G_ZBUFFER);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTaskDLHeads[1]++);
+	gSPSetGeometryMode(gSYTaskDLHeads[1]++, G_ZBUFFER);
+	gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 	gcDrawDObjTreeDLLinksForGObj(stage_geo_gobj);
 }
 
@@ -1174,7 +1174,7 @@ void mnStageHandleButtonPresses(s32 arg0)
 			gSceneData.scene_current = nSCKindTitle;
 
 			mnStageSaveSceneData2();
-			leoInitUnit_atten();
+			syTaskSetLoadScene();
 			return;
 		}
 
@@ -1210,7 +1210,7 @@ void mnStageHandleButtonPresses(s32 arg0)
 				gSceneData.scene_current = nSCKindVSBattle;
 			}
 
-			leoInitUnit_atten();
+			syTaskSetLoadScene();
 		}
 
 		if (scSubsysControllerGetPlayerTapButtons(B_BUTTON))
@@ -1228,7 +1228,7 @@ void mnStageHandleButtonPresses(s32 arg0)
 				gSceneData.scene_current = nSCKindVSFighters;
 			}
 
-			leoInitUnit_atten();
+			syTaskSetLoadScene();
 		}
 
 		if (gMNStageScrollBuffer == 0)
@@ -1352,12 +1352,12 @@ void mnStageInitSSS()
 	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (lbFileNode*) &D_ovl30_80134C30;
-	rldmSetup.status_buf_size = 0x1E;
-	rldmSetup.force_buf = (lbFileNode*) &D_ovl30_80134D20;
-	rldmSetup.force_buf_size = 0x1E;
+	rldmSetup.status_buffer = (lbFileNode*) &D_ovl30_80134C30;
+	rldmSetup.status_buffer_size = 0x1E;
+	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl30_80134D20;
+	rldmSetup.force_status_buffer_size = 0x1E;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0), gMNStageFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0), gMNStageFilesArray, syTaskMalloc(lbRelocGetAllocSize(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0)), 0x10));
 
 	mnStageAllocateStageModelHeaps();
 

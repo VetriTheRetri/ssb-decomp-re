@@ -94,7 +94,7 @@ s32 sMNBackupClearOptionConfirmAnimLength;
 s32 sMNBackupClearReturnTic;
 
 // 0x801330F0
-lbFileNode sMNBackupClearStatusBuf[24];
+lbFileNode sMNBackupClearStatusBuffer[24];
 
 // 0x801331B0
 void *sMNBackupClearFiles[3];
@@ -314,17 +314,17 @@ void mnBackupClearEjectOptionGObjs(void)
 // 0x80131F98
 void mnBackupClearOptionConfirmProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF)));
-    gDPFillRectangle(gDisplayListHead[0]++, 58, 64, 262, 64);
-    gDPFillRectangle(gDisplayListHead[0]++, 58, 172, 262, 172);
-    gDPFillRectangle(gDisplayListHead[0]++, 58, 64, 58, 172);
-    gDPFillRectangle(gDisplayListHead[0]++, 262, 64, 262, 172);
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_FILL);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
+    gDPSetFillColor(gSYTaskDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF)));
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 58, 64, 262, 64);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 58, 172, 262, 172);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 58, 64, 58, 172);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 262, 64, 262, 172);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
     
     lbCommonClearExternSpriteParams();
     lbCommonDrawSObjAttr(gobj);
@@ -552,7 +552,7 @@ void mnBackupClearUpdateOptionMainMenu(void)
         gSceneData.scene_current = nSCKindOption;
 
         func_ovl53_801325CC();
-        leoInitUnit_atten();
+        syTaskSetLoadScene();
         return;
     }
     if
@@ -775,10 +775,10 @@ void mnBackupClearProcStart(void)
     rl_setup.table_files_num = &lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = sMNBackupClearStatusBuf;
-    rl_setup.status_buf_size = ARRAY_COUNT(sMNBackupClearStatusBuf);
-    rl_setup.force_buf = NULL;
-    rl_setup.force_buf_size = 0;
+    rl_setup.status_buffer = sMNBackupClearStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sMNBackupClearStatusBuffer);
+    rl_setup.force_status_buffer = NULL;
+    rl_setup.force_status_buffer_size = 0;
     
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
@@ -786,7 +786,7 @@ void mnBackupClearProcStart(void)
         dMNBackupClearFileIDs,
         ARRAY_COUNT(dMNBackupClearFileIDs),
         sMNBackupClearFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (

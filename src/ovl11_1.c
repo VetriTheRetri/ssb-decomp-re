@@ -21,10 +21,10 @@ void mnNoControllerLoadFiles()
 	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (lbFileNode*) &D_ovl11_800D67D8;
-	rldmSetup.status_buf_size = 0x64;
-	rldmSetup.force_buf = (lbFileNode*) &D_ovl11_800D6AF8;
-	rldmSetup.force_buf_size = 7;
+	rldmSetup.status_buffer = (lbFileNode*) &D_ovl11_800D67D8;
+	rldmSetup.status_buffer_size = 0x64;
+	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl11_800D6AF8;
+	rldmSetup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl11_800D67B0, ARRAY_COUNT(D_ovl11_800D67B0), gMNNoControllerFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl11_800D67B0, ARRAY_COUNT(D_ovl11_800D67B0)), 0x10U));
+	lbRelocLoadFilesExtern(D_ovl11_800D67B0, ARRAY_COUNT(D_ovl11_800D67B0), gMNNoControllerFilesArray, syTaskMalloc(lbRelocGetAllocSize(D_ovl11_800D67B0, ARRAY_COUNT(D_ovl11_800D67B0)), 0x10U));
 }

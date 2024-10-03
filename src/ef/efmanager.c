@@ -1756,7 +1756,7 @@ void efManagerInitEffects(void)
     s32 i;
     s32 unused;
 
-    sEFManagerStructsAllocFree = ep = gsMemoryAlloc(sizeof(efStruct) * EFFECT_ALLOC_NUM, 0x8);
+    sEFManagerStructsAllocFree = ep = syTaskMalloc(sizeof(efStruct) * EFFECT_ALLOC_NUM, 0x8);
     sEFManagerStructsFreeNum = EFFECT_ALLOC_NUM;
 
     for (i = 0; i < (EFFECT_ALLOC_NUM - 1); i++)
@@ -1770,9 +1770,9 @@ void efManagerInitEffects(void)
     efDisplayMakeBlendCLD();
     efDisplayMakeXLU();
 
-    sEFManagerTexturesFile1 = lbRelocGetFileExternHeap(&D_NF_00000053, gsMemoryAlloc(lbRelocGetFileSize(&D_NF_00000053), 0x10));
-    sEFManagerTexturesFile2 = lbRelocGetFileExternHeap(&D_NF_00000054, gsMemoryAlloc(lbRelocGetFileSize(&D_NF_00000054), 0x10));
-    sEFManagerTexturesFile3 = lbRelocGetFileExternHeap(&D_NF_00000055, gsMemoryAlloc(lbRelocGetFileSize(&D_NF_00000055), 0x10));
+    sEFManagerTexturesFile1 = lbRelocGetFileExternHeap(&D_NF_00000053, syTaskMalloc(lbRelocGetFileSize(&D_NF_00000053), 0x10));
+    sEFManagerTexturesFile2 = lbRelocGetFileExternHeap(&D_NF_00000054, syTaskMalloc(lbRelocGetFileSize(&D_NF_00000054), 0x10));
+    sEFManagerTexturesFile3 = lbRelocGetFileExternHeap(&D_NF_00000055, syTaskMalloc(lbRelocGetFileSize(&D_NF_00000055), 0x10));
 
     efDisplayInitAll();
 }
@@ -3299,18 +3299,18 @@ void efManagerImpactWaveProcDisplay(GObj *effect_gobj)
     efStruct *ep = efGetStruct(effect_gobj);
     s32 index = ep->effect_vars.impact_wave.index;
 
-    gDPPipeSync(gDisplayListHead[0]++);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
 
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, dEFManagerImpactWavePrimColorR[index], dEFManagerImpactWavePrimColorG[index], dEFManagerImpactWavePrimColorB[index], (s32)ep->effect_vars.impact_wave.alpha);
+    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, dEFManagerImpactWavePrimColorR[index], dEFManagerImpactWavePrimColorG[index], dEFManagerImpactWavePrimColorB[index], (s32)ep->effect_vars.impact_wave.alpha);
 
     // The following EnvColor RGB key arrays are all zeroes, so using them (and even having them occupy space in the .data section) is completely unnecessary.
 
 #if defined (DAIRANTOU_OPT0)
-    gDPSetEnvColor(gDisplayListHead[0]++, 0x00, 0x00, 0x00, 0xFF);
+    gDPSetEnvColor(gSYTaskDLHeads[0]++, 0x00, 0x00, 0x00, 0xFF);
 #else
-    gDPSetEnvColor(gDisplayListHead[0]++, dEFManagerImpactWaveEnvColorR[index], dEFManagerImpactWaveEnvColorG[index], dEFManagerImpactWaveEnvColorB[index], 0xFF);
+    gDPSetEnvColor(gSYTaskDLHeads[0]++, dEFManagerImpactWaveEnvColorR[index], dEFManagerImpactWaveEnvColorG[index], dEFManagerImpactWaveEnvColorB[index], 0xFF);
 #endif
 
     gcDrawDObjDLHead0(effect_gobj);
@@ -4126,10 +4126,10 @@ void efManagerShieldProcDisplay(GObj *effect_gobj)
     efStruct *ep = efGetStruct(effect_gobj);
     s32 id = (ep->effect_vars.shield.is_damage_shield != FALSE) ? 4 : ep->effect_vars.shield.player;
 
-    gDPPipeSync(gDisplayListHead[1]++);
+    gDPPipeSync(gSYTaskDLHeads[1]++);
 
-    gDPSetPrimColor(gDisplayListHead[1]++, 0, 0, dEFManagerShieldColors[id].prim.r, dEFManagerShieldColors[id].prim.g, dEFManagerShieldColors[id].prim.b, 0xC0);
-    gDPSetEnvColor(gDisplayListHead[1]++, dEFManagerShieldColors[id].env.r, dEFManagerShieldColors[id].env.g, dEFManagerShieldColors[id].env.b, 0xC0);
+    gDPSetPrimColor(gSYTaskDLHeads[1]++, 0, 0, dEFManagerShieldColors[id].prim.r, dEFManagerShieldColors[id].prim.g, dEFManagerShieldColors[id].prim.b, 0xC0);
+    gDPSetEnvColor(gSYTaskDLHeads[1]++, dEFManagerShieldColors[id].env.r, dEFManagerShieldColors[id].env.g, dEFManagerShieldColors[id].env.b, 0xC0);
 
     gcDrawDObjTreeDLLinksForGObj(effect_gobj);
 }
@@ -4179,8 +4179,8 @@ void efManagerYoshiShieldProcDisplay(GObj *effect_gobj)
     color[nSYColorRGBAIndexG] = 0xD6 * blend;
     color[nSYColorRGBAIndexB] = 0xD6 * blend;
 
-    gDPPipeSync(gDisplayListHead[1]++);
-    gDPSetEnvColor(gDisplayListHead[1]++, color[nSYColorRGBAIndexR], color[nSYColorRGBAIndexG], color[nSYColorRGBAIndexB], 0x00);
+    gDPPipeSync(gSYTaskDLHeads[1]++);
+    gDPSetEnvColor(gSYTaskDLHeads[1]++, color[nSYColorRGBAIndexR], color[nSYColorRGBAIndexG], color[nSYColorRGBAIndexB], 0x00);
 
     gcDrawDObjDLHead1(effect_gobj);
 
@@ -4506,19 +4506,19 @@ void efManagerPikachuThunderTrailProcUpdate(GObj *effect_gobj)
 // 0x80101AA8
 void efManagerPikachuThunderTrailProcDisplay(GObj *effect_gobj)
 {
-    gDPPipeSync(gDisplayListHead[1]++);
+    gDPPipeSync(gSYTaskDLHeads[1]++);
 
-    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
-    gDPSetAlphaCompare(gDisplayListHead[1]++, G_AC_NONE);
+    gDPSetAlphaCompare(gSYTaskDLHeads[1]++, G_AC_NONE);
 
     gcDrawDObjDLLinksForGObj(effect_gobj);
 
-    gDPPipeSync(gDisplayListHead[1]++);
+    gDPPipeSync(gSYTaskDLHeads[1]++);
 
-    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
 
-    gDPSetAlphaCompare(gDisplayListHead[1]++, G_AC_THRESHOLD);
+    gDPSetAlphaCompare(gSYTaskDLHeads[1]++, G_AC_THRESHOLD);
 }
 
 // 0x80101B88
@@ -5030,15 +5030,15 @@ void efManagerNessPKThunderTrailProcUpdate(GObj *effect_gobj)
 // 0x80102768
 void efManagerNessPKThunderTrailProcDisplay(GObj *effect_gobj)
 {
-    gDPPipeSync(gDisplayListHead[1]++);
-    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPSetAlphaCompare(gDisplayListHead[1]++, G_AC_NONE);
+    gDPPipeSync(gSYTaskDLHeads[1]++);
+    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetAlphaCompare(gSYTaskDLHeads[1]++, G_AC_NONE);
 
     gcDrawDObjDLLinksForGObj(effect_gobj);
 
-    gDPPipeSync(gDisplayListHead[1]++);
-    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
-    gDPSetAlphaCompare(gDisplayListHead[1]++, G_AC_THRESHOLD);
+    gDPPipeSync(gSYTaskDLHeads[1]++);
+    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gDPSetAlphaCompare(gSYTaskDLHeads[1]++, G_AC_THRESHOLD);
 }
 
 // 0x80102848

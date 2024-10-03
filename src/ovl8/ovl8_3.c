@@ -99,13 +99,13 @@ void func_ovl8_8037217C(dbUnknownLink *arg0)
 	gobj = next->unk_dbmenusprite_0x48;
 	sobj = SObjGetStruct(gobj);
 	
-	sobj->sprite.rsp_dl_next = gDisplayListHead[0];
+	sobj->sprite.rsp_dl_next = gSYTaskDLHeads[0];
 
 	spDraw(&sobj->sprite);
 	
-	gDisplayListHead[0] = sobj->sprite.rsp_dl_next - 1;
+	gSYTaskDLHeads[0] = sobj->sprite.rsp_dl_next - 1;
 	
-	gDPPipeSync(gDisplayListHead[0]++);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
 }
 
 void func_ovl8_803721E8(dbTestMenu *arg0, dbUnknownLinkStruct *arg1) 
@@ -295,13 +295,13 @@ void func_ovl8_80372554(dbUnknownLink *arg0, u32 arg1)
 		
 // 		spMove(sprite, sp34.arr[0] + sp3C.arr[0], sp34.arr[1] + sp3C.arr[1]);
 		
-// 		sprite->rsp_dl_next = gDisplayListHead[0];
+// 		sprite->rsp_dl_next = gSYTaskDLHeads[0];
 		
 // 		spDraw(sprite);
 		
-// 		gDisplayListHead[0] = sprite->rsp_dl_next - 1;
+// 		gSYTaskDLHeads[0] = sprite->rsp_dl_next - 1;
 		
-// 		gDPPipeSync(gDisplayListHead[0]++);
+// 		gDPPipeSync(gSYTaskDLHeads[0]++);
 // 	}
 // }
 

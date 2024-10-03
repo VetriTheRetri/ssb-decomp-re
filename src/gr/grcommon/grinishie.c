@@ -519,7 +519,7 @@ void grInishieMakePowerBlock(void)
             scManagerRunPrintGObjStatus();
         }
     }
-    gGRCommonStruct.inishie.pblock_pos_ids = (u8*) gsMemoryAlloc(pos_count * sizeof(*gGRCommonStruct.inishie.pblock_pos_ids), 0x0);
+    gGRCommonStruct.inishie.pblock_pos_ids = (u8*) syTaskMalloc(pos_count * sizeof(*gGRCommonStruct.inishie.pblock_pos_ids), 0x0);
 
     mpCollisionGetMapObjIDsKind(nMPMapObjKindPowerBlock, pos_ids);
 

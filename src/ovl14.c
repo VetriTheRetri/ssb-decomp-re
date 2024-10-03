@@ -379,7 +379,7 @@ void dbBattleMain(GObj* arg0)
 				break;
 		}
 
-		leoInitUnit_atten();
+		syTaskSetLoadScene();
 	}
 }
 
@@ -431,10 +431,10 @@ void dbBattleInit()
 	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (lbFileNode*) &D_ovl14_80132C28;
-	rldmSetup.status_buf_size = 0x96;
-	rldmSetup.force_buf = (lbFileNode*) &D_ovl14_801330D8;
-	rldmSetup.force_buf_size = 7;
+	rldmSetup.status_buffer = (lbFileNode*) &D_ovl14_80132C28;
+	rldmSetup.status_buffer_size = 0x96;
+	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl14_801330D8;
+	rldmSetup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rldmSetup);
 
 	main_gobj = gcMakeGObjSPAfter(0, dbBattleMain, 0xF, 0x80000000);
@@ -463,7 +463,7 @@ void dbBattleInit()
 		spawn_info.ft_kind = gTransferBattleState.players[i].ft_kind;
 		spawn_info.costume = gTransferBattleState.players[i].costume;
 		spawn_info.pos.x = (i * 400.0f) - 600.0f;
-		spawn_info.figatree_heap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
+		spawn_info.figatree_heap = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
 		gMNDebugBattleFighters[i].fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		gMNDebugBattleFighters[i].ft_kind = gTransferBattleState.players[i].ft_kind;

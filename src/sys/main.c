@@ -3,7 +3,7 @@
 // #include "scenemgr/scene_manager.h"
 #include <sys/error.h>
 #include <sys/dma.h>
-#include <sys/gtl.h>
+#include <sys/task.h>
 #include <sys/hal_audio.h>
 #include <sys/thread3.h>
 #include <sys/thread6.h>

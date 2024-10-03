@@ -63,7 +63,7 @@ s32 sMN1PModeTotalTimeTics;
 s32 sMN1PModeReturnTic;
 
 // 0x801331D0
-lbFileNode sMN1PModeStatusBuf[24];
+lbFileNode sMN1PModeStatusBuffer[24];
 
 // 0x80133290
 void *sMN1PModeFiles[2];
@@ -331,15 +331,15 @@ void func_ovl18_8013223C(void)
 // 0x8013226C
 void mn1PModeLabelsProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xA0, 0x78, 0x14, 0xE6);
-    gDPSetCombineMode(gDisplayListHead[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gDisplayListHead[0]++, 225, 143, 310, 230);
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0xA0, 0x78, 0x14, 0xE6);
+    gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 225, 143, 310, 230);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
     
     lbCommonClearExternSpriteParams();
     lbCommonDrawSObjAttr(gobj);
@@ -598,7 +598,7 @@ void mn1PModeProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
             return;
         }
         if (scSubsysControllerCheckNoInputAll() == FALSE)
@@ -607,7 +607,7 @@ void mn1PModeProcRun(GObj *gobj)
         }
         if (sMN1PModeIsProceedScene != FALSE)
         {
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
         if (sMN1PModeOptionChangeWait != 0)
         {
@@ -679,7 +679,7 @@ void mn1PModeProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindModeSelect;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
         if
         (
@@ -743,10 +743,10 @@ void mn1PModeProcStart(void)
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = sMN1PModeStatusBuf;
-    rl_setup.status_buf_size = ARRAY_COUNT(sMN1PModeStatusBuf);
-    rl_setup.force_buf = NULL;
-    rl_setup.force_buf_size = 0;
+    rl_setup.status_buffer = sMN1PModeStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sMN1PModeStatusBuffer);
+    rl_setup.force_status_buffer = NULL;
+    rl_setup.force_status_buffer_size = 0;
     
     lbRelocInitSetup(&rl_setup);
     
@@ -759,7 +759,7 @@ void mn1PModeProcStart(void)
         dMN1PModeFileIDs,
         ARRAY_COUNT(dMN1PModeFileIDs),
         sMN1PModeFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (

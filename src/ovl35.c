@@ -149,25 +149,25 @@ void mvPortraitsCreatePortraitsSet2()
 // 80131E00
 void mvPortraitsBlockRow1()
 {
-	gDPFillRectangle(gDisplayListHead[0]++, 10, 10, 310, 65);
+	gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 10, 310, 65);
 }
 
 // 80131E30
 void mvPortraitsBlockRow2()
 {
-	gDPFillRectangle(gDisplayListHead[0]++, 10, 65, 310, 120);
+	gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 65, 310, 120);
 }
 
 // 80131E60
 void mvPortraitsBlockRow3()
 {
-	gDPFillRectangle(gDisplayListHead[0]++, 10, 120, 310, 175);
+	gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 120, 310, 175);
 }
 
 // 80131E90
 void mvPortraitsBlockRow4()
 {
-	gDPFillRectangle(gDisplayListHead[0]++, 10, 175, 310, 230);
+	gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 175, 310, 230);
 }
 
 // 80131EC0
@@ -177,23 +177,23 @@ void mvPortraitsPartiallyBlockRow(s32 row, s32 x_offset)
 	s32 lry = 65 + row * 55;
 
 	if (x_offset > 0)
-		gDPFillRectangle(gDisplayListHead[0]++, 0, uly, x_offset, lry);
+		gDPFillRectangle(gSYTaskDLHeads[0]++, 0, uly, x_offset, lry);
 
 	if (x_offset + 656 < 0)
-		gDPFillRectangle(gDisplayListHead[0]++, 0, uly, 320, lry);
+		gDPFillRectangle(gSYTaskDLHeads[0]++, 0, uly, 320, lry);
 
 	if (x_offset + 656 < 320)
-		gDPFillRectangle(gDisplayListHead[0]++, x_offset + 656, uly, 320, lry);
+		gDPFillRectangle(gSYTaskDLHeads[0]++, x_offset + 656, uly, 320, lry);
 }
 
 // 80131FC4
 void mvPortraitsRenderPortraitOverlay(GObj* portrait_overlay_gobj)
 {
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0, 0, 0, 255);
-	gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0, 0, 0, 255);
+	gDPSetCombineLERP(gSYTaskDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
 	switch (gIntroPotraitsCurrentRow)
 	{
@@ -223,8 +223,8 @@ void mvPortraitsRenderPortraitOverlay(GObj* portrait_overlay_gobj)
 			break;
 	}
 
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
 	lbCommonClearExternSpriteParams();
 	lbCommonDrawSObjAttr(portrait_overlay_gobj);
@@ -366,7 +366,7 @@ void mvPortraitsMain(GObj* arg0)
 		{
 			gSceneData.scene_previous = gSceneData.scene_current;
 			gSceneData.scene_current = nSCKindTitle;
-			leoInitUnit_atten();
+			syTaskSetLoadScene();
 		}
 
 		if (gIntroPotraitsFramesElapsed == 75)
@@ -379,7 +379,7 @@ void mvPortraitsMain(GObj* arg0)
 		{
 			gSceneData.scene_previous = gSceneData.scene_current;
 			gSceneData.scene_current = 0x1E;
-			leoInitUnit_atten();
+			syTaskSetLoadScene();
 		}
 	}
 }
@@ -394,12 +394,12 @@ void mvPortraitsInit()
 	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (lbFileNode*) &D_ovl35_801329F8;
-	rldmSetup.status_buf_size = 0x30;
-	rldmSetup.force_buf = (lbFileNode*) &D_ovl35_80132B78;
-	rldmSetup.force_buf_size = 7;
+	rldmSetup.status_buffer = (lbFileNode*) &D_ovl35_801329F8;
+	rldmSetup.status_buffer_size = 0x30;
+	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl35_80132B78;
+	rldmSetup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0), gIntroPortraitsFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0), gIntroPortraitsFilesArray, syTaskMalloc(lbRelocGetAllocSize(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0)), 0x10));
 
 	gcMakeGObjSPAfter(0, mvPortraitsMain, 0, GOBJ_LINKORDER_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));

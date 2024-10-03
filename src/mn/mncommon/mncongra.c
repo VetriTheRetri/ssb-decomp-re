@@ -18,7 +18,7 @@ extern void* func_800269C0_275C0(u16);
 s32 sMNCongraPad0x801322B0[2];
 
 // 0x801322B8
-lbFileNode sMNCongraStatusBuf[5];
+lbFileNode sMNCongraStatusBuffer[5];
 
 // 0x801322E0
 s32 sMNCongraFighterKind;
@@ -265,10 +265,10 @@ void mnCongraProcStart(void)
 	rl_setup.table_files_num = &lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buf = sMNCongraStatusBuf;
-	rl_setup.status_buf_size = ARRAY_COUNT(sMNCongraStatusBuf);
-	rl_setup.force_buf = NULL;
-	rl_setup.force_buf_size = 0;
+	rl_setup.status_buffer = sMNCongraStatusBuffer;
+	rl_setup.status_buffer_size = ARRAY_COUNT(sMNCongraStatusBuffer);
+	rl_setup.force_status_buffer = NULL;
+	rl_setup.force_status_buffer_size = 0;
 
 	lbRelocInitSetup(&rl_setup);
 
@@ -309,7 +309,7 @@ void mnCongraProcStart(void)
 			lbRelocGetFileExternHeap
 			(
 				dMNCongraPictures[sMNCongraFighterKind].bottom_file_id,
-				gsMemoryAlloc
+				syTaskMalloc
 				(
 					lbRelocGetFileSize
 					(
@@ -335,7 +335,7 @@ void mnCongraProcStart(void)
 			lbRelocGetFileExternHeap
 			(
 				dMNCongraPictures[sMNCongraFighterKind].top_file_id,
-				gsMemoryAlloc
+				syTaskMalloc
 				(
 					lbRelocGetFileSize
 					(
@@ -382,7 +382,7 @@ void mnCongraUpdateScene(void)
 			gSceneData.scene_previous = gSceneData.scene_current;
 			gSceneData.scene_current = nSCKindTitle;
 
-			leoInitUnit_atten();
+			syTaskSetLoadScene();
 		}
 	}
 }

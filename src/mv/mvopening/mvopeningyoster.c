@@ -5,7 +5,7 @@
 #include <sys/system_00.h>
 #include <lb/library.h>
 
-extern void leoInitUnit_atten();
+extern void syTaskSetLoadScene();
 extern u32 func_8000092C();
 extern void func_800A26B8();
 
@@ -42,10 +42,10 @@ s32 sMVOpeningYosterTotalTimeTics;
 s32 sMVOpeningYosterUnused0x8013243C;
 
 // 0x80132440
-lbFileNode sMVOpeningYosterStatusBuf[48];
+lbFileNode sMVOpeningYosterStatusBuffer[48];
 
 // 0x801325C0
-lbFileNode sMVOpeningYosterForceBuf[7];
+lbFileNode sMVOpeningYosterForceStatusBuffer[7];
 
 // 0x801325F8
 void *sMVOpeningYosterFiles[2];
@@ -291,14 +291,14 @@ void mvOpeningYosterMainProc(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
         if (sMVOpeningYosterTotalTimeTics == 160)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindOpeningSector;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
     }
 }
@@ -313,10 +313,10 @@ void mvOpeningYosterProcStart(void)
     rl_setup.table_files_num = &lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = sMVOpeningYosterStatusBuf;
-    rl_setup.status_buf_size = ARRAY_COUNT(sMVOpeningYosterStatusBuf);
-    rl_setup.force_buf = sMVOpeningYosterForceBuf;
-    rl_setup.force_buf_size = ARRAY_COUNT(sMVOpeningYosterForceBuf);
+    rl_setup.status_buffer = sMVOpeningYosterStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sMVOpeningYosterStatusBuffer);
+    rl_setup.force_status_buffer = sMVOpeningYosterForceStatusBuffer;
+    rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningYosterForceStatusBuffer);
 
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
@@ -324,7 +324,7 @@ void mvOpeningYosterProcStart(void)
         dMVOpeningYosterFileIDs,
         ARRAY_COUNT(dMVOpeningYosterFileIDs),
         sMVOpeningYosterFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (
@@ -345,7 +345,7 @@ void mvOpeningYosterProcStart(void)
 
     for (i = 0; i < ARRAY_COUNT(sMVOpeningYosterFighterAnimHeaps); i++)
     {
-        sMVOpeningYosterFighterAnimHeaps[i] = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
+        sMVOpeningYosterFighterAnimHeaps[i] = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
     }
     mvOpeningYosterMakeMainViewport();
     mvOpeningYosterMakeWallpaperViewport();

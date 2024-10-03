@@ -1084,7 +1084,7 @@ void grSectorInitAll(void)
 
     gGRCommonStruct.sector.map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRSectorMapHead);
 
-    map_file = lbRelocGetFileForceBuf((intptr_t)&D_NF_000000A1);
+    map_file = lbRelocGetFileForceStatusBuffer((intptr_t)&D_NF_000000A1);
 
     gGRCommonStruct.sector.map_file = map_file;
 

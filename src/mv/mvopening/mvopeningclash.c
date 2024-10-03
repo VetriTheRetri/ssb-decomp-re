@@ -5,7 +5,7 @@
 #include <sys/system_00.h>
 #include <lb/library.h>
 
-extern void leoInitUnit_atten();
+extern void syTaskSetLoadScene();
 extern u32 func_8000092C();
 extern void func_800A26B8();
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
@@ -45,10 +45,10 @@ s32 sMVOpeningClashVoidAlpha;
 s32 sMVOpeningClashUnused0x80132A10;
 
 // 0x80132A18
-lbFileNode sMVOpeningClashStatusBuf[100];
+lbFileNode sMVOpeningClashStatusBuffer[100];
 
 // 0x80132D38
-lbFileNode sMVOpeningClashForceBuf[7];
+lbFileNode sMVOpeningClashForceStatusBuffer[7];
 
 // 0x80132D70
 void *sMVOpeningClashFiles[2];
@@ -140,14 +140,14 @@ void mvOpeningClashVoidProcDisplay(GObj *gobj)
             sMVOpeningClashVoidAlpha = 0xFF;
         }
     }
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xFF, 0xFF, 0xFF, sMVOpeningClashVoidAlpha);
-    gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gDisplayListHead[0]++, 10, 10, 310, 230);
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, sMVOpeningClashVoidAlpha);
+    gDPSetCombineLERP(gSYTaskDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80131E08
@@ -293,13 +293,13 @@ void mvOpeningClashMakeVoidViewport(void)
 // 0x801323C8
 void mvOpeningClashWallpaperProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
 
     func_80017DBC(gobj);
     
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x8013246C
@@ -359,7 +359,7 @@ void mvOpeningClashProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
             
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
 
         if (sMVOpeningClashTotalTimeTics == 144)
@@ -371,7 +371,7 @@ void mvOpeningClashProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindOpeningNewcomers;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
         if
         (
@@ -396,10 +396,10 @@ void mvOpeningClashProcStart(void)
     rl_setup.table_files_num = &lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = sMVOpeningClashStatusBuf;
-    rl_setup.status_buf_size = ARRAY_COUNT(sMVOpeningClashStatusBuf);
-    rl_setup.force_buf = sMVOpeningClashForceBuf;
-    rl_setup.force_buf_size = ARRAY_COUNT(sMVOpeningClashForceBuf);
+    rl_setup.status_buffer = sMVOpeningClashStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sMVOpeningClashStatusBuffer);
+    rl_setup.force_status_buffer = sMVOpeningClashForceStatusBuffer;
+    rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningClashForceStatusBuffer);
 
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
@@ -407,7 +407,7 @@ void mvOpeningClashProcStart(void)
         dMVOpeningClashFileIDs,
         ARRAY_COUNT(dMVOpeningClashFileIDs),
         sMVOpeningClashFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (
@@ -438,7 +438,7 @@ void mvOpeningClashProcStart(void)
 
     for (i = 0; i < ARRAY_COUNT(sMVOpeningClashFighterAnimHeaps); i++)
     {
-        sMVOpeningClashFighterAnimHeaps[i] = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
+        sMVOpeningClashFighterAnimHeaps[i] = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
     }
     mvOpeningClashMakeFightersViewport();
     mvOpeningClashMakeVoidViewport();

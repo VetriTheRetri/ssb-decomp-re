@@ -130,10 +130,10 @@ GObj *sSC1PContinueScoreGObj;
 s32 sSC1PContinueOptionChangeWait;
 
 // 0x80134370
-lbFileNode sSC1PContinueStatusBuf[48];
+lbFileNode sSC1PContinueStatusBuffer[48];
 
 // 0x801344F0
-lbFileNode sSC1PContinueForceBuf[7];
+lbFileNode sSC1PContinueForceStatusBuffer[7];
 
 // 0x80134528
 void *sSC1PContinueFiles[5];
@@ -370,14 +370,14 @@ void sc1PContinueRoomFadeOutProcDisplay(GObj *gobj)
             sSC1PContinueRoomFadeOutAlpha = 0xFF;
         }
     }
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x00, 0x00, 0x00, sSC1PContinueRoomFadeOutAlpha);
-    gDPSetCombineMode(gDisplayListHead[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gDisplayListHead[0]++, 10, 10, 310, 230);
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sSC1PContinueRoomFadeOutAlpha);
+    gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x801322DC
@@ -402,14 +402,14 @@ void sc1PContinueRoomFadeInProcDisplay(GObj *gobj)
             sSC1PContinueRoomFadeInAlpha = 0x00;
         }
     }
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x00, 0x00, 0x00, sSC1PContinueRoomFadeInAlpha);
-    gDPSetCombineMode(gDisplayListHead[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gDisplayListHead[0]++, 10, 10, 310, 230);
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sSC1PContinueRoomFadeInAlpha);
+    gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80132460
@@ -434,14 +434,14 @@ void sc1PContinueSpotlightFadeProcDisplay(GObj *gobj)
             sSC1PContinueSpotlightFadeAlpha = 0x00;
         }
     }
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x00, 0x00, 0x00, sSC1PContinueSpotlightFadeAlpha);
-    gDPSetCombineMode(gDisplayListHead[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gDisplayListHead[0]++, 10, 10, 310, 230);
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sSC1PContinueSpotlightFadeAlpha);
+    gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x801325E8
@@ -1027,7 +1027,7 @@ void sc1PContinueProcRun(GObj *gobj)
 
             sSC1PContinueIsSelectContinue = TRUE;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
         if (D_ovl55_80134354 != 0)
         {
@@ -1158,7 +1158,7 @@ void sc1PContinueProcRun(GObj *gobj)
             sc1PContinueUnused0x80133990();
         #endif
             sSC1PContinueIsSelectContinue = FALSE;
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
         if (sSC1PContinueTotalTimeTics == sSC1PContinueOptionNoGameOverAutoWait)
         {
@@ -1169,7 +1169,7 @@ void sc1PContinueProcRun(GObj *gobj)
             sc1PContinueUnused0x80133990();
         #endif
             sSC1PContinueIsSelectContinue = FALSE;
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
         if (sSC1PContinueTotalTimeTics == 40)
         {
@@ -1201,10 +1201,10 @@ void sc1PContinueProcStart(void)
     rl_setup.table_files_num = &lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = sSC1PContinueStatusBuf;
-    rl_setup.status_buf_size = ARRAY_COUNT(sSC1PContinueStatusBuf);
-    rl_setup.force_buf = sSC1PContinueForceBuf;
-    rl_setup.force_buf_size = ARRAY_COUNT(sSC1PContinueForceBuf);
+    rl_setup.status_buffer = sSC1PContinueStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sSC1PContinueStatusBuffer);
+    rl_setup.force_status_buffer = sSC1PContinueForceStatusBuffer;
+    rl_setup.force_status_buffer_size = ARRAY_COUNT(sSC1PContinueForceStatusBuffer);
 
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
@@ -1212,7 +1212,7 @@ void sc1PContinueProcStart(void)
         dSC1PContinueFileIDs,
         ARRAY_COUNT(dSC1PContinueFileIDs),
         sSC1PContinueFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (
@@ -1230,7 +1230,7 @@ void sc1PContinueProcStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(sSC1PContinueFighterDemoDesc.ft_kind);
     
-    sSC1PContinueFighterAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
+    sSC1PContinueFighterAnimHeap = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
     sc1PContinueMakeLinkMultiCamera();
     sc1PContinueMakeLink26Camera();

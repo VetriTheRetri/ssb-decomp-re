@@ -7,24 +7,24 @@
 #define GetAddressFromOffset(file_ptr, offset) ((int*)((intptr_t)(file_ptr) + (intptr_t)(offset)))
 
 /* Can't actually use this in a matching build, newline memes :(
-#define rdManagerSetupCommonFiles(status_buf, force_buf)                    \
+#define rdManagerSetupCommonFiles(status_buffer, force_status_buffer)                    \
 {                                                                           \
     lbRelocSetup rl_setup;                                                  \
     rl_setup.table_addr = &lLBRelocTableAddr;                               \
     rl_setup.table_files_num = &lLBRelocTableFilesNum;                      \
     rl_setup.file_heap = NULL;                                              \
     rl_setup.file_heap_size = 0;                                            \
-    rl_setup.status_buf = status_buf;                                       \
-    rl_setup.status_buf_size = (status_buf) ? ARRAY_COUNT(status_buf) : 0;  \
-    rl_setup.force_buf = force_buf;                                         \
-    rl_setup.force_buf_size = (force_buf) ? ARRAY_COUNT(force_buf) : 0;     \
+    rl_setup.status_buffer = status_buffer;                                       \
+    rl_setup.status_buffer_size = (status_buffer) ? ARRAY_COUNT(status_buffer) : 0;  \
+    rl_setup.force_status_buffer = force_status_buffer;                                         \
+    rl_setup.force_status_buffer_size = (force_status_buffer) ? ARRAY_COUNT(force_status_buffer) : 0;     \
     lbRelocInitSetup(&rl_setup);                                            \
     lbRelocLoadFilesExtern                                                  \
     (                                                                       \
         dGMCommonFileIDs,                                                   \
         ARRAY_COUNT(dGMCommonFileIDs),                                      \
         gGMCommonFiles,                                                     \
-        gsMemoryAlloc                                                       \
+        syTaskMalloc                                                       \
         (                                                                   \
             lbRelocGetAllocSize                                             \
             (                                                               \
@@ -40,21 +40,21 @@
 extern uintptr_t lLBRelocTableFilesNum;     // 0x00000854
 extern uintptr_t lLBRelocTableAddr;         // 0x001AC870
 
-extern void* lbRelocFindFileStatusBuf(u32 id);
-extern void* lbRelocGetFileStatusBuf(u32 id);
-extern void* lbRelocFindFileForceBuf(u32 id);
-extern void* lbRelocGetFileForceBuf(u32 id);
-extern void lbRelocAddFileStatusBuf(u32 id, void *addr);
-extern void lbRelocAddFileForceBuf(u32 id, void *addr);
+extern void* lbRelocFindFileStatusBuffer(u32 id);
+extern void* lbRelocGetFileStatusBuffer(u32 id);
+extern void* lbRelocFindFileForceStatusBuffer(u32 id);
+extern void* lbRelocGetFileForceStatusBuffer(u32 id);
+extern void lbRelocAddFileStatusBuffer(u32 id, void *addr);
+extern void lbRelocAddFileForceStatusBuffer(u32 id, void *addr);
 extern void lbRelocReadDmaTableEntry(u32 entry_id);
 extern void lbRelocLoadAndRelocFile(u32 file_id, void *ram_dst, u32 bytes_num, s32 loc);
 extern size_t lbRelocGetExternBytesNum(u32 file_id);
 extern size_t lbRelocGetFileSize(u32 id);
-extern void* lbRelocGetFileExternStatusBuf(u32 file_id);
+extern void* lbRelocGetFileExternStatusBuffer(u32 file_id);
 extern void* lbRelocGetFileExternHeap(u32 id, void *heap);
-extern void* lbRelocGetFileInternBuf(u32 file_id);
-extern void* lbRelocGetFileExternForceBuf(u32 file_id);
-extern void* lbRelocGetFileExternForceBufHeap(u32 id, void *heap);
+extern void* lbRelocGetFileInternBuffer(u32 file_id);
+extern void* lbRelocGetFileExternForceStatusBuffer(u32 file_id);
+extern void* lbRelocGetFileExternForceStatusBufferHeap(u32 id, void *heap);
 extern size_t lbRelocLoadFilesExtern(u32 *ids, u32 len, void **files, void *heap);
 extern size_t lbRelocLoadFilesIntern(u32 *ids, u32 len, void **files);
 extern size_t lbRelocGetAllocSize(u32 *ids, u32 len);

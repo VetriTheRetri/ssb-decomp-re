@@ -34,10 +34,10 @@ s32 sSC1PChallengerTotalTimeTics;
 s32 sSC1PChallengerPad0x8013249C;
 
 // 0x801324A0
-lbFileNode sSC1PChallengerForceBuf[7];
+lbFileNode sSC1PChallengerForceStatusBuffer[7];
 
 // 0x801324D8
-lbFileNode sSC1PChallengerStatusBuf[100];
+lbFileNode sSC1PChallengerStatusBuffer[100];
 
 // 0x801327F8
 void *sSC1PChallengerFiles[1];
@@ -120,14 +120,14 @@ void sc1PChallengerProcLights(Gfx **dls)
 // 0x80131B24
 void sc1PChallengerDecalsProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x00, 0x00, 0x3B, 0xFF);
-    gDPSetCombineMode(gDisplayListHead[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gDisplayListHead[0]++, 207, 92, 287, 216);
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0x00, 0x00, 0x3B, 0xFF);
+    gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 207, 92, 287, 216);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     
     lbCommonClearExternSpriteParams();
     lbCommonDrawSObjAttr(gobj);
@@ -325,7 +325,7 @@ void sc1PChallengerProcRun(GObj *gobj)
             gSceneData.scene_current = nSCKindTitle;
             
             func_ovl23_80132110();
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
     }
 }
@@ -340,10 +340,10 @@ void sc1PChallengerProcStart(void)
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = sSC1PChallengerStatusBuf;
-    rl_setup.status_buf_size = ARRAY_COUNT(sSC1PChallengerStatusBuf);
-    rl_setup.force_buf = sSC1PChallengerForceBuf;
-    rl_setup.force_buf_size = ARRAY_COUNT(sSC1PChallengerForceBuf);
+    rl_setup.status_buffer = sSC1PChallengerStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sSC1PChallengerStatusBuffer);
+    rl_setup.force_status_buffer = sSC1PChallengerForceStatusBuffer;
+    rl_setup.force_status_buffer_size = ARRAY_COUNT(sSC1PChallengerForceStatusBuffer);
     
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
@@ -351,7 +351,7 @@ void sc1PChallengerProcStart(void)
         dSC1PChallengerFileIDs,
         ARRAY_COUNT(dSC1PChallengerFileIDs),
         sSC1PChallengerFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (
@@ -369,7 +369,7 @@ void sc1PChallengerProcStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(sSC1PChallengerFighterKind);
     
-    sSC1PChallengerFigatreeHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
+    sSC1PChallengerFigatreeHeap = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
     
     sc1PChallengerMakeDecalsCamera();
     sc1PChallengerMakeFighterCamera();

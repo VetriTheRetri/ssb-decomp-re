@@ -31,10 +31,10 @@ struct lbRelocSetup
     u32 table_files_num;         // Total number of files in table?
     void *file_heap;         
     size_t file_heap_size;
-    lbFileNode *status_buf;
-    size_t status_buf_size;
-    lbFileNode *force_buf;
-    size_t force_buf_size;
+    lbFileNode *status_buffer;
+    size_t status_buffer_size;
+    lbFileNode *force_status_buffer;
+    size_t force_status_buffer_size;
 };
 
 struct lbTableEntry
@@ -47,7 +47,7 @@ struct lbTableEntry
     u16 decompressed_size;      // in words
 };
 
-struct lbInternBuf
+struct lbInternBuffer
 {
     uintptr_t rom_table_lo; // Start of file table
     u32 total_files_num;
@@ -57,14 +57,14 @@ struct lbInternBuf
     void *heap_end;
 
     // "status buffer"
-    s32 status_buf_num;
-    s32 status_buf_max;
-    lbFileNode *status_buf;
+    s32 status_buffer_num;
+    s32 status_buffer_max;
+    lbFileNode *status_buffer;
 
     // "force status buffer"
-    s32 force_buf_num;
-    s32 force_buf_max;
-    lbFileNode *force_buf;
+    s32 force_status_buffer_num;
+    s32 force_status_buffer_max;
+    lbFileNode *force_status_buffer;
 };
 
 struct lbScriptDesc

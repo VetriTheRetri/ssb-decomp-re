@@ -35,7 +35,7 @@ extern intptr_t D_NF_000159A8;                          // 0x000159A8
 s32 sMNUnusedFightersPad0x800D7110[2];
 
 // 0x800D7118
-lbFileNode sMNUnusedFightersStatusBuf[10];
+lbFileNode sMNUnusedFightersStatusBuffer[10];
 
 // 0x800D7168
 void *sMNUnusedFightersFiles[1];
@@ -156,7 +156,7 @@ void mnUnusedFightersProcRun(GObj *gobj)
         gSceneData.scene_previous = gSceneData.scene_current;
         gSceneData.scene_current = nSCKindTitle;
 
-        leoInitUnit_atten();
+        syTaskSetLoadScene();
     }
     if (gSysController.button_tap & Z_TRIG)
     {
@@ -176,10 +176,10 @@ void mnUnusedFightersProcStart(void)
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = sMNUnusedFightersStatusBuf;
-    rl_setup.status_buf_size = ARRAY_COUNT(sMNUnusedFightersStatusBuf);
-    rl_setup.force_buf = NULL;
-    rl_setup.force_buf_size = 0;
+    rl_setup.status_buffer = sMNUnusedFightersStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sMNUnusedFightersStatusBuffer);
+    rl_setup.force_status_buffer = NULL;
+    rl_setup.force_status_buffer_size = 0;
     
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
@@ -187,7 +187,7 @@ void mnUnusedFightersProcStart(void)
         dMNUnusedFightersFileIDs,
         ARRAY_COUNT(dMNUnusedFightersFileIDs),
         sMNUnusedFightersFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (

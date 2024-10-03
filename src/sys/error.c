@@ -1,7 +1,7 @@
 #include "common.h"
 #include <sys/error.h>
 
-#include <sys/gtl.h>
+#include <sys/task.h>
 #include <sys/hal_audio.h>
 #include <sys/main.h>
 #include <sys/obj.h>
@@ -172,7 +172,7 @@ void func_800210C0(s32 arg0, s32 arg1, s32 arg2, sb32 arg3)
 {
     if ((arg2 >= 0) && (arg2 < ARRAY_COUNT(D_8003CC30)))
     {
-        Gfx *dl = gDisplayListHead[0];
+        Gfx *dl = gSYTaskDLHeads[0];
         syRectangle *boxsize = D_8003CBB0;
         s32 *line = D_8003CC30[arg2];
         s32 i;
@@ -209,7 +209,7 @@ void func_800210C0(s32 arg0, s32 arg1, s32 arg2, sb32 arg3)
             );
         }
         D_8009DA00 = boxsize;
-        gDisplayListHead[0] = dl;
+        gSYTaskDLHeads[0] = dl;
     }
 }
 
@@ -306,11 +306,11 @@ void syErrorDrawControllerInputs(GObj *gobj)
     s32 offset_y = 210;
     s32 i, j;
 
-    func_80016338(gDisplayListHead, CameraGetStruct(gobj), 0);
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
+    func_80016338(gSYTaskDLHeads, CameraGetStruct(gobj), 0);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_FILL);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
+    gDPSetFillColor(gSYTaskDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
     func_800218E0(60, 179, controller->stick_range.x, 3, TRUE);
     func_800218E0(92, 179, controller->stick_range.y, 3, TRUE);
 
@@ -340,65 +340,65 @@ void syErrorDrawControllerInputs(GObj *gobj)
 
     func_80021908(offset_x, 195, scTimeSpentAudio * 0.00390625F, 5, 2, TRUE);
 
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF)));
-    syErrorFillRectangle(gDisplayListHead[0]++, 30, offset_y, ((D_80046610 / 4 > 256) ? 256 : D_80046610 / 4) + 30, offset_y + 1);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetFillColor(gSYTaskDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF)));
+    syErrorFillRectangle(gSYTaskDLHeads[0]++, 30, offset_y, ((D_80046610 / 4 > 256) ? 256 : D_80046610 / 4) + 30, offset_y + 1);
     offset_y += 2;
 
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0xFF, 0xFF)));
-    syErrorFillRectangle(gDisplayListHead[0]++, 30, offset_y, ((D_80046614 / 4 > 256) ? 256 : D_80046614 / 4) + 30, offset_y + 1);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetFillColor(gSYTaskDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0xFF, 0xFF)));
+    syErrorFillRectangle(gSYTaskDLHeads[0]++, 30, offset_y, ((D_80046614 / 4 > 256) ? 256 : D_80046614 / 4) + 30, offset_y + 1);
     offset_y += 2;
 
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0x00, 0xFF)));
-    syErrorFillRectangle(gDisplayListHead[0]++, 30, offset_y, ((D_80044FB4_407C4 / 4 > 256) ? 256 : D_80044FB4_407C4 / 4) + 30, offset_y + 1);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetFillColor(gSYTaskDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0x00, 0xFF)));
+    syErrorFillRectangle(gSYTaskDLHeads[0]++, 30, offset_y, ((D_80044FB4_407C4 / 4 > 256) ? 256 : D_80044FB4_407C4 / 4) + 30, offset_y + 1);
     offset_y += 2;
 
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
-    syErrorFillRectangle(gDisplayListHead[0]++, 30, offset_y, ((D_8009D2D0 / 4 > 256) ? 256 : D_8009D2D0 / 4) + 30, offset_y + 1);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetFillColor(gSYTaskDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
+    syErrorFillRectangle(gSYTaskDLHeads[0]++, 30, offset_y, ((D_8009D2D0 / 4 > 256) ? 256 : D_8009D2D0 / 4) + 30, offset_y + 1);
     offset_y += 2;
 
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0xFF, 0xFF)));
-    syErrorFillRectangle(gDisplayListHead[0]++, 30, offset_y, ((scTimeSpentAudio / 4 > 256) ? 256 : scTimeSpentAudio / 4) + 30, offset_y + 1);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetFillColor(gSYTaskDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0xFF, 0xFF)));
+    syErrorFillRectangle(gSYTaskDLHeads[0]++, 30, offset_y, ((scTimeSpentAudio / 4 > 256) ? 256 : scTimeSpentAudio / 4) + 30, offset_y + 1);
 
     // controller buttons
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetFillColor(gSYTaskDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
 
     for (i = 0; i < 16; i++)
     {
         if (gSysController.button_hold & (1 << i))
         {
-            syErrorFillRectangle(gDisplayListHead[0]++, (i * 4) + 30, 206, (i * 4) + 33, 208);
+            syErrorFillRectangle(gSYTaskDLHeads[0]++, (i * 4) + 30, 206, (i * 4) + 33, 208);
         }
     }
     // controller stick
     syErrorFillRectangle
     (
-        gDisplayListHead[0]++,
+        gSYTaskDLHeads[0]++,
         controller->stick_range.x / 4 + 39,
         -controller->stick_range.y / 4 + 184,
         controller->stick_range.x / 4 + 41,
         -controller->stick_range.y / 4 + 186
     );
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x10, 0x10, 0x10, 0xFF)));
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetFillColor(gSYTaskDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x10, 0x10, 0x10, 0xFF)));
 
     for (j = 30, i = 350; j != i; j += 64)
     {
-        syErrorFillRectangle(gDisplayListHead[0]++, j, 210, j, 220);
+        syErrorFillRectangle(gSYTaskDLHeads[0]++, j, 210, j, 220);
 
         if (D_8009D2D0 && D_8009D2D0); // Eww... Oh, well.
     }
-    syErrorFillRectangle(gDisplayListHead[0]++, 40, 165, 40, 205);
-    syErrorFillRectangle(gDisplayListHead[0]++, 20, 185, 60, 185);
+    syErrorFillRectangle(gSYTaskDLHeads[0]++, 40, 165, 40, 205);
+    syErrorFillRectangle(gSYTaskDLHeads[0]++, 20, 185, 60, 185);
 
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 GObj* func_80022368(s32 link, u32 arg1, s32 arg2)

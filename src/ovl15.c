@@ -107,7 +107,7 @@ void dbFallsMain(GObj* arg0)
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 4;
 
-		leoInitUnit_atten();
+		syTaskSetLoadScene();
 	}
 }
 

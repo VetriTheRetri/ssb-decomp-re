@@ -181,7 +181,7 @@ void dbStageSelectMain(GObj* arg0)
 		else
 			gSceneData.scene_current = nSCKindVSBattle;
 
-		leoInitUnit_atten();
+		syTaskSetLoadScene();
 	}
 }
 

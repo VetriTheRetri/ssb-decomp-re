@@ -110,7 +110,7 @@ void scBattle_StartStockBattle()
 
 	if (!(gSaveData.error_flags & LBBACKUP_ERROR_1PGAMEMARIO) && (gSaveData.unk5E3 >= 0x45))
 	{
-		base_addr = lbRelocGetFileExternHeap((intptr_t)&D_NF_000000C7, gsMemoryAlloc(lbRelocGetFileSize((intptr_t)&D_NF_000000C7), 0x10));
+		base_addr = lbRelocGetFileExternHeap((intptr_t)&D_NF_000000C7, syTaskMalloc(lbRelocGetFileSize((intptr_t)&D_NF_000000C7), 0x10));
 
 		proc_cache = (void*) ((uintptr_t)base_addr + (intptr_t)&D_NF_00000000);
 

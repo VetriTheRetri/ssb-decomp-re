@@ -4,7 +4,7 @@
 #include <sys/system_00.h>
 #include <lb/library.h>
 
-extern void leoInitUnit_atten();
+extern void syTaskSetLoadScene();
 extern u32 func_8000092C();
 extern void func_800A26B8();
 
@@ -49,10 +49,10 @@ s32 sMVOpeningYamabukiPad0x80132498;
 s32 sMVOpeningYamabukiUnused0x8013249C;
 
 // 0x801324A0
-lbFileNode sMVOpeningYamabukiStatusBuf[48];
+lbFileNode sMVOpeningYamabukiStatusBuffer[48];
 
 // 0x80132620
-lbFileNode sMVOpeningYamabukiForceBuf[7];
+lbFileNode sMVOpeningYamabukiForceStatusBuffer[7];
 
 // 0x80132658
 void *sMVOpeningYamabukiFiles[1];
@@ -384,14 +384,14 @@ void mvOpeningYamabukiProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
         if (sMVOpeningYamabukiTotalTimeTics == 160)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindOpeningJungle;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
     }
 }
@@ -406,10 +406,10 @@ void mvOpeningYamabukiProcStart(void)
     rl_setup.table_files_num = &lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = sMVOpeningYamabukiStatusBuf;
-    rl_setup.status_buf_size = ARRAY_COUNT(sMVOpeningYamabukiStatusBuf);
-    rl_setup.force_buf = sMVOpeningYamabukiForceBuf;
-    rl_setup.force_buf_size = ARRAY_COUNT(sMVOpeningYamabukiForceBuf);
+    rl_setup.status_buffer = sMVOpeningYamabukiStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sMVOpeningYamabukiStatusBuffer);
+    rl_setup.force_status_buffer = sMVOpeningYamabukiForceStatusBuffer;
+    rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningYamabukiForceStatusBuffer);
 
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
@@ -417,7 +417,7 @@ void mvOpeningYamabukiProcStart(void)
         dMVOpeningYamabukiFileIDs,
         ARRAY_COUNT(dMVOpeningYamabukiFileIDs),
         sMVOpeningYamabukiFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (
@@ -437,7 +437,7 @@ void mvOpeningYamabukiProcStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(nFTKindPikachu);
 
-    sMVOpeningYamabukiFighterAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
+    sMVOpeningYamabukiFighterAnimHeap = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
     mvOpeningYamabukiMakeMainViewport();
     mvOpeningYamabukiMakeWallpaperViewport();

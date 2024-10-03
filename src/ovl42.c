@@ -103,12 +103,12 @@ void mvOpeningPikachuLoadFiles()
 	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = 0;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = D_ovl42_8018E288;
-	rldmSetup.status_buf_size = ARRAY_COUNT(D_ovl42_8018E288);
-	rldmSetup.force_buf = D_ovl42_8018E408;
-	rldmSetup.force_buf_size = ARRAY_COUNT(D_ovl42_8018E408);
+	rldmSetup.status_buffer = D_ovl42_8018E288;
+	rldmSetup.status_buffer_size = ARRAY_COUNT(D_ovl42_8018E288);
+	rldmSetup.force_status_buffer = D_ovl42_8018E408;
+	rldmSetup.force_status_buffer_size = ARRAY_COUNT(D_ovl42_8018E408);
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl42_8018E0FC, ARRAY_COUNT(D_ovl42_8018E0FC), gMvOpeningPikachuFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl42_8018E0FC, ARRAY_COUNT(D_ovl42_8018E0FC)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl42_8018E0FC, ARRAY_COUNT(D_ovl42_8018E0FC), gMvOpeningPikachuFilesArray, syTaskMalloc(lbRelocGetAllocSize(D_ovl42_8018E0FC, ARRAY_COUNT(D_ovl42_8018E0FC)), 0x10));
 }
 
 // 8018D160
@@ -273,14 +273,14 @@ void mvOpeningPikachuInitFighterStagePanel()
 // 8018D864
 void mvOpeningPikachuRenderPosedFighterBackground(GObj *gobj)
 {
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 110, 170, 110, 255);
-	gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-	gDPFillRectangle(gDisplayListHead[0]++, 10, 10, 110, 230);
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 110, 170, 110, 255);
+	gDPSetCombineLERP(gSYTaskDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 10, 110, 230);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 8018D964
@@ -381,7 +381,7 @@ void mvOpeningPikachuMainProc(GObj* arg0)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 1U;
-		leoInitUnit_atten();
+		syTaskSetLoadScene();
 	}
 
 	if (gMvOpeningPikachuFramesElapsed == 15)
@@ -396,7 +396,7 @@ void mvOpeningPikachuMainProc(GObj* arg0)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 0x26;
-		leoInitUnit_atten();
+		syTaskSetLoadScene();
 	}
 }
 
@@ -435,7 +435,7 @@ void mvOpeningPikachuInit()
 	efManagerInitEffects();
 	ftManagerSetupFilesAllKind(nFTKindPikachu);
 
-	gMvOpeningPikachuAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMvOpeningPikachuAnimHeap = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningPikachuCreateNameViewport();
 	mvOpeningPikachuCreatePosedFighterBackgroundViewport();
 	mvOpeningPikachuCreatePosedFighterViewport();

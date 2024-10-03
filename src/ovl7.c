@@ -156,10 +156,10 @@ scBattleState gTrainingModeBattleState;
 scTrainingMenu gTrainingModeStruct;
 
 // 80190C40
-lbFileNode gOverlay7StatusBuf[100];
+lbFileNode gOverlay7StatusBuffer[100];
 
 // 80190F60
-lbFileNode gOverlay7ForceBuf[7];
+lbFileNode gOverlay7ForceStatusBuffer[7];
 
 
 // 8018D0C0
@@ -417,7 +417,7 @@ sb32 scTrainingMode_UpdateResetOption()
 		func_800266A0_272A0();
 		func_800269C0_275C0(nSYAudioFGMTrainingSel2);
 		auSetBGMVolume(0, 0x7800);
-		leoInitUnit_atten();
+		syTaskSetLoadScene();
 		return TRUE;
 	}
 	else
@@ -431,7 +431,7 @@ sb32 scTrainingMode_UpdateExitOption()
 	{
 		func_800266A0_272A0();
 		func_800269C0_275C0(nSYAudioFGMTrainingSel2);
-		leoInitUnit_atten();
+		syTaskSetLoadScene();
 		return TRUE;
 	}
 	else
@@ -576,7 +576,7 @@ void func_ovl7_8018DA98()
 void scTrainingMode_LoadSprites()
 {
 	void* addr = lbRelocGetFileExternHeap((u32)&D_NF_000000FE,
-												  gsMemoryAlloc(lbRelocGetFileSize((u32)&D_NF_000000FE), 0x10));
+												  syTaskMalloc(lbRelocGetFileSize((u32)&D_NF_000000FE), 0x10));
 	gTrainingModeStruct.display_label_sprites = (void*)((uintptr_t)addr + (intptr_t)&D_NF_00000000);
 	gTrainingModeStruct.display_option_sprites = (void*)((uintptr_t)addr + (intptr_t)&D_NF_00000020);
 	gTrainingModeStruct.menu_label_sprites = (void*)((uintptr_t)addr + (intptr_t)&D_NF_000000BC);
@@ -590,7 +590,7 @@ void scTrainingMode_SetBackgroundSprite()
 {
 	gMPCollisionGroundData->wallpaper = (void*)
 	(
-		(uintptr_t)lbRelocGetFileExternForceBufHeap
+		(uintptr_t)lbRelocGetFileExternForceStatusBufferHeap
 		(
 			scTrainingMode_Files_BackgroundImageInfo[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]].file_id,
 			(void*)((uintptr_t)gMPCollisionGroundData->wallpaper - (intptr_t)D_ovl7_801907B8[gBattleState->gr_kind])
@@ -972,13 +972,13 @@ void scTrainingMode_InitMenuOptionSpriteAttrs()
 // 8018ED2C
 void scTrainingMode_RenderMainMenu(GObj* interface_gobj)
 {
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-	gDPSetCombineMode(gDisplayListHead[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
-	gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x00, 0x64, 0xFF, 0x64);
-	gDPFillRectangle(gDisplayListHead[0]++, 68, 47, 253, 198);
-	gDPPipeSync(gDisplayListHead[0]++);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+	gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0x00, 0x64, 0xFF, 0x64);
+	gDPFillRectangle(gSYTaskDLHeads[0]++, 68, 47, 253, 198);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
 }
 
 // 8018EE10
@@ -1386,16 +1386,16 @@ void scTrainingMode_CopyVScrollOptionSObjs()
 // 8018FCE0
 void scTrainingMode_RenderCursorUnderline(GObj* interface_gobj)
 {
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
-	gDPSetFillColor(gDisplayListHead[0]++,
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_FILL);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
+	gDPSetFillColor(gSYTaskDLHeads[0]++,
 					syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF)));
-	gDPFillRectangle(gDisplayListHead[0]++, gTrainingModeStruct.cursor_ulx, gTrainingModeStruct.cursor_uly,
+	gDPFillRectangle(gSYTaskDLHeads[0]++, gTrainingModeStruct.cursor_ulx, gTrainingModeStruct.cursor_uly,
 					 gTrainingModeStruct.cursor_lrx, gTrainingModeStruct.cursor_lry);
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 8018FE40
@@ -1604,12 +1604,12 @@ void scTrainingMode_LoadFiles()
 	rldm_setup.table_files_num = &lLBRelocTableFilesNum;
 	rldm_setup.file_heap = NULL;
 	rldm_setup.file_heap_size = 0;
-	rldm_setup.status_buf = gOverlay7StatusBuf;
-	rldm_setup.status_buf_size = ARRAY_COUNT(gOverlay7StatusBuf);
-	rldm_setup.force_buf = gOverlay7ForceBuf;
-	rldm_setup.force_buf_size = ARRAY_COUNT(gOverlay7ForceBuf);
+	rldm_setup.status_buffer = gOverlay7StatusBuffer;
+	rldm_setup.status_buffer_size = ARRAY_COUNT(gOverlay7StatusBuffer);
+	rldm_setup.force_status_buffer = gOverlay7ForceStatusBuffer;
+	rldm_setup.force_status_buffer_size = ARRAY_COUNT(gOverlay7ForceStatusBuffer);
 
 	lbRelocInitSetup(&rldm_setup);
 	lbRelocLoadFilesExtern(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles,
-						 gsMemoryAlloc(lbRelocGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
+						 syTaskMalloc(lbRelocGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
 }

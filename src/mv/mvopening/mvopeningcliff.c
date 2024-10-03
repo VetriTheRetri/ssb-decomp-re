@@ -4,7 +4,7 @@
 #include <sys/system_00.h>
 #include <lb/library.h>
 
-extern void leoInitUnit_atten();
+extern void syTaskSetLoadScene();
 extern u32 func_8000092C();
 extern void func_800A26B8();
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
@@ -47,10 +47,10 @@ f32 sMVOpeningCliffWallpaperScrollSpeed;
 s32 sMVOpeningCliffUnused0x801327DC;
 
 // 0x801327E0
-lbFileNode sMVOpeningCliffStatusBuf[48];
+lbFileNode sMVOpeningCliffStatusBuffer[48];
 
 // 0x80132960
-lbFileNode sMVOpeningCliffForceBuf[7];
+lbFileNode sMVOpeningCliffForceStatusBuffer[7];
 
 // 0x80132998
 void *sMVOpeningCliffFiles[2];
@@ -129,15 +129,15 @@ void mvOpeningCliffProcLights(Gfx **dls)
 // 0x80131B58
 void mvOpeningCliffHillsProcDisplay(GObj *hills_gobj)
 {
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
 
     gcDrawDObjTreeForGObj(hills_gobj);
 
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80131C34
@@ -454,14 +454,14 @@ void mvOpeningCliffProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
         if (sMVOpeningCliffTotalTimeTics == 160)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindOpeningYamabuki;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
     }
 }
@@ -476,10 +476,10 @@ void mvOpeningCliffProcStart(void)
     rl_setup.table_files_num = &lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = sMVOpeningCliffStatusBuf;
-    rl_setup.status_buf_size = ARRAY_COUNT(sMVOpeningCliffStatusBuf);
-    rl_setup.force_buf = sMVOpeningCliffForceBuf;
-    rl_setup.force_buf_size = ARRAY_COUNT(sMVOpeningCliffForceBuf);
+    rl_setup.status_buffer = sMVOpeningCliffStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sMVOpeningCliffStatusBuffer);
+    rl_setup.force_status_buffer = sMVOpeningCliffForceStatusBuffer;
+    rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningCliffForceStatusBuffer);
 
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
@@ -487,7 +487,7 @@ void mvOpeningCliffProcStart(void)
         dMVOpeningCliffFileIDs,
         ARRAY_COUNT(dMVOpeningCliffFileIDs),
         sMVOpeningCliffFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (
@@ -507,7 +507,7 @@ void mvOpeningCliffProcStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(nFTKindLink);
 
-    sMVOpeningCliffFighterAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
+    sMVOpeningCliffFighterAnimHeap = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
     mvOpeningCliffMakeMainViewport();
     mvOpeningCliffMakeWallpaperViewport();

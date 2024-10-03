@@ -256,7 +256,7 @@ void mvOpeningRunningMainProc(s32 arg0)
 		{
 			gSceneData.scene_previous = gSceneData.scene_current;
 			gSceneData.scene_current = 1;
-			leoInitUnit_atten();
+			syTaskSetLoadScene();
 		}
 
 		if (gMvOpeningRunningFramesElapsed == 45)
@@ -274,7 +274,7 @@ void mvOpeningRunningMainProc(s32 arg0)
 		{
 			gSceneData.scene_previous = gSceneData.scene_current;
 			gSceneData.scene_current = 0x28;
-			leoInitUnit_atten();
+			syTaskSetLoadScene();
 		}
 	}
 }
@@ -289,12 +289,12 @@ void mvOpeningRunningInit()
 	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = 0;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = D_ovl44_80132748;
-	rldmSetup.status_buf_size = ARRAY_COUNT(D_ovl44_80132748);
-	rldmSetup.force_buf = D_ovl44_80132A68;
-	rldmSetup.force_buf_size = ARRAY_COUNT(D_ovl44_80132A68);
+	rldmSetup.status_buffer = D_ovl44_80132748;
+	rldmSetup.status_buffer_size = ARRAY_COUNT(D_ovl44_80132748);
+	rldmSetup.force_status_buffer = D_ovl44_80132A68;
+	rldmSetup.force_status_buffer_size = ARRAY_COUNT(D_ovl44_80132A68);
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl44_801325D0, ARRAY_COUNT(D_ovl44_801325D0), gMvOpeningRunningFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl44_801325D0, ARRAY_COUNT(D_ovl44_801325D0)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl44_801325D0, ARRAY_COUNT(D_ovl44_801325D0), gMvOpeningRunningFilesArray, syTaskMalloc(lbRelocGetAllocSize(D_ovl44_801325D0, ARRAY_COUNT(D_ovl44_801325D0)), 0x10));
 
 	gcMakeGObjSPAfter(0, mvOpeningRunningMainProc, 0, 0x80000000);
 
@@ -316,7 +316,7 @@ void mvOpeningRunningInit()
 
 	for (i = 0; i < ARRAY_COUNT(gMvOpeningRunningFighterAnimHeaps); i++)
 	{
-		gMvOpeningRunningFighterAnimHeaps[i] = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10);
+		gMvOpeningRunningFighterAnimHeaps[i] = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	}
 
 	mvOpeningRunningCreateTransitionGfxViewport();

@@ -1,15 +1,15 @@
-#include "ml.h"
+#include "malloc.h"
 
 #include <sys/error.h>
 #include <ssb_types.h>
 #include <PR/ultratypes.h>
 
-void mlResetBumpAlloc(mlRegion *bp) 
+void syMallocReset(syMallocRegion *bp)
 {
     bp->ptr = bp->start;
 }
 
-void* mlSetBumpAlloc(mlRegion *bp, size_t size, u32 alignment)
+void* syMallocSet(syMallocRegion *bp, size_t size, u32 alignment)
 {
     u8 *aligned;
     u32 offset;
@@ -32,7 +32,7 @@ void* mlSetBumpAlloc(mlRegion *bp, size_t size, u32 alignment)
     return (void*)aligned;
 }
 
-void mlInitBumpAlloc(mlRegion *bp, u32 id, void *start, size_t size) 
+void syMallocInit(syMallocRegion *bp, u32 id, void *start, size_t size)
 {
     bp->id    = id;
     bp->ptr   = start;

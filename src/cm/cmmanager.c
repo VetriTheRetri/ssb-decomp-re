@@ -3,10 +3,10 @@
 #include <wp/weapon.h>
 #include <if/interface.h>
 #include <sc/scene.h>
-#include <sys/ml.h>
+#include <sys/malloc.h>
 
 extern Mtx44f gODMatrixPerspF;
-extern mlRegion gSYGtlGraphicsHeap;
+extern syMallocRegion gSYTaskGraphicsHeap;
 
 extern void func_80007080(void*, f32, f32, f32, f32);
 
@@ -997,8 +997,8 @@ sb32 cmManagerLookAtProcMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
     f32 max;
     s32 unused;
 
-    temp_mtx = gSYGtlGraphicsHeap.ptr;
-    gSYGtlGraphicsHeap.ptr = (Mtx*)gSYGtlGraphicsHeap.ptr + 1;
+    temp_mtx = gSYTaskGraphicsHeap.ptr;
+    gSYTaskGraphicsHeap.ptr = (Mtx*)gSYTaskGraphicsHeap.ptr + 1;
 
     syMatrixPerspFastF(gODMatrixPerspF, &cam->projection.persp.norm, cam->projection.persp.fovy, cam->projection.persp.aspect, cam->projection.persp.near, cam->projection.persp.far, cam->projection.persp.scale);
     syMatrixF2L(gODMatrixPerspF, temp_mtx);
@@ -1050,8 +1050,8 @@ void func_ovl2_8010D4C0(GObj *camera_gobj)
     Camera *cam = CameraGetStruct(camera_gobj);
 
     gcSetCameraMatrixMode(3);
-    func_8001663C(gDisplayListHead, cam, 0);
-    gcPrepCameraMatrix(gDisplayListHead, cam);
+    func_8001663C(gSYTaskDLHeads, cam, 0);
+    gcPrepCameraMatrix(gSYTaskDLHeads, cam);
     gcRunProcCamera(cam, 0);
 
     gIFCommonPlayerInterface.ifmagnify_mode = 0;
@@ -1060,47 +1060,47 @@ void func_ovl2_8010D4C0(GObj *camera_gobj)
     // gIFCommonPlayerInterface.unk1 = 0;
     // gIFCommonPlayerInterface.unkE = 0;
 
-    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
     camera_gobj->cam_mask = 6;
 
     func_80017B80(camera_gobj, (cam->flags & 8) ? 1 : 0);
     func_800057C8();
 
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
     camera_gobj->cam_mask = 16;
 
     func_80017B80(camera_gobj, (cam->flags & 8) ? 1 : 0);
     func_800057C8();
 
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
     camera_gobj->cam_mask = 0x1EC0;
 
     func_80017B80(camera_gobj, (cam->flags & 8) ? 1 : 0);
     func_800057C8();
 
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
     camera_gobj->cam_mask = 0xE000;
 
     func_80017B80(camera_gobj, (cam->flags & 8) ? 1 : 0);
     func_800057C8();
 
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
     camera_gobj->cam_mask = 0x70000;
 
     func_80017B80(camera_gobj, (cam->flags & 8) ? 1 : 0);
     func_800057C8();
 
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetRenderMode(gDisplayListHead[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
     camera_gobj->cam_mask = 0x180000;
 
@@ -1210,7 +1210,7 @@ void func_ovl2_8010DC24(GObj *camera_gobj)
         Vp_t *viewport;
         s32 ulx, uly, lrx, lry;
 
-        gSPViewport(gDisplayListHead[0]++, &CameraGetStruct(gCMManagerCameraGObj)->viewport);
+        gSPViewport(gSYTaskDLHeads[0]++, &CameraGetStruct(gCMManagerCameraGObj)->viewport);
 
         viewport = &CameraGetStruct(gCMManagerCameraGObj)->viewport.vp;
 
@@ -1220,7 +1220,7 @@ void func_ovl2_8010DC24(GObj *camera_gobj)
         lrx = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
         lry = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
 
-        gDPSetScissor(gDisplayListHead[0]++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
+        gDPSetScissor(gSYTaskDLHeads[0]++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
     }
     func_80017B80(camera_gobj, (cam->flags & 0x8) ? 1 : 0);
     func_80017CC8(cam);
@@ -1312,7 +1312,7 @@ void func_ovl2_8010E134(GObj *camera_gobj)
     {
         Camera *cam = CameraGetStruct(camera_gobj);
 
-        gcPrepCameraMatrix(gDisplayListHead, cam);
+        gcPrepCameraMatrix(gSYTaskDLHeads, cam);
 
         func_80017B80(camera_gobj, (cam->flags & 0x8) ? 1 : 0);
         func_80017CC8(cam);
@@ -1341,7 +1341,7 @@ void func_ovl2_8010E254(GObj *camera_gobj)
     {
         Camera *cam = CameraGetStruct(camera_gobj);
 
-        gcPrepCameraMatrix(gDisplayListHead, cam);
+        gcPrepCameraMatrix(gSYTaskDLHeads, cam);
 
         func_80017B80(camera_gobj, (cam->flags & 0x8) ? 1 : 0);
         func_80017CC8(cam);

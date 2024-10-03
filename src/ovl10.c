@@ -6,7 +6,7 @@
 #include <sc/scene.h>
 #include <lb/library.h>
 #include <sys/system_00.h>
-#include <sys/gtl.h>
+#include <sys/task.h>
 
 #include "ovl10.h"
 
@@ -484,7 +484,7 @@ void mnTitleMain(s32 arg0)
 		gMNTitleChangeSceneTimer--;
 
 		if (gMNTitleChangeSceneTimer == 0)
-			leoInitUnit_atten();
+			syTaskSetLoadScene();
 	}
 	else
 	{
@@ -774,12 +774,12 @@ void mnTitleRenderFire(GObj* fire_gobj)
 
 	for (i = 0; i < 2; i++)
 	{
-		lbCommonPrepSObjSpriteAttrs(gDisplayListHead, fire_sobj);
+		lbCommonPrepSObjSpriteAttrs(gSYTaskDLHeads, fire_sobj);
 
-		gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0, 0, 0, gMNTitleFireAlpha);
-		gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, TEXEL0,  TEXEL0, 0, PRIMITIVE, 0,  0, 0, 0, TEXEL0,  TEXEL0, 0, PRIMITIVE, 0);
+		gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0, 0, 0, gMNTitleFireAlpha);
+		gDPSetCombineLERP(gSYTaskDLHeads[0]++, 0, 0, 0, TEXEL0,  TEXEL0, 0, PRIMITIVE, 0,  0, 0, 0, TEXEL0,  TEXEL0, 0, PRIMITIVE, 0);
 
-		lbCommonPrepSObjDraw(gDisplayListHead, fire_sobj);
+		lbCommonPrepSObjDraw(gSYTaskDLHeads, fire_sobj);
 		lbCommonClearExternSpriteParams();
 
 		fire_sobj = fire_sobj->next;
@@ -919,10 +919,10 @@ void mnTitleRenderLogoNoIntro(GObj* logo_gobj)
 	}
 	else
 	{
-		lbCommonPrepSObjSpriteAttrs(gDisplayListHead, logo_sobj);
+		lbCommonPrepSObjSpriteAttrs(gSYTaskDLHeads, logo_sobj);
 
-		gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, logo_sobj->sprite.red, logo_sobj->sprite.green, logo_sobj->sprite.blue, gMNTitleLogoAlpha);
-		gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE,  TEXEL0, 0, PRIMITIVE, 0,  0, 0, 0, PRIMITIVE,  TEXEL0, 0, PRIMITIVE, 0);
+		gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, logo_sobj->sprite.red, logo_sobj->sprite.green, logo_sobj->sprite.blue, gMNTitleLogoAlpha);
+		gDPSetCombineLERP(gSYTaskDLHeads[0]++, 0, 0, 0, PRIMITIVE,  TEXEL0, 0, PRIMITIVE, 0,  0, 0, 0, PRIMITIVE,  TEXEL0, 0, PRIMITIVE, 0);
 
 		lbCommonDrawSObjNoAttr(logo_gobj);
 	}
@@ -1251,15 +1251,15 @@ s32 mnTitleCreateViewports()
 // 80133CFC
 void mnTitleRenderLogoFireEffect(GObj *gobj)
 {
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
 	lbParticleDrawTextures(gobj);
 
-	gDPSetTexturePersp(gDisplayListHead[0]++, G_TP_PERSP);
-	gDPSetDepthSource(gDisplayListHead[0]++, G_ZS_PIXEL);
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPSetTexturePersp(gSYTaskDLHeads[0]++, G_TP_PERSP);
+	gDPSetDepthSource(gSYTaskDLHeads[0]++, G_ZS_PIXEL);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 80133DDC
@@ -1367,10 +1367,10 @@ void mnTitleLoadFiles()
 	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (lbFileNode*) D_ovl10_801344A0;
-	rldmSetup.status_buf_size = 0x20;
-	rldmSetup.force_buf = 0;
-	rldmSetup.force_buf_size = 0;
+	rldmSetup.status_buffer = (lbFileNode*) D_ovl10_801344A0;
+	rldmSetup.status_buffer_size = 0x20;
+	rldmSetup.force_status_buffer = 0;
+	rldmSetup.force_status_buffer_size = 0;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl10_80134420, ARRAY_COUNT(D_ovl10_80134420), &gMNTitleFile0, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl10_80134420, ARRAY_COUNT(D_ovl10_80134420)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl10_80134420, ARRAY_COUNT(D_ovl10_80134420), &gMNTitleFile0, syTaskMalloc(lbRelocGetAllocSize(D_ovl10_80134420, ARRAY_COUNT(D_ovl10_80134420)), 0x10));
 }

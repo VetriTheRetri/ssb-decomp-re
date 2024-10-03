@@ -36,10 +36,10 @@ itCreateDesc dItTargetItemDesc = {
 };
 
 // 8018F3B0
-lbFileNode gOverlay6StatusBuf[100];
+lbFileNode gOverlay6StatusBuffer[100];
 
 // 8018F6D0
-lbFileNode gOverlay6ForceBuf[7];
+lbFileNode gOverlay6ForceStatusBuffer[7];
 
 // 8018ED70
 void func_ovl6_8018ED70()
@@ -50,14 +50,14 @@ void func_ovl6_8018ED70()
 	rldm_setup.table_files_num = &lLBRelocTableFilesNum;
 	rldm_setup.file_heap = NULL;
 	rldm_setup.file_heap_size = 0;
-	rldm_setup.status_buf = gOverlay6StatusBuf;
-	rldm_setup.status_buf_size = ARRAY_COUNT(gOverlay6StatusBuf);
-	rldm_setup.force_buf = gOverlay6ForceBuf;
-	rldm_setup.force_buf_size = ARRAY_COUNT(gOverlay6ForceBuf);
+	rldm_setup.status_buffer = gOverlay6StatusBuffer;
+	rldm_setup.status_buffer_size = ARRAY_COUNT(gOverlay6StatusBuffer);
+	rldm_setup.force_status_buffer = gOverlay6ForceStatusBuffer;
+	rldm_setup.force_status_buffer_size = ARRAY_COUNT(gOverlay6ForceStatusBuffer);
 
 	lbRelocInitSetup(&rldm_setup);
 	lbRelocLoadFilesExtern(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles,
-						 gsMemoryAlloc(lbRelocGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
+						 syTaskMalloc(lbRelocGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
 }
 
 // 8018EE10

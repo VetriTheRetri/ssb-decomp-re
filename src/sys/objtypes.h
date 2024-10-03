@@ -518,7 +518,7 @@ struct _Camera
 struct _OMSetup 
 {
     GObjThread *gobjthreads;
-    s32 num_gobjthreads;
+    s32 gobjthreads_num;
 
     size_t thread_stack_size;
     OMThreadStackNode *threadstacks;
@@ -527,10 +527,10 @@ struct _OMSetup
     s32 unk_omsetup_0x14;
 
     GObjProcess *gobjprocs;
-    s32 num_gobjprocs;
+    s32 gobjprocs_num;
 
     GObj *gobjs;
-    s32 num_gobjs;
+    s32 gobjs_num;
     size_t gobj_size;
 
     OMMtx *ommtxes;
@@ -539,21 +539,21 @@ struct _OMSetup
     void (*proc_eject)(DObjDynamicStore*);
 
     AObj *aobjs;
-    s32 num_aobjs;
+    s32 aobjs_num;
 
     MObj *mobjs;
-    s32 num_mobjs;
+    s32 mobjs_num;
 
     DObj *dobjs;
-    s32 num_dobjs;
+    s32 dobjs_num;
     size_t dobj_size;
 
     SObj *sobjs;
-    s32 num_sobjs;
+    s32 sobjs_num;
     size_t sobj_size;
 
     Camera *cameras;
-    s32 num_cameras;
+    s32 cameras_num;
     size_t camera_size;
 };
 

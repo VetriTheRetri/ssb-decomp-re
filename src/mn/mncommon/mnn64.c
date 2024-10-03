@@ -25,7 +25,7 @@ extern intptr_t lMNN64LogoSprite;			// 0x000073C0
 s32 sMNN64Pad0x80132040[2];
 
 // 0x80132048
-lbFileNode sMNN64StatusBuf[5];
+lbFileNode sMNN64StatusBuffer[5];
 
 // 0x80132070 - Delay frames before N64 logo can be skipped
 s32 sMNN64SkipAllowWait;
@@ -165,13 +165,13 @@ void mnN64ActorProcRun(GObj *gobj)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = nSCKindTitle;
-		leoInitUnit_atten();
+		syTaskSetLoadScene();
 	}
 	else if (sMNN64IsProceedOpening != FALSE)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = nSCKindOpeningRoom;
-		leoInitUnit_atten();
+		syTaskSetLoadScene();
 	}
 }
 
@@ -192,10 +192,10 @@ void mnN64ProcStart(void)
 	rl_setup.table_files_num = &lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buf = sMNN64StatusBuf;
-	rl_setup.status_buf_size = ARRAY_COUNT(sMNN64StatusBuf);
-	rl_setup.force_buf = NULL;
-	rl_setup.force_buf_size = 0;
+	rl_setup.status_buffer = sMNN64StatusBuffer;
+	rl_setup.status_buffer_size = ARRAY_COUNT(sMNN64StatusBuffer);
+	rl_setup.force_status_buffer = NULL;
+	rl_setup.force_status_buffer_size = 0;
 
 	lbRelocInitSetup(&rl_setup);
 
@@ -234,7 +234,7 @@ void mnN64ProcStart(void)
 		lbRelocGetFileExternHeap
 		(
 			&D_NF_000000C2,
-			gsMemoryAlloc
+			syTaskMalloc
 			(
 				lbRelocGetFileSize
 				(

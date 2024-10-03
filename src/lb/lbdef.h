@@ -189,7 +189,7 @@ typedef enum lbBackupErrors
 
 typedef struct lbRelocSetup					lbRelocSetup;
 typedef union  lbRelocDesc					lbRelocDesc;
-typedef struct lbInternBuf					lbInternBuf;
+typedef struct lbInternBuffer					lbInternBuffer;
 typedef struct lbFileNode					lbFileNode;
 typedef struct lbTableEntry 				lbTableEntry;
 typedef struct lbScript                     lbScript;

@@ -32,10 +32,10 @@ s32 sMNScreenAdjustTotalTimeTics;
 s32 sMNScreenAdjustReturnTic;
 
 // 0x80132940
-lbFileNode sMNScreenAdjustForceBuf[7];
+lbFileNode sMNScreenAdjustForceStatusBuffer[7];
 
 // 0x80132978
-lbFileNode sMNScreenAdjustStatusBuf[24];
+lbFileNode sMNScreenAdjustStatusBuffer[24];
 
 // 0x80132A38
 void *sMNScreenAdjustFiles[1];
@@ -118,20 +118,20 @@ void mnScreenAdjustProcLights(Gfx **dls)
 // 0x80131B24
 void mnScreenAdjustFrameProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0xBF, 0xA4, 0x47, 0xFF);
-    gDPSetCombineMode(gDisplayListHead[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gDisplayListHead[0]++, 159, 0, 161, 254);
-    gDPFillRectangle(gDisplayListHead[0]++, 0, 119, 334, 121);
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x8B, 0x8B, 0x8B, 0xFF);
-    gDPFillRectangle(gDisplayListHead[0]++, 44, 44, 276, 45);
-    gDPFillRectangle(gDisplayListHead[0]++, 44, 196, 276, 197);
-    gDPFillRectangle(gDisplayListHead[0]++, 44, 44, 45, 196);
-    gDPFillRectangle(gDisplayListHead[0]++, 276, 44, 277, 196);
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0xBF, 0xA4, 0x47, 0xFF);
+    gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 159, 0, 161, 254);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 0, 119, 334, 121);
+    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0x8B, 0x8B, 0x8B, 0xFF);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 44, 44, 276, 45);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 44, 196, 276, 197);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 44, 44, 45, 196);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 276, 44, 277, 196);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80131D00
@@ -281,7 +281,7 @@ void mnScreenAdjustProcRun(GObj *gobj)
             gSceneData.scene_current = nSCKindOption;
 
             mnScreenAdjustBackupOffsets();
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
         if (scSubsysControllerGetPlayerTapButtons(U_JPAD | U_CBUTTONS) != FALSE)
         {
@@ -417,10 +417,10 @@ void mnScreenAdjustProcStart(void)
     rl_setup.table_files_num = &lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = sMNScreenAdjustStatusBuf;
-    rl_setup.status_buf_size = ARRAY_COUNT(sMNScreenAdjustStatusBuf);
-    rl_setup.force_buf = sMNScreenAdjustForceBuf;
-    rl_setup.force_buf_size = ARRAY_COUNT(sMNScreenAdjustForceBuf);
+    rl_setup.status_buffer = sMNScreenAdjustStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sMNScreenAdjustStatusBuffer);
+    rl_setup.force_status_buffer = sMNScreenAdjustForceStatusBuffer;
+    rl_setup.force_status_buffer_size = ARRAY_COUNT(sMNScreenAdjustForceStatusBuffer);
     
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
@@ -428,7 +428,7 @@ void mnScreenAdjustProcStart(void)
         dMNScreenAdjustFileIDs,
         ARRAY_COUNT(dMNScreenAdjustFileIDs),
         sMNScreenAdjustFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (

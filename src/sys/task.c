@@ -1,9 +1,9 @@
 #include "common.h"
-#include <sys/gtl.h>
+#include <sys/task.h>
 
 #include <sys/error.h>
 #include <sys/main.h>
-#include <sys/ml.h>
+#include <sys/malloc.h>
 #include <sys/obj.h>
 #include <sys/rdp_reset.h>
 #include <sys/system_00.h>
@@ -19,7 +19,7 @@
 #include <PR/ultratypes.h>
 
 // externs
-extern void gsCheckGtlBufferLengths();
+extern void syTaskCheckBufferLengths();
 
 // structures
 typedef struct gsUcode
@@ -54,13 +54,14 @@ s32 dSYGtlFrameDrawCount = 0;
 
 // match Nintendo's name to make the text and data symbols
 #define NewUcodeInfo(ucode) \
-	{ (u64 *)ucode##TextStart, (u64 *)ucode##DataStart }
+	{ (u64*)ucode##TextStart, (u64*)ucode##DataStart }
 #define NullUcodeInfo \
 	{ NULL, NULL }
 #define EndUncodeInfoArray NullUcodeInfo
 
 // Ten total ucodes + a terminator?
-gsUcode D_8003B6EC[11] = {
+gsUcode D_8003B6EC[/* */] =
+{
 	NewUcodeInfo(gspF3DEX2_fifo),
 	NullUcodeInfo,
 	NullUcodeInfo,
@@ -99,15 +100,24 @@ DObj *D_80046558[2];
 SCTaskGfxEnd *D_80046560[2];
 SCTaskVi *D_80046568[2];
 // is the collection of four `DLBuffer`s something worthy of a typedef?
-gsDLBuffer D_80046570[2][4];
-Gfx *gDisplayListHead[4];
-Gfx *D_800465C0[4];
+syTaskDLBuffer sSYTaskDLBuffers[2][4];
+
+// 0x800465B0
+Gfx *gSYTaskDLHeads[4];
+
+// 0x800465C0
+Gfx *sSYTaskDLBranches[4];
 
 // from smash remix: Writing 1 to this word will load the screen at current_screen (gSceneData).
-u32 D_800465D0;
+u32 sSYTaskSceneStatus;
 s32 D_800465D4;
-mlRegion gSYGtlGraphicsHeap;  // D_800465D8
-mlRegion gSYGtlGeneralHeap; // D_800465E8
+
+// 0x800465D8
+syMallocRegion gSYTaskGraphicsHeap;
+
+// 0x800465E8
+syMallocRegion gSYTaskGeneralHeap;
+
 FnBundle D_800465F8;
 u32 D_8004660C;
 u32 D_80046610;
@@ -119,13 +129,13 @@ u16 D_80046624;
 u16 D_80046626; // ucode idx?
 u16 D_80046628;
 Gfx *D_8004662C;
-// offset into sMtxTaskHeaps and sDObjTasks; has to be unsigned
-s32 gSYGtlTaskID;
+// offset into sSYTaskDefaultGraphicsHeap and sDObjTasks; has to be unsigned
+s32 gSYTaskID;
 s32 D_80046634;
 s32 D_80046638[2];
-s32 sSYGtlTasksNum;
+s32 sSYTaskCount;
 UNUSED s32 unref80046644;
-mlRegion sMtxTaskHeaps[2];
+syMallocRegion sSYTaskDefaultGraphicsHeap[2];
 void (*D_80046668)(void *); // takes function bundle struct?
 SCTaskCallback D_8004666C;  // function pointer?
 
@@ -159,39 +169,39 @@ void unref_80004934(u16 arg0, u16 arg1)
 }
 
 // 80004950
-void gsInitGeneralHeap(void *start, u32 size)
+void syTaskInitGeneralHeap(void *start, u32 size)
 {
-	mlInitBumpAlloc(&gSYGtlGeneralHeap, 0x10000, start, size);
+	syMallocInit(&gSYTaskGeneralHeap, 0x10000, start, size);
 }
 
 // 80004980
-void* gsMemoryAlloc(u32 size, u32 alignment) // alloc_with_alignment
+void* syTaskMalloc(u32 size, u32 alignment) // alloc_with_alignment
 {
-	return mlSetBumpAlloc(&gSYGtlGeneralHeap, size, alignment);
+	return syMallocSet(&gSYTaskGeneralHeap, size, alignment);
 }
 
 // 800049B0
-void gsResetGraphicsHeapAlloc() // reset gSYGtlGraphicsHeap allocator
+void syTaskResetGraphicsHeap(void) // reset gSYTaskGraphicsHeap allocator
 {
-	gSYGtlGraphicsHeap.id    = sMtxTaskHeaps[gSYGtlTaskID].id;
-	gSYGtlGraphicsHeap.start = sMtxTaskHeaps[gSYGtlTaskID].start;
-	gSYGtlGraphicsHeap.end   = sMtxTaskHeaps[gSYGtlTaskID].end;
-	gSYGtlGraphicsHeap.ptr   = sMtxTaskHeaps[gSYGtlTaskID].ptr;
+	gSYTaskGraphicsHeap.id    = sSYTaskDefaultGraphicsHeap[gSYTaskID].id;
+	gSYTaskGraphicsHeap.start = sSYTaskDefaultGraphicsHeap[gSYTaskID].start;
+	gSYTaskGraphicsHeap.end   = sSYTaskDefaultGraphicsHeap[gSYTaskID].end;
+	gSYTaskGraphicsHeap.ptr   = sSYTaskDefaultGraphicsHeap[gSYTaskID].ptr;
 
-	mlResetBumpAlloc(&gSYGtlGraphicsHeap);
+	syMallocReset(&gSYTaskGraphicsHeap);
 }
 
 // 80004A0C
-void func_80004A0C(struct gsDLBuffer (*src)[4])
+void syTaskSetDLBuffer(syTaskDLBuffer (*src)[4])
 {
 	s32 i;
 
-	for (i = 0; i < ARRAY_COUNT(D_80046570); i++)
+	for (i = 0; i < ARRAY_COUNT(sSYTaskDLBuffers); i++)
 	{
-		D_80046570[i][0] = src[i][0];
-		D_80046570[i][1] = src[i][1];
-		D_80046570[i][2] = src[i][2];
-		D_80046570[i][3] = src[i][3];
+		sSYTaskDLBuffers[i][0] = src[i][0];
+		sSYTaskDLBuffers[i][1] = src[i][1];
+		sSYTaskDLBuffers[i][2] = src[i][2];
+		sSYTaskDLBuffers[i][3] = src[i][3];
 	}
 }
 
@@ -200,17 +210,18 @@ void func_80004AB0()
 {
 	s32 i;
 
-	for (i = 0; i < (ARRAY_COUNT(gDisplayListHead) + ARRAY_COUNT(D_800465C0) + ARRAY_COUNT(D_80046570[0])) / 3; i++)
-		gDisplayListHead[i] = D_800465C0[i] = D_80046570[gSYGtlTaskID][i].start;
-
-	for (i = 0; i < (ARRAY_COUNT(gDisplayListHead) + ARRAY_COUNT(D_800465C0) + ARRAY_COUNT(D_80046570[0])) / 3; i++)
+	for (i = 0; i < (ARRAY_COUNT(gSYTaskDLHeads) + ARRAY_COUNT(sSYTaskDLBranches) + ARRAY_COUNT(sSYTaskDLBuffers[0])) / 3; i++)
 	{
-		if (D_80046570[gSYGtlTaskID][i].length != 0)
+		gSYTaskDLHeads[i] = sSYTaskDLBranches[i] = sSYTaskDLBuffers[gSYTaskID][i].start;
+	}
+	for (i = 0; i < (ARRAY_COUNT(gSYTaskDLHeads) + ARRAY_COUNT(sSYTaskDLBranches) + ARRAY_COUNT(sSYTaskDLBuffers[0])) / 3; i++)
+	{
+		if (sSYTaskDLBuffers[gSYTaskID][i].length != 0)
 		{
-			D_8004662C = gDisplayListHead[i];
-			dpResetSettings(&gDisplayListHead[i]);
-			gSPEndDisplayList(gDisplayListHead[i]++);
-			D_800465C0[i] = gDisplayListHead[i];
+			D_8004662C = gSYTaskDLHeads[i];
+			dpResetSettings(&gSYTaskDLHeads[i]);
+			gSPEndDisplayList(gSYTaskDLHeads[i]++);
+			sSYTaskDLBranches[i] = gSYTaskDLHeads[i];
 			break;
 		}
 	}
@@ -218,22 +229,22 @@ void func_80004AB0()
 }
 
 // 80004B9C
-void gsCheckGtlBufferLengths()
+void syTaskCheckBufferLengths(void)
 {
 	s32 i;
 
-	for (i = 0; i < (ARRAY_COUNT(gDisplayListHead) + ARRAY_COUNT(D_800465C0) + ARRAY_COUNT(D_80046570[0])) / 3; i++)
+	for (i = 0; i < (ARRAY_COUNT(gSYTaskDLHeads) + ARRAY_COUNT(sSYTaskDLBranches) + ARRAY_COUNT(sSYTaskDLBuffers[0])) / 3; i++)
 	{
-		if (D_80046570[gSYGtlTaskID][i].length + (uintptr_t)D_80046570[gSYGtlTaskID][i].start < (uintptr_t)gDisplayListHead[i])
+		if (sSYTaskDLBuffers[gSYTaskID][i].length + (uintptr_t)sSYTaskDLBuffers[gSYTaskID][i].start < (uintptr_t)gSYTaskDLHeads[i])
 		{
-			syErrorPrintf("gtl : DLBuffer over flow !  kind = %d  vol = %d byte\n", i, (uintptr_t)gDisplayListHead[i] - (uintptr_t)D_80046570[gSYGtlTaskID][i].start);
+			syErrorPrintf("gtl : DLBuffer over flow !  kind = %d  vol = %d byte\n", i, (uintptr_t)gSYTaskDLHeads[i] - (uintptr_t)sSYTaskDLBuffers[gSYTaskID][i].start);
 			while (TRUE);
 		}
 	}
 
-	if ((uintptr_t)gSYGtlGraphicsHeap.end < (uintptr_t)gSYGtlGraphicsHeap.ptr)
+	if ((uintptr_t)gSYTaskGraphicsHeap.end < (uintptr_t)gSYTaskGraphicsHeap.ptr)
 	{
-		syErrorPrintf("gtl : DynamicBuffer over flow !  %d byte\n", (uintptr_t)gSYGtlGraphicsHeap.ptr - (uintptr_t)gSYGtlGraphicsHeap.start);
+		syErrorPrintf("gtl : DynamicBuffer over flow !  %d byte\n", (uintptr_t)gSYTaskGraphicsHeap.ptr - (uintptr_t)gSYTaskGraphicsHeap.start);
 		while (TRUE);
 	}
 }
@@ -279,23 +290,23 @@ void func_80004CB4(s32 arg0, void *arg1, u32 buffer_size)
 }
 
 // 80004D2C
-DObj* func_80004D2C()
+DObj* func_80004D2C(void)
 {
 	DObj *temp;
 
-	if (sDObjTasks[gSYGtlTaskID] == NULL)
+	if (sDObjTasks[gSYTaskID] == NULL)
 	{
 		syErrorPrintf("gtl : not defined SCTaskGfx\n");
 		while (TRUE);
 	}
 
-	if (D_80046550[gSYGtlTaskID] == D_80046558[gSYGtlTaskID])
+	if (D_80046550[gSYTaskID] == D_80046558[gSYTaskID])
 	{
 		syErrorPrintf("gtl : couldn\'t get SCTaskGfx\n");
 		while (TRUE);
 	}
 
-	temp = D_80046550[gSYGtlTaskID]++;
+	temp = D_80046550[gSYTaskID]++;
 
 	return temp;
 }
@@ -305,27 +316,27 @@ void func_80004DB4(DObj *arg0, s32 arg1, SCTaskGfxEnd *arg2, SCTaskVi *arg3)
 {
 	s32 i;
 
-	for (i = 0; i < sSYGtlTasksNum; i++)
+	for (i = 0; i < sSYTaskCount; i++)
 	{
 		sDObjTasks[i] = (DObj*) ((uintptr_t)arg0 + (arg1 * sizeof(DObj)) * i);
 		D_80046550[i] = (DObj*) ((uintptr_t)arg0 + (arg1 * sizeof(DObj)) * i);
 		D_80046558[i] = (DObj*) ((uintptr_t)arg0 + (arg1 * sizeof(DObj)) * (i + 1));
 
 		D_80046560[i] = (SCTaskGfxEnd*) ((uintptr_t)arg2 + (i * sizeof(SCTaskGfxEnd)));
-		D_80046568[i] = (SCTaskVi*)  ((uintptr_t)arg3 + (i * sizeof(SCTaskVi)));
+		D_80046568[i] = (SCTaskVi*) ((uintptr_t)arg3 + (i * sizeof(SCTaskVi)));
 	}
 }
 
 // 80004E90
-void syGtlScheduleGfxEnd(SCTaskGfxEnd *mesg, void *framebuffer, u32 retVal, OSMesgQueue *mq)
+void syTaskScheduleGfxEnd(SCTaskGfxEnd *mesg, void *framebuffer, u32 retVal, OSMesgQueue *mq)
 {
-	mesg->info.type = SC_TASK_TYPE_GFX_END;
+	mesg->info.type 	= SC_TASK_TYPE_GFX_END;
 	mesg->info.priority = 100;
 	mesg->info.fnCheck  = NULL;
 	mesg->info.mq       = mq;
 	mesg->info.retVal   = retVal;
 	mesg->fb            = framebuffer;
-	mesg->taskId        = gSYGtlTaskID;
+	mesg->taskId        = gSYTaskID;
 
 	osSendMesg(&scTaskQueue, (OSMesg)mesg, OS_MESG_NOBLOCK);
 }
@@ -333,7 +344,7 @@ void syGtlScheduleGfxEnd(SCTaskGfxEnd *mesg, void *framebuffer, u32 retVal, OSMe
 // 80004EFC
 void func_80004EFC()
 {
-	SCTaskGfxEnd *mesg = D_80046560[gSYGtlTaskID];
+	SCTaskGfxEnd *mesg = D_80046560[gSYTaskID];
 
 	if (mesg == NULL)
 	{
@@ -341,15 +352,15 @@ void func_80004EFC()
 		while (TRUE);
 	}
 
-	syGtlScheduleGfxEnd(mesg, (void*)-1, gSYGtlTaskID, &D_80045500);
-	D_80046550[gSYGtlTaskID] = sDObjTasks[gSYGtlTaskID];
+	syTaskScheduleGfxEnd(mesg, (void*)-1, gSYTaskID, &D_80045500);
+	D_80046550[gSYTaskID] = sDObjTasks[gSYTaskID];
 }
 
 // 80004F78
 void func_80004F78()
 {
 	OSMesg recv;
-	SCTaskGfxEnd *mesg = D_80046560[gSYGtlTaskID];
+	SCTaskGfxEnd *mesg = D_80046560[gSYTaskID];
 
 	if (mesg == NULL)
 	{
@@ -357,10 +368,10 @@ void func_80004F78()
 		while (TRUE);
 	}
 
-	syGtlScheduleGfxEnd(mesg, NULL, gSYGtlTaskID, &D_80045520);
+	syTaskScheduleGfxEnd(mesg, NULL, gSYTaskID, &D_80045520);
 	osRecvMesg(&D_80045520, &recv, OS_MESG_BLOCK);
-	D_80046550[gSYGtlTaskID] = sDObjTasks[gSYGtlTaskID];
-	gsResetGraphicsHeapAlloc();
+	D_80046550[gSYTaskID] = sDObjTasks[gSYTaskID];
+	syTaskResetGraphicsHeap();
 	func_80004AB0();
 }
 
@@ -397,7 +408,7 @@ void func_80005018(SCTaskGfx *t, s32 *arg1, u32 ucode_id, s32 arg3, u64 *arg4, u
 		t->info.mq = NULL;
 
 	t->info.unk18 = two;
-	t->taskId     = gSYGtlTaskID;
+	t->taskId     = gSYTaskID;
 	t->unk7C      = 0;
 
 	t->task.t.type            = M_GFXTASK;
@@ -451,7 +462,7 @@ void func_80005018(SCTaskGfx *t, s32 *arg1, u32 ucode_id, s32 arg3, u64 *arg4, u
 }
 
 // 800051E4
-u32 syGtlGetUcodeID()
+u32 syTaskGetUcodeID()
 {
 	u32 o = (D_80046628 != 0) ? D_80046626 : D_80046624;
 
@@ -492,7 +503,7 @@ void func_80005240(s32 arg0, u64 *arg1)
 			}
 		}
 	}
-	else ucode_id = syGtlGetUcodeID();
+	else ucode_id = syTaskGetUcodeID();
 
 	switch (ucode_id)
 	{
@@ -501,7 +512,7 @@ void func_80005240(s32 arg0, u64 *arg1)
 		case 5:
 		case 7:
 		case 9:
-			func_80005018((void*)func_80004D2C(), 0, ucode_id, gSYGtlTaskID, arg1, NULL, 0);
+			func_80005018((void*)func_80004D2C(), 0, ucode_id, gSYTaskID, arg1, NULL, 0);
 			break;
 
 		case 0:
@@ -509,13 +520,13 @@ void func_80005240(s32 arg0, u64 *arg1)
 		case 4:
 		case 6:
 		case 8:
-			func_80005018((void*)func_80004D2C(), 0, ucode_id, gSYGtlTaskID, arg1, D_80046618, D_8004661C);
+			func_80005018((void*)func_80004D2C(), 0, ucode_id, gSYTaskID, arg1, D_80046618, D_8004661C);
 			break;
 	}
 }
 
 // 80005344
-void syGtlAppendGfxUcodeLoad(Gfx **dl, u32 ucode_id)
+void syTaskAppendGfxUcodeLoad(Gfx **dl, u32 ucode_id)
 {
 	switch (ucode_id)
 	{
@@ -543,7 +554,7 @@ void func_800053CC()
 	s32 a0;
 	s32 diffs;
 	s32 i;
-	s32 dlIdx;
+	s32 dl_id;
 	Gfx *cmdPtr;
 
 	// calculate bitset of differences
@@ -553,106 +564,110 @@ void func_800053CC()
 	// 8 -> 3
 	diffs = 0;
 
-	for (i = 0; i < (ARRAY_COUNT(gDisplayListHead) + ARRAY_COUNT(D_800465C0)) / 2; i++)
+	for (i = 0; i < (ARRAY_COUNT(gSYTaskDLHeads) + ARRAY_COUNT(sSYTaskDLBranches)) / 2; i++)
 	{
 		diffs >>= 1;
 
-		if (gDisplayListHead[i] != D_800465C0[i])
-			diffs |= 8;
+		if (gSYTaskDLHeads[i] != sSYTaskDLBranches[i])
+		{
+			diffs |= 0x8;
+		}
 	}
 
 	if (diffs != 0)
 	{
-		if (diffs & 1)
+		if (diffs & 0x1)
 		{
-			if (diffs & 4)
+			if (diffs & 0x4)
 			{
-				syGtlAppendGfxUcodeLoad(&gDisplayListHead[0], syGtlGetUcodeID());
-				gSPBranchList(gDisplayListHead[0]++, D_800465C0[2]);
+				syTaskAppendGfxUcodeLoad(&gSYTaskDLHeads[0], syTaskGetUcodeID());
+				gSPBranchList(gSYTaskDLHeads[0]++, sSYTaskDLBranches[2]);
 			}
-			else if (diffs & 2)
+			else if (diffs & 0x2)
 			{
 				if (D_80046628 != 0)
-					syGtlAppendGfxUcodeLoad(&gDisplayListHead[0], D_80046624);
-				gSPBranchList(gDisplayListHead[0]++, D_800465C0[1]);
+				{
+					syTaskAppendGfxUcodeLoad(&gSYTaskDLHeads[0], D_80046624);
+				}
+				gSPBranchList(gSYTaskDLHeads[0]++, sSYTaskDLBranches[1]);
 			}
-			else if (diffs & 8)
+			else if (diffs & 0x8)
 			{
-				syGtlAppendGfxUcodeLoad(&gDisplayListHead[0], syGtlGetUcodeID());
-				gSPBranchList(gDisplayListHead[0]++, D_800465C0[3]);
+				syTaskAppendGfxUcodeLoad(&gSYTaskDLHeads[0], syTaskGetUcodeID());
+				gSPBranchList(gSYTaskDLHeads[0]++, sSYTaskDLBranches[3]);
 			}
 			else
 			{
-				gDPFullSync(gDisplayListHead[0]++);
-				gSPEndDisplayList(gDisplayListHead[0]++);
+				gDPFullSync(gSYTaskDLHeads[0]++);
+				gSPEndDisplayList(gSYTaskDLHeads[0]++);
 			}
 		}
-		if (diffs & 4)
+		if (diffs & 0x4)
 		{
-			if (diffs & 2)
+			if (diffs & 0x2)
 			{
-				syGtlAppendGfxUcodeLoad(&gDisplayListHead[2], D_80046624);
-				gSPBranchList(gDisplayListHead[2]++, D_800465C0[1]);
+				syTaskAppendGfxUcodeLoad(&gSYTaskDLHeads[2], D_80046624);
+				gSPBranchList(gSYTaskDLHeads[2]++, sSYTaskDLBranches[1]);
 			}
-			else if (diffs & 8)
+			else if (diffs & 0x8)
 			{
-				gSPBranchList(gDisplayListHead[2]++, D_800465C0[3]);
+				gSPBranchList(gSYTaskDLHeads[2]++, sSYTaskDLBranches[3]);
 			}
 			else
 			{
-				gDPFullSync(gDisplayListHead[2]++);
-				gSPEndDisplayList(gDisplayListHead[2]++);
+				gDPFullSync(gSYTaskDLHeads[2]++);
+				gSPEndDisplayList(gSYTaskDLHeads[2]++);
 			}
 		}
-		if (diffs & 2)
+		if (diffs & 0x2)
 		{
-			if (diffs & 8)
+			if (diffs & 0x8)
 			{
-				syGtlAppendGfxUcodeLoad(&gDisplayListHead[0], syGtlGetUcodeID());
-				gSPBranchList(gDisplayListHead[1]++, D_800465C0[3]);
+				syTaskAppendGfxUcodeLoad(&gSYTaskDLHeads[0], syTaskGetUcodeID());
+				gSPBranchList(gSYTaskDLHeads[1]++, sSYTaskDLBranches[3]);
 			}
 			else
 			{
-				gDPFullSync(gDisplayListHead[1]++);
-				gSPEndDisplayList(gDisplayListHead[1]++);
+				gDPFullSync(gSYTaskDLHeads[1]++);
+				gSPEndDisplayList(gSYTaskDLHeads[1]++);
 			}
 		}
-		if (diffs & 8)
+		if (diffs & 0x8)
 		{
-			gDPFullSync(gDisplayListHead[3]++);
-			gSPEndDisplayList(gDisplayListHead[3]++);
+			gDPFullSync(gSYTaskDLHeads[3]++);
+			gSPEndDisplayList(gSYTaskDLHeads[3]++);
 		}
-		if (diffs & 1)
+		if (diffs & 0x1)
 		{
-			dlIdx = 0;
+			dl_id = 0;
 			a0    = 0;
 		}
-		else if (diffs & 4)
+		else if (diffs & 0x4)
 		{
-			dlIdx = 2;
+			dl_id = 2;
 			a0    = 1;
 		}
-		else if (diffs & 2)
+		else if (diffs & 0x2)
 		{
-			dlIdx = 1;
+			dl_id = 1;
 			a0    = 0;
 		}
 		else
 		{
-			dlIdx = 3;
+			dl_id = 3;
 			a0    = 1;
 		}
-		cmdPtr = gDisplayListHead[dlIdx];
-		gSPDisplayList(gDisplayListHead[dlIdx]++, D_8004662C);
-		gSPBranchList(gDisplayListHead[dlIdx]++, D_800465C0[dlIdx]);
+		cmdPtr = gSYTaskDLHeads[dl_id];
+		gSPDisplayList(gSYTaskDLHeads[dl_id]++, D_8004662C);
+		gSPBranchList(gSYTaskDLHeads[dl_id]++, sSYTaskDLBranches[dl_id]);
 		func_80005240(a0, (u64*)cmdPtr);
 
-		D_800465C0[0] = gDisplayListHead[0];
-		D_800465C0[2] = gDisplayListHead[2];
-		D_800465C0[1] = gDisplayListHead[1];
-		D_800465C0[3] = gDisplayListHead[3];
+		sSYTaskDLBranches[0] = gSYTaskDLHeads[0];
+		sSYTaskDLBranches[2] = gSYTaskDLHeads[2];
+		sSYTaskDLBranches[1] = gSYTaskDLHeads[1];
+		sSYTaskDLBranches[3] = gSYTaskDLHeads[3];
 	}
-	gsCheckGtlBufferLengths();
+	syTaskCheckBufferLengths();
 }
 
 // 800057C8
@@ -661,15 +676,15 @@ void func_800057C8()
 	s32 i;
 	s32 diffs;
 
-	gsCheckGtlBufferLengths();
+	syTaskCheckBufferLengths();
 
 	diffs = 0;
 
-	for (i = 0; i < (ARRAY_COUNT(gDisplayListHead) + ARRAY_COUNT(D_800465C0)) / 2; i++)
+	for (i = 0; i < (ARRAY_COUNT(gSYTaskDLHeads) + ARRAY_COUNT(sSYTaskDLBranches)) / 2; i++)
 	{
 		diffs >>= 1;
 
-		if (gDisplayListHead[i] != D_800465C0[i])
+		if (gSYTaskDLHeads[i] != sSYTaskDLBranches[i])
 			diffs |= 8;
 	}
 	if (diffs != 0)
@@ -678,63 +693,63 @@ void func_800057C8()
 		{
 			if (diffs & 4)
 			{
-				syGtlAppendGfxUcodeLoad(&gDisplayListHead[0], syGtlGetUcodeID());
-				gSPBranchList(gDisplayListHead[0]++, D_800465C0[2]);
+				syTaskAppendGfxUcodeLoad(&gSYTaskDLHeads[0], syTaskGetUcodeID());
+				gSPBranchList(gSYTaskDLHeads[0]++, sSYTaskDLBranches[2]);
 			}
 			else if (diffs & 2)
 			{
 				if (D_80046628 != 0)
-					syGtlAppendGfxUcodeLoad(&gDisplayListHead[0], D_80046624);
-				gSPBranchList(gDisplayListHead[0]++, D_800465C0[1]);
+					syTaskAppendGfxUcodeLoad(&gSYTaskDLHeads[0], D_80046624);
+				gSPBranchList(gSYTaskDLHeads[0]++, sSYTaskDLBranches[1]);
 			}
 			else if (diffs & 8)
 			{
-				syGtlAppendGfxUcodeLoad(&gDisplayListHead[0], syGtlGetUcodeID());
-				gSPBranchList(gDisplayListHead[0]++, D_800465C0[3]);
+				syTaskAppendGfxUcodeLoad(&gSYTaskDLHeads[0], syTaskGetUcodeID());
+				gSPBranchList(gSYTaskDLHeads[0]++, sSYTaskDLBranches[3]);
 			}
 		}
 		if (diffs & 4)
 		{
 			if (diffs & 2)
 			{
-				syGtlAppendGfxUcodeLoad(&gDisplayListHead[2], D_80046624);
-				gSPBranchList(gDisplayListHead[2]++, D_800465C0[1]);
+				syTaskAppendGfxUcodeLoad(&gSYTaskDLHeads[2], D_80046624);
+				gSPBranchList(gSYTaskDLHeads[2]++, sSYTaskDLBranches[1]);
 			}
 			else if (diffs & 8)
 			{
-				gSPBranchList(gDisplayListHead[2]++, D_800465C0[3]);
+				gSPBranchList(gSYTaskDLHeads[2]++, sSYTaskDLBranches[3]);
 			}
 			else
 			{
-				syGtlAppendGfxUcodeLoad(&gDisplayListHead[2], D_80046624);
-				gSPBranchList(gDisplayListHead[2]++, gDisplayListHead[0]);
+				syTaskAppendGfxUcodeLoad(&gSYTaskDLHeads[2], D_80046624);
+				gSPBranchList(gSYTaskDLHeads[2]++, gSYTaskDLHeads[0]);
 			}
-			D_800465C0[2] = gDisplayListHead[2];
+			sSYTaskDLBranches[2] = gSYTaskDLHeads[2];
 		}
 		if (diffs & 2)
 		{
 			if (diffs & 8)
 			{
-				syGtlAppendGfxUcodeLoad(&gDisplayListHead[0], syGtlGetUcodeID());
-				gSPBranchList(gDisplayListHead[1]++, D_800465C0[3]);
+				syTaskAppendGfxUcodeLoad(&gSYTaskDLHeads[0], syTaskGetUcodeID());
+				gSPBranchList(gSYTaskDLHeads[1]++, sSYTaskDLBranches[3]);
 			}
 			else
 			{
 				if (D_80046628 != 0)
-					syGtlAppendGfxUcodeLoad(&gDisplayListHead[1], D_80046624);
-				gSPBranchList(gDisplayListHead[1]++, gDisplayListHead[0]);
+					syTaskAppendGfxUcodeLoad(&gSYTaskDLHeads[1], D_80046624);
+				gSPBranchList(gSYTaskDLHeads[1]++, gSYTaskDLHeads[0]);
 			}
-			D_800465C0[1] = gDisplayListHead[1];
+			sSYTaskDLBranches[1] = gSYTaskDLHeads[1];
 		}
 		if (diffs & 8)
 		{
-			syGtlAppendGfxUcodeLoad(&gDisplayListHead[3], D_80046624);
-			gSPBranchList(gDisplayListHead[3]++, gDisplayListHead[0]);
-			D_800465C0[3] = gDisplayListHead[3];
+			syTaskAppendGfxUcodeLoad(&gSYTaskDLHeads[3], D_80046624);
+			gSPBranchList(gSYTaskDLHeads[3]++, gSYTaskDLHeads[0]);
+			sSYTaskDLBranches[3] = gSYTaskDLHeads[3];
 		}
 	}
 	D_80046628 = 0;
-	gsCheckGtlBufferLengths();
+	syTaskCheckBufferLengths();
 }
 
 // 80005AE4
@@ -744,15 +759,16 @@ u32 func_80005AE4(s32 arg0)
 	s32 i;
 
 	while (osRecvMesg(&D_80045500, (OSMesg*)&msg, OS_MESG_NOBLOCK) != -1)
+	{
 		D_80046638[msg] = 0;
-
+	}
 	do
 	{
-		for (i = 0; i < sSYGtlTasksNum; i++)
+		for (i = 0; i < sSYTaskCount; i++)
 		{
 			if (D_80046638[i] == 0)
 			{
-				gSYGtlTaskID    = i;
+				gSYTaskID     = i;
 				D_80046638[i] = 1;
 				return 1;
 			}
@@ -787,15 +803,15 @@ void func_80005BFC()
 }
 
 // 80005C74
-void leoInitUnit_atten()
+void syTaskSetLoadScene(void)
 {
-	D_800465D0 = 1;
+	sSYTaskSceneStatus = 1;
 }
 
 // 80005C84
 void unref_80005C84(s32 arg0)
 {
-	D_800465D0 = 2;
+	sSYTaskSceneStatus = 2;
 	D_800465D4 = arg0;
 }
 
@@ -804,7 +820,7 @@ s32 func_80005C9C()
 {
 	SCTaskInfo info;
 
-	switch (D_800465D0)
+	switch (sSYTaskSceneStatus)
 	{
 	case 1:
 		return 1;
@@ -852,9 +868,9 @@ void func_80005DA0(FnBundle *arg0)
 		continue;
 	while (osRecvMesg(&D_800454A0, NULL, OS_MESG_NOBLOCK) != -1)
 		continue;
-	D_800465D0 = 0;
+	sSYTaskSceneStatus = 0;
 	D_800465D4 = -1;
-	gSYGtlTaskID = 1;
+	gSYTaskID = 1;
 	D_80044FA4_407B4 = 0;
 
 	for (i = 0; i < ARRAY_COUNT(D_80046638); i++)
@@ -942,11 +958,11 @@ void func_800062B4(FnBundle *self)
 // 800062EC
 void func_800062EC(FnBundle *self)
 {
-	gsResetGraphicsHeapAlloc();
+	syTaskResetGraphicsHeap();
 	func_80004AB0();
 	self->fn0C();
 	func_800053CC();
-	func_80006F5C(D_80046568[gSYGtlTaskID]);
+	func_80006F5C(D_80046568[gSYTaskID]);
 	func_80004EFC();
 }
 
@@ -963,13 +979,13 @@ void func_80006350(FnBundle *self)
 // 800063A0
 void func_800063A0(FnBundle *self)
 {
-	gsResetGraphicsHeapAlloc();
+	syTaskResetGraphicsHeap();
 	func_80004AB0();
 
 	self->fn0C();
 
 	func_800053CC();
-	func_80006F5C(D_80046568[gSYGtlTaskID]);
+	func_80006F5C(D_80046568[gSYTaskID]);
 	func_80004EFC();
 
 	if (func_80005C9C() != 0)
@@ -983,78 +999,78 @@ void unref_8000641C(Temp8000641C *arg0)
 	SCTaskGfxEnd *task;
 
 	func_80005AE4(0);
-	gsResetGraphicsHeapAlloc();
+	syTaskResetGraphicsHeap();
 	func_80004AB0();
 	arg0->fn2C(arg0);
 	func_800053CC();
 
-	task = D_80046560[gSYGtlTaskID];
+	task = D_80046560[gSYTaskID];
 
 	if (task == NULL)
 	{
 		syErrorPrintf("gtl : not defined SCTaskGfxEnd\n");
 		while (TRUE); // { ; }
 	}
-	syGtlScheduleGfxEnd(task, NULL, gSYGtlTaskID, &D_80045500);
-	D_80046550[gSYGtlTaskID] = sDObjTasks[gSYGtlTaskID];
+	syTaskScheduleGfxEnd(task, NULL, gSYTaskID, &D_80045500);
+	D_80046550[gSYTaskID] = sDObjTasks[gSYTaskID];
 
 	do
 	{
 		osRecvMesg(&D_80045500, (OSMesg*)&idx, OS_MESG_BLOCK);
 		D_80046638[idx] = 0;
 	}
-	while (D_80046638[gSYGtlTaskID] != 0);
+	while (D_80046638[gSYTaskID] != 0);
 
 	dSYGtlFrameDrawCount++; // += 1
 }
 
 // 80006548
-void func_80006548(gsBufferSetup *arg0, void (*arg1)())
+void func_80006548(syTaskBufferSetup *arg0, void (*arg1)())
 {
 	s32 i;
-	gsDLBuffer sp44[2][4];
+	syTaskDLBuffer sp44[2][4];
 
-	sSYGtlTasksNum   = arg0->num_tasks;
+	sSYTaskCount   = arg0->tasks_num;
 	D_800465F8.unk00 = arg0->unk00;
 	D_800465F8.fn04  = arg0->fn04;
 	D_800465F8.fn0C  = arg0->fn08;
 
 	func_80004DB4
 	(
-		gsMemoryAlloc(arg0->unk14 * sizeof(DObj) * sSYGtlTasksNum, 8),
+		syTaskMalloc(arg0->unk14 * sizeof(DObj) * sSYTaskCount, 8),
 		arg0->unk14,
-		gsMemoryAlloc(sizeof(SCTaskGfxEnd) * sSYGtlTasksNum, 8),
-		gsMemoryAlloc(sizeof(SCTaskVi) * sSYGtlTasksNum, 8)
+		syTaskMalloc(sizeof(SCTaskGfxEnd) * sSYTaskCount, 8),
+		syTaskMalloc(sizeof(SCTaskVi) * sSYTaskCount, 8)
 	);
-	for (i = 0; i < sSYGtlTasksNum; i++)
+	for (i = 0; i < sSYTaskCount; i++)
 	{
-		sp44[i][0].start  = gsMemoryAlloc(arg0->unk1C, 0x8);
+		sp44[i][0].start  = syTaskMalloc(arg0->unk1C, 0x8);
 		sp44[i][0].length = arg0->unk1C;
-		sp44[i][1].start  = gsMemoryAlloc(arg0->unk20, 0x8);
+		sp44[i][1].start  = syTaskMalloc(arg0->unk20, 0x8);
 		sp44[i][1].length = arg0->unk20;
-		sp44[i][2].start  = gsMemoryAlloc(arg0->unk24, 0x8);
+		sp44[i][2].start  = syTaskMalloc(arg0->unk24, 0x8);
 		sp44[i][2].length = arg0->unk24;
-		sp44[i][3].start  = gsMemoryAlloc(arg0->unk28, 0x8);
+		sp44[i][3].start  = syTaskMalloc(arg0->unk28, 0x8);
 		sp44[i][3].length = arg0->unk28;
 	}
-	func_80004A0C(sp44);
+	syTaskSetDLBuffer(sp44);
 
-	for (i = 0; i < sSYGtlTasksNum; i++)
+	for (i = 0; i < sSYTaskCount; i++)
 	{
-		mlInitBumpAlloc(&gSYGtlGraphicsHeap, 0x10002, gsMemoryAlloc(arg0->unk2C, 8), arg0->unk2C);
-		sMtxTaskHeaps[i].id    = gSYGtlGraphicsHeap.id;
-		sMtxTaskHeaps[i].start = gSYGtlGraphicsHeap.start;
-		sMtxTaskHeaps[i].end   = gSYGtlGraphicsHeap.end;
-		sMtxTaskHeaps[i].ptr   = gSYGtlGraphicsHeap.ptr;
+		syMallocInit(&gSYTaskGraphicsHeap, 0x10002, syTaskMalloc(arg0->unk2C, 8), arg0->unk2C);
+		sSYTaskDefaultGraphicsHeap[i].id    = gSYTaskGraphicsHeap.id;
+		sSYTaskDefaultGraphicsHeap[i].start = gSYTaskGraphicsHeap.start;
+		sSYTaskDefaultGraphicsHeap[i].end   = gSYTaskGraphicsHeap.end;
+		sSYTaskDefaultGraphicsHeap[i].ptr   = gSYTaskGraphicsHeap.ptr;
 	}
 	arg0->unk30 = 2;
 
 	if (arg0->unk34 == 0)
 		arg0->unk34 = 0x1000;
 
-	func_80004CB4(arg0->unk30, gsMemoryAlloc(arg0->unk34, 16), arg0->unk34);
-	dpSetScissorFunction(arg0->fn38);
-	D_80046668 = arg0->fn3C;
+	func_80004CB4(arg0->unk30, syTaskMalloc(arg0->unk34, 16), arg0->unk34);
+	dpSetScissorFunction(arg0->proc_lights);
+	D_80046668 = arg0->proc_controller;
 	enable_auto_contread((uintptr_t)schedule_contread != (uintptr_t)D_80046668 ? TRUE : FALSE);
 
 	D_8003B6E4 = dSYGtlFrameDrawCount = 0;
@@ -1067,62 +1083,62 @@ void func_80006548(gsBufferSetup *arg0, void (*arg1)())
 }
 
 // 800067E4
-void unref_800067E4(gsBufferSetup *arg)
+void unref_800067E4(syTaskBufferSetup *arg)
 {
-	gsInitGeneralHeap(arg->arena_start, arg->arena_size);
+	syTaskInitGeneralHeap(arg->arena_start, arg->arena_size);
 	D_800465F8.fn08 = func_800062B4;
 	D_800465F8.fn10 = func_800062EC;
 	func_80006548(arg, NULL);
 }
 
 // 8000683C
-void gsGTLSceneInit(gsGTLSetupDesc *gtl_desc)
+void gsGTLSceneInit(syTaskSetup *gtl_desc)
 {
 	OMSetup omsetup;
 
-	gsInitGeneralHeap(gtl_desc->setup.arena_start, gtl_desc->setup.arena_size);
+	syTaskInitGeneralHeap(gtl_desc->setup.arena_start, gtl_desc->setup.arena_size);
 
-	omsetup.gobjthreads        = gsMemoryAlloc(sizeof(GObjThread) * gtl_desc->num_gobjthreads, 0x8);
-	omsetup.num_gobjthreads    = gtl_desc->num_gobjthreads;
-	omsetup.thread_stack_size = gtl_desc->omthreadstack_size;
+	omsetup.gobjthreads        = syTaskMalloc(sizeof(GObjThread) * gtl_desc->gobjthreads_num, 0x8);
+	omsetup.gobjthreads_num    = gtl_desc->gobjthreads_num;
+	omsetup.thread_stack_size = gtl_desc->threadstack_size;
 
-	if (gtl_desc->omthreadstack_size != 0)
-		omsetup.threadstacks = gsMemoryAlloc((gtl_desc->omthreadstack_size + offsetof(OMThreadStackNode, stack)) * gtl_desc->num_omthreadstacks, 0x8);
+	if (gtl_desc->threadstack_size != 0)
+		omsetup.threadstacks = syTaskMalloc((gtl_desc->threadstack_size + offsetof(OMThreadStackNode, stack)) * gtl_desc->threadstacks_num, 0x8);
 	else
 		omsetup.threadstacks = NULL;
 	
-	omsetup.num_stacks = gtl_desc->num_omthreadstacks;
+	omsetup.num_stacks = gtl_desc->threadstacks_num;
 	omsetup.unk_omsetup_0x14   = gtl_desc->unk4C;
 
-	omsetup.gobjprocs     = gsMemoryAlloc(sizeof(GObjProcess) * gtl_desc->num_gobjprocs, 0x4);
-	omsetup.num_gobjprocs = gtl_desc->num_gobjprocs;
+	omsetup.gobjprocs     = syTaskMalloc(sizeof(GObjProcess) * gtl_desc->gobjprocs_num, 0x4);
+	omsetup.gobjprocs_num = gtl_desc->gobjprocs_num;
 
-	omsetup.gobjs     = gsMemoryAlloc(gtl_desc->gobj_size * gtl_desc->num_gobjs, 0x8);
-	omsetup.num_gobjs = gtl_desc->num_gobjs;
+	omsetup.gobjs     = syTaskMalloc(gtl_desc->gobj_size * gtl_desc->gobjs_num, 0x8);
+	omsetup.gobjs_num = gtl_desc->gobjs_num;
 	omsetup.gobj_size = gtl_desc->gobj_size;
 
-	omsetup.ommtxes     = gsMemoryAlloc(sizeof(OMMtx) * gtl_desc->num_ommtxes, 0x8);
+	omsetup.ommtxes     = syTaskMalloc(sizeof(OMMtx) * gtl_desc->num_ommtxes, 0x8);
 	omsetup.num_ommtxes = gtl_desc->num_ommtxes;
 
 	gcSetMatrixProcess(gtl_desc->unk60);
 	omsetup.proc_eject = gtl_desc->proc_eject;
 
-	omsetup.aobjs    = gsMemoryAlloc(sizeof(AObj) * gtl_desc->num_aobjs, 0x4);
-	omsetup.num_aobjs = gtl_desc->num_aobjs;
+	omsetup.aobjs    = syTaskMalloc(sizeof(AObj) * gtl_desc->aobjs_num, 0x4);
+	omsetup.aobjs_num = gtl_desc->aobjs_num;
 
-	omsetup.mobjs     = gsMemoryAlloc(sizeof(MObj) * gtl_desc->num_mobjs, 0x4);
-	omsetup.num_mobjs = gtl_desc->num_mobjs;
+	omsetup.mobjs     = syTaskMalloc(sizeof(MObj) * gtl_desc->mobjs_num, 0x4);
+	omsetup.mobjs_num = gtl_desc->mobjs_num;
 
-	omsetup.dobjs     = gsMemoryAlloc(gtl_desc->dobj_size * gtl_desc->num_dobjs, 0x8);
-	omsetup.num_dobjs = gtl_desc->num_dobjs;
+	omsetup.dobjs     = syTaskMalloc(gtl_desc->dobj_size * gtl_desc->dobjs_num, 0x8);
+	omsetup.dobjs_num = gtl_desc->dobjs_num;
 	omsetup.dobj_size = gtl_desc->dobj_size;
 
-	omsetup.sobjs     = gsMemoryAlloc(gtl_desc->sobj_size * gtl_desc->num_sobjs, 0x8);
-	omsetup.num_sobjs = gtl_desc->num_sobjs;
+	omsetup.sobjs     = syTaskMalloc(gtl_desc->sobj_size * gtl_desc->sobjs_num, 0x8);
+	omsetup.sobjs_num = gtl_desc->sobjs_num;
 	omsetup.sobj_size = gtl_desc->sobj_size;
 
-	omsetup.cameras     = gsMemoryAlloc(gtl_desc->camera_size * gtl_desc->num_cameras, 0x8);
-	omsetup.num_cameras = gtl_desc->num_cameras;
+	omsetup.cameras     = syTaskMalloc(gtl_desc->camera_size * gtl_desc->cameras_num, 0x8);
+	omsetup.cameras_num = gtl_desc->cameras_num;
 	omsetup.camera_size = gtl_desc->camera_size;
 
 	gcSetupObjectManager(&omsetup);
@@ -1130,7 +1146,7 @@ void gsGTLSceneInit(gsGTLSetupDesc *gtl_desc)
 	D_800465F8.fn08 = func_80006350;
 	D_800465F8.fn10 = func_800063A0;
 
-	func_80006548(&gtl_desc->setup, gtl_desc->proc_init);
+	func_80006548(&gtl_desc->setup, gtl_desc->proc_start);
 }
 
 // 80006A8C
@@ -1166,7 +1182,7 @@ void unref_80006AF8()
 void unref_80006B24(s32 arg0)
 {
 	if ((arg0 == 1) || (arg0 == 2))
-		sSYGtlTasksNum = arg0;
+		sSYTaskCount = arg0;
 }
 
 // 80006B44
@@ -1200,8 +1216,8 @@ void func_80006B80()
 	{
 		for (j = 0; j < 4; j++)
 		{
-			D_80046570[i][j].start  = NULL;
-			D_80046570[i][j].length = 0;
+			sSYTaskDLBuffers[i][j].start  = NULL;
+			sSYTaskDLBuffers[i][j].length = 0;
 		}
 	}
 	D_800454E8 = NULL;

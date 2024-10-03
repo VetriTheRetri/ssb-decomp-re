@@ -64,7 +64,7 @@ s32 sMNModeSelectTotalTimeTics;
 s32 sMNModeSelectReturnTic;
 
 // 0x80132CA8
-lbFileNode sMNModeSelectStatusBuf[24];
+lbFileNode sMNModeSelectStatusBuffer[24];
 
 // 0x80132D68
 void *sMNModeSelectFiles[2];
@@ -566,7 +566,7 @@ void mnModeSelectProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
             return;
         }
         if (scSubsysControllerCheckNoInputAll() == FALSE)
@@ -597,7 +597,7 @@ void mnModeSelectProcRun(GObj *gobj)
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = nSCKind1PMode;
                 
-                leoInitUnit_atten();
+                syTaskSetLoadScene();
                 return;
                 
             case nMNModeSelectOptionVSMode:
@@ -606,7 +606,7 @@ void mnModeSelectProcRun(GObj *gobj)
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = nSCKindVSMode;
                 
-                leoInitUnit_atten();
+                syTaskSetLoadScene();
                 return;
                 
             case nMNModeSelectOptionOption:
@@ -615,7 +615,7 @@ void mnModeSelectProcRun(GObj *gobj)
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = nSCKindOption;
                 
-                leoInitUnit_atten();
+                syTaskSetLoadScene();
                 return;
                 
             case nMNModeSelectOptionData:
@@ -624,7 +624,7 @@ void mnModeSelectProcRun(GObj *gobj)
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = nSCKindData;
                 
-                leoInitUnit_atten();
+                syTaskSetLoadScene();
                 return;
             }
         }
@@ -637,7 +637,7 @@ void mnModeSelectProcRun(GObj *gobj)
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = nSCKindTitle;
             
-                leoInitUnit_atten();
+                syTaskSetLoadScene();
             }
             if
             (
@@ -722,10 +722,10 @@ void mnModeSelectProcStart(void)
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = sMNModeSelectStatusBuf;
-    rl_setup.status_buf_size = ARRAY_COUNT(sMNModeSelectStatusBuf);
-    rl_setup.force_buf = NULL;
-    rl_setup.force_buf_size = 0;
+    rl_setup.status_buffer = sMNModeSelectStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sMNModeSelectStatusBuffer);
+    rl_setup.force_status_buffer = NULL;
+    rl_setup.force_status_buffer_size = 0;
     
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
@@ -733,7 +733,7 @@ void mnModeSelectProcStart(void)
         dMNModeSelectFileIDs,
         ARRAY_COUNT(dMNModeSelectFileIDs),
         sMNModeSelectFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (

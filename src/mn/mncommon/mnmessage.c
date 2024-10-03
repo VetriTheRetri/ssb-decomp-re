@@ -30,7 +30,7 @@ s32 sMNMessageUnk0x80132660;
 s32 sMNMessageTotalTimeTics;
 
 // 0x80132668
-lbFileNode sMNMessageStatusBuf[100];
+lbFileNode sMNMessageStatusBuffer[100];
 
 // 0x80132988
 void *sMNMessageFiles[2];
@@ -85,14 +85,14 @@ void mnMessageMakeWallpaper(void)
 // 0x80131BA4
 void mnMessageTintProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x00, 0x00, 0xFF, 0x3F);
-    gDPSetCombineMode(gDisplayListHead[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gDisplayListHead[0]++, 10, 10, 310, 230);
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0x00, 0x00, 0xFF, 0x3F);
+    gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     
     lbCommonClearExternSpriteParams();
 }
@@ -312,7 +312,7 @@ void mnMessageProcRun(GObj *gobj)
         if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
         {
             mnMessageApplyUnlock();
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
     }
 }
@@ -326,10 +326,10 @@ void mnMessageProcStart(void)
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = sMNMessageStatusBuf;
-    rl_setup.status_buf_size = ARRAY_COUNT(sMNMessageStatusBuf);
-    rl_setup.force_buf = NULL;
-    rl_setup.force_buf_size = 0;
+    rl_setup.status_buffer = sMNMessageStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sMNMessageStatusBuffer);
+    rl_setup.force_status_buffer = NULL;
+    rl_setup.force_status_buffer_size = 0;
     
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
@@ -337,7 +337,7 @@ void mnMessageProcStart(void)
         dMNMessageFileIDs,
         ARRAY_COUNT(dMNMessageFileIDs),
         sMNMessageFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (

@@ -48,7 +48,7 @@ void *gFTManagerCommonFile;
 size_t gFTManagerFigatreeHeapSize;
 
 // 0x80130DA0
-lbFileNode sFTManagerForceBuf[7];
+lbFileNode sFTManagerForceStatusBuffer[7];
 
 // // // // // // // // // // // //
 //                               //
@@ -114,10 +114,10 @@ void ftManagerSetupFileSize(void)
     rl_setup.table_files_num = &lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = NULL;
-    rl_setup.status_buf_size = 0;
-    rl_setup.force_buf = sFTManagerForceBuf;
-    rl_setup.force_buf_size = ARRAY_COUNT(sFTManagerForceBuf);
+    rl_setup.status_buffer = NULL;
+    rl_setup.status_buffer_size = 0;
+    rl_setup.force_status_buffer = sFTManagerForceStatusBuffer;
+    rl_setup.force_status_buffer_size = ARRAY_COUNT(sFTManagerForceStatusBuffer);
 
     lbRelocInitSetup(&rl_setup);
 
@@ -186,7 +186,7 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
 
     heap_size = 0;
 
-    sFTManagerStructsAllocBuf = sFTManagerStructsAllocFree = gsMemoryAlloc(sizeof(ftStruct) * allocs_num, 0x8);
+    sFTManagerStructsAllocBuf = sFTManagerStructsAllocFree = syTaskMalloc(sizeof(ftStruct) * allocs_num, 0x8);
 
     bzero(sFTManagerStructsAllocBuf, sizeof(ftStruct) * allocs_num);
 
@@ -196,7 +196,7 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
     }
     sFTManagerStructsAllocBuf[i].alloc_next = NULL;
 
-    sFTManagerPartsAllocFree = sFTManagerPartsAllocBuf = gsMemoryAlloc(sizeof(ftParts) * allocs_num * FTPARTS_JOINT_NUM_MAX, 0x8);
+    sFTManagerPartsAllocFree = sFTManagerPartsAllocBuf = syTaskMalloc(sizeof(ftParts) * allocs_num * FTPARTS_JOINT_NUM_MAX, 0x8);
 
     for (i = 0; i < ((allocs_num * FTPARTS_JOINT_NUM_MAX) - 1); i++)
     {
@@ -208,9 +208,9 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
     gFTManagerMotionCount = 1;
     gFTManagerStatUpdateCount = 1;
 
-    gFTManagerCommonFile = lbRelocGetFileExternHeap((u32)&D_NF_000000A3, gsMemoryAlloc(lbRelocGetFileSize((u32)&D_NF_000000A3), 0x10));
+    gFTManagerCommonFile = lbRelocGetFileExternHeap((u32)&D_NF_000000A3, syTaskMalloc(lbRelocGetFileSize((u32)&D_NF_000000A3), 0x10));
 
-    lbRelocGetFileExternHeap((u32)&D_NF_000000C9, gsMemoryAlloc(lbRelocGetFileSize((u32)&D_NF_000000C9), 0x10));
+    lbRelocGetFileExternHeap((u32)&D_NF_000000C9, syTaskMalloc(lbRelocGetFileSize((u32)&D_NF_000000C9), 0x10));
 
     for (i = 0; i < (ARRAY_COUNT(dFTManagerDataFiles) + ARRAY_COUNT(D_800A50F8)) / 2; i++)
     {
@@ -327,7 +327,7 @@ void ftManagerSetupFilesMainKind(s32 ft_kind)
 {
     ftData *ft_data = dFTManagerDataFiles[ft_kind];
 
-    *ft_data->p_file_main = lbRelocGetFileExternHeap(ft_data->file_main_id, gsMemoryAlloc(lbRelocGetFileSize(ft_data->file_main_id), 0x10));
+    *ft_data->p_file_main = lbRelocGetFileExternHeap(ft_data->file_main_id, syTaskMalloc(lbRelocGetFileSize(ft_data->file_main_id), 0x10));
 
     if (ft_data->particles_script_lo != 0)
     {
@@ -348,33 +348,33 @@ void ftManagerSetupFilesKind(s32 ft_kind)
 
     if (ft_data->file_mainmotion_id != 0)
     {
-        *ft_data->p_file_mainmotion = lbRelocGetFileStatusBuf(ft_data->file_mainmotion_id);
+        *ft_data->p_file_mainmotion = lbRelocGetFileStatusBuffer(ft_data->file_mainmotion_id);
     }
     if (ft_data->file_submotion_id != 0)
     {
-        *ft_data->p_file_submotion = lbRelocGetFileStatusBuf(ft_data->file_submotion_id);
+        *ft_data->p_file_submotion = lbRelocGetFileStatusBuffer(ft_data->file_submotion_id);
     }
-    *ft_data->p_file_model = lbRelocGetFileStatusBuf(ft_data->file_model_id);
+    *ft_data->p_file_model = lbRelocGetFileStatusBuffer(ft_data->file_model_id);
 
     if (ft_data->file_shieldpose_id != 0)
     {
-        ft_data->p_file_shieldpose = lbRelocGetFileStatusBuf(ft_data->file_shieldpose_id);
+        ft_data->p_file_shieldpose = lbRelocGetFileStatusBuffer(ft_data->file_shieldpose_id);
     }
     if (ft_data->file_special1_id != 0)
     {
-        *ft_data->p_file_special1 = lbRelocGetFileStatusBuf(ft_data->file_special1_id);
+        *ft_data->p_file_special1 = lbRelocGetFileStatusBuffer(ft_data->file_special1_id);
     }
     if (ft_data->file_special2_id != 0)
     {
-        *ft_data->p_file_special2 = lbRelocGetFileStatusBuf(ft_data->file_special2_id);
+        *ft_data->p_file_special2 = lbRelocGetFileStatusBuffer(ft_data->file_special2_id);
     }
     if (ft_data->file_special3_id != 0)
     {
-        *ft_data->p_file_special3 = lbRelocGetFileStatusBuf(ft_data->file_special3_id);
+        *ft_data->p_file_special3 = lbRelocGetFileStatusBuffer(ft_data->file_special3_id);
     }
     if (ft_data->file_special4_id != 0)
     {
-        *ft_data->p_file_special4 = lbRelocGetFileStatusBuf(ft_data->file_special4_id);
+        *ft_data->p_file_special4 = lbRelocGetFileStatusBuffer(ft_data->file_special4_id);
     }
     if (ft_data->particles_script_lo != 0)
     {
@@ -410,7 +410,7 @@ void* ftManagerAllocAnimHeapKind(s32 ft_kind)
 {
     ftData *ft_data = dFTManagerDataFiles[ft_kind];
 
-    return gsMemoryAlloc(ft_data->file_anim_size, 0x10);
+    return syTaskMalloc(ft_data->file_anim_size, 0x10);
 }
 
 // 0x800D78E8

@@ -64,7 +64,7 @@ s32 sMNVSItemSwitchTotalTimeTics;
 s32 sMNVSItemSwitchReturnTic;
 
 // 0x80133470
-lbFileNode sMNVSItemSwitchStatusBuf[24];
+lbFileNode sMNVSItemSwitchStatusBuffer[24];
 
 // 0x80133530
 void *sMNVSItemSwitchFiles[1];
@@ -184,15 +184,15 @@ void mnVSItemSwitchMakeToggle(GObj *gobj, f32 pos_x, f32 pos_y)
 // 0x80131CA4
 void mnVSItemSwitchLabelsProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetCombineMode(gDisplayListHead[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x80, 0x80, 0x80, 0xFF);
-    gDPFillRectangle(gDisplayListHead[0]++, 79, 34, 310, 39);
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0x80, 0x80, 0x80, 0xFF);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 79, 34, 310, 39);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
     
     lbCommonClearExternSpriteParams();
     lbCommonDrawSObjAttr(gobj);
@@ -648,7 +648,7 @@ void mnVSItemSwitchProcRun(GObj *gobj)
             gSceneData.scene_current = nSCKindVSOptions;
             
             mnVSItemSwitchSetItemToggles();
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
         if
         (
@@ -804,10 +804,10 @@ void mnVSItemSwitchProcStart(void)
     rl_setup.table_files_num = &lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = sMNVSItemSwitchStatusBuf;
-    rl_setup.status_buf_size = ARRAY_COUNT(sMNVSItemSwitchStatusBuf);
-    rl_setup.force_buf = NULL;
-    rl_setup.force_buf_size = 0;
+    rl_setup.status_buffer = sMNVSItemSwitchStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sMNVSItemSwitchStatusBuffer);
+    rl_setup.force_status_buffer = NULL;
+    rl_setup.force_status_buffer_size = 0;
     
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
@@ -815,7 +815,7 @@ void mnVSItemSwitchProcStart(void)
         dMNVSItemSwitchFileIDs,
         ARRAY_COUNT(dMNVSItemSwitchFileIDs),
         sMNVSItemSwitchFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (

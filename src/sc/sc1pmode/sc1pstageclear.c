@@ -157,10 +157,10 @@ s32 sSC1PStageClearDamageEjectTic;
 s32 sSC1PStageClearPad0x801353C8[2];
 
 // 0x801353D0
-lbFileNode sSC1PStageClearStatusBuf[48];
+lbFileNode sSC1PStageClearStatusBuffer[48];
 
 // 0x80135550
-lbFileNode sSC1PStageClearForceBuf[7];
+lbFileNode sSC1PStageClearForceStatusBuffer[7];
 
 // 0x80135588
 void *sSC1PStageClearFiles[7];
@@ -571,9 +571,9 @@ void sc1PStageClearMakeScoreDigits
 // 0x801320E0
 void sc1PStageClearTextProcDisplay(GObj *gobj)
 {
-	gDPPipeSync(gDisplayListHead[0]++);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
 	lbCommonDrawSObjAttr(gobj);
-	gDPPipeSync(gDisplayListHead[0]++);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
 }
 
 // 0x8013213C
@@ -1338,14 +1338,14 @@ void sc1PStageClearMakeBonusTable(void)
 // 0x801339C0
 void sc1PStageClearFramebufWallpaperProcDisplay(GObj *gobj)
 {
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x80, 0x80, 0x80, 0xFF);
-	gDPSetCombineMode(gDisplayListHead[0]++, G_CC_MODULATEI_PRIM, G_CC_MODULATEI_PRIM);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0x80, 0x80, 0x80, 0xFF);
+	gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_MODULATEI_PRIM, G_CC_MODULATEI_PRIM);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
 	lbCommonDrawSObjNoAttr(gobj);
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80133AC0
@@ -1886,7 +1886,7 @@ void sc1PStageClearProcRun(GObj *gobj)
 
 				sc1PStageClearUpdateTotal1PGameScore();
 				
-				leoInitUnit_atten();
+				syTaskSetLoadScene();
 			}
 			else if ((sSC1PStageClearIsSetCommonAdvanceTic != FALSE) && (sSC1PStageClearIsAdvance == FALSE))
 			{
@@ -1966,10 +1966,10 @@ void sc1PStageClearProcStart(void)
 	rl_setup.table_files_num = &lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buf = sSC1PStageClearStatusBuf;
-	rl_setup.status_buf_size = ARRAY_COUNT(sSC1PStageClearStatusBuf);
-	rl_setup.force_buf = sSC1PStageClearForceBuf;
-	rl_setup.force_buf_size = ARRAY_COUNT(sSC1PStageClearForceBuf);
+	rl_setup.status_buffer = sSC1PStageClearStatusBuffer;
+	rl_setup.status_buffer_size = ARRAY_COUNT(sSC1PStageClearStatusBuffer);
+	rl_setup.force_status_buffer = sSC1PStageClearForceStatusBuffer;
+	rl_setup.force_status_buffer_size = ARRAY_COUNT(sSC1PStageClearForceStatusBuffer);
 
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern
@@ -1977,7 +1977,7 @@ void sc1PStageClearProcStart(void)
 		dSC1PStageClearFileIDs,
 		ARRAY_COUNT(dSC1PStageClearFileIDs),
 		sSC1PStageClearFiles,
-		gsMemoryAlloc
+		syTaskMalloc
 		(
 			lbRelocGetAllocSize
 			(

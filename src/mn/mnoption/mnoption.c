@@ -91,7 +91,7 @@ s32 sMNOptionReturnTic;
 // s32 sMNOptionPad0x801337EC;
 
 // 0x801337F0
-lbFileNode sMNOptionStatusBuf[24];
+lbFileNode sMNOptionStatusBuffer[24];
 
 // 0x801338B0
 void *sMNOptionFiles[2];
@@ -396,15 +396,15 @@ void mnOptionMakeMenuGObj(void)
 // 0x80132248
 void mnOptionHeaderProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 160, 120, 20, 230);
-    gDPSetCombineMode(gDisplayListHead[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gDisplayListHead[0]++, 225, 143, 310, 230);
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 160, 120, 20, 230);
+    gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 225, 143, 310, 230);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
 
     lbCommonClearExternSpriteParams();
     lbCommonDrawSObjAttr(gobj);
@@ -499,15 +499,15 @@ void mnOptionMakeDecalSObjs(void)
 // 0x80132618 - Unused?
 void func_ovl60_80132618(GObj *gobj)
 {
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x66, 0x4C, 0x0C, 0x66);
-    gDPSetCombineMode(gDisplayListHead[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gDisplayListHead[0]++, 27, 25, 185, 122);
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0x66, 0x4C, 0x0C, 0x66);
+    gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskDLHeads[0]++, 27, 25, 185, 122);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
     lbCommonClearExternSpriteParams();
     lbCommonDrawSObjAttr(gobj);
 }
@@ -555,25 +555,25 @@ void mnOptionSoundUnderlineProcDisplay(GObj *gobj)
         {  0xC8,  0x5E,  0xE2,  0x5E }
     };
 
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_FILL);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gDisplayListHead[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_FILL);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
+    gDPSetFillColor(gSYTaskDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
 
     if (sMNOptionOption == nMNOptionOptionSound)
     {
         gDPFillRectangle
         (
-            gDisplayListHead[0]++,
+            gSYTaskDLHeads[0]++,
             rect[sMNOptionSoundMonoOrStereo].ulx,
             rect[sMNOptionSoundMonoOrStereo].uly,
             rect[sMNOptionSoundMonoOrStereo].lrx,
             rect[sMNOptionSoundMonoOrStereo].lry
         );
     }
-    gDPPipeSync(gDisplayListHead[0]++);
-    gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
     lbCommonClearExternSpriteParams();
 }
 
@@ -780,7 +780,7 @@ void mnOptionProcRun(GObj *gobj)
 
             mnOptionWriteBackup();
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
             return;
         }
         if (scSubsysControllerCheckNoInputAll() == FALSE)
@@ -789,7 +789,7 @@ void mnOptionProcRun(GObj *gobj)
         }
         if (sMNOptionIsProceedScene != FALSE)
         {
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
         if (sMNOptionOptionChangeWait != 0)
         {
@@ -844,7 +844,7 @@ void mnOptionProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindModeSelect;
 
-            leoInitUnit_atten();
+            syTaskSetLoadScene();
         }
         if
         (
@@ -969,10 +969,10 @@ void mnOptionProcStart(void)
     rl_setup.table_files_num = &lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
-    rl_setup.status_buf = sMNOptionStatusBuf;
-    rl_setup.status_buf_size = ARRAY_COUNT(sMNOptionStatusBuf);
-    rl_setup.force_buf = NULL;
-    rl_setup.force_buf_size = 0;
+    rl_setup.status_buffer = sMNOptionStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sMNOptionStatusBuffer);
+    rl_setup.force_status_buffer = NULL;
+    rl_setup.force_status_buffer_size = 0;
 
     lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
@@ -980,7 +980,7 @@ void mnOptionProcStart(void)
         dMNOptionFileIDs,
         ARRAY_COUNT(dMNOptionFileIDs),
         sMNOptionFiles,
-        gsMemoryAlloc
+        syTaskMalloc
         (
             lbRelocGetAllocSize
             (

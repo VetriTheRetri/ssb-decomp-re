@@ -2022,13 +2022,13 @@ void lbCommonDrawDObjScaleX(DObj *dobj)
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
         f32 bak = gODScaleX;
-        s32 status = gcPrepDObjMatrix(&gDisplayListHead[1], dobj);
+        s32 status = gcPrepDObjMatrix(&gSYTaskDLHeads[1], dobj);
         
         if ((dobj->display_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
-            gcDrawMObjForDObj(dobj, &gDisplayListHead[1]);
+            gcDrawMObjForDObj(dobj, &gSYTaskDLHeads[1]);
             
-            gSPDisplayList(gDisplayListHead[1]++, dobj->display_list);
+            gSPDisplayList(gSYTaskDLHeads[1]++, dobj->display_list);
         }        
         if (dobj->child != NULL)
         {
@@ -2038,7 +2038,7 @@ void lbCommonDrawDObjScaleX(DObj *dobj)
         {
             if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
             {
-                gSPPopMatrix(gDisplayListHead[1]++, G_MTX_MODELVIEW);
+                gSPPopMatrix(gSYTaskDLHeads[1]++, G_MTX_MODELVIEW);
             }
         }
         gODScaleX = bak;
@@ -2069,13 +2069,13 @@ void lbCommonDrawDObjDefault(DObj *dobj)
 {
     if (!(dobj->flags & DOBJ_FLAG_NORENDER))
     {
-        s32 status = gcPrepDObjMatrix(&gDisplayListHead[0], dobj);
+        s32 status = gcPrepDObjMatrix(&gSYTaskDLHeads[0], dobj);
         
         if ((dobj->display_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
-            gcDrawMObjForDObj(dobj, &gDisplayListHead[0]);
+            gcDrawMObjForDObj(dobj, &gSYTaskDLHeads[0]);
             
-            gSPDisplayList(gDisplayListHead[0]++, dobj->display_list);
+            gSPDisplayList(gSYTaskDLHeads[0]++, dobj->display_list);
         }        
         if (dobj->child != NULL)
         {
@@ -2085,7 +2085,7 @@ void lbCommonDrawDObjDefault(DObj *dobj)
         {
             if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
             {
-                gSPPopMatrix(gDisplayListHead[0]++, G_MTX_MODELVIEW);
+                gSPPopMatrix(gSYTaskDLHeads[0]++, G_MTX_MODELVIEW);
             }
         }
     }
@@ -2806,8 +2806,8 @@ void lbCommonDrawSObjAttr(GObj *gobj)
     {
         if (!(sobj->sprite.attr & SP_HIDDEN))
         {
-            lbCommonPrepSObjSpriteAttrs(gDisplayListHead, sobj);
-            lbCommonPrepSObjDraw(gDisplayListHead, sobj);
+            lbCommonPrepSObjSpriteAttrs(gSYTaskDLHeads, sobj);
+            lbCommonPrepSObjDraw(gSYTaskDLHeads, sobj);
             lbCommonSetExternSpriteParams(&sobj->sprite);
         }
         sobj = sobj->next;
@@ -2823,7 +2823,7 @@ void lbCommonDrawSObjNoAttr(GObj *gobj)
     {
         if (!(sobj->sprite.attr & SP_HIDDEN))
         {
-            lbCommonPrepSObjDraw(gDisplayListHead, sobj);
+            lbCommonPrepSObjDraw(gSYTaskDLHeads, sobj);
             lbCommonClearExternSpriteParams();
         }
         sobj = sobj->next;
@@ -2964,11 +2964,11 @@ void lbCommonScissorSpriteCamera(GObj *gobj)
     {
         lry = gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * 10);
     }
-    lbCommonStartSprite(gDisplayListHead);
+    lbCommonStartSprite(gSYTaskDLHeads);
     lbCommonSetSpriteScissor(ulx, lrx, uly, lry);
 
     func_80017B80(gobj, (cam->flags & 8) ? 1 : 0);
-    lbCommonFinishSprite(gDisplayListHead);
+    lbCommonFinishSprite(gSYTaskDLHeads);
 }
 
 // 0x800CD440

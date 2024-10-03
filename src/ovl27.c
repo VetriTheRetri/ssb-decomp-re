@@ -598,11 +598,11 @@ s32 mn1PGetPortraitId(s32 ft_kind)
 // 8013283C
 void mn1PRenderPortraitWithNoise(GObj *portrait_gobj)
 {
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 0x30, 0x30, 0x30, 0xFF);
-	gDPSetCombineLERP(gDisplayListHead[0]++, NOISE, TEXEL0, PRIMITIVE, TEXEL0, 0, 0, 0, TEXEL0, NOISE, TEXEL0, PRIMITIVE, TEXEL0,  0, 0, 0, TEXEL0);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0x30, 0x30, 0x30, 0xFF);
+	gDPSetCombineLERP(gSYTaskDLHeads[0]++, NOISE, TEXEL0, PRIMITIVE, TEXEL0, 0, 0, 0, TEXEL0, NOISE, TEXEL0, PRIMITIVE, TEXEL0,  0, 0, 0, TEXEL0);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 	lbCommonDrawSObjNoAttr(portrait_gobj);
 }
 
@@ -973,15 +973,15 @@ void mn1PCreateBackgroundViewport()
 void mn1PRenderOptionsSection(GObj* options_gobj)
 {
 	// Draw the rectangle behind the Option image
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
-	gDPSetCombineLERP(gDisplayListHead[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-	gDPSetPrimColor(gDisplayListHead[0]++, 0, 0, 87, 96, 136, 255);
-	gDPFillRectangle(gDisplayListHead[0]++, 157, 136, 320, 141);
-	gDPPipeSync(gDisplayListHead[0]++);
-	gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-	gDPSetCycleType(gDisplayListHead[0]++, G_CYC_1CYCLE);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetCombineLERP(gSYTaskDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 87, 96, 136, 255);
+	gDPFillRectangle(gSYTaskDLHeads[0]++, 157, 136, 320, 141);
+	gDPPipeSync(gSYTaskDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
 
 	lbCommonClearExternSpriteParams();
 	lbCommonDrawSObjAttr(options_gobj);
@@ -2417,7 +2417,7 @@ void mn1PGoBackTo1PMenu()
 	mn1PSaveMatchInfo();
 	auStopBGM();
 	func_800266A0_272A0();
-	leoInitUnit_atten();
+	syTaskSetLoadScene();
 }
 
 // 80136D04
@@ -2960,7 +2960,7 @@ void mn1PMain(s32 arg0)
 		gSceneData.scene_current = nSCKindTitle;
 
 		mn1PSaveMatchInfo();
-		leoInitUnit_atten();
+		syTaskSetLoadScene();
 
 		return;
 	}
@@ -2978,7 +2978,7 @@ void mn1PMain(s32 arg0)
 			gSceneData.scene_current = nSCKind1PGame;
 
 			mn1PSaveMatchInfo();
-			leoInitUnit_atten();
+			syTaskSetLoadScene();
 		}
 	}
 	else if ((scSubsysControllerGetPlayerTapButtons(START_BUTTON)) && (gMN1PFramesElapsed > 60))
@@ -3095,12 +3095,12 @@ void mn1PInitCSS()
 	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buf = (lbFileNode*) &D_ovl27_801392E0;
-	rldmSetup.status_buf_size = 0x78;
-	rldmSetup.force_buf = (lbFileNode*) &D_ovl27_801392A8;
-	rldmSetup.force_buf_size = 7;
+	rldmSetup.status_buffer = (lbFileNode*) &D_ovl27_801392E0;
+	rldmSetup.status_buffer_size = 0x78;
+	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl27_801392A8;
+	rldmSetup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl27_80138630, 11U, gMN1PFilesArray, gsMemoryAlloc(lbRelocGetAllocSize(D_ovl27_80138630, 11U), 0x10U));
+	lbRelocLoadFilesExtern(D_ovl27_80138630, 11U, gMN1PFilesArray, syTaskMalloc(lbRelocGetAllocSize(D_ovl27_80138630, 11U), 0x10U));
 
 	gcMakeGObjSPAfter(0x400U, &mn1PMain, 0xFU, 0x80000000U);
 	gcMakeDefaultCameraGObj(0x10, 0x80000000U, 0x64, 1, 0);
@@ -3111,7 +3111,7 @@ void mn1PInitCSS()
 	for (i = 0; i < 12; i++)
 		ftManagerSetupFilesAllKind(i);
 
-	gMN1PAnimHeap = gsMemoryAlloc(gFTManagerFigatreeHeapSize, 0x10U);
+	gMN1PAnimHeap = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10U);
 
 	mn1PLoadMatchInfo();
 	mn1PCreatePortraitViewport();

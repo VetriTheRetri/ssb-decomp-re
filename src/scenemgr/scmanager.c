@@ -8,7 +8,7 @@
 #include "scenemgr/entries.h"
 #include <sys/error.h>
 #include <sys/dma.h>
-#include <sys/gtl.h>
+#include <sys/task.h>
 #include <sys/hal_audio.h>
 #include <sys/system_00.h>
 #include <sc/sctypes.h> // Temporarily, until ovl defines are fixed
@@ -619,7 +619,7 @@ void start_scene_manager(u32 set)
 }
 
 // 800A2698
-void func_800A2698(gsGTLSetupDesc *arg) // set up gtl and om systems
+void func_800A2698(syTaskSetup *arg) // set up gtl and om systems
 {
 	gsGTLSceneInit(arg);
 }
@@ -639,50 +639,50 @@ void func_800A26D8(GObj* arg0)
 	UNUSED s32 spPad70;
 	s32 barY = 203; // sp6C
 
-	func_80016338(gDisplayListHead, arg0->obj, 0);
-	gDPPipeSync((*gDisplayListHead)++);
-	gDPSetCycleType((*gDisplayListHead)++, G_CYC_FILL);
-	gDPSetRenderMode((*gDisplayListHead)++, G_RM_NOOP, G_RM_NOOP2);
+	func_80016338(gSYTaskDLHeads, arg0->obj, 0);
+	gDPPipeSync((*gSYTaskDLHeads)++);
+	gDPSetCycleType((*gSYTaskDLHeads)++, G_CYC_FILL);
+	gDPSetRenderMode((*gSYTaskDLHeads)++, G_RM_NOOP, G_RM_NOOP2);
 	width = ((gLBParticleStructsUsedNum / 112.0f) * 256.0f);
 	if (width < 0)
 		width = 0;
 	if (width > 256)
 		width = 256;
-	gDPSetFillColor((*gDisplayListHead)++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF)));
-	gDPFillRectangle((*gDisplayListHead)++, 30, barY, width + 30, barY + 1);
+	gDPSetFillColor((*gSYTaskDLHeads)++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF)));
+	gDPFillRectangle((*gSYTaskDLHeads)++, 30, barY, width + 30, barY + 1);
 
 	barY += 2;
-	gDPPipeSync((*gDisplayListHead)++);
+	gDPPipeSync((*gSYTaskDLHeads)++);
 	width = ((gLBParticleGeneratorsUsedNum / 24.0f) * 256.0f);
 	if (width < 0)
 		width = 0;
 	if (width > 256)
 		width = 256;
-	gDPSetFillColor((*gDisplayListHead)++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x40, 0x00, 0xFF)));
-	gDPFillRectangle((*gDisplayListHead)++, 30, barY, width + 30, barY + 1);
+	gDPSetFillColor((*gSYTaskDLHeads)++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x40, 0x00, 0xFF)));
+	gDPFillRectangle((*gSYTaskDLHeads)++, 30, barY, width + 30, barY + 1);
 
 	barY += 2;
-	gDPPipeSync((*gDisplayListHead)++);
+	gDPPipeSync((*gSYTaskDLHeads)++);
 	width = ((gLBParticleTransformsUsedNum / 80.0f) * 256.0f);
 	if (width < 0)
 		width = 0;
 	if (width > 256)
 		width = 256;
-	gDPSetFillColor((*gDisplayListHead)++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
-	gDPFillRectangle((*gDisplayListHead)++, 30, barY, width + 30, barY + 1);
-	gDPPipeSync((*gDisplayListHead)++);
+	gDPSetFillColor((*gSYTaskDLHeads)++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
+	gDPFillRectangle((*gSYTaskDLHeads)++, 30, barY, width + 30, barY + 1);
+	gDPPipeSync((*gSYTaskDLHeads)++);
 	// this needs to be in its own block to match. macro?
 	// could explain the double sync
 	{
-		size_t freeSpace = (uintptr_t)gSYGtlGeneralHeap.end - (uintptr_t)gSYGtlGeneralHeap.ptr;
+		size_t freeSpace = (uintptr_t)gSYTaskGeneralHeap.end - (uintptr_t)gSYTaskGeneralHeap.ptr;
 
-		gDPSetFillColor((*gDisplayListHead)++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
+		gDPSetFillColor((*gSYTaskDLHeads)++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
 		func_800218E0(0x14, 0x14, freeSpace, 7, 1);
-		gDPPipeSync((*gDisplayListHead)++);
+		gDPPipeSync((*gSYTaskDLHeads)++);
 	}
-	gDPPipeSync((*gDisplayListHead)++);
-	gDPSetCycleType((*gDisplayListHead)++, G_CYC_1CYCLE);
-	gDPSetRenderMode((*gDisplayListHead)++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync((*gSYTaskDLHeads)++);
+	gDPSetCycleType((*gSYTaskDLHeads)++, G_CYC_1CYCLE);
+	gDPSetRenderMode((*gSYTaskDLHeads)++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 800A2B18

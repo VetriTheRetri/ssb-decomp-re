@@ -3496,7 +3496,7 @@ void mpCollisionGetPlayerMapObjPosition(s32 player, Vec3f *pos)
 // 0x800FB010
 void mpCollisionAllocVertexInfo(void)
 {
-    gMPCollisionVertexInfo = gsMemoryAlloc(gMPCollisionLinesNum * sizeof(mpVertexInfo), 0x8);
+    gMPCollisionVertexInfo = syTaskMalloc(gMPCollisionLinesNum * sizeof(mpVertexInfo), 0x8);
 }
 
 // 0x800FB04C
@@ -3669,8 +3669,8 @@ void mpCollisionAllocYakumono(DObjDesc *gr_yakumono)
     {
         gr_yakumono++;
     }
-    gMPCollisionYakumonoDObjs = gsMemoryAlloc(yakumono_count * sizeof(gMPCollisionYakumonoDObjs), 0x4);
-    gMPCollisionDynamics = gsMemoryAlloc(yakumono_count * sizeof(Vec3f), 0x4);
+    gMPCollisionYakumonoDObjs = syTaskMalloc(yakumono_count * sizeof(gMPCollisionYakumonoDObjs), 0x4);
+    gMPCollisionDynamics = syTaskMalloc(yakumono_count * sizeof(Vec3f), 0x4);
 
     for (i = 0; i < yakumono_count; i++)
     {
@@ -3993,7 +3993,7 @@ s32 mpCollisionAllocLinesGetCountTotal(void)
 
         if (line_count[i] != 0)
         {
-            gMPCollisionLineGroups[i].line_id = (u16*) gsMemoryAlloc(line_count[i] * sizeof(*gMPCollisionLineGroups[i].line_id), sizeof(*gMPCollisionLineGroups[i].line_id));
+            gMPCollisionLineGroups[i].line_id = (u16*) syTaskMalloc(line_count[i] * sizeof(*gMPCollisionLineGroups[i].line_id), sizeof(*gMPCollisionLineGroups[i].line_id));
         }
     }
     return line_total;
@@ -4040,7 +4040,7 @@ void mpCollisionInitGroundData(void)
         (uintptr_t)lbRelocGetFileExternHeap
         (
             dMPCollisionGroundFileInfos[gBattleState->gr_kind].file_id, 
-            gsMemoryAlloc
+            syTaskMalloc
             (
                 lbRelocGetFileSize(dMPCollisionGroundFileInfos[gBattleState->gr_kind].file_id),
                 0x10

@@ -329,9 +329,9 @@ void func_80004CB4(s32 arg0, void *arg1, u32 buffer_size)
 }
 
 // 80004D2C
-DObj* func_80004D2C(void)
+SCTaskGfx* func_80004D2C(void)
 {
-	DObj *temp;
+	SCTaskGfx *temp;
 
 	if (sSYProgGfxBufferStart[gSYProgID] == NULL)
 	{
@@ -351,15 +351,15 @@ DObj* func_80004D2C(void)
 }
 
 // 80004DB4
-void func_80004DB4(DObj *arg0, s32 arg1, SCTaskGfxEnd *arg2, SCTaskVi *arg3)
+void func_80004DB4(SCTaskGfx *arg0, s32 arg1, SCTaskGfxEnd *arg2, SCTaskVi *arg3)
 {
 	s32 i;
 
 	for (i = 0; i < sSYProgCount; i++)
 	{
-		sSYProgGfxBufferStart[i] = (DObj*) ((uintptr_t)arg0 + (arg1 * sizeof(DObj)) * i);
-		sSYProgGfxBufferCurrent[i] = (DObj*) ((uintptr_t)arg0 + (arg1 * sizeof(DObj)) * i);
-		sSYProgGfxBufferEnd[i] = (DObj*) ((uintptr_t)arg0 + (arg1 * sizeof(DObj)) * (i + 1));
+		sSYProgGfxBufferStart[i] = (SCTaskGfx*) ((uintptr_t)arg0 + (arg1 * sizeof(SCTaskGfx)) * i);
+		sSYProgGfxBufferCurrent[i] = (SCTaskGfx*) ((uintptr_t)arg0 + (arg1 * sizeof(SCTaskGfx)) * i);
+		sSYProgGfxBufferEnd[i] = (SCTaskGfx*) ((uintptr_t)arg0 + (arg1 * sizeof(SCTaskGfx)) * (i + 1));
 
 		D_80046560[i] = (SCTaskGfxEnd*) ((uintptr_t)arg2 + (i * sizeof(SCTaskGfxEnd)));
 		D_80046568[i] = (SCTaskVi*) ((uintptr_t)arg3 + (i * sizeof(SCTaskVi)));

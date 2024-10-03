@@ -3,6 +3,7 @@
 
 #include <sys/malloc.h>
 #include <sys/thread3.h>
+#include <sys/objdef.h>
 
 #include <PR/mbi.h>
 #include <PR/ultratypes.h>
@@ -47,7 +48,7 @@ typedef struct syProgSetup
 	/* 0x58 */ u32 gobj_size;
 	/* 0x5C */ u32 num_ommtxes;
 	/* 0x60 */ void *unk60;
-	/* 0x64 */ void (*proc_eject)(void*); 	// fn pointer void(*)(struct DObjDynamicStore *)
+	/* 0x64 */ void (*proc_eject)(DObjDynamicStore*); 	// fn pointer void(*)(struct DObjDynamicStore *)
 	/* 0x68 */ u32 aobjs_num;
 	/* 0x6C */ u32 mobjs_num;
 	/* 0x70 */ u32 dobjs_num;

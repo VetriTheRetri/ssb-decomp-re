@@ -48,12 +48,12 @@ typedef struct SCTaskInfo {
     /* 0x00 */ s32 type; // SCTaskType
     /* 0x04 */ s32 priority;
     /* 0x08 */ s32 state; // SCTaskState
-    /* 0x0C */ struct SCTaskInfo* next;
-    /* 0x10 */ struct SCTaskInfo* prev;
+    /* 0x0C */ struct SCTaskInfo *next;
+    /* 0x10 */ struct SCTaskInfo *prev;
     /* 0x14 */ SCTaskCallback fnCheck; // if set, the task is not executed until this function returns TRUE
     /* 0x18 */ s32 unk18;
     /* 0x1C */ s32 retVal;
-    /* 0x20 */ OSMesgQueue* mq;
+    /* 0x20 */ OSMesgQueue *mq;
 } SCTaskInfo; // size == 0x24
 
 // Task SubTypes:

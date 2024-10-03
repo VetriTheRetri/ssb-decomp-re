@@ -61,14 +61,14 @@ typedef struct syProgSetup
 
 } syProgSetup; // size >= 0x8C
 
-extern u32 D_8003B6E4;
+extern u32 sSYProgFrameCount;
 extern s32 dSYProgFrameDrawCount;
 extern Gfx *gSYProgDLHeads[4];
 extern Gfx *sSYProgDLBranches[4];
 extern syMallocRegion gSYProgGraphicsHeap;
 extern syMallocRegion gSYProgGeneralHeap;
 // Gfx *? Gfx
-extern u32 D_80046610;
+extern u32 sSYProgUpdateDeltaTime;
 // Gfx *? Gfx
 extern u32 sSYProgFrameDeltaTime;
 extern u16 D_80046626;

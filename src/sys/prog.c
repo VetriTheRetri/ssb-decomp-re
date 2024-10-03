@@ -18,6 +18,14 @@
 #include <PR/ucode.h>
 #include <PR/ultratypes.h>
 
+typedef enum syProgStatus
+{
+	nSYProgStatusDefault,
+	nSYProgStatusLoadScene,
+	nSYProgStatusUnk2
+
+} syProgStatus;
+
 // externs
 extern void syProgCheckBufferLengths();
 
@@ -33,23 +41,19 @@ typedef struct FnBundle
 {
 	/* 0x00 */ u16 unk00;
 	/* 0x04 */ void (*fn04)();
-	/* 0x08 */ void (*fn08)(struct FnBundle *);
+	/* 0x08 */ void (*func_update)(struct FnBundle *);
 	/* 0x0C */ void (*fn0C)();
-	/* 0x10 */ void (*fn10)(struct FnBundle *);
+	/* 0x10 */ void (*func_draw)(struct FnBundle *);
 
 } FnBundle; // size == 0x14 (D_800465F8)
 
-typedef struct Temp8000641C
-{
-	/* 0x00 */ u8 pad00[0x2c];
-	/* 0x2C */ void (*fn2C)(struct Temp8000641C *);
-
-} Temp8000641C; // size >= 0x2C
-
 // data
 s32 D_8003B6E0 = 0;
-u32 D_8003B6E4 = 0;
 
+// 0x8003B6E4
+u32 sSYProgFrameCount = 0;
+
+// 0x8003B6E8
 s32 dSYProgFrameDrawCount = 0;
 
 // match Nintendo's name to make the text and data symbols
@@ -151,7 +155,7 @@ Gfx *gSYProgDLHeads[4];
 Gfx *sSYProgDLBranches[4];
 
 // 0x800465D0 - Writing 1 to this will load the screen at scene_current (gSceneData).
-u32 sSYProgStatus;
+s32 sSYProgStatus;
 
 // 0x800465D4
 s32 D_800465D4;
@@ -169,7 +173,7 @@ FnBundle D_800465F8;
 u32 sSYProgTimeStart;
 
 // 0x80046610
-u32 D_80046610;
+u32 sSYProgUpdateDeltaTime;
 
 // 0x80046614
 u32 sSYProgFrameDeltaTime;
@@ -415,7 +419,7 @@ void syProgScheduleGfxEnd(SCTaskGfxEnd *mesg, void *framebuffer, u32 retVal, OSM
 	mesg->info.mq       = mq;
 	mesg->info.retVal   = retVal;
 	mesg->fb            = framebuffer;
-	mesg->task_id        = gSYProgTaskID;
+	mesg->task_id       = gSYProgTaskID;
 
 	osSendMesg(&scTaskQueue, (OSMesg)mesg, OS_MESG_NOBLOCK);
 }
@@ -541,9 +545,9 @@ void func_80005018(SCTaskGfx *t, s32 *arg1, u32 ucode_id, s32 arg3, u64 *arg4, u
 }
 
 // 800051E4
-u32 syProgGetUcodeID()
+s32 syProgGetUcodeID()
 {
-	u32 o = (D_80046628 != 0) ? D_80046626 : D_80046624;
+	s32 o = (D_80046628 != 0) ? D_80046626 : D_80046624;
 
 	switch (o)
 	{
@@ -564,7 +568,7 @@ u32 syProgGetUcodeID()
 // 80005240
 void func_80005240(s32 arg0, u64 *arg1)
 {
-	u32 ucode_id;
+	s32 ucode_id;
 
 	if (arg0 == 0)
 	{
@@ -765,7 +769,9 @@ void func_800057C8()
 		diffs >>= 1;
 
 		if (gSYProgDLHeads[i] != sSYProgDLBranches[i])
+		{
 			diffs |= 8;
+		}
 	}
 	if (diffs != 0)
 	{
@@ -833,7 +839,7 @@ void func_800057C8()
 }
 
 // 80005AE4
-u32 func_80005AE4(s32 arg0)
+u32 syProgSwitchContext(s32 arg0)
 {
 	s32 msg;
 	s32 i;
@@ -848,7 +854,7 @@ u32 func_80005AE4(s32 arg0)
 		{
 			if (D_80046638[i] == 0)
 			{
-				gSYProgTaskID     = i;
+				gSYProgTaskID = i;
 				D_80046638[i] = 1;
 				return 1;
 			}
@@ -885,39 +891,39 @@ void func_80005BFC()
 // 80005C74
 void syProgSetLoadScene(void)
 {
-	sSYProgStatus = 1;
+	sSYProgStatus = nSYProgStatusLoadScene;
 }
 
 // 80005C84
 void unref_80005C84(s32 arg0)
 {
-	sSYProgStatus = 2;
+	sSYProgStatus = nSYProgStatusUnk2;
 	D_800465D4 = arg0;
 }
 
 // 80005C9C
-s32 func_80005C9C()
+sb32 syProgCheckBreakLoop(void)
 {
 	SCTaskInfo info;
 
 	switch (sSYProgStatus)
 	{
-	case 1:
-		return 1;
+	case nSYProgStatusLoadScene:
+		return TRUE;
 
-	case 2:
+	case nSYProgStatusUnk2:
 		if (D_80044FA4_407B4 != 0)
 		{
 			info.type = SC_TASK_TYPE_11;
 			info.priority = 100;
-			func_80000970((void *)&info);
-			return 1;
+			func_80000970(&info);
+
+			return TRUE;
 		}
-		else
-			return 0; // return 0;
+		else return FALSE; // return 0;
 
 	default:
-		return 0;
+		return FALSE;
 	}
 }
 
@@ -954,7 +960,7 @@ void func_80005DA0(FnBundle *arg0)
 	{
 		continue;
 	}
-	sSYProgStatus = 0;
+	sSYProgStatus = nSYProgStatusDefault;
 	D_800465D4 = -1;
 	gSYProgTaskID = 1;
 	D_80044FA4_407B4 = 0;
@@ -979,22 +985,28 @@ void func_80005DA0(FnBundle *arg0)
 				continue;
 			}
 			sSYProgTimeStart = osGetCount();
-			arg0->fn08(arg0);
-			D_8003B6E4++; // += 1
-			D_80046610 = (osGetCount() - sSYProgTimeStart) / 2971; // what is this constant?
-			if (func_80005C9C())
+
+			arg0->func_update(arg0);
+
+			sSYProgFrameCount++; // += 1
+
+			sSYProgUpdateDeltaTime = (osGetCount() - sSYProgTimeStart) / 2971; // what is this constant?
+
+			if (syProgCheckBreakLoop() != FALSE)
 			{
 				break;
 			}
-			if (D_8003B6E4 % sSYProgFrameDrawInterval == 0)
+			if (sSYProgFrameCount % sSYProgFrameDrawInterval == 0)
 			{
-				func_80005AE4(0);
+				syProgSwitchContext(0);
 				sSYProgTimeStart = osGetCount();
-				arg0->fn10(arg0);
+
+				arg0->func_draw(arg0);
+
 				dSYProgFrameDrawCount++; // += 1
 				sSYProgFrameDeltaTime = (osGetCount() - sSYProgTimeStart) / 2971;
 
-				if (func_80005C9C())
+				if (syProgCheckBreakLoop() != FALSE)
 				{
 					break;
 				}
@@ -1018,23 +1030,30 @@ void func_80005DA0(FnBundle *arg0)
 				continue;
 			}
 			sSYProgTimeStart = osGetCount();
-			arg0->fn08(arg0);
-			D_8003B6E4++; // += 1
-			D_80046610 = (osGetCount() - sSYProgTimeStart) / 2971;
 
-			if (func_80005C9C())
+			arg0->func_update(arg0);
+
+			sSYProgFrameCount++;
+
+			sSYProgUpdateDeltaTime = (osGetCount() - sSYProgTimeStart) / 2971;
+
+			if (syProgCheckBreakLoop() != FALSE)
 			{
 				break;
 			}
-			if ((D_8003B6E4 % sSYProgFrameDrawInterval == 0) && (func_80005AE4(1) != 0))
+			if ((sSYProgFrameCount % sSYProgFrameDrawInterval == 0) && (syProgSwitchContext(1) != FALSE))
 			{
 				sSYProgTimeStart = osGetCount();
-				arg0->fn10(arg0);
-				dSYProgFrameDrawCount++; // += 1
+
+				arg0->func_draw(arg0);
+
+				dSYProgFrameDrawCount++;
 				sSYProgFrameDeltaTime = (osGetCount() - sSYProgTimeStart) / 2971;
 
-				if (func_80005C9C() != 0)
+				if (syProgCheckBreakLoop() != FALSE)
+				{
 					break;
+				}
 			}
 		}
 	}
@@ -1073,8 +1092,10 @@ void func_80006350(FnBundle *self)
 	D_80046668(self);
 	self->fn04();
 
-	if (func_80005C9C())
+	if (syProgCheckBreakLoop() != FALSE)
+	{
 		gcEjectAll();
+	}
 }
 
 // 800063A0
@@ -1089,20 +1110,22 @@ void func_800063A0(FnBundle *self)
 	func_80006F5C(sSYProgTaskViBuffer[gSYProgTaskID]);
 	func_80004EFC();
 
-	if (func_80005C9C() != 0)
+	if (syProgCheckBreakLoop() != FALSE)
+	{
 		gcEjectAll();
+	}
 }
 
 // 8000641C
-void unref_8000641C(Temp8000641C *arg0)
+void unref_8000641C(GObj *gobj)
 {
 	s32 idx;
 	SCTaskGfxEnd *task;
 
-	func_80005AE4(0);
+	syProgSwitchContext(0);
 	syProgResetGraphicsHeap();
 	func_80004AB0();
-	arg0->fn2C(arg0);
+	gobj->proc_display(gobj);
 	func_800053CC();
 
 	task = sSYProgTaskGfxEndBuffer[gSYProgTaskID];
@@ -1174,7 +1197,7 @@ void func_80006548(syProgBufferSetup *arg0, void (*arg1)())
 	D_80046668 = arg0->proc_controller;
 	enable_auto_contread((uintptr_t)schedule_contread != (uintptr_t)D_80046668 ? TRUE : FALSE);
 
-	D_8003B6E4 = dSYProgFrameDrawCount = 0;
+	sSYProgFrameCount = dSYProgFrameDrawCount = 0;
 
 	if (arg1 != NULL)
 		arg1();
@@ -1187,8 +1210,8 @@ void func_80006548(syProgBufferSetup *arg0, void (*arg1)())
 void unref_800067E4(syProgBufferSetup *arg)
 {
 	syProgInitGeneralHeap(arg->arena_start, arg->arena_size);
-	D_800465F8.fn08 = func_800062B4;
-	D_800465F8.fn10 = func_800062EC;
+	D_800465F8.func_update = func_800062B4;
+	D_800465F8.func_draw = func_800062EC;
 	func_80006548(arg, NULL);
 }
 
@@ -1245,17 +1268,17 @@ void syProgInit(syProgSetup *ts)
 
 	gcSetupObjectManager(&omsetup);
 
-	D_800465F8.fn08 = func_80006350;
-	D_800465F8.fn10 = func_800063A0;
+	D_800465F8.func_update = func_80006350;
+	D_800465F8.func_draw = func_800063A0;
 
 	func_80006548(&ts->setup, ts->proc_start);
 }
 
 // 80006A8C
-void unref_80006A8C(u16 arg0, u16 arg1)
+void syProgSetLogicIntervals(u16 update, u16 framedraw)
 {
-	sSYProgUpdateInterval = arg0;
-	sSYProgFrameDrawInterval = arg1;
+	sSYProgUpdateInterval = update;
+	sSYProgFrameDrawInterval = framedraw;
 }
 
 // 80006AA8

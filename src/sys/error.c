@@ -304,7 +304,8 @@ void syErrorDrawControllerInputs(GObj *gobj)
     gsController *controller = &gSysController;
     s32 offset_x = 60;
     s32 offset_y = 210;
-    s32 i, j;
+    s32 i;
+    s32 unused;
 
     func_80016338(gSYProgDLHeads, CameraGetStruct(gobj), 0);
     gDPPipeSync(gSYProgDLHeads[0]++);
@@ -315,7 +316,7 @@ void syErrorDrawControllerInputs(GObj *gobj)
     func_800218E0(92, 179, controller->stick_range.y, 3, TRUE);
 
     // 0.00390625 is 1 / 1256, but it doesn't want to autoconvert
-    func_80021908(offset_x, 195, D_80046610 * 0.00390625F, 5, 2, TRUE);
+    func_80021908(offset_x, 195, sSYProgUpdateDeltaTime * 0.00390625F, 5, 2, TRUE);
     offset_x += 35;
 
     func_80021908(offset_x, 195, sSYProgFrameDeltaTime * 0.00390625F, 5, 2, TRUE);
@@ -328,7 +329,7 @@ void syErrorDrawControllerInputs(GObj *gobj)
     (
         offset_x,
         195,
-        (D_80046610 * 0.00390625F) + (sSYProgFrameDeltaTime * 0.00390625F) + (D_80044FB4_407C4 * 0.00390625F),
+        (sSYProgUpdateDeltaTime * 0.00390625F) + (sSYProgFrameDeltaTime * 0.00390625F) + (D_80044FB4_407C4 * 0.00390625F),
         5,
         2,
         TRUE
@@ -342,7 +343,7 @@ void syErrorDrawControllerInputs(GObj *gobj)
 
     gDPPipeSync(gSYProgDLHeads[0]++);
     gDPSetFillColor(gSYProgDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF)));
-    syErrorFillRectangle(gSYProgDLHeads[0]++, 30, offset_y, ((D_80046610 / 4 > 256) ? 256 : D_80046610 / 4) + 30, offset_y + 1);
+    syErrorFillRectangle(gSYProgDLHeads[0]++, 30, offset_y, ((sSYProgUpdateDeltaTime / 4 > 256) ? 256 : sSYProgUpdateDeltaTime / 4) + 30, offset_y + 1);
     offset_y += 2;
 
     gDPPipeSync(gSYProgDLHeads[0]++);
@@ -387,11 +388,9 @@ void syErrorDrawControllerInputs(GObj *gobj)
     gDPPipeSync(gSYProgDLHeads[0]++);
     gDPSetFillColor(gSYProgDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x10, 0x10, 0x10, 0xFF)));
 
-    for (j = 30, i = 350; j != i; j += 64)
+    for (i = 0; i < 80; i += 16)
     {
-        syErrorFillRectangle(gSYProgDLHeads[0]++, j, 210, j, 220);
-
-        if (D_8009D2D0 && D_8009D2D0); // Eww... Oh, well.
+        syErrorFillRectangle(gSYProgDLHeads[0]++, (i * 4) + 30, 210, (i * 4) + 30, 220);
     }
     syErrorFillRectangle(gSYProgDLHeads[0]++, 40, 165, 40, 205);
     syErrorFillRectangle(gSYProgDLHeads[0]++, 20, 185, 60, 185);
@@ -911,13 +910,13 @@ void syErrorFileLoaderThread8(void *arg)
 
         if (dSYErrorIsScreenActive == FALSE)
         {
-            if (sp50 == D_8003B6E4)
+            if (sp50 == sSYProgFrameCount)
             {
                 count++;
             }
             else count = 0;
 
-            sp50 = D_8003B6E4;
+            sp50 = sSYProgFrameCount;
 
             if (count >= 300)
             {

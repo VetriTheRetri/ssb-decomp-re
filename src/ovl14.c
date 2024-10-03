@@ -379,7 +379,7 @@ void dbBattleMain(GObj* arg0)
 				break;
 		}
 
-		syTaskSetLoadScene();
+		syProgSetLoadScene();
 	}
 }
 
@@ -463,7 +463,7 @@ void dbBattleInit()
 		spawn_info.ft_kind = gTransferBattleState.players[i].ft_kind;
 		spawn_info.costume = gTransferBattleState.players[i].costume;
 		spawn_info.pos.x = (i * 400.0f) - 600.0f;
-		spawn_info.figatree_heap = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
+		spawn_info.figatree_heap = syProgMalloc(gFTManagerFigatreeHeapSize, 0x10);
 		gMNDebugBattleFighters[i].fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		gMNDebugBattleFighters[i].ft_kind = gTransferBattleState.players[i].ft_kind;
@@ -481,5 +481,5 @@ void dbBattleStartScene()
 	D_ovl14_80132934.zbuffer = syDisplayGetZBuffer(6400);
 	func_80007024(&D_ovl14_80132934);
 	D_ovl14_80132950.arena_size = (u32) ((uintptr_t)&lOverlay14ArenaHi - (uintptr_t)&lOverlay14ArenaLo);
-	gsGTLSceneInit(&D_ovl14_80132950);
+	syProgInit(&D_ovl14_80132950);
 }

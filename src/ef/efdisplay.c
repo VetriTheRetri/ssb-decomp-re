@@ -20,27 +20,27 @@ extern uintptr_t lEFCommonParticleBankTextureHi;                // 0x00B16C80
 // 0x800FCCC0
 void efDisplayProcDisplayBlendCLD(GObj *effect_gobj)
 {
-    gDPPipeSync(gSYTaskDLHeads[1]++);
+    gDPPipeSync(gSYProgDLHeads[1]++);
 
-    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gDPSetRenderMode(gSYProgDLHeads[1]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
 
-    gDPSetAlphaCompare(gSYTaskDLHeads[1]++, G_AC_THRESHOLD);
+    gDPSetAlphaCompare(gSYProgDLHeads[1]++, G_AC_THRESHOLD);
 
-    gDPSetBlendColor(gSYTaskDLHeads[1]++, 0x00, 0x00, 0x00, 0x08);
+    gDPSetBlendColor(gSYProgDLHeads[1]++, 0x00, 0x00, 0x00, 0x08);
 
-    gSPClearGeometryMode(gSYTaskDLHeads[1]++, G_ZBUFFER);
+    gSPClearGeometryMode(gSYProgDLHeads[1]++, G_ZBUFFER);
 }
 
 // 0x800FCD64
 void efDisplayProcDisplayXLU(GObj *effect_gobj)
 {
-    gDPPipeSync(gSYTaskDLHeads[1]++);
+    gDPPipeSync(gSYProgDLHeads[1]++);
 
-    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPSetRenderMode(gSYProgDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    gDPSetAlphaCompare(gSYTaskDLHeads[1]++, G_AC_NONE);
+    gDPSetAlphaCompare(gSYProgDLHeads[1]++, G_AC_NONE);
 
-    gSPSetGeometryMode(gSYTaskDLHeads[1]++, G_ZBUFFER);
+    gSPSetGeometryMode(gSYProgDLHeads[1]++, G_ZBUFFER);
 }
 
 // 0x800FCDEC
@@ -60,55 +60,55 @@ void efDisplayMakeXLU(void)
 // 0x800FCEEC
 void efDisplayProcDisplayZPerspXLU(GObj *effect_gobj)
 {
-    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPPipeSync(gSYProgDLHeads[0]++);
 
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
 
     lbParticleDrawTextures(effect_gobj);
 
-    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPPipeSync(gSYProgDLHeads[0]++);
 
-    gDPSetTexturePersp(gSYTaskDLHeads[0]++, G_TP_PERSP);
+    gDPSetTexturePersp(gSYProgDLHeads[0]++, G_TP_PERSP);
 
-    gDPSetDepthSource(gSYTaskDLHeads[0]++, G_ZS_PIXEL);
+    gDPSetDepthSource(gSYProgDLHeads[0]++, G_ZS_PIXEL);
 
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x800FCFCC
 void efDisplayProcDisplayZPerspCLD(GObj *effect_gobj)
 {
-    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPPipeSync(gSYProgDLHeads[0]++);
 
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
 
     lbParticleDrawTextures(effect_gobj);
 
-    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPPipeSync(gSYProgDLHeads[0]++);
 
-    gDPSetTexturePersp(gSYTaskDLHeads[0]++, G_TP_PERSP);
+    gDPSetTexturePersp(gSYProgDLHeads[0]++, G_TP_PERSP);
 
-    gDPSetDepthSource(gSYTaskDLHeads[0]++, G_ZS_PIXEL);
+    gDPSetDepthSource(gSYProgDLHeads[0]++, G_ZS_PIXEL);
 
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x800FD0AC
 void efDisplayProcDisplayZPerspAAXLU(GObj *effect_gobj)
 {
-    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPPipeSync(gSYProgDLHeads[0]++);
 
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
     lbParticleDrawTextures(effect_gobj);
 
-    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPPipeSync(gSYProgDLHeads[0]++);
 
-    gDPSetTexturePersp(gSYTaskDLHeads[0]++, G_TP_PERSP);
+    gDPSetTexturePersp(gSYProgDLHeads[0]++, G_TP_PERSP);
 
-    gDPSetDepthSource(gSYTaskDLHeads[0]++, G_ZS_PIXEL);
+    gDPSetDepthSource(gSYProgDLHeads[0]++, G_ZS_PIXEL);
 
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x800FD18C

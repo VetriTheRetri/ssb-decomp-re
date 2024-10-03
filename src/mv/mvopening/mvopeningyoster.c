@@ -5,7 +5,7 @@
 #include <sys/system_00.h>
 #include <lb/library.h>
 
-extern void syTaskSetLoadScene();
+extern void syProgSetLoadScene();
 extern u32 func_8000092C();
 extern void func_800A26B8();
 
@@ -291,14 +291,14 @@ void mvOpeningYosterMainProc(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            syTaskSetLoadScene();
+            syProgSetLoadScene();
         }
         if (sMVOpeningYosterTotalTimeTics == 160)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindOpeningSector;
 
-            syTaskSetLoadScene();
+            syProgSetLoadScene();
         }
     }
 }
@@ -324,7 +324,7 @@ void mvOpeningYosterProcStart(void)
         dMVOpeningYosterFileIDs,
         ARRAY_COUNT(dMVOpeningYosterFileIDs),
         sMVOpeningYosterFiles,
-        syTaskMalloc
+        syProgMalloc
         (
             lbRelocGetAllocSize
             (
@@ -345,7 +345,7 @@ void mvOpeningYosterProcStart(void)
 
     for (i = 0; i < ARRAY_COUNT(sMVOpeningYosterFighterAnimHeaps); i++)
     {
-        sMVOpeningYosterFighterAnimHeaps[i] = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
+        sMVOpeningYosterFighterAnimHeaps[i] = syProgMalloc(gFTManagerFigatreeHeapSize, 0x10);
     }
     mvOpeningYosterMakeMainViewport();
     mvOpeningYosterMakeWallpaperViewport();
@@ -411,5 +411,5 @@ void mvOpeningYosterStartScene(void)
     func_80007024(&dMVOpeningYosterDisplaySetup);
 
     dMVOpeningYosterGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl45_BSS_END);
-    gsGTLSceneInit(&dMVOpeningYosterGtlSetup);
+    syProgInit(&dMVOpeningYosterGtlSetup);
 }

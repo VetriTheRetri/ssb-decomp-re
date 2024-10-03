@@ -165,13 +165,13 @@ void mnN64ActorProcRun(GObj *gobj)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = nSCKindTitle;
-		syTaskSetLoadScene();
+		syProgSetLoadScene();
 	}
 	else if (sMNN64IsProceedOpening != FALSE)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = nSCKindOpeningRoom;
-		syTaskSetLoadScene();
+		syProgSetLoadScene();
 	}
 }
 
@@ -234,7 +234,7 @@ void mnN64ProcStart(void)
 		lbRelocGetFileExternHeap
 		(
 			&D_NF_000000C2,
-			syTaskMalloc
+			syProgMalloc
 			(
 				lbRelocGetFileSize
 				(
@@ -272,5 +272,5 @@ void mnN64StartScene(void)
 	func_80007024(&dMNN64DisplaySetup);
 
 	dMNN64GtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl58_BSS_END);
-	gsGTLSceneInit(&dMNN64GtlSetup);
+	syProgInit(&dMNN64GtlSetup);
 }

@@ -156,7 +156,7 @@ s32 scCheckGfxTaskDefault(SCTaskGfx* t) {
     curFb = osViGetCurrentFramebuffer();
 
     // set framebuffer for drawing
-    idx = t->fbIdx;
+    idx = t->framebuffer_id;
     if (idx != -1) {
         fb = scFrameBuffers[idx];
         if (fb != NULL && curFb != fb && nextFb != fb) {
@@ -775,14 +775,14 @@ s32 scExecuteTask(SCTaskInfo* task)
             SCTaskGfx* v1 = NULL;
             SCTaskInfo* v0;
 
-            if (scCurrentGfxTask != NULL && scCurrentGfxTask->info.type == SC_TASK_TYPE_GFX && scCurrentGfxTask->taskId == t->taskId) {
+            if (scCurrentGfxTask != NULL && scCurrentGfxTask->info.type == SC_TASK_TYPE_GFX && scCurrentGfxTask->task_id == t->task_id) {
                 v1 = scCurrentGfxTask;
             }
 
             v0 = &scPausedQueueHead->info;
             while (v0 != NULL) {
                 if (v0->type == SC_TASK_TYPE_GFX) {
-                    if (((SCTaskGfx*) v0)->taskId == t->taskId) {
+                    if (((SCTaskGfx*) v0)->task_id == t->task_id) {
                         v1 = (void*) v0;
                     }
                 }
@@ -792,7 +792,7 @@ s32 scExecuteTask(SCTaskInfo* task)
             v0 = scMainQueueHead;
             while (v0 != NULL) {
                 if (v0->type == SC_TASK_TYPE_GFX) {
-                    if (((SCTaskGfx*) v0)->taskId == t->taskId) {
+                    if (((SCTaskGfx*) v0)->task_id == t->task_id) {
                         v1 = (void*) v0;
                     }
                 }
@@ -803,7 +803,7 @@ s32 scExecuteTask(SCTaskInfo* task)
             v0 = &scCurrentQueue3Task->info;
             if (v0 != NULL) {
                 if (v0->type == SC_TASK_TYPE_GFX) {
-                    if (scCurrentGfxTask->taskId == t->taskId) {
+                    if (scCurrentGfxTask->task_id == t->task_id) {
                         v1 = (void*) v0;
                     }
                 }
@@ -812,7 +812,7 @@ s32 scExecuteTask(SCTaskInfo* task)
             v0 = &scQueue3Head->info;
             while (v0 != NULL) {
                 if (v0->type == SC_TASK_TYPE_GFX) {
-                    if (((SCTaskGfx*) v0)->taskId == t->taskId) {
+                    if (((SCTaskGfx*) v0)->task_id == t->task_id) {
                         v1 = (void*) v0;
                     }
                 }
@@ -948,7 +948,7 @@ void func_80001FF4(void) {
         scCurrentQueue3Task = scQueue3Head;
         func_80000E5C(scQueue3Head);
         scCurrentQueue3Task->info.state = 2;
-        osDpSetNextBuffer(scCurrentQueue3Task->task.t.output_buff, scCurrentQueue3Task->rdpBufSize);
+        osDpSetNextBuffer(scCurrentQueue3Task->task.t.output_buff, scCurrentQueue3Task->rdp_buffer_size);
     }
 }
 
@@ -996,7 +996,7 @@ void scHandleSPTaskDone(void) {
     if (scCurrentGfxTask != NULL && scCurrentGfxTask->info.unk18 == 1 && scCurrentGfxTask->info.state != SC_TASK_STATE_SUSPENDED) {
         if (scCurrentGfxTask->info.type == SC_TASK_TYPE_GFX && scCurrentGfxTask->unk74 == 1) {
             osInvalDCache(&scUnknownU64, sizeof(scUnknownU64));
-            scCurrentGfxTask->rdpBufSize = scUnknownU64;
+            scCurrentGfxTask->rdp_buffer_size = scUnknownU64;
             scRDPOutputBufferUsed += (s32) scUnknownU64;
             scRDPOutputBufferUsed = OS_DCACHE_ROUNDUP_SIZE(scRDPOutputBufferUsed);
             if (scRDPOutputBufferUsed < scUnknownU64) {

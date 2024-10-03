@@ -4,7 +4,7 @@
 #include <sys/system_00.h>
 #include <lb/library.h>
 
-extern void syTaskSetLoadScene();
+extern void syProgSetLoadScene();
 extern u32 func_8000092C();
 extern void func_800A26B8();
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
@@ -129,15 +129,15 @@ void mvOpeningCliffProcLights(Gfx **dls)
 // 0x80131B58
 void mvOpeningCliffHillsProcDisplay(GObj *hills_gobj)
 {
-    gDPPipeSync(gSYTaskDLHeads[0]++);
-    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
+    gDPPipeSync(gSYProgDLHeads[0]++);
+    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
 
     gcDrawDObjTreeForGObj(hills_gobj);
 
-    gDPPipeSync(gSYTaskDLHeads[0]++);
-    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYProgDLHeads[0]++);
+    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80131C34
@@ -454,14 +454,14 @@ void mvOpeningCliffProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            syTaskSetLoadScene();
+            syProgSetLoadScene();
         }
         if (sMVOpeningCliffTotalTimeTics == 160)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindOpeningYamabuki;
 
-            syTaskSetLoadScene();
+            syProgSetLoadScene();
         }
     }
 }
@@ -487,7 +487,7 @@ void mvOpeningCliffProcStart(void)
         dMVOpeningCliffFileIDs,
         ARRAY_COUNT(dMVOpeningCliffFileIDs),
         sMVOpeningCliffFiles,
-        syTaskMalloc
+        syProgMalloc
         (
             lbRelocGetAllocSize
             (
@@ -507,7 +507,7 @@ void mvOpeningCliffProcStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(nFTKindLink);
 
-    sMVOpeningCliffFighterAnimHeap = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
+    sMVOpeningCliffFighterAnimHeap = syProgMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
     mvOpeningCliffMakeMainViewport();
     mvOpeningCliffMakeWallpaperViewport();
@@ -531,5 +531,5 @@ void mvOpeningCliffStartScene(void)
     func_80007024(&dMVOpeningCliffDisplaySetup);
 
     dMVOpeningCliffGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl46_BSS_END);
-    gsGTLSceneInit(&dMVOpeningCliffGtlSetup);
+    syProgInit(&dMVOpeningCliffGtlSetup);
 }

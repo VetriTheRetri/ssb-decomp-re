@@ -114,32 +114,32 @@ void itKabigonFallProcDisplay(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPPipeSync(gSYProgDLHeads[0]++);
 
     if (itDisplayCheckItemVisible(ip) != FALSE)
     {
         if ((ip->display_mode == nDBDisplayModeMaster) || (ip->is_hold))
         {
-            gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+            gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
             gcDrawDObjTreeForGObj(item_gobj);
         }
         else if (ip->display_mode == nDBDisplayModeMapCollision)
         {
-            gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+            gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
             gcDrawDObjTreeForGObj(item_gobj);
             itDisplayMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
-            gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+            gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
             gcDrawDObjTreeForGObj(item_gobj);
         }
         else itDisplayHitCollisions(item_gobj);
     }
-    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPPipeSync(gSYProgDLHeads[0]++);
 }
 
 // 0x8017E25C
@@ -222,32 +222,32 @@ void itKabigonCommonProcDisplay(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPPipeSync(gSYProgDLHeads[0]++);
 
     if (itDisplayCheckItemVisible(ip) != FALSE)
     {
         if ((ip->display_mode == nDBDisplayModeMaster) || (ip->is_hold))
         {
-            gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
+            gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
             gcDrawDObjTreeForGObj(item_gobj);
         }
         else if (ip->display_mode == nDBDisplayModeMapCollision)
         {
-            gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
+            gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
             gcDrawDObjTreeForGObj(item_gobj);
             itDisplayMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
-            gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
+            gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
             gcDrawDObjTreeForGObj(item_gobj);
         }
         else itDisplayHitCollisions(item_gobj);
     }
-    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPPipeSync(gSYProgDLHeads[0]++);
 }
 
 // 0x8017E600

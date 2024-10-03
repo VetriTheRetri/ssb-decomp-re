@@ -6,7 +6,7 @@
 #include <sys/system_00.h>
 #include <lb/library.h>
 
-extern void syTaskSetLoadScene();
+extern void syProgSetLoadScene();
 extern u32 func_8000092C();
 extern void func_800A26B8();
 
@@ -217,7 +217,7 @@ void mvOpeningJungleSetupFiles(void)
         dMVOpeningJungleFileIDs,
         ARRAY_COUNT(dMVOpeningJungleFileIDs),
         sMVOpeningJungleFiles,
-        syTaskMalloc
+        syProgMalloc
         (
             lbRelocGetAllocSize
             (
@@ -381,14 +381,14 @@ void mvOpeningJungleProcRun(GObj *gobj)
         gSceneData.scene_previous = gSceneData.scene_current;
         gSceneData.scene_current = nSCKindTitle;
 
-        syTaskSetLoadScene();
+        syProgSetLoadScene();
     }
     if (sMVOpeningJungleTotalTimeTics == 320)
     {
         gSceneData.scene_previous = gSceneData.scene_current;
         gSceneData.scene_current = nSCKindOpeningYoster;
 
-        syTaskSetLoadScene();
+        syProgSetLoadScene();
     }
 }
 
@@ -449,5 +449,5 @@ void mvOpeningJungleStartScene(void)
     func_80007024(&dMVOpeningJungleDisplaySetup);
 
     dMVOpeningJungleGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl51_BSS_END);
-    gsGTLSceneInit(&dMVOpeningJungleGtlSetup);
+    syProgInit(&dMVOpeningJungleGtlSetup);
 }

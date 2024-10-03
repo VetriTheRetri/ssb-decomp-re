@@ -120,14 +120,14 @@ void sc1PChallengerProcLights(Gfx **dls)
 // 0x80131B24
 void sc1PChallengerDecalsProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYTaskDLHeads[0]++);
-    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0x00, 0x00, 0x3B, 0xFF);
-    gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gSYTaskDLHeads[0]++, 207, 92, 287, 216);
-    gDPPipeSync(gSYTaskDLHeads[0]++);
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYProgDLHeads[0]++);
+    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0x00, 0x00, 0x3B, 0xFF);
+    gDPSetCombineMode(gSYProgDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYProgDLHeads[0]++, 207, 92, 287, 216);
+    gDPPipeSync(gSYProgDLHeads[0]++);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     
     lbCommonClearExternSpriteParams();
     lbCommonDrawSObjAttr(gobj);
@@ -325,7 +325,7 @@ void sc1PChallengerProcRun(GObj *gobj)
             gSceneData.scene_current = nSCKindTitle;
             
             func_ovl23_80132110();
-            syTaskSetLoadScene();
+            syProgSetLoadScene();
         }
     }
 }
@@ -351,7 +351,7 @@ void sc1PChallengerProcStart(void)
         dSC1PChallengerFileIDs,
         ARRAY_COUNT(dSC1PChallengerFileIDs),
         sSC1PChallengerFiles,
-        syTaskMalloc
+        syProgMalloc
         (
             lbRelocGetAllocSize
             (
@@ -369,7 +369,7 @@ void sc1PChallengerProcStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(sSC1PChallengerFighterKind);
     
-    sSC1PChallengerFigatreeHeap = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
+    sSC1PChallengerFigatreeHeap = syProgMalloc(gFTManagerFigatreeHeapSize, 0x10);
     
     sc1PChallengerMakeDecalsCamera();
     sc1PChallengerMakeFighterCamera();
@@ -387,5 +387,5 @@ void sc1PChallengerStartScene(void)
     func_80007024(&dSC1PChallengerDisplaySetup);
     
     dSC1PChallengerGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl23_BSS_END);
-    gsGTLSceneInit(&dSC1PChallengerGtlSetup);
+    syProgInit(&dSC1PChallengerGtlSetup);
 }

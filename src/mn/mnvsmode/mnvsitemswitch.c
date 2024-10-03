@@ -184,15 +184,15 @@ void mnVSItemSwitchMakeToggle(GObj *gobj, f32 pos_x, f32 pos_y)
 // 0x80131CA4
 void mnVSItemSwitchLabelsProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYTaskDLHeads[0]++);
-    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0x80, 0x80, 0x80, 0xFF);
-    gDPFillRectangle(gSYTaskDLHeads[0]++, 79, 34, 310, 39);
-    gDPPipeSync(gSYTaskDLHeads[0]++);
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+    gDPPipeSync(gSYProgDLHeads[0]++);
+    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetCombineMode(gSYProgDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0x80, 0x80, 0x80, 0xFF);
+    gDPFillRectangle(gSYProgDLHeads[0]++, 79, 34, 310, 39);
+    gDPPipeSync(gSYProgDLHeads[0]++);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
     
     lbCommonClearExternSpriteParams();
     lbCommonDrawSObjAttr(gobj);
@@ -648,7 +648,7 @@ void mnVSItemSwitchProcRun(GObj *gobj)
             gSceneData.scene_current = nSCKindVSOptions;
             
             mnVSItemSwitchSetItemToggles();
-            syTaskSetLoadScene();
+            syProgSetLoadScene();
         }
         if
         (
@@ -815,7 +815,7 @@ void mnVSItemSwitchProcStart(void)
         dMNVSItemSwitchFileIDs,
         ARRAY_COUNT(dMNVSItemSwitchFileIDs),
         sMNVSItemSwitchFiles,
-        syTaskMalloc
+        syProgMalloc
         (
             lbRelocGetAllocSize
             (
@@ -889,5 +889,5 @@ void mnVSItemSwitchStartScene(void)
     func_80007024(&dMNVSItemSwitchDisplaySetup);
     
     dMNVSItemSwitchGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl21_BSS_END);
-    gsGTLSceneInit(&dMNVSItemSwitchGtlSetup);
+    syProgInit(&dMNVSItemSwitchGtlSetup);
 }

@@ -462,15 +462,15 @@ void sc1PGameBossWallpaper0ProcDisplay(GObj *gobj)
     s32 color_id = DObjGetStruct(gobj)->child->user_data.s;
     s32 alpha = gobj->user_data.s;
 
-    gDPPipeSync(gSYTaskDLHeads[1]++);
-    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPSetPrimColor(gSYTaskDLHeads[1]++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
-    gDPSetEnvColor(gSYTaskDLHeads[1]++, dSC1PGameBossCometEnvColorR[color_id], dSC1PGameBossCometEnvColorG[color_id], dSC1PGameBossCometEnvColorB[color_id], alpha);
+    gDPPipeSync(gSYProgDLHeads[1]++);
+    gDPSetRenderMode(gSYProgDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetPrimColor(gSYProgDLHeads[1]++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
+    gDPSetEnvColor(gSYProgDLHeads[1]++, dSC1PGameBossCometEnvColorR[color_id], dSC1PGameBossCometEnvColorG[color_id], dSC1PGameBossCometEnvColorB[color_id], alpha);
 
     gcDrawDObjTreeDLLinksForGObj(gobj);
 
-    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
-    gDPPipeSync(gSYTaskDLHeads[1]++);
+    gDPSetRenderMode(gSYProgDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPPipeSync(gSYProgDLHeads[1]++);
 }
 
 // 0x80191498
@@ -486,16 +486,16 @@ void sc1PGameBossWallpaper1ProcDisplay(GObj *gobj)
         dobj->mobj->sub.primcolor.s.a = alpha;
         dobj = dobj->child;
     }
-    gDPPipeSync(gSYTaskDLHeads[1]++);
-    gDPSetCycleType(gSYTaskDLHeads[1]++, G_CYC_2CYCLE);
-    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_PASS, G_RM_AA_XLU_SURF2);
-    gDPSetPrimColor(gSYTaskDLHeads[1]++, 0, 0, 0x00, 0x00, 0x00, alpha);
+    gDPPipeSync(gSYProgDLHeads[1]++);
+    gDPSetCycleType(gSYProgDLHeads[1]++, G_CYC_2CYCLE);
+    gDPSetRenderMode(gSYProgDLHeads[1]++, G_RM_PASS, G_RM_AA_XLU_SURF2);
+    gDPSetPrimColor(gSYProgDLHeads[1]++, 0, 0, 0x00, 0x00, 0x00, alpha);
 
     gcDrawDObjTreeDLLinksForGObj(gobj);
 
-    gDPSetCycleType(gSYTaskDLHeads[1]++, G_CYC_1CYCLE);
-    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
-    gDPPipeSync(gSYTaskDLHeads[1]++);
+    gDPSetCycleType(gSYProgDLHeads[1]++, G_CYC_1CYCLE);
+    gDPSetRenderMode(gSYProgDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPPipeSync(gSYProgDLHeads[1]++);
 }
 
 // 0x801915B8
@@ -512,14 +512,14 @@ void sc1PGameBossWallpaper2ProcDisplay(GObj *gobj)
         }
         dobj = dobj->child;
     }
-    gDPPipeSync(gSYTaskDLHeads[1]++);
-    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPSetPrimColor(gSYTaskDLHeads[1]++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
+    gDPPipeSync(gSYProgDLHeads[1]++);
+    gDPSetRenderMode(gSYProgDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetPrimColor(gSYProgDLHeads[1]++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
 
     gcDrawDObjTreeDLLinksForGObj(gobj);
 
-    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
-    gDPPipeSync(gSYTaskDLHeads[1]++);
+    gDPSetRenderMode(gSYProgDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPPipeSync(gSYProgDLHeads[1]++);
 }
 
 // 0x801916A8
@@ -536,14 +536,14 @@ void sc1PGameBossWallpaper3ProcDisplay0(GObj *gobj)
         }
         dobj = dobj->child;
     }
-    gDPPipeSync(gSYTaskDLHeads[0]++);
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
+    gDPPipeSync(gSYProgDLHeads[0]++);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
 
     gcDrawDObjTreeForGObj(gobj);
 
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYProgDLHeads[0]++);
 }
 
 // 0x80191798
@@ -559,15 +559,15 @@ void sc1PGameBossProcDisplayFadeAlpha(GObj *gobj)
     }
     alpha = sSC1PGameBossWallpaperStepRGBA;
 
-    gDPPipeSync(gSYTaskDLHeads[0]++);
-    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
-    gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 10, 310, 230);
-    gDPPipeSync(gSYTaskDLHeads[0]++);
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPPipeSync(gSYProgDLHeads[0]++);
+    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetCombineMode(gSYProgDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
+    gDPFillRectangle(gSYProgDLHeads[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYProgDLHeads[0]++);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYProgDLHeads[0]++);
 }
 
 // 0x80191908
@@ -584,15 +584,15 @@ void sc1PGameBossProcDisplayFadeColor(GObj *gobj)
     }
     color = sSC1PGameBossWallpaperStepRGBA;
 
-    gDPPipeSync(gSYTaskDLHeads[0]++);
-    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, color, color, color, 0xFF);
-    gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 10, 310, 230);
-    gDPPipeSync(gSYTaskDLHeads[0]++);
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPPipeSync(gSYProgDLHeads[0]++);
+    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetCombineMode(gSYProgDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, color, color, color, 0xFF);
+    gDPFillRectangle(gSYProgDLHeads[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYProgDLHeads[0]++);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYProgDLHeads[0]++);
 }
 
 // 0x80191A94

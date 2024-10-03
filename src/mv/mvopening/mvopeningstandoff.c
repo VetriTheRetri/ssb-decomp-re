@@ -4,7 +4,7 @@
 #include <sys/system_00.h>
 #include <lb/library.h>
 
-extern void syTaskSetLoadScene();
+extern void syProgSetLoadScene();
 extern u32 func_8000092C();
 extern void func_800A26B8();
 
@@ -370,8 +370,8 @@ void mvOpeningStandoffMakeLightning(void)
 // 0x801321D8
 void mvOpeningStandoffLightningFlashProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYTaskDLHeads[1]++);
-    gDPSetCycleType(gSYTaskDLHeads[1]++, G_CYC_1CYCLE);
+    gDPPipeSync(gSYProgDLHeads[1]++);
+    gDPSetCycleType(gSYProgDLHeads[1]++, G_CYC_1CYCLE);
 
     if
     (
@@ -380,15 +380,15 @@ void mvOpeningStandoffLightningFlashProcDisplay(GObj *gobj)
         ((sMVOpeningStandoffTotalTimeTics > 260) && (sMVOpeningStandoffTotalTimeTics < 264))
     )
     {
-        gDPSetPrimColor(gSYTaskDLHeads[1]++, 0, 0, 0xFF, 0xFF, 0xFF, 0x40);
+        gDPSetPrimColor(gSYProgDLHeads[1]++, 0, 0, 0xFF, 0xFF, 0xFF, 0x40);
     }
-    else gDPSetPrimColor(gSYTaskDLHeads[1]++, 0, 0, 0xFF, 0xFF, 0xFF, 0x00);
+    else gDPSetPrimColor(gSYProgDLHeads[1]++, 0, 0, 0xFF, 0xFF, 0xFF, 0x00);
 
-    gDPSetCombineLERP(gSYTaskDLHeads[1]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gSYTaskDLHeads[1]++, 10, 10, 310, 230);
-    gDPPipeSync(gSYTaskDLHeads[1]++);
-    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCombineLERP(gSYProgDLHeads[1]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+    gDPSetRenderMode(gSYProgDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYProgDLHeads[1]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYProgDLHeads[1]++);
+    gDPSetRenderMode(gSYProgDLHeads[1]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80132330 - Unused?
@@ -543,14 +543,14 @@ void mvOpeningStandoffProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            syTaskSetLoadScene();
+            syProgSetLoadScene();
         }
         if (sMVOpeningStandoffTotalTimeTics == 320)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindOpeningClash;
 
-            syTaskSetLoadScene();
+            syProgSetLoadScene();
         }
     }
 }
@@ -576,7 +576,7 @@ void mvOpeningStandoffProcStart(void)
         dMVOpeningStandoffFileIDs,
         ARRAY_COUNT(dMVOpeningStandoffFileIDs),
         sMVOpeningStandoffFiles,
-        syTaskMalloc
+        syProgMalloc
         (
             lbRelocGetAllocSize
             (
@@ -597,8 +597,8 @@ void mvOpeningStandoffProcStart(void)
     ftManagerSetupFilesAllKind(nFTKindMario);
     ftManagerSetupFilesAllKind(nFTKindKirby);
 
-    sMVOpeningStandoffMarioAnimHeap = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
-    sMVOpeningStandoffKirbyAnimHeap = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
+    sMVOpeningStandoffMarioAnimHeap = syProgMalloc(gFTManagerFigatreeHeapSize, 0x10);
+    sMVOpeningStandoffKirbyAnimHeap = syProgMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
     mvOpeningStandoffMakeMainViewport();
     mvOpeningStandoffMakeWallpaperViewport();
@@ -624,5 +624,5 @@ void mvOpeningStandoffStartScene(void)
     func_80007024(&dMVOpeningStandoffDisplaySetup);
 
     dMVOpeningStandoffGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl47_BSS_END);
-    gsGTLSceneInit(&dMVOpeningStandoffGtlSetup);
+    syProgInit(&dMVOpeningStandoffGtlSetup);
 }

@@ -727,7 +727,7 @@ void sc1PGameSetupFiles(void)
         dGMCommonFileIDs, 
         ARRAY_COUNT(dGMCommonFileIDs), 
         gGMCommonFiles, 
-        syTaskMalloc
+        syProgMalloc
         (
             lbRelocGetAllocSize
             (
@@ -1701,7 +1701,7 @@ void sc1PGameInitTeamStockDisplay(void)
         sSC1PGameZakoStockSprite = lbRelocGetFileExternHeap
         (
             (uintptr_t)&D_NF_00000019, 
-            syTaskMalloc
+            syProgMalloc
             (
                 lbRelocGetFileSize((uintptr_t)&D_NF_00000019), 
                 0x10
@@ -1994,7 +1994,7 @@ void sc1PGameProcStart(void)
     {
         syDmaReadRom(0xF10, spA0, ARRAY_COUNT(spA0));
 
-        addr = lbRelocGetFileExternHeap((uintptr_t)&D_NF_000000C8, syTaskMalloc(lbRelocGetFileSize((uintptr_t)&D_NF_000000C8), 0x10));
+        addr = lbRelocGetFileExternHeap((uintptr_t)&D_NF_000000C8, syProgMalloc(lbRelocGetFileSize((uintptr_t)&D_NF_000000C8), 0x10));
 
         proc = (sb32(*)(void*)) ((uintptr_t)addr + (intptr_t)&D_NF_00000000);
 
@@ -2029,7 +2029,7 @@ void sc1PGameProcStart(void)
         // Need to load PK Fire graphics from Ness' file
         plns = dFTManagerDataFiles[nFTKindNess];
 
-        lbRelocGetFileExternHeap((uintptr_t)&D_NF_000000E6, syTaskMalloc(lbRelocGetFileSize((uintptr_t)&D_NF_000000E6), 0x10));
+        lbRelocGetFileExternHeap((uintptr_t)&D_NF_000000E6, syProgMalloc(lbRelocGetFileSize((uintptr_t)&D_NF_000000E6), 0x10));
         efAllocGetAddParticleBankID
         (
             plns->particles_script_lo, 
@@ -2063,7 +2063,7 @@ void sc1PGameProcStart(void)
             {
                 continue;
             }
-            else sSC1PGamePlayerSetups[i].figatree = syTaskMalloc(largest_size, 0x10);
+            else sSC1PGamePlayerSetups[i].figatree = syProgMalloc(largest_size, 0x10);
         }
         break;
     }

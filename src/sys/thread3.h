@@ -75,11 +75,11 @@ typedef struct SCTaskGfx
     /* 0x28 */ OSTask task;
     /* 0x68 */ u32 *unk68;
     /* 0x6C */ s32 *fb; // checked type? (-1 is meaningful)
-    /* 0x70 */ s32 fbIdx; // frame buffer idx for D_80044F90
+    /* 0x70 */ s32 framebuffer_id; // frame buffer idx for D_80044F90
     /* 0x74 */ s32 unk74;
-    /* 0x78 */ s32 rdpBufSize;
+    /* 0x78 */ s32 rdp_buffer_size;
     /* 0x7C */ s32 unk7C;
-    /* 0x80 */ u32 taskId;
+    /* 0x80 */ u32 task_id;
     /* 0x84 */ s32 unk_84;
 
 } SCTaskGfx; // size = 0x84
@@ -120,7 +120,7 @@ typedef struct SCTaskGfxEnd
 {
     /* 0x00 */ SCTaskInfo info;
     /* 0x24 */ void* fb;
-    /* 0x28 */ u32 taskId;
+    /* 0x28 */ u32 task_id;
 
 } SCTaskGfxEnd; /* size == 0x2C */
 

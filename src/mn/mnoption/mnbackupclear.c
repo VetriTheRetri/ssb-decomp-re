@@ -314,17 +314,17 @@ void mnBackupClearEjectOptionGObjs(void)
 // 0x80131F98
 void mnBackupClearOptionConfirmProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYTaskDLHeads[0]++);
-    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_FILL);
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gSYTaskDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF)));
-    gDPFillRectangle(gSYTaskDLHeads[0]++, 58, 64, 262, 64);
-    gDPFillRectangle(gSYTaskDLHeads[0]++, 58, 172, 262, 172);
-    gDPFillRectangle(gSYTaskDLHeads[0]++, 58, 64, 58, 172);
-    gDPFillRectangle(gSYTaskDLHeads[0]++, 262, 64, 262, 172);
-    gDPPipeSync(gSYTaskDLHeads[0]++);
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
+    gDPPipeSync(gSYProgDLHeads[0]++);
+    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_FILL);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
+    gDPSetFillColor(gSYProgDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF)));
+    gDPFillRectangle(gSYProgDLHeads[0]++, 58, 64, 262, 64);
+    gDPFillRectangle(gSYProgDLHeads[0]++, 58, 172, 262, 172);
+    gDPFillRectangle(gSYProgDLHeads[0]++, 58, 64, 58, 172);
+    gDPFillRectangle(gSYProgDLHeads[0]++, 262, 64, 262, 172);
+    gDPPipeSync(gSYProgDLHeads[0]++);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
     
     lbCommonClearExternSpriteParams();
     lbCommonDrawSObjAttr(gobj);
@@ -552,7 +552,7 @@ void mnBackupClearUpdateOptionMainMenu(void)
         gSceneData.scene_current = nSCKindOption;
 
         func_ovl53_801325CC();
-        syTaskSetLoadScene();
+        syProgSetLoadScene();
         return;
     }
     if
@@ -786,7 +786,7 @@ void mnBackupClearProcStart(void)
         dMNBackupClearFileIDs,
         ARRAY_COUNT(dMNBackupClearFileIDs),
         sMNBackupClearFiles,
-        syTaskMalloc
+        syProgMalloc
         (
             lbRelocGetAllocSize
             (
@@ -858,5 +858,5 @@ void mnBackupClearStartScene(void)
     func_80007024(&dMNBackupClearDisplaySetup);
     
     dMNBackupClearGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl53_BSS_END);
-    gsGTLSceneInit(&dMNBackupClearGtlSetup);
+    syProgInit(&dMNBackupClearGtlSetup);
 }

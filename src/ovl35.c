@@ -149,25 +149,25 @@ void mvPortraitsCreatePortraitsSet2()
 // 80131E00
 void mvPortraitsBlockRow1()
 {
-	gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 10, 310, 65);
+	gDPFillRectangle(gSYProgDLHeads[0]++, 10, 10, 310, 65);
 }
 
 // 80131E30
 void mvPortraitsBlockRow2()
 {
-	gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 65, 310, 120);
+	gDPFillRectangle(gSYProgDLHeads[0]++, 10, 65, 310, 120);
 }
 
 // 80131E60
 void mvPortraitsBlockRow3()
 {
-	gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 120, 310, 175);
+	gDPFillRectangle(gSYProgDLHeads[0]++, 10, 120, 310, 175);
 }
 
 // 80131E90
 void mvPortraitsBlockRow4()
 {
-	gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 175, 310, 230);
+	gDPFillRectangle(gSYProgDLHeads[0]++, 10, 175, 310, 230);
 }
 
 // 80131EC0
@@ -177,23 +177,23 @@ void mvPortraitsPartiallyBlockRow(s32 row, s32 x_offset)
 	s32 lry = 65 + row * 55;
 
 	if (x_offset > 0)
-		gDPFillRectangle(gSYTaskDLHeads[0]++, 0, uly, x_offset, lry);
+		gDPFillRectangle(gSYProgDLHeads[0]++, 0, uly, x_offset, lry);
 
 	if (x_offset + 656 < 0)
-		gDPFillRectangle(gSYTaskDLHeads[0]++, 0, uly, 320, lry);
+		gDPFillRectangle(gSYProgDLHeads[0]++, 0, uly, 320, lry);
 
 	if (x_offset + 656 < 320)
-		gDPFillRectangle(gSYTaskDLHeads[0]++, x_offset + 656, uly, 320, lry);
+		gDPFillRectangle(gSYProgDLHeads[0]++, x_offset + 656, uly, 320, lry);
 }
 
 // 80131FC4
 void mvPortraitsRenderPortraitOverlay(GObj* portrait_overlay_gobj)
 {
-	gDPPipeSync(gSYTaskDLHeads[0]++);
-	gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0, 0, 0, 255);
-	gDPSetCombineLERP(gSYTaskDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPPipeSync(gSYProgDLHeads[0]++);
+	gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0, 0, 0, 255);
+	gDPSetCombineLERP(gSYProgDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+	gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
 	switch (gIntroPotraitsCurrentRow)
 	{
@@ -223,8 +223,8 @@ void mvPortraitsRenderPortraitOverlay(GObj* portrait_overlay_gobj)
 			break;
 	}
 
-	gDPPipeSync(gSYTaskDLHeads[0]++);
-	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYProgDLHeads[0]++);
+	gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
 	lbCommonClearExternSpriteParams();
 	lbCommonDrawSObjAttr(portrait_overlay_gobj);
@@ -366,7 +366,7 @@ void mvPortraitsMain(GObj* arg0)
 		{
 			gSceneData.scene_previous = gSceneData.scene_current;
 			gSceneData.scene_current = nSCKindTitle;
-			syTaskSetLoadScene();
+			syProgSetLoadScene();
 		}
 
 		if (gIntroPotraitsFramesElapsed == 75)
@@ -379,7 +379,7 @@ void mvPortraitsMain(GObj* arg0)
 		{
 			gSceneData.scene_previous = gSceneData.scene_current;
 			gSceneData.scene_current = 0x1E;
-			syTaskSetLoadScene();
+			syProgSetLoadScene();
 		}
 	}
 }
@@ -399,7 +399,7 @@ void mvPortraitsInit()
 	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl35_80132B78;
 	rldmSetup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0), gIntroPortraitsFilesArray, syTaskMalloc(lbRelocGetAllocSize(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0), gIntroPortraitsFilesArray, syProgMalloc(lbRelocGetAllocSize(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0)), 0x10));
 
 	gcMakeGObjSPAfter(0, mvPortraitsMain, 0, GOBJ_LINKORDER_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
@@ -447,5 +447,5 @@ void mvPortraitsStartScene()
 	D_ovl35_80132938.zbuffer = syDisplayGetZBuffer(6400);
 	func_80007024(&D_ovl35_80132938);
 	D_ovl35_80132954.arena_size = (u32) ((uintptr_t)&lOverlay35ArenaHi - (uintptr_t)&lOverlay35ArenaLo);
-	gsGTLSceneInit(&D_ovl35_80132954);
+	syProgInit(&D_ovl35_80132954);
 }

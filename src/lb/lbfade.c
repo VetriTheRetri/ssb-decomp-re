@@ -64,13 +64,13 @@ void lbFadeProcDisplay(GObj *gobj)
     {
         alpha = 0xFF - alpha;
     }
-    gDPPipeSync(gSYTaskDLHeads[0]++);
-    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, sLBFadeColor.r, sLBFadeColor.g, sLBFadeColor.b, alpha);
-    gDPSetCombineMode(gSYTaskDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
-    gDPFillRectangle(gSYTaskDLHeads[0]++, 10, 10, 310, 230);
-    gDPPipeSync(gSYTaskDLHeads[0]++);
+    gDPPipeSync(gSYProgDLHeads[0]++);
+    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, sLBFadeColor.r, sLBFadeColor.g, sLBFadeColor.b, alpha);
+    gDPSetCombineMode(gSYProgDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gDPFillRectangle(gSYProgDLHeads[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYProgDLHeads[0]++);
 }
 
 // 0x800D4060

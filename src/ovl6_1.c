@@ -57,7 +57,7 @@ void func_ovl6_8018ED70()
 
 	lbRelocInitSetup(&rldm_setup);
 	lbRelocLoadFilesExtern(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles,
-						 syTaskMalloc(lbRelocGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
+						 syProgMalloc(lbRelocGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
 }
 
 // 8018EE10

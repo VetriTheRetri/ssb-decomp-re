@@ -223,7 +223,7 @@ void scAutoDemoDetectExit(void)
 			gSceneData.scene_previous = gSceneData.scene_current;
 			gSceneData.scene_current = nSCKindTitle;
 
-			syTaskSetLoadScene();
+			syProgSetLoadScene();
 			break;
 		}
 	}
@@ -375,7 +375,7 @@ void scAutoDemoExit(void)
 	gSceneData.scene_previous = gSceneData.scene_current;
 	gSceneData.scene_current = nSCKindN64;
 
-	syTaskSetLoadScene();
+	syProgSetLoadScene();
 }
 
 // 0x8018D624
@@ -573,7 +573,7 @@ void scAutoDemoInitSObjs(void)
 	file = lbRelocGetFileExternHeap
 	(
 		(uintptr_t)&D_NF_0000000C, 
-		syTaskMalloc
+		syProgMalloc
 		(
 			lbRelocGetFileSize((uintptr_t)&D_NF_0000000C), 
 			0x10

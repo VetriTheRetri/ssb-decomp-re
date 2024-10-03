@@ -4,7 +4,7 @@
 #include <sys/develop.h>
 #include <sys/hal_gu.h>
 
-extern syMallocRegion gSYTaskGraphicsHeap;
+extern syMallocRegion gSYProgGraphicsHeap;
 
 // // // // // // // // // // // //
 //                               //
@@ -28,54 +28,54 @@ void itDisplayHitCollisions(GObj *item_gobj)
     {
         if ((it_hit->update_state != nGMHitUpdateDisable) && (it_hit->update_state != nGMHitUpdateNew))
         {
-            gDPPipeSync(gSYTaskDLHeads[0]++);
+            gDPPipeSync(gSYProgDLHeads[0]++);
 
             if (ip->display_mode == nDBDisplayModeHitAttackOutline)
             {
-                gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0xB0, 0x00, 0x00, 0xFF);
-                gDPSetEnvColor(gSYTaskDLHeads[0]++, 0xB0, 0x00, 0x00, 0xFF);
-                gDPSetBlendColor(gSYTaskDLHeads[0]++, 0x00, 0x00, 0x00, 0xE0);
+                gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0xB0, 0x00, 0x00, 0xFF);
+                gDPSetEnvColor(gSYProgDLHeads[0]++, 0xB0, 0x00, 0x00, 0xFF);
+                gDPSetBlendColor(gSYProgDLHeads[0]++, 0x00, 0x00, 0x00, 0xE0);
             }
             else
             {
-                gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-                gDPSetEnvColor(gSYTaskDLHeads[0]++, 0xB0, 0x00, 0x00, 0xFF);
-                gDPSetBlendColor(gSYTaskDLHeads[0]++, 0x00, 0x00, 0x00, 0x00);
+                gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+                gDPSetEnvColor(gSYProgDLHeads[0]++, 0xB0, 0x00, 0x00, 0xFF);
+                gDPSetBlendColor(gSYProgDLHeads[0]++, 0x00, 0x00, 0x00, 0x00);
             }
             if (it_hit->update_state == nGMHitUpdateInterpolate)
             {
-                syMatrixStoreGbi(mtx_store, gSYTaskGraphicsHeap);
+                syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
 
                 syMatrixTranslate(mtx_store.gbi, it_hit->hit_positions[i].pos_prev.x, it_hit->hit_positions[i].pos_prev.y, it_hit->hit_positions[i].pos_prev.z);
 
-                gSPMatrix(gSYTaskDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                gSPMatrix(gSYProgDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                syMatrixStoreGbi(mtx_store, gSYTaskGraphicsHeap);
+                syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
 
                 syMatrixSca(mtx_store.gbi, it_hit->size / 15.0F, it_hit->size / 15.0F, it_hit->size / 15.0F);
 
-                gSPMatrix(gSYTaskDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-                gSPDisplayList(gSYTaskDLHeads[0]++, dFTRenderMainHitCollisionEdgeDL);
-                gSPPopMatrix(gSYTaskDLHeads[0]++, G_MTX_MODELVIEW);
+                gSPMatrix(gSYProgDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                gSPDisplayList(gSYProgDLHeads[0]++, dFTRenderMainHitCollisionEdgeDL);
+                gSPPopMatrix(gSYProgDLHeads[0]++, G_MTX_MODELVIEW);
             }
-            syMatrixStoreGbi(mtx_store, gSYTaskGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
 
             syMatrixTranslate(mtx_store.gbi, it_hit->hit_positions[i].pos.x, it_hit->hit_positions[i].pos.y, it_hit->hit_positions[i].pos.z);
 
-            gSPMatrix(gSYTaskDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gSYProgDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            syMatrixStoreGbi(mtx_store, gSYTaskGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
 
             syMatrixSca(mtx_store.gbi, it_hit->size / 15.0F, it_hit->size / 15.0F, it_hit->size / 15.0F);
 
-            gSPMatrix(gSYTaskDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gSYProgDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
             if (it_hit->update_state == nGMHitUpdateInterpolate)
             {
-                gSPDisplayList(gSYTaskDLHeads[0]++, dFTRenderMainHitCollisionBlendDL);
+                gSPDisplayList(gSYProgDLHeads[0]++, dFTRenderMainHitCollisionBlendDL);
             }
-            gSPDisplayList(gSYTaskDLHeads[0]++, dFTRenderMainHitCollisionCubeDL);
-            gSPPopMatrix(gSYTaskDLHeads[0]++, G_MTX_MODELVIEW);
+            gSPDisplayList(gSYProgDLHeads[0]++, dFTRenderMainHitCollisionCubeDL);
+            gSPPopMatrix(gSYProgDLHeads[0]++, G_MTX_MODELVIEW);
         }
     }
     it_hurt = &ip->item_hurt;
@@ -84,38 +84,38 @@ void itDisplayHitCollisions(GObj *item_gobj)
     {
         translate = &DObjGetStruct(item_gobj)->translate.vec.f;
 
-        syMatrixStoreGbi(mtx_store, gSYTaskGraphicsHeap);
+        syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
 
         syMatrixTranslate(mtx_store.gbi, it_hurt->offset.x + translate->x, it_hurt->offset.y + translate->y, it_hurt->offset.z + translate->z);
 
-        gSPMatrix(gSYTaskDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+        gSPMatrix(gSYProgDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-        syMatrixStoreGbi(mtx_store, gSYTaskGraphicsHeap);
+        syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
 
         syMatrixSca(mtx_store.gbi, it_hurt->size.x / 15.0F, it_hurt->size.y / 15.0F, it_hurt->size.z / 15.0F);
 
-        gSPMatrix(gSYTaskDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-        gDPPipeSync(gSYTaskDLHeads[0]++);
+        gSPMatrix(gSYProgDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+        gDPPipeSync(gSYProgDLHeads[0]++);
 
         switch (it_hurt->hitstatus)
         {
         case nGMHitStatusNormal:
-            gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-            gDPSetEnvColor(gSYTaskDLHeads[0]++, 0xD0, 0xD0, 0x00, 0xFF);
+            gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+            gDPSetEnvColor(gSYProgDLHeads[0]++, 0xD0, 0xD0, 0x00, 0xFF);
             break;
 
         case nGMHitStatusInvincible:
-            gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-            gDPSetEnvColor(gSYTaskDLHeads[0]++, 0x00, 0xD0, 0x00, 0xFF);
+            gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+            gDPSetEnvColor(gSYProgDLHeads[0]++, 0x00, 0xD0, 0x00, 0xFF);
             break;
 
         case nGMHitStatusIntangible:
-            gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-            gDPSetEnvColor(gSYTaskDLHeads[0]++, 0x00, 0x00, 0xD0, 0xFF);
+            gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+            gDPSetEnvColor(gSYProgDLHeads[0]++, 0x00, 0x00, 0xD0, 0xFF);
             break;
         }
-        gSPDisplayList(gSYTaskDLHeads[0]++, dFTRenderMainHurtCollisionCuboidDL);
-        gSPPopMatrix(gSYTaskDLHeads[0]++, G_MTX_MODELVIEW);
+        gSPDisplayList(gSYProgDLHeads[0]++, dFTRenderMainHurtCollisionCuboidDL);
+        gSPPopMatrix(gSYProgDLHeads[0]++, G_MTX_MODELVIEW);
     }
 }
 
@@ -127,35 +127,35 @@ void itDisplayMapCollisions(GObj *item_gobj)
     mpObjectColl *objcoll = &ip->coll_data.objcoll;
     gsMtxStore mtx_store;
 
-    gDPPipeSync(gSYTaskDLHeads[1]++);
+    gDPPipeSync(gSYProgDLHeads[1]++);
 
-    syMatrixStoreGbi(mtx_store, gSYTaskGraphicsHeap);
+    syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
 
     syMatrixTranslate(mtx_store.gbi, translate->x, translate->y + objcoll->bottom, translate->z);
 
-    gSPMatrix(gSYTaskDLHeads[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gSYProgDLHeads[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    syMatrixStoreGbi(mtx_store, gSYTaskGraphicsHeap);
+    syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
 
     syMatrixSca(mtx_store.gbi, objcoll->width / 30.0F, (objcoll->center - objcoll->bottom) / 30.0F, 1.0F);
 
-    gSPMatrix(gSYTaskDLHeads[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-    gSPDisplayList(gSYTaskDLHeads[1]++, dFTRenderMainMapCollisionBottomDL);
-    gSPPopMatrix(gSYTaskDLHeads[1]++, G_MTX_MODELVIEW);
+    gSPMatrix(gSYProgDLHeads[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPDisplayList(gSYProgDLHeads[1]++, dFTRenderMainMapCollisionBottomDL);
+    gSPPopMatrix(gSYProgDLHeads[1]++, G_MTX_MODELVIEW);
 
-    syMatrixStoreGbi(mtx_store, gSYTaskGraphicsHeap);
+    syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
 
     syMatrixTranslate(mtx_store.gbi, translate->x, translate->y + objcoll->center, translate->z);
 
-    gSPMatrix(gSYTaskDLHeads[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPMatrix(gSYProgDLHeads[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    syMatrixStoreGbi(mtx_store, gSYTaskGraphicsHeap);
+    syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
 
     syMatrixSca(mtx_store.gbi, objcoll->width / 30.0F, (objcoll->top - objcoll->center) / 30.0F, 1.0F);
 
-    gSPMatrix(gSYTaskDLHeads[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-    gSPDisplayList(gSYTaskDLHeads[1]++, dFTRenderMainMapCollisionTopDL);
-    gSPPopMatrix(gSYTaskDLHeads[1]++, G_MTX_MODELVIEW);
+    gSPMatrix(gSYProgDLHeads[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPDisplayList(gSYProgDLHeads[1]++, dFTRenderMainMapCollisionTopDL);
+    gSPPopMatrix(gSYProgDLHeads[1]++, G_MTX_MODELVIEW);
 }
 
 // 0x80171C10
@@ -238,21 +238,21 @@ void itDisplayColAnimOPA(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    gDPPipeSync(gSYTaskDLHeads[0]++);
-    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_2CYCLE);
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_PASS, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYProgDLHeads[0]++);
+    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_2CYCLE);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_PASS, G_RM_AA_ZB_OPA_SURF2);
 
     if (ip->colanim.is_use_maincolor)
     {
-        gDPSetEnvColor(gSYTaskDLHeads[0]++, ip->colanim.maincolor.r, ip->colanim.maincolor.g, ip->colanim.maincolor.b, ip->colanim.maincolor.a);
+        gDPSetEnvColor(gSYProgDLHeads[0]++, ip->colanim.maincolor.r, ip->colanim.maincolor.g, ip->colanim.maincolor.b, ip->colanim.maincolor.a);
     }
-    else gDPSetEnvColor(gSYTaskDLHeads[0]++, 0x00, 0x00, 0x00, 0x00);
+    else gDPSetEnvColor(gSYProgDLHeads[0]++, 0x00, 0x00, 0x00, 0x00);
     
     gcDrawDObjTreeForGObj(item_gobj);
 
-    gDPPipeSync(gSYTaskDLHeads[0]++);
-    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYProgDLHeads[0]++);
+    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80171F4C
@@ -284,31 +284,31 @@ void itDisplayColAnimXLU(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    gDPPipeSync(gSYTaskDLHeads[0]++);
-    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_2CYCLE);
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_PASS, G_RM_AA_ZB_OPA_SURF2);
-    gDPPipeSync(gSYTaskDLHeads[1]++);
-    gDPSetCycleType(gSYTaskDLHeads[1]++, G_CYC_2CYCLE);
-    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_PASS, G_RM_AA_ZB_XLU_SURF2);
+    gDPPipeSync(gSYProgDLHeads[0]++);
+    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_2CYCLE);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_PASS, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYProgDLHeads[1]++);
+    gDPSetCycleType(gSYProgDLHeads[1]++, G_CYC_2CYCLE);
+    gDPSetRenderMode(gSYProgDLHeads[1]++, G_RM_PASS, G_RM_AA_ZB_XLU_SURF2);
 
     if (ip->colanim.is_use_maincolor)
     {
-        gDPSetEnvColor(gSYTaskDLHeads[0]++, ip->colanim.maincolor.r, ip->colanim.maincolor.g, ip->colanim.maincolor.b, ip->colanim.maincolor.a);
-        gDPSetEnvColor(gSYTaskDLHeads[1]++, ip->colanim.maincolor.r, ip->colanim.maincolor.g, ip->colanim.maincolor.b, ip->colanim.maincolor.a);
+        gDPSetEnvColor(gSYProgDLHeads[0]++, ip->colanim.maincolor.r, ip->colanim.maincolor.g, ip->colanim.maincolor.b, ip->colanim.maincolor.a);
+        gDPSetEnvColor(gSYProgDLHeads[1]++, ip->colanim.maincolor.r, ip->colanim.maincolor.g, ip->colanim.maincolor.b, ip->colanim.maincolor.a);
     }
     else
     {
-        gDPSetEnvColor(gSYTaskDLHeads[0]++, 0x00, 0x00, 0x00, 0x00);
-        gDPSetEnvColor(gSYTaskDLHeads[1]++, 0x00, 0x00, 0x00, 0x00);
+        gDPSetEnvColor(gSYProgDLHeads[0]++, 0x00, 0x00, 0x00, 0x00);
+        gDPSetEnvColor(gSYProgDLHeads[1]++, 0x00, 0x00, 0x00, 0x00);
     }
     gcDrawDObjTreeDLLinksForGObj(item_gobj);
 
-    gDPPipeSync(gSYTaskDLHeads[0]++);
-    gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPPipeSync(gSYTaskDLHeads[1]++);
-    gDPSetCycleType(gSYTaskDLHeads[1]++, G_CYC_1CYCLE);
-    gDPSetRenderMode(gSYTaskDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPPipeSync(gSYProgDLHeads[0]++);
+    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYProgDLHeads[1]++);
+    gDPSetCycleType(gSYProgDLHeads[1]++, G_CYC_1CYCLE);
+    gDPSetRenderMode(gSYProgDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 }
 
 // 0x8017224C

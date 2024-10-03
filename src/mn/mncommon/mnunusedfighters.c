@@ -156,7 +156,7 @@ void mnUnusedFightersProcRun(GObj *gobj)
         gSceneData.scene_previous = gSceneData.scene_current;
         gSceneData.scene_current = nSCKindTitle;
 
-        syTaskSetLoadScene();
+        syProgSetLoadScene();
     }
     if (gSysController.button_tap & Z_TRIG)
     {
@@ -187,7 +187,7 @@ void mnUnusedFightersProcStart(void)
         dMNUnusedFightersFileIDs,
         ARRAY_COUNT(dMNUnusedFightersFileIDs),
         sMNUnusedFightersFiles,
-        syTaskMalloc
+        syProgMalloc
         (
             lbRelocGetAllocSize
             (
@@ -572,5 +572,5 @@ void mnUnusedFightersStartScene(void)
     func_80007024(&dMNUnusedFightersDisplaySetup);
 
     dMNUnusedFightersGtlSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl16_BSS_END);
-    gsGTLSceneInit(&dMNUnusedFightersGtlSetup);
+    syProgInit(&dMNUnusedFightersGtlSetup);
 }

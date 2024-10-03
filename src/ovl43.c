@@ -111,7 +111,7 @@ void mvOpeningKirbyLoadFiles()
 	rldmSetup.force_status_buffer = D_ovl43_8018E408;
 	rldmSetup.force_status_buffer_size = ARRAY_COUNT(D_ovl43_8018E408);
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl43_8018E0F4, ARRAY_COUNT(D_ovl43_8018E0F4), gMvOpeningKirbyFilesArray, syTaskMalloc(lbRelocGetAllocSize(D_ovl43_8018E0F4, ARRAY_COUNT(D_ovl43_8018E0F4)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl43_8018E0F4, ARRAY_COUNT(D_ovl43_8018E0F4), gMvOpeningKirbyFilesArray, syProgMalloc(lbRelocGetAllocSize(D_ovl43_8018E0F4, ARRAY_COUNT(D_ovl43_8018E0F4)), 0x10));
 }
 
 // 8018D160
@@ -278,14 +278,14 @@ void mvOpeningKirbyInitFighterStagePanel()
 // 8018D870
 void mvOpeningKirbyRenderPosedFighterBackground(GObj *gobj)
 {
-	gDPPipeSync(gSYTaskDLHeads[0]++);
-	gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 80, 170, 255, 255);
-	gDPSetCombineLERP(gSYTaskDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-	gDPFillRectangle(gSYTaskDLHeads[0]++, 210, 10, 310, 230);
-	gDPPipeSync(gSYTaskDLHeads[0]++);
-	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYProgDLHeads[0]++);
+	gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 80, 170, 255, 255);
+	gDPSetCombineLERP(gSYProgDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+	gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPFillRectangle(gSYProgDLHeads[0]++, 210, 10, 310, 230);
+	gDPPipeSync(gSYProgDLHeads[0]++);
+	gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 8018D970
@@ -386,7 +386,7 @@ void mvOpeningKirbyMainProc(GObj* arg0)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 1U;
-		syTaskSetLoadScene();
+		syProgSetLoadScene();
 	}
 
 	if (gMvOpeningKirbyFramesElapsed == 15)
@@ -401,7 +401,7 @@ void mvOpeningKirbyMainProc(GObj* arg0)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 0x21;
-		syTaskSetLoadScene();
+		syProgSetLoadScene();
 	}
 }
 
@@ -440,7 +440,7 @@ void mvOpeningKirbyInit()
 	efManagerInitEffects();
 	ftManagerSetupFilesAllKind(nFTKindKirby);
 
-	gMvOpeningKirbyAnimHeap = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMvOpeningKirbyAnimHeap = syProgMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningKirbyCreateNameViewport();
 	mvOpeningKirbyCreatePosedFighterBackgroundViewport();
 	mvOpeningKirbyCreatePosedFighterViewport();
@@ -490,5 +490,5 @@ void intro_focus_kirby_entry()
 	D_ovl43_8018E13C.zbuffer = syDisplayGetZBuffer(6400);
 	func_80007024(&D_ovl43_8018E13C);
 	D_ovl43_8018E158.arena_size = (u32) ((uintptr_t)&lOverlay43ArenaHi - (uintptr_t)&lOverlay43ArenaLo);
-	gsGTLSceneInit(&D_ovl43_8018E158);
+	syProgInit(&D_ovl43_8018E158);
 }

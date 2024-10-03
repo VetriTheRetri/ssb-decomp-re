@@ -520,7 +520,7 @@ struct _OMSetup
     GObjThread *gobjthreads;
     s32 gobjthreads_num;
 
-    size_t thread_stack_size;
+    size_t threadstack_size;
     OMThreadStackNode *threadstacks;
     u32 num_stacks;
 

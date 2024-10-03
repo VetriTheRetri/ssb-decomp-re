@@ -186,7 +186,7 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
 
     heap_size = 0;
 
-    sFTManagerStructsAllocBuf = sFTManagerStructsAllocFree = syTaskMalloc(sizeof(ftStruct) * allocs_num, 0x8);
+    sFTManagerStructsAllocBuf = sFTManagerStructsAllocFree = syProgMalloc(sizeof(ftStruct) * allocs_num, 0x8);
 
     bzero(sFTManagerStructsAllocBuf, sizeof(ftStruct) * allocs_num);
 
@@ -196,7 +196,7 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
     }
     sFTManagerStructsAllocBuf[i].alloc_next = NULL;
 
-    sFTManagerPartsAllocFree = sFTManagerPartsAllocBuf = syTaskMalloc(sizeof(ftParts) * allocs_num * FTPARTS_JOINT_NUM_MAX, 0x8);
+    sFTManagerPartsAllocFree = sFTManagerPartsAllocBuf = syProgMalloc(sizeof(ftParts) * allocs_num * FTPARTS_JOINT_NUM_MAX, 0x8);
 
     for (i = 0; i < ((allocs_num * FTPARTS_JOINT_NUM_MAX) - 1); i++)
     {
@@ -208,9 +208,9 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
     gFTManagerMotionCount = 1;
     gFTManagerStatUpdateCount = 1;
 
-    gFTManagerCommonFile = lbRelocGetFileExternHeap((u32)&D_NF_000000A3, syTaskMalloc(lbRelocGetFileSize((u32)&D_NF_000000A3), 0x10));
+    gFTManagerCommonFile = lbRelocGetFileExternHeap((u32)&D_NF_000000A3, syProgMalloc(lbRelocGetFileSize((u32)&D_NF_000000A3), 0x10));
 
-    lbRelocGetFileExternHeap((u32)&D_NF_000000C9, syTaskMalloc(lbRelocGetFileSize((u32)&D_NF_000000C9), 0x10));
+    lbRelocGetFileExternHeap((u32)&D_NF_000000C9, syProgMalloc(lbRelocGetFileSize((u32)&D_NF_000000C9), 0x10));
 
     for (i = 0; i < (ARRAY_COUNT(dFTManagerDataFiles) + ARRAY_COUNT(D_800A50F8)) / 2; i++)
     {
@@ -327,7 +327,7 @@ void ftManagerSetupFilesMainKind(s32 ft_kind)
 {
     ftData *ft_data = dFTManagerDataFiles[ft_kind];
 
-    *ft_data->p_file_main = lbRelocGetFileExternHeap(ft_data->file_main_id, syTaskMalloc(lbRelocGetFileSize(ft_data->file_main_id), 0x10));
+    *ft_data->p_file_main = lbRelocGetFileExternHeap(ft_data->file_main_id, syProgMalloc(lbRelocGetFileSize(ft_data->file_main_id), 0x10));
 
     if (ft_data->particles_script_lo != 0)
     {
@@ -410,7 +410,7 @@ void* ftManagerAllocAnimHeapKind(s32 ft_kind)
 {
     ftData *ft_data = dFTManagerDataFiles[ft_kind];
 
-    return syTaskMalloc(ft_data->file_anim_size, 0x10);
+    return syProgMalloc(ft_data->file_anim_size, 0x10);
 }
 
 // 0x800D78E8

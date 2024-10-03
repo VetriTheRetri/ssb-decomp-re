@@ -2,7 +2,7 @@
 
 #include <sys/objtypes.h>
 #include <sys/error.h>
-#include <sys/task.h>
+#include <sys/prog.h>
 #include <sys/objdraw.h>
 #include <sys/rdp_reset.h>
 #include <stddef.h>
@@ -107,7 +107,7 @@ GObjThread* gcGetGObjThread()
 
 	if (sOMObjThreadHead == NULL)
 	{
-		sOMObjThreadHead = syTaskMalloc(sizeof(GObjThread), 0x8);
+		sOMObjThreadHead = syProgMalloc(sizeof(GObjThread), 0x8);
 		sOMObjThreadHead->next = NULL;
 	}
 
@@ -152,7 +152,7 @@ OMThreadStackNode* gcGetStackOfSize(size_t size)
 
 	if (curr == NULL)
 	{
-		curr = syTaskMalloc(sizeof(OMThreadStackList), 0x4);
+		curr = syProgMalloc(sizeof(OMThreadStackList), 0x4);
 		curr->next = NULL;
 		curr->stack = NULL;
 		curr->size = size;
@@ -170,7 +170,7 @@ OMThreadStackNode* gcGetStackOfSize(size_t size)
 	}
 	else
 	{
-		ret = syTaskMalloc(size + offsetof(OMThreadStackNode, stack), 0x8);
+		ret = syProgMalloc(size + offsetof(OMThreadStackNode, stack), 0x8);
 		ret->stack_size = size;
 	}
 
@@ -211,7 +211,7 @@ GObjProcess* gcGetGObjProcess()
 
 	if (sOMObjProcessHead == NULL)
 	{
-		sOMObjProcessHead = syTaskMalloc(sizeof(GObjProcess), 4);
+		sOMObjProcessHead = syProgMalloc(sizeof(GObjProcess), 4);
 		sOMObjProcessHead->link_next = NULL;
 	}
 
@@ -371,7 +371,7 @@ GObj* gcGetGObjSetNextAlloc()
 
 		if (gobj == NULL)
 		{
-			sOMObjCommonHead = syTaskMalloc(sOMObjCommonSize, 0x8);
+			sOMObjCommonHead = syProgMalloc(sOMObjCommonSize, 0x8);
 			sOMObjCommonHead->link_next = NULL;
 			gobj = sOMObjCommonHead;
 		}
@@ -525,7 +525,7 @@ OMMtx* gcGetOMMtxSetNextAlloc()
 
 	if (sOMMtxHead == NULL)
 	{
-		sOMMtxHead = syTaskMalloc(sizeof(OMMtx), 0x8);
+		sOMMtxHead = syProgMalloc(sizeof(OMMtx), 0x8);
 		sOMMtxHead->next = NULL;
 	}
 
@@ -557,7 +557,7 @@ AObj* gcGetAObjSetNextAlloc()
 
 	if (sOMAObjHead == NULL)
 	{
-		sOMAObjHead = syTaskMalloc(sizeof(AObj), 0x4);
+		sOMAObjHead = syProgMalloc(sizeof(AObj), 0x4);
 
 		sOMAObjHead->next = NULL;
 	}
@@ -610,7 +610,7 @@ MObj* gcGetMObjSetNextAlloc()
 
 	if (sOMMObjHead == NULL)
 	{
-		sOMMObjHead = syTaskMalloc(sizeof(MObj), 0x4);
+		sOMMObjHead = syProgMalloc(sizeof(MObj), 0x4);
 		sOMMObjHead->next = NULL;
 	}
 
@@ -642,7 +642,7 @@ DObj* gcGetDObjSetNextAlloc()
 
 	if (sOMDObjHead == NULL)
 	{
-		sOMDObjHead = syTaskMalloc(sOMDObjSize, 0x8);
+		sOMDObjHead = syProgMalloc(sOMDObjSize, 0x8);
 
 		sOMDObjHead->alloc_free = NULL;
 	}
@@ -675,7 +675,7 @@ SObj* gcGetSObjSetNextAlloc()
 
 	if (sOMSObjHead == NULL)
 	{
-		sOMSObjHead = syTaskMalloc(sOMSObjSize, 0x8);
+		sOMSObjHead = syProgMalloc(sOMSObjSize, 0x8);
 		sOMSObjHead->alloc_free = NULL;
 	}
 
@@ -707,7 +707,7 @@ Camera* gcGetCameraSetNextAlloc()
 
 	if (sOMCameraHead == NULL)
 	{
-		sOMCameraHead = syTaskMalloc(sOMCameraSize, 0x8);
+		sOMCameraHead = syProgMalloc(sOMCameraSize, 0x8);
 		sOMCameraHead->next = NULL;
 	}
 
@@ -1808,7 +1808,7 @@ void gcLinkGObjDLCommon(GObj* gobj, void (*proc_display)(GObj*), u8 dl_link, u32
 	gobj->dl_link_order = dl_order;
 	gobj->proc_display = proc_display;
 	gobj->cam_tag = cam_tag;
-	gobj->frame_draw_last = dSYGtlFrameDrawCount - 1;
+	gobj->frame_draw_last = dSYProgFrameDrawCount - 1;
 }
 
 // 80009DF4
@@ -1861,7 +1861,7 @@ void func_80009F28(GObj* gobj, void (*proc_display)(GObj*), u32 order, u64 arg3,
 	gobj->cam_mask = arg3;
 	gobj->cam_tag = cam_tag;
 	gobj->unk_gobj_0x40 = 0;
-	gobj->frame_draw_last = dSYGtlFrameDrawCount - 1;
+	gobj->frame_draw_last = dSYProgFrameDrawCount - 1;
 }
 
 // 80009F74
@@ -1999,7 +1999,7 @@ void func_8000A340()
 	gOMObjCurrentCamera = NULL;
 	gOMObjCurrentDisplay = NULL;
 
-	for (i = 0, v1 = dSYGtlFrameDrawCount - 1; i < ARRAY_COUNT(D_80046A88); i++)
+	for (i = 0, v1 = dSYProgFrameDrawCount - 1; i < ARRAY_COUNT(D_80046A88); i++)
 		D_80046A88[i].id = v1;
 
 	gobj = gOMObjCommonDLLinks[ARRAY_COUNT(gOMObjCommonDLLinks) - 1];
@@ -2136,7 +2136,7 @@ void gcSetupObjectManager(OMSetup* setup)
 {
 	s32 i;
 
-	sOMThreadStackSize = setup->thread_stack_size;
+	sOMThreadStackSize = setup->threadstack_size;
 	sUnkUnusedSetup = setup->unk_omsetup_0x14;
 
 	if (setup->gobjthreads_num != 0)
@@ -2156,11 +2156,11 @@ void gcSetupObjectManager(OMSetup* setup)
 	else
 		sOMObjThreadHead = NULL;
 
-	if ((setup->num_stacks != 0) && (setup->thread_stack_size != 0))
+	if ((setup->num_stacks != 0) && (setup->threadstack_size != 0))
 	{
 		OMThreadStackNode* current_stack;
 
-		sOMThreadStackHead = syTaskMalloc(sizeof(OMThreadStackList), 0x4);
+		sOMThreadStackHead = syProgMalloc(sizeof(OMThreadStackList), 0x4);
 		sOMThreadStackHead->next = NULL;
 		sOMThreadStackHead->size = sOMThreadStackSize;
 		sOMThreadStackHead->stack = current_stack = setup->threadstacks;

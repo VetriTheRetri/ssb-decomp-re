@@ -39,7 +39,7 @@ void scAutoDemoSetupFiles(void)
 		dGMCommonFileIDs,
 		ARRAY_COUNT(dGMCommonFileIDs),
 		gGMCommonFiles,
-		syTaskMalloc
+		syProgMalloc
 		(
 			lbRelocGetAllocSize
 			(

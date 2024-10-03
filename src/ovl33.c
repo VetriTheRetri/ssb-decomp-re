@@ -1899,7 +1899,7 @@ void mnCharsHandleInput()
 		gSceneData.scene_current = nSCKindData;
 
 		mnCharsSaveFtKindToSRAM();
-		syTaskSetLoadScene();
+		syProgSetLoadScene();
 	}
 
 	z_held_port = scSubsysControllerGetPlayerHoldButtons(Z_TRIG);
@@ -2005,7 +2005,7 @@ void mnCharsHandleInputDemoMode()
 		gSceneData.scene_current = nSCKindTitle;
 		gSceneData.wait_longer_to_show_demo = TRUE;
 
-		syTaskSetLoadScene();
+		syProgSetLoadScene();
 	}
 
 	if (gMNCharsFramesElapsed == 300)
@@ -2019,7 +2019,7 @@ void mnCharsHandleInputDemoMode()
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = nSCKindAutoDemo;
 
-		syTaskSetLoadScene();
+		syProgSetLoadScene();
 	}
 }
 
@@ -2065,7 +2065,7 @@ void mnCharsInit()
 	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl33_80136A40;
 	rldmSetup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228), gMNCharsFilesArray, syTaskMalloc(lbRelocGetAllocSize(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228)), 0x10U));
+	lbRelocLoadFilesExtern(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228), gMNCharsFilesArray, syProgMalloc(lbRelocGetAllocSize(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228)), 0x10U));
 
 	gcMakeGObjSPAfter(0, mnCharsMain, 0, 0x80000000);
 	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
@@ -2077,7 +2077,7 @@ void mnCharsInit()
 	for (i = 0; i < 12; i++)
 		ftManagerSetupFilesAllKind(i);
 
-	gMNCharsAnimHeap = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMNCharsAnimHeap = syProgMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	mnCharsCreateBioViewport();
 	mnCharsCreateHeaderViewport();
 	mnCharsCreateSeriesLogoViewport();

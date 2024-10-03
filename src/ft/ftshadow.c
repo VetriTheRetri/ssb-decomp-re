@@ -9,7 +9,7 @@
 
 extern intptr_t lFTShadowTextureImage;          // 0x00003A68
 
-extern s32 gSYTaskID;
+extern s32 gSYProgID;
 
 // // // // // // // // // // // //
 //                               //
@@ -91,10 +91,10 @@ void ftShadowProcDisplay(GObj *shadow_gobj)
 
     if (shadow_gobj->dl_link_prev == NULL)
     {
-        gSPDisplayList(gSYTaskDLHeads[0]++, dFTShadowNoPrevLinkDL);
+        gSPDisplayList(gSYProgDLHeads[0]++, dFTShadowNoPrevLinkDL);
 
         // Linker thing here
-        gDPLoadTextureBlock_4b(gSYTaskDLHeads[0]++, ((uintptr_t)sEFManagerTexturesFile2 + (intptr_t)&lFTShadowTextureImage), G_IM_FMT_I, 16, 16, 0, G_TX_MIRROR | G_TX_WRAP, G_TX_MIRROR | G_TX_WRAP, 4, 4, G_TX_NOLOD, G_TX_NOLOD);
+        gDPLoadTextureBlock_4b(gSYProgDLHeads[0]++, ((uintptr_t)sEFManagerTexturesFile2 + (intptr_t)&lFTShadowTextureImage), G_IM_FMT_I, 16, 16, 0, G_TX_MIRROR | G_TX_WRAP, G_TX_MIRROR | G_TX_WRAP, 4, 4, G_TX_NOLOD, G_TX_NOLOD);
     }
     fs = (ftShadow*)shadow_gobj->user_data.p;
 
@@ -292,19 +292,19 @@ void ftShadowProcDisplay(GObj *shadow_gobj)
 
                 if (gfx_vertex_num != 0)
                 {
-                    if (gSYTaskID != 0)
+                    if (gSYProgID != 0)
                     {
                         shadow_vertex = &fs->shadow_vertex2[0];
                     }
                     else shadow_vertex = &fs->shadow_vertex1[0];
 
-                    gDPPipeSync(gSYTaskDLHeads[0]++);
+                    gDPPipeSync(gSYProgDLHeads[0]++);
 
                     if ((gBattleState->is_team_battle == TRUE) && !(gBattleState->is_not_teamshadows))
                     {
-                        gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, dFTCommonDataShadowColorTeams[fp->team].r, dFTCommonDataShadowColorTeams[fp->team].g, dFTCommonDataShadowColorTeams[fp->team].b, dFTCommonDataShadowColorTeams[fp->team].a);
+                        gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, dFTCommonDataShadowColorTeams[fp->team].r, dFTCommonDataShadowColorTeams[fp->team].g, dFTCommonDataShadowColorTeams[fp->team].b, dFTCommonDataShadowColorTeams[fp->team].a);
                     }
-                    else gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, dFTCommonDataShadowColorDefault.r, dFTCommonDataShadowColorDefault.g, dFTCommonDataShadowColorDefault.b, dFTCommonDataShadowColorDefault.a);
+                    else gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, dFTCommonDataShadowColorDefault.r, dFTCommonDataShadowColorDefault.g, dFTCommonDataShadowColorDefault.b, dFTCommonDataShadowColorDefault.a);
 
                     sv = shadow_vertex;
 
@@ -392,32 +392,32 @@ void ftShadowProcDisplay(GObj *shadow_gobj)
                             sv->n.tc[0] = 1984;
                             sv->n.tc[1] = spEC;
 
-                            gSPVertex(gSYTaskDLHeads[0]++, shadow_vertex, 8, 0);
+                            gSPVertex(gSYProgDLHeads[0]++, shadow_vertex, 8, 0);
 
                             if (edge_left_or_right != 0)
                             {
-                                gSP2Triangles(gSYTaskDLHeads[0]++, 1, 0, 7, 0, 0, 6, 7, 0);
-                                gSP2Triangles(gSYTaskDLHeads[0]++, 7, 6, 5, 0, 6, 4, 5, 0);
-                                gSP2Triangles(gSYTaskDLHeads[0]++, 5, 4, 3, 0, 4, 2, 3, 0);
+                                gSP2Triangles(gSYProgDLHeads[0]++, 1, 0, 7, 0, 0, 6, 7, 0);
+                                gSP2Triangles(gSYProgDLHeads[0]++, 7, 6, 5, 0, 6, 4, 5, 0);
+                                gSP2Triangles(gSYProgDLHeads[0]++, 5, 4, 3, 0, 4, 2, 3, 0);
                             }
                             else
                             {
-                                gSP2Triangles(gSYTaskDLHeads[0]++, 1, 0, 5, 0, 0, 4, 5, 0);
-                                gSP2Triangles(gSYTaskDLHeads[0]++, 5, 4, 7, 0, 4, 6, 7, 0);
-                                gSP2Triangles(gSYTaskDLHeads[0]++, 7, 6, 3, 0, 6, 2, 3, 0);
+                                gSP2Triangles(gSYProgDLHeads[0]++, 1, 0, 5, 0, 0, 4, 5, 0);
+                                gSP2Triangles(gSYProgDLHeads[0]++, 5, 4, 7, 0, 4, 6, 7, 0);
+                                gSP2Triangles(gSYProgDLHeads[0]++, 7, 6, 3, 0, 6, 2, 3, 0);
                             }
                         }
                         else
                         {
-                            gSPVertex(gSYTaskDLHeads[0]++, shadow_vertex, 6, 0);
-                            gSP2Triangles(gSYTaskDLHeads[0]++, 1, 0, 5, 0, 0, 4, 5, 0);
-                            gSP2Triangles(gSYTaskDLHeads[0]++, 5, 4, 3, 0, 4, 2, 3, 0);
+                            gSPVertex(gSYProgDLHeads[0]++, shadow_vertex, 6, 0);
+                            gSP2Triangles(gSYProgDLHeads[0]++, 1, 0, 5, 0, 0, 4, 5, 0);
+                            gSP2Triangles(gSYProgDLHeads[0]++, 5, 4, 3, 0, 4, 2, 3, 0);
                         }
                     }
                     else
                     {
-                        gSPVertex(gSYTaskDLHeads[0]++, shadow_vertex, 4, 0);
-                        gSP2Triangles(gSYTaskDLHeads[0]++, 1, 0, 3, 0, 0, 2, 3, 0);
+                        gSPVertex(gSYProgDLHeads[0]++, shadow_vertex, 4, 0);
+                        gSP2Triangles(gSYProgDLHeads[0]++, 1, 0, 3, 0, 0, 2, 3, 0);
                     }
                 }
             }
@@ -425,7 +425,7 @@ void ftShadowProcDisplay(GObj *shadow_gobj)
     }
     if (shadow_gobj->dl_link_next == NULL)
     {
-        gSPDisplayList(gSYTaskDLHeads[0]++, dFTShadowNoNextLinkDL);
+        gSPDisplayList(gSYProgDLHeads[0]++, dFTShadowNoNextLinkDL);
     }
 }
 
@@ -434,7 +434,7 @@ GObj* ftShadowMakeShadow(GObj *fighter_gobj)
 {
     GObj *shadow_gobj = gcMakeGObjSPAfter(nOMObjCommonKindShadow, NULL, nOMObjCommonLinkIDShadow, GOBJ_LINKORDER_DEFAULT);
     ftStruct *fp;
-    ftShadow *fs = syTaskMalloc(sizeof(ftShadow), 0x8);
+    ftShadow *fs = syProgMalloc(sizeof(ftShadow), 0x8);
     s32 i;
 
     if (fs == NULL) 

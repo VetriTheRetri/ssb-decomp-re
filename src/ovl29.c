@@ -450,11 +450,11 @@ s32 mnBonusGetPortraitId(s32 ft_kind)
 // 80132430
 void mnBonusRenderPortraitWithNoise(GObj *portrait_gobj)
 {
-	gDPPipeSync(gSYTaskDLHeads[0]++);
-	gDPSetCycleType(gSYTaskDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTaskDLHeads[0]++, 0, 0, 0x30, 0x30, 0x30, 0xFF);
-	gDPSetCombineLERP(gSYTaskDLHeads[0]++, NOISE, TEXEL0, PRIMITIVE, TEXEL0, 0, 0, 0, TEXEL0, NOISE, TEXEL0, PRIMITIVE, TEXEL0,  0, 0, 0, TEXEL0);
-	gDPSetRenderMode(gSYTaskDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPPipeSync(gSYProgDLHeads[0]++);
+	gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0x30, 0x30, 0x30, 0xFF);
+	gDPSetCombineLERP(gSYProgDLHeads[0]++, NOISE, TEXEL0, PRIMITIVE, TEXEL0, 0, 0, 0, TEXEL0, NOISE, TEXEL0, PRIMITIVE, TEXEL0,  0, 0, 0, TEXEL0);
+	gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 	lbCommonDrawSObjNoAttr(portrait_gobj);
 }
 
@@ -1863,7 +1863,7 @@ void mnBonusGoBackTo1PMenu()
 	mnBonusSaveMatchInfo();
 	auStopBGM();
 	func_800266A0_272A0();
-	syTaskSetLoadScene();
+	syProgSetLoadScene();
 }
 
 // 801357AC
@@ -2381,7 +2381,7 @@ void mnBonusMain(s32 arg0)
 		gSceneData.scene_current = nSCKindTitle;
 
 		mnBonusSaveMatchInfo();
-		syTaskSetLoadScene();
+		syProgSetLoadScene();
 
 		return;
 	}
@@ -2403,7 +2403,7 @@ void mnBonusMain(s32 arg0)
 		gSceneData.scene_current = nSCKind1PBonusGame;
 
 		mnBonusSaveMatchInfo();
-		syTaskSetLoadScene();
+		syProgSetLoadScene();
 	}
 }
 
@@ -2496,7 +2496,7 @@ void mnBonusInitCSS()
 	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl29_80137A00;
 	rldmSetup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl29_80136F50, 11U, gMnBonusFilesArray, syTaskMalloc(lbRelocGetAllocSize(D_ovl29_80136F50, 11U), 0x10U));
+	lbRelocLoadFilesExtern(D_ovl29_80136F50, 11U, gMnBonusFilesArray, syProgMalloc(lbRelocGetAllocSize(D_ovl29_80136F50, 11U), 0x10U));
 
 	gcMakeGObjSPAfter(0x400U, mnBonusMain, 0xFU, 0x80000000U);
 	gcMakeDefaultCameraGObj(0x10, 0x80000000U, 0x64, 1, 0);
@@ -2507,7 +2507,7 @@ void mnBonusInitCSS()
 	for (i = 0; i < 12; i++)
 		ftManagerSetupFilesAllKind(i);
 
-	gMnBonusAnimHeap = syTaskMalloc(gFTManagerFigatreeHeapSize, 0x10U);
+	gMnBonusAnimHeap = syProgMalloc(gFTManagerFigatreeHeapSize, 0x10U);
 
 	mnBonusLoadMatchInfo();
 	mnBonusCreatePortraitViewport();
@@ -2571,5 +2571,5 @@ void bonus_css_entry()
 	D_ovl29_80137530.zbuffer = syDisplayGetZBuffer(6400);
 	func_80007024(&D_ovl29_80137530);
 	D_ovl29_8013754C.arena_size = (u32) ((uintptr_t)&lOverlay29ArenaHi - (uintptr_t)&lOverlay29ArenaLo);
-	gsGTLSceneInit(&D_ovl29_8013754C);
+	syProgInit(&D_ovl29_8013754C);
 }

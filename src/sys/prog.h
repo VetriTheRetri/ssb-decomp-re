@@ -7,14 +7,14 @@
 #include <PR/mbi.h>
 #include <PR/ultratypes.h>
 
-typedef struct syTaskDLBuffer
+typedef struct syProgDLBuffer
 {
 	/* 0x00 */ Gfx *start;
 	/* 0x04 */ u32 length;
 
-} syTaskDLBuffer; // size = 0x08
+} syProgDLBuffer; // size = 0x08
 
-typedef struct syTaskBufferSetup
+typedef struct syProgBufferSetup
 {
 	/* 0x00 */ u16 unk00;
 	/* 0x04 */ void (*fn04)(void);
@@ -33,11 +33,11 @@ typedef struct syTaskBufferSetup
 	/* 0x38 */ void (*proc_lights)(Gfx**); 	// Lighting callback?
 	/* 0x3C */ void (*proc_controller)(); // controller read callback?
 
-} syTaskBufferSetup; // size == 0x40
+} syProgBufferSetup; // size == 0x40
 
-typedef struct syTaskSetup
+typedef struct syProgSetup
 {
-	/* 0x00 */ syTaskBufferSetup setup;
+	/* 0x00 */ syProgBufferSetup setup;
 	/* 0x40 */ u32 gobjthreads_num;
 	/* 0x44 */ u32 threadstack_size;
 	/* 0x48 */ u32 threadstacks_num;
@@ -58,31 +58,31 @@ typedef struct syTaskSetup
 	/* 0x84 */ u32 camera_size;
 	/* 0x88 */ void (*proc_start)(void);	// Scene start function
 
-} syTaskSetup; // size >= 0x8C
+} syProgSetup; // size >= 0x8C
 
 extern u32 D_8003B6E4;
-extern s32 dSYGtlFrameDrawCount;
-extern Gfx *gSYTaskDLHeads[4];
-extern Gfx *sSYTaskDLBranches[4];
-extern syMallocRegion gSYTaskGraphicsHeap;
-extern syMallocRegion gSYTaskGeneralHeap;
+extern s32 dSYProgFrameDrawCount;
+extern Gfx *gSYProgDLHeads[4];
+extern Gfx *sSYProgDLBranches[4];
+extern syMallocRegion gSYProgGraphicsHeap;
+extern syMallocRegion gSYProgGeneralHeap;
 // Gfx *? Gfx
 extern u32 D_80046610;
 // Gfx *? Gfx
-extern u32 D_80046614;
+extern u32 sSYProgFrameDeltaTime;
 extern u16 D_80046626;
 extern u16 D_80046628;
-extern s32 gSYTaskID;
+extern s32 gSYProgID;
 
 extern void func_800048D0(SCTaskGfxCallback arg0);
 extern void func_800048F8(Gfx **dl);
-extern void *syTaskMalloc(u32 size, u32 alignment);
+extern void *syProgMalloc(u32 size, u32 alignment);
 extern void func_80004F78(void);
-extern void syTaskAppendGfxUcodeLoad(Gfx **dlist, u32 ucodeIdx);
+extern void syProgAppendGfxUcodeLoad(Gfx **dlist, u32 ucodeIdx);
 extern void func_800053CC(void);
 extern void func_800057C8(void);
-extern void syTaskSetLoadScene(void);
-extern void gsGTLSceneInit(syTaskSetup *arg);
+extern void syProgSetLoadScene(void);
+extern void syProgInit(syProgSetup *arg);
 extern void func_80006B80(void);
 
 #endif /* SYS_GTL_H */

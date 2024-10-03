@@ -61,7 +61,7 @@ typedef struct syProgSetup
 
 } syProgSetup; // size >= 0x8C
 
-extern u32 sSYProgFrameCount;
+extern u32 sSYProgUpdateCount;
 extern s32 dSYProgFrameDrawCount;
 extern Gfx *gSYProgDLHeads[4];
 extern Gfx *sSYProgDLBranches[4];

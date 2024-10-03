@@ -802,12 +802,12 @@ unref80045468 = 0x80045468;
 gSysController = 0x80045470; //size:0xA
 
 D_8003B6E0 = 0x8003B6E0;
-sSYProgFrameCount = 0x8003B6E4;
+sSYProgUpdateCount = 0x8003B6E4;
 dSYProgFrameDrawCount = 0x8003B6E8;
 D_8003B6EC = 0x8003B6EC;
 unref80045480 = 0x80045480;
 sSYProgGameTicMesgs = 0x80045490;
-sSYProgGameTicMesgQueues = 0x800454A0;
+sSYProgGameTicMesgQueue = 0x800454A0;
 sSYProgUpdateInterval = 0x800454B8;
 sSYProgFrameDrawInterval = 0x800454BA;
 D_800454BC = 0x800454BC;

@@ -910,13 +910,13 @@ void syErrorFileLoaderThread8(void *arg)
 
         if (dSYErrorIsScreenActive == FALSE)
         {
-            if (sp50 == sSYProgFrameCount)
+            if (sp50 == sSYProgUpdateCount)
             {
                 count++;
             }
             else count = 0;
 
-            sp50 = sSYProgFrameCount;
+            sp50 = sSYProgUpdateCount;
 
             if (count >= 300)
             {

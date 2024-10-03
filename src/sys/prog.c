@@ -47,11 +47,17 @@ typedef struct FnBundle
 
 } FnBundle; // size == 0x14 (D_800465F8)
 
-// data
+// // // // // // // // // // // //
+//                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8003B6E0
 s32 D_8003B6E0 = 0;
 
 // 0x8003B6E4
-u32 sSYProgFrameCount = 0;
+u32 sSYProgUpdateCount = 0;
 
 // 0x8003B6E8
 s32 dSYProgFrameDrawCount = 0;
@@ -79,15 +85,20 @@ gsUcode D_8003B6EC[/* */] =
 	EndUncodeInfoArray,
 };
 
-// bss
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
 
-UNUSED u8 unref80045480[0x10];
+// 0x80045480
+s32 sSYProgPad0x80045480[4];
 
 // 0x80045490
 OSMesg sSYProgGameTicMesgs[4];
 
 // 0x800454A0
-OSMesgQueue sSYProgGameTicMesgQueues;
+OSMesgQueue sSYProgGameTicMesgQueue;
 
 // 0x800454B8
 u16 sSYProgUpdateInterval;
@@ -142,8 +153,6 @@ SCTaskGfxEnd *sSYProgTaskGfxEndBuffer[2];
 
 // 0x80046568
 SCTaskVi *sSYProgTaskViBuffer[2];
-
-// is the collection of four `DLBuffer`s something worthy of a typedef?
 
 // 0x80046570
 syProgDLBuffer sSYProgDLBuffers[2][4];
@@ -221,6 +230,12 @@ void (*D_80046668)(void *); // takes function bundle struct?
 
 // 0x8004666C
 SCTaskCallback D_8004666C;  // function pointer?
+
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 800048D0
 void func_800048D0(SCTaskGfxCallback arg0)
@@ -956,7 +971,7 @@ void func_80005DA0(FnBundle *arg0)
 	{
 		continue;
 	}
-	while (osRecvMesg(&sSYProgGameTicMesgQueues, NULL, OS_MESG_NOBLOCK) != -1)
+	while (osRecvMesg(&sSYProgGameTicMesgQueue, NULL, OS_MESG_NOBLOCK) != -1)
 	{
 		continue;
 	}
@@ -978,9 +993,9 @@ void func_80005DA0(FnBundle *arg0)
 
 			for (i = 0; i < sSYProgUpdateInterval; i++)
 			{
-				osRecvMesg(&sSYProgGameTicMesgQueues, NULL, OS_MESG_BLOCK);
+				osRecvMesg(&sSYProgGameTicMesgQueue, NULL, OS_MESG_BLOCK);
 			}
-			while (osRecvMesg(&sSYProgGameTicMesgQueues, NULL, OS_MESG_NOBLOCK) != -1)
+			while (osRecvMesg(&sSYProgGameTicMesgQueue, NULL, OS_MESG_NOBLOCK) != -1)
 			{
 				continue;
 			}
@@ -988,7 +1003,7 @@ void func_80005DA0(FnBundle *arg0)
 
 			arg0->func_update(arg0);
 
-			sSYProgFrameCount++; // += 1
+			sSYProgUpdateCount++; // += 1
 
 			sSYProgUpdateDeltaTime = (osGetCount() - sSYProgTimeStart) / 2971; // what is this constant?
 
@@ -996,7 +1011,7 @@ void func_80005DA0(FnBundle *arg0)
 			{
 				break;
 			}
-			if (sSYProgFrameCount % sSYProgFrameDrawInterval == 0)
+			if (sSYProgUpdateCount % sSYProgFrameDrawInterval == 0)
 			{
 				syProgSwitchContext(0);
 				sSYProgTimeStart = osGetCount();
@@ -1023,9 +1038,9 @@ void func_80005DA0(FnBundle *arg0)
 
 			for (i = 0; i < sSYProgUpdateInterval; i++)
 			{
-				osRecvMesg(&sSYProgGameTicMesgQueues, NULL, OS_MESG_BLOCK);
+				osRecvMesg(&sSYProgGameTicMesgQueue, NULL, OS_MESG_BLOCK);
 			}
-			while (osRecvMesg(&sSYProgGameTicMesgQueues, NULL, OS_MESG_NOBLOCK) != -1)
+			while (osRecvMesg(&sSYProgGameTicMesgQueue, NULL, OS_MESG_NOBLOCK) != -1)
 			{
 				continue;
 			}
@@ -1033,7 +1048,7 @@ void func_80005DA0(FnBundle *arg0)
 
 			arg0->func_update(arg0);
 
-			sSYProgFrameCount++;
+			sSYProgUpdateCount++;
 
 			sSYProgUpdateDeltaTime = (osGetCount() - sSYProgTimeStart) / 2971;
 
@@ -1041,7 +1056,7 @@ void func_80005DA0(FnBundle *arg0)
 			{
 				break;
 			}
-			if ((sSYProgFrameCount % sSYProgFrameDrawInterval == 0) && (syProgSwitchContext(1) != FALSE))
+			if ((sSYProgUpdateCount % sSYProgFrameDrawInterval == 0) && (syProgSwitchContext(1) != FALSE))
 			{
 				sSYProgTimeStart = osGetCount();
 
@@ -1062,7 +1077,7 @@ void func_80005DA0(FnBundle *arg0)
 		continue;
 	while (osRecvMesg(&sSYProgResetMesgQueue, NULL, OS_MESG_NOBLOCK) != -1)
 		continue;
-	while (osRecvMesg(&sSYProgGameTicMesgQueues, NULL, OS_MESG_NOBLOCK) != -1)
+	while (osRecvMesg(&sSYProgGameTicMesgQueue, NULL, OS_MESG_NOBLOCK) != -1)
 		continue;
 	dpSetScissorFunction(NULL);
 	D_800454BC = 2;
@@ -1197,7 +1212,7 @@ void func_80006548(syProgBufferSetup *arg0, void (*arg1)())
 	D_80046668 = arg0->proc_controller;
 	enable_auto_contread((uintptr_t)schedule_contread != (uintptr_t)D_80046668 ? TRUE : FALSE);
 
-	sSYProgFrameCount = dSYProgFrameDrawCount = 0;
+	sSYProgUpdateCount = dSYProgFrameDrawCount = 0;
 
 	if (arg1 != NULL)
 		arg1();
@@ -1348,7 +1363,7 @@ void func_80006B80()
 	sSYProgSegmentFBase = NULL;
 	func_800048D0(NULL);
 
-	scAddClient(&sSYProgClient, &sSYProgGameTicMesgQueues, sSYProgGameTicMesgs, ARRAY_COUNT(sSYProgGameTicMesgs));
+	scAddClient(&sSYProgClient, &sSYProgGameTicMesgQueue, sSYProgGameTicMesgs, ARRAY_COUNT(sSYProgGameTicMesgs));
 	osCreateMesgQueue(&D_80045500, D_800454F0, ARRAY_COUNT(D_800454F0));
 	osCreateMesgQueue(&sSYProgResetMesgQueue, sSYProgResetMesgs, ARRAY_COUNT(sSYProgResetMesgs));
 	sSYProgUpdateInterval = sSYProgFrameDrawInterval = 1;

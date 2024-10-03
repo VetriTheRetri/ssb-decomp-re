@@ -59,8 +59,8 @@ u32 sOMCamerasActive;
 u16 sOMCameraSize;
 
 GObj* gOMObjCurrentCommon;
-GObj* gOMObjCurrentCapture; // Is this exclusively a camera GObj?
-GObj* gOMObjCurrentDraw;
+GObj* gOMObjCurrentCamera; // Is this exclusively a camera GObj?
+GObj* gOMObjCurrentDisplay;
 
 GObjProcess* gOMObjCurrentProcess;
 u32 D_80046A64;
@@ -1996,8 +1996,8 @@ void func_8000A340()
 	s32 v1;
 	GObj* gobj;
 
-	gOMObjCurrentCapture = NULL;
-	gOMObjCurrentDraw = NULL;
+	gOMObjCurrentCamera = NULL;
+	gOMObjCurrentDisplay = NULL;
 
 	for (i = 0, v1 = dSYGtlFrameDrawCount - 1; i < ARRAY_COUNT(D_80046A88); i++)
 		D_80046A88[i].id = v1;
@@ -2009,7 +2009,7 @@ void func_8000A340()
 		if (!(gobj->flags & GOBJ_FLAG_NORENDER))
 		{
 			D_8003B874_3C474 = 3;
-			gOMObjCurrentCapture = gobj;
+			gOMObjCurrentCamera = gobj;
 			gobj->proc_display(gobj);
 			D_8003B874_3C474 = 0;
 		}

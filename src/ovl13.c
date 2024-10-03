@@ -17,19 +17,19 @@ extern void gcUpdateDefault(UNUSED GObj* arg0);
 extern void* func_800269C0_275C0(u16);
 
 // ovl9
-extern void mnDebugMenuCreateMenu(s32, s32, s32, void*, s32);
-extern mnDebugMenuDestroyMenu();
+extern void dbMenuCreateMenu(s32, s32, s32, void*, s32);
+extern dbMenuDestroyMenu();
 
 // Forward declarations
-void mnDebugCubeExit();
-void mnDebugCubeDoTransition();
-void mnDebugCubeStopBGM();
-void mnDebugCubePlayBGM();
-void mnDebugCubeStopFGM();
-void mnDebugCubePlayFGM();
-void mnDebugCubePlayCall();
-void mnDebugCubeStopRumble();
-void mnDebugCubeStartRumble();
+void dbCubeExit();
+void dbCubeDoTransition();
+void dbCubeStopBGM();
+void dbCubePlayBGM();
+void dbCubeStopFGM();
+void dbCubePlayFGM();
+void dbCubePlayCall();
+void dbCubeStopRumble();
+void dbCubeStartRumble();
 
 
 // Data
@@ -322,20 +322,20 @@ char* dMNDebugCubeTransitionStrings[11] = {
 dbMenuItem dMNDebugCubeMenuItems[15] = {
 
 	{ dbMenuItemKindExitLabel,   0,                       "Continue",                            0,                                0.0F, 0.0F,    0 },
-	{ dbMenuItemKindNumeric,     mnDebugCubeStartRumble,  "rumble %3d",                          &gMNDebugCubeMenuValueRumble,     0.0F, 10.0F,   0 },
-	{ dbMenuItemKindNumeric,     mnDebugCubeStartRumble,  "frame %4d",                           &gMNDebugCubeMenuValueFrame,      0.0F, 8000.0F, 0 },
-	{ dbMenuItemKindLabel,       mnDebugCubeStopRumble,   "STOP RUMBLE",                         0,                                0.0F, 0.0F,    0 },
-	{ dbMenuItemKindNumeric,     mnDebugCubePlayCall,     "call %3d",                            &gMNDebugCubeMenuValueCall,       0.0F, 11.0F,   0 },
-	{ dbMenuItemKindNumeric,     mnDebugCubePlayFGM,      "fgm %3d",                             &gMNDebugCubeMenuValueFGM,        0.0F, 695.0F,  0 },
-	{ dbMenuItemKindLabel,       mnDebugCubeStopFGM,      "STOP FGM",                            0,                                0.0F, 0.0F,    0 },
-	{ dbMenuItemKindNumeric,     mnDebugCubePlayBGM,      "bgm %3d",                             &gMNDebugCubeMenuValueBGM,        0.0F, 46.0F,   0 },
-	{ dbMenuItemKindNumeric,     mnDebugCubePlayBGM,      "effect %3d",                          &gMNDebugCubeMenuValueEffect,     0.0F, 6.0F,    0 },
-	{ dbMenuItemKindLabel,       mnDebugCubeStopBGM,      "STOP BGM",                            0,                                0.0F, 0.0F,    0 },
-	{ dbMenuItemKindString,      mnDebugCubeDoTransition, (char*) dMNDebugCubeTransitionStrings, &gMNDebugCubeMenuValueTransition, 0.0F, 10.0F,   0 },
+	{ dbMenuItemKindNumeric,     dbCubeStartRumble,  "rumble %3d",                          &gMNDebugCubeMenuValueRumble,     0.0F, 10.0F,   0 },
+	{ dbMenuItemKindNumeric,     dbCubeStartRumble,  "frame %4d",                           &gMNDebugCubeMenuValueFrame,      0.0F, 8000.0F, 0 },
+	{ dbMenuItemKindLabel,       dbCubeStopRumble,   "STOP RUMBLE",                         0,                                0.0F, 0.0F,    0 },
+	{ dbMenuItemKindNumeric,     dbCubePlayCall,     "call %3d",                            &gMNDebugCubeMenuValueCall,       0.0F, 11.0F,   0 },
+	{ dbMenuItemKindNumeric,     dbCubePlayFGM,      "fgm %3d",                             &gMNDebugCubeMenuValueFGM,        0.0F, 695.0F,  0 },
+	{ dbMenuItemKindLabel,       dbCubeStopFGM,      "STOP FGM",                            0,                                0.0F, 0.0F,    0 },
+	{ dbMenuItemKindNumeric,     dbCubePlayBGM,      "bgm %3d",                             &gMNDebugCubeMenuValueBGM,        0.0F, 46.0F,   0 },
+	{ dbMenuItemKindNumeric,     dbCubePlayBGM,      "effect %3d",                          &gMNDebugCubeMenuValueEffect,     0.0F, 6.0F,    0 },
+	{ dbMenuItemKindLabel,       dbCubeStopBGM,      "STOP BGM",                            0,                                0.0F, 0.0F,    0 },
+	{ dbMenuItemKindString,      dbCubeDoTransition, (char*) dMNDebugCubeTransitionStrings, &gMNDebugCubeMenuValueTransition, 0.0F, 10.0F,   0 },
 	{ dbMenuItemKindNumericByte, 0,                       "cic %3d",                             0x800A50EC,                       0.0F, 255.0F,  0 },
 	{ dbMenuItemKindNumericByte, 0,                       "boot %3d",                            0x800A4AC3,                       0.0F, 255.0F,  0 },
 	{ dbMenuItemKindNumeric,     0,                       "TvType %3d",                          0x80000300,                       0.0F, 255.0F,  0 },
-	{ dbMenuItemKindExitLabel,   mnDebugCubeExit,         "Exit",                                0,                                0.0F, 0.0F,    0 }
+	{ dbMenuItemKindExitLabel,   dbCubeExit,         "Exit",                                0,                                0.0F, 0.0F,    0 }
 };
 
 syDisplaySetup D_ovl13_80132F6C = {
@@ -374,13 +374,13 @@ u32 D_ovl13_80133140[5];
 
 
 // 80131B00
-void mnDebugCubeSetLighting(Gfx **display_list)
+void dbCubeSetLighting(Gfx **display_list)
 {
 	gSPDisplayList(display_list[0]++, dMNDebugCubeDisplayList);
 }
 
 // 80131B24
-void mnDebugCubeRotateKirbyCube(GObj* cube_gobj)
+void dbCubeRotateKirbyCube(GObj* cube_gobj)
 {
 	DObj* cube_dobj = DObjGetStruct(cube_gobj);
 
@@ -395,7 +395,7 @@ void mnDebugCubeRotateKirbyCube(GObj* cube_gobj)
 }
 
 // 80131BBC
-void mnDebugCubeExit()
+void dbCubeExit()
 {
 	dMNDebugCubeExitInterrupt = 1;
 }
@@ -407,43 +407,43 @@ void func_ovl13_80131BCC()
 }
 
 // 80131BD4
-void mnDebugCubeStartRumble()
+void dbCubeStartRumble()
 {
 	gmRumbleSetPlayerRumbleParams(0, gMNDebugCubeMenuValueRumble, gMNDebugCubeMenuValueFrame);
 }
 
 // 80131C04
-void mnDebugCubeStopRumble()
+void dbCubeStopRumble()
 {
 	gmRumbleSetRumbleID(0, gMNDebugCubeMenuValueRumble);
 }
 
 // 80131C2C
-void mnDebugCubePlayFGM()
+void dbCubePlayFGM()
 {
 	func_80020D88(gMNDebugCubeMenuValueFGM);
 }
 
 // 80131C50
-void mnDebugCubeStopFGM()
+void dbCubeStopFGM()
 {
 	func_80020E28();
 }
 
 // 80131C70
-void mnDebugCubePlayCall()
+void dbCubePlayCall()
 {
 	gMNDebugCubeQueuedFGM = dMNDebugCubeCallFGMs[gMNDebugCubeMenuValueCall];
 }
 
 // 80131C94
-void mnDebugCubeStopBGM()
+void dbCubeStopBGM()
 {
 	auStopSong(0);
 }
 
 // 80131CB4
-void mnDebugCubePlayBGM()
+void dbCubePlayBGM()
 {
 	auStopSong(0);
 	auSetReverbType(gMNDebugCubeMenuValueEffect);
@@ -452,14 +452,14 @@ void mnDebugCubePlayBGM()
 }
 
 // 80131CE8
-void mnDebugCubeDoTransition()
+void dbCubeDoTransition()
 {
 	dMNDebugCubeExitInterrupt = 1;
 	dMNDebugCubeTransitionInterrupt = 1;
 }
 
 // 80131D00
-void mnDebugCubeCheckAudioChange(s32 arg0)
+void dbCubeCheckAudioChange(s32 arg0)
 {
 	while (TRUE)
 	{
@@ -496,17 +496,17 @@ void mnDebugCubeCheckAudioChange(s32 arg0)
 }
 
 // 80131E00
-void mnDebugCubeMain(GObj* arg0)
+void dbCubeMain(GObj* arg0)
 {
 	if (gSysController.button_tap & START_BUTTON)
-		mnDebugMenuCreateMenu(0x32, 0x32, 0x50, &dMNDebugCubeMenuItems, 0xF);
+		dbMenuCreateMenu(0x32, 0x32, 0x50, &dMNDebugCubeMenuItems, 0xF);
 
 	if (gSysController.button_tap & Z_TRIG)
 		func_80022368(0, 0x80000000, 0);
 
 	if (dMNDebugCubeExitInterrupt != 0)
 	{
-		mnDebugMenuDestroyMenu();
+		dbMenuDestroyMenu();
 
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 1U;
@@ -516,7 +516,7 @@ void mnDebugCubeMain(GObj* arg0)
 }
 
 // 80131EA0
-GObj* mnDebugCubeCreateGObj(void* ptr, void* dvar)
+GObj* dbCubeCreateGObj(void* ptr, void* dvar)
 {
 	GObj* gobj = gcMakeModelGObj(0x10000000, gcUpdateDefault, 0, 0x80000000, gcDrawDObjDLHead0, 0, 0x80000000, -1, dvar, 1, 0, ptr, 1);
 
@@ -524,7 +524,7 @@ GObj* mnDebugCubeCreateGObj(void* ptr, void* dvar)
 }
 
 // 80131F28
-GObj* mnDebugCubeCreateViewport(void (*proc)(GObj*))
+GObj* dbCubeCreateViewport(void (*proc)(GObj*))
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x10000002, gcUpdateDefault, 0, 0x80000000U, func_80017DBC, 0x32, 0x00000001, -1, 1, 0, proc, 1, 0);
 
@@ -538,7 +538,7 @@ GObj* mnDebugCubeCreateViewport(void (*proc)(GObj*))
 }
 
 // 80131FDC
-void mnDebugCubeInit()
+void dbCubeInit()
 {
 	s32 unused1;
 	s32 unused2;
@@ -555,7 +555,7 @@ void mnDebugCubeInit()
 	rldmSetup.force_buf_size = 0;
 	lbRelocInitSetup(&rldmSetup);
 
-	gcMakeGObjSPAfter(0, mnDebugCubeMain, 0, 0x80000000);
+	gcMakeGObjSPAfter(0, dbCubeMain, 0, 0x80000000);
 	gcMakeDefaultCameraGObj
 	(
 		0,
@@ -570,18 +570,18 @@ void mnDebugCubeInit()
 			0xFF
 		)
 	);
-	mnDebugCubeCreateViewport(0);
-	mnDebugCubeCreateGObj(mnDebugCubeRotateKirbyCube, &dMNDebugCubeKirbyCubeDisplayList);
+	dbCubeCreateViewport(0);
+	dbCubeCreateGObj(dbCubeRotateKirbyCube, &dMNDebugCubeKirbyCubeDisplayList);
 	lbTransitionSetupTransition();
 	lbTransitionMakeCamera(0x20000002, 0, 0x32, 0x00000002);
 	gcSetAnimSpeed(lbTransitionMakeTransition(gMNDebugCubeMenuValueTransition, 0x20000000, 0, lbTransitionProcDisplay, 1, lbTransitionProcUpdate), 0.25F);
 	gmRumbleMakeActor();
-	mnDebugMenuInitMenu();
-	mnDebugCubeCreateGObj(mnDebugCubeCheckAudioChange, NULL);
+	dbMenuInitMenu();
+	dbCubeCreateGObj(dbCubeCheckAudioChange, NULL);
 }
 
 // 8013214C
-void mnDebugCubeStartScene()
+void dbCubeStartScene()
 {
 	D_ovl13_80132F6C.zbuffer = syDisplayGetZBuffer(6400);
 	func_80007024(&D_ovl13_80132F6C);

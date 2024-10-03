@@ -1489,7 +1489,7 @@ void lbParticleDrawTextures(GObj *gobj)
     u8 masks, maskt;
     f32 mx, my;
 
-    cam = CameraGetStruct(gOMObjCurrentCapture);
+    cam = CameraGetStruct(gOMObjCurrentCamera);
 
     for (i = 0; i < cam->ommtx_len; i++)
     {

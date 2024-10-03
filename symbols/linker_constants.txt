@@ -217,7 +217,13 @@ lLBTransitionCurtainDObjDesc = 0x00007AE0;
 lLBTransitionCurtainAnimJoint = 0x00007C98;
 
 lGRWallpaperTraining0Sprite = 0x00020718;
-lGRWallpaperTraining0BitmapPointer = 0x0002074C;
+
+lMNFightersMarioNameSprite = 0x00001838;
+lMNFightersLuigiNameSprite = 0x00001B18;
+lMNFightersSamusNameSprite = 0x00002358;
+lMNFightersPikachuNameSprite = 0x000032F8;
+lMNFightersSymbolInfiniteSprite = 0x00003EF0;
+lMNFightersOptionTimeSprite = 0x000048B0;
 
 lMNMessageDecalExclaimSprite = 0x00005300;
 lMNMessageUnlockLuigiSprite = 0x000009E0;

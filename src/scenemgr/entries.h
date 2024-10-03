@@ -9,7 +9,7 @@ extern void debug_sss_entry(void);                  // ovl 12
 extern void debug_system_entry(void);               // ovl 13
 extern void debug_battle_entry(void);               // ovl 14
 extern void debug_falls_entry(void);                // ovl 15
-extern void debug_button_test_entry(void);          // ovl 16
+extern void mnUnusedFightersStartScene(void);          // ovl 16
 extern void mnModeSelectStartScene(void);                  // ovl 17
 extern void mn1PModeStartScene(void);                    // ovl 18
 extern void mnOptionStartScene(void);               // ovl 60

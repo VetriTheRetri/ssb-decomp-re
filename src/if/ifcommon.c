@@ -1510,7 +1510,7 @@ void ifCommonPlayerMagnifyUpdateViewport(Gfx **dls, ftStruct *fp)
         magnify_x = ifmag->pos.x + gCMManagerCameraStruct.viewport_center_x;
         magnify_y = gCMManagerCameraStruct.viewport_center_y - ifmag->pos.y;
 
-        gSPMatrix(dls[0]++, &CameraGetStruct(gOMObjCurrentCapture)->ommtx[0]->mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+        gSPMatrix(dls[0]++, &CameraGetStruct(gOMObjCurrentCamera)->ommtx[0]->mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
         if (gIFCommonPlayerInterface.ifmagnify_mode != 1)
         {
@@ -1591,7 +1591,7 @@ void ifCommonPlayerMagnifyProcDisplay(ftStruct *fp)
 
         gSPViewport(gDisplayListHead[0]++, &cam->viewport);
         gDPSetScissor(gDisplayListHead[0]++, G_SC_NON_INTERLACE, gCMManagerCameraStruct.viewport_ulx, gCMManagerCameraStruct.viewport_uly, gCMManagerCameraStruct.viewport_lrx, gCMManagerCameraStruct.viewport_lry);
-        gSPMatrix(gDisplayListHead[0]++, &CameraGetStruct(gOMObjCurrentCapture)->ommtx[1]->mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+        gSPMatrix(gDisplayListHead[0]++, &CameraGetStruct(gOMObjCurrentCamera)->ommtx[1]->mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
         gSPClearGeometryMode(gDisplayListHead[0]++, G_ZBUFFER);
         gDPPipeSync(gDisplayListHead[0]++);
         gDPSetRenderMode(gDisplayListHead[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);

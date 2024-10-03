@@ -1095,7 +1095,7 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
     }
     if ((fp->status_info.pl_kind == nFTPlayerKindMan) || (fp->status_info.pl_kind == nFTPlayerKindCom) || (fp->status_info.pl_kind == nFTPlayerKindGameKey))
     {
-        if (gOMObjCurrentCapture->gobj_id == nOMObjCommonKindMainCamera)
+        if (gOMObjCurrentCamera->gobj_id == nOMObjCommonKindMainCamera)
         {
             switch (fp->status_info.status_id)
             {
@@ -1222,7 +1222,7 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
             );
             gSPMatrix(gDisplayListHead[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
         }
-        if ((fp->status_info.pl_kind == nFTPlayerKindDemo) || (fp->status_info.pl_kind == nFTPlayerKindKey) || (gOMObjCurrentCapture->gobj_id == nOMObjCommonKindMainCamera))
+        if ((fp->status_info.pl_kind == nFTPlayerKindDemo) || (fp->status_info.pl_kind == nFTPlayerKindKey) || (gOMObjCurrentCamera->gobj_id == nOMObjCommonKindMainCamera))
         {
             ftDisplayMainDrawAll(fighter_gobj);
         }
@@ -1329,7 +1329,7 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
     }
     else
     {
-        if (gOMObjCurrentCapture->gobj_id == nOMObjCommonKindMainCamera)
+        if (gOMObjCurrentCamera->gobj_id == nOMObjCommonKindMainCamera)
         {
             ftDisplayMainDrawParts(DObjGetStruct(fighter_gobj));
         }
@@ -1407,7 +1407,7 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
     }
     if ((fp->status_info.pl_kind == nFTPlayerKindMan) || (fp->status_info.pl_kind == nFTPlayerKindCom) || (fp->status_info.pl_kind == nFTPlayerKindGameKey))
     {
-        if (gOMObjCurrentCapture->gobj_id != nOMObjCommonKindMainCamera)
+        if (gOMObjCurrentCamera->gobj_id != nOMObjCommonKindMainCamera)
         {
             if (!(fp->is_magnify_hide) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
             {

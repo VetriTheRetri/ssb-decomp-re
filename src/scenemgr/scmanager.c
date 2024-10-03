@@ -16,7 +16,7 @@
 
 extern s32 D_8003B874_3C474;
 extern GObj* gOMObjCurrentCommon;
-extern GObj* gOMObjCurrentDraw;
+extern GObj* gOMObjCurrentDisplay;
 
 // BSS
 u8 D_800A44D0[16];
@@ -188,11 +188,11 @@ char D_800A41C0[/* */] = "Mar 16 1999 18:26:57";
 
 void mnNoControllerStartScene();
 void mnTitleStartScene();
-void mnDebugStageSelectStartScene();
-void mnDebugCubeStartScene();
-void mnDebugBattleStartScene();
-void mnDebugFallsStartScene();
-void debug_button_test_entry();
+void dbStageSelectStartScene();
+void dbCubeStartScene();
+void dbBattleStartScene();
+void dbFallsStartScene();
+void mnUnusedFightersStartScene();
 void mnModeSelectStartScene();
 void mn1PModeStartScene();
 void mnOptionStartScene();
@@ -311,14 +311,14 @@ void start_scene_manager(u32 set)
 				syDmaLoadOverlay(&D_800A3070[12]);
 				syDmaLoadOverlay(&D_800A3070[8]);
 				syDmaLoadOverlay(&D_800A3070[9]);
-				mnDebugStageSelectStartScene();
+				dbStageSelectStartScene();
 				break;
 			case 3:
 				syDmaLoadOverlay(&D_800A3070[2]);
 				syDmaLoadOverlay(&D_800A3070[13]);
 				syDmaLoadOverlay(&D_800A3070[8]);
 				syDmaLoadOverlay(&D_800A3070[9]);
-				mnDebugCubeStartScene();
+				dbCubeStartScene();
 				break;
 			case 4:
 				syDmaLoadOverlay(&D_800A3070[2]);
@@ -326,15 +326,15 @@ void start_scene_manager(u32 set)
 				syDmaLoadOverlay(&D_800A3070[14]);
 				syDmaLoadOverlay(&D_800A3070[8]);
 				syDmaLoadOverlay(&D_800A3070[9]);
-				mnDebugBattleStartScene();
+				dbBattleStartScene();
 				break;
 			case 5:
 				syDmaLoadOverlay(&D_800A3070[15]);
-				mnDebugFallsStartScene();
+				dbFallsStartScene();
 				break;
 			case 6:
 				syDmaLoadOverlay(&D_800A3070[16]);
-				debug_button_test_entry();
+				mnUnusedFightersStartScene();
 				break;
 			case 7:
 				syDmaLoadOverlay(&D_800A3070[1]);
@@ -825,10 +825,10 @@ void scManagerProcPrintGObjStatus()
 		{
 			syErrorDebugPrintf("DFC\n");
 
-			if (gOMObjCurrentCapture != NULL)
+			if (gOMObjCurrentCamera != NULL)
 			{
-				syErrorDebugPrintf("addr:%x\n", gOMObjCurrentCapture->proc_display);
-				scManagerInspectGObj(gOMObjCurrentCapture);
+				syErrorDebugPrintf("addr:%x\n", gOMObjCurrentCamera->proc_display);
+				scManagerInspectGObj(gOMObjCurrentCamera);
 			}
 			break;
 		}
@@ -836,14 +836,14 @@ void scManagerProcPrintGObjStatus()
 		{
 			syErrorDebugPrintf("DFO\n");
 
-			if (gOMObjCurrentCapture != NULL)
+			if (gOMObjCurrentCamera != NULL)
 			{
-				syErrorDebugPrintf("cam addr:%x\n", gOMObjCurrentCapture->proc_display);
+				syErrorDebugPrintf("cam addr:%x\n", gOMObjCurrentCamera->proc_display);
 			}
-			if (gOMObjCurrentDraw != NULL)
+			if (gOMObjCurrentDisplay != NULL)
 			{
-				syErrorDebugPrintf("disp addr:%x\n", gOMObjCurrentDraw->proc_display);
-				scManagerInspectGObj(gOMObjCurrentDraw);
+				syErrorDebugPrintf("disp addr:%x\n", gOMObjCurrentDisplay->proc_display);
+				scManagerInspectGObj(gOMObjCurrentDisplay);
 			}
 			break;
 		}

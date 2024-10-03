@@ -222,7 +222,7 @@ char gMNDebugMenuStringBuffer[0x38];
 
 
 // 80369240
-void mnDebugMenuUpdateMenuInputs()
+void dbMenuUpdateMenuInputs()
 {
 	u16 inputs = 0;
 	gsController *controller = &gSysController;
@@ -265,14 +265,14 @@ void mnDebugMenuUpdateMenuInputs()
 }
 
 // 80369310
-void mnDebugMenuDrawString(dbMenuPosition *arg0, const char *str, ...)
+void dbMenuDrawString(dbMenuPosition *arg0, const char *str, ...)
 {
 	func_ovl8_80386BE0(gMNDebugMenuStringBuffer, &str);
 	func_ovl8_8037DD60(arg0, gMNDebugMenuStringBuffer);
 }
 
 // 80369358
-void mnDebugMenuDrawBorder(s32 arg0, u32 color)
+void dbMenuDrawBorder(s32 arg0, u32 color)
 {
 	dbMenuPosition* temp_s0;
 	dbMenuPosition menu_position;
@@ -307,7 +307,7 @@ void mnDebugMenuDrawBorder(s32 arg0, u32 color)
 }
 
 // 8036944C
-void mnDebugMenuDrawBackground(s32 arg0, s32 color)
+void dbMenuDrawBackground(s32 arg0, s32 color)
 {
 	dbMenuPosition *sp24;
 	dbMenuPosition sp1C;
@@ -325,49 +325,49 @@ void mnDebugMenuDrawBackground(s32 arg0, s32 color)
 }
 
 // 803694C8
-void mnDebugMenuDrawMenuItem(void* arg0, dbMenuItem* menu_item)
+void dbMenuDrawMenuItem(void* arg0, dbMenuItem* menu_item)
 {
 	switch (menu_item->type)
 	{
 		case dbMenuItemKindExitLabel:
 		case dbMenuItemKindLabel:
-			mnDebugMenuDrawString(func_ovl8_803749BC(arg0), menu_item->label);
+			dbMenuDrawString(func_ovl8_803749BC(arg0), menu_item->label);
 			break;
 		case dbMenuItemKindNumeric:
-			mnDebugMenuDrawString(func_ovl8_803749BC(arg0), menu_item->label, *menu_item->value.s);
+			dbMenuDrawString(func_ovl8_803749BC(arg0), menu_item->label, *menu_item->value.s);
 			break;
 		case dbMenuItemKindNumericByte:
-			mnDebugMenuDrawString(func_ovl8_803749BC(arg0), menu_item->label, *menu_item->value.b);
+			dbMenuDrawString(func_ovl8_803749BC(arg0), menu_item->label, *menu_item->value.b);
 			break;
 		case dbMenuItemKindDouble:
-			mnDebugMenuDrawString(func_ovl8_803749BC(arg0), menu_item->label, (f64) *menu_item->value.f);
+			dbMenuDrawString(func_ovl8_803749BC(arg0), menu_item->label, (f64) *menu_item->value.f);
 			break;
 		case dbMenuItemKindString:
-			mnDebugMenuDrawString(func_ovl8_803749BC(arg0), ((uintptr_t*) menu_item->label)[*menu_item->value.s]);
+			dbMenuDrawString(func_ovl8_803749BC(arg0), ((uintptr_t*) menu_item->label)[*menu_item->value.s]);
 			break;
 		case dbMenuItemKindStringByte:
-			mnDebugMenuDrawString(func_ovl8_803749BC(arg0), ((uintptr_t*) menu_item->label)[*menu_item->value.b]);
+			dbMenuDrawString(func_ovl8_803749BC(arg0), ((uintptr_t*) menu_item->label)[*menu_item->value.b]);
 			break;
 	}
 }
 
 // 80369600
-void mnDebugMenuDrawMenuItems(void* arg0, dbMenuItem *menu_item, s32 arg2)
+void dbMenuDrawMenuItems(void* arg0, dbMenuItem *menu_item, s32 arg2)
 {
 	s32 i;
 
 	for (i = 0; i < arg2; i++, menu_item++)
 	{
 		func_ovl8_8037DFCC(12, 2 + 9 * i);
-		mnDebugMenuDrawMenuItem(arg0, menu_item);
+		dbMenuDrawMenuItem(arg0, menu_item);
 	}
 }
 
 // 80369680
-void mnDebugMenuDrawCursor(void* arg0, s32 cursor_index)
+void dbMenuDrawCursor(void* arg0, s32 cursor_index)
 {
 	func_ovl8_8037DFCC(3, (cursor_index * 9) + 2);
-	mnDebugMenuDrawString(func_ovl8_803749BC(arg0), ">");
+	dbMenuDrawString(func_ovl8_803749BC(arg0), ">");
 }
 
 // 803696D4
@@ -377,22 +377,22 @@ void gMNDebugMenuRenderMenu(s32 arg0)
 	{
 		gMNDebugMenuRedrawInterrupt = 0;
 
-		mnDebugMenuDrawBackground(D_ovl9_80371404, &dMNDebugMenuBGColor);
-		mnDebugMenuDrawMenuItems(D_ovl9_80371404, gMNDebugMenuMenuItems, gMNDebugMenuMenuItemsCount);
-		mnDebugMenuDrawCursor(D_ovl9_80371404, gMNDebugMenuCursorIndex);
+		dbMenuDrawBackground(D_ovl9_80371404, &dMNDebugMenuBGColor);
+		dbMenuDrawMenuItems(D_ovl9_80371404, gMNDebugMenuMenuItems, gMNDebugMenuMenuItemsCount);
+		dbMenuDrawCursor(D_ovl9_80371404, gMNDebugMenuCursorIndex);
 	}
 
 	gMNDebugMenuDefaultMenuRenderProc(arg0);
 }
 
 // 8036975C
-void mnDebugMenuHandleInputs(GObj *gobj)
+void dbMenuHandleInputs(GObj *gobj)
 {
 	gsController *controller = &gSysController;
 	s32 stick_x;
 	f32 temp;
 
-	mnDebugMenuUpdateMenuInputs();
+	dbMenuUpdateMenuInputs();
 
 	if ((controller->button_update & U_JPAD) || (gMNDebugMenuStickInputs & U_JPAD))
 	{
@@ -562,7 +562,7 @@ void mnDebugMenuHandleInputs(GObj *gobj)
 }
 
 // 80369D78
-void mnDebugMenuCreateMenu(s32 x, s32 y, s32 w, dbMenuItem* menu_items, s32 menu_items_count)
+void dbMenuCreateMenu(s32 x, s32 y, s32 w, dbMenuItem* menu_items, s32 menu_items_count)
 {
 	if (gMNDebugMenuIsMenuOpen == FALSE)
 	{
@@ -580,14 +580,14 @@ void mnDebugMenuCreateMenu(s32 x, s32 y, s32 w, dbMenuItem* menu_items, s32 menu
 		D_ovl9_80371404 = func_ovl8_80381C80(&gMNDebugMenuMenuPosition);
 		gMNDebugMenuMenuGObj = func_ovl8_80374910(D_ovl9_80371404);
 
-		mnDebugMenuDrawBorder(D_ovl9_80371404, &dMNDebugMenuBorderColor);
-		mnDebugMenuDrawMenuItems(D_ovl9_80371404, menu_items, menu_items_count);
-		mnDebugMenuDrawCursor(D_ovl9_80371404, gMNDebugMenuCursorIndex);
+		dbMenuDrawBorder(D_ovl9_80371404, &dMNDebugMenuBorderColor);
+		dbMenuDrawMenuItems(D_ovl9_80371404, menu_items, menu_items_count);
+		dbMenuDrawCursor(D_ovl9_80371404, gMNDebugMenuCursorIndex);
 
 		gMNDebugMenuDefaultMenuRenderProc = gMNDebugMenuMenuGObj->proc_display;
 		gMNDebugMenuMenuGObj->proc_display = gMNDebugMenuRenderMenu;
 
-		gcAddGObjProcess(gMNDebugMenuMenuGObj, mnDebugMenuHandleInputs, 1, 1);
+		gcAddGObjProcess(gMNDebugMenuMenuGObj, dbMenuHandleInputs, 1, 1);
 
 		gMNDebugMenuOriginalGSGTLNumTasks = sSYGtlTasksNum;
 		sSYGtlTasksNum = 1;
@@ -595,13 +595,13 @@ void mnDebugMenuCreateMenu(s32 x, s32 y, s32 w, dbMenuItem* menu_items, s32 menu
 }
 
 // 80369EC0
-void mnDebugMenuDestroyMenu()
+void dbMenuDestroyMenu()
 {
 	func_ovl8_8037BB78();
 }
 
 // 80369EE0
-void mnDebugMenuInitMenu()
+void dbMenuInitMenu()
 {
 	dbUnk80369EE0_1 sp2C;
 	s32 sp18[5];

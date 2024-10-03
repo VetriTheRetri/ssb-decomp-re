@@ -13,11 +13,11 @@ extern intptr_t lOverlay15ArenaLo;  // 800D6A00
 extern intptr_t lOverlay15ArenaHi;  // 80392A00
 extern void gcUpdateDefault(UNUSED GObj* arg0);
 
-extern void mnDebugMenuCreateMenu(s32, s32, s32, void*, s32);
-extern mnDebugMenuDestroyMenu();
+extern void dbMenuCreateMenu(s32, s32, s32, void*, s32);
+extern dbMenuDestroyMenu();
 
 // Forward declarations
-void mnDebugFallsExit();
+void dbFallsExit();
 
 // Data
 
@@ -47,7 +47,7 @@ char* dMNDebugFallsFighterKindStrings[5] = {
 
 // 800D6738
 dbMenuItem dMNDebugFallsMenuItems[13] = {
-	{ dbMenuItemKindExitLabel,  mnDebugFallsExit, (char*) "Exit",                          (void*) NULL,                                     0.0F, 0.0F,     0 },
+	{ dbMenuItemKindExitLabel,  dbFallsExit, (char*) "Exit",                          (void*) NULL,                                     0.0F, 0.0F,     0 },
 	{ dbMenuItemKindStringByte, 0,                (char*) dMNDebugFallsFighterKindStrings, (void*) &gTransferBattleState.players[0].ft_kind, 0.0F, 26.0F,    0 },
 	{ dbMenuItemKindNumeric,    0,                (char*) " Dead : %3d",                   (void*) &gTransferBattleState.players[0].falls,   0.0F, 65536.0F, 0 },
 	{ dbMenuItemKindNumeric,    0,                (char*) " Finish : %3d",                 (void*) &gTransferBattleState.players[0].score,   0.0F, 65536.0F, 0 },
@@ -81,28 +81,28 @@ scRuntimeInfo D_ovl15_800D68C0 = {
 
 
 // 800D6490
-void mnDebugFallsSetLighting(Gfx **display_list)
+void dbFallsSetLighting(Gfx **display_list)
 {
 	gSPDisplayList(display_list[0]++, dMNDebugFallsDisplayList);
 }
 
 // 800D64B4
-void mnDebugFallsExit()
+void dbFallsExit()
 {
 	gMNDebugFallsExitInterrupt = 1;
 }
 
 // 800D64C4
-void mnDebugFallsMain(GObj* arg0)
+void dbFallsMain(GObj* arg0)
 {
 	u8 temp_t0;
 
 	if (gSysController.button_tap & START_BUTTON)
-		mnDebugMenuCreateMenu(0x32, 0x32, 0x64, &dMNDebugFallsMenuItems, 0xD);
+		dbMenuCreateMenu(0x32, 0x32, 0x64, &dMNDebugFallsMenuItems, 0xD);
 
 	if (gMNDebugFallsExitInterrupt != 0)
 	{
-		mnDebugMenuDestroyMenu();
+		dbMenuDestroyMenu();
 
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 4;
@@ -112,7 +112,7 @@ void mnDebugFallsMain(GObj* arg0)
 }
 
 // 800D6544
-GObj* mnDebugFallsCreateViewport(void (*proc)(GObj*))
+GObj* dbFallsCreateViewport(void (*proc)(GObj*))
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x10000002, gcUpdateDefault, 0, 0x80000000U, func_80017DBC, 0x32, 0x00000001, -1, 1, 0, proc, 1, 0);
 	Camera *cam;
@@ -130,17 +130,17 @@ GObj* mnDebugFallsCreateViewport(void (*proc)(GObj*))
 }
 
 // 800D660C
-void mnDebugFallsInit()
+void dbFallsInit()
 {
-	gcMakeGObjSPAfter(0, mnDebugFallsMain, 0, 0x80000000);
+	gcMakeGObjSPAfter(0, dbFallsMain, 0, 0x80000000);
 	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
-	mnDebugFallsCreateViewport(0);
-	mnDebugMenuInitMenu();
-	mnDebugMenuCreateMenu(0x32, 0x32, 0x64, &dMNDebugFallsMenuItems, 0xD);
+	dbFallsCreateViewport(0);
+	dbMenuInitMenu();
+	dbMenuCreateMenu(0x32, 0x32, 0x64, &dMNDebugFallsMenuItems, 0xD);
 }
 
 // 800D6688
-void mnDebugFallsStartScene()
+void dbFallsStartScene()
 {
 	D_ovl15_800D68A4.zbuffer = syDisplayGetZBuffer(6400);
 	func_80007024(&D_ovl15_800D68A4);

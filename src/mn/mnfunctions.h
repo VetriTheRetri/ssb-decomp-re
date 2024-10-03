@@ -7,6 +7,7 @@
 #include <mn/mnvsmode/mnvsitemswitch.h>
 #include <mn/mnvsmode/mnvsmode.h>
 
+#include <mn/mncommon/mnunusedfighters.h>
 #include <mn/mncommon/mnmodeselect.h>
 #include <mn/mncommon/mnmessage.h>
 #include <mn/mncommon/mncongra.h>

@@ -14,11 +14,11 @@ extern intptr_t lOverlay12ArenaHi;  // 80369240
 extern scBattleState D_800A4B18;
 // ovl9
 extern sb32 gMNDebugMenuIsMenuOpen;
-extern void mnDebugMenuCreateMenu(s32, s32, s32, dbMenuItem*, s32);
-extern void mnDebugMenuDestroyMenu();
+extern void dbMenuCreateMenu(s32, s32, s32, dbMenuItem*, s32);
+extern void dbMenuDestroyMenu();
 
 // Forward declarations
-void mnDebugStageSelectTriggerInterrupt();
+void dbStageSelectTriggerInterrupt();
 
 // DATA
 // 800D6680
@@ -77,7 +77,7 @@ char* D_ovl12_800D6688[] = {
 dbMenuItem dMNDebugStageSelectMenuItems[] = {
 	{
 		dbMenuItemKindExitLabel,
-		mnDebugStageSelectTriggerInterrupt,
+		dbStageSelectTriggerInterrupt,
 		"Exit",
 		0,
 		0.0f,
@@ -149,25 +149,25 @@ scRuntimeInfo D_ovl12_800D6780 = {
 
 
 // 800D6490
-void mnDebugStageSelectTriggerInterrupt()
+void dbStageSelectTriggerInterrupt()
 {
 	dMNDebugStageSelectInterrupt = TRUE;
 }
 
 // 800D64A0
-void mnDebugStageSelectMain(GObj* arg0)
+void dbStageSelectMain(GObj* arg0)
 {
 	if (gSysController.button_tap & START_BUTTON)
 	{
 		if (gMNDebugMenuIsMenuOpen)
-			mnDebugStageSelectTriggerInterrupt();
+			dbStageSelectTriggerInterrupt();
 		else
-			mnDebugMenuCreateMenu(0x32, 0x32, 0x64, dMNDebugStageSelectMenuItems, ARRAY_COUNT(dMNDebugStageSelectMenuItems));
+			dbMenuCreateMenu(0x32, 0x32, 0x64, dMNDebugStageSelectMenuItems, ARRAY_COUNT(dMNDebugStageSelectMenuItems));
 	}
 
 	if (dMNDebugStageSelectInterrupt)
 	{
-		mnDebugMenuDestroyMenu();
+		dbMenuDestroyMenu();
 
 		gSceneData.gr_kind = dMNDebugStageSelectGrKind;
 		gSceneData.scene_previous = gSceneData.scene_current;
@@ -186,16 +186,16 @@ void mnDebugStageSelectMain(GObj* arg0)
 }
 
 // 800D65AC
-void mnDebugStageSelectInit()
+void dbStageSelectInit()
 {
-	gcMakeGObjSPAfter(0, mnDebugStageSelectMain, 0, 0x80000000);
+	gcMakeGObjSPAfter(0, dbStageSelectMain, 0, 0x80000000);
 	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
-	mnDebugMenuInitMenu();
-	mnDebugMenuCreateMenu(0x32, 0x32, 0x64, dMNDebugStageSelectMenuItems, ARRAY_COUNT(dMNDebugStageSelectMenuItems));
+	dbMenuInitMenu();
+	dbMenuCreateMenu(0x32, 0x32, 0x64, dMNDebugStageSelectMenuItems, ARRAY_COUNT(dMNDebugStageSelectMenuItems));
 }
 
 // 800D6620
-void mnDebugStageSelectStartScene()
+void dbStageSelectStartScene()
 {
 	D_ovl12_800D6764.zbuffer = syDisplayGetZBuffer(6400);
 	func_80007024(&D_ovl12_800D6764);

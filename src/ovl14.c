@@ -16,11 +16,11 @@ extern intptr_t lOverlay14ArenaHi;  // 80369240
 extern void gcUpdateDefault(UNUSED GObj* arg0);
 extern ftCreateDesc dFTManagerDefaultFighterDesc;
 extern sb32 gMNDebugMenuIsMenuOpen; // isMenuShown
-extern void mnDebugMenuCreateMenu(s32, s32, s32, void*, s32);
-extern mnDebugMenuDestroyMenu();
+extern void dbMenuCreateMenu(s32, s32, s32, void*, s32);
+extern dbMenuDestroyMenu();
 
 // Forward declarations
-void mnDebugBattleStartBattle();
+void dbBattleStartBattle();
 
 // Data
 
@@ -108,7 +108,7 @@ char* dMNDebugBattleStageStrings[18] = {
 
 // 80132780
 dbMenuItem dMNDebugBattleMenuItems[15] = {
-	{ dbMenuItemKindStringByte,  mnDebugBattleStartBattle, (char*) dMNDebugBattleSceneStrings,       (void*) &gMNDebugBattleMenuValueScene,            0.0F, 5.0F,  0 },
+	{ dbMenuItemKindStringByte,  dbBattleStartBattle, (char*) dMNDebugBattleSceneStrings,       (void*) &gMNDebugBattleMenuValueScene,            0.0F, 5.0F,  0 },
 	{ dbMenuItemKindNumericByte, 0,                        (char*) "BattleTime %3d",                 (void*) &gTransferBattleState.time_limit,         1.0F, 60.0F, 0 },
 	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattleStageStrings,       (void*) &gSceneData.spgame_stage,                 0.0F, 17.0F, 0 },
 	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattlePlayerKindStrings,  (void*) &gTransferBattleState.players[0].pl_kind, 0.0F, 5.0F,  0 },
@@ -166,14 +166,14 @@ u32 D_ovl14_801330F8[6];
 dbFighter gMNDebugBattleFighters[4];
 
 // 80131B00
-void mnDebugBattleSetupDisplaylist(Gfx **display_list)
+void dbBattleSetupDisplaylist(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(display_list, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 }
 
 // 80131B58
-void mnDebugBattleStartBattle()
+void dbBattleStartBattle()
 {
 	s32 i;
 
@@ -201,7 +201,7 @@ void mnDebugBattleStartBattle()
 }
 
 // 80131CD8
-s32 mnDebugBattleSetShade(s32 port_id)
+s32 dbBattleSetShade(s32 port_id)
 {
 	s32 i, shade;
 
@@ -227,7 +227,7 @@ s32 mnDebugBattleSetShade(s32 port_id)
 }
 
 // 80131D74
-s32 mnDebugBattleGetUnlockedCharsCountForMask(u16 mask)
+s32 dbBattleGetUnlockedCharsCountForMask(u16 mask)
 {
 	s32 i;
 	s32 unlocked_chars;
@@ -242,7 +242,7 @@ s32 mnDebugBattleGetUnlockedCharsCountForMask(u16 mask)
 }
 
 // 80131DEC
-s32 mnDebugBattleGetMissingFtKind(u16 mask_1, u16 mask_2, s32 missing_index)
+s32 dbBattleGetMissingFtKind(u16 mask_1, u16 mask_2, s32 missing_index)
 {
 	s32 ft_kind = -1;
 	missing_index = missing_index + 1;
@@ -260,7 +260,7 @@ s32 mnDebugBattleGetMissingFtKind(u16 mask_1, u16 mask_2, s32 missing_index)
 }
 
 // 80131E38
-void mnDebugBattleSetDemoFtKinds()
+void dbBattleSetDemoFtKinds()
 {
 	s32 non_recently_demoed_count;
 	u16 unlocked_mask = (gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER);
@@ -268,28 +268,28 @@ void mnDebugBattleSetDemoFtKinds()
 	if (unlocked_mask == gSceneData.demo_mask_prev)
 		gSceneData.demo_mask_prev = 0;
 
-	non_recently_demoed_count = mnDebugBattleGetUnlockedCharsCountForMask(unlocked_mask) - mnDebugBattleGetUnlockedCharsCountForMask(gSceneData.demo_mask_prev);
+	non_recently_demoed_count = dbBattleGetUnlockedCharsCountForMask(unlocked_mask) - dbBattleGetUnlockedCharsCountForMask(gSceneData.demo_mask_prev);
 
-	gSceneData.demo_ft_kind[0] = mnDebugBattleGetMissingFtKind(unlocked_mask, gSceneData.demo_mask_prev, mtTrigGetRandomIntRange(non_recently_demoed_count));
+	gSceneData.demo_ft_kind[0] = dbBattleGetMissingFtKind(unlocked_mask, gSceneData.demo_mask_prev, mtTrigGetRandomIntRange(non_recently_demoed_count));
 
 	if (gSceneData.demo_mask_prev == 0)
 		gSceneData.demo_first_ft_kind = gSceneData.demo_ft_kind[0];
 
 	gSceneData.demo_mask_prev |= gmSaveChrMask(gSceneData.demo_ft_kind[0]);
 
-	non_recently_demoed_count = mnDebugBattleGetUnlockedCharsCountForMask(unlocked_mask) - mnDebugBattleGetUnlockedCharsCountForMask(gSceneData.demo_mask_prev);
+	non_recently_demoed_count = dbBattleGetUnlockedCharsCountForMask(unlocked_mask) - dbBattleGetUnlockedCharsCountForMask(gSceneData.demo_mask_prev);
 
 	if (non_recently_demoed_count == 0)
 		gSceneData.demo_ft_kind[1] = gSceneData.demo_first_ft_kind;
 	else
 	{
-		gSceneData.demo_ft_kind[1] = mnDebugBattleGetMissingFtKind(unlocked_mask, gSceneData.demo_mask_prev, mtTrigGetRandomIntRange(non_recently_demoed_count));
+		gSceneData.demo_ft_kind[1] = dbBattleGetMissingFtKind(unlocked_mask, gSceneData.demo_mask_prev, mtTrigGetRandomIntRange(non_recently_demoed_count));
 		gSceneData.demo_mask_prev |= gmSaveChrMask(gSceneData.demo_ft_kind[1]);
 	}
 }
 
 // 80131F3C
-void mnDebugBattleMain(GObj* arg0)
+void dbBattleMain(GObj* arg0)
 {
 	void **figatree_heap;
 	s32 i;
@@ -299,9 +299,9 @@ void mnDebugBattleMain(GObj* arg0)
 	if (gSysController.button_tap & START_BUTTON)
 	{
 		if (gMNDebugMenuIsMenuOpen != FALSE)
-			mnDebugBattleStartBattle();
+			dbBattleStartBattle();
 		else
-			mnDebugMenuCreateMenu(0x1E, 0x14, 0x55, &dMNDebugBattleMenuItems, 0xF);
+			dbMenuCreateMenu(0x1E, 0x14, 0x55, &dMNDebugBattleMenuItems, 0xF);
 	}
 
 	for (i = 0; i < 4; i++)
@@ -323,7 +323,7 @@ void mnDebugBattleMain(GObj* arg0)
 				gTransferBattleState.players[i].costume = ftParamGetCostumeDevelop(gTransferBattleState.players[i].ft_kind);
 
 			spawn_info.costume = gTransferBattleState.players[i].costume;
-			spawn_info.shade = mnDebugBattleSetShade(i);
+			spawn_info.shade = dbBattleSetShade(i);
 			spawn_info.figatree_heap = figatree_heap;
 			gMNDebugBattleFighters[i].fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
@@ -333,7 +333,7 @@ void mnDebugBattleMain(GObj* arg0)
 
 		if (gTransferBattleState.players[i].costume != gMNDebugBattleFighters[i].costume_index)
 		{
-			mnDebugBattleSetShade(i);
+			dbBattleSetShade(i);
 			ftParamInitModelTexturePartsAll(gMNDebugBattleFighters[i].fighter_gobj, gTransferBattleState.players[i].costume, gTransferBattleState.players[i].shade);
 			gMNDebugBattleFighters[i].costume_index = gTransferBattleState.players[i].costume;
 		}
@@ -347,7 +347,7 @@ void mnDebugBattleMain(GObj* arg0)
 
 	if (gMNDebugBattleExitInterrupt != 0)
 	{
-		mnDebugMenuDestroyMenu();
+		dbMenuDestroyMenu();
 
 		gSceneData.scene_previous = gSceneData.scene_current;
 
@@ -370,7 +370,7 @@ void mnDebugBattleMain(GObj* arg0)
 				gTransferBattleState.is_team_battle = FALSE;
 				break;
 			case dbBattleSceneAutoDemo:
-				mnDebugBattleSetDemoFtKinds();
+				dbBattleSetDemoFtKinds();
 				gSceneData.scene_current = nSCKindAutoDemo;
 				gTransferBattleState.is_team_battle = FALSE;
 				break;
@@ -384,7 +384,7 @@ void mnDebugBattleMain(GObj* arg0)
 }
 
 // 80132238
-void mnDebugBattleSyncCostumes(s32 arg0)
+void dbBattleSyncCostumes(s32 arg0)
 {
 	s32 i;
 	u8 temp_v0;
@@ -403,7 +403,7 @@ void mnDebugBattleSyncCostumes(s32 arg0)
 }
 
 // 801322DC
-GObj* mnDebugBattleCreateViewport(void (*proc)(GObj*))
+GObj* dbBattleCreateViewport(void (*proc)(GObj*))
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x400, gcUpdateDefault, 0xF, 0x80000000U, func_80017DBC, 0x32, 0x00048600, -1, 1, 0, proc, 1, 0);
 	Camera *cam;
@@ -421,7 +421,7 @@ GObj* mnDebugBattleCreateViewport(void (*proc)(GObj*))
 }
 
 // 8013239C
-void mnDebugBattleInit()
+void dbBattleInit()
 {
 	s32 i;
 	lbRelocSetup rldmSetup;
@@ -437,12 +437,12 @@ void mnDebugBattleInit()
 	rldmSetup.force_buf_size = 7;
 	lbRelocInitSetup(&rldmSetup);
 
-	main_gobj = gcMakeGObjSPAfter(0, mnDebugBattleMain, 0xF, 0x80000000);
-	gcAddGObjProcess(main_gobj, mnDebugBattleSyncCostumes, 1, 0);
+	main_gobj = gcMakeGObjSPAfter(0, dbBattleMain, 0xF, 0x80000000);
+	gcAddGObjProcess(main_gobj, dbBattleSyncCostumes, 1, 0);
 
 	gcMakeDefaultCameraGObj(0xF, 0x80000000, 0x64, 2, 0xFF);
 	efAllocInitParticleBank();
-	mnDebugBattleCreateViewport(0);
+	dbBattleCreateViewport(0);
 	efManagerInitEffects();
 	ftManagerAllocFighter(3, 4);
 
@@ -470,13 +470,13 @@ void mnDebugBattleInit()
 		gMNDebugBattleFighters[i].costume_index = gTransferBattleState.players[i].costume;
 	}
 
-	mnDebugMenuInitMenu();
-	mnDebugMenuCreateMenu(0x1E, 0x14, 0x55, &dMNDebugBattleMenuItems, 0xF);
+	dbMenuInitMenu();
+	dbMenuCreateMenu(0x1E, 0x14, 0x55, &dMNDebugBattleMenuItems, 0xF);
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 }
 
 // 80132638
-void mnDebugBattleStartScene()
+void dbBattleStartScene()
 {
 	D_ovl14_80132934.zbuffer = syDisplayGetZBuffer(6400);
 	func_80007024(&D_ovl14_80132934);

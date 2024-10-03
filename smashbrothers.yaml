@@ -29,11 +29,9 @@ options:
     
     - symbols/scmanager.txt
 
-    - symbols/ovl2.txt
     - symbols/ovl0.txt
     - symbols/ovl1.txt
-    - symbols/ovl16.txt
-    - symbols/ovl17.txt
+    - symbols/ovl2.txt
     - symbols/ovl8.txt
 
     - symbols/not_found.txt
@@ -1737,8 +1735,8 @@ segments:
       - [0x18BC50, c, sc/sccommon/scexplainfiles]
       - [0x18BCF0, .data, sc/sccommon/scexplain]
       - [0x18BDF0, .rodata, sc/sccommon/scexplain]
-      - { start: auto, type: .bss, vram: 0x8018E7F0, name: sc/sccommon/scexplain }
-      - { start: auto, type: .bss, vram: 0x8018EA30, name: sc/sccommon/scexplainfiles }
+      - { start: auto, type: .bss, name: sc/sccommon/scexplain, vram: 0x8018E7F0 }
+      - { start: auto, type: .bss, name: sc/sccommon/scexplainfiles, vram: 0x8018EA30 }
 
 
   - name: ovl64
@@ -1751,8 +1749,8 @@ segments:
       - [0x18CE00, c, sc/sccommon/scautodemofiles]
       - [0x18CEA0, .data, sc/sccommon/scautodemo]
       - [0x18D020, .rodata, sc/sccommon/scautodemo]
-      - { start: auto, type: .bss, vram: 0x8018E2F0, name: sc/sccommon/scautodemo }
-      - { start: auto, type: .bss, vram: 0x8018E500, name: sc/sccommon/scautodemofiles }
+      - { start: auto, type: .bss, name: sc/sccommon/scautodemo, vram: 0x8018E2F0 }
+      - { start: auto, type: .bss, name: sc/sccommon/scautodemofiles, vram: 0x8018E500 }
 
   - name: ovl16
     type: code
@@ -1760,8 +1758,10 @@ segments:
     vram: 0x800D6490
     exclusive_ram_id: overlay_800D6490
     subsegments:
-      - [0x18D030, asm, ovl16]
-      - [0x18DBB0, data, ovl16]
+      - [0x18D030, c, mn/mncommon/mnunusedfighters]
+      - [0x18DBB0, .data, mn/mncommon/mnunusedfighters]
+      - [0x18DCA0, .rodata, mn/mncommon/mnunusedfighters]
+      - { start: auto, type: .bss, name: mn/mncommon/mnunusedfighters, vram: 0x800D7110 }
 
   - name: ovl8
     type: code

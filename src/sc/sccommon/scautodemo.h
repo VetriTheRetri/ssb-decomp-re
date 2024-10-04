@@ -6,6 +6,19 @@
 #include <PR/gbi.h>
 #include <sc/scdef.h>
 
+extern intptr_t lSCAutoDemoNameMarioSprite;  	// 0x00000138
+extern intptr_t lSCAutoDemoNameFoxSprite;     	// 0x00000258
+extern intptr_t lSCAutoDemoNameDonkeySprite;  	// 0x00000378
+extern intptr_t lSCAutoDemoNameSamusSprite;   	// 0x000004F8
+extern intptr_t lSCAutoDemoNameLuigiSprite;   	// 0x00000618
+extern intptr_t lSCAutoDemoNameLinkSprite;    	// 0x00000738
+extern intptr_t lSCAutoDemoNameYoshiSprite;   	// 0x00000858
+extern intptr_t lSCAutoDemoNameCaptainSprite; 	// 0x00000A38
+extern intptr_t lSCAutoDemoNameKirbySprite;   	// 0x00000BB8
+extern intptr_t lSCAutoDemoNamePikachuSprite; 	// 0x00000D38
+extern intptr_t lSCAutoDemoNamePurinSprite;   	// 0x00000F78
+extern intptr_t lSCAutoDemoNameNessSprite;    	// 0x00001098
+
 extern void scAutoDemoProcScene(void);
 extern void scAutoDemoStartBattle(void);
 extern void scAutoDemoDetectExit(void);

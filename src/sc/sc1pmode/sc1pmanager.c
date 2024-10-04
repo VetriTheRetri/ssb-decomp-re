@@ -51,7 +51,7 @@ syOverlay dSC1PManager1PStageCardOverlay = SCMANAGER_OVERLAY_DEFINE(24);
 syOverlay dSC1PManager1PStageClearOverlay = SCMANAGER_OVERLAY_DEFINE(56);
 
 // 0x80116C5C
-syOverlay dSC1PManagerChallengerOverlay = SCMANAGER_OVERLAY_DEFINE(23);
+syOverlay dSC1PManager1PChallengerOverlay = SCMANAGER_OVERLAY_DEFINE(23);
 
 // 0x80116C80
 syOverlay dSC1PManagerEndingOverlay = SCMANAGER_OVERLAY_DEFINE(54);
@@ -63,7 +63,7 @@ syOverlay dSC1PManagerMessageOverlay = SCMANAGER_OVERLAY_DEFINE(22);
 syOverlay dSC1PManagerCongraOverlay = SCMANAGER_OVERLAY_DEFINE(57);
 
 // 0x80116CEC
-syOverlay dSC1PManagerCreditsOverlay = SCMANAGER_OVERLAY_DEFINE(59);
+syOverlay dSC1PManagerStaffrollOverlay = SCMANAGER_OVERLAY_DEFINE(59);
 
 // 0x80116D10
 syOverlay dSC1PManager1PGameOverlay = SCMANAGER_OVERLAY_DEFINE(65);
@@ -86,10 +86,10 @@ u8 dSC1PManagerKirbyTeamModelPartIDs[/* */] =
 };
 
 // 0x80116DAC
-s32 dSC1PManagerChallangerKinds[/* */] = { nFTKindLuigi, nFTKindNess, nFTKindPurin, nFTKindCaptain };
+s32 dSC1PManagerChallangerFighterKinds[/* */] = { nFTKindLuigi, nFTKindNess, nFTKindPurin, nFTKindCaptain };
 
 // 0x80116DBC
-u32 dSC1PManagerUnlockPrizes[/* */] = { nLBBackupUnlockLuigi, nLBBackupUnlockNess, nLBBackupUnlockPurin, nLBBackupUnlockCaptain };
+u32 dSC1PManagerUnlockNewcomerKinds[/* */] = { nLBBackupUnlockLuigi, nLBBackupUnlockNess, nLBBackupUnlockPurin, nLBBackupUnlockCaptain };
 
 // // // // // // // // // // // //
 //                               //
@@ -471,7 +471,7 @@ void sc1PManagerUpdateScene(void)
 
         mvEndingStartScene();
 
-        syDmaLoadOverlay(&dSC1PManagerCreditsOverlay);
+        syDmaLoadOverlay(&dSC1PManagerStaffrollOverlay);
 
         gSceneData.scene_previous = nSCKind1PGame;
         gSceneData.scene_current = nSCKindStaffroll;
@@ -492,10 +492,10 @@ void sc1PManagerUpdateScene(void)
 skip_main_stages:
     if (gSceneData.spgame_stage >= nSC1PGameStageChallengerStart)
     {
-        gSceneData.challenger_ft_kind = dSC1PManagerChallangerKinds[gSceneData.spgame_stage - nSC1PGameStageChallengerStart];
+        gSceneData.challenger_ft_kind = dSC1PManagerChallangerFighterKinds[gSceneData.spgame_stage - nSC1PGameStageChallengerStart];
 
         syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
-        syDmaLoadOverlay(&dSC1PManagerChallengerOverlay);
+        syDmaLoadOverlay(&dSC1PManager1PChallengerOverlay);
 
         gSceneData.scene_previous = nSCKind1PGame;
         gSceneData.scene_current = nSCKind1PChallenger;
@@ -519,7 +519,7 @@ skip_main_stages:
         if ((gSCManager1PGameBattleState.players[gSceneData.spgame_player].stock_count != -1) && (gSCManager1PGameBattleState.battle_time_remain != 0))
         {
             gSceneData.challenger_level_drop = gDefaultSceneData.challenger_level_drop;
-            gSceneData.unlock_messages[0] = dSC1PManagerUnlockPrizes[gSceneData.spgame_stage - nSC1PGameStageChallengerStart];
+            gSceneData.unlock_messages[0] = dSC1PManagerUnlockNewcomerKinds[gSceneData.spgame_stage - nSC1PGameStageChallengerStart];
 
             syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
             syDmaLoadOverlay(&dSC1PManagerMessageOverlay);

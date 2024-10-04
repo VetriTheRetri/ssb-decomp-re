@@ -4,26 +4,15 @@
 #include <sc/scene.h>
 #include <sys/system_00.h>
 
+extern void func_800A26B8(void);
+
 // // // // // // // // // // // //
 //                               //
 //       EXTERNAL VARIABLES      //
 //                               //
 // // // // // // // // // // // //
 
-extern intptr_t D_NF_0000000C;
-
-extern intptr_t lSCAutoDemoNameSpriteMario;  	// 0x00000138
-extern intptr_t lSCAutoDemoNameSpriteFox;     	// 0x00000258
-extern intptr_t lSCAutoDemoNameSpriteDonkey;  	// 0x00000378
-extern intptr_t lSCAutoDemoNameSpriteSamus;   	// 0x000004F8
-extern intptr_t lSCAutoDemoNameSpriteLuigi;   	// 0x00000618
-extern intptr_t lSCAutoDemoNameSpriteLink;    	// 0x00000738
-extern intptr_t lSCAutoDemoNameSpriteYoshi;   	// 0x00000858
-extern intptr_t lSCAutoDemoNameSpriteCaptain; 	// 0x00000A38
-extern intptr_t lSCAutoDemoNameSpriteKirby;   	// 0x00000BB8
-extern intptr_t lSCAutoDemoNameSpritePikachu; 	// 0x00000D38
-extern intptr_t lSCAutoDemoNameSpritePurin;   	// 0x00000F78
-extern intptr_t lSCAutoDemoNameSpriteNess;    	// 0x00001098
+extern uintptr_t D_NF_0000000C;
 
 // // // // // // // // // // // //
 //                               //
@@ -100,7 +89,7 @@ scAutoDemoProc dSCAutoDemoProcList[/* */] =
 	// Pre-focus
 	{
 		340,                            // Wait frames until focus changes 
-		scAutoDemoMakeFade,            // Function to run on focus change
+		scAutoDemoMakeFade,            	// Function to run on focus change
 		NULL                            // Function to run when focusing
 	},
 
@@ -149,18 +138,18 @@ f32 D_ovl64_8018E1EC[/* */] = { 2.0F, 0.0F, -6.0F, -9.0F, -30.0F };
 // 0x8018E200
 intptr_t dSCAutoDemoFighterNameSpriteOffsets[/* */] =
 {
-	&lSCAutoDemoNameSpriteMario,      // Mario
-	&lSCAutoDemoNameSpriteFox,        // Fox
-	&lSCAutoDemoNameSpriteDonkey,     // Donkey Kong
-	&lSCAutoDemoNameSpriteSamus,      // Samus
-	&lSCAutoDemoNameSpriteLuigi,      // Luigi
-	&lSCAutoDemoNameSpriteLink,       // Link
-	&lSCAutoDemoNameSpriteYoshi,      // Yoshi
-	&lSCAutoDemoNameSpriteCaptain,    // Captain Falcon
-	&lSCAutoDemoNameSpriteKirby,      // Kirby
-	&lSCAutoDemoNameSpritePikachu,    // Pikachu
-	&lSCAutoDemoNameSpritePurin,      // Jigglypuff
-	&lSCAutoDemoNameSpriteNess        // Ness
+	&lSCAutoDemoNameMarioSprite,      // Mario
+	&lSCAutoDemoNameFoxSprite,        // Fox
+	&lSCAutoDemoNameDonkeySprite,     // Donkey Kong
+	&lSCAutoDemoNameSamusSprite,      // Samus
+	&lSCAutoDemoNameLuigiSprite,      // Luigi
+	&lSCAutoDemoNameLinkSprite,       // Link
+	&lSCAutoDemoNameYoshiSprite,      // Yoshi
+	&lSCAutoDemoNameCaptainSprite,    // Captain Falcon
+	&lSCAutoDemoNameKirbySprite,      // Kirby
+	&lSCAutoDemoNamePikachuSprite,    // Pikachu
+	&lSCAutoDemoNamePurinSprite,      // Jigglypuff
+	&lSCAutoDemoNameNessSprite        // Ness
 };
 
 // 0x8018E230
@@ -170,17 +159,48 @@ syColorRGBA dSCAutoDemoFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 syDisplaySetup dSCAutoDemoDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8018E250
-scRuntimeInfo dSCAutoDemoTasklogSetup = 
+syTasklogSetup dSCAutoDemoTasklogSetup = 
 {
-	0x00000000, scAutoDemoProcScene, 0x800a26b8, &ovl64_BSS_END,
-	0x00000000, 0x00000001, 0x00000002, 0x00006000,
-	0x00003000, 0x00000000, 0x00000000, 0x00008000,
-	0x00020000, 0x0000c000, scAutoDemoProcLights, 0x80004310,
-	0x00000000, 0x00000600, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000088, 0x00000000,
-	0x800d5cac, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000088, 0x00000000, 0x0000006c,
-	0x00000000, 0x00000090, scAutoDemoProcStart
+    // Task Logic Buffer Setup
+    {
+        0,                          // ???
+        scAutoDemoProcScene,        // Update function
+        func_800A26B8,              // Frame draw function
+        &ovl64_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of tasks?
+        0x6000,                     // ???
+        0x3000,                     // ???
+        0,                          // ???
+        0,                          // ???
+        0x8000,                     // ???
+        2,                          // ???
+        0xC000,                     // ???
+        scAutoDemoProcLights,    	// Pre-render function
+        update_contdata,            // Controller I/O function
+    },
+
+    0,                              // Number of GObjThreads
+    1536,                           // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of Object Manager Matrices
+    dLBCommonProcMatrixList,        // Matrix function list
+    NULL,                           // Function for ejecting DObjDynamicStore?
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(Camera),                 // Camera size
+    
+    scAutoDemoProcStart           	// Task start function
 };
 
 // // // // // // // // // // // //
@@ -612,7 +632,7 @@ void scAutoDemoProcStart(void)
 
 	scAutoDemoInitDemo();
 	scAutoDemoSetupFiles();
-	gcMakeDefaultCameraGObj(9, 0x80000000U, 0x64, 1, 0xFF);
+	gcMakeDefaultCameraGObj(9, GOBJ_LINKORDER_DEFAULT, 100, 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efAllocInitParticleBank();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
@@ -712,7 +732,7 @@ void scAutoDemoStartScene(void)
 
 	syDisplayInit(&dSCAutoDemoDisplaySetup);
 
-	dSCAutoDemoTasklogSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl64_BSS_END);
+	dSCAutoDemoTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl64_BSS_END);
 	dSCAutoDemoTasklogSetup.proc_start = scAutoDemoProcStart;
 
 	func_800A2698(&dSCAutoDemoTasklogSetup);

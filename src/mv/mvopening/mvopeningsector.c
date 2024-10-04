@@ -2,13 +2,9 @@
 #include <sc/scene.h>
 #include <mv/movie.h>
 #include <sys/system_00.h>
-#include <lb/library.h>
 
 extern u32 func_8000092C();
-
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
-
-
 
 // // // // // // // // // // // //
 //                               //
@@ -401,7 +397,7 @@ void mvOpeningSectorCameraProcUpdate(GObj* camera_gobj)
 }
 
 // 0x80132400
-void mvOpeningSectorMakeMainViewport(void)
+void mvOpeningSectorMakeMainCamera(void)
 {
     GObj *camera_gobj = gcMakeCameraGObj
     (
@@ -413,11 +409,11 @@ void mvOpeningSectorMakeMainViewport(void)
         40,
         CAMERA_MASK_DLLINK(27),
         -1,
+        TRUE,
+        nOMObjProcessKindProc,
+        NULL, 
         1,
-        1,
-        NULL,
-        1,
-        0
+        FALSE
     );
     Camera *cam = CameraGetStruct(camera_gobj);
 
@@ -431,7 +427,7 @@ void mvOpeningSectorMakeMainViewport(void)
 }
 
 // 0x80132500
-void mvOpeningSectorMakeWallpaperViewport(void)
+void mvOpeningSectorMakeWallpaperCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -445,18 +441,18 @@ void mvOpeningSectorMakeWallpaperViewport(void)
             90,
             CAMERA_MASK_DLLINK(28),
             -1,
-            0,
+            FALSE,
+            nOMObjProcessKindProc,
+            NULL, 
             1,
-            NULL,
-            1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801325A0
-void mvOpeningSectorMakeCockpitViewport(void)
+void mvOpeningSectorMakeCockpitCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -470,11 +466,11 @@ void mvOpeningSectorMakeCockpitViewport(void)
             20,
             CAMERA_MASK_DLLINK(29),
             -1,
-            0,
+            FALSE,
+            nOMObjProcessKindProc,
+            NULL, 
             1,
-            NULL,
-            1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -562,9 +558,9 @@ void mvOpeningSectorFuncStart(void)
     gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 
     mvOpeningSectorInitTotalTimeTics();
-    mvOpeningSectorMakeMainViewport();
-    mvOpeningSectorMakeWallpaperViewport();
-    mvOpeningSectorMakeCockpitViewport();
+    mvOpeningSectorMakeMainCamera();
+    mvOpeningSectorMakeWallpaperCamera();
+    mvOpeningSectorMakeCockpitCamera();
     mvOpeningSectorMakeWallpaper();
     mvOpeningSectorMakeGreatFox();
     mvOpeningSectorMakeArwings();
@@ -582,43 +578,48 @@ void mvOpeningSectorFuncStart(void)
 syDisplaySetup dMVOpeningSectorDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132958
-scRuntimeInfo mvOpeningSectorTasklogSetup =
+syTasklogSetup mvOpeningSectorTasklogSetup =
 {
-    0x00000000,
-	func_8000A5E4,
-	func_8000A340,
-	&ovl50_BSS_END,
-	0x00000000,
-	0x00000001,
-	0x00000002,
-	0x00004E20,
-	0x00001000,
-	0x00000000,
-	0x00000000,
-	0x00008000,
-	0x00020000,
-	0x0000C000,
-	mvOpeningSectorFuncLights,
-	update_contdata,
-	0x00000000,
-	0x00000600,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000088,
-	0x00000000,
-	0x800D5CAC,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000088,
-	0x00000000,
-	0x0000006C,
-	0x00000000,
-	0x00000090,
-	mvOpeningSectorFuncStart
+    // Task Logic Buffer Setup
+    {
+        0,                              // ???
+        func_8000A5E4,                  // Update function
+        func_8000A340,                  // Frame draw function
+        &ovl50_BSS_END,                 // Allocatable memory pool start
+        0,                              // Allocatable memory pool size
+        1,                              // ???
+        2,                              // Number of contexts?
+        0x4E20,                         // ???
+        0x1000,                         // ???
+        0,                              // ???
+        0,                              // ???
+        0x8000,                         // ???
+        2,                              // ???
+        0xC000,                         // ???
+        mvOpeningSectorFuncLights,      // Pre-render function
+        update_contdata,                // Controller I/O function
+    },
+
+    0,                                  // Number of GObjThreads
+    0x600,                              // Thread stack size
+    0,                                  // Number of thread stacks
+    0,                                  // ???
+    0,                                  // Number of GObjProcesses
+    0,                                  // Number of GObjs
+    sizeof(GObj),                       // GObj size
+    0,                                  // Number of Object Manager Matrices
+    dLBCommonProcMatrixList,            // Matrix function list
+    NULL,                               // Function for ejecting DObjDynamicStore?
+    0,                                  // Number of AObjs
+    0,                                  // Number of MObjs
+    0,                                  // Number of DObjs
+    sizeof(DObj),                       // DObj size
+    0,                                  // Number of SObjs
+    sizeof(SObj),                       // SObj size
+    0,                                  // Number of Cameras
+    sizeof(Camera),                     // Camera size
+    
+    mvOpeningSectorFuncStart            // Task start function
 };
 
 // 0x80132898
@@ -627,6 +628,6 @@ void mvOpeningSectorStartScene(void)
     dMVOpeningSectorDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMVOpeningSectorDisplaySetup);
 
-    mvOpeningSectorTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl50_BSS_END);
+    mvOpeningSectorTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl50_BSS_END);
     syTasklogInit(&mvOpeningSectorTasklogSetup);
 }

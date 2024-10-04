@@ -164,25 +164,25 @@ syTasklogSetup dSCAutoDemoTasklogSetup =
     // Task Logic Buffer Setup
     {
         0,                          // ???
-        scAutoDemoFuncUpdate,        // Update function
+        scAutoDemoFuncUpdate,       // Update function
         func_800A26B8,              // Frame draw function
         &ovl64_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???
         2,                          // Number of contexts?
-        0x6000,                     // ???
-        0x3000,                     // ???
-        0,                          // ???
-        0,                          // ???
-        0x8000,                     // ???
+        sizeof(Gfx) * 3072,         // Display List Buffer 0 Size
+        sizeof(Gfx) * 1536,         // Display List Buffer 1 Size
+        0,                          // Display List Buffer 2 Size
+        0,                          // Display List Buffer 3 Size
+        0x8000,                     // Graphics Heap Size
         2,                          // ???
-        0xC000,                     // ???
+        0xC000,                     // RDP Output Buffer Size
         scAutoDemoFuncLights,    	// Pre-render function
         update_contdata,            // Controller I/O function
     },
 
     0,                              // Number of GObjThreads
-    0x600,                          // Thread stack size
+    sizeof(u64) * 192,              // Thread stack size
     0,                              // Number of thread stacks
     0,                              // ???
     0,                              // Number of GObjProcesses

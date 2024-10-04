@@ -23,16 +23,16 @@ typedef struct syTasklogBufferSetup
 	/* 0x0C */ void *arena_start;           // Start of allocatable memory pool
 	/* 0x10 */ size_t arena_size;           // Size of allocatable memory pool for heap; usually from end of last overlay's .bss section to start of subsys (ovl1)
 	/* 0x14 */ u32 unk14; // count?
-	/* 0x18 */ s32 contexts_num;               // Number of contexts? (what even is a task?)
-	/* 0x1C */ u32 unk1C;
-	/* 0x20 */ u32 unk20;
-	/* 0x24 */ u32 unk24;
-	/* 0x28 */ u32 unk28;
-	/* 0x2C */ u32 unk2C;
+	/* 0x18 */ s32 contexts_num;            // Number of contexts? (what even is a task?)
+	/* 0x1C */ size_t dl_buffer0_size;
+	/* 0x20 */ size_t dl_buffer1_size;
+	/* 0x24 */ size_t dl_buffer2_size;
+	/* 0x28 */ size_t dl_buffer3_size;
+	/* 0x2C */ size_t graphics_arena_size;	// Graphics memory pool size
 	/* 0x30 */ u16 unk30;
-	/* 0x34 */ s32 unk34;
-	/* 0x38 */ void (*proc_lights)(Gfx**); 	// Lighting callback?
-	/* 0x3C */ void (*proc_controller)(); // controller read callback?
+	/* 0x34 */ s32 rdp_output_buffer_size;
+	/* 0x38 */ void (*func_lights)(Gfx**); 	// Lighting callback?
+	/* 0x3C */ void (*func_controller)(); // controller read callback?
 
 } syTasklogBufferSetup; // size == 0x40
 

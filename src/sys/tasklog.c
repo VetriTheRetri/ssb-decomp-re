@@ -1185,20 +1185,20 @@ void func_80006548(syTasklogBufferSetup *arg0, void (*arg1)())
 	);
 	for (i = 0; i < sSYTasklogCount; i++)
 	{
-		sp44[i][0].start  = syTasklogMalloc(arg0->unk1C, 0x8);
-		sp44[i][0].length = arg0->unk1C;
-		sp44[i][1].start  = syTasklogMalloc(arg0->unk20, 0x8);
-		sp44[i][1].length = arg0->unk20;
-		sp44[i][2].start  = syTasklogMalloc(arg0->unk24, 0x8);
-		sp44[i][2].length = arg0->unk24;
-		sp44[i][3].start  = syTasklogMalloc(arg0->unk28, 0x8);
-		sp44[i][3].length = arg0->unk28;
+		sp44[i][0].start  = syTasklogMalloc(arg0->dl_buffer0_size, 0x8);
+		sp44[i][0].length = arg0->dl_buffer0_size;
+		sp44[i][1].start  = syTasklogMalloc(arg0->dl_buffer1_size, 0x8);
+		sp44[i][1].length = arg0->dl_buffer1_size;
+		sp44[i][2].start  = syTasklogMalloc(arg0->dl_buffer2_size, 0x8);
+		sp44[i][2].length = arg0->dl_buffer2_size;
+		sp44[i][3].start  = syTasklogMalloc(arg0->dl_buffer3_size, 0x8);
+		sp44[i][3].length = arg0->dl_buffer3_size;
 	}
 	syTasklogSetDLBuffer(sp44);
 
 	for (i = 0; i < sSYTasklogCount; i++)
 	{
-		syMallocInit(&gSYTasklogGraphicsHeap, 0x10002, syTasklogMalloc(arg0->unk2C, 8), arg0->unk2C);
+		syMallocInit(&gSYTasklogGraphicsHeap, 0x10002, syTasklogMalloc(arg0->graphics_arena_size, 0x8), arg0->graphics_arena_size);
 		sSYTasklogDefaultGraphicsHeap[i].id    = gSYTasklogGraphicsHeap.id;
 		sSYTasklogDefaultGraphicsHeap[i].start = gSYTasklogGraphicsHeap.start;
 		sSYTasklogDefaultGraphicsHeap[i].end   = gSYTasklogGraphicsHeap.end;
@@ -1206,12 +1206,13 @@ void func_80006548(syTasklogBufferSetup *arg0, void (*arg1)())
 	}
 	arg0->unk30 = 2;
 
-	if (arg0->unk34 == 0)
-		arg0->unk34 = 0x1000;
-
-	func_80004CB4(arg0->unk30, syTasklogMalloc(arg0->unk34, 16), arg0->unk34);
-	dpSetScissorFunction(arg0->proc_lights);
-	D_80046668 = arg0->proc_controller;
+	if (arg0->rdp_output_buffer_size == 0)
+	{
+		arg0->rdp_output_buffer_size = 0x1000;
+	}
+	func_80004CB4(arg0->unk30, syTasklogMalloc(arg0->rdp_output_buffer_size, 0x10), arg0->rdp_output_buffer_size);
+	dpSetScissorFunction(arg0->func_lights);
+	D_80046668 = arg0->func_controller;
 	enable_auto_contread((uintptr_t)schedule_contread != (uintptr_t)D_80046668 ? TRUE : FALSE);
 
 	sSYTasklogUpdateCount = dSYTasklogFrameDrawCount = 0;

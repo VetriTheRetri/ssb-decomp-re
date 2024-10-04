@@ -159,13 +159,13 @@ syTasklogSetup dMVOpeningJungleTasklogSetup =
         0,                              // Allocatable memory pool size
         1,                              // ???
         2,                              // Number of contexts?
-        0x4000,                         // ???
-        0x2000,                         // ???
-        0,                              // ???
-        0,                              // ???
-        0x8000,                         // ???
+        sizeof(Gfx) * 2048,             // Display List Buffer 0 Size
+        sizeof(Gfx) * 1024,             // Display List Buffer 1 Size
+        0,                              // Display List Buffer 2 Size
+        0,                              // Display List Buffer 3 Size
+        0x8000,                         // Graphics Heap Size
         2,                              // ???
-        0xC000,                         // ???
+        0xC000,                         // RDP Output Buffer Size
         mvOpeningJungleFuncLights,      // Pre-render function
         update_contdata,                // Controller I/O function
     },

@@ -115,7 +115,7 @@ void mvOpeningMarioLoadFiles()
 	rldmSetup.force_status_buffer = D_ovl36_8018E3E8;
 	rldmSetup.force_status_buffer_size = ARRAY_COUNT(D_ovl36_8018E3E8);
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8), gMvOpeningMarioFilesArray, syProgMalloc(lbRelocGetAllocSize(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8), gMvOpeningMarioFilesArray, syTasklogMalloc(lbRelocGetAllocSize(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8)), 0x10));
 }
 
 // 8018D160
@@ -279,14 +279,14 @@ void mvOpeningMarioInitFighterStagePanel()
 // 8018D844
 void mvOpeningMarioRenderPosedFighterBackground(GObj *gobj)
 {
-	gDPPipeSync(gSYProgDLHeads[0]++);
-	gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 160, 170, 255, 255);
-	gDPSetCombineLERP(gSYProgDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-	gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-	gDPFillRectangle(gSYProgDLHeads[0]++, 10, 10, 110, 230);
-	gDPPipeSync(gSYProgDLHeads[0]++);
-	gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTasklogDLHeads[0]++);
+	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 160, 170, 255, 255);
+	gDPSetCombineLERP(gSYTasklogDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 10, 110, 230);
+	gDPPipeSync(gSYTasklogDLHeads[0]++);
+	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 8018D944
@@ -388,7 +388,7 @@ void mvOpeningMarioMainProc(GObj* arg0)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 1U;
-		syProgSetLoadScene();
+		syTasklogSetLoadScene();
 	}
 
 	if (gMvOpeningMarioFramesElapsed == 15)
@@ -403,7 +403,7 @@ void mvOpeningMarioMainProc(GObj* arg0)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 0x1F;
-		syProgSetLoadScene();
+		syTasklogSetLoadScene();
 	}
 }
 
@@ -442,7 +442,7 @@ void mvOpeningMarioInit()
 	efManagerInitEffects();
 	ftManagerSetupFilesAllKind(nFTKindMario);
 
-	gMvOpeningMarioAnimHeap = syProgMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMvOpeningMarioAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningMarioCreateNameViewport();
 	mvOpeningMarioCreatePosedFighterBackgroundViewport();
 	mvOpeningMarioCreatePosedFighterViewport();
@@ -491,5 +491,5 @@ void intro_focus_mario_entry()
 	D_ovl36_8018E11C.zbuffer = syDisplayGetZBuffer(6400);
 	func_80007024(&D_ovl36_8018E11C);
 	D_ovl36_8018E138.arena_size = (u32) ((uintptr_t)&lOverlay36ArenaHi - (uintptr_t)&lOverlay36ArenaLo);
-	syProgInit(&D_ovl36_8018E138);
+	syTasklogInit(&D_ovl36_8018E138);
 }

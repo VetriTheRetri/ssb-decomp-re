@@ -130,7 +130,7 @@ void scAddClient(SCClient *arg0, OSMesgQueue *mq, OSMesg *msg, u32 count) {
 
     osCreateMesgQueue(mq, msg, count);
     arg0->mq        = mq;
-    t.info.type     = SC_TASK_TYPE_ADD_CLIENT;
+    t.info.type     = nSYScheduleTaskAddClient;
     t.info.priority = 100;
     t.client        = arg0;
     func_80000970(&t.info);
@@ -183,7 +183,7 @@ s32 scCheckGfxTaskDefault(SCTaskGfx* t) {
 
 s32 func_80000B54(UNUSED SCTaskInfo *t) {
     SCTaskInfo *cur;
-    const s32 TYPE_TO_CHECK = SC_TASK_TYPE_GFX;
+    const s32 TYPE_TO_CHECK = nSYScheduleTaskGfx;
 
     if (scCurrentGfxTask != NULL && scCurrentGfxTask->info.type == TYPE_TO_CHECK) { return 0; }
 
@@ -708,7 +708,7 @@ s32 scExecuteTask(SCTaskInfo* task)
     SCTaskInfo* sp34[2];
 
     switch (task->type) {
-        case SC_TASK_TYPE_GFX: {
+        case nSYScheduleTaskGfx: {
             SCTaskGfx* t = (void*) task;
 
             if (t->unk68 != NULL) {
@@ -726,7 +726,7 @@ s32 scExecuteTask(SCTaskInfo* task)
             ret = 1;
             break;
         }
-        case SC_TASK_TYPE_AUDIO: {
+        case nSYScheduleTaskAudio: {
             SCTaskAudio* t = (void*) task;
 
             osWritebackDCacheAll();
@@ -734,7 +734,7 @@ s32 scExecuteTask(SCTaskInfo* task)
             ret = 1;
             break;
         }
-        case SC_TASK_TYPE_ADD_CLIENT: {
+        case nSYScheduleTaskAddClient: {
             SCTaskAddClient* t = (void*) task;
             SCClient* temp;
 
@@ -747,7 +747,7 @@ s32 scExecuteTask(SCTaskInfo* task)
             }
             break;
         }
-        case SC_TASK_TYPE_VI: {
+        case nSYScheduleTaskVi: {
             SCTaskVi* t = (void*) task;
 
             func_80000F30(t->width, t->height, t->flags, t->edgeOffsetLeft, t->edgeOffsetRight, t->edgeOffsetTop, t->edgeOffsetBottom);
@@ -757,7 +757,7 @@ s32 scExecuteTask(SCTaskInfo* task)
             }
             break;
         }
-        case SC_TASK_TYPE_FRAMEBUFFERS: {
+        case nSYScheduleTaskFramebuffers: {
             SCTaskFb* t = (void*) task;
             s32 i;
 
@@ -770,18 +770,18 @@ s32 scExecuteTask(SCTaskInfo* task)
             }
             break;
         }
-        case SC_TASK_TYPE_GFX_END: {
+        case nSYScheduleTaskGfxEnd: {
             SCTaskGfxEnd* t = (void*) task;
             SCTaskGfx* v1 = NULL;
             SCTaskInfo* v0;
 
-            if (scCurrentGfxTask != NULL && scCurrentGfxTask->info.type == SC_TASK_TYPE_GFX && scCurrentGfxTask->task_id == t->task_id) {
+            if (scCurrentGfxTask != NULL && scCurrentGfxTask->info.type == nSYScheduleTaskGfx && scCurrentGfxTask->task_id == t->task_id) {
                 v1 = scCurrentGfxTask;
             }
 
             v0 = &scPausedQueueHead->info;
             while (v0 != NULL) {
-                if (v0->type == SC_TASK_TYPE_GFX) {
+                if (v0->type == nSYScheduleTaskGfx) {
                     if (((SCTaskGfx*) v0)->task_id == t->task_id) {
                         v1 = (void*) v0;
                     }
@@ -791,7 +791,7 @@ s32 scExecuteTask(SCTaskInfo* task)
 
             v0 = scMainQueueHead;
             while (v0 != NULL) {
-                if (v0->type == SC_TASK_TYPE_GFX) {
+                if (v0->type == nSYScheduleTaskGfx) {
                     if (((SCTaskGfx*) v0)->task_id == t->task_id) {
                         v1 = (void*) v0;
                     }
@@ -802,7 +802,7 @@ s32 scExecuteTask(SCTaskInfo* task)
 
             v0 = &scCurrentQueue3Task->info;
             if (v0 != NULL) {
-                if (v0->type == SC_TASK_TYPE_GFX) {
+                if (v0->type == nSYScheduleTaskGfx) {
                     if (scCurrentGfxTask->task_id == t->task_id) {
                         v1 = (void*) v0;
                     }
@@ -811,7 +811,7 @@ s32 scExecuteTask(SCTaskInfo* task)
 
             v0 = &scQueue3Head->info;
             while (v0 != NULL) {
-                if (v0->type == SC_TASK_TYPE_GFX) {
+                if (v0->type == nSYScheduleTaskGfx) {
                     if (((SCTaskGfx*) v0)->task_id == t->task_id) {
                         v1 = (void*) v0;
                     }
@@ -834,12 +834,12 @@ s32 scExecuteTask(SCTaskInfo* task)
             }
             break;
         }
-        case SC_TASK_TYPE_NOP:
+        case nSYScheduleTaskNoOp:
             if (task->mq != NULL) {
                 osSendMesg(task->mq, (OSMesg) task->retVal, OS_MESG_NOBLOCK);
             }
             break;
-        case SC_TASK_TYPE_RDP_BUFFER: {
+        case nSYScheduleTaskRdpBuffer: {
             SCTaskRDPBuffer* t = (void*) task;
 
             scRDPBuffer = t->buffer;
@@ -849,7 +849,7 @@ s32 scExecuteTask(SCTaskInfo* task)
             }
             break;
         }
-        case SC_TASK_TYPE_CUSTOM_BUFFERING: {
+        case nSYScheduleTaskCustomBuffer: {
             SCTaskType9* t = (void*) task;
 
             scUseCustomSwapBufferFunc = TRUE;
@@ -860,7 +860,7 @@ s32 scExecuteTask(SCTaskInfo* task)
             }
             break;
         }
-        case SC_TASK_TYPE_DEFAULT_BUFFERING:
+        case nSYScheduleTaskDefaultBuffer:
             scUseCustomSwapBufferFunc = FALSE;
             if (task->mq != NULL) {
                 osSendMesg(task->mq, (OSMesg) task->retVal, OS_MESG_NOBLOCK);
@@ -869,7 +869,7 @@ s32 scExecuteTask(SCTaskInfo* task)
         case SC_TASK_TYPE_11: {
             SCTaskInfo* a0 = scMainQueueHead;
             while (a0 != NULL) {
-                if (a0->type == SC_TASK_TYPE_GFX || a0->type == SC_TASK_TYPE_VI) {
+                if (a0->type == nSYScheduleTaskGfx || a0->type == nSYScheduleTaskVi) {
                     sp34[0] = a0->next;
                     scMainQueueRemove(a0);
                     a0 = sp34[0];
@@ -973,7 +973,7 @@ void func_8000205C(void) {
 
 // 800020D0
 void scHandleSPTaskDone(void) {
-    if (scCurrentAudioTask != NULL && scCurrentAudioTask->info.state == SC_TASK_STATE_RUNNING) {
+    if (scCurrentAudioTask != NULL && scCurrentAudioTask->info.state == nSYScheduleStatusTaskRunning) {
         osSendMesg(scCurrentAudioTask->info.mq, (OSMesg) 0, OS_MESG_NOBLOCK);
         scCurrentAudioTask = NULL;
         scExecuteTasks();
@@ -981,20 +981,20 @@ void scHandleSPTaskDone(void) {
         return;
     }
 
-    if (scCurrentGfxTask != NULL && scCurrentGfxTask->info.state == SC_TASK_STATE_SUSPENDING) {
+    if (scCurrentGfxTask != NULL && scCurrentGfxTask->info.state == nSYScheduleStatusTaskSuspending) {
         if (osSpTaskYielded(&scCurrentGfxTask->task) == OS_TASK_YIELDED) {
-            scCurrentGfxTask->info.state = SC_TASK_STATE_SUSPENDED;
+            scCurrentGfxTask->info.state = nSYScheduleStatusTaskSuspended;
             scPausedQueueAdd(scCurrentGfxTask);
             scCurrentGfxTask = NULL;
         } else {
-            scCurrentGfxTask->info.state = SC_TASK_STATE_STOPPED;
+            scCurrentGfxTask->info.state = nSYScheduleStatusTaskStopped;
         }
         osSpTaskStart(&scCurrentAudioTask->task);
-        scCurrentAudioTask->info.state = SC_TASK_STATE_RUNNING;
+        scCurrentAudioTask->info.state = nSYScheduleStatusTaskRunning;
     }
 
-    if (scCurrentGfxTask != NULL && scCurrentGfxTask->info.unk18 == 1 && scCurrentGfxTask->info.state != SC_TASK_STATE_SUSPENDED) {
-        if (scCurrentGfxTask->info.type == SC_TASK_TYPE_GFX && scCurrentGfxTask->unk74 == 1) {
+    if (scCurrentGfxTask != NULL && scCurrentGfxTask->info.unk18 == 1 && scCurrentGfxTask->info.state != nSYScheduleStatusTaskSuspended) {
+        if (scCurrentGfxTask->info.type == nSYScheduleTaskGfx && scCurrentGfxTask->unk74 == 1) {
             osInvalDCache(&scUnknownU64, sizeof(scUnknownU64));
             scCurrentGfxTask->rdp_buffer_size = scUnknownU64;
             scRDPOutputBufferUsed += (s32) scUnknownU64;
@@ -1004,7 +1004,7 @@ void scHandleSPTaskDone(void) {
                 while (TRUE);
             }
 
-            scCurrentGfxTask->info.state = SC_TASK_STATE_QUEUED;
+            scCurrentGfxTask->info.state = nSYScheduleStatusTaskQueued;
             func_80000E24(scCurrentGfxTask);
             func_80001FF4();
         }
@@ -1013,8 +1013,8 @@ void scHandleSPTaskDone(void) {
         return;
     }
 
-    if (scCurrentGfxTask != NULL && scCurrentGfxTask->info.unk18 == 2 && scCurrentGfxTask->info.type == SC_TASK_TYPE_GFX) {
-        scCurrentGfxTask->info.state = SC_TASK_STATE_STOPPED;
+    if (scCurrentGfxTask != NULL && scCurrentGfxTask->info.unk18 == 2 && scCurrentGfxTask->info.type == nSYScheduleTaskGfx) {
+        scCurrentGfxTask->info.state = nSYScheduleStatusTaskStopped;
         if (!(scCurrentGfxTask->unk7C & 2)) {
             scCurrentGfxTask->unk7C |= 1;
         }

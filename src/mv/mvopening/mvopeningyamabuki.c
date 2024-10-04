@@ -4,14 +4,11 @@
 #include <sys/system_00.h>
 #include <lb/library.h>
 
-extern void syProgSetLoadScene();
+extern void syTasklogSetLoadScene();
 extern u32 func_8000092C();
 extern void func_800A26B8();
 
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
-
-
-
 
 // // // // // // // // // // // //
 //                               //
@@ -384,14 +381,14 @@ void mvOpeningYamabukiProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            syProgSetLoadScene();
+            syTasklogSetLoadScene();
         }
         if (sMVOpeningYamabukiTotalTimeTics == 160)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindOpeningJungle;
 
-            syProgSetLoadScene();
+            syTasklogSetLoadScene();
         }
     }
 }
@@ -417,7 +414,7 @@ void mvOpeningYamabukiProcStart(void)
         dMVOpeningYamabukiFileIDs,
         ARRAY_COUNT(dMVOpeningYamabukiFileIDs),
         sMVOpeningYamabukiFiles,
-        syProgMalloc
+        syTasklogMalloc
         (
             lbRelocGetAllocSize
             (
@@ -437,7 +434,7 @@ void mvOpeningYamabukiProcStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(nFTKindPikachu);
 
-    sMVOpeningYamabukiFighterAnimHeap = syProgMalloc(gFTManagerFigatreeHeapSize, 0x10);
+    sMVOpeningYamabukiFighterAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
     mvOpeningYamabukiMakeMainViewport();
     mvOpeningYamabukiMakeWallpaperViewport();
@@ -462,5 +459,5 @@ void mvOpeningYamabukiStartScene(void)
     func_80007024(&dMVOpeningYamabukiDisplaySetup);
 
     dMVOpeningYamabukiGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl48_BSS_END);
-    syProgInit(&dMVOpeningYamabukiGtlSetup);
+    syTasklogInit(&dMVOpeningYamabukiGtlSetup);
 }

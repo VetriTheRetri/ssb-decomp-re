@@ -7,28 +7,31 @@
 #include <PR/sptask.h>
 #include <PR/ultratypes.h>
 
-enum SCTaskType {
-    SC_TASK_TYPE_GFX = 1,
-    SC_TASK_TYPE_AUDIO = 2,
-    SC_TASK_TYPE_ADD_CLIENT = 3,
-    SC_TASK_TYPE_VI = 4,
-    SC_TASK_TYPE_FRAMEBUFFERS = 5,
-    SC_TASK_TYPE_GFX_END = 6,
-    SC_TASK_TYPE_NOP = 7,
-    SC_TASK_TYPE_RDP_BUFFER = 8,
-    SC_TASK_TYPE_CUSTOM_BUFFERING = 9,
-    SC_TASK_TYPE_DEFAULT_BUFFERING = 10,
-    SC_TASK_TYPE_11 = 11
+enum SCTaskType
+{
+    nSYScheduleTaskNone,
+    nSYScheduleTaskGfx,
+    nSYScheduleTaskAudio,
+    nSYScheduleTaskAddClient,
+    nSYScheduleTaskVi,
+    nSYScheduleTaskFramebuffers,
+    nSYScheduleTaskGfxEnd,
+    nSYScheduleTaskNoOp,
+    nSYScheduleTaskRdpBuffer,
+    nSYScheduleTaskCustomBuffer,
+    nSYScheduleTaskDefaultBuffer,
+    SC_TASK_TYPE_11
 };
 
-enum SCTaskState {
-    SC_TASK_STATE_0 = 0,
-    SC_TASK_STATE_QUEUED = 1,
-    SC_TASK_STATE_RUNNING = 2,
-    SC_TASK_STATE_PRIORITY_PENDING = 3,
-    SC_TASK_STATE_SUSPENDING = 4,
-    SC_TASK_STATE_SUSPENDED = 5,
-    SC_TASK_STATE_STOPPED = 6
+enum SCTaskState
+{
+    nSYScheduleStatusDefault,
+    nSYScheduleStatusTaskQueued,
+    nSYScheduleStatusTaskRunning,
+    nSYScheduleStatusTaskPending,
+    nSYScheduleStatusTaskSuspending,
+    nSYScheduleStatusTaskSuspended,
+    nSYScheduleStatusTaskStopped
 };
 
 struct SCTaskInfo;
@@ -37,7 +40,8 @@ struct SCTaskGfx;
 typedef s32 (*SCTaskCallback)(struct SCTaskInfo *);
 typedef s32 (*SCTaskGfxCallback)(struct SCTaskGfx *);
 
-typedef struct SCClient {
+typedef struct SCClient
+{
     /* 0x00 */ struct SCClient* next;
     /* 0x04 */ OSMesgQueue* mq;
 } SCClient; // size = 0x8
@@ -84,12 +88,14 @@ typedef struct SCTaskGfx
 
 } SCTaskGfx; // size = 0x84
 
-typedef struct {
+typedef struct
+{
     /* 0x00 */ SCTaskInfo info;
     /* 0x28 */ OSTask task;
 } SCTaskAudio; // size = 0x68
 
-typedef struct {
+typedef struct
+{
     /* 0x00 */ SCTaskInfo info;
     /* 0x24 */ s32 width;
     /* 0x28 */ s32 height;
@@ -100,18 +106,21 @@ typedef struct {
     /* 0x36 */ s16 edgeOffsetBottom;
 } SCTaskVi; // size == 0x38
 
-typedef struct {
+typedef struct
+{
     /* 0x00 */ SCTaskInfo info;
     /* 0x24 */ void* unk24[3]; // frame buffer pointers
 } SCTaskFb;                    // size == 0x30
 
-typedef struct {
+typedef struct
+{
     /* 0x00 */ SCTaskInfo info;
     /* 0x24 */ void* buffer;
     /* 0x28 */ s32 size;
 } SCTaskRDPBuffer; // size >= 0x2C
 
-typedef struct {
+typedef struct
+{
     /* 0x00 */ SCTaskInfo info;
     /* 0x24 */ SCClient* client;
 } SCTaskAddClient; // size == 0x28

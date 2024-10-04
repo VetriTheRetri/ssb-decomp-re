@@ -40,7 +40,7 @@ u32 syDisplayGetFillColor(u32 color) {
 void syDisplayUpdateFramebufs(void *fb1, void *fb2, void *fb3) {
     SCTaskFb mesg;
 
-    mesg.info.type      = SC_TASK_TYPE_FRAMEBUFFERS;
+    mesg.info.type      = nSYScheduleTaskFramebuffers;
     mesg.info.priority  = 100;
     sSYDisplayFramebufs[0] = mesg.unk24[0] = fb1;
     sSYDisplayFramebufs[1] = mesg.unk24[1] = fb2;
@@ -92,7 +92,7 @@ void func_80006EF4(SCTaskVi *task) {
 
 void func_80006F5C(SCTaskVi *task) {
     if (D_80046684) {
-        task->info.type     = SC_TASK_TYPE_VI;
+        task->info.type     = nSYScheduleTaskVi;
         task->info.priority = 50;
         task->info.fnCheck  = NULL;
         task->info.mq       = NULL;
@@ -115,7 +115,7 @@ void func_80006FB8(s32 width, s32 height, u32 arg2)
     func_80006E18(arg2);
     syDisplaySetResWidth(width);
     syDisplaySetResHeight(height);
-    task.info.type     = SC_TASK_TYPE_VI;
+    task.info.type     = nSYScheduleTaskVi;
     task.info.priority = 100;
     func_80006EF4(&task);
     func_80000970((void *)&task.info);

@@ -24,7 +24,7 @@
         dGMCommonFileIDs,                                                   \
         ARRAY_COUNT(dGMCommonFileIDs),                                      \
         gGMCommonFiles,                                                     \
-        syProgMalloc                                                       \
+        syTasklogMalloc                                                       \
         (                                                                   \
             lbRelocGetAllocSize                                             \
             (                                                               \

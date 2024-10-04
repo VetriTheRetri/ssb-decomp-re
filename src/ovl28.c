@@ -350,11 +350,11 @@ s32 mnTrainingGetPortraitId(s32 ft_kind)
 // 80132070
 void mnTrainingRenderPortraitWithNoise(GObj *portrait_gobj)
 {
-	gDPPipeSync(gSYProgDLHeads[0]++);
-	gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0x30, 0x30, 0x30, 0xFF);
-	gDPSetCombineLERP(gSYProgDLHeads[0]++, NOISE, TEXEL0, PRIMITIVE, TEXEL0, 0, 0, 0, TEXEL0, NOISE, TEXEL0, PRIMITIVE, TEXEL0,  0, 0, 0, TEXEL0);
-	gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPPipeSync(gSYTasklogDLHeads[0]++);
+	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x30, 0x30, 0x30, 0xFF);
+	gDPSetCombineLERP(gSYTasklogDLHeads[0]++, NOISE, TEXEL0, PRIMITIVE, TEXEL0, 0, 0, 0, TEXEL0, NOISE, TEXEL0, PRIMITIVE, TEXEL0,  0, 0, 0, TEXEL0);
+	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 	lbCommonDrawSObjNoAttr(portrait_gobj);
 }
 
@@ -1807,7 +1807,7 @@ void mnTrainingGoBackTo1PMenu()
 	mnTrainingSaveMatchInfo();
 	auStopBGM();
 	func_800266A0_272A0();
-	syProgSetLoadScene();
+	syTasklogSetLoadScene();
 }
 
 // 80135818
@@ -2080,12 +2080,12 @@ void mnTrainingCreateCursor(s32 port_id)
 // 801363C8
 void mnTrainingRenderToken(GObj* token_gobj)
 {
-	gDPPipeSync(gSYProgDLHeads[0]++);
-	gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-	gDPSetEnvColor(gSYProgDLHeads[0]++, gMNTrainingTokenShinePulseColor & 0xFF, gMNTrainingTokenShinePulseColor & 0xFF, gMNTrainingTokenShinePulseColor & 0xFF, gMNTrainingTokenShinePulseColor & 0xFF);
-	gDPSetCombineLERP(gSYProgDLHeads[0]++, TEXEL0, PRIMITIVE, ENVIRONMENT, PRIMITIVE,  0, 0, 0, TEXEL0,  TEXEL0, PRIMITIVE, ENVIRONMENT, PRIMITIVE,  0, 0, 0, TEXEL0);
-	gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPPipeSync(gSYTasklogDLHeads[0]++);
+	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+	gDPSetEnvColor(gSYTasklogDLHeads[0]++, gMNTrainingTokenShinePulseColor & 0xFF, gMNTrainingTokenShinePulseColor & 0xFF, gMNTrainingTokenShinePulseColor & 0xFF, gMNTrainingTokenShinePulseColor & 0xFF);
+	gDPSetCombineLERP(gSYTasklogDLHeads[0]++, TEXEL0, PRIMITIVE, ENVIRONMENT, PRIMITIVE,  0, 0, 0, TEXEL0,  TEXEL0, PRIMITIVE, ENVIRONMENT, PRIMITIVE,  0, 0, 0, TEXEL0);
+	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
 	lbCommonDrawSObjNoAttr(token_gobj);
 }
@@ -2524,7 +2524,7 @@ void mnTrainingMain(s32 arg0)
 		gSceneData.scene_current = nSCKindTitle;
 
 		mnTrainingSaveMatchInfo();
-		syProgSetLoadScene();
+		syTasklogSetLoadScene();
 
 		return;
 	}
@@ -2542,7 +2542,7 @@ void mnTrainingMain(s32 arg0)
 			gSceneData.scene_current = nSCKindVSMaps;
 
 			mnTrainingSaveMatchInfo();
-			syProgSetLoadScene();
+			syTasklogSetLoadScene();
 		}
 	}
 	else if ((scSubsysControllerGetPlayerTapButtons(START_BUTTON)) && (gMNTrainingFramesElapsed >= 0x3D))
@@ -2740,7 +2740,7 @@ void mnTrainingInitCSS()
 	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl28_801388A0;
 	rldmSetup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl28_80137F60, 8U, gMNTrainingFilesArray, syProgMalloc(lbRelocGetAllocSize(D_ovl28_80137F60, 8U), 0x10U));
+	lbRelocLoadFilesExtern(D_ovl28_80137F60, 8U, gMNTrainingFilesArray, syTasklogMalloc(lbRelocGetAllocSize(D_ovl28_80137F60, 8U), 0x10U));
 
 	gcMakeGObjSPAfter(0x400U, &mnTrainingMain, 0xFU, 0x80000000U);
 	gcMakeDefaultCameraGObj(0x10, 0x80000000U, 0x64, 1, 0);
@@ -2753,7 +2753,7 @@ void mnTrainingInitCSS()
 		ftManagerSetupFilesAllKind(i);
 
 	for (i = 0; i < 4; i++)
-		gMNTrainingPanels[i].figatree_heap = syProgMalloc(gFTManagerFigatreeHeapSize, 0x10U);
+		gMNTrainingPanels[i].figatree_heap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10U);
 
 	mnTrainingCreatePortraitViewport();
 	mnTrainingCreateCursorViewport();

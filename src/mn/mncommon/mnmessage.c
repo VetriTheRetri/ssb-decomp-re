@@ -85,14 +85,14 @@ void mnMessageMakeWallpaper(void)
 // 0x80131BA4
 void mnMessageTintProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYProgDLHeads[0]++);
-    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0x00, 0x00, 0xFF, 0x3F);
-    gDPSetCombineMode(gSYProgDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gSYProgDLHeads[0]++, 10, 10, 310, 230);
-    gDPPipeSync(gSYProgDLHeads[0]++);
-    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x00, 0x00, 0xFF, 0x3F);
+    gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     
     lbCommonClearExternSpriteParams();
 }
@@ -312,7 +312,7 @@ void mnMessageProcRun(GObj *gobj)
         if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
         {
             mnMessageApplyUnlock();
-            syProgSetLoadScene();
+            syTasklogSetLoadScene();
         }
     }
 }
@@ -337,7 +337,7 @@ void mnMessageProcStart(void)
         dMNMessageFileIDs,
         ARRAY_COUNT(dMNMessageFileIDs),
         sMNMessageFiles,
-        syProgMalloc
+        syTasklogMalloc
         (
             lbRelocGetAllocSize
             (
@@ -423,7 +423,7 @@ void mnMessageStartScene(void)
         sMNMessageQueueID++
     )
     {
-        syProgInit(&dMNMessageGtlSetup);
+        syTasklogInit(&dMNMessageGtlSetup);
     }
     if (gSceneData.scene_previous == nSCKindVSResults)
     {

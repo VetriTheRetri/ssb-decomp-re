@@ -566,7 +566,7 @@ void mnModeSelectProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            syProgSetLoadScene();
+            syTasklogSetLoadScene();
             return;
         }
         if (scSubsysControllerCheckNoInputAll() == FALSE)
@@ -597,7 +597,7 @@ void mnModeSelectProcRun(GObj *gobj)
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = nSCKind1PMode;
                 
-                syProgSetLoadScene();
+                syTasklogSetLoadScene();
                 return;
                 
             case nMNModeSelectOptionVSMode:
@@ -606,7 +606,7 @@ void mnModeSelectProcRun(GObj *gobj)
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = nSCKindVSMode;
                 
-                syProgSetLoadScene();
+                syTasklogSetLoadScene();
                 return;
                 
             case nMNModeSelectOptionOption:
@@ -615,7 +615,7 @@ void mnModeSelectProcRun(GObj *gobj)
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = nSCKindOption;
                 
-                syProgSetLoadScene();
+                syTasklogSetLoadScene();
                 return;
                 
             case nMNModeSelectOptionData:
@@ -624,7 +624,7 @@ void mnModeSelectProcRun(GObj *gobj)
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = nSCKindData;
                 
-                syProgSetLoadScene();
+                syTasklogSetLoadScene();
                 return;
             }
         }
@@ -637,7 +637,7 @@ void mnModeSelectProcRun(GObj *gobj)
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = nSCKindTitle;
             
-                syProgSetLoadScene();
+                syTasklogSetLoadScene();
             }
             if
             (
@@ -733,7 +733,7 @@ void mnModeSelectProcStart(void)
         dMNModeSelectFileIDs,
         ARRAY_COUNT(dMNModeSelectFileIDs),
         sMNModeSelectFiles,
-        syProgMalloc
+        syTasklogMalloc
         (
             lbRelocGetAllocSize
             (
@@ -772,5 +772,5 @@ void mnModeSelectStartScene(void)
     func_80007024(&dMNModeSelectDisplaySetup);
     
     dMNModeSelectGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl17_BSS_END);
-    syProgInit(&dMNModeSelectGtlSetup);
+    syTasklogInit(&dMNModeSelectGtlSetup);
 }

@@ -435,14 +435,14 @@ void mvOpeningFirstDestinationRenderHALLogoBackground(GObj* logo_gobj)
 		}
 	}
 
-	gDPPipeSync(gSYProgDLHeads[1]++);
-	gDPSetCycleType(gSYProgDLHeads[1]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYProgDLHeads[1]++, 0, 0, 0, 0, 0, gMvOpeningFirstDestinationOverlayAlpha);
-	gDPSetCombineLERP(gSYProgDLHeads[1]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-	gDPSetRenderMode(gSYProgDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-	gDPFillRectangle(gSYProgDLHeads[1]++, 10, 10, 310, 230);
-	gDPPipeSync(gSYProgDLHeads[1]++);
-	gDPSetRenderMode(gSYProgDLHeads[1]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTasklogDLHeads[1]++);
+	gDPSetCycleType(gSYTasklogDLHeads[1]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTasklogDLHeads[1]++, 0, 0, 0, 0, 0, gMvOpeningFirstDestinationOverlayAlpha);
+	gDPSetCombineLERP(gSYTasklogDLHeads[1]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+	gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPFillRectangle(gSYTasklogDLHeads[1]++, 10, 10, 310, 230);
+	gDPPipeSync(gSYTasklogDLHeads[1]++);
+	gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 80132544
@@ -578,14 +578,14 @@ void mvOpeningFirstDestinationRenderCloseupOverlay(GObj* arg0)
 			gMvOpeningFirstDestinationOverlayAlpha = 0xA0;
 	}
 
-	gDPPipeSync(gSYProgDLHeads[0]++);
-	gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0, 0, 0, gMvOpeningFirstDestinationOverlayAlpha);
-	gDPSetCombineLERP(gSYProgDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-	gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
-	gDPFillRectangle(gSYProgDLHeads[0]++, 10, 10, 310, 230);
-	gDPPipeSync(gSYProgDLHeads[0]++);
-	gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTasklogDLHeads[0]++);
+	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0, 0, 0, gMvOpeningFirstDestinationOverlayAlpha);
+	gDPSetCombineLERP(gSYTasklogDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+	gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 10, 310, 230);
+	gDPPipeSync(gSYTasklogDLHeads[0]++);
+	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 80132CEC
@@ -609,18 +609,18 @@ void mvOpeningFirstDestinationCreateOverlayViewport()
 // 80132DE8
 void mvOpeningFirstDestinationRenderBackground(GObj* bg_gobj)
 {
-	gDPPipeSync(gSYProgDLHeads[0]++);
-	gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimDepth(gSYProgDLHeads[0]++, 36863.0F, 1);
-	gDPSetDepthSource(gSYProgDLHeads[0]++, G_ZS_PRIM);
-	gDPSetRenderMode(gSYProgDLHeads[0]++, AA_EN | Z_CMP | IM_RD | CVG_DST_CLAMP | ZMODE_OPA | ALPHA_CVG_SEL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_A_MEM), AA_EN | Z_CMP | IM_RD | CVG_DST_CLAMP | ZMODE_OPA | ALPHA_CVG_SEL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_A_MEM));
-	gDPSetCombineLERP(gSYProgDLHeads[0]++, 0, 0, 0, TEXEL0,  0, 0, 0, TEXEL0,  0, 0, 0, TEXEL0,  0, 0, 0, TEXEL0);
+	gDPPipeSync(gSYTasklogDLHeads[0]++);
+	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimDepth(gSYTasklogDLHeads[0]++, 36863.0F, 1);
+	gDPSetDepthSource(gSYTasklogDLHeads[0]++, G_ZS_PRIM);
+	gDPSetRenderMode(gSYTasklogDLHeads[0]++, AA_EN | Z_CMP | IM_RD | CVG_DST_CLAMP | ZMODE_OPA | ALPHA_CVG_SEL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_A_MEM), AA_EN | Z_CMP | IM_RD | CVG_DST_CLAMP | ZMODE_OPA | ALPHA_CVG_SEL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_A_MEM));
+	gDPSetCombineLERP(gSYTasklogDLHeads[0]++, 0, 0, 0, TEXEL0,  0, 0, 0, TEXEL0,  0, 0, 0, TEXEL0,  0, 0, 0, TEXEL0);
 
 	lbCommonDrawSObjNoAttr(bg_gobj);
-	gDPPipeSync(gSYProgDLHeads[0]++);
-	gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetDepthSource(gSYProgDLHeads[0]++, G_ZS_PIXEL);
-	gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTasklogDLHeads[0]++);
+	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetDepthSource(gSYTasklogDLHeads[0]++, G_ZS_PIXEL);
+	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 80132F44
@@ -850,37 +850,37 @@ void mvOpeningFirstDestinationCreateHALLogoViewport()
 // 80133B58
 void mvOpeningFirstDestinationRenderTransitionGFXOverlay(GObj* gobj)
 {
-	gDPPipeSync(gSYProgDLHeads[0]++);
-	gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetColorImage(gSYProgDLHeads[0]++, G_IM_FMT_RGBA, G_IM_SIZ_16b, gSYDisplayResWidth, gSYDisplayZBuffer);
-	gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 255, 255, 255, 255);
-	gDPSetCombineLERP(gSYProgDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, 1,  0, 0, 0, PRIMITIVE,  0, 0, 0, 1);
-	gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_PASS, G_RM_OPA_SURF2);
+	gDPPipeSync(gSYTasklogDLHeads[0]++);
+	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetColorImage(gSYTasklogDLHeads[0]++, G_IM_FMT_RGBA, G_IM_SIZ_16b, gSYDisplayResWidth, gSYDisplayZBuffer);
+	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 255, 255, 255, 255);
+	gDPSetCombineLERP(gSYTasklogDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, 1,  0, 0, 0, PRIMITIVE,  0, 0, 0, 1);
+	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_PASS, G_RM_OPA_SURF2);
 	gcDrawDObjDLHead0(gobj);
-	gDPPipeSync(gSYProgDLHeads[0]++);
-	gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetColorImage(gSYProgDLHeads[0]++, G_IM_FMT_RGBA, gSYDisplayPixelComponentSize, gSYDisplayResWidth, (void*)0x0F000000);
-	gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTasklogDLHeads[0]++);
+	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetColorImage(gSYTasklogDLHeads[0]++, G_IM_FMT_RGBA, gSYDisplayPixelComponentSize, gSYDisplayResWidth, (void*)0x0F000000);
+	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 80133CEC
 void mvOpeningFirstDestinationRenderTransitionGFXOutline(GObj* gobj)
 {
-	gDPPipeSync(gSYProgDLHeads[0]++);
-	gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetColorImage(gSYProgDLHeads[0]++, G_IM_FMT_RGBA, G_IM_SIZ_16b, gSYDisplayResWidth, gSYDisplayZBuffer);
-	gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0, 0, 0, 255);
-	gDPSetCombineLERP(gSYProgDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-	gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-	gDPFillRectangle(gSYProgDLHeads[0]++, 0, 0, 320, 240);
-	gDPPipeSync(gSYProgDLHeads[0]++);
-	gDPSetColorImage(gSYProgDLHeads[0]++, G_IM_FMT_RGBA, gSYDisplayPixelComponentSize, gSYDisplayResWidth, (void*)0x0F000000);
-	gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
-	gDPSetCombineLERP(gSYProgDLHeads[0]++, 0, 0, 0, SHADE,  0, 0, 0, 1,  0, 0, 0, SHADE,  0, 0, 0, 1);
+	gDPPipeSync(gSYTasklogDLHeads[0]++);
+	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetColorImage(gSYTasklogDLHeads[0]++, G_IM_FMT_RGBA, G_IM_SIZ_16b, gSYDisplayResWidth, gSYDisplayZBuffer);
+	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0, 0, 0, 255);
+	gDPSetCombineLERP(gSYTasklogDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPFillRectangle(gSYTasklogDLHeads[0]++, 0, 0, 320, 240);
+	gDPPipeSync(gSYTasklogDLHeads[0]++);
+	gDPSetColorImage(gSYTasklogDLHeads[0]++, G_IM_FMT_RGBA, gSYDisplayPixelComponentSize, gSYDisplayResWidth, (void*)0x0F000000);
+	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
+	gDPSetCombineLERP(gSYTasklogDLHeads[0]++, 0, 0, 0, SHADE,  0, 0, 0, 1,  0, 0, 0, SHADE,  0, 0, 0, 1);
 	gcDrawDObjDLHead0(gobj);
-	gDPPipeSync(gSYProgDLHeads[0]++);
-	gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTasklogDLHeads[0]++);
+	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 80133EFC
@@ -1019,7 +1019,7 @@ void mvOpeningFirstDestinationMainProc(GObj* arg0)
 		{
 			gSceneData.scene_previous = gSceneData.scene_current;
 			gSceneData.scene_current = 1;
-			syProgSetLoadScene();
+			syTasklogSetLoadScene();
 		}
 
 		if (gMvOpeningFirstDestinationFramesElapsed == 280)
@@ -1098,7 +1098,7 @@ void mvOpeningFirstDestinationMainProc(GObj* arg0)
 		{
 			gSceneData.scene_previous = gSceneData.scene_current;
 			gSceneData.scene_current = 0x1D;
-			syProgSetLoadScene();
+			syTasklogSetLoadScene();
 		}
 	}
 }
@@ -1120,7 +1120,7 @@ void mvOpeningFirstDestinationInit()
 	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl34_80135078;
 	rldmSetup.force_status_buffer_size = ARRAY_COUNT(D_ovl34_80135078);
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20), gMvOpeningFirstDestinationFilesArray, syProgMalloc(lbRelocGetAllocSize(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20), gMvOpeningFirstDestinationFilesArray, syTasklogMalloc(lbRelocGetAllocSize(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20)), 0x10));
 
 	gcMakeGObjSPAfter(0, mvOpeningFirstDestinationMainProc, 0, 0x80000000);
 	gMvOpeningFirstDestinationCameraGObj = gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
@@ -1131,9 +1131,9 @@ void mvOpeningFirstDestinationInit()
 	ftManagerSetupFilesAllKind(gMvOpeningFirstDestinationPluckedFighterKind);
 	ftManagerSetupFilesAllKind(gMvOpeningFirstDestinationDroppedFighterKind);
 	ftManagerSetupFilesAllKind(nFTKindBoss);
-	gMvOpeningFirstDestinationMasterHandAnimHeap = syProgMalloc(gFTManagerFigatreeHeapSize, 0x10);
-	gMvOpeningFirstDestinationPluckedFighterAnimHeap = syProgMalloc(gFTManagerFigatreeHeapSize, 0x10);
-	gMvOpeningFirstDestinationDroppedFighterAnimHeap = syProgMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMvOpeningFirstDestinationMasterHandAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMvOpeningFirstDestinationPluckedFighterAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMvOpeningFirstDestinationDroppedFighterAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningFirstDestinationCreateFirstSceneViewports();
 	mvOpeningFirstDestinationCreateOverlayViewport();
 	mvOpeningFirstDestinationCreateBackgroundViewport();

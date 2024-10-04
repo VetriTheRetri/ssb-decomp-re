@@ -331,15 +331,15 @@ void func_ovl18_8013223C(void)
 // 0x8013226C
 void mn1PModeLabelsProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYProgDLHeads[0]++);
-    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0xA0, 0x78, 0x14, 0xE6);
-    gDPSetCombineMode(gSYProgDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gSYProgDLHeads[0]++, 225, 143, 310, 230);
-    gDPPipeSync(gSYProgDLHeads[0]++);
-    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
+    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0xA0, 0x78, 0x14, 0xE6);
+    gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTasklogDLHeads[0]++, 225, 143, 310, 230);
+    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
     
     lbCommonClearExternSpriteParams();
     lbCommonDrawSObjAttr(gobj);
@@ -598,7 +598,7 @@ void mn1PModeProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            syProgSetLoadScene();
+            syTasklogSetLoadScene();
             return;
         }
         if (scSubsysControllerCheckNoInputAll() == FALSE)
@@ -607,7 +607,7 @@ void mn1PModeProcRun(GObj *gobj)
         }
         if (sMN1PModeIsProceedScene != FALSE)
         {
-            syProgSetLoadScene();
+            syTasklogSetLoadScene();
         }
         if (sMN1PModeOptionChangeWait != 0)
         {
@@ -679,7 +679,7 @@ void mn1PModeProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindModeSelect;
 
-            syProgSetLoadScene();
+            syTasklogSetLoadScene();
         }
         if
         (
@@ -759,7 +759,7 @@ void mn1PModeProcStart(void)
         dMN1PModeFileIDs,
         ARRAY_COUNT(dMN1PModeFileIDs),
         sMN1PModeFiles,
-        syProgMalloc
+        syTasklogMalloc
         (
             lbRelocGetAllocSize
             (
@@ -841,5 +841,5 @@ void mn1PModeStartScene(void)
     func_80007024(&dMN1PModeDisplaySetup);
     
     dMN1PModeGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl18_BSS_END);
-    syProgInit(&dMN1PModeGtlSetup);
+    syTasklogInit(&dMN1PModeGtlSetup);
 }

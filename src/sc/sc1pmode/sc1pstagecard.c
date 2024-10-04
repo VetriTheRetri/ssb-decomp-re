@@ -148,39 +148,39 @@ void sc1PStageCardMakeBanners(void)
 // 0x80131C58 - unused?
 void func_ovl24_80131C58(GObj *gobj)
 {
-    gDPPipeSync(gSYProgDLHeads[0]++);
-    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetCombineMode(gSYProgDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, 0xFF);
-    gDPFillRectangle(gSYProgDLHeads[0]++, 10, 10, 311, 59);
-    gDPFillRectangle(gSYProgDLHeads[0]++, 10, 182, 311, 231);
+    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, 0xFF);
+    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 10, 311, 59);
+    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 182, 311, 231);
     
     if (sSC1PStageCardStage < 4)
     {
-        gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
+        gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
     }
-    else gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0x7F, 0x7F, 0x7F, 0xFF);
+    else gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x7F, 0x7F, 0x7F, 0xFF);
     
-    gDPFillRectangle(gSYProgDLHeads[0]++, 148, 31, 156, 39);
+    gDPFillRectangle(gSYTasklogDLHeads[0]++, 148, 31, 156, 39);
     
     if (sSC1PStageCardStage < 8)
     {
-        gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
+        gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
     }
-    else gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0x7F, 0x7F, 0x7F, 0xFF);
+    else gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x7F, 0x7F, 0x7F, 0xFF);
     
-    gDPFillRectangle(gSYProgDLHeads[0]++, 202, 31, 210, 39);
+    gDPFillRectangle(gSYTasklogDLHeads[0]++, 202, 31, 210, 39);
     
     if (sSC1PStageCardStage < 12)
     {
-        gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
+        gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
     }
-    else gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0x7F, 0x7F, 0x7F, 0xFF);
+    else gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x7F, 0x7F, 0x7F, 0xFF);
     
-    gDPFillRectangle(gSYProgDLHeads[0]++, 256, 31, 264, 39);
-    gDPPipeSync(gSYProgDLHeads[0]++);
-    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPFillRectangle(gSYTasklogDLHeads[0]++, 256, 31, 264, 39);
+    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
     lbCommonClearExternSpriteParams();
 }
@@ -929,10 +929,10 @@ void sc1PStageCardVSFighterProcDisplay(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    gDPPipeSync(gSYProgDLHeads[0]++);
-    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_2CYCLE);
-    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_PASS, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetEnvColor(gSYProgDLHeads[0]++, 0xFF, 0xFF, 0xFF, 0x00);
+    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_2CYCLE);
+    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_PASS, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetEnvColor(gSYTasklogDLHeads[0]++, 0xFF, 0xFF, 0xFF, 0x00);
     
     if (sSC1PStageCardStage == nSC1PGameStageZako)
     {
@@ -960,9 +960,9 @@ void sc1PStageCardVSFighterProcDisplay(GObj *fighter_gobj)
     }
     else ftDisplayMainProcDisplay(fighter_gobj);
     
-    gDPPipeSync(gSYProgDLHeads[0]++);
-    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80133398
@@ -1833,7 +1833,7 @@ void sc1PStageCardProcRun(GObj *gobj)
             gSceneData.scene_current = nSCKindTitle;
             
             func_ovl24_801348EC();
-            syProgSetLoadScene();
+            syTasklogSetLoadScene();
         }
         if (sSC1PStageCardUnk0x80135CF4 != 0)
         {
@@ -1851,7 +1851,7 @@ void sc1PStageCardProcRun(GObj *gobj)
             gSceneData.scene_current = nSCKindTitle;
             
             func_ovl24_801348EC();
-            syProgSetLoadScene();
+            syTasklogSetLoadScene();
         }
     }
 }
@@ -1932,7 +1932,7 @@ void sc1PStageCardProcStart(void)
         dSC1PStageCardFileIDs,
         ARRAY_COUNT(dSC1PStageCardFileIDs),
         sSC1PStageCardFiles,
-        syProgMalloc
+        syTasklogMalloc
         (
             lbRelocGetAllocSize
             (    dSC1PStageCardFileIDs,
@@ -1951,7 +1951,7 @@ void sc1PStageCardProcStart(void)
 
     for (i = 0; i < sc1PStageCardGetFighterAllocsNum(sSC1PStageCardStage); i++)
     {
-        sSC1PStageCardFigatreeHeaps[i] = syProgMalloc(gFTManagerFigatreeHeapSize, 0x10);
+        sSC1PStageCardFigatreeHeaps[i] = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
     }
     sc1PStageCardMakePicturesCamera();
     sc1PStageCardMakeDecalsCamera();

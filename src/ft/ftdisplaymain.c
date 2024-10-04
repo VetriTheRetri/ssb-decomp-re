@@ -12,7 +12,7 @@
 //                               //
 // // // // // // // // // // // //
 
-extern syMallocRegion gSYProgGraphicsHeap;
+extern syMallocRegion gSYTasklogGraphicsHeap;
 
 // // // // // // // // // // // //
 //                               //
@@ -453,7 +453,7 @@ void ftDisplayMainDrawAfterImage(ftStruct *fp)
         tri_dl = dFTRenderMainAfterImageTriangleDL;
         break;
     }
-    base_p_vtx = p_vtx = (Vtx*)gSYProgGraphicsHeap.ptr;
+    base_p_vtx = p_vtx = (Vtx*)gSYTasklogGraphicsHeap.ptr;
 
     if (index != 0)
     {
@@ -480,7 +480,7 @@ void ftDisplayMainDrawAfterImage(ftStruct *fp)
         p_vtx->v.cn[2] = color1->b;
         p_vtx->v.cn[3] = alpha;
 
-        p_vtx = (gSYProgGraphicsHeap.ptr = (Vtx*)gSYProgGraphicsHeap.ptr + 1);
+        p_vtx = (gSYTasklogGraphicsHeap.ptr = (Vtx*)gSYTasklogGraphicsHeap.ptr + 1);
 
         p_vtx->v.ob[0] = (afterimage->translate_x + (afterimage->vec.x * var_f22));
         p_vtx->v.ob[1] = (afterimage->translate_y + (afterimage->vec.y * var_f22));
@@ -495,7 +495,7 @@ void ftDisplayMainDrawAfterImage(ftStruct *fp)
         p_vtx->v.cn[2] = color2->b;
         p_vtx->v.cn[3] = alpha;
 
-        p_vtx = (gSYProgGraphicsHeap.ptr = (Vtx*)gSYProgGraphicsHeap.ptr + 1);
+        p_vtx = (gSYTasklogGraphicsHeap.ptr = (Vtx*)gSYTasklogGraphicsHeap.ptr + 1);
 
         if (i != 0)
         {
@@ -562,7 +562,7 @@ void ftDisplayMainDrawAfterImage(ftStruct *fp)
                         p_vtx->v.cn[2] = color1->b;
                         p_vtx->v.cn[3] = alpha;
 
-                        p_vtx = (gSYProgGraphicsHeap.ptr = (Vtx*)gSYProgGraphicsHeap.ptr + 1);
+                        p_vtx = (gSYTasklogGraphicsHeap.ptr = (Vtx*)gSYTasklogGraphicsHeap.ptr + 1);
 
                         p_vtx->v.ob[0] = (n_ai_x + (spAC.x * var_f22));
                         p_vtx->v.ob[1] = (n_ai_y + (spAC.y * var_f22));
@@ -577,7 +577,7 @@ void ftDisplayMainDrawAfterImage(ftStruct *fp)
                         p_vtx->v.cn[2] = color2->b;
                         p_vtx->v.cn[3] = alpha;
 
-                        p_vtx = (gSYProgGraphicsHeap.ptr = (Vtx*)gSYProgGraphicsHeap.ptr + 1);
+                        p_vtx = (gSYTasklogGraphicsHeap.ptr = (Vtx*)gSYTasklogGraphicsHeap.ptr + 1);
                     }
                 }
             }
@@ -585,15 +585,15 @@ void ftDisplayMainDrawAfterImage(ftStruct *fp)
     }
     vtx_count = ((uintptr_t)p_vtx - (uintptr_t)base_p_vtx) / (sizeof(*p_vtx) | sizeof(*base_p_vtx));
 
-    gSPDisplayList(gSYProgDLHeads[1]++, vtx_dl);
+    gSPDisplayList(gSYTasklogDLHeads[1]++, vtx_dl);
 
-    gSPVertex(gSYProgDLHeads[1]++, base_p_vtx, vtx_count, 0);
+    gSPVertex(gSYTasklogDLHeads[1]++, base_p_vtx, vtx_count, 0);
 
     for (i = 0; i < (vtx_count - 2); i += 2)
     {
-        gSP2Triangles(gSYProgDLHeads[1]++, i, i + 1, i + 2, FALSE, i + 1, i + 3, i + 2, FALSE);
+        gSP2Triangles(gSYTasklogDLHeads[1]++, i, i + 1, i + 2, FALSE, i + 1, i + 3, i + 2, FALSE);
     }
-    gSPDisplayList(gSYProgDLHeads[1]++, tri_dl);
+    gSPDisplayList(gSYTasklogDLHeads[1]++, tri_dl);
 }
 
 // 0x800F17E8
@@ -665,7 +665,7 @@ void ftDisplayMainCalcFogColor(ftStruct *fp)
 // 0x800F1B24
 void ftDisplayMainSetFogColor(ftStruct *fp)
 {
-    gDPSetFogColor(gSYProgDLHeads[0]++, sFTRenderMainFogColor.r, sFTRenderMainFogColor.g, sFTRenderMainFogColor.b, sFTRenderMainFogColor.a);
+    gDPSetFogColor(gSYTasklogDLHeads[0]++, sFTRenderMainFogColor.r, sFTRenderMainFogColor.g, sFTRenderMainFogColor.b, sFTRenderMainFogColor.a);
 }
 
 // 0x800F1B7C
@@ -673,24 +673,24 @@ void ftDisplayMainDecideFogColor(ftStruct *fp)
 {
     if (fp->shade == 0)
     {
-        gDPSetFogColor(gSYProgDLHeads[0]++, 0x00, 0x00, 0x00, 0x00);
+        gDPSetFogColor(gSYTasklogDLHeads[0]++, 0x00, 0x00, 0x00, 0x00);
     }
     else
     {
         syColorRGBA *fog_color = &fp->attributes->shade_color[fp->shade - 1];
 
-        gDPSetFogColor(gSYProgDLHeads[0]++, fog_color->r, fog_color->g, fog_color->b, fog_color->a);
+        gDPSetFogColor(gSYTasklogDLHeads[0]++, fog_color->r, fog_color->g, fog_color->b, fog_color->a);
     }
 }
 
 // 0x800F1C08
 void ftDisplayMainDecideFogDraw(u8 flags, ftStruct *fp)
 {
-    gDPPipeSync(gSYProgDLHeads[0]++);
+    gDPPipeSync(gSYTasklogDLHeads[0]++);
 
     if (flags & FTPARTS_FLAG_NOFOG)
     {
-        gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_PASS, G_RM_AA_ZB_OPA_SURF2);
+        gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_PASS, G_RM_AA_ZB_OPA_SURF2);
     }
     else
     {
@@ -714,9 +714,9 @@ void ftDisplayMainDecideFogDraw(u8 flags, ftStruct *fp)
         }
         if (sFTRenderMainSkyFogAlpha == 0xFF)
         {
-            gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_FOG_PRIM_A, G_RM_AA_ZB_OPA_SURF2);
+            gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_FOG_PRIM_A, G_RM_AA_ZB_OPA_SURF2);
         }
-        else gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_FOG_PRIM_A, G_RM_AA_ZB_XLU_SURF2);
+        else gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_FOG_PRIM_A, G_RM_AA_ZB_XLU_SURF2);
     }
 }
 
@@ -730,20 +730,20 @@ void ftDisplayMainDrawAccessory(ftStruct *fp, DObj *dobj, ftParts *ft_parts)
     case 0:
         if ((dobj->display_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
-            gcDrawMObjForDObj(root_dobj, gSYProgDLHeads);
+            gcDrawMObjForDObj(root_dobj, gSYTasklogDLHeads);
             ftDisplayMainDecideFogDraw(ft_parts->flags, fp);
 
-            gSPDisplayList(gSYProgDLHeads[0]++, root_dobj->display_list);
+            gSPDisplayList(gSYTasklogDLHeads[0]++, root_dobj->display_list);
         }
         break;
 
     case 1:
         if ((dobj->dl_array != NULL) && (dobj->dl_array[1] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
-            gcDrawMObjForDObj(root_dobj, gSYProgDLHeads);
+            gcDrawMObjForDObj(root_dobj, gSYTasklogDLHeads);
             ftDisplayMainDecideFogDraw(ft_parts->flags, fp);
 
-            gSPDisplayList(gSYProgDLHeads[0]++, root_dobj->display_list);
+            gSPDisplayList(gSYTasklogDLHeads[0]++, root_dobj->display_list);
         }
         break;
     }
@@ -771,7 +771,7 @@ void ftDisplayMainDrawDefault(DObj *dobj)
             switch (ft_parts->flags & 0xF)
             {
             case 0:
-                sp58 = gcPrepDObjMatrix(gSYProgDLHeads, dobj);
+                sp58 = gcPrepDObjMatrix(gSYTasklogDLHeads, dobj);
 
                 if ((ft_parts != NULL) && (ft_parts->gobj != NULL) && (fp->ft_kind == nFTKindPurin))
                 {
@@ -779,10 +779,10 @@ void ftDisplayMainDrawDefault(DObj *dobj)
                 }
                 if ((dobj->display_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
                 {
-                    gcDrawMObjForDObj(dobj, gSYProgDLHeads);
+                    gcDrawMObjForDObj(dobj, gSYTasklogDLHeads);
                     ftDisplayMainDecideFogDraw(ft_parts->flags, fp);
 
-                    gSPDisplayList(gSYProgDLHeads[0]++, dobj->display_list);
+                    gSPDisplayList(gSYTasklogDLHeads[0]++, dobj->display_list);
                 }
                 break;
 
@@ -793,23 +793,23 @@ void ftDisplayMainDrawDefault(DObj *dobj)
                 {
                     ftDisplayMainDecideFogDraw(ft_parts->flags, fp);
 
-                    gSPDisplayList(gSYProgDLHeads[0]++, dls[0]);
+                    gSPDisplayList(gSYTasklogDLHeads[0]++, dls[0]);
                 }
-                sp58 = gcPrepDObjMatrix(gSYProgDLHeads, dobj);
+                sp58 = gcPrepDObjMatrix(gSYTasklogDLHeads, dobj);
 
                 if ((dls != NULL) && (dls[1] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
                 {
-                    gcDrawMObjForDObj(dobj, gSYProgDLHeads);
+                    gcDrawMObjForDObj(dobj, gSYTasklogDLHeads);
                     ftDisplayMainDecideFogDraw(ft_parts->flags, fp);
 
-                    gSPDisplayList(gSYProgDLHeads[0]++, dls[1]);
+                    gSPDisplayList(gSYTasklogDLHeads[0]++, dls[1]);
                 }
                 break;
             }
         }
         else
         {
-            sp58 = gcPrepDObjMatrix(gSYProgDLHeads, dobj);
+            sp58 = gcPrepDObjMatrix(gSYTasklogDLHeads, dobj);
 
             if ((ft_parts != NULL) && (ft_parts->gobj != NULL) && (fp->ft_kind == nFTKindPurin))
             {
@@ -826,7 +826,7 @@ void ftDisplayMainDrawDefault(DObj *dobj)
         }
         if ((sp58 != FALSE) && ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL)))
         {
-            gSPPopMatrix(gSYProgDLHeads[0]++, G_MTX_MODELVIEW);
+            gSPPopMatrix(gSYTasklogDLHeads[0]++, G_MTX_MODELVIEW);
         }
         gLBCommonScale = sp48;
     }
@@ -869,14 +869,14 @@ void ftDisplayMainDrawSkeleton(DObj *dobj)
             switch (skeleton->flags & 0xF)
             {
             case 0:
-                sp60 = gcPrepDObjMatrix(gSYProgDLHeads, dobj);
+                sp60 = gcPrepDObjMatrix(gSYTasklogDLHeads, dobj);
 
                 if (!(dobj->flags & DOBJ_FLAG_NOTEXTURE) && (skeleton->display_list != NULL))
                 {
-                    gcDrawMObjForDObj(dobj, gSYProgDLHeads);
+                    gcDrawMObjForDObj(dobj, gSYTasklogDLHeads);
                     ftDisplayMainDecideFogDraw(skeleton->flags, fp);
 
-                    gSPDisplayList(gSYProgDLHeads[0]++, skeleton->display_list);
+                    gSPDisplayList(gSYTasklogDLHeads[0]++, skeleton->display_list);
                 }
                 break;
 
@@ -887,21 +887,21 @@ void ftDisplayMainDrawSkeleton(DObj *dobj)
                 {
                     ftDisplayMainDecideFogDraw(skeleton->flags, fp);
 
-                    gSPDisplayList(gSYProgDLHeads[0]++, dls[0]);
+                    gSPDisplayList(gSYTasklogDLHeads[0]++, dls[0]);
                 }
-                sp60 = gcPrepDObjMatrix(gSYProgDLHeads, dobj);
+                sp60 = gcPrepDObjMatrix(gSYTasklogDLHeads, dobj);
 
                 if ((dls != NULL) && (dls[1] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
                 {
-                    gcDrawMObjForDObj(dobj, gSYProgDLHeads);
+                    gcDrawMObjForDObj(dobj, gSYTasklogDLHeads);
                     ftDisplayMainDecideFogDraw(skeleton->flags, fp);
 
-                    gSPDisplayList(gSYProgDLHeads[0]++, dls[1]);
+                    gSPDisplayList(gSYTasklogDLHeads[0]++, dls[1]);
                 }
                 break;
             }
         }
-        else sp60 = gcPrepDObjMatrix(gSYProgDLHeads, dobj);
+        else sp60 = gcPrepDObjMatrix(gSYTasklogDLHeads, dobj);
 
         if (dobj->child != NULL)
         {
@@ -909,7 +909,7 @@ void ftDisplayMainDrawSkeleton(DObj *dobj)
         }
         if ((sp60 != FALSE) && ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL)))
         {
-            gSPPopMatrix(gSYProgDLHeads[0]++, G_MTX_MODELVIEW);
+            gSPPopMatrix(gSYTasklogDLHeads[0]++, G_MTX_MODELVIEW);
         }
         gLBCommonScale = sp50;
     }
@@ -974,7 +974,7 @@ void ftDisplayMainDrawParts(DObj *dobj)
 
     sp74 = gLBCommonScale;
 
-    sp90 = gcPrepDObjMatrix(gSYProgDLHeads, dobj);
+    sp90 = gcPrepDObjMatrix(gSYTasklogDLHeads, dobj);
 
     for (i = 0; i < ARRAY_COUNT(fp->fighter_hurt); i++)
     {
@@ -982,19 +982,19 @@ void ftDisplayMainDrawParts(DObj *dobj)
 
         if ((ft_hurt->hitstatus != nGMHitStatusNone) && (dobj == ft_hurt->joint))
         {
-            syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gSYTasklogGraphicsHeap);
 
             syMatrixTranslate(mtx_store.gbi, ft_hurt->offset.x, ft_hurt->offset.y, ft_hurt->offset.z);
 
-            gSPMatrix(gSYProgDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gSYTasklogDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gSYTasklogGraphicsHeap);
 
             syMatrixSca(mtx_store.gbi, ft_hurt->size.x / 15.0F, ft_hurt->size.y / 15.0F, ft_hurt->size.z / 15.0F);
 
-            gSPMatrix(gSYProgDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gSYTasklogDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            gDPPipeSync(gSYProgDLHeads[0]++);
+            gDPPipeSync(gSYTasklogDLHeads[0]++);
 
             if
             (
@@ -1021,23 +1021,23 @@ void ftDisplayMainDrawParts(DObj *dobj)
             switch (hitstatus)
             {
             case nGMHitStatusNormal:
-                gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-                gDPSetEnvColor(gSYProgDLHeads[0]++, 0xD0, 0xD0, 0x00, 0xFF);
+                gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+                gDPSetEnvColor(gSYTasklogDLHeads[0]++, 0xD0, 0xD0, 0x00, 0xFF);
                 break;
 
             case nGMHitStatusInvincible:
-                gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-                gDPSetEnvColor(gSYProgDLHeads[0]++, 0x00, 0xD0, 0x00, 0xFF);
+                gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+                gDPSetEnvColor(gSYTasklogDLHeads[0]++, 0x00, 0xD0, 0x00, 0xFF);
                 break;
 
             case nGMHitStatusIntangible:
-                gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-                gDPSetEnvColor(gSYProgDLHeads[0]++, 0x00, 0x00, 0xD0, 0xFF);
+                gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+                gDPSetEnvColor(gSYTasklogDLHeads[0]++, 0x00, 0x00, 0xD0, 0xFF);
                 break;
             }
-            gSPDisplayList(gSYProgDLHeads[0]++, dFTRenderMainHurtCollisionCuboidDL);
+            gSPDisplayList(gSYTasklogDLHeads[0]++, dFTRenderMainHurtCollisionCuboidDL);
 
-            gSPPopMatrix(gSYProgDLHeads[0]++, G_MTX_MODELVIEW);
+            gSPPopMatrix(gSYTasklogDLHeads[0]++, G_MTX_MODELVIEW);
 
             break;
         }
@@ -1050,7 +1050,7 @@ void ftDisplayMainDrawParts(DObj *dobj)
     {
         if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
         {
-            gSPPopMatrix(gSYProgDLHeads[0]++, G_MTX_MODELVIEW);
+            gSPPopMatrix(gSYTasklogDLHeads[0]++, G_MTX_MODELVIEW);
         }
     }
     gLBCommonScale = sp74;
@@ -1160,7 +1160,7 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
         }
         else if (!(fp->is_magnify_hide) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
         {
-            ifCommonPlayerMagnifyUpdateViewport(gSYProgDLHeads, fp);
+            ifCommonPlayerMagnifyUpdateViewport(gSYTasklogDLHeads, fp);
         }
         else return;
     }
@@ -1168,39 +1168,39 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
 
     if ((fp->display_mode == nDBDisplayModeMaster) || (fp->display_mode == nDBDisplayModeMapCollision))
     {
-        gDPPipeSync(gSYProgDLHeads[0]++);
+        gDPPipeSync(gSYTasklogDLHeads[0]++);
 
         if (fp->colanim.is_use_light)
         {
             if (fp->status_info.pl_kind != nFTPlayerKindDemo)
             {
-                ftDisplayLightsDrawReflect(gSYProgDLHeads, fp->lr * fp->colanim.light_angle_x, fp->colanim.light_angle_y);
+                ftDisplayLightsDrawReflect(gSYTasklogDLHeads, fp->lr * fp->colanim.light_angle_x, fp->colanim.light_angle_y);
             }
-            else ftDisplayLightsDrawReflect(gSYProgDLHeads, F_CLC_RTOD32(DObjGetStruct(fighter_gobj)->rotate.vec.f.y) + fp->colanim.light_angle_x, fp->colanim.light_angle_y);
+            else ftDisplayLightsDrawReflect(gSYTasklogDLHeads, F_CLC_RTOD32(DObjGetStruct(fighter_gobj)->rotate.vec.f.y) + fp->colanim.light_angle_x, fp->colanim.light_angle_y);
         }
-        gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_2CYCLE);
+        gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_2CYCLE);
 
-        gSPSetGeometryMode(gSYProgDLHeads[0]++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH);
+        gSPSetGeometryMode(gSYTasklogDLHeads[0]++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_LIGHTING | G_SHADING_SMOOTH);
 
-        gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_FOG_PRIM_A, G_RM_AA_ZB_OPA_SURF2);
+        gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_FOG_PRIM_A, G_RM_AA_ZB_OPA_SURF2);
 
         if (fp->colanim.is_use_blendcolor)
         {
-            gDPSetEnvColor(gSYProgDLHeads[0]++, fp->colanim.blendcolor.r, fp->colanim.blendcolor.g, fp->colanim.blendcolor.b, fp->colanim.blendcolor.a);
+            gDPSetEnvColor(gSYTasklogDLHeads[0]++, fp->colanim.blendcolor.r, fp->colanim.blendcolor.g, fp->colanim.blendcolor.b, fp->colanim.blendcolor.a);
 
             sFTRenderMainSkyFogAlpha = fp->colanim.blendcolor.a;
         }
         else if (fp->is_use_fogcolor)
         {
-            gDPSetEnvColor(gSYProgDLHeads[0]++, fp->fog_color.r, fp->fog_color.g, fp->fog_color.b, fp->fog_color.a);
+            gDPSetEnvColor(gSYTasklogDLHeads[0]++, fp->fog_color.r, fp->fog_color.g, fp->fog_color.b, fp->fog_color.a);
 
             sFTRenderMainSkyFogAlpha = fp->fog_color.a;
         }
         else if (fp->status_info.pl_kind != nFTPlayerKindDemo)
         {
-            sFTRenderMainSkyFogAlpha = mpCollisionSetLightColorGetAlpha(gSYProgDLHeads);
+            sFTRenderMainSkyFogAlpha = mpCollisionSetLightColorGetAlpha(gSYTasklogDLHeads);
         }
-        else sFTRenderMainSkyFogAlpha = scSubsysFighterDrawLightColorGetAlpha(gSYProgDLHeads);
+        else sFTRenderMainSkyFogAlpha = scSubsysFighterDrawLightColorGetAlpha(gSYTasklogDLHeads);
 
         if (fp->colanim.is_use_maincolor)
         {
@@ -1211,7 +1211,7 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
 
         if (fp->shuffle_timer != 0)
         {
-            syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gSYTasklogGraphicsHeap);
 
             syMatrixTranslate
             (
@@ -1220,7 +1220,7 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
                 dFTRenderMainShufflePositions[fp->is_shuffle_electric][fp->shuffle_frame_index].y,
                 0.0F
             );
-            gSPMatrix(gSYProgDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gSYTasklogDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
         }
         if ((fp->status_info.pl_kind == nFTPlayerKindDemo) || (fp->status_info.pl_kind == nFTPlayerKindKey) || (gOMObjCurrentCamera->gobj_id == nOMObjCommonKindMainCamera))
         {
@@ -1236,25 +1236,25 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
         }
         if (fp->shuffle_timer != 0)
         {
-            gSPPopMatrix(gSYProgDLHeads[0]++, G_MTX_MODELVIEW);
+            gSPPopMatrix(gSYTasklogDLHeads[0]++, G_MTX_MODELVIEW);
         }
-        gDPPipeSync(gSYProgDLHeads[0]++);
+        gDPPipeSync(gSYTasklogDLHeads[0]++);
 
-        gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
+        gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
 
-        gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+        gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
         if (fp->status_info.pl_kind != nFTPlayerKindDemo)
         {
-            ftDisplayLightsDrawReflect(gSYProgDLHeads, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
+            ftDisplayLightsDrawReflect(gSYTasklogDLHeads, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
         }
-        else ftDisplayLightsDrawReflect(gSYProgDLHeads, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
+        else ftDisplayLightsDrawReflect(gSYTasklogDLHeads, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 
         if (fp->display_mode == nDBDisplayModeMapCollision)
         {
-            gDPPipeSync(gSYProgDLHeads[0]++);
+            gDPPipeSync(gSYTasklogDLHeads[0]++);
 
-            syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gSYTasklogGraphicsHeap);
 
             syMatrixTranslate
             (
@@ -1264,19 +1264,19 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
                 DObjGetStruct(fighter_gobj)->translate.vec.f.z
             );
 
-            gSPMatrix(gSYProgDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gSYTasklogDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gSYTasklogGraphicsHeap);
 
             syMatrixSca(mtx_store.gbi, attributes->objcoll.width / 30.0F, attributes->objcoll.center / 30.0F, 1.0F);
 
-            gSPMatrix(gSYProgDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gSYTasklogDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            gSPDisplayList(gSYProgDLHeads[0]++, dFTRenderMainMapCollisionBottomDL);
+            gSPDisplayList(gSYTasklogDLHeads[0]++, dFTRenderMainMapCollisionBottomDL);
 
-            gSPPopMatrix(gSYProgDLHeads[0]++, G_MTX_MODELVIEW);
+            gSPPopMatrix(gSYTasklogDLHeads[0]++, G_MTX_MODELVIEW);
 
-            syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gSYTasklogGraphicsHeap);
 
             syMatrixTranslate
             (
@@ -1286,21 +1286,21 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
                 DObjGetStruct(fighter_gobj)->translate.vec.f.z
             );
 
-            gSPMatrix(gSYProgDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gSYTasklogDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gSYTasklogGraphicsHeap);
 
             syMatrixSca(mtx_store.gbi, attributes->objcoll.width / 30.0F, (attributes->objcoll.top - attributes->objcoll.center) / 30.0F, 1.0F);
 
-            gSPMatrix(gSYProgDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gSYTasklogDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            gSPDisplayList(gSYProgDLHeads[0]++, dFTRenderMainMapCollisionTopDL);
+            gSPDisplayList(gSYTasklogDLHeads[0]++, dFTRenderMainMapCollisionTopDL);
 
-            gSPPopMatrix(gSYProgDLHeads[0]++, G_MTX_MODELVIEW);
+            gSPPopMatrix(gSYTasklogDLHeads[0]++, G_MTX_MODELVIEW);
 
-            syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gSYTasklogGraphicsHeap);
 
-            gDPPipeSync(gSYProgDLHeads[0]++);
+            gDPPipeSync(gSYTasklogDLHeads[0]++);
 
             syMatrixTranslate
             (
@@ -1310,21 +1310,21 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
                 DObjGetStruct(fighter_gobj)->translate.vec.f.z
             );
 
-            gSPMatrix(gSYProgDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gSYTasklogDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
+            syMatrixStoreGbi(mtx_store, gSYTasklogGraphicsHeap);
 
             syMatrixSca(mtx_store.gbi, 3.0F, 3.0F, 3.0F);
 
-            gSPMatrix(gSYProgDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+            gSPMatrix(gSYTasklogDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+            gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
 
-            gDPSetEnvColor(gSYProgDLHeads[0]++, 0xD0, 0x00, 0xD0, 0xFF);
+            gDPSetEnvColor(gSYTasklogDLHeads[0]++, 0xD0, 0x00, 0xD0, 0xFF);
 
-            gSPDisplayList(gSYProgDLHeads[0]++, dFTRenderMainHurtCollisionCuboidDL);
+            gSPDisplayList(gSYTasklogDLHeads[0]++, dFTRenderMainHurtCollisionCuboidDL);
 
-            gSPPopMatrix(gSYProgDLHeads[0]++, G_MTX_MODELVIEW);
+            gSPPopMatrix(gSYTasklogDLHeads[0]++, G_MTX_MODELVIEW);
         }
     }
     else
@@ -1347,61 +1347,61 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
 
             if ((ft_hit->update_state != nGMHitUpdateDisable) && (ft_hit->update_state != nGMHitUpdateNew))
             {
-                gDPPipeSync(gSYProgDLHeads[0]++);
+                gDPPipeSync(gSYTasklogDLHeads[0]++);
 
                 if (fp->display_mode == nDBDisplayModeHitAttackOutline)
                 {
-                    gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0xB0, 0x00, 0x00, 0xFF);
+                    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0xB0, 0x00, 0x00, 0xFF);
 
-                    gDPSetEnvColor(gSYProgDLHeads[0]++, 0xB0, 0x00, 0x00, 0xFF);
+                    gDPSetEnvColor(gSYTasklogDLHeads[0]++, 0xB0, 0x00, 0x00, 0xFF);
 
-                    gDPSetBlendColor(gSYProgDLHeads[0]++, 0x00, 0x00, 0x00, 0xE0);
+                    gDPSetBlendColor(gSYTasklogDLHeads[0]++, 0x00, 0x00, 0x00, 0xE0);
                 }
                 else
                 {
-                    gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+                    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
 
-                    gDPSetEnvColor(gSYProgDLHeads[0]++, 0xB0, 0x00, 0x00, 0xFF);
+                    gDPSetEnvColor(gSYTasklogDLHeads[0]++, 0xB0, 0x00, 0x00, 0xFF);
 
-                    gDPSetBlendColor(gSYProgDLHeads[0]++, 0x00, 0x00, 0x00, 0x00);
+                    gDPSetBlendColor(gSYTasklogDLHeads[0]++, 0x00, 0x00, 0x00, 0x00);
                 }
                 if (ft_hit->update_state == nGMHitUpdateInterpolate)
                 {
-                    syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
+                    syMatrixStoreGbi(mtx_store, gSYTasklogGraphicsHeap);
 
                     syMatrixTranslate(mtx_store.gbi, ft_hit->pos_prev.x, ft_hit->pos_prev.y, ft_hit->pos_prev.z);
 
-                    gSPMatrix(gSYProgDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                    gSPMatrix(gSYTasklogDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                    syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
+                    syMatrixStoreGbi(mtx_store, gSYTasklogGraphicsHeap);
 
                     syMatrixSca(mtx_store.gbi, ft_hit->size / 15.0F, ft_hit->size / 15.0F, ft_hit->size / 15.0F);
 
-                    gSPMatrix(gSYProgDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                    gSPMatrix(gSYTasklogDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                    gSPDisplayList(gSYProgDLHeads[0]++, dFTRenderMainHitCollisionEdgeDL);
+                    gSPDisplayList(gSYTasklogDLHeads[0]++, dFTRenderMainHitCollisionEdgeDL);
 
-                    gSPPopMatrix(gSYProgDLHeads[0]++, G_MTX_MODELVIEW);
+                    gSPPopMatrix(gSYTasklogDLHeads[0]++, G_MTX_MODELVIEW);
                 }
-                syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
+                syMatrixStoreGbi(mtx_store, gSYTasklogGraphicsHeap);
 
                 syMatrixTranslate(mtx_store.gbi, ft_hit->pos.x, ft_hit->pos.y, ft_hit->pos.z);
 
-                gSPMatrix(gSYProgDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                gSPMatrix(gSYTasklogDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                syMatrixStoreGbi(mtx_store, gSYProgGraphicsHeap);
+                syMatrixStoreGbi(mtx_store, gSYTasklogGraphicsHeap);
 
                 syMatrixSca(mtx_store.gbi, ft_hit->size / 15.0F, ft_hit->size / 15.0F, ft_hit->size / 15.0F);
 
-                gSPMatrix(gSYProgDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                gSPMatrix(gSYTasklogDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
                 if (ft_hit->update_state == nGMHitUpdateInterpolate)
                 {
-                    gSPDisplayList(gSYProgDLHeads[0]++, dFTRenderMainHitCollisionBlendDL);
+                    gSPDisplayList(gSYTasklogDLHeads[0]++, dFTRenderMainHitCollisionBlendDL);
                 }
-                gSPDisplayList(gSYProgDLHeads[0]++, dFTRenderMainHitCollisionCubeDL);
+                gSPDisplayList(gSYTasklogDLHeads[0]++, dFTRenderMainHitCollisionCubeDL);
 
-                gSPPopMatrix(gSYProgDLHeads[0]++, G_MTX_MODELVIEW);
+                gSPPopMatrix(gSYTasklogDLHeads[0]++, G_MTX_MODELVIEW);
             }
         }
     }

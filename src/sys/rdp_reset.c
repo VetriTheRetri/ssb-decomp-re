@@ -1,6 +1,6 @@
 #include "rdp_reset.h"
 
-#include <sys/prog.h>
+#include <sys/tasklog.h>
 #include <sys/system_00.h>
 
 #include <config.h>

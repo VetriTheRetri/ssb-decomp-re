@@ -262,14 +262,14 @@ void mvOpeningNewcomersHideProcDisplay(GObj *gobj)
             sMVOpeningNewcomersOverlayAlpha = 0xFF;
         }
     }
-    gDPPipeSync(gSYProgDLHeads[1]++);
-    gDPSetCycleType(gSYProgDLHeads[1]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYProgDLHeads[1]++, 0, 0, 0x00, 0x00, 0x00, sMVOpeningNewcomersOverlayAlpha);
-    gDPSetCombineLERP(gSYProgDLHeads[1]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-    gDPSetRenderMode(gSYProgDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gSYProgDLHeads[1]++, 10, 10, 310, 230);
-    gDPPipeSync(gSYProgDLHeads[1]++);
-    gDPSetRenderMode(gSYProgDLHeads[1]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTasklogDLHeads[1]++);
+    gDPSetCycleType(gSYTasklogDLHeads[1]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTasklogDLHeads[1]++, 0, 0, 0x00, 0x00, 0x00, sMVOpeningNewcomersOverlayAlpha);
+    gDPSetCombineLERP(gSYTasklogDLHeads[1]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+    gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTasklogDLHeads[1]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYTasklogDLHeads[1]++);
+    gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80132164
@@ -389,7 +389,7 @@ void mvOpeningNewcomersProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            syProgSetLoadScene();
+            syTasklogSetLoadScene();
         }
         if (sMVOpeningNewcomersTotalTimeTics == 30)
         {
@@ -400,7 +400,7 @@ void mvOpeningNewcomersProcRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            syProgSetLoadScene();
+            syTasklogSetLoadScene();
         }
     }
 }
@@ -426,7 +426,7 @@ void mvOpeningNewcomersProcStart(void)
         dMVOpeningNewcomersFileIDs,
         ARRAY_COUNT(dMVOpeningNewcomersFileIDs),
         sMVOpeningNewcomersFiles,
-        syProgMalloc
+        syTasklogMalloc
         (
             lbRelocGetAllocSize
             (
@@ -463,5 +463,5 @@ void mvOpeningNewcomersStartScene(void)
     func_80007024(&dMVOpeningNewcomersDisplaySetup);
 
     dMVOpeningNewcomersGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl52_BSS_END);
-    syProgInit(&dMVOpeningNewcomersGtlSetup);
+    syTasklogInit(&dMVOpeningNewcomersGtlSetup);
 }

@@ -1,5 +1,5 @@
-#ifndef SYS_GTL_H
-#define SYS_GTL_H
+#ifndef _SYTASKLOG_H_
+#define _SYTASKLOG_H_
 
 #include <sys/malloc.h>
 #include <sys/thread3.h>
@@ -8,14 +8,14 @@
 #include <PR/mbi.h>
 #include <PR/ultratypes.h>
 
-typedef struct syProgDLBuffer
+typedef struct syTasklogDLBuffer
 {
 	/* 0x00 */ Gfx *start;
 	/* 0x04 */ u32 length;
 
-} syProgDLBuffer; // size = 0x08
+} syTasklogDLBuffer; // size = 0x08
 
-typedef struct syProgBufferSetup
+typedef struct syTasklogBufferSetup
 {
 	/* 0x00 */ u16 unk00;
 	/* 0x04 */ void (*fn04)(void);
@@ -34,11 +34,11 @@ typedef struct syProgBufferSetup
 	/* 0x38 */ void (*proc_lights)(Gfx**); 	// Lighting callback?
 	/* 0x3C */ void (*proc_controller)(); // controller read callback?
 
-} syProgBufferSetup; // size == 0x40
+} syTasklogBufferSetup; // size == 0x40
 
-typedef struct syProgSetup
+typedef struct syTasklogSetup
 {
-	/* 0x00 */ syProgBufferSetup setup;
+	/* 0x00 */ syTasklogBufferSetup setup;
 	/* 0x40 */ u32 gobjthreads_num;
 	/* 0x44 */ u32 threadstack_size;
 	/* 0x48 */ u32 threadstacks_num;
@@ -59,31 +59,31 @@ typedef struct syProgSetup
 	/* 0x84 */ u32 camera_size;
 	/* 0x88 */ void (*proc_start)(void);	// Scene start function
 
-} syProgSetup; // size >= 0x8C
+} syTasklogSetup; // size >= 0x8C
 
-extern u32 sSYProgUpdateCount;
-extern s32 dSYProgFrameDrawCount;
-extern Gfx *gSYProgDLHeads[4];
-extern Gfx *sSYProgDLBranches[4];
-extern syMallocRegion gSYProgGraphicsHeap;
-extern syMallocRegion gSYProgGeneralHeap;
+extern u32 sSYTasklogUpdateCount;
+extern u32 dSYTasklogFrameDrawCount;
+extern Gfx *gSYTasklogDLHeads[4];
+extern Gfx *sSYTasklogDLBranches[4];
+extern syMallocRegion gSYTasklogGraphicsHeap;
+extern syMallocRegion gSYTasklogGeneralHeap;
 // Gfx *? Gfx
-extern u32 sSYProgUpdateDeltaTime;
+extern u32 sSYTasklogUpdateDeltaTime;
 // Gfx *? Gfx
-extern u32 sSYProgFrameDeltaTime;
+extern u32 sSYTasklogFrameDeltaTime;
 extern u16 D_80046626;
 extern u16 D_80046628;
-extern s32 gSYProgTaskID;
+extern s32 gSYTasklogTaskID;
 
 extern void func_800048D0(SCTaskGfxCallback arg0);
 extern void func_800048F8(Gfx **dl);
-extern void *syProgMalloc(u32 size, u32 alignment);
+extern void *syTasklogMalloc(u32 size, u32 alignment);
 extern void func_80004F78(void);
-extern void syProgAppendGfxUcodeLoad(Gfx **dlist, u32 ucodeIdx);
+extern void syTasklogAppendGfxUcodeLoad(Gfx **dlist, u32 ucodeIdx);
 extern void func_800053CC(void);
 extern void func_800057C8(void);
-extern void syProgSetLoadScene(void);
-extern void syProgInit(syProgSetup *arg);
+extern void syTasklogSetLoadScene(void);
+extern void syTasklogInit(syTasklogSetup *arg);
 extern void func_80006B80(void);
 
-#endif /* SYS_GTL_H */
+#endif

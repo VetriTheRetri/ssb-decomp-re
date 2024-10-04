@@ -571,9 +571,9 @@ void sc1PStageClearMakeScoreDigits
 // 0x801320E0
 void sc1PStageClearTextProcDisplay(GObj *gobj)
 {
-	gDPPipeSync(gSYProgDLHeads[0]++);
+	gDPPipeSync(gSYTasklogDLHeads[0]++);
 	lbCommonDrawSObjAttr(gobj);
-	gDPPipeSync(gSYProgDLHeads[0]++);
+	gDPPipeSync(gSYTasklogDLHeads[0]++);
 }
 
 // 0x8013213C
@@ -1338,14 +1338,14 @@ void sc1PStageClearMakeBonusTable(void)
 // 0x801339C0
 void sc1PStageClearFramebufWallpaperProcDisplay(GObj *gobj)
 {
-	gDPPipeSync(gSYProgDLHeads[0]++);
-	gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0x80, 0x80, 0x80, 0xFF);
-	gDPSetCombineMode(gSYProgDLHeads[0]++, G_CC_MODULATEI_PRIM, G_CC_MODULATEI_PRIM);
-	gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
+	gDPPipeSync(gSYTasklogDLHeads[0]++);
+	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x80, 0x80, 0x80, 0xFF);
+	gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_MODULATEI_PRIM, G_CC_MODULATEI_PRIM);
+	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
 	lbCommonDrawSObjNoAttr(gobj);
-	gDPPipeSync(gSYProgDLHeads[0]++);
-	gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTasklogDLHeads[0]++);
+	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80133AC0
@@ -1886,7 +1886,7 @@ void sc1PStageClearProcRun(GObj *gobj)
 
 				sc1PStageClearUpdateTotal1PGameScore();
 				
-				syProgSetLoadScene();
+				syTasklogSetLoadScene();
 			}
 			else if ((sSC1PStageClearIsSetCommonAdvanceTic != FALSE) && (sSC1PStageClearIsAdvance == FALSE))
 			{
@@ -1977,7 +1977,7 @@ void sc1PStageClearProcStart(void)
 		dSC1PStageClearFileIDs,
 		ARRAY_COUNT(dSC1PStageClearFileIDs),
 		sSC1PStageClearFiles,
-		syProgMalloc
+		syTasklogMalloc
 		(
 			lbRelocGetAllocSize
 			(
@@ -2078,5 +2078,5 @@ void sc1PStageClearStartScene(void)
 
 	dGM1PStageClearGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl56_BSS_END);
 
-	syProgInit(&dGM1PStageClearGtlSetup);
+	syTasklogInit(&dGM1PStageClearGtlSetup);
 }

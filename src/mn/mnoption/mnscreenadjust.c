@@ -118,20 +118,20 @@ void mnScreenAdjustProcLights(Gfx **dls)
 // 0x80131B24
 void mnScreenAdjustFrameProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYProgDLHeads[0]++);
-    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0xBF, 0xA4, 0x47, 0xFF);
-    gDPSetCombineMode(gSYProgDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gSYProgDLHeads[0]++, 159, 0, 161, 254);
-    gDPFillRectangle(gSYProgDLHeads[0]++, 0, 119, 334, 121);
-    gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0x8B, 0x8B, 0x8B, 0xFF);
-    gDPFillRectangle(gSYProgDLHeads[0]++, 44, 44, 276, 45);
-    gDPFillRectangle(gSYProgDLHeads[0]++, 44, 196, 276, 197);
-    gDPFillRectangle(gSYProgDLHeads[0]++, 44, 44, 45, 196);
-    gDPFillRectangle(gSYProgDLHeads[0]++, 276, 44, 277, 196);
-    gDPPipeSync(gSYProgDLHeads[0]++);
-    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0xBF, 0xA4, 0x47, 0xFF);
+    gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTasklogDLHeads[0]++, 159, 0, 161, 254);
+    gDPFillRectangle(gSYTasklogDLHeads[0]++, 0, 119, 334, 121);
+    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x8B, 0x8B, 0x8B, 0xFF);
+    gDPFillRectangle(gSYTasklogDLHeads[0]++, 44, 44, 276, 45);
+    gDPFillRectangle(gSYTasklogDLHeads[0]++, 44, 196, 276, 197);
+    gDPFillRectangle(gSYTasklogDLHeads[0]++, 44, 44, 45, 196);
+    gDPFillRectangle(gSYTasklogDLHeads[0]++, 276, 44, 277, 196);
+    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80131D00
@@ -281,7 +281,7 @@ void mnScreenAdjustProcRun(GObj *gobj)
             gSceneData.scene_current = nSCKindOption;
 
             mnScreenAdjustBackupOffsets();
-            syProgSetLoadScene();
+            syTasklogSetLoadScene();
         }
         if (scSubsysControllerGetPlayerTapButtons(U_JPAD | U_CBUTTONS) != FALSE)
         {
@@ -428,7 +428,7 @@ void mnScreenAdjustProcStart(void)
         dMNScreenAdjustFileIDs,
         ARRAY_COUNT(dMNScreenAdjustFileIDs),
         sMNScreenAdjustFiles,
-        syProgMalloc
+        syTasklogMalloc
         (
             lbRelocGetAllocSize
             (
@@ -456,5 +456,5 @@ void mnScreenAdjustStartScene(void)
     func_80007024(&dMNScreenAdjustDisplaySetup);
     
     dMNScreenAdjustGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl25_BSS_END);
-    syProgInit(&dMNScreenAdjustGtlSetup);
+    syTasklogInit(&dMNScreenAdjustGtlSetup);
 }

@@ -399,7 +399,7 @@ void grHyruleTwisterInitVars(void)
             scManagerRunPrintGObjStatus();
         }
     }
-    gGRCommonStruct.hyrule.twister_pos_ids = (u8*) syProgMalloc(pos_count * sizeof(*gGRCommonStruct.hyrule.twister_pos_ids), 0x0);
+    gGRCommonStruct.hyrule.twister_pos_ids = (u8*) syTasklogMalloc(pos_count * sizeof(*gGRCommonStruct.hyrule.twister_pos_ids), 0x0);
 
     mpCollisionGetMapObjIDsKind(nMPMapObjKindTwister, pos_ids);
 

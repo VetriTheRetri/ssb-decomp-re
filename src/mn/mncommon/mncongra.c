@@ -309,7 +309,7 @@ void mnCongraProcStart(void)
 			lbRelocGetFileExternHeap
 			(
 				dMNCongraPictures[sMNCongraFighterKind].bottom_file_id,
-				syProgMalloc
+				syTasklogMalloc
 				(
 					lbRelocGetFileSize
 					(
@@ -335,7 +335,7 @@ void mnCongraProcStart(void)
 			lbRelocGetFileExternHeap
 			(
 				dMNCongraPictures[sMNCongraFighterKind].top_file_id,
-				syProgMalloc
+				syTasklogMalloc
 				(
 					lbRelocGetFileSize
 					(
@@ -382,7 +382,7 @@ void mnCongraUpdateScene(void)
 			gSceneData.scene_previous = gSceneData.scene_current;
 			gSceneData.scene_current = nSCKindTitle;
 
-			syProgSetLoadScene();
+			syTasklogSetLoadScene();
 		}
 	}
 }
@@ -421,6 +421,6 @@ void mnCongraStartScene(void)
 	func_80007024(&dMNCongraDisplaySetup);
 
 	dMNCongraGtlSetup.arena_size = (size_t) (SYDISPLAY_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 0) - (uintptr_t)&ovl57_BSS_END);
-	syProgInit(&dMNCongraGtlSetup); subsys_arena_lo = gSCSubsysFramebuffer0; // WARNING: Newline memes!
+	syTasklogInit(&dMNCongraGtlSetup); subsys_arena_lo = gSCSubsysFramebuffer0; // WARNING: Newline memes!
 	while ((uintptr_t)subsys_arena_lo < 0x80400000) { *subsys_arena_lo++ = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01); }
 }

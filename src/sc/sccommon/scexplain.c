@@ -155,7 +155,7 @@ void scExplainLoadExplainFiles(void)
     sSCExplainGraphicsFileHead = lbRelocGetFileExternHeap
     (
         (uintptr_t)&D_NF_000000C6,
-        syProgMalloc
+        syTasklogMalloc
         (
             lbRelocGetFileSize
             (
@@ -167,7 +167,7 @@ void scExplainLoadExplainFiles(void)
     sSCExplainMainFileHead = lbRelocGetFileExternHeap
     (
         (uintptr_t)&D_NF_000000FC,
-        syProgMalloc
+        syTasklogMalloc
         (
             lbRelocGetFileSize
             (
@@ -237,13 +237,13 @@ void func_ovl63_8018D248(void)
 // 0x8018D2D0
 void func_ovl63_8018D2D0(GObj *gobj)
 {
-    gDPPipeSync(gSYProgDLHeads[0]++);
-    gDPSetScissor(gSYProgDLHeads[0]++, G_SC_NON_INTERLACE, 10, 160, 310, 230);
-    gDPSetCycleType(gSYProgDLHeads[0]++, G_CYC_FILL);
-    gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gSYProgDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF)));
-    gDPFillRectangle(gSYProgDLHeads[0]++, 10, 160, 310, 230);
-    gDPPipeSync(gSYProgDLHeads[0]++);
+    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPSetScissor(gSYTasklogDLHeads[0]++, G_SC_NON_INTERLACE, 10, 160, 310, 230);
+    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_FILL);
+    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
+    gDPSetFillColor(gSYTasklogDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF)));
+    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 160, 310, 230);
+    gDPPipeSync(gSYTasklogDLHeads[0]++);
 }
 
 // 0x8018D3D8
@@ -337,15 +337,15 @@ GObj* func_ovl63_8018D500(void)
 // 0x8018D5FC
 void scExplainControlStickProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYProgDLHeads[1]++);
-    gSPClearGeometryMode(gSYProgDLHeads[1]++, G_ZBUFFER);
-    gDPSetRenderMode(gSYProgDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPPipeSync(gSYTasklogDLHeads[1]++);
+    gSPClearGeometryMode(gSYTasklogDLHeads[1]++, G_ZBUFFER);
+    gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
     gcDrawDObjTreeDLLinksForGObj(gobj);
 
-    gDPPipeSync(gSYProgDLHeads[1]++);
-    gSPSetGeometryMode(gSYProgDLHeads[1]++, G_ZBUFFER);
-    gDPSetRenderMode(gSYProgDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPPipeSync(gSYTasklogDLHeads[1]++);
+    gSPSetGeometryMode(gSYTasklogDLHeads[1]++, G_ZBUFFER);
+    gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 }
 
 // 0x8018D6DC
@@ -402,15 +402,15 @@ GObj* scExplainMakeControlStickInterface(void)
 // 0x8018D808
 void scExplainTapSparkProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYProgDLHeads[1]++);
-    gSPClearGeometryMode(gSYProgDLHeads[1]++, G_ZBUFFER);
-    gDPSetRenderMode(gSYProgDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPPipeSync(gSYTasklogDLHeads[1]++);
+    gSPClearGeometryMode(gSYTasklogDLHeads[1]++, G_ZBUFFER);
+    gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
     gcDrawDObjDLHead1(gobj);
 
-    gDPPipeSync(gSYProgDLHeads[1]++);
-    gSPSetGeometryMode(gSYProgDLHeads[1]++, G_ZBUFFER);
-    gDPSetRenderMode(gSYProgDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPPipeSync(gSYTasklogDLHeads[1]++);
+    gSPSetGeometryMode(gSYTasklogDLHeads[1]++, G_ZBUFFER);
+    gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 }
 
 // 0x8018D8E8
@@ -623,7 +623,7 @@ void scExplainDetectExit(void)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            syProgSetLoadScene();
+            syTasklogSetLoadScene();
 
             break;
         }
@@ -663,7 +663,7 @@ void scExplainUpdatePhase(void)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindCharacters;
 
-            syProgSetLoadScene();
+            syTasklogSetLoadScene();
 
             return;
         }

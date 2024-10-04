@@ -6,7 +6,7 @@
 #include <sc/scene.h>
 #include <lb/library.h>
 #include <sys/system_00.h>
-#include <sys/prog.h>
+#include <sys/tasklog.h>
 
 #include "ovl10.h"
 
@@ -484,7 +484,7 @@ void mnTitleMain(s32 arg0)
 		gMNTitleChangeSceneTimer--;
 
 		if (gMNTitleChangeSceneTimer == 0)
-			syProgSetLoadScene();
+			syTasklogSetLoadScene();
 	}
 	else
 	{
@@ -774,12 +774,12 @@ void mnTitleRenderFire(GObj* fire_gobj)
 
 	for (i = 0; i < 2; i++)
 	{
-		lbCommonPrepSObjSpriteAttrs(gSYProgDLHeads, fire_sobj);
+		lbCommonPrepSObjSpriteAttrs(gSYTasklogDLHeads, fire_sobj);
 
-		gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, 0, 0, 0, gMNTitleFireAlpha);
-		gDPSetCombineLERP(gSYProgDLHeads[0]++, 0, 0, 0, TEXEL0,  TEXEL0, 0, PRIMITIVE, 0,  0, 0, 0, TEXEL0,  TEXEL0, 0, PRIMITIVE, 0);
+		gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0, 0, 0, gMNTitleFireAlpha);
+		gDPSetCombineLERP(gSYTasklogDLHeads[0]++, 0, 0, 0, TEXEL0,  TEXEL0, 0, PRIMITIVE, 0,  0, 0, 0, TEXEL0,  TEXEL0, 0, PRIMITIVE, 0);
 
-		lbCommonPrepSObjDraw(gSYProgDLHeads, fire_sobj);
+		lbCommonPrepSObjDraw(gSYTasklogDLHeads, fire_sobj);
 		lbCommonClearExternSpriteParams();
 
 		fire_sobj = fire_sobj->next;
@@ -919,10 +919,10 @@ void mnTitleRenderLogoNoIntro(GObj* logo_gobj)
 	}
 	else
 	{
-		lbCommonPrepSObjSpriteAttrs(gSYProgDLHeads, logo_sobj);
+		lbCommonPrepSObjSpriteAttrs(gSYTasklogDLHeads, logo_sobj);
 
-		gDPSetPrimColor(gSYProgDLHeads[0]++, 0, 0, logo_sobj->sprite.red, logo_sobj->sprite.green, logo_sobj->sprite.blue, gMNTitleLogoAlpha);
-		gDPSetCombineLERP(gSYProgDLHeads[0]++, 0, 0, 0, PRIMITIVE,  TEXEL0, 0, PRIMITIVE, 0,  0, 0, 0, PRIMITIVE,  TEXEL0, 0, PRIMITIVE, 0);
+		gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, logo_sobj->sprite.red, logo_sobj->sprite.green, logo_sobj->sprite.blue, gMNTitleLogoAlpha);
+		gDPSetCombineLERP(gSYTasklogDLHeads[0]++, 0, 0, 0, PRIMITIVE,  TEXEL0, 0, PRIMITIVE, 0,  0, 0, 0, PRIMITIVE,  TEXEL0, 0, PRIMITIVE, 0);
 
 		lbCommonDrawSObjNoAttr(logo_gobj);
 	}
@@ -1251,15 +1251,15 @@ s32 mnTitleCreateViewports()
 // 80133CFC
 void mnTitleRenderLogoFireEffect(GObj *gobj)
 {
-	gDPPipeSync(gSYProgDLHeads[0]++);
-	gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+	gDPPipeSync(gSYTasklogDLHeads[0]++);
+	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
 	lbParticleDrawTextures(gobj);
 
-	gDPSetTexturePersp(gSYProgDLHeads[0]++, G_TP_PERSP);
-	gDPSetDepthSource(gSYProgDLHeads[0]++, G_ZS_PIXEL);
-	gDPPipeSync(gSYProgDLHeads[0]++);
-	gDPSetRenderMode(gSYProgDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPSetTexturePersp(gSYTasklogDLHeads[0]++, G_TP_PERSP);
+	gDPSetDepthSource(gSYTasklogDLHeads[0]++, G_ZS_PIXEL);
+	gDPPipeSync(gSYTasklogDLHeads[0]++);
+	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 80133DDC
@@ -1355,7 +1355,7 @@ void mnTitleStartScene()
 	}
 
 	D_ovl10_8013438C.arena_size = (u32) ((uintptr_t)&lOverlay10ArenaHi - (uintptr_t)&lOverlay10ArenaLo);
-	syProgInit(&D_ovl10_8013438C);
+	syTasklogInit(&D_ovl10_8013438C);
 }
 
 // 80134140
@@ -1372,5 +1372,5 @@ void mnTitleLoadFiles()
 	rldmSetup.force_status_buffer = 0;
 	rldmSetup.force_status_buffer_size = 0;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl10_80134420, ARRAY_COUNT(D_ovl10_80134420), &gMNTitleFile0, syProgMalloc(lbRelocGetAllocSize(D_ovl10_80134420, ARRAY_COUNT(D_ovl10_80134420)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl10_80134420, ARRAY_COUNT(D_ovl10_80134420), &gMNTitleFile0, syTasklogMalloc(lbRelocGetAllocSize(D_ovl10_80134420, ARRAY_COUNT(D_ovl10_80134420)), 0x10));
 }

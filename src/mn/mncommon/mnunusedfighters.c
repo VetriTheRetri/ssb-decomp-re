@@ -67,7 +67,7 @@ Gfx dMNUnusedFightersDisplayList[/* */] =
 syDisplaySetup dMNUnusedFightersDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x800D7074
-scRuntimeInfo dMNUnusedFightersGtlSetup =
+scRuntimeInfo dMNUnusedFightersTasklogSetup =
 {
     0x00000000,
     func_8000A5E4,
@@ -571,6 +571,6 @@ void mnUnusedFightersStartScene(void)
     dMNUnusedFightersDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMNUnusedFightersDisplaySetup);
 
-    dMNUnusedFightersGtlSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl16_BSS_END);
-    syTasklogInit(&dMNUnusedFightersGtlSetup);
+    dMNUnusedFightersTasklogSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl16_BSS_END);
+    syTasklogInit(&dMNUnusedFightersTasklogSetup);
 }

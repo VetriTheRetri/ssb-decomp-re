@@ -795,7 +795,7 @@ void mn1PModeProcStart(void)
 syDisplaySetup dMN1PModeDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8013310C
-scRuntimeInfo dMN1PModeGtlSetup =
+scRuntimeInfo dMN1PModeTasklogSetup =
 {
     0x00000000,
     func_8000A5E4,
@@ -840,6 +840,6 @@ void mn1PModeStartScene(void)
     dMN1PModeDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMN1PModeDisplaySetup);
     
-    dMN1PModeGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl18_BSS_END);
-    syTasklogInit(&dMN1PModeGtlSetup);
+    dMN1PModeTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl18_BSS_END);
+    syTasklogInit(&dMN1PModeTasklogSetup);
 }

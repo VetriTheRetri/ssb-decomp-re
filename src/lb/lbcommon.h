@@ -8,6 +8,7 @@
 #include <ft/ftdef.h>
 #include <gm/gmsound.h>
 
+extern sb32 (*dLBCommonProcMatrixList[/* */])(/* */);
 extern Vec3f gLBCommonScale;
 
 extern f32 lbCommonSin(f32 x);

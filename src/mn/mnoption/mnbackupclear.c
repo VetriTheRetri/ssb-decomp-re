@@ -812,7 +812,7 @@ Vec2f dMNBackupClearUnused0x80132FB8[/* */] = { { 193.0F, 110.0F }, { 87.0F, 110
 syDisplaySetup dMNBackupClearDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132FE4
-scRuntimeInfo dMNBackupClearGtlSetup =
+scRuntimeInfo dMNBackupClearTasklogSetup =
 {
     0x00000000,
     func_8000A5E4,
@@ -857,6 +857,6 @@ void mnBackupClearStartScene(void)
     dMNBackupClearDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMNBackupClearDisplaySetup);
     
-    dMNBackupClearGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl53_BSS_END);
-    syTasklogInit(&dMNBackupClearGtlSetup);
+    dMNBackupClearTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl53_BSS_END);
+    syTasklogInit(&dMNBackupClearTasklogSetup);
 }

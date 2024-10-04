@@ -2332,7 +2332,7 @@ syDisplaySetup dGMStaffrollDisplaySetup =
 };
 
 // 0x8013A724
-scRuntimeInfo dGMStaffrollGtlSetup =
+scRuntimeInfo dGMStaffrollTasklogSetup =
 {
 	0x00000000,
 	func_8000A5E4,
@@ -2392,8 +2392,8 @@ void gmStaffrollStartScene(void)
 	dGMStaffrollDisplaySetup.zbuffer = syDisplayGetZBuffer(12800);
 	func_80007024(&dGMStaffrollDisplaySetup);
 
-	dGMStaffrollGtlSetup.arena_size = (size_t) ((uintptr_t)SYDISPLAY_DEFINE_FRAMEBUF_ADDR(640, 480, 0, 0, u16, 0) - (uintptr_t)&ovl59_BSS_END);
-	syTasklogInit(&dGMStaffrollGtlSetup);
+	dGMStaffrollTasklogSetup.arena_size = (size_t) ((uintptr_t)SYDISPLAY_DEFINE_FRAMEBUF_ADDR(640, 480, 0, 0, u16, 0) - (uintptr_t)&ovl59_BSS_END);
+	syTasklogInit(&dGMStaffrollTasklogSetup);
 
 	arena16 = gSCSubsysFramebuffer0;
 

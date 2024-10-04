@@ -365,7 +365,7 @@ void mvOpeningYosterProcStart(void)
 syDisplaySetup dMVOpeningYosterDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132394
-scRuntimeInfo dMVOpeningYosterGtlSetup =
+scRuntimeInfo dMVOpeningYosterTasklogSetup =
 {
     0x00000000,
 	func_8000A5E4,
@@ -410,6 +410,6 @@ void mvOpeningYosterStartScene(void)
     dMVOpeningYosterDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMVOpeningYosterDisplaySetup);
 
-    dMVOpeningYosterGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl45_BSS_END);
-    syTasklogInit(&dMVOpeningYosterGtlSetup);
+    dMVOpeningYosterTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl45_BSS_END);
+    syTasklogInit(&dMVOpeningYosterTasklogSetup);
 }

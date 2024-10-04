@@ -152,7 +152,7 @@ u32 dMVOpeningJungleFileIDs[/* */] = { &D_NF_00000025, &D_NF_00000040 };
 syDisplaySetup dMVOpeningJungleDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8018D958
-scRuntimeInfo dMVOpeningJungleGtlSetup =
+scRuntimeInfo dMVOpeningJungleTasklogSetup =
 {
     0x00000000,
 	func_8000A5E4,
@@ -448,6 +448,6 @@ void mvOpeningJungleStartScene(void)
     dMVOpeningJungleDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMVOpeningJungleDisplaySetup);
 
-    dMVOpeningJungleGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl51_BSS_END);
-    syTasklogInit(&dMVOpeningJungleGtlSetup);
+    dMVOpeningJungleTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl51_BSS_END);
+    syTasklogInit(&dMVOpeningJungleTasklogSetup);
 }

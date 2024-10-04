@@ -843,7 +843,7 @@ void mnVSItemSwitchProcStart(void)
 syDisplaySetup dMNVSItemSwitchDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8013333C
-scRuntimeInfo dMNVSItemSwitchGtlSetup =
+scRuntimeInfo dMNVSItemSwitchTasklogSetup =
 {
     0x00000000,
     func_8000A5E4,
@@ -888,6 +888,6 @@ void mnVSItemSwitchStartScene(void)
     dMNVSItemSwitchDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMNVSItemSwitchDisplaySetup);
     
-    dMNVSItemSwitchGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl21_BSS_END);
-    syTasklogInit(&dMNVSItemSwitchGtlSetup);
+    dMNVSItemSwitchTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl21_BSS_END);
+    syTasklogInit(&dMNVSItemSwitchTasklogSetup);
 }

@@ -74,7 +74,7 @@ Lights1 dMVOpeningCliffLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0
 syDisplaySetup dMVOpeningCliffDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132724
-scRuntimeInfo dMVOpeningCliffGtlSetup =
+scRuntimeInfo dMVOpeningCliffTasklogSetup =
 {
     0x00000000,
 	func_8000A5E4,
@@ -530,6 +530,6 @@ void mvOpeningCliffStartScene(void)
     dMVOpeningCliffDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMVOpeningCliffDisplaySetup);
 
-    dMVOpeningCliffGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl46_BSS_END);
-    syTasklogInit(&dMVOpeningCliffGtlSetup);
+    dMVOpeningCliffTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl46_BSS_END);
+    syTasklogInit(&dMVOpeningCliffTasklogSetup);
 }

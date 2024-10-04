@@ -1173,8 +1173,8 @@ void func_80006548(syTasklogBufferSetup *arg0, void (*arg1)())
 
 	sSYTasklogCount = arg0->tasks_num;
 	D_800465F8.unk00 = arg0->unk00;
-	D_800465F8.fn04  = arg0->fn04;
-	D_800465F8.fn0C  = arg0->fn08;
+	D_800465F8.fn04  = arg0->func_update;
+	D_800465F8.fn0C  = arg0->func_draw;
 
 	func_80004DB4
 	(
@@ -1237,7 +1237,7 @@ void syTasklogInit(syTasklogSetup *ts)
 {
 	OMSetup omsetup;
 
-	syTasklogInitGeneralHeap(ts->setup.arena_start, ts->setup.arena_size);
+	syTasklogInitGeneralHeap(ts->buffer_setup.arena_start, ts->buffer_setup.arena_size);
 
 	omsetup.gobjthreads      = syTasklogMalloc(sizeof(GObjThread) * ts->gobjthreads_num, 0x8);
 	omsetup.gobjthreads_num  = ts->gobjthreads_num;
@@ -1259,8 +1259,8 @@ void syTasklogInit(syTasklogSetup *ts)
 	omsetup.gobjs_num = ts->gobjs_num;
 	omsetup.gobj_size = ts->gobj_size;
 
-	omsetup.ommtxes     = syTasklogMalloc(sizeof(OMMtx) * ts->num_ommtxes, 0x8);
-	omsetup.num_ommtxes = ts->num_ommtxes;
+	omsetup.ommtxes     = syTasklogMalloc(sizeof(OMMtx) * ts->ommtxs_num, 0x8);
+	omsetup.ommtxs_num = ts->ommtxs_num;
 
 	gcSetMatrixProcess(ts->unk60);
 	omsetup.proc_eject = ts->proc_eject;
@@ -1288,7 +1288,7 @@ void syTasklogInit(syTasklogSetup *ts)
 	D_800465F8.func_update = func_80006350;
 	D_800465F8.func_draw = func_800063A0;
 
-	func_80006548(&ts->setup, ts->proc_start);
+	func_80006548(&ts->buffer_setup, ts->proc_start);
 }
 
 // 80006A8C

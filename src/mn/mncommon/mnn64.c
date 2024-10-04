@@ -60,7 +60,7 @@ Gfx dMNN64DisplayList[/* */] =
 syDisplaySetup dMNN64DisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80131FB4
-scRuntimeInfo dMNN64GtlSetup =
+scRuntimeInfo dMNN64TasklogSetup =
 {
 	0x00000000,
 	func_8000A5E4,
@@ -271,6 +271,6 @@ void mnN64StartScene(void)
 	dMNN64DisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
 	func_80007024(&dMNN64DisplaySetup);
 
-	dMNN64GtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl58_BSS_END);
-	syTasklogInit(&dMNN64GtlSetup);
+	dMNN64TasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl58_BSS_END);
+	syTasklogInit(&dMNN64TasklogSetup);
 }

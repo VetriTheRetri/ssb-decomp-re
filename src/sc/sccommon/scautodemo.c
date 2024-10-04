@@ -170,7 +170,7 @@ syColorRGBA dSCAutoDemoFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 syDisplaySetup dSCAutoDemoDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8018E250
-scRuntimeInfo dSCAutoDemoGtlSetup = 
+scRuntimeInfo dSCAutoDemoTasklogSetup = 
 {
 	0x00000000, scAutoDemoProcScene, 0x800a26b8, &ovl64_BSS_END,
 	0x00000000, 0x00000001, 0x00000002, 0x00006000,
@@ -712,10 +712,10 @@ void scAutoDemoStartScene(void)
 
 	func_80007024(&dSCAutoDemoDisplaySetup);
 
-	dSCAutoDemoGtlSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl64_BSS_END);
-	dSCAutoDemoGtlSetup.proc_start = scAutoDemoProcStart;
+	dSCAutoDemoTasklogSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl64_BSS_END);
+	dSCAutoDemoTasklogSetup.proc_start = scAutoDemoProcStart;
 
-	func_800A2698(&dSCAutoDemoGtlSetup);
+	func_800A2698(&dSCAutoDemoTasklogSetup);
 	auStopBGM();
 
 	while (auIsBGMPlaying(0) != FALSE)

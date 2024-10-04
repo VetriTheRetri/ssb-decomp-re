@@ -66,7 +66,7 @@ Gfx dSC1PChallengerDisplayList[/* */] =
 syDisplaySetup dSC1PChallengerDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x801323D4
-scRuntimeInfo dSC1PChallengerGtlSetup =
+scRuntimeInfo dSC1PChallengerTasklogSetup =
 {
     0x00000000,
     func_8000A5E4,
@@ -386,6 +386,6 @@ void sc1PChallengerStartScene(void)
     dSC1PChallengerDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dSC1PChallengerDisplaySetup);
     
-    dSC1PChallengerGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl23_BSS_END);
-    syTasklogInit(&dSC1PChallengerGtlSetup);
+    dSC1PChallengerTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl23_BSS_END);
+    syTasklogInit(&dSC1PChallengerTasklogSetup);
 }

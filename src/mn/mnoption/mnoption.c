@@ -1017,7 +1017,7 @@ void mnOptionProcStart(void)
 syDisplaySetup dMNOptionDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80133714
-scRuntimeInfo dMNOptionGtlSetup =
+scRuntimeInfo dMNOptionTasklogSetup =
 {
     0x00000000,
     func_8000A5E4,
@@ -1062,6 +1062,6 @@ void mnOptionStartScene(void)
     dMNOptionDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMNOptionDisplaySetup);
 
-    dMNOptionGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl60_BSS_END);
-    syTasklogInit(&dMNOptionGtlSetup);
+    dMNOptionTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl60_BSS_END);
+    syTasklogInit(&dMNOptionTasklogSetup);
 }

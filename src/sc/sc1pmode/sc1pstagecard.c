@@ -1989,7 +1989,7 @@ void sc1PStageCardProcStart(void)
 syDisplaySetup dSC1PStageCardDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80135B54
-scRuntimeInfo dSC1PStageCardGtlSetup =
+scRuntimeInfo dSC1PStageCardTasklogSetup =
 {
     0x00000000,
     func_8000A5E4,
@@ -2034,6 +2034,6 @@ void sc1PStageCardStartScene(void)
     dSC1PStageCardDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dSC1PStageCardDisplaySetup);
     
-    dSC1PStageCardGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl24_BSS_END);
-    func_800A2698(&dSC1PStageCardGtlSetup);
+    dSC1PStageCardTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl24_BSS_END);
+    func_800A2698(&dSC1PStageCardTasklogSetup);
 }

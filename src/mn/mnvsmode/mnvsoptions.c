@@ -1418,7 +1418,7 @@ void mnVSOptionsProcStart(void)
 syDisplaySetup dMNVSOptionsDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8013482C
-scRuntimeInfo dMNVSOptionsGtlSetup =
+scRuntimeInfo dMNVSOptionsTasklogSetup =
 {
     0x00000000,
     func_8000A5E4,
@@ -1463,6 +1463,6 @@ void mnVSOptionsStartScene(void)
     dMNVSOptionsDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMNVSOptionsDisplaySetup);
     
-    dMNVSOptionsGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl20_BSS_END);
-    syTasklogInit(&dMNVSOptionsGtlSetup);
+    dMNVSOptionsTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl20_BSS_END);
+    syTasklogInit(&dMNVSOptionsTasklogSetup);
 }

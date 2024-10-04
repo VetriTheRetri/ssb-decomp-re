@@ -535,7 +535,7 @@ struct _OMSetup
     size_t gobj_size;
 
     OMMtx *ommtxes;
-    s32 num_ommtxes;
+    s32 ommtxs_num;
 
     void (*proc_eject)(DObjDynamicStore*);
 

@@ -813,7 +813,7 @@ void mnDataProcStart(void)
 syDisplaySetup dMNDataDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132FCC
-scRuntimeInfo dMNDataGtlSetup = 
+scRuntimeInfo dMNDataTasklogSetup = 
 {
     0x00000000,
     func_8000A5E4,
@@ -858,6 +858,6 @@ void mnDataStartScene(void)
     dMNDataDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMNDataDisplaySetup);
 
-    dMNDataGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl61_BSS_END);
-    syTasklogInit(&dMNDataGtlSetup);
+    dMNDataTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl61_BSS_END);
+    syTasklogInit(&dMNDataTasklogSetup);
 }

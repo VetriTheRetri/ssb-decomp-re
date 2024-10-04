@@ -368,7 +368,7 @@ void mnMessageProcStart(void)
 syDisplaySetup dMNMessageDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x801325BC
-scRuntimeInfo dMNMessageGtlSetup =
+scRuntimeInfo dMNMessageTasklogSetup =
 {
     0x00000000,
     func_8000A5E4,
@@ -414,7 +414,7 @@ void mnMessageStartScene(void)
     
     func_80007024(&dMNMessageDisplaySetup);
     
-    dMNMessageGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl22_BSS_END);
+    dMNMessageTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl22_BSS_END);
 
     for
     (
@@ -423,7 +423,7 @@ void mnMessageStartScene(void)
         sMNMessageQueueID++
     )
     {
-        syTasklogInit(&dMNMessageGtlSetup);
+        syTasklogInit(&dMNMessageTasklogSetup);
     }
     if (gSceneData.scene_previous == nSCKindVSResults)
     {

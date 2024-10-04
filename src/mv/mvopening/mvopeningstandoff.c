@@ -76,7 +76,7 @@ Lights1 dMVOpeningStandoffLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF
 syDisplaySetup dMVOpeningStandoffDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132924
-scRuntimeInfo dMVOpeningStandoffGtlSetup =
+scRuntimeInfo dMVOpeningStandoffTasklogSetup =
 {
     0x00000000,
 	func_8000A5E4,
@@ -623,6 +623,6 @@ void mvOpeningStandoffStartScene(void)
     dMVOpeningStandoffDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMVOpeningStandoffDisplaySetup);
 
-    dMVOpeningStandoffGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl47_BSS_END);
-    syTasklogInit(&dMVOpeningStandoffGtlSetup);
+    dMVOpeningStandoffTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl47_BSS_END);
+    syTasklogInit(&dMVOpeningStandoffTasklogSetup);
 }

@@ -147,7 +147,7 @@ syDisplaySetup dMNCongraDisplaySetup =
 };
 
 // 0x80132224
-scRuntimeInfo dMNCongraGtlSetup =
+scRuntimeInfo dMNCongraTasklogSetup =
 {
 	0x00000000,
 	func_8000A5E4,
@@ -420,7 +420,7 @@ void mnCongraStartScene(void)
 	dMNCongraDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
 	func_80007024(&dMNCongraDisplaySetup);
 
-	dMNCongraGtlSetup.arena_size = (size_t) (SYDISPLAY_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 0) - (uintptr_t)&ovl57_BSS_END);
-	syTasklogInit(&dMNCongraGtlSetup); subsys_arena_lo = gSCSubsysFramebuffer0; // WARNING: Newline memes!
+	dMNCongraTasklogSetup.arena_size = (size_t) (SYDISPLAY_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 0) - (uintptr_t)&ovl57_BSS_END);
+	syTasklogInit(&dMNCongraTasklogSetup); subsys_arena_lo = gSCSubsysFramebuffer0; // WARNING: Newline memes!
 	while ((uintptr_t)subsys_arena_lo < 0x80400000) { *subsys_arena_lo++ = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01); }
 }

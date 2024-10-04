@@ -76,7 +76,7 @@ u32 dMVOpeningUnused0x8013265C[/* */] =
 syDisplaySetup dMVOpeningNewcomersDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132694
-scRuntimeInfo dMVOpeningNewcomersGtlSetup =
+scRuntimeInfo dMVOpeningNewcomersTasklogSetup =
 {
 	0x00000000,
 	func_8000A5E4,
@@ -462,6 +462,6 @@ void mvOpeningNewcomersStartScene(void)
     dMVOpeningNewcomersDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMVOpeningNewcomersDisplaySetup);
 
-    dMVOpeningNewcomersGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl52_BSS_END);
-    syTasklogInit(&dMVOpeningNewcomersGtlSetup);
+    dMVOpeningNewcomersTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl52_BSS_END);
+    syTasklogInit(&dMVOpeningNewcomersTasklogSetup);
 }

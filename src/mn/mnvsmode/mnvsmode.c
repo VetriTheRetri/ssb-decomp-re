@@ -1525,7 +1525,7 @@ void mnVSModeProcStart(void)
 syDisplaySetup dMNVSModeDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8013489C
-scRuntimeInfo dMNVSModeGtlSetup =
+scRuntimeInfo dMNVSModeTasklogSetup =
 {
     0x00000000,
     func_8000A5E4,
@@ -1570,6 +1570,6 @@ void mnVSModeStartScene(void)
     dMNVSModeDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMNVSModeDisplaySetup);
 
-    dMNVSModeGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl19_BSS_END);
-    syTasklogInit(&dMNVSModeGtlSetup);
+    dMNVSModeTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl19_BSS_END);
+    syTasklogInit(&dMNVSModeTasklogSetup);
 }

@@ -458,7 +458,7 @@ void mvOpeningClashProcStart(void)
 syDisplaySetup dMVOpeningClashDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132944
-scRuntimeInfo dMVOpeningClashGtlSetup =
+scRuntimeInfo dMVOpeningClashTasklogSetup =
 {
     0x00000000,
 	func_8000A5E4,
@@ -503,6 +503,6 @@ void mvOpeningClashStartScene(void)
     dMVOpeningClashDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMVOpeningClashDisplaySetup);
 
-    dMVOpeningClashGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl49_BSS_END);
-    syTasklogInit(&dMVOpeningClashGtlSetup);
+    dMVOpeningClashTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl49_BSS_END);
+    syTasklogInit(&dMVOpeningClashTasklogSetup);
 }

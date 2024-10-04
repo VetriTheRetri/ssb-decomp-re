@@ -104,7 +104,7 @@ s32 dSCExplainRandomSeed2 = 0x00000001;
 syDisplaySetup dSCExplainDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8018E748
-scRuntimeInfo dSCExplainGtlSetup =
+scRuntimeInfo dSCExplainTasklogSetup =
 {
     0,
     jtgt_ovl63_8018E568,
@@ -861,10 +861,10 @@ void scExplainStartScene(void)
 
     set_lcg_seed_ptr(&dSCExplainRandomSeed1);
 
-    dSCExplainGtlSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl63_BSS_END);
-    dSCExplainGtlSetup.proc_start = scExplainProcStart;
+    dSCExplainTasklogSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl63_BSS_END);
+    dSCExplainTasklogSetup.proc_start = scExplainProcStart;
 
-    func_800A2698(&dSCExplainGtlSetup);
+    func_800A2698(&dSCExplainTasklogSetup);
     gmRumbleInitPlayers();
     set_lcg_seed_ptr(NULL);
 }

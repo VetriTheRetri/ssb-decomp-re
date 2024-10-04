@@ -18,8 +18,8 @@ typedef struct syTasklogDLBuffer
 typedef struct syTasklogBufferSetup
 {
 	/* 0x00 */ u16 unk00;
-	/* 0x04 */ void (*fn04)(void);
-	/* 0x08 */ void (*fn08)(void);
+	/* 0x04 */ void (*func_update)(void);
+	/* 0x08 */ void (*func_draw)(void);
 	/* 0x0C */ void *arena_start;           // Start of allocatable memory pool
 	/* 0x10 */ size_t arena_size;           // Size of allocatable memory pool for heap; usually from end of last overlay's .bss section to start of subsys (ovl1)
 	/* 0x14 */ u32 unk14; // count?
@@ -38,7 +38,7 @@ typedef struct syTasklogBufferSetup
 
 typedef struct syTasklogSetup
 {
-	/* 0x00 */ syTasklogBufferSetup setup;
+	/* 0x00 */ syTasklogBufferSetup buffer_setup;
 	/* 0x40 */ u32 gobjthreads_num;
 	/* 0x44 */ u32 threadstack_size;
 	/* 0x48 */ u32 threadstacks_num;
@@ -46,7 +46,7 @@ typedef struct syTasklogSetup
 	/* 0x50 */ u32 gobjprocs_num;
 	/* 0x54 */ u32 gobjs_num;
 	/* 0x58 */ u32 gobj_size;
-	/* 0x5C */ u32 num_ommtxes;
+	/* 0x5C */ u32 ommtxs_num;
 	/* 0x60 */ void *unk60;
 	/* 0x64 */ void (*proc_eject)(DObjDynamicStore*); 	// fn pointer void(*)(struct DObjDynamicStore *)
 	/* 0x68 */ u32 aobjs_num;

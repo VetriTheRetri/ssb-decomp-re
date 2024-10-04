@@ -97,7 +97,7 @@ Lights1 dMVEndingLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0
 syDisplaySetup dMVEndingDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132B24
-scRuntimeInfo dMVEndingGtlSetup =
+scRuntimeInfo dMVEndingTasklogSetup =
 {
 	0x00000000,
 	func_8000A5E4,
@@ -563,7 +563,7 @@ void mvEndingStartScene(void)
 
     func_80007024(&dMVEndingDisplaySetup);
 
-    dMVEndingGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl54_BSS_END);
+    dMVEndingTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl54_BSS_END);
 
-    syTasklogInit(&dMVEndingGtlSetup);
+    syTasklogInit(&dMVEndingTasklogSetup);
 }

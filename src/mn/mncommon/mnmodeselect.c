@@ -93,7 +93,7 @@ Gfx dMNModeSelectDisplayList[/* */] =
 syDisplaySetup dMNModeSelectDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132BF4
-scRuntimeInfo dMNModeSelectGtlSetup =
+scRuntimeInfo dMNModeSelectTasklogSetup =
 {
     0x00000000,
     func_8000A5E4,
@@ -771,6 +771,6 @@ void mnModeSelectStartScene(void)
     dMNModeSelectDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMNModeSelectDisplaySetup);
     
-    dMNModeSelectGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl17_BSS_END);
-    syTasklogInit(&dMNModeSelectGtlSetup);
+    dMNModeSelectTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl17_BSS_END);
+    syTasklogInit(&dMNModeSelectTasklogSetup);
 }

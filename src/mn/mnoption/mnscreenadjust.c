@@ -64,7 +64,7 @@ Gfx dMNScreenAdjustDisplayList[/* */] =
 syDisplaySetup dMNScreenAdjustDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132894
-scRuntimeInfo dMNScreenAdjustGtlSetup =
+scRuntimeInfo dMNScreenAdjustTasklogSetup =
 {
     0x00000000,
     func_8000A5E4,
@@ -455,6 +455,6 @@ void mnScreenAdjustStartScene(void)
     dMNScreenAdjustDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMNScreenAdjustDisplaySetup);
     
-    dMNScreenAdjustGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl25_BSS_END);
-    syTasklogInit(&dMNScreenAdjustGtlSetup);
+    dMNScreenAdjustTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl25_BSS_END);
+    syTasklogInit(&dMNScreenAdjustTasklogSetup);
 }

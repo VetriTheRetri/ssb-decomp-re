@@ -661,44 +661,49 @@ syColorRGBA dSC1PGameFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 // 0x80192B18
 syDisplaySetup dSC1PGameDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
-// 0x80192B34
-scRuntimeInfo dSC1PGameGtlSetup =
+// 0x80132B34
+syTasklogSetup dSC1PGameTasklogSetup =
 {
-    0,
-    sc1PGameProcScene,
-    func_800A26B8,
-    &ovl65_BSS_END,
-    0,
-    1,
-    2,
-    0xF000,
-    0x5000,
-    0,
-    0,
-    0xD000,
-    0x20000,
-    0xC000,
-    sc1PGameProcLights,
-    update_contdata,
-    0,
-    0x600,
-    0,
-    0,
-    0,
-    0,
-    0x88,
-    0,
-    0x800D5CAC,
-    0,
-    0,
-    0,
-    0,
-    0x88,
-    0,
-    0x6C,
-    0,
-    0x90,
-    sc1PGameProcStart
+    // Task Logic Buffer Setup
+    {
+        0,                          // ???
+        sc1PGameProcScene,          // Update function
+        func_800A26B8,              // Frame draw function
+        &ovl65_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of tasks?
+        0xF000,                     // ???
+        0x5000,                     // ???
+        0,                          // ???
+        0,                          // ???
+        0xD000,                     // ???
+        2,                          // ???
+        0xC000,                     // ???
+        sc1PGameProcLights,         // Pre-render function
+        update_contdata,            // Controller I/O function
+    },
+
+    0,                              // Number of GObjThreads
+    1536,                           // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of Object Manager Matrices
+    dLBCommonProcMatrixList,        // Matrix function list
+    NULL,                           // Function for ejecting DObjDynamicStore?
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(Camera),                 // Camera size
+    
+    sc1PGameProcStart               // Task start function
 };
 
 // // // // // // // // // // // //
@@ -2842,9 +2847,10 @@ void sc1PGameStartScene(void)
     dSC1PGameDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dSC1PGameDisplaySetup);
 
-    dSC1PGameGtlSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl65_BSS_END);
-    dSC1PGameGtlSetup.proc_start = sc1PGameProcStart;
-    func_800A2698(&dSC1PGameGtlSetup);
+    dSC1PGameTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl65_BSS_END);
+    dSC1PGameTasklogSetup.proc_start = sc1PGameProcStart;
+    func_800A2698(&dSC1PGameTasklogSetup);
+    
     sc1PGameInitBonusStats();
     auStopBGM();
 

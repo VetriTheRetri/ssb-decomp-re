@@ -2219,12 +2219,12 @@ void gcSetupObjectManager(OMSetup* setup)
 	sOMObjCommonNumMax = -1;
 	sOMDObjProcEject = setup->proc_eject;
 
-	if (setup->num_ommtxes != 0)
+	if (setup->ommtxs_num != 0)
 	{
 		OMMtx* current_ommtx;
 		sOMMtxHead = current_ommtx = setup->ommtxes;
 
-		for (i = 0; i < setup->num_ommtxes - 1; i++)
+		for (i = 0; i < setup->ommtxs_num - 1; i++)
 		{
 			OMMtx* next_ommtx = current_ommtx + 1;
 			current_ommtx->next = next_ommtx;

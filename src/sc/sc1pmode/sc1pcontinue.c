@@ -1252,7 +1252,7 @@ void sc1PContinueProcStart(void)
 syDisplaySetup dSC1PContinueDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80134254
-scRuntimeInfo dSC1PContinueGtlSetup =
+scRuntimeInfo dSC1PContinueTasklogSetup =
 {
 	0x00000000,
 	func_8000A5E4,
@@ -1298,9 +1298,9 @@ void sc1PContinueStartScene(void)
 
     func_80007024(&dSC1PContinueDisplaySetup);
 
-    dSC1PContinueGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl55_BSS_END);
+    dSC1PContinueTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl55_BSS_END);
 
-    func_800A2698(&dSC1PContinueGtlSetup);
+    func_800A2698(&dSC1PContinueTasklogSetup);
 
     gSceneData.is_select_continue = sSC1PContinueIsSelectContinue;
 }

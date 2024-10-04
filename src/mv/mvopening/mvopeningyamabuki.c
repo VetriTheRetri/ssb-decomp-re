@@ -73,7 +73,7 @@ Lights1 dMVOpeningYamabukiLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF
 syDisplaySetup dMVOpeningYamabukiDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x801323F4
-scRuntimeInfo dMVOpeningYamabukiGtlSetup =
+scRuntimeInfo dMVOpeningYamabukiTasklogSetup =
 {
     0x00000000,
 	func_8000A5E4,
@@ -458,6 +458,6 @@ void mvOpeningYamabukiStartScene(void)
     dMVOpeningYamabukiDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMVOpeningYamabukiDisplaySetup);
 
-    dMVOpeningYamabukiGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl48_BSS_END);
-    syTasklogInit(&dMVOpeningYamabukiGtlSetup);
+    dMVOpeningYamabukiTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl48_BSS_END);
+    syTasklogInit(&dMVOpeningYamabukiTasklogSetup);
 }

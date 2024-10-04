@@ -696,7 +696,7 @@ Gfx dMNSoundTestDisplayList[/* */] =
 syDisplaySetup dMNSoundTestDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8013425C
-scRuntimeInfo dMNSoundTestGtlSetup =
+scRuntimeInfo dMNSoundTestTasklogSetup =
 {
     0x00000000,
     func_8000A5E4,
@@ -1757,6 +1757,6 @@ void mnSoundTestStartScene(void)
 {
     dMNSoundTestDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMNSoundTestDisplaySetup);
-    dMNSoundTestGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl62_BSS_END);
-    syTasklogInit(&dMNSoundTestGtlSetup);
+    dMNSoundTestTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl62_BSS_END);
+    syTasklogInit(&dMNSoundTestTasklogSetup);
 }

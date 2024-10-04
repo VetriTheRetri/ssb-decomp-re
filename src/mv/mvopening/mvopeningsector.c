@@ -582,7 +582,7 @@ void mvOpeningSectorProcStart(void)
 syDisplaySetup dMVOpeningSectorDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132958
-scRuntimeInfo mvOpeningSectorGtlSetup =
+scRuntimeInfo mvOpeningSectorTasklogSetup =
 {
     0x00000000,
 	func_8000A5E4,
@@ -627,6 +627,6 @@ void mvOpeningSectorStartScene(void)
     dMVOpeningSectorDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     func_80007024(&dMVOpeningSectorDisplaySetup);
 
-    mvOpeningSectorGtlSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl50_BSS_END);
-    syTasklogInit(&mvOpeningSectorGtlSetup);
+    mvOpeningSectorTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl50_BSS_END);
+    syTasklogInit(&mvOpeningSectorTasklogSetup);
 }

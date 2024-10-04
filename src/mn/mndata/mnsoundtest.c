@@ -696,43 +696,48 @@ Gfx dMNSoundTestDisplayList[/* */] =
 syDisplaySetup dMNSoundTestDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8013425C
-scRuntimeInfo dMNSoundTestTasklogSetup =
+syTasklogSetup dMNSoundTestTasklogSetup =
 {
-    0x00000000,
-    func_8000A5E4,
-    func_8000A340,
-    &ovl62_BSS_END,
-    0,
-    1,
-    1,
-    0x4000,
-    0x400,
-    0,
-    0,
-    0x1000,
-    0x20000,
-    0x1000,
-    mnSoundTestProcLights,
-    update_contdata,
-    0x10,
-    0x600,
-    0x10,
-    0,
-    0x40,
-    0x40,
-    0x88,
-    0x100,
-    0,
-    0,
-    0x20,
-    0x10,
-    0x400,
-    0x88,
-    0x100,
-    0x6C,
-    0x8,
-    0x90,
-    mnSoundTestProcStart
+    // Task Logic Buffer Setup
+    {
+        0,                          // ???
+        func_8000A5E4,              // Update function
+        func_8000A340,              // Frame draw function
+        &ovl62_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        1,                          // Number of tasks?
+        0x4000,                     // ???
+        0x400,                      // ???
+        0,                          // ???
+        0,                          // ???
+        0x1000,                     // ???
+        2,                          // ???
+        0x1000,                     // ???
+        mnSoundTestProcLights,      // Pre-render function
+        update_contdata,            // Controller I/O function
+    },
+
+    16,                             // Number of GObjThreads
+    1536,                           // Thread stack size
+    16,                             // Number of thread stacks
+    0,                              // ???
+    64,                             // Number of GObjProcesses
+    64,                             // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    256,                            // Number of Object Manager Matrices
+    NULL,                           // Matrix function list
+    NULL,                           // Function for ejecting DObjDynamicStore?
+    32,                             // Number of AObjs
+    16,                             // Number of MObjs
+    1024,                           // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    256,                            // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    8,                              // Number of Cameras
+    sizeof(Camera),                 // Camera size
+    
+    mnSoundTestProcStart            // Task start function
 };
 
 // // // // // // // // // // // //
@@ -1757,6 +1762,7 @@ void mnSoundTestStartScene(void)
 {
     dMNSoundTestDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMNSoundTestDisplaySetup);
-    dMNSoundTestTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl62_BSS_END);
+
+    dMNSoundTestTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl62_BSS_END);
     syTasklogInit(&dMNSoundTestTasklogSetup);
 }

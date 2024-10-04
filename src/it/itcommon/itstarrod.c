@@ -288,7 +288,7 @@ sb32 itStarRodWeaponStarProcUpdate(GObj *weapon_gobj)
 
     if (wp->weapon_vars.star.lifetime == 0)
     {
-        DObjGetStruct(weapon_gobj)->flags = DOBJ_FLAG_NORENDER;
+        DObjGetStruct(weapon_gobj)->flags = DOBJ_FLAG_HIDDEN;
 
         efManagerSparkleWhiteScaleMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 

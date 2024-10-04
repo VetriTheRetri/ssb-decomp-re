@@ -150,7 +150,7 @@ void itTaruBombContainerSmashMakeEffect(Vec3f *pos)
 
         if (effect_gobj != NULL)
         {
-            gcAddGObjDisplay(effect_gobj, gcDrawDObjTreeForGObj, 11, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+            gcAddGObjDisplay(effect_gobj, gcDrawDObjTreeForGObj, 11, GOBJ_DLLINKORDER_DEFAULT, -1);
 
             dl = (Gfx*) ((*(uintptr_t*)((uintptr_t)*dITTaruBombItemDesc.p_file + dITTaruBombItemDesc.o_attributes) - (uintptr_t)&lITTaruBombDataStart) + (uintptr_t)&lITTaruBombEffectDisplayList); // Linker thing
 
@@ -410,7 +410,7 @@ void itTaruBombExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
     }
     efManagerQuakeMakeEffect(1);
 
-    DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
+    DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_HIDDEN;
 
     itTaruBombExplodeSetStatus(item_gobj);
 }

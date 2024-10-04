@@ -855,11 +855,11 @@ void sc1PStageCardVSFighterProcUpdate(GObj *fighter_gobj)
     switch (sSC1PStageCardStage)
     {
     case nSC1PGameStageYoshi:
-        fighter_gobj->flags = ((id * 3) < sc1PStageCardTotalTimeTics) ? GOBJ_FLAG_NONE : GOBJ_FLAG_NORENDER;
+        fighter_gobj->flags = ((id * 3) < sc1PStageCardTotalTimeTics) ? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
         break;
         
     case nSC1PGameStageKirby:
-        fighter_gobj->flags = ((id * 10) < sc1PStageCardTotalTimeTics) ? GOBJ_FLAG_NONE : GOBJ_FLAG_NORENDER;
+        fighter_gobj->flags = ((id * 10) < sc1PStageCardTotalTimeTics) ? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
         break;
 
     case nSC1PGameStageZako:

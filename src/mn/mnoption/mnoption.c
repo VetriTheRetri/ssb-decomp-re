@@ -248,7 +248,7 @@ void mnOptionMakeSoundOptionSObjs(void)
     SObj *sobj;
 
     sMNOptionSoundOptionGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionMonoTextSprite));
 
@@ -288,7 +288,7 @@ void mnOptionMakeSoundTextSObj(void)
     SObj *sobj;
 
     sMNOptionSoundGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     mnOptionMakeOptionTabs(gobj, 113.0F, 42.0F, 17);
     mnOptionSetOptionSpriteColors(gobj, sMNOptionOption == nMNOptionOptionSound);
@@ -314,7 +314,7 @@ void mnOptionMakeScreenAdjustSObj(void)
 
     sMNOptionScreenAdjustGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     mnOptionMakeOptionTabs(gobj, 91.0F, 89.0F, 17);
 
@@ -341,7 +341,7 @@ void mnOptionMakeBackupClearSObj(void)
 
     sMNOptionBackupClearGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
     mnOptionMakeOptionTabs(gobj, 69.0F, 136.0F, 17);
     mnOptionSetOptionSpriteColors(gobj, sMNOptionOption == nMNOptionOptionBackupClear);
 
@@ -418,7 +418,7 @@ void mnOptionMakeHeaderSObjs(void)
 
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, mnOptionHeaderProcDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, mnOptionHeaderProcDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonSmashLogoSprite));
 
@@ -452,7 +452,7 @@ void mnOptionMakeDecalSObjs(void)
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonWallpaperSprite));
 
@@ -592,7 +592,7 @@ void mnOptionMakeSoundUnderlineGObj(void)
         mnOptionSoundUnderlineProcDisplay,
         3,
         GOBJ_DLLINKORDER_DEFAULT,
-        GOBJ_CAMTAG_DEFAULT
+        -1
     );
 }
 

@@ -587,7 +587,7 @@ sb32 itNBumperGDisappearProcUpdate(GObj *item_gobj)
     {
         DObj *dobj = DObjGetStruct(item_gobj);
 
-        dobj->flags ^= DOBJ_FLAG_NORENDER;
+        dobj->flags ^= DOBJ_FLAG_HIDDEN;
     }
     ip->lifetime--;
 

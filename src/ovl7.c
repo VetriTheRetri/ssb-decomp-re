@@ -1444,7 +1444,7 @@ void scTrainingMode_InitTrainingMenuAll()
 	scTrainingMode_CopyVScrollOptionSObjs();
 	scTrainingMode_MakeMenuCursorInterface();
 	scTrainingMode_MakeCursorUnderlineInterface();
-	scTrainingMode_SetPauseGObjRenderFlags(GOBJ_FLAG_NORENDER);
+	scTrainingMode_SetPauseGObjRenderFlags(GOBJ_FLAG_HIDDEN);
 }
 
 // 80190164

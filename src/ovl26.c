@@ -2284,7 +2284,7 @@ void mnBattleSyncAndBlinkArrows(GObj* arrow_gobj)
 		if (blink_duration == 0)
 		{
 			blink_duration = 10;
-			arrow_gobj->flags = arrow_gobj->flags == GOBJ_FLAG_NORENDER ? GOBJ_FLAG_NONE : GOBJ_FLAG_NORENDER;
+			arrow_gobj->flags = arrow_gobj->flags == GOBJ_FLAG_HIDDEN ? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
 		}
 
 		value = (gMnBattlePanels[port_id].player_type == 0) ? gMnBattlePanels[port_id].handicap

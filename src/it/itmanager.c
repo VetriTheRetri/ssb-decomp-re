@@ -265,7 +265,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, 
     }
     else proc_display = (attributes->is_render_xlu) ? itDisplayProcDisplayXLU : itDisplayProcDisplayOPA;
 
-    gcAddGObjDisplay(item_gobj, proc_display, 11, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(item_gobj, proc_display, 11, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     item_gobj->user_data.p = ip;
 

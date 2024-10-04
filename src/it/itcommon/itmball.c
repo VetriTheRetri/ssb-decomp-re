@@ -384,10 +384,10 @@ void itMBallOpenInitItemVars(GObj *item_gobj)
     ip->phys_info.vel_air.z = 0.0F;
 
     child = dobj->child;
-    child->flags ^= DOBJ_FLAG_NORENDER;
+    child->flags ^= DOBJ_FLAG_HIDDEN;
 
     sibling = dobj->child->sib_next;
-    sibling->flags ^= DOBJ_FLAG_NORENDER;
+    sibling->flags ^= DOBJ_FLAG_HIDDEN;
 
     func_800269C0_275C0(nSYAudioFGMMBallOpen);
 
@@ -489,7 +489,7 @@ GObj* itMBallMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         itStruct *ip = itGetStruct(item_gobj);
         Vec3f translate = dobj->translate.vec.f;
 
-        dobj->child->flags = DOBJ_FLAG_NORENDER;
+        dobj->child->flags = DOBJ_FLAG_HIDDEN;
         dobj->child->sib_next->flags = DOBJ_FLAG_NONE;
 
         gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);

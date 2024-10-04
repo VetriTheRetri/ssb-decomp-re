@@ -473,11 +473,11 @@ void mnVSModeAnimateRuleArrows(GObj* rule_arrows_gobj)
 
             if (sMNVSModeRuleArrowBlinkTimer == 0)
             {
-                if (rule_arrows_gobj->flags == GOBJ_FLAG_NORENDER)
+                if (rule_arrows_gobj->flags == GOBJ_FLAG_HIDDEN)
                 {
                     rule_arrows_gobj->flags = GOBJ_FLAG_NONE;
                 }
-                else rule_arrows_gobj->flags = GOBJ_FLAG_NORENDER;
+                else rule_arrows_gobj->flags = GOBJ_FLAG_HIDDEN;
 
                 sMNVSModeRuleArrowBlinkTimer = 30;
             }
@@ -510,7 +510,7 @@ void mnVSModeAnimateRuleArrows(GObj* rule_arrows_gobj)
                 mnVSModeMakeRightArrow(rule_arrows_gobj, 250.0F, 70.0F);
             }
         }
-        else rule_arrows_gobj->flags = GOBJ_FLAG_NORENDER;
+        else rule_arrows_gobj->flags = GOBJ_FLAG_HIDDEN;
 
         gcStopCurrentGObjThread(1);
     }
@@ -544,16 +544,16 @@ void mnVSModeAnimateTimeStockArrows(GObj* time_stock_arrows_gobj)
 
             if (sMNVSModeTimeStockArrowBlinkTimer == 0)
             {
-                if (time_stock_arrows_gobj->flags == GOBJ_FLAG_NORENDER)
+                if (time_stock_arrows_gobj->flags == GOBJ_FLAG_HIDDEN)
                 {
                     time_stock_arrows_gobj->flags = GOBJ_FLAG_NONE;
                 }
-                else time_stock_arrows_gobj->flags = GOBJ_FLAG_NORENDER;
+                else time_stock_arrows_gobj->flags = GOBJ_FLAG_HIDDEN;
 
                 sMNVSModeTimeStockArrowBlinkTimer = 30;
             }
         }
-        else time_stock_arrows_gobj->flags = GOBJ_FLAG_NORENDER;
+        else time_stock_arrows_gobj->flags = GOBJ_FLAG_HIDDEN;
 
         gcStopCurrentGObjThread(1);
     }

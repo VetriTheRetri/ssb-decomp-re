@@ -125,7 +125,7 @@ void itProcessProcItemMain(GObj *item_gobj)
             }
             if ((ip->pickup_wait % 2) != 0) // Make item invisible on odd frames; when in doubt, simply do "& 1"
             {
-                item_gobj->flags ^= GOBJ_FLAG_NORENDER;
+                item_gobj->flags ^= GOBJ_FLAG_HIDDEN;
             }
         }
         if (ip->indicator_timer == 0)

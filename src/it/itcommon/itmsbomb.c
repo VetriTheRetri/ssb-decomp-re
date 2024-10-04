@@ -333,7 +333,7 @@ void itMSBombAttachedInitItemVars(GObj *item_gobj)
     ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = ip->phys_info.vel_air.z = 0;
 
     dobj->child->flags = DOBJ_FLAG_NONE;
-    dobj->child->sib_next->flags = DOBJ_FLAG_NORENDER;
+    dobj->child->sib_next->flags = DOBJ_FLAG_HIDDEN;
 
     itMSBombAttachedUpdateSurface(item_gobj);
 
@@ -397,7 +397,7 @@ void itMSBombExplodeInitStatusVars(GObj *item_gobj, sb32 is_make_effect)
     itMainRefreshHit(item_gobj);
     itMSBombExplodeSetStatus(item_gobj);
 
-    DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
+    DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_HIDDEN;
 }
 
 // 0x80176A34
@@ -615,7 +615,7 @@ GObj* itMSBombMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         dobj = DObjGetStruct(item_gobj);
 
-        dobj->child->flags = DOBJ_FLAG_NORENDER;
+        dobj->child->flags = DOBJ_FLAG_HIDDEN;
         dobj->child->sib_next->flags = DOBJ_FLAG_NONE;
 
         translate = dobj->translate.vec.f;

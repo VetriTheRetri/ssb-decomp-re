@@ -1562,7 +1562,7 @@ void gcDrawDObjTree(DObj *this_dobj)
     DObj *current_dobj;
     f32 bak;
 
-    if (!(this_dobj->flags & DOBJ_FLAG_NORENDER))
+    if (!(this_dobj->flags & DOBJ_FLAG_HIDDEN))
     {
         bak = gODScaleX;
         num = gcPrepDObjMatrix(gSYTasklogDLHeads, this_dobj);
@@ -1706,7 +1706,7 @@ void gcDrawDObjTreeDLLinks(DObj *dobj)
 
     ptr = NULL;
 
-    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
         bak = gODScaleX;
         dl_link = dobj->dl_link;
@@ -1844,7 +1844,7 @@ void gcDrawDObjTreeMultiList(DObj *dobj)
 
     dls = dobj->dl_array;
 
-    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
         bak = gODScaleX;
         num = gcPrepDObjMatrix(gSYTasklogDLHeads, dobj);
@@ -1895,7 +1895,7 @@ void unref_80014A84(GObj *gobj)
     dobj = DObjGetStruct(gobj);
     gODScaleX = 1.0F;
 
-    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
         dist_dl = dobj->dist_dl;
 
@@ -1983,7 +1983,7 @@ void func_80014CD0(DObj *dobj)
 
     ptr = NULL;
 
-    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
         bak = gODScaleX;
         s0 = (DObjDLLink**)dobj->display_ptr;
@@ -2074,7 +2074,7 @@ void unref_80014FFC(GObj *gobj)
     gODScaleX = 1.0F;
     ptr = NULL;
 
-    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
         dist_dl_link = dobj->dist_dl_link;
 
@@ -2169,7 +2169,7 @@ void gcDrawDObjTreeDLArray(DObj *dobj)
 
     dls = dobj->dl_array;
 
-    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
         bak = gODScaleX;
 
@@ -2230,7 +2230,7 @@ void func_80015520(DObj *dobj)
 
     ptr = NULL;
 
-    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
         bak = gODScaleX;
         multi_list = dobj->multi_list;
@@ -2322,7 +2322,7 @@ void gcDrawDObjTreeDLDoubleArray(DObj *dobj)
 
     p_dls = (Gfx***)dobj->display_ptr;
 
-    if (!(dobj->flags & DOBJ_FLAG_NORENDER)) 
+    if (!(dobj->flags & DOBJ_FLAG_HIDDEN)) 
     {
         bak = gODScaleX;
 
@@ -2377,7 +2377,7 @@ void unref_80015A58(GObj *gobj)
 
     dobj = DObjGetStruct(gobj);
 
-    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
         dist_dl = dobj->dist_dl;
 
@@ -2441,7 +2441,7 @@ void func_80015C0C(DObj *dobj)
 
     ptr = NULL;
 
-    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
         bak = gODScaleX;
         p_multi_list = (DObjMultiList**)dobj->display_ptr;
@@ -2537,7 +2537,7 @@ void unref_80015F6C(GObj *gobj)
     dobj = DObjGetStruct(gobj);
     ptr = NULL;
 
-    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
         dist_dl_link = dobj->dist_dl_link;
 
@@ -3174,7 +3174,7 @@ void func_80017868(GObj *this_gobj, s32 link_id, s32 arg2)
 
     while (current_gobj != NULL)
     {
-        if (!(current_gobj->flags & GOBJ_FLAG_NORENDER))
+        if (!(current_gobj->flags & GOBJ_FLAG_HIDDEN))
         {
             if
             (

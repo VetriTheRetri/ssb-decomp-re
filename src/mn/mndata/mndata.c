@@ -240,7 +240,7 @@ void mnDataMakeCharactersSObj(void)
 
     sMNDataCharactersGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     mnDataMakeOptionTabs(gobj, posx, posy, 16);
 
@@ -280,7 +280,7 @@ void mnDataMakeVSRecordSObj(void)
 
     sMNDataVSRecordGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     mnDataMakeOptionTabs(gobj, posx, posy, 16);
 
@@ -307,7 +307,7 @@ void mnDataMakeSoundTestSObj(void)
 
     sMNDataSoundTestGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     mnDataMakeOptionTabs(gobj, 69.0F, 136.0F, 16);
 
@@ -385,7 +385,7 @@ void mnDataMakeHeaderSObjs(void)
 
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, mnDataHeaderProcDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, mnDataHeaderProcDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNDataFiles[0], &lMNCommonSmashLogoSprite));
 
@@ -419,7 +419,7 @@ void mnDataMakeDecalSObjs(void)
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNDataFiles[0], &lMNCommonWallpaperSprite));
 

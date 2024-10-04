@@ -144,7 +144,7 @@ void grWallpaperCommonMakeSObj(void)
         lbCommonDrawSObjAttr,
         0,
         GOBJ_DLLINKORDER_DEFAULT,
-        GOBJ_CAMTAG_DEFAULT,
+        -1,
         gMPCollisionGroundData->wallpaper,
         nOMObjProcessKindProc,
         grWallpaperCommonUpdatePersp,
@@ -236,7 +236,7 @@ void grWallpaperSectorMakeSObj(void)
 
     sGRWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(nOMObjCommonKindWallpaper, NULL, nOMObjCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, gMPCollisionGroundData->wallpaper);
 
@@ -261,7 +261,7 @@ void grWallpaperBonus3MakeSObj(void)
 
     sGRWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(nOMObjCommonKindWallpaper, NULL, nOMObjCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(wallpaper_gobj, grWallpaperBonus3AddDL, 0, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(wallpaper_gobj, grWallpaperBonus3AddDL, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
 
 // 0x80104BDC

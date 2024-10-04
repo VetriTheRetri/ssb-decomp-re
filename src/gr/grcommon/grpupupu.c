@@ -637,7 +637,7 @@ GObj* grPupupuMakeMapGObj(intptr_t o_dobj_desc, intptr_t o_mobjsub, void (*proc_
 {
     GObj *ground_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(ground_gobj, proc_display, dl_link, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(ground_gobj, proc_display, dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     gcSetupCustomDObjs
     (

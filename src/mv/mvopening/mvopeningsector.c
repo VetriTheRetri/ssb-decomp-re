@@ -178,7 +178,7 @@ void mvOpeningSectorMakeWallpaper(void)
 
     sMVOpeningSectorWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(wallpaper_gobj, mvOpeningSectorWallpaperProcUpdate, nOMObjProcessKindProc, 1);
 
     wallpaper_sobj = lbCommonMakeSObjForGObj
@@ -263,7 +263,7 @@ void mvOpeningSectorMakeGreatFox(void)
         nOMTransformNull,
         nOMTransformNull
     );
-    gcAddGObjDisplay(great_fox_gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(great_fox_gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     DObjGetStruct(great_fox_gobj)->translate.vec.f.x = 0.0F;
     DObjGetStruct(great_fox_gobj)->translate.vec.f.y = 0.0F;
@@ -336,7 +336,7 @@ void mvOpeningSectorMakeCockpit(void)
 
     cockpit_gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(cockpit_gobj, mvOpeningSectorCockpitProcDisplay, 29, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(cockpit_gobj, mvOpeningSectorCockpitProcDisplay, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(cockpit_gobj, mvOpeningSectorCockpitProcUpdate, nOMObjProcessKindProc, 1);
 
     cockpit_sobj = lbCommonMakeSObjForGObj
@@ -388,7 +388,7 @@ void mvOpeningSectorMakeArwings(void)
             nOMTransformNull,
             nOMTransformNull
         );
-        gcAddGObjDisplay(arwing_gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+        gcAddGObjDisplay(arwing_gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
         gcAddAnimJointAll(arwing_gobj, lbGetDataFromFile(AObjEvent32**, sMVOpeningSectorFiles[0], anim_joints[i]), 0.0F);
         gcAddGObjProcess(arwing_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
     }

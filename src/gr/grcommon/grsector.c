@@ -451,13 +451,13 @@ void func_ovl2_80106D00(void)
         gGRCommonStruct.sector.map_dobj[7]->anim_remain = AOBJ_ANIM_NULL;
         gGRCommonStruct.sector.map_dobj[7]->flags = DOBJ_FLAG_NONE;
         gGRCommonStruct.sector.map_dobj[9]->anim_remain = AOBJ_ANIM_NULL;
-        gGRCommonStruct.sector.map_dobj[9]->flags = DOBJ_FLAG_NORENDER;
+        gGRCommonStruct.sector.map_dobj[9]->flags = DOBJ_FLAG_HIDDEN;
 
         func_ovl2_80106A40(gGRCommonStruct.sector.map_dobj[8], (AObjEvent32*) ((uintptr_t)gGRCommonStruct.sector.map_file + (intptr_t)&D_NF_00002EB4), 0.0F); // Linker thing
     }
     else if (gGRCommonStruct.sector.map_dobj[8]->anim_remain == AOBJ_ANIM_NULL)
     {
-        gGRCommonStruct.sector.map_dobj[7]->flags = DOBJ_FLAG_NORENDER;
+        gGRCommonStruct.sector.map_dobj[7]->flags = DOBJ_FLAG_HIDDEN;
         gGRCommonStruct.sector.map_dobj[9]->flags = DOBJ_FLAG_NONE;
     }
     if (gGRCommonStruct.sector.map_dobj[1]->anim_remain == AOBJ_ANIM_NULL)
@@ -1022,7 +1022,7 @@ void func_ovl2_80107CA0(void)
 
     if (gGRCommonStruct.sector.map_dobj[0]->anim_remain == AOBJ_ANIM_NULL)
     {
-        gGRCommonStruct.sector.map_gobj->flags = GOBJ_FLAG_NORENDER;
+        gGRCommonStruct.sector.map_gobj->flags = GOBJ_FLAG_HIDDEN;
 
         gGRCommonStruct.sector.arwing_appear_timer = mtTrigGetRandomIntRange(1140) + 960;
         gGRCommonStruct.sector.arwing_status = nGRSectorArwingStatusWait;
@@ -1092,7 +1092,7 @@ void grSectorInitAll(void)
 
     gGRCommonStruct.sector.map_gobj = map_gobj;
 
-    gcAddGObjDisplay(map_gobj, gcDrawDObjTreeDLLinksForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(map_gobj, gcDrawDObjTreeDLLinksForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
     grModelSetupGroundDObjs(map_gobj, (DObjDesc*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002C30), gGRCommonStruct.sector.map_dobj, dGRSectorArwingTransformKinds);
     gcAddGObjProcess(map_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
 
@@ -1104,7 +1104,7 @@ void grSectorInitAll(void)
     gGRCommonStruct.sector.arwing_pilot_prev = 0;
     gGRCommonStruct.sector.arwing_target_x = 0.0F;
 
-    map_gobj->flags = GOBJ_FLAG_NORENDER;
+    map_gobj->flags = GOBJ_FLAG_HIDDEN;
 
     gcAddDObjAnimJoint(gGRCommonStruct.sector.map_dobj[10], (AObjEvent32*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002E74), 0.0F);
     gcPlayAnimAll(map_gobj);

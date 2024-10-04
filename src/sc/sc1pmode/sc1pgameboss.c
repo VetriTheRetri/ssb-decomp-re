@@ -738,7 +738,7 @@ void sc1PGameBossWallpaper2ProcUpdate1(GObj *gobj)
 
         sc1PGameBossWallpaper3ProcUpdate0(gobj);
     }
-    else gobj->flags = GOBJ_FLAG_NORENDER;
+    else gobj->flags = GOBJ_FLAG_HIDDEN;
 }
 
 // 0x80191F90

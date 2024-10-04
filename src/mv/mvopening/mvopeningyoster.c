@@ -93,7 +93,7 @@ void mvOpeningYosterMakeNest(void)
         ),
         NULL
     );
-    gcAddGObjDisplay(nest_gobj, gcDrawDObjTreeDLLinksForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(nest_gobj, gcDrawDObjTreeDLLinksForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     DObjGetStruct(nest_gobj)->translate.vec.f.x = 0.0F;
     DObjGetStruct(nest_gobj)->translate.vec.f.y = 0.0F;
@@ -142,7 +142,7 @@ void mvOpeningYosterMakeWallpaper(void)
     SObj *wallpaper_sobj;
 
     wallpaper_gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     wallpaper_sobj = lbCommonMakeSObjForGObj
     (
@@ -173,7 +173,7 @@ void mvOpeningYosterMakeGround(void)
         ),
         NULL
     );
-    gcAddGObjDisplay(gobj, gcDrawDObjTreeDLLinksForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, gcDrawDObjTreeDLLinksForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     DObjGetStruct(gobj)->translate.vec.f.x = 0.0F;
     DObjGetStruct(gobj)->translate.vec.f.y = 0.0F;

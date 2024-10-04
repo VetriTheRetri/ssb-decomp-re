@@ -14,22 +14,6 @@ extern void func_80007080(void*, f32, f32, f32, f32);
 
 extern intptr_t D_NF_000000C6;
 extern intptr_t D_NF_000000FC;
-extern intptr_t lSCExplainKeyInputSequence0;                // 0x00000000
-extern intptr_t lSCExplainKeyInputSequence1;                // 0x000009D4
-extern intptr_t lSCExplainKeyInputSequence2;                // 0x000013FC
-extern intptr_t lSCExplainKeyInputSequence3;                // 0x00001400
-extern intptr_t lSCExplainPhases;                           // 0x00001404
-extern intptr_t lSCExplainStickMObjSub;                     // 0x00005028
-extern intptr_t lSCExplainStickDObjDesc;                    // 0x00005300
-extern intptr_t lSCExplainStickNeutralMatAnimJoint;         // 0x00005390
-extern intptr_t lSCExplainStickHoldUpMatAnimJoint;          // 0x000053C0
-extern intptr_t lSCExplainStickTapUpMatAnimJoint;           // 0x000053F0
-extern intptr_t lSCExplainStickHoldForwardMatAnimJoint;     // 0x00005430
-extern intptr_t lSCExplainStickTapForwardMatAnimJoint;      // 0x00005450
-extern intptr_t lSCExplainTapSparkMObjSub;                  // 0x00005A98
-extern intptr_t lSCExplainTapSparkDisplayList;              // 0x00005B68
-extern intptr_t lSCExplainTapSparkMatAnimJoint;             // 0x00005C20
-extern intptr_t lSCExplainSpecialMoveRGBDisplayList;        // 0x00005E40
 extern intptr_t D_NF_00009628;
 extern intptr_t D_NF_00011F60;
 extern intptr_t D_NF_0001D338;
@@ -104,43 +88,48 @@ s32 dSCExplainRandomSeed2 = 0x00000001;
 syDisplaySetup dSCExplainDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8018E748
-scRuntimeInfo dSCExplainTasklogSetup =
+syTasklogSetup dSCExplainTasklogSetup =
 {
-    0,
-    jtgt_ovl63_8018E568,
-    jtgt_ovl63_8018E594,
-    &ovl63_BSS_END,
-    0,
-    1,
-    2,
-    0x6000,
-    0x3000,
-    0,
-    0,
-    0x8000,
-    0x20000,
-    0xC000,
-    scExplainProcLights,
-    update_contdata,
-    0,
-    0x600,
-    0,
-    0,
-    0,
-    0,
-    0x88,
-    0,
-    0x800D5CAC,
-    0,
-    0,
-    0,
-    0,
-    0x88,
-    0,
-    0x6C,
-    0,
-    0x90,
-    scExplainProcStart
+    // Task Logic Buffer Setup
+    {
+        0,                          // ???
+        scExplainFuncUpdate,        // Update function
+        scExplainFuncDraw,          // Frame draw function
+        &ovl63_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of tasks?
+        0x6000,                     // ???
+        0x3000,                     // ???
+        0,                          // ???
+        0,                          // ???
+        0x8000,                     // ???
+        2,                          // ???
+        0xC000,                     // ???
+        scExplainProcLights,    	// Pre-render function
+        update_contdata,            // Controller I/O function
+    },
+
+    0,                              // Number of GObjThreads
+    1536,                           // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of Object Manager Matrices
+    dLBCommonProcMatrixList,        // Matrix function list
+    NULL,                           // Function for ejecting DObjDynamicStore?
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(Camera),                 // Camera size
+    
+    scExplainProcStart           	// Task start function
 };
 
 // // // // // // // // // // // //
@@ -235,7 +224,7 @@ void func_ovl63_8018D248(void)
 }
 
 // 0x8018D2D0
-void func_ovl63_8018D2D0(GObj *gobj)
+void scExplainWindowProcDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTasklogDLHeads[0]++);
     gDPSetScissor(gSYTasklogDLHeads[0]++, G_SC_NON_INTERLACE, 10, 160, 310, 230);
@@ -247,7 +236,7 @@ void func_ovl63_8018D2D0(GObj *gobj)
 }
 
 // 0x8018D3D8
-void func_ovl63_8018D3D8(void)
+void scExplainMakeWindowCamera(void)
 {
     gcMakeCameraGObj
     (
@@ -255,15 +244,15 @@ void func_ovl63_8018D3D8(void)
         NULL,
         nOMObjCommonLinkIDCamera,
         GOBJ_LINKORDER_DEFAULT,
-        func_ovl63_8018D2D0,
+        scExplainWindowProcDisplay,
         15,
         0,
         0,
+        FALSE,
+        nOMObjProcessKindThread,
+        NULL,
         0,
-        0,
-        0,
-        0,
-        0
+        FALSE
     );
 }
 
@@ -275,7 +264,7 @@ void scExplainSetPlayerInterfacePositions(void)
 }
 
 // 0x8018D460
-GObj* func_ovl63_8018D460(void)
+GObj* scExplainMakeTextCamera(void)
 {
     GObj *camera_gobj = gcMakeCameraGObj
     (
@@ -287,11 +276,11 @@ GObj* func_ovl63_8018D460(void)
         15,
         CAMERA_MASK_DLLINK(26), 
         -1,
-        0,
+        FALSE,
+        nOMObjProcessKindProc,
+        NULL,
         1,
-        0,
-        1,
-        0
+        FALSE
     );
     Camera *cam = CameraGetStruct(camera_gobj);
 
@@ -301,7 +290,7 @@ GObj* func_ovl63_8018D460(void)
 }
 
 // 0x8018D500
-GObj* func_ovl63_8018D500(void)
+GObj* scExplainMakeControlStickCamera(void)
 {
     GObj *camera_gobj = gcMakeCameraGObj
     (
@@ -313,11 +302,11 @@ GObj* func_ovl63_8018D500(void)
         15,
         CAMERA_MASK_DLLINK(27),
         -1,
-        0,
+        FALSE,
+        nOMObjProcessKindProc,
+        NULL,
         1,
-        0,
-        1,
-        0
+        FALSE
     );
     Camera *cam = CameraGetStruct(camera_gobj);
 
@@ -372,7 +361,7 @@ GObj* scExplainMakeControlStickInterface(void)
         nOMObjCommonLinkIDInterface,
         GOBJ_LINKORDER_DEFAULT
     );
-    gcAddGObjDisplay(interface_gobj, scExplainControlStickProcDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(interface_gobj, scExplainControlStickProcDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcSetupCustomDObjs
     (
         interface_gobj, 
@@ -394,7 +383,7 @@ GObj* scExplainMakeControlStickInterface(void)
     );
     gcAddGObjProcess(interface_gobj, scExplainProcUpdateControlStickSprite, nOMObjProcessKindProc, 5);
 
-    interface_gobj->flags = GOBJ_FLAG_NORENDER;
+    interface_gobj->flags = GOBJ_FLAG_HIDDEN;
 
     return interface_gobj;
 }
@@ -443,7 +432,7 @@ void scExplainTapSparkProcUpdate(GObj *gobj)
 
     if (DObjGetStruct(gobj)->mobj->anim_remain == AOBJ_ANIM_NULL)
     {
-        gobj->flags = GOBJ_FLAG_NORENDER;
+        gobj->flags = GOBJ_FLAG_HIDDEN;
     }
 }
 
@@ -452,13 +441,13 @@ GObj* scExplainMakeTapSpark(void)
 {
     GObj *interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, scExplainTapSparkProcDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(interface_gobj, scExplainTapSparkProcDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjForGObj(interface_gobj, (void*) ((uintptr_t)sSCExplainGraphicsFileHead + (intptr_t)&lSCExplainTapSparkDisplayList));
     gcAddOMMtxForDObjFixed(DObjGetStruct(interface_gobj), nOMTransformTra, 0);
     gcAddMObjAll(interface_gobj, lbGetDataFromFile(MObjSub***, sSCExplainGraphicsFileHead, &lSCExplainTapSparkMObjSub));
     gcAddGObjProcess(interface_gobj, scExplainTapSparkProcUpdate, nOMObjProcessKindProc, 5);
 
-    interface_gobj->flags = GOBJ_FLAG_NORENDER;
+    interface_gobj->flags = GOBJ_FLAG_HIDDEN;
 
     sSCExplainStruct.stick_status = 0;
 
@@ -482,7 +471,7 @@ void scExplainSpecialMoveRGBProcUpdate(void)
 
         gobj->flags = GOBJ_FLAG_NONE;
     }
-    else gobj->flags = GOBJ_FLAG_NORENDER;
+    else gobj->flags = GOBJ_FLAG_HIDDEN;
 }
 
 // 0x8018DB44
@@ -495,11 +484,11 @@ GObj* scExplainMakeSpecialMoveRGB(void)
         nOMObjCommonLinkIDInterface,
         GOBJ_LINKORDER_DEFAULT
     );
-    gcAddGObjDisplay(interface_gobj, scExplainTapSparkProcDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(interface_gobj, scExplainTapSparkProcDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjForGObj(interface_gobj, lbGetDataFromFile(void*, sSCExplainGraphicsFileHead, &lSCExplainSpecialMoveRGBDisplayList));
     gcAddOMMtxForDObjFixed(DObjGetStruct(interface_gobj), nOMTransformTra, 0);
 
-    interface_gobj->flags = GOBJ_FLAG_NORENDER;
+    interface_gobj->flags = GOBJ_FLAG_HIDDEN;
 
     return interface_gobj;
 }
@@ -525,7 +514,7 @@ SObj* scExplainMakeSObjOffset(intptr_t offset)
         nOMObjCommonLinkIDInterface,
         GOBJ_LINKORDER_DEFAULT
     );
-    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 26, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, sSCExplainGraphicsFileHead, offset));
 
@@ -565,16 +554,16 @@ void func_ovl63_8018DDBC(void)
 
     if (sw == 0)
     {
-        stick_gobj->flags = GOBJ_FLAG_NORENDER;
+        stick_gobj->flags = GOBJ_FLAG_HIDDEN;
     }
     else
     {
         DObj *dobj = DObjGetStruct(stick_gobj);
 
-        dobj->translate.vec.f.x = sSCExplainPhase->control_stick_args.sprite_pos_x - 0x96;
-        dobj->translate.vec.f.y = -0x28 - sSCExplainPhase->control_stick_args.sprite_pos_y;
+        dobj->translate.vec.f.x = sSCExplainPhase->control_stick_args.sprite_pos_x - 150;
+        dobj->translate.vec.f.y = -40 - sSCExplainPhase->control_stick_args.sprite_pos_y;
 
-        DObjGetStruct(stick_gobj)->child->flags = (sw == 2) ? DOBJ_FLAG_NONE : DOBJ_FLAG_NORENDER;
+        DObjGetStruct(stick_gobj)->child->flags = (sw == 2) ? DOBJ_FLAG_NONE : DOBJ_FLAG_HIDDEN;
 
         gcAddAnimAll
         (
@@ -593,7 +582,7 @@ void func_ovl63_8018DDBC(void)
 // 0x8018DEA0
 void scExplainHideTapSpark(void)
 {
-    sSCExplainStruct.spark_gobj->flags = GOBJ_FLAG_NORENDER;
+    sSCExplainStruct.spark_gobj->flags = GOBJ_FLAG_HIDDEN;
 }
 
 // 0x8018DEB4
@@ -816,9 +805,9 @@ void scExplainProcStart(void)
     ifCommonPlayerDamageInitInterface();
     ifCommonPlayerDamageSetShowInterface();
     ifCommonPlayerStockInitInterface();
-    func_ovl63_8018D3D8();
-    func_ovl63_8018D460();
-    func_ovl63_8018D500();
+    scExplainMakeWindowCamera();
+    scExplainMakeTextCamera();
+    scExplainMakeControlStickCamera();
     scExplainSetInterfaceGObjs();
     scExplainSetPhaseSObjs();
     scExplainMakeSceneInterface();
@@ -839,14 +828,14 @@ void scExplainProcLights(Gfx **dls)
 }
 
 // 0x8018E568
-void jtgt_ovl63_8018E568(void)
+void scExplainFuncUpdate(void)
 {
     set_lcg_seed_ptr(&dSCExplainRandomSeed1);
     func_8000A5E4();
 }
 
 // 0x8018E594
-void jtgt_ovl63_8018E594(void)
+void scExplainFuncDraw(void)
 {
     set_lcg_seed_ptr(&dSCExplainRandomSeed2);
     func_800A26B8();
@@ -861,7 +850,7 @@ void scExplainStartScene(void)
 
     set_lcg_seed_ptr(&dSCExplainRandomSeed1);
 
-    dSCExplainTasklogSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl63_BSS_END);
+    dSCExplainTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl63_BSS_END);
     dSCExplainTasklogSetup.proc_start = scExplainProcStart;
 
     func_800A2698(&dSCExplainTasklogSetup);

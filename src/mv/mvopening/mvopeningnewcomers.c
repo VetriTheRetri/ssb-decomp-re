@@ -176,7 +176,7 @@ void mvOpeningNewcomersMakePurin(void)
     else dobj = gcAddDObjForGObj(gobj, lbGetDataFromFile(void*, sMVOpeningNewcomersFiles[0], &lMVOpeningNewcomersPurinShowDisplayList));
     
     gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyRSca, 0);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead1, 27, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead1, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjAnimJoint(dobj, lbGetDataFromFile(AObjEvent32*, sMVOpeningNewcomersFiles[0], &lMVOpeningNewcomersPurinAnimJoint), 0.0F);
     gcAddGObjProcess(gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
 }
@@ -196,7 +196,7 @@ void mvOpeningNewcomersMakeCaptain(void)
     else dobj = gcAddDObjForGObj(gobj, lbGetDataFromFile(void*, sMVOpeningNewcomersFiles[1], &lMVOpeningNewcomersCaptainShowDisplayList));
 
     gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyRSca, 0);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead1, 27, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead1, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjAnimJoint(dobj, lbGetDataFromFile(void*, sMVOpeningNewcomersFiles[1], &lMVOpeningNewcomersCaptainAnimJoint), 0.0F);
     gcAddGObjProcess(gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
 }
@@ -216,7 +216,7 @@ void mvOpeningNewcomersMakeLuigi(void)
     else dobj = gcAddDObjForGObj(gobj, lbGetDataFromFile(void*, sMVOpeningNewcomersFiles[0], &lMVOpeningNewcomersLuigiShowDisplayList));
     
     gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyRSca, 0);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead1, 27, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead1, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjAnimJoint(dobj, lbGetDataFromFile(void*, sMVOpeningNewcomersFiles[0], &lMVOpeningNewcomersLuigiAnimJoint), 0.0F);
     gcAddGObjProcess(gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
 }
@@ -236,7 +236,7 @@ void mvOpeningNewcomersMakeNess(void)
     else dobj = gcAddDObjForGObj(gobj, lbGetDataFromFile(void*, sMVOpeningNewcomersFiles[1], &lMVOpeningNewcomersNessShowDisplayList));
 
     gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyRSca, 0);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead1, 27, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead1, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjAnimJoint(dobj, lbGetDataFromFile(AObjEvent32*, sMVOpeningNewcomersFiles[1], &lMVOpeningNewcomersNessAnimJoint), 0.0F);
     gcAddGObjProcess(gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
 }
@@ -288,7 +288,7 @@ void mvOpeningNewcomersMakeHide(void)
         mvOpeningNewcomersHideProcDisplay,
         26,
         GOBJ_DLLINKORDER_DEFAULT,
-        GOBJ_CAMTAG_DEFAULT
+        -1
     );
 }
 

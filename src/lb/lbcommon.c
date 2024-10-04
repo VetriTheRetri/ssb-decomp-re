@@ -2019,7 +2019,7 @@ void lbCommonDrawDObjScaleX(DObj *dobj)
 {
     s32 unused[2];
     
-    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
         f32 bak = gODScaleX;
         s32 status = gcPrepDObjMatrix(&gSYTasklogDLHeads[1], dobj);
@@ -2067,7 +2067,7 @@ void lbCommonDObjScaleXProcDisplay(GObj *gobj)
 // 0x800CB4E0
 void lbCommonDrawDObjDefault(DObj *dobj)
 {
-    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
         s32 status = gcPrepDObjMatrix(&gSYTasklogDLHeads[0], dobj);
         

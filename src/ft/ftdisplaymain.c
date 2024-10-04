@@ -762,7 +762,7 @@ void ftDisplayMainDrawDefault(DObj *dobj)
 
     ft_parts = ftGetParts(dobj);
 
-    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
         sp48 = gLBCommonScale;
 
@@ -858,7 +858,7 @@ void ftDisplayMainDrawSkeleton(DObj *dobj)
     fp = ftGetStruct(dobj->parent_gobj);
     ft_parts = ftGetParts(dobj);
 
-    if (!(dobj->flags & DOBJ_FLAG_NORENDER))
+    if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
         sp50 = gLBCommonScale;
 

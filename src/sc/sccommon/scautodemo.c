@@ -606,7 +606,7 @@ void scAutoDemoInitSObjs(void)
 		nOMObjCommonLinkIDInterface, 
 		GOBJ_LINKORDER_DEFAULT
 	);
-	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	for (player = 0; player < ARRAY_COUNT(gSceneData.demo_ft_kind); player++)
 	{

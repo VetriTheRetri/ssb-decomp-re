@@ -2828,11 +2828,11 @@ void mn1PBlinkIfReadyToFight(GObj* gobj)
 			gMN1PPressStartFlashTimer = 0;
 		}
 
-		gobj->flags = (gMN1PPressStartFlashTimer < 30) ? GOBJ_FLAG_NONE : GOBJ_FLAG_NORENDER;
+		gobj->flags = (gMN1PPressStartFlashTimer < 30) ? GOBJ_FLAG_NONE : GOBJ_FLAG_HIDDEN;
 	}
 	else
 	{
-		gobj->flags = GOBJ_FLAG_NORENDER;
+		gobj->flags = GOBJ_FLAG_HIDDEN;
 		gMN1PPressStartFlashTimer = 0;
 	}
 }

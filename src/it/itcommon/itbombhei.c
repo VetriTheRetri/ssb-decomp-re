@@ -209,7 +209,7 @@ void itBombHeiCommonSetExplode(GObj *item_gobj, u8 unused_arg)
     }
     efManagerQuakeMakeEffect(1);
 
-    DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
+    DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_HIDDEN;
 
     ip->item_hit.hit_sfx = nSYAudioFGMExplodeL;
 

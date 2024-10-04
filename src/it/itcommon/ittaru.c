@@ -364,7 +364,7 @@ sb32 itTaruRollProcUpdate(GObj *item_gobj)
             }
             else if ((ip->lifetime % 2) != 0)
             {
-                DObjGetStruct(item_gobj)->flags ^= DOBJ_FLAG_NORENDER;
+                DObjGetStruct(item_gobj)->flags ^= DOBJ_FLAG_HIDDEN;
             }
         }
     }
@@ -466,7 +466,7 @@ void itTaruExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
     }
     efManagerQuakeMakeEffect(1);
 
-    DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
+    DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_HIDDEN;
 
     itTaruExplodeSetStatus(item_gobj);
 }

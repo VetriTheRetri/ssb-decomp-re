@@ -22,7 +22,7 @@
 
 // GObj defines
 #define GOBJ_FLAG_NONE          (0)
-#define GOBJ_FLAG_NORENDER      (1 << 0)
+#define GOBJ_FLAG_HIDDEN      (1 << 0)
 #define GOBJ_FLAG_NOANIM        (1 << 1)    // Skip applying aninmation values?
 #define GOBJ_FLAG_NOEJECT       (1 << 6)    // I actually don't know what this really does
 
@@ -36,7 +36,7 @@
 
 #define DOBJ_FLAG_NONE          (0)
 #define DOBJ_FLAG_NOTEXTURE     (1 << 0)
-#define DOBJ_FLAG_NORENDER      (1 << 1)
+#define DOBJ_FLAG_HIDDEN      (1 << 1)
 
 #define DOBJ_ARRAY_MAX          18
 

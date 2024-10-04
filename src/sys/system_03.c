@@ -78,11 +78,11 @@ s32 cmdProcessCommands(void (*proc)(GObjLink))
             break;
             
         case 1: 
-            gOMObjCurrentCommon->flags |= GOBJ_FLAG_NORENDER; 
+            gOMObjCurrentCommon->flags |= GOBJ_FLAG_HIDDEN; 
             break;
             
         case 0: 
-            gOMObjCurrentCommon->flags &= ~GOBJ_FLAG_NORENDER; 
+            gOMObjCurrentCommon->flags &= ~GOBJ_FLAG_HIDDEN; 
             break;
             
         default:

@@ -2006,7 +2006,7 @@ void func_8000A340()
 
 	while (gobj != NULL)
 	{
-		if (!(gobj->flags & GOBJ_FLAG_NORENDER))
+		if (!(gobj->flags & GOBJ_FLAG_HIDDEN))
 		{
 			D_8003B874_3C474 = 3;
 			gOMObjCurrentCamera = gobj;

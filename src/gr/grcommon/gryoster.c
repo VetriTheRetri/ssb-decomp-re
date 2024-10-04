@@ -229,7 +229,7 @@ void grYosterInitAll(void)
 
         gGRCommonStruct.yoster.clouds[i].gobj = map_gobj;
 
-        gcAddGObjDisplay(map_gobj, gcDrawDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+        gcAddGObjDisplay(map_gobj, gcDrawDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
         gcSetupCustomDObjs
         (
             map_gobj, 

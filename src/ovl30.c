@@ -888,7 +888,7 @@ void mnStageCreateStageGeos(s32 stage_id, mpGroundData* stage_info, s32 heap_id)
 
 	if (stage_id == nGRKindYamabuki)
 	{
-		DObjGetChild(DObjGetChild(DObjGetStruct(stage_info_array[3])))->flags = DOBJ_FLAG_NORENDER;
+		DObjGetChild(DObjGetChild(DObjGetStruct(stage_info_array[3])))->flags = DOBJ_FLAG_HIDDEN;
 	}
 
 	if (stage_id == nGRKindYoster)
@@ -896,7 +896,7 @@ void mnStageCreateStageGeos(s32 stage_id, mpGroundData* stage_info, s32 heap_id)
 		for (next_dobj = stage_dobj = DObjGetStruct(stage_info_array[0]), i = 1; next_dobj != NULL; next_dobj = lbCommonGetTreeDObjNextFromRoot(next_dobj, stage_dobj), i += 1)
 		{
 			if ((i == 0xF) || (i == 0x11))
-				next_dobj->flags = DOBJ_FLAG_NORENDER;
+				next_dobj->flags = DOBJ_FLAG_HIDDEN;
 		}
 	}
 }

@@ -197,7 +197,7 @@ void itBoxContainerSmashMakeEffect(Vec3f *pos)
 
         if (effect_gobj != NULL)
         {
-            gcAddGObjDisplay(effect_gobj, gcDrawDObjTreeForGObj, 11, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+            gcAddGObjDisplay(effect_gobj, gcDrawDObjTreeForGObj, 11, GOBJ_DLLINKORDER_DEFAULT, -1);
 
             dl = (Gfx*) ((*(uintptr_t*) ((uintptr_t)*dITBoxItemDesc.p_file + dITBoxItemDesc.o_attributes) - (intptr_t)&lITBoxDataStart) + (intptr_t)&lITBoxEffectDisplayList); // Linker thing
 
@@ -527,7 +527,7 @@ void itBoxExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
     }
     efManagerQuakeMakeEffect(1);
 
-    DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_NORENDER;
+    DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_HIDDEN;
 
     itBoxExplodeSetStatus(item_gobj);
 }

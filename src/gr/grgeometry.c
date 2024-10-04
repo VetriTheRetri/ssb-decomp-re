@@ -232,7 +232,7 @@ GObj* grGeometryMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **
     }
     else proc_display = dGRGeometryDescs[gr_desc_id].proc_displaypri;
 
-    gcAddGObjDisplay(ground_gobj, proc_display, dGRGeometryDescs[gr_desc_id].dl_link, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(ground_gobj, proc_display, dGRGeometryDescs[gr_desc_id].dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcSetupCustomDObjs(ground_gobj, gr_desc->dobj_desc, p_dobj, nOMTransformTraRotRpyRSca, nOMTransformNull, nOMTransformNull);
 
     if (gr_desc->p_mobjsubs != NULL)

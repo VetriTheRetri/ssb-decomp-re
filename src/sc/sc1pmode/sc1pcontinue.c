@@ -304,7 +304,7 @@ void sc1PContinueMakeScoreDisplay(s32 points)
     SObj *sobj;
 
     sSC1PContinueScoreGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PContinueFiles[1], &lSC1PContinueTextScore));
 
@@ -393,7 +393,7 @@ void sc1PContinueMakeRoomFadeOut(void)
 
     sSC1PContinueRoomFadeOutAlpha = 0x00;
     sSC1PContinueRoomFadeOutGObj = gobj = gcMakeGObjSPAfter(0, NULL, 23, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, sc1PContinueRoomFadeOutProcDisplay, 32, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, sc1PContinueRoomFadeOutProcDisplay, 32, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
 
 // 0x80132338
@@ -425,7 +425,7 @@ void sc1PContinueMakeRoomFadeIn(void)
 
     sSC1PContinueRoomFadeInAlpha = 0xFF;
     sSC1PContinueRoomFadeInGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, sc1PContinueRoomFadeInProcDisplay, 26, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, sc1PContinueRoomFadeInProcDisplay, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
 
 // 0x801324C0
@@ -457,7 +457,7 @@ void sc1PContinueMakeSpotlightFadeSObjs(void)
 
     sSC1PContinueSpotlightFadeAlpha = 0xFF;
     sSC1PContinueSpotlightFadeGObj = gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, sc1PContinueSpotlightFadeProcDisplay, 31, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, sc1PContinueSpotlightFadeProcDisplay, 31, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
 
 // 0x80132648
@@ -468,7 +468,7 @@ void sc1PContinueMakeRoom(void)
 
     sSC1PContinueRoomGObj = gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 29, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueRoom));
 
     sobj->pos.x = 30.0F;
@@ -482,7 +482,7 @@ void sc1PContinueMakeSpotlightSObjs(void)
     SObj *sobj;
 
     sSC1PContinueShadowGObj = gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 30, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 30, GOBJ_DLLINKORDER_DEFAULT, -1);
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueShadow));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -496,7 +496,7 @@ void sc1PContinueMakeSpotlightSObjs(void)
     sobj->pos.y = 156.0F;
 
     sSC1PContinueSpotlightGObj = gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 30, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 30, GOBJ_DLLINKORDER_DEFAULT, -1);
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueSpotlight));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -517,7 +517,7 @@ void sc1PContinueMakeContinueSObj(void)
     SObj *sobj;
 
     sSC1PContinueContinueGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueTextContinue));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -586,7 +586,7 @@ void sc1PContinueMakeOptionSObjs(void)
     SObj *sobj;
 
     sSC1PContinueOptionGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(gobj, sc1PContinueOptionProcUpdate, nOMObjProcessKindProc, 1);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueTextYes));
@@ -639,7 +639,7 @@ void sc1PContinueMakeCursorSObj(void)
 
     sSC1PContinueCursorGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(gobj, sc1PContinueCursorProcUpdate, nOMObjProcessKindProc, 1);
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueCursor));
 
@@ -730,7 +730,7 @@ void sc1PContinueMakeGameOverSObjs(void)
     sSC1PContinueGameOverColorStep = 0.0F;
 
     sSC1PContinueGameOverGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, GOBJ_CAMTAG_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(gobj, sc1PContinueGameOverStepColors, nOMObjProcessKindProc, 1);
 
     for (i = 0; i < (ARRAY_COUNT(letters) + ARRAY_COUNT(positions_x)) / 2; i++)

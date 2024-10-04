@@ -5,10 +5,7 @@
 #include <sys/system_00.h>
 
 extern u32 func_8000092C();
-
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
-
-
 
 // // // // // // // // // // // //
 //                               //
@@ -76,44 +73,50 @@ u32 dMVOpeningUnused0x8013265C[/* */] =
 syDisplaySetup dMVOpeningNewcomersDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132694
-scRuntimeInfo dMVOpeningNewcomersTasklogSetup =
+syTasklogSetup dMVOpeningNewcomersTasklogSetup =
 {
-	0x00000000,
-	func_8000A5E4,
-	func_8000A340,
-	&ovl52_BSS_END,
-	0x00000000,
-	0x00000001,
-	0x00000002,
-	0x00002710,
-	0x00001000,
-	0x00000000,
-	0x00000000,
-	0x00008000,
-	0x00020000,
-	0x0000C000,
-	mvOpeningNewcomersFuncLights,
-	update_contdata,
-	0x00000000,
-	0x00000600,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000088,
-	0x00000000,
-	0x800D5CAC,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000088,
-	0x00000000,
-	0x0000006C,
-	0x00000000,
-	0x00000090,
-	mvOpeningNewcomersFuncStart
+    // Task Logic Buffer Setup
+    {
+        0,                              // ???
+        func_8000A5E4,                  // Update function
+        func_8000A340,                  // Frame draw function
+        &ovl52_BSS_END,                 // Allocatable memory pool start
+        0,                              // Allocatable memory pool size
+        1,                              // ???
+        2,                              // Number of contexts?
+        0x2710,                         // ???
+        0x1000,                         // ???
+        0,                              // ???
+        0,                              // ???
+        0x8000,                         // ???
+        2,                              // ???
+        0xC000,                         // ???
+        mvOpeningNewcomersFuncLights,   // Pre-render function
+        update_contdata,                // Controller I/O function
+    },
+
+    0,                                  // Number of GObjThreads
+    0x600,                              // Thread stack size
+    0,                                  // Number of thread stacks
+    0,                                  // ???
+    0,                                  // Number of GObjProcesses
+    0,                                  // Number of GObjs
+    sizeof(GObj),                       // GObj size
+    0,                                  // Number of Object Manager Matrices
+    dLBCommonProcMatrixList,            // Matrix function list
+    NULL,                               // Function for ejecting DObjDynamicStore?
+    0,                                  // Number of AObjs
+    0,                                  // Number of MObjs
+    0,                                  // Number of DObjs
+    sizeof(DObj),                       // DObj size
+    0,                                  // Number of SObjs
+    sizeof(SObj),                       // SObj size
+    0,                                  // Number of Cameras
+    sizeof(Camera),                     // Camera size
+    
+    mvOpeningNewcomersFuncStart         // Task start function
 };
+
 // // // // // // // // // // // //
 //                               //
 //           FUNCTIONS           //
@@ -293,7 +296,7 @@ void mvOpeningNewcomersMakeHide(void)
 }
 
 // 0x801321B8
-void mvOpeningNewcomersMakeCharacterViewport(void)
+void mvOpeningNewcomersMakeNewcomersCamera(void)
 {
     s32 unused;
     Camera *cam = CameraGetStruct
@@ -308,11 +311,11 @@ void mvOpeningNewcomersMakeCharacterViewport(void)
             40,
             CAMERA_MASK_DLLINK(27),
             -1,
-            1,
-            1,
+            TRUE,
+            nOMObjProcessKindProc,
             NULL, 
             1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -320,19 +323,22 @@ void mvOpeningNewcomersMakeCharacterViewport(void)
     cam->vec.eye.x = 45.36104F;
     cam->vec.eye.y = 19.91594F;
     cam->vec.eye.z = 15494.226F;
+
     cam->vec.at.x = -109.73612F;
     cam->vec.at.y = 257.7266F;
     cam->vec.at.z = -14.981689F;
+
     cam->vec.up.x = 0.0F;
     cam->vec.up.y = 1.0F;
     cam->vec.up.z = 0.0F;
+
     cam->projection.persp.fovy = 2.864789F;
     cam->projection.persp.near = 128.0F;
     cam->projection.persp.far = 16384.0F;
 }
 
 // 0x801322E8
-void mvOpeningNewcomersMakeHideViewport(void)
+void mvOpeningNewcomersMakeHideCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -346,11 +352,11 @@ void mvOpeningNewcomersMakeHideViewport(void)
             20,
             CAMERA_MASK_DLLINK(26),
             -1,
-            0,
-            1,
+            FALSE,
+            nOMObjProcessKindProc,
             NULL, 
             1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -441,8 +447,8 @@ void mvOpeningNewcomersFuncStart(void)
     gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF));
 
     mvOpeningNewcomersInitVars();
-    mvOpeningNewcomersMakeCharacterViewport();
-    mvOpeningNewcomersMakeHideViewport();
+    mvOpeningNewcomersMakeNewcomersCamera();
+    mvOpeningNewcomersMakeHideCamera();
     mvOpeningNewcomersMakeAll();
 
     scSubsysFighterSetLightParams(0.0F, 0.0F, 0xFF, 0xFF, 0xFF, 0xFF);
@@ -462,6 +468,6 @@ void mvOpeningNewcomersStartScene(void)
     dMVOpeningNewcomersDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMVOpeningNewcomersDisplaySetup);
 
-    dMVOpeningNewcomersTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl52_BSS_END);
+    dMVOpeningNewcomersTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl52_BSS_END);
     syTasklogInit(&dMVOpeningNewcomersTasklogSetup);
 }

@@ -231,7 +231,7 @@ void mnN64FuncStart(void)
 	gcAddGObjProcess(gobj, mnN64LogoThreadUpdate, nOMObjProcessKindThread, 1);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-	sprite = lbGetDataFromFile
+	sprite = lbRelocGetDataFromFile
 	(
 		Sprite*,
 		lbRelocGetFileExternHeap

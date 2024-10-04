@@ -85,7 +85,7 @@ void mvOpeningYosterMakeNest(void)
     gcSetupCommonDObjs
     (
         nest_gobj,
-        lbGetDataFromFile
+        lbRelocGetDataFromFile
         (
             DObjDesc*,
             sMVOpeningYosterFiles[0],
@@ -147,7 +147,7 @@ void mvOpeningYosterMakeWallpaper(void)
     wallpaper_sobj = lbCommonMakeSObjForGObj
     (
         wallpaper_gobj,
-        lbGetDataFromFile
+        lbRelocGetDataFromFile
         (
             Sprite*,
             sMVOpeningYosterFiles[1],
@@ -165,7 +165,7 @@ void mvOpeningYosterMakeGround(void)
     gcSetupCommonDObjs
     (
         gobj,
-        lbGetDataFromFile
+        lbRelocGetDataFromFile
         (
             DObjDesc*,
             sMVOpeningYosterFiles[0],
@@ -182,7 +182,7 @@ void mvOpeningYosterMakeGround(void)
     gcAddAnimJointAll
     (
         gobj,
-        lbGetDataFromFile
+        lbRelocGetDataFromFile
         (
             AObjEvent32**,
             sMVOpeningYosterFiles[0],
@@ -224,7 +224,7 @@ void mvOpeningYosterMakeMainViewport(void)
     gcAddCameraCamAnimJoint
     (
         cam, 
-        lbGetDataFromFile
+        lbRelocGetDataFromFile
         (
             AObjEvent32*,
             sMVOpeningYosterFiles[0],

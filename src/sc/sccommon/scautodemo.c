@@ -610,7 +610,7 @@ void scAutoDemoInitSObjs(void)
 
 	for (player = 0; player < ARRAY_COUNT(gSceneData.demo_ft_kind); player++)
 	{
-		SObj *sobj = lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, file, dSCAutoDemoFighterNameSpriteOffsets[gBattleState->players[player].ft_kind]));
+		SObj *sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetDataFromFile(Sprite*, file, dSCAutoDemoFighterNameSpriteOffsets[gBattleState->players[player].ft_kind]));
 
 		sobj->sprite.red   = 0xFF;
 		sobj->sprite.green = 0xFF;

@@ -257,7 +257,7 @@ void mvOpeningJungleMakeGroundViewport(Vec3f unused)
     cam->projection.persp.near = 50.0F;
     cam->projection.persp.far = 15000.0F;
 
-    gcAddCameraCamAnimJoint(cam, lbGetDataFromFile(AObjEvent32*, sMVOpeningJungleFiles[1], &lMVOpeningJungleCamAnimJoint), 0.0F);
+    gcAddCameraCamAnimJoint(cam, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningJungleFiles[1], &lMVOpeningJungleCamAnimJoint), 0.0F);
     gcAddGObjProcess(sMVOpeningJungleStageCameraGObj, gcPlayCamAnim, nOMObjProcessKindProc, 1);
 
     gcPlayCamAnim(sMVOpeningJungleStageCameraGObj);

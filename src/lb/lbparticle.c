@@ -198,18 +198,18 @@ void lbParticleSetupBankID(s32 bank_id, lbScriptDesc *script_desc, lbTextureDesc
 		/* By default, the scripts array is populated with the offsets of the scripts
 		 * in their respective file, so this is essentially making them into valid RAM pointers.
 		 */
-		script_desc->scripts[i - 1] = lbGetDataFromFile(lbScript*, script_desc, script_desc->scripts[i - 1]);
+		script_desc->scripts[i - 1] = lbRelocGetDataFromFile(lbScript*, script_desc, script_desc->scripts[i - 1]);
 	}
 	for (i = 1; i <= sLBParticleTextureBanksNum[bank_id]; i++)
 	{
 		// Much like scripts, textures from the file are also being "pointerized" here.
-		texture_desc->textures[i - 1] = lbGetDataFromFile(lbTexture*, texture_desc, texture_desc->textures[i - 1]);
+		texture_desc->textures[i - 1] = lbRelocGetDataFromFile(lbTexture*, texture_desc, texture_desc->textures[i - 1]);
 	}
 	for (i = 0; i < sLBParticleTextureBanksNum[bank_id]; i++)
 	{
 		for (j = 0; j < sLBParticleTextureBanks[bank_id][i]->count; j++)
 		{
-			sLBParticleTextureBanks[bank_id][i]->data[j] = lbGetDataFromFile(void*, texture_desc, sLBParticleTextureBanks[bank_id][i]->data[j]);
+			sLBParticleTextureBanks[bank_id][i]->data[j] = lbRelocGetDataFromFile(void*, texture_desc, sLBParticleTextureBanks[bank_id][i]->data[j]);
 		}
 		if (sLBParticleTextureBanks[bank_id][i]->fmt == G_IM_FMT_CI)
 		{
@@ -218,11 +218,11 @@ void lbParticleSetupBankID(s32 bank_id, lbScriptDesc *script_desc, lbTextureDesc
 				// One palette after the images
 				j = sLBParticleTextureBanks[bank_id][i]->count;
 
-				sLBParticleTextureBanks[bank_id][i]->data[j] = lbGetDataFromFile(void*, texture_desc, sLBParticleTextureBanks[bank_id][i]->data[j]);
+				sLBParticleTextureBanks[bank_id][i]->data[j] = lbRelocGetDataFromFile(void*, texture_desc, sLBParticleTextureBanks[bank_id][i]->data[j]);
 			}
 			else for (j = sLBParticleTextureBanks[bank_id][i]->count; j < sLBParticleTextureBanks[bank_id][i]->count * 2; j++)
 			{
-				sLBParticleTextureBanks[bank_id][i]->data[j] = lbGetDataFromFile(void*, texture_desc, sLBParticleTextureBanks[bank_id][i]->data[j]);
+				sLBParticleTextureBanks[bank_id][i]->data[j] = lbRelocGetDataFromFile(void*, texture_desc, sLBParticleTextureBanks[bank_id][i]->data[j]);
 			}
 		}
 	}

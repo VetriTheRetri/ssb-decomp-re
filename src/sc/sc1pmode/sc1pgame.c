@@ -1654,7 +1654,7 @@ void sc1PGameTeamStockDisplayProcDisplay(GObj *interface_gobj)
                         break;
 
                     case nSC1PGameStageZako:
-                        sobj->sprite = *lbGetDataFromFile(Sprite*, sSC1PGameZakoStockSprite, &D_NF_00000080);
+                        sobj->sprite = *lbRelocGetDataFromFile(Sprite*, sSC1PGameZakoStockSprite, &D_NF_00000080);
                         break;
                     }
                     sobj->sprite.attr &= ~SP_HIDDEN;
@@ -1712,7 +1712,7 @@ void sc1PGameInitTeamStockDisplay(void)
                 0x10
             )
         );
-        sprite = lbGetDataFromFile(Sprite*, sSC1PGameZakoStockSprite, &D_NF_00000080);
+        sprite = lbRelocGetDataFromFile(Sprite*, sSC1PGameZakoStockSprite, &D_NF_00000080);
 
         sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -1723,7 +1723,7 @@ void sc1PGameInitTeamStockDisplay(void)
 
         for (i = 0; i < sSC1PGameEnemyStocksRemaining; i++)
         {
-            lbCommonMakeSObjForGObj(interface_gobj, lbGetDataFromFile(Sprite*, gGMCommonFiles[4], &D_NF_00000068));
+            lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetDataFromFile(Sprite*, gGMCommonFiles[4], &D_NF_00000068));
         }
         sSC1PGameEnemyStocksDisplay = sSC1PGameEnemyStocksRemaining + 1;
 

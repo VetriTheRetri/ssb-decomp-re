@@ -4,7 +4,7 @@
 #include "lbtypes.h"
 #include "lbfunctions.h"
 
-#define lbGetDataFromFile(type, file, offset) \
+#define lbRelocGetDataFromFile(type, file, offset) \
 ((type) ((uintptr_t)(file) + (intptr_t)(offset)))
 
 #endif

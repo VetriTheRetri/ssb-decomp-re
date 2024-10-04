@@ -651,7 +651,7 @@ GObj* grPupupuMakeMapGObj(intptr_t o_dobj_desc, intptr_t o_mobjsub, void (*proc_
     );
     if (o_mobjsub != 0)
     {
-        gcAddMObjAll(ground_gobj, lbGetDataFromFile(MObjSub***, gGRCommonStruct.pupupu.map_head, o_mobjsub));
+        gcAddMObjAll(ground_gobj, lbRelocGetDataFromFile(MObjSub***, gGRCommonStruct.pupupu.map_head, o_mobjsub));
     }
     gcAddGObjProcess(ground_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
 

@@ -307,7 +307,7 @@ void mnCongraFuncStart(void)
 	sobj = lbCommonMakeSObjForGObj
 	(
 		gobj,
-		lbGetDataFromFile
+		lbRelocGetDataFromFile
 		(
 			Sprite*,
 			lbRelocGetFileExternHeap
@@ -333,7 +333,7 @@ void mnCongraFuncStart(void)
 	sobj = lbCommonMakeSObjForGObj
 	(
 		gobj,
-		lbGetDataFromFile
+		lbRelocGetDataFromFile
 		(
 			Sprite*,
 			lbRelocGetFileExternHeap

@@ -148,16 +148,14 @@ void lbRelocLoadAndRelocFile(u32 file_id, void *ram_dst, u32 bytes_num, s32 loc)
     data_rom_offset = sLBRelocInternBuffer.rom_table_hi + sLBRelocCurrentTableEntry->data_offset;
 
     if (sLBRelocCurrentTableEntry->is_vpk0)
-    {
         syDmaReadVpk0(data_rom_offset, ram_dst);
-    }
-    else syDmaReadRom(data_rom_offset, ram_dst, bytes_num);
+    else
+        syDmaReadRom(data_rom_offset, ram_dst, bytes_num);
 
     if (loc == nLBFileLocationForce)
-    {
         lbRelocAddFileForceStatusBuffer(file_id, ram_dst);
-    }
-    else lbRelocAddFileStatusBuffer(file_id, ram_dst);
+    else
+        lbRelocAddFileStatusBuffer(file_id, ram_dst);
     
     reloc_intern = sLBRelocCurrentTableEntry->reloc_intern_offset;
     
@@ -181,10 +179,9 @@ void lbRelocLoadAndRelocFile(u32 file_id, void *ram_dst, u32 bytes_num, s32 loc)
         syDmaReadRom(data_rom_offset, file_id_extern, sizeof(u16));
         
         if (loc == nLBFileLocationForce)
-        {
             vaddr_extern = lbRelocFindFileForceStatusBuffer(*file_id_extern);
-        }
-        else vaddr_extern = lbRelocFindFileStatusBuffer(*file_id_extern);
+        else
+            vaddr_extern = lbRelocFindFileStatusBuffer(*file_id_extern);
 
         if (vaddr_extern == NULL)
         {

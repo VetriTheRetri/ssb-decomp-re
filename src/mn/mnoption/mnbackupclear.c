@@ -337,7 +337,7 @@ void mnBackupClearEjectOptionConfirmGObj(void)
 }
 
 // 0x80132148 - 0 = yes, 1 = no
-void mnBackupClearMakeOptionConfirmSObjs(sb32 confirm_kind, sb32 yes_or_no)
+void mnBackupClearMakeOptionConfirm(sb32 confirm_kind, sb32 yes_or_no)
 {
     GObj *gobj;
     SObj *sobj;
@@ -428,7 +428,7 @@ void mnBackupClearMakeOptionConfirmSObjs(sb32 confirm_kind, sb32 yes_or_no)
 }
 
 // 0x80132430
-void mnBackupClearMakeCamera(void)
+void mnBackupClearMakeMainCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -444,11 +444,11 @@ void mnBackupClearMakeCamera(void)
             CAMERA_MASK_DLLINK(1) |
             CAMERA_MASK_DLLINK(0),
             -1,
-            0,
-            1,
+            FALSE,
+            nOMObjProcessKindProc,
             NULL,
             1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -540,7 +540,7 @@ void mnBackupClearUpdateOptionMainMenu(void)
             sMNBackupClearOptionMenuKind = 1;
             sMNBackupClearOptionConfirmYesOrNo = 1;
 
-            mnBackupClearMakeOptionConfirmSObjs(1, sMNBackupClearOptionConfirmYesOrNo);
+            mnBackupClearMakeOptionConfirm(1, sMNBackupClearOptionConfirmYesOrNo);
 
             sMNBackupClearUpdateWait = 10;
             return;
@@ -631,7 +631,7 @@ void mnBackupClearUpdateOptionConfirmMenu(sb32 confirm_kind)
                 sMNBackupClearOptionConfirmYesOrNo = 1;
 
                 mnBackupClearEjectOptionConfirmGObj();
-                mnBackupClearMakeOptionConfirmSObjs(2, sMNBackupClearOptionConfirmYesOrNo);
+                mnBackupClearMakeOptionConfirm(2, sMNBackupClearOptionConfirmYesOrNo);
 
                 sMNBackupClearUpdateWait = 10;
             }
@@ -681,7 +681,7 @@ void mnBackupClearUpdateOptionConfirmMenu(sb32 confirm_kind)
             sMNBackupClearOptionConfirmYesOrNo = 0;
 
             mnBackupClearEjectOptionConfirmGObj();
-            mnBackupClearMakeOptionConfirmSObjs(confirm_kind, sMNBackupClearOptionConfirmYesOrNo);
+            mnBackupClearMakeOptionConfirm(confirm_kind, sMNBackupClearOptionConfirmYesOrNo);
         }
     }
     else if
@@ -699,7 +699,7 @@ void mnBackupClearUpdateOptionConfirmMenu(sb32 confirm_kind)
             sMNBackupClearOptionChangeWait = mnCommonGetOptionChangeWaitN(stick_range, 7);
 
             mnBackupClearEjectOptionConfirmGObj();
-            mnBackupClearMakeOptionConfirmSObjs(confirm_kind, sMNBackupClearOptionConfirmYesOrNo);
+            mnBackupClearMakeOptionConfirm(confirm_kind, sMNBackupClearOptionConfirmYesOrNo);
         }
     }
 }
@@ -799,7 +799,7 @@ void mnBackupClearFuncStart(void)
     gcMakeGObjSPAfter(0, mnBackupClearFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     mnBackupClearInitVars();
-    mnBackupClearMakeCamera();
+    mnBackupClearMakeMainCamera();
     mnBackupClearMakeHeaderSObjs();
     mnBackupClearMakeUnused(sMNBackupClearOption);
     mnBackupClearSetOptionSpriteColors();
@@ -812,43 +812,48 @@ Vec2f dMNBackupClearUnused0x80132FB8[/* */] = { { 193.0F, 110.0F }, { 87.0F, 110
 syDisplaySetup dMNBackupClearDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132FE4
-scRuntimeInfo dMNBackupClearTasklogSetup =
+syTasklogSetup dMNBackupClearTasklogSetup =
 {
-    0x00000000,
-    func_8000A5E4,
-    func_8000A340,
-    &ovl53_BSS_END,
-    0,
-    1,
-    2,
-    0xEA60,
-    0,
-    0,
-    0,
-    0x8000,
-    0x20000,
-    0xC000,
-    mnBackupClearFuncLights,
-    update_contdata,
-    0,
-    0x600,
-    0,
-    0,
-    0,
-    0,
-    0x88,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0x88,
-    0,
-    0x6C,
-    0,
-    0x90,
-    mnBackupClearFuncStart
+    // Task Logic Buffer Setup
+    {
+        0,                          // ???
+        func_8000A5E4,              // Update function
+        func_8000A340,              // Frame draw function
+        &ovl53_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        0xEA60,                     // ???
+        0,                          // ???
+        0,                          // ???
+        0,                          // ???
+        0x8000,                     // ???
+        2,                          // ???
+        0xC000,                     // ???
+        mnBackupClearFuncLights,    // Pre-render function
+        update_contdata,            // Controller I/O function
+    },
+
+    0,                              // Number of GObjThreads
+    0x600,                          // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of Object Manager Matrices
+    NULL,                           // Matrix function list
+    NULL,                           // Function for ejecting DObjDynamicStore?
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(Camera),                 // Camera size
+    
+    mnBackupClearFuncStart          // Task start function
 };
 
 // 0x80132E28
@@ -857,6 +862,6 @@ void mnBackupClearStartScene(void)
     dMNBackupClearDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMNBackupClearDisplaySetup);
     
-    dMNBackupClearTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl53_BSS_END);
+    dMNBackupClearTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl53_BSS_END);
     syTasklogInit(&dMNBackupClearTasklogSetup);
 }

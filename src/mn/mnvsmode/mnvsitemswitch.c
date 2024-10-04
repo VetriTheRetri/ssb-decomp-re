@@ -800,8 +800,8 @@ void mnVSItemSwitchFuncStart(void)
 {
     lbRelocSetup rl_setup;
 
-    rl_setup.table_addr = &lLBRelocTableAddr;
-    rl_setup.table_files_num = &lLBRelocTableFilesNum;
+    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
     rl_setup.status_buffer = sMNVSItemSwitchStatusBuffer;

@@ -99,8 +99,8 @@ void mvOpeningPikachuLoadFiles()
 {
 	lbRelocSetup rldmSetup;
 
-	rldmSetup.table_addr = &lLBRelocTableAddr;
-	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
+	rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
 	rldmSetup.file_heap = 0;
 	rldmSetup.file_heap_size = 0;
 	rldmSetup.status_buffer = D_ovl42_8018E288;

@@ -2938,8 +2938,8 @@ void mnResultsInit()
 	lbRelocSetup rldmSetup;
 	s32 i;
 
-	rldmSetup.table_addr = &lLBRelocTableAddr;
-	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
+	rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
 	rldmSetup.file_heap = 0;
 	rldmSetup.file_heap_size = 0;
 	rldmSetup.status_buffer = (lbFileNode*) &D_ovl31_80139C50;

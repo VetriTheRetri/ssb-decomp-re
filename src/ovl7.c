@@ -1600,8 +1600,8 @@ void scTrainingMode_LoadFiles()
 {
 	lbRelocSetup rldm_setup;
 
-	rldm_setup.table_addr = &lLBRelocTableAddr;
-	rldm_setup.table_files_num = &lLBRelocTableFilesNum;
+	rldm_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rldm_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
 	rldm_setup.file_heap = NULL;
 	rldm_setup.file_heap_size = 0;
 	rldm_setup.status_buffer = gOverlay7StatusBuffer;

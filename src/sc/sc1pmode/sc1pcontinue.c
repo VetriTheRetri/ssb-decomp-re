@@ -1105,7 +1105,7 @@ void sc1PContinueFuncRun(GObj *gobj)
                     gcEjectGObj(sSC1PContinueContinueGObj);
                     gcEjectGObj(sSC1PContinueOptionGObj);
                     gcEjectGObj(sSC1PContinueCursorGObj);
-                    
+
                     sc1PContinueMakeRoomFadeOut();
                     sc1PContinueMakeGameOverText();
                     sc1PContinueMakeGameOver();
@@ -1204,8 +1204,8 @@ void sc1PContinueFuncStart(void)
     s32 unused;
     lbRelocSetup rl_setup;
 
-    rl_setup.table_addr = &lLBRelocTableAddr;
-    rl_setup.table_files_num = &lLBRelocTableFilesNum;
+    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
     rl_setup.status_buffer = sSC1PContinueStatusBuffer;

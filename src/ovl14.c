@@ -427,8 +427,8 @@ void dbBattleInit()
 	lbRelocSetup rldmSetup;
 	GObj *main_gobj;
 
-	rldmSetup.table_addr = &lLBRelocTableAddr;
-	rldmSetup.table_files_num = &lLBRelocTableFilesNum;
+	rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
 	rldmSetup.file_heap = NULL;
 	rldmSetup.file_heap_size = 0;
 	rldmSetup.status_buffer = (lbFileNode*) &D_ovl14_80132C28;

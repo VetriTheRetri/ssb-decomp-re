@@ -3,7 +3,6 @@
 #include <sc/scene.h> // includes sys/obj.h
 #include <sys/system_00.h>
 #include <sys/thread6.h>
-#include <lb/library.h>
 
 extern void func_80007080(void*, f32, f32, f32, f32);
 extern void* func_800269C0_275C0(u16);
@@ -147,43 +146,48 @@ syDisplaySetup dMNCongraDisplaySetup =
 };
 
 // 0x80132224
-scRuntimeInfo dMNCongraTasklogSetup =
+syTasklogSetup dMNCongraTasklogSetup =
 {
-	0x00000000,
-	func_8000A5E4,
-	mnCongraUpdateScene,
-	&ovl57_BSS_END,
-	0x00000000,
-	0x00000001,
-	0x00000002,
-	0x00002800,
-	0x00002800,
-	0x00000000,
-	0x00000000,
-	0x00002800,
-	0x00020000,
-	0x0000c000,
-	mnCongraFuncLights,
-	0x80004310,
-	0x00000000,
-	0x00000600,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000088,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000088,
-	0x00000000,
-	0x0000006c,
-	0x00000000,
-	0x00000090,
-	mnCongraFuncStart
+    // Task Logic Buffer Setup
+    {
+        0,                          // ???
+        func_8000A5E4,              // Update function
+        mnCongraFuncDraw,           // Frame draw function
+        &ovl57_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        0x2800,                     // ???
+        0x2800,                     // ???
+        0,                          // ???
+        0,                          // ???
+        0x2800,                     // ???
+        2,                          // ???
+        0xC000,                     // ???
+        mnCongraFuncLights,         // Pre-render function
+        update_contdata,            // Controller I/O function
+    },
+
+    0,                              // Number of GObjThreads
+    1536,                           // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of Object Manager Matrices
+    NULL,                           // Matrix function list
+    NULL,                           // Function for ejecting DObjDynamicStore?
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(Camera),                 // Camera size
+    
+    mnCongraFuncStart               // Task start function
 };
 
 // // // // // // // // // // // //
@@ -261,8 +265,8 @@ void mnCongraFuncStart(void)
 	sMNCongraIsProceed = FALSE;
 	sMNCongraIsProceedScene = 0;
 
-	rl_setup.table_addr = &lLBRelocTableAddr;
-	rl_setup.table_files_num = &lLBRelocTableFilesNum;
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
 	rl_setup.status_buffer = sMNCongraStatusBuffer;
@@ -361,7 +365,7 @@ void mnCongraFuncStart(void)
 }
 
 // 0x80131F60
-void mnCongraUpdateScene(void)
+void mnCongraFuncDraw(void)
 {
 	func_8000A340();
 
@@ -420,7 +424,8 @@ void mnCongraStartScene(void)
 	dMNCongraDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
 	syDisplayInit(&dMNCongraDisplaySetup);
 
-	dMNCongraTasklogSetup.arena_size = (size_t) (SYDISPLAY_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 0) - (uintptr_t)&ovl57_BSS_END);
+	dMNCongraTasklogSetup.buffer_setup.arena_size = (size_t) (SYDISPLAY_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 0) - (uintptr_t)&ovl57_BSS_END);
 	syTasklogInit(&dMNCongraTasklogSetup); subsys_arena_lo = gSCSubsysFramebuffer0; // WARNING: Newline memes!
+	
 	while ((uintptr_t)subsys_arena_lo < 0x80400000) { *subsys_arena_lo++ = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01); }
 }

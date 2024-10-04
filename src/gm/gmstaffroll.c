@@ -2,7 +2,6 @@
 #include <gm/gmsound.h>
 #include <sys/system_00.h>
 #include <sys/thread6.h>
-#include <lb/library.h>
 
 extern void hal_interpolation_cubic(Vec3f*, void*, f32);
 extern void syMatrixTraRotRpyRScaF(Mtx44f mf,f32 dx,f32 dy,f32 dz,f32 r,f32 p,f32 h,f32 sx,f32 sy,f32 sz);
@@ -12,7 +11,6 @@ extern void guMtxCatF(Mtx44f a, Mtx44f b, Mtx44f c);
 
 extern void func_80007080(void*, f32, f32, f32, f32);
 
-
 // // // // // // // // // // // //
 //                               //
 //       EXTERNAL VARIABLES      //
@@ -20,148 +18,6 @@ extern void func_80007080(void*, f32, f32, f32, f32);
 // // // // // // // // // // // //
 
 extern uintptr_t D_NF_000000C3;
-
-extern intptr_t lGMStaffrollNameAndJobAUpperSprite;	        // 0x00000008
-extern intptr_t lGMStaffrollNameAndJobBUpperSprite;	        // 0x00000218
-extern intptr_t lGMStaffrollNameAndJobCUpperSprite;	        // 0x00000398
-extern intptr_t lGMStaffrollNameAndJobDUpperSprite;	        // 0x000004F8
-extern intptr_t lGMStaffrollNameAndJobEUpperSprite;	        // 0x00000728
-extern intptr_t lGMStaffrollNameAndJobFUpperSprite;	        // 0x00000888
-extern intptr_t lGMStaffrollNameAndJobGUpperSprite;	        // 0x00000A08
-extern intptr_t lGMStaffrollNameAndJobHUpperSprite;	        // 0x00000C38
-extern intptr_t lGMStaffrollNameAndJobIUpperSprite;	        // 0x00000E68
-extern intptr_t lGMStaffrollNameAndJobJUpperSprite;	        // 0x00000FE8
-extern intptr_t lGMStaffrollNameAndJobKUpperSprite;	        // 0x00001188
-extern intptr_t lGMStaffrollNameAndJobLUpperSprite;	        // 0x000013B8
-extern intptr_t lGMStaffrollNameAndJobMUpperSprite;	        // 0x00001538
-extern intptr_t lGMStaffrollNameAndJobNUpperSprite;	        // 0x000017D8
-extern intptr_t lGMStaffrollNameAndJobOUpperSprite;	        // 0x000019E8
-extern intptr_t lGMStaffrollNameAndJobPUpperSprite;	        // 0x00001C88
-extern intptr_t lGMStaffrollNameAndJobQUpperSprite;	        // 0x00001E08
-extern intptr_t lGMStaffrollNameAndJobRUpperSprite;	        // 0x00002038
-extern intptr_t lGMStaffrollNameAndJobSUpperSprite;	        // 0x00002198
-extern intptr_t lGMStaffrollNameAndJobTUpperSprite;	        // 0x000022F8
-extern intptr_t lGMStaffrollNameAndJobUUpperSprite;	        // 0x00002478
-extern intptr_t lGMStaffrollNameAndJobVUpperSprite;	        // 0x000025D8
-extern intptr_t lGMStaffrollNameAndJobWUpperSprite;	        // 0x000027E8
-extern intptr_t lGMStaffrollNameAndJobXUpperSprite;	        // 0x00002A88
-extern intptr_t lGMStaffrollNameAndJobYUpperSprite;	        // 0x00002C98
-extern intptr_t lGMStaffrollNameAndJobZUpperSprite;	        // 0x00002E18
-
-extern intptr_t lGMStaffrollNameAndJobALowerSprite;	        // 0x00000178
-extern intptr_t lGMStaffrollNameAndJobBLowerSprite;	        // 0x000002D8
-extern intptr_t lGMStaffrollNameAndJobCLowerSprite;	        // 0x00000458
-extern intptr_t lGMStaffrollNameAndJobDLowerSprite;	        // 0x00000668
-extern intptr_t lGMStaffrollNameAndJobELowerSprite;	        // 0x000007E8
-extern intptr_t lGMStaffrollNameAndJobFLowerSprite;	        // 0x00000948
-extern intptr_t lGMStaffrollNameAndJobGLowerSprite;	        // 0x00000B78
-extern intptr_t lGMStaffrollNameAndJobHLowerSprite;	        // 0x00000DA8
-extern intptr_t lGMStaffrollNameAndJobILowerSprite;	        // 0x00000F28
-extern intptr_t lGMStaffrollNameAndJobJLowerSprite;	        // 0x000010A8
-extern intptr_t lGMStaffrollNameAndJobKLowerSprite;	        // 0x000012F8
-extern intptr_t lGMStaffrollNameAndJobLLowerSprite;	        // 0x00001478
-extern intptr_t lGMStaffrollNameAndJobMLowerSprite;	        // 0x000016A8
-extern intptr_t lGMStaffrollNameAndJobNLowerSprite;	        // 0x00001948
-extern intptr_t lGMStaffrollNameAndJobOLowerSprite;	        // 0x00001B58
-extern intptr_t lGMStaffrollNameAndJobPLowerSprite;	        // 0x00001D48
-extern intptr_t lGMStaffrollNameAndJobQLowerSprite;	        // 0x00001F78
-extern intptr_t lGMStaffrollNameAndJobRLowerSprite;	        // 0x000020F8
-extern intptr_t lGMStaffrollNameAndJobSLowerSprite;	        // 0x00002258
-extern intptr_t lGMStaffrollNameAndJobTLowerSprite;	        // 0x000023B8
-extern intptr_t lGMStaffrollNameAndJobULowerSprite;	        // 0x00002538
-extern intptr_t lGMStaffrollNameAndJobVLowerSprite;	        // 0x00002748
-extern intptr_t lGMStaffrollNameAndJobWLowerSprite;	        // 0x00002958
-extern intptr_t lGMStaffrollNameAndJobXLowerSprite;	        // 0x00002BF8
-extern intptr_t lGMStaffrollNameAndJobYLowerSprite;	        // 0x00002D58
-extern intptr_t lGMStaffrollNameAndJobZLowerSprite;			// 0x00002F88
-extern intptr_t lGMStaffrollNameAndJobCommaSprite;			// 0x00003018
-extern intptr_t lGMStaffrollNameAndJobPeriodSprite;			// 0x00003078
-extern intptr_t lGMStaffrollNameAndJobApostropheSprite;		// 0x000030B8
-extern intptr_t lGMStaffrollNameAndJob4Sprite;				// 0x00003118
-
-extern intptr_t lGMStaffrollTextBoxAUpperSprite;	        // 0x00003258
-extern intptr_t lGMStaffrollTextBoxBUpperSprite;	        // 0x000033E8
-extern intptr_t lGMStaffrollTextBoxCUpperSprite;	        // 0x00003588
-extern intptr_t lGMStaffrollTextBoxDUpperSprite;	        // 0x00003718
-extern intptr_t lGMStaffrollTextBoxEUpperSprite;	        // 0x000038B8
-extern intptr_t lGMStaffrollTextBoxFUpperSprite;	        // 0x00003A48
-extern intptr_t lGMStaffrollTextBoxGUpperSprite;	        // 0x00003BE8
-extern intptr_t lGMStaffrollTextBoxHUpperSprite;	        // 0x00003D78
-extern intptr_t lGMStaffrollTextBoxIUpperSprite;	        // 0x00003F18
-extern intptr_t lGMStaffrollTextBoxJUpperSprite;	        // 0x000040B8
-extern intptr_t lGMStaffrollTextBoxKUpperSprite;	        // 0x00004258
-extern intptr_t lGMStaffrollTextBoxLUpperSprite;	        // 0x000043F8
-extern intptr_t lGMStaffrollTextBoxMUpperSprite;	        // 0x00004598
-extern intptr_t lGMStaffrollTextBoxNUpperSprite;	        // 0x00004728
-extern intptr_t lGMStaffrollTextBoxOUpperSprite;	        // 0x000048B8
-extern intptr_t lGMStaffrollTextBoxPUpperSprite;	        // 0x00004A48
-extern intptr_t lGMStaffrollTextBoxQUpperSprite;	        // 0x00004BD8
-extern intptr_t lGMStaffrollTextBoxRUpperSprite;	        // 0x00004D68
-extern intptr_t lGMStaffrollTextBoxSUpperSprite;	        // 0x00004EF8
-extern intptr_t lGMStaffrollTextBoxTUpperSprite;	        // 0x00005088
-extern intptr_t lGMStaffrollTextBoxUUpperSprite;	        // 0x00005228
-extern intptr_t lGMStaffrollTextBoxVUpperSprite;	        // 0x000053B8
-extern intptr_t lGMStaffrollTextBoxWUpperSprite;	        // 0x00005548
-extern intptr_t lGMStaffrollTextBoxXUpperSprite;	        // 0x000056D8
-extern intptr_t lGMStaffrollTextBoxYUpperSprite;	        // 0x00005868
-extern intptr_t lGMStaffrollTextBoxZUpperSprite;	        // 0x000059F8
-
-extern intptr_t lGMStaffrollTextBoxALowerSprite;	        // 0x00003310
-extern intptr_t lGMStaffrollTextBoxBLowerSprite;	        // 0x000034B0
-extern intptr_t lGMStaffrollTextBoxCLowerSprite;	        // 0x00003640
-extern intptr_t lGMStaffrollTextBoxDLowerSprite;	        // 0x000037E0
-extern intptr_t lGMStaffrollTextBoxELowerSprite;	        // 0x00003970
-extern intptr_t lGMStaffrollTextBoxFLowerSprite;	        // 0x00003B10
-extern intptr_t lGMStaffrollTextBoxGLowerSprite;	        // 0x00003CA8
-extern intptr_t lGMStaffrollTextBoxHLowerSprite;	        // 0x00003E40
-extern intptr_t lGMStaffrollTextBoxILowerSprite;	        // 0x00003FE0
-extern intptr_t lGMStaffrollTextBoxJLowerSprite;	        // 0x00004188
-extern intptr_t lGMStaffrollTextBoxKLowerSprite;	        // 0x00004320
-extern intptr_t lGMStaffrollTextBoxLLowerSprite;	        // 0x000044C0
-extern intptr_t lGMStaffrollTextBoxMLowerSprite;	        // 0x00004650
-extern intptr_t lGMStaffrollTextBoxNLowerSprite;	        // 0x000047E0
-extern intptr_t lGMStaffrollTextBoxOLowerSprite;	        // 0x00004970
-extern intptr_t lGMStaffrollTextBoxPLowerSprite;	        // 0x00004B08
-extern intptr_t lGMStaffrollTextBoxQLowerSprite;	        // 0x00004C98
-extern intptr_t lGMStaffrollTextBoxRLowerSprite;	        // 0x00004E20
-extern intptr_t lGMStaffrollTextBoxSLowerSprite;	        // 0x00004FB0
-extern intptr_t lGMStaffrollTextBoxTLowerSprite;	        // 0x00005150
-extern intptr_t lGMStaffrollTextBoxULowerSprite;	        // 0x000052E0
-extern intptr_t lGMStaffrollTextBoxVLowerSprite;	        // 0x00005470
-extern intptr_t lGMStaffrollTextBoxWLowerSprite;	        // 0x00005600
-extern intptr_t lGMStaffrollTextBoxXLowerSprite;	        // 0x00005790
-extern intptr_t lGMStaffrollTextBoxYLowerSprite;	        // 0x00005928
-extern intptr_t lGMStaffrollTextBoxZLowerSprite;	        // 0x00005AB0
-
-extern intptr_t lGMStaffrollTextBoxColonSprite;				// 0x00005B70
-extern intptr_t lGMStaffrollTextBoxCommaSprite;				// 0x00005C00
-extern intptr_t lGMStaffrollTextBoxPeriodSprite;			// 0x00005C90
-extern intptr_t lGMStaffrollTextBoxDashSprite;				// 0x00005D18
-extern intptr_t lGMStaffrollTextBox1Sprite;					// 0x00005DE8
-extern intptr_t lGMStaffrollTextBox2Sprite;					// 0x00005EB8
-extern intptr_t lGMStaffrollTextBox3Sprite;					// 0x00005F88
-extern intptr_t lGMStaffrollTextBox4Sprite;					// 0x00006058
-extern intptr_t lGMStaffrollTextBox5Sprite;					// 0x00006128
-extern intptr_t lGMStaffrollTextBox6Sprite;					// 0x000061F8
-extern intptr_t lGMStaffrollTextBox7Sprite;					// 0x000062C8
-extern intptr_t lGMStaffrollTextBox8Sprite;					// 0x00006398
-extern intptr_t lGMStaffrollTextBox9Sprite;					// 0x00006468
-extern intptr_t lGMStaffrollTextBox0Sprite;					// 0x00006538
-extern intptr_t lGMStaffrollTextBoxQuoteSprite;				// 0x000065C0
-extern intptr_t lGMStaffrollTextBoxAmpersSprite;			// 0x00006698
-extern intptr_t lGMStaffrollTextBoxSlashSprite;				// 0x00006758
-extern intptr_t lGMStaffrollTextBoxApostropheSprite;	    // 0x000067E0
-extern intptr_t lGMStaffrollTextBoxQuestionSprite;	        // 0x000068B8
-extern intptr_t lGMStaffrollTextBoxBracketOpenSprite;	    // 0x00006988
-extern intptr_t lGMStaffrollTextBoxBracketCloseSprite;		// 0x00006A58
-extern intptr_t lGMStaffrollTextBoxEAccentSprite;			// 0x00006B20
-
-extern intptr_t lGMStaffrollInterpolation;      			// 0x00007304
-extern intptr_t lGMStaffrollAnimJoint;         				// 0x00007338
-extern intptr_t lGMStaffrollDObjDesc;           			// 0x000078C0
-extern intptr_t lGMStaffrollCrosshairSprite;    			// 0x00006D58
-extern intptr_t lGMStaffrollTextBoxBracketLeftSprite; 		// 0x00006F98
-extern intptr_t lGMStaffrollTextBoxBracketRightSprite;	    // 0x000071D8
 
 // // // // // // // // // // // //
 //                               //
@@ -678,10 +534,10 @@ Gfx dGMStaffrollTextBoxDisplayList[/* */] =
 //                               //
 // // // // // // // // // // // //
 
-// 0x80131B00
-sb32 gmStaffrollCheckUnpause(void)
+// 0x80131B00 - Resume staff roll on button press, return bool for if paused or not
+sb32 gmStaffrollGetPauseStatusResume(void)
 {
-	sb32 var_v1 = TRUE;
+	sb32 is_paused = TRUE;
 	u16 button_tap = gPlayerControllers[sGMStaffrollPlayer].button_tap;
 
 	if (button_tap & (A_BUTTON | B_BUTTON | Z_TRIG | START_BUTTON))
@@ -709,9 +565,9 @@ sb32 gmStaffrollCheckUnpause(void)
 
 			job_gobj = job_gobj->link_next;
 		}
-		var_v1 = FALSE;
+		is_paused = FALSE;
 	}
-	return var_v1;
+	return is_paused;
 }
 
 // 0x80131BB0
@@ -1411,12 +1267,12 @@ void func_ovl59_8013330C(void)
 	}
 }
 
-// 0x8013341C
-sb32 gmStaffrollCheckPause(void)
+// 0x8013341C - Highlight staff member if A is pressed and/or pause if B is pressed, get bool for if paused or not
+sb32 gmStaffrollGetPauseStatusHighlight(void)
 {
 	GObj *gobj;
 	u16 button_tap = gPlayerControllers[sGMStaffrollPlayer].button_tap;
-	sb32 b = FALSE;
+	sb32 is_paused = FALSE;
 
 	if (button_tap & (A_BUTTON | B_BUTTON))
 	{
@@ -1444,14 +1300,14 @@ sb32 gmStaffrollCheckPause(void)
 
 				gobj = gobj->link_next;
 			}
-			b = TRUE;
+			is_paused = TRUE;
 		}
 	}
-	return b;
+	return is_paused;
 }
 
 // 0x801334E4
-void func_ovl59_801334E4(GObj *gobj)
+void gmStaffrollFuncRun(GObj *gobj)
 {
 	sb32 is_paused;
 	u16 button_tap;
@@ -1477,11 +1333,11 @@ void func_ovl59_801334E4(GObj *gobj)
 
 		if (sGMStaffrollIsPaused == FALSE)
 		{
-			is_paused = gmStaffrollCheckPause();
+			is_paused = gmStaffrollGetPauseStatusHighlight();
 		}
 		if (sGMStaffrollIsPaused == TRUE)
 		{
-			is_paused = gmStaffrollCheckUnpause();
+			is_paused = gmStaffrollGetPauseStatusResume();
 		}
 		sGMStaffrollIsPaused = is_paused;
 
@@ -2263,8 +2119,9 @@ void gmStaffrollMakeCamera(void)
 // 0x8013505C
 void gmStaffrollFuncStart(void)
 {
-	gcMakeGObjSPAfter(0, func_ovl59_801334E4, 1, GOBJ_LINKORDER_DEFAULT);
+	gcMakeGObjSPAfter(0, gmStaffrollFuncRun, 1, GOBJ_LINKORDER_DEFAULT);
 	gcMakeDefaultCameraGObj(12, GOBJ_LINKORDER_DEFAULT, 100, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	
 	gmStaffrollSetupFiles();
 	gmStaffrollInitNameAndJobDisplayLists();
 	gmStaffrollTryHideUnlocks();
@@ -2272,6 +2129,7 @@ void gmStaffrollFuncStart(void)
 	gmStaffrollMakeCrosshairGObj();
 	gmStaffrollMakeScrollGObj();
 	gmStaffrollMakeCamera();
+
 	auStopBGM();
 	auPlaySong(0, nSYAudioBGMStaffroll);
 }

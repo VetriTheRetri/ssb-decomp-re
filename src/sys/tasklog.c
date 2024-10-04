@@ -275,7 +275,7 @@ void syTasklogInitGeneralHeap(void *start, u32 size)
 }
 
 // 80004980
-void* syTasklogMalloc(u32 size, u32 alignment) // alloc_with_alignment
+void* syTasklogMalloc(size_t size, u32 alignment) // alloc_with_alignment
 {
 	return syMallocSet(&gSYTasklogGeneralHeap, size, alignment);
 }

@@ -268,7 +268,7 @@ void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
 }
 
 // 0x80106904
-sb32 grSectorArwingLaser3DProcMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 grSectorArwingLaser3DFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     f32 sx;
     Vec3f sp80;

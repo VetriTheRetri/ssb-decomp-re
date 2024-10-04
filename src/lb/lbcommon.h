@@ -8,7 +8,7 @@
 #include <ft/ftdef.h>
 #include <gm/gmsound.h>
 
-extern sb32 (*dLBCommonProcMatrixList[/* */])(/* */);
+extern sb32 (*dLBCommonFuncMatrixList[/* */])(/* */);
 extern Vec3f gLBCommonScale;
 
 extern f32 lbCommonSin(f32 x);
@@ -88,14 +88,14 @@ extern void lbCommonPlayTranslateScaledDObjAnim(DObj *dobj, Vec3f *scale);
 extern void func_ovl0_800C96DC(Mtx *mtx, DObj *dobj, Gfx **dls);
 extern sb32 func_ovl0_800C96EC(Mtx *mtx, DObj *dobj, Gfx **dls);
 extern sb32 func_ovl0_800C9714(Mtx *mtx, DObj *dobj, Gfx **dls);
-extern sb32 lbCommonFighterPartsProcMatrix(Mtx *mtx, DObj *dobj, Gfx **dls);
+extern sb32 lbCommonFighterPartsFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls);
 extern sb32 func_ovl0_800C994C(Mtx *mtx, DObj *dobj, Gfx **dls);
 extern sb32 func_ovl0_800C99CC(Mtx *mtx, DObj *dobj, Gfx **dls);
 extern void func_ovl0_800C9A38(Mtx44f mtx, DObj *dobj);
 extern sb32 func_ovl0_800C9F30(Mtx *mtx, DObj *dobj, Gfx **dls);
 extern sb32 func_ovl0_800C9F70(Mtx *mtx, DObj *dobj, Gfx **dls);
 extern sb32 func_ovl0_800CA024(Mtx *mtx, DObj *dobj, Gfx **dls);
-extern sb32 lbCommonRotScaProcMatrix(Mtx *mtx, DObj *dobj, Gfx **dls);
+extern sb32 lbCommonRotScaFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls);
 extern sb32 func_ovl0_800CA194(Mtx *mtx, DObj *dobj, Gfx **dls);
 extern sb32 func_ovl0_800CA5C8(Mtx *mtx, DObj *dobj, Gfx **dls);
 extern sb32 func_ovl0_800CAB48(Mtx *mtx, DObj *dobj, Gfx **dls);

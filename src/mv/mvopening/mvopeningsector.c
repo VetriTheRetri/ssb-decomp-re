@@ -601,14 +601,14 @@ syTasklogSetup mvOpeningSectorTasklogSetup =
     },
 
     0,                                  // Number of GObjThreads
-    0x600,                              // Thread stack size
+    sizeof(u64) * 192,                  // Thread stack size
     0,                                  // Number of thread stacks
     0,                                  // ???
     0,                                  // Number of GObjProcesses
     0,                                  // Number of GObjs
     sizeof(GObj),                       // GObj size
     0,                                  // Number of Object Manager Matrices
-    dLBCommonProcMatrixList,            // Matrix function list
+    dLBCommonFuncMatrixList,            // Matrix function list
     NULL,                               // Function for ejecting DObjDynamicStore?
     0,                                  // Number of AObjs
     0,                                  // Number of MObjs

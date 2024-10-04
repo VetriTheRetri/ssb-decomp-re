@@ -1366,7 +1366,7 @@ sb32 func_ovl0_800C9714(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x800C973C
-sb32 lbCommonFighterPartsProcMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 lbCommonFighterPartsFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     ub32 flag = ftGetStruct(dobj->parent_gobj)->is_use_animlocks;
     ftParts *ft_parts = ftGetParts(dobj);
@@ -1681,7 +1681,7 @@ sb32 func_ovl0_800CA024(Mtx *mtx, DObj *dobj, Gfx **dls)
 }
 
 // 0x800CA144
-sb32 lbCommonRotScaProcMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
+sb32 lbCommonRotScaFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     lbCommonMatrixRotSca
     (
@@ -2113,7 +2113,7 @@ void lbCommonEjectGObjLinkedList(GObj *gobj)
 }
 
 // 0x800D5CAC
-sb32 (*dLBCommonProcMatrixList[/* */])(/* */) =
+sb32 (*dLBCommonFuncMatrixList[/* */])(/* */) =
 {
 	func_ovl0_800C96EC,
 	func_ovl0_800C96EC,
@@ -2121,8 +2121,8 @@ sb32 (*dLBCommonProcMatrixList[/* */])(/* */) =
 	func_ovl0_800C9714,
 	func_ovl0_800CA024,
 	func_ovl0_800CA024,
-	lbCommonRotScaProcMatrix,
-	lbCommonRotScaProcMatrix,
+	lbCommonRotScaFuncMatrix,
+	lbCommonRotScaFuncMatrix,
 	func_ovl0_800CA194,
 	func_ovl0_800CA194,
 	func_ovl0_800CA5C8,
@@ -2133,13 +2133,13 @@ sb32 (*dLBCommonProcMatrixList[/* */])(/* */) =
 	func_ovl0_800CB140,
 	func_ovl0_800CB2F0,
 	func_ovl0_800CB2F0,
-	lbCommonFighterPartsProcMatrix,
-	lbCommonFighterPartsProcMatrix,
-	cmManagerLookAtProcMatrix,
-	cmManagerPrepLookAtProcMatrix,
-	cmManagerPlayerMagnifyProcMatrix,
+	lbCommonFighterPartsFuncMatrix,
+	lbCommonFighterPartsFuncMatrix,
+	cmManagerLookAtFuncMatrix,
+	cmManagerPrepLookAtFuncMatrix,
+	cmManagerPlayerMagnifyFuncMatrix,
 	NULL,
-	cmManageOrthoLookAtProcMatrix,
+	cmManageOrthoLookAtFuncMatrix,
 	NULL,
 	func_ovl0_800C994C,
 	func_ovl0_800C994C,
@@ -2149,10 +2149,10 @@ sb32 (*dLBCommonProcMatrixList[/* */])(/* */) =
 	func_ovl0_800C9F30,
 	func_ovl0_800C9F70,
 	func_ovl0_800C9F70,
-	grSectorArwingLaser3DProcMatrix,
-	grSectorArwingLaser3DProcMatrix,
-	cmManageOrthoLookAtProcMatrix,
-	cmManagerPrepProjectionProcMatrix
+	grSectorArwingLaser3DFuncMatrix,
+	grSectorArwingLaser3DFuncMatrix,
+	cmManageOrthoLookAtFuncMatrix,
+	cmManagerPrepProjectionFuncMatrix
 };
 
 // 0x800CB644

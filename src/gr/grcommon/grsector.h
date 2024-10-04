@@ -33,7 +33,7 @@ extern intptr_t D_NF_00001B84;                              // 0x00001B84
 extern intptr_t D_NF_00002EB4;                              // 0x00002EB4
 
 extern void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3);
-extern sb32 grSectorArwingLaser3DProcMatrix(Mtx *mtx, DObj *dobj, Gfx **dls);
+extern sb32 grSectorArwingLaser3DFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls);
 extern void func_ovl2_80106A40(DObj *dobj, AObjEvent32 *anim_joint, f32 arg2);
 extern void func_ovl2_80106A98(void);
 extern void grSectorArwingUpdateSleep(void);

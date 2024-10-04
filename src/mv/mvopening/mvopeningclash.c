@@ -231,7 +231,7 @@ void mvOpeningClashMakeWallpaper(void)
 }
 
 // 0x80132204
-void mvOpeningClashMakeFightersViewport(void)
+void mvOpeningClashMakeFightersCamera(void)
 {
     GObj *camera_gobj = gcMakeCameraGObj
     (
@@ -264,7 +264,7 @@ void mvOpeningClashMakeFightersViewport(void)
 }
 
 // 0x80132314
-void mvOpeningClashMakeVoidViewport(void)
+void mvOpeningClashMakeVoidCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -303,7 +303,7 @@ void mvOpeningClashWallpaperProcDisplay(GObj *gobj)
 }
 
 // 0x8013246C
-void mvOpeningClashMakeWallpaperViewport(void)
+void mvOpeningClashMakeWallpaperCamera(void)
 {
     GObj *camera_gobj = gcMakeCameraGObj
     (
@@ -440,9 +440,9 @@ void mvOpeningClashFuncStart(void)
     {
         sMVOpeningClashFigatreeHeaps[i] = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
     }
-    mvOpeningClashMakeFightersViewport();
-    mvOpeningClashMakeVoidViewport();
-    mvOpeningClashMakeWallpaperViewport();
+    mvOpeningClashMakeFightersCamera();
+    mvOpeningClashMakeVoidCamera();
+    mvOpeningClashMakeWallpaperCamera();
     mvOpeningClashMakeFighters();
     mvOpeningClashMakeWallpaper();
 
@@ -458,43 +458,48 @@ void mvOpeningClashFuncStart(void)
 syDisplaySetup dMVOpeningClashDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132944
-scRuntimeInfo dMVOpeningClashTasklogSetup =
+syTasklogSetup dMVOpeningClashTasklogSetup =
 {
-    0x00000000,
-	func_8000A5E4,
-	func_8000A340,
-	&ovl49_BSS_END,
-	0x00000000,
-	0x00000001,
-	0x00000002,
-	0x00002710,
-	0x00001000,
-	0x00000000,
-	0x00000000,
-	0x00008000,
-	0x00020000,
-	0x0000C000,
-	mvOpeningClashFuncLights,
-	update_contdata,
-	0x00000008,
-	0x00000600,
-	0x00000008,
-	0x00000000,
-	0x00000080,
-	0x00000080,
-	0x00000088,
-	0x00000200,
-	0x800D5CAC,
-	0x00000000,
-	0x00000200,
-	0x000000A0,
-	0x00000200,
-	0x00000088,
-	0x00000080,
-	0x0000006C,
-	0x00000010,
-	0x00000090,
-	mvOpeningClashFuncStart
+    // Task Logic Buffer Setup
+    {
+        0,                              // ???
+        func_8000A5E4,                  // Update function
+        func_8000A340,                  // Frame draw function
+        &ovl49_BSS_END,                 // Allocatable memory pool start
+        0,                              // Allocatable memory pool size
+        1,                              // ???
+        2,                              // Number of contexts?
+        sizeof(Gfx) * 1250,             // Display List Buffer 0 Size
+        sizeof(Gfx) * 512,              // Display List Buffer 1 Size
+        0,                              // Display List Buffer 2 Size
+        0,                              // Display List Buffer 3 Size
+        0x8000,                         // Graphics Heap Size
+        2,                              // ???
+        0xC000,                         // RDP Output Buffer Size
+        mvOpeningClashFuncLights,       // Pre-render function
+        update_contdata,                // Controller I/O function
+    },
+
+    8,                                  // Number of GObjThreads
+    sizeof(u64) * 192,                  // Thread stack size
+    8,                                  // Number of thread stacks
+    0,                                  // ???
+    128,                                // Number of GObjProcesses
+    128,                                // Number of GObjs
+    sizeof(GObj),                       // GObj size
+    512,                                // Number of Object Manager Matrices
+    dLBCommonFuncMatrixList,            // Matrix function list
+    NULL,                               // Function for ejecting DObjDynamicStore?
+    512,                                // Number of AObjs
+    160,                                // Number of MObjs
+    512,                                // Number of DObjs
+    sizeof(DObj),                       // DObj size
+    128,                                // Number of SObjs
+    sizeof(SObj),                       // SObj size
+    16,                                 // Number of Cameras
+    sizeof(Camera),                     // Camera size
+    
+    mvOpeningClashFuncStart             // Task start function
 };
 
 // 0x80132874
@@ -503,6 +508,6 @@ void mvOpeningClashStartScene(void)
     dMVOpeningClashDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMVOpeningClashDisplaySetup);
 
-    dMVOpeningClashTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl49_BSS_END);
+    dMVOpeningClashTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl49_BSS_END);
     syTasklogInit(&dMVOpeningClashTasklogSetup);
 }

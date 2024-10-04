@@ -989,7 +989,7 @@ f32 cmManagerGetMtxMaxValue(void)
 }
 
 // 0x8010D250
-sb32 cmManagerLookAtProcMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
+sb32 cmManagerLookAtFuncMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
 {
     Mtx *temp_mtx;
     Mtx44f sp5C;
@@ -1026,7 +1026,7 @@ sb32 cmManagerLookAtProcMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
 }
 
 // 0x8010D428
-sb32 cmManagerPrepLookAtProcMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
+sb32 cmManagerPrepLookAtFuncMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
 {
     gSPLookAtX(dls[0]++, &gCMManagerCameraStruct.look_at.l[0]);
     gSPLookAtY(dls[0]++, &gCMManagerCameraStruct.look_at.l[1]);
@@ -1235,7 +1235,7 @@ void func_ovl2_8010DDC4(void)
 }
 
 // 0x8010DE48
-sb32 cmManagerPlayerMagnifyProcMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
+sb32 cmManagerPlayerMagnifyFuncMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
 {
     f32 unused1;
     Mtx44f spA4;
@@ -1278,7 +1278,7 @@ sb32 cmManagerPlayerMagnifyProcMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
 }
 
 // 0x8010E00C
-sb32 cmManageOrthoLookAtProcMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
+sb32 cmManageOrthoLookAtFuncMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
 {
     Mtx44f sp78;
     Mtx44f sp38;
@@ -1298,7 +1298,7 @@ sb32 cmManageOrthoLookAtProcMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
 }
 
 // 0x8010E10C
-sb32 cmManagerPrepProjectionProcMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
+sb32 cmManagerPrepProjectionFuncMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
 {
     gSPMatrix(dls[0]++, mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 

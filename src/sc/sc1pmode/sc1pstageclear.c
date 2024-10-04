@@ -2061,7 +2061,7 @@ syTasklogSetup dGM1PStageClearTasklogSetup =
     0,                              // Number of GObjs
     sizeof(GObj),                   // GObj size
     0,                              // Number of Object Manager Matrices
-    dLBCommonProcMatrixList,        // Matrix function list
+    dLBCommonFuncMatrixList,        // Matrix function list
     NULL,                           // Function for ejecting DObjDynamicStore?
     0,                              // Number of AObjs
     0,                              // Number of MObjs

@@ -114,11 +114,6 @@ struct sc1PStageClearScore
 	s32 points;
 };
 
-struct sc1PStageCardFighter
-{
-	s32 ft_kind, costume, shade;
-};
-
 struct scTrainingSprites
 {
 	Vec2h pos;

@@ -1336,27 +1336,29 @@ void sc1PStageClearMakeBonusTable(void)
 }
 
 // 0x801339C0
-void sc1PStageClearFramebufWallpaperProcDisplay(GObj *gobj)
+void sc1PStageClearWallpaperProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTasklogDLHeads[0]++);
 	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
 	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x80, 0x80, 0x80, 0xFF);
 	gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_MODULATEI_PRIM, G_CC_MODULATEI_PRIM);
 	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
+
 	lbCommonDrawSObjNoAttr(gobj);
+
 	gDPPipeSync(gSYTasklogDLHeads[0]++);
 	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80133AC0
-void sc1PStageClearMakeFramebufWallpaper(void)
+void sc1PStageClearMakeWallpaper(void)
 {
 	GObj *gobj;
 	SObj *sobj;
 
 	gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(gobj, sc1PStageClearFramebufWallpaperProcDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, sc1PStageClearWallpaperProcDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
 	sobj = lbCommonMakeSObjForGObj
 	(
 		gobj,
@@ -1374,7 +1376,7 @@ void sc1PStageClearMakeFramebufWallpaper(void)
 }
 
 // 0x80133B48
-void sc1PStageClearMakeLink26Camera(void)
+void sc1PStageClearMakeTextCamera(void)
 {
 	Camera *cam = CameraGetStruct
 	(
@@ -1388,18 +1390,18 @@ void sc1PStageClearMakeLink26Camera(void)
 			80,
 			CAMERA_MASK_DLLINK(26),
 			-1,
-			0,
-			1,
+			FALSE,
+			nOMObjProcessKindProc,
 			NULL,
 			1,
-			0
+			FALSE
 		)
 	);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80133BE8
-void sc1PStageClearMakeLink27Camera(void)
+void sc1PStageClearMakeWallpaperCamera(void)
 {
 	Camera *cam = CameraGetStruct
 	(
@@ -1413,11 +1415,11 @@ void sc1PStageClearMakeLink27Camera(void)
 			90,
 			CAMERA_MASK_DLLINK(27),
 			-1,
-			0,
-			1,
+			FALSE,
+			nOMObjProcessKindProc,
 			NULL,
 			1,
-			0
+			FALSE
 		)
 	);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -1482,7 +1484,7 @@ void sc1PStageClearInitVars(void)
 
 	if ((sSC1PStageClearKind == nSC1PStageClearKindStage) || (sSC1PStageClearKind == nSC1PStageClearKindGame))
 	{
-		if (sc1PStageClearCheckHaveTimer() != FALSE)
+		if (sc1PStageClearCheckNoTimer() != FALSE)
 		{
 			sSC1PStageClearDamageTextTic = 10;
 			sSC1PStageClearDamageDigitTic = 20;
@@ -1517,7 +1519,7 @@ void sc1PStageClearUpdateBonusScore(void)
 }
 
 // 0x80133F28
-sb32 sc1PStageClearCheckHaveTimer(void)
+sb32 sc1PStageClearCheckNoTimer(void)
 {
 	if (gSceneData.spgame_time_limit == SCBATTLE_TIMELIMIT_INFINITE)
 	{
@@ -1572,7 +1574,7 @@ void sc1PStageClearUpdateGameClearScore(void)
 	s32 unused;
 	f32 y;
 
-	if (sc1PStageClearCheckHaveTimer() == FALSE)
+	if (sc1PStageClearCheckNoTimer() == FALSE)
 	{
 		if (sSC1PStageClearTotalTimeTics == sSC1PStageClearTimerTextTic)
 		{
@@ -1593,7 +1595,7 @@ void sc1PStageClearUpdateGameClearScore(void)
 			sc1PStageClearUpdateBonusScore();
 		}
 	}
-	y = (sc1PStageClearCheckHaveTimer() == FALSE) ? 126.0F : 94.0F;
+	y = (sc1PStageClearCheckNoTimer() == FALSE) ? 126.0F : 94.0F;
 
 	if (sSC1PStageClearTotalTimeTics == sSC1PStageClearDamageTextTic)
 	{
@@ -1659,7 +1661,7 @@ void sc1PStageClearUpdateStageClearScore(void)
 	s32 unused;
 	f32 y;
 
-	if (sc1PStageClearCheckHaveTimer() == FALSE)
+	if (sc1PStageClearCheckNoTimer() == FALSE)
 	{
 		if (sSC1PStageClearTotalTimeTics == sSC1PStageClearTimerTextTic)
 			sc1PStageClearMakeTimerTextSObjs(94.0F);
@@ -1678,7 +1680,7 @@ void sc1PStageClearUpdateStageClearScore(void)
 			sc1PStageClearUpdateBonusScore();
 		}
 	}
-	y = (sc1PStageClearCheckHaveTimer() == FALSE) ? 126.0F : 94.0F;
+	y = (sc1PStageClearCheckNoTimer() == FALSE) ? 126.0F : 94.0F;
 
 	if (sSC1PStageClearTotalTimeTics == sSC1PStageClearDamageTextTic)
 	{
@@ -1761,7 +1763,7 @@ void sc1PStageClearUpdateResultScore(void)
 	}
 	if (sSC1PStageClearBaseIntervalTic != 0)
 	{
-		if ((sc1PStageClearCheckHaveTimer() != FALSE) && (sSC1PStageClear1PGameStage != nSC1PGameStageBonus3))
+		if ((sc1PStageClearCheckNoTimer() != FALSE) && (sSC1PStageClear1PGameStage != nSC1PGameStageBonus3))
 		{
 			if (sSC1PStageClearBaseIntervalTic == sSC1PStageClearTotalTimeTics)
 			{
@@ -1991,9 +1993,9 @@ void sc1PStageClearFuncStart(void)
 	sc1PStageClearCopyFramebufToWallpaper();
 	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 	sc1PStageClearInitVars();
-	sc1PStageClearMakeLink26Camera();
-	sc1PStageClearMakeLink27Camera();
-	sc1PStageClearMakeFramebufWallpaper();
+	sc1PStageClearMakeTextCamera();
+	sc1PStageClearMakeWallpaperCamera();
+	sc1PStageClearMakeWallpaper();
 	sc1PStageClearMakeTextSObjs();
 	sc1PStageClearMakeScoreSObjs();
 
@@ -2053,7 +2055,7 @@ syTasklogSetup dGM1PStageClearTasklogSetup =
     },
 
     0,                              // Number of GObjThreads
-    1536,                           // Thread stack size
+    0x600,                          // Thread stack size
     0,                              // Number of thread stacks
     0,                              // ???
     0,                              // Number of GObjProcesses

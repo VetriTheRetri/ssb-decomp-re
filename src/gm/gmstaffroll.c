@@ -2121,7 +2121,7 @@ void gmStaffrollFuncStart(void)
 {
 	gcMakeGObjSPAfter(0, gmStaffrollFuncRun, 1, GOBJ_LINKORDER_DEFAULT);
 	gcMakeDefaultCameraGObj(12, GOBJ_LINKORDER_DEFAULT, 100, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
-	
+
 	gmStaffrollSetupFiles();
 	gmStaffrollInitNameAndJobDisplayLists();
 	gmStaffrollTryHideUnlocks();
@@ -2214,7 +2214,7 @@ syTasklogSetup dGMStaffrollTasklogSetup =
     },
 
     16,                             // Number of GObjThreads
-    1536,                           // Thread stack size
+    0x600,                          // Thread stack size
     16,                             // Number of thread stacks
     0,                              // ???
     64,                             // Number of GObjProcesses

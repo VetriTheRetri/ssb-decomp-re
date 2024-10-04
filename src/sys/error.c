@@ -1,7 +1,6 @@
 #include "common.h"
 #include <sys/error.h>
 
-#include <sys/tasklog.h>
 #include <sys/hal_audio.h>
 #include <sys/main.h>
 #include <sys/obj.h>
@@ -11,8 +10,6 @@
 
 // #include <macros.h> // (included in obj.h)
 #include <config.h>
-
-extern void gcUpdateDefault(UNUSED GObj* arg0);
 
 /*
 * These should no longer be here as they're included in objtypes.h
@@ -34,10 +31,8 @@ extern void gcUpdateDefault(UNUSED GObj* arg0);
 #define VA_LIST_ALIGN(ap, paramN)
 #endif
 
-#define HAL_CRASH_MSG_CPU_BREAK ((OSMesg)1)
-#define HAL_CRASH_MSG_FAULT     ((OSMesg)2)
-
-#define THREAD8_MAIN_HANG_PRI 105
+#define SYERROR_MESG_CPU_BREAK ((OSMesg)1)
+#define SYERROR_MESG_FAULT     ((OSMesg)2)
 
 // 0x8003CBB0
 syRectangle D_8003CBB0[/* */] =
@@ -74,6 +69,7 @@ sb32 D_8003CC30[/* */][8] =
     {0, 0, 0, 1, 0, 0, 0, 0}
 };
 
+// 0x8003CE50
 f32 D_8003CE50[/* */] = 
 {
     1.0F,
@@ -88,6 +84,7 @@ f32 D_8003CE50[/* */] =
     1000000000.0F
 };
 
+// 0x8003CE78
 ub8 dSYErrorIsScreenActive = FALSE;
 
 u8 dSYErrorAsciiToGlyphIDs[/* */] = 
@@ -150,22 +147,41 @@ const char *dSYErrorFPUExceptions[/* */] =
 s32 dSYErrorMesgPositionX = 30;
 s32 dSYErrorMesgPositionY = 25;
 
-// bss
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
 void *D_8009DA00;
+
 OSThread sSYErrorThread8CPUFault;
+
 u8 sSYErrorThread8CPUStack[0x800];
+
 OSMesgQueue sSYErrorMesgQueueCPUFault;
+
 OSMesg sSYErrorMesgCPUFault[1];
+
 u32 sUnref8009E3D4;
+
 void (*sSYErrorFuncPrint)(void);
+
 SCClient D_8009E3E0;
+
 OSMesg D_8009E3E8[1];
+
 OSMesgQueue D_8009E3F0;
+
 OSThread sSYErrorThread8Hang;
+
 u8 sSYErrorThread8HangStack[0x800];
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunknown-pragmas"
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x800210C0
 void func_800210C0(s32 arg0, s32 arg1, s32 arg2, sb32 arg3)
@@ -825,8 +841,8 @@ void syErrorReportCPUBreakFault(UNUSED void *arg)
     OSMesg msg[1];
     OSThread *thread;
 
-    osSetEventMesg(OS_EVENT_CPU_BREAK, &sSYErrorMesgQueueCPUFault, HAL_CRASH_MSG_CPU_BREAK);
-    osSetEventMesg(OS_EVENT_FAULT, &sSYErrorMesgQueueCPUFault, HAL_CRASH_MSG_FAULT);
+    osSetEventMesg(OS_EVENT_CPU_BREAK, &sSYErrorMesgQueueCPUFault, SYERROR_MESG_CPU_BREAK);
+    osSetEventMesg(OS_EVENT_FAULT, &sSYErrorMesgQueueCPUFault, SYERROR_MESG_FAULT);
 
     do 
     {
@@ -948,7 +964,7 @@ void syErrorFileLoaderThread8(void *arg)
                 syErrorWaitFramebufOrController(Z_TRIG | L_TRIG | R_TRIG, NULL);
                 osSetThreadPri(NULL, origPri);
                 dSYErrorIsScreenActive = FALSE;
-}
+            }
         }
     }
 }
@@ -965,7 +981,7 @@ void syErrorStartRmonThread5Hang(void)
         syErrorFileLoaderThread8,
         NULL,
         sSYErrorThread8HangStack + sizeof(sSYErrorThread8HangStack),
-        THREAD8_MAIN_HANG_PRI
+        105
     );
     osStartThread(&sSYErrorThread8Hang);
 }
@@ -1043,5 +1059,3 @@ void syErrorRunFuncPrint(void (*func_print)(void))
     osSetThreadPri(NULL, pri_bak);
     dSYErrorIsScreenActive = FALSE;
 }
-
-#pragma GCC diagnostic pop

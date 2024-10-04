@@ -513,7 +513,6 @@ typedef struct sc1PGameBossWallpaper		sc1PGameBossWallpaper;
 typedef struct sc1PGameBossMain				sc1PGameBossMain;
 typedef struct sc1PStageClearStats			sc1PStageClearStats;
 typedef struct sc1PStageClearScore			sc1PStageClearScore;
-typedef struct sc1PStageCardFighter			sc1PStageCardFighter;
 typedef struct scTrainingSprites			scTrainingSprites;
 typedef struct scTrainingFiles				scTrainingFiles;
 typedef struct scExplainMain				scExplainMain;

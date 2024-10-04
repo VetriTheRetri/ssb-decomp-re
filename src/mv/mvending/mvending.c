@@ -97,43 +97,48 @@ Lights1 dMVEndingLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0
 syDisplaySetup dMVEndingDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132B24
-scRuntimeInfo dMVEndingTasklogSetup =
+syTasklogSetup dMVEndingTasklogSetup =
 {
-	0x00000000,
-	func_8000A5E4,
-	func_8000A340,
-	&ovl54_BSS_END,
-	0x00000000,
-	0x00000001,
-	0x00000002,
-	0x00004E20,
-	0x00001000,
-	0x00000000,
-	0x00000000,
-	0x00008000,
-	0x00020000,
-	0x0000C000,
-	mvEndingFuncLights,
-	update_contdata,
-	0x00000000,
-	0x00000600,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000088,
-	0x00000000,
-	0x800D5CAC,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000088,
-	0x00000000,
-	0x0000006C,
-	0x00000000,
-	0x00000090,
-	mvEndingFuncStart
+    // Task Logic Buffer Setup
+    {
+        0,                          // ???
+        func_8000A5E4,              // Update function
+        func_8000A340,              // Frame draw function
+        &ovl54_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        0x4E20,                     // ???
+        0x1000,                     // ???
+        0,                          // ???
+        0,                          // ???
+        0x8000,                     // ???
+        2,                          // ???
+        0xC000,                     // ???
+        mvEndingFuncLights,         // Pre-render function
+        update_contdata,            // Controller I/O function
+    },
+
+    0,                              // Number of GObjThreads
+    0x600,                          // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of Object Manager Matrices
+    dLBCommonProcMatrixList,        // Matrix function list
+    NULL,                           // Function for ejecting DObjDynamicStore?
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(Camera),                 // Camera size
+    
+    mvEndingFuncStart               // Task start function
 };
 
 // // // // // // // // // // // //
@@ -309,11 +314,11 @@ void mvEndingMakeRoomFadeInCamera(void)
             60,
             CAMERA_MASK_DLLINK(26),
             -1,
-            0,
-            1,
+            FALSE,
+            nOMObjProcessKindProc,
             NULL,
             1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -368,11 +373,11 @@ void mvEndingMakeRoomLightCamera(void)
             30,
             CAMERA_MASK_DLLINK(30),
             -1,
-            0,
-            1,
+            FALSE,
+            nOMObjProcessKindProc,
             NULL,
             1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -417,11 +422,11 @@ void mvEndingMakeMainCameras(void)
         80,
         CAMERA_MASK_DLLINK(29),
         -1,
-        0,
-        1,
+        FALSE,
+        nOMObjProcessKindProc,
         NULL,
         1,
-        0
+        FALSE
     );
     gcAddOMMtxForCamera(CameraGetStruct(gobj), nOMTransformPerspFastF, 0);
     gcAddOMMtxForCamera(CameraGetStruct(gobj), 8, 0);
@@ -439,11 +444,11 @@ void mvEndingMakeMainCameras(void)
         40,
         CAMERA_MASK_DLLINK(9),
         -1,
-        1,
-        1,
+        TRUE,
+        nOMObjProcessKindProc,
         NULL,
         1,
-        0
+        FALSE
     );
     mvEndingSetupOperatorCamera(gobj);
 
@@ -552,6 +557,7 @@ void mvEndingFuncStart(void)
     mvEndingMakeRoomTissues();
     mvEndingMakeFighter(sMVEndingFighterDemoDesc.ft_kind);
     mvEndingMakeRoomFadeIn();
+
     scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
     auPlaySong(0, nSYAudioBGMEnding);
 }
@@ -563,7 +569,7 @@ void mvEndingStartScene(void)
 
     syDisplayInit(&dMVEndingDisplaySetup);
 
-    dMVEndingTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl54_BSS_END);
+    dMVEndingTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl54_BSS_END);
 
     syTasklogInit(&dMVEndingTasklogSetup);
 }

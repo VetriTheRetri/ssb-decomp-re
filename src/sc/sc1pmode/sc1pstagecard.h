@@ -5,6 +5,7 @@
 #include <sys/objdef.h>
 #include <PR/gbi.h>
 #include <sc/scdef.h>
+#include <ft/ftdef.h>
 
 extern intptr_t lSC1PStageCardDecalVSSprite;                // 0x00001F10
 
@@ -121,7 +122,7 @@ extern void sc1PStageCardMakeStageInfo(s32 stage);
 extern f32 sc1PStageCardGetFighterVelocityZ(s32 card_anim_frame_id);
 extern void sc1PStageCardUpdateFighterPositionZ(GObj *fighter_gobj);
 extern f32 sc1PStageCardGetFighterPositionZ(s32 card_anim_frame_id);
-extern void sc1PStageCardMakeFighter(sc1PStageCardFighter fighter, s32 card_anim_frame_id, void **figatree);
+extern void sc1PStageCardMakeFighter(ftDemoDesc fighter, s32 card_anim_frame_id, void **figatree);
 extern void sc1PStageCardInitAllyTextParams(SObj *sobj);
 extern void sc1PStageCardMakeAllyText(s32 stage);
 extern f32 sc1PStageCardGetVSFighterVelocityZ(s32 stage, s32 ft_kind);

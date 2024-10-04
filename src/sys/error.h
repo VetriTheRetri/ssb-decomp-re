@@ -31,7 +31,7 @@ extern void syErrorSetFuncPrint(void (*func_print)(void));
 extern void syErrorResetMesgCursor(s32 x, s32 y);
 extern void syErrorFramebufVPrintfNewLine(const char *fmt, va_list args);
 extern void syErrorDebugPrintf(const char *fmt, ...);
-extern void syErrorReportCPUBreakFault(UNUSED void *arg);
+extern void syErrorReportCPUBreakFault(void *arg);
 extern void syErrorStartRmonThread8(void);
 extern void syErrorFileLoaderThread8(void *arg);
 extern void syErrorStartRmonThread5Hang(void);

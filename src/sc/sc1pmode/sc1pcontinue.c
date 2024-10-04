@@ -451,7 +451,7 @@ void sc1PContinueSpotlightFadeProcDisplay(GObj *gobj)
 }
 
 // 0x801325E8
-void sc1PContinueMakeSpotlightFadeSObjs(void)
+void sc1PContinueMakeSpotlightFade(void)
 {
     GObj *gobj;
 
@@ -476,7 +476,7 @@ void sc1PContinueMakeRoom(void)
 }
 
 // 0x801326D4
-void sc1PContinueMakeSpotlightSObjs(void)
+void sc1PContinueMakeSpotlight(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -511,7 +511,7 @@ void sc1PContinueMakeSpotlightSObjs(void)
 }
 
 // 0x80132824
-void sc1PContinueMakeContinueSObj(void)
+void sc1PContinueMakeContinue(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -580,7 +580,7 @@ void sc1PContinueOptionProcUpdate(GObj *gobj)
 }
 
 // 0x801329D0
-void sc1PContinueMakeOptionSObjs(void)
+void sc1PContinueMakeOptions(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -632,7 +632,7 @@ void sc1PContinueCursorProcUpdate(GObj *gobj)
 }
 
 // 0x80132B50
-void sc1PContinueMakeCursorSObj(void)
+void sc1PContinueMakeCursor(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -673,7 +673,7 @@ void sc1PContinueGameOverInitSprites(SObj *sobj)
 }
 
 // 0x80132C58
-void sc1PContinueGameOverStepColors(GObj *gobj)
+void sc1PContinueGameOverTextStepColors(GObj *gobj)
 {
     SObj *sobj = SObjGetStruct(gobj);
 
@@ -704,7 +704,7 @@ void sc1PContinueGameOverStepColors(GObj *gobj)
 }
 
 // 0x8013307C
-void sc1PContinueMakeGameOverSObjs(void)
+void sc1PContinueMakeGameOverText(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -731,7 +731,7 @@ void sc1PContinueMakeGameOverSObjs(void)
 
     sSC1PContinueGameOverGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjProcess(gobj, sc1PContinueGameOverStepColors, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(gobj, sc1PContinueGameOverTextStepColors, nOMObjProcessKindProc, 1);
 
     for (i = 0; i < (ARRAY_COUNT(letters) + ARRAY_COUNT(positions_x)) / 2; i++)
     {
@@ -783,7 +783,7 @@ void sc1PContinueMakeGameOver(void)
 }
 
 // 0x801333C4
-void sc1PContinueMakeLink26Camera(void)
+void sc1PContinueMakeRoomFadeInCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -796,12 +796,12 @@ void sc1PContinueMakeLink26Camera(void)
             lbCommonScissorSpriteCamera,
             80,
             CAMERA_MASK_DLLINK(26),
-            -1,
-            0,
-            1,
-            NULL,
-            1,
-            0
+			-1,
+			FALSE,
+			nOMObjProcessKindProc,
+			NULL,
+			1,
+			FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -810,7 +810,7 @@ void sc1PContinueMakeLink26Camera(void)
 }
 
 // 0x80133474
-void sc1PContinueMakeLink31Camera(void)
+void sc1PContinueMakeSpotlightFadeCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -823,12 +823,12 @@ void sc1PContinueMakeLink31Camera(void)
             lbCommonScissorSpriteCamera,
             60,
             CAMERA_MASK_DLLINK(31),
-            -1,
-            0,
-            1,
-            NULL,
-            1,
-            0
+			-1,
+			FALSE,
+			nOMObjProcessKindProc,
+			NULL,
+			1,
+			FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -837,7 +837,7 @@ void sc1PContinueMakeLink31Camera(void)
 }
 
 // 0x80133524
-void sc1PContinueMakeLink32Camera(void)
+void sc1PContinueMakeRoomFadeOutCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -888,7 +888,7 @@ void sc1PContinueSetupCamera(Camera *cam)
 }
 
 // 0x80133694
-void sc1PContinueMakeLinkMultiCamera(void)
+void sc1PContinueMakeMainCamera(void)
 {
     // 0x08048600
     Camera *cam = CameraGetStruct
@@ -905,18 +905,18 @@ void sc1PContinueMakeLinkMultiCamera(void)
             CAMERA_MASK_DLLINK(15) | CAMERA_MASK_DLLINK(10) | 
             CAMERA_MASK_DLLINK(9),
             -1,
-            1,
-            1,
+            TRUE,
+            nOMObjProcessKindProc,
             NULL,
             1,
-            0
+            FALSE
         )
     );
     sc1PContinueSetupCamera(cam);
 }
 
 // 0x80133718
-void sc1PContinueMakeLink29Camera(void)
+void sc1PContinueMakeRoomCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -930,18 +930,18 @@ void sc1PContinueMakeLink29Camera(void)
             90,
             CAMERA_MASK_DLLINK(29),
             -1,
-            0,
-            1,
+            FALSE,
+            nOMObjProcessKindProc,
             NULL,
             1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801337B8
-void sc1PContinueMakeLink30Camera(void)
+void sc1PContinueMakeSpotlightCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -954,12 +954,12 @@ void sc1PContinueMakeLink30Camera(void)
             lbCommonScissorSpriteCamera,
             70,
             CAMERA_MASK_DLLINK(30),
-            -1,
-            0,
-            1,
-            NULL,
-            1,
-            0
+			-1,
+			FALSE,
+			nOMObjProcessKindProc,
+			NULL,
+			1,
+			FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -968,7 +968,7 @@ void sc1PContinueMakeLink30Camera(void)
 }
 
 // 0x80133868
-void sc1PContinueMakeLink28Camera(void)
+void sc1PContinueMakeTextCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -981,12 +981,12 @@ void sc1PContinueMakeLink28Camera(void)
             lbCommonScissorSpriteCamera,
             30,
             CAMERA_MASK_DLLINK(28),
-            -1,
-            0,
-            1,
-            NULL,
-            1,
-            0
+			-1,
+			FALSE,
+			nOMObjProcessKindProc,
+			NULL,
+			1,
+			FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -1060,7 +1060,7 @@ void sc1PContinueFuncRun(GObj *gobj)
             gcEjectGObj(sSC1PContinueCursorGObj);
 
             sc1PContinueMakeRoomFadeOut();
-            sc1PContinueMakeGameOverSObjs();
+            sc1PContinueMakeGameOverText();
             sc1PContinueMakeGameOver();
 
             sSC1PContinueStatus = 2;
@@ -1105,8 +1105,9 @@ void sc1PContinueFuncRun(GObj *gobj)
                     gcEjectGObj(sSC1PContinueContinueGObj);
                     gcEjectGObj(sSC1PContinueOptionGObj);
                     gcEjectGObj(sSC1PContinueCursorGObj);
+                    
                     sc1PContinueMakeRoomFadeOut();
-                    sc1PContinueMakeGameOverSObjs();
+                    sc1PContinueMakeGameOverText();
                     sc1PContinueMakeGameOver();
 
                     sSC1PContinueStatus = 2;
@@ -1179,20 +1180,20 @@ void sc1PContinueFuncRun(GObj *gobj)
         }
         if (sSC1PContinueTotalTimeTics == 40)
         {
-            sc1PContinueMakeSpotlightSObjs();
-            sc1PContinueMakeSpotlightFadeSObjs();
+            sc1PContinueMakeSpotlight();
+            sc1PContinueMakeSpotlightFade();
         }
         if (sSC1PContinueTotalTimeTics == 60)
         {
             sc1PContinueMakeRoomFadeIn();
             sc1PContinueMakeRoom();
-            sc1PContinueMakeContinueSObj();
+            sc1PContinueMakeContinue();
             func_800269C0_275C0(nSYAudioVoiceAnnounceContinue);
         }
         if (sSC1PContinueTotalTimeTics == 120)
         {
-            sc1PContinueMakeOptionSObjs();
-            sc1PContinueMakeCursorSObj();
+            sc1PContinueMakeOptions();
+            sc1PContinueMakeCursor();
         }
     }
 }
@@ -1238,13 +1239,13 @@ void sc1PContinueFuncStart(void)
     
     sSC1PContinueFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
-    sc1PContinueMakeLinkMultiCamera();
-    sc1PContinueMakeLink26Camera();
-    sc1PContinueMakeLink31Camera();
-    sc1PContinueMakeLink32Camera();
-    sc1PContinueMakeLink29Camera();
-    sc1PContinueMakeLink30Camera();
-    sc1PContinueMakeLink28Camera();
+    sc1PContinueMakeMainCamera();
+    sc1PContinueMakeRoomFadeInCamera();
+    sc1PContinueMakeSpotlightFadeCamera();
+    sc1PContinueMakeRoomFadeOutCamera();
+    sc1PContinueMakeRoomCamera();
+    sc1PContinueMakeSpotlightCamera();
+    sc1PContinueMakeTextCamera();
     sc1PContinueMakeFighter(sSC1PContinueFighterDemoDesc.ft_kind);
     sc1PContinueMakeScoreDisplay(gSceneData.spgame_score);
 
@@ -1281,7 +1282,7 @@ syTasklogSetup dSC1PContinueTasklogSetup =
     },
 
     0,                              // Number of GObjThreads
-    1536,                           // Thread stack size
+    0x600,                          // Thread stack size
     0,                              // Number of thread stacks
     0,                              // ???
     0,                              // Number of GObjProcesses

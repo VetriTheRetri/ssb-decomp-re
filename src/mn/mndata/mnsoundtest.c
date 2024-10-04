@@ -719,7 +719,7 @@ syTasklogSetup dMNSoundTestTasklogSetup =
     },
 
     16,                             // Number of GObjThreads
-    1536,                           // Thread stack size
+    0x600,                          // Thread stack size
     16,                             // Number of thread stacks
     0,                              // ???
     64,                             // Number of GObjProcesses

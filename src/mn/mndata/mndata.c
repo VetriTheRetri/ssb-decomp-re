@@ -844,7 +844,7 @@ syTasklogSetup dMNDataTasklogSetup =
     },
 
     0,                              // Number of GObjThreads
-    1536,                           // Thread stack size
+    0x600,                          // Thread stack size
     0,                              // Number of thread stacks
     0,                              // ???
     0,                              // Number of GObjProcesses

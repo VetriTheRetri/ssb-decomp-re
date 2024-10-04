@@ -50,19 +50,19 @@ sb32 sSC1PStageCardIsAnnouncedVSFighterName;
 s32 sSC1PStageCardPad0x80135CC4;
 
 // 0x80135CC8
-sc1PStageCardFighter sSC1PStageCardPlayerFighter;
+ftDemoDesc sSC1PStageCardPlayerFighterDemoDesc;
 
 // 0x80135CD4
 s32 sSC1PStageCardPad0x80135CD4;
 
 // 0x80135CD8
-sc1PStageCardFighter sSC1PStageCardAlly1Fighter;
+ftDemoDesc sSC1PStageCardAlly1FighterDemoDesc;
 
 // 0x80135CE4
 s32 sSC1PStageCardPad0x80135CE4;
 
 // 0x80135CE8
-sc1PStageCardFighter sSC1PStageCardAlly2Fighter;
+ftDemoDesc sSC1PStageCardAlly2FighterDemoDesc;
 
 // 0x80135CF4
 s32 sSC1PStageCardUnk0x80135CF4;
@@ -533,7 +533,7 @@ void sc1PStageCardMakeName(s32 stage)
     sSC1PStageCardNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[1], name_offsets[sSC1PStageCardPlayerFighter.ft_kind]));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[1], name_offsets[sSC1PStageCardPlayerFighterDemoDesc.ft_kind]));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -553,7 +553,7 @@ void sc1PStageCardMakeName(s32 stage)
         sobj->sprite.green = 0xFF;
         sobj->sprite.blue = 0xFF;
         
-        sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[1], name_offsets[sSC1PStageCardAlly1Fighter.ft_kind]));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[1], name_offsets[sSC1PStageCardAlly1FighterDemoDesc.ft_kind]));
         
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -564,7 +564,7 @@ void sc1PStageCardMakeName(s32 stage)
         
         if (sc1PStageCardGetAlliesNum(stage) == 2)
         {
-            sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[1], name_offsets[sSC1PStageCardAlly2Fighter.ft_kind]));
+            sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sSC1PStageCardFiles[1], name_offsets[sSC1PStageCardAlly2FighterDemoDesc.ft_kind]));
             
             sobj->sprite.attr &= ~SP_FASTCOPY;
             sobj->sprite.attr |= SP_TRANSPARENT;
@@ -741,7 +741,7 @@ f32 sc1PStageCardGetFighterPositionZ(s32 card_anim_frame_id)
 }
 
 // 0x80132C98
-void sc1PStageCardMakeFighter(sc1PStageCardFighter fighter, s32 card_anim_frame_id, void **figatree)
+void sc1PStageCardMakeFighter(ftDemoDesc fighter, s32 card_anim_frame_id, void **figatree)
 {
     ftStruct *fp;
     GObj *fighter_gobj;
@@ -1190,33 +1190,33 @@ sb32 sSC1PStageCardCheckCostumeUsed(s32 stage, s32 ft_kind, s32 color)
     switch (stage)
     {
     case nSC1PGameStageMario:
-        if ((ft_kind == sSC1PStageCardPlayerFighter.ft_kind) && (ftParamGetCostumeCommonID(ft_kind, color) == sSC1PStageCardPlayerFighter.costume))
+        if ((ft_kind == sSC1PStageCardPlayerFighterDemoDesc.ft_kind) && (ftParamGetCostumeCommonID(ft_kind, color) == sSC1PStageCardPlayerFighterDemoDesc.costume))
         {
             return TRUE;
         }
-        else if ((ft_kind == sSC1PStageCardAlly1Fighter.ft_kind) && (ftParamGetCostumeCommonID(ft_kind, color) == sSC1PStageCardAlly1Fighter.costume))
+        else if ((ft_kind == sSC1PStageCardAlly1FighterDemoDesc.ft_kind) && (ftParamGetCostumeCommonID(ft_kind, color) == sSC1PStageCardAlly1FighterDemoDesc.costume))
         {
             return TRUE;
         }
         else return FALSE;
         
     case nSC1PGameStageDonkey:
-        if ((ft_kind == sSC1PStageCardPlayerFighter.ft_kind) && (ftParamGetCostumeCommonID(ft_kind, color) == sSC1PStageCardPlayerFighter.costume))
+        if ((ft_kind == sSC1PStageCardPlayerFighterDemoDesc.ft_kind) && (ftParamGetCostumeCommonID(ft_kind, color) == sSC1PStageCardPlayerFighterDemoDesc.costume))
         {
             return TRUE;
         }
-        else if ((ft_kind == sSC1PStageCardAlly1Fighter.ft_kind) && (ftParamGetCostumeCommonID(ft_kind, color) == sSC1PStageCardAlly1Fighter.costume))
+        else if ((ft_kind == sSC1PStageCardAlly1FighterDemoDesc.ft_kind) && (ftParamGetCostumeCommonID(ft_kind, color) == sSC1PStageCardAlly1FighterDemoDesc.costume))
         {
             return TRUE;
         }
-        else if ((ft_kind == sSC1PStageCardAlly2Fighter.ft_kind) && (ftParamGetCostumeCommonID(ft_kind, color) == sSC1PStageCardAlly2Fighter.costume))
+        else if ((ft_kind == sSC1PStageCardAlly2FighterDemoDesc.ft_kind) && (ftParamGetCostumeCommonID(ft_kind, color) == sSC1PStageCardAlly2FighterDemoDesc.costume))
         {
             return TRUE;
         }
         else return FALSE;
         
     default:
-        if ((ft_kind == sSC1PStageCardPlayerFighter.ft_kind) && (ftParamGetCostumeCommonID(ft_kind, color) == sSC1PStageCardPlayerFighter.costume))
+        if ((ft_kind == sSC1PStageCardPlayerFighterDemoDesc.ft_kind) && (ftParamGetCostumeCommonID(ft_kind, color) == sSC1PStageCardPlayerFighterDemoDesc.costume))
         {
             return TRUE;
         }
@@ -1260,7 +1260,7 @@ void sc1PStageCardInitVSFighters(s32 stage)
         {
             fighter_gobj = sc1PStageCardMakeVSFighter(nFTKindYoshi, stage, i, &sSC1PStageCardFigatreeHeaps[i + 1], 32);
             
-            if ((sSC1PStageCardPlayerFighter.costume == i % SC1PGAME_STAGE_YOSHI_VARIATIONS_COUNT) && (sSC1PStageCardPlayerFighter.ft_kind == nFTKindYoshi))
+            if ((sSC1PStageCardPlayerFighterDemoDesc.costume == i % SC1PGAME_STAGE_YOSHI_VARIATIONS_COUNT) && (sSC1PStageCardPlayerFighterDemoDesc.ft_kind == nFTKindYoshi))
             {
                 ftParamInitModelTexturePartsAll(fighter_gobj, i % SC1PGAME_STAGE_YOSHI_VARIATIONS_COUNT, 1);
             }
@@ -1304,13 +1304,13 @@ void sc1PStageCardInitVSFighters(s32 stage)
         sc1PStageCardMakeStageCamera(stage, 32);
         fighter_gobj = sc1PStageCardMakeVSFighter(ft_kinds[stage], stage, 0, &sSC1PStageCardFigatreeHeaps[1], 32);
         
-        if (sSC1PStageCardPlayerFighter.ft_kind == ft_kinds[stage])
+        if (sSC1PStageCardPlayerFighterDemoDesc.ft_kind == ft_kinds[stage])
         {
-            if (ftParamGetCostumeCommonID(sSC1PStageCardPlayerFighter.ft_kind, 0) == sSC1PStageCardPlayerFighter.costume)
+            if (ftParamGetCostumeCommonID(sSC1PStageCardPlayerFighterDemoDesc.ft_kind, 0) == sSC1PStageCardPlayerFighterDemoDesc.costume)
             {
-                ftParamInitModelTexturePartsAll(fighter_gobj, ftParamGetCostumeCommonID(sSC1PStageCardPlayerFighter.ft_kind, 1), 0);
+                ftParamInitModelTexturePartsAll(fighter_gobj, ftParamGetCostumeCommonID(sSC1PStageCardPlayerFighterDemoDesc.ft_kind, 1), 0);
             }
-            else ftParamInitModelTexturePartsAll(fighter_gobj, ftParamGetCostumeCommonID(sSC1PStageCardPlayerFighter.ft_kind, 0), 0);
+            else ftParamInitModelTexturePartsAll(fighter_gobj, ftParamGetCostumeCommonID(sSC1PStageCardPlayerFighterDemoDesc.ft_kind, 0), 0);
         }
         break;
         
@@ -1565,26 +1565,26 @@ void sc1PStageCardInitFighters(s32 stage)
     switch (stage)
     {
     case nSC1PGameStageDonkey:
-        sc1PStageCardMakeFighterCamera(sSC1PStageCardAlly2Fighter.ft_kind, 5);
-        sc1PStageCardMakeFighter(sSC1PStageCardAlly2Fighter, 5, &sSC1PStageCardFigatreeHeaps[2]);
-        sc1PStageCardMakeFighterCamera(sSC1PStageCardAlly1Fighter.ft_kind, 4);
-        sc1PStageCardMakeFighter(sSC1PStageCardAlly1Fighter, 4, &sSC1PStageCardFigatreeHeaps[1]);
-        sc1PStageCardMakeFighterCamera(sSC1PStageCardPlayerFighter.ft_kind, 3);
-        sc1PStageCardMakeFighter(sSC1PStageCardPlayerFighter, 3, &sSC1PStageCardFigatreeHeaps[0]);
+        sc1PStageCardMakeFighterCamera(sSC1PStageCardAlly2FighterDemoDesc.ft_kind, 5);
+        sc1PStageCardMakeFighter(sSC1PStageCardAlly2FighterDemoDesc, 5, &sSC1PStageCardFigatreeHeaps[2]);
+        sc1PStageCardMakeFighterCamera(sSC1PStageCardAlly1FighterDemoDesc.ft_kind, 4);
+        sc1PStageCardMakeFighter(sSC1PStageCardAlly1FighterDemoDesc, 4, &sSC1PStageCardFigatreeHeaps[1]);
+        sc1PStageCardMakeFighterCamera(sSC1PStageCardPlayerFighterDemoDesc.ft_kind, 3);
+        sc1PStageCardMakeFighter(sSC1PStageCardPlayerFighterDemoDesc, 3, &sSC1PStageCardFigatreeHeaps[0]);
         sc1PStageCardMakeAllyText(stage);
         break;
 
     case nSC1PGameStageMario:
-        sc1PStageCardMakeFighterCamera(sSC1PStageCardAlly1Fighter.ft_kind, 2);
-        sc1PStageCardMakeFighter(sSC1PStageCardAlly1Fighter, 2, &sSC1PStageCardFigatreeHeaps[1]);
-        sc1PStageCardMakeFighterCamera(sSC1PStageCardPlayerFighter.ft_kind, 1);
-        sc1PStageCardMakeFighter(sSC1PStageCardPlayerFighter, 1, &sSC1PStageCardFigatreeHeaps[0]);
+        sc1PStageCardMakeFighterCamera(sSC1PStageCardAlly1FighterDemoDesc.ft_kind, 2);
+        sc1PStageCardMakeFighter(sSC1PStageCardAlly1FighterDemoDesc, 2, &sSC1PStageCardFigatreeHeaps[1]);
+        sc1PStageCardMakeFighterCamera(sSC1PStageCardPlayerFighterDemoDesc.ft_kind, 1);
+        sc1PStageCardMakeFighter(sSC1PStageCardPlayerFighterDemoDesc, 1, &sSC1PStageCardFigatreeHeaps[0]);
         sc1PStageCardMakeAllyText(stage);
         break;
 
     default:
-        sc1PStageCardMakeFighterCamera(sSC1PStageCardPlayerFighter.ft_kind, 0);
-        sc1PStageCardMakeFighter(sSC1PStageCardPlayerFighter, 0, &sSC1PStageCardFigatreeHeaps[0]);
+        sc1PStageCardMakeFighterCamera(sSC1PStageCardPlayerFighterDemoDesc.ft_kind, 0);
+        sc1PStageCardMakeFighter(sSC1PStageCardPlayerFighterDemoDesc, 0, &sSC1PStageCardFigatreeHeaps[0]);
         break;
     }
 }
@@ -1743,13 +1743,13 @@ void sc1PStageCardUpdateAnnounce(void)
         50,
         50
     };
-    u32 tic = announce_wait_tics[sSC1PStageCardPlayerFighter.ft_kind] + 1;
+    u32 tic = announce_wait_tics[sSC1PStageCardPlayerFighterDemoDesc.ft_kind] + 1;
     
     if ((sc1PStageCardCheckNotBonusStage(sSC1PStageCardStage) != FALSE) && (sSC1PStageCardStage != nSC1PGameStageBoss))
     {
         if ((func_8000092C() >= 2) && (sSC1PStageCardIsAnnouncedFighterName == FALSE))
         {
-            func_800269C0_275C0(fighter_voices[sSC1PStageCardPlayerFighter.ft_kind]);
+            func_800269C0_275C0(fighter_voices[sSC1PStageCardPlayerFighterDemoDesc.ft_kind]);
 
             sSC1PStageCardIsAnnouncedFighterName = TRUE;
         }
@@ -1790,17 +1790,17 @@ void sc1PStageCardInitVars(void)
 {
     sSC1PStageCardStage = gSceneData.spgame_stage;
 
-    sSC1PStageCardPlayerFighter.ft_kind = gSCManager1PGameBattleState.players[gSceneData.spgame_player].ft_kind;
-    sSC1PStageCardPlayerFighter.costume = gSCManager1PGameBattleState.players[gSceneData.spgame_player].costume;
-    sSC1PStageCardPlayerFighter.shade = gSCManager1PGameBattleState.players[gSceneData.spgame_player].shade;
+    sSC1PStageCardPlayerFighterDemoDesc.ft_kind = gSCManager1PGameBattleState.players[gSceneData.spgame_player].ft_kind;
+    sSC1PStageCardPlayerFighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSceneData.spgame_player].costume;
+    sSC1PStageCardPlayerFighterDemoDesc.shade = gSCManager1PGameBattleState.players[gSceneData.spgame_player].shade;
     
-    sSC1PStageCardAlly1Fighter.ft_kind = gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].ft_kind;
-    sSC1PStageCardAlly1Fighter.costume = gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].costume;
-    sSC1PStageCardAlly1Fighter.shade = gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].shade;
+    sSC1PStageCardAlly1FighterDemoDesc.ft_kind = gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].ft_kind;
+    sSC1PStageCardAlly1FighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].costume;
+    sSC1PStageCardAlly1FighterDemoDesc.shade = gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].shade;
     
-    sSC1PStageCardAlly2Fighter.ft_kind = gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].ft_kind;
-    sSC1PStageCardAlly2Fighter.costume = gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].costume;
-    sSC1PStageCardAlly2Fighter.shade = gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].shade;
+    sSC1PStageCardAlly2FighterDemoDesc.ft_kind = gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].ft_kind;
+    sSC1PStageCardAlly2FighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].costume;
+    sSC1PStageCardAlly2FighterDemoDesc.shade = gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].shade;
     
     sSC1PStageCardIsAnnouncedFighterName = FALSE;
     sSC1PStageCardIsAnnouncedVersus = FALSE;
@@ -1879,18 +1879,18 @@ void sc1PStageCardSetupFighterFiles(s32 stage)
     };
     s32 i;
     
-    ftManagerSetupFilesAllKind(sSC1PStageCardPlayerFighter.ft_kind);
+    ftManagerSetupFilesAllKind(sSC1PStageCardPlayerFighterDemoDesc.ft_kind);
     
     switch (stage)
     {
     case nSC1PGameStageDonkey:
-        ftManagerSetupFilesAllKind(sSC1PStageCardAlly1Fighter.ft_kind);
-        ftManagerSetupFilesAllKind(sSC1PStageCardAlly2Fighter.ft_kind);
+        ftManagerSetupFilesAllKind(sSC1PStageCardAlly1FighterDemoDesc.ft_kind);
+        ftManagerSetupFilesAllKind(sSC1PStageCardAlly2FighterDemoDesc.ft_kind);
         ftManagerSetupFilesAllKind(nFTKindDonkey);
         break;
         
     case nSC1PGameStageMario:
-        ftManagerSetupFilesAllKind(sSC1PStageCardAlly1Fighter.ft_kind);
+        ftManagerSetupFilesAllKind(sSC1PStageCardAlly1FighterDemoDesc.ft_kind);
         ftManagerSetupFilesAllKind(nFTKindMario);
         ftManagerSetupFilesAllKind(nFTKindLuigi);
         break;
@@ -2012,7 +2012,7 @@ syTasklogSetup dSC1PStageCardTasklogSetup =
     },
 
     0,                              // Number of GObjThreads
-    1536,                           // Thread stack size
+    0x600,                          // Thread stack size
     0,                              // Number of thread stacks
     0,                              // ???
     0,                              // Number of GObjProcesses

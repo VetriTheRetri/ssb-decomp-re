@@ -4,15 +4,11 @@
 #include <mv/movie.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <lb/library.h>
 
 extern void syTasklogSetLoadScene();
 extern u32 func_8000092C();
 extern void func_800A26B8();
-
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
-
-
 
 // // // // // // // // // // // //
 //                               //
@@ -152,43 +148,48 @@ u32 dMVOpeningJungleFileIDs[/* */] = { &D_NF_00000025, &D_NF_00000040 };
 syDisplaySetup dMVOpeningJungleDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8018D958
-scRuntimeInfo dMVOpeningJungleTasklogSetup =
+syTasklogSetup dMVOpeningJungleTasklogSetup =
 {
-    0x00000000,
-	func_8000A5E4,
-	func_800A26B8,
-	&ovl51_BSS_END,
-	0x00000000,
-	0x00000001,
-	0x00000002,
-	0x00004000,
-	0x00002000,
-	0x00000000,
-	0x00000000,
-	0x00008000,
-	0x00020000,
-	0x0000C000,
-	mvOpeningJungleFuncLights,
-	update_contdata,
-	0x00000000,
-	0x00000600,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000088,
-	0x00000000,
-	0x800D5CAC,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000088,
-	0x00000000,
-	0x0000006C,
-	0x00000000,
-	0x00000090,
-	mvOpeningJungleFuncStart
+    // Task Logic Buffer Setup
+    {
+        0,                              // ???
+        func_8000A5E4,                  // Update function
+        func_800A26B8,                  // Frame draw function
+        &ovl51_BSS_END,                 // Allocatable memory pool start
+        0,                              // Allocatable memory pool size
+        1,                              // ???
+        2,                              // Number of contexts?
+        0x4000,                         // ???
+        0x2000,                         // ???
+        0,                              // ???
+        0,                              // ???
+        0x8000,                         // ???
+        2,                              // ???
+        0xC000,                         // ???
+        mvOpeningJungleFuncLights,      // Pre-render function
+        update_contdata,                // Controller I/O function
+    },
+
+    0,                                  // Number of GObjThreads
+    0x600,                              // Thread stack size
+    0,                                  // Number of thread stacks
+    0,                                  // ???
+    0,                                  // Number of GObjProcesses
+    0,                                  // Number of GObjs
+    sizeof(GObj),                       // GObj size
+    0,                                  // Number of Object Manager Matrices
+    dLBCommonProcMatrixList,            // Matrix function list
+    NULL,                               // Function for ejecting DObjDynamicStore?
+    0,                                  // Number of AObjs
+    0,                                  // Number of MObjs
+    0,                                  // Number of DObjs
+    sizeof(DObj),                       // DObj size
+    0,                                  // Number of SObjs
+    sizeof(SObj),                       // SObj size
+    0,                                  // Number of Cameras
+    sizeof(Camera),                     // Camera size
+    
+    mvOpeningJungleFuncStart            // Task start function
 };
 
 // // // // // // // // // // // //
@@ -230,13 +231,13 @@ void mvOpeningJungleSetupFiles(void)
 }
 
 // 0x8018D160 - Unused?
-void func_ovl49_8018D160(void)
+void func_ovl51_8018D160(void)
 {
     return;
 }
 
 // 0x8018D168
-void mvOpeningJungleMakeStageViewport(Vec3f unused)
+void mvOpeningJungleMakeGroundViewport(Vec3f unused)
 {
     Camera *cam;
 
@@ -299,7 +300,7 @@ void mvOpeningJungleMakeFighters(void)
 
     spawn_position[0].x += 1100.0F;
 
-    mvOpeningJungleMakeStageViewport(spawn_position[1]);
+    mvOpeningJungleMakeGroundViewport(spawn_position[1]);
 
     gmRumbleMakeActor();
     ftPublicityMakeActor();
@@ -448,6 +449,6 @@ void mvOpeningJungleStartScene(void)
     dMVOpeningJungleDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMVOpeningJungleDisplaySetup);
 
-    dMVOpeningJungleTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl51_BSS_END);
+    dMVOpeningJungleTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl51_BSS_END);
     syTasklogInit(&dMVOpeningJungleTasklogSetup);
 }

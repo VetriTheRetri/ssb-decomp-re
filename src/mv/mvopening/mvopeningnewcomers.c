@@ -1,7 +1,6 @@
 #include <ft/fighter.h>
 #include <mv/movie.h>
 #include <sc/scene.h>
-#include <lb/library.h>
 #include <sys/system_00.h>
 
 extern u32 func_8000092C();

@@ -3,7 +3,6 @@
 #include <gm/gmsound.h>
 #include <sys/system_00.h>
 #include <sys/thread6.h>
-#include <lb/library.h>
 
 extern void* func_800269C0_275C0(u16);
 extern void func_80007080(void*, f32, f32, f32, f32);
@@ -14,11 +13,20 @@ extern void func_80007080(void*, f32, f32, f32, f32);
 //                               //
 // // // // // // // // // // // //
 
-#define mnBackupClearCheckGetOptionButtonInput(is_button, mask) mnCommonCheckGetOptionButtonInput(sMNBackupClearOptionChangeWait, is_button, mask)
-#define mnBackupClearCheckGetOptionStickInputUD(stick_range, min, b) mnCommonCheckGetOptionStickInputUD(sMNBackupClearOptionChangeWait, stick_range, min, b)
-#define mnBackupClearCheckGetOptionStickInputLR(stick_range, min, b) mnCommonCheckGetOptionStickInputLR(sMNBackupClearOptionChangeWait, stick_range, min, b)
-#define mnBackupClearSetOptionChangeWaitP(is_button, stick_range, div) mnCommonSetOptionChangeWaitP(sMNBackupClearOptionChangeWait, is_button, stick_range, div)
-#define mnBackupClearSetOptionChangeWaitN(is_button, stick_range, div) mnCommonSetOptionChangeWaitN(sMNBackupClearOptionChangeWait, is_button, stick_range, div)
+#define mnBackupClearCheckGetOptionButtonInput(is_button, mask) \
+mnCommonCheckGetOptionButtonInput(sMNBackupClearOptionChangeWait, is_button, mask)
+
+#define mnBackupClearCheckGetOptionStickInputUD(stick_range, min, b) \
+mnCommonCheckGetOptionStickInputUD(sMNBackupClearOptionChangeWait, stick_range, min, b)
+
+#define mnBackupClearCheckGetOptionStickInputLR(stick_range, min, b) \
+mnCommonCheckGetOptionStickInputLR(sMNBackupClearOptionChangeWait, stick_range, min, b)
+
+#define mnBackupClearSetOptionChangeWaitP(is_button, stick_range, div) \
+mnCommonSetOptionChangeWaitP(sMNBackupClearOptionChangeWait, is_button, stick_range, div)
+
+#define mnBackupClearSetOptionChangeWaitN(is_button, stick_range, div) \
+mnCommonSetOptionChangeWaitN(sMNBackupClearOptionChangeWait, is_button, stick_range, div)
 
 // // // // // // // // // // // //
 //                               //

@@ -2,7 +2,6 @@
 #include <sc/scene.h>
 #include <sys/system_00.h>
 #include <sys/thread6.h>
-#include <lb/library.h>
 
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 

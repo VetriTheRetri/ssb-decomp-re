@@ -9,7 +9,7 @@
 extern intptr_t lMVOpeningJungleCamAnimJoint;                    // 0x00000000
 
 extern void mvOpeningJungleSetupFiles(void);
-extern void mvOpeningJungleMakeStageViewport(Vec3f unused);
+extern void mvOpeningJungleMakeGroundViewport(Vec3f unused);
 extern void mvOpeningJungleMakeFighters(void);
 extern void mvOpeningJungleFuncRun(GObj *gobj);
 extern void mvOpeningJungleFuncStart(void);

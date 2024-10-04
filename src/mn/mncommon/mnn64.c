@@ -1,8 +1,7 @@
 #include <mn/menu.h>
 #include <sc/scene.h> // includes sys/obj.h
+#include <sys/thread6.h>
 #include <sys/system_00.h>
-#include <lb/library.h>
-
 
 extern void func_80007080(void*, f32, f32, f32, f32);
 
@@ -13,7 +12,6 @@ extern void func_80007080(void*, f32, f32, f32, f32);
 // // // // // // // // // // // //
 
 extern uintptr_t D_NF_000000C2;
-extern intptr_t lMNN64LogoSprite;			// 0x000073C0
 
 // // // // // // // // // // // //
 //                               //
@@ -60,43 +58,48 @@ Gfx dMNN64DisplayList[/* */] =
 syDisplaySetup dMNN64DisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80131FB4
-scRuntimeInfo dMNN64TasklogSetup =
+syTasklogSetup dMNN64TasklogSetup =
 {
-	0x00000000,
-	func_8000A5E4,
-	func_8000A340,
-	&ovl58_BSS_END,
-	0x00000000,
-	0x00000001,
-	0x00000002,
-	0x00002800,
-	0x00002800,
-	0x00000000,
-	0x00000000,
-	0x00002800,
-	0x00020000,
-	0x0000c000,
-	mnN64FuncLights,
-	0x80004310,
-	0x00000000,
-	0x00000600,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000088,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000088,
-	0x00000000,
-	0x0000006c,
-	0x00000000,
-	0x00000090,
-	mnN64FuncStart
+    // Task Logic Buffer Setup
+    {
+        0,                          // ???
+        func_8000A5E4,              // Update function
+        func_8000A340,              // Frame draw function
+        &ovl58_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        0x2800,                     // ???
+        0x2800,                     // ???
+        0,                          // ???
+        0,                          // ???
+        0x2800,                     // ???
+        2,                          // ???
+        0xC000,                     // ???
+        mnN64FuncLights,         	// Pre-render function
+        update_contdata,            // Controller I/O function
+    },
+
+    0,                              // Number of GObjThreads
+    1536,                           // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of Object Manager Matrices
+    NULL,                           // Matrix function list
+    NULL,                           // Function for ejecting DObjDynamicStore?
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(Camera),                 // Camera size
+    
+    mnN64FuncStart               	// Task start function
 };
 
 // // // // // // // // // // // //
@@ -271,6 +274,6 @@ void mnN64StartScene(void)
 	dMNN64DisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
 	syDisplayInit(&dMNN64DisplaySetup);
 
-	dMNN64TasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl58_BSS_END);
+	dMNN64TasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl58_BSS_END);
 	syTasklogInit(&dMNN64TasklogSetup);
 }

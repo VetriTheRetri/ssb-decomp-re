@@ -181,7 +181,7 @@ struct GObj
     u8 frame_draw_last;                         // Last frame drawn?
     u8 obj_kind;                        // Determines kind of *obj: 0 = NULL, 1 = DObj, 2 = SObj, 3 = Camera
     u32 link_order;
-    void (*proc_run)(GObj*);
+    void (*func_run)(GObj*);
     GObjProcess *gobjproc_head;
 
     union

@@ -52,7 +52,7 @@ extern void gmStaffrollUpdateCameraAt(GObj *gobj);
 extern void gmStaffrollMakeCamera(void);
 extern void gmStaffrollFuncStart(void);
 extern void gmStaffrollFuncLights(Gfx **dls);
-extern void func_ovl59_80135118(void);
+extern void gmStaffrollFuncDraw(void);
 extern void gmStaffrollStartScene(void);
 
 #endif

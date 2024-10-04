@@ -461,7 +461,7 @@ void mvEndingInitVars(void)
 }
 
 // 0x801327C8
-void mvEndingProcRun(GObj *gobj)
+void mvEndingFuncRun(GObj *gobj)
 {
     sMVEndingTotalTimeTics++;
 
@@ -531,7 +531,7 @@ void mvEndingFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mvEndingProcRun, 0, GOBJ_LINKORDER_DEFAULT);
+    gcMakeGObjSPAfter(0, mvEndingFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF));
     efAllocInitParticleBank();
     mvEndingInitVars();

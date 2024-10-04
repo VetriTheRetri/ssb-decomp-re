@@ -226,7 +226,7 @@ extern void efManagerHaveStructProcUpdate(GObj *effect_gobj);
 extern void efManagerNoEjectProcUpdate(GObj *effect_gobj);
 extern void efManagerSortZNeg(DObj *dobj);
 extern void efManagerSortZPos(DObj *dobj);
-extern void efManagerProcRun(GObj *effect_gobj);
+extern void efManagerFuncRun(GObj *effect_gobj);
 extern GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return);
 extern GObj* efManagerMakeEffectNoForce(efCreateDesc *effect_desc);
 extern GObj* efManagerMakeEffectForce(efCreateDesc *effect_desc);

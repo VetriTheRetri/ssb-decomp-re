@@ -1928,7 +1928,7 @@ void func_ovl2_800FD70C(void)
 }
 
 // 0x800FD714
-void efManagerProcRun(GObj *effect_gobj)
+void efManagerFuncRun(GObj *effect_gobj)
 {
     efStruct *ep = efGetStruct(effect_gobj);
 
@@ -1941,7 +1941,7 @@ void efManagerProcRun(GObj *effect_gobj)
     }
     else gcAddGObjProcess(effect_gobj, efManagerNoStructProcUpdate, nOMObjProcessKindProc, 3);
 
-    effect_gobj->proc_run = NULL;
+    effect_gobj->func_run = NULL;
 }
 
 // 0x800FD778
@@ -1975,7 +1975,7 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
     }
     else ep = NULL;
 
-    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, efManagerProcRun, (effect_flags & EFFECT_FLAG_SPECIALLINK) ? nOMObjCommonLinkIDSpecialEffect : nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, efManagerFuncRun, (effect_flags & EFFECT_FLAG_SPECIALLINK) ? nOMObjCommonLinkIDSpecialEffect : nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -3823,7 +3823,7 @@ void efManagerQuakeAddProcUpdate(GObj *effect_gobj)
 
     gcAddGObjProcess(effect_gobj, efManagerQuakeProcUpdate, 1, ep->effect_vars.quake.priority);
 
-    effect_gobj->proc_run = NULL;
+    effect_gobj->func_run = NULL;
 }
 
 // 0x801008F4

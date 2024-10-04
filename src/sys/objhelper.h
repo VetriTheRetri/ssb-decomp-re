@@ -35,7 +35,7 @@ extern void gcEjectAll(void);
 extern GObj* gcMakeModelGObj
 (
     u32 id,
-    void (*proc_run)(GObj*),
+    void (*func_run)(GObj*),
     s32 link,
     u32 link_order,
     void (*proc_display)(GObj*),
@@ -51,7 +51,7 @@ extern GObj* gcMakeModelGObj
 extern GObj* gcMakeSpriteGObj
 (
     u32 id,
-    void (*proc_run)(GObj*),
+    void (*func_run)(GObj*),
     s32 link,
     u32 link_order,
     void (*proc_display)(GObj*),
@@ -66,7 +66,7 @@ extern GObj* gcMakeSpriteGObj
 GObj* gcMakeCameraGObj
 (
     u32 id,
-    void (*proc_run)(GObj*),
+    void (*func_run)(GObj*),
     s32 link,
     u32 link_order,
     void (*proc_display)(GObj*),

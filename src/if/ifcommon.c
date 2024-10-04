@@ -1701,7 +1701,7 @@ GObj* ifCommonPlayerArrowsMakeInterface(void (*proc_display)(GObj*), void (*proc
 }
 
 // 0x8011171C
-void ifCommonPlayerArrowsProcRun(GObj *interface_gobj)
+void ifCommonPlayerArrowsFuncRun(GObj *interface_gobj)
 {
     s32 lr_right = FALSE;
     s32 lr_left = FALSE;
@@ -1773,7 +1773,7 @@ void ifCommonPlayerArrowsInitInterface(void)
 
     gcAddGObjDisplay
     (
-        gcMakeGObjSPAfter(nOMObjCommonKindInterface, ifCommonPlayerArrowsProcRun, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT), 
+        gcMakeGObjSPAfter(nOMObjCommonKindInterface, ifCommonPlayerArrowsFuncRun, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT), 
         ifCommonPlayerArrowsMainProcDisplay,
         8, 
         GOBJ_DLLINKORDER_DEFAULT, 
@@ -2463,7 +2463,7 @@ SObj* ifCommonTimerMakeDigits(void)
 }
 
 // 0x80113104
-void ifCommonTimerProcRun(GObj *interface_gobj)
+void ifCommonTimerFuncRun(GObj *interface_gobj)
 {
     u32 time_update;
     u32 temp;
@@ -2530,7 +2530,7 @@ void ifCommonTimerMakeInterface(void (*proc)(void))
     sIFCommonTimerIsStarted = FALSE;
 
     ifCommonTimerInitAnnouncedSeconds();
-    ifSetProc(gcMakeGObjSPAfter(nOMObjCommonKindInterface, ifCommonTimerProcRun, nOMObjCommonLinkIDInterfaceActor, GOBJ_LINKORDER_DEFAULT), proc);
+    ifSetProc(gcMakeGObjSPAfter(nOMObjCommonKindInterface, ifCommonTimerFuncRun, nOMObjCommonLinkIDInterfaceActor, GOBJ_LINKORDER_DEFAULT), proc);
 }
 
 // 0x8011341C

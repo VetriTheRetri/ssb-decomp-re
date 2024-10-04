@@ -39,7 +39,7 @@ extern void mvOpeningClashMakeVoidViewport(void);
 extern void mvOpeningClashWallpaperProcDisplay(GObj*);
 extern void mvOpeningClashMakeWallpaperViewport(void);
 extern void mvOpeningClashInitTotalTimeTics(void);
-extern void mvOpeningClashProcRun(GObj *gobj);
+extern void mvOpeningClashFuncRun(GObj *gobj);
 extern void mvOpeningClashFuncStart(void);
 extern void mvOpeningClashStartScene(void);
 

@@ -793,7 +793,7 @@ void scManagerProcPrintGObjStatus()
 			syErrorDebugPrintf("BF\n");
 			if (gOMObjCurrentCommon != NULL)
 			{
-				syErrorDebugPrintf("addr:%x\n", gOMObjCurrentCommon->proc_run);
+				syErrorDebugPrintf("addr:%x\n", gOMObjCurrentCommon->func_run);
 				scManagerInspectGObj(gOMObjCurrentCommon);
 			}
 			break;

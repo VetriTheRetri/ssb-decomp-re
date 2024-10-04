@@ -1817,7 +1817,7 @@ void func_ovl24_801348EC(void)
 }
 
 // 0x801348F4
-void sc1PStageCardProcRun(GObj *gobj)
+void sc1PStageCardFuncRun(GObj *gobj)
 {
     sc1PStageCardTotalTimeTics++;
     
@@ -1941,7 +1941,7 @@ void sc1PStageCardFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, sc1PStageCardProcRun, 0, GOBJ_LINKORDER_DEFAULT);
+    gcMakeGObjSPAfter(0, sc1PStageCardFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 3, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     sc1PStageCardInitVars();
     efAllocInitParticleBank();

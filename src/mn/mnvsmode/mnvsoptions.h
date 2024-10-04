@@ -49,7 +49,7 @@ extern void mnVSOptionsMakeDecalCamera(void);
 extern void mnVSOptionsInitVars(void);
 extern void mnVSOptionsSetAllSettings(void);
 extern void mnVSOptionsSetHandicapSettings(void);
-extern void mnVSOptionsProcRun(GObj *gobj);
+extern void mnVSOptionsFuncRun(GObj *gobj);
 extern void mnVSOptionsFuncStart(void);
 extern void mnVSOptionsStartScene(void);
 

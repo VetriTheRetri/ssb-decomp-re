@@ -1057,7 +1057,7 @@ void mnVSOptionsSetHandicapSettings(void)
 }
 
 // 0x80133A40
-void mnVSOptionsProcRun(GObj *gobj)
+void mnVSOptionsFuncRun(GObj *gobj)
 {
     s32 unused;
 
@@ -1387,7 +1387,7 @@ void mnVSOptionsFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mnVSOptionsProcRun, 0, GOBJ_LINKORDER_DEFAULT);
+    gcMakeGObjSPAfter(0, mnVSOptionsFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
     
     mnVSOptionsInitVars();

@@ -70,7 +70,7 @@ s32 sMNDataFirstAvailableOption;
 s32 sMNDataLastAvailableOption;
 
 // 0x80133088
-sb32 sMNDataIsSoundTestUnlocked;
+sb32 sMNDataIsHaveSoundTest;
 
 // 0x8013308C
 sb32 sMNDataIsProceedScene;
@@ -235,7 +235,7 @@ void mnDataMakeCharacters(void)
     s32 pos_x;
     s32 pos_y;
 
-    if (sMNDataIsSoundTestUnlocked != FALSE)
+    if (sMNDataIsHaveSoundTest != FALSE)
     {
         pos_x = 133;
         pos_y = 42;
@@ -275,7 +275,7 @@ void mnDataMakeVSRecord(void)
     s32 pos_x;
     s32 pos_y;
 
-    if (sMNDataIsSoundTestUnlocked != FALSE)
+    if (sMNDataIsHaveSoundTest != FALSE)
     {
         pos_x = 101;
         pos_y = 89;
@@ -593,12 +593,12 @@ void mnDataInitVars(void)
     if (mnDataCheckSoundTestUnlocked() != FALSE)
     {
         sMNDataLastAvailableOption = nMNDataOptionSoundTest;
-        sMNDataIsSoundTestUnlocked = TRUE;
+        sMNDataIsHaveSoundTest = TRUE;
     }
     else
     {
         sMNDataLastAvailableOption = nMNDataOptionVSRecord;
-        sMNDataIsSoundTestUnlocked = FALSE;
+        sMNDataIsHaveSoundTest = FALSE;
     }
     sMNDataOptionChangeWait = 0;
     sMNDataTotalTimeTics = 0;
@@ -607,7 +607,7 @@ void mnDataInitVars(void)
 }
 
 // 0x80132874
-void mnDataProcRun(GObj *gobj)
+void mnDataFuncRun(GObj *gobj)
 {
     GObj *select_gobj;
     s32 stick_range;
@@ -787,7 +787,7 @@ void mnDataFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mnDataProcRun, 0, GOBJ_LINKORDER_DEFAULT);
+    gcMakeGObjSPAfter(0, mnDataFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 
     mnDataInitVars();
@@ -800,7 +800,7 @@ void mnDataFuncStart(void)
     mnDataMakeCharacters();
     mnDataMakeVSRecord();
 
-    if (sMNDataIsSoundTestUnlocked != FALSE)
+    if (sMNDataIsHaveSoundTest != FALSE)
     {
         mnDataMakeSoundTest();
     }

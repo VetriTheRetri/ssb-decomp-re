@@ -364,7 +364,7 @@ void mvOpeningNewcomersInitVars(void)
 }
 
 // 0x801323A4
-void mvOpeningNewcomersProcRun(GObj *gobj)
+void mvOpeningNewcomersFuncRun(GObj *gobj)
 {
     s32 unused;
 
@@ -436,7 +436,7 @@ void mvOpeningNewcomersFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mvOpeningNewcomersProcRun, 0, GOBJ_LINKORDER_DEFAULT);
+    gcMakeGObjSPAfter(0, mvOpeningNewcomersFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
 
     gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF));
 

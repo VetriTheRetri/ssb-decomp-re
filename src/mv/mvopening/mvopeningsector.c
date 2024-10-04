@@ -487,7 +487,7 @@ void mvOpeningSectorInitTotalTimeTics(void)
 }
 
 // 0x8013264C
-void mvOpeningSectorProcRun(GObj *gobj)
+void mvOpeningSectorFuncRun(GObj *gobj)
 {
     sMVOpeningSectorTotalTimeTics++;
 
@@ -557,7 +557,7 @@ void mvOpeningSectorFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mvOpeningSectorProcRun, 0, GOBJ_LINKORDER_DEFAULT);
+    gcMakeGObjSPAfter(0, mvOpeningSectorFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
 
     gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 

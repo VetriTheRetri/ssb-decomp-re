@@ -65,7 +65,7 @@ extern void sc1PContinueMakeLink30Camera(void);
 extern void sc1PContinueMakeLink28Camera(void);
 extern void sc1PContinueInitVars(void);
 extern void sc1PContinueUnused0x80133990(void);
-extern void sc1PContinueProcRun(GObj *gobj);
+extern void sc1PContinueFuncRun(GObj *gobj);
 extern void sc1PContinueFuncStart(void);
 extern void sc1PContinueStartScene(void);
 

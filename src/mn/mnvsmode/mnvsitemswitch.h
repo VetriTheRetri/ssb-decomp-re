@@ -43,7 +43,7 @@ extern void mnVSItemSwitchInitVars(void);
 extern sb32 mnVSItemSwitchCheckAllTogglesOff(void);
 extern void mnVSItemSwitchSetItemToggles(void);
 extern void mnVSItemSwitchUpdateOption(s32 option_id, s32 rate);
-extern void mnVSItemSwitchProcRun(GObj *gobj);
+extern void mnVSItemSwitchFuncRun(GObj *gobj);
 extern void mnVSItemSwitchFuncStart(void);
 extern void mnVSItemSwitchStartScene(void);
 

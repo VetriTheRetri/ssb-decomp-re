@@ -58,7 +58,7 @@ extern intptr_t lMNCongraNessTopSprite;			// 0x00020718
 
 extern sb32 mnCongraCheckPlayerControllerConnected(s32 player);
 extern s32 mnCongraGetPlayerTapButtons(u32 buttons);
-extern void mnCongraActorProcRun(GObj *gobj);
+extern void mnCongraActorFuncRun(GObj *gobj);
 extern void mnCongraFuncStart(void);
 extern void mnCongraUpdateScene(void);
 extern void mnCongraFuncLights(Gfx **dls);

@@ -26,7 +26,7 @@ extern void mvOpeningStandoffMakeLightningFlashViewport(void);
 extern void mvOpeningStandoffMakeMainViewport(void);
 extern void mvOpeningStandoffMakeWallpaperViewport(void);
 extern void mvOpeningStandoffInitTotalTimeTics(void);
-extern void mvOpeningStandoffProcRun(GObj *gobj);
+extern void mvOpeningStandoffFuncRun(GObj *gobj);
 extern void mvOpeningStandoffFuncStart(void);
 extern void mvOpeningStandoffStartScene(void);
 

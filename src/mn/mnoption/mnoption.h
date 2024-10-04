@@ -31,7 +31,7 @@ extern void mnOptionMakeLabelsCamera(void);
 extern void mnOptionMakeDecalsCamera(void);
 extern void mnOptionInitVars(void);
 extern void mnOptionWriteBackup(void);
-extern void mnOptionProcRun(GObj *gobj);
+extern void mnOptionFuncRun(GObj *gobj);
 extern void mnOptionFuncStart(void);
 extern void mnOptionStartScene(void);
 

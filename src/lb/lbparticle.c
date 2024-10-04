@@ -258,7 +258,7 @@ GObj* lbParticleAllocStructs(s32 num)
 	{
 		return NULL;
 	}
-	return gcMakeGObjSPAfter(-6, lbParticleStructProcRun, 0, GOBJ_LINKORDER_DEFAULT);
+	return gcMakeGObjSPAfter(-6, lbParticleStructFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
 }
 
 // 0x800CE4E4
@@ -1410,7 +1410,7 @@ lbParticle* lbParticleUpdateStruct(lbParticle *this_ptcl, lbParticle *other_ptcl
 #endif
 
 // 0x800D0C74
-void lbParticleStructProcRun(GObj *gobj)
+void lbParticleStructFuncRun(GObj *gobj)
 {
 	u32 flags = gobj->flags;
 	s32 i;
@@ -2160,7 +2160,7 @@ GObj* lbParticleAllocGenerators(s32 num)
 	gLBParticleGeneratorsUsedNum = 0;
 	D_ovl0_800D6450 = 0;
 
-	return gcMakeGObjSPAfter(-7, lbParticleGeneratorProcRun, 0, GOBJ_LINKORDER_DEFAULT);
+	return gcMakeGObjSPAfter(-7, lbParticleGeneratorFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
 }
 
 // 0x800D27F8
@@ -2270,7 +2270,7 @@ void lbParticleGetPosVelDObj(Vec3f *pos, Vec3f *vel, DObj *dobj)
  */
 
 // 0x800D2C4C
-void lbParticleGeneratorProcRun(GObj *gobj)
+void lbParticleGeneratorFuncRun(GObj *gobj)
 {
     lbGenerator *gtor, *next_gtor;
     f32 pos_random;
@@ -2590,7 +2590,7 @@ void lbParticleGeneratorProcRun(GObj *gobj)
     
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/lb/lbparticle/lbParticleGeneratorProcRun.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/lb/lbparticle/lbParticleGeneratorFuncRun.s")
 #endif
 
 // 0x800D353C

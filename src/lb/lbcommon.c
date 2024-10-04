@@ -2857,7 +2857,7 @@ SObj* lbCommonMakeSObjForGObj(GObj *gobj, Sprite *sprite)
 GObj* lbCommonMakeSpriteGObj
 (
     u32 id,
-    void (*proc_run)(GObj*),
+    void (*func_run)(GObj*),
     s32 link,
     u32 link_order,
     void (*proc_display)(GObj*),
@@ -2870,7 +2870,7 @@ GObj* lbCommonMakeSpriteGObj
     u32 gobjproc_priority
 )
 {
-    GObj *gobj = gcMakeGObjSPAfter(id, proc_run, link, link_order);
+    GObj *gobj = gcMakeGObjSPAfter(id, func_run, link, link_order);
         
     if (gobj == NULL)
     {

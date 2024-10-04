@@ -35,7 +35,7 @@ extern void mnModeSelectMakeDecalsCamera(void);
 extern void mnModeSelectMakeOptions(void);
 extern void mnModeSelectEjectOptions(void);
 extern void mnModeSelectInitVars(void);
-extern void mnModeSelectProcRun(GObj *gobj);
+extern void mnModeSelectFuncRun(GObj *gobj);
 extern void mnModeSelectFuncStart(void);
 extern void mnModeSelectStartScene(void);
 

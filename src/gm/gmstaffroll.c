@@ -706,6 +706,7 @@ sb32 gmStaffrollCheckUnpause(void)
 		while (job_gobj != NULL)
 		{
 			gcResumeProcessAll(job_gobj);
+
 			job_gobj = job_gobj->link_next;
 		}
 		var_v1 = FALSE;
@@ -847,35 +848,35 @@ void func_ovl59_8013202C(GObj *arg0)
 }
 
 // 0x801320F4
-s32 gmStaffrollGetLockOnPositionX(s32 posx)
+s32 gmStaffrollGetLockOnPositionX(s32 pos_x)
 {
-	s32 boundx = posx;
+	s32 bound_x = pos_x;
 
-	if (posx < 20)
+	if (pos_x < 20)
 	{
-		boundx = 20;
+		bound_x = 20;
 	}
-	if (posx > 620)
+	if (pos_x > 620)
 	{
-		boundx = 620;
+		bound_x = 620;
 	}
-	return boundx;
+	return bound_x;
 }
 
 // 0x8013211C
-s32 gmStaffrollGetLockOnPositionY(s32 posy)
+s32 gmStaffrollGetLockOnPositionY(s32 pos_y)
 {
-	s32 boundy = posy;
+	s32 bound_y = pos_y;
 
-	if (posy < 20)
+	if (pos_y < 20)
 	{
-		boundy = 20;
+		bound_y = 20;
 	}
-	if (posy > 460)
+	if (pos_y > 460)
 	{
-		boundy = 460;
+		bound_y = 460;
 	}
-	return boundy;
+	return bound_y;
 }
 
 // 0x80132144
@@ -2293,7 +2294,7 @@ void gmStaffrollFuncLights(Gfx **dls)
 }
 
 // 0x80135118
-void func_ovl59_80135118(void)
+void gmStaffrollFuncDraw(void)
 {
 	func_8000A340();
 
@@ -2332,43 +2333,48 @@ syDisplaySetup dGMStaffrollDisplaySetup =
 };
 
 // 0x8013A724
-scRuntimeInfo dGMStaffrollTasklogSetup =
+syTasklogSetup dGMStaffrollTasklogSetup =
 {
-	0x00000000,
-	func_8000A5E4,
-	func_ovl59_80135118,
-	&ovl59_BSS_END,
-	0x00000000,
-	0x00000001,
-	0x00000002,
-	0x00004000,
-	0x00000400,
-	0x00000000,
-	0x00000000,
-	0x00001000,
-	0x00020000,
-	0x00001000,
-	gmStaffrollFuncLights,
-	0x80004310,
-	0x00000010,
-	0x00000600,
-	0x00000010,
-	0x00000000,
-	0x00000040,
-	0x00000040,
-	0x00000088,
-	0x00000100,
-	0x00000000,
-	0x00000000,
-	0x00000020,
-	0x00000010,
-	0x00000400,
-	0x00000088,
-	0x00000100,
-	0x0000006C,
-	0x00000008,
-	0x00000090,
-	gmStaffrollFuncStart,
+    // Task Logic Buffer Setup
+    {
+        0,                          // ???
+        func_8000A5E4,              // Update function
+        gmStaffrollFuncDraw,        // Frame draw function
+        &ovl59_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        0x4000,                     // ???
+        0x400,                      // ???
+        0,                          // ???
+        0,                          // ???
+        0x1000,                     // ???
+        2,                          // ???
+        0x1000,                     // ???
+        gmStaffrollFuncLights,     	// Pre-render function
+        update_contdata,            // Controller I/O function
+    },
+
+    16,                             // Number of GObjThreads
+    1536,                           // Thread stack size
+    16,                             // Number of thread stacks
+    0,                              // ???
+    64,                             // Number of GObjProcesses
+    64,                             // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    256,                            // Number of Object Manager Matrices
+    NULL,                           // Matrix function list
+    NULL,                           // Function for ejecting DObjDynamicStore?
+    32,                             // Number of AObjs
+    16,                             // Number of MObjs
+    1024,                           // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    256,                            // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    8,                              // Number of Cameras
+    sizeof(Camera),                 // Camera size
+    
+    gmStaffrollFuncStart            // Task start function
 };
 
 // 0x801351B8
@@ -2392,7 +2398,7 @@ void gmStaffrollStartScene(void)
 	dGMStaffrollDisplaySetup.zbuffer = syDisplayGetZBuffer(12800);
 	syDisplayInit(&dGMStaffrollDisplaySetup);
 
-	dGMStaffrollTasklogSetup.arena_size = (size_t) ((uintptr_t)SYDISPLAY_DEFINE_FRAMEBUF_ADDR(640, 480, 0, 0, u16, 0) - (uintptr_t)&ovl59_BSS_END);
+	dGMStaffrollTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)SYDISPLAY_DEFINE_FRAMEBUF_ADDR(640, 480, 0, 0, u16, 0) - (uintptr_t)&ovl59_BSS_END);
 	syTasklogInit(&dGMStaffrollTasklogSetup);
 
 	arena16 = gSCSubsysFramebuffer0;

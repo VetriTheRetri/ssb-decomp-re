@@ -34,7 +34,7 @@ extern void mvOpeningNewcomersMakeHide(void);
 extern void mvOpeningNewcomersMakeCharacterViewport(void);
 extern void mvOpeningNewcomersMakeHideViewport(void);
 extern void mvOpeningNewcomersInitVars(void);
-extern void mvOpeningNewcomersProcRun(GObj *gobj);
+extern void mvOpeningNewcomersFuncRun(GObj *gobj);
 extern void mvOpeningNewcomersFuncStart(void);
 extern void mvOpeningNewcomersStartScene(void);
 

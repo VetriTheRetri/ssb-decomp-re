@@ -144,7 +144,7 @@ extern void sc1PStageCardMakePicturesCamera(void);
 extern s32 sc1PStageCardGetFighterAllocsNum(s32 stage);
 extern void sc1PStageCardUpdateAnnounce(void);
 extern void sc1PStageCardInitVars(void);
-extern void sc1PStageCardProcRun(GObj *gobj);
+extern void sc1PStageCardFuncRun(GObj *gobj);
 extern void sc1PStageCardSetupFighterFiles(s32 stage);
 extern void sc1PStageCardFuncStart(void);
 extern void sc1PStageCardStartScene(void);

@@ -24,7 +24,7 @@ extern void mvOpeningYamabukiMakeMBall(void);
 extern void mvOpeningYamabukiMakeMainViewport(void);
 extern void mvOpeningYamabukiMakeWallpaperViewport(void);
 extern void mvOpeningYamabukiInitTotalTimeTics(void);
-extern void mvOpeningYamabukiProcRun(GObj *gobj);
+extern void mvOpeningYamabukiFuncRun(GObj *gobj);
 extern void mvOpeningYamabukiFuncStart(void);
 extern void mvOpeningYamabukiStartScene(void);
 

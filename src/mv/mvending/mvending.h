@@ -25,7 +25,7 @@ extern void mvEndingEjectRoomGObjs(void);
 extern void mvEndingSetupOperatorCamera(GObj *gobj);
 extern void mvEndingMakeMainCameras(void);
 extern void mvEndingInitVars(void);
-extern void mvEndingProcRun(GObj *gobj);
+extern void mvEndingFuncRun(GObj *gobj);
 extern void mvEndingFuncStart(void);
 extern void mvEndingStartScene(void);
 

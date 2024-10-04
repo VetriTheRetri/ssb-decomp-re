@@ -33,7 +33,7 @@ extern void scAutoDemoSetMagnifyDisplayOn(void);
 extern void scAutoDemoExit(void);
 extern void scAutoDemoChangeFocus(void);
 extern void scAutoDemoUpdateFocus(void);
-extern void scAutoDemoProcRun(GObj *gobj);
+extern void scAutoDemoFuncRun(GObj *gobj);
 extern GObj* scAutoDemoMakeFocusInterface(void);
 extern void scAutoDemoGetPlayerSpawnPosition(s32 mapobj_kind, Vec3f *mapobj_pos);
 extern s32 scAutoDemoGetShuffledVariation(u16 flag);

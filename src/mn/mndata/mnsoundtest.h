@@ -9,7 +9,7 @@
 extern void mnSoundTestUpdateOptionColors(void);
 extern void mnSoundTestUpdateControllerInputs(void);
 extern void mnSoundTestUpdateFunctions(void);
-extern void mnSoundTestProcRun(GObj *gobj);
+extern void mnSoundTestFuncRun(GObj *gobj);
 extern void mnSoundTestSetupFiles(void);
 extern SObj* mnSoundTestMakeHeaderSObjs(void);
 extern void mnSoundTestOptionThreadUpdate(GObj *gobj);

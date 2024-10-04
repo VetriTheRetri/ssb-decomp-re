@@ -33,7 +33,7 @@ extern void mvOpeningSectorMakeMainViewport(void);
 extern void mvOpeningSectorMakeWallpaperViewport(void);
 extern void mvOpeningSectorMakeCockpitViewport(void);
 extern void mvOpeningSectorInitTotalTimeTics(void);
-extern void mvOpeningSectorProcRun(GObj *gobj);
+extern void mvOpeningSectorFuncRun(GObj *gobj);
 extern void mvOpeningSectorFuncStart(void);
 extern void mvOpeningSectorStartScene(void);
 

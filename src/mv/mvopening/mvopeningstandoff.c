@@ -520,7 +520,7 @@ void mvOpeningStandoffInitTotalTimeTics(void)
 }
 
 // 0x801325DC
-void mvOpeningStandoffProcRun(GObj *gobj)
+void mvOpeningStandoffFuncRun(GObj *gobj)
 {
     sMVOpeningStandoffTotalTimeTics++;
 
@@ -586,7 +586,7 @@ void mvOpeningStandoffFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mvOpeningStandoffProcRun, 0, GOBJ_LINKORDER_DEFAULT);
+    gcMakeGObjSPAfter(0, mvOpeningStandoffFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
 
     gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 

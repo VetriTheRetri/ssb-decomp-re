@@ -31,7 +31,7 @@ extern void mn1PModeMakeOptionsCamera(void);
 extern void mn1PModeMakeLabelsCamera(void);
 extern void mn1PModeMakeDecalsCamera(void);
 extern void mn1PModeInitVars(void);
-extern void mn1PModeProcRun(GObj *gobj);
+extern void mn1PModeFuncRun(GObj *gobj);
 extern void mn1PModeFuncStart(void);
 extern void mn1PModeStartScene(void);
 

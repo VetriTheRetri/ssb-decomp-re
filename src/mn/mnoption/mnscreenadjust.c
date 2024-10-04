@@ -257,7 +257,7 @@ void mnScreenAdjustBackupOffsets(void)
 }
 
 // 0x8013209C
-void mnScreenAdjustProcRun(GObj *gobj)
+void mnScreenAdjustFuncRun(GObj *gobj)
 {
     s32 stick_range;
 
@@ -438,7 +438,7 @@ void mnScreenAdjustFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mnScreenAdjustProcRun, 0, GOBJ_LINKORDER_DEFAULT);
+    gcMakeGObjSPAfter(0, mnScreenAdjustFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     mnScreenAdjustInitVars();
     mnScreenAdjustMakeFrameCamera();

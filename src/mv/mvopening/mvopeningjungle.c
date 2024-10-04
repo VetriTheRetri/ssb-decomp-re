@@ -372,7 +372,7 @@ void mvOpeningJungleMakeFighters(void)
 }
 
 // 0x8018D5E4
-void mvOpeningJungleProcRun(GObj *gobj)
+void mvOpeningJungleFuncRun(GObj *gobj)
 {
     sMVOpeningJungleTotalTimeTics++;
 
@@ -415,7 +415,7 @@ void mvOpeningJungleFuncStart(void)
     gBattleState->players[1].pl_kind = nFTPlayerKindKey;
 
     mvOpeningJungleSetupFiles();
-    gcMakeGObjSPAfter(nOMObjCommonKindMovie, mvOpeningJungleProcRun, 13, GOBJ_LINKORDER_DEFAULT);
+    gcMakeGObjSPAfter(nOMObjCommonKindMovie, mvOpeningJungleFuncRun, 13, GOBJ_LINKORDER_DEFAULT);
     gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 3, 0xFF);
     efAllocInitParticleBank();
     ftParamInitGame();

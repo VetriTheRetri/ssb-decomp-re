@@ -66,43 +66,48 @@ Gfx dSC1PChallengerDisplayList[/* */] =
 syDisplaySetup dSC1PChallengerDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x801323D4
-scRuntimeInfo dSC1PChallengerTasklogSetup =
+syTasklogSetup dSC1PChallengerTasklogSetup =
 {
-    0x00000000,
-    func_8000A5E4,
-    func_8000A340,
-    &ovl23_BSS_END,
-    0,
-    1,
-    2,
-    0x4E20,
-    0x400,
-    0,
-    0,
-    0x8000,
-    0x20000,
-    0xC000,
-    sc1PChallengerProcLights,
-    update_contdata,
-    0,
-    0x600,
-    0,
-    0,
-    0,
-    0,
-    0x88,
-    0,
-    0x800D5CAC,
-    0,
-    0,
-    0,
-    0,
-    0x88,
-    0,
-    0x6C,
-    0,
-    0x90,
-    sc1PChallengerProcStart
+    // Task Logic Buffer Setup
+    {
+        0,                          // ???
+        func_8000A5E4,              // Update function
+        func_8000A340,              // Frame draw function
+        &ovl23_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of tasks?
+        0x4E20,                     // ???
+        0x400,                      // ???
+        0,                          // ???
+        0,                          // ???
+        0x8000,                     // ???
+        2,                          // ???
+        0xC000,                     // ???
+        sc1PChallengerProcLights,   // Pre-render function
+        update_contdata,            // Controller I/O function
+    },
+
+    0,                              // Number of GObjThreads
+    1536,                           // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of Object Manager Matrices
+    dLBCommonProcMatrixList,        // Matrix function list
+    NULL,                           // Function for ejecting DObjDynamicStore?
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(Camera),                 // Camera size
+    
+    sc1PChallengerProcStart         // Task start function
 };
 
 // // // // // // // // // // // //
@@ -386,6 +391,6 @@ void sc1PChallengerStartScene(void)
     dSC1PChallengerDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dSC1PChallengerDisplaySetup);
     
-    dSC1PChallengerTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl23_BSS_END);
+    dSC1PChallengerTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl23_BSS_END);
     syTasklogInit(&dSC1PChallengerTasklogSetup);
 }

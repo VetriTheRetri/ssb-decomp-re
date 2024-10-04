@@ -23,7 +23,7 @@ typedef struct syTasklogBufferSetup
 	/* 0x0C */ void *arena_start;           // Start of allocatable memory pool
 	/* 0x10 */ size_t arena_size;           // Size of allocatable memory pool for heap; usually from end of last overlay's .bss section to start of subsys (ovl1)
 	/* 0x14 */ u32 unk14; // count?
-	/* 0x18 */ s32 tasks_num;               // Number of tasks? (what even is a task?)
+	/* 0x18 */ s32 contexts_num;               // Number of contexts? (what even is a task?)
 	/* 0x1C */ u32 unk1C;
 	/* 0x20 */ u32 unk20;
 	/* 0x24 */ u32 unk24;

@@ -1268,7 +1268,7 @@ syTasklogSetup dSC1PContinueTasklogSetup =
         &ovl55_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???
-        2,                          // Number of tasks?
+        2,                          // Number of contexts?
         0x4E20,                     // ???
         0x1000,                     // ???
         0,                          // ???

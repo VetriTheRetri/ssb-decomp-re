@@ -98,7 +98,7 @@ syTasklogSetup dSCExplainTasklogSetup =
         &ovl63_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???
-        2,                          // Number of tasks?
+        2,                          // Number of contexts?
         0x6000,                     // ???
         0x3000,                     // ???
         0,                          // ???

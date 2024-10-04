@@ -1171,7 +1171,7 @@ void func_80006548(syTasklogBufferSetup *arg0, void (*arg1)())
 	s32 i;
 	syTasklogDLBuffer sp44[2][4];
 
-	sSYTasklogCount = arg0->tasks_num;
+	sSYTasklogCount = arg0->contexts_num;
 	D_800465F8.unk00 = arg0->unk00;
 	D_800465F8.fn04  = arg0->func_update;
 	D_800465F8.fn0C  = arg0->func_draw;

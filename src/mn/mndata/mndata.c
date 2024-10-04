@@ -822,7 +822,7 @@ syTasklogSetup dMNDataTasklogSetup =
         &ovl61_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???
-        2,                          // Number of tasks?
+        2,                          // Number of contexts?
         0xEA60,                     // ???
         0,                          // ???
         0,                          // ???

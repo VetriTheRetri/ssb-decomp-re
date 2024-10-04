@@ -706,7 +706,7 @@ syTasklogSetup dMNSoundTestTasklogSetup =
         &ovl62_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???
-        1,                          // Number of tasks?
+        1,                          // Number of contexts?
         0x4000,                     // ???
         0x400,                      // ???
         0,                          // ???

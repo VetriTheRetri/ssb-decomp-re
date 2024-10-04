@@ -76,7 +76,7 @@ syTasklogSetup dSC1PChallengerTasklogSetup =
         &ovl23_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???
-        2,                          // Number of tasks?
+        2,                          // Number of contexts?
         0x4E20,                     // ???
         0x400,                      // ???
         0,                          // ???

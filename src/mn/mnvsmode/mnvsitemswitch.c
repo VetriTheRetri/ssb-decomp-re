@@ -843,43 +843,48 @@ void mnVSItemSwitchFuncStart(void)
 syDisplaySetup dMNVSItemSwitchDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8013333C
-scRuntimeInfo dMNVSItemSwitchTasklogSetup =
+syTasklogSetup dMNVSItemSwitchTasklogSetup =
 {
-    0x00000000,
-    func_8000A5E4,
-    func_8000A340,
-    &ovl21_BSS_END,
-    0,
-    1,
-    2,
-    0x4E20,
-    0,
-    0,
-    0,
-    0x8000,
-    0x20000,
-    0xC000,
-    mnVSItemSwitchFuncLights,
-    update_contdata,
-    0x8,
-    0x600,
-    0,
-    0,
-    0,
-    0,
-    0x88,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0x88,
-    0,
-    0x6C,
-    0,
-    0x90,
-    mnVSItemSwitchFuncStart
+    // Task Logic Buffer Setup
+    {
+        0,                          // ???
+        func_8000A5E4,              // Update function
+        func_8000A340,              // Frame draw function
+        &ovl21_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        sizeof(Gfx) * 2500,         // Display List Buffer 0 Size
+        0,                          // Display List Buffer 1 Size
+        0,                          // Display List Buffer 2 Size
+        0,                          // Display List Buffer 3 Size
+        0x8000,                     // Graphics Heap Size
+        2,                          // ???
+        0xC000,                     // RDP Output Buffer Size
+        mnVSItemSwitchFuncLights,   // Pre-render function
+        update_contdata,            // Controller I/O function
+    },
+
+    8,                              // Number of GObjThreads
+    sizeof(u64) * 192,              // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of Object Manager Matrices
+    NULL,                           // Matrix function list
+    NULL,                           // Function for ejecting DObjDynamicStore?
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(Camera),                 // Camera size
+    
+    mnVSItemSwitchFuncStart         // Task start function
 };
 
 // 0x801331B0
@@ -888,6 +893,6 @@ void mnVSItemSwitchStartScene(void)
     dMNVSItemSwitchDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMNVSItemSwitchDisplaySetup);
     
-    dMNVSItemSwitchTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl21_BSS_END);
+    dMNVSItemSwitchTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl21_BSS_END);
     syTasklogInit(&dMNVSItemSwitchTasklogSetup);
 }

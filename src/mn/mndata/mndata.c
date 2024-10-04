@@ -9,7 +9,6 @@ extern void auStopBGM();
 extern void* func_800269C0_275C0(u16);
 extern void func_80007080(void*, f32, f32, f32, f32);
 
-
 // // // // // // // // // // // //
 //                               //
 //             MACROS            //
@@ -813,43 +812,48 @@ void mnDataProcStart(void)
 syDisplaySetup dMNDataDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132FCC
-scRuntimeInfo dMNDataTasklogSetup = 
+syTasklogSetup dMNDataTasklogSetup = 
 {
-    0x00000000,
-    func_8000A5E4,
-    func_8000A340,
-    &ovl61_BSS_END,
-    0,
-    1,
-    2,
-    0xEA60,
-    0,
-    0,
-    0,
-    0x8000,
-    0x20000,
-    0xC000,
-    mnDataProcLights,
-    update_contdata,
-    0,
-    0x600,
-    0,
-    0,
-    0,
-    0,
-    0x88,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0x88,
-    0,
-    0x6C,
-    0,
-    0x90,
-    mnDataProcStart
+    // Task Logic Buffer Setup
+    {
+        0,                          // ???
+        func_8000A5E4,              // Update function
+        func_8000A340,              // Frame draw function
+        &ovl61_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of tasks?
+        0xEA60,                     // ???
+        0,                          // ???
+        0,                          // ???
+        0,                          // ???
+        0x8000,                     // ???
+        2,                          // ???
+        0xC000,                     // ???
+        mnDataProcLights,           // Pre-render function
+        update_contdata,            // Controller I/O function
+    },
+
+    0,                              // Number of GObjThreads
+    1536,                           // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of Object Manager Matrices
+    NULL,                           // Matrix function list
+    NULL,                           // Function for ejecting DObjDynamicStore?
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(Camera),                 // Camera size
+    
+    mnDataProcStart                 // Task start function
 };
 
 // 0x80132EC0
@@ -858,6 +862,6 @@ void mnDataStartScene(void)
     dMNDataDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMNDataDisplaySetup);
 
-    dMNDataTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl61_BSS_END);
+    dMNDataTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl61_BSS_END);
     syTasklogInit(&dMNDataTasklogSetup);
 }

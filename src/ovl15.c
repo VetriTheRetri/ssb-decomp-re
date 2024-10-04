@@ -143,7 +143,7 @@ void dbFallsInit()
 void dbFallsStartScene()
 {
 	D_ovl15_800D68A4.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl15_800D68A4);
+	syDisplayInit(&D_ovl15_800D68A4);
 	D_ovl15_800D68C0.arena_size = (u32) ((uintptr_t)&lOverlay15ArenaHi - (uintptr_t)&lOverlay15ArenaLo);
 	syTasklogInit(&D_ovl15_800D68C0);
 }

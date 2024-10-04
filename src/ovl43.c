@@ -488,7 +488,7 @@ scRuntimeInfo D_ovl43_8018E158 = {
 void intro_focus_kirby_entry()
 {
 	D_ovl43_8018E13C.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl43_8018E13C);
+	syDisplayInit(&D_ovl43_8018E13C);
 	D_ovl43_8018E158.arena_size = (u32) ((uintptr_t)&lOverlay43ArenaHi - (uintptr_t)&lOverlay43ArenaLo);
 	syTasklogInit(&D_ovl43_8018E158);
 }

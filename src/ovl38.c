@@ -504,7 +504,7 @@ scRuntimeInfo D_ovl38_8018E1B4 = {
 void intro_focus_samus_entry()
 {
 	D_ovl38_8018E198.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl38_8018E198);
+	syDisplayInit(&D_ovl38_8018E198);
 	D_ovl38_8018E1B4.arena_size = (u32) ((uintptr_t)&lOverlay38ArenaHi - (uintptr_t)&lOverlay38ArenaLo);
 	syTasklogInit(&D_ovl38_8018E1B4);
 }

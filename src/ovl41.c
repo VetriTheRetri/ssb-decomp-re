@@ -489,7 +489,7 @@ scRuntimeInfo D_ovl41_8018E158 = {
 void intro_focus_yoshi_entry()
 {
 	D_ovl41_8018E13C.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl41_8018E13C);
+	syDisplayInit(&D_ovl41_8018E13C);
 	D_ovl41_8018E158.arena_size = (u32) ((uintptr_t)&lOverlay41ArenaHi - (uintptr_t)&lOverlay41ArenaLo);
 	syTasklogInit(&D_ovl41_8018E158);
 }

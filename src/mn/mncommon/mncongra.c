@@ -418,7 +418,7 @@ void mnCongraStartScene(void)
 		break;
 	}
 	dMNCongraDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&dMNCongraDisplaySetup);
+	syDisplayInit(&dMNCongraDisplaySetup);
 
 	dMNCongraTasklogSetup.arena_size = (size_t) (SYDISPLAY_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 0) - (uintptr_t)&ovl57_BSS_END);
 	syTasklogInit(&dMNCongraTasklogSetup); subsys_arena_lo = gSCSubsysFramebuffer0; // WARNING: Newline memes!

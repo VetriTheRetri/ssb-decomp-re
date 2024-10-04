@@ -489,7 +489,7 @@ scRuntimeInfo D_ovl36_8018E138 = {
 void intro_focus_mario_entry()
 {
 	D_ovl36_8018E11C.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl36_8018E11C);
+	syDisplayInit(&D_ovl36_8018E11C);
 	D_ovl36_8018E138.arena_size = (u32) ((uintptr_t)&lOverlay36ArenaHi - (uintptr_t)&lOverlay36ArenaLo);
 	syTasklogInit(&D_ovl36_8018E138);
 }

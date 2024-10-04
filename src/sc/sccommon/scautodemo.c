@@ -710,7 +710,7 @@ void scAutoDemoStartScene(void)
 {
 	dSCAutoDemoDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
 
-	func_80007024(&dSCAutoDemoDisplaySetup);
+	syDisplayInit(&dSCAutoDemoDisplaySetup);
 
 	dSCAutoDemoTasklogSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl64_BSS_END);
 	dSCAutoDemoTasklogSetup.proc_start = scAutoDemoProcStart;

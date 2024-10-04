@@ -460,7 +460,7 @@ void mvOpeningNewcomersProcStart(void)
 void mvOpeningNewcomersStartScene(void)
 {
     dMVOpeningNewcomersDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    func_80007024(&dMVOpeningNewcomersDisplaySetup);
+    syDisplayInit(&dMVOpeningNewcomersDisplaySetup);
 
     dMVOpeningNewcomersTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl52_BSS_END);
     syTasklogInit(&dMVOpeningNewcomersTasklogSetup);

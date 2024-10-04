@@ -52,7 +52,7 @@ extern s16 D_80046694;
 extern s16 D_80046698;
 
 extern u32 syDisplayGetFillColor(u32 color);
-extern void func_80007024(syDisplaySetup *arg0);
+extern void syDisplayInit(syDisplaySetup *arg0);
 extern void func_80006E18(s32 arg0);
 extern void syDisplaySetCenterOffsets(s16 left, s16 right, s16 up, s16 down);
 extern void func_80006F5C(SCTaskVi *task);

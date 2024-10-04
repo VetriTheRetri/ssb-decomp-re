@@ -584,7 +584,7 @@ void dbCubeInit()
 void dbCubeStartScene()
 {
 	D_ovl13_80132F6C.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl13_80132F6C);
+	syDisplayInit(&D_ovl13_80132F6C);
 	D_ovl13_80132F88.arena_size = (u32) ((uintptr_t)&lOverlay13ArenaHi - (uintptr_t)&lOverlay13ArenaLo);
 
 	do

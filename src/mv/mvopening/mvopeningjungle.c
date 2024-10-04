@@ -446,7 +446,7 @@ void mvOpeningJungleProcLights(Gfx **dls)
 void mvOpeningJungleStartScene(void)
 {
     dMVOpeningJungleDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    func_80007024(&dMVOpeningJungleDisplaySetup);
+    syDisplayInit(&dMVOpeningJungleDisplaySetup);
 
     dMVOpeningJungleTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl51_BSS_END);
     syTasklogInit(&dMVOpeningJungleTasklogSetup);

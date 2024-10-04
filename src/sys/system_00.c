@@ -121,7 +121,7 @@ void func_80006FB8(s32 width, s32 height, u32 arg2)
     func_80000970((void *)&task.info);
 }
 
-void func_80007024(syDisplaySetup *display_setup)
+void syDisplayInit(syDisplaySetup *display_setup)
 {
     syDisplayUpdateFramebufs(display_setup->framebuf0, display_setup->framebuf1, display_setup->framebuf2);
     gSYDisplayZBuffer = display_setup->zbuffer;

@@ -1346,7 +1346,7 @@ void mnTitleAdvanceFrame()
 void mnTitleStartScene()
 {
 	D_ovl10_80134370.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl10_80134370);
+	syDisplayInit(&D_ovl10_80134370);
 
 	if ((!gSceneData.main_title_animation_viewed) && (gSaveData.unk5E3 < 0x100))
 	{

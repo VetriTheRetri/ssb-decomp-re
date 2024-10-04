@@ -1307,7 +1307,7 @@ void sc1PContinueStartScene(void)
 {
     dSC1PContinueDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
 
-    func_80007024(&dSC1PContinueDisplaySetup);
+    syDisplayInit(&dSC1PContinueDisplaySetup);
 
     dSC1PContinueTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl55_BSS_END);
 

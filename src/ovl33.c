@@ -2132,7 +2132,7 @@ scRuntimeInfo D_ovl33_80136518 = {
 void char_bkg_info_entry()
 {
 	D_ovl33_801364FC.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl33_801364FC);
+	syDisplayInit(&D_ovl33_801364FC);
 	D_ovl33_80136518.arena_size = (u32) ((uintptr_t)&lOverlay33ArenaHi - (uintptr_t)&lOverlay33ArenaLo);
 	func_800A2698(&D_ovl33_80136518);
 }

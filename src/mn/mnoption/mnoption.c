@@ -1060,7 +1060,7 @@ scRuntimeInfo dMNOptionTasklogSetup =
 void mnOptionStartScene(void)
 {
     dMNOptionDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    func_80007024(&dMNOptionDisplaySetup);
+    syDisplayInit(&dMNOptionDisplaySetup);
 
     dMNOptionTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl60_BSS_END);
     syTasklogInit(&dMNOptionTasklogSetup);

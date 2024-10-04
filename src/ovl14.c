@@ -479,7 +479,7 @@ void dbBattleInit()
 void dbBattleStartScene()
 {
 	D_ovl14_80132934.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl14_80132934);
+	syDisplayInit(&D_ovl14_80132934);
 	D_ovl14_80132950.arena_size = (u32) ((uintptr_t)&lOverlay14ArenaHi - (uintptr_t)&lOverlay14ArenaLo);
 	syTasklogInit(&D_ovl14_80132950);
 }

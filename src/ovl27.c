@@ -3174,7 +3174,7 @@ scRuntimeInfo D_ovl27_80138CAC = {
 void classic_css_entry()
 {
 	D_ovl27_80138C90.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl27_80138C90);
+	syDisplayInit(&D_ovl27_80138C90);
 	D_ovl27_80138CAC.arena_size = (u32) ((uintptr_t)&lOverlay27ArenaHi - (uintptr_t)&lOverlay27ArenaLo);
 	syTasklogInit(&D_ovl27_80138CAC);
 }

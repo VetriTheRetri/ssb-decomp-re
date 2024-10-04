@@ -485,7 +485,7 @@ scRuntimeInfo D_ovl39_8018E12C = {
 void intro_focus_fox_entry()
 {
 	D_ovl39_8018E110.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl39_8018E110);
+	syDisplayInit(&D_ovl39_8018E110);
 	D_ovl39_8018E12C.arena_size = (u32) ((uintptr_t)&lOverlay39ArenaHi - (uintptr_t)&lOverlay39ArenaLo);
 	syTasklogInit(&D_ovl39_8018E12C);
 }

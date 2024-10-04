@@ -166,7 +166,7 @@ void func_ovl5_8018D4BC(Gfx **display_list)
 void overlay_set23_entry()
 {
 	D_ovl5_8018D5BC.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl5_8018D5BC);
+	syDisplayInit(&D_ovl5_8018D5BC);
 	D_ovl5_8018D5D8.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl5_BSS_END);
 	func_800A2698(&D_ovl5_8018D5D8);
 	auStopBGM();

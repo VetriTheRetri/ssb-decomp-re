@@ -198,7 +198,7 @@ void dbStageSelectInit()
 void dbStageSelectStartScene()
 {
 	D_ovl12_800D6764.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl12_800D6764);
+	syDisplayInit(&D_ovl12_800D6764);
 	D_ovl12_800D6780.arena_size = (u32) ((uintptr_t)&lOverlay12ArenaHi - (uintptr_t)&lOverlay12ArenaLo);
 	syTasklogInit(&D_ovl12_800D6780);
 }

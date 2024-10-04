@@ -1853,7 +1853,7 @@ scRuntimeInfo D_ovl32_801369E8 = {
 void vs_records_entry()
 {
 	D_ovl32_801369CC.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl32_801369CC);
+	syDisplayInit(&D_ovl32_801369CC);
 	D_ovl32_801369E8.arena_size = (u32) ((uintptr_t)&lOverlay32ArenaHi - (uintptr_t)&lOverlay32ArenaLo);
 	syTasklogInit(&D_ovl32_801369E8);
 }

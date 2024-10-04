@@ -528,7 +528,7 @@ void mvOpeningCliffProcStart(void)
 void mvOpeningCliffStartScene(void)
 {
     dMVOpeningCliffDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    func_80007024(&dMVOpeningCliffDisplaySetup);
+    syDisplayInit(&dMVOpeningCliffDisplaySetup);
 
     dMVOpeningCliffTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl46_BSS_END);
     syTasklogInit(&dMVOpeningCliffTasklogSetup);

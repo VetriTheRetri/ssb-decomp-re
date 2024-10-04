@@ -1189,7 +1189,7 @@ scRuntimeInfo D_ovl34_80134BEC = {
 void intro_firstscene_entry()
 {
 	D_ovl34_80134BD0.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl34_80134BD0);
+	syDisplayInit(&D_ovl34_80134BD0);
 	D_ovl34_80134BEC.arena_size = (u32) ((uintptr_t)&lOverlay34ArenaHi - (uintptr_t)&lOverlay34ArenaLo);
 	func_800A2698(&D_ovl34_80134BEC);
 	func_800048D0(0);

@@ -958,7 +958,7 @@ void sc1PBonusGameStartScene()
 
 	D_ovl6_8018F080.zbuffer = syDisplayGetZBuffer(6400);
 
-	func_80007024(&D_ovl6_8018F080);
+	syDisplayInit(&D_ovl6_8018F080);
 
 	D_ovl6_8018F09C.arena_size = (size_t) ((uintptr_t)&lOverlay6ArenaHi - (uintptr_t)&lOverlay6ArenaLo);
 	D_ovl6_8018F09C.proc_start = scBonusGame_InitBonusGame;

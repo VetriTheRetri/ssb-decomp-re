@@ -4312,7 +4312,7 @@ scRuntimeInfo D_ovl26_8013B99C = {
 void vs_css_entry()
 {
 	D_ovl26_8013B980.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl26_8013B980);
+	syDisplayInit(&D_ovl26_8013B980);
 	D_ovl26_8013B99C.arena_size = (size_t) ((uintptr_t)&lOverlay26ArenaHi - (uintptr_t)&lOverlay26ArenaLo);
 	func_800A2698(&D_ovl26_8013B99C);
 }

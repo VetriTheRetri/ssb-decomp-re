@@ -886,7 +886,7 @@ scRuntimeInfo dMNVSItemSwitchTasklogSetup =
 void mnVSItemSwitchStartScene(void)
 {
     dMNVSItemSwitchDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    func_80007024(&dMNVSItemSwitchDisplaySetup);
+    syDisplayInit(&dMNVSItemSwitchDisplaySetup);
     
     dMNVSItemSwitchTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl21_BSS_END);
     syTasklogInit(&dMNVSItemSwitchTasklogSetup);

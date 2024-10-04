@@ -625,7 +625,7 @@ scRuntimeInfo mvOpeningSectorTasklogSetup =
 void mvOpeningSectorStartScene(void)
 {
     dMVOpeningSectorDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    func_80007024(&dMVOpeningSectorDisplaySetup);
+    syDisplayInit(&dMVOpeningSectorDisplaySetup);
 
     mvOpeningSectorTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl50_BSS_END);
     syTasklogInit(&mvOpeningSectorTasklogSetup);

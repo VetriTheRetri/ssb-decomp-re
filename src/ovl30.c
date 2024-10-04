@@ -1412,7 +1412,7 @@ scRuntimeInfo D_ovl30_80134928 = {
 void mnStageStartScene()
 {
 	D_ovl30_8013490C.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl30_8013490C);
+	syDisplayInit(&D_ovl30_8013490C);
 	D_ovl30_80134928.arena_size = (u32) ((uintptr_t)&lOverlay30ArenaHi - (uintptr_t)&lOverlay30ArenaLo);
 	func_800A2698(&D_ovl30_80134928);
 }

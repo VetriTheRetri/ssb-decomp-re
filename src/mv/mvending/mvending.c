@@ -561,7 +561,7 @@ void mvEndingStartScene(void)
 {
     dMVEndingDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
 
-    func_80007024(&dMVEndingDisplaySetup);
+    syDisplayInit(&dMVEndingDisplaySetup);
 
     dMVEndingTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl54_BSS_END);
 

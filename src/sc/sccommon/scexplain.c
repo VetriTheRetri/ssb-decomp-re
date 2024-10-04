@@ -857,7 +857,7 @@ void scExplainStartScene(void)
 {
     dSCExplainDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
 
-    func_80007024(&dSCExplainDisplaySetup);
+    syDisplayInit(&dSCExplainDisplaySetup);
 
     set_lcg_seed_ptr(&dSCExplainRandomSeed1);
 

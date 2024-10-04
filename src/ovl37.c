@@ -478,7 +478,7 @@ scRuntimeInfo D_ovl37_8018E0FC = {
 void intro_focus_dk_entry()
 {
 	D_ovl37_8018E0E0.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl37_8018E0E0);
+	syDisplayInit(&D_ovl37_8018E0E0);
 	D_ovl37_8018E0FC.arena_size = (u32) ((uintptr_t)&lOverlay37ArenaHi - (uintptr_t)&lOverlay37ArenaLo);
 	syTasklogInit(&D_ovl37_8018E0FC);
 }

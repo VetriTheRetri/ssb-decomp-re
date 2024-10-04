@@ -3006,7 +3006,7 @@ void vs_results_entry()
 	s32 i;
 
 	D_ovl31_80139710.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl31_80139710);
+	syDisplayInit(&D_ovl31_80139710);
 	D_ovl31_8013972C.arena_size = (u32) ((uintptr_t)&lOverlay31ArenaHi - (uintptr_t)&lOverlay31ArenaLo);
 	func_800A2698(&D_ovl31_8013972C);
 

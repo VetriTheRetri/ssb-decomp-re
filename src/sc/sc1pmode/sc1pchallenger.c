@@ -384,7 +384,7 @@ void sc1PChallengerProcStart(void)
 void sc1PChallengerStartScene(void)
 {
     dSC1PChallengerDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    func_80007024(&dSC1PChallengerDisplaySetup);
+    syDisplayInit(&dSC1PChallengerDisplaySetup);
     
     dSC1PChallengerTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl23_BSS_END);
     syTasklogInit(&dSC1PChallengerTasklogSetup);

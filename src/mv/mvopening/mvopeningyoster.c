@@ -408,7 +408,7 @@ scRuntimeInfo dMVOpeningYosterTasklogSetup =
 void mvOpeningYosterStartScene(void)
 {
     dMVOpeningYosterDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    func_80007024(&dMVOpeningYosterDisplaySetup);
+    syDisplayInit(&dMVOpeningYosterDisplaySetup);
 
     dMVOpeningYosterTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl45_BSS_END);
     syTasklogInit(&dMVOpeningYosterTasklogSetup);

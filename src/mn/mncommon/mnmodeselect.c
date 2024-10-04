@@ -769,7 +769,7 @@ void mnModeSelectProcStart(void)
 void mnModeSelectStartScene(void)
 {
     dMNModeSelectDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    func_80007024(&dMNModeSelectDisplaySetup);
+    syDisplayInit(&dMNModeSelectDisplaySetup);
     
     dMNModeSelectTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl17_BSS_END);
     syTasklogInit(&dMNModeSelectTasklogSetup);

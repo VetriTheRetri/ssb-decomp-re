@@ -2817,7 +2817,7 @@ scRuntimeInfo D_ovl28_80138448 = {
 void training_css_entry()
 {
 	D_ovl28_8013842C.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl28_8013842C);
+	syDisplayInit(&D_ovl28_8013842C);
 	D_ovl28_80138448.arena_size = (u32) ((uintptr_t)&lOverlay28ArenaHi - (uintptr_t)&lOverlay28ArenaLo);
 	func_800A2698(&D_ovl28_80138448);
 }

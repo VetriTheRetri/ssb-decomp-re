@@ -1989,51 +1989,56 @@ void sc1PStageCardProcStart(void)
 syDisplaySetup dSC1PStageCardDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80135B54
-scRuntimeInfo dSC1PStageCardTasklogSetup =
+syTasklogSetup dSC1PStageCardTasklogSetup =
 {
-    0x00000000,
-    func_8000A5E4,
-    func_800A26B8,
-    &ovl24_BSS_END,
-    0,
-    1,
-    2,
-    0xC350,
-    0x400,
-    0,
-    0,
-    0x10000,
-    0x20000,
-    0xC000,
-    sc1PStageCardProcLights,
-    update_contdata,
-    0,
-    0x600,
-    0,
-    0,
-    0,
-    0,
-    0x88,
-    0,
-    0x800D5CAC,
-    0,
-    0,
-    0,
-    0,
-    0x88,
-    0,
-    0x6C,
-    0,
-    0x90,
-    sc1PStageCardProcStart
+    // Task Logic Buffer Setup
+    {
+        0,                          // ???
+        func_8000A5E4,              // Update function
+        func_800A26B8,              // Frame draw function
+        &ovl24_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of tasks?
+        0xC350,                     // ???
+        0x400,                      // ???
+        0,                          // ???
+        0,                          // ???
+        0x10000,                    // ???
+        2,                          // ???
+        0xC000,                     // ???
+        sc1PStageCardProcLights,    // Pre-render function
+        update_contdata,            // Controller I/O function
+    },
+
+    0,                              // Number of GObjThreads
+    1536,                           // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of Object Manager Matrices
+    dLBCommonProcMatrixList,        // Matrix function list
+    NULL,                           // Function for ejecting DObjDynamicStore?
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(Camera),                 // Camera size
+    
+    sc1PStageCardProcStart          // Task start function
 };
 
 // 0x80134D98
 void sc1PStageCardStartScene(void)
 {
     dSC1PStageCardDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    func_80007024(&dSC1PStageCardDisplaySetup);
+    syDisplayInit(&dSC1PStageCardDisplaySetup);
     
-    dSC1PStageCardTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl24_BSS_END);
+    dSC1PStageCardTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl24_BSS_END);
     func_800A2698(&dSC1PStageCardTasklogSetup);
 }

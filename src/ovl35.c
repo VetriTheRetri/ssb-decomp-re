@@ -445,7 +445,7 @@ scRuntimeInfo D_ovl35_80132954 = {
 void mvPortraitsStartScene()
 {
 	D_ovl35_80132938.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl35_80132938);
+	syDisplayInit(&D_ovl35_80132938);
 	D_ovl35_80132954.arena_size = (u32) ((uintptr_t)&lOverlay35ArenaHi - (uintptr_t)&lOverlay35ArenaLo);
 	syTasklogInit(&D_ovl35_80132954);
 }

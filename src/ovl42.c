@@ -483,7 +483,7 @@ scRuntimeInfo D_ovl42_8018E15C = {
 void intro_focus_pikachu_entry()
 {
 	D_ovl42_8018E140.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl42_8018E140);
+	syDisplayInit(&D_ovl42_8018E140);
 	D_ovl42_8018E15C.arena_size = (u32) ((uintptr_t)&lOverlay42ArenaHi - (uintptr_t)&lOverlay42ArenaLo);
 	syTasklogInit(&D_ovl42_8018E15C);
 }

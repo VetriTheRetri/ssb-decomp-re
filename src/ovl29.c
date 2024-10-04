@@ -2569,7 +2569,7 @@ scRuntimeInfo D_ovl29_8013754C = {
 void bonus_css_entry()
 {
 	D_ovl29_80137530.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl29_80137530);
+	syDisplayInit(&D_ovl29_80137530);
 	D_ovl29_8013754C.arena_size = (u32) ((uintptr_t)&lOverlay29ArenaHi - (uintptr_t)&lOverlay29ArenaLo);
 	syTasklogInit(&D_ovl29_8013754C);
 }

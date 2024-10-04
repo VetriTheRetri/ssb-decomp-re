@@ -569,7 +569,7 @@ void mnUnusedFightersProcStart(void)
 void mnUnusedFightersStartScene(void)
 {
     dMNUnusedFightersDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    func_80007024(&dMNUnusedFightersDisplaySetup);
+    syDisplayInit(&dMNUnusedFightersDisplaySetup);
 
     dMNUnusedFightersTasklogSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl16_BSS_END);
     syTasklogInit(&dMNUnusedFightersTasklogSetup);

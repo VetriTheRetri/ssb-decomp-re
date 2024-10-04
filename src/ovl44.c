@@ -361,7 +361,7 @@ scRuntimeInfo D_ovl44_8013266C = {
 void intro_chars_running_entry()
 {
 	D_ovl44_80132650.zbuffer = syDisplayGetZBuffer(6400);
-	func_80007024(&D_ovl44_80132650);
+	syDisplayInit(&D_ovl44_80132650);
 	D_ovl44_8013266C.arena_size = (u32) ((uintptr_t)&lOverlay44ArenaHi - (uintptr_t)&lOverlay44ArenaLo);
 	syTasklogInit(&D_ovl44_8013266C);
 }

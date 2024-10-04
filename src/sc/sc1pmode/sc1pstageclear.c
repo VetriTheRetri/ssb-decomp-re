@@ -2078,10 +2078,8 @@ syTasklogSetup dGM1PStageClearTasklogSetup =
 void sc1PStageClearStartScene(void)
 {
 	dGM1PStageClearDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-
-	func_80007024(&dGM1PStageClearDisplaySetup);
+	syDisplayInit(&dGM1PStageClearDisplaySetup);
 
 	dGM1PStageClearTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl56_BSS_END);
-
 	syTasklogInit(&dGM1PStageClearTasklogSetup);
 }

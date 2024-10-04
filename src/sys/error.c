@@ -315,31 +315,30 @@ void syErrorDrawControllerInputs(GObj *gobj)
     func_800218E0(60, 179, controller->stick_range.x, 3, TRUE);
     func_800218E0(92, 179, controller->stick_range.y, 3, TRUE);
 
-    // 0.00390625 is 1 / 1256, but it doesn't want to autoconvert
-    func_80021908(offset_x, 195, sSYTasklogUpdateDeltaTime * 0.00390625F, 5, 2, TRUE);
+    func_80021908(offset_x, 195, sSYTasklogUpdateDeltaTime * (1.0F / 256.0F), 5, 2, TRUE);
     offset_x += 35;
 
-    func_80021908(offset_x, 195, sSYTasklogFrameDeltaTime * 0.00390625F, 5, 2, TRUE);
+    func_80021908(offset_x, 195, sSYTasklogFrameDeltaTime * (1.0F / 256.0F), 5, 2, TRUE);
     offset_x += 35;
 
-    func_80021908(offset_x, 195, D_80044FB4_407C4 * 0.00390625F, 5, 2, TRUE);
+    func_80021908(offset_x, 195, D_80044FB4_407C4 * (1.0F / 256.0F), 5, 2, TRUE);
     offset_x += 35;
 
     func_80021908
     (
         offset_x,
         195,
-        (sSYTasklogUpdateDeltaTime * 0.00390625F) + (sSYTasklogFrameDeltaTime * 0.00390625F) + (D_80044FB4_407C4 * 0.00390625F),
+        (sSYTasklogUpdateDeltaTime * (1.0F / 256.0F)) + (sSYTasklogFrameDeltaTime * (1.0F / 256.0F)) + (D_80044FB4_407C4 * (1.0F / 256.0F)),
         5,
         2,
         TRUE
     );
     offset_x += 70;
 
-    func_80021908(offset_x, 195, D_8009D2D0 * 0.00390625F, 5, 2, TRUE);
+    func_80021908(offset_x, 195, D_8009D2D0 * (1.0F / 256.0F), 5, 2, TRUE);
     offset_x += 35;
 
-    func_80021908(offset_x, 195, scTimeSpentAudio * 0.00390625F, 5, 2, TRUE);
+    func_80021908(offset_x, 195, scTimeSpentAudio * (1.0F / 256.0F), 5, 2, TRUE);
 
     gDPPipeSync(gSYTasklogDLHeads[0]++);
     gDPSetFillColor(gSYTasklogDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF)));

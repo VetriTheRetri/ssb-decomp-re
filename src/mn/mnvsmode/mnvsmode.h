@@ -6,7 +6,7 @@
 #include <PR/gbi.h>
 #include <mn/mndef.h>
 
-extern void mnVSModeProcLights(Gfx **display_list);
+extern void mnVSModeFuncLights(Gfx **display_list);
 extern s32 mnVSModePow(s32 num, s32 pow);
 extern void mnVSModeSetTextureColors(SObj* sobj, u32 *colors);
 extern s32 mnVSModeGetNumberOfDigits(s32 num, s32 maxDigits);
@@ -37,13 +37,13 @@ extern void mnVSModeMakeButtonValuesViewport(void);
 extern void mnVSModeMakeButtonViewport(void);
 extern void mnVSModeMakeMenuNameViewport(void);
 extern void mnVSModeMakeBackgroundViewport(void);
-extern void mnVSModeProcStartVars(void);
+extern void mnVSModeFuncStartVars(void);
 extern void mnVSModeSaveSettings(void);
 extern s32 mnVSModeGetShade(s32 port_id);
 extern s32 mnVSModeGetCostume(s32 ft_kind, s32 arg1);
 extern void mnVSModeSetCostumesAndShades(void);
 extern void mnVSModeMain(GObj* arg0);
-extern void mnVSModeProcStart(void);
+extern void mnVSModeFuncStart(void);
 extern void mnVSModeStartScene(void);
 
 #endif

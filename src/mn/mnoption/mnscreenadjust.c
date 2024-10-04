@@ -80,7 +80,7 @@ scRuntimeInfo dMNScreenAdjustTasklogSetup =
     0x8000,
     0x20000,
     0xC000,
-    mnScreenAdjustProcLights,
+    mnScreenAdjustFuncLights,
     update_contdata,
     0,
     0x600,
@@ -100,7 +100,7 @@ scRuntimeInfo dMNScreenAdjustTasklogSetup =
     0x6C,
     0,
     0x90,
-    mnScreenAdjustProcStart
+    mnScreenAdjustFuncStart
 };
 
 // // // // // // // // // // // //
@@ -110,7 +110,7 @@ scRuntimeInfo dMNScreenAdjustTasklogSetup =
 // // // // // // // // // // // //
 
 // 0x80131B00
-void mnScreenAdjustProcLights(Gfx **dls)
+void mnScreenAdjustFuncLights(Gfx **dls)
 {
     gSPDisplayList(dls[0]++, dMNScreenAdjustDisplayList);
 }
@@ -408,7 +408,7 @@ void mnScreenAdjustProcRun(GObj *gobj)
 }
 
 // 0x801326CC
-void mnScreenAdjustProcStart(void)
+void mnScreenAdjustFuncStart(void)
 {
     lbRelocSetup rl_setup;
     s32 unused[2];

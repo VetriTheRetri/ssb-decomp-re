@@ -667,7 +667,7 @@ syTasklogSetup dSC1PGameTasklogSetup =
     // Task Logic Buffer Setup
     {
         0,                          // ???
-        sc1PGameProcScene,          // Update function
+        sc1PGameFuncUpdate,          // Update function
         func_800A26B8,              // Frame draw function
         &ovl65_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
@@ -680,7 +680,7 @@ syTasklogSetup dSC1PGameTasklogSetup =
         0xD000,                     // ???
         2,                          // ???
         0xC000,                     // ???
-        sc1PGameProcLights,         // Pre-render function
+        sc1PGameFuncLights,         // Pre-render function
         update_contdata,            // Controller I/O function
     },
 
@@ -703,7 +703,7 @@ syTasklogSetup dSC1PGameTasklogSetup =
     0,                              // Number of Cameras
     sizeof(Camera),                 // Camera size
     
-    sc1PGameProcStart               // Task start function
+    sc1PGameFuncStart               // Task start function
 };
 
 // // // // // // // // // // // //
@@ -771,7 +771,7 @@ void sc1PGameSetGameEnd(void)
 }
 
 // 0x8018D200
-void sc1PGameProcScene(void)
+void sc1PGameFuncUpdate(void)
 {
     ifCommonBattleUpdateInterfaceAll();
 
@@ -1979,7 +1979,7 @@ void sc1PGameBossDefeatInitInterface(GObj *fighter_gobj)
 }
 
 // 0x8018F7B4
-void sc1PGameProcStart(void)
+void sc1PGameFuncStart(void)
 {
     GObj *fighter_gobj;
     ftData *plns;
@@ -2831,7 +2831,7 @@ void sc1PGameInitBonusStats(void)
 }
 
 // 0x80190F8C
-void sc1PGameProcLights(Gfx **dls)
+void sc1PGameFuncLights(Gfx **dls)
 {
     gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 
@@ -2848,7 +2848,7 @@ void sc1PGameStartScene(void)
     syDisplayInit(&dSC1PGameDisplaySetup);
 
     dSC1PGameTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl65_BSS_END);
-    dSC1PGameTasklogSetup.proc_start = sc1PGameProcStart;
+    dSC1PGameTasklogSetup.func_start = sc1PGameFuncStart;
     func_800A2698(&dSC1PGameTasklogSetup);
     
     sc1PGameInitBonusStats();

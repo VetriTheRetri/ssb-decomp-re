@@ -72,7 +72,7 @@ Lights1 dMVOpeningYosterLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 
 // // // // // // // // // // // //
 
 // 0x80131B00
-void mvOpeningYosterProcLights(Gfx **dls)
+void mvOpeningYosterFuncLights(Gfx **dls)
 {
     gSPSetGeometryMode(dls[0]++, G_LIGHTING);
     ftDisplayLightsDrawReflect(dls, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
@@ -304,7 +304,7 @@ void mvOpeningYosterMainProc(GObj *gobj)
 }
 
 // 0x80132108
-void mvOpeningYosterProcStart(void)
+void mvOpeningYosterFuncStart(void)
 {
     s32 i;
     lbRelocSetup rl_setup;
@@ -381,7 +381,7 @@ scRuntimeInfo dMVOpeningYosterTasklogSetup =
 	0x00008000,
 	0x00020000,
 	0x0000C000,
-	mvOpeningYosterProcLights,
+	mvOpeningYosterFuncLights,
 	update_contdata,
 	0x00000008,
 	0x00000600,
@@ -401,7 +401,7 @@ scRuntimeInfo dMVOpeningYosterTasklogSetup =
 	0x0000006C,
 	0x00000010,
 	0x00000090,
-	mvOpeningYosterProcStart
+	mvOpeningYosterFuncStart
 };
 
 // 0x801322CC

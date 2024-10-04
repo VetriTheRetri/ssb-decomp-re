@@ -14,11 +14,20 @@ extern void func_80007080(void*, f32, f32, f32, f32);
 //                               //
 // // // // // // // // // // // //
 
-#define mnOptionCheckGetOptionButtonInput(is_button, mask) mnCommonCheckGetOptionButtonInput(sMNOptionOptionChangeWait, is_button, mask)
-#define mnOptionCheckGetOptionStickInputUD(stick_range, min, b) mnCommonCheckGetOptionStickInputUD(sMNOptionOptionChangeWait, stick_range, min, b)
-#define mnOptionCheckGetOptionStickInputLR(stick_range, min, b) mnCommonCheckGetOptionStickInputLR(sMNOptionOptionChangeWait, stick_range, min, b)
-#define mnOptionSetOptionChangeWaitP(is_button, stick_range, div) mnCommonSetOptionChangeWaitP(sMNOptionOptionChangeWait, is_button, stick_range, div)
-#define mnOptionSetOptionChangeWaitN(is_button, stick_range, div) mnCommonSetOptionChangeWaitN(sMNOptionOptionChangeWait, is_button, stick_range, div)
+#define mnOptionCheckGetOptionButtonInput(is_button, mask) \
+mnCommonCheckGetOptionButtonInput(sMNOptionOptionChangeWait, is_button, mask)
+
+#define mnOptionCheckGetOptionStickInputUD(stick_range, min, b) \
+mnCommonCheckGetOptionStickInputUD(sMNOptionOptionChangeWait, stick_range, min, b)
+
+#define mnOptionCheckGetOptionStickInputLR(stick_range, min, b) \
+mnCommonCheckGetOptionStickInputLR(sMNOptionOptionChangeWait, stick_range, min, b)
+
+#define mnOptionSetOptionChangeWaitP(is_button, stick_range, div) \
+mnCommonSetOptionChangeWaitP(sMNOptionOptionChangeWait, is_button, stick_range, div)
+
+#define mnOptionSetOptionChangeWaitN(is_button, stick_range, div) \
+mnCommonSetOptionChangeWaitN(sMNOptionOptionChangeWait, is_button, stick_range, div)
 
 // // // // // // // // // // // //
 //                               //
@@ -37,13 +46,13 @@ extern sb32 auSoundQuality;
 // // // // // // // // // // // //
 
 // 0x801337A0
-GObj *sMNOptionSoundGObj;
+GObj *sMNOptionOptionSoundGObj;
 
 // 0x801337A4
-GObj *sMNOptionScreenAdjustGObj;
+GObj *sMNOptionOptionScreenAdjustGObj;
 
 // 0x801337A8
-GObj *sMNOptionBackupClearGObj;
+GObj *sMNOptionOptionBackupClearGObj;
 
 // 0x801337B0 - Padding?
 s32 sMNOptionPad0x801337B0[2];
@@ -123,7 +132,7 @@ Gfx dMNOptionDisplayList[/* */] =
 // // // // // // // // // // // //
 
 // 0x80131B00
-void mnOptionProcLights(Gfx **dls)
+void mnOptionFuncLights(Gfx **dls)
 {
     gSPDisplayList(dls[0]++, dMNOptionDisplayList);
 }
@@ -215,7 +224,7 @@ void mnOptionMakeOptionTabs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
 }
 
 // 0x80131D2C
-void mnOptionUpdateSoundOptionSObjs(GObj *gobj, sb32 mono_or_stereo)
+void mnOptionSetSoundToggleSpriteColors(GObj *gobj, sb32 mono_or_stereo)
 {
     SObj *sobj = SObjGetStruct(gobj);
 
@@ -242,7 +251,7 @@ void mnOptionUpdateSoundOptionSObjs(GObj *gobj, sb32 mono_or_stereo)
 }
 
 // 0x80131D98
-void mnOptionMakeSoundOptionSObjs(void)
+void mnOptionMakeSoundToggle(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -278,16 +287,16 @@ void mnOptionMakeSoundOptionSObjs(void)
     sobj->pos.x = 229.0F;
     sobj->pos.y = 48.0F;
 
-    mnOptionUpdateSoundOptionSObjs(gobj, sMNOptionSoundMonoOrStereo);
+    mnOptionSetSoundToggleSpriteColors(gobj, sMNOptionSoundMonoOrStereo);
 }
 
 // 0x80131EF0
-void mnOptionMakeSoundTextSObj(void)
+void mnOptionMakeSound(void)
 {
     GObj *gobj;
     SObj *sobj;
 
-    sMNOptionSoundGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNOptionOptionSoundGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     mnOptionMakeOptionTabs(gobj, 113.0F, 42.0F, 17);
@@ -307,12 +316,12 @@ void mnOptionMakeSoundTextSObj(void)
 }
 
 // 0x80131FC4
-void mnOptionMakeScreenAdjustSObj(void)
+void mnOptionMakeScreenAdjust(void)
 {
     GObj *gobj;
     SObj *sobj;
 
-    sMNOptionScreenAdjustGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNOptionOptionScreenAdjustGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -334,12 +343,12 @@ void mnOptionMakeScreenAdjustSObj(void)
 }
 
 // 0x8013209C
-void mnOptionMakeBackupClearSObj(void)
+void mnOptionMakeBackupClear(void)
 {
     GObj *gobj;
     SObj *sobj;
 
-    sMNOptionBackupClearGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNOptionOptionBackupClearGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
     mnOptionMakeOptionTabs(gobj, 69.0F, 136.0F, 17);
@@ -394,7 +403,7 @@ void mnOptionMakeMenuGObj(void)
 }
 
 // 0x80132248
-void mnOptionHeaderProcDisplay(GObj *gobj)
+void mnOptionLabelsProcDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTasklogDLHeads[0]++);
     gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
@@ -411,14 +420,14 @@ void mnOptionHeaderProcDisplay(GObj *gobj)
 }
 
 // 0x8013238C
-void mnOptionMakeHeaderSObjs(void)
+void mnOptionMakeLabels(void)
 {
     GObj *gobj;
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, mnOptionHeaderProcDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, mnOptionLabelsProcDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonSmashLogoSprite));
 
@@ -432,7 +441,7 @@ void mnOptionMakeHeaderSObjs(void)
     sobj->pos.x = 235.0F;
     sobj->pos.y = 158.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionHeaderTextSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNOptionFiles[1], &lMNOptionLabelTextSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -446,7 +455,7 @@ void mnOptionMakeHeaderSObjs(void)
 }
 
 // 0x80132484
-void mnOptionMakeDecalSObjs(void)
+void mnOptionMakeDecals(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -508,6 +517,7 @@ void func_ovl60_80132618(GObj *gobj)
     gDPPipeSync(gSYTasklogDLHeads[0]++);
     gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+
     lbCommonClearExternSpriteParams();
     lbCommonDrawSObjAttr(gobj);
 }
@@ -574,11 +584,12 @@ void mnOptionSoundUnderlineProcDisplay(GObj *gobj)
     gDPPipeSync(gSYTasklogDLHeads[0]++);
     gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+
     lbCommonClearExternSpriteParams();
 }
 
 // 0x801329F4
-void mnOptionMakeSoundUnderlineGObj(void)
+void mnOptionMakeSoundUnderline(void)
 {
     gcAddGObjDisplay
     (
@@ -597,7 +608,7 @@ void mnOptionMakeSoundUnderlineGObj(void)
 }
 
 // 0x80132A40
-void mnOptionMakeLink3Camera(void)
+void mnOptionMakeSoundUnderlineCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -611,11 +622,11 @@ void mnOptionMakeLink3Camera(void)
             20,
             CAMERA_MASK_DLLINK(3),
             -1,
-            0,
+            FALSE,
+            nOMObjProcessKindProc,
+            NULL,
             1,
-            0,
-            1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -636,18 +647,18 @@ void mnOptionMakeLink4Camera(void)
             10,
             CAMERA_MASK_DLLINK(4),
             -1,
-            0,
+            FALSE,
+            nOMObjProcessKindProc,
+            NULL,
             1,
-            0,
-            1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132B80
-void mnOptionMakeLink2Camera(void)
+void mnOptionMakeOptionsCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -661,18 +672,18 @@ void mnOptionMakeLink2Camera(void)
             40,
             CAMERA_MASK_DLLINK(2),
             -1,
-            0,
+            FALSE,
+            nOMObjProcessKindProc,
+            NULL,
             1,
-            0,
-            1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132C20
-void mnOptionMakeLink1Camera(void)
+void mnOptionMakeLabelsCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -686,18 +697,18 @@ void mnOptionMakeLink1Camera(void)
             60,
             CAMERA_MASK_DLLINK(1),
             -1,
-            0,
+            FALSE,
+            nOMObjProcessKindProc,
+            NULL,
             1,
-            0,
-            1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132CC0
-void mnOptionMakeLink0Camera(void)
+void mnOptionMakeDecalsCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -711,11 +722,11 @@ void mnOptionMakeLink0Camera(void)
             80,
             CAMERA_MASK_DLLINK(0),
             -1,
-            0,
+            FALSE,
+            nOMObjProcessKindProc,
+            NULL,
             1,
-            0,
-            1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -765,7 +776,7 @@ void mnOptionProcRun(GObj *gobj)
     sb32 stick_range;
 
     // 0x801336EC
-    GObj **option_gobj[/* */] = { &sMNOptionSoundGObj, &sMNOptionScreenAdjustGObj, &sMNOptionBackupClearGObj };
+    GObj **option_gobj[/* */] = { &sMNOptionOptionSoundGObj, &sMNOptionOptionScreenAdjustGObj, &sMNOptionOptionBackupClearGObj };
 
     s32 is_button;
 
@@ -909,7 +920,7 @@ void mnOptionProcRun(GObj *gobj)
                     sMNOptionSoundMonoOrStereo = 1;
 
                     gcEjectGObj(sMNOptionSoundOptionGObj);
-                    mnOptionMakeSoundOptionSObjs();
+                    mnOptionMakeSoundToggle();
 
                     sMNOptionOptionChangeWait = mnCommonGetOptionChangeWaitN(stick_range, 7);
 
@@ -931,7 +942,7 @@ void mnOptionProcRun(GObj *gobj)
                     sMNOptionSoundMonoOrStereo = 0;
 
                     gcEjectGObj(sMNOptionSoundOptionGObj);
-                    mnOptionMakeSoundOptionSObjs();
+                    mnOptionMakeSoundToggle();
 
                     sMNOptionOptionChangeWait = mnCommonGetOptionChangeWaitP(stick_range, 7);
 
@@ -951,7 +962,7 @@ void mnOptionProcRun(GObj *gobj)
                 else sMNOptionSoundMonoOrStereo = 1;
 
                 gcEjectGObj(sMNOptionSoundOptionGObj);
-                mnOptionMakeSoundOptionSObjs();
+                mnOptionMakeSoundToggle();
                 gcEjectGObj(sMNOptionMenuGObj);
                 mnOptionMakeMenuGObj();
                 auSetSoundQuality(sMNOptionSoundMonoOrStereo);
@@ -961,12 +972,12 @@ void mnOptionProcRun(GObj *gobj)
 }
 
 // 0x8013346C
-void mnOptionProcStart(void)
+void mnOptionFuncStart(void)
 {
     lbRelocSetup rl_setup;
 
-    rl_setup.table_addr = &lLBRelocTableAddr;
-    rl_setup.table_files_num = &lLBRelocTableFilesNum;
+    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
     rl_setup.file_heap = NULL;
     rl_setup.file_heap_size = 0;
     rl_setup.status_buffer = sMNOptionStatusBuffer;
@@ -993,18 +1004,18 @@ void mnOptionProcStart(void)
     gcMakeGObjSPAfter(0, mnOptionProcRun, 0, GOBJ_LINKORDER_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
     mnOptionInitVars();
-    mnOptionMakeLink0Camera();
-    mnOptionMakeLink1Camera();
-    mnOptionMakeLink2Camera();
-    mnOptionMakeLink3Camera();
+    mnOptionMakeDecalsCamera();
+    mnOptionMakeLabelsCamera();
+    mnOptionMakeOptionsCamera();
+    mnOptionMakeSoundUnderlineCamera();
     mnOptionMakeLink4Camera();
-    mnOptionMakeDecalSObjs();
-    mnOptionMakeHeaderSObjs();
-    mnOptionMakeSoundTextSObj();
-    mnOptionMakeSoundOptionSObjs();
-    mnOptionMakeScreenAdjustSObj();
-    mnOptionMakeBackupClearSObj();
-    mnOptionMakeSoundUnderlineGObj();
+    mnOptionMakeDecals();
+    mnOptionMakeLabels();
+    mnOptionMakeSound();
+    mnOptionMakeSoundToggle();
+    mnOptionMakeScreenAdjust();
+    mnOptionMakeBackupClear();
+    mnOptionMakeSoundUnderline();
     mnOptionMakeMenuGObj();
 
     if (gSceneData.scene_previous == nSCKindScreenAdjust)
@@ -1017,43 +1028,48 @@ void mnOptionProcStart(void)
 syDisplaySetup dMNOptionDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80133714
-scRuntimeInfo dMNOptionTasklogSetup =
+syTasklogSetup dMNOptionTasklogSetup =
 {
-    0x00000000,
-    func_8000A5E4,
-    func_8000A340,
-    &ovl60_BSS_END,
-    0,
-    1,
-    2,
-    0xEA60,
-    0,
-    0,
-    0,
-    0x8000,
-    0x20000,
-    0xC000,
-    mnOptionProcLights,
-    update_contdata,
-    0,
-    0x600,
-    0,
-    0,
-    0,
-    0,
-    0x88,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0x88,
-    0,
-    0x6C,
-    0,
-    0x90,
-    mnOptionProcStart
+    // Task Logic Buffer Setup
+    {
+        0,                          // ???
+        func_8000A5E4,              // Update function
+        func_8000A340,              // Frame draw function
+        &ovl60_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        0xEA60,                     // ???
+        0,                          // ???
+        0,                          // ???
+        0,                          // ???
+        0x8000,                     // ???
+        2,                          // ???
+        0xC000,                     // ???
+        mnOptionFuncLights,         // Pre-render function
+        update_contdata,            // Controller I/O function
+    },
+
+    0,                              // Number of GObjThreads
+    1536,                           // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of Object Manager Matrices
+    NULL,                           // Matrix function list
+    NULL,                           // Function for ejecting DObjDynamicStore?
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(Camera),                 // Camera size
+    
+    mnOptionFuncStart               // Task start function
 };
 
 // 0x801335C0
@@ -1062,6 +1078,6 @@ void mnOptionStartScene(void)
     dMNOptionDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMNOptionDisplaySetup);
 
-    dMNOptionTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl60_BSS_END);
+    dMNOptionTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl60_BSS_END);
     syTasklogInit(&dMNOptionTasklogSetup);
 }

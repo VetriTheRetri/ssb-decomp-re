@@ -84,7 +84,7 @@ syTasklogSetup dSC1PChallengerTasklogSetup =
         0x8000,                     // ???
         2,                          // ???
         0xC000,                     // ???
-        sc1PChallengerProcLights,   // Pre-render function
+        sc1PChallengerFuncLights,   // Pre-render function
         update_contdata,            // Controller I/O function
     },
 
@@ -107,7 +107,7 @@ syTasklogSetup dSC1PChallengerTasklogSetup =
     0,                              // Number of Cameras
     sizeof(Camera),                 // Camera size
     
-    sc1PChallengerProcStart         // Task start function
+    sc1PChallengerFuncStart         // Task start function
 };
 
 // // // // // // // // // // // //
@@ -117,7 +117,7 @@ syTasklogSetup dSC1PChallengerTasklogSetup =
 // // // // // // // // // // // //
 
 // 0x80131B00
-void sc1PChallengerProcLights(Gfx **dls)
+void sc1PChallengerFuncLights(Gfx **dls)
 {
     gSPDisplayList(dls[0]++, dSC1PChallengerDisplayList);
 }
@@ -336,7 +336,7 @@ void sc1PChallengerProcRun(GObj *gobj)
 }
 
 // 0x801321C0
-void sc1PChallengerProcStart(void)
+void sc1PChallengerFuncStart(void)
 {
     lbRelocSetup rl_setup;
     s32 unused;

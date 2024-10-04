@@ -129,7 +129,7 @@ extern intptr_t lSC1PStageClearBonusNormalClear;            // 0x000143C8
 extern intptr_t lSC1PStageClearBonusHardClear;              // 0x000145A8
 extern intptr_t lSC1PStageClearBonusVeryHardClear;        	// 0x00014788
 
-extern void sc1PStageClearProcLights(Gfx **dls);
+extern void sc1PStageClearFuncLights(Gfx **dls);
 extern s32 sc1PStageClearGetPowerOf(s32 base, s32 exp);
 extern void sc1PStageClearSetDigitSpriteColors(SObj *sobj, s32 digit_kind, syColorRGBPair *colors_default);
 extern s32 sc1PStageClearGetScoreDigitCount(s32 points, s32 digit_count_max);
@@ -184,6 +184,6 @@ extern void sc1PStageClearUpdateStageClearScore(void);
 extern void sc1PStageClearUpdateResultScore(void);
 extern void sc1PStageClearProcRun(GObj *gobj);
 extern void sc1PStageClearCopyFramebufToWallpaper(void);
-extern void sc1PStageClearProcStart(void);
+extern void sc1PStageClearFuncStart(void);
 
 #endif

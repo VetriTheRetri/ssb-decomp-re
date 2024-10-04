@@ -173,7 +173,7 @@ Lights1 dSC1PContinueLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xF
 // // // // // // // // // // // //
 
 // 0x80131B00
-void sc1PContinueProcLights(Gfx **dls)
+void sc1PContinueFuncLights(Gfx **dls)
 {
     gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 
@@ -1198,7 +1198,7 @@ void sc1PContinueProcRun(GObj *gobj)
 }
 
 // 0x80133F58
-void sc1PContinueProcStart(void)
+void sc1PContinueFuncStart(void)
 {
     s32 unused;
     lbRelocSetup rl_setup;
@@ -1276,7 +1276,7 @@ syTasklogSetup dSC1PContinueTasklogSetup =
         0x8000,                     // ???
         2,                          // ???
         0xC000,                     // ???
-        sc1PContinueProcLights,     // Pre-render function
+        sc1PContinueFuncLights,     // Pre-render function
         update_contdata,            // Controller I/O function
     },
 
@@ -1299,7 +1299,7 @@ syTasklogSetup dSC1PContinueTasklogSetup =
     0,                              // Number of Cameras
     sizeof(Camera),                 // Camera size
     
-    sc1PContinueProcStart           // Task start function
+    sc1PContinueFuncStart           // Task start function
 };
 
 // 0x801340FC

@@ -106,7 +106,7 @@ syTasklogSetup dSCExplainTasklogSetup =
         0x8000,                     // ???
         2,                          // ???
         0xC000,                     // ???
-        scExplainProcLights,    	// Pre-render function
+        scExplainFuncLights,    	// Pre-render function
         update_contdata,            // Controller I/O function
     },
 
@@ -129,7 +129,7 @@ syTasklogSetup dSCExplainTasklogSetup =
     0,                              // Number of Cameras
     sizeof(Camera),                 // Camera size
     
-    scExplainProcStart           	// Task start function
+    scExplainFuncStart           	// Task start function
 };
 
 // // // // // // // // // // // //
@@ -705,7 +705,7 @@ GObj* scExplainMakeSceneInterface(void)
 }
 
 // 0x8018E1A0
-void scExplainProcStart(void)
+void scExplainFuncStart(void)
 {
     s32 unused[3];
     GObj *fighter_gobj;
@@ -820,7 +820,7 @@ void scExplainProcStart(void)
 }
 
 // 0x8018E51C
-void scExplainProcLights(Gfx **dls)
+void scExplainFuncLights(Gfx **dls)
 {
     gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 
@@ -851,7 +851,7 @@ void scExplainStartScene(void)
     set_lcg_seed_ptr(&dSCExplainRandomSeed1);
 
     dSCExplainTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl63_BSS_END);
-    dSCExplainTasklogSetup.proc_start = scExplainProcStart;
+    dSCExplainTasklogSetup.func_start = scExplainFuncStart;
 
     func_800A2698(&dSCExplainTasklogSetup);
     gmRumbleInitPlayers();

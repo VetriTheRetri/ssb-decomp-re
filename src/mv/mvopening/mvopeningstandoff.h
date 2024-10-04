@@ -14,7 +14,7 @@ extern intptr_t lMVOpeningStandoffLightningAnimJoint;       // 0x00006D60
 extern intptr_t lMVOpeningStandoffCamAnimJoint;              // 0x00007250
 extern intptr_t lMVOpeningStandoffWallpaperSprite;          // 0x0000B500
 
-extern void mvOpeningStandoffProcLights(Gfx **dls);
+extern void mvOpeningStandoffFuncLights(Gfx **dls);
 extern void mvOpeningStandoffMakeGround(void);
 extern void mvOpeningStandoffMakeFighters(void);
 extern void mvOpeningStandoffWallpaperProcUpdate(GObj* wallpaper_gobj);
@@ -27,7 +27,7 @@ extern void mvOpeningStandoffMakeMainViewport(void);
 extern void mvOpeningStandoffMakeWallpaperViewport(void);
 extern void mvOpeningStandoffInitTotalTimeTics(void);
 extern void mvOpeningStandoffProcRun(GObj *gobj);
-extern void mvOpeningStandoffProcStart(void);
+extern void mvOpeningStandoffFuncStart(void);
 extern void mvOpeningStandoffStartScene(void);
 
 #endif

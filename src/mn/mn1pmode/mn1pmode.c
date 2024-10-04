@@ -95,7 +95,7 @@ Gfx dMN1PModeDisplayList[/* */] =
 // // // // // // // // // // // //
 
 // 0x80131B00
-void mn1PModeProcLights(Gfx **dls)
+void mn1PModeFuncLights(Gfx **dls)
 {
     gSPDisplayList(dls[0]++, dMN1PModeDisplayList);
 }
@@ -735,7 +735,7 @@ void mn1PModeProcRun(GObj *gobj)
 }
 
 // 0x80132E9C
-void mn1PModeProcStart(void)
+void mn1PModeFuncStart(void)
 {
     lbRelocSetup rl_setup;
     
@@ -811,7 +811,7 @@ scRuntimeInfo dMN1PModeTasklogSetup =
     0x8000,
     0x20000,
     0xC000,
-    mn1PModeProcLights,
+    mn1PModeFuncLights,
     update_contdata,
     0,
     0x600,
@@ -831,7 +831,7 @@ scRuntimeInfo dMN1PModeTasklogSetup =
     0x6C,
     0,
     0x90,
-    mn1PModeProcStart
+    mn1PModeFuncStart
 };
 
 // 0x80133020

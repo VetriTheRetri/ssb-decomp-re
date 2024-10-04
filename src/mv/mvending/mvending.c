@@ -113,7 +113,7 @@ scRuntimeInfo dMVEndingTasklogSetup =
 	0x00008000,
 	0x00020000,
 	0x0000C000,
-	mvEndingProcLights,
+	mvEndingFuncLights,
 	update_contdata,
 	0x00000000,
 	0x00000600,
@@ -133,7 +133,7 @@ scRuntimeInfo dMVEndingTasklogSetup =
 	0x0000006C,
 	0x00000000,
 	0x00000090,
-	mvEndingProcStart
+	mvEndingFuncStart
 };
 
 // // // // // // // // // // // //
@@ -143,7 +143,7 @@ scRuntimeInfo dMVEndingTasklogSetup =
 // // // // // // // // // // // //
 
 // 0x80131B00
-void mvEndingProcLights(Gfx **dls)
+void mvEndingFuncLights(Gfx **dls)
 {
     gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 
@@ -501,7 +501,7 @@ void mvEndingProcRun(GObj *gobj)
 }
 
 // 0x801328D0
-void mvEndingProcStart(void)
+void mvEndingFuncStart(void)
 {
     s32 unused;
     lbRelocSetup rl_setup;

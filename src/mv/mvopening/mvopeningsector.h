@@ -20,7 +20,7 @@ extern intptr_t lMVOpeningSectorArwing2AnimJoint;   // 0x0000F1C0
 
 extern intptr_t lMVOpeningSectorWallpaperSprite;    // 0x00026C88
 
-extern void mvOpeningSectorProcLights(Gfx **dls);
+extern void mvOpeningSectorFuncLights(Gfx **dls);
 extern void mvOpeningSectorWallpaperProcUpdate(GObj* wallpaper_gobj);
 extern void mvOpeningSectorMakeWallpaper(void);
 extern void mvOpeningSectorMakeGreatFox(void);
@@ -34,7 +34,7 @@ extern void mvOpeningSectorMakeWallpaperViewport(void);
 extern void mvOpeningSectorMakeCockpitViewport(void);
 extern void mvOpeningSectorInitTotalTimeTics(void);
 extern void mvOpeningSectorProcRun(GObj *gobj);
-extern void mvOpeningSectorProcStart(void);
+extern void mvOpeningSectorFuncStart(void);
 extern void mvOpeningSectorStartScene(void);
 
 #endif

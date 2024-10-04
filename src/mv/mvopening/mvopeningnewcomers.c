@@ -92,7 +92,7 @@ scRuntimeInfo dMVOpeningNewcomersTasklogSetup =
 	0x00008000,
 	0x00020000,
 	0x0000C000,
-	mvOpeningNewcomersProcLights,
+	mvOpeningNewcomersFuncLights,
 	update_contdata,
 	0x00000000,
 	0x00000600,
@@ -112,7 +112,7 @@ scRuntimeInfo dMVOpeningNewcomersTasklogSetup =
 	0x0000006C,
 	0x00000000,
 	0x00000090,
-	mvOpeningNewcomersProcStart
+	mvOpeningNewcomersFuncStart
 };
 // // // // // // // // // // // //
 //                               //
@@ -121,7 +121,7 @@ scRuntimeInfo dMVOpeningNewcomersTasklogSetup =
 // // // // // // // // // // // //
 
 // 0x80131B00
-void mvOpeningNewcomersProcLights(Gfx **dls)
+void mvOpeningNewcomersFuncLights(Gfx **dls)
 {
     gSPSetGeometryMode(dls[0]++, G_LIGHTING);
     ftDisplayLightsDrawReflect(dls, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
@@ -406,7 +406,7 @@ void mvOpeningNewcomersProcRun(GObj *gobj)
 }
 
 // 0x80132490
-void mvOpeningNewcomersProcStart(void)
+void mvOpeningNewcomersFuncStart(void)
 {
     s32 unused;
     lbRelocSetup rldmSetup;

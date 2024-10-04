@@ -168,7 +168,7 @@ scRuntimeInfo dMVOpeningJungleTasklogSetup =
 	0x00008000,
 	0x00020000,
 	0x0000C000,
-	mvOpeningJungleProcLights,
+	mvOpeningJungleFuncLights,
 	update_contdata,
 	0x00000000,
 	0x00000600,
@@ -188,7 +188,7 @@ scRuntimeInfo dMVOpeningJungleTasklogSetup =
 	0x0000006C,
 	0x00000000,
 	0x00000090,
-	mvOpeningJungleProcStart
+	mvOpeningJungleFuncStart
 };
 
 // // // // // // // // // // // //
@@ -399,7 +399,7 @@ void func_ovl51_8018D668(void)
 }
 
 // 0x8018D670
-void mvOpeningJungleProcStart(void)
+void mvOpeningJungleFuncStart(void)
 {
     sMVOpeningJungleBattleState = gDefaultBattleState;
     gBattleState = &sMVOpeningJungleBattleState;
@@ -436,7 +436,7 @@ void mvOpeningJungleProcStart(void)
 }
 
 // 0x8018D7CC
-void mvOpeningJungleProcLights(Gfx **dls)
+void mvOpeningJungleFuncLights(Gfx **dls)
 {
     gSPSetGeometryMode(dls[0]++, G_LIGHTING);
     ftDisplayLightsDrawReflect(dls, gMPCollisionLightAngleX, gMPCollisionLightAngleY);

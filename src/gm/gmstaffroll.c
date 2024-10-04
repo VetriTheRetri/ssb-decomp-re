@@ -2260,7 +2260,7 @@ void gmStaffrollMakeCamera(void)
 }
 
 // 0x8013505C
-void gmStaffrollProcStart(void)
+void gmStaffrollFuncStart(void)
 {
 	gcMakeGObjSPAfter(0, func_ovl59_801334E4, 1, GOBJ_LINKORDER_DEFAULT);
 	gcMakeDefaultCameraGObj(12, GOBJ_LINKORDER_DEFAULT, 100, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
@@ -2287,7 +2287,7 @@ Gfx dGMStaffrollDisplayList[/* */] =
 };
 
 // 0x801350F4
-void gmStaffrollProcLights(Gfx **dls)
+void gmStaffrollFuncLights(Gfx **dls)
 {
 	gSPDisplayList(dls[0]++, dGMStaffrollDisplayList);
 }
@@ -2348,7 +2348,7 @@ scRuntimeInfo dGMStaffrollTasklogSetup =
 	0x00001000,
 	0x00020000,
 	0x00001000,
-	gmStaffrollProcLights,
+	gmStaffrollFuncLights,
 	0x80004310,
 	0x00000010,
 	0x00000600,
@@ -2368,7 +2368,7 @@ scRuntimeInfo dGMStaffrollTasklogSetup =
 	0x0000006C,
 	0x00000008,
 	0x00000090,
-	gmStaffrollProcStart,
+	gmStaffrollFuncStart,
 };
 
 // 0x801351B8

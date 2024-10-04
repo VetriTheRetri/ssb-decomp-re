@@ -19,7 +19,7 @@ extern intptr_t lSCAutoDemoNamePikachuSprite; 	// 0x00000D38
 extern intptr_t lSCAutoDemoNamePurinSprite;   	// 0x00000F78
 extern intptr_t lSCAutoDemoNameNessSprite;    	// 0x00001098
 
-extern void scAutoDemoProcScene(void);
+extern void scAutoDemoFuncUpdate(void);
 extern void scAutoDemoStartBattle(void);
 extern void scAutoDemoDetectExit(void);
 extern void scAutoDemoMakeFade(void);
@@ -41,8 +41,8 @@ extern s32 scAutoDemoGetShuffledFighterKind(u16 variation_flags, u16 ft_flags, s
 extern s32 scAutoDemoGetPlayerDamage(s32 player);
 extern void scAutoDemoInitDemo(void);
 extern void scAutoDemoInitSObjs(void);
-extern void scAutoDemoProcStart(void);
-extern void scAutoDemoProcLights(Gfx **dls);
+extern void scAutoDemoFuncStart(void);
+extern void scAutoDemoFuncLights(Gfx **dls);
 extern void scAutoDemoStartScene(void);
 
 // Other file but it's not worth making another header for this one function

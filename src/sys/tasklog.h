@@ -57,7 +57,7 @@ typedef struct syTasklogSetup
 	/* 0x7C */ u32 sobj_size;
 	/* 0x80 */ u32 cameras_num;
 	/* 0x84 */ u32 camera_size;
-	/* 0x88 */ void (*proc_start)(void);	// Scene start function
+	/* 0x88 */ void (*func_start)(void);	// Scene start function
 
 } syTasklogSetup; // size >= 0x8C
 

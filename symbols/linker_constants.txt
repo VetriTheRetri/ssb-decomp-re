@@ -1713,7 +1713,7 @@ lMNOptionStereoTextSprite = 0x000073A8;
 lMNOptionSoundTextSprite = 0x00007628;
 lMNOptionScreenAdjustTextSprite = 0x00008138;
 lMNOptionBackupClearTextSprite = 0x00008780;
-lMNOptionHeaderTextSprite = 0x00009288;
+lMNOptionLabelTextSprite = 0x00009288;
 lMNOptionKnobSprite = 0x0000B958;
 lMNCommonTextSlashSprite = 0x0000BA28;
 
@@ -1721,7 +1721,7 @@ lMNDataCharacterOptionSprite = 0x000014E0;
 lMNDataVSRecordOptionSprite = 0x00001900;
 lMNDataSoundTestOptionSprite = 0x00001D20;
 lMNDataHeaderTextSprite = 0x000023A8;
-lMNDataNotebookSprite = 0x00004A78;
+lMNDataDecalNotebookSprite = 0x00004A78;
 
 lMNSoundTestDigit0Sprite = 0x00000148;
 lMNSoundTestDigit1Sprite = 0x000002D8;

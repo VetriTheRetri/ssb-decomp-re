@@ -21,7 +21,7 @@ extern intptr_t lMNVSItemSwitchDecalButtonSprite;           // 0x00003430
 extern intptr_t lMNVSItemSwitchItemListSprite;              // 0x00005E60
 extern intptr_t lMNVSItemSwitchCursorSprite;                // 0x000063A8
 
-extern void mnVSItemSwitchProcLights(Gfx **dls);
+extern void mnVSItemSwitchFuncLights(Gfx **dls);
 extern void mnVSItemSwitchSetToggleSpriteColors(GObj *gobj, s32 status);
 extern void mnVSItemSwitchMakeToggle(GObj *gobj, f32 pos_x, f32 pos_y);
 extern void mnVSItemSwitchLabelsProcDisplay(GObj *gobj);
@@ -44,7 +44,7 @@ extern sb32 mnVSItemSwitchCheckAllTogglesOff(void);
 extern void mnVSItemSwitchSetItemToggles(void);
 extern void mnVSItemSwitchUpdateOption(s32 option_id, s32 rate);
 extern void mnVSItemSwitchProcRun(GObj *gobj);
-extern void mnVSItemSwitchProcStart(void);
+extern void mnVSItemSwitchFuncStart(void);
 extern void mnVSItemSwitchStartScene(void);
 
 #endif

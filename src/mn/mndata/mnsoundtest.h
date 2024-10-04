@@ -36,8 +36,8 @@ extern void mnSoundTestMakeArrowSObjs(void);
 extern void mnSoundTestMakeAllSObjs(void);
 extern void mnSoundTestMakeCameras(void);
 extern void mnSoundTestInitVars(void);
-extern void mnSoundTestProcStart(void);
-extern void mnSoundTestProcLights(Gfx **dls);
+extern void mnSoundTestFuncStart(void);
+extern void mnSoundTestFuncLights(Gfx **dls);
 extern void mnSoundTestStartScene(void);
 
 #endif

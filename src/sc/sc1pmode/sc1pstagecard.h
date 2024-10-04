@@ -100,7 +100,7 @@ extern intptr_t lSC1PStageCardFighterPikachuCamAnimJoint;   // 0x00006E30
 extern intptr_t lSC1PStageCardFighterPurinCamAnimJoint;     // 0x00006E60
 extern intptr_t lSC1PStageCardFighterNessCamAnimJoint;      // 0x00006E90
 
-extern void sc1PStageCardProcLights(Gfx **dls);
+extern void sc1PStageCardFuncLights(Gfx **dls);
 extern void sc1PStageCardMakeSky(void);
 extern void sc1PStageCardMakeBanners(void);
 extern void func_ovl24_80131C58(GObj *gobj);
@@ -146,7 +146,7 @@ extern void sc1PStageCardUpdateAnnounce(void);
 extern void sc1PStageCardInitVars(void);
 extern void sc1PStageCardProcRun(GObj *gobj);
 extern void sc1PStageCardSetupFighterFiles(s32 stage);
-extern void sc1PStageCardProcStart(void);
+extern void sc1PStageCardFuncStart(void);
 extern void sc1PStageCardStartScene(void);
 
 #endif

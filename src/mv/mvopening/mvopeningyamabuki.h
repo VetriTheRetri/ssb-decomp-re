@@ -15,7 +15,7 @@ extern intptr_t lMVOpeningYamabukiMBallAnimJoint;       // 0x0000CAC0
 extern intptr_t lMVOpeningYamabukiCamAnimJoint;         // 0x0000D330
 extern intptr_t lMVOpeningYamabukiWallpaperSprite;      // 0x0003EE58
 
-extern void mvOpeningYamabukiProcLights(Gfx **dls);
+extern void mvOpeningYamabukiFuncLights(Gfx **dls);
 extern void mvOpeningYamabukiMakeWallpaper(void);
 extern void mvOpeningYamabukiMakeFighter(void);
 extern void mvOpeningYamabukiMakeLegs(void);
@@ -25,7 +25,7 @@ extern void mvOpeningYamabukiMakeMainViewport(void);
 extern void mvOpeningYamabukiMakeWallpaperViewport(void);
 extern void mvOpeningYamabukiInitTotalTimeTics(void);
 extern void mvOpeningYamabukiProcRun(GObj *gobj);
-extern void mvOpeningYamabukiProcStart(void);
+extern void mvOpeningYamabukiFuncStart(void);
 extern void mvOpeningYamabukiStartScene(void);
 
 #endif

@@ -374,7 +374,7 @@ Lights1 dSC1PStageClearLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0
 // // // // // // // // // // // //
 
 // 0x80131B00
-void sc1PStageClearProcLights(Gfx **dls)
+void sc1PStageClearFuncLights(Gfx **dls)
 {
 	gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(dls, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
@@ -1957,7 +1957,7 @@ void sc1PStageClearCopyFramebufToWallpaper(void)
 }
 
 // 0x80134CC4
-void sc1PStageClearProcStart(void)
+void sc1PStageClearFuncStart(void)
 {
 	s32 unused;
 	lbRelocSetup rl_setup;
@@ -2048,7 +2048,7 @@ syTasklogSetup dGM1PStageClearTasklogSetup =
         0x8000,                     // ???
         2,                          // ???
         0xC000,                     // ???
-        sc1PStageClearProcLights,   // Pre-render function
+        sc1PStageClearFuncLights,   // Pre-render function
         update_contdata,            // Controller I/O function
     },
 
@@ -2071,7 +2071,7 @@ syTasklogSetup dGM1PStageClearTasklogSetup =
     0,                              // Number of Cameras
     sizeof(Camera),                 // Camera size
     
-    sc1PStageClearProcStart         // Task start function
+    sc1PStageClearFuncStart         // Task start function
 };
 
 // 0x80134E84

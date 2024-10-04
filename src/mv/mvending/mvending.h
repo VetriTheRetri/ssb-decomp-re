@@ -7,7 +7,7 @@
 
 extern intptr_t lMVEndingOperatorCamAnimJoint;          // 0x00000000
 
-extern void mvEndingProcLights(Gfx **dls);
+extern void mvEndingFuncLights(Gfx **dls);
 extern void mvEndingMakeRoomBackground(void);
 extern void mvEndingMakeRoomDesk(void);
 extern void mvEndingMakeRoomBooks(void);
@@ -26,7 +26,7 @@ extern void mvEndingSetupOperatorCamera(GObj *gobj);
 extern void mvEndingMakeMainCameras(void);
 extern void mvEndingInitVars(void);
 extern void mvEndingProcRun(GObj *gobj);
-extern void mvEndingProcStart(void);
+extern void mvEndingFuncStart(void);
 extern void mvEndingStartScene(void);
 
 #endif

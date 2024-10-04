@@ -23,7 +23,7 @@ extern intptr_t lMNModeSelectDecalBarMiddleSprite;                      // 0x000
 extern intptr_t lMNModeSelectOptionOptionNotSprite;                     // 0x000082F8
 extern intptr_t lMNModeSelectLabelOptionSprite;                         // 0x000084F8
 
-extern void mnModeSelectProcLights(Gfx **dls);
+extern void mnModeSelectFuncLights(Gfx **dls);
 extern void mnModeSelectMake1PMode(void);
 extern void mnModeSelectMakeVSMode(void);
 extern void mnModeSelectMakeOption(void);
@@ -36,7 +36,7 @@ extern void mnModeSelectMakeOptions(void);
 extern void mnModeSelectEjectOptions(void);
 extern void mnModeSelectInitVars(void);
 extern void mnModeSelectProcRun(GObj *gobj);
-extern void mnModeSelectProcStart(void);
+extern void mnModeSelectFuncStart(void);
 extern void mnModeSelectStartScene(void);
 
 #endif

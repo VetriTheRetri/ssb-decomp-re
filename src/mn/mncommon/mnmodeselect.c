@@ -109,7 +109,7 @@ scRuntimeInfo dMNModeSelectTasklogSetup =
     0x8000,
     0x20000,
     0xC000,
-    mnModeSelectProcLights,
+    mnModeSelectFuncLights,
     update_contdata,
     0,
     0x600,
@@ -129,7 +129,7 @@ scRuntimeInfo dMNModeSelectTasklogSetup =
     0x6C,
     0,
     0x90,
-    mnModeSelectProcStart
+    mnModeSelectFuncStart
 };
 
 // // // // // // // // // // // //
@@ -139,7 +139,7 @@ scRuntimeInfo dMNModeSelectTasklogSetup =
 // // // // // // // // // // // //
 
 // 0x80131B00
-void mnModeSelectProcLights(Gfx **dls)
+void mnModeSelectFuncLights(Gfx **dls)
 {
     gSPDisplayList(dls[0]++, dMNModeSelectDisplayList);
 }
@@ -714,7 +714,7 @@ void mnModeSelectProcRun(GObj *gobj)
 }
 
 // 0x80132A0C
-void mnModeSelectProcStart(void)
+void mnModeSelectFuncStart(void)
 {
     lbRelocSetup rl_setup;
 

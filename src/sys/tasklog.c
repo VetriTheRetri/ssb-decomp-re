@@ -1288,7 +1288,7 @@ void syTasklogInit(syTasklogSetup *ts)
 	D_800465F8.func_update = func_80006350;
 	D_800465F8.func_draw = func_800063A0;
 
-	func_80006548(&ts->buffer_setup, ts->proc_start);
+	func_80006548(&ts->buffer_setup, ts->func_start);
 }
 
 // 80006A8C

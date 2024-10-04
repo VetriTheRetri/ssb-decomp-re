@@ -16,7 +16,7 @@ extern intptr_t lMNMessageUnlockInishieSprite;              // 0x00003458
 extern intptr_t lMNMessageUnlockSoundTestSprite;            // 0x00004180
 extern intptr_t lMNMessageUnlockItemSwitchSprite;           // 0x00004EB0
 
-extern void mnMessageProcLights(Gfx **dls);
+extern void mnMessageFuncLights(Gfx **dls);
 extern void mnMessageMakeWallpaper(void);
 extern void mnMessageTintProcDisplay(GObj *gobj);
 extern void mnMessageMakeTint(void);
@@ -29,7 +29,7 @@ extern void mnMessageMakeExclaimCamera(void);
 extern void mnMessageInitVars(void);
 extern void mnMessageApplyUnlock(void);
 extern void mnMessageProcRun(GObj *gobj);
-extern void mnMessageProcStart(void);
+extern void mnMessageFuncStart(void);
 extern void mnMessageStartScene(void);
 
 #endif

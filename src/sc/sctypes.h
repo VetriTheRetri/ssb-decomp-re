@@ -392,7 +392,7 @@ typedef struct scRuntimeInfo
 	s32 unk_0x7C;
 	s32 unk_0x80;
 	s32 unk_0x84;
-	void (*proc_start)(); // 0x88
+	void (*func_start)(); // 0x88
 
 } scRuntimeInfo; // This is actually something from gtl.c, will have to move at a later point
 

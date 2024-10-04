@@ -1577,7 +1577,7 @@ void scManager_TrainingMode_InitScene()
 	syDisplayInit(&D_ovl7_80190870);
 
 	D_ovl7_8019088C.arena_size = (size_t) ((uintptr_t)&lOverlay7ArenaHi - (uintptr_t)&lOverlay7ArenaLo);
-	D_ovl7_8019088C.proc_start = scTrainingMode_InitTrainingMode;
+	D_ovl7_8019088C.func_start = scTrainingMode_InitTrainingMode;
 
 	do
 	{

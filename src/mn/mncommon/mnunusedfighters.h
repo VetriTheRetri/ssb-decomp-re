@@ -6,10 +6,10 @@
 #include <PR/gbi.h>
 #include <mn/mndef.h>
 
-extern void mnUnusedFightersProcLights(Gfx **dls);
+extern void mnUnusedFightersFuncLights(Gfx **dls);
 extern void mnUnusedFightersTimeProcUpdate(GObj *gobj);
 extern void mnUnusedFightersProcRun(GObj *gobj);
-extern void mnUnusedFightersProcStart(void);
+extern void mnUnusedFightersFuncStart(void);
 extern void mnUnusedFightersStartScene(void);
 
 #endif

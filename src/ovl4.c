@@ -489,7 +489,7 @@ void scBattleRoyalStartScene()
 	D_ovl4_8018E3D8.zbuffer = syDisplayGetZBuffer(6400);
 	syDisplayInit(&D_ovl4_8018E3D8);
 	D_ovl4_8018E3F4.arena_size = (uintptr_t)((uintptr_t)&D_NF_80392A00 - (uintptr_t)&D_NF_8018E7E0);
-	D_ovl4_8018E3F4.proc_start = scBattle_StartStockBattle;
+	D_ovl4_8018E3F4.func_start = scBattle_StartStockBattle;
 	func_800A2698(&D_ovl4_8018E3F4);
 	auStopBGM();
 
@@ -506,7 +506,7 @@ void scBattleRoyalStartScene()
 
 		gBattleState->game_type = nSCBattleGameTypeRoyal;
 
-		D_ovl4_8018E3F4.proc_start = scBattle_StartSDBattle;
+		D_ovl4_8018E3F4.func_start = scBattle_StartSDBattle;
 
 		func_800A2698(&D_ovl4_8018E3F4);
 		auStopBGM();

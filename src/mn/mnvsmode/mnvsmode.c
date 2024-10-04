@@ -116,7 +116,7 @@ Gfx dMNVSModeDisplayList[/* */] =
 };
 
 // 0x80131B00
-void mnVSModeProcLights(Gfx **display_list)
+void mnVSModeFuncLights(Gfx **display_list)
 {
     gSPDisplayList(display_list[0]++, dMNVSModeDisplayList);
 }
@@ -947,7 +947,7 @@ void mnVSModeMakeBackgroundViewport()
 }
 
 // 0x801336AC
-void mnVSModeProcStartVars()
+void mnVSModeFuncStartVars()
 {
     if (gSceneData.scene_previous == nSCKindVSOptions)
     {
@@ -1458,7 +1458,7 @@ void mnVSModeMain(GObj *gobj)
 }
 
 // 0x801345C4
-void mnVSModeProcStart(void)
+void mnVSModeFuncStart(void)
 {
     lbRelocSetup rl_setup;
 
@@ -1500,7 +1500,7 @@ void mnVSModeProcStart(void)
     gcMakeGObjSPAfter(0, mnVSModeMain, 0, GOBJ_LINKORDER_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 
-    mnVSModeProcStartVars();
+    mnVSModeFuncStartVars();
     mnVSModeMakeBackgroundViewport();
     mnVSModeMakeMenuNameViewport();
     mnVSModeMakeButtonViewport();
@@ -1541,7 +1541,7 @@ scRuntimeInfo dMNVSModeTasklogSetup =
     0x8000,
     0x20000,
     0xC000,
-    mnVSModeProcLights,
+    mnVSModeFuncLights,
     update_contdata,
     0,
     0x600,
@@ -1561,7 +1561,7 @@ scRuntimeInfo dMNVSModeTasklogSetup =
     0x6C,
     0,
     0x90,
-    mnVSModeProcStart
+    mnVSModeFuncStart
 };
 
 // 0x80134758

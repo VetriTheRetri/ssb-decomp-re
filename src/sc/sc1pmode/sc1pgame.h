@@ -66,7 +66,7 @@ extern u32 gSC1PGameBonusDefendIsProjectileCount[/* */];
 extern void sc1PGameSetupFiles(void);
 extern void sc1PGameSetGameStart(void);
 extern void sc1PGameSetGameEnd(void);
-extern void sc1PGameProcScene(void);
+extern void sc1PGameFuncUpdate(void);
 extern s32 sc1PGameGetNextFreePlayerPort(s32 player);
 extern s32 sc1PGameGetNextFreeCostume(s32 com);
 extern void func_ovl65_8018D38C(void);
@@ -101,10 +101,10 @@ extern void sc1PGameBossDefeatInterfaceProcUpdate(void);
 extern void func_ovl65_8018F6DC(void);
 extern void sc1PGameBossDefeatInterfaceProcSet(void);
 extern void sc1PGameBossDefeatInitInterface(GObj *fighter_gobj);
-extern void sc1PGameProcStart(void);
+extern void sc1PGameFuncStart(void);
 extern void sc1PGameAppendBonusStats(void);
 extern void sc1PGameInitBonusStats(void);
-extern void sc1PGameProcLights(Gfx **dls);
+extern void sc1PGameFuncLights(Gfx **dls);
 extern void sc1PGameStartScene(void);
 
 #endif

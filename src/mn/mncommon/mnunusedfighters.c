@@ -83,7 +83,7 @@ scRuntimeInfo dMNUnusedFightersTasklogSetup =
     0x400,
     0x20000,
     0x1000,
-    mnUnusedFightersProcLights,
+    mnUnusedFightersFuncLights,
     update_contdata,
     0x20,
     0x100,
@@ -103,7 +103,7 @@ scRuntimeInfo dMNUnusedFightersTasklogSetup =
     0x6C,
     0x8,
     0x90,
-    mnUnusedFightersProcStart
+    mnUnusedFightersFuncStart
 };
 
 // // // // // // // // // // // //
@@ -113,7 +113,7 @@ scRuntimeInfo dMNUnusedFightersTasklogSetup =
 // // // // // // // // // // // //
 
 // 0x800D6490
-void mnUnusedFightersProcLights(Gfx **dls)
+void mnUnusedFightersFuncLights(Gfx **dls)
 {
     gSPDisplayList(dls[0]++, dMNUnusedFightersDisplayList);
 }
@@ -165,7 +165,7 @@ void mnUnusedFightersProcRun(GObj *gobj)
 }
 
 // 0x800D65C4
-void mnUnusedFightersProcStart(void)
+void mnUnusedFightersFuncStart(void)
 {
     s32 unused[2];
     lbRelocSetup rl_setup;

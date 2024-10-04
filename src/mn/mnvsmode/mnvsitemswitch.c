@@ -117,7 +117,7 @@ Gfx dMNVSItemSwitchDisplayList[/* */] =
 // // // // // // // // // // // //
 
 // 0x80131B00
-void mnVSItemSwitchProcLights(Gfx **dls)
+void mnVSItemSwitchFuncLights(Gfx **dls)
 {
     gSPDisplayList(dls[0]++, dMNVSItemSwitchDisplayList);
 }
@@ -796,7 +796,7 @@ void mnVSItemSwitchProcRun(GObj *gobj)
 }
 
 // 0x80133090
-void mnVSItemSwitchProcStart(void)
+void mnVSItemSwitchFuncStart(void)
 {
     lbRelocSetup rl_setup;
 
@@ -859,7 +859,7 @@ scRuntimeInfo dMNVSItemSwitchTasklogSetup =
     0x8000,
     0x20000,
     0xC000,
-    mnVSItemSwitchProcLights,
+    mnVSItemSwitchFuncLights,
     update_contdata,
     0x8,
     0x600,
@@ -879,7 +879,7 @@ scRuntimeInfo dMNVSItemSwitchTasklogSetup =
     0x6C,
     0,
     0x90,
-    mnVSItemSwitchProcStart
+    mnVSItemSwitchFuncStart
 };
 
 // 0x801331B0

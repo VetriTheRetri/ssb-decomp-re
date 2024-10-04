@@ -76,7 +76,7 @@ scRuntimeInfo dMNN64TasklogSetup =
 	0x00002800,
 	0x00020000,
 	0x0000c000,
-	mnN64ProcLights,
+	mnN64FuncLights,
 	0x80004310,
 	0x00000000,
 	0x00000600,
@@ -96,7 +96,7 @@ scRuntimeInfo dMNN64TasklogSetup =
 	0x0000006c,
 	0x00000000,
 	0x00000090,
-	mnN64ProcStart
+	mnN64FuncStart
 };
 
 // // // // // // // // // // // //
@@ -176,7 +176,7 @@ void mnN64ActorProcRun(GObj *gobj)
 }
 
 // 0x80131CB8
-void mnN64ProcStart(void)
+void mnN64FuncStart(void)
 {
 	lbRelocSetup rl_setup;
 	Camera *cam;
@@ -258,7 +258,7 @@ void mnN64ProcStart(void)
 }
 
 // 0x80131ECC
-void mnN64ProcLights(Gfx **dls)
+void mnN64FuncLights(Gfx **dls)
 {
 	gSPDisplayList(dls[0]++, dMNN64DisplayList);
 }

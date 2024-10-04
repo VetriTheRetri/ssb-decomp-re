@@ -22,7 +22,7 @@ extern intptr_t lMVOpeningNewcomersNessShowDisplayList;         // 0x0002A448
 extern intptr_t lMVOpeningNewcomersNessAnimJoint;               // 0x0002A864
 extern intptr_t lMVOpeningNewcomersNessHiddenDisplayList;       // 0x0003BAF8
 
-extern void mvOpeningNewcomersProcLights(Gfx **dls);
+extern void mvOpeningNewcomersFuncLights(Gfx **dls);
 extern sb32 mvOpeningNewcomersCheckLocked(s32 ft_kind);
 extern void mvOpeningNewcomersMakePurin(void);
 extern void mvOpeningNewcomersMakeCaptain(void);
@@ -35,7 +35,7 @@ extern void mvOpeningNewcomersMakeCharacterViewport(void);
 extern void mvOpeningNewcomersMakeHideViewport(void);
 extern void mvOpeningNewcomersInitVars(void);
 extern void mvOpeningNewcomersProcRun(GObj *gobj);
-extern void mvOpeningNewcomersProcStart(void);
+extern void mvOpeningNewcomersFuncStart(void);
 extern void mvOpeningNewcomersStartScene(void);
 
 #endif

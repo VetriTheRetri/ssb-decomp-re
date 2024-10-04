@@ -87,7 +87,7 @@ Lights1 dMVOpeningSectorLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 
 // // // // // // // // // // // //
 
 // 0x80131B00
-void mvOpeningSectorProcLights(Gfx **dls)
+void mvOpeningSectorFuncLights(Gfx **dls)
 {
     gSPSetGeometryMode(dls[0]++, G_LIGHTING);
     ftDisplayLightsDrawReflect(dls, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
@@ -527,7 +527,7 @@ void mvOpeningSectorProcRun(GObj *gobj)
 }
 
 // 0x80132738
-void mvOpeningSectorProcStart(void)
+void mvOpeningSectorFuncStart(void)
 {
     s32 i;
     lbRelocSetup rldmSetup;
@@ -598,7 +598,7 @@ scRuntimeInfo mvOpeningSectorTasklogSetup =
 	0x00008000,
 	0x00020000,
 	0x0000C000,
-	mvOpeningSectorProcLights,
+	mvOpeningSectorFuncLights,
 	update_contdata,
 	0x00000000,
 	0x00000600,
@@ -618,7 +618,7 @@ scRuntimeInfo mvOpeningSectorTasklogSetup =
 	0x0000006C,
 	0x00000000,
 	0x00000090,
-	mvOpeningSectorProcStart
+	mvOpeningSectorFuncStart
 };
 
 // 0x80132898

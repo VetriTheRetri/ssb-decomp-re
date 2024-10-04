@@ -28,7 +28,7 @@ extern intptr_t lMNBackupClearTextAreYouSureSprite;         // 0x000069D8
 
 extern intptr_t lMNBackupClearOptionConfirmPalette;         // 0x00007550
 
-extern void mnBackupClearProcLights(Gfx **dls);
+extern void mnBackupClearFuncLights(Gfx **dls);
 extern void mnBackupClearMakeUnused(s32 option);
 extern void mnBackupClearMakeHeaderSObjs(void);
 extern void mnBackupClearUpdateOptionTabColors(GObj *gobj, s32 status);
@@ -43,7 +43,7 @@ extern void mnBackupClearApplyOptionID(s32 option);
 extern void mnBackupClearUpdateOptionMainMenu(void);
 extern void mnBackupClearUpdateOptionConfirmMenu(sb32 confirm_kind);
 extern void mnBackupClearProcRun(GObj *gobj);
-extern void mnBackupClearProcStart(void);
+extern void mnBackupClearFuncStart(void);
 extern void mnBackupClearStartScene(void);
 
 #endif

@@ -118,7 +118,7 @@ Gfx dMNVSOptionsDisplayList[/* */] =
 // // // // // // // // // // // //
 
 // 0x80131B00
-void mnVSOptionsProcLights(Gfx **dls)
+void mnVSOptionsFuncLights(Gfx **dls)
 {
     gSPDisplayList(dls[0]++, dMNVSOptionsDisplayList);
 }
@@ -1358,7 +1358,7 @@ void mnVSOptionsProcRun(GObj *gobj)
 }
 
 // 0x80134504
-void mnVSOptionsProcStart(void)
+void mnVSOptionsFuncStart(void)
 {
     lbRelocSetup rl_setup;
 
@@ -1434,7 +1434,7 @@ scRuntimeInfo dMNVSOptionsTasklogSetup =
     0x8000,
     0x20000,
     0xC000,
-    mnVSOptionsProcLights,
+    mnVSOptionsFuncLights,
     update_contdata,
     0,
     0x600,
@@ -1454,7 +1454,7 @@ scRuntimeInfo dMNVSOptionsTasklogSetup =
     0x6C,
     0,
     0x90,
-    mnVSOptionsProcStart
+    mnVSOptionsFuncStart
 };
 
 // 0x80134668

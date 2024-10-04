@@ -164,7 +164,7 @@ syTasklogSetup dSCAutoDemoTasklogSetup =
     // Task Logic Buffer Setup
     {
         0,                          // ???
-        scAutoDemoProcScene,        // Update function
+        scAutoDemoFuncUpdate,        // Update function
         func_800A26B8,              // Frame draw function
         &ovl64_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
@@ -177,7 +177,7 @@ syTasklogSetup dSCAutoDemoTasklogSetup =
         0x8000,                     // ???
         2,                          // ???
         0xC000,                     // ???
-        scAutoDemoProcLights,    	// Pre-render function
+        scAutoDemoFuncLights,    	// Pre-render function
         update_contdata,            // Controller I/O function
     },
 
@@ -200,7 +200,7 @@ syTasklogSetup dSCAutoDemoTasklogSetup =
     0,                              // Number of Cameras
     sizeof(Camera),                 // Camera size
     
-    scAutoDemoProcStart           	// Task start function
+    scAutoDemoFuncStart           	// Task start function
 };
 
 // // // // // // // // // // // //
@@ -210,7 +210,7 @@ syTasklogSetup dSCAutoDemoTasklogSetup =
 // // // // // // // // // // // //
 
 // 0x8018D0C0
-void scAutoDemoProcScene(void)
+void scAutoDemoFuncUpdate(void)
 {
 	func_8000A5E4();
 }
@@ -624,7 +624,7 @@ void scAutoDemoInitSObjs(void)
 }
 
 // 0x8018DCC4
-void scAutoDemoProcStart(void)
+void scAutoDemoFuncStart(void)
 {
 	GObj *fighter_gobj;
 	ftCreateDesc player_spawn;
@@ -718,7 +718,7 @@ void scAutoDemoProcStart(void)
 }
 
 // 0x8018DFC8
-void scAutoDemoProcLights(Gfx **dls)
+void scAutoDemoFuncLights(Gfx **dls)
 {
 	gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 
@@ -733,7 +733,7 @@ void scAutoDemoStartScene(void)
 	syDisplayInit(&dSCAutoDemoDisplaySetup);
 
 	dSCAutoDemoTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl64_BSS_END);
-	dSCAutoDemoTasklogSetup.proc_start = scAutoDemoProcStart;
+	dSCAutoDemoTasklogSetup.func_start = scAutoDemoFuncStart;
 
 	func_800A2698(&dSCAutoDemoTasklogSetup);
 	auStopBGM();

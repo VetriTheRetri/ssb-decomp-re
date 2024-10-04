@@ -145,7 +145,7 @@ Gfx dMNBackupClearDisplayList[/* */] =
 // // // // // // // // // // // //
 
 // 0x80131B00
-void mnBackupClearProcLights(Gfx **dls)
+void mnBackupClearFuncLights(Gfx **dls)
 {
     gSPDisplayList(dls[0]++, dMNBackupClearDisplayList);
 }
@@ -767,7 +767,7 @@ void mnBackupClearProcRun(GObj *gobj)
 }
 
 // 0x80132D34
-void mnBackupClearProcStart(void)
+void mnBackupClearFuncStart(void)
 {
     lbRelocSetup rl_setup;
 
@@ -828,7 +828,7 @@ scRuntimeInfo dMNBackupClearTasklogSetup =
     0x8000,
     0x20000,
     0xC000,
-    mnBackupClearProcLights,
+    mnBackupClearFuncLights,
     update_contdata,
     0,
     0x600,
@@ -848,7 +848,7 @@ scRuntimeInfo dMNBackupClearTasklogSetup =
     0x6C,
     0,
     0x90,
-    mnBackupClearProcStart
+    mnBackupClearFuncStart
 };
 
 // 0x80132E28

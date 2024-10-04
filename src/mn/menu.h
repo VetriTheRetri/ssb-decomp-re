@@ -69,14 +69,14 @@ extern intptr_t lMNDataCharacterOptionSprite;        // 0x000014E0
 extern intptr_t lMNDataVSRecordOptionSprite;         // 0x00001900
 extern intptr_t lMNDataSoundTestOptionSprite;        // 0x00001D20
 extern intptr_t lMNDataHeaderTextSprite;             // 0x000023A8
-extern intptr_t lMNDataNotebookSprite;               // 0x00004A78
+extern intptr_t lMNDataDecalNotebookSprite;               // 0x00004A78
 
 extern intptr_t lMNOptionMonoTextSprite;             // 0x000071F8
 extern intptr_t lMNOptionStereoTextSprite;           // 0x000073A8
 extern intptr_t lMNOptionSoundTextSprite;            // 0x00007628
 extern intptr_t lMNOptionScreenAdjustTextSprite;     // 0x00008138
 extern intptr_t lMNOptionBackupClearTextSprite;      // 0x00008780
-extern intptr_t lMNOptionHeaderTextSprite;           // 0x00009288
+extern intptr_t lMNOptionLabelTextSprite;           // 0x00009288
 extern intptr_t lMNOptionKnobSprite;                 // 0x0000B958
 
 #endif

@@ -163,7 +163,7 @@ scRuntimeInfo dMNCongraTasklogSetup =
 	0x00002800,
 	0x00020000,
 	0x0000c000,
-	mnCongraProcLights,
+	mnCongraFuncLights,
 	0x80004310,
 	0x00000000,
 	0x00000600,
@@ -183,7 +183,7 @@ scRuntimeInfo dMNCongraTasklogSetup =
 	0x0000006c,
 	0x00000000,
 	0x00000090,
-	mnCongraProcStart
+	mnCongraFuncStart
 };
 
 // // // // // // // // // // // //
@@ -249,7 +249,7 @@ void mnCongraActorProcRun(GObj *gobj)
 }
 
 // 0x80131CA4
-void mnCongraProcStart(void)
+void mnCongraFuncStart(void)
 {
 	lbRelocSetup rl_setup;
 	Camera *cam;
@@ -388,7 +388,7 @@ void mnCongraUpdateScene(void)
 }
 
 // 0x80131FE8
-void mnCongraProcLights(Gfx **dls)
+void mnCongraFuncLights(Gfx **dls)
 {
 	gSPDisplayList(dls[0]++, dMNCongraDisplayList);
 }

@@ -106,7 +106,7 @@ Gfx dSC1PStageCardDisplayList[/* */] =
 // // // // // // // // // // // //
 
 // 0x80131B00
-void sc1PStageCardProcLights(Gfx **dls)
+void sc1PStageCardFuncLights(Gfx **dls)
 {
     gSPDisplayList(dls[0]++, dSC1PStageCardDisplayList);
 }
@@ -1912,7 +1912,7 @@ void sc1PStageCardSetupFighterFiles(s32 stage)
 }
 
 // 0x80134B38
-void sc1PStageCardProcStart(void)
+void sc1PStageCardFuncStart(void)
 {
     lbRelocSetup rl_setup;
     s32 i;
@@ -2007,7 +2007,7 @@ syTasklogSetup dSC1PStageCardTasklogSetup =
         0x10000,                    // ???
         2,                          // ???
         0xC000,                     // ???
-        sc1PStageCardProcLights,    // Pre-render function
+        sc1PStageCardFuncLights,    // Pre-render function
         update_contdata,            // Controller I/O function
     },
 
@@ -2030,7 +2030,7 @@ syTasklogSetup dSC1PStageCardTasklogSetup =
     0,                              // Number of Cameras
     sizeof(Camera),                 // Camera size
     
-    sc1PStageCardProcStart          // Task start function
+    sc1PStageCardFuncStart          // Task start function
 };
 
 // 0x80134D98

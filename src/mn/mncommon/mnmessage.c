@@ -62,7 +62,7 @@ Gfx dMNMessageDisplayList[/* */] =
 // // // // // // // // // // // //
 
 // 0x80131B00
-void mnMessageProcLights(Gfx **dls)
+void mnMessageFuncLights(Gfx **dls)
 {
     gSPDisplayList(dls[0]++, dMNMessageDisplayList);
 }
@@ -318,7 +318,7 @@ void mnMessageProcRun(GObj *gobj)
 }
 
 // 0x801322D4
-void mnMessageProcStart(void)
+void mnMessageFuncStart(void)
 {
     lbRelocSetup rl_setup;
 
@@ -384,7 +384,7 @@ scRuntimeInfo dMNMessageTasklogSetup =
     0x8000,
     0x20000,
     0xC000,
-    mnMessageProcLights,
+    mnMessageFuncLights,
     update_contdata,
     0,
     0x600,
@@ -404,7 +404,7 @@ scRuntimeInfo dMNMessageTasklogSetup =
     0x6C,
     0,
     0x90,
-    mnMessageProcStart
+    mnMessageFuncStart
 };
 
 // 0x801323F8

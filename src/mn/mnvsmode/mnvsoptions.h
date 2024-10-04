@@ -15,7 +15,7 @@ extern intptr_t lMNVSOptionsTextItemSwitchSprite;           // 0x00003FC8
 extern intptr_t lMNVSOptionsTextDamageSprite;               // 0x00004228
 extern intptr_t lMNVSOptionsDecalN64Sprite;                 // 0x00005F60
 
-extern void mnVSOptionsProcLights(Gfx **dls);
+extern void mnVSOptionsFuncLights(Gfx **dls);
 extern s32 mnVSOptionsGetPowerOf(s32 base, s32 exp);
 extern void mnVSOptionsSetDamageDigitSpriteColors(SObj *sobj, u32 *colors);
 extern s32 mnVSOptionsGetDamageDigitCount(s32 damage, s32 digit_count_max);
@@ -50,7 +50,7 @@ extern void mnVSOptionsInitVars(void);
 extern void mnVSOptionsSetAllSettings(void);
 extern void mnVSOptionsSetHandicapSettings(void);
 extern void mnVSOptionsProcRun(GObj *gobj);
-extern void mnVSOptionsProcStart(void);
+extern void mnVSOptionsFuncStart(void);
 extern void mnVSOptionsStartScene(void);
 
 #endif

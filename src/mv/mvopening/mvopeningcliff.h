@@ -12,7 +12,7 @@ extern intptr_t lMVOpeningCliffOcarinaAnimJoint;    // 0x00006850
 extern intptr_t lMVOpeningCliffCamAnimJoint;        // 0x00008910
 extern intptr_t lMVOpeningCliffWallpaperSprite;     // 0x0000B500
 
-extern void mvOpeningCliffProcLights(Gfx **dls);
+extern void mvOpeningCliffFuncLights(Gfx **dls);
 extern void mvOpeningCliffHillsProcDisplay(GObj *hills_gobj);
 extern void mvOpeningCliffMakeHills(void);
 extern void mvOpeningCliffMakeFighter(void);
@@ -24,7 +24,7 @@ extern void mvOpeningCliffMakeMainViewport(void);
 extern void mvOpeningCliffMakeWallpaperViewport(void);
 extern void mvOpeningCliffInitTotalTimeTics(void);
 extern void mvOpeningCliffProcRun(GObj *gobj);
-extern void mvOpeningCliffProcStart(void);
+extern void mvOpeningCliffFuncStart(void);
 extern void mvOpeningCliffStartScene(void);
 
 #endif

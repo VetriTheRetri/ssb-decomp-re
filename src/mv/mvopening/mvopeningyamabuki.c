@@ -89,7 +89,7 @@ scRuntimeInfo dMVOpeningYamabukiTasklogSetup =
 	0x00008000,
 	0x00020000,
 	0x0000C000,
-	mvOpeningYamabukiProcLights,
+	mvOpeningYamabukiFuncLights,
 	update_contdata,
 	0x00000008,
 	0x00000600,
@@ -109,7 +109,7 @@ scRuntimeInfo dMVOpeningYamabukiTasklogSetup =
 	0x0000006C,
 	0x00000010,
 	0x00000090,
-	mvOpeningYamabukiProcStart
+	mvOpeningYamabukiFuncStart
 };
 
 // // // // // // // // // // // //
@@ -119,7 +119,7 @@ scRuntimeInfo dMVOpeningYamabukiTasklogSetup =
 // // // // // // // // // // // //
 
 // 0x80131B00
-void mvOpeningYamabukiProcLights(Gfx **dls)
+void mvOpeningYamabukiFuncLights(Gfx **dls)
 {
     gSPSetGeometryMode(dls[0]++, G_LIGHTING);
     ftDisplayLightsDrawReflect(dls, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
@@ -394,7 +394,7 @@ void mvOpeningYamabukiProcRun(GObj *gobj)
 }
 
 // 0x801321A8
-void mvOpeningYamabukiProcStart(void)
+void mvOpeningYamabukiFuncStart(void)
 {
     s32 unused;
     lbRelocSetup rl_setup;

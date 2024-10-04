@@ -75,7 +75,7 @@ Lights1 dMVOpeningClashLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0
 // // // // // // // // // // // //
 
 // 0x80131B00
-void mvOpeningClashProcLights(Gfx **dls)
+void mvOpeningClashFuncLights(Gfx **dls)
 {
     gSPSetGeometryMode(dls[0]++, G_LIGHTING);
     ftDisplayLightsDrawReflect(dls, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
@@ -387,7 +387,7 @@ void mvOpeningClashProcRun(GObj *gobj)
 }
 
 // 0x8013267C
-void mvOpeningClashProcStart(void)
+void mvOpeningClashFuncStart(void)
 {
     s32 i;
     lbRelocSetup rl_setup;
@@ -474,7 +474,7 @@ scRuntimeInfo dMVOpeningClashTasklogSetup =
 	0x00008000,
 	0x00020000,
 	0x0000C000,
-	mvOpeningClashProcLights,
+	mvOpeningClashFuncLights,
 	update_contdata,
 	0x00000008,
 	0x00000600,
@@ -494,7 +494,7 @@ scRuntimeInfo dMVOpeningClashTasklogSetup =
 	0x0000006C,
 	0x00000010,
 	0x00000090,
-	mvOpeningClashProcStart
+	mvOpeningClashFuncStart
 };
 
 // 0x80132874

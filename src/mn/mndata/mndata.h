@@ -6,24 +6,24 @@
 #include <PR/gbi.h>
 #include <mn/mndef.h>
 
-extern void mnDataProcLights(Gfx **dls);
+extern void mnDataFuncLights(Gfx **dls);
 extern sb32 mnDataCheckSoundTestUnlocked(void);
 extern void mnDataSetOptionSpriteColors(GObj *gobj, s32 status);
-extern void mnDataMakeOptionTabs(GObj *gobj, f32 posx, f32 posy, s32 lrs);
-extern void mnDataMakeCharactersSObj(void);
-extern void mnDataMakeVSRecordSObj(void);
-extern void mnDataMakeSoundTestSObj(void);
+extern void mnDataMakeOptionTab(GObj *gobj, f32 posx, f32 posy, s32 lrs);
+extern void mnDataMakeCharacters(void);
+extern void mnDataMakeVSRecord(void);
+extern void mnDataMakeSoundTest(void);
 extern void func_ovl61_801320A0(SObj *sobj);
 extern void mnDataMakeMenuGObj(void);
-extern void mnDataHeaderProcDisplay(GObj *gobj);
-extern void mnDataMakeHeaderSObjs(void);
-extern void mnDataMakeDecalSObjs(void);
+extern void mnDataLabelsProcDisplay(GObj *gobj);
+extern void mnDataMakeLabels(void);
+extern void mnDataMakeDecals(void);
 extern void mnDataMakeLink3Camera(void);
-extern void mnDataMakeLink2Camera(void);
-extern void mnDataMakeLink1Camera(void);
-extern void mnDataMakeLink0Camera(void);
+extern void mnDataMakeOptionsCamera(void);
+extern void mnDataMakeLabelsCamera(void);
+extern void mnDataMakeDecalsCamera(void);
 extern void mnDataInitVars(void);
 extern void mnDataProcRun(GObj *gobj);
-extern void mnDataProcStart(void);
+extern void mnDataFuncStart(void);
 
 #endif

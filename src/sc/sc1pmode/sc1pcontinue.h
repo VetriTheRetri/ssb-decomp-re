@@ -16,7 +16,7 @@ extern intptr_t lSC1PContinueRoom;                      // 0x0001E3D8
 extern intptr_t lSC1PContinueSpotlight;                 // 0x00021900
 extern intptr_t lSC1PContinueShadow;                    // 0x000224F8
 
-extern void sc1PContinueProcLights(Gfx **dls);
+extern void sc1PContinueFuncLights(Gfx **dls);
 extern s32 sc1PContinueGetPowerOf(s32 base, s32 exp);
 extern void sc1PContinueScoreDigitInitSprite(SObj *sobj);
 extern s32 sc1PContinueGetScoreDigitCount(s32 points, s32 digit_count_max);
@@ -66,7 +66,7 @@ extern void sc1PContinueMakeLink28Camera(void);
 extern void sc1PContinueInitVars(void);
 extern void sc1PContinueUnused0x80133990(void);
 extern void sc1PContinueProcRun(GObj *gobj);
-extern void sc1PContinueProcStart(void);
+extern void sc1PContinueFuncStart(void);
 extern void sc1PContinueStartScene(void);
 
 #endif

@@ -15,11 +15,20 @@ extern void func_80007080(void*, f32, f32, f32, f32);
 //                               //
 // // // // // // // // // // // //
 
-#define mnDataCheckGetOptionButtonInput(is_button, mask) mnCommonCheckGetOptionButtonInput(sMNDataOptionChangeWait, is_button, mask)
-#define mnDataCheckGetOptionStickInputUD(stick_range, min, b) mnCommonCheckGetOptionStickInputUD(sMNDataOptionChangeWait, stick_range, min, b)
-#define mnDataCheckGetOptionStickInputLR(stick_range, min, b) mnCommonCheckGetOptionStickInputLR(sMNDataOptionChangeWait, stick_range, min, b)
-#define mnDataSetOptionChangeWaitP(is_button, stick_range, div) mnCommonSetOptionChangeWaitP(sMNDataOptionChangeWait, is_button, stick_range, div)
-#define mnDataSetOptionChangeWaitN(is_button, stick_range, div) mnCommonSetOptionChangeWaitN(sMNDataOptionChangeWait, is_button, stick_range, div)
+#define mnDataCheckGetOptionButtonInput(is_button, mask) \
+mnCommonCheckGetOptionButtonInput(sMNDataOptionChangeWait, is_button, mask)
+
+#define mnDataCheckGetOptionStickInputUD(stick_range, min, b) \
+mnCommonCheckGetOptionStickInputUD(sMNDataOptionChangeWait, stick_range, min, b)
+
+#define mnDataCheckGetOptionStickInputLR(stick_range, min, b) \
+mnCommonCheckGetOptionStickInputLR(sMNDataOptionChangeWait, stick_range, min, b)
+
+#define mnDataSetOptionChangeWaitP(is_button, stick_range, div) \
+mnCommonSetOptionChangeWaitP(sMNDataOptionChangeWait, is_button, stick_range, div)
+
+#define mnDataSetOptionChangeWaitN(is_button, stick_range, div) \
+mnCommonSetOptionChangeWaitN(sMNDataOptionChangeWait, is_button, stick_range, div)
 
 // // // // // // // // // // // //
 //                               //
@@ -37,13 +46,13 @@ extern uintptr_t D_NF_00000005;
 // // // // // // // // // // // //
 
 // 0x80133060
-GObj *sMNDataCharactersGObj;
+GObj *sMNDataOptionCharactersGObj;
 
 // 0x80133064
-GObj *sMNDataVSRecordGObj;
+GObj *sMNDataOptionVSRecordGObj;
 
 // 0x80133068
-GObj *sMNDataSoundTestGObj;
+GObj *sMNDataOptionSoundTestGObj;
 
 // 0x80133070
 s32 sMNDataPad0x80133070[2];
@@ -111,7 +120,7 @@ Gfx dMNDataDisplayList[/* */] =
 // // // // // // // // // // // //
 
 // 0x80131B00
-void mnDataProcLights(Gfx **dls)
+void mnDataFuncLights(Gfx **dls)
 {
     gSPDisplayList(dls[0]++, dMNDataDisplayList);
 }
@@ -176,23 +185,23 @@ void mnDataSetOptionSpriteColors(GObj *gobj, s32 status)
 }
 
 // 0x80131C24
-void mnDataMakeOptionTabs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
+void mnDataMakeOptionTab(GObj *gobj, f32 pos_x, f32 pos_y, s32 lrs)
 {
     SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNDataFiles[0], &lMNCommonOptionTabLeftSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
 
-    sobj->pos.x = posx;
-    sobj->pos.y = posy;
+    sobj->pos.x = pos_x;
+    sobj->pos.y = pos_y;
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNDataFiles[0], &lMNCommonOptionTabMiddleSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
 
-    sobj->pos.x = posx + 16.0F;
-    sobj->pos.y = posy;
+    sobj->pos.x = pos_x + 16.0F;
+    sobj->pos.y = pos_y;
 
     sobj->cms = 0;
     sobj->cmt = 0;
@@ -208,8 +217,8 @@ void mnDataMakeOptionTabs(GObj *gobj, f32 posx, f32 posy, s32 lrs)
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
 
-    sobj->pos.x = posx + 16.0F + (lrs * 8);
-    sobj->pos.y = posy;
+    sobj->pos.x = pos_x + 16.0F + (lrs * 8);
+    sobj->pos.y = pos_y;
 }
 
 // 0x80131D54
@@ -219,29 +228,29 @@ void func_ovl61_80131D54(void)
 }
 
 // 0x80131D5C
-void mnDataMakeCharactersSObj(void)
+void mnDataMakeCharacters(void)
 {
     GObj *gobj;
     SObj *sobj;
-    s32 posx;
-    s32 posy;
+    s32 pos_x;
+    s32 pos_y;
 
     if (sMNDataIsSoundTestUnlocked != FALSE)
     {
-        posx = 133;
-        posy = 42;
+        pos_x = 133;
+        pos_y = 42;
     }
     else
     {
-        posx = 113;
-        posy = 57;
+        pos_x = 113;
+        pos_y = 57;
     }
 
-    sMNDataCharactersGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNDataOptionCharactersGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    mnDataMakeOptionTabs(gobj, posx, posy, 16);
+    mnDataMakeOptionTab(gobj, pos_x, pos_y, 16);
 
     mnDataSetOptionSpriteColors(gobj, sMNDataOption == nMNDataOptionCharacters);
 
@@ -250,8 +259,8 @@ void mnDataMakeCharactersSObj(void)
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
 
-    sobj->pos.x = posx + 26;
-    sobj->pos.y = posy + 4;
+    sobj->pos.x = pos_x + 26;
+    sobj->pos.y = pos_y + 4;
 
     sobj->sprite.red   = 0x00;
     sobj->sprite.green = 0x00;
@@ -259,29 +268,29 @@ void mnDataMakeCharactersSObj(void)
 }
 
 // 0x80131E90
-void mnDataMakeVSRecordSObj(void)
+void mnDataMakeVSRecord(void)
 {
     GObj *gobj;
     SObj *sobj;
-    s32 posx;
-    s32 posy;
+    s32 pos_x;
+    s32 pos_y;
 
     if (sMNDataIsSoundTestUnlocked != FALSE)
     {
-        posx = 101;
-        posy = 89;
+        pos_x = 101;
+        pos_y = 89;
     }
     else
     {
-        posx = 81;
-        posy = 126;
+        pos_x = 81;
+        pos_y = 126;
     }
 
-    sMNDataVSRecordGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNDataOptionVSRecordGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    mnDataMakeOptionTabs(gobj, posx, posy, 16);
+    mnDataMakeOptionTab(gobj, pos_x, pos_y, 16);
 
     mnDataSetOptionSpriteColors(gobj, sMNDataOption == nMNDataOptionVSRecord);
 
@@ -290,8 +299,8 @@ void mnDataMakeVSRecordSObj(void)
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
 
-    sobj->pos.x = posx + 27;
-    sobj->pos.y = posy + 4;
+    sobj->pos.x = pos_x + 27;
+    sobj->pos.y = pos_y + 4;
 
     sobj->sprite.red   = 0x00;
     sobj->sprite.green = 0x00;
@@ -299,16 +308,16 @@ void mnDataMakeVSRecordSObj(void)
 }
 
 // 0x80131FC8
-void mnDataMakeSoundTestSObj(void)
+void mnDataMakeSoundTest(void)
 {
     GObj *gobj;
     SObj *sobj;
 
-    sMNDataSoundTestGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNDataOptionSoundTestGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    mnDataMakeOptionTabs(gobj, 69.0F, 136.0F, 16);
+    mnDataMakeOptionTab(gobj, 69.0F, 136.0F, 16);
 
     mnDataSetOptionSpriteColors(gobj, sMNDataOption == nMNDataOptionSoundTest);
 
@@ -360,7 +369,7 @@ void mnDataMakeMenuGObj(void)
 }
 
 // 0x80132164
-void mnDataHeaderProcDisplay(GObj *gobj)
+void mnDataLabelsProcDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTasklogDLHeads[0]++);
     gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
@@ -377,14 +386,14 @@ void mnDataHeaderProcDisplay(GObj *gobj)
 }
 
 // 0x801322A8
-void mnDataMakeHeaderSObjs(void)
+void mnDataMakeLabels(void)
 {
     GObj *gobj;
     SObj *sobj;
 
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, mnDataHeaderProcDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, mnDataLabelsProcDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNDataFiles[0], &lMNCommonSmashLogoSprite));
 
@@ -412,7 +421,7 @@ void mnDataMakeHeaderSObjs(void)
 }
 
 // 0x801323A0
-void mnDataMakeDecalSObjs(void)
+void mnDataMakeDecals(void)
 {
     GObj *gobj;
     SObj *sobj;
@@ -449,7 +458,7 @@ void mnDataMakeDecalSObjs(void)
     sobj->pos.x = 225.0F;
     sobj->pos.y = 56.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNDataFiles[1], &lMNDataNotebookSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbGetDataFromFile(Sprite*, sMNDataFiles[1], &lMNDataDecalNotebookSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -477,18 +486,18 @@ void mnDataMakeLink3Camera(void)
             20,
             CAMERA_MASK_DLLINK(3),
             -1,
-            0,
+            FALSE,
+            nOMObjProcessKindProc,
+            NULL,
             1,
-            0,
-            1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801325D4
-void mnDataMakeLink2Camera(void)
+void mnDataMakeOptionsCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -502,18 +511,18 @@ void mnDataMakeLink2Camera(void)
             40,
             CAMERA_MASK_DLLINK(2),
             -1,
-            0,
+            FALSE,
+            nOMObjProcessKindProc,
+            NULL,
             1,
-            0,
-            1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132674
-void mnDataMakeLink1Camera(void)
+void mnDataMakeLabelsCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -527,18 +536,18 @@ void mnDataMakeLink1Camera(void)
             60,
             CAMERA_MASK_DLLINK(1),
             -1,
-            0,
+            FALSE,
+            nOMObjProcessKindProc,
+            NULL,
             1,
-            0,
-            1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132714
-void mnDataMakeLink0Camera(void)
+void mnDataMakeDecalsCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -552,11 +561,11 @@ void mnDataMakeLink0Camera(void)
             80,
             CAMERA_MASK_DLLINK(0),
             -1,
-            0,
+            FALSE,
+            nOMObjProcessKindProc,
+            NULL,
             1,
-            0,
-            1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -604,7 +613,7 @@ void mnDataProcRun(GObj *gobj)
     s32 stick_range;
 
     // 0x8013F2A4
-    GObj **option_gobj[/* */] = { &sMNDataCharactersGObj, &sMNDataVSRecordGObj, &sMNDataSoundTestGObj };
+    GObj **option_gobj[/* */] = { &sMNDataOptionCharactersGObj, &sMNDataOptionVSRecordGObj, &sMNDataOptionSoundTestGObj };
 
     sb32 is_button;
 
@@ -749,7 +758,7 @@ void mnDataProcRun(GObj *gobj)
 }
 
 // 0x80132D64
-void mnDataProcStart(void)
+void mnDataFuncStart(void)
 {
     lbRelocSetup rl_setup;
 
@@ -782,18 +791,18 @@ void mnDataProcStart(void)
     gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 
     mnDataInitVars();
-    mnDataMakeLink0Camera();
-    mnDataMakeLink1Camera();
-    mnDataMakeLink2Camera();
+    mnDataMakeDecalsCamera();
+    mnDataMakeLabelsCamera();
+    mnDataMakeOptionsCamera();
     mnDataMakeLink3Camera();
-    mnDataMakeDecalSObjs();
-    mnDataMakeHeaderSObjs();
-    mnDataMakeCharactersSObj();
-    mnDataMakeVSRecordSObj();
+    mnDataMakeDecals();
+    mnDataMakeLabels();
+    mnDataMakeCharacters();
+    mnDataMakeVSRecord();
 
     if (sMNDataIsSoundTestUnlocked != FALSE)
     {
-        mnDataMakeSoundTestSObj();
+        mnDataMakeSoundTest();
     }
     mnDataMakeMenuGObj();
 
@@ -830,7 +839,7 @@ syTasklogSetup dMNDataTasklogSetup =
         0x8000,                     // ???
         2,                          // ???
         0xC000,                     // ???
-        mnDataProcLights,           // Pre-render function
+        mnDataFuncLights,           // Pre-render function
         update_contdata,            // Controller I/O function
     },
 
@@ -853,7 +862,7 @@ syTasklogSetup dMNDataTasklogSetup =
     0,                              // Number of Cameras
     sizeof(Camera),                 // Camera size
     
-    mnDataProcStart                 // Task start function
+    mnDataFuncStart                 // Task start function
 };
 
 // 0x80132EC0

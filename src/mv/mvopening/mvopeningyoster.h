@@ -11,7 +11,7 @@ extern intptr_t lMVOpeningYosterGroundDObjDesc;     // 0x0000B990
 extern intptr_t lMVOpeningYosterGroundAnimJoint;    // 0x0000BF70
 extern intptr_t lMVOpeningYosterCamAnimJoint;       // 0x0000C940
 
-extern void mvOpeningYosterProcLights(Gfx **dls);
+extern void mvOpeningYosterFuncLights(Gfx **dls);
 extern void mvOpeningYosterMakeNest(void);
 extern void mvOpeningYosterMakeFighters(void);
 extern void mvOpeningYosterMakeWallpaper(void);
@@ -20,7 +20,7 @@ extern void mvOpeningYosterMakeMainViewport(void);
 extern void mvOpeningYosterMakeWallpaperViewport(void);
 extern void mvOpeningYosterInitTotalTimeTics(void);
 extern void mvOpeningYosterMainProc(GObj *gobj);
-extern void mvOpeningYosterProcStart(void);
+extern void mvOpeningYosterFuncStart(void);
 extern void mvOpeningYosterStartScene(void);
 
 #endif

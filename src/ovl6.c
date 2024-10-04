@@ -961,7 +961,7 @@ void sc1PBonusGameStartScene()
 	syDisplayInit(&D_ovl6_8018F080);
 
 	D_ovl6_8018F09C.arena_size = (size_t) ((uintptr_t)&lOverlay6ArenaHi - (uintptr_t)&lOverlay6ArenaLo);
-	D_ovl6_8018F09C.proc_start = scBonusGame_InitBonusGame;
+	D_ovl6_8018F09C.func_start = scBonusGame_InitBonusGame;
 
 	syTasklogInit(&D_ovl6_8018F09C);
 	auStopBGM();

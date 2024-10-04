@@ -12,8 +12,8 @@ extern void mvOpeningJungleSetupFiles(void);
 extern void mvOpeningJungleMakeStageViewport(Vec3f unused);
 extern void mvOpeningJungleMakeFighters(void);
 extern void mvOpeningJungleProcRun(GObj *gobj);
-extern void mvOpeningJungleProcStart(void);
-extern void mvOpeningJungleProcLights(Gfx **dls);
-extern void mvOpeningJungleProcStart(void);
+extern void mvOpeningJungleFuncStart(void);
+extern void mvOpeningJungleFuncLights(Gfx **dls);
+extern void mvOpeningJungleFuncStart(void);
 
 #endif

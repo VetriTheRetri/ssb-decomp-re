@@ -14,7 +14,7 @@ extern intptr_t lMN1PModeTextTraningModeSprite;             // 0x00005AC8
 extern intptr_t lMN1PModeTextBonus1PracticeSprite;          // 0x00005F28
 extern intptr_t lMN1PModeTextBonus2PracticeSprite;          // 0x00006388
 
-extern void mn1PModeProcLights(Gfx **dls);
+extern void mn1PModeFuncLights(Gfx **dls);
 extern void mn1PModeSetOptionSpriteColors(GObj *gobj, s32 status, s32 option_id);
 extern void mn1PModeMakeOptionTab(GObj *gobj, f32 pos_x, f32 pos_y, s32 lrs);
 extern void mn1PModeMake1PGame(void);
@@ -32,7 +32,7 @@ extern void mn1PModeMakeLabelsCamera(void);
 extern void mn1PModeMakeDecalsCamera(void);
 extern void mn1PModeInitVars(void);
 extern void mn1PModeProcRun(GObj *gobj);
-extern void mn1PModeProcStart(void);
+extern void mn1PModeFuncStart(void);
 extern void mn1PModeStartScene(void);
 
 #endif

@@ -2030,43 +2030,48 @@ void sc1PStageClearProcStart(void)
 syDisplaySetup dGM1PStageClearDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80135208
-scRuntimeInfo dGM1PStageClearTasklogSetup =
+syTasklogSetup dGM1PStageClearTasklogSetup =
 {
-	0x00000000,
-	func_8000A5E4,
-	func_8000A340,
-	&ovl56_BSS_END,
-	0x00000000,
-	0x00000001,
-	0x00000002,
-	0x00004E20,
-	0x00001000,
-	0x00000000,
-	0x00000000,
-	0x00008000,
-	0x00020000,
-	0x0000C000,
-	sc1PStageClearProcLights,
-	update_contdata,
-	0x00000000,
-	0x00000600,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000088,
-	0x00000000,
-	0x800D5CAC,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000088,
-	0x00000000,
-	0x0000006C,
-	0x00000000,
-	0x00000090,
-	sc1PStageClearProcStart
+    // Task Logic Buffer Setup
+    {
+        0,                          // ???
+        func_8000A5E4,              // Update function
+        func_8000A340,              // Frame draw function
+        &ovl56_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of tasks?
+        0x4E20,                     // ???
+        0x1000,                     // ???
+        0,                          // ???
+        0,                          // ???
+        0x8000,                     // ???
+        2,                          // ???
+        0xC000,                     // ???
+        sc1PStageClearProcLights,   // Pre-render function
+        update_contdata,            // Controller I/O function
+    },
+
+    0,                              // Number of GObjThreads
+    1536,                           // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of Object Manager Matrices
+    dLBCommonProcMatrixList,        // Matrix function list
+    NULL,                           // Function for ejecting DObjDynamicStore?
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(Camera),                 // Camera size
+    
+    sc1PStageClearProcStart         // Task start function
 };
 
 // 0x80134E84
@@ -2076,7 +2081,7 @@ void sc1PStageClearStartScene(void)
 
 	func_80007024(&dGM1PStageClearDisplaySetup);
 
-	dGM1PStageClearTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl56_BSS_END);
+	dGM1PStageClearTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl56_BSS_END);
 
 	syTasklogInit(&dGM1PStageClearTasklogSetup);
 }

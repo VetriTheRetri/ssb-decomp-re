@@ -29,7 +29,7 @@ extern uintptr_t D_NF_00000046;
 s32 sMVOpeningCliffPad0x801327C0[2];
 
 // 0x801327C8
-void *sMVOpeningCliffFighterAnimHeap;
+void *sMVOpeningCliffFigatreeHeap;
 
 // 0x801327CC
 s32 sMVOpeningCliffTotalTimeTics;
@@ -175,7 +175,7 @@ void mvOpeningCliffMakeFighter(void)
     ft_desc.pos.x = 0.0F;
     ft_desc.pos.y = 0.0F;
     ft_desc.pos.z = 0.0F;
-    ft_desc.figatree_heap = sMVOpeningCliffFighterAnimHeap;
+    ft_desc.figatree_heap = sMVOpeningCliffFigatreeHeap;
 
     sMVOpeningCliffFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);
 
@@ -507,7 +507,7 @@ void mvOpeningCliffProcStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(nFTKindLink);
 
-    sMVOpeningCliffFighterAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+    sMVOpeningCliffFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
     mvOpeningCliffMakeMainViewport();
     mvOpeningCliffMakeWallpaperViewport();

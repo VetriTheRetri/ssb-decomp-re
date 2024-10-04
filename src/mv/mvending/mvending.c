@@ -16,7 +16,7 @@ extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 s32 sMVEndingPad0x80132BC0[2];
 
 // 0x80132BC8
-void *sMVEndingFighterAnimHeap;
+void *sMVEndingFigatreeHeap;
 
 // 0x80132BCC
 s32 sMVEndingTotalTimeTics;
@@ -244,7 +244,7 @@ void mvEndingMakeFighter(s32 ft_kind)
     ft_desc.costume = sMVEndingFighterDemoDesc.costume;
     ft_desc.shade = sMVEndingFighterDemoDesc.shade;
 
-    ft_desc.figatree_heap = sMVEndingFighterAnimHeap;
+    ft_desc.figatree_heap = sMVEndingFigatreeHeap;
 
     ft_desc.pos.z = -3688.5298F;
 
@@ -539,7 +539,7 @@ void mvEndingProcStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(sMVEndingFighterDemoDesc.ft_kind);
 
-    sMVEndingFighterAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+    sMVEndingFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
     mvEndingMakeMainCameras();
     mvEndingMakeRoomFadeInCamera();

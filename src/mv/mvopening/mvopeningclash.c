@@ -30,7 +30,7 @@ extern uintptr_t D_NF_00000048;
 s32 sMVOpeningClashPad0x801329D0[2];
 
 // 0x801329D8
-void *sMVOpeningClashFighterAnimHeaps[8];
+void *sMVOpeningClashFigatreeHeaps[8];
 
 // 0x801329F8
 s32 sMVOpeningClashPad0x801329F8[4];
@@ -108,7 +108,7 @@ void mvOpeningClashMakeFighters(void)
     s32 i;
     ftCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
-    for (i = 0; i < (ARRAY_COUNT(ft_kinds) + ARRAY_COUNT(sMVOpeningClashFighterAnimHeaps)) / 2; i++)
+    for (i = 0; i < (ARRAY_COUNT(ft_kinds) + ARRAY_COUNT(sMVOpeningClashFigatreeHeaps)) / 2; i++)
     {
         ft_desc.ft_kind = ft_kinds[i];
         ft_desc.costume = ftParamGetCostumeCommonID(ft_kinds[i], 0);
@@ -117,7 +117,7 @@ void mvOpeningClashMakeFighters(void)
         ft_desc.pos.y = 0.0F;
         ft_desc.pos.z = 0.0F;
 
-        ft_desc.figatree_heap = sMVOpeningClashFighterAnimHeaps[i];
+        ft_desc.figatree_heap = sMVOpeningClashFigatreeHeaps[i];
         fighter_gobj = ftManagerMakeFighter(&ft_desc);
 
         scSubsysFighterSetStatus(fighter_gobj, 0x1000B);
@@ -424,8 +424,8 @@ void mvOpeningClashProcStart(void)
     mvOpeningClashInitTotalTimeTics();
     efManagerInitEffects();
 
-    // Not quite correct to use the length of sMVOpeningClashFighterAnimHeaps here, but also probably not worth a #define
-    ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, ARRAY_COUNT(sMVOpeningClashFighterAnimHeaps));
+    // Not quite correct to use the length of sMVOpeningClashFigatreeHeaps here, but also probably not worth a #define
+    ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, ARRAY_COUNT(sMVOpeningClashFigatreeHeaps));
 
     ftManagerSetupFilesAllKind(nFTKindMario);
     ftManagerSetupFilesAllKind(nFTKindFox);
@@ -436,9 +436,9 @@ void mvOpeningClashProcStart(void)
     ftManagerSetupFilesAllKind(nFTKindKirby);
     ftManagerSetupFilesAllKind(nFTKindPikachu);
 
-    for (i = 0; i < ARRAY_COUNT(sMVOpeningClashFighterAnimHeaps); i++)
+    for (i = 0; i < ARRAY_COUNT(sMVOpeningClashFigatreeHeaps); i++)
     {
-        sMVOpeningClashFighterAnimHeaps[i] = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+        sMVOpeningClashFigatreeHeaps[i] = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
     }
     mvOpeningClashMakeFightersViewport();
     mvOpeningClashMakeVoidViewport();

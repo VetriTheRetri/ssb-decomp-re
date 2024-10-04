@@ -113,10 +113,10 @@ s32 D_ovl34_80134CD0[2];
 uintptr_t gMvOpeningFirstDestinationMasterHandAnimHeap;
 
 // 80134CDC
-uintptr_t gMvOpeningFirstDestinationPluckedFighterAnimHeap;
+uintptr_t gMvOpeningFirstDestinationPluckedFigatreeHeap;
 
 // 80134CE0
-uintptr_t gMvOpeningFirstDestinationDroppedFighterAnimHeap;
+uintptr_t gMvOpeningFirstDestinationDroppedFigatreeHeap;
 
 // 80134CE4
 s32 gMvOpeningFirstDestinationFramesElapsed;
@@ -409,7 +409,7 @@ void mvOpeningFirstDestinationCreatePluckedFighter(s32 ft_kind)
 	spawn_info.pos.x = 0.0f;
 	spawn_info.pos.y = 0.0f;
 	spawn_info.pos.z = 0.0f;
-	spawn_info.figatree_heap = gMvOpeningFirstDestinationPluckedFighterAnimHeap;
+	spawn_info.figatree_heap = gMvOpeningFirstDestinationPluckedFigatreeHeap;
 	gMvOpeningFirstDestinationPluckedFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 	DObjGetStruct(fighter_gobj)->scale.vec.f.x = 1.0f;
@@ -522,7 +522,7 @@ void mvOpeningFirstDestinationCreateDroppedFighter(s32 ft_kind)
 
 	spawn_info.ft_kind = ft_kind;
 	spawn_info.costume = ftParamGetCostumeCommonID(ft_kind, 0);
-	spawn_info.figatree_heap = gMvOpeningFirstDestinationDroppedFighterAnimHeap;
+	spawn_info.figatree_heap = gMvOpeningFirstDestinationDroppedFigatreeHeap;
 	spawn_info.pos.x = 872.3249512F;
 	spawn_info.pos.y = 4038.864014F;
 	spawn_info.pos.z = -4734.600098F;
@@ -1132,8 +1132,8 @@ void mvOpeningFirstDestinationInit()
 	ftManagerSetupFilesAllKind(gMvOpeningFirstDestinationDroppedFighterKind);
 	ftManagerSetupFilesAllKind(nFTKindBoss);
 	gMvOpeningFirstDestinationMasterHandAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
-	gMvOpeningFirstDestinationPluckedFighterAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
-	gMvOpeningFirstDestinationDroppedFighterAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMvOpeningFirstDestinationPluckedFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMvOpeningFirstDestinationDroppedFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningFirstDestinationCreateFirstSceneViewports();
 	mvOpeningFirstDestinationCreateOverlayViewport();
 	mvOpeningFirstDestinationCreateBackgroundViewport();

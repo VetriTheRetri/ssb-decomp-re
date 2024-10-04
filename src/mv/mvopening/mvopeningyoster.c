@@ -33,7 +33,7 @@ extern uintptr_t D_NF_0000005D;
 s32 sMVOpeningYosterPad0x80132420[2];
 
 // 0x80132428
-void *sMVOpeningYosterFighterAnimHeaps[4];
+void *sMVOpeningYosterFigatreeHeaps[4];
 
 // 0x80132438
 s32 sMVOpeningYosterTotalTimeTics;
@@ -117,14 +117,14 @@ void mvOpeningYosterMakeFighters(void)
     s32 i;
     ftCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
-    for (i = 0; i < (ARRAY_COUNT(sMVOpeningYosterFighterAnimHeaps) + ARRAY_COUNT(status_ids)) / 2; i++)
+    for (i = 0; i < (ARRAY_COUNT(sMVOpeningYosterFigatreeHeaps) + ARRAY_COUNT(status_ids)) / 2; i++)
     {
         ft_desc.ft_kind = nFTKindYoshi;
         ft_desc.costume = ftParamGetCostumeCommonID(nFTKindYoshi, i);
         ft_desc.pos.x = 0.0F;
         ft_desc.pos.y = 0.0F;
         ft_desc.pos.z = 0.0F;
-        ft_desc.figatree_heap = sMVOpeningYosterFighterAnimHeaps[i];
+        ft_desc.figatree_heap = sMVOpeningYosterFigatreeHeaps[i];
         fighter_gobj = ftManagerMakeFighter(&ft_desc);
 
         scSubsysFighterSetStatus(fighter_gobj, status_ids[i]);
@@ -343,9 +343,9 @@ void mvOpeningYosterProcStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 4);
     ftManagerSetupFilesAllKind(nFTKindYoshi);
 
-    for (i = 0; i < ARRAY_COUNT(sMVOpeningYosterFighterAnimHeaps); i++)
+    for (i = 0; i < ARRAY_COUNT(sMVOpeningYosterFigatreeHeaps); i++)
     {
-        sMVOpeningYosterFighterAnimHeaps[i] = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+        sMVOpeningYosterFigatreeHeaps[i] = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
     }
     mvOpeningYosterMakeMainViewport();
     mvOpeningYosterMakeWallpaperViewport();

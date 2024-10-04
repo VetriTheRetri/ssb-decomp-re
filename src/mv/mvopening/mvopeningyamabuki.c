@@ -28,7 +28,7 @@ extern uintptr_t D_NF_00000047;
 s32 sMVOpeningYamabukiPad0x80132480[2];
 
 // 0x80132488
-void *sMVOpeningYamabukiFighterAnimHeap;
+void *sMVOpeningYamabukiFigatreeHeap;
 
 // 0x8013248C
 s32 sMVOpeningYamabukiTotalTimeTics;
@@ -161,7 +161,7 @@ void mvOpeningYamabukiMakeFighter(void)
     ft_desc.pos.y = 0.0F;
     ft_desc.pos.z = 0.0F;
 
-    ft_desc.figatree_heap = sMVOpeningYamabukiFighterAnimHeap;
+    ft_desc.figatree_heap = sMVOpeningYamabukiFigatreeHeap;
     sMVOpeningYamabukiFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);
 
     scSubsysFighterSetStatus(fighter_gobj, 0x1000F);
@@ -434,7 +434,7 @@ void mvOpeningYamabukiProcStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(nFTKindPikachu);
 
-    sMVOpeningYamabukiFighterAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+    sMVOpeningYamabukiFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
     mvOpeningYamabukiMakeMainViewport();
     mvOpeningYamabukiMakeWallpaperViewport();

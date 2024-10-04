@@ -53,7 +53,7 @@ s32 D_ovl44_801325DC[] = {
 s32 D_ovl44_80132710[2];
 
 // 80132718
-uintptr_t gMvOpeningRunningFighterAnimHeaps[8];
+uintptr_t gMvOpeningRunningFigatreeHeaps[8];
 
 // 80132738
 GObj* gMvOpeningRunningLinkFighterGObj;
@@ -124,7 +124,7 @@ void mvOpeningRunningCreateFighters()
 		spawn_info.pos.x = 0.0F;
 		spawn_info.pos.y = 0.0F;
 		spawn_info.pos.z = 0.0F;
-		spawn_info.figatree_heap = gMvOpeningRunningFighterAnimHeaps[i];
+		spawn_info.figatree_heap = gMvOpeningRunningFigatreeHeaps[i];
 		fighter_gobj = fighter_proxy_gobj = ftManagerMakeFighter(&spawn_info);
 
 		if (ftKinds[i] == nFTKindLink)
@@ -314,9 +314,9 @@ void mvOpeningRunningInit()
 	ftManagerSetupFilesAllKind(nFTKindKirby);
 	ftManagerSetupFilesAllKind(nFTKindPikachu);
 
-	for (i = 0; i < ARRAY_COUNT(gMvOpeningRunningFighterAnimHeaps); i++)
+	for (i = 0; i < ARRAY_COUNT(gMvOpeningRunningFigatreeHeaps); i++)
 	{
-		gMvOpeningRunningFighterAnimHeaps[i] = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+		gMvOpeningRunningFigatreeHeaps[i] = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	}
 
 	mvOpeningRunningCreateTransitionGfxViewport();

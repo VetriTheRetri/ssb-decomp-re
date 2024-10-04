@@ -3,13 +3,9 @@
 #include <mn/menu.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <lb/library.h>
 
 extern void func_800A26B8();
-
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
-
-
 
 // // // // // // // // // // // //
 //                               //
@@ -24,17 +20,27 @@ extern uintptr_t D_NF_00000050;							// 0x00000050
 extern uintptr_t D_NF_00000051;							// 0x00000051
 extern uintptr_t D_NF_000000A4;							// 0x000000A4
 extern uintptr_t D_NF_00000025;							// 0x00000025
+
 // // // // // // // // // // // //
 //                               //
 //             MACROS            //
 //                               //
 // // // // // // // // // // // //
 
-#define sc1PContinueCheckGetOptionButtonInput(is_button, mask) mnCommonCheckGetOptionButtonInput(sSC1PContinueOptionChangeWait, is_button, mask)
-#define sc1PContinueCheckGetOptionStickInputUD(stick_range, min, b) mnCommonCheckGetOptionStickInputUD(sSC1PContinueOptionChangeWait, stick_range, min, b)
-#define sc1PContinueCheckGetOptionStickInputLR(stick_range, min, b) mnCommonCheckGetOptionStickInputLR(sSC1PContinueOptionChangeWait, stick_range, min, b)
-#define sc1PContinueSetOptionChangeWaitP(stick_range) (sSC1PContinueOptionChangeWait = (160 - (stick_range)) / 5)
-#define sc1PContinueSetOptionChangeWaitN(stick_range) (sSC1PContinueOptionChangeWait = ((stick_range) + 160) / 5)
+#define sc1PContinueCheckGetOptionButtonInput(is_button, mask) \
+mnCommonCheckGetOptionButtonInput(sSC1PContinueOptionChangeWait, is_button, mask)
+
+#define sc1PContinueCheckGetOptionStickInputUD(stick_range, min, b) \
+mnCommonCheckGetOptionStickInputUD(sSC1PContinueOptionChangeWait, stick_range, min, b)
+
+#define sc1PContinueCheckGetOptionStickInputLR(stick_range, min, b) \
+mnCommonCheckGetOptionStickInputLR(sSC1PContinueOptionChangeWait, stick_range, min, b)
+
+#define sc1PContinueSetOptionChangeWaitP(stick_range) \
+(sSC1PContinueOptionChangeWait = (160 - (stick_range)) / 5)
+
+#define sc1PContinueSetOptionChangeWaitN(stick_range) \
+(sSC1PContinueOptionChangeWait = ((stick_range) + 160) / 5)
 
 // // // // // // // // // // // //
 //                               //
@@ -46,7 +52,7 @@ extern uintptr_t D_NF_00000025;							// 0x00000025
 s32 sSC1PContinuePad0x801342F0[2];
 
 // 0x801342F8
-void *sSC1PContinueFighterAnimHeap;
+void *sSC1PContinueFigatreeHeap;
 
 // 0x801342FC
 s32 sSC1PContinueTotalTimeTics;
@@ -347,7 +353,7 @@ void sc1PContinueMakeFighter(s32 ft_kind)
 
     ft_desc.costume = sSC1PContinueFighterDemoDesc.costume;
     ft_desc.shade = sSC1PContinueFighterDemoDesc.shade;
-    ft_desc.figatree_heap = sSC1PContinueFighterAnimHeap;
+    ft_desc.figatree_heap = sSC1PContinueFigatreeHeap;
 
     ft_desc.pos.y = 2070.0F;
     ft_desc.pos.z = 0.0F;
@@ -1230,7 +1236,7 @@ void sc1PContinueProcStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(sSC1PContinueFighterDemoDesc.ft_kind);
     
-    sSC1PContinueFighterAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+    sSC1PContinueFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
     sc1PContinueMakeLinkMultiCamera();
     sc1PContinueMakeLink26Camera();
@@ -1252,43 +1258,48 @@ void sc1PContinueProcStart(void)
 syDisplaySetup dSC1PContinueDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80134254
-scRuntimeInfo dSC1PContinueTasklogSetup =
+syTasklogSetup dSC1PContinueTasklogSetup =
 {
-	0x00000000,
-	func_8000A5E4,
-	func_800A26B8,
-	&ovl55_BSS_END,
-	0x00000000,
-	0x00000001,
-	0x00000002,
-	0x00004E20,
-	0x00001000,
-	0x00000000,
-	0x00000000,
-	0x00008000,
-	0x00020000,
-	0x0000C000,
-	sc1PContinueProcLights,
-	update_contdata,
-	0x00000000,
-	0x00000600,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000088,
-	0x00000000,
-	0x800D5CAC,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000088,
-	0x00000000,
-	0x0000006C,
-	0x00000000,
-	0x00000090,
-	sc1PContinueProcStart
+    // Task Logic Buffer Setup
+    {
+        0,                          // ???
+        func_8000A5E4,              // Update function
+        func_800A26B8,              // Frame draw function
+        &ovl55_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of tasks?
+        0x4E20,                     // ???
+        0x1000,                     // ???
+        0,                          // ???
+        0,                          // ???
+        0x8000,                     // ???
+        2,                          // ???
+        0xC000,                     // ???
+        sc1PContinueProcLights,     // Pre-render function
+        update_contdata,            // Controller I/O function
+    },
+
+    0,                              // Number of GObjThreads
+    1536,                           // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of Object Manager Matrices
+    dLBCommonProcMatrixList,        // Matrix function list
+    NULL,                           // Function for ejecting DObjDynamicStore?
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(Camera),                 // Camera size
+    
+    sc1PContinueProcStart           // Task start function
 };
 
 // 0x801340FC
@@ -1298,7 +1309,7 @@ void sc1PContinueStartScene(void)
 
     func_80007024(&dSC1PContinueDisplaySetup);
 
-    dSC1PContinueTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl55_BSS_END);
+    dSC1PContinueTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl55_BSS_END);
 
     func_800A2698(&dSC1PContinueTasklogSetup);
 

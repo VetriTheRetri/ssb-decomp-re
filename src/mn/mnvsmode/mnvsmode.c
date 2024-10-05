@@ -868,11 +868,11 @@ void mnVSModeMakeButtonValuesViewport(void)
         0x14,
         CAMERA_MASK_DLLINK(3),
         -1,
-        0,
-        1,
+        FALSE,
+        nOMObjProcessKindProc,
         NULL,
         1,
-        0
+        FALSE
     );
     Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -914,11 +914,11 @@ void mnVSModeMakeMenuNameViewport(void)
         60,
         CAMERA_MASK_DLLINK(1),
         -1,
-        0,
-        1,
+        FALSE,
+        nOMObjProcessKindProc,
         NULL,
         1,
-        0
+        FALSE
     );
     Camera *cam = CameraGetStruct(camera_gobj);
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);

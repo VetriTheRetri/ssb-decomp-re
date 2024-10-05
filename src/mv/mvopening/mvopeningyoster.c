@@ -3,16 +3,10 @@
 #include <mv/movie.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <lb/library.h>
 
 extern void syTasklogSetLoadScene();
 extern u32 func_8000092C();
-extern void func_800A26B8();
-
-extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
-
-
-
+extern void func_80007080(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -194,7 +188,7 @@ void mvOpeningYosterMakeGround(void)
 }
 
 // 0x80131E84
-void mvOpeningYosterMakeMainViewport(void)
+void mvOpeningYosterMakeMainCamera(void)
 {
     GObj *camera_gobj = gcMakeCameraGObj
     (
@@ -237,7 +231,7 @@ void mvOpeningYosterMakeMainViewport(void)
 }
 
 // 0x80131F90
-void mvOpeningYosterMakeWallpaperViewport(void)
+void mvOpeningYosterMakeWallpaperCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -347,8 +341,8 @@ void mvOpeningYosterFuncStart(void)
     {
         sMVOpeningYosterFigatreeHeaps[i] = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
     }
-    mvOpeningYosterMakeMainViewport();
-    mvOpeningYosterMakeWallpaperViewport();
+    mvOpeningYosterMakeMainCamera();
+    mvOpeningYosterMakeWallpaperCamera();
     mvOpeningYosterMakeWallpaper();
     mvOpeningYosterMakeNest();
     mvOpeningYosterMakeGround();
@@ -365,43 +359,48 @@ void mvOpeningYosterFuncStart(void)
 syDisplaySetup dMVOpeningYosterDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132394
-scRuntimeInfo dMVOpeningYosterTasklogSetup =
+syTasklogSetup dMVOpeningYosterTasklogSetup =
 {
-    0x00000000,
-	func_8000A5E4,
-	func_8000A340,
-	&ovl45_BSS_END,
-	0x00000000,
-	0x00000001,
-	0x00000002,
-	0x00004E20,
-	0x00001000,
-	0x00000000,
-	0x00000000,
-	0x00008000,
-	0x00020000,
-	0x0000C000,
-	mvOpeningYosterFuncLights,
-	update_contdata,
-	0x00000008,
-	0x00000600,
-	0x00000008,
-	0x00000000,
-	0x00000080,
-	0x00000080,
-	0x00000088,
-	0x00000200,
-	0x800D5CAC,
-	0x00000000,
-	0x00000200,
-	0x000000A0,
-	0x00000200,
-	0x00000088,
-	0x00000080,
-	0x0000006C,
-	0x00000010,
-	0x00000090,
-	mvOpeningYosterFuncStart
+    // Task Logic Buffer Setup
+    {
+        0,                              // ???
+        func_8000A5E4,                  // Update function
+        func_8000A340,                  // Frame draw function
+        &ovl45_BSS_END,                 // Allocatable memory pool start
+        0,                              // Allocatable memory pool size
+        1,                              // ???
+        2,                              // Number of contexts?
+        sizeof(Gfx) * 2500,             // Display List Buffer 0 Size
+        sizeof(Gfx) * 512,              // Display List Buffer 1 Size
+        0,                              // Display List Buffer 2 Size
+        0,                              // Display List Buffer 3 Size
+        0x8000,                         // Graphics Heap Size
+        2,                              // ???
+        0xC000,                         // RDP Output Buffer Size
+        mvOpeningYosterFuncLights,      // Pre-render function
+        update_contdata,                // Controller I/O function
+    },
+
+    8,                                  // Number of GObjThreads
+    sizeof(u64) * 192,                  // Thread stack size
+    8,                                  // Number of thread stacks
+    0,                                  // ???
+    128,                                // Number of GObjProcesses
+    128,                                // Number of GObjs
+    sizeof(GObj),                       // GObj size
+    512,                                // Number of Object Manager Matrices
+    dLBCommonFuncMatrixList,            // Matrix function list
+    NULL,                               // Function for ejecting DObjDynamicStore?
+    512,                                // Number of AObjs
+    160,                                // Number of MObjs
+    512,                                // Number of DObjs
+    sizeof(DObj),                       // DObj size
+    128,                                // Number of SObjs
+    sizeof(SObj),                       // SObj size
+    16,                                 // Number of Cameras
+    sizeof(Camera),                     // Camera size
+    
+    mvOpeningYosterFuncStart            // Task start function
 };
 
 // 0x801322CC
@@ -410,6 +409,6 @@ void mvOpeningYosterStartScene(void)
     dMVOpeningYosterDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMVOpeningYosterDisplaySetup);
 
-    dMVOpeningYosterTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl45_BSS_END);
+    dMVOpeningYosterTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl45_BSS_END);
     syTasklogInit(&dMVOpeningYosterTasklogSetup);
 }

@@ -2,12 +2,10 @@
 #include <mv/movie.h>
 #include <sc/scene.h>
 #include <sys/system_00.h>
-#include <lb/library.h>
 
 extern void syTasklogSetLoadScene();
 extern u32 func_8000092C();
-extern void func_800A26B8();
-extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
+extern void func_80007080(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //

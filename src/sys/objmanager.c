@@ -79,28 +79,28 @@ u8 D_80046F88[24];
 OSId sOMObjProcessThreadID = 10000000;
 s32 D_8003B874_3C474 = 0;
 
-// 8003B878
+// 0x8003B878
 OMPersp dOMPerspDefault = { NULL, 0, 30.0F, 4.0F / 3.0F, 100.0F, 12800.0F, 1.0F };
 
-// 8003B984
+// 0x8003B984
 OMOrtho dOMOrthoDefault = { NULL, -160.0F, 160.0F, -120.0F, 120.0F, 100.0F, 12800.0F, 1.0F };
 
-// 8003B8B4
+// 0x8003B8B4
 CameraVec dOMCameraVecDefault = { NULL, { 0.0F, 0.0F, 1500.0F }, { 0.0F, 0.0F, 0.0F }, { 0.0F, 1.0F, 0.0F } };
 
-// 8003B8DC
+// 0x8003B8DC
 OMTranslate dOMTranslateDefault = { NULL, { 0.0F, 0.0F, 0.0F } };
 
-// 8003B8EC
+// 0x8003B8EC
 OMRotate dOMRotateDefaultAXYZ = { NULL, 0.0F, { 0.0F, 0.0F, 1.0F } };
 
-// 8003B900
+// 0x8003B900
 OMRotate dOMRotateDefaultRPY = { NULL, 0.0F, { 0.0F, 0.0F, 0.0F } };
 
-// 8003B914
+// 0x8003B914
 OMScale dOMScaleDefault = { NULL, { 1.0F, 1.0F, 1.0F } };
 
-// 800073E0
+// 0x800073E0
 GObjThread* gcGetGObjThread()
 {
 	GObjThread* gobjthread;
@@ -124,7 +124,7 @@ GObjThread* gcGetGObjThread()
 	return gobjthread;
 }
 
-// 8000745C
+// 0x8000745C
 void gcSetGObjThreadPrevAlloc(GObjThread* gobjthread)
 {
 	gobjthread->next = sOMObjThreadHead;
@@ -132,7 +132,7 @@ void gcSetGObjThreadPrevAlloc(GObjThread* gobjthread)
 	sOMObjThreadsActive--;
 }
 
-// 80007488
+// 0x80007488
 OMThreadStackNode* gcGetStackOfSize(size_t size)
 {
 	OMThreadStackList* curr;
@@ -179,10 +179,10 @@ OMThreadStackNode* gcGetStackOfSize(size_t size)
 	return ret;
 }
 
-// 80007564
+// 0x80007564
 OMThreadStackNode* gcGetDefaultStack() { return gcGetStackOfSize(sOMThreadStackSize); }
 
-// 80007588
+// 0x80007588
 void gcEjectStackNode(OMThreadStackNode* node)
 {
 	OMThreadStackList* parent = sOMThreadStackHead;
@@ -204,7 +204,7 @@ void gcEjectStackNode(OMThreadStackNode* node)
 	sOMThreadStacksActive--;
 }
 
-// 80007604
+// 0x80007604
 GObjProcess* gcGetGObjProcess()
 {
 	GObjProcess* gobjproc;
@@ -228,7 +228,7 @@ GObjProcess* gcGetGObjProcess()
 	return gobjproc;
 }
 
-// 80007680
+// 0x80007680
 void gcLinkGObjProcess(GObjProcess* gobjproc)
 {
 	GObj* parent_gobj = gobjproc->parent_gobj;
@@ -278,7 +278,7 @@ loop_exit:
 	parent_gobj->gobjproc_tail = gobjproc;
 }
 
-// 80007758
+// 0x80007758
 void gcSetGObjProcessPrevAlloc(GObjProcess* gobjproc)
 {
 	gobjproc->link_next = sOMObjProcessHead;
@@ -286,7 +286,7 @@ void gcSetGObjProcessPrevAlloc(GObjProcess* gobjproc)
 	sOMObjProcessesActive--;
 }
 
-// 80007784
+// 0x80007784
 void func_80007784(GObjProcess* gobjproc)
 {
 	if (gobjproc->priority_prev != NULL)
@@ -298,7 +298,7 @@ void func_80007784(GObjProcess* gobjproc)
 		gobjproc->priority_next->priority_prev = gobjproc->priority_prev;
 }
 
-// 800077D0
+// 0x800077D0
 void func_800077D0(GObjProcess* gobjproc)
 {
 	GObj* gobj = gobjproc->parent_gobj;
@@ -316,10 +316,10 @@ void func_800077D0(GObjProcess* gobjproc)
 		gobj->gobjproc_tail = gobjproc->link_prev;
 }
 
-// 80007840
+// 0x80007840
 GObjProcess* unref_80007840() { return gOMObjCurrentProcess; }
 
-// 8000784C
+// 0x8000784C
 u64* unref_8000784C(GObjProcess* gobjproc)
 {
 	if (gobjproc == NULL)
@@ -330,7 +330,7 @@ u64* unref_8000784C(GObjProcess* gobjproc)
 		return NULL;
 }
 
-// 800007884
+// 0x800007884
 u32 unref_80007884(GObjProcess* gobjproc)
 {
 	if (gobjproc == NULL)
@@ -342,10 +342,10 @@ u32 unref_80007884(GObjProcess* gobjproc)
 		return 0;
 }
 
-// 800078BC
+// 0x800078BC
 void unref_800078BC(void (*proc)(GObjProcess*)) { sOMObjProcessCallback = proc; }
 
-// 800078C8
+// 0x800078C8
 s32 gcGetGObjActiveCount()
 {
 	GObj* gobj = sOMObjCommonHead;
@@ -360,7 +360,7 @@ s32 gcGetGObjActiveCount()
 	return i + sOMObjCommonsActive;
 }
 
-// 800078FC
+// 0x800078FC
 GObj* gcGetGObjSetNextAlloc()
 {
 	GObj* gobj;
@@ -388,7 +388,7 @@ GObj* gcGetGObjSetNextAlloc()
 	return gobj;
 }
 
-// 800079A8
+// 0x800079A8
 void gcSetGObjPrevAlloc(GObj* gobj)
 {
 	gobj->link_next = sOMObjCommonHead;
@@ -396,7 +396,7 @@ void gcSetGObjPrevAlloc(GObj* gobj)
 	sOMObjCommonsActive--;
 }
 
-// 800079D4
+// 0x800079D4
 void gcLinkGObjAfter(GObj* this_gobj, GObj* link_gobj)
 {
 	this_gobj->link_prev = link_gobj;
@@ -417,7 +417,7 @@ void gcLinkGObjAfter(GObj* this_gobj, GObj* link_gobj)
 		sOMObjCommonLinks[this_gobj->link_id] = this_gobj;
 }
 
-// 80007A3C
+// 0x80007A3C
 void gcLinkGObjSPAfter(GObj* this_gobj)
 {
 	GObj* current_gobj = sOMObjCommonLinks[this_gobj->link_id];
@@ -426,7 +426,7 @@ void gcLinkGObjSPAfter(GObj* this_gobj)
 	gcLinkGObjAfter(this_gobj, current_gobj);
 }
 
-// 80007AA8
+// 0x80007AA8
 void gcLinkGObjSPBefore(GObj* this_gobj)
 {
 	GObj* current_gobj = gOMObjCommonLinks[this_gobj->link_id];
@@ -442,7 +442,7 @@ void gcLinkGObjSPBefore(GObj* this_gobj)
 	gcLinkGObjAfter(this_gobj, found_gobj);
 }
 
-// 80007B30
+// 0x80007B30
 void gcRemoveGObjFrgcLinkedList(GObj* this_gobj)
 {
 	if (this_gobj->link_prev != NULL)
@@ -456,7 +456,7 @@ void gcRemoveGObjFrgcLinkedList(GObj* this_gobj)
 		sOMObjCommonLinks[this_gobj->link_id] = this_gobj->link_prev;
 }
 
-// 80007B98
+// 0x80007B98
 void gcAppendGObjToDLLinkedList(GObj* this_gobj, GObj* dl_link_gobj)
 {
 	this_gobj->dl_link_prev = dl_link_gobj;
@@ -478,7 +478,7 @@ void gcAppendGObjToDLLinkedList(GObj* this_gobj, GObj* dl_link_gobj)
 		sOMObjCommonDLLinks[this_gobj->dl_link_id] = this_gobj;
 }
 
-// 80007C00
+// 0x80007C00
 void gcDLLinkGObjTail(GObj* this_gobj)
 {
 	GObj* current_gobj = sOMObjCommonDLLinks[this_gobj->dl_link_id];
@@ -488,7 +488,7 @@ void gcDLLinkGObjTail(GObj* this_gobj)
 	gcAppendGObjToDLLinkedList(this_gobj, current_gobj);
 }
 
-// 80007C6C
+// 0x80007C6C
 void gcDLLinkGObjHead(GObj* this_gobj)
 {
 	GObj* current_gobj = gOMObjCommonDLLinks[this_gobj->dl_link_id];
@@ -504,7 +504,7 @@ void gcDLLinkGObjHead(GObj* this_gobj)
 	gcAppendGObjToDLLinkedList(this_gobj, found_gobj);
 }
 
-// 80007CF4
+// 0x80007CF4
 void gcRemoveGObjFrgcDLLinkedList(GObj* this_gobj)
 {
 	if (this_gobj->dl_link_prev != NULL)
@@ -518,7 +518,7 @@ void gcRemoveGObjFrgcDLLinkedList(GObj* this_gobj)
 		sOMObjCommonDLLinks[this_gobj->dl_link_id] = this_gobj->dl_link_prev;
 }
 
-// 80007D5C
+// 0x80007D5C
 OMMtx* gcGetOMMtxSetNextAlloc()
 {
 	OMMtx* ommtx;
@@ -542,7 +542,7 @@ OMMtx* gcGetOMMtxSetNextAlloc()
 	return ommtx;
 }
 
-// 80007DD8
+// 0x80007DD8
 void gcSetOMMtxPrevAlloc(OMMtx* ommtx)
 {
 	ommtx->next = sOMMtxHead;
@@ -550,7 +550,7 @@ void gcSetOMMtxPrevAlloc(OMMtx* ommtx)
 	sOMMtxActive--;
 }
 
-// 80007E04
+// 0x80007E04
 AObj* gcGetAObjSetNextAlloc()
 {
 	AObj* aobj;
@@ -574,28 +574,28 @@ AObj* gcGetAObjSetNextAlloc()
 	return aobj;
 }
 
-// 80007E80
+// 0x80007E80
 void gcAppendAObjToDObj(DObj* dobj, AObj* aobj)
 {
 	aobj->next = dobj->aobj;
 	dobj->aobj = aobj;
 }
 
-// 80007E90
+// 0x80007E90
 void gcAppendAObjToMObj(MObj* mobj, AObj* aobj)
 {
 	aobj->next = mobj->aobj;
 	mobj->aobj = aobj;
 }
 
-// 80007EA0
+// 0x80007EA0
 void gcAppendAObjToCamera(Camera* cam, AObj* aobj)
 {
 	aobj->next = cam->aobj;
 	cam->aobj = aobj;
 }
 
-// 80007EB0
+// 0x80007EB0
 void gcSetAObjPrevAlloc(AObj* aobj)
 {
 	aobj->next = sOMAObjHead;
@@ -603,7 +603,7 @@ void gcSetAObjPrevAlloc(AObj* aobj)
 	sOMAObjHead = aobj;
 }
 
-// 80007EDC
+// 0x80007EDC
 MObj* gcGetMObjSetNextAlloc()
 {
 	MObj* mobj;
@@ -627,7 +627,7 @@ MObj* gcGetMObjSetNextAlloc()
 	return mobj;
 }
 
-// 80007F58
+// 0x80007F58
 void gcSetMObjPrevAlloc(MObj* mobj)
 {
 	mobj->next = sOMMObjHead;
@@ -635,7 +635,7 @@ void gcSetMObjPrevAlloc(MObj* mobj)
 	sOMMObjHead = mobj;
 }
 
-// 80007F84
+// 0x80007F84
 DObj* gcGetDObjSetNextAlloc()
 {
 	DObj* dobj;
@@ -660,7 +660,7 @@ DObj* gcGetDObjSetNextAlloc()
 	return dobj;
 }
 
-// 80008004
+// 0x80008004
 void gcSetDObjPrevAlloc(DObj* dobj)
 {
 	dobj->alloc_free = sOMDObjHead;
@@ -668,7 +668,7 @@ void gcSetDObjPrevAlloc(DObj* dobj)
 	sOMDObjHead = dobj;
 }
 
-// 80008030
+// 0x80008030
 SObj* gcGetSObjSetNextAlloc()
 {
 	SObj* sobj;
@@ -692,7 +692,7 @@ SObj* gcGetSObjSetNextAlloc()
 	return sobj;
 }
 
-// 800080B0
+// 0x800080B0
 void gcSetSObjPrevAlloc(SObj* sobj)
 {
 	sobj->alloc_free = sOMSObjHead;
@@ -700,7 +700,7 @@ void gcSetSObjPrevAlloc(SObj* sobj)
 	sOMSObjHead = sobj;
 }
 
-// 800080DC
+// 0x800080DC
 Camera* gcGetCameraSetNextAlloc()
 {
 	Camera* cam;
@@ -724,7 +724,7 @@ Camera* gcGetCameraSetNextAlloc()
 	return cam;
 }
 
-// 8000815C
+// 0x8000815C
 void gcSetCameraPrevAlloc(Camera* cam)
 {
 	cam->next = sOMCameraHead;
@@ -732,7 +732,7 @@ void gcSetCameraPrevAlloc(Camera* cam)
 	sOMCameraHead = cam;
 }
 
-// 80008188
+// 0x80008188
 GObjProcess* gcAddGObjProcess(GObj* gobj, void (*proc)(GObj*), u8 kind, u32 priority)
 {
 	OMThreadStackNode* stack_node;
@@ -795,7 +795,7 @@ GObjProcess* gcAddGObjProcess(GObj* gobj, void (*proc)(GObj*), u8 kind, u32 prio
 	return gobjproc;
 }
 
-// 80008304
+// 0x80008304
 GObjProcess* unref_80008304(GObj* gobj, void (*proc)(GObj*), u32 pri, s32 thread_id, u32 stack_size)
 {
 	GObjProcess* gobjproc;	// s0
@@ -845,7 +845,7 @@ GObjProcess* unref_80008304(GObj* gobj, void (*proc)(GObj*), u32 pri, s32 thread
 	return gobjproc;
 }
 
-// 8000848C
+// 0x8000848C
 void gcEndGObjProcess(GObjProcess* gobjproc)
 {
 	OMThreadStackNode* tnode;
@@ -879,7 +879,7 @@ void gcEndGObjProcess(GObjProcess* gobjproc)
 	gcSetGObjProcessPrevAlloc(gobjproc);
 }
 
-// 8000855C
+// 0x8000855C
 OMMtx* gcAddOMMtxForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 ommtx_id)
 {
 	uintptr_t csr;
@@ -1070,14 +1070,14 @@ OMMtx* gcAddOMMtxForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 ommtx_id)
 	return ommtx;
 }
 
-// 80008CC0
+// 0x80008CC0
 // This actually returns gcAddOMMtxForDObjVar, see https://decomp.me/scratch/nIQ4X
 OMMtx* gcAddOMMtxForDObjFixed(DObj* dobj, u8 kind, u8 arg2)
 {
 	return gcAddOMMtxForDObjVar(dobj, kind, arg2, dobj->ommtx_len);
 }
 
-// 80008CF0
+// 0x80008CF0
 OMMtx* gcAddOMMtxForCamera(Camera* cam, u8 kind, u8 arg2)
 {
 	OMMtx* ommtx;
@@ -1131,7 +1131,7 @@ OMMtx* gcAddOMMtxForCamera(Camera* cam, u8 kind, u8 arg2)
 	return ommtx;
 }
 
-// 80008E78
+// 0x80008E78
 AObj* gcAddAObjForDObj(DObj* dobj, u8 track)
 {
 	AObj* aobj = gcGetAObjSetNextAlloc();
@@ -1151,7 +1151,7 @@ AObj* gcAddAObjForDObj(DObj* dobj, u8 track)
 	return aobj;
 }
 
-// 80008EE4
+// 0x80008EE4
 void gcRemoveAObjFromDObj(DObj* dobj)
 {
 	AObj* current_aobj;
@@ -1169,7 +1169,7 @@ void gcRemoveAObjFromDObj(DObj* dobj)
 	dobj->anim_remain = AOBJ_ANIM_NULL;
 }
 
-// 80008F44
+// 0x80008F44
 AObj* gcAddAObjForMObj(MObj* mobj, u8 index)
 {
 	AObj* aobj = gcGetAObjSetNextAlloc();
@@ -1189,7 +1189,7 @@ AObj* gcAddAObjForMObj(MObj* mobj, u8 index)
 	return aobj;
 }
 
-// 80008FB0
+// 0x80008FB0
 // free struct AObj list at unk90
 void gcRemoveAObjFromMObj(MObj* mobj)
 {
@@ -1208,7 +1208,7 @@ void gcRemoveAObjFromMObj(MObj* mobj)
 	mobj->anim_remain = AOBJ_ANIM_NULL;
 }
 
-// 80009010
+// 0x80009010
 AObj* gcAddAObjForCamera(Camera* cam, u8 index)
 {
 	AObj* aobj = gcGetAObjSetNextAlloc();
@@ -1228,7 +1228,7 @@ AObj* gcAddAObjForCamera(Camera* cam, u8 index)
 	return aobj;
 }
 
-// 8000907C
+// 0x8000907C
 void gcRemoveAObjFromCamera(Camera* cam)
 {
 	AObj* current_aobj;
@@ -1246,7 +1246,7 @@ void gcRemoveAObjFromCamera(Camera* cam)
 	cam->anim_remain = AOBJ_ANIM_NULL;
 }
 
-// 800090DC
+// 0x800090DC
 MObj* gcAddMObjForDObj(DObj* dobj, MObjSub* mobjsub)
 {
 	MObj* mobj = gcGetMObjSetNextAlloc();
@@ -1283,7 +1283,7 @@ MObj* gcAddMObjForDObj(DObj* dobj, MObjSub* mobjsub)
 	return mobj;
 }
 
-// 800091F4
+// 0x800091F4
 void gcRemoveMObjAll(DObj* dobj)
 {
 	MObj* current_mobj;
@@ -1310,7 +1310,7 @@ void gcRemoveMObjAll(DObj* dobj)
 	dobj->mobj = NULL;
 }
 
-// 8000926C
+// 0x8000926C
 void gcInitDObj(DObj* dobj)
 {
 	s32 i;
@@ -1332,7 +1332,7 @@ void gcInitDObj(DObj* dobj)
 	dobj->user_data.p = NULL;
 }
 
-// 800092D0
+// 0x800092D0
 DObj* gcAddDObjForGObj(GObj* gobj, void* dvar)
 {
 	DObj* new_dobj;
@@ -1371,7 +1371,7 @@ DObj* gcAddDObjForGObj(GObj* gobj, void* dvar)
 	return new_dobj;
 }
 
-// 80009380
+// 0x80009380
 DObj* gcAddSiblingForDObj(DObj* dobj, void* dvar)
 {
 	DObj* new_dobj = gcGetDObjSetNextAlloc();
@@ -1393,7 +1393,7 @@ DObj* gcAddSiblingForDObj(DObj* dobj, void* dvar)
 	return new_dobj;
 }
 
-// 800093F4
+// 0x800093F4
 DObj* gcAddChildForDObj(DObj* dobj, void* dvar)
 {
 	DObj* new_dobj = gcGetDObjSetNextAlloc();
@@ -1426,7 +1426,7 @@ DObj* gcAddChildForDObj(DObj* dobj, void* dvar)
 	return new_dobj;
 }
 
-// 8000948C
+// 0x8000948C
 // drop_dobj, cleanup_dobj, gcSetDObjPrevAlloc?
 void gcEjectDObj(DObj* dobj)
 {
@@ -1493,7 +1493,7 @@ void gcEjectDObj(DObj* dobj)
 	gcSetDObjPrevAlloc(dobj);
 }
 
-// 80009614
+// 0x80009614
 SObj* gcAddSObjForGObj(GObj* gobj, Sprite* sprite)
 {
 	SObj* new_sobj;
@@ -1528,7 +1528,7 @@ SObj* gcAddSObjForGObj(GObj* gobj, Sprite* sprite)
 	return new_sobj;
 }
 
-// 800096EC
+// 0x800096EC
 void gcEjectSObj(SObj* sobj)
 {
 	if (sobj == SObjGetStruct(sobj->parent_gobj))
@@ -1582,7 +1582,7 @@ Camera* gcAddCameraForGObj(GObj* gobj)
 	return new_cam;
 }
 
-// 80009810
+// 0x80009810
 void gcEjectCamera(Camera* cam)
 {
 	GObj* gobj;
@@ -1610,7 +1610,7 @@ void gcEjectCamera(Camera* cam)
 	gcSetCameraPrevAlloc(cam);
 }
 
-// 800098A4
+// 0x800098A4
 GObj* gcInitGObjCommon(u32 id, void (*func_run)(GObj*), u8 link, u32 order)
 {
 	GObj* new_gobj;
@@ -1646,7 +1646,7 @@ GObj* gcInitGObjCommon(u32 id, void (*func_run)(GObj*), u8 link, u32 order)
 	return new_gobj;
 }
 
-// 80009968
+// 0x80009968
 // from 64remix: render.create_object
 GObj* gcMakeGObjSPAfter(u32 id, void (*func_run)(GObj*), u8 link, u32 order)
 {
@@ -1659,7 +1659,7 @@ GObj* gcMakeGObjSPAfter(u32 id, void (*func_run)(GObj*), u8 link, u32 order)
 	return new_gobj;
 }
 
-// 800099A8
+// 0x800099A8
 GObj* gcMakeGObjSPBefore(u32 id, void (*func_run)(GObj*), u8 link, u32 order)
 {
 	GObj* new_gobj = gcInitGObjCommon(id, func_run, link, order);
@@ -1671,7 +1671,7 @@ GObj* gcMakeGObjSPBefore(u32 id, void (*func_run)(GObj*), u8 link, u32 order)
 	return new_gobj;
 }
 
-// 800099E8
+// 0x800099E8
 GObj* gcMakeGObjAfter(u32 id, void (*func_run)(GObj*), GObj* link_gobj)
 {
 	GObj* new_gobj = gcInitGObjCommon(id, func_run, link_gobj->link_id, link_gobj->link_order);
@@ -1683,7 +1683,7 @@ GObj* gcMakeGObjAfter(u32 id, void (*func_run)(GObj*), GObj* link_gobj)
 	return new_gobj;
 }
 
-// 80009A34
+// 0x80009A34
 GObj* gcMakeGObjBefore(u32 id, void (*func_run)(GObj*), GObj* link_gobj)
 {
 	GObj* new_gobj = gcInitGObjCommon(id, func_run, link_gobj->link_id, link_gobj->link_order);
@@ -1695,7 +1695,7 @@ GObj* gcMakeGObjBefore(u32 id, void (*func_run)(GObj*), GObj* link_gobj)
 	return new_gobj;
 }
 
-// 80009A84
+// 0x80009A84
 void gcEjectGObj(GObj* gobj)
 {
 	if ((gobj == NULL) || (gobj == gOMObjCurrentCommon))
@@ -1722,7 +1722,7 @@ void gcEjectGObj(GObj* gobj)
 	gcSetGObjPrevAlloc(gobj);
 }
 
-// 80009B48
+// 0x80009B48
 void gcMoveGObjCommon(s32 sw, GObj* this_gobj, u8 link, u32 order, GObj* other_gobj)
 {
 	GObjProcess* current_gobjproc;
@@ -1777,25 +1777,25 @@ void gcMoveGObjCommon(s32 sw, GObj* this_gobj, u8 link, u32 order, GObj* other_g
 	}
 }
 
-// 80009C90
+// 0x80009C90
 void func_80009C90(GObj* gobj, u8 link, u32 order) { gcMoveGObjCommon(0, gobj, link, order, NULL); }
 
-// 80009CC8
+// 0x80009CC8
 void func_80009CC8(GObj* gobj, u8 link, u32 order) { gcMoveGObjCommon(1, gobj, link, order, NULL); }
 
-// 80009D00
+// 0x80009D00
 void unref_80009D00(GObj* this_gobj, GObj* other_gobj)
 {
 	gcMoveGObjCommon(2, this_gobj, other_gobj->link_id, other_gobj->link_order, other_gobj);
 }
 
-// 80009D3C
+// 0x80009D3C
 void unref_80009D3C(GObj* this_gobj, GObj* other_gobj)
 {
 	gcMoveGObjCommon(3, this_gobj, other_gobj->link_id, other_gobj->link_order, other_gobj);
 }
 
-// 80009D78
+// 0x80009D78
 void gcLinkGObjDLCommon(GObj* gobj, void (*proc_display)(GObj*), u8 dl_link, u32 dl_order, u32 cam_tag)
 {
 	if (dl_link >= ARRAY_COUNT(gOMObjCommonDLLinks) - 1)
@@ -1811,7 +1811,7 @@ void gcLinkGObjDLCommon(GObj* gobj, void (*proc_display)(GObj*), u8 dl_link, u32
 	gobj->frame_draw_last = dSYTasklogFrameDrawCount - 1;
 }
 
-// 80009DF4
+// 0x80009DF4
 void gcAddGObjDisplay(GObj *gobj, void (*proc_display)(GObj*), u8 dl_link, u32 order, u32 cam_tag)
 {
 	if (gobj == NULL)
@@ -1822,7 +1822,7 @@ void gcAddGObjDisplay(GObj *gobj, void (*proc_display)(GObj*), u8 dl_link, u32 o
 	gcDLLinkGObjTail(gobj);
 }
 
-// 80009E38
+// 0x80009E38
 void unref_80009E38(GObj* gobj, void (*proc_display)(GObj*), u8 dl_link, u32 order, u32 cam_tag)
 {
 	if (gobj == NULL)
@@ -1832,7 +1832,7 @@ void unref_80009E38(GObj* gobj, void (*proc_display)(GObj*), u8 dl_link, u32 ord
 	gcDLLinkGObjHead(gobj);
 }
 
-// 80009E7C
+// 0x80009E7C
 void unref_80009E7C(GObj* this_gobj, void (*proc_display)(GObj*), s32 arg2, GObj* other_gobj)
 {
 	if (this_gobj == NULL)
@@ -1842,7 +1842,7 @@ void unref_80009E7C(GObj* this_gobj, void (*proc_display)(GObj*), s32 arg2, GObj
 	gcAppendGObjToDLLinkedList(this_gobj, other_gobj);
 }
 
-// 80009ED0
+// 0x80009ED0
 void unref_80009ED0(GObj* this_gobj, void (*proc_display)(GObj*), s32 arg2, GObj* other_gobj)
 {
 	if (this_gobj == NULL)
@@ -1852,7 +1852,7 @@ void unref_80009ED0(GObj* this_gobj, void (*proc_display)(GObj*), s32 arg2, GObj
 	gcAppendGObjToDLLinkedList(this_gobj, other_gobj->link_prev);
 }
 
-// 80009F28
+// 0x80009F28
 void func_80009F28(GObj* gobj, void (*proc_display)(GObj*), u32 order, u64 arg3, u32 cam_tag)
 {
 	gobj->dl_link_id = ARRAY_COUNT(gOMObjCommonDLLinks) - 1;
@@ -1864,7 +1864,7 @@ void func_80009F28(GObj* gobj, void (*proc_display)(GObj*), u32 order, u64 arg3,
 	gobj->frame_draw_last = dSYTasklogFrameDrawCount - 1;
 }
 
-// 80009F74
+// 0x80009F74
 void func_80009F74(GObj *gobj, void (*proc_display)(GObj*), u32 order, u64 arg3, u32 cam_tag)
 {
 	if (gobj == NULL)
@@ -1875,7 +1875,7 @@ void func_80009F74(GObj *gobj, void (*proc_display)(GObj*), u32 order, u64 arg3,
 	gcDLLinkGObjTail(gobj);
 }
 
-// 80009FC0
+// 0x80009FC0
 void unref_80009FC0(GObj* gobj, void (*proc_display)(GObj*), u32 order, u64 arg3, u32 cam_tag)
 {
 	if (gobj == NULL)
@@ -1885,7 +1885,7 @@ void unref_80009FC0(GObj* gobj, void (*proc_display)(GObj*), u32 order, u64 arg3
 	gcDLLinkGObjHead(gobj);
 }
 
-// 8000A00C
+// 0x8000A00C
 void unref_8000A00C(GObj* this_gobj, void (*proc_display)(GObj*), u64 arg2, s32 arg3, GObj* other_gobj)
 {
 	if (this_gobj == NULL)
@@ -1894,7 +1894,7 @@ void unref_8000A00C(GObj* this_gobj, void (*proc_display)(GObj*), u64 arg2, s32 
 	gcAppendGObjToDLLinkedList(this_gobj, other_gobj);
 }
 
-// 8000A06C
+// 0x8000A06C
 void unref_8000A06C(GObj* this_gobj, void (*proc_display)(GObj*), u64 arg2, s32 arg3, GObj* other_gobj)
 {
 	if (this_gobj == NULL)
@@ -1903,7 +1903,7 @@ void unref_8000A06C(GObj* this_gobj, void (*proc_display)(GObj*), u64 arg2, s32 
 	gcAppendGObjToDLLinkedList(this_gobj, other_gobj->link_prev);
 }
 
-// 8000A0D0
+// 0x8000A0D0
 void gcMoveGObjDL(GObj* gobj, u8 dl_link, u32 order)
 {
 	if (dl_link >= ARRAY_COUNT(gOMObjCommonDLLinks) - 1)
@@ -1919,7 +1919,7 @@ void gcMoveGObjDL(GObj* gobj, u8 dl_link, u32 order)
 	gcDLLinkGObjTail(gobj);
 }
 
-// 8000A14C
+// 0x8000A14C
 void gcMoveGObjDLHead(GObj* gobj, u8 dl_link, u32 order)
 {
 	if (dl_link >= ARRAY_COUNT(gOMObjCommonDLLinks) - 1)
@@ -1933,7 +1933,7 @@ void gcMoveGObjDLHead(GObj* gobj, u8 dl_link, u32 order)
 	gcDLLinkGObjHead(gobj);
 }
 
-// 8000A1C8
+// 0x8000A1C8
 void unref_8000A1C8(GObj* this_gobj, GObj* other_gobj)
 {
 	gcRemoveGObjFrgcDLLinkedList(this_gobj);
@@ -1942,7 +1942,7 @@ void unref_8000A1C8(GObj* this_gobj, GObj* other_gobj)
 	gcAppendGObjToDLLinkedList(this_gobj, other_gobj);
 }
 
-// 8000A208
+// 0x8000A208
 void unref_8000A208(GObj* this_gobj, GObj* other_gobj)
 {
 	gcRemoveGObjFrgcDLLinkedList(this_gobj);
@@ -1951,7 +1951,7 @@ void unref_8000A208(GObj* this_gobj, GObj* other_gobj)
 	gcAppendGObjToDLLinkedList(this_gobj, other_gobj->dl_link_prev);
 }
 
-// 8000A24C
+// 0x8000A24C
 void func_8000A24C(GObj* gobj, u32 order)
 {
 	gcRemoveGObjFrgcDLLinkedList(gobj);
@@ -1959,7 +1959,7 @@ void func_8000A24C(GObj* gobj, u32 order)
 	gcDLLinkGObjTail(gobj);
 }
 
-// 8000A280
+// 0x8000A280
 void unref_8000A280(GObj* gobj, u32 order)
 {
 	gcRemoveGObjFrgcDLLinkedList(gobj);
@@ -1967,7 +1967,7 @@ void unref_8000A280(GObj* gobj, u32 order)
 	gcDLLinkGObjHead(gobj);
 }
 
-// 8000A2B4
+// 0x8000A2B4
 void func_8000A2B4(GObj* this_gobj, GObj* other_gobj)
 {
 	gcRemoveGObjFrgcDLLinkedList(this_gobj);
@@ -1975,7 +1975,7 @@ void func_8000A2B4(GObj* this_gobj, GObj* other_gobj)
 	gcAppendGObjToDLLinkedList(this_gobj, other_gobj);
 }
 
-// 8000A2EC
+// 0x8000A2EC
 void unref_8000A2EC(GObj* this_gobj, GObj* other_gobj)
 {
 	gcRemoveGObjFrgcDLLinkedList(this_gobj);
@@ -1983,13 +1983,13 @@ void unref_8000A2EC(GObj* this_gobj, GObj* other_gobj)
 	gcAppendGObjToDLLinkedList(this_gobj, other_gobj->link_prev);
 }
 
-// 8000A328
+// 0x8000A328
 void gcSetMaxNumGObj(s32 num) { sOMObjCommonNumMax = num; }
 
-// 8000A334
+// 0x8000A334
 s16 gcGetMaxNumGObj() { return sOMObjCommonNumMax; }
 
-// 8000A340
+// 0x8000A340
 void func_8000A340()
 {
 	s32 i;
@@ -2017,7 +2017,7 @@ void func_8000A340()
 	}
 }
 
-// 8000A40C
+// 0x8000A40C
 GObj* func_8000A40C(GObj* gobj)
 {
 	GObj* return_gobj;
@@ -2046,7 +2046,7 @@ GObj* func_8000A40C(GObj* gobj)
 	return return_gobj;
 }
 
-// 8000A49C
+// 0x8000A49C
 GObjProcess* func_8000A49C(GObjProcess* gobjproc)
 {
 	GObjProcess* return_gobjproc;
@@ -2094,7 +2094,7 @@ GObjProcess* func_8000A49C(GObjProcess* gobjproc)
 	return return_gobjproc;
 }
 
-// 8000A5E4
+// 0x8000A5E4
 void func_8000A5E4()
 {
 	s32 i;
@@ -2131,7 +2131,7 @@ void func_8000A5E4()
 	}
 }
 
-// 8000A6E0
+// 0x8000A6E0
 void gcSetupObjectManager(OMSetup* setup)
 {
 	s32 i;

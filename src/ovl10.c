@@ -15,8 +15,8 @@ extern uintptr_t lTitleScreenParticleBankGenLo; // B22C30
 extern uintptr_t lTitleScreenParticleBankGenHi; // B22D40
 extern uintptr_t lTitleScreenParticleBankTextureLo; // B22D40
 extern uintptr_t lTitleScreenParticleBankTextureHi; // B277B0
-extern uintptr_t lOverlay10ArenaLo; // 801345B0
-extern uintptr_t lOverlay10ArenaHi; // 80369240
+extern uintptr_t lOverlay10ArenaLo; // 0x801345B0
+extern uintptr_t lOverlay10ArenaHi; // 0x80369240
 
 extern intptr_t FILE_0A7_ANIMATED_LOGO_OFFSET_1; // 251D0 file 0x0A7 offset for Animated Logo (anim?)
 extern intptr_t FILE_0A7_ANIMATED_LOGO_OFFSET_2; // 26020 file 0x0A7 offset for Animated Logo (anim?)
@@ -44,7 +44,7 @@ void func_ovl10_80132A58(GObj* fire_gobj);
 void mnTitleLoadFiles();
 
 // DATA
-// 801341E0
+// 0x801341E0
 intptr_t dMNTitleAnimatedLogoOffsets[3] = {
 
 	0x00008FC8, // Full circle cutout
@@ -52,10 +52,10 @@ intptr_t dMNTitleAnimatedLogoOffsets[3] = {
 	0x00009B48 // Horizontal rectangle
 };
 
-// 801341EC
+// 0x801341EC
 s32 dMNTitleLogoOffset = 0xbbb0;
 
-// 801341F0
+// 0x801341F0
 intptr_t dMNTitleFireTextureOffsets[30] = {
 
 	0x00001018, 0x00002078, 0x000030d8, 0x00004138,
@@ -68,7 +68,7 @@ intptr_t dMNTitleFireTextureOffsets[30] = {
 	0x0001da98, 0x0001eaf8
 };
 
-// 80134268
+// 0x80134268
 mnTitleTextureConfig dMNTitleTextureConfigs[5] = {
 
 	0x0000009d, 0x0000005e, 0x00011988,
@@ -78,26 +78,26 @@ mnTitleTextureConfig dMNTitleTextureConfigs[5] = {
 	0x0000010e, 0x00000084, 0x00011aa8	
 };
 
-// 801342A4
+// 0x801342A4
 s32 D_ovl10_801342A4[8] = {
 
 	0x000000a0, 0x000000d0, 0x00015320, 0x000000a0,
 	0x0000000f, 0x0000c208, 0x000000a2, 0x000000b1
 };
 
-// 801342C4
+// 0x801342C4
 s32 D_ovl10_801342C4 = 0x00015a48;
 
-// 801342C8
+// 0x801342C8
 s32 D_ovl10_801342C8 = 0x00000104;
 
-// 801342CC
+// 0x801342CC
 s32 D_ovl10_801342CC = 0x0000003c;
 
-// 801342D0
+// 0x801342D0
 s32 D_ovl10_801342D0 = 0x0000bbb0;
 
-// 801342D4
+// 0x801342D4
 s32 D_ovl10_801342D4[] = {
 
 	0x0115,
@@ -109,19 +109,19 @@ s32 D_ovl10_801342D4[] = {
 	0x800a41c0, 0, 0, 0, 0
 };
 
-// 80134318
+// 0x80134318
 u8 dMNTitleFireBGOverlayColorArrayRed[7] = { 0xff, 0xff, 0xff, 0xff, 0xe6, 0xff, 0xff };
 
-// 80134320
+// 0x80134320
 u8 dMNTitleFireBGOverlayColorArrayGreen[7] = { 0xff, 0xf0, 0xff, 0xd1, 0xff, 0xe2, 0xd2 };
 
-// 80134328
+// 0x80134328
 u8 dMNTitleFireBGOverlayColorArrayBlue[7] = { 0xff, 0x9b, 0x64, 0xd1, 0xe6, 0xb8, 0x94 };
 
-// 80134330
+// 0x80134330
 Lights1 dMNTitleLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x0A, 0x32, 0x32);
 
-// 80134348
+// 0x80134348
 Gfx dMNTitleDisplayList[] =
 {
 	gsSPSetGeometryMode(G_LIGHTING),
@@ -129,14 +129,14 @@ Gfx dMNTitleDisplayList[] =
 	gsSPEndDisplayList()
 };
 
-// 80134370
+// 0x80134370
 syDisplaySetup D_ovl10_80134370 = {
 
 	0x80392a00, 0x803b6900, 0x803da800, 0,
 	0x0140, 0x00f0, 0x15a99
 };
 
-// 8013438C
+// 0x8013438C
 scRuntimeInfo D_ovl10_8013438C = {
 
 	0x00000000,
@@ -151,94 +151,94 @@ scRuntimeInfo D_ovl10_8013438C = {
 	0x00000090, 0x80133f90
 };
 
-// 80134418
+// 0x80134418
 s32 D_ovl10_80134418 = 0;
 
-// 8013441C
+// 0x8013441C
 s32 D_ovl10_8013441C = 0;
 
-// 80134420
+// 0x80134420
 s32 D_ovl10_80134420[2] = { 0xa7, 0xa8 };
 
 
 // BSS
-// 80134440
+// 0x80134440
 s32 D_ovl10_80134440[2];
 
-// 80134448
+// 0x80134448
 GObj* gMNTitleFireBGOverlayCameraGObj;
 
-// 8013444C
+// 0x8013444C
 uintptr_t gMNTitleParticleBankId;
 
-// 80134450
+// 0x80134450
 mnTitleLayout gMNTitleLayout;
 
-// 80134454
+// 0x80134454
 uintptr_t gMNTitleTransitionsGObj;
 
-// 80134458
+// 0x80134458
 uintptr_t gMNTitleMainGObj;
 
-// 8013445C
+// 0x8013445C
 s32 gMNTitleTransitionFramesElapsed;
 
-// 80134460
+// 0x80134460
 sb32 gMNTitleEnableMain;
 
-// 80134464
+// 0x80134464
 s32 gMNTitleFireAlpha;
 
-// 80134468
+// 0x80134468
 s32 gMNTitleFireAlphaUnused;
 
-// 8013446C
+// 0x8013446C
 s32 gMNTitleLogoAlpha;
 
-// 80134470
+// 0x80134470
 sb32 gMNTitleChangeSceneInterrupt;
 
-// 80134474
+// 0x80134474
 s32 gMNTitleChangeSceneTimer;
 
-// 80134478
+// 0x80134478
 s32 gMNTitleFireBGOverlayTimer;
 
-// 8013447C
+// 0x8013447C
 f32 gMNTitleFireBGOverlayRed;
 
-// 80134480
+// 0x80134480
 f32 gMNTitleFireBGOverlayGreen;
 
-// 80134484
+// 0x80134484
 f32 gMNTitleFireBGOverlayBlue;
 
-// 80134488
+// 0x80134488
 f32 gMNTitleFireBGOverlayDeltaRed;
 
-// 8013448C
+// 0x8013448C
 f32 gMNTitleFireBGOverlayDeltaGreen;
 
-// 80134490
+// 0x80134490
 f32 gMNTitleFireBGOverlayDeltaBlue;
 
-// 80134494
+// 0x80134494
 s32 gMNTitleFireBGOverlayIndex;
 
-// 80134498
+// 0x80134498
 u32 gMNTitleMainMenuFramesToWait;
 
-// 801344A0
+// 0x801344A0
 lbFileNode D_ovl10_801344A0[32];
 
-// 801345A0
+// 0x801345A0
 uintptr_t gMNTitleFile0;
 
-// 801345A4
+// 0x801345A4
 uintptr_t gMNTitleFile1;
 
 
-// 80131B00
+// 0x80131B00
 s32 mnTitleGetUnlockedCharsCountForMask(u16 mask)
 {
 	s32 i;
@@ -252,7 +252,7 @@ s32 mnTitleGetUnlockedCharsCountForMask(u16 mask)
 	return unlocked_chars;
 }
 
-// 80131B78
+// 0x80131B78
 s32 mnTitleGetMissingFtKind(u16 mask_1, u16 mask_2, s32 missing_index)
 {
 	s32 ft_kind = -1;
@@ -271,7 +271,7 @@ s32 mnTitleGetMissingFtKind(u16 mask_1, u16 mask_2, s32 missing_index)
 	return ft_kind;
 }
 
-// 80131BC4
+// 0x80131BC4
 s32 mnTitleSetDemoFtKinds()
 {
 	u16 unlocked_mask;
@@ -313,7 +313,7 @@ s32 mnTitleSetDemoFtKinds()
 	}
 }
 
-// 80131CF4
+// 0x80131CF4
 void mnTitleInitVars()
 {
 	s32 index;
@@ -350,7 +350,7 @@ void mnTitleInitVars()
 	gMNTitleFireBGOverlayDeltaBlue = 0.0f;
 }
 
-// 80131E68
+// 0x80131E68
 void mnTitleSetFinalLogoPosition()
 {
 	GObj* smash_logo_gobj;
@@ -374,7 +374,7 @@ void mnTitleSetFinalLogoPosition()
 	smash_logo_sobj->sprite.scaley = 1.0f;
 }
 
-// 80131EE4
+// 0x80131EE4
 void mnTitleSetFinalLayout()
 {
 	s32 i;
@@ -421,7 +421,7 @@ void mnTitleSetFinalLayout()
 	}
 }
 
-// 80131FD0
+// 0x80131FD0
 void mnTitleGoToNextDemo()
 {
 	u8 scene_previous = gSceneData.scene_previous;
@@ -453,7 +453,7 @@ void mnTitleGoToNextDemo()
 	gMNTitleChangeSceneInterrupt = TRUE;
 }
 
-// 80132090
+// 0x80132090
 void mnTitleGoToMainMenu()
 {
 	gcMakeDefaultCameraGObj(2, 0x80000000, 0, 2, 0xFF);
@@ -467,7 +467,7 @@ void mnTitleGoToMainMenu()
 	gMNTitleChangeSceneInterrupt = TRUE;
 }
 
-// 801320F0
+// 0x801320F0
 void mnTitleMain(s32 arg0)
 {
 	s32 i;
@@ -518,7 +518,7 @@ void mnTitleMain(s32 arg0)
 	}
 }
 
-// 80132210
+// 0x80132210
 void mnTitleUpdateFireBGOverlayVars()
 {
 	s32 index = mtTrigGetRandomTimeUCharRange(7);
@@ -532,7 +532,7 @@ void mnTitleUpdateFireBGOverlayVars()
 	gMNTitleFireBGOverlayDeltaBlue = (dMNTitleFireBGOverlayColorArrayBlue[index] - gMNTitleFireBGOverlayBlue) / 80.0f;
 }
 
-// 80132320
+// 0x80132320
 void mnTitleTransitionFromFireLogo()
 {
 	GObj* current_gobj;
@@ -564,7 +564,7 @@ void mnTitleTransitionFromFireLogo()
 	mnTitleUpdateFireBGOverlayVars();
 }
 
-// 801323AC
+// 0x801323AC
 void mnTitleEnableAllInGroup(s32 link_id)
 {
 	GObj* gobj = gOMObjCommonLinks[link_id];
@@ -577,7 +577,7 @@ void mnTitleEnableAllInGroup(s32 link_id)
 	}
 }
 
-// 801323DC
+// 0x801323DC
 void mnTitleNextLayout()
 {
 	if ((gMNTitleLayout == nMNTitleLayoutIntro) && (gSceneData.scene_previous == nSCKindOpeningNewcomers))
@@ -586,7 +586,7 @@ void mnTitleNextLayout()
 	gMNTitleLayout++;
 }
 
-// 80132414
+// 0x80132414
 void mnTitleSetMainMenuFramesToWait()
 {
 	if (gMNTitleLayout == nMNTitleLayoutFinal)
@@ -595,7 +595,7 @@ void mnTitleSetMainMenuFramesToWait()
 		gMNTitleMainMenuFramesToWait = 364;
 }
 
-// 80132448
+// 0x80132448
 void mnTitleHandleTransitions(s32 arg0)
 {
 	gMNTitleTransitionFramesElapsed++;
@@ -645,7 +645,7 @@ void mnTitleHandleTransitions(s32 arg0)
 	}
 }
 
-// 801325D4
+// 0x801325D4
 void mnTitleAnimateGObj(GObj* gobj)
 {
 	GObj* effect_gobj;
@@ -672,21 +672,21 @@ void mnTitleAnimateGObj(GObj* gobj)
 	}
 }
 
-// 801326A4
+// 0x801326A4
 void mnTitleAnimatePressStart(GObj* press_start_gobj)
 {
 	if (press_start_gobj->flags != 1)
 		mnTitleAnimateGObj(press_start_gobj);
 }
 
-// 801326D4
+// 0x801326D4
 void mnTitleAnimateTitle(GObj* title_gobj)
 {
 	if (title_gobj->flags != 1)
 		mnTitleAnimateGObj(title_gobj);
 }
 
-// 80132704
+// 0x80132704
 void mnTitleUpdateHeaderAndFooterPosition(GObj* header_footer_gobj)
 {
 	SObj* header_footer_sobj = SObjGetStruct(header_footer_gobj);
@@ -698,7 +698,7 @@ void mnTitleUpdateHeaderAndFooterPosition(GObj* header_footer_gobj)
 	}
 }
 
-// 80132764
+// 0x80132764
 void mnTitleSetPosition(DObj* dobj, SObj* sobj, s32 index)
 {
 	mnTitleTextureConfig* texture_config;
@@ -715,7 +715,7 @@ void mnTitleSetPosition(DObj* dobj, SObj* sobj, s32 index)
 	sobj->pos.y = (texture_config->y - (sobj->sprite.height * 0.5f));
 }
 
-// 8013282C
+// 0x8013282C
 void mnTitleSetColors(SObj* sobj, s32 index)
 {
 	if (index < nMNTitleTextureIndexFooter)
@@ -766,7 +766,7 @@ void mnTitleSetColors(SObj* sobj, s32 index)
 	}
 }
 
-// 80132940
+// 0x80132940
 void mnTitleRenderFire(GObj* fire_gobj)
 {
 	s32 i;
@@ -786,7 +786,7 @@ void mnTitleRenderFire(GObj* fire_gobj)
 	}
 }
 
-// 80132A20
+// 0x80132A20
 void func_ovl10_80132A20(GObj* fire_gobj)
 {
 	if (fire_gobj->flags != 1)
@@ -798,14 +798,14 @@ void func_ovl10_80132A20(GObj* fire_gobj)
 	}
 }
 
-// 80132A58
+// 0x80132A58
 void func_ovl10_80132A58(GObj* fire_gobj)
 {
 	gMNTitleFireAlpha = 0xFF;
 	fire_gobj->flags = 0;
 }
 
-// 80132A6C
+// 0x80132A6C
 void func_ovl10_80132A6C(SObj* fire_sobj, s32 arg1)
 {
 	Sprite *offset = GetAddressFromOffset(gMNTitleFile1, dMNTitleFireTextureOffsets[fire_sobj->user_data.s]);
@@ -829,7 +829,7 @@ void func_ovl10_80132A6C(SObj* fire_sobj, s32 arg1)
 		fire_sobj->user_data.s = 0;
 }
 
-// 80132B38
+// 0x80132B38
 void func_ovl10_80132B38(GObj* fire_gobj)
 {
 	SObj *fire_sobj_1 = SObjGetStruct(fire_gobj), *fire_sobj_2 = fire_sobj_1->next;
@@ -838,7 +838,7 @@ void func_ovl10_80132B38(GObj* fire_gobj)
 	func_ovl10_80132A6C(fire_sobj_2, 1);
 }
 
-// 80132B70
+// 0x80132B70
 void mnTitleCreateFire()
 {
 	s32 i;
@@ -895,7 +895,7 @@ void mnTitleCreateFire()
 	}
 }
 
-// 80132D5C
+// 0x80132D5C
 void mnTitleAnimateLogo(GObj* logo_gobj)
 {
 	GObj *effect_gobj = logo_gobj->user_data.p;
@@ -908,7 +908,7 @@ void mnTitleAnimateLogo(GObj* logo_gobj)
 	logo_sobj->pos.y = ((120.0f - logo_animation_dobj->translate.vec.f.y) - (logo_sobj->sprite.height * logo_sobj->sprite.scaley * 0.5f));
 }
 
-// 80132DFC
+// 0x80132DFC
 void mnTitleRenderLogoNoIntro(GObj* logo_gobj)
 {
 	SObj* logo_sobj = SObjGetStruct(logo_gobj);
@@ -928,7 +928,7 @@ void mnTitleRenderLogoNoIntro(GObj* logo_gobj)
 	}
 }
 
-// 80132EDC
+// 0x80132EDC
 void mnTitleFadeOutLogo(GObj* logo_gobj)
 {
 	SObj* logo_sobj = SObjGetStruct(logo_gobj);
@@ -942,7 +942,7 @@ void mnTitleFadeOutLogo(GObj* logo_gobj)
 	}
 }
 
-// 80132F3C
+// 0x80132F3C
 void mnTitleCreateLogoNoIntro()
 {
 	GObj *logo_gobj = lbCommonMakeSpriteGObj(0xB, 0, 0xA, 0x80000000, mnTitleRenderLogoNoIntro, 0, 0x80000000, -1, D_ovl10_801342D0 + gMNTitleFile0, 1, 0, 1);
@@ -956,7 +956,7 @@ void mnTitleCreateLogoNoIntro()
 	mnTitleSetPosition(0, logo_sobj, nMNTitleTextureIndexLogo);
 }
 
-// 80132FD8
+// 0x80132FD8
 void mnTitleCreateLogo()
 {
 	s32 i;
@@ -1015,7 +1015,7 @@ void mnTitleCreateLogo()
 	}
 }
 
-// 801331FC - Unused?
+// 0x801331FC - Unused?
 void mnTitleCreateTextures()
 {
 	GObj* gobj;
@@ -1035,7 +1035,7 @@ void mnTitleCreateTextures()
 	}
 }
 
-// 801332E4
+// 0x801332E4
 void mnTitleCreateTitleHeaderAndFooter()
 {
 	s32 i;
@@ -1089,7 +1089,7 @@ void mnTitleCreateTitleHeaderAndFooter()
 	gobj->flags = 1;
 }
 
-// 80133504
+// 0x80133504
 void mnTitleCreatePressStart()
 {
 	GObj* press_start_anim_gobj;
@@ -1119,17 +1119,17 @@ void mnTitleCreatePressStart()
 	press_start_gobj->flags = 1;
 }
 
-// 80133634 - discarded language selection?
+// 0x80133634 - discarded language selection?
 void func_ovl10_80133634() {}
 
-// 8013363C - Unused?
+// 0x8013363C - Unused?
 void mnTitleAnimateSlashEffectGFX(GObj* gobj)
 {
 	if (gobj->flags != 1)
 		gcPlayAnimAll(gobj);
 }
 
-// 8013366C
+// 0x8013366C
 void mnTitleCreateSlashEffectGFX()
 {
 	GObj* slash_gfx_gobj;
@@ -1146,7 +1146,7 @@ void mnTitleCreateSlashEffectGFX()
 	}
 }
 
-// 80133770
+// 0x80133770
 void mnTitleUpdateFireBGOverlayColor(GObj* arg0)
 {
 	Camera* cam = CameraGetStruct(gMNTitleFireBGOverlayCameraGObj);
@@ -1206,7 +1206,7 @@ void mnTitleUpdateFireBGOverlayColor(GObj* arg0)
 	}
 }
 
-// 80133A94
+// 0x80133A94
 s32 mnTitleCreateViewports()
 {
 	s32 unused[2];
@@ -1248,7 +1248,7 @@ s32 mnTitleCreateViewports()
 	return unused[0];
 }
 
-// 80133CFC
+// 0x80133CFC
 void mnTitleRenderLogoFireEffect(GObj *gobj)
 {
 	gDPPipeSync(gSYTasklogDLHeads[0]++);
@@ -1262,7 +1262,7 @@ void mnTitleRenderLogoFireEffect(GObj *gobj)
 	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 80133DDC
+// 0x80133DDC
 void mnTitleCreateLogoFire()
 {
 	GObj* logo_fire_gobj;
@@ -1275,7 +1275,7 @@ void mnTitleCreateLogoFire()
 	gMNTitleParticleBankId = efAllocGetAddParticleBankID(&lTitleScreenParticleBankGenLo, &lTitleScreenParticleBankGenHi, &lTitleScreenParticleBankTextureLo, &lTitleScreenParticleBankTextureHi);
 }
 
-// 80133E68
+// 0x80133E68
 void mnTitleLogoFireMakeEffect()
 {
 	GObj* logo_fire_effect_gobj;
@@ -1295,14 +1295,14 @@ void mnTitleLogoFireMakeEffect()
 	}
 }
 
-// 80133F3C
+// 0x80133F3C
 void mnTitleCreateMainRoutines()
 {
 	gMNTitleMainGObj = gcMakeGObjSPAfter(0, mnTitleMain, 1, 0x80000000);
 	gMNTitleTransitionsGObj = gcMakeGObjSPAfter(0, mnTitleHandleTransitions, 0xF, 0x80000000);
 }
 
-// 80133F90
+// 0x80133F90
 void mnTitleInit()
 {
 	s32 i;
@@ -1330,19 +1330,19 @@ void mnTitleInit()
 		while (func_8000092C() < 0x1077U);
 }
 
-// 80134074
-void mnTitleSetupDisplayList(Gfx **display_list)
+// 0x80134074
+void mnTitleFuncLights(Gfx **display_list)
 {
 	gSPDisplayList(display_list[0]++, dMNTitleDisplayList);
 }
 
-// 80134098
+// 0x80134098
 void mnTitleAdvanceFrame()
 {
 	func_8000A5E4();
 }
 
-// 801340B8
+// 0x801340B8
 void mnTitleStartScene()
 {
 	D_ovl10_80134370.zbuffer = syDisplayGetZBuffer(6400);
@@ -1358,7 +1358,7 @@ void mnTitleStartScene()
 	syTasklogInit(&D_ovl10_8013438C);
 }
 
-// 80134140
+// 0x80134140
 void mnTitleLoadFiles()
 {
 	lbRelocSetup rldmSetup;

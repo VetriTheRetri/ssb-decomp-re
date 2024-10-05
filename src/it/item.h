@@ -6,22 +6,22 @@
 
 // Global variables declared here as extern for easy access
 
-// 8018D040
+// 0x8018D040
 extern void *gITManagerFileData;
 
-// 8018D044
+// 0x8018D044
 extern s32 gITManagerParticleBankID;
 
-// 8018D048
+// 0x8018D048
 extern itRandomWeights gITManagerRandomWeights;
 
-// 8018D060
+// 0x8018D060
 extern itMonsterInfo gITManagerMonsterData;
 
-// 8018D090
+// 0x8018D090
 extern s32 gITManagerDisplayMode;
 
-// 8018D094
+// 0x8018D094
 extern itStruct* gITManagerStructsAllocFree;
 
 // 0x8018D098

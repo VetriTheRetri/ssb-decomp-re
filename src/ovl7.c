@@ -20,8 +20,8 @@ extern intptr_t D_NF_000000FE;
 extern intptr_t D_NF_0000010C;
 extern intptr_t D_NF_0000013C;
 extern intptr_t D_NF_000001B8;
-extern uintptr_t lOverlay7ArenaHi; // 80392A00
-extern uintptr_t lOverlay7ArenaLo; // 80190FA0
+extern uintptr_t lOverlay7ArenaHi; // 0x80392A00
+extern uintptr_t lOverlay7ArenaLo; // 0x80190FA0
 extern void* gGMCommonFiles[/* */];
 extern GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
 
@@ -41,7 +41,7 @@ void scTrainingMode_UpdateCursorPosition();
 void scTrainingMode_SetGeometryRenderLights(Gfx** display_list);
 
 // Data
-// 80190770
+// 0x80190770
 u16 D_ovl80190770[] = {
 
 	0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0004,
@@ -52,7 +52,7 @@ u16 D_ovl80190770[] = {
 	0x0000, 0x0011, 0x0000, 0x0012, 0x0000, 0x0013
 };
 
-// 801907B8
+// 0x801907B8
 intptr_t D_ovl7_801907B8[] = {
 
 	0x26C88, 0x26C88, 0x26C88,
@@ -86,7 +86,7 @@ sb32 (*jtbl_ovl7_801907F0[6])() = {
 	0x8018d6dc, 0x8018d7b8, 0x8018d830
 };
 
-// 80190808
+// 0x80190808
 s32 scTrainingMode_CPOpponent_BehaviorKind[] = {
 
 	0x0F, 0x10, 0x11, 0x12, 0x00
@@ -98,7 +98,7 @@ u8 D_ovl7_8019081C[4][2] = {
 	{ 0x0, 0x1 }, { 0x0, 0x3 }
 };
 
-// 80190824
+// 0x80190824
 scTrainingFiles scTrainingMode_Files_BackgroundImageInfo[] = {
 
 	{ 0x1A, 0x20718, { 0x00, 0x00, 0x00 } },
@@ -106,7 +106,7 @@ scTrainingFiles scTrainingMode_Files_BackgroundImageInfo[] = {
 	{ 0x1C, 0x20718, { 0xAF, 0xF5, 0xFF } }
 };
 
-// 80190848
+// 0x80190848
 s32 scTrainingMode_Files_BackgroundImageIDs[] = {
 
 	2, // Peach's Castle
@@ -143,26 +143,26 @@ scRuntimeInfo D_ovl7_8019088C = {
 
 // BSS
 
-// 80190960 ? referenced from scene_manager
+// 0x80190960 ? referenced from scene_manager
 s32 D_ovl7_80190960;
 
-// 80190964 unused ?
+// 0x80190964 unused ?
 s32 D_ovl7_80190964;
 
-// 80190968
+// 0x80190968
 scBattleState gTrainingModeBattleState;
 
-// 80190B58
+// 0x80190B58
 scTrainingMenu gTrainingModeStruct;
 
-// 80190C40
+// 0x80190C40
 lbFileNode gOverlay7StatusBuffer[100];
 
-// 80190F60
+// 0x80190F60
 lbFileNode gOverlay7ForceStatusBuffer[7];
 
 
-// 8018D0C0
+// 0x8018D0C0
 void scTrainingMode_SetPauseGObjRenderFlags(u32 flags)
 {
 	GObj* pause_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDPauseMenu];
@@ -174,7 +174,7 @@ void scTrainingMode_SetPauseGObjRenderFlags(u32 flags)
 	}
 }
 
-// 8018D0E8
+// 0x8018D0E8
 void scTrainingMode_CheckEnterTrainingMenu()
 {
 	s32 player = gSceneData.spgame_player;
@@ -202,7 +202,7 @@ void scTrainingMode_CheckEnterTrainingMenu()
 	}
 }
 
-// 8018D1F0
+// 0x8018D1F0
 void scTrainingMode_CheckLeaveTrainingMenu()
 {
 	s32 player = gSceneData.spgame_player;
@@ -227,7 +227,7 @@ void scTrainingMode_CheckLeaveTrainingMenu()
 	}
 }
 
-// 8018D2F0
+// 0x8018D2F0
 void scTrainingMode_UpdateMenuInputs()
 {
 	u16 inputs = 0;
@@ -271,7 +271,7 @@ void scTrainingMode_UpdateMenuInputs()
 	}
 }
 
-// 8018D3DC
+// 0x8018D3DC
 void func_ovl7_8018D3DC()
 {
 	scTrainingMode_UpdateOptionArrows();
@@ -279,7 +279,7 @@ void func_ovl7_8018D3DC()
 	func_800269C0_275C0(nSYAudioFGMMenuScroll2);
 }
 
-// 8018D40C
+// 0x8018D40C
 sb32 scTrainingMode_CheckUpdateOptionID(s32* arg0, s32 arg1, s32 arg2)
 {
 	if (gTrainingModeStruct.button_queue & 0x300)
@@ -300,7 +300,7 @@ sb32 scTrainingMode_CheckUpdateOptionID(s32* arg0, s32 arg1, s32 arg2)
 		return FALSE;
 }
 
-// 8018D478
+// 0x8018D478
 sb32 scTrainingMode_UpdateCPOption()
 {
 	if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.cp_menu_option, 0, 5) != FALSE)
@@ -313,7 +313,7 @@ sb32 scTrainingMode_UpdateCPOption()
 	return FALSE;
 }
 
-// 8018D4D0
+// 0x8018D4D0
 s32 scTrainingMode_GetSpawnableItemCount()
 {
 	GObj* item_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDItem];
@@ -328,7 +328,7 @@ s32 scTrainingMode_GetSpawnableItemCount()
 	return item_count;
 }
 
-// 8018D518
+// 0x8018D518
 sb32 scTrainingMode_UpdateItemOption()
 {
 	Vec3f pos;
@@ -368,7 +368,7 @@ sb32 scTrainingMode_UpdateItemOption()
 	return FALSE;
 }
 
-// 8018D684
+// 0x8018D684
 sb32 scTrainingMode_UpdateSpeedOption()
 {
 	if (scTrainingMode_CheckUpdateOptionID(&gTrainingModeStruct.speed_menu_option, 0, 4) != FALSE)
@@ -382,7 +382,7 @@ sb32 scTrainingMode_UpdateSpeedOption()
 	return FALSE;
 }
 
-// 8018D6DC
+// 0x8018D6DC
 sb32 scTrainingMode_UpdateViewOption()
 {
 	GObj* fighter_gobj;
@@ -408,7 +408,7 @@ sb32 scTrainingMode_UpdateViewOption()
 	return FALSE;
 }
 
-// 8018D7B8
+// 0x8018D7B8
 sb32 scTrainingMode_UpdateResetOption()
 {
 	if (gPlayerControllers[gSceneData.spgame_player].button_tap & A_BUTTON)
@@ -424,7 +424,7 @@ sb32 scTrainingMode_UpdateResetOption()
 		return FALSE;
 }
 
-// 8018D830
+// 0x8018D830
 sb32 scTrainingMode_UpdateExitOption()
 {
 	if (gPlayerControllers[gSceneData.spgame_player].button_tap & A_BUTTON)
@@ -438,7 +438,7 @@ sb32 scTrainingMode_UpdateExitOption()
 		return FALSE;
 }
 
-// 8018D898
+// 0x8018D898
 void scTrainingMode_UpdateMainOption()
 {
 	if (gTrainingModeStruct.button_queue & 0xC00)
@@ -457,7 +457,7 @@ void scTrainingMode_UpdateMainOption()
 	}
 }
 
-// 8018D91C
+// 0x8018D91C
 void scTrainingMode_UpdateTrainingMenu()
 {
 	scTrainingMode_UpdateMenuInputs();
@@ -469,7 +469,7 @@ void scTrainingMode_UpdateTrainingMenu()
 	}
 }
 
-// 8018D974
+// 0x8018D974
 sb32 scTrainingMode_CheckSpeedFrameFreeze()
 {
 	if (gTrainingModeStruct.lagframe_wait == 0)
@@ -491,7 +491,7 @@ sb32 scTrainingMode_CheckSpeedFrameFreeze()
 	return FALSE;
 }
 
-// 8018D9F0
+// 0x8018D9F0
 void scTrainingMode_ProcUpdate()
 {
 	switch (gBattleState->game_status)
@@ -508,10 +508,10 @@ void scTrainingMode_ProcUpdate()
 	ifCommonSetMaxNumGObj();
 }
 
-// 8018DA78
+// 0x8018DA78
 void scTrainingMode_RunProcUpdate() { scTrainingMode_ProcUpdate(); }
 
-// 8018DA98
+// 0x8018DA98
 void func_ovl7_8018DA98()
 {
 	s32 opponent;
@@ -572,7 +572,7 @@ void func_ovl7_8018DA98()
 	gTrainingModeStruct.is_read_menu_inputs = 0;
 }
 
-// 8018DD0C
+// 0x8018DD0C
 void scTrainingMode_LoadSprites()
 {
 	void* addr = lbRelocGetFileExternHeap((u32)&D_NF_000000FE,
@@ -585,7 +585,7 @@ void scTrainingMode_LoadSprites()
 	gTrainingModeStruct.unk_trainmenu_0x38 = (void*)((uintptr_t)addr + (intptr_t)&D_NF_000001B8);
 }
 
-// 8018DDB0
+// 0x8018DDB0
 void scTrainingMode_SetBackgroundSprite()
 {
 	gMPCollisionGroundData->wallpaper = (void*)
@@ -599,7 +599,7 @@ void scTrainingMode_SetBackgroundSprite()
 	);
 }
 
-// 8018DE60
+// 0x8018DE60
 void scTrainingMode_InitMiscVars()
 {
 	gMPCollisionGroundData->fog_color
@@ -609,7 +609,7 @@ void scTrainingMode_InitMiscVars()
 	gIFCommonPlayerInterface.is_ifmagnify_display = TRUE;
 }
 
-// 8018DEDC
+// 0x8018DEDC
 SObj* scTrainingMode_MakeStatDisplaySObj(GObj* interface_gobj, scTrainingSprites* tms)
 {
 	SObj* sobj = lbCommonMakeSObjForGObj(interface_gobj, tms->sprite);
@@ -618,7 +618,7 @@ SObj* scTrainingMode_MakeStatDisplaySObj(GObj* interface_gobj, scTrainingSprites
 	return sobj;
 }
 
-// 8018DF30
+// 0x8018DF30
 void scTrainingMode_InitStatDisplayTextInterface()
 {
 	s32 i;
@@ -642,7 +642,7 @@ void scTrainingMode_InitStatDisplayTextInterface()
 	}
 }
 
-// 8018E014
+// 0x8018E014
 void scTrainingMode_UpdateDamageDisplay(GObj* interface_gobj, s32 index)
 {
 	SObj* sobj = SObjGetStruct(interface_gobj);
@@ -658,7 +658,7 @@ void scTrainingMode_UpdateDamageDisplay(GObj* interface_gobj, s32 index)
 	}
 }
 
-// 8018E138
+// 0x8018E138
 void scTrainingMode_UpdateDamageInfo(GObj* interface_gobj)
 {
 	s32 damage = gBattleState->players[gTrainingModeStruct.opponent].combo_damage_foe;
@@ -682,14 +682,14 @@ void scTrainingMode_UpdateDamageInfo(GObj* interface_gobj)
 	lbCommonDrawSObjAttr(interface_gobj);
 }
 
-// 8018E1F8
+// 0x8018E1F8
 void scTrainingMode_UpdateDamageResetWait(GObj* interface_gobj)
 {
 	if (gTrainingModeStruct.damage_reset_wait != 0)
 		gTrainingModeStruct.damage_reset_wait -= 1;
 }
 
-// 8018E21C
+// 0x8018E21C
 void scTrainingMode_InitStatDisplayCharacterVars()
 {
 	s32 i;
@@ -703,7 +703,7 @@ void scTrainingMode_InitStatDisplayCharacterVars()
 	}
 }
 
-// 8018E300
+// 0x8018E300
 void scTrainingMode_InitSObjColors(SObj* sobj)
 {
 	sobj->envcolor.r = 0x00;
@@ -711,7 +711,7 @@ void scTrainingMode_InitSObjColors(SObj* sobj)
 	sobj->envcolor.b = 0x00;
 }
 
-// 8018E310
+// 0x8018E310
 void scTrainingMode_MakeDamageDisplayInterface()
 {
 	GObj* interface_gobj;
@@ -737,7 +737,7 @@ void scTrainingMode_MakeDamageDisplayInterface()
 	sobj->pos.x = 100.0F;
 }
 
-// 8018E424
+// 0x8018E424
 void scTrainingMode_UpdateComboDisplay(GObj* interface_gobj, s32 index)
 {
 	SObj* sobj = SObjGetStruct(interface_gobj);
@@ -753,14 +753,14 @@ void scTrainingMode_UpdateComboDisplay(GObj* interface_gobj, s32 index)
 	}
 }
 
-// 8018E548
+// 0x8018E548
 void scTrainingMode_UpdateComboResetWait(GObj* interface_gobj)
 {
 	if (gTrainingModeStruct.combo_reset_wait != 0)
 		gTrainingModeStruct.combo_reset_wait--;
 }
 
-// 8018E56C
+// 0x8018E56C
 void scTrainingMode_UpdateComboInfo(s32 interface_gobj)
 {
 	s32 combo = gBattleState->players[gTrainingModeStruct.opponent].combo_count_foe;
@@ -785,7 +785,7 @@ void scTrainingMode_UpdateComboInfo(s32 interface_gobj)
 	lbCommonDrawSObjAttr(interface_gobj);
 }
 
-// 8018E62C
+// 0x8018E62C
 void scTrainingMode_MakeComboDisplayInterface()
 {
 	GObj* interface_gobj;
@@ -806,14 +806,14 @@ void scTrainingMode_MakeComboDisplayInterface()
 	scTrainingMode_UpdateComboDisplay(interface_gobj, 0);
 }
 
-// 8018E714
+// 0x8018E714
 void scTrainingMode_InitSpeedDisplaySprite()
 {
 	SObj* sobj = SObjGetStruct(gTrainingModeStruct.speed_display_gobj);
 	sobj->sprite = *gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.speed_menu_option + 27];
 }
 
-// 8018E774
+// 0x8018E774
 void scTrainingMode_MakeSpeedDisplayInterface()
 {
 	GObj* interface_gobj;
@@ -831,14 +831,14 @@ void scTrainingMode_MakeSpeedDisplayInterface()
 	scTrainingMode_InitSObjColors(sobj);
 }
 
-// 8018E810
+// 0x8018E810
 void scTrainingMode_InitCPDisplaySprite()
 {
 	SObj* sobj = SObjGetStruct(gTrainingModeStruct.cp_display_gobj);
 	sobj->sprite = *gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.cp_menu_option + 31];
 }
 
-// 8018E870
+// 0x8018E870
 void scTrainingMode_MakeCPDisplayInterface()
 {
 	GObj* interface_gobj;
@@ -855,7 +855,7 @@ void scTrainingMode_MakeCPDisplayInterface()
 	scTrainingMode_InitSObjColors(sobj);
 }
 
-// 8018E90C
+// 0x8018E90C
 void scTrainingMode_InitItemDisplaySprite()
 {
 	SObj *root_sobj, *next_sobj;
@@ -866,7 +866,7 @@ void scTrainingMode_InitItemDisplaySprite()
 	next_sobj->pos.x = (f32)(292 - root_sobj->sprite.width) - next_sobj->sprite.width;
 }
 
-// 8018E9AC
+// 0x8018E9AC
 void scTrainingMode_UpdateItemDisplay(s32 interface_gobj)
 {
 	ftStruct* fp = ftGetStruct(gBattleState->players[gSceneData.spgame_player].fighter_gobj);
@@ -898,7 +898,7 @@ void scTrainingMode_UpdateItemDisplay(s32 interface_gobj)
 	lbCommonDrawSObjAttr(interface_gobj);
 }
 
-// 8018EA88
+// 0x8018EA88
 void scTrainingMode_MakeItemDisplayInterface()
 {
 	GObj* interface_gobj;
@@ -922,7 +922,7 @@ void scTrainingMode_MakeItemDisplayInterface()
 	scTrainingMode_InitSObjColors(sobj);
 }
 
-// 8018EB64
+// 0x8018EB64
 void scTrainingMode_InitStatDisplayAll()
 {
 	scTrainingMode_InitStatDisplayTextInterface();
@@ -934,7 +934,7 @@ void scTrainingMode_InitStatDisplayAll()
 	scTrainingMode_MakeItemDisplayInterface();
 }
 
-// 8018EBB4
+// 0x8018EBB4
 void scTrainingMode_MakeMenuLabelsInterface()
 {
 	GObj* interface_gobj;
@@ -961,7 +961,7 @@ void scTrainingMode_MakeMenuLabelsInterface()
 	}
 }
 
-// 8018ECA4
+// 0x8018ECA4
 void scTrainingMode_InitMenuOptionSpriteAttrs()
 {
 	s32 i;
@@ -969,7 +969,7 @@ void scTrainingMode_InitMenuOptionSpriteAttrs()
 		gTrainingModeStruct.menu_option_sprites[i]->attr = SP_TEXSHUF | SP_TRANSPARENT;
 }
 
-// 8018ED2C
+// 0x8018ED2C
 void scTrainingMode_RenderMainMenu(GObj* interface_gobj)
 {
 	gDPPipeSync(gSYTasklogDLHeads[0]++);
@@ -981,14 +981,14 @@ void scTrainingMode_RenderMainMenu(GObj* interface_gobj)
 	gDPPipeSync(gSYTasklogDLHeads[0]++);
 }
 
-// 8018EE10
+// 0x8018EE10
 void scTrainingMode_MakeMainMenuInterface()
 {
 	gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xE, 0x80000000), scTrainingMode_RenderMainMenu,
 						0x16, 0x80000000, -1);
 }
 
-// 8018EE5C
+// 0x8018EE5C
 void scTrainingMode_InitCPOptionTextColors()
 {
 	s32 i;
@@ -1001,7 +1001,7 @@ void scTrainingMode_InitCPOptionTextColors()
 	}
 }
 
-// 8018EEE8
+// 0x8018EEE8
 void scTrainingMode_InitCPOptionSprite()
 {
 	SObj* sobj = SObjGetStruct(gTrainingModeStruct.cp_option_gobj);
@@ -1010,7 +1010,7 @@ void scTrainingMode_InitCPOptionSprite()
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
 }
 
-// 8018EF78
+// 0x8018EF78
 void scTrainingMode_MakeCPOptionInterface()
 {
 	GObj* interface_gobj;
@@ -1032,7 +1032,7 @@ void scTrainingMode_MakeCPOptionInterface()
 	sobj->envcolor.b = 0x60;
 }
 
-// 8018F040
+// 0x8018F040
 void scTrainingMode_InitItemOptionSprite()
 {
 	SObj* sobj = SObjGetStruct(gTrainingModeStruct.item_option_gobj);
@@ -1045,7 +1045,7 @@ void scTrainingMode_InitItemOptionSprite()
 	sobj->pos.y = (gTrainingModeStruct.item_menu_option == nSCTrainingMenuItemMotionSensorBomb) ? 83.0F : 85.0F;
 }
 
-// 8018F0FC
+// 0x8018F0FC
 void scTrainingMode_InitItemOptionTextColors()
 {
 	s32 i;
@@ -1058,7 +1058,7 @@ void scTrainingMode_InitItemOptionTextColors()
 	}
 }
 
-// 8018F194
+// 0x8018F194
 void scTrainingMode_MakeItemOptionInterface()
 {
 	GObj* interface_gobj;
@@ -1081,7 +1081,7 @@ void scTrainingMode_MakeItemOptionInterface()
 	sobj->envcolor.b = 0x60;
 }
 
-// 8018F264
+// 0x8018F264
 void scTrainingMode_InitSpeedOptionTextColors()
 {
 	s32 i;
@@ -1094,7 +1094,7 @@ void scTrainingMode_InitSpeedOptionTextColors()
 	}
 }
 
-// 8018F2C4
+// 0x8018F2C4
 void scTrainingMode_InitSpeedOptionSprite()
 {
 	SObj* sobj = SObjGetStruct(gTrainingModeStruct.speed_option_gobj);
@@ -1106,7 +1106,7 @@ void scTrainingMode_InitSpeedOptionSprite()
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
 }
 
-// 8018F354
+// 0x8018F354
 void scTrainingMode_MakeSpeedOptionInterface()
 {
 	GObj* interface_gobj;
@@ -1129,10 +1129,10 @@ void scTrainingMode_MakeSpeedOptionInterface()
 	sobj->envcolor.b = 0x60;
 }
 
-// 8018F41C
+// 0x8018F41C
 void func_ovl7_8018F41C() {}
 
-// 8018F424
+// 0x8018F424
 void scTrainingMode_InitViewOptionSprite()
 {
 	SObj* sobj = SObjGetStruct(gTrainingModeStruct.view_option_gobj);
@@ -1142,7 +1142,7 @@ void scTrainingMode_InitViewOptionSprite()
 	sobj->pos.x = 191 - (sobj->sprite.width / 2);
 }
 
-// 8018F4B4
+// 0x8018F4B4
 void scTrainingMode_UpdateMagnifyWait(GObj* interface_gobj)
 {
 	if (gTrainingModeStruct.magnify_wait != 0)
@@ -1153,7 +1153,7 @@ void scTrainingMode_UpdateMagnifyWait(GObj* interface_gobj)
 	}
 }
 
-// 8018F4EC
+// 0x8018F4EC
 void scTrainingMode_MakeViewOptionInterface()
 {
 	GObj* interface_gobj;
@@ -1178,7 +1178,7 @@ void scTrainingMode_MakeViewOptionInterface()
 	gcAddGObjProcess(interface_gobj, scTrainingMode_UpdateMagnifyWait, 1, 4);
 }
 
-// 8018F5CC
+// 0x8018F5CC
 void scTrainingMode_CopyHScrollOptionSObjs()
 {
 	gTrainingModeStruct.hscroll_option_sobj[0] = SObjGetStruct(gTrainingModeStruct.cp_option_gobj);
@@ -1187,7 +1187,7 @@ void scTrainingMode_CopyHScrollOptionSObjs()
 	gTrainingModeStruct.hscroll_option_sobj[3] = SObjGetStruct(gTrainingModeStruct.view_option_gobj);
 }
 
-// 8018F608
+// 0x8018F608
 void scTrainingMode_InitOptionArrowColors(SObj* sobj)
 {
 	sobj->sprite.red = 0xF3;
@@ -1199,7 +1199,7 @@ void scTrainingMode_InitOptionArrowColors(SObj* sobj)
 	sobj->envcolor.b = 0x00;
 }
 
-// 8018F630
+// 0x8018F630
 void scTrainingMode_UpdateOptionArrows()
 {
 	SObj* root_sobj = SObjGetStruct(gTrainingModeStruct.arrow_option_gobj); // Left arrow
@@ -1228,7 +1228,7 @@ void scTrainingMode_UpdateOptionArrows()
 	}
 }
 
-// 8018F730
+// 0x8018F730
 void scTrainingMode_MakeOptionArrowInterface()
 {
 	GObj* interface_gobj;
@@ -1244,7 +1244,7 @@ void scTrainingMode_MakeOptionArrowInterface()
 	scTrainingMode_UpdateOptionArrows();
 }
 
-// 8018F7C8
+// 0x8018F7C8
 SObj* func_ovl7_8018F7C8(GObj* interface_gobj, scTrainingSprites* tms)
 {
 	SObj* sobj = lbCommonMakeSObjForGObj(interface_gobj, tms->sprite);
@@ -1252,7 +1252,7 @@ SObj* func_ovl7_8018F7C8(GObj* interface_gobj, scTrainingSprites* tms)
 	return sobj;
 }
 
-// 8018F804
+// 0x8018F804
 void func_ovl7_8018F804() // Unused?
 {
 	s32 i;
@@ -1260,7 +1260,7 @@ void func_ovl7_8018F804() // Unused?
 		gTrainingModeStruct.unk_trainmenu_0x34[i].sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 }
 
-// 8018F874
+// 0x8018F874
 void func_ovl7_8018F874() // Unused?
 {
 	SObj* sobj = SObjGetStruct(gTrainingModeStruct.unk_trainmenu_0x7C);
@@ -1268,7 +1268,7 @@ void func_ovl7_8018F874() // Unused?
 	sobj->pos.x = gTrainingModeStruct.unk_trainmenu_0x34[gTrainingModeStruct.main_menu_option].pos.x;
 }
 
-// 8018F8FC
+// 0x8018F8FC
 void func_ovl7_8018F8FC() // Unused?
 {
 	GObj* interface_gobj;
@@ -1281,7 +1281,7 @@ void func_ovl7_8018F8FC() // Unused?
 		= 182.0F;
 }
 
-// 8018F984
+// 0x8018F984
 void func_ovl7_8018F984() // Unused?
 {
 	s32 i;
@@ -1289,7 +1289,7 @@ void func_ovl7_8018F984() // Unused?
 		gTrainingModeStruct.unk_trainmenu_0x38[i].sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 }
 
-// 8018F9E8
+// 0x8018F9E8
 s32 scTrainingMode_GetMenuOptionSpriteID()
 {
 	switch (gTrainingModeStruct.main_menu_option)
@@ -1309,7 +1309,7 @@ s32 scTrainingMode_GetMenuOptionSpriteID()
 	}
 }
 
-// 8018FA54
+// 0x8018FA54
 void func_ovl7_8018FA54() // Unused but referenced?
 {
 	SObj* sobj = SObjGetStruct(gTrainingModeStruct.combo0);
@@ -1326,7 +1326,7 @@ void func_ovl7_8018FA54() // Unused but referenced?
 	}
 }
 
-// 8018FB40
+// 0x8018FB40
 void func_ovl7_8018FB40() // Unused?
 {
 	GObj* interface_gobj;
@@ -1337,7 +1337,7 @@ void func_ovl7_8018FB40() // Unused?
 	func_ovl7_8018FA54();
 }
 
-// 8018FBB0
+// 0x8018FBB0
 void scTrainingMode_UpdateCursorPosition()
 {
 	SObj* cursor_sobj = SObjGetStruct(gTrainingModeStruct.cursor_gobj);
@@ -1345,7 +1345,7 @@ void scTrainingMode_UpdateCursorPosition()
 	cursor_sobj->pos.y = (s32)(text_sobj->pos.y - 1.0F);
 }
 
-// 8018FC00
+// 0x8018FC00
 void scTrainingMode_MakeMenuCursorInterface()
 {
 	GObj* interface_gobj;
@@ -1360,7 +1360,7 @@ void scTrainingMode_MakeMenuCursorInterface()
 	scTrainingMode_UpdateCursorPosition();
 }
 
-// 8018FC7C
+// 0x8018FC7C
 void scTrainingMode_CopyVScrollOptionSObjs()
 {
 	SObj* arrow_sobj = SObjGetStruct(gTrainingModeStruct.arrow_option_gobj)->next;
@@ -1383,7 +1383,7 @@ void scTrainingMode_CopyVScrollOptionSObjs()
 		= gTrainingModeStruct.vscroll_option_sobj[4][0]->next;
 }
 
-// 8018FCE0
+// 0x8018FCE0
 void scTrainingMode_RenderCursorUnderline(GObj* interface_gobj)
 {
 	gDPPipeSync(gSYTasklogDLHeads[0]++);
@@ -1398,7 +1398,7 @@ void scTrainingMode_RenderCursorUnderline(GObj* interface_gobj)
 	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 8018FE40
+// 0x8018FE40
 void scTrainingMode_UpdateCursorUnderline()
 {
 	SObj* text_sobj = gTrainingModeStruct.vscroll_option_sobj[gTrainingModeStruct.main_menu_option][0];
@@ -1417,7 +1417,7 @@ void scTrainingMode_UpdateCursorUnderline()
 	gTrainingModeStruct.cursor_lry = gTrainingModeStruct.cursor_uly + 1;
 }
 
-// 80190070
+// 0x80190070
 void scTrainingMode_MakeCursorUnderlineInterface()
 {
 	gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xE, 0x80000000),
@@ -1425,7 +1425,7 @@ void scTrainingMode_MakeCursorUnderlineInterface()
 	scTrainingMode_UpdateCursorUnderline();
 }
 
-// 801900C4
+// 0x801900C4
 void scTrainingMode_InitTrainingMenuAll()
 {
 	scTrainingMode_MakeMenuLabelsInterface();
@@ -1447,7 +1447,7 @@ void scTrainingMode_InitTrainingMenuAll()
 	scTrainingMode_SetPauseGObjRenderFlags(GOBJ_FLAG_HIDDEN);
 }
 
-// 80190164
+// 0x80190164
 void scTrainingMode_SetPlayDefaultMusicID()
 {
 	gMPCollisionBGMDefault = 0x2A;
@@ -1455,7 +1455,7 @@ void scTrainingMode_SetPlayDefaultMusicID()
 	gMPCollisionBGMCurrent = gMPCollisionBGMDefault;
 }
 
-// 801901A0
+// 0x801901A0
 void scTrainingMode_SetGameStatusGo()
 {
 	GObj* fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
@@ -1468,7 +1468,7 @@ void scTrainingMode_SetGameStatusGo()
 	gBattleState->game_status = nSCBattleGameStatusGo;
 }
 
-// 801901F4
+// 0x801901F4
 void scTrainingMode_UpdateOpponentBehavior()
 {
 	ftStruct* fp = ftGetStruct(gBattleState->players[gTrainingModeStruct.opponent].fighter_gobj);
@@ -1480,7 +1480,7 @@ void scTrainingMode_UpdateOpponentBehavior()
 	}
 }
 
-// 80190260
+// 0x80190260
 void scTrainingMode_InitTrainingMode()
 {
 	GObj* fighter_gobj;
@@ -1562,14 +1562,14 @@ void scTrainingMode_InitTrainingMode()
 	lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 }
 
-// 801905A8
+// 0x801905A8
 void scTrainingMode_SetGeometryRenderLights(Gfx** display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// 801905F4
+// 0x801905F4
 void scManager_TrainingMode_InitScene()
 {
 	D_ovl7_80190870.zbuffer = syDisplayGetZBuffer(6400);
@@ -1595,7 +1595,7 @@ void scManager_TrainingMode_InitScene()
 	gSceneData.scene_current = 0x12;
 }
 
-// 801906D0
+// 0x801906D0
 void scTrainingMode_LoadFiles()
 {
 	lbRelocSetup rldm_setup;

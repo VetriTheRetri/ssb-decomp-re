@@ -160,6 +160,7 @@ typedef enum scKind
 	nSCKindN64,               	  // N64 logo
 	nSCKindOpeningRoom,       	  // Room with Master Hand and figures coming to life
 	nSCKindOpeningYoster = 39,	  // Yoshis in nest with eggs on Yoshi's Island
+	nSCKindOpeningCliff,	      // Link on dark hill
 	nSCKindOpeningStandoff = 41,  // Dark plains with Mario and Kirby in a standoff
 	nSCKindOpeningYamabuki,  	  // Pikachu rocking on Poké Ball
 	nSCKindOpeningClash,          // Characters clashing with each other, doing Neutral Aerials

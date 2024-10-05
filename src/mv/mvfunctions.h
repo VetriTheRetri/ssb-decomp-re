@@ -1,6 +1,7 @@
 #ifndef _MVFUNCTIONS_H_
 #define _MVFUNCTIONS_H_
 
+#include <mv/mvopening/mvopeningrun.h>
 #include <mv/mvopening/mvopeningyoster.h>
 #include <mv/mvopening/mvopeningcliff.h>
 #include <mv/mvopening/mvopeningstandoff.h>

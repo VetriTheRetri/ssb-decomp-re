@@ -225,7 +225,7 @@ void intro_focus_link_entry();
 void intro_focus_yoshi_entry();
 void intro_focus_pikachu_entry();
 void intro_focus_kirby_entry();
-void intro_chars_running_entry();
+void mvOpeningRunStartScene();
 void mvOpeningYosterStartScene();
 void mvOpeningCliffStartScene();
 void mvOpeningStandoffStartScene();
@@ -248,7 +248,7 @@ void mnSoundTestStartScene();
 void scExplainStartScene();
 void scAutoDemoStartScene();
 
-// 800A1980
+// 0x800A1980
 void start_scene_manager(u32 set)
 {
 	u16* csr;
@@ -500,7 +500,7 @@ void start_scene_manager(u32 set)
 				break;
 			case 38:
 				syDmaLoadOverlay(&D_800A3070[44]);
-				intro_chars_running_entry();
+				mvOpeningRunStartScene();
 				break;
 			case 39:
 				syDmaLoadOverlay(&D_800A3070[45]);
@@ -618,13 +618,13 @@ void start_scene_manager(u32 set)
 	}
 }
 
-// 800A2698
+// 0x800A2698
 void func_800A2698(syTasklogSetup *arg) // set up gtl and om systems
 {
 	syTasklogInit(arg);
 }
 
-// 800A26B8
+// 0x800A26B8
 void func_800A26B8()
 {
 	func_8000A340();
@@ -632,7 +632,7 @@ void func_800A26B8()
 
 extern D_ovl0_800D6448;
 
-// 800A26D8
+// 0x800A26D8
 void func_800A26D8(GObj* arg0)
 {
 	s32 width; // sp74
@@ -685,7 +685,7 @@ void func_800A26D8(GObj* arg0)
 	gDPSetRenderMode((*gSYTasklogDLHeads)++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 800A2B18
+// 0x800A2B18
 GObj* func_800A2B18(s32 link, u32 arg1, s32 arg2)
 {
 	if (gcFindGObjByID(0xEFFFFFFF) != NULL)
@@ -694,7 +694,7 @@ GObj* func_800A2B18(s32 link, u32 arg1, s32 arg2)
 	return gcMakeCameraGObj(0xEFFFFFFF, NULL, link, arg1, func_800A26D8, arg2, 0, 0, 0, 0, 0, 0, 0);
 }
 
-// 800A2BA8
+// 0x800A2BA8
 void unref_800A2BA8(s32 link, u32 arg1, s32 arg2) // set_up_debug_objs ? something like that
 {
 	GObj* com;
@@ -712,7 +712,7 @@ void unref_800A2BA8(s32 link, u32 arg1, s32 arg2) // set_up_debug_objs ? somethi
 		func_800A2B18(link, arg1, arg2);
 }
 
-// 800A2C30
+// 0x800A2C30
 void scManagerInspectGObj(GObj *gobj)
 {
     ftStruct *fp;
@@ -778,7 +778,7 @@ void scManagerInspectGObj(GObj *gobj)
     }
 }
 
-// 800A2E84
+// 0x800A2E84
 void scManagerProcPrintGObjStatus()
 {
 	switch (D_8003B874_3C474)
@@ -850,7 +850,7 @@ void scManagerProcPrintGObjStatus()
 	}
 }
 
-// 800A3040
+// 0x800A3040
 void scManagerRunPrintGObjStatus()
 {
 	syErrorRunFuncPrint(scManagerProcPrintGObjStatus);

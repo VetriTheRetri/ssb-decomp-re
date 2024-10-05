@@ -19,9 +19,9 @@ extern void* scNextFrameBuffer;
 extern void* D_80044FA8_407B8;
 extern u32 scTimestampSetFb;
 extern s32 D_800A50F0;
-extern intptr_t D_NF_800A5240;      // 800A5240
-extern intptr_t lOverlay34ArenaLo;  // 801350D0
-extern intptr_t lOverlay34ArenaHi;  // 803903E0
+extern intptr_t D_NF_800A5240;      // 0x800A5240
+extern intptr_t lOverlay34ArenaLo;  // 0x801350D0
+extern intptr_t lOverlay34ArenaHi;  // 0x803903E0
 
 extern viFrameBuf D_NF_80392A00[3];
 // Offsets
@@ -81,13 +81,13 @@ extern f32 scSubsysFighterGetLightAngleY();
 
 
 // Data
-// 80134A20
+// 0x80134A20
 u32 D_ovl34_80134A20[8] = {
 
 	0x34, 0x3F, 0x38, 0x39, 0x3A, 0x3B, 0x4B, 0x5A
 };
 
-// 80134A40
+// 0x80134A40
 u32 D_ovl34_80134A40[12] = {
 
 	0x20202000,
@@ -106,123 +106,123 @@ u32 D_ovl34_80134A40[12] = {
 
 
 // BSS
-// 80134CD0
+// 0x80134CD0
 s32 D_ovl34_80134CD0[2];
 
-// 80134CD8
+// 0x80134CD8
 uintptr_t gMvOpeningFirstDestinationMasterHandAnimHeap;
 
-// 80134CDC
+// 0x80134CDC
 uintptr_t gMvOpeningFirstDestinationPluckedFigatreeHeap;
 
-// 80134CE0
+// 0x80134CE0
 uintptr_t gMvOpeningFirstDestinationDroppedFigatreeHeap;
 
-// 80134CE4
+// 0x80134CE4
 s32 gMvOpeningFirstDestinationFramesElapsed;
 
-// 80134CE8
+// 0x80134CE8
 GObj* gMvOpeningFirstDestinationMainCameraGObj;
 
-// 80134CEC
+// 0x80134CEC
 GObj* gMvOpeningFirstDestinationFighterCameraGObj;
 
-// 80134CF0
+// 0x80134CF0
 GObj* gMvOpeningFirstDestinationHALLogoCameraGObj;
 
-// 80134CF4
+// 0x80134CF4
 GObj* gMvOpeningFirstDestinationMasterHandGObj;
 
-// 80134CF8
+// 0x80134CF8
 s32 gMvOpeningFirstDestinationPluckedFighterKind;
 
-// 80134CFC
+// 0x80134CFC
 GObj* gMvOpeningFirstDestinationDroppedFighterKind;
 
-// 80134D00
+// 0x80134D00
 GObj* gMvOpeningFirstDestinationHALLogoGObj;
 
-// 80134D04
+// 0x80134D04
 GObj* gMvOpeningFirstDestinationPluckedFighterGObj;
 
-// 80134D08
+// 0x80134D08
 GObj* gMvOpeningFirstDestinationDroppedFighterGObj;
 
-// 80134D0C
+// 0x80134D0C
 GObj* gMvOpeningFirstDestinationRoomGObj;
 
-// 80134D10
+// 0x80134D10
 GObj* gMvOpeningFirstDestinationSunlightGObj;
 
-// 80134D14
+// 0x80134D14
 GObj* gMvOpeningFirstDestinationDeskGObj;
 
-// 80134D18
+// 0x80134D18
 GObj* gMvOpeningFirstDestinationOutsideGObj;
 
-// 80134D1C
+// 0x80134D1C
 GObj* gMvOpeningFirstDestinationOutsideHazeGObj;
 
-// 80134D20
+// 0x80134D20
 GObj* gMvOpeningFirstDestinationBooksGObj;
 
-// 80134D24
+// 0x80134D24
 GObj* gMvOpeningFirstDestinationPencilHolderGObj;
 
-// 80134D28
+// 0x80134D28
 GObj* gMvOpeningFirstDestinationLampGObj;
 
-// 80134D2C
+// 0x80134D2C
 GObj* gMvOpeningFirstDestinationTissueBoxGObj;
 
-// 80134D30
+// 0x80134D30
 GObj* gMvOpeningFirstDestinationMasterHandShadowGObj;
 
-// 80134D34
+// 0x80134D34
 s32 D_ovl34_80134D34;
 
-// 80134D38
+// 0x80134D38
 s32 gMvOpeningFirstDestinationOverlayAlpha;
 
-// 80134D3C
+// 0x80134D3C
 GObj* gMvOpeningFirstDestinationOverlayGObj;
 
-// 80134D40
+// 0x80134D40
 GObj* gMvOpeningFirstDestinationSpotlightGObj;
 
-// 80134D44
+// 0x80134D44
 GObj* gMvOpeningFirstDestinationBackgroundGObj;
 
-// 80134D48
+// 0x80134D48
 GObj* gMvOpeningFirstDestinationTransitionGFXOutlineGObj;
 
-// 80134D4C
+// 0x80134D4C
 GObj* gMvOpeningFirstDestinationTransitionGFXOverlayGObj;
 
-// 80134D50
+// 0x80134D50
 GObj* gMvOpeningFirstDestinationCameraGObj;
 
-// 80134D54
+// 0x80134D54
 s32 gMvOpeningFirstDestinationUnusedCounter;
 
-// 80134D58
+// 0x80134D58
 lbFileNode D_ovl34_80134D58[100];
 
-// 80135078
+// 0x80135078
 lbFileNode D_ovl34_80135078[7];
 
-// 801350B0
-uintptr_t gMvOpeningFirstDestinationFilesArray[9];
+// 0x801350B0
+uintptr_t gMvOpeningFirstDestinationFiles[9];
 
 
-// 80131B00
-void mvOpeningFirstDestinationSetupDisplayList(Gfx **display_list)
+// 0x80131B00
+void mvOpeningFirstDestinationFuncLights(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(display_list, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 }
 
-// 80131B58
+// 0x80131B58
 void mvOpeningFirstDestinationFadeOutAndDestroyRoomGeo(GObj* room_gobj)
 {
 	if (gMvOpeningFirstDestinationFramesElapsed > I_SEC_TO_TICS(18))
@@ -232,129 +232,129 @@ void mvOpeningFirstDestinationFadeOutAndDestroyRoomGeo(GObj* room_gobj)
 		gcEjectGObj(room_gobj);
 }
 
-// 80131BA8
+// 0x80131BA8
 void mvOpeningFirstDestinationCreateRoomGeo()
 {
 	GObj* room_gobj;
 
 	gMvOpeningFirstDestinationRoomGObj = room_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcSetupCommonDObjs(room_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_ROOM_OFFSET_2), 0);
+	gcSetupCommonDObjs(room_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_ROOM_OFFSET_2), 0);
 	gcAddGObjDisplay(room_gobj, gcDrawDObjTreeDLLinksForGObj, 6, 0x80000000, -1);
-	gcAddMObjAll(room_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_ROOM_OFFSET_1));
-	gcAddMatAnimJointAll(room_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_ROOM_OFFSET_3), 0.0F);
+	gcAddMObjAll(room_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_ROOM_OFFSET_1));
+	gcAddMatAnimJointAll(room_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_ROOM_OFFSET_3), 0.0F);
 	gcAddGObjProcess(room_gobj, mvOpeningFirstDestinationFadeOutAndDestroyRoomGeo, 1, 1);
 	gcPlayAnimAll(room_gobj);
 }
 
-// 80131C84
+// 0x80131C84
 void mvOpeningFirstDestinationCreateSunlight()
 {
 	GObj* sunlight_gobj;
 
 	gMvOpeningFirstDestinationSunlightGObj = sunlight_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcAddOMMtxForDObjFixed(gcAddDObjForGObj(sunlight_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_SUNLIGHT_OBJECT_OFFSET)), 0x1C, 0);
+	gcAddOMMtxForDObjFixed(gcAddDObjForGObj(sunlight_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_SUNLIGHT_OBJECT_OFFSET)), 0x1C, 0);
 	gcAddGObjDisplay(sunlight_gobj, gcDrawDObjDLLinksForGObj, 6, 0x80000000, -1);
 }
 
-// 80131D08
+// 0x80131D08
 void mvOpeningFirstDestinationCreateDesk()
 {
 	GObj* desk_gobj;
 
 	gMvOpeningFirstDestinationDeskGObj = desk_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcSetupCommonDObjs(desk_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_DESK_OBJECT_OFFSET), 0);
+	gcSetupCommonDObjs(desk_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_DESK_OBJECT_OFFSET), 0);
 	gcAddGObjDisplay(desk_gobj, gcDrawDObjTreeForGObj, 6, 0x80000000, -1);
 }
 
-// 80131D80
+// 0x80131D80
 void mvOpeningFirstDestinationCreateOutside()
 {
 	GObj* outside_gobj;
 
 	gMvOpeningFirstDestinationOutsideGObj = outside_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcAddOMMtxForDObjFixed(gcAddDObjForGObj(outside_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_OUTSIDE_OBJECT_OFFSET)), 0x1C, 0);
+	gcAddOMMtxForDObjFixed(gcAddDObjForGObj(outside_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_OUTSIDE_OBJECT_OFFSET)), 0x1C, 0);
 	gcAddGObjDisplay(outside_gobj, gcDrawDObjDLLinksForGObj, 6, 0x80000000, -1);
 }
 
-// 80131E04
+// 0x80131E04
 void mvOpeningFirstDestinationCreateOutsideHaze()
 {
 	GObj* outside_haze_gobj;
 
 	gMvOpeningFirstDestinationOutsideHazeGObj = outside_haze_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcAddOMMtxForDObjFixed(gcAddDObjForGObj(outside_haze_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_OUTSIDE_HAZE_OBJECT_OFFSET)), 0x1C, 0);
+	gcAddOMMtxForDObjFixed(gcAddDObjForGObj(outside_haze_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_OUTSIDE_HAZE_OBJECT_OFFSET)), 0x1C, 0);
 	gcAddGObjDisplay(outside_haze_gobj, gcDrawDObjDLLinksForGObj, 6, 0x80000000, -1);
 }
 
-// 80131E88
+// 0x80131E88
 void mvOpeningFirstDestinationAnimateDeskObjects(GObj* desk_object_gobj)
 {
 	if (gMvOpeningFirstDestinationFramesElapsed >= 560)
 		gcPlayAnimAll(desk_object_gobj);
 }
 
-// 80131EBC
+// 0x80131EBC
 void mvOpeningFirstDestinationCreateBooks()
 {
 	GObj* books_gobj;
 
 	gMvOpeningFirstDestinationBooksGObj = books_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcSetupCommonDObjs(books_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_BOOKS_OBJECT_OFFSET_1), 0);
+	gcSetupCommonDObjs(books_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_BOOKS_OBJECT_OFFSET_1), 0);
 	gcAddGObjDisplay(books_gobj, gcDrawDObjTreeForGObj, 6, 0x80000000, -1);
 	gcAddGObjProcess(books_gobj, mvOpeningFirstDestinationAnimateDeskObjects, 1, 1);
-	gcAddAnimJointAll(books_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_BOOKS_OBJECT_OFFSET_2), 0.0F);
+	gcAddAnimJointAll(books_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_BOOKS_OBJECT_OFFSET_2), 0.0F);
 	gcPlayAnimAll(books_gobj);
 }
 
-// 80131F7C
+// 0x80131F7C
 void mvOpeningFirstDestinationCreatePencilHolder()
 {
 	GObj* pencil_holder_gobj;
 
 	gMvOpeningFirstDestinationPencilHolderGObj = pencil_holder_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcSetupCommonDObjs(pencil_holder_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_PENCIL_HOLDER_OBJECT_OFFSET_1), 0);
+	gcSetupCommonDObjs(pencil_holder_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_PENCIL_HOLDER_OBJECT_OFFSET_1), 0);
 	gcAddGObjDisplay(pencil_holder_gobj, gcDrawDObjTreeForGObj, 6, 0x80000000, -1);
-	gcAddAnimJointAll(pencil_holder_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_PENCIL_HOLDER_OBJECT_OFFSET_2), 0.0F);
+	gcAddAnimJointAll(pencil_holder_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_PENCIL_HOLDER_OBJECT_OFFSET_2), 0.0F);
 	gcAddGObjProcess(pencil_holder_gobj, mvOpeningFirstDestinationAnimateDeskObjects, 1, 1);
 	gcPlayAnimAll(pencil_holder_gobj);
 }
 
-// 8013203C
+// 0x8013203C
 void mvOpeningFirstDestinationCreateLamp()
 {
 	GObj* lamp_gobj;
 
 	gMvOpeningFirstDestinationLampGObj = lamp_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcSetupCommonDObjs(lamp_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_LAMP_OBJECT_OFFSET_1), 0);
+	gcSetupCommonDObjs(lamp_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_LAMP_OBJECT_OFFSET_1), 0);
 	gcAddGObjDisplay(lamp_gobj, gcDrawDObjTreeForGObj, 6, 0x80000000, -1);
-	gcAddAnimJointAll(lamp_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_LAMP_OBJECT_OFFSET_2), 0.0F);
+	gcAddAnimJointAll(lamp_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_LAMP_OBJECT_OFFSET_2), 0.0F);
 	gcAddGObjProcess(lamp_gobj, mvOpeningFirstDestinationAnimateDeskObjects, 1, 1);
 	gcPlayAnimAll(lamp_gobj);
 }
 
-// 801320FC
+// 0x801320FC
 void mvOpeningFirstDestinationAnimateTissueBox(GObj* tissue_box_gobj)
 {
 	if (gMvOpeningFirstDestinationFramesElapsed >= 560)
 		gcPlayAnimAll(tissue_box_gobj);
 }
 
-// 80132130
+// 0x80132130
 void mvOpeningFirstDestinationCreateTissueBox()
 {
 	GObj* tissue_box_gobj;
 	DObj* tissue_box_dobj;
 
 	gMvOpeningFirstDestinationTissueBoxGObj = tissue_box_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	tissue_box_dobj = gcAddDObjForGObj(tissue_box_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_TISSUE_BOX_OBJECT_OFFSET_1));
+	tissue_box_dobj = gcAddDObjForGObj(tissue_box_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_TISSUE_BOX_OBJECT_OFFSET_1));
 	gcAddOMMtxForDObjFixed(tissue_box_dobj, 0x1C, 0);
 	gcAddGObjDisplay(tissue_box_gobj, gcDrawDObjDLHead0, 6, 0x80000000, -1);
-	gcAddDObjAnimJoint(tissue_box_dobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_TISSUE_BOX_OBJECT_OFFSET_2), 0);
+	gcAddDObjAnimJoint(tissue_box_dobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_TISSUE_BOX_OBJECT_OFFSET_2), 0);
 	gcAddGObjProcess(tissue_box_gobj, mvOpeningFirstDestinationAnimateTissueBox, 1, 1);
 	gcPlayAnimAll(tissue_box_gobj);
 }
 
-// 801321F8
+// 0x801321F8
 void mvOpeningFirstDestinationCreateMasterHand()
 {
 	GObj* fighter_gobj;
@@ -371,13 +371,13 @@ void mvOpeningFirstDestinationCreateMasterHand()
 	scSubsysFighterSetStatus(fighter_gobj, 0x1000F);
 }
 
-// 801322A0 - Unused?
+// 0x801322A0 - Unused?
 void func_ovl34_801322A0(s32 arg0)
 {
 	func_ovl1_803905F4(gMvOpeningFirstDestinationMasterHandGObj, arg0);
 }
 
-// 801322C8 - Unused?
+// 0x801322C8 - Unused?
 void func_ovl34_801322C8(GObj* fighter_gobj)
 {
 	ftStruct* fp;
@@ -392,13 +392,13 @@ void func_ovl34_801322C8(GObj* fighter_gobj)
 	topJoint->translate.vec.f.z = topJoint->translate.vec.f.z + (firstJoint->translate.vec.f.z - fp->anim_vel.z);
 }
 
-// 80132320 - Unused?
+// 0x80132320 - Unused?
 void func_ovl34_80132320() {}
 
-// 80132328 - Unused?
+// 0x80132328 - Unused?
 void func_ovl34_80132328() {}
 
-// 80132330
+// 0x80132330
 void mvOpeningFirstDestinationCreatePluckedFighter(s32 ft_kind)
 {
 	GObj* fighter_gobj;
@@ -421,7 +421,7 @@ void mvOpeningFirstDestinationCreatePluckedFighter(s32 ft_kind)
 	gcMoveGObjDL(fighter_gobj, 6, -1);
 }
 
-// 80132404
+// 0x80132404
 void mvOpeningFirstDestinationRenderHALLogoBackground(GObj* logo_gobj)
 {
 	if (gMvOpeningFirstDestinationFramesElapsed >= 60)
@@ -445,7 +445,7 @@ void mvOpeningFirstDestinationRenderHALLogoBackground(GObj* logo_gobj)
 	gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 80132544
+// 0x80132544
 void mvOpeningFirstDestinationCreateHALLogoBackground()
 {
 	GObj* logo_bg_gobj;
@@ -455,66 +455,66 @@ void mvOpeningFirstDestinationCreateHALLogoBackground()
 	gcAddGObjDisplay(logo_bg_gobj, mvOpeningFirstDestinationRenderHALLogoBackground, 0x1A, 0x80000000, -1);
 }
 
-// 801325A4
+// 0x801325A4
 void mvOpeningFirstDestinationCreateHALLogo()
 {
 	GObj* logo_gobj;
 
 	gMvOpeningFirstDestinationHALLogoGObj = logo_gobj = gcMakeGObjSPAfter(0, 0, 0x15, 0x80000000);
-	gcSetupCommonDObjs(logo_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_HAL_LOGO_OFFSET_2), 0);
+	gcSetupCommonDObjs(logo_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_HAL_LOGO_OFFSET_2), 0);
 	gcAddGObjDisplay(logo_gobj, gcDrawDObjTreeDLLinksForGObj, 0x1D, 0x80000000, -1);
-	gcAddMObjAll(logo_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_HAL_LOGO_OFFSET_1));
-	gcAddMatAnimJointAll(logo_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_HAL_LOGO_OFFSET_3), 0.0F);
+	gcAddMObjAll(logo_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_HAL_LOGO_OFFSET_1));
+	gcAddMatAnimJointAll(logo_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_HAL_LOGO_OFFSET_3), 0.0F);
 	gcAddGObjProcess(logo_gobj, gcPlayAnimAll, 1, 1);
 	gcPlayAnimAll(logo_gobj);
 }
 
-// 80132680
+// 0x80132680
 void mvOpeningFirstDestinationCreateSnapGFX()
 {
 	GObj* snap_gfx_gobj;
 
 	snap_gfx_gobj = gcMakeGObjSPAfter(0, 0, 0x13, 0x80000000);
-	gcSetupCommonDObjs(snap_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_SNAP_GFX_OBJECT_OFFSET_1), 0);
+	gcSetupCommonDObjs(snap_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_SNAP_GFX_OBJECT_OFFSET_1), 0);
 	gcAddGObjDisplay(snap_gfx_gobj, gcDrawDObjTreeDLLinksForGObj, 0x1B, 0x80000000, -1);
-	gcAddAnimJointAll(snap_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_SNAP_GFX_OBJECT_OFFSET_2), 0.0F);
+	gcAddAnimJointAll(snap_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_SNAP_GFX_OBJECT_OFFSET_2), 0.0F);
 	gcAddGObjProcess(snap_gfx_gobj, gcPlayAnimAll, 1, 1);
 	gcPlayAnimAll(snap_gfx_gobj);
 }
 
-// 80132738
+// 0x80132738
 void mvOpeningFirstDestinationCreateCloseUpGFX()
 {
 	GObj* closeup_gfx_gobj;
 
 	// Close-up GFX air
 	closeup_gfx_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcSetupCommonDObjs(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_CLOSEUP_GFX_AIR_OFFSET_2), 0);
+	gcSetupCommonDObjs(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_AIR_OFFSET_2), 0);
 	gcAddGObjDisplay(closeup_gfx_gobj, gcDrawDObjTreeDLLinksForGObj, 6, 0x80000000, -1);
 	DObjGetStruct(closeup_gfx_gobj)->translate.vec.f.x = 0.0F;
 	DObjGetStruct(closeup_gfx_gobj)->translate.vec.f.y = 0.0F;
 	DObjGetStruct(closeup_gfx_gobj)->translate.vec.f.z = 0.0F;
-	gcAddMObjAll(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_CLOSEUP_GFX_AIR_OFFSET_1));
-	gcAddMatAnimJointAll(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_CLOSEUP_GFX_AIR_OFFSET_3), 0.0F);
+	gcAddMObjAll(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_AIR_OFFSET_1));
+	gcAddMatAnimJointAll(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_AIR_OFFSET_3), 0.0F);
 	gcAddGObjProcess(closeup_gfx_gobj, gcPlayAnimAll, 1, 1);
-	gcAddAnimJointAll(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_CLOSEUP_GFX_AIR_OFFSET_4), 0.0F);
+	gcAddAnimJointAll(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_AIR_OFFSET_4), 0.0F);
 	gcPlayAnimAll(closeup_gfx_gobj);
 
 	// Close-up GFX ground
 	closeup_gfx_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcSetupCommonDObjs(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_CLOSEUP_GFX_GROUND_OFFSET_2), 0);
+	gcSetupCommonDObjs(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_GROUND_OFFSET_2), 0);
 	gcAddGObjDisplay(closeup_gfx_gobj, gcDrawDObjTreeDLLinksForGObj, 6, 0x80000000, -1);
 	DObjGetStruct(closeup_gfx_gobj)->translate.vec.f.x = 0.0F;
 	DObjGetStruct(closeup_gfx_gobj)->translate.vec.f.y = 0.0F;
 	DObjGetStruct(closeup_gfx_gobj)->translate.vec.f.z = 0.0F;
-	gcAddMObjAll(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_CLOSEUP_GFX_GROUND_OFFSET_1));
-	gcAddMatAnimJointAll(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_CLOSEUP_GFX_GROUND_OFFSET_3), 0.0F);
+	gcAddMObjAll(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_GROUND_OFFSET_1));
+	gcAddMatAnimJointAll(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_GROUND_OFFSET_3), 0.0F);
 	gcAddGObjProcess(closeup_gfx_gobj, gcPlayAnimAll, 1, 1);
-	gcAddAnimJointAll(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_CLOSEUP_GFX_GROUND_OFFSET_4), 0.0F);
+	gcAddAnimJointAll(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_GROUND_OFFSET_4), 0.0F);
 	gcPlayAnimAll(closeup_gfx_gobj);
 }
 
-// 80132928
+// 0x80132928
 void mvOpeningFirstDestinationCreateDroppedFighter(s32 ft_kind)
 {
 	GObj* fighter_gobj;
@@ -532,42 +532,42 @@ void mvOpeningFirstDestinationCreateDroppedFighter(s32 ft_kind)
 	gcMoveGObjDL(fighter_gobj, 6, -1);
 }
 
-// 801329F0
+// 0x801329F0
 void mvOpeningFirstDestinationCreateMasterHandShadow()
 {
 	GObj* masterhand_shadow_gobj;
 	DObj* masterhand_shadow_dobj;
 
 	gMvOpeningFirstDestinationMasterHandShadowGObj = masterhand_shadow_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	masterhand_shadow_dobj = gcAddDObjForGObj(masterhand_shadow_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_MASTERHAND_SHADOW_OBJECT_OFFSET_1));
+	masterhand_shadow_dobj = gcAddDObjForGObj(masterhand_shadow_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_MASTERHAND_SHADOW_OBJECT_OFFSET_1));
 	gcAddOMMtxForDObjFixed(masterhand_shadow_dobj, 0x1C, 0);
 	gcAddGObjDisplay(masterhand_shadow_gobj, gcDrawDObjDLHead1, 9, 0x80000000, -1);
-	gcAddDObjAnimJoint(masterhand_shadow_dobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_MASTERHAND_SHADOW_OBJECT_OFFSET_2), 0);
+	gcAddDObjAnimJoint(masterhand_shadow_dobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_MASTERHAND_SHADOW_OBJECT_OFFSET_2), 0);
 	gcAddGObjProcess(masterhand_shadow_gobj,gcPlayAnimAll, 1, 1);
 }
 
-// 80132AB0
+// 0x80132AB0
 void mvOpeningFirstDestinationAnimateDeskStage(GObj* desk_stage_gobj)
 {
 	if (gMvOpeningFirstDestinationFramesElapsed > 1060)
 		gcPlayAnimAll(desk_stage_gobj);
 }
 
-// 80132AE4
+// 0x80132AE4
 void mvOpeningFirstDestinationCreateDeskStage()
 {
 	GObj* desk_stage_gobj;
 
 	desk_stage_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcSetupCommonDObjs(desk_stage_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_DESK_STAGE_OFFSET_2), 0);
+	gcSetupCommonDObjs(desk_stage_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_DESK_STAGE_OFFSET_2), 0);
 	gcAddGObjDisplay(desk_stage_gobj, gcDrawDObjTreeDLLinksForGObj, 6, 0x80000000, -1);
-	gcAddMObjAll(desk_stage_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_DESK_STAGE_OFFSET_1));
-	gcAddMatAnimJointAll(desk_stage_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_DESK_STAGE_OFFSET_3), 0.0F);
+	gcAddMObjAll(desk_stage_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_DESK_STAGE_OFFSET_1));
+	gcAddMatAnimJointAll(desk_stage_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_DESK_STAGE_OFFSET_3), 0.0F);
 	gcAddGObjProcess(desk_stage_gobj, mvOpeningFirstDestinationAnimateDeskStage, 1, 1);
 	gcPlayAnimAll(desk_stage_gobj);
 }
 
-// 80132BB8
+// 0x80132BB8
 void mvOpeningFirstDestinationRenderCloseupOverlay(GObj* arg0)
 {
 	if (gMvOpeningFirstDestinationOverlayAlpha < 0xA0)
@@ -588,7 +588,7 @@ void mvOpeningFirstDestinationRenderCloseupOverlay(GObj* arg0)
 	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 80132CEC
+// 0x80132CEC
 void mvOpeningFirstDestinationCreateCloseupOverlay()
 {
 	GObj* overlay_gobj;
@@ -598,7 +598,7 @@ void mvOpeningFirstDestinationCreateCloseupOverlay()
 	gcAddGObjDisplay(overlay_gobj, mvOpeningFirstDestinationRenderCloseupOverlay, 0x1A, 0x80000000, -1);
 }
 
-// 80132D48
+// 0x80132D48
 void mvOpeningFirstDestinationCreateOverlayViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x3C, 0x04000000, -1, 0, 1, 0, 1, 0);
@@ -606,7 +606,7 @@ void mvOpeningFirstDestinationCreateOverlayViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 80132DE8
+// 0x80132DE8
 void mvOpeningFirstDestinationRenderBackground(GObj* bg_gobj)
 {
 	gDPPipeSync(gSYTasklogDLHeads[0]++);
@@ -623,7 +623,7 @@ void mvOpeningFirstDestinationRenderBackground(GObj* bg_gobj)
 	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 80132F44
+// 0x80132F44
 void mvOpeningFirstDestinationCreateBackground()
 {
 	GObj* bg_gobj;
@@ -632,12 +632,12 @@ void mvOpeningFirstDestinationCreateBackground()
 	gMvOpeningFirstDestinationBackgroundGObj = bg_gobj = gcMakeGObjSPAfter(0, 0, 0x14, 0x80000000);
 	gcAddGObjDisplay(bg_gobj, mvOpeningFirstDestinationRenderBackground, 0x1C, 0x80000000, -1);
 
-	bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[7], &FILE_05A_BACKGROUND_IMAGE_OFFSET));
+	bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[7], &FILE_05A_BACKGROUND_IMAGE_OFFSET));
 	bg_sobj->pos.x = 10.0f;
 	bg_sobj->pos.y = 10.0f;
 }
 
-// 80132FCC
+// 0x80132FCC
 void mvOpeningFirstDestinationPositionSpotlight(GObj* spotlight_gobj, s32 ft_kind)
 {
 	Vec3f positions[12] = {
@@ -679,22 +679,22 @@ void mvOpeningFirstDestinationPositionSpotlight(GObj* spotlight_gobj, s32 ft_kin
 	DObjGetStruct(spotlight_gobj)->scale.vec.f.z = scales[ft_kind].z;
 }
 
-// 801330B8
+// 0x801330B8
 void mvOpeningFirstDestinationCreateSpotlight()
 {
 	GObj* spotlight_gobj;
 
 	gMvOpeningFirstDestinationSpotlightGObj = spotlight_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcAddOMMtxForDObjFixed(gcAddDObjForGObj(spotlight_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_SPOTLIGHT_OFFSET_2)), 0x1C, 0);
+	gcAddOMMtxForDObjFixed(gcAddDObjForGObj(spotlight_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_SPOTLIGHT_OFFSET_2)), 0x1C, 0);
 	gcAddGObjDisplay(spotlight_gobj, gcDrawDObjDLHead1, 0x1B, 0x80000000, -1);
-	gcAddMObjAll(spotlight_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_SPOTLIGHT_OFFSET_1));
-	gcAddMatAnimJointAll(spotlight_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[0], &FILE_034_SPOTLIGHT_OFFSET_3), 0.0F);
+	gcAddMObjAll(spotlight_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_SPOTLIGHT_OFFSET_1));
+	gcAddMatAnimJointAll(spotlight_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_SPOTLIGHT_OFFSET_3), 0.0F);
 	gcAddGObjProcess(spotlight_gobj, gcPlayAnimAll, 1, 1);
 	gcPlayAnimAll(spotlight_gobj);
 	mvOpeningFirstDestinationPositionSpotlight(spotlight_gobj, gMvOpeningFirstDestinationPluckedFighterKind);
 }
 
-// 801331B0
+// 0x801331B0
 void mvOpeningFirstDestinationDestroyDeskObjects()
 {
 	gcEjectGObj(gMvOpeningFirstDestinationOutsideGObj);
@@ -705,19 +705,19 @@ void mvOpeningFirstDestinationDestroyDeskObjects()
 	gcEjectGObj(gMvOpeningFirstDestinationTissueBoxGObj);
 }
 
-// 80133210
+// 0x80133210
 void mvOpeningFirstDestinationConfigureFirstSceneViewport(GObj* camera_gobj)
 {
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 	cam->projection.persp.near = 80.0F;
 	cam->projection.persp.far = 15000.0F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[2], &FILE_038_CAMERA_PARAMETERS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[2], &FILE_038_CAMERA_PARAMETERS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 	cam->flags |= 4;
 }
 
-// 801332BC
+// 0x801332BC
 void mvOpeningFirstDestinationCreateFirstSceneViewports()
 {
 	GObj* camera_gobj;
@@ -731,17 +731,17 @@ void mvOpeningFirstDestinationCreateFirstSceneViewports()
 	mvOpeningFirstDestinationConfigureFirstSceneViewport(camera_gobj);
 }
 
-// 801333DC
+// 0x801333DC
 void mvOpeningFirstDestinationConfigureSecondSceneViewport(GObj* camera_gobj)
 {
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[3], &FILE_039_CAMERA_PARAMETERS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[3], &FILE_039_CAMERA_PARAMETERS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 	cam->flags |= 4;
 }
 
-// 80133470
+// 0x80133470
 void mvOpeningFirstDestinationCreateSecondSceneViewports()
 {
 	GObj* camera_gobj;
@@ -755,7 +755,7 @@ void mvOpeningFirstDestinationCreateSecondSceneViewports()
 	mvOpeningFirstDestinationConfigureSecondSceneViewport(camera_gobj);
 }
 
-// 80133590
+// 0x80133590
 void mvOpeningFirstDestinationConfigureThirdSceneViewport(GObj* camera_gobj)
 {
 	Camera *cam = CameraGetStruct(camera_gobj);
@@ -772,12 +772,12 @@ void mvOpeningFirstDestinationConfigureThirdSceneViewport(GObj* camera_gobj)
 	cam->projection.persp.fovy = 18.60718727F;
 	cam->projection.persp.near = 128.0F;
 	cam->projection.persp.far = 16384.0F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[4], &FILE_03A_CAMERA_PARAMETERS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[4], &FILE_03A_CAMERA_PARAMETERS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 	cam->flags |= 4;
 }
 
-// 801336A8
+// 0x801336A8
 void mvOpeningFirstDestinationCreateThirdSceneViewports()
 {
 	GObj* camera_gobj;
@@ -792,7 +792,7 @@ void mvOpeningFirstDestinationCreateThirdSceneViewports()
 	mvOpeningFirstDestinationConfigureThirdSceneViewport(camera_gobj_2);
 }
 
-// 801337C8
+// 0x801337C8
 void mvOpeningFirstDestinationConfigureFourthSceneViewport(GObj* camera_gobj)
 {
 	Camera *cam = CameraGetStruct(camera_gobj);
@@ -809,11 +809,11 @@ void mvOpeningFirstDestinationConfigureFourthSceneViewport(GObj* camera_gobj)
 	cam->projection.persp.fovy = 11.98226547F;
 	cam->projection.persp.near = 128.0F;
 	cam->projection.persp.far = 16384.0F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[5], &FILE_03B_CAMERA_PARAMETERS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[5], &FILE_03B_CAMERA_PARAMETERS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
-// 801338D4
+// 0x801338D4
 void mvOpeningFirstDestinationCreateFourthSceneViewports()
 {
 	GObj* camera_gobj;
@@ -826,7 +826,7 @@ void mvOpeningFirstDestinationCreateFourthSceneViewports()
 	mvOpeningFirstDestinationConfigureFourthSceneViewport(camera_gobj_2);
 }
 
-// 801339CC
+// 0x801339CC
 void mvOpeningFirstDestinationCreateBackgroundViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x5A, 0x10000000, -1, 0, 1, 0, 1, 0);
@@ -834,7 +834,7 @@ void mvOpeningFirstDestinationCreateBackgroundViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 80133A6C
+// 0x80133A6C
 void mvOpeningFirstDestinationCreateHALLogoViewport()
 {
 	GObj *camera_gobj;
@@ -843,11 +843,11 @@ void mvOpeningFirstDestinationCreateHALLogoViewport()
 	gMvOpeningFirstDestinationHALLogoCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x32, 0x20000000, -1, 1, 1, 0, 1, 0);
 	cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[2], &FILE_038_CAMERA_PARAMETERS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[2], &FILE_038_CAMERA_PARAMETERS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
-// 80133B58
+// 0x80133B58
 void mvOpeningFirstDestinationRenderTransitionGFXOverlay(GObj* gobj)
 {
 	gDPPipeSync(gSYTasklogDLHeads[0]++);
@@ -863,7 +863,7 @@ void mvOpeningFirstDestinationRenderTransitionGFXOverlay(GObj* gobj)
 	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 80133CEC
+// 0x80133CEC
 void mvOpeningFirstDestinationRenderTransitionGFXOutline(GObj* gobj)
 {
 	gDPPipeSync(gSYTasklogDLHeads[0]++);
@@ -883,30 +883,30 @@ void mvOpeningFirstDestinationRenderTransitionGFXOutline(GObj* gobj)
 	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 80133EFC
+// 0x80133EFC
 void mvOpeningFirstDestinationCreateTransitionGFX()
 {
 	GObj* gfx_gobj;
 	DObj* gfx_dobj;
 
 	gMvOpeningFirstDestinationTransitionGFXOutlineGObj = gfx_gobj = gcMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
-	gfx_dobj = gcAddDObjForGObj(gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[1], &FILE_03F_TRANSITION_GFX_OUTLINE_OBJECT_OFFSET_1));
+	gfx_dobj = gcAddDObjForGObj(gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[1], &FILE_03F_TRANSITION_GFX_OUTLINE_OBJECT_OFFSET_1));
 	gcAddOMMtxForDObjFixed(gfx_dobj, 0x1C, 0);
 	gcAddGObjDisplay(gfx_gobj, mvOpeningFirstDestinationRenderTransitionGFXOutline, 0x1E, 0x80000000, -1);
-	gcAddDObjAnimJoint(gfx_dobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[1], &FILE_03F_TRANSITION_GFX_OUTLINE_OBJECT_OFFSET_2), 0);
+	gcAddDObjAnimJoint(gfx_dobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[1], &FILE_03F_TRANSITION_GFX_OUTLINE_OBJECT_OFFSET_2), 0);
 	gcAddGObjProcess(gfx_gobj, gcPlayAnimAll, 1, 1);
 	gcPlayAnimAll(gfx_gobj);
 
 	gMvOpeningFirstDestinationTransitionGFXOverlayGObj = gfx_gobj = gcMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
-	gfx_dobj = gcAddDObjForGObj(gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[1], &FILE_03F_TRANSITION_GFX_OVERLAY_OBJECT_OFFSET_1));
+	gfx_dobj = gcAddDObjForGObj(gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[1], &FILE_03F_TRANSITION_GFX_OVERLAY_OBJECT_OFFSET_1));
 	gcAddOMMtxForDObjFixed(gfx_dobj, 0x1C, 0);
 	gcAddGObjDisplay(gfx_gobj, mvOpeningFirstDestinationRenderTransitionGFXOverlay, 0x1E, 0x80000000, -1);
-	gcAddDObjAnimJoint(gfx_dobj, GetAddressFromOffset(gMvOpeningFirstDestinationFilesArray[1], &FILE_03F_TRANSITION_GFX_OVERLAY_OBJECT_OFFSET_2), 0);
+	gcAddDObjAnimJoint(gfx_dobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[1], &FILE_03F_TRANSITION_GFX_OVERLAY_OBJECT_OFFSET_2), 0);
 	gcAddGObjProcess(gfx_gobj, gcPlayAnimAll, 1, 1);
 	gcPlayAnimAll(gfx_gobj);
 }
 
-// 8013407C
+// 0x8013407C
 void mvOpeningFirstDestinationCreateTransitionGFXViewport()
 {
 	GObj* camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x5F, 0x40000000, -1, 1, 1, 0, 1, 0);
@@ -926,14 +926,14 @@ void mvOpeningFirstDestinationCreateTransitionGFXViewport()
 	cam->projection.persp.far = 16384.0F;
 }
 
-// 80134184
+// 0x80134184
 void mvOpeningFirstDestinationDestroyViewports()
 {
 	gcEjectGObj(gMvOpeningFirstDestinationMainCameraGObj);
 	gcEjectGObj(gMvOpeningFirstDestinationFighterCameraGObj);
 }
 
-// 801341B4
+// 0x801341B4
 s32 mvOpeningFirstDestinationGetDroppedFighterKind()
 {
 	s32 ft_kinds[8] = {
@@ -947,7 +947,7 @@ s32 mvOpeningFirstDestinationGetDroppedFighterKind()
 	return ft_kind;
 }
 
-// 80134270
+// 0x80134270
 s32 mvOpeningFirstDestinationGetPluckedFighterKind()
 {
 	s32 ft_kinds[8] = {
@@ -958,7 +958,7 @@ s32 mvOpeningFirstDestinationGetPluckedFighterKind()
 	return ft_kinds[mtTrigGetRandomTimeUCharRange(8)];
 }
 
-// 801342E4
+// 0x801342E4
 void mvOpeningFirstDestinationInitGlobals()
 {
 	gMvOpeningFirstDestinationFramesElapsed = 0;
@@ -966,7 +966,7 @@ void mvOpeningFirstDestinationInitGlobals()
 	gMvOpeningFirstDestinationDroppedFighterKind = mvOpeningFirstDestinationGetDroppedFighterKind();
 }
 
-// 80134318
+// 0x80134318
 sb32 mvOpeningFirstDestinationSetFrameBuffer(GObj* gobj)
 {
 	s32 i;
@@ -998,7 +998,7 @@ sb32 mvOpeningFirstDestinationSetFrameBuffer(GObj* gobj)
 	return FALSE;
 }
 
-// 80134400
+// 0x80134400
 void mvOpeningFirstDestinationMainProc(GObj* arg0)
 {
 	gMvOpeningFirstDestinationFramesElapsed += 1;
@@ -1103,7 +1103,7 @@ void mvOpeningFirstDestinationMainProc(GObj* arg0)
 	}
 }
 
-// 80134788
+// 0x80134788
 void mvOpeningFirstDestinationInit()
 {
 	s32 foo;
@@ -1120,7 +1120,7 @@ void mvOpeningFirstDestinationInit()
 	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl34_80135078;
 	rldmSetup.force_status_buffer_size = ARRAY_COUNT(D_ovl34_80135078);
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20), gMvOpeningFirstDestinationFilesArray, syTasklogMalloc(lbRelocGetAllocSize(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20), gMvOpeningFirstDestinationFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20)), 0x10));
 
 	gcMakeGObjSPAfter(0, mvOpeningFirstDestinationMainProc, 0, 0x80000000);
 	gMvOpeningFirstDestinationCameraGObj = gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
@@ -1157,7 +1157,7 @@ void mvOpeningFirstDestinationInit()
 	D_800A50F0 = 0;
 }
 
-// 80134BD0
+// 0x80134BD0
 syDisplaySetup D_ovl34_80134BD0 = {
 
 	gSCSubsysFramebuffer0,
@@ -1169,14 +1169,14 @@ syDisplaySetup D_ovl34_80134BD0 = {
 	0x00016A99,
 };
 
-// 80134BEC
+// 0x80134BEC
 scRuntimeInfo D_ovl34_80134BEC = {
 
 	0x00000000, 0x8000A5E4,
 	0x800A26B8, &lOverlay34ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00002EE0, 0x00001000,
 	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000C000,
-	mvOpeningFirstDestinationSetupDisplayList, update_contdata,
+	mvOpeningFirstDestinationFuncLights, update_contdata,
 	0x00000000, 0x00000600, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
 	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
@@ -1185,7 +1185,7 @@ scRuntimeInfo D_ovl34_80134BEC = {
 	mvOpeningFirstDestinationInit
 };
 
-// 801349BC
+// 0x801349BC
 void intro_firstscene_entry()
 {
 	D_ovl34_80134BD0.zbuffer = syDisplayGetZBuffer(6400);

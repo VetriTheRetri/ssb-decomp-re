@@ -4,8 +4,8 @@
 #include <lb/library.h>
 
 // Externs
-extern intptr_t lOverlay36ArenaLo;  // 8018E620
-extern intptr_t lOverlay36ArenaHi;  // 803903E0
+extern intptr_t lOverlay36ArenaLo;  // 0x8018E620
+extern intptr_t lOverlay36ArenaHi;  // 0x803903E0
 
 extern void func_80007080(void*, f32, f32, f32, f32);
 
@@ -15,7 +15,7 @@ extern intptr_t FILE_041_MARIO_CAMERA_PARAMS_OFFSET; // 00000000 file 0x041 offs
 
 
 // DATA
-// 8018E090
+// 0x8018E090
 CameraDesc dMvOpeningMarioCameraDescStart = {
 
 	{ 300.0f, 500.0f, 1700.0f },
@@ -23,7 +23,7 @@ CameraDesc dMvOpeningMarioCameraDescStart = {
 	0.15f
 };
 
-// 8018E0AC
+// 0x8018E0AC
 CameraDesc dMvOpeningMarioCameraDescEnd = {
 
 	{ 800.0f, 500.0f, 1300.0f },
@@ -31,7 +31,7 @@ CameraDesc dMvOpeningMarioCameraDescEnd = {
 	0.15f
 };
 
-// 8018E0C8
+// 0x8018E0C8
 ftKeyCommand dMvOpeningMarioGameKey[] = {
 
 	FTKEY_EVENT_STICK(0, 0, 0),                         // 0x2000, 0x0000
@@ -44,7 +44,7 @@ ftKeyCommand dMvOpeningMarioGameKey[] = {
 	FTKEY_EVENT_END()                                   // 0x0000
 };
 
-// 8018E0E8
+// 0x8018E0E8
 u32 D_ovl36_8018E0E8[2] = {
 
 	0x25, 0x41
@@ -52,56 +52,56 @@ u32 D_ovl36_8018E0E8[2] = {
 
 
 // BSS
-// 8018E200
+// 0x8018E200
 s32 D_ovl36_8018E200;
 
-// 8018E204
+// 0x8018E204
 s32 D_ovl36_8018E204;
 
-// 8018E208
+// 0x8018E208
 s32 gMvOpeningMarioFramesElapsed;
 
-// 8018E20C
+// 0x8018E20C
 GObj* gMvOpeningMarioNameGObj;
 
-// 8018E210
+// 0x8018E210
 GObj* gMvOpeningMarioStageFighterGObj;
 
-// 8018E214
+// 0x8018E214
 s32 D_ovl36_8018E214;
 
-// 8018E218
+// 0x8018E218
 GObj* gMvOpeningMarioStageCameraGObj;
 
-// 8018E21C
+// 0x8018E21C
 void* gMvOpeningMarioAnimHeap;
 
-// 8018E220
+// 0x8018E220
 f32 gMvOpeningMarioPosedFighterYSpeed;
 
-// 8018E224
+// 0x8018E224
 // s32 D_ovl36_8018E224;
 
-// 8018E228
+// 0x8018E228
 CameraDesc dMvOpeningMarioCameraDescAdjustedStart;
 
-// 8018E248
+// 0x8018E248
 CameraDesc dMvOpeningMarioCameraDescAdjustedEnd;
 
-// 8018E268
+// 0x8018E268
 lbFileNode D_ovl36_8018E268[48];
 
-// 8018E3E8
+// 0x8018E3E8
 lbFileNode D_ovl36_8018E3E8[7];
 
-// 8018E420
-uintptr_t gMvOpeningMarioFilesArray[2];
+// 0x8018E420
+uintptr_t gMvOpeningMarioFiles[2];
 
-// 8018E428
+// 0x8018E428
 scBattleState gMvOpeningMarioBattleState;
 
 
-// 8018D0C0
+// 0x8018D0C0
 void mvOpeningMarioLoadFiles()
 {
 	lbRelocSetup rldmSetup;
@@ -115,10 +115,10 @@ void mvOpeningMarioLoadFiles()
 	rldmSetup.force_status_buffer = D_ovl36_8018E3E8;
 	rldmSetup.force_status_buffer_size = ARRAY_COUNT(D_ovl36_8018E3E8);
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8), gMvOpeningMarioFilesArray, syTasklogMalloc(lbRelocGetAllocSize(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8), gMvOpeningMarioFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl36_8018E0E8, ARRAY_COUNT(D_ovl36_8018E0E8)), 0x10));
 }
 
-// 8018D160
+// 0x8018D160
 void mvOpeningMarioSetNameColor(SObj* name_sobj)
 {
 	name_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -131,7 +131,7 @@ void mvOpeningMarioSetNameColor(SObj* name_sobj)
 	name_sobj->sprite.blue = 0xFF;
 }
 
-// 8018D194
+// 0x8018D194
 void mvOpeningMarioDrawName()
 {
 	GObj* name_gobj;
@@ -152,7 +152,7 @@ void mvOpeningMarioDrawName()
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMvOpeningMarioFilesArray[0], offsets[i]));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMvOpeningMarioFiles[0], offsets[i]));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = x_positions[i] + 80.0F;
@@ -162,7 +162,7 @@ void mvOpeningMarioDrawName()
 	}
 }
 
-// 8018D314
+// 0x8018D314
 void mvOpeningMarioAnimateStageCamera(GObj* camera_gobj)
 {
 	Camera *cam = CameraGetStruct(camera_gobj);
@@ -179,7 +179,7 @@ void mvOpeningMarioAnimateStageCamera(GObj* camera_gobj)
 	}
 }
 
-// 8018D40C
+// 0x8018D40C
 void mvOpeningMarioCreateStageViewport(Vec3f arg0)
 {
 	Camera *cam;
@@ -217,7 +217,7 @@ void mvOpeningMarioCreateStageViewport(Vec3f arg0)
 	cam->vec.up.x = dMvOpeningMarioCameraDescAdjustedStart.upx;
 }
 
-// 8018D614
+// 0x8018D614
 void mvOpeningMarioInitFighterStagePanel()
 {
 	GObj* fighter_gobj;
@@ -276,7 +276,7 @@ void mvOpeningMarioInitFighterStagePanel()
 	}
 }
 
-// 8018D844
+// 0x8018D844
 void mvOpeningMarioRenderPosedFighterBackground(GObj *gobj)
 {
 	gDPPipeSync(gSYTasklogDLHeads[0]++);
@@ -289,13 +289,13 @@ void mvOpeningMarioRenderPosedFighterBackground(GObj *gobj)
 	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 8018D944
+// 0x8018D944
 void mvOpeningMarioCreatePosedFighterBackground()
 {
 	gcAddGObjDisplay(gcMakeGObjSPAfter(0, 0, 0x13, 0x80000000), mvOpeningMarioRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
 }
 
-// 8018D990
+// 0x8018D990
 void mvOpeningMarioAnimatePosedFighter(GObj* fighter_gobj)
 {
 	switch (gMvOpeningMarioFramesElapsed)
@@ -325,7 +325,7 @@ void mvOpeningMarioAnimatePosedFighter(GObj* fighter_gobj)
 	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= gMvOpeningMarioPosedFighterYSpeed;
 }
 
-// 8018DA60
+// 0x8018DA60
 void mvOpeningMarioCreatePosedFighter()
 {
 	GObj* fighter_gobj;
@@ -348,7 +348,7 @@ void mvOpeningMarioCreatePosedFighter()
 	DObjGetStruct(fighter_gobj)->scale.vec.f.z = 1.0f;
 }
 
-// 8018DB5C
+// 0x8018DB5C
 void mvOpeningMarioCreateNameViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
@@ -356,18 +356,18 @@ void mvOpeningMarioCreateNameViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 8018DBFC
+// 0x8018DBFC
 void mvOpeningMarioCreatePosedFighterViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
 	cam->projection.persp.aspect = 5.0F / 11.0F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningMarioFilesArray[1], &FILE_041_MARIO_CAMERA_PARAMS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningMarioFiles[1], &FILE_041_MARIO_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
-// 8018DCEC
+// 0x8018DCEC
 void mvOpeningMarioCreatePosedFighterBackgroundViewport()
 {
 	Camera *cam;
@@ -378,7 +378,7 @@ void mvOpeningMarioCreatePosedFighterBackgroundViewport()
 	cam->flags = 5;
 }
 
-// 8018DD9C
+// 0x8018DD9C
 void mvOpeningMarioMainProc(GObj* arg0)
 {
 
@@ -407,13 +407,13 @@ void mvOpeningMarioMainProc(GObj* arg0)
 	}
 }
 
-// 8018DE58
+// 0x8018DE58
 void mvOpeningMarioInitFramesElapsed()
 {
 	gMvOpeningMarioFramesElapsed = 0;
 }
 
-// 8018DE64
+// 0x8018DE64
 void mvOpeningMarioInit()
 {
 	gMvOpeningMarioBattleState = gDefaultBattleState;
@@ -451,14 +451,14 @@ void mvOpeningMarioInit()
 	while (func_8000092C() < 1515U);
 }
 
-// 8018DFE4
-void mvOpeningMarioSetupDisplayList(Gfx **display_list)
+// 0x8018DFE4
+void mvOpeningMarioFuncLights(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// 8018E11C
+// 0x8018E11C
 syDisplaySetup D_ovl36_8018E11C = {
 
 	gSCSubsysFramebuffer0,
@@ -470,13 +470,13 @@ syDisplaySetup D_ovl36_8018E11C = {
 	0x00016A99
 };
 
-// 8018E138
+// 0x8018E138
 scRuntimeInfo D_ovl36_8018E138 = {
 	0x00000000, 0x8000a5e4,
 	0x800a26b8, &lOverlay36ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00004000, 0x00002000,
 	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000c000,
-	mvOpeningMarioSetupDisplayList, update_contdata,
+	mvOpeningMarioFuncLights, update_contdata,
 	0x00000000, 0x00000600, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
 	0x800d5cac, 0x00000000, 0x00000000, 0x00000000,
@@ -485,7 +485,7 @@ scRuntimeInfo D_ovl36_8018E138 = {
 	mvOpeningMarioInit
 };
 
-// 8018E030
+// 0x8018E030
 void intro_focus_mario_entry()
 {
 	D_ovl36_8018E11C.zbuffer = syDisplayGetZBuffer(6400);

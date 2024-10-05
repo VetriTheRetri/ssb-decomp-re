@@ -17,7 +17,7 @@ s32 func_ovl8_80376FB4()
 	return 2;
 }
 
-// 80376FBC
+// 0x80376FBC
 s32 stringLength(char* string)
 {
 	s32 length;
@@ -29,7 +29,7 @@ s32 stringLength(char* string)
 	return length;
 }
 
-// 80376FFC
+// 0x80376FFC
 void stringCopy(char* target, char* source)
 {
 	char* sourceCurrent;
@@ -50,7 +50,7 @@ void stringCopy(char* target, char* source)
 	*target = '\0';
 }
 
-// 80377044
+// 0x80377044
 void stringCopyCount(char* target, char* source, s32 count)
 {
 	char* sourceCurrent;
@@ -72,7 +72,7 @@ void stringCopyCount(char* target, char* source, s32 count)
 	*target = '\0';
 }
 
-// 8037709C
+// 0x8037709C
 void stringConcat(char* target, char* source)
 {
 	char* sourceCurrent;

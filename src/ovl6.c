@@ -42,10 +42,10 @@ void scBonusGame_SetGeometryRenderLights(Gfx** display_list);
 
 
 // Data
-// 8018EEC0
+// 0x8018EEC0
 s32 D_ovl6_8018EEC0 = 0;
 
-// 8018EEC4
+// 0x8018EEC4
 grBonus1Targets scBonusGame_Bonus1_TargetOffsets[] = {
 
 	// Bonus1Mario
@@ -85,7 +85,7 @@ grBonus1Targets scBonusGame_Bonus1_TargetOffsets[] = {
 	{ 0x2940, 0x2E60, 0x3070 }
 };
 
-// 8018EF54
+// 0x8018EF54
 grBonus2Bumpers scBonusGame_Bonus2_BumperOffsets[] = {
 
 	// Mario
@@ -125,7 +125,7 @@ grBonus2Bumpers scBonusGame_Bonus2_BumperOffsets[] = {
 	{ 0x3FE0, 0x4090 }
 };
 
-// 8018EFB4
+// 0x8018EFB4
 grBonus2Nodes scBonusGame_Bonus2_PlatformOffsets[] = {
 
 	// Narrow
@@ -138,7 +138,7 @@ grBonus2Nodes scBonusGame_Bonus2_PlatformOffsets[] = {
 	{ 0x4E08, 0x4EC0, 0x47A0, 0x4F70 }
 };
 
-// 8018EFE4
+// 0x8018EFE4
 grBonus2Unk D_ovl6_8018EFE4[] = {
 
 	{ 0x5520, 0x55D0 },
@@ -157,7 +157,7 @@ f32 scBonusGame_Timer_UnitLengths[] = {
 	277.0F / 500.0F
 };
 
-// 8018F014
+// 0x8018F014
 s32 scBonusGame_Timer_DigitPositions[] = {
 
 	/* 0 */ 207,
@@ -168,16 +168,16 @@ s32 scBonusGame_Timer_DigitPositions[] = {
 	/* 5 */ 288
 };
 
-// 8018F02C
+// 0x8018F02C
 s32 scBonusGame_Player_InterfacePositions[] = {
 
 	55, 55, 55, 55
 };
 
-// 8018F03C
+// 0x8018F03C
 syColorRGBA dSCBonusGameFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
-// 8018F040
+// 0x8018F040
 s32 D_ovl6_8018F040[16] = {
 
 	0x20202000, 0x20202000, 0xffffff00, 0xffffff00,
@@ -186,10 +186,10 @@ s32 D_ovl6_8018F040[16] = {
 	0xdc08090a, 0x8018f040, 0xdf000000, 0x00000000
 };
 
-// 8018F080
+// 0x8018F080
 syDisplaySetup D_ovl6_8018F080 = SYDISPLAY_DEFINE_DEFAULT();
 
-// 8018F09C
+// 0x8018F09C
 scRuntimeInfo D_ovl6_8018F09C = {
 
 	0x00000000, 0x8018d0d0,
@@ -206,32 +206,32 @@ scRuntimeInfo D_ovl6_8018F09C = {
 };
 
 // BSS
-// 8018F1A0
+// 0x8018F1A0
 void* gBonusGameFileData[4];
 
-// 8018F1B0
+// 0x8018F1B0
 scBattleState gBonusBattleState;
 
-// 8018F3A0
+// 0x8018F3A0
 u8 gBonusTimerDigits[6];
 
-// 8018F3A8
+// 0x8018F3A8
 sb32 gIsBonusGameTimeUp;
 
 
-// 8018D0C0
+// 0x8018D0C0
 void func_ovl6_8018D0C0() {}
 
-// 8018D0C8
+// 0x8018D0C8
 void func_ovl6_8018D0C8() {}
 
-// 8018D0D0
+// 0x8018D0D0
 void func_ovl6_8018D0D0()
 {
 	ifCommonBattleUpdateInterfaceAll();
 }
 
-// 8018D0F0
+// 0x8018D0F0
 void func_ovl6_8018D0F0()
 {
 	s32 player;
@@ -293,14 +293,14 @@ void func_ovl6_8018D0F0()
 	}
 }
 
-// 8018D330
+// 0x8018D330
 void func_ovl6_8018D330()
 {
 	gBonusGameFileData[0] = lbRelocGetFileExternHeap(
 		(u32)&D_NF_000000FD, syTasklogMalloc(lbRelocGetFileSize((u32)&D_NF_000000FD), 0x10));
 }
 
-// 8018D374
+// 0x8018D374
 void scBonusGame_InitBonus1Targets()
 {
 	grBonusDesc* bonus_desc = &scBonusGame_Bonus1_TargetOffsets[gBattleState->gr_kind - nGRKindBonus1Start];
@@ -337,7 +337,7 @@ void scBonusGame_InitBonus1Targets()
 	}
 }
 
-// 8018D4C4
+// 0x8018D4C4
 void scBonusGame_UpdateBonus1TargetInterface()
 {
 	s32 i;
@@ -349,7 +349,7 @@ void scBonusGame_UpdateBonus1TargetInterface()
 	gcEjectSObj(sobj);
 }
 
-// 8018D510
+// 0x8018D510
 void scBonusGame_UpdateBonus1TargetCount()
 {
 	gGRCommonStruct.bonus1.target_count--;
@@ -367,20 +367,20 @@ void scBonusGame_UpdateBonus1TargetCount()
 	}
 }
 
-// 8018D5C8
+// 0x8018D5C8
 void func_ovl6_8018D5C8()
 {
 	scBonusGame_InitBonus1Targets();
 }
 
-// 8018D5E8
+// 0x8018D5E8
 void func_ovl6_8018D5E8()
 {
 	gGRCommonStruct.bonus2.unk_bonus2_0x4 = lbRelocGetFileExternHeap(
 		(u32)&D_NF_00000088, syTasklogMalloc(lbRelocGetFileSize((u32)&D_NF_00000088), 0x10U));
 }
 
-// 8018D62C
+// 0x8018D62C
 s32 scBonusGame_GetBonus2PlatformKind(s32 line_id)
 {
 	Vec3f pos_left;
@@ -397,7 +397,7 @@ s32 scBonusGame_GetBonus2PlatformKind(s32 line_id)
 		return grBonus_PlatformKind_Wide;
 }
 
-// 8018D6A8
+// 0x8018D6A8
 void func_ovl6_8018D6A8(s32 line_id)
 {
 	DObj* dobj;
@@ -425,7 +425,7 @@ void func_ovl6_8018D6A8(s32 line_id)
 	dobj->child->user_data.s = index | 0x8000;
 }
 
-// 8018D794
+// 0x8018D794
 void scBonusGame_InitBonus2Platforms()
 {
 	s32 line_count;
@@ -450,7 +450,7 @@ void scBonusGame_InitBonus2Platforms()
 	}
 }
 
-// 8018D890
+// 0x8018D890
 void scBonusGame_UpdateBonus2PlatformInterface()
 {
 	SObj* sobj = SObjGetStruct(gGRCommonStruct.bonus2.interface_gobj);
@@ -461,7 +461,7 @@ void scBonusGame_UpdateBonus2PlatformInterface()
 	gcEjectSObj(sobj);
 }
 
-// 8018D8DC
+// 0x8018D8DC
 void scBonusGame_UpdateBonus2PlatformCount(DObj* dobj)
 {
 	s32 index = dobj->child->user_data.s & ~0x8000;
@@ -496,7 +496,7 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj* dobj)
 	}
 }
 
-// 8018DA2C
+// 0x8018DA2C
 void scBonusGame_CheckBonus2PlatformLanding(GObj* ground_gobj)
 {
 	GObj* fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
@@ -516,14 +516,14 @@ void scBonusGame_CheckBonus2PlatformLanding(GObj* ground_gobj)
 	}
 }
 
-// 8018DAE0
+// 0x8018DAE0
 void grBonus_Bonus2_MakeGround()
 {
 	gcAddGObjProcess(gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, 1U, 0x80000000U),
 						scBonusGame_CheckBonus2PlatformLanding, 1, 4);
 }
 
-// 8018DB24
+// 0x8018DB24
 void scBonusGame_InitBonus2Bumpers()
 {
 	grBonus2Bumpers* bonus_desc;
@@ -561,7 +561,7 @@ void scBonusGame_InitBonus2Bumpers()
 	}
 }
 
-// 8018DC38
+// 0x8018DC38
 void func_ovl6_8018DC38()
 {
 	scBonusGame_InitBonus2Bumpers();
@@ -570,7 +570,7 @@ void func_ovl6_8018DC38()
 	grBonus_Bonus2_MakeGround();
 }
 
-// 8018DC70
+// 0x8018DC70
 void scBonusGame_InitInterface(GObj* interface_gobj)
 {
 	gcStopCurrentGObjThread(60);
@@ -582,7 +582,7 @@ void scBonusGame_InitInterface(GObj* interface_gobj)
 	gcStopCurrentGObjThread(1);
 }
 
-// 8018DCC4
+// 0x8018DCC4
 void scBonusGame_MakeInterface()
 {
 	gcAddGObjProcess(gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xAU, 0x80000000U), scBonusGame_InitInterface, 0,
@@ -590,7 +590,7 @@ void scBonusGame_MakeInterface()
 	gBattleState->game_status = nSCBattleGameStatusWait;
 }
 
-// 8018DD14
+// 0x8018DD14
 void scBonusGame_InitCameraVars()
 {
 	s32 player;
@@ -611,7 +611,7 @@ void scBonusGame_InitCameraVars()
 	}
 }
 
-// 8018DDE0
+// 0x8018DDE0
 void scBonusGame_InitBonus1TargetSprites()
 {
 	GObj* interface_gobj;
@@ -634,7 +634,7 @@ void scBonusGame_InitBonus1TargetSprites()
 	}
 }
 
-// 8018DF3C
+// 0x8018DF3C
 void scBonusGame_InitBonus2PlatformSprites()
 {
 	GObj* interface_gobj;
@@ -657,7 +657,7 @@ void scBonusGame_InitBonus2PlatformSprites()
 	}
 }
 
-// 8018E098
+// 0x8018E098
 void scBonusGame_InitBonusGameSprites()
 {
 	if (gBattleState->gr_kind >= nGRKindBonus2Start)
@@ -666,7 +666,7 @@ void scBonusGame_InitBonusGameSprites()
 		scBonusGame_InitBonus1TargetSprites();
 }
 
-// 8018E0E0
+// 0x8018E0E0
 void scBonusGame_GetPlayerSpawnPosition(Vec3f* pos)
 {
 	s32 mapobj;
@@ -675,7 +675,7 @@ void scBonusGame_GetPlayerSpawnPosition(Vec3f* pos)
 	mpCollisionGetMapObjPositionID(mapobj, pos);
 }
 
-// 8018E114
+// 0x8018E114
 void scBonusGame_InitTimer(GObj* interface_gobj)
 {
 	s32 unit;
@@ -710,10 +710,10 @@ void scBonusGame_InitTimer(GObj* interface_gobj)
 	}
 }
 
-// 8018E298
+// 0x8018E298
 void scBonusGame_SetTimeUp() { gIsBonusGameTimeUp = TRUE; }
 
-// 8018E2A8
+// 0x8018E2A8
 void scBonusGame_CheckTimeUpEjectInterface(GObj* interface_gobj)
 {
 	if (gIsBonusGameTimeUp != FALSE)
@@ -724,7 +724,7 @@ void scBonusGame_CheckTimeUpEjectInterface(GObj* interface_gobj)
 	}
 }
 
-// 8018E2E8
+// 0x8018E2E8
 void scBonusGame_MakeBonusTimerGObj()
 {
 	gIsBonusGameTimeUp = FALSE;
@@ -733,7 +733,7 @@ void scBonusGame_MakeBonusTimerGObj()
 							scBonusGame_CheckTimeUpEjectInterface, 1, 0);
 }
 
-// 8018E344
+// 0x8018E344
 void func_ovl6_8018E344()
 {
 	GObj* interface_gobj;
@@ -778,14 +778,14 @@ void func_ovl6_8018E344()
 	}
 }
 
-// 8018E5D8
+// 0x8018E5D8
 void scBonusGame_SetPlayerInterfacePositions()
 {
 	gIFCommonPlayerInterface.ifplayers_pos_x = scBonusGame_Player_InterfacePositions;
 	gIFCommonPlayerInterface.ifplayers_pos_y = 210;
 }
 
-// 8018E5F8
+// 0x8018E5F8
 void scBonusGame_InitBonusGame()
 {
 	s32 unused[3];
@@ -868,7 +868,7 @@ void scBonusGame_InitBonusGame()
 	scBonusGame_MakeBonusTimerGObj();
 }
 
-// 8018E8D0
+// 0x8018E8D0
 void scBonusGame_SetBonusEndStats(sb32 is_practice)
 {
 	gSC1PManagerTotalDamage += gBattleState->players[gSceneData.spgame_player].total_damage_all;
@@ -889,7 +889,7 @@ void scBonusGame_SetBonusEndStats(sb32 is_practice)
 	}
 }
 
-// 8018E95C
+// 0x8018E95C
 void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
 {
 	if (gSceneData.is_reset == FALSE)
@@ -940,7 +940,7 @@ void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
 	}
 }
 
-// 8018EA80
+// 0x8018EA80
 void scBonusGame_SetGeometryRenderLights(Gfx** display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
@@ -948,7 +948,7 @@ void scBonusGame_SetGeometryRenderLights(Gfx** display_list)
 	ftDisplayLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// 8018EACC
+// 0x8018EACC
 void sc1PBonusGameStartScene()
 {
 	u16 bonus_complete_chars;

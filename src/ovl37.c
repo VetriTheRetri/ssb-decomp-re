@@ -8,29 +8,29 @@
 #include <sys/objdraw.h>
 
 // Externs
-extern intptr_t D_NF_800A5240;      // 800A5240
-extern intptr_t lOverlay37ArenaLo;  // 8018E5E0
-extern intptr_t lOverlay37ArenaHi;  // 803903E0
+extern intptr_t D_NF_800A5240;      // 0x800A5240
+extern intptr_t lOverlay37ArenaLo;  // 0x8018E5E0
+extern intptr_t lOverlay37ArenaHi;  // 0x803903E0
 extern intptr_t FILE_041_DK_CAMERA_PARAMS_OFFSET; // file 0x041 offset for DK's fighter pose camera settings
 
 extern void func_80007080(void*, f32, f32, f32, f32);
 
 // Data
-// 8018E070
+// 0x8018E070
 CameraDesc dMvOpeningDKCameraDescStart = {
 
 	{ -1100.0, 150.0, 400.0 },
 	{ 0.0,     150.0, 0.0   }, 0.0
 };
 
-// 8018E08C
+// 0x8018E08C
 CameraDesc dMvOpeningDKCameraDescEnd = {
 
 	{ -900.0, 500.0, 1800.0 },
 	{ 0.0,    500.0, 0.0    }, 0.0
 };
 
-// 8018E0A8
+// 0x8018E0A8
 ftKeyCommand dMvOpeningDKInputSeq[] =
 {
 	FTKEY_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0), // 0x2000, 0x00B0
@@ -40,7 +40,7 @@ ftKeyCommand dMvOpeningDKInputSeq[] =
 	FTKEY_EVENT_END()                                 // 0x0000
 };
 
-// 8018E0BC
+// 0x8018E0BC
 u32 D_ovl37_8018E0BC[2] = {
 
 	0x25, 0x41
@@ -48,49 +48,49 @@ u32 D_ovl37_8018E0BC[2] = {
 
 
 // BSS
-// 8018E1C0
+// 0x8018E1C0
 s32 D_ovl37_8018E1C0[2];
 
-// 8018E1C8
+// 0x8018E1C8
 s32 gMvOpeningDKFramesElapsed;
 
-// 8018E1CC
+// 0x8018E1CC
 GObj* gMvOpeningDKNameGObj;
 
-// 8018E1D0
+// 0x8018E1D0
 GObj* gMvOpeningDKStageFighterGObj;
 
 s32 D_ovl37_8018E1D4;
 
-// 8018E1D8
+// 0x8018E1D8
 GObj* gMvOpeningDKStageCameraGObj;
 
-// 8018E1DC
+// 0x8018E1DC
 void* gMvOpeningDKAnimHeap;
 
-// 8018E1E0
+// 0x8018E1E0
 f32 gMvOpeningDKPosedFighterYSpeed;
 
-// 8018E1E8
+// 0x8018E1E8
 CameraDesc dMvOpeningDKCameraDescAdjustedStart;
 
-// 8018E208
+// 0x8018E208
 CameraDesc dMvOpeningDKCameraDescAdjustedEnd;
 
-// 8018E228
+// 0x8018E228
 lbFileNode D_ovl37_8018E228[48];
 
-// 8018E3A8
+// 0x8018E3A8
 lbFileNode D_ovl37_8018E3A8[7];
 
-// 8018E3E0
-uintptr_t gMvOpeningDKFilesArray[2];
+// 0x8018E3E0
+uintptr_t gMvOpeningDKFiles[2];
 
-// 8018E3E8
+// 0x8018E3E8
 scBattleState gMvOpeningDKBattleState;
 
 
-// 8018D0C0
+// 0x8018D0C0
 void mvOpeningDKLoadFiles()
 {
 	lbRelocSetup rldmSetup;
@@ -104,10 +104,10 @@ void mvOpeningDKLoadFiles()
 	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl37_8018E3A8;
 	rldmSetup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl37_8018E0BC, ARRAY_COUNT(D_ovl37_8018E0BC), gMvOpeningDKFilesArray, syTasklogMalloc(lbRelocGetAllocSize(D_ovl37_8018E0BC, ARRAY_COUNT(D_ovl37_8018E0BC)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl37_8018E0BC, ARRAY_COUNT(D_ovl37_8018E0BC), gMvOpeningDKFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl37_8018E0BC, ARRAY_COUNT(D_ovl37_8018E0BC)), 0x10));
 }
 
-// 8018D160
+// 0x8018D160
 void mvOpeningDKSetNameColor(SObj* name_sobj)
 {
 	name_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -120,7 +120,7 @@ void mvOpeningDKSetNameColor(SObj* name_sobj)
 	name_sobj->sprite.blue = 0xFF;
 }
 
-// 8018D194
+// 0x8018D194
 void mvOpeningDKDrawName()
 {
 	GObj* name_gobj;
@@ -143,7 +143,7 @@ void mvOpeningDKDrawName()
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMvOpeningDKFilesArray[0], offsets[i]));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMvOpeningDKFiles[0], offsets[i]));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = positions[i].x + 120.0F;
@@ -153,7 +153,7 @@ void mvOpeningDKDrawName()
 	}
 }
 
-// 8018D2FC
+// 0x8018D2FC
 void mvOpeningDKAnimateStageCamera(GObj* camera_gobj)
 {
 	Camera *cam = CameraGetStruct(camera_gobj);
@@ -170,7 +170,7 @@ void mvOpeningDKAnimateStageCamera(GObj* camera_gobj)
 	}
 }
 
-// 8018D3F4
+// 0x8018D3F4
 void mvOpeningDKCreateStageViewport(Vec3f arg0)
 {
 	Camera *cam;
@@ -208,7 +208,7 @@ void mvOpeningDKCreateStageViewport(Vec3f arg0)
 	cam->vec.up.x = dMvOpeningDKCameraDescAdjustedStart.upx;
 }
 
-// 8018D604
+// 0x8018D604
 void mvOpeningDKInitFighterStagePanel()
 {
 	GObj* fighter_gobj;
@@ -268,7 +268,7 @@ void mvOpeningDKInitFighterStagePanel()
 	}
 }
 
-// 8018D834
+// 0x8018D834
 void mvOpeningDKRenderPosedFighterBackground(GObj *gobj)
 {
 	gDPPipeSync(gSYTasklogDLHeads[0]++);
@@ -281,13 +281,13 @@ void mvOpeningDKRenderPosedFighterBackground(GObj *gobj)
 	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 8018D934
+// 0x8018D934
 void mvOpeningDKCreatePosedFighterBackground()
 {
 	gcAddGObjDisplay(gcMakeGObjSPAfter(0, 0, 0x13, 0x80000000), mvOpeningDKRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
 }
 
-// 8018D980
+// 0x8018D980
 void mvOpeningDKAnimatePosedFighter(GObj* fighter_gobj)
 {
 	switch (gMvOpeningDKFramesElapsed)
@@ -314,7 +314,7 @@ void mvOpeningDKAnimatePosedFighter(GObj* fighter_gobj)
 	DObjGetStruct(fighter_gobj)->translate.vec.f.y += gMvOpeningDKPosedFighterYSpeed;
 }
 
-// 8018DA50
+// 0x8018DA50
 void mvOpeningDKCreatePosedFighter()
 {
 	GObj* fighter_gobj;
@@ -337,7 +337,7 @@ void mvOpeningDKCreatePosedFighter()
 	DObjGetStruct(fighter_gobj)->scale.vec.f.z = 1.0f;
 }
 
-// 8018DB50
+// 0x8018DB50
 void mvOpeningDKCreateNameViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
@@ -345,18 +345,18 @@ void mvOpeningDKCreateNameViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 8018DBF0
+// 0x8018DBF0
 void mvOpeningDKCreatePosedFighterViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 210.0F, 10.0F, 310.0F, 230.0F);
 	cam->projection.persp.aspect = 5.0F / 11.0F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningDKFilesArray[1], &FILE_041_DK_CAMERA_PARAMS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningDKFiles[1], &FILE_041_DK_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
-// 8018DCD8
+// 0x8018DCD8
 void mvOpeningDKCreatePosedFighterBackgroundViewport()
 {
 	Camera *cam;
@@ -367,7 +367,7 @@ void mvOpeningDKCreatePosedFighterBackgroundViewport()
 	cam->flags = 5;
 }
 
-// 8018DD80
+// 0x8018DD80
 void mvOpeningDKMainProc(GObj* arg0)
 {
 	gMvOpeningDKFramesElapsed += 1;
@@ -395,13 +395,13 @@ void mvOpeningDKMainProc(GObj* arg0)
 	}
 }
 
-// 8018DE3C
+// 0x8018DE3C
 void mvOpeningDKInitFramesElapsed()
 {
 	gMvOpeningDKFramesElapsed = 0;
 }
 
-// 8018DE48
+// 0x8018DE48
 void mvOpeningDKInit()
 {
 	gMvOpeningDKBattleState = gDefaultBattleState;
@@ -439,14 +439,14 @@ void mvOpeningDKInit()
 	while (func_8000092C() < 1605U);
 }
 
-// 8018DFCC
-void mvOpeningDKSetupDisplayList(Gfx **display_list)
+// 0x8018DFCC
+void mvOpeningDKFuncLights(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// 8018E0E0
+// 0x8018E0E0
 syDisplaySetup D_ovl37_8018E0E0 = {
 
 	gSCSubsysFramebuffer0,
@@ -458,14 +458,14 @@ syDisplaySetup D_ovl37_8018E0E0 = {
 	0x00016A99
 };
 
-// 8018E0FC
+// 0x8018E0FC
 scRuntimeInfo D_ovl37_8018E0FC = {
 
 	0x00000000, 0x8000A5E4,
 	0x800A26B8, &lOverlay37ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00004000, 0x00002000,
 	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000C000,
-	mvOpeningDKSetupDisplayList, update_contdata,
+	mvOpeningDKFuncLights, update_contdata,
 	0x00000000, 0x00000600, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
 	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
@@ -474,7 +474,7 @@ scRuntimeInfo D_ovl37_8018E0FC = {
 	mvOpeningDKInit
 };
 
-// 8018E018
+// 0x8018E018
 void intro_focus_dk_entry()
 {
 	D_ovl37_8018E0E0.zbuffer = syDisplayGetZBuffer(6400);

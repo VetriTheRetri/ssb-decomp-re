@@ -7,9 +7,9 @@
 #include <sys/system_00.h>
 
 // Externs
-extern intptr_t D_NF_800A5240;      // 800A5240
-extern intptr_t lOverlay42ArenaLo;  // 8018E640
-extern intptr_t lOverlay42ArenaHi;  // 803903E0
+extern intptr_t D_NF_800A5240;      // 0x800A5240
+extern intptr_t lOverlay42ArenaLo;  // 0x8018E640
+extern intptr_t lOverlay42ArenaHi;  // 0x803903E0
 extern intptr_t FILE_041_PIKACHU_CAMERA_PARAMS_OFFSET; // file 0x041 offset for Pikachu's fighter pose camera settings
 
 extern void func_80007080(void*, f32, f32, f32, f32);
@@ -18,7 +18,7 @@ extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
 
 
 // Data
-// 8018E0C0
+// 0x8018E0C0
 CameraDesc dMvOpeningPikachuCameraSettingsStart = {
 
 	0.0, 0.0, 20000.0,
@@ -26,7 +26,7 @@ CameraDesc dMvOpeningPikachuCameraSettingsStart = {
 	0.0
 };
 
-// 8018E0DC
+// 0x8018E0DC
 CameraDesc dMvOpeningPikachuCameraSettingsEnd = {
 
 	50.0, -1640.0, 1000.0,
@@ -34,13 +34,13 @@ CameraDesc dMvOpeningPikachuCameraSettingsEnd = {
 	0.0
 };
 
-// 8018E0F8
+// 0x8018E0F8
 ftKeyCommand dMvOpeningPikachuInputSeq[] =
 {
 	FTKEY_EVENT_END() // 0000
 };
 
-// 8018E0FC
+// 0x8018E0FC
 u32 D_ovl42_8018E0FC[2] = {
 
 	0x25, 0x41
@@ -48,53 +48,53 @@ u32 D_ovl42_8018E0FC[2] = {
 
 
 // BSS
-// 8018E220
+// 0x8018E220
 s32 D_ovl42_8018E220[2];
 
-// 8018E228
+// 0x8018E228
 s32 gMvOpeningPikachuFramesElapsed;
 
-// 8018E22C
+// 0x8018E22C
 GObj* gMvOpeningPikachuNameGObj;
 
-// 8018E230
+// 0x8018E230
 GObj* gMvOpeningPikachuStageFighterGObj;
 
-// 8018E234
+// 0x8018E234
 s32 D_ovl42_8018E234;
 
-// 8018E238
+// 0x8018E238
 GObj* gMvOpeningPikachuStageCameraGObj;
 
-// 8018E23C
+// 0x8018E23C
 void* gMvOpeningPikachuAnimHeap;
 
-// 8018E240
+// 0x8018E240
 f32 gMvOpeningPikachuPosedFighterYSpeed;
 
-// 8018E244
+// 0x8018E244
 s32 D_ovl42_8018E244;
 
-// 8018E248
+// 0x8018E248
 CameraDesc dMvOpeningPikachuCameraSettingsAdjustedStart;
 
-// 8018E268
+// 0x8018E268
 CameraDesc dMvOpeningPikachuCameraSettingsAdjustedEnd;
 
-// 8018E288
+// 0x8018E288
 lbFileNode D_ovl42_8018E288[48];
 
-// 8018E408
+// 0x8018E408
 lbFileNode D_ovl42_8018E408[7];
 
-// 8018E440
-uintptr_t gMvOpeningPikachuFilesArray[2];
+// 0x8018E440
+uintptr_t gMvOpeningPikachuFiles[2];
 
-// 8018E448
+// 0x8018E448
 scBattleState gMvOpeningPikachuBattleState;
 
 
-// 8018D0C0
+// 0x8018D0C0
 void mvOpeningPikachuLoadFiles()
 {
 	lbRelocSetup rldmSetup;
@@ -108,10 +108,10 @@ void mvOpeningPikachuLoadFiles()
 	rldmSetup.force_status_buffer = D_ovl42_8018E408;
 	rldmSetup.force_status_buffer_size = ARRAY_COUNT(D_ovl42_8018E408);
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl42_8018E0FC, ARRAY_COUNT(D_ovl42_8018E0FC), gMvOpeningPikachuFilesArray, syTasklogMalloc(lbRelocGetAllocSize(D_ovl42_8018E0FC, ARRAY_COUNT(D_ovl42_8018E0FC)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl42_8018E0FC, ARRAY_COUNT(D_ovl42_8018E0FC), gMvOpeningPikachuFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl42_8018E0FC, ARRAY_COUNT(D_ovl42_8018E0FC)), 0x10));
 }
 
-// 8018D160
+// 0x8018D160
 void mvOpeningPikachuSetNameColor(SObj* name_sobj)
 {
 	name_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -124,7 +124,7 @@ void mvOpeningPikachuSetNameColor(SObj* name_sobj)
 	name_sobj->sprite.blue = 0xFF;
 }
 
-// 8018D194
+// 0x8018D194
 void mvOpeningPikachuDrawName()
 {
 	GObj* name_gobj;
@@ -145,7 +145,7 @@ void mvOpeningPikachuDrawName()
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMvOpeningPikachuFilesArray[0], offsets[i]));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMvOpeningPikachuFiles[0], offsets[i]));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = x_positions[i] + 65.0F;
@@ -155,7 +155,7 @@ void mvOpeningPikachuDrawName()
 	}
 }
 
-// 8018D334
+// 0x8018D334
 void mvOpeningPikachuAnimateStageCamera(GObj* camera_gobj)
 {
 	Camera *cam = CameraGetStruct(camera_gobj);
@@ -172,7 +172,7 @@ void mvOpeningPikachuAnimateStageCamera(GObj* camera_gobj)
 	}
 }
 
-// 8018D42C
+// 0x8018D42C
 void mvOpeningPikachuCreateStageViewport(Vec3f arg0)
 {
 	Camera *cam;
@@ -210,7 +210,7 @@ void mvOpeningPikachuCreateStageViewport(Vec3f arg0)
 	cam->vec.up.x = dMvOpeningPikachuCameraSettingsAdjustedStart.upx;
 }
 
-// 8018D634
+// 0x8018D634
 void mvOpeningPikachuInitFighterStagePanel()
 {
 	GObj* fighter_gobj;
@@ -270,7 +270,7 @@ void mvOpeningPikachuInitFighterStagePanel()
 	}
 }
 
-// 8018D864
+// 0x8018D864
 void mvOpeningPikachuRenderPosedFighterBackground(GObj *gobj)
 {
 	gDPPipeSync(gSYTasklogDLHeads[0]++);
@@ -283,13 +283,13 @@ void mvOpeningPikachuRenderPosedFighterBackground(GObj *gobj)
 	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 8018D964
+// 0x8018D964
 void mvOpeningPikachuCreatePosedFighterBackground()
 {
 	gcAddGObjDisplay(gcMakeGObjSPAfter(0, 0, 0x13, 0x80000000), mvOpeningPikachuRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
 }
 
-// 8018D9B0
+// 0x8018D9B0
 void mvOpeningPikachuAnimatePosedFighter(GObj* fighter_gobj)
 {
 	switch (gMvOpeningPikachuFramesElapsed)
@@ -319,7 +319,7 @@ void mvOpeningPikachuAnimatePosedFighter(GObj* fighter_gobj)
 	DObjGetStruct(fighter_gobj)->translate.vec.f.y += gMvOpeningPikachuPosedFighterYSpeed;
 }
 
-// 8018DA80
+// 0x8018DA80
 void mvOpeningPikachuCreatePosedFighter()
 {
 	GObj* fighter_gobj;
@@ -342,7 +342,7 @@ void mvOpeningPikachuCreatePosedFighter()
 	DObjGetStruct(fighter_gobj)->scale.vec.f.z = 1.0f;
 }
 
-// 8018DB80
+// 0x8018DB80
 void mvOpeningPikachuCreateNameViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
@@ -350,18 +350,18 @@ void mvOpeningPikachuCreateNameViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 8018DC20
+// 0x8018DC20
 void mvOpeningPikachuCreatePosedFighterViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
 	cam->projection.persp.aspect = 5.0F / 11.0F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningPikachuFilesArray[1], &FILE_041_PIKACHU_CAMERA_PARAMS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningPikachuFiles[1], &FILE_041_PIKACHU_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
-// 8018DD10
+// 0x8018DD10
 void mvOpeningPikachuCreatePosedFighterBackgroundViewport()
 {
 	Camera *cam;
@@ -372,7 +372,7 @@ void mvOpeningPikachuCreatePosedFighterBackgroundViewport()
 	cam->flags = 5;
 }
 
-// 8018DDC0
+// 0x8018DDC0
 void mvOpeningPikachuMainProc(GObj* arg0)
 {
 	gMvOpeningPikachuFramesElapsed += 1;
@@ -400,13 +400,13 @@ void mvOpeningPikachuMainProc(GObj* arg0)
 	}
 }
 
-// 8018DE7C
+// 0x8018DE7C
 void mvOpeningPikachuInitFramesElapsed()
 {
 	gMvOpeningPikachuFramesElapsed = 0;
 }
 
-// 8018DE88
+// 0x8018DE88
 void mvOpeningPikachuInit()
 {
 	gMvOpeningPikachuBattleState = gDefaultBattleState;
@@ -444,14 +444,14 @@ void mvOpeningPikachuInit()
 	while (func_8000092C() < 2145U);
 }
 
-// 8018E010
-void gMvOpeningPikachuSetupDisplayList(Gfx **display_list)
+// 0x8018E010
+void gMvOpeningPikachuFuncLights(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// 8018E140
+// 0x8018E140
 syDisplaySetup D_ovl42_8018E140 = {
 
 	gSCSubsysFramebuffer0,
@@ -463,14 +463,14 @@ syDisplaySetup D_ovl42_8018E140 = {
 	0x00016A99,
 };
 
-// 8018E15C
+// 0x8018E15C
 scRuntimeInfo D_ovl42_8018E15C = {
 
 	0x00000000, 0x8000A5E4,
 	0x800A26B8, &lOverlay42ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00004000, 0x00002000,
 	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000C000,
-	gMvOpeningPikachuSetupDisplayList, update_contdata,
+	gMvOpeningPikachuFuncLights, update_contdata,
 	0x00000000, 0x00000600, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
 	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
@@ -479,7 +479,7 @@ scRuntimeInfo D_ovl42_8018E15C = {
 	mvOpeningPikachuInit
 };
 
-// 8018E05C
+// 0x8018E05C
 void intro_focus_pikachu_entry()
 {
 	D_ovl42_8018E140.zbuffer = syDisplayGetZBuffer(6400);

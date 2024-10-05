@@ -3,11 +3,11 @@
 #include <sys/system_00.h>
 #include <lb/library.h>
 
-extern uintptr_t ovl5_BSS_END; 	// 8018D950
+extern uintptr_t ovl5_BSS_END; 	// 0x8018D950
 
 // DATA
 
-// 8018D580
+// 0x8018D580
 ftKeyCommand D_ovl5_8018D580[] =
 {
 	FTKEY_EVENT_BUTTON(0, 180),                                       // 0x10B4, 0x0000
@@ -52,7 +52,7 @@ lbFileNode D_ovl5_8018D718[7];
 GObj *gUnkExplainFighterGObj;
 scBattleState gUnkExplainBattleState;
 
-// 8018D0C0
+// 0x8018D0C0
 void func_ovl5_8018D0C0()
 {
 	lbRelocSetup rldm_setup;
@@ -70,7 +70,7 @@ void func_ovl5_8018D0C0()
 	lbRelocLoadFilesExtern(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles, syTasklogMalloc(lbRelocGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
 }
 
-// 8018D160
+// 0x8018D160
 void func_ovl5_8018D160(GObj *gobj)
 {
 	if (ftParamCheckHaveKey(gUnkExplainFighterGObj) == FALSE)
@@ -80,7 +80,7 @@ void func_ovl5_8018D160(GObj *gobj)
 	}
 }
 
-// 8018D1A0
+// 0x8018D1A0
 void func_ovl5_8018D1A0()
 {
 	s32 unused[3];
@@ -155,14 +155,14 @@ void func_ovl5_8018D1A0()
 	lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 }
 
-// 8018D4BC
+// 0x8018D4BC
 void func_ovl5_8018D4BC(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// 8018D508
+// 0x8018D508
 void overlay_set23_entry()
 {
 	D_ovl5_8018D5BC.zbuffer = syDisplayGetZBuffer(6400);

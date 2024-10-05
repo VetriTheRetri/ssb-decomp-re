@@ -7,10 +7,10 @@
 //                               //
 // // // // // // // // // // // //
 
-// 8018E500
+// 0x8018E500
 lbFileNode sSCAutoDemoStatusBuffer[100];
 
-// 8018E820
+// 0x8018E820
 lbFileNode sSCAutoDemoForceStatusBuffer[7];
 
 // // // // // // // // // // // //

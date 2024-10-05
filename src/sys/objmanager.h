@@ -21,25 +21,25 @@ extern GObjProcess *gOMObjCurrentProcess;
 extern OSMesgQueue gOMMesgQueue;
 extern OMGfxLink D_80046A88[64];
 
-// 8003B878
+// 0x8003B878
 extern OMPersp dOMPerspDefault;
 
-// 8003B984
+// 0x8003B984
 extern OMOrtho dOMOrthoDefault;
 
-// 8003B8B4
+// 0x8003B8B4
 extern CameraVec dOMCameraVecDefault;
 
-// 8003B8DC
+// 0x8003B8DC
 extern OMTranslate dOMTranslateDefault;
 
-// 8003B8EC
+// 0x8003B8EC
 extern OMRotate dOMRotateDefaultAXYZ;
 
-// 8003B900
+// 0x8003B900
 extern OMRotate dOMRotateDefaultRPY;
 
-// 8003B914
+// 0x8003B914
 extern OMScale dOMScaleDefault;
 
 extern s32 gcGetGObjActiveCount(void);

@@ -9,9 +9,9 @@
 
 // Externs
 extern GObj* D_ovl2_801313E4;
-extern intptr_t D_NF_800A5240;      // 800A5240
-extern intptr_t lOverlay38ArenaLo;  // 8018E690
-extern intptr_t lOverlay38ArenaHi;  // 803903E0
+extern intptr_t D_NF_800A5240;      // 0x800A5240
+extern intptr_t lOverlay38ArenaLo;  // 0x8018E690
+extern intptr_t lOverlay38ArenaHi;  // 0x803903E0
 extern intptr_t FILE_041_SAMUS_CAMERA_PARAMS_OFFSET; // file 0x041 offset for Samus's fighter pose camera settings
 
 extern void func_80007080(void*, f32, f32, f32, f32);
@@ -20,7 +20,7 @@ extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
 
 
 // Data
-// 8018E120
+// 0x8018E120
 CameraDesc dMvOpeningSamusCameraSettingsStart = {
 
 	400.0, 1100.0, 0.0,
@@ -28,7 +28,7 @@ CameraDesc dMvOpeningSamusCameraSettingsStart = {
 	0.6
 };
 
-// 8018E13C
+// 0x8018E13C
 CameraDesc dMvOpeningSamusCameraSettingsEnd = {
 
 	1600.0, 230.0, 200.0,
@@ -36,7 +36,7 @@ CameraDesc dMvOpeningSamusCameraSettingsEnd = {
 	0.6
 };
 
-// 8018E158
+// 0x8018E158
 ftKeyCommand dMvOpeningSamusInputSeq[] =
 {
 	FTKEY_EVENT_BUTTON(Z_TRIG, 1),   // 1001, 0x2000
@@ -44,7 +44,7 @@ ftKeyCommand dMvOpeningSamusInputSeq[] =
 	FTKEY_EVENT_END()                // 0000
 };
 
-// 8018E164
+// 0x8018E164
 u32 D_ovl38_8018E164[2] = {
 
 	0x25, 0x41
@@ -52,53 +52,53 @@ u32 D_ovl38_8018E164[2] = {
 
 
 // BSS
-// 8018E270
+// 0x8018E270
 s32 D_ovl38_8018E270[2];
 
-// 8018E278
+// 0x8018E278
 s32 gMvOpeningSamusFramesElapsed;
 
-// 8018E27C
+// 0x8018E27C
 GObj* gMvOpeningSamusNameGObj;
 
-// 8018E280
+// 0x8018E280
 GObj* gMvOpeningSamusStageFighterGObj;
 
-// 8018E284
+// 0x8018E284
 s32 D_ovl38_8018E284;
 
-// 8018E288
+// 0x8018E288
 GObj* gMvOpeningSamusStageCameraGObj;
 
-// 8018E28C
+// 0x8018E28C
 void* gMvOpeningSamusAnimHeap;
 
-// 8018E290
+// 0x8018E290
 f32 gMvOpeningSamusPosedFighterYSpeed;
 
-// 8018E294
+// 0x8018E294
 s32 D_ovl38_8018E294;
 
-// 8018E298
+// 0x8018E298
 CameraDesc dMvOpeningSamusCameraSettingsAdjustedStart;
 
-// 8018E2B8
+// 0x8018E2B8
 CameraDesc dMvOpeningSamusCameraSettingsAdjustedEnd;
 
-// 8018E2D8
+// 0x8018E2D8
 lbFileNode D_ovl38_8018E2D8[48];
 
-// 8018E458
+// 0x8018E458
 lbFileNode D_ovl38_8018E458[7];
 
-// 8018E490
-uintptr_t gMvOpeningSamusFilesArray[2];
+// 0x8018E490
+uintptr_t gMvOpeningSamusFiles[2];
 
-// 8018E498
+// 0x8018E498
 scBattleState gMvOpeningSamusBattleState;
 
 
-// 8018D0C0
+// 0x8018D0C0
 void mvOpeningSamusLoadFiles()
 {
 	lbRelocSetup rldmSetup;
@@ -112,10 +112,10 @@ void mvOpeningSamusLoadFiles()
 	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl38_8018E458;
 	rldmSetup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl38_8018E164, ARRAY_COUNT(D_ovl38_8018E164), gMvOpeningSamusFilesArray, syTasklogMalloc(lbRelocGetAllocSize(D_ovl38_8018E164, ARRAY_COUNT(D_ovl38_8018E164)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl38_8018E164, ARRAY_COUNT(D_ovl38_8018E164), gMvOpeningSamusFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl38_8018E164, ARRAY_COUNT(D_ovl38_8018E164)), 0x10));
 }
 
-// 8018D160
+// 0x8018D160
 void mvOpeningSamusSetNameColor(SObj* name_sobj)
 {
 	name_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -128,7 +128,7 @@ void mvOpeningSamusSetNameColor(SObj* name_sobj)
 	name_sobj->sprite.blue = 0xFF;
 }
 
-// 8018D194
+// 0x8018D194
 void mvOpeningSamusDrawName()
 {
 	GObj* name_gobj;
@@ -149,7 +149,7 @@ void mvOpeningSamusDrawName()
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMvOpeningSamusFilesArray[0], offsets[i]));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMvOpeningSamusFiles[0], offsets[i]));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = positions[i] + 80.0F;
@@ -159,7 +159,7 @@ void mvOpeningSamusDrawName()
 	}
 }
 
-// 8018D314
+// 0x8018D314
 void mvOpeningSamusAnimateStageCamera(GObj* camera_gobj)
 {
 	Camera *cam = CameraGetStruct(camera_gobj);
@@ -176,7 +176,7 @@ void mvOpeningSamusAnimateStageCamera(GObj* camera_gobj)
 	}
 }
 
-// 8018D40C
+// 0x8018D40C
 void mvOpeningSamusCreateStageViewport(Vec3f arg0)
 {
 	Camera *cam;
@@ -214,7 +214,7 @@ void mvOpeningSamusCreateStageViewport(Vec3f arg0)
 	cam->vec.up.x = dMvOpeningSamusCameraSettingsAdjustedStart.upx;
 }
 
-// 8018D614
+// 0x8018D614
 void mvOpeningSamusInitFighterStagePanel()
 {
 	GObj* fighter_gobj;
@@ -292,7 +292,7 @@ void mvOpeningSamusInitFighterStagePanel()
 	}
 }
 
-// 8018D8B0
+// 0x8018D8B0
 void mvOpeningSamusRenderPosedFighterBackground(GObj *gobj)
 {
 	gDPPipeSync(gSYTasklogDLHeads[0]++);
@@ -305,13 +305,13 @@ void mvOpeningSamusRenderPosedFighterBackground(GObj *gobj)
 	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 8018D9AC
+// 0x8018D9AC
 void mvOpeningSamusCreatePosedFighterBackground()
 {
 	gcAddGObjDisplay(gcMakeGObjSPAfter(0, 0, 0x13, 0x80000000), mvOpeningSamusRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
 }
 
-// 8018D9F8
+// 0x8018D9F8
 void mvOpeningSamusAnimatePosedFighter(GObj* fighter_gobj)
 {
 	switch (gMvOpeningSamusFramesElapsed)
@@ -338,7 +338,7 @@ void mvOpeningSamusAnimatePosedFighter(GObj* fighter_gobj)
 	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= gMvOpeningSamusPosedFighterYSpeed;
 }
 
-// 8018DAC8
+// 0x8018DAC8
 void mvOpeningSamusCreatePosedFighter()
 {
 	GObj* fighter_gobj;
@@ -361,7 +361,7 @@ void mvOpeningSamusCreatePosedFighter()
 	DObjGetStruct(fighter_gobj)->scale.vec.f.z = 1.0f;
 }
 
-// 8018DBC8
+// 0x8018DBC8
 void mvOpeningSamusCreateNameViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
@@ -369,18 +369,18 @@ void mvOpeningSamusCreateNameViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 8018DC68
+// 0x8018DC68
 void mvOpeningSamusCreatePosedFighterViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
 	cam->projection.persp.aspect = 5.0F / 11.0F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningSamusFilesArray[1], &FILE_041_SAMUS_CAMERA_PARAMS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningSamusFiles[1], &FILE_041_SAMUS_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
-// 8018DD58
+// 0x8018DD58
 void mvOpeningSamusCreatePosedFighterBackgroundViewport()
 {
 	Camera *cam;
@@ -391,7 +391,7 @@ void mvOpeningSamusCreatePosedFighterBackgroundViewport()
 	cam->flags = 5;
 }
 
-// 8018DE08
+// 0x8018DE08
 void mvOpeningSamusMainProc(GObj* arg0)
 {
 
@@ -420,13 +420,13 @@ void mvOpeningSamusMainProc(GObj* arg0)
 	}
 }
 
-// 8018DEC4
+// 0x8018DEC4
 void mvOpeningSamusInitFramesElapsed()
 {
 	gMvOpeningSamusFramesElapsed = 0;
 }
 
-// 8018DED0
+// 0x8018DED0
 void mvOpeningSamusInit()
 {
 	gMvOpeningSamusBattleState = gDefaultBattleState;
@@ -465,14 +465,14 @@ void mvOpeningSamusInit()
 	while (func_8000092C() < 1785U);
 }
 
-// 8018E07C
-void mvOpeningSamusSetupDisplayList(Gfx **display_list)
+// 0x8018E07C
+void mvOpeningSamusFuncLights(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// 8018E198
+// 0x8018E198
 syDisplaySetup D_ovl38_8018E198 = {
 
 	gSCSubsysFramebuffer0,
@@ -484,14 +484,14 @@ syDisplaySetup D_ovl38_8018E198 = {
 	0x00016A99,
 };
 
-// 8018E1B4
+// 0x8018E1B4
 scRuntimeInfo D_ovl38_8018E1B4 = {
 
 	0x00000000, 0x8000A5E4,
 	0x800A26B8, &lOverlay38ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00004000, 0x00002000,
 	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000C000,
-	mvOpeningSamusSetupDisplayList, update_contdata,
+	mvOpeningSamusFuncLights, update_contdata,
 	0x00000000, 0x00000600, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
 	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
@@ -500,7 +500,7 @@ scRuntimeInfo D_ovl38_8018E1B4 = {
 	mvOpeningSamusInit
 };
 
-// 8018E0C8
+// 0x8018E0C8
 void intro_focus_samus_entry()
 {
 	D_ovl38_8018E198.zbuffer = syDisplayGetZBuffer(6400);

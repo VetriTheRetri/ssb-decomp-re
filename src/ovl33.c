@@ -35,8 +35,8 @@ typedef struct charsSpecialActionInfo
 // dSCSubsysFighterScales
 extern f32 menu_zoom[12];
 extern intptr_t D_NF_800A5240;
-extern intptr_t lOverlay33ArenaLo;  // 80136A90
-extern intptr_t lOverlay33ArenaHi;  // 803903E0
+extern intptr_t lOverlay33ArenaLo;  // 0x80136A90
+extern intptr_t lOverlay33ArenaHi;  // 0x803903E0
 extern intptr_t FILE_010_CHARACTERS_TEXTURE_IMAGE_OFFSET; // file 0x010 image offset for Characters texture
 extern intptr_t FILE_010_NAME_BORDER_IMAGE_OFFSET; // file 0x010 image offset for character name border texture, normal height
 extern intptr_t FILE_010_NAME_BORDER_TALL_IMAGE_OFFSET; // file 0x010 image offset for character name border texture, tall height
@@ -60,7 +60,7 @@ void mnCharsUpdateMoveName(GObj* move_name_gobj);
 
 
 // Data
-// 801340B0
+// 0x801340B0
 charsSpecialActionInfo charsSpecialActionInfoMario = {
 
 	0x200E1, 0x0029A, 0x00000,
@@ -89,7 +89,7 @@ charsSpecialActionInfo charsSpecialActionInfoMario = {
 	0xA2C2A, 0x00001, 0x00000
 };
 
-// 801341D0
+// 0x801341D0
 charsSpecialActionInfo charsSpecialActionInfoFox = {
 
 	0x200E3, 0x0029A, 0x00000,
@@ -118,7 +118,7 @@ charsSpecialActionInfo charsSpecialActionInfoFox = {
 	0xA2C2A, 0x00001, 0x00000
 };
 
-// 801342F0
+// 0x801342F0
 charsSpecialActionInfo charsSpecialActionInfoDonkey = {
 
 	0x200E6, 0x0029A, 0x00000,
@@ -147,7 +147,7 @@ charsSpecialActionInfo charsSpecialActionInfoDonkey = {
 	0xA2C2A, 0x00001, 0x00000
 };
 
-// 80134410
+// 0x80134410
 charsSpecialActionInfo charsSpecialActionInfoSamus = {
 
 	0x200E3, 0x0029A, 0x00000,
@@ -176,7 +176,7 @@ charsSpecialActionInfo charsSpecialActionInfoSamus = {
 	0xA2C2A, 0x00001, 0x00000
 };
 
-// 80134530
+// 0x80134530
 charsSpecialActionInfo charsSpecialActionInfoLuigi = {
 
 	0x200E1, 0x0029A, 0x00000,
@@ -205,7 +205,7 @@ charsSpecialActionInfo charsSpecialActionInfoLuigi = {
 	0xA2C2A, 0x00001, 0x00000
 };
 
-// 80134650
+// 0x80134650
 charsSpecialActionInfo charsSpecialActionInfoLink = {
 
 	0x200E2, 0x0029A, 0x00000,
@@ -234,7 +234,7 @@ charsSpecialActionInfo charsSpecialActionInfoLink = {
 	0xA2C2A, 0x00001, 0x00000
 };
 
-// 80134770
+// 0x80134770
 charsSpecialActionInfo charsSpecialActionInfoYoshi = {
 
 	0x200DE, 0x0029A, 0x00000,
@@ -263,7 +263,7 @@ charsSpecialActionInfo charsSpecialActionInfoYoshi = {
 	0xA2C2A, 0x00001, 0x00000
 };
 
-// 80134890
+// 0x80134890
 charsSpecialActionInfo charsSpecialActionInfoCaptain = {
 
 	0x200EB, 0x0029A, 0x00000,
@@ -292,7 +292,7 @@ charsSpecialActionInfo charsSpecialActionInfoCaptain = {
 	0xA2C2A, 0x00001, 0x00000
 };
 
-// 801349B0
+// 0x801349B0
 charsSpecialActionInfo charsSpecialActionInfoKirby = {
 
 	0x20100, 0x0029A, 0x00004,
@@ -321,7 +321,7 @@ charsSpecialActionInfo charsSpecialActionInfoKirby = {
 	0xA2C2A, 0x00001, 0x00000
 };
 
-// 80134AD0
+// 0x80134AD0
 charsSpecialActionInfo charsSpecialActionInfoPikachu = {
 
 	0x200EA, 0x0029A, 0x00000,
@@ -350,7 +350,7 @@ charsSpecialActionInfo charsSpecialActionInfoPikachu = {
 	0x00000, 0x00000, 0x00000
 };
 
-// 80134BF0
+// 0x80134BF0
 charsSpecialActionInfo charsSpecialActionInfoPurin = {
 
 	0x200E8, 0x0029A, 0x00000,
@@ -379,7 +379,7 @@ charsSpecialActionInfo charsSpecialActionInfoPurin = {
 	0xA2C2A, 0x00001, 0x00000
 };
 
-// 80134D10
+// 0x80134D10
 charsSpecialActionInfo charsSpecialActionInfoNess = {
 
 	0x200E4, 0x0029A, 0x00000,
@@ -408,7 +408,7 @@ charsSpecialActionInfo charsSpecialActionInfoNess = {
 	0xA2C2A, 0x00001, 0x00000
 };
 
-// 80134E30
+// 0x80134E30
 charsActionInfo D_ovl33_80134E30[39][8] = {
 
 	0xA2C2A, 0x00001, 0x00000,
@@ -737,7 +737,7 @@ charsActionInfo D_ovl33_80134E30[39][8] = {
 	0xA2C2A, 0x00001, 0x00000
 };
 
-// 80135CD0
+// 0x80135CD0
 charsActionInfo D_ovl33_80135CD0[8] = {
 
 	0x200DF, 0x0029A, 0x00000,
@@ -750,13 +750,13 @@ charsActionInfo D_ovl33_80135CD0[8] = {
 	0xA2C2A, 0x00001, 0x00000
 };
 
-// 80135D30
+// 0x80135D30
 charsActionInfo D_ovl33_80135D30 = {
 
 	0x2001A, 0x0001E, 0x00000,
 };
 
-// 80135D3C
+// 0x80135D3C
 charsActionInfo D_ovl33_80135D3C[8] = {
 
 	0x200DF, 0x0029A, 0x00000,
@@ -769,13 +769,13 @@ charsActionInfo D_ovl33_80135D3C[8] = {
 	0xA2C2A, 0x00001, 0x00000
 };
 
-// 80135D9C
+// 0x80135D9C
 charsActionInfo D_ovl33_80135D9C = {
 
 	0x2001A, 0x0001E, 0x00000,
 };
 
-// 80135DA8
+// 0x80135DA8
 charsActionInfo D_ovl33_80135DA8[12][8] = {
 
 	0x200BE, 0x0029A, 0x00000,
@@ -887,7 +887,7 @@ charsActionInfo D_ovl33_80135DA8[12][8] = {
 	0xA2C2A, 0x00001, 0x00000
 };
 
-// 80136228
+// 0x80136228
 u32 D_ovl33_80136228[4] = {
 
 	0x0000010,
@@ -896,7 +896,7 @@ u32 D_ovl33_80136228[4] = {
 	0x0000023,
 };
 
-// 8013638
+// 0x8013638
 s32 D_ovl33_80136238[] = {
 
 	0x0000000,
@@ -909,117 +909,117 @@ s32 D_ovl33_80136238[] = {
 
 
 // BSS
-// 801365F0
+// 0x801365F0
 s32 D_ovl33_801365F0[2];
 
-// 801365F8
+// 0x801365F8
 s32 gMNCharsCurrentIndex;
 
-// 801365FC
+// 0x801365FC
 GObj* gMNCharsSeriesLogoGObj;
 
-// 80136600
+// 0x80136600
 GObj* gMNCharsNameGObj;
 
-// 80136604
+// 0x80136604
 GObj* gMNCharsBioGObj;
 
-// 80136608
+// 0x80136608
 GObj* gMNCharsWorksGObj;
 
-// 8013660C
+// 0x8013660C
 GObj* gMNCharsFighterGObj;
 
-// 80136610
+// 0x80136610
 s32 D_ovl33_80136610[45];
 
-// 801366C4
+// 0x801366C4
 s32 gMNCharsActionType;
 
-// 801366C8
+// 0x801366C8
 s32 gMNCharsAnimFramesRemaining;
 
-// 801366CC
+// 0x801366CC
 sb32 gMNCharsUseAnimFramesRemaining;
 
-// 801366D0
+// 0x801366D0
 sb32 gMNCharsAutoRotateFighter;
 
-// 801366D4
+// 0x801366D4
 s32 gMNCharsUnknown;
 
-// 801366D8
+// 0x801366D8
 s32 D_ovl33_801366D8;
 
-// 801366DC
+// 0x801366DC
 GObj* gMNCharsMoveNameGObj;
 
-// 801366E0
+// 0x801366E0
 GObj* gMNCharsFighterCameraGObj;
 
-// 801366E4
+// 0x801366E4
 f32 gMNCharsHeldStickAngle;
 
-// 801366E8
+// 0x801366E8
 union union_name {
     f32 f;
     s32 s;
 } gMNCharsHeldStickUnknown;
 
-// 801366EC
+// 0x801366EC
 void* gMNCharsAnimHeap;
 
-// 801366F0
+// 0x801366F0
 sb32 gMNCharsIsDemoMode;
 
-// 801366F4
+// 0x801366F4
 s32 gMNCharsFirstFtKind;
 
-// 801366F8
+// 0x801366F8
 s32 gMNCharsSecondFtKind;
 
-// 801366FC
+// 0x801366FC
 s32 gMNCharsCurrentActionTrack;
 
-// 80136700
+// 0x80136700
 u16 gMNCharsUnlockedMask;
 
-// 80136704
+// 0x80136704
 s32 gMNCharsCurrentAnimFrame;
 
-// 80136708
+// 0x80136708
 s32 gMNCharsRecentActionTypes[3];
 
-// 80136714
+// 0x80136714
 s32 gMNCharsRecentActionTypeIndex;
 
-// 80136718
+// 0x80136718
 s32 gMNCharsChangeWait;
 
-// 8013671C
+// 0x8013671C
 s32 gMNCharsFramesElapsed;
 
-// 80136720
+// 0x80136720
 u32 D_ovl33_80136720[200];
 
-// 80136A40
+// 0x80136A40
 lbFileNode D_ovl33_80136A40;
 
-// 80136A48
+// 0x80136A48
 u32 D_ovl33_80136A48[12];
 
-// 80136A78
-s32 gMNCharsFilesArray[4];
+// 0x80136A78
+s32 gMNCharsFiles[4];
 
 
-// 80131B00
-void mnCharsSetupDisplayList(Gfx **display_list)
+// 0x80131B00
+void mnCharsFuncLights(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(display_list, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 }
 
-// 80131B58
+// 0x80131B58
 s32 mnCharsGetFtKind(s32 index)
 {
 	s32 kinds[12] = {
@@ -1040,7 +1040,7 @@ s32 mnCharsGetFtKind(s32 index)
 	return kinds[index];
 }
 
-// 80131BA8
+// 0x80131BA8
 s32 mnCharsGetIndex(s32 ft_kind)
 {
 	s32 indexes[12] = {
@@ -1050,10 +1050,10 @@ s32 mnCharsGetIndex(s32 ft_kind)
 	return indexes[ft_kind];
 }
 
-// 80131BF8 - Unused?
+// 0x80131BF8 - Unused?
 void func_ovl33_80131BF8() {}
 
-// 80131C00
+// 0x80131C00
 void mnCharsCreateBio(s32 ft_kind)
 {
 	GObj* bio_gobj;
@@ -1067,7 +1067,7 @@ void mnCharsCreateBio(s32 ft_kind)
 	gMNCharsBioGObj = bio_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
 	gcAddGObjDisplay(bio_gobj, lbCommonDrawSObjAttr, 0x1A, 0x80000000, -1);
 
-	bio_sobj = lbCommonMakeSObjForGObj(bio_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], &FILE_010_BIO_UNDERLAY_TEXTURE_IMAGE_OFFSET));
+	bio_sobj = lbCommonMakeSObjForGObj(bio_gobj, GetAddressFromOffset(gMNCharsFiles[0], &FILE_010_BIO_UNDERLAY_TEXTURE_IMAGE_OFFSET));
 	bio_sobj->sprite.attr &= ~SP_FASTCOPY;
 	bio_sobj->sprite.attr |= SP_TRANSPARENT;
 	bio_sobj->sprite.red = 0;
@@ -1076,7 +1076,7 @@ void mnCharsCreateBio(s32 ft_kind)
 	bio_sobj->pos.x = 126.0f;
 	bio_sobj->pos.y = 54.0f;
 
-	bio_sobj = lbCommonMakeSObjForGObj(bio_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], offsets[ft_kind]));
+	bio_sobj = lbCommonMakeSObjForGObj(bio_gobj, GetAddressFromOffset(gMNCharsFiles[0], offsets[ft_kind]));
 	bio_sobj->sprite.attr &= ~SP_FASTCOPY;
 	bio_sobj->sprite.attr |= SP_TRANSPARENT;
 	bio_sobj->sprite.red = 0xFF;
@@ -1086,7 +1086,7 @@ void mnCharsCreateBio(s32 ft_kind)
 	bio_sobj->pos.y = 54.0f;
 }
 
-// 80131D44
+// 0x80131D44
 void mnCharsCreateHeader()
 {
 	GObj* header_gobj;
@@ -1096,7 +1096,7 @@ void mnCharsCreateHeader()
 	gcAddGObjDisplay(header_gobj, lbCommonDrawSObjAttr, 0x1B, 0x80000000, -1);
 
 	// DATA header
-	header_sobj = lbCommonMakeSObjForGObj(header_gobj, GetAddressFromOffset(gMNCharsFilesArray[1], &FILE_020_DATA_HEADER_IMAGE_OFFSET));
+	header_sobj = lbCommonMakeSObjForGObj(header_gobj, GetAddressFromOffset(gMNCharsFiles[1], &FILE_020_DATA_HEADER_IMAGE_OFFSET));
 	header_sobj->sprite.attr &= ~SP_FASTCOPY;
 	header_sobj->sprite.attr |= SP_TRANSPARENT;
 	header_sobj->pos.x = 23.0f;
@@ -1106,7 +1106,7 @@ void mnCharsCreateHeader()
 	header_sobj->sprite.blue = 0x46;
 
 	// Characters header
-	header_sobj = lbCommonMakeSObjForGObj(header_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], &FILE_010_CHARACTERS_TEXTURE_IMAGE_OFFSET));
+	header_sobj = lbCommonMakeSObjForGObj(header_gobj, GetAddressFromOffset(gMNCharsFiles[0], &FILE_010_CHARACTERS_TEXTURE_IMAGE_OFFSET));
 	header_sobj->sprite.attr &= ~SP_FASTCOPY;
 	header_sobj->sprite.attr |= SP_TRANSPARENT;
 	header_sobj->pos.x = 157.0f;
@@ -1119,7 +1119,7 @@ void mnCharsCreateHeader()
 	header_sobj->envcolor.b = 0;
 
 	// left arrow
-	header_sobj = lbCommonMakeSObjForGObj(header_gobj, GetAddressFromOffset(gMNCharsFilesArray[1], &FILE_020_ARROW_LEFT_IMAGE_OFFSET));
+	header_sobj = lbCommonMakeSObjForGObj(header_gobj, GetAddressFromOffset(gMNCharsFiles[1], &FILE_020_ARROW_LEFT_IMAGE_OFFSET));
 	header_sobj->sprite.attr &= ~SP_FASTCOPY;
 	header_sobj->sprite.attr |= SP_TRANSPARENT;
 	header_sobj->pos.x = 257.0f;
@@ -1129,7 +1129,7 @@ void mnCharsCreateHeader()
 	header_sobj->sprite.blue = 0xC;
 
 	// right arrow
-	header_sobj = lbCommonMakeSObjForGObj(header_gobj, GetAddressFromOffset(gMNCharsFilesArray[1], &FILE_020_ARROW_RIGHT_IMAGE_OFFSET));
+	header_sobj = lbCommonMakeSObjForGObj(header_gobj, GetAddressFromOffset(gMNCharsFiles[1], &FILE_020_ARROW_RIGHT_IMAGE_OFFSET));
 	header_sobj->sprite.attr &= ~SP_FASTCOPY;
 	header_sobj->sprite.attr |= SP_TRANSPARENT;
 	header_sobj->pos.x = 275.0f;
@@ -1139,7 +1139,7 @@ void mnCharsCreateHeader()
 	header_sobj->sprite.blue = 0xC;
 }
 
-// 80131F28
+// 0x80131F28
 void mnCharsCreateSeriesLogo(s32 ft_kind)
 {
 	GObj* series_logo_gobj;
@@ -1160,10 +1160,10 @@ void mnCharsCreateSeriesLogo(s32 ft_kind)
 	};
 
 	gMNCharsSeriesLogoGObj = series_logo_gobj = gcMakeGObjSPAfter(0, 0, 0x13, 0x80000000);
-	gcSetupCommonDObjs(series_logo_gobj, GetAddressFromOffset(gMNCharsFilesArray[3], offsets[ft_kind]), 0);
+	gcSetupCommonDObjs(series_logo_gobj, GetAddressFromOffset(gMNCharsFiles[3], offsets[ft_kind]), 0);
 	gcAddGObjDisplay(series_logo_gobj, gcDrawDObjTreeForGObj, 0x1C, 0x80000000, -1);
-	gcAddMObjAll(series_logo_gobj, GetAddressFromOffset(gMNCharsFilesArray[3], zoom_offsets[ft_kind]));
-	gcAddMatAnimJointAll(series_logo_gobj, GetAddressFromOffset(gMNCharsFilesArray[3], color_offsets[ft_kind]), 4.0F);
+	gcAddMObjAll(series_logo_gobj, GetAddressFromOffset(gMNCharsFiles[3], zoom_offsets[ft_kind]));
+	gcAddMatAnimJointAll(series_logo_gobj, GetAddressFromOffset(gMNCharsFiles[3], color_offsets[ft_kind]), 4.0F);
 	gcPlayAnimAll(series_logo_gobj);
 
 	DObjGetStruct(series_logo_gobj)->translate.vec.f.x = -350.0f;
@@ -1173,7 +1173,7 @@ void mnCharsCreateSeriesLogo(s32 ft_kind)
 	DObjGetStruct(series_logo_gobj)->scale.vec.f.y = 1.7f;
 }
 
-// 801320E4
+// 0x801320E4
 void mnCharsCreateName(s32 ft_kind)
 {
 	GObj* name_gobj;
@@ -1204,7 +1204,7 @@ void mnCharsCreateName(s32 ft_kind)
 
 	if ((ft_kind == nFTKindPurin) || (ft_kind == nFTKindCaptain))
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], &FILE_010_NAME_BORDER_TALL_IMAGE_OFFSET));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMNCharsFiles[0], &FILE_010_NAME_BORDER_TALL_IMAGE_OFFSET));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = 10.0f;
@@ -1215,7 +1215,7 @@ void mnCharsCreateName(s32 ft_kind)
 	}
 	else
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], &FILE_010_NAME_BORDER_IMAGE_OFFSET));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMNCharsFiles[0], &FILE_010_NAME_BORDER_IMAGE_OFFSET));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = 10.0f;
@@ -1225,7 +1225,7 @@ void mnCharsCreateName(s32 ft_kind)
 		name_sobj->sprite.blue = 0x07;
 	}
 
-	name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], offsets[ft_kind]));
+	name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMNCharsFiles[0], offsets[ft_kind]));
 	name_sobj->sprite.attr &= ~SP_FASTCOPY;
 	name_sobj->sprite.attr |= SP_TRANSPARENT;
 	name_sobj->pos.x = coords[ft_kind].x;
@@ -1235,7 +1235,7 @@ void mnCharsCreateName(s32 ft_kind)
 	name_sobj->sprite.blue = 0x07;
 }
 
-// 801322F0
+// 0x801322F0
 void mnCharsCreateWorksBackground()
 {
 	GObj* works_bg_gobj;
@@ -1244,7 +1244,7 @@ void mnCharsCreateWorksBackground()
 	works_bg_gobj = gcMakeGObjSPAfter(0, 0, 0x15, 0x80000000);
 	gcAddGObjDisplay(works_bg_gobj, lbCommonDrawSObjAttr, 0x1E, 0x80000000, -1);
 
-	works_bg_sobj = lbCommonMakeSObjForGObj(works_bg_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], &FILE_010_WORKS_BACKGROUND_IMAGE_OFFSET));
+	works_bg_sobj = lbCommonMakeSObjForGObj(works_bg_gobj, GetAddressFromOffset(gMNCharsFiles[0], &FILE_010_WORKS_BACKGROUND_IMAGE_OFFSET));
 	works_bg_sobj->sprite.attr &= ~SP_FASTCOPY;
 	works_bg_sobj->sprite.attr |= SP_TRANSPARENT;
 	works_bg_sobj->pos.x = 116.0f;
@@ -1254,7 +1254,7 @@ void mnCharsCreateWorksBackground()
 	works_bg_sobj->sprite.blue = 0xAE;
 }
 
-// 8013239C
+// 0x8013239C
 void mnCharsCreateWorks(s32 ft_kind)
 {
 	GObj* works_gobj;
@@ -1268,7 +1268,7 @@ void mnCharsCreateWorks(s32 ft_kind)
 	gMNCharsWorksGObj = works_gobj = gcMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
 	gcAddGObjDisplay(works_gobj, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1);
 
-	works_sobj = lbCommonMakeSObjForGObj(works_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], works_offsets[ft_kind]));
+	works_sobj = lbCommonMakeSObjForGObj(works_gobj, GetAddressFromOffset(gMNCharsFiles[0], works_offsets[ft_kind]));
 	works_sobj->sprite.attr &= ~SP_FASTCOPY;
 	works_sobj->sprite.attr |= SP_TRANSPARENT;
 	works_sobj->pos.x = 139.0f;
@@ -1278,7 +1278,7 @@ void mnCharsCreateWorks(s32 ft_kind)
 	works_sobj->sprite.blue = 0xFF;
 }
 
-// 80132494
+// 0x80132494
 void mnCharsSetScale(GObj* fighter_gobj, s32 ft_kind)
 {
 	DObjGetStruct(fighter_gobj)->scale.vec.f.x = menu_zoom[ft_kind];
@@ -1286,7 +1286,7 @@ void mnCharsSetScale(GObj* fighter_gobj, s32 ft_kind)
 	DObjGetStruct(fighter_gobj)->scale.vec.f.z = menu_zoom[ft_kind];
 }
 
-// 801324CC
+// 0x801324CC
 void mnCharsSetPosition(GObj* fighter_gobj, s32 ft_kind)
 {
 	DObjGetStruct(fighter_gobj)->translate.vec.f.x = 0.0f;
@@ -1294,10 +1294,10 @@ void mnCharsSetPosition(GObj* fighter_gobj, s32 ft_kind)
 	DObjGetStruct(fighter_gobj)->translate.vec.f.z = 0.0f;
 }
 
-// 801324F8 - Unused?
+// 0x801324F8 - Unused?
 void func_ovl33_801324F8() {}
 
-// 80132500
+// 0x80132500
 charsActionInfo* mnCharsGetActionInfo(charsActionInfo* info, s32 ft_kind, s32 action_type, s32 arg3, s32 track)
 {
 	charsSpecialActionInfo* special_actions[12] = {
@@ -1373,7 +1373,7 @@ charsActionInfo* mnCharsGetActionInfo(charsActionInfo* info, s32 ft_kind, s32 ac
 	return info;
 }
 
-// 80132768
+// 0x80132768
 sb32 mnCharsIsAnimComplete(GObj* fighter_gobj)
 {
 	if (fighter_gobj->anim_frame == 0.0f)
@@ -1382,7 +1382,7 @@ sb32 mnCharsIsAnimComplete(GObj* fighter_gobj)
 	return FALSE;
 }
 
-// 80132794
+// 0x80132794
 void mnCharsInitRecentActionTypes()
 {
 	s32 i;
@@ -1393,7 +1393,7 @@ void mnCharsInitRecentActionTypes()
 	gMNCharsRecentActionTypeIndex = 0;
 }
 
-// 801327C0
+// 0x801327C0
 sb32 mnCharsIsRecentActionType(s32 action_type)
 {
 	s32 i;
@@ -1407,7 +1407,7 @@ sb32 mnCharsIsRecentActionType(s32 action_type)
 	return FALSE;
 }
 
-// 801327FC
+// 0x801327FC
 s32 mnCharsGetRandomActionType()
 {
 	s32 action_type;
@@ -1428,7 +1428,7 @@ s32 mnCharsGetRandomActionType()
 	return action_type;
 }
 
-// 8013286C
+// 0x8013286C
 charsActionInfo* mnCharsSetActionInfo(charsActionInfo* action_info, s32 action_type)
 {
 	charsActionInfo action_info_temp;
@@ -1460,7 +1460,7 @@ charsActionInfo* mnCharsSetActionInfo(charsActionInfo* action_info, s32 action_t
 	}
 }
 
-// 80132984
+// 0x80132984
 charsActionInfo* mnCharsMoveToNextTrack(charsActionInfo* action_info, s32 arg1)
 {
 	charsActionInfo action_info_temp;
@@ -1474,7 +1474,7 @@ charsActionInfo* mnCharsMoveToNextTrack(charsActionInfo* action_info, s32 arg1)
 	return action_info;
 }
 
-// 801329E8
+// 0x801329E8
 void mnCharsUpdateFighter(GObj* fighter_gobj)
 {
 	charsActionInfo new_action_info;
@@ -1540,7 +1540,7 @@ void mnCharsUpdateFighter(GObj* fighter_gobj)
 	}
 }
 
-// 80132C40
+// 0x80132C40
 void mnCharsCreateFighter(s32 ft_kind)
 {
 	GObj* fighter_gobj;
@@ -1589,7 +1589,7 @@ void mnCharsCreateFighter(s32 ft_kind)
 	gMNCharsAutoRotateFighter = TRUE;
 }
 
-// 80132DD4
+// 0x80132DD4
 s32 mnCharsGetMoveType()
 {
 	switch (gMNCharsActionType)
@@ -1605,7 +1605,7 @@ s32 mnCharsGetMoveType()
 	}
 }
 
-// 80132E20
+// 0x80132E20
 void mnCharsUpdateMoveName(GObj* move_name_gobj)
 {
 	SObj* move_name_sobj;
@@ -1637,7 +1637,7 @@ void mnCharsUpdateMoveName(GObj* move_name_gobj)
 
 	if (move_type != 3)
 	{
-		move_name_sobj = lbCommonMakeSObjForGObj(move_name_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], move_input_offsets[move_type]));
+		move_name_sobj = lbCommonMakeSObjForGObj(move_name_gobj, GetAddressFromOffset(gMNCharsFiles[0], move_input_offsets[move_type]));
 		move_name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		move_name_sobj->sprite.attr |= SP_TRANSPARENT;
 		move_name_sobj->pos.x = 24.0f;
@@ -1646,7 +1646,7 @@ void mnCharsUpdateMoveName(GObj* move_name_gobj)
 		move_name_sobj->sprite.green = 0x7D;
 		move_name_sobj->sprite.blue = 0xC;
 
-		move_name_sobj = lbCommonMakeSObjForGObj(move_name_gobj, GetAddressFromOffset(gMNCharsFilesArray[0], move_name_offsets[ft_kind][move_type]));
+		move_name_sobj = lbCommonMakeSObjForGObj(move_name_gobj, GetAddressFromOffset(gMNCharsFiles[0], move_name_offsets[ft_kind][move_type]));
 		move_name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		move_name_sobj->sprite.attr |= SP_TRANSPARENT;
 		move_name_sobj->pos.x = 24.0f;
@@ -1657,7 +1657,7 @@ void mnCharsUpdateMoveName(GObj* move_name_gobj)
 	}
 }
 
-// 80132FA0
+// 0x80132FA0
 void mnCharsCreateMoveName()
 {
 	GObj* move_name_gobj;
@@ -1668,7 +1668,7 @@ void mnCharsCreateMoveName()
 	mnCharsUpdateMoveName(gMNCharsMoveNameGObj);
 }
 
-// 80133000
+// 0x80133000
 void mnCharsCreateBioViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x46, 0x04000000, -1, 0, 1, 0, 1, 0);
@@ -1676,7 +1676,7 @@ void mnCharsCreateBioViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 801330A0
+// 0x801330A0
 void mnCharsCreateHeaderViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x3C, 0x08000000, -1, 0, 1, 0, 1, 0);
@@ -1684,7 +1684,7 @@ void mnCharsCreateHeaderViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 80133140
+// 0x80133140
 void mnCharsCreateSeriesLogoViewport()
 {
 	Camera *cam;
@@ -1704,7 +1704,7 @@ void mnCharsCreateSeriesLogoViewport()
 	cam->vec.up.z = 0.0F;
 }
 
-// 80133224
+// 0x80133224
 void mnCharsCreateNameViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x20000000, -1, 0, 1, 0, 1, 0);
@@ -1712,7 +1712,7 @@ void mnCharsCreateNameViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 801332C4
+// 0x801332C4
 void mnCharsCreateWorksBackgroundViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x32, 0x40000000, -1, 0, 1, 0, 1, 0);
@@ -1720,7 +1720,7 @@ void mnCharsCreateWorksBackgroundViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 80133364
+// 0x80133364
 void mnCharsCreateWorksViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x28, 0x80000000, -1, 0, 1, 0, 1, 0);
@@ -1728,7 +1728,7 @@ void mnCharsCreateWorksViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 80133404
+// 0x80133404
 void mnCharsCreateFighterViewport()
 {
 	Camera *cam;
@@ -1751,7 +1751,7 @@ void mnCharsCreateFighterViewport()
 	cam->vec.up.z = 0.0F;
 }
 
-// 80133510
+// 0x80133510
 sb32 mnCharsIsUnlocked(s32 ft_kind)
 {
 	if ((ft_kind == nFTKindLuigi) ||
@@ -1769,7 +1769,7 @@ sb32 mnCharsIsUnlocked(s32 ft_kind)
 		return TRUE;
 }
 
-// 80133568
+// 0x80133568
 void mnCharsInitVars()
 {
 	gMNCharsFramesElapsed = 0;
@@ -1805,7 +1805,7 @@ void mnCharsInitVars()
 	mnCharsInitRecentActionTypes();
 }
 
-// 8013366C
+// 0x8013366C
 void mnCharsSaveFtKindToSRAM()
 {
 	gSaveData.characters_ft_kind = mnCharsGetFtKind(gMNCharsCurrentIndex);
@@ -1813,7 +1813,7 @@ void mnCharsSaveFtKindToSRAM()
 	lbBackupWrite();
 }
 
-// 8013369C
+// 0x8013369C
 void mnCharsChangeFighter(s32 ft_kind)
 {
 	if (gMNCharsSeriesLogoGObj != NULL)
@@ -1843,7 +1843,7 @@ void mnCharsChangeFighter(s32 ft_kind)
 	}
 }
 
-// 80133754
+// 0x80133754
 void mnCharsMoveFighterCamera(Camera* fighter_cam, f32 angle, s32 arg2)
 {
 	f32 theta;
@@ -1862,7 +1862,7 @@ void mnCharsMoveFighterCamera(Camera* fighter_cam, f32 angle, s32 arg2)
 	fighter_cam->vec.up.z = cosf(theta);
 }
 
-// 80133840
+// 0x80133840
 void mnCharsResetFighterViewport()
 {
 	Camera *cam = CameraGetStruct(gMNCharsFighterCameraGObj);
@@ -1881,7 +1881,7 @@ void mnCharsResetFighterViewport()
 	gMNCharsHeldStickUnknown.f = 0;
 }
 
-// 801338AC
+// 0x801338AC
 void mnCharsHandleInput()
 {
 	s32 z_held_port;
@@ -1996,7 +1996,7 @@ void mnCharsHandleInput()
 	}
 }
 
-// 80133CB8
+// 0x80133CB8
 void mnCharsHandleInputDemoMode()
 {
 	if (scSubsysControllerGetPlayerTapButtons(START_BUTTON | A_BUTTON | B_BUTTON))
@@ -2023,7 +2023,7 @@ void mnCharsHandleInputDemoMode()
 	}
 }
 
-// 80133D68
+// 0x80133D68
 void mnCharsMain(GObj* arg0)
 {
 
@@ -2050,7 +2050,7 @@ void mnCharsMain(GObj* arg0)
 	}
 }
 
-// 80133E28
+// 0x80133E28
 void mnCharsInit()
 {
 	s32 i;
@@ -2065,7 +2065,7 @@ void mnCharsInit()
 	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl33_80136A40;
 	rldmSetup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228), gMNCharsFilesArray, syTasklogMalloc(lbRelocGetAllocSize(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228)), 0x10U));
+	lbRelocLoadFilesExtern(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228), gMNCharsFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228)), 0x10U));
 
 	gcMakeGObjSPAfter(0, mnCharsMain, 0, 0x80000000);
 	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
@@ -2100,7 +2100,7 @@ void mnCharsInit()
 		auPlaySong(0, 0x2B);
 }
 
-// 801364FC
+// 0x801364FC
 syDisplaySetup D_ovl33_801364FC = {
 
 	gSCSubsysFramebuffer0,
@@ -2112,14 +2112,14 @@ syDisplaySetup D_ovl33_801364FC = {
 	0x00016A99,
 };
 
-// 80136518
+// 0x80136518
 scRuntimeInfo D_ovl33_80136518 = {
 
 	0x00000000, 0x8000A5E4,
 	0x800A26B8, &lOverlay33ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00006000, 0x00001000,
 	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000C000,
-	mnCharsSetupDisplayList, update_contdata,
+	mnCharsFuncLights, update_contdata,
 	0x00000000, 0x00000600, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
 	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
@@ -2128,7 +2128,7 @@ scRuntimeInfo D_ovl33_80136518 = {
 	mnCharsInit
 };
 
-// 80134050
+// 0x80134050
 void char_bkg_info_entry()
 {
 	D_ovl33_801364FC.zbuffer = syDisplayGetZBuffer(6400);

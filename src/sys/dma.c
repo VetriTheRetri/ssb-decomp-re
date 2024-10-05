@@ -12,9 +12,9 @@
 #include <PR/ultratypes.h>
 
 OSPiHandle *gRomPiHandle;
-OSPiHandle sSYDmaSramPiHandle; // 80045048
-OSMesg sDmaMesg[1];       // 800450BC
-OSMesgQueue sDmaMesgQ;    // 800450C0
+OSPiHandle sSYDmaSramPiHandle; // 0x80045048
+OSMesg sDmaMesg[1];       // 0x800450BC
+OSMesgQueue sDmaMesgQ;    // 0x800450C0
 
 void *sVpkBufRamAddr;
 u32 sVpkBufSize;

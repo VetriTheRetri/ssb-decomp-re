@@ -19,25 +19,25 @@ extern void func_ovl8_8037DFCC(s32, s16);
 
 
 // DATA
-// 80369F60
+// 0x80369F60
 u32 D_ovl9_80369F60 = 0xFFFFFFFF;
 
-// 80369F64
+// 0x80369F64
 u32 dMNDebugMenuBGColor = 0x0000FFFF;
 
-// 80369F68
+// 0x80369F68
 u32 dMNDebugMenuBorderColor = 0x80FFFFFF;
 
-// 80369F6C
+// 0x80369F6C
 u32 dMNDebugMenuTextColor = 0xFFFFFFFF;
 
-// 80369F70
+// 0x80369F70
 u32 dMNDebugMenuTextBGColor[] = { 0x0000FFFF, 0x0000FFFF, 0xFFFFFFFF };
 
-// 80369F7C
+// 0x80369F7C
 dbMenuPosition gMNDebugMenuMenuPosition = { 0 };
 
-// 80369F84
+// 0x80369F84
 u16 D_ovl9_80369F84[] = {
 
 	0xFFFF,	0xFFFF,
@@ -60,22 +60,22 @@ u16 D_ovl9_80369F84[] = {
 	0x0000,	0x0000
 }; 
 
-// 80369FCC
+// 0x80369FCC
 u16 gMNDebugMenuPreviousInputs = 0;
 
-// 80369FD0
+// 0x80369FD0
 u16 gMNDebugMenuNewInputs = 0;
 
-// 80369FD4
+// 0x80369FD4
 u16 gMNDebugMenuStickInputs = 0;
 
-// 80369FD8
+// 0x80369FD8
 s32 gMNDebugMenuRapidScrollWait = 30;
 
-// 80369FDC
+// 0x80369FDC
 s32 D_ovl9_80369FDC = 0;
 
-// 80369FE0
+// 0x80369FE0
 s32 D_ovl9_80369FE0[48] = {
 
 	0x00040006, 0x00040002,
@@ -184,44 +184,44 @@ uintptr_t D_ovl9_8036A398[] = {
 
 
 // BSS
-// 8036A400
+// 0x8036A400
 s32 D_ovl9_8036A400[7168];
 
-// 80371400
+// 0x80371400
 s32 gMNDebugMenuCursorIndexWhenExited;
 
-// 80371404
+// 0x80371404
 s32 D_ovl9_80371404; // TODO - some struct, pretty important!
 
-// 80371408
+// 0x80371408
 GObj* gMNDebugMenuMenuGObj;
 
-// 8037140C
+// 0x8037140C
 dbMenuItem *gMNDebugMenuMenuItems;
 
-// 80371410
+// 0x80371410
 s32 gMNDebugMenuMenuItemsCount;
 
-// 80371414
+// 0x80371414
 s32 gMNDebugMenuCursorIndex;
 
-// 80371418
+// 0x80371418
 void (*gMNDebugMenuDefaultMenuRenderProc)(GObj*);
 
-// 8037141C
+// 0x8037141C
 s32 gMNDebugMenuRedrawInterrupt;
 
-// 80371420
+// 0x80371420
 sb32 gMNDebugMenuIsMenuOpen;
 
-// 80371424
+// 0x80371424
 s32 gMNDebugMenuOriginalGSGTLNumTasks;
 
-// 80371428
+// 0x80371428
 char gMNDebugMenuStringBuffer[0x38];
 
 
-// 80369240
+// 0x80369240
 void dbMenuUpdateMenuInputs()
 {
 	u16 inputs = 0;
@@ -264,14 +264,14 @@ void dbMenuUpdateMenuInputs()
 	gMNDebugMenuPreviousInputs = inputs;
 }
 
-// 80369310
+// 0x80369310
 void dbMenuDrawString(dbMenuPosition *arg0, const char *str, ...)
 {
 	func_ovl8_80386BE0(gMNDebugMenuStringBuffer, &str);
 	func_ovl8_8037DD60(arg0, gMNDebugMenuStringBuffer);
 }
 
-// 80369358
+// 0x80369358
 void dbMenuDrawBorder(s32 arg0, u32 color)
 {
 	dbMenuPosition* temp_s0;
@@ -306,7 +306,7 @@ void dbMenuDrawBorder(s32 arg0, u32 color)
 	func_ovl8_80377AEC(temp_s0, &menu_position, color, 4);
 }
 
-// 8036944C
+// 0x8036944C
 void dbMenuDrawBackground(s32 arg0, s32 color)
 {
 	dbMenuPosition *sp24;
@@ -324,7 +324,7 @@ void dbMenuDrawBackground(s32 arg0, s32 color)
 	func_ovl8_80377AEC(sp24, &sp1C, color, 4);
 }
 
-// 803694C8
+// 0x803694C8
 void dbMenuDrawMenuItem(void* arg0, dbMenuItem* menu_item)
 {
 	switch (menu_item->type)
@@ -351,7 +351,7 @@ void dbMenuDrawMenuItem(void* arg0, dbMenuItem* menu_item)
 	}
 }
 
-// 80369600
+// 0x80369600
 void dbMenuDrawMenuItems(void* arg0, dbMenuItem *menu_item, s32 arg2)
 {
 	s32 i;
@@ -363,14 +363,14 @@ void dbMenuDrawMenuItems(void* arg0, dbMenuItem *menu_item, s32 arg2)
 	}
 }
 
-// 80369680
+// 0x80369680
 void dbMenuDrawCursor(void* arg0, s32 cursor_index)
 {
 	func_ovl8_8037DFCC(3, (cursor_index * 9) + 2);
 	dbMenuDrawString(func_ovl8_803749BC(arg0), ">");
 }
 
-// 803696D4
+// 0x803696D4
 void gMNDebugMenuRenderMenu(s32 arg0)
 {
 	if (gMNDebugMenuRedrawInterrupt != 0)
@@ -385,7 +385,7 @@ void gMNDebugMenuRenderMenu(s32 arg0)
 	gMNDebugMenuDefaultMenuRenderProc(arg0);
 }
 
-// 8036975C
+// 0x8036975C
 void dbMenuHandleInputs(GObj *gobj)
 {
 	gsController *controller = &gSysController;
@@ -561,7 +561,7 @@ void dbMenuHandleInputs(GObj *gobj)
 	}
 }
 
-// 80369D78
+// 0x80369D78
 void dbMenuCreateMenu(s32 x, s32 y, s32 w, dbMenuItem* menu_items, s32 menu_items_count)
 {
 	if (gMNDebugMenuIsMenuOpen == FALSE)
@@ -594,13 +594,13 @@ void dbMenuCreateMenu(s32 x, s32 y, s32 w, dbMenuItem* menu_items, s32 menu_item
 	}
 }
 
-// 80369EC0
+// 0x80369EC0
 void dbMenuDestroyMenu()
 {
 	func_ovl8_8037BB78();
 }
 
-// 80369EE0
+// 0x80369EE0
 void dbMenuInitMenu()
 {
 	dbUnk80369EE0_1 sp2C;

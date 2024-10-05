@@ -9,8 +9,8 @@
 #include "debug.h"
 
 // Extern
-extern intptr_t lOverlay15ArenaLo;  // 800D6A00
-extern intptr_t lOverlay15ArenaHi;  // 80392A00
+extern intptr_t lOverlay15ArenaLo;  // 0x800D6A00
+extern intptr_t lOverlay15ArenaHi;  // 0x80392A00
 extern void gcUpdateDefault(UNUSED GObj* arg0);
 
 extern void dbMenuCreateMenu(s32, s32, s32, void*, s32);
@@ -21,10 +21,10 @@ void dbFallsExit();
 
 // Data
 
-// 800D66E0
+// 0x800D66E0
 Lights1 dMNDebugFallsLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x3C, 0x3C, 0x3C);
 
-// 800D66F8
+// 0x800D66F8
 Gfx dMNDebugFallsDisplayList[] =
 {
 	gsSPSetGeometryMode(G_LIGHTING),
@@ -32,10 +32,10 @@ Gfx dMNDebugFallsDisplayList[] =
 	gsSPEndDisplayList()
 };
 
-// 800D6720
+// 0x800D6720
 s32 gMNDebugFallsExitInterrupt = 0;
 
-// 800D6724
+// 0x800D6724
 // UB: Menu expects 27 like in debug-battle.c but here only 5 are defined
 char* dMNDebugFallsFighterKindStrings[5] = {
 	"Mario",
@@ -45,7 +45,7 @@ char* dMNDebugFallsFighterKindStrings[5] = {
 	"Luigi"
 };
 
-// 800D6738
+// 0x800D6738
 dbMenuItem dMNDebugFallsMenuItems[13] = {
 	{ dbMenuItemKindExitLabel,  dbFallsExit, (char*) "Exit",                          (void*) NULL,                                     0.0F, 0.0F,     0 },
 	{ dbMenuItemKindStringByte, 0,                (char*) dMNDebugFallsFighterKindStrings, (void*) &gTransferBattleState.players[0].ft_kind, 0.0F, 26.0F,    0 },
@@ -62,10 +62,10 @@ dbMenuItem dMNDebugFallsMenuItems[13] = {
 	{ dbMenuItemKindNumeric,    0,                (char*) " Finish : %3d",                 (void*) &gTransferBattleState.players[3].score,   0.0F, 65536.0F, 0 }
 };
 
-// 800D68A4
+// 0x800D68A4
 syDisplaySetup D_ovl15_800D68A4 = { 0x80392A00, 0x803B6900, 0x803DA800, 0, 0x00140, 0x00F0, 0x00016a99 };
 
-// 800D68C0
+// 0x800D68C0
 scRuntimeInfo D_ovl15_800D68C0 = {
 
 	0x00000000, 0x8000a5e4, 0x8000a340, 0x800d6a00,
@@ -80,19 +80,19 @@ scRuntimeInfo D_ovl15_800D68C0 = {
 };
 
 
-// 800D6490
+// 0x800D6490
 void dbFallsSetLighting(Gfx **display_list)
 {
 	gSPDisplayList(display_list[0]++, dMNDebugFallsDisplayList);
 }
 
-// 800D64B4
+// 0x800D64B4
 void dbFallsExit()
 {
 	gMNDebugFallsExitInterrupt = 1;
 }
 
-// 800D64C4
+// 0x800D64C4
 void dbFallsMain(GObj* arg0)
 {
 	u8 temp_t0;
@@ -111,7 +111,7 @@ void dbFallsMain(GObj* arg0)
 	}
 }
 
-// 800D6544
+// 0x800D6544
 GObj* dbFallsCreateViewport(void (*proc)(GObj*))
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x10000002, gcUpdateDefault, 0, 0x80000000U, func_80017DBC, 0x32, 0x00000001, -1, 1, 0, proc, 1, 0);
@@ -129,7 +129,7 @@ GObj* dbFallsCreateViewport(void (*proc)(GObj*))
 	return camera_gobj;
 }
 
-// 800D660C
+// 0x800D660C
 void dbFallsInit()
 {
 	gcMakeGObjSPAfter(0, dbFallsMain, 0, 0x80000000);
@@ -139,7 +139,7 @@ void dbFallsInit()
 	dbMenuCreateMenu(0x32, 0x32, 0x64, &dMNDebugFallsMenuItems, 0xD);
 }
 
-// 800D6688
+// 0x800D6688
 void dbFallsStartScene()
 {
 	D_ovl15_800D68A4.zbuffer = syDisplayGetZBuffer(6400);

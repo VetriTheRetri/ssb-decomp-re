@@ -12,7 +12,7 @@
 
  sct 11/7/95
 */
-// 8002DC70
+// 0x8002DC70
 void __postNextSeqEvent(ALSeqPlayer *seqp)
 {
 	ALEvent evt;
@@ -50,7 +50,7 @@ void __postNextSeqEvent(ALSeqPlayer *seqp)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/__n_resetPerfChanState.s")
 
-// 8002DE68
+// 0x8002DE68
 void __initFromBank(ALSeqPlayer* seqp, ALBank *b)
 {
 	/*
@@ -82,7 +82,7 @@ void __initFromBank(ALSeqPlayer* seqp, ALBank *b)
 
 void func_8002DF1C_2EB1C() {}
 
-// 8002DF24
+// 0x8002DF24
 ALMicroTime __n_vsDelta(ALVoiceState *vs, ALMicroTime t)
 {
 	/*
@@ -107,7 +107,7 @@ ALMicroTime __n_vsDelta(ALVoiceState *vs, ALMicroTime t)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/func_8002E11C_2ED1C.s")
 
-// 8002E1C4
+// 0x8002E1C4
 void __n_unmapVoice(ALSeqPlayer *seqp, ALVoice *voice)
 {
 	ALVoiceState *prev = 0;
@@ -148,7 +148,7 @@ void __n_unmapVoice(ALSeqPlayer *seqp, ALVoice *voice)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/__n_vsPan.s")
 
-// 8002E348
+// 0x8002E348
 ALVoiceState *__n_lookupVoice(ALSeqPlayer *seqp, u8 key, u8 channel)
 {
 	ALVoiceState  *vs;
@@ -163,7 +163,7 @@ ALVoiceState *__n_lookupVoice(ALSeqPlayer *seqp, u8 key, u8 channel)
 	return 0;
 }
 
-// 8002E3B8
+// 0x8002E3B8
 ALVoiceState* __n_mapVoice(ALSeqPlayer *seqp, u8 key, u8 vel, u8 channel)
 {
 	ALVoiceState  *vs = seqp->vFreeList;
@@ -197,7 +197,7 @@ ALVoiceState* __n_mapVoice(ALSeqPlayer *seqp, u8 key, u8 vel, u8 channel)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/libultra/n_audio/audio09/func_8002ED54_2F954.s")
 
-// 8002F39C
+// 0x8002F39C
 void __n_seqpStopOsc(ALSeqPlayer *seqp, ALVoiceState *vs)
 {
 	ALEventListItem *thisNode, *nextNode;

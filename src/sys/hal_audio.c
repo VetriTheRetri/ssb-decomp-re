@@ -329,7 +329,7 @@ static void _bnkfPatchSound(ALSound* s, s32 offset, s32 table);
 static void _bnkfPatchWaveTable(ALWaveTable* w, s32 offset, s32 table);
 
 
-// 8001E5C0
+// 0x8001E5C0
 void alHeapInit(ALHeap* hp, u8* base, s32 len) {
     s32 extraAlign = (AL_CACHE_ALIGN + 1) - ((s32) base & AL_CACHE_ALIGN);
 
@@ -343,7 +343,7 @@ void alHeapInit(ALHeap* hp, u8* base, s32 len) {
     hp->count = 0;
 }
 
-// 8001E5F4
+// 0x8001E5F4
 void* alHeapDBAlloc(u8* file, s32 line, ALHeap* hp, s32 num, s32 size) {
     s32 bytes;
     u8* ptr = 0;
@@ -358,7 +358,7 @@ void* alHeapDBAlloc(u8* file, s32 line, ALHeap* hp, s32 num, s32 size) {
     return ptr;
 }
 
-// 8001E648
+// 0x8001E648
 void alSeqFileNew(ALSeqFile* file, u8* base) {
     s32 offset = (s32) base;
     s32 i;
@@ -371,7 +371,7 @@ void alSeqFileNew(ALSeqFile* file, u8* base) {
     }
 }
 
-// 8001E688
+// 0x8001E688
 void alBnkfNew(ALBankFile* file, u8* table) {
     s32 offset = (s32) file;
     s32 woffset = (s32) table;
@@ -388,7 +388,7 @@ void alBnkfNew(ALBankFile* file, u8* table) {
     }
 }
 
-// 8001E708
+// 0x8001E708
 void _bnkfPatchBank(ALBank* bank, s32 offset, s32 table) {
     s32 i;
 
@@ -409,7 +409,7 @@ void _bnkfPatchBank(ALBank* bank, s32 offset, s32 table) {
     }
 }
 
-// 8001E7C0
+// 0x8001E7C0
 void _bnkfPatchInst(ALInstrument* inst, s32 offset, s32 table) {
     s32 i;
 
@@ -424,7 +424,7 @@ void _bnkfPatchInst(ALInstrument* inst, s32 offset, s32 table) {
     }
 }
 
-// 8001E858
+// 0x8001E858
 void _bnkfPatchSound(ALSound* s, s32 offset, s32 table) {
     if (s->flags)
         return;
@@ -438,7 +438,7 @@ void _bnkfPatchSound(ALSound* s, s32 offset, s32 table) {
     _bnkfPatchWaveTable(s->wavetable, offset, table);
 }
 
-// 8001E8B0
+// 0x8001E8B0
 void _bnkfPatchWaveTable(ALWaveTable* w, s32 offset, s32 table) {
     if (w->flags)
         return;
@@ -457,7 +457,7 @@ void _bnkfPatchWaveTable(ALWaveTable* w, s32 offset, s32 table) {
     }
 }
 
-// 8001E91C
+// 0x8001E91C
 void auRomRead(u32 romAddr, void* vramAddr, u32 size) {
     OSIoMesg DmaIoMessage;
 
@@ -473,7 +473,7 @@ void auRomRead(u32 romAddr, void* vramAddr, u32 size) {
     osRecvMesg(&auDMAMessageQueue, NULL, OS_MESG_BLOCK);
 }
 
-// 8001E99C
+// 0x8001E99C
 s32 auDMA(s32 addr, s32 len, void* state) {
     void* freeBuffer;
     AMDMAState* dState = state;
@@ -515,7 +515,7 @@ s32 auDMA(s32 addr, s32 len, void* state) {
     return (int) osVirtualToPhysical(freeBuffer) + delta;
 }
 
-// 8001EAC8
+// 0x8001EAC8
 ALDMAproc auDMANew(AMDMAState** state) {
     int i;
     AMDMAState* dState;
@@ -533,7 +533,7 @@ ALDMAproc auDMANew(AMDMAState** state) {
     return auDMA;
 }
 
-// 8001EB98
+// 0x8001EB98
 f32 _depth2Cents(u8 depth) {
     f32 x = 1.03099303;
     f32 cents = 1.0;
@@ -549,7 +549,7 @@ f32 _depth2Cents(u8 depth) {
 }
 
 
-// 8001EBE4
+// 0x8001EBE4
 ALMicroTime initOsc(void** oscState, f32* initVal, u8 oscType, u8 oscRate, u8 oscDepth, u8 oscDelay) {
     oscData* statePtr;
     ALMicroTime deltaTime = 0;
@@ -646,7 +646,7 @@ ALMicroTime initOsc(void** oscState, f32* initVal, u8 oscType, u8 oscRate, u8 os
                            oscState was available, return delay in usecs */
 }
 
-// 8001EEB8
+// 0x8001EEB8
 ALMicroTime updateOsc(void* oscState, f32* updateVal) {
     f32 tmpFlt;
     oscData* statePtr = (oscData*) oscState;
@@ -743,14 +743,14 @@ ALMicroTime updateOsc(void* oscState, f32* updateVal) {
 }
 
 
-// 8001F42C
+// 0x8001F42C
 void stopOsc(void* oscState) {
     ((oscData*) oscState)->next = freeOscStateList;
     freeOscStateList = (oscData*) oscState;
 }
 
 
-// 8001F444
+// 0x8001F444
 void auInit(void) {
     scAddClient(&auClient, &auGameTickQueue, auGameTickMessages, 1);
     osCreateMesgQueue(&auDMAMessageQueue, auDMAMessages, 50);
@@ -766,22 +766,22 @@ void auInit(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_audio/auThreadMain.s")
 
 
-// 80020A18
+// 0x80020A18
 void auSetHighSoundQuality(void) {
     auSoundQuality = 1;
 }
 
-// 80020A28
+// 0x80020A28
 void auSetLowSoundQuality(void) {
     auSoundQuality = 0;
 }
 
-// 80020A34
+// 0x80020A34
 void auSetSoundQuality(s32 quality) {
     auSoundQuality = quality;
 }
 
-// 80020A40
+// 0x80020A40
 void auSetReverbType(s32 fxType) {
     if (fxType != auCurrentFxType) {
         auRestarting++;
@@ -789,7 +789,7 @@ void auSetReverbType(s32 fxType) {
     }
 }
 
-// 80020A74
+// 0x80020A74
 void auStopBGM(void) {
     s32 i;
 
@@ -804,7 +804,7 @@ void auStopBGM(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_audio/auStopSong.s")
 
 
-// 80020B38
+// 0x80020B38
 void auSetBGMVolume(s32 playerID, u32 vol) {
     if (vol > 0x7800) {
         vol = 0x7800;
@@ -815,7 +815,7 @@ void auSetBGMVolume(s32 playerID, u32 vol) {
     auBGMVolTimer[playerID] = 0;
 }
 
-// 80020BC0
+// 0x80020BC0
 void auSetBGMVolumeSmooth(s32 playerID, u32 vol, u32 time) {
     if (vol > 0x7800) {
         vol = 0x7800;
@@ -829,7 +829,7 @@ void auSetBGMVolumeSmooth(s32 playerID, u32 vol, u32 time) {
     }
 }
 
-// 80020C5C
+// 0x80020C5C
 void auSetBGMReverb(s32 playerID, u32 reverb) {
     s32 i;
 
@@ -842,7 +842,7 @@ void auSetBGMReverb(s32 playerID, u32 reverb) {
     }
 }
 
-// 80020CD4
+// 0x80020CD4
 void auSetBGMPriority(s32 playerID, u8 priority) {
     s32 i;
 
@@ -872,29 +872,29 @@ void auSetBGMPriority(s32 playerID, u8 priority) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_audio/func_80020F4C.s")
 
-// 80020FA0
+// 0x80020FA0
 void func_80020FA0_21BA0(s32 arg0, s32 arg1) {}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_audio/func_80020FAC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/hal_audio/func_80020FFC.s")
 
-// 8002102C
+// 0x8002102C
 void func_8002102C(void) {
     auSettingsUpdated = TRUE;
 }
 
-// 8002103C
+// 0x8002103C
 s32 func_8002103C(void) {
     return auSettingsUpdated;
 }
 
-// 80021048
+// 0x80021048
 s32 func_80021048(void) {
     return auRestarting;
 }
 
-// 80021054
+// 0x80021054
 s32 func_80021054(void) {
     return auRestarting | auSettingsUpdated;
 }

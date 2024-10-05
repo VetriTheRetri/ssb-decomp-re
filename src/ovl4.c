@@ -18,16 +18,16 @@ void scBattle_StartStockBattle();
 
 
 // Data
-// 8018E3D0
+// 0x8018E3D0
 syColorRGBA dSCVSBattleCommonFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
-// 8018E3D4
+// 0x8018E3D4
 syColorRGBA dSCVSBattleSuddenDeathFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
-// 8018E3D8
+// 0x8018E3D8
 syDisplaySetup D_ovl4_8018E3D8 = SYDISPLAY_DEFINE_DEFAULT();
 
-// 8018E3F4
+// 0x8018E3F4
 scRuntimeInfo D_ovl4_8018E3F4 = {
 
 	0x00000000, 0x8018d0c0,
@@ -43,13 +43,13 @@ scRuntimeInfo D_ovl4_8018E3F4 = {
 	scBattle_StartStockBattle
 };
 
-// 8018D0C0
+// 0x8018D0C0
 void scBattle_UpdateGameStatus()
 {
 	ifCommonBattleUpdateInterfaceAll();
 }
 
-// 8018D0E0 - Get player's initial facing direction for battle start
+// 0x8018D0E0 - Get player's initial facing direction for battle start
 s32 scBattle_GetPlayerStartLR(s32 target_player)
 {
 	s32 lr;
@@ -93,7 +93,7 @@ s32 scBattle_GetPlayerStartLR(s32 target_player)
 	return lr;
 }
 
-// 8018D228
+// 0x8018D228
 void scBattle_StartStockBattle()
 {
 	s32 unused[4];
@@ -194,7 +194,7 @@ void scBattle_StartStockBattle()
 	lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 }
 
-// 8018D5E0 - Sort time battle winners and check for sudden death
+// 0x8018D5E0 - Sort time battle winners and check for sudden death
 sb32 scBattle_CheckSDSetTimeBattleResults()
 {
 	s32 result_count;
@@ -376,7 +376,7 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 	return TRUE;
 }
 
-// 8018DE20 - Start sudden death
+// 0x8018DE20 - Start sudden death
 void scBattle_StartSDBattle()
 {
 	s32 unused[3];
@@ -466,7 +466,7 @@ void scBattle_StartSDBattle()
 	lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 }
 
-// 8018E144
+// 0x8018E144
 void scBattle_SetGeometryRenderLights(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
@@ -474,7 +474,7 @@ void scBattle_SetGeometryRenderLights(Gfx **display_list)
 	ftDisplayLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// 8018E190
+// 0x8018E190
 void scBattleRoyalStartScene()
 {
 	gBattleState = &gTransferBattleState;

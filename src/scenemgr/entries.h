@@ -42,7 +42,7 @@ extern void intro_focus_link_entry(void);           // ovl 40
 extern void intro_focus_yoshi_entry(void);          // ovl 41
 extern void intro_focus_pikachu_entry(void);        // ovl 42
 extern void intro_focus_kirby_entry(void);          // ovl 43
-extern void intro_chars_running_entry(void);        // ovl 44
+extern void mvOpeningRunStartScene(void);        // ovl 44
 extern void mvOpeningYosterStartScene(void);           // ovl 45
 extern void mvOpeningCliffStartScene(void);            // ovl 46
 extern void mvOpeningStandoffStartScene(void);       // ovl 47

@@ -5,13 +5,13 @@
 
 // Externs
 extern intptr_t FILE_041_LINK_CAMERA_PARAMS_OFFSET; // 0xC0
-extern intptr_t lOverlay40ArenaHi;  // 803903E0
-extern intptr_t lOverlay40ArenaLo;  // 8018E5E0
+extern intptr_t lOverlay40ArenaHi;  // 0x803903E0
+extern intptr_t lOverlay40ArenaLo;  // 0x8018E5E0
 
 extern void func_80007080(void*, f32, f32, f32, f32);
 
 // DATA
-// 8018E070
+// 0x8018E070
 CameraDesc dMvOpeningLinkCameraDescStart = {
 
 	{ -800.0, 180.0, 800.0 },
@@ -19,7 +19,7 @@ CameraDesc dMvOpeningLinkCameraDescStart = {
 	0.0
 };
 
-// 8018E08C
+// 0x8018E08C
 CameraDesc dMvOpeningLinkCameraDescEnd = {
 
 	{ 200.0, 0.0, 400.0 },
@@ -27,7 +27,7 @@ CameraDesc dMvOpeningLinkCameraDescEnd = {
 	0.4
 };
 
-// 8018E0A8
+// 0x8018E0A8
 ftKeyCommand dMvOpeningLinkGameKey[] = {
 
     FTKEY_EVENT_BUTTON(L_TRIG, 1),  // 0x1001, 0x0020
@@ -41,56 +41,56 @@ u32 D_ovl40_8018E0B0[2] = {
 
 
 // BSS
-// 8018E1C0
+// 0x8018E1C0
 s32 D_ovl40_8018E1C0;
 
-// 8018E1C4
+// 0x8018E1C4
 s32 D_ovl40_8018E1C4;
 
-// 8018E1C8
+// 0x8018E1C8
 s32 gMvOpeningLinkFramesElapsed;
 
-// 8018E1CC
+// 0x8018E1CC
 GObj* gMvOpeningLinkNameGObj;
 
-// 8018E1D0
+// 0x8018E1D0
 GObj* gMvOpeningLinkStageFighterGObj;
 
-// 8018E1D4
+// 0x8018E1D4
 s32 D_ovl40_8018E1D4;
 
-// 8018E1D8
+// 0x8018E1D8
 GObj* gMvOpeningLinkStageCameraGObj;
 
-// 8018E1DC
+// 0x8018E1DC
 void* gMvOpeningLinkAnimHeap;
 
-// 8018E1E0
+// 0x8018E1E0
 f32 gMvOpeningLinkPosedFighterXSpeed;
 
-// 8018E1E4
+// 0x8018E1E4
 s32 D_ovl40_8018E1E4;
 
-// 8018E1E8
+// 0x8018E1E8
 CameraDesc dMvOpeningLinkCameraDescAdjustedStart;
 
-// 8018E208
+// 0x8018E208
 CameraDesc dMvOpeningLinkCameraDescAdjustedEnd;
 
-// 8018E228
+// 0x8018E228
 lbFileNode D_ovl40_8018E228[48];
 
-// 8018E3A8
+// 0x8018E3A8
 lbFileNode D_ovl40_8018E3A8[7];
 
-// 8018E3E0
-uintptr_t gMvOpeningLinkFilesArray[2];
+// 0x8018E3E0
+uintptr_t gMvOpeningLinkFiles[2];
 
-// 8018E3E8
+// 0x8018E3E8
 scBattleState gMvOpeningLinkBattleState;
 
 
-// 8018D0C0
+// 0x8018D0C0
 void mvOpeningLinkLoadFiles()
 {
 	lbRelocSetup rldmSetup;
@@ -104,10 +104,10 @@ void mvOpeningLinkLoadFiles()
 	rldmSetup.force_status_buffer = D_ovl40_8018E3A8;
 	rldmSetup.force_status_buffer_size = ARRAY_COUNT(D_ovl40_8018E3A8);
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0), gMvOpeningLinkFilesArray, syTasklogMalloc(lbRelocGetAllocSize(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0), gMvOpeningLinkFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0)), 0x10));
 }
 
-// 8018D160
+// 0x8018D160
 void mvOpeningLinkSetNameColor(SObj* name_sobj)
 {
 	name_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -120,7 +120,7 @@ void mvOpeningLinkSetNameColor(SObj* name_sobj)
 	name_sobj->sprite.blue = 0xFF;
 }
 
-// 8018D194
+// 0x8018D194
 void mvOpeningLinkDrawName()
 {
 	GObj* name_gobj;
@@ -141,7 +141,7 @@ void mvOpeningLinkDrawName()
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMvOpeningLinkFilesArray[0], offsets[i]));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMvOpeningLinkFiles[0], offsets[i]));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = x_positions[i] + 100.0F;
@@ -151,7 +151,7 @@ void mvOpeningLinkDrawName()
 	}
 }
 
-// 8018D2F4
+// 0x8018D2F4
 void mvOpeningLinkAnimateStageCamera(GObj* camera_gobj)
 {
 	Camera *cam = CameraGetStruct(camera_gobj);
@@ -168,7 +168,7 @@ void mvOpeningLinkAnimateStageCamera(GObj* camera_gobj)
 	}
 }
 
-// 8018D3EC
+// 0x8018D3EC
 void mvOpeningLinkCreateStageViewport(Vec3f arg0)
 {
 	Camera *cam;
@@ -206,7 +206,7 @@ void mvOpeningLinkCreateStageViewport(Vec3f arg0)
 	cam->vec.up.x = dMvOpeningLinkCameraDescAdjustedStart.upx;
 }
 
-// 8018D5F4
+// 0x8018D5F4
 void mvOpeningLinkInitFighterStagePanel()
 {
 	GObj* fighter_gobj;
@@ -265,7 +265,7 @@ void mvOpeningLinkInitFighterStagePanel()
 	}
 }
 
-// 8018D824
+// 0x8018D824
 void mvOpeningLinkRenderPosedFighterBackground(GObj *gobj)
 {
 	gDPPipeSync(gSYTasklogDLHeads[0]++);
@@ -278,13 +278,13 @@ void mvOpeningLinkRenderPosedFighterBackground(GObj *gobj)
 	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 8018D924
+// 0x8018D924
 void mvOpeningLinkCreatePosedFighterBackground()
 {
 	gcAddGObjDisplay(gcMakeGObjSPAfter(0, 0, 0x13, 0x80000000), mvOpeningLinkRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
 }
 
-// 8018D970
+// 0x8018D970
 void mvOpeningLinkAnimatePosedFighter(GObj* fighter_gobj)
 {
 	switch (gMvOpeningLinkFramesElapsed)
@@ -310,7 +310,7 @@ void mvOpeningLinkAnimatePosedFighter(GObj* fighter_gobj)
 	DObjGetStruct(fighter_gobj)->translate.vec.f.x -= gMvOpeningLinkPosedFighterXSpeed;
 }
 
-// 8018DA40
+// 0x8018DA40
 void mvOpeningLinkCreatePosedFighter()
 {
 	GObj* fighter_gobj;
@@ -333,7 +333,7 @@ void mvOpeningLinkCreatePosedFighter()
 	DObjGetStruct(fighter_gobj)->scale.vec.f.z = 1.0f;
 }
 
-// 8018DB40
+// 0x8018DB40
 void mvOpeningLinkCreateNameViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
@@ -341,18 +341,18 @@ void mvOpeningLinkCreateNameViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 8018DBE0
+// 0x8018DBE0
 void mvOpeningLinkCreatePosedFighterViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 90.0F);
 	cam->projection.persp.aspect = 3.75F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningLinkFilesArray[1], &FILE_041_LINK_CAMERA_PARAMS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningLinkFiles[1], &FILE_041_LINK_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
-// 8018DCD0
+// 0x8018DCD0
 void mvOpeningLinkCreatePosedFighterBackgroundViewport()
 {
 	Camera *cam;
@@ -363,7 +363,7 @@ void mvOpeningLinkCreatePosedFighterBackgroundViewport()
 	cam->flags = 5;
 }
 
-// 8018DD80
+// 0x8018DD80
 void mvOpeningLinkMainProc(GObj* arg0)
 {
 	gMvOpeningLinkFramesElapsed += 1;
@@ -391,13 +391,13 @@ void mvOpeningLinkMainProc(GObj* arg0)
 	}
 }
 
-// 8018DE3C
+// 0x8018DE3C
 void mvOpeningLinkInitFramesElapsed()
 {
 	gMvOpeningLinkFramesElapsed = 0;
 }
 
-// 8018DE48
+// 0x8018DE48
 void mvOpeningLinkInit()
 {
 	gMvOpeningLinkBattleState = gDefaultBattleState;
@@ -435,14 +435,14 @@ void mvOpeningLinkInit()
 	while (func_8000092C() < 1695U);
 }
 
-// 8018DFCC
-void gMvOpeningLinkSetupDisplayList(Gfx **display_list)
+// 0x8018DFCC
+void gMvOpeningLinkFuncLights(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// 8018E0DC
+// 0x8018E0DC
 syDisplaySetup D_ovl40_8018E0DC = {
 
 	gSCSubsysFramebuffer0,
@@ -454,14 +454,14 @@ syDisplaySetup D_ovl40_8018E0DC = {
 	0x00016A99
 };
 
-// 8018E0F8
+// 0x8018E0F8
 scRuntimeInfo D_ovl40_8018E0F8 = {
 
 	0x00000000, 0x8000a5e4,
 	0x800a26b8, &lOverlay40ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00004000, 0x00002000,
 	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000c000,
-	gMvOpeningLinkSetupDisplayList, update_contdata,
+	gMvOpeningLinkFuncLights, update_contdata,
 	0x00000000, 0x00000600, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
 	0x800d5cac, 0x00000000, 0x00000000, 0x00000000,
@@ -470,7 +470,7 @@ scRuntimeInfo D_ovl40_8018E0F8 = {
 	mvOpeningLinkInit
 };
 
-// 8018E018
+// 0x8018E018
 void intro_focus_link_entry()
 {
 	D_ovl40_8018E0DC.zbuffer = syDisplayGetZBuffer(6400);

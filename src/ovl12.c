@@ -8,9 +8,9 @@
 #include "debug.h"
 
 // Externs
-extern intptr_t D_NF_800A5240;      // 800A5240
-extern intptr_t lOverlay12ArenaLo;  // 800D69F0
-extern intptr_t lOverlay12ArenaHi;  // 80369240
+extern intptr_t D_NF_800A5240;      // 0x800A5240
+extern intptr_t lOverlay12ArenaLo;  // 0x800D69F0
+extern intptr_t lOverlay12ArenaHi;  // 0x80369240
 extern scBattleState D_800A4B18;
 // ovl9
 extern sb32 gMNDebugMenuIsMenuOpen;
@@ -21,13 +21,13 @@ extern void dbMenuDestroyMenu();
 void dbStageSelectTriggerInterrupt();
 
 // DATA
-// 800D6680
+// 0x800D6680
 sb32 dMNDebugStageSelectInterrupt = FALSE;
 
-// 800D6684
+// 0x800D6684
 s32 dMNDebugStageSelectGrKind = 0;
 
-// 800D6688
+// 0x800D6688
 char* D_ovl12_800D6688[] = {
 
 	"Mario",
@@ -73,7 +73,7 @@ char* D_ovl12_800D6688[] = {
 	"Bonus2Nes"
 };
 
-// 800D672C
+// 0x800D672C
 dbMenuItem dMNDebugStageSelectMenuItems[] = {
 	{
 		dbMenuItemKindExitLabel,
@@ -95,7 +95,7 @@ dbMenuItem dMNDebugStageSelectMenuItems[] = {
 	}
 };
 
-// 800D6764
+// 0x800D6764
 syDisplaySetup D_ovl12_800D6764 = {
 
 	0x80392A00,
@@ -107,7 +107,7 @@ syDisplaySetup D_ovl12_800D6764 = {
 	0x00016A99
 };
 
-// 800D6780
+// 0x800D6780
 scRuntimeInfo D_ovl12_800D6780 = {
 
 	0x00000000,
@@ -148,13 +148,13 @@ scRuntimeInfo D_ovl12_800D6780 = {
 };
 
 
-// 800D6490
+// 0x800D6490
 void dbStageSelectTriggerInterrupt()
 {
 	dMNDebugStageSelectInterrupt = TRUE;
 }
 
-// 800D64A0
+// 0x800D64A0
 void dbStageSelectMain(GObj* arg0)
 {
 	if (gSysController.button_tap & START_BUTTON)
@@ -185,7 +185,7 @@ void dbStageSelectMain(GObj* arg0)
 	}
 }
 
-// 800D65AC
+// 0x800D65AC
 void dbStageSelectInit()
 {
 	gcMakeGObjSPAfter(0, dbStageSelectMain, 0, 0x80000000);
@@ -194,7 +194,7 @@ void dbStageSelectInit()
 	dbMenuCreateMenu(0x32, 0x32, 0x64, dMNDebugStageSelectMenuItems, ARRAY_COUNT(dMNDebugStageSelectMenuItems));
 }
 
-// 800D6620
+// 0x800D6620
 void dbStageSelectStartScene()
 {
 	D_ovl12_800D6764.zbuffer = syDisplayGetZBuffer(6400);

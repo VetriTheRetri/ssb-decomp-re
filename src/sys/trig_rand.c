@@ -205,7 +205,7 @@ void qsortInternal(u8 *arg0, u8 *arg1) {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunknown-pragmas"
 
-// 80018C14
+// 0x80018C14
 void qsort2(void* _base, u32 count, u32 itemSize, s32 (*compare)(const void*, const void*)) {
     u8 *curr, *next;
     s32 s0;
@@ -241,7 +241,7 @@ void qsort2(void* _base, u32 count, u32 itemSize, s32 (*compare)(const void*, co
     }
 }
 
-// 80018CEC
+// 0x80018CEC
 u8* find(u8* value, u8* array, u32 count, s32 itemSize, s32 (*compare)(u8*, u8*)) {
     s32 newvar = (count - 1) * itemSize;
     u8* low = array;

@@ -136,7 +136,7 @@ void scAddClient(SCClient *arg0, OSMesgQueue *mq, OSMesg *msg, u32 count) {
     func_80000970(&t.info);
 }
 
-// 80000A34
+// 0x80000A34
 // returns true if task can be executed now
 s32 scCheckGfxTaskDefault(SCTaskGfx* t) {
     s32 idx;
@@ -238,7 +238,7 @@ void func_80000C64(SCTaskInfo *newTask) {
     }
 }
 
-// 80000CF4
+// 0x80000CF4
 void scMainQueueRemove(SCTaskInfo *task) {
     if (task->prev != NULL) {
         task->prev->next = task->next;
@@ -253,7 +253,7 @@ void scMainQueueRemove(SCTaskInfo *task) {
     }
 }
 
-// 80000D44
+// 0x80000D44
 // add to scPausedQueueHead/D_80044ED8_406E8 priorirty queue
 void scPausedQueueAdd(SCTaskGfx *task) {
     SCTaskInfo *info;
@@ -635,7 +635,7 @@ void func_80001764(void *arg0) {
 }
 
 // arg0 is frame buffer pointer?
-// 800017B8
+// 0x800017B8
 void scSetNextFrameBuffer(void *arg0) {
     void *temp;
 
@@ -671,7 +671,7 @@ void scSetNextFrameBuffer(void *arg0) {
     D_80044FB4_407C4 = (u32)((u32)(osGetCount() - scTimestampSetFb) / 0xB9BU);
 }
 
-// 800018E0
+// 0x800018E0
 void scExecuteGfxTask(SCTaskGfx *arg0) {
     if (scCurrentGfxTask != 0) {
         osSpTaskYield();
@@ -685,7 +685,7 @@ void scExecuteGfxTask(SCTaskGfx *arg0) {
     scCurrentGfxTask = arg0;
 }
 
-// 80001968
+// 0x80001968
 void scExecuteAudioTask(SCTaskGfx *arg0) {
     scTimestampAudioTaskStarted = osGetCount();
 
@@ -700,7 +700,7 @@ void scExecuteAudioTask(SCTaskGfx *arg0) {
     scCurrentAudioTask = arg0;
 }
 
-// 80001A00
+// 0x80001A00
 s32 scExecuteTask(SCTaskInfo* task)
 {
     s32 ret = 0;
@@ -888,7 +888,7 @@ s32 scExecuteTask(SCTaskInfo* task)
     return ret;
 }
 
-// 80001E64
+// 0x80001E64
 void scExecuteTasks(void) {
     s32 phi_a0;
     s32 phi_v0; // cur "priority"
@@ -971,7 +971,7 @@ void func_8000205C(void) {
     scExecuteTasks();
 }
 
-// 800020D0
+// 0x800020D0
 void scHandleSPTaskDone(void) {
     if (scCurrentAudioTask != NULL && scCurrentAudioTask->info.state == nSYScheduleStatusTaskRunning) {
         osSendMesg(scCurrentAudioTask->info.mq, (OSMesg) 0, OS_MESG_NOBLOCK);

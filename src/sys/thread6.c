@@ -8,74 +8,74 @@
 #include <PR/os.h>
 #include <PR/ultratypes.h>
 
-// 800450F0
+// 0x800450F0
 OSMesgQueue sInitQueue; // Queue for OS controller Init, Status, and Read
 
-// 80045108
+// 0x80045108
 OSMesg sInitMesg[1]; // Message buffer for OS controller Init, Status, and Read
 
-// 80045110
+// 0x80045110
 SCClient D_80045110;
 
-// 80045118
+// 0x80045118
 OSMesg sContEvtMesgs[7]; // used in MqList D_80045110
 
-// 80045138
+// 0x80045138
 OSMesgQueue sContEventQueue; // queue for ControllerEvent callbacks
 
-// 80045150
+// 0x80045150
 OSMesg D_80045150[MAXCONTROLLERS];
 
-// 80045160
+// 0x80045160
 OSMesgQueue D_80045160; // controller mesgqueue? for waiting for 0 to 1+ controllers?
 
-// 80045178
+// 0x80045178
 OSContStatus sContStatus[MAXCONTROLLERS];
 
-// 80045188
+// 0x80045188
 OSContPad sContData[MAXCONTROLLERS];
 
-// 800451A0
+// 0x800451A0
 u32 gNumControllers;
 
-// 800451A4
+// 0x800451A4
 s8 gPlayerControllerPortStatuses[MAXCONTROLLERS];
 
-// 800451A8
+// 0x800451A8
 ControllerInfo sContInfo[MAXCONTROLLERS];
 
-// 80045228
+// 0x80045228
 gsController gPlayerControllers[MAXCONTROLLERS];
 
-// 80045250
+// 0x80045250
 sb32 gUpdateContData;
 
-// 80045254
+// 0x80045254
 ControllerEvent *sDelayedContUpdate;
 
-// 80045258
+// 0x80045258
 sb32 sReadContData; // if true, always update controller data when a thread6 loop runs
 
-// 8004525C
+// 0x8004525C
 u32 sStatusUpdateDelay; // number of events (or frames?) to wait until perfomring OSContStatus update
 
-/// 80045260
+/// 0x80045260
 u32 sLeftUntilStatus; // remaining count of controller events (or frames) until OSContStatus update
 
-// 80045268
+// 0x80045268
 Unk80045268 D_80045268[MAXCONTROLLERS];
 
-// 800452C8
+// 0x800452C8
 OSPfs sMotorPfs[MAXCONTROLLERS];
 
-// 80045468
+// 0x80045468
 UNUSED u32 unref80045468[2];
 
-// 80045470
+// 0x80045470
 gsController _gSysController; // needs to be plugged to linker manually (linker_constants.txt) otherwise this file doesn't match
 
 
-// 80003C00
+// 0x80003C00
 void update_controller_indices(void) {
     s32 v0 = 0;
     s32 i;
@@ -92,7 +92,7 @@ void update_controller_indices(void) {
     }
 }
 
-// 80003CC4
+// 0x80003CC4
 void update_controller_status(void) {
     s32 i;
 
@@ -111,7 +111,7 @@ void update_controller_status(void) {
     }
 }
 
-// 80003DD4
+// 0x80003DD4
 void read_controller_data(void) {
     s32 i;
 
@@ -157,7 +157,7 @@ void read_controller_data(void) {
     gUpdateContData = TRUE;
 }
 
-// 80003F98
+// 0x80003F98
 void update_global_contdata(void)
 {
     s32 i;
@@ -212,7 +212,7 @@ void initialize_controllers(void) {
     for (i = 0; i < MAXCONTROLLERS; i++) {
         if (sContStatus[i].status & CONT_CARD_ON) { osMotorInit(&sInitQueue, &sMotorPfs[i], i); }
     }
-    // 80004150
+    // 0x80004150
     osCreateMesgQueue(&D_80045160, D_80045150, ARRAY_COUNT(D_80045150));
     // test = 5;
     for (i = 0; i < MAXCONTROLLERS; i++) {
@@ -221,7 +221,7 @@ void initialize_controllers(void) {
         D_80045268[i].unk04 = test; // OS_EVENT_SI?
         D_80045268[i].unk0C = &D_80045160;
     }
-    // 8000419C
+    // 0x8000419C
     for (i = 0; i < MAXCONTROLLERS; i++) {
         sContData[i].button = 0;
 
@@ -255,7 +255,7 @@ void initialize_controllers(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/thread6/initialize_controllers.s")
 #endif
 
-// 80004284
+// 0x80004284
 void dispatch_contevt(ControllerEvent *evt) {
     OSMesg mesg[1];    // sp34
     OSMesgQueue queue; // sp1C
@@ -291,7 +291,7 @@ void unref_80004338(s32 arg0, s32 arg1) {
     dispatch_contevt(&data.evt);
 }
 
-// 80004368
+// 0x80004368
 void enable_auto_contread(s32 shouldSchedule) {
     ContSchedReadEvt data;
 
@@ -300,7 +300,7 @@ void enable_auto_contread(s32 shouldSchedule) {
     dispatch_contevt(&data.evt);
 }
 
-// 80004394
+// 0x80004394
 void set_contstatus_delay(s32 delay) {
     ContStatusDelayEvt data;
 
@@ -338,7 +338,7 @@ void func_800044B4(s32 arg0) {
     func_800043C0(arg0, 0);
 }
 
-// 800044D4
+// 0x800044D4
 void handle_contevt(ControllerEvent *evt) {
     switch (evt->type) {
         case CONT_EVENT_READ_CONT_DATA:

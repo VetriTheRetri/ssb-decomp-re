@@ -11,7 +11,7 @@ extern void* gBonusGameFileData[/* */];
 
 sb32 itTargetCommonProcDamage(GObj* item_gobj);
 
-// 8018F130
+// 0x8018F130
 itCreateDesc dItTargetItemDesc = {
 	nITKindTarget,			// Item Kind
 	&gBonusGameFileData[0], // Pointer to item file data?
@@ -35,13 +35,13 @@ itCreateDesc dItTargetItemDesc = {
 	itTargetCommonProcDamage			// Proc Damage
 };
 
-// 8018F3B0
+// 0x8018F3B0
 lbFileNode gOverlay6StatusBuffer[100];
 
-// 8018F6D0
+// 0x8018F6D0
 lbFileNode gOverlay6ForceStatusBuffer[7];
 
-// 8018ED70
+// 0x8018ED70
 void func_ovl6_8018ED70()
 {
 	lbRelocSetup rldm_setup;
@@ -60,7 +60,7 @@ void func_ovl6_8018ED70()
 						 syTasklogMalloc(lbRelocGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
 }
 
-// 8018EE10
+// 0x8018EE10
 sb32 itTargetCommonProcDamage(GObj* item_gobj)
 {
 	efManagerShieldBreakMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
@@ -73,7 +73,7 @@ sb32 itTargetCommonProcDamage(GObj* item_gobj)
 	return TRUE;
 }
 
-// 8018EE5C
+// 0x8018EE5C
 GObj* itTargetMakeItem(GObj* parent_gobj, Vec3f* pos, Vec3f* vel, u32 flags)
 {
 	GObj* item_gobj = itManagerMakeItem(parent_gobj, &dItTargetItemDesc, pos, vel, flags);

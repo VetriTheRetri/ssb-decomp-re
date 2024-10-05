@@ -238,7 +238,7 @@ SCTaskCallback D_8004666C;  // function pointer?
 //                               //
 // // // // // // // // // // // //
 
-// 800048D0
+// 0x800048D0
 void func_800048D0(SCTaskGfxCallback arg0)
 {
 	if (arg0 != NULL)
@@ -248,39 +248,39 @@ void func_800048D0(SCTaskGfxCallback arg0)
 	else D_8004666C = (void*)scCheckGfxTaskDefault;
 }
 
-// 800048F8
+// 0x800048F8
 void func_800048F8(Gfx **dl)
 {
 	sSYTasklogSegmentFBase = &dl[0]->words.w1;
 	gSPSegment(dl[0]++, G_MWO_SEGMENT_F, 0x00000000);
 }
 
-// 80004928
+// 0x80004928
 void unref_80004928(sb32 arg0)
 {
 	sSYTasklogIsNoNearClipping = arg0;
 }
 
-// 80004934
+// 0x80004934
 void unref_80004934(u16 arg0, u16 arg1)
 {
 	D_80046624 = arg0;
 	D_80046626 = arg1;
 }
 
-// 80004950
+// 0x80004950
 void syTasklogInitGeneralHeap(void *start, u32 size)
 {
 	syMallocInit(&gSYTasklogGeneralHeap, 0x10000, start, size);
 }
 
-// 80004980
+// 0x80004980
 void* syTasklogMalloc(size_t size, u32 alignment) // alloc_with_alignment
 {
 	return syMallocSet(&gSYTasklogGeneralHeap, size, alignment);
 }
 
-// 800049B0
+// 0x800049B0
 void syTasklogResetGraphicsHeap(void) // reset gSYTasklogGraphicsHeap allocator
 {
 	gSYTasklogGraphicsHeap.id    = sSYTasklogDefaultGraphicsHeap[gSYTasklogTaskID].id;
@@ -291,7 +291,7 @@ void syTasklogResetGraphicsHeap(void) // reset gSYTasklogGraphicsHeap allocator
 	syMallocReset(&gSYTasklogGraphicsHeap);
 }
 
-// 80004A0C
+// 0x80004A0C
 void syTasklogSetDLBuffer(syTasklogDLBuffer (*src)[4])
 {
 	s32 i;
@@ -305,7 +305,7 @@ void syTasklogSetDLBuffer(syTasklogDLBuffer (*src)[4])
 	}
 }
 
-// 80004AB0
+// 0x80004AB0
 void func_80004AB0()
 {
 	s32 i;
@@ -328,7 +328,7 @@ void func_80004AB0()
 	D_80046628 = 0;
 }
 
-// 80004B9C
+// 0x80004B9C
 void syTasklogCheckBufferLengths(void)
 {
 	s32 i;
@@ -349,7 +349,7 @@ void syTasklogCheckBufferLengths(void)
 	}
 }
 
-// 80004C5C
+// 0x80004C5C
 void func_80004C5C(void *arg0, u32 buffer_size)
 {
 	SCTaskRDPBuffer t;
@@ -367,7 +367,7 @@ void func_80004C5C(void *arg0, u32 buffer_size)
 	}
 }
 
-// 80004CB4
+// 0x80004CB4
 void func_80004CB4(s32 arg0, void *arg1, u32 buffer_size)
 {
 	D_8003B6E0 = arg0;
@@ -389,7 +389,7 @@ void func_80004CB4(s32 arg0, void *arg1, u32 buffer_size)
 	}
 }
 
-// 80004D2C
+// 0x80004D2C
 SCTaskGfx* func_80004D2C(void)
 {
 	SCTaskGfx *temp;
@@ -411,7 +411,7 @@ SCTaskGfx* func_80004D2C(void)
 	return temp;
 }
 
-// 80004DB4
+// 0x80004DB4
 void func_80004DB4(SCTaskGfx *arg0, s32 arg1, SCTaskGfxEnd *arg2, SCTaskVi *arg3)
 {
 	s32 i;
@@ -427,7 +427,7 @@ void func_80004DB4(SCTaskGfx *arg0, s32 arg1, SCTaskGfxEnd *arg2, SCTaskVi *arg3
 	}
 }
 
-// 80004E90
+// 0x80004E90
 void syTasklogScheduleGfxEnd(SCTaskGfxEnd *mesg, void *framebuffer, u32 retVal, OSMesgQueue *mq)
 {
 	mesg->info.type 	= nSYScheduleTaskGfxEnd;
@@ -441,7 +441,7 @@ void syTasklogScheduleGfxEnd(SCTaskGfxEnd *mesg, void *framebuffer, u32 retVal, 
 	osSendMesg(&scTaskQueue, (OSMesg)mesg, OS_MESG_NOBLOCK);
 }
 
-// 80004EFC
+// 0x80004EFC
 void func_80004EFC()
 {
 	SCTaskGfxEnd *mesg = sSYTasklogGfxEndBuffers[gSYTasklogTaskID];
@@ -456,7 +456,7 @@ void func_80004EFC()
 	sSYTasklogGfxBuffersCurrent[gSYTasklogTaskID] = sSYTasklogGfxBuffersStart[gSYTasklogTaskID];
 }
 
-// 80004F78
+// 0x80004F78
 void func_80004F78()
 {
 	OSMesg recv;
@@ -475,7 +475,7 @@ void func_80004F78()
 	func_80004AB0();
 }
 
-// 80005018
+// 0x80005018
 void func_80005018(SCTaskGfx *t, s32 *arg1, u32 ucode_id, s32 arg3, u64 *arg4, u64 *arg5, u32 arg6)
 {
 	gsUcode *ucode;
@@ -561,7 +561,7 @@ void func_80005018(SCTaskGfx *t, s32 *arg1, u32 ucode_id, s32 arg3, u64 *arg4, u
 	osSendMesg(&scTaskQueue, (OSMesg)t, OS_MESG_NOBLOCK);
 }
 
-// 800051E4
+// 0x800051E4
 s32 syTasklogGetUcodeID()
 {
 	s32 o = (D_80046628 != 0) ? D_80046626 : D_80046624;
@@ -582,7 +582,7 @@ s32 syTasklogGetUcodeID()
 	return o;
 }
 
-// 80005240
+// 0x80005240
 void func_80005240(s32 arg0, u64 *arg1)
 {
 	s32 ucode_id;
@@ -626,7 +626,7 @@ void func_80005240(s32 arg0, u64 *arg1)
 	}
 }
 
-// 80005344
+// 0x80005344
 void syTasklogAppendGfxUcodeLoad(Gfx **dl, u32 ucode_id)
 {
 	switch (ucode_id)
@@ -649,7 +649,7 @@ void syTasklogAppendGfxUcodeLoad(Gfx **dl, u32 ucode_id)
 	}
 }
 
-// 800053CC
+// 0x800053CC
 void func_800053CC()
 {
 	s32 a0;
@@ -771,7 +771,7 @@ void func_800053CC()
 	syTasklogCheckBufferLengths();
 }
 
-// 800057C8
+// 0x800057C8
 void func_800057C8()
 {
 	s32 i;
@@ -855,7 +855,7 @@ void func_800057C8()
 	syTasklogCheckBufferLengths();
 }
 
-// 80005AE4
+// 0x80005AE4
 u32 syTasklogSwitchContext(s32 arg0)
 {
 	s32 msg;
@@ -887,7 +887,7 @@ u32 syTasklogSwitchContext(s32 arg0)
 	return 0;
 }
 
-// 80005BFC
+// 0x80005BFC
 void func_80005BFC()
 {
 	SCTaskInfo info;
@@ -905,20 +905,20 @@ void func_80005BFC()
 	osRecvMesg(&mq, NULL, OS_MESG_BLOCK);
 }
 
-// 80005C74
+// 0x80005C74
 void syTasklogSetLoadScene(void)
 {
 	sSYTasklogStatus = nSYTasklogStatusLoadScene;
 }
 
-// 80005C84
+// 0x80005C84
 void unref_80005C84(s32 arg0)
 {
 	sSYTasklogStatus = nSYTasklogStatusUnk2;
 	D_800465D4 = arg0;
 }
 
-// 80005C9C
+// 0x80005C9C
 sb32 syTasklogCheckBreakLoop(void)
 {
 	SCTaskInfo info;
@@ -944,7 +944,7 @@ sb32 syTasklogCheckBreakLoop(void)
 	}
 }
 
-// 80005D10
+// 0x80005D10
 void func_80005D10()
 {
 	if (D_800454BC == 1)
@@ -959,7 +959,7 @@ void func_80005D10()
 	}
 }
 
-// 80005DA0
+// 0x80005DA0
 void func_80005DA0(FnBundle *arg0)
 {
 	s32 i;
@@ -1085,14 +1085,14 @@ void func_80005DA0(FnBundle *arg0)
 	D_800454BC = 2;
 }
 
-// 800062B4
+// 0x800062B4
 void func_800062B4(FnBundle *self)
 {
 	D_80046668(self);
 	self->fn04();
 }
 
-// 800062EC
+// 0x800062EC
 void func_800062EC(FnBundle *self)
 {
 	syTasklogResetGraphicsHeap();
@@ -1103,7 +1103,7 @@ void func_800062EC(FnBundle *self)
 	func_80004EFC();
 }
 
-// 80006350
+// 0x80006350
 void func_80006350(FnBundle *self)
 {
 	D_80046668(self);
@@ -1115,7 +1115,7 @@ void func_80006350(FnBundle *self)
 	}
 }
 
-// 800063A0
+// 0x800063A0
 void func_800063A0(FnBundle *self)
 {
 	syTasklogResetGraphicsHeap();
@@ -1133,7 +1133,7 @@ void func_800063A0(FnBundle *self)
 	}
 }
 
-// 8000641C
+// 0x8000641C
 void unref_8000641C(GObj *gobj)
 {
 	s32 idx;
@@ -1165,7 +1165,7 @@ void unref_8000641C(GObj *gobj)
 	dSYTasklogFrameDrawCount++; // += 1
 }
 
-// 80006548
+// 0x80006548
 void func_80006548(syTasklogBufferSetup *arg0, void (*arg1)())
 {
 	s32 i;
@@ -1224,7 +1224,7 @@ void func_80006548(syTasklogBufferSetup *arg0, void (*arg1)())
 	func_80005DA0(&D_800465F8);
 }
 
-// 800067E4
+// 0x800067E4
 void unref_800067E4(syTasklogBufferSetup *arg)
 {
 	syTasklogInitGeneralHeap(arg->arena_start, arg->arena_size);
@@ -1233,7 +1233,7 @@ void unref_800067E4(syTasklogBufferSetup *arg)
 	func_80006548(arg, NULL);
 }
 
-// 8000683C
+// 0x8000683C
 void syTasklogInit(syTasklogSetup *ts)
 {
 	OMSetup omsetup;
@@ -1292,21 +1292,21 @@ void syTasklogInit(syTasklogSetup *ts)
 	func_80006548(&ts->buffer_setup, ts->func_start);
 }
 
-// 80006A8C
+// 0x80006A8C
 void syTasklogSetLogicIntervals(u16 update, u16 framedraw)
 {
 	sSYTasklogUpdateInterval = update;
 	sSYTasklogFrameDrawInterval = framedraw;
 }
 
-// 80006AA8
+// 0x80006AA8
 void unref_80006AA8()
 {
 	if (D_800454BC != 2)
 		D_800454BC = 1;
 }
 
-// 80006AD0
+// 0x80006AD0
 s32 unref_80006AD0()
 {
 	if (D_800454BC == 2)
@@ -1315,20 +1315,20 @@ s32 unref_80006AD0()
 		return 0;
 }
 
-// 80006AF8
+// 0x80006AF8
 void unref_80006AF8()
 {
 	osSendMesg(&D_800454C8, NULL, OS_MESG_NOBLOCK);
 }
 
-// 80006B24
+// 0x80006B24
 void unref_80006B24(s32 arg0)
 {
 	if ((arg0 == 1) || (arg0 == 2))
 		sSYTasklogCount = arg0;
 }
 
-// 80006B44
+// 0x80006B44
 s32 unref_80006B44(s32 arg0)
 {
 	if ((arg0 == 1) || (arg0 == 2))
@@ -1339,7 +1339,7 @@ s32 unref_80006B44(s32 arg0)
 	return 0;
 }
 
-// 80006B80
+// 0x80006B80
 void func_80006B80()
 {
 	s32 i;

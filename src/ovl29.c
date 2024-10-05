@@ -60,13 +60,13 @@ void mnBonusRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state);
 
 
 // Data
-// 80136F50
+// 0x80136F50
 u32 D_ovl29_80136F50[11] = {
 
 	0x11, 0x14, 0x15, 0x12, 0x13, 0x17, 0x18, 0x19, 0x21, 0x24, 0x16
 };
 
-// 80136F7C
+// 0x80136F7C
 s32 D_ovl29_80136F7C[] = {
 
 	0x00000000,
@@ -86,87 +86,87 @@ s32 D_ovl29_80136F7C[] = {
 
 
 // BSS
-// 80137640
+// 0x80137640
 s32 D_ovl29_80137640[2];
 
-// 80137648
+// 0x80137648
 mnCharPanelBonus gMnBonusPanel;
 
-// 801376D0
+// 0x801376D0
 s32 D_ovl29_801376D0;
 
-// 801376D4
+// 0x801376D4
 s32 D_ovl29_801376D4;
 
-// 801376D8
+// 0x801376D8
 s32 D_ovl29_801376D8[4];
 
-// 801376E8 timer after selecting char before auto-starting
+// 0x801376E8 timer after selecting char before auto-starting
 s32 gMnBonusAutostartTimer;
 
-// 801376EC
+// 0x801376EC
 sb32 gMnBonusCharSelected;
 
-// 801376F0
+// 0x801376F0
 sb32 gMnBonusIsTeamBattle;
 
-// 801376F4
+// 0x801376F4
 s32 gMnBonusRule;
 
-// 801376F8
+// 0x801376F8
 s32 gMnBonusHumanPanelPort;
 
-// 801376FC
+// 0x801376FC
 GObj* gMnBonusHighscoreGobj;
 
-// 80137700
+// 0x80137700
 s32 D_ovl29_80137700[4];
 
-// 80137710
+// 0x80137710
 void* gMnBonusAnimHeap;
 
-// 80137714 0 = BTT; 1 = BTP
+// 0x80137714 0 = BTT; 1 = BTP
 s32 gMnBonusType;
 
-// 80137718 title and back button
+// 0x80137718 title and back button
 GObj* gMnBonusTitleGObj;
 
-// 8013771C total time highscore
+// 0x8013771C total time highscore
 GObj* gMnBonusTotalTimeGobj;
 
-// 80137720 flag indicating which bonus chars are available
+// 0x80137720 flag indicating which bonus chars are available
 u16 gMnBonusCharacterUnlockedMask;
 
-// 80137724 frames elapsed on CSS
+// 0x80137724 frames elapsed on CSS
 s32 gMnBonusFramesElapsed;
 
-// 80137728 frames to wait until exiting the CSS
+// 0x80137728 frames to wait until exiting the CSS
 s32 gMnBonusMaxFramesElapsed;
 
-// 8013772C looping timer that helps determine blink rate of Press Start (and Ready to Fight?)
+// 0x8013772C looping timer that helps determine blink rate of Press Start (and Ready to Fight?)
 s32 gMnBonusPressStartFlashTimer;
 
-// 80137730
+// 0x80137730
 s32 D_ovl29_80137730[180];
 
-// 80137A00
+// 0x80137A00
 lbFileNode D_ovl29_80137A00[7];
 
-// 80137A38
+// 0x80137A38
 u32 D_ovl29_80137A38[240];
 
-// 80137DF8
-s32 gMnBonusFilesArray[11];
+// 0x80137DF8
+s32 gMnBonusFiles[11];
 
 
-// 80131B00
-void mnBonusSetupDisplayList(Gfx **display_list)
+// 0x80131B00
+void mnBonusFuncLights(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(display_list, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 }
 
-// 80131B58
+// 0x80131B58
 s32 mnBonusPow(s32 num, s32 pow)
 {
 	if (pow == 0)
@@ -185,7 +185,7 @@ s32 mnBonusPow(s32 num, s32 pow)
 	}
 }
 
-// 80131BF8
+// 0x80131BF8
 void mnBonusSetTextureColors(SObj* sobj, u32 colors[])
 {
 	sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -198,7 +198,7 @@ void mnBonusSetTextureColors(SObj* sobj, u32 colors[])
 	sobj->sprite.blue = colors[5];
 }
 
-// 80131C40
+// 0x80131C40
 s32 mnBonusGetNumberOfDigits(s32 num, s32 maxDigits)
 {
 	s32 numDigits;
@@ -212,7 +212,7 @@ s32 mnBonusGetNumberOfDigits(s32 num, s32 maxDigits)
 	return 0;
 }
 
-// 80131CEC
+// 0x80131CEC
 void mnBonusCreateSmallerNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 colors[], s32 maxDigits, sb32 pad)
 {
 	intptr_t number_offsets[10] = {
@@ -228,7 +228,7 @@ void mnBonusCreateSmallerNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 co
 
 	if (num < 0) num = 0;
 
-	number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMnBonusFilesArray[9], number_offsets[num % 10]));
+	number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMnBonusFiles[9], number_offsets[num % 10]));
 	mnBonusSetTextureColors(number_sobj, colors);
 	left_x -= 8;
 	number_sobj->pos.x = left_x;
@@ -243,7 +243,7 @@ void mnBonusCreateSmallerNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 co
 	{
 		digit = (mnBonusPow(10, place) != 0) ? num / mnBonusPow(10, place) : 0;
 
-		number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMnBonusFilesArray[9], number_offsets[digit % 10]));
+		number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMnBonusFiles[9], number_offsets[digit % 10]));
 		mnBonusSetTextureColors(number_sobj, colors);
 		left_x -= 8;
 		number_sobj->pos.x = left_x;
@@ -251,7 +251,7 @@ void mnBonusCreateSmallerNumber(GObj* number_gobj, s32 num, f32 x, f32 y, s32 co
 	}
 }
 
-// 80136FD8
+// 0x80136FD8
 intptr_t dMnBonusChrOffsets[29] = {
 
 	0x040, 0x0D0, 0x160, 0x1F0, 0x280, 0x310, 0x3A0, 0x430, 0x4C0, 0x550,
@@ -259,23 +259,23 @@ intptr_t dMnBonusChrOffsets[29] = {
 	0xB80, 0xC10, 0xCA0, 0xD30, 0xDC0, 0xE50, 0xED0, 0xF60, 0xFD0
 };
 
-// 8013704C
+// 0x8013704C
 f32 dMnBonusChrWidths[29] = {
 
 	5.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 3.0, 4.0, 4.0, 4.0, 5.0, 5.0, 4.0,
 	4.0, 5.0, 4.0, 4.0, 5.0, 4.0, 5.0, 5.0, 5.0, 5.0, 4.0, 2.0, 7.0, 3.0
 };
 
-// 80131F5C - Unused?
+// 0x80131F5C - Unused?
 void func_ovl29_80131F5C() {}
 
-// 80131F64 - Unused?
+// 0x80131F64 - Unused?
 void func_ovl29_80131F64() {}
 
-// 80131F6C - Unused?
+// 0x80131F6C - Unused?
 void func_ovl29_80131F6C() {}
 
-// 80131F74
+// 0x80131F74
 void mnBonusSelectCharWithToken(s32 port_id, s32 select_button)
 {
 	s32 held_port_id = gMnBonusPanel.held_port_id,
@@ -300,7 +300,7 @@ void mnBonusSelectCharWithToken(s32 port_id, s32 select_button)
 	gMnBonusCharSelected = 1;
 }
 
-// 80132030
+// 0x80132030
 f32 mnBonusGetNextPortraitX(s32 portrait_id, f32 current_x_position)
 {
 	f32 portrait_x_position[12] = {
@@ -332,13 +332,13 @@ f32 mnBonusGetNextPortraitX(s32 portrait_id, f32 current_x_position)
 	}
 }
 
-// 80132144
+// 0x80132144
 sb32 mnBonusCheckFighterIsXBoxed(s32 ft_kind)
 {
 	return FALSE;
 }
 
-// 80132150
+// 0x80132150
 void mnBonusSetPortraitX(GObj *portrait_gobj)
 {
 	f32 new_portrait_x = mnBonusGetNextPortraitX(portrait_gobj->user_data.s, SObjGetStruct(portrait_gobj)->pos.x);
@@ -354,7 +354,7 @@ void mnBonusSetPortraitX(GObj *portrait_gobj)
 	}
 }
 
-// 801321CC
+// 0x801321CC
 void mnBonusInitializePortraitBackgroundPosition(SObj *portrait_bg_sobj, s32 portrait_id)
 {
 	Vec2f coordinates[12] = {
@@ -369,7 +369,7 @@ void mnBonusInitializePortraitBackgroundPosition(SObj *portrait_bg_sobj, s32 por
 	portrait_bg_sobj->pos.y = coordinates[portrait_id].y;
 }
 
-// 80132228
+// 0x80132228
 void mnBonusAddRedXBoxToPortrait(GObj* portrait_gobj, s32 portrait_id)
 {
 	SObj* portrait_sobj = SObjGetStruct(portrait_gobj);
@@ -377,7 +377,7 @@ void mnBonusAddRedXBoxToPortrait(GObj* portrait_gobj, s32 portrait_id)
 		y = portrait_sobj->pos.y;
 	intptr_t xbox_image_offset = &(FILE_013_XBOX_IMAGE_OFFSET);
 
-	portrait_sobj = lbCommonMakeSObjForGObj(portrait_gobj, GetAddressFromOffset(gMnBonusFilesArray[4], xbox_image_offset)); // AppendTexture
+	portrait_sobj = lbCommonMakeSObjForGObj(portrait_gobj, GetAddressFromOffset(gMnBonusFiles[4], xbox_image_offset)); // AppendTexture
 
 	portrait_sobj->pos.x = x + 4.0F;
 	portrait_sobj->pos.y = y + 12.0F;
@@ -388,7 +388,7 @@ void mnBonusAddRedXBoxToPortrait(GObj* portrait_gobj, s32 portrait_id)
 	portrait_sobj->sprite.blue = 0;
 }
 
-// 801322BC
+// 0x801322BC
 sb32 mnBonusGetIsLocked(s32 char_id)
 {
 	switch (char_id)
@@ -408,7 +408,7 @@ sb32 mnBonusGetIsLocked(s32 char_id)
 	return FALSE;
 }
 
-// 80137180
+// 0x80137180
 s32 D_ovl29_80137180[] = {
 
 	0xC55252C5,
@@ -422,10 +422,10 @@ s32 D_ovl29_80137180[] = {
 	0x00000000
 };
 
-// 80132388 - Unused?
+// 0x80132388 - Unused?
 void func_ovl29_80132388() {}
 
-// 80132390
+// 0x80132390
 s32 mnBonusGetFtKind(s32 portrait_id)
 {
 	s32 ftKind_order[12] = {
@@ -436,7 +436,7 @@ s32 mnBonusGetFtKind(s32 portrait_id)
 	return ftKind_order[portrait_id];
 }
 
-// 801323E0
+// 0x801323E0
 s32 mnBonusGetPortraitId(s32 ft_kind)
 {
 	s32 portrait_id_order[12] = {
@@ -447,7 +447,7 @@ s32 mnBonusGetPortraitId(s32 ft_kind)
 	return portrait_id_order[ft_kind];
 }
 
-// 80132430
+// 0x80132430
 void mnBonusRenderPortraitWithNoise(GObj *portrait_gobj)
 {
 	gDPPipeSync(gSYTasklogDLHeads[0]++);
@@ -458,7 +458,7 @@ void mnBonusRenderPortraitWithNoise(GObj *portrait_gobj)
 	lbCommonDrawSObjNoAttr(portrait_gobj);
 }
 
-// 801324F0
+// 0x801324F0
 void mnBonusCreateLockedPortrait(s32 portrait_id)
 {
 	GObj* texture_gobj;
@@ -474,7 +474,7 @@ void mnBonusCreateLockedPortrait(s32 portrait_id)
 	gcAddGObjDisplay(texture_gobj, lbCommonDrawSObjAttr, 0x1BU, 0x80000000U, -1);
 	gcAddGObjProcess(texture_gobj, mnBonusSetPortraitX, 1, 1);
 
-	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, GetAddressFromOffset(gMnBonusFilesArray[4], &FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET));
+	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, GetAddressFromOffset(gMnBonusFiles[4], &FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET));
 	texture_sobj->pos.x = (f32) (((portrait_id >= 6 ? portrait_id - 6 : portrait_id) * 0x2D) + 0x19);
 	texture_sobj->pos.y = (f32) (((portrait_id >= 6 ? 1 : 0) * 0x2B) + 0x24);
 
@@ -486,7 +486,7 @@ void mnBonusCreateLockedPortrait(s32 portrait_id)
 	gcAddGObjDisplay(texture_gobj, mnBonusRenderPortraitWithNoise, 0x1BU, 0x80000000U, -1);
 	gcAddGObjProcess(texture_gobj, mnBonusSetPortraitX, 1, 1);
 
-	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, GetAddressFromOffset(gMnBonusFilesArray[4], locked_portrait_offsets[mnBonusGetFtKind(portrait_id)]));
+	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, GetAddressFromOffset(gMnBonusFiles[4], locked_portrait_offsets[mnBonusGetFtKind(portrait_id)]));
 	texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
 	texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
 
@@ -498,7 +498,7 @@ void mnBonusCreateLockedPortrait(s32 portrait_id)
 	gcAddGObjDisplay(texture_gobj, lbCommonDrawSObjAttr, 0x1BU, 0x80000000U, -1);
 	gcAddGObjProcess(texture_gobj, mnBonusSetPortraitX, 1, 1);
 
-	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, GetAddressFromOffset(gMnBonusFilesArray[4], &FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET));
+	texture_sobj = lbCommonMakeSObjForGObj(texture_gobj, GetAddressFromOffset(gMnBonusFiles[4], &FILE_013_PORTRAIT_QUESTION_MARK_IMAGE_OFFSET));
 	texture_sobj->sprite.attr &= ~SP_FASTCOPY;
 	texture_sobj->sprite.attr |= SP_TRANSPARENT;
 	texture_sobj->envcolor.r = 0x5B;
@@ -512,7 +512,7 @@ void mnBonusCreateLockedPortrait(s32 portrait_id)
 	mnBonusInitializePortraitBackgroundPosition(texture_sobj, portrait_id);
 }
 
-// 80132798
+// 0x80132798
 void mnBonusCreatePortrait(s32 portrait_id)
 {
 	GObj *portrait_gobj, *portrait_bg_gobj;
@@ -536,7 +536,7 @@ void mnBonusCreatePortrait(s32 portrait_id)
 		portrait_bg_gobj->user_data.p = portrait_id;
 		gcAddGObjProcess(portrait_bg_gobj, mnBonusSetPortraitX, 1, 1);
 
-		texture_sobj = lbCommonMakeSObjForGObj(portrait_bg_gobj, GetAddressFromOffset(gMnBonusFilesArray[4], &FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET));
+		texture_sobj = lbCommonMakeSObjForGObj(portrait_bg_gobj, GetAddressFromOffset(gMnBonusFiles[4], &FILE_013_PORTRAIT_FIRE_BG_IMAGE_OFFSET));
 		texture_sobj->pos.x = ((((portrait_id >= 6) ? portrait_id - 6 : portrait_id) * 0x2D) + 0x19);
 		texture_sobj->pos.y = (((portrait_id >= 6) ? 1 : 0) * 0x2B) + 0x24;
 
@@ -547,7 +547,7 @@ void mnBonusCreatePortrait(s32 portrait_id)
 		gcAddGObjDisplay(portrait_gobj, lbCommonDrawSObjAttr, 0x1BU, 0x80000000U, -1);
 		gcAddGObjProcess(portrait_gobj, mnBonusSetPortraitX, 1, 1);
 
-		texture_sobj = lbCommonMakeSObjForGObj(portrait_gobj, GetAddressFromOffset(gMnBonusFilesArray[4], portrait_offsets[mnBonusGetFtKind(portrait_id)]));
+		texture_sobj = lbCommonMakeSObjForGObj(portrait_gobj, GetAddressFromOffset(gMnBonusFiles[4], portrait_offsets[mnBonusGetFtKind(portrait_id)]));
 		texture_sobj->sprite.attr = texture_sobj->sprite.attr & ~SP_FASTCOPY;
 		texture_sobj->sprite.attr = texture_sobj->sprite.attr| SP_TRANSPARENT;
 		texture_sobj->pos.x = ((((portrait_id >= 6) ? portrait_id - 6 : portrait_id) * 0x2D) + 0x19);
@@ -563,7 +563,7 @@ void mnBonusCreatePortrait(s32 portrait_id)
 	}
 }
 
-// 80132A58
+// 0x80132A58
 void mnBonusCreatePortraits()
 {
 	s32 portrait_id;
@@ -572,7 +572,7 @@ void mnBonusCreatePortraits()
 		mnBonusCreatePortrait(portrait_id);
 }
 
-// 80132A98
+// 0x80132A98
 void mnBonusSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
 {
 	SObj* sobj;
@@ -599,7 +599,7 @@ void mnBonusSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
 		gcRemoveSObjAll(name_logo_gobj);
 
 		// logo
-		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMnBonusFilesArray[1], logo_offsets[ft_kind]));
+		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMnBonusFiles[1], logo_offsets[ft_kind]));
 		sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
 		sobj->sprite.attr = sobj->sprite.attr | SP_TRANSPARENT;
 		sobj->sprite.red = 0;
@@ -609,7 +609,7 @@ void mnBonusSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
 		sobj->pos.y = 144.0F;
 
 		// name
-		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMnBonusFilesArray[0], name_offsets[ft_kind]));
+		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMnBonusFiles[0], name_offsets[ft_kind]));
 		sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
 		sobj->sprite.attr = sobj->sprite.attr | SP_TRANSPARENT;
 		sobj->pos.x = 66.0F;
@@ -617,7 +617,7 @@ void mnBonusSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
 	}
 }
 
-// 80132C14
+// 0x80132C14
 void mnBonusCreatePortraitViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x28, 0x08000000, -1, 0, 1, 0, 1, 0);
@@ -625,7 +625,7 @@ void mnBonusCreatePortraitViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 80132CB4
+// 0x80132CB4
 void mnBonusCreatePortraitBackgroundViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x3C, 0x100000000, -1, 0, 1, 0, 1, 0);
@@ -633,7 +633,7 @@ void mnBonusCreatePortraitBackgroundViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 80132D54
+// 0x80132D54
 void mnBonusCreatePortraitWhiteBackgroundViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x32, 0x200000000, -1, 0, 1, 0, 1, 0);
@@ -641,7 +641,7 @@ void mnBonusCreatePortraitWhiteBackgroundViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 80132DF4
+// 0x80132DF4
 void mnBonusCreatePanelViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x1E, 0x10000000, -1, 0, 1, 0, 1, 0);
@@ -649,7 +649,7 @@ void mnBonusCreatePanelViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 80132E94
+// 0x80132E94
 void mnBonusUpdatePanel(GObj* panel_gobj, s32 port_id)
 {
 	SObj* panel_sobj;
@@ -660,10 +660,10 @@ void mnBonusUpdatePanel(GObj* panel_gobj, s32 port_id)
 
 	panel_sobj = SObjGetStruct(panel_gobj);
 
-	panel_sobj->sprite.LUT = GetAddressFromOffset(gMnBonusFilesArray[0], offsets[port_id]);
+	panel_sobj->sprite.LUT = GetAddressFromOffset(gMnBonusFiles[0], offsets[port_id]);
 }
 
-// 80132EEC
+// 0x80132EEC
 void mnBonusCreatePanel(s32 port_id)
 {
 	GObj* gobj;
@@ -678,7 +678,7 @@ void mnBonusCreatePanel(s32 port_id)
 	};
 
 	// create panel
-	gobj = lbCommonMakeSpriteGObj(0, NULL, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1C, 0x80000000, -1, GetAddressFromOffset(gMnBonusFilesArray[5], &FILE_017_PANEL_IMAGE_OFFSET), 1, NULL, 1);
+	gobj = lbCommonMakeSpriteGObj(0, NULL, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1C, 0x80000000, -1, GetAddressFromOffset(gMnBonusFiles[5], &FILE_017_PANEL_IMAGE_OFFSET), 1, NULL, 1);
 	SObjGetStruct(gobj)->pos.x = 58.0f;
 	SObjGetStruct(gobj)->pos.y = 127.0f;
 	SObjGetStruct(gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -686,7 +686,7 @@ void mnBonusCreatePanel(s32 port_id)
 
 	gMnBonusPanel.panel = gobj;
 
-	type_sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMnBonusFilesArray[0], type_offsets[port_id]));
+	type_sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMnBonusFiles[0], type_offsets[port_id]));
 	type_sobj->pos.x = type_x_offsets[port_id] + 58.0F;
 	type_sobj->pos.y = 132.0F;
 	type_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -703,7 +703,7 @@ void mnBonusCreatePanel(s32 port_id)
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0x1CU, 0x80000000U, -1);
 }
 
-// 80137354
+// 0x80137354
 intptr_t dMnBonusNumberOffsets[10] = {
 
 	0x5388,
@@ -718,17 +718,17 @@ intptr_t dMnBonusNumberOffsets[10] = {
 	0x5CC8
 };
 
-// 80138A5C
+// 0x80138A5C
 f32 dMnBonusNumberWidths[10] = {
 
 	8.0, 6.0, 9.0, 8.0, 8.0,
 	9.0, 8.0, 8.0, 8.0, 9.0
 };
 
-// 801330C4 - Unused?
+// 0x801330C4 - Unused?
 void func_ovl29_801330C4() {}
 
-// 801330CC
+// 0x801330CC
 void mnBonusCreateBackground()
 {
 	GObj* background_gobj;
@@ -736,7 +736,7 @@ void mnBonusCreateBackground()
 
 	background_gobj = gcMakeGObjSPAfter(0U, NULL, 0x11U, 0x80000000U);
 	gcAddGObjDisplay(background_gobj, lbCommonDrawSObjAttr, 0x1AU, 0x80000000U, -1);
-	background_sobj = lbCommonMakeSObjForGObj(background_gobj, GetAddressFromOffset(gMnBonusFilesArray[2], &FILE_015_BACKGROUND_IMAGE_OFFSET));
+	background_sobj = lbCommonMakeSObjForGObj(background_gobj, GetAddressFromOffset(gMnBonusFiles[2], &FILE_015_BACKGROUND_IMAGE_OFFSET));
 	background_sobj->cms = G_TX_WRAP;
 	background_sobj->cmt = G_TX_WRAP;
 	background_sobj->masks = 6;
@@ -747,7 +747,7 @@ void mnBonusCreateBackground()
 	background_sobj->pos.y = 10.0F;
 }
 
-// 80133170
+// 0x80133170
 void mnBonusCreateBackgroundViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x4000000, -1, 0, 1, 0, 1, 0);
@@ -755,10 +755,10 @@ void mnBonusCreateBackgroundViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 80133210 - Unused?
+// 0x80133210 - Unused?
 void func_ovl29_80133210() {}
 
-// 80133218
+// 0x80133218
 void mnBonusDrawTitleAndBack()
 {
 	GObj* title_gobj;
@@ -771,11 +771,11 @@ void mnBonusDrawTitleAndBack()
 
 	if (gMnBonusType == mnBonusTypeBTT)
 	{
-		title_sobj = lbCommonMakeSObjForGObj(title_gobj, GetAddressFromOffset(gMnBonusFilesArray[3], &FILE_012_BREAK_THE_TARGETS_TITLE_IMAGE_OFFSET));
+		title_sobj = lbCommonMakeSObjForGObj(title_gobj, GetAddressFromOffset(gMnBonusFiles[3], &FILE_012_BREAK_THE_TARGETS_TITLE_IMAGE_OFFSET));
 	}
 	else
 	{
-		title_sobj = lbCommonMakeSObjForGObj(title_gobj, GetAddressFromOffset(gMnBonusFilesArray[3], &FILE_012_BOARD_THE_PLATFORMS_TITLE_IMAGE_OFFSET));
+		title_sobj = lbCommonMakeSObjForGObj(title_gobj, GetAddressFromOffset(gMnBonusFiles[3], &FILE_012_BOARD_THE_PLATFORMS_TITLE_IMAGE_OFFSET));
 	}
 
 	title_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -791,14 +791,14 @@ void mnBonusDrawTitleAndBack()
 	else
 		func_800269C0_275C0(0x1DCU);
 
-	back_sobj = lbCommonMakeSObjForGObj(title_gobj, GetAddressFromOffset(gMnBonusFilesArray[0], &FILE_011_BACK_IMAGE_OFFSET));
+	back_sobj = lbCommonMakeSObjForGObj(title_gobj, GetAddressFromOffset(gMnBonusFiles[0], &FILE_011_BACK_IMAGE_OFFSET));
 	back_sobj->pos.x = 244.0F;
 	back_sobj->pos.y = 23.0F;
 	back_sobj->sprite.attr &= ~SP_FASTCOPY;
 	back_sobj->sprite.attr |= SP_TRANSPARENT;
 }
 
-// 80133370
+// 0x80133370
 void mnBonusCreateTitleOptionsAndBackViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x46, 0x400000000, -1, 0, 1, 0, 1, 0);
@@ -806,7 +806,7 @@ void mnBonusCreateTitleOptionsAndBackViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 80133410
+// 0x80133410
 u32 mnBonusGetBestTime(s32 ft_kind)
 {
 	u32 time;
@@ -831,19 +831,19 @@ u32 mnBonusGetBestTime(s32 ft_kind)
 	}
 }
 
-// 80133488
+// 0x80133488
 s32 mnBonusGetMinutes(s32 frames)
 {
 	return frames / 3600;
 }
 
-// 8013349C
+// 0x8013349C
 s32 mnBonusGetSeconds(s32 frames)
 {
 	return (frames % 3600) / 60;
 }
 
-// 801334C0
+// 0x801334C0
 s32 mnBonusGetCentiseconds(s32 frames)
 {
 	s32 seconds = frames % 3600;
@@ -853,7 +853,7 @@ s32 mnBonusGetCentiseconds(s32 frames)
 	return tenths + hundredths;
 }
 
-// 80133570
+// 0x80133570
 s32 mnBonusGetTotalMinutes()
 {
 	s32 i;
@@ -868,7 +868,7 @@ s32 mnBonusGetTotalMinutes()
 	return sum;
 }
 
-// 801335DC
+// 0x801335DC
 s32 mnBonusGetTotalSeconds()
 {
 	s32 i;
@@ -883,7 +883,7 @@ s32 mnBonusGetTotalSeconds()
 	return sum;
 }
 
-// 80133648
+// 0x80133648
 s32 mnBonusGetTotalCentiseconds()
 {
 	s32 i;
@@ -898,7 +898,7 @@ s32 mnBonusGetTotalCentiseconds()
 	return sum;
 }
 
-// 801336B4
+// 0x801336B4
 void mnBonusDrawBestTime()
 {
 	GObj* best_time_gobj;
@@ -929,7 +929,7 @@ void mnBonusDrawBestTime()
 		gMnBonusHighscoreGobj = best_time_gobj = gcMakeGObjSPAfter(0U, NULL, 0x17U, 0x80000000U);
 		gcAddGObjDisplay(best_time_gobj, lbCommonDrawSObjAttr, 0x1AU, 0x80000000U, -1);
 
-		temp_v0_2 = lbCommonMakeSObjForGObj(best_time_gobj, GetAddressFromOffset(gMnBonusFilesArray[5], &FILE_017_BEST_TIME_LABEL_IMAGE_OFFSET));
+		temp_v0_2 = lbCommonMakeSObjForGObj(best_time_gobj, GetAddressFromOffset(gMnBonusFiles[5], &FILE_017_BEST_TIME_LABEL_IMAGE_OFFSET));
 		temp_v0_2->pos.x = 177.0f;
 		temp_v0_2->pos.y = 198.0f;
 		temp_v0_2->sprite.attr &= ~SP_FASTCOPY;
@@ -940,7 +940,7 @@ void mnBonusDrawBestTime()
 
 		mnBonusCreateSmallerNumber(best_time_gobj, mnBonusGetMinutes(best_time), 237.0F, 195.0F, colors2, 2, 1);
 
-		temp_v0_3 = lbCommonMakeSObjForGObj(best_time_gobj, GetAddressFromOffset(gMnBonusFilesArray[5], &FILE_017_APOSTROPHE_IMAGE_OFFSET));
+		temp_v0_3 = lbCommonMakeSObjForGObj(best_time_gobj, GetAddressFromOffset(gMnBonusFiles[5], &FILE_017_APOSTROPHE_IMAGE_OFFSET));
 		temp_v0_3->pos.x = 239.0f;
 		temp_v0_3->pos.y = 195.0f;
 		temp_v0_3->sprite.attr &= ~SP_FASTCOPY;
@@ -954,7 +954,7 @@ void mnBonusDrawBestTime()
 
 		mnBonusCreateSmallerNumber(best_time_gobj, mnBonusGetSeconds(best_time), 259.0F, 195.0F, colors2, 2, 1);
 
-		temp_v0_4 = lbCommonMakeSObjForGObj(best_time_gobj, GetAddressFromOffset(gMnBonusFilesArray[5], &FILE_017_DOUBLE_QUOTE_IMAGE_OFFSET));
+		temp_v0_4 = lbCommonMakeSObjForGObj(best_time_gobj, GetAddressFromOffset(gMnBonusFiles[5], &FILE_017_DOUBLE_QUOTE_IMAGE_OFFSET));
 		temp_v0_4->pos.x = 261.0F;
 		temp_v0_4->pos.y = 195.0f;
 		temp_v0_4->sprite.attr &= ~SP_FASTCOPY;
@@ -970,7 +970,7 @@ void mnBonusDrawBestTime()
 	}
 }
 
-// 80133990
+// 0x80133990
 u8 mnBonusGetBestCount(s32 ft_kind)
 {
 	if (gMnBonusType == 0)
@@ -979,7 +979,7 @@ u8 mnBonusGetBestCount(s32 ft_kind)
 		return gSaveData.spgame_records[ft_kind].bonus2_task_count;
 }
 
-// 801339C8
+// 0x801339C8
 void mnBonusDrawBestCount()
 {
 	GObj* count_gobj;
@@ -1008,11 +1008,11 @@ void mnBonusDrawBestCount()
 
 		if (gMnBonusType == 0)
 		{
-			label_sobj = lbCommonMakeSObjForGObj(count_gobj, GetAddressFromOffset(gMnBonusFilesArray[5], &FILE_017_TARGETS_LABEL_IMAGE_OFFSET));
+			label_sobj = lbCommonMakeSObjForGObj(count_gobj, GetAddressFromOffset(gMnBonusFiles[5], &FILE_017_TARGETS_LABEL_IMAGE_OFFSET));
 		}
 		else
 		{
-			label_sobj = lbCommonMakeSObjForGObj(count_gobj, GetAddressFromOffset(gMnBonusFilesArray[5], &FILE_017_PLATFORMS_LABEL_IMAGE_OFFSET));
+			label_sobj = lbCommonMakeSObjForGObj(count_gobj, GetAddressFromOffset(gMnBonusFiles[5], &FILE_017_PLATFORMS_LABEL_IMAGE_OFFSET));
 		}
 
 		label_sobj->pos.x = 235.0f;
@@ -1027,7 +1027,7 @@ void mnBonusDrawBestCount()
 	}
 }
 
-// 80133B7C
+// 0x80133B7C
 sb32 mnBonusIsCompleted(s32 ft_kind)
 {
 	u8 count;
@@ -1043,7 +1043,7 @@ sb32 mnBonusIsCompleted(s32 ft_kind)
 		return FALSE;
 }
 
-// 80133BCC
+// 0x80133BCC
 void mnBonusDrawHighscore()
 {
 	if (mnBonusIsCompleted(mnBonusGetFtKindFromTokenPositionEvenIfLocked()))
@@ -1052,10 +1052,10 @@ void mnBonusDrawHighscore()
 		mnBonusDrawBestCount();
 }
 
-// 80133C14 - Unused?
+// 0x80133C14 - Unused?
 void func_ovl29_80133C14() {}
 
-// 80133C1C
+// 0x80133C1C
 void mnDrawBonusTotalTime()
 {
 	GObj* best_time_gobj;
@@ -1077,7 +1077,7 @@ void mnDrawBonusTotalTime()
 	gMnBonusTotalTimeGobj = best_time_gobj = gcMakeGObjSPAfter(0U, NULL, 0x17U, 0x80000000U);
 	gcAddGObjDisplay(best_time_gobj, lbCommonDrawSObjAttr, 0x1AU, 0x80000000U, -1);
 
-	temp_v0_2 = lbCommonMakeSObjForGObj(best_time_gobj, GetAddressFromOffset(gMnBonusFilesArray[5], &FILE_017_TOTAL_BEST_TIME_LABEL_IMAGE_OFFSET));
+	temp_v0_2 = lbCommonMakeSObjForGObj(best_time_gobj, GetAddressFromOffset(gMnBonusFiles[5], &FILE_017_TOTAL_BEST_TIME_LABEL_IMAGE_OFFSET));
 	temp_v0_2->pos.x = 142.0f;
 	temp_v0_2->pos.y = 209.0f;
 	temp_v0_2->sprite.attr &= ~SP_FASTCOPY;
@@ -1090,7 +1090,7 @@ void mnDrawBonusTotalTime()
 	remainder = centiseconds / 100;
 	mnBonusCreateSmallerNumber(best_time_gobj, centiseconds % 100, 283.0F, 206.0F, colors2, 2, 1);
 
-	temp_v0_4 = lbCommonMakeSObjForGObj(best_time_gobj, GetAddressFromOffset(gMnBonusFilesArray[5], &FILE_017_DOUBLE_QUOTE_IMAGE_OFFSET));
+	temp_v0_4 = lbCommonMakeSObjForGObj(best_time_gobj, GetAddressFromOffset(gMnBonusFiles[5], &FILE_017_DOUBLE_QUOTE_IMAGE_OFFSET));
 	temp_v0_4->pos.x = 261.0F;
 	temp_v0_4->pos.y = 206.0f;
 	temp_v0_4->sprite.attr &= ~SP_FASTCOPY;
@@ -1107,7 +1107,7 @@ void mnDrawBonusTotalTime()
 	seconds = seconds % 60;
 	mnBonusCreateSmallerNumber(best_time_gobj, seconds, 259.0F, 206.0F, colors2, 2, 1);
 
-	temp_v0_3 = lbCommonMakeSObjForGObj(best_time_gobj, GetAddressFromOffset(gMnBonusFilesArray[5], &FILE_017_APOSTROPHE_IMAGE_OFFSET));
+	temp_v0_3 = lbCommonMakeSObjForGObj(best_time_gobj, GetAddressFromOffset(gMnBonusFiles[5], &FILE_017_APOSTROPHE_IMAGE_OFFSET));
 	temp_v0_3->pos.x = 239.0f;
 	temp_v0_3->pos.y = 206.0f;
 	temp_v0_3->sprite.attr &= ~SP_FASTCOPY;
@@ -1122,19 +1122,19 @@ void mnDrawBonusTotalTime()
 	mnBonusCreateSmallerNumber(best_time_gobj, mnBonusGetTotalMinutes() + remainder, 237.0F, 206.0F, colors2, 3, 1);
 }
 
-// 80133F4C - Unused?
+// 0x80133F4C - Unused?
 void func_ovl29_80133F4C() {}
 
-// 80133F54 - Unused?
+// 0x80133F54 - Unused?
 void func_ovl29_80133F54() {}
 
-// 80133F5C
+// 0x80133F5C
 s32 mnBonusGetAvailableCostume(s32 ft_kind, s32 select_button)
 {
 	ftParamGetCostumeCommonID(ft_kind, ftParamGetCostumeCommonID(ft_kind, select_button));
 }
 
-// 80133F88
+// 0x80133F88
 s32 mnBonusGetSelectedAnimation(s32 ft_kind)
 {
 	switch (ft_kind)
@@ -1159,7 +1159,7 @@ s32 mnBonusGetSelectedAnimation(s32 ft_kind)
 	}
 }
 
-// 80133FE8
+// 0x80133FE8
 void mnBonusRotateFighter(GObj *fighter_gobj)
 {
 	ftStruct* fp = ftGetStruct(fighter_gobj);
@@ -1199,7 +1199,7 @@ void mnBonusRotateFighter(GObj *fighter_gobj)
 	}
 }
 
-// 80134108
+// 0x80134108
 void mnBonusSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind)
 {
 	f32 initial_y_rotation;
@@ -1235,7 +1235,7 @@ void mnBonusSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind)
 	}
 }
 
-// 80134274
+// 0x80134274
 void mnBonusCreateFighterViewport()
 {
 	Camera *cam = CameraGetStruct((GObj*)gcMakeCameraGObj(0x401U, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x48600, -1, 1, 1, 0, 1, 0));
@@ -1252,7 +1252,7 @@ void mnBonusCreateFighterViewport()
 	cam->vec.up.y = 1.0F;
 }
 
-// 80134364
+// 0x80134364
 void mnBonusRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state)
 {
 	SObj* cursor_sobj;
@@ -1286,13 +1286,13 @@ void mnBonusRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state)
 
 	gcRemoveSObjAll(cursor_gobj);
 
-	cursor_sobj = lbCommonMakeSObjForGObj(cursor_gobj, GetAddressFromOffset(gMnBonusFilesArray[0], cursor_offsets[cursor_state]));
+	cursor_sobj = lbCommonMakeSObjForGObj(cursor_gobj, GetAddressFromOffset(gMnBonusFiles[0], cursor_offsets[cursor_state]));
 	cursor_sobj->pos.x = current_x;
 	cursor_sobj->pos.y = current_y;
 	cursor_sobj->sprite.attr &= ~SP_FASTCOPY;
 	cursor_sobj->sprite.attr |= SP_TRANSPARENT;
 
-	cursor_sobj = lbCommonMakeSObjForGObj(cursor_gobj, GetAddressFromOffset(gMnBonusFilesArray[0], type_offsets[port_id]));
+	cursor_sobj = lbCommonMakeSObjForGObj(cursor_gobj, GetAddressFromOffset(gMnBonusFiles[0], type_offsets[port_id]));
 	cursor_sobj->pos.x = SObjGetPrev(cursor_sobj)->pos.x + type_positions[cursor_state].x;
 	cursor_sobj->pos.y = SObjGetPrev(cursor_sobj)->pos.y + type_positions[cursor_state].y;
 	cursor_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1305,13 +1305,13 @@ void mnBonusRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state)
 	cursor_sobj->envcolor.b = type_colors[port_id].env.b;
 }
 
-// 80134574 - Unused?
+// 0x80134574 - Unused?
 void mnBonusCheckPickerRightArrowPress() {}
 
-// 8013457C - Unused?
+// 0x8013457C - Unused?
 void mnBonusCheckPickerLeftArrowPress() {}
 
-// 80134584
+// 0x80134584
 s32 mnBonusCheckBackButtonPress(GObj* cursor_gobj)
 {
 	f32 current_x, current_y;
@@ -1335,7 +1335,7 @@ s32 mnBonusCheckBackButtonPress(GObj* cursor_gobj)
 	return FALSE;
 }
 
-// 8013464C
+// 0x8013464C
 s32 mnBonusCheckTokenPickup(GObj* cursor_gobj, s32 cursor_port_id, s32 port_id)
 {
 	f32 current_x, current_y;
@@ -1358,7 +1358,7 @@ s32 mnBonusCheckTokenPickup(GObj* cursor_gobj, s32 cursor_port_id, s32 port_id)
 	return FALSE;
 }
 
-// 80134724
+// 0x80134724
 void mnBonusResetPort(s32 port_id)
 {
 	gMnBonusPanel.is_selected = FALSE;
@@ -1372,7 +1372,7 @@ void mnBonusResetPort(s32 port_id)
 	gMnBonusPanel.unk_0xA0 = FALSE;
 }
 
-// 8013476C
+// 0x8013476C
 void mnBonusSyncFighterDisplay(s32 port_id)
 {
 	s32 var_v0 = 0;
@@ -1392,10 +1392,10 @@ void mnBonusSyncFighterDisplay(s32 port_id)
 	}
 }
 
-// 801347F0 - Unused?
+// 0x801347F0 - Unused?
 void func_ovl29_801347F0() {}
 
-// 801347F8
+// 0x801347F8
 void mnBonusSyncNameAndLogo(s32 port_id)
 {
 	if (gMnBonusPanel.char_id == nFTKindNull && !gMnBonusPanel.is_selected)
@@ -1409,7 +1409,7 @@ void mnBonusSyncNameAndLogo(s32 port_id)
 	}
 }
 
-// 80134858
+// 0x80134858
 void mnBonusRemoveWhiteSquare(s32 port_id)
 {
 	GObj* white_square_gobj;
@@ -1422,7 +1422,7 @@ void mnBonusRemoveWhiteSquare(s32 port_id)
 	}
 }
 
-// 80134890
+// 0x80134890
 void mnBonusFlashWhiteSquare(GObj* white_square_gobj)
 {
 	s32 duration = 16;
@@ -1444,7 +1444,7 @@ void mnBonusFlashWhiteSquare(GObj* white_square_gobj)
 	}
 }
 
-// 8013491C
+// 0x8013491C
 void mnBonusCreateWhiteSquare(s32 port_id)
 {
 	GObj* white_square_gobj;
@@ -1458,12 +1458,12 @@ void mnBonusCreateWhiteSquare(s32 port_id)
 	white_square_gobj->user_data.p = port_id;
 	gcAddGObjProcess(white_square_gobj, mnBonusFlashWhiteSquare, 0, 1);
 
-	white_square_sobj = lbCommonMakeSObjForGObj(white_square_gobj, GetAddressFromOffset(gMnBonusFilesArray[4], &FILE_013_WHITE_SQUARE));
+	white_square_sobj = lbCommonMakeSObjForGObj(white_square_gobj, GetAddressFromOffset(gMnBonusFiles[4], &FILE_013_WHITE_SQUARE));
 	white_square_sobj->pos.x = (f32) (((portrait_id >= 6 ? portrait_id - 6 : portrait_id) * 45) + 26);
 	white_square_sobj->pos.y = (f32) (((portrait_id >= 6 ? 1 : 0) * 43) + 37);
 }
 
-// 80134A50
+// 0x80134A50
 void mnBonusAnnounceFighter(s32 port_id, s32 panel_id)
 {
 	u16 announcer_fgms[12] = {
@@ -1494,10 +1494,10 @@ void mnBonusAnnounceFighter(s32 port_id, s32 panel_id)
 	}
 }
 
-// 80134B1C - Unused?
+// 0x80134B1C - Unused?
 void func_ovl29_80134B1C() {}
 
-// 80134B24
+// 0x80134B24
 sb32 mnBonusSelectChar(GObj* cursor_gobj, s32 port_id, s32 arg2, s32 select_button)
 {
 	if (gMnBonusPanel.cursor_state != mnCursorStateHoldingToken)
@@ -1515,7 +1515,7 @@ sb32 mnBonusSelectChar(GObj* cursor_gobj, s32 port_id, s32 arg2, s32 select_butt
 	return FALSE;
 }
 
-// 80134BB0
+// 0x80134BB0
 void mnBonusReorderCursorsOnPickup(s32 port_id, s32 token_id)
 {
 	// display orders for cursors on token pickup
@@ -1527,7 +1527,7 @@ void mnBonusReorderCursorsOnPickup(s32 port_id, s32 token_id)
 	gcMoveGObjDL(gMnBonusPanel.token, 0x1EU, diplay_orders[port_id] + 1);
 }
 
-// 80134C1C
+// 0x80134C1C
 void mnBonusReorderCursorsOnPlacement(s32 port_id)
 {
 	// display orders for cursors not holding tokens on token placement
@@ -1539,14 +1539,14 @@ void mnBonusReorderCursorsOnPlacement(s32 port_id)
 	gcMoveGObjDL(gMnBonusPanel.token, 0x1F, unheld_orders[port_id]);
 }
 
-// 80134C80
+// 0x80134C80
 void mnBonusSetCursorCoordinatesFromToken(s32 port_id)
 {
 	gMnBonusPanel.cursor_pickup_x = SObjGetStruct(gMnBonusPanel.token)->pos.x - 11.0f;
 	gMnBonusPanel.cursor_pickup_y = SObjGetStruct(gMnBonusPanel.token)->pos.y - -14.0f;
 }
 
-// 80134CC4
+// 0x80134CC4
 void mnBonusHandleCursorPickup(s32 port_id)
 {
 	gMnBonusPanel.holder_port_id = port_id;
@@ -1568,7 +1568,7 @@ void mnBonusHandleCursorPickup(s32 port_id)
 	mnBonusSyncNameAndLogo(port_id);
 }
 
-// 80134D54
+// 0x80134D54
 sb32 mnBonusCheckAndHandleTokenPickup(GObj* cursor_gobj, s32 port_id)
 {
 	mnCharPanelBonus* panel_info = &gMnBonusPanel;
@@ -1603,7 +1603,7 @@ sb32 mnBonusCheckAndHandleTokenPickup(GObj* cursor_gobj, s32 port_id)
 	return FALSE;
 }
 
-// 80134E50
+// 0x80134E50
 s32 mnBonusGetFtKindFromTokenPositionEvenIfLocked()
 {
 	SObj* token_sobj = SObjGetStruct(gMnBonusPanel.token);
@@ -1634,7 +1634,7 @@ s32 mnBonusGetFtKindFromTokenPositionEvenIfLocked()
 	return nFTKindNull;
 }
 
-// 80134F6C
+// 0x80134F6C
 s32 mnBonusGetFtKindFromTokenPosition(s32 port_id)
 {
 	SObj* token_sobj = SObjGetStruct(gMnBonusPanel.token);
@@ -1679,7 +1679,7 @@ s32 mnBonusGetFtKindFromTokenPosition(s32 port_id)
 	return nFTKindNull;
 }
 
-// 801350E4
+// 0x801350E4
 void mnBonusAutoPositionCursor(GObj* cursor_gobj, s32 port_id)
 {
 	gsController* controller;
@@ -1756,7 +1756,7 @@ void mnBonusAutoPositionCursor(GObj* cursor_gobj, s32 port_id)
 	}
 }
 
-// 8013545C
+// 0x8013545C
 void mnBonusSyncCursorDisplay(GObj* cursor_gobj, s32 port_id)
 {
 	s32 i;
@@ -1803,7 +1803,7 @@ void mnBonusSyncCursorDisplay(GObj* cursor_gobj, s32 port_id)
 	}
 }
 
-// 801355E0
+// 0x801355E0
 void mnBonusSyncShadeAndCostume(s32 arg0, s32 select_button)
 {
 	s32 costume_id = ftParamGetCostumeCommonID(gMnBonusPanel.char_id, select_button);
@@ -1815,7 +1815,7 @@ void mnBonusSyncShadeAndCostume(s32 arg0, s32 select_button)
 	func_800269C0_275C0(0xA4U);
 }
 
-// 80135634
+// 0x80135634
 sb32 mnBonusIsHumanWithCharacterSelected(s32 arg0)
 {
 	if (gMnBonusPanel.is_selected)
@@ -1824,7 +1824,7 @@ sb32 mnBonusIsHumanWithCharacterSelected(s32 arg0)
 		return FALSE;
 }
 
-// 8013565C
+// 0x8013565C
 void mnBonusRecallToken(s32 port_id)
 {
 	gMnBonusPanel.unk_0x88 = FALSE;
@@ -1850,7 +1850,7 @@ void mnBonusRecallToken(s32 port_id)
 		gMnBonusPanel.recall_mid_y = gMnBonusPanel.recall_start_y - 20.0F;
 }
 
-// 80135740
+// 0x80135740
 void mnBonusGoBackTo1PMenu()
 {
 	if (gMnBonusType == 0)
@@ -1866,7 +1866,7 @@ void mnBonusGoBackTo1PMenu()
 	syTasklogSetLoadScene();
 }
 
-// 801357AC
+// 0x801357AC
 void mnBonusExitIfBButtonPressed(s32 port_id)
 {
 	gsController* controller = &gPlayerControllers[port_id];
@@ -1875,7 +1875,7 @@ void mnBonusExitIfBButtonPressed(s32 port_id)
 		mnBonusGoBackTo1PMenu();
 }
 
-// 80135800
+// 0x80135800
 sb32 mnBonusCheckTitlePress(GObj* cursor_gobj)
 {
 	f32 current_x, current_y;
@@ -1899,7 +1899,7 @@ sb32 mnBonusCheckTitlePress(GObj* cursor_gobj)
 	return FALSE;
 }
 
-// 801358C4
+// 0x801358C4
 void mnBonusHandleTitlePress()
 {
 	if (gMnBonusType == 0)
@@ -1921,7 +1921,7 @@ void mnBonusHandleTitlePress()
 		mnDrawBonusTotalTime();
 }
 
-// 80135950
+// 0x80135950
 void mnBonusHandleButtonPresses(GObj* cursor_gobj)
 {
 	s32 port_id = cursor_gobj->user_data.s;
@@ -1980,7 +1980,7 @@ void mnBonusHandleButtonPresses(GObj* cursor_gobj)
 		mnBonusSyncCursorDisplay(cursor_gobj, port_id);
 }
 
-// 801374AC
+// 0x801374AC
 s32 D_ovl29_801374AC[] = {
 
 	0x00009048,
@@ -1990,20 +1990,20 @@ s32 D_ovl29_801374AC[] = {
 	0x0000BBC8
 };
 
-// 80135BA4 - Unused?
+// 0x80135BA4 - Unused?
 void func_ovl29_80135BA4() {}
 
-// 80135BAC - Unused?
+// 0x80135BAC - Unused?
 void func_ovl29_80135BAC() {}
 
-// 80135BB4
+// 0x80135BB4
 void mnBonusMoveToken(s32 port_id)
 {
 	SObjGetStruct(gMnBonusPanel.token)->pos.x += gMnBonusPanel.token_x_velocity;
 	SObjGetStruct(gMnBonusPanel.token)->pos.y += gMnBonusPanel.token_y_velocity;
 }
 
-// 80135BF4
+// 0x80135BF4
 void mnBonusSyncTokenAndFighter(GObj* token_gobj)
 {
 	s32 ft_kind;
@@ -2044,7 +2044,7 @@ void mnBonusSyncTokenAndFighter(GObj* token_gobj)
 	mnBonusDrawHighscore();
 }
 
-// 80135D08
+// 0x80135D08
 void mnBonusCreateReadyToFightViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0xA, 0x800000000, -1, 0, 1, 0, 1, 0);
@@ -2052,7 +2052,7 @@ void mnBonusCreateReadyToFightViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 80135DA8
+// 0x80135DA8
 void mnBonusCreateCursorViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0xD, 0x40000000, -1, 0, 1, 0, 1, 0);
@@ -2060,7 +2060,7 @@ void mnBonusCreateCursorViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 80135E48
+// 0x80135E48
 void mnBonusCreateDroppedTokenViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0xF, 0x80000000, -1, 0, 1, 0, 1, 0);
@@ -2068,7 +2068,7 @@ void mnBonusCreateDroppedTokenViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 80135EE8
+// 0x80135EE8
 void mnBonusCreateCursor(s32 port_id)
 {
 	GObj* cursor_gobj;
@@ -2085,7 +2085,7 @@ void mnBonusCreateCursor(s32 port_id)
 		6, 4, 2, 0
 	};
 
-	cursor_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x13, 0x80000000, lbCommonDrawSObjAttr, 0x1E, cursor_starting_display_orders[port_id], -1, GetAddressFromOffset(gMnBonusFilesArray[0], &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1, mnBonusHandleButtonPresses, 2);
+	cursor_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x13, 0x80000000, lbCommonDrawSObjAttr, 0x1E, cursor_starting_display_orders[port_id], -1, GetAddressFromOffset(gMnBonusFiles[0], &FILE_011_CURSOR_POINTER_IMAGE_OFFSET), 1, mnBonusHandleButtonPresses, 2);
 
 	cursor_gobj->user_data.s = port_id;
 	gMnBonusPanel.cursor = cursor_gobj;
@@ -2098,7 +2098,7 @@ void mnBonusCreateCursor(s32 port_id)
 	gMnBonusPanel.is_selected = FALSE;
 }
 
-// 80136034
+// 0x80136034
 void mnBonusCreateToken(s32 port_id)
 {
 	GObj* token_gobj;
@@ -2116,7 +2116,7 @@ void mnBonusCreateToken(s32 port_id)
 		3, 2, 1, 0
 	};
 
-	token_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x14, 0x80000000, lbCommonDrawSObjAttr, 0x1F, orders1[port_id], -1, GetAddressFromOffset(gMnBonusFilesArray[0], offsets_no_cpu[port_id]), 1, mnBonusSyncTokenAndFighter, 1);
+	token_gobj = lbCommonMakeSpriteGObj(0, NULL, 0x14, 0x80000000, lbCommonDrawSObjAttr, 0x1F, orders1[port_id], -1, GetAddressFromOffset(gMnBonusFiles[0], offsets_no_cpu[port_id]), 1, mnBonusSyncTokenAndFighter, 1);
 
 	token_gobj->user_data.s = port_id;
 	gMnBonusPanel.token = token_gobj;
@@ -2132,10 +2132,10 @@ void mnBonusCreateToken(s32 port_id)
 		gMnBonusPanel.holder_port_id = 4;
 }
 
-// 801361A4 - Unused?
+// 0x801361A4 - Unused?
 void func_ovl29_801361A4() {}
 
-// 801361AC
+// 0x801361AC
 void mnBonusAutopositionTokenFromPortraitEdges(s32 port_id)
 {
 	s32 portrait_id = mnBonusGetPortraitId(gMnBonusPanel.char_id);
@@ -2162,13 +2162,13 @@ void mnBonusAutopositionTokenFromPortraitEdges(s32 port_id)
 	}
 }
 
-// 8013635C
+// 0x8013635C
 void mnBonusAutopositionPlacedToken(s32 port_id)
 {
 	mnBonusAutopositionTokenFromPortraitEdges(port_id);
 }
 
-// 8013637C
+// 0x8013637C
 void mnBonusAutopositionRecalledToken(s32 port_id)
 {
 	f32 new_y_velocity, new_x_velocity;
@@ -2203,7 +2203,7 @@ void mnBonusAutopositionRecalledToken(s32 port_id)
 		gMnBonusPanel.is_recalling = FALSE;
 }
 
-// 80136450
+// 0x80136450
 void mnBonusAutopositionToken(s32 port_id)
 {
 	if (gMnBonusPanel.is_recalling)
@@ -2213,13 +2213,13 @@ void mnBonusAutopositionToken(s32 port_id)
 		mnBonusAutopositionPlacedToken(0);
 }
 
-// 8013649C
+// 0x8013649C
 void mnBonusCreateTokenAutopositionRoutine()
 {
 	gcAddGObjProcess(gcMakeGObjSPAfter(0U, NULL, 0x18U, 0x80000000U), mnBonusAutopositionToken, 1, 1);
 }
 
-// 801364E0
+// 0x801364E0
 void mnBonusSyncWhiteCircleSizeAndDisplay(GObj* white_circle_gobj)
 {
 	f32 sizes[12] = {
@@ -2240,18 +2240,18 @@ void mnBonusSyncWhiteCircleSizeAndDisplay(GObj* white_circle_gobj)
 		white_circle_gobj->flags = 1;
 }
 
-// 801365B8
+// 0x801365B8
 void mnBonusCreateWhiteCircles()
 {
 	GObj* white_circle_gobj;
 
 	white_circle_gobj = gcMakeGObjSPAfter(0U, NULL, 0x15U, 0x80000000U);
 
-	gcSetupCommonDObjs(white_circle_gobj, GetAddressFromOffset(gMnBonusFilesArray[10], &FILE_016_WHITE_CIRCLE_OFFSET_2), 0);
+	gcSetupCommonDObjs(white_circle_gobj, GetAddressFromOffset(gMnBonusFiles[10], &FILE_016_WHITE_CIRCLE_OFFSET_2), 0);
 
 	gcAddGObjDisplay(white_circle_gobj, gcDrawDObjTreeDLLinksForGObj, 9U, 0x80000000U, -1);
 
-	gcAddMObjAll(white_circle_gobj, GetAddressFromOffset(gMnBonusFilesArray[10], &FILE_016_WHITE_CIRCLE_OFFSET_1));
+	gcAddMObjAll(white_circle_gobj, GetAddressFromOffset(gMnBonusFiles[10], &FILE_016_WHITE_CIRCLE_OFFSET_1));
 
 	gcAddGObjProcess(white_circle_gobj, mnBonusSyncWhiteCircleSizeAndDisplay, 1, 1);
 
@@ -2262,7 +2262,7 @@ void mnBonusCreateWhiteCircles()
 	DObjGetStruct(white_circle_gobj)->translate.vec.f.z = 0.0f;
 }
 
-// 80136698
+// 0x80136698
 void mnBonusBlinkIfReadyToFight(GObj* gobj)
 {
 	if (gMnBonusCharSelected)
@@ -2281,7 +2281,7 @@ void mnBonusBlinkIfReadyToFight(GObj* gobj)
 	}
 }
 
-// 80136704
+// 0x80136704
 void mnBonusCreateReadyToFightObjects()
 {
 	GObj* gobj;
@@ -2293,7 +2293,7 @@ void mnBonusCreateReadyToFightObjects()
 	gcAddGObjProcess(gobj, mnBonusBlinkIfReadyToFight, 1, 1);
 
 	// Ready to Fight banner bg
-	sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMnBonusFilesArray[0], &FILE_011_READY_TO_FIGHT_BG_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMnBonusFiles[0], &FILE_011_READY_TO_FIGHT_BG_IMAGE_OFFSET));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->envcolor.r = 0;
@@ -2312,7 +2312,7 @@ void mnBonusCreateReadyToFightObjects()
 	sobj->pos.y = 71.0f;
 
 	// Ready to Fight banner text
-	sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMnBonusFilesArray[0], &FILE_011_READY_TO_FIGHT_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMnBonusFiles[0], &FILE_011_READY_TO_FIGHT_IMAGE_OFFSET));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->envcolor.r = 0xFF;
@@ -2330,7 +2330,7 @@ void mnBonusCreateReadyToFightObjects()
 	gcAddGObjProcess(gobj, mnBonusBlinkIfReadyToFight, 1, 1);
 
 	// "Press"
-	sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMnBonusFilesArray[0], &FILE_011_PRESS_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMnBonusFiles[0], &FILE_011_PRESS_IMAGE_OFFSET));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->sprite.red = 0xD6;
@@ -2340,7 +2340,7 @@ void mnBonusCreateReadyToFightObjects()
 	sobj->pos.y = 219.0f;
 
 	// "Start"
-	sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMnBonusFilesArray[0], &FILE_011_START_IMAGE_OFFSET));
+	sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(gMnBonusFiles[0], &FILE_011_START_IMAGE_OFFSET));
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 	sobj->sprite.red = 0xFF;
@@ -2350,16 +2350,16 @@ void mnBonusCreateReadyToFightObjects()
 	sobj->pos.y = 219.0f;
 }
 
-// 80136980 - Unused?
+// 0x80136980 - Unused?
 void func_ovl29_80136980() {}
 
-// 80136988 - Unused?
+// 0x80136988 - Unused?
 void func_ovl29_80136988() {}
 
-// 80136990 - Unused?
+// 0x80136990 - Unused?
 void func_ovl29_80136990() {}
 
-// 80136998
+// 0x80136998
 void mnBonusSaveMatchInfo()
 {
 	gSceneData.spgame_player = gMnBonusHumanPanelPort;
@@ -2367,10 +2367,10 @@ void mnBonusSaveMatchInfo()
 	gSceneData.bonus_costume = gMnBonusPanel.costume_id;
 }
 
-// 801369C8 - Unused?
+// 0x801369C8 - Unused?
 void func_ovl29_801369C8() {}
 
-// 801369D0
+// 0x801369D0
 void mnBonusMain(s32 arg0)
 {
 	gMnBonusFramesElapsed += 1;
@@ -2407,13 +2407,13 @@ void mnBonusMain(s32 arg0)
 	}
 }
 
-// 80136B14 - Unused?
+// 0x80136B14 - Unused?
 void func_ovl29_80136B14() {}
 
-// 80136B1C - Unused?
+// 0x80136B1C - Unused?
 void func_ovl29_80136B1C() {}
 
-// 80136B24
+// 0x80136B24
 void mnBonusInitPort()
 {
 	gMnBonusPanel.held_port_id = -1;
@@ -2425,7 +2425,7 @@ void mnBonusInitPort()
 	gMnBonusPanel.char_id = nFTKindNull;
 }
 
-// 80136B54
+// 0x80136B54
 void mnBonusLoadMatchInfo()
 {
 	gMnBonusFramesElapsed = 0;
@@ -2448,7 +2448,7 @@ void mnBonusLoadMatchInfo()
 		gMnBonusType = 1;
 }
 
-// 80136C14
+// 0x80136C14
 void mnBonusInitPanel(s32 port_id)
 {
 	if (D_ovl29_801376D8[port_id] != -1)
@@ -2461,10 +2461,10 @@ void mnBonusInitPanel(s32 port_id)
 	mnBonusResetPort(port_id);
 }
 
-// 80136C80 - Unused?
+// 0x80136C80 - Unused?
 void func_ovl29_80136C80() {}
 
-// 80136C88
+// 0x80136C88
 sb32 mnBonusAreAllCompleted()
 {
 	s32 i;
@@ -2478,7 +2478,7 @@ sb32 mnBonusAreAllCompleted()
 	return TRUE;
 }
 
-// 80136CD8
+// 0x80136CD8
 void mnBonusInitCSS()
 {
 	s32 bar, baz;
@@ -2496,7 +2496,7 @@ void mnBonusInitCSS()
 	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl29_80137A00;
 	rldmSetup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl29_80136F50, 11U, gMnBonusFilesArray, syTasklogMalloc(lbRelocGetAllocSize(D_ovl29_80136F50, 11U), 0x10U));
+	lbRelocLoadFilesExtern(D_ovl29_80136F50, 11U, gMnBonusFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl29_80136F50, 11U), 0x10U));
 
 	gcMakeGObjSPAfter(0x400U, mnBonusMain, 0xFU, 0x80000000U);
 	gcMakeDefaultCameraGObj(0x10, 0x80000000U, 0x64, 1, 0);
@@ -2537,7 +2537,7 @@ void mnBonusInitCSS()
 		auPlaySong(0, 0xA);
 }
 
-// 80137530
+// 0x80137530
 syDisplaySetup D_ovl29_80137530 = {
 
 	gSCSubsysFramebuffer0,
@@ -2549,14 +2549,14 @@ syDisplaySetup D_ovl29_80137530 = {
 	0x00016A99
 };
 
-// 8013754C
+// 0x8013754C
 scRuntimeInfo D_ovl29_8013754C = {
 
 	0x00000000, 0x8000A5E4,
 	func_8000A340, &lOverlay29ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00004A38, 0x00000200,
 	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x00008000,
-	mnBonusSetupDisplayList, update_contdata,
+	mnBonusFuncLights, update_contdata,
 	0x00000000, 0x00000100, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
 	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
@@ -2565,7 +2565,7 @@ scRuntimeInfo D_ovl29_8013754C = {
 	mnBonusInitCSS
 };
 
-// 80136EF4
+// 0x80136EF4
 void bonus_css_entry()
 {
 	D_ovl29_80137530.zbuffer = syDisplayGetZBuffer(6400);

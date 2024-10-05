@@ -8,9 +8,9 @@
 
 
 // Externs
-extern intptr_t D_NF_800A5240;      // 800A5240
-extern intptr_t lOverlay43ArenaLo;  // 8018E640
-extern intptr_t lOverlay43ArenaHi;  // 803903E0
+extern intptr_t D_NF_800A5240;      // 0x800A5240
+extern intptr_t lOverlay43ArenaLo;  // 0x8018E640
+extern intptr_t lOverlay43ArenaHi;  // 0x803903E0
 extern intptr_t FILE_041_KIRBY_CAMERA_PARAMS_OFFSET; // file 0x041 offset for Kirby's fighter pose camera settings
 
 extern void func_80007080(void*, f32, f32, f32, f32);
@@ -19,7 +19,7 @@ extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
 
 
 // Data
-// 8018E0B0
+// 0x8018E0B0
 CameraDesc dMvOpeningKirbyCameraSettingsStart = {
 
 	0.0, 400.0, 2000.0,
@@ -27,7 +27,7 @@ CameraDesc dMvOpeningKirbyCameraSettingsStart = {
 	0.0
 };
 
-// 8018E0CC
+// 0x8018E0CC
 CameraDesc dMvOpeningKirbyCameraSettingsEnd = {
 
 	1100.0, 400.0, 1800.0,
@@ -35,7 +35,7 @@ CameraDesc dMvOpeningKirbyCameraSettingsEnd = {
 	0.0
 };
 
-// 8018E0E8
+// 0x8018E0E8
 ftKeyCommand dMvOpeningKirbyInputSeq[] =
 {
 	FTKEY_EVENT_STICK(45, I_CONTROLLER_RANGE_MAX, 1),   // 2001, 2D50
@@ -43,7 +43,7 @@ ftKeyCommand dMvOpeningKirbyInputSeq[] =
 	FTKEY_EVENT_END()                                   // 0000
 };
 
-// 8018E0F4
+// 0x8018E0F4
 u32 D_ovl43_8018E0F4[2] = {
 
 	0x25, 0x41
@@ -51,53 +51,53 @@ u32 D_ovl43_8018E0F4[2] = {
 
 
 // BSS
-// 8018E220
+// 0x8018E220
 s32 D_ovl43_8018E220[2];
 
-// 8018E228
+// 0x8018E228
 s32 gMvOpeningKirbyFramesElapsed;
 
-// 8018E22C
+// 0x8018E22C
 GObj* gMvOpeningKirbyNameGObj;
 
-// 8018E230
+// 0x8018E230
 GObj* gMvOpeningKirbyStageFighterGObj;
 
-// 8018E234
+// 0x8018E234
 s32 D_ovl43_8018E234;
 
-// 8018E238
+// 0x8018E238
 GObj* gMvOpeningKirbyStageCameraGObj;
 
-// 8018E23C
+// 0x8018E23C
 void* gMvOpeningKirbyAnimHeap;
 
-// 8018E240
+// 0x8018E240
 f32 gMvOpeningKirbyPosedFighterYSpeed;
 
-// 8018E244
+// 0x8018E244
 s32 D_ovl43_8018E244;
 
-// 8018E248
+// 0x8018E248
 CameraDesc dMvOpeningKirbyCameraSettingsAdjustedStart;
 
-// 8018E268
+// 0x8018E268
 CameraDesc dMvOpeningKirbyCameraSettingsAdjustedEnd;
 
-// 8018E288
+// 0x8018E288
 lbFileNode D_ovl43_8018E288[48];
 
-// 8018E408
+// 0x8018E408
 lbFileNode D_ovl43_8018E408[7];
 
-// 8018E440
-uintptr_t gMvOpeningKirbyFilesArray[2];
+// 0x8018E440
+uintptr_t gMvOpeningKirbyFiles[2];
 
-// 8018E448
+// 0x8018E448
 scBattleState gMvOpeningKirbyBattleState;
 
 
-// 8018D0C0
+// 0x8018D0C0
 void mvOpeningKirbyLoadFiles()
 {
 	lbRelocSetup rldmSetup;
@@ -111,10 +111,10 @@ void mvOpeningKirbyLoadFiles()
 	rldmSetup.force_status_buffer = D_ovl43_8018E408;
 	rldmSetup.force_status_buffer_size = ARRAY_COUNT(D_ovl43_8018E408);
 	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl43_8018E0F4, ARRAY_COUNT(D_ovl43_8018E0F4), gMvOpeningKirbyFilesArray, syTasklogMalloc(lbRelocGetAllocSize(D_ovl43_8018E0F4, ARRAY_COUNT(D_ovl43_8018E0F4)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl43_8018E0F4, ARRAY_COUNT(D_ovl43_8018E0F4), gMvOpeningKirbyFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl43_8018E0F4, ARRAY_COUNT(D_ovl43_8018E0F4)), 0x10));
 }
 
-// 8018D160
+// 0x8018D160
 void mvOpeningKirbySetNameColor(SObj* name_sobj)
 {
 	name_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -127,7 +127,7 @@ void mvOpeningKirbySetNameColor(SObj* name_sobj)
 	name_sobj->sprite.blue = 0xFF;
 }
 
-// 8018D194
+// 0x8018D194
 void mvOpeningKirbyDrawName()
 {
 	GObj* name_gobj;
@@ -149,7 +149,7 @@ void mvOpeningKirbyDrawName()
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMvOpeningKirbyFilesArray[0], offsets[i]));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMvOpeningKirbyFiles[0], offsets[i]));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = positions[i].x + 90.0F;
@@ -159,7 +159,7 @@ void mvOpeningKirbyDrawName()
 	}
 }
 
-// 8018D324
+// 0x8018D324
 void mvOpeningKirbyAnimateStageCamera(GObj* camera_gobj)
 {
 	Camera *cam = CameraGetStruct(camera_gobj);
@@ -176,7 +176,7 @@ void mvOpeningKirbyAnimateStageCamera(GObj* camera_gobj)
 	}
 }
 
-// 8018D41C
+// 0x8018D41C
 void mvOpeningKirbyCreateStageViewport(Vec3f arg0)
 {
 	Camera *cam;
@@ -214,7 +214,7 @@ void mvOpeningKirbyCreateStageViewport(Vec3f arg0)
 	cam->vec.up.x = dMvOpeningKirbyCameraSettingsAdjustedStart.upx;
 }
 
-// 8018D62C
+// 0x8018D62C
 void mvOpeningKirbyInitFighterStagePanel()
 {
 	GObj* fighter_gobj;
@@ -275,7 +275,7 @@ void mvOpeningKirbyInitFighterStagePanel()
 	}
 }
 
-// 8018D870
+// 0x8018D870
 void mvOpeningKirbyRenderPosedFighterBackground(GObj *gobj)
 {
 	gDPPipeSync(gSYTasklogDLHeads[0]++);
@@ -288,13 +288,13 @@ void mvOpeningKirbyRenderPosedFighterBackground(GObj *gobj)
 	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-// 8018D970
+// 0x8018D970
 void mvOpeningKirbyCreatePosedFighterBackground()
 {
 	gcAddGObjDisplay(gcMakeGObjSPAfter(0, 0, 0x13, 0x80000000), mvOpeningKirbyRenderPosedFighterBackground, 0x1C, 0x80000000, -1);
 }
 
-// 8018D9BC
+// 0x8018D9BC
 void mvOpeningKirbyAnimatePosedFighter(GObj* fighter_gobj)
 {
 	switch (gMvOpeningKirbyFramesElapsed)
@@ -324,7 +324,7 @@ void mvOpeningKirbyAnimatePosedFighter(GObj* fighter_gobj)
 	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= gMvOpeningKirbyPosedFighterYSpeed;
 }
 
-// 8018DA8C
+// 0x8018DA8C
 void mvOpeningKirbyCreatePosedFighter()
 {
 	GObj* fighter_gobj;
@@ -347,7 +347,7 @@ void mvOpeningKirbyCreatePosedFighter()
 	DObjGetStruct(fighter_gobj)->scale.vec.f.z = 1.0f;
 }
 
-// 8018DB8C
+// 0x8018DB8C
 void mvOpeningKirbyCreateNameViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
@@ -355,18 +355,18 @@ void mvOpeningKirbyCreateNameViewport()
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
-// 8018DC2C
+// 0x8018DC2C
 void mvOpeningKirbyCreatePosedFighterViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 210.0F, 10.0F, 310.0F, 230.0F);
 	cam->projection.persp.aspect = 5.0F / 11.0F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningKirbyFilesArray[1], &FILE_041_KIRBY_CAMERA_PARAMS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningKirbyFiles[1], &FILE_041_KIRBY_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
-// 8018DD14
+// 0x8018DD14
 void mvOpeningKirbyCreatePosedFighterBackgroundViewport()
 {
 	Camera *cam;
@@ -377,7 +377,7 @@ void mvOpeningKirbyCreatePosedFighterBackgroundViewport()
 	cam->flags = 5;
 }
 
-// 8018DDBC
+// 0x8018DDBC
 void mvOpeningKirbyMainProc(GObj* arg0)
 {
 	gMvOpeningKirbyFramesElapsed += 1;
@@ -405,13 +405,13 @@ void mvOpeningKirbyMainProc(GObj* arg0)
 	}
 }
 
-// 8018DE78
+// 0x8018DE78
 void mvOpeningKirbyInitFramesElapsed()
 {
 	gMvOpeningKirbyFramesElapsed = 0;
 }
 
-// 8018DE84
+// 0x8018DE84
 void mvOpeningKirbyInit()
 {
 	gMvOpeningKirbyBattleState = gDefaultBattleState;
@@ -449,14 +449,14 @@ void mvOpeningKirbyInit()
 	while (func_8000092C() < 1965U);
 }
 
-// 8018E00C
-void gMvOpeningKirbySetupDisplayList(Gfx **display_list)
+// 0x8018E00C
+void gMvOpeningKirbyFuncLights(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
-// 8018E13C
+// 0x8018E13C
 syDisplaySetup D_ovl43_8018E13C = {
 
 	gSCSubsysFramebuffer0,
@@ -468,14 +468,14 @@ syDisplaySetup D_ovl43_8018E13C = {
 	0x00016A99,
 };
 
-// 8018E158
+// 0x8018E158
 scRuntimeInfo D_ovl43_8018E158 = {
 
 	0x00000000, 0x8000A5E4,
 	0x800A26B8, &lOverlay43ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00004000, 0x00002000,
 	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000C000,
-	gMvOpeningKirbySetupDisplayList, update_contdata,
+	gMvOpeningKirbyFuncLights, update_contdata,
 	0x00000000, 0x00000600, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
 	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
@@ -484,7 +484,7 @@ scRuntimeInfo D_ovl43_8018E158 = {
 	mvOpeningKirbyInit
 };
 
-// 8018E058
+// 0x8018E058
 void intro_focus_kirby_entry()
 {
 	D_ovl43_8018E13C.zbuffer = syDisplayGetZBuffer(6400);

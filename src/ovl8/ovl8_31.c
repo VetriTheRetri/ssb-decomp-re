@@ -37,7 +37,7 @@ void func_ovl8_80386588(s32 arg0, s32 arg1)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_31/func_ovl8_80386BE0.s")
 
-// 80386F90
+// 0x80386F90
 int stringToNumber(char *string)
 {
 	int value = 0;
@@ -56,7 +56,7 @@ int stringToNumber(char *string)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/ovl8/ovl8_31/func_ovl8_80387154.s")
 
-// 80387420
+// 0x80387420
 void stringCopyPartial(char* target, char* source, s32 count)
 {
 	char *targetCurrent;
@@ -74,7 +74,7 @@ void stringCopyPartial(char* target, char* source, s32 count)
 	}
 }
 
-// 8038746C
+// 0x8038746C
 u32 stringFromNumber(char* string, s64 number)
 {
 	u32 charsWritten;

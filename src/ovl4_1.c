@@ -6,7 +6,7 @@ extern u32 dGMCommonFileIDs[8];
 lbFileNode D_ovl4_8018E480[100];
 lbFileNode D_ovl4_8018E7A0[7];
 
-// 8018E330
+// 0x8018E330
 void func_ovl4_8018E330(void)
 {
 	lbRelocSetup rldm_setup;

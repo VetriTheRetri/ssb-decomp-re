@@ -7,10 +7,7 @@
 extern void syTasklogSetLoadScene();
 extern u32 func_8000092C();
 extern void func_800A26B8();
-
-extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
-
-
+extern void func_80007080(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -31,10 +28,10 @@ extern uintptr_t D_NF_00000046;
 s32 sMVOpeningStandoffPad0x801329C0[2];
 
 // 0x801329C8
-void *sMVOpeningStandoffMarioAnimHeap;
+void *sMVOpeningStandoffMarioFigatreeHeap;
 
 // 0x801329CC
-void *sMVOpeningStandoffKirbyAnimHeap;
+void *sMVOpeningStandoffKirbyFigatreeHeap;
 
 // 0x801329D0
 s32 sMVOpeningStandoffTotalTimeTics;
@@ -76,43 +73,48 @@ Lights1 dMVOpeningStandoffLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF
 syDisplaySetup dMVOpeningStandoffDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132924
-scRuntimeInfo dMVOpeningStandoffTasklogSetup =
+syTasklogSetup dMVOpeningStandoffTasklogSetup =
 {
-    0x00000000,
-	func_8000A5E4,
-	func_8000A340,
-	&ovl47_BSS_END,
-	0x00000000,
-	0x00000001,
-	0x00000002,
-	0x00002710,
-	0x00001000,
-	0x00000000,
-	0x00000000,
-	0x00008000,
-	0x00020000,
-	0x0000C000,
-	mvOpeningStandoffFuncLights,
-	update_contdata,
-	0x00000008,
-	0x00000600,
-	0x00000008,
-	0x00000000,
-	0x00000080,
-	0x00000080,
-	0x00000088,
-	0x00000200,
-	0x800D5CAC,
-	0x00000000,
-	0x00000200,
-	0x000000A0,
-	0x00000200,
-	0x00000088,
-	0x00000080,
-	0x0000006C,
-	0x00000010,
-	0x00000090,
-	mvOpeningStandoffFuncStart
+    // Task Logic Buffer Setup
+    {
+        0,                              // ???
+        func_8000A5E4,                  // Update function
+        func_8000A340,                  // Frame draw function
+        &ovl47_BSS_END,                 // Allocatable memory pool start
+        0,                              // Allocatable memory pool size
+        1,                              // ???
+        2,                              // Number of contexts?
+        sizeof(Gfx) * 1250,             // Display List Buffer 0 Size
+        sizeof(Gfx) * 512,              // Display List Buffer 1 Size
+        0,                              // Display List Buffer 2 Size
+        0,                              // Display List Buffer 3 Size
+        0x8000,                         // Graphics Heap Size
+        2,                              // ???
+        0xC000,                         // RDP Output Buffer Size
+        mvOpeningStandoffFuncLights,    // Pre-render function
+        update_contdata,                // Controller I/O function
+    },
+
+    8,                                  // Number of GObjThreads
+    sizeof(u64) * 192,                  // Thread stack size
+    8,                                  // Number of thread stacks
+    0,                                  // ???
+    128,                                // Number of GObjProcesses
+    128,                                // Number of GObjs
+    sizeof(GObj),                       // GObj size
+    512,                                // Number of Object Manager Matrices
+    dLBCommonFuncMatrixList,            // Matrix function list
+    NULL,                               // Function for ejecting DObjDynamicStore?
+    512,                                // Number of AObjs
+    160,                                // Number of MObjs
+    512,                                // Number of DObjs
+    sizeof(DObj),                       // DObj size
+    128,                                // Number of SObjs
+    sizeof(SObj),                       // SObj size
+    16,                                 // Number of Cameras
+    sizeof(Camera),                     // Camera size
+    
+    mvOpeningStandoffFuncStart          // Task start function
 };
 
 // // // // // // // // // // // //
@@ -158,7 +160,7 @@ void mvOpeningStandoffMakeFighters(void)
     ft_desc.pos.x = 0.0F;
     ft_desc.pos.y = 0.0F;
     ft_desc.pos.z = 0.0F;
-    ft_desc.figatree_heap = sMVOpeningStandoffMarioAnimHeap;
+    ft_desc.figatree_heap = sMVOpeningStandoffMarioFigatreeHeap;
 
     fighter_gobj = ftManagerMakeFighter(&ft_desc);
 
@@ -173,7 +175,7 @@ void mvOpeningStandoffMakeFighters(void)
     ft_desc.pos.x = 0.0F;
     ft_desc.pos.y = 0.0F;
     ft_desc.pos.z = 0.0F;
-    ft_desc.figatree_heap = sMVOpeningStandoffKirbyAnimHeap;
+    ft_desc.figatree_heap = sMVOpeningStandoffKirbyFigatreeHeap;
 
     fighter_gobj = ftManagerMakeFighter(&ft_desc);
 
@@ -417,7 +419,7 @@ void mvOpeningStandoffMakeLightningFlash(void)
 }
 
 // 0x80132384
-void mvOpeningStandoffMakeLightningFlashViewport(void)
+void mvOpeningStandoffMakeLightningFlashCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -431,11 +433,11 @@ void mvOpeningStandoffMakeLightningFlashViewport(void)
             20,
             CAMERA_MASK_DLLINK(28),
             -1,
-            0,
-            1,
+            FALSE,
+            nOMObjProcessKindProc,
             NULL,
             1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -448,7 +450,7 @@ void func_ovl147_80132424()
 }
 
 // 0x8013242C
-void mvOpeningStandoffMakeMainViewport(void)
+void mvOpeningStandoffMakeMainCamera(void)
 {
     GObj *camera_gobj = gcMakeCameraGObj
     (
@@ -461,11 +463,11 @@ void mvOpeningStandoffMakeMainViewport(void)
         CAMERA_MASK_DLLINK(26) |
         CAMERA_MASK_DLLINK(9),
         -1,
-        1,
-        1,
+        TRUE,
+        nOMObjProcessKindProc,
         NULL,
         1,
-        0
+        FALSE
     );
     Camera *cam = CameraGetStruct(camera_gobj);
 
@@ -489,7 +491,7 @@ void mvOpeningStandoffMakeMainViewport(void)
 }
 
 // 0x80132530
-void mvOpeningStandoffMakeWallpaperViewport(void)
+void mvOpeningStandoffMakeWallpaperCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -503,11 +505,11 @@ void mvOpeningStandoffMakeWallpaperViewport(void)
             90,
             CAMERA_MASK_DLLINK(27),
             -1,
-            0,
-            1,
+            FALSE,
+            nOMObjProcessKindProc,
             NULL,
             1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -597,12 +599,12 @@ void mvOpeningStandoffFuncStart(void)
     ftManagerSetupFilesAllKind(nFTKindMario);
     ftManagerSetupFilesAllKind(nFTKindKirby);
 
-    sMVOpeningStandoffMarioAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
-    sMVOpeningStandoffKirbyAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+    sMVOpeningStandoffMarioFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+    sMVOpeningStandoffKirbyFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
-    mvOpeningStandoffMakeMainViewport();
-    mvOpeningStandoffMakeWallpaperViewport();
-    mvOpeningStandoffMakeLightningFlashViewport();
+    mvOpeningStandoffMakeMainCamera();
+    mvOpeningStandoffMakeWallpaperCamera();
+    mvOpeningStandoffMakeLightningFlashCamera();
     mvOpeningStandoffMakeWallpaper();
     mvOpeningStandoffMakeFighters();
     mvOpeningStandoffMakeGround();
@@ -623,6 +625,6 @@ void mvOpeningStandoffStartScene(void)
     dMVOpeningStandoffDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMVOpeningStandoffDisplaySetup);
 
-    dMVOpeningStandoffTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl47_BSS_END);
+    dMVOpeningStandoffTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl47_BSS_END);
     syTasklogInit(&dMVOpeningStandoffTasklogSetup);
 }

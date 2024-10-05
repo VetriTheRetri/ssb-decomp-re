@@ -413,11 +413,11 @@ void mvOpeningCliffMakeWallpaperViewport(void)
             90,
             CAMERA_MASK_DLLINK(27),
             -1,
-            0,
-            1,
+            FALSE,
+            nOMObjProcessKindProc,
             NULL,
             1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);

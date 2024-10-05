@@ -315,11 +315,11 @@ void mvOpeningClashMakeWallpaperCamera(void)
         90,
         CAMERA_MASK_DLLINK(29),
         -1,
-        1,
-        1,
+        TRUE,
+        nOMObjProcessKindProc,
         NULL,
         1,
-        0
+        FALSE
     );
     Camera *cam = CameraGetStruct(camera_gobj);
 

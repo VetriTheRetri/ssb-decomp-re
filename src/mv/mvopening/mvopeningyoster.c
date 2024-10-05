@@ -208,11 +208,11 @@ void mvOpeningYosterMakeMainViewport(void)
         CAMERA_MASK_DLLINK(10) | CAMERA_MASK_DLLINK(9)  |
         CAMERA_MASK_DLLINK(6),
         -1,
-        1,
-        1,
+        TRUE,
+        nOMObjProcessKindProc,
         NULL,
         1,
-        0
+        FALSE
     );
     Camera *cam = CameraGetStruct(camera_gobj);
 
@@ -251,11 +251,11 @@ void mvOpeningYosterMakeWallpaperViewport(void)
             90,
             CAMERA_MASK_DLLINK(28),
             -1,
-            0,
-            1,
+            FALSE,
+            nOMObjProcessKindProc,
             NULL,
             1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);

@@ -12,7 +12,7 @@
 #include <PR/ultratypes.h>
 
 OSPiHandle *gRomPiHandle;
-OSPiHandle sSramPiHandle; // 80045048
+OSPiHandle sSYDmaSramPiHandle; // 80045048
 OSMesg sDmaMesg[1];       // 800450BC
 OSMesgQueue sDmaMesgQ;    // 800450C0
 
@@ -113,49 +113,49 @@ void syDmaLoadOverlay(struct syOverlay *ovl)
     }
 }
 
-void syDmaReadRom(uintptr_t rom_src, void *ram_dst, u32 bytes_num) 
+void syDmaReadRom(uintptr_t rom_src, void *ram_dst, size_t size) 
 {
-    syDmaCopy(gRomPiHandle, rom_src, (uintptr_t)ram_dst, bytes_num, OS_READ);
+    syDmaCopy(gRomPiHandle, rom_src, (uintptr_t)ram_dst, size, OS_READ);
 }
 
-void syDmaWriteRom(void *ram_src, uintptr_t rom_dst, u32 bytes_num) 
+void syDmaWriteRom(void *ram_src, uintptr_t rom_dst, size_t size) 
 {
-    syDmaCopy(gRomPiHandle, rom_dst, (uintptr_t)ram_src, bytes_num, OS_WRITE);
+    syDmaCopy(gRomPiHandle, rom_dst, (uintptr_t)ram_src, size, OS_WRITE);
 }
 
 OSPiHandle* syDmaSramPiInit(void)
 {
-    if (sSramPiHandle.baseAddress == PHYS_TO_K1(PI_DOM2_ADDR2))
+    if (sSYDmaSramPiHandle.baseAddress == PHYS_TO_K1(PI_DOM2_ADDR2))
     { 
-        return &sSramPiHandle; 
+        return &sSYDmaSramPiHandle; 
     }
-    sSramPiHandle.type        = DEVICE_TYPE_SRAM;
-    sSramPiHandle.baseAddress = PHYS_TO_K1(PI_DOM2_ADDR2);
-    sSramPiHandle.latency     = 5;
-    sSramPiHandle.pulse       = 12;
-    sSramPiHandle.pageSize    = 13;
-    sSramPiHandle.relDuration = 2;
-    sSramPiHandle.domain      = PI_DOMAIN2;
-    sSramPiHandle.speed       = 0;
-    // once again, not sizeof(sSramPiHandle.transferInfo)...
-    bzero(&sSramPiHandle.transferInfo, 0x60);
-    osEPiLinkHandle(&sSramPiHandle);
+    sSYDmaSramPiHandle.type        = DEVICE_TYPE_SRAM;
+    sSYDmaSramPiHandle.baseAddress = PHYS_TO_K1(PI_DOM2_ADDR2);
+    sSYDmaSramPiHandle.latency     = 5;
+    sSYDmaSramPiHandle.pulse       = 12;
+    sSYDmaSramPiHandle.pageSize    = 13;
+    sSYDmaSramPiHandle.relDuration = 2;
+    sSYDmaSramPiHandle.domain      = PI_DOMAIN2;
+    sSYDmaSramPiHandle.speed       = 0;
+    // once again, not sizeof(sSYDmaSramPiHandle.transferInfo)...
+    bzero(&sSYDmaSramPiHandle.transferInfo, 0x60);
+    osEPiLinkHandle(&sSYDmaSramPiHandle);
 
-    return &sSramPiHandle;
+    return &sSYDmaSramPiHandle;
 }
 
-void syDmaReadSram(u32 rom_src, void *ram_dst, u32 nbytes)
+void syDmaReadSram(uintptr_t rom_src, void *ram_dst, size_t size)
 {
-    syDmaCopy(&sSramPiHandle, rom_src, (uintptr_t)ram_dst, nbytes, OS_READ);
+    syDmaCopy(&sSYDmaSramPiHandle, rom_src, (uintptr_t)ram_dst, size, OS_READ);
 }
 
-void syDmaWriteSram(void *ram_src, u32 rom_dst, u32 nbytes)
+void syDmaWriteSram(void *ram_src, u32 rom_dst, size_t size)
 {
-    syDmaCopy(&sSramPiHandle, rom_dst, (uintptr_t)ram_src, nbytes, OS_WRITE);
+    syDmaCopy(&sSYDmaSramPiHandle, rom_dst, (uintptr_t)ram_src, size, OS_WRITE);
 }
 
 // 0x80002E18 - vpk0 decoder
-void syDmaDecodeVpk0(u16* data, u32 size, void (*update_stream)(void), u8* out_buf)
+void syDmaDecodeVpk0(u16 *data, size_t size, void (*update_stream)(void), u8 *out_buf)
 {
 #define VPK0_UPDATE_STREAM()        \
     if ((uintptr_t) csr >= bound)   \
@@ -185,24 +185,24 @@ void syDmaDecodeVpk0(u16* data, u32 size, void (*update_stream)(void), u8* out_b
     lengths_node++;
 
     uintptr_t bound = (uintptr_t) ((uintptr_t)data + size);
-    syHuffman* sample1_node;
-    syHuffman* lengths_node;
+    syHuffman *sample1_node;
+    syHuffman *lengths_node;
     syHuffman sp14C[64];
     u8* out_ptr;
-    syHuffman* offsets_tree;
-    syHuffman* lengthsTree;
+    syHuffman *offsets_tree;
+    syHuffman *lengths_tree;
     u8* copy_src;
     void* out_buf_end;
     u32 sample_method;
-    syHuffman* off_stack[20];
+    syHuffman *off_stack[20];
     s32 off_stack_size;
     s32 value;
-    syHuffman* offsets_node;
-    syHuffman* off_node;
-    syHuffman* lengths_stack[20];
+    syHuffman *offsets_node;
+    syHuffman *off_node;
+    syHuffman *lengths_stack[20];
     s32 lengths_stack_size;
     s32 unused2[2];
-    syHuffman* length_node;
+    syHuffman *length_node;
     s32 unused3[3];
     s32 sp64;
     s32 unused;
@@ -242,7 +242,7 @@ void syDmaDecodeVpk0(u16* data, u32 size, void (*update_stream)(void), u8* out_b
         VPK0_GET_BITS(value, 1);
 
         // node, but less than 2 nodes on stack -> end of tree
-        if (value != 0 && off_stack_size < 2)
+        if ((value != 0) && (off_stack_size < 2))
         {
             break;
         }
@@ -283,7 +283,7 @@ void syDmaDecodeVpk0(u16* data, u32 size, void (*update_stream)(void), u8* out_b
         VPK0_GET_BITS(value, 1);
 
         // node, but less than 2 nodes on stack -> end of tree
-        if (value != 0 && lengths_stack_size < 2)
+        if ((value != 0) && (lengths_stack_size < 2))
         {
             break;
         }
@@ -312,7 +312,7 @@ void syDmaDecodeVpk0(u16* data, u32 size, void (*update_stream)(void), u8* out_b
             lengths_stack_size++;
         }
     }
-    lengthsTree = lengths_stack[0];
+    lengths_tree = lengths_stack[0];
 
     while ((uintptr_t)out_ptr < (uintptr_t)out_buf_end)
     {
@@ -326,7 +326,7 @@ void syDmaDecodeVpk0(u16* data, u32 size, void (*update_stream)(void), u8* out_b
         else
         {
             // encoded data
-            lengths_node = lengthsTree;
+            lengths_node = lengths_tree;
 
             if (sample_method != 0)
             {
@@ -385,11 +385,11 @@ void syDmaDecodeVpk0(u16* data, u32 size, void (*update_stream)(void), u8* out_b
     }
 }
 
-void syDmaInitVpk0Stream(u32 dev_addr, void *ram_addr, u32 bytes_num)
+void syDmaInitVpk0Stream(uintptr_t dev_addr, void *ram_addr, size_t size)
 {
     sVpkBufRgcAddr = dev_addr;
     sVpkBufRamAddr = ram_addr;
-    sVpkBufSize    = bytes_num;
+    sVpkBufSize    = size;
 }
 
 void syDmaFillVpk0Buf(void)
@@ -398,18 +398,18 @@ void syDmaFillVpk0Buf(void)
     sVpkBufRgcAddr += sVpkBufSize;
 }
 
-void syDmaReadVpk0Buf(u32 dev_addr, void *ram_dst, void *ram_addr, u32 bytes_num)
+void syDmaReadVpk0Buf(uintptr_t dev_addr, void *ram_dst, void *ram_addr, size_t size)
 {
-    syDmaInitVpk0Stream(dev_addr, ram_addr, bytes_num);
-    syDmaDecodeVpk0(ram_addr, bytes_num, syDmaFillVpk0Buf, ram_dst);
+    syDmaInitVpk0Stream(dev_addr, ram_addr, size);
+    syDmaDecodeVpk0(ram_addr, size, syDmaFillVpk0Buf, ram_dst);
 }
 
-void syDmaReadVpk0(u32 dev_addr, void *ram_dst)
+void syDmaReadVpk0(uintptr_t dev_addr, void *ram_dst)
 {
     u8 buf[0x400];
 
     syDmaReadVpk0Buf(dev_addr, ram_dst, &buf, ARRAY_COUNT(buf));
 }
 
-// Best I can do with this is functionally equivalent. Somewhat disappointing, but not a big deal; this function is unreferenced. It's also non matching in snap.
+// Best I can do with this is functionally equivalent. Somewhat disappointing, but not a big deal; this function is unreferenced. It's also non-matching in Pokémon Snap.
 #pragma GLOBAL_ASM("asm/nonmatchings/sys/dma/unref_800036B4.s")

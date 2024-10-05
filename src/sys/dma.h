@@ -32,17 +32,17 @@ typedef struct syHuffman
 extern OSPiHandle *gRomPiHandle;
 
 extern void syDmaCreateMesgQueue(void);
-extern void syDmaCopy(OSPiHandle *handle, uintptr_t physAddr, uintptr_t virtual, size_t size, u8 direction);
+extern void syDmaCopy(OSPiHandle *handle, uintptr_t phys_addr, uintptr_t virtual, size_t size, u8 direction);
 extern void syDmaLoadOverlay(struct syOverlay *ovl);
-extern void syDmaReadRom(uintptr_t rom_src, void *ram_src, u32 bytes_num);
-extern void syDmaWriteRom(void *ram_src, uintptr_t rom_dst, u32 bytes_num);
+extern void syDmaReadRom(uintptr_t rom_src, void *ram_src, size_t size);
+extern void syDmaWriteRom(void *ram_src, uintptr_t rom_dst, size_t size);
 extern OSPiHandle* syDmaSramPiInit(void);
-extern void syDmaReadSram(u32 romSrc, void *ram_dst, u32 bytes_num);
-extern void syDmaWriteSram(void *ram_src, u32 rom_dst, u32 bytes_num);
-extern void syDmaDecodeVpk0(u16* data, u32 size, void (*update_stream)(void), u8* out_buf);
-extern void syDmaInitVpk0Stream(u32 dev_addr, void *ram_addr, u32 bytes_num);
+extern void syDmaReadSram(uintptr_t rom_src, void *ram_dst, size_t size);
+extern void syDmaWriteSram(void *ram_src, u32 rom_dst, size_t size);
+extern void syDmaDecodeVpk0(u16* data, size_t size, void (*update_stream)(void), u8* out_buf);
+extern void syDmaInitVpk0Stream(uintptr_t dev_addr, void *ram_addr, size_t size);
 extern void syDmaFillVpk0Buf(void);
-extern void syDmaReadVpk0Buf(u32 dev_addr, void *ram_dst, void *ram_addr, u32 bytes_num);
-extern void syDmaReadVpk0(u32 dev_addr, void *ram_dst);
+extern void syDmaReadVpk0Buf(uintptr_t dev_addr, void *ram_dst, void *ram_addr, size_t size);
+extern void syDmaReadVpk0(uintptr_t dev_addr, void *ram_dst);
 
 #endif /* SYSTEM_DMA_H */

@@ -73,43 +73,48 @@ Lights1 dMVOpeningYamabukiLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF
 syDisplaySetup dMVOpeningYamabukiDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x801323F4
-scRuntimeInfo dMVOpeningYamabukiTasklogSetup =
+syTasklogSetup dMVOpeningYamabukiTasklogSetup =
 {
-    0x00000000,
-	func_8000A5E4,
-	func_8000A340,
-	&ovl48_BSS_END,
-	0x00000000,
-	0x00000001,
-	0x00000002,
-	0x00004E20,
-	0x00001000,
-	0x00000000,
-	0x00000000,
-	0x00008000,
-	0x00020000,
-	0x0000C000,
-	mvOpeningYamabukiFuncLights,
-	update_contdata,
-	0x00000008,
-	0x00000600,
-	0x00000008,
-	0x00000000,
-	0x00000080,
-	0x00000080,
-	0x00000088,
-	0x00000200,
-	0x800D5CAC,
-	0x00000000,
-	0x00000200,
-	0x000000A0,
-	0x00000200,
-	0x00000088,
-	0x00000080,
-	0x0000006C,
-	0x00000010,
-	0x00000090,
-	mvOpeningYamabukiFuncStart
+    // Task Logic Buffer Setup
+    {
+        0,                              // ???
+        func_8000A5E4,                  // Update function
+        func_8000A340,                  // Frame draw function
+        &ovl48_BSS_END,                 // Allocatable memory pool start
+        0,                              // Allocatable memory pool size
+        1,                              // ???
+        2,                              // Number of contexts?
+        sizeof(Gfx) * 2500,             // Display List Buffer 0 Size
+        sizeof(Gfx) * 512,              // Display List Buffer 1 Size
+        0,                              // Display List Buffer 2 Size
+        0,                              // Display List Buffer 3 Size
+        0x8000,                         // Graphics Heap Size
+        2,                              // ???
+        0xC000,                         // RDP Output Buffer Size
+        mvOpeningYamabukiFuncLights,    // Pre-render function
+        update_contdata,                // Controller I/O function
+    },
+
+    8,                                  // Number of GObjThreads
+    sizeof(u64) * 192,                  // Thread stack size
+    8,                                  // Number of thread stacks
+    0,                                  // ???
+    128,                                // Number of GObjProcesses
+    128,                                // Number of GObjs
+    sizeof(GObj),                       // GObj size
+    512,                                // Number of Object Manager Matrices
+    dLBCommonFuncMatrixList,            // Matrix function list
+    NULL,                               // Function for ejecting DObjDynamicStore?
+    512,                                // Number of AObjs
+    160,                                // Number of MObjs
+    512,                                // Number of DObjs
+    sizeof(DObj),                       // DObj size
+    128,                                // Number of SObjs
+    sizeof(SObj),                       // SObj size
+    16,                                 // Number of Cameras
+    sizeof(Camera),                     // Camera size
+    
+    mvOpeningYamabukiFuncStart          // Task start function
 };
 
 // // // // // // // // // // // //
@@ -286,7 +291,7 @@ void mvOpeningYamabukiMakeMBall(void)
 }
 
 // 0x80131F2C
-void mvOpeningYamabukiMakeMainViewport(void)
+void mvOpeningYamabukiMakeMainCamera(void)
 {
     GObj *camera_gobj = gcMakeCameraGObj
     (
@@ -299,11 +304,11 @@ void mvOpeningYamabukiMakeMainViewport(void)
         CAMERA_MASK_DLLINK(27) |
         CAMERA_MASK_DLLINK(9),
         -1,
-        1,
-        1,
+        TRUE,
+        nOMObjProcessKindProc,
         NULL,
         1,
-        0
+        FALSE
     );
     Camera *cam = CameraGetStruct(camera_gobj);
 
@@ -327,7 +332,7 @@ void mvOpeningYamabukiMakeMainViewport(void)
 }
 
 // 0x80132030
-void mvOpeningYamabukiMakeWallpaperViewport(void)
+void mvOpeningYamabukiMakeWallpaperCamera(void)
 {
     Camera *cam = CameraGetStruct
     (
@@ -341,11 +346,11 @@ void mvOpeningYamabukiMakeWallpaperViewport(void)
             90,
             CAMERA_MASK_DLLINK(28),
             -1,
-            0,
-            1,
+            FALSE,
+            nOMObjProcessKindProc,
             NULL,
             1,
-            0
+            FALSE
         )
     );
     func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -436,8 +441,8 @@ void mvOpeningYamabukiFuncStart(void)
 
     sMVOpeningYamabukiFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
-    mvOpeningYamabukiMakeMainViewport();
-    mvOpeningYamabukiMakeWallpaperViewport();
+    mvOpeningYamabukiMakeMainCamera();
+    mvOpeningYamabukiMakeWallpaperCamera();
     mvOpeningYamabukiMakeWallpaper();
     mvOpeningYamabukiMakeFighter();
     mvOpeningYamabukiMakeLegs();
@@ -458,6 +463,6 @@ void mvOpeningYamabukiStartScene(void)
     dMVOpeningYamabukiDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMVOpeningYamabukiDisplaySetup);
 
-    dMVOpeningYamabukiTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl48_BSS_END);
+    dMVOpeningYamabukiTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl48_BSS_END);
     syTasklogInit(&dMVOpeningYamabukiTasklogSetup);
 }

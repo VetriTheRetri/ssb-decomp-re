@@ -20,7 +20,7 @@ extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
 
 // Data
 // 0x8018E090
-CameraDesc dMvOpeningFoxCameraSettingsStart = {
+CameraDesc dMVOpeningFoxCameraDescStart = {
 
 	-400.0, 320.0, 100.0,
 	0.0, 320.0, 0.0,
@@ -28,7 +28,7 @@ CameraDesc dMvOpeningFoxCameraSettingsStart = {
 };
 
 // 0x8018E0AC
-CameraDesc dMvOpeningFoxCameraSettingsEnd = {
+CameraDesc dMVOpeningFoxCameraDescEnd = {
 
 	-3000.0, 300.0, 250.0,
 	0.0, 300.0, -200.0,
@@ -36,7 +36,7 @@ CameraDesc dMvOpeningFoxCameraSettingsEnd = {
 };
 
 // 0x8018E0C8
-ftKeyCommand dMvOpeningFoxInputSeq[] =
+ftKeyCommand dMVOpeningFoxInputSeq[] =
 {
 	FTKEY_EVENT_STICK(206, 0, 1),     // 2001, CE00
 	FTKEY_EVENT_BUTTON(B_BUTTON, 1),  // 1001, 4000
@@ -58,31 +58,31 @@ u32 D_ovl39_8018E0E0[2] = {
 s32 D_ovl39_8018E1F0[2];
 
 // 0x8018E1F8
-s32 gMvOpeningFoxFramesElapsed;
+s32 gMVOpeningFoxFramesElapsed;
 
 // 0x8018E1FC
-GObj* gMvOpeningFoxNameGObj;
+GObj* gMVOpeningFoxNameGObj;
 
 // 0x8018E200
-GObj* gMvOpeningFoxStageFighterGObj;
+GObj* gMVOpeningFoxStageFighterGObj;
 
 // 0x8018E204
 s32 D_ovl39_8018E204;
 
 // 0x8018E208
-GObj* gMvOpeningFoxStageCameraGObj;
+GObj* gMVOpeningFoxStageCameraGObj;
 
 // 0x8018E20C
-void* gMvOpeningFoxAnimHeap;
+void* gMVOpeningFoxFigatreeHeap;
 
 // 0x8018E210
-f32 gMvOpeningFoxPosedFighterYSpeed;
+f32 gMVOpeningFoxPosedFighterYSpeed;
 
 // 0x8018E218
-CameraDesc dMvOpeningFoxCameraSettingsAdjustedStart;
+CameraDesc dMVOpeningFoxCameraDescAdjustedStart;
 
 // 0x8018E238
-CameraDesc dMvOpeningFoxCameraSettingsAdjustedEnd;
+CameraDesc dMVOpeningFoxCameraDescAdjustedEnd;
 
 // 0x8018E258
 lbFileNode D_ovl39_8018E258[48];
@@ -91,27 +91,27 @@ lbFileNode D_ovl39_8018E258[48];
 lbFileNode D_ovl39_8018E3D8[7];
 
 // 0x8018E410
-uintptr_t gMvOpeningFoxFiles[2];
+uintptr_t gMVOpeningFoxFiles[2];
 
 // 0x8018E418
-scBattleState gMvOpeningFoxBattleState;
+scBattleState gMVOpeningFoxBattleState;
 
 
 // 0x8018D0C0
 void mvOpeningFoxLoadFiles()
 {
-	lbRelocSetup rldmSetup;
+	lbRelocSetup rl_setup;
 
-	rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-	rldmSetup.file_heap = 0;
-	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buffer = (lbFileNode*) &D_ovl39_8018E258;
-	rldmSetup.status_buffer_size = 0x30;
-	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl39_8018E3D8;
-	rldmSetup.force_status_buffer_size = 7;
-	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl39_8018E0E0, ARRAY_COUNT(D_ovl39_8018E0E0), gMvOpeningFoxFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl39_8018E0E0, ARRAY_COUNT(D_ovl39_8018E0E0)), 0x10));
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buffer = (lbFileNode*) &D_ovl39_8018E258;
+	rl_setup.status_buffer_size = 0x30;
+	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl39_8018E3D8;
+	rl_setup.force_status_buffer_size = 7;
+	lbRelocInitSetup(&rl_setup);
+	lbRelocLoadFilesExtern(D_ovl39_8018E0E0, ARRAY_COUNT(D_ovl39_8018E0E0), gMVOpeningFoxFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl39_8018E0E0, ARRAY_COUNT(D_ovl39_8018E0E0)), 0x10));
 }
 
 // 0x8018D160
@@ -146,12 +146,12 @@ void mvOpeningFoxDrawName()
 	};
 	s32 i;
 
-	gMvOpeningFoxNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
+	gMVOpeningFoxNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
 	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 0x1B, 0x80000000, -1);
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMvOpeningFoxFiles[0], offsets[i]));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMVOpeningFoxFiles[0], offsets[i]));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = positions[i].x + 110.0F;
@@ -166,15 +166,15 @@ void mvOpeningFoxAnimateStageCamera(GObj* camera_gobj)
 {
 	Camera *cam = CameraGetStruct(camera_gobj);
 
-	if (gMvOpeningFoxFramesElapsed >= 15)
+	if (gMVOpeningFoxFramesElapsed >= 15)
 	{
-		cam->vec.eye.x += (((dMvOpeningFoxCameraSettingsAdjustedEnd.eye.x - dMvOpeningFoxCameraSettingsAdjustedStart.eye.x) / 45.0F));
-		cam->vec.eye.y += (((dMvOpeningFoxCameraSettingsAdjustedEnd.eye.y - dMvOpeningFoxCameraSettingsAdjustedStart.eye.y) / 45.0F));
-		cam->vec.eye.z += (((dMvOpeningFoxCameraSettingsAdjustedEnd.eye.z - dMvOpeningFoxCameraSettingsAdjustedStart.eye.z) / 45.0F));
-		cam->vec.at.x += (((dMvOpeningFoxCameraSettingsAdjustedEnd.at.x - dMvOpeningFoxCameraSettingsAdjustedStart.at.x) / 45.0F));
-		cam->vec.at.y += (((dMvOpeningFoxCameraSettingsAdjustedEnd.at.y - dMvOpeningFoxCameraSettingsAdjustedStart.at.y) / 45.0F));
-		cam->vec.at.z += (((dMvOpeningFoxCameraSettingsAdjustedEnd.at.z - dMvOpeningFoxCameraSettingsAdjustedStart.at.z) / 45.0F));
-		cam->vec.up.x += (((dMvOpeningFoxCameraSettingsAdjustedEnd.upx - dMvOpeningFoxCameraSettingsAdjustedStart.upx) / 45.0F));
+		cam->vec.eye.x += (((dMVOpeningFoxCameraDescAdjustedEnd.eye.x - dMVOpeningFoxCameraDescAdjustedStart.eye.x) / 45.0F));
+		cam->vec.eye.y += (((dMVOpeningFoxCameraDescAdjustedEnd.eye.y - dMVOpeningFoxCameraDescAdjustedStart.eye.y) / 45.0F));
+		cam->vec.eye.z += (((dMVOpeningFoxCameraDescAdjustedEnd.eye.z - dMVOpeningFoxCameraDescAdjustedStart.eye.z) / 45.0F));
+		cam->vec.at.x += (((dMVOpeningFoxCameraDescAdjustedEnd.at.x - dMVOpeningFoxCameraDescAdjustedStart.at.x) / 45.0F));
+		cam->vec.at.y += (((dMVOpeningFoxCameraDescAdjustedEnd.at.y - dMVOpeningFoxCameraDescAdjustedStart.at.y) / 45.0F));
+		cam->vec.at.z += (((dMVOpeningFoxCameraDescAdjustedEnd.at.z - dMVOpeningFoxCameraDescAdjustedStart.at.z) / 45.0F));
+		cam->vec.up.x += (((dMVOpeningFoxCameraDescAdjustedEnd.upx - dMVOpeningFoxCameraDescAdjustedStart.upx) / 45.0F));
 	}
 }
 
@@ -183,37 +183,37 @@ void mvOpeningFoxCreateStageViewport(Vec3f arg0)
 {
 	Camera *cam;
 
-	dMvOpeningFoxCameraSettingsAdjustedStart = dMvOpeningFoxCameraSettingsStart;
-	dMvOpeningFoxCameraSettingsAdjustedEnd = dMvOpeningFoxCameraSettingsEnd;
+	dMVOpeningFoxCameraDescAdjustedStart = dMVOpeningFoxCameraDescStart;
+	dMVOpeningFoxCameraDescAdjustedEnd = dMVOpeningFoxCameraDescEnd;
 
-	gMvOpeningFoxStageCameraGObj = func_ovl2_8010DB2C(0);
-	cam = CameraGetStruct(gMvOpeningFoxStageCameraGObj);
+	gMVOpeningFoxStageCameraGObj = func_ovl2_8010DB2C(0);
+	cam = CameraGetStruct(gMVOpeningFoxStageCameraGObj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 210.0F, 230.0F);
 	cam->projection.persp.aspect = 10.0F / 11.0F;
-	gcEndProcessAll(gMvOpeningFoxStageCameraGObj);
-	gcAddGObjProcess(gMvOpeningFoxStageCameraGObj, mvOpeningFoxAnimateStageCamera, 1, 1);
+	gcEndProcessAll(gMVOpeningFoxStageCameraGObj);
+	gcAddGObjProcess(gMVOpeningFoxStageCameraGObj, mvOpeningFoxAnimateStageCamera, 1, 1);
 
-	dMvOpeningFoxCameraSettingsAdjustedStart.eye.x += arg0.x;
-	dMvOpeningFoxCameraSettingsAdjustedStart.eye.y += arg0.y;
-	dMvOpeningFoxCameraSettingsAdjustedStart.eye.z += arg0.z;
-	dMvOpeningFoxCameraSettingsAdjustedStart.at.x += arg0.x;
-	dMvOpeningFoxCameraSettingsAdjustedStart.at.y += arg0.y;
-	dMvOpeningFoxCameraSettingsAdjustedStart.at.z += arg0.z;
+	dMVOpeningFoxCameraDescAdjustedStart.eye.x += arg0.x;
+	dMVOpeningFoxCameraDescAdjustedStart.eye.y += arg0.y;
+	dMVOpeningFoxCameraDescAdjustedStart.eye.z += arg0.z;
+	dMVOpeningFoxCameraDescAdjustedStart.at.x += arg0.x;
+	dMVOpeningFoxCameraDescAdjustedStart.at.y += arg0.y;
+	dMVOpeningFoxCameraDescAdjustedStart.at.z += arg0.z;
 
-	dMvOpeningFoxCameraSettingsAdjustedEnd.eye.x += arg0.x;
-	dMvOpeningFoxCameraSettingsAdjustedEnd.eye.y += arg0.y;
-	dMvOpeningFoxCameraSettingsAdjustedEnd.eye.z += arg0.z;
-	dMvOpeningFoxCameraSettingsAdjustedEnd.at.x += arg0.x;
-	dMvOpeningFoxCameraSettingsAdjustedEnd.at.y += arg0.y;
-	dMvOpeningFoxCameraSettingsAdjustedEnd.at.z += arg0.z;
+	dMVOpeningFoxCameraDescAdjustedEnd.eye.x += arg0.x;
+	dMVOpeningFoxCameraDescAdjustedEnd.eye.y += arg0.y;
+	dMVOpeningFoxCameraDescAdjustedEnd.eye.z += arg0.z;
+	dMVOpeningFoxCameraDescAdjustedEnd.at.x += arg0.x;
+	dMVOpeningFoxCameraDescAdjustedEnd.at.y += arg0.y;
+	dMVOpeningFoxCameraDescAdjustedEnd.at.z += arg0.z;
 
-	cam->vec.eye.x = dMvOpeningFoxCameraSettingsAdjustedStart.eye.x;
-	cam->vec.eye.y = dMvOpeningFoxCameraSettingsAdjustedStart.eye.y;
-	cam->vec.eye.z = dMvOpeningFoxCameraSettingsAdjustedStart.eye.z;
-	cam->vec.at.x = dMvOpeningFoxCameraSettingsAdjustedStart.at.x;
-	cam->vec.at.y = dMvOpeningFoxCameraSettingsAdjustedStart.at.y;
-	cam->vec.at.z = dMvOpeningFoxCameraSettingsAdjustedStart.at.z;
-	cam->vec.up.x = dMvOpeningFoxCameraSettingsAdjustedStart.upx;
+	cam->vec.eye.x = dMVOpeningFoxCameraDescAdjustedStart.eye.x;
+	cam->vec.eye.y = dMVOpeningFoxCameraDescAdjustedStart.eye.y;
+	cam->vec.eye.z = dMVOpeningFoxCameraDescAdjustedStart.eye.z;
+	cam->vec.at.x = dMVOpeningFoxCameraDescAdjustedStart.at.x;
+	cam->vec.at.y = dMVOpeningFoxCameraDescAdjustedStart.at.y;
+	cam->vec.at.z = dMVOpeningFoxCameraDescAdjustedStart.at.z;
+	cam->vec.up.x = dMVOpeningFoxCameraDescAdjustedStart.upx;
 }
 
 // 0x8018D61C
@@ -266,12 +266,12 @@ void mvOpeningFoxInitFighterStagePanel()
 		spawn_info.damage = 0;
 		spawn_info.pl_kind = gBattleState->players[i].pl_kind;
 		spawn_info.controller = &gPlayerControllers[i];
-		spawn_info.figatree_heap = ftManagerAllocAnimHeapKind(gBattleState->players[i].ft_kind);
+		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[i].ft_kind);
 
-		gMvOpeningFoxStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
+		gMVOpeningFoxStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
-		ftParamSetKey(fighter_gobj, dMvOpeningFoxInputSeq);
+		ftParamSetKey(fighter_gobj, dMVOpeningFoxInputSeq);
 	}
 }
 
@@ -297,28 +297,28 @@ void mvOpeningFoxCreatePosedFighterBackground()
 // 0x8018D998
 void mvOpeningFoxAnimatePosedFighter(GObj* fighter_gobj)
 {
-	switch (gMvOpeningFoxFramesElapsed)
+	switch (gMVOpeningFoxFramesElapsed)
 	{
 		default:
 			break;
 		case 15:
-			gMvOpeningFoxPosedFighterYSpeed = 17.0F;
+			gMVOpeningFoxPosedFighterYSpeed = 17.0F;
 			break;
 		case 45:
-			gMvOpeningFoxPosedFighterYSpeed = 15.0F;
+			gMVOpeningFoxPosedFighterYSpeed = 15.0F;
 			break;
 		case 60:
-			gMvOpeningFoxPosedFighterYSpeed = 0.0F;
+			gMVOpeningFoxPosedFighterYSpeed = 0.0F;
 			break;
 	}
 
-	if ((gMvOpeningFoxFramesElapsed > 15) && (gMvOpeningFoxFramesElapsed < 45))
-		gMvOpeningFoxPosedFighterYSpeed += -1.0F / 15.0F;
+	if ((gMVOpeningFoxFramesElapsed > 15) && (gMVOpeningFoxFramesElapsed < 45))
+		gMVOpeningFoxPosedFighterYSpeed += -1.0F / 15.0F;
 
-	if ((gMvOpeningFoxFramesElapsed > 45) && (gMvOpeningFoxFramesElapsed < 60))
-		gMvOpeningFoxPosedFighterYSpeed += -1.0F;
+	if ((gMVOpeningFoxFramesElapsed > 45) && (gMVOpeningFoxFramesElapsed < 60))
+		gMVOpeningFoxPosedFighterYSpeed += -1.0F;
 
-	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= gMvOpeningFoxPosedFighterYSpeed;
+	DObjGetStruct(fighter_gobj)->translate.vec.f.y -= gMVOpeningFoxPosedFighterYSpeed;
 }
 
 // 0x8018DA68
@@ -329,7 +329,7 @@ void mvOpeningFoxCreatePosedFighter()
 
 	spawn_info.ft_kind = nFTKindFox;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindFox, 0);
-	spawn_info.figatree_heap = gMvOpeningFoxAnimHeap;
+	spawn_info.figatree_heap = gMVOpeningFoxFigatreeHeap;
 	spawn_info.pos.x = 0.0f;
 	spawn_info.pos.y = 600.0f;
 	spawn_info.pos.z = 0.0f;
@@ -359,7 +359,7 @@ void mvOpeningFoxCreatePosedFighterViewport()
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 210.0F, 10.0F, 310.0F, 230.0F);
 	cam->projection.persp.aspect = 5.0F / 11.0F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningFoxFiles[1], &FILE_041_FOX_CAMERA_PARAMS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningFoxFiles[1], &FILE_041_FOX_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
@@ -377,7 +377,7 @@ void mvOpeningFoxCreatePosedFighterBackgroundViewport()
 // 0x8018DD98
 void mvOpeningFoxMainProc(GObj* arg0)
 {
-	gMvOpeningFoxFramesElapsed += 1;
+	gMVOpeningFoxFramesElapsed += 1;
 
 	if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON))
 	{
@@ -386,15 +386,15 @@ void mvOpeningFoxMainProc(GObj* arg0)
 		syTasklogSetLoadScene();
 	}
 
-	if (gMvOpeningFoxFramesElapsed == 15)
+	if (gMVOpeningFoxFramesElapsed == 15)
 	{
-		gcEjectGObj(gMvOpeningFoxNameGObj);
+		gcEjectGObj(gMVOpeningFoxNameGObj);
 		mvOpeningFoxInitFighterStagePanel();
 		mvOpeningFoxCreatePosedFighterBackground();
 		mvOpeningFoxCreatePosedFighter();
 	}
 
-	if (gMvOpeningFoxFramesElapsed == 60)
+	if (gMVOpeningFoxFramesElapsed == 60)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 0x24;
@@ -405,14 +405,14 @@ void mvOpeningFoxMainProc(GObj* arg0)
 // 0x8018DE54
 void mvOpeningFoxInitFramesElapsed()
 {
-	gMvOpeningFoxFramesElapsed = 0;
+	gMVOpeningFoxFramesElapsed = 0;
 }
 
 // 0x8018DE60
 void mvOpeningFoxInit()
 {
-	gMvOpeningFoxBattleState = gDefaultBattleState;
-	gBattleState = &gMvOpeningFoxBattleState;
+	gMVOpeningFoxBattleState = gDefaultBattleState;
+	gBattleState = &gMVOpeningFoxBattleState;
 
 	gBattleState->game_type = nSCBattleGameTypeOpening;
 
@@ -437,7 +437,7 @@ void mvOpeningFoxInit()
 	efManagerInitEffects();
 	ftManagerSetupFilesAllKind(nFTKindFox);
 
-	gMvOpeningFoxAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMVOpeningFoxFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningFoxCreateNameViewport();
 	mvOpeningFoxCreatePosedFighterBackgroundViewport();
 	mvOpeningFoxCreatePosedFighterViewport();

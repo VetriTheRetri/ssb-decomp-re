@@ -526,18 +526,18 @@ void mvOpeningSectorFuncRun(GObj *gobj)
 void mvOpeningSectorFuncStart(void)
 {
     s32 i;
-    lbRelocSetup rldmSetup;
+    lbRelocSetup rl_setup;
 
-    rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-    rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-    rldmSetup.file_heap = NULL;
-    rldmSetup.file_heap_size = 0;
-    rldmSetup.status_buffer = sMVOpeningSectorStatusBuffer;
-    rldmSetup.status_buffer_size = ARRAY_COUNT(sMVOpeningSectorStatusBuffer);
-    rldmSetup.force_status_buffer = sMVOpeningSectorForceStatusBuffer;
-    rldmSetup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningSectorForceStatusBuffer);
+    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+    rl_setup.file_heap = NULL;
+    rl_setup.file_heap_size = 0;
+    rl_setup.status_buffer = sMVOpeningSectorStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(sMVOpeningSectorStatusBuffer);
+    rl_setup.force_status_buffer = sMVOpeningSectorForceStatusBuffer;
+    rl_setup.force_status_buffer_size = ARRAY_COUNT(sMVOpeningSectorForceStatusBuffer);
 
-    lbRelocInitSetup(&rldmSetup);
+    lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
     (
         dMVOpeningSectorFileIDs,

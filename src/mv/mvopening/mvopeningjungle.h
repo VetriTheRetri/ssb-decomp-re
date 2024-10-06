@@ -4,7 +4,6 @@
 #include <ssb_types.h>
 #include <sys/objdef.h>
 #include <PR/gbi.h>
-#include <mv/movie.h>
 
 extern intptr_t lMVOpeningJungleCamAnimJoint;                    // 0x00000000
 

@@ -388,17 +388,17 @@ void mvPortraitsMain(GObj* arg0)
 void mvPortraitsInit()
 {
 	s32 foo;
-	lbRelocSetup rldmSetup;
+	lbRelocSetup rl_setup;
 
-	rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-	rldmSetup.file_heap = NULL;
-	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buffer = (lbFileNode*) &D_ovl35_801329F8;
-	rldmSetup.status_buffer_size = 0x30;
-	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl35_80132B78;
-	rldmSetup.force_status_buffer_size = 7;
-	lbRelocInitSetup(&rldmSetup);
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buffer = (lbFileNode*) &D_ovl35_801329F8;
+	rl_setup.status_buffer_size = 0x30;
+	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl35_80132B78;
+	rl_setup.force_status_buffer_size = 7;
+	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0), gIntroPortraitsFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0)), 0x10));
 
 	gcMakeGObjSPAfter(0, mvPortraitsMain, 0, GOBJ_LINKORDER_DEFAULT);

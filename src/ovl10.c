@@ -1361,16 +1361,16 @@ void mnTitleStartScene()
 // 0x80134140
 void mnTitleLoadFiles()
 {
-	lbRelocSetup rldmSetup;
+	lbRelocSetup rl_setup;
 
-	rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-	rldmSetup.file_heap = NULL;
-	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buffer = (lbFileNode*) D_ovl10_801344A0;
-	rldmSetup.status_buffer_size = 0x20;
-	rldmSetup.force_status_buffer = 0;
-	rldmSetup.force_status_buffer_size = 0;
-	lbRelocInitSetup(&rldmSetup);
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buffer = (lbFileNode*) D_ovl10_801344A0;
+	rl_setup.status_buffer_size = 0x20;
+	rl_setup.force_status_buffer = 0;
+	rl_setup.force_status_buffer_size = 0;
+	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl10_80134420, ARRAY_COUNT(D_ovl10_80134420), &gMNTitleFile0, syTasklogMalloc(lbRelocGetAllocSize(D_ovl10_80134420, ARRAY_COUNT(D_ovl10_80134420)), 0x10));
 }

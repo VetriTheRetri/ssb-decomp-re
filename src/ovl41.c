@@ -20,7 +20,7 @@ extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
 
 // Data
 // 0x8018E0C0
-CameraDesc dMvOpeningYoshiCameraSettingsStart = {
+CameraDesc dMVOpeningYoshiCameraDescStart = {
 
 	1200.0, 150.0, 1000.0,
 	100.0, 200.0, 0.0,
@@ -28,7 +28,7 @@ CameraDesc dMvOpeningYoshiCameraSettingsStart = {
 };
 
 // 0x8018E0DC
-CameraDesc dMvOpeningYoshiCameraSettingsEnd = {
+CameraDesc dMVOpeningYoshiCameraDescEnd = {
 
 	2000.0, 100.0, 600.0,
 	1300.0, 100.0, -100.0,
@@ -36,7 +36,7 @@ CameraDesc dMvOpeningYoshiCameraSettingsEnd = {
 };
 
 // 0x8018E0F8
-ftKeyCommand dMvOpeningYoshiInputSeq[] =
+ftKeyCommand dMVOpeningYoshiInputSeq[] =
 {
 	FTKEY_EVENT_STICK(I_CONTROLLER_RANGE_MAX, 0, 20),   // 2014, 5000
 	FTKEY_EVENT_BUTTON(Z_TRIG, 1),                      // 1001, 2000
@@ -56,34 +56,34 @@ u32 D_ovl41_8018E108[2] = {
 s32 D_ovl41_8018E220[2];
 
 // 0x8018E228
-s32 gMvOpeningYoshiFramesElapsed;
+s32 gMVOpeningYoshiFramesElapsed;
 
 // 0x8018E22C
-GObj* gMvOpeningYoshiNameGObj;
+GObj* gMVOpeningYoshiNameGObj;
 
 // 0x8018E230
-GObj* gMvOpeningYoshiStageFighterGObj;
+GObj* gMVOpeningYoshiStageFighterGObj;
 
 // 0x8018E234
 s32 D_ovl41_8018E234;
 
 // 0x8018E238
-GObj* gMvOpeningYoshiStageCameraGObj;
+GObj* gMVOpeningYoshiStageCameraGObj;
 
 // 0x8018E23C
-void* gMvOpeningYoshiAnimHeap;
+void* gMVOpeningYoshiFigatreeHeap;
 
 // 0x8018E240
-f32 gMvOpeningYoshiPosedFighterXSpeed;
+f32 gMVOpeningYoshiPosedFighterXSpeed;
 
 // 0x8018E244
 s32 D_ovl41_8018E244;
 
 // 0x8018E248
-CameraDesc dMvOpeningYoshiCameraSettingsAdjustedStart;
+CameraDesc dMVOpeningYoshiCameraDescAdjustedStart;
 
 // 0x8018E268
-CameraDesc dMvOpeningYoshiCameraSettingsAdjustedEnd;
+CameraDesc dMVOpeningYoshiCameraDescAdjustedEnd;
 
 // 0x8018E288
 lbFileNode D_ovl41_8018E288[48];
@@ -92,27 +92,27 @@ lbFileNode D_ovl41_8018E288[48];
 lbFileNode D_ovl41_8018E408[7];
 
 // 0x8018E440
-uintptr_t gMvOpeningYoshiFiles[2];
+uintptr_t gMVOpeningYoshiFiles[2];
 
 // 0x8018E448
-scBattleState gMvOpeningYoshiBattleState;
+scBattleState gMVOpeningYoshiBattleState;
 
 
 // 0x8018D0C0
 void mvOpeningYoshiLoadFiles()
 {
-	lbRelocSetup rldmSetup;
+	lbRelocSetup rl_setup;
 
-	rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-	rldmSetup.file_heap = 0;
-	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buffer = D_ovl41_8018E288;
-	rldmSetup.status_buffer_size = ARRAY_COUNT(D_ovl41_8018E288);
-	rldmSetup.force_status_buffer = D_ovl41_8018E408;
-	rldmSetup.force_status_buffer_size = ARRAY_COUNT(D_ovl41_8018E408);
-	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl41_8018E108, ARRAY_COUNT(D_ovl41_8018E108), gMvOpeningYoshiFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl41_8018E108, ARRAY_COUNT(D_ovl41_8018E108)), 0x10));
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buffer = D_ovl41_8018E288;
+	rl_setup.status_buffer_size = ARRAY_COUNT(D_ovl41_8018E288);
+	rl_setup.force_status_buffer = D_ovl41_8018E408;
+	rl_setup.force_status_buffer_size = ARRAY_COUNT(D_ovl41_8018E408);
+	lbRelocInitSetup(&rl_setup);
+	lbRelocLoadFilesExtern(D_ovl41_8018E108, ARRAY_COUNT(D_ovl41_8018E108), gMVOpeningYoshiFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl41_8018E108, ARRAY_COUNT(D_ovl41_8018E108)), 0x10));
 }
 
 // 0x8018D160
@@ -144,12 +144,12 @@ void mvOpeningYoshiDrawName()
 	};
 	s32 i;
 
-	gMvOpeningYoshiNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
+	gMVOpeningYoshiNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
 	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 0x1B, 0x80000000, -1);
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMvOpeningYoshiFiles[0], offsets[i]));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMVOpeningYoshiFiles[0], offsets[i]));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = x_positions[i] + 80.0F;
@@ -164,15 +164,15 @@ void mvOpeningYoshiAnimateStageCamera(GObj* camera_gobj)
 {
 	Camera *cam = CameraGetStruct(camera_gobj);
 
-	if (gMvOpeningYoshiFramesElapsed >= 15)
+	if (gMVOpeningYoshiFramesElapsed >= 15)
 	{
-		cam->vec.eye.x += (((dMvOpeningYoshiCameraSettingsAdjustedEnd.eye.x - dMvOpeningYoshiCameraSettingsAdjustedStart.eye.x) / 45.0F));
-		cam->vec.eye.y += (((dMvOpeningYoshiCameraSettingsAdjustedEnd.eye.y - dMvOpeningYoshiCameraSettingsAdjustedStart.eye.y) / 45.0F));
-		cam->vec.eye.z += (((dMvOpeningYoshiCameraSettingsAdjustedEnd.eye.z - dMvOpeningYoshiCameraSettingsAdjustedStart.eye.z) / 45.0F));
-		cam->vec.at.x += (((dMvOpeningYoshiCameraSettingsAdjustedEnd.at.x - dMvOpeningYoshiCameraSettingsAdjustedStart.at.x) / 45.0F));
-		cam->vec.at.y += (((dMvOpeningYoshiCameraSettingsAdjustedEnd.at.y - dMvOpeningYoshiCameraSettingsAdjustedStart.at.y) / 45.0F));
-		cam->vec.at.z += (((dMvOpeningYoshiCameraSettingsAdjustedEnd.at.z - dMvOpeningYoshiCameraSettingsAdjustedStart.at.z) / 45.0F));
-		cam->vec.up.x += (((dMvOpeningYoshiCameraSettingsAdjustedEnd.upx - dMvOpeningYoshiCameraSettingsAdjustedStart.upx) / 45.0F));
+		cam->vec.eye.x += (((dMVOpeningYoshiCameraDescAdjustedEnd.eye.x - dMVOpeningYoshiCameraDescAdjustedStart.eye.x) / 45.0F));
+		cam->vec.eye.y += (((dMVOpeningYoshiCameraDescAdjustedEnd.eye.y - dMVOpeningYoshiCameraDescAdjustedStart.eye.y) / 45.0F));
+		cam->vec.eye.z += (((dMVOpeningYoshiCameraDescAdjustedEnd.eye.z - dMVOpeningYoshiCameraDescAdjustedStart.eye.z) / 45.0F));
+		cam->vec.at.x += (((dMVOpeningYoshiCameraDescAdjustedEnd.at.x - dMVOpeningYoshiCameraDescAdjustedStart.at.x) / 45.0F));
+		cam->vec.at.y += (((dMVOpeningYoshiCameraDescAdjustedEnd.at.y - dMVOpeningYoshiCameraDescAdjustedStart.at.y) / 45.0F));
+		cam->vec.at.z += (((dMVOpeningYoshiCameraDescAdjustedEnd.at.z - dMVOpeningYoshiCameraDescAdjustedStart.at.z) / 45.0F));
+		cam->vec.up.x += (((dMVOpeningYoshiCameraDescAdjustedEnd.upx - dMVOpeningYoshiCameraDescAdjustedStart.upx) / 45.0F));
 	}
 }
 
@@ -181,37 +181,37 @@ void mvOpeningYoshiCreateStageViewport(Vec3f arg0)
 {
 	Camera *cam;
 
-	dMvOpeningYoshiCameraSettingsAdjustedStart = dMvOpeningYoshiCameraSettingsStart;
-	dMvOpeningYoshiCameraSettingsAdjustedEnd = dMvOpeningYoshiCameraSettingsEnd;
+	dMVOpeningYoshiCameraDescAdjustedStart = dMVOpeningYoshiCameraDescStart;
+	dMVOpeningYoshiCameraDescAdjustedEnd = dMVOpeningYoshiCameraDescEnd;
 
-	gMvOpeningYoshiStageCameraGObj = func_ovl2_8010DB2C(0);
-	cam = CameraGetStruct(gMvOpeningYoshiStageCameraGObj);
+	gMVOpeningYoshiStageCameraGObj = func_ovl2_8010DB2C(0);
+	cam = CameraGetStruct(gMVOpeningYoshiStageCameraGObj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 150.0F);
 	cam->projection.persp.aspect = 15.0F / 7.0F;
-	gcEndProcessAll(gMvOpeningYoshiStageCameraGObj);
-	gcAddGObjProcess(gMvOpeningYoshiStageCameraGObj, mvOpeningYoshiAnimateStageCamera, 1, 1);
+	gcEndProcessAll(gMVOpeningYoshiStageCameraGObj);
+	gcAddGObjProcess(gMVOpeningYoshiStageCameraGObj, mvOpeningYoshiAnimateStageCamera, 1, 1);
 
-	dMvOpeningYoshiCameraSettingsAdjustedStart.eye.x += arg0.x;
-	dMvOpeningYoshiCameraSettingsAdjustedStart.eye.y += arg0.y;
-	dMvOpeningYoshiCameraSettingsAdjustedStart.eye.z += arg0.z;
-	dMvOpeningYoshiCameraSettingsAdjustedStart.at.x += arg0.x;
-	dMvOpeningYoshiCameraSettingsAdjustedStart.at.y += arg0.y;
-	dMvOpeningYoshiCameraSettingsAdjustedStart.at.z += arg0.z;
+	dMVOpeningYoshiCameraDescAdjustedStart.eye.x += arg0.x;
+	dMVOpeningYoshiCameraDescAdjustedStart.eye.y += arg0.y;
+	dMVOpeningYoshiCameraDescAdjustedStart.eye.z += arg0.z;
+	dMVOpeningYoshiCameraDescAdjustedStart.at.x += arg0.x;
+	dMVOpeningYoshiCameraDescAdjustedStart.at.y += arg0.y;
+	dMVOpeningYoshiCameraDescAdjustedStart.at.z += arg0.z;
 
-	dMvOpeningYoshiCameraSettingsAdjustedEnd.eye.x += arg0.x;
-	dMvOpeningYoshiCameraSettingsAdjustedEnd.eye.y += arg0.y;
-	dMvOpeningYoshiCameraSettingsAdjustedEnd.eye.z += arg0.z;
-	dMvOpeningYoshiCameraSettingsAdjustedEnd.at.x += arg0.x;
-	dMvOpeningYoshiCameraSettingsAdjustedEnd.at.y += arg0.y;
-	dMvOpeningYoshiCameraSettingsAdjustedEnd.at.z += arg0.z;
+	dMVOpeningYoshiCameraDescAdjustedEnd.eye.x += arg0.x;
+	dMVOpeningYoshiCameraDescAdjustedEnd.eye.y += arg0.y;
+	dMVOpeningYoshiCameraDescAdjustedEnd.eye.z += arg0.z;
+	dMVOpeningYoshiCameraDescAdjustedEnd.at.x += arg0.x;
+	dMVOpeningYoshiCameraDescAdjustedEnd.at.y += arg0.y;
+	dMVOpeningYoshiCameraDescAdjustedEnd.at.z += arg0.z;
 
-	cam->vec.eye.x = dMvOpeningYoshiCameraSettingsAdjustedStart.eye.x;
-	cam->vec.eye.y = dMvOpeningYoshiCameraSettingsAdjustedStart.eye.y;
-	cam->vec.eye.z = dMvOpeningYoshiCameraSettingsAdjustedStart.eye.z;
-	cam->vec.at.x = dMvOpeningYoshiCameraSettingsAdjustedStart.at.x;
-	cam->vec.at.y = dMvOpeningYoshiCameraSettingsAdjustedStart.at.y;
-	cam->vec.at.z = dMvOpeningYoshiCameraSettingsAdjustedStart.at.z;
-	cam->vec.up.x = dMvOpeningYoshiCameraSettingsAdjustedStart.upx;
+	cam->vec.eye.x = dMVOpeningYoshiCameraDescAdjustedStart.eye.x;
+	cam->vec.eye.y = dMVOpeningYoshiCameraDescAdjustedStart.eye.y;
+	cam->vec.eye.z = dMVOpeningYoshiCameraDescAdjustedStart.eye.z;
+	cam->vec.at.x = dMVOpeningYoshiCameraDescAdjustedStart.at.x;
+	cam->vec.at.y = dMVOpeningYoshiCameraDescAdjustedStart.at.y;
+	cam->vec.at.z = dMVOpeningYoshiCameraDescAdjustedStart.at.z;
+	cam->vec.up.x = dMVOpeningYoshiCameraDescAdjustedStart.upx;
 }
 
 // 0x8018D61C
@@ -267,12 +267,12 @@ void mvOpeningYoshiInitFighterStagePanel()
 		spawn_info.damage = 0;
 		spawn_info.pl_kind = gBattleState->players[i].pl_kind;
 		spawn_info.controller = &gPlayerControllers[i];
-		spawn_info.figatree_heap = ftManagerAllocAnimHeapKind(gBattleState->players[i].ft_kind);
+		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[i].ft_kind);
 
-		gMvOpeningYoshiStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
+		gMVOpeningYoshiStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
-		ftParamSetKey(fighter_gobj, dMvOpeningYoshiInputSeq);
+		ftParamSetKey(fighter_gobj, dMVOpeningYoshiInputSeq);
 	}
 }
 
@@ -298,31 +298,31 @@ void mvOpeningYoshiCreatePosedFighterBackground()
 // 0x8018D9C0
 void mvOpeningYoshiAnimatePosedFighter(GObj* fighter_gobj)
 {
-	switch (gMvOpeningYoshiFramesElapsed)
+	switch (gMVOpeningYoshiFramesElapsed)
 	{
 		default:
 			break;
 		case 15:
-			gMvOpeningYoshiPosedFighterXSpeed = 17.0F;
+			gMVOpeningYoshiPosedFighterXSpeed = 17.0F;
 			break;
 		case 45:
-			gMvOpeningYoshiPosedFighterXSpeed = 15.0F;
+			gMVOpeningYoshiPosedFighterXSpeed = 15.0F;
 			break;
 		case 60:
-			gMvOpeningYoshiPosedFighterXSpeed = 0.0F;
+			gMVOpeningYoshiPosedFighterXSpeed = 0.0F;
 			break;
 	}
 
-	if ((gMvOpeningYoshiFramesElapsed > 15) && (gMvOpeningYoshiFramesElapsed < 45))
+	if ((gMVOpeningYoshiFramesElapsed > 15) && (gMVOpeningYoshiFramesElapsed < 45))
 	{
-		gMvOpeningYoshiPosedFighterXSpeed += -1.0F / 15.0F;
+		gMVOpeningYoshiPosedFighterXSpeed += -1.0F / 15.0F;
 	}
-	if ((gMvOpeningYoshiFramesElapsed > 45) && (gMvOpeningYoshiFramesElapsed < 60))
+	if ((gMVOpeningYoshiFramesElapsed > 45) && (gMVOpeningYoshiFramesElapsed < 60))
 	{
-		gMvOpeningYoshiPosedFighterXSpeed += -1.0F;
+		gMVOpeningYoshiPosedFighterXSpeed += -1.0F;
 	}
 
-	DObjGetStruct(fighter_gobj)->translate.vec.f.x += gMvOpeningYoshiPosedFighterXSpeed;
+	DObjGetStruct(fighter_gobj)->translate.vec.f.x += gMVOpeningYoshiPosedFighterXSpeed;
 }
 
 // 0x8018DA90
@@ -333,7 +333,7 @@ void mvOpeningYoshiCreatePosedFighter()
 
 	spawn_info.ft_kind = nFTKindYoshi;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindYoshi, 0);
-	spawn_info.figatree_heap = gMvOpeningYoshiAnimHeap;
+	spawn_info.figatree_heap = gMVOpeningYoshiFigatreeHeap;
 	spawn_info.pos.x = -600.0f;
 	spawn_info.pos.y = 0.0f;
 	spawn_info.pos.z = 0.0f;
@@ -363,7 +363,7 @@ void mvOpeningYoshiCreatePosedFighterViewport()
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 150.0F, 310.0F, 230.0F);
 	cam->projection.persp.aspect = 3.75F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningYoshiFiles[1], &FILE_041_YOSHI_CAMERA_PARAMS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningYoshiFiles[1], &FILE_041_YOSHI_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
@@ -381,7 +381,7 @@ void mvOpeningYoshiCreatePosedFighterBackgroundViewport()
 // 0x8018DDC0
 void mvOpeningYoshiMainProc(GObj* arg0)
 {
-	gMvOpeningYoshiFramesElapsed += 1;
+	gMVOpeningYoshiFramesElapsed += 1;
 
 	if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON))
 	{
@@ -390,15 +390,15 @@ void mvOpeningYoshiMainProc(GObj* arg0)
 		syTasklogSetLoadScene();
 	}
 
-	if (gMvOpeningYoshiFramesElapsed == 15)
+	if (gMVOpeningYoshiFramesElapsed == 15)
 	{
-		gcEjectGObj(gMvOpeningYoshiNameGObj);
+		gcEjectGObj(gMVOpeningYoshiNameGObj);
 		mvOpeningYoshiInitFighterStagePanel();
 		mvOpeningYoshiCreatePosedFighterBackground();
 		mvOpeningYoshiCreatePosedFighter();
 	}
 
-	if (gMvOpeningYoshiFramesElapsed == 60)
+	if (gMVOpeningYoshiFramesElapsed == 60)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 0x25;
@@ -409,14 +409,14 @@ void mvOpeningYoshiMainProc(GObj* arg0)
 // 0x8018DE7C
 void mvOpeningYoshiInitFramesElapsed()
 {
-	gMvOpeningYoshiFramesElapsed = 0;
+	gMVOpeningYoshiFramesElapsed = 0;
 }
 
 // 0x8018DE88
 void mvOpeningYoshiInit()
 {
-	gMvOpeningYoshiBattleState = gDefaultBattleState;
-	gBattleState = &gMvOpeningYoshiBattleState;
+	gMVOpeningYoshiBattleState = gDefaultBattleState;
+	gBattleState = &gMVOpeningYoshiBattleState;
 
 	gBattleState->game_type = nSCBattleGameTypeOpening;
 
@@ -441,7 +441,7 @@ void mvOpeningYoshiInit()
 	efManagerInitEffects();
 	ftManagerSetupFilesAllKind(nFTKindYoshi);
 
-	gMvOpeningYoshiAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMVOpeningYoshiFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningYoshiCreateNameViewport();
 	mvOpeningYoshiCreatePosedFighterBackgroundViewport();
 	mvOpeningYoshiCreatePosedFighterViewport();
@@ -451,7 +451,7 @@ void mvOpeningYoshiInit()
 }
 
 // 0x8018E010
-void gMvOpeningYoshiFuncLights(Gfx **display_list)
+void gMVOpeningYoshiFuncLights(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
@@ -476,7 +476,7 @@ scRuntimeInfo D_ovl41_8018E158 = {
 	0x800A26B8, &lOverlay41ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00004000, 0x00002000,
 	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000C000,
-	gMvOpeningYoshiFuncLights, update_contdata,
+	gMVOpeningYoshiFuncLights, update_contdata,
 	0x00000000, 0x00000600, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
 	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,

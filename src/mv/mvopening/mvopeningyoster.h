@@ -4,7 +4,6 @@
 #include <ssb_types.h>
 #include <sys/objdef.h>
 #include <PR/gbi.h>
-#include <mv/movie.h>
 
 extern intptr_t lMVOpeningYosterNestDObjDesc;       // 0x00009808
 extern intptr_t lMVOpeningYosterGroundDObjDesc;     // 0x0000B990

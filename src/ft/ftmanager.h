@@ -24,7 +24,7 @@ extern void ftManagerSetupFilesMainKind(s32 ft_kind);
 extern void func_ovl2_800D7710(s32 ft_kind);
 extern void ftManagerSetupFilesPlayablesAll();
 extern void ftManagerSetupFilesAllKind(s32 ft_kind);
-extern void* ftManagerAllocAnimHeapKind(s32 ft_kind);
+extern void* ftManagerAllocFigatreeHeapKind(s32 ft_kind);
 extern void ftManagerDestroyFighter(GObj* fighter_gobj);
 extern void ftManagerDestroyFighterWeapons(GObj* fighter_gobj);
 extern void func_ovl2_800D79F0(GObj* fighter_gobj, ftCreateDesc *ft_desc);

@@ -4,7 +4,6 @@
 #include <ssb_types.h>
 #include <sys/objdef.h>
 #include <PR/gbi.h>
-#include <mv/movie.h>
 
 extern intptr_t lMVOpeningNewcomersPurinShowDisplayList;        // 0x00005C28
 extern intptr_t lMVOpeningNewcomersPurinAnimJoint;              // 0x00005E44

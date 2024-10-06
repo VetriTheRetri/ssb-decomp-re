@@ -1537,10 +1537,10 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x16DFD0, c, ovl43]
-      - [0x16EFC0, .data, ovl43]
-      - [0x16F100, .rodata, ovl43]
-      - { start: auto, type: .bss, vram: 0x8018E220, name: ovl43 }
+      - [0x16DFD0, c, mv/mvopening/mvopeningkirby]
+      - [0x16EFC0, .data, mv/mvopening/mvopeningkirby]
+      - [0x16F100, .rodata, mv/mvopening/mvopeningkirby]
+      - { start: auto, type: .bss, name: mv/mvopening/mvopeningkirby, vram: 0x8018E220 }
 
   - name: ovl44
     type: code

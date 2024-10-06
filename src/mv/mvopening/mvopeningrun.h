@@ -4,7 +4,6 @@
 #include <ssb_types.h>
 #include <sys/objdef.h>
 #include <PR/gbi.h>
-#include <mv/movie.h>
 
 extern intptr_t lMVOpeningRunWallpaperSprite; 			// 0x000058A0
 extern intptr_t lMVOpeningRunMainCamAnimJoint; 			// 0x00000000

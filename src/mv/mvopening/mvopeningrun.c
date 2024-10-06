@@ -7,6 +7,10 @@
 extern u32 func_8000092C();
 extern void func_80007080(void*, f32, f32, f32, f32);
 
+extern uintptr_t D_NF_00000037;
+extern uintptr_t D_NF_0000003C;
+extern uintptr_t D_NF_0000004B;
+
 // // // // // // // // // // // //
 //                               //
 //   GLOBAL / STATIC VARIABLES   //
@@ -47,7 +51,7 @@ void *sMVOpeningRunFiles[3];
 // // // // // // // // // // // //
 
 // 0x801325D0
-u32 dMVOpeningRunFileIDs[/* */] = { 0x37, 0x3C, 0x4B };
+u32 dMVOpeningRunFileIDs[/* */] = { &D_NF_00000037, &D_NF_0000003C, &D_NF_0000004B };
 
 // 0x801325DC
 Lights1 dMVOpeningRunLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x14, 0x14, 0x14);
@@ -338,7 +342,7 @@ void mvOpeningRunFuncStart(void)
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-	rl_setup.file_heap = 0;
+	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
 	rl_setup.status_buffer = sMVOpeningRunStatusBuffer;
 	rl_setup.status_buffer_size = ARRAY_COUNT(sMVOpeningRunStatusBuffer);

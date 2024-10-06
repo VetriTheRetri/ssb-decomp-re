@@ -4,7 +4,6 @@
 #include <ssb_types.h>
 #include <sys/objdef.h>
 #include <PR/gbi.h>
-#include <mv/movie.h>
 
 extern intptr_t lMVOpeningYamabukiLegsDObjDesc;         // 0x00009548
 extern intptr_t lMVOpeningYamabukiLegsAnimJoint;        // 0x000098C0

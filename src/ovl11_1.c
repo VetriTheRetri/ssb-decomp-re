@@ -15,16 +15,16 @@ u32 D_ovl11_800D67B0[1] = { 0x00A9 };
 // 0x800D6660
 void mnNoControllerLoadFiles()
 {
-	lbRelocSetup rldmSetup;
+	lbRelocSetup rl_setup;
 
-	rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-	rldmSetup.file_heap = NULL;
-	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buffer = (lbFileNode*) &D_ovl11_800D67D8;
-	rldmSetup.status_buffer_size = 0x64;
-	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl11_800D6AF8;
-	rldmSetup.force_status_buffer_size = 7;
-	lbRelocInitSetup(&rldmSetup);
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buffer = (lbFileNode*) &D_ovl11_800D67D8;
+	rl_setup.status_buffer_size = 0x64;
+	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl11_800D6AF8;
+	rl_setup.force_status_buffer_size = 7;
+	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl11_800D67B0, ARRAY_COUNT(D_ovl11_800D67B0), gMNNoControllerFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl11_800D67B0, ARRAY_COUNT(D_ovl11_800D67B0)), 0x10U));
 }

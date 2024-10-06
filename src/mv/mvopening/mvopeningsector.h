@@ -4,7 +4,6 @@
 #include <ssb_types.h>
 #include <sys/objdef.h>
 #include <PR/gbi.h>
-#include <mv/movie.h>
 
 extern intptr_t lMVOpeningSectorGreatFoxDObjDesc;   // 0x0000D820
 extern intptr_t lMVOpeningSectorGreatFoxAnimJoint;  // 0x0000DA10

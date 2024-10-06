@@ -196,7 +196,7 @@ GObj* gMNResultsFighterGObjs[4];
 s32 gMNResultsFTKind[4];
 
 // 0x80139C00
-void* gMNResultsAnimHeaps[4];
+void* gMNResultsFigatreeHeaps[4];
 
 // 0x80139C10
 s32 gMNResultsGameRule;
@@ -998,7 +998,7 @@ void mnResultsSpawnFighter(s32 port_id)
 	spawn_info.ft_kind = mnResultsGetFtKind(port_id);
 	spawn_info.costume = gTransferBattleState.players[port_id].costume;
 	spawn_info.shade = gTransferBattleState.players[port_id].shade;
-	spawn_info.figatree_heap = gMNResultsAnimHeaps[port_id];
+	spawn_info.figatree_heap = gMNResultsFigatreeHeaps[port_id];
 	gMNResultsFighterGObjs[port_id] = ftManagerMakeFighter(&spawn_info);
 }
 
@@ -2935,18 +2935,18 @@ scRuntimeInfo D_ovl31_8013972C = {
 // 0x80138B70
 void mnResultsInit()
 {
-	lbRelocSetup rldmSetup;
+	lbRelocSetup rl_setup;
 	s32 i;
 
-	rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-	rldmSetup.file_heap = 0;
-	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buffer = (lbFileNode*) &D_ovl31_80139C50;
-	rldmSetup.status_buffer_size = 0x78;
-	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl31_8013A010;
-	rldmSetup.force_status_buffer_size = 7;
-	lbRelocInitSetup(&rldmSetup);
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buffer = (lbFileNode*) &D_ovl31_80139C50;
+	rl_setup.status_buffer_size = 0x78;
+	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl31_8013A010;
+	rl_setup.force_status_buffer_size = 7;
+	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl31_80138F70, ARRAY_COUNT(D_ovl31_80138F70), gMNResultsFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl31_80138F70, ARRAY_COUNT(D_ovl31_80138F70)), 0x10));
 
 	gcMakeGObjSPAfter(0, mnResultsMain, 0, 0x80000000U);
@@ -2958,8 +2958,8 @@ void mnResultsInit()
 	for (i = 0; i < 12; i++)
 		ftManagerSetupFilesAllKind(i);
 
-	for (i = 0; i < ARRAY_COUNT(gMNResultsAnimHeaps); i++)
-		gMNResultsAnimHeaps[i] = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	for (i = 0; i < ARRAY_COUNT(gMNResultsFigatreeHeaps); i++)
+		gMNResultsFigatreeHeaps[i] = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
 	mnResultsSaveDataToSRAM();
 	mnResultsLoadMatchInfo();

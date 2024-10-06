@@ -34,6 +34,7 @@ extern intptr_t lIFCommonAnnounceGoLetterO;                 // 0x0000A730
 extern intptr_t lIFCommonAnnounceGoSymbolExclaim;           // 0x0000C370
 
 extern intptr_t lIFCommonAnnounceCommonLetterA;             // 0x000005E0
+extern intptr_t lIFCommonAnnounceCommonLetterB;             // 0x000009A8
 extern intptr_t lIFCommonAnnounceCommonLetterC;             // 0x00000D80
 extern intptr_t lIFCommonAnnounceCommonLetterD;             // 0x00001268
 extern intptr_t lIFCommonAnnounceCommonLetterE;             // 0x00001628
@@ -41,6 +42,7 @@ extern intptr_t lIFCommonAnnounceCommonLetterF;             // 0x00001A00
 extern intptr_t lIFCommonAnnounceCommonLetterG;             // 0x00001F08
 extern intptr_t lIFCommonAnnounceCommonLetterH;             // 0x00002408
 extern intptr_t lIFCommonAnnounceCommonLetterI;             // 0x000026B8
+extern intptr_t lIFCommonAnnounceCommonLetterK;             // 0x00002F98
 extern intptr_t lIFCommonAnnounceCommonLetterL;             // 0x00003358
 extern intptr_t lIFCommonAnnounceCommonLetterM;             // 0x00003980
 extern intptr_t lIFCommonAnnounceCommonLetterN;             // 0x00003E88
@@ -51,6 +53,7 @@ extern intptr_t lIFCommonAnnounceCommonLetterS;             // 0x000057F0
 extern intptr_t lIFCommonAnnounceCommonLetterT;             // 0x00005BD0
 extern intptr_t lIFCommonAnnounceCommonLetterU;             // 0x000060D8
 extern intptr_t lIFCommonAnnounceCommonLetterV;             // 0x000065D8
+extern intptr_t lIFCommonAnnounceCommonLetterY;             // 0x00007608
 extern intptr_t lIFCommonAnnounceCommonSymbolExclaim;       // 0x00007D98
 
 extern intptr_t lIFCommonAnnounceTimeUpLetterT;             // 0x0000E4A8

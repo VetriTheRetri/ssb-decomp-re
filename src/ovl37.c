@@ -17,21 +17,21 @@ extern void func_80007080(void*, f32, f32, f32, f32);
 
 // Data
 // 0x8018E070
-CameraDesc dMvOpeningDKCameraDescStart = {
+CameraDesc dMVOpeningDKCameraDescStart = {
 
 	{ -1100.0, 150.0, 400.0 },
 	{ 0.0,     150.0, 0.0   }, 0.0
 };
 
 // 0x8018E08C
-CameraDesc dMvOpeningDKCameraDescEnd = {
+CameraDesc dMVOpeningDKCameraDescEnd = {
 
 	{ -900.0, 500.0, 1800.0 },
 	{ 0.0,    500.0, 0.0    }, 0.0
 };
 
 // 0x8018E0A8
-ftKeyCommand dMvOpeningDKInputSeq[] =
+ftKeyCommand dMVOpeningDKInputSeq[] =
 {
 	FTKEY_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0), // 0x2000, 0x00B0
 	FTKEY_EVENT_BUTTON(B_BUTTON, 1),                  // 0x1001, 0x4000
@@ -52,30 +52,30 @@ u32 D_ovl37_8018E0BC[2] = {
 s32 D_ovl37_8018E1C0[2];
 
 // 0x8018E1C8
-s32 gMvOpeningDKFramesElapsed;
+s32 gMVOpeningDKFramesElapsed;
 
 // 0x8018E1CC
-GObj* gMvOpeningDKNameGObj;
+GObj* gMVOpeningDKNameGObj;
 
 // 0x8018E1D0
-GObj* gMvOpeningDKStageFighterGObj;
+GObj* gMVOpeningDKStageFighterGObj;
 
 s32 D_ovl37_8018E1D4;
 
 // 0x8018E1D8
-GObj* gMvOpeningDKStageCameraGObj;
+GObj* gMVOpeningDKStageCameraGObj;
 
 // 0x8018E1DC
-void* gMvOpeningDKAnimHeap;
+void* gMVOpeningDKFigatreeHeap;
 
 // 0x8018E1E0
-f32 gMvOpeningDKPosedFighterYSpeed;
+f32 gMVOpeningDKPosedFighterYSpeed;
 
 // 0x8018E1E8
-CameraDesc dMvOpeningDKCameraDescAdjustedStart;
+CameraDesc dMVOpeningDKCameraDescAdjustedStart;
 
 // 0x8018E208
-CameraDesc dMvOpeningDKCameraDescAdjustedEnd;
+CameraDesc dMVOpeningDKCameraDescAdjustedEnd;
 
 // 0x8018E228
 lbFileNode D_ovl37_8018E228[48];
@@ -84,27 +84,27 @@ lbFileNode D_ovl37_8018E228[48];
 lbFileNode D_ovl37_8018E3A8[7];
 
 // 0x8018E3E0
-uintptr_t gMvOpeningDKFiles[2];
+uintptr_t gMVOpeningDKFiles[2];
 
 // 0x8018E3E8
-scBattleState gMvOpeningDKBattleState;
+scBattleState gMVOpeningDKBattleState;
 
 
 // 0x8018D0C0
 void mvOpeningDKLoadFiles()
 {
-	lbRelocSetup rldmSetup;
+	lbRelocSetup rl_setup;
 
-	rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-	rldmSetup.file_heap = NULL;
-	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buffer = (lbFileNode*) &D_ovl37_8018E228;
-	rldmSetup.status_buffer_size = 0x30;
-	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl37_8018E3A8;
-	rldmSetup.force_status_buffer_size = 7;
-	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl37_8018E0BC, ARRAY_COUNT(D_ovl37_8018E0BC), gMvOpeningDKFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl37_8018E0BC, ARRAY_COUNT(D_ovl37_8018E0BC)), 0x10));
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buffer = (lbFileNode*) &D_ovl37_8018E228;
+	rl_setup.status_buffer_size = 0x30;
+	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl37_8018E3A8;
+	rl_setup.force_status_buffer_size = 7;
+	lbRelocInitSetup(&rl_setup);
+	lbRelocLoadFilesExtern(D_ovl37_8018E0BC, ARRAY_COUNT(D_ovl37_8018E0BC), gMVOpeningDKFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl37_8018E0BC, ARRAY_COUNT(D_ovl37_8018E0BC)), 0x10));
 }
 
 // 0x8018D160
@@ -138,12 +138,12 @@ void mvOpeningDKDrawName()
 	};
 	s32 i;
 
-	gMvOpeningDKNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
+	gMVOpeningDKNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
 	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 0x1B, 0x80000000, -1);
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMvOpeningDKFiles[0], offsets[i]));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMVOpeningDKFiles[0], offsets[i]));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = positions[i].x + 120.0F;
@@ -158,15 +158,15 @@ void mvOpeningDKAnimateStageCamera(GObj* camera_gobj)
 {
 	Camera *cam = CameraGetStruct(camera_gobj);
 
-	if (gMvOpeningDKFramesElapsed >= 15)
+	if (gMVOpeningDKFramesElapsed >= 15)
 	{
-		cam->vec.eye.x += (((dMvOpeningDKCameraDescAdjustedEnd.eye.x - dMvOpeningDKCameraDescAdjustedStart.eye.x) / 45.0F));
-		cam->vec.eye.y += (((dMvOpeningDKCameraDescAdjustedEnd.eye.y - dMvOpeningDKCameraDescAdjustedStart.eye.y) / 45.0F));
-		cam->vec.eye.z += (((dMvOpeningDKCameraDescAdjustedEnd.eye.z - dMvOpeningDKCameraDescAdjustedStart.eye.z) / 45.0F));
-		cam->vec.at.x += (((dMvOpeningDKCameraDescAdjustedEnd.at.x - dMvOpeningDKCameraDescAdjustedStart.at.x) / 45.0F));
-		cam->vec.at.y += (((dMvOpeningDKCameraDescAdjustedEnd.at.y - dMvOpeningDKCameraDescAdjustedStart.at.y) / 45.0F));
-		cam->vec.at.z += (((dMvOpeningDKCameraDescAdjustedEnd.at.z - dMvOpeningDKCameraDescAdjustedStart.at.z) / 45.0F));
-		cam->vec.up.x += (((dMvOpeningDKCameraDescAdjustedEnd.upx - dMvOpeningDKCameraDescAdjustedStart.upx) / 45.0F));
+		cam->vec.eye.x += (((dMVOpeningDKCameraDescAdjustedEnd.eye.x - dMVOpeningDKCameraDescAdjustedStart.eye.x) / 45.0F));
+		cam->vec.eye.y += (((dMVOpeningDKCameraDescAdjustedEnd.eye.y - dMVOpeningDKCameraDescAdjustedStart.eye.y) / 45.0F));
+		cam->vec.eye.z += (((dMVOpeningDKCameraDescAdjustedEnd.eye.z - dMVOpeningDKCameraDescAdjustedStart.eye.z) / 45.0F));
+		cam->vec.at.x += (((dMVOpeningDKCameraDescAdjustedEnd.at.x - dMVOpeningDKCameraDescAdjustedStart.at.x) / 45.0F));
+		cam->vec.at.y += (((dMVOpeningDKCameraDescAdjustedEnd.at.y - dMVOpeningDKCameraDescAdjustedStart.at.y) / 45.0F));
+		cam->vec.at.z += (((dMVOpeningDKCameraDescAdjustedEnd.at.z - dMVOpeningDKCameraDescAdjustedStart.at.z) / 45.0F));
+		cam->vec.up.x += (((dMVOpeningDKCameraDescAdjustedEnd.upx - dMVOpeningDKCameraDescAdjustedStart.upx) / 45.0F));
 	}
 }
 
@@ -175,37 +175,37 @@ void mvOpeningDKCreateStageViewport(Vec3f arg0)
 {
 	Camera *cam;
 
-	dMvOpeningDKCameraDescAdjustedStart = dMvOpeningDKCameraDescStart;
-	dMvOpeningDKCameraDescAdjustedEnd = dMvOpeningDKCameraDescEnd;
+	dMVOpeningDKCameraDescAdjustedStart = dMVOpeningDKCameraDescStart;
+	dMVOpeningDKCameraDescAdjustedEnd = dMVOpeningDKCameraDescEnd;
 
-	gMvOpeningDKStageCameraGObj = func_ovl2_8010DB2C(0);
-	cam = CameraGetStruct(gMvOpeningDKStageCameraGObj);
+	gMVOpeningDKStageCameraGObj = func_ovl2_8010DB2C(0);
+	cam = CameraGetStruct(gMVOpeningDKStageCameraGObj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 210.0F, 230.0F);
 	cam->projection.persp.aspect = 10.0F / 11.0F;
-	gcEndProcessAll(gMvOpeningDKStageCameraGObj);
-	gcAddGObjProcess(gMvOpeningDKStageCameraGObj, mvOpeningDKAnimateStageCamera, 1, 1);
+	gcEndProcessAll(gMVOpeningDKStageCameraGObj);
+	gcAddGObjProcess(gMVOpeningDKStageCameraGObj, mvOpeningDKAnimateStageCamera, 1, 1);
 
-	dMvOpeningDKCameraDescAdjustedStart.eye.x += arg0.x;
-	dMvOpeningDKCameraDescAdjustedStart.eye.y += arg0.y;
-	dMvOpeningDKCameraDescAdjustedStart.eye.z += arg0.z;
-	dMvOpeningDKCameraDescAdjustedStart.at.x += arg0.x;
-	dMvOpeningDKCameraDescAdjustedStart.at.y += arg0.y;
-	dMvOpeningDKCameraDescAdjustedStart.at.z += arg0.z;
+	dMVOpeningDKCameraDescAdjustedStart.eye.x += arg0.x;
+	dMVOpeningDKCameraDescAdjustedStart.eye.y += arg0.y;
+	dMVOpeningDKCameraDescAdjustedStart.eye.z += arg0.z;
+	dMVOpeningDKCameraDescAdjustedStart.at.x += arg0.x;
+	dMVOpeningDKCameraDescAdjustedStart.at.y += arg0.y;
+	dMVOpeningDKCameraDescAdjustedStart.at.z += arg0.z;
 
-	dMvOpeningDKCameraDescAdjustedEnd.eye.x += arg0.x;
-	dMvOpeningDKCameraDescAdjustedEnd.eye.y += arg0.y;
-	dMvOpeningDKCameraDescAdjustedEnd.eye.z += arg0.z;
-	dMvOpeningDKCameraDescAdjustedEnd.at.x += arg0.x;
-	dMvOpeningDKCameraDescAdjustedEnd.at.y += arg0.y;
-	dMvOpeningDKCameraDescAdjustedEnd.at.z += arg0.z;
+	dMVOpeningDKCameraDescAdjustedEnd.eye.x += arg0.x;
+	dMVOpeningDKCameraDescAdjustedEnd.eye.y += arg0.y;
+	dMVOpeningDKCameraDescAdjustedEnd.eye.z += arg0.z;
+	dMVOpeningDKCameraDescAdjustedEnd.at.x += arg0.x;
+	dMVOpeningDKCameraDescAdjustedEnd.at.y += arg0.y;
+	dMVOpeningDKCameraDescAdjustedEnd.at.z += arg0.z;
 
-	cam->vec.eye.x = dMvOpeningDKCameraDescAdjustedStart.eye.x;
-	cam->vec.eye.y = dMvOpeningDKCameraDescAdjustedStart.eye.y;
-	cam->vec.eye.z = dMvOpeningDKCameraDescAdjustedStart.eye.z;
-	cam->vec.at.x = dMvOpeningDKCameraDescAdjustedStart.at.x;
-	cam->vec.at.y = dMvOpeningDKCameraDescAdjustedStart.at.y;
-	cam->vec.at.z = dMvOpeningDKCameraDescAdjustedStart.at.z;
-	cam->vec.up.x = dMvOpeningDKCameraDescAdjustedStart.upx;
+	cam->vec.eye.x = dMVOpeningDKCameraDescAdjustedStart.eye.x;
+	cam->vec.eye.y = dMVOpeningDKCameraDescAdjustedStart.eye.y;
+	cam->vec.eye.z = dMVOpeningDKCameraDescAdjustedStart.eye.z;
+	cam->vec.at.x = dMVOpeningDKCameraDescAdjustedStart.at.x;
+	cam->vec.at.y = dMVOpeningDKCameraDescAdjustedStart.at.y;
+	cam->vec.at.z = dMVOpeningDKCameraDescAdjustedStart.at.z;
+	cam->vec.up.x = dMVOpeningDKCameraDescAdjustedStart.upx;
 }
 
 // 0x8018D604
@@ -259,12 +259,12 @@ void mvOpeningDKInitFighterStagePanel()
 		spawn_info.damage = 0;
 		spawn_info.pl_kind = gBattleState->players[i].pl_kind;
 		spawn_info.controller = &gPlayerControllers[i];
-		spawn_info.figatree_heap = ftManagerAllocAnimHeapKind(gBattleState->players[i].ft_kind);
+		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[i].ft_kind);
 
-		gMvOpeningDKStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
+		gMVOpeningDKStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
-		ftParamSetKey(fighter_gobj, dMvOpeningDKInputSeq);
+		ftParamSetKey(fighter_gobj, dMVOpeningDKInputSeq);
 	}
 }
 
@@ -290,28 +290,28 @@ void mvOpeningDKCreatePosedFighterBackground()
 // 0x8018D980
 void mvOpeningDKAnimatePosedFighter(GObj* fighter_gobj)
 {
-	switch (gMvOpeningDKFramesElapsed)
+	switch (gMVOpeningDKFramesElapsed)
 	{
 		default:
 			break;
 		case 15:
-			gMvOpeningDKPosedFighterYSpeed = 17.0F;
+			gMVOpeningDKPosedFighterYSpeed = 17.0F;
 			break;
 		case 45:
-			gMvOpeningDKPosedFighterYSpeed = 15.0F;
+			gMVOpeningDKPosedFighterYSpeed = 15.0F;
 			break;
 		case 60:
-			gMvOpeningDKPosedFighterYSpeed = 0.0F;
+			gMVOpeningDKPosedFighterYSpeed = 0.0F;
 			break;
 	}
 
-	if ((gMvOpeningDKFramesElapsed > 15) && (gMvOpeningDKFramesElapsed < 45))
-		gMvOpeningDKPosedFighterYSpeed += -1.0F / 15.0F;
+	if ((gMVOpeningDKFramesElapsed > 15) && (gMVOpeningDKFramesElapsed < 45))
+		gMVOpeningDKPosedFighterYSpeed += -1.0F / 15.0F;
 
-	if ((gMvOpeningDKFramesElapsed > 45) && (gMvOpeningDKFramesElapsed < 60))
-		gMvOpeningDKPosedFighterYSpeed += -1.0F;
+	if ((gMVOpeningDKFramesElapsed > 45) && (gMVOpeningDKFramesElapsed < 60))
+		gMVOpeningDKPosedFighterYSpeed += -1.0F;
 
-	DObjGetStruct(fighter_gobj)->translate.vec.f.y += gMvOpeningDKPosedFighterYSpeed;
+	DObjGetStruct(fighter_gobj)->translate.vec.f.y += gMVOpeningDKPosedFighterYSpeed;
 }
 
 // 0x8018DA50
@@ -322,7 +322,7 @@ void mvOpeningDKCreatePosedFighter()
 
 	spawn_info.ft_kind = nFTKindDonkey;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindDonkey, 0);
-	spawn_info.figatree_heap = gMvOpeningDKAnimHeap;
+	spawn_info.figatree_heap = gMVOpeningDKFigatreeHeap;
 	spawn_info.pos.x = 0.0f;
 	spawn_info.pos.y = -600.0f;
 	spawn_info.pos.z = 0.0f;
@@ -352,7 +352,7 @@ void mvOpeningDKCreatePosedFighterViewport()
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 210.0F, 10.0F, 310.0F, 230.0F);
 	cam->projection.persp.aspect = 5.0F / 11.0F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningDKFiles[1], &FILE_041_DK_CAMERA_PARAMS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningDKFiles[1], &FILE_041_DK_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
@@ -370,7 +370,7 @@ void mvOpeningDKCreatePosedFighterBackgroundViewport()
 // 0x8018DD80
 void mvOpeningDKMainProc(GObj* arg0)
 {
-	gMvOpeningDKFramesElapsed += 1;
+	gMVOpeningDKFramesElapsed += 1;
 
 	if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON))
 	{
@@ -379,15 +379,15 @@ void mvOpeningDKMainProc(GObj* arg0)
 		syTasklogSetLoadScene();
 	}
 
-	if (gMvOpeningDKFramesElapsed == 15)
+	if (gMVOpeningDKFramesElapsed == 15)
 	{
-		gcEjectGObj(gMvOpeningDKNameGObj);
+		gcEjectGObj(gMVOpeningDKNameGObj);
 		mvOpeningDKInitFighterStagePanel();
 		mvOpeningDKCreatePosedFighterBackground();
 		mvOpeningDKCreatePosedFighter();
 	}
 
-	if (gMvOpeningDKFramesElapsed == 60)
+	if (gMVOpeningDKFramesElapsed == 60)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 0x22;
@@ -398,14 +398,14 @@ void mvOpeningDKMainProc(GObj* arg0)
 // 0x8018DE3C
 void mvOpeningDKInitFramesElapsed()
 {
-	gMvOpeningDKFramesElapsed = 0;
+	gMVOpeningDKFramesElapsed = 0;
 }
 
 // 0x8018DE48
 void mvOpeningDKInit()
 {
-	gMvOpeningDKBattleState = gDefaultBattleState;
-	gBattleState = &gMvOpeningDKBattleState;
+	gMVOpeningDKBattleState = gDefaultBattleState;
+	gBattleState = &gMVOpeningDKBattleState;
 
 	gBattleState->game_type = nSCBattleGameTypeOpening;
 
@@ -430,7 +430,7 @@ void mvOpeningDKInit()
 	efManagerInitEffects();
 	ftManagerSetupFilesAllKind(nFTKindDonkey);
 
-	gMvOpeningDKAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMVOpeningDKFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningDKCreateNameViewport();
 	mvOpeningDKCreatePosedFighterBackgroundViewport();
 	mvOpeningDKCreatePosedFighterViewport();

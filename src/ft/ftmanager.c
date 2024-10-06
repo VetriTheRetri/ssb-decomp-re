@@ -406,7 +406,7 @@ void ftManagerSetupFilesAllKind(s32 ft_kind)
 }
 
 // 0x800D78B4
-void* ftManagerAllocAnimHeapKind(s32 ft_kind)
+void* ftManagerAllocFigatreeHeapKind(s32 ft_kind)
 {
     ftData *ft_data = dFTManagerDataFiles[ft_kind];
 

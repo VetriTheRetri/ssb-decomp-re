@@ -1345,18 +1345,18 @@ void mnStageInitSSS()
 {
 	s32 foo;
 	s32 bar;
-	lbRelocSetup rldmSetup;
+	lbRelocSetup rl_setup;
 	s32 baz;
 
-	rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-	rldmSetup.file_heap = NULL;
-	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buffer = (lbFileNode*) &D_ovl30_80134C30;
-	rldmSetup.status_buffer_size = 0x1E;
-	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl30_80134D20;
-	rldmSetup.force_status_buffer_size = 0x1E;
-	lbRelocInitSetup(&rldmSetup);
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buffer = (lbFileNode*) &D_ovl30_80134C30;
+	rl_setup.status_buffer_size = 0x1E;
+	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl30_80134D20;
+	rl_setup.force_status_buffer_size = 0x1E;
+	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0), gMNStageFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0)), 0x10));
 
 	mnStageAllocateStageModelHeaps();

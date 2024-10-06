@@ -2726,20 +2726,20 @@ void mnTrainingInitPanels()
 void mnTrainingInitCSS()
 {
 	s32 bar, baz;
-	lbRelocSetup rldmSetup;
+	lbRelocSetup rl_setup;
 	f32 foo;
 	s32 i;
 	s32 j;
 
-	rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-	rldmSetup.file_heap = NULL;
-	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buffer = (lbFileNode*) &D_ovl28_801388D8;
-	rldmSetup.status_buffer_size = 0x78;
-	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl28_801388A0;
-	rldmSetup.force_status_buffer_size = 7;
-	lbRelocInitSetup(&rldmSetup);
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buffer = (lbFileNode*) &D_ovl28_801388D8;
+	rl_setup.status_buffer_size = 0x78;
+	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl28_801388A0;
+	rl_setup.force_status_buffer_size = 7;
+	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl28_80137F60, 8U, gMNTrainingFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl28_80137F60, 8U), 0x10U));
 
 	gcMakeGObjSPAfter(0x400U, &mnTrainingMain, 0xFU, 0x80000000U);

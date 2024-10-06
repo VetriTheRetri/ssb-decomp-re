@@ -19,7 +19,7 @@ extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
 
 // Data
 // 0x8018E0C0
-CameraDesc dMvOpeningPikachuCameraSettingsStart = {
+CameraDesc dMVOpeningPikachuCameraDescStart = {
 
 	0.0, 0.0, 20000.0,
 	0.0, 0.0, 0.0,
@@ -27,7 +27,7 @@ CameraDesc dMvOpeningPikachuCameraSettingsStart = {
 };
 
 // 0x8018E0DC
-CameraDesc dMvOpeningPikachuCameraSettingsEnd = {
+CameraDesc dMVOpeningPikachuCameraDescEnd = {
 
 	50.0, -1640.0, 1000.0,
 	50.0, -1640.0, 0.0,
@@ -35,7 +35,7 @@ CameraDesc dMvOpeningPikachuCameraSettingsEnd = {
 };
 
 // 0x8018E0F8
-ftKeyCommand dMvOpeningPikachuInputSeq[] =
+ftKeyCommand dMVOpeningPikachuInputSeq[] =
 {
 	FTKEY_EVENT_END() // 0000
 };
@@ -52,34 +52,34 @@ u32 D_ovl42_8018E0FC[2] = {
 s32 D_ovl42_8018E220[2];
 
 // 0x8018E228
-s32 gMvOpeningPikachuFramesElapsed;
+s32 gMVOpeningPikachuFramesElapsed;
 
 // 0x8018E22C
-GObj* gMvOpeningPikachuNameGObj;
+GObj* gMVOpeningPikachuNameGObj;
 
 // 0x8018E230
-GObj* gMvOpeningPikachuStageFighterGObj;
+GObj* gMVOpeningPikachuStageFighterGObj;
 
 // 0x8018E234
 s32 D_ovl42_8018E234;
 
 // 0x8018E238
-GObj* gMvOpeningPikachuStageCameraGObj;
+GObj* gMVOpeningPikachuStageCameraGObj;
 
 // 0x8018E23C
-void* gMvOpeningPikachuAnimHeap;
+void* gMVOpeningPikachuFigatreeHeap;
 
 // 0x8018E240
-f32 gMvOpeningPikachuPosedFighterYSpeed;
+f32 gMVOpeningPikachuPosedFighterYSpeed;
 
 // 0x8018E244
 s32 D_ovl42_8018E244;
 
 // 0x8018E248
-CameraDesc dMvOpeningPikachuCameraSettingsAdjustedStart;
+CameraDesc dMVOpeningPikachuCameraDescAdjustedStart;
 
 // 0x8018E268
-CameraDesc dMvOpeningPikachuCameraSettingsAdjustedEnd;
+CameraDesc dMVOpeningPikachuCameraDescAdjustedEnd;
 
 // 0x8018E288
 lbFileNode D_ovl42_8018E288[48];
@@ -88,27 +88,27 @@ lbFileNode D_ovl42_8018E288[48];
 lbFileNode D_ovl42_8018E408[7];
 
 // 0x8018E440
-uintptr_t gMvOpeningPikachuFiles[2];
+uintptr_t gMVOpeningPikachuFiles[2];
 
 // 0x8018E448
-scBattleState gMvOpeningPikachuBattleState;
+scBattleState gMVOpeningPikachuBattleState;
 
 
 // 0x8018D0C0
 void mvOpeningPikachuLoadFiles()
 {
-	lbRelocSetup rldmSetup;
+	lbRelocSetup rl_setup;
 
-	rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-	rldmSetup.file_heap = 0;
-	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buffer = D_ovl42_8018E288;
-	rldmSetup.status_buffer_size = ARRAY_COUNT(D_ovl42_8018E288);
-	rldmSetup.force_status_buffer = D_ovl42_8018E408;
-	rldmSetup.force_status_buffer_size = ARRAY_COUNT(D_ovl42_8018E408);
-	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl42_8018E0FC, ARRAY_COUNT(D_ovl42_8018E0FC), gMvOpeningPikachuFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl42_8018E0FC, ARRAY_COUNT(D_ovl42_8018E0FC)), 0x10));
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buffer = D_ovl42_8018E288;
+	rl_setup.status_buffer_size = ARRAY_COUNT(D_ovl42_8018E288);
+	rl_setup.force_status_buffer = D_ovl42_8018E408;
+	rl_setup.force_status_buffer_size = ARRAY_COUNT(D_ovl42_8018E408);
+	lbRelocInitSetup(&rl_setup);
+	lbRelocLoadFilesExtern(D_ovl42_8018E0FC, ARRAY_COUNT(D_ovl42_8018E0FC), gMVOpeningPikachuFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl42_8018E0FC, ARRAY_COUNT(D_ovl42_8018E0FC)), 0x10));
 }
 
 // 0x8018D160
@@ -140,12 +140,12 @@ void mvOpeningPikachuDrawName()
 	};
 	s32 i;
 
-	gMvOpeningPikachuNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
+	gMVOpeningPikachuNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
 	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 0x1B, 0x80000000, -1);
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMvOpeningPikachuFiles[0], offsets[i]));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMVOpeningPikachuFiles[0], offsets[i]));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = x_positions[i] + 65.0F;
@@ -160,15 +160,15 @@ void mvOpeningPikachuAnimateStageCamera(GObj* camera_gobj)
 {
 	Camera *cam = CameraGetStruct(camera_gobj);
 
-	if (gMvOpeningPikachuFramesElapsed >= 15)
+	if (gMVOpeningPikachuFramesElapsed >= 15)
 	{
-		cam->vec.eye.x += (((dMvOpeningPikachuCameraSettingsAdjustedEnd.eye.x - dMvOpeningPikachuCameraSettingsAdjustedStart.eye.x) / 45.0F));
-		cam->vec.eye.y += (((dMvOpeningPikachuCameraSettingsAdjustedEnd.eye.y - dMvOpeningPikachuCameraSettingsAdjustedStart.eye.y) / 45.0F));
-		cam->vec.eye.z += (((dMvOpeningPikachuCameraSettingsAdjustedEnd.eye.z - dMvOpeningPikachuCameraSettingsAdjustedStart.eye.z) / 45.0F));
-		cam->vec.at.x += (((dMvOpeningPikachuCameraSettingsAdjustedEnd.at.x - dMvOpeningPikachuCameraSettingsAdjustedStart.at.x) / 45.0F));
-		cam->vec.at.y += (((dMvOpeningPikachuCameraSettingsAdjustedEnd.at.y - dMvOpeningPikachuCameraSettingsAdjustedStart.at.y) / 45.0F));
-		cam->vec.at.z += (((dMvOpeningPikachuCameraSettingsAdjustedEnd.at.z - dMvOpeningPikachuCameraSettingsAdjustedStart.at.z) / 45.0F));
-		cam->vec.up.x += (((dMvOpeningPikachuCameraSettingsAdjustedEnd.upx - dMvOpeningPikachuCameraSettingsAdjustedStart.upx) / 45.0F));
+		cam->vec.eye.x += (((dMVOpeningPikachuCameraDescAdjustedEnd.eye.x - dMVOpeningPikachuCameraDescAdjustedStart.eye.x) / 45.0F));
+		cam->vec.eye.y += (((dMVOpeningPikachuCameraDescAdjustedEnd.eye.y - dMVOpeningPikachuCameraDescAdjustedStart.eye.y) / 45.0F));
+		cam->vec.eye.z += (((dMVOpeningPikachuCameraDescAdjustedEnd.eye.z - dMVOpeningPikachuCameraDescAdjustedStart.eye.z) / 45.0F));
+		cam->vec.at.x += (((dMVOpeningPikachuCameraDescAdjustedEnd.at.x - dMVOpeningPikachuCameraDescAdjustedStart.at.x) / 45.0F));
+		cam->vec.at.y += (((dMVOpeningPikachuCameraDescAdjustedEnd.at.y - dMVOpeningPikachuCameraDescAdjustedStart.at.y) / 45.0F));
+		cam->vec.at.z += (((dMVOpeningPikachuCameraDescAdjustedEnd.at.z - dMVOpeningPikachuCameraDescAdjustedStart.at.z) / 45.0F));
+		cam->vec.up.x += (((dMVOpeningPikachuCameraDescAdjustedEnd.upx - dMVOpeningPikachuCameraDescAdjustedStart.upx) / 45.0F));
 	}
 }
 
@@ -177,37 +177,37 @@ void mvOpeningPikachuCreateStageViewport(Vec3f arg0)
 {
 	Camera *cam;
 
-	dMvOpeningPikachuCameraSettingsAdjustedStart = dMvOpeningPikachuCameraSettingsStart;
-	dMvOpeningPikachuCameraSettingsAdjustedEnd = dMvOpeningPikachuCameraSettingsEnd;
+	dMVOpeningPikachuCameraDescAdjustedStart = dMVOpeningPikachuCameraDescStart;
+	dMVOpeningPikachuCameraDescAdjustedEnd = dMVOpeningPikachuCameraDescEnd;
 
-	gMvOpeningPikachuStageCameraGObj = func_ovl2_8010DB2C(0);
-	cam = CameraGetStruct(gMvOpeningPikachuStageCameraGObj);
+	gMVOpeningPikachuStageCameraGObj = func_ovl2_8010DB2C(0);
+	cam = CameraGetStruct(gMVOpeningPikachuStageCameraGObj);
 	func_80007080(&cam->viewport, 110.0F, 10.0F, 310.0F, 230.0F);
 	cam->projection.persp.aspect = 10.0F / 11.0F;
-	gcEndProcessAll(gMvOpeningPikachuStageCameraGObj);
-	gcAddGObjProcess(gMvOpeningPikachuStageCameraGObj, mvOpeningPikachuAnimateStageCamera, 1, 1);
+	gcEndProcessAll(gMVOpeningPikachuStageCameraGObj);
+	gcAddGObjProcess(gMVOpeningPikachuStageCameraGObj, mvOpeningPikachuAnimateStageCamera, 1, 1);
 
-	dMvOpeningPikachuCameraSettingsAdjustedStart.eye.x += arg0.x;
-	dMvOpeningPikachuCameraSettingsAdjustedStart.eye.y += arg0.y;
-	dMvOpeningPikachuCameraSettingsAdjustedStart.eye.z += arg0.z;
-	dMvOpeningPikachuCameraSettingsAdjustedStart.at.x += arg0.x;
-	dMvOpeningPikachuCameraSettingsAdjustedStart.at.y += arg0.y;
-	dMvOpeningPikachuCameraSettingsAdjustedStart.at.z += arg0.z;
+	dMVOpeningPikachuCameraDescAdjustedStart.eye.x += arg0.x;
+	dMVOpeningPikachuCameraDescAdjustedStart.eye.y += arg0.y;
+	dMVOpeningPikachuCameraDescAdjustedStart.eye.z += arg0.z;
+	dMVOpeningPikachuCameraDescAdjustedStart.at.x += arg0.x;
+	dMVOpeningPikachuCameraDescAdjustedStart.at.y += arg0.y;
+	dMVOpeningPikachuCameraDescAdjustedStart.at.z += arg0.z;
 
-	dMvOpeningPikachuCameraSettingsAdjustedEnd.eye.x += arg0.x;
-	dMvOpeningPikachuCameraSettingsAdjustedEnd.eye.y += arg0.y;
-	dMvOpeningPikachuCameraSettingsAdjustedEnd.eye.z += arg0.z;
-	dMvOpeningPikachuCameraSettingsAdjustedEnd.at.x += arg0.x;
-	dMvOpeningPikachuCameraSettingsAdjustedEnd.at.y += arg0.y;
-	dMvOpeningPikachuCameraSettingsAdjustedEnd.at.z += arg0.z;
+	dMVOpeningPikachuCameraDescAdjustedEnd.eye.x += arg0.x;
+	dMVOpeningPikachuCameraDescAdjustedEnd.eye.y += arg0.y;
+	dMVOpeningPikachuCameraDescAdjustedEnd.eye.z += arg0.z;
+	dMVOpeningPikachuCameraDescAdjustedEnd.at.x += arg0.x;
+	dMVOpeningPikachuCameraDescAdjustedEnd.at.y += arg0.y;
+	dMVOpeningPikachuCameraDescAdjustedEnd.at.z += arg0.z;
 
-	cam->vec.eye.x = dMvOpeningPikachuCameraSettingsAdjustedStart.eye.x;
-	cam->vec.eye.y = dMvOpeningPikachuCameraSettingsAdjustedStart.eye.y;
-	cam->vec.eye.z = dMvOpeningPikachuCameraSettingsAdjustedStart.eye.z;
-	cam->vec.at.x = dMvOpeningPikachuCameraSettingsAdjustedStart.at.x;
-	cam->vec.at.y = dMvOpeningPikachuCameraSettingsAdjustedStart.at.y;
-	cam->vec.at.z = dMvOpeningPikachuCameraSettingsAdjustedStart.at.z;
-	cam->vec.up.x = dMvOpeningPikachuCameraSettingsAdjustedStart.upx;
+	cam->vec.eye.x = dMVOpeningPikachuCameraDescAdjustedStart.eye.x;
+	cam->vec.eye.y = dMVOpeningPikachuCameraDescAdjustedStart.eye.y;
+	cam->vec.eye.z = dMVOpeningPikachuCameraDescAdjustedStart.eye.z;
+	cam->vec.at.x = dMVOpeningPikachuCameraDescAdjustedStart.at.x;
+	cam->vec.at.y = dMVOpeningPikachuCameraDescAdjustedStart.at.y;
+	cam->vec.at.z = dMVOpeningPikachuCameraDescAdjustedStart.at.z;
+	cam->vec.up.x = dMVOpeningPikachuCameraDescAdjustedStart.upx;
 }
 
 // 0x8018D634
@@ -261,12 +261,12 @@ void mvOpeningPikachuInitFighterStagePanel()
 		spawn_info.damage = 0;
 		spawn_info.pl_kind = gBattleState->players[i].pl_kind;
 		spawn_info.controller = &gPlayerControllers[i];
-		spawn_info.figatree_heap = ftManagerAllocAnimHeapKind(gBattleState->players[i].ft_kind);
+		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[i].ft_kind);
 
-		gMvOpeningPikachuStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
+		gMVOpeningPikachuStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
-		ftParamSetKey(fighter_gobj, dMvOpeningPikachuInputSeq);
+		ftParamSetKey(fighter_gobj, dMVOpeningPikachuInputSeq);
 	}
 }
 
@@ -292,31 +292,31 @@ void mvOpeningPikachuCreatePosedFighterBackground()
 // 0x8018D9B0
 void mvOpeningPikachuAnimatePosedFighter(GObj* fighter_gobj)
 {
-	switch (gMvOpeningPikachuFramesElapsed)
+	switch (gMVOpeningPikachuFramesElapsed)
 	{
 		default:
 			break;
 		case 15:
-			gMvOpeningPikachuPosedFighterYSpeed = 17.0F;
+			gMVOpeningPikachuPosedFighterYSpeed = 17.0F;
 			break;
 		case 45:
-			gMvOpeningPikachuPosedFighterYSpeed = 15.0F;
+			gMVOpeningPikachuPosedFighterYSpeed = 15.0F;
 			break;
 		case 60:
-			gMvOpeningPikachuPosedFighterYSpeed = 0.0F;
+			gMVOpeningPikachuPosedFighterYSpeed = 0.0F;
 			break;
 	}
 
-	if ((gMvOpeningPikachuFramesElapsed > 15) && (gMvOpeningPikachuFramesElapsed < 45))
+	if ((gMVOpeningPikachuFramesElapsed > 15) && (gMVOpeningPikachuFramesElapsed < 45))
 	{
-		gMvOpeningPikachuPosedFighterYSpeed += -1.0F / 15.0F;
+		gMVOpeningPikachuPosedFighterYSpeed += -1.0F / 15.0F;
 	}
-	if ((gMvOpeningPikachuFramesElapsed > 45) && (gMvOpeningPikachuFramesElapsed < 60))
+	if ((gMVOpeningPikachuFramesElapsed > 45) && (gMVOpeningPikachuFramesElapsed < 60))
 	{
-		gMvOpeningPikachuPosedFighterYSpeed += -1.0F;
+		gMVOpeningPikachuPosedFighterYSpeed += -1.0F;
 	}
 
-	DObjGetStruct(fighter_gobj)->translate.vec.f.y += gMvOpeningPikachuPosedFighterYSpeed;
+	DObjGetStruct(fighter_gobj)->translate.vec.f.y += gMVOpeningPikachuPosedFighterYSpeed;
 }
 
 // 0x8018DA80
@@ -327,7 +327,7 @@ void mvOpeningPikachuCreatePosedFighter()
 
 	spawn_info.ft_kind = nFTKindPikachu;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindPikachu, 0);
-	spawn_info.figatree_heap = gMvOpeningPikachuAnimHeap;
+	spawn_info.figatree_heap = gMVOpeningPikachuFigatreeHeap;
 	spawn_info.pos.x = 0.0f;
 	spawn_info.pos.y = -600.0f;
 	spawn_info.pos.z = 0.0f;
@@ -357,7 +357,7 @@ void mvOpeningPikachuCreatePosedFighterViewport()
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
 	cam->projection.persp.aspect = 5.0F / 11.0F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningPikachuFiles[1], &FILE_041_PIKACHU_CAMERA_PARAMS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningPikachuFiles[1], &FILE_041_PIKACHU_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
@@ -375,7 +375,7 @@ void mvOpeningPikachuCreatePosedFighterBackgroundViewport()
 // 0x8018DDC0
 void mvOpeningPikachuMainProc(GObj* arg0)
 {
-	gMvOpeningPikachuFramesElapsed += 1;
+	gMVOpeningPikachuFramesElapsed += 1;
 
 	if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON))
 	{
@@ -384,15 +384,15 @@ void mvOpeningPikachuMainProc(GObj* arg0)
 		syTasklogSetLoadScene();
 	}
 
-	if (gMvOpeningPikachuFramesElapsed == 15)
+	if (gMVOpeningPikachuFramesElapsed == 15)
 	{
-		gcEjectGObj(gMvOpeningPikachuNameGObj);
+		gcEjectGObj(gMVOpeningPikachuNameGObj);
 		mvOpeningPikachuInitFighterStagePanel();
 		mvOpeningPikachuCreatePosedFighterBackground();
 		mvOpeningPikachuCreatePosedFighter();
 	}
 
-	if (gMvOpeningPikachuFramesElapsed == 60)
+	if (gMVOpeningPikachuFramesElapsed == 60)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 0x26;
@@ -403,14 +403,14 @@ void mvOpeningPikachuMainProc(GObj* arg0)
 // 0x8018DE7C
 void mvOpeningPikachuInitFramesElapsed()
 {
-	gMvOpeningPikachuFramesElapsed = 0;
+	gMVOpeningPikachuFramesElapsed = 0;
 }
 
 // 0x8018DE88
 void mvOpeningPikachuInit()
 {
-	gMvOpeningPikachuBattleState = gDefaultBattleState;
-	gBattleState = &gMvOpeningPikachuBattleState;
+	gMVOpeningPikachuBattleState = gDefaultBattleState;
+	gBattleState = &gMVOpeningPikachuBattleState;
 
 	gBattleState->game_type = nSCBattleGameTypeOpening;
 
@@ -435,7 +435,7 @@ void mvOpeningPikachuInit()
 	efManagerInitEffects();
 	ftManagerSetupFilesAllKind(nFTKindPikachu);
 
-	gMvOpeningPikachuAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMVOpeningPikachuFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningPikachuCreateNameViewport();
 	mvOpeningPikachuCreatePosedFighterBackgroundViewport();
 	mvOpeningPikachuCreatePosedFighterViewport();
@@ -445,7 +445,7 @@ void mvOpeningPikachuInit()
 }
 
 // 0x8018E010
-void gMvOpeningPikachuFuncLights(Gfx **display_list)
+void gMVOpeningPikachuFuncLights(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
@@ -470,7 +470,7 @@ scRuntimeInfo D_ovl42_8018E15C = {
 	0x800A26B8, &lOverlay42ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00004000, 0x00002000,
 	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000C000,
-	gMvOpeningPikachuFuncLights, update_contdata,
+	gMVOpeningPikachuFuncLights, update_contdata,
 	0x00000000, 0x00000600, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
 	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,

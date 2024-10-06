@@ -414,18 +414,18 @@ void mvOpeningNewcomersFuncRun(GObj *gobj)
 void mvOpeningNewcomersFuncStart(void)
 {
     s32 unused;
-    lbRelocSetup rldmSetup;
+    lbRelocSetup rl_setup;
 
-    rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-    rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-    rldmSetup.file_heap = NULL;
-    rldmSetup.file_heap_size = 0;
-    rldmSetup.status_buffer = dMVOpeningNewcomersStatusBuffer;
-    rldmSetup.status_buffer_size = ARRAY_COUNT(dMVOpeningNewcomersStatusBuffer);
-    rldmSetup.force_status_buffer = dMVOpeningNewcomersForceStatusBuffer;
-    rldmSetup.force_status_buffer_size = ARRAY_COUNT(dMVOpeningNewcomersForceStatusBuffer);
+    rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+    rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+    rl_setup.file_heap = NULL;
+    rl_setup.file_heap_size = 0;
+    rl_setup.status_buffer = dMVOpeningNewcomersStatusBuffer;
+    rl_setup.status_buffer_size = ARRAY_COUNT(dMVOpeningNewcomersStatusBuffer);
+    rl_setup.force_status_buffer = dMVOpeningNewcomersForceStatusBuffer;
+    rl_setup.force_status_buffer_size = ARRAY_COUNT(dMVOpeningNewcomersForceStatusBuffer);
 
-    lbRelocInitSetup(&rldmSetup);
+    lbRelocInitSetup(&rl_setup);
     lbRelocLoadFilesExtern
     (
         dMVOpeningNewcomersFileIDs,

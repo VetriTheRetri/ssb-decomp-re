@@ -110,100 +110,100 @@ u32 D_ovl34_80134A40[12] = {
 s32 D_ovl34_80134CD0[2];
 
 // 0x80134CD8
-uintptr_t gMvOpeningFirstDestinationMasterHandAnimHeap;
+uintptr_t gMVOpeningFirstDestinationMasterHandFigatreeHeap;
 
 // 0x80134CDC
-uintptr_t gMvOpeningFirstDestinationPluckedFigatreeHeap;
+uintptr_t gMVOpeningFirstDestinationPluckedFigatreeHeap;
 
 // 0x80134CE0
-uintptr_t gMvOpeningFirstDestinationDroppedFigatreeHeap;
+uintptr_t gMVOpeningFirstDestinationDroppedFigatreeHeap;
 
 // 0x80134CE4
-s32 gMvOpeningFirstDestinationFramesElapsed;
+s32 gMVOpeningFirstDestinationFramesElapsed;
 
 // 0x80134CE8
-GObj* gMvOpeningFirstDestinationMainCameraGObj;
+GObj* gMVOpeningFirstDestinationMainCameraGObj;
 
 // 0x80134CEC
-GObj* gMvOpeningFirstDestinationFighterCameraGObj;
+GObj* gMVOpeningFirstDestinationFighterCameraGObj;
 
 // 0x80134CF0
-GObj* gMvOpeningFirstDestinationHALLogoCameraGObj;
+GObj* gMVOpeningFirstDestinationHALLogoCameraGObj;
 
 // 0x80134CF4
-GObj* gMvOpeningFirstDestinationMasterHandGObj;
+GObj* gMVOpeningFirstDestinationMasterHandGObj;
 
 // 0x80134CF8
-s32 gMvOpeningFirstDestinationPluckedFighterKind;
+s32 gMVOpeningFirstDestinationPluckedFighterKind;
 
 // 0x80134CFC
-GObj* gMvOpeningFirstDestinationDroppedFighterKind;
+GObj* gMVOpeningFirstDestinationDroppedFighterKind;
 
 // 0x80134D00
-GObj* gMvOpeningFirstDestinationHALLogoGObj;
+GObj* gMVOpeningFirstDestinationHALLogoGObj;
 
 // 0x80134D04
-GObj* gMvOpeningFirstDestinationPluckedFighterGObj;
+GObj* gMVOpeningFirstDestinationPluckedFighterGObj;
 
 // 0x80134D08
-GObj* gMvOpeningFirstDestinationDroppedFighterGObj;
+GObj* gMVOpeningFirstDestinationDroppedFighterGObj;
 
 // 0x80134D0C
-GObj* gMvOpeningFirstDestinationRoomGObj;
+GObj* gMVOpeningFirstDestinationRoomGObj;
 
 // 0x80134D10
-GObj* gMvOpeningFirstDestinationSunlightGObj;
+GObj* gMVOpeningFirstDestinationSunlightGObj;
 
 // 0x80134D14
-GObj* gMvOpeningFirstDestinationDeskGObj;
+GObj* gMVOpeningFirstDestinationDeskGObj;
 
 // 0x80134D18
-GObj* gMvOpeningFirstDestinationOutsideGObj;
+GObj* gMVOpeningFirstDestinationOutsideGObj;
 
 // 0x80134D1C
-GObj* gMvOpeningFirstDestinationOutsideHazeGObj;
+GObj* gMVOpeningFirstDestinationOutsideHazeGObj;
 
 // 0x80134D20
-GObj* gMvOpeningFirstDestinationBooksGObj;
+GObj* gMVOpeningFirstDestinationBooksGObj;
 
 // 0x80134D24
-GObj* gMvOpeningFirstDestinationPencilHolderGObj;
+GObj* gMVOpeningFirstDestinationPencilHolderGObj;
 
 // 0x80134D28
-GObj* gMvOpeningFirstDestinationLampGObj;
+GObj* gMVOpeningFirstDestinationLampGObj;
 
 // 0x80134D2C
-GObj* gMvOpeningFirstDestinationTissueBoxGObj;
+GObj* gMVOpeningFirstDestinationTissueBoxGObj;
 
 // 0x80134D30
-GObj* gMvOpeningFirstDestinationMasterHandShadowGObj;
+GObj* gMVOpeningFirstDestinationMasterHandShadowGObj;
 
 // 0x80134D34
 s32 D_ovl34_80134D34;
 
 // 0x80134D38
-s32 gMvOpeningFirstDestinationOverlayAlpha;
+s32 gMVOpeningFirstDestinationOverlayAlpha;
 
 // 0x80134D3C
-GObj* gMvOpeningFirstDestinationOverlayGObj;
+GObj* gMVOpeningFirstDestinationOverlayGObj;
 
 // 0x80134D40
-GObj* gMvOpeningFirstDestinationSpotlightGObj;
+GObj* gMVOpeningFirstDestinationSpotlightGObj;
 
 // 0x80134D44
-GObj* gMvOpeningFirstDestinationBackgroundGObj;
+GObj* gMVOpeningFirstDestinationBackgroundGObj;
 
 // 0x80134D48
-GObj* gMvOpeningFirstDestinationTransitionGFXOutlineGObj;
+GObj* gMVOpeningFirstDestinationTransitionGFXOutlineGObj;
 
 // 0x80134D4C
-GObj* gMvOpeningFirstDestinationTransitionGFXOverlayGObj;
+GObj* gMVOpeningFirstDestinationTransitionGFXOverlayGObj;
 
 // 0x80134D50
-GObj* gMvOpeningFirstDestinationCameraGObj;
+GObj* gMVOpeningFirstDestinationCameraGObj;
 
 // 0x80134D54
-s32 gMvOpeningFirstDestinationUnusedCounter;
+s32 gMVOpeningFirstDestinationUnusedCounter;
 
 // 0x80134D58
 lbFileNode D_ovl34_80134D58[100];
@@ -212,7 +212,7 @@ lbFileNode D_ovl34_80134D58[100];
 lbFileNode D_ovl34_80135078[7];
 
 // 0x801350B0
-uintptr_t gMvOpeningFirstDestinationFiles[9];
+uintptr_t gMVOpeningFirstDestinationFiles[9];
 
 
 // 0x80131B00
@@ -225,10 +225,10 @@ void mvOpeningFirstDestinationFuncLights(Gfx **display_list)
 // 0x80131B58
 void mvOpeningFirstDestinationFadeOutAndDestroyRoomGeo(GObj* room_gobj)
 {
-	if (gMvOpeningFirstDestinationFramesElapsed > I_SEC_TO_TICS(18))
+	if (gMVOpeningFirstDestinationFramesElapsed > I_SEC_TO_TICS(18))
 		gcPlayAnimAll(room_gobj);
 
-	if (gMvOpeningFirstDestinationFramesElapsed == I_SEC_TO_TICS(19))
+	if (gMVOpeningFirstDestinationFramesElapsed == I_SEC_TO_TICS(19))
 		gcEjectGObj(room_gobj);
 }
 
@@ -237,11 +237,11 @@ void mvOpeningFirstDestinationCreateRoomGeo()
 {
 	GObj* room_gobj;
 
-	gMvOpeningFirstDestinationRoomGObj = room_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcSetupCommonDObjs(room_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_ROOM_OFFSET_2), 0);
+	gMVOpeningFirstDestinationRoomGObj = room_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
+	gcSetupCommonDObjs(room_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_ROOM_OFFSET_2), 0);
 	gcAddGObjDisplay(room_gobj, gcDrawDObjTreeDLLinksForGObj, 6, 0x80000000, -1);
-	gcAddMObjAll(room_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_ROOM_OFFSET_1));
-	gcAddMatAnimJointAll(room_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_ROOM_OFFSET_3), 0.0F);
+	gcAddMObjAll(room_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_ROOM_OFFSET_1));
+	gcAddMatAnimJointAll(room_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_ROOM_OFFSET_3), 0.0F);
 	gcAddGObjProcess(room_gobj, mvOpeningFirstDestinationFadeOutAndDestroyRoomGeo, 1, 1);
 	gcPlayAnimAll(room_gobj);
 }
@@ -251,8 +251,8 @@ void mvOpeningFirstDestinationCreateSunlight()
 {
 	GObj* sunlight_gobj;
 
-	gMvOpeningFirstDestinationSunlightGObj = sunlight_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcAddOMMtxForDObjFixed(gcAddDObjForGObj(sunlight_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_SUNLIGHT_OBJECT_OFFSET)), 0x1C, 0);
+	gMVOpeningFirstDestinationSunlightGObj = sunlight_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
+	gcAddOMMtxForDObjFixed(gcAddDObjForGObj(sunlight_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_SUNLIGHT_OBJECT_OFFSET)), 0x1C, 0);
 	gcAddGObjDisplay(sunlight_gobj, gcDrawDObjDLLinksForGObj, 6, 0x80000000, -1);
 }
 
@@ -261,8 +261,8 @@ void mvOpeningFirstDestinationCreateDesk()
 {
 	GObj* desk_gobj;
 
-	gMvOpeningFirstDestinationDeskGObj = desk_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcSetupCommonDObjs(desk_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_DESK_OBJECT_OFFSET), 0);
+	gMVOpeningFirstDestinationDeskGObj = desk_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
+	gcSetupCommonDObjs(desk_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_DESK_OBJECT_OFFSET), 0);
 	gcAddGObjDisplay(desk_gobj, gcDrawDObjTreeForGObj, 6, 0x80000000, -1);
 }
 
@@ -271,8 +271,8 @@ void mvOpeningFirstDestinationCreateOutside()
 {
 	GObj* outside_gobj;
 
-	gMvOpeningFirstDestinationOutsideGObj = outside_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcAddOMMtxForDObjFixed(gcAddDObjForGObj(outside_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_OUTSIDE_OBJECT_OFFSET)), 0x1C, 0);
+	gMVOpeningFirstDestinationOutsideGObj = outside_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
+	gcAddOMMtxForDObjFixed(gcAddDObjForGObj(outside_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_OUTSIDE_OBJECT_OFFSET)), 0x1C, 0);
 	gcAddGObjDisplay(outside_gobj, gcDrawDObjDLLinksForGObj, 6, 0x80000000, -1);
 }
 
@@ -281,15 +281,15 @@ void mvOpeningFirstDestinationCreateOutsideHaze()
 {
 	GObj* outside_haze_gobj;
 
-	gMvOpeningFirstDestinationOutsideHazeGObj = outside_haze_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcAddOMMtxForDObjFixed(gcAddDObjForGObj(outside_haze_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_OUTSIDE_HAZE_OBJECT_OFFSET)), 0x1C, 0);
+	gMVOpeningFirstDestinationOutsideHazeGObj = outside_haze_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
+	gcAddOMMtxForDObjFixed(gcAddDObjForGObj(outside_haze_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_OUTSIDE_HAZE_OBJECT_OFFSET)), 0x1C, 0);
 	gcAddGObjDisplay(outside_haze_gobj, gcDrawDObjDLLinksForGObj, 6, 0x80000000, -1);
 }
 
 // 0x80131E88
 void mvOpeningFirstDestinationAnimateDeskObjects(GObj* desk_object_gobj)
 {
-	if (gMvOpeningFirstDestinationFramesElapsed >= 560)
+	if (gMVOpeningFirstDestinationFramesElapsed >= 560)
 		gcPlayAnimAll(desk_object_gobj);
 }
 
@@ -298,11 +298,11 @@ void mvOpeningFirstDestinationCreateBooks()
 {
 	GObj* books_gobj;
 
-	gMvOpeningFirstDestinationBooksGObj = books_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcSetupCommonDObjs(books_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_BOOKS_OBJECT_OFFSET_1), 0);
+	gMVOpeningFirstDestinationBooksGObj = books_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
+	gcSetupCommonDObjs(books_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_BOOKS_OBJECT_OFFSET_1), 0);
 	gcAddGObjDisplay(books_gobj, gcDrawDObjTreeForGObj, 6, 0x80000000, -1);
 	gcAddGObjProcess(books_gobj, mvOpeningFirstDestinationAnimateDeskObjects, 1, 1);
-	gcAddAnimJointAll(books_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_BOOKS_OBJECT_OFFSET_2), 0.0F);
+	gcAddAnimJointAll(books_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_BOOKS_OBJECT_OFFSET_2), 0.0F);
 	gcPlayAnimAll(books_gobj);
 }
 
@@ -311,10 +311,10 @@ void mvOpeningFirstDestinationCreatePencilHolder()
 {
 	GObj* pencil_holder_gobj;
 
-	gMvOpeningFirstDestinationPencilHolderGObj = pencil_holder_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcSetupCommonDObjs(pencil_holder_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_PENCIL_HOLDER_OBJECT_OFFSET_1), 0);
+	gMVOpeningFirstDestinationPencilHolderGObj = pencil_holder_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
+	gcSetupCommonDObjs(pencil_holder_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_PENCIL_HOLDER_OBJECT_OFFSET_1), 0);
 	gcAddGObjDisplay(pencil_holder_gobj, gcDrawDObjTreeForGObj, 6, 0x80000000, -1);
-	gcAddAnimJointAll(pencil_holder_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_PENCIL_HOLDER_OBJECT_OFFSET_2), 0.0F);
+	gcAddAnimJointAll(pencil_holder_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_PENCIL_HOLDER_OBJECT_OFFSET_2), 0.0F);
 	gcAddGObjProcess(pencil_holder_gobj, mvOpeningFirstDestinationAnimateDeskObjects, 1, 1);
 	gcPlayAnimAll(pencil_holder_gobj);
 }
@@ -324,10 +324,10 @@ void mvOpeningFirstDestinationCreateLamp()
 {
 	GObj* lamp_gobj;
 
-	gMvOpeningFirstDestinationLampGObj = lamp_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcSetupCommonDObjs(lamp_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_LAMP_OBJECT_OFFSET_1), 0);
+	gMVOpeningFirstDestinationLampGObj = lamp_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
+	gcSetupCommonDObjs(lamp_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_LAMP_OBJECT_OFFSET_1), 0);
 	gcAddGObjDisplay(lamp_gobj, gcDrawDObjTreeForGObj, 6, 0x80000000, -1);
-	gcAddAnimJointAll(lamp_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_LAMP_OBJECT_OFFSET_2), 0.0F);
+	gcAddAnimJointAll(lamp_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_LAMP_OBJECT_OFFSET_2), 0.0F);
 	gcAddGObjProcess(lamp_gobj, mvOpeningFirstDestinationAnimateDeskObjects, 1, 1);
 	gcPlayAnimAll(lamp_gobj);
 }
@@ -335,7 +335,7 @@ void mvOpeningFirstDestinationCreateLamp()
 // 0x801320FC
 void mvOpeningFirstDestinationAnimateTissueBox(GObj* tissue_box_gobj)
 {
-	if (gMvOpeningFirstDestinationFramesElapsed >= 560)
+	if (gMVOpeningFirstDestinationFramesElapsed >= 560)
 		gcPlayAnimAll(tissue_box_gobj);
 }
 
@@ -345,11 +345,11 @@ void mvOpeningFirstDestinationCreateTissueBox()
 	GObj* tissue_box_gobj;
 	DObj* tissue_box_dobj;
 
-	gMvOpeningFirstDestinationTissueBoxGObj = tissue_box_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	tissue_box_dobj = gcAddDObjForGObj(tissue_box_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_TISSUE_BOX_OBJECT_OFFSET_1));
+	gMVOpeningFirstDestinationTissueBoxGObj = tissue_box_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
+	tissue_box_dobj = gcAddDObjForGObj(tissue_box_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_TISSUE_BOX_OBJECT_OFFSET_1));
 	gcAddOMMtxForDObjFixed(tissue_box_dobj, 0x1C, 0);
 	gcAddGObjDisplay(tissue_box_gobj, gcDrawDObjDLHead0, 6, 0x80000000, -1);
-	gcAddDObjAnimJoint(tissue_box_dobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_TISSUE_BOX_OBJECT_OFFSET_2), 0);
+	gcAddDObjAnimJoint(tissue_box_dobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_TISSUE_BOX_OBJECT_OFFSET_2), 0);
 	gcAddGObjProcess(tissue_box_gobj, mvOpeningFirstDestinationAnimateTissueBox, 1, 1);
 	gcPlayAnimAll(tissue_box_gobj);
 }
@@ -365,8 +365,8 @@ void mvOpeningFirstDestinationCreateMasterHand()
 	spawn_info.pos.x = 0.0f;
 	spawn_info.pos.y = 0.0f;
 	spawn_info.pos.z = 0.0f;
-	spawn_info.figatree_heap = gMvOpeningFirstDestinationMasterHandAnimHeap;
-	gMvOpeningFirstDestinationMasterHandGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
+	spawn_info.figatree_heap = gMVOpeningFirstDestinationMasterHandFigatreeHeap;
+	gMVOpeningFirstDestinationMasterHandGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 	scSubsysFighterSetStatus(fighter_gobj, 0x1000F);
 }
@@ -374,7 +374,7 @@ void mvOpeningFirstDestinationCreateMasterHand()
 // 0x801322A0 - Unused?
 void func_ovl34_801322A0(s32 arg0)
 {
-	func_ovl1_803905F4(gMvOpeningFirstDestinationMasterHandGObj, arg0);
+	func_ovl1_803905F4(gMVOpeningFirstDestinationMasterHandGObj, arg0);
 }
 
 // 0x801322C8 - Unused?
@@ -409,8 +409,8 @@ void mvOpeningFirstDestinationCreatePluckedFighter(s32 ft_kind)
 	spawn_info.pos.x = 0.0f;
 	spawn_info.pos.y = 0.0f;
 	spawn_info.pos.z = 0.0f;
-	spawn_info.figatree_heap = gMvOpeningFirstDestinationPluckedFigatreeHeap;
-	gMvOpeningFirstDestinationPluckedFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
+	spawn_info.figatree_heap = gMVOpeningFirstDestinationPluckedFigatreeHeap;
+	gMVOpeningFirstDestinationPluckedFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 	DObjGetStruct(fighter_gobj)->scale.vec.f.x = 1.0f;
 	DObjGetStruct(fighter_gobj)->scale.vec.f.y = 1.0f;
@@ -424,20 +424,20 @@ void mvOpeningFirstDestinationCreatePluckedFighter(s32 ft_kind)
 // 0x80132404
 void mvOpeningFirstDestinationRenderHALLogoBackground(GObj* logo_gobj)
 {
-	if (gMvOpeningFirstDestinationFramesElapsed >= 60)
+	if (gMVOpeningFirstDestinationFramesElapsed >= 60)
 	{
-		if (gMvOpeningFirstDestinationOverlayAlpha > 0)
+		if (gMVOpeningFirstDestinationOverlayAlpha > 0)
 		{
-			gMvOpeningFirstDestinationOverlayAlpha -= 13;
+			gMVOpeningFirstDestinationOverlayAlpha -= 13;
 
-			if (gMvOpeningFirstDestinationOverlayAlpha < 0)
-				gMvOpeningFirstDestinationOverlayAlpha = 0;
+			if (gMVOpeningFirstDestinationOverlayAlpha < 0)
+				gMVOpeningFirstDestinationOverlayAlpha = 0;
 		}
 	}
 
 	gDPPipeSync(gSYTasklogDLHeads[1]++);
 	gDPSetCycleType(gSYTasklogDLHeads[1]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTasklogDLHeads[1]++, 0, 0, 0, 0, 0, gMvOpeningFirstDestinationOverlayAlpha);
+	gDPSetPrimColor(gSYTasklogDLHeads[1]++, 0, 0, 0, 0, 0, gMVOpeningFirstDestinationOverlayAlpha);
 	gDPSetCombineLERP(gSYTasklogDLHeads[1]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
 	gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 	gDPFillRectangle(gSYTasklogDLHeads[1]++, 10, 10, 310, 230);
@@ -450,8 +450,8 @@ void mvOpeningFirstDestinationCreateHALLogoBackground()
 {
 	GObj* logo_bg_gobj;
 
-	gMvOpeningFirstDestinationOverlayAlpha = 0xFF;
-	gMvOpeningFirstDestinationOverlayGObj = logo_bg_gobj = gcMakeGObjSPAfter(0, 0, 0x12, 0x80000000);
+	gMVOpeningFirstDestinationOverlayAlpha = 0xFF;
+	gMVOpeningFirstDestinationOverlayGObj = logo_bg_gobj = gcMakeGObjSPAfter(0, 0, 0x12, 0x80000000);
 	gcAddGObjDisplay(logo_bg_gobj, mvOpeningFirstDestinationRenderHALLogoBackground, 0x1A, 0x80000000, -1);
 }
 
@@ -460,11 +460,11 @@ void mvOpeningFirstDestinationCreateHALLogo()
 {
 	GObj* logo_gobj;
 
-	gMvOpeningFirstDestinationHALLogoGObj = logo_gobj = gcMakeGObjSPAfter(0, 0, 0x15, 0x80000000);
-	gcSetupCommonDObjs(logo_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_HAL_LOGO_OFFSET_2), 0);
+	gMVOpeningFirstDestinationHALLogoGObj = logo_gobj = gcMakeGObjSPAfter(0, 0, 0x15, 0x80000000);
+	gcSetupCommonDObjs(logo_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_HAL_LOGO_OFFSET_2), 0);
 	gcAddGObjDisplay(logo_gobj, gcDrawDObjTreeDLLinksForGObj, 0x1D, 0x80000000, -1);
-	gcAddMObjAll(logo_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_HAL_LOGO_OFFSET_1));
-	gcAddMatAnimJointAll(logo_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_HAL_LOGO_OFFSET_3), 0.0F);
+	gcAddMObjAll(logo_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_HAL_LOGO_OFFSET_1));
+	gcAddMatAnimJointAll(logo_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_HAL_LOGO_OFFSET_3), 0.0F);
 	gcAddGObjProcess(logo_gobj, gcPlayAnimAll, 1, 1);
 	gcPlayAnimAll(logo_gobj);
 }
@@ -475,9 +475,9 @@ void mvOpeningFirstDestinationCreateSnapGFX()
 	GObj* snap_gfx_gobj;
 
 	snap_gfx_gobj = gcMakeGObjSPAfter(0, 0, 0x13, 0x80000000);
-	gcSetupCommonDObjs(snap_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_SNAP_GFX_OBJECT_OFFSET_1), 0);
+	gcSetupCommonDObjs(snap_gfx_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_SNAP_GFX_OBJECT_OFFSET_1), 0);
 	gcAddGObjDisplay(snap_gfx_gobj, gcDrawDObjTreeDLLinksForGObj, 0x1B, 0x80000000, -1);
-	gcAddAnimJointAll(snap_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_SNAP_GFX_OBJECT_OFFSET_2), 0.0F);
+	gcAddAnimJointAll(snap_gfx_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_SNAP_GFX_OBJECT_OFFSET_2), 0.0F);
 	gcAddGObjProcess(snap_gfx_gobj, gcPlayAnimAll, 1, 1);
 	gcPlayAnimAll(snap_gfx_gobj);
 }
@@ -489,28 +489,28 @@ void mvOpeningFirstDestinationCreateCloseUpGFX()
 
 	// Close-up GFX air
 	closeup_gfx_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcSetupCommonDObjs(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_AIR_OFFSET_2), 0);
+	gcSetupCommonDObjs(closeup_gfx_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_AIR_OFFSET_2), 0);
 	gcAddGObjDisplay(closeup_gfx_gobj, gcDrawDObjTreeDLLinksForGObj, 6, 0x80000000, -1);
 	DObjGetStruct(closeup_gfx_gobj)->translate.vec.f.x = 0.0F;
 	DObjGetStruct(closeup_gfx_gobj)->translate.vec.f.y = 0.0F;
 	DObjGetStruct(closeup_gfx_gobj)->translate.vec.f.z = 0.0F;
-	gcAddMObjAll(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_AIR_OFFSET_1));
-	gcAddMatAnimJointAll(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_AIR_OFFSET_3), 0.0F);
+	gcAddMObjAll(closeup_gfx_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_AIR_OFFSET_1));
+	gcAddMatAnimJointAll(closeup_gfx_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_AIR_OFFSET_3), 0.0F);
 	gcAddGObjProcess(closeup_gfx_gobj, gcPlayAnimAll, 1, 1);
-	gcAddAnimJointAll(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_AIR_OFFSET_4), 0.0F);
+	gcAddAnimJointAll(closeup_gfx_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_AIR_OFFSET_4), 0.0F);
 	gcPlayAnimAll(closeup_gfx_gobj);
 
 	// Close-up GFX ground
 	closeup_gfx_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcSetupCommonDObjs(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_GROUND_OFFSET_2), 0);
+	gcSetupCommonDObjs(closeup_gfx_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_GROUND_OFFSET_2), 0);
 	gcAddGObjDisplay(closeup_gfx_gobj, gcDrawDObjTreeDLLinksForGObj, 6, 0x80000000, -1);
 	DObjGetStruct(closeup_gfx_gobj)->translate.vec.f.x = 0.0F;
 	DObjGetStruct(closeup_gfx_gobj)->translate.vec.f.y = 0.0F;
 	DObjGetStruct(closeup_gfx_gobj)->translate.vec.f.z = 0.0F;
-	gcAddMObjAll(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_GROUND_OFFSET_1));
-	gcAddMatAnimJointAll(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_GROUND_OFFSET_3), 0.0F);
+	gcAddMObjAll(closeup_gfx_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_GROUND_OFFSET_1));
+	gcAddMatAnimJointAll(closeup_gfx_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_GROUND_OFFSET_3), 0.0F);
 	gcAddGObjProcess(closeup_gfx_gobj, gcPlayAnimAll, 1, 1);
-	gcAddAnimJointAll(closeup_gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_GROUND_OFFSET_4), 0.0F);
+	gcAddAnimJointAll(closeup_gfx_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_CLOSEUP_GFX_GROUND_OFFSET_4), 0.0F);
 	gcPlayAnimAll(closeup_gfx_gobj);
 }
 
@@ -522,11 +522,11 @@ void mvOpeningFirstDestinationCreateDroppedFighter(s32 ft_kind)
 
 	spawn_info.ft_kind = ft_kind;
 	spawn_info.costume = ftParamGetCostumeCommonID(ft_kind, 0);
-	spawn_info.figatree_heap = gMvOpeningFirstDestinationDroppedFigatreeHeap;
+	spawn_info.figatree_heap = gMVOpeningFirstDestinationDroppedFigatreeHeap;
 	spawn_info.pos.x = 872.3249512F;
 	spawn_info.pos.y = 4038.864014F;
 	spawn_info.pos.z = -4734.600098F;
-	gMvOpeningFirstDestinationDroppedFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
+	gMVOpeningFirstDestinationDroppedFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 	scSubsysFighterSetStatus(fighter_gobj, 0x10009);
 	gcMoveGObjDL(fighter_gobj, 6, -1);
@@ -538,18 +538,18 @@ void mvOpeningFirstDestinationCreateMasterHandShadow()
 	GObj* masterhand_shadow_gobj;
 	DObj* masterhand_shadow_dobj;
 
-	gMvOpeningFirstDestinationMasterHandShadowGObj = masterhand_shadow_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	masterhand_shadow_dobj = gcAddDObjForGObj(masterhand_shadow_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_MASTERHAND_SHADOW_OBJECT_OFFSET_1));
+	gMVOpeningFirstDestinationMasterHandShadowGObj = masterhand_shadow_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
+	masterhand_shadow_dobj = gcAddDObjForGObj(masterhand_shadow_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_MASTERHAND_SHADOW_OBJECT_OFFSET_1));
 	gcAddOMMtxForDObjFixed(masterhand_shadow_dobj, 0x1C, 0);
 	gcAddGObjDisplay(masterhand_shadow_gobj, gcDrawDObjDLHead1, 9, 0x80000000, -1);
-	gcAddDObjAnimJoint(masterhand_shadow_dobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_MASTERHAND_SHADOW_OBJECT_OFFSET_2), 0);
+	gcAddDObjAnimJoint(masterhand_shadow_dobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_MASTERHAND_SHADOW_OBJECT_OFFSET_2), 0);
 	gcAddGObjProcess(masterhand_shadow_gobj,gcPlayAnimAll, 1, 1);
 }
 
 // 0x80132AB0
 void mvOpeningFirstDestinationAnimateDeskStage(GObj* desk_stage_gobj)
 {
-	if (gMvOpeningFirstDestinationFramesElapsed > 1060)
+	if (gMVOpeningFirstDestinationFramesElapsed > 1060)
 		gcPlayAnimAll(desk_stage_gobj);
 }
 
@@ -559,10 +559,10 @@ void mvOpeningFirstDestinationCreateDeskStage()
 	GObj* desk_stage_gobj;
 
 	desk_stage_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcSetupCommonDObjs(desk_stage_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_DESK_STAGE_OFFSET_2), 0);
+	gcSetupCommonDObjs(desk_stage_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_DESK_STAGE_OFFSET_2), 0);
 	gcAddGObjDisplay(desk_stage_gobj, gcDrawDObjTreeDLLinksForGObj, 6, 0x80000000, -1);
-	gcAddMObjAll(desk_stage_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_DESK_STAGE_OFFSET_1));
-	gcAddMatAnimJointAll(desk_stage_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_DESK_STAGE_OFFSET_3), 0.0F);
+	gcAddMObjAll(desk_stage_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_DESK_STAGE_OFFSET_1));
+	gcAddMatAnimJointAll(desk_stage_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_DESK_STAGE_OFFSET_3), 0.0F);
 	gcAddGObjProcess(desk_stage_gobj, mvOpeningFirstDestinationAnimateDeskStage, 1, 1);
 	gcPlayAnimAll(desk_stage_gobj);
 }
@@ -570,17 +570,17 @@ void mvOpeningFirstDestinationCreateDeskStage()
 // 0x80132BB8
 void mvOpeningFirstDestinationRenderCloseupOverlay(GObj* arg0)
 {
-	if (gMvOpeningFirstDestinationOverlayAlpha < 0xA0)
+	if (gMVOpeningFirstDestinationOverlayAlpha < 0xA0)
 	{
-		gMvOpeningFirstDestinationOverlayAlpha += 9;
+		gMVOpeningFirstDestinationOverlayAlpha += 9;
 
-		if (gMvOpeningFirstDestinationOverlayAlpha >= 0xA1)
-			gMvOpeningFirstDestinationOverlayAlpha = 0xA0;
+		if (gMVOpeningFirstDestinationOverlayAlpha >= 0xA1)
+			gMVOpeningFirstDestinationOverlayAlpha = 0xA0;
 	}
 
 	gDPPipeSync(gSYTasklogDLHeads[0]++);
 	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0, 0, 0, gMvOpeningFirstDestinationOverlayAlpha);
+	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0, 0, 0, gMVOpeningFirstDestinationOverlayAlpha);
 	gDPSetCombineLERP(gSYTasklogDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
 	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
 	gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 10, 310, 230);
@@ -593,8 +593,8 @@ void mvOpeningFirstDestinationCreateCloseupOverlay()
 {
 	GObj* overlay_gobj;
 
-	gMvOpeningFirstDestinationOverlayAlpha = 0;
-	gMvOpeningFirstDestinationOverlayGObj = overlay_gobj = gcMakeGObjSPAfter(0, 0, 0x12, 0x80000000);
+	gMVOpeningFirstDestinationOverlayAlpha = 0;
+	gMVOpeningFirstDestinationOverlayGObj = overlay_gobj = gcMakeGObjSPAfter(0, 0, 0x12, 0x80000000);
 	gcAddGObjDisplay(overlay_gobj, mvOpeningFirstDestinationRenderCloseupOverlay, 0x1A, 0x80000000, -1);
 }
 
@@ -629,10 +629,10 @@ void mvOpeningFirstDestinationCreateBackground()
 	GObj* bg_gobj;
 	SObj* bg_sobj;
 
-	gMvOpeningFirstDestinationBackgroundGObj = bg_gobj = gcMakeGObjSPAfter(0, 0, 0x14, 0x80000000);
+	gMVOpeningFirstDestinationBackgroundGObj = bg_gobj = gcMakeGObjSPAfter(0, 0, 0x14, 0x80000000);
 	gcAddGObjDisplay(bg_gobj, mvOpeningFirstDestinationRenderBackground, 0x1C, 0x80000000, -1);
 
-	bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[7], &FILE_05A_BACKGROUND_IMAGE_OFFSET));
+	bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[7], &FILE_05A_BACKGROUND_IMAGE_OFFSET));
 	bg_sobj->pos.x = 10.0f;
 	bg_sobj->pos.y = 10.0f;
 }
@@ -684,25 +684,25 @@ void mvOpeningFirstDestinationCreateSpotlight()
 {
 	GObj* spotlight_gobj;
 
-	gMvOpeningFirstDestinationSpotlightGObj = spotlight_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcAddOMMtxForDObjFixed(gcAddDObjForGObj(spotlight_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_SPOTLIGHT_OFFSET_2)), 0x1C, 0);
+	gMVOpeningFirstDestinationSpotlightGObj = spotlight_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
+	gcAddOMMtxForDObjFixed(gcAddDObjForGObj(spotlight_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_SPOTLIGHT_OFFSET_2)), 0x1C, 0);
 	gcAddGObjDisplay(spotlight_gobj, gcDrawDObjDLHead1, 0x1B, 0x80000000, -1);
-	gcAddMObjAll(spotlight_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_SPOTLIGHT_OFFSET_1));
-	gcAddMatAnimJointAll(spotlight_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[0], &FILE_034_SPOTLIGHT_OFFSET_3), 0.0F);
+	gcAddMObjAll(spotlight_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_SPOTLIGHT_OFFSET_1));
+	gcAddMatAnimJointAll(spotlight_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_SPOTLIGHT_OFFSET_3), 0.0F);
 	gcAddGObjProcess(spotlight_gobj, gcPlayAnimAll, 1, 1);
 	gcPlayAnimAll(spotlight_gobj);
-	mvOpeningFirstDestinationPositionSpotlight(spotlight_gobj, gMvOpeningFirstDestinationPluckedFighterKind);
+	mvOpeningFirstDestinationPositionSpotlight(spotlight_gobj, gMVOpeningFirstDestinationPluckedFighterKind);
 }
 
 // 0x801331B0
 void mvOpeningFirstDestinationDestroyDeskObjects()
 {
-	gcEjectGObj(gMvOpeningFirstDestinationOutsideGObj);
-	gcEjectGObj(gMvOpeningFirstDestinationOutsideHazeGObj);
-	gcEjectGObj(gMvOpeningFirstDestinationBooksGObj);
-	gcEjectGObj(gMvOpeningFirstDestinationPencilHolderGObj);
-	gcEjectGObj(gMvOpeningFirstDestinationLampGObj);
-	gcEjectGObj(gMvOpeningFirstDestinationTissueBoxGObj);
+	gcEjectGObj(gMVOpeningFirstDestinationOutsideGObj);
+	gcEjectGObj(gMVOpeningFirstDestinationOutsideHazeGObj);
+	gcEjectGObj(gMVOpeningFirstDestinationBooksGObj);
+	gcEjectGObj(gMVOpeningFirstDestinationPencilHolderGObj);
+	gcEjectGObj(gMVOpeningFirstDestinationLampGObj);
+	gcEjectGObj(gMVOpeningFirstDestinationTissueBoxGObj);
 }
 
 // 0x80133210
@@ -712,7 +712,7 @@ void mvOpeningFirstDestinationConfigureFirstSceneViewport(GObj* camera_gobj)
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 	cam->projection.persp.near = 80.0F;
 	cam->projection.persp.far = 15000.0F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[2], &FILE_038_CAMERA_PARAMETERS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[2], &FILE_038_CAMERA_PARAMETERS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 	cam->flags |= 4;
 }
@@ -722,12 +722,12 @@ void mvOpeningFirstDestinationCreateFirstSceneViewports()
 {
 	GObj* camera_gobj;
 
-	gMvOpeningFirstDestinationMainCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 0, 1, 0, 1, 0);
+	gMVOpeningFirstDestinationMainCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 0, 1, 0, 1, 0);
 	gcAddOMMtxForCamera(CameraGetStruct(camera_gobj), 3, 0);
 	gcAddOMMtxForCamera(CameraGetStruct(camera_gobj), 0xE, 0);
 	mvOpeningFirstDestinationConfigureFirstSceneViewport(camera_gobj);
 
-	gMvOpeningFirstDestinationFighterCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x08000200, -1, 1, 1, 0, 1, 0);
+	gMVOpeningFirstDestinationFighterCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x08000200, -1, 1, 1, 0, 1, 0);
 	mvOpeningFirstDestinationConfigureFirstSceneViewport(camera_gobj);
 }
 
@@ -736,7 +736,7 @@ void mvOpeningFirstDestinationConfigureSecondSceneViewport(GObj* camera_gobj)
 {
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[3], &FILE_039_CAMERA_PARAMETERS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[3], &FILE_039_CAMERA_PARAMETERS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 	cam->flags |= 4;
 }
@@ -746,12 +746,12 @@ void mvOpeningFirstDestinationCreateSecondSceneViewports()
 {
 	GObj* camera_gobj;
 
-	gMvOpeningFirstDestinationMainCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 0, 1, 0, 1, 0);
+	gMVOpeningFirstDestinationMainCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 0, 1, 0, 1, 0);
 	gcAddOMMtxForCamera(CameraGetStruct(camera_gobj), 3, 0);
 	gcAddOMMtxForCamera(CameraGetStruct(camera_gobj), 0x8, 0);
 	mvOpeningFirstDestinationConfigureSecondSceneViewport(camera_gobj);
 
-	gMvOpeningFirstDestinationFighterCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x08000200, -1, 1, 1, 0, 1, 0);
+	gMVOpeningFirstDestinationFighterCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x08000200, -1, 1, 1, 0, 1, 0);
 	mvOpeningFirstDestinationConfigureSecondSceneViewport(camera_gobj);
 }
 
@@ -772,7 +772,7 @@ void mvOpeningFirstDestinationConfigureThirdSceneViewport(GObj* camera_gobj)
 	cam->projection.persp.fovy = 18.60718727F;
 	cam->projection.persp.near = 128.0F;
 	cam->projection.persp.far = 16384.0F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[4], &FILE_03A_CAMERA_PARAMETERS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[4], &FILE_03A_CAMERA_PARAMETERS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 	cam->flags |= 4;
 }
@@ -783,12 +783,12 @@ void mvOpeningFirstDestinationCreateThirdSceneViewports()
 	GObj* camera_gobj;
 	GObj* camera_gobj_2;
 
-	gMvOpeningFirstDestinationMainCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 0, 1, 0, 1, 0);
+	gMVOpeningFirstDestinationMainCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 0, 1, 0, 1, 0);
 	gcAddOMMtxForCamera(CameraGetStruct(camera_gobj), 3, 0);
 	gcAddOMMtxForCamera(CameraGetStruct(camera_gobj), 0x8, 0);
 	mvOpeningFirstDestinationConfigureThirdSceneViewport(camera_gobj);
 
-	gMvOpeningFirstDestinationFighterCameraGObj = camera_gobj_2 = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x08000200, -1, 1, 1, 0, 1, 0);
+	gMVOpeningFirstDestinationFighterCameraGObj = camera_gobj_2 = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x08000200, -1, 1, 1, 0, 1, 0);
 	mvOpeningFirstDestinationConfigureThirdSceneViewport(camera_gobj_2);
 }
 
@@ -809,7 +809,7 @@ void mvOpeningFirstDestinationConfigureFourthSceneViewport(GObj* camera_gobj)
 	cam->projection.persp.fovy = 11.98226547F;
 	cam->projection.persp.near = 128.0F;
 	cam->projection.persp.far = 16384.0F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[5], &FILE_03B_CAMERA_PARAMETERS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[5], &FILE_03B_CAMERA_PARAMETERS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
@@ -819,10 +819,10 @@ void mvOpeningFirstDestinationCreateFourthSceneViewports()
 	GObj* camera_gobj;
 	GObj* camera_gobj_2;
 
-	gMvOpeningFirstDestinationMainCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 1, 1, 0, 1, 0);
+	gMVOpeningFirstDestinationMainCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 1, 1, 0, 1, 0);
 	mvOpeningFirstDestinationConfigureFourthSceneViewport(camera_gobj);
 
-	gMvOpeningFirstDestinationFighterCameraGObj = camera_gobj_2 = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x00000200, -1, 1, 1, 0, 1, 0);
+	gMVOpeningFirstDestinationFighterCameraGObj = camera_gobj_2 = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x00000200, -1, 1, 1, 0, 1, 0);
 	mvOpeningFirstDestinationConfigureFourthSceneViewport(camera_gobj_2);
 }
 
@@ -840,10 +840,10 @@ void mvOpeningFirstDestinationCreateHALLogoViewport()
 	GObj *camera_gobj;
 	Camera *cam;
 
-	gMvOpeningFirstDestinationHALLogoCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x32, 0x20000000, -1, 1, 1, 0, 1, 0);
+	gMVOpeningFirstDestinationHALLogoCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x32, 0x20000000, -1, 1, 1, 0, 1, 0);
 	cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[2], &FILE_038_CAMERA_PARAMETERS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[2], &FILE_038_CAMERA_PARAMETERS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
@@ -889,19 +889,19 @@ void mvOpeningFirstDestinationCreateTransitionGFX()
 	GObj* gfx_gobj;
 	DObj* gfx_dobj;
 
-	gMvOpeningFirstDestinationTransitionGFXOutlineGObj = gfx_gobj = gcMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
-	gfx_dobj = gcAddDObjForGObj(gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[1], &FILE_03F_TRANSITION_GFX_OUTLINE_OBJECT_OFFSET_1));
+	gMVOpeningFirstDestinationTransitionGFXOutlineGObj = gfx_gobj = gcMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
+	gfx_dobj = gcAddDObjForGObj(gfx_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[1], &FILE_03F_TRANSITION_GFX_OUTLINE_OBJECT_OFFSET_1));
 	gcAddOMMtxForDObjFixed(gfx_dobj, 0x1C, 0);
 	gcAddGObjDisplay(gfx_gobj, mvOpeningFirstDestinationRenderTransitionGFXOutline, 0x1E, 0x80000000, -1);
-	gcAddDObjAnimJoint(gfx_dobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[1], &FILE_03F_TRANSITION_GFX_OUTLINE_OBJECT_OFFSET_2), 0);
+	gcAddDObjAnimJoint(gfx_dobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[1], &FILE_03F_TRANSITION_GFX_OUTLINE_OBJECT_OFFSET_2), 0);
 	gcAddGObjProcess(gfx_gobj, gcPlayAnimAll, 1, 1);
 	gcPlayAnimAll(gfx_gobj);
 
-	gMvOpeningFirstDestinationTransitionGFXOverlayGObj = gfx_gobj = gcMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
-	gfx_dobj = gcAddDObjForGObj(gfx_gobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[1], &FILE_03F_TRANSITION_GFX_OVERLAY_OBJECT_OFFSET_1));
+	gMVOpeningFirstDestinationTransitionGFXOverlayGObj = gfx_gobj = gcMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
+	gfx_dobj = gcAddDObjForGObj(gfx_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[1], &FILE_03F_TRANSITION_GFX_OVERLAY_OBJECT_OFFSET_1));
 	gcAddOMMtxForDObjFixed(gfx_dobj, 0x1C, 0);
 	gcAddGObjDisplay(gfx_gobj, mvOpeningFirstDestinationRenderTransitionGFXOverlay, 0x1E, 0x80000000, -1);
-	gcAddDObjAnimJoint(gfx_dobj, GetAddressFromOffset(gMvOpeningFirstDestinationFiles[1], &FILE_03F_TRANSITION_GFX_OVERLAY_OBJECT_OFFSET_2), 0);
+	gcAddDObjAnimJoint(gfx_dobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[1], &FILE_03F_TRANSITION_GFX_OVERLAY_OBJECT_OFFSET_2), 0);
 	gcAddGObjProcess(gfx_gobj, gcPlayAnimAll, 1, 1);
 	gcPlayAnimAll(gfx_gobj);
 }
@@ -929,8 +929,8 @@ void mvOpeningFirstDestinationCreateTransitionGFXViewport()
 // 0x80134184
 void mvOpeningFirstDestinationDestroyViewports()
 {
-	gcEjectGObj(gMvOpeningFirstDestinationMainCameraGObj);
-	gcEjectGObj(gMvOpeningFirstDestinationFighterCameraGObj);
+	gcEjectGObj(gMVOpeningFirstDestinationMainCameraGObj);
+	gcEjectGObj(gMVOpeningFirstDestinationFighterCameraGObj);
 }
 
 // 0x801341B4
@@ -942,7 +942,7 @@ s32 mvOpeningFirstDestinationGetDroppedFighterKind()
 	};
 	s32 ft_kind;
 
-	while (ft_kind = ft_kinds[mtTrigGetRandomTimeUCharRange(ARRAY_COUNT(ft_kinds))], ft_kind == gMvOpeningFirstDestinationPluckedFighterKind);
+	while (ft_kind = ft_kinds[mtTrigGetRandomTimeUCharRange(ARRAY_COUNT(ft_kinds))], ft_kind == gMVOpeningFirstDestinationPluckedFighterKind);
 
 	return ft_kind;
 }
@@ -961,9 +961,9 @@ s32 mvOpeningFirstDestinationGetPluckedFighterKind()
 // 0x801342E4
 void mvOpeningFirstDestinationInitGlobals()
 {
-	gMvOpeningFirstDestinationFramesElapsed = 0;
-	gMvOpeningFirstDestinationPluckedFighterKind = mvOpeningFirstDestinationGetPluckedFighterKind();
-	gMvOpeningFirstDestinationDroppedFighterKind = mvOpeningFirstDestinationGetDroppedFighterKind();
+	gMVOpeningFirstDestinationFramesElapsed = 0;
+	gMVOpeningFirstDestinationPluckedFighterKind = mvOpeningFirstDestinationGetPluckedFighterKind();
+	gMVOpeningFirstDestinationDroppedFighterKind = mvOpeningFirstDestinationGetDroppedFighterKind();
 }
 
 // 0x80134318
@@ -1001,18 +1001,18 @@ sb32 mvOpeningFirstDestinationSetFrameBuffer(GObj* gobj)
 // 0x80134400
 void mvOpeningFirstDestinationMainProc(GObj* arg0)
 {
-	gMvOpeningFirstDestinationFramesElapsed += 1;
+	gMVOpeningFirstDestinationFramesElapsed += 1;
 
-	if (gMvOpeningFirstDestinationFramesElapsed >= 10)
+	if (gMVOpeningFirstDestinationFramesElapsed >= 10)
 	{
-		if (gMvOpeningFirstDestinationUnusedCounter != 0)
+		if (gMVOpeningFirstDestinationUnusedCounter != 0)
 		{
-			gMvOpeningFirstDestinationUnusedCounter -= 1;
+			gMVOpeningFirstDestinationUnusedCounter -= 1;
 		}
 
 		if ((scSubsysControllerGetPlayerStickInRangeLR(-15, 15)) && (scSubsysControllerGetPlayerStickInRangeUD(-15, 15)))
 		{
-			gMvOpeningFirstDestinationUnusedCounter = 0;
+			gMVOpeningFirstDestinationUnusedCounter = 0;
 		}
 
 		if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON))
@@ -1022,79 +1022,79 @@ void mvOpeningFirstDestinationMainProc(GObj* arg0)
 			syTasklogSetLoadScene();
 		}
 
-		if (gMvOpeningFirstDestinationFramesElapsed == 280)
+		if (gMVOpeningFirstDestinationFramesElapsed == 280)
 		{
-			mvOpeningFirstDestinationCreatePluckedFighter(gMvOpeningFirstDestinationPluckedFighterKind);
+			mvOpeningFirstDestinationCreatePluckedFighter(gMVOpeningFirstDestinationPluckedFighterKind);
 			mvOpeningFirstDestinationCreatePencilHolder();
-			gcEjectGObj(gMvOpeningFirstDestinationHALLogoGObj);
-			gcEjectGObj(gMvOpeningFirstDestinationOverlayGObj);
-			gcEjectGObj(gMvOpeningFirstDestinationMasterHandShadowGObj);
+			gcEjectGObj(gMVOpeningFirstDestinationHALLogoGObj);
+			gcEjectGObj(gMVOpeningFirstDestinationOverlayGObj);
+			gcEjectGObj(gMVOpeningFirstDestinationMasterHandShadowGObj);
 		}
-		if (gMvOpeningFirstDestinationFramesElapsed == 695)
+		if (gMVOpeningFirstDestinationFramesElapsed == 695)
 		{
-			mvOpeningFirstDestinationCreateDroppedFighter(gMvOpeningFirstDestinationDroppedFighterKind);
+			mvOpeningFirstDestinationCreateDroppedFighter(gMVOpeningFirstDestinationDroppedFighterKind);
 		}
-		if (gMvOpeningFirstDestinationFramesElapsed == 380)
+		if (gMVOpeningFirstDestinationFramesElapsed == 380)
 		{
-			scSubsysFighterSetStatus(gMvOpeningFirstDestinationPluckedFighterGObj, 0x10009);
-			DObjGetStruct(gMvOpeningFirstDestinationPluckedFighterGObj)->rotate.vec.f.x = 0.0F;
-			DObjGetStruct(gMvOpeningFirstDestinationPluckedFighterGObj)->rotate.vec.f.y = 0.0F;
-			DObjGetStruct(gMvOpeningFirstDestinationPluckedFighterGObj)->rotate.vec.f.z = 0.0F;
+			scSubsysFighterSetStatus(gMVOpeningFirstDestinationPluckedFighterGObj, 0x10009);
+			DObjGetStruct(gMVOpeningFirstDestinationPluckedFighterGObj)->rotate.vec.f.x = 0.0F;
+			DObjGetStruct(gMVOpeningFirstDestinationPluckedFighterGObj)->rotate.vec.f.y = 0.0F;
+			DObjGetStruct(gMVOpeningFirstDestinationPluckedFighterGObj)->rotate.vec.f.z = 0.0F;
 		}
-		if (gMvOpeningFirstDestinationFramesElapsed == 450)
+		if (gMVOpeningFirstDestinationFramesElapsed == 450)
 		{
 			mvOpeningFirstDestinationCreateCloseupOverlay();
-			gcEjectGObj(gMvOpeningFirstDestinationSunlightGObj);
+			gcEjectGObj(gMVOpeningFirstDestinationSunlightGObj);
 		}
-		if (gMvOpeningFirstDestinationFramesElapsed == 560)
+		if (gMVOpeningFirstDestinationFramesElapsed == 560)
 		{
 			mvOpeningFirstDestinationDestroyViewports();
 			mvOpeningFirstDestinationCreateSecondSceneViewports();
-			scSubsysFighterSetStatus(gMvOpeningFirstDestinationMasterHandGObj, 0x10010);
+			scSubsysFighterSetStatus(gMVOpeningFirstDestinationMasterHandGObj, 0x10010);
 		}
-		if (gMvOpeningFirstDestinationFramesElapsed == 500)
+		if (gMVOpeningFirstDestinationFramesElapsed == 500)
 		{
-			gcMoveGObjDL(gMvOpeningFirstDestinationPluckedFighterGObj, 9, -1);
+			gcMoveGObjDL(gMVOpeningFirstDestinationPluckedFighterGObj, 9, -1);
 			mvOpeningFirstDestinationCreateSpotlight();
 		}
-		if (gMvOpeningFirstDestinationFramesElapsed == 860)
+		if (gMVOpeningFirstDestinationFramesElapsed == 860)
 		{
 			mvOpeningFirstDestinationDestroyViewports();
 			mvOpeningFirstDestinationCreateThirdSceneViewports();
-			scSubsysFighterSetStatus(gMvOpeningFirstDestinationMasterHandGObj, 0x10011);
+			scSubsysFighterSetStatus(gMVOpeningFirstDestinationMasterHandGObj, 0x10011);
 			mvOpeningFirstDestinationCreateSnapGFX();
 		}
-		if (gMvOpeningFirstDestinationFramesElapsed == 1037)
+		if (gMVOpeningFirstDestinationFramesElapsed == 1037)
 		{
-			CameraGetStruct(gMvOpeningFirstDestinationCameraGObj)->flags &= ~2;
+			CameraGetStruct(gMVOpeningFirstDestinationCameraGObj)->flags &= ~2;
 		}
-		if (gMvOpeningFirstDestinationFramesElapsed == 1040)
+		if (gMVOpeningFirstDestinationFramesElapsed == 1040)
 		{
-			gcEjectGObj(gMvOpeningFirstDestinationOverlayGObj);
-			gcEjectGObj(gMvOpeningFirstDestinationSpotlightGObj);
-			gcEjectGObj(gMvOpeningFirstDestinationMasterHandGObj);
+			gcEjectGObj(gMVOpeningFirstDestinationOverlayGObj);
+			gcEjectGObj(gMVOpeningFirstDestinationSpotlightGObj);
+			gcEjectGObj(gMVOpeningFirstDestinationMasterHandGObj);
 			mvOpeningFirstDestinationCreateTransitionGFXViewport();
 			mvOpeningFirstDestinationCreateTransitionGFX();
 			mvOpeningFirstDestinationDestroyDeskObjects();
 			mvOpeningFirstDestinationCreateDeskStage();
 			mvOpeningFirstDestinationCreateBackground();
 		}
-		if (gMvOpeningFirstDestinationFramesElapsed == I_SEC_TO_TICS(19))
+		if (gMVOpeningFirstDestinationFramesElapsed == I_SEC_TO_TICS(19))
 		{
 			mvOpeningFirstDestinationDestroyViewports();
 			mvOpeningFirstDestinationCreateCloseUpGFX();
-			DObjGetStruct(gMvOpeningFirstDestinationPluckedFighterGObj)->rotate.vec.f.x = 0.0F;
-			DObjGetStruct(gMvOpeningFirstDestinationPluckedFighterGObj)->rotate.vec.f.y = 0.0F;
-			DObjGetStruct(gMvOpeningFirstDestinationPluckedFighterGObj)->rotate.vec.f.z = 0.0F;
-			scSubsysFighterSetStatus(gMvOpeningFirstDestinationPluckedFighterGObj, 0x1000A);
+			DObjGetStruct(gMVOpeningFirstDestinationPluckedFighterGObj)->rotate.vec.f.x = 0.0F;
+			DObjGetStruct(gMVOpeningFirstDestinationPluckedFighterGObj)->rotate.vec.f.y = 0.0F;
+			DObjGetStruct(gMVOpeningFirstDestinationPluckedFighterGObj)->rotate.vec.f.z = 0.0F;
+			scSubsysFighterSetStatus(gMVOpeningFirstDestinationPluckedFighterGObj, 0x1000A);
 			mvOpeningFirstDestinationCreateFourthSceneViewports();
 		}
-		if (gMvOpeningFirstDestinationFramesElapsed == I_SEC_TO_TICS(18))
+		if (gMVOpeningFirstDestinationFramesElapsed == I_SEC_TO_TICS(18))
 		{
-			gcEjectGObj(gMvOpeningFirstDestinationTransitionGFXOverlayGObj);
-			gcEjectGObj(gMvOpeningFirstDestinationTransitionGFXOutlineGObj);
+			gcEjectGObj(gMVOpeningFirstDestinationTransitionGFXOverlayGObj);
+			gcEjectGObj(gMVOpeningFirstDestinationTransitionGFXOutlineGObj);
 		}
-		if (gMvOpeningFirstDestinationFramesElapsed == I_SEC_TO_TICS(22))
+		if (gMVOpeningFirstDestinationFramesElapsed == I_SEC_TO_TICS(22))
 		{
 			gSceneData.scene_previous = gSceneData.scene_current;
 			gSceneData.scene_current = 0x1D;
@@ -1107,33 +1107,33 @@ void mvOpeningFirstDestinationMainProc(GObj* arg0)
 void mvOpeningFirstDestinationInit()
 {
 	s32 foo;
-	lbRelocSetup rldmSetup;
+	lbRelocSetup rl_setup;
 
 	func_800048D0(mvOpeningFirstDestinationSetFrameBuffer);
 
-	rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-	rldmSetup.file_heap = 0;
-	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buffer = (lbFileNode*) &D_ovl34_80134D58;
-	rldmSetup.status_buffer_size = ARRAY_COUNT(D_ovl34_80134D58);
-	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl34_80135078;
-	rldmSetup.force_status_buffer_size = ARRAY_COUNT(D_ovl34_80135078);
-	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20), gMvOpeningFirstDestinationFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20)), 0x10));
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buffer = (lbFileNode*) &D_ovl34_80134D58;
+	rl_setup.status_buffer_size = ARRAY_COUNT(D_ovl34_80134D58);
+	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl34_80135078;
+	rl_setup.force_status_buffer_size = ARRAY_COUNT(D_ovl34_80135078);
+	lbRelocInitSetup(&rl_setup);
+	lbRelocLoadFilesExtern(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20), gMVOpeningFirstDestinationFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20)), 0x10));
 
 	gcMakeGObjSPAfter(0, mvOpeningFirstDestinationMainProc, 0, 0x80000000);
-	gMvOpeningFirstDestinationCameraGObj = gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gMVOpeningFirstDestinationCameraGObj = gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efAllocInitParticleBank();
 	mvOpeningFirstDestinationInitGlobals();
 	efManagerInitEffects();
 	ftManagerAllocFighter(1, 3);
-	ftManagerSetupFilesAllKind(gMvOpeningFirstDestinationPluckedFighterKind);
-	ftManagerSetupFilesAllKind(gMvOpeningFirstDestinationDroppedFighterKind);
+	ftManagerSetupFilesAllKind(gMVOpeningFirstDestinationPluckedFighterKind);
+	ftManagerSetupFilesAllKind(gMVOpeningFirstDestinationDroppedFighterKind);
 	ftManagerSetupFilesAllKind(nFTKindBoss);
-	gMvOpeningFirstDestinationMasterHandAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
-	gMvOpeningFirstDestinationPluckedFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
-	gMvOpeningFirstDestinationDroppedFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMVOpeningFirstDestinationMasterHandFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMVOpeningFirstDestinationPluckedFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMVOpeningFirstDestinationDroppedFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningFirstDestinationCreateFirstSceneViewports();
 	mvOpeningFirstDestinationCreateOverlayViewport();
 	mvOpeningFirstDestinationCreateBackgroundViewport();

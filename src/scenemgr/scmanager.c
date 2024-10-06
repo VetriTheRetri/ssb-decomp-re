@@ -224,7 +224,7 @@ void intro_focus_fox_entry();
 void intro_focus_link_entry();
 void intro_focus_yoshi_entry();
 void intro_focus_pikachu_entry();
-void intro_focus_kirby_entry();
+void mvOpeningKirbyStartScene();
 void mvOpeningRunStartScene();
 void mvOpeningYosterStartScene();
 void mvOpeningCliffStartScene();
@@ -496,7 +496,7 @@ void start_scene_manager(u32 set)
 				break;
 			case 37:
 				syDmaLoadOverlay(&D_800A3070[43]);
-				intro_focus_kirby_entry();
+				mvOpeningKirbyStartScene();
 				break;
 			case 38:
 				syDmaLoadOverlay(&D_800A3070[44]);

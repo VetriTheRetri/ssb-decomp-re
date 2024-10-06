@@ -424,18 +424,18 @@ GObj* dbBattleCreateViewport(void (*proc)(GObj*))
 void dbBattleInit()
 {
 	s32 i;
-	lbRelocSetup rldmSetup;
+	lbRelocSetup rl_setup;
 	GObj *main_gobj;
 
-	rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-	rldmSetup.file_heap = NULL;
-	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buffer = (lbFileNode*) &D_ovl14_80132C28;
-	rldmSetup.status_buffer_size = 0x96;
-	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl14_801330D8;
-	rldmSetup.force_status_buffer_size = 7;
-	lbRelocInitSetup(&rldmSetup);
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buffer = (lbFileNode*) &D_ovl14_80132C28;
+	rl_setup.status_buffer_size = 0x96;
+	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl14_801330D8;
+	rl_setup.force_status_buffer_size = 7;
+	lbRelocInitSetup(&rl_setup);
 
 	main_gobj = gcMakeGObjSPAfter(0, dbBattleMain, 0xF, 0x80000000);
 	gcAddGObjProcess(main_gobj, dbBattleSyncCostumes, 1, 0);

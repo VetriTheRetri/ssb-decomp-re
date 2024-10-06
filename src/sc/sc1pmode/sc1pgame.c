@@ -2110,7 +2110,7 @@ void sc1PGameFuncStart(void)
 
         player_spawn.controller = &gPlayerControllers[i];
 
-        player_spawn.figatree_heap = (sSC1PGamePlayerSetups[i].figatree != NULL) ? sSC1PGamePlayerSetups[i].figatree : ftManagerAllocAnimHeapKind(gBattleState->players[i].ft_kind);
+        player_spawn.figatree_heap = (sSC1PGamePlayerSetups[i].figatree != NULL) ? sSC1PGamePlayerSetups[i].figatree : ftManagerAllocFigatreeHeapKind(gBattleState->players[i].ft_kind);
 
         player_spawn.copy_kind = sSC1PGamePlayerSetups[i].copy_kind;
 

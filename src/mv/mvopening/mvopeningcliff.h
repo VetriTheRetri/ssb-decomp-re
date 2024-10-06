@@ -4,7 +4,6 @@
 #include <ssb_types.h>
 #include <sys/objdef.h>
 #include <PR/gbi.h>
-#include <mv/movie.h>
 
 extern intptr_t lMVOpeningCliffHillsDObjDesc;       // 0x000037A0
 extern intptr_t lMVOpeningCliffOcarinaDObjDesc;     // 0x000067A0

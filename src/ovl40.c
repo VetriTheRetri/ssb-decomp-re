@@ -12,7 +12,7 @@ extern void func_80007080(void*, f32, f32, f32, f32);
 
 // DATA
 // 0x8018E070
-CameraDesc dMvOpeningLinkCameraDescStart = {
+CameraDesc dMVOpeningLinkCameraDescStart = {
 
 	{ -800.0, 180.0, 800.0 },
 	{ 0.0, 180.0, 0.0 },
@@ -20,7 +20,7 @@ CameraDesc dMvOpeningLinkCameraDescStart = {
 };
 
 // 0x8018E08C
-CameraDesc dMvOpeningLinkCameraDescEnd = {
+CameraDesc dMVOpeningLinkCameraDescEnd = {
 
 	{ 200.0, 0.0, 400.0 },
 	{ 0.0, 240.0, 0.0 },
@@ -28,7 +28,7 @@ CameraDesc dMvOpeningLinkCameraDescEnd = {
 };
 
 // 0x8018E0A8
-ftKeyCommand dMvOpeningLinkGameKey[] = {
+ftKeyCommand dMVOpeningLinkGameKey[] = {
 
     FTKEY_EVENT_BUTTON(L_TRIG, 1),  // 0x1001, 0x0020
     FTKEY_EVENT_END()               // 0x0000
@@ -48,34 +48,34 @@ s32 D_ovl40_8018E1C0;
 s32 D_ovl40_8018E1C4;
 
 // 0x8018E1C8
-s32 gMvOpeningLinkFramesElapsed;
+s32 gMVOpeningLinkFramesElapsed;
 
 // 0x8018E1CC
-GObj* gMvOpeningLinkNameGObj;
+GObj* gMVOpeningLinkNameGObj;
 
 // 0x8018E1D0
-GObj* gMvOpeningLinkStageFighterGObj;
+GObj* gMVOpeningLinkStageFighterGObj;
 
 // 0x8018E1D4
 s32 D_ovl40_8018E1D4;
 
 // 0x8018E1D8
-GObj* gMvOpeningLinkStageCameraGObj;
+GObj* gMVOpeningLinkStageCameraGObj;
 
 // 0x8018E1DC
-void* gMvOpeningLinkAnimHeap;
+void* gMVOpeningLinkFigatreeHeap;
 
 // 0x8018E1E0
-f32 gMvOpeningLinkPosedFighterXSpeed;
+f32 gMVOpeningLinkPosedFighterXSpeed;
 
 // 0x8018E1E4
 s32 D_ovl40_8018E1E4;
 
 // 0x8018E1E8
-CameraDesc dMvOpeningLinkCameraDescAdjustedStart;
+CameraDesc dMVOpeningLinkCameraDescAdjustedStart;
 
 // 0x8018E208
-CameraDesc dMvOpeningLinkCameraDescAdjustedEnd;
+CameraDesc dMVOpeningLinkCameraDescAdjustedEnd;
 
 // 0x8018E228
 lbFileNode D_ovl40_8018E228[48];
@@ -84,27 +84,27 @@ lbFileNode D_ovl40_8018E228[48];
 lbFileNode D_ovl40_8018E3A8[7];
 
 // 0x8018E3E0
-uintptr_t gMvOpeningLinkFiles[2];
+uintptr_t gMVOpeningLinkFiles[2];
 
 // 0x8018E3E8
-scBattleState gMvOpeningLinkBattleState;
+scBattleState gMVOpeningLinkBattleState;
 
 
 // 0x8018D0C0
 void mvOpeningLinkLoadFiles()
 {
-	lbRelocSetup rldmSetup;
+	lbRelocSetup rl_setup;
 
-	rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-	rldmSetup.file_heap = NULL;
-	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buffer = D_ovl40_8018E228;
-	rldmSetup.status_buffer_size = ARRAY_COUNT(D_ovl40_8018E228);
-	rldmSetup.force_status_buffer = D_ovl40_8018E3A8;
-	rldmSetup.force_status_buffer_size = ARRAY_COUNT(D_ovl40_8018E3A8);
-	lbRelocInitSetup(&rldmSetup);
-	lbRelocLoadFilesExtern(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0), gMvOpeningLinkFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0)), 0x10));
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buffer = D_ovl40_8018E228;
+	rl_setup.status_buffer_size = ARRAY_COUNT(D_ovl40_8018E228);
+	rl_setup.force_status_buffer = D_ovl40_8018E3A8;
+	rl_setup.force_status_buffer_size = ARRAY_COUNT(D_ovl40_8018E3A8);
+	lbRelocInitSetup(&rl_setup);
+	lbRelocLoadFilesExtern(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0), gMVOpeningLinkFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl40_8018E0B0, ARRAY_COUNT(D_ovl40_8018E0B0)), 0x10));
 }
 
 // 0x8018D160
@@ -136,12 +136,12 @@ void mvOpeningLinkDrawName()
 	};
 	s32 i;
 
-	gMvOpeningLinkNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
+	gMVOpeningLinkNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
 	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 0x1B, 0x80000000, -1);
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMvOpeningLinkFiles[0], offsets[i]));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMVOpeningLinkFiles[0], offsets[i]));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
 		name_sobj->pos.x = x_positions[i] + 100.0F;
@@ -156,15 +156,15 @@ void mvOpeningLinkAnimateStageCamera(GObj* camera_gobj)
 {
 	Camera *cam = CameraGetStruct(camera_gobj);
 
-	if (gMvOpeningLinkFramesElapsed >= 15)
+	if (gMVOpeningLinkFramesElapsed >= 15)
 	{
-		cam->vec.eye.x += (((dMvOpeningLinkCameraDescAdjustedEnd.eye.x - dMvOpeningLinkCameraDescAdjustedStart.eye.x) / 45.0F));
-		cam->vec.eye.y += (((dMvOpeningLinkCameraDescAdjustedEnd.eye.y - dMvOpeningLinkCameraDescAdjustedStart.eye.y) / 45.0F));
-		cam->vec.eye.z += (((dMvOpeningLinkCameraDescAdjustedEnd.eye.z - dMvOpeningLinkCameraDescAdjustedStart.eye.z) / 45.0F));
-		cam->vec.at.x += (((dMvOpeningLinkCameraDescAdjustedEnd.at.x - dMvOpeningLinkCameraDescAdjustedStart.at.x) / 45.0F));
-		cam->vec.at.y += (((dMvOpeningLinkCameraDescAdjustedEnd.at.y - dMvOpeningLinkCameraDescAdjustedStart.at.y) / 45.0F));
-		cam->vec.at.z += (((dMvOpeningLinkCameraDescAdjustedEnd.at.z - dMvOpeningLinkCameraDescAdjustedStart.at.z) / 45.0F));
-		cam->vec.up.x += (((dMvOpeningLinkCameraDescAdjustedEnd.upx - dMvOpeningLinkCameraDescAdjustedStart.upx) / 45.0F));
+		cam->vec.eye.x += (((dMVOpeningLinkCameraDescAdjustedEnd.eye.x - dMVOpeningLinkCameraDescAdjustedStart.eye.x) / 45.0F));
+		cam->vec.eye.y += (((dMVOpeningLinkCameraDescAdjustedEnd.eye.y - dMVOpeningLinkCameraDescAdjustedStart.eye.y) / 45.0F));
+		cam->vec.eye.z += (((dMVOpeningLinkCameraDescAdjustedEnd.eye.z - dMVOpeningLinkCameraDescAdjustedStart.eye.z) / 45.0F));
+		cam->vec.at.x += (((dMVOpeningLinkCameraDescAdjustedEnd.at.x - dMVOpeningLinkCameraDescAdjustedStart.at.x) / 45.0F));
+		cam->vec.at.y += (((dMVOpeningLinkCameraDescAdjustedEnd.at.y - dMVOpeningLinkCameraDescAdjustedStart.at.y) / 45.0F));
+		cam->vec.at.z += (((dMVOpeningLinkCameraDescAdjustedEnd.at.z - dMVOpeningLinkCameraDescAdjustedStart.at.z) / 45.0F));
+		cam->vec.up.x += (((dMVOpeningLinkCameraDescAdjustedEnd.upx - dMVOpeningLinkCameraDescAdjustedStart.upx) / 45.0F));
 	}
 }
 
@@ -173,37 +173,37 @@ void mvOpeningLinkCreateStageViewport(Vec3f arg0)
 {
 	Camera *cam;
 
-	dMvOpeningLinkCameraDescAdjustedStart = dMvOpeningLinkCameraDescStart;
-	dMvOpeningLinkCameraDescAdjustedEnd = dMvOpeningLinkCameraDescEnd;
+	dMVOpeningLinkCameraDescAdjustedStart = dMVOpeningLinkCameraDescStart;
+	dMVOpeningLinkCameraDescAdjustedEnd = dMVOpeningLinkCameraDescEnd;
 
-	gMvOpeningLinkStageCameraGObj = func_ovl2_8010DB2C(0);
-	cam = CameraGetStruct(gMvOpeningLinkStageCameraGObj);
+	gMVOpeningLinkStageCameraGObj = func_ovl2_8010DB2C(0);
+	cam = CameraGetStruct(gMVOpeningLinkStageCameraGObj);
 	func_80007080(&cam->viewport, 10.0F, 90.0F, 310.0F, 230.0F);
 	cam->projection.persp.aspect = 15.0F / 7.0F;
-	gcEndProcessAll(gMvOpeningLinkStageCameraGObj);
-	gcAddGObjProcess(gMvOpeningLinkStageCameraGObj, mvOpeningLinkAnimateStageCamera, 1, 1);
+	gcEndProcessAll(gMVOpeningLinkStageCameraGObj);
+	gcAddGObjProcess(gMVOpeningLinkStageCameraGObj, mvOpeningLinkAnimateStageCamera, 1, 1);
 
-	dMvOpeningLinkCameraDescAdjustedStart.eye.x += arg0.x;
-	dMvOpeningLinkCameraDescAdjustedStart.eye.y += arg0.y;
-	dMvOpeningLinkCameraDescAdjustedStart.eye.z += arg0.z;
-	dMvOpeningLinkCameraDescAdjustedStart.at.x += arg0.x;
-	dMvOpeningLinkCameraDescAdjustedStart.at.y += arg0.y;
-	dMvOpeningLinkCameraDescAdjustedStart.at.z += arg0.z;
+	dMVOpeningLinkCameraDescAdjustedStart.eye.x += arg0.x;
+	dMVOpeningLinkCameraDescAdjustedStart.eye.y += arg0.y;
+	dMVOpeningLinkCameraDescAdjustedStart.eye.z += arg0.z;
+	dMVOpeningLinkCameraDescAdjustedStart.at.x += arg0.x;
+	dMVOpeningLinkCameraDescAdjustedStart.at.y += arg0.y;
+	dMVOpeningLinkCameraDescAdjustedStart.at.z += arg0.z;
 
-	dMvOpeningLinkCameraDescAdjustedEnd.eye.x += arg0.x;
-	dMvOpeningLinkCameraDescAdjustedEnd.eye.y += arg0.y;
-	dMvOpeningLinkCameraDescAdjustedEnd.eye.z += arg0.z;
-	dMvOpeningLinkCameraDescAdjustedEnd.at.x += arg0.x;
-	dMvOpeningLinkCameraDescAdjustedEnd.at.y += arg0.y;
-	dMvOpeningLinkCameraDescAdjustedEnd.at.z += arg0.z;
+	dMVOpeningLinkCameraDescAdjustedEnd.eye.x += arg0.x;
+	dMVOpeningLinkCameraDescAdjustedEnd.eye.y += arg0.y;
+	dMVOpeningLinkCameraDescAdjustedEnd.eye.z += arg0.z;
+	dMVOpeningLinkCameraDescAdjustedEnd.at.x += arg0.x;
+	dMVOpeningLinkCameraDescAdjustedEnd.at.y += arg0.y;
+	dMVOpeningLinkCameraDescAdjustedEnd.at.z += arg0.z;
 
-	cam->vec.eye.x = dMvOpeningLinkCameraDescAdjustedStart.eye.x;
-	cam->vec.eye.y = dMvOpeningLinkCameraDescAdjustedStart.eye.y;
-	cam->vec.eye.z = dMvOpeningLinkCameraDescAdjustedStart.eye.z;
-	cam->vec.at.x = dMvOpeningLinkCameraDescAdjustedStart.at.x;
-	cam->vec.at.y = dMvOpeningLinkCameraDescAdjustedStart.at.y;
-	cam->vec.at.z = dMvOpeningLinkCameraDescAdjustedStart.at.z;
-	cam->vec.up.x = dMvOpeningLinkCameraDescAdjustedStart.upx;
+	cam->vec.eye.x = dMVOpeningLinkCameraDescAdjustedStart.eye.x;
+	cam->vec.eye.y = dMVOpeningLinkCameraDescAdjustedStart.eye.y;
+	cam->vec.eye.z = dMVOpeningLinkCameraDescAdjustedStart.eye.z;
+	cam->vec.at.x = dMVOpeningLinkCameraDescAdjustedStart.at.x;
+	cam->vec.at.y = dMVOpeningLinkCameraDescAdjustedStart.at.y;
+	cam->vec.at.z = dMVOpeningLinkCameraDescAdjustedStart.at.z;
+	cam->vec.up.x = dMVOpeningLinkCameraDescAdjustedStart.upx;
 }
 
 // 0x8018D5F4
@@ -256,12 +256,12 @@ void mvOpeningLinkInitFighterStagePanel()
 		spawn_info.damage = 0;
 		spawn_info.pl_kind = gBattleState->players[i].pl_kind;
 		spawn_info.controller = &gPlayerControllers[i];
-		spawn_info.figatree_heap = ftManagerAllocAnimHeapKind(gBattleState->players[i].ft_kind);
+		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[i].ft_kind);
 
-		gMvOpeningLinkStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
+		gMVOpeningLinkStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
 		ftParamInitPlayerBattleStats(i, fighter_gobj);
-		ftParamSetKey(fighter_gobj, dMvOpeningLinkGameKey);
+		ftParamSetKey(fighter_gobj, dMVOpeningLinkGameKey);
 	}
 }
 
@@ -287,27 +287,27 @@ void mvOpeningLinkCreatePosedFighterBackground()
 // 0x8018D970
 void mvOpeningLinkAnimatePosedFighter(GObj* fighter_gobj)
 {
-	switch (gMvOpeningLinkFramesElapsed)
+	switch (gMVOpeningLinkFramesElapsed)
 	{
 		default:
 			break;
 		case 15:
-			gMvOpeningLinkPosedFighterXSpeed = 17.0F;
+			gMVOpeningLinkPosedFighterXSpeed = 17.0F;
 			break;
 		case 45:
-			gMvOpeningLinkPosedFighterXSpeed = 15.0F;
+			gMVOpeningLinkPosedFighterXSpeed = 15.0F;
 			break;
 		case 60:
-			gMvOpeningLinkPosedFighterXSpeed = 0.0F;
+			gMVOpeningLinkPosedFighterXSpeed = 0.0F;
 			break;
 	}
 
-	if ((gMvOpeningLinkFramesElapsed > 15) && (gMvOpeningLinkFramesElapsed < 45))
-		gMvOpeningLinkPosedFighterXSpeed += -1.0F / 15.0F;
-	if ((gMvOpeningLinkFramesElapsed > 45) && (gMvOpeningLinkFramesElapsed < 60))
-		gMvOpeningLinkPosedFighterXSpeed += -1.0F;
+	if ((gMVOpeningLinkFramesElapsed > 15) && (gMVOpeningLinkFramesElapsed < 45))
+		gMVOpeningLinkPosedFighterXSpeed += -1.0F / 15.0F;
+	if ((gMVOpeningLinkFramesElapsed > 45) && (gMVOpeningLinkFramesElapsed < 60))
+		gMVOpeningLinkPosedFighterXSpeed += -1.0F;
 
-	DObjGetStruct(fighter_gobj)->translate.vec.f.x -= gMvOpeningLinkPosedFighterXSpeed;
+	DObjGetStruct(fighter_gobj)->translate.vec.f.x -= gMVOpeningLinkPosedFighterXSpeed;
 }
 
 // 0x8018DA40
@@ -318,7 +318,7 @@ void mvOpeningLinkCreatePosedFighter()
 
 	spawn_info.ft_kind = nFTKindLink;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindLink, 0);
-	spawn_info.figatree_heap = gMvOpeningLinkAnimHeap;
+	spawn_info.figatree_heap = gMVOpeningLinkFigatreeHeap;
 	spawn_info.pos.x = 600.0f;
 	spawn_info.pos.y = 0.0f;
 	spawn_info.pos.z = 0.0f;
@@ -348,7 +348,7 @@ void mvOpeningLinkCreatePosedFighterViewport()
 	Camera *cam = CameraGetStruct(camera_gobj);
 	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 90.0F);
 	cam->projection.persp.aspect = 3.75F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMvOpeningLinkFiles[1], &FILE_041_LINK_CAMERA_PARAMS_OFFSET), 0.0F);
+	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningLinkFiles[1], &FILE_041_LINK_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
@@ -366,7 +366,7 @@ void mvOpeningLinkCreatePosedFighterBackgroundViewport()
 // 0x8018DD80
 void mvOpeningLinkMainProc(GObj* arg0)
 {
-	gMvOpeningLinkFramesElapsed += 1;
+	gMVOpeningLinkFramesElapsed += 1;
 
 	if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
 	{
@@ -375,15 +375,15 @@ void mvOpeningLinkMainProc(GObj* arg0)
 		syTasklogSetLoadScene();
 	}
 
-	if (gMvOpeningLinkFramesElapsed == 15)
+	if (gMVOpeningLinkFramesElapsed == 15)
 	{
-		gcEjectGObj(gMvOpeningLinkNameGObj);
+		gcEjectGObj(gMVOpeningLinkNameGObj);
 		mvOpeningLinkInitFighterStagePanel();
 		mvOpeningLinkCreatePosedFighterBackground();
 		mvOpeningLinkCreatePosedFighter();
 	}
 
-	if (gMvOpeningLinkFramesElapsed == 60)
+	if (gMVOpeningLinkFramesElapsed == 60)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 0x20;
@@ -394,14 +394,14 @@ void mvOpeningLinkMainProc(GObj* arg0)
 // 0x8018DE3C
 void mvOpeningLinkInitFramesElapsed()
 {
-	gMvOpeningLinkFramesElapsed = 0;
+	gMVOpeningLinkFramesElapsed = 0;
 }
 
 // 0x8018DE48
 void mvOpeningLinkInit()
 {
-	gMvOpeningLinkBattleState = gDefaultBattleState;
-	gBattleState = &gMvOpeningLinkBattleState;
+	gMVOpeningLinkBattleState = gDefaultBattleState;
+	gBattleState = &gMVOpeningLinkBattleState;
 
 	gBattleState->game_type = nSCBattleGameTypeOpening;
 
@@ -426,7 +426,7 @@ void mvOpeningLinkInit()
 	efManagerInitEffects();
 	ftManagerSetupFilesAllKind(nFTKindLink);
 
-	gMvOpeningLinkAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMVOpeningLinkFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningLinkCreateNameViewport();
 	mvOpeningLinkCreatePosedFighterBackgroundViewport();
 	mvOpeningLinkCreatePosedFighterViewport();
@@ -436,7 +436,7 @@ void mvOpeningLinkInit()
 }
 
 // 0x8018DFCC
-void gMvOpeningLinkFuncLights(Gfx **display_list)
+void gMVOpeningLinkFuncLights(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
@@ -461,7 +461,7 @@ scRuntimeInfo D_ovl40_8018E0F8 = {
 	0x800a26b8, &lOverlay40ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00004000, 0x00002000,
 	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000c000,
-	gMvOpeningLinkFuncLights, update_contdata,
+	gMVOpeningLinkFuncLights, update_contdata,
 	0x00000000, 0x00000600, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
 	0x800d5cac, 0x00000000, 0x00000000, 0x00000000,

@@ -769,7 +769,7 @@ void scExplainFuncStart(void)
 
         player_spawn.controller = &gPlayerControllers[player];
 
-        player_spawn.figatree_heap = ftManagerAllocAnimHeapKind(gBattleState->players[player].ft_kind);
+        player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[player].ft_kind);
 
         fighter_gobj = ftManagerMakeFighter(&player_spawn);
 

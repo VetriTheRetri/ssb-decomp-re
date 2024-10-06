@@ -4,7 +4,6 @@
 #include <ssb_types.h>
 #include <sys/objdef.h>
 #include <PR/gbi.h>
-#include <mv/movie.h>
 
 extern intptr_t lMVOpeningClashFightersCamAnimJoint;            // 0x00001440
 extern intptr_t lMVOpeningClashWallpaperCamAnimJoint;           // 0x00004AB0

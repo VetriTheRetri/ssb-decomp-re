@@ -165,7 +165,7 @@ GObj* gMN1PLevelGObj;
 GObj* gMN1PStockGObj;
 
 // 0x80138FC4
-void* gMN1PAnimHeap;
+void* gMN1PFigatreeHeap;
 
 // 0x80138FC8 flag indicating which bonus chars are available
 u16 gMN1PCharacterUnlockedMask;
@@ -1595,7 +1595,7 @@ void mn1PSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 costume_
 		spawn_info.ft_kind = ft_kind;
 		gMN1PPanel.costume_id = spawn_info.costume = costume_id;
 		spawn_info.shade = 0;
-		spawn_info.figatree_heap = gMN1PAnimHeap;
+		spawn_info.figatree_heap = gMN1PFigatreeHeap;
 		spawn_info.player = port_id;
 		gMN1PPanel.player = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
@@ -3086,20 +3086,20 @@ void mn1PInitPanel(s32 port_id)
 void mn1PInitCSS()
 {
 	s32 bar, baz;
-	lbRelocSetup rldmSetup;
+	lbRelocSetup rl_setup;
 	f32 foo;
 	s32 i;
 	s32 j;
 
-	rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-	rldmSetup.file_heap = NULL;
-	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buffer = (lbFileNode*) &D_ovl27_801392E0;
-	rldmSetup.status_buffer_size = 0x78;
-	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl27_801392A8;
-	rldmSetup.force_status_buffer_size = 7;
-	lbRelocInitSetup(&rldmSetup);
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buffer = (lbFileNode*) &D_ovl27_801392E0;
+	rl_setup.status_buffer_size = 0x78;
+	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl27_801392A8;
+	rl_setup.force_status_buffer_size = 7;
+	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl27_80138630, 11U, gMN1PFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl27_80138630, 11U), 0x10U));
 
 	gcMakeGObjSPAfter(0x400U, &mn1PMain, 0xFU, 0x80000000U);
@@ -3111,7 +3111,7 @@ void mn1PInitCSS()
 	for (i = 0; i < 12; i++)
 		ftManagerSetupFilesAllKind(i);
 
-	gMN1PAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10U);
+	gMN1PFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10U);
 
 	mn1PLoadMatchInfo();
 	mn1PCreatePortraitViewport();

@@ -4,7 +4,6 @@
 #include <ssb_types.h>
 #include <sys/objdef.h>
 #include <PR/gbi.h>
-#include <mv/movie.h>
 
 extern intptr_t lMVOpeningStandoffGroundDisplayList;        // 0x00001C10
 extern intptr_t lMVOpeningStandoffLightningMObjSub;         // 0x00006140

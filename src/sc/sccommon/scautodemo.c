@@ -683,7 +683,7 @@ void scAutoDemoFuncStart(void)
 
 		player_spawn.controller = &gPlayerControllers[player];
 
-		player_spawn.figatree_heap = ftManagerAllocAnimHeapKind(gBattleState->players[player].ft_kind);
+		player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[player].ft_kind);
 
 		player_spawn.is_skip_entry = TRUE;
 

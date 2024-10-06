@@ -123,7 +123,7 @@ GObj* gMnBonusHighscoreGobj;
 s32 D_ovl29_80137700[4];
 
 // 0x80137710
-void* gMnBonusAnimHeap;
+void* gMnBonusFigatreeHeap;
 
 // 0x80137714 0 = BTT; 1 = BTP
 s32 gMnBonusType;
@@ -1218,7 +1218,7 @@ void mnBonusSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind)
 		spawn_info.ft_kind = ft_kind;
 		gMnBonusPanel.costume_id = spawn_info.costume = mnBonusGetAvailableCostume(ft_kind, 0);
 		// spawn_info.shade = 0;
-		spawn_info.figatree_heap = gMnBonusAnimHeap;
+		spawn_info.figatree_heap = gMnBonusFigatreeHeap;
 		spawn_info.player = port_id;
 		gMnBonusPanel.player = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
@@ -2482,20 +2482,20 @@ sb32 mnBonusAreAllCompleted()
 void mnBonusInitCSS()
 {
 	s32 bar, baz;
-	lbRelocSetup rldmSetup;
+	lbRelocSetup rl_setup;
 	f32 foo;
 	s32 i;
 	s32 j;
 
-	rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-	rldmSetup.file_heap = NULL;
-	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buffer = (lbFileNode*) &D_ovl29_80137A38;
-	rldmSetup.status_buffer_size = 0x78;
-	rldmSetup.force_status_buffer = (lbFileNode*) &D_ovl29_80137A00;
-	rldmSetup.force_status_buffer_size = 7;
-	lbRelocInitSetup(&rldmSetup);
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buffer = (lbFileNode*) &D_ovl29_80137A38;
+	rl_setup.status_buffer_size = 0x78;
+	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl29_80137A00;
+	rl_setup.force_status_buffer_size = 7;
+	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl29_80136F50, 11U, gMnBonusFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl29_80136F50, 11U), 0x10U));
 
 	gcMakeGObjSPAfter(0x400U, mnBonusMain, 0xFU, 0x80000000U);
@@ -2507,7 +2507,7 @@ void mnBonusInitCSS()
 	for (i = 0; i < 12; i++)
 		ftManagerSetupFilesAllKind(i);
 
-	gMnBonusAnimHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10U);
+	gMnBonusFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10U);
 
 	mnBonusLoadMatchInfo();
 	mnBonusCreatePortraitViewport();

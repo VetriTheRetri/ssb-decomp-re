@@ -159,6 +159,7 @@ typedef enum scKind
 	nSCKindCharacters,        	  // Character data screen
 	nSCKindN64,               	  // N64 logo
 	nSCKindOpeningRoom,       	  // Room with Master Hand and figures coming to life
+	nSCKindOpeningFox = 33,		  // Fox demo
 	nSCKindOpeningYoster = 39,	  // Yoshis in nest with eggs on Yoshi's Island
 	nSCKindOpeningCliff,	      // Link on dark hill
 	nSCKindOpeningStandoff = 41,  // Dark plains with Mario and Kirby in a standoff

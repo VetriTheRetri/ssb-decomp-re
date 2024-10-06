@@ -4213,20 +4213,20 @@ void mnBattleInitPanels()
 void mnBattleInitCSS()
 {
 	s32 bar, baz;
-	lbRelocSetup rldmSetup;
+	lbRelocSetup rl_setup;
 	f32 foo;
 	s32 i;
 	s32 j;
 
-	rldmSetup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rldmSetup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-	rldmSetup.file_heap = NULL;
-	rldmSetup.file_heap_size = 0;
-	rldmSetup.status_buffer = (lbFileNode*)&D_ovl26_8013C0E0;
-	rldmSetup.status_buffer_size = 0x78;
-	rldmSetup.force_status_buffer = (lbFileNode*)&D_ovl26_8013C0A8;
-	rldmSetup.force_status_buffer_size = 7;
-	lbRelocInitSetup(&rldmSetup);
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buffer = (lbFileNode*)&D_ovl26_8013C0E0;
+	rl_setup.status_buffer_size = 0x78;
+	rl_setup.force_status_buffer = (lbFileNode*)&D_ovl26_8013C0A8;
+	rl_setup.force_status_buffer_size = 7;
+	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl26_8013B3A0, 7U, gMnBattleFiles,
 						 syTasklogMalloc(lbRelocGetAllocSize(D_ovl26_8013B3A0, 7U), 0x10U));
 

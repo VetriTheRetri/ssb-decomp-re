@@ -651,15 +651,15 @@ void mnVSOptionsMakeHandicapOption(void)
 // 0x80132C24
 void mnVSOptionsLabelProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x80, 0x80, 0x80, 0xFF);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 79, 34, 310, 39);
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x80, 0x80, 0x80, 0xFF);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 79, 34, 310, 39);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
     
     lbCommonClearExternSpriteParams();
     lbCommonDrawSObjAttr(gobj);
@@ -764,10 +764,10 @@ void mnVSOptionsUnderlineProcDisplay(GObj *gobj)
 
     s32 off_y;
 
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_FILL);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gSYTasklogDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x28, 0xFF)));
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x28, 0xFF)));
 
     switch (sMNVSOptionsOption)
     {
@@ -776,7 +776,7 @@ void mnVSOptionsUnderlineProcDisplay(GObj *gobj)
 
         gDPFillRectangle
         (
-            gSYTasklogDLHeads[0]++,
+            gSYTaskmanDLHeads[0]++,
             handicap_rect[sMNVSOptionsHandicapStatus].ulx,
             handicap_rect[sMNVSOptionsHandicapStatus].uly + off_y,
             handicap_rect[sMNVSOptionsHandicapStatus].lrx,
@@ -789,7 +789,7 @@ void mnVSOptionsUnderlineProcDisplay(GObj *gobj)
 
         gDPFillRectangle
         (
-            gSYTasklogDLHeads[0]++,
+            gSYTaskmanDLHeads[0]++,
             team_attack_rect[sMNVSOptionsTeamAttackStatus].ulx,
             team_attack_rect[sMNVSOptionsTeamAttackStatus].uly + off_y,
             team_attack_rect[sMNVSOptionsTeamAttackStatus].lrx,
@@ -802,7 +802,7 @@ void mnVSOptionsUnderlineProcDisplay(GObj *gobj)
 
         gDPFillRectangle
         (
-            gSYTasklogDLHeads[0]++,
+            gSYTaskmanDLHeads[0]++,
             stage_select_rect[sMNVSOptionsStageSelectStatus].ulx,
             stage_select_rect[sMNVSOptionsStageSelectStatus].uly + off_y,
             stage_select_rect[sMNVSOptionsStageSelectStatus].lrx,
@@ -810,9 +810,9 @@ void mnVSOptionsUnderlineProcDisplay(GObj *gobj)
         );
         break;
     }
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
     
     lbCommonClearExternSpriteParams();
 }
@@ -826,14 +826,14 @@ void mnVSOptionsMakeUnderline(void)
 // 0x8013334C
 void mnVSOptionsTintProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x0D, 0x00, 0x00, 0x99);
-    gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 10, 310, 230);
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x0D, 0x00, 0x00, 0x99);
+    gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     
     lbCommonClearExternSpriteParams();
 }
@@ -1084,7 +1084,7 @@ void mnVSOptionsFuncRun(GObj *gobj)
             gSceneData.scene_current = nSCKindTitle;
             
             mnVSOptionsSetAllSettings();
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
             return;
         }
         if (scSubsysControllerCheckNoInputAll() == FALSE)
@@ -1113,7 +1113,7 @@ void mnVSOptionsFuncRun(GObj *gobj)
             gSceneData.scene_current = nSCKindVSItemSwitch;
 
             mnVSOptionsSetAllSettings();
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
         if (scSubsysControllerGetPlayerTapButtons(B_BUTTON) != FALSE)
         {
@@ -1121,7 +1121,7 @@ void mnVSOptionsFuncRun(GObj *gobj)
             gSceneData.scene_current = nSCKindVSMode;
 
             mnVSOptionsSetAllSettings();
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
         if
         (
@@ -1377,7 +1377,7 @@ void mnVSOptionsFuncStart(void)
         dMNVSOptionsFileIDs,
         ARRAY_COUNT(dMNVSOptionsFileIDs),
         sMNVSOptionsFiles,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (
@@ -1418,7 +1418,7 @@ void mnVSOptionsFuncStart(void)
 syDisplaySetup dMNVSOptionsDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8013482C
-syTasklogSetup dMNVSOptionsTasklogSetup =
+syTaskmanSetup dMNVSOptionsTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -1468,6 +1468,6 @@ void mnVSOptionsStartScene(void)
     dMNVSOptionsDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMNVSOptionsDisplaySetup);
     
-    dMNVSOptionsTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl20_BSS_END);
-    syTasklogInit(&dMNVSOptionsTasklogSetup);
+    dMNVSOptionsTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl20_BSS_END);
+    syTaskmanInit(&dMNVSOptionsTaskmanSetup);
 }

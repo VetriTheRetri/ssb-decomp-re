@@ -251,7 +251,7 @@ void grWallpaperSectorMakeSObj(void)
 // 0x80104B58
 void grWallpaperBonus3AddDL(GObj *wallpaper_gobj)
 {
-    gSPDisplayList(gSYTasklogDLHeads[0]++, dGRWallpaperDisplayList);
+    gSPDisplayList(gSYTaskmanDLHeads[0]++, dGRWallpaperDisplayList);
 }
 
 // 0x80104B88

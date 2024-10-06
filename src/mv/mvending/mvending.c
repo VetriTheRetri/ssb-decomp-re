@@ -97,7 +97,7 @@ Lights1 dMVEndingLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0
 syDisplaySetup dMVEndingDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132B24
-syTasklogSetup dMVEndingTasklogSetup =
+syTaskmanSetup dMVEndingTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -277,14 +277,14 @@ void mvEndingRoomFadeInProcDisplay(GObj *gobj)
             }
         }
     }
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sMVEndingRoomFadeInAlpha);
-    gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 10, 310, 230);
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sMVEndingRoomFadeInAlpha);
+    gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80132144
@@ -336,14 +336,14 @@ void mvEndingRoomLightProcDisplay(GObj *gobj)
             sMVEndingRoomLightAlpha = 220.0F;
         }
     }
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, (u8)sMVEndingRoomLightAlpha);
-    gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 10, 310, 230);
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, (u8)sMVEndingRoomLightAlpha);
+    gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x8013243C
@@ -500,7 +500,7 @@ void mvEndingFuncRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindStaffroll;
 
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
     }
 }
@@ -526,7 +526,7 @@ void mvEndingFuncStart(void)
         dMVEndingFileIDs,
         ARRAY_COUNT(dMVEndingFileIDs),
         sMVEndingFiles,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (
@@ -544,7 +544,7 @@ void mvEndingFuncStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(sMVEndingFighterDemoDesc.ft_kind);
 
-    sMVEndingFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+    sMVEndingFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
     mvEndingMakeMainCameras();
     mvEndingMakeRoomFadeInCamera();
@@ -569,7 +569,7 @@ void mvEndingStartScene(void)
 
     syDisplayInit(&dMVEndingDisplaySetup);
 
-    dMVEndingTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl54_BSS_END);
+    dMVEndingTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl54_BSS_END);
 
-    syTasklogInit(&dMVEndingTasklogSetup);
+    syTaskmanInit(&dMVEndingTaskmanSetup);
 }

@@ -58,7 +58,7 @@ Gfx dMNN64DisplayList[/* */] =
 syDisplaySetup dMNN64DisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80131FB4
-syTasklogSetup dMNN64TasklogSetup =
+syTaskmanSetup dMNN64TaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -168,13 +168,13 @@ void mnN64ActorFuncRun(GObj *gobj)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = nSCKindTitle;
-		syTasklogSetLoadScene();
+		syTaskmanSetLoadScene();
 	}
 	else if (sMNN64IsProceedOpening != FALSE)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = nSCKindOpeningRoom;
-		syTasklogSetLoadScene();
+		syTaskmanSetLoadScene();
 	}
 }
 
@@ -237,7 +237,7 @@ void mnN64FuncStart(void)
 		lbRelocGetFileExternHeap
 		(
 			&D_NF_000000C2,
-			syTasklogMalloc
+			syTaskmanMalloc
 			(
 				lbRelocGetFileSize
 				(
@@ -274,6 +274,6 @@ void mnN64StartScene(void)
 	dMNN64DisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
 	syDisplayInit(&dMNN64DisplaySetup);
 
-	dMNN64TasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl58_BSS_END);
-	syTasklogInit(&dMNN64TasklogSetup);
+	dMNN64TaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl58_BSS_END);
+	syTaskmanInit(&dMNN64TaskmanSetup);
 }

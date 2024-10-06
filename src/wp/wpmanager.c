@@ -32,7 +32,7 @@ void wpManagerAllocWeapons(void)
     wpStruct *wp;
     s32 i;
 
-    sWPManagerStructsAllocFree = wp = syTasklogMalloc(sizeof(wpStruct) * WEAPON_ALLOC_MAX, 0x8);
+    sWPManagerStructsAllocFree = wp = syTaskmanMalloc(sizeof(wpStruct) * WEAPON_ALLOC_MAX, 0x8);
 
     for (i = 0; i < (WEAPON_ALLOC_MAX - 1); i++)
     {

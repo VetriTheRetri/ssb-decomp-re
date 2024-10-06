@@ -64,13 +64,13 @@ void lbFadeProcDisplay(GObj *gobj)
     {
         alpha = 0xFF - alpha;
     }
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, sLBFadeColor.r, sLBFadeColor.g, sLBFadeColor.b, alpha);
-    gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 10, 310, 230);
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, sLBFadeColor.r, sLBFadeColor.g, sLBFadeColor.b, alpha);
+    gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 }
 
 // 0x800D4060

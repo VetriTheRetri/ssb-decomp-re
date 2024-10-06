@@ -3,7 +3,7 @@
 #include <sc/scene.h>
 #include <sys/system_00.h>
 
-extern void syTasklogSetLoadScene();
+extern void syTaskmanSetLoadScene();
 extern u32 func_8000092C();
 extern void func_80007080(void*, f32, f32, f32, f32);
 
@@ -70,7 +70,7 @@ Lights1 dMVOpeningYamabukiLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF
 syDisplaySetup dMVOpeningYamabukiDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x801323F4
-syTasklogSetup dMVOpeningYamabukiTasklogSetup =
+syTaskmanSetup dMVOpeningYamabukiTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -383,14 +383,14 @@ void mvOpeningYamabukiFuncRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
         if (sMVOpeningYamabukiTotalTimeTics == 160)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindOpeningJungle;
 
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
     }
 }
@@ -416,7 +416,7 @@ void mvOpeningYamabukiFuncStart(void)
         dMVOpeningYamabukiFileIDs,
         ARRAY_COUNT(dMVOpeningYamabukiFileIDs),
         sMVOpeningYamabukiFiles,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (
@@ -436,7 +436,7 @@ void mvOpeningYamabukiFuncStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(nFTKindPikachu);
 
-    sMVOpeningYamabukiFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+    sMVOpeningYamabukiFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
     mvOpeningYamabukiMakeMainCamera();
     mvOpeningYamabukiMakeWallpaperCamera();
@@ -460,6 +460,6 @@ void mvOpeningYamabukiStartScene(void)
     dMVOpeningYamabukiDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMVOpeningYamabukiDisplaySetup);
 
-    dMVOpeningYamabukiTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl48_BSS_END);
-    syTasklogInit(&dMVOpeningYamabukiTasklogSetup);
+    dMVOpeningYamabukiTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl48_BSS_END);
+    syTaskmanInit(&dMVOpeningYamabukiTaskmanSetup);
 }

@@ -3,7 +3,7 @@
 #include <sc/scene.h>
 #include <sys/system_00.h>
 
-extern void syTasklogSetLoadScene();
+extern void syTaskmanSetLoadScene();
 extern u32 func_8000092C();
 extern void func_80007080(void*, f32, f32, f32, f32);
 
@@ -71,7 +71,7 @@ Lights1 dMVOpeningStandoffLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF
 syDisplaySetup dMVOpeningStandoffDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132924
-syTasklogSetup dMVOpeningStandoffTasklogSetup =
+syTaskmanSetup dMVOpeningStandoffTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -370,8 +370,8 @@ void mvOpeningStandoffMakeLightning(void)
 // 0x801321D8
 void mvOpeningStandoffLightningFlashProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[1]++);
-    gDPSetCycleType(gSYTasklogDLHeads[1]++, G_CYC_1CYCLE);
+    gDPPipeSync(gSYTaskmanDLHeads[1]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[1]++, G_CYC_1CYCLE);
 
     if
     (
@@ -380,15 +380,15 @@ void mvOpeningStandoffLightningFlashProcDisplay(GObj *gobj)
         ((sMVOpeningStandoffTotalTimeTics > 260) && (sMVOpeningStandoffTotalTimeTics < 264))
     )
     {
-        gDPSetPrimColor(gSYTasklogDLHeads[1]++, 0, 0, 0xFF, 0xFF, 0xFF, 0x40);
+        gDPSetPrimColor(gSYTaskmanDLHeads[1]++, 0, 0, 0xFF, 0xFF, 0xFF, 0x40);
     }
-    else gDPSetPrimColor(gSYTasklogDLHeads[1]++, 0, 0, 0xFF, 0xFF, 0xFF, 0x00);
+    else gDPSetPrimColor(gSYTaskmanDLHeads[1]++, 0, 0, 0xFF, 0xFF, 0xFF, 0x00);
 
-    gDPSetCombineLERP(gSYTasklogDLHeads[1]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-    gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gSYTasklogDLHeads[1]++, 10, 10, 310, 230);
-    gDPPipeSync(gSYTasklogDLHeads[1]++);
-    gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCombineLERP(gSYTaskmanDLHeads[1]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskmanDLHeads[1]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYTaskmanDLHeads[1]++);
+    gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80132330 - Unused?
@@ -543,14 +543,14 @@ void mvOpeningStandoffFuncRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
         if (sMVOpeningStandoffTotalTimeTics == 320)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindOpeningClash;
 
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
     }
 }
@@ -576,7 +576,7 @@ void mvOpeningStandoffFuncStart(void)
         dMVOpeningStandoffFileIDs,
         ARRAY_COUNT(dMVOpeningStandoffFileIDs),
         sMVOpeningStandoffFiles,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (
@@ -597,8 +597,8 @@ void mvOpeningStandoffFuncStart(void)
     ftManagerSetupFilesAllKind(nFTKindMario);
     ftManagerSetupFilesAllKind(nFTKindKirby);
 
-    sMVOpeningStandoffMarioFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
-    sMVOpeningStandoffKirbyFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+    sMVOpeningStandoffMarioFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
+    sMVOpeningStandoffKirbyFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
     mvOpeningStandoffMakeMainCamera();
     mvOpeningStandoffMakeWallpaperCamera();
@@ -623,6 +623,6 @@ void mvOpeningStandoffStartScene(void)
     dMVOpeningStandoffDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMVOpeningStandoffDisplaySetup);
 
-    dMVOpeningStandoffTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl47_BSS_END);
-    syTasklogInit(&dMVOpeningStandoffTasklogSetup);
+    dMVOpeningStandoffTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl47_BSS_END);
+    syTaskmanInit(&dMVOpeningStandoffTaskmanSetup);
 }

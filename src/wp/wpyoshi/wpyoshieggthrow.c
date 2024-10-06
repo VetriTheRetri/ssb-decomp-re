@@ -252,9 +252,9 @@ sb32 wpYoshiEggThrowProcReflector(GObj *weapon_gobj)
 // 0x8016C444
 void wpYoshiEggThrowProcDisplay(GObj *weapon_gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[1]++);
+    gDPPipeSync(gSYTaskmanDLHeads[1]++);
 
-    gDPSetEnvColor(gSYTasklogDLHeads[1]++, 0x00, 0x00, 0x00, 0x00);
+    gDPSetEnvColor(gSYTaskmanDLHeads[1]++, 0x00, 0x00, 0x00, 0x00);
 
     wpDisplayDLHead1(weapon_gobj);
 }

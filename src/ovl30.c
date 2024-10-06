@@ -178,8 +178,8 @@ void mnStageAllocateStageModelHeaps()
 			max = size;
 	}
 
-	gMNStageModelHeap0Ptr = syTasklogMalloc(max, 0x10);
-	gMNStageModelHeap1Ptr = syTasklogMalloc(max, 0x10);
+	gMNStageModelHeap0Ptr = syTaskmanMalloc(max, 0x10);
+	gMNStageModelHeap1Ptr = syTaskmanMalloc(max, 0x10);
 }
 
 // 0x80131B88
@@ -384,18 +384,18 @@ void mnStageCreateWoodenCircle()
 // 0x801320E0
 void mnStageRenderStageSelectGfx(GObj* stage_select_gobj)
 {
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x57, 0x60, 0x88, 0xFF);
-	gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x57, 0x60, 0x88, 0xFF);
-	gDPFillRectangle(gSYTasklogDLHeads[0]++, 160, 128, 320, 134);
-	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, 0x33);
-	gDPFillRectangle(gSYTasklogDLHeads[0]++, 194, 189, 268, 193);
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x57, 0x60, 0x88, 0xFF);
+	gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x57, 0x60, 0x88, 0xFF);
+	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 160, 128, 320, 134);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, 0x33);
+	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 194, 189, 268, 193);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
 	lbCommonClearExternSpriteParams();
 	lbCommonDrawSObjAttr(stage_select_gobj);
 }
@@ -748,16 +748,16 @@ void mnStageLoadStageFile(s32 stage_id, u8* heapAddr)
 // 0x80132BC8
 void mnStageRenderStagePreviewBackground(s32 stage_preview_bg_gobj)
 {
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x57, 0x60, 0x88, 0xFF);
-	gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, 0x73);
-	gDPFillRectangle(gSYTasklogDLHeads[0]++, 43, 130, 152, 211);
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x57, 0x60, 0x88, 0xFF);
+	gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, 0x73);
+	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 43, 130, 152, 211);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
 	lbCommonClearExternSpriteParams();
 	lbCommonDrawSObjAttr(stage_preview_bg_gobj);
 }
@@ -817,21 +817,21 @@ GObj* mnStageCreateStagePreviewBackground(s32 stage_id)
 // 0x80132EF0
 void mnStageRenderStagePreviewPrimary(GObj* stage_geo_gobj)
 {
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gSPSetGeometryMode(gSYTasklogDLHeads[0]++, G_ZBUFFER);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gSPSetGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 	gcDrawDObjTreeForGObj(stage_geo_gobj);
 }
 
 // 0x80132F70
 void mnStageRenderStagePreviewSecondary(GObj* stage_geo_gobj)
 {
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gSPSetGeometryMode(gSYTasklogDLHeads[0]++, G_ZBUFFER);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-	gDPPipeSync(gSYTasklogDLHeads[1]++);
-	gSPSetGeometryMode(gSYTasklogDLHeads[1]++, G_ZBUFFER);
-	gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gSPSetGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTaskmanDLHeads[1]++);
+	gSPSetGeometryMode(gSYTaskmanDLHeads[1]++, G_ZBUFFER);
+	gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 	gcDrawDObjTreeDLLinksForGObj(stage_geo_gobj);
 }
 
@@ -1174,7 +1174,7 @@ void mnStageHandleButtonPresses(s32 arg0)
 			gSceneData.scene_current = nSCKindTitle;
 
 			mnStageSaveSceneData2();
-			syTasklogSetLoadScene();
+			syTaskmanSetLoadScene();
 			return;
 		}
 
@@ -1210,7 +1210,7 @@ void mnStageHandleButtonPresses(s32 arg0)
 				gSceneData.scene_current = nSCKindVSBattle;
 			}
 
-			syTasklogSetLoadScene();
+			syTaskmanSetLoadScene();
 		}
 
 		if (scSubsysControllerGetPlayerTapButtons(B_BUTTON))
@@ -1228,7 +1228,7 @@ void mnStageHandleButtonPresses(s32 arg0)
 				gSceneData.scene_current = nSCKindVSFighters;
 			}
 
-			syTasklogSetLoadScene();
+			syTaskmanSetLoadScene();
 		}
 
 		if (gMNStageScrollBuffer == 0)
@@ -1357,7 +1357,7 @@ void mnStageInitSSS()
 	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl30_80134D20;
 	rl_setup.force_status_buffer_size = 0x1E;
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0), gMNStageFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0), gMNStageFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0)), 0x10));
 
 	mnStageAllocateStageModelHeaps();
 

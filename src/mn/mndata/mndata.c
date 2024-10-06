@@ -371,15 +371,15 @@ void mnDataMakeMenuGObj(void)
 // 0x80132164
 void mnDataLabelsProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 160, 120, 20, 230);
-    gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 225, 143, 310, 230);
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 160, 120, 20, 230);
+    gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 225, 143, 310, 230);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
 
     lbCommonClearExternSpriteParams();
     lbCommonDrawSObjAttr(gobj);
@@ -626,7 +626,7 @@ void mnDataFuncRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
 
             return;
         }
@@ -636,7 +636,7 @@ void mnDataFuncRun(GObj *gobj)
         }
         if (sMNDataIsProceedScene != FALSE)
         {
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
 
             return;
         }
@@ -694,7 +694,7 @@ void mnDataFuncRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindModeSelect;
 
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
 
             return;
         }
@@ -777,7 +777,7 @@ void mnDataFuncStart(void)
         dMNDataFileIDs,
         ARRAY_COUNT(dMNDataFileIDs),
         sMNDataFiles,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (
@@ -821,7 +821,7 @@ void mnDataFuncStart(void)
 syDisplaySetup dMNDataDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132FCC
-syTasklogSetup dMNDataTasklogSetup = 
+syTaskmanSetup dMNDataTaskmanSetup = 
 {
     // Task Logic Buffer Setup
     {
@@ -871,6 +871,6 @@ void mnDataStartScene(void)
     dMNDataDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMNDataDisplaySetup);
 
-    dMNDataTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl61_BSS_END);
-    syTasklogInit(&dMNDataTasklogSetup);
+    dMNDataTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl61_BSS_END);
+    syTaskmanInit(&dMNDataTaskmanSetup);
 }

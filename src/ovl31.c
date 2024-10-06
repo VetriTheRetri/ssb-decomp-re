@@ -704,12 +704,12 @@ void mnResultsRenderBackground(GObj* bg_gobj)
 {
 	SObj* bg_sobj = SObjGetStruct(bg_gobj);
 
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, bg_sobj->sprite.red, bg_sobj->sprite.green, bg_sobj->sprite.blue, bg_sobj->sprite.alpha);
-	gDPSetEnvColor(gSYTasklogDLHeads[0]++, bg_sobj->envcolor.r, bg_sobj->envcolor.g, bg_sobj->envcolor.b, bg_sobj->envcolor.a);
-	gDPSetCombineLERP(gSYTasklogDLHeads[0]++, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT,  0, 0, 0, 1,  PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT,  0, 0, 0, 1);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, bg_sobj->sprite.red, bg_sobj->sprite.green, bg_sobj->sprite.blue, bg_sobj->sprite.alpha);
+	gDPSetEnvColor(gSYTaskmanDLHeads[0]++, bg_sobj->envcolor.r, bg_sobj->envcolor.g, bg_sobj->envcolor.b, bg_sobj->envcolor.a);
+	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT,  0, 0, 0, 1,  PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT,  0, 0, 0, 1);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
 
 	lbCommonDrawSObjNoAttr(bg_gobj);
 }
@@ -1505,14 +1505,14 @@ void mnResultsRenderOverlay(GObj* overlay_gobj)
 			gMNResultsOverlayAlpha = 0x80;
 	}
 
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0, 0, 0, gMNResultsOverlayAlpha);
-	gDPSetCombineLERP(gSYTasklogDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-	gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 10, 310, 230);
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0, 0, 0, gMNResultsOverlayAlpha);
+	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 230);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
 	lbCommonClearExternSpriteParams();
 }
@@ -1543,14 +1543,14 @@ void mnResultsRenderBackgroundOverlay(GObj* bg_overlay_gobj)
 			gcEjectGObj(bg_overlay_gobj);
 	}
 
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0, 0, 0, gMNResultsBackgroundOverlayAlpha);
-	gDPSetCombineLERP(gSYTasklogDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-	gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 10, 310, 230);
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0, 0, 0, gMNResultsBackgroundOverlayAlpha);
+	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 230);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80134FD0
@@ -1579,14 +1579,14 @@ void mnResultsRenderBackgroundOverlay2(GObj* bg_overlay_gobj)
 			gcEjectGObj(bg_overlay_gobj);
 	}
 
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0, 0, 0, gMNResultsBackgroundOverlay2Alpha);
-	gDPSetCombineLERP(gSYTasklogDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-	gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 10, 310, 230);
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0, 0, 0, gMNResultsBackgroundOverlay2Alpha);
+	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 230);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80135204
@@ -1794,13 +1794,13 @@ void mnResultsRenderHorizontalLine(GObj* line_gobj)
 	if (gMNResultsHorizontalLineWidth > 190)
 		gMNResultsHorizontalLineWidth = 190;
 
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_FILL);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
-	gDPSetFillColor(gSYTasklogDLHeads[0]++, syDisplayGetFillColor(0xFFFFFFFF));
-	gDPFillRectangle(gSYTasklogDLHeads[0]++, 87, y, 87 + gMNResultsHorizontalLineWidth, y);
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
+	gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(0xFFFFFFFF));
+	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 87, y, 87 + gMNResultsHorizontalLineWidth, y);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
 	lbCommonClearExternSpriteParams();
 }
@@ -2022,18 +2022,18 @@ u8 mnResultsGetIsTeamBattle()
 // 0x801365C0
 void mnResultsRenderScreenTitle(s32 screen_title_gobj)
 {
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_FILL);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
-	gDPSetFillColor(gSYTasklogDLHeads[0]++, syDisplayGetFillColor(0xFFFFFFFF));
-	gDPFillRectangle(gSYTasklogDLHeads[0]++, 32, 42, 282, 44);
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
+	gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(0xFFFFFFFF));
+	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 32, 42, 282, 44);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
 	lbCommonClearExternSpriteParams();
 	lbCommonDrawSObjAttr(screen_title_gobj);
 
-	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
 }
 
 // 0x801396B8
@@ -2900,7 +2900,7 @@ void mnResultsMain(s32 arg0)
 
 		func_800266A0_272A0();
 		auStopBGM();
-		syTasklogSetLoadScene();
+		syTaskmanSetLoadScene();
 	}
 }
 
@@ -2947,7 +2947,7 @@ void mnResultsInit()
 	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl31_8013A010;
 	rl_setup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern(D_ovl31_80138F70, ARRAY_COUNT(D_ovl31_80138F70), gMNResultsFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl31_80138F70, ARRAY_COUNT(D_ovl31_80138F70)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl31_80138F70, ARRAY_COUNT(D_ovl31_80138F70), gMNResultsFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl31_80138F70, ARRAY_COUNT(D_ovl31_80138F70)), 0x10));
 
 	gcMakeGObjSPAfter(0, mnResultsMain, 0, 0x80000000U);
 	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
@@ -2959,7 +2959,7 @@ void mnResultsInit()
 		ftManagerSetupFilesAllKind(i);
 
 	for (i = 0; i < ARRAY_COUNT(gMNResultsFigatreeHeaps); i++)
-		gMNResultsFigatreeHeaps[i] = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+		gMNResultsFigatreeHeaps[i] = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
 	mnResultsSaveDataToSRAM();
 	mnResultsLoadMatchInfo();

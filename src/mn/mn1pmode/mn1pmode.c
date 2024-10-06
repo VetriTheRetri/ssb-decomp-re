@@ -331,15 +331,15 @@ void func_ovl18_8013223C(void)
 // 0x8013226C
 void mn1PModeLabelsProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0xA0, 0x78, 0x14, 0xE6);
-    gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 225, 143, 310, 230);
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0xA0, 0x78, 0x14, 0xE6);
+    gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 225, 143, 310, 230);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
     
     lbCommonClearExternSpriteParams();
     lbCommonDrawSObjAttr(gobj);
@@ -598,7 +598,7 @@ void mn1PModeFuncRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
             return;
         }
         if (scSubsysControllerCheckNoInputAll() == FALSE)
@@ -607,7 +607,7 @@ void mn1PModeFuncRun(GObj *gobj)
         }
         if (sMN1PModeIsProceedScene != FALSE)
         {
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
         if (sMN1PModeOptionChangeWait != 0)
         {
@@ -679,7 +679,7 @@ void mn1PModeFuncRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindModeSelect;
 
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
         if
         (
@@ -759,7 +759,7 @@ void mn1PModeFuncStart(void)
         dMN1PModeFileIDs,
         ARRAY_COUNT(dMN1PModeFileIDs),
         sMN1PModeFiles,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (
@@ -795,7 +795,7 @@ void mn1PModeFuncStart(void)
 syDisplaySetup dMN1PModeDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8013310C
-syTasklogSetup dMN1PModeTasklogSetup =
+syTaskmanSetup dMN1PModeTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -845,6 +845,6 @@ void mn1PModeStartScene(void)
     dMN1PModeDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMN1PModeDisplaySetup);
     
-    dMN1PModeTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl18_BSS_END);
-    syTasklogInit(&dMN1PModeTasklogSetup);
+    dMN1PModeTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl18_BSS_END);
+    syTaskmanInit(&dMN1PModeTaskmanSetup);
 }

@@ -149,25 +149,25 @@ void mvPortraitsCreatePortraitsSet2()
 // 0x80131E00
 void mvPortraitsBlockRow1()
 {
-	gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 10, 310, 65);
+	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 65);
 }
 
 // 0x80131E30
 void mvPortraitsBlockRow2()
 {
-	gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 65, 310, 120);
+	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 65, 310, 120);
 }
 
 // 0x80131E60
 void mvPortraitsBlockRow3()
 {
-	gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 120, 310, 175);
+	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 120, 310, 175);
 }
 
 // 0x80131E90
 void mvPortraitsBlockRow4()
 {
-	gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 175, 310, 230);
+	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 175, 310, 230);
 }
 
 // 0x80131EC0
@@ -177,23 +177,23 @@ void mvPortraitsPartiallyBlockRow(s32 row, s32 x_offset)
 	s32 lry = 65 + row * 55;
 
 	if (x_offset > 0)
-		gDPFillRectangle(gSYTasklogDLHeads[0]++, 0, uly, x_offset, lry);
+		gDPFillRectangle(gSYTaskmanDLHeads[0]++, 0, uly, x_offset, lry);
 
 	if (x_offset + 656 < 0)
-		gDPFillRectangle(gSYTasklogDLHeads[0]++, 0, uly, 320, lry);
+		gDPFillRectangle(gSYTaskmanDLHeads[0]++, 0, uly, 320, lry);
 
 	if (x_offset + 656 < 320)
-		gDPFillRectangle(gSYTasklogDLHeads[0]++, x_offset + 656, uly, 320, lry);
+		gDPFillRectangle(gSYTaskmanDLHeads[0]++, x_offset + 656, uly, 320, lry);
 }
 
 // 0x80131FC4
 void mvPortraitsRenderPortraitOverlay(GObj* portrait_overlay_gobj)
 {
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0, 0, 0, 255);
-	gDPSetCombineLERP(gSYTasklogDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0, 0, 0, 255);
+	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
 	switch (gIntroPotraitsCurrentRow)
 	{
@@ -223,8 +223,8 @@ void mvPortraitsRenderPortraitOverlay(GObj* portrait_overlay_gobj)
 			break;
 	}
 
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
 	lbCommonClearExternSpriteParams();
 	lbCommonDrawSObjAttr(portrait_overlay_gobj);
@@ -366,7 +366,7 @@ void mvPortraitsMain(GObj* arg0)
 		{
 			gSceneData.scene_previous = gSceneData.scene_current;
 			gSceneData.scene_current = nSCKindTitle;
-			syTasklogSetLoadScene();
+			syTaskmanSetLoadScene();
 		}
 
 		if (gIntroPotraitsFramesElapsed == 75)
@@ -379,7 +379,7 @@ void mvPortraitsMain(GObj* arg0)
 		{
 			gSceneData.scene_previous = gSceneData.scene_current;
 			gSceneData.scene_current = 0x1E;
-			syTasklogSetLoadScene();
+			syTaskmanSetLoadScene();
 		}
 	}
 }
@@ -399,7 +399,7 @@ void mvPortraitsInit()
 	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl35_80132B78;
 	rl_setup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0), gIntroPortraitsFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0), gIntroPortraitsFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0)), 0x10));
 
 	gcMakeGObjSPAfter(0, mvPortraitsMain, 0, GOBJ_LINKORDER_DEFAULT);
 	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
@@ -447,5 +447,5 @@ void mvPortraitsStartScene()
 	D_ovl35_80132938.zbuffer = syDisplayGetZBuffer(6400);
 	syDisplayInit(&D_ovl35_80132938);
 	D_ovl35_80132954.arena_size = (u32) ((uintptr_t)&lOverlay35ArenaHi - (uintptr_t)&lOverlay35ArenaLo);
-	syTasklogInit(&D_ovl35_80132954);
+	syTaskmanInit(&D_ovl35_80132954);
 }

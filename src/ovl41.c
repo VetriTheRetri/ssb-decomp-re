@@ -112,7 +112,7 @@ void mvOpeningYoshiLoadFiles()
 	rl_setup.force_status_buffer = D_ovl41_8018E408;
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(D_ovl41_8018E408);
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern(D_ovl41_8018E108, ARRAY_COUNT(D_ovl41_8018E108), gMVOpeningYoshiFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl41_8018E108, ARRAY_COUNT(D_ovl41_8018E108)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl41_8018E108, ARRAY_COUNT(D_ovl41_8018E108), gMVOpeningYoshiFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl41_8018E108, ARRAY_COUNT(D_ovl41_8018E108)), 0x10));
 }
 
 // 0x8018D160
@@ -279,14 +279,14 @@ void mvOpeningYoshiInitFighterStagePanel()
 // 0x8018D874
 void mvOpeningYoshiRenderPosedFighterBackground(GObj *gobj)
 {
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 255, 190, 90, 255);
-	gDPSetCombineLERP(gSYTasklogDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-	gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 150, 310, 230);
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 255, 190, 90, 255);
+	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 150, 310, 230);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x8018D974
@@ -387,7 +387,7 @@ void mvOpeningYoshiMainProc(GObj* arg0)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 1U;
-		syTasklogSetLoadScene();
+		syTaskmanSetLoadScene();
 	}
 
 	if (gMVOpeningYoshiFramesElapsed == 15)
@@ -402,7 +402,7 @@ void mvOpeningYoshiMainProc(GObj* arg0)
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 0x25;
-		syTasklogSetLoadScene();
+		syTaskmanSetLoadScene();
 	}
 }
 
@@ -441,7 +441,7 @@ void mvOpeningYoshiInit()
 	efManagerInitEffects();
 	ftManagerSetupFilesAllKind(nFTKindYoshi);
 
-	gMVOpeningYoshiFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	gMVOpeningYoshiFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	mvOpeningYoshiCreateNameViewport();
 	mvOpeningYoshiCreatePosedFighterBackgroundViewport();
 	mvOpeningYoshiCreatePosedFighterViewport();
@@ -491,5 +491,5 @@ void intro_focus_yoshi_entry()
 	D_ovl41_8018E13C.zbuffer = syDisplayGetZBuffer(6400);
 	syDisplayInit(&D_ovl41_8018E13C);
 	D_ovl41_8018E158.arena_size = (u32) ((uintptr_t)&lOverlay41ArenaHi - (uintptr_t)&lOverlay41ArenaLo);
-	syTasklogInit(&D_ovl41_8018E158);
+	syTaskmanInit(&D_ovl41_8018E158);
 }

@@ -120,32 +120,32 @@ void itPippiCommonProcDisplay(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
     if (itDisplayCheckItemVisible(ip) != FALSE)
     {
         if ((ip->display_mode == nDBDisplayModeMaster) || (ip->is_hold))
         {
-            gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
+            gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
             gcDrawDObjTreeForGObj(item_gobj);
         }
         else if (ip->display_mode == nDBDisplayModeMapCollision)
         {
-            gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
+            gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
             gcDrawDObjTreeForGObj(item_gobj);
             itDisplayMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
-            gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
+            gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
             gcDrawDObjTreeForGObj(item_gobj);
         }
         else itDisplayHitCollisions(item_gobj);
     }
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 }
 
 // 0x801834A0 - Render routine of Hitmonlee / Starmie metronome abilities
@@ -153,32 +153,32 @@ void itPippiCommonMoveDLProcDisplay(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
     if (itDisplayCheckItemVisible(ip) != FALSE)
     {
         if ((ip->display_mode == nDBDisplayModeMaster) || (ip->is_hold))
         {
-            gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+            gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
             gcDrawDObjTreeForGObj(item_gobj);
         }
         else if (ip->display_mode == nDBDisplayModeMapCollision)
         {
-            gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+            gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
             gcDrawDObjTreeForGObj(item_gobj);
             itDisplayMapCollisions(item_gobj);
         }
         else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
         {
-            gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+            gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
             gcDrawDObjTreeForGObj(item_gobj);
         }
         else itDisplayHitCollisions(item_gobj);
     }
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 }
 
 // 0x801835FC

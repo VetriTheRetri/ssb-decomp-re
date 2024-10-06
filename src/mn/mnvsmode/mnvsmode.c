@@ -763,15 +763,15 @@ void mnVSModeMakeUnusedGObj(void)
 // 0x80133008
 void mnVSModeRenderMenuName(GObj* menu_name_gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0xA0, 0x78, 0x14, 0xE6);
-    gDPSetCombineLERP(gSYTasklogDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 225, 143, 310, 230);
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0xA0, 0x78, 0x14, 0xE6);
+    gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 225, 143, 310, 230);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
 
     lbCommonClearExternSpriteParams();
     lbCommonDrawSObjAttr(menu_name_gobj);
@@ -1141,7 +1141,7 @@ void mnVSModeMain(GObj *gobj)
             gSceneData.scene_current = nSCKindTitle;
 
             mnVSModeSaveSettings();
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
 
             return;
         }
@@ -1151,7 +1151,7 @@ void mnVSModeMain(GObj *gobj)
         }
         if (sMNVSModeExitInterrupt != 0)
         {
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
         if (sMNVSModeChangeWait != 0)
         {
@@ -1204,7 +1204,7 @@ void mnVSModeMain(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindModeSelect;
 
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
         if
         (
@@ -1487,7 +1487,7 @@ void mnVSModeFuncStart(void)
         dMNVSModeFileIDs,
         ARRAY_COUNT(dMNVSModeFileIDs),
         sMNVSModeFiles,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (
@@ -1525,7 +1525,7 @@ void mnVSModeFuncStart(void)
 syDisplaySetup dMNVSModeDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8013489C
-scRuntimeInfo dMNVSModeTasklogSetup =
+scRuntimeInfo dMNVSModeTaskmanSetup =
 {
     0x00000000,
     func_8000A5E4,
@@ -1570,6 +1570,6 @@ void mnVSModeStartScene(void)
     dMNVSModeDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMNVSModeDisplaySetup);
 
-    dMNVSModeTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl19_BSS_END);
-    syTasklogInit(&dMNVSModeTasklogSetup);
+    dMNVSModeTaskmanSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl19_BSS_END);
+    syTaskmanInit(&dMNVSModeTaskmanSetup);
 }

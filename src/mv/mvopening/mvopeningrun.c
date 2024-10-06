@@ -313,7 +313,7 @@ void mvOpeningRunFuncRun(GObj *gobj)
 			gSceneData.scene_previous = gSceneData.scene_current;
 			gSceneData.scene_current = nSCKindTitle;
 
-			syTasklogSetLoadScene();
+			syTaskmanSetLoadScene();
 		}
 		if (sMVOpeningRunTotalTimeTics == 45)
 		{
@@ -329,7 +329,7 @@ void mvOpeningRunFuncRun(GObj *gobj)
 			gSceneData.scene_previous = gSceneData.scene_current;
 			gSceneData.scene_current = nSCKindOpeningCliff;
 
-			syTasklogSetLoadScene();
+			syTaskmanSetLoadScene();
 		}
 	}
 }
@@ -355,7 +355,7 @@ void mvOpeningRunFuncStart(void)
 		dMVOpeningRunFileIDs,
 		ARRAY_COUNT(dMVOpeningRunFileIDs),
 		sMVOpeningRunFiles,
-		syTasklogMalloc
+		syTaskmanMalloc
 		(
 			lbRelocGetAllocSize
 			(
@@ -384,7 +384,7 @@ void mvOpeningRunFuncStart(void)
 
 	for (i = 0; i < ARRAY_COUNT(sMVOpeningRunFigatreeHeaps); i++)
 	{
-		sMVOpeningRunFigatreeHeaps[i] = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+		sMVOpeningRunFigatreeHeaps[i] = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 	}
 	mvOpeningRunMakeMainCamera();
 	mvOpeningRunMakeWallpaperCamera();
@@ -403,7 +403,7 @@ void mvOpeningRunFuncStart(void)
 syDisplaySetup dMVOpeningRunDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8013266C
-syTasklogSetup dMVOpeningRunTasklogSetup =
+syTaskmanSetup dMVOpeningRunTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -453,6 +453,6 @@ void mvOpeningRunStartScene(void)
 	dMVOpeningRunDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
 	syDisplayInit(&dMVOpeningRunDisplaySetup);
 
-	dMVOpeningRunTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl44_BSS_END);
-	syTasklogInit(&dMVOpeningRunTasklogSetup);
+	dMVOpeningRunTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl44_BSS_END);
+	syTaskmanInit(&dMVOpeningRunTaskmanSetup);
 }

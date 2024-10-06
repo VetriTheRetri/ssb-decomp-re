@@ -188,7 +188,7 @@ void func_800210C0(s32 arg0, s32 arg1, s32 arg2, sb32 arg3)
 {
     if ((arg2 >= 0) && (arg2 < ARRAY_COUNT(D_8003CC30)))
     {
-        Gfx *dl = gSYTasklogDLHeads[0];
+        Gfx *dl = gSYTaskmanDLHeads[0];
         syRectangle *boxsize = D_8003CBB0;
         s32 *line = D_8003CC30[arg2];
         s32 i;
@@ -225,7 +225,7 @@ void func_800210C0(s32 arg0, s32 arg1, s32 arg2, sb32 arg3)
             );
         }
         D_8009DA00 = boxsize;
-        gSYTasklogDLHeads[0] = dl;
+        gSYTaskmanDLHeads[0] = dl;
     }
 }
 
@@ -323,18 +323,18 @@ void syErrorDrawControllerInputs(GObj *gobj)
     s32 i;
     s32 unused;
 
-    func_80016338(gSYTasklogDLHeads, CameraGetStruct(gobj), 0);
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_FILL);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gSYTasklogDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
+    func_80016338(gSYTaskmanDLHeads, CameraGetStruct(gobj), 0);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
     func_800218E0(60, 179, controller->stick_range.x, 3, TRUE);
     func_800218E0(92, 179, controller->stick_range.y, 3, TRUE);
 
-    func_80021908(offset_x, 195, sSYTasklogUpdateDeltaTime * (1.0F / 256.0F), 5, 2, TRUE);
+    func_80021908(offset_x, 195, sSYTaskmanUpdateDeltaTime * (1.0F / 256.0F), 5, 2, TRUE);
     offset_x += 35;
 
-    func_80021908(offset_x, 195, sSYTasklogFrameDeltaTime * (1.0F / 256.0F), 5, 2, TRUE);
+    func_80021908(offset_x, 195, sSYTaskmanFrameDeltaTime * (1.0F / 256.0F), 5, 2, TRUE);
     offset_x += 35;
 
     func_80021908(offset_x, 195, D_80044FB4_407C4 * (1.0F / 256.0F), 5, 2, TRUE);
@@ -344,7 +344,7 @@ void syErrorDrawControllerInputs(GObj *gobj)
     (
         offset_x,
         195,
-        (sSYTasklogUpdateDeltaTime * (1.0F / 256.0F)) + (sSYTasklogFrameDeltaTime * (1.0F / 256.0F)) + (D_80044FB4_407C4 * (1.0F / 256.0F)),
+        (sSYTaskmanUpdateDeltaTime * (1.0F / 256.0F)) + (sSYTaskmanFrameDeltaTime * (1.0F / 256.0F)) + (D_80044FB4_407C4 * (1.0F / 256.0F)),
         5,
         2,
         TRUE
@@ -356,63 +356,63 @@ void syErrorDrawControllerInputs(GObj *gobj)
 
     func_80021908(offset_x, 195, scTimeSpentAudio * (1.0F / 256.0F), 5, 2, TRUE);
 
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetFillColor(gSYTasklogDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF)));
-    syErrorFillRectangle(gSYTasklogDLHeads[0]++, 30, offset_y, ((sSYTasklogUpdateDeltaTime / 4 > 256) ? 256 : sSYTasklogUpdateDeltaTime / 4) + 30, offset_y + 1);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF)));
+    syErrorFillRectangle(gSYTaskmanDLHeads[0]++, 30, offset_y, ((sSYTaskmanUpdateDeltaTime / 4 > 256) ? 256 : sSYTaskmanUpdateDeltaTime / 4) + 30, offset_y + 1);
     offset_y += 2;
 
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetFillColor(gSYTasklogDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0xFF, 0xFF)));
-    syErrorFillRectangle(gSYTasklogDLHeads[0]++, 30, offset_y, ((sSYTasklogFrameDeltaTime / 4 > 256) ? 256 : sSYTasklogFrameDeltaTime / 4) + 30, offset_y + 1);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0xFF, 0xFF)));
+    syErrorFillRectangle(gSYTaskmanDLHeads[0]++, 30, offset_y, ((sSYTaskmanFrameDeltaTime / 4 > 256) ? 256 : sSYTaskmanFrameDeltaTime / 4) + 30, offset_y + 1);
     offset_y += 2;
 
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetFillColor(gSYTasklogDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0x00, 0xFF)));
-    syErrorFillRectangle(gSYTasklogDLHeads[0]++, 30, offset_y, ((D_80044FB4_407C4 / 4 > 256) ? 256 : D_80044FB4_407C4 / 4) + 30, offset_y + 1);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0x00, 0xFF)));
+    syErrorFillRectangle(gSYTaskmanDLHeads[0]++, 30, offset_y, ((D_80044FB4_407C4 / 4 > 256) ? 256 : D_80044FB4_407C4 / 4) + 30, offset_y + 1);
     offset_y += 2;
 
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetFillColor(gSYTasklogDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
-    syErrorFillRectangle(gSYTasklogDLHeads[0]++, 30, offset_y, ((D_8009D2D0 / 4 > 256) ? 256 : D_8009D2D0 / 4) + 30, offset_y + 1);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
+    syErrorFillRectangle(gSYTaskmanDLHeads[0]++, 30, offset_y, ((D_8009D2D0 / 4 > 256) ? 256 : D_8009D2D0 / 4) + 30, offset_y + 1);
     offset_y += 2;
 
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetFillColor(gSYTasklogDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0xFF, 0xFF)));
-    syErrorFillRectangle(gSYTasklogDLHeads[0]++, 30, offset_y, ((scTimeSpentAudio / 4 > 256) ? 256 : scTimeSpentAudio / 4) + 30, offset_y + 1);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0xFF, 0xFF)));
+    syErrorFillRectangle(gSYTaskmanDLHeads[0]++, 30, offset_y, ((scTimeSpentAudio / 4 > 256) ? 256 : scTimeSpentAudio / 4) + 30, offset_y + 1);
 
     // controller buttons
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetFillColor(gSYTasklogDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
 
     for (i = 0; i < 16; i++)
     {
         if (gSysController.button_hold & (1 << i))
         {
-            syErrorFillRectangle(gSYTasklogDLHeads[0]++, (i * 4) + 30, 206, (i * 4) + 33, 208);
+            syErrorFillRectangle(gSYTaskmanDLHeads[0]++, (i * 4) + 30, 206, (i * 4) + 33, 208);
         }
     }
     // controller stick
     syErrorFillRectangle
     (
-        gSYTasklogDLHeads[0]++,
+        gSYTaskmanDLHeads[0]++,
         controller->stick_range.x / 4 + 39,
         -controller->stick_range.y / 4 + 184,
         controller->stick_range.x / 4 + 41,
         -controller->stick_range.y / 4 + 186
     );
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetFillColor(gSYTasklogDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x10, 0x10, 0x10, 0xFF)));
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x10, 0x10, 0x10, 0xFF)));
 
     for (i = 0; i < 80; i += 16)
     {
-        syErrorFillRectangle(gSYTasklogDLHeads[0]++, (i * 4) + 30, 210, (i * 4) + 30, 220);
+        syErrorFillRectangle(gSYTaskmanDLHeads[0]++, (i * 4) + 30, 210, (i * 4) + 30, 220);
     }
-    syErrorFillRectangle(gSYTasklogDLHeads[0]++, 40, 165, 40, 205);
-    syErrorFillRectangle(gSYTasklogDLHeads[0]++, 20, 185, 60, 185);
+    syErrorFillRectangle(gSYTaskmanDLHeads[0]++, 40, 165, 40, 205);
+    syErrorFillRectangle(gSYTaskmanDLHeads[0]++, 20, 185, 60, 185);
 
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 GObj* func_80022368(s32 link, u32 arg1, s32 arg2)
@@ -925,13 +925,13 @@ void syErrorFileLoaderThread8(void *arg)
 
         if (dSYErrorIsScreenActive == FALSE)
         {
-            if (sp50 == sSYTasklogUpdateCount)
+            if (sp50 == sSYTaskmanUpdateCount)
             {
                 count++;
             }
             else count = 0;
 
-            sp50 = sSYTasklogUpdateCount;
+            sp50 = sSYTaskmanUpdateCount;
 
             if (count >= 300)
             {

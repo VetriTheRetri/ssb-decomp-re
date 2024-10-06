@@ -5,7 +5,7 @@
 #include <sc/scene.h>
 #include <sys/system_00.h>
 
-extern void syTasklogSetLoadScene();
+extern void syTaskmanSetLoadScene();
 extern u32 func_8000092C();
 extern void func_800A26B8();
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
@@ -148,7 +148,7 @@ u32 dMVOpeningJungleFileIDs[/* */] = { &D_NF_00000025, &D_NF_00000040 };
 syDisplaySetup dMVOpeningJungleDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8018D958
-syTasklogSetup dMVOpeningJungleTasklogSetup =
+syTaskmanSetup dMVOpeningJungleTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -218,7 +218,7 @@ void mvOpeningJungleSetupFiles(void)
         dMVOpeningJungleFileIDs,
         ARRAY_COUNT(dMVOpeningJungleFileIDs),
         sMVOpeningJungleFiles,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (
@@ -382,14 +382,14 @@ void mvOpeningJungleFuncRun(GObj *gobj)
         gSceneData.scene_previous = gSceneData.scene_current;
         gSceneData.scene_current = nSCKindTitle;
 
-        syTasklogSetLoadScene();
+        syTaskmanSetLoadScene();
     }
     if (sMVOpeningJungleTotalTimeTics == 320)
     {
         gSceneData.scene_previous = gSceneData.scene_current;
         gSceneData.scene_current = nSCKindOpeningYoster;
 
-        syTasklogSetLoadScene();
+        syTaskmanSetLoadScene();
     }
 }
 
@@ -449,6 +449,6 @@ void mvOpeningJungleStartScene(void)
     dMVOpeningJungleDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMVOpeningJungleDisplaySetup);
 
-    dMVOpeningJungleTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl51_BSS_END);
-    syTasklogInit(&dMVOpeningJungleTasklogSetup);
+    dMVOpeningJungleTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl51_BSS_END);
+    syTaskmanInit(&dMVOpeningJungleTaskmanSetup);
 }

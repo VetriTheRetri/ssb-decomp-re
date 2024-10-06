@@ -11,7 +11,7 @@ extern intptr_t lOverlay26ArenaLo; // 0x8013C4C0
 extern intptr_t lOverlay26ArenaHi; // 0x803903E0
 extern f32 sqrtf(f32);
 extern void gcStopCurrentGObjThread(s32);
-extern void syTasklogSetLoadScene();
+extern void syTaskmanSetLoadScene();
 
 extern f32 menu_zoom[12]; // dSCSubsysFighterScales
 extern u8 D_ovl2_8012EF40[4];
@@ -393,12 +393,12 @@ s32 mnBattleGetPortraitId(s32 ft_kind)
 // 0x801321B8
 void mnBattleRenderPortraitWithNoise(GObj* portrait_gobj)
 {
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x30, 0x30, 0x30, 0xFF);
-	gDPSetCombineLERP(gSYTasklogDLHeads[0]++, NOISE, TEXEL0, PRIMITIVE, TEXEL0, 0, 0, 0, TEXEL0, NOISE, TEXEL0,
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x30, 0x30, 0x30, 0xFF);
+	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, NOISE, TEXEL0, PRIMITIVE, TEXEL0, 0, 0, 0, TEXEL0, NOISE, TEXEL0,
 					  PRIMITIVE, TEXEL0, 0, 0, 0, TEXEL0);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 	lbCommonDrawSObjNoAttr(portrait_gobj);
 }
 
@@ -2889,7 +2889,7 @@ void mnGoBackToVSMenu()
 	mnBattleSaveMatchInfo();
 	mnBattleDestroyCursorAndTokenProcesses();
 	auStopBGM();
-	syTasklogSetLoadScene();
+	syTaskmanSetLoadScene();
 }
 
 // 0x80138140
@@ -3261,14 +3261,14 @@ void mnBattleCreateCursor(s32 port_id)
 // 0x80138FA0
 void mnBattleRenderToken(GObj* token_gobj)
 {
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-	gDPSetEnvColor(gSYTasklogDLHeads[0]++, gMnBattleTokenShinePulseColor & 0xFF, gMnBattleTokenShinePulseColor & 0xFF,
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+	gDPSetEnvColor(gSYTaskmanDLHeads[0]++, gMnBattleTokenShinePulseColor & 0xFF, gMnBattleTokenShinePulseColor & 0xFF,
 				   gMnBattleTokenShinePulseColor & 0xFF, gMnBattleTokenShinePulseColor & 0xFF);
-	gDPSetCombineLERP(gSYTasklogDLHeads[0]++, TEXEL0, PRIMITIVE, ENVIRONMENT, PRIMITIVE, 0, 0, 0, TEXEL0, TEXEL0,
+	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, TEXEL0, PRIMITIVE, ENVIRONMENT, PRIMITIVE, 0, 0, 0, TEXEL0, TEXEL0,
 					  PRIMITIVE, ENVIRONMENT, PRIMITIVE, 0, 0, 0, TEXEL0);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
 	lbCommonDrawSObjNoAttr(token_gobj);
 }
@@ -3944,7 +3944,7 @@ void mnBattleMain(s32 arg0)
 		gSceneData.scene_current = 1;
 
 		mnBattleSaveMatchInfo();
-		syTasklogSetLoadScene();
+		syTaskmanSetLoadScene();
 
 		return;
 	}
@@ -3975,7 +3975,7 @@ void mnBattleMain(s32 arg0)
 			}
 
 			mnBattleSaveMatchInfo();
-			syTasklogSetLoadScene();
+			syTaskmanSetLoadScene();
 		}
 	}
 	else
@@ -4228,7 +4228,7 @@ void mnBattleInitCSS()
 	rl_setup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl26_8013B3A0, 7U, gMnBattleFiles,
-						 syTasklogMalloc(lbRelocGetAllocSize(D_ovl26_8013B3A0, 7U), 0x10U));
+						 syTaskmanMalloc(lbRelocGetAllocSize(D_ovl26_8013B3A0, 7U), 0x10U));
 
 	gcMakeGObjSPAfter(0x400U, mnBattleMain, 0xFU, 0x80000000U);
 
@@ -4244,7 +4244,7 @@ void mnBattleInitCSS()
 		ftManagerSetupFilesAllKind(i);
 
 	for (i = 0; i < 4; i++)
-		gMnBattlePanels[i].figatree_heap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10U);
+		gMnBattlePanels[i].figatree_heap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10U);
 
 	mnBattleCreatePortraitViewport();
 	mnBattleCreateCursorViewport();

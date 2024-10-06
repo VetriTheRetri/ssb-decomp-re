@@ -150,12 +150,12 @@ GObj* lbTransitionMakeCamera(u32 id, s32 link, u32 link_order, u64 cam_mask)
 // 0x800D4248
 void lbTransitionProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gSPSegment(gSYTasklogDLHeads[0]++, 0x1, sLBTransitionPhotoHeap);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gSPSegment(gSYTaskmanDLHeads[0]++, 0x1, sLBTransitionPhotoHeap);
     
     gcDrawDObjTreeForGObj(gobj);
 
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 }
 
 // 0x800D42C8
@@ -219,8 +219,8 @@ void lbTransitionSetupTransition(void)
             largest_size = current_size;
         }
     }
-    sLBTransitionFileHeap = syTasklogMalloc(largest_size, 0x10);
-    heap_pixels = sLBTransitionPhotoHeap = syTasklogMalloc(300 * 220 * sizeof(u16), 0x10);
+    sLBTransitionFileHeap = syTaskmanMalloc(largest_size, 0x10);
+    heap_pixels = sLBTransitionPhotoHeap = syTaskmanMalloc(300 * 220 * sizeof(u16), 0x10);
 
     framebuf_pixels = (u32*)
 	(

@@ -88,7 +88,7 @@ s32 dSCExplainRandomSeed2 = 0x00000001;
 syDisplaySetup dSCExplainDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8018E748
-syTasklogSetup dSCExplainTasklogSetup =
+syTaskmanSetup dSCExplainTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -144,7 +144,7 @@ void scExplainLoadExplainFiles(void)
     sSCExplainGraphicsFileHead = lbRelocGetFileExternHeap
     (
         (uintptr_t)&D_NF_000000C6,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetFileSize
             (
@@ -156,7 +156,7 @@ void scExplainLoadExplainFiles(void)
     sSCExplainMainFileHead = lbRelocGetFileExternHeap
     (
         (uintptr_t)&D_NF_000000FC,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetFileSize
             (
@@ -226,13 +226,13 @@ void func_ovl63_8018D248(void)
 // 0x8018D2D0
 void scExplainWindowProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetScissor(gSYTasklogDLHeads[0]++, G_SC_NON_INTERLACE, 10, 160, 310, 230);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_FILL);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gSYTasklogDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF)));
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 160, 310, 230);
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetScissor(gSYTaskmanDLHeads[0]++, G_SC_NON_INTERLACE, 10, 160, 310, 230);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF)));
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 160, 310, 230);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 }
 
 // 0x8018D3D8
@@ -326,15 +326,15 @@ GObj* scExplainMakeControlStickCamera(void)
 // 0x8018D5FC
 void scExplainControlStickProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[1]++);
-    gSPClearGeometryMode(gSYTasklogDLHeads[1]++, G_ZBUFFER);
-    gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPPipeSync(gSYTaskmanDLHeads[1]++);
+    gSPClearGeometryMode(gSYTaskmanDLHeads[1]++, G_ZBUFFER);
+    gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
     gcDrawDObjTreeDLLinksForGObj(gobj);
 
-    gDPPipeSync(gSYTasklogDLHeads[1]++);
-    gSPSetGeometryMode(gSYTasklogDLHeads[1]++, G_ZBUFFER);
-    gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPPipeSync(gSYTaskmanDLHeads[1]++);
+    gSPSetGeometryMode(gSYTaskmanDLHeads[1]++, G_ZBUFFER);
+    gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 }
 
 // 0x8018D6DC
@@ -391,15 +391,15 @@ GObj* scExplainMakeControlStickInterface(void)
 // 0x8018D808
 void scExplainTapSparkProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[1]++);
-    gSPClearGeometryMode(gSYTasklogDLHeads[1]++, G_ZBUFFER);
-    gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPPipeSync(gSYTaskmanDLHeads[1]++);
+    gSPClearGeometryMode(gSYTaskmanDLHeads[1]++, G_ZBUFFER);
+    gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
     gcDrawDObjDLHead1(gobj);
 
-    gDPPipeSync(gSYTasklogDLHeads[1]++);
-    gSPSetGeometryMode(gSYTasklogDLHeads[1]++, G_ZBUFFER);
-    gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPPipeSync(gSYTaskmanDLHeads[1]++);
+    gSPSetGeometryMode(gSYTaskmanDLHeads[1]++, G_ZBUFFER);
+    gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 }
 
 // 0x8018D8E8
@@ -612,7 +612,7 @@ void scExplainDetectExit(void)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
 
             break;
         }
@@ -652,7 +652,7 @@ void scExplainUpdatePhase(void)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindCharacters;
 
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
 
             return;
         }
@@ -850,10 +850,10 @@ void scExplainStartScene(void)
 
     set_lcg_seed_ptr(&dSCExplainRandomSeed1);
 
-    dSCExplainTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl63_BSS_END);
-    dSCExplainTasklogSetup.func_start = scExplainFuncStart;
+    dSCExplainTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl63_BSS_END);
+    dSCExplainTaskmanSetup.func_start = scExplainFuncStart;
 
-    func_800A2698(&dSCExplainTasklogSetup);
+    func_800A2698(&dSCExplainTaskmanSetup);
     gmRumbleInitPlayers();
     set_lcg_seed_ptr(NULL);
 }

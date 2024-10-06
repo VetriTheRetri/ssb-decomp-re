@@ -511,7 +511,7 @@ void dbCubeMain(GObj* arg0)
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 1U;
 
-		syTasklogSetLoadScene();
+		syTaskmanSetLoadScene();
 	}
 }
 
@@ -591,7 +591,7 @@ void dbCubeStartScene()
 	{
 		dMNDebugCubeExitInterrupt = 0;
 		dMNDebugCubeTransitionInterrupt = 0;
-		syTasklogInit(&D_ovl13_80132F88);
+		syTaskmanInit(&D_ovl13_80132F88);
 	}
 	while (dMNDebugCubeTransitionInterrupt != 0);
 }

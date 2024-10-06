@@ -107,7 +107,7 @@ void dbFallsMain(GObj* arg0)
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = 4;
 
-		syTasklogSetLoadScene();
+		syTaskmanSetLoadScene();
 	}
 }
 
@@ -145,5 +145,5 @@ void dbFallsStartScene()
 	D_ovl15_800D68A4.zbuffer = syDisplayGetZBuffer(6400);
 	syDisplayInit(&D_ovl15_800D68A4);
 	D_ovl15_800D68C0.arena_size = (u32) ((uintptr_t)&lOverlay15ArenaHi - (uintptr_t)&lOverlay15ArenaLo);
-	syTasklogInit(&D_ovl15_800D68C0);
+	syTaskmanInit(&D_ovl15_800D68C0);
 }

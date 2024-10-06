@@ -92,7 +92,7 @@ segments:
       - [0x001520, c, sys/thread3]
       - [0x003660, c, sys/dma]
       - [0x004800, c, sys/thread6]
-      - [0x0054D0, c, sys/tasklog]
+      - [0x0054D0, c, sys/taskman]
       - [0x0078E0, c, sys/malloc]
       - [0x007970, c, sys/system_00]
       - [0x007C80, c, sys/rdp_reset]
@@ -255,7 +255,7 @@ segments:
       - [0x03AF20, textbin, rsp/gspF3DEX2_fifo] # L3DEX2_2.04H.code
       - [0x03C0B0, bin, unk_3C0B0] # other rsp files?
       - [0x03C2B0, .data, sys/main]
-      - [0x03C2E0, .data, sys/tasklog]
+      - [0x03C2E0, .data, sys/taskman]
       - [0x03C350, .data, sys/rdp_reset]
       - [0x03C470, .data, sys/objmanager]
       - [0x03C530, .data, sys/objdraw]
@@ -287,7 +287,7 @@ segments:
       - [0x03E250, .rodata, sys/main]
       - [0x03E270, .rodata, sys/thread3]
       - [0x03E2D0, .rodata, sys/thread6]
-      - [0x03E2F0, .rodata, sys/tasklog]
+      - [0x03E2F0, .rodata, sys/taskman]
       - [0x03E510, .rodata, sys/malloc]
       - [0x03E530, .rodata, sys/objmanager]
       - [0x03E980, .rodata, sys/system_03]
@@ -318,7 +318,7 @@ segments:
       - { start: auto, type: .bss, name: sys/thread3,              vram: 0x80044EC0 }
       - { start: auto, type: .bss, name: sys/dma,                  vram: 0x80045040 }
       - { start: auto, type: .bss, name: sys/thread6,              vram: 0x800450F0 }
-      - { start: auto, type: .bss, name: sys/tasklog,                 vram: 0x80045480 }
+      - { start: auto, type: .bss, name: sys/taskman,                 vram: 0x80045480 }
       - { start: auto, type: .bss, name: sys/system_00,            vram: 0x80046670 }
       - { start: auto, type: .bss, name: sys/rdp_reset,            vram: 0x800466A0 }
       - { start: auto, type: .bss, name: sys/objmanager,           vram: 0x800466B0 }

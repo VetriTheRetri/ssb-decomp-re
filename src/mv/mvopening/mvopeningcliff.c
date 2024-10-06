@@ -3,7 +3,7 @@
 #include <sc/scene.h>
 #include <sys/system_00.h>
 
-extern void syTasklogSetLoadScene();
+extern void syTaskmanSetLoadScene();
 extern u32 func_8000092C();
 extern void func_80007080(void*, f32, f32, f32, f32);
 
@@ -71,7 +71,7 @@ Lights1 dMVOpeningCliffLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0
 syDisplaySetup dMVOpeningCliffDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132724
-syTasklogSetup dMVOpeningCliffTasklogSetup =
+syTaskmanSetup dMVOpeningCliffTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -131,15 +131,15 @@ void mvOpeningCliffFuncLights(Gfx **dls)
 // 0x80131B58
 void mvOpeningCliffHillsProcDisplay(GObj *hills_gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
 
     gcDrawDObjTreeForGObj(hills_gobj);
 
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80131C34
@@ -456,14 +456,14 @@ void mvOpeningCliffFuncRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
         if (sMVOpeningCliffTotalTimeTics == 160)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindOpeningYamabuki;
 
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
     }
 }
@@ -489,7 +489,7 @@ void mvOpeningCliffFuncStart(void)
         dMVOpeningCliffFileIDs,
         ARRAY_COUNT(dMVOpeningCliffFileIDs),
         sMVOpeningCliffFiles,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (
@@ -509,7 +509,7 @@ void mvOpeningCliffFuncStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(nFTKindLink);
 
-    sMVOpeningCliffFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+    sMVOpeningCliffFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
     mvOpeningCliffMakeMainCamera();
     mvOpeningCliffMakeWallpaperCamera();
@@ -532,6 +532,6 @@ void mvOpeningCliffStartScene(void)
     dMVOpeningCliffDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMVOpeningCliffDisplaySetup);
 
-    dMVOpeningCliffTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl46_BSS_END);
-    syTasklogInit(&dMVOpeningCliffTasklogSetup);
+    dMVOpeningCliffTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl46_BSS_END);
+    syTaskmanInit(&dMVOpeningCliffTaskmanSetup);
 }

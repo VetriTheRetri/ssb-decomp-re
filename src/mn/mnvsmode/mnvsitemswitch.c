@@ -184,15 +184,15 @@ void mnVSItemSwitchMakeToggle(GObj *gobj, f32 pos_x, f32 pos_y)
 // 0x80131CA4
 void mnVSItemSwitchLabelsProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x80, 0x80, 0x80, 0xFF);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 79, 34, 310, 39);
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x80, 0x80, 0x80, 0xFF);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 79, 34, 310, 39);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
     
     lbCommonClearExternSpriteParams();
     lbCommonDrawSObjAttr(gobj);
@@ -648,7 +648,7 @@ void mnVSItemSwitchFuncRun(GObj *gobj)
             gSceneData.scene_current = nSCKindVSOptions;
             
             mnVSItemSwitchSetItemToggles();
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
         if
         (
@@ -815,7 +815,7 @@ void mnVSItemSwitchFuncStart(void)
         dMNVSItemSwitchFileIDs,
         ARRAY_COUNT(dMNVSItemSwitchFileIDs),
         sMNVSItemSwitchFiles,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (
@@ -845,7 +845,7 @@ void mnVSItemSwitchFuncStart(void)
 syDisplaySetup dMNVSItemSwitchDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8013333C
-syTasklogSetup dMNVSItemSwitchTasklogSetup =
+syTaskmanSetup dMNVSItemSwitchTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -895,6 +895,6 @@ void mnVSItemSwitchStartScene(void)
     dMNVSItemSwitchDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMNVSItemSwitchDisplaySetup);
     
-    dMNVSItemSwitchTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl21_BSS_END);
-    syTasklogInit(&dMNVSItemSwitchTasklogSetup);
+    dMNVSItemSwitchTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl21_BSS_END);
+    syTaskmanInit(&dMNVSItemSwitchTaskmanSetup);
 }

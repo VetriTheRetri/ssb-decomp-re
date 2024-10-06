@@ -293,12 +293,12 @@ void mvOpeningSectorCockpitProcDisplay(GObj *cockpit_gobj)
             sMVOpeningSectorCockpitAlpha = 0xFF;
         }
     }
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sMVOpeningSectorCockpitAlpha);
-    gDPSetEnvColor(gSYTasklogDLHeads[0]++, cockpit_sobj->envcolor.r, cockpit_sobj->envcolor.g, cockpit_sobj->envcolor.b, cockpit_sobj->envcolor.a);
-    gDPSetCombineLERP(gSYTasklogDLHeads[0]++, 0, 0, 0, TEXEL0,  0, 0, 0, PRIMITIVE,  0, 0, 0, TEXEL0,  0, 0, 0, PRIMITIVE);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sMVOpeningSectorCockpitAlpha);
+    gDPSetEnvColor(gSYTaskmanDLHeads[0]++, cockpit_sobj->envcolor.r, cockpit_sobj->envcolor.g, cockpit_sobj->envcolor.b, cockpit_sobj->envcolor.a);
+    gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, TEXEL0,  0, 0, 0, PRIMITIVE,  0, 0, 0, TEXEL0,  0, 0, 0, PRIMITIVE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
     lbCommonDrawSObjNoAttr(cockpit_gobj);
 }
@@ -506,7 +506,7 @@ void mvOpeningSectorFuncRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
         if (sMVOpeningSectorTotalTimeTics == 120)
         {
@@ -517,7 +517,7 @@ void mvOpeningSectorFuncRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindOpeningStandoff;
 
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
     }
 }
@@ -543,7 +543,7 @@ void mvOpeningSectorFuncStart(void)
         dMVOpeningSectorFileIDs,
         ARRAY_COUNT(dMVOpeningSectorFileIDs),
         sMVOpeningSectorFiles,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (
@@ -578,7 +578,7 @@ void mvOpeningSectorFuncStart(void)
 syDisplaySetup dMVOpeningSectorDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132958
-syTasklogSetup mvOpeningSectorTasklogSetup =
+syTaskmanSetup mvOpeningSectorTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -628,6 +628,6 @@ void mvOpeningSectorStartScene(void)
     dMVOpeningSectorDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMVOpeningSectorDisplaySetup);
 
-    mvOpeningSectorTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl50_BSS_END);
-    syTasklogInit(&mvOpeningSectorTasklogSetup);
+    mvOpeningSectorTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl50_BSS_END);
+    syTaskmanInit(&mvOpeningSectorTaskmanSetup);
 }

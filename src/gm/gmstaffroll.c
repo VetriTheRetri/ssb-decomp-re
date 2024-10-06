@@ -740,13 +740,13 @@ void gmStaffrollHighlightProcDisplay(GObj *gobj)
 {
 	s32 unused;
 
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_FILL);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
-	gDPSetFillColor(gSYTasklogDLHeads[0]++, GCOMBINE32_RGBA5551(GPACK_RGBA5551(0x80, 0x00, 0x00, 0x01)));
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
+	gDPSetFillColor(gSYTaskmanDLHeads[0]++, GCOMBINE32_RGBA5551(GPACK_RGBA5551(0x80, 0x00, 0x00, 0x01)));
 	gDPFillRectangle
 	(
-		gSYTasklogDLHeads[0]++,
+		gSYTaskmanDLHeads[0]++,
 		gmStaffrollGetLockOnPositionX((sGMStaffrollHighlightSize * -30) + sGMStaffrollHighlightPositionX),
 		gmStaffrollGetLockOnPositionY((sGMStaffrollHighlightSize * -25) + sGMStaffrollHighlightPositionY),
 		gmStaffrollGetLockOnPositionX(((sGMStaffrollHighlightSize * -30) + 2) + sGMStaffrollHighlightPositionX),
@@ -754,7 +754,7 @@ void gmStaffrollHighlightProcDisplay(GObj *gobj)
 	);
 	gDPFillRectangle
 	(
-		gSYTasklogDLHeads[0]++,
+		gSYTaskmanDLHeads[0]++,
 		gmStaffrollGetLockOnPositionX((sGMStaffrollHighlightSize * -30) + sGMStaffrollHighlightPositionX),
 		gmStaffrollGetLockOnPositionY((sGMStaffrollHighlightSize * -25) + sGMStaffrollHighlightPositionY),
 		gmStaffrollGetLockOnPositionX(((sGMStaffrollHighlightSize * 65) + 2) + sGMStaffrollHighlightPositionX),
@@ -762,7 +762,7 @@ void gmStaffrollHighlightProcDisplay(GObj *gobj)
 	);
 	gDPFillRectangle
 	(
-		gSYTasklogDLHeads[0]++,
+		gSYTaskmanDLHeads[0]++,
 		gmStaffrollGetLockOnPositionX((sGMStaffrollHighlightSize * -30) + sGMStaffrollHighlightPositionX),
 		gmStaffrollGetLockOnPositionY((sGMStaffrollHighlightSize * 45) + sGMStaffrollHighlightPositionY),
 		gmStaffrollGetLockOnPositionX(((sGMStaffrollHighlightSize * 65) + 2) + sGMStaffrollHighlightPositionX),
@@ -770,7 +770,7 @@ void gmStaffrollHighlightProcDisplay(GObj *gobj)
 	);
 	gDPFillRectangle
 	(
-		gSYTasklogDLHeads[0]++,
+		gSYTaskmanDLHeads[0]++,
 		gmStaffrollGetLockOnPositionX((sGMStaffrollHighlightSize * 65) + sGMStaffrollHighlightPositionX),
 		gmStaffrollGetLockOnPositionY((sGMStaffrollHighlightSize * -25) + sGMStaffrollHighlightPositionY),
 		gmStaffrollGetLockOnPositionX(((sGMStaffrollHighlightSize * 65) + 2) + sGMStaffrollHighlightPositionX),
@@ -1359,7 +1359,7 @@ gmStaffrollName* gmStaffrollNameUpdateAlloc(GObj *gobj)
 
 	if (sGMStaffrollNameAllocFree == NULL)
 	{
-		cn = syTasklogMalloc(sizeof(gmStaffrollName), 0x4);
+		cn = syTaskmanMalloc(sizeof(gmStaffrollName), 0x4);
 	}
 	else
 	{
@@ -1434,11 +1434,11 @@ void gmStaffrollJobProcDisplay(GObj *gobj)
 {
 	if (gobj == gOMObjCommonLinks[nOMObjCommonLinkIDCreditsJob])
 	{
-		gSPTexture(gSYTasklogDLHeads[0]++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
-		gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
-		gSPClearGeometryMode(gSYTasklogDLHeads[0]++, G_ZBUFFER);
-		gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x7F, 0x7F, 0x89, 0xFF);
-		gDPSetCombineLERP(gSYTasklogDLHeads[0]++, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0);
+		gSPTexture(gSYTaskmanDLHeads[0]++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+		gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+		gSPClearGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
+		gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x7F, 0x7F, 0x89, 0xFF);
+		gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0);
 	}
 	gcDrawDObjTreeForGObj(gobj);
 }
@@ -1448,11 +1448,11 @@ void gmStaffrollNameProcDisplay(GObj *gobj)
 {
 	if (gobj == gOMObjCommonLinks[nOMObjCommonLinkIDCreditsName])
 	{
-		gSPTexture(gSYTasklogDLHeads[0]++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
-		gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
-		gSPClearGeometryMode(gSYTasklogDLHeads[0]++, G_ZBUFFER);
-		gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x88, 0x93, 0xFF, 0xFF);
-		gDPSetCombineLERP(gSYTasklogDLHeads[0]++, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0);
+		gSPTexture(gSYTaskmanDLHeads[0]++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+		gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+		gSPClearGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
+		gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x88, 0x93, 0xFF, 0xFF);
+		gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0, 0, 0, 0, PRIMITIVE, 0, 0, 0, TEXEL0);
 	}
 	gcDrawDObjTreeForGObj(gobj);
 }
@@ -1980,7 +1980,7 @@ void gmStaffrollSetupFiles(void)
 	rldm_setup.force_status_buffer_size = 0;
 
 	lbRelocInitSetup(&rldm_setup);
-	lbRelocLoadFilesExtern(dGMStaffrollFileIDs, ARRAY_COUNT(dGMStaffrollFileIDs), sGMStaffrollFiles, syTasklogMalloc(lbRelocGetAllocSize(dGMStaffrollFileIDs, ARRAY_COUNT(dGMStaffrollFileIDs)), 0x10));
+	lbRelocLoadFilesExtern(dGMStaffrollFileIDs, ARRAY_COUNT(dGMStaffrollFileIDs), sGMStaffrollFiles, syTaskmanMalloc(lbRelocGetAllocSize(dGMStaffrollFileIDs, ARRAY_COUNT(dGMStaffrollFileIDs)), 0x10));
 }
 
 // 0x80134A70
@@ -1992,7 +1992,7 @@ void gmStaffrollInitNameAndJobDisplayLists(void)
 
 	for (i = 0; i < (ARRAY_COUNT(sGMStaffrollNameAndJobDisplayLists) + ARRAY_COUNT(dGMStaffrollNameAndJobSpriteInfo)) / 2; i++)
 	{
-		vtx_base = vtx_current = syTasklogMalloc(sizeof(Vtx) * 4, 0x8);
+		vtx_base = vtx_current = syTaskmanMalloc(sizeof(Vtx) * 4, 0x8);
 
 		for (j = 0; j < 4; j++, vtx_current++)
 		{
@@ -2010,7 +2010,7 @@ void gmStaffrollInitNameAndJobDisplayLists(void)
 			vtx_current->v.cn[2] = 0x7F;
 			vtx_current->v.cn[3] = 0x00;
 		}
-		sGMStaffrollNameAndJobDisplayLists[i] = dl = syTasklogMalloc(sizeof(Gfx) * 12, 0x8);
+		sGMStaffrollNameAndJobDisplayLists[i] = dl = syTaskmanMalloc(sizeof(Gfx) * 12, 0x8);
 
 		gDPPipeSync(dl++);
 		gDPLoadTextureBlock_4b
@@ -2165,7 +2165,7 @@ void gmStaffrollFuncDraw(void)
 	}
 	if (sGMStaffrollRollEndWait == 0)
 	{
-		syTasklogSetLoadScene();
+		syTaskmanSetLoadScene();
 	}
 	if (sGMStaffrollStatus == -1)
 	{
@@ -2191,7 +2191,7 @@ syDisplaySetup dGMStaffrollDisplaySetup =
 };
 
 // 0x8013A724
-syTasklogSetup dGMStaffrollTasklogSetup =
+syTaskmanSetup dGMStaffrollTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -2256,8 +2256,8 @@ void gmStaffrollStartScene(void)
 	dGMStaffrollDisplaySetup.zbuffer = syDisplayGetZBuffer(12800);
 	syDisplayInit(&dGMStaffrollDisplaySetup);
 
-	dGMStaffrollTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)SYDISPLAY_DEFINE_FRAMEBUF_ADDR(640, 480, 0, 0, u16, 0) - (uintptr_t)&ovl59_BSS_END);
-	syTasklogInit(&dGMStaffrollTasklogSetup);
+	dGMStaffrollTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)SYDISPLAY_DEFINE_FRAMEBUF_ADDR(640, 480, 0, 0, u16, 0) - (uintptr_t)&ovl59_BSS_END);
+	syTaskmanInit(&dGMStaffrollTaskmanSetup);
 
 	arena16 = gSCSubsysFramebuffer0;
 

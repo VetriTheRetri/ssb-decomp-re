@@ -51,63 +51,63 @@ grGeometryDesc dGRGeometryDescs[/* */] =
 // 0x80104D90
 void grGeometryLayer0ProcDisplayPri(GObj *ground_gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
-    gSPClearGeometryMode(gSYTasklogDLHeads[0]++, G_ZBUFFER);
+    gSPClearGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
 
     gcDrawDObjTreeForGObj(ground_gobj);
 
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
-    gSPSetGeometryMode(gSYTasklogDLHeads[0]++, G_ZBUFFER);
+    gSPSetGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80104E70
 void grGeometryLayer0ProcDisplaySec(GObj *ground_gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
-    gSPClearGeometryMode(gSYTasklogDLHeads[0]++, G_ZBUFFER);
+    gSPClearGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
 
-    gDPPipeSync(gSYTasklogDLHeads[1]++);
+    gDPPipeSync(gSYTaskmanDLHeads[1]++);
 
-    gSPClearGeometryMode(gSYTasklogDLHeads[1]++, G_ZBUFFER);
+    gSPClearGeometryMode(gSYTaskmanDLHeads[1]++, G_ZBUFFER);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
     gcDrawDObjTreeDLLinksForGObj(ground_gobj);
 
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
-    gSPSetGeometryMode(gSYTasklogDLHeads[0]++, G_ZBUFFER);
+    gSPSetGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
-    gDPPipeSync(gSYTasklogDLHeads[1]++);
+    gDPPipeSync(gSYTaskmanDLHeads[1]++);
 
-    gSPSetGeometryMode(gSYTasklogDLHeads[1]++, G_ZBUFFER);
+    gSPSetGeometryMode(gSYTaskmanDLHeads[1]++, G_ZBUFFER);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 }
 
 // 0x80104FD8
 void grGeometryLayer1ProcDisplayPri(GObj *ground_gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
-    gSPSetGeometryMode(gSYTasklogDLHeads[0]++, G_ZBUFFER);
+    gSPSetGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
-    gDPPipeSync(gSYTasklogDLHeads[1]++);
+    gDPPipeSync(gSYTaskmanDLHeads[1]++);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
     gcDrawDObjTreeForGObj(ground_gobj);
 }
@@ -115,17 +115,17 @@ void grGeometryLayer1ProcDisplayPri(GObj *ground_gobj)
 // 0x80105088
 void grGeometryLayer1ProcDisplaySec(GObj *ground_gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
-    gSPSetGeometryMode(gSYTasklogDLHeads[0]++, G_ZBUFFER);
+    gSPSetGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
-    gDPPipeSync(gSYTasklogDLHeads[1]++);
+    gDPPipeSync(gSYTaskmanDLHeads[1]++);
 
-    gSPSetGeometryMode(gSYTasklogDLHeads[1]++, G_ZBUFFER);
+    gSPSetGeometryMode(gSYTaskmanDLHeads[1]++, G_ZBUFFER);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
     gcDrawDObjTreeDLLinksForGObj(ground_gobj);
 }
@@ -133,11 +133,11 @@ void grGeometryLayer1ProcDisplaySec(GObj *ground_gobj)
 // 0x80105154
 void grGeometryLayer2ProcDisplayPri(GObj *ground_gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
-    gSPClearGeometryMode(gSYTasklogDLHeads[0]++, G_ZBUFFER);
+    gSPClearGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
 
     gcDrawDObjTreeForGObj(ground_gobj);
 }
@@ -145,17 +145,17 @@ void grGeometryLayer2ProcDisplayPri(GObj *ground_gobj)
 // 0x801051D0
 void grGeometryLayer2ProcDisplaySec(GObj *ground_gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
-    gSPClearGeometryMode(gSYTasklogDLHeads[0]++, G_ZBUFFER);
+    gSPClearGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
 
-    gDPPipeSync(gSYTasklogDLHeads[1]++);
+    gDPPipeSync(gSYTaskmanDLHeads[1]++);
 
-    gSPClearGeometryMode(gSYTasklogDLHeads[1]++, G_ZBUFFER);
+    gSPClearGeometryMode(gSYTaskmanDLHeads[1]++, G_ZBUFFER);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
     gcDrawDObjTreeDLLinksForGObj(ground_gobj);
 }
@@ -163,11 +163,11 @@ void grGeometryLayer2ProcDisplaySec(GObj *ground_gobj)
 // 0x80105290 - Identical to 0x80105154?
 void grGeometryLayer3ProcDisplayPri(GObj *ground_gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
-    gSPClearGeometryMode(gSYTasklogDLHeads[0]++, G_ZBUFFER);
+    gSPClearGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
 
     gcDrawDObjTreeForGObj(ground_gobj);
 }
@@ -175,17 +175,17 @@ void grGeometryLayer3ProcDisplayPri(GObj *ground_gobj)
 // 0x8010530C - Identical to 0x801051D0?
 void grGeometryLayer3ProcDisplaySec(GObj *ground_gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
-    gSPClearGeometryMode(gSYTasklogDLHeads[0]++, G_ZBUFFER);
+    gSPClearGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
 
-    gDPPipeSync(gSYTasklogDLHeads[1]++);
+    gDPPipeSync(gSYTaskmanDLHeads[1]++);
 
-    gSPClearGeometryMode(gSYTasklogDLHeads[1]++, G_ZBUFFER);
+    gSPClearGeometryMode(gSYTaskmanDLHeads[1]++, G_ZBUFFER);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
     gcDrawDObjTreeDLLinksForGObj(ground_gobj);
 }

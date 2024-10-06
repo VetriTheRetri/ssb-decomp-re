@@ -662,7 +662,7 @@ syColorRGBA dSC1PGameFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 syDisplaySetup dSC1PGameDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132B34
-syTasklogSetup dSC1PGameTasklogSetup =
+syTaskmanSetup dSC1PGameTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -732,7 +732,7 @@ void sc1PGameSetupFiles(void)
         dGMCommonFileIDs, 
         ARRAY_COUNT(dGMCommonFileIDs), 
         gGMCommonFiles, 
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (
@@ -1706,7 +1706,7 @@ void sc1PGameInitTeamStockDisplay(void)
         sSC1PGameZakoStockSprite = lbRelocGetFileExternHeap
         (
             (uintptr_t)&D_NF_00000019, 
-            syTasklogMalloc
+            syTaskmanMalloc
             (
                 lbRelocGetFileSize((uintptr_t)&D_NF_00000019), 
                 0x10
@@ -1999,7 +1999,7 @@ void sc1PGameFuncStart(void)
     {
         syDmaReadRom(0xF10, spA0, ARRAY_COUNT(spA0));
 
-        addr = lbRelocGetFileExternHeap((uintptr_t)&D_NF_000000C8, syTasklogMalloc(lbRelocGetFileSize((uintptr_t)&D_NF_000000C8), 0x10));
+        addr = lbRelocGetFileExternHeap((uintptr_t)&D_NF_000000C8, syTaskmanMalloc(lbRelocGetFileSize((uintptr_t)&D_NF_000000C8), 0x10));
 
         proc = (sb32(*)(void*)) ((uintptr_t)addr + (intptr_t)&D_NF_00000000);
 
@@ -2034,7 +2034,7 @@ void sc1PGameFuncStart(void)
         // Need to load PK Fire graphics from Ness' file
         plns = dFTManagerDataFiles[nFTKindNess];
 
-        lbRelocGetFileExternHeap((uintptr_t)&D_NF_000000E6, syTasklogMalloc(lbRelocGetFileSize((uintptr_t)&D_NF_000000E6), 0x10));
+        lbRelocGetFileExternHeap((uintptr_t)&D_NF_000000E6, syTaskmanMalloc(lbRelocGetFileSize((uintptr_t)&D_NF_000000E6), 0x10));
         efAllocGetAddParticleBankID
         (
             plns->particles_script_lo, 
@@ -2068,7 +2068,7 @@ void sc1PGameFuncStart(void)
             {
                 continue;
             }
-            else sSC1PGamePlayerSetups[i].figatree = syTasklogMalloc(largest_size, 0x10);
+            else sSC1PGamePlayerSetups[i].figatree = syTaskmanMalloc(largest_size, 0x10);
         }
         break;
     }
@@ -2847,9 +2847,9 @@ void sc1PGameStartScene(void)
     dSC1PGameDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dSC1PGameDisplaySetup);
 
-    dSC1PGameTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl65_BSS_END);
-    dSC1PGameTasklogSetup.func_start = sc1PGameFuncStart;
-    func_800A2698(&dSC1PGameTasklogSetup);
+    dSC1PGameTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl65_BSS_END);
+    dSC1PGameTaskmanSetup.func_start = sc1PGameFuncStart;
+    func_800A2698(&dSC1PGameTaskmanSetup);
     
     sc1PGameInitBonusStats();
     auStopBGM();

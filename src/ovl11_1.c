@@ -26,5 +26,5 @@ void mnNoControllerLoadFiles()
 	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl11_800D6AF8;
 	rl_setup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern(D_ovl11_800D67B0, ARRAY_COUNT(D_ovl11_800D67B0), gMNNoControllerFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl11_800D67B0, ARRAY_COUNT(D_ovl11_800D67B0)), 0x10U));
+	lbRelocLoadFilesExtern(D_ovl11_800D67B0, ARRAY_COUNT(D_ovl11_800D67B0), gMNNoControllerFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl11_800D67B0, ARRAY_COUNT(D_ovl11_800D67B0)), 0x10U));
 }

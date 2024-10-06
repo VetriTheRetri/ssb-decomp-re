@@ -85,14 +85,14 @@ void mnMessageMakeWallpaper(void)
 // 0x80131BA4
 void mnMessageTintProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x00, 0x00, 0xFF, 0x3F);
-    gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 10, 310, 230);
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x00, 0x00, 0xFF, 0x3F);
+    gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     
     lbCommonClearExternSpriteParams();
 }
@@ -312,7 +312,7 @@ void mnMessageFuncRun(GObj *gobj)
         if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
         {
             mnMessageApplyUnlock();
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
     }
 }
@@ -337,7 +337,7 @@ void mnMessageFuncStart(void)
         dMNMessageFileIDs,
         ARRAY_COUNT(dMNMessageFileIDs),
         sMNMessageFiles,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (
@@ -368,7 +368,7 @@ void mnMessageFuncStart(void)
 syDisplaySetup dMNMessageDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x801325BC
-scRuntimeInfo dMNMessageTasklogSetup =
+scRuntimeInfo dMNMessageTaskmanSetup =
 {
     0x00000000,
     func_8000A5E4,
@@ -414,7 +414,7 @@ void mnMessageStartScene(void)
     
     syDisplayInit(&dMNMessageDisplaySetup);
     
-    dMNMessageTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl22_BSS_END);
+    dMNMessageTaskmanSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl22_BSS_END);
 
     for
     (
@@ -423,7 +423,7 @@ void mnMessageStartScene(void)
         sMNMessageQueueID++
     )
     {
-        syTasklogInit(&dMNMessageTasklogSetup);
+        syTaskmanInit(&dMNMessageTaskmanSetup);
     }
     if (gSceneData.scene_previous == nSCKindVSResults)
     {

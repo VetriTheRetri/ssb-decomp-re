@@ -12,7 +12,7 @@
 
 #include <sys/trig_rand.h>
 #include <sys/vec.h>
-#include <sys/tasklog.h>
+#include <sys/taskman.h>
 
 #include <sys/objdef.h>
 

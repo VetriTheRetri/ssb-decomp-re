@@ -148,39 +148,39 @@ void sc1PStageCardMakeBanners(void)
 // 0x80131C58 - unused?
 void func_ovl24_80131C58(GObj *gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, 0xFF);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 10, 311, 59);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 182, 311, 231);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, 0xFF);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 311, 59);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 182, 311, 231);
     
     if (sSC1PStageCardStage < 4)
     {
-        gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
+        gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
     }
-    else gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x7F, 0x7F, 0x7F, 0xFF);
+    else gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x7F, 0x7F, 0x7F, 0xFF);
     
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 148, 31, 156, 39);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 148, 31, 156, 39);
     
     if (sSC1PStageCardStage < 8)
     {
-        gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
+        gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
     }
-    else gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x7F, 0x7F, 0x7F, 0xFF);
+    else gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x7F, 0x7F, 0x7F, 0xFF);
     
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 202, 31, 210, 39);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 202, 31, 210, 39);
     
     if (sSC1PStageCardStage < 12)
     {
-        gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
+        gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
     }
-    else gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x7F, 0x7F, 0x7F, 0xFF);
+    else gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x7F, 0x7F, 0x7F, 0xFF);
     
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 256, 31, 264, 39);
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 256, 31, 264, 39);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
     lbCommonClearExternSpriteParams();
 }
@@ -929,10 +929,10 @@ void sc1PStageCardVSFighterProcDisplay(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_2CYCLE);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_PASS, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetEnvColor(gSYTasklogDLHeads[0]++, 0xFF, 0xFF, 0xFF, 0x00);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_2CYCLE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_PASS, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetEnvColor(gSYTaskmanDLHeads[0]++, 0xFF, 0xFF, 0xFF, 0x00);
     
     if (sSC1PStageCardStage == nSC1PGameStageZako)
     {
@@ -960,9 +960,9 @@ void sc1PStageCardVSFighterProcDisplay(GObj *fighter_gobj)
     }
     else ftDisplayMainProcDisplay(fighter_gobj);
     
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80133398
@@ -1833,7 +1833,7 @@ void sc1PStageCardFuncRun(GObj *gobj)
             gSceneData.scene_current = nSCKindTitle;
             
             func_ovl24_801348EC();
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
         if (sSC1PStageCardUnk0x80135CF4 != 0)
         {
@@ -1851,7 +1851,7 @@ void sc1PStageCardFuncRun(GObj *gobj)
             gSceneData.scene_current = nSCKindTitle;
             
             func_ovl24_801348EC();
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
     }
 }
@@ -1932,7 +1932,7 @@ void sc1PStageCardFuncStart(void)
         dSC1PStageCardFileIDs,
         ARRAY_COUNT(dSC1PStageCardFileIDs),
         sSC1PStageCardFiles,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (    dSC1PStageCardFileIDs,
@@ -1951,7 +1951,7 @@ void sc1PStageCardFuncStart(void)
 
     for (i = 0; i < sc1PStageCardGetFighterAllocsNum(sSC1PStageCardStage); i++)
     {
-        sSC1PStageCardFigatreeHeaps[i] = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+        sSC1PStageCardFigatreeHeaps[i] = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
     }
     sc1PStageCardMakePicturesCamera();
     sc1PStageCardMakeDecalsCamera();
@@ -1989,7 +1989,7 @@ void sc1PStageCardFuncStart(void)
 syDisplaySetup dSC1PStageCardDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80135B54
-syTasklogSetup dSC1PStageCardTasklogSetup =
+syTaskmanSetup dSC1PStageCardTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -2039,6 +2039,6 @@ void sc1PStageCardStartScene(void)
     dSC1PStageCardDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dSC1PStageCardDisplaySetup);
     
-    dSC1PStageCardTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl24_BSS_END);
-    func_800A2698(&dSC1PStageCardTasklogSetup);
+    dSC1PStageCardTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl24_BSS_END);
+    func_800A2698(&dSC1PStageCardTaskmanSetup);
 }

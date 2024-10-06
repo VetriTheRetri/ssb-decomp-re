@@ -159,7 +159,7 @@ syColorRGBA dSCAutoDemoFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 syDisplaySetup dSCAutoDemoDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8018E250
-syTasklogSetup dSCAutoDemoTasklogSetup = 
+syTaskmanSetup dSCAutoDemoTaskmanSetup = 
 {
     // Task Logic Buffer Setup
     {
@@ -243,7 +243,7 @@ void scAutoDemoDetectExit(void)
 			gSceneData.scene_previous = gSceneData.scene_current;
 			gSceneData.scene_current = nSCKindTitle;
 
-			syTasklogSetLoadScene();
+			syTaskmanSetLoadScene();
 			break;
 		}
 	}
@@ -395,7 +395,7 @@ void scAutoDemoExit(void)
 	gSceneData.scene_previous = gSceneData.scene_current;
 	gSceneData.scene_current = nSCKindN64;
 
-	syTasklogSetLoadScene();
+	syTaskmanSetLoadScene();
 }
 
 // 0x8018D624
@@ -593,7 +593,7 @@ void scAutoDemoInitSObjs(void)
 	file = lbRelocGetFileExternHeap
 	(
 		(uintptr_t)&D_NF_0000000C, 
-		syTasklogMalloc
+		syTaskmanMalloc
 		(
 			lbRelocGetFileSize((uintptr_t)&D_NF_0000000C), 
 			0x10
@@ -732,10 +732,10 @@ void scAutoDemoStartScene(void)
 
 	syDisplayInit(&dSCAutoDemoDisplaySetup);
 
-	dSCAutoDemoTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl64_BSS_END);
-	dSCAutoDemoTasklogSetup.func_start = scAutoDemoFuncStart;
+	dSCAutoDemoTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl64_BSS_END);
+	dSCAutoDemoTaskmanSetup.func_start = scAutoDemoFuncStart;
 
-	func_800A2698(&dSCAutoDemoTasklogSetup);
+	func_800A2698(&dSCAutoDemoTaskmanSetup);
 	auStopBGM();
 
 	while (auIsBGMPlaying(0) != FALSE)

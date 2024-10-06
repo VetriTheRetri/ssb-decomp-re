@@ -67,7 +67,7 @@ Gfx dMNUnusedFightersDisplayList[/* */] =
 syDisplaySetup dMNUnusedFightersDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x800D7074
-scRuntimeInfo dMNUnusedFightersTasklogSetup =
+scRuntimeInfo dMNUnusedFightersTaskmanSetup =
 {
     0x00000000,
     func_8000A5E4,
@@ -156,7 +156,7 @@ void mnUnusedFightersFuncRun(GObj *gobj)
         gSceneData.scene_previous = gSceneData.scene_current;
         gSceneData.scene_current = nSCKindTitle;
 
-        syTasklogSetLoadScene();
+        syTaskmanSetLoadScene();
     }
     if (gSysController.button_tap & Z_TRIG)
     {
@@ -187,7 +187,7 @@ void mnUnusedFightersFuncStart(void)
         dMNUnusedFightersFileIDs,
         ARRAY_COUNT(dMNUnusedFightersFileIDs),
         sMNUnusedFightersFiles,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (
@@ -571,6 +571,6 @@ void mnUnusedFightersStartScene(void)
     dMNUnusedFightersDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMNUnusedFightersDisplaySetup);
 
-    dMNUnusedFightersTasklogSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl16_BSS_END);
-    syTasklogInit(&dMNUnusedFightersTasklogSetup);
+    dMNUnusedFightersTaskmanSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl16_BSS_END);
+    syTaskmanInit(&dMNUnusedFightersTaskmanSetup);
 }

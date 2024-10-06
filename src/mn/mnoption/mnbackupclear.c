@@ -322,17 +322,17 @@ void mnBackupClearEjectOptionGObjs(void)
 // 0x80131F98
 void mnBackupClearOptionConfirmProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_FILL);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gSYTasklogDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF)));
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 58, 64, 262, 64);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 58, 172, 262, 172);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 58, 64, 58, 172);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 262, 64, 262, 172);
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF)));
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 58, 64, 262, 64);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 58, 172, 262, 172);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 58, 64, 58, 172);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 262, 64, 262, 172);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
     
     lbCommonClearExternSpriteParams();
     lbCommonDrawSObjAttr(gobj);
@@ -560,7 +560,7 @@ void mnBackupClearUpdateOptionMainMenu(void)
         gSceneData.scene_current = nSCKindOption;
 
         func_ovl53_801325CC();
-        syTasklogSetLoadScene();
+        syTaskmanSetLoadScene();
         return;
     }
     if
@@ -794,7 +794,7 @@ void mnBackupClearFuncStart(void)
         dMNBackupClearFileIDs,
         ARRAY_COUNT(dMNBackupClearFileIDs),
         sMNBackupClearFiles,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (
@@ -820,7 +820,7 @@ Vec2f dMNBackupClearUnused0x80132FB8[/* */] = { { 193.0F, 110.0F }, { 87.0F, 110
 syDisplaySetup dMNBackupClearDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132FE4
-syTasklogSetup dMNBackupClearTasklogSetup =
+syTaskmanSetup dMNBackupClearTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -870,6 +870,6 @@ void mnBackupClearStartScene(void)
     dMNBackupClearDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMNBackupClearDisplaySetup);
     
-    dMNBackupClearTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl53_BSS_END);
-    syTasklogInit(&dMNBackupClearTasklogSetup);
+    dMNBackupClearTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl53_BSS_END);
+    syTaskmanInit(&dMNBackupClearTaskmanSetup);
 }

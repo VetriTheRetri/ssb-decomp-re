@@ -20,27 +20,27 @@ extern uintptr_t lEFCommonParticleBankTextureHi;                // 0x00B16C80
 // 0x800FCCC0
 void efDisplayProcDisplayBlendCLD(GObj *effect_gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[1]++);
+    gDPPipeSync(gSYTaskmanDLHeads[1]++);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
 
-    gDPSetAlphaCompare(gSYTasklogDLHeads[1]++, G_AC_THRESHOLD);
+    gDPSetAlphaCompare(gSYTaskmanDLHeads[1]++, G_AC_THRESHOLD);
 
-    gDPSetBlendColor(gSYTasklogDLHeads[1]++, 0x00, 0x00, 0x00, 0x08);
+    gDPSetBlendColor(gSYTaskmanDLHeads[1]++, 0x00, 0x00, 0x00, 0x08);
 
-    gSPClearGeometryMode(gSYTasklogDLHeads[1]++, G_ZBUFFER);
+    gSPClearGeometryMode(gSYTaskmanDLHeads[1]++, G_ZBUFFER);
 }
 
 // 0x800FCD64
 void efDisplayProcDisplayXLU(GObj *effect_gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[1]++);
+    gDPPipeSync(gSYTaskmanDLHeads[1]++);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    gDPSetAlphaCompare(gSYTasklogDLHeads[1]++, G_AC_NONE);
+    gDPSetAlphaCompare(gSYTaskmanDLHeads[1]++, G_AC_NONE);
 
-    gSPSetGeometryMode(gSYTasklogDLHeads[1]++, G_ZBUFFER);
+    gSPSetGeometryMode(gSYTaskmanDLHeads[1]++, G_ZBUFFER);
 }
 
 // 0x800FCDEC
@@ -60,55 +60,55 @@ void efDisplayMakeXLU(void)
 // 0x800FCEEC
 void efDisplayProcDisplayZPerspXLU(GObj *effect_gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
 
     lbParticleDrawTextures(effect_gobj);
 
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
-    gDPSetTexturePersp(gSYTasklogDLHeads[0]++, G_TP_PERSP);
+    gDPSetTexturePersp(gSYTaskmanDLHeads[0]++, G_TP_PERSP);
 
-    gDPSetDepthSource(gSYTasklogDLHeads[0]++, G_ZS_PIXEL);
+    gDPSetDepthSource(gSYTaskmanDLHeads[0]++, G_ZS_PIXEL);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x800FCFCC
 void efDisplayProcDisplayZPerspCLD(GObj *effect_gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
 
     lbParticleDrawTextures(effect_gobj);
 
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
-    gDPSetTexturePersp(gSYTasklogDLHeads[0]++, G_TP_PERSP);
+    gDPSetTexturePersp(gSYTaskmanDLHeads[0]++, G_TP_PERSP);
 
-    gDPSetDepthSource(gSYTasklogDLHeads[0]++, G_ZS_PIXEL);
+    gDPSetDepthSource(gSYTaskmanDLHeads[0]++, G_ZS_PIXEL);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x800FD0AC
 void efDisplayProcDisplayZPerspAAXLU(GObj *effect_gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
     lbParticleDrawTextures(effect_gobj);
 
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
-    gDPSetTexturePersp(gSYTasklogDLHeads[0]++, G_TP_PERSP);
+    gDPSetTexturePersp(gSYTaskmanDLHeads[0]++, G_TP_PERSP);
 
-    gDPSetDepthSource(gSYTasklogDLHeads[0]++, G_ZS_PIXEL);
+    gDPSetDepthSource(gSYTaskmanDLHeads[0]++, G_ZS_PIXEL);
 
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x800FD18C

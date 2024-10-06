@@ -41,7 +41,7 @@ void scExplainSetupFiles(void)
         dGMCommonFileIDs, 
         ARRAY_COUNT(dGMCommonFileIDs), 
         gGMCommonFiles, 
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (

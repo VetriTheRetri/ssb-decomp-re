@@ -570,9 +570,9 @@ void sc1PStageClearMakeScoreDigits
 // 0x801320E0
 void sc1PStageClearTextProcDisplay(GObj *gobj)
 {
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	lbCommonDrawSObjAttr(gobj);
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 }
 
 // 0x8013213C
@@ -1337,16 +1337,16 @@ void sc1PStageClearMakeBonusTable(void)
 // 0x801339C0
 void sc1PStageClearWallpaperProcDisplay(GObj *gobj)
 {
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x80, 0x80, 0x80, 0xFF);
-	gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_MODULATEI_PRIM, G_CC_MODULATEI_PRIM);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x80, 0x80, 0x80, 0xFF);
+	gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_MODULATEI_PRIM, G_CC_MODULATEI_PRIM);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
 
 	lbCommonDrawSObjNoAttr(gobj);
 
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80133AC0
@@ -1887,7 +1887,7 @@ void sc1PStageClearFuncRun(GObj *gobj)
 
 				sc1PStageClearUpdateTotal1PGameScore();
 				
-				syTasklogSetLoadScene();
+				syTaskmanSetLoadScene();
 			}
 			else if ((sSC1PStageClearIsSetCommonAdvanceTic != FALSE) && (sSC1PStageClearIsAdvance == FALSE))
 			{
@@ -1978,7 +1978,7 @@ void sc1PStageClearFuncStart(void)
 		dSC1PStageClearFileIDs,
 		ARRAY_COUNT(dSC1PStageClearFileIDs),
 		sSC1PStageClearFiles,
-		syTasklogMalloc
+		syTaskmanMalloc
 		(
 			lbRelocGetAllocSize
 			(
@@ -2031,7 +2031,7 @@ void sc1PStageClearFuncStart(void)
 syDisplaySetup dGM1PStageClearDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80135208
-syTasklogSetup dGM1PStageClearTasklogSetup =
+syTaskmanSetup dGM1PStageClearTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -2081,6 +2081,6 @@ void sc1PStageClearStartScene(void)
 	dGM1PStageClearDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
 	syDisplayInit(&dGM1PStageClearDisplaySetup);
 
-	dGM1PStageClearTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl56_BSS_END);
-	syTasklogInit(&dGM1PStageClearTasklogSetup);
+	dGM1PStageClearTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl56_BSS_END);
+	syTaskmanInit(&dGM1PStageClearTaskmanSetup);
 }

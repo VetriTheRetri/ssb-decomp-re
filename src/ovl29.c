@@ -450,11 +450,11 @@ s32 mnBonusGetPortraitId(s32 ft_kind)
 // 0x80132430
 void mnBonusRenderPortraitWithNoise(GObj *portrait_gobj)
 {
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x30, 0x30, 0x30, 0xFF);
-	gDPSetCombineLERP(gSYTasklogDLHeads[0]++, NOISE, TEXEL0, PRIMITIVE, TEXEL0, 0, 0, 0, TEXEL0, NOISE, TEXEL0, PRIMITIVE, TEXEL0,  0, 0, 0, TEXEL0);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x30, 0x30, 0x30, 0xFF);
+	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, NOISE, TEXEL0, PRIMITIVE, TEXEL0, 0, 0, 0, TEXEL0, NOISE, TEXEL0, PRIMITIVE, TEXEL0,  0, 0, 0, TEXEL0);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 	lbCommonDrawSObjNoAttr(portrait_gobj);
 }
 
@@ -1863,7 +1863,7 @@ void mnBonusGoBackTo1PMenu()
 	mnBonusSaveMatchInfo();
 	auStopBGM();
 	func_800266A0_272A0();
-	syTasklogSetLoadScene();
+	syTaskmanSetLoadScene();
 }
 
 // 0x801357AC
@@ -2381,7 +2381,7 @@ void mnBonusMain(s32 arg0)
 		gSceneData.scene_current = nSCKindTitle;
 
 		mnBonusSaveMatchInfo();
-		syTasklogSetLoadScene();
+		syTaskmanSetLoadScene();
 
 		return;
 	}
@@ -2403,7 +2403,7 @@ void mnBonusMain(s32 arg0)
 		gSceneData.scene_current = nSCKind1PBonusGame;
 
 		mnBonusSaveMatchInfo();
-		syTasklogSetLoadScene();
+		syTaskmanSetLoadScene();
 	}
 }
 
@@ -2496,7 +2496,7 @@ void mnBonusInitCSS()
 	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl29_80137A00;
 	rl_setup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern(D_ovl29_80136F50, 11U, gMnBonusFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl29_80136F50, 11U), 0x10U));
+	lbRelocLoadFilesExtern(D_ovl29_80136F50, 11U, gMnBonusFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl29_80136F50, 11U), 0x10U));
 
 	gcMakeGObjSPAfter(0x400U, mnBonusMain, 0xFU, 0x80000000U);
 	gcMakeDefaultCameraGObj(0x10, 0x80000000U, 0x64, 1, 0);
@@ -2507,7 +2507,7 @@ void mnBonusInitCSS()
 	for (i = 0; i < 12; i++)
 		ftManagerSetupFilesAllKind(i);
 
-	gMnBonusFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10U);
+	gMnBonusFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10U);
 
 	mnBonusLoadMatchInfo();
 	mnBonusCreatePortraitViewport();
@@ -2571,5 +2571,5 @@ void bonus_css_entry()
 	D_ovl29_80137530.zbuffer = syDisplayGetZBuffer(6400);
 	syDisplayInit(&D_ovl29_80137530);
 	D_ovl29_8013754C.arena_size = (u32) ((uintptr_t)&lOverlay29ArenaHi - (uintptr_t)&lOverlay29ArenaLo);
-	syTasklogInit(&D_ovl29_8013754C);
+	syTaskmanInit(&D_ovl29_8013754C);
 }

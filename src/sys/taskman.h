@@ -8,14 +8,14 @@
 #include <PR/mbi.h>
 #include <PR/ultratypes.h>
 
-typedef struct syTasklogDLBuffer
+typedef struct syTaskmanDLBuffer
 {
 	/* 0x00 */ Gfx *start;
 	/* 0x04 */ u32 length;
 
-} syTasklogDLBuffer; // size = 0x08
+} syTaskmanDLBuffer; // size = 0x08
 
-typedef struct syTasklogBufferSetup
+typedef struct syTaskmanBufferSetup
 {
 	/* 0x00 */ u16 unk00;
 	/* 0x04 */ void (*func_update)(void);
@@ -34,11 +34,11 @@ typedef struct syTasklogBufferSetup
 	/* 0x38 */ void (*func_lights)(Gfx**); 	// Lighting callback?
 	/* 0x3C */ void (*func_controller)(); // controller read callback?
 
-} syTasklogBufferSetup; // size == 0x40
+} syTaskmanBufferSetup; // size == 0x40
 
-typedef struct syTasklogSetup
+typedef struct syTaskmanSetup
 {
-	/* 0x00 */ syTasklogBufferSetup buffer_setup;
+	/* 0x00 */ syTaskmanBufferSetup buffer_setup;
 	/* 0x40 */ u32 gobjthreads_num;
 	/* 0x44 */ u32 threadstack_size;
 	/* 0x48 */ u32 threadstacks_num;
@@ -59,31 +59,31 @@ typedef struct syTasklogSetup
 	/* 0x84 */ u32 camera_size;
 	/* 0x88 */ void (*func_start)(void);	// Scene start function
 
-} syTasklogSetup; // size >= 0x8C
+} syTaskmanSetup; // size >= 0x8C
 
-extern u32 sSYTasklogUpdateCount;
-extern u32 dSYTasklogFrameDrawCount;
-extern Gfx *gSYTasklogDLHeads[4];
-extern Gfx *sSYTasklogDLBranches[4];
-extern syMallocRegion gSYTasklogGraphicsHeap;
-extern syMallocRegion gSYTasklogGeneralHeap;
+extern u32 sSYTaskmanUpdateCount;
+extern u32 dSYTaskmanFrameDrawCount;
+extern Gfx *gSYTaskmanDLHeads[4];
+extern Gfx *sSYTaskmanDLBranches[4];
+extern syMallocRegion gSYTaskmanGraphicsHeap;
+extern syMallocRegion gSYTaskmanGeneralHeap;
 // Gfx *? Gfx
-extern u32 sSYTasklogUpdateDeltaTime;
+extern u32 sSYTaskmanUpdateDeltaTime;
 // Gfx *? Gfx
-extern u32 sSYTasklogFrameDeltaTime;
+extern u32 sSYTaskmanFrameDeltaTime;
 extern u16 D_80046626;
 extern u16 D_80046628;
-extern s32 gSYTasklogTaskID;
+extern s32 gSYTaskmanTaskID;
 
 extern void func_800048D0(SCTaskGfxCallback arg0);
 extern void func_800048F8(Gfx **dl);
-extern void* syTasklogMalloc(size_t size, u32 alignment);
+extern void* syTaskmanMalloc(size_t size, u32 alignment);
 extern void func_80004F78(void);
-extern void syTasklogAppendGfxUcodeLoad(Gfx **dlist, u32 ucodeIdx);
+extern void syTaskmanAppendGfxUcodeLoad(Gfx **dlist, u32 ucodeIdx);
 extern void func_800053CC(void);
 extern void func_800057C8(void);
-extern void syTasklogSetLoadScene(void);
-extern void syTasklogInit(syTasklogSetup *arg);
+extern void syTaskmanSetLoadScene(void);
+extern void syTaskmanInit(syTaskmanSetup *arg);
 extern void func_80006B80(void);
 
 #endif

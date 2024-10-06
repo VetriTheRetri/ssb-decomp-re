@@ -696,7 +696,7 @@ Gfx dMNSoundTestDisplayList[/* */] =
 syDisplaySetup dMNSoundTestDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8013425C
-syTasklogSetup dMNSoundTestTasklogSetup =
+syTaskmanSetup dMNSoundTestTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -1014,7 +1014,7 @@ void mnSoundTestFuncRun(GObj *gobj)
         auStopBGM();
         func_800266A0_272A0();
         auSetBGMVolume(0, 0x7000);
-        syTasklogSetLoadScene();
+        syTaskmanSetLoadScene();
     }
     mnSoundTestUpdateControllerInputs();
     mnSoundTestUpdateFunctions();
@@ -1040,7 +1040,7 @@ void mnSoundTestSetupFiles(void)
         dMNSoundTestFileIDs,
         ARRAY_COUNT(dMNSoundTestFileIDs),
         sMNSoundTestFiles,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (
@@ -1110,12 +1110,12 @@ void mnSoundTestOptionThreadUpdate(GObj *gobj)
 // 0x801324FC
 void mnSoundTestMusicProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_FILL);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
     gDPSetFillColor
     (
-        gSYTasklogDLHeads[0]++,
+        gSYTaskmanDLHeads[0]++,
         GCOMBINE32_RGBA5551
         (
             GCONVERT5551_RGBA8888
@@ -1130,9 +1130,9 @@ void mnSoundTestMusicProcDisplay(GObj *gobj)
             )
         )
     );
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 56, 112, 57);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 95, 112, 96);
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 56, 112, 57);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 95, 112, 96);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 }
 
 // 0x80132638
@@ -1177,12 +1177,12 @@ SObj* mnSoundTestMakeMusicSObjs(void)
 // 0x80132758
 void mnSoundTestSoundProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_FILL);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
     gDPSetFillColor
     (
-        gSYTasklogDLHeads[0]++,
+        gSYTaskmanDLHeads[0]++,
         GCOMBINE32_RGBA5551
         (
             GCONVERT5551_RGBA8888
@@ -1197,9 +1197,9 @@ void mnSoundTestSoundProcDisplay(GObj *gobj)
             )
         )
     );
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 104, 132, 105);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 143, 132, 144);
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 104, 132, 105);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 143, 132, 144);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 }
 
 // 0x80132894
@@ -1244,12 +1244,12 @@ SObj* mnSoundTestMakeSoundSObjs(void)
 // 0x801329B8
 void mnSoundTestVoiceProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_FILL);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
     gDPSetFillColor
     (
-        gSYTasklogDLHeads[0]++,
+        gSYTaskmanDLHeads[0]++,
         GCOMBINE32_RGBA5551
         (
             GCONVERT5551_RGBA8888
@@ -1264,9 +1264,9 @@ void mnSoundTestVoiceProcDisplay(GObj *gobj)
             )
         )
     );
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 152, 152, 153);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 191, 152, 192);
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 152, 152, 153);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 191, 152, 192);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
 }
 
 // 0x80132AF4
@@ -1763,6 +1763,6 @@ void mnSoundTestStartScene(void)
     dMNSoundTestDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMNSoundTestDisplaySetup);
 
-    dMNSoundTestTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl62_BSS_END);
-    syTasklogInit(&dMNSoundTestTasklogSetup);
+    dMNSoundTestTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl62_BSS_END);
+    syTaskmanInit(&dMNSoundTestTaskmanSetup);
 }

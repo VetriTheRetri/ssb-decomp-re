@@ -1,6 +1,6 @@
 #include <sys/obj.h>
 
-#include <sys/tasklog.h>
+#include <sys/taskman.h>
 #include <sys/hal_gu.h>
 #include <sys/system_00.h>
 
@@ -379,7 +379,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
 
             /* 
              * Non-matching part begins here. ommtx->unk05 gets forced into v1 instead of v0, and ommtx->kind into v0 instead of v1.
-             * gSYTasklogGraphicsHeap is also placed in v0 instead of v1; these two v0/v1 swaps are *mostly* unrelated. I have tried for hours,
+             * gSYTaskmanGraphicsHeap is also placed in v0 instead of v1; these two v0/v1 swaps are *mostly* unrelated. I have tried for hours,
              * but I cannot find a permutation that satisfies all requirements. The "closest" I got to a real match was by using
              * fabricated inline getters for ommtx->kind in the first two >= 66 comparisons, which bloated the stack frame too much,
              * and of course also generated a stub that I reckon will not appear in this TU. I have just about given up on this function,
@@ -387,7 +387,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
              * 
              * If a brave volunteer would like to try in the future (so you either get a light bulb above your head or so you can avoid wasting your time), here's what I've tried:
              *     - making a variable for ommtx->kind or ommtx->unk05 
-             *     - a bunch of permutations regarding how gSYTasklogGraphicsHeap.ptr is advanced (gSYTasklogGraphicsHeap.ptr++, gSYTasklogGraphicsHeap.size += sizeof(Mtx44f), etc.)
+             *     - a bunch of permutations regarding how gSYTaskmanGraphicsHeap.ptr is advanced (gSYTaskmanGraphicsHeap.ptr++, gSYTaskmanGraphicsHeap.size += sizeof(Mtx44f), etc.)
              *     - the C address hack "*(type*)&" to get ommtx->kind and ommtx->unk05
              *     - making a u8* variable to ommtx->kind and ommtx->unk05 and dereferencing that
              *     - various control flow permutations in an attempt to bump regalloc
@@ -401,10 +401,10 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
             {
                 if (ommtx->unk05 == 4)
                 {
-                    if (dobj->parent_gobj->frame_draw_last != (u8)dSYTasklogFrameDrawCount)
+                    if (dobj->parent_gobj->frame_draw_last != (u8)dSYTaskmanFrameDrawCount)
                     {
-                        *mtx_store.p = gSYTasklogGraphicsHeap.ptr;
-                        gSYTasklogGraphicsHeap.ptr = (mtx_store.f = gSYTasklogGraphicsHeap.ptr) + 1;
+                        *mtx_store.p = gSYTaskmanGraphicsHeap.ptr;
+                        gSYTaskmanGraphicsHeap.ptr = (mtx_store.f = gSYTaskmanGraphicsHeap.ptr) + 1;
                     }
                     else
                     {
@@ -428,13 +428,13 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                         case 48:
                         case 49:
                         case 50:
-                            gSYTasklogGraphicsHeap.ptr = (mtx_store.gbi = gSYTasklogGraphicsHeap.ptr) + 1;
+                            gSYTaskmanGraphicsHeap.ptr = (mtx_store.gbi = gSYTaskmanGraphicsHeap.ptr) + 1;
                             break;
 
                         default:
                             if (ommtx->kind >= 66)
                             {
-                                gSYTasklogGraphicsHeap.ptr = (mtx_store.f = gSYTasklogGraphicsHeap.ptr) + 1;
+                                gSYTaskmanGraphicsHeap.ptr = (mtx_store.f = gSYTaskmanGraphicsHeap.ptr) + 1;
                             }
                             else
                             {
@@ -446,11 +446,11 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                         }
                     }
                 }
-                else if (gSYTasklogTaskID > 0)
+                else if (gSYTaskmanTaskID > 0)
                 {
-                    gSYTasklogGraphicsHeap.ptr = (mtx_store.f = gSYTasklogGraphicsHeap.ptr) + 1;
+                    gSYTaskmanGraphicsHeap.ptr = (mtx_store.f = gSYTaskmanGraphicsHeap.ptr) + 1;
                 }
-                else if (dobj->parent_gobj->frame_draw_last == (u8)dSYTasklogFrameDrawCount)
+                else if (dobj->parent_gobj->frame_draw_last == (u8)dSYTaskmanFrameDrawCount)
                 {
                     switch (ommtx->kind)
                     {
@@ -472,17 +472,17 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     case 48:
                     case 49:
                     case 50:
-                        gSYTasklogGraphicsHeap.ptr = (mtx_store.gbi = gSYTasklogGraphicsHeap.ptr) + 1;
+                        gSYTaskmanGraphicsHeap.ptr = (mtx_store.gbi = gSYTaskmanGraphicsHeap.ptr) + 1;
                         break;
 
                     default:
                         if (ommtx->kind >= 66)
                         {
-                            gSYTasklogGraphicsHeap.ptr = (mtx_store.f = gSYTasklogGraphicsHeap.ptr) + 1;
+                            gSYTaskmanGraphicsHeap.ptr = (mtx_store.f = gSYTaskmanGraphicsHeap.ptr) + 1;
                         }
                         else if (ommtx->unk05 == 3)
                         {
-                            gSYTasklogGraphicsHeap.ptr = (mtx_store.f = gSYTasklogGraphicsHeap.ptr) + 1;
+                            gSYTaskmanGraphicsHeap.ptr = (mtx_store.f = gSYTaskmanGraphicsHeap.ptr) + 1;
                         }
                         else goto check_05;
 
@@ -1159,7 +1159,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     {
                         if (sODMatrixProcess != NULL)
                         {
-                            sb32(*proc)(Mtx*, DObj*, Gfx**) = (dobj->parent_gobj->frame_draw_last != (u8)dSYTasklogFrameDrawCount) ? sODMatrixProcess[ommtx->kind - 66].proc_diff : sODMatrixProcess[ommtx->kind - 66].proc_same;
+                            sb32(*proc)(Mtx*, DObj*, Gfx**) = (dobj->parent_gobj->frame_draw_last != (u8)dSYTaskmanFrameDrawCount) ? sODMatrixProcess[ommtx->kind - 66].proc_diff : sODMatrixProcess[ommtx->kind - 66].proc_same;
 
                             // If proc's return value uses up a GPR and is assigned to a variable, IDO refuses to free up v0 later down.
                             ret = proc(mtx_store.gbi, dobj, &current_dl);
@@ -1223,15 +1223,15 @@ void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)
     {
         return;
     }
-    gSPSegment(dl_head[0]++, 0xE, gSYTasklogGraphicsHeap.ptr);
+    gSPSegment(dl_head[0]++, 0xE, gSYTaskmanGraphicsHeap.ptr);
 
     for (mobj_count = 0, mobj = dobj->mobj; mobj != NULL; mobj_count++)
     {
         mobj = mobj->next;
     }
     mobj = dobj->mobj;
-    branch_dl = (Gfx*)gSYTasklogGraphicsHeap.ptr + mobj_count;
-    new_dl = gSYTasklogGraphicsHeap.ptr;
+    branch_dl = (Gfx*)gSYTaskmanGraphicsHeap.ptr + mobj_count;
+    new_dl = gSYTaskmanGraphicsHeap.ptr;
 
     for (i = 0; i < mobj_count; i++, mobj = mobj->next)
     {
@@ -1501,7 +1501,7 @@ void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)
         }
         gSPEndDisplayList(branch_dl++);
     }
-    gSYTasklogGraphicsHeap.ptr = (void*)branch_dl;
+    gSYTaskmanGraphicsHeap.ptr = (void*)branch_dl;
 }
 
 // 0x80013D90
@@ -1534,25 +1534,25 @@ void gcDrawDObjForGObj(GObj *gobj, Gfx **dl_head)
 // 0x80013E68
 void gcDrawDObjDLHead0(GObj *gobj) 
 {
-    gcDrawDObjForGObj(gobj, &gSYTasklogDLHeads[0]);
+    gcDrawDObjForGObj(gobj, &gSYTaskmanDLHeads[0]);
 }
 
 // 0x80013E8C
 void gcDrawDObjDLHead1(GObj *gobj)
 {
-    gcDrawDObjForGObj(gobj, &gSYTasklogDLHeads[1]);
+    gcDrawDObjForGObj(gobj, &gSYTaskmanDLHeads[1]);
 }
 
 // 0x80013EB0
 void gcDrawDObjDLHead2(GObj *gobj)
 {
-    gcDrawDObjForGObj(gobj, &gSYTasklogDLHeads[2]);
+    gcDrawDObjForGObj(gobj, &gSYTaskmanDLHeads[2]);
 }
 
 // 0x80013ED4
 void gcDrawDObjDLHead3(GObj *gobj)
 {
-    gcDrawDObjForGObj(gobj, &gSYTasklogDLHeads[3]);
+    gcDrawDObjForGObj(gobj, &gSYTaskmanDLHeads[3]);
 }
 
 // 0x80013EF8
@@ -1565,12 +1565,12 @@ void gcDrawDObjTree(DObj *this_dobj)
     if (!(this_dobj->flags & DOBJ_FLAG_HIDDEN))
     {
         bak = gODScaleX;
-        num = gcPrepDObjMatrix(gSYTasklogDLHeads, this_dobj);
+        num = gcPrepDObjMatrix(gSYTaskmanDLHeads, this_dobj);
 
         if ((this_dobj->display_list != NULL) && !(this_dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
-            gcDrawMObjForDObj(this_dobj, gSYTasklogDLHeads);
-            gSPDisplayList(gSYTasklogDLHeads[0]++, this_dobj->display_list);
+            gcDrawMObjForDObj(this_dobj, gSYTaskmanDLHeads);
+            gSPDisplayList(gSYTaskmanDLHeads[0]++, this_dobj->display_list);
         }
         if (this_dobj->child != NULL)
         { 
@@ -1580,7 +1580,7 @@ void gcDrawDObjTree(DObj *this_dobj)
         {
             if ((this_dobj->parent == DOBJ_PARENT_NULL) || (this_dobj->sib_next != NULL))
             {
-                gSPPopMatrix(gSYTasklogDLHeads[0]++, G_MTX_MODELVIEW);
+                gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
             }
         }
         gODScaleX = bak;
@@ -1618,28 +1618,28 @@ void gcDrawDObjDLLinks(DObj *dobj, DObjDLLink *dl_link)
 
     if ((dl_link != NULL) && (dobj->flags == DOBJ_FLAG_NONE))
     {
-        dl_start = gSYTasklogDLHeads[dl_link->list_id];
-        num = gcPrepDObjMatrix(&gSYTasklogDLHeads[dl_link->list_id], dobj);
-        dl_end = gSYTasklogDLHeads[dl_link->list_id];
+        dl_start = gSYTaskmanDLHeads[dl_link->list_id];
+        num = gcPrepDObjMatrix(&gSYTaskmanDLHeads[dl_link->list_id], dobj);
+        dl_end = gSYTaskmanDLHeads[dl_link->list_id];
 
         if (dl_link->dl != NULL)
         {
-            ptr = gSYTasklogGraphicsHeap.ptr;
+            ptr = gSYTaskmanGraphicsHeap.ptr;
 
-            gcDrawMObjForDObj(dobj, &gSYTasklogDLHeads[dl_link->list_id]);
-            gSPDisplayList(gSYTasklogDLHeads[dl_link->list_id]++, dl_link->dl);
+            gcDrawMObjForDObj(dobj, &gSYTaskmanDLHeads[dl_link->list_id]);
+            gSPDisplayList(gSYTaskmanDLHeads[dl_link->list_id]++, dl_link->dl);
 
             if (num != 0)
             {
                 if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
                 {
-                    gSPPopMatrix(gSYTasklogDLHeads[dl_link->list_id]++, G_MTX_MODELVIEW);
+                    gSPPopMatrix(gSYTaskmanDLHeads[dl_link->list_id]++, G_MTX_MODELVIEW);
                 }
             }
         }
         else list_id = dl_link->list_id;
 
-        while ((++dl_link)->list_id != ARRAY_COUNT(gSYTasklogDLHeads))
+        while ((++dl_link)->list_id != ARRAY_COUNT(gSYTaskmanDLHeads))
         {
             if (dl_link->dl != NULL)
             {
@@ -1647,19 +1647,19 @@ void gcDrawDObjDLLinks(DObj *dobj, DObjDLLink *dl_link)
 
                 while (dl_current != dl_end)
                 {
-                    *gSYTasklogDLHeads[dl_link->list_id]++ = *dl_current++;
+                    *gSYTaskmanDLHeads[dl_link->list_id]++ = *dl_current++;
                 }
                 if (dobj->mobj != NULL)
                 {
-                    gSPSegment(gSYTasklogDLHeads[dl_link->list_id]++, 0xE, ptr);
+                    gSPSegment(gSYTaskmanDLHeads[dl_link->list_id]++, 0xE, ptr);
                 }
-                gSPDisplayList(gSYTasklogDLHeads[dl_link->list_id]++, dl_link->dl);
+                gSPDisplayList(gSYTaskmanDLHeads[dl_link->list_id]++, dl_link->dl);
 
                 if (num != 0)
                 {
                     if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
                     {
-                        gSPPopMatrix(gSYTasklogDLHeads[dl_link->list_id]++, G_MTX_MODELVIEW);
+                        gSPPopMatrix(gSYTaskmanDLHeads[dl_link->list_id]++, G_MTX_MODELVIEW);
                     }
                 }
             }
@@ -1667,7 +1667,7 @@ void gcDrawDObjDLLinks(DObj *dobj, DObjDLLink *dl_link)
         }
         if (list_id != -1)
         {
-            gSYTasklogDLHeads[list_id] = dl_start;
+            gSYTaskmanDLHeads[list_id] = dl_start;
         }
     }
     else return;
@@ -1715,27 +1715,27 @@ void gcDrawDObjTreeDLLinks(DObj *dobj)
 
         if ((dl_link != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
-            while (dl_link->list_id != ARRAY_COUNT(gSYTasklogDLHeads))
+            while (dl_link->list_id != ARRAY_COUNT(gSYTaskmanDLHeads))
             {
                 if (dl_link->dl != NULL)
                 {
                     while (D_800470B0 != D_800470B8[dl_link->list_id])
                     {
-                        *gSYTasklogDLHeads[dl_link->list_id]++ = *D_800470B8[dl_link->list_id]++;
+                        *gSYTaskmanDLHeads[dl_link->list_id]++ = *D_800470B8[dl_link->list_id]++;
                     }
                     if (dobj->mobj != NULL)
                     {
                         if (ptr == NULL)
                         {
-                            ptr = gSYTasklogGraphicsHeap.ptr;
-                            gcDrawMObjForDObj(dobj, &gSYTasklogDLHeads[dl_link->list_id]);
+                            ptr = gSYTaskmanGraphicsHeap.ptr;
+                            gcDrawMObjForDObj(dobj, &gSYTaskmanDLHeads[dl_link->list_id]);
 
-                            goto set_display_list; // The goto is required ONLY if we condense the gSYTasklogDLHeads and D_800470B8 increments into a single operation.
+                            goto set_display_list; // The goto is required ONLY if we condense the gSYTaskmanDLHeads and D_800470B8 increments into a single operation.
                         }
-                        else gSPSegment(gSYTasklogDLHeads[dl_link->list_id]++, 0xE, ptr);
+                        else gSPSegment(gSYTaskmanDLHeads[dl_link->list_id]++, 0xE, ptr);
                     }
                 set_display_list:
-                    gSPDisplayList(gSYTasklogDLHeads[dl_link->list_id]++, dl_link->dl);
+                    gSPDisplayList(gSYTaskmanDLHeads[dl_link->list_id]++, dl_link->dl);
                 }
                 dl_link++;
             }
@@ -1756,7 +1756,7 @@ void gcDrawDObjTreeDLLinks(DObj *dobj)
                 {
                     if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
                     {
-                        gSPPopMatrix(gSYTasklogDLHeads[i]++, G_MTX_MODELVIEW);
+                        gSPPopMatrix(gSYTaskmanDLHeads[i]++, G_MTX_MODELVIEW);
                     }
                 }
             }
@@ -1819,15 +1819,15 @@ void unref_800147E0(GObj *gobj)
 
         if (dist_dl->dl != NULL) 
         {
-            num = gcPrepDObjMatrix(gSYTasklogDLHeads, dobj);
-            gcDrawMObjForDObj(dobj, gSYTasklogDLHeads);
-            gSPDisplayList(gSYTasklogDLHeads[0]++, dist_dl->dl);
+            num = gcPrepDObjMatrix(gSYTaskmanDLHeads, dobj);
+            gcDrawMObjForDObj(dobj, gSYTaskmanDLHeads);
+            gSPDisplayList(gSYTaskmanDLHeads[0]++, dist_dl->dl);
 
             if (num != 0)
             {
                 if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
                 {
-                    gSPPopMatrix(gSYTasklogDLHeads[0]++, G_MTX_MODELVIEW);
+                    gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
                 }
             }
         }
@@ -1847,14 +1847,14 @@ void gcDrawDObjTreeMultiList(DObj *dobj)
     if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
         bak = gODScaleX;
-        num = gcPrepDObjMatrix(gSYTasklogDLHeads, dobj);
+        num = gcPrepDObjMatrix(gSYTaskmanDLHeads, dobj);
 
         if ((dls != NULL) && (dls[sODDetailLevel] != NULL)) 
         {
             if (!(dobj->flags & DOBJ_FLAG_NOTEXTURE))
             {
-                gcDrawMObjForDObj(dobj, gSYTasklogDLHeads);
-                gSPDisplayList(gSYTasklogDLHeads[0]++, dls[sODDetailLevel]);
+                gcDrawMObjForDObj(dobj, gSYTaskmanDLHeads);
+                gSPDisplayList(gSYTaskmanDLHeads[0]++, dls[sODDetailLevel]);
             }
         }
         if (dobj->child != NULL) 
@@ -1865,7 +1865,7 @@ void gcDrawDObjTreeMultiList(DObj *dobj)
         {
             if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
             {
-                gSPPopMatrix(gSYTasklogDLHeads[0]++, G_MTX_MODELVIEW);
+                gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
             }
         }
         gODScaleX = bak;
@@ -1908,12 +1908,12 @@ void unref_80014A84(GObj *gobj)
                 dist_dl++;
                 sODDetailLevel++;
             }
-            num = gcPrepDObjMatrix(gSYTasklogDLHeads, dobj);
+            num = gcPrepDObjMatrix(gSYTaskmanDLHeads, dobj);
 
             if ((dist_dl->dl != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
             {
-                gcDrawMObjForDObj(dobj, gSYTasklogDLHeads);
-                gSPDisplayList(gSYTasklogDLHeads[0]++, dist_dl->dl);
+                gcDrawMObjForDObj(dobj, gSYTaskmanDLHeads);
+                gSPDisplayList(gSYTaskmanDLHeads[0]++, dist_dl->dl);
             }
             if (dobj->child != NULL)
             {
@@ -1923,7 +1923,7 @@ void unref_80014A84(GObj *gobj)
             {
                 if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
                 {
-                    gSPPopMatrix(gSYTasklogDLHeads[0]++, G_MTX_MODELVIEW);
+                    gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
                 }
             }
             if (dobj->sib_prev == NULL)
@@ -1996,27 +1996,27 @@ void func_80014CD0(DObj *dobj)
 
         if ((s0 != NULL) && (dl_link != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
-            while (dl_link->list_id != ARRAY_COUNT(gSYTasklogDLHeads))
+            while (dl_link->list_id != ARRAY_COUNT(gSYTaskmanDLHeads))
             {
                 if (dl_link->dl != NULL)
                 {
                     while (D_800470B0 != D_800470B8[dl_link->list_id])
                     {
-                        *gSYTasklogDLHeads[dl_link->list_id]++ = *D_800470B8[dl_link->list_id]++;
+                        *gSYTaskmanDLHeads[dl_link->list_id]++ = *D_800470B8[dl_link->list_id]++;
                     }
                     if (dobj->mobj != NULL)
                     {
                         if (ptr == NULL)
                         {
-                            ptr = gSYTasklogGraphicsHeap.ptr;
-                            gcDrawMObjForDObj(dobj, &gSYTasklogDLHeads[dl_link->list_id]);
+                            ptr = gSYTaskmanGraphicsHeap.ptr;
+                            gcDrawMObjForDObj(dobj, &gSYTaskmanDLHeads[dl_link->list_id]);
 
                             goto set_display_list; // *sigh* required to match...
                         }
-                        else gSPSegment(gSYTasklogDLHeads[dl_link->list_id]++, 0xE, ptr);
+                        else gSPSegment(gSYTaskmanDLHeads[dl_link->list_id]++, 0xE, ptr);
                     }
                 set_display_list:
-                    gSPDisplayList(gSYTasklogDLHeads[dl_link->list_id]++, dl_link->dl);
+                    gSPDisplayList(gSYTaskmanDLHeads[dl_link->list_id]++, dl_link->dl);
                 }
                 dl_link++;
             }
@@ -2037,7 +2037,7 @@ void func_80014CD0(DObj *dobj)
                 {
                     if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
                     {
-                        gSPPopMatrix(gSYTasklogDLHeads[i]++, G_MTX_MODELVIEW);
+                        gSPPopMatrix(gSYTaskmanDLHeads[i]++, G_MTX_MODELVIEW);
                     }
                 }
             }
@@ -2095,27 +2095,27 @@ void unref_80014FFC(GObj *gobj)
 
             if ((dl_link != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
             {
-                while (dl_link->list_id != ARRAY_COUNT(gSYTasklogDLHeads))
+                while (dl_link->list_id != ARRAY_COUNT(gSYTaskmanDLHeads))
                 {
                     if (dl_link->dl != NULL)
                     {
                         while (D_800470B0 != D_800470B8[dl_link->list_id])
                         {
-                            *gSYTasklogDLHeads[dl_link->list_id]++ = *D_800470B8[dl_link->list_id]++;
+                            *gSYTaskmanDLHeads[dl_link->list_id]++ = *D_800470B8[dl_link->list_id]++;
                         }
                         if (dobj->mobj != NULL)
                         {
                             if (ptr == NULL)
                             {
-                                ptr = gSYTasklogGraphicsHeap.ptr;
-                                gcDrawMObjForDObj(dobj, &gSYTasklogDLHeads[dl_link->list_id]);
+                                ptr = gSYTaskmanGraphicsHeap.ptr;
+                                gcDrawMObjForDObj(dobj, &gSYTaskmanDLHeads[dl_link->list_id]);
 
                                 goto set_display_list;
                             }
-                            else gSPSegment(gSYTasklogDLHeads[dl_link->list_id]++, 0xE, ptr);
+                            else gSPSegment(gSYTaskmanDLHeads[dl_link->list_id]++, 0xE, ptr);
                         }
                     set_display_list:
-                        gSPDisplayList(gSYTasklogDLHeads[dl_link->list_id]++, dl_link->dl);
+                        gSPDisplayList(gSYTaskmanDLHeads[dl_link->list_id]++, dl_link->dl);
                     }
                     dl_link++;
                 }
@@ -2137,7 +2137,7 @@ void unref_80014FFC(GObj *gobj)
                     {
                         if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
                         {
-                            gSPPopMatrix(gSYTasklogDLHeads[i]++, G_MTX_MODELVIEW);
+                            gSPPopMatrix(gSYTaskmanDLHeads[i]++, G_MTX_MODELVIEW);
                         }
                     }
                     else continue;
@@ -2175,14 +2175,14 @@ void gcDrawDObjTreeDLArray(DObj *dobj)
 
         if ((dls != NULL) && (dls[0] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
-            gSPDisplayList(gSYTasklogDLHeads[0]++, dls[0]);
+            gSPDisplayList(gSYTaskmanDLHeads[0]++, dls[0]);
         }
-        num = gcPrepDObjMatrix(gSYTasklogDLHeads, dobj);
+        num = gcPrepDObjMatrix(gSYTaskmanDLHeads, dobj);
 
         if ((dls != NULL) && (dls[1] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
-            gcDrawMObjForDObj(dobj, gSYTasklogDLHeads);
-            gSPDisplayList(gSYTasklogDLHeads[0]++, dls[1]);
+            gcDrawMObjForDObj(dobj, gSYTaskmanDLHeads);
+            gSPDisplayList(gSYTaskmanDLHeads[0]++, dls[1]);
         }
         if (dobj->child != NULL)
         { 
@@ -2192,7 +2192,7 @@ void gcDrawDObjTreeDLArray(DObj *dobj)
         {
             if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
             {
-                gSPPopMatrix(gSYTasklogDLHeads[0]++, G_MTX_MODELVIEW);
+                gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
             }
         }
         gODScaleX = bak;
@@ -2239,31 +2239,31 @@ void func_80015520(DObj *dobj)
 
         if ((multi_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
-            while (multi_list->id != ARRAY_COUNT(gSYTasklogDLHeads))
+            while (multi_list->id != ARRAY_COUNT(gSYTaskmanDLHeads))
             {
                 if (multi_list->dl2 != NULL)
                 {
                     if (multi_list->dl1 != NULL)
                     {
-                        gSPDisplayList(gSYTasklogDLHeads[multi_list->id]++, multi_list->dl1);
+                        gSPDisplayList(gSYTaskmanDLHeads[multi_list->id]++, multi_list->dl1);
                     }
                     while (D_800470B0 != D_800470B8[multi_list->id])
                     {
-                        *gSYTasklogDLHeads[multi_list->id]++ = *D_800470B8[multi_list->id]++;
+                        *gSYTaskmanDLHeads[multi_list->id]++ = *D_800470B8[multi_list->id]++;
                     }
                     if (dobj->mobj != NULL)
                     {
                         if (ptr == NULL)
                         {
-                            ptr = gSYTasklogGraphicsHeap.ptr;
-                            gcDrawMObjForDObj(dobj, &gSYTasklogDLHeads[multi_list->id]);
+                            ptr = gSYTaskmanGraphicsHeap.ptr;
+                            gcDrawMObjForDObj(dobj, &gSYTaskmanDLHeads[multi_list->id]);
 
                             goto set_display_list;
                         }
-                        else gSPSegment(gSYTasklogDLHeads[multi_list->id]++, 0xE, ptr);
+                        else gSPSegment(gSYTaskmanDLHeads[multi_list->id]++, 0xE, ptr);
                     }
                 set_display_list:
-                    gSPDisplayList(gSYTasklogDLHeads[multi_list->id]++, multi_list->dl2);
+                    gSPDisplayList(gSYTaskmanDLHeads[multi_list->id]++, multi_list->dl2);
                 }
                 multi_list++;
             }
@@ -2284,7 +2284,7 @@ void func_80015520(DObj *dobj)
                 {
                     if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
                     {
-                        gSPPopMatrix(gSYTasklogDLHeads[i]++, G_MTX_MODELVIEW);
+                        gSPPopMatrix(gSYTaskmanDLHeads[i]++, G_MTX_MODELVIEW);
                     }
                 }
                 else continue;
@@ -2332,14 +2332,14 @@ void gcDrawDObjTreeDLDoubleArray(DObj *dobj)
         }
         if ((p_dls != NULL) && (dls[0] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
-            gSPDisplayList(gSYTasklogDLHeads[0]++, dls[0]);
+            gSPDisplayList(gSYTaskmanDLHeads[0]++, dls[0]);
         }
-        num = gcPrepDObjMatrix(gSYTasklogDLHeads, dobj);
+        num = gcPrepDObjMatrix(gSYTaskmanDLHeads, dobj);
 
         if ((p_dls != NULL) && (dls[1]) != NULL && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
-            gcDrawMObjForDObj(dobj, gSYTasklogDLHeads);
-            gSPDisplayList(gSYTasklogDLHeads[0]++, dls[1]);
+            gcDrawMObjForDObj(dobj, gSYTaskmanDLHeads);
+            gSPDisplayList(gSYTaskmanDLHeads[0]++, dls[1]);
         }
         if (dobj->child != NULL)
         {
@@ -2349,7 +2349,7 @@ void gcDrawDObjTreeDLDoubleArray(DObj *dobj)
         {
             if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
             {
-                gSPPopMatrix(gSYTasklogDLHeads[0]++, G_MTX_MODELVIEW);
+                gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
             }
         }
         gODScaleX = bak;
@@ -2393,12 +2393,12 @@ void unref_80015A58(GObj *gobj)
                 sODDetailLevel++;
                 dist_dl++;
             }
-            num = gcPrepDObjMatrix(gSYTasklogDLHeads, dobj);
+            num = gcPrepDObjMatrix(gSYTaskmanDLHeads, dobj);
 
             if ((dist_dl->dl != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
             {
-                gcDrawMObjForDObj(dobj, gSYTasklogDLHeads);
-                gSPDisplayList(gSYTasklogDLHeads[0]++, dist_dl->dl);
+                gcDrawMObjForDObj(dobj, gSYTaskmanDLHeads);
+                gSPDisplayList(gSYTaskmanDLHeads[0]++, dist_dl->dl);
             }
             if (dobj->child != NULL)
             {
@@ -2408,7 +2408,7 @@ void unref_80015A58(GObj *gobj)
             {
                 if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
                 {
-                    gSPPopMatrix(gSYTasklogDLHeads[0]++, G_MTX_MODELVIEW);
+                    gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
                 }
             }
             if (dobj->sib_prev == NULL)
@@ -2455,31 +2455,31 @@ void func_80015C0C(DObj *dobj)
 
         if ((p_multi_list != NULL) && (multi_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
-            while (multi_list->id != ARRAY_COUNT(gSYTasklogDLHeads))
+            while (multi_list->id != ARRAY_COUNT(gSYTaskmanDLHeads))
             {
                 if (multi_list->dl2 != NULL) 
                 {
                     if (multi_list->dl1 != NULL)
                     { 
-                        gSPDisplayList(gSYTasklogDLHeads[multi_list->id]++, multi_list->dl1);
+                        gSPDisplayList(gSYTaskmanDLHeads[multi_list->id]++, multi_list->dl1);
                     }
                     while (D_800470B0 != D_800470B8[multi_list->id]) 
                     {
-                        *gSYTasklogDLHeads[multi_list->id]++ = *D_800470B8[multi_list->id]++;
+                        *gSYTaskmanDLHeads[multi_list->id]++ = *D_800470B8[multi_list->id]++;
                     }
                     if (dobj->mobj != NULL) 
                     {
                         if (ptr == NULL) 
                         {
-                            ptr = gSYTasklogGraphicsHeap.ptr;
-                            gcDrawMObjForDObj(dobj, &gSYTasklogDLHeads[multi_list->id]);
+                            ptr = gSYTaskmanGraphicsHeap.ptr;
+                            gcDrawMObjForDObj(dobj, &gSYTaskmanDLHeads[multi_list->id]);
 
                             goto set_display_list;
                         }
-                        else gSPSegment(gSYTasklogDLHeads[multi_list->id]++, 0xE, ptr);
+                        else gSPSegment(gSYTaskmanDLHeads[multi_list->id]++, 0xE, ptr);
                     }
                 set_display_list:
-                    gSPDisplayList(gSYTasklogDLHeads[multi_list->id]++, multi_list->dl2);
+                    gSPDisplayList(gSYTaskmanDLHeads[multi_list->id]++, multi_list->dl2);
                 }
                 multi_list++;
             }
@@ -2490,7 +2490,7 @@ void func_80015C0C(DObj *dobj)
         }
         D_800470B0 = dl;
 
-        for (i = 0; i < ARRAY_COUNT(gSYTasklogDLHeads); i++) 
+        for (i = 0; i < ARRAY_COUNT(gSYTaskmanDLHeads); i++) 
         {
             if (D_800470B8[i] > D_800470B0)
             {
@@ -2500,7 +2500,7 @@ void func_80015C0C(DObj *dobj)
                 {
                     if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
                     {
-                        gSPPopMatrix(gSYTasklogDLHeads[i]++, G_MTX_MODELVIEW);
+                        gSPPopMatrix(gSYTaskmanDLHeads[i]++, G_MTX_MODELVIEW);
                     }
                 }
                 continue; // Not required this time; this is for the sake of consistency.
@@ -2558,27 +2558,27 @@ void unref_80015F6C(GObj *gobj)
 
             if ((dl_link != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
             {
-                while (dl_link->list_id != ARRAY_COUNT(gSYTasklogDLHeads))
+                while (dl_link->list_id != ARRAY_COUNT(gSYTaskmanDLHeads))
                 {
                     if (dl_link->dl != NULL)
                     {
                         while (D_800470B0 != D_800470B8[dl_link->list_id])
                         {
-                            *gSYTasklogDLHeads[dl_link->list_id]++ = *D_800470B8[dl_link->list_id]++;
+                            *gSYTaskmanDLHeads[dl_link->list_id]++ = *D_800470B8[dl_link->list_id]++;
                         }
                         if (dobj->mobj != NULL)
                         {
                             if (ptr == NULL)
                             {
-                                ptr = gSYTasklogGraphicsHeap.ptr;
-                                gcDrawMObjForDObj(dobj, &gSYTasklogDLHeads[dl_link->list_id]);
+                                ptr = gSYTaskmanGraphicsHeap.ptr;
+                                gcDrawMObjForDObj(dobj, &gSYTaskmanDLHeads[dl_link->list_id]);
 
                                 goto set_display_list;
                             }
-                            else gSPSegment(gSYTasklogDLHeads[dl_link->list_id]++, 0xE, ptr);
+                            else gSPSegment(gSYTaskmanDLHeads[dl_link->list_id]++, 0xE, ptr);
                         }
                     set_display_list:
-                        gSPDisplayList(gSYTasklogDLHeads[dl_link->list_id]++, dl_link->dl);
+                        gSPDisplayList(gSYTaskmanDLHeads[dl_link->list_id]++, dl_link->dl);
                     }
                     dl_link++;
                 }
@@ -2599,7 +2599,7 @@ void unref_80015F6C(GObj *gobj)
                     {
                         if ((dobj->parent == DOBJ_PARENT_NULL) || (dobj->sib_next != NULL))
                         {
-                            gSPPopMatrix(gSYTasklogDLHeads[i]++, G_MTX_MODELVIEW);
+                            gSPPopMatrix(gSYTaskmanDLHeads[i]++, G_MTX_MODELVIEW);
                         }
                     }
                     else continue;
@@ -2628,11 +2628,11 @@ void unref_800162C8(GObj *gobj)
     {
         if (!(sobj->sprite.attr & SP_HIDDEN))
         {
-            sobj->sprite.rsp_dl_next = gSYTasklogDLHeads[0];
+            sobj->sprite.rsp_dl_next = gSYTaskmanDLHeads[0];
 
             spDraw(&sobj->sprite);
 
-            gSYTasklogDLHeads[0] = sobj->sprite.rsp_dl_next - 1;
+            gSYTaskmanDLHeads[0] = sobj->sprite.rsp_dl_next - 1;
         }
         sobj = sobj->next;
     }
@@ -2649,7 +2649,7 @@ void func_80016338(Gfx **dls, Camera *cam, s32 arg2)
     {
         if (cam->flags & 0x20)
         {
-            syTasklogAppendGfxUcodeLoad(dls, D_80046626);
+            syTaskmanAppendGfxUcodeLoad(dls, D_80046626);
             D_80046628 = 1;
 
             dl = dls[0];
@@ -2704,7 +2704,7 @@ void func_8001663C(Gfx **dls, Camera *cam, s32 arg2)
     {
         if (cam->flags & 0x20)
         {
-            syTasklogAppendGfxUcodeLoad(dls, D_80046626);
+            syTaskmanAppendGfxUcodeLoad(dls, D_80046626);
             D_80046628 = 1;
 
             dl = dls[0];
@@ -2861,10 +2861,10 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
 
                 if (ommtx->unk05 != 2)
                 {
-                    if (gSYTasklogTaskID > 0)
+                    if (gSYTaskmanTaskID > 0)
                     {
-                        mtx_store.gbi = gSYTasklogGraphicsHeap.ptr;
-                        gSYTasklogGraphicsHeap.ptr = mtx_store.gbi + 1;
+                        mtx_store.gbi = gSYTaskmanGraphicsHeap.ptr;
+                        gSYTaskmanGraphicsHeap.ptr = mtx_store.gbi + 1;
                     }
                     switch (ommtx->kind)
                     {
@@ -2951,7 +2951,7 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
 
                     case 12:
                     case 13:
-                        look_at = syMallocSet(&gSYTasklogGraphicsHeap, sizeof(LookAt), 0x8);
+                        look_at = syMallocSet(&gSYTaskmanGraphicsHeap, sizeof(LookAt), 0x8);
                         syMatrixLookAtReflect
                         (
                             mtx_store.gbi,
@@ -2971,14 +2971,14 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
 
                     case 14:
                     case 15:
-                        look_at = syMallocSet(&gSYTasklogGraphicsHeap, sizeof(LookAt), 0x8);
+                        look_at = syMallocSet(&gSYTaskmanGraphicsHeap, sizeof(LookAt), 0x8);
                         var_s3 = 1;
                         syMatrixModLookAtReflect(mtx_store.gbi, look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 1.0F, 0.0F);
                         break;
 
                     case 16:
                     case 17:
-                        look_at = syMallocSet(&gSYTasklogGraphicsHeap, sizeof(LookAt), 0x8);
+                        look_at = syMallocSet(&gSYTaskmanGraphicsHeap, sizeof(LookAt), 0x8);
                         var_s3 = 2;
 
                         syMatrixModLookAtReflect(mtx_store.gbi, look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 0.0F, 1.0F);
@@ -3186,7 +3186,7 @@ void func_80017868(GObj *this_gobj, s32 link_id, s32 arg2)
                 gOMObjCurrentDisplay = current_gobj;
                 current_gobj->proc_display(current_gobj);
                 D_8003B874_3C474 = 3;
-                current_gobj->frame_draw_last = dSYTasklogFrameDrawCount;
+                current_gobj->frame_draw_last = dSYTaskmanFrameDrawCount;
             }
         }
         current_gobj = current_gobj->dl_link_next;
@@ -3199,31 +3199,31 @@ void func_80017978(GObj *gobj, s32 index, s32 arg2)
     Gfx *sp38[4];
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(gSYTasklogDLHeads); i++)
+    for (i = 0; i < ARRAY_COUNT(gSYTaskmanDLHeads); i++)
     {
-        sp38[i] = gSYTasklogDLHeads[i];
-        gSYTasklogDLHeads[i] += 2;
+        sp38[i] = gSYTaskmanDLHeads[i];
+        gSYTaskmanDLHeads[i] += 2;
     }
     func_80017868(gobj, index, arg2);
 
-    for (i = 0; i < ARRAY_COUNT(gSYTasklogDLHeads); i++)
+    for (i = 0; i < ARRAY_COUNT(gSYTaskmanDLHeads); i++)
     {
-        if (gSYTasklogDLHeads[i] == sp38[i] + 2)
+        if (gSYTaskmanDLHeads[i] == sp38[i] + 2)
         {
-            gSYTasklogDLHeads[i] -= 2;
+            gSYTaskmanDLHeads[i] -= 2;
             D_80046A88[index].dls[i] = NULL;
         }
         else
         {
-            gSPEndDisplayList(gSYTasklogDLHeads[i]++);
+            gSPEndDisplayList(gSYTaskmanDLHeads[i]++);
 
             gSPDisplayList(sp38[i], sp38[i] + 2);
             sp38[i]++;
-            gSPBranchList(sp38[i]++, gSYTasklogDLHeads[i]);
+            gSPBranchList(sp38[i]++, gSYTaskmanDLHeads[i]);
             D_80046A88[index].dls[i] = sp38[i];
         }
     }
-    D_80046A88[index].id = dSYTasklogFrameDrawCount;
+    D_80046A88[index].id = dSYTaskmanFrameDrawCount;
 }
 
 // 0x80017AAC
@@ -3231,11 +3231,11 @@ void func_80017AAC(s32 index)
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(gSYTasklogDLHeads); i++) 
+    for (i = 0; i < ARRAY_COUNT(gSYTaskmanDLHeads); i++) 
     {
         if (D_80046A88[index].dls[i] != NULL)
         {
-            gSPDisplayList(gSYTasklogDLHeads[i]++, D_80046A88[index].dls[i]);
+            gSPDisplayList(gSYTaskmanDLHeads[i]++, D_80046A88[index].dls[i]);
         }
     }
 }
@@ -3258,7 +3258,7 @@ void func_80017B80(GObj *gobj, s32 arg1)
         {
             if (sp30 & 1)
             {
-                if ((u8)dSYTasklogFrameDrawCount == D_80046A88[id].id)
+                if ((u8)dSYTaskmanFrameDrawCount == D_80046A88[id].id)
                 {
                     func_80017AAC(id);
                 } 
@@ -3304,25 +3304,25 @@ void func_80017D3C(GObj *gobj, Gfx **dls, s32 index)
 // 0x80017DBC
 void func_80017DBC(GObj *gobj) 
 {
-    func_80017D3C(gobj, &gSYTasklogDLHeads[0], 0);
+    func_80017D3C(gobj, &gSYTaskmanDLHeads[0], 0);
 }
 
 // 0x80017DE4
 void unref_80017DE4(GObj *gobj)
 {
-    func_80017D3C(gobj, &gSYTasklogDLHeads[1], 1);
+    func_80017D3C(gobj, &gSYTaskmanDLHeads[1], 1);
 }
 
 // 0x80017E0C
 void unref_80017E0C(GObj *gobj) 
 {
-    func_80017D3C(gobj, &gSYTasklogDLHeads[2], 2);
+    func_80017D3C(gobj, &gSYTaskmanDLHeads[2], 2);
 }
 
 // 0x80017E34
 void unref_80017E34(GObj *gobj)
 {
-    func_80017D3C(gobj, &gSYTasklogDLHeads[3], 3);
+    func_80017D3C(gobj, &gSYTaskmanDLHeads[3], 3);
 }
 
 // 0x80017E5C
@@ -3332,8 +3332,8 @@ void unref_80017E5C(void)
 
     func_800053CC();
     func_80004F78();
-    func_8001663C(gSYTasklogDLHeads, cam, 0);
-    gcPrepCameraMatrix(gSYTasklogDLHeads, cam);
+    func_8001663C(gSYTaskmanDLHeads, cam, 0);
+    gcPrepCameraMatrix(gSYTaskmanDLHeads, cam);
     gcRunProcCamera(cam, 0);
 }
 
@@ -3343,47 +3343,47 @@ void func_80017EC0(GObj *gobj)
     Camera *cam = CameraGetStruct(gobj);
     s32 i;
 
-    func_8001663C(gSYTasklogDLHeads, cam, 0);
-    D_800472C0 = gSYTasklogDLHeads[0] + 1;
-    gSPDisplayList(gSYTasklogDLHeads[0], gSYTasklogDLHeads[0] + 2);
-    gSYTasklogDLHeads[0] += 2;
+    func_8001663C(gSYTaskmanDLHeads, cam, 0);
+    D_800472C0 = gSYTaskmanDLHeads[0] + 1;
+    gSPDisplayList(gSYTaskmanDLHeads[0], gSYTaskmanDLHeads[0] + 2);
+    gSYTaskmanDLHeads[0] += 2;
 
-    gcPrepCameraMatrix(gSYTasklogDLHeads, cam);
-    gSPEndDisplayList(gSYTasklogDLHeads[0]++);
-    gSPBranchList(D_800472C0, gSYTasklogDLHeads[0]);
+    gcPrepCameraMatrix(gSYTaskmanDLHeads, cam);
+    gSPEndDisplayList(gSYTaskmanDLHeads[0]++);
+    gSPBranchList(D_800472C0, gSYTaskmanDLHeads[0]);
 
     gcRunProcCamera(cam, 0);
 
     if (cam->flags & 0x20)
     {
-        func_80016338(&gSYTasklogDLHeads[1], cam, 1);
+        func_80016338(&gSYTaskmanDLHeads[1], cam, 1);
     }
-    for (i = 1; i < (ARRAY_COUNT(gSYTasklogDLHeads) + ARRAY_COUNT(D_800472B0)) / 2; i++)
+    for (i = 1; i < (ARRAY_COUNT(gSYTaskmanDLHeads) + ARRAY_COUNT(D_800472B0)) / 2; i++)
     {
-        D_800472B0[i] = ++gSYTasklogDLHeads[i];
+        D_800472B0[i] = ++gSYTaskmanDLHeads[i];
     }
 
     func_80017B80(gobj, (cam->flags & 0x8) ? TRUE : FALSE);
 
-    for (i = 1; i < (ARRAY_COUNT(gSYTasklogDLHeads) + ARRAY_COUNT(D_800472B0)) / 2; i++)
+    for (i = 1; i < (ARRAY_COUNT(gSYTaskmanDLHeads) + ARRAY_COUNT(D_800472B0)) / 2; i++)
     {
-        if (D_800472B0[i] == gSYTasklogDLHeads[i])
+        if (D_800472B0[i] == gSYTaskmanDLHeads[i])
         {
-            gSYTasklogDLHeads[i]--;
+            gSYTaskmanDLHeads[i]--;
         }
         else
         {
-            Gfx *start = gSYTasklogDLHeads[i]++;
-            gSPDisplayList(D_800472B0[i] - 1, gSYTasklogDLHeads[i]);
+            Gfx *start = gSYTaskmanDLHeads[i]++;
+            gSPDisplayList(D_800472B0[i] - 1, gSYTaskmanDLHeads[i]);
 
             if ((i != 1) || !(cam->flags & 0x20))
             {
-                func_80016338(&gSYTasklogDLHeads[i], cam, i);
+                func_80016338(&gSYTaskmanDLHeads[i], cam, i);
             }
-            gSPDisplayList(gSYTasklogDLHeads[i]++, D_800472C0 + 1);
+            gSPDisplayList(gSYTaskmanDLHeads[i]++, D_800472C0 + 1);
             gcRunProcCamera(cam, i);
-            gSPEndDisplayList(gSYTasklogDLHeads[i]++);
-            gSPBranchList(start, gSYTasklogDLHeads[i]);
+            gSPEndDisplayList(gSYTaskmanDLHeads[i]++);
+            gSPBranchList(start, gSYTaskmanDLHeads[i]);
         }
     }
     func_80017CC8(cam);
@@ -3395,43 +3395,43 @@ void unref_8001810C(void)
     Camera *cam = CameraGetStruct(gOMObjCurrentCamera);
     s32 i;
 
-    for (i = 1; i < (ARRAY_COUNT(gSYTasklogDLHeads) + ARRAY_COUNT(D_800472B0)) / 2; i++)
+    for (i = 1; i < (ARRAY_COUNT(gSYTaskmanDLHeads) + ARRAY_COUNT(D_800472B0)) / 2; i++)
     {
-        if (D_800472B0[i] == gSYTasklogDLHeads[i])
+        if (D_800472B0[i] == gSYTaskmanDLHeads[i])
         {
-            gSYTasklogDLHeads[i]--;
+            gSYTaskmanDLHeads[i]--;
         }
         else
         {
-            Gfx *start = gSYTasklogDLHeads[i]++;
+            Gfx *start = gSYTaskmanDLHeads[i]++;
 
-            gSPDisplayList(D_800472B0[i] - 1, gSYTasklogDLHeads[i]);
-            func_80016338(&gSYTasklogDLHeads[i], cam, i);
-            gSPDisplayList(gSYTasklogDLHeads[i]++, D_800472C0 + 1);
+            gSPDisplayList(D_800472B0[i] - 1, gSYTaskmanDLHeads[i]);
+            func_80016338(&gSYTaskmanDLHeads[i], cam, i);
+            gSPDisplayList(gSYTaskmanDLHeads[i]++, D_800472C0 + 1);
             gcRunProcCamera(cam, i);
-            gSPEndDisplayList(gSYTasklogDLHeads[i]++);
-            gSPBranchList(start, gSYTasklogDLHeads[i]);
+            gSPEndDisplayList(gSYTaskmanDLHeads[i]++);
+            gSPBranchList(start, gSYTaskmanDLHeads[i]);
         }
     }
     func_800053CC();
     func_80004F78();
-    func_8001663C(&gSYTasklogDLHeads[0], cam, 0);
+    func_8001663C(&gSYTaskmanDLHeads[0], cam, 0);
 
-    D_800472C0 = gSYTasklogDLHeads[0] + 1;
+    D_800472C0 = gSYTaskmanDLHeads[0] + 1;
 
-    gSPDisplayList(gSYTasklogDLHeads[0], gSYTasklogDLHeads[0] + 2);
+    gSPDisplayList(gSYTaskmanDLHeads[0], gSYTaskmanDLHeads[0] + 2);
 
-    gSYTasklogDLHeads[0] += 2;
+    gSYTaskmanDLHeads[0] += 2;
 
-    gcPrepCameraMatrix(gSYTasklogDLHeads, cam);
-    gSPEndDisplayList(gSYTasklogDLHeads[0]++);
-    gSPBranchList(D_800472C0, gSYTasklogDLHeads[0]);
+    gcPrepCameraMatrix(gSYTaskmanDLHeads, cam);
+    gSPEndDisplayList(gSYTaskmanDLHeads[0]++);
+    gSPBranchList(D_800472C0, gSYTaskmanDLHeads[0]);
 
     gcRunProcCamera(cam, 0);
 
-    for (i = 1; i < (ARRAY_COUNT(gSYTasklogDLHeads) + ARRAY_COUNT(D_800472B0)) / 2; i++)
+    for (i = 1; i < (ARRAY_COUNT(gSYTaskmanDLHeads) + ARRAY_COUNT(D_800472B0)) / 2; i++)
     {
-        D_800472B0[i] = ++gSYTasklogDLHeads[i];
+        D_800472B0[i] = ++gSYTaskmanDLHeads[i];
     }
 }
 
@@ -3461,15 +3461,15 @@ void func_80018300(GObj *gobj)
     {
         ymax = gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorBottom);
     }
-    func_8001663C(gSYTasklogDLHeads, cam, 0);
-    spInit(gSYTasklogDLHeads);
+    func_8001663C(gSYTaskmanDLHeads, cam, 0);
+    spInit(gSYTaskmanDLHeads);
     spScissor(xmin, xmax, ymin, ymax);
     func_80017B80(gobj, (cam->flags & 0x8) ? TRUE : FALSE);
-    spFinish(gSYTasklogDLHeads);
+    spFinish(gSYTaskmanDLHeads);
 
-    gSYTasklogDLHeads[0]--;
+    gSYTaskmanDLHeads[0]--;
 
-    gDPSetTexturePersp(gSYTasklogDLHeads[0]++, G_TP_PERSP);
+    gDPSetTexturePersp(gSYTaskmanDLHeads[0]++, G_TP_PERSP);
 }
 
 #pragma GCC diagnostic pop

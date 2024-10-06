@@ -4,7 +4,7 @@
 #include <sc/scene.h>
 #include <sys/system_00.h>
 
-extern void syTasklogSetLoadScene();
+extern void syTaskmanSetLoadScene();
 extern u32 func_8000092C();
 extern void func_80007080(void*, f32, f32, f32, f32);
 
@@ -285,14 +285,14 @@ void mvOpeningYosterMainProc(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
         if (sMVOpeningYosterTotalTimeTics == 160)
         {
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindOpeningSector;
 
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
     }
 }
@@ -318,7 +318,7 @@ void mvOpeningYosterFuncStart(void)
         dMVOpeningYosterFileIDs,
         ARRAY_COUNT(dMVOpeningYosterFileIDs),
         sMVOpeningYosterFiles,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (
@@ -339,7 +339,7 @@ void mvOpeningYosterFuncStart(void)
 
     for (i = 0; i < ARRAY_COUNT(sMVOpeningYosterFigatreeHeaps); i++)
     {
-        sMVOpeningYosterFigatreeHeaps[i] = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+        sMVOpeningYosterFigatreeHeaps[i] = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
     }
     mvOpeningYosterMakeMainCamera();
     mvOpeningYosterMakeWallpaperCamera();
@@ -359,7 +359,7 @@ void mvOpeningYosterFuncStart(void)
 syDisplaySetup dMVOpeningYosterDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132394
-syTasklogSetup dMVOpeningYosterTasklogSetup =
+syTaskmanSetup dMVOpeningYosterTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -409,6 +409,6 @@ void mvOpeningYosterStartScene(void)
     dMVOpeningYosterDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMVOpeningYosterDisplaySetup);
 
-    dMVOpeningYosterTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl45_BSS_END);
-    syTasklogInit(&dMVOpeningYosterTasklogSetup);
+    dMVOpeningYosterTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl45_BSS_END);
+    syTaskmanInit(&dMVOpeningYosterTaskmanSetup);
 }

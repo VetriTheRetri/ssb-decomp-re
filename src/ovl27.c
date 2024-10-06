@@ -598,11 +598,11 @@ s32 mn1PGetPortraitId(s32 ft_kind)
 // 0x8013283C
 void mn1PRenderPortraitWithNoise(GObj *portrait_gobj)
 {
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x30, 0x30, 0x30, 0xFF);
-	gDPSetCombineLERP(gSYTasklogDLHeads[0]++, NOISE, TEXEL0, PRIMITIVE, TEXEL0, 0, 0, 0, TEXEL0, NOISE, TEXEL0, PRIMITIVE, TEXEL0,  0, 0, 0, TEXEL0);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x30, 0x30, 0x30, 0xFF);
+	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, NOISE, TEXEL0, PRIMITIVE, TEXEL0, 0, 0, 0, TEXEL0, NOISE, TEXEL0, PRIMITIVE, TEXEL0,  0, 0, 0, TEXEL0);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 	lbCommonDrawSObjNoAttr(portrait_gobj);
 }
 
@@ -973,15 +973,15 @@ void mn1PCreateBackgroundViewport()
 void mn1PRenderOptionsSection(GObj* options_gobj)
 {
 	// Draw the rectangle behind the Option image
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetCombineLERP(gSYTasklogDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-	gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 87, 96, 136, 255);
-	gDPFillRectangle(gSYTasklogDLHeads[0]++, 157, 136, 320, 141);
-	gDPPipeSync(gSYTasklogDLHeads[0]++);
-	gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-	gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 87, 96, 136, 255);
+	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 157, 136, 320, 141);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
 
 	lbCommonClearExternSpriteParams();
 	lbCommonDrawSObjAttr(options_gobj);
@@ -2417,7 +2417,7 @@ void mn1PGoBackTo1PMenu()
 	mn1PSaveMatchInfo();
 	auStopBGM();
 	func_800266A0_272A0();
-	syTasklogSetLoadScene();
+	syTaskmanSetLoadScene();
 }
 
 // 0x80136D04
@@ -2960,7 +2960,7 @@ void mn1PMain(s32 arg0)
 		gSceneData.scene_current = nSCKindTitle;
 
 		mn1PSaveMatchInfo();
-		syTasklogSetLoadScene();
+		syTaskmanSetLoadScene();
 
 		return;
 	}
@@ -2978,7 +2978,7 @@ void mn1PMain(s32 arg0)
 			gSceneData.scene_current = nSCKind1PGame;
 
 			mn1PSaveMatchInfo();
-			syTasklogSetLoadScene();
+			syTaskmanSetLoadScene();
 		}
 	}
 	else if ((scSubsysControllerGetPlayerTapButtons(START_BUTTON)) && (gMN1PFramesElapsed > 60))
@@ -3100,7 +3100,7 @@ void mn1PInitCSS()
 	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl27_801392A8;
 	rl_setup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern(D_ovl27_80138630, 11U, gMN1PFiles, syTasklogMalloc(lbRelocGetAllocSize(D_ovl27_80138630, 11U), 0x10U));
+	lbRelocLoadFilesExtern(D_ovl27_80138630, 11U, gMN1PFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl27_80138630, 11U), 0x10U));
 
 	gcMakeGObjSPAfter(0x400U, &mn1PMain, 0xFU, 0x80000000U);
 	gcMakeDefaultCameraGObj(0x10, 0x80000000U, 0x64, 1, 0);
@@ -3111,7 +3111,7 @@ void mn1PInitCSS()
 	for (i = 0; i < 12; i++)
 		ftManagerSetupFilesAllKind(i);
 
-	gMN1PFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10U);
+	gMN1PFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10U);
 
 	mn1PLoadMatchInfo();
 	mn1PCreatePortraitViewport();
@@ -3176,5 +3176,5 @@ void classic_css_entry()
 	D_ovl27_80138C90.zbuffer = syDisplayGetZBuffer(6400);
 	syDisplayInit(&D_ovl27_80138C90);
 	D_ovl27_80138CAC.arena_size = (u32) ((uintptr_t)&lOverlay27ArenaHi - (uintptr_t)&lOverlay27ArenaLo);
-	syTasklogInit(&D_ovl27_80138CAC);
+	syTaskmanInit(&D_ovl27_80138CAC);
 }

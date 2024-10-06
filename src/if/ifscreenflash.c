@@ -33,18 +33,18 @@ void ifScreenFlashProcDisplay(GObj *gobj)
 
     if (ca->is_use_maincolor)
     {
-        gDPPipeSync(gSYTasklogDLHeads[0]++);
-        gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-        gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-        gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+        gDPPipeSync(gSYTaskmanDLHeads[0]++);
+        gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+        gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+        gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
         alpha = (ca->maincolor.a * sIFScreenFlashAlpha) / 0xFF;
 
-        gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, ca->maincolor.r, ca->maincolor.g, ca->maincolor.b, alpha);
-        gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 10, 310, 230);
-        gDPPipeSync(gSYTasklogDLHeads[0]++);
-        gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-        gDPPipeSync(gSYTasklogDLHeads[0]++);
+        gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, ca->maincolor.r, ca->maincolor.g, ca->maincolor.b, alpha);
+        gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 230);
+        gDPPipeSync(gSYTaskmanDLHeads[0]++);
+        gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+        gDPPipeSync(gSYTaskmanDLHeads[0]++);
     }
 }
 

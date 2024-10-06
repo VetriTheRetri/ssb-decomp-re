@@ -181,7 +181,7 @@ void dbStageSelectMain(GObj* arg0)
 		else
 			gSceneData.scene_current = nSCKindVSBattle;
 
-		syTasklogSetLoadScene();
+		syTaskmanSetLoadScene();
 	}
 }
 
@@ -200,5 +200,5 @@ void dbStageSelectStartScene()
 	D_ovl12_800D6764.zbuffer = syDisplayGetZBuffer(6400);
 	syDisplayInit(&D_ovl12_800D6764);
 	D_ovl12_800D6780.arena_size = (u32) ((uintptr_t)&lOverlay12ArenaHi - (uintptr_t)&lOverlay12ArenaLo);
-	syTasklogInit(&D_ovl12_800D6780);
+	syTaskmanInit(&D_ovl12_800D6780);
 }

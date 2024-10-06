@@ -5,7 +5,7 @@
 #include <sys/system_00.h>
 #include <lb/library.h>
 
-extern void syTasklogSetLoadScene();
+extern void syTaskmanSetLoadScene();
 extern u32 func_8000092C();
 extern void func_800A26B8();
 extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
@@ -140,14 +140,14 @@ void mvOpeningClashVoidProcDisplay(GObj *gobj)
             sMVOpeningClashVoidAlpha = 0xFF;
         }
     }
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, sMVOpeningClashVoidAlpha);
-    gDPSetCombineLERP(gSYTasklogDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 10, 310, 230);
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, sMVOpeningClashVoidAlpha);
+    gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80131E08
@@ -293,13 +293,13 @@ void mvOpeningClashMakeVoidCamera(void)
 // 0x801323C8
 void mvOpeningClashWallpaperProcDisplay(GObj *gobj)
 {
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
 
     func_80017DBC(gobj);
     
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x8013246C
@@ -359,7 +359,7 @@ void mvOpeningClashFuncRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
             
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
 
         if (sMVOpeningClashTotalTimeTics == 144)
@@ -371,7 +371,7 @@ void mvOpeningClashFuncRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindOpeningNewcomers;
 
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
         if
         (
@@ -407,7 +407,7 @@ void mvOpeningClashFuncStart(void)
         dMVOpeningClashFileIDs,
         ARRAY_COUNT(dMVOpeningClashFileIDs),
         sMVOpeningClashFiles,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (
@@ -438,7 +438,7 @@ void mvOpeningClashFuncStart(void)
 
     for (i = 0; i < ARRAY_COUNT(sMVOpeningClashFigatreeHeaps); i++)
     {
-        sMVOpeningClashFigatreeHeaps[i] = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+        sMVOpeningClashFigatreeHeaps[i] = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
     }
     mvOpeningClashMakeFightersCamera();
     mvOpeningClashMakeVoidCamera();
@@ -458,7 +458,7 @@ void mvOpeningClashFuncStart(void)
 syDisplaySetup dMVOpeningClashDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132944
-syTasklogSetup dMVOpeningClashTasklogSetup =
+syTaskmanSetup dMVOpeningClashTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -508,6 +508,6 @@ void mvOpeningClashStartScene(void)
     dMVOpeningClashDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMVOpeningClashDisplaySetup);
 
-    dMVOpeningClashTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl49_BSS_END);
-    syTasklogInit(&dMVOpeningClashTasklogSetup);
+    dMVOpeningClashTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl49_BSS_END);
+    syTaskmanInit(&dMVOpeningClashTaskmanSetup);
 }

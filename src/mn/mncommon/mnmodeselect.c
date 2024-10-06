@@ -93,7 +93,7 @@ Gfx dMNModeSelectDisplayList[/* */] =
 syDisplaySetup dMNModeSelectDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80132BF4
-scRuntimeInfo dMNModeSelectTasklogSetup =
+scRuntimeInfo dMNModeSelectTaskmanSetup =
 {
     0x00000000,
     func_8000A5E4,
@@ -566,7 +566,7 @@ void mnModeSelectFuncRun(GObj *gobj)
             gSceneData.scene_previous = gSceneData.scene_current;
             gSceneData.scene_current = nSCKindTitle;
 
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
             return;
         }
         if (scSubsysControllerCheckNoInputAll() == FALSE)
@@ -597,7 +597,7 @@ void mnModeSelectFuncRun(GObj *gobj)
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = nSCKind1PMode;
                 
-                syTasklogSetLoadScene();
+                syTaskmanSetLoadScene();
                 return;
                 
             case nMNModeSelectOptionVSMode:
@@ -606,7 +606,7 @@ void mnModeSelectFuncRun(GObj *gobj)
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = nSCKindVSMode;
                 
-                syTasklogSetLoadScene();
+                syTaskmanSetLoadScene();
                 return;
                 
             case nMNModeSelectOptionOption:
@@ -615,7 +615,7 @@ void mnModeSelectFuncRun(GObj *gobj)
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = nSCKindOption;
                 
-                syTasklogSetLoadScene();
+                syTaskmanSetLoadScene();
                 return;
                 
             case nMNModeSelectOptionData:
@@ -624,7 +624,7 @@ void mnModeSelectFuncRun(GObj *gobj)
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = nSCKindData;
                 
-                syTasklogSetLoadScene();
+                syTaskmanSetLoadScene();
                 return;
             }
         }
@@ -637,7 +637,7 @@ void mnModeSelectFuncRun(GObj *gobj)
                 gSceneData.scene_previous = gSceneData.scene_current;
                 gSceneData.scene_current = nSCKindTitle;
             
-                syTasklogSetLoadScene();
+                syTaskmanSetLoadScene();
             }
             if
             (
@@ -733,7 +733,7 @@ void mnModeSelectFuncStart(void)
         dMNModeSelectFileIDs,
         ARRAY_COUNT(dMNModeSelectFileIDs),
         sMNModeSelectFiles,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (
@@ -771,6 +771,6 @@ void mnModeSelectStartScene(void)
     dMNModeSelectDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
     syDisplayInit(&dMNModeSelectDisplaySetup);
     
-    dMNModeSelectTasklogSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl17_BSS_END);
-    syTasklogInit(&dMNModeSelectTasklogSetup);
+    dMNModeSelectTaskmanSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl17_BSS_END);
+    syTaskmanInit(&dMNModeSelectTaskmanSetup);
 }

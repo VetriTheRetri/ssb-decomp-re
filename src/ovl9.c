@@ -7,7 +7,7 @@
 #include "debug.h"
 
 // Externs
-extern s32 sSYTasklogCount;
+extern s32 sSYTaskmanCount;
 
 // ovl8
 extern dbMenuPosition* func_ovl8_803749BC(s32);
@@ -541,7 +541,7 @@ void dbMenuHandleInputs(GObj *gobj)
 
 			gMNDebugMenuIsMenuOpen = FALSE;
 
-			sSYTasklogCount = gMNDebugMenuOriginalGSGTLNumTasks;
+			sSYTaskmanCount = gMNDebugMenuOriginalGSGTLNumTasks;
 		}
 
 		if (gMNDebugMenuMenuItems[gMNDebugMenuCursorIndex].proc_a != NULL)
@@ -557,7 +557,7 @@ void dbMenuHandleInputs(GObj *gobj)
 
 		gMNDebugMenuIsMenuOpen = FALSE;
 
-		sSYTasklogCount = gMNDebugMenuOriginalGSGTLNumTasks;
+		sSYTaskmanCount = gMNDebugMenuOriginalGSGTLNumTasks;
 	}
 }
 
@@ -589,8 +589,8 @@ void dbMenuCreateMenu(s32 x, s32 y, s32 w, dbMenuItem* menu_items, s32 menu_item
 
 		gcAddGObjProcess(gMNDebugMenuMenuGObj, dbMenuHandleInputs, 1, 1);
 
-		gMNDebugMenuOriginalGSGTLNumTasks = sSYTasklogCount;
-		sSYTasklogCount = 1;
+		gMNDebugMenuOriginalGSGTLNumTasks = sSYTaskmanCount;
+		sSYTaskmanCount = 1;
 	}
 }
 

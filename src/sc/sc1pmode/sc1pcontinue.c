@@ -376,14 +376,14 @@ void sc1PContinueRoomFadeOutProcDisplay(GObj *gobj)
             sSC1PContinueRoomFadeOutAlpha = 0xFF;
         }
     }
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sSC1PContinueRoomFadeOutAlpha);
-    gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 10, 310, 230);
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sSC1PContinueRoomFadeOutAlpha);
+    gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x801322DC
@@ -408,14 +408,14 @@ void sc1PContinueRoomFadeInProcDisplay(GObj *gobj)
             sSC1PContinueRoomFadeInAlpha = 0x00;
         }
     }
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sSC1PContinueRoomFadeInAlpha);
-    gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 10, 310, 230);
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sSC1PContinueRoomFadeInAlpha);
+    gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x80132460
@@ -440,14 +440,14 @@ void sc1PContinueSpotlightFadeProcDisplay(GObj *gobj)
             sSC1PContinueSpotlightFadeAlpha = 0x00;
         }
     }
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetCycleType(gSYTasklogDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYTasklogDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sSC1PContinueSpotlightFadeAlpha);
-    gDPSetCombineMode(gSYTasklogDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-    gDPFillRectangle(gSYTasklogDLHeads[0]++, 10, 10, 310, 230);
-    gDPPipeSync(gSYTasklogDLHeads[0]++);
-    gDPSetRenderMode(gSYTasklogDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sSC1PContinueSpotlightFadeAlpha);
+    gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
+    gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 230);
+    gDPPipeSync(gSYTaskmanDLHeads[0]++);
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x801325E8
@@ -1033,7 +1033,7 @@ void sc1PContinueFuncRun(GObj *gobj)
 
             sSC1PContinueIsSelectContinue = TRUE;
 
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
         if (D_ovl55_80134354 != 0)
         {
@@ -1165,7 +1165,7 @@ void sc1PContinueFuncRun(GObj *gobj)
             sc1PContinueUnused0x80133990();
         #endif
             sSC1PContinueIsSelectContinue = FALSE;
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
         if (sSC1PContinueTotalTimeTics == sSC1PContinueOptionNoGameOverAutoWait)
         {
@@ -1176,7 +1176,7 @@ void sc1PContinueFuncRun(GObj *gobj)
             sc1PContinueUnused0x80133990();
         #endif
             sSC1PContinueIsSelectContinue = FALSE;
-            syTasklogSetLoadScene();
+            syTaskmanSetLoadScene();
         }
         if (sSC1PContinueTotalTimeTics == 40)
         {
@@ -1219,7 +1219,7 @@ void sc1PContinueFuncStart(void)
         dSC1PContinueFileIDs,
         ARRAY_COUNT(dSC1PContinueFileIDs),
         sSC1PContinueFiles,
-        syTasklogMalloc
+        syTaskmanMalloc
         (
             lbRelocGetAllocSize
             (
@@ -1237,7 +1237,7 @@ void sc1PContinueFuncStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(sSC1PContinueFighterDemoDesc.ft_kind);
     
-    sSC1PContinueFigatreeHeap = syTasklogMalloc(gFTManagerFigatreeHeapSize, 0x10);
+    sSC1PContinueFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
     sc1PContinueMakeMainCamera();
     sc1PContinueMakeRoomFadeInCamera();
@@ -1259,7 +1259,7 @@ void sc1PContinueFuncStart(void)
 syDisplaySetup dSC1PContinueDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x80134254
-syTasklogSetup dSC1PContinueTasklogSetup =
+syTaskmanSetup dSC1PContinueTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -1310,9 +1310,9 @@ void sc1PContinueStartScene(void)
 
     syDisplayInit(&dSC1PContinueDisplaySetup);
 
-    dSC1PContinueTasklogSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl55_BSS_END);
+    dSC1PContinueTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl55_BSS_END);
 
-    func_800A2698(&dSC1PContinueTasklogSetup);
+    func_800A2698(&dSC1PContinueTaskmanSetup);
 
     gSceneData.is_select_continue = sSC1PContinueIsSelectContinue;
 }

@@ -146,7 +146,7 @@ syDisplaySetup dMNCongraDisplaySetup =
 };
 
 // 0x80132224
-syTasklogSetup dMNCongraTasklogSetup =
+syTaskmanSetup dMNCongraTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -313,7 +313,7 @@ void mnCongraFuncStart(void)
 			lbRelocGetFileExternHeap
 			(
 				dMNCongraPictures[sMNCongraFighterKind].bottom_file_id,
-				syTasklogMalloc
+				syTaskmanMalloc
 				(
 					lbRelocGetFileSize
 					(
@@ -339,7 +339,7 @@ void mnCongraFuncStart(void)
 			lbRelocGetFileExternHeap
 			(
 				dMNCongraPictures[sMNCongraFighterKind].top_file_id,
-				syTasklogMalloc
+				syTaskmanMalloc
 				(
 					lbRelocGetFileSize
 					(
@@ -386,7 +386,7 @@ void mnCongraFuncDraw(void)
 			gSceneData.scene_previous = gSceneData.scene_current;
 			gSceneData.scene_current = nSCKindTitle;
 
-			syTasklogSetLoadScene();
+			syTaskmanSetLoadScene();
 		}
 	}
 }
@@ -424,8 +424,8 @@ void mnCongraStartScene(void)
 	dMNCongraDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
 	syDisplayInit(&dMNCongraDisplaySetup);
 
-	dMNCongraTasklogSetup.buffer_setup.arena_size = (size_t) (SYDISPLAY_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 0) - (uintptr_t)&ovl57_BSS_END);
-	syTasklogInit(&dMNCongraTasklogSetup); subsys_arena_lo = gSCSubsysFramebuffer0; // WARNING: Newline memes!
+	dMNCongraTaskmanSetup.buffer_setup.arena_size = (size_t) (SYDISPLAY_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 0) - (uintptr_t)&ovl57_BSS_END);
+	syTaskmanInit(&dMNCongraTaskmanSetup); subsys_arena_lo = gSCSubsysFramebuffer0; // WARNING: Newline memes!
 
 	while ((uintptr_t)subsys_arena_lo < 0x80400000) { *subsys_arena_lo++ = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01); }
 }

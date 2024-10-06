@@ -146,7 +146,7 @@ void itManagerInitItems(void) // Many linker things here
     itStruct *ip;
     s32 i;
 
-    gITManagerStructsAllocFree = ip = syTasklogMalloc(sizeof(itStruct) * ITEM_ALLOC_MAX, 0x8);
+    gITManagerStructsAllocFree = ip = syTaskmanMalloc(sizeof(itStruct) * ITEM_ALLOC_MAX, 0x8);
 
     for (i = 0; i < (ITEM_ALLOC_MAX - 1); i++)
     {
@@ -156,7 +156,7 @@ void itManagerInitItems(void) // Many linker things here
     {
         ip[i].alloc_next = NULL;
     }
-    gITManagerFileData = (void*)lbRelocGetFileExternHeap(&D_NF_000000FB, syTasklogMalloc(lbRelocGetFileSize(&D_NF_000000FB), 0x10));
+    gITManagerFileData = (void*)lbRelocGetFileExternHeap(&D_NF_000000FB, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_000000FB), 0x10));
 
     gITManagerParticleBankID = efAllocGetAddParticleBankID
     (
@@ -580,7 +580,7 @@ GObj* itManagerMakeItemSpawnActor(void)
                     }
                 }
                 gITManagerSpawnActor.item_mapobj_count = item_mapobj_count;
-                gITManagerSpawnActor.item_mapobjs = (u8*)syTasklogMalloc(item_mapobj_count * sizeof(*gITManagerSpawnActor.item_mapobjs), 0);
+                gITManagerSpawnActor.item_mapobjs = (u8*)syTaskmanMalloc(item_mapobj_count * sizeof(*gITManagerSpawnActor.item_mapobjs), 0);
 
                 mpCollisionGetMapObjIDsKind(nMPMapObjKindItemSpawn, item_mapobj_ids);
 
@@ -604,8 +604,8 @@ GObj* itManagerMakeItemSpawnActor(void)
                     }
                 }
                 gITManagerSpawnActor.weights.item_count = j;
-                gITManagerSpawnActor.weights.item_kinds = (u8*)syTasklogMalloc(j * sizeof(*gITManagerSpawnActor.weights.item_kinds), 0x0);
-                gITManagerSpawnActor.weights.item_totals = (u16*)syTasklogMalloc(j * sizeof(*gITManagerSpawnActor.weights.item_totals), 0x2);
+                gITManagerSpawnActor.weights.item_kinds = (u8*)syTaskmanMalloc(j * sizeof(*gITManagerSpawnActor.weights.item_kinds), 0x0);
+                gITManagerSpawnActor.weights.item_totals = (u16*)syTaskmanMalloc(j * sizeof(*gITManagerSpawnActor.weights.item_totals), 0x2);
 
                 item_id_toggles = gBattleState->item_toggles;
 
@@ -676,8 +676,8 @@ void itManagerSetupContainerDrops(void)
             j++;
 
             gITManagerRandomWeights.item_count = j;
-            gITManagerRandomWeights.item_kinds = (u8*)syTasklogMalloc(j * sizeof(*gITManagerRandomWeights.item_kinds), 0x0);
-            gITManagerRandomWeights.item_totals = (u16*)syTasklogMalloc(j * sizeof(*gITManagerRandomWeights.item_totals), 0x2);
+            gITManagerRandomWeights.item_kinds = (u8*)syTaskmanMalloc(j * sizeof(*gITManagerRandomWeights.item_kinds), 0x0);
+            gITManagerRandomWeights.item_totals = (u16*)syTaskmanMalloc(j * sizeof(*gITManagerRandomWeights.item_totals), 0x2);
 
             item_id_toggles = gBattleState->item_toggles >> nITKindUtilityStart;
 

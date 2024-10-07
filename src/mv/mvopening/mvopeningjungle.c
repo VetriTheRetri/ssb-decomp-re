@@ -8,7 +8,7 @@
 extern void syTaskmanSetLoadScene();
 extern u32 func_8000092C();
 extern void func_800A26B8();
-extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
+extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
 // // // // // // // // // // // //
 //                               //
@@ -248,7 +248,7 @@ void mvOpeningJungleMakeGroundViewport(Vec3f unused)
 
     cam = CameraGetStruct(sMVOpeningJungleStageCameraGObj);
 
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
     cam->projection.persp.aspect = 15.0F / 11.0F;
 

@@ -5,7 +5,7 @@
 
 extern void syTaskmanSetLoadScene();
 extern u32 func_8000092C();
-extern void func_80007080(void*, f32, f32, f32, f32);
+extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -309,7 +309,7 @@ void mvOpeningYamabukiMakeMainCamera(void)
     );
     Camera *cam = CameraGetStruct(camera_gobj);
 
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
     cam->projection.persp.near = 128.0F;
     cam->projection.persp.far = 16384.0F;
@@ -350,7 +350,7 @@ void mvOpeningYamabukiMakeWallpaperCamera(void)
             FALSE
         )
     );
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801320D0

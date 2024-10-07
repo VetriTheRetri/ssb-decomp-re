@@ -4,7 +4,7 @@
 #include <sc/scene.h>
 #include <sys/system_00.h>
 
-extern void func_80007080(void*, f32, f32, f32, f32);
+extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -213,7 +213,7 @@ void func_ovl63_8018D248(void)
 {
     Camera *cam = CameraGetStruct(gcMakeDefaultCameraGObj(9, 0x80000000U, 0x64, 1, 0xFF));
 
-    func_80007080
+    syRdpSetViewport
     (
         &cam->viewport,
         gCMManagerCameraStruct.viewport_ulx,
@@ -284,7 +284,7 @@ GObj* scExplainMakeTextCamera(void)
     );
     Camera *cam = CameraGetStruct(camera_gobj);
 
-    func_80007080(&cam->viewport, 10.0F, 160.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 160.0F, 310.0F, 230.0F);
 
     return camera_gobj;
 }
@@ -313,7 +313,7 @@ GObj* scExplainMakeControlStickCamera(void)
     gcAddOMMtxForCamera(cam, nOMTransformOrtho, 1);
     gcAddOMMtxForCamera(cam, 6, 1);
 
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
     cam->projection.ortho.l = -150.0F;
     cam->projection.ortho.r = 150.0F;

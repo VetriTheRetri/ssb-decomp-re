@@ -6,7 +6,7 @@
 #include <sys/thread6.h>
 
 extern void* func_800269C0_275C0(u16);
-extern void func_80007080(void*, f32, f32, f32, f32);
+extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 
 
@@ -1695,7 +1695,7 @@ void mnSoundTestMakeCameras(void)
             0
         )
     );
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 630.0F, 470.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 630.0F, 470.0F);
 
     cam = CameraGetStruct
     (
@@ -1717,7 +1717,7 @@ void mnSoundTestMakeCameras(void)
         )
     );
 
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 630.0F, 470.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 630.0F, 470.0F);
 }
 
 // 0x80133858

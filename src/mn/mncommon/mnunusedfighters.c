@@ -3,7 +3,7 @@
 #include <sys/thread6.h>
 #include <sys/system_00.h>
 
-extern void func_80007080(void*, f32, f32, f32, f32);
+extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 extern gsController gSysController;
 
@@ -220,7 +220,7 @@ void mnUnusedFightersFuncStart(void)
         )   
     );
     
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
     
     cam = CameraGetStruct
     (

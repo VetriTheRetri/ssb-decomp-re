@@ -6,7 +6,7 @@ extern void func_800A26B8();
 extern void func_800266A0_272A0();
 extern void* func_800269C0_275C0(u16);
 extern u32 func_8000092C();
-extern void func_80007080(void*, f32, f32, f32, f32);
+extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 extern uintptr_t D_NF_0000000B;             // 0x0000000B
 extern uintptr_t D_NF_0000000C;             // 0x0000000C
@@ -1161,7 +1161,7 @@ Camera* sc1PStageCardMakeStageCamera(s32 stage, u32 dl_link)
     
     cam = CameraGetStruct(gobj);
     
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
     gcAddCameraCamAnimJoint(cam, lbRelocGetDataFromFile(AObjEvent32*, sSC1PStageCardFiles[0], camanim_joints[stage]), 0.0F);
     gcPlayCamAnim(gobj);
     
@@ -1538,7 +1538,7 @@ void sc1PStageCardMakeFighterCamera(s32 ft_kind, s32 cam_id)
 
     cam = CameraGetStruct(gobj);
 
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
     
     sc1PStageCardGetFighterCameraDesc(&cam_desc, ft_kind, cam_id);
     
@@ -1611,7 +1611,7 @@ void sc1PStageCardMakeBannersCamera(void)
             FALSE
         )
     );
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013442C
@@ -1636,7 +1636,7 @@ void sc1PStageCardMakeDecalsCamera(void)
             FALSE
         )
     );
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801344CC
@@ -1661,7 +1661,7 @@ void sc1PStageCardMakePicturesCamera(void)
             FALSE
         )
     );
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013456C

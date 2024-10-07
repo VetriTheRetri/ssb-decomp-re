@@ -2,7 +2,7 @@
 #include <sc/scene.h>
 #include <sys/system_00.h>
 
-extern void func_80007080(void*, f32, f32, f32, f32);
+extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 extern uintptr_t D_NF_0000000A;                                 // 0x0000000A
 
@@ -252,7 +252,7 @@ void sc1PChallengerMakeFighterCamera(void)
             FALSE
         )
     );
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
     
     cam->vec.eye.x = 0.0F;
     cam->vec.eye.y = 0.0F;
@@ -289,7 +289,7 @@ void sc1PChallengerMakeDecalsCamera(void)
             FALSE
         )
     );
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801320E0

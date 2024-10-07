@@ -8,7 +8,7 @@
 extern Mtx44f gODMatrixPerspF;
 extern syMallocRegion gSYTaskmanGraphicsHeap;
 
-extern void func_80007080(void*, f32, f32, f32, f32);
+extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -1131,7 +1131,7 @@ GObj* cmManagerMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
     cam->projection.persp = dCMManagerPerspDefault;
     cam->vec = dCMManagerCameraVecDefault;
 
-    func_80007080(&cam->viewport, gCMManagerCameraStruct.viewport_ulx, gCMManagerCameraStruct.viewport_uly, gCMManagerCameraStruct.viewport_lrx, gCMManagerCameraStruct.viewport_lry);
+    syRdpSetViewport(&cam->viewport, gCMManagerCameraStruct.viewport_ulx, gCMManagerCameraStruct.viewport_uly, gCMManagerCameraStruct.viewport_lrx, gCMManagerCameraStruct.viewport_lry);
 
     // This (f32) cast is NECESSARY! scissor_ulx through scissor_lry are signed integers!
     cam->projection.persp.aspect = ((f32)(gCMManagerCameraStruct.viewport_lrx - gCMManagerCameraStruct.viewport_ulx) / (f32)(gCMManagerCameraStruct.viewport_lry - gCMManagerCameraStruct.viewport_uly));
@@ -1195,7 +1195,7 @@ GObj* cmManagerMakeWallpaperCamera(void)
     GObj *camera_gobj = gcMakeCameraGObj(nOMObjCommonKindWallpaperCamera, NULL, nOMObjCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, lbCommonScissorSpriteCamera, 80, CAMERA_MASK_DLLINK(0), -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
 
-    func_80007080(&cam->viewport, (f32)gCMManagerCameraStruct.viewport_ulx, (f32)gCMManagerCameraStruct.viewport_uly, (f32)gCMManagerCameraStruct.viewport_lrx, (f32)gCMManagerCameraStruct.viewport_lry);
+    syRdpSetViewport(&cam->viewport, (f32)gCMManagerCameraStruct.viewport_ulx, (f32)gCMManagerCameraStruct.viewport_uly, (f32)gCMManagerCameraStruct.viewport_lrx, (f32)gCMManagerCameraStruct.viewport_lry);
 
     return camera_gobj;
 }
@@ -1366,7 +1366,7 @@ GObj* func_ovl2_8010E374(void)
     GObj *camera_gobj = gcMakeCameraGObj(nOMObjCommonKindScissorCamera, NULL, nOMObjCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, lbCommonScissorSpriteCamera, 20, (CAMERA_MASK_DLLINK(24) | CAMERA_MASK_DLLINK(23)), -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
 
-    func_80007080(&cam->viewport, (f32)gCMManagerCameraStruct.viewport_ulx, (f32)gCMManagerCameraStruct.viewport_uly, (f32)gCMManagerCameraStruct.viewport_lrx, (f32)gCMManagerCameraStruct.viewport_lry);
+    syRdpSetViewport(&cam->viewport, (f32)gCMManagerCameraStruct.viewport_ulx, (f32)gCMManagerCameraStruct.viewport_uly, (f32)gCMManagerCameraStruct.viewport_lrx, (f32)gCMManagerCameraStruct.viewport_lry);
 
     cam->flags |= 4;
 
@@ -1387,7 +1387,7 @@ GObj* func_ovl2_8010E498(void)
     GObj *camera_gobj = gcMakeCameraGObj(nOMObjCommonKindScissorCamera, NULL, nOMObjCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010E458, 15, CAMERA_MASK_DLLINK(25), -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
 
-    func_80007080(&cam->viewport, (f32)gCMManagerCameraStruct.viewport_ulx, (f32)gCMManagerCameraStruct.viewport_uly, (f32)gCMManagerCameraStruct.viewport_lrx, (f32)gCMManagerCameraStruct.viewport_lry);
+    syRdpSetViewport(&cam->viewport, (f32)gCMManagerCameraStruct.viewport_ulx, (f32)gCMManagerCameraStruct.viewport_uly, (f32)gCMManagerCameraStruct.viewport_lrx, (f32)gCMManagerCameraStruct.viewport_lry);
     cam->projection.persp.aspect = ((f32)gCMManagerCameraStruct.viewport_width / (f32)gCMManagerCameraStruct.viewport_height);
 
     return camera_gobj;

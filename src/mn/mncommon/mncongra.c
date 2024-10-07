@@ -4,7 +4,7 @@
 #include <sys/system_00.h>
 #include <sys/thread6.h>
 
-extern void func_80007080(void*, f32, f32, f32, f32);
+extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 extern void* func_800269C0_275C0(u16);
 
 // // // // // // // // // // // //
@@ -298,7 +298,7 @@ void mnCongraFuncStart(void)
 			0
 		)
 	);
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
 	gobj = gcMakeGObjSPAfter(nOMObjCommonKindWallpaper, NULL, nOMObjCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
 

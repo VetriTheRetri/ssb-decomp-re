@@ -5,7 +5,7 @@
 #include <sys/thread6.h>
 #include <sys/system_00.h>
 
-extern void func_80007080(void*, f32, f32, f32, f32);
+extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 extern uintptr_t D_NF_00000000;
 extern uintptr_t D_NF_00000007;
@@ -888,7 +888,7 @@ void mnVSOptionsMakeTintCamera(void)
             FALSE
         )
     );
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801335F8
@@ -913,7 +913,7 @@ void mnVSOptionsMakeOptionCamera(void)
             FALSE
         )
     );
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80133698
@@ -938,7 +938,7 @@ void mnVSOptionsMakeLabelUnderlineCamera(void)
             FALSE
         )
     );
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80133738
@@ -963,7 +963,7 @@ void mnVSOptionsMakeWallpaperCamera(void)
             FALSE
         )
     );
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801337D8
@@ -988,7 +988,7 @@ void mnVSOptionsMakeDecalCamera(void)
             FALSE
         )
     );
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80133878

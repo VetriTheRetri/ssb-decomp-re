@@ -4,7 +4,7 @@
 #include <sys/system_00.h>
 #include <lb/library.h>
 
-extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
+extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
 // // // // // // // // // // // //
 //                               //
@@ -321,7 +321,7 @@ void mvEndingMakeRoomFadeInCamera(void)
             FALSE
         )
     );
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132244
@@ -380,7 +380,7 @@ void mvEndingMakeRoomLightCamera(void)
             FALSE
         )
     );
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013253C
@@ -398,7 +398,7 @@ void mvEndingSetupOperatorCamera(GObj *gobj)
 {
     Camera *cam = CameraGetStruct(gobj);
 
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
     cam->projection.persp.near = 128.0F;
     cam->projection.persp.far = 16384.0F;

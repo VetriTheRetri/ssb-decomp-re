@@ -73,7 +73,7 @@ extern intptr_t FILE_05A_BACKGROUND_IMAGE_OFFSET; // file 0x05A offset for backg
 
 extern void gcPlayCamAnim();
 
-extern void func_80007080(void*, f32, f32, f32, f32);
+extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
 extern f32 scSubsysFighterGetLightAngleX();
@@ -603,7 +603,7 @@ void mvOpeningFirstDestinationCreateOverlayViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x3C, 0x04000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132DE8
@@ -709,7 +709,7 @@ void mvOpeningFirstDestinationDestroyDeskObjects()
 void mvOpeningFirstDestinationConfigureFirstSceneViewport(GObj* camera_gobj)
 {
 	Camera *cam = CameraGetStruct(camera_gobj);
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 	cam->projection.persp.near = 80.0F;
 	cam->projection.persp.far = 15000.0F;
 	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[2], &FILE_038_CAMERA_PARAMETERS_OFFSET), 0.0F);
@@ -735,7 +735,7 @@ void mvOpeningFirstDestinationCreateFirstSceneViewports()
 void mvOpeningFirstDestinationConfigureSecondSceneViewport(GObj* camera_gobj)
 {
 	Camera *cam = CameraGetStruct(camera_gobj);
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[3], &FILE_039_CAMERA_PARAMETERS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 	cam->flags |= 4;
@@ -759,7 +759,7 @@ void mvOpeningFirstDestinationCreateSecondSceneViewports()
 void mvOpeningFirstDestinationConfigureThirdSceneViewport(GObj* camera_gobj)
 {
 	Camera *cam = CameraGetStruct(camera_gobj);
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 	cam->vec.eye.x = 9.2993F;
 	cam->vec.eye.y = 3880.389404F;
 	cam->vec.eye.z = 4077.981689F;
@@ -796,7 +796,7 @@ void mvOpeningFirstDestinationCreateThirdSceneViewports()
 void mvOpeningFirstDestinationConfigureFourthSceneViewport(GObj* camera_gobj)
 {
 	Camera *cam = CameraGetStruct(camera_gobj);
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 	cam->vec.eye.x = -1039.880615F;
 	cam->vec.eye.y = 3199.215576F;
 	cam->vec.eye.z = -1235.168823F;
@@ -831,7 +831,7 @@ void mvOpeningFirstDestinationCreateBackgroundViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x5A, 0x10000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80133A6C
@@ -842,7 +842,7 @@ void mvOpeningFirstDestinationCreateHALLogoViewport()
 
 	gMVOpeningFirstDestinationHALLogoCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x32, 0x20000000, -1, 1, 1, 0, 1, 0);
 	cam = CameraGetStruct(camera_gobj);
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[2], &FILE_038_CAMERA_PARAMETERS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
@@ -911,7 +911,7 @@ void mvOpeningFirstDestinationCreateTransitionGFXViewport()
 {
 	GObj* camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x5F, 0x40000000, -1, 1, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 	cam->vec.eye.x = 0.0F;
 	cam->vec.eye.y = 0.0F;
 	cam->vec.eye.z = 1000.0F;

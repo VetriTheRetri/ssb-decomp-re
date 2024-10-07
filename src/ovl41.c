@@ -13,7 +13,7 @@ extern intptr_t lOverlay41ArenaLo;  // 0x8018E640
 extern intptr_t lOverlay41ArenaHi;  // 0x803903E0
 extern intptr_t FILE_041_YOSHI_CAMERA_PARAMS_OFFSET; // file 0x041 offset for Yoshi's fighter pose camera settings
 
-extern void func_80007080(void*, f32, f32, f32, f32);
+extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
 
@@ -186,7 +186,7 @@ void mvOpeningYoshiCreateStageViewport(Vec3f arg0)
 
 	gMVOpeningYoshiStageCameraGObj = func_ovl2_8010DB2C(0);
 	cam = CameraGetStruct(gMVOpeningYoshiStageCameraGObj);
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 150.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 150.0F);
 	cam->projection.persp.aspect = 15.0F / 7.0F;
 	gcEndProcessAll(gMVOpeningYoshiStageCameraGObj);
 	gcAddGObjProcess(gMVOpeningYoshiStageCameraGObj, mvOpeningYoshiAnimateStageCamera, 1, 1);
@@ -353,7 +353,7 @@ void mvOpeningYoshiCreateNameViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8018DC30
@@ -361,7 +361,7 @@ void mvOpeningYoshiCreatePosedFighterViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
-	func_80007080(&cam->viewport, 10.0F, 150.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 150.0F, 310.0F, 230.0F);
 	cam->projection.persp.aspect = 3.75F;
 	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningYoshiFiles[1], &FILE_041_YOSHI_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
@@ -374,7 +374,7 @@ void mvOpeningYoshiCreatePosedFighterBackgroundViewport()
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x10000000, -1, 0, 1, 0, 1, 0);
 
 	cam = CameraGetStruct(camera_gobj);
-	func_80007080(&cam->viewport, 10.0F, 150.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 150.0F, 310.0F, 230.0F);
 	cam->flags = 5;
 }
 

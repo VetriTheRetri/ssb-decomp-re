@@ -9,7 +9,7 @@ extern void syMatrixPerspFastF(Mtx44f a, u16* b, f32 c, f32 d, f32 e, f32 f, f32
 extern void syMatrixLookAtF(Mtx44f mf, f32 xEye, f32 yEye, f32 zEye, f32 xAt, f32 yAt, f32 zAt, f32 xUp, f32 yUp, f32 zUp);
 extern void guMtxCatF(Mtx44f a, Mtx44f b, Mtx44f c);
 
-extern void func_80007080(void*, f32, f32, f32, f32);
+extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -2083,7 +2083,7 @@ void gmStaffrollMakeCamera(void)
 			0
 		)
 	);
-	func_80007080(&cam->viewport, 20.0F, 20.0F, 620.0F, 460.0F);
+	syRdpSetViewport(&cam->viewport, 20.0F, 20.0F, 620.0F, 460.0F);
 
 	sGMStaffrollCamera = cam = CameraGetStruct
 	(
@@ -2106,7 +2106,7 @@ void gmStaffrollMakeCamera(void)
 			0
 		)
 	);
-	func_80007080(&cam->viewport, 20.0F, 20.0F, 620.0F, 460.0F);
+	syRdpSetViewport(&cam->viewport, 20.0F, 20.0F, 620.0F, 460.0F);
 
 	cam->vec.eye.y = cam->vec.at.x = cam->vec.at.y = cam->vec.at.z = 0.0F;
 

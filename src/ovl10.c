@@ -32,7 +32,7 @@ extern intptr_t FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_1; // 28EB0 file 0x0A7 offset f
 extern intptr_t FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_2; // 29010 file 0x0A7 offset for Slash Effect GFX
 
 extern void dbMenuUpdateMenuInputs();
-extern void func_80007080(void*, f32, f32, f32, f32);
+extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 
 // Forward declarations
@@ -1218,13 +1218,13 @@ s32 mnTitleCreateViewports()
 
 	camera_gobj = gcMakeCameraGObj(2, 0, 3, 0x80000000, lbCommonScissorSpriteCamera, 0x3C, 0x00000003, -1, 0, 1, 0, 1, 0);
 	cam = CameraGetStruct(camera_gobj);
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
 	camera_gobj = gcMakeCameraGObj(3, 0, 3, 0x80000000, func_80017EC0, 0x28, 0x00000004, -1, 0, 1, 0, 1, 0);
 	cam = CameraGetStruct(camera_gobj);
 	gcAddOMMtxForCamera(cam, 5, 0);
 	gcAddOMMtxForCamera(cam, 6, 0);
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
 	cam->vec.at.z = 0.0F;
 	cam->vec.at.y = 0.0F;
@@ -1235,7 +1235,7 @@ s32 mnTitleCreateViewports()
 
 	camera_gobj = gcMakeCameraGObj(3, 0, 3, 0x80000000, func_80017EC0, 0x50, 0x00000008, -1, 1, 1, 0, 1, 0);
 	cam = CameraGetStruct(camera_gobj);
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
 	cam->vec.at.z = 0.0F;
 	cam->vec.at.y = 0.0F;

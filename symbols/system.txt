@@ -105,10 +105,10 @@ syDmaReadVpk0Buf = 0x80003648;
 syDmaReadVpk0 = 0x80003690;
 unref_800036B4 = 0x800036B4;
 
-func_80007080 = 0x80007080;
-dpSetViewport = 0x8000711C;
-dpSetScissorFunction = 0x80007168;
-dpResetSettings = 0x80007174;
+syRdpSetViewport = 0x80007080;
+syRdpSetDefaultViewport = 0x8000711C;
+syRdpSetFuncLights = 0x80007168;
+syRdpResetSettings = 0x80007174;
 
 update_controller_indices = 0x80003C00;
 update_controller_status = 0x80003CC4;
@@ -733,10 +733,10 @@ D_80046696 = 0x80046696;
 D_80046698 = 0x80046698;
 D_8004669A = 0x8004669A;
 
-sViewport = 0x800466A0;
-sScissorCallback = 0x8003B750;
-sIdentityMatrix = 0x8003B758;
-sResetRdp = 0x8003B798;
+sSYRdpViewport = 0x800466A0;
+dSYRdpFuncLights = 0x8003B750;
+dSYRdpIdentityMatrix = 0x8003B758;
+sSYRdpResetDisplayList = 0x8003B798;
 D_8009DA00 = 0x8009DA00;
 sSYErrorThread8CPUFault = 0x8009DA08; // size:0x1B0
 sSYErrorThread8CPUStack = 0x8009DBB8; // size:0x800

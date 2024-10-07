@@ -8,7 +8,7 @@
 extern void syTaskmanSetLoadScene();
 extern u32 func_8000092C();
 extern void func_800A26B8();
-extern void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
+extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
 
 // // // // // // // // // // // //
@@ -252,7 +252,7 @@ void mvOpeningClashMakeFightersCamera(void)
     );
     Camera *cam = CameraGetStruct(camera_gobj);
 
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
     cam->flags |= 1;
 
@@ -285,7 +285,7 @@ void mvOpeningClashMakeVoidCamera(void)
             FALSE
         )
     );
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
     
     cam->flags |= 1;
 }
@@ -323,7 +323,7 @@ void mvOpeningClashMakeWallpaperCamera(void)
     );
     Camera *cam = CameraGetStruct(camera_gobj);
 
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
     gcAddCameraCamAnimJoint(cam, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperCamAnimJoint), 0.0F);
 
     gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nOMObjProcessKindProc, 1);

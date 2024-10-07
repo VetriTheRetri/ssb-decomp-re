@@ -10,7 +10,7 @@ extern uintptr_t D_NF_00000041;
 
 extern void func_800A26B8(void);
 extern u32 func_8000092C();
-extern void func_80007080(void*, f32, f32, f32, f32);
+extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -213,7 +213,7 @@ void mvOpeningKirbyMakeMotionCamera(Vec3f vec)
 	sMVOpeningKirbyMotionCameraGObj = func_ovl2_8010DB2C(0);
 	cam = CameraGetStruct(sMVOpeningKirbyMotionCameraGObj);
 
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 210.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 210.0F, 230.0F);
 
 	cam->projection.persp.aspect = 10.0F / 11.0F;
 
@@ -400,7 +400,7 @@ void mvOpeningKirbyMakeNameCamera(void)
             FALSE
         )
     );
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8018DC2C
@@ -424,7 +424,7 @@ void mvOpeningKirbyMakePosedFighterCamera(void)
     );
 	Camera *cam = CameraGetStruct(camera_gobj);
 
-	func_80007080(&cam->viewport, 210.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 210.0F, 10.0F, 310.0F, 230.0F);
 	
 	cam->projection.persp.aspect = 5.0F / 11.0F;
 
@@ -454,7 +454,7 @@ void mvOpeningKirbyMakePosedWallpaperCamera(void)
             FALSE
         )
     );
-    func_80007080(&cam->viewport, 210.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 210.0F, 10.0F, 310.0F, 230.0F);
 
 	cam->flags = 0x4 | 0x1;
 }

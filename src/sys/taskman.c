@@ -5,7 +5,7 @@
 #include <sys/main.h>
 #include <sys/malloc.h>
 #include <sys/obj.h>
-#include <sys/rdp_reset.h>
+#include <sys/rdp.h>
 #include <sys/system_00.h>
 #include <sys/thread3.h>
 #include <sys/thread6.h>
@@ -319,7 +319,7 @@ void func_80004AB0()
 		if (sSYTaskmanDLBuffers[gSYTaskmanTaskID][i].length != 0)
 		{
 			sSYTaskmanRdpResetDL = gSYTaskmanDLHeads[i];
-			dpResetSettings(&gSYTaskmanDLHeads[i]);
+			syRdpResetSettings(&gSYTaskmanDLHeads[i]);
 			gSPEndDisplayList(gSYTaskmanDLHeads[i]++);
 			sSYTaskmanDLBranches[i] = gSYTaskmanDLHeads[i];
 			break;
@@ -1081,7 +1081,7 @@ void func_80005DA0(FnBundle *arg0)
 		continue;
 	while (osRecvMesg(&sSYTaskmanGameTicMesgQueue, NULL, OS_MESG_NOBLOCK) != -1)
 		continue;
-	dpSetScissorFunction(NULL);
+	syRdpSetFuncLights(NULL);
 	D_800454BC = 2;
 }
 
@@ -1211,7 +1211,7 @@ void func_80006548(syTaskmanBufferSetup *arg0, void (*arg1)())
 		arg0->rdp_output_buffer_size = 0x1000;
 	}
 	func_80004CB4(arg0->unk30, syTaskmanMalloc(arg0->rdp_output_buffer_size, 0x10), arg0->rdp_output_buffer_size);
-	dpSetScissorFunction(arg0->func_lights);
+	syRdpSetFuncLights(arg0->func_lights);
 	D_80046668 = arg0->func_controller;
 	enable_auto_contread((uintptr_t)schedule_contread != (uintptr_t)D_80046668 ? TRUE : FALSE);
 

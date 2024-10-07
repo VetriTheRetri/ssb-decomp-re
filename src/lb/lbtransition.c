@@ -2,7 +2,7 @@
 #include <sys/system_00.h>
 
 extern void *D_80044FA8_407B8;
-extern func_80007080(void*, f32, f32, f32, f32);
+extern syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -135,7 +135,7 @@ GObj* lbTransitionMakeCamera(u32 id, s32 link, u32 link_order, u64 cam_mask)
     cam = gcAddCameraForGObj(gobj);
     gcAddOMMtxForCamera(cam, nOMTransformPerspFastF, 1);
     gcAddOMMtxForCamera(cam, nOMTransformLookAt, 1);
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
     cam->projection.persp.aspect = 15.0F / 11.0F;
     cam->projection.persp.fovy = 45.0F;

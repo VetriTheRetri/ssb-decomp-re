@@ -4,7 +4,7 @@
 #include <sys/error.h>
 #include <sys/taskman.h>
 #include <sys/objdraw.h>
-#include <sys/rdp_reset.h>
+#include <sys/rdp.h>
 #include <stddef.h>
 
 // // // // // // // // // // // //
@@ -1559,7 +1559,7 @@ Camera* gcAddCameraForGObj(GObj* gobj)
 	gobj->obj = new_cam;
 	new_cam->parent_gobj = gobj;
 
-	dpSetViewport(&new_cam->viewport);
+	syRdpSetDefaultViewport(&new_cam->viewport);
 
 	new_cam->ommtx_len = 0;
 

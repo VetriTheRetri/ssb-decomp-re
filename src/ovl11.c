@@ -10,7 +10,7 @@ extern intptr_t lOverlay11ArenaLo;  // 0x800D6B30
 extern intptr_t lOverlay11ArenaHi;  // 0x80392A00
 extern intptr_t FILE_0A9_NO_CONTROLLER_IMAGE_OFFSET; // 0x8460, file 0x0A9 image offset for no controller texture
 
-extern void func_80007080(void*, f32, f32, f32, f32);
+extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 
 
@@ -60,7 +60,7 @@ GObj* mnNoControllerCreateViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x3E8, NULL, 0, 0x80000000U, lbCommonScissorSpriteCamera, 0x64, 0x00000001, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
 	return camera_gobj;
 }

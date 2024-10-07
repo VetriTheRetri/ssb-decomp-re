@@ -4,7 +4,7 @@
 #include <sys/thread6.h>
 #include <sys/system_00.h>
 
-extern void func_80007080(void*, f32, f32, f32, f32);
+extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 extern uintptr_t D_NF_0000000F;                             // 0x0000000F
 
 // // // // // // // // // // // //
@@ -206,7 +206,7 @@ void mnScreenAdjustMakeFrameCamera(void)
             FALSE
         )
     );
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80131F14
@@ -231,7 +231,7 @@ void mnScreenAdjustMakeSpriteCamera(void)
             FALSE
         )
     );
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80131FB4

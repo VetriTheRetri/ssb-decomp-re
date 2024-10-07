@@ -95,7 +95,7 @@ segments:
       - [0x0054D0, c, sys/taskman]
       - [0x0078E0, c, sys/malloc]
       - [0x007970, c, sys/system_00]
-      - [0x007C80, c, sys/rdp_reset]
+      - [0x007C80, c, sys/rdp]
       - [0x007FE0, c, sys/objmanager]
       - [0x00B8D0, c, sys/system_03]
       - [0x00BAF0, c, sys/objhelper]
@@ -256,7 +256,7 @@ segments:
       - [0x03C0B0, bin, unk_3C0B0] # other rsp files?
       - [0x03C2B0, .data, sys/main]
       - [0x03C2E0, .data, sys/taskman]
-      - [0x03C350, .data, sys/rdp_reset]
+      - [0x03C350, .data, sys/rdp]
       - [0x03C470, .data, sys/objmanager]
       - [0x03C530, .data, sys/objdraw]
       - [0x03C540, .data, sys/trig_rand]
@@ -320,7 +320,7 @@ segments:
       - { start: auto, type: .bss, name: sys/thread6,              vram: 0x800450F0 }
       - { start: auto, type: .bss, name: sys/taskman,                 vram: 0x80045480 }
       - { start: auto, type: .bss, name: sys/system_00,            vram: 0x80046670 }
-      - { start: auto, type: .bss, name: sys/rdp_reset,            vram: 0x800466A0 }
+      - { start: auto, type: .bss, name: sys/rdp,            vram: 0x800466A0 }
       - { start: auto, type: .bss, name: sys/objmanager,           vram: 0x800466B0 }
       - { start: auto, type: .bss, name: sys/objdraw,              vram: 0x80046FA0 }
       - { start: auto, type:  bss, name: sys/hal_audio,            vram: 0x800472D0 }

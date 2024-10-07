@@ -8,7 +8,7 @@ extern intptr_t FILE_041_LINK_CAMERA_PARAMS_OFFSET; // 0xC0
 extern intptr_t lOverlay40ArenaHi;  // 0x803903E0
 extern intptr_t lOverlay40ArenaLo;  // 0x8018E5E0
 
-extern void func_80007080(void*, f32, f32, f32, f32);
+extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // DATA
 // 0x8018E070
@@ -178,7 +178,7 @@ void mvOpeningLinkCreateStageViewport(Vec3f arg0)
 
 	gMVOpeningLinkStageCameraGObj = func_ovl2_8010DB2C(0);
 	cam = CameraGetStruct(gMVOpeningLinkStageCameraGObj);
-	func_80007080(&cam->viewport, 10.0F, 90.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 90.0F, 310.0F, 230.0F);
 	cam->projection.persp.aspect = 15.0F / 7.0F;
 	gcEndProcessAll(gMVOpeningLinkStageCameraGObj);
 	gcAddGObjProcess(gMVOpeningLinkStageCameraGObj, mvOpeningLinkAnimateStageCamera, 1, 1);
@@ -338,7 +338,7 @@ void mvOpeningLinkCreateNameViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8018DBE0
@@ -346,7 +346,7 @@ void mvOpeningLinkCreatePosedFighterViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 90.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 90.0F);
 	cam->projection.persp.aspect = 3.75F;
 	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningLinkFiles[1], &FILE_041_LINK_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
@@ -359,7 +359,7 @@ void mvOpeningLinkCreatePosedFighterBackgroundViewport()
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x10000000, -1, 0, 1, 0, 1, 0);
 
 	cam = CameraGetStruct(camera_gobj);
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 90.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 90.0F);
 	cam->flags = 5;
 }
 

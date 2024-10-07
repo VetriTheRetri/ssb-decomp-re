@@ -12,7 +12,7 @@ extern intptr_t lOverlay42ArenaLo;  // 0x8018E640
 extern intptr_t lOverlay42ArenaHi;  // 0x803903E0
 extern intptr_t FILE_041_PIKACHU_CAMERA_PARAMS_OFFSET; // file 0x041 offset for Pikachu's fighter pose camera settings
 
-extern void func_80007080(void*, f32, f32, f32, f32);
+extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
 
@@ -182,7 +182,7 @@ void mvOpeningPikachuCreateStageViewport(Vec3f arg0)
 
 	gMVOpeningPikachuStageCameraGObj = func_ovl2_8010DB2C(0);
 	cam = CameraGetStruct(gMVOpeningPikachuStageCameraGObj);
-	func_80007080(&cam->viewport, 110.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 110.0F, 10.0F, 310.0F, 230.0F);
 	cam->projection.persp.aspect = 10.0F / 11.0F;
 	gcEndProcessAll(gMVOpeningPikachuStageCameraGObj);
 	gcAddGObjProcess(gMVOpeningPikachuStageCameraGObj, mvOpeningPikachuAnimateStageCamera, 1, 1);
@@ -347,7 +347,7 @@ void mvOpeningPikachuCreateNameViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8018DC20
@@ -355,7 +355,7 @@ void mvOpeningPikachuCreatePosedFighterViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
 	Camera *cam = CameraGetStruct(camera_gobj);
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
 	cam->projection.persp.aspect = 5.0F / 11.0F;
 	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningPikachuFiles[1], &FILE_041_PIKACHU_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
@@ -368,7 +368,7 @@ void mvOpeningPikachuCreatePosedFighterBackgroundViewport()
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x10000000, -1, 0, 1, 0, 1, 0);
 
 	cam = CameraGetStruct(camera_gobj);
-	func_80007080(&cam->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
+	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
 	cam->flags = 5;
 }
 

@@ -1,21 +1,15 @@
-#include "rdp_reset.h"
+#include "rdp.h"
 
-#include <sys/taskman.h>
+#include "config.h"
 #include <sys/system_00.h>
 
-#include <config.h>
-#include <macros.h>
-
-#include <PR/mbi.h>
-#include <PR/ultratypes.h>
-
 // bss
-Vp sViewport;
+Vp sSYRdpViewport;
 
 // data
-void (*sScissorCallback)(Gfx**) = NULL;
+void (*dSYRdpFuncLights)(Gfx**) = NULL;
 
-Mtx sIdentityMatrix              = 
+Mtx dSYRdpIdentityMatrix = 
 {
     {
         /* Integer Portion */
@@ -27,19 +21,16 @@ Mtx sIdentityMatrix              =
     }
 };
 
-DIAGNOSTIC_SAVE()
-DIAGNOSTIC_IGNORE("-Wmissing-braces")
-
-Gfx sResetRdp[] = 
+Gfx sSYRdpResetDisplayList[/* */] = 
 {
     gsDPPipeSync(),
-    gsSPViewport(&sViewport),
+    gsSPViewport(&sSYRdpViewport),
     gsSPClearGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH),
     gsSPClipRatio(FRUSTRATIO_1),
     gsSPTexture(0, 0, 0, G_TX_RENDERTILE, G_OFF),
     gsSPSetGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH),
-    gsSPMatrix(&sIdentityMatrix, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION),
-    gsSPMatrix(&sIdentityMatrix, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
+    gsSPMatrix(&dSYRdpIdentityMatrix, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION),
+    gsSPMatrix(&dSYRdpIdentityMatrix, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW),
     gsDPSetCycleType(G_CYC_1CYCLE),
     gsDPPipelineMode(G_PM_NPRIMITIVE),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
@@ -57,59 +48,58 @@ Gfx sResetRdp[] =
     gsSPEndDisplayList()
 };
 
-DIAGNOSTIC_RESTORE()
-
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunknown-pragmas"
-
 #ifdef NON_MATCHING
-void func_80007080(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
-    vp->vp.vscale[0] = ((arg3 - ((arg1 + arg3) / 2.0f)) * 4.0f);
-    vp->vp.vscale[1] = ((arg4 - ((arg2 + arg4) / 2.0f)) * 4.0f);
-    vp->vp.vtrans[0] = (((arg1 + arg3) / 2.0f) * 4.0f);
-    vp->vp.vtrans[1] = (((arg2 + arg4) / 2.0f) * 4.0f);
-    vp->vp.vscale[2] = vp->vp.vtrans[2] = G_MAXZ / 2;
+void syRdpSetViewport(Vp *viewport, f32 ulx, f32 uly, f32 lrx, f32 lry)
+{
+    f32 h = (ulx + lrx) / 2.0F;
+    f32 v = (uly + lry) / 2.0F;
+
+    viewport->vp.vscale[0] = (lrx - h) * 4.0F;
+    viewport->vp.vscale[1] = (lry - v) * 4.0F;
+    
+    viewport->vp.vtrans[0] = h * 4.0F;
+    viewport->vp.vtrans[1] = v * 4.0F;
+
+    viewport->vp.vscale[2] = viewport->vp.vtrans[2] = G_MAXZ / 2;
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/rdp_reset/func_80007080.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/rdp/syRdpSetViewport.s")
 #endif
 
-#pragma GCC diagnostic pop
-
-void dpSetViewport(Vp *vp)
+void syRdpSetDefaultViewport(Vp *vp)
 {
     vp->vp.vscale[0] = vp->vp.vtrans[0] = gSYDisplayResWidth * 2;
     vp->vp.vscale[1] = vp->vp.vtrans[1] = gSYDisplayResHeight * 2;
     vp->vp.vscale[2] = vp->vp.vtrans[2] = G_MAXZ / 2;
 }
 
-void dpSetScissorFunction(void (*cb)(Gfx**)) 
+void syRdpSetFuncLights(void (*func_lights)(Gfx**)) 
 {
-    sScissorCallback = cb; // Actually processes lights?
+    dSYRdpFuncLights = func_lights; // Actually processes lights?
 }
 
-void dpResetSettings(Gfx **dlist)
+void syRdpResetSettings(Gfx **dls)
 {
-    Gfx *dl_head = dlist[0];
+    Gfx *dl = dls[0];
 
-    gSPSegment(dl_head++, G_MWO_SEGMENT_0, 0x00000000);
-    func_800048F8(&dl_head);
-    gDPSetDepthImage(dl_head++, gSYDisplayZBuffer);
-    dpSetViewport(&sViewport);
-    gSPDisplayList(dl_head++, sResetRdp);
+    gSPSegment(dl++, G_MWO_SEGMENT_0, 0x00000000);
+    func_800048F8(&dl);
+    gDPSetDepthImage(dl++, gSYDisplayZBuffer);
+    syRdpSetDefaultViewport(&sSYRdpViewport);
+    gSPDisplayList(dl++, sSYRdpResetDisplayList);
 
     gDPSetScissor
     (
-        dl_head++,
+        dl++,
         G_SC_NON_INTERLACE,
         10 * (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT),
         10 * (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT),
         gSYDisplayResWidth - 10 * (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT),
         gSYDisplayResHeight - 10 * (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT)
     );
-    if (sScissorCallback != NULL)
+    if (dSYRdpFuncLights != NULL)
     { 
-        sScissorCallback(&dl_head);
+        dSYRdpFuncLights(&dl);
     }
-    dlist[0] = dl_head;
+    dls[0] = dl;
 }

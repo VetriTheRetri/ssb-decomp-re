@@ -6,7 +6,7 @@
 #include <sys/thread6.h>
 
 extern void* func_800269C0_275C0(u16);
-extern void func_80007080(void*, f32, f32, f32, f32);
+extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 
 
@@ -856,7 +856,7 @@ void mnVSModeMakeBackground(void)
 }
 
 // 0x8013342C
-void mnVSModeMakeButtonValuesViewport(void)
+void mnVSModeMakeButtonValuesSYRdpViewport(void)
 {
     GObj *camera_gobj = gcMakeCameraGObj
     (
@@ -875,7 +875,7 @@ void mnVSModeMakeButtonValuesViewport(void)
         FALSE
     );
     Camera *cam = CameraGetStruct(camera_gobj);
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801334CC
@@ -898,7 +898,7 @@ void mnVSModeMakeButtonViewport(void)
         0
     );
     Camera *cam = CameraGetStruct(camera_gobj);
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013356C
@@ -921,7 +921,7 @@ void mnVSModeMakeMenuNameViewport(void)
         FALSE
     );
     Camera *cam = CameraGetStruct(camera_gobj);
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013360C
@@ -943,7 +943,7 @@ void mnVSModeMakeBackgroundViewport()
         0
     );
     Camera *cam = CameraGetStruct(camera_gobj);
-    func_80007080(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801336AC
@@ -1504,7 +1504,7 @@ void mnVSModeFuncStart(void)
     mnVSModeMakeBackgroundViewport();
     mnVSModeMakeMenuNameViewport();
     mnVSModeMakeButtonViewport();
-    mnVSModeMakeButtonValuesViewport();
+    mnVSModeMakeButtonValuesSYRdpViewport();
     mnVSModeMakeBackground();
     mnVSModeMakeMenuName();
     mnVSModeMakeVSStartButton();

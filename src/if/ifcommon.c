@@ -9,7 +9,7 @@
 extern alSoundEffect* func_800269C0_275C0(u16);
 
 extern void auSetBGMVolume(u32, u32);
-extern void func_80007080(void*, f32, f32, f32, f32);
+extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // // // // // // // // // // // //
 //                               //
@@ -1533,7 +1533,7 @@ void ifCommonPlayerMagnifyUpdateViewport(Gfx **dls, ftStruct *fp)
         magnify_x -= (scale / 2);
         magnify_y -= (scale / 2);
 
-        func_80007080(&ifmag->viewport, magnify_x, magnify_y, scale + magnify_x, scale + magnify_y);
+        syRdpSetViewport(&ifmag->viewport, magnify_x, magnify_y, scale + magnify_x, scale + magnify_y);
 
         gSPViewport(dl++, &ifmag->viewport);
 

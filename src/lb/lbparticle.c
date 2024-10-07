@@ -276,7 +276,7 @@ lbParticle* lbParticleMakeStruct
 	f32 vel_x,
 	f32 vel_y,
 	f32 vel_z,
-	f32 mscale,
+	f32 size,
 	f32 gravity,
 	f32 friction,
 	u32 argF,
@@ -339,7 +339,7 @@ lbParticle* lbParticleMakeStruct
     new_ptcl->vel.y = vel_y;
     new_ptcl->vel.z = vel_z;
     
-    new_ptcl->mscale = mscale;
+    new_ptcl->size = size;
     new_ptcl->gravity = gravity;
     new_ptcl->friction = friction;
 
@@ -359,7 +359,7 @@ lbParticle* lbParticleMakeStruct
     new_ptcl->primcolor.r = new_ptcl->primcolor.g = new_ptcl->primcolor.b = new_ptcl->primcolor.a = 0xFF;
     new_ptcl->envcolor.r = new_ptcl->envcolor.g = new_ptcl->envcolor.b = new_ptcl->envcolor.a = 0x00;
     
-    new_ptcl->unk_ptcl_0xE = new_ptcl->blend_primcolor_length = new_ptcl->blend_envcolor_length = 0;
+    new_ptcl->size_target_length = new_ptcl->target_primcolor_length = new_ptcl->target_envcolor_length = 0;
     
     new_ptcl->gtor = gtor;
 
@@ -392,7 +392,7 @@ lbParticle* lbParticleMakeChildScriptID(lbParticle *ptcl, s32 bank_id, s32 scrip
 		script->particle_lifetime,
 		0.0F, 0.0F, 0.0F,
 		script->vel.x, script->vel.y, script->vel.z,
-		script->mscale,
+		script->size,
 		script->gravity,
 		script->friction,
 		sLBParticleTextureBanks[id][script->texture_id]->flags,
@@ -414,7 +414,7 @@ lbParticle* lbParticleMakeParam
 	f32 vel_x,
 	f32 vel_y,
 	f32 vel_z,
-	f32 mscale,
+	f32 size,
 	f32 gravity,
 	f32 friction,
 	u32 argE,
@@ -431,7 +431,7 @@ lbParticle* lbParticleMakeParam
 		lifetime,
 		pos_x, pos_y, pos_z,
 		vel_x, vel_y, vel_z,
-		mscale,
+		size,
 		gravity,
 		friction,
 		argE,
@@ -483,7 +483,7 @@ lbParticle* lbParticleMakePosVel(s32 bank_id, s32 script_id, f32 pos_x, f32 pos_
 		script->particle_lifetime,
 		pos_x, pos_y, pos_z,
 		vel_x, vel_y, vel_z,
-		script->mscale,
+		script->size,
 		script->gravity,
 		script->friction,
 		sLBParticleTextureBanks[id][script->texture_id]->flags,
@@ -830,13 +830,13 @@ lbParticle* lbParticleUpdateStruct(lbParticle *this_ptcl, lbParticle *other_ptcl
                         break;
                         
                     case 0xA0:
-                        csr = lbParticleReadUShort(csr, &this_ptcl->unk_ptcl_0xE);
-                        csr = lbParticleReadFloatBigEnd(csr, &this_ptcl->unk_ptcl_0x44);
+                        csr = lbParticleReadUShort(csr, &this_ptcl->size_target_length);
+                        csr = lbParticleReadFloatBigEnd(csr, &this_ptcl->size_target);
 
-                        if (this_ptcl->unk_ptcl_0xE == 1)
+                        if (this_ptcl->size_target_length == 1)
                         {
-                            this_ptcl->mscale = this_ptcl->unk_ptcl_0x44;
-                            this_ptcl->unk_ptcl_0xE = 0;
+                            this_ptcl->size = this_ptcl->size_target;
+                            this_ptcl->size_target_length = 0;
                         }
                         break;
                         
@@ -988,16 +988,16 @@ lbParticle* lbParticleUpdateStruct(lbParticle *this_ptcl, lbParticle *other_ptcl
                         break;
                         
                     case 0xAC:    
-                        csr = lbParticleReadUShort(csr, &this_ptcl->unk_ptcl_0xE);
-                        csr = lbParticleReadFloatBigEnd(csr, &this_ptcl->unk_ptcl_0x44);
+                        csr = lbParticleReadUShort(csr, &this_ptcl->size_target_length);
+                        csr = lbParticleReadFloatBigEnd(csr, &this_ptcl->size_target);
                         csr = lbParticleReadFloatBigEnd(csr, &fvar1);
                             
-                        this_ptcl->unk_ptcl_0x44 += fvar1 * mtTrigGetRandomFloat();
+                        this_ptcl->size_target += fvar1 * mtTrigGetRandomFloat();
                             
-                        if (this_ptcl->unk_ptcl_0xE == 1) 
+                        if (this_ptcl->size_target_length == 1) 
                         {
-                            this_ptcl->mscale = this_ptcl->unk_ptcl_0x44;
-                            this_ptcl->unk_ptcl_0xE = 0;
+                            this_ptcl->size = this_ptcl->size_target;
+                            this_ptcl->size_target_length = 0;
                         }
                         break;
                         
@@ -1083,35 +1083,35 @@ lbParticle* lbParticleUpdateStruct(lbParticle *this_ptcl, lbParticle *other_ptcl
                         
                     case LBPARTICLE_OPCODE_PRIMBLENDRAND:
                         fvar1 = *csr++;
-                        this_ptcl->blend_primcolor.r += fvar1 * mtTrigGetRandomFloat();
+                        this_ptcl->target_primcolor.r += fvar1 * mtTrigGetRandomFloat();
                         fvar1 = *csr++;
-                        this_ptcl->blend_primcolor.g += fvar1 * mtTrigGetRandomFloat();
+                        this_ptcl->target_primcolor.g += fvar1 * mtTrigGetRandomFloat();
                         fvar1 = *csr++;
-                        this_ptcl->blend_primcolor.b += fvar1 * mtTrigGetRandomFloat();
+                        this_ptcl->target_primcolor.b += fvar1 * mtTrigGetRandomFloat();
                         fvar1 = *csr++;
-                        this_ptcl->blend_primcolor.a += fvar1 * mtTrigGetRandomFloat();
+                        this_ptcl->target_primcolor.a += fvar1 * mtTrigGetRandomFloat();
                             
-                        if (this_ptcl->blend_primcolor_length == 0)
+                        if (this_ptcl->target_primcolor_length == 0)
                         {
                             // this has lwl and lwr, so maybe it's a struct?
-                            this_ptcl->primcolor = this_ptcl->blend_primcolor;
+                            this_ptcl->primcolor = this_ptcl->target_primcolor;
                         }
                         break;
                         
                     case LBPARTICLE_OPCODE_ENVBLENDRAND:
                         fvar1 = *csr++;
-                        this_ptcl->blend_envcolor.r += fvar1 * mtTrigGetRandomFloat();
+                        this_ptcl->target_envcolor.r += fvar1 * mtTrigGetRandomFloat();
                         fvar1 = *csr++;
-                        this_ptcl->blend_envcolor.g += fvar1 * mtTrigGetRandomFloat();
+                        this_ptcl->target_envcolor.g += fvar1 * mtTrigGetRandomFloat();
                         fvar1 = *csr++;
-                        this_ptcl->blend_envcolor.b += fvar1 * mtTrigGetRandomFloat();
+                        this_ptcl->target_envcolor.b += fvar1 * mtTrigGetRandomFloat();
                         fvar1 = *csr++;
-                        this_ptcl->blend_envcolor.a += fvar1 * mtTrigGetRandomFloat();
+                        this_ptcl->target_envcolor.a += fvar1 * mtTrigGetRandomFloat();
 
-                        if (this_ptcl->blend_envcolor_length == 0)
+                        if (this_ptcl->target_envcolor_length == 0)
                         {
                             // this has lwl and lwr, so maybe it's a struct?
-                            this_ptcl->envcolor = this_ptcl->blend_envcolor;
+                            this_ptcl->envcolor = this_ptcl->target_envcolor;
                         }
                         break;
                         
@@ -1151,57 +1151,57 @@ lbParticle* lbParticleUpdateStruct(lbParticle *this_ptcl, lbParticle *other_ptcl
                         break;
                         
                     case LBPARTICLE_OPCODE_SETPRIMBLEND:
-                        csr  = lbParticleReadUShort(csr, &this_ptcl->blend_primcolor_length);
-                        this_ptcl->blend_primcolor = this_ptcl->primcolor;
+                        csr  = lbParticleReadUShort(csr, &this_ptcl->target_primcolor_length);
+                        this_ptcl->target_primcolor = this_ptcl->primcolor;
                             
                         if (command & 1)
                         {
-                            this_ptcl->blend_primcolor.r = *csr++;
+                            this_ptcl->target_primcolor.r = *csr++;
                         }
                         if (command & 2)
                         {
-                            this_ptcl->blend_primcolor.g = *csr++;
+                            this_ptcl->target_primcolor.g = *csr++;
                         }
                         if (command & 4)
                         {
-                            this_ptcl->blend_primcolor.b = *csr++;
+                            this_ptcl->target_primcolor.b = *csr++;
                         }
                         if (command & 8)
                         {
-                            this_ptcl->blend_primcolor.a = *csr++;
+                            this_ptcl->target_primcolor.a = *csr++;
                         }
-                        if (this_ptcl->blend_primcolor_length == 1)
+                        if (this_ptcl->target_primcolor_length == 1)
                         {
-                            this_ptcl->primcolor = this_ptcl->blend_primcolor;
+                            this_ptcl->primcolor = this_ptcl->target_primcolor;
                             
-                            this_ptcl->blend_primcolor_length = 0;
+                            this_ptcl->target_primcolor_length = 0;
                         }
                         break;
                         
                     case LBPARTICLE_OPCODE_SETENVBLEND:
-                        csr = lbParticleReadUShort(csr, &this_ptcl->blend_envcolor_length);
-                        this_ptcl->blend_envcolor = this_ptcl->envcolor;
+                        csr = lbParticleReadUShort(csr, &this_ptcl->target_envcolor_length);
+                        this_ptcl->target_envcolor = this_ptcl->envcolor;
                             
                         if (command & 1)
                         {
-                            this_ptcl->blend_envcolor.r = *csr++;
+                            this_ptcl->target_envcolor.r = *csr++;
                         }
                         if (command & 2)
                         {
-                            this_ptcl->blend_envcolor.g = *csr++;
+                            this_ptcl->target_envcolor.g = *csr++;
                         }
                         if (command & 4)
                         {
-                            this_ptcl->blend_envcolor.b = *csr++;
+                            this_ptcl->target_envcolor.b = *csr++;
                         }
                         if (command & 8)
                         {
-                            this_ptcl->blend_envcolor.a = *csr++;
+                            this_ptcl->target_envcolor.a = *csr++;
                         }
-                        if (this_ptcl->blend_envcolor_length == 1)
+                        if (this_ptcl->target_envcolor_length == 1)
                         {
-                            this_ptcl->envcolor = this_ptcl->blend_envcolor;
-                            this_ptcl->blend_envcolor_length = 0;
+                            this_ptcl->envcolor = this_ptcl->target_envcolor;
+                            this_ptcl->target_envcolor_length = 0;
                         }
                         break;
                         
@@ -1256,43 +1256,43 @@ lbParticle* lbParticleUpdateStruct(lbParticle *this_ptcl, lbParticle *other_ptcl
             this_ptcl->bytecode_timer = bytecode_timer;
         }
     }
-    if (this_ptcl->unk_ptcl_0xE)
+    if (this_ptcl->size_target_length)
     {
-        this_ptcl->mscale += (this_ptcl->unk_ptcl_0x44 - this_ptcl->mscale) / this_ptcl->unk_ptcl_0xE;
+        this_ptcl->size += (this_ptcl->size_target - this_ptcl->size) / this_ptcl->size_target_length;
 
-        this_ptcl->unk_ptcl_0xE--;
+        this_ptcl->size_target_length--;
     }
-    if (this_ptcl->blend_primcolor_length) 
+    if (this_ptcl->target_primcolor_length) 
     {
         this_ptcl->primcolor.r =
-        ((this_ptcl->primcolor.r << 16) + ((this_ptcl->blend_primcolor.r - this_ptcl->primcolor.r) * (65536 / this_ptcl->blend_primcolor_length))) >> 16;
+        ((this_ptcl->primcolor.r << 16) + ((this_ptcl->target_primcolor.r - this_ptcl->primcolor.r) * (65536 / this_ptcl->target_primcolor_length))) >> 16;
 
         this_ptcl->primcolor.g =
-        ((this_ptcl->primcolor.g << 16) + ((this_ptcl->blend_primcolor.g - this_ptcl->primcolor.g) * (65536 / this_ptcl->blend_primcolor_length))) >> 16;
+        ((this_ptcl->primcolor.g << 16) + ((this_ptcl->target_primcolor.g - this_ptcl->primcolor.g) * (65536 / this_ptcl->target_primcolor_length))) >> 16;
 
         this_ptcl->primcolor.b =
-        ((this_ptcl->primcolor.b << 16) + ((this_ptcl->blend_primcolor.b - this_ptcl->primcolor.b) * (65536 / this_ptcl->blend_primcolor_length))) >> 16;
+        ((this_ptcl->primcolor.b << 16) + ((this_ptcl->target_primcolor.b - this_ptcl->primcolor.b) * (65536 / this_ptcl->target_primcolor_length))) >> 16;
 
         this_ptcl->primcolor.a =
-        ((this_ptcl->primcolor.a << 16) + ((this_ptcl->blend_primcolor.a - this_ptcl->primcolor.a) * (65536 / this_ptcl->blend_primcolor_length))) >> 16;
+        ((this_ptcl->primcolor.a << 16) + ((this_ptcl->target_primcolor.a - this_ptcl->primcolor.a) * (65536 / this_ptcl->target_primcolor_length))) >> 16;
 
-        this_ptcl->blend_primcolor_length--;
+        this_ptcl->target_primcolor_length--;
     }
-    if (this_ptcl->blend_envcolor_length) 
+    if (this_ptcl->target_envcolor_length) 
     {
         this_ptcl->envcolor.r =
-        ((this_ptcl->envcolor.r << 16) + ((this_ptcl->blend_envcolor.r - this_ptcl->envcolor.r) * (65536 / this_ptcl->blend_envcolor_length))) >> 16;
+        ((this_ptcl->envcolor.r << 16) + ((this_ptcl->target_envcolor.r - this_ptcl->envcolor.r) * (65536 / this_ptcl->target_envcolor_length))) >> 16;
 
         this_ptcl->envcolor.g =
-        ((this_ptcl->envcolor.g << 16) + ((this_ptcl->blend_envcolor.g - this_ptcl->envcolor.g) * (65536 / this_ptcl->blend_envcolor_length))) >> 16;
+        ((this_ptcl->envcolor.g << 16) + ((this_ptcl->target_envcolor.g - this_ptcl->envcolor.g) * (65536 / this_ptcl->target_envcolor_length))) >> 16;
 
         this_ptcl->envcolor.b =
-        ((this_ptcl->envcolor.b << 16) + ((this_ptcl->blend_envcolor.b - this_ptcl->envcolor.b) * (65536 / this_ptcl->blend_envcolor_length))) >> 16;
+        ((this_ptcl->envcolor.b << 16) + ((this_ptcl->target_envcolor.b - this_ptcl->envcolor.b) * (65536 / this_ptcl->target_envcolor_length))) >> 16;
 
         this_ptcl->envcolor.a =
-        ((this_ptcl->envcolor.a << 16) + ((this_ptcl->blend_envcolor.a - this_ptcl->envcolor.a) * (65536 / this_ptcl->blend_envcolor_length))) >> 16;
+        ((this_ptcl->envcolor.a << 16) + ((this_ptcl->target_envcolor.a - this_ptcl->envcolor.a) * (65536 / this_ptcl->target_envcolor_length))) >> 16;
             
-        this_ptcl->blend_envcolor_length--;        
+        this_ptcl->target_envcolor_length--;        
     }
     this_ptcl->lifetime--;
     
@@ -1677,7 +1677,7 @@ void lbParticleDrawTextures(GObj *gobj)
         {
             for (ptcl = sLBParticleStructsAllocLinks[j]; ptcl != NULL; ptcl = ptcl->next)
             {
-                if (ptcl->mscale != 0.0F)
+                if (ptcl->size != 0.0F)
                 {
                     pos_x = ptcl->pos.x;
                     pos_y = ptcl->pos.y;
@@ -1769,7 +1769,7 @@ void lbParticleDrawTextures(GObj *gobj)
                         }
                         else
                         {
-                            tm *= ptcl->mscale;
+                            tm *= ptcl->size;
 
                             mx = tm * mx;
                             xh = mx + tx;
@@ -2444,7 +2444,7 @@ void lbParticleGeneratorFuncRun(GObj *gobj)
                             temp_vel_x,
                             temp_vel_y,
                             temp_vel_z,
-                            gtor->mscale,
+                            gtor->size,
                             gtor->gravity,
                             gtor->friction,
                             0,
@@ -2476,7 +2476,7 @@ void lbParticleGeneratorFuncRun(GObj *gobj)
                             vel.x,
                             vel.y,
                             vel.z,
-                            gtor->mscale,
+                            gtor->size,
                             gtor->gravity,
                             gtor->friction,
                             0,
@@ -2518,7 +2518,7 @@ void lbParticleGeneratorFuncRun(GObj *gobj)
                                 pv0,
                                 pv1,
                                 0,
-                                gtor->mscale,
+                                gtor->size,
                                 angle1,
                                 angle2,
                                 0,
@@ -2658,7 +2658,7 @@ lbGenerator* lbParticleMakeGenerator(s32 bank_id, s32 script_id)
         
         gtor->gravity = sLBParticleScriptBanks[id][script_id]->gravity;
         gtor->friction = sLBParticleScriptBanks[id][script_id]->friction;
-        gtor->mscale = sLBParticleScriptBanks[id][script_id]->mscale;
+        gtor->size = sLBParticleScriptBanks[id][script_id]->size;
         
         gtor->bytecode = sLBParticleScriptBanks[id][script_id]->bytecode;
         

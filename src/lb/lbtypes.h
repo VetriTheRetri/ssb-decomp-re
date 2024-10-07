@@ -86,7 +86,7 @@ struct lbScript
     f32 unk_script_0x20;
     f32 unk_script_0x24;
     f32 unk_script_0x28;
-    f32 mscale;
+    f32 size;
     u8 bytecode[1];         // Particle bytecode
 };
 
@@ -121,7 +121,7 @@ struct lbGenerator
     Vec3f vel;
     f32 gravity;
     f32 friction;
-    f32 mscale;
+    f32 size;
     f32 unk_gtor_0x38;
     f32 unk_gtor_0x3C;
     f32 unk_gtor_0x40;
@@ -171,15 +171,15 @@ struct lbParticle
 {
     lbParticle *next;
     u16 generator_id;
-    u16 flags;                  // Flags?
+    u16 flags;
     u8 bank_id;
-    u8 loop_count;              // Loop count or bank id!?
+    u8 loop_count;
     u8 texture_id;
     u8 data_id;
     ub16 bytecode_timer;        // Wait timer before next bytecode event is parsed
-    u16 unk_ptcl_0xE;
-    u16 blend_primcolor_length;
-    u16 blend_envcolor_length;
+    u16 size_target_length;     // Time to LERP size_target variable
+    u16 target_primcolor_length;// Time to LERP target primitive color
+    u16 target_envcolor_length; // Time to LERP target environment color
     u8 *bytecode;               // Bytecode base
     u16 bytecode_csr;           // Bytecode cursor
     u16 return_ptr;             // Return to bytecode start + return_ptr on command
@@ -189,12 +189,12 @@ struct lbParticle
     Vec3f vel;                  // Velocity
     f32 gravity;                // Gravity?
     f32 friction;               // Friction?
-    f32 mscale;                 // Scales lbTransform affine matrix magnitude?
-    f32 unk_ptcl_0x44;
+    f32 size;
+    f32 size_target;
     syColorRGBA primcolor;
-    syColorRGBA blend_primcolor;
+    syColorRGBA target_primcolor;
     syColorRGBA envcolor;
-    syColorRGBA blend_envcolor;
+    syColorRGBA target_envcolor;
     lbGenerator *gtor;
     lbTransform *tfrm;
 };

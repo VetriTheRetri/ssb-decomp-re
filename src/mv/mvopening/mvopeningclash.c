@@ -2,7 +2,7 @@
 #include <gr/ground.h>
 #include <mv/movie.h>
 #include <sc/scene.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 #include <lb/library.h>
 
 extern void syTaskmanSetLoadScene();

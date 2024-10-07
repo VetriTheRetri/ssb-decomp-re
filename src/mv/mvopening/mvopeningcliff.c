@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <mv/movie.h>
 #include <sc/scene.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 
 extern void syTaskmanSetLoadScene();
 extern u32 func_8000092C();

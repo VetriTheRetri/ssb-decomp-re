@@ -2,7 +2,7 @@
 #include <if/interface.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 
 // Externs
 extern uintptr_t D_NF_8018E7E0;

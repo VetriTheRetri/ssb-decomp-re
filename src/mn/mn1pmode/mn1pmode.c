@@ -2,7 +2,7 @@
 #include <sc/scene.h>
 #include <gm/gmsound.h>
 #include <sys/thread6.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 

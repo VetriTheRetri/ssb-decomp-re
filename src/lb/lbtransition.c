@@ -1,5 +1,5 @@
 #include <lb/library.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 
 extern void *D_80044FA8_407B8;
 extern syRdpSetViewport(void*, f32, f32, f32, f32);

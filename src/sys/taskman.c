@@ -6,7 +6,7 @@
 #include <sys/malloc.h>
 #include <sys/obj.h>
 #include <sys/rdp.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 #include <sys/thread3.h>
 #include <sys/thread6.h>
 

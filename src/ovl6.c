@@ -3,7 +3,7 @@
 #include <gr/ground.h>
 #include <if/interface.h>
 #include <sc/scene.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 #include <lb/library.h>
 
 #include "ovl6.h"

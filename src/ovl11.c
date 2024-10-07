@@ -2,7 +2,7 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 #include <lb/library.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 
 // Externs
 extern intptr_t D_NF_800A5240;      // 0x800A5240

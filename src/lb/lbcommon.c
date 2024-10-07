@@ -1,7 +1,7 @@
 #include <lb/library.h>
 #include <ft/fighter.h>
 #include <gr/ground.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 
 extern void hal_interpolation_cubic(void*, void*, f32);
 extern void* func_80026A10_27610(u16);

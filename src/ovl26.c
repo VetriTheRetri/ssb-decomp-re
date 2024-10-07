@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 #include <lb/library.h>
 
 #include "character_select.h"

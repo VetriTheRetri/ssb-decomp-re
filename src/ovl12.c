@@ -2,7 +2,7 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 #include <lb/library.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 #include <sys/thread6.h>
 
 #include "debug.h"

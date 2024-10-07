@@ -3,7 +3,7 @@
 #include <if/interface.h>
 #include <cm/camera.h>
 #include <sc/scene.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 #include <lb/library.h>
 
 extern void func_800A26B8();

@@ -3,7 +3,7 @@
 #include <gr/ground.h>
 #include <mv/movie.h>
 #include <sc/scene.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 
 extern uintptr_t D_NF_00000025;
 extern uintptr_t D_NF_00000041;

@@ -4,7 +4,7 @@
 #include <cm/camera.h>
 #include <sc/scene.h>
 #include <sys/malloc.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 
 extern alSoundEffect* func_800269C0_275C0(u16);
 

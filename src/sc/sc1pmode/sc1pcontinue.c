@@ -2,7 +2,7 @@
 #include <if/interface.h>
 #include <mn/menu.h>
 #include <sc/scene.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 
 extern void func_800A26B8();
 extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);

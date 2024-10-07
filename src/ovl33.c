@@ -5,7 +5,7 @@
 #include <gr/ground.h>
 #include <mn/menu.h>
 #include <lb/library.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 
 
 typedef enum charsActionKind

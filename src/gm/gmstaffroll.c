@@ -1,6 +1,6 @@
 #include <sc/scene.h>
 #include <gm/gmsound.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 #include <sys/thread6.h>
 
 extern void hal_interpolation_cubic(Vec3f*, void*, f32);

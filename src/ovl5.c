@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 #include <lb/library.h>
 
 extern uintptr_t ovl5_BSS_END; 	// 0x8018D950

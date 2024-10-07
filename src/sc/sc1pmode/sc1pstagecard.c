@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 
 extern void func_800A26B8();
 extern void func_800266A0_272A0();

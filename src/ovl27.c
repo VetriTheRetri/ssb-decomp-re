@@ -3,7 +3,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <lb/library.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 
 #include "character_select.h"
 

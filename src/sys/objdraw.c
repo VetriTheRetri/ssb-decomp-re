@@ -2,7 +2,7 @@
 
 #include <sys/taskman.h>
 #include <sys/hal_gu.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 
 #include <config.h>
 #include "libc/math.h"

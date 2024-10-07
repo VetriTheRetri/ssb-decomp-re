@@ -4,7 +4,7 @@
 #include <sys/hal_audio.h>
 #include <sys/main.h>
 #include <sys/obj.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 #include <sys/thread3.h>
 #include <sys/thread6.h>
 

@@ -1,7 +1,7 @@
 #include "rdp.h"
 
 #include "config.h"
-#include <sys/system_00.h>
+#include <sys/display.h>
 
 // bss
 Vp sSYRdpViewport;

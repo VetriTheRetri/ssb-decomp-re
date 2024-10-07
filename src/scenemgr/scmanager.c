@@ -10,7 +10,7 @@
 #include <sys/dma.h>
 #include <sys/taskman.h>
 #include <sys/hal_audio.h>
-#include <sys/system_00.h>
+#include <sys/display.h>
 #include <sc/sctypes.h> // Temporarily, until ovl defines are fixed
 #include <sys/thread6.h>
 

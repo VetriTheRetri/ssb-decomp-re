@@ -746,7 +746,7 @@ gLBCommonScale = 0x800D62D0;
 sLBParticleStructsAllocFree = 0x800D6350;
 sLBParticleStructsAllocLinks = 0x800D6358;
 sLBParticleGeneratorsAllocFree = 0x800D6398;
-sLBParticleGeneratorsAllocLinks = 0x800D639C;
+sLBParticleGeneratorsQueued = 0x800D639C;
 sLBParticleAttachDObjs = 0x800D63A0;
 sLBParticleScriptBanksNum = 0x800D63C0;
 sLBParticleTextureBanksNum = 0x800D63E0;
@@ -761,7 +761,7 @@ D_ovl0_800D644E = 0x800D644E;
 D_ovl0_800D6450 = 0x800D6450;
 D_ovl0_800D6452 = 0x800D6452;
 sLBParticleTransformsAllocFree = 0x800D6454;
-sLBParticleGeneratorsCurrent = 0x800D6458;
+sLBParticleGeneratorsLastProcessed = 0x800D6458;
 
 sLBFadeAlphaMax = 0x800D6460;
 sLBFadeAlphaCurrent = 0x800D6464;

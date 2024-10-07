@@ -24,7 +24,7 @@ lbParticle *sLBParticleStructsAllocLinks[16];
 lbGenerator *sLBParticleGeneratorsAllocFree;
 
 // 0x800D639C
-lbGenerator *sLBParticleGeneratorsAllocLinks;
+lbGenerator *sLBParticleGeneratorsQueued;
 
 // 0x800D63A0
 DObj *sLBParticleAttachDObjs[LBPARTICLE_ATTACH_DOBJ_NUM_MAX];
@@ -69,7 +69,7 @@ u16 D_ovl0_800D6452;
 lbTransform *sLBParticleTransformsAllocFree;
 
 // 0x800D6458
-lbGenerator *sLBParticleGeneratorsCurrent;
+lbGenerator *sLBParticleGeneratorsLastProcessed;
 
 // // // // // // // // // // // //
 //                               //
@@ -829,7 +829,7 @@ lbParticle* lbParticleUpdateStruct(lbParticle *this_ptcl, lbParticle *other_ptcl
                         }
                         break;
                         
-                    case 0xA0:
+                    case LBPARTICLE_OPCODE_SETSIZELERP:
                         csr = lbParticleReadUShort(csr, &this_ptcl->size_target_length);
                         csr = lbParticleReadFloatBigEnd(csr, &this_ptcl->size_target);
 
@@ -987,7 +987,7 @@ lbParticle* lbParticleUpdateStruct(lbParticle *this_ptcl, lbParticle *other_ptcl
                         this_ptcl->vel.z *= fvar1;
                         break;
                         
-                    case 0xAC:    
+                    case LBPARTICLE_OPCODE_SETSIZERAND:    
                         csr = lbParticleReadUShort(csr, &this_ptcl->size_target_length);
                         csr = lbParticleReadFloatBigEnd(csr, &this_ptcl->size_target);
                         csr = lbParticleReadFloatBigEnd(csr, &fvar1);
@@ -2143,7 +2143,7 @@ GObj* lbParticleAllocGenerators(s32 num)
 {
 	s32 i;
 
-	sLBParticleGeneratorsAllocFree = sLBParticleGeneratorsAllocLinks = NULL;
+	sLBParticleGeneratorsAllocFree = sLBParticleGeneratorsQueued = NULL;
 
 	for (i = num - 1; i >= 0; i--)
 	{
@@ -2303,14 +2303,14 @@ void lbParticleGeneratorFuncRun(GObj *gobj)
     f32 spB8;
     f32 vmag;
     
-    gtor = sLBParticleGeneratorsAllocLinks;
-    sLBParticleGeneratorsCurrent = NULL;
+    gtor = sLBParticleGeneratorsQueued;
+    sLBParticleGeneratorsLastProcessed = NULL;
     
     while (gtor != NULL)
     {
             if (gobj->flags & (1 << ((gtor->bank_id >> 3) + 0x10)))
             {
-                sLBParticleGeneratorsCurrent = gtor;
+                sLBParticleGeneratorsLastProcessed = gtor;
 
                 gtor = gtor->next;
 
@@ -2318,7 +2318,7 @@ void lbParticleGeneratorFuncRun(GObj *gobj)
             }
             if (gtor->flags & LBPARTICLE_FLAG_PAUSE)
             {
-                sLBParticleGeneratorsCurrent = gtor;
+                sLBParticleGeneratorsLastProcessed = gtor;
 
                 gtor = gtor->next;
 
@@ -2555,11 +2555,11 @@ void lbParticleGeneratorFuncRun(GObj *gobj)
                     }
                     else
                     {
-                        if (sLBParticleGeneratorsCurrent == NULL)
+                        if (sLBParticleGeneratorsLastProcessed == NULL)
                         {
-                            sLBParticleGeneratorsAllocLinks = gtor->next;
+                            sLBParticleGeneratorsQueued = gtor->next;
                         }
-                        else sLBParticleGeneratorsCurrent->next = gtor->next;
+                        else sLBParticleGeneratorsLastProcessed->next = gtor->next;
                 
                         next_gtor = gtor->next;
                 
@@ -2583,7 +2583,7 @@ void lbParticleGeneratorFuncRun(GObj *gobj)
                     }
                 }
             }
-            sLBParticleGeneratorsCurrent = gtor;
+            sLBParticleGeneratorsLastProcessed = gtor;
 
             gtor = gtor->next;
         }
@@ -2609,12 +2609,12 @@ lbGenerator* lbParticleGetGenerator(void)
         D_ovl0_800D6450 = gLBParticleGeneratorsUsedNum;
     }
     sLBParticleGeneratorsAllocFree = gtor->next;
-    gtor->next = sLBParticleGeneratorsAllocLinks;
-    sLBParticleGeneratorsAllocLinks = gtor;
+    gtor->next = sLBParticleGeneratorsQueued;
+    sLBParticleGeneratorsQueued = gtor;
     
-    if (sLBParticleGeneratorsCurrent == NULL)
+    if (sLBParticleGeneratorsLastProcessed == NULL)
     {
-        sLBParticleGeneratorsCurrent = gtor;
+        sLBParticleGeneratorsLastProcessed = gtor;
     }
     gtor->generator_id = ++dLBParticleCurrentGeneratorID;
     gtor->tfrm = NULL;
@@ -2707,7 +2707,7 @@ lbGenerator* lbParticleMakeGenerator(s32 bank_id, s32 script_id)
 // 0x800D3884
 void lbParticleEjectGenerator(lbGenerator *this_gtor)
 {
-    lbGenerator *prev_gtor = NULL, *current_gtor = sLBParticleGeneratorsAllocLinks;
+    lbGenerator *prev_gtor = NULL, *current_gtor = sLBParticleGeneratorsQueued;
     
     while (current_gtor != NULL)
     {
@@ -2722,7 +2722,7 @@ void lbParticleEjectGenerator(lbGenerator *this_gtor)
             }
             if (prev_gtor == NULL)
             {
-                sLBParticleGeneratorsAllocLinks = current_gtor->next;
+                sLBParticleGeneratorsQueued = current_gtor->next;
             }
             else prev_gtor->next = current_gtor->next;
             
@@ -2749,7 +2749,7 @@ void lbParticleEjectGenerator(lbGenerator *this_gtor)
 // 0x800D3978
 void lbParticleEjectGeneratorAll(void)
 {
-	lbGenerator *current_gtor = sLBParticleGeneratorsAllocLinks;
+	lbGenerator *current_gtor = sLBParticleGeneratorsQueued;
 
 	while (current_gtor != NULL)
 	{
@@ -2816,7 +2816,7 @@ void lbParticleEjectStructID(u16 generator_id, s32 link_id)
         current_ptcl = next_ptcl;
     }
     prev_gtor = NULL;
-    current_gtor = sLBParticleGeneratorsAllocLinks;
+    current_gtor = sLBParticleGeneratorsQueued;
     
     while (current_gtor != NULL)
     {
@@ -2835,7 +2835,7 @@ void lbParticleEjectStructID(u16 generator_id, s32 link_id)
             {
                 if (prev_gtor == NULL)
                 {
-                    sLBParticleGeneratorsAllocLinks = current_gtor->next;
+                    sLBParticleGeneratorsQueued = current_gtor->next;
                 }
                 else prev_gtor->next = current_gtor->next;
             
@@ -2881,7 +2881,7 @@ void lbParticleEjectGeneratorDObj(GObj *gobj)
 	{
 		for (dobj = DObjGetStruct(gobj); dobj != NULL; dobj = gcGetTreeDObjNext(dobj))
 		{
-			for (current_gtor = sLBParticleGeneratorsAllocLinks; current_gtor != NULL; current_gtor = next_gtor)
+			for (current_gtor = sLBParticleGeneratorsQueued; current_gtor != NULL; current_gtor = next_gtor)
 			{
 				next_gtor = current_gtor->next;
 
@@ -2913,7 +2913,7 @@ void lbParticleSetStructPosAll(f32 pos_x, f32 pos_y, f32 pos_z)
             ptcl = ptcl->next;
         }
     }
-    gtor = sLBParticleGeneratorsAllocLinks;
+    gtor = sLBParticleGeneratorsQueued;
     
     while (gtor != NULL)
     {
@@ -2938,7 +2938,7 @@ void lbParticlePauseAllID(u16 generator_id, s32 link_id)
 			ptcl->flags |= LBPARTICLE_FLAG_PAUSE;
 		}
 	}
-	for (gtor = sLBParticleGeneratorsAllocLinks; gtor != NULL; gtor = gtor->next)
+	for (gtor = sLBParticleGeneratorsQueued; gtor != NULL; gtor = gtor->next)
 	{
 		if (gtor->generator_id == generator_id)
 		{
@@ -2960,7 +2960,7 @@ void lbParticleResumeAllID(u16 generator_id, s32 link_id)
 			ptcl->flags &= ~LBPARTICLE_FLAG_PAUSE;
 		}
 	}
-	for (gtor = sLBParticleGeneratorsAllocLinks; gtor != NULL; gtor = gtor->next)
+	for (gtor = sLBParticleGeneratorsQueued; gtor != NULL; gtor = gtor->next)
 	{
 		if (gtor->generator_id == generator_id)
 		{

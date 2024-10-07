@@ -28,6 +28,7 @@
 #define LBPARTICLE_OPCODE_SETVEL        0x90        // Set particle velocity
 #define LBPARTICLE_OPCODE_ADDVEL        0x98        // Add to particle velocity
 
+#define LBPARTICLE_OPCODE_SETSIZELERP	0xA0		// Set target size and interpolation length
 #define LBPARTICLE_OPCODE_SETFLAG       0xA1        // Set particle flag, only 8-bit though...?
 #define LBPARTICLE_OPCODE_SETGRAVITY    0xA2        // Set gravity and particle flag based on whether gravity is 0.0 or not
 #define LBPARTICLE_OPCODE_SETFRICTION   0xA3        // Set friction and particle flag based on whether friction is 1.0 or not
@@ -39,6 +40,7 @@
 #define LBPARTICLE_OPCODE_SETVELANGLE   0xA9        // Set new angle for particle's velocity
 #define LBPARTICLE_OPCODE_MAKERAND      0xAA        // Make particle from script between base ID and random ID
 #define LBPARTICLE_OPCODE_MULVELUFORM   0xAB        // Multiply each velocity axis by one shared, uniform multiplier
+#define LBPARTICLE_OPCODE_SETSIZERAND	0xAC		// Set random target size and interpolation length
 #define LBPARTICLE_OPCODE_ENVCOLOR      0xAD        // Set LBPARTICLE_FLAG_ENVCOLOR flag
 #define LBPARTICLE_OPCODE_NOMASKST      0xAE        // Clear LBPARTICLE_FLAG_MASKS and LBPARTICLE_FLAG_MASKT flags
 #define LBPARTICLE_OPCODE_MASKS         0xAF        // Clear LBPARTICLE_FLAG_MASKT and set LBPARTICLE_FLAG_MASKS flags

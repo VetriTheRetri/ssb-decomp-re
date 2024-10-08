@@ -132,7 +132,7 @@ void scVSBattleFuncStart(void)
 {
 	s32 unused[4];
 	s32 player;
-	sb32 (*proc_cache)(void);
+	sb32 (*func_dmem)(void);
 	void *file;
 	ftCreateDesc ft_desc;
 	syColorRGBA color;
@@ -146,12 +146,12 @@ void scVSBattleFuncStart(void)
 	{
 		file = lbRelocGetFileExternHeap((u32)&D_NF_000000C7, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000C7), 0x10));
 
-		proc_cache = lbRelocGetDataFromFile(sb32 (*)(void), file, &lSYDmemCheckValidFunc);
+		func_dmem = lbRelocGetDataFromFile(sb32 (*)(void), file, &lSYDmemCheckValidFunc);
 
-		osWritebackDCache(proc_cache, *lbRelocGetDataFromFile(s32*, file, &lSYDmemCheckValidNBytes));
-		osInvalICache(proc_cache, *lbRelocGetDataFromFile(s32*, file, &lSYDmemCheckValidNBytes));
+		osWritebackDCache(func_dmem, *lbRelocGetDataFromFile(s32*, file, &lSYDmemCheckValidNBytes));
+		osInvalICache(func_dmem, *lbRelocGetDataFromFile(s32*, file, &lSYDmemCheckValidNBytes));
 
-		if (proc_cache() == FALSE)
+		if (func_dmem() == FALSE)
 		{
 			gSaveData.error_flags |= LBBACKUP_ERROR_1PGAMEMARIO;
 		}

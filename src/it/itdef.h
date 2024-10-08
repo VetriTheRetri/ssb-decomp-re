@@ -12,7 +12,7 @@
 #define ITEM_FLAG_PARENT_ITEM 3	  // Item spawned by another item
 #define ITEM_FLAG_PARENT_DEFAULT 4
 
-#define ITEM_FLAG_PARENT_ALL 0xF // Mask all GObj classes that can spawn items?
+#define ITEM_MASK_PARENT 0xF // Mask all GObj classes that can spawn items?
 
 #define ITEM_TEAM_DEFAULT 4 // Item is teamless; deals damage to any eligible target
 #define ITEM_PORT_DEFAULT GMCOMMON_PLAYERS_MAX

@@ -72,7 +72,7 @@ struct sc1PGameBossEffect
 {
     void (*proc_update)(GObj*);
     void (*proc_display)(GObj*);
-    intptr_t o_dobj_desc;
+    intptr_t o_dobjdesc;
     intptr_t o_mobjsub;
 };
 

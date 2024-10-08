@@ -272,7 +272,7 @@ void ftCommonDamageAirCommonProcMap(GObj *fighter_gobj)
     (
         (mpCommonCheckFighterDamageCollision(fighter_gobj) != FALSE)        &&
         (ftCommonWallDamageCheckGoto(fighter_gobj) == FALSE)                &&
-        (fp->status_vars.common.damage.coll_mask_curr & MPCOLL_FLAG_GROUND) &&
+        (fp->status_vars.common.damage.coll_mask_current & MPCOLL_FLAG_GROUND) &&
         (ftCommonPassiveStandCheckInterruptDamage(fighter_gobj) == FALSE)   &&
         (ftCommonPassiveCheckInterruptDamage(fighter_gobj) == FALSE)
     )
@@ -647,7 +647,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
     {
         ftParamSetPlayerTagWait(this_gobj, FTCOMMON_DAMAGE_FIGHTER_PLAYERTAG_HIDE_FRAMES);
     }
-    this_fp->status_vars.common.damage.coll_mask_curr = 0;
+    this_fp->status_vars.common.damage.coll_mask_current = 0;
 
     attacker_gobj = ftParamGetPlayerNumGObj(damage_player_number);
 

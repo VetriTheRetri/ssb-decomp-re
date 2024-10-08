@@ -198,7 +198,7 @@ void itManagerSetPrevStructAlloc(itStruct *ip) // Set global Item user_data link
 }
 
 // 0x8016DFF4
-void itManagerSetupItemDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 transform_kind)
+void itManagerSetupItemDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs, u8 transform_kind)
 {
     s32 i, id;
     DObj *dobj, *array_dobjs[DOBJ_ARRAY_MAX];
@@ -207,15 +207,15 @@ void itManagerSetupItemDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 t
     {
         array_dobjs[i] = NULL;
     }
-    for (i = 0; dobj_desc->index != ARRAY_COUNT(array_dobjs); i++, dobj_desc++)
+    for (i = 0; dobjdesc->index != ARRAY_COUNT(array_dobjs); i++, dobjdesc++)
     {
-        id = dobj_desc->index & 0xFFF;
+        id = dobjdesc->index & 0xFFF;
 
         if (id != 0)
         {
-            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
+            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->display_list);
         }
-        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobj_desc->display_list);
+        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobjdesc->display_list);
         
         if (i == 1)
         {
@@ -225,9 +225,9 @@ void itManagerSetupItemDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 t
         {
             gcAddOMMtxForDObjFixed(dobj, transform_kind, nOMTransformNull);
         }
-        dobj->translate.vec.f = dobj_desc->translate;
-        dobj->rotate.vec.f = dobj_desc->rotate;
-        dobj->scale.vec.f = dobj_desc->scale;
+        dobj->translate.vec.f = dobjdesc->translate;
+        dobj->rotate.vec.f = dobjdesc->rotate;
+        dobj->scale.vec.f = dobjdesc->scale;
 
         if (dobjs != NULL) // I have yet to find a case where this point is actually reached
         {
@@ -409,7 +409,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, 
     ip->coll_data.p_objcoll         = &ip->coll_data.objcoll;
     ip->coll_data.ignore_line_id    = -1;
     ip->coll_data.coll_update_frame = gMPCollisionUpdateFrame;
-    ip->coll_data.coll_mask_curr    = 0;
+    ip->coll_data.coll_mask_current    = 0;
     ip->coll_data.vel_push.x        = 0.0F;
     ip->coll_data.vel_push.y        = 0.0F;
     ip->coll_data.vel_push.z        = 0.0F;
@@ -428,11 +428,11 @@ GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, 
     ip->proc_damage     = item_desc->proc_damage;
     ip->proc_dead       = NULL;
 
-    ip->coll_data.pos_curr = DObjGetStruct(item_gobj)->translate.vec.f = *pos;
+    ip->coll_data.pos_current = DObjGetStruct(item_gobj)->translate.vec.f = *pos;
 
     if (flags & ITEM_FLAG_COLLPROJECT)
     {
-        switch (flags & ITEM_FLAG_PARENT_ALL)
+        switch (flags & ITEM_MASK_PARENT)
         {
         case ITEM_FLAG_PARENT_GROUND:
         case ITEM_FLAG_PARENT_DEFAULT: // Default?

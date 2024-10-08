@@ -171,7 +171,7 @@ sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f
     mpCollData *coll_data = &wp->coll_data;
     sb32 return_bool = FALSE;
     Vec3f mod_pos, *translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
-    u16 coll_flags = (wp->coll_data.coll_mask_prev ^ wp->coll_data.coll_mask_curr) & wp->coll_data.coll_mask_curr & MPCOLL_FLAG_MAIN_MASK;
+    u16 coll_flags = (wp->coll_data.coll_mask_prev ^ wp->coll_data.coll_mask_current) & wp->coll_data.coll_mask_current & MPCOLL_FLAG_MAIN_MASK;
     u32 unused;
 
     if (coll_flags & check_flags & MPCOLL_FLAG_LWALL)

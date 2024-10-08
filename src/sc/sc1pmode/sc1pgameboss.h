@@ -50,7 +50,7 @@ extern void sc1PGameBossWallpaper1ProcUpdate(GObj *gobj);
 extern void sc1PGameBossWallpaper2ProcUpdate0(GObj *gobj);
 extern void sc1PGameBossWallpaper2ProcUpdate1(GObj *gobj);
 extern void sc1PGameBossWallpaper3ProcUpdate1(GObj *gobj);
-extern void sc1PGameBossSetupBackgroundDObjs(GObj *gobj, DObjDesc *dobj_desc, MObjSub ***p_mobjsubs, u8 transform_kind);
+extern void sc1PGameBossSetupBackgroundDObjs(GObj *gobj, DObjDesc *dobjdesc, MObjSub ***p_mobjsubs, u8 transform_kind);
 extern void sc1PGameBossSetWallpaperTranslate(GObj *gobj, s32 plan_id);
 extern GObj* sc1PGameBossMakeWallpaperEffect(s32 effect_id, s32 anim_id, s32 plan_id);
 extern void sc1PGameBossAdvanceWallpaper(void);

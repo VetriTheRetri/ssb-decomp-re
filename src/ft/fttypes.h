@@ -152,7 +152,7 @@ struct ftModelPart
 
 struct ftCommonPart
 {
-    DObjDesc *dobj_desc;
+    DObjDesc *dobjdesc;
     MObjSub ***p_mobjsubs;
     AObjEvent32 ***p_costume_matanim_joints;
     u8 flags;

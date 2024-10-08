@@ -125,15 +125,15 @@ struct mpCollData
 {
 	Vec3f* p_translate;			 	// Points to object's TopN translation vector
 	s32* p_lr;					 	// Points to object's facing direction sign
-	Vec3f pos_curr;				 	// Main object collision position
+	Vec3f pos_current;				// Main object collision position
 	Vec3f pos_correct;			 	// Unconfirmed
 	Vec3f pos_speed;			 	// Applied from moving collisions
 	Vec3f vel_push;				 	// Applied from extern stage objects such as Whispy's Wind
-	mpObjectColl objcoll;	 	// Environmental collision box
-	mpObjectColl *p_objcoll; 	// Points back to environmental collision box???
+	mpObjectColl objcoll;	 		// Environmental collision box
+	mpObjectColl *p_objcoll; 		// Points back to environmental collision box???
 	Vec2f cliffcatch_coll;		 	// Ledge grab collision box
 	u16 coll_mask_prev;			 	// Previous collision flags?
-	u16 coll_mask_curr;			 	// Current collision flags
+	u16 coll_mask_current;			// Current collision flags
 	u16 coll_mask_unk;			 	// ???
 	u16 coll_mask_stat;			 	// Used exclusively by object to transition between
 								 	// action states? Also, persists unlike the above three.
@@ -167,12 +167,12 @@ struct mpCollData
 
 struct mpItemWeights
 {
-    u8 item_quantities[20];
+    u8 item_quantities[1];
 };
 
 struct mpGroundDesc
 {
-	void *dobj_desc;
+	void *dobjdesc;
 	AObjEvent32 **anim_joints;
 	MObjSub ***p_mobjsubs;
 	AObjEvent32 ***p_matanim_joints;

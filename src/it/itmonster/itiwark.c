@@ -369,7 +369,7 @@ sb32 itIwarkWeaponRockProcMap(GObj *weapon_gobj)
 
     wpMapTestAllCheckCollEnd(weapon_gobj);
 
-    if (coll_data->coll_mask_curr & MPCOLL_FLAG_GROUND)
+    if (coll_data->coll_mask_current & MPCOLL_FLAG_GROUND)
     {
         if (line_id != coll_data->ground_line_id)
         {

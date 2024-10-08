@@ -911,7 +911,7 @@ void lbCommonInitDObj(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, u8 arg4)
 }
 
 // 0x800C8B28
-void lbCommonSetupTreeDObjs(DObj *root_dobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u8 tk2, u8 tk3)
+void lbCommonSetupTreeDObjs(DObj *root_dobj, DObjDesc *dobjdesc, DObj **dobjs, u8 tk1, u8 tk2, u8 tk3)
 {
     s32 i;
     DObj *current_dobj;
@@ -923,31 +923,31 @@ void lbCommonSetupTreeDObjs(DObj *root_dobj, DObjDesc *dobj_desc, DObj **dobjs, 
     {
         array_dobjs[i] = NULL;
     }
-    while (dobj_desc->index != ARRAY_COUNT(array_dobjs)) 
+    while (dobjdesc->index != ARRAY_COUNT(array_dobjs)) 
     {
-        id = dobj_desc->index & 0xFFF;
+        id = dobjdesc->index & 0xFFF;
 
         if (id != 0)
         {
-            current_dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
+            current_dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->display_list);
         } 
-        else current_dobj = array_dobjs[0] = gcAddChildForDObj(root_dobj, dobj_desc->display_list);
+        else current_dobj = array_dobjs[0] = gcAddChildForDObj(root_dobj, dobjdesc->display_list);
         
-        if (dobj_desc->index & 0xF000) 
+        if (dobjdesc->index & 0xF000) 
         {
-            gcDecideDObjTriTransformKind(current_dobj, tk1, tk2, tk3, dobj_desc->index & 0xF000);
+            gcDecideDObjTriTransformKind(current_dobj, tk1, tk2, tk3, dobjdesc->index & 0xF000);
         } 
         else gcAddDObjTriTransformKind(current_dobj, tk1, tk2, tk3);
         
-        current_dobj->translate.vec.f = dobj_desc->translate;
-        current_dobj->rotate.vec.f = dobj_desc->rotate;
-        current_dobj->scale.vec.f = dobj_desc->scale;
+        current_dobj->translate.vec.f = dobjdesc->translate;
+        current_dobj->rotate.vec.f = dobjdesc->rotate;
+        current_dobj->scale.vec.f = dobjdesc->scale;
 
         if (dobjs != NULL) 
         {
             *dobjs++ = current_dobj;
         }
-        dobj_desc++;
+        dobjdesc++;
     }
 }
 
@@ -1022,10 +1022,10 @@ void lbCommonSetupFighterPartsDObjs
     u32 current_flags;
     DObj *array_dobjs[DOBJ_ARRAY_MAX];
     s32 detail_id;
-    DObjDesc *dobj_desc;
+    DObjDesc *dobjdesc;
     DObj *current_dobj;
 
-    dobj_desc = commonparts_container->commonparts[detail_current - 1].dobj_desc;
+    dobjdesc = commonparts_container->commonparts[detail_current - 1].dobjdesc;
 
     flags0 = setup_parts[0], flags1 = setup_parts[1];
 
@@ -1033,18 +1033,18 @@ void lbCommonSetupFighterPartsDObjs
     {
         array_dobjs[i] = NULL;
     }
-    for (i = 0; ((flags0 != 0) || (flags1 != 0)) && (dobj_desc->index != ARRAY_COUNT(array_dobjs)); i++)
+    for (i = 0; ((flags0 != 0) || (flags1 != 0)) && (dobjdesc->index != ARRAY_COUNT(array_dobjs)); i++)
     {
         current_flags = (i < GS_BITCOUNT(u32)) ? flags0 : flags1;
 
         if (current_flags & (1 << 31))
         {
-            id = dobj_desc->index & 0xFFF;
+            id = dobjdesc->index & 0xFFF;
             
             if
             (
                 (detail_current == nFTPartsDetailHigh) ||
-                (commonparts_container->commonparts[nFTPartsDetailLow - nFTPartsDetailStart].dobj_desc[i].display_list == NULL)
+                (commonparts_container->commonparts[nFTPartsDetailLow - nFTPartsDetailStart].dobjdesc[i].display_list == NULL)
             )
             {
                 detail_id = 0;
@@ -1056,23 +1056,23 @@ void lbCommonSetupFighterPartsDObjs
                 current_dobj = array_dobjs[id] = gcAddChildForDObj
                 (
                     array_dobjs[id - 1],
-                    commonparts_container->commonparts[detail_id].dobj_desc[i].display_list
+                    commonparts_container->commonparts[detail_id].dobjdesc[i].display_list
                 );
             }
             else current_dobj = array_dobjs[0] = gcAddChildForDObj
             (
                 root_dobj,
-                commonparts_container->commonparts[detail_id].dobj_desc[i].display_list
+                commonparts_container->commonparts[detail_id].dobjdesc[i].display_list
             );
-            if (dobj_desc->index & 0x8000)
+            if (dobjdesc->index & 0x8000)
             {
                 gcDecideDObjTriTransformKind(current_dobj, tk1, tk2, tk3, 0x8000);
             }
             else lbCommonInitDObj(current_dobj, tk1, tk2, tk3, arg9);
 
-            current_dobj->translate.vec.f = dobj_desc->translate;
-            current_dobj->rotate.vec.f = dobj_desc->rotate;
-            current_dobj->scale.vec.f = dobj_desc->scale;
+            current_dobj->translate.vec.f = dobjdesc->translate;
+            current_dobj->rotate.vec.f = dobjdesc->rotate;
+            current_dobj->scale.vec.f = dobjdesc->scale;
 
             lbCommonAddMObjForFighterPartsDObj
             (
@@ -1090,7 +1090,7 @@ void lbCommonSetupFighterPartsDObjs
             }
         }
         dobjs++;
-        dobj_desc++;
+        dobjdesc++;
 
         if (i < GS_BITCOUNT(u32))
         {
@@ -1104,7 +1104,7 @@ void lbCommonSetupFighterPartsDObjs
 void lbCommonSetupCustomTreeDObjsWithMObj
 (
     DObj *root_dobj,
-    DObjDesc *dobj_desc,
+    DObjDesc *dobjdesc,
     MObjSub ***p_mobjsubs,
     DObj **dobjs,
     u8 tk1,
@@ -1121,25 +1121,25 @@ void lbCommonSetupCustomTreeDObjsWithMObj
     {
         array_dobjs[i] = NULL;
     }
-    while (dobj_desc->index != ARRAY_COUNT(array_dobjs)) 
+    while (dobjdesc->index != ARRAY_COUNT(array_dobjs)) 
     {
-        id = dobj_desc->index & 0xFFF;
+        id = dobjdesc->index & 0xFFF;
 
         if (id != 0)
         {
-            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
+            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->display_list);
         } 
-        else dobj = array_dobjs[0] = gcAddChildForDObj(root_dobj, dobj_desc->display_list);
+        else dobj = array_dobjs[0] = gcAddChildForDObj(root_dobj, dobjdesc->display_list);
         
-        if (dobj_desc->index & 0x8000) 
+        if (dobjdesc->index & 0x8000) 
         {
             gcDecideDObjTriTransformKind(dobj, tk1, tk2, tk3, 0x8000);
         } 
         else gcAddDObjTriTransformKind(dobj, tk1, tk2, tk3);
         
-        dobj->translate.vec.f = dobj_desc->translate;
-        dobj->rotate.vec.f = dobj_desc->rotate;
-        dobj->scale.vec.f = dobj_desc->scale;
+        dobj->translate.vec.f = dobjdesc->translate;
+        dobj->rotate.vec.f = dobjdesc->rotate;
+        dobj->scale.vec.f = dobjdesc->scale;
 
         if (p_mobjsubs != NULL)
         {
@@ -1163,7 +1163,7 @@ void lbCommonSetupCustomTreeDObjsWithMObj
         {
             *dobjs++ = dobj;
         }
-        dobj_desc++;
+        dobjdesc++;
     }
 }
 
@@ -1208,17 +1208,17 @@ void lbCommonPlayTreeDObjsAnim(DObj *root_dobj)
 }
 
 // 0x800C9314
-void lbCommonSetDObjTransformsForTreeDObjs(DObj *root_dobj, DObjDesc *dobj_desc)
+void lbCommonSetDObjTransformsForTreeDObjs(DObj *root_dobj, DObjDesc *dobjdesc)
 {
     DObj *current_dobj = root_dobj;
     
-    while ((current_dobj != NULL) && (dobj_desc->index != DOBJ_ARRAY_MAX))
+    while ((current_dobj != NULL) && (dobjdesc->index != DOBJ_ARRAY_MAX))
     {
-        current_dobj->translate.vec.f = dobj_desc->translate;
-        current_dobj->rotate.vec.f = dobj_desc->rotate;
-        current_dobj->scale.vec.f = dobj_desc->scale;
+        current_dobj->translate.vec.f = dobjdesc->translate;
+        current_dobj->rotate.vec.f = dobjdesc->rotate;
+        current_dobj->scale.vec.f = dobjdesc->scale;
 
-        dobj_desc++;
+        dobjdesc++;
         
         current_dobj = lbCommonGetTreeDObjNextFromRoot(current_dobj, root_dobj);
     }

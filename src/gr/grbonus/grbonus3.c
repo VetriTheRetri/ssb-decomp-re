@@ -33,19 +33,19 @@ void grBonus3MakeBumpers(void)
     AObjEvent32 **anim_joint;
     GObj *item_gobj;
     Vec3f vel;
-    DObjDesc *dobj_desc;
+    DObjDesc *dobjdesc;
     s32 i;
 
     vel.x = vel.y = vel.z = 0.0F;
 
-    dobj_desc = (DObjDesc*) ((uintptr_t)gGRCommonStruct.bonus3.map_head + (intptr_t)&lGRBonus3BumpersDObjDesc);
+    dobjdesc = (DObjDesc*) ((uintptr_t)gGRCommonStruct.bonus3.map_head + (intptr_t)&lGRBonus3BumpersDObjDesc);
     anim_joint = (AObjEvent32**) ((uintptr_t)gGRCommonStruct.bonus3.map_head + (intptr_t)&lGRBonus3BumpersAnimJoint);
 
-    anim_joint++, dobj_desc++;
+    anim_joint++, dobjdesc++;
 
-    for (i = 0; dobj_desc->index != DOBJ_ARRAY_MAX; i++, dobj_desc++, anim_joint++)
+    for (i = 0; dobjdesc->index != DOBJ_ARRAY_MAX; i++, dobjdesc++, anim_joint++)
     {
-        item_gobj = itManagerMakeItemSetupCommon(NULL, nITKindGBumper, &dobj_desc->translate, &vel, ITEM_FLAG_PARENT_GROUND);
+        item_gobj = itManagerMakeItemSetupCommon(NULL, nITKindGBumper, &dobjdesc->translate, &vel, ITEM_FLAG_PARENT_GROUND);
 
         if ((*anim_joint != NULL) && (item_gobj != NULL))
         {

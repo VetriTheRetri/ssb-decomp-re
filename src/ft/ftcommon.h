@@ -434,7 +434,7 @@ typedef struct ftCommonDamageStatusVars
 	s32 hitstun_timer;
 	s32 dust_effect_int;
 	f32 publicity_knockback;
-	u16 coll_mask_curr;
+	u16 coll_mask_current;
 	u16 coll_mask_prev;
 	u16 coll_mask_ignore;
 	Vec3f wall_collide_angle;

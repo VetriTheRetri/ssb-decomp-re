@@ -305,29 +305,29 @@ void scBonusGame_InitBonus1Targets()
 {
 	grBonusDesc* bonus_desc = &scBonusGame_Bonus1_TargetOffsets[gBattleState->gr_kind - nGRKindBonus1Start];
 	AObjEvent32 **anim_joints;
-	DObjDesc* dobj_desc;
+	DObjDesc* dobjdesc;
 	Vec3f pos;
 
 	pos.x = pos.y = pos.z = 0.0F;
 
-	dobj_desc = (DObjDesc*)((uintptr_t)((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobj_desc - (intptr_t)bonus_desc->o_main)
+	dobjdesc = (DObjDesc*)((uintptr_t)((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)bonus_desc->o_main)
 							+ (intptr_t)bonus_desc->o_dobjdesc);
-	anim_joints = (AObjEvent32**)((uintptr_t)((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobj_desc - (intptr_t)bonus_desc->o_main)
+	anim_joints = (AObjEvent32**)((uintptr_t)((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)bonus_desc->o_main)
 					  + (intptr_t)bonus_desc->o_anim);
 
 	gGRCommonStruct.bonus1.target_count = 0;
-	dobj_desc++, anim_joints++;
+	dobjdesc++, anim_joints++;
 
-	while (dobj_desc->index != DOBJ_ARRAY_MAX)
+	while (dobjdesc->index != DOBJ_ARRAY_MAX)
 	{
-		GObj* item_gobj = itManagerMakeItemSetupCommon(NULL, nITKindTarget, &dobj_desc->translate, &pos, 1);
+		GObj* item_gobj = itManagerMakeItemSetupCommon(NULL, nITKindTarget, &dobjdesc->translate, &pos, 1);
 
 		if (*anim_joints != NULL)
 		{
 			gcAddDObjAnimJoint(DObjGetStruct(item_gobj), *anim_joints, 0.0F);
 			gcPlayAnimAll(item_gobj);
 		}
-		dobj_desc++, anim_joints++, gGRCommonStruct.bonus1.target_count++;
+		dobjdesc++, anim_joints++, gGRCommonStruct.bonus1.target_count++;
 	}
 	if (gGRCommonStruct.bonus1.target_count != 10)
 	{
@@ -527,7 +527,7 @@ void grBonus_Bonus2_MakeGround()
 void scBonusGame_InitBonus2Bumpers()
 {
 	grBonus2Bumpers* bonus_desc;
-	DObjDesc* dobj_desc;
+	DObjDesc* dobjdesc;
 	AObjEvent32** anim_joint;
 	Vec3f vel;
 	GObj* item_gobj;
@@ -538,25 +538,25 @@ void scBonusGame_InitBonus2Bumpers()
 					  - (intptr_t)scBonusGame_Bonus2_BumperOffsets[gBattleState->gr_kind - nGRKindBonus2Start].o_main);
 
 		vel.x = vel.y = vel.z = 0.0F;
-		dobj_desc
+		dobjdesc
 			= (DObjDesc*)((uintptr_t)bonus_desc
 						  + (intptr_t)scBonusGame_Bonus2_BumperOffsets[gBattleState->gr_kind - nGRKindBonus2Start]
 								.o_main);
 		anim_joint = (AObjEvent32**)((uintptr_t)bonus_desc
 							+ (intptr_t)scBonusGame_Bonus2_BumperOffsets[gBattleState->gr_kind - nGRKindBonus2Start]
 								  .o_anim);
-		dobj_desc++, anim_joint++;
+		dobjdesc++, anim_joint++;
 
-		while (dobj_desc->index != 0x12)
+		while (dobjdesc->index != 0x12)
 		{
-			item_gobj = itManagerMakeItemSetupCommon(NULL, nITKindGBumper, &dobj_desc->translate, &vel,
+			item_gobj = itManagerMakeItemSetupCommon(NULL, nITKindGBumper, &dobjdesc->translate, &vel,
 													  ITEM_FLAG_PARENT_GROUND);
 			if (*anim_joint != NULL)
 			{
 				gcAddDObjAnimJoint(DObjGetStruct(item_gobj), *anim_joint, 0.0F);
 				gcPlayAnimAll(item_gobj);
 			}
-			dobj_desc++, anim_joint++;
+			dobjdesc++, anim_joint++;
 		}
 	}
 }

@@ -64,7 +64,7 @@ void ftYoshiSpecialLwStartProcMap(GObj *fighter_gobj)
             }
         }
     }
-    else if ((mpCommonCheckFighterCeilHeavy(fighter_gobj) != FALSE) && (fp->coll_data.coll_mask_curr & MPCOLL_FLAG_CEILHEAVY))
+    else if ((mpCommonCheckFighterCeilHeavy(fighter_gobj) != FALSE) && (fp->coll_data.coll_mask_current & MPCOLL_FLAG_CEILHEAVY))
     {
         ftYoshiSpecialAirLwLoopSetStatus(fighter_gobj);
     }

@@ -181,14 +181,14 @@ void ftPikachuSpecialHiProcMap(GObj *fighter_gobj)
 
     if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
     {
-        if (fp->coll_data.coll_mask_curr & (MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL))
+        if (fp->coll_data.coll_mask_current & (MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL))
         {
             mpCommonSetFighterAir(fp);
             ftPikachuSpecialAirHiEndSetStatus(fighter_gobj);
         }
         else ftPikachuSpecialHiSwitchStatusAir(fighter_gobj);
     }
-    else if (fp->coll_data.coll_mask_curr & (MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL))
+    else if (fp->coll_data.coll_mask_current & (MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL))
     {
         ftPikachuSpecialHiEndSetStatus(fighter_gobj);
     }
@@ -229,15 +229,15 @@ void ftPikachuSpecialAirHiProcMap(GObj *fighter_gobj)
     }
     else
     {
-        if ((fp->coll_data.coll_mask_curr & MPCOLL_FLAG_CEIL) && (lbVector_Vec3fAngleDiff(&fp->coll_data.ceil_angle, &fp->phys_info.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE))
+        if ((fp->coll_data.coll_mask_current & MPCOLL_FLAG_CEIL) && (lbVector_Vec3fAngleDiff(&fp->coll_data.ceil_angle, &fp->phys_info.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE))
         {
             ftPikachuSpecialAirHiEndSetStatus(fighter_gobj);
         }
-        if ((fp->coll_data.coll_mask_curr & MPCOLL_FLAG_LWALL) && (lbVector_Vec3fAngleDiff(&fp->coll_data.lwall_angle, &fp->phys_info.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE))
+        if ((fp->coll_data.coll_mask_current & MPCOLL_FLAG_LWALL) && (lbVector_Vec3fAngleDiff(&fp->coll_data.lwall_angle, &fp->phys_info.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE))
         {
             ftPikachuSpecialAirHiEndSetStatus(fighter_gobj);
         }
-        if ((fp->coll_data.coll_mask_curr & MPCOLL_FLAG_RWALL) && (lbVector_Vec3fAngleDiff(&fp->coll_data.rwall_angle, &fp->phys_info.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE))
+        if ((fp->coll_data.coll_mask_current & MPCOLL_FLAG_RWALL) && (lbVector_Vec3fAngleDiff(&fp->coll_data.rwall_angle, &fp->phys_info.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE))
         {
             ftPikachuSpecialAirHiEndSetStatus(fighter_gobj);
         }

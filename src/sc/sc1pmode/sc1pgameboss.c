@@ -778,7 +778,7 @@ void sc1PGameBossWallpaper3ProcUpdate1(GObj *gobj)
 }
 
 // 0x80192078
-void sc1PGameBossSetupBackgroundDObjs(GObj *gobj, DObjDesc *dobj_desc, MObjSub ***p_mobjsubs, u8 transform_kind)
+void sc1PGameBossSetupBackgroundDObjs(GObj *gobj, DObjDesc *dobjdesc, MObjSub ***p_mobjsubs, u8 transform_kind)
 {
     s32 i, id;
     MObjSub **mobjsubs, *mobjsub;
@@ -788,17 +788,17 @@ void sc1PGameBossSetupBackgroundDObjs(GObj *gobj, DObjDesc *dobj_desc, MObjSub *
     {
         array_dobjs[i] = NULL;
     }
-    id = (dobj_desc->index & 0xFFF);
+    id = (dobjdesc->index & 0xFFF);
 
     while ((id ^ 0) != ARRAY_COUNT(array_dobjs)) // Ewwwww... we meet again, XOR hack.
     {
         if (id != 0)
         {
-            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
+            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->display_list);
         }
-        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobj_desc->display_list);
+        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobjdesc->display_list);
         
-        id = dobj_desc->index & 0xF000;
+        id = dobjdesc->index & 0xF000;
 
         if (id != 0)
         {
@@ -807,9 +807,9 @@ void sc1PGameBossSetupBackgroundDObjs(GObj *gobj, DObjDesc *dobj_desc, MObjSub *
         }
         else gcAddOMMtxForDObjFixed(dobj, transform_kind, 0);
 
-        dobj->translate.vec.f = dobj_desc->translate;
-        dobj->rotate.vec.f = dobj_desc->rotate;
-        dobj->scale.vec.f = dobj_desc->scale;
+        dobj->translate.vec.f = dobjdesc->translate;
+        dobj->rotate.vec.f = dobjdesc->rotate;
+        dobj->scale.vec.f = dobjdesc->scale;
 
         if (p_mobjsubs != NULL)
         {
@@ -830,7 +830,7 @@ void sc1PGameBossSetupBackgroundDObjs(GObj *gobj, DObjDesc *dobj_desc, MObjSub *
             }
             p_mobjsubs++;
         }
-        dobj_desc++, id = dobj_desc->index & 0xFFF;
+        dobjdesc++, id = dobjdesc->index & 0xFFF;
     }
 }
 
@@ -881,7 +881,7 @@ GObj* sc1PGameBossMakeWallpaperEffect(s32 effect_id, s32 anim_id, s32 plan_id)
     sc1PGameBossSetupBackgroundDObjs
     (
         effect_gobj, 
-        (DObjDesc*)(sSC1PGameBossMain.bosswallpaper->bosseffect[effect_id].o_dobj_desc + addr),
+        (DObjDesc*)(sSC1PGameBossMain.bosswallpaper->bosseffect[effect_id].o_dobjdesc + addr),
         (o_mobjsub != 0) ? (MObjSub***)(addr + o_mobjsub) : NULL, 
         nOMTransformTraRotRpyRSca
     );
@@ -1016,7 +1016,7 @@ void sc1PGameBossInitWallpaper(void)
 
         sSC1PGameBossMain.is_skip_wallpaper_change = FALSE;
         sSC1PGameBossMain.wallpaper_id = 0;
-        sSC1PGameBossMain.file_head = (uintptr_t) ((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobj_desc - (intptr_t)&D_NF_00004D48);
+        sSC1PGameBossMain.file_head = (uintptr_t) ((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)&D_NF_00004D48);
         sSC1PGameBossMain.change_wait = 0;
         sSC1PGameBossWallpaperStepRGBA = 0.0F;
     }

@@ -191,7 +191,7 @@ void grGeometryLayer3ProcDisplaySec(GObj *ground_gobj)
 }
 
 // 0x801053CC
-void grGeometryDObjSetNoAnimMtx(GObj *ground_gobj, DObjDesc *dobj_desc)
+void grGeometryDObjSetNoAnimMtx(GObj *ground_gobj, DObjDesc *dobjdesc)
 {
     DObj *root_dobj;
     DObj *next_dobj;
@@ -201,14 +201,14 @@ void grGeometryDObjSetNoAnimMtx(GObj *ground_gobj, DObjDesc *dobj_desc)
 
     while (next_dobj != NULL)
     {
-        if ((next_dobj->aobj == NULL) && !(dobj_desc->index & 0xF000))
+        if ((next_dobj->aobj == NULL) && !(dobjdesc->index & 0xF000))
         {
             for (i = 0; i < next_dobj->ommtx_len; i++)
             {
                 next_dobj->ommtx[i]->unk05 = 1;
             }
         }
-        dobj_desc++;
+        dobjdesc++;
 
         next_dobj = lbCommonGetTreeDObjNextFromRoot(next_dobj, root_dobj);
     }
@@ -220,7 +220,7 @@ GObj* grGeometryMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **
     GObj *ground_gobj;
     void (*proc_display)(GObj*);
 
-    if (gr_desc->dobj_desc == NULL)
+    if (gr_desc->dobjdesc == NULL)
     {
         return NULL;
     }
@@ -233,7 +233,7 @@ GObj* grGeometryMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **
     else proc_display = dGRGeometryDescs[gr_desc_id].proc_displaypri;
 
     gcAddGObjDisplay(ground_gobj, proc_display, dGRGeometryDescs[gr_desc_id].dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcSetupCustomDObjs(ground_gobj, gr_desc->dobj_desc, p_dobj, nOMTransformTraRotRpyRSca, nOMTransformNull, nOMTransformNull);
+    gcSetupCustomDObjs(ground_gobj, gr_desc->dobjdesc, p_dobj, nOMTransformTraRotRpyRSca, nOMTransformNull, nOMTransformNull);
 
     if (gr_desc->p_mobjsubs != NULL)
     {
@@ -249,7 +249,7 @@ GObj* grGeometryMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **
     {
         gcAddGObjProcess(ground_gobj, mpCollisionAdvanceUpdateFrame, nOMObjProcessKindProc, 4);
     }
-    grGeometryDObjSetNoAnimMtx(ground_gobj, gr_desc->dobj_desc);
+    grGeometryDObjSetNoAnimMtx(ground_gobj, gr_desc->dobjdesc);
 
     return ground_gobj;
 }

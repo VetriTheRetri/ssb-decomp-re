@@ -262,7 +262,7 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
     ftStruct *fp = ftGetStruct(fighter_gobj);
     ftAttributes *attributes = fp->attributes;
     DObj **p_joint = &fp->joints[nFTPartsJointCommonStart];
-    DObjDesc *dobj_desc = &attributes->dobj_lookup[1];
+    DObjDesc *dobjdesc = &attributes->dobj_lookup[1];
     DObj *joint;
     Vec3f *scale;
     s32 i;
@@ -296,12 +296,12 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
                     ftCommonGuardGetJointTransformScale
                     (
                         joint,
-                        dobj_desc,
+                        dobjdesc,
                         fp->status_vars.common.guard.shield_rotate_range, scale
                     );
                     joint->anim_remain = AOBJ_ANIM_NULL;
                 }
-                dobj_desc++;
+                dobjdesc++;
             }
         }
         joint = fp->joints[nFTPartsJointYRotN];
@@ -311,7 +311,7 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
             ftCommonGuardGetJointTransformScale
             (
                 joint,
-                dobj_desc,
+                dobjdesc,
                 fp->status_vars.common.guard.shield_rotate_range,
                 &fp->attributes->translate_scales[nFTPartsJointYRotN]
             );
@@ -331,12 +331,12 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
                     ftCommonGuardGetJointTransform
                     (
                         joint,
-                        dobj_desc,
+                        dobjdesc,
                         fp->status_vars.common.guard.shield_rotate_range
                     );
                     joint->anim_remain = AOBJ_ANIM_NULL;
                 }
-                dobj_desc++;
+                dobjdesc++;
             }
         }
         joint = fp->joints[nFTPartsJointYRotN];
@@ -346,7 +346,7 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
             ftCommonGuardGetJointTransform
             (
                 joint,
-                dobj_desc,
+                dobjdesc,
                 fp->status_vars.common.guard.shield_rotate_range
             );
             joint->anim_remain = AOBJ_ANIM_NULL;

@@ -781,13 +781,13 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 modelpart_id)
                 }
                 else
                 {
-                    if ((fp->detail_current == nFTPartsDetailHigh) || (commonparts_container->commonparts[1].dobj_desc[joint_id - nFTPartsJointCommonStart].display_list == NULL))
+                    if ((fp->detail_current == nFTPartsDetailHigh) || (commonparts_container->commonparts[1].dobjdesc[joint_id - nFTPartsJointCommonStart].display_list == NULL))
                     {
                         detail_id = 0;
                     }
                     else detail_id = 1;
 
-                    joint->display_list = commonparts_container->commonparts[detail_id].dobj_desc[joint_id - nFTPartsJointCommonStart].display_list;
+                    joint->display_list = commonparts_container->commonparts[detail_id].dobjdesc[joint_id - nFTPartsJointCommonStart].display_list;
 
                     if (commonparts_container->commonparts[detail_id].p_mobjsubs != NULL)
                     {
@@ -874,13 +874,13 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
                     }
                     else
                     {
-                        if ((fp->detail_current == nFTPartsDetailHigh) || (commonparts_container->commonparts[1].dobj_desc[i].display_list == NULL))
+                        if ((fp->detail_current == nFTPartsDetailHigh) || (commonparts_container->commonparts[1].dobjdesc[i].display_list == NULL))
                         {
                             detail_id = 0;
                         }
                         else detail_id = 1;
 
-                        joint->display_list = commonparts_container->commonparts[detail_id].dobj_desc[i].display_list;
+                        joint->display_list = commonparts_container->commonparts[detail_id].dobjdesc[i].display_list;
 
                         if (commonparts_container->commonparts[detail_id].p_mobjsubs != NULL)
                         {
@@ -1008,7 +1008,7 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
                 }
                 else
                 {
-                    if ((fp->detail_current == nFTPartsDetailHigh) || (commonparts_container->commonparts[1].dobj_desc[i].display_list == NULL))
+                    if ((fp->detail_current == nFTPartsDetailHigh) || (commonparts_container->commonparts[1].dobjdesc[i].display_list == NULL))
                     {
                         detail_id = 0;
                     }
@@ -2105,7 +2105,7 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
 void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
-    u16 coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask_curr) & fp->coll_data.coll_mask_curr & MPCOLL_FLAG_MAIN_MASK;
+    u16 coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask_current) & fp->coll_data.coll_mask_current & MPCOLL_FLAG_MAIN_MASK;
     Vec3f pos;
 
     if (coll_mask)

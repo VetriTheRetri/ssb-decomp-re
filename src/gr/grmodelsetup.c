@@ -7,7 +7,7 @@
 // // // // // // // // // // // //
 
 // 0x80105760
-void grModelSetupGroundDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, DObjTransformTypes *transform_types)
+void grModelSetupGroundDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs, DObjTransformTypes *transform_types)
 {
     s32 i, id;
     DObj *dobj, *array_dobjs[DOBJ_ARRAY_MAX];
@@ -16,15 +16,15 @@ void grModelSetupGroundDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, DObj
     {
         array_dobjs[i] = NULL;
     }
-    for (i = 0; dobj_desc->index != ARRAY_COUNT(array_dobjs); i++, dobj_desc++)
+    for (i = 0; dobjdesc->index != ARRAY_COUNT(array_dobjs); i++, dobjdesc++)
     {
-        id = dobj_desc->index & 0xFFF;
+        id = dobjdesc->index & 0xFFF;
 
         if (id != 0)
         {
-            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
+            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->display_list);
         }
-        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobj_desc->display_list);
+        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobjdesc->display_list);
         
         if (transform_types[i].tk1 != nOMTransformNull)
         {
@@ -34,9 +34,9 @@ void grModelSetupGroundDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, DObj
         {
             gcAddOMMtxForDObjFixed(dobj, transform_types[i].tk2, 0);
         }
-        dobj->translate.vec.f = dobj_desc->translate;
-        dobj->rotate.vec.f = dobj_desc->rotate;
-        dobj->scale.vec.f = dobj_desc->scale;
+        dobj->translate.vec.f = dobjdesc->translate;
+        dobj->rotate.vec.f = dobjdesc->rotate;
+        dobj->scale.vec.f = dobjdesc->scale;
 
         if (dobjs != NULL)
         {

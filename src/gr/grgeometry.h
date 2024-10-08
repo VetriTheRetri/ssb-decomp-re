@@ -13,6 +13,6 @@ extern void grGeometryLayer2ProcDisplayPri(GObj *ground_gobj);
 extern void grGeometryLayer2ProcDisplaySec(GObj *ground_gobj);
 extern void grGeometryLayer3ProcDisplayPri(GObj *ground_gobj);
 extern void grGeometryLayer3ProcDisplaySec(GObj *ground_gobj);
-extern void grGeometryDObjSetNoAnimMtx(GObj *ground_gobj, DObjDesc *dobj_desc);
+extern void grGeometryDObjSetNoAnimMtx(GObj *ground_gobj, DObjDesc *dobjdesc);
 
 #endif

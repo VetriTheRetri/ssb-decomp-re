@@ -5,6 +5,6 @@
 #include <sys/objdef.h>
 #include <gr/grdef.h>
 
-extern void grModelSetupGroundDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **p_dobj, DObjTransformTypes *transform_types);
+extern void grModelSetupGroundDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **p_dobj, DObjTransformTypes *transform_types);
 
 #endif

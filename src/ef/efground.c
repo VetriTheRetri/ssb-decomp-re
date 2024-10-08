@@ -1288,7 +1288,7 @@ void efGroundUpdatePhysics(GObj *effect_gobj, s32 effect_id)
 }
 
 // 0x8011633C
-void efGroundSetupEffectDObjs(GObj *effect_gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u8 tk2, u8 arg5, s32 lr)
+void efGroundSetupEffectDObjs(GObj *effect_gobj, DObjDesc *dobjdesc, DObj **dobjs, u8 tk1, u8 tk2, u8 arg5, s32 lr)
 {
     efStruct *ep;
     DObj *effect_dobj;
@@ -1312,19 +1312,19 @@ void efGroundSetupEffectDObjs(GObj *effect_gobj, DObjDesc *dobj_desc, DObj **dob
         array_dobjs[i] = NULL;
     }
 
-    while (dobj_desc->index != ARRAY_COUNT(array_dobjs))
+    while (dobjdesc->index != ARRAY_COUNT(array_dobjs))
     {
-        id = dobj_desc->index & 0xFFF;
+        id = dobjdesc->index & 0xFFF;
 
         if (id != 0)
         {
-            current_dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
+            current_dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->display_list);
         }
-        else current_dobj = array_dobjs[0] = gcAddChildForDObj(effect_dobj, dobj_desc->display_list);
+        else current_dobj = array_dobjs[0] = gcAddChildForDObj(effect_dobj, dobjdesc->display_list);
 
         gcAddDObjTriTransformKind(current_dobj, tk1, tk2, arg5);
 
-        index2 = dobj_desc->index & 0xF000;
+        index2 = dobjdesc->index & 0xF000;
 
         if (index2 != 0)
         {
@@ -1339,16 +1339,16 @@ void efGroundSetupEffectDObjs(GObj *effect_gobj, DObjDesc *dobj_desc, DObj **dob
                 rotate_step = F_CST_DTOR32(180.0F);
             }
         }
-        current_dobj->translate.vec.f = dobj_desc->translate;
-        current_dobj->rotate.vec.f = dobj_desc->rotate;
+        current_dobj->translate.vec.f = dobjdesc->translate;
+        current_dobj->rotate.vec.f = dobjdesc->rotate;
         current_dobj->rotate.vec.f.y += rotate_step;
-        current_dobj->scale.vec.f = dobj_desc->scale;
+        current_dobj->scale.vec.f = dobjdesc->scale;
 
         if (dobjs != NULL)
         {
             *dobjs++ = current_dobj;
         }
-        dobj_desc++;
+        dobjdesc++;
     }
 }
 
@@ -1590,7 +1590,7 @@ void efGroundMakeEffectSpawnActor(void)
             sEFGroundActor.effect_id = 0;
             sEFGroundActor.effect_data = &dEFGroundDatas[gBattleState->gr_kind];
 
-            sEFGroundActor.file_head = (void*) ((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobj_desc - (intptr_t)dEFGroundDatas[gBattleState->gr_kind].o_data);
+            sEFGroundActor.file_head = (void*) ((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)dEFGroundDatas[gBattleState->gr_kind].o_data);
             sEFGroundActor.make_queue = 0;
 
             efGroundSetupRandomWeights();

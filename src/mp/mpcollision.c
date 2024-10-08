@@ -4070,7 +4070,7 @@ void mpCollisionInitGroundData(void)
     mpCollisionInitLineIDsAll();
     mpCollisionAllocVertexInfo();
     func_ovl2_800FB554();
-    mpCollisionAllocYakumono(gMPCollisionGroundData->gr_desc[1].dobj_desc);
+    mpCollisionAllocYakumono(gMPCollisionGroundData->gr_desc[1].dobjdesc);
 
     gMPCollisionLightColor.r = 0xFF;
     gMPCollisionLightColor.g = 0xFF;
@@ -4100,10 +4100,10 @@ void mpCollisionSetBGM(void)
 // 0x800FC450
 void mpCollisionClearYakumonoAll(void)
 {
-    DObjDesc *dobj_desc = gMPCollisionGroundData->gr_desc[1].dobj_desc;
+    DObjDesc *dobjdesc = gMPCollisionGroundData->gr_desc[1].dobjdesc;
     s32 i;
 
-    for (i = 0; dobj_desc->index != DOBJ_ARRAY_MAX; i++, dobj_desc++)
+    for (i = 0; dobjdesc->index != DOBJ_ARRAY_MAX; i++, dobjdesc++)
     {
         gMPCollisionYakumonoDObjs->yakumono_dobj[i]->user_data.s = nMPYakumonoStatusNone;
     }

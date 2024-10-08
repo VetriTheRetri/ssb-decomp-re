@@ -47,7 +47,7 @@ extern void lbCommonAddFighterPartsFigatree(DObj *root_dobj, void **figatree, f3
 extern void lbCommonAddDObjAnimAll(DObj *root_dobj, AObjEvent32 **anim_joints, AObjEvent32 ***p_matanim_joints, f32 anim_frame);
 extern void lbCommonInitDObjTriTransform(DObj *dobj, u8 tk1, u8 tk2, u8 tk3);
 extern void lbCommonInitDObj(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, u8 arg4);
-extern void lbCommonSetupTreeDObjs(DObj *root_dobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u8 tk2, u8 tk3);
+extern void lbCommonSetupTreeDObjs(DObj *root_dobj, DObjDesc *dobjdesc, DObj **dobjs, u8 tk1, u8 tk2, u8 tk3);
 extern void lbCommonAddMObjForFighterPartsDObj
 (
     DObj *dobj,
@@ -72,7 +72,7 @@ extern void lbCommonSetupFighterPartsDObjs
 extern void lbCommonSetupCustomTreeDObjsWithMObj
 (
     DObj *root_dobj,
-    DObjDesc *dobj_desc,
+    DObjDesc *dobjdesc,
     MObjSub ***p_mobjsubs,
     DObj **dobjs,
     u8 tk1,
@@ -81,7 +81,7 @@ extern void lbCommonSetupCustomTreeDObjsWithMObj
 );
 extern void lbCommonAddMObjForTreeDObjs(DObj *root_dobj, MObjSub ***p_mobjsubs);
 extern void lbCommonPlayTreeDObjsAnim(DObj *root_dobj);
-extern void lbCommonSetDObjTransformsForTreeDObjs(DObj *root_dobj, DObjDesc *dobj_desc);
+extern void lbCommonSetDObjTransformsForTreeDObjs(DObj *root_dobj, DObjDesc *dobjdesc);
 extern void lbCommonInsertTreeDObjChild(DObj *root_dobj, void *dvar);
 extern void lbCommonEjectTreeDObj(DObj *dobj);
 extern void lbCommonPlayTranslateScaledDObjAnim(DObj *dobj, Vec3f *scale);

@@ -61,7 +61,7 @@ extern void gcSetDObjAnimLength(DObj *dobj, f32 length);
 extern f32 gcGetDObjAxisTrack(DObj *dobj, s32 track);
 
 // Get DObjDesc axis value of corresponding track ID
-extern f32 gcGetDObjDescAxisTrack(DObjDesc *dobj_desc, s32 track);
+extern f32 gcGetDObjDescAxisTrack(DObjDesc *dobjdesc, s32 track);
 
 // Check if DObj or DObjDesc axis value of corresponding track ID has been retreived
 extern sb32 gcCheckGetDObjNoAxisTrack
@@ -71,7 +71,7 @@ extern sb32 gcCheckGetDObjNoAxisTrack
     f32 *axis_value,
     f32 *rate,
     AObj *seek_aobj,
-    DObjDesc *dobj_desc,
+    DObjDesc *dobjdesc,
     s32 track,
     sb32 rate_kind,
     Vec3f *translate,
@@ -87,7 +87,7 @@ extern f32 gcGetDObjTempAnimTimeMax
     DObj *dobj,
     AObjEvent32 **anim_joints,
     f32 anim_frame,
-    DObjDesc *dobj_desc,
+    DObjDesc *dobjdesc,
     s32 rate_kind,
     f32 length,
     f32 translate,
@@ -101,7 +101,7 @@ extern f32 func_8000EC64_F864
     GObj *gobj,
     AObjEvent32 **anim_joints,
     f32 anim_frame,
-    DObjDesc *dobj_desc,
+    DObjDesc *dobjdesc,
     s32 rate_kind,
     f32 length_max,
     f32 length_min,
@@ -111,7 +111,7 @@ extern f32 func_8000EC64_F864
 );
 
 // ???
-extern void func_8000EE40_FA40(GObj *gobj, AObjEvent32 **anim_joints, f32 anim_frame, DObjDesc *dobj_desc);
+extern void func_8000EE40_FA40(GObj *gobj, AObjEvent32 **anim_joints, f32 anim_frame, DObjDesc *dobjdesc);
 
 // Add Translate, Rotate and Scale OMMtxes for specific DObj
 extern void gcAddDObjTransformTraRotSca(DObj *dobj);
@@ -126,7 +126,7 @@ extern DObj* gcAddSiblingForDObjTraRotSca(DObj *dobj, void *dvar);
 extern DObj* gcAddChildForDObjTraRotSca(DObj *dobj, void *dvar);
 
 // Set up DObj node tree with common OMMtx transformations for GObj
-extern void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs);
+extern void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs);
 
 // Add three OMMtxes of transformation kind for specific DObj
 extern void gcAddDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3);
@@ -135,13 +135,13 @@ extern void gcAddDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3);
 extern void gcDecideDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, s32 flags);
 
 // Set up DObj node tree with custom OMMtx transformations for GObj
-extern void gcSetupCustomDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u8 tk2, u8 tk3);
+extern void gcSetupCustomDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs, u8 tk1, u8 tk2, u8 tk3);
 
 // Set up DObj node tree with MObj and custom OMMtx transformations for GObj
 extern void gcSetupCustomDObjsWithMObj
 (
     GObj *gobj, 
-    DObjDesc *dobj_desc, 
+    DObjDesc *dobjdesc, 
     MObjSub ***p_mobjsubs, 
     DObj **dobjs, 
     u8 tk1, 
@@ -153,7 +153,7 @@ extern void gcSetupCustomDObjsWithMObj
 extern void gcAddMObjAll(GObj *gobj, MObjSub ***p_mobjsubs);
 
 // Set transformation vectors for all DObjs on a GObj
-extern void gcSetDObjTransformsForGObj(GObj *gobj, DObjDesc *dobj_desc);
+extern void gcSetDObjTransformsForGObj(GObj *gobj, DObjDesc *dobjdesc);
 
 // Add CamAnimJoint to Camera
 extern void gcAddCameraCamAnimJoint(Camera *cam, AObjEvent32 *camanim_joint, f32 anim_frame); 

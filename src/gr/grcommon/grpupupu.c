@@ -633,7 +633,7 @@ void grPupupuProcUpdate(GObj *ground_gobj)
 }
 
 // 0x801064C8
-GObj* grPupupuMakeMapGObj(intptr_t o_dobj_desc, intptr_t o_mobjsub, void (*proc_display)(GObj*), u8 dl_link)
+GObj* grPupupuMakeMapGObj(intptr_t o_dobjdesc, intptr_t o_mobjsub, void (*proc_display)(GObj*), u8 dl_link)
 {
     GObj *ground_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
@@ -643,7 +643,7 @@ GObj* grPupupuMakeMapGObj(intptr_t o_dobj_desc, intptr_t o_mobjsub, void (*proc_
     (
         ground_gobj, 
         (DObjDesc*) 
-        ((uintptr_t)gGRCommonStruct.pupupu.map_head + o_dobj_desc), 
+        ((uintptr_t)gGRCommonStruct.pupupu.map_head + o_dobjdesc), 
         NULL, 
         nOMTransformTraRotRpyRSca, 
         nOMTransformNull, 

@@ -20,7 +20,7 @@
 #define WEAPON_FLAG_PARENT_WEAPON 2	                // Weapon spawned by another weapon
 #define WEAPON_FLAG_PARENT_ITEM 3	                // Weapon spawned by Item
 
-#define WEAPON_FLAG_PARENT_ALL 0xF                   // Mask all GObj classes that can spawn weapons?
+#define WEAPON_MASK_PARENT 0xF                   // Mask all GObj classes that can spawn weapons?
 
 #define WEAPON_HITBOX_NUM_MAX 2
 #define WEAPON_REHIT_TIME_DEFAULT                                                                                      \

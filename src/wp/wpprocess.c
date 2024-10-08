@@ -138,15 +138,15 @@ void wpProcessProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (animat
         }
         translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
 
-        wp->coll_data.pos_curr = *translate;
+        wp->coll_data.pos_current = *translate;
 
         translate->x += wp->phys_info.vel_air.x;
         translate->y += wp->phys_info.vel_air.y;
         translate->z += wp->phys_info.vel_air.z;
 
-        wp->coll_data.pos_correct.x = translate->x - wp->coll_data.pos_curr.x;
-        wp->coll_data.pos_correct.y = translate->y - wp->coll_data.pos_curr.y;
-        wp->coll_data.pos_correct.z = translate->z - wp->coll_data.pos_curr.z;
+        wp->coll_data.pos_correct.x = translate->x - wp->coll_data.pos_current.x;
+        wp->coll_data.pos_correct.y = translate->y - wp->coll_data.pos_current.y;
+        wp->coll_data.pos_correct.z = translate->z - wp->coll_data.pos_current.z;
 
         if ((wp->ga == nMPKineticsGround) && (wp->coll_data.ground_line_id != -1) && (wp->coll_data.ground_line_id != -2) && (mpCollisionCheckExistLineID(wp->coll_data.ground_line_id) != FALSE))
         {
@@ -176,8 +176,8 @@ void wpProcessProcWeaponMain(GObj *weapon_gobj) // Run item logic pass 1 (animat
         }
         if (wp->proc_map != NULL)
         {
-            wp->coll_data.coll_mask_prev = wp->coll_data.coll_mask_curr;
-            wp->coll_data.coll_mask_curr = 0;
+            wp->coll_data.coll_mask_prev = wp->coll_data.coll_mask_current;
+            wp->coll_data.coll_mask_current = 0;
             wp->coll_data.is_coll_end = FALSE;
             wp->coll_data.coll_mask_stat = 0;
             wp->coll_data.coll_mask_unk = 0;

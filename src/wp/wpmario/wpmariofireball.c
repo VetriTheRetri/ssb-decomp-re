@@ -20,6 +20,7 @@ lWPMarioFireballLuigiWeaponAttributes;      // 0x00000000
 //                               //
 // // // // // // // // // // // //
 
+// 0x80188E30
 wpMarioFireballAttributes dWPMarioFireballWeaponAttributes[/* */] = 
 {
     // Mario
@@ -55,10 +56,11 @@ wpMarioFireballAttributes dWPMarioFireballWeaponAttributes[/* */] =
     }
 };
 
+// 0x80188E90
 wpCreateDesc dWPMarioFireballWeaponDesc =
 {
     0x00,                                   // Render flags?
-    nWPKindFireball,                       // Weapon Kind
+    nWPKindFireball,                        // Weapon Kind
     &gFTMarioFileMain,                      // Pointer to character's loaded files?
     &lWPMariroFireballWeaponAttributes,     // Offset of weapon attributes in loaded files
 

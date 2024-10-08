@@ -409,7 +409,7 @@ sb32 wpLinkBoomerangProcMap(GObj *weapon_gobj)
     {
         wpMapTestAll(weapon_gobj);
 
-        coll_flags = (wp->coll_data.coll_mask_prev ^ wp->coll_data.coll_mask_curr) & wp->coll_data.coll_mask_curr & MPCOLL_FLAG_MAIN_MASK;
+        coll_flags = (wp->coll_data.coll_mask_prev ^ wp->coll_data.coll_mask_current) & wp->coll_data.coll_mask_current & MPCOLL_FLAG_MAIN_MASK;
 
         if (coll_flags)
         {

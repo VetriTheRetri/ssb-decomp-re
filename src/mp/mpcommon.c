@@ -496,7 +496,7 @@ sb32 mpCommonRunFighterSpecialCollisions(mpCollData *coll_data, GObj *fighter_go
         }
         if ((flags & MPCOLL_PROC_TYPE_CEILHEAVY) && (this_fp->phys_info.vel_air.y >= 30.0F))
         {
-            coll_data->coll_mask_curr |= MPCOLL_FLAG_CEILHEAVY;
+            coll_data->coll_mask_current |= MPCOLL_FLAG_CEILHEAVY;
 
             is_ceilstop = TRUE;
 
@@ -714,7 +714,7 @@ void mpCommonProcFighterCliffGroundCeil(GObj *fighter_gobj)
         {
             mpCommonSetFighterWaitOrLanding(fighter_gobj);
         }
-        else if (fp->coll_data.coll_mask_curr & MPCOLL_FLAG_CEILHEAVY) // Enter ceiling bonk if true?
+        else if (fp->coll_data.coll_mask_current & MPCOLL_FLAG_CEILHEAVY) // Enter ceiling bonk if true?
         {
             ftCommonStopCeilSetStatus(fighter_gobj);
         }
@@ -733,7 +733,7 @@ sb32 mpCommonProcFighterDamage(mpCollData *coll_data, GObj *fighter_gobj, u32 fl
 
         if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_FLAG_LWALL) && (lbCommonMag2D(&coll_data->pos_correct) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_correct, &coll_data->lwall_angle) > F_CLC_DTOR32(110.0F))) // 1.9198622F
         {
-            fp->status_vars.common.damage.coll_mask_curr |= MPCOLL_FLAG_LWALL;
+            fp->status_vars.common.damage.coll_mask_current |= MPCOLL_FLAG_LWALL;
 
             is_collide = TRUE;
 
@@ -750,7 +750,7 @@ sb32 mpCommonProcFighterDamage(mpCollData *coll_data, GObj *fighter_gobj, u32 fl
 
         if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_FLAG_RWALL) && (lbCommonMag2D(&coll_data->pos_correct) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_correct, &coll_data->rwall_angle) > F_CLC_DTOR32(110.0F))) // 1.9198622F
         {
-            fp->status_vars.common.damage.coll_mask_curr |= MPCOLL_FLAG_RWALL;
+            fp->status_vars.common.damage.coll_mask_current |= MPCOLL_FLAG_RWALL;
 
             is_collide = TRUE;
 
@@ -771,7 +771,7 @@ sb32 mpCommonProcFighterDamage(mpCollData *coll_data, GObj *fighter_gobj, u32 fl
         }
         if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_FLAG_CEIL) && (lbCommonMag2D(&coll_data->pos_correct) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_correct, &coll_data->ceil_angle) > F_CLC_DTOR32(110.0F)))
         {
-            fp->status_vars.common.damage.coll_mask_curr |= MPCOLL_FLAG_CEIL;
+            fp->status_vars.common.damage.coll_mask_current |= MPCOLL_FLAG_CEIL;
 
             is_collide = TRUE;
 
@@ -805,7 +805,7 @@ sb32 mpCommonProcFighterDamage(mpCollData *coll_data, GObj *fighter_gobj, u32 fl
                 {
                     mpProcessRunGroundEdgeAdjust(coll_data);
 
-                    fp->status_vars.common.damage.coll_mask_curr |= MPCOLL_FLAG_GROUND;
+                    fp->status_vars.common.damage.coll_mask_current |= MPCOLL_FLAG_GROUND;
 
                     is_collide = TRUE;
 
@@ -841,8 +841,8 @@ sb32 mpCommonCheckFighterDamageCollision(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->status_vars.common.damage.coll_mask_prev = fp->status_vars.common.damage.coll_mask_curr;
-    fp->status_vars.common.damage.coll_mask_curr = 0;
+    fp->status_vars.common.damage.coll_mask_prev = fp->status_vars.common.damage.coll_mask_current;
+    fp->status_vars.common.damage.coll_mask_current = 0;
     fp->status_vars.common.damage.coll_mask_ignore = 0;
 
     return mpProcessUpdateMapProcMain(&fp->coll_data, mpCommonProcFighterDamage, fighter_gobj, MPCOLL_PROC_TYPE_DEFAULT);
@@ -935,10 +935,10 @@ void mpCommonRunDefaultCollision(mpCollData *coll_data, GObj *gobj, u32 flags)
 // 0x800DEFBC
 void mpCommonCopyCollDataStats(mpCollData *this_coll_data, Vec3f *pos, mpCollData *other_coll_data)
 {
-    this_coll_data->pos_curr = *pos;
+    this_coll_data->pos_current = *pos;
 
     this_coll_data->p_objcoll = &other_coll_data->objcoll;
-    this_coll_data->coll_mask_curr = 0;
+    this_coll_data->coll_mask_current = 0;
     this_coll_data->coll_mask_unk = 0;
     this_coll_data->coll_mask_stat = 0;
     this_coll_data->is_coll_end = FALSE;
@@ -951,7 +951,7 @@ void mpCommonResetCollDataStats(mpCollData *coll_data)
     coll_data->p_objcoll = &coll_data->objcoll;
 
     coll_data->coll_update_frame = gMPCollisionUpdateFrame;
-    coll_data->coll_mask_curr = 0;
+    coll_data->coll_mask_current = 0;
 }
 
 // 0x800DF014

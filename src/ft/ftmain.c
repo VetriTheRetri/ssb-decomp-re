@@ -1722,7 +1722,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f *topn_translate = &fp->joints[nFTPartsJointTopN]->translate.vec.f;
-    Vec3f *coll_translate = &fp->coll_data.pos_curr;
+    Vec3f *coll_translate = &fp->coll_data.pos_current;
     Vec3f *ground_angle = &fp->coll_data.ground_angle;
     Vec3f *vel_damage_air;
     s32 unused[2];
@@ -1795,7 +1795,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
 
     ftCommonDeadCheckInterruptCommon(fighter_gobj);
 
-    if ((fp->coll_data.pos_curr.y >= gMPCollisionGroundData->alt_warning) && (topn_translate->y < gMPCollisionGroundData->alt_warning) && (fp->ft_kind != nFTKindBoss))
+    if ((fp->coll_data.pos_current.y >= gMPCollisionGroundData->alt_warning) && (topn_translate->y < gMPCollisionGroundData->alt_warning) && (fp->ft_kind != nFTKindBoss))
     {
         func_800269C0_275C0(nSYAudioFGMAltitudeWarn);
     }
@@ -1808,8 +1808,8 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
     }
     if (fp->proc_map != NULL)
     {
-        fp->coll_data.coll_mask_prev = fp->coll_data.coll_mask_curr;
-        fp->coll_data.coll_mask_curr = 0;
+        fp->coll_data.coll_mask_prev = fp->coll_data.coll_mask_current;
+        fp->coll_data.coll_mask_current = 0;
         fp->coll_data.is_coll_end = FALSE;
         fp->coll_data.coll_mask_stat = 0;
         fp->coll_data.coll_mask_unk = 0;
@@ -4063,7 +4063,7 @@ void ftMainUpdateWithheldPartID(ftStruct *fp, s32 withheld_part_id)
         {
             commonpart = &fp->attributes->commonparts_container->commonparts[0];
         }
-        else if (attributes->commonparts_container->commonparts[1].dobj_desc[withheld_part->root_joint_id - nFTPartsJointCommonStart].display_list != NULL)
+        else if (attributes->commonparts_container->commonparts[1].dobjdesc[withheld_part->root_joint_id - nFTPartsJointCommonStart].display_list != NULL)
         {
             commonpart = &attributes->commonparts_container->commonparts[1];
         }
@@ -4071,7 +4071,7 @@ void ftMainUpdateWithheldPartID(ftStruct *fp, s32 withheld_part_id)
     }
     else commonpart = NULL;
 
-    dl = (commonpart != NULL) ? commonpart->dobj_desc[withheld_part->root_joint_id - nFTPartsJointCommonStart].display_list : NULL;
+    dl = (commonpart != NULL) ? commonpart->dobjdesc[withheld_part->root_joint_id - nFTPartsJointCommonStart].display_list : NULL;
 
     root_joint = gcAddDObjForGObj(fp->fighter_gobj, dl);
     root_joint->sib_prev->sib_next = NULL;
@@ -4339,7 +4339,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     s32 unused2;
     s32 motion_id;
     void *event_script_ptr;
-    DObjDesc *dobj_desc;
+    DObjDesc *dobjdesc;
     s32 unused3;
     ftStatusDesc *status_desc;
     ftMotionDescArray *script_array;
@@ -4607,19 +4607,19 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
                 else ftMainEjectWithheldPartID(fp, i);
             }
 
-            dobj_desc = attributes->commonparts_container->commonparts[fp->detail_current - nFTPartsDetailStart].dobj_desc;
+            dobjdesc = attributes->commonparts_container->commonparts[fp->detail_current - nFTPartsDetailStart].dobjdesc;
 
-            for (i = nFTPartsJointCommonStart; dobj_desc->index != DOBJ_ARRAY_MAX; i++, dobj_desc++)
+            for (i = nFTPartsJointCommonStart; dobjdesc->index != DOBJ_ARRAY_MAX; i++, dobjdesc++)
             {
                 joint = fp->joints[i];
 
                 if (joint != NULL)
                 {
-                    joint->translate.vec.f = dobj_desc->translate;
+                    joint->translate.vec.f = dobjdesc->translate;
 
-                    joint->rotate.vec.f = dobj_desc->rotate;
+                    joint->rotate.vec.f = dobjdesc->rotate;
 
-                    joint->scale.vec.f = dobj_desc->scale;
+                    joint->scale.vec.f = dobjdesc->scale;
 
                     joint->flags = DOBJ_FLAG_NONE;
                 }

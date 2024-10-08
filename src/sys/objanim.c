@@ -1534,36 +1534,36 @@ f32 gcGetDObjAxisTrack(DObj *dobj, s32 track)
 #endif
 }
 
-f32 gcGetDObjDescAxisTrack(DObjDesc *dobj_desc, s32 track)
+f32 gcGetDObjDescAxisTrack(DObjDesc *dobjdesc, s32 track)
 {
     switch (track) 
     {
     case nOMObjAnimTrackRotX: 
-        return dobj_desc->rotate.x;
+        return dobjdesc->rotate.x;
 
     case nOMObjAnimTrackRotY: 
-        return dobj_desc->rotate.y;
+        return dobjdesc->rotate.y;
 
     case nOMObjAnimTrackRotZ: 
-        return dobj_desc->rotate.z;
+        return dobjdesc->rotate.z;
 
     case nOMObjAnimTrackTraX: 
-        return dobj_desc->translate.x;
+        return dobjdesc->translate.x;
 
     case nOMObjAnimTrackTraY: 
-        return dobj_desc->translate.y;
+        return dobjdesc->translate.y;
 
     case nOMObjAnimTrackTraZ: 
-        return dobj_desc->translate.z;
+        return dobjdesc->translate.z;
 
     case nOMObjAnimTrackScaX: 
-        return dobj_desc->scale.x;
+        return dobjdesc->scale.x;
 
     case nOMObjAnimTrackScaY: 
-        return dobj_desc->scale.y;
+        return dobjdesc->scale.y;
 
     case nOMObjAnimTrackScaZ: 
-        return dobj_desc->scale.z;
+        return dobjdesc->scale.z;
     }
 #if defined (AVOID_UB)
     // todo: return NaN?
@@ -1578,7 +1578,7 @@ sb32 gcCheckGetDObjNoAxisTrack
     f32 *axis_value,
     f32 *rate,
     AObj *seek_aobj,
-    DObjDesc *dobj_desc,
+    DObjDesc *dobjdesc,
     s32 track,
     s32 rate_kind,
     Vec3f *translate,
@@ -1659,22 +1659,22 @@ sb32 gcCheckGetDObjNoAxisTrack
             }
             else if (is_desc_or_dobj == 0)
             {
-                if (dobj_desc == NULL)
+                if (dobjdesc == NULL)
                 {
                     return TRUE;
                 }
-                else *axis_value = gcGetDObjDescAxisTrack(dobj_desc, track);
+                else *axis_value = gcGetDObjDescAxisTrack(dobjdesc, track);
             }
             else *axis_value = gcGetDObjAxisTrack(dobj, track);
         }
     }
     else if (is_desc_or_dobj == 0)
     {
-        if (dobj_desc == NULL)
+        if (dobjdesc == NULL)
         {
             return TRUE;
         }
-        *axis_value = gcGetDObjDescAxisTrack(dobj_desc, track);
+        *axis_value = gcGetDObjDescAxisTrack(dobjdesc, track);
     }
     else *axis_value = gcGetDObjAxisTrack(dobj, track);
 
@@ -1791,7 +1791,7 @@ f32 gcGetDObjTempAnimTimeMax
     DObj *dobj,
     AObjEvent32 **anim_joints,
     f32 anim_frame,
-    DObjDesc *dobj_desc,
+    DObjDesc *dobjdesc,
     s32 rate_kind,
     f32 length,
     f32 translate,
@@ -1823,7 +1823,7 @@ f32 gcGetDObjTempAnimTimeMax
 
     if ((anim_joints == NULL) || (*anim_joints == NULL))
     {
-        if (dobj_desc == NULL)
+        if (dobjdesc == NULL)
         {
             gcRemoveAObjFromDObj(dobj);
 
@@ -1853,11 +1853,11 @@ f32 gcGetDObjTempAnimTimeMax
         rate_new = 0.0F;
         rate_old = 0.0F;
 
-        if (gcCheckGetDObjNoAxisTrack(0, dobj, &value_new, &rate_new, parse_aobj, dobj_desc, i, rate_kind, &desc_translate, &is_desc_axis_ready))
+        if (gcCheckGetDObjNoAxisTrack(0, dobj, &value_new, &rate_new, parse_aobj, dobjdesc, i, rate_kind, &desc_translate, &is_desc_axis_ready))
         {
             continue;
         }
-        gcCheckGetDObjNoAxisTrack(1, dobj, &value_old, &rate_old, root_aobj, dobj_desc, i, rate_kind, &dobj_translate, &is_dobj_axis_ready);
+        gcCheckGetDObjNoAxisTrack(1, dobj, &value_old, &rate_old, root_aobj, dobjdesc, i, rate_kind, &dobj_translate, &is_dobj_axis_ready);
 
         if ((value_new != value_old) || (rate_new != rate_old))
         {
@@ -1937,7 +1937,7 @@ f32 func_8000EC64_F864
     GObj *gobj,
     AObjEvent32 **anim_joints,
     f32 anim_frame,
-    DObjDesc *dobj_desc,
+    DObjDesc *dobjdesc,
     s32 rate_kind,
     f32 length_max,
     f32 length_min,
@@ -1962,7 +1962,7 @@ f32 func_8000EC64_F864
         
         while (dobj != NULL)
         {
-            temp = gcGetDObjTempAnimTimeMax(dobj, anim_joints, anim_frame, dobj_desc, rate_kind, length_max, translate, rotate, scale);
+            temp = gcGetDObjTempAnimTimeMax(dobj, anim_joints, anim_frame, dobjdesc, rate_kind, length_max, translate, rotate, scale);
             
             if (length_max < temp) 
             {
@@ -1972,9 +1972,9 @@ f32 func_8000EC64_F864
             {
                 anim_joints++;
             }
-            if (dobj_desc != NULL)
+            if (dobjdesc != NULL)
             {
-                dobj_desc++;
+                dobjdesc++;
             }
             dobj = gcGetTreeDObjNext(dobj);
         }
@@ -1997,15 +1997,15 @@ f32 func_8000EC64_F864
     } 
     else while (dobj != NULL)
     {
-        gcGetDObjTempAnimTimeMax(dobj, anim_joints, anim_frame, dobj_desc, rate_kind, length_max, translate, rotate, scale);
+        gcGetDObjTempAnimTimeMax(dobj, anim_joints, anim_frame, dobjdesc, rate_kind, length_max, translate, rotate, scale);
 
         if (anim_joints != NULL)
         {
             anim_joints++;
         }
-        if (dobj_desc != NULL)
+        if (dobjdesc != NULL)
         {
-            dobj_desc++;
+            dobjdesc++;
         }
         dobj = gcGetTreeDObjNext(dobj);
     }
@@ -2014,7 +2014,7 @@ f32 func_8000EC64_F864
     return length_max;
 }
 
-void func_8000EE40_FA40(GObj *gobj, AObjEvent32 **anim_joints, f32 anim_frame, DObjDesc *dobj_desc)
+void func_8000EE40_FA40(GObj *gobj, AObjEvent32 **anim_joints, f32 anim_frame, DObjDesc *dobjdesc)
 {
     s32 i;
     DObj *dobj;
@@ -2051,7 +2051,7 @@ void func_8000EE40_FA40(GObj *gobj, AObjEvent32 **anim_joints, f32 anim_frame, D
                         &axis_value, 
                         NULL, 
                         dobj->aobj, 
-                        dobj_desc, 
+                        dobjdesc, 
                         i, 
                         0, 
                         &translate, 
@@ -2103,18 +2103,18 @@ void func_8000EE40_FA40(GObj *gobj, AObjEvent32 **anim_joints, f32 anim_frame, D
             dobj->anim_remain = AOBJ_ANIM_NULL;
             dobj->is_anim_root = FALSE;
             
-            if (dobj_desc != NULL)
+            if (dobjdesc != NULL)
             {
-                dobj->translate.vec.f = dobj_desc->translate;
-                dobj->rotate.vec.f = dobj_desc->rotate;
-                dobj->scale.vec.f = dobj_desc->scale;
+                dobj->translate.vec.f = dobjdesc->translate;
+                dobj->rotate.vec.f = dobjdesc->rotate;
+                dobj->scale.vec.f = dobjdesc->scale;
             }
         }
         anim_joints++;
 
-        if (dobj_desc != NULL)
+        if (dobjdesc != NULL)
         {
-            dobj_desc++;
+            dobjdesc++;
         }
         dobj = gcGetTreeDObjNext(dobj);
     }
@@ -2151,7 +2151,7 @@ DObj* gcAddChildForDObjTraRotSca(DObj *dobj, void *dvar)
     return child_dobj;
 }
 
-void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs)
+void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs)
 {
     s32 i;
     DObj* dobj;
@@ -2162,47 +2162,47 @@ void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs)
     {
         array_dobjs[i] = NULL;
     }
-    while (dobj_desc->index != ARRAY_COUNT(array_dobjs))
+    while (dobjdesc->index != ARRAY_COUNT(array_dobjs))
     {
-        id = dobj_desc->index & 0xFFF;
+        id = dobjdesc->index & 0xFFF;
 
         if (id != 0)
         {
-            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
+            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->display_list);
         }
-        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobj_desc->display_list);
+        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobjdesc->display_list);
         
-        if (dobj_desc->index & 0xF000)
+        if (dobjdesc->index & 0xF000)
         {
             gcAddOMMtxForDObjFixed(dobj, nOMTransformTra, 0);
         }
-        if (dobj_desc->index & 0x8000)
+        if (dobjdesc->index & 0x8000)
         {
             gcAddOMMtxForDObjFixed(dobj, nOMTransformRecalcRotRpyRSca, 0);
         } 
-        else if (dobj_desc->index & 0x4000)
+        else if (dobjdesc->index & 0x4000)
         {
             gcAddOMMtxForDObjFixed(dobj, nOMTransform46, 0);
         }
-        else if (dobj_desc->index & 0x2000)
+        else if (dobjdesc->index & 0x2000)
         {
             gcAddOMMtxForDObjFixed(dobj, nOMTransform48, 0);
         }
-        else if (dobj_desc->index & 0x1000)
+        else if (dobjdesc->index & 0x1000)
         {
             gcAddOMMtxForDObjFixed(dobj, nOMTransform50, 0);
         }
         else gcAddDObjTransformTraRotSca(dobj);
         
-        dobj->translate.vec.f = dobj_desc->translate;
-        dobj->rotate.vec.f = dobj_desc->rotate;
-        dobj->scale.vec.f = dobj_desc->scale;
+        dobj->translate.vec.f = dobjdesc->translate;
+        dobj->rotate.vec.f = dobjdesc->rotate;
+        dobj->scale.vec.f = dobjdesc->scale;
 
         if (dobjs != NULL)
         {
             *dobjs++ = dobj;
         }
-        dobj_desc++;
+        dobjdesc++;
     }
 }
 
@@ -2330,7 +2330,7 @@ void gcDecideDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, s32 flags)
 }
 
 // 0x8000F590
-void gcSetupCustomDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u8 tk2, u8 tk3)
+void gcSetupCustomDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs, u8 tk1, u8 tk2, u8 tk3)
 {
     s32 i;
     DObj *dobj;
@@ -2341,36 +2341,36 @@ void gcSetupCustomDObjs(GObj *gobj, DObjDesc *dobj_desc, DObj **dobjs, u8 tk1, u
     {
         array_dobjs[i] = NULL;
     }
-    while (dobj_desc->index != ARRAY_COUNT(array_dobjs)) 
+    while (dobjdesc->index != ARRAY_COUNT(array_dobjs)) 
     {
-        id = dobj_desc->index & 0xFFF;
+        id = dobjdesc->index & 0xFFF;
 
         if (id != 0)
         {
-            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
+            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->display_list);
         } 
-        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobj_desc->display_list);
+        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobjdesc->display_list);
         
-        if (dobj_desc->index & 0xF000) 
+        if (dobjdesc->index & 0xF000) 
         {
-            gcDecideDObjTriTransformKind(dobj, tk1, tk2, tk3, dobj_desc->index & 0xF000);
+            gcDecideDObjTriTransformKind(dobj, tk1, tk2, tk3, dobjdesc->index & 0xF000);
         } 
         else gcAddDObjTriTransformKind(dobj, tk1, tk2, tk3);
         
-        dobj->translate.vec.f = dobj_desc->translate;
-        dobj->rotate.vec.f = dobj_desc->rotate;
-        dobj->scale.vec.f = dobj_desc->scale;
+        dobj->translate.vec.f = dobjdesc->translate;
+        dobj->rotate.vec.f = dobjdesc->rotate;
+        dobj->scale.vec.f = dobjdesc->scale;
 
         if (dobjs != NULL) 
         {
             *dobjs++ = dobj;
         }
-        dobj_desc++;
+        dobjdesc++;
     }
 }
 
 // 0x8000F720
-void gcSetupCustomDObjsWithMObj(GObj *gobj, DObjDesc *dobj_desc, MObjSub ***p_mobjsubs, DObj **dobjs, u8 tk1, u8 tk2, u8 tk3)
+void gcSetupCustomDObjsWithMObj(GObj *gobj, DObjDesc *dobjdesc, MObjSub ***p_mobjsubs, DObj **dobjs, u8 tk1, u8 tk2, u8 tk3)
 {
     s32 i;
     DObj *dobj;
@@ -2381,25 +2381,25 @@ void gcSetupCustomDObjsWithMObj(GObj *gobj, DObjDesc *dobj_desc, MObjSub ***p_mo
     {
         array_dobjs[i] = NULL;
     }
-    while (dobj_desc->index != ARRAY_COUNT(array_dobjs)) 
+    while (dobjdesc->index != ARRAY_COUNT(array_dobjs)) 
     {
-        id = dobj_desc->index & 0xFFF;
+        id = dobjdesc->index & 0xFFF;
 
         if (id != 0)
         {
-            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobj_desc->display_list);
+            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->display_list);
         } 
-        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobj_desc->display_list);
+        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobjdesc->display_list);
         
-        if (dobj_desc->index & 0xF000) 
+        if (dobjdesc->index & 0xF000) 
         {
-            gcDecideDObjTriTransformKind(dobj, tk1, tk2, tk3, dobj_desc->index & 0xF000);
+            gcDecideDObjTriTransformKind(dobj, tk1, tk2, tk3, dobjdesc->index & 0xF000);
         } 
         else gcAddDObjTriTransformKind(dobj, tk1, tk2, tk3);
         
-        dobj->translate.vec.f = dobj_desc->translate;
-        dobj->rotate.vec.f = dobj_desc->rotate;
-        dobj->scale.vec.f = dobj_desc->scale;
+        dobj->translate.vec.f = dobjdesc->translate;
+        dobj->rotate.vec.f = dobjdesc->rotate;
+        dobj->scale.vec.f = dobjdesc->scale;
 
         if (p_mobjsubs != NULL)
         {
@@ -2423,7 +2423,7 @@ void gcSetupCustomDObjsWithMObj(GObj *gobj, DObjDesc *dobj_desc, MObjSub ***p_mo
         {
             *dobjs++ = dobj;
         }
-        dobj_desc++;
+        dobjdesc++;
     }
 }
 
@@ -2455,17 +2455,17 @@ void gcAddMObjAll(GObj *gobj, MObjSub ***p_mobjsubs)
     }
 }
 
-void gcSetDObjTransformsForGObj(GObj *gobj, DObjDesc *dobj_desc)
+void gcSetDObjTransformsForGObj(GObj *gobj, DObjDesc *dobjdesc)
 {
     DObj *dobj = DObjGetStruct(gobj);
 
-    while ((dobj != NULL) && (dobj_desc->index != DOBJ_ARRAY_MAX))
+    while ((dobj != NULL) && (dobjdesc->index != DOBJ_ARRAY_MAX))
     {
-        dobj->translate.vec.f = dobj_desc->translate;
-        dobj->rotate.vec.f = dobj_desc->rotate;
-        dobj->scale.vec.f = dobj_desc->scale;
+        dobj->translate.vec.f = dobjdesc->translate;
+        dobj->rotate.vec.f = dobjdesc->rotate;
+        dobj->scale.vec.f = dobjdesc->scale;
 
-        dobj_desc++;
+        dobjdesc++;
 
         dobj = gcGetTreeDObjNext(dobj);
     }

@@ -140,7 +140,7 @@ void itProcessProcItemMain(GObj *item_gobj)
     {
         Vec3f *translate = &DObjGetStruct(item_gobj)->translate.vec.f;
 
-        ip->coll_data.pos_curr = *translate;
+        ip->coll_data.pos_current = *translate;
 
         if (ip->hitlag_timer == 0)
         {
@@ -148,9 +148,9 @@ void itProcessProcItemMain(GObj *item_gobj)
             translate->y += ip->phys_info.vel_air.y;
             translate->z += ip->phys_info.vel_air.z;
         }
-        ip->coll_data.pos_correct.x = translate->x - ip->coll_data.pos_curr.x;
-        ip->coll_data.pos_correct.y = translate->y - ip->coll_data.pos_curr.y;
-        ip->coll_data.pos_correct.z = translate->z - ip->coll_data.pos_curr.z;
+        ip->coll_data.pos_correct.x = translate->x - ip->coll_data.pos_current.x;
+        ip->coll_data.pos_correct.y = translate->y - ip->coll_data.pos_current.y;
+        ip->coll_data.pos_correct.z = translate->z - ip->coll_data.pos_current.z;
 
         if ((ip->is_attach_surface) && (mpCollisionCheckExistLineID(ip->attach_line_id) != FALSE))
         {
@@ -183,8 +183,8 @@ void itProcessProcItemMain(GObj *item_gobj)
         }
         if (ip->proc_map != NULL)
         {
-            ip->coll_data.coll_mask_prev = ip->coll_data.coll_mask_curr;
-            ip->coll_data.coll_mask_curr = 0;
+            ip->coll_data.coll_mask_prev = ip->coll_data.coll_mask_current;
+            ip->coll_data.coll_mask_current = 0;
             ip->coll_data.is_coll_end = FALSE;
             ip->coll_data.coll_mask_stat = 0;
             ip->coll_data.coll_mask_unk = 0;

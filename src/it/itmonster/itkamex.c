@@ -185,7 +185,7 @@ sb32 itKamexFallProcMap(GObj *item_gobj)
 
     itMapTestAllCollisionFlag(item_gobj, (MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL));
 
-    if (ip->coll_data.coll_mask_curr & MPCOLL_FLAG_GROUND)
+    if (ip->coll_data.coll_mask_current & MPCOLL_FLAG_GROUND)
     {
         itKamexAttackInitItemVars(item_gobj, TRUE);
         itKamexAttackSetStatus(item_gobj);
@@ -231,7 +231,7 @@ sb32 itKamexAppearProcMap(GObj *item_gobj)
 
     itMapTestAllCollisionFlag(item_gobj, (MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL));
 
-    if (ip->coll_data.coll_mask_curr & MPCOLL_FLAG_GROUND)
+    if (ip->coll_data.coll_mask_current & MPCOLL_FLAG_GROUND)
     {
         ip->phys_info.vel_air.y = 0.0F;
 

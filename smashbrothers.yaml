@@ -1104,10 +1104,10 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x109FB0, c, ovl4]
-      - [0x10B220, c, ovl4_1]
-      - [0x10B2C0, .data, ovl4]
-      - { start: 0x10B370, type: .bss, vram: 0x8018E480, name: ovl4_1 }
+      - [0x109FB0, c, sc/sccommon/scvsbattle]
+      - [0x10B220, c, sc/sccommon/scvsbattlefiles]
+      - [0x10B2C0, .data, sc/sccommon/scvsbattle]
+      - { start: 0x10B370, type: .bss, name: sc/sccommon/scvsbattlefiles, vram: 0x8018E480 }
 
   - name: ovl5
     type: code

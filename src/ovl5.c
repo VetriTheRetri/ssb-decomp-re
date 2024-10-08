@@ -55,18 +55,18 @@ scBattleState gUnkExplainBattleState;
 // 0x8018D0C0
 void func_ovl5_8018D0C0()
 {
-	lbRelocSetup rldm_setup;
+	lbRelocSetup rl_setup;
 
-	rldm_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rldm_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-	rldm_setup.file_heap = NULL;
-	rldm_setup.file_heap_size = 0;
-	rldm_setup.status_buffer = D_ovl5_8018D678;
-	rldm_setup.status_buffer_size = ARRAY_COUNT(D_ovl5_8018D678);
-	rldm_setup.force_status_buffer = D_ovl5_8018D718;
-	rldm_setup.force_status_buffer_size = ARRAY_COUNT(D_ovl5_8018D718);
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buffer = D_ovl5_8018D678;
+	rl_setup.status_buffer_size = ARRAY_COUNT(D_ovl5_8018D678);
+	rl_setup.force_status_buffer = D_ovl5_8018D718;
+	rl_setup.force_status_buffer_size = ARRAY_COUNT(D_ovl5_8018D718);
 
-	lbRelocInitSetup(&rldm_setup);
+	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles, syTaskmanMalloc(lbRelocGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
 }
 

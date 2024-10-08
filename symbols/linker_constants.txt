@@ -172,6 +172,9 @@ _ovl65DataEnd = 0x80192fa0;
 _ovl65SegNoloadStart = 0x80192fa0;
 _ovl65SegNoloadEnd = 0x80193900;
 
+lSYDmemCheckValidFunc = 0x00000000;
+lSYDmemCheckValidNBytes = 0x00000030;
+
 lLBTransitionAeroplaneFileID = 0x00000028;
 lLBTransitionAeroplaneDObjDesc = 0x0000B3F8;
 lLBTransitionAeroplaneAnimJoint = 0x0000B710;

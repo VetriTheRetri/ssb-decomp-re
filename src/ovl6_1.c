@@ -44,18 +44,18 @@ lbFileNode gOverlay6ForceStatusBuffer[7];
 // 0x8018ED70
 void func_ovl6_8018ED70()
 {
-	lbRelocSetup rldm_setup;
+	lbRelocSetup rl_setup;
 
-	rldm_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rldm_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-	rldm_setup.file_heap = NULL;
-	rldm_setup.file_heap_size = 0;
-	rldm_setup.status_buffer = gOverlay6StatusBuffer;
-	rldm_setup.status_buffer_size = ARRAY_COUNT(gOverlay6StatusBuffer);
-	rldm_setup.force_status_buffer = gOverlay6ForceStatusBuffer;
-	rldm_setup.force_status_buffer_size = ARRAY_COUNT(gOverlay6ForceStatusBuffer);
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buffer = gOverlay6StatusBuffer;
+	rl_setup.status_buffer_size = ARRAY_COUNT(gOverlay6StatusBuffer);
+	rl_setup.force_status_buffer = gOverlay6ForceStatusBuffer;
+	rl_setup.force_status_buffer_size = ARRAY_COUNT(gOverlay6ForceStatusBuffer);
 
-	lbRelocInitSetup(&rldm_setup);
+	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles,
 						 syTaskmanMalloc(lbRelocGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
 }

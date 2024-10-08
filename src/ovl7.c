@@ -1598,18 +1598,18 @@ void scManager_TrainingMode_InitScene()
 // 0x801906D0
 void scTrainingMode_LoadFiles()
 {
-	lbRelocSetup rldm_setup;
+	lbRelocSetup rl_setup;
 
-	rldm_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rldm_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-	rldm_setup.file_heap = NULL;
-	rldm_setup.file_heap_size = 0;
-	rldm_setup.status_buffer = gOverlay7StatusBuffer;
-	rldm_setup.status_buffer_size = ARRAY_COUNT(gOverlay7StatusBuffer);
-	rldm_setup.force_status_buffer = gOverlay7ForceStatusBuffer;
-	rldm_setup.force_status_buffer_size = ARRAY_COUNT(gOverlay7ForceStatusBuffer);
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buffer = gOverlay7StatusBuffer;
+	rl_setup.status_buffer_size = ARRAY_COUNT(gOverlay7StatusBuffer);
+	rl_setup.force_status_buffer = gOverlay7ForceStatusBuffer;
+	rl_setup.force_status_buffer_size = ARRAY_COUNT(gOverlay7ForceStatusBuffer);
 
-	lbRelocInitSetup(&rldm_setup);
+	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs), gGMCommonFiles,
 						 syTaskmanMalloc(lbRelocGetAllocSize(dGMCommonFileIDs, ARRAY_COUNT(dGMCommonFileIDs)), 0x10));
 }

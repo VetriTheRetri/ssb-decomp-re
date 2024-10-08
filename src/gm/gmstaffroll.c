@@ -1968,18 +1968,18 @@ void gmStaffrollMakeScrollGObj(void)
 // 0x801349DC
 void gmStaffrollSetupFiles(void)
 {
-	lbRelocSetup rldm_setup;
+	lbRelocSetup rl_setup;
 
-	rldm_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
-	rldm_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
-	rldm_setup.file_heap = NULL;
-	rldm_setup.file_heap_size = 0;
-	rldm_setup.status_buffer = sGMStaffrollStatusBuffer;
-	rldm_setup.status_buffer_size = ARRAY_COUNT(sGMStaffrollStatusBuffer);
-	rldm_setup.force_status_buffer = NULL;
-	rldm_setup.force_status_buffer_size = 0;
+	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
+	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
+	rl_setup.file_heap = NULL;
+	rl_setup.file_heap_size = 0;
+	rl_setup.status_buffer = sGMStaffrollStatusBuffer;
+	rl_setup.status_buffer_size = ARRAY_COUNT(sGMStaffrollStatusBuffer);
+	rl_setup.force_status_buffer = NULL;
+	rl_setup.force_status_buffer_size = 0;
 
-	lbRelocInitSetup(&rldm_setup);
+	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(dGMStaffrollFileIDs, ARRAY_COUNT(dGMStaffrollFileIDs), sGMStaffrollFiles, syTaskmanMalloc(lbRelocGetAllocSize(dGMStaffrollFileIDs, ARRAY_COUNT(dGMStaffrollFileIDs)), 0x10));
 }
 

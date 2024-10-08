@@ -4,20 +4,25 @@
 #include <sc/scene.h>
 #include <sys/display.h>
 
-// Externs
-extern uintptr_t D_NF_8018E7E0;
-extern uintptr_t D_NF_80392A00;
-extern intptr_t D_NF_00000000;
-extern intptr_t D_NF_00000030;
+// // // // // // // // // // // //
+//                               //
+//       EXTERNAL VARIABLES      //
+//                               //
+// // // // // // // // // // // //
+
+extern intptr_t lSYDmemCheckValidFunc;		// 0x00000000
+extern intptr_t lSYDmemCheckValidNBytes;	// 0x00000030
+
 extern intptr_t D_NF_000000C7;
+
 extern void func_800A26B8();
 
-// Forward declarations
-void scBattle_SetGeometryRenderLights(Gfx **display_list);
-void scBattle_StartStockBattle();
+// // // // // // // // // // // //
+//                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
-
-// Data
 // 0x8018E3D0
 syColorRGBA dSCVSBattleCommonFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
@@ -25,32 +30,61 @@ syColorRGBA dSCVSBattleCommonFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 syColorRGBA dSCVSBattleSuddenDeathFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x8018E3D8
-syDisplaySetup D_ovl4_8018E3D8 = SYDISPLAY_DEFINE_DEFAULT();
+syDisplaySetup dSCVSBattleDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
 
 // 0x8018E3F4
-scRuntimeInfo D_ovl4_8018E3F4 = {
+syTaskmanSetup dSCVSBattleTaskmanSetup =
+{
+    // Task Logic Buffer Setup
+    {
+        0,                              // ???
+        scVSBattleFuncUpdate,           // Update function
+        func_800A26B8,                  // Frame draw function
+        &ovl4_BSS_END,                 	// Allocatable memory pool start
+        0,                              // Allocatable memory pool size
+        1,                              // ???
+        2,                              // Number of contexts?
+        sizeof(Gfx) * 7680,             // Display List Buffer 0 Size
+        sizeof(Gfx) * 2560,             // Display List Buffer 1 Size
+        0,                              // Display List Buffer 2 Size
+        0,                              // Display List Buffer 3 Size
+        0xD000,                         // Graphics Heap Size
+        2,                              // ???
+        0xC000,                         // RDP Output Buffer Size
+        scVSBattleFuncLights,       	// Pre-render function
+        update_contdata,                // Controller I/O function
+    },
 
-	0x00000000, 0x8018d0c0,
-	func_800A26B8, 0x8018e7e0,
-	0x00000000, 0x00000001, 0x00000002, 0x0000f000, 0x00005000,
-	0x00000000, 0x00000000, 0x0000d000, 0x00020000, 0x0000c000,
-	scBattle_SetGeometryRenderLights, update_contdata,
-	0x00000000, 0x00000600, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000088, 0x00000000,
-	0x800d5cac, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000088, 0x00000000, 0x0000006c,
-	0x00000000, 0x00000090,
-	scBattle_StartStockBattle
+    0,                                  // Number of GObjThreads
+    sizeof(u64) * 192,                  // Thread stack size
+    0,                                  // Number of thread stacks
+    0,                                  // ???
+    0,                                  // Number of GObjProcesses
+    0,                                  // Number of GObjs
+    sizeof(GObj),                       // GObj size
+    0,                                  // Number of Object Manager Matrices
+    dLBCommonFuncMatrixList,            // Matrix function list
+    NULL,                               // Function for ejecting DObjDynamicStore?
+    0,                                  // Number of AObjs
+    0,                                  // Number of MObjs
+    0,                                  // Number of DObjs
+    sizeof(DObj),                       // DObj size
+    0,                                  // Number of SObjs
+    sizeof(SObj),                       // SObj size
+    0,                                  // Number of Cameras
+    sizeof(Camera),                     // Camera size
+    
+    scVSBattleFuncStart             	// Task start function
 };
 
 // 0x8018D0C0
-void scBattle_UpdateGameStatus()
+void scVSBattleFuncUpdate(void)
 {
 	ifCommonBattleUpdateInterfaceAll();
 }
 
 // 0x8018D0E0 - Get player's initial facing direction for battle start
-s32 scBattle_GetPlayerStartLR(s32 target_player)
+s32 scVSBattleGetStartPlayerLR(s32 target_player)
 {
 	s32 lr;
 	f32 near_spawn;
@@ -94,35 +128,35 @@ s32 scBattle_GetPlayerStartLR(s32 target_player)
 }
 
 // 0x8018D228
-void scBattle_StartStockBattle()
+void scVSBattleFuncStart(void)
 {
 	s32 unused[4];
 	s32 player;
-	sb32(*proc_cache)();
-	void *base_addr;
-	ftCreateDesc player_spawn;
+	sb32 (*proc_cache)(void);
+	void *file;
+	ftCreateDesc ft_desc;
 	syColorRGBA color;
 
 	gSceneData.is_reset = FALSE;
 	gSceneData.unk10 = 0;
 
-	func_ovl4_8018E330();
+	scVSBattleSetupFiles();
 
 	if (!(gSaveData.error_flags & LBBACKUP_ERROR_1PGAMEMARIO) && (gSaveData.unk5E3 >= 0x45))
 	{
-		base_addr = lbRelocGetFileExternHeap((intptr_t)&D_NF_000000C7, syTaskmanMalloc(lbRelocGetFileSize((intptr_t)&D_NF_000000C7), 0x10));
+		file = lbRelocGetFileExternHeap((u32)&D_NF_000000C7, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000C7), 0x10));
 
-		proc_cache = (void*) ((uintptr_t)base_addr + (intptr_t)&D_NF_00000000);
+		proc_cache = lbRelocGetDataFromFile(sb32 (*)(void), file, &lSYDmemCheckValidFunc);
 
-		osWritebackDCache(proc_cache, *(s32*) ((uintptr_t)base_addr + (intptr_t)&D_NF_00000030));
-		osInvalICache(proc_cache, *(s32*) ((uintptr_t)base_addr + (intptr_t)&D_NF_00000030));
+		osWritebackDCache(proc_cache, *lbRelocGetDataFromFile(s32*, file, &lSYDmemCheckValidNBytes));
+		osInvalICache(proc_cache, *lbRelocGetDataFromFile(s32*, file, &lSYDmemCheckValidNBytes));
 
 		if (proc_cache() == FALSE)
 		{
 			gSaveData.error_flags |= LBBACKUP_ERROR_1PGAMEMARIO;
 		}
 	}
-	gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 1, 0xFF);
+	gcMakeDefaultCameraGObj(9, GOBJ_LINKORDER_DEFAULT, 100, 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efAllocInitParticleBank();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
@@ -132,7 +166,7 @@ void scBattle_StartStockBattle()
 	func_ovl2_8010DB00();
 	itManagerInitItems();
 	grCommonSetupInitAll();
-	ftManagerAllocFighter(2, GMCOMMON_PLAYERS_MAX);
+	ftManagerAllocFighter(FTDATA_FLAG_MAINMOTION, GMCOMMON_PLAYERS_MAX);
 	wpManagerAllocWeapons();
 	efManagerInitEffects();
 	ifScreenFlashMakeInterface(0xFF);
@@ -141,34 +175,37 @@ void scBattle_StartStockBattle()
 
 	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
-		player_spawn = dFTManagerDefaultFighterDesc;
+		ft_desc = dFTManagerDefaultFighterDesc;
 
 		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot)
+		{
 			continue;
-
+		}
 		ftManagerSetupFilesAllKind(gBattleState->players[player].ft_kind);
-		player_spawn.ft_kind = gBattleState->players[player].ft_kind;
 
-		mpCollisionGetPlayerMapObjPosition(player, &player_spawn.pos);
-		player_spawn.lr_spawn = scBattle_GetPlayerStartLR(player);
+		ft_desc.ft_kind = gBattleState->players[player].ft_kind;
 
-		player_spawn.team = gBattleState->players[player].player;
-		player_spawn.player = player;
+		mpCollisionGetPlayerMapObjPosition(player, &ft_desc.pos);
 
-		player_spawn.detail = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
+		ft_desc.lr_spawn = scVSBattleGetStartPlayerLR(player);
 
-		player_spawn.costume = gBattleState->players[player].costume;
-		player_spawn.shade = gBattleState->players[player].shade;
-		player_spawn.handicap = gBattleState->players[player].handicap;
-		player_spawn.cp_level = gBattleState->players[player].level;
-		player_spawn.stock_count = gBattleState->stock_setting;
-		player_spawn.damage = 0;
-		player_spawn.pl_kind = gBattleState->players[player].pl_kind;
-		player_spawn.controller = &gPlayerControllers[player];
+		ft_desc.team = gBattleState->players[player].player;
+		ft_desc.player = player;
 
-		player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[player].ft_kind);
+		ft_desc.detail = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
-		ftParamInitPlayerBattleStats(player, ftManagerMakeFighter(&player_spawn));
+		ft_desc.costume = gBattleState->players[player].costume;
+		ft_desc.shade = gBattleState->players[player].shade;
+		ft_desc.handicap = gBattleState->players[player].handicap;
+		ft_desc.cp_level = gBattleState->players[player].level;
+		ft_desc.stock_count = gBattleState->stock_setting;
+		ft_desc.damage = 0;
+		ft_desc.pl_kind = gBattleState->players[player].pl_kind;
+		ft_desc.controller = &gPlayerControllers[player];
+
+		ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[player].ft_kind);
+
+		ftParamInitPlayerBattleStats(player, ftManagerMakeFighter(&ft_desc));
 	}
 	ftManagerSetupFilesPlayablesAll();
 	ifCommonBattleSetGameStatusWait();
@@ -195,7 +232,7 @@ void scBattle_StartStockBattle()
 }
 
 // 0x8018D5E0 - Sort time battle winners and check for sudden death
-sb32 scBattle_CheckSDSetTimeBattleResults()
+sb32 scVSBattleSetScoreCheckSuddenDeath(void)
 {
 	s32 result_count;
 	s32 tied_players;
@@ -220,17 +257,19 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 		for (result_count = i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
 		{
 			if (gBattleState->players[i].pl_kind == nFTPlayerKindNot)
+			{
 				continue;
-
+			}
 			player_results[result_count].tko = gBattleState->players[i].score - gBattleState->players[i].falls;
 			player_results[result_count].kos = gBattleState->players[i].score;
 			player_results[result_count].player_or_team = i;
 			player_results[result_count].unk_battleres_0x9 = FALSE;
 
 			if (gBattleState->players[i].pl_kind == nFTPlayerKindMan)
+			{
 				player_results[result_count].is_human_player = TRUE;
-			else
-				player_results[result_count].is_human_player = FALSE;
+			}
+			else player_results[result_count].is_human_player = FALSE;
 
 			result_count++;
 		}
@@ -256,10 +295,10 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 				tied_players++;
 			}
 		}
-
 		if (tied_players < 2)
+		{
 			return FALSE;
-
+		}
 		for (i = 0; i < tied_players; i++)
 		{
 			D_800A4EF8.players[player_results[i].player_or_team].pl_kind = gBattleState->players[player_results[i].player_or_team].pl_kind;
@@ -281,8 +320,9 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 		for (result_count = i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
 		{
 			if (gBattleState->players[i].pl_kind == nFTPlayerKindNot)
+			{
 				continue;
-
+			}
 			for (j = 0; j < result_count; j++)
 			{
 				if (gBattleState->players[i].team == player_results[j].player_or_team)
@@ -308,8 +348,7 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 			{
 				player_results[result_count].is_human_player = TRUE;
 			}
-			else
-				player_results[result_count].is_human_player = FALSE;
+			else player_results[result_count].is_human_player = FALSE;
 
 			result_count++;
 
@@ -338,17 +377,18 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 				tied_players++;
 			}
 		}
-
 		if (tied_players < 2)
+		{
 			return FALSE;
-
+		}
 		for (i = 0; i < tied_players; i++)
 		{
 			for (j = 0; j < ARRAY_COUNT(gBattleState->players); j++)
 			{
 				if (gBattleState->players[j].pl_kind == nFTPlayerKindNot)
+				{
 					continue;
-
+				}
 				if (gBattleState->players[j].team == player_results[i].player_or_team)
 				{
 					D_800A4EF8.players[j].pl_kind = gBattleState->players[j].pl_kind;
@@ -377,18 +417,18 @@ sb32 scBattle_CheckSDSetTimeBattleResults()
 }
 
 // 0x8018DE20 - Start sudden death
-void scBattle_StartSDBattle()
+void scVSBattleStartSudddenDeath(void)
 {
 	s32 unused[3];
 	GObj *fighter_gobj;
 	s32 player;
-	ftCreateDesc player_spawn;
+	ftCreateDesc ft_desc;
 	syColorRGBA color;
 
 	gSceneData.is_reset = FALSE;
 
-	func_ovl4_8018E330();
-	gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 1, 0xFF);
+	scVSBattleSetupFiles();
+	gcMakeDefaultCameraGObj(9, GOBJ_LINKORDER_DEFAULT, 100, 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efAllocInitParticleBank();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
@@ -407,36 +447,38 @@ void scBattle_StartSDBattle()
 
 	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
-		player_spawn = dFTManagerDefaultFighterDesc;
+		ft_desc = dFTManagerDefaultFighterDesc;
 
 		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot)
+		{
 			continue;
-
+		}
 		ftManagerSetupFilesAllKind(gBattleState->players[player].ft_kind);
-		player_spawn.ft_kind = gBattleState->players[player].ft_kind;
 
-		mpCollisionGetPlayerMapObjPosition(player, &player_spawn.pos);
+		ft_desc.ft_kind = gBattleState->players[player].ft_kind;
 
-		player_spawn.lr_spawn = scBattle_GetPlayerStartLR(player);
+		mpCollisionGetPlayerMapObjPosition(player, &ft_desc.pos);
 
-		player_spawn.team = gBattleState->players[player].player;
-		player_spawn.player = player;
+		ft_desc.lr_spawn = scVSBattleGetStartPlayerLR(player);
 
-		player_spawn.detail = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
+		ft_desc.team = gBattleState->players[player].player;
+		ft_desc.player = player;
 
-		player_spawn.costume = gBattleState->players[player].costume;
-		player_spawn.shade = gBattleState->players[player].shade;
-		player_spawn.handicap = gBattleState->players[player].handicap;
-		player_spawn.cp_level = gBattleState->players[player].level;
-		player_spawn.stock_count = 0;
-		player_spawn.damage = 300;
-		player_spawn.is_skip_entry = TRUE;
-		player_spawn.pl_kind = gBattleState->players[player].pl_kind;
-		player_spawn.controller = &gPlayerControllers[player];
+		ft_desc.detail = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
-		player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[player].ft_kind);
+		ft_desc.costume = gBattleState->players[player].costume;
+		ft_desc.shade = gBattleState->players[player].shade;
+		ft_desc.handicap = gBattleState->players[player].handicap;
+		ft_desc.cp_level = gBattleState->players[player].level;
+		ft_desc.stock_count = 0;
+		ft_desc.damage = 300;
+		ft_desc.is_skip_entry = TRUE;
+		ft_desc.pl_kind = gBattleState->players[player].pl_kind;
+		ft_desc.controller = &gPlayerControllers[player];
 
-		fighter_gobj = ftManagerMakeFighter(&player_spawn);
+		ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[player].ft_kind);
+
+		fighter_gobj = ftManagerMakeFighter(&ft_desc);
 
 		ftParamInitPlayerBattleStats(player, fighter_gobj);
 
@@ -467,15 +509,15 @@ void scBattle_StartSDBattle()
 }
 
 // 0x8018E144
-void scBattle_SetGeometryRenderLights(Gfx **display_list)
+void scVSBattleFuncLights(Gfx **dls)
 {
-	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
+	gSPSetGeometryMode(dls[0]++, G_LIGHTING);
 
-	ftDisplayLightsDrawReflect(display_list, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
+	ftDisplayLightsDrawReflect(dls, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
 }
 
 // 0x8018E190
-void scBattleRoyalStartScene()
+void scVSBattleStartScene(void)
 {
 	gBattleState = &gTransferBattleState;
 
@@ -484,36 +526,41 @@ void scBattleRoyalStartScene()
 	gBattleState->gr_kind = gSceneData.gr_kind;
 
 	if (gSaveData.error_flags & LBBACKUP_ERROR_VSBATTLECASTLE)
+	{
 		gBattleState->gr_kind = nGRKindCastle;
+	}
+	dSCVSBattleDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
+	syDisplayInit(&dSCVSBattleDisplaySetup);
 
-	D_ovl4_8018E3D8.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl4_8018E3D8);
-	D_ovl4_8018E3F4.arena_size = (uintptr_t)((uintptr_t)&D_NF_80392A00 - (uintptr_t)&D_NF_8018E7E0);
-	D_ovl4_8018E3F4.func_start = scBattle_StartStockBattle;
-	func_800A2698(&D_ovl4_8018E3F4);
+	dSCVSBattleTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl4_BSS_END);
+	dSCVSBattleTaskmanSetup.func_start = scVSBattleFuncStart;
+	func_800A2698(&dSCVSBattleTaskmanSetup);
+
 	auStopBGM();
 
 	while (auIsBGMPlaying(0))
+	{
 		continue;
-
+	}
 	auSetBGMVolume(0, 0x7800);
 	func_800266A0_272A0();
 	gmRumbleInitPlayers();
 
-	if (!gSceneData.is_reset && scBattle_CheckSDSetTimeBattleResults())
+	if (!(gSceneData.is_reset) && scVSBattleSetScoreCheckSuddenDeath() != FALSE)
 	{
 		gBattleState = &D_800A4EF8;
 
 		gBattleState->game_type = nSCBattleGameTypeRoyal;
 
-		D_ovl4_8018E3F4.func_start = scBattle_StartSDBattle;
+		dSCVSBattleTaskmanSetup.func_start = scVSBattleStartSudddenDeath;
 
-		func_800A2698(&D_ovl4_8018E3F4);
+		func_800A2698(&dSCVSBattleTaskmanSetup);
 		auStopBGM();
 
 		while (auIsBGMPlaying(0))
+		{
 			continue;
-
+		}
 		auSetBGMVolume(0, 0x7800);
 		func_800266A0_272A0();
 		gmRumbleInitPlayers();

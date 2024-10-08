@@ -3,6 +3,7 @@
 
 // Common scenes
 #include <sc/scsubsys/scsubsys.h>
+#include <sc/sccommon/scvsbattle.h>
 #include <sc/sccommon/scexplain.h>
 #include <sc/sccommon/scautodemo.h>
 

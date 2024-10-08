@@ -10,7 +10,6 @@ extern u32 func_8000092C();
 extern void func_800A26B8();
 extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
-
 // // // // // // // // // // // //
 //                               //
 //       EXTERNAL VARIABLES      //
@@ -254,7 +253,7 @@ void mvOpeningClashMakeFightersCamera(void)
 
     syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cam->flags |= 1;
+    cam->flags |= 0x1;
 
     cam->projection.persp.near = 128.0F;
     cam->projection.persp.far = 16384.0F;

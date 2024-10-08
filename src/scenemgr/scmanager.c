@@ -206,7 +206,7 @@ void sc1PStageCardStartScene();
 void mnScreenAdjustStartScene();
 void vs_css_entry();
 void mnStageStartScene();
-void scBattleRoyalStartScene();
+void scVSBattleStartScene();
 void overlay_set23_entry();
 void sc1PManagerUpdateScene();
 void sc1PBonusGameStartScene();
@@ -410,7 +410,7 @@ void start_scene_manager(u32 set)
 				syDmaLoadOverlay(&D_800A3070[2]);
 				syDmaLoadOverlay(&D_800A3070[3]);
 				syDmaLoadOverlay(&D_800A3070[4]);
-				scBattleRoyalStartScene();
+				scVSBattleStartScene();
 				break;
 			case 23:
 				syDmaLoadOverlay(&D_800A3070[2]);

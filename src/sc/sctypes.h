@@ -340,7 +340,7 @@ struct scCommonData
 	u8 training_man_costume;
 	u8 training_com_ft_kind;
 	u8 training_com_costume;
-	ub8 wait_longer_to_show_demo;
+	ub8 is_extend_demo_wait;
 	u8 demo_ground_order;
 	u8 stagesel_battle_gr_kind;
 	u8 stagesel_training_gr_kind;

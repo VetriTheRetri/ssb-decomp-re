@@ -249,7 +249,7 @@ void ftCommonGuardUpdateJoints(GObj *fighter_gobj)
         }
         else ftCommonGuardGetJointTransform(yrotn_joint, &fp->attributes->dobj_lookup[joint_num], fp->status_vars.common.guard.shield_rotate_range);
 
-        yrotn_joint->anim_remain = AOBJ_ANIM_NULL;
+        yrotn_joint->anim_wait = AOBJ_ANIM_NULL;
 
         ftCommonGuardUpdateShieldCollision(fp);
         func_ovl2_800EB528(fp->joints[nFTPartsJointYRotN]);
@@ -291,7 +291,7 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
 
             if (joint != NULL)
             {
-                if (joint->anim_remain != AOBJ_ANIM_NULL)
+                if (joint->anim_wait != AOBJ_ANIM_NULL)
                 {
                     ftCommonGuardGetJointTransformScale
                     (
@@ -299,14 +299,14 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
                         dobjdesc,
                         fp->status_vars.common.guard.shield_rotate_range, scale
                     );
-                    joint->anim_remain = AOBJ_ANIM_NULL;
+                    joint->anim_wait = AOBJ_ANIM_NULL;
                 }
                 dobjdesc++;
             }
         }
         joint = fp->joints[nFTPartsJointYRotN];
 
-        if (joint->anim_remain != AOBJ_ANIM_NULL)
+        if (joint->anim_wait != AOBJ_ANIM_NULL)
         {
             ftCommonGuardGetJointTransformScale
             (
@@ -315,7 +315,7 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
                 fp->status_vars.common.guard.shield_rotate_range,
                 &fp->attributes->translate_scales[nFTPartsJointYRotN]
             );
-            joint->anim_remain = AOBJ_ANIM_NULL;
+            joint->anim_wait = AOBJ_ANIM_NULL;
         }
     }
     else
@@ -326,7 +326,7 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
 
             if (joint != NULL)
             {
-                if (joint->anim_remain != AOBJ_ANIM_NULL)
+                if (joint->anim_wait != AOBJ_ANIM_NULL)
                 {
                     ftCommonGuardGetJointTransform
                     (
@@ -334,14 +334,14 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
                         dobjdesc,
                         fp->status_vars.common.guard.shield_rotate_range
                     );
-                    joint->anim_remain = AOBJ_ANIM_NULL;
+                    joint->anim_wait = AOBJ_ANIM_NULL;
                 }
                 dobjdesc++;
             }
         }
         joint = fp->joints[nFTPartsJointYRotN];
 
-        if (joint->anim_remain != AOBJ_ANIM_NULL)
+        if (joint->anim_wait != AOBJ_ANIM_NULL)
         {
             ftCommonGuardGetJointTransform
             (
@@ -349,7 +349,7 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
                 dobjdesc,
                 fp->status_vars.common.guard.shield_rotate_range
             );
-            joint->anim_remain = AOBJ_ANIM_NULL;
+            joint->anim_wait = AOBJ_ANIM_NULL;
         }
     }
     ftCommonGuardUpdateShieldCollision(fp);

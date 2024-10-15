@@ -95,7 +95,7 @@ sb32 itPorygonCommonProcUpdate(GObj *item_gobj)
 
     itPorygonCommonUpdateHitParty(item_gobj);
 
-    if (dobj->anim_remain == AOBJ_ANIM_NULL)
+    if (dobj->anim_wait == AOBJ_ANIM_NULL)
     {
         grYamabukiGateSetClosedWait();
 

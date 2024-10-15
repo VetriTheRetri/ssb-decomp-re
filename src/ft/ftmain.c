@@ -1386,13 +1386,13 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
     }
     ftMainRunUpdateColAnim(fighter_gobj);
 
-    if (this_fp->intangible_timer != 0)
+    if (this_fp->intangible_tics != 0)
     {
-        this_fp->intangible_timer--;
+        this_fp->intangible_tics--;
 
-        if (this_fp->intangible_timer == 0)
+        if (this_fp->intangible_tics == 0)
         {
-            this_fp->special_hitstatus = (this_fp->invincible_timer != FALSE) ? nGMHitStatusInvincible : nGMHitStatusNormal;
+            this_fp->special_hitstatus = (this_fp->invincible_tics != FALSE) ? nGMHitStatusInvincible : nGMHitStatusNormal;
 
             if (this_fp->colanim.colanim_id == 0xA)
             {
@@ -1400,11 +1400,11 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
             }
         }
     }
-    if (this_fp->invincible_timer != 0)
+    if (this_fp->invincible_tics != 0)
     {
-        this_fp->invincible_timer--;
+        this_fp->invincible_tics--;
 
-        if ((this_fp->invincible_timer == 0) && (this_fp->intangible_timer == 0))
+        if ((this_fp->invincible_tics == 0) && (this_fp->intangible_tics == 0))
         {
             this_fp->special_hitstatus = nGMHitStatusNormal;
 
@@ -1414,11 +1414,11 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
             }
         }
     }
-    if (this_fp->star_invincible_timer != 0)
+    if (this_fp->star_invincible_tics != 0)
     {
-        this_fp->star_invincible_timer--;
+        this_fp->star_invincible_tics--;
 
-        if (this_fp->star_invincible_timer == 0)
+        if (this_fp->star_invincible_tics == 0)
         {
             this_fp->star_hitstatus = nGMHitStatusNormal;
 
@@ -1427,7 +1427,7 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
                 ftParamResetStatUpdateColAnim(fighter_gobj);
             }
         }
-        else if (this_fp->star_invincible_timer == ITSTAR_WARN_BEGIN_FRAME)
+        else if (this_fp->star_invincible_tics == ITSTAR_WARN_BEGIN_FRAME)
         {
             ftParamTryUpdateItemMusic();
         }
@@ -1457,9 +1457,9 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
     {
         ftHammerUpdateStats(fighter_gobj);
     }
-    if (this_fp->shuffle_timer != 0)
+    if (this_fp->shuffle_tics != 0)
     {
-        this_fp->shuffle_timer--;
+        this_fp->shuffle_tics--;
 
         this_fp->shuffle_frame_index++;
 
@@ -2551,7 +2551,7 @@ void ftMainUpdateDamageStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, f
 }
 
 // 0x800E3CAC
-void ftMainUpdateDamageStatGround(GObj *special_gobj, GObj *fighter_gobj, ftStruct *fp, grHitbox *gr_hit, s32 target_kind)
+void ftMainUpdateDamageStatGround(GObj *special_gobj, GObj *fighter_gobj, ftStruct *fp, grHitbox *gr_hit, s32 kind)
 {
     s32 damage = ftParamGetCapturedDamage(fp, gr_hit->damage);
     sb32 is_take_damage = ftMainCheckGetUpdateDamage(fp, &damage);
@@ -2566,7 +2566,7 @@ void ftMainUpdateDamageStatGround(GObj *special_gobj, GObj *fighter_gobj, ftStru
 
         sFTMainHitlogID++;
     }
-    switch (target_kind)
+    switch (kind)
     {
     case nGMHitEnvironmentAcid:
         fp->acid_wait = 30;
@@ -2589,7 +2589,7 @@ void ftMainUpdateDamageStatGround(GObj *special_gobj, GObj *fighter_gobj, ftStru
     case 9:
         fp->damagefloor_wait = 16;
 
-        if (target_kind == 7)
+        if (kind == 7)
         {
             func_800269C0_275C0(nSYAudioFGMShockML);
         }
@@ -3929,7 +3929,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
     }
     else if (fp->lr_reflect != nGMFacingC)
     {
-        switch (fp->special_hit->hit_type)
+        switch (fp->special_hit->kind)
         {
         case nFTSpecialHitKindFoxReflector:
             ftFoxSpecialLwHitSetStatus(fighter_gobj);
@@ -4166,9 +4166,9 @@ void ftMainAddWithheldPartID(ftStruct *fp, s32 withheld_part_id)
     DObj *sibling_joint;
     ftWithheldPart *withheld_part;
     DObj *root_joint;
-    DObj *child_joint;  // var_a2
-    DObj *new_child_joint; // var_a3
-    DObj *parent_joint; // new_var
+    DObj *child_joint;
+    DObj *new_child_joint;
+    DObj *parent_joint;
 
     withheld_part = &fp->attributes->withheld_parts[withheld_part_id];
     root_joint = fp->joints[withheld_part->root_joint_id];
@@ -4484,7 +4484,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
 
     if (!(flags & FTSTATUS_PRESERVE_SHUFFLETIME))
     {
-        fp->shuffle_timer = 0;
+        fp->shuffle_tics = 0;
     }
     if (!(flags & FTSTATUS_PRESERVE_LOOPSFX))
     {

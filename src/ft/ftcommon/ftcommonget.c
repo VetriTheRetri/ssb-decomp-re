@@ -112,7 +112,7 @@ void ftCommonLightGetProcDamage(GObj *fighter_gobj)
                 break;
 
             case nITKindHammer:
-                fp->hammer_timer = ITHAMMER_TIME;
+                fp->hammer_tics = ITHAMMER_TIME;
 
                 ftParamTryPlayItemMusic(nSYAudioBGMHammer);
                 break;

@@ -83,9 +83,9 @@ extern void ftParamUpdateStaleQueue(s32 attack_player, s32 defend_player, s32 at
 extern u16 ftParamGetStatUpdateCount(void);
 extern void ftParamSetStatUpdate(ftStruct *fp, u16 flags);
 extern void ftParamUpdate1PGameAttackStats(ftStruct *fp, u16 flags);
-extern void ftParamSetStarHitStatusInvincible(ftStruct *fp, s32 star_invincible_timer);
-extern void ftParamSetTimedHitStatusInvincible(ftStruct *fp, s32 invincible_timer);
-extern void ftParamSetTimedHitStatusIntangible(ftStruct *fp, s32 intangible_timer);
+extern void ftParamSetStarHitStatusInvincible(ftStruct *fp, s32 star_invincible_tics);
+extern void ftParamSetTimedHitStatusInvincible(ftStruct *fp, s32 invincible_tics);
+extern void ftParamSetTimedHitStatusIntangible(ftStruct *fp, s32 intangible_tics);
 extern void ftParamUpdatePlayerBattleStats(s32 attack_player, s32 defend_player, s32 attack_damage);
 extern void ftParamUpdate1PGameDamageStats(ftStruct *fp, s32 damage_player, s32 damage_object_class, s32 damage_object_kind, u16 flags, u16 damage_stat_count);
 extern void ftParamGetEffectJointPosition(ftStruct *fp, Vec3f *pos);

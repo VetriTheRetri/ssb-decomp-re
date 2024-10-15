@@ -160,7 +160,7 @@ sb32 itFushigibanaCommonProcUpdate(GObj *item_gobj)
     }
     else dobj->mobj->texture_id_current = 0;
 
-    if (dobj->anim_remain == AOBJ_ANIM_NULL)
+    if (dobj->anim_wait == AOBJ_ANIM_NULL)
     {
         grYamabukiGateSetClosedWait();
 

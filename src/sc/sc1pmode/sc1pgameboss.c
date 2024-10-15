@@ -746,7 +746,7 @@ void sc1PGameBossWallpaper3ProcUpdate1(GObj *gobj)
 {
     DObj *dobj = DObjGetStruct(gobj)->child;
 
-    if (dobj->anim_remain == AOBJ_ANIM_NULL)
+    if (dobj->anim_wait == AOBJ_ANIM_NULL)
     {
         if ((gobj->proc_display != sc1PGameBossProcDisplayFadeAlpha) && (gobj->proc_display != sc1PGameBossProcDisplayFadeColor))
         {

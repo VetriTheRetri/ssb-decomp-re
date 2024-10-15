@@ -796,7 +796,7 @@ void lbCommonAddDObjAnimJointAll(DObj *root_dobj, AObjEvent32 **anim_joints, f32
         {
             gcAddDObjAnimJoint(current_dobj, anim_joint, anim_frame);
         }
-        else current_dobj->anim_remain = AOBJ_ANIM_NULL;
+        else current_dobj->anim_wait = AOBJ_ANIM_NULL;
         
         anim_joints++;
         
@@ -824,7 +824,7 @@ void lbCommonAddFighterPartsFigatree(DObj *root_dobj, void **figatree, f32 anim_
         }
         else
         {
-            current_dobj->anim_remain = AOBJ_ANIM_NULL;
+            current_dobj->anim_wait = AOBJ_ANIM_NULL;
 
             ft_parts->is_have_anim = FALSE;
         }
@@ -851,7 +851,7 @@ void lbCommonAddDObjAnimAll(DObj *root_dobj, AObjEvent32 **anim_joints, AObjEven
             {
                 gcAddDObjAnimJoint(current_dobj, anim_joint, anim_frame);
             }
-            else current_dobj->anim_remain = AOBJ_ANIM_NULL;
+            else current_dobj->anim_wait = AOBJ_ANIM_NULL;
 
             anim_joints++;
         }
@@ -1262,7 +1262,7 @@ void lbCommonPlayTranslateScaledDObjAnim(DObj *dobj, Vec3f *scale)
 {
     f32 interp;
 
-    if (dobj->anim_remain != AOBJ_ANIM_NULL)
+    if (dobj->anim_wait != AOBJ_ANIM_NULL)
     {
         AObj *aobj = dobj->aobj;
 
@@ -1270,7 +1270,7 @@ void lbCommonPlayTranslateScaledDObjAnim(DObj *dobj, Vec3f *scale)
         {
             if (aobj->kind != nOMObjAnimKindNone)
             {
-                if (dobj->anim_remain != AOBJ_ANIM_END)
+                if (dobj->anim_wait != AOBJ_ANIM_END)
                 {
                     aobj->length += dobj->anim_speed;
                 }
@@ -1336,9 +1336,9 @@ void lbCommonPlayTranslateScaledDObjAnim(DObj *dobj, Vec3f *scale)
             }
             aobj = aobj->next;
         }
-        if (dobj->anim_remain == AOBJ_ANIM_END)
+        if (dobj->anim_wait == AOBJ_ANIM_END)
         {
-            dobj->anim_remain = AOBJ_ANIM_NULL;
+            dobj->anim_wait = AOBJ_ANIM_NULL;
         }
     }
 }
@@ -1623,7 +1623,7 @@ sb32 func_ovl0_800C9F70(Mtx *mtx, DObj *dobj, Gfx **dls)
     
     func_ovl0_800C9A38(f, attach_dobj);
     
-    if (fp->shuffle_timer != 0)
+    if (fp->shuffle_tics != 0)
     {
         f[3][0] += dFTRenderMainShufflePositions[fp->is_shuffle_electric][fp->shuffle_frame_index].x;
         f[3][1] += dFTRenderMainShufflePositions[fp->is_shuffle_electric][fp->shuffle_frame_index].y;

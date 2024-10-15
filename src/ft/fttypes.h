@@ -21,7 +21,7 @@
 // Structs
 struct ftSpecialHit
 {
-    s32 hit_type;
+    s32 kind;
     s32 joint_id;
     Vec3f offset;
     Vec3f size;
@@ -79,11 +79,11 @@ union ftAnimDesc
         u32 x19B_flag_b0 : 1;
         u32 x19B_flag_b1 : 1;
         u32 x19B_flag_b2 : 1;
-        u32 is_use_submotion_script : 1;    // 0x00000010
-        u32 is_anim_joint : 1;              // 0x00000008 - whether current animation is type Figatree (0) or AnimJoint (1)
-        u32 is_have_translate_scale : 1;    // 0x00000004
-        u32 is_use_shieldpose : 1;          // 0x00000002
-        u32 is_use_animlocks : 1;           // 0x00000001
+        ub32 is_use_submotion_script : 1;   // 0x00000010
+        ub32 is_anim_joint : 1;             // 0x00000008 - whether current animation is type Figatree (0) or AnimJoint (1)
+        ub32 is_have_translate_scale : 1;   // 0x00000004
+        ub32 is_use_shieldpose : 1;         // 0x00000002
+        ub32 is_use_animlocks : 1;          // 0x00000001
 
     } flags;
 };
@@ -1055,14 +1055,14 @@ struct ftStruct
     s32 attack1_status_id;
     s32 attack1_input_count;
     s32 cliffcatch_wait;
-    s32 tics_since_last_z;  // Frames since last Z-press, resets to 65536 on action state change
-    s32 acid_wait;          // Wait this many frames before fighter can be hurt by Planet Zebes acid again
-    s32 twister_wait;       // Wait this many frames before fighter can be picked up by the Hyrule Tornado again
-    s32 tarucann_wait;      // Wait this many frames before fighter can enter Barrel Cannon again
-    s32 damagefloor_wait;   // Wait this many frames before fighter can be hurt by damaging floors again (e.g. Mario's Board the Platforms stage)
-    s32 playertag_wait;     // Wait this many frames before fighter's player indicator is shown again; tag is shown when this reaches 1 or is overridden by position on stage
+    s32 tics_since_last_z;              // Frames since last Z-press, resets to 65536 on action state change
+    s32 acid_wait;                      // Wait this many frames before fighter can be hurt by Planet Zebes acid again
+    s32 twister_wait;                   // Wait this many frames before fighter can be picked up by the Hyrule Tornado again
+    s32 tarucann_wait;                  // Wait this many frames before fighter can enter Barrel Cannon again
+    s32 damagefloor_wait;               // Wait this many frames before fighter can be hurt by damaging floors again (e.g. Mario's Board the Platforms stage)
+    s32 playertag_wait;                 // Wait this many frames before fighter's player indicator is shown again; tag is shown when this reaches 1 or is overridden by position on stage
 
-    s32 card_anim_frame_id;            // Index of fighter's role on 1P Stage Card scene? (e.g. player character, opponent, ally etc.)
+    s32 card_anim_frame_id;             // Index of fighter's role on 1P Stage Card scene? (e.g. player character, opponent, ally etc.)
 
     union ftCommandVars
     {
@@ -1171,8 +1171,8 @@ struct ftStruct
 
     u8 shuffle_frame_index;             // Ranges from 0-3; position of fighter's model vibration is adjusted based on this index when receiving hitlag
     u8 shuffle_index_max;               // How many iterations the frame index increments before looping back to 0;
-    ub8 is_shuffle_electric;            // Fighter vibrates horizontally instead of vertically if hit by an electric attack
-    u16 shuffle_timer;                  // Model shift timer
+    ub8 is_shuffle_electric;            // Fighter vibrates horizontally rather than vertically if hit by an electric attack
+    u16 shuffle_tics;                   // Model shift timer
 
     GObj *throw_gobj;                   // GObj of opponent that threw this fighter
     ftKind throw_ft_kind;               // Kind of opponent that threw this fighter
@@ -1187,10 +1187,10 @@ struct ftStruct
 
     ftHitbox fighter_hit[4];
 
-    s32 invincible_timer;
-    s32 intangible_timer;
+    s32 invincible_tics;
+    s32 intangible_tics;
     s32 special_hitstatus;
-    s32 star_invincible_timer;
+    s32 star_invincible_tics;
     s32 star_hitstatus;  // Enemy CPUs avoid player depending on this?
     s32 hitstatus;
 
@@ -1203,47 +1203,47 @@ struct ftStruct
 
     s32 attack_damage;
     f32 attack_knockback;
-    u16 attack_hit_count; // Number of times this fighter successfully dealt damage 
-    s32 attack_shield_push; // Used to calculate shield/rebound pushback
-    f32 attack_rebound; // Actually 2x staled damage?
+    u16 attack_hit_count;               // Number of times this fighter successfully dealt damage 
+    s32 attack_shield_push;             // Used to calculate shield/rebound pushback
+    f32 attack_rebound;                 // Actually 2x staled damage?
     s32 lr_attack;
     s32 shield_damage;
-    s32 shield_damage_total; // shield_damage + hitbox damage + hitbox shield damage, does not persist?
+    s32 shield_damage_total;            // shield_damage + hitbox damage + hitbox shield damage, does not persist?
     s32 lr_shield;
-    s32 shield_player; // Port of player hitting this fighter's shield
+    s32 shield_player;                  // Port of player hitting this fighter's shield
     s32 reflect_damage;
-    s32 damage_lag; // Used to calculate hitlag?
+    s32 damage_lag;                     // Used to calculate hitlag?
     f32 damage_knockback;
-    f32 knockback_resist_passive;// Passive armor, always active (?)
-    f32 knockback_resist_status; // Resist this many units of knockback, effectively knockback-based armor
-    f32 damage_stack;               // Knockback stacking?
-    s32 damage_queue;            // Used to calculate knockback?
+    f32 knockback_resist_passive;       // Passive armor, always active (?)
+    f32 knockback_resist_status;        // Resist this many units of knockback, effectively knockback-based armor
+    f32 damage_stack;                   // Knockback stacking?
+    s32 damage_queue;                   // Used to calculate knockback?
     s32 damage_angle;
     s32 damage_element;
     s32 lr_damage;
     s32 damage_index;
     s32 damage_joint_id;
     s32 damage_player_number;
-    s32 damage_player; // Port index of damaging fighter
+    s32 damage_player;                  // Port index of damaging fighter
     u16 damage_count;
     s32 damage_kind;
-    s32 damage_heal; // Percent damage to heal
+    s32 damage_heal;                    // Percent damage to heal
     f32 damage_mul;
-    s32 damage_object_class;    // Fighter, Weapon, Item or Ground
-    s32 damage_object_kind;     // ftKind, wpKind, itKind, envKind
+    s32 damage_object_class;            // Fighter, Weapon, Item or Ground
+    s32 damage_object_kind;             // ftKind, wpKind, itKind, envKind
     gmStatFlags damage_stat_flags;
-    u16 damage_stat_count; // Might be raw u16
+    u16 damage_stat_count;
 
-    f32 publicity_knockback; // Knockback value used for crowd reactions
+    f32 publicity_knockback;            // Knockback value used for crowd reactions
 
-    GObj *search_gobj;  // GObj this fighter found when searching for grabbable fighters?
+    GObj *search_gobj;                  // GObj this fighter found when searching for grabbable fighters?
     f32 search_gobj_dist;
-    void (*proc_catch)(GObj*); // Run this callback on grabbing attacker
+    void (*proc_catch)(GObj*);          // Run this callback on grabbing attacker
     void (*proc_capture)(GObj*, GObj*); // Run this callback on grabbed victim
-    GObj *catch_gobj;   // GObj this fighter has caught
-    GObj *capture_gobj; // GObj this fighter is captured by
+    GObj *catch_gobj;                   // GObj this fighter has caught
+    GObj *capture_gobj;                 // GObj this fighter is captured by
 
-    ftThrowHitDesc *fighter_throw; // Pointer to throw description
+    ftThrowHitDesc *fighter_throw;      // Pointer to throw description
 
     GObj *item_hold;
 
@@ -1251,8 +1251,8 @@ struct ftStruct
 
     Vec3f entry_pos;
 
-    f32 camera_zoom_frame; // Maximum size of fighter's camera range?
-    f32 camera_zoom_range; // Multiplier of fighter's camera range?
+    f32 camera_zoom_frame;              // Maximum size of fighter's camera range?
+    f32 camera_zoom_range;              // Multiplier of fighter's camera range?
 
     ftMotionScript motion_script[2][2];
 
@@ -1321,7 +1321,7 @@ struct ftStruct
 
     } fighter_vars;
 
-    s32 hammer_timer;
+    s32 hammer_tics;
 
     union ftStatusVars
     {

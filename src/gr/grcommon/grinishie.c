@@ -296,12 +296,12 @@ void grInishieScaleUpdateRetract(void)
     {
         gGRCommonStruct.inishie.splat_alt = 0.0F;
 
-        l_dobj->anim_remain = AOBJ_ANIM_NULL;
+        l_dobj->anim_wait = AOBJ_ANIM_NULL;
         l_dobj->flags = DOBJ_FLAG_NONE;
 
         mpCollisionSetYakumonoOnID(dGRInishieScaleLineGroups[0]);
 
-        r_dobj->anim_remain = AOBJ_ANIM_NULL;
+        r_dobj->anim_wait = AOBJ_ANIM_NULL;
         r_dobj->flags = DOBJ_FLAG_NONE;
 
         mpCollisionSetYakumonoOnID(dGRInishieScaleLineGroups[1]);

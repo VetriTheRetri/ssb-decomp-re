@@ -150,7 +150,7 @@ sb32 itGLuckyCommonProcUpdate(GObj *item_gobj)
     {
         itGLuckyCommonUpdateEggSpawn(item_gobj);
     }
-    if (dobj->anim_remain == AOBJ_ANIM_NULL)
+    if (dobj->anim_wait == AOBJ_ANIM_NULL)
     {
         grYamabukiGateSetClosedWait();
 
@@ -206,7 +206,7 @@ sb32 itGLuckyCommonProcDamage(GObj *item_gobj)
         ip->item_hit.update_state = nGMHitUpdateDisable;
         ip->item_hurt.hitstatus = nGMHitStatusNone;
 
-        dobj->anim_remain = AOBJ_ANIM_NULL;
+        dobj->anim_wait = AOBJ_ANIM_NULL;
 
         grYamabukiGateClearMonsterGObj();
         itGLuckyDamagedSetStatus(item_gobj);

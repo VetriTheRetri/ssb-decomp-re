@@ -1166,15 +1166,15 @@ void gcRemoveAObjFromDObj(DObj* dobj)
 		current_aobj = next_aobj;
 	}
 	dobj->aobj = NULL;
-	dobj->anim_remain = AOBJ_ANIM_NULL;
+	dobj->anim_wait = AOBJ_ANIM_NULL;
 }
 
 // 0x80008F44
-AObj* gcAddAObjForMObj(MObj* mobj, u8 index)
+AObj* gcAddAObjForMObj(MObj* mobj, u8 track)
 {
 	AObj* aobj = gcGetAObjSetNextAlloc();
 
-	aobj->track = index;
+	aobj->track = track;
 	aobj->kind = nOMObjAnimKindNone;
 	aobj->interpolate = NULL;
 	aobj->rate_target = 0.0F;
@@ -1205,15 +1205,15 @@ void gcRemoveAObjFromMObj(MObj* mobj)
 		current_aobj = next_aobj;
 	}
 	mobj->aobj = NULL;
-	mobj->anim_remain = AOBJ_ANIM_NULL;
+	mobj->anim_wait = AOBJ_ANIM_NULL;
 }
 
 // 0x80009010
-AObj* gcAddAObjForCamera(Camera* cam, u8 index)
+AObj* gcAddAObjForCamera(Camera* cam, u8 track)
 {
 	AObj* aobj = gcGetAObjSetNextAlloc();
 
-	aobj->track = index;
+	aobj->track = track;
 	aobj->kind = nOMObjAnimKindNone;
 	aobj->interpolate = NULL;
 	aobj->rate_target = 0.0F;
@@ -1243,7 +1243,7 @@ void gcRemoveAObjFromCamera(Camera* cam)
 		current_aobj = next_aobj;
 	}
 	cam->aobj = NULL;
-	cam->anim_remain = AOBJ_ANIM_NULL;
+	cam->anim_wait = AOBJ_ANIM_NULL;
 }
 
 // 0x800090DC
@@ -1276,7 +1276,7 @@ MObj* gcAddMObjForDObj(DObj* dobj, MObjSub* mobjsub)
 	mobj->palette_id = 0;
 	mobj->aobj = NULL;
 	mobj->matanim_joint.event32 = NULL;
-	mobj->anim_remain = AOBJ_ANIM_NULL;
+	mobj->anim_wait = AOBJ_ANIM_NULL;
 	mobj->anim_speed = 1.0F;
 	mobj->anim_frame = 0.0F;
 
@@ -1325,7 +1325,7 @@ void gcInitDObj(DObj* dobj)
 
 	dobj->aobj = NULL;
 	dobj->anim_joint.event32 = NULL;
-	dobj->anim_remain = AOBJ_ANIM_NULL;
+	dobj->anim_wait = AOBJ_ANIM_NULL;
 	dobj->anim_speed = 1.0F;
 	dobj->anim_frame = 0.0F;
 	dobj->mobj = NULL;
@@ -1575,7 +1575,7 @@ Camera* gcAddCameraForGObj(GObj* gobj)
 	new_cam->aobj = NULL;
 	new_cam->camanim_joint.event32 = NULL;
 
-	new_cam->anim_remain = AOBJ_ANIM_NULL;
+	new_cam->anim_wait = AOBJ_ANIM_NULL;
 	new_cam->anim_speed = 1.0F;
 	new_cam->anim_frame = 0.0F;
 

@@ -373,7 +373,7 @@ void mnDataLabelsProcDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
-    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 160, 120, 20, 230);
+    gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0xA0, 0x78, 0x14, 0xE6);
     gDPSetCombineMode(gSYTaskmanDLHeads[0]++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
     gDPFillRectangle(gSYTaskmanDLHeads[0]++, 225, 143, 310, 230);
@@ -385,7 +385,7 @@ void mnDataLabelsProcDisplay(GObj *gobj)
     lbCommonDrawSObjAttr(gobj);
 }
 
-// 0x801322A8
+// 0x801322A87
 void mnDataMakeLabels(void)
 {
     GObj *gobj;

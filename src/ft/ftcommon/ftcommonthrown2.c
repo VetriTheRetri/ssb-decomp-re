@@ -53,9 +53,12 @@ void ftCommonThrownReleaseFighterLoseGrip(GObj *fighter_gobj)
     }
     mpCommonRunFighterCollisionDefault(fighter_gobj, &DObjGetStruct(interact_gobj)->translate.vec.f, &interact_fp->coll_data);
 
-    if ((this_fp->ga == nMPKineticsGround) && ((this_fp->coll_data.ground_line_id == -1) || (this_fp->coll_data.ground_dist != 0.0F)))
+    if (this_fp->ga == nMPKineticsGround)
     {
-        mpCommonSetFighterAir(this_fp);
+        if ((this_fp->coll_data.ground_line_id == -1) || (this_fp->coll_data.ground_dist != 0.0F))
+        {
+            mpCommonSetFighterAir(this_fp);
+        }
     }
 }
 
@@ -232,13 +235,12 @@ void ftCommonThrownSetStatusDamageRelease(GObj *fighter_gobj)
     }
     lr = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(capture_gobj)->translate.vec.f.x) ? nGMFacingR : nGMFacingL;
 
-    damage = ftParamGetStaledDamage(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);;
+    damage = ftParamGetStaledDamage(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);
 
     if (capture_fp->is_shield_catch)
     {
         damage = ((damage * 0.5F) + 0.999F);
     }
-
     if (ftParamGetBestHitStatusAll(fighter_gobj) != nGMHitStatusNormal)
     {
         damage = 0;

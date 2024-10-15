@@ -255,7 +255,7 @@ sb32 itPakkunAppearProcUpdate(GObj *item_gobj)
 
     if (ip->item_vars.pakkun.is_wait_fighter != FALSE)
     {
-        DObjGetStruct(item_gobj)->anim_remain = AOBJ_ANIM_NULL;
+        DObjGetStruct(item_gobj)->anim_wait = AOBJ_ANIM_NULL;
 
         itPakkunWaitInitItemVars(item_gobj);
 
@@ -263,7 +263,7 @@ sb32 itPakkunAppearProcUpdate(GObj *item_gobj)
     }
     dobj = DObjGetStruct(item_gobj);
 
-    if (dobj->anim_remain == AOBJ_ANIM_NULL)
+    if (dobj->anim_wait == AOBJ_ANIM_NULL)
     {
         itPakkunWaitInitItemVars(item_gobj);
     }
@@ -298,7 +298,7 @@ sb32 itPakkunAppearProcDamage(GObj *item_gobj)
 
         itPakkunDamagedSetStatus(item_gobj);
 
-        dobj->anim_remain = AOBJ_ANIM_NULL;
+        dobj->anim_wait = AOBJ_ANIM_NULL;
 
         gcAddMObjMatAnimJoint(dobj->mobj, (uintptr_t)gGRCommonStruct.inishie.map_head + (intptr_t)&lITPakkunDamagedMatAnimJoint, 0.0F);
         gcPlayAnimAll(item_gobj);
@@ -332,7 +332,7 @@ sb32 itPakkunDamagedProcDead(GObj *item_gobj)
 
     dobj->rotate.vec.f.z = 0.0F;
 
-    dobj->mobj->anim_remain = AOBJ_ANIM_NULL;
+    dobj->mobj->anim_wait = AOBJ_ANIM_NULL;
 
     itPakkunWaitSetStatus(item_gobj);
 

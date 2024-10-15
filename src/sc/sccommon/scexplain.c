@@ -430,7 +430,7 @@ void scExplainTapSparkProcUpdate(GObj *gobj)
 {
     gcPlayAnimAll(gobj);
 
-    if (DObjGetStruct(gobj)->mobj->anim_remain == AOBJ_ANIM_NULL)
+    if (DObjGetStruct(gobj)->mobj->anim_wait == AOBJ_ANIM_NULL)
     {
         gobj->flags = GOBJ_FLAG_HIDDEN;
     }

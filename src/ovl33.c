@@ -2003,7 +2003,7 @@ void mnCharsHandleInputDemoMode()
 	{
 		gSceneData.scene_previous = gSceneData.scene_current;
 		gSceneData.scene_current = nSCKindTitle;
-		gSceneData.wait_longer_to_show_demo = TRUE;
+		gSceneData.is_extend_demo_wait = TRUE;
 
 		syTaskmanSetLoadScene();
 	}

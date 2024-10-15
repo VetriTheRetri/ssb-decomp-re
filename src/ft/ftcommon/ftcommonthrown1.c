@@ -17,9 +17,9 @@ void ftCommonThrownProcUpdate(GObj *fighter_gobj)
 
         if 
         (
-            (capture_fp->ft_kind != nFTKindDonkey)                       &&
-            (capture_fp->ft_kind != nFTKindNDonkey)                   &&
-            (capture_fp->ft_kind != nFTKindGDonkey)                  ||
+            (capture_fp->ft_kind != nFTKindDonkey)                      &&
+            (capture_fp->ft_kind != nFTKindNDonkey)                     &&
+            (capture_fp->ft_kind != nFTKindGDonkey)                     ||
             (capture_fp->status_info.status_id != nFTCommonStatusThrowF)
         )
         {
@@ -42,7 +42,7 @@ void ftCommonThrownProcMap(GObj *fighter_gobj)
     GObj *capture_gobj = this_fp->capture_gobj;
     ftStruct *capture_fp = ftGetStruct(capture_gobj);
     Vec3f *this_pos = &DObjGetStruct(fighter_gobj)->translate.vec.f;
-    s32 unused[3];
+    Vec3f unused;
     f32 dist_y;
 
     if (capture_fp->coll_data.ground_line_id != -1)
@@ -102,9 +102,9 @@ void ftCommonThrownSetStatusImmediate(GObj *fighter_gobj, s32 status_id)
 
     if 
     (
-        (capture_fp->ft_kind == nFTKindMario)      ||
-        (capture_fp->ft_kind == nFTKindMMario) ||
-        (capture_fp->ft_kind == nFTKindLuigi)      ||
+        (capture_fp->ft_kind == nFTKindMario)   ||
+        (capture_fp->ft_kind == nFTKindMMario)  ||
+        (capture_fp->ft_kind == nFTKindLuigi)   ||
         (capture_fp->ft_kind == nFTKindNMario)  ||
         (capture_fp->ft_kind == nFTKindNLuigi)
     )

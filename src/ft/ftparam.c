@@ -134,7 +134,7 @@ void ftParamTryUpdateItemMusic(void)
         {
             bgm_id = nSYAudioBGMHammer;
         }
-        if (fp->star_invincible_timer > ITSTAR_WARN_BEGIN_FRAME)
+        if (fp->star_invincible_tics > ITSTAR_WARN_BEGIN_FRAME)
         {
             bgm_id = nSYAudioBGMStar;
         }
@@ -233,9 +233,9 @@ void ftParamSetPlayerTagWait(GObj *fighter_gobj, s32 playertag_wait)
 // 0x800E7F88
 void ftParamSetDamageShuffle(ftStruct *fp, sb32 is_electric, s32 damage, s32 status_id, f32 hitlag_mul)
 {
-    s32 shuffle_timer = ftParamGetHitLag(damage, status_id, hitlag_mul) * FTCOMMON_DAMAGE_SHUFFLE_MUL;
+    s32 shuffle_tics = ftParamGetHitLag(damage, status_id, hitlag_mul) * FTCOMMON_DAMAGE_SHUFFLE_MUL;
 
-    fp->shuffle_timer = shuffle_timer;
+    fp->shuffle_tics = shuffle_tics;
     fp->shuffle_frame_index = 0;
     fp->is_shuffle_electric = is_electric;
     fp->shuffle_index_max = dFTParamShuffleFrameIndexMax[is_electric];
@@ -368,7 +368,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
     DObj *joint;
     MObj *mobj;
     ftParts *ft_parts;
-    f32 anim_remain_bak;
+    f32 anim_wait_bak;
     s32 i;
 
     if (fp->status_info.motion_id != -2)
@@ -443,13 +443,13 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
 
                 if ((ft_parts != NULL) && (ft_parts->is_have_anim != FALSE))
                 {
-                    anim_remain_bak = joint->anim_remain;
+                    anim_wait_bak = joint->anim_wait;
 
-                    joint->anim_remain = AOBJ_ANIM_END;
+                    joint->anim_wait = AOBJ_ANIM_END;
 
                     lbCommonPlayTranslateScaledDObjAnim(joint, translate_scales);
 
-                    joint->anim_remain = anim_remain_bak;
+                    joint->anim_wait = anim_wait_bak;
                 }
             }
         }
@@ -464,13 +464,13 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
 
             if ((ft_parts != NULL) && (ft_parts->is_have_anim != FALSE))
             {
-                anim_remain_bak = joint->anim_remain;
+                anim_wait_bak = joint->anim_wait;
 
-                joint->anim_remain = AOBJ_ANIM_END;
+                joint->anim_wait = AOBJ_ANIM_END;
 
                 gcPlayDObjAnim(joint);
 
-                joint->anim_remain = anim_remain_bak;
+                joint->anim_wait = anim_wait_bak;
             }
         }
     }
@@ -1304,11 +1304,11 @@ void ftParamResetStatUpdateColAnim(GObj *fighter_gobj)
     {
         ftParamCheckSetFighterColAnimID(fighter_gobj, 9, 0);
     }
-    if (fp->star_invincible_timer != 0)
+    if (fp->star_invincible_tics != 0)
     {
         ftParamCheckSetFighterColAnimID(fighter_gobj, 0x4A, 0);
     }
-    if ((fp->invincible_timer != 0) || (fp->intangible_timer != 0))
+    if ((fp->invincible_tics != 0) || (fp->intangible_tics != 0))
     {
         ftParamCheckSetFighterColAnimID(fighter_gobj, 0xA, 0);
     }
@@ -1694,22 +1694,22 @@ void ftParamUpdate1PGameAttackStats(ftStruct *fp, u16 flags)
 }
 
 // 0x800EA8B0
-void ftParamSetStarHitStatusInvincible(ftStruct *fp, s32 star_invincible_timer)
+void ftParamSetStarHitStatusInvincible(ftStruct *fp, s32 star_invincible_tics)
 {
     fp->star_hitstatus = nGMHitStatusInvincible;
-    fp->star_invincible_timer = star_invincible_timer;
+    fp->star_invincible_tics = star_invincible_tics;
 
     ftParamCheckSetFighterColAnimID(fp->fighter_gobj, ITSTAR_COLANIM_ID, ITSTAR_COLANIM_LENGTH);
 }
 
 // 0x800EA8EC
-void ftParamSetTimedHitStatusInvincible(ftStruct *fp, s32 invincible_timer)
+void ftParamSetTimedHitStatusInvincible(ftStruct *fp, s32 invincible_tics)
 {
-    if (fp->invincible_timer < invincible_timer)
+    if (fp->invincible_tics < invincible_tics)
     {
-        fp->invincible_timer = invincible_timer;
+        fp->invincible_tics = invincible_tics;
     }
-    if (fp->intangible_timer != 0)
+    if (fp->intangible_tics != 0)
     {
         fp->special_hitstatus = nGMHitStatusIntangible;
     }
@@ -1719,11 +1719,11 @@ void ftParamSetTimedHitStatusInvincible(ftStruct *fp, s32 invincible_timer)
 }
 
 // 0x800EA948
-void ftParamSetTimedHitStatusIntangible(ftStruct *fp, s32 intangible_timer)
+void ftParamSetTimedHitStatusIntangible(ftStruct *fp, s32 intangible_tics)
 {
-    if (fp->intangible_timer < intangible_timer)
+    if (fp->intangible_tics < intangible_tics)
     {
-        fp->intangible_timer = intangible_timer;
+        fp->intangible_tics = intangible_tics;
     }
     fp->special_hitstatus = nGMHitStatusIntangible;
 

@@ -1177,7 +1177,7 @@ void efGroundCommonProcUpdate(GObj *effect_gobj)
     {
         gcPlayAnimAll(effect_gobj);
 
-        if (child_dobj->anim_remain == AOBJ_ANIM_NULL)
+        if (child_dobj->anim_wait == AOBJ_ANIM_NULL)
         {
             if ((ep->effect_vars.ground_effect.effect_status == -1) || (ep->effect_vars.ground_effect.effect_status != 0))
             {

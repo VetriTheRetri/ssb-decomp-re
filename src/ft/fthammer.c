@@ -12,15 +12,15 @@ void ftHammerUpdateStats(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->hammer_timer != 0)
+    if (fp->hammer_tics != 0)
     {
-        fp->hammer_timer--;
+        fp->hammer_tics--;
     }
-    if (fp->hammer_timer == ITHAMMER_WARN_BEGIN_FRAME)
+    if (fp->hammer_tics == ITHAMMER_WARN_BEGIN_FRAME)
     {
         itHammerCommonSetColAnim(fp->item_hold);
     }
-    if (fp->hammer_timer == 0)
+    if (fp->hammer_tics == 0)
     {
         sb32 is_colanim_reset = FALSE;
 

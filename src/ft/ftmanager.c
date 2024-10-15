@@ -507,9 +507,9 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *ft_desc)
     fp->damage_kind = 0;
     fp->damage_heal = 0;
     fp->damage_joint_id = 0;
-    fp->invincible_timer = 0;
-    fp->intangible_timer = 0;
-    fp->star_invincible_timer = 0;
+    fp->invincible_tics = 0;
+    fp->intangible_tics = 0;
+    fp->star_invincible_tics = 0;
 
     fp->hitstatus = nGMHitStatusNormal;
     fp->star_hitstatus = nGMHitStatusNormal;
@@ -554,7 +554,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *ft_desc)
     fp->is_use_fogcolor = FALSE;
 
     fp->is_shuffle_electric = FALSE;
-    fp->shuffle_timer = 0;
+    fp->shuffle_tics = 0;
 
     fp->attack_id = nFTMotionAttackIDNone;
     fp->motion_count = 0;

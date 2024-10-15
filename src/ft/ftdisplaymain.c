@@ -1209,7 +1209,7 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
         }
         else ftDisplayMainDecideFogColor(fp);
 
-        if (fp->shuffle_timer != 0)
+        if (fp->shuffle_tics != 0)
         {
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
@@ -1234,7 +1234,7 @@ void ftDisplayMainProcDisplay(GObj *fighter_gobj)
 
             fp->joints[nFTPartsJointTopN]->ommtx[0]->kind = 0x4B;
         }
-        if (fp->shuffle_timer != 0)
+        if (fp->shuffle_tics != 0)
         {
             gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
         }

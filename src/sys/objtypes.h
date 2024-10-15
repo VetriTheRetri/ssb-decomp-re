@@ -344,7 +344,7 @@ struct _MObj
     u8 filler_0x8C[0x90 - 0x8C];
     AObj *aobj;
     AObjScript matanim_joint;
-    f32 anim_remain;                // Animation frames remaining, multi-purpose?
+    f32 anim_wait;                  // Animation frames remaining until next command(s) are parsed
     f32 anim_speed;                 // Animation playback rate / interpolation, multi-purpose?
     f32 anim_frame;                 // Current animation frame, multi-purpose?
 	OMUserData user_data;           // Actually just padding?
@@ -435,9 +435,9 @@ struct _DObj
 
     AObjScript anim_joint;
     
-    f32 anim_remain;    // Multi-purpose? Usually frames remaining, but used as rotation step in Crate/Barrel smash GFX?
-    f32 anim_speed;      // Multi-purpose? Fighters use this as animation playback rate / interpolation, but it is used as rotation step in Crate/Barrel smash GFX?
-    f32 anim_frame;     // Multi-purpose? Usually current animation frame, but used as rotation step in Crate/Barrel smash GFX?
+    f32 anim_wait;          // Multi-purpose? Usually frames remaining until next anim command, but used as rotation step in Crate/Barrel smash GFX?
+    f32 anim_speed;         // Multi-purpose? Fighters use this as animation playback rate / interpolation, but it is used as rotation step in Crate/Barrel smash GFX?
+    f32 anim_frame;         // Multi-purpose? Usually current animation frame, but used as rotation step in Crate/Barrel smash GFX?
 
     MObj *mobj;
 
@@ -460,7 +460,7 @@ struct _SObj                    // Sprite object
     Sprite sprite;              // Sprite data
     OMUserData user_data;       // Custom parameters attached to SObj
     Vec2f pos;                  // Position on screen; ghosting effect if out of camera scissor bounds?
-    syColorRGBA envcolor;      // Color of outline around / under sprite?
+    syColorRGBA envcolor;       // Color of outline around / under sprite?
     u8 cmt, cms;                // t-axis and s-axis mirror, no-mirror, wrap and clamp flags
     u8 maskt, masks;            // t-axis and s-axis mask
     u16 lrs, lrt;               // lower right s and t - used for wrap/mirror boundary
@@ -504,7 +504,7 @@ struct _Camera
     AObj *aobj;
     AObjScript camanim_joint;
 
-    f32 anim_remain;
+    f32 anim_wait;
     f32 anim_speed;
     f32 anim_frame;
 

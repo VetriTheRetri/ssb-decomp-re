@@ -767,7 +767,7 @@ void sc1PGameSetGameEnd(void)
     fp = ftGetStruct(fighter_gobj);
 
     sSC1PGameBonusStatEndPlayerStatus = fp->status_info.status_id;
-    sSC1PGameBonusStatInvincibleTimer = fp->star_invincible_timer;
+    sSC1PGameBonusStatInvincibleTimer = fp->star_invincible_tics;
 }
 
 // 0x8018D200

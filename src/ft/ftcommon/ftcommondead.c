@@ -146,7 +146,7 @@ void ftCommonDeadClearSpecialStats(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->star_invincible_timer = 0;
+    fp->star_invincible_tics = 0;
     fp->is_nullstatus = TRUE;
     fp->x18E_flag_b0 = TRUE;
 

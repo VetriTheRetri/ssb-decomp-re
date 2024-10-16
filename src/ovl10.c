@@ -43,6 +43,8 @@ void mnTitleSetColors(SObj* sobj, s32 index);
 void func_ovl10_80132A58(GObj* fire_gobj);
 void mnTitleLoadFiles();
 
+extern u32 func_8000092C();
+
 // DATA
 // 0x801341E0
 intptr_t dMNTitleAnimatedLogoOffsets[/* */] =
@@ -54,7 +56,7 @@ intptr_t dMNTitleAnimatedLogoOffsets[/* */] =
 };
 
 // 0x801341F0
-intptr_t dMNTitleFireTextureOffsets[/* */] =
+intptr_t dMNTitleFireSpriteOffsets[/* */] =
 {
 	0x00001018, 0x00002078, 0x000030d8, 0x00004138,
 	0x00005198, 0x000061f8, 0x00007258, 0x000082b8,
@@ -123,7 +125,7 @@ syDisplaySetup dMNTitleDisplaySetup =
 };
 
 // 0x8013438C
-scRuntimeInfo D_ovl10_8013438C = {
+scRuntimeInfo dMNTitleTaskmanSetup = {
 
 	0x00000000,
 	0x80134098, 0x8000a340, 0x801345b0, 0x00000000,
@@ -144,7 +146,7 @@ s32 D_ovl10_80134418 = 0;
 s32 D_ovl10_8013441C = 0;
 
 // 0x80134420
-s32 D_ovl10_80134420[2] = { 0xa7, 0xa8 };
+u32 dMNTitleFileIDs[/* */] = { 0xa7, 0xa8 };
 
 // BSS
 // 0x80134440
@@ -154,7 +156,7 @@ s32 D_ovl10_80134440[2];
 GObj* sMNTitleFireCameraGObj;
 
 // 0x8013444C
-uintptr_t sMNTitleParticleBankId;
+uintptr_t sMNTitleParticleBankID;
 
 // 0x80134450
 mnTitleLayout sMNTitleLayout;
@@ -208,20 +210,16 @@ f32 sMNTitleFireDeltaGreen;
 f32 sMNTitleFireDeltaBlue;
 
 // 0x80134494
-s32 sMNTitleFireIndex;
+s32 sMNTitleFireColorID;
 
 // 0x80134498
 u32 sMNTitleAllowProceedWait;
 
 // 0x801344A0
-lbFileNode D_ovl10_801344A0[32];
+lbFileNode sMNTitleStatusBuffer[32];
 
 // 0x801345A0
-uintptr_t sMNTitleFile0;
-
-// 0x801345A4
-uintptr_t sMNTitleFile1;
-
+void *sMNTitleFiles[2];
 
 // 0x80131B00
 s32 mnTitleGetUnlockedCharsCountForMask(u16 mask)
@@ -261,7 +259,7 @@ s32 mnTitleGetMissingFtKind(u16 mask_1, u16 mask_2, s32 missing_index)
 }
 
 // 0x80131BC4
-s32 mnTitleSetDemoFtKinds(void)
+s32 mnTitleSetDemoFighterKinds(void)
 {
 	u16 unlocked_mask;
 	s32 unlocked_count;
@@ -326,7 +324,7 @@ void mnTitleInitVars()
 		sMNTitleTransitionTotalTimeTics = 169;
 
 		index = mtTrigGetRandomTimeUCharRange(7);
-		sMNTitleFireIndex = index;
+		sMNTitleFireColorID = index;
 		sMNTitleFireColorR = dMNTitleFireColorArrayRed[index];
 		sMNTitleFireColorG = dMNTitleFireColorArrayGreen[index];
 		sMNTitleFireColorB = dMNTitleFireColorArrayBlue[index];
@@ -425,7 +423,7 @@ void mnTitleProceedDemoNext(void)
 	u8 scene_previous = gSceneData.scene_previous;
 
 	gcMakeDefaultCameraGObj(2, GOBJ_LINKORDER_DEFAULT, 0, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
-	mnTitleSetDemoFtKinds();
+	mnTitleSetDemoFighterKinds();
 	func_800266A0_272A0();
 
 	gSceneData.scene_previous = gSceneData.scene_current;
@@ -519,7 +517,7 @@ void mnTitleUpdateFireVars(void)
 {
 	s32 index = mtTrigGetRandomTimeUCharRange(7);
 
-	sMNTitleFireIndex = index;
+	sMNTitleFireColorID = index;
 
 	sMNTitleFireColorR = sMNTitleFireColorG = sMNTitleFireColorB = 0.0F;
 
@@ -815,27 +813,22 @@ void func_ovl10_80132A58(GObj* fire_gobj)
 }
 
 // 0x80132A6C
-void func_ovl10_80132A6C(SObj* fire_sobj, s32 arg1)
+void mnTitleUpdateFireSprite(SObj *sobj, sb32 is_next)
 {
-	Sprite *offset = GetAddressFromOffset(sMNTitleFile1, dMNTitleFireTextureOffsets[fire_sobj->user_data.s]);
+	Sprite *sprite = lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[1], dMNTitleFireSpriteOffsets[sobj->user_data.s]);
 
-	fire_sobj->sprite = *offset;
-	fire_sobj->sprite.attr = SP_TRANSPARENT;
+	sobj->sprite = *sprite;
+	sobj->sprite.attr = SP_TRANSPARENT;
 
-	if (arg1 != 0)
-		fire_sobj->sprite.scalex = 9.5f;
-	else
-		fire_sobj->sprite.scalex = 12.0F;
+	sobj->sprite.scalex = (is_next != FALSE) ? 9.5F : 12.0F;
+	sobj->sprite.scaley = (is_next != FALSE) ? 7.0F : 8.5F;
 
-	if (arg1 != 0)
-		fire_sobj->sprite.scaley = 7.0F;
-	else
-		fire_sobj->sprite.scaley = 8.5f;
+	sobj->user_data.s++;
 
-	fire_sobj->user_data.s += 1;
-
-	if (fire_sobj->user_data.s >= 0x1E)
-		fire_sobj->user_data.s = 0;
+	if (sobj->user_data.s >= 30)
+	{
+		sobj->user_data.s = 0;
+	}
 }
 
 // 0x80132B38
@@ -843,8 +836,8 @@ void func_ovl10_80132B38(GObj* fire_gobj)
 {
 	SObj *fire_sobj_1 = SObjGetStruct(fire_gobj), *fire_sobj_2 = fire_sobj_1->next;
 
-	func_ovl10_80132A6C(fire_sobj_1, 0);
-	func_ovl10_80132A6C(fire_sobj_2, 1);
+	mnTitleUpdateFireSprite(fire_sobj_1, FALSE);
+	mnTitleUpdateFireSprite(fire_sobj_2, TRUE);
 }
 
 // 0x80132B70
@@ -869,7 +862,7 @@ void mnTitleCreateFire()
 			else
 				target_texture = 12;
 
-			fire_sobj = lbCommonMakeSObjForGObj(fire_gobj, GetAddressFromOffset((&sMNTitleFile0)[1], dMNTitleFireTextureOffsets[target_texture]));
+			fire_sobj = lbCommonMakeSObjForGObj(fire_gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[1], dMNTitleFireSpriteOffsets[target_texture]));
 
 			fire_sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -970,7 +963,7 @@ void mnTitleCreateLogoNoIntro(void)
 		0,
 		GOBJ_DLLINKORDER_DEFAULT,
 		-1,
-		lbRelocGetDataFromFile(Sprite*, sMNTitleFile0, dMNTitleTextureConfigs[8].offset),
+		lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleTextureConfigs[8].offset),
 		nOMObjProcessKindProc,
 		NULL,
 		1
@@ -1003,8 +996,8 @@ void mnTitleCreateLogo()
 	else
 	{
 		animated_logo_gobj = gcMakeGObjSPAfter(7, NULL, 7, GOBJ_LINKORDER_DEFAULT);
-		gcSetupCommonDObjs(animated_logo_gobj, lbRelocGetDataFromFile(DObjDesc*, sMNTitleFile0, &FILE_0A7_ANIMATED_LOGO_OFFSET_2), 0);
-		gcAddAnimJointAll(animated_logo_gobj, lbRelocGetDataFromFile(AObjEvent32**, sMNTitleFile0, &FILE_0A7_ANIMATED_LOGO_OFFSET_1), 0);
+		gcSetupCommonDObjs(animated_logo_gobj, lbRelocGetDataFromFile(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_ANIMATED_LOGO_OFFSET_2), 0);
+		gcAddAnimJointAll(animated_logo_gobj, lbRelocGetDataFromFile(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_ANIMATED_LOGO_OFFSET_1), 0);
 		gcPlayAnimAll(animated_logo_gobj);
 
 		fire_logo_gobj = gcMakeGObjSPAfter(6, NULL, 7, GOBJ_LINKORDER_DEFAULT);
@@ -1016,7 +1009,7 @@ void mnTitleCreateLogo()
 
 		for (i = 0; i < ARRAY_COUNT(dMNTitleAnimatedLogoOffsets) - 1; i++)
 		{
-			fire_logo_sobj = lbCommonMakeSObjForGObj(fire_logo_gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFile0, dMNTitleAnimatedLogoOffsets[i]));
+			fire_logo_sobj = lbCommonMakeSObjForGObj(fire_logo_gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleAnimatedLogoOffsets[i]));
 
 			fire_logo_sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -1043,7 +1036,7 @@ void mnTitleCreateLogo()
 			0,
 			GOBJ_DLLINKORDER_DEFAULT,
 			-1,
-			lbRelocGetDataFromFile(Sprite*, sMNTitleFile0, dMNTitleAnimatedLogoOffsets[3]),
+			lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleAnimatedLogoOffsets[3]),
 			nOMObjProcessKindProc,
 			mnTitleAnimateLogo,
 			1
@@ -1072,15 +1065,15 @@ void mnTitleCreateTextures()
 	SObj* sobj;
 	s32 i;
 
-	gobj = gcMakeGObjSPAfter(8, 0, 8, 0x80000000);
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, 0x80000000, -1);
+	gobj = gcMakeGObjSPAfter(8, NULL, 8, GOBJ_LINKORDER_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	for (i = 0; i < 7; i++)
 	{
-		sobj = lbCommonMakeSObjForGObj(gobj, GetAddressFromOffset(sMNTitleFile0, dMNTitleTextureConfigs[i].offset));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleTextureConfigs[i].offset));
 		sobj->sprite.attr = SP_TRANSPARENT;
 
-		mnTitleSetPosition(0, sobj, i);
+		mnTitleSetPosition(NULL, sobj, i);
 		mnTitleSetColors(sobj, i);
 	}
 }
@@ -1095,8 +1088,8 @@ void mnTitleCreateTitleHeaderAndFooter(void)
 	DObj* animation_dobj;
 
 	animation_gobj = gcMakeGObjSPAfter(10, NULL, 8, GOBJ_LINKORDER_DEFAULT);
-	gcSetupCommonDObjs(animation_gobj, lbRelocGetDataFromFile(DObjDesc*, sMNTitleFile0, &FILE_0A7_ANIMATED_TITLE_HEADER_FOOTER_OFFSET_2), 0);
-	gcAddAnimJointAll(animation_gobj, lbRelocGetDataFromFile(AObjEvent32**, sMNTitleFile0, &FILE_0A7_ANIMATED_TITLE_HEADER_FOOTER_OFFSET_1), 0);
+	gcSetupCommonDObjs(animation_gobj, lbRelocGetDataFromFile(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_ANIMATED_TITLE_HEADER_FOOTER_OFFSET_2), 0);
+	gcAddAnimJointAll(animation_gobj, lbRelocGetDataFromFile(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_ANIMATED_TITLE_HEADER_FOOTER_OFFSET_1), 0);
 	gcPlayAnimAll(animation_gobj);
 
 	gobj = gcMakeGObjSPAfter(8, NULL, 8, GOBJ_LINKORDER_DEFAULT);
@@ -1108,7 +1101,7 @@ void mnTitleCreateTitleHeaderAndFooter(void)
 
 	for (i = 0; i < 5; i++)
 	{
-		texture_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFile0, dMNTitleTextureConfigs[i].offset));
+		texture_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleTextureConfigs[i].offset));
 		texture_sobj->sprite.attr = SP_TRANSPARENT;
 
 		mnTitleSetPosition(animation_dobj, texture_sobj, i);
@@ -1127,7 +1120,7 @@ void mnTitleCreateTitleHeaderAndFooter(void)
 
 	for (i = 5; i < 7; i++)
 	{
-		texture_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFile0, dMNTitleTextureConfigs[i].offset));
+		texture_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleTextureConfigs[i].offset));
 		texture_sobj->sprite.attr = SP_TRANSPARENT;
 
 		mnTitleSetPosition(animation_dobj, texture_sobj, i);
@@ -1148,8 +1141,8 @@ void mnTitleCreatePressStart(void)
 	SObj* press_start_sobj;
 
 	press_start_anim_gobj = gcMakeGObjSPAfter(10, NULL, 8, GOBJ_LINKORDER_DEFAULT);
-	gcSetupCommonDObjs(press_start_anim_gobj, lbRelocGetDataFromFile(DObjDesc*, sMNTitleFile0, &FILE_0A7_ANIMATED_PRESS_START_OFFSET_2), 0);
-	gcAddAnimJointAll(press_start_anim_gobj, lbRelocGetDataFromFile(AObjEvent32**, sMNTitleFile0, &FILE_0A7_ANIMATED_PRESS_START_OFFSET_1), 0);
+	gcSetupCommonDObjs(press_start_anim_gobj, lbRelocGetDataFromFile(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_ANIMATED_PRESS_START_OFFSET_2), 0);
+	gcAddAnimJointAll(press_start_anim_gobj, lbRelocGetDataFromFile(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_ANIMATED_PRESS_START_OFFSET_1), 0);
 	gcPlayAnimAll(press_start_anim_gobj);
 
 	press_start_anim_dobj = DObjGetStruct(press_start_anim_gobj)->child;
@@ -1160,7 +1153,7 @@ void mnTitleCreatePressStart(void)
 
 	press_start_gobj->user_data.p = press_start_anim_gobj;
 
-	press_start_sobj = lbCommonMakeSObjForGObj(press_start_gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFile0, dMNTitleTextureConfigs[7].offset));
+	press_start_sobj = lbCommonMakeSObjForGObj(press_start_gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleTextureConfigs[7].offset));
 	press_start_sobj->sprite.attr = SP_TRANSPARENT;
 
 	mnTitleSetPosition(press_start_anim_dobj, press_start_sobj, nMNTitleTextureIndexPressStart);
@@ -1191,22 +1184,22 @@ void mnTitleCreateSlashEffectGFX()
 		gcSetupCustomDObjsWithMObj
 		(
 			gobj,
-			lbRelocGetDataFromFile(DObjDesc*, sMNTitleFile0, &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_2),
-			lbRelocGetDataFromFile(MObjSub***, sMNTitleFile0, &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_1),
+			lbRelocGetDataFromFile(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_2),
+			lbRelocGetDataFromFile(MObjSub***, sMNTitleFiles[0], &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_1),
 			NULL,
 			nOMTransformTraRotRpyRSca,
 			nOMTransformNull,
 			nOMTransformNull
 		);
-		gcAddAnimJointAll(gobj, lbRelocGetDataFromFile(AObjEvent32**, sMNTitleFile0, &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_3), 0.0F);
-		gcAddMatAnimJointAll(gobj, lbRelocGetDataFromFile(AObjEvent32***, sMNTitleFile0, &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_4), 0.0F);
+		gcAddAnimJointAll(gobj, lbRelocGetDataFromFile(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_3), 0.0F);
+		gcAddMatAnimJointAll(gobj, lbRelocGetDataFromFile(AObjEvent32***, sMNTitleFiles[0], &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_4), 0.0F);
 		gcPlayAnimAll(gobj);
 		gcAddGObjProcess(gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
 	}
 }
 
 // 0x80133770
-void mnTitleFireProcUpdate(GObj* arg0)
+void mnTitleFireProcUpdate(GObj *gobj)
 {
 	Camera* cam = CameraGetStruct(sMNTitleFireCameraGObj);
 
@@ -1222,26 +1215,26 @@ void mnTitleFireProcUpdate(GObj* arg0)
 		{
 			if (sMNTitleFireTimer == 0)
 			{
-				s32 var_v1;
+				s32 color_id;
 
 				sMNTitleFireTimer = 260;
 
-				var_v1 = mtTrigGetRandomTimeUCharRange(7);
+				color_id = mtTrigGetRandomTimeUCharRange(7);
 
-				if (var_v1 == sMNTitleFireIndex)
+				if (color_id == sMNTitleFireColorID)
 				{
-					var_v1++;
+					color_id++;
 
-					if (var_v1 >= 7)
+					if (color_id >= 7)
 					{
-						var_v1 = 0;
+						color_id = 0;
 					}
 				}
-				sMNTitleFireIndex = var_v1;
+				sMNTitleFireColorID = color_id;
 
-				sMNTitleFireDeltaRed = (dMNTitleFireColorArrayRed[var_v1] - sMNTitleFireColorR) / 80.0F;
-				sMNTitleFireDeltaGreen = (dMNTitleFireColorArrayGreen[var_v1] - sMNTitleFireColorG) / 80.0F;
-				sMNTitleFireDeltaBlue = (dMNTitleFireColorArrayBlue[var_v1] - sMNTitleFireColorB) / 80.0F;
+				sMNTitleFireDeltaRed = (dMNTitleFireColorArrayRed[color_id] - sMNTitleFireColorR) / 80.0F;
+				sMNTitleFireDeltaGreen = (dMNTitleFireColorArrayGreen[color_id] - sMNTitleFireColorG) / 80.0F;
+				sMNTitleFireDeltaBlue = (dMNTitleFireColorArrayBlue[color_id] - sMNTitleFireColorB) / 80.0F;
 			}
 			if (sMNTitleFireTimer >= 80)
 			{
@@ -1297,6 +1290,7 @@ s32 mnTitleMakeCameras(void)
 
 	gcAddOMMtxForCamera(cam, nOMTransformOrtho, 0);
 	gcAddOMMtxForCamera(cam, nOMTransformLookAt, 0);
+
 	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 	
 	cam->vec.at.x = cam->vec.at.y = cam->vec.at.z = 0.0F;
@@ -1320,7 +1314,7 @@ s32 mnTitleMakeCameras(void)
 }
 
 // 0x80133CFC
-void mnTitleRenderLogoFireEffect(GObj *gobj)
+void mnTitleLogoFireProcDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
@@ -1334,20 +1328,18 @@ void mnTitleRenderLogoFireEffect(GObj *gobj)
 }
 
 // 0x80133DDC
-void mnTitleCreateLogoFire(void)
+void mnTitleMakeLogoFire(void)
 {
-	GObj* logo_fire_gobj;
+	GObj *gobj = gcMakeGObjSPAfter(15, NULL, 4, GOBJ_LINKORDER_DEFAULT);
+	gcAddGObjDisplay(gobj, mnTitleLogoFireProcDisplay, 3, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-	logo_fire_gobj = gcMakeGObjSPAfter(0xF, 0, 4, 0x80000000);
-	gcAddGObjDisplay(logo_fire_gobj, mnTitleRenderLogoFireEffect, 3, 0x80000000, -1);
+	gobj->cam_mask = CAMERA_MASK_DLLINK(0);
 
-	logo_fire_gobj->cam_mask = 0x00000001;
-
-	sMNTitleParticleBankId = efAllocGetAddParticleBankID(&lTitleScreenParticleBankGenLo, &lTitleScreenParticleBankGenHi, &lTitleScreenParticleBankTextureLo, &lTitleScreenParticleBankTextureHi);
+	sMNTitleParticleBankID = efAllocGetAddParticleBankID(&lTitleScreenParticleBankGenLo, &lTitleScreenParticleBankGenHi, &lTitleScreenParticleBankTextureLo, &lTitleScreenParticleBankTextureHi);
 }
 
 // 0x80133E68
-void mnTitleLogoFireMakeEffect()
+void mnTitleLogoFireMakeEffect(void)
 {
 	GObj* logo_fire_effect_gobj;
 	lbGenerator *gtor;
@@ -1356,12 +1348,12 @@ void mnTitleLogoFireMakeEffect()
 	{
 		logo_fire_effect_gobj = gcMakeGObjSPAfter(14, NULL, 5, GOBJ_LINKORDER_DEFAULT);
 
-		gcSetupCommonDObjs(logo_fire_effect_gobj, GetAddressFromOffset(sMNTitleFile0, &FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_1), 0);
-		gcAddAnimJointAll(logo_fire_effect_gobj, GetAddressFromOffset(sMNTitleFile0, &FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_2), 0);
+		gcSetupCommonDObjs(logo_fire_effect_gobj, lbRelocGetDataFromFile(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_1), NULL);
+		gcAddAnimJointAll(logo_fire_effect_gobj, lbRelocGetDataFromFile(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_2), 0.0F);
 		gcPlayAnimAll(logo_fire_effect_gobj);
 		gcAddGObjProcess(logo_fire_effect_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
 
-		gtor = lbParticleMakeGenerator(sMNTitleParticleBankId, 0);
+		gtor = lbParticleMakeGenerator(sMNTitleParticleBankID, 0);
 
 		if (gtor != NULL)
 		{
@@ -1371,14 +1363,14 @@ void mnTitleLogoFireMakeEffect()
 }
 
 // 0x80133F3C
-void mnTitleCreateMainRoutines()
+void mnTitleMakeActors(void)
 {
-	sMNTitleMainGObj = gcMakeGObjSPAfter(0, mnTitleFuncRun, 1, 0x80000000);
-	sMNTitleTransitionsGObj = gcMakeGObjSPAfter(0, mnTitleHandleTransitions, 0xF, 0x80000000);
+	sMNTitleMainGObj = gcMakeGObjSPAfter(0, mnTitleFuncRun, 1, GOBJ_LINKORDER_DEFAULT);
+	sMNTitleTransitionsGObj = gcMakeGObjSPAfter(0, mnTitleHandleTransitions, 15, GOBJ_LINKORDER_DEFAULT);
 }
 
 // 0x80133F90
-void mnTitleInit()
+void mnTitleFuncStart(void)
 {
 	s32 i;
 
@@ -1386,11 +1378,10 @@ void mnTitleInit()
 	{
 		func_80004494(i);
 	}
-
 	mnTitleLoadFiles();
-	mnTitleCreateMainRoutines();
+	mnTitleMakeActors();
 	efAllocInitParticleBank();
-	mnTitleCreateLogoFire();
+	mnTitleMakeLogoFire();
 	mnTitleMakeCameras();
 	mnTitleInitVars();
 	mnTitleCreateFire();
@@ -1402,39 +1393,40 @@ void mnTitleInit()
 	mnTitleLogoFireMakeEffect();
 
 	if (gSceneData.scene_previous == nSCKindOpeningNewcomers)
-		while (func_8000092C() < 0x1077U);
+	{
+		while (func_8000092C() < 4215);
+	}
 }
 
 // 0x80134074
-void mnTitleFuncLights(Gfx **display_list)
+void mnTitleFuncLights(Gfx **dls)
 {
-	gSPDisplayList(display_list[0]++, dMNTitleDisplayList);
+	gSPDisplayList(dls[0]++, dMNTitleDisplayList);
 }
 
 // 0x80134098
-void mnTitleAdvanceFrame()
+void mnTitleAdvanceTic(void)
 {
 	func_8000A5E4();
 }
 
 // 0x801340B8
-void mnTitleStartScene()
+void mnTitleStartScene(void)
 {
 	dMNTitleDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
 	syDisplayInit(&dMNTitleDisplaySetup);
 
-	if ((!gSceneData.main_title_animation_viewed) && (gSaveData.unk5E3 < 0x100))
+	if ((!gSceneData.main_title_animation_viewed) && (gSaveData.unk5E3 <= U8_MAX))
 	{
 		gSaveData.unk5E3++;
 		lbBackupWrite();
 	}
-
-	D_ovl10_8013438C.arena_size = (u32) ((uintptr_t)&lOverlay10ArenaHi - (uintptr_t)&lOverlay10ArenaLo);
-	syTaskmanInit(&D_ovl10_8013438C);
+	dMNTitleTaskmanSetup.arena_size = (size_t) ((uintptr_t)&lOverlay10ArenaHi - (uintptr_t)&lOverlay10ArenaLo);
+	syTaskmanInit(&dMNTitleTaskmanSetup);
 }
 
 // 0x80134140
-void mnTitleLoadFiles()
+void mnTitleLoadFiles(void)
 {
 	lbRelocSetup rl_setup;
 
@@ -1442,10 +1434,25 @@ void mnTitleLoadFiles()
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buffer = (lbFileNode*) D_ovl10_801344A0;
-	rl_setup.status_buffer_size = 0x20;
-	rl_setup.force_status_buffer = 0;
+	rl_setup.status_buffer = sMNTitleStatusBuffer;
+	rl_setup.status_buffer_size = ARRAY_COUNT(sMNTitleStatusBuffer);
+	rl_setup.force_status_buffer = NULL;
 	rl_setup.force_status_buffer_size = 0;
+
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern(D_ovl10_80134420, ARRAY_COUNT(D_ovl10_80134420), &sMNTitleFile0, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl10_80134420, ARRAY_COUNT(D_ovl10_80134420)), 0x10));
+	lbRelocLoadFilesExtern
+	(
+		dMNTitleFileIDs,
+		ARRAY_COUNT(dMNTitleFileIDs),
+		sMNTitleFiles,
+		syTaskmanMalloc
+		(
+			lbRelocGetAllocSize
+			(
+				dMNTitleFileIDs,
+				ARRAY_COUNT(dMNTitleFileIDs)
+			),
+			0x10
+		)
+	);
 }

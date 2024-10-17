@@ -103,8 +103,9 @@ S_DATA_FILES   := $(shell find asm -type f | grep \\.data\\.s$)
 S_RODATA_FILES := $(shell find asm -type f | grep \\.rodata\\.s$)
 S_BSS_FILES    := $(shell find asm -type f | grep \\.bss\\.s$)
 PNG_FILES      := $(shell find assets -type f | grep \\.png$)
-BIN_FILES      := $(shell find assets -type f | grep \\.bin$) \
+BIN_FILES      := $(shell find assets -type f | grep \\.bin$ | grep -v /relocData/) \
                   $(foreach f,$(PNG_FILES:.png=.bin),$f)
+VPK0_FILES     := $(shell for i in {0..498} ; do echo assets/relocData/$$i.vpk0 ; done) # first 499 files are compressed
 
 O_FILES        := $(foreach f,$(C_FILES:.c=.o),$(BUILD_DIR)/$f) \
                   $(foreach f,$(S_TEXT_FILES:.s=.o),$(BUILD_DIR)/$f) \
@@ -245,11 +246,15 @@ clean:
 	rm -f src/credits/titles.credits.encoded src/credits/titles.credits.metadata
 	rm -f src/credits/info.credits.encoded src/credits/info.credits.metadata
 	rm -f src/credits/companies.credits.encoded src/credits/companies.credits.metadata
+	rm -f assets/relocData.bin
+	@echo removing vpk0 files
+	@rm -f $(VPK0_FILES)
 
 extract:
 	rm -r -f asm
 	rm -r -f assets
 	$(SPLAT) $(SPLAT_YAML) $(SPLAT_FLAGS)
+	$(PYTHON) tools/relocData.py extractAll
 
 init:
 	${MAKE} clean
@@ -276,7 +281,7 @@ $(ROM): $(ELF)
 	$(V)$(OBJCOPY) $(OBJCOPYFLAGS) $< $@ -O binary
 
 # Linking
-$(ELF): $(O_FILES) symbols/not_found.txt symbols/linker_constants.txt
+$(ELF): $(O_FILES) symbols/not_found.txt symbols/linker_constants.txt build/assets/relocData.o
 	$(call print_2,Linking:,$@,$(BLUE))
 	$(V)$(LD) -Map $(LD_MAP) -o $@ $(LDFLAGS)
 
@@ -335,6 +340,17 @@ $(BUILD_DIR)/%.o: %.bin
 assets/%.bin: assets/%.png
 	$(call print_3,Converting Image:,$<,$@)
 	$(V)$(PYTHON) tools/image_converter.py $< $@
+
+# Reloc data
+assets/relocData.bin: $(VPK0_FILES)
+	$(call print_2,Making reloc data binary:,relocData.bin,$(BLUE))
+	$(V)$(PYTHON) tools/relocData.py makeBin
+
+# Compressed files
+.PRECIOUS: assets/relocData/%.vpk0
+assets/relocData/%.vpk0: assets/relocData/%.vpk0.bin
+	$(call print_3,Compressing File:,$<,$@)
+	$(V)$(PYTHON) tools/relocData.py compress $< $@
 
 -include $(DEP_FILES)
 

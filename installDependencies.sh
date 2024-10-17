@@ -49,17 +49,22 @@ RECOMP_DIR7=tools/ido-recomp/7.1
 RECOMP_DIR5=tools/ido-recomp/5.3
 if [ ! -f "${RECOMP_DIR7}/cc" ]
 then
-	curl https://github.com/decompals/ido-static-recomp/releases/download/v1.1/ido-7.1-recomp-${DETECTED_OS}.tar.gz -O ido-7.1-recomp-${DETECTED_OS}.tar.gz -L
+	curl https://github.com/decompals/ido-static-recomp/releases/download/v1.1/ido-7.1-recomp-${DETECTED_OS}.tar.gz -L --output ido-7.1-recomp-${DETECTED_OS}.tar.gz
 	mkdir -p ${RECOMP_DIR7}
 	tar xf ido-7.1-recomp-${DETECTED_OS}.tar.gz -C ${RECOMP_DIR7}
 	rm ido-7.1-recomp-${DETECTED_OS}.tar.gz
 fi
 if [ ! -f "${RECOMP_DIR5}/cc" ]
 then
-	curl https://github.com/decompals/ido-static-recomp/releases/download/v1.1/ido-5.3-recomp-${DETECTED_OS}.tar.gz -O ido-5.3-recomp-${DETECTED_OS}.tar.gz -L
+	curl https://github.com/decompals/ido-static-recomp/releases/download/v1.1/ido-5.3-recomp-${DETECTED_OS}.tar.gz -L --output ido-5.3-recomp-${DETECTED_OS}.tar.gz
 	mkdir -p ${RECOMP_DIR5}
 	tar xf ido-5.3-recomp-${DETECTED_OS}.tar.gz -C ${RECOMP_DIR5}
 	rm ido-5.3-recomp-${DETECTED_OS}.tar.gz
+fi
+if [ ! -f "tools/vpk0cmd" ]
+then
+	curl https://github.com/santaclose/vpk0cmd/releases/download/0.1/vpk0cmd -L --output tools/vpk0cmd
+	chmod +x tools/vpk0cmd
 fi
 
 printf "${GREEN}All requirements satisfied${ENDCOLOR}\n"

@@ -166,7 +166,7 @@ efCreateDesc dEFManagerShockSmallEffectDesc =
     },
 
     efManagerVelAddDestroyAnimEnd,           // Proc Update
-    lbCommonDObjScaleXProcDisplay,                     // Proc Render
+    lbCommonDObjScaleXFuncDisplay,                     // Proc Render
 
     &lEFManagerShockSmallDObjSetup,                // DObj Setup attributes offset (?)
     &lEFManagerShockSmallMObjSub,                  // MObjSub offset
@@ -196,7 +196,7 @@ efCreateDesc dEFManagerDamageFlyOrbsEffectDesc =
     },
 
     efManagerDamageFlyOrbsProcUpdate,    // Proc Update
-    lbCommonDObjScaleXProcDisplay,                     // Proc Render
+    lbCommonDObjScaleXFuncDisplay,                     // Proc Render
 
     &lEFManagerDamageFlyOrbsDObjSetup,             // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -256,7 +256,7 @@ efCreateDesc dEFManagerImpactWaveEffectDesc =
     },
 
     efManagerImpactWaveProcUpdate,       // Proc Update
-    efManagerImpactWaveProcDisplay,       // Proc Render
+    efManagerImpactWaveFuncDisplay,       // Proc Render
 
     &lEFManagerImpactWaveDObjSetup,                // DObj Setup attributes offset (?)
     &lEFManagerImpactWaveMObjSub,                  // MObjSub offset
@@ -286,7 +286,7 @@ efCreateDesc dEFStarRodSparkEffectDesc =
     },
 
     efManagerStarRodSparkProcUpdate,     // Proc Update
-    lbCommonDObjScaleXProcDisplay,                     // Proc Render
+    lbCommonDObjScaleXFuncDisplay,                     // Proc Render
 
     &lEFManagerCommonSparkDObjSetup,              // DObj Setup attributes offset (?)
     &lEFManagerCommonSparkMObjSub,                // MObjSub offset
@@ -316,7 +316,7 @@ efCreateDesc dEFManagerDamageFlySparksEffectDesc =
     },
 
     efManagerDamageFlySparksProcUpdate,  // Proc Update
-    lbCommonDObjScaleXProcDisplay,                     // Proc Render
+    lbCommonDObjScaleXFuncDisplay,                     // Proc Render
 
     &lEFManagerCommonSparkDObjSetup,              // DObj Setup attributes offset (?)
     &lEFManagerCommonSparkMObjSub,                // MObjSub offset
@@ -436,7 +436,7 @@ efCreateDesc dEFFireSparkEffectDesc =
     },
 
     efManagerHaveStructProcUpdate,     // Proc Update
-    lbCommonDObjScaleXProcDisplay,                     // Proc Render
+    lbCommonDObjScaleXFuncDisplay,                     // Proc Render
 
     &lEFManagerFireSparkDObjSetup,                 // DObj Setup attributes offset (?)
     &lEFManagerFireSparkMObjSub,                   // MObjSub offset
@@ -515,7 +515,7 @@ efCreateDesc dEFManagerShieldEffectDesc =
     },
 
     efManagerShieldProcUpdate,                     // Proc Update
-    efManagerShieldProcDisplay,                     // Proc Render
+    efManagerShieldFuncDisplay,                     // Proc Render
 
     &lEFManagerShieldDObjSetup,                    // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -545,7 +545,7 @@ efCreateDesc dEFManagerYoshiShieldEffectDesc =
     },
 
     efManagerShieldProcUpdate,                     // Proc Update
-    efManagerYoshiShieldProcDisplay,                // Proc Render
+    efManagerYoshiShieldFuncDisplay,                // Proc Render
 
     &lEFManagerYoshiShieldDObjSetup,               // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -695,7 +695,7 @@ efCreateDesc dEFManagerPikachuThunderTrailEffectDesc =
     },
 
     efManagerPikachuThunderTrailProcUpdate,     // Proc Update
-    efManagerPikachuThunderTrailProcDisplay,     // Proc Render
+    efManagerPikachuThunderTrailFuncDisplay,     // Proc Render
 
     &lEFManagerPikachuThunderTrailDObjSetup,              // DObj Setup attributes offset (?)
     &lEFManagerPikachuThunderTrailMObjSub,                // MObjSub offset
@@ -845,7 +845,7 @@ efCreateDesc dEFManagerCaptainFalconPunchEffectDesc =
     },
 
     efManagerNoEjectProcUpdate,                     // Proc Update
-    lbCommonDObjScaleXProcDisplay,                     // Proc Render
+    lbCommonDObjScaleXFuncDisplay,                     // Proc Render
 
     &lEFManagerCaptainFalconPunchDObjSetup,               // DObj Setup attributes offset (?)
     &lEFManagerCaptainFalconPunchMObjSub,                 // MObjSub offset
@@ -1097,7 +1097,7 @@ efCreateDesc dEFManagerNessPKThunderTrailEffectDesc =
     },
 
     efManagerNessPKThunderTrailProcUpdate,   // Proc Update
-    efManagerNessPKThunderTrailProcDisplay,   // Proc Render
+    efManagerNessPKThunderTrailFuncDisplay,   // Proc Render
 
     &lEFManagerNessPKThunderTrailDObjSetup,            // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1127,7 +1127,7 @@ efCreateDesc dEFManagerNessPKReflectTrailEffectDesc =
     },
 
     efManagerNessPKReflectTrailProcUpdate,   // Proc Update
-    efManagerNessPKThunderTrailProcDisplay,   // Proc Render
+    efManagerNessPKThunderTrailFuncDisplay,   // Proc Render
 
     &lEFManagerNessPKThunderTrailDObjSetup,            // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1367,7 +1367,7 @@ efCreateDesc dEFManagerYoshiEntryEggEffectDesc =
     },
 
     efManagerHaveStructProcUpdate,     // Proc Update
-    lbCommonDObjScaleXProcDisplay,                     // Proc Render
+    lbCommonDObjScaleXFuncDisplay,                     // Proc Render
 
     &lEFManagerYoshiEntryEggDObjSetup,             // DObj Setup attributes offset (?)
     &lEFManagerYoshiEntryEggMObjSub,               // MObjSub offset
@@ -1430,7 +1430,7 @@ efCreateDesc dEFManagerYoshiEggEscapeEffectDesc =
     },
 
     NULL,                                   // Proc Update
-    efManagerYoshiShieldProcDisplay,                // Proc Render
+    efManagerYoshiShieldFuncDisplay,                // Proc Render
 
     &lEFManagerYoshiShieldDObjSetup,               // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1643,7 +1643,7 @@ efCreateDesc dEFCaptureKirbyStarEffectDesc =
     },
 
     efManagerCaptureKirbyStarProcUpdate,    // Proc Update
-    lbCommonDObjScaleXProcDisplay,                     // Proc Render
+    lbCommonDObjScaleXFuncDisplay,                     // Proc Render
 
     &lEFManagerKirbyStarDObjSetup,                 // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1673,7 +1673,7 @@ efCreateDesc dEFManagerLoseKirbyStarEffectDesc =
     },
 
     efManagerLoseKirbyStarProcUpdate,       // Proc Update
-    lbCommonDObjScaleXProcDisplay,                     // Proc Render
+    lbCommonDObjScaleXFuncDisplay,                     // Proc Render
 
     &lEFManagerKirbyStarDObjSetup,                 // DObj Setup attributes offset (?)
     0x0,                                    // MObjSub offset
@@ -1987,11 +1987,11 @@ GObj* efManagerMakeEffect(efCreateDesc *effect_desc, sb32 is_force_return)
     }
     effect_gobj->user_data.p = ep;
 
-    if (effect_desc->proc_display == NULL)
+    if (effect_desc->func_display == NULL)
     {
         return effect_gobj;
     }
-    gcAddGObjDisplay(effect_gobj, effect_desc->proc_display, effect_desc->dl_link, 2, -1);
+    gcAddGObjDisplay(effect_gobj, effect_desc->func_display, effect_desc->dl_link, 2, -1);
 
     o_mobjsub = effect_desc->o_mobjsub;
     o_anim_joint = effect_desc->o_anim_joint;
@@ -3294,7 +3294,7 @@ GObj* efManagerDamageSpawnOrbsRandgcMakeEffect(Vec3f *pos)
 }
 
 // 0x800FFB74
-void efManagerImpactWaveProcDisplay(GObj *effect_gobj)
+void efManagerImpactWaveFuncDisplay(GObj *effect_gobj)
 {
     efStruct *ep = efGetStruct(effect_gobj);
     s32 index = ep->effect_vars.impact_wave.index;
@@ -4121,7 +4121,7 @@ void efManagerShieldProcUpdate(GObj *effect_gobj)
 }
 
 // 0x80101024
-void efManagerShieldProcDisplay(GObj *effect_gobj)
+void efManagerShieldFuncDisplay(GObj *effect_gobj)
 {
     efStruct *ep = efGetStruct(effect_gobj);
     s32 id = (ep->effect_vars.shield.is_damage_shield != FALSE) ? 4 : ep->effect_vars.shield.player;
@@ -4164,7 +4164,7 @@ GObj* efManagerShieldMakeEffect(GObj *fighter_gobj)
 }
 
 // 0x80101180
-void efManagerYoshiShieldProcDisplay(GObj *effect_gobj)
+void efManagerYoshiShieldFuncDisplay(GObj *effect_gobj)
 {
     efStruct *ep = efGetStruct(effect_gobj);
     ftStruct *fp = ftGetStruct(ep->fighter_gobj);
@@ -4184,7 +4184,7 @@ void efManagerYoshiShieldProcDisplay(GObj *effect_gobj)
 
     gcDrawDObjDLHead1(effect_gobj);
 
-    efDisplayProcDisplayBlendCLD(effect_gobj);
+    efDisplayFuncDisplayBlendCLD(effect_gobj);
 }
 
 // 0x80101374
@@ -4504,7 +4504,7 @@ void efManagerPikachuThunderTrailProcUpdate(GObj *effect_gobj)
 }
 
 // 0x80101AA8
-void efManagerPikachuThunderTrailProcDisplay(GObj *effect_gobj)
+void efManagerPikachuThunderTrailFuncDisplay(GObj *effect_gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[1]++);
 
@@ -5028,7 +5028,7 @@ void efManagerNessPKThunderTrailProcUpdate(GObj *effect_gobj)
 }
 
 // 0x80102768
-void efManagerNessPKThunderTrailProcDisplay(GObj *effect_gobj)
+void efManagerNessPKThunderTrailFuncDisplay(GObj *effect_gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[1]++);
     gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);

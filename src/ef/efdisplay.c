@@ -18,7 +18,7 @@ extern uintptr_t lEFCommonParticleBankTextureHi;                // 0x00B16C80
 // // // // // // // // // // // //
 
 // 0x800FCCC0
-void efDisplayProcDisplayBlendCLD(GObj *effect_gobj)
+void efDisplayFuncDisplayBlendCLD(GObj *effect_gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[1]++);
 
@@ -32,7 +32,7 @@ void efDisplayProcDisplayBlendCLD(GObj *effect_gobj)
 }
 
 // 0x800FCD64
-void efDisplayProcDisplayXLU(GObj *effect_gobj)
+void efDisplayFuncDisplayXLU(GObj *effect_gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[1]++);
 
@@ -46,19 +46,19 @@ void efDisplayProcDisplayXLU(GObj *effect_gobj)
 // 0x800FCDEC
 void efDisplayMakeBlendCLD(void)
 {
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayProcDisplayBlendCLD, 15, 3, -1);
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayProcDisplayBlendCLD, 18, 3, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayFuncDisplayBlendCLD, 15, 3, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayFuncDisplayBlendCLD, 18, 3, -1);
 }
 
 // 0x800FCE6C
 void efDisplayMakeXLU(void)
 {
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayProcDisplayXLU, 15, 0, -1);
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayProcDisplayXLU, 18, 0, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayFuncDisplayXLU, 15, 0, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayFuncDisplayXLU, 18, 0, -1);
 }
 
 // 0x800FCEEC
-void efDisplayProcDisplayZPerspXLU(GObj *effect_gobj)
+void efDisplayFuncDisplayZPerspXLU(GObj *effect_gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
@@ -76,7 +76,7 @@ void efDisplayProcDisplayZPerspXLU(GObj *effect_gobj)
 }
 
 // 0x800FCFCC
-void efDisplayProcDisplayZPerspCLD(GObj *effect_gobj)
+void efDisplayFuncDisplayZPerspCLD(GObj *effect_gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
@@ -94,7 +94,7 @@ void efDisplayProcDisplayZPerspCLD(GObj *effect_gobj)
 }
 
 // 0x800FD0AC
-void efDisplayProcDisplayZPerspAAXLU(GObj *effect_gobj)
+void efDisplayFuncDisplayZPerspAAXLU(GObj *effect_gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
@@ -117,19 +117,19 @@ void efDisplayInitAll(void)
     GObj *gobj;
 
     gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, efDisplayProcDisplayZPerspCLD, 18, 1, -1);
+    gcAddGObjDisplay(gobj, efDisplayFuncDisplayZPerspCLD, 18, 1, -1);
     gobj->cam_mask = (CAMERA_MASK_DLLINK(2) | CAMERA_MASK_DLLINK(0));
 
     gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, efDisplayProcDisplayZPerspCLD, 15, 1, -1);
+    gcAddGObjDisplay(gobj, efDisplayFuncDisplayZPerspCLD, 15, 1, -1);
     gobj->cam_mask = CAMERA_MASK_DLLINK(1);
 
     gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, efDisplayProcDisplayZPerspXLU, 25, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, efDisplayFuncDisplayZPerspXLU, 25, GOBJ_DLLINKORDER_DEFAULT, -1);
     gobj->cam_mask = CAMERA_MASK_DLLINK(3);
 
     gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, efDisplayProcDisplayZPerspAAXLU, 10, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, efDisplayFuncDisplayZPerspAAXLU, 10, GOBJ_DLLINKORDER_DEFAULT, -1);
     gobj->cam_mask = CAMERA_MASK_DLLINK(4);
 
     gEFManagerParticleBankID = efAllocGetAddParticleBankID

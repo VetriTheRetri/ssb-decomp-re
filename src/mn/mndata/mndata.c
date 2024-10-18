@@ -369,7 +369,7 @@ void mnDataMakeMenuGObj(void)
 }
 
 // 0x80132164
-void mnDataLabelsProcDisplay(GObj *gobj)
+void mnDataLabelsFuncDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -393,7 +393,7 @@ void mnDataMakeLabels(void)
 
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, mnDataLabelsProcDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, mnDataLabelsFuncDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMNDataFiles[0], &lMNCommonSmashLogoSprite));
 

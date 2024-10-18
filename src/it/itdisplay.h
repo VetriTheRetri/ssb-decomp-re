@@ -13,21 +13,21 @@ void itDisplayMapCollisions(GObj* item_gobj);
 sb32 itDisplayCheckItemVisible(itStruct* ip);
 
 // Render item with opacity flag
-void itDisplayProcDisplayOPA(GObj* item_gobj);
+void itDisplayFuncDisplayOPA(GObj* item_gobj);
 
 // Render item with transparency flag
-void itDisplayProcDisplayXLU(GObj* item_gobj);
+void itDisplayFuncDisplayXLU(GObj* item_gobj);
 
 // Display item's ColAnim with opacity flag
 void itDisplayColAnimOPA(GObj* item_gobj);
 
 // Render item with ColAnim and opacity flag
-void itDisplayProcDisplayColAnimOPA(GObj* item_gobj);
+void itDisplayFuncDisplayColAnimOPA(GObj* item_gobj);
 
 // Display item's ColAnim with transparency flag
 void itDisplayColAnimXLU(GObj* item_gobj);
 
 // Render item's ColAnim with transparency flag
-void itDisplayProcDisplayColAnimXLU(GObj* item_gobj);
+void itDisplayFuncDisplayColAnimXLU(GObj* item_gobj);
 
 #endif

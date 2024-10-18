@@ -18,7 +18,7 @@ extern intptr_t lMNMessageUnlockItemSwitchSprite;           // 0x00004EB0
 
 extern void mnMessageFuncLights(Gfx **dls);
 extern void mnMessageMakeWallpaper(void);
-extern void mnMessageTintProcDisplay(GObj *gobj);
+extern void mnMessageTintFuncDisplay(GObj *gobj);
 extern void mnMessageMakeTint(void);
 extern void mnMessageMakeExclaim(void);
 extern void mnMessageMakeMessage(s32 message);

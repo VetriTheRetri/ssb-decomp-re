@@ -329,7 +329,7 @@ void func_ovl18_8013223C(void)
 }
 
 // 0x8013226C
-void mn1PModeLabelsProcDisplay(GObj *gobj)
+void mn1PModeLabelsFuncDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -352,7 +352,7 @@ void mn1PModeMakeLabels(void)
     SObj *sobj;
     
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, mn1PModeLabelsProcDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, mn1PModeLabelsFuncDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMN1PModeFiles[0], &lMNCommonSmashLogoSprite));
     

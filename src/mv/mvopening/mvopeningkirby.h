@@ -13,7 +13,7 @@ extern void mvOpeningKirbyMakeName(void);
 extern void mvOpeningKirbyMotionCameraProcUpdate(GObj *camera_gobj);
 extern void mvOpeningKirbyMakeMotionCamera(Vec3f vec);
 extern void mvOpeningKirbyMakeMotionWindow(void);
-extern void mvOpeningKirbyPosedWallpaperProcDisplay(GObj *gobj);
+extern void mvOpeningKirbyPosedWallpaperFuncDisplay(GObj *gobj);
 extern void mvOpeningKirbyMakePosedWallpaper(void);
 extern void mvOpeningKirbyPosedFighterProcUpdate(GObj *fighter_gobj);
 extern void mvOpeningKirbyMakePosedFighter(void);

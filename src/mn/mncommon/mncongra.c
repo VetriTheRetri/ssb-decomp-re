@@ -279,7 +279,7 @@ void mnCongraFuncStart(void)
 	lbRelocInitSetup(&rl_setup);
 
 	gcMakeGObjSPAfter(0, mnCongraActorFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	cam = CameraGetStruct
 	(

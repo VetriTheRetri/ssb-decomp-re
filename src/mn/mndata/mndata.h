@@ -15,7 +15,7 @@ extern void mnDataMakeVSRecord(void);
 extern void mnDataMakeSoundTest(void);
 extern void func_ovl61_801320A0(SObj *sobj);
 extern void mnDataMakeMenuGObj(void);
-extern void mnDataLabelsProcDisplay(GObj *gobj);
+extern void mnDataLabelsFuncDisplay(GObj *gobj);
 extern void mnDataMakeLabels(void);
 extern void mnDataMakeDecals(void);
 extern void mnDataMakeLink3Camera(void);

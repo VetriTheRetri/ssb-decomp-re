@@ -366,7 +366,7 @@ void mvOpeningRunFuncStart(void)
 		)
 	);
 	gcMakeGObjSPAfter(0, mvOpeningRunFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
+	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 
 	efAllocInitParticleBank();
 	mvOpeningRunInitVars();

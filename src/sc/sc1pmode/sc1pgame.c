@@ -1610,7 +1610,7 @@ void sc1PGameSetGameStatusWait(void)
 }
 
 // 0x8018EBB8
-void sc1PGameTeamStockDisplayProcDisplay(GObj *interface_gobj)
+void sc1PGameTeamStockDisplayFuncDisplay(GObj *interface_gobj)
 {
     SObj *sobj;
     s32 stock_num;
@@ -1719,7 +1719,7 @@ void sc1PGameInitTeamStockDisplay(void)
     make_gobj:
         interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
-        gcAddGObjDisplay(interface_gobj, sc1PGameTeamStockDisplayProcDisplay, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+        gcAddGObjDisplay(interface_gobj, sc1PGameTeamStockDisplayFuncDisplay, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
         for (i = 0; i < sSC1PGameEnemyStocksRemaining; i++)
         {

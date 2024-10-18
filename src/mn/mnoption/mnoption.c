@@ -402,7 +402,7 @@ void mnOptionMakeMenuGObj(void)
 }
 
 // 0x80132248
-void mnOptionLabelsProcDisplay(GObj *gobj)
+void mnOptionLabelsFuncDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -426,7 +426,7 @@ void mnOptionMakeLabels(void)
 
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(gobj, mnOptionLabelsProcDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, mnOptionLabelsFuncDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMNOptionFiles[0], &lMNCommonSmashLogoSprite));
 
@@ -548,7 +548,7 @@ void func_ovl60_801327CC(void)
 }
 
 // 0x801327D4
-void mnOptionSoundUnderlineProcDisplay(GObj *gobj)
+void mnOptionSoundUnderlineFuncDisplay(GObj *gobj)
 {
     // 0x801336AC
     syRectangle rect[/* */] =
@@ -599,7 +599,7 @@ void mnOptionMakeSoundUnderline(void)
             5,
             GOBJ_LINKORDER_DEFAULT
         ),
-        mnOptionSoundUnderlineProcDisplay,
+        mnOptionSoundUnderlineFuncDisplay,
         3,
         GOBJ_DLLINKORDER_DEFAULT,
         -1

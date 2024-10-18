@@ -925,7 +925,7 @@ f32 sc1PStageCardGetVSFighterPositionZ(s32 stage, s32 ft_kind)
 }
 
 // 0x80133170
-void sc1PStageCardVSFighterProcDisplay(GObj *fighter_gobj)
+void sc1PStageCardVSFighterFuncDisplay(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -941,24 +941,24 @@ void sc1PStageCardVSFighterProcDisplay(GObj *fighter_gobj)
             ftMainSetFighterStatus(fighter_gobj, 0x1000E, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
             gcPlayAnimAll(fighter_gobj);
             gcEndProcessAll(fighter_gobj);
-            ftDisplayMainProcDisplay(fighter_gobj);
+            ftDisplayMainFuncDisplay(fighter_gobj);
         }
         if (((fp->ft_kind * 2) - 8) < sc1PStageCardTotalTimeTics)
         {
             ftMainSetFighterStatus(fighter_gobj, 0x1000E, 1.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
             gcPlayAnimAll(fighter_gobj);
             gcEndProcessAll(fighter_gobj);
-            ftDisplayMainProcDisplay(fighter_gobj);
+            ftDisplayMainFuncDisplay(fighter_gobj);
         }
         if (((fp->ft_kind * 2) + 12) < sc1PStageCardTotalTimeTics)
         {
             ftMainSetFighterStatus(fighter_gobj, 0x1000E, 2.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
             gcPlayAnimAll(fighter_gobj);
             gcEndProcessAll(fighter_gobj);
-            ftDisplayMainProcDisplay(fighter_gobj);
+            ftDisplayMainFuncDisplay(fighter_gobj);
         }
     }
-    else ftDisplayMainProcDisplay(fighter_gobj);
+    else ftDisplayMainFuncDisplay(fighter_gobj);
     
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -975,7 +975,7 @@ GObj* sc1PStageCardMakeVSFighter(s32 ft_kind, s32 stage, s32 card_anim_frame_id,
     ft_desc.ft_kind = ft_kind;
     ft_desc.costume = ftParamGetCostumeCommonID(ft_kind, 0);
     ft_desc.figatree_heap = *figatree;
-    ft_desc.proc_display = sc1PStageCardVSFighterProcDisplay;
+    ft_desc.func_display = sc1PStageCardVSFighterFuncDisplay;
     ft_desc.player = 0;
     ft_desc.unk_rebirth_0x1C = 4;
     ft_desc.unk_rebirth_0x1D = 4;
@@ -1942,7 +1942,7 @@ void sc1PStageCardFuncStart(void)
         )
     );
     gcMakeGObjSPAfter(0, sc1PStageCardFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 3, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     sc1PStageCardInitVars();
     efAllocInitParticleBank();
     efManagerInitEffects();

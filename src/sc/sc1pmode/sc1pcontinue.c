@@ -365,7 +365,7 @@ void sc1PContinueMakeFighter(s32 ft_kind)
 }
 
 // 0x801321A8
-void sc1PContinueRoomFadeOutProcDisplay(GObj *gobj)
+void sc1PContinueRoomFadeOutFuncDisplay(GObj *gobj)
 {
     if (sSC1PContinueRoomFadeOutAlpha < 0xFF)
     {
@@ -393,11 +393,11 @@ void sc1PContinueMakeRoomFadeOut(void)
 
     sSC1PContinueRoomFadeOutAlpha = 0x00;
     sSC1PContinueRoomFadeOutGObj = gobj = gcMakeGObjSPAfter(0, NULL, 23, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, sc1PContinueRoomFadeOutProcDisplay, 32, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, sc1PContinueRoomFadeOutFuncDisplay, 32, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
 
 // 0x80132338
-void sc1PContinueRoomFadeInProcDisplay(GObj *gobj)
+void sc1PContinueRoomFadeInFuncDisplay(GObj *gobj)
 {
     if (sSC1PContinueRoomFadeInAlpha > 0x00)
     {
@@ -425,11 +425,11 @@ void sc1PContinueMakeRoomFadeIn(void)
 
     sSC1PContinueRoomFadeInAlpha = 0xFF;
     sSC1PContinueRoomFadeInGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, sc1PContinueRoomFadeInProcDisplay, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, sc1PContinueRoomFadeInFuncDisplay, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
 
 // 0x801324C0
-void sc1PContinueSpotlightFadeProcDisplay(GObj *gobj)
+void sc1PContinueSpotlightFadeFuncDisplay(GObj *gobj)
 {
     if (sSC1PContinueSpotlightFadeAlpha > 0x00)
     {
@@ -457,7 +457,7 @@ void sc1PContinueMakeSpotlightFade(void)
 
     sSC1PContinueSpotlightFadeAlpha = 0xFF;
     sSC1PContinueSpotlightFadeGObj = gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, sc1PContinueSpotlightFadeProcDisplay, 31, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, sc1PContinueSpotlightFadeFuncDisplay, 31, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
 
 // 0x80132648
@@ -1230,7 +1230,7 @@ void sc1PContinueFuncStart(void)
         )
     );
     gcMakeGObjSPAfter(0, sc1PContinueFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     efAllocInitParticleBank();
     sc1PContinueInitVars();
     efManagerInitEffects();

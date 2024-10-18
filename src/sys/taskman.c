@@ -1142,7 +1142,7 @@ void unref_8000641C(GObj *gobj)
 	syTaskmanSwitchContext(0);
 	syTaskmanResetGraphicsHeap();
 	func_80004AB0();
-	gobj->proc_display(gobj);
+	gobj->func_display(gobj);
 	func_800053CC();
 
 	task = sSYTaskmanGfxEndBuffers[gSYTaskmanTaskID];

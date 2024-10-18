@@ -22,10 +22,10 @@ grStruct gGRCommonStruct;
 // 0x80105600
 void grCommonSetupInitAll(void) // New file
 {
-    sGRCommonFileNodes[0] = grGeometryMakeGeometryLayer(&gMPCollisionGroundData->gr_desc[0], 0, NULL);
-    sGRCommonFileNodes[1] = grGeometryMakeGeometryLayer(&gMPCollisionGroundData->gr_desc[1], 1, gMPCollisionYakumonoDObjs->yakumono_dobj);
-    sGRCommonFileNodes[2] = grGeometryMakeGeometryLayer(&gMPCollisionGroundData->gr_desc[2], 2, NULL);
-    sGRCommonFileNodes[3] = grGeometryMakeGeometryLayer(&gMPCollisionGroundData->gr_desc[3], 3, NULL);
+    sGRCommonFileNodes[0] = grDisplayMakeGeometryLayer(&gMPCollisionGroundData->gr_desc[0], 0, NULL);
+    sGRCommonFileNodes[1] = grDisplayMakeGeometryLayer(&gMPCollisionGroundData->gr_desc[1], 1, gMPCollisionYakumonoDObjs->yakumono_dobj);
+    sGRCommonFileNodes[2] = grDisplayMakeGeometryLayer(&gMPCollisionGroundData->gr_desc[2], 2, NULL);
+    sGRCommonFileNodes[3] = grDisplayMakeGeometryLayer(&gMPCollisionGroundData->gr_desc[3], 3, NULL);
 
     mpCollisionClearYakumonoAll();
     grMainSetupMakeGround();

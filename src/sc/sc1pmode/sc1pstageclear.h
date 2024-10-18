@@ -147,7 +147,7 @@ extern void sc1PStageClearMakeScoreDigits
 	s32 digit_count_max,
 	sb32 is_fixed_digit_count
 );
-extern void sc1PStageClearTextProcDisplay(GObj *gobj);
+extern void sc1PStageClearTextFuncDisplay(GObj *gobj);
 extern void sc1PStageClearMakeTextSObjs(void);
 extern void sc1PStageClearMakeScoreSObjs(void);
 extern void sc1PStageClearMakeTimerTextSObjs(f32 y);
@@ -170,7 +170,7 @@ extern void sc1PStageClearMakeBonusPageArrow(void);
 extern sb32 sc1PStageClearCheckHaveBonusStatID(s32 bonus_id);
 extern s32 sc1PStageClearGetUpdateBonusStatPointsAll(void);
 extern void sc1PStageClearMakeBonusTable(void);
-extern void sc1PStageClearWallpaperProcDisplay(GObj *gobj);
+extern void sc1PStageClearWallpaperFuncDisplay(GObj *gobj);
 extern void sc1PStageClearMakeWallpaper(void);
 extern void sc1PStageClearMakeTextCamera(void);
 extern void sc1PStageClearMakeWallpaperCamera(void);

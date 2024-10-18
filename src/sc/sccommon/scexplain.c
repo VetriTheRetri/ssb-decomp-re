@@ -224,7 +224,7 @@ void func_ovl63_8018D248(void)
 }
 
 // 0x8018D2D0
-void scExplainWindowProcDisplay(GObj *gobj)
+void scExplainWindowFuncDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetScissor(gSYTaskmanDLHeads[0]++, G_SC_NON_INTERLACE, 10, 160, 310, 230);
@@ -244,7 +244,7 @@ void scExplainMakeWindowCamera(void)
         NULL,
         nOMObjCommonLinkIDCamera,
         GOBJ_LINKORDER_DEFAULT,
-        scExplainWindowProcDisplay,
+        scExplainWindowFuncDisplay,
         15,
         0,
         0,
@@ -324,7 +324,7 @@ GObj* scExplainMakeControlStickCamera(void)
 }
 
 // 0x8018D5FC
-void scExplainControlStickProcDisplay(GObj *gobj)
+void scExplainControlStickFuncDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[1]++);
     gSPClearGeometryMode(gSYTaskmanDLHeads[1]++, G_ZBUFFER);
@@ -361,7 +361,7 @@ GObj* scExplainMakeControlStickInterface(void)
         nOMObjCommonLinkIDInterface,
         GOBJ_LINKORDER_DEFAULT
     );
-    gcAddGObjDisplay(interface_gobj, scExplainControlStickProcDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, scExplainControlStickFuncDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcSetupCustomDObjs
     (
         interface_gobj, 
@@ -389,7 +389,7 @@ GObj* scExplainMakeControlStickInterface(void)
 }
 
 // 0x8018D808
-void scExplainTapSparkProcDisplay(GObj *gobj)
+void scExplainTapSparkFuncDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[1]++);
     gSPClearGeometryMode(gSYTaskmanDLHeads[1]++, G_ZBUFFER);
@@ -441,7 +441,7 @@ GObj* scExplainMakeTapSpark(void)
 {
     GObj *interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, scExplainTapSparkProcDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, scExplainTapSparkFuncDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjForGObj(interface_gobj, (void*) ((uintptr_t)sSCExplainGraphicsFileHead + (intptr_t)&lSCExplainTapSparkDisplayList));
     gcAddOMMtxForDObjFixed(DObjGetStruct(interface_gobj), nOMTransformTra, 0);
     gcAddMObjAll(interface_gobj, lbRelocGetDataFromFile(MObjSub***, sSCExplainGraphicsFileHead, &lSCExplainTapSparkMObjSub));
@@ -484,7 +484,7 @@ GObj* scExplainMakeSpecialMoveRGB(void)
         nOMObjCommonLinkIDInterface,
         GOBJ_LINKORDER_DEFAULT
     );
-    gcAddGObjDisplay(interface_gobj, scExplainTapSparkProcDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, scExplainTapSparkFuncDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjForGObj(interface_gobj, lbRelocGetDataFromFile(void*, sSCExplainGraphicsFileHead, &lSCExplainSpecialMoveRGBDisplayList));
     gcAddOMMtxForDObjFixed(DObjGetStruct(interface_gobj), nOMTransformTra, 0);
 

@@ -3,7 +3,7 @@
 
 // Stage setup files
 #include <gr/grwallpaper.h>
-#include <gr/grgeometry.h>
+#include <gr/grdisplay.h>
 #include <gr/grcommonsetup.h>
 #include <gr/grmainsetup.h>
 #include <gr/grmodelsetup.h>

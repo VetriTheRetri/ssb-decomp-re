@@ -129,7 +129,7 @@ extern f32 sc1PStageCardGetVSFighterVelocityZ(s32 stage, s32 ft_kind);
 extern void sc1PStageCardVSFighterProcUpdate(GObj *fighter_gobj);
 extern void sc1PStageCardSetKirbyTeamModelPartIDs(GObj *fighter_gobj, s32 ft_kind);
 extern f32 sc1PStageCardGetVSFighterPositionZ(s32 stage, s32 ft_kind);
-extern void sc1PStageCardVSFighterProcDisplay(GObj *fighter_gobj);
+extern void sc1PStageCardVSFighterFuncDisplay(GObj *fighter_gobj);
 extern GObj* sc1PStageCardMakeVSFighter(s32 ft_kind, s32 stage, s32 card_anim_frame_id, void **figatree, u8 dl_link);
 extern void sc1PStageCardMakeBonusPicture(s32 stage);
 extern CameraDesc* sc1PStageCardGetStageCameraDesc(CameraDesc *cam_desc, s32 stage);

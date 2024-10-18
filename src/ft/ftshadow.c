@@ -59,7 +59,7 @@ f32 ftShadowGetAltitude(Vec3f *a, Vec3f *b, f32 f)
 }
 
 // 0x8013AE60
-void ftShadowProcDisplay(GObj *shadow_gobj)
+void ftShadowFuncDisplay(GObj *shadow_gobj)
 {
     ftShadow *fs;
     ftStruct *fp;
@@ -460,7 +460,7 @@ GObj* ftShadowMakeShadow(GObj *fighter_gobj)
     }
     shadow_gobj->user_data.p = fs;
 
-    gcAddGObjDisplay(shadow_gobj, ftShadowProcDisplay, 7, GOBJ_LINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(shadow_gobj, ftShadowFuncDisplay, 7, GOBJ_LINKORDER_DEFAULT, -1);
 
     return shadow_gobj;
 }

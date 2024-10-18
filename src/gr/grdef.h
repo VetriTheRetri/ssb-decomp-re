@@ -69,7 +69,7 @@ typedef enum grKind
 
 } grKind;
 
-typedef struct grGeometryDesc grGeometryDesc;
+typedef struct grDisplayDesc grDisplayDesc;
 typedef struct grHitbox grHitbox;
 typedef struct grObstacle grObstacle;
 typedef struct grHazard grHazard;

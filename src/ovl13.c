@@ -574,7 +574,7 @@ void dbCubeInit()
 	dbCubeCreateGObj(dbCubeRotateKirbyCube, &dMNDebugCubeKirbyCubeDisplayList);
 	lbTransitionSetupTransition();
 	lbTransitionMakeCamera(0x20000002, 0, 0x32, 0x00000002);
-	gcSetAnimSpeed(lbTransitionMakeTransition(gMNDebugCubeMenuValueTransition, 0x20000000, 0, lbTransitionProcDisplay, 1, lbTransitionProcUpdate), 0.25F);
+	gcSetAnimSpeed(lbTransitionMakeTransition(gMNDebugCubeMenuValueTransition, 0x20000000, 0, lbTransitionFuncDisplay, 1, lbTransitionProcUpdate), 0.25F);
 	gmRumbleMakeActor();
 	dbMenuInitMenu();
 	dbCubeCreateGObj(dbCubeCheckAudioChange, NULL);

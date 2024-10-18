@@ -736,7 +736,7 @@ s32 gmStaffrollGetLockOnPositionY(s32 pos_y)
 }
 
 // 0x80132144
-void gmStaffrollHighlightProcDisplay(GObj *gobj)
+void gmStaffrollHighlightFuncDisplay(GObj *gobj)
 {
 	s32 unused;
 
@@ -808,7 +808,7 @@ void gmStaffrollMakeHighlightGObj(GObj *gobj)
 	{
 		highlight_gobj = gcMakeGObjSPAfter(9, NULL, 9, GOBJ_LINKORDER_DEFAULT);
 
-		gcAddGObjDisplay(highlight_gobj, gmStaffrollHighlightProcDisplay, 8, GOBJ_DLLINKORDER_DEFAULT, -1);
+		gcAddGObjDisplay(highlight_gobj, gmStaffrollHighlightFuncDisplay, 8, GOBJ_DLLINKORDER_DEFAULT, -1);
 		gcAddGObjProcess(highlight_gobj, gmStaffrollHighlightThreadUpdate, nOMObjProcessKindThread, 1);
 
 		sGMStaffrollHighlightPositionX = sobj->pos.x + 8.0F;
@@ -1430,7 +1430,7 @@ void gmStaffrollJobAndNameThreadUpdate(GObj *gobj)
 }
 
 // 0x80133854
-void gmStaffrollJobProcDisplay(GObj *gobj)
+void gmStaffrollJobFuncDisplay(GObj *gobj)
 {
 	if (gobj == gOMObjCommonLinks[nOMObjCommonLinkIDCreditsJob])
 	{
@@ -1444,7 +1444,7 @@ void gmStaffrollJobProcDisplay(GObj *gobj)
 }
 
 // 0x80133930
-void gmStaffrollNameProcDisplay(GObj *gobj)
+void gmStaffrollNameFuncDisplay(GObj *gobj)
 {
 	if (gobj == gOMObjCommonLinks[nOMObjCommonLinkIDCreditsName])
 	{
@@ -1624,7 +1624,7 @@ GObj* gmStaffrollMakeJobGObj(gmStaffrollJob *job)
 
 	gobj = gcMakeGObjSPAfter(1, NULL, nOMObjCommonLinkIDCreditsJob, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(gobj, gmStaffrollJobProcDisplay, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, gmStaffrollJobFuncDisplay, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	dobj = gcAddDObjForGObj(gobj, NULL);
 
@@ -1661,7 +1661,7 @@ GObj* gmStaffrollMakeNameGObjAndDObjs(void)
 
 	gobj = gcMakeGObjSPAfter(1, NULL, nOMObjCommonLinkIDCreditsName, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(gobj, gmStaffrollNameProcDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, gmStaffrollNameFuncDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	new_dobj = dobj = gcAddDObjForGObj(gobj, NULL);
 
@@ -2120,7 +2120,7 @@ void gmStaffrollMakeCamera(void)
 void gmStaffrollFuncStart(void)
 {
 	gcMakeGObjSPAfter(0, gmStaffrollFuncRun, 1, GOBJ_LINKORDER_DEFAULT);
-	gcMakeDefaultCameraGObj(12, GOBJ_LINKORDER_DEFAULT, 100, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(12, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	gmStaffrollSetupFiles();
 	gmStaffrollInitNameAndJobDisplayLists();

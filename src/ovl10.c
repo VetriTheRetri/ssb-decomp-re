@@ -424,7 +424,7 @@ void mnTitleProceedDemoNext(void)
 {
 	u8 scene_previous = gSceneData.scene_previous;
 
-	gcMakeDefaultCameraGObj(2, GOBJ_LINKORDER_DEFAULT, 0, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(2, GOBJ_LINKORDER_DEFAULT, 0, CAMERA_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mnTitleSetDemoFighterKinds();
 	func_800266A0_272A0();
 
@@ -453,7 +453,7 @@ void mnTitleProceedDemoNext(void)
 // 0x80132090
 void mnTitleProceedModeSelect(void)
 {
-	gcMakeDefaultCameraGObj(2, GOBJ_LINKORDER_DEFAULT, 0, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(2, GOBJ_LINKORDER_DEFAULT, 0, CAMERA_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	gSceneData.scene_previous = gSceneData.scene_current;
 	gSceneData.scene_current = nSCKindModeSelect;
@@ -1275,7 +1275,7 @@ s32 mnTitleMakeCameras(void)
 	s32 unused;
 	Camera *cam;
 
-	sMNTitleFireCameraGObj = gcMakeDefaultCameraGObj(2, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	sMNTitleFireCameraGObj = gcMakeDefaultCameraGObj(2, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	gcAddGObjProcess(sMNTitleFireCameraGObj, mnTitleFireProcUpdate, nOMObjProcessKindProc, 1);
 
 	camera_gobj = gcMakeCameraGObj
@@ -1330,7 +1330,7 @@ s32 mnTitleMakeCameras(void)
 }
 
 // 0x80133CFC
-void mnTitleLogoFireProcDisplay(GObj *gobj)
+void mnTitleLogoFireFuncDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
@@ -1347,7 +1347,7 @@ void mnTitleLogoFireProcDisplay(GObj *gobj)
 void mnTitleMakeLogoFire(void)
 {
 	GObj *gobj = gcMakeGObjSPAfter(15, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-	gcAddGObjDisplay(gobj, mnTitleLogoFireProcDisplay, 3, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, mnTitleLogoFireFuncDisplay, 3, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	gobj->cam_mask = CAMERA_MASK_DLLINK(0);
 

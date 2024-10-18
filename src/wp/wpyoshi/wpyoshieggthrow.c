@@ -250,7 +250,7 @@ sb32 wpYoshiEggThrowProcReflector(GObj *weapon_gobj)
 }
 
 // 0x8016C444
-void wpYoshiEggThrowProcDisplay(GObj *weapon_gobj)
+void wpYoshiEggThrowFuncDisplay(GObj *weapon_gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[1]++);
 
@@ -273,7 +273,7 @@ GObj* wpYoshiEggThrowMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     wp = wpGetStruct(weapon_gobj);
 
-    weapon_gobj->proc_display = wpYoshiEggThrowProcDisplay;
+    weapon_gobj->func_display = wpYoshiEggThrowFuncDisplay;
 
     wp->weapon_vars.egg_throw.is_throw = FALSE;
 

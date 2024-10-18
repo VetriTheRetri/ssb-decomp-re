@@ -10,10 +10,10 @@
 #include <gr/grdef.h>
 #include <gr/grvars.h>
 
-struct grGeometryDesc
+struct grDisplayDesc
 {
-	void *proc_displaypri;
-	void *proc_displaysec;
+	void *func_displaypri;
+	void *func_displaysec;
 	u8 dl_link;
 	void *proc_update;
 };

@@ -307,7 +307,7 @@ void mvOpeningKirbyMakeMotionWindow(void)
 }
 
 // 0x8018D870
-void mvOpeningKirbyPosedWallpaperProcDisplay(GObj *gobj)
+void mvOpeningKirbyPosedWallpaperFuncDisplay(GObj *gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -322,7 +322,7 @@ void mvOpeningKirbyPosedWallpaperProcDisplay(GObj *gobj)
 // 0x8018D970
 void mvOpeningKirbyMakePosedWallpaper(void)
 {
-	gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT), mvOpeningKirbyPosedWallpaperProcDisplay, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT), mvOpeningKirbyPosedWallpaperFuncDisplay, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
 
 // 0x8018D9BC
@@ -510,7 +510,7 @@ void mvOpeningKirbyFuncStart(void)
 	mvOpeningKirbySetupFiles();
 
 	gcMakeGObjSPAfter(nOMObjCommonKindMovie, mvOpeningKirbyFuncRun, 13, GOBJ_LINKORDER_DEFAULT);
-	gcMakeDefaultCameraGObj(9, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(9, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	mvOpeningKirbyInitVars();
 	efAllocInitParticleBank();

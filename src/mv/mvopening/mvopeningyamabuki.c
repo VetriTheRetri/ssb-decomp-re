@@ -428,7 +428,7 @@ void mvOpeningYamabukiFuncStart(void)
     );
     gcMakeGObjSPAfter(0, mvOpeningYamabukiFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
 
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
     efAllocInitParticleBank();
     mvOpeningYamabukiInitTotalTimeTics();

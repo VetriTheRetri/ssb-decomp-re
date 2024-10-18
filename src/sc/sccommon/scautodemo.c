@@ -632,7 +632,7 @@ void scAutoDemoFuncStart(void)
 
 	scAutoDemoInitDemo();
 	scAutoDemoSetupFiles();
-	gcMakeDefaultCameraGObj(9, GOBJ_LINKORDER_DEFAULT, 100, 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(9, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efAllocInitParticleBank();
 	ftParamInitGame();
 	mpCollisionInitGroundData();

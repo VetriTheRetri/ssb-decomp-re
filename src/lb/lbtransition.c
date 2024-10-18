@@ -148,7 +148,7 @@ GObj* lbTransitionMakeCamera(u32 id, s32 link, u32 link_order, u64 cam_mask)
 }
 
 // 0x800D4248
-void lbTransitionProcDisplay(GObj *gobj)
+void lbTransitionFuncDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gSPSegment(gSYTaskmanDLHeads[0]++, 0x1, sLBTransitionPhotoHeap);
@@ -170,7 +170,7 @@ void lbTransitionProcUpdate(GObj *gobj)
 }
 
 // 0x800D430C
-GObj* lbTransitionMakeTransition(s32 transition_id, u32 id, s32 link, void (*proc_display)(GObj*), u8 dl_link_id, void (*proc_common)(GObj*))
+GObj* lbTransitionMakeTransition(s32 transition_id, u32 id, s32 link, void (*func_display)(GObj*), u8 dl_link_id, void (*proc_common)(GObj*))
 {
     lbTransitionDesc *transition_desc = &dLBTransitionDescs[transition_id];
     GObj *gobj;
@@ -180,7 +180,7 @@ GObj* lbTransitionMakeTransition(s32 transition_id, u32 id, s32 link, void (*pro
     
     gobj->user_data.s = transition_desc->unk_lbtransition_0xC;
     
-    gcAddGObjDisplay(gobj, proc_display, dl_link_id, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, func_display, dl_link_id, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcSetupCustomDObjs
     (
         gobj, 

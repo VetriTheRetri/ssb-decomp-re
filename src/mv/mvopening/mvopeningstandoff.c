@@ -368,7 +368,7 @@ void mvOpeningStandoffMakeLightning(void)
 }
 
 // 0x801321D8
-void mvOpeningStandoffLightningFlashProcDisplay(GObj *gobj)
+void mvOpeningStandoffLightningFlashFuncDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[1]++);
     gDPSetCycleType(gSYTaskmanDLHeads[1]++, G_CYC_1CYCLE);
@@ -409,7 +409,7 @@ void mvOpeningStandoffMakeLightningFlash(void)
             18,
             GOBJ_LINKORDER_DEFAULT
         ),
-        mvOpeningStandoffLightningFlashProcDisplay,
+        mvOpeningStandoffLightningFlashFuncDisplay,
         28,
         GOBJ_DLLINKORDER_DEFAULT,
         -1
@@ -588,7 +588,7 @@ void mvOpeningStandoffFuncStart(void)
     );
     gcMakeGObjSPAfter(0, mvOpeningStandoffFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
 
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
     efAllocInitParticleBank();
     mvOpeningStandoffInitTotalTimeTics();

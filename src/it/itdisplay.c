@@ -186,7 +186,7 @@ sb32 itDisplayCheckItemVisible(itStruct *ip)
 }
 
 // 0x80171C7C
-void itDisplayProcDisplayOPA(GObj *item_gobj)
+void itDisplayFuncDisplayOPA(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -210,7 +210,7 @@ void itDisplayProcDisplayOPA(GObj *item_gobj)
 }
 
 // 0x80171D38
-void itDisplayProcDisplayXLU(GObj *item_gobj)
+void itDisplayFuncDisplayXLU(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -256,7 +256,7 @@ void itDisplayColAnimOPA(GObj *item_gobj)
 }
 
 // 0x80171F4C
-void itDisplayProcDisplayColAnimOPA(GObj *item_gobj)
+void itDisplayFuncDisplayColAnimOPA(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -312,7 +312,7 @@ void itDisplayColAnimXLU(GObj *item_gobj)
 }
 
 // 0x8017224C
-void itDisplayProcDisplayColAnimXLU(GObj *item_gobj)
+void itDisplayFuncDisplayColAnimXLU(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

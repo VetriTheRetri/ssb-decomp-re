@@ -23,7 +23,7 @@ extern void mvOpeningSectorFuncLights(Gfx **dls);
 extern void mvOpeningSectorWallpaperProcUpdate(GObj* wallpaper_gobj);
 extern void mvOpeningSectorMakeWallpaper(void);
 extern void mvOpeningSectorMakeGreatFox(void);
-extern void mvOpeningSectorCockpitProcDisplay(GObj *cockpit_gobj);
+extern void mvOpeningSectorCockpitFuncDisplay(GObj *cockpit_gobj);
 extern void mvOpeningSectorCockpitProcUpdate(GObj* cockpit_gobj);
 extern void mvOpeningSectorMakeCockpit(void);
 extern void mvOpeningSectorMakeArwings(void);

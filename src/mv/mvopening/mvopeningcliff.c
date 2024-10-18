@@ -129,7 +129,7 @@ void mvOpeningCliffFuncLights(Gfx **dls)
 }
 
 // 0x80131B58
-void mvOpeningCliffHillsProcDisplay(GObj *hills_gobj)
+void mvOpeningCliffHillsFuncDisplay(GObj *hills_gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -157,7 +157,7 @@ void mvOpeningCliffMakeHills(void)
         ),
         NULL
     );
-    gcAddGObjDisplay(hills_gobj, mvOpeningCliffHillsProcDisplay, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(hills_gobj, mvOpeningCliffHillsFuncDisplay, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
 
 // 0x80131CA4 - Unused?
@@ -191,7 +191,7 @@ void mvOpeningCliffMakeFighter(void)
 }
 
 // 0x80131D8C
-void mvOpeningCliffWallpaperProcDisplay(GObj *gobj)
+void mvOpeningCliffWallpaperFuncDisplay(GObj *gobj)
 {
     SObj *sobj = SObjGetStruct(gobj);
 
@@ -250,7 +250,7 @@ void mvOpeningCliffMakeWallpaper(void)
 
     wallpaper_gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjProcess(wallpaper_gobj, mvOpeningCliffWallpaperProcDisplay, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(wallpaper_gobj, mvOpeningCliffWallpaperFuncDisplay, nOMObjProcessKindProc, 1);
 
     wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetDataFromFile(Sprite*, sMVOpeningCliffFiles[1], &lMVOpeningCliffWallpaperSprite));
     wallpaper_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -501,7 +501,7 @@ void mvOpeningCliffFuncStart(void)
     );
     gcMakeGObjSPAfter(0, mvOpeningCliffFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
 
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 
     efAllocInitParticleBank();
     mvOpeningCliffInitTotalTimeTics();

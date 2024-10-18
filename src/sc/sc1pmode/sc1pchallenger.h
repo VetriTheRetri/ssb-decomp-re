@@ -12,7 +12,7 @@ extern intptr_t lSC1PChallengerTextWarningSprite;               // 0x00000968
 extern intptr_t lSC1PChallengerDecalExclaimSprite;              // 0x00000DB0
 
 extern void sc1PChallengerFuncLights(Gfx **dls);
-extern void sc1PChallengerDecalsProcDisplay(GObj *gobj);
+extern void sc1PChallengerDecalsFuncDisplay(GObj *gobj);
 extern void sc1PChallengerMakeDecals(void);
 extern void sc1PChallengerFighterProcUpdate(GObj *fighter_gobj);
 extern void sc1PChallengerMakeFighter(s32 ft_kind);

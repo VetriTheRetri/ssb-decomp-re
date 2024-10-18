@@ -17,6 +17,6 @@ extern void ftDisplayMainDrawDefault(DObj *dobj);
 extern void ftDisplayMainDrawSkeleton(DObj *dobj);
 extern void ftDisplayMainDrawAll(GObj *fighter_gobj);
 extern void ftDisplayMainDrawParts(DObj *dobj);
-extern void ftDisplayMainProcDisplay(GObj *fighter_gobj);
+extern void ftDisplayMainFuncDisplay(GObj *fighter_gobj);
 
 #endif

@@ -80,7 +80,7 @@ extern void grPupupuFlowersFrontLoopEnd(void);
 extern void grPupupuFlowersFrontUpdateAll(void);
 extern void grPupupuUpdateGObjAnims(void);
 extern void grPupupuProcUpdate(GObj *ground_gobj);
-extern GObj* grPupupuMakeMapGObj(intptr_t o_dobjdesc, intptr_t o_mobjsub, void (*proc_display)(GObj*), u8 dl_link);
+extern GObj* grPupupuMakeMapGObj(intptr_t o_dobjdesc, intptr_t o_mobjsub, void (*func_display)(GObj*), u8 dl_link);
 extern void grPupupuInitAll(void);
 extern GObj* grPupupuMakeGround(void);
 

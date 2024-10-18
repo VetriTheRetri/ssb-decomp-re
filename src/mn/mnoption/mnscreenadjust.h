@@ -10,7 +10,7 @@ extern intptr_t lMNScreenAdjustInstructionSprite;           // 0x00000918
 extern intptr_t lMNScreenAdjustGuideSprite;                 // 0x000098A0
 
 extern void mnScreenAdjustFuncLights(Gfx **dls);
-extern void mnScreenAdjustFrameProcDisplay(GObj *gobj);
+extern void mnScreenAdjustFrameFuncDisplay(GObj *gobj);
 extern void mnScreenAdjustMakeFrame(void);
 extern void mnScreenAdjustMakeGuide(void);
 extern void mnScreenAdjustMakeInstruction(void);

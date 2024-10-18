@@ -71,7 +71,7 @@ struct sc1PGameBossAnim
 struct sc1PGameBossEffect
 {
     void (*proc_update)(GObj*);
-    void (*proc_display)(GObj*);
+    void (*func_display)(GObj*);
     intptr_t o_dobjdesc;
     intptr_t o_mobjsub;
 };

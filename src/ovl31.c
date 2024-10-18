@@ -52,7 +52,7 @@ extern f32 scSubsysFighterGetLightAngleY();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 extern void* func_800269C0_275C0(u16);
-extern void lbTransitionProcDisplay();
+extern void lbTransitionFuncDisplay();
 extern void lbTransitionProcUpdate();
 
 extern u8 dIFCommonPlayerTagShadowColorsR[];
@@ -2950,7 +2950,7 @@ void mnResultsInit()
 	lbRelocLoadFilesExtern(D_ovl31_80138F70, ARRAY_COUNT(D_ovl31_80138F70), gMNResultsFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl31_80138F70, ARRAY_COUNT(D_ovl31_80138F70)), 0x10));
 
 	gcMakeGObjSPAfter(0, mnResultsMain, 0, 0x80000000U);
-	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2 | 0x1, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efAllocInitParticleBank();
 	efManagerInitEffects();
 	ftManagerAllocFighter(1, 4);
@@ -2973,7 +2973,7 @@ void mnResultsInit()
 	{
 		lbTransitionSetupTransition();
 		lbTransitionMakeCamera(0x20000002, 0, 0xA, 0x100000000);
-		lbTransitionMakeTransition(mtTrigGetRandomIntRange(0xB), 0x20000000, 0, lbTransitionProcDisplay, 0x20, lbTransitionProcUpdate);
+		lbTransitionMakeTransition(mtTrigGetRandomIntRange(0xB), 0x20000000, 0, lbTransitionFuncDisplay, 0x20, lbTransitionProcUpdate);
 	}
 
 	mnResultsCreateLogoViewport();

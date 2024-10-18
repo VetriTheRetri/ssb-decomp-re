@@ -827,7 +827,7 @@ void scManagerProcPrintGObjStatus()
 
 			if (gOMObjCurrentCamera != NULL)
 			{
-				syErrorDebugPrintf("addr:%x\n", gOMObjCurrentCamera->proc_display);
+				syErrorDebugPrintf("addr:%x\n", gOMObjCurrentCamera->func_display);
 				scManagerInspectGObj(gOMObjCurrentCamera);
 			}
 			break;
@@ -838,11 +838,11 @@ void scManagerProcPrintGObjStatus()
 
 			if (gOMObjCurrentCamera != NULL)
 			{
-				syErrorDebugPrintf("cam addr:%x\n", gOMObjCurrentCamera->proc_display);
+				syErrorDebugPrintf("cam addr:%x\n", gOMObjCurrentCamera->func_display);
 			}
 			if (gOMObjCurrentDisplay != NULL)
 			{
-				syErrorDebugPrintf("disp addr:%x\n", gOMObjCurrentDisplay->proc_display);
+				syErrorDebugPrintf("disp addr:%x\n", gOMObjCurrentDisplay->func_display);
 				scManagerInspectGObj(gOMObjCurrentDisplay);
 			}
 			break;

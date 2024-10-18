@@ -189,7 +189,7 @@ void dbStageSelectMain(GObj* arg0)
 void dbStageSelectInit()
 {
 	gcMakeGObjSPAfter(0, dbStageSelectMain, 0, 0x80000000);
-	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	dbMenuInitMenu();
 	dbMenuCreateMenu(0x32, 0x32, 0x64, dMNDebugStageSelectMenuItems, ARRAY_COUNT(dMNDebugStageSelectMenuItems));
 }

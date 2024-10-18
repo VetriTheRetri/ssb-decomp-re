@@ -320,7 +320,7 @@ void mnBackupClearEjectOptionGObjs(void)
 }
 
 // 0x80131F98
-void mnBackupClearOptionConfirmProcDisplay(GObj *gobj)
+void mnBackupClearOptionConfirmFuncDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
@@ -352,7 +352,7 @@ void mnBackupClearMakeOptionConfirm(sb32 confirm_kind, sb32 yes_or_no)
 
     sMNBackupClearOptionConfirmGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
     
-    gcAddGObjDisplay(gobj, mnBackupClearOptionConfirmProcDisplay, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, mnBackupClearOptionConfirmFuncDisplay, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
     
     if (yes_or_no == 0)
     {
@@ -805,7 +805,7 @@ void mnBackupClearFuncStart(void)
         )
     );
     gcMakeGObjSPAfter(0, mnBackupClearFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     mnBackupClearInitVars();
     mnBackupClearMakeMainCamera();
     mnBackupClearMakeHeaderSObjs();

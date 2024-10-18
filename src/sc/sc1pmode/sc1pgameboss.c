@@ -44,7 +44,7 @@ sc1PGameBossEffect dSC1PGameBossEffects0[/* */] =
     // Effect 0
     {
         sc1PGameBossWallpaper0ProcUpdate,       // Proc Update
-        sc1PGameBossWallpaper0ProcDisplay,       // Proc Render
+        sc1PGameBossWallpaper0FuncDisplay,       // Proc Render
         &lSC1PGameBossEffects0DObjDesc,         // DObjDesc offset
         &lSC1PGameBossEffects0MObjSub           // MObjSub offset
     }
@@ -120,7 +120,7 @@ sc1PGameBossEffect dSC1PGameBossEffects1[/* */] =
     // Effect 0
     {
         sc1PGameBossWallpaper1ProcUpdate,       // Proc Update
-        sc1PGameBossWallpaper1ProcDisplay,       // Proc Render
+        sc1PGameBossWallpaper1FuncDisplay,       // Proc Render
         &lSC1PGameBossEffects1DObjDesc,         // DObjDesc offset
         &lSC1PGameBossEffects1MObjSub           // MObjSub offset
     }
@@ -161,7 +161,7 @@ sc1PGameBossEffect dSC1PGameBossEffects2[/* */] =
     // Effect 0
     {
         sc1PGameBossWallpaper2ProcUpdate0,      // Proc Update
-        sc1PGameBossWallpaper2ProcDisplay,       // Proc Render
+        sc1PGameBossWallpaper2FuncDisplay,       // Proc Render
         &lSC1PGameBossEffects2DObjDesc0,        // DObjDesc offset
         &lSC1PGameBossEffects2MObjSub0          // MObjSub offset
     },
@@ -169,7 +169,7 @@ sc1PGameBossEffect dSC1PGameBossEffects2[/* */] =
     // Effect 1
     {
         sc1PGameBossWallpaper2ProcUpdate1,      // Proc Update
-        sc1PGameBossWallpaper3ProcDisplay0,       // Proc Render
+        sc1PGameBossWallpaper3FuncDisplay0,       // Proc Render
         &lSC1PGameBossEffects2DObjDesc1,        // DObjDesc offset
         &lSC1PGameBossEffects2MObjSub1          // MObjSub offset
     }
@@ -231,7 +231,7 @@ sc1PGameBossEffect dSC1PGameBossEffects3[/* */] =
     // Effect 0
     {
         sc1PGameBossWallpaper3ProcUpdate0,      // Proc Update
-        sc1PGameBossWallpaper3ProcDisplay0,      // Proc Render
+        sc1PGameBossWallpaper3FuncDisplay0,      // Proc Render
         &lSC1PGameBossEffects3DObjDesc0,        // DObjDesc offset
         &lSC1PGameBossEffects3MObjSub0          // MObjSub offset
     },
@@ -239,7 +239,7 @@ sc1PGameBossEffect dSC1PGameBossEffects3[/* */] =
     // Effect 1
     {
         sc1PGameBossWallpaper3ProcUpdate1,      // Proc Update
-        sc1PGameBossWallpaper2ProcDisplay,       // Proc Render
+        sc1PGameBossWallpaper2FuncDisplay,       // Proc Render
         &lSC1PGameBossEffects3DObjDesc1,        // DObjDesc offset
         0x0                                     // MObjSub offset
     }
@@ -457,7 +457,7 @@ void sc1PGameBossMakeCamera(void)
 }
 
 // 0x80191364
-void sc1PGameBossWallpaper0ProcDisplay(GObj *gobj)
+void sc1PGameBossWallpaper0FuncDisplay(GObj *gobj)
 {
     s32 color_id = DObjGetStruct(gobj)->child->user_data.s;
     s32 alpha = gobj->user_data.s;
@@ -474,7 +474,7 @@ void sc1PGameBossWallpaper0ProcDisplay(GObj *gobj)
 }
 
 // 0x80191498
-void sc1PGameBossWallpaper1ProcDisplay(GObj *gobj)
+void sc1PGameBossWallpaper1FuncDisplay(GObj *gobj)
 {
     s32 alpha = gobj->user_data.s;
     DObj *dobj = DObjGetStruct(gobj);
@@ -499,7 +499,7 @@ void sc1PGameBossWallpaper1ProcDisplay(GObj *gobj)
 }
 
 // 0x801915B8
-void sc1PGameBossWallpaper2ProcDisplay(GObj *gobj)
+void sc1PGameBossWallpaper2FuncDisplay(GObj *gobj)
 {
     s32 alpha = gobj->user_data.s;
     DObj *dobj = DObjGetStruct(gobj);
@@ -523,7 +523,7 @@ void sc1PGameBossWallpaper2ProcDisplay(GObj *gobj)
 }
 
 // 0x801916A8
-void sc1PGameBossWallpaper3ProcDisplay0(GObj *gobj)
+void sc1PGameBossWallpaper3FuncDisplay0(GObj *gobj)
 {
     s32 alpha = gobj->user_data.s;
     DObj *dobj = DObjGetStruct(gobj);
@@ -547,7 +547,7 @@ void sc1PGameBossWallpaper3ProcDisplay0(GObj *gobj)
 }
 
 // 0x80191798
-void sc1PGameBossProcDisplayFadeAlpha(GObj *gobj)
+void sc1PGameBossFuncDisplayFadeAlpha(GObj *gobj)
 {
     s32 alpha;
 
@@ -571,7 +571,7 @@ void sc1PGameBossProcDisplayFadeAlpha(GObj *gobj)
 }
 
 // 0x80191908
-void sc1PGameBossProcDisplayFadeColor(GObj *gobj)
+void sc1PGameBossFuncDisplayFadeColor(GObj *gobj)
 {
     f32 sub = 2.55F;
     s32 color;
@@ -748,11 +748,11 @@ void sc1PGameBossWallpaper3ProcUpdate1(GObj *gobj)
 
     if (dobj->anim_wait == AOBJ_ANIM_NULL)
     {
-        if ((gobj->proc_display != sc1PGameBossProcDisplayFadeAlpha) && (gobj->proc_display != sc1PGameBossProcDisplayFadeColor))
+        if ((gobj->func_display != sc1PGameBossFuncDisplayFadeAlpha) && (gobj->func_display != sc1PGameBossFuncDisplayFadeColor))
         {
             sSC1PGameBossWallpaperStepRGBA = 230.0F;
             dobj->user_data.s = 0x64;
-            gobj->proc_display = sc1PGameBossProcDisplayFadeAlpha;
+            gobj->func_display = sc1PGameBossFuncDisplayFadeAlpha;
         }
         else
         {
@@ -760,13 +760,13 @@ void sc1PGameBossWallpaper3ProcUpdate1(GObj *gobj)
 
             if (dobj->user_data.s == 0)
             {
-                if (gobj->proc_display == sc1PGameBossProcDisplayFadeAlpha)
+                if (gobj->func_display == sc1PGameBossFuncDisplayFadeAlpha)
                 {
                     sSC1PGameBossWallpaperStepRGBA = 255.0F;
                     dobj->user_data.s = 0x64;
-                    gobj->proc_display = sc1PGameBossProcDisplayFadeColor;
+                    gobj->func_display = sc1PGameBossFuncDisplayFadeColor;
                 }
-                else if (gobj->proc_display == sc1PGameBossProcDisplayFadeColor)
+                else if (gobj->func_display == sc1PGameBossFuncDisplayFadeColor)
                 {
                     ifCommonBattleEndSetBossDefeat();
                     gcApplyToAll(func_ovl2_80113638, 0);
@@ -873,7 +873,7 @@ GObj* sc1PGameBossMakeWallpaperEffect(s32 effect_id, s32 anim_id, s32 plan_id)
     gcAddGObjDisplay
     (
         effect_gobj, 
-        sSC1PGameBossMain.bosswallpaper->bosseffect[effect_id].proc_display, 
+        sSC1PGameBossMain.bosswallpaper->bosseffect[effect_id].func_display, 
         sSC1PGameBossMain.bosswallpaper->bossplan[plan_id].dl_link, 
         GOBJ_DLLINKORDER_DEFAULT, 
         sSC1PGameBossMain.bosswallpaper->bossplan[plan_id].cam_tag

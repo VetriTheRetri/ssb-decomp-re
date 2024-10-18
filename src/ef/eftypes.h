@@ -17,7 +17,7 @@ struct efCreateDesc
     DObjTransformTypes transform_types1;
     DObjTransformTypes transform_types2;
     void (*proc_update)(GObj*);
-    void (*proc_display)(GObj*);
+    void (*func_display)(GObj*);
     intptr_t o_dobjsetup;
     intptr_t o_mobjsub;
     intptr_t o_anim_joint;

@@ -21,10 +21,10 @@
 #define OM_COMMON_MAX_DL_LINKS  65
 
 // GObj defines
-#define GOBJ_FLAG_NONE          (0)
-#define GOBJ_FLAG_HIDDEN      (1 << 0)
-#define GOBJ_FLAG_NOANIM        (1 << 1)    // Skip applying aninmation values?
-#define GOBJ_FLAG_NOEJECT       (1 << 6)    // I actually don't know what this really does
+#define GOBJ_FLAG_NONE              (0)
+#define GOBJ_FLAG_HIDDEN            (1 << 0)
+#define GOBJ_FLAG_NOANIM            (1 << 1)    // Skip applying aninmation values?
+#define GOBJ_FLAG_NOEJECT           (1 << 6)    // I actually don't know what this really does
 
 #define GOBJ_LINKORDER_DEFAULT      0x80000000
 #define GOBJ_DLLINKORDER_DEFAULT    0x80000000
@@ -32,30 +32,33 @@
 #define GOBJ_CAMTAG_DEFAULT         0xFFFFFFFF
 
 // DObj defines
-#define DOBJ_PARENT_NULL        ((DObj*)1)
+#define DOBJ_PARENT_NULL            ((DObj*)1)
 
-#define DOBJ_FLAG_NONE          (0)
-#define DOBJ_FLAG_NOTEXTURE     (1 << 0)
-#define DOBJ_FLAG_HIDDEN      (1 << 1)
+#define DOBJ_FLAG_NONE              (0)
+#define DOBJ_FLAG_NOTEXTURE         (1 << 0)
+#define DOBJ_FLAG_HIDDEN            (1 << 1)
 
-#define DOBJ_ARRAY_MAX          18
+#define DOBJ_ARRAY_MAX              18
 
 // AObj defines
-#define AOBJ_ANIM_NULL     F32_MIN          // Used to mark the lack of frames remaining in an animation
-#define AOBJ_ANIM_CHANGED (F32_MIN / 2.0F)  // ???
-#define AOBJ_ANIM_END     (F32_MIN / 3.0F)  // Used to mark the end of an animation?
+#define AOBJ_ANIM_NULL              F32_MIN          // Used to mark the lack of frames remaining in an animation
+#define AOBJ_ANIM_CHANGED           (F32_MIN / 2.0F)  // ???
+#define AOBJ_ANIM_END               (F32_MIN / 3.0F)  // Used to mark the end of an animation?
 
 // MObj defines
-#define MOBJ_FLAG_PRIMCOLOR     (1 << 9)
-#define MOBJ_FLAG_ENVCOLOR      (1 << 10)
-#define MOBJ_FLAG_BLENDCOLOR    (1 << 11)
-#define MOBJ_FLAG_LIGHT1        (1 << 12)
-#define MOBJ_FLAG_LIGHT2        (1 << 13)
+#define MOBJ_FLAG_PRIMCOLOR         (1 << 9)
+#define MOBJ_FLAG_ENVCOLOR          (1 << 10)
+#define MOBJ_FLAG_BLENDCOLOR        (1 << 11)
+#define MOBJ_FLAG_LIGHT1            (1 << 12)
+#define MOBJ_FLAG_LIGHT2            (1 << 13)
 
 // Camera defines
 
 // Create mask of draw layer (known in Smash Remix lingo as "room") to render
 #define CAMERA_MASK_DLLINK(r) (1ULL << (r))
+
+#define CAMERA_FLAG_ZBUFFER         0x1
+#define CAMERA_FLAG_FILLCOLOR       0x2
 
 union OMUserData
 {
@@ -194,7 +197,7 @@ struct GObj
     GObj *dl_link_next;
     GObj *dl_link_prev;
     u32 dl_link_order;
-    void (*proc_display)(GObj*);
+    void (*func_display)(GObj*);
     u64 cam_mask;
     u32 cam_tag;                        // 0xFFFFFFFF, textures or series of flags?
     u64 unk_gobj_0x40;

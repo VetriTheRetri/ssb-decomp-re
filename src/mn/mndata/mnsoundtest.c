@@ -1108,7 +1108,7 @@ void mnSoundTestOptionThreadUpdate(GObj *gobj)
 }
 
 // 0x801324FC
-void mnSoundTestMusicProcDisplay(GObj *gobj)
+void mnSoundTestMusicFuncDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
@@ -1156,7 +1156,7 @@ SObj* mnSoundTestMakeMusicSObjs(void)
             3,
             GOBJ_LINKORDER_DEFAULT
         ),
-        mnSoundTestMusicProcDisplay,
+        mnSoundTestMusicFuncDisplay,
         2,
         GOBJ_DLLINKORDER_DEFAULT,
         -1
@@ -1175,7 +1175,7 @@ SObj* mnSoundTestMakeMusicSObjs(void)
 }
 
 // 0x80132758
-void mnSoundTestSoundProcDisplay(GObj *gobj)
+void mnSoundTestSoundFuncDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
@@ -1223,7 +1223,7 @@ SObj* mnSoundTestMakeSoundSObjs(void)
             3,
             GOBJ_LINKORDER_DEFAULT
         ),
-        mnSoundTestSoundProcDisplay,
+        mnSoundTestSoundFuncDisplay,
         2,
         GOBJ_DLLINKORDER_DEFAULT,
         -1
@@ -1242,7 +1242,7 @@ SObj* mnSoundTestMakeSoundSObjs(void)
 }
 
 // 0x801329B8
-void mnSoundTestVoiceProcDisplay(GObj *gobj)
+void mnSoundTestVoiceFuncDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
@@ -1290,7 +1290,7 @@ SObj* mnSoundTestMakeVoiceSObjs(void)
             3,
             GOBJ_LINKORDER_DEFAULT
         ),
-        mnSoundTestVoiceProcDisplay,
+        mnSoundTestVoiceFuncDisplay,
         2,
         GOBJ_DLLINKORDER_DEFAULT,
         -1
@@ -1744,7 +1744,7 @@ void mnSoundTestInitVars(void)
 void mnSoundTestFuncStart(void)
 {
     gcMakeGObjSPAfter(0, mnSoundTestFuncRun, 1, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(4, GOBJ_LINKORDER_DEFAULT, 100, 0x2, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeDefaultCameraGObj(4, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     mnSoundTestSetupFiles();
     mnSoundTestInitVars();
     mnSoundTestMakeAllSObjs();

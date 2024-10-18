@@ -5,13 +5,13 @@
 #include <sys/objdef.h>
 #include <ef/efdef.h>
 
-extern void efDisplayProcDisplayBlendCLD(GObj *effect_gobj);
-extern void efDisplayProcDisplayXLU(GObj *effect_gobj);
+extern void efDisplayFuncDisplayBlendCLD(GObj *effect_gobj);
+extern void efDisplayFuncDisplayXLU(GObj *effect_gobj);
 extern void efDisplayMakeBlendCLD(void);
 extern void efDisplayMakeXLU(void);
-extern void efDisplayProcDisplayZPerspXLU(GObj *effect_gobj);
-extern void efDisplayProcDisplayZPerspCLD(GObj *effect_gobj);
-extern void efDisplayProcDisplayZPerspAAXLU(GObj *effect_gobj);
+extern void efDisplayFuncDisplayZPerspXLU(GObj *effect_gobj);
+extern void efDisplayFuncDisplayZPerspCLD(GObj *effect_gobj);
+extern void efDisplayFuncDisplayZPerspAAXLU(GObj *effect_gobj);
 extern void efDisplayInitAll(void);
 
 #endif

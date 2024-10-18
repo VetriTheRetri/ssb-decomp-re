@@ -83,7 +83,7 @@ void mnMessageMakeWallpaper(void)
 }
 
 // 0x80131BA4
-void mnMessageTintProcDisplay(GObj *gobj)
+void mnMessageTintFuncDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -100,7 +100,7 @@ void mnMessageTintProcDisplay(GObj *gobj)
 // 0x80131CB8
 void mnMessageMakeTint(void)
 {
-    gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT), mnMessageTintProcDisplay, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT), mnMessageTintFuncDisplay, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
 
 // 0x80131D04

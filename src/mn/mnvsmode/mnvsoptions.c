@@ -649,7 +649,7 @@ void mnVSOptionsMakeHandicapOption(void)
 }
 
 // 0x80132C24
-void mnVSOptionsLabelProcDisplay(GObj *gobj)
+void mnVSOptionsLabelFuncDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -672,7 +672,7 @@ void mnVSOptionsMakeLabel(void)
     SObj *sobj;
     
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, mnVSOptionsLabelProcDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, mnVSOptionsLabelFuncDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMNVSOptionsFiles[1], &lMNVSOptionsLabelVSOptionsSprite));
 
@@ -738,7 +738,7 @@ void mnVSOptionsMakeWallpaper(void)
 }
 
 // 0x80132F2C
-void mnVSOptionsUnderlineProcDisplay(GObj *gobj)
+void mnVSOptionsUnderlineFuncDisplay(GObj *gobj)
 {   
     // 0x8013478C
     syRectangle handicap_rect[/* */] =
@@ -820,11 +820,11 @@ void mnVSOptionsUnderlineProcDisplay(GObj *gobj)
 // 0x80133300
 void mnVSOptionsMakeUnderline(void)
 {
-    gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT), mnVSOptionsUnderlineProcDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT), mnVSOptionsUnderlineFuncDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
 
 // 0x8013334C
-void mnVSOptionsTintProcDisplay(GObj *gobj)
+void mnVSOptionsTintFuncDisplay(GObj *gobj)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
@@ -841,7 +841,7 @@ void mnVSOptionsTintProcDisplay(GObj *gobj)
 // 0x80133464
 void mnVSOptionsMakeTint(void)
 {
-    gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 5, GOBJ_LINKORDER_DEFAULT), mnVSOptionsTintProcDisplay, 3, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 5, GOBJ_LINKORDER_DEFAULT), mnVSOptionsTintFuncDisplay, 3, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
 
 // 0x801334B0

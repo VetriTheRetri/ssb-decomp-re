@@ -28,7 +28,7 @@ extern void mvOpeningNewcomersMakeCaptain(void);
 extern void mvOpeningNewcomersMakeLuigi(void);
 extern void mvOpeningNewcomersMakeNess(void);
 extern void mvOpeningNewcomersMakeAll(void);
-extern void mvOpeningNewcomersHideProcDisplay(GObj *gobj);
+extern void mvOpeningNewcomersHideFuncDisplay(GObj *gobj);
 extern void mvOpeningNewcomersMakeHide(void);
 extern void mvOpeningNewcomersMakeNewcomersCamera(void);
 extern void mvOpeningNewcomersMakeHideCamera(void);

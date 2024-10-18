@@ -109,8 +109,8 @@ typedef struct
 typedef struct
 {
     /* 0x00 */ SCTaskInfo info;
-    /* 0x24 */ void* unk24[3]; // frame buffer pointers
-} SCTaskFb;                    // size == 0x30
+    /* 0x24 */ void *framebuffers[3]; // frame buffer pointers
+} SCTaskFramebuffer;                    // size == 0x30
 
 typedef struct
 {

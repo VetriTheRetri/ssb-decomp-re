@@ -217,11 +217,11 @@ void mnN64FuncStart(void)
 			80,
 			CAMERA_MASK_DLLINK(0),
 			-1,
-			0,
-			1,
+			FALSE,
+			nOMObjProcessKindProc,
 			NULL,
 			1,
-			0
+			FALSE
 		)
 	);
 	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);

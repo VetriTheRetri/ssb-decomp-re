@@ -752,12 +752,14 @@ s32 scExecuteTask(SCTaskInfo* task)
             }
             break;
         }
-        case nSYScheduleTaskFramebuffers: {
-            SCTaskFb* t = (void*) task;
+        case nSYScheduleTaskFramebuffers:
+        {
+            SCTaskFramebuffer* t = (void*) task;
             s32 i;
 
-            for (i = 0; i < ARRAY_COUNT(scFrameBuffers); i++) {
-                scFrameBuffers[i] = t->unk24[i];
+            for (i = 0; i < ARRAY_COUNT(scFrameBuffers); i++)
+            {
+                scFrameBuffers[i] = t->framebuffers[i];
             }
 
             if (t->info.mq != NULL) {

@@ -136,9 +136,9 @@ Gfx dMNCongraDisplayList[/* */] =
 // 0x80132208
 syVideoSetup dMNCongraDisplaySetup =
 {
-	SYVIDEO_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 0),
-	SYVIDEO_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 1),
-	SYVIDEO_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 2),
+	SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(320, 230, 0, 10, u32, 0),
+	SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(320, 230, 0, 10, u32, 1),
+	SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(320, 230, 0, 10, u32, 2),
 	NULL,
 	320,
 	240, 
@@ -293,11 +293,11 @@ void mnCongraFuncStart(void)
 			80,
 			CAMERA_MASK_DLLINK(0),
 			-1,
-			0,
-			1,
+			FALSE,
+			nOMObjProcessKindProc,
 			NULL,
 			1,
-			0
+			FALSE
 		)
 	);
 	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -360,9 +360,7 @@ void mnCongraFuncStart(void)
 
 	func_800269C0_275C0
 	(
-		(gSceneData.spgame_score >= 1000000) ? 
-			nSYAudioVoiceAnnounceIncredible  : 
-			nSYAudioVoiceAnnounceCongra
+		(gSceneData.spgame_score >= 1000000) ? nSYAudioVoiceAnnounceIncredible : nSYAudioVoiceAnnounceCongra
 	);
 }
 
@@ -375,7 +373,7 @@ void mnCongraFuncDraw(void)
 	{
 		sMNCongraIsProceedScene = FALSE;
 
-		syVideoSetFlags(0x100);
+		syVideoSetFlags(SYVIDEO_FLAG_BLACKOUT);
 
 		sMNCongraSceneChangeWait = 5;
 	}
@@ -405,7 +403,7 @@ void mnCongraStartScene(void)
 	u16 *subsys_arena_lo;
 	u32 *congra_arena_hi;
 
-	congra_arena_hi = (u32*)SYVIDEO_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 0);
+	congra_arena_hi = (u32*)SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(320, 230, 0, 10, u32, 0);
 
 	while ((uintptr_t)congra_arena_hi < 0x80400000) { *congra_arena_hi++ = GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF); } // WARNING: Newline memes!
 
@@ -426,7 +424,7 @@ void mnCongraStartScene(void)
 	dMNCongraDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dMNCongraDisplaySetup);
 
-	dMNCongraTaskmanSetup.buffer_setup.arena_size = (size_t) (SYVIDEO_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 0) - (uintptr_t)&ovl57_BSS_END);
+	dMNCongraTaskmanSetup.buffer_setup.arena_size = (size_t) (SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(320, 230, 0, 10, u32, 0) - (uintptr_t)&ovl57_BSS_END);
 	syTaskmanInit(&dMNCongraTaskmanSetup); subsys_arena_lo = gSCSubsysFramebuffer0; // WARNING: Newline memes!
 
 	while ((uintptr_t)subsys_arena_lo < 0x80400000) { *subsys_arena_lo++ = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01); }

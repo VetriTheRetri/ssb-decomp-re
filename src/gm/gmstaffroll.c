@@ -2181,9 +2181,9 @@ void gmStaffrollFuncDraw(void)
 // 0x8013A708
 syVideoSetup dGMStaffrollDisplaySetup =
 {
-	SYVIDEO_DEFINE_FRAMEBUF_ADDR(640, 480, 0, 0, u16, 0),
-	SYVIDEO_DEFINE_FRAMEBUF_ADDR(640, 480, 0, 0, u16, 1),
-	SYVIDEO_DEFINE_FRAMEBUF_ADDR(640, 480, 0, 0, u16, 2),
+	SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(640, 480, 0, 0, u16, 0),
+	SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(640, 480, 0, 0, u16, 1),
+	SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(640, 480, 0, 0, u16, 2),
 	NULL,
 	640,
 	480,
@@ -2244,13 +2244,13 @@ void gmStaffrollStartScene(void)
 	 * This is really weird. The function will only match if arena32 is assigned a hardcoded constant value.
 	 * One would assume they did this for the default 320x230 framebuffers as well, but that is not the case.
 	 * The default framebuffers effectively start at ovl1_BSS_END, at 0x80392A00, which is 0x1900 bytes behind
-	 * where it would start if they had calculated the address with SYVIDEO_DEFINE_FRAMEBUF_ADDR.
+	 * where it would start if they had calculated the address with SYVIDEO_DEFINE_FRAMEBUFFER_ADDR.
 	 * Does this and the fact that the default framebuffer start only match when used with its extern variable
 	 * suggest that they truly start at ovl1_BSS_END and have a definitive location in VRAM, rather than
 	 * being only a concept as seen here with the custom 640x480 framebuffer?
 	 */
 
-	u32 *arena32 = (u32*)SYVIDEO_DEFINE_FRAMEBUF_ADDR(640, 480, 0, 0, u16, 0);
+	u32 *arena32 = (u32*)SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(640, 480, 0, 0, u16, 0);
 	u16 *arena16;
 
 	while ((uintptr_t)arena32 < 0x80400000) { *arena32++ = 0x00000000; }
@@ -2258,7 +2258,7 @@ void gmStaffrollStartScene(void)
 	dGMStaffrollDisplaySetup.zbuffer = syVideoGetZBuffer(12800);
 	syVideoInit(&dGMStaffrollDisplaySetup);
 
-	dGMStaffrollTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)SYVIDEO_DEFINE_FRAMEBUF_ADDR(640, 480, 0, 0, u16, 0) - (uintptr_t)&ovl59_BSS_END);
+	dGMStaffrollTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(640, 480, 0, 0, u16, 0) - (uintptr_t)&ovl59_BSS_END);
 	syTaskmanInit(&dGMStaffrollTaskmanSetup);
 
 	arena16 = gSCSubsysFramebuffer0;

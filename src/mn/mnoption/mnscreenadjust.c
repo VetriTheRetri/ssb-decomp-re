@@ -243,8 +243,8 @@ void mnScreenAdjustApplyCenterOffsets(s16 h, s16 v)
 // 0x80131FF8
 void mnScreenAdjustInitVars(void)
 {
-    sMNScreenAdjustOffsetH = sSYVideoOffsetLeft;
-    sMNScreenAdjustOffsetV = sSYVideoOffsetTop;
+    sMNScreenAdjustOffsetH = gSYVideoOffsetLeft;
+    sMNScreenAdjustOffsetV = gSYVideoOffsetTop;
     
     sMNScreenAdjustButtonHoldWait = 0;
     sMNScreenAdjustTotalTimeTics = 0;

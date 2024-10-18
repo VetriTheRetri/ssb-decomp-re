@@ -1,8 +1,8 @@
-#ifndef SYS_SYSTEM_00_H
-#define SYS_SYSTEM_00_H
+#ifndef _SYVIDEO_H_
+#define _SYVIDEO_H_
 
-#include <sys/thread3.h>
 #include <ssb_types.h>
+#include <sys/thread3.h>
 
 #define SYVIDEO_FLAG_NONE           0x0
 #define SYVIDEO_FLAG_SERRATE        0x4
@@ -24,7 +24,7 @@
 #define SYVIDEO_BORDER_SIZE(dimension, pixels, type) \
 ((dimension) * (pixels) * sizeof(type))
 
-#define SYVIDEO_DEFINE_FRAMEBUF_ADDR(width, height, w_border, h_border, type, id)   \
+#define SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(width, height, w_border, h_border, type, id)   \
 (                                                                                   \
     (0x80400000 - (((width) * (height) * sizeof(type)) * (3 - (id)))) -             \
     (                                                                               \
@@ -72,17 +72,21 @@ extern u16 gSCSubsysFramebuffer1[/* */];
 extern u16 gSCSubsysFramebuffer2[/* */];
 
 extern u16 *gSYVideoZBuffer;
-// zbuffer pixel size?
 extern u32 gSYVideoColorDepth;
 extern s32 gSYVideoResWidth;
 extern s32 gSYVideoResHeight;
-extern s16 sSYVideoOffsetLeft;
-extern s16 sSYVideoOffsetTop;
+extern s16 gSYVideoOffsetLeft;
+extern s16 gSYVideoOffsetTop;
 
 extern u32 syVideoGetFillColor(u32 color);
-extern void syVideoInit(syVideoSetup *video_setup);
+extern void syVideoSetFramebuffers(void *fb0, void *fb1, void *fb2);
 extern void syVideoSetFlags(u32 flags);
-extern void syVideoSetCenterOffsets(s16 left, s16 right, s16 up, s16 down);
+extern void syVideoSetResWidth(s32 width);
+extern void syVideoSetResHeight(s32 height);
+extern void syVideoSetCenterOffsets(s16 left, s16 right, s16 top, s16 bottom);
+extern void syVideoInitViTask(SCTaskVi *task);
 extern void syVideoApplySettingsNoBlock(SCTaskVi *task);
+extern void syVideoSetScreenSettings(s32 width, s32 height, u32 flags);
+extern void syVideoInit(syVideoSetup *video_setup);
 
-#endif /* SYS_SYSTEM_00_H */
+#endif

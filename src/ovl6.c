@@ -3,7 +3,7 @@
 #include <gr/ground.h>
 #include <if/interface.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <lb/library.h>
 
 #include "ovl6.h"
@@ -187,7 +187,7 @@ s32 D_ovl6_8018F040[16] = {
 };
 
 // 0x8018F080
-syDisplaySetup D_ovl6_8018F080 = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup D_ovl6_8018F080 = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8018F09C
 scRuntimeInfo D_ovl6_8018F09C = {
@@ -956,9 +956,9 @@ void sc1PBonusGameStartScene()
 	u32 tasks_complete;
 	s32 i;
 
-	D_ovl6_8018F080.zbuffer = syDisplayGetZBuffer(6400);
+	D_ovl6_8018F080.zbuffer = syVideoGetZBuffer(6400);
 
-	syDisplayInit(&D_ovl6_8018F080);
+	syVideoInit(&D_ovl6_8018F080);
 
 	D_ovl6_8018F09C.arena_size = (size_t) ((uintptr_t)&lOverlay6ArenaHi - (uintptr_t)&lOverlay6ArenaLo);
 	D_ovl6_8018F09C.func_start = scBonusGame_InitBonusGame;

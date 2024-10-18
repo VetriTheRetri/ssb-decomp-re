@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <mv/movie.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 extern u32 func_8000092C();
 extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
@@ -575,7 +575,7 @@ void mvOpeningSectorFuncStart(void)
 }
 
 // 0x8013293C
-syDisplaySetup dMVOpeningSectorDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup dMVOpeningSectorDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132958
 syTaskmanSetup mvOpeningSectorTaskmanSetup =
@@ -625,8 +625,8 @@ syTaskmanSetup mvOpeningSectorTaskmanSetup =
 // 0x80132898
 void mvOpeningSectorStartScene(void)
 {
-    dMVOpeningSectorDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    syDisplayInit(&dMVOpeningSectorDisplaySetup);
+    dMVOpeningSectorDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMVOpeningSectorDisplaySetup);
 
     mvOpeningSectorTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl50_BSS_END);
     syTaskmanInit(&mvOpeningSectorTaskmanSetup);

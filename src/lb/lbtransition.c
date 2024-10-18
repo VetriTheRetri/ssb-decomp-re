@@ -1,5 +1,5 @@
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 extern void *D_80044FA8_407B8;
 extern syRdpSetViewport(void*, f32, f32, f32, f32);
@@ -224,8 +224,8 @@ void lbTransitionSetupTransition(void)
 
     framebuf_pixels = (u32*)
 	(
-		(uintptr_t)D_80044FA8_407B8 + SYDISPLAY_BORDER_SIZE(320, 10, u16) + 
-        SYDISPLAY_BORDER_SIZE(320, 220, u16) + SYDISPLAY_BORDER_SIZE(1, 10, u16)
+		(uintptr_t)D_80044FA8_407B8 + SYVIDEO_BORDER_SIZE(320, 10, u16) + 
+        SYVIDEO_BORDER_SIZE(320, 220, u16) + SYVIDEO_BORDER_SIZE(1, 10, u16)
 	);
     for (i = 0; i < 220; i++)
     {

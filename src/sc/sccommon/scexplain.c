@@ -2,7 +2,7 @@
 #include <it/item.h>
 #include <if/interface.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
@@ -85,7 +85,7 @@ s32 dSCExplainRandomSeed1 = 0x00000001;
 s32 dSCExplainRandomSeed2 = 0x00000001;
 
 // 0x8018E72C
-syDisplaySetup dSCExplainDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup dSCExplainDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8018E748
 syTaskmanSetup dSCExplainTaskmanSetup =
@@ -230,7 +230,7 @@ void scExplainWindowProcDisplay(GObj *gobj)
     gDPSetScissor(gSYTaskmanDLHeads[0]++, G_SC_NON_INTERLACE, 10, 160, 310, 230);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF)));
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF)));
     gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 160, 310, 230);
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
 }
@@ -844,9 +844,9 @@ void scExplainFuncDraw(void)
 // 0x8018E5C0
 void scExplainStartScene(void)
 {
-    dSCExplainDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
+    dSCExplainDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
 
-    syDisplayInit(&dSCExplainDisplaySetup);
+    syVideoInit(&dSCExplainDisplaySetup);
 
     set_lcg_seed_ptr(&dSCExplainRandomSeed1);
 

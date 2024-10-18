@@ -4,7 +4,7 @@
 #include <sys/hal_audio.h>
 #include <sys/main.h>
 #include <sys/obj.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <sys/thread3.h>
 #include <sys/thread6.h>
 
@@ -204,10 +204,10 @@ void func_800210C0(s32 arg0, s32 arg1, s32 arg2, sb32 arg3)
                 gDPFillRectangle
                 (
                     dl++,
-                    ((arg0 + boxsize->ulx) * gSYDisplayResWidth) / GS_SCREEN_WIDTH_DEFAULT,
-                    ((arg1 + boxsize->uly) * gSYDisplayResHeight) / GS_SCREEN_HEIGHT_DEFAULT,
-                    ((arg0 + boxsize->lrx) * gSYDisplayResWidth) / GS_SCREEN_WIDTH_DEFAULT,
-                    ((arg1 + boxsize->lry) * gSYDisplayResHeight) / GS_SCREEN_HEIGHT_DEFAULT
+                    ((arg0 + boxsize->ulx) * gSYVideoResWidth) / GS_SCREEN_WIDTH_DEFAULT,
+                    ((arg1 + boxsize->uly) * gSYVideoResHeight) / GS_SCREEN_HEIGHT_DEFAULT,
+                    ((arg0 + boxsize->lrx) * gSYVideoResWidth) / GS_SCREEN_WIDTH_DEFAULT,
+                    ((arg1 + boxsize->lry) * gSYVideoResHeight) / GS_SCREEN_HEIGHT_DEFAULT
                 );
             }
         }
@@ -218,10 +218,10 @@ void func_800210C0(s32 arg0, s32 arg1, s32 arg2, sb32 arg3)
             gDPFillRectangle
             (
                 dl++,
-                ((arg0 + boxsize->ulx) * gSYDisplayResWidth) / GS_SCREEN_WIDTH_DEFAULT,
-                ((arg1 + boxsize->uly) * gSYDisplayResHeight) / GS_SCREEN_HEIGHT_DEFAULT,
-                ((arg0 + boxsize->lrx) * gSYDisplayResWidth) / GS_SCREEN_WIDTH_DEFAULT,
-                ((arg1 + boxsize->lry) * gSYDisplayResHeight) / GS_SCREEN_HEIGHT_DEFAULT
+                ((arg0 + boxsize->ulx) * gSYVideoResWidth) / GS_SCREEN_WIDTH_DEFAULT,
+                ((arg1 + boxsize->uly) * gSYVideoResHeight) / GS_SCREEN_HEIGHT_DEFAULT,
+                ((arg0 + boxsize->lrx) * gSYVideoResWidth) / GS_SCREEN_WIDTH_DEFAULT,
+                ((arg1 + boxsize->lry) * gSYVideoResHeight) / GS_SCREEN_HEIGHT_DEFAULT
             );
         }
         D_8009DA00 = boxsize;
@@ -235,7 +235,7 @@ void func_80021734(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5)
     s32 s6 = 0;
     s32 i;
 
-    if ((arg3 > 0) && (arg3 < (gSYDisplayResWidth - arg0) / 7))
+    if ((arg3 > 0) && (arg3 < (gSYVideoResWidth - arg0) / 7))
     {
         arg0 += (arg3 * 7);
         arg0 -= 7;
@@ -283,7 +283,7 @@ void func_80021908(s32 arg0, s32 arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5)
 // 0x80021958
 void unref_80021958(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4)
 {
-    if ((arg3 > 0) && (arg3 < (gSYDisplayResWidth - arg0) / 7))
+    if ((arg3 > 0) && (arg3 < (gSYVideoResWidth - arg0) / 7))
     {
         arg0 += (arg3 * 7), arg0 -= 7;
 
@@ -307,10 +307,10 @@ void syErrorFillRectangle(Gfx *dl, u32 ulx, u32 uly, u32 lrx, u32 lry)
     gDPFillRectangle
     (
         dl,
-        (gSYDisplayResWidth * ulx) / GS_SCREEN_WIDTH_DEFAULT,
-        (uly * gSYDisplayResHeight) / GS_SCREEN_HEIGHT_DEFAULT,
-        (gSYDisplayResWidth * lrx) / GS_SCREEN_WIDTH_DEFAULT,
-        (lry * gSYDisplayResHeight) / GS_SCREEN_HEIGHT_DEFAULT
+        (gSYVideoResWidth * ulx) / GS_SCREEN_WIDTH_DEFAULT,
+        (uly * gSYVideoResHeight) / GS_SCREEN_HEIGHT_DEFAULT,
+        (gSYVideoResWidth * lrx) / GS_SCREEN_WIDTH_DEFAULT,
+        (lry * gSYVideoResHeight) / GS_SCREEN_HEIGHT_DEFAULT
     );
 }
 
@@ -327,7 +327,7 @@ void syErrorDrawControllerInputs(GObj *gobj)
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
     func_800218E0(60, 179, controller->stick_range.x, 3, TRUE);
     func_800218E0(92, 179, controller->stick_range.y, 3, TRUE);
 
@@ -357,32 +357,32 @@ void syErrorDrawControllerInputs(GObj *gobj)
     func_80021908(offset_x, 195, scTimeSpentAudio * (1.0F / 256.0F), 5, 2, TRUE);
 
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
-    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF)));
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF)));
     syErrorFillRectangle(gSYTaskmanDLHeads[0]++, 30, offset_y, ((sSYTaskmanUpdateDeltaTime / 4 > 256) ? 256 : sSYTaskmanUpdateDeltaTime / 4) + 30, offset_y + 1);
     offset_y += 2;
 
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
-    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0xFF, 0xFF)));
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0xFF, 0xFF)));
     syErrorFillRectangle(gSYTaskmanDLHeads[0]++, 30, offset_y, ((sSYTaskmanFrameDeltaTime / 4 > 256) ? 256 : sSYTaskmanFrameDeltaTime / 4) + 30, offset_y + 1);
     offset_y += 2;
 
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
-    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0x00, 0xFF)));
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0x00, 0xFF)));
     syErrorFillRectangle(gSYTaskmanDLHeads[0]++, 30, offset_y, ((D_80044FB4_407C4 / 4 > 256) ? 256 : D_80044FB4_407C4 / 4) + 30, offset_y + 1);
     offset_y += 2;
 
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
-    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
     syErrorFillRectangle(gSYTaskmanDLHeads[0]++, 30, offset_y, ((D_8009D2D0 / 4 > 256) ? 256 : D_8009D2D0 / 4) + 30, offset_y + 1);
     offset_y += 2;
 
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
-    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0xFF, 0xFF)));
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0x00, 0xFF, 0xFF, 0xFF)));
     syErrorFillRectangle(gSYTaskmanDLHeads[0]++, 30, offset_y, ((scTimeSpentAudio / 4 > 256) ? 256 : scTimeSpentAudio / 4) + 30, offset_y + 1);
 
     // controller buttons
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
-    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0x00, 0xFF)));
 
     for (i = 0; i < 16; i++)
     {
@@ -401,7 +401,7 @@ void syErrorDrawControllerInputs(GObj *gobj)
         -controller->stick_range.y / 4 + 186
     );
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
-    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x10, 0x10, 0x10, 0xFF)));
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0x10, 0x10, 0x10, 0xFF)));
 
     for (i = 0; i < 80; i += 16)
     {
@@ -441,7 +441,7 @@ GObj* func_80022368(s32 link, u32 arg1, s32 arg2)
 
 void syErrorFramebufDrawBlackRectangle(s32 ulx, s32 uly, s32 width, s32 height)
 {
-    u16 *fb = (u16*)osViGetCurrentFramebuffer() + (gSYDisplayResWidth * uly) + (ulx);
+    u16 *fb = (u16*)osViGetCurrentFramebuffer() + (gSYVideoResWidth * uly) + (ulx);
     s32 i;
     s32 j;
 
@@ -451,7 +451,7 @@ void syErrorFramebufDrawBlackRectangle(s32 ulx, s32 uly, s32 width, s32 height)
         {
             *fb = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01);
         }
-        fb += (gSYDisplayResWidth - width);
+        fb += (gSYVideoResWidth - width);
     }
 }
 
@@ -468,9 +468,9 @@ void syErrorFramebufWriteGlyph(s32 ulx, s32 uly, s32 char_index)
 
     char_offset = &dSYErrorGlyphs[char_index / 5 * 7];
     init_mask = 0x80000000 >> ((char_index % 5) * 6);
-    fb = (u16*)osViGetCurrentFramebuffer() + (gSYDisplayResWidth * uly) + ulx;
+    fb = (u16*)osViGetCurrentFramebuffer() + (gSYVideoResWidth * uly) + ulx;
 
-    for (i = 0; i < 7; i++, fb += (gSYDisplayResWidth - 6))
+    for (i = 0; i < 7; i++, fb += (gSYVideoResWidth - 6))
     {
         for (j = 0, el = *char_offset++, current_mask = init_mask; j < 6; j++, fb++, current_mask >>= 1)
         {
@@ -802,7 +802,7 @@ void syErrorFramebufVPrintfNewLine(const char *fmt, va_list args)
                 }
                 dSYErrorMesgPositionX += 6;
 
-                if (gSYDisplayResWidth - 30 < dSYErrorMesgPositionX)
+                if (gSYVideoResWidth - 30 < dSYErrorMesgPositionX)
                 {
                     dSYErrorMesgPositionX = 30;
                     dSYErrorMesgPositionY += 10;

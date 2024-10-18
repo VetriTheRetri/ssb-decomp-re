@@ -2,7 +2,7 @@
 #include <sc/scene.h>
 #include <gm/gmsound.h>
 #include <sys/thread6.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
@@ -90,7 +90,7 @@ Gfx dMNModeSelectDisplayList[/* */] =
 };
 
 // 0x80132BD8
-syDisplaySetup dMNModeSelectDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup dMNModeSelectDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132BF4
 scRuntimeInfo dMNModeSelectTaskmanSetup =
@@ -768,8 +768,8 @@ void mnModeSelectFuncStart(void)
 // 0x80132B34
 void mnModeSelectStartScene(void)
 {
-    dMNModeSelectDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    syDisplayInit(&dMNModeSelectDisplaySetup);
+    dMNModeSelectDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMNModeSelectDisplaySetup);
     
     dMNModeSelectTaskmanSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl17_BSS_END);
     syTaskmanInit(&dMNModeSelectTaskmanSetup);

@@ -1,7 +1,7 @@
 #include <mn/menu.h>
 #include <sc/scene.h>
 #include <gm/gmsound.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <sys/thread6.h>
 
 extern void* func_800269C0_275C0(u16);
@@ -325,7 +325,7 @@ void mnBackupClearOptionConfirmProcDisplay(GObj *gobj)
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF)));
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF)));
     gDPFillRectangle(gSYTaskmanDLHeads[0]++, 58, 64, 262, 64);
     gDPFillRectangle(gSYTaskmanDLHeads[0]++, 58, 172, 262, 172);
     gDPFillRectangle(gSYTaskmanDLHeads[0]++, 58, 64, 58, 172);
@@ -817,7 +817,7 @@ void mnBackupClearFuncStart(void)
 Vec2f dMNBackupClearUnused0x80132FB8[/* */] = { { 193.0F, 110.0F }, { 87.0F, 110.0F } };
 
 // 0x80132FC8
-syDisplaySetup dMNBackupClearDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup dMNBackupClearDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132FE4
 syTaskmanSetup dMNBackupClearTaskmanSetup =
@@ -867,8 +867,8 @@ syTaskmanSetup dMNBackupClearTaskmanSetup =
 // 0x80132E28
 void mnBackupClearStartScene(void)
 {
-    dMNBackupClearDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    syDisplayInit(&dMNBackupClearDisplaySetup);
+    dMNBackupClearDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMNBackupClearDisplaySetup);
     
     dMNBackupClearTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl53_BSS_END);
     syTaskmanInit(&dMNBackupClearTaskmanSetup);

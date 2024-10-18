@@ -4,7 +4,7 @@
 #include <sc/scene.h>
 #include <gr/ground.h>
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 
 typedef struct viFrameBuf
@@ -852,14 +852,14 @@ void mvOpeningFirstDestinationRenderTransitionGFXOverlay(GObj* gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetColorImage(gSYTaskmanDLHeads[0]++, G_IM_FMT_RGBA, G_IM_SIZ_16b, gSYDisplayResWidth, gSYDisplayZBuffer);
+	gDPSetColorImage(gSYTaskmanDLHeads[0]++, G_IM_FMT_RGBA, G_IM_SIZ_16b, gSYVideoResWidth, gSYVideoZBuffer);
 	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 255, 255, 255, 255);
 	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, 1,  0, 0, 0, PRIMITIVE,  0, 0, 0, 1);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_PASS, G_RM_OPA_SURF2);
 	gcDrawDObjDLHead0(gobj);
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetColorImage(gSYTaskmanDLHeads[0]++, G_IM_FMT_RGBA, gSYDisplayPixelComponentSize, gSYDisplayResWidth, (void*)0x0F000000);
+	gDPSetColorImage(gSYTaskmanDLHeads[0]++, G_IM_FMT_RGBA, gSYVideoColorDepth, gSYVideoResWidth, (void*)0x0F000000);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
@@ -868,13 +868,13 @@ void mvOpeningFirstDestinationRenderTransitionGFXOutline(GObj* gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetColorImage(gSYTaskmanDLHeads[0]++, G_IM_FMT_RGBA, G_IM_SIZ_16b, gSYDisplayResWidth, gSYDisplayZBuffer);
+	gDPSetColorImage(gSYTaskmanDLHeads[0]++, G_IM_FMT_RGBA, G_IM_SIZ_16b, gSYVideoResWidth, gSYVideoZBuffer);
 	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0, 0, 0, 255);
 	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 0, 0, 320, 240);
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
-	gDPSetColorImage(gSYTaskmanDLHeads[0]++, G_IM_FMT_RGBA, gSYDisplayPixelComponentSize, gSYDisplayResWidth, (void*)0x0F000000);
+	gDPSetColorImage(gSYTaskmanDLHeads[0]++, G_IM_FMT_RGBA, gSYVideoColorDepth, gSYVideoResWidth, (void*)0x0F000000);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
 	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, SHADE,  0, 0, 0, 1,  0, 0, 0, SHADE,  0, 0, 0, 1);
 	gcDrawDObjDLHead0(gobj);
@@ -1158,7 +1158,7 @@ void mvOpeningFirstDestinationInit()
 }
 
 // 0x80134BD0
-syDisplaySetup D_ovl34_80134BD0 = {
+syVideoSetup D_ovl34_80134BD0 = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,
@@ -1188,8 +1188,8 @@ scRuntimeInfo D_ovl34_80134BEC = {
 // 0x801349BC
 void intro_firstscene_entry()
 {
-	D_ovl34_80134BD0.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl34_80134BD0);
+	D_ovl34_80134BD0.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl34_80134BD0);
 	D_ovl34_80134BEC.arena_size = (u32) ((uintptr_t)&lOverlay34ArenaHi - (uintptr_t)&lOverlay34ArenaLo);
 	func_800A2698(&D_ovl34_80134BEC);
 	func_800048D0(0);

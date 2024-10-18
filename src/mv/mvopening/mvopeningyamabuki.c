@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <mv/movie.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 extern void syTaskmanSetLoadScene();
 extern u32 func_8000092C();
@@ -67,7 +67,7 @@ Lights1 dMVOpeningYamabukiLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF
 Lights1 dMVOpeningYamabukiLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
 
 // 0x801323D8
-syDisplaySetup dMVOpeningYamabukiDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup dMVOpeningYamabukiDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x801323F4
 syTaskmanSetup dMVOpeningYamabukiTaskmanSetup =
@@ -457,8 +457,8 @@ void mvOpeningYamabukiFuncStart(void)
 // 0x80132344
 void mvOpeningYamabukiStartScene(void)
 {
-    dMVOpeningYamabukiDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    syDisplayInit(&dMVOpeningYamabukiDisplaySetup);
+    dMVOpeningYamabukiDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMVOpeningYamabukiDisplaySetup);
 
     dMVOpeningYamabukiTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl48_BSS_END);
     syTaskmanInit(&dMVOpeningYamabukiTaskmanSetup);

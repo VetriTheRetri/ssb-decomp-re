@@ -2,7 +2,7 @@
 #include <gm/gmsound.h> // temporary, until this finds a proper place
 #include <sc/scene.h>
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <sys/thread6.h>
 
 // Externs
@@ -1382,7 +1382,7 @@ void mnStageInitSSS()
 }
 
 // 0x8013490C
-syDisplaySetup D_ovl30_8013490C = {
+syVideoSetup D_ovl30_8013490C = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,
@@ -1411,8 +1411,8 @@ scRuntimeInfo D_ovl30_80134928 = {
 // 0x8013446C
 void mnStageStartScene()
 {
-	D_ovl30_8013490C.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl30_8013490C);
+	D_ovl30_8013490C.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl30_8013490C);
 	D_ovl30_80134928.arena_size = (u32) ((uintptr_t)&lOverlay30ArenaHi - (uintptr_t)&lOverlay30ArenaLo);
 	func_800A2698(&D_ovl30_80134928);
 }

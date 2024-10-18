@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <lb/library.h>
 
 extern uintptr_t ovl5_BSS_END; 	// 0x8018D950
@@ -29,7 +29,7 @@ ftKeyCommand D_ovl5_8018D580[] =
 // 0x8018D5B8
 syColorRGBA dSCUnusedMarioFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
-syDisplaySetup D_ovl5_8018D5BC = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup D_ovl5_8018D5BC = SYVIDEO_DEFINE_DEFAULT();
 
 scRuntimeInfo D_ovl5_8018D5D8 = {
 	0x00000000, 0x8000a5e4,
@@ -165,8 +165,8 @@ void func_ovl5_8018D4BC(Gfx **display_list)
 // 0x8018D508
 void overlay_set23_entry()
 {
-	D_ovl5_8018D5BC.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl5_8018D5BC);
+	D_ovl5_8018D5BC.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl5_8018D5BC);
 	D_ovl5_8018D5D8.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl5_BSS_END);
 	func_800A2698(&D_ovl5_8018D5D8);
 	auStopBGM();

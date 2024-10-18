@@ -6,7 +6,7 @@
 #include <sys/malloc.h>
 #include <sys/obj.h>
 #include <sys/rdp.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <sys/thread3.h>
 #include <sys/thread6.h>
 
@@ -412,18 +412,18 @@ SCTaskGfx* func_80004D2C(void)
 }
 
 // 0x80004DB4
-void func_80004DB4(SCTaskGfx *arg0, s32 arg1, SCTaskGfxEnd *arg2, SCTaskVi *arg3)
+void func_80004DB4(SCTaskGfx *gfx, s32 gfx_num, SCTaskGfxEnd *gfxend, SCTaskVi *vi)
 {
 	s32 i;
 
 	for (i = 0; i < sSYTaskmanCount; i++)
 	{
-		sSYTaskmanGfxBuffersStart[i] = (SCTaskGfx*) ((uintptr_t)arg0 + (arg1 * sizeof(SCTaskGfx)) * i);
-		sSYTaskmanGfxBuffersCurrent[i] = (SCTaskGfx*) ((uintptr_t)arg0 + (arg1 * sizeof(SCTaskGfx)) * i);
-		sSYTaskmanGfxBuffersEnd[i] = (SCTaskGfx*) ((uintptr_t)arg0 + (arg1 * sizeof(SCTaskGfx)) * (i + 1));
+		sSYTaskmanGfxBuffersStart[i] = (SCTaskGfx*) ((uintptr_t)gfx + (gfx_num * sizeof(SCTaskGfx)) * i);
+		sSYTaskmanGfxBuffersCurrent[i] = (SCTaskGfx*) ((uintptr_t)gfx + (gfx_num * sizeof(SCTaskGfx)) * i);
+		sSYTaskmanGfxBuffersEnd[i] = (SCTaskGfx*) ((uintptr_t)gfx + (gfx_num * sizeof(SCTaskGfx)) * (i + 1));
 
-		sSYTaskmanGfxEndBuffers[i] = (SCTaskGfxEnd*) ((uintptr_t)arg2 + (i * sizeof(SCTaskGfxEnd)));
-		sSYTaskmanViBuffers[i] = (SCTaskVi*) ((uintptr_t)arg3 + (i * sizeof(SCTaskVi)));
+		sSYTaskmanGfxEndBuffers[i] = (SCTaskGfxEnd*) ((uintptr_t)gfxend + (i * sizeof(SCTaskGfxEnd)));
+		sSYTaskmanViBuffers[i] = (SCTaskVi*) ((uintptr_t)vi + (i * sizeof(SCTaskVi)));
 	}
 }
 
@@ -1099,7 +1099,7 @@ void func_800062EC(FnBundle *self)
 	func_80004AB0();
 	self->fn0C();
 	func_800053CC();
-	func_80006F5C(sSYTaskmanViBuffers[gSYTaskmanTaskID]);
+	syVideoApplySettingsNoBlock(sSYTaskmanViBuffers[gSYTaskmanTaskID]);
 	func_80004EFC();
 }
 
@@ -1124,7 +1124,7 @@ void func_800063A0(FnBundle *self)
 	self->fn0C();
 
 	func_800053CC();
-	func_80006F5C(sSYTaskmanViBuffers[gSYTaskmanTaskID]);
+	syVideoApplySettingsNoBlock(sSYTaskmanViBuffers[gSYTaskmanTaskID]);
 	func_80004EFC();
 
 	if (syTaskmanCheckBreakLoop() != FALSE)

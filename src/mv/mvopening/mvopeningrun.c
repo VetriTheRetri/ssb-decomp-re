@@ -2,7 +2,7 @@
 #include <gr/ground.h>
 #include <mv/movie.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 extern u32 func_8000092C();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
@@ -400,7 +400,7 @@ void mvOpeningRunFuncStart(void)
 }
 
 // 0x80132650
-syDisplaySetup dMVOpeningRunDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup dMVOpeningRunDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8013266C
 syTaskmanSetup dMVOpeningRunTaskmanSetup =
@@ -450,8 +450,8 @@ syTaskmanSetup dMVOpeningRunTaskmanSetup =
 // 0x8013256C
 void mvOpeningRunStartScene(void)
 {
-	dMVOpeningRunDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&dMVOpeningRunDisplaySetup);
+	dMVOpeningRunDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&dMVOpeningRunDisplaySetup);
 
 	dMVOpeningRunTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl44_BSS_END);
 	syTaskmanInit(&dMVOpeningRunTaskmanSetup);

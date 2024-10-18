@@ -3,7 +3,7 @@
 #include <gr/ground.h>
 #include <mv/movie.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 extern uintptr_t D_NF_00000025;
 extern uintptr_t D_NF_00000041;
@@ -545,7 +545,7 @@ void mvOpeningKirbyFuncLights(Gfx **dls)
 }
 
 // 0x8018E13C
-syDisplaySetup dMVOpeningKirbyDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup dMVOpeningKirbyDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8018E158
 syTaskmanSetup dMVOpeningKirbyTaskmanSetup =
@@ -595,8 +595,8 @@ syTaskmanSetup dMVOpeningKirbyTaskmanSetup =
 // 0x8018E058
 void mvOpeningKirbyStartScene(void)
 {
-	dMVOpeningKirbyDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&dMVOpeningKirbyDisplaySetup);
+	dMVOpeningKirbyDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&dMVOpeningKirbyDisplaySetup);
 
 	dMVOpeningKirbyTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl43_BSS_END);
 	syTaskmanInit(&dMVOpeningKirbyTaskmanSetup);

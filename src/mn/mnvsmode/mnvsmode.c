@@ -2,7 +2,7 @@
 #include <gm/gmsound.h>
 #include <sc/scene.h>
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <sys/thread6.h>
 
 extern void* func_800269C0_275C0(u16);
@@ -1522,7 +1522,7 @@ void mnVSModeFuncStart(void)
 }
 
 // 0x80134880
-syDisplaySetup dMNVSModeDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup dMNVSModeDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8013489C
 scRuntimeInfo dMNVSModeTaskmanSetup =
@@ -1567,8 +1567,8 @@ scRuntimeInfo dMNVSModeTaskmanSetup =
 // 0x80134758
 void mnVSModeStartScene(void)
 {
-    dMNVSModeDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    syDisplayInit(&dMNVSModeDisplaySetup);
+    dMNVSModeDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMNVSModeDisplaySetup);
 
     dMNVSModeTaskmanSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl19_BSS_END);
     syTaskmanInit(&dMNVSModeTaskmanSetup);

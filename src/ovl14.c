@@ -4,7 +4,7 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 #include "debug.h"
 
@@ -129,7 +129,7 @@ dbMenuItem dMNDebugBattleMenuItems[15] = {
 s32 dMNDebugBattleInitialFtKinds[4] = { nFTKindMario, nFTKindDonkey, nFTKindSamus, nFTKindFox };
 
 // 0x80132934
-syDisplaySetup D_ovl14_80132934 = { 0x80392a00, 0x803b6900, 0x803da800, 0x00000000, 0x00000140, 0x000000f0, 0x00016a99 };
+syVideoSetup D_ovl14_80132934 = { 0x80392a00, 0x803b6900, 0x803da800, 0x00000000, 0x00000140, 0x000000f0, 0x00016a99 };
 
 // 0x80132950
 scRuntimeInfo D_ovl14_80132950 = {
@@ -478,8 +478,8 @@ void dbBattleInit()
 // 0x80132638
 void dbBattleStartScene()
 {
-	D_ovl14_80132934.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl14_80132934);
+	D_ovl14_80132934.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl14_80132934);
 	D_ovl14_80132950.arena_size = (u32) ((uintptr_t)&lOverlay14ArenaHi - (uintptr_t)&lOverlay14ArenaLo);
 	syTaskmanInit(&D_ovl14_80132950);
 }

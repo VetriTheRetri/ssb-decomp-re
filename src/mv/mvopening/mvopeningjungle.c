@@ -3,7 +3,7 @@
 #include <if/interface.h>
 #include <mv/movie.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 extern void syTaskmanSetLoadScene();
 extern u32 func_8000092C();
@@ -145,7 +145,7 @@ ftKeyCommand dMVOpeningJungleSamusInputSeq[/* */] =
 u32 dMVOpeningJungleFileIDs[/* */] = { &D_NF_00000025, &D_NF_00000040 };
 
 // 0x8018D93C
-syDisplaySetup dMVOpeningJungleDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup dMVOpeningJungleDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8018D958
 syTaskmanSetup dMVOpeningJungleTaskmanSetup =
@@ -446,8 +446,8 @@ void mvOpeningJungleFuncLights(Gfx **dls)
 // 0x8018D818
 void mvOpeningJungleStartScene(void)
 {
-    dMVOpeningJungleDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    syDisplayInit(&dMVOpeningJungleDisplaySetup);
+    dMVOpeningJungleDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMVOpeningJungleDisplaySetup);
 
     dMVOpeningJungleTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl51_BSS_END);
     syTaskmanInit(&dMVOpeningJungleTaskmanSetup);

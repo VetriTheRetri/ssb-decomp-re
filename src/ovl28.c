@@ -5,7 +5,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 #include "character_select.h"
 
@@ -2786,7 +2786,7 @@ void mnTrainingInitCSS()
 }
 
 // 0x8013842C
-syDisplaySetup D_ovl28_8013842C = {
+syVideoSetup D_ovl28_8013842C = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,
@@ -2816,8 +2816,8 @@ scRuntimeInfo D_ovl28_80138448 = {
 // 0x80137F00
 void training_css_entry()
 {
-	D_ovl28_8013842C.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl28_8013842C);
+	D_ovl28_8013842C.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl28_8013842C);
 	D_ovl28_80138448.arena_size = (u32) ((uintptr_t)&lOverlay28ArenaHi - (uintptr_t)&lOverlay28ArenaLo);
 	func_800A2698(&D_ovl28_80138448);
 }

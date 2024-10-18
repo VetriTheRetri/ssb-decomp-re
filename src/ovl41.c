@@ -4,7 +4,7 @@
 #include <sc/scene.h>
 #include <gr/ground.h>
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 
 // Externs
@@ -458,7 +458,7 @@ void gMVOpeningYoshiFuncLights(Gfx **display_list)
 }
 
 // 0x8018E13C
-syDisplaySetup D_ovl41_8018E13C = {
+syVideoSetup D_ovl41_8018E13C = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,
@@ -488,8 +488,8 @@ scRuntimeInfo D_ovl41_8018E158 = {
 // 0x8018E05C
 void intro_focus_yoshi_entry()
 {
-	D_ovl41_8018E13C.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl41_8018E13C);
+	D_ovl41_8018E13C.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl41_8018E13C);
 	D_ovl41_8018E158.arena_size = (u32) ((uintptr_t)&lOverlay41ArenaHi - (uintptr_t)&lOverlay41ArenaLo);
 	syTaskmanInit(&D_ovl41_8018E158);
 }

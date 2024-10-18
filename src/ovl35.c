@@ -3,7 +3,7 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 // Externs
 extern intptr_t D_NF_800A5240;      // 0x800A5240
@@ -414,7 +414,7 @@ void mvPortraitsInit()
 }
 
 // 0x80132938
-syDisplaySetup D_ovl35_80132938 = {
+syVideoSetup D_ovl35_80132938 = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,
@@ -444,8 +444,8 @@ scRuntimeInfo D_ovl35_80132954 = {
 // 0x8013283C
 void mvPortraitsStartScene()
 {
-	D_ovl35_80132938.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl35_80132938);
+	D_ovl35_80132938.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl35_80132938);
 	D_ovl35_80132954.arena_size = (u32) ((uintptr_t)&lOverlay35ArenaHi - (uintptr_t)&lOverlay35ArenaLo);
 	syTaskmanInit(&D_ovl35_80132954);
 }

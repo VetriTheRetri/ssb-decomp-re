@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <sys/thread6.h>
 
 extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
@@ -1923,8 +1923,8 @@ void sc1PStageClearCopyFramebufToWallpaper(void)
 	framebuf_pixels = (u32*)
 	(
 		(uintptr_t)D_80044FA8_407B8 		+
-		SYDISPLAY_BORDER_SIZE(320, 10, u16) +
-		SYDISPLAY_BORDER_SIZE(1, 10, u16)
+		SYVIDEO_BORDER_SIZE(320, 10, u16) +
+		SYVIDEO_BORDER_SIZE(1, 10, u16)
 	);
 	wallpaper_pixels = (u32*) lbRelocGetDataFromFile(Sprite*, sSC1PStageClearFiles[6], &lGRWallpaperTraining0Sprite)->bitmap->buf;
 
@@ -2028,7 +2028,7 @@ void sc1PStageClearFuncStart(void)
 }
 
 // 0x801351EC
-syDisplaySetup dGM1PStageClearDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup dGM1PStageClearDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80135208
 syTaskmanSetup dGM1PStageClearTaskmanSetup =
@@ -2078,8 +2078,8 @@ syTaskmanSetup dGM1PStageClearTaskmanSetup =
 // 0x80134E84
 void sc1PStageClearStartScene(void)
 {
-	dGM1PStageClearDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&dGM1PStageClearDisplaySetup);
+	dGM1PStageClearDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&dGM1PStageClearDisplaySetup);
 
 	dGM1PStageClearTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl56_BSS_END);
 	syTaskmanInit(&dGM1PStageClearTaskmanSetup);

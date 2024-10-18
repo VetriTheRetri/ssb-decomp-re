@@ -102,7 +102,7 @@ void syMainCheckSPImemOK(void)
 
 void syMainCheckSPDmemOK(void) 
 {
-    if (IO_READ(SP_DMEM_START) == (u32)-1) 
+    if (IO_READ(SP_DMEM_START) == -1)
     {
         gSYMainIsDmemOK = TRUE;
     } 

@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <lb/library.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -66,7 +66,7 @@ sb32 lbBackupIsSramValid(void)
 void lbBackupApplyOptions(void)
 {
     auSetSoundQuality(gSaveData.sound_mono_or_stereo);
-    syDisplaySetCenterOffsets
+    syVideoSetCenterOffsets
     (
         gSaveData.screen_adjust_h, gSaveData.screen_adjust_h, 
         gSaveData.screen_adjust_v, gSaveData.screen_adjust_v

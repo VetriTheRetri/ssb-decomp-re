@@ -5,7 +5,7 @@
 #include <gr/ground.h>
 #include <mn/menu.h>
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 
 typedef enum charsActionKind
@@ -2101,7 +2101,7 @@ void mnCharsInit()
 }
 
 // 0x801364FC
-syDisplaySetup D_ovl33_801364FC = {
+syVideoSetup D_ovl33_801364FC = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,
@@ -2131,8 +2131,8 @@ scRuntimeInfo D_ovl33_80136518 = {
 // 0x80134050
 void char_bkg_info_entry()
 {
-	D_ovl33_801364FC.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl33_801364FC);
+	D_ovl33_801364FC.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl33_801364FC);
 	D_ovl33_80136518.arena_size = (u32) ((uintptr_t)&lOverlay33ArenaHi - (uintptr_t)&lOverlay33ArenaLo);
 	func_800A2698(&D_ovl33_80136518);
 }

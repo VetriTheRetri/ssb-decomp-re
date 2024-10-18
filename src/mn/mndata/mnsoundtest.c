@@ -2,7 +2,7 @@
 #include <gm/gmsound.h>
 #include <sc/scene.h>
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <sys/thread6.h>
 
 extern void* func_800269C0_275C0(u16);
@@ -693,7 +693,7 @@ Gfx dMNSoundTestDisplayList[/* */] =
 };
 
 // 0x80134240
-syDisplaySetup dMNSoundTestDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup dMNSoundTestDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8013425C
 syTaskmanSetup dMNSoundTestTaskmanSetup =
@@ -1760,8 +1760,8 @@ void mnSoundTestFuncLights(Gfx **dls)
 // 0x80133988
 void mnSoundTestStartScene(void)
 {
-    dMNSoundTestDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    syDisplayInit(&dMNSoundTestDisplaySetup);
+    dMNSoundTestDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMNSoundTestDisplaySetup);
 
     dMNSoundTestTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl62_BSS_END);
     syTaskmanInit(&dMNSoundTestTaskmanSetup);

@@ -2,7 +2,7 @@
 
 #include <sys/taskman.h>
 #include <sys/hal_gu.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 #include <config.h>
 #include "libc/math.h"
@@ -2663,25 +2663,25 @@ void func_80016338(Gfx **dls, Camera *cam, s32 arg2)
     lrx = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
     lry = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
 
-    if (ulx < (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorLeft)
+    if (ulx < (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorLeft)
     {
-        ulx = (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorLeft;
+        ulx = (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorLeft;
     }
-    if (uly < (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorTop)
+    if (uly < (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorTop)
     {
-        uly = (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorTop;
+        uly = (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorTop;
     }
-    if (lrx > gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorRight))
+    if (lrx > gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorRight))
     {
-        lrx = gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorRight);
+        lrx = gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorRight);
     }
-    if (lry > gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorBottom))
+    if (lry > gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorBottom))
     {
-        lry = gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorBottom);
+        lry = gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorBottom);
     }
     gDPSetScissor(dl++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
     gDPPipeSync(dl++);
-    gDPSetColorImage(dl++, G_IM_FMT_RGBA, gSYDisplayPixelComponentSize, gSYDisplayResWidth, (void*)0x0F000000);
+    gDPSetColorImage(dl++, G_IM_FMT_RGBA, gSYVideoColorDepth, gSYVideoResWidth, (void*)0x0F000000);
     gDPSetCycleType(dl++, G_CYC_1CYCLE);
 
     if ((arg2 == 0) || (arg2 == 2))
@@ -2717,21 +2717,21 @@ void func_8001663C(Gfx **dls, Camera *cam, s32 arg2)
     lrx = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
     lry = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
 
-    if (ulx < (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorLeft)
+    if (ulx < (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorLeft)
     {
-        ulx = (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorLeft;
+        ulx = (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorLeft;
     }
-    if (uly < (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorTop)
+    if (uly < (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorTop)
     {
-        uly = (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorTop;
+        uly = (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorTop;
     }
-    if (lrx > gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorRight))
+    if (lrx > gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorRight))
     {
-        lrx = gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorRight);
+        lrx = gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorRight);
     }
-    if (lry > gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorBottom))
+    if (lry > gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorBottom))
     {
-        lry = gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorBottom);
+        lry = gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorBottom);
     }
     gDPSetScissor(dl++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
 
@@ -2742,18 +2742,18 @@ void func_8001663C(Gfx **dls, Camera *cam, s32 arg2)
         gDPPipeSync(dl++);
         gDPSetCycleType(dl++, G_CYC_FILL);
         gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
-        gDPSetColorImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, gSYDisplayResWidth, gSYDisplayZBuffer);
+        gDPSetColorImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, gSYVideoResWidth, gSYVideoZBuffer);
         gDPSetFillColor(dl++, GCOMBINE32_RGBA5551(GPACK_ZDZ(G_MAXFBZ, 0)));
         gDPFillRectangle(dl++, ulx, uly, lrx, lry);
     }
     gDPPipeSync(dl++);
-    gDPSetColorImage(dl++, G_IM_FMT_RGBA, gSYDisplayPixelComponentSize, gSYDisplayResWidth, (void*)0x0F000000);
+    gDPSetColorImage(dl++, G_IM_FMT_RGBA, gSYVideoColorDepth, gSYVideoResWidth, (void*)0x0F000000);
 
     if (cam->flags & 0x2)
     {
         gDPSetCycleType(dl++, G_CYC_FILL);
         gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
-        gDPSetFillColor(dl++, syDisplayGetFillColor(cam->color));
+        gDPSetFillColor(dl++, syVideoGetFillColor(cam->color));
         gDPFillRectangle(dl++, ulx, uly, lrx, lry);
     }
     gDPPipeSync(dl++);
@@ -2812,14 +2812,14 @@ void unref_80016AE4(Gfx **dls, Camera *cam, s32 arg2, void *image, s32 max_lrx, 
         gDPFillRectangle(dl++, ulx, uly, lrx, lry);
     }
     gDPPipeSync(dl++);
-    gDPSetColorImage(dl++, G_IM_FMT_RGBA, gSYDisplayPixelComponentSize, max_lrx, image);
+    gDPSetColorImage(dl++, G_IM_FMT_RGBA, gSYVideoColorDepth, max_lrx, image);
     gDPSetDepthImage(dl++, depth);
 
     if (cam->flags & 0x2)
     {
         gDPSetCycleType(dl++, G_CYC_FILL);
         gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
-        gDPSetFillColor(dl++, syDisplayGetFillColor(cam->color));
+        gDPSetFillColor(dl++, syVideoGetFillColor(cam->color));
         gDPFillRectangle(dl++, ulx, uly, lrx, lry);
     }
     gDPPipeSync(dl++);
@@ -3445,21 +3445,21 @@ void func_80018300(GObj *gobj)
     s32 xmax = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
     s32 ymax = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
 
-    if (xmin < (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorLeft)
+    if (xmin < (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorLeft)
     {
-        xmin = (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorLeft;
+        xmin = (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorLeft;
     }
-    if (ymin < (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorTop)
+    if (ymin < (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorTop)
     {
-        ymin = (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorTop;
+        ymin = (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorTop;
     }
-    if (xmax > gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorRight))
+    if (xmax > gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorRight))
     {
-        xmax = gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorRight);
+        xmax = gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorRight);
     }
-    if (ymax > gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorBottom))
+    if (ymax > gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorBottom))
     {
-        ymax = gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorBottom);
+        ymax = gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorBottom);
     }
     func_8001663C(gSYTaskmanDLHeads, cam, 0);
     spInit(gSYTaskmanDLHeads);

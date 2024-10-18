@@ -2,7 +2,7 @@
 #include <gr/ground.h>
 #include <if/interface.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 extern void func_800A26B8(void);
 
@@ -156,7 +156,7 @@ intptr_t dSCAutoDemoFighterNameSpriteOffsets[/* */] =
 syColorRGBA dSCAutoDemoFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x8018E234
-syDisplaySetup dSCAutoDemoDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup dSCAutoDemoDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8018E250
 syTaskmanSetup dSCAutoDemoTaskmanSetup = 
@@ -728,9 +728,9 @@ void scAutoDemoFuncLights(Gfx **dls)
 // 0x8018E014
 void scAutoDemoStartScene(void)
 {
-	dSCAutoDemoDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
+	dSCAutoDemoDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
 
-	syDisplayInit(&dSCAutoDemoDisplaySetup);
+	syVideoInit(&dSCAutoDemoDisplaySetup);
 
 	dSCAutoDemoTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl64_BSS_END);
 	dSCAutoDemoTaskmanSetup.func_start = scAutoDemoFuncStart;

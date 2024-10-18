@@ -331,152 +331,144 @@ void func_80000EAC(void) {
 // also non matching in snap sys/sched
 void func_80000F30(u32, u32, s32, s16, s16, s16, s16);
 #ifdef NON_MATCHING
-void func_80000F30(u32 arg0, u32 arg1, s32 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6) {
+void func_80000F30(u32 arg0, u32 arg1, s32 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6)
+{
     u32 phi_a0; // flag collector
     s32 phi_v1;
     s32 phi_t0;
-    s32 phi_t2;
+    sb32 is_res_in_bounds;
     u32 phi_t3;
     u32 sp00;
     s32 sp14;
     s32 sp1C;
     s32 sp20;
 
-    if (arg0 >= GS_SCREEN_WIDTH_DEFAULT || arg1 >= GS_SCREEN_HEIGHT_DEFAULT) {
-        phi_t2 = 0;
-    } else {
-        phi_t2 = 1;
+    if (arg0 >= GS_SCREEN_WIDTH_DEFAULT || arg1 >= GS_SCREEN_HEIGHT_DEFAULT)
+    {
+        is_res_in_bounds = FALSE;
     }
+    else is_res_in_bounds = TRUE;
 
-    // phi_t2 = arg0 >= GS_SCREEN_WIDTH_DEFAULT && arg1 >= GS_SCREEN_HEIGHT_DEFAULT ? 0 : 1;
+    // is_res_in_bounds = arg0 >= GS_SCREEN_WIDTH_DEFAULT && arg1 >= GS_SCREEN_HEIGHT_DEFAULT ? 0 : 1;
 
-    // L80000F5C
-    if (arg2 & 0x00004) {
+    if (arg2 & SYVIDEO_FLAG_SERRATE)
+    {
         D_80044FBC_407CC.serrate = TRUE;
         D_80044F38_40748.comRegs.ctrl |= VI_CTRL_SERRATE_ON;
     }
-    // L80000F8C
-    if (arg2 & 0x00008) {
+    if (arg2 & SYVIDEO_FLAG_NOSERRATE)
+    {
         D_80044FBC_407CC.serrate = FALSE;
         D_80044F38_40748.comRegs.ctrl &= ~VI_CTRL_SERRATE_ON;
     }
-    // L80000FC0
-    if (arg2 & 0x00010) {
+    if (arg2 & SYVIDEO_FLAG_COLORDEPTH16)
+    {
         D_80044FBC_407CC.pixelSize32 = FALSE;
         D_80044F38_40748.comRegs.ctrl &= ~(VI_CTRL_TYPE_32 | VI_CTRL_TYPE_16);
         D_80044F38_40748.comRegs.ctrl |= VI_CTRL_TYPE_16;
     }
-    // L80000FF4
-    if (arg2 & 0x00020) {
+    if (arg2 & SYVIDEO_FLAG_COLORDEPTH32)
+    {
         D_80044FBC_407CC.pixelSize32 = TRUE;
         D_80044F38_40748.comRegs.ctrl &= ~(VI_CTRL_TYPE_32 | VI_CTRL_TYPE_16);
         D_80044F38_40748.comRegs.ctrl |= VI_CTRL_TYPE_32;
     }
-    // L80001024
-    if (arg2 & 0x00040) {
+    if (arg2 & SYVIDEO_FLAG_GAMMA)
+    {
         D_80044FBC_407CC.gamma = TRUE;
         D_80044F38_40748.comRegs.ctrl |= VI_CTRL_GAMMA_ON;
     }
-    // L80001048
-    if (arg2 & 0x00080) {
+    if (arg2 & SYVIDEO_FLAG_NOGAMMA)
+    {
         D_80044FBC_407CC.gamma = FALSE;
         D_80044F38_40748.comRegs.ctrl &= ~VI_CTRL_GAMMA_ON;
     }
-    // L80001070
-    if (arg2 & 0x01000) {
+    if (arg2 & SYVIDEO_FLAG_GAMMADITHER)
+    {
         D_80044FBC_407CC.gammaDither = TRUE;
         D_80044F38_40748.comRegs.ctrl |= VI_CTRL_GAMMA_DITHER_ON;
     }
-    // L80001094
-    if (arg2 & 0x02000) {
+    if (arg2 & SYVIDEO_FLAG_NOGAMMADITHER)
+    {
         D_80044FBC_407CC.gammaDither = FALSE;
         D_80044F38_40748.comRegs.ctrl &= ~VI_CTRL_GAMMA_DITHER_ON;
     }
-    // L800010BC
-    if (arg2 & 0x04000) {
+    if (arg2 & SYVIDEO_FLAG_DITHERFILTER)
+    {
         D_80044FBC_407CC.ditherFilter = TRUE;
         D_80044F38_40748.comRegs.ctrl |= VI_CTRL_DITHER_FILTER_ON;
     }
-    // L800010E4
-    if (arg2 & 0x08000) {
+    if (arg2 & SYVIDEO_FLAG_NODITHERFILTER)
+    {
         D_80044FBC_407CC.ditherFilter = FALSE;
         D_80044F38_40748.comRegs.ctrl &= ~VI_CTRL_DITHER_FILTER_ON;
     }
-    // L80001110
-    if (arg2 & 0x10000) {
+    if (arg2 & SYVIDEO_FLAG_DIVOT)
+    {
         D_80044FBC_407CC.divot = TRUE;
         D_80044F38_40748.comRegs.ctrl |= VI_CTRL_DIVOT_ON;
     }
-    // L80001134
-    if (arg2 & 0x20000) {
+    if (arg2 & SYVIDEO_FLAG_NODIVOT)
+    {
         D_80044FBC_407CC.divot = FALSE;
         D_80044F38_40748.comRegs.ctrl &= ~VI_CTRL_DIVOT_ON;
     }
-    // L8000115C
-    if (arg2 & 0x00100) { D_80044FBC_407CC.blackout = TRUE; }
-    // L80001174
-    if (arg2 & 0x00200) { D_80044FBC_407CC.blackout = FALSE; }
-    // L80001188
+    if (arg2 & SYVIDEO_FLAG_BLACKOUT)
+    {
+        D_80044FBC_407CC.blackout = TRUE;
+    }
+    if (arg2 & SYVIDEO_FLAG_NOBLACKOUT)
+    {
+        D_80044FBC_407CC.blackout = FALSE;
+    }
     if (arg2 & 0x00400) { D_80044FBC_407CC.unk_b04 = TRUE; }
-    // L800011A0
     if (arg2 & 0x00800) { D_80044FBC_407CC.unk_b04 = FALSE; }
-    // L800011B4
     if (arg2 & 0x00001) { D_80044FBC_407CC.unk_b80 = TRUE; }
-    // L800011D0
     if (arg2 & 0x00002) { D_80044FBC_407CC.unk_b80 = FALSE; }
 
-    // L800011E8
     D_80044F38_40748.comRegs.ctrl &= ~VI_CTRL_ANTIALIAS_MASK;
 
-    if (D_80044FBC_407CC.unk_b80) {
-        phi_a0 = D_80044FBC_407CC.ditherFilter ? 0x100 : 0;
-
-        // if (D_80044FBC_407CC.ditherFilter) {
-        //     phi_a0 = 0x100; // aa & resamp (fetch extra lines if needed)
-        // } else {
-        //     phi_a0 = 0;
-        // }
-
-        // L80001220
-        D_80044F38_40748.comRegs.ctrl |= phi_a0;
-    } else {
-        // L80001238
-        if (!D_80044FBC_407CC.unk_b04 && D_80044FBC_407CC.pixelSize32 == 1) {
-            D_80044F38_40748.comRegs.ctrl = 0x300; // neither (replicate pixels, no interpolate)
-        } else {
-            // L8000126C
-            D_80044F38_40748.comRegs.ctrl = 0x200; // resamp only (treat as all fully covered
+    if (D_80044FBC_407CC.unk_b80)
+    {
+        D_80044F38_40748.comRegs.ctrl |= (D_80044FBC_407CC.ditherFilter ? VI_CTRL_ANTIALIAS_MODE_1 : 0);
+    }
+    else
+    {
+        if (!(D_80044FBC_407CC.unk_b04) && (D_80044FBC_407CC.pixelSize32 == TRUE))
+        {
+            D_80044F38_40748.comRegs.ctrl = VI_CTRL_ANTIALIAS_MODE_3; // neither (replicate pixels, no interpolate)
         }
+        else D_80044F38_40748.comRegs.ctrl = VI_CTRL_ANTIALIAS_MODE_2; // resamp only (treat as all fully covered
     }
     // L8000127C
     phi_t0 = D_80044FBC_407CC.pixelSize32; // tail expression?
 
-    if (phi_t2) {
-        if (D_80044FBC_407CC.serrate) {
-            phi_v1 = 0;
-        } else {
-            phi_v1 = 1;
+    if (is_res_in_bounds != FALSE)
+    {
+        if (D_80044FBC_407CC.serrate)
+        {
+            phi_v1 = FALSE;
         }
-    } else {
-        // L800012A0
-        if (D_80044FBC_407CC.unk_b04) {
-            phi_v1 = 1;
-        } else {
-            phi_v1 = 0;
-        }
+        else phi_v1 = TRUE;
     }
+    else if (D_80044FBC_407CC.unk_b04)
+    {
+        phi_v1 = TRUE;
+    }
+    else phi_v1 = FALSE;
+
     // L800012B0
     // temp_a1 = arg5 & 0xFFFE;
     // temp_a2 = arg6 & 0xFFFE;
     arg5 &= ~1; // a1?
     arg6 &= ~1; // a2?
-    if (!phi_t2 && !phi_v1) {
+    if (!is_res_in_bounds && !phi_v1) {
         sp14 = 2;
     } else {
         sp14 = 1;
     }
     // L800012EC L800012F0 L800012F4
-    if (phi_t2) {
+    if (is_res_in_bounds) {
         phi_a0 = 1;
     } else {
         phi_a0 = 2;
@@ -492,7 +484,7 @@ void func_80000F30(u32 arg0, u32 arg1, s32 arg2, s16 arg3, s16 arg4, s16 arg5, s
     // t3 = t6 * t7
     // L80001348
     phi_t3 = (((arg1 << 11) / ((arg6 - arg5) + 480)) / phi_a0) * (sp14);
-    if (!phi_t2 && phi_v1) {
+    if (!is_res_in_bounds && phi_v1) {
         phi_a0 = 2;
     } else {
         phi_a0 = 1;
@@ -500,25 +492,27 @@ void func_80000F30(u32 arg0, u32 arg1, s32 arg2, s16 arg3, s16 arg4, s16 arg5, s
     // L80001368
     D_80044F38_40748.comRegs.width = phi_a0 * arg0;
     // TODO: macros
-    switch (osTvType) {
-        case OS_TV_NTSC:
-            D_80044F38_40748.comRegs.burst     = 0x3E52239;
-            D_80044F38_40748.comRegs.vSync     = 0x20C;
-            D_80044F38_40748.comRegs.hSync     = 0xC15;
-            D_80044F38_40748.comRegs.leap      = 0xC150C15;
-            D_80044F38_40748.comRegs.hStart    = 0x6C02EC;
-            D_80044F38_40748.fldRegs[0].vStart = 0x2501FFU;
-            D_80044F38_40748.fldRegs[0].vBurst = 0xE0204;
-            break;
-        case OS_TV_MPAL:
-            D_80044F38_40748.comRegs.burst     = 0x4651E39;
-            D_80044F38_40748.comRegs.vSync     = 0x20C;
-            D_80044F38_40748.comRegs.hSync     = 0xC10;
-            D_80044F38_40748.comRegs.leap      = 0xC1C0C1C;
-            D_80044F38_40748.comRegs.hStart    = 0x6C02EC;
-            D_80044F38_40748.fldRegs[0].vStart = 0x2501FFU;
-            D_80044F38_40748.fldRegs[0].vBurst = 0xE0204;
-            break;
+    switch (osTvType)
+    {
+    case OS_TV_NTSC:
+        D_80044F38_40748.comRegs.burst     = 0x3E52239;
+        D_80044F38_40748.comRegs.vSync     = 0x20C;
+        D_80044F38_40748.comRegs.hSync     = 0xC15;
+        D_80044F38_40748.comRegs.leap      = 0xC150C15;
+        D_80044F38_40748.comRegs.hStart    = 0x6C02EC;
+        D_80044F38_40748.fldRegs[0].vStart = 0x2501FFU;
+        D_80044F38_40748.fldRegs[0].vBurst = 0xE0204;
+        break;
+        
+    case OS_TV_MPAL:
+        D_80044F38_40748.comRegs.burst     = 0x4651E39;
+        D_80044F38_40748.comRegs.vSync     = 0x20C;
+        D_80044F38_40748.comRegs.hSync     = 0xC10;
+        D_80044F38_40748.comRegs.leap      = 0xC1C0C1C;
+        D_80044F38_40748.comRegs.hStart    = 0x6C02EC;
+        D_80044F38_40748.fldRegs[0].vStart = 0x2501FFU;
+        D_80044F38_40748.fldRegs[0].vBurst = 0xE0204;
+        break;
     }
     // L80001424
     sp00                               = D_80044F38_40748.comRegs.hStart;
@@ -563,7 +557,8 @@ void func_80000F30(u32 arg0, u32 arg1, s32 arg2, s16 arg3, s16 arg4, s16 arg5, s
     D_80044F38_40748.fldRegs[1].vStart = (sp20 << 16) | sp1C;
     D_80044F38_40748.fldRegs[1].vBurst = D_80044F38_40748.fldRegs[0].vBurst;
 
-    if (phi_t2 && phi_v1) {
+    if (is_res_in_bounds && phi_v1)
+    {
         D_80044F38_40748.comRegs.vSync += 1;
         if (osTvType == OS_TV_MPAL) { D_80044F38_40748.comRegs.hSync += 0x40001; }
         if (osTvType == OS_TV_MPAL) { D_80044F38_40748.comRegs.leap += 0xFFFCFFFE; }
@@ -581,7 +576,7 @@ void func_80000F30(u32 arg0, u32 arg1, s32 arg2, s16 arg3, s16 arg4, s16 arg5, s
 
     sp14 = phi_t0 ? 2 : 1;
     // L8000163C
-    phi_a0 = phi_t2 ? 2 : 1;
+    phi_a0 = is_res_in_bounds ? 2 : 1;
     // L8000164C
     D_80044F38_40748.fldRegs[0].yScale = phi_t3;
     D_80044F38_40748.fldRegs[1].yScale = phi_t3;

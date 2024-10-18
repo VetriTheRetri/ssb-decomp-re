@@ -4,7 +4,7 @@
 #include <sc/scene.h>
 #include <gr/ground.h>
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 // Externs
 extern intptr_t D_NF_800A5240;      // 0x800A5240
@@ -454,7 +454,7 @@ void mvOpeningFoxFuncLights(Gfx **display_list)
 }
 
 // 0x8018E110
-syDisplaySetup D_ovl39_8018E110 = {
+syVideoSetup D_ovl39_8018E110 = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,
@@ -484,8 +484,8 @@ scRuntimeInfo D_ovl39_8018E12C = {
 // 0x8018E02C
 void intro_focus_fox_entry()
 {
-	D_ovl39_8018E110.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl39_8018E110);
+	D_ovl39_8018E110.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl39_8018E110);
 	D_ovl39_8018E12C.arena_size = (u32) ((uintptr_t)&lOverlay39ArenaHi - (uintptr_t)&lOverlay39ArenaLo);
 	syTaskmanInit(&D_ovl39_8018E12C);
 }

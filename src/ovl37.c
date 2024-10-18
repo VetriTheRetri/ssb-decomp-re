@@ -4,7 +4,7 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <sys/objdraw.h>
 
 // Externs
@@ -447,7 +447,7 @@ void mvOpeningDKFuncLights(Gfx **display_list)
 }
 
 // 0x8018E0E0
-syDisplaySetup D_ovl37_8018E0E0 = {
+syVideoSetup D_ovl37_8018E0E0 = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,
@@ -477,8 +477,8 @@ scRuntimeInfo D_ovl37_8018E0FC = {
 // 0x8018E018
 void intro_focus_dk_entry()
 {
-	D_ovl37_8018E0E0.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl37_8018E0E0);
+	D_ovl37_8018E0E0.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl37_8018E0E0);
 	D_ovl37_8018E0FC.arena_size = (u32) ((uintptr_t)&lOverlay37ArenaHi - (uintptr_t)&lOverlay37ArenaLo);
 	syTaskmanInit(&D_ovl37_8018E0FC);
 }

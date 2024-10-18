@@ -10,7 +10,7 @@
 #include <sys/dma.h>
 #include <sys/taskman.h>
 #include <sys/hal_audio.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <sc/sctypes.h> // Temporarily, until ovl defines are fixed
 #include <sys/thread6.h>
 
@@ -648,7 +648,7 @@ void func_800A26D8(GObj* arg0)
 		width = 0;
 	if (width > 256)
 		width = 256;
-	gDPSetFillColor((*gSYTaskmanDLHeads)++, syDisplayGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF)));
+	gDPSetFillColor((*gSYTaskmanDLHeads)++, syVideoGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF)));
 	gDPFillRectangle((*gSYTaskmanDLHeads)++, 30, barY, width + 30, barY + 1);
 
 	barY += 2;
@@ -658,7 +658,7 @@ void func_800A26D8(GObj* arg0)
 		width = 0;
 	if (width > 256)
 		width = 256;
-	gDPSetFillColor((*gSYTaskmanDLHeads)++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x40, 0x00, 0xFF)));
+	gDPSetFillColor((*gSYTaskmanDLHeads)++, syVideoGetFillColor(GPACK_RGBA8888(0xFF, 0x40, 0x00, 0xFF)));
 	gDPFillRectangle((*gSYTaskmanDLHeads)++, 30, barY, width + 30, barY + 1);
 
 	barY += 2;
@@ -668,7 +668,7 @@ void func_800A26D8(GObj* arg0)
 		width = 0;
 	if (width > 256)
 		width = 256;
-	gDPSetFillColor((*gSYTaskmanDLHeads)++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
+	gDPSetFillColor((*gSYTaskmanDLHeads)++, syVideoGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
 	gDPFillRectangle((*gSYTaskmanDLHeads)++, 30, barY, width + 30, barY + 1);
 	gDPPipeSync((*gSYTaskmanDLHeads)++);
 	// this needs to be in its own block to match. macro?
@@ -676,7 +676,7 @@ void func_800A26D8(GObj* arg0)
 	{
 		size_t freeSpace = (uintptr_t)gSYTaskmanGeneralHeap.end - (uintptr_t)gSYTaskmanGeneralHeap.ptr;
 
-		gDPSetFillColor((*gSYTaskmanDLHeads)++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
+		gDPSetFillColor((*gSYTaskmanDLHeads)++, syVideoGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
 		func_800218E0(0x14, 0x14, freeSpace, 7, 1);
 		gDPPipeSync((*gSYTaskmanDLHeads)++);
 	}

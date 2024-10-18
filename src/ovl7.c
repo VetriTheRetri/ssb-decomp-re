@@ -3,7 +3,7 @@
 #include <gr/ground.h>
 #include <if/interface.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <buttons.h>
 #include <lb/library.h>
 
@@ -123,7 +123,7 @@ s32 scTrainingMode_Files_BackgroundImageIDs[] = {
 // 0x8019086C
 syColorRGBA dSCTrainingFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
-syDisplaySetup D_ovl7_80190870 = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup D_ovl7_80190870 = SYVIDEO_DEFINE_DEFAULT();
 
 scRuntimeInfo D_ovl7_8019088C = {
 
@@ -1390,7 +1390,7 @@ void scTrainingMode_RenderCursorUnderline(GObj* interface_gobj)
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
 	gDPSetFillColor(gSYTaskmanDLHeads[0]++,
-					syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF)));
+					syVideoGetFillColor(GPACK_RGBA8888(0xFF, 0x00, 0x00, 0xFF)));
 	gDPFillRectangle(gSYTaskmanDLHeads[0]++, gTrainingModeStruct.cursor_ulx, gTrainingModeStruct.cursor_uly,
 					 gTrainingModeStruct.cursor_lrx, gTrainingModeStruct.cursor_lry);
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
@@ -1572,9 +1572,9 @@ void scTrainingMode_SetGeometryRenderLights(Gfx** display_list)
 // 0x801905F4
 void scManager_TrainingMode_InitScene()
 {
-	D_ovl7_80190870.zbuffer = syDisplayGetZBuffer(6400);
+	D_ovl7_80190870.zbuffer = syVideoGetZBuffer(6400);
 
-	syDisplayInit(&D_ovl7_80190870);
+	syVideoInit(&D_ovl7_80190870);
 
 	D_ovl7_8019088C.arena_size = (size_t) ((uintptr_t)&lOverlay7ArenaHi - (uintptr_t)&lOverlay7ArenaLo);
 	D_ovl7_8019088C.func_start = scTrainingMode_InitTrainingMode;

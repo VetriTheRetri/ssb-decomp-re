@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <mn/menu.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
@@ -365,7 +365,7 @@ void mnMessageFuncStart(void)
 }
 
 // 0x801325A0
-syDisplaySetup dMNMessageDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup dMNMessageDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x801325BC
 scRuntimeInfo dMNMessageTaskmanSetup =
@@ -410,9 +410,9 @@ scRuntimeInfo dMNMessageTaskmanSetup =
 // 0x801323F8
 void mnMessageStartScene(void)
 {
-    dMNMessageDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
+    dMNMessageDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
     
-    syDisplayInit(&dMNMessageDisplaySetup);
+    syVideoInit(&dMNMessageDisplaySetup);
     
     dMNMessageTaskmanSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl22_BSS_END);
 

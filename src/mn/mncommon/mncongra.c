@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <mn/menu.h>
 #include <sc/scene.h> // includes sys/obj.h
-#include <sys/display.h>
+#include <sys/video.h>
 #include <sys/thread6.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
@@ -134,15 +134,17 @@ Gfx dMNCongraDisplayList[/* */] =
 };
 
 // 0x80132208
-syDisplaySetup dMNCongraDisplaySetup =
+syVideoSetup dMNCongraDisplaySetup =
 {
-	SYDISPLAY_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 0),
-	SYDISPLAY_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 1),
-	SYDISPLAY_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 2),
+	SYVIDEO_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 0),
+	SYVIDEO_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 1),
+	SYVIDEO_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 2),
 	NULL,
 	320,
 	240, 
-	0x15AA9
+	SYVIDEO_FLAG_DIVOT        | SYVIDEO_FLAG_DITHERFILTER | SYVIDEO_FLAG_GAMMADITHER |
+	0x800                     | SYVIDEO_FLAG_NOBLACKOUT   | SYVIDEO_FLAG_NOGAMMA     |
+    SYVIDEO_FLAG_COLORDEPTH32 | SYVIDEO_FLAG_NOSERRATE    | 0x1
 };
 
 // 0x80132224
@@ -373,7 +375,7 @@ void mnCongraFuncDraw(void)
 	{
 		sMNCongraIsProceedScene = FALSE;
 
-		func_80006E18(0x100);
+		syVideoSetFlags(0x100);
 
 		sMNCongraSceneChangeWait = 5;
 	}
@@ -403,7 +405,7 @@ void mnCongraStartScene(void)
 	u16 *subsys_arena_lo;
 	u32 *congra_arena_hi;
 
-	congra_arena_hi = (u32*)SYDISPLAY_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 0);
+	congra_arena_hi = (u32*)SYVIDEO_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 0);
 
 	while ((uintptr_t)congra_arena_hi < 0x80400000) { *congra_arena_hi++ = GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF); } // WARNING: Newline memes!
 
@@ -421,10 +423,10 @@ void mnCongraStartScene(void)
 		sMNCongraFighterKind = gTransferBattleState.players[0].ft_kind;
 		break;
 	}
-	dMNCongraDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&dMNCongraDisplaySetup);
+	dMNCongraDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&dMNCongraDisplaySetup);
 
-	dMNCongraTaskmanSetup.buffer_setup.arena_size = (size_t) (SYDISPLAY_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 0) - (uintptr_t)&ovl57_BSS_END);
+	dMNCongraTaskmanSetup.buffer_setup.arena_size = (size_t) (SYVIDEO_DEFINE_FRAMEBUF_ADDR(320, 230, 0, 10, u32, 0) - (uintptr_t)&ovl57_BSS_END);
 	syTaskmanInit(&dMNCongraTaskmanSetup); subsys_arena_lo = gSCSubsysFramebuffer0; // WARNING: Newline memes!
 
 	while ((uintptr_t)subsys_arena_lo < 0x80400000) { *subsys_arena_lo++ = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01); }

@@ -1,7 +1,7 @@
 #include "rdp.h"
 
 #include "config.h"
-#include <sys/display.h>
+#include <sys/video.h>
 
 // bss
 Vp sSYRdpViewport;
@@ -68,8 +68,8 @@ void syRdpSetViewport(Vp *viewport, f32 ulx, f32 uly, f32 lrx, f32 lry)
 
 void syRdpSetDefaultViewport(Vp *vp)
 {
-    vp->vp.vscale[0] = vp->vp.vtrans[0] = gSYDisplayResWidth * 2;
-    vp->vp.vscale[1] = vp->vp.vtrans[1] = gSYDisplayResHeight * 2;
+    vp->vp.vscale[0] = vp->vp.vtrans[0] = gSYVideoResWidth * 2;
+    vp->vp.vscale[1] = vp->vp.vtrans[1] = gSYVideoResHeight * 2;
     vp->vp.vscale[2] = vp->vp.vtrans[2] = G_MAXZ / 2;
 }
 
@@ -84,7 +84,7 @@ void syRdpResetSettings(Gfx **dls)
 
     gSPSegment(dl++, G_MWO_SEGMENT_0, 0x00000000);
     func_800048F8(&dl);
-    gDPSetDepthImage(dl++, gSYDisplayZBuffer);
+    gDPSetDepthImage(dl++, gSYVideoZBuffer);
     syRdpSetDefaultViewport(&sSYRdpViewport);
     gSPDisplayList(dl++, sSYRdpResetDisplayList);
 
@@ -92,10 +92,10 @@ void syRdpResetSettings(Gfx **dls)
     (
         dl++,
         G_SC_NON_INTERLACE,
-        10 * (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT),
-        10 * (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT),
-        gSYDisplayResWidth - 10 * (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT),
-        gSYDisplayResHeight - 10 * (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT)
+        10 * (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT),
+        10 * (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT),
+        gSYVideoResWidth - 10 * (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT),
+        gSYVideoResHeight - 10 * (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT)
     );
     if (dSYRdpFuncLights != NULL)
     { 

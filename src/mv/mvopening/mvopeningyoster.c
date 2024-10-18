@@ -2,7 +2,7 @@
 #include <gr/ground.h>
 #include <mv/movie.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 extern void syTaskmanSetLoadScene();
 extern u32 func_8000092C();
@@ -356,7 +356,7 @@ void mvOpeningYosterFuncStart(void)
 }
 
 // 0x80132378
-syDisplaySetup dMVOpeningYosterDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup dMVOpeningYosterDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132394
 syTaskmanSetup dMVOpeningYosterTaskmanSetup =
@@ -406,8 +406,8 @@ syTaskmanSetup dMVOpeningYosterTaskmanSetup =
 // 0x801322CC
 void mvOpeningYosterStartScene(void)
 {
-    dMVOpeningYosterDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    syDisplayInit(&dMVOpeningYosterDisplaySetup);
+    dMVOpeningYosterDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMVOpeningYosterDisplaySetup);
 
     dMVOpeningYosterTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl45_BSS_END);
     syTaskmanInit(&dMVOpeningYosterTaskmanSetup);

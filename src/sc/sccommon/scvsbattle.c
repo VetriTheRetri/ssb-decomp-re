@@ -2,7 +2,7 @@
 #include <if/interface.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 // // // // // // // // // // // //
 //                               //
@@ -30,7 +30,7 @@ syColorRGBA dSCVSBattleCommonFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 syColorRGBA dSCVSBattleSuddenDeathFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x8018E3D8
-syDisplaySetup dSCVSBattleDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup dSCVSBattleDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8018E3F4
 syTaskmanSetup dSCVSBattleTaskmanSetup =
@@ -529,8 +529,8 @@ void scVSBattleStartScene(void)
 	{
 		gBattleState->gr_kind = nGRKindCastle;
 	}
-	dSCVSBattleDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&dSCVSBattleDisplaySetup);
+	dSCVSBattleDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&dSCVSBattleDisplaySetup);
 
 	dSCVSBattleTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl4_BSS_END);
 	dSCVSBattleTaskmanSetup.func_start = scVSBattleFuncStart;

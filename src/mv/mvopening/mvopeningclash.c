@@ -2,7 +2,7 @@
 #include <gr/ground.h>
 #include <mv/movie.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <lb/library.h>
 
 extern void syTaskmanSetLoadScene();
@@ -454,7 +454,7 @@ void mvOpeningClashFuncStart(void)
 }
 
 // 0x80132928
-syDisplaySetup dMVOpeningClashDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup dMVOpeningClashDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132944
 syTaskmanSetup dMVOpeningClashTaskmanSetup =
@@ -504,8 +504,8 @@ syTaskmanSetup dMVOpeningClashTaskmanSetup =
 // 0x80132874
 void mvOpeningClashStartScene(void)
 {
-    dMVOpeningClashDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    syDisplayInit(&dMVOpeningClashDisplaySetup);
+    dMVOpeningClashDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMVOpeningClashDisplaySetup);
 
     dMVOpeningClashTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl49_BSS_END);
     syTaskmanInit(&dMVOpeningClashTaskmanSetup);

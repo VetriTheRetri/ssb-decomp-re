@@ -4,7 +4,7 @@
 #include <sc/scene.h>
 #include <gr/ground.h>
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 // Externs
 extern intptr_t D_NF_800A5240;      // 0x800A5240
@@ -452,7 +452,7 @@ void gMVOpeningPikachuFuncLights(Gfx **display_list)
 }
 
 // 0x8018E140
-syDisplaySetup D_ovl42_8018E140 = {
+syVideoSetup D_ovl42_8018E140 = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,
@@ -482,8 +482,8 @@ scRuntimeInfo D_ovl42_8018E15C = {
 // 0x8018E05C
 void intro_focus_pikachu_entry()
 {
-	D_ovl42_8018E140.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl42_8018E140);
+	D_ovl42_8018E140.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl42_8018E140);
 	D_ovl42_8018E15C.arena_size = (u32) ((uintptr_t)&lOverlay42ArenaHi - (uintptr_t)&lOverlay42ArenaLo);
 	syTaskmanInit(&D_ovl42_8018E15C);
 }

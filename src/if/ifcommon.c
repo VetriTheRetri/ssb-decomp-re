@@ -4,7 +4,7 @@
 #include <cm/camera.h>
 #include <sc/scene.h>
 #include <sys/malloc.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 extern alSoundEffect* func_800269C0_275C0(u16);
 
@@ -1400,7 +1400,7 @@ void ifCommonPlayerMagnifyUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly
     s32 temp_t1;
 
     gDPPipeSync(dl++);
-    gDPSetColorImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, gSYDisplayResWidth, gSYDisplayZBuffer);
+    gDPSetColorImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, gSYVideoResWidth, gSYVideoZBuffer);
     gDPSetRenderMode(dl++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
     gDPSetCombineMode(dl++, G_CC_DECALRGBA, G_CC_DECALRGBA);
     gDPSetAlphaCompare(dl++, G_AC_NONE);
@@ -1458,7 +1458,7 @@ void ifCommonPlayerMagnifyUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly
     );
 
     gDPPipeSync(dl++);
-    gDPSetColorImage(dl++, G_IM_FMT_RGBA, gSYDisplayPixelComponentSize, gSYDisplayResWidth, 0x0F000000);
+    gDPSetColorImage(dl++, G_IM_FMT_RGBA, gSYVideoColorDepth, gSYVideoResWidth, 0x0F000000);
     gDPSetRenderMode(dl++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
     gDPSetAlphaCompare(dl++, G_AC_THRESHOLD);
     gDPSetBlendColor(dl++, 0, 0, 0, 0x8);

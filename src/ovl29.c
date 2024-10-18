@@ -4,7 +4,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 #include "character_select.h"
 
@@ -2538,7 +2538,7 @@ void mnBonusInitCSS()
 }
 
 // 0x80137530
-syDisplaySetup D_ovl29_80137530 = {
+syVideoSetup D_ovl29_80137530 = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,
@@ -2568,8 +2568,8 @@ scRuntimeInfo D_ovl29_8013754C = {
 // 0x80136EF4
 void bonus_css_entry()
 {
-	D_ovl29_80137530.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl29_80137530);
+	D_ovl29_80137530.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl29_80137530);
 	D_ovl29_8013754C.arena_size = (u32) ((uintptr_t)&lOverlay29ArenaHi - (uintptr_t)&lOverlay29ArenaLo);
 	syTaskmanInit(&D_ovl29_8013754C);
 }

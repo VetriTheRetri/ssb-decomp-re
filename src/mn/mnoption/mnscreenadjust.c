@@ -2,7 +2,7 @@
 #include <sc/scene.h>
 #include <gm/gmsound.h>
 #include <sys/thread6.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 extern uintptr_t D_NF_0000000F;                             // 0x0000000F
@@ -61,7 +61,7 @@ Gfx dMNScreenAdjustDisplayList[/* */] =
 };
 
 // 0x80132878
-syDisplaySetup dMNScreenAdjustDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup dMNScreenAdjustDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132894
 syTaskmanSetup dMNScreenAdjustTaskmanSetup =
@@ -237,14 +237,14 @@ void mnScreenAdjustMakeSpriteCamera(void)
 // 0x80131FB4
 void mnScreenAdjustApplyCenterOffsets(s16 h, s16 v)
 {
-    syDisplaySetCenterOffsets(h, h, v, v);
+    syVideoSetCenterOffsets(h, h, v, v);
 }
 
 // 0x80131FF8
 void mnScreenAdjustInitVars(void)
 {
-    sMNScreenAdjustOffsetH = D_80046694;
-    sMNScreenAdjustOffsetV = D_80046698;
+    sMNScreenAdjustOffsetH = sSYVideoOffsetLeft;
+    sMNScreenAdjustOffsetV = sSYVideoOffsetTop;
     
     sMNScreenAdjustButtonHoldWait = 0;
     sMNScreenAdjustTotalTimeTics = 0;
@@ -457,8 +457,8 @@ void mnScreenAdjustFuncStart(void)
 // 0x801327D8
 void mnScreenAdjustStartScene(void)
 {
-    dMNScreenAdjustDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    syDisplayInit(&dMNScreenAdjustDisplaySetup);
+    dMNScreenAdjustDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMNScreenAdjustDisplaySetup);
     
     dMNScreenAdjustTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl25_BSS_END);
     syTaskmanInit(&dMNScreenAdjustTaskmanSetup);

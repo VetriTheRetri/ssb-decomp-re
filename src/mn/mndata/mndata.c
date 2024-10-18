@@ -2,7 +2,7 @@
 #include <gm/gmsound.h>
 #include <sc/scene.h>
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <sys/thread6.h>
 
 extern void auStopBGM();
@@ -818,7 +818,7 @@ void mnDataFuncStart(void)
 }
 
 // 0x80132FB0
-syDisplaySetup dMNDataDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup dMNDataDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132FCC
 syTaskmanSetup dMNDataTaskmanSetup = 
@@ -868,8 +868,8 @@ syTaskmanSetup dMNDataTaskmanSetup =
 // 0x80132EC0
 void mnDataStartScene(void)
 {
-    dMNDataDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    syDisplayInit(&dMNDataDisplaySetup);
+    dMNDataDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMNDataDisplaySetup);
 
     dMNDataTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl61_BSS_END);
     syTaskmanInit(&dMNDataTaskmanSetup);

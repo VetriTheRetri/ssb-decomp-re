@@ -3,7 +3,7 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 #include "character_select.h"
 
@@ -3143,7 +3143,7 @@ void mn1PInitCSS()
 }
 
 // 0x80138C90
-syDisplaySetup D_ovl27_80138C90 = {
+syVideoSetup D_ovl27_80138C90 = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,
@@ -3173,8 +3173,8 @@ scRuntimeInfo D_ovl27_80138CAC = {
 // 0x80138558
 void classic_css_entry()
 {
-	D_ovl27_80138C90.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl27_80138C90);
+	D_ovl27_80138C90.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl27_80138C90);
 	D_ovl27_80138CAC.arena_size = (u32) ((uintptr_t)&lOverlay27ArenaHi - (uintptr_t)&lOverlay27ArenaLo);
 	syTaskmanInit(&D_ovl27_80138CAC);
 }

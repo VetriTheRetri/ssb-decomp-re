@@ -2,7 +2,7 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 // Externs
 extern intptr_t D_NF_800A5240;      // 0x800A5240
@@ -19,7 +19,7 @@ void mnNoControllerLoadFiles();
 
 
 // Data
-syDisplaySetup D_ovl11_800D6700 = {
+syVideoSetup D_ovl11_800D6700 = {
 
 	0x80392A00,
 	0x803B6900,
@@ -92,8 +92,8 @@ void mnNoControllerInit()
 // 0x800D6604 - n64_entry
 void mnNoControllerStartScene()
 {
-	D_ovl11_800D6700.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl11_800D6700);
+	D_ovl11_800D6700.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl11_800D6700);
 	D_ovl11_800D671C.arena_size = (u32) ((uintptr_t)&lOverlay11ArenaHi - (uintptr_t)&lOverlay11ArenaLo);
 	syTaskmanInit(&D_ovl11_800D671C);
 }

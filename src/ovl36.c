@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <lb/library.h>
 
 // Externs
@@ -459,7 +459,7 @@ void mvOpeningMarioFuncLights(Gfx **display_list)
 }
 
 // 0x8018E11C
-syDisplaySetup D_ovl36_8018E11C = {
+syVideoSetup D_ovl36_8018E11C = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,
@@ -488,8 +488,8 @@ scRuntimeInfo D_ovl36_8018E138 = {
 // 0x8018E030
 void intro_focus_mario_entry()
 {
-	D_ovl36_8018E11C.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl36_8018E11C);
+	D_ovl36_8018E11C.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl36_8018E11C);
 	D_ovl36_8018E138.arena_size = (u32) ((uintptr_t)&lOverlay36ArenaHi - (uintptr_t)&lOverlay36ArenaLo);
 	syTaskmanInit(&D_ovl36_8018E138);
 }

@@ -4,7 +4,7 @@
 #include <sc/scene.h>
 #include <gr/ground.h>
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 
 // Externs
@@ -473,7 +473,7 @@ void mvOpeningSamusFuncLights(Gfx **display_list)
 }
 
 // 0x8018E198
-syDisplaySetup D_ovl38_8018E198 = {
+syVideoSetup D_ovl38_8018E198 = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,
@@ -503,8 +503,8 @@ scRuntimeInfo D_ovl38_8018E1B4 = {
 // 0x8018E0C8
 void intro_focus_samus_entry()
 {
-	D_ovl38_8018E198.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl38_8018E198);
+	D_ovl38_8018E198.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl38_8018E198);
 	D_ovl38_8018E1B4.arena_size = (u32) ((uintptr_t)&lOverlay38ArenaHi - (uintptr_t)&lOverlay38ArenaLo);
 	syTaskmanInit(&D_ovl38_8018E1B4);
 }

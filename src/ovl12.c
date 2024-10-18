@@ -2,7 +2,7 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <sys/thread6.h>
 
 #include "debug.h"
@@ -96,7 +96,7 @@ dbMenuItem dMNDebugStageSelectMenuItems[] = {
 };
 
 // 0x800D6764
-syDisplaySetup D_ovl12_800D6764 = {
+syVideoSetup D_ovl12_800D6764 = {
 
 	0x80392A00,
 	0x803B6900,
@@ -197,8 +197,8 @@ void dbStageSelectInit()
 // 0x800D6620
 void dbStageSelectStartScene()
 {
-	D_ovl12_800D6764.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl12_800D6764);
+	D_ovl12_800D6764.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl12_800D6764);
 	D_ovl12_800D6780.arena_size = (u32) ((uintptr_t)&lOverlay12ArenaHi - (uintptr_t)&lOverlay12ArenaLo);
 	syTaskmanInit(&D_ovl12_800D6780);
 }

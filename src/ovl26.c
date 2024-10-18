@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <lb/library.h>
 
 #include "character_select.h"
@@ -4281,7 +4281,7 @@ void mnBattleInitCSS()
 }
 
 // 0x8013B980
-syDisplaySetup D_ovl26_8013B980 = {
+syVideoSetup D_ovl26_8013B980 = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,
@@ -4311,8 +4311,8 @@ scRuntimeInfo D_ovl26_8013B99C = {
 // 0x8013B33C
 void vs_css_entry()
 {
-	D_ovl26_8013B980.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl26_8013B980);
+	D_ovl26_8013B980.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl26_8013B980);
 	D_ovl26_8013B99C.arena_size = (size_t) ((uintptr_t)&lOverlay26ArenaHi - (uintptr_t)&lOverlay26ArenaLo);
 	func_800A2698(&D_ovl26_8013B99C);
 }

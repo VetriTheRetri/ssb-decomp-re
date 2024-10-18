@@ -5,7 +5,7 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <sys/taskman.h>
 
 #include "ovl10.h"
@@ -113,7 +113,7 @@ Gfx dMNTitleDisplayList[/* */] =
 };
 
 // 0x80134370
-syDisplaySetup dMNTitleDisplaySetup =
+syVideoSetup dMNTitleDisplaySetup =
 {
 	&gSCSubsysFramebuffer0,
 	&gSCSubsysFramebuffer1,
@@ -121,7 +121,9 @@ syDisplaySetup dMNTitleDisplaySetup =
 	NULL,
 	320,
 	240,
-	0x15A99
+	SYVIDEO_FLAG_DIVOT        | SYVIDEO_FLAG_DITHERFILTER | SYVIDEO_FLAG_GAMMADITHER 	|
+	0x800                     | SYVIDEO_FLAG_NOBLACKOUT   | SYVIDEO_FLAG_NOGAMMA      |
+    SYVIDEO_FLAG_COLORDEPTH16 | SYVIDEO_FLAG_NOSERRATE    | 0x1
 };
 
 // 0x8013438C
@@ -729,47 +731,51 @@ void mnTitleSetColors(SObj* sobj, s32 index)
 	{
 		if ((index == nMNTitleTextureIndexDropShadow) || (index == nMNTitleTextureIndexTM))
 		{
-			sobj->sprite.red = 0;
-			sobj->sprite.green = 0;
-			sobj->sprite.blue = 0;
+			sobj->sprite.red = 0x00;
+			sobj->sprite.green = 0x00;
+			sobj->sprite.blue = 0x00;
 		}
 		else
 		{
 			sobj->sprite.red = 0xFF;
 			sobj->sprite.green = 0xFE;
 			sobj->sprite.blue = 0x2A;
-			sobj->envcolor.r = 0;
-			sobj->envcolor.g = 0;
-			sobj->envcolor.b = 0;
+			sobj->envcolor.r = 0x00;
+			sobj->envcolor.g = 0x00;
+			sobj->envcolor.b = 0x00;
 		}
 	}
-	else switch (index) { /* irregular */
-		case nMNTitleTextureIndexFooter:
-			sobj->sprite.red = 0xB7;
-			sobj->sprite.green = 0xAE;
-			sobj->sprite.blue = 0x7C;
-			sobj->envcolor.r = 0x14;
-			sobj->envcolor.g = 0x12;
-			sobj->envcolor.b = 6;
-			break;
-		case nMNTitleTextureIndexHeader:
-			sobj->sprite.red = 0x14;
-			sobj->sprite.green = 0x12;
-			sobj->sprite.blue = 6;
-			break;
-		case nMNTitleTextureIndexPressStart:
-			sobj->sprite.red = 0xFF;
-			sobj->sprite.green = 0xFF;
-			sobj->sprite.blue = 0xFF;
-			sobj->envcolor.r = 0x17;
-			sobj->envcolor.g = 0x10;
-			sobj->envcolor.b = 0xA4;
-			break;
-		case nMNTitleTextureIndexTM2:
-			sobj->sprite.red = 0x15;
-			sobj->sprite.green = 0x13;
-			sobj->sprite.blue = 6;
-			break;
+	else switch (index)
+	{
+	case nMNTitleTextureIndexFooter:
+		sobj->sprite.red = 0xB7;
+		sobj->sprite.green = 0xAE;
+		sobj->sprite.blue = 0x7C;
+		sobj->envcolor.r = 0x14;
+		sobj->envcolor.g = 0x12;
+		sobj->envcolor.b = 0x06;
+		break;
+			
+	case nMNTitleTextureIndexHeader:
+		sobj->sprite.red = 0x14;
+		sobj->sprite.green = 0x12;
+		sobj->sprite.blue = 0x06;
+		break;
+
+	case nMNTitleTextureIndexPressStart:
+		sobj->sprite.red = 0xFF;
+		sobj->sprite.green = 0xFF;
+		sobj->sprite.blue = 0xFF;
+		sobj->envcolor.r = 0x17;
+		sobj->envcolor.g = 0x10;
+		sobj->envcolor.b = 0xA4;
+		break;
+
+	case nMNTitleTextureIndexTM2:
+		sobj->sprite.red = 0x15;
+		sobj->sprite.green = 0x13;
+		sobj->sprite.blue = 0x06;
+		break;
 	}
 }
 
@@ -796,20 +802,23 @@ void mnTitleRenderFire(GObj* fire_gobj)
 // 0x80132A20
 void func_ovl10_80132A20(GObj* fire_gobj)
 {
-	if (fire_gobj->flags != 1)
+	if (fire_gobj->flags != GOBJ_FLAG_HIDDEN)
 	{
-		sMNTitleFireAlpha += 0xD;
+		sMNTitleFireAlpha += 0x0D;
 
-		if (sMNTitleFireAlpha >= 0x100)
+		if (sMNTitleFireAlpha > 0xFF)
+		{
 			sMNTitleFireAlpha = 0xFF;
+		}
 	}
 }
 
 // 0x80132A58
-void func_ovl10_80132A58(GObj* fire_gobj)
+void func_ovl10_80132A58(GObj *fire_gobj)
 {
 	sMNTitleFireAlpha = 0xFF;
-	fire_gobj->flags = 0;
+
+	fire_gobj->flags = GOBJ_FLAG_NONE;
 }
 
 // 0x80132A6C
@@ -1059,7 +1068,7 @@ void mnTitleCreateLogo()
 }
 
 // 0x801331FC - Unused?
-void mnTitleCreateTextures()
+void mnTitleCreateTextures(void)
 {
 	GObj* gobj;
 	SObj* sobj;
@@ -1079,7 +1088,7 @@ void mnTitleCreateTextures()
 }
 
 // 0x801332E4
-void mnTitleCreateTitleHeaderAndFooter(void)
+void mnTitleMakeLabels(void)
 {
 	s32 i;
 	GObj* animation_gobj;
@@ -1109,12 +1118,11 @@ void mnTitleCreateTitleHeaderAndFooter(void)
 
 		animation_dobj = animation_dobj->sib_next;
 	}
+	gobj->flags = GOBJ_FLAG_HIDDEN;
 
-	gobj->flags = 1;
-
-	gobj = gcMakeGObjSPAfter(9, 0, 8, 0x80000000);
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, 0x80000000, -1);
-	gcAddGObjProcess(gobj, mnTitleUpdateHeaderAndFooterPosition, 1, 1);
+	gobj = gcMakeGObjSPAfter(9, NULL, 8, GOBJ_LINKORDER_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjProcess(gobj, mnTitleUpdateHeaderAndFooterPosition, nOMObjProcessKindProc, 1);
 
 	gobj->user_data.p = animation_gobj;
 
@@ -1128,17 +1136,16 @@ void mnTitleCreateTitleHeaderAndFooter(void)
 
 		animation_dobj = animation_dobj->sib_next;
 	}
-
-	gobj->flags = 1;
+	gobj->flags = GOBJ_FLAG_HIDDEN;
 }
 
 // 0x80133504
 void mnTitleCreatePressStart(void)
 {
-	GObj* press_start_anim_gobj;
-	GObj* press_start_gobj;
-	DObj* press_start_anim_dobj;
-	SObj* press_start_sobj;
+	GObj *press_start_anim_gobj;
+	GObj *press_start_gobj;
+	DObj *press_start_anim_dobj;
+	SObj *press_start_sobj;
 
 	press_start_anim_gobj = gcMakeGObjSPAfter(10, NULL, 8, GOBJ_LINKORDER_DEFAULT);
 	gcSetupCommonDObjs(press_start_anim_gobj, lbRelocGetDataFromFile(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_ANIMATED_PRESS_START_OFFSET_2), 0);
@@ -1159,21 +1166,26 @@ void mnTitleCreatePressStart(void)
 	mnTitleSetPosition(press_start_anim_dobj, press_start_sobj, nMNTitleTextureIndexPressStart);
 	mnTitleSetColors(press_start_sobj, nMNTitleTextureIndexPressStart);
 
-	press_start_gobj->flags = 1;
+	press_start_gobj->flags = GOBJ_FLAG_HIDDEN;
 }
 
 // 0x80133634 - discarded language selection?
-void func_ovl10_80133634() {}
+void func_ovl10_80133634(void)
+{
+	return;
+}
 
 // 0x8013363C - Unused?
-void mnTitleAnimateSlashEffectGFX(GObj* gobj)
+void mnTitleAnimateSlashEffectGFX(GObj *gobj)
 {
-	if (gobj->flags != 1)
+	if (gobj->flags != GOBJ_FLAG_HIDDEN)
+	{
 		gcPlayAnimAll(gobj);
+	}
 }
 
 // 0x8013366C
-void mnTitleCreateSlashEffectGFX()
+void mnTitleMakeSlash(void)
 {
 	GObj *gobj;
 
@@ -1201,7 +1213,7 @@ void mnTitleCreateSlashEffectGFX()
 // 0x80133770
 void mnTitleFireProcUpdate(GObj *gobj)
 {
-	Camera* cam = CameraGetStruct(sMNTitleFireCameraGObj);
+	Camera *cam = CameraGetStruct(sMNTitleFireCameraGObj);
 
 	if (sMNTitleTransitionTotalTimeTics >= 40)
 	{
@@ -1310,7 +1322,11 @@ s32 mnTitleMakeCameras(void)
 
 	cam->projection.persp.fovy = 30.0F;
 
+#ifdef AVOID_UB
+	return 0;
+#else
 	return unused;
+#endif
 }
 
 // 0x80133CFC
@@ -1386,10 +1402,10 @@ void mnTitleFuncStart(void)
 	mnTitleInitVars();
 	mnTitleCreateFire();
 	mnTitleCreateLogo();
-	mnTitleCreateTitleHeaderAndFooter();
+	mnTitleMakeLabels();
 	func_ovl10_80133634();
 	mnTitleCreatePressStart();
-	mnTitleCreateSlashEffectGFX();
+	mnTitleMakeSlash();
 	mnTitleLogoFireMakeEffect();
 
 	if (gSceneData.scene_previous == nSCKindOpeningNewcomers)
@@ -1413,8 +1429,8 @@ void mnTitleAdvanceTic(void)
 // 0x801340B8
 void mnTitleStartScene(void)
 {
-	dMNTitleDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&dMNTitleDisplaySetup);
+	dMNTitleDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&dMNTitleDisplaySetup);
 
 	if ((!gSceneData.main_title_animation_viewed) && (gSaveData.unk5E3 <= U8_MAX))
 	{

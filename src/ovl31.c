@@ -2,7 +2,7 @@
 #include <ft/fighter.h>
 #include <gr/ground.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <lb/library.h>
 
 
@@ -1797,7 +1797,7 @@ void mnResultsRenderHorizontalLine(GObj* line_gobj)
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
-	gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(0xFFFFFFFF));
+	gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(0xFFFFFFFF));
 	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 87, y, 87 + gMNResultsHorizontalLineWidth, y);
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
@@ -2025,7 +2025,7 @@ void mnResultsRenderScreenTitle(s32 screen_title_gobj)
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
-	gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(0xFFFFFFFF));
+	gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(0xFFFFFFFF));
 	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 32, 42, 282, 44);
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
@@ -2905,7 +2905,7 @@ void mnResultsMain(s32 arg0)
 }
 
 // 0x80139710
-syDisplaySetup D_ovl31_80139710 = {
+syVideoSetup D_ovl31_80139710 = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,
@@ -3005,8 +3005,8 @@ void vs_results_entry()
 {
 	s32 i;
 
-	D_ovl31_80139710.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl31_80139710);
+	D_ovl31_80139710.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl31_80139710);
 	D_ovl31_8013972C.arena_size = (u32) ((uintptr_t)&lOverlay31ArenaHi - (uintptr_t)&lOverlay31ArenaLo);
 	func_800A2698(&D_ovl31_8013972C);
 

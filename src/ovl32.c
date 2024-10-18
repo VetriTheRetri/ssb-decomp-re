@@ -1,7 +1,7 @@
 #include <debug.h>
 #include <ft/fighter.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <lb/library.h>
 
 #include "ovl32.h"
@@ -717,7 +717,7 @@ void mnVsRecordsRenderTableGrid(GObj* table_border_gobj)
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
-	gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(0x62626AFF));
+	gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(0x62626AFF));
 
 	switch (gMNVsRecordsStatsKind)
 	{
@@ -1822,7 +1822,7 @@ void mnVsRecordsInit()
 }
 
 // 0x801369CC
-syDisplaySetup D_ovl32_801369CC = {
+syVideoSetup D_ovl32_801369CC = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,
@@ -1852,8 +1852,8 @@ scRuntimeInfo D_ovl32_801369E8 = {
 // 0x801365D0
 void vs_records_entry()
 {
-	D_ovl32_801369CC.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl32_801369CC);
+	D_ovl32_801369CC.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl32_801369CC);
 	D_ovl32_801369E8.arena_size = (u32) ((uintptr_t)&lOverlay32ArenaHi - (uintptr_t)&lOverlay32ArenaLo);
 	syTaskmanInit(&D_ovl32_801369E8);
 }

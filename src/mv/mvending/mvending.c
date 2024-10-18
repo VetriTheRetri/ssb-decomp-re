@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <mv/movie.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <lb/library.h>
 
 extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
@@ -94,7 +94,7 @@ Lights1 dMVEndingLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0
 Lights1 dMVEndingLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
 
 // 0x80132B08
-syDisplaySetup dMVEndingDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup dMVEndingDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132B24
 syTaskmanSetup dMVEndingTaskmanSetup =
@@ -565,9 +565,9 @@ void mvEndingFuncStart(void)
 // 0x80132A78
 void mvEndingStartScene(void)
 {
-    dMVEndingDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
+    dMVEndingDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
 
-    syDisplayInit(&dMVEndingDisplaySetup);
+    syVideoInit(&dMVEndingDisplaySetup);
 
     dMVEndingTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl54_BSS_END);
 

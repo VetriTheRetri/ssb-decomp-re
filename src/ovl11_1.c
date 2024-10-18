@@ -2,7 +2,7 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 // Externs
 extern s32 gMNNoControllerFiles[];

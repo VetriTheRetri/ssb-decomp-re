@@ -1,7 +1,7 @@
 #include <lb/library.h>
 #include <ft/fighter.h>
 #include <gr/ground.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 extern void hal_interpolation_cubic(void*, void*, f32);
 extern void* func_80026A10_27610(u16);
@@ -2948,21 +2948,21 @@ void lbCommonScissorSpriteCamera(GObj *gobj)
     s32 lrx = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
     s32 lry = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
     
-    if (ulx < (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * 10)
+    if (ulx < (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * 10)
     {
-        ulx = (gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * 10;
+        ulx = (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * 10;
     }
-    if (uly < (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * 10)
+    if (uly < (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * 10)
     {
-        uly = (gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * 10;
+        uly = (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * 10;
     }
-    if (lrx > gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * 10))
+    if (lrx > gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * 10))
     {
-        lrx = gSYDisplayResWidth - ((gSYDisplayResWidth / GS_SCREEN_WIDTH_DEFAULT) * 10);
+        lrx = gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * 10);
     }
-    if (lry > gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * 10))
+    if (lry > gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * 10))
     {
-        lry = gSYDisplayResHeight - ((gSYDisplayResHeight / GS_SCREEN_HEIGHT_DEFAULT) * 10);
+        lry = gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * 10);
     }
     lbCommonStartSprite(gSYTaskmanDLHeads);
     lbCommonSetSpriteScissor(ulx, lrx, uly, lry);

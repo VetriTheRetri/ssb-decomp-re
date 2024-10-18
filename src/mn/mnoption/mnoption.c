@@ -1,7 +1,7 @@
 #include <mn/menu.h>
 #include <gm/gmsound.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <sys/thread6.h>
 
 extern void* func_800269C0_275C0(u16);
@@ -567,7 +567,7 @@ void mnOptionSoundUnderlineProcDisplay(GObj *gobj)
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
-    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syDisplayGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
+    gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
 
     if (sMNOptionOption == nMNOptionOptionSound)
     {
@@ -1025,7 +1025,7 @@ void mnOptionFuncStart(void)
 }
 
 // 0x801336F8
-syDisplaySetup dMNOptionDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup dMNOptionDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80133714
 syTaskmanSetup dMNOptionTaskmanSetup =
@@ -1075,8 +1075,8 @@ syTaskmanSetup dMNOptionTaskmanSetup =
 // 0x801335C0
 void mnOptionStartScene(void)
 {
-    dMNOptionDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    syDisplayInit(&dMNOptionDisplaySetup);
+    dMNOptionDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMNOptionDisplaySetup);
 
     dMNOptionTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl60_BSS_END);
     syTaskmanInit(&dMNOptionTaskmanSetup);

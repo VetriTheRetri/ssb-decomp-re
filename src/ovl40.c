@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 #include <lb/library.h>
 
 // Externs
@@ -443,7 +443,7 @@ void gMVOpeningLinkFuncLights(Gfx **display_list)
 }
 
 // 0x8018E0DC
-syDisplaySetup D_ovl40_8018E0DC = {
+syVideoSetup D_ovl40_8018E0DC = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,
@@ -473,8 +473,8 @@ scRuntimeInfo D_ovl40_8018E0F8 = {
 // 0x8018E018
 void intro_focus_link_entry()
 {
-	D_ovl40_8018E0DC.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl40_8018E0DC);
+	D_ovl40_8018E0DC.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl40_8018E0DC);
 	D_ovl40_8018E0F8.arena_size = (u32) ((uintptr_t)&lOverlay40ArenaHi - (uintptr_t)&lOverlay40ArenaLo);
 	syTaskmanInit(&D_ovl40_8018E0F8);
 }

@@ -1,7 +1,7 @@
 #include <ft/fighter.h>
 #include <mv/movie.h>
 #include <sc/scene.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 extern void syTaskmanSetLoadScene();
 extern u32 func_8000092C();
@@ -68,7 +68,7 @@ Lights1 dMVOpeningStandoffLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF
 Lights1 dMVOpeningStandoffLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
 
 // 0x80132908
-syDisplaySetup dMVOpeningStandoffDisplaySetup = SYDISPLAY_DEFINE_DEFAULT();
+syVideoSetup dMVOpeningStandoffDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132924
 syTaskmanSetup dMVOpeningStandoffTaskmanSetup =
@@ -620,8 +620,8 @@ void mvOpeningStandoffFuncStart(void)
 // 0x8013286C
 void mvOpeningStandoffStartScene(void)
 {
-    dMVOpeningStandoffDisplaySetup.zbuffer = syDisplayGetZBuffer(6400);
-    syDisplayInit(&dMVOpeningStandoffDisplaySetup);
+    dMVOpeningStandoffDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMVOpeningStandoffDisplaySetup);
 
     dMVOpeningStandoffTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl47_BSS_END);
     syTaskmanInit(&dMVOpeningStandoffTaskmanSetup);

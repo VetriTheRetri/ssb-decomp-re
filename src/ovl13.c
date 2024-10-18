@@ -4,7 +4,7 @@
 #include <gr/ground.h>
 #include <sc/scene.h>
 #include <lb/library.h>
-#include <sys/display.h>
+#include <sys/video.h>
 
 #include "debug.h"
 
@@ -338,7 +338,7 @@ dbMenuItem dMNDebugCubeMenuItems[15] = {
 	{ dbMenuItemKindExitLabel,   dbCubeExit,         "Exit",                                0,                                0.0F, 0.0F,    0 }
 };
 
-syDisplaySetup D_ovl13_80132F6C = {
+syVideoSetup D_ovl13_80132F6C = {
 
 	0x80392A00,
 	0x803B6900,
@@ -583,8 +583,8 @@ void dbCubeInit()
 // 0x8013214C
 void dbCubeStartScene()
 {
-	D_ovl13_80132F6C.zbuffer = syDisplayGetZBuffer(6400);
-	syDisplayInit(&D_ovl13_80132F6C);
+	D_ovl13_80132F6C.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&D_ovl13_80132F6C);
 	D_ovl13_80132F88.arena_size = (u32) ((uintptr_t)&lOverlay13ArenaHi - (uintptr_t)&lOverlay13ArenaLo);
 
 	do

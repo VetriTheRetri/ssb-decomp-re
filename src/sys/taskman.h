@@ -81,7 +81,7 @@ extern void* syTaskmanMalloc(size_t size, u32 alignment);
 extern void func_80004F78(void);
 extern void syTaskmanAppendGfxUcodeLoad(Gfx **dlist, u32 ucodeIdx);
 extern void func_800053CC(void);
-extern void func_800057C8(void);
+extern void syTaskmanUpdateDLBuffers(void);
 extern void syTaskmanSetLoadScene(void);
 extern void syTaskmanInit(syTaskmanSetup *arg);
 extern void func_80006B80(void);

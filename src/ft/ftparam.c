@@ -1504,13 +1504,13 @@ f32 ftParamGetHitStun(f32 knockback)
 // 0x800EA1C0
 s32 ftParamGetHitLag(s32 damage, s32 status_id, f32 hitlag_mul)
 {
-    s32 hitlag_timer = (s32) ( (damage * (1.0F / 3.0F) ) + 5.0F ) * hitlag_mul;
+    s32 hitlag_tics = (s32) ( (damage * (1.0F / 3.0F) ) + 5.0F ) * hitlag_mul;
 
     if ((status_id == nFTCommonStatusSquat) || (status_id == nFTCommonStatusSquatWait))
     {
-        hitlag_timer *= (2.0F / 3.0F);
+        hitlag_tics *= (2.0F / 3.0F);
     }
-    return hitlag_timer;
+    return hitlag_tics;
 }
 
 // 0x800EA248
@@ -1528,7 +1528,7 @@ void ftParamUpdateDamage(ftStruct *fp, s32 damage)
 
     if (fp->item_hold != NULL)
     {
-        if ((fp->damage_knockback != 0.0F) && ((fp->hitlag_timer == 0) || !(fp->x192_flag_b6) || !(fp->damage_knockback < (fp->damage_stack + 30.0F))))
+        if ((fp->damage_knockback != 0.0F) && ((fp->hitlag_tics == 0) || !(fp->x192_flag_b6) || !(fp->damage_knockback < (fp->damage_stack + 30.0F))))
         {
             itStruct *ip = itGetStruct(fp->item_hold);
 

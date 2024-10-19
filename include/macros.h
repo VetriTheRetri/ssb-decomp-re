@@ -83,7 +83,7 @@
 (WARNING: includes padding in structs that are not byte-aligned) */
 #define GS_BITCOUNT(t) ((int) (sizeof(t) * 8) )
 
-#define GS_DISTANCE(a, b) (((a) < (b)) ? -((a) - (b)) : ((a) - (b)))
+#define DISTANCE(a, b) (((a) < (b)) ? -((a) - (b)) : ((a) - (b)))
 
 #define I_GS_TIME_TO_TICS(q, u) ((int)((q) * (u)))
 

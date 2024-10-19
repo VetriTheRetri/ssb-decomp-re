@@ -457,7 +457,7 @@ void func_80004EFC()
 }
 
 // 0x80004F78
-void func_80004F78()
+void func_80004F78(void)
 {
 	OSMesg recv;
 	SCTaskGfxEnd *mesg = sSYTaskmanGfxEndBuffers[gSYTaskmanTaskID];
@@ -467,7 +467,6 @@ void func_80004F78()
 		syErrorPrintf("gtl : not defined SCTaskGfxEnd\n");
 		while (TRUE);
 	}
-
 	syTaskmanScheduleGfxEnd(mesg, NULL, gSYTaskmanTaskID, &sSYTaskmanResetMesgQueue);
 	osRecvMesg(&sSYTaskmanResetMesgQueue, &recv, OS_MESG_BLOCK);
 	sSYTaskmanGfxBuffersCurrent[gSYTaskmanTaskID] = sSYTaskmanGfxBuffersStart[gSYTaskmanTaskID];
@@ -772,7 +771,7 @@ void func_800053CC()
 }
 
 // 0x800057C8
-void func_800057C8()
+void syTaskmanUpdateDLBuffers(void)
 {
 	s32 i;
 	s32 diffs;
@@ -802,7 +801,9 @@ void func_800057C8()
 			else if (diffs & 2)
 			{
 				if (D_80046628 != 0)
+				{
 					syTaskmanAppendGfxUcodeLoad(&gSYTaskmanDLHeads[0], D_80046624);
+				}
 				gSPBranchList(gSYTaskmanDLHeads[0]++, sSYTaskmanDLBranches[1]);
 			}
 			else if (diffs & 8)
@@ -839,7 +840,9 @@ void func_800057C8()
 			else
 			{
 				if (D_80046628 != 0)
+				{
 					syTaskmanAppendGfxUcodeLoad(&gSYTaskmanDLHeads[1], D_80046624);
+				}
 				gSPBranchList(gSYTaskmanDLHeads[1]++, gSYTaskmanDLHeads[0]);
 			}
 			sSYTaskmanDLBranches[1] = gSYTaskmanDLHeads[1];

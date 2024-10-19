@@ -124,7 +124,7 @@ void ftLinkSpecialHiProcEffect(GObj *fighter_gobj)
     {
         wpStruct *wp = wpGetStruct(fp->status_vars.link.specialhi.spin_attack_gobj);
 
-        if (fp->hitlag_timer != 0)
+        if (fp->hitlag_tics != 0)
         {
             wp->is_hitlag_weapon = TRUE;
         }

@@ -41,9 +41,9 @@
 #define DOBJ_ARRAY_MAX              18
 
 // AObj defines
-#define AOBJ_ANIM_NULL              F32_MIN          // Used to mark the lack of frames remaining in an animation
-#define AOBJ_ANIM_CHANGED           (F32_MIN / 2.0F)  // ???
-#define AOBJ_ANIM_END               (F32_MIN / 3.0F)  // Used to mark the end of an animation?
+#define AOBJ_ANIM_NULL              F32_MIN             // Used to mark the lack of frames remaining in an animation
+#define AOBJ_ANIM_CHANGED           (F32_MIN / 2.0F)    // ???
+#define AOBJ_ANIM_END               (F32_MIN / 3.0F)    // Used to mark the end of an animation?
 
 // MObj defines
 #define MOBJ_FLAG_PRIMCOLOR         (1 << 9)
@@ -57,8 +57,12 @@
 // Create mask of draw layer (known in Smash Remix lingo as "room") to render
 #define CAMERA_MASK_DLLINK(r) (1ULL << (r))
 
-#define CAMERA_FLAG_ZBUFFER         0x1
-#define CAMERA_FLAG_FILLCOLOR       0x2
+#define CAMERA_FLAG_ZBUFFER         0x1     // Use Z-Buffer depth image
+#define CAMERA_FLAG_FILLCOLOR       0x2     // Use camera's packed RRGGBBAA `color` variable
+#define CAMERA_FLAG_DLBUFFERS       0x4     // Update DLBuffers and DisplayList branches?
+#define CAMERA_FLAG_IDENTIFIER      0x8     // If the 0x8 bit is 0, cam_tag is treated as a mask; if 1, it is treated as an ID
+#define CAMERA_FLAG_GFXEND          0x10    // Run SCTaskGfxEnd task type?
+#define CAMERA_FLAG_BRANCHSYNC      0x40    // Sync all Branch DLs with main DL buffers?
 
 union OMUserData
 {
@@ -514,7 +518,7 @@ struct _Camera
     u32 flags;
     u32 color;
 
-    void(*proc_camera)(Camera*, s32);
+    void(*func_camera)(Camera*, s32);
 
     s32 unk_camera_0x8C;
 };

@@ -442,7 +442,7 @@ void sc1PGameBossMakeCamera(void)
             nOMObjProcessKindProc,
             NULL,
             1,
-            0
+            FALSE
         )
     );
     syRdpSetViewport(&cam->viewport, gCMManagerCameraStruct.viewport_ulx, gCMManagerCameraStruct.viewport_uly, gCMManagerCameraStruct.viewport_lrx, gCMManagerCameraStruct.viewport_lry);

@@ -713,7 +713,7 @@ void mvOpeningFirstDestinationConfigureFirstSceneViewport(GObj* camera_gobj)
 	cam->projection.persp.near = 80.0F;
 	cam->projection.persp.far = 15000.0F;
 	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[2], &FILE_038_CAMERA_PARAMETERS_OFFSET), 0.0F);
-	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
+	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nOMObjProcessKindProc, 1);
 	cam->flags |= 4;
 }
 
@@ -737,7 +737,7 @@ void mvOpeningFirstDestinationConfigureSecondSceneViewport(GObj* camera_gobj)
 	Camera *cam = CameraGetStruct(camera_gobj);
 	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[3], &FILE_039_CAMERA_PARAMETERS_OFFSET), 0.0F);
-	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
+	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nOMObjProcessKindProc, 1);
 	cam->flags |= 4;
 }
 
@@ -773,7 +773,7 @@ void mvOpeningFirstDestinationConfigureThirdSceneViewport(GObj* camera_gobj)
 	cam->projection.persp.near = 128.0F;
 	cam->projection.persp.far = 16384.0F;
 	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[4], &FILE_03A_CAMERA_PARAMETERS_OFFSET), 0.0F);
-	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
+	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nOMObjProcessKindProc, 1);
 	cam->flags |= 4;
 }
 

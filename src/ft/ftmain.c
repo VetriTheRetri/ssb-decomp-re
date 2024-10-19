@@ -1238,11 +1238,11 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
 
             button_tap_mask = (button_hold ^ pl->button_hold) & button_hold;
 
-            pl->button_tap = (this_fp->hitlag_timer != 0) ? pl->button_tap | button_tap_mask : button_tap_mask;
+            pl->button_tap = (this_fp->hitlag_tics != 0) ? pl->button_tap | button_tap_mask : button_tap_mask;
 
             button_tap_mask = (button_hold ^ pl->button_hold) & pl->button_hold;
 
-            pl->button_tap_prev = (this_fp->hitlag_timer != 0) ? pl->button_tap_prev | button_tap_mask : button_tap_mask;
+            pl->button_tap_prev = (this_fp->hitlag_tics != 0) ? pl->button_tap_prev | button_tap_mask : button_tap_mask;
 
             pl->button_hold = button_hold;
 
@@ -1272,11 +1272,11 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
 
             button_tap_mask = (button_hold_com ^ pl->button_hold) & button_hold_com;
 
-            pl->button_tap = (this_fp->hitlag_timer != 0) ? pl->button_tap | button_tap_mask : button_tap_mask;
+            pl->button_tap = (this_fp->hitlag_tics != 0) ? pl->button_tap | button_tap_mask : button_tap_mask;
 
             button_tap_mask = (button_hold_com ^ pl->button_hold) & pl->button_hold;
 
-            pl->button_tap_prev = (this_fp->hitlag_timer != 0) ? pl->button_tap_prev | button_tap_mask : button_tap_mask;
+            pl->button_tap_prev = (this_fp->hitlag_tics != 0) ? pl->button_tap_prev | button_tap_mask : button_tap_mask;
 
             pl->button_hold = button_hold_com;
 
@@ -1364,11 +1364,11 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
     {
         this_fp->tics_since_last_z = 0;
     }
-    if (this_fp->hitlag_timer != 0)
+    if (this_fp->hitlag_tics != 0)
     {
-        this_fp->hitlag_timer--;
+        this_fp->hitlag_tics--;
 
-        if (this_fp->hitlag_timer == 0)
+        if (this_fp->hitlag_tics == 0)
         {
             this_fp->x192_flag_b6 = FALSE;
 
@@ -1380,7 +1380,7 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
     }
     this_fp->is_effect_interrupt = TRUE;
 
-    if (this_fp->hitlag_timer == 0)
+    if (this_fp->hitlag_tics == 0)
     {
         ftMainPlayAnimNoEffect(fighter_gobj);
     }
@@ -1472,7 +1472,7 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
     {
         this_fp->proc_effect(fighter_gobj);
     }
-    if (this_fp->hitlag_timer == 0)
+    if (this_fp->hitlag_tics == 0)
     {
         if ((this_fp->playertag_wait > 1) && !(this_fp->is_disable_control))
         {
@@ -1668,7 +1668,7 @@ void ftMainSearchHitHazard(GObj *fighter_gobj)
     {
         s32 i;
 
-        if (!fp->hitlag_timer)
+        if (!fp->hitlag_tics)
         {
             if (fp->twister_wait)
             {
@@ -1734,7 +1734,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
 
     *coll_translate = *topn_translate;
 
-    if (fp->hitlag_timer == 0)
+    if (fp->hitlag_tics == 0)
     {
         if (fp->cliffcatch_wait != 0)
         {
@@ -1827,11 +1827,11 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
     }
     func_ovl2_800EB528(fp->joints[nFTPartsJointTopN]);
 
-    if (fp->hitlag_timer == 0)
+    if (fp->hitlag_tics == 0)
     {
         ftMainUpdateMotionEventsDefaultEffect(fighter_gobj);
     }
-    if (fp->hitlag_timer == 0)
+    if (fp->hitlag_tics == 0)
     {
         if (fp->proc_accessory != NULL)
         {
@@ -3609,7 +3609,7 @@ void ftMainSearchGroundHit(GObj *fighter_gobj)
     grHitbox *gr_hit;
     s32 kind;
 
-    if (fp->hitlag_timer == 0)
+    if (fp->hitlag_tics == 0)
     {
         if (fp->acid_wait != 0)
         {
@@ -3781,14 +3781,14 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
     s32 status_id;
     f32 knockback_resist;
     sb32 is_shieldbreak;
-    u32 hitlag_timer;
+    u32 hitlag_tics;
     s32 sp84;
     s32 element;
 
     damage = 0;
     is_shieldbreak = FALSE;
     status_id = fp->status_info.status_id;
-    hitlag_timer = fp->hitlag_timer;
+    hitlag_tics = fp->hitlag_tics;
     sp84 = 0;
 
     if (fp->unk_ft_0x7AC != 0)
@@ -3946,9 +3946,9 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
     }
     if (damage != 0)
     {
-        fp->hitlag_timer = ftParamGetHitLag(damage, status_id, fp->hitlag_mul);
+        fp->hitlag_tics = ftParamGetHitLag(damage, status_id, fp->hitlag_mul);
 
-        if ((fp->hitlag_timer != 0) && (sp84 != 0))
+        if ((fp->hitlag_tics != 0) && (sp84 != 0))
         {
             fp->x192_flag_b6 = TRUE;
         }
@@ -3977,7 +3977,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
     fp->damage_knockback = 0;
     fp->hitlag_mul = 1.0F;
 
-    if ((hitlag_timer == 0) && (fp->afterimage.drawstatus != -1))
+    if ((hitlag_tics == 0) && (fp->afterimage.drawstatus != -1))
     {
         switch (fp->afterimage.is_itemswing)
         {

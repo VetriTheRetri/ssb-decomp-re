@@ -369,7 +369,7 @@ void mpCommonUpdateFighterSlopeContour(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsGround)
     {
-        if ((fp->coll_data.ground_line_id != -1) && (fp->coll_data.ground_line_id != -2) && (fp->hitlag_timer <= 0))
+        if ((fp->coll_data.ground_line_id != -1) && (fp->coll_data.ground_line_id != -2) && (fp->hitlag_tics <= 0))
         {
             if (fp->slope_contour & FTSLOPECONTOUR_FLAG_RFOOT)
             {
@@ -784,7 +784,7 @@ sb32 mpCommonProcFighterDamage(mpCollData *coll_data, GObj *fighter_gobj, u32 fl
     }
     if (mpProcessRunGroundCollisionAdjNewNULL(coll_data) != FALSE)
     {
-        if (fp->hitlag_timer > 0)
+        if (fp->hitlag_tics > 0)
         {
             func_ovl2_800DD6A8(coll_data);
 

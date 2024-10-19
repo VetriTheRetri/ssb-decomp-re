@@ -16,7 +16,7 @@ void ftCommonWallDamageProcUpdate(GObj *fighter_gobj)
     ftCommonDamageUpdateDustEffect(fighter_gobj);
     ftCommonDamageDecHitStunSetPublicity(fighter_gobj);
 
-    if (fp->status_vars.common.damage.hitstun_timer == 0)
+    if (fp->status_vars.common.damage.hitstun_tics == 0)
     {
         ftCommonDamageFallSetStatusFromDamage(fighter_gobj);
     }
@@ -46,7 +46,7 @@ void ftCommonWallDamageSetStatus(GObj *fighter_gobj, Vec3f *angle, Vec3f *pos)
 
     knockback = lbCommonMag2D(&vel_air);
 
-    fp->status_vars.common.damage.hitstun_timer = ftParamGetHitStun(knockback);
+    fp->status_vars.common.damage.hitstun_tics = ftParamGetHitStun(knockback);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusWallDamage, 0.0F, 2.0F, (FTSTATUS_PRESERVE_DAMAGEPLAYER | FTSTATUS_PRESERVE_PLAYERTAG));
 

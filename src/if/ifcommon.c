@@ -3053,7 +3053,7 @@ void ifCommonBattlePauseUpdateInterface(void)
     }
     if (sIFCommonBattlePauseKindInterface != nIFPauseKindPlayerNA)
     {
-        cmManagerRunGlobalProcCamera(gCMManagerCameraGObj);
+        cmManagerRunGlobalFuncCamera(gCMManagerCameraGObj);
         grWallpaperRunGObjProcess();
     }
 }
@@ -3068,7 +3068,7 @@ void ifCommonBattlePauseRestoreInterfaceAll(void)
         gCMManagerPauseCameraEyeX += (sIFCommonBattlePauseCameraEyeXOrigin - gCMManagerPauseCameraEyeX) * 0.1F;
         gCMManagerPauseCameraEyeY += (sIFCommonBattlePauseCameraEyeYOrigin - gCMManagerPauseCameraEyeY) * 0.1F;
 
-        cmManagerRunGlobalProcCamera(gCMManagerCameraGObj);
+        cmManagerRunGlobalFuncCamera(gCMManagerCameraGObj);
         grWallpaperRunGObjProcess();
 
         return;
@@ -3121,7 +3121,7 @@ void ifCommonBattleBossDefeatUpdateInterface(void)
     }
     else
     {
-        cmManagerRunGlobalProcCamera(gCMManagerCameraGObj);
+        cmManagerRunGlobalFuncCamera(gCMManagerCameraGObj);
         grWallpaperRunGObjProcess();
 
         D_ovl2_8013185A--;

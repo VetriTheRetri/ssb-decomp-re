@@ -1031,7 +1031,7 @@ struct ftStruct
     s32 shield_health;
     f32 unk_ft_0x38;
     s32 unk_ft_0x3C;
-    u32 hitlag_timer;
+    u32 hitlag_tics;
     s32 lr;                     // Facing direction; -1 = nGMFacingL, 1 = nGMFacingR
 
     struct ftPhysicsInfo

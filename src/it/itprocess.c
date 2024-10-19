@@ -91,15 +91,15 @@ void itProcessProcItemMain(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->hitlag_timer > 0)
+    if (ip->hitlag_tics > 0)
     {
-        ip->hitlag_timer--;
+        ip->hitlag_tics--;
     }
-    if (ip->hitlag_timer <= 0)
+    if (ip->hitlag_tics <= 0)
     {
         gcPlayAnimAll(item_gobj);
     }
-    if (ip->hitlag_timer <= 0)
+    if (ip->hitlag_tics <= 0)
     {
         if (ip->proc_update != NULL)
         {
@@ -142,7 +142,7 @@ void itProcessProcItemMain(GObj *item_gobj)
 
         ip->coll_data.pos_current = *translate;
 
-        if (ip->hitlag_timer == 0)
+        if (ip->hitlag_tics == 0)
         {
             translate->x += ip->phys_info.vel_air.x;
             translate->y += ip->phys_info.vel_air.y;
@@ -1086,7 +1086,7 @@ next_check:
     }
     if (ip->damage_lag != 0)
     {
-        ip->hitlag_timer = ftParamGetHitLag(ip->damage_lag, nFTCommonStatusWait, 1.0F); // Maybe 10 is the "none" status ID?
+        ip->hitlag_tics = ftParamGetHitLag(ip->damage_lag, nFTCommonStatusWait, 1.0F); // Maybe 10 is the "none" status ID?
     }
 
     ip->hit_normal_damage = 0;

@@ -476,7 +476,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *ft_desc)
     fp->shield_health = (fp->ft_kind == nFTKindYoshi) ? 55 : 55;
 
     fp->unk_ft_0x38 = 0.0F;
-    fp->hitlag_timer = 0;
+    fp->hitlag_tics = 0;
     fp->x192_flag_b6 = FALSE;
 
     ftPhysicsStopVelAll(fighter_gobj);

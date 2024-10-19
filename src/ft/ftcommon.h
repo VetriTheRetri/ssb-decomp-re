@@ -431,7 +431,7 @@ typedef struct ftCommonJumpAerialStatusVars
 
 typedef struct ftCommonDamageStatusVars
 {
-	s32 hitstun_timer;
+	s32 hitstun_tics;
 	s32 dust_effect_int;
 	f32 publicity_knockback;
 	u16 coll_mask_current;
@@ -685,7 +685,7 @@ typedef struct ftCommonThrowFFStatusVars
 
 typedef struct ftCommonThrowFDamaageStatusVars
 {
-	s32 hitstun_timer;
+	s32 hitstun_tics;
 	s32 dust_effect_int;
 	f32 publicity_knockback;
 	u16 coll_mask;

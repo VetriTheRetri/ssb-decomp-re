@@ -2967,7 +2967,7 @@ void lbCommonScissorSpriteCamera(GObj *gobj)
     lbCommonStartSprite(gSYTaskmanDLHeads);
     lbCommonSetSpriteScissor(ulx, lrx, uly, lry);
 
-    func_80017B80(gobj, (cam->flags & 8) ? 1 : 0);
+    func_80017B80(gobj, (cam->flags & CAMERA_FLAG_IDENTIFIER) ? 1 : 0);
     lbCommonFinishSprite(gSYTaskmanDLHeads);
 }
 

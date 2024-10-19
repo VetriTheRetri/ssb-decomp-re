@@ -503,7 +503,7 @@ void scTrainingMode_ProcUpdate()
 	if (scTrainingMode_CheckSpeedFrameFreeze() == FALSE)
 		func_8000A5E4();
 	else
-		cmManagerRunGlobalProcCamera(gCMManagerCameraGObj);
+		cmManagerRunGlobalFuncCamera(gCMManagerCameraGObj);
 
 	ifCommonSetMaxNumGObj();
 }

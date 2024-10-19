@@ -874,9 +874,9 @@ void jtgt_ovl2_8010CDAC(GObj *camera_gobj)
 }
 
 // 0x8010CECC
-void cmManagerRunGlobalProcCamera(GObj *camera_gobj)
+void cmManagerRunGlobalFuncCamera(GObj *camera_gobj)
 {
-    gCMManagerCameraStruct.proc_camera(camera_gobj);
+    gCMManagerCameraStruct.func_camera(camera_gobj);
 }
 
 // 0x8010CEF4
@@ -885,7 +885,7 @@ void cmManagerSetCameraStatusID(s32 status_id)
     gCMManagerCameraStruct.status_prev = gCMManagerCameraStruct.status_curr;
     gCMManagerCameraStruct.status_curr = status_id;
 
-    gCMManagerCameraStruct.proc_camera = dCMManagerProcList[status_id];
+    gCMManagerCameraStruct.func_camera = dCMManagerProcList[status_id];
 }
 
 // 0x8010CF20
@@ -1052,7 +1052,7 @@ void func_ovl2_8010D4C0(GObj *camera_gobj)
     gcSetCameraMatrixMode(3);
     func_8001663C(gSYTaskmanDLHeads, cam, 0);
     gcPrepCameraMatrix(gSYTaskmanDLHeads, cam);
-    gcRunProcCamera(cam, 0);
+    gcRunFuncCamera(cam, 0);
 
     gIFCommonPlayerInterface.ifmagnify_mode = 0;
     gIFCommonPlayerInterface.arrows_flags = 0;
@@ -1062,50 +1062,52 @@ void func_ovl2_8010D4C0(GObj *camera_gobj)
 
     gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    camera_gobj->cam_mask = 6;
+    camera_gobj->cam_mask = CAMERA_MASK_DLLINK(2) | CAMERA_MASK_DLLINK(1);
 
-    func_80017B80(camera_gobj, (cam->flags & 8) ? 1 : 0);
-    func_800057C8();
-
-    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
-
-    camera_gobj->cam_mask = 16;
-
-    func_80017B80(camera_gobj, (cam->flags & 8) ? 1 : 0);
-    func_800057C8();
+    func_80017B80(camera_gobj, (cam->flags & CAMERA_FLAG_IDENTIFIER) ? 1 : 0);
+    syTaskmanUpdateDLBuffers();
 
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    camera_gobj->cam_mask = 0x1EC0;
+    camera_gobj->cam_mask = CAMERA_MASK_DLLINK(4);
 
-    func_80017B80(camera_gobj, (cam->flags & 8) ? 1 : 0);
-    func_800057C8();
-
-    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
-    gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
-
-    camera_gobj->cam_mask = 0xE000;
-
-    func_80017B80(camera_gobj, (cam->flags & 8) ? 1 : 0);
-    func_800057C8();
+    func_80017B80(camera_gobj, (cam->flags & CAMERA_FLAG_IDENTIFIER) ? 1 : 0);
+    syTaskmanUpdateDLBuffers();
 
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    camera_gobj->cam_mask = 0x70000;
+    camera_gobj->cam_mask = CAMERA_MASK_DLLINK(12) | CAMERA_MASK_DLLINK(11) | 
+                            CAMERA_MASK_DLLINK(10) | CAMERA_MASK_DLLINK(9)  |
+                            CAMERA_MASK_DLLINK(7)  | CAMERA_MASK_DLLINK(6);
 
-    func_80017B80(camera_gobj, (cam->flags & 8) ? 1 : 0);
-    func_800057C8();
+    func_80017B80(camera_gobj, (cam->flags & CAMERA_FLAG_IDENTIFIER) ? 1 : 0);
+    syTaskmanUpdateDLBuffers();
 
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    camera_gobj->cam_mask = 0x180000;
+    camera_gobj->cam_mask = CAMERA_MASK_DLLINK(15) | CAMERA_MASK_DLLINK(14) | CAMERA_MASK_DLLINK(13);
 
-    func_80017B80(camera_gobj, (cam->flags & 8) ? 1 : 0);
-    func_800057C8();
+    func_80017B80(camera_gobj, (cam->flags & CAMERA_FLAG_IDENTIFIER) ? 1 : 0);
+    syTaskmanUpdateDLBuffers();
+
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+
+    camera_gobj->cam_mask = CAMERA_MASK_DLLINK(18) | CAMERA_MASK_DLLINK(17) | CAMERA_MASK_DLLINK(16);
+
+    func_80017B80(camera_gobj, (cam->flags & CAMERA_FLAG_IDENTIFIER) ? 1 : 0);
+    syTaskmanUpdateDLBuffers();
+
+    gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+    gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
+
+    camera_gobj->cam_mask = CAMERA_MASK_DLLINK(20) | CAMERA_MASK_DLLINK(19);
+
+    func_80017B80(camera_gobj, (cam->flags & CAMERA_FLAG_IDENTIFIER) ? 1 : 0);
+    syTaskmanUpdateDLBuffers();
 }
 
 // 0x8010D7E8
@@ -1171,7 +1173,7 @@ GObj* cmManagerMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
         // No break? Doesn't match otherwise :brainshock:
     }
     gCMManagerCameraStruct.status_default = gCMManagerCameraStruct.status_prev = gCMManagerCameraStruct.status_curr;
-    gCMManagerCameraStruct.proc_camera = dCMManagerProcList[gCMManagerCameraStruct.status_curr];
+    gCMManagerCameraStruct.func_camera = dCMManagerProcList[gCMManagerCameraStruct.status_curr];
     gCMManagerCameraStruct.fovy = 38.0F;
 
     return camera_gobj;
@@ -1180,13 +1182,13 @@ GObj* cmManagerMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
 // 0x8010DB00
 void func_ovl2_8010DB00(void)
 {
-    cmManagerMakeBattleCamera(0x4C, nOMTransformNull, cmManagerRunGlobalProcCamera);
+    cmManagerMakeBattleCamera(0x4C, nOMTransformNull, cmManagerRunGlobalFuncCamera);
 }
 
 // 0x8010DB2C
-GObj* func_ovl2_8010DB2C(void (*proc_camera)(GObj*))
+GObj* func_ovl2_8010DB2C(void (*func_camera)(GObj*))
 {
-    return cmManagerMakeBattleCamera(nOMTransformPerspFastF, 8, proc_camera);
+    return cmManagerMakeBattleCamera(nOMTransformPerspFastF, 8, func_camera);
 }
 
 // 0x8010DB54
@@ -1222,7 +1224,7 @@ void func_ovl2_8010DC24(GObj *camera_gobj)
 
         gDPSetScissor(gSYTaskmanDLHeads[0]++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
     }
-    func_80017B80(camera_gobj, (cam->flags & 0x8) ? 1 : 0);
+    func_80017B80(camera_gobj, (cam->flags & CAMERA_FLAG_IDENTIFIER) ? 1 : 0);
     func_80017CC8(cam);
 }
 
@@ -1314,7 +1316,7 @@ void func_ovl2_8010E134(GObj *camera_gobj)
 
         gcPrepCameraMatrix(gSYTaskmanDLHeads, cam);
 
-        func_80017B80(camera_gobj, (cam->flags & 0x8) ? 1 : 0);
+        func_80017B80(camera_gobj, (cam->flags & CAMERA_FLAG_IDENTIFIER) ? 1 : 0);
         func_80017CC8(cam);
     }
 }
@@ -1343,7 +1345,7 @@ void func_ovl2_8010E254(GObj *camera_gobj)
 
         gcPrepCameraMatrix(gSYTaskmanDLHeads, cam);
 
-        func_80017B80(camera_gobj, (cam->flags & 0x8) ? 1 : 0);
+        func_80017B80(camera_gobj, (cam->flags & CAMERA_FLAG_IDENTIFIER) ? 1 : 0);
         func_80017CC8(cam);
     }
 }
@@ -1378,7 +1380,7 @@ void func_ovl2_8010E458(GObj *camera_gobj)
 {
     Camera *cam = CameraGetStruct(camera_gobj);
 
-    func_80017B80(camera_gobj, (cam->flags & 0x8) ? 1 : 0);
+    func_80017B80(camera_gobj, (cam->flags & CAMERA_FLAG_IDENTIFIER) ? 1 : 0);
 }
 
 // 0x8010E498

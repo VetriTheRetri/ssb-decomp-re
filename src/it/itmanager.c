@@ -292,7 +292,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, 
     ip->pickup_wait         = ITEM_PICKUP_WAIT_DEFAULT;
 
     ip->percent_damage      = 0;
-    ip->hitlag_timer        = 0;
+    ip->hitlag_tics        = 0;
     ip->damage_highest      = 0;
     ip->damage_knockback    = 0.0F;
     ip->damage_queue        = 0;

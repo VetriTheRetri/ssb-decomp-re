@@ -2639,13 +2639,13 @@ void unref_800162C8(GObj *gobj)
 }
 
 // 0x80016338
-void func_80016338(Gfx **dls, Camera *cam, s32 arg2)
+void func_80016338(Gfx **dls, Camera *cam, s32 buffer_id)
 {
     Vp_t *viewport = &cam->viewport.vp;
     Gfx *dl = dls[0];
     s32 ulx, uly, lrx, lry;
 
-    if ((arg2 == 0) || (arg2 == 1))
+    if ((buffer_id == 0) || (buffer_id == 1))
     {
         if (cam->flags & 0x20)
         {
@@ -2684,7 +2684,7 @@ void func_80016338(Gfx **dls, Camera *cam, s32 arg2)
     gDPSetColorImage(dl++, G_IM_FMT_RGBA, gSYVideoColorDepth, gSYVideoResWidth, (void*)0x0F000000);
     gDPSetCycleType(dl++, G_CYC_1CYCLE);
 
-    if ((arg2 == 0) || (arg2 == 2))
+    if ((buffer_id == 0) || (buffer_id == 2))
     {
         gDPSetRenderMode(dl++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     }
@@ -2694,13 +2694,13 @@ void func_80016338(Gfx **dls, Camera *cam, s32 arg2)
 }
 
 // 0x8001663C
-void func_8001663C(Gfx **dls, Camera *cam, s32 arg2)
+void func_8001663C(Gfx **dls, Camera *cam, s32 buffer_id)
 {
     Gfx *dl = dls[0];
     Vp_t *viewport = &cam->viewport.vp;
     s32 ulx, uly, lrx, lry;
 
-    if ((arg2 == 0) || (arg2 == 1))
+    if ((buffer_id == 0) || (buffer_id == 1))
     {
         if (cam->flags & 0x20)
         {
@@ -2737,7 +2737,7 @@ void func_8001663C(Gfx **dls, Camera *cam, s32 arg2)
 
     lrx--, lry--;
 
-    if (cam->flags & 0x1)
+    if (cam->flags & CAMERA_FLAG_ZBUFFER)
     {
         gDPPipeSync(dl++);
         gDPSetCycleType(dl++, G_CYC_FILL);
@@ -2749,7 +2749,7 @@ void func_8001663C(Gfx **dls, Camera *cam, s32 arg2)
     gDPPipeSync(dl++);
     gDPSetColorImage(dl++, G_IM_FMT_RGBA, gSYVideoColorDepth, gSYVideoResWidth, (void*)0x0F000000);
 
-    if (cam->flags & 0x2)
+    if (cam->flags & CAMERA_FLAG_FILLCOLOR)
     {
         gDPSetCycleType(dl++, G_CYC_FILL);
         gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
@@ -2759,7 +2759,7 @@ void func_8001663C(Gfx **dls, Camera *cam, s32 arg2)
     gDPPipeSync(dl++);
     gDPSetCycleType(dl++, G_CYC_1CYCLE);
 
-    if ((arg2 == 0) || (arg2 == 2))
+    if ((buffer_id == 0) || (buffer_id == 2))
     {
         gDPSetRenderMode(dl++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     }
@@ -2802,7 +2802,7 @@ void unref_80016AE4(Gfx **dls, Camera *cam, s32 arg2, void *image, s32 max_lrx, 
 
     lrx--, lry--;
 
-    if (cam->flags & 0x1)
+    if (cam->flags & CAMERA_FLAG_ZBUFFER)
     {
         gDPPipeSync(dl++);
         gDPSetCycleType(dl++, G_CYC_FILL);
@@ -2815,7 +2815,7 @@ void unref_80016AE4(Gfx **dls, Camera *cam, s32 arg2, void *image, s32 max_lrx, 
     gDPSetColorImage(dl++, G_IM_FMT_RGBA, gSYVideoColorDepth, max_lrx, image);
     gDPSetDepthImage(dl++, depth);
 
-    if (cam->flags & 0x2)
+    if (cam->flags & CAMERA_FLAG_FILLCOLOR)
     {
         gDPSetCycleType(dl++, G_CYC_FILL);
         gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
@@ -3159,16 +3159,16 @@ void gcSetCameraMatrixMode(s32 val)
 }
 
 // the second arg may just be unused
-void gcRunProcCamera(Camera *cam, s32 dl_id) 
+void gcRunFuncCamera(Camera *cam, s32 dl_id) 
 {
-    if (cam->proc_camera != NULL)
+    if (cam->func_camera != NULL)
     { 
-        cam->proc_camera(cam, dl_id);
+        cam->func_camera(cam, dl_id);
     }
 }
 
 // 0x80017868
-void func_80017868(GObj *this_gobj, s32 link_id, s32 arg2)
+void func_80017868(GObj *this_gobj, s32 link_id, sb32 is_tag_mask_or_id)
 {
     GObj *current_gobj = gOMObjCommonDLLinks[link_id];
 
@@ -3178,8 +3178,8 @@ void func_80017868(GObj *this_gobj, s32 link_id, s32 arg2)
         {
             if
             (
-                ((arg2 == 0) && (this_gobj->cam_tag &  current_gobj->cam_tag)) ||
-                ((arg2 == 1) && (this_gobj->cam_tag == current_gobj->cam_tag))
+                ((is_tag_mask_or_id == 0) && (this_gobj->cam_tag &  current_gobj->cam_tag)) ||
+                ((is_tag_mask_or_id == 1) && (this_gobj->cam_tag == current_gobj->cam_tag))
             )
             {
                 D_8003B874_3C474 = 4;
@@ -3275,16 +3275,16 @@ void func_80017B80(GObj *gobj, s32 arg1)
 // 0x80017CC8
 void func_80017CC8(Camera *cam) 
 {
-    if (cam->flags & 0x4)
+    if (cam->flags & CAMERA_FLAG_DLBUFFERS)
     {
-        func_800057C8(); 
+        syTaskmanUpdateDLBuffers(); 
     }
-    if (cam->flags & 0x10) 
+    if (cam->flags & CAMERA_FLAG_GFXEND) 
     {
         func_800053CC();
         func_80004F78();
     }
-    if (cam->flags & 0x40)
+    if (cam->flags & CAMERA_FLAG_BRANCHSYNC)
     { 
         func_800053CC();
     }
@@ -3296,8 +3296,8 @@ void func_80017D3C(GObj *gobj, Gfx **dls, s32 index)
     Camera *cam = CameraGetStruct(gobj);
     func_8001663C(dls, cam, index);
     gcPrepCameraMatrix(dls, cam);
-    gcRunProcCamera(cam, index);
-    func_80017B80(gobj, (cam->flags & 0x8) ? TRUE : FALSE);
+    gcRunFuncCamera(cam, index);
+    func_80017B80(gobj, (cam->flags & CAMERA_FLAG_IDENTIFIER) ? TRUE : FALSE);
     func_80017CC8(cam);
 }
 
@@ -3334,7 +3334,7 @@ void unref_80017E5C(void)
     func_80004F78();
     func_8001663C(gSYTaskmanDLHeads, cam, 0);
     gcPrepCameraMatrix(gSYTaskmanDLHeads, cam);
-    gcRunProcCamera(cam, 0);
+    gcRunFuncCamera(cam, 0);
 }
 
 // 0x80017EC0
@@ -3352,7 +3352,7 @@ void func_80017EC0(GObj *gobj)
     gSPEndDisplayList(gSYTaskmanDLHeads[0]++);
     gSPBranchList(D_800472C0, gSYTaskmanDLHeads[0]);
 
-    gcRunProcCamera(cam, 0);
+    gcRunFuncCamera(cam, 0);
 
     if (cam->flags & 0x20)
     {
@@ -3362,8 +3362,7 @@ void func_80017EC0(GObj *gobj)
     {
         D_800472B0[i] = ++gSYTaskmanDLHeads[i];
     }
-
-    func_80017B80(gobj, (cam->flags & 0x8) ? TRUE : FALSE);
+    func_80017B80(gobj, (cam->flags & CAMERA_FLAG_IDENTIFIER) ? TRUE : FALSE);
 
     for (i = 1; i < (ARRAY_COUNT(gSYTaskmanDLHeads) + ARRAY_COUNT(D_800472B0)) / 2; i++)
     {
@@ -3381,7 +3380,7 @@ void func_80017EC0(GObj *gobj)
                 func_80016338(&gSYTaskmanDLHeads[i], cam, i);
             }
             gSPDisplayList(gSYTaskmanDLHeads[i]++, D_800472C0 + 1);
-            gcRunProcCamera(cam, i);
+            gcRunFuncCamera(cam, i);
             gSPEndDisplayList(gSYTaskmanDLHeads[i]++);
             gSPBranchList(start, gSYTaskmanDLHeads[i]);
         }
@@ -3408,7 +3407,7 @@ void unref_8001810C(void)
             gSPDisplayList(D_800472B0[i] - 1, gSYTaskmanDLHeads[i]);
             func_80016338(&gSYTaskmanDLHeads[i], cam, i);
             gSPDisplayList(gSYTaskmanDLHeads[i]++, D_800472C0 + 1);
-            gcRunProcCamera(cam, i);
+            gcRunFuncCamera(cam, i);
             gSPEndDisplayList(gSYTaskmanDLHeads[i]++);
             gSPBranchList(start, gSYTaskmanDLHeads[i]);
         }
@@ -3427,7 +3426,7 @@ void unref_8001810C(void)
     gSPEndDisplayList(gSYTaskmanDLHeads[0]++);
     gSPBranchList(D_800472C0, gSYTaskmanDLHeads[0]);
 
-    gcRunProcCamera(cam, 0);
+    gcRunFuncCamera(cam, 0);
 
     for (i = 1; i < (ARRAY_COUNT(gSYTaskmanDLHeads) + ARRAY_COUNT(D_800472B0)) / 2; i++)
     {
@@ -3464,7 +3463,7 @@ void func_80018300(GObj *gobj)
     func_8001663C(gSYTaskmanDLHeads, cam, 0);
     spInit(gSYTaskmanDLHeads);
     spScissor(xmin, xmax, ymin, ymax);
-    func_80017B80(gobj, (cam->flags & 0x8) ? TRUE : FALSE);
+    func_80017B80(gobj, (cam->flags & CAMERA_FLAG_IDENTIFIER) ? TRUE : FALSE);
     spFinish(gSYTaskmanDLHeads);
 
     gSYTaskmanDLHeads[0]--;

@@ -221,7 +221,7 @@ struct itStruct 					// Common items, stage hazards, fighter items and Pokémon
 	u8 handicap;			 		// Item's handicap
 	s32 player_number;		 		// Item's player number
 	s32 percent_damage;		 		// Item's damage
-	u32 hitlag_timer;		 		// Item's hitlag
+	u32 hitlag_tics;		 		// Item's hitlag
 	s32 lr;					 		// Item's facing direction
 
 	struct itPhysicsInfo

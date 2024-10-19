@@ -13,9 +13,9 @@ void ftDonkeyThrowFDamageProcUpdate(GObj *fighter_gobj)
 {
     ftStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->status_vars.common.throwfdamage.hitstun_timer -= 1.0F;
+    fp->status_vars.common.throwfdamage.hitstun_tics -= 1.0F;
 
-    if (fp->status_vars.common.throwfdamage.hitstun_timer <= 0.0F)
+    if (fp->status_vars.common.throwfdamage.hitstun_tics <= 0.0F)
     {
         if (fp->ga == nMPKineticsAir)
         {

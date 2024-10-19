@@ -3998,7 +3998,7 @@ sb32 ftComputerCheckDetectTarget(ftStruct *this_fp, f32 detect_range_base)
         }
         ft_comattack++;
     }
-    for (attack_count = 0; TRUE; ft_comattack++) // Does not work as while(TRUE) loop
+    for (attack_count = 0; TRUE; ft_comattack++) // Does not match as while (TRUE) loop
     {
         if (ft_comattack->input_kind == -1)
         {
@@ -4687,7 +4687,6 @@ sb32 ftComputerCheckSetTargetEdgeLeft(ftStruct *fp, sb32 is_find_edge_target)
                 {
                     continue;
                 }
-
                 ft_com->target_pos.x = edge_pos.x + 500.0F;
                 ft_com->target_pos.y = edge_pos.y;
 
@@ -4974,7 +4973,7 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
             func_ovl2_800F4468(stand_line_id, &edge_left);
             func_ovl2_800F4448(stand_line_id, &edge_right);
 
-            if (GS_DISTANCE(edge_left.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < GS_DISTANCE(edge_right.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x))
+            if (DISTANCE(edge_left.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < DISTANCE(edge_right.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x))
             {
                 ft_com->target_pos.x = edge_left.x - 600.0F;
                 ft_com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
@@ -4991,13 +4990,13 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
         !(fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS) &&
         (fp->coll_data.ground_line_id >= 0) &&
         (ft_com->target_pos.y < ((fp->joints[nFTPartsJointTopN]->translate.vec.f.y + fp->coll_data.ground_dist) - 500.0F)) &&
-        (GS_DISTANCE(ft_com->target_pos.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < (GS_DISTANCE(ft_com->target_pos.y, fp->joints[nFTPartsJointTopN]->translate.vec.f.y) * 0.2F))
+        (DISTANCE(ft_com->target_pos.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < (DISTANCE(ft_com->target_pos.y, fp->joints[nFTPartsJointTopN]->translate.vec.f.y) * 0.2F))
     )
     {
         mpCollisionGetLREdgeLeft(fp->coll_data.ground_line_id, &sp9C);
         mpCollisionGetLREdgeRight(fp->coll_data.ground_line_id, &sp90);
 
-        if (GS_DISTANCE(sp9C.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < GS_DISTANCE(sp90.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x))
+        if (DISTANCE(sp9C.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < DISTANCE(sp90.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x))
         {
             ft_com->target_pos.x = sp9C.x - 600.0F;
             ft_com->target_pos.y = sp9C.y;
@@ -5091,7 +5090,7 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
                             (fp->status_info.status_id == nFTCommonStatusDamageFlyRoll)
                         )
                         {
-                            if (fp->status_vars.common.damage.hitstun_timer == 0)
+                            if (fp->status_vars.common.damage.hitstun_tics == 0)
                             {
                                 ftComputerSetCommandImmediate(fp, nFTComputerInputMoveAutoStickTiltHiReleaseZ);
                                 return;
@@ -5150,7 +5149,7 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
                             if 
                             (
                                 (fp->cp_level > 5) && 
-                                (mtTrigGetRandomFloat() * (550 - (fp->cp_level * 50)) < 70.0F)  || 
+                                (mtTrigGetRandomFloat() * (550 - (fp->cp_level * 50)) < 70.0F) || 
                                 (ft_com->behavior == nFTComputerBehaviorYoshiTeam)             ||
                                 (ft_com->behavior == nFTComputerBehaviorKirbyTeam)             ||
                                 (ft_com->behavior == nFTComputerBehaviorPolyTeam)
@@ -5236,7 +5235,7 @@ void ftComputerFollowObjectiveWalk(ftStruct *fp)
     }
     else
     {
-        if (ft_com->dash_predict <= GS_DISTANCE(ft_com->target_pos.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x))
+        if (ft_com->dash_predict <= DISTANCE(ft_com->target_pos.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x))
         {
             if (fp->joints[nFTPartsJointTopN]->translate.vec.f.y < ft_com->target_pos.y)
             {
@@ -6394,7 +6393,7 @@ s32 ftComputerProcWalk(GObj *fighter_gobj)
     ft_com->target_pos.y = ft_com->origin_pos.y;
     ft_com->target_line_id = ft_com->ground_line_id;
 
-    if (GS_DISTANCE(ft_com->target_pos.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < 100.0F)
+    if (DISTANCE(ft_com->target_pos.x, fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < 100.0F)
     {
         ft_com->target_pos.x = (((2.0 * mtTrigGetRandomFloat()) - 1.0) * 2500.0) + ft_com->origin_pos.x;
 
@@ -6628,7 +6627,7 @@ void ftComputerFollowObjectiveUseItem(ftStruct *fp)
                     return;
                 }
             }
-            if (GS_DISTANCE(fp->joints[nFTPartsJointTopN]->translate.vec.f.y, ft_com->target_pos.y) < 400.0F)
+            if (DISTANCE(fp->joints[nFTPartsJointTopN]->translate.vec.f.y, ft_com->target_pos.y) < 400.0F)
             {
                 if
                 (
@@ -6785,7 +6784,7 @@ void func_ovl3_8013877C(ftStruct *this_fp)
         }
         else
         {
-            if (GS_DISTANCE(ft_com->edge_pos.x, this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < 100.0F)
+            if (DISTANCE(ft_com->edge_pos.x, this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x) < 100.0F)
             {
                 ft_com->edge_pos.x = (((2.0 * mtTrigGetRandomFloat()) - 1.0) * 2500.0) + ft_com->origin_pos.x;
 
@@ -6860,7 +6859,7 @@ sb32 func_ovl3_80138AA8(ftStruct *this_fp, sb32 is_delay)
 
     target_fp = ft_com->target_user;
 
-    if (GS_DISTANCE(this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y, ft_com->target_pos.y) < 400.0F)
+    if (DISTANCE(this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y, ft_com->target_pos.y) < 400.0F)
     {
         if (ft_com->unk_ftcom_0x35 == 0)
         {
@@ -7132,7 +7131,7 @@ void ftComputerFollowObjectiveAttack(ftStruct *fp)
                         }
                     }
                 }
-                if ((GS_DISTANCE(ft_com->target_pos.y, fp->joints[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
+                if ((DISTANCE(ft_com->target_pos.y, fp->joints[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
                 {
                     ftComputerFollowObjectiveWalk(fp);
 
@@ -7175,7 +7174,7 @@ void ftComputerFollowObjectiveAttack(ftStruct *fp)
 
                     return;
                 }
-                if ((GS_DISTANCE(ft_com->target_pos.y, fp->joints[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
+                if ((DISTANCE(ft_com->target_pos.y, fp->joints[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
                 {
                     ftComputerFollowObjectiveWalk(fp);
 
@@ -7346,7 +7345,7 @@ void ftComputerFollowObjectiveAlly(ftStruct *fp)
                 ft_com->walk_stop_wait = 0;
                 return;
             }
-            if ((GS_DISTANCE(ft_com->target_pos.y, fp->joints[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
+            if ((DISTANCE(ft_com->target_pos.y, fp->joints[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
             {
                 ftComputerFollowObjectiveWalk(fp);
 
@@ -7432,7 +7431,7 @@ void ftComputerFollowObjectivePatrol(ftStruct *fp)
                         }
                     }
                 }
-                if ((GS_DISTANCE(ft_com->target_pos.y, fp->joints[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
+                if ((DISTANCE(ft_com->target_pos.y, fp->joints[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
                 {
                     ftComputerFollowObjectiveWalk(fp);
 
@@ -7473,7 +7472,7 @@ void ftComputerFollowObjectivePatrol(ftStruct *fp)
                     ft_com->walk_stop_wait = 0;
                     return;
                 }
-                if ((GS_DISTANCE(ft_com->target_pos.y, fp->joints[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
+                if ((DISTANCE(ft_com->target_pos.y, fp->joints[nFTPartsJointTopN]->translate.vec.f.y) > 1500.0F) || (ft_com->unk_ftcom_0x20 != 0))
                 {
                     ftComputerFollowObjectiveWalk(fp);
 

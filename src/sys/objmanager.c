@@ -1569,7 +1569,7 @@ Camera* gcAddCameraForGObj(GObj* gobj)
 	}
 	new_cam->flags = 0;
 	new_cam->color = GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00);
-	new_cam->proc_camera = NULL;
+	new_cam->func_camera = NULL;
 	new_cam->unk_camera_0x8C = 0;
 
 	new_cam->aobj = NULL;

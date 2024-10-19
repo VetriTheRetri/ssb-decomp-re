@@ -121,8 +121,8 @@ syVideoSetup dMNTitleDisplaySetup =
 	NULL,
 	320,
 	240,
-	SYVIDEO_FLAG_DIVOT        | SYVIDEO_FLAG_DITHERFILTER | SYVIDEO_FLAG_GAMMADITHER 	|
-	0x800                     | SYVIDEO_FLAG_NOBLACKOUT   | SYVIDEO_FLAG_NOGAMMA      |
+	SYVIDEO_FLAG_DIVOT        | SYVIDEO_FLAG_DITHERFILTER | SYVIDEO_FLAG_GAMMADITHER |
+	0x800                     | SYVIDEO_FLAG_NOBLACKOUT   | SYVIDEO_FLAG_NOGAMMA     |
     SYVIDEO_FLAG_COLORDEPTH16 | SYVIDEO_FLAG_NOSERRATE    | 0x1
 };
 
@@ -155,19 +155,19 @@ u32 dMNTitleFileIDs[/* */] = { 0xa7, 0xa8 };
 s32 D_ovl10_80134440[2];
 
 // 0x80134448
-GObj* sMNTitleFireCameraGObj;
+GObj *sMNTitleFireCameraGObj;
 
 // 0x8013444C
-uintptr_t sMNTitleParticleBankID;
+s32 sMNTitleParticleBankID;
 
 // 0x80134450
 mnTitleLayout sMNTitleLayout;
 
 // 0x80134454
-uintptr_t sMNTitleTransitionsGObj;
+GObj *sMNTitleTransitionsGObj;
 
 // 0x80134458
-uintptr_t sMNTitleMainGObj;
+GObj *sMNTitleMainGObj;
 
 // 0x8013445C
 s32 sMNTitleTransitionTotalTimeTics;

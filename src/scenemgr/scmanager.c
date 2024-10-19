@@ -180,11 +180,11 @@ scBattleState gDefaultBattleState = {
 	}
 };
 
-u32 D_800A41B8 = 0;
-u32 D_800A41BC = 0;
+// 0x800A41B8
+s32 dSCManagerPad0x800A41B8[/* */] = { 0, 0 };
 
-char D_800A41C0[/* */] = "Mar 16 1999 18:26:57";
-
+// 0x800A41C0 (.rodata) - use { __DATE__ " " __TIME__ } in a real setting
+char dSCManagerBuildDate[/* */] = { "Mar 16 1999 18:26:57" };
 
 void mnNoControllerStartScene();
 void mnTitleStartScene();

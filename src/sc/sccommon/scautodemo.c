@@ -477,7 +477,7 @@ void scAutoDemoGetPlayerSpawnPosition(s32 mapobj_kind, Vec3f *mapobj_pos)
 }
 
 // 0x8018D7FC
-s32 scAutoDemoGetShuffledVariation(u16 flag)
+s32 scAutoDemoGetFighterKindsNum(u16 flag)
 {
 	s32 i, j;
 
@@ -492,7 +492,7 @@ s32 scAutoDemoGetShuffledVariation(u16 flag)
 }
 
 // 0x8018D874
-s32 scAutoDemoGetShuffledFighterKind(u16 variation_flags, u16 ft_flags, s32 random)
+s32 scAutoDemoGetShuffledFighterKind(u16 this_mask, u16 prev_mask, s32 random)
 {
 	s32 ret = -1;
 
@@ -502,7 +502,7 @@ s32 scAutoDemoGetShuffledFighterKind(u16 variation_flags, u16 ft_flags, s32 rand
 	{
 		ret++;
 
-		if ((variation_flags & (1 << ret)) && !(ft_flags & (1 << ret)))
+		if ((this_mask & (1 << ret)) && !(prev_mask & (1 << ret)))
 		{
 			random--;
 		}
@@ -527,8 +527,8 @@ s32 scAutoDemoGetFighterKind(s32 player)
 	}
 	character_flag = (gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER);
 
-	character_count1 = scAutoDemoGetShuffledVariation(character_flag), 
-	character_count2 = scAutoDemoGetShuffledVariation(sSCAutoDemoCharacterFlag);
+	character_count1 = scAutoDemoGetFighterKindsNum(character_flag), 
+	character_count2 = scAutoDemoGetFighterKindsNum(sSCAutoDemoCharacterFlag);
 
 	shuf = scAutoDemoGetShuffledFighterKind(character_flag, sSCAutoDemoCharacterFlag, mtTrigGetRandomIntRange(character_count1 - character_count2));
 

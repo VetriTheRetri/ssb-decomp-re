@@ -29,8 +29,8 @@ extern u8 gSC1PManagerKirbyTeamFinalCopy;
 // 0x80130D76
 extern u8 gSC1PManagerKirbyTeamModelPartID;
 
-extern s32 sc1PManagerGetShuffledVariation(u16 flag);
-extern s32 sc1PManagerGetShuffledFighterKind(u16 variation_flags, u16 ft_flags, s32 random);
+extern s32 sc1PManagerGetFighterKindsNum(u16 flag);
+extern s32 sc1PManagerGetShuffledFighterKind(u16 this_mask, u16 prev_mask, s32 random);
 extern s32 sc1PManagerGetShuffledKirbyCopy(u16 flags, s32 random);
 extern void sc1PManagerTrySetChallengers(void);
 extern sb32 sc1PManagerCheckUnlockSoundTest(void);

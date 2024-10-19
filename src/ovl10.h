@@ -11,7 +11,7 @@ typedef struct mnTitleTextureConfig
 
 typedef enum mnTitleLayout
 {
-    nMNTitleLayoutIntro,        // logo animation intro
+    nMNTitleLayoutOpening,        // logo animation intro
     nMNTitleLayoutAnimate,      // Super Smash Bros. animation
     nMNTitleLayoutFinal         // final layout
 

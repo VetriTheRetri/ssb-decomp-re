@@ -98,13 +98,13 @@ u32 dSC1PManagerUnlockNewcomerKinds[/* */] = { nLBBackupUnlockLuigi, nLBBackupUn
 // // // // // // // // // // // //
 
 // 0x800D6490
-s32 sc1PManagerGetShuffledVariation(u16 flag)
+s32 sc1PManagerGetFighterKindsNum(u16 mask)
 {
     s32 i, j;
 
-    for (i = 0, j = 0; i < (sizeof(u16) * 8); i++, flag = flag >> 1)
+    for (i = 0, j = 0; i < (sizeof(u16) * 8); i++, mask = mask >> 1)
     {
-        if (flag & 1)
+        if (mask & 1)
         {
             j++;
         }
@@ -113,24 +113,24 @@ s32 sc1PManagerGetShuffledVariation(u16 flag)
 }
 
 // 0x800D6508
-s32 sc1PManagerGetShuffledFighterKind(u16 variation_flags, u16 ft_flags, s32 random)
+s32 sc1PManagerGetShuffledFighterKind(u16 this_mask, u16 prev_mask, s32 random)
 {
-    s32 ret = -1;
+    s32 ft_kind = -1;
 
     random++;
 
     do
     {
-        ret++;
+        ft_kind++;
 
-        if ((variation_flags & (1 << ret)) && !(ft_flags & (1 << ret)))
+        if ((this_mask & (1 << ft_kind)) && !(prev_mask & (1 << ft_kind)))
         {
             random--;
         }
     }
     while (random != 0);
 
-    return ret;
+    return ft_kind;
 }
 
 // 0x800D6554
@@ -246,7 +246,7 @@ void sc1PManagerTrySaveBackup(sb32 is_complete_spgame)
 void sc1PManagerUpdateScene(void)
 {
     s32 i, j;
-    u16 variation_flags;
+    u16 this_mask;
     s32 bonus_stat_count;
     sb32 is_player_lose;
     u16 spgame_characters_complete;
@@ -310,16 +310,16 @@ void sc1PManagerUpdateScene(void)
     {
         while (gSceneData.spgame_stage <= nSC1PGameStageCommonEnd)
         {
-            variation_flags = (gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER) & ~(1 << gSceneData.ft_kind);
+            this_mask = (gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER) & ~(1 << gSceneData.ft_kind);
 
             is_player_lose = FALSE;
 
             switch (gSceneData.spgame_stage)
             {
             case nSC1PGameStageMario:
-                variation_flags &= ~1;
+                this_mask &= ~1;
 
-                gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].ft_kind = sc1PManagerGetShuffledFighterKind(variation_flags, 0, mtTrigGetRandomIntRange(sc1PManagerGetShuffledVariation(variation_flags)));
+                gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].ft_kind = sc1PManagerGetShuffledFighterKind(this_mask, 0, mtTrigGetRandomIntRange(sc1PManagerGetFighterKindsNum(this_mask)));
 
                 if (gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].ft_kind == nFTKindLuigi)
                 {
@@ -331,21 +331,21 @@ void sc1PManagerUpdateScene(void)
                 break;
 
             case nSC1PGameStageDonkey:
-                random = sc1PManagerGetShuffledVariation(variation_flags);
+                random = sc1PManagerGetFighterKindsNum(this_mask);
 
-                gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].ft_kind = sc1PManagerGetShuffledFighterKind(variation_flags, 0, mtTrigGetRandomIntRange(random));
+                gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].ft_kind = sc1PManagerGetShuffledFighterKind(this_mask, 0, mtTrigGetRandomIntRange(random));
                 gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].costume = 0;
                 gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].shade = 0;
 
-                gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].ft_kind = sc1PManagerGetShuffledFighterKind(variation_flags, (1 << gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].ft_kind), mtTrigGetRandomIntRange(random - 1));
+                gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].ft_kind = sc1PManagerGetShuffledFighterKind(this_mask, (1 << gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].ft_kind), mtTrigGetRandomIntRange(random - 1));
                 gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].costume = 0;
                 gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].shade = 0;
                 break;
 
             case nSC1PGameStageKirby:
-                variation_flags = (gSaveData.fighter_mask | LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindKirby));
+                this_mask = (gSaveData.fighter_mask | LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindKirby));
 
-                gSC1PManagerKirbyTeamFinalCopy = sc1PManagerGetShuffledKirbyCopy(variation_flags, mtTrigGetRandomIntRange(sc1PManagerGetShuffledVariation(variation_flags)));
+                gSC1PManagerKirbyTeamFinalCopy = sc1PManagerGetShuffledKirbyCopy(this_mask, mtTrigGetRandomIntRange(sc1PManagerGetFighterKindsNum(this_mask)));
 
                 gSC1PManagerKirbyTeamModelPartID = dSC1PManagerKirbyTeamModelPartIDs[gSC1PManagerKirbyTeamFinalCopy];
                 break;

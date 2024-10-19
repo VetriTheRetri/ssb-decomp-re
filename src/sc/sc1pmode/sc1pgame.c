@@ -839,7 +839,7 @@ void func_ovl65_8018D38C(void)
 }
 
 // 0x8018D394 - Get random shuffled variable, used for Yoshi Team, Kirby Team (?), Race to the Finish and Fighting Polygon Team
-s32 sc1PGameGetShuffledVariation(u16 shuf, s32 max)
+s32 sc1PGameGetFighterKindsNum(u16 shuf, s32 max)
 {
     s32 i = -1;
 
@@ -1072,7 +1072,7 @@ void sc1PGameSetupStageAll(void)
 
         for (i = 0; i < SC1PGAME_STAGE_YOSHI_VARIATIONS_COUNT; i++)
         {
-            sSC1PGameEnemyVariations[i] = sc1PGameGetShuffledVariation(flags, mtTrigGetRandomIntRange(variations));
+            sSC1PGameEnemyVariations[i] = sc1PGameGetFighterKindsNum(flags, mtTrigGetRandomIntRange(variations));
 
             flags |= (1 << sSC1PGameEnemyVariations[i]);
 
@@ -1119,7 +1119,7 @@ void sc1PGameSetupStageAll(void)
 
         for (i = 0; i < SC1PGAME_STAGE_MAX_VARIATIONS_COUNT; i++)
         {
-            sSC1PGameEnemyVariations[i] = sc1PGameGetShuffledVariation(flags, mtTrigGetRandomIntRange(variations));
+            sSC1PGameEnemyVariations[i] = sc1PGameGetFighterKindsNum(flags, mtTrigGetRandomIntRange(variations));
 
             flags |= (1 << sSC1PGameEnemyVariations[i]);
 
@@ -1188,7 +1188,7 @@ void sc1PGameSetupStageAll(void)
 
         for (i = 0; i < SC1PGAME_STAGE_MAX_OPPONENT_COUNT; i++)
         {
-            sSC1PGameEnemyVariations[i] = sc1PGameGetShuffledVariation(flags, mtTrigGetRandomIntRange(variations));
+            sSC1PGameEnemyVariations[i] = sc1PGameGetFighterKindsNum(flags, mtTrigGetRandomIntRange(variations));
 
             flags |= (1 << sSC1PGameEnemyVariations[i]);
 

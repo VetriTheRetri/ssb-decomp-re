@@ -391,6 +391,7 @@ segments:
     exclusive_ram_id: overlay_800D6490
     subsegments:
     # ovl2 text
+    # 1P Mode scene manager
       - [0x051C90, c, sc/sc1pmode/sc1pmanager]
     # Fighter manager
       - [0x0527E0, c, ft/ftmanager]
@@ -464,7 +465,7 @@ segments:
     # ovl2 data
     # General file IDs
       - [0x0923D0, .data, gm/gmcommon]
-    # 1P Game-exclusive scene manager
+    # 1P Mode scene manager
       - [0x0923F0, .data, sc/sc1pmode/sc1pmanager]
     # Fighter manager
       - [0x0925D0, data, ftmanagertemp]

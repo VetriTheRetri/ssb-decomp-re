@@ -34,18 +34,30 @@ extern intptr_t FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_2; // 29010 file 0x0A7 offset f
 extern void dbMenuUpdateMenuInputs();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
-
 // Forward declarations
 void mnTitleTransitionFromFireLogo();
 void mnTitleShowGObjLinkID(s32 link_id);
-void mnTitleSetPosition(DObj* dobj, SObj* sobj, s32 index);
-void mnTitleSetColors(SObj* sobj, s32 index);
-void func_ovl10_80132A58(GObj* fire_gobj);
+void mnTitleSetPosition(DObj* dobj, SObj *sobj, s32 index);
+void mnTitleSetColors(SObj *sobj, s32 index);
+void mnTitleShowFire(GObj *fire_gobj);
 void mnTitleLoadFiles();
+void mnTitleFuncUpdate(void);
+void mnTitleFuncStart(void);
+void mnTitleFuncLights(Gfx**);
+
+extern char dSCManagerBuildDate[/* */];
 
 extern u32 func_8000092C();
 
-// DATA
+// // // // // // // // // // // //
+//                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80134430 (.rodata)
+const char dMNTitleGameLang[/* */] = { "English" };
+
 // 0x801341E0
 intptr_t dMNTitleAnimatedLogoOffsets[/* */] =
 {
@@ -84,22 +96,16 @@ mnTitleTextureConfig dMNTitleTextureConfigs[/* */] =
 };
 
 // 0x801342E0
-s32 D_ovl10_801342E0[/* */] =
-{
-	0, 0,
-	(s32)"English",
-	0, 0, 0, 0, 0, 0,
-	0x800a41c0, 0, 0, 0, 0
-};
+void *dMNTitleUnknown0x801342E0[/* */] = { NULL, NULL, dMNTitleGameLang, NULL, NULL, NULL, NULL, NULL, NULL, dSCManagerBuildDate, NULL, NULL, NULL, NULL };
 
 // 0x80134318
-u8 dMNTitleFireColorArrayRed[/* */] = { 0xff, 0xff, 0xff, 0xff, 0xe6, 0xff, 0xff };
+u8 dMNTitleFireColorsR[/* */] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xE6, 0xFF, 0xFF };
 
 // 0x80134320
-u8 dMNTitleFireColorArrayGreen[/* */] = { 0xff, 0xf0, 0xff, 0xd1, 0xff, 0xe2, 0xd2 };
+u8 dMNTitleFireColorsG[/* */] = { 0xFF, 0xF0, 0xFF, 0xD1, 0xFF, 0xE2, 0xD2 };
 
 // 0x80134328
-u8 dMNTitleFireColorArrayBlue[/* */] = { 0xff, 0x9b, 0x64, 0xd1, 0xe6, 0xb8, 0x94 };
+u8 dMNTitleFireColorsB[/* */] = { 0xFF, 0x9B, 0x64, 0xD1, 0xE6, 0xB8, 0x94 };
 
 // 0x80134330
 Lights1 dMNTitleLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x0A, 0x32, 0x32);
@@ -127,18 +133,48 @@ syVideoSetup dMNTitleDisplaySetup =
 };
 
 // 0x8013438C
-scRuntimeInfo dMNTitleTaskmanSetup = {
+syTaskmanSetup dMNTitleTaskmanSetup =
+{
+    // Task Logic Buffer Setup
+    {
+        0,                          // ???
+        mnTitleFuncUpdate,          // Update function
+        func_8000A340,              // Frame draw function
+        &ovl10_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        sizeof(Gfx) * 3584,         // Display List Buffer 0 Size
+        sizeof(Gfx) * 1280,         // Display List Buffer 1 Size
+        0,                          // Display List Buffer 2 Size
+        0,                          // Display List Buffer 3 Size
+        0x1000,                     // Graphics Heap Size
+        2,                          // ???
+        0x1000,                     // RDP Output Buffer Size
+        mnTitleFuncLights,         	// Pre-render function
+        update_contdata,            // Controller I/O function
+    },
 
-	0x00000000,
-	0x80134098, 0x8000a340, 0x801345b0, 0x00000000,
-	0x00000001, 0x00000002, 0x00007000, 0x00002800,
-	0x00000000, 0x00000000, 0x00001000, 0x00020000,
-	0x00001000, 0x80134074, 0x80004310, 0x00000000,
-	0x00000600, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000088, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000000, 0x00000000,
-	0x00000088, 0x00000000, 0x0000006c, 0x00000000,
-	0x00000090, 0x80133f90
+    0,                              // Number of GObjThreads
+    sizeof(u64) * 192,              // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of Object Manager Matrices
+    NULL,                           // Matrix function list
+    NULL,                           // Function for ejecting DObjDynamicStore?
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(Camera),                 // Camera size
+    
+    mnTitleFuncStart               	// Task start function
 };
 
 // 0x80134418
@@ -148,9 +184,14 @@ s32 D_ovl10_80134418 = 0;
 s32 D_ovl10_8013441C = 0;
 
 // 0x80134420
-u32 dMNTitleFileIDs[/* */] = { 0xa7, 0xa8 };
+u32 dMNTitleFileIDs[/* */] = { 0xA7, 0xA8 };
 
-// BSS
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
 // 0x80134440
 s32 D_ovl10_80134440[2];
 
@@ -223,39 +264,44 @@ lbFileNode sMNTitleStatusBuffer[32];
 // 0x801345A0
 void *sMNTitleFiles[2];
 
-// 0x80131B00
-s32 mnTitleGetUnlockedCharsCountForMask(u16 mask)
-{
-	s32 i;
-	s32 unlocked_chars;
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
-	for (i = 0, unlocked_chars = 0; i < sizeof(u16) * 8; i++, mask = mask >> 1)
+// 0x80131B00
+s32 mnTitleGetFighterKindsNum(u16 mask)
+{
+	s32 i, j;
+
+	for (i = 0, j = 0; i < sizeof(u16) * 8; i++, mask = mask >> 1)
 	{
 		if (mask & 1)
 		{
-			unlocked_chars++;
+			j++;
 		}
 	}
-	return unlocked_chars;
+	return j;
 }
 
 // 0x80131B78
-s32 mnTitleGetMissingFtKind(u16 mask_1, u16 mask_2, s32 missing_index)
+s32 mnTitleGetShuffledFighterKind(u16 this_mask, u16 prev_mask, s32 random)
 {
 	s32 ft_kind = -1;
 
-	missing_index++;
+	random++;
 
 	do
 	{
 		ft_kind++;
 
-		if ((mask_1 & gmSaveChrMask(ft_kind)) && !(mask_2 & gmSaveChrMask(ft_kind)))
+		if ((this_mask & LBBACKUP_FIGHTER_MASK_DEFINE(ft_kind)) && !(prev_mask & LBBACKUP_FIGHTER_MASK_DEFINE(ft_kind)))
 		{
-			missing_index -= 1;
+			random--;
 		}
 	}
-	while (missing_index != 0);
+	while (random != 0);
 
 	return ft_kind;
 }
@@ -273,15 +319,15 @@ s32 mnTitleSetDemoFighterKinds(void)
 	{
 		gSceneData.demo_mask_prev = 0;
 	}
-	unlocked_count = mnTitleGetUnlockedCharsCountForMask(unlocked_mask);
+	unlocked_count = mnTitleGetFighterKindsNum(unlocked_mask);
 
-	if (unlocked_count <= mnTitleGetUnlockedCharsCountForMask(gSceneData.demo_mask_prev))
+	if (unlocked_count <= mnTitleGetFighterKindsNum(gSceneData.demo_mask_prev))
 	{
 		gSceneData.demo_mask_prev = 0;
 	}
-	unlocked_count = mnTitleGetUnlockedCharsCountForMask(unlocked_mask);
+	unlocked_count = mnTitleGetFighterKindsNum(unlocked_mask);
 
-	gSceneData.demo_ft_kind[0] = mnTitleGetMissingFtKind(unlocked_mask, gSceneData.demo_mask_prev, mtTrigGetRandomIntRange(unlocked_count - mnTitleGetUnlockedCharsCountForMask(gSceneData.demo_mask_prev)));
+	gSceneData.demo_ft_kind[0] = mnTitleGetShuffledFighterKind(unlocked_mask, gSceneData.demo_mask_prev, mtTrigGetRandomIntRange(unlocked_count - mnTitleGetFighterKindsNum(gSceneData.demo_mask_prev)));
 
 	if (!(gSceneData.demo_mask_prev))
 	{
@@ -289,9 +335,9 @@ s32 mnTitleSetDemoFighterKinds(void)
 	}
 	gSceneData.demo_mask_prev |= gmSaveChrMask(gSceneData.demo_ft_kind[0]);
 
-	unlocked_count = mnTitleGetUnlockedCharsCountForMask(unlocked_mask);
+	unlocked_count = mnTitleGetFighterKindsNum(unlocked_mask);
 
-	non_recently_demoed_count = unlocked_count - mnTitleGetUnlockedCharsCountForMask(gSceneData.demo_mask_prev);
+	non_recently_demoed_count = unlocked_count - mnTitleGetFighterKindsNum(gSceneData.demo_mask_prev);
 
 	if (non_recently_demoed_count == 0)
 	{
@@ -299,23 +345,21 @@ s32 mnTitleSetDemoFighterKinds(void)
 	}
 	else
 	{
-		gSceneData.demo_ft_kind[1] = mnTitleGetMissingFtKind(unlocked_mask, gSceneData.demo_mask_prev, mtTrigGetRandomIntRange(non_recently_demoed_count));
+		gSceneData.demo_ft_kind[1] = mnTitleGetShuffledFighterKind(unlocked_mask, gSceneData.demo_mask_prev, mtTrigGetRandomIntRange(non_recently_demoed_count));
 		gSceneData.demo_mask_prev |= gmSaveChrMask(gSceneData.demo_ft_kind[1]);
 	}
 }
 
 // 0x80131CF4
-void mnTitleInitVars()
+void mnTitleInitVars(void)
 {
-	s32 index;
+	s32 color_id;
 
 	if (gSceneData.scene_previous == nSCKindOpeningNewcomers)
 	{
-		sMNTitleLayout = nMNTitleLayoutIntro;
+		sMNTitleLayout = nMNTitleLayoutOpening;
 		sMNTitleTransitionTotalTimeTics = 0;
-		sMNTitleFireColorB = 0.0F;
-		sMNTitleFireColorG = sMNTitleFireColorB;
-		sMNTitleFireColorR = sMNTitleFireColorG;
+		sMNTitleFireColorR = sMNTitleFireColorG = sMNTitleFireColorB = 0.0F;
 	}
 	else
 	{
@@ -325,11 +369,11 @@ void mnTitleInitVars()
 		sMNTitleLayout = nMNTitleLayoutAnimate;
 		sMNTitleTransitionTotalTimeTics = 169;
 
-		index = mtTrigGetRandomTimeUCharRange(7);
-		sMNTitleFireColorID = index;
-		sMNTitleFireColorR = dMNTitleFireColorArrayRed[index];
-		sMNTitleFireColorG = dMNTitleFireColorArrayGreen[index];
-		sMNTitleFireColorB = dMNTitleFireColorArrayBlue[index];
+		color_id = mtTrigGetRandomTimeUCharRange(7);
+		sMNTitleFireColorID = color_id;
+		sMNTitleFireColorR = dMNTitleFireColorsR[color_id];
+		sMNTitleFireColorG = dMNTitleFireColorsG[color_id];
+		sMNTitleFireColorB = dMNTitleFireColorsB[color_id];
 	}
 	sMNTitleFireTimer = 0;
 	sMNTitleIsProceedScene = FALSE;
@@ -341,7 +385,7 @@ void mnTitleInitVars()
 }
 
 // 0x80131E68
-void mnTitleSetFinalLogoPosition(void)
+void mnTitleSetEndLogoPosition(void)
 {
 	GObj *smash_logo_gobj;
 	SObj *smash_logo_sobj;
@@ -364,7 +408,7 @@ void mnTitleSetFinalLogoPosition(void)
 }
 
 // 0x80131EE4
-void mnTitleSetFinalLayout(void)
+void mnTitleSetEndLayout(void)
 {
 	s32 i;
 	GObj *texture_gobj;
@@ -381,7 +425,7 @@ void mnTitleSetFinalLayout(void)
 	{
 		if (gobj->gobj_id == 5)
 		{
-			func_ovl10_80132A58(gobj);
+			mnTitleShowFire(gobj);
 		}
 		gobj = gobj->link_next;
 	}
@@ -491,7 +535,7 @@ void mnTitleFuncRun(GObj *gobj)
 		{
 			if (sMNTitleLayout != 0)
 			{
-				if ((gSceneData.main_title_animation_viewed) || (osResetType != 0))
+				if ((gSceneData.is_title_anim_viewed) || (osResetType != 0))
 				{
 					if (!(buttons & B_BUTTON))
 					{
@@ -523,16 +567,16 @@ void mnTitleUpdateFireVars(void)
 
 	sMNTitleFireColorR = sMNTitleFireColorG = sMNTitleFireColorB = 0.0F;
 
-	sMNTitleFireDeltaRed = (dMNTitleFireColorArrayRed[index] - sMNTitleFireColorR) / 80.0F;
-	sMNTitleFireDeltaGreen = (dMNTitleFireColorArrayGreen[index] - sMNTitleFireColorG) / 80.0F;
-	sMNTitleFireDeltaBlue = (dMNTitleFireColorArrayBlue[index] - sMNTitleFireColorB) / 80.0F;
+	sMNTitleFireDeltaRed = (dMNTitleFireColorsR[index] - sMNTitleFireColorR) / 80.0F;
+	sMNTitleFireDeltaGreen = (dMNTitleFireColorsG[index] - sMNTitleFireColorG) / 80.0F;
+	sMNTitleFireDeltaBlue = (dMNTitleFireColorsB[index] - sMNTitleFireColorB) / 80.0F;
 }
 
 // 0x80132320
 void mnTitleTransitionFromFireLogo(void)
 {
-	GObj* current_gobj;
-	GObj* next_gobj;
+	GObj *current_gobj;
+	GObj *next_gobj;
 
 	current_gobj = gOMObjCommonLinks[7];
 
@@ -561,7 +605,7 @@ void mnTitleTransitionFromFireLogo(void)
 // 0x801323AC
 void mnTitleShowGObjLinkID(s32 link_id)
 {
-	GObj* gobj = gOMObjCommonLinks[link_id];
+	GObj *gobj = gOMObjCommonLinks[link_id];
 
 	while (gobj != NULL)
 	{
@@ -574,7 +618,7 @@ void mnTitleShowGObjLinkID(s32 link_id)
 // 0x801323DC
 void mnTitleNextLayout(void)
 {
-	if ((sMNTitleLayout == nMNTitleLayoutIntro) && (gSceneData.scene_previous == nSCKindOpeningNewcomers))
+	if ((sMNTitleLayout == nMNTitleLayoutOpening) && (gSceneData.scene_previous == nSCKindOpeningNewcomers))
 	{
 		gSceneData.is_extend_demo_wait = FALSE;
 	}
@@ -592,13 +636,13 @@ void mnTitleSetMainMenuFramesToWait(void)
 }
 
 // 0x80132448
-void mnTitleHandleTransitions(GObj *gobj)
+void mnTitleTransitionsFuncRun(GObj *gobj)
 {
 	sMNTitleTransitionTotalTimeTics++;
 
 	if (sMNTitleTransitionTotalTimeTics == sMNTitleAllowProceedWait)
 	{
-		gSceneData.main_title_animation_viewed = TRUE;
+		gSceneData.is_title_anim_viewed = TRUE;
 	}
 	switch (sMNTitleTransitionTotalTimeTics)
 	{
@@ -607,14 +651,14 @@ void mnTitleHandleTransitions(GObj *gobj)
 		break;
 
 	case 170:
-		mnTitleSetFinalLogoPosition();
+		mnTitleSetEndLogoPosition();
 		mnTitleShowGObjLinkID(8);
 		mnTitleNextLayout();
 		mnTitleSetMainMenuFramesToWait();
 		break;
 
 	case 220:
-		mnTitleSetFinalLayout();
+		mnTitleSetEndLayout();
 		break;
 
 	case 280:
@@ -655,10 +699,10 @@ void mnTitleHandleTransitions(GObj *gobj)
 }
 
 // 0x801325D4
-void mnTitleAnimateGObj(GObj* gobj)
+void mnTitlePlayAnim(GObj *gobj)
 {
-	GObj* effect_gobj;
-	SObj* sobj;
+	GObj *effect_gobj;
+	SObj *sobj;
 	DObj* dobj;
 
 	effect_gobj = gobj->user_data.p;
@@ -673,8 +717,8 @@ void mnTitleAnimateGObj(GObj* gobj)
 	{
 		sobj->sprite.scalex = dobj->scale.vec.f.x;
 		sobj->sprite.scaley = dobj->scale.vec.f.y;
-		sobj->pos.x = ((dobj->translate.vec.f.x + 160.0F) - (sobj->sprite.width * sobj->sprite.scalex * 0.5f));
-		sobj->pos.y = ((120.0F - dobj->translate.vec.f.y) - (sobj->sprite.height * sobj->sprite.scaley * 0.5f));
+		sobj->pos.x = ((dobj->translate.vec.f.x + 160.0F) - (sobj->sprite.width * sobj->sprite.scalex * 0.5F));
+		sobj->pos.y = ((120.0F - dobj->translate.vec.f.y) - (sobj->sprite.height * sobj->sprite.scaley * 0.5F));
 
 		sobj = sobj->next;
 		dobj = dobj->sib_next;
@@ -682,25 +726,29 @@ void mnTitleAnimateGObj(GObj* gobj)
 }
 
 // 0x801326A4
-void mnTitleAnimatePressStart(GObj* press_start_gobj)
+void mnTitlePressStartProcUpdate(GObj *press_start_gobj)
 {
-	if (press_start_gobj->flags != 1)
-		mnTitleAnimateGObj(press_start_gobj);
+	if (press_start_gobj->flags != GOBJ_FLAG_HIDDEN)
+	{
+		mnTitlePlayAnim(press_start_gobj);
+	}
 }
 
 // 0x801326D4
-void mnTitleAnimateTitle(GObj* title_gobj)
+void mnTitleTitleProcUpdate(GObj *title_gobj)
 {
-	if (title_gobj->flags != 1)
-		mnTitleAnimateGObj(title_gobj);
+	if (title_gobj->flags != GOBJ_FLAG_HIDDEN)
+	{
+		mnTitlePlayAnim(title_gobj);
+	}
 }
 
 // 0x80132704
-void mnTitleUpdateHeaderAndFooterPosition(GObj* header_footer_gobj)
+void mnTitleUpdateHeaderAndFooterPosition(GObj *header_footer_gobj)
 {
-	SObj* header_footer_sobj = SObjGetStruct(header_footer_gobj);
+	SObj *header_footer_sobj = SObjGetStruct(header_footer_gobj);
 
-	if ((sMNTitleLayout != nMNTitleLayoutIntro) || (gSceneData.scene_previous != nSCKindOpeningNewcomers))
+	if ((sMNTitleLayout != nMNTitleLayoutOpening) || (gSceneData.scene_previous != nSCKindOpeningNewcomers))
 	{
 		mnTitleSetPosition(NULL, header_footer_sobj, nMNTitleTextureIndexFooter);
 		mnTitleSetPosition(NULL, header_footer_sobj->next, nMNTitleTextureIndexHeader);
@@ -708,7 +756,7 @@ void mnTitleUpdateHeaderAndFooterPosition(GObj* header_footer_gobj)
 }
 
 // 0x80132764
-void mnTitleSetPosition(DObj* dobj, SObj* sobj, s32 index)
+void mnTitleSetPosition(DObj* dobj, SObj *sobj, s32 index)
 {
 	mnTitleTextureConfig* texture_config;
 
@@ -720,12 +768,12 @@ void mnTitleSetPosition(DObj* dobj, SObj* sobj, s32 index)
 	}
 
 	texture_config = &dMNTitleTextureConfigs[index];
-	sobj->pos.x = (texture_config->x - (sobj->sprite.width * 0.5f));
-	sobj->pos.y = (texture_config->y - (sobj->sprite.height * 0.5f));
+	sobj->pos.x = (texture_config->x - (sobj->sprite.width * 0.5F));
+	sobj->pos.y = (texture_config->y - (sobj->sprite.height * 0.5F));
 }
 
 // 0x8013282C
-void mnTitleSetColors(SObj* sobj, s32 index)
+void mnTitleSetColors(SObj *sobj, s32 index)
 {
 	if (index < nMNTitleTextureIndexFooter)
 	{
@@ -780,10 +828,10 @@ void mnTitleSetColors(SObj* sobj, s32 index)
 }
 
 // 0x80132940
-void mnTitleRenderFire(GObj* fire_gobj)
+void mnTitleFireFuncDisplay(GObj *fire_gobj)
 {
 	s32 i;
-	SObj* fire_sobj = SObjGetStruct(fire_gobj);
+	SObj *fire_sobj = SObjGetStruct(fire_gobj);
 
 	for (i = 0; i < 2; i++)
 	{
@@ -800,7 +848,7 @@ void mnTitleRenderFire(GObj* fire_gobj)
 }
 
 // 0x80132A20
-void func_ovl10_80132A20(GObj* fire_gobj)
+void mnTitleFireFuncRun(GObj *fire_gobj)
 {
 	if (fire_gobj->flags != GOBJ_FLAG_HIDDEN)
 	{
@@ -814,7 +862,7 @@ void func_ovl10_80132A20(GObj* fire_gobj)
 }
 
 // 0x80132A58
-void func_ovl10_80132A58(GObj *fire_gobj)
+void mnTitleShowFire(GObj *fire_gobj)
 {
 	sMNTitleFireAlpha = 0xFF;
 
@@ -841,7 +889,7 @@ void mnTitleUpdateFireSprite(SObj *sobj, sb32 is_next)
 }
 
 // 0x80132B38
-void func_ovl10_80132B38(GObj* fire_gobj)
+void mnTitleFireProcUpdate(GObj *fire_gobj)
 {
 	SObj *fire_sobj_1 = SObjGetStruct(fire_gobj), *fire_sobj_2 = fire_sobj_1->next;
 
@@ -850,64 +898,71 @@ void func_ovl10_80132B38(GObj* fire_gobj)
 }
 
 // 0x80132B70
-void mnTitleCreateFire()
+void mnTitleMakeFire(void)
 {
 	s32 i;
 	s32 target_texture;
-	GObj* fire_gobj;
-	SObj* fire_sobj;
+	GObj *fire_gobj;
+	SObj *fire_sobj;
 
-	fire_gobj = gcMakeGObjSPAfter(5, func_ovl10_80132A20, 6, 0x80000000);
+	fire_gobj = gcMakeGObjSPAfter(5, mnTitleFireFuncRun, 6, GOBJ_LINKORDER_DEFAULT);
 
 	if (fire_gobj != NULL)
 	{
-		gcAddGObjDisplay(fire_gobj, mnTitleRenderFire, 0, 0x80000000, -1);
-		gcAddGObjProcess(fire_gobj, func_ovl10_80132B38, 1, 1);
+		gcAddGObjDisplay(fire_gobj, mnTitleFireFuncDisplay, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+		gcAddGObjProcess(fire_gobj, mnTitleFireProcUpdate, nOMObjProcessKindProc, 1);
 
 		for (i = 0; i < 2; i++)
 		{
 			if (i != 0)
+			{
 				target_texture = 0;
-			else
-				target_texture = 12;
+			}
+			else target_texture = 12;
 
 			fire_sobj = lbCommonMakeSObjForGObj(fire_gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[1], dMNTitleFireSpriteOffsets[target_texture]));
 
 			fire_sobj->sprite.attr = SP_TRANSPARENT;
 
 			if (i != 0)
+			{
 				fire_sobj->pos.x = 8.0F;
-			else
-				fire_sobj->pos.x = -32.0F;
+			}
+			else fire_sobj->pos.x = -32.0F;
 
 			if (i != 0)
+			{
 				fire_sobj->pos.y = 8.0F;
-			else
-				fire_sobj->pos.y = -16.0F;
+			}
+			else fire_sobj->pos.y = -16.0F;
 
 			if (i != 0)
-				fire_sobj->sprite.scalex = 9.5f;
-			else
-				fire_sobj->sprite.scalex = 12.0F;
+			{
+				fire_sobj->sprite.scalex = 9.5F;
+			}
+			else fire_sobj->sprite.scalex = 12.0F;
 
 			if (i != 0)
+			{
 				fire_sobj->sprite.scaley = 7.0F;
-			else
-				fire_sobj->sprite.scaley = 8.5f;
+			}
+			else fire_sobj->sprite.scaley = 8.5F;
 
 			fire_sobj->user_data.s = target_texture;
 		}
 
 		sMNTitleFireAlpha = sMNTitleFireAlphaUnused = 0;
-		fire_gobj->flags = 1;
+		fire_gobj->flags = GOBJ_FLAG_HIDDEN;
 
 		if (gSceneData.scene_previous != nSCKindOpeningNewcomers)
-			func_ovl10_80132A58(fire_gobj);
+		{
+			mnTitleShowFire(fire_gobj);
+		}
 	}
 }
 
 // 0x80132D5C
-void mnTitleAnimateLogo(GObj* logo_gobj)
+void mnTitleLogoProcUpdate(GObj *logo_gobj)
 {
 	GObj *effect_gobj = logo_gobj->user_data.p;
 	SObj *logo_sobj = SObjGetStruct(logo_gobj);
@@ -915,14 +970,14 @@ void mnTitleAnimateLogo(GObj* logo_gobj)
 
 	logo_sobj->sprite.scalex = logo_animation_dobj->scale.vec.f.x;
 	logo_sobj->sprite.scaley = logo_animation_dobj->scale.vec.f.y;
-	logo_sobj->pos.x = ((logo_animation_dobj->translate.vec.f.x + 160.0F) - (logo_sobj->sprite.width * logo_sobj->sprite.scalex * 0.5f));
-	logo_sobj->pos.y = ((120.0F - logo_animation_dobj->translate.vec.f.y) - (logo_sobj->sprite.height * logo_sobj->sprite.scaley * 0.5f));
+	logo_sobj->pos.x = ((logo_animation_dobj->translate.vec.f.x + 160.0F) - (logo_sobj->sprite.width * logo_sobj->sprite.scalex * 0.5F));
+	logo_sobj->pos.y = ((120.0F - logo_animation_dobj->translate.vec.f.y) - (logo_sobj->sprite.height * logo_sobj->sprite.scaley * 0.5F));
 }
 
 // 0x80132DFC
-void mnTitleRenderLogoNoIntro(GObj* logo_gobj)
+void mnTitleLogoFuncDisplay(GObj *logo_gobj)
 {
-	SObj* logo_sobj = SObjGetStruct(logo_gobj);
+	SObj *logo_sobj = SObjGetStruct(logo_gobj);
 
 	if ((logo_sobj->sprite.scalex < 0.0001F) || (logo_sobj->sprite.scaley < 0.0001F))
 	{
@@ -940,9 +995,9 @@ void mnTitleRenderLogoNoIntro(GObj* logo_gobj)
 }
 
 // 0x80132EDC
-void mnTitleFadeOutLogo(GObj* logo_gobj)
+void mnTitleFadeOutLogoFuncRun(GObj *logo_gobj)
 {
-	SObj* logo_sobj = SObjGetStruct(logo_gobj);
+	SObj *logo_sobj = SObjGetStruct(logo_gobj);
 
 	if ((logo_sobj->sprite.scalex < 0.0001F) || (logo_sobj->sprite.scaley < 0.0001F))
 	{
@@ -960,7 +1015,7 @@ void mnTitleFadeOutLogo(GObj* logo_gobj)
 }
 
 // 0x80132F3C
-void mnTitleCreateLogoNoIntro(void)
+void mnTitleMakeLogoNoOpening(void)
 {
 	GObj *logo_gobj = lbCommonMakeSpriteGObj
 	(
@@ -968,7 +1023,7 @@ void mnTitleCreateLogoNoIntro(void)
 		NULL,
 		10,
 		GOBJ_LINKORDER_DEFAULT,
-		mnTitleRenderLogoNoIntro,
+		mnTitleLogoFuncDisplay,
 		0,
 		GOBJ_DLLINKORDER_DEFAULT,
 		-1,
@@ -980,27 +1035,28 @@ void mnTitleCreateLogoNoIntro(void)
 	SObj *logo_sobj = SObjGetStruct(logo_gobj);
 
 	logo_sobj->sprite.attr = SP_TRANSPARENT;
+
 	logo_sobj->sprite.red = 0xFF;
 	logo_sobj->sprite.green = 0x00;
 	logo_sobj->sprite.blue = 0x00;
 
-	mnTitleSetPosition(0, logo_sobj, nMNTitleTextureIndexLogo);
+	mnTitleSetPosition(NULL, logo_sobj, nMNTitleTextureIndexLogo);
 }
 
 // 0x80132FD8
-void mnTitleCreateLogo()
+void mnTitleMakeLogo(void)
 {
 	s32 i;
-	GObj* animated_logo_gobj;
-	GObj* fire_logo_gobj;
-	SObj* fire_logo_sobj;
-	GObj* logo_gobj;
-	SObj* logo_sobj;
-	DObj* fire_logo_dobj;
+	GObj *animated_logo_gobj;
+	GObj *fire_logo_gobj;
+	SObj *fire_logo_sobj;
+	GObj *logo_gobj;
+	SObj *logo_sobj;
+	DObj *fire_logo_dobj;
 
 	if (gSceneData.scene_previous != nSCKindOpeningNewcomers)
 	{
-		mnTitleCreateLogoNoIntro();
+		mnTitleMakeLogoNoOpening();
 	}
 	else
 	{
@@ -1011,7 +1067,7 @@ void mnTitleCreateLogo()
 
 		fire_logo_gobj = gcMakeGObjSPAfter(6, NULL, 7, GOBJ_LINKORDER_DEFAULT);
 		gcAddGObjDisplay(fire_logo_gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
-		gcAddGObjProcess(fire_logo_gobj, mnTitleAnimateGObj, nOMObjProcessKindProc, 1);
+		gcAddGObjProcess(fire_logo_gobj, mnTitlePlayAnim, nOMObjProcessKindProc, 1);
 
 		fire_logo_gobj->user_data.p = animated_logo_gobj;
 		fire_logo_dobj = DObjGetStruct(animated_logo_gobj)->child;
@@ -1038,16 +1094,16 @@ void mnTitleCreateLogo()
 		logo_gobj = lbCommonMakeSpriteGObj
 		(
 			11,
-			mnTitleFadeOutLogo,
+			mnTitleFadeOutLogoFuncRun,
 			10,
 			GOBJ_LINKORDER_DEFAULT,
-			mnTitleRenderLogoNoIntro,
+			mnTitleLogoFuncDisplay,
 			0,
 			GOBJ_DLLINKORDER_DEFAULT,
 			-1,
 			lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleAnimatedLogoOffsets[3]),
 			nOMObjProcessKindProc,
-			mnTitleAnimateLogo,
+			mnTitleLogoProcUpdate,
 			1
 		);
 		logo_sobj = SObjGetStruct(logo_gobj);
@@ -1068,10 +1124,10 @@ void mnTitleCreateLogo()
 }
 
 // 0x801331FC - Unused?
-void mnTitleCreateTextures(void)
+void mnTitleMakeSprites(void)
 {
-	GObj* gobj;
-	SObj* sobj;
+	GObj *gobj;
+	SObj *sobj;
 	s32 i;
 
 	gobj = gcMakeGObjSPAfter(8, NULL, 8, GOBJ_LINKORDER_DEFAULT);
@@ -1091,9 +1147,9 @@ void mnTitleCreateTextures(void)
 void mnTitleMakeLabels(void)
 {
 	s32 i;
-	GObj* animation_gobj;
-	GObj* gobj;
-	SObj* texture_sobj;
+	GObj *animation_gobj;
+	GObj *gobj;
+	SObj *texture_sobj;
 	DObj* animation_dobj;
 
 	animation_gobj = gcMakeGObjSPAfter(10, NULL, 8, GOBJ_LINKORDER_DEFAULT);
@@ -1103,7 +1159,7 @@ void mnTitleMakeLabels(void)
 
 	gobj = gcMakeGObjSPAfter(8, NULL, 8, GOBJ_LINKORDER_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjProcess(gobj, mnTitleAnimateTitle, nOMObjProcessKindProc, 1);
+	gcAddGObjProcess(gobj, mnTitleTitleProcUpdate, nOMObjProcessKindProc, 1);
 
 	gobj->user_data.p = animation_gobj;
 	animation_dobj = DObjGetStruct(animation_gobj)->child;
@@ -1140,7 +1196,7 @@ void mnTitleMakeLabels(void)
 }
 
 // 0x80133504
-void mnTitleCreatePressStart(void)
+void mnTitleMakePressStart(void)
 {
 	GObj *press_start_anim_gobj;
 	GObj *press_start_gobj;
@@ -1156,7 +1212,7 @@ void mnTitleCreatePressStart(void)
 
 	press_start_gobj = gcMakeGObjSPAfter(8, NULL, 9, GOBJ_LINKORDER_DEFAULT);
 	gcAddGObjDisplay(press_start_gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjProcess(press_start_gobj, mnTitleAnimatePressStart, nOMObjProcessKindProc, 1);
+	gcAddGObjProcess(press_start_gobj, mnTitlePressStartProcUpdate, nOMObjProcessKindProc, 1);
 
 	press_start_gobj->user_data.p = press_start_anim_gobj;
 
@@ -1176,7 +1232,7 @@ void func_ovl10_80133634(void)
 }
 
 // 0x8013363C - Unused?
-void mnTitleAnimateSlashEffectGFX(GObj *gobj)
+void mnTitleSlashProcUpdate(GObj *gobj)
 {
 	if (gobj->flags != GOBJ_FLAG_HIDDEN)
 	{
@@ -1211,7 +1267,7 @@ void mnTitleMakeSlash(void)
 }
 
 // 0x80133770
-void mnTitleFireProcUpdate(GObj *gobj)
+void mnTitleFireCameraProcUpdate(GObj *gobj)
 {
 	Camera *cam = CameraGetStruct(sMNTitleFireCameraGObj);
 
@@ -1244,9 +1300,9 @@ void mnTitleFireProcUpdate(GObj *gobj)
 				}
 				sMNTitleFireColorID = color_id;
 
-				sMNTitleFireDeltaRed = (dMNTitleFireColorArrayRed[color_id] - sMNTitleFireColorR) / 80.0F;
-				sMNTitleFireDeltaGreen = (dMNTitleFireColorArrayGreen[color_id] - sMNTitleFireColorG) / 80.0F;
-				sMNTitleFireDeltaBlue = (dMNTitleFireColorArrayBlue[color_id] - sMNTitleFireColorB) / 80.0F;
+				sMNTitleFireDeltaRed = (dMNTitleFireColorsR[color_id] - sMNTitleFireColorR) / 80.0F;
+				sMNTitleFireDeltaGreen = (dMNTitleFireColorsG[color_id] - sMNTitleFireColorG) / 80.0F;
+				sMNTitleFireDeltaBlue = (dMNTitleFireColorsB[color_id] - sMNTitleFireColorB) / 80.0F;
 			}
 			if (sMNTitleFireTimer >= 80)
 			{
@@ -1276,7 +1332,7 @@ s32 mnTitleMakeCameras(void)
 	Camera *cam;
 
 	sMNTitleFireCameraGObj = gcMakeDefaultCameraGObj(2, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
-	gcAddGObjProcess(sMNTitleFireCameraGObj, mnTitleFireProcUpdate, nOMObjProcessKindProc, 1);
+	gcAddGObjProcess(sMNTitleFireCameraGObj, mnTitleFireCameraProcUpdate, nOMObjProcessKindProc, 1);
 
 	camera_gobj = gcMakeCameraGObj
 	(
@@ -1355,9 +1411,9 @@ void mnTitleMakeLogoFire(void)
 }
 
 // 0x80133E68
-void mnTitleLogoFireMakeEffect(void)
+void mnTitleMakeLogoFireParticles(void)
 {
-	GObj* logo_fire_effect_gobj;
+	GObj *logo_fire_effect_gobj;
 	lbGenerator *gtor;
 
 	if (gSceneData.scene_previous == nSCKindOpeningNewcomers)
@@ -1382,7 +1438,7 @@ void mnTitleLogoFireMakeEffect(void)
 void mnTitleMakeActors(void)
 {
 	sMNTitleMainGObj = gcMakeGObjSPAfter(0, mnTitleFuncRun, 1, GOBJ_LINKORDER_DEFAULT);
-	sMNTitleTransitionsGObj = gcMakeGObjSPAfter(0, mnTitleHandleTransitions, 15, GOBJ_LINKORDER_DEFAULT);
+	sMNTitleTransitionsGObj = gcMakeGObjSPAfter(0, mnTitleTransitionsFuncRun, 15, GOBJ_LINKORDER_DEFAULT);
 }
 
 // 0x80133F90
@@ -1390,7 +1446,7 @@ void mnTitleFuncStart(void)
 {
 	s32 i;
 
-	for (i = 0; i < 4; i++)
+	for (i = 0; i < ARRAY_COUNT(gPlayerControllers); i++)
 	{
 		func_80004494(i);
 	}
@@ -1400,17 +1456,20 @@ void mnTitleFuncStart(void)
 	mnTitleMakeLogoFire();
 	mnTitleMakeCameras();
 	mnTitleInitVars();
-	mnTitleCreateFire();
-	mnTitleCreateLogo();
+	mnTitleMakeFire();
+	mnTitleMakeLogo();
 	mnTitleMakeLabels();
 	func_ovl10_80133634();
-	mnTitleCreatePressStart();
+	mnTitleMakePressStart();
 	mnTitleMakeSlash();
-	mnTitleLogoFireMakeEffect();
+	mnTitleMakeLogoFireParticles();
 
 	if (gSceneData.scene_previous == nSCKindOpeningNewcomers)
 	{
-		while (func_8000092C() < 4215);
+		while (func_8000092C() < 4215)
+		{
+			continue;
+		};
 	}
 }
 
@@ -1421,7 +1480,7 @@ void mnTitleFuncLights(Gfx **dls)
 }
 
 // 0x80134098
-void mnTitleAdvanceTic(void)
+void mnTitleFuncUpdate(void)
 {
 	func_8000A5E4();
 }
@@ -1432,12 +1491,12 @@ void mnTitleStartScene(void)
 	dMNTitleDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dMNTitleDisplaySetup);
 
-	if ((!gSceneData.main_title_animation_viewed) && (gSaveData.unk5E3 <= U8_MAX))
+	if ((!gSceneData.is_title_anim_viewed) && (gSaveData.unk5E3 <= U8_MAX))
 	{
 		gSaveData.unk5E3++;
 		lbBackupWrite();
 	}
-	dMNTitleTaskmanSetup.arena_size = (size_t) ((uintptr_t)&lOverlay10ArenaHi - (uintptr_t)&lOverlay10ArenaLo);
+	dMNTitleTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl9_VRAM - (uintptr_t)&ovl10_BSS_END);
 	syTaskmanInit(&dMNTitleTaskmanSetup);
 }
 

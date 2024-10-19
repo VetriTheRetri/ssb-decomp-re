@@ -70,7 +70,7 @@ extern void sc1PGameFuncUpdate(void);
 extern s32 sc1PGameGetNextFreePlayerPort(s32 player);
 extern s32 sc1PGameGetNextFreeCostume(s32 com);
 extern void func_ovl65_8018D38C(void);
-extern s32 sc1PGameGetShuffledVariation(u16 shuf, s32 max);
+extern s32 sc1PGameGetFighterKindsNum(u16 shuf, s32 max);
 extern void func_ovl65_8018D3D0(void);
 extern void sc1PGameGetSpawnPosition(Vec3f *mapobj_pos, s32 mapobj_kind);
 extern void sc1PGameGetRandomSpawnPosition(Vec3f *mapobj_pos, s32 mapobj_kind);

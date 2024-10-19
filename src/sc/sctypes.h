@@ -345,7 +345,7 @@ struct scCommonData
 	u8 stagesel_battle_gr_kind;
 	u8 stagesel_training_gr_kind;
 	u8 challenger_level_drop;	// Subtract from default CP level?
-	ub8 main_title_animation_viewed;
+	ub8 is_title_anim_viewed;
 	u8 unk45;
 	u8 unk46;
 	u8 unk47;

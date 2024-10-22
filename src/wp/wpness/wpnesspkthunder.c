@@ -255,9 +255,9 @@ sb32 wpNessPKThunderHeadProcUpdate(GObj *weapon_gobj)
             stick_angle.y = fp->input.pl.stick_range.y;
             stick_angle.z = 0.0F;
 
-            angle_diff = lbVector_Vec3fAngleDiff(&wp->phys_info.vel_air, &stick_angle);
+            angle_diff = syVectorAngleDiff3D(&wp->phys_info.vel_air, &stick_angle);
 
-            lbVector_Vec3fNormalizedCross(&wp->phys_info.vel_air, &stick_angle, &thunder_angle);
+            syVectorNormCross3D(&wp->phys_info.vel_air, &stick_angle, &thunder_angle);
 
             if (angle_diff >= F_CST_DTOR32(45.0F)) // QUART_PI32
             {
@@ -611,7 +611,7 @@ GObj* wpNessPKReflectHeadMakeWeapon(GObj *old_gobj, Vec3f *pos, f32 angle)
     localvel.y = DObjGetStruct(new_gobj)->translate.vec.f.y - (DObjGetStruct(wp->owner_gobj)->translate.vec.f.y + WPPKTHUNDER_REFLECT_POS_Y_ADD);
     localvel.z = DObjGetStruct(new_gobj)->translate.vec.f.z - DObjGetStruct(wp->owner_gobj)->translate.vec.f.z;
 
-    lbVector_Vec3fNormalize(&localvel);
+    syVectorNorm3D(&localvel);
 
     wp->phys_info.vel_air.x = (WPPKTHUNDER_VEL * localvel.x);
     wp->phys_info.vel_air.y = (WPPKTHUNDER_VEL * localvel.y);

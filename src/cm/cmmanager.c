@@ -560,11 +560,11 @@ void func_ovl2_8010C55C(Camera *cam, Vec3f *arg1, f32 arg2)
     f32 unused;
     Vec3f sp1C;
 
-    lbVector_Vec3fSubtract(&sp1C, arg1, &cam->vec.at);
-    mag = lbVector_Vec3fMagnitude(&sp1C) * arg2;
-    lbVector_Vec3fNormalize(&sp1C);
-    lbVector_Vec3fScale(&sp1C, mag);
-    lbVector_Vec3fAddTo(&cam->vec.at, &sp1C);
+    syVectorDiff3D(&sp1C, arg1, &cam->vec.at);
+    mag = syVectorMag3D(&sp1C) * arg2;
+    syVectorNorm3D(&sp1C);
+    syVectorScale3D(&sp1C, mag);
+    syVectorAdd3D(&cam->vec.at, &sp1C);
 }
 
 // 0x8010C5C0
@@ -579,11 +579,11 @@ void func_ovl2_8010C5C0(Camera *cam, Vec3f *arg1)
     pan.y = cam->vec.at.y + (gCMManagerCameraStruct.target_dist * arg1->y);
     pan.z = cam->vec.at.z + (gCMManagerCameraStruct.target_dist * arg1->z);
 
-    lbVector_Vec3fSubtract(&sp34, &pan, &cam->vec.eye);
-    mag = lbVector_Vec3fMagnitude(&sp34) * 0.1F;
-    lbVector_Vec3fNormalize(&sp34);
-    lbVector_Vec3fScale(&sp34, mag);
-    lbVector_Vec3fAddTo(&cam->vec.eye, &sp34);
+    syVectorDiff3D(&sp34, &pan, &cam->vec.eye);
+    mag = syVectorMag3D(&sp34) * 0.1F;
+    syVectorNorm3D(&sp34);
+    syVectorScale3D(&sp34, mag);
+    syVectorAdd3D(&cam->vec.eye, &sp34);
 }
 
 // 0x8010C670
@@ -606,7 +606,7 @@ void func_ovl2_8010C670(f32 dist)
 // 0x8010C6B8
 void func_ovl2_8010C6B8(Camera *cam)
 {
-    lbVector_Vec3fAddTo(&cam->vec.at, &gCMManagerCameraStruct.at_move);
+    syVectorAdd3D(&cam->vec.at, &gCMManagerCameraStruct.at_move);
     gCMManagerCameraStruct.at_move.x = gCMManagerCameraStruct.at_move.y = gCMManagerCameraStruct.at_move.z = 0.0F;
 }
 
@@ -667,11 +667,11 @@ void func_ovl2_8010C7D0(Camera *cam, Vec3f *arg1)
     {
         sp30.y = current;
     }
-    lbVector_Vec3fSubtract(&sp3C, &sp30, &cam->vec.eye);
-    mag = lbVector_Vec3fMagnitude(&sp3C) * 0.1F;
-    lbVector_Vec3fNormalize(&sp3C);
-    lbVector_Vec3fScale(&sp3C, mag);
-    lbVector_Vec3fAddTo(&cam->vec.eye, &sp3C);
+    syVectorDiff3D(&sp3C, &sp30, &cam->vec.eye);
+    mag = syVectorMag3D(&sp3C) * 0.1F;
+    syVectorNorm3D(&sp3C);
+    syVectorScale3D(&sp3C, mag);
+    syVectorAdd3D(&cam->vec.eye, &sp3C);
 }
 
 // 0x8010C8C4
@@ -818,18 +818,18 @@ void jtgt_ovl2_8010CCC0(GObj *camera_gobj)
 
     cmManagerAdjustFOV(38.0F);
 
-    lbVector_Vec3fSubtract(&sp30, &gCMManagerCameraStruct.unk_cmstruct_0x5C, &cam->vec.at);
-    sp28 = lbVector_Vec3fMagnitude(&sp30);
+    syVectorDiff3D(&sp30, &gCMManagerCameraStruct.unk_cmstruct_0x5C, &cam->vec.at);
+    sp28 = syVectorMag3D(&sp30);
     sp2C = func_ovl2_8010C4D0() * sp28;
-    lbVector_Vec3fNormalize(&sp30);
-    lbVector_Vec3fScale(&sp30, sp2C);
-    lbVector_Vec3fAddTo(&cam->vec.at, &sp30);
+    syVectorNorm3D(&sp30);
+    syVectorScale3D(&sp30, sp2C);
+    syVectorAdd3D(&cam->vec.at, &sp30);
 
-    lbVector_Vec3fSubtract(&sp30, &gCMManagerCameraStruct.unk_cmstruct_0x68, &cam->vec.eye);
-    sp2C = lbVector_Vec3fMagnitude(&sp30) * 0.1F;
-    lbVector_Vec3fNormalize(&sp30);
-    lbVector_Vec3fScale(&sp30, sp2C);
-    lbVector_Vec3fAddTo(&cam->vec.eye, &sp30);
+    syVectorDiff3D(&sp30, &gCMManagerCameraStruct.unk_cmstruct_0x68, &cam->vec.eye);
+    sp2C = syVectorMag3D(&sp30) * 0.1F;
+    syVectorNorm3D(&sp30);
+    syVectorScale3D(&sp30, sp2C);
+    syVectorAdd3D(&cam->vec.eye, &sp30);
     func_ovl2_8010C6B8(cam);
     func_ovl2_8010C6FC(cam);
 }
@@ -948,9 +948,9 @@ void func_ovl2_8010D0A4(Vec3f *arg0, Vec3f *arg1)
 
     gCMManagerCameraStruct.unk_cmstruct_0x68 = *arg1;
 
-    lbVector_Vec3fSubtract(&sp1C, arg0, arg1);
+    syVectorDiff3D(&sp1C, arg0, arg1);
 
-    gCMManagerCameraStruct.target_dist = lbVector_Vec3fMagnitude(&sp1C);
+    gCMManagerCameraStruct.target_dist = syVectorMag3D(&sp1C);
 }
 
 // 0x8010D128

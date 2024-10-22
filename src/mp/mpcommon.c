@@ -731,7 +731,7 @@ sb32 mpCommonProcFighterDamage(mpCollData *coll_data, GObj *fighter_gobj, u32 fl
     {
         mpProcessRunLWallCollisionAdjNew(coll_data);
 
-        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_FLAG_LWALL) && (lbCommonMag2D(&coll_data->pos_correct) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_correct, &coll_data->lwall_angle) > F_CLC_DTOR32(110.0F))) // 1.9198622F
+        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_FLAG_LWALL) && (lbCommonMag2D(&coll_data->pos_correct) > 30.0F) && (syVectorAngleDiff3D(&coll_data->pos_correct, &coll_data->lwall_angle) > F_CLC_DTOR32(110.0F))) // 1.9198622F
         {
             fp->status_vars.common.damage.coll_mask_current |= MPCOLL_FLAG_LWALL;
 
@@ -748,7 +748,7 @@ sb32 mpCommonProcFighterDamage(mpCollData *coll_data, GObj *fighter_gobj, u32 fl
     {
         mpProcessRunRWallCollisionAdjNew(coll_data);
 
-        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_FLAG_RWALL) && (lbCommonMag2D(&coll_data->pos_correct) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_correct, &coll_data->rwall_angle) > F_CLC_DTOR32(110.0F))) // 1.9198622F
+        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_FLAG_RWALL) && (lbCommonMag2D(&coll_data->pos_correct) > 30.0F) && (syVectorAngleDiff3D(&coll_data->pos_correct, &coll_data->rwall_angle) > F_CLC_DTOR32(110.0F))) // 1.9198622F
         {
             fp->status_vars.common.damage.coll_mask_current |= MPCOLL_FLAG_RWALL;
 
@@ -769,7 +769,7 @@ sb32 mpCommonProcFighterDamage(mpCollData *coll_data, GObj *fighter_gobj, u32 fl
         {
             mpProcessRunCeilEdgeAdjust(coll_data);
         }
-        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_FLAG_CEIL) && (lbCommonMag2D(&coll_data->pos_correct) > 30.0F) && (lbVector_Vec3fAngleDiff(&coll_data->pos_correct, &coll_data->ceil_angle) > F_CLC_DTOR32(110.0F)))
+        if (!(fp->status_vars.common.damage.coll_mask_prev & MPCOLL_FLAG_CEIL) && (lbCommonMag2D(&coll_data->pos_correct) > 30.0F) && (syVectorAngleDiff3D(&coll_data->pos_correct, &coll_data->ceil_angle) > F_CLC_DTOR32(110.0F)))
         {
             fp->status_vars.common.damage.coll_mask_current |= MPCOLL_FLAG_CEIL;
 
@@ -796,7 +796,7 @@ sb32 mpCommonProcFighterDamage(mpCollData *coll_data, GObj *fighter_gobj, u32 fl
         }
         else
         {
-            if (lbVector_Vec3fAngleDiff(&coll_data->pos_correct, &coll_data->ground_angle) > F_CLC_DTOR32(110.0F))
+            if (syVectorAngleDiff3D(&coll_data->pos_correct, &coll_data->ground_angle) > F_CLC_DTOR32(110.0F))
             {
                 func_ovl2_800DD59C(coll_data);
                 mpCommonSetFighterLandingParams(fighter_gobj);

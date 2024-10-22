@@ -48,7 +48,7 @@ void grWallpaperCalcPersp(SObj *wallpaper_sobj)
     f32 mag;
     Camera *cam;
     Vec2f sp58;
-    Vec3f sp4C;
+    Vec3f dist;
     f32 bak_pos_x;
     f32 bak_pos_y;
     f32 pos_x;
@@ -60,19 +60,19 @@ void grWallpaperCalcPersp(SObj *wallpaper_sobj)
 
     cam = CameraGetStruct(gCMManagerCameraGObj);
 
-    lbVector_Vec3fSubtract(&sp4C, &cam->vec.eye, &cam->vec.at);
+    syVectorDiff3D(&dist, &cam->vec.eye, &cam->vec.at);
 
-    mag = lbVector_Vec3fMagnitude(&sp4C);
+    mag = syVectorMag3D(&dist);
 
-    if (sp4C.z < 0.0F)
+    if (dist.z < 0.0F)
     {
         sp58.x = 0.0F;
         sp58.y = 0.0F;
     }
     else
     {
-        sp58.y = atan2f(sp4C.x, sp4C.z);
-        sp58.x = atan2f(sp4C.y, sp4C.z);
+        sp58.y = atan2f(dist.x, dist.z);
+        sp58.x = atan2f(dist.y, dist.z);
     }
     scale = 20000.0F / (mag + 8000.0F);
 
@@ -124,13 +124,13 @@ void grWallpaperCalcPersp(SObj *wallpaper_sobj)
 }
 
 // 0x80104830
-void grWallpaperCommonUpdatePersp(GObj *wallpaper_gobj)
+void grWallpaperCommonProcUpdate(GObj *wallpaper_gobj)
 {
     grWallpaperCalcPersp(SObjGetStruct(wallpaper_gobj));
 }
 
 // 0x80104850
-void grWallpaperCommonMakeSObj(void)
+void grWallpaperMakeCommon(void)
 {
     GObj *wallpaper_gobj;
     SObj *wallpaper_sobj;
@@ -147,7 +147,7 @@ void grWallpaperCommonMakeSObj(void)
         -1,
         gMPCollisionGroundData->wallpaper,
         nOMObjProcessKindProc,
-        grWallpaperCommonUpdatePersp,
+        grWallpaperCommonProcUpdate,
         3
     );
     wallpaper_sobj = SObjGetStruct(wallpaper_gobj);
@@ -160,7 +160,7 @@ void grWallpaperCommonMakeSObj(void)
 }
 
 // 0x801048F8
-void grWallpaperStaticMakeSObj(void)
+void grWallpaperMakeStatic(void)
 {
     GObj *wallpaper_gobj;
     SObj *wallpaper_sobj;
@@ -190,20 +190,20 @@ void grWallpaperStaticMakeSObj(void)
 }
 
 // 0x80104998
-void grWallpaperSectorUpdatePersp(GObj *wallpaper_gobj)
+void grWallpaperSectorProcUpdate(GObj *wallpaper_gobj)
 {
     Camera *cam;
     SObj *wallpaper_sobj;
     f32 sqrt;
-    Vec3f sp28;
+    Vec3f dist;
     f32 temp;
     f32 scale;
 
     cam = gCMManagerCameraGObj->obj;
 
-    lbVector_Vec3fSubtract(&sp28, &cam->vec.eye, &cam->vec.at);
+    syVectorDiff3D(&dist, &cam->vec.eye, &cam->vec.at);
 
-    sqrt = sqrtf(SQUARE(sp28.x) + SQUARE(sp28.y) + SQUARE(sp28.z));
+    sqrt = sqrtf(SQUARE(dist.x) + SQUARE(dist.y) + SQUARE(dist.z));
 
     if (sqrt > 0.0F)
     {
@@ -229,7 +229,7 @@ void grWallpaperSectorUpdatePersp(GObj *wallpaper_gobj)
 }
 
 // 0x80104ABC
-void grWallpaperSectorMakeSObj(void)
+void grWallpaperMakeSector(void)
 {
     GObj *wallpaper_gobj;
     SObj *wallpaper_sobj;
@@ -245,77 +245,77 @@ void grWallpaperSectorMakeSObj(void)
 
     wallpaper_sobj->sprite.attr = SP_TEXSHUF;
 
-    gcAddGObjProcess(wallpaper_gobj, grWallpaperSectorUpdatePersp, nOMObjProcessKindProc, 3);
+    gcAddGObjProcess(wallpaper_gobj, grWallpaperSectorProcUpdate, nOMObjProcessKindProc, 3);
 }
 
 // 0x80104B58
-void grWallpaperBonus3AddDL(GObj *wallpaper_gobj)
+void grWallpaperBonus3FuncDisplay(GObj *wallpaper_gobj)
 {
     gSPDisplayList(gSYTaskmanDLHeads[0]++, dGRWallpaperDisplayList);
 }
 
 // 0x80104B88
-void grWallpaperBonus3MakeSObj(void)
+void grWallpaperMakeBonus3(void)
 {
     GObj *wallpaper_gobj;
 
     sGRWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(nOMObjCommonKindWallpaper, NULL, nOMObjCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjDisplay(wallpaper_gobj, grWallpaperBonus3AddDL, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(wallpaper_gobj, grWallpaperBonus3FuncDisplay, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
 
 // 0x80104BDC
-void grWallpaperMakeGroundWallpaper(void)
+void grWallpaperMakeDecideKind(void)
 {
     if (gSceneData.scene_current == nSCKind1PTraining)
     {
         scTrainingMode_SetBackgroundSprite();
-        grWallpaperStaticMakeSObj();
+        grWallpaperMakeStatic();
     }
     else if (gBattleState->gr_kind >= nGRKindBonusGameStart)
     {
-        grWallpaperStaticMakeSObj();
+        grWallpaperMakeStatic();
     }
     else switch (gBattleState->gr_kind)
     {
     case nGRKindYoster:
     case nGRKindYosterSmall:
-        grWallpaperStaticMakeSObj();
+        grWallpaperMakeStatic();
         break;
 
     case nGRKindSector:
-        grWallpaperSectorMakeSObj();
+        grWallpaperMakeSector();
         break;
 
     case nGRKindBonus3:
-        grWallpaperBonus3MakeSObj();
+        grWallpaperMakeBonus3();
         break;
 
     case nGRKindLast:
         sc1PGameBossInitWallpaper();
-        grWallpaperCommonMakeSObj();
+        grWallpaperMakeCommon();
         break;
 
     default:
-        grWallpaperCommonMakeSObj();
+        grWallpaperMakeCommon();
         break;
     }
 }
 
 // 0x80104CB4
-void grWallpaperSetPausePerspUpdate(void)
+void grWallpaperPausePerspUpdate(void)
 {
     sGRWallpaperIsPausePerspUpdate = TRUE; // ??? Runs when the game is paused
 }
 
 // 0x80104CC4
-void grWallpaperResetPausePerspUpdate(void)
+void grWallpaperResumePerspUpdate(void)
 {
     sGRWallpaperIsPausePerspUpdate = FALSE; // Similarly, this runs when the game is unpaused
 }
 
 // 0x80104CD0 - New file?
-void grWallpaperRunGObjProcess(void)
+void grWallpaperRunGObjProcessThreads(void)
 {
     GObjProcess *gobjproc = sGRWallpaperGObj->gobjproc_head;
 
@@ -333,7 +333,7 @@ void grWallpaperRunGObjProcess(void)
 }
 
 // 0x80104D30
-void func_ovl2_80104D30(void)
+void grWallpaperResumeAll(void)
 {
     GObj *gobj = gOMObjCommonLinks[nOMObjCommonLinkIDWallpaper];
 

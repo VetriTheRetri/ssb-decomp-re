@@ -258,13 +258,13 @@ void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
             }
             aobj = aobj->next;
         }
-        lbVector_Vec3fNormalize(vec3);
+        syVectorNorm3D(vec3);
     }
     lbCommonCross3D(vec3, vec1, vec2);
     lbCommonCross3D(vec1, vec2, vec3);
-    lbVector_Vec3fNormalize(vec1);
-    lbVector_Vec3fNormalize(vec2);
-    lbVector_Vec3fNormalize(vec3);
+    syVectorNorm3D(vec1);
+    syVectorNorm3D(vec2);
+    syVectorNorm3D(vec3);
 }
 
 // 0x80106904
@@ -615,8 +615,8 @@ void func_ovl2_8010719C(Vec3f *vel, Vec3f *rotate)
 
     lbCommonCross3D(&sp20, vel, &sp2C);
     lbCommonCross3D(vel, &sp2C, &sp20);
-    lbVector_Vec3fNormalize(&sp2C);
-    lbVector_Vec3fNormalize(&sp20);
+    syVectorNorm3D(&sp2C);
+    syVectorNorm3D(&sp20);
     func_ovl2_801070A4(rotate, vel, &sp2C, &sp20);
 }
 
@@ -630,7 +630,7 @@ sb32 grSectorArwingWeaponLaser2DProcHop(GObj *weapon_gobj)
 
     vel = wp->phys_info.vel_air;
 
-    lbVector_Vec3fNormalize(&vel);
+    syVectorNorm3D(&vel);
     func_ovl2_8010719C(&vel, &DObjGetStruct(weapon_gobj)->rotate.vec.f);
 
     return FALSE;
@@ -647,7 +647,7 @@ sb32 grSectorArwingWeaponLaser2DProcReflector(GObj *weapon_gobj)
 
     vel = wp->phys_info.vel_air;
 
-    lbVector_Vec3fNormalize(&vel);
+    syVectorNorm3D(&vel);
     func_ovl2_8010719C(&vel, &DObjGetStruct(weapon_gobj)->rotate.vec.f);
 
     return FALSE;
@@ -670,7 +670,7 @@ void grSectorArwingWeaponLaser2DMakeWeapon(void)
 
     sp48 = gGRCommonStruct.sector.map_dobj[2]->translate.vec.f;
 
-    lbVector_Vec3fGetEulerRotation(&sp48, MTVECTOR_AXIS_Z, gGRCommonStruct.sector.map_dobj[1]->rotate.vec.f.z);
+    syVectorRotate3D(&sp48, SYVECTOR_AXIS_Z, gGRCommonStruct.sector.map_dobj[1]->rotate.vec.f.z);
 
     pos.x = (sp54.x - sp48.z) - 566.0F;
     pos.y = sp54.y + sp48.y;
@@ -693,7 +693,7 @@ void grSectorArwingWeaponLaser2DMakeWeapon(void)
 
         sp48 = gGRCommonStruct.sector.map_dobj[3]->translate.vec.f;
 
-        lbVector_Vec3fGetEulerRotation(&sp48, 4, gGRCommonStruct.sector.map_dobj[1]->rotate.vec.f.z);
+        syVectorRotate3D(&sp48, 4, gGRCommonStruct.sector.map_dobj[1]->rotate.vec.f.z);
 
         pos.x = (sp54.x - sp48.z) - 566.0F;
         pos.y = sp54.y + sp48.y;
@@ -861,7 +861,7 @@ void grSectorArwingWeaponLaser3DMakeWeapon(void)
     wp_angle.y = ft_pos.y - wp_pos.y;
     wp_angle.z = ft_pos.z - wp_pos.z;
 
-    lbVector_Vec3fNormalize(&wp_angle);
+    syVectorNorm3D(&wp_angle);
 
     weapon_gobj = wpManagerMakeWeapon(NULL, &dGRSectorArwingWeaponLaser3DWeaponDesc, &wp_pos, WEAPON_FLAG_PARENT_GROUND);
 

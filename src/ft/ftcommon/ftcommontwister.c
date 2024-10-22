@@ -50,13 +50,13 @@ void ftCommonTwisterProcPhysics(GObj *fighter_gobj)
     pos.z += (mul * lbCommonSin(F_CLC_DTOR32(1800.0F * angle_d)));
     pos.y += 500.0F * angle_d;
 
-    lbVector_Vec3fSubtract(&vel, &pos, &DObjGetStruct(fighter_gobj)->translate.vec.f);
+    syVectorDiff3D(&vel, &pos, &DObjGetStruct(fighter_gobj)->translate.vec.f);
 
-    mag = lbVector_Vec3fMagnitude(&vel);
+    mag = syVectorMag3D(&vel);
 
     if (mag > 50.0F)
     {
-        lbVector_Vec3fScale(&vel, 50.0F / mag);
+        syVectorScale3D(&vel, 50.0F / mag);
     }
     fp->phys_info.vel_air = vel;
 

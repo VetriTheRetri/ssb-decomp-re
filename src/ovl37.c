@@ -217,7 +217,7 @@ void mvOpeningDKInitFighterStagePanel()
 	s32 pos_ids;
 	Vec3f spawn_position;
 
-	grWallpaperMakeGroundWallpaper();
+	grWallpaperMakeDecideKind();
 	grCommonSetupInitAll();
 
 	if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieSpawn1) != 1)

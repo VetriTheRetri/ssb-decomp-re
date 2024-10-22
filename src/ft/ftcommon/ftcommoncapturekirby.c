@@ -30,7 +30,7 @@ ftThrowReleaseDesc dFTCommonCaptureKirbyKnockbackCapture = { 80, 100, 60, 0 };
 // 0x8014B700
 void ftCommonCaptureKirbyUpdatePositionsMag(GObj *fighter_gobj, Vec3f *dist)
 {
-    f32 mag = lbVector_Vec3fMagnitude(dist);
+    f32 mag = syVectorMag3D(dist);
 
     if (mag < FTCOMMON_CAPTUREKIRBY_MAGNITUDE_MAX)
     {
@@ -438,7 +438,7 @@ void ftCommonThrownCommonStarProcMap(GObj *fighter_gobj)
             fp->command_vars.flags.flag1 = 0;
         }
         efManagerQuakeMakeEffect(2);
-        efManagerImpactWaveMakeEffect(&pos, MTVECTOR_AXIS_Z, atan2f(-angle->x, angle->y));
+        efManagerImpactWaveMakeEffect(&pos, SYVECTOR_AXIS_Z, atan2f(-angle->x, angle->y));
     }
 }
 

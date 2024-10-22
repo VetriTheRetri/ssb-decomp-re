@@ -2,7 +2,7 @@
 
 #include "hal_gu.h"
 
-#include <sys/vec.h>
+#include <sys/vector.h>
 
 #include <macros.h>
 #include <ssb_types.h>

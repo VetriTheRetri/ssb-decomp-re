@@ -440,7 +440,7 @@ sb32 itMSBombAttachedProcUpdate(GObj *item_gobj)
 
             fighter_pos.y += var;
 
-            lbVector_Vec3fSubtract(&dist, &fighter_pos, translate);
+            syVectorDiff3D(&dist, &fighter_pos, translate);
 
             if ((SQUARE(dist.x) + SQUARE(dist.y) + SQUARE(dist.z)) < ITMSBOMB_DETECT_FIGHTER_RADIUS)
             {
@@ -544,7 +544,7 @@ sb32 itMSBombDetachedProcUpdate(GObj *item_gobj)
 
             fighter_pos.y += offset_y;
 
-            lbVector_Vec3fSubtract(&dist, &fighter_pos, translate);
+            syVectorDiff3D(&dist, &fighter_pos, translate);
 
             if ((SQUARE(dist.x) + SQUARE(dist.y) + SQUARE(dist.z)) < ITMSBOMB_DETECT_FIGHTER_RADIUS)
             {

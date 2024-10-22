@@ -94,7 +94,7 @@ void ftCaptainSpecialLwProcPhysics(GObj *fighter_gobj)
     }
     else ftPhysicsApplyAirVelTransNAll(fighter_gobj);
 
-    lbVector_Vec3fScale(&fp->phys_info.vel_air, fp->status_vars.captain.speciallw.vel_scale);
+    syVectorScale3D(&fp->phys_info.vel_air, fp->status_vars.captain.speciallw.vel_scale);
 
     ftCaptainSpecialLwUpdateEffect(fighter_gobj);
 }

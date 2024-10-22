@@ -13,9 +13,9 @@ void ftBossMoveProcPhysics(GObj *fighter_gobj)
     Vec3f vel;
     f32 magnitude;
 
-    lbVector_Vec3fSubtract(&vel, &fp->status_vars.boss.move.vel, &DObjGetStruct(fighter_gobj)->translate.vec.f);
+    syVectorDiff3D(&vel, &fp->status_vars.boss.move.vel, &DObjGetStruct(fighter_gobj)->translate.vec.f);
 
-    magnitude = lbVector_Vec3fMagnitude(&vel);
+    magnitude = syVectorMag3D(&vel);
 
     if (magnitude < 5.0F)
     {
@@ -27,9 +27,9 @@ void ftBossMoveProcPhysics(GObj *fighter_gobj)
     {
         fp->status_vars.boss.move.magnitude = magnitude;
 
-        lbVector_Vec3fNormalize(&vel);
+        syVectorNorm3D(&vel);
 
-        lbVector_Vec3fScale(&vel, magnitude * 0.1F);
+        syVectorScale3D(&vel, magnitude * 0.1F);
 
         fp->phys_info.vel_air.x = vel.x;
         fp->phys_info.vel_air.y = vel.y;

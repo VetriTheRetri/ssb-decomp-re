@@ -252,7 +252,7 @@ void mvOpeningKirbyMakeMotionWindow(void)
 	s32 pos_ids;
 	Vec3f pos;
 
-	grWallpaperMakeGroundWallpaper();
+	grWallpaperMakeDecideKind();
 	grCommonSetupInitAll();
 
 	if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieSpawn1) != 1)

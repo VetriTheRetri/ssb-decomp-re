@@ -26,9 +26,9 @@ void ftBossTsutsuku2ProcPhysics(GObj *fighter_gobj)
         translate.y = DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f.y + 300.0F;
         translate.z = 0.0F;
 
-        lbVector_Vec3fSubtract(&vel, &translate, &DObjGetStruct(fighter_gobj)->translate.vec.f);
+        syVectorDiff3D(&vel, &translate, &DObjGetStruct(fighter_gobj)->translate.vec.f);
 
-        magnitude = lbVector_Vec3fMagnitude(&vel);
+        magnitude = syVectorMag3D(&vel);
 
         if (magnitude < 5.0F)
         {
@@ -37,8 +37,8 @@ void ftBossTsutsuku2ProcPhysics(GObj *fighter_gobj)
         }
         else
         {
-            lbVector_Vec3fNormalize(&vel);
-            lbVector_Vec3fScale(&vel, magnitude * 0.1F);
+            syVectorNorm3D(&vel);
+            syVectorScale3D(&vel, magnitude * 0.1F);
 
             fp->phys_info.vel_air.x = vel.x;
             fp->phys_info.vel_air.y = vel.y;

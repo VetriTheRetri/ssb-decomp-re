@@ -1966,11 +1966,11 @@ sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
     
     cam = CameraGetStruct(gOMObjCurrentCamera);
     
-    lbVector_Vec3fSubtract(&dist, &cam->vec.eye, &cam->vec.at);
+    syVectorDiff3D(&dist, &cam->vec.eye, &cam->vec.at);
     
     if (lbCommonSim3D(&sp50, &dist) < 0.999F)
     {
-        lbVector_Vec3fNormalizedCross(&sp50, &dist, &sp38);
+        syVectorNormCross3D(&sp50, &dist, &sp38);
         lbCommonCross3D(&sp50, &sp38, &dist);
     }
     else

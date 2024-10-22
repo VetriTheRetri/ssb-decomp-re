@@ -228,7 +228,7 @@ void ftFoxSpecialAirHiProcMap(GObj *fighter_gobj)
 
         if (!(coll_mask & MPCOLL_FLAG_GROUND) || (lbCommonCheckAdjustSim2D(&fp->phys_info.vel_air, &fp->coll_data.ground_angle, FTFOX_FIREFOX_BOUND_ANGLE) == FALSE))
         {
-            if (lbVector_Vec3fAngleDiff(&fp->coll_data.ground_angle, &fp->phys_info.vel_air) > F_CST_DTOR32(110.0F)) // 1.9198622F
+            if (syVectorAngleDiff3D(&fp->coll_data.ground_angle, &fp->phys_info.vel_air) > F_CST_DTOR32(110.0F)) // 1.9198622F
             {
                 ftFoxSpecialAirHiBoundSetStatus(fighter_gobj);
             }
@@ -328,7 +328,7 @@ void ftFoxSpecialHiDecideSetStatus(GObj *fighter_gobj)
         angle.y = fp->input.pl.stick_range.y;
         angle.z = 0.0F;
 
-        if (lbVector_Vec3fAngleDiff(&fp->coll_data.ground_angle, &angle) < F_CST_DTOR32(90.0F)) // HALF_PI32
+        if (syVectorAngleDiff3D(&fp->coll_data.ground_angle, &angle) < F_CST_DTOR32(90.0F)) // HALF_PI32
         {
             goto setair;
         }

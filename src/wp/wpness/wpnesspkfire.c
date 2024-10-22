@@ -84,7 +84,7 @@ sb32 wpNessPKFireProcHit(GObj *weapon_gobj)
 
     pos = wp->phys_info.vel_air;
 
-    lbVector_Vec3fNormalize(&pos);
+    syVectorNorm3D(&pos);
 
     pos.x = (pos.x * WPPKFIRE_POS_MUL) + DObjGetStruct(weapon_gobj)->translate.vec.f.x;
     pos.y = (pos.y * WPPKFIRE_POS_MUL) + DObjGetStruct(weapon_gobj)->translate.vec.f.y;

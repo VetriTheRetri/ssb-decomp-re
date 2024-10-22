@@ -507,9 +507,9 @@ void ftDisplayMainDrawAfterImage(ftStruct *fp)
 
             next_afterimage = &fp->afterimage.desc[next_index];
 
-            if (lbVector_Vec3fNormalizedCross(&afterimage->vec, &next_afterimage->vec, &spC8) != NULL)
+            if (syVectorNormCross3D(&afterimage->vec, &next_afterimage->vec, &spC8) != NULL)
             {
-                f32 f_angle_diff = lbVector_Vec3fAngleDiff(&afterimage->vec, &next_afterimage->vec);
+                f32 f_angle_diff = syVectorAngleDiff3D(&afterimage->vec, &next_afterimage->vec);
                 s32 target_angle = f_angle_diff / rotate;
 
                 if (target_angle != 0)
@@ -1110,23 +1110,23 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
                 sp128.y += fp->attributes->cam_offset_y;
 
             #if defined(AVOID_UB) || defined(NON_MATCHING)
-                lbVector_Vec3fSubtract(&sp110, &CameraGetStruct(gCMManagerCameraGObj)->vec.at, &sp128);
+                syVectorDiff3D(&sp110, &CameraGetStruct(gCMManagerCameraGObj)->vec.at, &sp128);
 
-                if (fp->attributes->cam_offset_y < lbVector_Vec3fMagnitude(&sp110))
+                if (fp->attributes->cam_offset_y < syVectorMag3D(&sp110))
                 {
-                    lbVector_Vec3fNormalize(&sp110);
-                    lbVector_Vec3fScale(&sp110, fp->attributes->cam_offset_y);
-                    lbVector_Vec3fAddTo(&sp128, &sp110);
+                    syVectorNorm3D(&sp110);
+                    syVectorScale3D(&sp110, fp->attributes->cam_offset_y);
+                    syVectorAdd3D(&sp128, &sp110);
                 }
             #else
                 // SUPER FAKE. I hope I can fix this in the future. sp128 - 2 should really be sp110, but we get stack issues otherwise.
-                lbVector_Vec3fSubtract(&sp128 - 2, &CameraGetStruct(gCMManagerCameraGObj)->vec.at, &sp128);
+                syVectorDiff3D(&sp128 - 2, &CameraGetStruct(gCMManagerCameraGObj)->vec.at, &sp128);
 
-                if (fp->attributes->cam_offset_y < lbVector_Vec3fMagnitude(&sp128 - 2))
+                if (fp->attributes->cam_offset_y < syVectorMag3D(&sp128 - 2))
                 {
-                    lbVector_Vec3fNormalize(&sp128 - 2);
-                    lbVector_Vec3fScale(&sp128 - 2, fp->attributes->cam_offset_y);
-                    lbVector_Vec3fAddTo(&sp128, &sp128 - 2);
+                    syVectorNorm3D(&sp128 - 2);
+                    syVectorScale3D(&sp128 - 2, fp->attributes->cam_offset_y);
+                    syVectorAdd3D(&sp128, &sp128 - 2);
                 }
             #endif
 

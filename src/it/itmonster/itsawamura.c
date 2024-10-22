@@ -201,12 +201,12 @@ void itSawamuraAttackSetFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 
     target_pos.y += ITSAWAMURA_TARGET_POS_OFF_Y - fp->coll_data.objcoll.bottom;
 
-    lbVector_Vec3fSubtract(&dist, &target_pos, &ij->translate.vec.f);
+    syVectorDiff3D(&dist, &target_pos, &ij->translate.vec.f);
 
     ip->phys_info.vel_air.y = ip->phys_info.vel_air.z = 0.0F;
     ip->phys_info.vel_air.x = ITSAWAMURA_KICK_VEL_X;
 
-    lbVector_Vec3fGetEulerRotation(&ip->phys_info.vel_air, MTVECTOR_AXIS_Z, atan2f(dist.y, dist.x));
+    syVectorRotate3D(&ip->phys_info.vel_air, SYVECTOR_AXIS_Z, atan2f(dist.y, dist.x));
 
     ip->lr = (dist.x < 0.0F) ? nGMFacingL : nGMFacingR;
 
@@ -236,7 +236,7 @@ void itSawamuraAttackInitItemVars(GObj *item_gobj)
 
         if ((fighter_gobj != ip->owner_gobj) && (fp->team != ip->team))
         {
-            lbVector_Vec3fSubtract(&dist, &DObjGetStruct(fighter_gobj)->translate.vec.f, &dobj->translate.vec.f);
+            syVectorDiff3D(&dist, &DObjGetStruct(fighter_gobj)->translate.vec.f, &dobj->translate.vec.f);
 
             if (ft_count == 0)
             {

@@ -1775,7 +1775,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
                 vel_damage_air->y = (-ground_angle->x * fp->phys_info.vel_damage_ground);
             }
         }
-        lbVector_Vec3fAddTo(topn_translate, &fp->phys_info.vel_air);
+        syVectorAdd3D(topn_translate, &fp->phys_info.vel_air);
 
         topn_translate->x += vel_damage_air->x;
         topn_translate->y += vel_damage_air->y;
@@ -1784,12 +1784,12 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
     {
         fp->proc_lagupdate(fighter_gobj);
     }
-    lbVector_Vec3fSubtract(&fp->coll_data.pos_correct, topn_translate, coll_translate);
+    syVectorDiff3D(&fp->coll_data.pos_correct, topn_translate, coll_translate);
 
     if ((fp->ga == nMPKineticsGround) && (fp->coll_data.ground_line_id != -1) && (fp->coll_data.ground_line_id != -2) && (mpCollisionCheckExistLineID(fp->coll_data.ground_line_id) != FALSE))
     {
         mpCollisionGetSpeedLineID(fp->coll_data.ground_line_id, &fp->coll_data.pos_speed);
-        lbVector_Vec3fAddTo(topn_translate, &fp->coll_data.pos_speed);
+        syVectorAdd3D(topn_translate, &fp->coll_data.pos_speed);
     }
     else fp->coll_data.pos_speed.x = fp->coll_data.pos_speed.y = fp->coll_data.pos_speed.z = 0.0F;
 
@@ -2238,7 +2238,7 @@ void ftMainUpdateShieldStatWeapon(wpStruct *wp, wpHitbox *wp_hit, s32 hitbox_id,
 
         wp->shield_collide_vec.z = (fp->lr == nGMFacingR) ? -vec->x : vec->x;
 
-        lbVector_Vec3fNormalize(&wp->shield_collide_vec);
+        syVectorNorm3D(&wp->shield_collide_vec);
     }
     fp->shield_damage_total += damage + wp_hit->shield_damage;
 
@@ -2412,7 +2412,7 @@ void ftMainUpdateShieldStatItem(itStruct *ip, itHitbox *it_hit, s32 hitbox_id, f
 
         ip->shield_collide_vec.z = (fp->lr == nGMFacingR) ? -vec->x : vec->x;
 
-        lbVector_Vec3fNormalize(&ip->shield_collide_vec);
+        syVectorNorm3D(&ip->shield_collide_vec);
     }
     fp->shield_damage_total += damage + it_hit->shield_damage;
 
@@ -4023,7 +4023,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
                 fp->afterimage.desc[fp->afterimage.desc_index].vec.y = mtx[1][1];
                 fp->afterimage.desc[fp->afterimage.desc_index].vec.z = mtx[1][2];
 
-                lbVector_Vec3fNormalize(&fp->afterimage.desc[fp->afterimage.desc_index].vec);
+                syVectorNorm3D(&fp->afterimage.desc[fp->afterimage.desc_index].vec);
 
                 if (fp->afterimage.desc_index == 2)
                 {

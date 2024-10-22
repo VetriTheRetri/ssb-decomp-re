@@ -102,7 +102,7 @@ segments:
       - [0x00C7B0, c, sys/objanim]
       - [0x011970, c, sys/objdraw]
       - [0x0190E0, c, sys/trig_rand]
-      - [0x019AE0, c, sys/vec]
+      - [0x019AE0, c, sys/vector]
       - [0x01A870, c, sys/hal_gu]
       - [0x01E210, c, sys/interpolation]
       - [0x01F1C0, c, sys/hal_audio]

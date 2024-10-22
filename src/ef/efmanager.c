@@ -3794,9 +3794,9 @@ void efManagerQuakeProcUpdate(GObj *effect_gobj)
 
         dobj = DObjGetStruct(effect_gobj);
 
-        lbVector_Vec3fSubtract(&sub, &cam->vec.at, &cam->vec.eye);
+        syVectorDiff3D(&sub, &cam->vec.at, &cam->vec.eye);
 
-        mag = lbVector_Vec3fMagnitude(&sub);
+        mag = syVectorMag3D(&sub);
 
         if (mag > EFPART_QUAKE_MAGNITUDE)
         {

@@ -2871,7 +2871,7 @@ void ifCommonBattlePauseInitInterface(s32 player)
 {
     ifCommonInterfaceSetGObjFlagsAll(GOBJ_FLAG_HIDDEN);
     gmRumbleInitPlayers();
-    grWallpaperSetPausePerspUpdate();
+    grWallpaperPausePerspUpdate();
 
     gIFCommonPlayerInterface.is_ifmagnify_display = FALSE;
     gBattleState->game_status = nSCBattleGameStatusPause;
@@ -3054,7 +3054,7 @@ void ifCommonBattlePauseUpdateInterface(void)
     if (sIFCommonBattlePauseKindInterface != nIFPauseKindPlayerNA)
     {
         cmManagerRunGlobalFuncCamera(gCMManagerCameraGObj);
-        grWallpaperRunGObjProcess();
+        grWallpaperRunGObjProcessThreads();
     }
 }
 
@@ -3069,13 +3069,13 @@ void ifCommonBattlePauseRestoreInterfaceAll(void)
         gCMManagerPauseCameraEyeY += (sIFCommonBattlePauseCameraEyeYOrigin - gCMManagerPauseCameraEyeY) * 0.1F;
 
         cmManagerRunGlobalFuncCamera(gCMManagerCameraGObj);
-        grWallpaperRunGObjProcess();
+        grWallpaperRunGObjProcessThreads();
 
         return;
     }
     ifCommonBattlePauseEjectGObjs();
     ifCommonInterfaceSetGObjFlagsAll(0);
-    grWallpaperResetPausePerspUpdate();
+    grWallpaperResumePerspUpdate();
 
     gIFCommonPlayerInterface.is_ifmagnify_display = TRUE;
 
@@ -3122,7 +3122,7 @@ void ifCommonBattleBossDefeatUpdateInterface(void)
     else
     {
         cmManagerRunGlobalFuncCamera(gCMManagerCameraGObj);
-        grWallpaperRunGObjProcess();
+        grWallpaperRunGObjProcessThreads();
 
         D_ovl2_8013185A--;
     }
@@ -3287,7 +3287,7 @@ void ifCommonBattleBossDefeatSetGameStatus(void)
 void ifCommon1PGameInterfaceProcSet(void)
 {
     gcApplyByLink(9, func_ovl2_8011366C, 0);
-    func_ovl2_80104D30();
+    grWallpaperResumeAll();
     ifCommonInterfaceSetGObjFlagsAll(GOBJ_FLAG_HIDDEN);
 
     gBattleState->game_status = nSCBattleGameStatusSet;

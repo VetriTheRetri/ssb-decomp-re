@@ -36,7 +36,7 @@ s32 dFTCommonDamageStatusAirIDs[/* */][3] =
 // 0x80140340
 void ftCommonDamageSetDustEffectInterval(ftStruct *fp)
 {
-    f32 vel = (fp->ga == nMPKineticsAir) ? lbVector_Vec3fMagnitude(&fp->phys_info.vel_damage_air) : ABSF(fp->phys_info.vel_damage_ground);
+    f32 vel = (fp->ga == nMPKineticsAir) ? syVectorMag3D(&fp->phys_info.vel_damage_air) : ABSF(fp->phys_info.vel_damage_ground);
     s32 make_effect_wait;
 
     if (vel < FTCOMMON_DAMAGE_EFFECT_KNOCKBACK_LOW)
@@ -229,7 +229,7 @@ void ftCommonDamageCommonProcPhysics(GObj *fighter_gobj)
     {
         ftCommonDamageFlyRollUpdateModelRoll(fighter_gobj);
     }
-    if ((fp->throw_gobj != NULL) && (lbVector_Vec3fMagnitude(&fp->phys_info.vel_damage_air) < 70.0F))
+    if ((fp->throw_gobj != NULL) && (syVectorMag3D(&fp->phys_info.vel_damage_air) < 70.0F))
     {
         ftParamClearHitAll(fighter_gobj);
     }
@@ -518,7 +518,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
         vel_damage.y = vel_y;
         vel_damage.z = 0.0F;
 
-        angle_diff = lbVector_Vec3fAngleDiff(&this_fp->coll_data.ground_angle, &vel_damage);
+        angle_diff = syVectorAngleDiff3D(&this_fp->coll_data.ground_angle, &vel_damage);
 
         if (angle_diff < F_CST_DTOR32(90.0F)) // HALF_PI32
         {

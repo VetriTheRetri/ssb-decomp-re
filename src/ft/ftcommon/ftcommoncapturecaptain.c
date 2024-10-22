@@ -36,7 +36,7 @@ void ftCommonCaptureCaptainUpdatePositions(GObj *fighter_gobj, GObj *capture_gob
     offset.x += (offset_add[capture_fp->ft_kind].x * this_fp->lr);
     offset.y += offset_add[capture_fp->ft_kind].y;
 
-    lbVector_Vec3fSubtractFrom(pos, &offset);
+    syVectorSub3D(pos, &offset);
 }
 
 // 0x8014D200
@@ -53,12 +53,12 @@ void ftCommonCaptureCaptainProcPhysics(GObj *fighter_gobj)
     {
         ftCommonCaptureCaptainUpdatePositions(fp->capture_gobj, fighter_gobj, &offset);
 
-        if (lbVector_Vec3fMagnitude(&offset) > 180.0F)
+        if (syVectorMag3D(&offset) > 180.0F)
         {
-            lbVector_Vec3fNormalize(&offset);
-            lbVector_Vec3fScale(&offset, 180.0F);
+            syVectorNorm3D(&offset);
+            syVectorScale3D(&offset, 180.0F);
         }
-        lbVector_Vec3fAddTo(&DObjGetStruct(fighter_gobj)->translate.vec.f, &offset);
+        syVectorAdd3D(&DObjGetStruct(fighter_gobj)->translate.vec.f, &offset);
     }
 }
 

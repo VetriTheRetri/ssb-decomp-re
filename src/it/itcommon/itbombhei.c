@@ -304,7 +304,7 @@ s32 itBombHeiWalkGetLR(GObj *item_gobj)
             
         fighter_dobj = DObjGetStruct(fighter_gobj);
 
-        lbVector_Vec3fSubtract(&dist, translate, &fighter_dobj->translate.vec.f);
+        syVectorDiff3D(&dist, translate, &fighter_dobj->translate.vec.f);
 
         lr = (dist.x < 0.0F) ? nGMFacingL : nGMFacingR;
 

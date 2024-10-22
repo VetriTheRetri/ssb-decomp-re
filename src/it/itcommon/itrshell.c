@@ -212,7 +212,7 @@ void itRShellSpinSearchFollowPlayer(GObj *item_gobj)
 
     while (fighter_gobj != NULL)
     {
-        lbVector_Vec3fSubtract(&dist, &DObjGetStruct(fighter_gobj)->translate.vec.f, translate);
+        syVectorDiff3D(&dist, &DObjGetStruct(fighter_gobj)->translate.vec.f, translate);
 
         if (ft_count == 0)
         {

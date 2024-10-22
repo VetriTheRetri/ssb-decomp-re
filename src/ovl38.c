@@ -228,7 +228,7 @@ void mvOpeningSamusInitFighterStagePanel()
 	s32 baz;
 	s32 biz;
 
-	grWallpaperMakeGroundWallpaper();
+	grWallpaperMakeDecideKind();
 	grCommonSetupInitAll();
 
 	next_dobj = stage_dobj = DObjGetStruct(D_ovl2_801313E4);

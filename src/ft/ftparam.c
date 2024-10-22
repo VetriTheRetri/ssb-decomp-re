@@ -2440,11 +2440,11 @@ f32 func_ovl2_800EBA6C(Vec3f *arg0, Vec3f *arg1)
     Vec3f sp1C = *arg1;
     f32 scale;
 
-    lbVector_Vec3fNormalize(&sp1C);
+    syVectorNorm3D(&sp1C);
 
     scale = (arg0->x * sp1C.x) + (sp1C.y * arg0->y) + (sp1C.z * arg0->z);
 
-    lbVector_Vec3fScale(&sp1C, scale);
+    syVectorScale3D(&sp1C, scale);
 
     arg0->x -= sp1C.x;
     arg0->y -= sp1C.y;
@@ -2470,9 +2470,9 @@ f32 func_ovl2_800EBB3C(Vec3f *arg0, Vec3f *arg1, Vec3f *arg2)
 
     if (lbCommonSim3D(&sp1C, arg2) < 0.0F)
     {
-        return -lbVector_Vec3fAngleDiff(arg1, arg0);
+        return -syVectorAngleDiff3D(arg1, arg0);
     }
-    else return lbVector_Vec3fAngleDiff(arg1, arg0);
+    else return syVectorAngleDiff3D(arg1, arg0);
 }
 
 // 0x800EBC0C
@@ -2500,7 +2500,7 @@ void func_ovl2_800EBC0C(s32 arg0, Vec3f *arg1, f32 *arg2, f32 arg3, DObj *dobj)
     sp2C.x = 0.0F;
     sp2C.y = 1.0F;
 
-    lbVector_Vec3fNormalizedCross(&sp50, &sp2C, &sp44);
+    syVectorNormCross3D(&sp50, &sp2C, &sp44);
 
     attach_dobj = dobj->child->user_data.p;
 
@@ -2508,9 +2508,9 @@ void func_ovl2_800EBC0C(s32 arg0, Vec3f *arg1, f32 *arg2, f32 arg3, DObj *dobj)
     sp38.y = attach_dobj->rotate.vec.f.y;
     sp38.z = attach_dobj->rotate.vec.f.z;
 
-    lbVector_Vec3fNormalize(&sp44);
-    lbVector_Vec3fNormalize(&sp38);
-    lbVector_Vec3fNormalize(&sp50);
+    syVectorNorm3D(&sp44);
+    syVectorNorm3D(&sp38);
+    syVectorNorm3D(&sp50);
 
     *arg2 = func_ovl2_800EBB3C(&sp44, &sp38, &sp50);
 }

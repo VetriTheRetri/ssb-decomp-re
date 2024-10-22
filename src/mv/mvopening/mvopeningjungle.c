@@ -273,7 +273,7 @@ void mvOpeningJungleMakeFighters(void)
     Vec3f spawn_position[2];
     ftStruct *fp;
 
-    grWallpaperMakeGroundWallpaper();
+    grWallpaperMakeDecideKind();
     grCommonSetupInitAll();
 
     if (mpCollisionGetMapObjCountKind(nMPMapObjKindMovieSpawn2) != 1)

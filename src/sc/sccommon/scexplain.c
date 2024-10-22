@@ -722,7 +722,7 @@ void scExplainFuncStart(void)
     ftParamInitGame();
     mpCollisionInitGroundData();
     cmManagerMakeWallpaperCamera();
-    grWallpaperMakeGroundWallpaper();
+    grWallpaperMakeDecideKind();
     func_ovl2_8010DB00();
     itManagerInitItems();
     grCommonSetupInitAll();

@@ -800,7 +800,7 @@ sb32 gmCollisionTestSphere(Vec3f *hitpos_current, Vec3f *hitpos_prev, f32 hitsiz
         copy1.y /= center.y;
         copy1.z /= center.z;
 
-        if (lbVector_Vec3fMagnitude(&copy1) <= 1)
+        if (syVectorMag3D(&copy1) <= 1)
         {
             switch (sphit_kind)
             {
@@ -943,7 +943,7 @@ sb32 gmCollisionTestSphere(Vec3f *hitpos_current, Vec3f *hitpos_prev, f32 hitsiz
                 sp58.y = (copysub.y * sp3C) + copy2.y;
                 sp58.z = (copysub.z * sp3C) + copy2.z;
 
-                *p_angle = lbVector_Vec3fAngleDiff(&copysub, &sp58);
+                *p_angle = syVectorAngleDiff3D(&copysub, &sp58);
                 break;
 
             case 1:
@@ -955,11 +955,11 @@ sb32 gmCollisionTestSphere(Vec3f *hitpos_current, Vec3f *hitpos_prev, f32 hitsiz
                 sp58.y = (copysub.y * sp3C) + copy2.y;
                 sp58.z = (copysub.z * sp3C) + copy2.z;
 
-                *p_angle = ((sp58.y == 0.0F) && (sp58.z == 0.0F)) ? F_CLC_DTOR32(180.0F) : lbVector_Vec3fAngleDiff(&copysub, &sp58);
+                *p_angle = ((sp58.y == 0.0F) && (sp58.z == 0.0F)) ? F_CLC_DTOR32(180.0F) : syVectorAngleDiff3D(&copysub, &sp58);
 
                 if (*p_angle != F_CLC_DTOR32(180.0F))
                 {
-                    lbVector_Vec3fNormalizedCross(&copysub, &sp58, argA);
+                    syVectorNormCross3D(&copysub, &sp58, argA);
                 }
                 else
                 {
@@ -973,7 +973,7 @@ sb32 gmCollisionTestSphere(Vec3f *hitpos_current, Vec3f *hitpos_prev, f32 hitsiz
             }
             return TRUE;
         }
-        else if (lbVector_Vec3fMagnitude(&copy1) <= 1)
+        else if (syVectorMag3D(&copy1) <= 1)
         {
             switch (sphit_kind)
             {

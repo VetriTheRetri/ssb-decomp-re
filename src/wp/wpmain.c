@@ -176,7 +176,7 @@ void wpMainReflectorRotateWeaponModel(GObj *weapon_gobj)
     direction.y = 0;
     direction.z = (vel.x > 0.0F) ? nGMFacingL : nGMFacingR;
 
-    lbVector_Vec3fNormalize(&vel);
+    syVectorNorm3D(&vel);
 
     lbCommonCross3D(&vel, &direction, &angle);
 

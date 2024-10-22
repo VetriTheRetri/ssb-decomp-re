@@ -15,7 +15,7 @@ void wpProcessUpdateHitOffsets(DObj *dobj, Vec3f *offset)
     offset->x *= dobj->scale.vec.f.x;
     offset->y *= dobj->scale.vec.f.y;
 
-    lbVector_Vec3fGetEulerRotation(offset, MTVECTOR_AXIS_Z, dobj->rotate.vec.f.z);
+    syVectorRotate3D(offset, SYVECTOR_AXIS_Z, dobj->rotate.vec.f.z);
 
     offset->x += dobj->translate.vec.f.x;
     offset->y += dobj->translate.vec.f.y;

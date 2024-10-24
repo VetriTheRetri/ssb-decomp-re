@@ -25,8 +25,8 @@ itCreateDesc dITRShellItemDesc =
 
     // DObj transformation struct
     {
-        nOMTransformNull,                   // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformNull,                   // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -201,7 +201,7 @@ void itRShellSpinUpdateFollowPlayer(GObj *item_gobj, GObj *fighter_gobj)
 void itRShellSpinSearchFollowPlayer(GObj *item_gobj)
 {
     s32 unused;
-    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
     GObj *nearest_gobj;
     DObj *dobj = DObjGetStruct(item_gobj);
     Vec3f *translate = &dobj->translate.vec.f;
@@ -694,8 +694,8 @@ GObj* itRShellMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 
-        gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);
-        gcAddOMMtxForDObjFixed(dobj, 0x48, 0);
+        gcAddGCMatrixForDObjFixed(dobj, nGCTransformTraRotRpyR, 0);
+        gcAddGCMatrixForDObjFixed(dobj, 0x48, 0);
 
         dobj->translate.vec.f = translate;
 

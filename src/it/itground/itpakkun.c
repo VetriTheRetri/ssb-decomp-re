@@ -31,7 +31,7 @@ itCreateDesc dITPakkunItemDesc =
 
     // DObj transformation struct
     {
-        nOMTransformTra,                    // Main matrix transformations
+        nGCTransformTra,                    // Main matrix transformations
         0x30,                               // Secondary matrix transformations?
         0                                   // ???
     },
@@ -148,7 +148,7 @@ sb32 itPakkunCommonCheckNoPlayersNear(GObj *item_gobj)
     if (item_gobj != NULL)
     {
         itStruct *ip = itGetStruct(item_gobj);
-        GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+        GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
         f32 it_pos_x = ip->item_vars.pakkun.pos.x;
         f32 it_pos_y = ip->item_vars.pakkun.pos.y;
 
@@ -284,7 +284,7 @@ sb32 itPakkunAppearProcDamage(GObj *item_gobj)
         DObj *dobj = DObjGetStruct(item_gobj);
         f32 angle;
 
-        dobj->ommtx[1]->kind = 0x46;
+        dobj->gcmatrix[1]->kind = 0x46;
 
         dobj->rotate.vec.f.z = F_CST_DTOR32(180.0F); // PI32
 

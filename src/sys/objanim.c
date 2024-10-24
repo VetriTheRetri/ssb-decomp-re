@@ -140,7 +140,7 @@ void gcAddDObjAnimJoint(DObj *dobj, AObjEvent32 *anim_joint, f32 anim_frame)
 
     while (aobj != NULL) 
     {
-        aobj->kind = nOMObjAnimKindNone;
+        aobj->kind = nGCAnimKindNone;
         aobj = aobj->next;
     }
     dobj->anim_joint.event32 = anim_joint;
@@ -154,7 +154,7 @@ void gcAddMObjMatAnimJoint(MObj *mobj, AObjEvent32 *matanim_joint, f32 anim_fram
 
     while (aobj != NULL) 
     {
-        aobj->kind = nOMObjAnimKindNone;
+        aobj->kind = nGCAnimKindNone;
         aobj = aobj->next;
     }
     mobj->matanim_joint.event32 = matanim_joint;
@@ -267,7 +267,7 @@ void gcAddAnimAll(GObj *gobj, AObjEvent32 **anim_joints, AObjEvent32 ***p_matani
 
 void gcParseDObjAnimJoint(DObj *dobj)
 {
-    AObj *track_aobjs[nOMObjAnimTrackJointEnd - nOMObjAnimTrackJointStart + 1];
+    AObj *track_aobjs[nGCAnimTrackJointEnd - nGCAnimTrackJointStart + 1];
     AObj *aobj;
     s32 i;
     u32 command_kind;
@@ -299,9 +299,9 @@ void gcParseDObjAnimJoint(DObj *dobj)
 
         while (aobj != NULL)
         {
-            if ((aobj->track >= nOMObjAnimTrackJointStart) && (aobj->track <= nOMObjAnimTrackJointEnd))
+            if ((aobj->track >= nGCAnimTrackJointStart) && (aobj->track <= nGCAnimTrackJointEnd))
             {
-                track_aobjs[aobj->track - nOMObjAnimTrackJointStart] = aobj;
+                track_aobjs[aobj->track - nGCAnimTrackJointStart] = aobj;
             }
             aobj = aobj->next;
         }
@@ -329,8 +329,8 @@ void gcParseDObjAnimJoint(DObj *dobj)
 
             switch (command_kind)
             {
-            case nOMObjAnimCommandSetVal0RateBlock:
-            case nOMObjAnimCommandSetVal0Rate:
+            case nGCAnimCommandSetVal0RateBlock:
+            case nGCAnimCommandSetVal0Rate:
                 payload = dobj->anim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(dobj->anim_joint.event32)->command.flags;
 
@@ -344,7 +344,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = gcAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
+                            track_aobjs[i] = gcAddAObjForDObj(dobj, i + nGCAnimTrackJointStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
                         track_aobjs[i]->value_target = dobj->anim_joint.event32->f;
@@ -362,14 +362,14 @@ void gcParseDObjAnimJoint(DObj *dobj)
                         track_aobjs[i]->length = -dobj->anim_wait - dobj->anim_speed;
                     }
                 }
-                if (command_kind == nOMObjAnimCommandSetVal0RateBlock)
+                if (command_kind == nGCAnimCommandSetVal0RateBlock)
                 {
                     dobj->anim_wait += payload;
                 }
                 break;
 
-            case nOMObjAnimCommandSetValBlock:
-            case nOMObjAnimCommandSetVal:
+            case nGCAnimCommandSetValBlock:
+            case nGCAnimCommandSetVal:
                 payload = dobj->anim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(dobj->anim_joint.event32)->command.flags;
 
@@ -383,7 +383,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = gcAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
+                            track_aobjs[i] = gcAddAObjForDObj(dobj, i + nGCAnimTrackJointStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
                         track_aobjs[i]->value_target = dobj->anim_joint.event32->f;
@@ -400,14 +400,14 @@ void gcParseDObjAnimJoint(DObj *dobj)
                         track_aobjs[i]->rate_target = 0.0F;
                     }
                 }
-                if (command_kind == nOMObjAnimCommandSetValBlock)
+                if (command_kind == nGCAnimCommandSetValBlock)
                 {
                     dobj->anim_wait += payload;
                 }
                 break;
 
-            case nOMObjAnimCommandSetValRateBlock:
-            case nOMObjAnimCommandSetValRate:
+            case nGCAnimCommandSetValRateBlock:
+            case nGCAnimCommandSetValRate:
                 payload = dobj->anim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(dobj->anim_joint.event32)->command.flags;
 
@@ -421,7 +421,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = gcAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
+                            track_aobjs[i] = gcAddAObjForDObj(dobj, i + nGCAnimTrackJointStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
                         track_aobjs[i]->value_target = dobj->anim_joint.event32->f;
@@ -442,13 +442,13 @@ void gcParseDObjAnimJoint(DObj *dobj)
                         track_aobjs[i]->length = -dobj->anim_wait - dobj->anim_speed;
                     }
                 }
-                if (command_kind == nOMObjAnimCommandSetValRateBlock)
+                if (command_kind == nGCAnimCommandSetValRateBlock)
                 {
                     dobj->anim_wait += payload;
                 }
                 break;
 
-            case nOMObjAnimCommandSetTargetRate:
+            case nGCAnimCommandSetTargetRate:
                 flags = AObjAnimAdvance(dobj->anim_joint.event32)->command.flags;
 
                 for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
@@ -461,7 +461,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = gcAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
+                            track_aobjs[i] = gcAddAObjForDObj(dobj, i + nGCAnimTrackJointStart);
                         }
                         track_aobjs[i]->rate_target = dobj->anim_joint.event32->f;
 
@@ -470,12 +470,12 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 }
                 break;
 
-            case nOMObjAnimCommandWait:
+            case nGCAnimCommandWait:
                 dobj->anim_wait += AObjAnimAdvance(dobj->anim_joint.event32)->command.payload;
                 break;
 
-            case nOMObjAnimCommandSetValAfterBlock:
-            case nOMObjAnimCommandSetValAfter:
+            case nGCAnimCommandSetValAfterBlock:
+            case nGCAnimCommandSetValAfter:
                 payload = dobj->anim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(dobj->anim_joint.event32)->command.flags;
 
@@ -489,7 +489,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = gcAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
+                            track_aobjs[i] = gcAddAObjForDObj(dobj, i + nGCAnimTrackJointStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
                         track_aobjs[i]->value_target = dobj->anim_joint.event32->f;
@@ -502,13 +502,13 @@ void gcParseDObjAnimJoint(DObj *dobj)
                         track_aobjs[i]->rate_target = 0.0F;
                     }
                 }
-                if (command_kind == nOMObjAnimCommandSetValAfterBlock)
+                if (command_kind == nGCAnimCommandSetValAfterBlock)
                 {
                     dobj->anim_wait += payload;
                 }
                 break;
 
-            case nOMObjAnimCommandSetAnim:
+            case nGCAnimCommandSetAnim:
                 AObjAnimAdvance(dobj->anim_joint.event32);
                 dobj->anim_joint.event32 = dobj->anim_joint.event32->p;
                 dobj->anim_frame = -dobj->anim_wait;
@@ -520,7 +520,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 }
                 break;
 
-            case nOMObjAnimCommandJump:
+            case nGCAnimCommandJump:
                 AObjAnimAdvance(dobj->anim_joint.event32);
                 dobj->anim_joint.event32 = dobj->anim_joint.event32->p;
 
@@ -544,31 +544,31 @@ void gcParseDObjAnimJoint(DObj *dobj)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = gcAddAObjForDObj(dobj, i + nOMObjAnimTrackJointStart);
+                            track_aobjs[i] = gcAddAObjForDObj(dobj, i + nGCAnimTrackJointStart);
                         }
                         track_aobjs[i]->length += payload;
                     }
                 }
                 break;
 
-            case nOMObjAnimCommandSetInterp:
+            case nGCAnimCommandSetInterp:
                 AObjAnimAdvance(dobj->anim_joint.event32);
 
-                if (track_aobjs[nOMObjAnimTrackTraI - nOMObjAnimTrackJointStart] == NULL) 
+                if (track_aobjs[nGCAnimTrackTraI - nGCAnimTrackJointStart] == NULL) 
                 { 
-                    track_aobjs[nOMObjAnimTrackTraI - nOMObjAnimTrackJointStart] = gcAddAObjForDObj(dobj, nOMObjAnimTrackTraI); 
+                    track_aobjs[nGCAnimTrackTraI - nGCAnimTrackJointStart] = gcAddAObjForDObj(dobj, nGCAnimTrackTraI); 
                 }
-                track_aobjs[nOMObjAnimTrackTraI - nOMObjAnimTrackJointStart]->interpolate = dobj->anim_joint.event32->p;
+                track_aobjs[nGCAnimTrackTraI - nGCAnimTrackJointStart]->interpolate = dobj->anim_joint.event32->p;
 
                 AObjAnimAdvance(dobj->anim_joint.event32);
                 break;
 
-            case nOMObjAnimCommandEnd:
+            case nGCAnimCommandEnd:
                 aobj = dobj->aobj;
 
                 while (aobj != NULL)
                 {
-                    if (aobj->kind != nOMObjAnimKindNone)
+                    if (aobj->kind != nGCAnimKindNone)
                     {
                         aobj->length += dobj->anim_speed + dobj->anim_wait;
                     }
@@ -584,7 +584,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 }
                 return; // not break
 
-            case nOMObjAnimCommandSetFlags:
+            case nGCAnimCommandSetFlags:
                 dobj->flags = dobj->anim_joint.event32->command.flags;
                 dobj->anim_wait += AObjAnimAdvance(dobj->anim_joint.event32)->command.payload;
                 break;
@@ -673,16 +673,16 @@ f32 gcGetAObjValue(AObj *aobj)
 {
     switch (aobj->kind) 
     {
-    case nOMObjAnimKindLinear:
+    case nGCAnimKindLinear:
         return aobj->value_base + (aobj->length * aobj->rate_base);
 
-    case nOMObjAnimKindCubic:
+    case nGCAnimKindCubic:
         return gcGetInterpValueCubic
         (
             aobj->length_invert, aobj->length, aobj->value_base, aobj->value_target, aobj->rate_base, aobj->rate_target
         );
 
-    case nOMObjAnimKindStep: 
+    case nGCAnimKindStep: 
         return (aobj->length_invert <= aobj->length) ? aobj->value_target : aobj->value_base;
     }
 #if defined (AVOID_UB)
@@ -694,16 +694,16 @@ f32 gcGetAObjRate(AObj *aobj)
 {
     switch (aobj->kind) 
     {
-    case nOMObjAnimKindLinear: 
+    case nGCAnimKindLinear: 
         return aobj->rate_base;
 
-    case nOMObjAnimKindCubic:
+    case nGCAnimKindCubic:
         return gcGetInterpRateCubic
         (
             aobj->length_invert, aobj->length, aobj->value_base, aobj->value_target, aobj->rate_base, aobj->rate_target
         );
 
-    case nOMObjAnimKindStep:
+    case nGCAnimKindStep:
         return 0.0F;
     }
 #if defined (AVOID_UB)
@@ -729,7 +729,7 @@ void gcPlayDObjAnim(DObj *dobj)
 
         while (aobj != NULL)
         {
-            if (aobj->kind != nOMObjAnimKindNone)
+            if (aobj->kind != nGCAnimKindNone)
             {
                 if (dobj->anim_wait != AOBJ_ANIM_END) 
                 { 
@@ -739,11 +739,11 @@ void gcPlayDObjAnim(DObj *dobj)
                 {
                     switch (aobj->kind) 
                     {
-                    case nOMObjAnimKindLinear:
+                    case nGCAnimKindLinear:
                         value = aobj->value_base + (aobj->length * aobj->rate_base); 
                         break;
                         
-                    case nOMObjAnimKindCubic:
+                    case nGCAnimKindCubic:
                         temp_f16 = SQUARE(aobj->length_invert);
                         temp_f12 = SQUARE(aobj->length);
                         temp_f18 = aobj->length_invert * temp_f12;
@@ -759,7 +759,7 @@ void gcPlayDObjAnim(DObj *dobj)
                             (aobj->rate_target * temp_f24);
                         break;
                         
-                    case nOMObjAnimKindStep: 
+                    case nGCAnimKindStep: 
                         value = (aobj->length_invert <= aobj->length) ? aobj->value_target : aobj->value_base; 
                         break;
 
@@ -768,19 +768,19 @@ void gcPlayDObjAnim(DObj *dobj)
                     }
                     switch (aobj->track)
                     {
-                    case nOMObjAnimTrackRotX: 
+                    case nGCAnimTrackRotX: 
                         dobj->rotate.vec.f.x = value;
                         break;
 
-                    case nOMObjAnimTrackRotY: 
+                    case nGCAnimTrackRotY: 
                         dobj->rotate.vec.f.y = value;
                         break;
 
-                    case nOMObjAnimTrackRotZ: 
+                    case nGCAnimTrackRotZ: 
                         dobj->rotate.vec.f.z = value;
                         break;
 
-                    case nOMObjAnimTrackTraI:
+                    case nGCAnimTrackTraI:
                         if (value < 0.0F) 
                         {
                             value = 0.0F;
@@ -792,27 +792,27 @@ void gcPlayDObjAnim(DObj *dobj)
                         hal_interpolation_cubic(&dobj->translate.vec.f, aobj->interpolate, value);
                         break;
 
-                    case nOMObjAnimTrackTraX: 
+                    case nGCAnimTrackTraX: 
                         dobj->translate.vec.f.x = value; 
                         break;
 
-                    case nOMObjAnimTrackTraY: 
+                    case nGCAnimTrackTraY: 
                         dobj->translate.vec.f.y = value; 
                         break;
 
-                    case nOMObjAnimTrackTraZ: 
+                    case nGCAnimTrackTraZ: 
                         dobj->translate.vec.f.z = value; 
                         break;
 
-                    case nOMObjAnimTrackScaX: 
+                    case nGCAnimTrackScaX: 
                         dobj->scale.vec.f.x = value; 
                         break;
                         
-                    case nOMObjAnimTrackScaY: 
+                    case nGCAnimTrackScaY: 
                         dobj->scale.vec.f.y = value; 
                         break;
 
-                    case nOMObjAnimTrackScaZ: 
+                    case nGCAnimTrackScaZ: 
                         dobj->scale.vec.f.z = value; 
                         break;
                     }
@@ -865,13 +865,13 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
 
         while (aobj != NULL)
         {
-            if ((aobj->track >= nOMObjAnimTrackMaterialStart) && (aobj->track <= nOMObjAnimTrackMaterialEnd))
+            if ((aobj->track >= nGCAnimTrackMaterialStart) && (aobj->track <= nGCAnimTrackMaterialEnd))
             {
-                mat_aobjs[aobj->track - nOMObjAnimTrackMaterialStart] = aobj;
+                mat_aobjs[aobj->track - nGCAnimTrackMaterialStart] = aobj;
             }
-            if ((aobj->track >= nOMObjAnimTrackMaterialSubStart) && (aobj->track <= nOMObjAnimTrackMaterialSubEnd))
+            if ((aobj->track >= nGCAnimTrackMaterialSubStart) && (aobj->track <= nGCAnimTrackMaterialSubEnd))
             {
-                matspecial_aobjs[aobj->track - nOMObjAnimTrackMaterialSubStart] = aobj;
+                matspecial_aobjs[aobj->track - nGCAnimTrackMaterialSubStart] = aobj;
             }
             aobj = aobj->next;
         }
@@ -883,7 +883,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
 
                 while (aobj != NULL)
                 {
-                    if (aobj->kind != nOMObjAnimKindNone)
+                    if (aobj->kind != nGCAnimKindNone)
                     {
                         aobj->length += mobj->anim_speed + mobj->anim_wait;
                     }
@@ -898,8 +898,8 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
 
             switch (command_kind)
             {
-            case nOMObjAnimCommandSetVal0RateBlock:
-            case nOMObjAnimCommandSetVal0Rate:
+            case nGCAnimCommandSetVal0RateBlock:
+            case nGCAnimCommandSetVal0Rate:
                 payload = mobj->matanim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(mobj->matanim_joint.event32)->command.flags;
 
@@ -913,7 +913,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                     {
                         if (mat_aobjs[i] == NULL)
                         {
-                            mat_aobjs[i] = gcAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
+                            mat_aobjs[i] = gcAddAObjForMObj(mobj, i + nGCAnimTrackMaterialStart);
                         }
                         mat_aobjs[i]->value_base = mat_aobjs[i]->value_target;
                         mat_aobjs[i]->value_target = mobj->matanim_joint.event32->f;
@@ -932,14 +932,14 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                         mat_aobjs[i]->length = -mobj->anim_wait - mobj->anim_speed;
                     }
                 }
-                if (command_kind == nOMObjAnimCommandSetVal0RateBlock)
+                if (command_kind == nGCAnimCommandSetVal0RateBlock)
                 {
                     mobj->anim_wait += payload;
                 }
                 break;
 
-            case nOMObjAnimCommandSetValBlock:
-            case nOMObjAnimCommandSetVal:
+            case nGCAnimCommandSetValBlock:
+            case nGCAnimCommandSetVal:
                 payload = mobj->matanim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(mobj->matanim_joint.event32)->command.flags;
 
@@ -953,7 +953,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                     {
                         if (mat_aobjs[i] == NULL)
                         {
-                            mat_aobjs[i] = gcAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
+                            mat_aobjs[i] = gcAddAObjForMObj(mobj, i + nGCAnimTrackMaterialStart);
                         }
                         mat_aobjs[i]->value_base = mat_aobjs[i]->value_target;
                         mat_aobjs[i]->value_target = mobj->matanim_joint.event32->f;
@@ -971,14 +971,14 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                     }
                 }
 
-                if (command_kind == nOMObjAnimCommandSetValBlock)
+                if (command_kind == nGCAnimCommandSetValBlock)
                 {
                     mobj->anim_wait += payload;
                 }
                 break;
 
-            case nOMObjAnimCommandSetValRateBlock:
-            case nOMObjAnimCommandSetValRate:
+            case nGCAnimCommandSetValRateBlock:
+            case nGCAnimCommandSetValRate:
                 payload = mobj->matanim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(mobj->matanim_joint.event32)->command.flags;
 
@@ -992,7 +992,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                     {
                         if (mat_aobjs[i] == NULL)
                         {
-                            mat_aobjs[i] = gcAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
+                            mat_aobjs[i] = gcAddAObjForMObj(mobj, i + nGCAnimTrackMaterialStart);
                         }
                         mat_aobjs[i]->value_base = mat_aobjs[i]->value_target;
                         mat_aobjs[i]->value_target = mobj->matanim_joint.event32->f;
@@ -1013,13 +1013,13 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                         mat_aobjs[i]->length = -mobj->anim_wait - mobj->anim_speed;
                     }
                 }
-                if (command_kind == nOMObjAnimCommandSetValRateBlock)
+                if (command_kind == nGCAnimCommandSetValRateBlock)
                 {
                     mobj->anim_wait += payload;
                 }
                 break;
 
-            case nOMObjAnimCommandSetTargetRate:
+            case nGCAnimCommandSetTargetRate:
                 flags = AObjAnimAdvance(mobj->matanim_joint.event32)->command.flags;
 
                 for (i = 0; i < ARRAY_COUNT(mat_aobjs); i++, flags = flags >> 1)
@@ -1032,7 +1032,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                     {
                         if (mat_aobjs[i] == NULL)
                         {
-                            mat_aobjs[i] = gcAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
+                            mat_aobjs[i] = gcAddAObjForMObj(mobj, i + nGCAnimTrackMaterialStart);
                         }
                         mat_aobjs[i]->rate_target = mobj->matanim_joint.event32->f;
 
@@ -1041,14 +1041,14 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                 }
                 break;
 
-            case nOMObjAnimCommandWait:
+            case nGCAnimCommandWait:
                 mobj->anim_wait += mobj->matanim_joint.event32->command.payload;
 
                 AObjAnimAdvance(mobj->matanim_joint.event32);
                 break;
 
-            case nOMObjAnimCommandSetValAfterBlock:
-            case nOMObjAnimCommandSetValAfter:
+            case nGCAnimCommandSetValAfterBlock:
+            case nGCAnimCommandSetValAfter:
                 payload = mobj->matanim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(mobj->matanim_joint.event32)->command.flags;
 
@@ -1062,7 +1062,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                     {
                         if (mat_aobjs[i] == NULL)
                         {
-                            mat_aobjs[i] = gcAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
+                            mat_aobjs[i] = gcAddAObjForMObj(mobj, i + nGCAnimTrackMaterialStart);
                         }
                         mat_aobjs[i]->value_base = mat_aobjs[i]->value_target;
                         mat_aobjs[i]->value_target = mobj->matanim_joint.event32->f;
@@ -1077,20 +1077,20 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                         mat_aobjs[i]->rate_target = 0.0F;
                     }
                 }
-                if (command_kind == nOMObjAnimCommandSetValAfterBlock)
+                if (command_kind == nGCAnimCommandSetValAfterBlock)
                 {
                     mobj->anim_wait += payload;
                 }
                 break;
 
-            case nOMObjAnimCommandSetAnim:
+            case nGCAnimCommandSetAnim:
                 AObjAnimAdvance(mobj->matanim_joint.event32);
 
                 mobj->matanim_joint.event32 = mobj->matanim_joint.event32->p;
                 mobj->anim_frame = -mobj->anim_wait;
                 break;
 
-            case nOMObjAnimCommandJump:
+            case nGCAnimCommandJump:
                 AObjAnimAdvance(mobj->matanim_joint.event32);
 
                 mobj->matanim_joint.event32 = mobj->matanim_joint.event32->p;
@@ -1110,19 +1110,19 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                     {
                         if (mat_aobjs[i] == NULL)
                         {
-                            mat_aobjs[i] = gcAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialStart);
+                            mat_aobjs[i] = gcAddAObjForMObj(mobj, i + nGCAnimTrackMaterialStart);
                         }
                         mat_aobjs[i]->length += payload;
                     }
                 }
                 break;
 
-            case nOMObjAnimCommandEnd:
+            case nGCAnimCommandEnd:
                 aobj = mobj->aobj;
 
                 while (aobj != NULL)
                 {
-                    if (aobj->kind != nOMObjAnimKindNone)
+                    if (aobj->kind != nGCAnimKindNone)
                     {
                         aobj->length += mobj->anim_speed + mobj->anim_wait;
                     }
@@ -1132,8 +1132,8 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                 mobj->anim_wait = AOBJ_ANIM_END;
                 return; // not break
 
-            case nOMObjAnimCommandSetExtValAfterBlock:
-            case nOMObjAnimCommandSetExtValAfter:
+            case nGCAnimCommandSetExtValAfterBlock:
+            case nGCAnimCommandSetExtValAfter:
                 payload = mobj->matanim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(mobj->matanim_joint.event32)->command.flags;
 
@@ -1147,7 +1147,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                     {
                         if (matspecial_aobjs[i] == NULL)
                         {
-                            matspecial_aobjs[i] = gcAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialSubStart);
+                            matspecial_aobjs[i] = gcAddAObjForMObj(mobj, i + nGCAnimTrackMaterialSubStart);
                         }
                         matspecial_aobjs[i]->value_base = matspecial_aobjs[i]->value_target;
                         matspecial_aobjs[i]->value_target = mobj->matanim_joint.event32->f;
@@ -1160,14 +1160,14 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                         matspecial_aobjs[i]->length = -mobj->anim_wait - mobj->anim_speed;
                     }
                 }
-                if (command_kind == nOMObjAnimCommandSetExtValAfterBlock)
+                if (command_kind == nGCAnimCommandSetExtValAfterBlock)
                 {
                     mobj->anim_wait += payload;
                 }
                 break;
 
-            case nOMObjAnimCommandSetExtValBlock:
-            case nOMObjAnimCommandSetExtVal:
+            case nGCAnimCommandSetExtValBlock:
+            case nGCAnimCommandSetExtVal:
                 payload = mobj->matanim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(mobj->matanim_joint.event32)->command.flags;
 
@@ -1181,7 +1181,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                     {
                         if (matspecial_aobjs[i] == NULL)
                         {
-                            matspecial_aobjs[i] = gcAddAObjForMObj(mobj, i + nOMObjAnimTrackMaterialSubStart);
+                            matspecial_aobjs[i] = gcAddAObjForMObj(mobj, i + nGCAnimTrackMaterialSubStart);
                         }
                         matspecial_aobjs[i]->value_base = matspecial_aobjs[i]->value_target;
                         matspecial_aobjs[i]->value_target = mobj->matanim_joint.event32->f;
@@ -1197,7 +1197,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                         matspecial_aobjs[i]->length = -mobj->anim_wait - mobj->anim_speed;
                     }
                 }
-                if (command_kind == nOMObjAnimCommandSetExtValBlock)
+                if (command_kind == nGCAnimCommandSetExtValBlock)
                 {
                     mobj->anim_wait += payload;
                 }
@@ -1264,21 +1264,21 @@ void gcPlayMObjMatAnim(MObj *mobj)
         
         while (aobj != NULL)
         {
-            if (aobj->kind != nOMObjAnimKindNone) 
+            if (aobj->kind != nGCAnimKindNone) 
             {
                 if (mobj->anim_wait != AOBJ_ANIM_END) 
                 { 
                     aobj->length += mobj->anim_speed; 
                 }
-                if (aobj->track < (nOMObjAnimTrackMaterialSubStart - 1))
+                if (aobj->track < (nGCAnimTrackMaterialSubStart - 1))
                 {
                     switch (aobj->kind) 
                     {
-                    case nOMObjAnimKindLinear: 
+                    case nGCAnimKindLinear: 
                         value = aobj->value_base + (aobj->length * aobj->rate_base); 
                         break;
                         
-                    case nOMObjAnimKindCubic:
+                    case nGCAnimKindCubic:
                         temp_f16 = SQUARE(aobj->length_invert);
                         temp_f12 = SQUARE(aobj->length);
                         temp_f18 = aobj->length_invert * temp_f12;
@@ -1293,7 +1293,7 @@ void gcPlayMObjMatAnim(MObj *mobj)
                                 (aobj->rate_target * temp_f24);
                         break;
                         
-                    case nOMObjAnimKindStep:
+                    case nGCAnimKindStep:
                         value = (aobj->length_invert <= aobj->length) ? aobj->value_target : aobj->value_base;
                         break;
                         
@@ -1302,43 +1302,43 @@ void gcPlayMObjMatAnim(MObj *mobj)
                     }
                     switch (aobj->track) 
                     {
-                    case nOMObjAnimTrackSetTextureIDCurrent: 
+                    case nGCAnimTrackSetTextureIDCurrent: 
                         mobj->texture_id_current = value; 
                         break;
                         
-                    case nOMObjAnimTrackTexture14: 
+                    case nGCAnimTrackTexture14: 
                         mobj->sub.unk14 = value; 
                         break;
                         
-                    case nOMObjAnimTrackTexture15: 
+                    case nGCAnimTrackTexture15: 
                         mobj->sub.unk18 = value; 
                         break;
                         
-                    case nOMObjAnimTrackTexture16: 
+                    case nGCAnimTrackTexture16: 
                         mobj->sub.unk1C = value; 
                         break;
                         
-                    case nOMObjAnimTrackTexture17: 
+                    case nGCAnimTrackTexture17: 
                         mobj->sub.unk20 = value; 
                         break;
                         
-                    case nOMObjAnimTrackSetTextureIDNext: 
+                    case nGCAnimTrackSetTextureIDNext: 
                         mobj->texture_id_next = value; 
                         break;
                         
-                    case nOMObjAnimTrackTexture19: 
+                    case nGCAnimTrackTexture19: 
                         mobj->sub.unk3C = value; 
                         break;
                         
-                    case nOMObjAnimTrackTexture20: 
+                    case nGCAnimTrackTexture20: 
                         mobj->sub.unk40 = value; 
                         break;
                         
-                    case nOMObjAnimTrackSetLFrac: 
+                    case nGCAnimTrackSetLFrac: 
                         mobj->lfrac = value; 
                         break;
                         
-                    case nOMObjAnimTrackSetTextureFrame: 
+                    case nGCAnimTrackSetTextureFrame: 
                         mobj->palette_id = value; 
                         break;
                         
@@ -1350,7 +1350,7 @@ void gcPlayMObjMatAnim(MObj *mobj)
                 {
                     switch(aobj->kind)
                     {
-                    case nOMObjAnimKindLinear: 
+                    case nGCAnimKindLinear: 
                         interp = (aobj->length * aobj->length_invert * 256.0F);
                     
                         if (interp < 0)
@@ -1389,29 +1389,29 @@ void gcPlayMObjMatAnim(MObj *mobj)
                         color.s.a = sp38.s.b;
                         break;
                     
-                    case nOMObjAnimKindStep:
+                    case nGCAnimKindStep:
                         color = (aobj->length_invert <= aobj->length) ? *(syColorPack*)&aobj->value_target : *(syColorPack*)&aobj->value_base;
                         break;
                     }
                     switch(aobj->track)
                     {
-                    case nOMObjAnimTrackPrimColor:
+                    case nGCAnimTrackPrimColor:
                         mobj->sub.primcolor = color;
                         break;
 
-                    case nOMObjAnimTrackEnvColor:
+                    case nGCAnimTrackEnvColor:
                         mobj->sub.envcolor = color;
                         break;
 
-                    case nOMObjAnimTrackBlendColor:
+                    case nGCAnimTrackBlendColor:
                         mobj->sub.blendcolor = color;
                         break;
 
-                    case nOMObjAnimTrackLight1Color:
+                    case nGCAnimTrackLight1Color:
                         mobj->sub.light1color = color;
                         break;
 
-                    case nOMObjAnimTrackLight2Color:
+                    case nGCAnimTrackLight2Color:
                         mobj->sub.light2color = color;
                         break;
                     }
@@ -1501,31 +1501,31 @@ f32 gcGetDObjAxisTrack(DObj *dobj, s32 track)
 {
     switch (track) 
     {
-    case nOMObjAnimTrackRotX: 
+    case nGCAnimTrackRotX: 
         return dobj->rotate.vec.f.x;
 
-    case nOMObjAnimTrackRotY: 
+    case nGCAnimTrackRotY: 
         return dobj->rotate.vec.f.y;
 
-    case nOMObjAnimTrackRotZ: 
+    case nGCAnimTrackRotZ: 
         return dobj->rotate.vec.f.z;
 
-    case nOMObjAnimTrackTraX: 
+    case nGCAnimTrackTraX: 
         return dobj->translate.vec.f.x;
 
-    case nOMObjAnimTrackTraY: 
+    case nGCAnimTrackTraY: 
         return dobj->translate.vec.f.y;
 
-    case nOMObjAnimTrackTraZ: 
+    case nGCAnimTrackTraZ: 
         return dobj->translate.vec.f.z;
 
-    case nOMObjAnimTrackScaX: 
+    case nGCAnimTrackScaX: 
         return dobj->scale.vec.f.x;
 
-    case nOMObjAnimTrackScaY: 
+    case nGCAnimTrackScaY: 
         return dobj->scale.vec.f.y;
 
-    case nOMObjAnimTrackScaZ: 
+    case nGCAnimTrackScaZ: 
         return dobj->scale.vec.f.z;
     }
 #if defined (AVOID_UB)
@@ -1538,31 +1538,31 @@ f32 gcGetDObjDescAxisTrack(DObjDesc *dobjdesc, s32 track)
 {
     switch (track) 
     {
-    case nOMObjAnimTrackRotX: 
+    case nGCAnimTrackRotX: 
         return dobjdesc->rotate.x;
 
-    case nOMObjAnimTrackRotY: 
+    case nGCAnimTrackRotY: 
         return dobjdesc->rotate.y;
 
-    case nOMObjAnimTrackRotZ: 
+    case nGCAnimTrackRotZ: 
         return dobjdesc->rotate.z;
 
-    case nOMObjAnimTrackTraX: 
+    case nGCAnimTrackTraX: 
         return dobjdesc->translate.x;
 
-    case nOMObjAnimTrackTraY: 
+    case nGCAnimTrackTraY: 
         return dobjdesc->translate.y;
 
-    case nOMObjAnimTrackTraZ: 
+    case nGCAnimTrackTraZ: 
         return dobjdesc->translate.z;
 
-    case nOMObjAnimTrackScaX: 
+    case nGCAnimTrackScaX: 
         return dobjdesc->scale.x;
 
-    case nOMObjAnimTrackScaY: 
+    case nGCAnimTrackScaY: 
         return dobjdesc->scale.y;
 
-    case nOMObjAnimTrackScaZ: 
+    case nGCAnimTrackScaZ: 
         return dobjdesc->scale.z;
     }
 #if defined (AVOID_UB)
@@ -1587,7 +1587,7 @@ sb32 gcCheckGetDObjNoAxisTrack
 {
     AObj *aobj = gcGetTrackAObj(seek_aobj, track);
 
-    if ((aobj != NULL) && (aobj->kind != nOMObjAnimKindNone))
+    if ((aobj != NULL) && (aobj->kind != nGCAnimKindNone))
     {
         if ((is_desc_or_dobj == 0) && (dobj->anim_wait != AOBJ_ANIM_END))
         {
@@ -1600,30 +1600,30 @@ sb32 gcCheckGetDObjNoAxisTrack
             *rate = gcGetAObjRate(aobj);
         }
     }
-    else if ((track == nOMObjAnimTrackTraX) || (track == nOMObjAnimTrackTraY) || (track == nOMObjAnimTrackTraZ))
+    else if ((track == nGCAnimTrackTraX) || (track == nGCAnimTrackTraY) || (track == nGCAnimTrackTraZ))
     {
         if (*is_axis_ready != FALSE)
         {
             switch (track)
             {
-            case nOMObjAnimTrackTraX:
+            case nGCAnimTrackTraX:
                 *axis_value = translate->x;
                 break;
 
-            case nOMObjAnimTrackTraY:
+            case nGCAnimTrackTraY:
                 *axis_value = translate->y;
                 break;
 
-            case nOMObjAnimTrackTraZ:
+            case nGCAnimTrackTraZ:
                 *axis_value = translate->z;
                 break;
             }
         }
         else
         {
-            aobj = gcGetTrackAObj(seek_aobj, nOMObjAnimTrackTraI);
+            aobj = gcGetTrackAObj(seek_aobj, nGCAnimTrackTraI);
 
-            if ((aobj != NULL) && (aobj->kind != nOMObjAnimKindNone))
+            if ((aobj != NULL) && (aobj->kind != nGCAnimKindNone))
             {
                 if ((is_desc_or_dobj == 0) && (dobj->anim_wait != AOBJ_ANIM_END))
                 {
@@ -1643,15 +1643,15 @@ sb32 gcCheckGetDObjNoAxisTrack
 
                 switch (track)
                 {
-                case nOMObjAnimTrackTraX:
+                case nGCAnimTrackTraX:
                     *axis_value = translate->x;
                     break;
 
-                case nOMObjAnimTrackTraY:
+                case nGCAnimTrackTraY:
                     *axis_value = translate->y;
                     break;
 
-                case nOMObjAnimTrackTraZ:
+                case nGCAnimTrackTraZ:
                     *axis_value = translate->z;
                     break;
                 }
@@ -1691,21 +1691,21 @@ void gcGetAObjTrackAnimTimeMax(s32 track, f32 translate, f32 rotate, f32 scale, 
     
     switch (track)
     {
-    case nOMObjAnimTrackRotX:
-    case nOMObjAnimTrackRotY:
-    case nOMObjAnimTrackRotZ:
+    case nGCAnimTrackRotX:
+    case nGCAnimTrackRotY:
+    case nGCAnimTrackRotZ:
         value = rotate;
         break;
 
-    case nOMObjAnimTrackTraX:
-    case nOMObjAnimTrackTraY:
-    case nOMObjAnimTrackTraZ:
+    case nGCAnimTrackTraX:
+    case nGCAnimTrackTraY:
+    case nGCAnimTrackTraZ:
         value = translate;
         break;
 
-    case nOMObjAnimTrackScaX:
-    case nOMObjAnimTrackScaY:
-    case nOMObjAnimTrackScaZ:
+    case nGCAnimTrackScaX:
+    case nGCAnimTrackScaY:
+    case nGCAnimTrackScaZ:
         value = scale;
         break;
     }
@@ -1844,9 +1844,9 @@ f32 gcGetDObjTempAnimTimeMax
         parse_aobj = dobj->aobj;
         dobj->aobj = NULL;
     }
-    for (i = nOMObjAnimTrackJointStart; i <= nOMObjAnimTrackJointEnd; i++)
+    for (i = nGCAnimTrackJointStart; i <= nGCAnimTrackJointEnd; i++)
     {
-        if (i == nOMObjAnimTrackTraI)
+        if (i == nGCAnimTrackTraI)
         {
             continue;
         }
@@ -1863,7 +1863,7 @@ f32 gcGetDObjTempAnimTimeMax
         {
             new_aobj = gcAddAObjForDObj(dobj, i);
 
-            if ((i == nOMObjAnimTrackRotX) || (i == nOMObjAnimTrackRotY) || (i == nOMObjAnimTrackRotZ))
+            if ((i == nGCAnimTrackRotX) || (i == nGCAnimTrackRotY) || (i == nGCAnimTrackRotZ))
             {
                 if (ABS(value_new - value_old) > ABS(value_new - (value_old + F_CST_DTOR32(360.0F))))
                 {
@@ -1880,7 +1880,7 @@ f32 gcGetDObjTempAnimTimeMax
                 new_aobj->value_base = value_old;
                 new_aobj->value_target = value_new;
 
-                new_aobj->kind = nOMObjAnimKindLinear;
+                new_aobj->kind = nGCAnimKindLinear;
 
                 new_aobj->length_invert = 1.0F / length;
                 new_aobj->length = -dobj->anim_speed;
@@ -1894,7 +1894,7 @@ f32 gcGetDObjTempAnimTimeMax
                 new_aobj->value_base = value_old;
                 new_aobj->value_target = value_new;
 
-                new_aobj->kind = nOMObjAnimKindCubic;
+                new_aobj->kind = nGCAnimKindCubic;
 
                 new_aobj->length_invert = 1.0F / length;
                 new_aobj->length = -dobj->anim_speed;
@@ -1902,7 +1902,7 @@ f32 gcGetDObjTempAnimTimeMax
                 new_aobj->rate_base = rate_old;
                 new_aobj->rate_target = rate_new;
 
-                if (rate_kind == nOMObjAnimKindLinear)
+                if (rate_kind == nGCAnimKindLinear)
                 {
                     gcGetAObjTrackAnimTimeMax(i, translate, rotate, scale, &time_max, new_aobj);
                 }
@@ -2040,9 +2040,9 @@ void func_8000EE40_FA40(GObj *gobj, AObjEvent32 **anim_joints, f32 anim_frame, D
             dobj->is_anim_root = is_anim_root;
             is_anim_root = FALSE;
 
-            for (i = nOMObjAnimTrackJointStart; i <= nOMObjAnimTrackJointEnd; i++)
+            for (i = nGCAnimTrackJointStart; i <= nGCAnimTrackJointEnd; i++)
             {
-                if (i != nOMObjAnimTrackTraI)
+                if (i != nGCAnimTrackTraI)
                 {
                     gcCheckGetDObjNoAxisTrack
                     (
@@ -2059,39 +2059,39 @@ void func_8000EE40_FA40(GObj *gobj, AObjEvent32 **anim_joints, f32 anim_frame, D
                     );
                     switch (i) 
                     {
-                    case nOMObjAnimTrackRotX:
+                    case nGCAnimTrackRotX:
                         dobj->rotate.vec.f.x = axis_value;
                         break;
                     
-                    case nOMObjAnimTrackRotY:
+                    case nGCAnimTrackRotY:
                         dobj->rotate.vec.f.y = axis_value; 
                         break;
                     
-                    case nOMObjAnimTrackRotZ:
+                    case nGCAnimTrackRotZ:
                         dobj->rotate.vec.f.z = axis_value; 
                         break;
                     
-                    case nOMObjAnimTrackTraX:
+                    case nGCAnimTrackTraX:
                         dobj->translate.vec.f.x = axis_value; 
                         break;
                     
-                    case nOMObjAnimTrackTraY:
+                    case nGCAnimTrackTraY:
                         dobj->translate.vec.f.y = axis_value; 
                         break;
                     
-                    case nOMObjAnimTrackTraZ:
+                    case nGCAnimTrackTraZ:
                         dobj->translate.vec.f.z = axis_value; 
                         break;
                     
-                    case nOMObjAnimTrackScaX:
+                    case nGCAnimTrackScaX:
                         dobj->scale.vec.f.x = axis_value; 
                         break;
                     
-                    case nOMObjAnimTrackScaY:
+                    case nGCAnimTrackScaY:
                         dobj->scale.vec.f.y = axis_value; 
                         break;
                     
-                    case nOMObjAnimTrackScaZ:
+                    case nGCAnimTrackScaZ:
                         dobj->scale.vec.f.z = axis_value; 
                         break;
                     }
@@ -2122,8 +2122,8 @@ void func_8000EE40_FA40(GObj *gobj, AObjEvent32 **anim_joints, f32 anim_frame, D
 
 void gcAddDObjTransformTraRotSca(DObj *dobj)
 {
-    gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);
-    gcAddOMMtxForDObjFixed(dobj, nOMTransformSca, 0);
+    gcAddGCMatrixForDObjFixed(dobj, nGCTransformTraRotRpyR, 0);
+    gcAddGCMatrixForDObjFixed(dobj, nGCTransformSca, 0);
 }
 
 DObj* gcAddDObjForGObjTraRotSca(GObj *gobj, void *dvar)
@@ -2174,23 +2174,23 @@ void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs)
         
         if (dobjdesc->index & 0xF000)
         {
-            gcAddOMMtxForDObjFixed(dobj, nOMTransformTra, 0);
+            gcAddGCMatrixForDObjFixed(dobj, nGCTransformTra, 0);
         }
         if (dobjdesc->index & 0x8000)
         {
-            gcAddOMMtxForDObjFixed(dobj, nOMTransformRecalcRotRpyRSca, 0);
+            gcAddGCMatrixForDObjFixed(dobj, nGCTransformRecalcRotRpyRSca, 0);
         } 
         else if (dobjdesc->index & 0x4000)
         {
-            gcAddOMMtxForDObjFixed(dobj, nOMTransform46, 0);
+            gcAddGCMatrixForDObjFixed(dobj, nGCTransform46, 0);
         }
         else if (dobjdesc->index & 0x2000)
         {
-            gcAddOMMtxForDObjFixed(dobj, nOMTransform48, 0);
+            gcAddGCMatrixForDObjFixed(dobj, nGCTransform48, 0);
         }
         else if (dobjdesc->index & 0x1000)
         {
-            gcAddOMMtxForDObjFixed(dobj, nOMTransform50, 0);
+            gcAddGCMatrixForDObjFixed(dobj, nGCTransform50, 0);
         }
         else gcAddDObjTransformTraRotSca(dobj);
         
@@ -2208,17 +2208,17 @@ void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs)
 
 void gcAddDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3)
 {
-    if (tk1 != nOMTransformNull) 
+    if (tk1 != nGCTransformNull) 
     {
-        gcAddOMMtxForDObjFixed(dobj, tk1, 0);
+        gcAddGCMatrixForDObjFixed(dobj, tk1, 0);
     }
-    if (tk2 != nOMTransformNull) 
+    if (tk2 != nGCTransformNull) 
     {
-        gcAddOMMtxForDObjFixed(dobj, tk2, 0);
+        gcAddGCMatrixForDObjFixed(dobj, tk2, 0);
     }
-    if (tk3 != nOMTransformNull) 
+    if (tk3 != nGCTransformNull) 
     {
-        gcAddOMMtxForDObjFixed(dobj, tk3, 0);
+        gcAddGCMatrixForDObjFixed(dobj, tk3, 0);
     }
 }
 
@@ -2230,103 +2230,103 @@ void gcDecideDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, s32 flags)
 
     switch (tk1)
     {
-    case nOMTransformTra:
+    case nGCTransformTra:
         tra_mode = 1;
         break;
 
-    case nOMTransformRotRpyR: 
+    case nGCTransformRotRpyR: 
         rot_mode = 1;
         break;
 
-    case nOMTransformTraRotRpyR:
+    case nGCTransformTraRotRpyR:
         rot_mode = 1;
         tra_mode = 1;
         break;
             
-    case nOMTransformTraRotRpyRSca:
+    case nGCTransformTraRotRpyRSca:
         sca_mode = 1;
         rot_mode = 1;
         tra_mode = 1;
         break;
 
-    case nOMTransformRotPyrR: 
+    case nGCTransformRotPyrR: 
         rot_mode = 2; 
         break;
 
-    case nOMTransformTraRotPyrR:
+    case nGCTransformTraRotPyrR:
         rot_mode = 2;
         tra_mode = 1;
         break;
             
-    case nOMTransformTraRotPyrRSca:
+    case nGCTransformTraRotPyrRSca:
         rot_mode = 2;
         sca_mode = 1;
         tra_mode = 1;
         break;
 
-    case nOMTransformSca: 
+    case nGCTransformSca: 
         sca_mode = 1;
         break;
     }
     switch (tk2)
     {
-    case nOMTransformRotRpyR:
+    case nGCTransformRotRpyR:
         rot_mode = 1; 
         break;
 
-    case nOMTransformRotPyrR:
+    case nGCTransformRotPyrR:
         rot_mode = 2;
         break;
 
-    case nOMTransformSca:
+    case nGCTransformSca:
         sca_mode = 1;
         break;
     }
-    if (tk3 == nOMTransformSca)
+    if (tk3 == nGCTransformSca)
     {
         sca_mode = 1;
     }
     if (tra_mode != 0)
     {
-        gcAddOMMtxForDObjFixed(dobj, nOMTransformTra, 0);
+        gcAddGCMatrixForDObjFixed(dobj, nGCTransformTra, 0);
     }
     if (flags & 0x4000)
     {
         if (rot_mode == 1)
         {
-            gcAddOMMtxForDObjFixed(dobj, nOMTransform46, 0);
+            gcAddGCMatrixForDObjFixed(dobj, nGCTransform46, 0);
         } 
-        else gcAddOMMtxForDObjFixed(dobj, nOMTransform45, 0);
+        else gcAddGCMatrixForDObjFixed(dobj, nGCTransform45, 0);
     }
     else if (flags & 0x2000)
     {
         if (rot_mode == 1)
         {
-            gcAddOMMtxForDObjFixed(dobj, nOMTransform48, 0);
+            gcAddGCMatrixForDObjFixed(dobj, nGCTransform48, 0);
         }
-        else gcAddOMMtxForDObjFixed(dobj, nOMTransform47, 0);
+        else gcAddGCMatrixForDObjFixed(dobj, nGCTransform47, 0);
     } 
     else if (flags & 0x1000)
     {
         if (rot_mode == 1)
         {
-            gcAddOMMtxForDObjFixed(dobj, nOMTransform50, 0);
+            gcAddGCMatrixForDObjFixed(dobj, nGCTransform50, 0);
         }
-        else gcAddOMMtxForDObjFixed(dobj, nOMTransform49, 0);
+        else gcAddGCMatrixForDObjFixed(dobj, nGCTransform49, 0);
     } 
     else if (sca_mode != 0)
     {
         if (rot_mode == 1)
         {
-            gcAddOMMtxForDObjFixed(dobj, nOMTransformRecalcRotRpyRSca, 0);
+            gcAddGCMatrixForDObjFixed(dobj, nGCTransformRecalcRotRpyRSca, 0);
         }
-        else gcAddOMMtxForDObjFixed(dobj, nOMTransformRecalcRotPyrRSca, 0);
+        else gcAddGCMatrixForDObjFixed(dobj, nGCTransformRecalcRotPyrRSca, 0);
     }
     else if (rot_mode == 1)
     {
-        gcAddOMMtxForDObjFixed(dobj, nOMTransformRecalcRotRpyR, 0);
+        gcAddGCMatrixForDObjFixed(dobj, nGCTransformRecalcRotRpyR, 0);
     }
-    else gcAddOMMtxForDObjFixed(dobj, nOMTransformRecalcRotPyrR, 0);
+    else gcAddGCMatrixForDObjFixed(dobj, nGCTransformRecalcRotPyrR, 0);
 }
 
 // 0x8000F590
@@ -2477,7 +2477,7 @@ void gcAddCameraCamAnimJoint(Camera *cam, AObjEvent32 *camanim_joint, f32 anim_f
 
     while (aobj != NULL)
     {
-        aobj->kind = nOMObjAnimKindNone;
+        aobj->kind = nGCAnimKindNone;
         aobj = aobj->next;
     }
     cam->camanim_joint.event32 = camanim_joint;
@@ -2488,7 +2488,7 @@ void gcAddCameraCamAnimJoint(Camera *cam, AObjEvent32 *camanim_joint, f32 anim_f
 
 void gcParseCameraCamAnimJoint(Camera *cam)
 {
-    AObj *track_aobjs[nOMObjAnimTrackCameraEnd - nOMObjAnimTrackCameraStart + 1];
+    AObj *track_aobjs[nGCAnimTrackCameraEnd - nGCAnimTrackCameraStart + 1];
     AObj *aobj;
     s32 i;
     u32 command_kind;
@@ -2520,9 +2520,9 @@ void gcParseCameraCamAnimJoint(Camera *cam)
 
         while (aobj != NULL)
         {
-            if ((aobj->track >= nOMObjAnimTrackCameraStart) && (aobj->track <= nOMObjAnimTrackCameraEnd))
+            if ((aobj->track >= nGCAnimTrackCameraStart) && (aobj->track <= nGCAnimTrackCameraEnd))
             {
-                track_aobjs[aobj->track - nOMObjAnimTrackCameraStart] = aobj;
+                track_aobjs[aobj->track - nGCAnimTrackCameraStart] = aobj;
             }
             aobj = aobj->next;
         }
@@ -2549,8 +2549,8 @@ void gcParseCameraCamAnimJoint(Camera *cam)
 
             switch (command_kind)
             {
-            case nOMObjAnimCommandSetVal0RateBlock:
-            case nOMObjAnimCommandSetVal0Rate:
+            case nGCAnimCommandSetVal0RateBlock:
+            case nGCAnimCommandSetVal0Rate:
                 payload = cam->camanim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(cam->camanim_joint.event32)->command.flags;
 
@@ -2564,7 +2564,7 @@ void gcParseCameraCamAnimJoint(Camera *cam)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = gcAddAObjForCamera(cam, i + nOMObjAnimTrackCameraStart);
+                            track_aobjs[i] = gcAddAObjForCamera(cam, i + nGCAnimTrackCameraStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
                         track_aobjs[i]->value_target = cam->camanim_joint.event32->f;
@@ -2582,14 +2582,14 @@ void gcParseCameraCamAnimJoint(Camera *cam)
                         track_aobjs[i]->length = -cam->anim_wait - cam->anim_speed;
                     }
                 }
-                if (command_kind == nOMObjAnimCommandSetVal0RateBlock)
+                if (command_kind == nGCAnimCommandSetVal0RateBlock)
                 {
                     cam->anim_wait += payload;
                 }
                 break;
 
-            case nOMObjAnimCommandSetValBlock:
-            case nOMObjAnimCommandSetVal:
+            case nGCAnimCommandSetValBlock:
+            case nGCAnimCommandSetVal:
                 payload = cam->camanim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(cam->camanim_joint.event32)->command.flags;
 
@@ -2603,7 +2603,7 @@ void gcParseCameraCamAnimJoint(Camera *cam)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = gcAddAObjForCamera(cam, i + nOMObjAnimTrackCameraStart);
+                            track_aobjs[i] = gcAddAObjForCamera(cam, i + nGCAnimTrackCameraStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
                         track_aobjs[i]->value_target = cam->camanim_joint.event32->f;
@@ -2620,14 +2620,14 @@ void gcParseCameraCamAnimJoint(Camera *cam)
                         track_aobjs[i]->rate_target = 0.0F;
                     }
                 }
-                if (command_kind == nOMObjAnimCommandSetValBlock)
+                if (command_kind == nGCAnimCommandSetValBlock)
                 {
                     cam->anim_wait += payload;
                 }
                 break;
 
-            case nOMObjAnimCommandSetValRateBlock:
-            case nOMObjAnimCommandSetValRate:
+            case nGCAnimCommandSetValRateBlock:
+            case nGCAnimCommandSetValRate:
                 payload = cam->camanim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(cam->camanim_joint.event32)->command.flags;
 
@@ -2641,7 +2641,7 @@ void gcParseCameraCamAnimJoint(Camera *cam)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = gcAddAObjForCamera(cam, i + nOMObjAnimTrackCameraStart);
+                            track_aobjs[i] = gcAddAObjForCamera(cam, i + nGCAnimTrackCameraStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
                         track_aobjs[i]->value_target = cam->camanim_joint.event32->f;
@@ -2662,13 +2662,13 @@ void gcParseCameraCamAnimJoint(Camera *cam)
                         track_aobjs[i]->length = -cam->anim_wait - cam->anim_speed;
                     }
                 }
-                if (command_kind == nOMObjAnimCommandSetValRateBlock)
+                if (command_kind == nGCAnimCommandSetValRateBlock)
                 {
                     cam->anim_wait += payload;
                 }
                 break;
 
-            case nOMObjAnimCommandSetTargetRate:
+            case nGCAnimCommandSetTargetRate:
                 flags = AObjAnimAdvance(cam->camanim_joint.event32)->command.flags;
 
                 for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
@@ -2681,7 +2681,7 @@ void gcParseCameraCamAnimJoint(Camera *cam)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = gcAddAObjForCamera(cam, i + nOMObjAnimTrackCameraStart);
+                            track_aobjs[i] = gcAddAObjForCamera(cam, i + nGCAnimTrackCameraStart);
                         }
                         track_aobjs[i]->rate_target = cam->camanim_joint.event32->f;
 
@@ -2690,12 +2690,12 @@ void gcParseCameraCamAnimJoint(Camera *cam)
                 }
                 break;
 
-            case nOMObjAnimCommandWait:
+            case nGCAnimCommandWait:
                 cam->anim_wait += AObjAnimAdvance(cam->camanim_joint.event32)->command.payload;
                 break;
 
-            case nOMObjAnimCommandSetValAfterBlock:
-            case nOMObjAnimCommandSetValAfter:
+            case nGCAnimCommandSetValAfterBlock:
+            case nGCAnimCommandSetValAfter:
                 payload = cam->camanim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(cam->camanim_joint.event32)->command.flags;
 
@@ -2709,7 +2709,7 @@ void gcParseCameraCamAnimJoint(Camera *cam)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = gcAddAObjForCamera(cam, i + nOMObjAnimTrackCameraStart);
+                            track_aobjs[i] = gcAddAObjForCamera(cam, i + nGCAnimTrackCameraStart);
                         }
                         track_aobjs[i]->value_base = track_aobjs[i]->value_target;
                         track_aobjs[i]->value_target = cam->camanim_joint.event32->f;
@@ -2722,20 +2722,20 @@ void gcParseCameraCamAnimJoint(Camera *cam)
                         track_aobjs[i]->rate_target = 0.0F;
                     }
                 }
-                if (command_kind == nOMObjAnimCommandSetValAfterBlock)
+                if (command_kind == nGCAnimCommandSetValAfterBlock)
                 {
                     cam->anim_wait += payload;
                 }
                 break;
 
-            case nOMObjAnimCommandSetAnim:
+            case nGCAnimCommandSetAnim:
                 AObjAnimAdvance(cam->camanim_joint.event32);
                 cam->camanim_joint.event32 = cam->camanim_joint.event32->p;
                 cam->anim_frame = -cam->anim_wait;
                 cam->parent_gobj->anim_frame = -cam->anim_wait;
                 break;
 
-            case nOMObjAnimCommandJump:
+            case nGCAnimCommandJump:
                 AObjAnimAdvance(cam->camanim_joint.event32);
                 cam->camanim_joint.event32 = cam->camanim_joint.event32->p;
                 break;
@@ -2754,52 +2754,52 @@ void gcParseCameraCamAnimJoint(Camera *cam)
                     {
                         if (track_aobjs[i] == NULL)
                         {
-                            track_aobjs[i] = gcAddAObjForCamera(cam, i + nOMObjAnimTrackCameraStart);
+                            track_aobjs[i] = gcAddAObjForCamera(cam, i + nGCAnimTrackCameraStart);
                         }
                         track_aobjs[i]->length += payload;
                     }
                 }
                 break;
 
-            case nOMObjAnimCommandSetInterp:
+            case nGCAnimCommandSetInterp:
                 flags = AObjAnimAdvance(cam->camanim_joint.event32)->command.flags;
 
                 if (flags & 0x08)
                 {
-                    if (track_aobjs[nOMObjAnimTrackEyeI - nOMObjAnimTrackCameraStart] == NULL)
+                    if (track_aobjs[nGCAnimTrackEyeI - nGCAnimTrackCameraStart] == NULL)
                     {
-                        track_aobjs[nOMObjAnimTrackEyeI - nOMObjAnimTrackCameraStart] = gcAddAObjForCamera
+                        track_aobjs[nGCAnimTrackEyeI - nGCAnimTrackCameraStart] = gcAddAObjForCamera
                         (
                             cam, 
-                            nOMObjAnimTrackEyeI
+                            nGCAnimTrackEyeI
                         );
                     }
-                    track_aobjs[nOMObjAnimTrackEyeI - nOMObjAnimTrackCameraStart]->interpolate = cam->camanim_joint.event32->p;
+                    track_aobjs[nGCAnimTrackEyeI - nGCAnimTrackCameraStart]->interpolate = cam->camanim_joint.event32->p;
 
                     AObjAnimAdvance(cam->camanim_joint.event32);
                 }
                 if (flags & 0x80)
                 {
-                    if (track_aobjs[nOMObjAnimTrackAtI - nOMObjAnimTrackCameraStart] == NULL)
+                    if (track_aobjs[nGCAnimTrackAtI - nGCAnimTrackCameraStart] == NULL)
                     {
-                        track_aobjs[nOMObjAnimTrackAtI - nOMObjAnimTrackCameraStart] = gcAddAObjForCamera
+                        track_aobjs[nGCAnimTrackAtI - nGCAnimTrackCameraStart] = gcAddAObjForCamera
                         (
                             cam, 
-                            nOMObjAnimTrackAtI
+                            nGCAnimTrackAtI
                         );
                     }
-                    track_aobjs[nOMObjAnimTrackAtI - nOMObjAnimTrackCameraStart]->interpolate = cam->camanim_joint.event32->p;
+                    track_aobjs[nGCAnimTrackAtI - nGCAnimTrackCameraStart]->interpolate = cam->camanim_joint.event32->p;
 
                     AObjAnimAdvance(cam->camanim_joint.event32);
                 }
                 break;
 
-            case nOMObjAnimCommandEnd:
+            case nGCAnimCommandEnd:
                 aobj = cam->aobj;
 
                 while (aobj != NULL)
                 {
-                    if (aobj->kind != nOMObjAnimKindNone)
+                    if (aobj->kind != nGCAnimKindNone)
                     {
                         aobj->length += cam->anim_speed + cam->anim_wait;
                     }
@@ -2832,7 +2832,7 @@ void gcPlayCameraCamAnim(Camera *cam)
 
         while (aobj != NULL)
         {
-            if (aobj->kind != nOMObjAnimKindNone)
+            if (aobj->kind != nGCAnimKindNone)
             {
                 if (cam->anim_wait != AOBJ_ANIM_END)
                 {
@@ -2842,19 +2842,19 @@ void gcPlayCameraCamAnim(Camera *cam)
                 {
                     switch (aobj->track)
                     {
-                    case nOMObjAnimTrackEyeX:
+                    case nGCAnimTrackEyeX:
                         cam->vec.eye.x = gcGetAObjValue(aobj);
                         break;
 
-                    case nOMObjAnimTrackEyeY:
+                    case nGCAnimTrackEyeY:
                         cam->vec.eye.y = gcGetAObjValue(aobj);
                         break;
 
-                    case nOMObjAnimTrackEyeZ:
+                    case nGCAnimTrackEyeZ:
                         cam->vec.eye.z = gcGetAObjValue(aobj);
                         break;
 
-                    case nOMObjAnimTrackEyeI:
+                    case nGCAnimTrackEyeI:
                         value = gcGetAObjValue(aobj);
 
                         if (value < 0.0F)
@@ -2868,19 +2868,19 @@ void gcPlayCameraCamAnim(Camera *cam)
                         hal_interpolation_cubic(&cam->vec.eye, aobj->interpolate, value);
                         break;
                     
-                    case nOMObjAnimTrackAtX:
+                    case nGCAnimTrackAtX:
                         cam->vec.at.x = gcGetAObjValue(aobj);
                         break;
 
-                    case nOMObjAnimTrackAtY:
+                    case nGCAnimTrackAtY:
                         cam->vec.at.y = gcGetAObjValue(aobj);
                         break;
 
-                    case nOMObjAnimTrackAtZ:
+                    case nGCAnimTrackAtZ:
                         cam->vec.at.z = gcGetAObjValue(aobj);
                         break;
 
-                    case nOMObjAnimTrackAtI:
+                    case nGCAnimTrackAtI:
                         value = gcGetAObjValue(aobj);
 
                         if (value < 0.0F)
@@ -2894,11 +2894,11 @@ void gcPlayCameraCamAnim(Camera *cam)
                         hal_interpolation_cubic(&cam->vec.at, aobj->interpolate, value);
                         break;
 
-                    case nOMObjAnimTrackUpX:
+                    case nGCAnimTrackUpX:
                         cam->vec.up.x = gcGetAObjValue(aobj);
                         break;
 
-                    case nOMObjAnimTrackFovY:
+                    case nGCAnimTrackFovY:
                         cam->projection.persp.fovy = gcGetAObjValue(aobj);
                         break;
                     }
@@ -2938,17 +2938,17 @@ s32 gcGetAnimTotalLength(AObjEvent32 **anim_joints)
     {
         switch (anim_joint->command.opcode)
         {
-            case nOMObjAnimCommandSetValBlock:
-            case nOMObjAnimCommandSetVal0RateBlock:
-            case nOMObjAnimCommandSetValAfterBlock:
+            case nGCAnimCommandSetValBlock:
+            case nGCAnimCommandSetVal0RateBlock:
+            case nGCAnimCommandSetValAfterBlock:
                 total += anim_joint->command.payload;
 
                 /* fallthrough */
 
-            case nOMObjAnimCommandSetVal:
-            case nOMObjAnimCommandSetTargetRate:
-            case nOMObjAnimCommandSetVal0Rate:
-            case nOMObjAnimCommandSetValAfter:
+            case nGCAnimCommandSetVal:
+            case nGCAnimCommandSetTargetRate:
+            case nGCAnimCommandSetVal0Rate:
+            case nGCAnimCommandSetValAfter:
                 flags = AObjAnimAdvance(anim_joint)->command.flags;
 
                 for (i = 0; i < 10; i++, flags = flags >> 1)
@@ -2964,12 +2964,12 @@ s32 gcGetAnimTotalLength(AObjEvent32 **anim_joints)
                 }
                 break;
 
-            case nOMObjAnimCommandSetValRateBlock:
+            case nGCAnimCommandSetValRateBlock:
                 total += anim_joint->command.payload;
 
                 /* fallthrough */
 
-            case nOMObjAnimCommandSetValRate:
+            case nGCAnimCommandSetValRate:
                 flags = AObjAnimAdvance(anim_joint)->command.flags;
 
                 for (i = 0; i < 10; i++, flags = flags >> 1)
@@ -2985,8 +2985,8 @@ s32 gcGetAnimTotalLength(AObjEvent32 **anim_joints)
                 }
                 break;
 
-            case nOMObjAnimCommandWait:
-            case nOMObjAnimCommandSetFlags:
+            case nGCAnimCommandWait:
+            case nGCAnimCommandSetFlags:
                 total += AObjAnimAdvance(anim_joint)->command.payload;
                 break;
 
@@ -2994,7 +2994,7 @@ s32 gcGetAnimTotalLength(AObjEvent32 **anim_joints)
                 AObjAnimAdvance(anim_joint);
                 break;
 
-            case nOMObjAnimCommandSetInterp:
+            case nGCAnimCommandSetInterp:
                 anim_joint += 2;
                 break;
 
@@ -3015,11 +3015,11 @@ s32 gcGetAnimTotalLength(AObjEvent32 **anim_joints)
                 }
                 break;
 
-            case nOMObjAnimCommandEnd:
+            case nGCAnimCommandEnd:
                 return total;
 
-            case nOMObjAnimCommandJump:
-            case nOMObjAnimCommandSetAnim:
+            case nGCAnimCommandJump:
+            case nGCAnimCommandSetAnim:
                 return -total;
 
             case ANIM_CMD_16:

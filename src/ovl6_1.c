@@ -19,8 +19,8 @@ itCreateDesc dItTargetItemDesc = {
 
 	// DObj transformation struct
 	{
-		nOMTransformTraRotRpyRSca, // Main matrix transformations
-		nOMTransformNull,		   // Secondary matrix transformations?
+		nGCTransformTraRotRpyRSca, // Main matrix transformations
+		nGCTransformNull,		   // Secondary matrix transformations?
 		0							   // ???
 	},
 

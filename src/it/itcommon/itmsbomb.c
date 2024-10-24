@@ -25,8 +25,8 @@ itCreateDesc dITMSBombItemDesc =
 
     // DObj transformation struct
     {
-        nOMTransformNull,                   // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformNull,                   // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -426,7 +426,7 @@ sb32 itMSBombAttachedProcUpdate(GObj *item_gobj)
     }
     else
     {
-        fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+        fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
         translate = &item_dobj->translate.vec.f;
 
@@ -530,7 +530,7 @@ sb32 itMSBombDetachedProcUpdate(GObj *item_gobj)
     }
     else
     {
-        fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+        fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
         translate = &item_dobj->translate.vec.f;
 
@@ -620,8 +620,8 @@ GObj* itMSBombMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         translate = dobj->translate.vec.f;
 
-        gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);
-        gcAddOMMtxForDObjFixed(dobj->child->sib_next, 0x46, 0);
+        gcAddGCMatrixForDObjFixed(dobj, nGCTransformTraRotRpyR, 0);
+        gcAddGCMatrixForDObjFixed(dobj->child->sib_next, 0x46, 0);
 
         dobj->translate.vec.f = translate;
 

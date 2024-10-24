@@ -43,8 +43,8 @@ itCreateDesc dITPippiItemDesc =
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,             // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformTraRotRpyR,             // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -224,7 +224,7 @@ GObj* itPippiMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
         ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        gcAddOMMtxForDObjFixed(dobj, 0x48, 0);
+        gcAddGCMatrixForDObjFixed(dobj, 0x48, 0);
 
         dobj->translate.vec.f = *pos;
 

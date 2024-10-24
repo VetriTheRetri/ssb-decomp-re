@@ -1497,7 +1497,7 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
 
         if ((this_fp->ga == nMPKineticsGround) && !(this_fp->is_ignore_jostle))
         {
-            other_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+            other_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
             is_check_self = FALSE;
 
@@ -2974,7 +2974,7 @@ void ftMainSearchFighterHit(GObj *this_gobj)
     sb32 is_check_self;
 
     this_fp = ftGetStruct(this_gobj);
-    other_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    other_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
     is_check_self = FALSE;
 
     while (other_gobj != NULL)
@@ -3203,7 +3203,7 @@ void ftMainSearchWeaponHit(GObj *fighter_gobj)
     s32 unused1;
 
     fp = ftGetStruct(fighter_gobj);
-    weapon_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDWeapon];
+    weapon_gobj = gGCCommonLinks[nGCCommonLinkIDWeapon];
 
     while (weapon_gobj != NULL)
     {
@@ -3400,7 +3400,7 @@ void ftMainSearchItemHit(GObj *fighter_gobj)
     s32 unused1;
 
     fp = ftGetStruct(fighter_gobj);
-    item_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDItem];
+    item_gobj = gGCCommonLinks[nGCCommonLinkIDItem];
 
     while (item_gobj != NULL)
     {
@@ -3652,7 +3652,7 @@ void ftMainSearchFighterCatch(GObj *this_gobj)
     this_fp->search_gobj = NULL;
     this_fp->search_gobj_dist = F32_MAX;
 
-    other_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    other_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
     while (other_gobj != NULL)
     {

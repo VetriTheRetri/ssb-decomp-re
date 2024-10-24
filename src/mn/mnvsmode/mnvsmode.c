@@ -573,7 +573,7 @@ void mnVSModeMakeTimeStockArrows()
 
     sMNVSModeTimeStockArrowsGObj = time_stock_arrows_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(time_stock_arrows_gobj, lbCommonDrawSObjAttr, 2, GOBJ_LINKORDER_DEFAULT, -1);
-    gcAddGObjProcess(time_stock_arrows_gobj, mnVSModeAnimateTimeStockArrows, nOMObjProcessKindThread, 1);
+    gcAddGObjProcess(time_stock_arrows_gobj, mnVSModeAnimateTimeStockArrows, nGCProcessKindThread, 1);
 
     if (mnVSModeIsTime() != FALSE)
     {
@@ -869,7 +869,7 @@ void mnVSModeMakeButtonValuesSYRdpViewport(void)
         CAMERA_MASK_DLLINK(3),
         -1,
         FALSE,
-        nOMObjProcessKindProc,
+        nGCProcessKindProc,
         NULL,
         1,
         FALSE
@@ -915,7 +915,7 @@ void mnVSModeMakeMenuNameViewport(void)
         CAMERA_MASK_DLLINK(1),
         -1,
         FALSE,
-        nOMObjProcessKindProc,
+        nGCProcessKindProc,
         NULL,
         1,
         FALSE

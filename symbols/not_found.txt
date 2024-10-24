@@ -774,7 +774,7 @@ sLBTransitionFileHeap = 0x800D6484;
 sLBTransitionPhotoHeap = 0x800D6488;
 
 func_ovl2_800E7F68 = 0x800E7F68;
-gOMObjCommonLinks = 0x800466F0;
+gGCCommonLinks = 0x800466F0;
 gDefaultBattleState = 0x800A3fc8;
 gBattleState = 0x800A50E8;
 gSceneData = 0x800A4AD0;

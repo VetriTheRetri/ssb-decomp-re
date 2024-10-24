@@ -33,8 +33,8 @@ itCreateDesc dITSpearItemDesc =
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,             // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformTraRotRpyR,             // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -87,8 +87,8 @@ wpCreateDesc dITSpearWeaponSwarmWeaponDesc =
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,             // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformTraRotRpyR,             // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -112,8 +112,8 @@ wpCreateDesc dITPippiWeaponSwarmWeaponDesc =
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,             // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformTraRotRpyR,             // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -326,7 +326,7 @@ GObj* itSpearMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj = DObjGetStruct(item_gobj);
 
-        gcAddOMMtxForDObjFixed(dobj->child, 0x48, 0);
+        gcAddGCMatrixForDObjFixed(dobj->child, 0x48, 0);
 
         dobj->translate.vec.f = *pos;
 
@@ -411,7 +411,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 
     if (it_kind == nITKindSpear)
     {
-        gcAddOMMtxForDObjFixed(dobj->child->child, 0x48, 0);
+        gcAddGCMatrixForDObjFixed(dobj->child->child, 0x48, 0);
 
         if (wp->lr == nGMFacingL)
         {
@@ -422,7 +422,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
     {
         weapon_gobj->func_display = itPippiWeaponSwarmFuncDisplay;
 
-        gcAddOMMtxForDObjFixed(dobj->child, 0x48, 0);
+        gcAddGCMatrixForDObjFixed(dobj->child, 0x48, 0);
 
         if (wp->lr == nGMFacingR)
         {

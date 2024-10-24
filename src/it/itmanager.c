@@ -12,10 +12,10 @@
 // // // // // // // // // // // //
 
 extern intptr_t D_NF_000000FB;
-extern intptr_t lITManagerParticleBankGenLo;         // 0x00B1BCA0
-extern intptr_t lITManagerParticleBankGenHi;         // 0x00B1BDE0
-extern intptr_t lITManagerParticleBankTextureLo;        // 0x00B1BDE0
-extern intptr_t lITManagerParticleBankTextureHi;        // 0x00B1E640
+extern intptr_t lITManagerParticleBankScriptsLo;        // 0x00B1BCA0
+extern intptr_t lITManagerParticleBankScriptsHi;        // 0x00B1BDE0
+extern intptr_t lITManagerParticleBankTexturesLo;       // 0x00B1BDE0
+extern intptr_t lITManagerParticleBankTexturesHi;       // 0x00B1E640
 
 // // // // // // // // // // // //
 //                               //
@@ -50,8 +50,8 @@ itSpawnActor gITManagerSpawnActor;
 //                               //
 // // // // // // // // // // // //
 
-// 0x80189450 - Not uninitialized, so it's hardcoded upon building the ROM? 0 => random, beyond 0 => index of Pokémon to spawn; when in doubt, change to s32
-s32 dITManagerMonsterSpawnID = 0;
+// 0x80189450 - 0 spawns random, non-0 spawns item ID of dITManagerForceMonsterKind + (nITMBallMonsterStart - 1)
+s32 dITManagerForceMonsterKind = 0;
 
 // 0x80189454
 u16 dITManagerAppearanceRatesMin[/* */] = 
@@ -111,7 +111,7 @@ GObj* (*dITManagerProcMakeList[/* */])(GObj*, Vec3f*, Vec3f*, u32) =
     itGBumperMakeItem,      // Common Stage Bumper
     itPakkunMakeItem,       // Mushroom Kingdom Piranha Plant
     itTargetMakeItem,       // Bonus Stage Target
-    itTaruBombMakeItem,        // Race to the Finish Bomb
+    itTaruBombMakeItem,     // Race to the Finish Bomb
     itGLuckyMakeItem,       // Saffron City Chansey
     itMarumineMakeItem,     // Saffron City Electrode
     itHitokageMakeItem,     // Saffron City Charmander
@@ -156,14 +156,14 @@ void itManagerInitItems(void) // Many linker things here
     {
         ip[i].alloc_next = NULL;
     }
-    gITManagerFileData = (void*)lbRelocGetFileExternHeap(&D_NF_000000FB, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_000000FB), 0x10));
+    gITManagerFileData = (void*) lbRelocGetFileExternHeap(&D_NF_000000FB, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_000000FB), 0x10));
 
     gITManagerParticleBankID = efAllocGetAddParticleBankID
     (
-        &lITManagerParticleBankGenLo, 
-        &lITManagerParticleBankGenHi,
-        &lITManagerParticleBankTextureLo, 
-        &lITManagerParticleBankTextureHi
+        &lITManagerParticleBankScriptsLo, 
+        &lITManagerParticleBankScriptsHi,
+        &lITManagerParticleBankTexturesLo, 
+        &lITManagerParticleBankTexturesHi
     );
     itManagerSetupContainerDrops();
     itManagerInitMonsterVars();
@@ -219,17 +219,17 @@ void itManagerSetupItemDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs, u8 tr
         
         if (i == 1)
         {
-            gcDecideDObjTriTransformKind(dobj, transform_kind, nOMTransformNull, nOMTransformNull, 0);
+            gcDecideDObjTriTransformKind(dobj, transform_kind, nGCTransformNull, nGCTransformNull, nGCTransformNull);
         }
-        else if (transform_kind != nOMTransformNull)
+        else if (transform_kind != nGCTransformNull)
         {
-            gcAddOMMtxForDObjFixed(dobj, transform_kind, nOMTransformNull);
+            gcAddGCMatrixForDObjFixed(dobj, transform_kind, nGCTransformNull);
         }
         dobj->translate.vec.f = dobjdesc->translate;
         dobj->rotate.vec.f = dobjdesc->rotate;
         dobj->scale.vec.f = dobjdesc->scale;
 
-        if (dobjs != NULL) // I have yet to find a case where this point is actually reached
+        if (dobjs != NULL)
         {
             dobjs[i] = dobj;
         }
@@ -249,7 +249,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, 
     {
         return NULL;
     }
-    item_gobj = gcMakeGObjSPAfter(nOMObjCommonKindItem, NULL, nOMObjCommonLinkIDItem, GOBJ_LINKORDER_DEFAULT);
+    item_gobj = gcMakeGObjSPAfter(nGCCommonKindItem, NULL, nGCCommonLinkIDItem, GOBJ_LINKORDER_DEFAULT);
 
     if (item_gobj == NULL)
     {
@@ -257,13 +257,13 @@ GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, 
 
         return NULL;
     }
-    attributes = (itAttributes*) ((uintptr_t)*item_desc->p_file + (intptr_t)item_desc->o_attributes);
+    attributes = lbRelocGetDataFromFile(itAttributes*, *item_desc->p_file, item_desc->o_attributes);
 
     if (attributes->is_render_colanim)
     {
-        func_display = (attributes->is_render_xlu) ? itDisplayFuncDisplayColAnimXLU : itDisplayFuncDisplayColAnimOPA;
+        func_display = (attributes->is_render_xlu) ? itDisplayColAnimXLUFuncDisplay : itDisplayColAnimOPAFuncDisplay;
     }
-    else func_display = (attributes->is_render_xlu) ? itDisplayFuncDisplayXLU : itDisplayFuncDisplayOPA;
+    else func_display = (attributes->is_render_xlu) ? itDisplayXLUFuncDisplay : itDisplayOPAFuncDisplay;
 
     gcAddGObjDisplay(item_gobj, func_display, 11, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -414,9 +414,9 @@ GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, 
     ip->coll_data.vel_push.y        = 0.0F;
     ip->coll_data.vel_push.z        = 0.0F;
 
-    gcAddGObjProcess(item_gobj, itProcessProcItemMain, nOMObjProcessKindProc, 3);
-    gcAddGObjProcess(item_gobj, itProcessProcSearchHitAll, nOMObjProcessKindProc, 1);
-    gcAddGObjProcess(item_gobj, itProcessProcHitCollisions, nOMObjProcessKindProc, 0);
+    gcAddGObjProcess(item_gobj, itProcessProcItemMain, nGCProcessKindProc, 3);
+    gcAddGObjProcess(item_gobj, itProcessProcSearchHitAll, nGCProcessKindProc, 1);
+    gcAddGObjProcess(item_gobj, itProcessProcHitCollisions, nGCProcessKindProc, 0);
 
     ip->proc_update     = item_desc->proc_update;
     ip->proc_map        = item_desc->proc_map;
@@ -588,9 +588,9 @@ GObj* itManagerMakeItemSpawnActor(void)
                 {
                     gITManagerSpawnActor.item_mapobjs[i] = item_mapobj_ids[i];
                 }
-                gobj = gcMakeGObjSPAfter(nOMObjCommonKindItem, NULL, nOMObjCommonLinkIDItemActor, GOBJ_LINKORDER_DEFAULT);
+                gobj = gcMakeGObjSPAfter(nGCCommonKindItem, NULL, nGCCommonLinkIDItemActor, GOBJ_LINKORDER_DEFAULT);
 
-                gcAddGObjProcess(gobj, itManagerMakeRandomItem, nOMObjProcessKindProc, 3);
+                gcAddGObjProcess(gobj, itManagerMakeRandomItem, nGCProcessKindProc, 3);
 
                 item_count_toggles = gBattleState->item_toggles;
 

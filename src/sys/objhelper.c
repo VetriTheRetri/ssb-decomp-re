@@ -9,7 +9,7 @@
 // 0x8000AEF0
 void gcApplyByLink(s32 link, void (*proc)(GObj*, u32), u32 param)
 {
-    GObj *current_gobj = gOMObjCommonLinks[link];
+    GObj *current_gobj = gGCCommonLinks[link];
 
     while (current_gobj != NULL)
     {
@@ -26,9 +26,9 @@ void gcApplyToAll(void (*proc)(GObj*, u32), u32 param)
 {
     s32 link;
 
-    for (link = 0; link < ARRAY_COUNT(gOMObjCommonLinks); link++)
+    for (link = 0; link < ARRAY_COUNT(gGCCommonLinks); link++)
     {
-        GObj *current_gobj = gOMObjCommonLinks[link];
+        GObj *current_gobj = gGCCommonLinks[link];
 
         while (current_gobj != NULL)
         {
@@ -48,7 +48,7 @@ GObj* gcApplyByLinkEx(s32 link, GObj* (*proc)(GObj*, u32), u32 param, sb32 is_re
     GObj *next_gobj;
     GObj *ret_gobj = NULL;
 
-    current_gobj = gOMObjCommonLinks[link];
+    current_gobj = gGCCommonLinks[link];
 
     while (current_gobj != NULL)
     {
@@ -79,9 +79,9 @@ GObj* gcApplyToAllEx(GObj* (*proc)(GObj*, u32), u32 param, sb32 is_return_immedi
     s32 link;
     GObj *ret_gobj = NULL;
 
-    for (link = 0; link < ARRAY_COUNT(gOMObjCommonLinks); link++)
+    for (link = 0; link < ARRAY_COUNT(gGCCommonLinks); link++)
     {
-        current_gobj = gOMObjCommonLinks[link];
+        current_gobj = gGCCommonLinks[link];
 
         while (current_gobj != NULL)
         {
@@ -132,9 +132,9 @@ void gcUpdateDefault(GObj *gobj)
 // 0x8000B1E8
 void gcStopCurrentGObjThread(s32 tics)
 {
-    if (gOMObjCurrentProcess->gobjthread->stack[7] != 0xFEDCBA98)
+    if (gGCCurrentProcess->gobjthread->stack[7] != 0xFEDCBA98)
     {
-        syErrorPrintf("gobjthread stack over  gobjid = %d\n", gOMObjCurrentProcess->parent_gobj->gobj_id);
+        syErrorPrintf("gobjthread stack over  gobjid = %d\n", gGCCurrentProcess->parent_gobj->gobj_id);
     }
     while (tics != 0)
     {
@@ -151,7 +151,7 @@ void gcPauseProcessAll(GObj *gobj)
 
     if (gobj == NULL)
     {
-        gobj = gOMObjCurrentCommon;
+        gobj = gGCCurrentCommon;
     }
     gobjproc = gobj->gobjproc_head;
 
@@ -169,7 +169,7 @@ void gcResumeProcessAll(GObj *gobj)
 
     if (gobj == NULL)
     {
-        gobj = gOMObjCurrentCommon;
+        gobj = gGCCurrentCommon;
     }
     gobjproc = gobj->gobjproc_head;
 
@@ -185,7 +185,7 @@ void gcPauseGObjProcess(GObjProcess *gobjproc)
 {
     if (gobjproc == NULL)
     {
-        gobjproc = gOMObjCurrentProcess;
+        gobjproc = gGCCurrentProcess;
     }
     gobjproc->is_paused = TRUE;
 }
@@ -195,7 +195,7 @@ void gcResumeGObjProcess(GObjProcess *gobjproc)
 {
     if (gobjproc == NULL)
     {
-        gobjproc = gOMObjCurrentProcess;
+        gobjproc = gGCCurrentProcess;
     }
     gobjproc->is_paused = FALSE;
 }
@@ -207,7 +207,7 @@ void gcPauseProcessByProc(GObj *gobj, void (*proc_common)(GObj*))
 
     if (gobj == NULL)
     {
-        gobj = gOMObjCurrentCommon;
+        gobj = gGCCurrentCommon;
     }
     gobjproc = gobj->gobjproc_head;
 
@@ -228,7 +228,7 @@ void gcResumeProcessByProc(GObj *gobj, void (*proc_common)(GObj*))
 
     if (gobj == NULL)
     {
-        gobj = gOMObjCurrentCommon;
+        gobj = gGCCurrentCommon;
     }
     gobjproc = gobj->gobjproc_head;
 
@@ -249,7 +249,7 @@ void gcEndProcessAll(GObj *gobj)
 
     if (gobj == NULL)
     {
-        gobj = gOMObjCurrentCommon;
+        gobj = gGCCurrentCommon;
     }
     current_gobjproc = gobj->gobjproc_head;
 
@@ -266,24 +266,24 @@ void gcEndProcessAll(GObj *gobj)
 // 0x8000B3EC
 void gcAddDObjMatrixSetsRpyD(DObj* dobj)
 {
-    gcAddOMMtxForDObjFixed(dobj, nOMTransformTra, 0);
-    gcAddOMMtxForDObjFixed(dobj, nOMTransformRotRpyD, 0);
-    gcAddOMMtxForDObjFixed(dobj, nOMTransformSca, 0);
+    gcAddGCMatrixForDObjFixed(dobj, nGCTransformTra, 0);
+    gcAddGCMatrixForDObjFixed(dobj, nGCTransformRotRpyD, 0);
+    gcAddGCMatrixForDObjFixed(dobj, nGCTransformSca, 0);
 }
 
 // 0x8000B434
 void gcAddDObjMatrixSetsRpyR(DObj *dobj)
 {
-    gcAddOMMtxForDObjFixed(dobj, nOMTransformTra, 0);
-    gcAddOMMtxForDObjFixed(dobj, nOMTransformRotRpyR, 0);
-    gcAddOMMtxForDObjFixed(dobj, nOMTransformSca, 0);
+    gcAddGCMatrixForDObjFixed(dobj, nGCTransformTra, 0);
+    gcAddGCMatrixForDObjFixed(dobj, nGCTransformRotRpyR, 0);
+    gcAddGCMatrixForDObjFixed(dobj, nGCTransformSca, 0);
 }
 
 // 0x8000B47C
 void gcAddCameraMatrixSets(Camera *cam)
 {
-    gcAddOMMtxForCamera(cam, nOMTransformPerspFastF, 0);
-    gcAddOMMtxForCamera(cam, nOMTransformLookAt, 0);
+    gcAddGCMatrixForCamera(cam, nGCTransformPerspFastF, 0);
+    gcAddGCMatrixForCamera(cam, nGCTransformLookAt, 0);
 }
 
 // 0x8000B4B4
@@ -390,7 +390,7 @@ void gcRemoveDObjAll(GObj *gobj)
 {
     if (gobj == NULL)
     {
-        gobj = gOMObjCurrentCommon;
+        gobj = gGCCurrentCommon;
     }
     while (DObjGetStruct(gobj) != NULL)
     {
@@ -403,7 +403,7 @@ void gcRemoveSObjAll(GObj *gobj)
 {
     if (gobj == NULL)
     {
-        gobj = gOMObjCurrentCommon;
+        gobj = gGCCurrentCommon;
     }
     while (SObjGetStruct(gobj) != NULL)
     {
@@ -418,9 +418,9 @@ void gcEjectAll(void)
     GObj *next_gobj;
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(gOMObjCommonLinks); i++)
+    for (i = 0; i < ARRAY_COUNT(gGCCommonLinks); i++)
     {
-        current_gobj = gOMObjCommonLinks[i];
+        current_gobj = gGCCommonLinks[i];
 
         while (current_gobj != NULL)
         {
@@ -445,7 +445,7 @@ GObj* gcMakeModelGObj
     u32 dl_link_order,
     u32 cam_tag,
     void *dvar,
-    sb32 is_add_default_ommtx,
+    sb32 is_add_default_gcmatrix,
     u8 gobjproc_kind,
     void (*proc)(GObj*),
     u32 gobjproc_priority
@@ -464,7 +464,7 @@ GObj* gcMakeModelGObj
 
     dobj = gcAddDObjForGObj(gobj, dvar);
 
-    if (is_add_default_ommtx != FALSE)
+    if (is_add_default_gcmatrix != FALSE)
     {
         gcAddDObjMatrixSetsRpyD(dobj);
     }
@@ -520,7 +520,7 @@ GObj* gcMakeCameraGObj
     u32 dl_link_order,
     u64 cam_mask,
     u32 cam_tag,
-    sb32 is_add_default_ommtx,
+    sb32 is_add_default_gcmatrix,
     u8 gobjproc_kind,
     void (*proc)(GObj*),
     u32 gobjproc_priority,
@@ -540,7 +540,7 @@ GObj* gcMakeCameraGObj
     
     cam = gcAddCameraForGObj(gobj);
 
-    if (is_add_default_ommtx != FALSE)
+    if (is_add_default_gcmatrix != FALSE)
     {
         gcAddCameraMatrixSets(cam);
     }
@@ -570,7 +570,7 @@ GObj* gcMakeDefaultCameraGObj(s32 link, u32 link_order, u32 dl_link_order, u32 f
         0,
         0,
         FALSE,
-        nOMObjProcessKindThread,
+        nGCProcessKindThread,
         NULL,
         0,
         FALSE

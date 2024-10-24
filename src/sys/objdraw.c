@@ -117,7 +117,7 @@ void func_80010748(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
     Camera *cam;
     f32 res;
 
-    cam = CameraGetStruct(gOMObjCurrentCamera);
+    cam = CameraGetStruct(gGCCurrentCamera);
 
     distx = dobj->translate.vec.f.x - cam->vec.eye.x;
     disty = dobj->translate.vec.f.y - cam->vec.eye.y;
@@ -176,7 +176,7 @@ void func_80010918(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
     Camera *cam;
     f32 res;
 
-    cam = CameraGetStruct(gOMObjCurrentCamera);
+    cam = CameraGetStruct(gGCCurrentCamera);
 
     distx = dobj->translate.vec.f.x - cam->vec.eye.x;
     disty = dobj->translate.vec.f.y - cam->vec.eye.y;
@@ -233,7 +233,7 @@ void func_80010AE8(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
     Camera *cam;
     f32 res;
 
-    cam = CameraGetStruct(gOMObjCurrentCamera);
+    cam = CameraGetStruct(gGCCurrentCamera);
 
     distx = dobj->translate.vec.f.x - cam->vec.eye.x;
     disty = dobj->translate.vec.f.y - cam->vec.eye.y;
@@ -281,7 +281,7 @@ void func_80010C2C(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
     Camera *cam;
     f32 res;
 
-    cam = CameraGetStruct(gOMObjCurrentCamera);
+    cam = CameraGetStruct(gGCCurrentCamera);
 
     distx = dobj->translate.vec.f.x - cam->vec.eye.x;
     distz = dobj->translate.vec.f.z - cam->vec.eye.z;
@@ -327,13 +327,13 @@ void func_80010C2C(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
 s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
 {
     Gfx *current_dl = *dl;
-    OMMtx *ommtx;
+    GCMatrix *gcmatrix;
     s32 sp2CC;
     s32 ret;
     gsMtxStore mtx_store;
-    OMTranslate *translate;
-    OMRotate *rotate; // fp (s8)
-    OMTranslate *scale;
+    GCTranslate *translate;
+    GCRotate *rotate; // fp (s8)
+    GCTranslate *scale;
     f32 f12;
     s32 i;
     s32 j;
@@ -353,43 +353,43 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 break;
 
             case 1:
-                translate = (OMTranslate*)csr;
+                translate = (GCTranslate*)csr;
                 csr += sizeof(*translate);
                 break;
 
             case 2:
-                rotate = (OMRotate*)csr;
+                rotate = (GCRotate*)csr;
                 csr += sizeof(*rotate);
                 break;
 
             case 3:
-                scale = (OMScale*)csr;
+                scale = (GCScale*)csr;
                 csr += sizeof(*scale);
                 break;
             }
         }
     }
-    for (i = 0; i < dobj->ommtx_len; i++) // Can use "j" here without any consequences
+    for (i = 0; i < dobj->gcmatrix_len; i++) // Can use "j" here without any consequences
     {
-        ommtx = dobj->ommtx[i]; // s3
+        gcmatrix = dobj->gcmatrix[i]; // s3
 
-        if (ommtx != NULL)
+        if (gcmatrix != NULL)
         {
-            mtx_store.gbi = &ommtx->mtx;
+            mtx_store.gbi = &gcmatrix->mtx;
 
             /* 
-             * Non-matching part begins here. ommtx->unk05 gets forced into v1 instead of v0, and ommtx->kind into v0 instead of v1.
+             * Non-matching part begins here. gcmatrix->unk05 gets forced into v1 instead of v0, and gcmatrix->kind into v0 instead of v1.
              * gSYTaskmanGraphicsHeap is also placed in v0 instead of v1; these two v0/v1 swaps are *mostly* unrelated. I have tried for hours,
              * but I cannot find a permutation that satisfies all requirements. The "closest" I got to a real match was by using
-             * fabricated inline getters for ommtx->kind in the first two >= 66 comparisons, which bloated the stack frame too much,
+             * fabricated inline getters for gcmatrix->kind in the first two >= 66 comparisons, which bloated the stack frame too much,
              * and of course also generated a stub that I reckon will not appear in this TU. I have just about given up on this function,
              * but I do not feel too much remorse for doing so; it is functionally equivalent and all instructions match at the very least.
              * 
              * If a brave volunteer would like to try in the future (so you either get a light bulb above your head or so you can avoid wasting your time), here's what I've tried:
-             *     - making a variable for ommtx->kind or ommtx->unk05 
+             *     - making a variable for gcmatrix->kind or gcmatrix->unk05 
              *     - a bunch of permutations regarding how gSYTaskmanGraphicsHeap.ptr is advanced (gSYTaskmanGraphicsHeap.ptr++, gSYTaskmanGraphicsHeap.size += sizeof(Mtx44f), etc.)
-             *     - the C address hack "*(type*)&" to get ommtx->kind and ommtx->unk05
-             *     - making a u8* variable to ommtx->kind and ommtx->unk05 and dereferencing that
+             *     - the C address hack "*(type*)&" to get gcmatrix->kind and gcmatrix->unk05
+             *     - making a u8* variable to gcmatrix->kind and gcmatrix->unk05 and dereferencing that
              *     - various control flow permutations in an attempt to bump regalloc
              *     - more that I am forgetting
              * 
@@ -397,9 +397,9 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
              * Good luck!
              */
 
-            if (ommtx->unk05 != 2)
+            if (gcmatrix->unk05 != 2)
             {
-                if (ommtx->unk05 == 4)
+                if (gcmatrix->unk05 == 4)
                 {
                     if (dobj->parent_gobj->frame_draw_last != (u8)dSYTaskmanFrameDrawCount)
                     {
@@ -408,7 +408,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     }
                     else
                     {
-                        switch (ommtx->kind)
+                        switch (gcmatrix->kind)
                         {
                         case 33:
                         case 34:
@@ -432,7 +432,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                             break;
 
                         default:
-                            if (ommtx->kind >= 66)
+                            if (gcmatrix->kind >= 66)
                             {
                                 gSYTaskmanGraphicsHeap.ptr = (mtx_store.f = gSYTaskmanGraphicsHeap.ptr) + 1;
                             }
@@ -452,7 +452,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 else if (dobj->parent_gobj->frame_draw_last == (u8)dSYTaskmanFrameDrawCount)
                 {
-                    switch (ommtx->kind)
+                    switch (gcmatrix->kind)
                     {
                     case 33:
                     case 34:
@@ -476,11 +476,11 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                         break;
 
                     default:
-                        if (ommtx->kind >= 66)
+                        if (gcmatrix->kind >= 66)
                         {
                             gSYTaskmanGraphicsHeap.ptr = (mtx_store.f = gSYTaskmanGraphicsHeap.ptr) + 1;
                         }
-                        else if (ommtx->unk05 == 3)
+                        else if (gcmatrix->unk05 == 3)
                         {
                             gSYTaskmanGraphicsHeap.ptr = (mtx_store.f = gSYTaskmanGraphicsHeap.ptr) + 1;
                         }
@@ -491,7 +491,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 ret = 0;
 
-                switch (ommtx->kind)
+                switch (gcmatrix->kind)
                 {
                 case 1:
                 {
@@ -501,17 +501,17 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 {
                     break;
                 }
-                case nOMTransformTra:
+                case nGCTransformTra:
                 {
                     syMatrixTranslate(mtx_store.gbi, dobj->translate.vec.f.x, dobj->translate.vec.f.y, dobj->translate.vec.f.z);
                     break;
                 }
-                case nOMTransformRotD:
+                case nGCTransformRotD:
                 {
                     syMatrixRotD(mtx_store.gbi, dobj->rotate.a, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
                     break;
                 }
-                case nOMTransformTraRotD:
+                case nGCTransformTraRotD:
                 {
                     syMatrixTraRotD
                     (
@@ -526,12 +526,12 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case nOMTransformRotRpyD:
+                case nGCTransformRotRpyD:
                 {
                     syMatrixRotRpyD(mtx_store.gbi, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
                     break;
                 }
-                case nOMTransformTraRotRpyD:
+                case nGCTransformTraRotRpyD:
                 {
                     syMatrixTraRotRpyD
                     (
@@ -545,7 +545,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case nOMTransformRotR:
+                case nGCTransformRotR:
                 {
                     syMatrixRotR
                     (
@@ -557,7 +557,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case nOMTransformTraRotR:
+                case nGCTransformTraRotR:
                 {
                     syMatrixRotR_translate
                     (
@@ -572,7 +572,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case nOMTransformTraRotRSca:
+                case nGCTransformTraRotRSca:
                 {
                     syMatrixTraRotRSca
                     (
@@ -591,12 +591,12 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     gODScaleX *= dobj->scale.vec.f.x;
                     break;
                 }
-                case nOMTransformRotRpyR:
+                case nGCTransformRotRpyR:
                 {
                     syMatrixRotRpyR(mtx_store.gbi, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
                     break;
                 }
-                case nOMTransformTraRotRpyR:
+                case nGCTransformTraRotRpyR:
                 {
                     syMatrixTraRotRpyR
                     (
@@ -610,7 +610,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case nOMTransformTraRotRpyRSca:
+                case nGCTransformTraRotRpyRSca:
                 {
                     syMatrixTraRotRpyRSca
                     (
@@ -628,12 +628,12 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     gODScaleX *= dobj->scale.vec.f.x;
                     break;
                 }
-                case nOMTransformRotPyrR:
+                case nGCTransformRotPyrR:
                 {
                     syMatrixRotPyrR(mtx_store.gbi, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
                     break;
                 }
-                case nOMTransformTraRotPyrR:
+                case nGCTransformTraRotPyrR:
                 {
                     syMatrixTraRotPyrR
                     (
@@ -647,7 +647,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case nOMTransformTraRotPyrRSca:
+                case nGCTransformTraRotPyrRSca:
                 {
                     syMatrixTraRotPyrRSca
                     (
@@ -665,7 +665,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     gODScaleX *= dobj->scale.vec.f.x;
                     break;
                 }
-                case nOMTransformSca:
+                case nGCTransformSca:
                 {
                     syMatrixSca(mtx_store.gbi, dobj->scale.vec.f.x, dobj->scale.vec.f.y, dobj->scale.vec.f.z);
                     gODScaleX *= dobj->scale.vec.f.x;
@@ -711,28 +711,28 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     func_80010918(mtx_store.f, dobj, TRUE);
                     break;
                 }
-                case nOMTransformVecTra:
+                case nGCTransformVecTra:
                 {
                     syMatrixTranslate(mtx_store.gbi, translate->vec.f.x, translate->vec.f.y, translate->vec.f.z);
                     break;
                 }
-                case nOMTransformVecRotR:
+                case nGCTransformVecRotR:
                 {
                     syMatrixRotR(mtx_store.gbi, rotate->a, rotate->vec.f.x, rotate->vec.f.y, rotate->vec.f.z);
                     break;
                 }
-                case nOMTransformVecRotRpyR:
+                case nGCTransformVecRotRpyR:
                 {
                     syMatrixRotRpyR(mtx_store.gbi, rotate->vec.f.x, rotate->vec.f.y, rotate->vec.f.z);
                     break;
                 }
-                case nOMTransformVecSca:
+                case nGCTransformVecSca:
                 {
                     syMatrixSca(mtx_store.gbi, scale->vec.f.x, scale->vec.f.y, scale->vec.f.z);
                     gODScaleX *= scale->vec.f.x;
                     break;
                 }
-                case nOMTransformVecTraRotR:
+                case nGCTransformVecTraRotR:
                 {
                     syMatrixRotR_translate
                     (
@@ -747,7 +747,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case nOMTransformVecTraRotRSca:
+                case nGCTransformVecTraRotRSca:
                 {
                     syMatrixTraRotRSca
                     (
@@ -766,7 +766,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     gODScaleX *= scale->vec.f.x;
                     break;
                 }
-                case nOMTransformVecTraRotRpyR:
+                case nGCTransformVecTraRotRpyR:
                 {
                     syMatrixTraRotRpyR
                     (
@@ -780,7 +780,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case nOMTransformVecTraRotRpyRSca:
+                case nGCTransformVecTraRotRpyRSca:
                 {
                     syMatrixTraRotRpyRSca
                     (
@@ -1155,11 +1155,11 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     continue;
                 }
                 default:
-                    if (ommtx->kind >= 66)
+                    if (gcmatrix->kind >= 66)
                     {
                         if (sODMatrixProcess != NULL)
                         {
-                            sb32(*proc)(Mtx*, DObj*, Gfx**) = (dobj->parent_gobj->frame_draw_last != (u8)dSYTaskmanFrameDrawCount) ? sODMatrixProcess[ommtx->kind - 66].proc_diff : sODMatrixProcess[ommtx->kind - 66].proc_same;
+                            sb32(*proc)(Mtx*, DObj*, Gfx**) = (dobj->parent_gobj->frame_draw_last != (u8)dSYTaskmanFrameDrawCount) ? sODMatrixProcess[gcmatrix->kind - 66].proc_diff : sODMatrixProcess[gcmatrix->kind - 66].proc_same;
 
                             // If proc's return value uses up a GPR and is assigned to a variable, IDO refuses to free up v0 later down.
                             ret = proc(mtx_store.gbi, dobj, &current_dl);
@@ -1173,15 +1173,15 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 // The problem is right here. If we can figure out a way to free up v0 after being assigned to ret from proc, this function will be matched.
             check_05:
-                if (ommtx->unk05 == 1)
+                if (gcmatrix->unk05 == 1)
                 {
-                    if (mtx_store.gbi == &ommtx->mtx)
+                    if (mtx_store.gbi == &gcmatrix->mtx)
                     {
-                        ommtx->unk05 = 2;
+                        gcmatrix->unk05 = 2;
                     }
                 }
             }
-            if (ommtx->kind != 2)
+            if (gcmatrix->kind != 2)
             {
                 if ((sp2CC == 0) && (dobj->parent == DOBJ_PARENT_NULL || dobj->sib_next != NULL))
                 {
@@ -1787,7 +1787,7 @@ void gcDrawDObjTreeDLLinksForGObj(GObj *gobj)
 f32 gcGetDObjDistFromEye(DObj *dobj) 
 {
     f32 x, y, z;
-    Camera *cam = CameraGetStruct(gOMObjCurrentCamera);
+    Camera *cam = CameraGetStruct(gGCCurrentCamera);
 
     x = dobj->translate.vec.f.x - cam->vec.eye.x;
     y = dobj->translate.vec.f.y - cam->vec.eye.y;
@@ -2839,7 +2839,7 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
 {
     Gfx *dl;
     s32 i;
-    OMMtx *ommtx;
+    GCMatrix *gcmatrix;
     gsMtxStore mtx_store;
     s32 var_s3;
     s32 spC8;
@@ -2849,24 +2849,24 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
     spC8 = 0;
     var_s3 = 0;
 
-    if (cam->ommtx_len != 0)
+    if (cam->gcmatrix_len != 0)
     {
-        for (i = 0; i < cam->ommtx_len; i++)
+        for (i = 0; i < cam->gcmatrix_len; i++)
         {
-            ommtx = cam->ommtx[i];
+            gcmatrix = cam->gcmatrix[i];
 
-            if (ommtx != NULL)
+            if (gcmatrix != NULL)
             {
-                mtx_store.gbi = &ommtx->mtx;
+                mtx_store.gbi = &gcmatrix->mtx;
 
-                if (ommtx->unk05 != 2)
+                if (gcmatrix->unk05 != 2)
                 {
                     if (gSYTaskmanTaskID > 0)
                     {
                         mtx_store.gbi = gSYTaskmanGraphicsHeap.ptr;
                         gSYTaskmanGraphicsHeap.ptr = mtx_store.gbi + 1;
                     }
-                    switch (ommtx->kind)
+                    switch (gcmatrix->kind)
                     {
                     case 1:
                         break;
@@ -2874,7 +2874,7 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                     case 2:
                         break;
 
-                    case nOMTransformPerspFastF:
+                    case nGCTransformPerspFastF:
                         syMatrixPerspFastF
                         (
                             gODMatrixPerspF,
@@ -2889,7 +2889,7 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                         sODMatrixProjectL = mtx_store.gbi;
                         break;
 
-                    case nOMTransformPerspF:
+                    case nGCTransformPerspF:
                         syMatrixPerspF
                         (
                             gODMatrixPerspF,
@@ -2904,7 +2904,7 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                         sODMatrixProjectL = mtx_store.gbi;
                         break;
 
-                    case nOMTransformOrtho:
+                    case nGCTransformOrtho:
                         syMatrixOrtho
                         (
                             mtx_store.gbi,
@@ -2985,21 +2985,21 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                         break;
 
                     default:
-                        if ((ommtx->kind >= 66) && (sODMatrixProcess != NULL))
+                        if ((gcmatrix->kind >= 66) && (sODMatrixProcess != NULL))
                         {
-                            if (sODMatrixProcess[ommtx->kind - 66].proc_diff != NULL)
+                            if (sODMatrixProcess[gcmatrix->kind - 66].proc_diff != NULL)
                             {
-                                sODMatrixProcess[ommtx->kind - 66].proc_diff(mtx_store.gbi, cam, &dl);
+                                sODMatrixProcess[gcmatrix->kind - 66].proc_diff(mtx_store.gbi, cam, &dl);
                             }
                         }
                         break;
                     }
-                    if ((ommtx->unk05 == 1) && (&ommtx->mtx == mtx_store.gbi))
+                    if ((gcmatrix->unk05 == 1) && (&gcmatrix->mtx == mtx_store.gbi))
                     {
-                        ommtx->unk05 = 2;
+                        gcmatrix->unk05 = 2;
                     }
                 }
-                switch (ommtx->kind)
+                switch (gcmatrix->kind)
                 {
                 case 1:
                     break;
@@ -3007,13 +3007,13 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                 case 2:
                     break;
 
-                case nOMTransformPerspFastF:
-                case nOMTransformPerspF:
+                case nGCTransformPerspFastF:
+                case nGCTransformPerspF:
                     gSPMatrix(dl++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
                     gSPPerspNormalize(dl++, cam->projection.persp.norm);
                     break;
 
-                case nOMTransformOrtho:
+                case nGCTransformOrtho:
                     gSPMatrix(dl++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
                     break;
 
@@ -3042,11 +3042,11 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                     break;
 
                 default:
-                    if ((ommtx->kind >= 66) && (sODMatrixProcess != NULL))
+                    if ((gcmatrix->kind >= 66) && (sODMatrixProcess != NULL))
                     {
-                        if (sODMatrixProcess[ommtx->kind - 66].proc_same != NULL)
+                        if (sODMatrixProcess[gcmatrix->kind - 66].proc_same != NULL)
                         {
-                            sODMatrixProcess[ommtx->kind - 66].proc_same(mtx_store.gbi, cam, &dl);
+                            sODMatrixProcess[gcmatrix->kind - 66].proc_same(mtx_store.gbi, cam, &dl);
                         }
                     }
                     break;
@@ -3170,7 +3170,7 @@ void gcRunFuncCamera(Camera *cam, s32 dl_id)
 // 0x80017868
 void func_80017868(GObj *this_gobj, s32 link_id, sb32 is_tag_mask_or_id)
 {
-    GObj *current_gobj = gOMObjCommonDLLinks[link_id];
+    GObj *current_gobj = gGCCommonDLLinks[link_id];
 
     while (current_gobj != NULL)
     {
@@ -3183,7 +3183,7 @@ void func_80017868(GObj *this_gobj, s32 link_id, sb32 is_tag_mask_or_id)
             )
             {
                 D_8003B874_3C474 = 4;
-                gOMObjCurrentDisplay = current_gobj;
+                gGCCurrentDisplay = current_gobj;
                 current_gobj->func_display(current_gobj);
                 D_8003B874_3C474 = 3;
                 current_gobj->frame_draw_last = dSYTaskmanFrameDrawCount;
@@ -3328,7 +3328,7 @@ void unref_80017E34(GObj *gobj)
 // 0x80017E5C
 void unref_80017E5C(void) 
 {
-    Camera *cam = CameraGetStruct(gOMObjCurrentCamera);
+    Camera *cam = CameraGetStruct(gGCCurrentCamera);
 
     func_800053CC();
     func_80004F78();
@@ -3391,7 +3391,7 @@ void func_80017EC0(GObj *gobj)
 // 0x8001810C
 void unref_8001810C(void)
 {
-    Camera *cam = CameraGetStruct(gOMObjCurrentCamera);
+    Camera *cam = CameraGetStruct(gGCCurrentCamera);
     s32 i;
 
     for (i = 1; i < (ARRAY_COUNT(gSYTaskmanDLHeads) + ARRAY_COUNT(D_800472B0)) / 2; i++)

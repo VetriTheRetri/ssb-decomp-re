@@ -25,7 +25,7 @@ extern intptr_t dIFCommonTimerDigitSpriteOffsets[];
 extern void* D_ovl2_801313F4;
 extern grStruct gGRCommonStruct;
 extern scBattleState gDefaultBattleState;
-extern GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
+extern GObj* gGCCommonLinks[OM_COMMON_MAX_LINKS];
 extern ftCreateDesc dFTManagerDefaultFighterDesc; // ovl2 80116DD0
 
 extern void func_ovl2_8010CFA8(GObj*, f32, f32, f32, f32, f32);
@@ -499,7 +499,7 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj* dobj)
 // 0x8018DA2C
 void scBonusGame_CheckBonus2PlatformLanding(GObj* ground_gobj)
 {
-	GObj* fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+	GObj* fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
 	while (fighter_gobj != NULL)
 	{
@@ -519,7 +519,7 @@ void scBonusGame_CheckBonus2PlatformLanding(GObj* ground_gobj)
 // 0x8018DAE0
 void grBonus_Bonus2_MakeGround()
 {
-	gcAddGObjProcess(gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, 1U, 0x80000000U),
+	gcAddGObjProcess(gcMakeGObjSPAfter(nGCCommonKindGround, NULL, 1U, 0x80000000U),
 						scBonusGame_CheckBonus2PlatformLanding, 1, 4);
 }
 
@@ -585,7 +585,7 @@ void scBonusGame_InitInterface(GObj* interface_gobj)
 // 0x8018DCC4
 void scBonusGame_MakeInterface()
 {
-	gcAddGObjProcess(gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xAU, 0x80000000U), scBonusGame_InitInterface, 0,
+	gcAddGObjProcess(gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, 0xAU, 0x80000000U), scBonusGame_InitInterface, 0,
 						5);
 	gBattleState->game_status = nSCBattleGameStatusWait;
 }
@@ -622,7 +622,7 @@ void scBonusGame_InitBonus1TargetSprites()
 	sprites
 		= lbRelocGetFileExternHeap(&D_NF_00000097, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_00000097), 0x10));
 	gGRCommonStruct.bonus1.interface_gobj = interface_gobj
-		= gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xBU, 0x80000000);
+		= gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, 0xBU, 0x80000000);
 	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 0x17, 0x80000000, -1);
 
 	for (i = 0; i < gGRCommonStruct.bonus1.target_count; i++)
@@ -645,7 +645,7 @@ void scBonusGame_InitBonus2PlatformSprites()
 	sprites
 		= lbRelocGetFileExternHeap(&D_NF_00000097, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_00000097), 0x10));
 	gGRCommonStruct.bonus2.interface_gobj = interface_gobj
-		= gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xBU, 0x80000000);
+		= gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, 0xBU, 0x80000000);
 	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 0x17, 0x80000000, -1);
 
 	for (i = 0; i < gGRCommonStruct.bonus2.platform_count; i++)
@@ -729,7 +729,7 @@ void scBonusGame_MakeBonusTimerGObj()
 {
 	gIsBonusGameTimeUp = FALSE;
 	if (gSceneData.scene_previous == 0x34)
-		gcAddGObjProcess(gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xBU, 0x80000000U),
+		gcAddGObjProcess(gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, 0xBU, 0x80000000U),
 							scBonusGame_CheckTimeUpEjectInterface, 1, 0);
 }
 
@@ -744,7 +744,7 @@ void func_ovl6_8018E344()
 	{
 		ifCommonTimerMakeInterface(NULL);
 		ifCommonTimerSetAttr();
-		interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xBU, 0x80000000U);
+		interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, 0xBU, 0x80000000U);
 		gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 0x17U, 0x80000000U, -1);
 
 		for (i = 0; i < ARRAY_COUNT(gBonusTimerDigits); i++)
@@ -864,7 +864,7 @@ void scBonusGame_InitBonusGame()
 
 	color = dSCBonusGameFadeColor;
 
-	lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
+	lbFadeMakeActor(nGCCommonKindTransition, nGCCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 	scBonusGame_MakeBonusTimerGObj();
 }
 

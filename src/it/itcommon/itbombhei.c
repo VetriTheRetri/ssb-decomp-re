@@ -35,8 +35,8 @@ itCreateDesc dITBombHeiItemDesc =
 
     // DObj transformation struct
     {
-        nOMTransformTra,                    // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformTra,                    // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -290,7 +290,7 @@ sb32 itBombHeiFallProcUpdate(GObj *item_gobj)
 // 0x80177260
 s32 itBombHeiWalkGetLR(GObj *item_gobj)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
     Vec3f *translate;
     s32 lr;
     s32 ret_lr = 0;
@@ -743,7 +743,7 @@ GObj* itBombHeiMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         itMainClearOwnerStats(item_gobj);
 
-        gcAddOMMtxForDObjFixed(dobj, 0x2E, 0);
+        gcAddGCMatrixForDObjFixed(dobj, 0x2E, 0);
 
         dobj->translate.vec.f = translate;
 

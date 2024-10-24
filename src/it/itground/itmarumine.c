@@ -24,8 +24,8 @@ itCreateDesc dITMarumineItemDesc =
 
     // DObj transformation struct
     {
-        nOMTransformTra,                    // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformTra,                    // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -203,7 +203,7 @@ GObj* itMarumineMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->is_allow_knockback = TRUE;
 
-        gcAddOMMtxForDObjFixed(dobj, 0x46, 0);
+        gcAddGCMatrixForDObjFixed(dobj, 0x46, 0);
         func_800269C0_275C0(nSYAudioVoiceYamabukiMarumine);
     }
     return item_gobj;

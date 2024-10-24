@@ -47,7 +47,7 @@ extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
 
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
-extern GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
+extern GObj* gGCCommonLinks[OM_COMMON_MAX_LINKS];
 
 
 // Forward declarations

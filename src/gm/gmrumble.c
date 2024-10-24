@@ -610,7 +610,7 @@ void gmRumbleMakeActor(void)
     s32 l;
     s32 player;
 
-    gcAddGObjProcess(gcMakeGObjSPAfter(nOMObjCommonKindRumble, NULL, nOMObjCommonLinkIDRumble, GOBJ_LINKORDER_DEFAULT), gmRumbleActorProcUpdate, nOMObjProcessKindProc, 0);
+    gcAddGObjProcess(gcMakeGObjSPAfter(nGCCommonKindRumble, NULL, nGCCommonLinkIDRumble, GOBJ_LINKORDER_DEFAULT), gmRumbleActorProcUpdate, nGCProcessKindProc, 0);
 
     /* DEBUGGER NOTES */
 
@@ -691,11 +691,11 @@ void gmRumbleInitPlayers(void)
 // 0x80115834
 void gmRumbleResumeProcessAll(void)
 {
-    GObj *rumble_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDRumble];
+    GObj *rumble_gobj = gGCCommonLinks[nGCCommonLinkIDRumble];
 
     while (rumble_gobj != NULL)
     {
-        if (rumble_gobj->gobj_id == nOMObjCommonKindRumble)
+        if (rumble_gobj->gobj_id == nGCCommonKindRumble)
         {
             gcResumeProcessAll(rumble_gobj);
         }

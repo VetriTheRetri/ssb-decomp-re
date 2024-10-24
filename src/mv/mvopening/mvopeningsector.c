@@ -175,7 +175,7 @@ void mvOpeningSectorMakeWallpaper(void)
     sMVOpeningSectorWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjProcess(wallpaper_gobj, mvOpeningSectorWallpaperProcUpdate, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(wallpaper_gobj, mvOpeningSectorWallpaperProcUpdate, nGCProcessKindProc, 1);
 
     wallpaper_sobj = lbCommonMakeSObjForGObj
     (
@@ -255,9 +255,9 @@ void mvOpeningSectorMakeGreatFox(void)
             &lMVOpeningSectorGreatFoxDObjDesc
         ),
         NULL,
-        nOMTransformTraRotRpyRSca,
-        nOMTransformNull,
-        nOMTransformNull
+        nGCTransformTraRotRpyRSca,
+        nGCTransformNull,
+        nGCTransformNull
     );
     gcAddGObjDisplay(great_fox_gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -276,7 +276,7 @@ void mvOpeningSectorMakeGreatFox(void)
         ),
         0.0F
     );
-    gcAddGObjProcess(great_fox_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(great_fox_gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
 }
 
 // 0x8013202C
@@ -333,7 +333,7 @@ void mvOpeningSectorMakeCockpit(void)
     cockpit_gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjDisplay(cockpit_gobj, mvOpeningSectorCockpitFuncDisplay, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjProcess(cockpit_gobj, mvOpeningSectorCockpitProcUpdate, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(cockpit_gobj, mvOpeningSectorCockpitProcUpdate, nGCProcessKindProc, 1);
 
     cockpit_sobj = lbCommonMakeSObjForGObj
     (
@@ -380,13 +380,13 @@ void mvOpeningSectorMakeArwings(void)
                 &lMVOpeningSectorArwingDObjDesc
             ),
             NULL,
-            nOMTransformTraRotRpyRSca,
-            nOMTransformNull,
-            nOMTransformNull
+            nGCTransformTraRotRpyRSca,
+            nGCTransformNull,
+            nGCTransformNull
         );
         gcAddGObjDisplay(arwing_gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
         gcAddAnimJointAll(arwing_gobj, lbRelocGetDataFromFile(AObjEvent32**, sMVOpeningSectorFiles[0], anim_joints[i]), 0.0F);
-        gcAddGObjProcess(arwing_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
+        gcAddGObjProcess(arwing_gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
     }
 }
 
@@ -401,7 +401,7 @@ void mvOpeningSectorMakeMainCamera(void)
 {
     GObj *camera_gobj = gcMakeCameraGObj
     (
-        nOMObjCommonKindSceneCamera,
+        nGCCommonKindSceneCamera,
         NULL,
         16,
         GOBJ_LINKORDER_DEFAULT,
@@ -410,7 +410,7 @@ void mvOpeningSectorMakeMainCamera(void)
         CAMERA_MASK_DLLINK(27),
         -1,
         TRUE,
-        nOMObjProcessKindProc,
+        nGCProcessKindProc,
         NULL, 
         1,
         FALSE
@@ -423,7 +423,7 @@ void mvOpeningSectorMakeMainCamera(void)
     cam->projection.persp.far = 30000.0F;
 
     gcAddCameraCamAnimJoint(cam, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningSectorFiles[0], &lMVOpeningSectorCamAnimJoint), 0.0F);
-    gcAddGObjProcess(camera_gobj, mvOpeningSectorCameraProcUpdate, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(camera_gobj, mvOpeningSectorCameraProcUpdate, nGCProcessKindProc, 1);
 }
 
 // 0x80132500
@@ -433,7 +433,7 @@ void mvOpeningSectorMakeWallpaperCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -442,7 +442,7 @@ void mvOpeningSectorMakeWallpaperCamera(void)
             CAMERA_MASK_DLLINK(28),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL, 
             1,
             FALSE
@@ -458,7 +458,7 @@ void mvOpeningSectorMakeCockpitCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -467,7 +467,7 @@ void mvOpeningSectorMakeCockpitCamera(void)
             CAMERA_MASK_DLLINK(29),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL, 
             1,
             FALSE

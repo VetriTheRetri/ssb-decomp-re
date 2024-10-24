@@ -184,7 +184,7 @@ void mvOpeningYosterMakeGround(void)
         ),
         0.0F
     );
-    gcAddGObjProcess(gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
 }
 
 // 0x80131E84
@@ -192,7 +192,7 @@ void mvOpeningYosterMakeMainCamera(void)
 {
     GObj *camera_gobj = gcMakeCameraGObj
     (
-        nOMObjCommonKindSceneCamera,
+        nGCCommonKindSceneCamera,
         NULL,
         16,
         GOBJ_LINKORDER_DEFAULT,
@@ -203,7 +203,7 @@ void mvOpeningYosterMakeMainCamera(void)
         CAMERA_MASK_DLLINK(6),
         -1,
         TRUE,
-        nOMObjProcessKindProc,
+        nGCProcessKindProc,
         NULL,
         1,
         FALSE
@@ -226,7 +226,7 @@ void mvOpeningYosterMakeMainCamera(void)
         ),
         0.0F
     );
-    gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
     gcPlayCamAnim(camera_gobj);
 }
 
@@ -237,7 +237,7 @@ void mvOpeningYosterMakeWallpaperCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -246,7 +246,7 @@ void mvOpeningYosterMakeWallpaperCamera(void)
             CAMERA_MASK_DLLINK(28),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE

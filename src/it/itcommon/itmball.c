@@ -26,8 +26,8 @@ itCreateDesc dITMBallItemDesc =
 
     // DObj transformation struct
     {
-        nOMTransformNull,                   // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformNull,                   // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -326,13 +326,13 @@ sb32 itMBallOpenProcUpdate(GObj *mball_gobj)
     {
         vel.x = vel.y = vel.z = 0.0F;
 
-        if (dITManagerMonsterSpawnID == 0)
+        if (dITManagerForceMonsterKind == 0)
         {
             itMainMakeMonster(mball_gobj);
 
             return TRUE;
         }
-        monster_gobj = itManagerMakeItemKind(mball_gobj, dITManagerMonsterSpawnID + (nITKindMBallMonsterStart - 1), &DObjGetStruct(mball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM));
+        monster_gobj = itManagerMakeItemKind(mball_gobj, dITManagerForceMonsterKind + (nITKindMBallMonsterStart - 1), &DObjGetStruct(mball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM));
 
         if (monster_gobj != NULL)
         {
@@ -434,13 +434,13 @@ sb32 itMBallOpenAirProcUpdate(GObj *mball_gobj)
     {
         vel.x = vel.y = vel.z = 0.0F;
 
-        if (dITManagerMonsterSpawnID == 0)
+        if (dITManagerForceMonsterKind == 0)
         {
             itMainMakeMonster(mball_gobj);
 
             return TRUE;
         }
-        monster_gobj = itManagerMakeItemKind(mball_gobj, dITManagerMonsterSpawnID + (nITKindMBallMonsterStart - 1), &DObjGetStruct(mball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM));
+        monster_gobj = itManagerMakeItemKind(mball_gobj, dITManagerForceMonsterKind + (nITKindMBallMonsterStart - 1), &DObjGetStruct(mball_gobj)->translate.vec.f, &vel, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_ITEM));
 
         if (monster_gobj != NULL)
         {
@@ -492,8 +492,8 @@ GObj* itMBallMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         dobj->child->flags = DOBJ_FLAG_HIDDEN;
         dobj->child->sib_next->flags = DOBJ_FLAG_NONE;
 
-        gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);
-        gcAddOMMtxForDObjFixed(dobj->child->sib_next, 0x46, 0);
+        gcAddGCMatrixForDObjFixed(dobj, nGCTransformTraRotRpyR, 0);
+        gcAddGCMatrixForDObjFixed(dobj->child->sib_next, 0x46, 0);
 
         dobj->translate.vec.f = translate;
 

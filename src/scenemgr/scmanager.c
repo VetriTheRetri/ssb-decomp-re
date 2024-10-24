@@ -15,8 +15,8 @@
 #include <sys/thread6.h>
 
 extern s32 D_8003B874_3C474;
-extern GObj* gOMObjCurrentCommon;
-extern GObj* gOMObjCurrentDisplay;
+extern GObj* gGCCurrentCommon;
+extern GObj* gGCCurrentDisplay;
 
 // BSS
 u8 D_800A44D0[16];
@@ -724,7 +724,7 @@ void scManagerInspectGObj(GObj *gobj)
 
     switch (gobj->gobj_id)
     {
-    case nOMObjCommonKindFighter:
+    case nGCCommonKindFighter:
         fp = ftGetStruct(gobj);
 
         syErrorDebugPrintf("fighter\n");
@@ -733,7 +733,7 @@ void scManagerInspectGObj(GObj *gobj)
         syErrorDebugPrintf("ga:%d\n", fp->ga);
         break;
 
-    case nOMObjCommonKindWeapon:
+    case nGCCommonKindWeapon:
         wp = wpGetStruct(gobj);
 
         syErrorDebugPrintf("weapon\n");
@@ -742,7 +742,7 @@ void scManagerInspectGObj(GObj *gobj)
         syErrorDebugPrintf("ga:%d\n", wp->ga);
         break;
 
-    case nOMObjCommonKindItem:
+    case nGCCommonKindItem:
         ip = itGetStruct(gobj);
 
         syErrorDebugPrintf("item\n");
@@ -759,7 +759,7 @@ void scManagerInspectGObj(GObj *gobj)
         syErrorDebugPrintf("proc damage:%x\n", ip->proc_damage);
         break;
 
-    case nOMObjCommonKindEffect:
+    case nGCCommonKindEffect:
         ep = efGetStruct(gobj);
 
         // Check if address is within base RDRAM + expansion pak bounds
@@ -791,10 +791,10 @@ void scManagerProcPrintGObjStatus()
 		case 1:
 		{
 			syErrorDebugPrintf("BF\n");
-			if (gOMObjCurrentCommon != NULL)
+			if (gGCCurrentCommon != NULL)
 			{
-				syErrorDebugPrintf("addr:%x\n", gOMObjCurrentCommon->func_run);
-				scManagerInspectGObj(gOMObjCurrentCommon);
+				syErrorDebugPrintf("addr:%x\n", gGCCurrentCommon->func_run);
+				scManagerInspectGObj(gGCCurrentCommon);
 			}
 			break;
 		}
@@ -802,22 +802,22 @@ void scManagerProcPrintGObjStatus()
 		{
 			syErrorDebugPrintf("GP\n");
 
-			if (gOMObjCurrentCommon != NULL)
+			if (gGCCurrentCommon != NULL)
 			{
-				if (gOMObjCurrentProcess != NULL)
+				if (gGCCurrentProcess != NULL)
 				{
-					switch (gOMObjCurrentProcess->kind)
+					switch (gGCCurrentProcess->kind)
 					{
-					case nOMObjProcessKindThread:
-						syErrorDebugPrintf("thread:%x\n", gOMObjCurrentProcess->gobjthread->thread.context.pc);
+					case nGCProcessKindThread:
+						syErrorDebugPrintf("thread:%x\n", gGCCurrentProcess->gobjthread->thread.context.pc);
 						break;
 
-					case nOMObjProcessKindProc:
-						syErrorDebugPrintf("func:%x\n", gOMObjCurrentProcess->proc_thread);
+					case nGCProcessKindProc:
+						syErrorDebugPrintf("func:%x\n", gGCCurrentProcess->proc_thread);
 						break;
 					}
 				}
-				scManagerInspectGObj(gOMObjCurrentCommon);
+				scManagerInspectGObj(gGCCurrentCommon);
 			}
 			break;
 		}
@@ -825,10 +825,10 @@ void scManagerProcPrintGObjStatus()
 		{
 			syErrorDebugPrintf("DFC\n");
 
-			if (gOMObjCurrentCamera != NULL)
+			if (gGCCurrentCamera != NULL)
 			{
-				syErrorDebugPrintf("addr:%x\n", gOMObjCurrentCamera->func_display);
-				scManagerInspectGObj(gOMObjCurrentCamera);
+				syErrorDebugPrintf("addr:%x\n", gGCCurrentCamera->func_display);
+				scManagerInspectGObj(gGCCurrentCamera);
 			}
 			break;
 		}
@@ -836,14 +836,14 @@ void scManagerProcPrintGObjStatus()
 		{
 			syErrorDebugPrintf("DFO\n");
 
-			if (gOMObjCurrentCamera != NULL)
+			if (gGCCurrentCamera != NULL)
 			{
-				syErrorDebugPrintf("cam addr:%x\n", gOMObjCurrentCamera->func_display);
+				syErrorDebugPrintf("cam addr:%x\n", gGCCurrentCamera->func_display);
 			}
-			if (gOMObjCurrentDisplay != NULL)
+			if (gGCCurrentDisplay != NULL)
 			{
-				syErrorDebugPrintf("disp addr:%x\n", gOMObjCurrentDisplay->func_display);
-				scManagerInspectGObj(gOMObjCurrentDisplay);
+				syErrorDebugPrintf("disp addr:%x\n", gGCCurrentDisplay->func_display);
+				scManagerInspectGObj(gGCCurrentDisplay);
 			}
 			break;
 		}

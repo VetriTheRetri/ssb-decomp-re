@@ -4,50 +4,50 @@
 #include <sys/objtypes.h>
 
 extern s32 D_8003B874_3C474;
-extern OMPersp dOMPerspDefault;
-extern OMOrtho dOMOrthoDefault;
+extern GCPersp dGCPerspDefault;
+extern GCOrtho dGCOrthoDefault;
 extern CameraVec dCameraVecDefault;
-extern OMTranslate dOMTranslateDefault;
-extern OMRotate dOMRotateDefaultAXYZ;
-extern OMRotate dOMRotateDefaultRPY;
-extern OMScale dOMScaleDefault;
+extern GCTranslate dGCTranslateDefault;
+extern GCRotate dGCRotateDefaultAXYZ;
+extern GCRotate dGCRotateDefaultRPY;
+extern GCScale dGCScaleDefault;
 
-extern GObj *gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
-extern GObj *gOMObjCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
-extern GObj *gOMObjCurrentCommon; // Something to do with an initial object to be passed to a new GObjProcess
-extern GObj *gOMObjCurrentCamera; // Is this exclusively a camera GObj?
-extern GObj *gOMObjCurrentDisplay;
-extern GObjProcess *gOMObjCurrentProcess;
+extern GObj *gGCCommonLinks[OM_COMMON_MAX_LINKS];
+extern GObj *gGCCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
+extern GObj *gGCCurrentCommon; // Something to do with an initial object to be passed to a new GObjProcess
+extern GObj *gGCCurrentCamera; // Is this exclusively a camera GObj?
+extern GObj *gGCCurrentDisplay;
+extern GObjProcess *gGCCurrentProcess;
 extern OSMesgQueue gOMMesgQueue;
-extern OMGfxLink D_80046A88[64];
+extern GCGfxLink D_80046A88[64];
 
 // 0x8003B878
-extern OMPersp dOMPerspDefault;
+extern GCPersp dGCPerspDefault;
 
 // 0x8003B984
-extern OMOrtho dOMOrthoDefault;
+extern GCOrtho dGCOrthoDefault;
 
 // 0x8003B8B4
 extern CameraVec dOMCameraVecDefault;
 
 // 0x8003B8DC
-extern OMTranslate dOMTranslateDefault;
+extern GCTranslate dGCTranslateDefault;
 
 // 0x8003B8EC
-extern OMRotate dOMRotateDefaultAXYZ;
+extern GCRotate dGCRotateDefaultAXYZ;
 
 // 0x8003B900
-extern OMRotate dOMRotateDefaultRPY;
+extern GCRotate dGCRotateDefaultRPY;
 
 // 0x8003B914
-extern OMScale dOMScaleDefault;
+extern GCScale dGCScaleDefault;
 
 extern s32 gcGetGObjActiveCount(void);
 extern GObjThread *gcGetGObjThread(void);
 extern void gcSetGObjThreadPrevAlloc(GObjThread *gobjthread);
-extern OMThreadStackNode *gcGetStackOfSize(size_t size);
-extern OMThreadStackNode *gcGetDefaultStack(void);
-extern void gcEjectStackNode(OMThreadStackNode *node);
+extern GCThreadStackNode *gcGetStackOfSize(size_t size);
+extern GCThreadStackNode *gcGetDefaultStack(void);
+extern void gcEjectStackNode(GCThreadStackNode *node);
 extern GObjProcess *gcGetGObjProcess(void);
 extern void gcLinkGObjProcess(GObjProcess *gobjproc);
 extern void gcSetGObjProcessPrevAlloc(GObjProcess *gobjproc);
@@ -68,8 +68,8 @@ extern void gcAppendGObjToDLLinkedList(GObj *this_gobj, GObj *dl_link_gobj);
 extern void gcDLLinkGObjTail(GObj *this_gobj);
 extern void gcDLLinkGObjHead(GObj *this_gobj);
 extern void gcRemoveGObjFrgcDLLinkedList(GObj *this_gobj);
-extern OMMtx *gcGetOMMtxSetNextAlloc(void);
-extern void gcSetOMMtxPrevAlloc(OMMtx *ommtx);
+extern GCMatrix *gcGetGCMatrixSetNextAlloc(void);
+extern void gcSetGCMatrixPrevAlloc(GCMatrix *gcmatrix);
 extern AObj *gcGetAObjSetNextAlloc(void);
 extern void gcAppendAObjToDObj(DObj *dobj, AObj *aobj);
 extern void gcAppendAObjToMObj(MObj *mobj, AObj *aobj);
@@ -86,9 +86,9 @@ extern void gcSetCameraPrevAlloc(Camera *cam);
 extern GObjProcess *gcAddGObjProcess(GObj *gobj, void (*proc)(GObj*), u8 kind, u32 pri);
 extern GObjProcess *unref_80008304(GObj *gobj, void (*proc)(GObj*), u32 pri, s32 thread_id, u32 stack_size);
 extern void gcEndGObjProcess(GObjProcess *gobjproc);
-extern OMMtx *gcAddOMMtxForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 ommtx_id);
-extern OMMtx *gcAddOMMtxForDObjFixed(DObj *dobj, u8 kind, u8 arg2);
-extern OMMtx *gcAddOMMtxForCamera(Camera *cam, u8 kind, u8 arg2);
+extern GCMatrix *gcAddGCMatrixForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 gcmatrix_id);
+extern GCMatrix *gcAddGCMatrixForDObjFixed(DObj *dobj, u8 kind, u8 arg2);
+extern GCMatrix *gcAddGCMatrixForCamera(Camera *cam, u8 kind, u8 arg2);
 extern AObj *gcAddAObjForDObj(DObj *dobj, u8 track);
 extern void gcRemoveAObjFromDObj(DObj *dobj);
 extern AObj *gcAddAObjForMObj(MObj *mobj, u8 track);
@@ -141,6 +141,6 @@ extern void func_8000A340(void);
 extern GObj *func_8000A40C(GObj *gobj);
 extern GObjProcess *func_8000A49C(GObjProcess *gobjproc);
 extern void func_8000A5E4(void);
-extern void gcSetupObjectManager(OMSetup *setup);
+extern void gcSetupObjectManager(GCSetup *setup);
 
 #endif

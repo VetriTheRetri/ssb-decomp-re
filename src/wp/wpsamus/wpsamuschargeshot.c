@@ -135,7 +135,7 @@ wpCreateDesc dWPSamusChargeShotWeaponDesc =
 
     // DObj transformation struct
     {
-        nOMTransformTra,                // Main matrix transformations
+        nGCTransformTra,                // Main matrix transformations
         0x2E,                               // Secondary matrix transformations?
         0                                   // ???
     },

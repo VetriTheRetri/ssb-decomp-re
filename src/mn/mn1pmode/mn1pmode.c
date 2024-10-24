@@ -458,7 +458,7 @@ void mn1PModeMakeLink3Camera(void)
             CAMERA_MASK_DLLINK(3),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -483,7 +483,7 @@ void mn1PModeMakeOptionsCamera(void)
             CAMERA_MASK_DLLINK(2),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -508,7 +508,7 @@ void mn1PModeMakeLabelsCamera(void)
             CAMERA_MASK_DLLINK(1),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -533,7 +533,7 @@ void mn1PModeMakeDecalsCamera(void)
             CAMERA_MASK_DLLINK(0),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE

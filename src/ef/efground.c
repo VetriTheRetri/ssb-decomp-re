@@ -54,15 +54,15 @@ efGroundCreateDesc dEFGroundCastleEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -93,15 +93,15 @@ efGroundCreateDesc dEFGroundCastleEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -136,15 +136,15 @@ efGroundCreateDesc dEFGroundJungleEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -179,15 +179,15 @@ efGroundCreateDesc dEFGroundSectorEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -218,15 +218,15 @@ efGroundCreateDesc dEFGroundSectorEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -257,15 +257,15 @@ efGroundCreateDesc dEFGroundSectorEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -296,15 +296,15 @@ efGroundCreateDesc dEFGroundSectorEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -335,15 +335,15 @@ efGroundCreateDesc dEFGroundSectorEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -378,15 +378,15 @@ efGroundCreateDesc dEFGroundZebesEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -417,15 +417,15 @@ efGroundCreateDesc dEFGroundZebesEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -460,15 +460,15 @@ efGroundCreateDesc dEFGroundYosterEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -499,15 +499,15 @@ efGroundCreateDesc dEFGroundYosterEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -538,15 +538,15 @@ efGroundCreateDesc dEFGroundYosterEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -577,15 +577,15 @@ efGroundCreateDesc dEFGroundYosterEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -616,15 +616,15 @@ efGroundCreateDesc dEFGroundYosterEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -655,15 +655,15 @@ efGroundCreateDesc dEFGroundYosterEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -698,15 +698,15 @@ efGroundCreateDesc dEFGroundPupupuEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -737,15 +737,15 @@ efGroundCreateDesc dEFGroundPupupuEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -776,15 +776,15 @@ efGroundCreateDesc dEFGroundPupupuEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -815,15 +815,15 @@ efGroundCreateDesc dEFGroundPupupuEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -858,15 +858,15 @@ efGroundCreateDesc dEFGroundYamabukiEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -897,15 +897,15 @@ efGroundCreateDesc dEFGroundYamabukiEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -936,15 +936,15 @@ efGroundCreateDesc dEFGroundYamabukiEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -975,15 +975,15 @@ efGroundCreateDesc dEFGroundYamabukiEffectDescs[/* */] =
 
             // DObj transformation struct 1
             {
-                nOMTransformTraRotRpyRSca,      // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyRSca,      // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
             // DObj transformation struct 2
             {
-                nOMTransformTraRotRpyR,         // Main matrix transformations   
-                nOMTransformNull,               // Secondary matrix transformations
+                nGCTransformTraRotRpyR,         // Main matrix transformations   
+                nGCTransformNull,               // Secondary matrix transformations
                 0x00                                // ???
             },
 
@@ -1330,9 +1330,9 @@ void efGroundSetupEffectDObjs(GObj *effect_gobj, DObjDesc *dobjdesc, DObj **dobj
         {
             if (ep->effect_vars.ground_effect.lr_bool != 0)
             {
-                gcAddOMMtxForDObjFixed(current_dobj, 0x2E, 0);
+                gcAddGCMatrixForDObjFixed(current_dobj, 0x2E, 0);
             }
-            else gcAddOMMtxForDObjFixed(current_dobj, 0x48, 0);
+            else gcAddGCMatrixForDObjFixed(current_dobj, 0x48, 0);
 
             if (lr == nGMFacingR)
             {
@@ -1382,7 +1382,7 @@ GObj* efGroundMakeEffect(efCreateDesc *effect_desc, s32 lr)
     }
     else ep = NULL;
 
-    effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, efManagerFuncRun, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, efManagerFuncRun, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -1578,11 +1578,11 @@ void efGroundMakeEffectSpawnActor(void)
 
     if ((gBattleState->gr_kind <= nGRKindBattleEnd) && (gSceneData.scene_current != nSCKind1PTraining) && (dEFGroundDatas[gBattleState->gr_kind].effect_param != NULL))
     {
-        effect_gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, 7, GOBJ_LINKORDER_DEFAULT);
+        effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, 7, GOBJ_LINKORDER_DEFAULT);
 
         if (effect_gobj != NULL)
         {
-            gcAddGObjProcess(effect_gobj, efGroundActorProcUpdate, nOMObjProcessKindProc, 1);
+            gcAddGObjProcess(effect_gobj, efGroundActorProcUpdate, nGCProcessKindProc, 1);
 
             effect_gobj->user_data.p = &sEFGroundActor;
 

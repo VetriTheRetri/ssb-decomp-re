@@ -10,8 +10,8 @@
 // 0x8012EB50
 DObjTransformTypes dGRJungleTaruCannTransformKinds[/* */] =
 {
-    { 0x28, nOMTransformRotRpyR, 0x00 },
-    { nOMTransformTraRotRpyRSca, nOMTransformNull, 0x00 }
+    { 0x28, nGCTransformRotRpyR, 0x00 },
+    { nGCTransformTraRotRpyRSca, nGCTransformNull, 0x00 }
 };
 
 // // // // // // // // // // // //
@@ -111,17 +111,17 @@ void grJungleMakeTaruCann(void)
     map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRJungleMapHead);
     gGRCommonStruct.jungle.map_head = map_head;
 
-    gGRCommonStruct.jungle.tarucann_gobj = tarucann_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    gGRCommonStruct.jungle.tarucann_gobj = tarucann_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjDisplay(tarucann_gobj, gcDrawDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     grModelSetupGroundDObjs(tarucann_gobj, (DObjDesc*) ((intptr_t)&lGRJungleMapHead + (uintptr_t)map_head), NULL, dGRJungleTaruCannTransformKinds);
-    gcAddGObjProcess(tarucann_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
+    gcAddGObjProcess(tarucann_gobj, gcPlayAnimAll, nGCProcessKindProc, 5);
 
     gcAddAnimJointAll(tarucann_gobj, ((uintptr_t)map_head + (intptr_t)&lGRJungleTaruCannDefaultAnimJoint), 0.0F);
     gcPlayAnimAll(tarucann_gobj);
 
-    gcAddGObjProcess(tarucann_gobj, grJungleTaruCannProcUpdate, nOMObjProcessKindProc, 4);
+    gcAddGObjProcess(tarucann_gobj, grJungleTaruCannProcUpdate, nGCProcessKindProc, 4);
     ftMainCheckAddGroundObstacle(tarucann_gobj, grJungleTaruCannCheckGetDamageKind);
 
     gGRCommonStruct.jungle.tarucann_status = nGRJungleTaruCannStatusMove;
@@ -163,7 +163,7 @@ sb32 grJungleTaruCannCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, s
 
         if ((dist_x < 280.0F) && (dist_y < 280.0F))
         {
-            GObj *other_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+            GObj *other_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
             while (other_gobj != NULL)
             {

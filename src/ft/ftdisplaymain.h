@@ -5,7 +5,7 @@
 #include <sys/objdef.h>
 #include <ft/ftdef.h>
 
-extern Vec2f dFTRenderMainShufflePositions[/* */][4];
+extern Vec2f dFTDisplayMainShufflePositions[/* */][4];
 
 extern void ftDisplayMainDrawAfterImage(ftStruct *fp);
 extern void ftDisplayMainCalcFogColor(ftStruct *fp);

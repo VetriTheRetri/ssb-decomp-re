@@ -549,7 +549,7 @@ sb32 gmStaffrollGetPauseStatusResume(void)
 		{
 			gcResumeProcessAll(sGMStaffrollScrollGObj);
 		}
-		name_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDCreditsName];
+		name_gobj = gGCCommonLinks[nGCCommonLinkIDCreditsName];
 
 		while (name_gobj != NULL)
 		{
@@ -557,7 +557,7 @@ sb32 gmStaffrollGetPauseStatusResume(void)
 
 			name_gobj = name_gobj->link_next;
 		}
-		job_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDCreditsJob];
+		job_gobj = gGCCommonLinks[nGCCommonLinkIDCreditsJob];
 
 		while (job_gobj != NULL)
 		{
@@ -683,15 +683,15 @@ void func_ovl59_80131F34(GObj *arg0)
 // 0x8013202C
 void func_ovl59_8013202C(GObj *arg0)
 {
-	GObj *gobj = gOMObjCommonLinks[nOMObjCommonLinkID02];
+	GObj *gobj = gGCCommonLinks[nGCCommonLinkID02];
 	GObj *ugobj = arg0->user_data.p;
 
 	if (gobj == NULL)
 	{
-		gobj = gcMakeGObjSPAfter(8, NULL, nOMObjCommonLinkID02, GOBJ_LINKORDER_DEFAULT);
+		gobj = gcMakeGObjSPAfter(8, NULL, nGCCommonLinkID02, GOBJ_LINKORDER_DEFAULT);
 		gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 3, GOBJ_DLLINKORDER_DEFAULT, -1);
-		gcSetupCustomDObjs(gobj, sGMStaffrollDObjDesc, NULL, nOMTransformTraRotRpyRSca, nOMTransformNull, nOMTransformNull);
-		gcAddGObjProcess(gobj, func_ovl59_80131F34, nOMObjProcessKindProc, 1);
+		gcSetupCustomDObjs(gobj, sGMStaffrollDObjDesc, NULL, nGCTransformTraRotRpyRSca, nGCTransformNull, nGCTransformNull);
+		gcAddGObjProcess(gobj, func_ovl59_80131F34, nGCProcessKindProc, 1);
 
 		gobj->user_data.p = arg0;
 		ugobj->unk_0x1C = gobj;
@@ -800,7 +800,7 @@ void gmStaffrollHighlightThreadUpdate(GObj *gobj)
 // 0x801327A4
 void gmStaffrollMakeHighlightGObj(GObj *gobj)
 {
-	GObj *highlight_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDHighlight];
+	GObj *highlight_gobj = gGCCommonLinks[nGCCommonLinkIDHighlight];
 	s32 unused;
 	SObj *sobj = SObjGetStruct(sGMStaffrollCrosshairGObj);
 
@@ -809,7 +809,7 @@ void gmStaffrollMakeHighlightGObj(GObj *gobj)
 		highlight_gobj = gcMakeGObjSPAfter(9, NULL, 9, GOBJ_LINKORDER_DEFAULT);
 
 		gcAddGObjDisplay(highlight_gobj, gmStaffrollHighlightFuncDisplay, 8, GOBJ_DLLINKORDER_DEFAULT, -1);
-		gcAddGObjProcess(highlight_gobj, gmStaffrollHighlightThreadUpdate, nOMObjProcessKindThread, 1);
+		gcAddGObjProcess(highlight_gobj, gmStaffrollHighlightThreadUpdate, nGCProcessKindThread, 1);
 
 		sGMStaffrollHighlightPositionX = sobj->pos.x + 8.0F;
 		sGMStaffrollHighlightPositionY = sobj->pos.y + 20.0F;
@@ -1081,9 +1081,9 @@ void gmStaffrollMakeStaffRoleTextGObj(GObj *staff_gobj)
 {
 	GObj *text_gobj;
 
-	if (gOMObjCommonLinks[10] != NULL)
+	if (gGCCommonLinks[10] != NULL)
 	{
-		gcEjectGObj(gOMObjCommonLinks[10]);
+		gcEjectGObj(gGCCommonLinks[10]);
 	}
 	text_gobj = gcMakeGObjSPAfter(6, NULL, 10, GOBJ_LINKORDER_DEFAULT);
 
@@ -1185,9 +1185,9 @@ void gmStaffrollMakeCompanyTextGObj(GObj *staff_gobj)
 {
 	GObj *text_gobj;
 
-	if (gOMObjCommonLinks[11] != NULL)
+	if (gGCCommonLinks[11] != NULL)
 	{
-		gcEjectGObj(gOMObjCommonLinks[11]);
+		gcEjectGObj(gGCCommonLinks[11]);
 	}
 	text_gobj = gcMakeGObjSPAfter(7, NULL, 0xB, GOBJ_LINKORDER_DEFAULT);
 
@@ -1245,7 +1245,7 @@ void func_ovl59_8013330C(void)
 
 	func_ovl59_80131C88(sGMStaffrollCamera);
 
-	gobj = gOMObjCommonLinks[nOMObjCommonLinkIDCreditsName];
+	gobj = gGCCommonLinks[nGCCommonLinkIDCreditsName];
 
 	if (gobj != NULL)
 	{
@@ -1284,7 +1284,7 @@ sb32 gmStaffrollGetPauseStatusHighlight(void)
 			{
 				gcPauseProcessAll(sGMStaffrollScrollGObj);
 			}
-			gobj = gOMObjCommonLinks[nOMObjCommonLinkIDCreditsName];
+			gobj = gGCCommonLinks[nGCCommonLinkIDCreditsName];
 
 			while (gobj != NULL)
 			{
@@ -1292,7 +1292,7 @@ sb32 gmStaffrollGetPauseStatusHighlight(void)
 
 				gobj = gobj->link_next;
 			}
-			gobj = gOMObjCommonLinks[nOMObjCommonLinkIDCreditsJob];
+			gobj = gGCCommonLinks[nGCCommonLinkIDCreditsJob];
 
 			while (gobj != NULL)
 			{
@@ -1432,7 +1432,7 @@ void gmStaffrollJobAndNameThreadUpdate(GObj *gobj)
 // 0x80133854
 void gmStaffrollJobFuncDisplay(GObj *gobj)
 {
-	if (gobj == gOMObjCommonLinks[nOMObjCommonLinkIDCreditsJob])
+	if (gobj == gGCCommonLinks[nGCCommonLinkIDCreditsJob])
 	{
 		gSPTexture(gSYTaskmanDLHeads[0]++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
 		gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
@@ -1446,7 +1446,7 @@ void gmStaffrollJobFuncDisplay(GObj *gobj)
 // 0x80133930
 void gmStaffrollNameFuncDisplay(GObj *gobj)
 {
-	if (gobj == gOMObjCommonLinks[nOMObjCommonLinkIDCreditsName])
+	if (gobj == gGCCommonLinks[nGCCommonLinkIDCreditsName])
 	{
 		gSPTexture(gSYTaskmanDLHeads[0]++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
 		gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
@@ -1503,7 +1503,7 @@ gmStaffrollSetup* gmStaffrollMakeJobDObjs(gmStaffrollSetup *name_setup, DObj *do
 
 			new_dobj = gcAddChildForDObj(dobj, dl);
 
-			gcAddOMMtxForDObjFixed(new_dobj, nOMTransformTra, 1);
+			gcAddGCMatrixForDObjFixed(new_dobj, nGCTransformTra, 1);
 
 			if (job_character_id != -1)
 			{
@@ -1622,13 +1622,13 @@ GObj* gmStaffrollMakeJobGObj(gmStaffrollJob *job)
 
 	wbase = 0.0F;
 
-	gobj = gcMakeGObjSPAfter(1, NULL, nOMObjCommonLinkIDCreditsJob, GOBJ_LINKORDER_DEFAULT);
+	gobj = gcMakeGObjSPAfter(1, NULL, nGCCommonLinkIDCreditsJob, GOBJ_LINKORDER_DEFAULT);
 
 	gcAddGObjDisplay(gobj, gmStaffrollJobFuncDisplay, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	dobj = gcAddDObjForGObj(gobj, NULL);
 
-	gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyRSca, 0);
+	gcAddGCMatrixForDObjFixed(dobj, nGCTransformTraRotRpyRSca, 0);
 
 	if (job->prefix_id != -1)
 	{
@@ -1637,7 +1637,7 @@ GObj* gmStaffrollMakeJobGObj(gmStaffrollJob *job)
 	}
 	gmStaffrollMakeJobDObjs(&job_setup, dobj, job->job_id, wbase);
 	gmStaffrollJobAndNameInitStruct(gobj, dobj, job_setup.dobj, 0);
-	gcAddGObjProcess(gobj, gmStaffrollJobAndNameThreadUpdate, nOMObjProcessKindThread, 1);
+	gcAddGObjProcess(gobj, gmStaffrollJobAndNameThreadUpdate, nGCProcessKindThread, 1);
 
 	return gobj;
 }
@@ -1659,13 +1659,13 @@ GObj* gmStaffrollMakeNameGObjAndDObjs(void)
 
 	name_character_id = -1;
 
-	gobj = gcMakeGObjSPAfter(1, NULL, nOMObjCommonLinkIDCreditsName, GOBJ_LINKORDER_DEFAULT);
+	gobj = gcMakeGObjSPAfter(1, NULL, nGCCommonLinkIDCreditsName, GOBJ_LINKORDER_DEFAULT);
 
 	gcAddGObjDisplay(gobj, gmStaffrollNameFuncDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	new_dobj = dobj = gcAddDObjForGObj(gobj, NULL);
 
-	gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyRSca, 0);
+	gcAddGCMatrixForDObjFixed(dobj, nGCTransformTraRotRpyRSca, 0);
 
 	wbase = 0.0F;
 
@@ -1691,7 +1691,7 @@ GObj* gmStaffrollMakeNameGObjAndDObjs(void)
 
 			new_dobj = gcAddChildForDObj(dobj, dl);
 
-			gcAddOMMtxForDObjFixed(new_dobj, nOMTransformTra, 1);
+			gcAddGCMatrixForDObjFixed(new_dobj, nGCTransformTra, 1);
 
 			if (name_character_id != -1)
 			{
@@ -1846,7 +1846,7 @@ void gmStaffrollMakeCrosshairGObj(void)
 
 	gobj = gcMakeGObjSPAfter(3, NULL, 6, GOBJ_LINKORDER_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 4, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjProcess(gobj, gmStaffrollCrosshairThreadUpdate, nOMObjProcessKindThread, 1);
+	gcAddGObjProcess(gobj, gmStaffrollCrosshairThreadUpdate, nGCProcessKindThread, 1);
 
 	sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sGMStaffrollFiles[0], &lGMStaffrollCrosshairSprite));
 
@@ -1960,7 +1960,7 @@ void gmStaffrollMakeScrollGObj(void)
 {
 	GObj *gobj = gcMakeGObjSPAfter(0, NULL, 1, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjProcess(gobj, gmStaffrollScrollThreadUpdate, nOMObjProcessKindThread, 1);
+	gcAddGObjProcess(gobj, gmStaffrollScrollThreadUpdate, nGCProcessKindThread, 1);
 
 	sGMStaffrollScrollGObj = gobj;
 }

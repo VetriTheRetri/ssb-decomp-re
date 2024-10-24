@@ -5,11 +5,11 @@ s32 func_8000ACD0(GObj *gobj, s32 arg1, GObj *next)
 {
     if (gobj == NULL)
     {
-        gobj = gOMObjCurrentCommon;
+        gobj = gGCCurrentCommon;
     }
     if (next == NULL)
     {
-        next = gOMObjCurrentCommon;
+        next = gGCCurrentCommon;
     }
     if (gobj->gobjlinks_num == ARRAY_COUNT(gobj->gobjlinks))
     {
@@ -32,7 +32,7 @@ void unref_8000AD60(s32 id, s32 arg1, GObj *gobj)
 {
     GObjLink gobjlink;
     
-    gobjlink.next = (gobj != NULL) ? gobj : gOMObjCurrentCommon;
+    gobjlink.next = (gobj != NULL) ? gobj : gGCCurrentCommon;
     gobjlink.unk_gobjlink_0x4 = arg1;
 
     gcApplyByLinkEx(id, func_8000AD38, &gobjlink, 0);
@@ -40,7 +40,7 @@ void unref_8000AD60(s32 id, s32 arg1, GObj *gobj)
 
 s32 cmdProcessCommands(void (*proc)(GObjLink)) 
 {
-    GObj *gobj = gOMObjCurrentCommon;
+    GObj *gobj = gGCCurrentCommon;
 
 #if defined (AVOID_UB) || defined (NON_MATCHING)
     GObjLink *gobjlink = gobj->gobjlinks;
@@ -78,11 +78,11 @@ s32 cmdProcessCommands(void (*proc)(GObjLink))
             break;
             
         case 1: 
-            gOMObjCurrentCommon->flags |= GOBJ_FLAG_HIDDEN; 
+            gGCCurrentCommon->flags |= GOBJ_FLAG_HIDDEN; 
             break;
             
         case 0: 
-            gOMObjCurrentCommon->flags &= ~GOBJ_FLAG_HIDDEN; 
+            gGCCurrentCommon->flags &= ~GOBJ_FLAG_HIDDEN; 
             break;
             
         default:

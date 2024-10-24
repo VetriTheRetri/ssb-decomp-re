@@ -38,7 +38,7 @@ cmStruct gCMManagerCameraStruct;
 // // // // // // // // // // // //
 
 // 0x8012EB70
-OMPersp dCMManagerPerspDefault = { NULL, 0, 38.0F, 15.0F / 11.0F, 256.0F, 39936.0F, 1.0F };
+GCPersp dCMManagerPerspDefault = { NULL, 0, 38.0F, 15.0F / 11.0F, 256.0F, 39936.0F, 1.0F };
 
 // 0x8012EB8C
 CameraVec dCMManagerCameraVecDefault =
@@ -257,7 +257,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
     s32 lr;
     Vec3f weapon_pos;
 
-    fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
     player_num = 0;
 
@@ -397,7 +397,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
             }
             ft_cam[cam_num].unk_ftcam_0x10 = adjust;
         }
-        weapon_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDWeapon];
+        weapon_gobj = gGCCommonLinks[nGCCommonLinkIDWeapon];
 
         while (weapon_gobj != NULL)
         {
@@ -1118,17 +1118,17 @@ GObj* cmManagerMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
     Vec3f sp4C;
     f32 temp_f0;
 
-    camera_gobj = gcMakeCameraGObj(nOMObjCommonKindMainCamera, NULL, nOMObjCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010D4C0, 50, 0, -1, 0, 1, proc, 3, 0);
+    camera_gobj = gcMakeCameraGObj(nGCCommonKindMainCamera, NULL, nGCCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010D4C0, 50, 0, -1, 0, 1, proc, 3, 0);
 
     gCMManagerCameraGObj = camera_gobj;
 
     cam = CameraGetStruct(camera_gobj);
 
-    gcAddOMMtxForCamera(cam, tk1, 0);
+    gcAddGCMatrixForCamera(cam, tk1, 0);
 
-    if (tk2 != nOMTransformNull)
+    if (tk2 != nGCTransformNull)
     {
-        gcAddOMMtxForCamera(cam, tk2, 0);
+        gcAddGCMatrixForCamera(cam, tk2, 0);
     }
     cam->projection.persp = dCMManagerPerspDefault;
     cam->vec = dCMManagerCameraVecDefault;
@@ -1182,19 +1182,19 @@ GObj* cmManagerMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
 // 0x8010DB00
 void func_ovl2_8010DB00(void)
 {
-    cmManagerMakeBattleCamera(0x4C, nOMTransformNull, cmManagerRunGlobalFuncCamera);
+    cmManagerMakeBattleCamera(0x4C, nGCTransformNull, cmManagerRunGlobalFuncCamera);
 }
 
 // 0x8010DB2C
 GObj* func_ovl2_8010DB2C(void (*func_camera)(GObj*))
 {
-    return cmManagerMakeBattleCamera(nOMTransformPerspFastF, 8, func_camera);
+    return cmManagerMakeBattleCamera(nGCTransformPerspFastF, 8, func_camera);
 }
 
 // 0x8010DB54
 GObj* cmManagerMakeWallpaperCamera(void)
 {
-    GObj *camera_gobj = gcMakeCameraGObj(nOMObjCommonKindWallpaperCamera, NULL, nOMObjCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, lbCommonScissorSpriteCamera, 80, CAMERA_MASK_DLLINK(0), -1, 0, 1, 0, 1, 0);
+    GObj *camera_gobj = gcMakeCameraGObj(nGCCommonKindWallpaperCamera, NULL, nGCCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, lbCommonScissorSpriteCamera, 80, CAMERA_MASK_DLLINK(0), -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
 
     syRdpSetViewport(&cam->viewport, (f32)gCMManagerCameraStruct.viewport_ulx, (f32)gCMManagerCameraStruct.viewport_uly, (f32)gCMManagerCameraStruct.viewport_lrx, (f32)gCMManagerCameraStruct.viewport_lry);
@@ -1231,7 +1231,7 @@ void func_ovl2_8010DC24(GObj *camera_gobj)
 // 0x8010DDC4
 void func_ovl2_8010DDC4(void)
 {
-    Camera *cam = CameraGetStruct(gcMakeCameraGObj(nOMObjCommonKindScissorCamera, NULL, nOMObjCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010DC24, 20, CAMERA_MASK_DLLINK(22), -1, 0, 1, 0, 1, 0));
+    Camera *cam = CameraGetStruct(gcMakeCameraGObj(nGCCommonKindScissorCamera, NULL, nGCCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010DC24, 20, CAMERA_MASK_DLLINK(22), -1, 0, 1, 0, 1, 0));
 
     cam->flags |= 4;
 }
@@ -1324,7 +1324,7 @@ void func_ovl2_8010E134(GObj *camera_gobj)
 // 0x8010E1A4
 void func_ovl2_8010E1A4(void)
 {
-    Camera *cam = CameraGetStruct(gcMakeCameraGObj(nOMObjCommonKindUnkCamera1, NULL, nOMObjCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010E134, 30, CAMERA_MASK_DLLINK(9), -1, 0, 1, 0, 1, 0));
+    Camera *cam = CameraGetStruct(gcMakeCameraGObj(nGCCommonKindUnkCamera1, NULL, nGCCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010E134, 30, CAMERA_MASK_DLLINK(9), -1, 0, 1, 0, 1, 0));
 
     lbCommonInitCameraVec(cam, 0x4D, 0);
     lbCommonInitCameraOrtho(cam, 0x4E, 1);
@@ -1353,7 +1353,7 @@ void func_ovl2_8010E254(GObj *camera_gobj)
 // 0x8010E2D4
 void func_ovl2_8010E2D4(void)
 {
-    Camera *cam = CameraGetStruct(gcMakeCameraGObj(nOMObjCommonKindUnkCamera2, NULL, nOMObjCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010E254, 35, CAMERA_MASK_DLLINK(8), -1, 0, 1, 0, 1, 0));
+    Camera *cam = CameraGetStruct(gcMakeCameraGObj(nGCCommonKindUnkCamera2, NULL, nGCCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010E254, 35, CAMERA_MASK_DLLINK(8), -1, 0, 1, 0, 1, 0));
 
     lbCommonInitCameraOrtho(cam, 0x54, 1);
 
@@ -1365,7 +1365,7 @@ void func_ovl2_8010E2D4(void)
 // 0x8010E374
 GObj* func_ovl2_8010E374(void)
 {
-    GObj *camera_gobj = gcMakeCameraGObj(nOMObjCommonKindScissorCamera, NULL, nOMObjCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, lbCommonScissorSpriteCamera, 20, (CAMERA_MASK_DLLINK(24) | CAMERA_MASK_DLLINK(23)), -1, 0, 1, 0, 1, 0);
+    GObj *camera_gobj = gcMakeCameraGObj(nGCCommonKindScissorCamera, NULL, nGCCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, lbCommonScissorSpriteCamera, 20, (CAMERA_MASK_DLLINK(24) | CAMERA_MASK_DLLINK(23)), -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
 
     syRdpSetViewport(&cam->viewport, (f32)gCMManagerCameraStruct.viewport_ulx, (f32)gCMManagerCameraStruct.viewport_uly, (f32)gCMManagerCameraStruct.viewport_lrx, (f32)gCMManagerCameraStruct.viewport_lry);
@@ -1386,7 +1386,7 @@ void func_ovl2_8010E458(GObj *camera_gobj)
 // 0x8010E498
 GObj* func_ovl2_8010E498(void)
 {
-    GObj *camera_gobj = gcMakeCameraGObj(nOMObjCommonKindScissorCamera, NULL, nOMObjCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010E458, 15, CAMERA_MASK_DLLINK(25), -1, 0, 1, 0, 1, 0);
+    GObj *camera_gobj = gcMakeCameraGObj(nGCCommonKindScissorCamera, NULL, nGCCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010E458, 15, CAMERA_MASK_DLLINK(25), -1, 0, 1, 0, 1, 0);
     Camera *cam = CameraGetStruct(camera_gobj);
 
     syRdpSetViewport(&cam->viewport, (f32)gCMManagerCameraStruct.viewport_ulx, (f32)gCMManagerCameraStruct.viewport_uly, (f32)gCMManagerCameraStruct.viewport_lrx, (f32)gCMManagerCameraStruct.viewport_lry);

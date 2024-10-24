@@ -1239,7 +1239,7 @@ void unref_800067E4(syTaskmanBufferSetup *arg)
 // 0x8000683C
 void syTaskmanInit(syTaskmanSetup *ts)
 {
-	OMSetup omsetup;
+	GCSetup omsetup;
 
 	syTaskmanInitGeneralHeap(ts->buffer_setup.arena_start, ts->buffer_setup.arena_size);
 
@@ -1249,7 +1249,7 @@ void syTaskmanInit(syTaskmanSetup *ts)
 
 	if (ts->threadstack_size != 0)
 	{
-		omsetup.threadstacks = syTaskmanMalloc((ts->threadstack_size + offsetof(OMThreadStackNode, stack)) * ts->threadstacks_num, 0x8);
+		omsetup.threadstacks = syTaskmanMalloc((ts->threadstack_size + offsetof(GCThreadStackNode, stack)) * ts->threadstacks_num, 0x8);
 	}
 	else omsetup.threadstacks = NULL;
 	
@@ -1263,8 +1263,8 @@ void syTaskmanInit(syTaskmanSetup *ts)
 	omsetup.gobjs_num = ts->gobjs_num;
 	omsetup.gobj_size = ts->gobj_size;
 
-	omsetup.ommtxes     = syTaskmanMalloc(sizeof(OMMtx) * ts->ommtxs_num, 0x8);
-	omsetup.ommtxs_num = ts->ommtxs_num;
+	omsetup.gcmatrixes     = syTaskmanMalloc(sizeof(GCMatrix) * ts->gcmatrixs_num, 0x8);
+	omsetup.gcmatrixs_num = ts->gcmatrixs_num;
 
 	gcSetMatrixProcess(ts->unk60);
 	omsetup.proc_eject = ts->proc_eject;

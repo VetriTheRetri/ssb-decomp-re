@@ -135,7 +135,7 @@ s32 grPupupuWhispyGetLR(GObj *ground_gobj)
 {
     s32 players_rside = 0;
     s32 players_lside = 0;
-    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
     while (fighter_gobj != NULL)
     {
@@ -163,7 +163,7 @@ s32 grPupupuWhispyGetLR(GObj *ground_gobj)
 // 0x8010595C
 void grPupupuWhispySetWindPush(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
     sb32 lr_wind = gGRCommonStruct.pupupu.lr_players;
 
     while (fighter_gobj != NULL)
@@ -635,7 +635,7 @@ void grPupupuProcUpdate(GObj *ground_gobj)
 // 0x801064C8
 GObj* grPupupuMakeMapGObj(intptr_t o_dobjdesc, intptr_t o_mobjsub, void (*func_display)(GObj*), u8 dl_link)
 {
-    GObj *ground_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjDisplay(ground_gobj, func_display, dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -645,15 +645,15 @@ GObj* grPupupuMakeMapGObj(intptr_t o_dobjdesc, intptr_t o_mobjsub, void (*func_d
         (DObjDesc*) 
         ((uintptr_t)gGRCommonStruct.pupupu.map_head + o_dobjdesc), 
         NULL, 
-        nOMTransformTraRotRpyRSca, 
-        nOMTransformNull, 
-        nOMTransformNull
+        nGCTransformTraRotRpyRSca, 
+        nGCTransformNull, 
+        nGCTransformNull
     );
     if (o_mobjsub != 0)
     {
         gcAddMObjAll(ground_gobj, lbRelocGetDataFromFile(MObjSub***, gGRCommonStruct.pupupu.map_head, o_mobjsub));
     }
-    gcAddGObjProcess(ground_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
+    gcAddGObjProcess(ground_gobj, gcPlayAnimAll, nGCProcessKindProc, 5);
 
     return ground_gobj;
 }
@@ -688,15 +688,15 @@ void grPupupuInitAll(void)
     gGRCommonStruct.pupupu.flowers_back_wait    = 15;
     gGRCommonStruct.pupupu.flowers_front_wait   = 22;
 
-    gGRCommonStruct.pupupu.particle_bank_id = efAllocGetAddParticleBankID(&lGRPupupuParticleBankGenLo, &lGRPupupuParticleBankGenHi, &lGRPupupuParticleBankTextureLo, &lGRPupupuParticleBankTextureHi);
+    gGRCommonStruct.pupupu.particle_bank_id = efAllocGetAddParticleBankID(&lGRPupupuParticleBankScriptsLo, &lGRPupupuParticleBankScriptsHi, &lGRPupupuParticleBankTexturesLo, &lGRPupupuParticleBankTexturesHi);
 }
 
 // 0x801066D4
 GObj* grPupupuMakeGround(void)
 {
-    GObj *ground_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjProcess(ground_gobj, grPupupuProcUpdate, nOMObjProcessKindProc, 4);
+    gcAddGObjProcess(ground_gobj, grPupupuProcUpdate, nGCProcessKindProc, 4);
     grPupupuInitAll();
 
     return ground_gobj;

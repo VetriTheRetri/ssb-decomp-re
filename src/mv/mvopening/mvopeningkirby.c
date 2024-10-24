@@ -218,7 +218,7 @@ void mvOpeningKirbyMakeMotionCamera(Vec3f vec)
 	cam->projection.persp.aspect = 10.0F / 11.0F;
 
 	gcEndProcessAll(sMVOpeningKirbyMotionCameraGObj);
-	gcAddGObjProcess(sMVOpeningKirbyMotionCameraGObj, mvOpeningKirbyMotionCameraProcUpdate, nOMObjProcessKindProc, 1);
+	gcAddGObjProcess(sMVOpeningKirbyMotionCameraGObj, mvOpeningKirbyMotionCameraProcUpdate, nGCProcessKindProc, 1);
 
 	dMVOpeningKirbyStartAdjustedCameraDesc.eye.x += vec.x;
 	dMVOpeningKirbyStartAdjustedCameraDesc.eye.y += vec.y;
@@ -371,7 +371,7 @@ void mvOpeningKirbyMakePosedFighter(void)
 	fighter_gobj = ftManagerMakeFighter(&ft_desc);
 	scSubsysFighterSetStatus(fighter_gobj, 0x1000C);
 	gcMoveGObjDL(fighter_gobj, 26, -1);
-	gcAddGObjProcess(fighter_gobj, mvOpeningKirbyPosedFighterProcUpdate, nOMObjProcessKindProc, 1);
+	gcAddGObjProcess(fighter_gobj, mvOpeningKirbyPosedFighterProcUpdate, nGCProcessKindProc, 1);
 
 	DObjGetStruct(fighter_gobj)->scale.vec.f.x = 1.0F;
 	DObjGetStruct(fighter_gobj)->scale.vec.f.y = 1.0F;
@@ -385,7 +385,7 @@ void mvOpeningKirbyMakeNameCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -394,7 +394,7 @@ void mvOpeningKirbyMakeNameCamera(void)
             CAMERA_MASK_DLLINK(27),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -408,7 +408,7 @@ void mvOpeningKirbyMakePosedFighterCamera(void)
 {
 	GObj *camera_gobj = gcMakeCameraGObj
     (
-        nOMObjCommonKindSceneCamera,
+        nGCCommonKindSceneCamera,
         NULL,
         16,
         GOBJ_LINKORDER_DEFAULT,
@@ -417,7 +417,7 @@ void mvOpeningKirbyMakePosedFighterCamera(void)
         CAMERA_MASK_DLLINK(26),
         -1,
         TRUE,
-        nOMObjProcessKindProc,
+        nGCProcessKindProc,
         NULL,
         1,
         FALSE
@@ -429,7 +429,7 @@ void mvOpeningKirbyMakePosedFighterCamera(void)
 	cam->projection.persp.aspect = 5.0F / 11.0F;
 
 	gcAddCameraCamAnimJoint(cam, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningKirbyFiles[1], &lMVOpeningKirbyCamAnimJoint), 0.0F);
-	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nOMObjProcessKindProc, 1);
+	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
 }
 
 // 0x8018DD14
@@ -439,7 +439,7 @@ void mvOpeningKirbyMakePosedWallpaperCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -448,7 +448,7 @@ void mvOpeningKirbyMakePosedWallpaperCamera(void)
             CAMERA_MASK_DLLINK(28),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -509,7 +509,7 @@ void mvOpeningKirbyFuncStart(void)
 
 	mvOpeningKirbySetupFiles();
 
-	gcMakeGObjSPAfter(nOMObjCommonKindMovie, mvOpeningKirbyFuncRun, 13, GOBJ_LINKORDER_DEFAULT);
+	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningKirbyFuncRun, 13, GOBJ_LINKORDER_DEFAULT);
 	gcMakeDefaultCameraGObj(9, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	mvOpeningKirbyInitVars();

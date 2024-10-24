@@ -13,10 +13,10 @@ extern intptr_t D_NF_000004B8;
 extern intptr_t lGRYosterCloudDisplayList;          // 0x00000580
 extern intptr_t lGRYosterCloudSolidMatAnimJoint;    // 0x00000670
 extern intptr_t lGRYosterCloudEvaporateMatAnimJoint;// 0x00000690
-extern intptr_t lGRYosterParticleBankGenLo;      // 0x00B22980
-extern intptr_t lGRYosterParticleBankGenHi;      // 0x00B22A00
-extern intptr_t lGRYosterParticleBankTextureLo;     // 0x00B22A00
-extern intptr_t lGRYosterParticleBankTextureHi;     // 0x00B22C30
+extern intptr_t lGRYosterParticleBankScriptsLo;      // 0x00B22980
+extern intptr_t lGRYosterParticleBankScriptsHi;      // 0x00B22A00
+extern intptr_t lGRYosterParticleBankTexturesLo;     // 0x00B22A00
+extern intptr_t lGRYosterParticleBankTexturesHi;     // 0x00B22C30
 
 // // // // // // // // // // // //
 //                               //
@@ -65,7 +65,7 @@ lbGenerator* grYosterCloudVaporMakeEffect(Vec3f *pos)
 // 0x801085A8
 sb32 grYosterCheckFighterCloudStand(s32 cloud_id)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
     s32 line_id = dGRYosterCloudLineIDs[cloud_id];
 
     while (fighter_gobj != NULL)
@@ -225,7 +225,7 @@ void grYosterInitAll(void)
 
     for (i = 0; i < ARRAY_COUNT(gGRCommonStruct.yoster.clouds); i++)
     {
-        map_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+        map_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
         gGRCommonStruct.yoster.clouds[i].gobj = map_gobj;
 
@@ -235,11 +235,11 @@ void grYosterInitAll(void)
             map_gobj, 
             (DObjDesc*) ((intptr_t)&lGRYosterMapHead + (uintptr_t)map_head), 
             NULL, 
-            nOMTransformTra,    // Make this nOMTransformTraRotRpyRSca to see cloud scale animation
-            nOMTransformNull, 
-            nOMTransformNull
+            nGCTransformTra,    // Make this nGCTransformTraRotRpyRSca to see cloud scale animation
+            nGCTransformNull, 
+            nGCTransformNull
         );
-        gcAddGObjProcess(map_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
+        gcAddGObjProcess(map_gobj, gcPlayAnimAll, nGCProcessKindProc, 5);
 
         gcAddAnimJointAll(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000001E0, 0);
 
@@ -255,8 +255,8 @@ void grYosterInitAll(void)
             cloud_dobj = gcAddChildForDObj(coll_dobj, (uintptr_t)map_head + (intptr_t)&lGRYosterCloudDisplayList);
             gGRCommonStruct.yoster.clouds[i].dobj[j] = cloud_dobj;
 
-            gcAddOMMtxForDObjFixed(cloud_dobj, nOMTransformTra, 0);
-            gcAddOMMtxForDObjFixed(cloud_dobj, nOMTransform48, 0);
+            gcAddGCMatrixForDObjFixed(cloud_dobj, nGCTransformTra, 0);
+            gcAddGCMatrixForDObjFixed(cloud_dobj, nGCTransform48, 0);
             lbCommonAddMObjForTreeDObjs(cloud_dobj, (uintptr_t)map_head + (intptr_t)&D_NF_000004B8);
         }
         gcPlayAnimAll(map_gobj);
@@ -269,16 +269,16 @@ void grYosterInitAll(void)
 
         mpCollisionSetYakumonoOnID(dGRYosterCloudLineIDs[i]);
     }
-    gGRCommonStruct.yoster.particle_bank_id = efAllocGetAddParticleBankID(&lGRYosterParticleBankGenLo, &lGRYosterParticleBankGenHi, &lGRYosterParticleBankTextureLo, &lGRYosterParticleBankTextureHi);
+    gGRCommonStruct.yoster.particle_bank_id = efAllocGetAddParticleBankID(&lGRYosterParticleBankScriptsLo, &lGRYosterParticleBankScriptsHi, &lGRYosterParticleBankTexturesLo, &lGRYosterParticleBankTexturesHi);
 }
 
 // 0x80108C80
 GObj* grYosterMakeGround(void)
 {
-    GObj *ground_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     grYosterInitAll();
-    gcAddGObjProcess(ground_gobj, grYosterProcUpdate, nOMObjProcessKindProc, 4);
+    gcAddGObjProcess(ground_gobj, grYosterProcUpdate, nGCProcessKindProc, 4);
 
     return ground_gobj;
 }

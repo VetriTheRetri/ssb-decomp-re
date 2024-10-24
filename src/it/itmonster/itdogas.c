@@ -28,8 +28,8 @@ itCreateDesc dITDogasItemDesc =
 
     // DObj transformation struct
     {
-        nOMTransformNull,                   // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformNull,                   // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -82,8 +82,8 @@ wpCreateDesc dITDogasWeaponSmogWeaponDesc =
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,             // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformTraRotRpyR,             // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -261,8 +261,8 @@ GObj* itDogasMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         dobj = DObjGetStruct(item_gobj);
 
-        gcAddOMMtxForDObjFixed(dobj, 0x28, 0);
-        gcAddOMMtxForDObjFixed(dobj->child, nOMTransformTraRotRpyRSca, 0);
+        gcAddGCMatrixForDObjFixed(dobj, 0x28, 0);
+        gcAddGCMatrixForDObjFixed(dobj->child, nGCTransformTraRotRpyRSca, 0);
 
         dobj->translate.vec.f = *pos;
 
@@ -318,7 +318,7 @@ GObj* itDogasWeaponSmogMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 
     wp->phys_info.vel_air = *vel;
 
-    gcAddOMMtxForDObjFixed(dobj->child, 0x2C, 0);
+    gcAddGCMatrixForDObjFixed(dobj->child, 0x2C, 0);
 
     dobj->translate.vec.f = *pos;
 

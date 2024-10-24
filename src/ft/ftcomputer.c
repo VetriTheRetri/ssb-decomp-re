@@ -3350,7 +3350,7 @@ u8 *dFTComputerPlayerInputScripts[/* */] =
 // 0x80131B00
 wpStruct* ftComputerGetOwnWeapon(ftStruct *fp)
 {
-    GObj *weapon_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDWeapon];
+    GObj *weapon_gobj = gGCCommonLinks[nGCCommonLinkIDWeapon];
 
     while (weapon_gobj != NULL)
     {
@@ -3368,7 +3368,7 @@ wpStruct* ftComputerGetOwnWeapon(ftStruct *fp)
 // 0x80131B44
 Vec3f* ftComputerGetOwnWeaponPositionKind(ftStruct *fp, s32 wp_kind)
 {
-    GObj *weapon_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDWeapon];
+    GObj *weapon_gobj = gGCCommonLinks[nGCCommonLinkIDWeapon];
 
     while (weapon_gobj != NULL)
     {
@@ -3719,7 +3719,7 @@ sb32 ftComputerCheckFindTarget(ftStruct *this_fp)
     ftStruct *other_fp;
     f32 this_pos_x = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
     f32 this_pos_y = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
-    GObj *other_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    GObj *other_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
     f32 distance = F32_MAX;
     f32 square_xy;
     f32 other_pos_x;
@@ -3802,7 +3802,7 @@ sb32 ftComputerCheckFindTarget(ftStruct *this_fp)
 // 0x80132BC8
 sb32 ftComputerCheckEvadeDistance(ftStruct *this_fp)
 {
-    GObj *other_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    GObj *other_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
     while (other_gobj != NULL)
     {
@@ -3837,7 +3837,7 @@ sb32 ftComputerCheckEvadeDistance(ftStruct *this_fp)
 ftStruct* ftComputerWaitGetTarget(ftStruct *this_fp)
 {
     ftComputer *ft_com = &this_fp->fighter_com;
-    GObj *other_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    GObj *other_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
     s32 target_damage = 9999;
     ftStruct *target_fp = NULL;
 
@@ -4838,7 +4838,7 @@ sb32 ftComputerCheckTargetItemOrTwister(ftStruct *fp)
     GObj *item_gobj;
     Vec3f twister_pos;
 
-    item_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDItem];
+    item_gobj = gGCCommonLinks[nGCCommonLinkIDItem];
 
     predict_x = fp->joints[nFTPartsJointTopN]->translate.vec.f.x + (fp->phys_info.vel_air.x * 5.0F);
     predict_y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y + (fp->phys_info.vel_air.y * 5.0F);
@@ -5316,7 +5316,7 @@ sb32 func_ovl3_80135B78(ftStruct *this_fp)
     this_pos_x = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
     this_pos_y = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
 
-    fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
     while (fighter_gobj != NULL)
     {
@@ -5336,7 +5336,7 @@ sb32 func_ovl3_80135B78(ftStruct *this_fp)
     next_fighter:
         fighter_gobj = fighter_gobj->link_next;
     }
-    weapon_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDWeapon];
+    weapon_gobj = gGCCommonLinks[nGCCommonLinkIDWeapon];
 
     while (weapon_gobj != NULL)
     {
@@ -5405,7 +5405,7 @@ sb32 func_ovl3_80135B78(ftStruct *this_fp)
     next_weapon:
         weapon_gobj = weapon_gobj->link_next;
     }
-    item_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDItem];
+    item_gobj = gGCCommonLinks[nGCCommonLinkIDItem];
 
     while (item_gobj != NULL)
     {
@@ -5550,7 +5550,7 @@ sb32 ftComputerCheckFindItem(ftStruct *fp)
 
     ft_com->ftcom_flags_0x4A_b1 = FALSE;
 
-    item_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDItem];
+    item_gobj = gGCCommonLinks[nGCCommonLinkIDItem];
 
     while (item_gobj != NULL)
     {
@@ -5663,7 +5663,7 @@ sb32 ftComputerCheckSetEvadeTarget(ftStruct *this_fp)
 
     ft_com->ftcom_flags_0x4A_b1 = FALSE;
 
-    fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
     while (fighter_gobj != NULL)
     {

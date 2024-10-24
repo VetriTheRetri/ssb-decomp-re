@@ -26,8 +26,8 @@ itCreateDesc dITLGunItemDesc =
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,             // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformTraRotRpyR,             // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -114,8 +114,8 @@ wpCreateDesc itLGunWeaponAmmoWeaponDesc =
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyRSca,          // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformTraRotRpyRSca,          // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 

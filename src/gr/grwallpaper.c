@@ -47,7 +47,7 @@ void grWallpaperCalcPersp(SObj *wallpaper_sobj)
 {
     f32 mag;
     Camera *cam;
-    Vec2f sp58;
+    Vec2f angle;
     Vec3f dist;
     f32 bak_pos_x;
     f32 bak_pos_y;
@@ -66,13 +66,13 @@ void grWallpaperCalcPersp(SObj *wallpaper_sobj)
 
     if (dist.z < 0.0F)
     {
-        sp58.x = 0.0F;
-        sp58.y = 0.0F;
+        angle.x = 0.0F;
+        angle.y = 0.0F;
     }
     else
     {
-        sp58.y = atan2f(dist.x, dist.z);
-        sp58.x = atan2f(dist.y, dist.z);
+        angle.y = atan2f(dist.x, dist.z);
+        angle.x = atan2f(dist.y, dist.z);
     }
     scale = 20000.0F / (mag + 8000.0F);
 
@@ -90,8 +90,8 @@ void grWallpaperCalcPersp(SObj *wallpaper_sobj)
     height = 220.0F * scale;    // Background image height is 220px
 
     // Remember to make a macro for default resolution if one does not yet exist
-    pos_x = bak_pos_x = ((sp58.y / F_CST_DTOR32(180.0F)) * width) - ((width - 320.0F) * 0.5F);      // Ultra64 default width  is 320px
-    pos_y = bak_pos_y = ((-sp58.x / F_CST_DTOR32(180.0F)) * height) - ((height - 240.0F) * 0.5F);   // Ultra64 default height is 240px
+    pos_x = bak_pos_x = ((angle.y / F_CST_DTOR32(180.0F)) * width) - ((width - 320.0F) * 0.5F);      // Ultra64 default width  is 320px
+    pos_y = bak_pos_y = ((-angle.x / F_CST_DTOR32(180.0F)) * height) - ((height - 240.0F) * 0.5F);   // Ultra64 default height is 240px
 
     if (bak_pos_x > 10.0F)
     {
@@ -137,16 +137,16 @@ void grWallpaperMakeCommon(void)
 
     sGRWallpaperGObj = wallpaper_gobj = lbCommonMakeSpriteGObj
     (
-        nOMObjCommonKindWallpaper,
+        nGCCommonKindWallpaper,
         NULL,
-        nOMObjCommonLinkIDWallpaper,
+        nGCCommonLinkIDWallpaper,
         GOBJ_LINKORDER_DEFAULT,
         lbCommonDrawSObjAttr,
         0,
         GOBJ_DLLINKORDER_DEFAULT,
         -1,
         gMPCollisionGroundData->wallpaper,
-        nOMObjProcessKindProc,
+        nGCProcessKindProc,
         grWallpaperCommonProcUpdate,
         3
     );
@@ -167,16 +167,16 @@ void grWallpaperMakeStatic(void)
 
     sGRWallpaperGObj = wallpaper_gobj = lbCommonMakeSpriteGObj
     (
-        nOMObjCommonKindWallpaper, 
+        nGCCommonKindWallpaper, 
         NULL, 
-        nOMObjCommonLinkIDWallpaper,
+        nGCCommonLinkIDWallpaper,
         GOBJ_LINKORDER_DEFAULT, 
         lbCommonDrawSObjAttr,
         0, 
         GOBJ_DLLINKORDER_DEFAULT, 
         -1, 
         gMPCollisionGroundData->wallpaper, 
-        nOMObjProcessKindProc, 
+        nGCProcessKindProc, 
         NULL, 
         3
     );
@@ -234,7 +234,7 @@ void grWallpaperMakeSector(void)
     GObj *wallpaper_gobj;
     SObj *wallpaper_sobj;
 
-    sGRWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(nOMObjCommonKindWallpaper, NULL, nOMObjCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
+    sGRWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(nGCCommonKindWallpaper, NULL, nGCCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -245,7 +245,7 @@ void grWallpaperMakeSector(void)
 
     wallpaper_sobj->sprite.attr = SP_TEXSHUF;
 
-    gcAddGObjProcess(wallpaper_gobj, grWallpaperSectorProcUpdate, nOMObjProcessKindProc, 3);
+    gcAddGObjProcess(wallpaper_gobj, grWallpaperSectorProcUpdate, nGCProcessKindProc, 3);
 }
 
 // 0x80104B58
@@ -259,7 +259,7 @@ void grWallpaperMakeBonus3(void)
 {
     GObj *wallpaper_gobj;
 
-    sGRWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(nOMObjCommonKindWallpaper, NULL, nOMObjCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
+    sGRWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(nGCCommonKindWallpaper, NULL, nGCCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjDisplay(wallpaper_gobj, grWallpaperBonus3FuncDisplay, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 }
@@ -335,11 +335,11 @@ void grWallpaperRunGObjProcessThreads(void)
 // 0x80104D30
 void grWallpaperResumeAll(void)
 {
-    GObj *gobj = gOMObjCommonLinks[nOMObjCommonLinkIDWallpaper];
+    GObj *gobj = gGCCommonLinks[nGCCommonLinkIDWallpaper];
 
     while (gobj != NULL)
     {
-        if (gobj->gobj_id == nOMObjCommonKindWallpaper)
+        if (gobj->gobj_id == nGCCommonKindWallpaper)
         {
             gcResumeProcessAll(gobj);
         }

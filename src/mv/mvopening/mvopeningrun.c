@@ -148,10 +148,10 @@ void mvOpeningRunMakeFighters(void)
 
 		fighter_proxy_dobj = gcAddDObjForGObj(fighter_proxy_gobj, NULL);
 
-		gcAddOMMtxForDObjFixed(fighter_proxy_dobj, nOMTransformTraRotRpyRSca, 0);
+		gcAddGCMatrixForDObjFixed(fighter_proxy_dobj, nGCTransformTraRotRpyRSca, 0);
 		gcAddDObjAnimJoint(fighter_proxy_dobj, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningRunFiles[0], offsets[i]), 0.0F);
 
-		gcAddGObjProcess(fighter_proxy_gobj, mvOpeningRunFighterProcUpdate, nOMObjProcessKindProc, 1);
+		gcAddGObjProcess(fighter_proxy_gobj, mvOpeningRunFighterProcUpdate, nGCProcessKindProc, 1);
 		gcPlayAnimAll(fighter_proxy_gobj);
 	}
 }
@@ -200,7 +200,7 @@ void mvOpeningRunMakeWallpaper(void)
 	right_sobj->pos.x = 0.0F;
 	right_sobj->pos.y = 0.0F;
 
-	gcAddGObjProcess(gobj, mvOpeningRunWallpaperProcUpdate, nOMObjProcessKindProc, 1);
+	gcAddGObjProcess(gobj, mvOpeningRunWallpaperProcUpdate, nGCProcessKindProc, 1);
 }
 
 // 0x80131F80
@@ -223,7 +223,7 @@ void mvOpeningRunMakeCrash(void)
 
 	gcAddMObjAll(gobj, lbRelocGetDataFromFile(MObjSub***, sMVOpeningRunFiles[2], &lMVOpeningRunCrashMObjSub));
 	gcAddMatAnimJointAll(gobj, lbRelocGetDataFromFile(AObjEvent32***, sMVOpeningRunFiles[2], &lMVOpeningRunCrashMatAnimJoint), 0.0F);
-	gcAddGObjProcess(gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
+	gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
 	gcPlayAnimAll(gobj);
 }
 
@@ -233,7 +233,7 @@ void mvOpeningRunInitMainCamera(GObj *camera_gobj)
 	Camera* cam = CameraGetStruct(camera_gobj);
 	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 	gcAddCameraCamAnimJoint(cam, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningRunFiles[1], &lMVOpeningRunMainCamAnimJoint), 0.0F);
-	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nOMObjProcessKindProc, 1);
+	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
 }
 
 // 0x80132138
@@ -243,7 +243,7 @@ void mvOpeningRunMakeMainCamera(void)
 	(
 		gcMakeCameraGObj
 		(
-        	nOMObjCommonKindSceneCamera,
+        	nGCCommonKindSceneCamera,
         	NULL,
         	16,
         	GOBJ_LINKORDER_DEFAULT,
@@ -254,7 +254,7 @@ void mvOpeningRunMakeMainCamera(void)
         	CAMERA_MASK_DLLINK(6),
         	-1,
         	TRUE,
-        	nOMObjProcessKindProc,
+        	nGCProcessKindProc,
         	NULL,
         	1,
         	FALSE
@@ -269,7 +269,7 @@ void mvOpeningRunMakeWallpaperCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -278,7 +278,7 @@ void mvOpeningRunMakeWallpaperCamera(void)
             CAMERA_MASK_DLLINK(28),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE

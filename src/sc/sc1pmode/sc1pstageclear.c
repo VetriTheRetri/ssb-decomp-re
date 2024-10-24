@@ -987,7 +987,7 @@ void func_ovl56_80132E40(f32 x, f32 y, s32 objective_num)
 	sSC1PStageClearBonusObjectiveGObjs[objective_num] = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 
 	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjProcess(gobj, func_ovl56_80132DC0, nOMObjProcessKindProc, 1);
+	gcAddGObjProcess(gobj, func_ovl56_80132DC0, nGCProcessKindProc, 1);
 
 	gobj->user_data.u = (objective_num * 10) + sSC1PStageClearTotalTimeTics;
 
@@ -1132,7 +1132,7 @@ s32 sc1PStageClearGetAppendBonusStatPoints(s32 bonus_id, s32 bonus_num, f32 x, f
 	sSC1PStageClearBonusStatGObjs[bonus_num] = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 
 	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjProcess(gobj, sc1PStageClearCommonProcUpdate, nOMObjProcessKindProc, 1);
+	gcAddGObjProcess(gobj, sc1PStageClearCommonProcUpdate, nGCProcessKindProc, 1);
 
 	gobj->user_data.u = (bonus_num * 10) + sSC1PStageClearTotalTimeTics;
 
@@ -1215,7 +1215,7 @@ void sc1PStageClearMakeBonusPageArrow(void)
 	sSC1PStageClearBonusStatGObjs[9] = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 
 	gcAddGObjDisplay(gobj, sc1PStageClearTextFuncDisplay, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjProcess(gobj, sc1PStageClearCommonProcUpdate, nOMObjProcessKindProc, 1);
+	gcAddGObjProcess(gobj, sc1PStageClearCommonProcUpdate, nGCProcessKindProc, 1);
 
 	gobj->user_data.u = sSC1PStageClearTotalTimeTics + 90;
 
@@ -1381,7 +1381,7 @@ void sc1PStageClearMakeTextCamera(void)
 	(
 		gcMakeCameraGObj
 		(
-			nOMObjCommonKindSceneCamera,
+			nGCCommonKindSceneCamera,
 			NULL,
 			16,
 			GOBJ_LINKORDER_DEFAULT,
@@ -1390,7 +1390,7 @@ void sc1PStageClearMakeTextCamera(void)
 			CAMERA_MASK_DLLINK(26),
 			-1,
 			FALSE,
-			nOMObjProcessKindProc,
+			nGCProcessKindProc,
 			NULL,
 			1,
 			FALSE
@@ -1406,7 +1406,7 @@ void sc1PStageClearMakeWallpaperCamera(void)
 	(
 		gcMakeCameraGObj
 		(
-			nOMObjCommonKindSceneCamera,
+			nGCCommonKindSceneCamera,
 			NULL,
 			16,
 			GOBJ_LINKORDER_DEFAULT,
@@ -1415,7 +1415,7 @@ void sc1PStageClearMakeWallpaperCamera(void)
 			CAMERA_MASK_DLLINK(27),
 			-1,
 			FALSE,
-			nOMObjProcessKindProc,
+			nGCProcessKindProc,
 			NULL,
 			1,
 			FALSE

@@ -23,7 +23,7 @@ extern intptr_t D_NF_000001B8;
 extern uintptr_t lOverlay7ArenaHi; // 0x80392A00
 extern uintptr_t lOverlay7ArenaLo; // 0x80190FA0
 extern void* gGMCommonFiles[/* */];
-extern GObj* gOMObjCommonLinks[OM_COMMON_MAX_LINKS];
+extern GObj* gGCCommonLinks[OM_COMMON_MAX_LINKS];
 
 // Forward declarations
 void scTrainingMode_LoadFiles();
@@ -165,7 +165,7 @@ lbFileNode gOverlay7ForceStatusBuffer[7];
 // 0x8018D0C0
 void scTrainingMode_SetPauseGObjRenderFlags(u32 flags)
 {
-	GObj* pause_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDPauseMenu];
+	GObj* pause_gobj = gGCCommonLinks[nGCCommonLinkIDPauseMenu];
 
 	while (pause_gobj != NULL)
 	{
@@ -316,7 +316,7 @@ sb32 scTrainingMode_UpdateCPOption()
 // 0x8018D4D0
 s32 scTrainingMode_GetSpawnableItemCount()
 {
-	GObj* item_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDItem];
+	GObj* item_gobj = gGCCommonLinks[nGCCommonLinkIDItem];
 	s32 item_count;
 
 	for (item_count = 0; item_gobj != NULL; item_gobj = item_gobj->link_next)
@@ -622,7 +622,7 @@ SObj* scTrainingMode_MakeStatDisplaySObj(GObj* interface_gobj, scTrainingSprites
 void scTrainingMode_InitStatDisplayTextInterface()
 {
 	s32 i;
-	GObj* interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xB, 0x80000000);
+	GObj* interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, 0xB, 0x80000000);
 
 	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 0x17, 0x80000000, -1);
 
@@ -719,7 +719,7 @@ void scTrainingMode_MakeDamageDisplayInterface()
 	s32 i;
 
 	gTrainingModeStruct.damage_display_gobj = interface_gobj
-		= gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xBU, 0x80000000);
+		= gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, 0xBU, 0x80000000);
 	gcAddGObjDisplay(interface_gobj, scTrainingMode_UpdateDamageInfo, 0x17U, 0x80000000, -1);
 	gcAddGObjProcess(interface_gobj, scTrainingMode_UpdateDamageResetWait, 1, 4);
 
@@ -792,7 +792,7 @@ void scTrainingMode_MakeComboDisplayInterface()
 	s32 i;
 
 	gTrainingModeStruct.combo_display_gobj = interface_gobj
-		= gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xBU, 0x80000000);
+		= gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, 0xBU, 0x80000000);
 
 	gcAddGObjDisplay(interface_gobj, scTrainingMode_UpdateComboInfo, 0x17U, 0x80000000, -1);
 	gcAddGObjProcess(interface_gobj, scTrainingMode_UpdateComboResetWait, 1, 4);
@@ -820,7 +820,7 @@ void scTrainingMode_MakeSpeedDisplayInterface()
 	SObj* sobj;
 
 	gTrainingModeStruct.speed_display_gobj = interface_gobj
-		= gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xB, 0x80000000);
+		= gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, 0xB, 0x80000000);
 	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 0x17, 0x80000000U, -1);
 	sobj = lbCommonMakeSObjForGObj(
 		interface_gobj, gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.speed_menu_option + 27]);
@@ -844,7 +844,7 @@ void scTrainingMode_MakeCPDisplayInterface()
 	GObj* interface_gobj;
 	SObj* sobj;
 
-	gTrainingModeStruct.cp_display_gobj = interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xB, 0x80000000);
+	gTrainingModeStruct.cp_display_gobj = interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, 0xB, 0x80000000);
 	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 0x17, 0x80000000, -1);
 	sobj = lbCommonMakeSObjForGObj(interface_gobj,
 								  gTrainingModeStruct.display_option_sprites[gTrainingModeStruct.cp_menu_option + 31]);
@@ -905,7 +905,7 @@ void scTrainingMode_MakeItemDisplayInterface()
 	SObj* sobj;
 
 	gTrainingModeStruct.item_display_gobj = interface_gobj
-		= gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xB, 0x80000000);
+		= gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, 0xB, 0x80000000);
 	gcAddGObjDisplay(interface_gobj, scTrainingMode_UpdateItemDisplay, 0x17, 0x80000000, -1);
 	sobj = lbCommonMakeSObjForGObj(interface_gobj, gTrainingModeStruct.display_option_sprites[37]);
 
@@ -984,7 +984,7 @@ void scTrainingMode_RenderMainMenu(GObj* interface_gobj)
 // 0x8018EE10
 void scTrainingMode_MakeMainMenuInterface()
 {
-	gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xE, 0x80000000), scTrainingMode_RenderMainMenu,
+	gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, 0xE, 0x80000000), scTrainingMode_RenderMainMenu,
 						0x16, 0x80000000, -1);
 }
 
@@ -1016,7 +1016,7 @@ void scTrainingMode_MakeCPOptionInterface()
 	GObj* interface_gobj;
 	SObj* sobj;
 
-	gTrainingModeStruct.cp_option_gobj = interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xE, 0x80000000);
+	gTrainingModeStruct.cp_option_gobj = interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, 0xE, 0x80000000);
 
 	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 0x17, 0x80000000, -1);
 
@@ -1065,7 +1065,7 @@ void scTrainingMode_MakeItemOptionInterface()
 	SObj* sobj;
 
 	gTrainingModeStruct.item_option_gobj = interface_gobj
-		= gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xE, 0x80000000);
+		= gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, 0xE, 0x80000000);
 
 	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 0x17, 0x80000000, -1);
 
@@ -1113,7 +1113,7 @@ void scTrainingMode_MakeSpeedOptionInterface()
 	SObj* sobj;
 
 	gTrainingModeStruct.speed_option_gobj = interface_gobj
-		= gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xE, 0x80000000);
+		= gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, 0xE, 0x80000000);
 
 	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 0x17, 0x80000000, -1);
 
@@ -1160,7 +1160,7 @@ void scTrainingMode_MakeViewOptionInterface()
 	SObj* sobj;
 
 	gTrainingModeStruct.view_option_gobj = interface_gobj
-		= gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xE, 0x80000000);
+		= gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, 0xE, 0x80000000);
 
 	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 0x17, 0x80000000, -1);
 
@@ -1234,7 +1234,7 @@ void scTrainingMode_MakeOptionArrowInterface()
 	GObj* interface_gobj;
 
 	gTrainingModeStruct.arrow_option_gobj = interface_gobj
-		= gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xE, 0x80000000);
+		= gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, 0xE, 0x80000000);
 	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 0x17, 0x80000000, -1);
 	scTrainingMode_InitOptionArrowColors(lbCommonMakeSObjForGObj(
 		interface_gobj, gTrainingModeStruct.menu_option_sprites[nSCTrainingMenuOptionSpriteLeftArrow]));
@@ -1274,7 +1274,7 @@ void func_ovl7_8018F8FC() // Unused?
 	GObj* interface_gobj;
 
 	gTrainingModeStruct.unk_trainmenu_0x7C = interface_gobj
-		= gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xE, 0x80000000);
+		= gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, 0xE, 0x80000000);
 	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 0x17, 0x80000000, -1);
 	func_ovl7_8018F7C8(interface_gobj, &gTrainingModeStruct.unk_trainmenu_0x34[gTrainingModeStruct.main_menu_option])
 		->pos.y
@@ -1331,7 +1331,7 @@ void func_ovl7_8018FB40() // Unused?
 {
 	GObj* interface_gobj;
 
-	gTrainingModeStruct.combo0 = interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xE, 0x80000000);
+	gTrainingModeStruct.combo0 = interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, 0xE, 0x80000000);
 	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 0x17, 0x80000000, -1);
 	func_ovl7_8018F7C8(interface_gobj, gTrainingModeStruct.unk_trainmenu_0x38);
 	func_ovl7_8018FA54();
@@ -1351,7 +1351,7 @@ void scTrainingMode_MakeMenuCursorInterface()
 	GObj* interface_gobj;
 	SObj* target_sprite;
 
-	gTrainingModeStruct.cursor_gobj = interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xE, 0x80000000);
+	gTrainingModeStruct.cursor_gobj = interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, 0xE, 0x80000000);
 	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 0x17, 0x80000000, -1);
 	target_sprite = lbCommonMakeSObjForGObj(interface_gobj,
 										   gTrainingModeStruct.menu_option_sprites[nSCTrainingMenuOptionSpriteCursor]);
@@ -1420,7 +1420,7 @@ void scTrainingMode_UpdateCursorUnderline()
 // 0x80190070
 void scTrainingMode_MakeCursorUnderlineInterface()
 {
-	gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, 0xE, 0x80000000),
+	gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, 0xE, 0x80000000),
 						scTrainingMode_RenderCursorUnderline, 0x16, 0x80000000, -1);
 	scTrainingMode_UpdateCursorUnderline();
 }
@@ -1458,7 +1458,7 @@ void scTrainingMode_SetPlayDefaultMusicID()
 // 0x801901A0
 void scTrainingMode_SetGameStatusGo()
 {
-	GObj* fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+	GObj* fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
 	while (fighter_gobj != NULL)
 	{
@@ -1559,7 +1559,7 @@ void scTrainingMode_InitTrainingMode()
 
 	color = dSCTrainingFadeColor;
 
-	lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
+	lbFadeMakeActor(nGCCommonKindTransition, nGCCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 }
 
 // 0x801905A8

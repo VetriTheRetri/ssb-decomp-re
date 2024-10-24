@@ -200,7 +200,7 @@ void mnScreenAdjustMakeFrameCamera(void)
             CAMERA_MASK_DLLINK(0),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -225,7 +225,7 @@ void mnScreenAdjustMakeSpriteCamera(void)
             CAMERA_MASK_DLLINK(1),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE

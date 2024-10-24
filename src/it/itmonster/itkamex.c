@@ -29,8 +29,8 @@ itCreateDesc dITKamexItemDesc =
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,             // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformTraRotRpyR,             // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -95,8 +95,8 @@ wpCreateDesc dITKamexWeaponHydroWeaponDesc =
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyRSca,          // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformTraRotRpyRSca,          // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -351,7 +351,7 @@ sb32 itKamexCommonProcMap(GObj *item_gobj)
 // 0x80180BAC - Turn Blastoise towards the side with the most enemy players
 void itKamexCommonFindTargetsSetLR(GObj *item_gobj)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
     s32 unused1;
     GObj *victim_gobj;
     s32 unused2[3];
@@ -405,7 +405,7 @@ GObj* itKamexMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         dobj = DObjGetStruct(item_gobj);
 
-        gcAddOMMtxForDObjFixed(dobj, 0x48, 0);
+        gcAddGCMatrixForDObjFixed(dobj, 0x48, 0);
 
         dobj->translate.vec.f = *pos;
 

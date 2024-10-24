@@ -64,7 +64,7 @@
 #define CAMERA_FLAG_GFXEND          0x10    // Run SCTaskGfxEnd task type?
 #define CAMERA_FLAG_BRANCHSYNC      0x40    // Sync all Branch DLs with main DL buffers?
 
-union OMUserData
+union GCUserData
 {
     s32 s;
     u32 u;
@@ -117,7 +117,7 @@ union AObjScript
     AObjEvent32 *event32;
 };
 
-struct _AObj
+struct AObj
 {
     AObj *next;
     u8 track;
@@ -131,7 +131,7 @@ struct _AObj
     void *interpolate;
 };
 
-struct _GObjThread
+struct GObjThread
 {
     GObjThread *next;
     OSThread thread;
@@ -139,22 +139,22 @@ struct _GObjThread
     size_t stack_size;
 };
 
-struct _OMThreadStackNode
+struct GCThreadStackNode
 {
-    OMThreadStackNode *next;
+    GCThreadStackNode *next;
     size_t stack_size;
     u64 stack[1];
 }; // size == 0x08 + VLA
 
 // List that connects lists of stack nodes of `size` bytes
-struct _OMThreadStackList 
+struct GCThreadStackList 
 {
-    OMThreadStackList *next;
-    OMThreadStackNode *stack;
+    GCThreadStackList *next;
+    GCThreadStackNode *stack;
     size_t size;
 };
 
-struct _GObjProcess
+struct GObjProcess
 {
     GObjProcess *link_next;
     GObjProcess *link_prev;
@@ -211,20 +211,20 @@ struct GObj
     f32 anim_frame;                     // Current frame of animation?
     u32 flags;                          // GObj logic flags (e.g. 0x1 = skip rendering)
     void(*proc_anim)(DObj*, s32, f32);  // DObj animation renderer?
-    OMUserData user_data;
+    GCUserData user_data;
 };
 
-struct _OMMtx 
+struct GCMatrix 
 {
-    OMMtx *next;
+    GCMatrix *next;
     u8 kind;
     u8 unk05;
     Mtx mtx;
 };
 
-struct OMPersp
+struct GCPersp
 {
-    OMMtx *ommtx;
+    GCMatrix *gcmatrix;
     u16 norm;
     f32 fovy;
     f32 aspect;
@@ -233,23 +233,23 @@ struct OMPersp
     f32 scale;
 };
 
-struct OMFrustum
+struct GCFrustum
 {
-    OMMtx *ommtx;
+    GCMatrix *gcmatrix;
     f32 l, r, b, t, n, f;
     f32 scale;
 };
 
-struct OMOrtho
+struct GCOrtho
 {
-    OMMtx *ommtx;
+    GCMatrix *gcmatrix;
     f32 l, r, b, t, n, f;
     f32 scale;
 };
 
-struct OMTranslate
+struct GCTranslate
 {
-    OMMtx *ommtx;
+    GCMatrix *gcmatrix;
 
     union
     {
@@ -259,9 +259,9 @@ struct OMTranslate
     } vec;
 };
 
-struct OMRotate
+struct GCRotate
 {
-    OMMtx *ommtx;
+    GCMatrix *gcmatrix;
 
     f32 a;          // Rotation angle
 
@@ -272,9 +272,9 @@ struct OMRotate
     } vec;
 };
 
-struct OMScale
+struct GCScale
 {
-    OMMtx *ommtx;
+    GCMatrix *gcmatrix;
     
     union
     {
@@ -295,7 +295,7 @@ struct DObjDynamicStore
     /* 0x04 */ u8 data[1];
 }; // size == 4 + VLA
 
-struct _MObjSub
+struct MObjSub
 {
     u16 pad00;
     u8 fmt;
@@ -339,7 +339,7 @@ struct _MObjSub
     s32 unk74;
 };
 
-struct _MObj
+struct MObj
 {
     MObj *next;
     GObj *parent_gobj;              // Unconfirmed
@@ -354,7 +354,7 @@ struct _MObj
     f32 anim_wait;                  // Animation frames remaining until next command(s) are parsed
     f32 anim_speed;                 // Animation playback rate / interpolation, multi-purpose?
     f32 anim_frame;                 // Current animation frame, multi-purpose?
-	OMUserData user_data;           // Actually just padding?
+	GCUserData user_data;           // Actually just padding?
 };
 
 struct DObjTransformTypes
@@ -403,13 +403,13 @@ struct DObjDistDLLink
     DObjDLLink *dl_link;
 };
 
-struct OMGfxLink
+struct GCGfxLink
 {
     u8 id;
     Gfx *dls[4];
 };
 
-struct _DObj
+struct DObj
 {
     DObj *alloc_free;       // Has to do with memory allocation
     GObj *parent_gobj;
@@ -417,9 +417,9 @@ struct _DObj
     DObj *sib_prev;         // Previous sibling? 0xC
     DObj *child;            // Child? 0x10
     DObj *parent;
-    OMTranslate translate;
-    OMRotate rotate;
-    OMScale scale;
+    GCTranslate translate;
+    GCRotate rotate;
+    GCScale scale;
 
     DObjDynamicStore *dynstore;
 
@@ -436,8 +436,8 @@ struct _DObj
 
     u8 flags;
     ub8 is_anim_root;       // TRUE if this DObj's animation script is at the top of the hierarchy?
-    u8 ommtx_len;
-    OMMtx *ommtx[5];
+    u8 gcmatrix_len;
+    GCMatrix *gcmatrix[5];
     AObj *aobj;
 
     AObjScript anim_joint;
@@ -455,17 +455,17 @@ struct _DObj
      * YakumonoID
      * Color for 1P Game Master Hand defeat fadeout (?)
      */
-    OMUserData user_data;
+    GCUserData user_data;
 };
 
-struct _SObj                    // Sprite object
+struct SObj                    // Sprite object
 {
     SObj *alloc_free;           // Has to do with memory allocation
     GObj *parent_gobj;          // GObj that owns this SObj
     SObj *next;                 // Next SObj in linked list
     SObj *prev;                 // Prev SObj in linked list
     Sprite sprite;              // Sprite data
-    OMUserData user_data;       // Custom parameters attached to SObj
+    GCUserData user_data;       // Custom parameters attached to SObj
     Vec2f pos;                  // Position on screen; ghosting effect if out of camera scissor bounds?
     syColorRGBA envcolor;       // Color of outline around / under sprite?
     u8 cmt, cms;                // t-axis and s-axis mirror, no-mirror, wrap and clamp flags
@@ -475,7 +475,7 @@ struct _SObj                    // Sprite object
 
 struct CameraVec
 {
-    OMMtx *ommtx;
+    GCMatrix *gcmatrix;
     Vec3f eye; // Either camera terms do not translate very well here or I'm just too incompetent... this rotates about the focus point
     Vec3f at;  // This moves the camera on the XYZ planes
     Vec3f up;
@@ -488,7 +488,7 @@ struct CameraDesc
     f32 upx;
 };
 
-struct _Camera
+struct Camera
 {
     Camera *next;
     GObj *parent_gobj;
@@ -497,16 +497,16 @@ struct _Camera
 
     union CameraProjection
     {
-        OMPersp persp;
-        OMOrtho ortho;
-        OMFrustum frustum;
+        GCPersp persp;
+        GCOrtho ortho;
+        GCFrustum frustum;
 
     } projection;
 
     CameraVec vec;
 
-    s32 ommtx_len;
-    OMMtx *ommtx[2];
+    s32 gcmatrix_len;
+    GCMatrix *gcmatrix[2];
 
     AObj *aobj;
     AObjScript camanim_joint;
@@ -523,13 +523,13 @@ struct _Camera
     s32 unk_camera_0x8C;
 };
 
-struct _OMSetup 
+struct GCSetup 
 {
     GObjThread *gobjthreads;
     s32 gobjthreads_num;
 
     size_t threadstack_size;
-    OMThreadStackNode *threadstacks;
+    GCThreadStackNode *threadstacks;
     u32 num_stacks;
 
     s32 unk_omsetup_0x14;
@@ -541,8 +541,8 @@ struct _OMSetup
     s32 gobjs_num;
     size_t gobj_size;
 
-    OMMtx *ommtxes;
-    s32 ommtxs_num;
+    GCMatrix *gcmatrixes;
+    s32 gcmatrixs_num;
 
     void (*proc_eject)(DObjDynamicStore*);
 

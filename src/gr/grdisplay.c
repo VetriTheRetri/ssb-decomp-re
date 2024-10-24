@@ -167,9 +167,9 @@ void grDisplayDObjSetNoAnimMtx(GObj *ground_gobj, DObjDesc *dobjdesc)
     {
         if ((next_dobj->aobj == NULL) && !(dobjdesc->index & 0xF000))
         {
-            for (i = 0; i < next_dobj->ommtx_len; i++)
+            for (i = 0; i < next_dobj->gcmatrix_len; i++)
             {
-                next_dobj->ommtx[i]->unk05 = 1;
+                next_dobj->gcmatrix[i]->unk05 = 1;
             }
         }
         dobjdesc++;
@@ -188,7 +188,7 @@ GObj* grDisplayMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **p
     {
         return NULL;
     }
-    ground_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGrRender, NULL, nOMObjCommonLinkIDGroundRender, GOBJ_LINKORDER_DEFAULT);
+    ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGrRender, NULL, nGCCommonLinkIDGroundRender, GOBJ_LINKORDER_DEFAULT);
 
     if (gMPCollisionGroundData->layer_mask & (1 << gr_desc_id))
     {
@@ -197,7 +197,7 @@ GObj* grDisplayMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **p
     else func_display = dGRDisplayDescs[gr_desc_id].func_displaypri;
 
     gcAddGObjDisplay(ground_gobj, func_display, dGRDisplayDescs[gr_desc_id].dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcSetupCustomDObjs(ground_gobj, gr_desc->dobjdesc, p_dobj, nOMTransformTraRotRpyRSca, nOMTransformNull, nOMTransformNull);
+    gcSetupCustomDObjs(ground_gobj, gr_desc->dobjdesc, p_dobj, nGCTransformTraRotRpyRSca, nGCTransformNull, nGCTransformNull);
 
     if (gr_desc->p_mobjsubs != NULL)
     {
@@ -206,12 +206,12 @@ GObj* grDisplayMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **p
     if ((gr_desc->anim_joints != NULL) || (gr_desc->p_matanim_joints != NULL))
     {
         gcAddAnimAll(ground_gobj, gr_desc->anim_joints, gr_desc->p_matanim_joints, 0.0F);
-        gcAddGObjProcess(ground_gobj, dGRDisplayDescs[gr_desc_id].proc_update, nOMObjProcessKindProc, 4);
+        gcAddGObjProcess(ground_gobj, dGRDisplayDescs[gr_desc_id].proc_update, nGCProcessKindProc, 4);
         gcPlayAnimAll(ground_gobj);
     }
     else if (gr_desc_id == 1)
     {
-        gcAddGObjProcess(ground_gobj, mpCollisionAdvanceUpdateFrame, nOMObjProcessKindProc, 4);
+        gcAddGObjProcess(ground_gobj, mpCollisionAdvanceUpdateFrame, nGCProcessKindProc, 4);
     }
     grDisplayDObjSetNoAnimMtx(ground_gobj, gr_desc->dobjdesc);
 

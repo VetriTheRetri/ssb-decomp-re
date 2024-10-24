@@ -179,7 +179,7 @@ void mnMessageMakeTintCamera(void)
             CAMERA_MASK_DLLINK(2),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -204,7 +204,7 @@ void mnMessageMakeMessageCamera(void)
             CAMERA_MASK_DLLINK(1),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -229,7 +229,7 @@ void mnMessageMakeWallpaperCamera(void)
             CAMERA_MASK_DLLINK(0),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -254,7 +254,7 @@ void mnMessageMakeExclaimCamera(void)
             CAMERA_MASK_DLLINK(3),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE

@@ -310,7 +310,7 @@ void ftPublicityProcUpdate(GObj *public_gobj)
     }
     players_down_bak = sFTPublicityPlayersDown;
     sFTPublicityPlayersDown = 0;
-    fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
     down_gobj = NULL;
 
@@ -400,9 +400,9 @@ void ftPublicityMakeActor(void)
 {
     gcAddGObjProcess
     (
-        gcMakeGObjSPAfter(nOMObjCommonKindPublicity, NULL, 0xD, GOBJ_LINKORDER_DEFAULT), 
+        gcMakeGObjSPAfter(nGCCommonKindPublicity, NULL, 0xD, GOBJ_LINKORDER_DEFAULT), 
         ftPublicityProcUpdate, 
-        nOMObjProcessKindProc, 
+        nGCProcessKindProc, 
         0
     );
     sFTPublicityCommonFramesSince = U16_MAX + 1;

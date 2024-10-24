@@ -11,10 +11,10 @@
 #include "ovl10.h"
 
 // Externs
-extern uintptr_t lTitleScreenParticleBankGenLo; // B22C30
-extern uintptr_t lTitleScreenParticleBankGenHi; // B22D40
-extern uintptr_t lTitleScreenParticleBankTextureLo; // B22D40
-extern uintptr_t lTitleScreenParticleBankTextureHi; // B277B0
+extern uintptr_t lTitleScreenParticleBankScriptsLo; // B22C30
+extern uintptr_t lTitleScreenParticleBankScriptsHi; // B22D40
+extern uintptr_t lTitleScreenParticleBankTexturesLo; // B22D40
+extern uintptr_t lTitleScreenParticleBankTexturesHi; // B277B0
 extern uintptr_t lOverlay10ArenaLo; // 0x801345B0
 extern uintptr_t lOverlay10ArenaHi; // 0x80369240
 
@@ -390,7 +390,7 @@ void mnTitleSetEndLogoPosition(void)
 	GObj *smash_logo_gobj;
 	SObj *smash_logo_sobj;
 
-	smash_logo_gobj = gOMObjCommonLinks[10];
+	smash_logo_gobj = gGCCommonLinks[10];
 
 	if (gSceneData.scene_previous == nSCKindOpeningNewcomers)
 	{
@@ -415,7 +415,7 @@ void mnTitleSetEndLayout(void)
 	GObj *gobj;
 	SObj *sobj;
 
-	gobj = gOMObjCommonLinks[6];
+	gobj = gGCCommonLinks[6];
 
 #ifdef AVOID_UB
 	texture_gobj = NULL;
@@ -430,7 +430,7 @@ void mnTitleSetEndLayout(void)
 		gobj = gobj->link_next;
 	}
 
-	gobj = gOMObjCommonLinks[8];
+	gobj = gGCCommonLinks[8];
 
 	while (gobj != NULL)
 	{
@@ -578,7 +578,7 @@ void mnTitleTransitionFromFireLogo(void)
 	GObj *current_gobj;
 	GObj *next_gobj;
 
-	current_gobj = gOMObjCommonLinks[7];
+	current_gobj = gGCCommonLinks[7];
 
 	while (current_gobj != NULL)
 	{
@@ -590,13 +590,13 @@ void mnTitleTransitionFromFireLogo(void)
 		}
 		current_gobj = next_gobj;
 	}
-	if (gOMObjCommonLinks[4] != NULL)
+	if (gGCCommonLinks[4] != NULL)
 	{
-		gcEjectGObj(gOMObjCommonLinks[4]);
+		gcEjectGObj(gGCCommonLinks[4]);
 	}
-	if (gOMObjCommonLinks[14] != NULL)
+	if (gGCCommonLinks[14] != NULL)
 	{
-		gcEjectGObj(gOMObjCommonLinks[14]);
+		gcEjectGObj(gGCCommonLinks[14]);
 	}
 	mnTitleShowGObjLinkID(6);
 	mnTitleUpdateFireVars();
@@ -605,7 +605,7 @@ void mnTitleTransitionFromFireLogo(void)
 // 0x801323AC
 void mnTitleShowGObjLinkID(s32 link_id)
 {
-	GObj *gobj = gOMObjCommonLinks[link_id];
+	GObj *gobj = gGCCommonLinks[link_id];
 
 	while (gobj != NULL)
 	{
@@ -910,7 +910,7 @@ void mnTitleMakeFire(void)
 	if (fire_gobj != NULL)
 	{
 		gcAddGObjDisplay(fire_gobj, mnTitleFireFuncDisplay, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
-		gcAddGObjProcess(fire_gobj, mnTitleFireProcUpdate, nOMObjProcessKindProc, 1);
+		gcAddGObjProcess(fire_gobj, mnTitleFireProcUpdate, nGCProcessKindProc, 1);
 
 		for (i = 0; i < 2; i++)
 		{
@@ -1028,7 +1028,7 @@ void mnTitleMakeLogoNoOpening(void)
 		GOBJ_DLLINKORDER_DEFAULT,
 		-1,
 		lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleTextureConfigs[8].offset),
-		nOMObjProcessKindProc,
+		nGCProcessKindProc,
 		NULL,
 		1
 	);
@@ -1067,7 +1067,7 @@ void mnTitleMakeLogo(void)
 
 		fire_logo_gobj = gcMakeGObjSPAfter(6, NULL, 7, GOBJ_LINKORDER_DEFAULT);
 		gcAddGObjDisplay(fire_logo_gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
-		gcAddGObjProcess(fire_logo_gobj, mnTitlePlayAnim, nOMObjProcessKindProc, 1);
+		gcAddGObjProcess(fire_logo_gobj, mnTitlePlayAnim, nGCProcessKindProc, 1);
 
 		fire_logo_gobj->user_data.p = animated_logo_gobj;
 		fire_logo_dobj = DObjGetStruct(animated_logo_gobj)->child;
@@ -1102,7 +1102,7 @@ void mnTitleMakeLogo(void)
 			GOBJ_DLLINKORDER_DEFAULT,
 			-1,
 			lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleAnimatedLogoOffsets[3]),
-			nOMObjProcessKindProc,
+			nGCProcessKindProc,
 			mnTitleLogoProcUpdate,
 			1
 		);
@@ -1159,7 +1159,7 @@ void mnTitleMakeLabels(void)
 
 	gobj = gcMakeGObjSPAfter(8, NULL, 8, GOBJ_LINKORDER_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjProcess(gobj, mnTitleTitleProcUpdate, nOMObjProcessKindProc, 1);
+	gcAddGObjProcess(gobj, mnTitleTitleProcUpdate, nGCProcessKindProc, 1);
 
 	gobj->user_data.p = animation_gobj;
 	animation_dobj = DObjGetStruct(animation_gobj)->child;
@@ -1178,7 +1178,7 @@ void mnTitleMakeLabels(void)
 
 	gobj = gcMakeGObjSPAfter(9, NULL, 8, GOBJ_LINKORDER_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjProcess(gobj, mnTitleUpdateHeaderAndFooterPosition, nOMObjProcessKindProc, 1);
+	gcAddGObjProcess(gobj, mnTitleUpdateHeaderAndFooterPosition, nGCProcessKindProc, 1);
 
 	gobj->user_data.p = animation_gobj;
 
@@ -1212,7 +1212,7 @@ void mnTitleMakePressStart(void)
 
 	press_start_gobj = gcMakeGObjSPAfter(8, NULL, 9, GOBJ_LINKORDER_DEFAULT);
 	gcAddGObjDisplay(press_start_gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjProcess(press_start_gobj, mnTitlePressStartProcUpdate, nOMObjProcessKindProc, 1);
+	gcAddGObjProcess(press_start_gobj, mnTitlePressStartProcUpdate, nGCProcessKindProc, 1);
 
 	press_start_gobj->user_data.p = press_start_anim_gobj;
 
@@ -1255,14 +1255,14 @@ void mnTitleMakeSlash(void)
 			lbRelocGetDataFromFile(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_2),
 			lbRelocGetDataFromFile(MObjSub***, sMNTitleFiles[0], &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_1),
 			NULL,
-			nOMTransformTraRotRpyRSca,
-			nOMTransformNull,
-			nOMTransformNull
+			nGCTransformTraRotRpyRSca,
+			nGCTransformNull,
+			nGCTransformNull
 		);
 		gcAddAnimJointAll(gobj, lbRelocGetDataFromFile(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_3), 0.0F);
 		gcAddMatAnimJointAll(gobj, lbRelocGetDataFromFile(AObjEvent32***, sMNTitleFiles[0], &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_4), 0.0F);
 		gcPlayAnimAll(gobj);
-		gcAddGObjProcess(gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
+		gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
 	}
 }
 
@@ -1332,7 +1332,7 @@ s32 mnTitleMakeCameras(void)
 	Camera *cam;
 
 	sMNTitleFireCameraGObj = gcMakeDefaultCameraGObj(2, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
-	gcAddGObjProcess(sMNTitleFireCameraGObj, mnTitleFireCameraProcUpdate, nOMObjProcessKindProc, 1);
+	gcAddGObjProcess(sMNTitleFireCameraGObj, mnTitleFireCameraProcUpdate, nGCProcessKindProc, 1);
 
 	camera_gobj = gcMakeCameraGObj
 	(
@@ -1345,7 +1345,7 @@ s32 mnTitleMakeCameras(void)
 		CAMERA_MASK_DLLINK(1) | CAMERA_MASK_DLLINK(0),
 		-1,
 		FALSE,
-		nOMObjProcessKindProc,
+		nGCProcessKindProc,
 		NULL,
 		1,
 		FALSE
@@ -1353,11 +1353,11 @@ s32 mnTitleMakeCameras(void)
 	cam = CameraGetStruct(camera_gobj);
 	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-	camera_gobj = gcMakeCameraGObj(3, NULL, 3, GOBJ_LINKORDER_DEFAULT, func_80017EC0, 40, CAMERA_MASK_DLLINK(2), -1, FALSE, nOMObjProcessKindProc, NULL, 1, FALSE);
+	camera_gobj = gcMakeCameraGObj(3, NULL, 3, GOBJ_LINKORDER_DEFAULT, func_80017EC0, 40, CAMERA_MASK_DLLINK(2), -1, FALSE, nGCProcessKindProc, NULL, 1, FALSE);
 	cam = CameraGetStruct(camera_gobj);
 
-	gcAddOMMtxForCamera(cam, nOMTransformOrtho, 0);
-	gcAddOMMtxForCamera(cam, nOMTransformLookAt, 0);
+	gcAddGCMatrixForCamera(cam, nGCTransformOrtho, 0);
+	gcAddGCMatrixForCamera(cam, nGCTransformLookAt, 0);
 
 	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 	
@@ -1366,7 +1366,7 @@ s32 mnTitleMakeCameras(void)
 	cam->vec.eye.x = cam->vec.eye.y = 0.0F;
 	cam->vec.eye.z = 2000.0F;
 
-	camera_gobj = gcMakeCameraGObj(3, NULL, 3, GOBJ_LINKORDER_DEFAULT, func_80017EC0, 80, CAMERA_MASK_DLLINK(3), -1, TRUE, nOMObjProcessKindProc, NULL, 1, FALSE);
+	camera_gobj = gcMakeCameraGObj(3, NULL, 3, GOBJ_LINKORDER_DEFAULT, func_80017EC0, 80, CAMERA_MASK_DLLINK(3), -1, TRUE, nGCProcessKindProc, NULL, 1, FALSE);
 	cam = CameraGetStruct(camera_gobj);
 
 	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -1407,7 +1407,7 @@ void mnTitleMakeLogoFire(void)
 
 	gobj->cam_mask = CAMERA_MASK_DLLINK(0);
 
-	sMNTitleParticleBankID = efAllocGetAddParticleBankID(&lTitleScreenParticleBankGenLo, &lTitleScreenParticleBankGenHi, &lTitleScreenParticleBankTextureLo, &lTitleScreenParticleBankTextureHi);
+	sMNTitleParticleBankID = efAllocGetAddParticleBankID(&lTitleScreenParticleBankScriptsLo, &lTitleScreenParticleBankScriptsHi, &lTitleScreenParticleBankTexturesLo, &lTitleScreenParticleBankTexturesHi);
 }
 
 // 0x80133E68
@@ -1423,7 +1423,7 @@ void mnTitleMakeLogoFireParticles(void)
 		gcSetupCommonDObjs(logo_fire_effect_gobj, lbRelocGetDataFromFile(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_1), NULL);
 		gcAddAnimJointAll(logo_fire_effect_gobj, lbRelocGetDataFromFile(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_2), 0.0F);
 		gcPlayAnimAll(logo_fire_effect_gobj);
-		gcAddGObjProcess(logo_fire_effect_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
+		gcAddGObjProcess(logo_fire_effect_gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
 
 		gtor = lbParticleMakeGenerator(sMNTitleParticleBankID, 0);
 

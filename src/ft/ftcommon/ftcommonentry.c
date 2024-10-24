@@ -237,7 +237,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
         break;
 
     case nFTKindBoss:
-        boss_target_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+        boss_target_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
         while (boss_target_gobj != NULL)
         {

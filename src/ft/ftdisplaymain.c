@@ -21,13 +21,13 @@ extern syMallocRegion gSYTaskmanGraphicsHeap;
 // // // // // // // // // // // //
 
 // 0x801312F0
-u8 sFTRenderMainSkyFogAlpha;
+u8 sFTDisplayMainSkyFogAlpha;
 
 // 0x801312F1
-ub8 sFTRenderMainIsShadeFog;
+ub8 sFTDisplayMainIsShadeFog;
 
 // 0x801312F4
-syColorRGBA sFTRenderMainFogColor;
+syColorRGBA sFTDisplayMainFogColor;
 
 // // // // // // // // // // // //
 //                               //
@@ -36,7 +36,7 @@ syColorRGBA sFTRenderMainFogColor;
 // // // // // // // // // // // //
 
 // 0x8012B930
-Vec2f dFTRenderMainShufflePositions[/* */][4] = 
+Vec2f dFTDisplayMainShufflePositions[/* */][4] = 
 {
     // Non-electric
     { 
@@ -56,19 +56,19 @@ Vec2f dFTRenderMainShufflePositions[/* */][4] =
 };
 
 // 0x8012B970
-s32 dFTRenderMainPad0x8012B970[2] = { 0, 0 };
+s32 dFTDisplayMainPad0x8012B970[2] = { 0, 0 };
 
 /* 0x8012B978 - use xxd -i in Linux to convert your collision box texture into an unsigned char[] array;
  * I went out of my way to convert them into unsigned short[] instead, but as long as the bytes match,
  * it doesn't really matter what the datatype is, as the gbi macro doesn't care.
  */
-u16 dFTRenderMainCollisionTexture[/* */] = 
+u16 dFTDisplayMainCollisionTexture[/* */] = 
 {
     #include <ft/ftcollision.txt>
 };
 
 // 0x8012BB78
-Vtx_tn dFTRenderMainCollisionCuboidVtx[/* */] =
+Vtx_tn dFTDisplayMainCollisionCuboidVtx[/* */] =
 {
     { { -15, 15, 15 }, 0, { -16, 512 }, { 0, 0, 127 }, 0xFF },
     { { -15, -15, 15 }, 0, { -16, -16 }, { 0, 0, 127 }, 0xFF },
@@ -97,7 +97,7 @@ Vtx_tn dFTRenderMainCollisionCuboidVtx[/* */] =
 };
 
 // 0x8012BCF8
-Vtx_t dFTRenderMainCollisionEdgeVtx[/* */] = 
+Vtx_t dFTDisplayMainCollisionEdgeVtx[/* */] = 
 { 
     { { -15, 15, 15 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
     { { -15, -15, 15 }, 0, { -16, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
@@ -126,7 +126,7 @@ Vtx_t dFTRenderMainCollisionEdgeVtx[/* */] =
 };
 
 // 0x8012BE78
-Vtx_t dFTRenderMainCollisionCubeCommonVtx0[/* */] = 
+Vtx_t dFTDisplayMainCollisionCubeCommonVtx0[/* */] = 
 {
     { { -15, 15, 15 }, 0, { -16, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
     { { -15, -15, 15 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
@@ -135,7 +135,7 @@ Vtx_t dFTRenderMainCollisionCubeCommonVtx0[/* */] =
 };
 
 // 0x8012BEB8
-Vtx_t dFTRenderMainCollisionCubeCommonVtx1[/* */] = 
+Vtx_t dFTDisplayMainCollisionCubeCommonVtx1[/* */] = 
 { 
     { { -15, 15, -15 }, 0, { -16, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
     { { -15, 15, 15 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
@@ -144,7 +144,7 @@ Vtx_t dFTRenderMainCollisionCubeCommonVtx1[/* */] =
 };
 
 // 0x8012BEF8
-Vtx_t dFTRenderMainCollisionCubeCommonVtx2[/* */] =
+Vtx_t dFTDisplayMainCollisionCubeCommonVtx2[/* */] =
 { 
     { { -15, -15, -15 }, 0, { -16, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
     { { -15, 15, -15 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
@@ -153,7 +153,7 @@ Vtx_t dFTRenderMainCollisionCubeCommonVtx2[/* */] =
 };
 
 // 0x8012BF38
-Vtx_t dFTRenderMainCollisionCubeCommonVtx3[/* */] = 
+Vtx_t dFTDisplayMainCollisionCubeCommonVtx3[/* */] = 
 {
     { { -15, -15, 15 }, 0, { -16, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
     { { -15, -15, -15 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
@@ -162,7 +162,7 @@ Vtx_t dFTRenderMainCollisionCubeCommonVtx3[/* */] =
 };
 
 // 0x8012BF78
-Vtx_t dFTRenderMainCollisionCubeCommonVtx4[/* */] = 
+Vtx_t dFTDisplayMainCollisionCubeCommonVtx4[/* */] = 
 {
     { { 15, 15, 15 }, 0, { -16, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
     { { 15, -15, 15 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
@@ -171,7 +171,7 @@ Vtx_t dFTRenderMainCollisionCubeCommonVtx4[/* */] =
 };
 
 // 0x8012BFB8
-Vtx_t dFTRenderMainCollisionCubeCommonVtx5[/* */] = 
+Vtx_t dFTDisplayMainCollisionCubeCommonVtx5[/* */] = 
 {
     { { -15, 15, -15 }, 0, { -16, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
     { { -15, -15, -15 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
@@ -180,7 +180,7 @@ Vtx_t dFTRenderMainCollisionCubeCommonVtx5[/* */] =
 };
 
 // 0x8012BFF8
-Vtx_t dFTRenderMainMapCollisionBottomVtx[/* */] = 
+Vtx_t dFTDisplayMainMapCollisionBottomVtx[/* */] = 
 {
     { { -30, 30, 0 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
     { { 0, 0, 0 }, 0, { 512, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
@@ -188,7 +188,7 @@ Vtx_t dFTRenderMainMapCollisionBottomVtx[/* */] =
 };
 
 // 0x8012C028
-Vtx_t dFTRenderMainMapCollisionTopVtx[/* */] =
+Vtx_t dFTDisplayMainMapCollisionTopVtx[/* */] =
 {
     { { -30, 0, 0 }, 0, { -16, -16 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
     { { 30, 0, 0 }, 0, { 512, 512 }, { 0xFF, 0xFF, 0xFF, 0xFF } },
@@ -196,7 +196,7 @@ Vtx_t dFTRenderMainMapCollisionTopVtx[/* */] =
 };
 
 // 0x8012C058
-Gfx dFTRenderMainHurtCollisionCuboidDL[/* */] =
+Gfx dFTDisplayMainHurtCollisionCuboidDL[/* */] =
 {
     gsDPPipeSync(),
     gsDPSetCycleType(G_CYC_2CYCLE),
@@ -205,13 +205,13 @@ Gfx dFTRenderMainHurtCollisionCuboidDL[/* */] =
     gsSPLightColor(LIGHT_2, GPACK_RGBA8888(0xC0, 0xC0, 0xC0, 0x00)),
     gsDPSetCombineLERP(PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, COMBINED, 0, SHADE, 0, 0, 0, 0, COMBINED),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
-    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, dFTRenderMainCollisionTexture),
+    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, dFTDisplayMainCollisionTexture),
     gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 4, G_TX_NOLOD),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 255, 512),
     gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 4, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 4, G_TX_NOLOD),
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x003C, 0x003C),
-    gsSPVertex(dFTRenderMainCollisionCuboidVtx, ARRAY_COUNT(dFTRenderMainCollisionCuboidVtx), 0),
+    gsSPVertex(dFTDisplayMainCollisionCuboidVtx, ARRAY_COUNT(dFTDisplayMainCollisionCuboidVtx), 0),
     gsSP2Triangles(0, 1, 2, 0, 3, 0, 2, 0),
     gsSP2Triangles(4, 5, 6, 0, 7, 4, 6, 0),
     gsSP2Triangles(8, 9, 10, 0, 11, 8, 10, 0),
@@ -225,19 +225,19 @@ Gfx dFTRenderMainHurtCollisionCuboidDL[/* */] =
 };
 
 // 0x8012C128
-Gfx dFTRenderMainHitCollisionEdgeDL[/* */] =
+Gfx dFTDisplayMainHitCollisionEdgeDL[/* */] =
 {
     gsDPPipeSync(),
     gsSPClearGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH),
     gsSPSetGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BACK),
-    gsSPVertex(dFTRenderMainCollisionEdgeVtx, ARRAY_COUNT(dFTRenderMainCollisionEdgeVtx), 0),
+    gsSPVertex(dFTDisplayMainCollisionEdgeVtx, ARRAY_COUNT(dFTDisplayMainCollisionEdgeVtx), 0),
     gsDPPipeSync(),
     gsSPSetGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
     gsSPEndDisplayList()
 };
 
 // 0x8012C160
-Gfx dFTRenderMainHitCollisionBlendDL[/* */] =
+Gfx dFTDisplayMainHitCollisionBlendDL[/* */] =
 {
     gsDPPipeSync(),
     gsSPClearGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH),
@@ -246,7 +246,7 @@ Gfx dFTRenderMainHitCollisionBlendDL[/* */] =
     gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2),
     gsDPSetAlphaCompare(G_AC_THRESHOLD),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
-    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, dFTRenderMainCollisionTexture),
+    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, dFTDisplayMainCollisionTexture),
     gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 4, G_TX_NOLOD),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 255, 512),
@@ -258,32 +258,32 @@ Gfx dFTRenderMainHitCollisionBlendDL[/* */] =
     gsSP2Triangles(12, 13, 14, 0, 15, 12, 14, 0),
     gsSP2Triangles(16, 17, 18, 0, 19, 16, 18, 0),
     gsSP2Triangles(20, 21, 22, 0, 23, 20, 22, 0),
-    gsSPVertex(dFTRenderMainCollisionCubeCommonVtx0, ARRAY_COUNT(dFTRenderMainCollisionCubeCommonVtx0), 24),
+    gsSPVertex(dFTDisplayMainCollisionCubeCommonVtx0, ARRAY_COUNT(dFTDisplayMainCollisionCubeCommonVtx0), 24),
     gsSP2Triangles(0, 24, 27, 0, 3, 0, 27, 0),
     gsSP2Triangles(1, 25, 26, 0, 2, 1, 26, 0),
     gsSP2Triangles(27, 24, 0, 0, 27, 0, 3, 0),
     gsSP2Triangles(26, 25, 1, 0, 26, 1, 2, 0),
-    gsSPVertex(dFTRenderMainCollisionCubeCommonVtx1, ARRAY_COUNT(dFTRenderMainCollisionCubeCommonVtx1), 24),
+    gsSPVertex(dFTDisplayMainCollisionCubeCommonVtx1, ARRAY_COUNT(dFTDisplayMainCollisionCubeCommonVtx1), 24),
     gsSP2Triangles(5, 25, 24, 0, 4, 5, 24, 0),
     gsSP2Triangles(6, 26, 27, 0, 7, 6, 27, 0),
     gsSP2Triangles(24, 25, 5, 0, 24, 5, 4, 0),
     gsSP2Triangles(27, 26, 6, 0, 27, 6, 7, 0),
-    gsSPVertex(dFTRenderMainCollisionCubeCommonVtx2, ARRAY_COUNT(dFTRenderMainCollisionCubeCommonVtx2), 24),
+    gsSPVertex(dFTDisplayMainCollisionCubeCommonVtx2, ARRAY_COUNT(dFTDisplayMainCollisionCubeCommonVtx2), 24),
     gsSP2Triangles(8, 24, 27, 0, 11, 8, 27, 0),
     gsSP2Triangles(9, 25, 26, 0, 10, 9, 26, 0),
     gsSP2Triangles(27, 24, 8, 0, 27, 8, 11, 0),
     gsSP2Triangles(26, 25, 9, 0, 26, 9, 10, 0),
-    gsSPVertex(dFTRenderMainCollisionCubeCommonVtx3, ARRAY_COUNT(dFTRenderMainCollisionCubeCommonVtx3), 24),
+    gsSPVertex(dFTDisplayMainCollisionCubeCommonVtx3, ARRAY_COUNT(dFTDisplayMainCollisionCubeCommonVtx3), 24),
     gsSP2Triangles(13, 25, 24, 0, 12, 13, 24, 0),
     gsSP2Triangles(14, 26, 27, 0, 15, 14, 27, 0),
     gsSP2Triangles(24, 25, 13, 0, 24, 13, 12, 0),
     gsSP2Triangles(27, 26, 14, 0, 27, 14, 15, 0),
-    gsSPVertex(dFTRenderMainCollisionCubeCommonVtx4, ARRAY_COUNT(dFTRenderMainCollisionCubeCommonVtx4), 24),
+    gsSPVertex(dFTDisplayMainCollisionCubeCommonVtx4, ARRAY_COUNT(dFTDisplayMainCollisionCubeCommonVtx4), 24),
     gsSP2Triangles(17, 25, 24, 0, 16, 17, 24, 0),
     gsSP2Triangles(18, 26, 27, 0, 19, 18, 27, 0),
     gsSP2Triangles(24, 25, 17, 0, 24, 17, 16, 0),
     gsSP2Triangles(27, 26, 18, 0, 27, 18, 19, 0),
-    gsSPVertex(dFTRenderMainCollisionCubeCommonVtx5, ARRAY_COUNT(dFTRenderMainCollisionCubeCommonVtx5), 24),
+    gsSPVertex(dFTDisplayMainCollisionCubeCommonVtx5, ARRAY_COUNT(dFTDisplayMainCollisionCubeCommonVtx5), 24),
     gsSP2Triangles(21, 25, 24, 0, 20, 21, 24, 0),
     gsSP2Triangles(22, 26, 27, 0, 23, 22, 27, 0),
     gsSP2Triangles(24, 25, 21, 0, 24, 21, 20, 0),
@@ -296,7 +296,7 @@ Gfx dFTRenderMainHitCollisionBlendDL[/* */] =
 };
 
 // 0x8012C310
-Gfx dFTRenderMainHitCollisionCubeDL[/* */] =
+Gfx dFTDisplayMainHitCollisionCubeDL[/* */] =
 {
     gsDPPipeSync(),
     gsSPClearGeometryMode(G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH),
@@ -305,13 +305,13 @@ Gfx dFTRenderMainHitCollisionCubeDL[/* */] =
     gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2),
     gsDPSetAlphaCompare(G_AC_THRESHOLD),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
-    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, dFTRenderMainCollisionTexture),
+    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, dFTDisplayMainCollisionTexture),
     gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 4, G_TX_NOLOD),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 255, 512),
     gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 4, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 4, G_TX_NOLOD),
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x003C, 0x003C),
-    gsSPVertex(dFTRenderMainCollisionCubeCommonVtx0, 24, 0), // WARNING: Reads 24 vertices in a row, most of which are out of the bounds of this array!
+    gsSPVertex(dFTDisplayMainCollisionCubeCommonVtx0, 24, 0), // WARNING: Reads 24 vertices in a row, most of which are out of the bounds of this array!
     gsSP2Triangles(0, 1, 2, 0, 3, 0, 2, 0),
     gsSP2Triangles(4, 5, 6, 0, 7, 4, 6, 0),
     gsSP2Triangles(8, 9, 10, 0, 11, 8, 10, 0),
@@ -326,7 +326,7 @@ Gfx dFTRenderMainHitCollisionCubeDL[/* */] =
 };
 
 // 0x8012C3D8
-Gfx dFTRenderMainMapCollisionBottomDL[/* */] =
+Gfx dFTDisplayMainMapCollisionBottomDL[/* */] =
 {
     gsDPPipeSync(),
     gsSPClearGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
@@ -335,22 +335,22 @@ Gfx dFTRenderMainMapCollisionBottomDL[/* */] =
     gsDPSetCombineLERP(PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, 0, 0, 0, PRIMITIVE, PRIMITIVE, ENVIRONMENT, TEXEL0, ENVIRONMENT, 0, 0, 0, PRIMITIVE),
     gsDPSetRenderMode(AA_EN | Z_UPD | IM_RD | CLR_ON_CVG | CVG_DST_WRAP | ZMODE_OPA | FORCE_BL | GBL_c1(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA), AA_EN | Z_UPD | IM_RD | CLR_ON_CVG | CVG_DST_WRAP | ZMODE_OPA | FORCE_BL | GBL_c2(G_BL_CLR_IN, G_BL_A_IN, G_BL_CLR_MEM, G_BL_1MA)),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
-    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, dFTRenderMainCollisionTexture),
+    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, dFTDisplayMainCollisionTexture),
     gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 4, G_TX_NOLOD),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 255, 512),
     gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 4, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 4, G_TX_NOLOD),
     gsDPSetTileSize(G_TX_RENDERTILE, 0, 0, 0x003C, 0x003C),
-    gsSPVertex(dFTRenderMainMapCollisionBottomVtx, ARRAY_COUNT(dFTRenderMainMapCollisionBottomVtx), 0),
+    gsSPVertex(dFTDisplayMainMapCollisionBottomVtx, ARRAY_COUNT(dFTDisplayMainMapCollisionBottomVtx), 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsSPEndDisplayList()
 };
 
 // 0x8012C458
-Gfx dFTRenderMainMapCollisionTopDL[/* */] =
+Gfx dFTDisplayMainMapCollisionTopDL[/* */] =
 {
     gsDPPipeSync(),
-    gsSPVertex(dFTRenderMainMapCollisionTopVtx, ARRAY_COUNT(dFTRenderMainMapCollisionTopVtx), 0),
+    gsSPVertex(dFTDisplayMainMapCollisionTopVtx, ARRAY_COUNT(dFTDisplayMainMapCollisionTopVtx), 0),
     gsSP1Triangle(0, 1, 2, 0),
     gsDPPipeSync(),
     gsSPSetGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
@@ -359,7 +359,7 @@ Gfx dFTRenderMainMapCollisionTopDL[/* */] =
 };
 
 // 0x8012C490
-Gfx dFTRenderMainAfterImageVertexDL[/* */] =
+Gfx dFTDisplayMainAfterImageVertexDL[/* */] =
 {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
@@ -368,7 +368,7 @@ Gfx dFTRenderMainAfterImageVertexDL[/* */] =
 };
 
 // 0x8012C4B0
-Gfx dFTRenderMainAfterImageTriangleDL[/* */] =
+Gfx dFTDisplayMainAfterImageTriangleDL[/* */] =
 {
     gsDPPipeSync(),
     gsSPSetGeometryMode(G_CULL_BACK | G_LIGHTING),
@@ -376,16 +376,16 @@ Gfx dFTRenderMainAfterImageTriangleDL[/* */] =
 };
 
 // 0x8012C4C8
-syColorRGBA dFTRenderMainDefaultAfterImageColor1 = { 0x00, 0xFF, 0xFF, 0x00 };
+syColorRGBA dFTDisplayMainDefaultAfterImageColor1 = { 0x00, 0xFF, 0xFF, 0x00 };
 
 // 0x8012C4CC
-syColorRGBA dFTRenderMainDefaultAfterImageColor2 = { 0xFF, 0xFF, 0xFF, 0x00 };
+syColorRGBA dFTDisplayMainDefaultAfterImageColor2 = { 0xFF, 0xFF, 0xFF, 0x00 };
 
 // 0x8012C4D0
-syColorRGBA dFTRenderMainItemAfterImageColor1 = { 0xFF, 0x40, 0xC0, 0x00 };
+syColorRGBA dFTDisplayMainItemAfterImageColor1 = { 0xFF, 0x40, 0xC0, 0x00 };
 
 // 0x8012C4D4
-syColorRGBA dFTRenderMainItemAfterImageColor2 = { 0xFF, 0xFF, 0xFF, 0x00 };
+syColorRGBA dFTDisplayMainItemAfterImageColor2 = { 0xFF, 0xFF, 0xFF, 0x00 };
 
 // // // // // // // // // // // //
 //                               //
@@ -430,11 +430,11 @@ void ftDisplayMainDrawAfterImage(ftStruct *fp)
 
         rotate = F_CLC_DTOR32(30.0F); // 0.5235988F
 
-        color1 = &dFTRenderMainDefaultAfterImageColor1;
-        color2 = &dFTRenderMainDefaultAfterImageColor2;
+        color1 = &dFTDisplayMainDefaultAfterImageColor1;
+        color2 = &dFTDisplayMainDefaultAfterImageColor2;
 
-        vtx_dl = dFTRenderMainAfterImageVertexDL;
-        tri_dl = dFTRenderMainAfterImageTriangleDL;
+        vtx_dl = dFTDisplayMainAfterImageVertexDL;
+        tri_dl = dFTDisplayMainAfterImageTriangleDL;
         break;
 
     case TRUE:
@@ -446,11 +446,11 @@ void ftDisplayMainDrawAfterImage(ftStruct *fp)
 
         rotate = F_CLC_DTOR32(30.0F); // 0.5235988F
 
-        color1 = &dFTRenderMainItemAfterImageColor1;
-        color2 = &dFTRenderMainItemAfterImageColor2;
+        color1 = &dFTDisplayMainItemAfterImageColor1;
+        color2 = &dFTDisplayMainItemAfterImageColor2;
 
-        vtx_dl = dFTRenderMainAfterImageVertexDL;
-        tri_dl = dFTRenderMainAfterImageTriangleDL;
+        vtx_dl = dFTDisplayMainAfterImageVertexDL;
+        tri_dl = dFTDisplayMainAfterImageTriangleDL;
         break;
     }
     base_p_vtx = p_vtx = (Vtx*)gSYTaskmanGraphicsHeap.ptr;
@@ -656,16 +656,16 @@ void ftDisplayMainCalcFogColor(ftStruct *fp)
     {
         alpha = (fp->attributes->fog_color.r * alpha) / 0xFF;
     }
-    sFTRenderMainFogColor.r = red;
-    sFTRenderMainFogColor.g = green;
-    sFTRenderMainFogColor.b = blue;
-    sFTRenderMainFogColor.a = alpha;
+    sFTDisplayMainFogColor.r = red;
+    sFTDisplayMainFogColor.g = green;
+    sFTDisplayMainFogColor.b = blue;
+    sFTDisplayMainFogColor.a = alpha;
 }
 
 // 0x800F1B24
 void ftDisplayMainSetFogColor(ftStruct *fp)
 {
-    gDPSetFogColor(gSYTaskmanDLHeads[0]++, sFTRenderMainFogColor.r, sFTRenderMainFogColor.g, sFTRenderMainFogColor.b, sFTRenderMainFogColor.a);
+    gDPSetFogColor(gSYTaskmanDLHeads[0]++, sFTDisplayMainFogColor.r, sFTDisplayMainFogColor.g, sFTDisplayMainFogColor.b, sFTDisplayMainFogColor.a);
 }
 
 // 0x800F1B7C
@@ -698,21 +698,21 @@ void ftDisplayMainDecideFogDraw(u8 flags, ftStruct *fp)
         {
             if (flags & FTPARTS_FLAG_TOGGLEFOG)
             {
-                if (sFTRenderMainIsShadeFog == FALSE)
+                if (sFTDisplayMainIsShadeFog == FALSE)
                 {
-                    sFTRenderMainIsShadeFog = TRUE;
+                    sFTDisplayMainIsShadeFog = TRUE;
 
                     ftDisplayMainDecideFogColor(fp);
                 }
             }
-            else if (sFTRenderMainIsShadeFog != FALSE)
+            else if (sFTDisplayMainIsShadeFog != FALSE)
             {
-                sFTRenderMainIsShadeFog = FALSE;
+                sFTDisplayMainIsShadeFog = FALSE;
 
                 ftDisplayMainSetFogColor(fp);
             }
         }
-        if (sFTRenderMainSkyFogAlpha == 0xFF)
+        if (sFTDisplayMainSkyFogAlpha == 0xFF)
         {
             gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_FOG_PRIM_A, G_RM_AA_ZB_OPA_SURF2);
         }
@@ -1035,7 +1035,7 @@ void ftDisplayMainDrawParts(DObj *dobj)
                 gDPSetEnvColor(gSYTaskmanDLHeads[0]++, 0x00, 0x00, 0xD0, 0xFF);
                 break;
             }
-            gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTRenderMainHurtCollisionCuboidDL);
+            gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHurtCollisionCuboidDL);
 
             gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
 
@@ -1084,8 +1084,8 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
     fp = ftGetStruct(fighter_gobj);
     attributes = fp->attributes;
 
-    sFTRenderMainSkyFogAlpha = 0xFF;
-    sFTRenderMainIsShadeFog = FALSE;
+    sFTDisplayMainSkyFogAlpha = 0xFF;
+    sFTDisplayMainIsShadeFog = FALSE;
 
     if ((fp->is_invisible) && (fp->display_mode == nDBDisplayModeMaster))
     {
@@ -1095,7 +1095,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
     }
     if ((fp->status_info.pl_kind == nFTPlayerKindMan) || (fp->status_info.pl_kind == nFTPlayerKindCom) || (fp->status_info.pl_kind == nFTPlayerKindGameKey))
     {
-        if (gOMObjCurrentCamera->gobj_id == nOMObjCommonKindMainCamera)
+        if (gGCCurrentCamera->gobj_id == nGCCommonKindMainCamera)
         {
             switch (fp->status_info.status_id)
             {
@@ -1188,19 +1188,19 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
         {
             gDPSetEnvColor(gSYTaskmanDLHeads[0]++, fp->colanim.blendcolor.r, fp->colanim.blendcolor.g, fp->colanim.blendcolor.b, fp->colanim.blendcolor.a);
 
-            sFTRenderMainSkyFogAlpha = fp->colanim.blendcolor.a;
+            sFTDisplayMainSkyFogAlpha = fp->colanim.blendcolor.a;
         }
         else if (fp->is_use_fogcolor)
         {
             gDPSetEnvColor(gSYTaskmanDLHeads[0]++, fp->fog_color.r, fp->fog_color.g, fp->fog_color.b, fp->fog_color.a);
 
-            sFTRenderMainSkyFogAlpha = fp->fog_color.a;
+            sFTDisplayMainSkyFogAlpha = fp->fog_color.a;
         }
         else if (fp->status_info.pl_kind != nFTPlayerKindDemo)
         {
-            sFTRenderMainSkyFogAlpha = mpCollisionSetLightColorGetAlpha(gSYTaskmanDLHeads);
+            sFTDisplayMainSkyFogAlpha = mpCollisionSetLightColorGetAlpha(gSYTaskmanDLHeads);
         }
-        else sFTRenderMainSkyFogAlpha = scSubsysFighterDrawLightColorGetAlpha(gSYTaskmanDLHeads);
+        else sFTDisplayMainSkyFogAlpha = scSubsysFighterDrawLightColorGetAlpha(gSYTaskmanDLHeads);
 
         if (fp->colanim.is_use_maincolor)
         {
@@ -1216,23 +1216,23 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
             syMatrixTranslate
             (
                 mtx_store.gbi,
-                dFTRenderMainShufflePositions[fp->is_shuffle_electric][fp->shuffle_frame_index].x,
-                dFTRenderMainShufflePositions[fp->is_shuffle_electric][fp->shuffle_frame_index].y,
+                dFTDisplayMainShufflePositions[fp->is_shuffle_electric][fp->shuffle_frame_index].x,
+                dFTDisplayMainShufflePositions[fp->is_shuffle_electric][fp->shuffle_frame_index].y,
                 0.0F
             );
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
         }
-        if ((fp->status_info.pl_kind == nFTPlayerKindDemo) || (fp->status_info.pl_kind == nFTPlayerKindKey) || (gOMObjCurrentCamera->gobj_id == nOMObjCommonKindMainCamera))
+        if ((fp->status_info.pl_kind == nFTPlayerKindDemo) || (fp->status_info.pl_kind == nFTPlayerKindKey) || (gGCCurrentCamera->gobj_id == nGCCommonKindMainCamera))
         {
             ftDisplayMainDrawAll(fighter_gobj);
         }
         else
         {
-            fp->joints[nFTPartsJointTopN]->ommtx[0]->kind = nOMTransformRotRpyR;
+            fp->joints[nFTPartsJointTopN]->gcmatrix[0]->kind = nGCTransformRotRpyR;
 
             ftDisplayMainDrawAll(fighter_gobj);
 
-            fp->joints[nFTPartsJointTopN]->ommtx[0]->kind = 0x4B;
+            fp->joints[nFTPartsJointTopN]->gcmatrix[0]->kind = 0x4B;
         }
         if (fp->shuffle_tics != 0)
         {
@@ -1272,7 +1272,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTRenderMainMapCollisionBottomDL);
+            gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainMapCollisionBottomDL);
 
             gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
 
@@ -1294,7 +1294,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTRenderMainMapCollisionTopDL);
+            gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainMapCollisionTopDL);
 
             gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
 
@@ -1322,24 +1322,24 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
             gDPSetEnvColor(gSYTaskmanDLHeads[0]++, 0xD0, 0x00, 0xD0, 0xFF);
 
-            gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTRenderMainHurtCollisionCuboidDL);
+            gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHurtCollisionCuboidDL);
 
             gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
         }
     }
     else
     {
-        if (gOMObjCurrentCamera->gobj_id == nOMObjCommonKindMainCamera)
+        if (gGCCurrentCamera->gobj_id == nGCCommonKindMainCamera)
         {
             ftDisplayMainDrawParts(DObjGetStruct(fighter_gobj));
         }
         else
         {
-            fp->joints[nFTPartsJointTopN]->ommtx[0]->kind = nOMTransformRotRpyR;
+            fp->joints[nFTPartsJointTopN]->gcmatrix[0]->kind = nGCTransformRotRpyR;
 
             ftDisplayMainDrawParts(DObjGetStruct(fighter_gobj));
 
-            fp->joints[nFTPartsJointTopN]->ommtx[0]->kind = 0x4B;
+            fp->joints[nFTPartsJointTopN]->gcmatrix[0]->kind = 0x4B;
         }
         for (i = 0; i < ARRAY_COUNT(fp->fighter_hit); i++)
         {
@@ -1379,7 +1379,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
                     gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                    gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTRenderMainHitCollisionEdgeDL);
+                    gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionEdgeDL);
 
                     gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
                 }
@@ -1397,9 +1397,9 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
                 if (ft_hit->update_state == nGMHitUpdateInterpolate)
                 {
-                    gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTRenderMainHitCollisionBlendDL);
+                    gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionBlendDL);
                 }
-                gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTRenderMainHitCollisionCubeDL);
+                gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionCubeDL);
 
                 gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
             }
@@ -1407,7 +1407,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
     }
     if ((fp->status_info.pl_kind == nFTPlayerKindMan) || (fp->status_info.pl_kind == nFTPlayerKindCom) || (fp->status_info.pl_kind == nFTPlayerKindGameKey))
     {
-        if (gOMObjCurrentCamera->gobj_id != nOMObjCommonKindMainCamera)
+        if (gGCCurrentCamera->gobj_id != nGCCommonKindMainCamera)
         {
             if (!(fp->is_magnify_hide) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
             {

@@ -451,7 +451,7 @@ void mnVSItemSwitchMakeCursorCamera(void)
             CAMERA_MASK_DLLINK(3),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -476,7 +476,7 @@ void mnVSItemSwitchMakeLabelsCamera(void)
             CAMERA_MASK_DLLINK(1),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -507,7 +507,7 @@ void mnVSItemSwitchMakeDecalCamera(void)
             CAMERA_MASK_DLLINK(4),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE

@@ -140,7 +140,7 @@ void mnN64LogoThreadUpdate(GObj *gobj)
 	}
 	color = dMNN64EndFadeColor;
 
-	lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 10, FALSE, NULL);
+	lbFadeMakeActor(nGCCommonKindTransition, nGCCommonLinkIDTransition, 10, &color, 10, FALSE, NULL);
 
 	i = 0;
 
@@ -209,16 +209,16 @@ void mnN64FuncStart(void)
 	(
 		gcMakeCameraGObj
 		(
-			nOMObjCommonKindWallpaperCamera,
+			nGCCommonKindWallpaperCamera,
 			NULL,
-			nOMObjCommonLinkIDCamera,
+			nGCCommonLinkIDCamera,
 			GOBJ_LINKORDER_DEFAULT,
 			lbCommonScissorSpriteCamera,
 			80,
 			CAMERA_MASK_DLLINK(0),
 			-1,
 			FALSE,
-			nOMObjProcessKindProc,
+			nGCProcessKindProc,
 			NULL,
 			1,
 			FALSE
@@ -226,9 +226,9 @@ void mnN64FuncStart(void)
 	);
 	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-	gobj = gcMakeGObjSPAfter(nOMObjCommonKindWallpaper, NULL, nOMObjCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
+	gobj = gcMakeGObjSPAfter(nGCCommonKindWallpaper, NULL, nGCCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjProcess(gobj, mnN64LogoThreadUpdate, nOMObjProcessKindThread, 1);
+	gcAddGObjProcess(gobj, mnN64LogoThreadUpdate, nGCProcessKindThread, 1);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	sprite = lbRelocGetDataFromFile
@@ -257,7 +257,7 @@ void mnN64FuncStart(void)
 
 	color = dMNN64StartFadeColor;
 
-	lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 16, TRUE, NULL);
+	lbFadeMakeActor(nGCCommonKindTransition, nGCCommonLinkIDTransition, 10, &color, 16, TRUE, NULL);
 }
 
 // 0x80131ECC

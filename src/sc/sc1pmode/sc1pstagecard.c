@@ -775,7 +775,7 @@ void sc1PStageCardMakeFighter(ftDemoDesc fighter, s32 card_anim_frame_id, void *
     fp->card_anim_frame_id = card_anim_frame_id;
     
     gcMoveGObjDL(fighter_gobj, dl_links[card_anim_frame_id], GOBJ_DLLINKORDER_DEFAULT);
-    gcAddGObjProcess(fighter_gobj, sc1PStageCardUpdateFighterPositionZ, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(fighter_gobj, sc1PStageCardUpdateFighterPositionZ, nGCProcessKindProc, 1);
     
     DObjGetStruct(fighter_gobj)->translate.vec.f.x = 0.0F;
     DObjGetStruct(fighter_gobj)->translate.vec.f.y = 0.0F;
@@ -993,7 +993,7 @@ GObj* sc1PStageCardMakeVSFighter(s32 ft_kind, s32 stage, s32 card_anim_frame_id,
     fp->card_anim_frame_id = card_anim_frame_id;
     
     gcMoveGObjDL(fighter_gobj, dl_link, GOBJ_DLLINKORDER_DEFAULT);
-    gcAddGObjProcess(fighter_gobj, sc1PStageCardVSFighterProcUpdate, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(fighter_gobj, sc1PStageCardVSFighterProcUpdate, nGCProcessKindProc, 1);
     
     DObjGetStruct(fighter_gobj)->translate.vec.f.x = 0.0F;
     DObjGetStruct(fighter_gobj)->translate.vec.f.y = 0.0F;
@@ -1142,7 +1142,7 @@ Camera* sc1PStageCardMakeStageCamera(s32 stage, u32 dl_link)
     
     gobj = gcMakeCameraGObj
     (
-        nOMObjCommonKindSceneCamera,
+        nGCCommonKindSceneCamera,
         NULL,
         16,
         GOBJ_LINKORDER_DEFAULT,
@@ -1151,13 +1151,13 @@ Camera* sc1PStageCardMakeStageCamera(s32 stage, u32 dl_link)
         CAMERA_MASK_DLLINK(dl_link),
         -1,
         FALSE,
-        nOMObjProcessKindProc,
+        nGCProcessKindProc,
         NULL,
         1,
         FALSE
     );
-    gcAddOMMtxForCamera(CameraGetStruct(gobj), nOMTransformPerspFastF, 0);
-    gcAddOMMtxForCamera(CameraGetStruct(gobj), 15, 0);
+    gcAddGCMatrixForCamera(CameraGetStruct(gobj), nGCTransformPerspFastF, 0);
+    gcAddGCMatrixForCamera(CameraGetStruct(gobj), 15, 0);
     
     cam = CameraGetStruct(gobj);
     
@@ -1518,7 +1518,7 @@ void sc1PStageCardMakeFighterCamera(s32 ft_kind, s32 cam_id)
 
     gobj = gcMakeCameraGObj
     (
-        nOMObjCommonKindSceneCamera,
+        nGCCommonKindSceneCamera,
         NULL,
         16,
         GOBJ_LINKORDER_DEFAULT,
@@ -1528,13 +1528,13 @@ void sc1PStageCardMakeFighterCamera(s32 ft_kind, s32 cam_id)
         CAMERA_MASK_DLLINK(10)                  | CAMERA_MASK_DLLINK(18),
         -1,
         FALSE,
-        nOMObjProcessKindProc,
+        nGCProcessKindProc,
         NULL,
         1,
         FALSE
     );
-    gcAddOMMtxForCamera(CameraGetStruct(gobj), nOMTransformPerspFastF, 0);
-    gcAddOMMtxForCamera(CameraGetStruct(gobj), 7, 0);
+    gcAddGCMatrixForCamera(CameraGetStruct(gobj), nGCTransformPerspFastF, 0);
+    gcAddGCMatrixForCamera(CameraGetStruct(gobj), 7, 0);
 
     cam = CameraGetStruct(gobj);
 
@@ -1596,7 +1596,7 @@ void sc1PStageCardMakeBannersCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -1605,7 +1605,7 @@ void sc1PStageCardMakeBannersCamera(void)
             CAMERA_MASK_DLLINK(28),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -1621,7 +1621,7 @@ void sc1PStageCardMakeDecalsCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -1630,7 +1630,7 @@ void sc1PStageCardMakeDecalsCamera(void)
             CAMERA_MASK_DLLINK(27),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -1646,7 +1646,7 @@ void sc1PStageCardMakePicturesCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -1655,7 +1655,7 @@ void sc1PStageCardMakePicturesCamera(void)
             CAMERA_MASK_DLLINK(26),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE

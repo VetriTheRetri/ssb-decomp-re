@@ -1489,13 +1489,13 @@ void lbParticleDrawTextures(GObj *gobj)
     u8 masks, maskt;
     f32 mx, my;
 
-    cam = CameraGetStruct(gOMObjCurrentCamera);
+    cam = CameraGetStruct(gGCCurrentCamera);
 
-    for (i = 0; i < cam->ommtx_len; i++)
+    for (i = 0; i < cam->gcmatrix_len; i++)
     {
-        switch (cam->ommtx[i]->kind)
+        switch (cam->gcmatrix[i]->kind)
         {
-            case nOMTransformPerspFastF:
+            case nGCTransformPerspFastF:
                 syMatrixPerspFastF
                 (
                     &projection_f,
@@ -1508,7 +1508,7 @@ void lbParticleDrawTextures(GObj *gobj)
                 );
                 break;
                 
-            case nOMTransformPerspF:
+            case nGCTransformPerspF:
                 syMatrixPerspF
                 (
                     &projection_f,
@@ -1521,7 +1521,7 @@ void lbParticleDrawTextures(GObj *gobj)
                 );
                 break;
 
-			case nOMTransformOrtho:
+			case nGCTransformOrtho:
 				syMatrixOrthoF
                 (
                     &projection_f,
@@ -1621,7 +1621,7 @@ void lbParticleDrawTextures(GObj *gobj)
                 break;
         }
     }
-    if (cam->ommtx_len != 0)
+    if (cam->gcmatrix_len != 0)
     {
         guMtxCatF(look_at_f, projection_f, projection_f);
         
@@ -2191,9 +2191,9 @@ void lbParticleGetPosVelDObj(Vec3f *pos, Vec3f *vel, DObj *dobj)
 		}
 		if (dobj->dynstore != NULL)
 		{
-			OMTranslate *translate = NULL;
-			OMRotate *rotate = NULL;
-			OMScale *scale = NULL;
+			GCTranslate *translate = NULL;
+			GCRotate *rotate = NULL;
+			GCScale *scale = NULL;
 			uintptr_t csr = (uintptr_t)dobj->dynstore->data;
 			s32 i;
 
@@ -2201,21 +2201,21 @@ void lbParticleGetPosVelDObj(Vec3f *pos, Vec3f *vel, DObj *dobj)
 			{
 				switch (dobj->dynstore->kinds[i])
 				{
-				case nOMObjDrawVecKindNone:
+				case nGCDrawVecKindNone:
                     break;
 
-				case nOMObjDrawVecKindTranslate:
-					translate = (OMTranslate*)csr;
+				case nGCDrawVecKindTranslate:
+					translate = (GCTranslate*)csr;
 					csr += sizeof(*translate);
 					break;
 
-				case nOMObjDrawVecKindRotate:
-					rotate = (OMRotate*)csr;
+				case nGCDrawVecKindRotate:
+					rotate = (GCRotate*)csr;
 					csr += sizeof(*rotate);
 					break;
 
-				case nOMObjDrawVecKindScale:
-					scale = (OMScale*)csr;
+				case nGCDrawVecKindScale:
+					scale = (GCScale*)csr;
 					csr += sizeof(*scale);
 					break;
 				}
@@ -2877,7 +2877,7 @@ void lbParticleEjectGeneratorDObj(GObj *gobj)
 	DObj *dobj;
 	lbGenerator *current_gtor, *next_gtor;
 
-	if (gobj->obj_kind == nOMObjCommonAppendDObj)
+	if (gobj->obj_kind == nGCCommonAppendDObj)
 	{
 		for (dobj = DObjGetStruct(gobj); dobj != NULL; dobj = gcGetTreeDObjNext(dobj))
 		{

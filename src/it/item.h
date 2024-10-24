@@ -30,7 +30,7 @@ extern itSpawnActor gITManagerSpawnActor;
 // Global data
 
 // 0x80189450
-extern s32 dITManagerMonsterSpawnID;
+extern s32 dITManagerForceMonsterKind;
 
 // Linker variable, points to base of animation bank in item file? 0x00013624
 extern intptr_t lITMonsterAnimBankStart;

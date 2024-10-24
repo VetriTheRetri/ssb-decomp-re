@@ -381,10 +381,10 @@ lGRBonus2PurinGroundFileID = 0x000125;
 lGRBonus2NessGroundFileID = 0x000126;
 lGRBonus3GroundFileID = 0x000127;
 
-lEFCommonParticleBankGenLo = 0x00AC7340;
-lEFCommonParticleBankGenHi = 0x00AC9DE0;
-lEFCommonParticleBankTextureLo = 0x00AC9DE0;
-lEFCommonParticleBankTextureHi = 0x00B16C80;
+lEFCommonParticleBankScriptsLo = 0x00AC7340;
+lEFCommonParticleBankScriptsHi = 0x00AC9DE0;
+lEFCommonParticleBankTexturesLo = 0x00AC9DE0;
+lEFCommonParticleBankTexturesHi = 0x00B16C80;
 
 lEFManagerShieldDObjSetup = 0x00000300;
 
@@ -637,10 +637,10 @@ lGRPupupuWhispyEyesTransformKinds = 0x000010F0;
 lGRPupupuWhispyMouthTransformKinds = 0x00001770;
 lGRPupupuFlowersBackTrasnformKinds = 0x00002A80;
 lGRPupupuFlowersFrontTransformKinds = 0x000031F8;
-lGRPupupuParticleBankGenLo = 0x00B1E640;
-lGRPupupuParticleBankGenHi = 0x00B1E7E0;
-lGRPupupuParticleBankTextureLo = 0x00B1E7E0;
-lGRPupupuParticleBankTextureHi = 0x00B1F960;
+lGRPupupuParticleBankScriptsLo = 0x00B1E640;
+lGRPupupuParticleBankScriptsHi = 0x00B1E7E0;
+lGRPupupuParticleBankTexturesLo = 0x00B1E7E0;
+lGRPupupuParticleBankTexturesHi = 0x00B1F960;
 
 lGRSectorArwingLaser2DWeaponAttributes = 0x000000BC;
 lGRSectorArwingLaser3DWeaponAttributes = 0x000000F0;
@@ -674,10 +674,10 @@ D_NF_000004B8 = 0x000004B8;
 lGRYosterCloudDisplayList = 0x00000580;
 lGRYosterCloudSolidMatAnimJoint = 0x00000670;
 lGRYosterCloudEvaporateMatAnimJoint = 0x00000690;
-lGRYosterParticleBankGenLo = 0x00B22980;
-lGRYosterParticleBankGenHi = 0x00B22A00;
-lGRYosterParticleBankTextureLo = 0x00B22A00;
-lGRYosterParticleBankTextureHi = 0x00B22C30;
+lGRYosterParticleBankScriptsLo = 0x00B22980;
+lGRYosterParticleBankScriptsHi = 0x00B22A00;
+lGRYosterParticleBankTexturesLo = 0x00B22A00;
+lGRYosterParticleBankTexturesHi = 0x00B22C30;
 
 lGRInishieScaleDObjDesc = 0x00000380;
 lGRInishieMapHead = 0x000005F0;
@@ -689,10 +689,10 @@ lGRJungleTaruCannDefaultAnimJoint = 0x00000B20;
 lGRJungleTaruCannFillAnimJoint = 0x00000B68;
 lGRJungleTaruCannShootAnimJoint = 0x00000BF8;
 
-lGRHyruleParticleBankGenLo = 0x00B1F960;
-lGRHyruleParticleBankGenHi = 0x00B1FC80;
-lGRHyruleParticleBankTextureLo = 0x00B1FC80;
-lGRHyruleParticleBankTextureHi = 0x00B22980;
+lGRHyruleParticleBankScriptsLo = 0x00B1F960;
+lGRHyruleParticleBankScriptsHi = 0x00B1FC80;
+lGRHyruleParticleBankTexturesLo = 0x00B1FC80;
+lGRHyruleParticleBankTexturesHi = 0x00B22980;
 
 lGRYamabukiGateOpenAnimJoint = 0x000009B0;
 lGRYamabukiGateCloseAnimJoint = 0x00000A20;
@@ -706,10 +706,10 @@ lGRBonus3ItemHead = 0x00000000;
 lGRBonus3BumpersDObjDesc = 0x00000000;
 lGRBonus3BumpersAnimJoint = 0x00000110;
 
-lTitleScreenParticleBankGenLo = 0x00B22C30;
-lTitleScreenParticleBankGenHi = 0x00B22D40;
-lTitleScreenParticleBankTextureLo = 0x00B22D40;
-lTitleScreenParticleBankTextureHi = 0x00B277B0;
+lTitleScreenParticleBankScriptsLo = 0x00B22C30;
+lTitleScreenParticleBankScriptsHi = 0x00B22D40;
+lTitleScreenParticleBankTexturesLo = 0x00B22D40;
+lTitleScreenParticleBankTexturesHi = 0x00B277B0;
 
 lIFCommonPlayerArrowsDObjDesc = 0x00000188;
 lIFCommonPlayerArrowsAnimJoint = 0x00000270;
@@ -990,10 +990,10 @@ lWPLinkBoomerangWeaponAttributes = 0x00000000;
 lWPBossBulletNormalWeaponAttributes = 0x00000774;
 lWPBossBulletHardWeaponAttributes = 0x000007A8;
 
-lITManagerParticleBankGenLo = 0x00B1BCA0;
-lITManagerParticleBankGenHi = 0x00B1BDE0;
-lITManagerParticleBankTextureLo = 0x00B1BDE0;
-lITManagerParticleBankTextureHi = 0x00B1E640;
+lITManagerParticleBankScriptsLo = 0x00B1BCA0;
+lITManagerParticleBankScriptsHi = 0x00B1BDE0;
+lITManagerParticleBankTexturesLo = 0x00B1BDE0;
+lITManagerParticleBankTexturesHi = 0x00B1E640;
 
 lITMainContainerVelocitiesY = 0x00000000;
 
@@ -1976,4 +1976,4 @@ FILE_05A_BACKGROUND_IMAGE_OFFSET = 0x26C88;
 
 
 gSysController = 0x80045470;
-gOMObjCurrentProcess = 0x80046A60;
+gGCCurrentProcess = 0x80046A60;

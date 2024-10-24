@@ -622,7 +622,7 @@ void mnOptionMakeSoundUnderlineCamera(void)
             CAMERA_MASK_DLLINK(3),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -647,7 +647,7 @@ void mnOptionMakeLink4Camera(void)
             CAMERA_MASK_DLLINK(4),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -672,7 +672,7 @@ void mnOptionMakeOptionsCamera(void)
             CAMERA_MASK_DLLINK(2),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -697,7 +697,7 @@ void mnOptionMakeLabelsCamera(void)
             CAMERA_MASK_DLLINK(1),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -722,7 +722,7 @@ void mnOptionMakeDecalsCamera(void)
             CAMERA_MASK_DLLINK(0),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE

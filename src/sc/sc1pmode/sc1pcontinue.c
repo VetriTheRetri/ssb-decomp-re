@@ -587,7 +587,7 @@ void sc1PContinueMakeOptions(void)
 
     sSC1PContinueOptionGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjProcess(gobj, sc1PContinueOptionProcUpdate, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(gobj, sc1PContinueOptionProcUpdate, nGCProcessKindProc, 1);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueTextYes));
 
@@ -640,7 +640,7 @@ void sc1PContinueMakeCursor(void)
     sSC1PContinueCursorGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjProcess(gobj, sc1PContinueCursorProcUpdate, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(gobj, sc1PContinueCursorProcUpdate, nGCProcessKindProc, 1);
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueCursor));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -731,7 +731,7 @@ void sc1PContinueMakeGameOverText(void)
 
     sSC1PContinueGameOverGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjProcess(gobj, sc1PContinueGameOverTextStepColors, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(gobj, sc1PContinueGameOverTextStepColors, nGCProcessKindProc, 1);
 
     for (i = 0; i < (ARRAY_COUNT(letters) + ARRAY_COUNT(positions_x)) / 2; i++)
     {
@@ -779,7 +779,7 @@ void sc1PContinueMakeGameOver(void)
     sSC1PContinueGameOverFadeOutScale = 1.0F;
     sSC1PContinueGameOverGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjProcess(gobj, sc1PContinueGameOverProcUpdate, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(gobj, sc1PContinueGameOverProcUpdate, nGCProcessKindProc, 1);
 }
 
 // 0x801333C4
@@ -789,7 +789,7 @@ void sc1PContinueMakeRoomFadeInCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -798,7 +798,7 @@ void sc1PContinueMakeRoomFadeInCamera(void)
             CAMERA_MASK_DLLINK(26),
 			-1,
 			FALSE,
-			nOMObjProcessKindProc,
+			nGCProcessKindProc,
 			NULL,
 			1,
 			FALSE
@@ -816,7 +816,7 @@ void sc1PContinueMakeSpotlightFadeCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -825,7 +825,7 @@ void sc1PContinueMakeSpotlightFadeCamera(void)
             CAMERA_MASK_DLLINK(31),
 			-1,
 			FALSE,
-			nOMObjProcessKindProc,
+			nGCProcessKindProc,
 			NULL,
 			1,
 			FALSE
@@ -843,7 +843,7 @@ void sc1PContinueMakeRoomFadeOutCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -852,7 +852,7 @@ void sc1PContinueMakeRoomFadeOutCamera(void)
             CAMERA_MASK_DLLINK(32),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -895,7 +895,7 @@ void sc1PContinueMakeMainCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -906,7 +906,7 @@ void sc1PContinueMakeMainCamera(void)
             CAMERA_MASK_DLLINK(9),
             -1,
             TRUE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -922,7 +922,7 @@ void sc1PContinueMakeRoomCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -931,7 +931,7 @@ void sc1PContinueMakeRoomCamera(void)
             CAMERA_MASK_DLLINK(29),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -947,7 +947,7 @@ void sc1PContinueMakeSpotlightCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -956,7 +956,7 @@ void sc1PContinueMakeSpotlightCamera(void)
             CAMERA_MASK_DLLINK(30),
 			-1,
 			FALSE,
-			nOMObjProcessKindProc,
+			nGCProcessKindProc,
 			NULL,
 			1,
 			FALSE
@@ -974,7 +974,7 @@ void sc1PContinueMakeTextCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -983,7 +983,7 @@ void sc1PContinueMakeTextCamera(void)
             CAMERA_MASK_DLLINK(28),
 			-1,
 			FALSE,
-			nOMObjProcessKindProc,
+			nGCProcessKindProc,
 			NULL,
 			1,
 			FALSE

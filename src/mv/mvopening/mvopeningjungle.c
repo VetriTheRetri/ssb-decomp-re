@@ -258,7 +258,7 @@ void mvOpeningJungleMakeGroundViewport(Vec3f unused)
     cam->projection.persp.far = 15000.0F;
 
     gcAddCameraCamAnimJoint(cam, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningJungleFiles[1], &lMVOpeningJungleCamAnimJoint), 0.0F);
-    gcAddGObjProcess(sMVOpeningJungleStageCameraGObj, gcPlayCamAnim, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(sMVOpeningJungleStageCameraGObj, gcPlayCamAnim, nGCProcessKindProc, 1);
 
     gcPlayCamAnim(sMVOpeningJungleStageCameraGObj);
 }
@@ -416,7 +416,7 @@ void mvOpeningJungleFuncStart(void)
     gBattleState->players[1].pl_kind = nFTPlayerKindKey;
 
     mvOpeningJungleSetupFiles();
-    gcMakeGObjSPAfter(nOMObjCommonKindMovie, mvOpeningJungleFuncRun, 13, GOBJ_LINKORDER_DEFAULT);
+    gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningJungleFuncRun, 13, GOBJ_LINKORDER_DEFAULT);
     gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 3, 0xFF);
     efAllocInitParticleBank();
     ftParamInitGame();

@@ -6,10 +6,10 @@
 //                               //
 // // // // // // // // // // // //
 
-extern uintptr_t lEFCommonParticleBankGenLo;                 // 0x00AC7340
-extern uintptr_t lEFCommonParticleBankGenHi;                 // 0x00AC9DE0
-extern uintptr_t lEFCommonParticleBankTextureLo;                // 0x00AC9DE0
-extern uintptr_t lEFCommonParticleBankTextureHi;                // 0x00B16C80
+extern uintptr_t lEFCommonParticleBankScriptsLo;                 // 0x00AC7340
+extern uintptr_t lEFCommonParticleBankScriptsHi;                 // 0x00AC9DE0
+extern uintptr_t lEFCommonParticleBankTexturesLo;                // 0x00AC9DE0
+extern uintptr_t lEFCommonParticleBankTexturesHi;                // 0x00B16C80
 
 // // // // // // // // // // // //
 //                               //
@@ -46,15 +46,15 @@ void efDisplayFuncDisplayXLU(GObj *effect_gobj)
 // 0x800FCDEC
 void efDisplayMakeBlendCLD(void)
 {
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayFuncDisplayBlendCLD, 15, 3, -1);
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayFuncDisplayBlendCLD, 18, 3, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayFuncDisplayBlendCLD, 15, 3, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayFuncDisplayBlendCLD, 18, 3, -1);
 }
 
 // 0x800FCE6C
 void efDisplayMakeXLU(void)
 {
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayFuncDisplayXLU, 15, 0, -1);
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayFuncDisplayXLU, 18, 0, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayFuncDisplayXLU, 15, 0, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayFuncDisplayXLU, 18, 0, -1);
 }
 
 // 0x800FCEEC
@@ -116,27 +116,27 @@ void efDisplayInitAll(void)
 {
     GObj *gobj;
 
-    gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, efDisplayFuncDisplayZPerspCLD, 18, 1, -1);
     gobj->cam_mask = (CAMERA_MASK_DLLINK(2) | CAMERA_MASK_DLLINK(0));
 
-    gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, efDisplayFuncDisplayZPerspCLD, 15, 1, -1);
     gobj->cam_mask = CAMERA_MASK_DLLINK(1);
 
-    gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, efDisplayFuncDisplayZPerspXLU, 25, GOBJ_DLLINKORDER_DEFAULT, -1);
     gobj->cam_mask = CAMERA_MASK_DLLINK(3);
 
-    gobj = gcMakeGObjSPAfter(nOMObjCommonKindEffect, NULL, nOMObjCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, efDisplayFuncDisplayZPerspAAXLU, 10, GOBJ_DLLINKORDER_DEFAULT, -1);
     gobj->cam_mask = CAMERA_MASK_DLLINK(4);
 
     gEFManagerParticleBankID = efAllocGetAddParticleBankID
     (
-        &lEFCommonParticleBankGenLo,
-        &lEFCommonParticleBankGenHi,
-        &lEFCommonParticleBankTextureLo,
-        &lEFCommonParticleBankTextureHi
+        &lEFCommonParticleBankScriptsLo,
+        &lEFCommonParticleBankScriptsHi,
+        &lEFCommonParticleBankTexturesLo,
+        &lEFCommonParticleBankTexturesHi
     );
 }

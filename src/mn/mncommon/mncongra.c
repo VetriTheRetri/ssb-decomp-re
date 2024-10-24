@@ -250,7 +250,7 @@ void mnCongraActorFuncRun(GObj *gobj)
 	{
 		sMNCongraIsProceed = TRUE;
 		color = dMNCongraFadeColor;
-		lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 90, FALSE, &sMNCongraIsProceedScene);
+		lbFadeMakeActor(nGCCommonKindTransition, nGCCommonLinkIDTransition, 10, &color, 90, FALSE, &sMNCongraIsProceedScene);
 	}
 }
 
@@ -285,16 +285,16 @@ void mnCongraFuncStart(void)
 	(
 		gcMakeCameraGObj
 		(
-			nOMObjCommonKindWallpaperCamera,
+			nGCCommonKindWallpaperCamera,
 			NULL,
-			nOMObjCommonLinkIDCamera,
+			nGCCommonLinkIDCamera,
 			GOBJ_LINKORDER_DEFAULT,
 			lbCommonScissorSpriteCamera,
 			80,
 			CAMERA_MASK_DLLINK(0),
 			-1,
 			FALSE,
-			nOMObjProcessKindProc,
+			nGCProcessKindProc,
 			NULL,
 			1,
 			FALSE
@@ -302,7 +302,7 @@ void mnCongraFuncStart(void)
 	);
 	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-	gobj = gcMakeGObjSPAfter(nOMObjCommonKindWallpaper, NULL, nOMObjCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
+	gobj = gcMakeGObjSPAfter(nGCCommonKindWallpaper, NULL, nGCCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
 
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
 

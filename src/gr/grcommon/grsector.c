@@ -138,18 +138,18 @@ u8 dGRSectorArwingPilotWaitTimers[/* */][2] =
 // 0x8012E9CC
 DObjTransformTypes dGRSectorArwingTransformKinds[/* */] =
 {
-    { 0x53, nOMTransformNull, 0x00 },
-    { nOMTransformTraRotRpyR, nOMTransformNull, 0x00 },
-    { nOMTransformTra, 0x2C, 0x01 },
-    { nOMTransformTra, 0x2C, 0x01 },
-    { nOMTransformTra, 0x2C, 0x00 },
-    { nOMTransformTra, 0x2C, 0x00 },
-    { nOMTransformTra, nOMTransformNull, 0x01 },
-    { nOMTransformTra, nOMTransformNull, 0x00 },
-    { nOMTransformTra, 0x2C, 0x00 },
-    { nOMTransformTra, nOMTransformNull, 0x00 },
-    { nOMTransformTra, 0x2C, 0x01 },
-    { nOMTransformNull, nOMTransformNull, 0x00 } // This might just be padding
+    { 0x53, nGCTransformNull, 0x00 },
+    { nGCTransformTraRotRpyR, nGCTransformNull, 0x00 },
+    { nGCTransformTra, 0x2C, 0x01 },
+    { nGCTransformTra, 0x2C, 0x01 },
+    { nGCTransformTra, 0x2C, 0x00 },
+    { nGCTransformTra, 0x2C, 0x00 },
+    { nGCTransformTra, nGCTransformNull, 0x01 },
+    { nGCTransformTra, nGCTransformNull, 0x00 },
+    { nGCTransformTra, 0x2C, 0x00 },
+    { nGCTransformTra, nGCTransformNull, 0x00 },
+    { nGCTransformTra, 0x2C, 0x01 },
+    { nGCTransformNull, nGCTransformNull, 0x00 } // This might just be padding
 };
 
 // 0x8012E9F0
@@ -162,8 +162,8 @@ wpCreateDesc dGRSectorArwingWeaponLaser2DWeaponDesc =
     
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,                     // Main matrix transformations
-        nOMTransformNull,                           // Secondary matrix transformations?
+        nGCTransformTraRotRpyR,                     // Main matrix transformations
+        nGCTransformNull,                           // Secondary matrix transformations?
         0                                               // ???
     },
 
@@ -187,8 +187,8 @@ wpCreateDesc dGRSectorArwingWeaponLaser3DWeaponDesc =
     
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,                     // Main matrix transformations
-        nOMTransformNull,                           // Secondary matrix transformations?
+        nGCTransformTraRotRpyR,                     // Main matrix transformations
+        nGCTransformNull,                           // Secondary matrix transformations?
         0                                               // ???
     },
 
@@ -230,7 +230,7 @@ void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
 
     while (aobj != NULL)
     {
-        if ((aobj->kind != nOMObjAnimKindNone) && !(arg0->parent_gobj->flags & GOBJ_FLAG_NOANIM) && (aobj->track == 4))
+        if ((aobj->kind != nGCAnimKindNone) && !(arg0->parent_gobj->flags & GOBJ_FLAG_NOANIM) && (aobj->track == 4))
         {
             vlen = gcGetAObjValue(aobj);
 
@@ -252,7 +252,7 @@ void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
 
         while (aobj != NULL)
         {
-            if ((aobj->kind != nOMObjAnimKindNone) && !(arg0->parent_gobj->flags & 2) && (aobj->track == 4))
+            if ((aobj->kind != nGCAnimKindNone) && !(arg0->parent_gobj->flags & 2) && (aobj->track == 4))
             {
                 hal_interpolation_cubic(vec3, aobj->interpolate, vlen);
             }
@@ -526,7 +526,7 @@ s32 grSectorArwingPrepareLaserCount(void)
 // 0x80106F5C
 s32 grSectorArwingGetLaserAmmoCount(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
     f32 pos_x = gGRCommonStruct.sector.map_dobj[0]->translate.vec.f.x + gGRCommonStruct.sector.arwing_target_x;
     f32 pos_y = gGRCommonStruct.sector.map_dobj[0]->translate.vec.f.y + gGRCommonStruct.sector.map_dobj[1]->translate.vec.f.y;
 
@@ -839,7 +839,7 @@ void grSectorArwingWeaponLaser3DMakeWeapon(void)
 
     random = mtTrigGetRandomIntRange(gBattleState->pl_count + gBattleState->cp_count);
 
-    fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
     for (player = 0; player < random; player++)
     {
@@ -1088,13 +1088,13 @@ void grSectorInitAll(void)
 
     gGRCommonStruct.sector.map_file = map_file;
 
-    map_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    map_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     gGRCommonStruct.sector.map_gobj = map_gobj;
 
     gcAddGObjDisplay(map_gobj, gcDrawDObjTreeDLLinksForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
     grModelSetupGroundDObjs(map_gobj, (DObjDesc*) ((uintptr_t)map_file + (intptr_t)&D_NF_00002C30), gGRCommonStruct.sector.map_dobj, dGRSectorArwingTransformKinds);
-    gcAddGObjProcess(map_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
+    gcAddGObjProcess(map_gobj, gcPlayAnimAll, nGCProcessKindProc, 5);
 
     gGRCommonStruct.sector.arwing_status = 0;
     gGRCommonStruct.sector.arwing_flight_pattern = -1;
@@ -1115,10 +1115,10 @@ void grSectorInitAll(void)
 // 0x80107FCC
 GObj* grSectorMakeGround(void)
 {
-    GObj *map_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    GObj *map_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     grSectorInitAll();
-    gcAddGObjProcess(map_gobj, grSectorProcUpdate, nOMObjProcessKindProc, 4);
+    gcAddGObjProcess(map_gobj, grSectorProcUpdate, nGCProcessKindProc, 4);
 
     return map_gobj;
 }

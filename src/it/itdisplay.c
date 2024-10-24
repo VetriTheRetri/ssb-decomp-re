@@ -55,7 +55,7 @@ void itDisplayHitCollisions(GObj *item_gobj)
                 syMatrixSca(mtx_store.gbi, it_hit->size / 15.0F, it_hit->size / 15.0F, it_hit->size / 15.0F);
 
                 gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-                gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTRenderMainHitCollisionEdgeDL);
+                gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionEdgeDL);
                 gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
             }
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
@@ -72,9 +72,9 @@ void itDisplayHitCollisions(GObj *item_gobj)
 
             if (it_hit->update_state == nGMHitUpdateInterpolate)
             {
-                gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTRenderMainHitCollisionBlendDL);
+                gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionBlendDL);
             }
-            gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTRenderMainHitCollisionCubeDL);
+            gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionCubeDL);
             gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
         }
     }
@@ -114,7 +114,7 @@ void itDisplayHitCollisions(GObj *item_gobj)
             gDPSetEnvColor(gSYTaskmanDLHeads[0]++, 0x00, 0x00, 0xD0, 0xFF);
             break;
         }
-        gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTRenderMainHurtCollisionCuboidDL);
+        gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHurtCollisionCuboidDL);
         gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
     }
 }
@@ -140,7 +140,7 @@ void itDisplayMapCollisions(GObj *item_gobj)
     syMatrixSca(mtx_store.gbi, objcoll->width / 30.0F, (objcoll->center - objcoll->bottom) / 30.0F, 1.0F);
 
     gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-    gSPDisplayList(gSYTaskmanDLHeads[1]++, dFTRenderMainMapCollisionBottomDL);
+    gSPDisplayList(gSYTaskmanDLHeads[1]++, dFTDisplayMainMapCollisionBottomDL);
     gSPPopMatrix(gSYTaskmanDLHeads[1]++, G_MTX_MODELVIEW);
 
     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
@@ -154,7 +154,7 @@ void itDisplayMapCollisions(GObj *item_gobj)
     syMatrixSca(mtx_store.gbi, objcoll->width / 30.0F, (objcoll->top - objcoll->center) / 30.0F, 1.0F);
 
     gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-    gSPDisplayList(gSYTaskmanDLHeads[1]++, dFTRenderMainMapCollisionTopDL);
+    gSPDisplayList(gSYTaskmanDLHeads[1]++, dFTDisplayMainMapCollisionTopDL);
     gSPPopMatrix(gSYTaskmanDLHeads[1]++, G_MTX_MODELVIEW);
 }
 
@@ -186,7 +186,7 @@ sb32 itDisplayCheckItemVisible(itStruct *ip)
 }
 
 // 0x80171C7C
-void itDisplayFuncDisplayOPA(GObj *item_gobj)
+void itDisplayOPAFuncDisplay(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -210,7 +210,7 @@ void itDisplayFuncDisplayOPA(GObj *item_gobj)
 }
 
 // 0x80171D38
-void itDisplayFuncDisplayXLU(GObj *item_gobj)
+void itDisplayXLUFuncDisplay(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -256,7 +256,7 @@ void itDisplayColAnimOPA(GObj *item_gobj)
 }
 
 // 0x80171F4C
-void itDisplayFuncDisplayColAnimOPA(GObj *item_gobj)
+void itDisplayColAnimOPAFuncDisplay(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 
@@ -312,7 +312,7 @@ void itDisplayColAnimXLU(GObj *item_gobj)
 }
 
 // 0x8017224C
-void itDisplayFuncDisplayColAnimXLU(GObj *item_gobj)
+void itDisplayColAnimXLUFuncDisplay(GObj *item_gobj)
 {
     itStruct *ip = itGetStruct(item_gobj);
 

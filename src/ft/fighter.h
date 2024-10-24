@@ -8,12 +8,12 @@
 extern sb32 gFTMainIsHurtDetect[4];
 extern sb32 gFTMainIsHitDetect[4];
 
-extern Gfx dFTRenderMainHurtCollisionCuboidDL[/* */];
-extern Gfx dFTRenderMainHitCollisionEdgeDL[/* */];
-extern Gfx dFTRenderMainHitCollisionBlendDL[/* */];
-extern Gfx dFTRenderMainHitCollisionCubeDL[/* */];
-extern Gfx dFTRenderMainMapCollisionBottomDL[/* */];
-extern Gfx dFTRenderMainMapCollisionTopDL[/* */];
+extern Gfx dFTDisplayMainHurtCollisionCuboidDL[/* */];
+extern Gfx dFTDisplayMainHitCollisionEdgeDL[/* */];
+extern Gfx dFTDisplayMainHitCollisionBlendDL[/* */];
+extern Gfx dFTDisplayMainHitCollisionCubeDL[/* */];
+extern Gfx dFTDisplayMainMapCollisionBottomDL[/* */];
+extern Gfx dFTDisplayMainMapCollisionTopDL[/* */];
 
 extern ftOpeningDesc *D_ovl1_80390D20[/* */];
 extern ftOpeningDesc D_ovl1_80390BE8;

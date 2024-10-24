@@ -218,7 +218,7 @@ void scAutoDemoFuncUpdate(void)
 // 0x8018D0E0
 void scAutoDemoStartBattle(void)
 {
-	GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+	GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
 	while (fighter_gobj != NULL)
 	{
@@ -254,7 +254,7 @@ void scAutoDemoMakeFade(void)
 {
 	syColorRGBA color = dSCAutoDemoFadeColor;
 
-	lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 30, TRUE, NULL);
+	lbFadeMakeActor(nGCCommonKindTransition, nGCCommonLinkIDTransition, 10, &color, 30, TRUE, NULL);
 }
 
 // 0x8018D1EC
@@ -434,7 +434,7 @@ void scAutoDemoFuncRun(GObj *gobj)
 // 0x8018D704
 GObj* scAutoDemoMakeFocusInterface(void)
 {
-	GObj *interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, scAutoDemoFuncRun, nOMObjCommonLinkIDInterfaceActor, GOBJ_LINKORDER_DEFAULT);
+	GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, scAutoDemoFuncRun, nGCCommonLinkIDInterfaceActor, GOBJ_LINKORDER_DEFAULT);
 
 	sSCAutoDemoProc = dSCAutoDemoProcList;
 	sSCAutoDemoFocusChangeWait = 0;
@@ -601,9 +601,9 @@ void scAutoDemoInitSObjs(void)
 	);
 	sSCAutoDemoFighterNameGObj = interface_gobj = gcMakeGObjSPAfter
 	(
-		nOMObjCommonKindInterface, 
+		nGCCommonKindInterface, 
 		NULL, 
-		nOMObjCommonLinkIDInterface, 
+		nGCCommonLinkIDInterface, 
 		GOBJ_LINKORDER_DEFAULT
 	);
 	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);

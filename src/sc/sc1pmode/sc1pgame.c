@@ -1597,13 +1597,13 @@ void sc1PGameSetGameStatusWait(void)
     (
         gcMakeGObjSPAfter
         (
-            nOMObjCommonKindInterface, 
+            nGCCommonKindInterface, 
             NULL, 
-            nOMObjCommonLinkIDInterfaceActor, 
+            nGCCommonLinkIDInterfaceActor, 
             GOBJ_LINKORDER_DEFAULT
         ),     
         sc1PGameWaitThreadUpdate, 
-        nOMObjProcessKindThread, 
+        nGCProcessKindThread, 
         5
     );
     gBattleState->game_status = nSCBattleGameStatusWait;
@@ -1717,7 +1717,7 @@ void sc1PGameInitTeamStockDisplay(void)
         sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 
     make_gobj:
-        interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
+        interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
         gcAddGObjDisplay(interface_gobj, sc1PGameTeamStockDisplayFuncDisplay, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -1883,7 +1883,7 @@ void sc1PGameBossSetZoomCamera(ftStruct *fp)
 // 0x8018F540
 void sc1PGameBossHidePlayerTagAll(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
     while (fighter_gobj != NULL)
     {
@@ -1929,9 +1929,9 @@ void func_ovl65_8018F5E4(void)
 // 0x8018F5EC
 void sc1PGameBossDefeatInterfaceProcUpdate(void)
 {
-    gcApplyByLink(nOMObjCommonLinkIDFighter, sc1PGameBossAddBossInterface, 0);
-    gcApplyByLink(nOMObjCommonLinkIDFighter, sc1PGameBossLockPlayerControl, 0);
-    gcApplyByLink(nOMObjCommonLinkIDFighter, sc1PGameBossSetIgnorePlayerMapBounds, 0);
+    gcApplyByLink(nGCCommonLinkIDFighter, sc1PGameBossAddBossInterface, 0);
+    gcApplyByLink(nGCCommonLinkIDFighter, sc1PGameBossLockPlayerControl, 0);
+    gcApplyByLink(nGCCommonLinkIDFighter, sc1PGameBossSetIgnorePlayerMapBounds, 0);
     gcApplyToAll(func_ovl2_80113638, 0);
 
     gcApplyByLink(9, func_ovl2_8011366C, 0);
@@ -2157,7 +2157,7 @@ void sc1PGameFuncStart(void)
     ifCommonTimerMakeDigits();
 
     color = dSC1PGameFadeColor;
-    lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
+    lbFadeMakeActor(nGCCommonKindTransition, nGCCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 }
 
 // 0x8018FD5C

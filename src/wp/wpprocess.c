@@ -296,7 +296,7 @@ void wpProcessUpdateHitInteractStatsGroupID(wpStruct *this_wp, wpHitbox *wp_hit,
 {
     if (this_wp->group_id != 0)
     {
-        GObj *victim_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDWeapon];
+        GObj *victim_gobj = gGCCommonLinks[nGCCommonLinkIDWeapon];
 
         while (victim_gobj != NULL)
         {
@@ -363,7 +363,7 @@ void wpProcessProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision 
 
     if ((this_hit->can_setoff) && (this_hit->update_state != nGMHitUpdateDisable) && (this_hit->interact_mask & GMHITCOLLISION_FLAG_WEAPON))
     {
-        other_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDWeapon];
+        other_gobj = gGCCommonLinks[nGCCommonLinkIDWeapon];
 
         is_check_self = FALSE;
 

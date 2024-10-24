@@ -192,7 +192,7 @@ void scExplainSetBattleState(void)
 // 0x8018D1D4
 void scExplainStartBattle(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
     while (fighter_gobj != NULL)
     {
@@ -240,16 +240,16 @@ void scExplainMakeWindowCamera(void)
 {
     gcMakeCameraGObj
     (
-        nOMObjCommonKindScissorCamera,
+        nGCCommonKindScissorCamera,
         NULL,
-        nOMObjCommonLinkIDCamera,
+        nGCCommonLinkIDCamera,
         GOBJ_LINKORDER_DEFAULT,
         scExplainWindowFuncDisplay,
         15,
         0,
         0,
         FALSE,
-        nOMObjProcessKindThread,
+        nGCProcessKindThread,
         NULL,
         0,
         FALSE
@@ -268,7 +268,7 @@ GObj* scExplainMakeTextCamera(void)
 {
     GObj *camera_gobj = gcMakeCameraGObj
     (
-        nOMObjCommonKindScissorCamera,
+        nGCCommonKindScissorCamera,
         NULL,
         9,
         GOBJ_LINKORDER_DEFAULT,
@@ -277,7 +277,7 @@ GObj* scExplainMakeTextCamera(void)
         CAMERA_MASK_DLLINK(26), 
         -1,
         FALSE,
-        nOMObjProcessKindProc,
+        nGCProcessKindProc,
         NULL,
         1,
         FALSE
@@ -294,24 +294,24 @@ GObj* scExplainMakeControlStickCamera(void)
 {
     GObj *camera_gobj = gcMakeCameraGObj
     (
-        nOMObjCommonKindScissorCamera,
+        nGCCommonKindScissorCamera,
         NULL,
-        nOMObjCommonLinkIDCamera,
+        nGCCommonLinkIDCamera,
         GOBJ_LINKORDER_DEFAULT,
         func_80017EC0,
         15,
         CAMERA_MASK_DLLINK(27),
         -1,
         FALSE,
-        nOMObjProcessKindProc,
+        nGCProcessKindProc,
         NULL,
         1,
         FALSE
     );
     Camera *cam = CameraGetStruct(camera_gobj);
 
-    gcAddOMMtxForCamera(cam, nOMTransformOrtho, 1);
-    gcAddOMMtxForCamera(cam, 6, 1);
+    gcAddGCMatrixForCamera(cam, nGCTransformOrtho, 1);
+    gcAddGCMatrixForCamera(cam, 6, 1);
 
     syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
@@ -356,9 +356,9 @@ GObj* scExplainMakeControlStickInterface(void)
 {
     GObj *interface_gobj = gcMakeGObjSPAfter
     (
-        nOMObjCommonKindInterface,
+        nGCCommonKindInterface,
         NULL,
-        nOMObjCommonLinkIDInterface,
+        nGCCommonLinkIDInterface,
         GOBJ_LINKORDER_DEFAULT
     );
     gcAddGObjDisplay(interface_gobj, scExplainControlStickFuncDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
@@ -367,9 +367,9 @@ GObj* scExplainMakeControlStickInterface(void)
         interface_gobj, 
         ((uintptr_t)sSCExplainGraphicsFileHead + (intptr_t)&lSCExplainStickDObjDesc), 
         NULL, 
-        nOMTransformTra, 
-        nOMTransformNull, 
-        nOMTransformNull
+        nGCTransformTra, 
+        nGCTransformNull, 
+        nGCTransformNull
     );
     gcAddMObjAll
     (
@@ -381,7 +381,7 @@ GObj* scExplainMakeControlStickInterface(void)
             &lSCExplainStickMObjSub
         )
     );
-    gcAddGObjProcess(interface_gobj, scExplainProcUpdateControlStickSprite, nOMObjProcessKindProc, 5);
+    gcAddGObjProcess(interface_gobj, scExplainProcUpdateControlStickSprite, nGCProcessKindProc, 5);
 
     interface_gobj->flags = GOBJ_FLAG_HIDDEN;
 
@@ -439,13 +439,13 @@ void scExplainTapSparkProcUpdate(GObj *gobj)
 // 0x8018DA04
 GObj* scExplainMakeTapSpark(void)
 {
-    GObj *interface_gobj = gcMakeGObjSPAfter(nOMObjCommonKindInterface, NULL, nOMObjCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
+    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjDisplay(interface_gobj, scExplainTapSparkFuncDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjForGObj(interface_gobj, (void*) ((uintptr_t)sSCExplainGraphicsFileHead + (intptr_t)&lSCExplainTapSparkDisplayList));
-    gcAddOMMtxForDObjFixed(DObjGetStruct(interface_gobj), nOMTransformTra, 0);
+    gcAddGCMatrixForDObjFixed(DObjGetStruct(interface_gobj), nGCTransformTra, 0);
     gcAddMObjAll(interface_gobj, lbRelocGetDataFromFile(MObjSub***, sSCExplainGraphicsFileHead, &lSCExplainTapSparkMObjSub));
-    gcAddGObjProcess(interface_gobj, scExplainTapSparkProcUpdate, nOMObjProcessKindProc, 5);
+    gcAddGObjProcess(interface_gobj, scExplainTapSparkProcUpdate, nGCProcessKindProc, 5);
 
     interface_gobj->flags = GOBJ_FLAG_HIDDEN;
 
@@ -479,14 +479,14 @@ GObj* scExplainMakeSpecialMoveRGB(void)
 {
     GObj *interface_gobj = gcMakeGObjSPAfter
     (
-        nOMObjCommonKindInterface, 
+        nGCCommonKindInterface, 
         NULL,
-        nOMObjCommonLinkIDInterface,
+        nGCCommonLinkIDInterface,
         GOBJ_LINKORDER_DEFAULT
     );
     gcAddGObjDisplay(interface_gobj, scExplainTapSparkFuncDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjForGObj(interface_gobj, lbRelocGetDataFromFile(void*, sSCExplainGraphicsFileHead, &lSCExplainSpecialMoveRGBDisplayList));
-    gcAddOMMtxForDObjFixed(DObjGetStruct(interface_gobj), nOMTransformTra, 0);
+    gcAddGCMatrixForDObjFixed(DObjGetStruct(interface_gobj), nGCTransformTra, 0);
 
     interface_gobj->flags = GOBJ_FLAG_HIDDEN;
 
@@ -509,9 +509,9 @@ SObj* scExplainMakeSObjOffset(intptr_t offset)
 
     interface_gobj = gcMakeGObjSPAfter
     (
-        nOMObjCommonKindInterface,
+        nGCCommonKindInterface,
         NULL,
-        nOMObjCommonLinkIDInterface,
+        nGCCommonLinkIDInterface,
         GOBJ_LINKORDER_DEFAULT
     );
     gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
@@ -689,12 +689,12 @@ GObj* scExplainMakeSceneInterface(void)
 {
     GObj *interface_gobj = gcMakeGObjSPAfter
     (
-        nOMObjCommonKindInterface, 
+        nGCCommonKindInterface, 
         NULL, 
-        nOMObjCommonLinkIDInterface, 
+        nGCCommonLinkIDInterface, 
         GOBJ_LINKORDER_DEFAULT
     );
-    gcAddGObjProcess(interface_gobj, scExplainSceneInterfaceProcUpdate, nOMObjProcessKindProc, 5);
+    gcAddGObjProcess(interface_gobj, scExplainSceneInterfaceProcUpdate, nGCProcessKindProc, 5);
 
     sSCExplainStruct.phase_advance_wait = 0;
     sSCExplainStruct.phase = 0;
@@ -816,7 +816,7 @@ void scExplainFuncStart(void)
 
     color = dSCExplainFadeColor;
 
-    lbFadeMakeActor(nOMObjCommonKindTransition, nOMObjCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
+    lbFadeMakeActor(nGCCommonKindTransition, nGCCommonLinkIDTransition, 10, &color, 12, TRUE, NULL);
 }
 
 // 0x8018E51C

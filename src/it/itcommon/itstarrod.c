@@ -28,8 +28,8 @@ itCreateDesc dITStarRodItemDesc =
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,             // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformTraRotRpyR,             // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -116,8 +116,8 @@ wpCreateDesc dITStarRodWeaponStarWeaponDesc =
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyRSca,          // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformTraRotRpyRSca,          // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -397,7 +397,7 @@ GObj* itStarRodWeaponStarMakeWeapon(GObj *fighter_gobj, Vec3f *pos, ub8 is_smash
 
     wp->weapon_vars.star.lifetime = (!(is_smash)) ? ITSTARROD_AMMO_TILT_LIFETIME : ITSTARROD_AMMO_SMASH_LIFETIME; // Why float lol
 
-    gcAddOMMtxForDObjFixed(dobj, 0x2E, 0);
+    gcAddGCMatrixForDObjFixed(dobj, 0x2E, 0);
 
     dobj->translate.vec.f = *pos;
 

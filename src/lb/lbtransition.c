@@ -133,8 +133,8 @@ GObj* lbTransitionMakeCamera(u32 id, s32 link, u32 link_order, u64 cam_mask)
     func_80009F74(gobj, func_80017DBC, link_order, cam_mask, -1);
     
     cam = gcAddCameraForGObj(gobj);
-    gcAddOMMtxForCamera(cam, nOMTransformPerspFastF, 1);
-    gcAddOMMtxForCamera(cam, nOMTransformLookAt, 1);
+    gcAddGCMatrixForCamera(cam, nGCTransformPerspFastF, 1);
+    gcAddGCMatrixForCamera(cam, nGCTransformLookAt, 1);
     syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
     cam->projection.persp.aspect = 15.0F / 11.0F;
@@ -186,16 +186,16 @@ GObj* lbTransitionMakeTransition(s32 transition_id, u32 id, s32 link, void (*fun
         gobj, 
         (DObjDesc*) (transition_desc->o_dobjdesc + (uintptr_t)sLBTransitionFileHeap),
         NULL,
-        nOMTransformTraRotRpyRSca,
-        nOMTransformNull,
-        nOMTransformNull
+        nGCTransformTraRotRpyRSca,
+        nGCTransformNull,
+        nGCTransformNull
     );
     if (transition_desc->o_anim_joint != 0)
     {
         gcAddAnimJointAll(gobj, (AObjEvent32**) (transition_desc->o_anim_joint + (uintptr_t)sLBTransitionFileHeap), 0.0F);
         gcPlayAnimAll(gobj);
     }
-    gcAddGObjProcess(gobj, proc_common, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(gobj, proc_common, nGCProcessKindProc, 1);
     
     return gobj;
 }

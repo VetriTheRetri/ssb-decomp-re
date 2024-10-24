@@ -3,174 +3,174 @@
 
 typedef enum GObjKind
 {
-    nOMObjCommonKindFighter = 1000,             // 1000
-    nOMObjCommonKindFighterParts,               // 1001
-    nOMObjCommonKindMainCamera = 1002,          // 1002
-    nOMObjCommonKindWallpaperCamera,            // 1003 - Used to render stage backgrounds?
-    nOMObjCommonKindScissorCamera,              // 1004 - Camera scissor?
-    nOMObjCommonKindUnkCamera1,                 // 1005 - ???
-    nOMObjCommonKindUnkCamera2,                 // 1006 - ???
-    nOMObjCommonKindUnkCamera3,                 // 1007
-    nOMObjCommonKindWallpaper = 1008,           // 1008 - Stage background?
-    nOMObjCommonKindGrRender,                   // 1009 - Stage renderer?
-    nOMObjCommonKindGround,                     // 1010
-    nOMObjCommonKindEffect,                     // 1011
-    nOMObjCommonKindWeapon,                     // 1012
-    nOMObjCommonKindItem,                       // 1013
-    nOMObjCommonKindMovie = 1015,               // 1015 - Opening movie?
-    nOMObjCommonKindInterface = 1016,           // 1016
-    nOMObjCommonKindRumble,                     // 1017
-    nOMObjCommonKindPublicity,                  // 1018 - Audience reaction
-    nOMObjCommonKindPauseMenu = 1019,           // 1019
-    nOMObjCommonKindShadow,                     // 1020
-    nOMObjCommonKindTransition,                 // 1021 - Screen fadeout actor?
-    nOMObjCommonKindBossWallpaper = 1023,       // 1023
-    nOMObjCommonKindSceneCamera = 1025          // 1025
+    nGCCommonKindFighter = 1000,             // 1000
+    nGCCommonKindFighterParts,               // 1001
+    nGCCommonKindMainCamera = 1002,          // 1002
+    nGCCommonKindWallpaperCamera,            // 1003 - Used to render stage backgrounds?
+    nGCCommonKindScissorCamera,              // 1004 - Camera scissor?
+    nGCCommonKindUnkCamera1,                 // 1005 - ???
+    nGCCommonKindUnkCamera2,                 // 1006 - ???
+    nGCCommonKindUnkCamera3,                 // 1007
+    nGCCommonKindWallpaper = 1008,           // 1008 - Stage background?
+    nGCCommonKindGrRender,                   // 1009 - Stage renderer?
+    nGCCommonKindGround,                     // 1010
+    nGCCommonKindEffect,                     // 1011
+    nGCCommonKindWeapon,                     // 1012
+    nGCCommonKindItem,                       // 1013
+    nGCCommonKindMovie = 1015,               // 1015 - Opening movie?
+    nGCCommonKindInterface = 1016,           // 1016
+    nGCCommonKindRumble,                     // 1017
+    nGCCommonKindPublicity,                  // 1018 - Audience reaction
+    nGCCommonKindPauseMenu = 1019,           // 1019
+    nGCCommonKindShadow,                     // 1020
+    nGCCommonKindTransition,                 // 1021 - Screen fadeout actor?
+    nGCCommonKindBossWallpaper = 1023,       // 1023
+    nGCCommonKindSceneCamera = 1025          // 1025
 
 } GObjKind;
 
 typedef enum GObjProcessKind
 {
-    nOMObjProcessKindThread,
-    nOMObjProcessKindProc,
-    nOMObjProcessKindEnumMax
+    nGCProcessKindThread,
+    nGCProcessKindProc,
+    nGCProcessKindEnumMax
 
 } GObjProcessKind;
 
 typedef enum GObjObjKind
 {
-    nOMObjCommonAppendNone,
-    nOMObjCommonAppendDObj,
-    nOMObjCommonAppendSObj,
-    nOMObjCommonAppendCamera,
-    nOMObjCommonAppendEnumMax
+    nGCCommonAppendNone,
+    nGCCommonAppendDObj,
+    nGCCommonAppendSObj,
+    nGCCommonAppendCamera,
+    nGCCommonAppendEnumMax
 
 } GObjObjKind;
 
 typedef enum GObjLinkIndex
 {
     // GObj link indexes with ID 1
-    nOMObjCommonLinkIDGround = 1,         // ID 1: Stage object
+    nGCCommonLinkIDGround = 1,         // ID 1: Stage object
 
-    nOMObjCommonLinkIDGroundRender = 2,   // ID 2: Stage renderer?
-    nOMObjCommonLinkIDItemActor = 2,      // ID 2: Item spawn actor
-    nOMObjCommonLinkID02 = 2,             // ID 2: ???
+    nGCCommonLinkIDGroundRender = 2,   // ID 2: Stage renderer?
+    nGCCommonLinkIDItemActor = 2,      // ID 2: Item spawn actor
+    nGCCommonLinkID02 = 2,             // ID 2: ???
 
     // GObj link indexes with ID 3
-    nOMObjCommonLinkIDFighter = 3,        // ID 3: Fighter object
-    nOMObjCommonLinkIDCreditsName = 3,    // ID 3: Credits staff roll name
+    nGCCommonLinkIDFighter = 3,        // ID 3: Fighter object
+    nGCCommonLinkIDCreditsName = 3,    // ID 3: Credits staff roll name
 
     // GObj link indexes with ID 4
-    nOMObjCommonLinkIDItem = 4,           // ID 4: Item object
-    nOMObjCommonLinkIDCreditsJob = 4,     // ID 4: Credits staff roll job
+    nGCCommonLinkIDItem = 4,           // ID 4: Item object
+    nGCCommonLinkIDCreditsJob = 4,     // ID 4: Credits staff roll job
 
-    nOMObjCommonLinkIDWeapon = 5,         // ID 5: Weapon (projectile) object
-    nOMObjCommonLinkIDEffect,             // ID 6: Effect type 1 object (other ID is 8 but idk what it does)
-    nOMObjCommonLinkIDSpecialEffect = 8,  // ID 8: Effect type 2 object
-    nOMObjCommonLinkIDHighlight = 9,      // ID 9: Credits shootout rectangles that zoom in on crosshair
-    nOMObjCommonLinkIDCamera = 9,         // ID 9: Cameras?
-    nOMObjCommonLinkIDInterfaceActor = 10,// ID 10: Traffic lamp on match start
-    nOMObjCommonLinkIDInterface = 11,     // ID 11: HUD elements object
-    nOMObjCommonLinkIDMagnify = 12,       // ID 12: HUD magnifying glass
+    nGCCommonLinkIDWeapon = 5,         // ID 5: Weapon (projectile) object
+    nGCCommonLinkIDEffect,             // ID 6: Effect type 1 object (other ID is 8 but idk what it does)
+    nGCCommonLinkIDSpecialEffect = 8,  // ID 8: Effect type 2 object
+    nGCCommonLinkIDHighlight = 9,      // ID 9: Credits shootout rectangles that zoom in on crosshair
+    nGCCommonLinkIDCamera = 9,         // ID 9: Cameras?
+    nGCCommonLinkIDInterfaceActor = 10,// ID 10: Traffic lamp on match start
+    nGCCommonLinkIDInterface = 11,     // ID 11: HUD elements object
+    nGCCommonLinkIDMagnify = 12,       // ID 12: HUD magnifying glass
 
-    nOMObjCommonLinkIDRumble = 13,        // ID 13: Rumble object?
-    nOMObjCommonLinkIDWallpaper = 13,     // ID 13: Stage background object?
-    nOMObjCommonLinkIDWallpaperEffect=13, // ID 13: Stage background effect
-    nOMObjCommonLinkIDFighterParts = 13,  // ID 13: FighterParts
-    nOMObjCommonLinkIDShadow = 13,        // ID 13: Fighter shadows
-    nOMObjCommonLinkIDTransition = 13,    // ID 13: Screen fadeout transition
+    nGCCommonLinkIDRumble = 13,        // ID 13: Rumble object?
+    nGCCommonLinkIDWallpaper = 13,     // ID 13: Stage background object?
+    nGCCommonLinkIDWallpaperEffect=13, // ID 13: Stage background effect
+    nGCCommonLinkIDFighterParts = 13,  // ID 13: FighterParts
+    nGCCommonLinkIDShadow = 13,        // ID 13: Fighter shadows
+    nGCCommonLinkIDTransition = 13,    // ID 13: Screen fadeout transition
 
-    nOMObjCommonLinkIDPauseMenu           // ID 14: Pause menu object?
+    nGCCommonLinkIDPauseMenu           // ID 14: Pause menu object?
 
 } GObjLinkIndex;
 
 typedef enum DObjVecKind
 {
-    nOMObjDrawVecKindNone,
-    nOMObjDrawVecKindTranslate,
-    nOMObjDrawVecKindRotate,
-    nOMObjDrawVecKindScale,
-    nOMObjDrawVecKindEnumMax
+    nGCDrawVecKindNone,
+    nGCDrawVecKindTranslate,
+    nGCDrawVecKindRotate,
+    nGCDrawVecKindScale,
+    nGCDrawVecKindEnumMax
 
 } DObjVecKind;
 
-typedef enum OMMtxTransformKind
+typedef enum GCMatrixTransformKind
 {
-    nOMTransformNull,
-    nOMTransformPerspFastF = 3,     // Camera Fast FP perspective projection
-    nOMTransformPerspF,             // Camera FP perspective projection
-    nOMTransformOrtho,              // Camera Orthographic projection
-    nOMTransformLookAt,
-    nOMTransformTra = 18,           // DObj Translate
-    nOMTransformRotD,               // DObj Rotate degrees
-    nOMTransformTraRotD,            // DObj Translate + rotate degrees
-    nOMTransformRotRpyD,            // DObj Rotate Roll/Pitch/Yaw degrees
-    nOMTransformTraRotRpyD,         // DObj Translate + rotate Roll/Pitch/Yaw degrees
-    nOMTransformRotR,               // DObj Rotate radians (?)
-    nOMTransformTraRotR,            // DObj Translate + rotate radians
-    nOMTransformTraRotRSca,         // DObj Translate + rotate radians + scale
-    nOMTransformRotRpyR,            // DObj Rotate Roll/Pitch/Yaw radians
-    nOMTransformTraRotRpyR,         // DObj Translate + rotate Roll/Pitch/Yaw radians
-    nOMTransformTraRotRpyRSca,      // DObj Translate + rotate Roll/Pitch/Yaw radians + rowscale (?)
-    nOMTransformRotPyrR,            // DObj Rotate Pitch/Yaw/Roll radians (?)
-    nOMTransformTraRotPyrR,         // DObj Translate + rotate Pitch/Yaw/Roll radians (?)
-    nOMTransformTraRotPyrRSca,      // DObj Translate + rotate Pitch/Yaw/Roll radians (?) + scale
-    nOMTransformSca,                // DObj Scale
-    nOMTransformRecalcRotPyrR = 41, // MVP Recalc Pitch/Yaw/Roll radians (?)
-    nOMTransformRecalcRotRpyR,      // MVP Recalc Roll/Pitch/Yaw radians (?)
-    nOMTransformRecalcRotPyrRSca,   // MVP Recalc Pitch/Yaw/Roll radians + scale (?)
-    nOMTransformRecalcRotRpyRSca,   // MVP Recalc Roll/Pitch/Yaw radians + scale (?)
-    nOMTransform45,
-    nOMTransform46,
-    nOMTransform47,
-    nOMTransform48,
-    nOMTransform49,
-    nOMTransform50,
-    nOMTransformVecTra = 56,        // Standalone (?) vector translate
-    nOMTransformVecRotR,            // Standalone (?) vector rotate radians
-    nOMTransformVecRotRpyR,         // Standalone (?) vector rotate Roll/Pitch/Yaw radians
-    nOMTransformVecSca,             // Standalone (?) vector scale
-    nOMTransformVecTraRotR,         // Standalone (?) vector translate + rotate radians
-    nOMTransformVecTraRotRSca,      // Standalone (?) vector translate + rotate radians + rowscale (?)
-    nOMTransformVecTraRotRpyR,      // Standalone (?) vector translate + rotate Roll/Pitch/Yaw radians
-    nOMTransformVecTraRotRpyRSca    // Standalone (?) vector translate + rotate Roll/Pitch/Yaw radians + rowscale (?) 
+    nGCTransformNull,
+    nGCTransformPerspFastF = 3,     // Camera Fast FP perspective projection
+    nGCTransformPerspF,             // Camera FP perspective projection
+    nGCTransformOrtho,              // Camera Orthographic projection
+    nGCTransformLookAt,
+    nGCTransformTra = 18,           // DObj Translate
+    nGCTransformRotD,               // DObj Rotate degrees
+    nGCTransformTraRotD,            // DObj Translate + rotate degrees
+    nGCTransformRotRpyD,            // DObj Rotate Roll/Pitch/Yaw degrees
+    nGCTransformTraRotRpyD,         // DObj Translate + rotate Roll/Pitch/Yaw degrees
+    nGCTransformRotR,               // DObj Rotate radians (?)
+    nGCTransformTraRotR,            // DObj Translate + rotate radians
+    nGCTransformTraRotRSca,         // DObj Translate + rotate radians + scale
+    nGCTransformRotRpyR,            // DObj Rotate Roll/Pitch/Yaw radians
+    nGCTransformTraRotRpyR,         // DObj Translate + rotate Roll/Pitch/Yaw radians
+    nGCTransformTraRotRpyRSca,      // DObj Translate + rotate Roll/Pitch/Yaw radians + rowscale (?)
+    nGCTransformRotPyrR,            // DObj Rotate Pitch/Yaw/Roll radians (?)
+    nGCTransformTraRotPyrR,         // DObj Translate + rotate Pitch/Yaw/Roll radians (?)
+    nGCTransformTraRotPyrRSca,      // DObj Translate + rotate Pitch/Yaw/Roll radians (?) + scale
+    nGCTransformSca,                // DObj Scale
+    nGCTransformRecalcRotPyrR = 41, // MVP Recalc Pitch/Yaw/Roll radians (?)
+    nGCTransformRecalcRotRpyR,      // MVP Recalc Roll/Pitch/Yaw radians (?)
+    nGCTransformRecalcRotPyrRSca,   // MVP Recalc Pitch/Yaw/Roll radians + scale (?)
+    nGCTransformRecalcRotRpyRSca,   // MVP Recalc Roll/Pitch/Yaw radians + scale (?)
+    nGCTransform45,
+    nGCTransform46,
+    nGCTransform47,
+    nGCTransform48,
+    nGCTransform49,
+    nGCTransform50,
+    nGCTransformVecTra = 56,        // Standalone (?) vector translate
+    nGCTransformVecRotR,            // Standalone (?) vector rotate radians
+    nGCTransformVecRotRpyR,         // Standalone (?) vector rotate Roll/Pitch/Yaw radians
+    nGCTransformVecSca,             // Standalone (?) vector scale
+    nGCTransformVecTraRotR,         // Standalone (?) vector translate + rotate radians
+    nGCTransformVecTraRotRSca,      // Standalone (?) vector translate + rotate radians + rowscale (?)
+    nGCTransformVecTraRotRpyR,      // Standalone (?) vector translate + rotate Roll/Pitch/Yaw radians
+    nGCTransformVecTraRotRpyRSca    // Standalone (?) vector translate + rotate Roll/Pitch/Yaw radians + rowscale (?) 
 
-} OMMtxTransformKind;
+} GCMatrixTransformKind;
 
 typedef enum AObjAnimKind
 {
-    nOMObjAnimKindNone, 
-    nOMObjAnimKindStep,
-    nOMObjAnimKindLinear, 
-    nOMObjAnimKindCubic,
-    nOMObjAnimKindSpecial
+    nGCAnimKindNone, 
+    nGCAnimKindStep,
+    nGCAnimKindLinear, 
+    nGCAnimKindCubic,
+    nGCAnimKindSpecial
 
 } AObjAnimKind;
 
 typedef enum AObjCommandKind
 {
-    nOMObjAnimCommandEnd,
-    nOMObjAnimCommandJump,
-    nOMObjAnimCommandWait,
-    nOMObjAnimCommandSetValBlock,
-    nOMObjAnimCommandSetVal,
-    nOMObjAnimCommandSetValRateBlock,
-    nOMObjAnimCommandSetValRate,
-    nOMObjAnimCommandSetTargetRate,
-    nOMObjAnimCommandSetVal0RateBlock,
-    nOMObjAnimCommandSetVal0Rate,
-    nOMObjAnimCommandSetValAfterBlock,
-    nOMObjAnimCommandSetValAfter,
+    nGCAnimCommandEnd,
+    nGCAnimCommandJump,
+    nGCAnimCommandWait,
+    nGCAnimCommandSetValBlock,
+    nGCAnimCommandSetVal,
+    nGCAnimCommandSetValRateBlock,
+    nGCAnimCommandSetValRate,
+    nGCAnimCommandSetTargetRate,
+    nGCAnimCommandSetVal0RateBlock,
+    nGCAnimCommandSetVal0Rate,
+    nGCAnimCommandSetValAfterBlock,
+    nGCAnimCommandSetValAfter,
     ANIM_CMD_12 = 12,
-    nOMObjAnimCommandSetInterp = 13,
-    nOMObjAnimCommandSetAnim,
-    nOMObjAnimCommandSetFlags,
+    nGCAnimCommandSetInterp = 13,
+    nGCAnimCommandSetAnim,
+    nGCAnimCommandSetFlags,
     ANIM_CMD_16 = 16,
     ANIM_CMD_17 = 17,
-    nOMObjAnimCommandSetExtValAfterBlock,
-    nOMObjAnimCommandSetExtValAfter,
-    nOMObjAnimCommandSetExtValBlock,
-    nOMObjAnimCommandSetExtVal,
+    nGCAnimCommandSetExtValAfterBlock,
+    nGCAnimCommandSetExtValAfter,
+    nGCAnimCommandSetExtValBlock,
+    nGCAnimCommandSetExtVal,
     ANIM_CMD_22 = 22,
     ANIM_CMD_23 = 23
 
@@ -179,53 +179,53 @@ typedef enum AObjCommandKind
 typedef enum AObjTrackKind
 {
     // model
-    nOMObjAnimTrackNone,
-    nOMObjAnimTrackJointStart,                      // Start of joint tracks
-    nOMObjAnimTrackRotX = nOMObjAnimTrackJointStart,// Rotation X (Roll)
-    nOMObjAnimTrackRotY,                            // Rotation Y (Pitch)
-    nOMObjAnimTrackRotZ,                            // Rotation Z (Yaw)
-    nOMObjAnimTrackTraI,                            // Translation cubic interpolation?
-    nOMObjAnimTrackTraX,                            // Translation X 
-    nOMObjAnimTrackTraY,                            // Translation Y
-    nOMObjAnimTrackTraZ,                            // Translation Z
-    nOMObjAnimTrackScaX,                            // Scale X
-    nOMObjAnimTrackScaY,                            // Scale Y
-    nOMObjAnimTrackScaZ,                            // Scale Z
-    nOMObjAnimTrackJointEnd = nOMObjAnimTrackScaZ,  // End of joint tracks
+    nGCAnimTrackNone,
+    nGCAnimTrackJointStart,                      // Start of joint tracks
+    nGCAnimTrackRotX = nGCAnimTrackJointStart,// Rotation X (Roll)
+    nGCAnimTrackRotY,                            // Rotation Y (Pitch)
+    nGCAnimTrackRotZ,                            // Rotation Z (Yaw)
+    nGCAnimTrackTraI,                            // Translation cubic interpolation?
+    nGCAnimTrackTraX,                            // Translation X 
+    nGCAnimTrackTraY,                            // Translation Y
+    nGCAnimTrackTraZ,                            // Translation Z
+    nGCAnimTrackScaX,                            // Scale X
+    nGCAnimTrackScaY,                            // Scale Y
+    nGCAnimTrackScaZ,                            // Scale Z
+    nGCAnimTrackJointEnd = nGCAnimTrackScaZ,  // End of joint tracks
     // texture
-    nOMObjAnimTrackMaterialStart = 13,
-    nOMObjAnimTrackSetTextureIDCurrent = nOMObjAnimTrackMaterialStart,
-    nOMObjAnimTrackTexture14,
-    nOMObjAnimTrackTexture15,
-    nOMObjAnimTrackTexture16,
-    nOMObjAnimTrackTexture17,
-    nOMObjAnimTrackSetTextureIDNext,
-    nOMObjAnimTrackTexture19,
-    nOMObjAnimTrackTexture20,
-    nOMObjAnimTrackSetLFrac,
-    nOMObjAnimTrackSetTextureFrame,
-    nOMObjAnimTrackMaterialEnd = nOMObjAnimTrackSetTextureFrame,
+    nGCAnimTrackMaterialStart = 13,
+    nGCAnimTrackSetTextureIDCurrent = nGCAnimTrackMaterialStart,
+    nGCAnimTrackTexture14,
+    nGCAnimTrackTexture15,
+    nGCAnimTrackTexture16,
+    nGCAnimTrackTexture17,
+    nGCAnimTrackSetTextureIDNext,
+    nGCAnimTrackTexture19,
+    nGCAnimTrackTexture20,
+    nGCAnimTrackSetLFrac,
+    nGCAnimTrackSetTextureFrame,
+    nGCAnimTrackMaterialEnd = nGCAnimTrackSetTextureFrame,
     // camera
-    nOMObjAnimTrackCameraStart = 25,
-    nOMObjAnimTrackEyeX = nOMObjAnimTrackCameraStart,
-    nOMObjAnimTrackEyeY,
-    nOMObjAnimTrackEyeZ,
-    nOMObjAnimTrackEyeI,
-    nOMObjAnimTrackAtX,
-    nOMObjAnimTrackAtY,
-    nOMObjAnimTrackAtZ,
-    nOMObjAnimTrackAtI,
-    nOMObjAnimTrackUpX,
-    nOMObjAnimTrackFovY,
-    nOMObjAnimTrackCameraEnd = nOMObjAnimTrackFovY,
+    nGCAnimTrackCameraStart = 25,
+    nGCAnimTrackEyeX = nGCAnimTrackCameraStart,
+    nGCAnimTrackEyeY,
+    nGCAnimTrackEyeZ,
+    nGCAnimTrackEyeI,
+    nGCAnimTrackAtX,
+    nGCAnimTrackAtY,
+    nGCAnimTrackAtZ,
+    nGCAnimTrackAtI,
+    nGCAnimTrackUpX,
+    nGCAnimTrackFovY,
+    nGCAnimTrackCameraEnd = nGCAnimTrackFovY,
     // texture extra
-    nOMObjAnimTrackMaterialSubStart = 37,
-    nOMObjAnimTrackPrimColor = nOMObjAnimTrackMaterialSubStart,
-    nOMObjAnimTrackEnvColor,
-    nOMObjAnimTrackBlendColor,
-    nOMObjAnimTrackLight1Color,
-    nOMObjAnimTrackLight2Color,
-    nOMObjAnimTrackMaterialSubEnd = nOMObjAnimTrackLight2Color
+    nGCAnimTrackMaterialSubStart = 37,
+    nGCAnimTrackPrimColor = nGCAnimTrackMaterialSubStart,
+    nGCAnimTrackEnvColor,
+    nGCAnimTrackBlendColor,
+    nGCAnimTrackLight1Color,
+    nGCAnimTrackLight2Color,
+    nGCAnimTrackMaterialSubEnd = nGCAnimTrackLight2Color
 
 } AObjTrackKind;
 
@@ -234,9 +234,9 @@ typedef union  AObjEvent32          AObjEvent32;
 typedef union  AObjScript           AObjScript;
 typedef struct GObj                 GObj;
 typedef struct GObjLink             GObjLink;
-typedef struct _GObjProcess         GObjProcess;
-typedef struct _GObjThread          GObjThread;
-typedef struct _DObj                DObj;           // Some structs are temporarily prefixed with underscore to avoid conflict with types in om.h
+typedef struct GObjProcess          GObjProcess;
+typedef struct GObjThread           GObjThread;
+typedef struct DObj                 DObj;
 typedef struct DObjDesc             DObjDesc;
 typedef struct DObjTraDesc          DObjTraDesc;
 typedef struct DObjTransformTypes   DObjTransformTypes;
@@ -245,24 +245,24 @@ typedef struct DObjDLLink           DObjDLLink;
 typedef struct DObjDistDL           DObjDistDL;
 typedef struct DObjDistDLLink       DObjDistDLLink;
 typedef struct DObjMultiList        DObjMultiList;
-typedef struct _AObj                AObj;
-typedef struct _MObj                MObj;
-typedef struct _MObjSub             MObjSub;
-typedef struct _SObj                SObj;
+typedef struct AObj                 AObj;
+typedef struct MObj                 MObj;
+typedef struct MObjSub              MObjSub;
+typedef struct SObj                 SObj;
 typedef struct CameraVec            CameraVec;
 typedef struct CameraDesc           CameraDesc;
-typedef struct _Camera              Camera;
-typedef struct _OMMtx               OMMtx;
-typedef struct OMGfxLink            OMGfxLink;
-typedef struct _OMThreadStackList   OMThreadStackList;
-typedef struct _OMThreadStackNode   OMThreadStackNode;
-typedef struct OMPersp              OMPersp;
-typedef struct OMFrustum            OMFrustum;
-typedef struct OMOrtho              OMOrtho;
-typedef struct OMTranslate          OMTranslate;
-typedef struct OMRotate             OMRotate;
-typedef struct OMScale              OMScale;
-typedef union  OMUserData           OMUserData;
-typedef struct _OMSetup             OMSetup;
+typedef struct Camera               Camera;
+typedef struct GCMatrix             GCMatrix;
+typedef struct GCGfxLink            GCGfxLink;
+typedef struct GCThreadStackList    GCThreadStackList;
+typedef struct GCThreadStackNode    GCThreadStackNode;
+typedef struct GCPersp              GCPersp;
+typedef struct GCFrustum            GCFrustum;
+typedef struct GCOrtho              GCOrtho;
+typedef struct GCTranslate          GCTranslate;
+typedef struct GCRotate             GCRotate;
+typedef struct GCScale              GCScale;
+typedef union  GCUserData           GCUserData;
+typedef struct GCSetup              GCSetup;
 
 #endif

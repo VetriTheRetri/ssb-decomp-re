@@ -216,7 +216,7 @@ void sc1PChallengerMakeFighter(s32 ft_kind)
     
     fighter_gobj = ftManagerMakeFighter(&ft_desc);
     
-    gcAddGObjProcess(fighter_gobj, sc1PChallengerFighterProcUpdate, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(fighter_gobj, sc1PChallengerFighterProcUpdate, nGCProcessKindProc, 1);
     
     DObjGetStruct(fighter_gobj)->translate.vec.f.x = 610.0F;
     DObjGetStruct(fighter_gobj)->translate.vec.f.y = -550.0F;
@@ -246,7 +246,7 @@ void sc1PChallengerMakeFighterCamera(void)
             CAMERA_MASK_DLLINK(10) | CAMERA_MASK_DLLINK(9),
             -1,
             TRUE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -283,7 +283,7 @@ void sc1PChallengerMakeDecalsCamera(void)
             CAMERA_MASK_DLLINK(0),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE

@@ -229,7 +229,7 @@ void mvEndingMakeRoomTissues(void)
 
     dobj = gcAddDObjForGObj(gobj, lbRelocGetDataFromFile(void*, sMVEndingFiles[0], &lMVCommonRoomTissuesDisplayList));
 
-    gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyRSca, 0);
+    gcAddGCMatrixForDObjFixed(dobj, nGCTransformTraRotRpyRSca, 0);
     gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjAnimJoint(dobj, lbRelocGetDataFromFile(AObjEvent32*, sMVEndingFiles[0], &lMVCommonRoomTissuesAnimJoint), 300.0F);
     gcPlayAnimAll(gobj);
@@ -306,7 +306,7 @@ void mvEndingMakeRoomFadeInCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -315,7 +315,7 @@ void mvEndingMakeRoomFadeInCamera(void)
             CAMERA_MASK_DLLINK(26),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -365,7 +365,7 @@ void mvEndingMakeRoomLightCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -374,7 +374,7 @@ void mvEndingMakeRoomLightCamera(void)
             CAMERA_MASK_DLLINK(30),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -404,7 +404,7 @@ void mvEndingSetupOperatorCamera(GObj *gobj)
     cam->projection.persp.far = 16384.0F;
 
     gcAddCameraCamAnimJoint(cam, lbRelocGetDataFromFile(AObjEvent32*, sMVEndingFiles[1], &lMVEndingOperatorCamAnimJoint), 0.0F);
-    gcAddGObjProcess(gobj, gcPlayCamAnim, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
 }
 
 // 0x80132630
@@ -414,7 +414,7 @@ void mvEndingMakeMainCameras(void)
 
     sMVEndingRoomCameraGObj = gobj = gcMakeCameraGObj
     (
-        nOMObjCommonKindSceneCamera,
+        nGCCommonKindSceneCamera,
         NULL,
         16,
         GOBJ_LINKORDER_DEFAULT,
@@ -423,20 +423,20 @@ void mvEndingMakeMainCameras(void)
         CAMERA_MASK_DLLINK(29),
         -1,
         FALSE,
-        nOMObjProcessKindProc,
+        nGCProcessKindProc,
         NULL,
         1,
         FALSE
     );
-    gcAddOMMtxForCamera(CameraGetStruct(gobj), nOMTransformPerspFastF, 0);
-    gcAddOMMtxForCamera(CameraGetStruct(gobj), 8, 0);
+    gcAddGCMatrixForCamera(CameraGetStruct(gobj), nGCTransformPerspFastF, 0);
+    gcAddGCMatrixForCamera(CameraGetStruct(gobj), 8, 0);
     mvEndingSetupOperatorCamera(gobj);
 
     CameraGetStruct(gobj)->flags |= 4;
 
     sMVEndingFighterCameraGObj = gobj = gcMakeCameraGObj
     (
-        nOMObjCommonKindSceneCamera,
+        nGCCommonKindSceneCamera,
         NULL,
         16,
         GOBJ_LINKORDER_DEFAULT,
@@ -445,7 +445,7 @@ void mvEndingMakeMainCameras(void)
         CAMERA_MASK_DLLINK(9),
         -1,
         TRUE,
-        nOMObjProcessKindProc,
+        nGCProcessKindProc,
         NULL,
         1,
         FALSE

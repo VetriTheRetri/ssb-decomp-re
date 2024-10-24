@@ -54,7 +54,7 @@ void grYamabukiGateUpdateSleep(void)
 // 0x8010AD18
 sb32 grYamabukiGateCheckPlayersNear(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
     while (fighter_gobj != NULL)
     {
@@ -85,7 +85,7 @@ void grYamabukiGateMakeMonster(void)
 
     vel.x = vel.y = vel.z = 0.0F;
 
-    if ((dITManagerMonsterSpawnID == 0) || (dITManagerMonsterSpawnID > (nITKindGroundMonsterEnd - nITKindGroundMonsterStart + 1)))
+    if ((dITManagerForceMonsterKind == 0) || (dITManagerForceMonsterKind > (nITKindGroundMonsterEnd - nITKindGroundMonsterStart + 1)))
     {
         item_id = mtTrigGetRandomIntRange(nITKindGroundMonsterEnd - nITKindGroundMonsterStart + 1);
 
@@ -95,7 +95,7 @@ void grYamabukiGateMakeMonster(void)
         }
         gGRCommonStruct.yamabuki.monster_id_prev = item_id;
     }
-    else item_id = dITManagerMonsterSpawnID - 1;
+    else item_id = dITManagerForceMonsterKind - 1;
 
     gGRCommonStruct.yamabuki.monster_gobj = itManagerMakeItemSetupCommon(NULL, item_id + nITKindGroundMonsterStart, &pos, &vel, ITEM_FLAG_PARENT_GROUND);
 }
@@ -246,7 +246,7 @@ void grYamabukiMakeGate(void)
 {
     GObj *gate_gobj;
 
-    gGRCommonStruct.yamabuki.gate_gobj = gate_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    gGRCommonStruct.yamabuki.gate_gobj = gate_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjDisplay(gate_gobj, gcDrawDObjTreeDLLinksForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcSetupCustomDObjs
@@ -255,11 +255,11 @@ void grYamabukiMakeGate(void)
         (DObjDesc*) 
         ((uintptr_t)gGRCommonStruct.yamabuki.map_head + (intptr_t)&lGRYamabukiMapHead), 
         NULL, 
-        nOMTransformTraRotRpyR, 
-        nOMTransformNull, 
-        nOMTransformNull
+        nGCTransformTraRotRpyR, 
+        nGCTransformNull, 
+        nGCTransformNull
     );
-    gcAddGObjProcess(gate_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 5);
+    gcAddGObjProcess(gate_gobj, gcPlayAnimAll, nGCProcessKindProc, 5);
     grYamabukiGateAddAnimClose();
 }
 
@@ -288,9 +288,9 @@ void grYamabukiInitGroundVars(void)
 // 0x8010B2EC
 GObj* grYamabukiMakeGround(void)
 {
-    GObj *ground_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjProcess(ground_gobj, grYamabukiGateProcUpdate, nOMObjProcessKindProc, 4);
+    gcAddGObjProcess(ground_gobj, grYamabukiGateProcUpdate, nGCProcessKindProc, 4);
     grYamabukiInitGroundVars();
 
     return ground_gobj;

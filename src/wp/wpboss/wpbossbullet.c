@@ -27,8 +27,8 @@ wpCreateDesc dWPBossBulletNormalWeaponDesc =
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyRSca,      // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nGCTransformTraRotRpyRSca,      // Main matrix transformations
+        nGCTransformNull,               // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -51,8 +51,8 @@ wpCreateDesc dWPBossBulletHardWeaponDesc =
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyRSca,      // Main matrix transformations
-        nOMTransformNull,               // Secondary matrix transformations?
+        nGCTransformTraRotRpyRSca,      // Main matrix transformations
+        nGCTransformNull,               // Secondary matrix transformations?
         0,                                  // ???
     },
 

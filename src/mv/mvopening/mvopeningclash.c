@@ -175,7 +175,7 @@ void mvOpeningClashMakeWallpaper(void)
     // lower left quadrant
     GObj* gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddOMMtxForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetDataFromFile(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLDisplayList)), 0x1C, 0);
+    gcAddGCMatrixForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetDataFromFile(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLDisplayList)), 0x1C, 0);
     gcAddMObjAll(gobj, lbRelocGetDataFromFile(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLMObjSub));
     gcAddMatAnimJointAll(gobj, lbRelocGetDataFromFile(AObjEvent32***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLMatAnimJoint), 0.0F);
 
@@ -184,12 +184,12 @@ void mvOpeningClashMakeWallpaper(void)
     DObjGetStruct(gobj)->translate.vec.f.z = 0.0F;
 
     gcAddAnimJointAll(gobj, lbRelocGetDataFromFile(AObjEvent32**, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLAnimJoint), 0.0F);
-    gcAddGObjProcess(gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
 
     // lower right quadrant
     gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddOMMtxForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetDataFromFile(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRDisplayList)), 0x1C, 0);
+    gcAddGCMatrixForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetDataFromFile(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRDisplayList)), 0x1C, 0);
     gcAddMObjAll(gobj, lbRelocGetDataFromFile(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRMObjSub));
     gcAddMatAnimJointAll(gobj, lbRelocGetDataFromFile(AObjEvent32***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRMatAnimJoint), 0.0F);
 
@@ -198,12 +198,12 @@ void mvOpeningClashMakeWallpaper(void)
     DObjGetStruct(gobj)->translate.vec.f.z = 0.0F;
 
     gcAddAnimJointAll(gobj, lbRelocGetDataFromFile(AObjEvent32**, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRAnimJoint), 0.0F);
-    gcAddGObjProcess(gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
 
     // upper left quadrant
     gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddOMMtxForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetDataFromFile(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULDisplayList)), 0x1C, 0);
+    gcAddGCMatrixForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetDataFromFile(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULDisplayList)), 0x1C, 0);
     gcAddMObjAll(gobj, lbRelocGetDataFromFile(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULMObjSub));
     gcAddMatAnimJointAll(gobj, lbRelocGetDataFromFile(AObjEvent32***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULMatAnimJoint), 0.0F);
 
@@ -212,12 +212,12 @@ void mvOpeningClashMakeWallpaper(void)
     DObjGetStruct(gobj)->translate.vec.f.z = 0.0F;
 
     gcAddAnimJointAll(gobj, lbRelocGetDataFromFile(AObjEvent32**, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULAnimJoint), 0.0F);
-    gcAddGObjProcess(gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
 
     // upper right quadrant
     gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddOMMtxForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetDataFromFile(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURDisplayList)), 0x1C, 0);
+    gcAddGCMatrixForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetDataFromFile(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURDisplayList)), 0x1C, 0);
     gcAddMObjAll(gobj, lbRelocGetDataFromFile(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURMObjSub));
     gcAddMatAnimJointAll(gobj, lbRelocGetDataFromFile(AObjEvent32***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURMatAnimJoint), 0.0F);
 
@@ -226,7 +226,7 @@ void mvOpeningClashMakeWallpaper(void)
     DObjGetStruct(gobj)->translate.vec.f.z = 0.0F;
 
     gcAddAnimJointAll(gobj, lbRelocGetDataFromFile(AObjEvent32**, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURAnimJoint), 0.0F);
-    gcAddGObjProcess(gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
 }
 
 // 0x80132204
@@ -234,7 +234,7 @@ void mvOpeningClashMakeFightersCamera(void)
 {
     GObj *camera_gobj = gcMakeCameraGObj
     (
-        nOMObjCommonKindSceneCamera,
+        nGCCommonKindSceneCamera,
         NULL,
         16,
         GOBJ_LINKORDER_DEFAULT,
@@ -244,7 +244,7 @@ void mvOpeningClashMakeFightersCamera(void)
         CAMERA_MASK_DLLINK(9),
         -1,
         TRUE,
-        nOMObjProcessKindProc,
+        nGCProcessKindProc,
         NULL,
         1,
         FALSE
@@ -259,7 +259,7 @@ void mvOpeningClashMakeFightersCamera(void)
     cam->projection.persp.far = 16384.0F;
 
     gcAddCameraCamAnimJoint(cam, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningClashFiles[0], &lMVOpeningClashFightersCamAnimJoint), 0.0F);
-    gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
 }
 
 // 0x80132314
@@ -269,7 +269,7 @@ void mvOpeningClashMakeVoidCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -278,7 +278,7 @@ void mvOpeningClashMakeVoidCamera(void)
             CAMERA_MASK_DLLINK(26),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -306,7 +306,7 @@ void mvOpeningClashMakeWallpaperCamera(void)
 {
     GObj *camera_gobj = gcMakeCameraGObj
     (
-        nOMObjCommonKindSceneCamera,
+        nGCCommonKindSceneCamera,
         NULL,
         16,
         GOBJ_LINKORDER_DEFAULT,
@@ -315,7 +315,7 @@ void mvOpeningClashMakeWallpaperCamera(void)
         CAMERA_MASK_DLLINK(29),
         -1,
         TRUE,
-        nOMObjProcessKindProc,
+        nGCProcessKindProc,
         NULL,
         1,
         FALSE
@@ -325,7 +325,7 @@ void mvOpeningClashMakeWallpaperCamera(void)
     syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
     gcAddCameraCamAnimJoint(cam, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperCamAnimJoint), 0.0F);
 
-    gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
 }
 
 // 0x80132550

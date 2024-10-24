@@ -27,8 +27,8 @@ itCreateDesc dITSawamuraItemDesc =
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,             // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformTraRotRpyR,             // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -219,7 +219,7 @@ void itSawamuraAttackSetFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 // 0x80182958
 void itSawamuraAttackInitItemVars(GObj *item_gobj)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
     itStruct *ip = itGetStruct(item_gobj);
     GObj *victim_gobj;
     s32 unused2[3];
@@ -322,7 +322,7 @@ GObj* itSawamuraMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
         ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        gcAddOMMtxForDObjFixed(dobj, 0x48, 0);
+        gcAddGCMatrixForDObjFixed(dobj, 0x48, 0);
 
         dobj->translate.vec.f = *pos;
 

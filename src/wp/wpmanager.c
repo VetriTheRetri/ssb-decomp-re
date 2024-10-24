@@ -101,14 +101,14 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
     {
         return NULL;
     }
-    weapon_gobj = gcMakeGObjSPAfter(nOMObjCommonKindWeapon, NULL, nOMObjCommonLinkIDWeapon, GOBJ_LINKORDER_DEFAULT);
+    weapon_gobj = gcMakeGObjSPAfter(nGCCommonKindWeapon, NULL, nGCCommonLinkIDWeapon, GOBJ_LINKORDER_DEFAULT);
 
     if (weapon_gobj == NULL)
     {
         wpManagerSetPrevStructAlloc(wp);
         return NULL;
     }
-    attributes = (wpAttributes*) ((uintptr_t)*wp_desc->p_weapon + (intptr_t)wp_desc->o_attributes); // I hope this is correct?
+    attributes = lbRelocGetDataFromFile(wpAttributes*, *wp_desc->p_weapon, wp_desc->o_attributes); // I hope this is correct?
     weapon_gobj->user_data.p = wp;
     wp->weapon_gobj = weapon_gobj;
     wp->wp_kind = wp_desc->wp_kind;
@@ -303,9 +303,9 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, wpCreateDesc *wp_desc, Vec3f *spawn
     wp->coll_data.vel_push.y = 0.0F;
     wp->coll_data.vel_push.z = 0.0F;
 
-    gcAddGObjProcess(weapon_gobj, wpProcessProcWeaponMain, nOMObjProcessKindProc, 3);
-    gcAddGObjProcess(weapon_gobj, wpProcessProcSearchHitWeapon, nOMObjProcessKindProc, 1);
-    gcAddGObjProcess(weapon_gobj, wpProcessProcHitCollisions, nOMObjProcessKindProc, 0);
+    gcAddGObjProcess(weapon_gobj, wpProcessProcWeaponMain, nGCProcessKindProc, 3);
+    gcAddGObjProcess(weapon_gobj, wpProcessProcSearchHitWeapon, nGCProcessKindProc, 1);
+    gcAddGObjProcess(weapon_gobj, wpProcessProcHitCollisions, nGCProcessKindProc, 0);
 
     wp->proc_update    = wp_desc->proc_update;
     wp->proc_map       = wp_desc->proc_map;

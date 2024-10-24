@@ -67,7 +67,7 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
     {
         return NULL;
     }
-    twister_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    twister_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     if (twister_gobj != NULL)
     {
@@ -194,7 +194,7 @@ s32 grHyruleTwisterGetLR(void)
 {
     s32 players_rside = 0;
     s32 players_lside = 0;
-    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
     f32 twister_pos_x = DObjGetStruct(gGRCommonStruct.hyrule.twister_gobj)->translate.vec.f.x;
 
     while (fighter_gobj != NULL)
@@ -306,7 +306,7 @@ void grHyruleTwisterUpdateTurn(void)
 // 0x8010A824
 void grHyruleTwisterUpdateStop(void)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
     while (fighter_gobj != NULL)
     {
@@ -409,15 +409,15 @@ void grHyruleTwisterInitVars(void)
     }
 
     gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusSleep;
-    gGRCommonStruct.hyrule.particle_bank_id = efAllocGetAddParticleBankID((intptr_t)&lGRHyruleParticleBankGenLo, (intptr_t)&lGRHyruleParticleBankGenHi, (intptr_t)&lGRHyruleParticleBankTextureLo, (intptr_t)&lGRHyruleParticleBankTextureHi);
+    gGRCommonStruct.hyrule.particle_bank_id = efAllocGetAddParticleBankID((intptr_t)&lGRHyruleParticleBankScriptsLo, (intptr_t)&lGRHyruleParticleBankScriptsHi, (intptr_t)&lGRHyruleParticleBankTexturesLo, (intptr_t)&lGRHyruleParticleBankTexturesHi);
 }
 
 // 0x8010AB20
 GObj* grHyruleMakeGround(void)
 {
-    GObj *ground_gobj = gcMakeGObjSPAfter(nOMObjCommonKindGround, NULL, nOMObjCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
-    gcAddGObjProcess(ground_gobj, grHyruleTwisterProcUpdate, nOMObjProcessKindProc, 4);
+    gcAddGObjProcess(ground_gobj, grHyruleTwisterProcUpdate, nGCProcessKindProc, 4);
     grHyruleTwisterInitVars();
 
     return ground_gobj;

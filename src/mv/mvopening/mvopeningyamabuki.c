@@ -134,7 +134,7 @@ void mvOpeningYamabukiMakeWallpaper(void)
     SObj* sobj;
 
     gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, nOMTransformTraRotRpyRSca, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, nGCTransformTraRotRpyRSca, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = lbCommonMakeSObjForGObj
     (
@@ -187,9 +187,9 @@ void mvOpeningYamabukiMakeLegs(void)
             &lMVOpeningYamabukiLegsDObjDesc
         ),
         NULL,
-        nOMTransformTraRotRpyRSca,
-        nOMTransformNull,
-        nOMTransformNull
+        nGCTransformTraRotRpyRSca,
+        nGCTransformNull,
+        nGCTransformNull
     );
     gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -208,7 +208,7 @@ void mvOpeningYamabukiMakeLegs(void)
         ),
         0.0F
     );
-    gcAddGObjProcess(gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
 }
 
 // 0x80131D7C
@@ -225,9 +225,9 @@ void mvOpeningYamabukiMakeLegsShadow(void)
             &lMVOpeningYamabukiLegsShadowDObjDesc
         ),
         NULL,
-        nOMTransformTraRotRpyRSca,
-        nOMTransformNull,
-        nOMTransformNull
+        nGCTransformTraRotRpyRSca,
+        nGCTransformNull,
+        nGCTransformNull
     );
     gcAddGObjDisplay(gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_LINKORDER_DEFAULT, -1);
 
@@ -246,7 +246,7 @@ void mvOpeningYamabukiMakeLegsShadow(void)
         ),
         0.0F
     );
-    gcAddGObjProcess(gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
 }
 
 // 0x80131E54
@@ -263,9 +263,9 @@ void mvOpeningYamabukiMakeMBall(void)
             &lMVOpeningYamabukiMBallDObjDesc
         ),
         NULL,
-        nOMTransformTraRotRpyRSca,
-        nOMTransformNull,
-        nOMTransformNull
+        nGCTransformTraRotRpyRSca,
+        nGCTransformNull,
+        nGCTransformNull
     );
     gcAddGObjDisplay(gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -284,7 +284,7 @@ void mvOpeningYamabukiMakeMBall(void)
         ),
         0.0F
     );
-    gcAddGObjProcess(gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
 }
 
 // 0x80131F2C
@@ -292,7 +292,7 @@ void mvOpeningYamabukiMakeMainCamera(void)
 {
     GObj *camera_gobj = gcMakeCameraGObj
     (
-        nOMObjCommonKindSceneCamera,
+        nGCCommonKindSceneCamera,
         NULL,
         16,
         GOBJ_LINKORDER_DEFAULT,
@@ -302,7 +302,7 @@ void mvOpeningYamabukiMakeMainCamera(void)
         CAMERA_MASK_DLLINK(9),
         -1,
         TRUE,
-        nOMObjProcessKindProc,
+        nGCProcessKindProc,
         NULL,
         1,
         FALSE
@@ -325,7 +325,7 @@ void mvOpeningYamabukiMakeMainCamera(void)
         ),
         0.0F
     );
-    gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
 }
 
 // 0x80132030
@@ -335,7 +335,7 @@ void mvOpeningYamabukiMakeWallpaperCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -344,7 +344,7 @@ void mvOpeningYamabukiMakeWallpaperCamera(void)
             CAMERA_MASK_DLLINK(28),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE

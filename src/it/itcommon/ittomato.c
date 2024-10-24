@@ -22,8 +22,8 @@ itCreateDesc dITTomatoItemDesc =
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,             // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformTraRotRpyR,             // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -166,7 +166,7 @@ GObj* itTomatoMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip = itGetStruct(item_gobj);
         translate = joint->translate.vec.f;
 
-        gcAddOMMtxForDObjFixed(joint, 0x2E, 0);
+        gcAddGCMatrixForDObjFixed(joint, 0x2E, 0);
 
         joint->translate.vec.f = translate;
 

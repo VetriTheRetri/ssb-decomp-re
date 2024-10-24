@@ -26,8 +26,8 @@ itCreateDesc dITMLuckyItemDesc =
 
     // DObj transformation struct
     {
-        nOMTransformTraRotRpyR,             // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformTraRotRpyR,             // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -359,7 +359,7 @@ GObj* itMLuckyMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         dobj = DObjGetStruct(item_gobj);
 
-        gcAddOMMtxForDObjFixed(dobj->child, 0x2C, 0);
+        gcAddGCMatrixForDObjFixed(dobj->child, 0x2C, 0);
 
         dobj->translate.vec.f = *pos;
 

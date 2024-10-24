@@ -432,7 +432,7 @@ void ftShadowFuncDisplay(GObj *shadow_gobj)
 // 0x8013BB88
 GObj* ftShadowMakeShadow(GObj *fighter_gobj)
 {
-    GObj *shadow_gobj = gcMakeGObjSPAfter(nOMObjCommonKindShadow, NULL, nOMObjCommonLinkIDShadow, GOBJ_LINKORDER_DEFAULT);
+    GObj *shadow_gobj = gcMakeGObjSPAfter(nGCCommonKindShadow, NULL, nGCCommonLinkIDShadow, GOBJ_LINKORDER_DEFAULT);
     ftStruct *fp;
     ftShadow *fs = syTaskmanMalloc(sizeof(ftShadow), 0x8);
     s32 i;

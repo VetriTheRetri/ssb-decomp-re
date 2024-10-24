@@ -64,7 +64,7 @@ void wpDisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
 
                 gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTRenderMainHitCollisionEdgeDL);
+                gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionEdgeDL);
 
                 gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
             }
@@ -82,9 +82,9 @@ void wpDisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
 
             if (weapon_hit->update_state == nGMHitUpdateInterpolate)
             {
-                gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTRenderMainHitCollisionBlendDL);
+                gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionBlendDL);
             }
-            gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTRenderMainHitCollisionCubeDL);
+            gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionCubeDL);
 
             gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
         }
@@ -113,7 +113,7 @@ void wpDisplayMapCollisions(GObj *weapon_gobj) // Render weapon ECB?
 
     gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    gSPDisplayList(gSYTaskmanDLHeads[1]++, dFTRenderMainMapCollisionBottomDL);
+    gSPDisplayList(gSYTaskmanDLHeads[1]++, dFTDisplayMainMapCollisionBottomDL);
 
     gSPPopMatrix(gSYTaskmanDLHeads[1]++, G_MTX_MODELVIEW);
 
@@ -129,7 +129,7 @@ void wpDisplayMapCollisions(GObj *weapon_gobj) // Render weapon ECB?
 
     gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-    gSPDisplayList(gSYTaskmanDLHeads[1]++, dFTRenderMainMapCollisionTopDL);
+    gSPDisplayList(gSYTaskmanDLHeads[1]++, dFTDisplayMainMapCollisionTopDL);
 
     gSPPopMatrix(gSYTaskmanDLHeads[1]++, G_MTX_MODELVIEW);
 }

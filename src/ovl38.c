@@ -236,10 +236,10 @@ void mvOpeningSamusInitFighterStagePanel()
 	// This fixes the spot light things on Zebes
 	while (next_dobj != NULL)
 	{
-		for (j = 0; j < next_dobj->ommtx_len; j++)
+		for (j = 0; j < next_dobj->gcmatrix_len; j++)
 		{
-			if (next_dobj->ommtx[j]->kind == 0x30)
-				next_dobj->ommtx[j]->kind = 0x25;
+			if (next_dobj->gcmatrix[j]->kind == 0x30)
+				next_dobj->gcmatrix[j]->kind = 0x25;
 		}
 
 		next_dobj = lbCommonGetTreeDObjNextFromRoot(next_dobj, stage_dobj);

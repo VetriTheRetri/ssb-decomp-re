@@ -885,29 +885,29 @@ void lbCommonInitDObjTriTransform(DObj *dobj, u8 tk1, u8 tk2, u8 tk3)
 {
     gcAddDObjTriTransformKind(dobj, tk1, tk2, tk3);
     
-    dobj->translate.vec = dOMTranslateDefault.vec;
-    dobj->rotate.vec = dOMRotateDefaultRPY.vec;
-    dobj->scale.vec = dOMScaleDefault.vec;
+    dobj->translate.vec = dGCTranslateDefault.vec;
+    dobj->rotate.vec = dGCRotateDefaultRPY.vec;
+    dobj->scale.vec = dGCScaleDefault.vec;
 }
 
 // 0x800C8A58
 void lbCommonInitDObj(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, u8 arg4)
 {
-    if (tk1 != nOMTransformNull)
+    if (tk1 != nGCTransformNull)
     {
-        gcAddOMMtxForDObjFixed(dobj, tk1, arg4);
+        gcAddGCMatrixForDObjFixed(dobj, tk1, arg4);
     }
-    if (tk2 != nOMTransformNull)
+    if (tk2 != nGCTransformNull)
     {
-        gcAddOMMtxForDObjFixed(dobj, tk2, arg4);
+        gcAddGCMatrixForDObjFixed(dobj, tk2, arg4);
     }
-    if (tk3 != nOMTransformNull)
+    if (tk3 != nGCTransformNull)
     {
-        gcAddOMMtxForDObjFixed(dobj, tk3, arg4);
+        gcAddGCMatrixForDObjFixed(dobj, tk3, arg4);
     }
-    dobj->translate.vec = dOMTranslateDefault.vec;
-    dobj->rotate.vec = dOMRotateDefaultRPY.vec;
-    dobj->scale.vec = dOMScaleDefault.vec;
+    dobj->translate.vec = dGCTranslateDefault.vec;
+    dobj->rotate.vec = dGCRotateDefaultRPY.vec;
+    dobj->scale.vec = dGCScaleDefault.vec;
 }
 
 // 0x800C8B28
@@ -1250,7 +1250,7 @@ void lbCommonEjectTreeDObj(DObj *dobj)
     if (parent_dobj == DOBJ_PARENT_NULL)
     {
         child_dobj->parent_gobj->obj = child_dobj;
-        child_dobj->parent_gobj->obj_kind = nOMObjCommonAppendDObj;
+        child_dobj->parent_gobj->obj_kind = nGCCommonAppendDObj;
     } 
     else parent_dobj->child = child_dobj;
     
@@ -1268,7 +1268,7 @@ void lbCommonPlayTranslateScaledDObjAnim(DObj *dobj, Vec3f *scale)
 
         while (aobj != NULL)
         {
-            if (aobj->kind != nOMObjAnimKindNone)
+            if (aobj->kind != nGCAnimKindNone)
             {
                 if (dobj->anim_wait != AOBJ_ANIM_END)
                 {
@@ -1278,19 +1278,19 @@ void lbCommonPlayTranslateScaledDObjAnim(DObj *dobj, Vec3f *scale)
                 {
                     switch (aobj->track)
                     {
-                    case nOMObjAnimTrackRotX:
+                    case nGCAnimTrackRotX:
                         dobj->rotate.vec.f.x = gcGetAObjValue(aobj);
                         break;
 
-                    case nOMObjAnimTrackRotY:
+                    case nGCAnimTrackRotY:
                         dobj->rotate.vec.f.y = gcGetAObjValue(aobj);
                         break;
 
-                    case nOMObjAnimTrackRotZ:
+                    case nGCAnimTrackRotZ:
                         dobj->rotate.vec.f.z = gcGetAObjValue(aobj);
                         break;
 
-                    case nOMObjAnimTrackTraI:
+                    case nGCAnimTrackTraI:
                         interp = gcGetAObjValue(aobj);
 
                         if (interp < 0.0F)
@@ -1308,27 +1308,27 @@ void lbCommonPlayTranslateScaledDObjAnim(DObj *dobj, Vec3f *scale)
                         dobj->translate.vec.f.z *= scale->z;
                         break;
 
-                    case nOMObjAnimTrackTraX:
+                    case nGCAnimTrackTraX:
                         dobj->translate.vec.f.x = gcGetAObjValue(aobj) * scale->x;
                         break;
 
-                    case nOMObjAnimTrackTraY:
+                    case nGCAnimTrackTraY:
                         dobj->translate.vec.f.y = gcGetAObjValue(aobj) * scale->y;
                         break;
 
-                    case nOMObjAnimTrackTraZ:
+                    case nGCAnimTrackTraZ:
                         dobj->translate.vec.f.z = gcGetAObjValue(aobj) * scale->z;
                         break;
 
-                    case nOMObjAnimTrackScaX:
+                    case nGCAnimTrackScaX:
                         dobj->scale.vec.f.x = gcGetAObjValue(aobj);
                         break;
 
-                    case nOMObjAnimTrackScaY:
+                    case nGCAnimTrackScaY:
                         dobj->scale.vec.f.y = gcGetAObjValue(aobj);
                         break;
 
-                    case nOMObjAnimTrackScaZ:
+                    case nGCAnimTrackScaZ:
                         dobj->scale.vec.f.z = gcGetAObjValue(aobj);
                         break;
                     }
@@ -1625,8 +1625,8 @@ sb32 func_ovl0_800C9F70(Mtx *mtx, DObj *dobj, Gfx **dls)
     
     if (fp->shuffle_tics != 0)
     {
-        f[3][0] += dFTRenderMainShufflePositions[fp->is_shuffle_electric][fp->shuffle_frame_index].x;
-        f[3][1] += dFTRenderMainShufflePositions[fp->is_shuffle_electric][fp->shuffle_frame_index].y;
+        f[3][0] += dFTDisplayMainShufflePositions[fp->is_shuffle_electric][fp->shuffle_frame_index].x;
+        f[3][1] += dFTDisplayMainShufflePositions[fp->is_shuffle_electric][fp->shuffle_frame_index].y;
     }
     syMatrixF2LFixedW(&f, mtx);
     
@@ -1964,7 +1964,7 @@ sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
     sp50.y = f[1][1] = ft_parts->mtx_translate[0][1] * scale;
     sp50.z = f[1][2] = ft_parts->mtx_translate[0][2] * scale;
     
-    cam = CameraGetStruct(gOMObjCurrentCamera);
+    cam = CameraGetStruct(gGCCurrentCamera);
     
     syVectorDiff3D(&dist, &cam->vec.eye, &cam->vec.at);
     
@@ -2974,28 +2974,28 @@ void lbCommonScissorSpriteCamera(GObj *gobj)
 // 0x800CD440
 void lbCommonInitCameraOrtho(Camera *cam, u8 tk, u8 arg2)
 {
-    OMMtx *ommtx = gcAddOMMtxForCamera(cam, tk, arg2);
+    GCMatrix *gcmatrix = gcAddGCMatrixForCamera(cam, tk, arg2);
     
-    cam->projection.ortho = dOMOrthoDefault;
-    cam->projection.ortho.ommtx = ommtx;
+    cam->projection.ortho = dGCOrthoDefault;
+    cam->projection.ortho.gcmatrix = gcmatrix;
 }
 
 // 0x800CD4C0
 void lbCommonInitCameraPersp(Camera *cam, u8 tk, u8 arg2)
 {
-    OMMtx *ommtx = gcAddOMMtxForCamera(cam, tk, arg2);
+    GCMatrix *gcmatrix = gcAddGCMatrixForCamera(cam, tk, arg2);
     
-    cam->projection.persp = dOMPerspDefault;
-    cam->projection.persp.ommtx = ommtx;
+    cam->projection.persp = dGCPerspDefault;
+    cam->projection.persp.gcmatrix = gcmatrix;
 }
 
 // 0x800CD538
 void lbCommonInitCameraVec(Camera *cam, u8 tk, u8 arg2)
 {
-    OMMtx *ommtx = gcAddOMMtxForCamera(cam, tk, arg2);
+    GCMatrix *gcmatrix = gcAddGCMatrixForCamera(cam, tk, arg2);
     
     cam->vec = dOMCameraVecDefault;
-    cam->vec.ommtx = ommtx;
+    cam->vec.gcmatrix = gcmatrix;
 }
 
 // 0x800CD5AC

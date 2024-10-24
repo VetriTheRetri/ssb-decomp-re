@@ -29,8 +29,8 @@ itCreateDesc dITIwarkItemDesc =
 
     // DObj transformation struct
     {
-        nOMTransformNull,                   // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformNull,                   // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -83,8 +83,8 @@ wpCreateDesc dITIwarkWeaponRockWeaponDesc =
 
     // DObj transformation struct
     {
-        nOMTransformNull,                   // Main matrix transformations
-        nOMTransformNull,                   // Secondary matrix transformations?
+        nGCTransformNull,                   // Main matrix transformations
+        nGCTransformNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -311,8 +311,8 @@ GObj* itIwarkMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj = DObjGetStruct(item_gobj);
 
-        gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);
-        gcAddOMMtxForDObjFixed(dobj, 0x48, 0);
+        gcAddGCMatrixForDObjFixed(dobj, nGCTransformTraRotRpyR, 0);
+        gcAddGCMatrixForDObjFixed(dobj, 0x48, 0);
 
         dobj->translate.vec.f = *pos;
 
@@ -460,8 +460,8 @@ GObj* itIwarkWeaponRockMakeWeapon(GObj *parent_gobj, Vec3f *pos, u8 random)
 
     dobj = DObjGetStruct(weapon_gobj);
 
-    gcAddOMMtxForDObjFixed(dobj, nOMTransformTraRotRpyR, 0);
-    gcAddOMMtxForDObjFixed(dobj, 0x46, 0);
+    gcAddGCMatrixForDObjFixed(dobj, nGCTransformTraRotRpyR, 0);
+    gcAddGCMatrixForDObjFixed(dobj, 0x46, 0);
 
     dobj->translate.vec.f = *pos;
 

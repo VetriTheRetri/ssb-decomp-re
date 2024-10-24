@@ -133,7 +133,7 @@ void mvOpeningStandoffMakeGround(void)
 {
     GObj *gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
     gcAddDObjForGObj(gobj, lbRelocGetDataFromFile(void*, sMVOpeningStandoffFiles[0], &lMVOpeningStandoffGroundDisplayList));
-    gcAddOMMtxForDObjFixed(DObjGetStruct(gobj), nOMTransformTraRotRpyRSca, 0);
+    gcAddGCMatrixForDObjFixed(DObjGetStruct(gobj), nGCTransformTraRotRpyRSca, 0);
     gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     DObjGetStruct(gobj)->translate.vec.f.x = 0.0F;
@@ -285,7 +285,7 @@ void mvOpeningStandoffMakeWallpaper(void)
 
     wallpaper_gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjProcess(wallpaper_gobj, mvOpeningStandoffWallpaperProcUpdate, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(wallpaper_gobj, mvOpeningStandoffWallpaperProcUpdate, nGCProcessKindProc, 1);
 
     wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetDataFromFile(Sprite*, sMVOpeningStandoffFiles[1], &lMVOpeningStandoffWallpaperSprite));
     wallpaper_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -322,9 +322,9 @@ void mvOpeningStandoffMakeLightning(void)
             &lMVOpeningStandoffLightningDObjDesc
         ),
         NULL,
-        nOMTransformTraRotRpyRSca,
-        nOMTransformNull,
-        nOMTransformNull
+        nGCTransformTraRotRpyRSca,
+        nGCTransformNull,
+        nGCTransformNull
     );
     gcAddMObjAll
     (
@@ -364,7 +364,7 @@ void mvOpeningStandoffMakeLightning(void)
         ),
         0.0F
     );
-    gcAddGObjProcess(lightning_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(lightning_gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
 }
 
 // 0x801321D8
@@ -423,7 +423,7 @@ void mvOpeningStandoffMakeLightningFlashCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -432,7 +432,7 @@ void mvOpeningStandoffMakeLightningFlashCamera(void)
             CAMERA_MASK_DLLINK(28),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE
@@ -452,7 +452,7 @@ void mvOpeningStandoffMakeMainCamera(void)
 {
     GObj *camera_gobj = gcMakeCameraGObj
     (
-        nOMObjCommonKindSceneCamera,
+        nGCCommonKindSceneCamera,
         NULL,
         16,
         GOBJ_LINKORDER_DEFAULT,
@@ -462,7 +462,7 @@ void mvOpeningStandoffMakeMainCamera(void)
         CAMERA_MASK_DLLINK(9),
         -1,
         TRUE,
-        nOMObjProcessKindProc,
+        nGCProcessKindProc,
         NULL,
         1,
         FALSE
@@ -485,7 +485,7 @@ void mvOpeningStandoffMakeMainCamera(void)
         ),
         0.0F
     );
-    gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
 }
 
 // 0x80132530
@@ -495,7 +495,7 @@ void mvOpeningStandoffMakeWallpaperCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -504,7 +504,7 @@ void mvOpeningStandoffMakeWallpaperCamera(void)
             CAMERA_MASK_DLLINK(27),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE

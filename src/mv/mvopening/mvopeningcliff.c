@@ -250,7 +250,7 @@ void mvOpeningCliffMakeWallpaper(void)
 
     wallpaper_gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjProcess(wallpaper_gobj, mvOpeningCliffWallpaperFuncDisplay, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(wallpaper_gobj, mvOpeningCliffWallpaperFuncDisplay, nGCProcessKindProc, 1);
 
     wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetDataFromFile(Sprite*, sMVOpeningCliffFiles[1], &lMVOpeningCliffWallpaperSprite));
     wallpaper_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -287,9 +287,9 @@ void mvOpeningCliffMakeOcarina(void)
             &lMVOpeningCliffOcarinaDObjDesc
         ),
         NULL,
-        nOMTransformTraRotRpyRSca,
-        nOMTransformNull,
-        nOMTransformNull
+        nGCTransformTraRotRpyRSca,
+        nGCTransformNull,
+        nGCTransformNull
     );
     gcAddGObjDisplay(ocarina_gobj, gcDrawDObjTreeForGObj, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -308,7 +308,7 @@ void mvOpeningCliffMakeOcarina(void)
         ),
         0.0F
     );
-    gcAddGObjProcess(ocarina_gobj, gcPlayAnimAll, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(ocarina_gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
 }
 
 // 0x8013212C
@@ -325,7 +325,7 @@ void mvOpeningCliffMakeMainCamera(void)
 
     camera_gobj = gcMakeCameraGObj
     (
-        nOMObjCommonKindSceneCamera,
+        nGCCommonKindSceneCamera,
         NULL,
         16,
         GOBJ_LINKORDER_DEFAULT,
@@ -334,13 +334,13 @@ void mvOpeningCliffMakeMainCamera(void)
         CAMERA_MASK_DLLINK(26),
         -1,
         FALSE,
-        nOMObjProcessKindProc,
+        nGCProcessKindProc,
         NULL,
         1,
         FALSE
     );
-    gcAddOMMtxForCamera(CameraGetStruct(camera_gobj), nOMTransformPerspF, 0);
-    gcAddOMMtxForCamera(CameraGetStruct(camera_gobj), 6, 0);
+    gcAddGCMatrixForCamera(CameraGetStruct(camera_gobj), nGCTransformPerspF, 0);
+    gcAddGCMatrixForCamera(CameraGetStruct(camera_gobj), 6, 0);
 
     cam = CameraGetStruct(camera_gobj);
     syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -359,11 +359,11 @@ void mvOpeningCliffMakeMainCamera(void)
         ),
         0.0F
     );
-    gcAddGObjProcess(camera_gobj, mvOpeningCliffCameraProcUpdate, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(camera_gobj, mvOpeningCliffCameraProcUpdate, nGCProcessKindProc, 1);
 
     camera_gobj = gcMakeCameraGObj
     (
-        nOMObjCommonKindSceneCamera,
+        nGCCommonKindSceneCamera,
         NULL,
         16,
         GOBJ_LINKORDER_DEFAULT,
@@ -372,13 +372,13 @@ void mvOpeningCliffMakeMainCamera(void)
         CAMERA_MASK_DLLINK(28),
         -1,
         FALSE,
-        nOMObjProcessKindProc,
+        nGCProcessKindProc,
         NULL,
         1,
         FALSE
     );
-    gcAddOMMtxForCamera(CameraGetStruct(camera_gobj), nOMTransformPerspF, 0);
-    gcAddOMMtxForCamera(CameraGetStruct(camera_gobj), 6, 0);
+    gcAddGCMatrixForCamera(CameraGetStruct(camera_gobj), nGCTransformPerspF, 0);
+    gcAddGCMatrixForCamera(CameraGetStruct(camera_gobj), 6, 0);
 
     cam = CameraGetStruct(camera_gobj);
     
@@ -398,7 +398,7 @@ void mvOpeningCliffMakeMainCamera(void)
         ),
         0.0F
     );
-    gcAddGObjProcess(camera_gobj, mvOpeningCliffCameraProcUpdate, nOMObjProcessKindProc, 1);
+    gcAddGObjProcess(camera_gobj, mvOpeningCliffCameraProcUpdate, nGCProcessKindProc, 1);
 }
 
 // 0x80132368
@@ -408,7 +408,7 @@ void mvOpeningCliffMakeWallpaperCamera(void)
     (
         gcMakeCameraGObj
         (
-            nOMObjCommonKindSceneCamera,
+            nGCCommonKindSceneCamera,
             NULL,
             16,
             GOBJ_LINKORDER_DEFAULT,
@@ -417,7 +417,7 @@ void mvOpeningCliffMakeWallpaperCamera(void)
             CAMERA_MASK_DLLINK(27),
             -1,
             FALSE,
-            nOMObjProcessKindProc,
+            nGCProcessKindProc,
             NULL,
             1,
             FALSE

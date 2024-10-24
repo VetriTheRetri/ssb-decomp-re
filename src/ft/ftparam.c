@@ -122,7 +122,7 @@ void ftParamTryUpdateItemMusic(void)
 {
     u32 bgm_play = gMPCollisionBGMDefault;
     s32 length = ftParamGetItemMusicLength(bgm_play);
-    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
     while (fighter_gobj != NULL)
     {
@@ -185,7 +185,7 @@ void ftParamInitPlayerBattleStats(s32 player, GObj *fighter_gobj)
 // 0x800E7ED4 - Get fighter GObj with player number
 GObj* ftParamGetPlayerNumGObj(s32 player_number)
 {
-    GObj *fighter_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDFighter];
+    GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
     while (fighter_gobj != NULL)
     {
@@ -1041,7 +1041,7 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
                 }
                 if (costume != 0)
                 {
-                    ft_parts_gobj = gcMakeGObjSPAfter(nOMObjCommonKindFighterParts, NULL, nOMObjCommonLinkIDFighterParts, GOBJ_LINKORDER_DEFAULT);
+                    ft_parts_gobj = gcMakeGObjSPAfter(nGCCommonKindFighterParts, NULL, nGCCommonLinkIDFighterParts, GOBJ_LINKORDER_DEFAULT);
                     ft_parts->gobj = ft_parts_gobj;
 
                     gcAddDObjForGObj(ft_parts_gobj, ft_mesh->dl);
@@ -1354,7 +1354,7 @@ void ftParamRunProcEffect(GObj *fighter_gobj, void (*proc)(GObj*, efStruct*))
 
     if (fp->is_attach_effect)
     {
-        GObj *effect_gobj = gOMObjCommonLinks[nOMObjCommonLinkIDEffect];
+        GObj *effect_gobj = gGCCommonLinks[nGCCommonLinkIDEffect];
 
         while (effect_gobj != NULL)
         {
@@ -2377,7 +2377,7 @@ void ftParamSetAnimLocks(ftStruct *fp)
                 {
                     gmCollisionTransformMatrixAll(fp->joints[i], ft_parts, ft_parts->unk_dobjtrans_0x10);
                     ft_parts->transform_update_mode = 3;
-                    fp->joints[i]->ommtx[0]->unk05 = 1;
+                    fp->joints[i]->gcmatrix[0]->unk05 = 1;
                 }
             }
         }
@@ -2406,7 +2406,7 @@ void ftParamClearAnimLocks(ftStruct *fp)
                 {
                     ft_parts->transform_update_mode = 0;
 
-                    fp->joints[i]->ommtx[0]->unk05 = 0;
+                    fp->joints[i]->gcmatrix[0]->unk05 = 0;
                 }
             }
         }

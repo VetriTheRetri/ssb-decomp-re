@@ -56,7 +56,7 @@ extern u32 func_8000092C();
 // // // // // // // // // // // //
 
 // 0x80134430 (.rodata)
-const char dMNTitleGameLang[/* */] = { "English" };
+// const char dMNTitleGameLang[/* */] = { "English" };
 
 // 0x801341E0
 intptr_t dMNTitleAnimatedLogoOffsets[/* */] =
@@ -96,7 +96,7 @@ mnTitleTextureConfig dMNTitleTextureConfigs[/* */] =
 };
 
 // 0x801342E0
-void *dMNTitleUnknown0x801342E0[/* */] = { NULL, NULL, dMNTitleGameLang, NULL, NULL, NULL, NULL, NULL, NULL, dSCManagerBuildDate, NULL, NULL, NULL, NULL };
+char *dMNTitleUnknown0x801342E0[/* */] = { NULL, NULL, "English", NULL, NULL, NULL, NULL, NULL, NULL, dSCManagerBuildDate, NULL, NULL, NULL, NULL };
 
 // 0x80134318
 u8 dMNTitleFireColorsR[/* */] = { 0xFF, 0xFF, 0xFF, 0xFF, 0xE6, 0xFF, 0xFF };

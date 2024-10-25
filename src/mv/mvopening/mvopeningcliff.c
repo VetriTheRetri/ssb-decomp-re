@@ -339,8 +339,8 @@ void mvOpeningCliffMakeMainCamera(void)
         1,
         FALSE
     );
-    gcAddGCMatrixForCamera(CameraGetStruct(camera_gobj), nGCTransformPerspF, 0);
-    gcAddGCMatrixForCamera(CameraGetStruct(camera_gobj), 6, 0);
+    gcAddXObjForCamera(CameraGetStruct(camera_gobj), nGCTransformPerspF, 0);
+    gcAddXObjForCamera(CameraGetStruct(camera_gobj), 6, 0);
 
     cam = CameraGetStruct(camera_gobj);
     syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -377,8 +377,8 @@ void mvOpeningCliffMakeMainCamera(void)
         1,
         FALSE
     );
-    gcAddGCMatrixForCamera(CameraGetStruct(camera_gobj), nGCTransformPerspF, 0);
-    gcAddGCMatrixForCamera(CameraGetStruct(camera_gobj), 6, 0);
+    gcAddXObjForCamera(CameraGetStruct(camera_gobj), nGCTransformPerspF, 0);
+    gcAddXObjForCamera(CameraGetStruct(camera_gobj), 6, 0);
 
     cam = CameraGetStruct(camera_gobj);
     

@@ -214,9 +214,9 @@ struct GObj
     GCUserData user_data;
 };
 
-struct GCMatrix 
+struct XObj 
 {
-    GCMatrix *next;
+    XObj *next;
     u8 kind;
     u8 unk05;
     Mtx mtx;
@@ -224,7 +224,7 @@ struct GCMatrix
 
 struct GCPersp
 {
-    GCMatrix *gcmatrix;
+    XObj *xobj;
     u16 norm;
     f32 fovy;
     f32 aspect;
@@ -235,21 +235,21 @@ struct GCPersp
 
 struct GCFrustum
 {
-    GCMatrix *gcmatrix;
+    XObj *xobj;
     f32 l, r, b, t, n, f;
     f32 scale;
 };
 
 struct GCOrtho
 {
-    GCMatrix *gcmatrix;
+    XObj *xobj;
     f32 l, r, b, t, n, f;
     f32 scale;
 };
 
 struct GCTranslate
 {
-    GCMatrix *gcmatrix;
+    XObj *xobj;
 
     union
     {
@@ -261,7 +261,7 @@ struct GCTranslate
 
 struct GCRotate
 {
-    GCMatrix *gcmatrix;
+    XObj *xobj;
 
     f32 a;          // Rotation angle
 
@@ -274,7 +274,7 @@ struct GCRotate
 
 struct GCScale
 {
-    GCMatrix *gcmatrix;
+    XObj *xobj;
     
     union
     {
@@ -436,8 +436,8 @@ struct DObj
 
     u8 flags;
     ub8 is_anim_root;       // TRUE if this DObj's animation script is at the top of the hierarchy?
-    u8 gcmatrix_len;
-    GCMatrix *gcmatrix[5];
+    u8 xobjs_num;
+    XObj *xobj[5];
     AObj *aobj;
 
     AObjScript anim_joint;
@@ -475,7 +475,7 @@ struct SObj                    // Sprite object
 
 struct CameraVec
 {
-    GCMatrix *gcmatrix;
+    XObj *xobj;
     Vec3f eye; // Either camera terms do not translate very well here or I'm just too incompetent... this rotates about the focus point
     Vec3f at;  // This moves the camera on the XYZ planes
     Vec3f up;
@@ -505,8 +505,8 @@ struct Camera
 
     CameraVec vec;
 
-    s32 gcmatrix_len;
-    GCMatrix *gcmatrix[2];
+    s32 xobjs_num;
+    XObj *xobj[2];
 
     AObj *aobj;
     AObjScript camanim_joint;
@@ -541,8 +541,8 @@ struct GCSetup
     s32 gobjs_num;
     size_t gobj_size;
 
-    GCMatrix *gcmatrixes;
-    s32 gcmatrixs_num;
+    XObj *xobjs;
+    s32 xobjs_num;
 
     void (*proc_eject)(DObjDynamicStore*);
 

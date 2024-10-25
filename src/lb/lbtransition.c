@@ -133,8 +133,8 @@ GObj* lbTransitionMakeCamera(u32 id, s32 link, u32 link_order, u64 cam_mask)
     func_80009F74(gobj, func_80017DBC, link_order, cam_mask, -1);
     
     cam = gcAddCameraForGObj(gobj);
-    gcAddGCMatrixForCamera(cam, nGCTransformPerspFastF, 1);
-    gcAddGCMatrixForCamera(cam, nGCTransformLookAt, 1);
+    gcAddXObjForCamera(cam, nGCTransformPerspFastF, 1);
+    gcAddXObjForCamera(cam, nGCTransformLookAt, 1);
     syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
     cam->projection.persp.aspect = 15.0F / 11.0F;

@@ -320,7 +320,7 @@ GObj* itEggMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         egg_ip->indicator_gobj = ifCommonItemArrowMakeInterface(egg_ip);
 
-        gcAddGCMatrixForDObjFixed(dobj->child, 0x2E, 0);
+        gcAddXObjForDObjFixed(dobj->child, 0x2E, 0);
 
         dobj->translate.vec.f = *pos;
 

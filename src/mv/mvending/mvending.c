@@ -229,7 +229,7 @@ void mvEndingMakeRoomTissues(void)
 
     dobj = gcAddDObjForGObj(gobj, lbRelocGetDataFromFile(void*, sMVEndingFiles[0], &lMVCommonRoomTissuesDisplayList));
 
-    gcAddGCMatrixForDObjFixed(dobj, nGCTransformTraRotRpyRSca, 0);
+    gcAddXObjForDObjFixed(dobj, nGCTransformTraRotRpyRSca, 0);
     gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjAnimJoint(dobj, lbRelocGetDataFromFile(AObjEvent32*, sMVEndingFiles[0], &lMVCommonRoomTissuesAnimJoint), 300.0F);
     gcPlayAnimAll(gobj);
@@ -428,8 +428,8 @@ void mvEndingMakeMainCameras(void)
         1,
         FALSE
     );
-    gcAddGCMatrixForCamera(CameraGetStruct(gobj), nGCTransformPerspFastF, 0);
-    gcAddGCMatrixForCamera(CameraGetStruct(gobj), 8, 0);
+    gcAddXObjForCamera(CameraGetStruct(gobj), nGCTransformPerspFastF, 0);
+    gcAddXObjForCamera(CameraGetStruct(gobj), 8, 0);
     mvEndingSetupOperatorCamera(gobj);
 
     CameraGetStruct(gobj)->flags |= 4;

@@ -188,7 +188,7 @@ void itHarisenHoldSetStatus(GObj *item_gobj)
 {
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    gcAddGCMatrixForDObjFixed(dobj, nGCTransformSca, 0);
+    gcAddXObjForDObjFixed(dobj, nGCTransformSca, 0);
 
     dobj->rotate.vec.f.y = 0.0F;
 

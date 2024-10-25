@@ -46,7 +46,7 @@ typedef struct syTaskmanSetup
 	/* 0x50 */ u32 gobjprocs_num;
 	/* 0x54 */ u32 gobjs_num;
 	/* 0x58 */ u32 gobj_size;
-	/* 0x5C */ u32 gcmatrixs_num;
+	/* 0x5C */ u32 xobjs_num;
 	/* 0x60 */ void *unk60;
 	/* 0x64 */ void (*proc_eject)(DObjDynamicStore*); 	// fn pointer void(*)(struct DObjDynamicStore *)
 	/* 0x68 */ u32 aobjs_num;

@@ -326,7 +326,7 @@ GObj* itSpearMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj = DObjGetStruct(item_gobj);
 
-        gcAddGCMatrixForDObjFixed(dobj->child, 0x48, 0);
+        gcAddXObjForDObjFixed(dobj->child, 0x48, 0);
 
         dobj->translate.vec.f = *pos;
 
@@ -411,7 +411,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 
     if (it_kind == nITKindSpear)
     {
-        gcAddGCMatrixForDObjFixed(dobj->child->child, 0x48, 0);
+        gcAddXObjForDObjFixed(dobj->child->child, 0x48, 0);
 
         if (wp->lr == nGMFacingL)
         {
@@ -422,7 +422,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
     {
         weapon_gobj->func_display = itPippiWeaponSwarmFuncDisplay;
 
-        gcAddGCMatrixForDObjFixed(dobj->child, 0x48, 0);
+        gcAddXObjForDObjFixed(dobj->child, 0x48, 0);
 
         if (wp->lr == nGMFacingR)
         {

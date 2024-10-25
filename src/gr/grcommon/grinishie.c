@@ -371,7 +371,7 @@ void grInishieMakeScale(void)
         platform_dobj = gcAddDObjForGObj(ground_gobj, (void*) ((uintptr_t)map_head + (intptr_t)&lGRInishieMapHead));
         gGRCommonStruct.inishie.scale[i].platform_dobj = platform_dobj;
 
-        gcAddGCMatrixForDObjFixed(platform_dobj, nGCTransformTra, 0);
+        gcAddXObjForDObjFixed(platform_dobj, nGCTransformTra, 0);
         gcAddGObjProcess(ground_gobj, gcPlayAnimAll, nGCProcessKindProc, 5);
 
         mpCollisionGetMapObjIDsKind(dGRInishieScaleMapObjKinds[i], &mapobj);

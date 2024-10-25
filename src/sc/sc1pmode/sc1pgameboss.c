@@ -802,10 +802,10 @@ void sc1PGameBossSetupBackgroundDObjs(GObj *gobj, DObjDesc *dobjdesc, MObjSub **
 
         if (id != 0)
         {
-            gcAddGCMatrixForDObjFixed(dobj, nGCTransformTraRotRpyR, 0);
-            gcAddGCMatrixForDObjFixed(dobj, nGCTransform46, 0);
+            gcAddXObjForDObjFixed(dobj, nGCTransformTraRotRpyR, 0);
+            gcAddXObjForDObjFixed(dobj, nGCTransform46, 0);
         }
-        else gcAddGCMatrixForDObjFixed(dobj, transform_kind, 0);
+        else gcAddXObjForDObjFixed(dobj, transform_kind, 0);
 
         dobj->translate.vec.f = dobjdesc->translate;
         dobj->rotate.vec.f = dobjdesc->rotate;

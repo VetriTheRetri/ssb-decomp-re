@@ -94,7 +94,7 @@ typedef enum DObjVecKind
 
 } DObjVecKind;
 
-typedef enum GCMatrixTransformKind
+typedef enum XObjTransformKind
 {
     nGCTransformNull,
     nGCTransformPerspFastF = 3,     // Camera Fast FP perspective projection
@@ -135,7 +135,7 @@ typedef enum GCMatrixTransformKind
     nGCTransformVecTraRotRpyR,      // Standalone (?) vector translate + rotate Roll/Pitch/Yaw radians
     nGCTransformVecTraRotRpyRSca    // Standalone (?) vector translate + rotate Roll/Pitch/Yaw radians + rowscale (?) 
 
-} GCMatrixTransformKind;
+} XObjTransformKind;
 
 typedef enum AObjAnimKind
 {
@@ -252,7 +252,7 @@ typedef struct SObj                 SObj;
 typedef struct CameraVec            CameraVec;
 typedef struct CameraDesc           CameraDesc;
 typedef struct Camera               Camera;
-typedef struct GCMatrix             GCMatrix;
+typedef struct XObj             XObj;
 typedef struct GCGfxLink            GCGfxLink;
 typedef struct GCThreadStackList    GCThreadStackList;
 typedef struct GCThreadStackNode    GCThreadStackNode;

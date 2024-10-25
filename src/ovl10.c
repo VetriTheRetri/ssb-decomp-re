@@ -1,35 +1,9 @@
-#include <debug.h>
-#include <sys/develop.h>
-#include <ft/ftdef.h>
 #include <ft/fighter.h>
-#include <gr/ground.h>
+#include <if/interface.h>
 #include <sc/scene.h>
-#include <lb/library.h>
 #include <sys/video.h>
-#include <sys/taskman.h>
 
 #include "ovl10.h"
-
-// Externs
-extern uintptr_t lTitleScreenParticleBankScriptsLo; // B22C30
-extern uintptr_t lTitleScreenParticleBankScriptsHi; // B22D40
-extern uintptr_t lTitleScreenParticleBankTexturesLo; // B22D40
-extern uintptr_t lTitleScreenParticleBankTexturesHi; // B277B0
-extern uintptr_t lOverlay10ArenaLo; // 0x801345B0
-extern uintptr_t lOverlay10ArenaHi; // 0x80369240
-
-extern intptr_t FILE_0A7_ANIMATED_LOGO_OFFSET_1; // 251D0 file 0x0A7 offset for Animated Logo (anim?)
-extern intptr_t FILE_0A7_ANIMATED_LOGO_OFFSET_2; // 26020 file 0x0A7 offset for Animated Logo (anim?)
-extern intptr_t FILE_0A7_ANIMATED_TITLE_HEADER_FOOTER_OFFSET_1; // 25350 file 0x0A7 offset for Title, Header & Footer (anim?)
-extern intptr_t FILE_0A7_ANIMATED_TITLE_HEADER_FOOTER_OFFSET_2; // 26130 file 0x0A7 offset for Title, Header & Footer (anim?)
-extern intptr_t FILE_0A7_ANIMATED_PRESS_START_OFFSET_1; // 258D0 file 0x0A7 offset for Press Start (anim?)
-extern intptr_t FILE_0A7_ANIMATED_PRESS_START_OFFSET_2; // 262C0 file 0x0A7 offset for Press Start (anim?)
-extern intptr_t FILE_0A7_SLASH_EFFECT_GFX_OFFSET_1; // 287D8 file 0x0A7 offset for Slash Effect GFX
-extern intptr_t FILE_0A7_SLASH_EFFECT_GFX_OFFSET_2; // 28DA8 file 0x0A7 offset for Slash Effect GFX
-extern intptr_t FILE_0A7_SLASH_EFFECT_GFX_OFFSET_3; // 25E70 file 0x0A7 offset for Slash Effect GFX
-extern intptr_t FILE_0A7_SLASH_EFFECT_GFX_OFFSET_4; // 25F60 file 0x0A7 offset for Slash Effect GFX
-extern intptr_t FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_1; // 28EB0 file 0x0A7 offset for Slash Effect GFX
-extern intptr_t FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_2; // 29010 file 0x0A7 offset for Slash Effect GFX
 
 extern void dbMenuUpdateMenuInputs();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
@@ -51,48 +25,145 @@ extern u32 func_8000092C();
 
 // // // // // // // // // // // //
 //                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x80134440
+s32 D_ovl10_80134440[2];
+
+// 0x80134448
+GObj *sMNTitleFireCameraGObj;
+
+// 0x8013444C
+s32 sMNTitleParticleBankID;
+
+// 0x80134450
+mnTitleLayout sMNTitleLayout;
+
+// 0x80134454
+GObj *sMNTitleTransitionsGObj;
+
+// 0x80134458
+GObj *sMNTitleMainGObj;
+
+// 0x8013445C
+s32 sMNTitleTransitionTotalTimeTics;
+
+// 0x80134460
+sb32 sMNTitleIsStartActorProcess;
+
+// 0x80134464
+s32 sMNTitleFireAlpha;
+
+// 0x80134468
+s32 sMNTitleFireAlphaUnused;
+
+// 0x8013446C
+s32 sMNTitleLogoAlpha;
+
+// 0x80134470
+sb32 sMNTitleIsProceedScene;
+
+// 0x80134474
+s32 sMNTitleProceedSceneWait;
+
+// 0x80134478
+s32 sMNTitleFireTimer;
+
+// 0x8013447C
+f32 sMNTitleFireColorR;
+
+// 0x80134480
+f32 sMNTitleFireColorG;
+
+// 0x80134484
+f32 sMNTitleFireColorB;
+
+// 0x80134488
+f32 sMNTitleFireColorDeltaR;
+
+// 0x8013448C
+f32 sMNTitleFireColorDeltaG;
+
+// 0x80134490
+f32 sMNTitleFireColorDeltaB;
+
+// 0x80134494
+s32 sMNTitleFireColorID;
+
+// 0x80134498
+u32 sMNTitleAllowProceedWait;
+
+// 0x801344A0
+lbFileNode sMNTitleStatusBuffer[32];
+
+// 0x801345A0
+void *sMNTitleFiles[2];
+
+// // // // // // // // // // // //
+//                               //
 //       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
-// 0x80134430 (.rodata)
-// const char dMNTitleGameLang[/* */] = { "English" };
-
 // 0x801341E0
-intptr_t dMNTitleAnimatedLogoOffsets[/* */] =
+intptr_t dMNTitleLogoAnimSprites[/* */] =
 {
-	0x00008FC8, // Full circle cutout
-	0x000097E8, // Vertical rectangle
-	0x00009B48, // Horizontal rectangle
-	0x0000BBB0
+	&lMNTitleLogoAnimCutoutSprite, 					// Full circle cutout
+	&lMNTitleLogoAnimStrikeVSprite, 				// Vertical rectangle
+	&lMNTitleLogoAnimStrikeHSprite, 				// Horizontal rectangle
+	&lMNTitleLogoAnimFullSprite						// Full sprite? Unused?
 };
 
 // 0x801341F0
 intptr_t dMNTitleFireSpriteOffsets[/* */] =
 {
-	0x00001018, 0x00002078, 0x000030d8, 0x00004138,
-	0x00005198, 0x000061f8, 0x00007258, 0x000082b8,
-	0x00009318, 0x0000a378, 0x0000b3d8, 0x0000c438,
-	0x0000d498, 0x0000e4f8, 0x0000f558, 0x000105b8,
-	0x00011618, 0x00012678, 0x000136d8, 0x00014738,
-	0x00015798, 0x000167f8, 0x00017858, 0x000188b8,
-	0x00019918, 0x0001a978, 0x0001b9d8, 0x0001ca38,
-	0x0001da98, 0x0001eaf8
+	&lMNTitleFireAnimFrame1Sprite,
+	&lMNTitleFireAnimFrame2Sprite,
+	&lMNTitleFireAnimFrame3Sprite,
+	&lMNTitleFireAnimFrame4Sprite,
+	&lMNTitleFireAnimFrame5Sprite,
+	&lMNTitleFireAnimFrame6Sprite,
+	&lMNTitleFireAnimFrame7Sprite,
+	&lMNTitleFireAnimFrame8Sprite,
+	&lMNTitleFireAnimFrame9Sprite,
+	&lMNTitleFireAnimFrame10Sprite,
+	&lMNTitleFireAnimFrame11Sprite,
+	&lMNTitleFireAnimFrame12Sprite,
+	&lMNTitleFireAnimFrame13Sprite,
+	&lMNTitleFireAnimFrame14Sprite,
+	&lMNTitleFireAnimFrame15Sprite,
+	&lMNTitleFireAnimFrame16Sprite,
+	&lMNTitleFireAnimFrame17Sprite,
+	&lMNTitleFireAnimFrame18Sprite,
+	&lMNTitleFireAnimFrame19Sprite,
+	&lMNTitleFireAnimFrame20Sprite,
+	&lMNTitleFireAnimFrame21Sprite,
+	&lMNTitleFireAnimFrame22Sprite,
+	&lMNTitleFireAnimFrame23Sprite,
+	&lMNTitleFireAnimFrame24Sprite,
+	&lMNTitleFireAnimFrame25Sprite,
+	&lMNTitleFireAnimFrame26Sprite,
+	&lMNTitleFireAnimFrame27Sprite,
+	&lMNTitleFireAnimFrame28Sprite,
+	&lMNTitleFireAnimFrame29Sprite,
+	&lMNTitleFireAnimFrame30Sprite
 };
 
 // 0x80134268
-mnTitleTextureConfig dMNTitleTextureConfigs[/* */] =
+mnTitleSpriteDesc dMNTitleCommonSpriteDescs[/* */] =
 {
-	0x0000009d, 0x0000005e, 0x00011988,
-	0x000000a1,	0x00000058, 0x000245c8,
-	0x00000037, 0x00000060, 0x00016728,
-	0x0000010c, 0x00000060, 0x00025188,
-	0x0000010e, 0x00000084, 0x00011aa8,
-	0x000000a0, 0x000000d0, 0x00015320,
-	0x000000a0, 0x0000000f, 0x0000c208,
-	0x000000a2, 0x000000b1, 0x00015a48,
-	0x00000104, 0x0000003c, 0x0000bbb0,
-	0x00000115, 0x0000009d, 0x0000f398
+	{ { 157,  94 }, &lMNTitleCutoutSprite 		},
+	{ { 161,  88 }, &lMNTitleSmashSprite 		},
+	{ {  55,  96 }, &lMNTitleSuperSprite 		},
+	{ { 268,  96 }, &lMNTitleBrosSprite 		},
+	{ { 270, 132 }, &lMNTitleTMUnkSprite 		},
+	{ { 160, 208 }, &lMNTitleCopyrightSprite 	},
+	{ { 160,  15 }, &lMNTitleBorderUpperSprite 	},
+	{ { 162, 177 }, &lMNTitlePressStartSprite 	},
+	{ { 260,  60 }, &lMNTitleLogoAnimFullSprite },
+	{ { 277, 157 }, &lMNTitleTMSprite 			}
 };
 
 // 0x801342E0
@@ -178,91 +249,10 @@ syTaskmanSetup dMNTitleTaskmanSetup =
 };
 
 // 0x80134418
-s32 D_ovl10_80134418 = 0;
-
-// 0x8013441C
-s32 D_ovl10_8013441C = 0;
+s32 dMNTitleUnused0x80134418[/* */] = { 0, 0 };
 
 // 0x80134420
 u32 dMNTitleFileIDs[/* */] = { 0xA7, 0xA8 };
-
-// // // // // // // // // // // //
-//                               //
-//   GLOBAL / STATIC VARIABLES   //
-//                               //
-// // // // // // // // // // // //
-
-// 0x80134440
-s32 D_ovl10_80134440[2];
-
-// 0x80134448
-GObj *sMNTitleFireCameraGObj;
-
-// 0x8013444C
-s32 sMNTitleParticleBankID;
-
-// 0x80134450
-mnTitleLayout sMNTitleLayout;
-
-// 0x80134454
-GObj *sMNTitleTransitionsGObj;
-
-// 0x80134458
-GObj *sMNTitleMainGObj;
-
-// 0x8013445C
-s32 sMNTitleTransitionTotalTimeTics;
-
-// 0x80134460
-sb32 sMNTitleIsStartActorProcess;
-
-// 0x80134464
-s32 sMNTitleFireAlpha;
-
-// 0x80134468
-s32 sMNTitleFireAlphaUnused;
-
-// 0x8013446C
-s32 sMNTitleLogoAlpha;
-
-// 0x80134470
-sb32 sMNTitleIsProceedScene;
-
-// 0x80134474
-s32 sMNTitleProceedSceneWait;
-
-// 0x80134478
-s32 sMNTitleFireTimer;
-
-// 0x8013447C
-f32 sMNTitleFireColorR;
-
-// 0x80134480
-f32 sMNTitleFireColorG;
-
-// 0x80134484
-f32 sMNTitleFireColorB;
-
-// 0x80134488
-f32 sMNTitleFireDeltaRed;
-
-// 0x8013448C
-f32 sMNTitleFireDeltaGreen;
-
-// 0x80134490
-f32 sMNTitleFireDeltaBlue;
-
-// 0x80134494
-s32 sMNTitleFireColorID;
-
-// 0x80134498
-u32 sMNTitleAllowProceedWait;
-
-// 0x801344A0
-lbFileNode sMNTitleStatusBuffer[32];
-
-// 0x801345A0
-void *sMNTitleFiles[2];
 
 // // // // // // // // // // // //
 //                               //
@@ -333,7 +323,7 @@ s32 mnTitleSetDemoFighterKinds(void)
 	{
 		gSceneData.demo_first_ft_kind = gSceneData.demo_ft_kind[0];
 	}
-	gSceneData.demo_mask_prev |= gmSaveChrMask(gSceneData.demo_ft_kind[0]);
+	gSceneData.demo_mask_prev |= LBBACKUP_FIGHTER_MASK_DEFINE(gSceneData.demo_ft_kind[0]);
 
 	unlocked_count = mnTitleGetFighterKindsNum(unlocked_mask);
 
@@ -346,7 +336,7 @@ s32 mnTitleSetDemoFighterKinds(void)
 	else
 	{
 		gSceneData.demo_ft_kind[1] = mnTitleGetShuffledFighterKind(unlocked_mask, gSceneData.demo_mask_prev, mtTrigGetRandomIntRange(non_recently_demoed_count));
-		gSceneData.demo_mask_prev |= gmSaveChrMask(gSceneData.demo_ft_kind[1]);
+		gSceneData.demo_mask_prev |= LBBACKUP_FIGHTER_MASK_DEFINE(gSceneData.demo_ft_kind[1]);
 	}
 }
 
@@ -379,9 +369,9 @@ void mnTitleInitVars(void)
 	sMNTitleIsProceedScene = FALSE;
 	sMNTitleProceedSceneWait = 3;
 	sMNTitleIsStartActorProcess = FALSE;
-	sMNTitleFireDeltaRed = 0.0F;
-	sMNTitleFireDeltaGreen = 0.0F;
-	sMNTitleFireDeltaBlue = 0.0F;
+	sMNTitleFireColorDeltaR = 0.0F;
+	sMNTitleFireColorDeltaG = 0.0F;
+	sMNTitleFireColorDeltaB = 0.0F;
 }
 
 // 0x80131E68
@@ -567,9 +557,9 @@ void mnTitleUpdateFireVars(void)
 
 	sMNTitleFireColorR = sMNTitleFireColorG = sMNTitleFireColorB = 0.0F;
 
-	sMNTitleFireDeltaRed = (dMNTitleFireColorsR[index] - sMNTitleFireColorR) / 80.0F;
-	sMNTitleFireDeltaGreen = (dMNTitleFireColorsG[index] - sMNTitleFireColorG) / 80.0F;
-	sMNTitleFireDeltaBlue = (dMNTitleFireColorsB[index] - sMNTitleFireColorB) / 80.0F;
+	sMNTitleFireColorDeltaR = (dMNTitleFireColorsR[index] - sMNTitleFireColorR) / 80.0F;
+	sMNTitleFireColorDeltaG = (dMNTitleFireColorsG[index] - sMNTitleFireColorG) / 80.0F;
+	sMNTitleFireColorDeltaB = (dMNTitleFireColorsB[index] - sMNTitleFireColorB) / 80.0F;
 }
 
 // 0x80132320
@@ -735,7 +725,7 @@ void mnTitlePressStartProcUpdate(GObj *press_start_gobj)
 }
 
 // 0x801326D4
-void mnTitleTitleProcUpdate(GObj *title_gobj)
+void mnTitleProcUpdate(GObj *title_gobj)
 {
 	if (title_gobj->flags != GOBJ_FLAG_HIDDEN)
 	{
@@ -758,18 +748,18 @@ void mnTitleUpdateHeaderAndFooterPosition(GObj *header_footer_gobj)
 // 0x80132764
 void mnTitleSetPosition(DObj* dobj, SObj *sobj, s32 index)
 {
-	mnTitleTextureConfig* texture_config;
+	mnTitleSpriteDesc *desc;
 
 	if (dobj != NULL)
 	{
-		texture_config = &dMNTitleTextureConfigs[index];
-		dobj->translate.vec.f.x = texture_config->x - 160.0F;
-		dobj->translate.vec.f.y = -(texture_config->y - 120.0F);
+		desc = &dMNTitleCommonSpriteDescs[index];
+		dobj->translate.vec.f.x = desc->pos.x - 160.0F;
+		dobj->translate.vec.f.y = -(desc->pos.y - 120.0F);
 	}
 
-	texture_config = &dMNTitleTextureConfigs[index];
-	sobj->pos.x = (texture_config->x - (sobj->sprite.width * 0.5F));
-	sobj->pos.y = (texture_config->y - (sobj->sprite.height * 0.5F));
+	desc = &dMNTitleCommonSpriteDescs[index];
+	sobj->pos.x = (desc->pos.x - (sobj->sprite.width * 0.5F));
+	sobj->pos.y = (desc->pos.y - (sobj->sprite.height * 0.5F));
 }
 
 // 0x8013282C
@@ -1027,7 +1017,7 @@ void mnTitleMakeLogoNoOpening(void)
 		0,
 		GOBJ_DLLINKORDER_DEFAULT,
 		-1,
-		lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleTextureConfigs[8].offset),
+		lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[8].offset),
 		nGCProcessKindProc,
 		NULL,
 		1
@@ -1072,9 +1062,9 @@ void mnTitleMakeLogo(void)
 		fire_logo_gobj->user_data.p = animated_logo_gobj;
 		fire_logo_dobj = DObjGetStruct(animated_logo_gobj)->child;
 
-		for (i = 0; i < ARRAY_COUNT(dMNTitleAnimatedLogoOffsets) - 1; i++)
+		for (i = 0; i < ARRAY_COUNT(dMNTitleLogoAnimSprites) - 1; i++)
 		{
-			fire_logo_sobj = lbCommonMakeSObjForGObj(fire_logo_gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleAnimatedLogoOffsets[i]));
+			fire_logo_sobj = lbCommonMakeSObjForGObj(fire_logo_gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleLogoAnimSprites[i]));
 
 			fire_logo_sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -1101,7 +1091,7 @@ void mnTitleMakeLogo(void)
 			0,
 			GOBJ_DLLINKORDER_DEFAULT,
 			-1,
-			lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleAnimatedLogoOffsets[3]),
+			lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleLogoAnimSprites[3]),
 			nGCProcessKindProc,
 			mnTitleLogoProcUpdate,
 			1
@@ -1135,7 +1125,7 @@ void mnTitleMakeSprites(void)
 
 	for (i = 0; i < 7; i++)
 	{
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleTextureConfigs[i].offset));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[i].offset));
 		sobj->sprite.attr = SP_TRANSPARENT;
 
 		mnTitleSetPosition(NULL, sobj, i);
@@ -1159,14 +1149,14 @@ void mnTitleMakeLabels(void)
 
 	gobj = gcMakeGObjSPAfter(8, NULL, 8, GOBJ_LINKORDER_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjProcess(gobj, mnTitleTitleProcUpdate, nGCProcessKindProc, 1);
+	gcAddGObjProcess(gobj, mnTitleProcUpdate, nGCProcessKindProc, 1);
 
 	gobj->user_data.p = animation_gobj;
 	animation_dobj = DObjGetStruct(animation_gobj)->child;
 
 	for (i = 0; i < 5; i++)
 	{
-		texture_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleTextureConfigs[i].offset));
+		texture_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[i].offset));
 		texture_sobj->sprite.attr = SP_TRANSPARENT;
 
 		mnTitleSetPosition(animation_dobj, texture_sobj, i);
@@ -1184,7 +1174,7 @@ void mnTitleMakeLabels(void)
 
 	for (i = 5; i < 7; i++)
 	{
-		texture_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleTextureConfigs[i].offset));
+		texture_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[i].offset));
 		texture_sobj->sprite.attr = SP_TRANSPARENT;
 
 		mnTitleSetPosition(animation_dobj, texture_sobj, i);
@@ -1216,7 +1206,7 @@ void mnTitleMakePressStart(void)
 
 	press_start_gobj->user_data.p = press_start_anim_gobj;
 
-	press_start_sobj = lbCommonMakeSObjForGObj(press_start_gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleTextureConfigs[7].offset));
+	press_start_sobj = lbCommonMakeSObjForGObj(press_start_gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[7].offset));
 	press_start_sobj->sprite.attr = SP_TRANSPARENT;
 
 	mnTitleSetPosition(press_start_anim_dobj, press_start_sobj, nMNTitleTextureIndexPressStart);
@@ -1300,15 +1290,15 @@ void mnTitleFireCameraProcUpdate(GObj *gobj)
 				}
 				sMNTitleFireColorID = color_id;
 
-				sMNTitleFireDeltaRed = (dMNTitleFireColorsR[color_id] - sMNTitleFireColorR) / 80.0F;
-				sMNTitleFireDeltaGreen = (dMNTitleFireColorsG[color_id] - sMNTitleFireColorG) / 80.0F;
-				sMNTitleFireDeltaBlue = (dMNTitleFireColorsB[color_id] - sMNTitleFireColorB) / 80.0F;
+				sMNTitleFireColorDeltaR = (dMNTitleFireColorsR[color_id] - sMNTitleFireColorR) / 80.0F;
+				sMNTitleFireColorDeltaG = (dMNTitleFireColorsG[color_id] - sMNTitleFireColorG) / 80.0F;
+				sMNTitleFireColorDeltaB = (dMNTitleFireColorsB[color_id] - sMNTitleFireColorB) / 80.0F;
 			}
 			if (sMNTitleFireTimer >= 80)
 			{
-				sMNTitleFireColorR += sMNTitleFireDeltaRed;
-				sMNTitleFireColorG += sMNTitleFireDeltaGreen;
-				sMNTitleFireColorB += sMNTitleFireDeltaBlue;
+				sMNTitleFireColorR += sMNTitleFireColorDeltaR;
+				sMNTitleFireColorG += sMNTitleFireColorDeltaG;
+				sMNTitleFireColorB += sMNTitleFireColorDeltaB;
 			}
 			sMNTitleFireTimer--;
 		}
@@ -1356,8 +1346,8 @@ s32 mnTitleMakeCameras(void)
 	camera_gobj = gcMakeCameraGObj(3, NULL, 3, GOBJ_LINKORDER_DEFAULT, func_80017EC0, 40, CAMERA_MASK_DLLINK(2), -1, FALSE, nGCProcessKindProc, NULL, 1, FALSE);
 	cam = CameraGetStruct(camera_gobj);
 
-	gcAddGCMatrixForCamera(cam, nGCTransformOrtho, 0);
-	gcAddGCMatrixForCamera(cam, nGCTransformLookAt, 0);
+	gcAddXObjForCamera(cam, nGCTransformOrtho, 0);
+	gcAddXObjForCamera(cam, nGCTransformLookAt, 0);
 
 	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 	
@@ -1407,7 +1397,7 @@ void mnTitleMakeLogoFire(void)
 
 	gobj->cam_mask = CAMERA_MASK_DLLINK(0);
 
-	sMNTitleParticleBankID = efAllocGetAddParticleBankID(&lTitleScreenParticleBankScriptsLo, &lTitleScreenParticleBankScriptsHi, &lTitleScreenParticleBankTexturesLo, &lTitleScreenParticleBankTexturesHi);
+	sMNTitleParticleBankID = efAllocGetAddParticleBankID(&lMNTitleScreenParticleBankScriptsLo, &lMNTitleScreenParticleBankScriptsHi, &lMNTitleScreenParticleBankTexturesLo, &lMNTitleScreenParticleBankTexturesHi);
 }
 
 // 0x80133E68

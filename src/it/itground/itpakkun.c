@@ -284,7 +284,7 @@ sb32 itPakkunAppearProcDamage(GObj *item_gobj)
         DObj *dobj = DObjGetStruct(item_gobj);
         f32 angle;
 
-        dobj->gcmatrix[1]->kind = 0x46;
+        dobj->xobj[1]->kind = 0x46;
 
         dobj->rotate.vec.f.z = F_CST_DTOR32(180.0F); // PI32
 

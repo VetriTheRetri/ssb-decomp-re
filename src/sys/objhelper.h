@@ -43,7 +43,7 @@ extern GObj* gcMakeModelGObj
     u32 dl_link_order,
     u32 cam_tag,
     void *dvar,
-    sb32 is_add_default_gcmatrix,
+    sb32 is_add_default_xobj,
     u8 gobjproc_kind,
     void (*proc)(GObj*),
     u32 gobjproc_priority
@@ -73,7 +73,7 @@ GObj* gcMakeCameraGObj
     u32 dl_link_order,
     u64 cam_mask,
     u32 cam_tag,
-    sb32 is_add_default_gcmatrix,
+    sb32 is_add_default_xobj,
     u8 gobjproc_kind,
     void (*proc)(GObj*),
     u32 gobjproc_priority,

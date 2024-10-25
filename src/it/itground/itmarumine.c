@@ -203,7 +203,7 @@ GObj* itMarumineMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->is_allow_knockback = TRUE;
 
-        gcAddGCMatrixForDObjFixed(dobj, 0x46, 0);
+        gcAddXObjForDObjFixed(dobj, 0x46, 0);
         func_800269C0_275C0(nSYAudioVoiceYamabukiMarumine);
     }
     return item_gobj;

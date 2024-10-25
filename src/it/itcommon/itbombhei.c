@@ -743,7 +743,7 @@ GObj* itBombHeiMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         itMainClearOwnerStats(item_gobj);
 
-        gcAddGCMatrixForDObjFixed(dobj, 0x2E, 0);
+        gcAddXObjForDObjFixed(dobj, 0x2E, 0);
 
         dobj->translate.vec.f = translate;
 

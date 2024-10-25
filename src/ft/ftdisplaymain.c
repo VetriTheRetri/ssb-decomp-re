@@ -1142,11 +1142,11 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
                     fp->x18D_flag_b5 = TRUE;
 
-                    if (gIFCommonPlayerInterface.is_ifmagnify_display != FALSE)
+                    if (gIFCommonPlayerInterface.is_mglass_display != FALSE)
                     {
                         if (!(fp->is_magnify_hide) && !(fp->x18E_flag_b1))
                         {
-                            gIFCommonPlayerInterface.ifmagnify_mode = 1;
+                            gIFCommonPlayerInterface.mglass_mode = 1;
 
                             ifCommonPlayerArrowsUpdateFlags(cam_pos_x, cam_pos_y);
                         }
@@ -1160,7 +1160,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
         }
         else if (!(fp->is_magnify_hide) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
         {
-            ifCommonPlayerMagnifyUpdateViewport(gSYTaskmanDLHeads, fp);
+            ifCommonPlayerMGlassUpdateViewport(gSYTaskmanDLHeads, fp);
         }
         else return;
     }
@@ -1228,11 +1228,11 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
         }
         else
         {
-            fp->joints[nFTPartsJointTopN]->gcmatrix[0]->kind = nGCTransformRotRpyR;
+            fp->joints[nFTPartsJointTopN]->xobj[0]->kind = nGCTransformRotRpyR;
 
             ftDisplayMainDrawAll(fighter_gobj);
 
-            fp->joints[nFTPartsJointTopN]->gcmatrix[0]->kind = 0x4B;
+            fp->joints[nFTPartsJointTopN]->xobj[0]->kind = 0x4B;
         }
         if (fp->shuffle_tics != 0)
         {
@@ -1335,11 +1335,11 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
         }
         else
         {
-            fp->joints[nFTPartsJointTopN]->gcmatrix[0]->kind = nGCTransformRotRpyR;
+            fp->joints[nFTPartsJointTopN]->xobj[0]->kind = nGCTransformRotRpyR;
 
             ftDisplayMainDrawParts(DObjGetStruct(fighter_gobj));
 
-            fp->joints[nFTPartsJointTopN]->gcmatrix[0]->kind = 0x4B;
+            fp->joints[nFTPartsJointTopN]->xobj[0]->kind = 0x4B;
         }
         for (i = 0; i < ARRAY_COUNT(fp->fighter_hit); i++)
         {
@@ -1411,7 +1411,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
         {
             if (!(fp->is_magnify_hide) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
             {
-                ifCommonPlayerMagnifyFuncDisplay(fp);
+                ifCommonPlayerMGlassFuncDisplay(fp);
             }
         }
     }

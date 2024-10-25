@@ -166,7 +166,7 @@ GObj* itHeartMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip = itGetStruct(item_gobj);
         translate = dobj->translate.vec.f;
 
-        gcAddGCMatrixForDObjFixed(dobj, 0x2E, 0);
+        gcAddXObjForDObjFixed(dobj, 0x2E, 0);
 
         dobj->translate.vec.f = translate;
 

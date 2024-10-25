@@ -1156,8 +1156,8 @@ Camera* sc1PStageCardMakeStageCamera(s32 stage, u32 dl_link)
         1,
         FALSE
     );
-    gcAddGCMatrixForCamera(CameraGetStruct(gobj), nGCTransformPerspFastF, 0);
-    gcAddGCMatrixForCamera(CameraGetStruct(gobj), 15, 0);
+    gcAddXObjForCamera(CameraGetStruct(gobj), nGCTransformPerspFastF, 0);
+    gcAddXObjForCamera(CameraGetStruct(gobj), 15, 0);
     
     cam = CameraGetStruct(gobj);
     
@@ -1533,8 +1533,8 @@ void sc1PStageCardMakeFighterCamera(s32 ft_kind, s32 cam_id)
         1,
         FALSE
     );
-    gcAddGCMatrixForCamera(CameraGetStruct(gobj), nGCTransformPerspFastF, 0);
-    gcAddGCMatrixForCamera(CameraGetStruct(gobj), 7, 0);
+    gcAddXObjForCamera(CameraGetStruct(gobj), nGCTransformPerspFastF, 0);
+    gcAddXObjForCamera(CameraGetStruct(gobj), 7, 0);
 
     cam = CameraGetStruct(gobj);
 

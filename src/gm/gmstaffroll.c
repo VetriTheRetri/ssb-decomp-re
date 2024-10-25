@@ -1503,7 +1503,7 @@ gmStaffrollSetup* gmStaffrollMakeJobDObjs(gmStaffrollSetup *name_setup, DObj *do
 
 			new_dobj = gcAddChildForDObj(dobj, dl);
 
-			gcAddGCMatrixForDObjFixed(new_dobj, nGCTransformTra, 1);
+			gcAddXObjForDObjFixed(new_dobj, nGCTransformTra, 1);
 
 			if (job_character_id != -1)
 			{
@@ -1628,7 +1628,7 @@ GObj* gmStaffrollMakeJobGObj(gmStaffrollJob *job)
 
 	dobj = gcAddDObjForGObj(gobj, NULL);
 
-	gcAddGCMatrixForDObjFixed(dobj, nGCTransformTraRotRpyRSca, 0);
+	gcAddXObjForDObjFixed(dobj, nGCTransformTraRotRpyRSca, 0);
 
 	if (job->prefix_id != -1)
 	{
@@ -1665,7 +1665,7 @@ GObj* gmStaffrollMakeNameGObjAndDObjs(void)
 
 	new_dobj = dobj = gcAddDObjForGObj(gobj, NULL);
 
-	gcAddGCMatrixForDObjFixed(dobj, nGCTransformTraRotRpyRSca, 0);
+	gcAddXObjForDObjFixed(dobj, nGCTransformTraRotRpyRSca, 0);
 
 	wbase = 0.0F;
 
@@ -1691,7 +1691,7 @@ GObj* gmStaffrollMakeNameGObjAndDObjs(void)
 
 			new_dobj = gcAddChildForDObj(dobj, dl);
 
-			gcAddGCMatrixForDObjFixed(new_dobj, nGCTransformTra, 1);
+			gcAddXObjForDObjFixed(new_dobj, nGCTransformTra, 1);
 
 			if (name_character_id != -1)
 			{

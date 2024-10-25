@@ -492,8 +492,8 @@ GObj* itMBallMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         dobj->child->flags = DOBJ_FLAG_HIDDEN;
         dobj->child->sib_next->flags = DOBJ_FLAG_NONE;
 
-        gcAddGCMatrixForDObjFixed(dobj, nGCTransformTraRotRpyR, 0);
-        gcAddGCMatrixForDObjFixed(dobj->child->sib_next, 0x46, 0);
+        gcAddXObjForDObjFixed(dobj, nGCTransformTraRotRpyR, 0);
+        gcAddXObjForDObjFixed(dobj->child->sib_next, 0x46, 0);
 
         dobj->translate.vec.f = translate;
 

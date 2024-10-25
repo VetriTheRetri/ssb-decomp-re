@@ -1054,7 +1054,7 @@ void func_ovl2_8010D4C0(GObj *camera_gobj)
     gcPrepCameraMatrix(gSYTaskmanDLHeads, cam);
     gcRunFuncCamera(cam, 0);
 
-    gIFCommonPlayerInterface.ifmagnify_mode = 0;
+    gIFCommonPlayerInterface.mglass_mode = 0;
     gIFCommonPlayerInterface.arrows_flags = 0;
 
     // gIFCommonPlayerInterface.unk1 = 0;
@@ -1124,11 +1124,11 @@ GObj* cmManagerMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
 
     cam = CameraGetStruct(camera_gobj);
 
-    gcAddGCMatrixForCamera(cam, tk1, 0);
+    gcAddXObjForCamera(cam, tk1, 0);
 
     if (tk2 != nGCTransformNull)
     {
-        gcAddGCMatrixForCamera(cam, tk2, 0);
+        gcAddXObjForCamera(cam, tk2, 0);
     }
     cam->projection.persp = dCMManagerPerspDefault;
     cam->vec = dCMManagerCameraVecDefault;
@@ -1138,7 +1138,7 @@ GObj* cmManagerMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
     // This (f32) cast is NECESSARY! scissor_ulx through scissor_lry are signed integers!
     cam->projection.persp.aspect = ((f32)(gCMManagerCameraStruct.viewport_lrx - gCMManagerCameraStruct.viewport_ulx) / (f32)(gCMManagerCameraStruct.viewport_lry - gCMManagerCameraStruct.viewport_uly));
 
-    cam->flags |= 4;
+    cam->flags |= CAMERA_FLAG_DLBUFFERS;
 
     gCMManagerCameraStruct.target_dist = 10000.0F;
 
@@ -1207,7 +1207,7 @@ void func_ovl2_8010DC24(GObj *camera_gobj)
 {
     Camera *cam = CameraGetStruct(camera_gobj);
 
-    if (gIFCommonPlayerInterface.ifmagnify_mode != 0)
+    if (gIFCommonPlayerInterface.mglass_mode != 0)
     {
         Vp_t *viewport;
         s32 ulx, uly, lrx, lry;
@@ -1231,13 +1231,30 @@ void func_ovl2_8010DC24(GObj *camera_gobj)
 // 0x8010DDC4
 void func_ovl2_8010DDC4(void)
 {
-    Camera *cam = CameraGetStruct(gcMakeCameraGObj(nGCCommonKindScissorCamera, NULL, nGCCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010DC24, 20, CAMERA_MASK_DLLINK(22), -1, 0, 1, 0, 1, 0));
-
-    cam->flags |= 4;
+    Camera *cam = CameraGetStruct
+    (
+        gcMakeCameraGObj
+        (
+            nGCCommonKindScissorCamera,
+            NULL,
+            nGCCommonLinkIDCamera,
+            GOBJ_LINKORDER_DEFAULT,
+            func_ovl2_8010DC24,
+            20,
+            CAMERA_MASK_DLLINK(22),
+            -1,
+            FALSE,
+            nGCProcessKindProc,
+            NULL,
+            1,
+            FALSE
+        )
+    );
+    cam->flags |= CAMERA_FLAG_DLBUFFERS;
 }
 
 // 0x8010DE48
-sb32 cmManagerPlayerMagnifyFuncMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
+sb32 cmManagerPlayerMGlassFuncMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
 {
     f32 unused1;
     Mtx44f spA4;
@@ -1266,11 +1283,11 @@ sb32 cmManagerPlayerMagnifyFuncMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
 
     func_ovl2_800EB924(CameraGetStruct(gCMManagerCameraGObj), spA4, &sp50, &var_x, &var_y);
 
-    gIFCommonPlayerInterface.ifmagnify_scale = (var_y / 18.0F);
+    gIFCommonPlayerInterface.mglass_scale = (var_y / 18.0F);
 
-    if (gIFCommonPlayerInterface.ifmagnify_scale > 3.0F)
+    if (gIFCommonPlayerInterface.mglass_scale > 3.0F)
     {
-        gIFCommonPlayerInterface.ifmagnify_scale = 3.0F;
+        gIFCommonPlayerInterface.mglass_scale = 3.0F;
     }
     syMatrixOrthoF(&spA4, -450.0F, 450.0F, -450.0F, 450.0F, 256.0F, 39936.0F, 1.0F);
     guMtxCatF(sp64, spA4, spA4);
@@ -1310,7 +1327,7 @@ sb32 cmManagerPrepProjectionFuncMatrix(Mtx *mtx, Camera *cam, Gfx **dls)
 // 0x8010E134
 void func_ovl2_8010E134(GObj *camera_gobj)
 {
-    if (gIFCommonPlayerInterface.ifmagnify_mode != 0)
+    if (gIFCommonPlayerInterface.mglass_mode != 0)
     {
         Camera *cam = CameraGetStruct(camera_gobj);
 
@@ -1329,9 +1346,9 @@ void func_ovl2_8010E1A4(void)
     lbCommonInitCameraVec(cam, 0x4D, 0);
     lbCommonInitCameraOrtho(cam, 0x4E, 1);
 
-    cam->flags |= 0x4;
+    cam->flags |= CAMERA_FLAG_DLBUFFERS;
 
-    gIFCommonPlayerInterface.ifmagnify_mode = 0;
+    gIFCommonPlayerInterface.mglass_mode = 0;
 }
 
 // 0x8010E254
@@ -1357,7 +1374,7 @@ void func_ovl2_8010E2D4(void)
 
     lbCommonInitCameraOrtho(cam, 0x54, 1);
 
-    cam->flags |= 0x4;
+    cam->flags |= CAMERA_FLAG_DLBUFFERS;
 
     gIFCommonPlayerInterface.arrows_flags = 0;
 }

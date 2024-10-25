@@ -327,7 +327,7 @@ void func_80010C2C(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
 s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
 {
     Gfx *current_dl = *dl;
-    GCMatrix *gcmatrix;
+    XObj *xobj;
     s32 sp2CC;
     s32 ret;
     gsMtxStore mtx_store;
@@ -369,27 +369,27 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
             }
         }
     }
-    for (i = 0; i < dobj->gcmatrix_len; i++) // Can use "j" here without any consequences
+    for (i = 0; i < dobj->xobjs_num; i++) // Can use "j" here without any consequences
     {
-        gcmatrix = dobj->gcmatrix[i]; // s3
+        xobj = dobj->xobj[i]; // s3
 
-        if (gcmatrix != NULL)
+        if (xobj != NULL)
         {
-            mtx_store.gbi = &gcmatrix->mtx;
+            mtx_store.gbi = &xobj->mtx;
 
             /* 
-             * Non-matching part begins here. gcmatrix->unk05 gets forced into v1 instead of v0, and gcmatrix->kind into v0 instead of v1.
+             * Non-matching part begins here. xobj->unk05 gets forced into v1 instead of v0, and xobj->kind into v0 instead of v1.
              * gSYTaskmanGraphicsHeap is also placed in v0 instead of v1; these two v0/v1 swaps are *mostly* unrelated. I have tried for hours,
              * but I cannot find a permutation that satisfies all requirements. The "closest" I got to a real match was by using
-             * fabricated inline getters for gcmatrix->kind in the first two >= 66 comparisons, which bloated the stack frame too much,
+             * fabricated inline getters for xobj->kind in the first two >= 66 comparisons, which bloated the stack frame too much,
              * and of course also generated a stub that I reckon will not appear in this TU. I have just about given up on this function,
              * but I do not feel too much remorse for doing so; it is functionally equivalent and all instructions match at the very least.
              * 
              * If a brave volunteer would like to try in the future (so you either get a light bulb above your head or so you can avoid wasting your time), here's what I've tried:
-             *     - making a variable for gcmatrix->kind or gcmatrix->unk05 
+             *     - making a variable for xobj->kind or xobj->unk05 
              *     - a bunch of permutations regarding how gSYTaskmanGraphicsHeap.ptr is advanced (gSYTaskmanGraphicsHeap.ptr++, gSYTaskmanGraphicsHeap.size += sizeof(Mtx44f), etc.)
-             *     - the C address hack "*(type*)&" to get gcmatrix->kind and gcmatrix->unk05
-             *     - making a u8* variable to gcmatrix->kind and gcmatrix->unk05 and dereferencing that
+             *     - the C address hack "*(type*)&" to get xobj->kind and xobj->unk05
+             *     - making a u8* variable to xobj->kind and xobj->unk05 and dereferencing that
              *     - various control flow permutations in an attempt to bump regalloc
              *     - more that I am forgetting
              * 
@@ -397,9 +397,9 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
              * Good luck!
              */
 
-            if (gcmatrix->unk05 != 2)
+            if (xobj->unk05 != 2)
             {
-                if (gcmatrix->unk05 == 4)
+                if (xobj->unk05 == 4)
                 {
                     if (dobj->parent_gobj->frame_draw_last != (u8)dSYTaskmanFrameDrawCount)
                     {
@@ -408,7 +408,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     }
                     else
                     {
-                        switch (gcmatrix->kind)
+                        switch (xobj->kind)
                         {
                         case 33:
                         case 34:
@@ -432,7 +432,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                             break;
 
                         default:
-                            if (gcmatrix->kind >= 66)
+                            if (xobj->kind >= 66)
                             {
                                 gSYTaskmanGraphicsHeap.ptr = (mtx_store.f = gSYTaskmanGraphicsHeap.ptr) + 1;
                             }
@@ -452,7 +452,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 else if (dobj->parent_gobj->frame_draw_last == (u8)dSYTaskmanFrameDrawCount)
                 {
-                    switch (gcmatrix->kind)
+                    switch (xobj->kind)
                     {
                     case 33:
                     case 34:
@@ -476,11 +476,11 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                         break;
 
                     default:
-                        if (gcmatrix->kind >= 66)
+                        if (xobj->kind >= 66)
                         {
                             gSYTaskmanGraphicsHeap.ptr = (mtx_store.f = gSYTaskmanGraphicsHeap.ptr) + 1;
                         }
-                        else if (gcmatrix->unk05 == 3)
+                        else if (xobj->unk05 == 3)
                         {
                             gSYTaskmanGraphicsHeap.ptr = (mtx_store.f = gSYTaskmanGraphicsHeap.ptr) + 1;
                         }
@@ -491,7 +491,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 ret = 0;
 
-                switch (gcmatrix->kind)
+                switch (xobj->kind)
                 {
                 case 1:
                 {
@@ -1155,11 +1155,11 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     continue;
                 }
                 default:
-                    if (gcmatrix->kind >= 66)
+                    if (xobj->kind >= 66)
                     {
                         if (sODMatrixProcess != NULL)
                         {
-                            sb32(*proc)(Mtx*, DObj*, Gfx**) = (dobj->parent_gobj->frame_draw_last != (u8)dSYTaskmanFrameDrawCount) ? sODMatrixProcess[gcmatrix->kind - 66].proc_diff : sODMatrixProcess[gcmatrix->kind - 66].proc_same;
+                            sb32(*proc)(Mtx*, DObj*, Gfx**) = (dobj->parent_gobj->frame_draw_last != (u8)dSYTaskmanFrameDrawCount) ? sODMatrixProcess[xobj->kind - 66].proc_diff : sODMatrixProcess[xobj->kind - 66].proc_same;
 
                             // If proc's return value uses up a GPR and is assigned to a variable, IDO refuses to free up v0 later down.
                             ret = proc(mtx_store.gbi, dobj, &current_dl);
@@ -1173,15 +1173,15 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 // The problem is right here. If we can figure out a way to free up v0 after being assigned to ret from proc, this function will be matched.
             check_05:
-                if (gcmatrix->unk05 == 1)
+                if (xobj->unk05 == 1)
                 {
-                    if (mtx_store.gbi == &gcmatrix->mtx)
+                    if (mtx_store.gbi == &xobj->mtx)
                     {
-                        gcmatrix->unk05 = 2;
+                        xobj->unk05 = 2;
                     }
                 }
             }
-            if (gcmatrix->kind != 2)
+            if (xobj->kind != 2)
             {
                 if ((sp2CC == 0) && (dobj->parent == DOBJ_PARENT_NULL || dobj->sib_next != NULL))
                 {
@@ -2839,7 +2839,7 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
 {
     Gfx *dl;
     s32 i;
-    GCMatrix *gcmatrix;
+    XObj *xobj;
     gsMtxStore mtx_store;
     s32 var_s3;
     s32 spC8;
@@ -2849,24 +2849,24 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
     spC8 = 0;
     var_s3 = 0;
 
-    if (cam->gcmatrix_len != 0)
+    if (cam->xobjs_num != 0)
     {
-        for (i = 0; i < cam->gcmatrix_len; i++)
+        for (i = 0; i < cam->xobjs_num; i++)
         {
-            gcmatrix = cam->gcmatrix[i];
+            xobj = cam->xobj[i];
 
-            if (gcmatrix != NULL)
+            if (xobj != NULL)
             {
-                mtx_store.gbi = &gcmatrix->mtx;
+                mtx_store.gbi = &xobj->mtx;
 
-                if (gcmatrix->unk05 != 2)
+                if (xobj->unk05 != 2)
                 {
                     if (gSYTaskmanTaskID > 0)
                     {
                         mtx_store.gbi = gSYTaskmanGraphicsHeap.ptr;
                         gSYTaskmanGraphicsHeap.ptr = mtx_store.gbi + 1;
                     }
-                    switch (gcmatrix->kind)
+                    switch (xobj->kind)
                     {
                     case 1:
                         break;
@@ -2985,21 +2985,21 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                         break;
 
                     default:
-                        if ((gcmatrix->kind >= 66) && (sODMatrixProcess != NULL))
+                        if ((xobj->kind >= 66) && (sODMatrixProcess != NULL))
                         {
-                            if (sODMatrixProcess[gcmatrix->kind - 66].proc_diff != NULL)
+                            if (sODMatrixProcess[xobj->kind - 66].proc_diff != NULL)
                             {
-                                sODMatrixProcess[gcmatrix->kind - 66].proc_diff(mtx_store.gbi, cam, &dl);
+                                sODMatrixProcess[xobj->kind - 66].proc_diff(mtx_store.gbi, cam, &dl);
                             }
                         }
                         break;
                     }
-                    if ((gcmatrix->unk05 == 1) && (&gcmatrix->mtx == mtx_store.gbi))
+                    if ((xobj->unk05 == 1) && (&xobj->mtx == mtx_store.gbi))
                     {
-                        gcmatrix->unk05 = 2;
+                        xobj->unk05 = 2;
                     }
                 }
-                switch (gcmatrix->kind)
+                switch (xobj->kind)
                 {
                 case 1:
                     break;
@@ -3042,11 +3042,11 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                     break;
 
                 default:
-                    if ((gcmatrix->kind >= 66) && (sODMatrixProcess != NULL))
+                    if ((xobj->kind >= 66) && (sODMatrixProcess != NULL))
                     {
-                        if (sODMatrixProcess[gcmatrix->kind - 66].proc_same != NULL)
+                        if (sODMatrixProcess[xobj->kind - 66].proc_same != NULL)
                         {
-                            sODMatrixProcess[gcmatrix->kind - 66].proc_same(mtx_store.gbi, cam, &dl);
+                            sODMatrixProcess[xobj->kind - 66].proc_same(mtx_store.gbi, cam, &dl);
                         }
                     }
                     break;

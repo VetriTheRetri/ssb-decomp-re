@@ -310,8 +310,8 @@ GObj* scExplainMakeControlStickCamera(void)
     );
     Camera *cam = CameraGetStruct(camera_gobj);
 
-    gcAddGCMatrixForCamera(cam, nGCTransformOrtho, 1);
-    gcAddGCMatrixForCamera(cam, 6, 1);
+    gcAddXObjForCamera(cam, nGCTransformOrtho, 1);
+    gcAddXObjForCamera(cam, 6, 1);
 
     syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
@@ -443,7 +443,7 @@ GObj* scExplainMakeTapSpark(void)
 
     gcAddGObjDisplay(interface_gobj, scExplainTapSparkFuncDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjForGObj(interface_gobj, (void*) ((uintptr_t)sSCExplainGraphicsFileHead + (intptr_t)&lSCExplainTapSparkDisplayList));
-    gcAddGCMatrixForDObjFixed(DObjGetStruct(interface_gobj), nGCTransformTra, 0);
+    gcAddXObjForDObjFixed(DObjGetStruct(interface_gobj), nGCTransformTra, 0);
     gcAddMObjAll(interface_gobj, lbRelocGetDataFromFile(MObjSub***, sSCExplainGraphicsFileHead, &lSCExplainTapSparkMObjSub));
     gcAddGObjProcess(interface_gobj, scExplainTapSparkProcUpdate, nGCProcessKindProc, 5);
 
@@ -486,7 +486,7 @@ GObj* scExplainMakeSpecialMoveRGB(void)
     );
     gcAddGObjDisplay(interface_gobj, scExplainTapSparkFuncDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjForGObj(interface_gobj, lbRelocGetDataFromFile(void*, sSCExplainGraphicsFileHead, &lSCExplainSpecialMoveRGBDisplayList));
-    gcAddGCMatrixForDObjFixed(DObjGetStruct(interface_gobj), nGCTransformTra, 0);
+    gcAddXObjForDObjFixed(DObjGetStruct(interface_gobj), nGCTransformTra, 0);
 
     interface_gobj->flags = GOBJ_FLAG_HIDDEN;
 
@@ -793,9 +793,9 @@ void scExplainFuncStart(void)
     func_ovl2_8010E2D4();
     ifCommonPlayerArrowsInitInterface();
     func_ovl2_8010E1A4();
-    ifCommonPlayerMagnifyMakeInterface();
+    ifCommonPlayerMGlassMakeInterface();
 
-    gIFCommonPlayerInterface.is_ifmagnify_display = TRUE;
+    gIFCommonPlayerInterface.is_mglass_display = TRUE;
 
     func_ovl2_8010DDC4();
     func_ovl2_8010E374();

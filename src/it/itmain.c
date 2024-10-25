@@ -447,7 +447,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     item_gobj->obj = joint;
 
-    gcAddGCMatrixForDObjFixed(joint, 0x52, 0);
+    gcAddXObjForDObjFixed(joint, 0x52, 0);
 
     joint_id = (ip->weight == nITWeightHeavy) ? fp->attributes->joint_itemheavy_id : fp->attributes->joint_itemlight_id;
 

@@ -1330,9 +1330,9 @@ void efGroundSetupEffectDObjs(GObj *effect_gobj, DObjDesc *dobjdesc, DObj **dobj
         {
             if (ep->effect_vars.ground_effect.lr_bool != 0)
             {
-                gcAddGCMatrixForDObjFixed(current_dobj, 0x2E, 0);
+                gcAddXObjForDObjFixed(current_dobj, 0x2E, 0);
             }
-            else gcAddGCMatrixForDObjFixed(current_dobj, 0x48, 0);
+            else gcAddXObjForDObjFixed(current_dobj, 0x48, 0);
 
             if (lr == nGMFacingR)
             {

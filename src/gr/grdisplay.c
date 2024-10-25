@@ -167,9 +167,9 @@ void grDisplayDObjSetNoAnimMtx(GObj *ground_gobj, DObjDesc *dobjdesc)
     {
         if ((next_dobj->aobj == NULL) && !(dobjdesc->index & 0xF000))
         {
-            for (i = 0; i < next_dobj->gcmatrix_len; i++)
+            for (i = 0; i < next_dobj->xobjs_num; i++)
             {
-                next_dobj->gcmatrix[i]->unk05 = 1;
+                next_dobj->xobj[i]->unk05 = 1;
             }
         }
         dobjdesc++;

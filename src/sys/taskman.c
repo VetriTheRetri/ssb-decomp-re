@@ -1263,8 +1263,8 @@ void syTaskmanInit(syTaskmanSetup *ts)
 	omsetup.gobjs_num = ts->gobjs_num;
 	omsetup.gobj_size = ts->gobj_size;
 
-	omsetup.gcmatrixes     = syTaskmanMalloc(sizeof(GCMatrix) * ts->gcmatrixs_num, 0x8);
-	omsetup.gcmatrixs_num = ts->gcmatrixs_num;
+	omsetup.xobjs     = syTaskmanMalloc(sizeof(XObj) * ts->xobjs_num, 0x8);
+	omsetup.xobjs_num = ts->xobjs_num;
 
 	gcSetMatrixProcess(ts->unk60);
 	omsetup.proc_eject = ts->proc_eject;

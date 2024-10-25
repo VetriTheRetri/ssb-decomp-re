@@ -148,7 +148,7 @@ void mvOpeningRunMakeFighters(void)
 
 		fighter_proxy_dobj = gcAddDObjForGObj(fighter_proxy_gobj, NULL);
 
-		gcAddGCMatrixForDObjFixed(fighter_proxy_dobj, nGCTransformTraRotRpyRSca, 0);
+		gcAddXObjForDObjFixed(fighter_proxy_dobj, nGCTransformTraRotRpyRSca, 0);
 		gcAddDObjAnimJoint(fighter_proxy_dobj, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningRunFiles[0], offsets[i]), 0.0F);
 
 		gcAddGObjProcess(fighter_proxy_gobj, mvOpeningRunFighterProcUpdate, nGCProcessKindProc, 1);

@@ -133,7 +133,7 @@ void mvOpeningStandoffMakeGround(void)
 {
     GObj *gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
     gcAddDObjForGObj(gobj, lbRelocGetDataFromFile(void*, sMVOpeningStandoffFiles[0], &lMVOpeningStandoffGroundDisplayList));
-    gcAddGCMatrixForDObjFixed(DObjGetStruct(gobj), nGCTransformTraRotRpyRSca, 0);
+    gcAddXObjForDObjFixed(DObjGetStruct(gobj), nGCTransformTraRotRpyRSca, 0);
     gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     DObjGetStruct(gobj)->translate.vec.f.x = 0.0F;

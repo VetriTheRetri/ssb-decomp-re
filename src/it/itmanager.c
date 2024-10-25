@@ -223,7 +223,7 @@ void itManagerSetupItemDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs, u8 tr
         }
         else if (transform_kind != nGCTransformNull)
         {
-            gcAddGCMatrixForDObjFixed(dobj, transform_kind, nGCTransformNull);
+            gcAddXObjForDObjFixed(dobj, transform_kind, nGCTransformNull);
         }
         dobj->translate.vec.f = dobjdesc->translate;
         dobj->rotate.vec.f = dobjdesc->rotate;

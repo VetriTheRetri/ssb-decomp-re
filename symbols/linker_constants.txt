@@ -706,16 +706,61 @@ lGRBonus3ItemHead = 0x00000000;
 lGRBonus3BumpersDObjDesc = 0x00000000;
 lGRBonus3BumpersAnimJoint = 0x00000110;
 
-lTitleScreenParticleBankScriptsLo = 0x00B22C30;
-lTitleScreenParticleBankScriptsHi = 0x00B22D40;
-lTitleScreenParticleBankTexturesLo = 0x00B22D40;
-lTitleScreenParticleBankTexturesHi = 0x00B277B0;
+lMNTitleScreenParticleBankScriptsLo = 0x00B22C30;
+lMNTitleScreenParticleBankScriptsHi = 0x00B22D40;
+lMNTitleScreenParticleBankTexturesLo = 0x00B22D40;
+lMNTitleScreenParticleBankTexturesHi = 0x00B277B0;
+
+lMNTitleLogoAnimCutoutSprite = 0x00008FC8;
+lMNTitleLogoAnimStrikeVSprite = 0x000097E8;
+lMNTitleLogoAnimStrikeHSprite = 0x00009B48;
+lMNTitleLogoAnimFullSprite = 0x0000BBB0;
+lMNTitleBorderUpperSprite = 0x0000C208;
+lMNTitleTMSprite = 0x0000F398;
+lMNTitleCutoutSprite = 0x00011988;
+lMNTitleTMUnkSprite = 0x00011AA8;
+lMNTitleCopyrightSprite = 0x00015320;
+lMNTitlePressStartSprite = 0x00015A48;
+lMNTitleSuperSprite = 0x00016728;
+lMNTitleSmashSprite = 0x000245C8;
+lMNTitleBrosSprite = 0x00025188;
+
+lMNTitleFireAnimFrame1Sprite = 0x00001018;
+lMNTitleFireAnimFrame2Sprite = 0x00002078;
+lMNTitleFireAnimFrame3Sprite = 0x000030D8;
+lMNTitleFireAnimFrame4Sprite = 0x00004138;
+lMNTitleFireAnimFrame5Sprite = 0x00005198;
+lMNTitleFireAnimFrame6Sprite = 0x000061F8;
+lMNTitleFireAnimFrame7Sprite = 0x00007258;
+lMNTitleFireAnimFrame8Sprite = 0x000082B8;
+lMNTitleFireAnimFrame9Sprite = 0x00009318;
+lMNTitleFireAnimFrame10Sprite = 0x0000A378;
+lMNTitleFireAnimFrame11Sprite = 0x0000B3D8;
+lMNTitleFireAnimFrame12Sprite = 0x0000C438;
+lMNTitleFireAnimFrame13Sprite = 0x0000D498;
+lMNTitleFireAnimFrame14Sprite = 0x0000E4F8;
+lMNTitleFireAnimFrame15Sprite = 0x0000F558;
+lMNTitleFireAnimFrame16Sprite = 0x000105B8;
+lMNTitleFireAnimFrame17Sprite = 0x00011618;
+lMNTitleFireAnimFrame18Sprite = 0x00012678;
+lMNTitleFireAnimFrame19Sprite = 0x000136D8;
+lMNTitleFireAnimFrame20Sprite = 0x00014738;
+lMNTitleFireAnimFrame21Sprite = 0x00015798;
+lMNTitleFireAnimFrame22Sprite = 0x000167F8;
+lMNTitleFireAnimFrame23Sprite = 0x00017858;
+lMNTitleFireAnimFrame24Sprite = 0x000188B8;
+lMNTitleFireAnimFrame25Sprite = 0x00019918;
+lMNTitleFireAnimFrame26Sprite = 0x0001A978;
+lMNTitleFireAnimFrame27Sprite = 0x0001B9D8;
+lMNTitleFireAnimFrame28Sprite = 0x0001CA38;
+lMNTitleFireAnimFrame29Sprite = 0x0001DA98;
+lMNTitleFireAnimFrame30Sprite = 0x0001EAF8;
 
 lIFCommonPlayerArrowsDObjDesc = 0x00000188;
 lIFCommonPlayerArrowsAnimJoint = 0x00000270;
 
-lIFCommonPlayerMagnifyFrame = 0x000002C8;
-lIFCommonPlayerMagnifyDisplayList = 0x00000030;
+lIFCommonPlayerMGlassFrame = 0x000002C8;
+lIFCommonPlayerMGlassDisplayList = 0x00000030;
 
 lIFCommonItemArrow = 0x00000050;
 

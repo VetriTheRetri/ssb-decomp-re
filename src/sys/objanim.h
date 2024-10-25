@@ -113,31 +113,31 @@ extern f32 func_8000EC64_F864
 // ???
 extern void func_8000EE40_FA40(GObj *gobj, AObjEvent32 **anim_joints, f32 anim_frame, DObjDesc *dobjdesc);
 
-// Add Translate, Rotate and Scale GCMatrixes for specific DObj
+// Add Translate, Rotate and Scale XObjes for specific DObj
 extern void gcAddDObjTransformTraRotSca(DObj *dobj);
 
-// Add DObj with Translate, Rotate and Scale GCMatrixes for GObj
+// Add DObj with Translate, Rotate and Scale XObjes for GObj
 extern DObj* gcAddDObjForGObjTraRotSca(GObj *gobj, void *dvar);
 
-// Add sibling with Transform, Rotate and Scale GCMatrixes for specific DObj
+// Add sibling with Transform, Rotate and Scale XObjes for specific DObj
 extern DObj* gcAddSiblingForDObjTraRotSca(DObj *dobj, void *dvar);
 
-// Add child with Transform, Rotate and Scale GCMatrixes for specific DObj
+// Add child with Transform, Rotate and Scale XObjes for specific DObj
 extern DObj* gcAddChildForDObjTraRotSca(DObj *dobj, void *dvar);
 
-// Set up DObj node tree with common GCMatrix transformations for GObj
+// Set up DObj node tree with common XObj transformations for GObj
 extern void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs);
 
-// Add three GCMatrixes of transformation kind for specific DObj
+// Add three XObjes of transformation kind for specific DObj
 extern void gcAddDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3);
 
-// Decide what transformation GCMatrixes to add to specific DObj based on tk1, tk2, tk3 and flags
+// Decide what transformation XObjes to add to specific DObj based on tk1, tk2, tk3 and flags
 extern void gcDecideDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, s32 flags);
 
-// Set up DObj node tree with custom GCMatrix transformations for GObj
+// Set up DObj node tree with custom XObj transformations for GObj
 extern void gcSetupCustomDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs, u8 tk1, u8 tk2, u8 tk3);
 
-// Set up DObj node tree with MObj and custom GCMatrix transformations for GObj
+// Set up DObj node tree with MObj and custom XObj transformations for GObj
 extern void gcSetupCustomDObjsWithMObj
 (
     GObj *gobj, 

@@ -611,8 +611,8 @@ GObj *itLinkBombMakeItem(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 		ip = itGetStruct(item_gobj);
 		dobj = DObjGetStruct(item_gobj);
 
-		gcAddGCMatrixForDObjFixed(dobj, 0x2E, 0);
-		gcAddGCMatrixForDObjFixed(dobj->child, 0x2E, 0);
+		gcAddXObjForDObjFixed(dobj, 0x2E, 0);
+		gcAddXObjForDObjFixed(dobj->child, 0x2E, 0);
 
 		ip->it_multi = 0;
 

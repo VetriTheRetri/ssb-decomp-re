@@ -35,8 +35,8 @@ s32 sGCCommonsActive;
 u16 sGCCommonSize;
 s16 sGCCommonNumMax;
 
-GCMatrix* sGCMatrixHead;
-u32 sGCMatrixActive;
+XObj* sXObjHead;
+u32 sXObjActive;
 
 void (*sOMDObjProcEject)(DObjDynamicStore*);
 
@@ -519,35 +519,35 @@ void gcRemoveGObjFrgcDLLinkedList(GObj* this_gobj)
 }
 
 // 0x80007D5C
-GCMatrix* gcGetGCMatrixSetNextAlloc()
+XObj* gcGetXObjSetNextAlloc()
 {
-	GCMatrix* gcmatrix;
+	XObj* xobj;
 
-	if (sGCMatrixHead == NULL)
+	if (sXObjHead == NULL)
 	{
-		sGCMatrixHead = syTaskmanMalloc(sizeof(GCMatrix), 0x8);
-		sGCMatrixHead->next = NULL;
+		sXObjHead = syTaskmanMalloc(sizeof(XObj), 0x8);
+		sXObjHead->next = NULL;
 	}
 
-	if (sGCMatrixHead == NULL)
+	if (sXObjHead == NULL)
 	{
 		syErrorPrintf("om : couldn't get OMMtx\n");
 		while (TRUE);
 	}
 
-	gcmatrix = sGCMatrixHead;
-	sGCMatrixHead = sGCMatrixHead->next;
-	sGCMatrixActive++;
+	xobj = sXObjHead;
+	sXObjHead = sXObjHead->next;
+	sXObjActive++;
 
-	return gcmatrix;
+	return xobj;
 }
 
 // 0x80007DD8
-void gcSetGCMatrixPrevAlloc(GCMatrix* gcmatrix)
+void gcSetXObjPrevAlloc(XObj* xobj)
 {
-	gcmatrix->next = sGCMatrixHead;
-	sGCMatrixHead = gcmatrix;
-	sGCMatrixActive--;
+	xobj->next = sXObjHead;
+	sXObjHead = xobj;
+	sXObjActive--;
 }
 
 // 0x80007E04
@@ -880,16 +880,16 @@ void gcEndGObjProcess(GObjProcess* gobjproc)
 }
 
 // 0x8000855C
-GCMatrix* gcAddGCMatrixForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 gcmatrix_id)
+XObj* gcAddXObjForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 xobj_id)
 {
 	uintptr_t csr;
 	GCTranslate* translate;
 	GCRotate* rotate;
 	GCScale* scale;
-	GCMatrix* gcmatrix;
+	XObj* xobj;
 	s32 i;
 
-	if (dobj->gcmatrix_len == ARRAY_COUNT(dobj->gcmatrix))
+	if (dobj->xobjs_num == ARRAY_COUNT(dobj->xobj))
 	{
 		syErrorPrintf("om : couldn\'t add OMMtx for DObj\n");
 		while (TRUE);
@@ -921,12 +921,12 @@ GCMatrix* gcAddGCMatrixForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 gcmatrix_id)
 			}
 		}
 	}
-	for (i = dobj->gcmatrix_len; i > gcmatrix_id; i--)
-		dobj->gcmatrix[i] = dobj->gcmatrix[i - 1];
-	dobj->gcmatrix_len++;
+	for (i = dobj->xobjs_num; i > xobj_id; i--)
+		dobj->xobj[i] = dobj->xobj[i - 1];
+	dobj->xobjs_num++;
 
-	dobj->gcmatrix[gcmatrix_id] = gcmatrix = gcGetGCMatrixSetNextAlloc();
-	gcmatrix->kind = kind;
+	dobj->xobj[xobj_id] = xobj = gcGetXObjSetNextAlloc();
+	xobj->kind = kind;
 
 	switch (kind)
 	{
@@ -937,28 +937,28 @@ GCMatrix* gcAddGCMatrixForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 gcmatrix_id)
 	case 40:
 	case 55:
 		dobj->translate = dGCTranslateDefault;
-		dobj->translate.gcmatrix = gcmatrix;
+		dobj->translate.xobj = xobj;
 		break;
 
 	case nGCTransformRotD:
 	case nGCTransformRotR:
 		dobj->rotate = dGCRotateDefaultAXYZ;
-		dobj->rotate.gcmatrix = gcmatrix;
+		dobj->rotate.xobj = xobj;
 		break;
 
 	case nGCTransformTraRotD:
 	case nGCTransformTraRotR:
 		dobj->translate = dGCTranslateDefault;
 		dobj->rotate = dGCRotateDefaultAXYZ;
-		dobj->translate.gcmatrix = gcmatrix;
-		dobj->rotate.gcmatrix = gcmatrix;
+		dobj->translate.xobj = xobj;
+		dobj->rotate.xobj = xobj;
 		break;
 
 	case nGCTransformRotRpyD:
 	case nGCTransformRotRpyR:
 	case nGCTransformRotPyrR:
 		dobj->rotate = dGCRotateDefaultRPY;
-		dobj->rotate.gcmatrix = gcmatrix;
+		dobj->rotate.xobj = xobj;
 		break;
 
 	case nGCTransformTraRotRpyD:
@@ -968,17 +968,17 @@ GCMatrix* gcAddGCMatrixForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 gcmatrix_id)
 	case 52:
 		dobj->translate = dGCTranslateDefault;
 		dobj->rotate = dGCRotateDefaultRPY;
-		dobj->translate.gcmatrix = gcmatrix;
-		dobj->rotate.gcmatrix = gcmatrix;
+		dobj->translate.xobj = xobj;
+		dobj->rotate.xobj = xobj;
 		break;
 
 	case nGCTransformTraRotRSca:
 		dobj->translate = dGCTranslateDefault;
 		dobj->rotate = dGCRotateDefaultAXYZ;
 		dobj->scale = dGCScaleDefault;
-		dobj->translate.gcmatrix = gcmatrix;
-		dobj->rotate.gcmatrix = gcmatrix;
-		dobj->scale.gcmatrix = gcmatrix;
+		dobj->translate.xobj = xobj;
+		dobj->rotate.xobj = xobj;
+		dobj->scale.xobj = xobj;
 		break;
 
 	case nGCTransformTraRotRpyRSca:
@@ -987,9 +987,9 @@ GCMatrix* gcAddGCMatrixForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 gcmatrix_id)
 		dobj->translate = dGCTranslateDefault;
 		dobj->rotate = dGCRotateDefaultRPY;
 		dobj->scale = dGCScaleDefault;
-		dobj->translate.gcmatrix = gcmatrix;
-		dobj->rotate.gcmatrix = gcmatrix;
-		dobj->scale.gcmatrix = gcmatrix;
+		dobj->translate.xobj = xobj;
+		dobj->rotate.xobj = xobj;
+		dobj->scale.xobj = xobj;
 		break;
 
 	case nGCTransformSca:
@@ -1001,42 +1001,42 @@ GCMatrix* gcAddGCMatrixForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 gcmatrix_id)
 	case 50:
 	case 53:
 		dobj->scale = dGCScaleDefault;
-		dobj->scale.gcmatrix = gcmatrix;
+		dobj->scale.xobj = xobj;
 		break;
 
 	case 45:
 	case 46:
 		dobj->rotate = dGCRotateDefaultAXYZ;
 		dobj->scale = dGCScaleDefault;
-		dobj->rotate.gcmatrix = gcmatrix;
-		dobj->scale.gcmatrix = gcmatrix;
+		dobj->rotate.xobj = xobj;
+		dobj->scale.xobj = xobj;
 		break;
 
 	case nGCTransformVecTra:
 		*translate = dGCTranslateDefault;
-		translate->gcmatrix = gcmatrix;
+		translate->xobj = xobj;
 		break;
 
 	case nGCTransformVecRotR:
 		*rotate = dGCRotateDefaultAXYZ;
-		rotate->gcmatrix = gcmatrix;
+		rotate->xobj = xobj;
 		break;
 
 	case nGCTransformVecRotRpyR:
 		*rotate = dGCRotateDefaultRPY;
-		rotate->gcmatrix = gcmatrix;
+		rotate->xobj = xobj;
 		break;
 
 	case nGCTransformVecSca:
 		*scale = dGCScaleDefault;
-		scale->gcmatrix = gcmatrix;
+		scale->xobj = xobj;
 		break;
 
 	case nGCTransformVecTraRotR:
 		*translate = dGCTranslateDefault;
 		*rotate = dGCRotateDefaultAXYZ;
 
-		translate->gcmatrix = rotate->gcmatrix = gcmatrix;
+		translate->xobj = rotate->xobj = xobj;
 		break;
 
 	case nGCTransformVecTraRotRSca:
@@ -1044,14 +1044,14 @@ GCMatrix* gcAddGCMatrixForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 gcmatrix_id)
 		*rotate = dGCRotateDefaultAXYZ;
 		*scale = dGCScaleDefault;
 
-		translate->gcmatrix = rotate->gcmatrix = scale->gcmatrix = gcmatrix;
+		translate->xobj = rotate->xobj = scale->xobj = xobj;
 		break;
 
 	case nGCTransformVecTraRotRpyR:
 		*translate = dGCTranslateDefault;
 		*rotate = dGCRotateDefaultRPY;
 
-		translate->gcmatrix = rotate->gcmatrix = gcmatrix;
+		translate->xobj = rotate->xobj = xobj;
 		break;
 
 	case nGCTransformVecTraRotRpyRSca:
@@ -1059,52 +1059,52 @@ GCMatrix* gcAddGCMatrixForDObjVar(DObj* dobj, u8 kind, u8 arg2, s32 gcmatrix_id)
 		*rotate = dGCRotateDefaultRPY;
 		*scale = dGCScaleDefault;
 
-		translate->gcmatrix = rotate->gcmatrix = scale->gcmatrix = gcmatrix;
+		translate->xobj = rotate->xobj = scale->xobj = xobj;
 		break;
 
 	case 1:
 	case 17: break;
 	}
-	gcmatrix->unk05 = arg2;
+	xobj->unk05 = arg2;
 
-	return gcmatrix;
+	return xobj;
 }
 
 // 0x80008CC0
-// This actually returns gcAddGCMatrixForDObjVar, see https://decomp.me/scratch/nIQ4X
-GCMatrix* gcAddGCMatrixForDObjFixed(DObj* dobj, u8 kind, u8 arg2)
+// This actually returns gcAddXObjForDObjVar, see https://decomp.me/scratch/nIQ4X
+XObj* gcAddXObjForDObjFixed(DObj* dobj, u8 kind, u8 arg2)
 {
-	return gcAddGCMatrixForDObjVar(dobj, kind, arg2, dobj->gcmatrix_len);
+	return gcAddXObjForDObjVar(dobj, kind, arg2, dobj->xobjs_num);
 }
 
 // 0x80008CF0
-GCMatrix* gcAddGCMatrixForCamera(Camera* cam, u8 kind, u8 arg2)
+XObj* gcAddXObjForCamera(Camera* cam, u8 kind, u8 arg2)
 {
-	GCMatrix* gcmatrix;
+	XObj* xobj;
 
-	if (cam->gcmatrix_len == ARRAY_COUNT(cam->gcmatrix))
+	if (cam->xobjs_num == ARRAY_COUNT(cam->xobj))
 	{
 		syErrorPrintf("om : couldn't add OMMtx for Camera\n");
 		while (TRUE);
 	}
-	gcmatrix = gcGetGCMatrixSetNextAlloc();
+	xobj = gcGetXObjSetNextAlloc();
 
-	cam->gcmatrix[cam->gcmatrix_len] = gcmatrix;
-	cam->gcmatrix_len++;
+	cam->xobj[cam->xobjs_num] = xobj;
+	cam->xobjs_num++;
 
-	gcmatrix->kind = kind;
+	xobj->kind = kind;
 
 	switch (kind)
 	{
 	case nGCTransformPerspFastF:
 	case nGCTransformPerspF:
 		cam->projection.persp = dGCPerspDefault;
-		cam->projection.persp.gcmatrix = gcmatrix;
+		cam->projection.persp.xobj = xobj;
 		break;
 
 	case nGCTransformOrtho:
 		cam->projection.ortho = dGCOrthoDefault;
-		cam->projection.ortho.gcmatrix = gcmatrix;
+		cam->projection.ortho.xobj = xobj;
 		break;
 
 	case 6:
@@ -1120,15 +1120,15 @@ GCMatrix* gcAddGCMatrixForCamera(Camera* cam, u8 kind, u8 arg2)
 	case 16:
 	case 17:
 		cam->vec = dOMCameraVecDefault;
-		cam->vec.gcmatrix = gcmatrix;
+		cam->vec.xobj = xobj;
 		break;
 
 	case 1:
 	case 2: break;
 	}
-	gcmatrix->unk05 = arg2;
+	xobj->unk05 = arg2;
 
-	return gcmatrix;
+	return xobj;
 }
 
 // 0x80008E78
@@ -1318,10 +1318,10 @@ void gcInitDObj(DObj* dobj)
 	dobj->dynstore = NULL;
 	dobj->flags = 0;
 	dobj->is_anim_root = 0;
-	dobj->gcmatrix_len = 0;
+	dobj->xobjs_num = 0;
 
-	for (i = 0; i < ARRAY_COUNT(dobj->gcmatrix); i++)
-		dobj->gcmatrix[i] = NULL;
+	for (i = 0; i < ARRAY_COUNT(dobj->xobj); i++)
+		dobj->xobj[i] = NULL;
 
 	dobj->aobj = NULL;
 	dobj->anim_joint.event32 = NULL;
@@ -1457,10 +1457,10 @@ void gcEjectDObj(DObj* dobj)
 	if (dobj->sib_next != NULL)
 		dobj->sib_next->sib_prev = dobj->sib_prev;
 
-	for (i = 0; i < ARRAY_COUNT(dobj->gcmatrix); i++)
+	for (i = 0; i < ARRAY_COUNT(dobj->xobj); i++)
 	{
-		if (dobj->gcmatrix[i] != NULL)
-			gcSetGCMatrixPrevAlloc(dobj->gcmatrix[i]);
+		if (dobj->xobj[i] != NULL)
+			gcSetXObjPrevAlloc(dobj->xobj[i]);
 	}
 	if ((dobj->dynstore != NULL) && (sOMDObjProcEject != NULL))
 		sOMDObjProcEject(dobj->dynstore);
@@ -1561,11 +1561,11 @@ Camera* gcAddCameraForGObj(GObj* gobj)
 
 	syRdpSetDefaultViewport(&new_cam->viewport);
 
-	new_cam->gcmatrix_len = 0;
+	new_cam->xobjs_num = 0;
 
-	for (i = 0; i < ARRAY_COUNT(new_cam->gcmatrix); i++)
+	for (i = 0; i < ARRAY_COUNT(new_cam->xobj); i++)
 	{
-		new_cam->gcmatrix[i] = NULL;
+		new_cam->xobj[i] = NULL;
 	}
 	new_cam->flags = 0;
 	new_cam->color = GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00);
@@ -1594,10 +1594,10 @@ void gcEjectCamera(Camera* cam)
 	gobj->obj_kind = nGCCommonAppendNone;
 	gobj->obj = NULL;
 
-	for (i = 0; i < ARRAY_COUNT(cam->gcmatrix); i++)
+	for (i = 0; i < ARRAY_COUNT(cam->xobj); i++)
 	{
-		if (cam->gcmatrix[i] != NULL)
-			gcSetGCMatrixPrevAlloc(cam->gcmatrix[i]);
+		if (cam->xobj[i] != NULL)
+			gcSetXObjPrevAlloc(cam->xobj[i]);
 	}
 	current_aobj = cam->aobj;
 
@@ -2219,21 +2219,21 @@ void gcSetupObjectManager(GCSetup* setup)
 	sGCCommonNumMax = -1;
 	sOMDObjProcEject = setup->proc_eject;
 
-	if (setup->gcmatrixs_num != 0)
+	if (setup->xobjs_num != 0)
 	{
-		GCMatrix* current_gcmatrix;
-		sGCMatrixHead = current_gcmatrix = setup->gcmatrixes;
+		XObj* current_xobj;
+		sXObjHead = current_xobj = setup->xobjs;
 
-		for (i = 0; i < setup->gcmatrixs_num - 1; i++)
+		for (i = 0; i < setup->xobjs_num - 1; i++)
 		{
-			GCMatrix* next_gcmatrix = current_gcmatrix + 1;
-			current_gcmatrix->next = next_gcmatrix;
-			current_gcmatrix = next_gcmatrix;
+			XObj* next_xobj = current_xobj + 1;
+			current_xobj->next = next_xobj;
+			current_xobj = next_xobj;
 		}
-		current_gcmatrix->next = NULL;
+		current_xobj->next = NULL;
 	}
 	else
-		sGCMatrixHead = NULL;
+		sXObjHead = NULL;
 
 	if (setup->aobjs_num != 0)
 	{
@@ -2327,7 +2327,7 @@ void gcSetupObjectManager(GCSetup* setup)
 	func_80014430();
 	osCreateMesgQueue(&gOMMesgQueue, sOMMesg, ARRAY_COUNT(sOMMesg));
 
-	sOMThreadStacksActive = sGCThreadsActive = sGCProcessesActive = sGCCommonsActive = sGCMatrixActive
+	sOMThreadStacksActive = sGCThreadsActive = sGCProcessesActive = sGCCommonsActive = sXObjActive
 		= sOMAObjsActive = sOMDObjsActive = sOMSObjsActive = sOMCamerasActive = 0;
 
 	sGCProcessCallback = NULL;

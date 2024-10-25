@@ -266,24 +266,24 @@ void gcEndProcessAll(GObj *gobj)
 // 0x8000B3EC
 void gcAddDObjMatrixSetsRpyD(DObj* dobj)
 {
-    gcAddGCMatrixForDObjFixed(dobj, nGCTransformTra, 0);
-    gcAddGCMatrixForDObjFixed(dobj, nGCTransformRotRpyD, 0);
-    gcAddGCMatrixForDObjFixed(dobj, nGCTransformSca, 0);
+    gcAddXObjForDObjFixed(dobj, nGCTransformTra, 0);
+    gcAddXObjForDObjFixed(dobj, nGCTransformRotRpyD, 0);
+    gcAddXObjForDObjFixed(dobj, nGCTransformSca, 0);
 }
 
 // 0x8000B434
 void gcAddDObjMatrixSetsRpyR(DObj *dobj)
 {
-    gcAddGCMatrixForDObjFixed(dobj, nGCTransformTra, 0);
-    gcAddGCMatrixForDObjFixed(dobj, nGCTransformRotRpyR, 0);
-    gcAddGCMatrixForDObjFixed(dobj, nGCTransformSca, 0);
+    gcAddXObjForDObjFixed(dobj, nGCTransformTra, 0);
+    gcAddXObjForDObjFixed(dobj, nGCTransformRotRpyR, 0);
+    gcAddXObjForDObjFixed(dobj, nGCTransformSca, 0);
 }
 
 // 0x8000B47C
 void gcAddCameraMatrixSets(Camera *cam)
 {
-    gcAddGCMatrixForCamera(cam, nGCTransformPerspFastF, 0);
-    gcAddGCMatrixForCamera(cam, nGCTransformLookAt, 0);
+    gcAddXObjForCamera(cam, nGCTransformPerspFastF, 0);
+    gcAddXObjForCamera(cam, nGCTransformLookAt, 0);
 }
 
 // 0x8000B4B4
@@ -445,7 +445,7 @@ GObj* gcMakeModelGObj
     u32 dl_link_order,
     u32 cam_tag,
     void *dvar,
-    sb32 is_add_default_gcmatrix,
+    sb32 is_add_default_xobj,
     u8 gobjproc_kind,
     void (*proc)(GObj*),
     u32 gobjproc_priority
@@ -464,7 +464,7 @@ GObj* gcMakeModelGObj
 
     dobj = gcAddDObjForGObj(gobj, dvar);
 
-    if (is_add_default_gcmatrix != FALSE)
+    if (is_add_default_xobj != FALSE)
     {
         gcAddDObjMatrixSetsRpyD(dobj);
     }
@@ -520,7 +520,7 @@ GObj* gcMakeCameraGObj
     u32 dl_link_order,
     u64 cam_mask,
     u32 cam_tag,
-    sb32 is_add_default_gcmatrix,
+    sb32 is_add_default_xobj,
     u8 gobjproc_kind,
     void (*proc)(GObj*),
     u32 gobjproc_priority,
@@ -540,7 +540,7 @@ GObj* gcMakeCameraGObj
     
     cam = gcAddCameraForGObj(gobj);
 
-    if (is_add_default_gcmatrix != FALSE)
+    if (is_add_default_xobj != FALSE)
     {
         gcAddCameraMatrixSets(cam);
     }

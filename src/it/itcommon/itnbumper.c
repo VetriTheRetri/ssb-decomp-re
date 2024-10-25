@@ -640,7 +640,7 @@ GObj* itNBumperMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->mobj->palette_id = 0.0F;
 
-        gcAddGCMatrixForDObjFixed(dobj, 0x2E, 0);
+        gcAddXObjForDObjFixed(dobj, 0x2E, 0);
 
         dobj->translate.vec.f = translate;
 

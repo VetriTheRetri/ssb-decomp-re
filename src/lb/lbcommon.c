@@ -895,15 +895,15 @@ void lbCommonInitDObj(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, u8 arg4)
 {
     if (tk1 != nGCTransformNull)
     {
-        gcAddGCMatrixForDObjFixed(dobj, tk1, arg4);
+        gcAddXObjForDObjFixed(dobj, tk1, arg4);
     }
     if (tk2 != nGCTransformNull)
     {
-        gcAddGCMatrixForDObjFixed(dobj, tk2, arg4);
+        gcAddXObjForDObjFixed(dobj, tk2, arg4);
     }
     if (tk3 != nGCTransformNull)
     {
-        gcAddGCMatrixForDObjFixed(dobj, tk3, arg4);
+        gcAddXObjForDObjFixed(dobj, tk3, arg4);
     }
     dobj->translate.vec = dGCTranslateDefault.vec;
     dobj->rotate.vec = dGCRotateDefaultRPY.vec;
@@ -2137,7 +2137,7 @@ sb32 (*dLBCommonFuncMatrixList[/* */])(/* */) =
 	lbCommonFighterPartsFuncMatrix,
 	cmManagerLookAtFuncMatrix,
 	cmManagerPrepLookAtFuncMatrix,
-	cmManagerPlayerMagnifyFuncMatrix,
+	cmManagerPlayerMGlassFuncMatrix,
 	NULL,
 	cmManageOrthoLookAtFuncMatrix,
 	NULL,
@@ -2974,28 +2974,28 @@ void lbCommonScissorSpriteCamera(GObj *gobj)
 // 0x800CD440
 void lbCommonInitCameraOrtho(Camera *cam, u8 tk, u8 arg2)
 {
-    GCMatrix *gcmatrix = gcAddGCMatrixForCamera(cam, tk, arg2);
+    XObj *xobj = gcAddXObjForCamera(cam, tk, arg2);
     
     cam->projection.ortho = dGCOrthoDefault;
-    cam->projection.ortho.gcmatrix = gcmatrix;
+    cam->projection.ortho.xobj = xobj;
 }
 
 // 0x800CD4C0
 void lbCommonInitCameraPersp(Camera *cam, u8 tk, u8 arg2)
 {
-    GCMatrix *gcmatrix = gcAddGCMatrixForCamera(cam, tk, arg2);
+    XObj *xobj = gcAddXObjForCamera(cam, tk, arg2);
     
     cam->projection.persp = dGCPerspDefault;
-    cam->projection.persp.gcmatrix = gcmatrix;
+    cam->projection.persp.xobj = xobj;
 }
 
 // 0x800CD538
 void lbCommonInitCameraVec(Camera *cam, u8 tk, u8 arg2)
 {
-    GCMatrix *gcmatrix = gcAddGCMatrixForCamera(cam, tk, arg2);
+    XObj *xobj = gcAddXObjForCamera(cam, tk, arg2);
     
     cam->vec = dOMCameraVecDefault;
-    cam->vec.gcmatrix = gcmatrix;
+    cam->vec.xobj = xobj;
 }
 
 // 0x800CD5AC

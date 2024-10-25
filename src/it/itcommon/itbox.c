@@ -205,7 +205,7 @@ void itBoxContainerSmashMakeEffect(Vec3f *pos)
             {
                 dobj = gcAddDObjForGObj(effect_gobj, dl);
 
-                gcAddGCMatrixForDObjFixed(dobj, nGCTransformTraRotRpyR, 0);
+                gcAddXObjForDObjFixed(dobj, nGCTransformTraRotRpyR, 0);
 
                 dobj->translate.vec.f = *pos;
 

@@ -166,7 +166,7 @@ GObj* itTomatoMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip = itGetStruct(item_gobj);
         translate = joint->translate.vec.f;
 
-        gcAddGCMatrixForDObjFixed(joint, 0x2E, 0);
+        gcAddXObjForDObjFixed(joint, 0x2E, 0);
 
         joint->translate.vec.f = translate;
 

@@ -620,8 +620,8 @@ GObj* itMSBombMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         translate = dobj->translate.vec.f;
 
-        gcAddGCMatrixForDObjFixed(dobj, nGCTransformTraRotRpyR, 0);
-        gcAddGCMatrixForDObjFixed(dobj->child->sib_next, 0x46, 0);
+        gcAddXObjForDObjFixed(dobj, nGCTransformTraRotRpyR, 0);
+        gcAddXObjForDObjFixed(dobj->child->sib_next, 0x46, 0);
 
         dobj->translate.vec.f = translate;
 

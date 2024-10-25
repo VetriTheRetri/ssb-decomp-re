@@ -148,15 +148,15 @@ void func_ovl3_8016830C(DObj *dobj, Vec3f *vec)
 
     for (i = 0; i != 0x12; i++, current_dobj = current_dobj->parent)
     {
-        for (j = 0; j < current_dobj->gcmatrix_len; j++)
+        for (j = 0; j < current_dobj->xobjs_num; j++)
         {
-            GCMatrix *gcmatrix = current_dobj->gcmatrix[j];
+            XObj *xobj = current_dobj->xobj[j];
 
-            if (gcmatrix->kind == nGCTransformNull)
+            if (xobj->kind == nGCTransformNull)
             {
                 break;
             }
-            else guMtxL2F(sp9C, &gcmatrix->mtx), guMtxCatF(sp5C, sp9C, sp5C);
+            else guMtxL2F(sp9C, &xobj->mtx), guMtxCatF(sp5C, sp9C, sp5C);
         }
         if (current_dobj->parent == DOBJ_PARENT_NULL)
         {

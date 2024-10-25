@@ -397,7 +397,7 @@ GObj* itStarRodWeaponStarMakeWeapon(GObj *fighter_gobj, Vec3f *pos, ub8 is_smash
 
     wp->weapon_vars.star.lifetime = (!(is_smash)) ? ITSTARROD_AMMO_TILT_LIFETIME : ITSTARROD_AMMO_SMASH_LIFETIME; // Why float lol
 
-    gcAddGCMatrixForDObjFixed(dobj, 0x2E, 0);
+    gcAddXObjForDObjFixed(dobj, 0x2E, 0);
 
     dobj->translate.vec.f = *pos;
 

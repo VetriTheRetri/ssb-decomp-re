@@ -252,7 +252,7 @@ void mvOpeningFirstDestinationCreateSunlight()
 	GObj* sunlight_gobj;
 
 	gMVOpeningFirstDestinationSunlightGObj = sunlight_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcAddGCMatrixForDObjFixed(gcAddDObjForGObj(sunlight_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_SUNLIGHT_OBJECT_OFFSET)), 0x1C, 0);
+	gcAddXObjForDObjFixed(gcAddDObjForGObj(sunlight_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_SUNLIGHT_OBJECT_OFFSET)), 0x1C, 0);
 	gcAddGObjDisplay(sunlight_gobj, gcDrawDObjDLLinksForGObj, 6, 0x80000000, -1);
 }
 
@@ -272,7 +272,7 @@ void mvOpeningFirstDestinationCreateOutside()
 	GObj* outside_gobj;
 
 	gMVOpeningFirstDestinationOutsideGObj = outside_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcAddGCMatrixForDObjFixed(gcAddDObjForGObj(outside_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_OUTSIDE_OBJECT_OFFSET)), 0x1C, 0);
+	gcAddXObjForDObjFixed(gcAddDObjForGObj(outside_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_OUTSIDE_OBJECT_OFFSET)), 0x1C, 0);
 	gcAddGObjDisplay(outside_gobj, gcDrawDObjDLLinksForGObj, 6, 0x80000000, -1);
 }
 
@@ -282,7 +282,7 @@ void mvOpeningFirstDestinationCreateOutsideHaze()
 	GObj* outside_haze_gobj;
 
 	gMVOpeningFirstDestinationOutsideHazeGObj = outside_haze_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcAddGCMatrixForDObjFixed(gcAddDObjForGObj(outside_haze_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_OUTSIDE_HAZE_OBJECT_OFFSET)), 0x1C, 0);
+	gcAddXObjForDObjFixed(gcAddDObjForGObj(outside_haze_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_OUTSIDE_HAZE_OBJECT_OFFSET)), 0x1C, 0);
 	gcAddGObjDisplay(outside_haze_gobj, gcDrawDObjDLLinksForGObj, 6, 0x80000000, -1);
 }
 
@@ -347,7 +347,7 @@ void mvOpeningFirstDestinationCreateTissueBox()
 
 	gMVOpeningFirstDestinationTissueBoxGObj = tissue_box_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
 	tissue_box_dobj = gcAddDObjForGObj(tissue_box_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_TISSUE_BOX_OBJECT_OFFSET_1));
-	gcAddGCMatrixForDObjFixed(tissue_box_dobj, 0x1C, 0);
+	gcAddXObjForDObjFixed(tissue_box_dobj, 0x1C, 0);
 	gcAddGObjDisplay(tissue_box_gobj, gcDrawDObjDLHead0, 6, 0x80000000, -1);
 	gcAddDObjAnimJoint(tissue_box_dobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_TISSUE_BOX_OBJECT_OFFSET_2), 0);
 	gcAddGObjProcess(tissue_box_gobj, mvOpeningFirstDestinationAnimateTissueBox, 1, 1);
@@ -540,7 +540,7 @@ void mvOpeningFirstDestinationCreateMasterHandShadow()
 
 	gMVOpeningFirstDestinationMasterHandShadowGObj = masterhand_shadow_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
 	masterhand_shadow_dobj = gcAddDObjForGObj(masterhand_shadow_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_MASTERHAND_SHADOW_OBJECT_OFFSET_1));
-	gcAddGCMatrixForDObjFixed(masterhand_shadow_dobj, 0x1C, 0);
+	gcAddXObjForDObjFixed(masterhand_shadow_dobj, 0x1C, 0);
 	gcAddGObjDisplay(masterhand_shadow_gobj, gcDrawDObjDLHead1, 9, 0x80000000, -1);
 	gcAddDObjAnimJoint(masterhand_shadow_dobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_MASTERHAND_SHADOW_OBJECT_OFFSET_2), 0);
 	gcAddGObjProcess(masterhand_shadow_gobj,gcPlayAnimAll, 1, 1);
@@ -685,7 +685,7 @@ void mvOpeningFirstDestinationCreateSpotlight()
 	GObj* spotlight_gobj;
 
 	gMVOpeningFirstDestinationSpotlightGObj = spotlight_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcAddGCMatrixForDObjFixed(gcAddDObjForGObj(spotlight_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_SPOTLIGHT_OFFSET_2)), 0x1C, 0);
+	gcAddXObjForDObjFixed(gcAddDObjForGObj(spotlight_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_SPOTLIGHT_OFFSET_2)), 0x1C, 0);
 	gcAddGObjDisplay(spotlight_gobj, gcDrawDObjDLHead1, 0x1B, 0x80000000, -1);
 	gcAddMObjAll(spotlight_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_SPOTLIGHT_OFFSET_1));
 	gcAddMatAnimJointAll(spotlight_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[0], &FILE_034_SPOTLIGHT_OFFSET_3), 0.0F);
@@ -723,8 +723,8 @@ void mvOpeningFirstDestinationCreateFirstSceneViewports()
 	GObj* camera_gobj;
 
 	gMVOpeningFirstDestinationMainCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 0, 1, 0, 1, 0);
-	gcAddGCMatrixForCamera(CameraGetStruct(camera_gobj), 3, 0);
-	gcAddGCMatrixForCamera(CameraGetStruct(camera_gobj), 0xE, 0);
+	gcAddXObjForCamera(CameraGetStruct(camera_gobj), 3, 0);
+	gcAddXObjForCamera(CameraGetStruct(camera_gobj), 0xE, 0);
 	mvOpeningFirstDestinationConfigureFirstSceneViewport(camera_gobj);
 
 	gMVOpeningFirstDestinationFighterCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x08000200, -1, 1, 1, 0, 1, 0);
@@ -747,8 +747,8 @@ void mvOpeningFirstDestinationCreateSecondSceneViewports()
 	GObj* camera_gobj;
 
 	gMVOpeningFirstDestinationMainCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 0, 1, 0, 1, 0);
-	gcAddGCMatrixForCamera(CameraGetStruct(camera_gobj), 3, 0);
-	gcAddGCMatrixForCamera(CameraGetStruct(camera_gobj), 0x8, 0);
+	gcAddXObjForCamera(CameraGetStruct(camera_gobj), 3, 0);
+	gcAddXObjForCamera(CameraGetStruct(camera_gobj), 0x8, 0);
 	mvOpeningFirstDestinationConfigureSecondSceneViewport(camera_gobj);
 
 	gMVOpeningFirstDestinationFighterCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x08000200, -1, 1, 1, 0, 1, 0);
@@ -784,8 +784,8 @@ void mvOpeningFirstDestinationCreateThirdSceneViewports()
 	GObj* camera_gobj_2;
 
 	gMVOpeningFirstDestinationMainCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 0, 1, 0, 1, 0);
-	gcAddGCMatrixForCamera(CameraGetStruct(camera_gobj), 3, 0);
-	gcAddGCMatrixForCamera(CameraGetStruct(camera_gobj), 0x8, 0);
+	gcAddXObjForCamera(CameraGetStruct(camera_gobj), 3, 0);
+	gcAddXObjForCamera(CameraGetStruct(camera_gobj), 0x8, 0);
 	mvOpeningFirstDestinationConfigureThirdSceneViewport(camera_gobj);
 
 	gMVOpeningFirstDestinationFighterCameraGObj = camera_gobj_2 = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x08000200, -1, 1, 1, 0, 1, 0);
@@ -891,7 +891,7 @@ void mvOpeningFirstDestinationCreateTransitionGFX()
 
 	gMVOpeningFirstDestinationTransitionGFXOutlineGObj = gfx_gobj = gcMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
 	gfx_dobj = gcAddDObjForGObj(gfx_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[1], &FILE_03F_TRANSITION_GFX_OUTLINE_OBJECT_OFFSET_1));
-	gcAddGCMatrixForDObjFixed(gfx_dobj, 0x1C, 0);
+	gcAddXObjForDObjFixed(gfx_dobj, 0x1C, 0);
 	gcAddGObjDisplay(gfx_gobj, mvOpeningFirstDestinationRenderTransitionGFXOutline, 0x1E, 0x80000000, -1);
 	gcAddDObjAnimJoint(gfx_dobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[1], &FILE_03F_TRANSITION_GFX_OUTLINE_OBJECT_OFFSET_2), 0);
 	gcAddGObjProcess(gfx_gobj, gcPlayAnimAll, 1, 1);
@@ -899,7 +899,7 @@ void mvOpeningFirstDestinationCreateTransitionGFX()
 
 	gMVOpeningFirstDestinationTransitionGFXOverlayGObj = gfx_gobj = gcMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
 	gfx_dobj = gcAddDObjForGObj(gfx_gobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[1], &FILE_03F_TRANSITION_GFX_OVERLAY_OBJECT_OFFSET_1));
-	gcAddGCMatrixForDObjFixed(gfx_dobj, 0x1C, 0);
+	gcAddXObjForDObjFixed(gfx_dobj, 0x1C, 0);
 	gcAddGObjDisplay(gfx_gobj, mvOpeningFirstDestinationRenderTransitionGFXOverlay, 0x1E, 0x80000000, -1);
 	gcAddDObjAnimJoint(gfx_dobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[1], &FILE_03F_TRANSITION_GFX_OVERLAY_OBJECT_OFFSET_2), 0);
 	gcAddGObjProcess(gfx_gobj, gcPlayAnimAll, 1, 1);

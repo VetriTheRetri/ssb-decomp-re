@@ -255,8 +255,8 @@ void grYosterInitAll(void)
             cloud_dobj = gcAddChildForDObj(coll_dobj, (uintptr_t)map_head + (intptr_t)&lGRYosterCloudDisplayList);
             gGRCommonStruct.yoster.clouds[i].dobj[j] = cloud_dobj;
 
-            gcAddGCMatrixForDObjFixed(cloud_dobj, nGCTransformTra, 0);
-            gcAddGCMatrixForDObjFixed(cloud_dobj, nGCTransform48, 0);
+            gcAddXObjForDObjFixed(cloud_dobj, nGCTransformTra, 0);
+            gcAddXObjForDObjFixed(cloud_dobj, nGCTransform48, 0);
             lbCommonAddMObjForTreeDObjs(cloud_dobj, (uintptr_t)map_head + (intptr_t)&D_NF_000004B8);
         }
         gcPlayAnimAll(map_gobj);

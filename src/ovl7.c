@@ -399,7 +399,7 @@ sb32 scTrainingMode_UpdateViewOption()
 			fighter_gobj = gBattleState->players[gSceneData.spgame_player].fighter_gobj;
 			func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_camera_zoom, 0.1F,
 							   28.0F);
-			gIFCommonPlayerInterface.is_ifmagnify_display = FALSE;
+			gIFCommonPlayerInterface.is_mglass_display = FALSE;
 			gTrainingModeStruct.magnify_wait = 0;
 		}
 		scTrainingMode_InitViewOptionSprite();
@@ -605,8 +605,8 @@ void scTrainingMode_InitMiscVars()
 	gMPCollisionGroundData->fog_color
 		= scTrainingMode_Files_BackgroundImageInfo[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]]
 			  .fog_color;
-	ifCommonPlayerMagnifyMakeInterface();
-	gIFCommonPlayerInterface.is_ifmagnify_display = TRUE;
+	ifCommonPlayerMGlassMakeInterface();
+	gIFCommonPlayerInterface.is_mglass_display = TRUE;
 }
 
 // 0x8018DEDC
@@ -1149,7 +1149,7 @@ void scTrainingMode_UpdateMagnifyWait(GObj* interface_gobj)
 	{
 		gTrainingModeStruct.magnify_wait--;
 		if (gTrainingModeStruct.magnify_wait == 0)
-			gIFCommonPlayerInterface.is_ifmagnify_display = TRUE;
+			gIFCommonPlayerInterface.is_mglass_display = TRUE;
 	}
 }
 

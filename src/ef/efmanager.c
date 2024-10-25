@@ -3847,7 +3847,7 @@ GObj* efManagerQuakeMakeEffect(s32 magnitude) // Linker things here
     }
     effect_gobj->user_data.p = ep;
 
-    gcAddGCMatrixForDObjFixed(gcAddDObjForGObj(effect_gobj, NULL), nGCTransformTra, 0);
+    gcAddXObjForDObjFixed(gcAddDObjForGObj(effect_gobj, NULL), nGCTransformTra, 0);
 
     switch (magnitude)
     {
@@ -4448,7 +4448,7 @@ GObj* efManagerPikachuThunderShockMakeEffect(GObj *fighter_gobj, Vec3f *pos, s32
 
     dobj->child->translate.vec.f.x = (ftGetStruct(fighter_gobj)->lr == nGMFacingL) ? -pos->x : pos->x;
 
-    gcAddGCMatrixForDObjFixed(dobj->child->child, 0x2E, 0);
+    gcAddXObjForDObjFixed(dobj->child->child, 0x2E, 0);
 
     switch (frame)
     {
@@ -4617,7 +4617,7 @@ GObj* efManagerKirbyVulcanJabMakeEffect(Vec3f *pos, s32 lr, f32 rotate, f32 vel,
         vel = -vel;
         add = -add;
     }
-    gcAddGCMatrixForDObjFixed(dobj->child->child, 0x46, 0);
+    gcAddXObjForDObjFixed(dobj->child->child, 0x46, 0);
 
     dobj->rotate.vec.f.z = F_CLC_DTOR32(rotate);
 
@@ -4771,23 +4771,23 @@ GObj* efManagerPurinSingMakeEffect(GObj *fighter_gobj)
 
     sibling_dobj = dobj->child;
 
-    gcAddGCMatrixForDObjFixed(sibling_dobj, 0x46, 0);
+    gcAddXObjForDObjFixed(sibling_dobj, 0x46, 0);
 
     sibling_dobj = dobj->child->sib_next;
 
-    gcAddGCMatrixForDObjFixed(sibling_dobj, nGCTransformRotRpyR, 0);
+    gcAddXObjForDObjFixed(sibling_dobj, nGCTransformRotRpyR, 0);
 
     sibling_dobj = sibling_dobj->child;
 
-    gcAddGCMatrixForDObjFixed(sibling_dobj, 0x2A, 0);
+    gcAddXObjForDObjFixed(sibling_dobj, 0x2A, 0);
 
     sibling_dobj = sibling_dobj->sib_next;
 
-    gcAddGCMatrixForDObjFixed(sibling_dobj, 0x2A, 0);
+    gcAddXObjForDObjFixed(sibling_dobj, 0x2A, 0);
 
     sibling_dobj = sibling_dobj->sib_next;
 
-    gcAddGCMatrixForDObjFixed(sibling_dobj, 0x2A, 0);
+    gcAddXObjForDObjFixed(sibling_dobj, 0x2A, 0);
 
     return effect_gobj;
 }
@@ -5434,9 +5434,9 @@ GObj* efManagerYoshiEggLayMakeEffect(GObj *fighter_gobj)
     dobj->scale.vec.f.x = dobj->scale.vec.f.y = dFTCommonYoshiEggHurtboxDescs[fp->ft_kind].effect_size;
     dobj->scale.vec.f.z = 1.0F;
 
-    dobj->child->child->gcmatrix[0]->kind = nGCTransformTra;
+    dobj->child->child->xobj[0]->kind = nGCTransformTra;
 
-    gcAddGCMatrixForDObjFixed(dobj->child->child, 0x2E, 0);
+    gcAddXObjForDObjFixed(dobj->child->child, 0x2E, 0);
     lbCommonSetDObjTransformsForTreeDObjs(dobj->child, (uintptr_t)gFTDataYoshiSpecial3 + (intptr_t)&lEFManagerYoshiEggLayDObjSetup);
 
     return effect_gobj;
@@ -5660,7 +5660,7 @@ GObj* efManagerCaptainEntryCarMakeEffect(Vec3f *pos, s32 lr)
 
     for (i = nFTPartsJointCommonStart; i > 0; i--)
     {
-        gcAddGCMatrixForDObjFixed(node_dobj, nGCTransformRecalcRotRpyRSca, 0);
+        gcAddXObjForDObjFixed(node_dobj, nGCTransformRecalcRotRpyRSca, 0);
 
         gcAddDObjAnimJoint(node_dobj, lbRelocGetDataFromFile(AObjEvent32*, gFTDataCaptainSpecial2, &D_NF_00006518), 0.0F);
 
@@ -5747,7 +5747,7 @@ GObj* efManagerFoxEntryArwingMakeEffect(Vec3f *pos, s32 lr)
     dobj = DObjGetStruct(effect_gobj);
     what = dobj->child->child->child->sib_next->sib_next->sib_next->sib_next->sib_next->sib_next->child;
 
-    gcAddGCMatrixForDObjFixed(what, 0x2C, 0);
+    gcAddXObjForDObjFixed(what, 0x2C, 0);
     gcAddDObjAnimJoint(what, lbRelocGetDataFromFile(AObjEvent32*, gFTDataFoxSpecial3, &D_NF_00002E74), 0.0F); // Linker thing
 
     if (lr == nGMFacingR)

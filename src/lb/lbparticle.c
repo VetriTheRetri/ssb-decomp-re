@@ -1491,9 +1491,9 @@ void lbParticleDrawTextures(GObj *gobj)
 
     cam = CameraGetStruct(gGCCurrentCamera);
 
-    for (i = 0; i < cam->gcmatrix_len; i++)
+    for (i = 0; i < cam->xobjs_num; i++)
     {
-        switch (cam->gcmatrix[i]->kind)
+        switch (cam->xobj[i]->kind)
         {
             case nGCTransformPerspFastF:
                 syMatrixPerspFastF
@@ -1621,7 +1621,7 @@ void lbParticleDrawTextures(GObj *gobj)
                 break;
         }
     }
-    if (cam->gcmatrix_len != 0)
+    if (cam->xobjs_num != 0)
     {
         guMtxCatF(look_at_f, projection_f, projection_f);
         

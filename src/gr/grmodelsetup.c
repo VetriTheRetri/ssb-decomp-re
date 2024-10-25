@@ -28,11 +28,11 @@ void grModelSetupGroundDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs, DObjT
         
         if (transform_types[i].tk1 != nGCTransformNull)
         {
-            gcAddGCMatrixForDObjFixed(dobj, transform_types[i].tk1, transform_types[i].tk3);
+            gcAddXObjForDObjFixed(dobj, transform_types[i].tk1, transform_types[i].tk3);
         }
         if (transform_types[i].tk2 != nGCTransformNull)
         {
-            gcAddGCMatrixForDObjFixed(dobj, transform_types[i].tk2, 0);
+            gcAddXObjForDObjFixed(dobj, transform_types[i].tk2, 0);
         }
         dobj->translate.vec.f = dobjdesc->translate;
         dobj->rotate.vec.f = dobjdesc->rotate;

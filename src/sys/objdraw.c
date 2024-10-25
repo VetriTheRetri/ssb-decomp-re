@@ -3182,10 +3182,10 @@ void func_80017868(GObj *this_gobj, s32 link_id, sb32 is_tag_mask_or_id)
                 ((is_tag_mask_or_id == 1) && (this_gobj->cobj_tag == current_gobj->cobj_tag))
             )
             {
-                D_8003B874_3C474 = 4;
+                dGCCurrentStatus = nGCStatusDisplaying;
                 gGCCurrentDisplay = current_gobj;
                 current_gobj->func_display(current_gobj);
-                D_8003B874_3C474 = 3;
+                dGCCurrentStatus = nGCStatusCapturing;
                 current_gobj->frame_draw_last = dSYTaskmanFrameDrawCount;
             }
         }

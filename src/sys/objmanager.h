@@ -3,7 +3,7 @@
 
 #include <sys/objtypes.h>
 
-extern s32 D_8003B874_3C474;
+extern s32 dGCCurrentStatus;
 extern GCPersp dGCPerspDefault;
 extern GCOrtho dGCOrthoDefault;
 extern CObjVec dCObjVecDefault;

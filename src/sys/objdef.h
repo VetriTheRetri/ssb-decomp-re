@@ -229,6 +229,16 @@ typedef enum AObjTrackKind
 
 } AObjTrackKind;
 
+typedef enum GCStatus
+{
+    nGCStatusSystem,
+    nGCStatusRunning,               // Processing current GObj's func_run
+    nGCStatusProcessing,            // Processing current GObjProcess
+    nGCStatusCapturing,             // Processing current CObj's viewport?
+    nGCStatusDisplaying             // Processing current CObj and DObj's rendering?
+
+} GCStatus;
+
 typedef union  AObjEvent16          AObjEvent16;
 typedef union  AObjEvent32          AObjEvent32;
 typedef union  AObjScript           AObjScript;

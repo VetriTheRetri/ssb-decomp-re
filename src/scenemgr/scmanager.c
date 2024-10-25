@@ -14,10 +14,6 @@
 #include <sc/sctypes.h> // Temporarily, until ovl defines are fixed
 #include <sys/thread6.h>
 
-extern s32 D_8003B874_3C474;
-extern GObj* gGCCurrentCommon;
-extern GObj* gGCCurrentDisplay;
-
 // BSS
 u8 D_800A44D0[16];
 lbBackupData gSaveData;
@@ -32,7 +28,6 @@ u32 D_800A50EC;
 u8 D_800A50F0[8];
 u8 D_800A50F8[324];
 u32 D_800A523C;
-
 
 // Forward declarations
 extern void scManagerProcPrintGObjStatus();
@@ -111,18 +106,18 @@ lbBackupData gDefaultSaveData = {
 		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 		}}, 1, 1, 0, 0, 0, 0, 0, 1, 2, {
-		{0, 0, 0, 0, 0x34BC0, 0, 0x34BC0, 0, 0},
-		{0, 0, 0, 0, 0x34BC0, 0, 0x34BC0, 0, 0},
-		{0, 0, 0, 0, 0x34BC0, 0, 0x34BC0, 0, 0},
-		{0, 0, 0, 0, 0x34BC0, 0, 0x34BC0, 0, 0},
-		{0, 0, 0, 0, 0x34BC0, 0, 0x34BC0, 0, 0},
-		{0, 0, 0, 0, 0x34BC0, 0, 0x34BC0, 0, 0},
-		{0, 0, 0, 0, 0x34BC0, 0, 0x34BC0, 0, 0},
-		{0, 0, 0, 0, 0x34BC0, 0, 0x34BC0, 0, 0},
-		{0, 0, 0, 0, 0x34BC0, 0, 0x34BC0, 0, 0},
-		{0, 0, 0, 0, 0x34BC0, 0, 0x34BC0, 0, 0},
-		{0, 0, 0, 0, 0x34BC0, 0, 0x34BC0, 0, 0},
-		{0, 0, 0, 0, 0x34BC0, 0, 0x34BC0, 0, 0}}, 0, 0, 0, 0, 0, 0x029a, 0, 0, 0
+		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
+		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
+		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
+		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
+		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
+		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
+		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
+		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
+		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
+		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
+		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
+		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0}}, 0, 0, 0, 0, 0, 0x029a, 0, 0, 0
 };
 
 scCommonData gDefaultSceneData =
@@ -781,72 +776,67 @@ void scManagerInspectGObj(GObj *gobj)
 // 0x800A2E84
 void scManagerProcPrintGObjStatus()
 {
-	switch (D_8003B874_3C474)
+	switch (dGCCurrentStatus)
 	{
-		case 0:
-		{
-			syErrorDebugPrintf("SYS\n");
-			break;
-		}
-		case 1:
-		{
-			syErrorDebugPrintf("BF\n");
-			if (gGCCurrentCommon != NULL)
-			{
-				syErrorDebugPrintf("addr:%x\n", gGCCurrentCommon->func_run);
-				scManagerInspectGObj(gGCCurrentCommon);
-			}
-			break;
-		}
-		case 2:
-		{
-			syErrorDebugPrintf("GP\n");
+	case nGCStatusSystem:
+		syErrorDebugPrintf("SYS\n");
+		break;
 
-			if (gGCCurrentCommon != NULL)
+	case nGCStatusRunning:
+		syErrorDebugPrintf("BF\n");
+
+		if (gGCCurrentCommon != NULL)
+		{
+			syErrorDebugPrintf("addr:%x\n", gGCCurrentCommon->func_run);
+			scManagerInspectGObj(gGCCurrentCommon);
+		}
+		break;
+
+	case nGCStatusProcessing:
+		syErrorDebugPrintf("GP\n");
+
+		if (gGCCurrentCommon != NULL)
+		{
+			if (gGCCurrentProcess != NULL)
 			{
-				if (gGCCurrentProcess != NULL)
+				switch (gGCCurrentProcess->kind)
 				{
-					switch (gGCCurrentProcess->kind)
-					{
-					case nGCProcessKindThread:
-						syErrorDebugPrintf("thread:%x\n", gGCCurrentProcess->gobjthread->thread.context.pc);
-						break;
+				case nGCProcessKindThread:
+					syErrorDebugPrintf("thread:%x\n", gGCCurrentProcess->gobjthread->thread.context.pc);
+					break;
 
-					case nGCProcessKindProc:
-						syErrorDebugPrintf("func:%x\n", gGCCurrentProcess->proc_thread);
-						break;
-					}
+				case nGCProcessKindProc:
+					syErrorDebugPrintf("func:%x\n", gGCCurrentProcess->proc_thread);
+					break;
 				}
-				scManagerInspectGObj(gGCCurrentCommon);
 			}
-			break;
+			scManagerInspectGObj(gGCCurrentCommon);
 		}
-		case 3:
-		{
-			syErrorDebugPrintf("DFC\n");
+		break;
 
-			if (gGCCurrentCamera != NULL)
-			{
-				syErrorDebugPrintf("addr:%x\n", gGCCurrentCamera->func_display);
-				scManagerInspectGObj(gGCCurrentCamera);
-			}
-			break;
-		}
-		case 4:
-		{
-			syErrorDebugPrintf("DFO\n");
+	case nGCStatusCapturing:
+		syErrorDebugPrintf("DFC\n");
 
-			if (gGCCurrentCamera != NULL)
-			{
-				syErrorDebugPrintf("cam addr:%x\n", gGCCurrentCamera->func_display);
-			}
-			if (gGCCurrentDisplay != NULL)
-			{
-				syErrorDebugPrintf("disp addr:%x\n", gGCCurrentDisplay->func_display);
-				scManagerInspectGObj(gGCCurrentDisplay);
-			}
-			break;
+		if (gGCCurrentCamera != NULL)
+		{
+			syErrorDebugPrintf("addr:%x\n", gGCCurrentCamera->func_display);
+			scManagerInspectGObj(gGCCurrentCamera);
 		}
+		break;
+		
+	case nGCStatusDisplaying:
+		syErrorDebugPrintf("DFO\n");
+
+		if (gGCCurrentCamera != NULL)
+		{
+			syErrorDebugPrintf("cam addr:%x\n", gGCCurrentCamera->func_display);
+		}
+		if (gGCCurrentDisplay != NULL)
+		{
+			syErrorDebugPrintf("disp addr:%x\n", gGCCurrentDisplay->func_display);
+			scManagerInspectGObj(gGCCurrentDisplay);
+		}
+		break;
 	}
 }
 

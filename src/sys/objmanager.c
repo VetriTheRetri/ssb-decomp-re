@@ -76,8 +76,11 @@ u8 D_80046F88[24];
 //                               //
 // // // // // // // // // // // //
 
+// 0x80038B70
 OSId dGCProcessThreadID = 10000000;
-s32 D_8003B874_3C474 = 0;
+
+// 0x80038B74
+s32 dGCCurrentStatus = nGCStatusSystem;
 
 // 0x8003B878
 GCPersp dGCPerspDefault = { NULL, 0, 30.0F, 4.0F / 3.0F, 100.0F, 12800.0F, 1.0F };
@@ -2091,21 +2094,21 @@ void func_8000A340(void)
 	{
 		if (!(gobj->flags & GOBJ_FLAG_HIDDEN))
 		{
-			D_8003B874_3C474 = 3;
+			dGCCurrentStatus = nGCStatusCapturing;
 			gGCCurrentCamera = gobj;
 			gobj->func_display(gobj);
-			D_8003B874_3C474 = 0;
+			dGCCurrentStatus = nGCStatusSystem;
 		}
 		gobj = gobj->dl_link_next;
 	}
 }
 
 // 0x8000A40C
-GObj *func_8000A40C(GObj *gobj)
+GObj* func_8000A40C(GObj *gobj)
 {
 	GObj *return_gobj;
 
-	D_8003B874_3C474 = 1;
+	dGCCurrentStatus = nGCStatusRunning;
 	gGCCurrentCommon = gobj;
 
 	gobj->func_run(gobj);
@@ -2113,18 +2116,21 @@ GObj *func_8000A40C(GObj *gobj)
 	return_gobj = gobj->link_next;
 
 	gGCCurrentCommon = NULL;
-	D_8003B874_3C474 = 0;
+	dGCCurrentStatus = nGCStatusSystem;
 
 	switch (D_80046A64)
 	{
-	case 0: break;
+	case 0:
+		break;
 
 	case 2:
 		D_80046A64 = 0;
 		gcEjectGObj(gobj);
 		break;
 
-	default: D_80046A64 = 0; break;
+	default:
+		D_80046A64 = 0;
+		break;
 	}
 	return return_gobj;
 }
@@ -2134,7 +2140,7 @@ GObjProcess* func_8000A49C(GObjProcess *gobjproc)
 {
 	GObjProcess *return_gobjproc;
 
-	D_8003B874_3C474 = 2;
+	dGCCurrentStatus = nGCStatusProcessing;
 	gGCCurrentCommon = gobjproc->parent_gobj;
 	gGCCurrentProcess = gobjproc;
 
@@ -2153,7 +2159,7 @@ GObjProcess* func_8000A49C(GObjProcess *gobjproc)
 
 	gGCCurrentCommon = NULL;
 	gGCCurrentProcess = NULL;
-	D_8003B874_3C474 = 0;
+	dGCCurrentStatus = nGCStatusSystem;
 
 	switch (D_80046A64)
 	{
@@ -2422,5 +2428,5 @@ void gcSetupObjectManager(GCSetup *setup)
 
 	gcSetCameraMatrixMode(0);
 
-	D_8003B874_3C474 = 0;
+	dGCCurrentStatus = nGCStatusSystem;
 }

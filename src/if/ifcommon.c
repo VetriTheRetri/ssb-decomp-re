@@ -1491,7 +1491,7 @@ void ifCommonPlayerMGlassUpdateViewport(Gfx **dls, ftStruct *fp)
     f32 magnify_x;
     f32 magnify_y;
     ifPlayerMGlass *ifmag;
-    Camera *cam;
+    CObj *cobj;
     f32 scale;
     s32 ulx;
     s32 uly;
@@ -1510,13 +1510,13 @@ void ifCommonPlayerMGlassUpdateViewport(Gfx **dls, ftStruct *fp)
         magnify_x = ifmag->pos.x + gCMManagerCameraStruct.viewport_center_x;
         magnify_y = gCMManagerCameraStruct.viewport_center_y - ifmag->pos.y;
 
-        gSPMatrix(dls[0]++, &CameraGetStruct(gGCCurrentCamera)->xobj[0]->mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+        gSPMatrix(dls[0]++, &CObjGetStruct(gGCCurrentCamera)->xobj[0]->mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
         if (gIFCommonPlayerInterface.mglass_mode != 1)
         {
-            cam = CameraGetStruct(gCMManagerCameraGObj);
+            cobj = CObjGetStruct(gCMManagerCameraGObj);
 
-            gSPViewport(dls[0]++, &cam->viewport);
+            gSPViewport(dls[0]++, &cobj->viewport);
 
             gDPSetScissor(dls[0]++, G_SC_NON_INTERLACE, gCMManagerCameraStruct.viewport_ulx, gCMManagerCameraStruct.viewport_uly, gCMManagerCameraStruct.viewport_lrx, gCMManagerCameraStruct.viewport_lry);
         }
@@ -1570,7 +1570,7 @@ void ifCommonPlayerMGlassFuncDisplay(ftStruct *fp)
     GObj *interface_gobj;
     DObj *dobj;
     ifPlayerMGlass *ifmag;
-    Camera *cam;
+    CObj *cobj;
 
     if (gIFCommonPlayerInterface.is_mglass_display != FALSE)
     {
@@ -1587,11 +1587,11 @@ void ifCommonPlayerMGlassFuncDisplay(ftStruct *fp)
 
         dobj->scale.vec.f.x = dobj->scale.vec.f.y = gIFCommonPlayerInterface.mglass_scale * 0.5F;
 
-        cam = CameraGetStruct(gCMManagerCameraGObj);
+        cobj = CObjGetStruct(gCMManagerCameraGObj);
 
-        gSPViewport(gSYTaskmanDLHeads[0]++, &cam->viewport);
+        gSPViewport(gSYTaskmanDLHeads[0]++, &cobj->viewport);
         gDPSetScissor(gSYTaskmanDLHeads[0]++, G_SC_NON_INTERLACE, gCMManagerCameraStruct.viewport_ulx, gCMManagerCameraStruct.viewport_uly, gCMManagerCameraStruct.viewport_lrx, gCMManagerCameraStruct.viewport_lry);
-        gSPMatrix(gSYTaskmanDLHeads[0]++, &CameraGetStruct(gGCCurrentCamera)->xobj[1]->mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+        gSPMatrix(gSYTaskmanDLHeads[0]++, &CObjGetStruct(gGCCurrentCamera)->xobj[1]->mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
         gSPClearGeometryMode(gSYTaskmanDLHeads[0]++, G_ZBUFFER);
         gDPPipeSync(gSYTaskmanDLHeads[0]++);
         gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
@@ -1823,13 +1823,13 @@ void ifCommonPlayerTagFuncDisplay(GObj *interface_gobj)
 
     if (!(fp->is_playertag_bossend) && !(fp->is_playertag_hide))
     {
-        if ((fp->playertag_wait == 1) || (CameraGetStruct(gCMManagerCameraGObj)->vec.eye.z > 6000.0F))
+        if ((fp->playertag_wait == 1) || (CObjGetStruct(gCMManagerCameraGObj)->vec.eye.z > 6000.0F))
         {
             pos = fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
             pos.y += fp->attributes->camera_zoom_default;
 
-            func_ovl2_800EB924(CameraGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &pos, &x, &y);
+            func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &pos, &x, &y);
 
             if (cmManagerCheckTargetInBounds(x, y) != FALSE)
             {
@@ -1894,7 +1894,7 @@ void ifCommonItemArrowFuncDisplay(GObj *interface_gobj)
 
         pos.y += ip->coll_data.objcoll.top + 100.0F;
 
-        func_ovl2_800EB924(CameraGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &pos, &x, &y);
+        func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &pos, &x, &y);
 
         if (cmManagerCheckTargetInBounds(x, y) != FALSE)
         {

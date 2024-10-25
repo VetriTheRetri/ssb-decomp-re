@@ -1061,10 +1061,10 @@ void sc1PStageCardMakeBonusPicture(s32 stage)
 }
 
 // 0x801336CC
-CameraDesc* sc1PStageCardGetStageCameraDesc(CameraDesc *cam_desc, s32 stage)
+CObjDesc* sc1PStageCardGetStageCObjDesc(CObjDesc *cobj_desc, s32 stage)
 {
     // 0x80134FF8
-    CameraDesc cam_descs[/* */] =
+    CObjDesc cobj_descs[/* */] =
     {
         // VS Link
         { { 0.0F, 0.0F, 0.0F }, { 0.0F, 0.0F, 0.0F }, 0.0F },
@@ -1109,20 +1109,20 @@ CameraDesc* sc1PStageCardGetStageCameraDesc(CameraDesc *cam_desc, s32 stage)
         { { 0.0F, 0.0F, 0.0F }, { 0.0F, 0.0F, 0.0F }, 0.0F }
     };
 
-    *cam_desc = cam_descs[stage];
+    *cobj_desc = cobj_descs[stage];
     
-    return cam_desc;
+    return cobj_desc;
 }
 
 // 0x8013376C
-Camera* sc1PStageCardMakeStageCamera(s32 stage, u32 dl_link)
+CObj* sc1PStageCardMakeStageCamera(s32 stage, u32 dl_link)
 {
     GObj *gobj;
-    Camera *cam;
-    CameraDesc cam_desc;
+    CObj *cobj;
+    CObjDesc cobj_desc;
 
     // 0x80135180
-    intptr_t camanim_joints[/* */] =
+    intptr_t cobjanim_joints[/* */] =
     {
         &lSC1PStageCardStageLinkCamAnimJoint,
         &lSC1PStageCardStageYoshiCamAnimJoint,
@@ -1148,7 +1148,7 @@ Camera* sc1PStageCardMakeStageCamera(s32 stage, u32 dl_link)
         GOBJ_LINKORDER_DEFAULT,
         func_80017EC0,
         40,
-        CAMERA_MASK_DLLINK(dl_link),
+        COBJ_MASK_DLLINK(dl_link),
         -1,
         FALSE,
         nGCProcessKindProc,
@@ -1156,32 +1156,32 @@ Camera* sc1PStageCardMakeStageCamera(s32 stage, u32 dl_link)
         1,
         FALSE
     );
-    gcAddXObjForCamera(CameraGetStruct(gobj), nGCTransformPerspFastF, 0);
-    gcAddXObjForCamera(CameraGetStruct(gobj), 15, 0);
+    gcAddXObjForCamera(CObjGetStruct(gobj), nGCTransformPerspFastF, 0);
+    gcAddXObjForCamera(CObjGetStruct(gobj), 15, 0);
     
-    cam = CameraGetStruct(gobj);
+    cobj = CObjGetStruct(gobj);
     
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-    gcAddCameraCamAnimJoint(cam, lbRelocGetDataFromFile(AObjEvent32*, sSC1PStageCardFiles[0], camanim_joints[stage]), 0.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    gcAddCameraCamAnimJoint(cobj, lbRelocGetDataFromFile(AObjEvent32*, sSC1PStageCardFiles[0], cobjanim_joints[stage]), 0.0F);
     gcPlayCamAnim(gobj);
     
     switch (stage)
     {
     case nSC1PGameStageMario:
-        sc1PStageCardGetStageCameraDesc(&cam_desc, stage);
+        sc1PStageCardGetStageCObjDesc(&cobj_desc, stage);
         
-        cam->vec.eye.x = cam_desc.eye.x;
-        cam->vec.eye.y = cam_desc.eye.y;
-        cam->vec.eye.z = cam_desc.eye.z;
-        cam->vec.at.x = cam_desc.at.x;
-        cam->vec.at.y = cam_desc.at.y;
-        cam->vec.at.z = cam_desc.at.z;
+        cobj->vec.eye.x = cobj_desc.eye.x;
+        cobj->vec.eye.y = cobj_desc.eye.y;
+        cobj->vec.eye.z = cobj_desc.eye.z;
+        cobj->vec.at.x = cobj_desc.at.x;
+        cobj->vec.at.y = cobj_desc.at.y;
+        cobj->vec.at.z = cobj_desc.at.z;
         break;
     }
-    cam->projection.persp.near = 128.0F;
-    cam->projection.persp.far = 16384.0F;
+    cobj->projection.persp.near = 128.0F;
+    cobj->projection.persp.far = 16384.0F;
     
-    return cam;
+    return cobj;
 }
 
 // 0x80133930
@@ -1230,7 +1230,7 @@ void sc1PStageCardInitVSFighters(s32 stage)
     s32 i;
     s32 costume;
     GObj *fighter_gobj;
-    Camera *cam;
+    CObj *cobj;
 
     // 0x801351B8
     s32 ft_kinds[/* */] =
@@ -1327,9 +1327,9 @@ void sc1PStageCardInitVSFighters(s32 stage)
         {
             ftParamInitModelTexturePartsAll(fighter_gobj, ftParamGetCostumeCommonID(nFTKindMario, 1), 0);
         }
-        cam = sc1PStageCardMakeStageCamera(stage, 33);
+        cobj = sc1PStageCardMakeStageCamera(stage, 33);
 
-        cam->flags |= 0x1;
+        cobj->flags |= 0x1;
         
         fighter_gobj = sc1PStageCardMakeVSFighter(nFTKindLuigi, stage, 0, &sSC1PStageCardFigatreeHeaps[3], 33);
         
@@ -1342,11 +1342,11 @@ void sc1PStageCardInitVSFighters(s32 stage)
 }
 
 // 0x80133EE0
-CameraDesc* sc1PStageCardGetFighterCameraDesc(CameraDesc *cam_desc, s32 ft_kind, s32 cam_id)
+CObjDesc* sc1PStageCardGetFighterCObjDesc(CObjDesc *cobj_desc, s32 ft_kind, s32 cobj_id)
 {
     
     // 0x801351F0
-    CameraDesc cam_descs[/* */][6] =
+    CObjDesc cobj_descs[/* */][6] =
     {
         // Mario
         {
@@ -1469,9 +1469,9 @@ CameraDesc* sc1PStageCardGetFighterCameraDesc(CameraDesc *cam_desc, s32 ft_kind,
         }
     };
 
-    *cam_desc = cam_descs[ft_kind][cam_id];
+    *cobj_desc = cobj_descs[ft_kind][cobj_id];
     
-    return cam_desc;
+    return cobj_desc;
 }
 
 // 0x80133F88 - unused?
@@ -1481,14 +1481,14 @@ void func_ovl24_80133F88(void)
 }
 
 // 0x80133F90
-void sc1PStageCardMakeFighterCamera(s32 ft_kind, s32 cam_id)
+void sc1PStageCardMakeFighterCamera(s32 ft_kind, s32 cobj_id)
 {
     GObj* gobj;
-    Camera *cam;
-    CameraDesc cam_desc;
+    CObj *cobj;
+    CObjDesc cobj_desc;
 
     // 0x801359D0
-    intptr_t camanim_joints[/* */] =
+    intptr_t cobjanim_joints[/* */] =
     {
         &lSC1PStageCardFighterMarioCamAnimJoint,
         &lSC1PStageCardFighterFoxCamAnimJoint,
@@ -1523,9 +1523,9 @@ void sc1PStageCardMakeFighterCamera(s32 ft_kind, s32 cam_id)
         16,
         GOBJ_LINKORDER_DEFAULT,
         func_80017EC0,
-        dl_links[cam_id][1],
-        CAMERA_MASK_DLLINK(dl_links[cam_id][0]) | CAMERA_MASK_DLLINK(15) |
-        CAMERA_MASK_DLLINK(10)                  | CAMERA_MASK_DLLINK(18),
+        dl_links[cobj_id][1],
+        COBJ_MASK_DLLINK(dl_links[cobj_id][0]) | COBJ_MASK_DLLINK(15) |
+        COBJ_MASK_DLLINK(10)                  | COBJ_MASK_DLLINK(18),
         -1,
         FALSE,
         nGCProcessKindProc,
@@ -1533,30 +1533,30 @@ void sc1PStageCardMakeFighterCamera(s32 ft_kind, s32 cam_id)
         1,
         FALSE
     );
-    gcAddXObjForCamera(CameraGetStruct(gobj), nGCTransformPerspFastF, 0);
-    gcAddXObjForCamera(CameraGetStruct(gobj), 7, 0);
+    gcAddXObjForCamera(CObjGetStruct(gobj), nGCTransformPerspFastF, 0);
+    gcAddXObjForCamera(CObjGetStruct(gobj), 7, 0);
 
-    cam = CameraGetStruct(gobj);
+    cobj = CObjGetStruct(gobj);
 
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
     
-    sc1PStageCardGetFighterCameraDesc(&cam_desc, ft_kind, cam_id);
+    sc1PStageCardGetFighterCObjDesc(&cobj_desc, ft_kind, cobj_id);
     
-    gcAddCameraCamAnimJoint(cam, lbRelocGetDataFromFile(AObjEvent32*, sSC1PStageCardFiles[0], camanim_joints[ft_kind]), 0.0F);
+    gcAddCameraCamAnimJoint(cobj, lbRelocGetDataFromFile(AObjEvent32*, sSC1PStageCardFiles[0], cobjanim_joints[ft_kind]), 0.0F);
     gcPlayCamAnim(gobj);
     
-    cam->vec.eye.x = cam_desc.eye.x;
-    cam->vec.eye.y = cam_desc.eye.y;
-    cam->vec.eye.z = cam_desc.eye.z;
+    cobj->vec.eye.x = cobj_desc.eye.x;
+    cobj->vec.eye.y = cobj_desc.eye.y;
+    cobj->vec.eye.z = cobj_desc.eye.z;
 
-    cam->vec.at.x = cam_desc.at.x;
-    cam->vec.at.y = cam_desc.at.y;
-    cam->vec.at.z = cam_desc.at.z;
+    cobj->vec.at.x = cobj_desc.at.x;
+    cobj->vec.at.y = cobj_desc.at.y;
+    cobj->vec.at.z = cobj_desc.at.z;
 
-    cam->projection.persp.near = 128.0F;
-    cam->projection.persp.far = 16384.0F;
+    cobj->projection.persp.near = 128.0F;
+    cobj->projection.persp.far = 16384.0F;
 
-    cam->flags |= 0x1;
+    cobj->flags |= 0x1;
 }
 
 // 0x80134190
@@ -1592,7 +1592,7 @@ void sc1PStageCardInitFighters(s32 stage)
 // 0x8013438C
 void sc1PStageCardMakeBannersCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -1602,7 +1602,7 @@ void sc1PStageCardMakeBannersCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             30,
-            CAMERA_MASK_DLLINK(28),
+            COBJ_MASK_DLLINK(28),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -1611,13 +1611,13 @@ void sc1PStageCardMakeBannersCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013442C
 void sc1PStageCardMakeDecalsCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -1627,7 +1627,7 @@ void sc1PStageCardMakeDecalsCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             20,
-            CAMERA_MASK_DLLINK(27),
+            COBJ_MASK_DLLINK(27),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -1636,13 +1636,13 @@ void sc1PStageCardMakeDecalsCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801344CC
 void sc1PStageCardMakePicturesCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -1652,7 +1652,7 @@ void sc1PStageCardMakePicturesCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             80,
-            CAMERA_MASK_DLLINK(26),
+            COBJ_MASK_DLLINK(26),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -1661,7 +1661,7 @@ void sc1PStageCardMakePicturesCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013456C
@@ -1942,7 +1942,7 @@ void sc1PStageCardFuncStart(void)
         )
     );
     gcMakeGObjSPAfter(0, sc1PStageCardFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     sc1PStageCardInitVars();
     efAllocInitParticleBank();
     efManagerInitEffects();
@@ -2028,7 +2028,7 @@ syTaskmanSetup dSC1PStageCardTaskmanSetup =
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
     0,                              // Number of Cameras
-    sizeof(Camera),                 // Camera size
+    sizeof(CObj),                 	// CObj size
     
     sc1PStageCardFuncStart          // Task start function
 };

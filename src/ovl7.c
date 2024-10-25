@@ -23,7 +23,7 @@ extern intptr_t D_NF_000001B8;
 extern uintptr_t lOverlay7ArenaHi; // 0x80392A00
 extern uintptr_t lOverlay7ArenaLo; // 0x80190FA0
 extern void* gGMCommonFiles[/* */];
-extern GObj* gGCCommonLinks[OM_COMMON_MAX_LINKS];
+extern GObj* gGCCommonLinks[GC_COMMON_MAX_LINKS];
 
 // Forward declarations
 void scTrainingMode_LoadFiles();

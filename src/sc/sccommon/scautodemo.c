@@ -198,7 +198,7 @@ syTaskmanSetup dSCAutoDemoTaskmanSetup =
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
     0,                              // Number of Cameras
-    sizeof(Camera),                 // Camera size
+    sizeof(CObj),                 	// CObj size
     
     scAutoDemoFuncStart           	// Task start function
 };
@@ -632,7 +632,7 @@ void scAutoDemoFuncStart(void)
 
 	scAutoDemoInitDemo();
 	scAutoDemoSetupFiles();
-	gcMakeDefaultCameraGObj(9, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(9, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efAllocInitParticleBank();
 	ftParamInitGame();
 	mpCollisionInitGroundData();

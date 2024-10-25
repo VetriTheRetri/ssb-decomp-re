@@ -58,7 +58,7 @@ extern void sc1PContinueMakeGameOver(void);
 extern void sc1PContinueMakeRoomFadeInCamera(void);
 extern void sc1PContinueMakeSpotlightFadeCamera(void);
 extern void sc1PContinueMakeRoomFadeOutCamera(void);
-extern void sc1PContinueSetupCamera(Camera *cam);
+extern void sc1PContinueSetupCamera(CObj *cobj);
 extern void sc1PContinueMakeMainCamera(void);
 extern void sc1PContinueMakeRoomCamera(void);
 extern void sc1PContinueMakeSpotlightCamera(void);

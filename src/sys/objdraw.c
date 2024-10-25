@@ -114,14 +114,14 @@ void func_80010748(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
     Mtx44f mtx_f;
     f32 distx, disty, distz;
 
-    Camera *cam;
+    CObj *cobj;
     f32 res;
 
-    cam = CameraGetStruct(gGCCurrentCamera);
+    cobj = CObjGetStruct(gGCCurrentCamera);
 
-    distx = dobj->translate.vec.f.x - cam->vec.eye.x;
-    disty = dobj->translate.vec.f.y - cam->vec.eye.y;
-    distz = dobj->translate.vec.f.z - cam->vec.eye.z;
+    distx = dobj->translate.vec.f.x - cobj->vec.eye.x;
+    disty = dobj->translate.vec.f.y - cobj->vec.eye.y;
+    distz = dobj->translate.vec.f.z - cobj->vec.eye.z;
 
     res = 1.0F / sqrtf(SQUARE(distx) + SQUARE(disty) + SQUARE(distz));
 
@@ -173,14 +173,14 @@ void func_80010918(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
     Mtx44f mtx_f;
     f32 distx, disty, distz;
 
-    Camera *cam;
+    CObj *cobj;
     f32 res;
 
-    cam = CameraGetStruct(gGCCurrentCamera);
+    cobj = CObjGetStruct(gGCCurrentCamera);
 
-    distx = dobj->translate.vec.f.x - cam->vec.eye.x;
-    disty = dobj->translate.vec.f.y - cam->vec.eye.y;
-    distz = dobj->translate.vec.f.z - cam->vec.eye.z;
+    distx = dobj->translate.vec.f.x - cobj->vec.eye.x;
+    disty = dobj->translate.vec.f.y - cobj->vec.eye.y;
+    distz = dobj->translate.vec.f.z - cobj->vec.eye.z;
 
     res = 1.0F / sqrtf(SQUARE(distx) + SQUARE(disty) + SQUARE(distz));
 
@@ -230,13 +230,13 @@ void func_80010AE8(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
     f32 distx;
     f32 disty;
 
-    Camera *cam;
+    CObj *cobj;
     f32 res;
 
-    cam = CameraGetStruct(gGCCurrentCamera);
+    cobj = CObjGetStruct(gGCCurrentCamera);
 
-    distx = dobj->translate.vec.f.x - cam->vec.eye.x;
-    disty = dobj->translate.vec.f.y - cam->vec.eye.y;
+    distx = dobj->translate.vec.f.x - cobj->vec.eye.x;
+    disty = dobj->translate.vec.f.y - cobj->vec.eye.y;
 
     res = sqrtf(SQUARE(distx) + SQUARE(disty));
 
@@ -278,13 +278,13 @@ void func_80010C2C(Mtx *mtx_l, DObj *dobj, sb32 is_translate)
     f32 distx;
     f32 distz;
 
-    Camera *cam;
+    CObj *cobj;
     f32 res;
 
-    cam = CameraGetStruct(gGCCurrentCamera);
+    cobj = CObjGetStruct(gGCCurrentCamera);
 
-    distx = dobj->translate.vec.f.x - cam->vec.eye.x;
-    distz = dobj->translate.vec.f.z - cam->vec.eye.z;
+    distx = dobj->translate.vec.f.x - cobj->vec.eye.x;
+    distz = dobj->translate.vec.f.z - cobj->vec.eye.z;
 
     res = sqrtf(SQUARE(distx) + SQUARE(distz));
 
@@ -1787,11 +1787,11 @@ void gcDrawDObjTreeDLLinksForGObj(GObj *gobj)
 f32 gcGetDObjDistFromEye(DObj *dobj) 
 {
     f32 x, y, z;
-    Camera *cam = CameraGetStruct(gGCCurrentCamera);
+    CObj *cobj = CObjGetStruct(gGCCurrentCamera);
 
-    x = dobj->translate.vec.f.x - cam->vec.eye.x;
-    y = dobj->translate.vec.f.y - cam->vec.eye.y;
-    z = dobj->translate.vec.f.z - cam->vec.eye.z;
+    x = dobj->translate.vec.f.x - cobj->vec.eye.x;
+    y = dobj->translate.vec.f.y - cobj->vec.eye.y;
+    z = dobj->translate.vec.f.z - cobj->vec.eye.z;
 
     return SQUARE(x) + SQUARE(y) + SQUARE(z);
 }
@@ -2639,15 +2639,15 @@ void unref_800162C8(GObj *gobj)
 }
 
 // 0x80016338
-void func_80016338(Gfx **dls, Camera *cam, s32 buffer_id)
+void func_80016338(Gfx **dls, CObj *cobj, s32 buffer_id)
 {
-    Vp_t *viewport = &cam->viewport.vp;
+    Vp_t *viewport = &cobj->viewport.vp;
     Gfx *dl = dls[0];
     s32 ulx, uly, lrx, lry;
 
     if ((buffer_id == 0) || (buffer_id == 1))
     {
-        if (cam->flags & 0x20)
+        if (cobj->flags & 0x20)
         {
             syTaskmanAppendGfxUcodeLoad(dls, D_80046626);
             D_80046628 = 1;
@@ -2694,15 +2694,15 @@ void func_80016338(Gfx **dls, Camera *cam, s32 buffer_id)
 }
 
 // 0x8001663C
-void func_8001663C(Gfx **dls, Camera *cam, s32 buffer_id)
+void func_8001663C(Gfx **dls, CObj *cobj, s32 buffer_id)
 {
     Gfx *dl = dls[0];
-    Vp_t *viewport = &cam->viewport.vp;
+    Vp_t *viewport = &cobj->viewport.vp;
     s32 ulx, uly, lrx, lry;
 
     if ((buffer_id == 0) || (buffer_id == 1))
     {
-        if (cam->flags & 0x20)
+        if (cobj->flags & 0x20)
         {
             syTaskmanAppendGfxUcodeLoad(dls, D_80046626);
             D_80046628 = 1;
@@ -2737,7 +2737,7 @@ void func_8001663C(Gfx **dls, Camera *cam, s32 buffer_id)
 
     lrx--, lry--;
 
-    if (cam->flags & CAMERA_FLAG_ZBUFFER)
+    if (cobj->flags & COBJ_FLAG_ZBUFFER)
     {
         gDPPipeSync(dl++);
         gDPSetCycleType(dl++, G_CYC_FILL);
@@ -2749,11 +2749,11 @@ void func_8001663C(Gfx **dls, Camera *cam, s32 buffer_id)
     gDPPipeSync(dl++);
     gDPSetColorImage(dl++, G_IM_FMT_RGBA, gSYVideoColorDepth, gSYVideoResWidth, (void*)0x0F000000);
 
-    if (cam->flags & CAMERA_FLAG_FILLCOLOR)
+    if (cobj->flags & COBJ_FLAG_FILLCOLOR)
     {
         gDPSetCycleType(dl++, G_CYC_FILL);
         gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
-        gDPSetFillColor(dl++, syVideoGetFillColor(cam->color));
+        gDPSetFillColor(dl++, syVideoGetFillColor(cobj->color));
         gDPFillRectangle(dl++, ulx, uly, lrx, lry);
     }
     gDPPipeSync(dl++);
@@ -2769,10 +2769,10 @@ void func_8001663C(Gfx **dls, Camera *cam, s32 buffer_id)
 }
 
 // 0x80016AE4
-void unref_80016AE4(Gfx **dls, Camera *cam, s32 arg2, void *image, s32 max_lrx, s32 max_lry, void *depth)
+void unref_80016AE4(Gfx **dls, CObj *cobj, s32 arg2, void *image, s32 max_lrx, s32 max_lry, void *depth)
 {
     Gfx *dl = dls[0];
-    Vp_t *viewport = &cam->viewport.vp;
+    Vp_t *viewport = &cobj->viewport.vp;
     s32 ulx, uly, lrx, lry;
 
     gSPViewport(dl++, viewport);
@@ -2802,7 +2802,7 @@ void unref_80016AE4(Gfx **dls, Camera *cam, s32 arg2, void *image, s32 max_lrx, 
 
     lrx--, lry--;
 
-    if (cam->flags & CAMERA_FLAG_ZBUFFER)
+    if (cobj->flags & COBJ_FLAG_ZBUFFER)
     {
         gDPPipeSync(dl++);
         gDPSetCycleType(dl++, G_CYC_FILL);
@@ -2815,11 +2815,11 @@ void unref_80016AE4(Gfx **dls, Camera *cam, s32 arg2, void *image, s32 max_lrx, 
     gDPSetColorImage(dl++, G_IM_FMT_RGBA, gSYVideoColorDepth, max_lrx, image);
     gDPSetDepthImage(dl++, depth);
 
-    if (cam->flags & CAMERA_FLAG_FILLCOLOR)
+    if (cobj->flags & COBJ_FLAG_FILLCOLOR)
     {
         gDPSetCycleType(dl++, G_CYC_FILL);
         gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
-        gDPSetFillColor(dl++, syVideoGetFillColor(cam->color));
+        gDPSetFillColor(dl++, syVideoGetFillColor(cobj->color));
         gDPFillRectangle(dl++, ulx, uly, lrx, lry);
     }
     gDPPipeSync(dl++);
@@ -2835,7 +2835,7 @@ void unref_80016AE4(Gfx **dls, Camera *cam, s32 arg2, void *image, s32 max_lrx, 
 }
 
 // 0x80016EDC
-void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
+void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
 {
     Gfx *dl;
     s32 i;
@@ -2849,11 +2849,11 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
     spC8 = 0;
     var_s3 = 0;
 
-    if (cam->xobjs_num != 0)
+    if (cobj->xobjs_num != 0)
     {
-        for (i = 0; i < cam->xobjs_num; i++)
+        for (i = 0; i < cobj->xobjs_num; i++)
         {
-            xobj = cam->xobj[i];
+            xobj = cobj->xobj[i];
 
             if (xobj != NULL)
             {
@@ -2878,12 +2878,12 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                         syMatrixPerspFastF
                         (
                             gODMatrixPerspF,
-                            &cam->projection.persp.norm,
-                            cam->projection.persp.fovy,
-                            cam->projection.persp.aspect,
-                            cam->projection.persp.near,
-                            cam->projection.persp.far,
-                            cam->projection.persp.scale
+                            &cobj->projection.persp.norm,
+                            cobj->projection.persp.fovy,
+                            cobj->projection.persp.aspect,
+                            cobj->projection.persp.near,
+                            cobj->projection.persp.far,
+                            cobj->projection.persp.scale
                         );
                         syMatrixF2L(&gODMatrixPerspF, mtx_store.gbi);
                         sODMatrixProjectL = mtx_store.gbi;
@@ -2893,12 +2893,12 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                         syMatrixPerspF
                         (
                             gODMatrixPerspF,
-                            &cam->projection.persp.norm,
-                            cam->projection.persp.fovy,
-                            cam->projection.persp.aspect,
-                            cam->projection.persp.near,
-                            cam->projection.persp.far,
-                            cam->projection.persp.scale
+                            &cobj->projection.persp.norm,
+                            cobj->projection.persp.fovy,
+                            cobj->projection.persp.aspect,
+                            cobj->projection.persp.near,
+                            cobj->projection.persp.far,
+                            cobj->projection.persp.scale
                         );
                         syMatrixF2L(&gODMatrixPerspF, mtx_store.gbi);
                         sODMatrixProjectL = mtx_store.gbi;
@@ -2908,13 +2908,13 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                         syMatrixOrtho
                         (
                             mtx_store.gbi,
-                            cam->projection.ortho.l,
-                            cam->projection.ortho.r,
-                            cam->projection.ortho.b,
-                            cam->projection.ortho.t,
-                            cam->projection.ortho.n,
-                            cam->projection.ortho.f,
-                            cam->projection.ortho.scale
+                            cobj->projection.ortho.l,
+                            cobj->projection.ortho.r,
+                            cobj->projection.ortho.b,
+                            cobj->projection.ortho.t,
+                            cobj->projection.ortho.n,
+                            cobj->projection.ortho.f,
+                            cobj->projection.ortho.scale
                         );
                         sODMatrixProjectL = mtx_store.gbi;
                         break;
@@ -2924,28 +2924,28 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                         syMatrixLookAt
                         (
                             mtx_store.gbi,
-                            cam->vec.eye.x,
-                            cam->vec.eye.y,
-                            cam->vec.eye.z,
-                            cam->vec.at.x,
-                            cam->vec.at.y,
-                            cam->vec.at.z,
-                            cam->vec.up.x,
-                            cam->vec.up.y,
-                            cam->vec.up.z
+                            cobj->vec.eye.x,
+                            cobj->vec.eye.y,
+                            cobj->vec.eye.z,
+                            cobj->vec.at.x,
+                            cobj->vec.at.y,
+                            cobj->vec.at.z,
+                            cobj->vec.up.x,
+                            cobj->vec.up.y,
+                            cobj->vec.up.z
                         );
-                        var_s3 = (cam->vec.up.z < cam->vec.up.y) ? 1 : 2;
+                        var_s3 = (cobj->vec.up.z < cobj->vec.up.y) ? 1 : 2;
                         break;
 
                     case 8:
                     case 9:
-                        syMatrixModLookAt(mtx_store.gbi, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 1.0F, 0.0F);
+                        syMatrixModLookAt(mtx_store.gbi, cobj->vec.eye.x, cobj->vec.eye.y, cobj->vec.eye.z, cobj->vec.at.x, cobj->vec.at.y, cobj->vec.at.z, cobj->vec.up.x, 0.0F, 1.0F, 0.0F);
                         var_s3 = 1;
                         break;
 
                     case 10:
                     case 11:
-                        syMatrixModLookAt(mtx_store.gbi, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 0.0F, 1.0F);
+                        syMatrixModLookAt(mtx_store.gbi, cobj->vec.eye.x, cobj->vec.eye.y, cobj->vec.eye.z, cobj->vec.at.x, cobj->vec.at.y, cobj->vec.at.z, cobj->vec.up.x, 0.0F, 0.0F, 1.0F);
                         var_s3 = 2;
                         break;
 
@@ -2956,24 +2956,24 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                         (
                             mtx_store.gbi,
                             look_at,
-                            cam->vec.eye.x,
-                            cam->vec.eye.y,
-                            cam->vec.eye.z,
-                            cam->vec.at.x,
-                            cam->vec.at.y,
-                            cam->vec.at.z,
-                            cam->vec.up.x,
-                            cam->vec.up.y,
-                            cam->vec.up.z
+                            cobj->vec.eye.x,
+                            cobj->vec.eye.y,
+                            cobj->vec.eye.z,
+                            cobj->vec.at.x,
+                            cobj->vec.at.y,
+                            cobj->vec.at.z,
+                            cobj->vec.up.x,
+                            cobj->vec.up.y,
+                            cobj->vec.up.z
                         );
-                        var_s3 = (cam->vec.up.z < cam->vec.up.y) ? 1 : 2;
+                        var_s3 = (cobj->vec.up.z < cobj->vec.up.y) ? 1 : 2;
                         break;
 
                     case 14:
                     case 15:
                         look_at = syMallocSet(&gSYTaskmanGraphicsHeap, sizeof(LookAt), 0x8);
                         var_s3 = 1;
-                        syMatrixModLookAtReflect(mtx_store.gbi, look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 1.0F, 0.0F);
+                        syMatrixModLookAtReflect(mtx_store.gbi, look_at, cobj->vec.eye.x, cobj->vec.eye.y, cobj->vec.eye.z, cobj->vec.at.x, cobj->vec.at.y, cobj->vec.at.z, cobj->vec.up.x, 0.0F, 1.0F, 0.0F);
                         break;
 
                     case 16:
@@ -2981,7 +2981,7 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                         look_at = syMallocSet(&gSYTaskmanGraphicsHeap, sizeof(LookAt), 0x8);
                         var_s3 = 2;
 
-                        syMatrixModLookAtReflect(mtx_store.gbi, look_at, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, 0.0F, 0.0F, 1.0F);
+                        syMatrixModLookAtReflect(mtx_store.gbi, look_at, cobj->vec.eye.x, cobj->vec.eye.y, cobj->vec.eye.z, cobj->vec.at.x, cobj->vec.at.y, cobj->vec.at.z, cobj->vec.up.x, 0.0F, 0.0F, 1.0F);
                         break;
 
                     default:
@@ -2989,7 +2989,7 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                         {
                             if (sODMatrixProcess[xobj->kind - 66].proc_diff != NULL)
                             {
-                                sODMatrixProcess[xobj->kind - 66].proc_diff(mtx_store.gbi, cam, &dl);
+                                sODMatrixProcess[xobj->kind - 66].proc_diff(mtx_store.gbi, cobj, &dl);
                             }
                         }
                         break;
@@ -3010,7 +3010,7 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                 case nGCTransformPerspFastF:
                 case nGCTransformPerspF:
                     gSPMatrix(dl++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-                    gSPPerspNormalize(dl++, cam->projection.persp.norm);
+                    gSPPerspNormalize(dl++, cobj->projection.persp.norm);
                     break;
 
                 case nGCTransformOrtho:
@@ -3046,7 +3046,7 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
                     {
                         if (sODMatrixProcess[xobj->kind - 66].proc_same != NULL)
                         {
-                            sODMatrixProcess[xobj->kind - 66].proc_same(mtx_store.gbi, cam, &dl);
+                            sODMatrixProcess[xobj->kind - 66].proc_same(mtx_store.gbi, cobj, &dl);
                         }
                     }
                     break;
@@ -3099,15 +3099,15 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
             switch (var_s3)
             {
             case 1:
-                eye_z = sqrtf(SQUARE(cam->vec.at.z - cam->vec.eye.z) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
-                eye_y = cam->vec.eye.y;
-                at_y = cam->vec.at.y;
+                eye_z = sqrtf(SQUARE(cobj->vec.at.z - cobj->vec.eye.z) + SQUARE(cobj->vec.at.x - cobj->vec.eye.x));
+                eye_y = cobj->vec.eye.y;
+                at_y = cobj->vec.at.y;
                 break;
 
             case 2:
-                eye_z = sqrtf(SQUARE(cam->vec.at.y - cam->vec.eye.y) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
-                eye_y = cam->vec.eye.z;
-                at_y = cam->vec.at.z;
+                eye_z = sqrtf(SQUARE(cobj->vec.at.y - cobj->vec.eye.y) + SQUARE(cobj->vec.at.x - cobj->vec.eye.x));
+                eye_y = cobj->vec.eye.z;
+                at_y = cobj->vec.at.z;
                 break;
             }
             if (eye_z < 0.0001F)
@@ -3127,15 +3127,15 @@ void gcPrepCameraMatrix(Gfx **dls, Camera *cam)
             switch (spC8)
             {
             case 1:
-                eye_z = sqrtf(SQUARE(cam->vec.at.y - cam->vec.eye.y) + SQUARE(cam->vec.at.z - cam->vec.eye.z));
-                eye_x = cam->vec.eye.x;
-                at_x = cam->vec.at.x;
+                eye_z = sqrtf(SQUARE(cobj->vec.at.y - cobj->vec.eye.y) + SQUARE(cobj->vec.at.z - cobj->vec.eye.z));
+                eye_x = cobj->vec.eye.x;
+                at_x = cobj->vec.at.x;
                 break;
 
             case 2:
-                eye_z = sqrtf(SQUARE(cam->vec.at.z - cam->vec.eye.z) + SQUARE(cam->vec.at.x - cam->vec.eye.x));
-                eye_x = cam->vec.eye.y;
-                at_x = cam->vec.at.y;
+                eye_z = sqrtf(SQUARE(cobj->vec.at.z - cobj->vec.eye.z) + SQUARE(cobj->vec.at.x - cobj->vec.eye.x));
+                eye_x = cobj->vec.eye.y;
+                at_x = cobj->vec.at.y;
                 break;
             }
             if (eye_z < 0.0001F)
@@ -3159,11 +3159,11 @@ void gcSetCameraMatrixMode(s32 val)
 }
 
 // the second arg may just be unused
-void gcRunFuncCamera(Camera *cam, s32 dl_id) 
+void gcRunFuncCamera(CObj *cobj, s32 dl_id) 
 {
-    if (cam->func_camera != NULL)
+    if (cobj->func_camera != NULL)
     { 
-        cam->func_camera(cam, dl_id);
+        cobj->func_camera(cobj, dl_id);
     }
 }
 
@@ -3178,8 +3178,8 @@ void func_80017868(GObj *this_gobj, s32 link_id, sb32 is_tag_mask_or_id)
         {
             if
             (
-                ((is_tag_mask_or_id == 0) && (this_gobj->cam_tag &  current_gobj->cam_tag)) ||
-                ((is_tag_mask_or_id == 1) && (this_gobj->cam_tag == current_gobj->cam_tag))
+                ((is_tag_mask_or_id == 0) && (this_gobj->cobj_tag &  current_gobj->cobj_tag)) ||
+                ((is_tag_mask_or_id == 1) && (this_gobj->cobj_tag == current_gobj->cobj_tag))
             )
             {
                 D_8003B874_3C474 = 4;
@@ -3244,17 +3244,17 @@ void func_80017AAC(s32 index)
 void func_80017B80(GObj *gobj, s32 arg1)
 {
     s32 id;
-    u64 cam_mask;
+    u64 cobj_mask;
     u64 sp30;
 
-    cam_mask = gobj->cam_mask;
+    cobj_mask = gobj->cobj_mask;
     sp30 = gobj->unk_gobj_0x40;
 
     id = 0;
 
-    while (cam_mask) 
+    while (cobj_mask) 
     {
-        if (cam_mask & 1) 
+        if (cobj_mask & 1) 
         {
             if (sp30 & 1)
             {
@@ -3266,25 +3266,25 @@ void func_80017B80(GObj *gobj, s32 arg1)
             } 
             else func_80017868(gobj, id, arg1);
         }
-        cam_mask >>= 1;
+        cobj_mask >>= 1;
         sp30 >>= 1;
         id++;
     }
 }
 
 // 0x80017CC8
-void func_80017CC8(Camera *cam) 
+void func_80017CC8(CObj *cobj) 
 {
-    if (cam->flags & CAMERA_FLAG_DLBUFFERS)
+    if (cobj->flags & COBJ_FLAG_DLBUFFERS)
     {
         syTaskmanUpdateDLBuffers(); 
     }
-    if (cam->flags & CAMERA_FLAG_GFXEND) 
+    if (cobj->flags & COBJ_FLAG_GFXEND) 
     {
         func_800053CC();
         func_80004F78();
     }
-    if (cam->flags & CAMERA_FLAG_BRANCHSYNC)
+    if (cobj->flags & COBJ_FLAG_BRANCHSYNC)
     { 
         func_800053CC();
     }
@@ -3293,12 +3293,12 @@ void func_80017CC8(Camera *cam)
 // 0x80017D3C
 void func_80017D3C(GObj *gobj, Gfx **dls, s32 index)
 {
-    Camera *cam = CameraGetStruct(gobj);
-    func_8001663C(dls, cam, index);
-    gcPrepCameraMatrix(dls, cam);
-    gcRunFuncCamera(cam, index);
-    func_80017B80(gobj, (cam->flags & CAMERA_FLAG_IDENTIFIER) ? TRUE : FALSE);
-    func_80017CC8(cam);
+    CObj *cobj = CObjGetStruct(gobj);
+    func_8001663C(dls, cobj, index);
+    gcPrepCameraMatrix(dls, cobj);
+    gcRunFuncCamera(cobj, index);
+    func_80017B80(gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? TRUE : FALSE);
+    func_80017CC8(cobj);
 }
 
 // 0x80017DBC
@@ -3328,41 +3328,41 @@ void unref_80017E34(GObj *gobj)
 // 0x80017E5C
 void unref_80017E5C(void) 
 {
-    Camera *cam = CameraGetStruct(gGCCurrentCamera);
+    CObj *cobj = CObjGetStruct(gGCCurrentCamera);
 
     func_800053CC();
     func_80004F78();
-    func_8001663C(gSYTaskmanDLHeads, cam, 0);
-    gcPrepCameraMatrix(gSYTaskmanDLHeads, cam);
-    gcRunFuncCamera(cam, 0);
+    func_8001663C(gSYTaskmanDLHeads, cobj, 0);
+    gcPrepCameraMatrix(gSYTaskmanDLHeads, cobj);
+    gcRunFuncCamera(cobj, 0);
 }
 
 // 0x80017EC0
 void func_80017EC0(GObj *gobj)
 {
-    Camera *cam = CameraGetStruct(gobj);
+    CObj *cobj = CObjGetStruct(gobj);
     s32 i;
 
-    func_8001663C(gSYTaskmanDLHeads, cam, 0);
+    func_8001663C(gSYTaskmanDLHeads, cobj, 0);
     D_800472C0 = gSYTaskmanDLHeads[0] + 1;
     gSPDisplayList(gSYTaskmanDLHeads[0], gSYTaskmanDLHeads[0] + 2);
     gSYTaskmanDLHeads[0] += 2;
 
-    gcPrepCameraMatrix(gSYTaskmanDLHeads, cam);
+    gcPrepCameraMatrix(gSYTaskmanDLHeads, cobj);
     gSPEndDisplayList(gSYTaskmanDLHeads[0]++);
     gSPBranchList(D_800472C0, gSYTaskmanDLHeads[0]);
 
-    gcRunFuncCamera(cam, 0);
+    gcRunFuncCamera(cobj, 0);
 
-    if (cam->flags & 0x20)
+    if (cobj->flags & 0x20)
     {
-        func_80016338(&gSYTaskmanDLHeads[1], cam, 1);
+        func_80016338(&gSYTaskmanDLHeads[1], cobj, 1);
     }
     for (i = 1; i < (ARRAY_COUNT(gSYTaskmanDLHeads) + ARRAY_COUNT(D_800472B0)) / 2; i++)
     {
         D_800472B0[i] = ++gSYTaskmanDLHeads[i];
     }
-    func_80017B80(gobj, (cam->flags & CAMERA_FLAG_IDENTIFIER) ? TRUE : FALSE);
+    func_80017B80(gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? TRUE : FALSE);
 
     for (i = 1; i < (ARRAY_COUNT(gSYTaskmanDLHeads) + ARRAY_COUNT(D_800472B0)) / 2; i++)
     {
@@ -3375,23 +3375,23 @@ void func_80017EC0(GObj *gobj)
             Gfx *start = gSYTaskmanDLHeads[i]++;
             gSPDisplayList(D_800472B0[i] - 1, gSYTaskmanDLHeads[i]);
 
-            if ((i != 1) || !(cam->flags & 0x20))
+            if ((i != 1) || !(cobj->flags & 0x20))
             {
-                func_80016338(&gSYTaskmanDLHeads[i], cam, i);
+                func_80016338(&gSYTaskmanDLHeads[i], cobj, i);
             }
             gSPDisplayList(gSYTaskmanDLHeads[i]++, D_800472C0 + 1);
-            gcRunFuncCamera(cam, i);
+            gcRunFuncCamera(cobj, i);
             gSPEndDisplayList(gSYTaskmanDLHeads[i]++);
             gSPBranchList(start, gSYTaskmanDLHeads[i]);
         }
     }
-    func_80017CC8(cam);
+    func_80017CC8(cobj);
 }
 
 // 0x8001810C
 void unref_8001810C(void)
 {
-    Camera *cam = CameraGetStruct(gGCCurrentCamera);
+    CObj *cobj = CObjGetStruct(gGCCurrentCamera);
     s32 i;
 
     for (i = 1; i < (ARRAY_COUNT(gSYTaskmanDLHeads) + ARRAY_COUNT(D_800472B0)) / 2; i++)
@@ -3405,16 +3405,16 @@ void unref_8001810C(void)
             Gfx *start = gSYTaskmanDLHeads[i]++;
 
             gSPDisplayList(D_800472B0[i] - 1, gSYTaskmanDLHeads[i]);
-            func_80016338(&gSYTaskmanDLHeads[i], cam, i);
+            func_80016338(&gSYTaskmanDLHeads[i], cobj, i);
             gSPDisplayList(gSYTaskmanDLHeads[i]++, D_800472C0 + 1);
-            gcRunFuncCamera(cam, i);
+            gcRunFuncCamera(cobj, i);
             gSPEndDisplayList(gSYTaskmanDLHeads[i]++);
             gSPBranchList(start, gSYTaskmanDLHeads[i]);
         }
     }
     func_800053CC();
     func_80004F78();
-    func_8001663C(&gSYTaskmanDLHeads[0], cam, 0);
+    func_8001663C(&gSYTaskmanDLHeads[0], cobj, 0);
 
     D_800472C0 = gSYTaskmanDLHeads[0] + 1;
 
@@ -3422,11 +3422,11 @@ void unref_8001810C(void)
 
     gSYTaskmanDLHeads[0] += 2;
 
-    gcPrepCameraMatrix(gSYTaskmanDLHeads, cam);
+    gcPrepCameraMatrix(gSYTaskmanDLHeads, cobj);
     gSPEndDisplayList(gSYTaskmanDLHeads[0]++);
     gSPBranchList(D_800472C0, gSYTaskmanDLHeads[0]);
 
-    gcRunFuncCamera(cam, 0);
+    gcRunFuncCamera(cobj, 0);
 
     for (i = 1; i < (ARRAY_COUNT(gSYTaskmanDLHeads) + ARRAY_COUNT(D_800472B0)) / 2; i++)
     {
@@ -3437,8 +3437,8 @@ void unref_8001810C(void)
 // 0x80018300
 void func_80018300(GObj *gobj)
 {
-    Camera *cam = CameraGetStruct(gobj);
-    Vp_t *viewport = &cam->viewport.vp;
+    CObj *cobj = CObjGetStruct(gobj);
+    Vp_t *viewport = &cobj->viewport.vp;
     s32 xmin = (viewport->vtrans[0] / 4) - (viewport->vscale[0] / 4);
     s32 ymin = (viewport->vtrans[1] / 4) - (viewport->vscale[1] / 4);
     s32 xmax = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
@@ -3460,10 +3460,10 @@ void func_80018300(GObj *gobj)
     {
         ymax = gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorBottom);
     }
-    func_8001663C(gSYTaskmanDLHeads, cam, 0);
+    func_8001663C(gSYTaskmanDLHeads, cobj, 0);
     spInit(gSYTaskmanDLHeads);
     spScissor(xmin, xmax, ymin, ymax);
-    func_80017B80(gobj, (cam->flags & CAMERA_FLAG_IDENTIFIER) ? TRUE : FALSE);
+    func_80017B80(gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? TRUE : FALSE);
     spFinish(gSYTaskmanDLHeads);
 
     gSYTaskmanDLHeads[0]--;

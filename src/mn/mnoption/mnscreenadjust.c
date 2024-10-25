@@ -103,7 +103,7 @@ syTaskmanSetup dMNScreenAdjustTaskmanSetup =
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
     0,                              // Number of Cameras
-    sizeof(Camera),                 // Camera size
+    sizeof(CObj),                 	// CObj size
     
     mnScreenAdjustFuncStart         // Task start function
 };
@@ -187,7 +187,7 @@ void mnScreenAdjustMakeInstruction(void)
 // 0x80131E74
 void mnScreenAdjustMakeFrameCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -197,7 +197,7 @@ void mnScreenAdjustMakeFrameCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             40,
-            CAMERA_MASK_DLLINK(0),
+            COBJ_MASK_DLLINK(0),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -206,13 +206,13 @@ void mnScreenAdjustMakeFrameCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80131F14
 void mnScreenAdjustMakeSpriteCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -222,7 +222,7 @@ void mnScreenAdjustMakeSpriteCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             70,
-            CAMERA_MASK_DLLINK(1),
+            COBJ_MASK_DLLINK(1),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -231,7 +231,7 @@ void mnScreenAdjustMakeSpriteCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80131FB4
@@ -444,7 +444,7 @@ void mnScreenAdjustFuncStart(void)
         )
     );
     gcMakeGObjSPAfter(0, mnScreenAdjustFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     mnScreenAdjustInitVars();
     mnScreenAdjustMakeFrameCamera();
     mnScreenAdjustMakeSpriteCamera();

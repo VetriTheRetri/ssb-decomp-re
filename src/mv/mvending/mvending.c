@@ -136,7 +136,7 @@ syTaskmanSetup dMVEndingTaskmanSetup =
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
     0,                              // Number of Cameras
-    sizeof(Camera),                 // Camera size
+    sizeof(CObj),                 	// CObj size
     
     mvEndingFuncStart               // Task start function
 };
@@ -302,7 +302,7 @@ void mvEndingMakeRoomFadeIn(void)
 // 0x801321A4
 void mvEndingMakeRoomFadeInCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -312,7 +312,7 @@ void mvEndingMakeRoomFadeInCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             60,
-            CAMERA_MASK_DLLINK(26),
+            COBJ_MASK_DLLINK(26),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -321,7 +321,7 @@ void mvEndingMakeRoomFadeInCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132244
@@ -361,7 +361,7 @@ void mvEndingMakeRoomLight(void)
 // 0x8013249C
 void mvEndingMakeRoomLightCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -371,7 +371,7 @@ void mvEndingMakeRoomLightCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             30,
-            CAMERA_MASK_DLLINK(30),
+            COBJ_MASK_DLLINK(30),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -380,7 +380,7 @@ void mvEndingMakeRoomLightCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013253C
@@ -396,14 +396,14 @@ void mvEndingEjectRoomGObjs(void)
 // 0x80132590
 void mvEndingSetupOperatorCamera(GObj *gobj)
 {
-    Camera *cam = CameraGetStruct(gobj);
+    CObj *cobj = CObjGetStruct(gobj);
 
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cam->projection.persp.near = 128.0F;
-    cam->projection.persp.far = 16384.0F;
+    cobj->projection.persp.near = 128.0F;
+    cobj->projection.persp.far = 16384.0F;
 
-    gcAddCameraCamAnimJoint(cam, lbRelocGetDataFromFile(AObjEvent32*, sMVEndingFiles[1], &lMVEndingOperatorCamAnimJoint), 0.0F);
+    gcAddCameraCamAnimJoint(cobj, lbRelocGetDataFromFile(AObjEvent32*, sMVEndingFiles[1], &lMVEndingOperatorCamAnimJoint), 0.0F);
     gcAddGObjProcess(gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
 }
 
@@ -420,7 +420,7 @@ void mvEndingMakeMainCameras(void)
         GOBJ_LINKORDER_DEFAULT,
         func_80017EC0,
         80,
-        CAMERA_MASK_DLLINK(29),
+        COBJ_MASK_DLLINK(29),
         -1,
         FALSE,
         nGCProcessKindProc,
@@ -428,11 +428,11 @@ void mvEndingMakeMainCameras(void)
         1,
         FALSE
     );
-    gcAddXObjForCamera(CameraGetStruct(gobj), nGCTransformPerspFastF, 0);
-    gcAddXObjForCamera(CameraGetStruct(gobj), 8, 0);
+    gcAddXObjForCamera(CObjGetStruct(gobj), nGCTransformPerspFastF, 0);
+    gcAddXObjForCamera(CObjGetStruct(gobj), 8, 0);
     mvEndingSetupOperatorCamera(gobj);
 
-    CameraGetStruct(gobj)->flags |= 4;
+    CObjGetStruct(gobj)->flags |= 4;
 
     sMVEndingFighterCameraGObj = gobj = gcMakeCameraGObj
     (
@@ -442,7 +442,7 @@ void mvEndingMakeMainCameras(void)
         GOBJ_LINKORDER_DEFAULT,
         func_80017EC0,
         40,
-        CAMERA_MASK_DLLINK(9),
+        COBJ_MASK_DLLINK(9),
         -1,
         TRUE,
         nGCProcessKindProc,
@@ -452,7 +452,7 @@ void mvEndingMakeMainCameras(void)
     );
     mvEndingSetupOperatorCamera(gobj);
 
-    CameraGetStruct(gobj)->flags |= 4;
+    CObjGetStruct(gobj)->flags |= 4;
 }
 
 // 0x80132774
@@ -537,7 +537,7 @@ void mvEndingFuncStart(void)
         )
     );
     gcMakeGObjSPAfter(0, mvEndingFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF));
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF));
     efAllocInitParticleBank();
     mvEndingInitVars();
     efManagerInitEffects();

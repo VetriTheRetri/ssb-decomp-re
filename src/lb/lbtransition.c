@@ -124,25 +124,25 @@ void *sLBTransitionPhotoHeap;
 // // // // // // // // // // // //
 
 // 0x800D4130
-GObj* lbTransitionMakeCamera(u32 id, s32 link, u32 link_order, u64 cam_mask)
+GObj* lbTransitionMakeCamera(u32 id, s32 link, u32 link_order, u64 cobj_mask)
 {
     GObj *gobj;
-    Camera *cam;
+    CObj *cobj;
 
     gobj = gcMakeGObjSPAfter(id, NULL, link, GOBJ_LINKORDER_DEFAULT);
-    func_80009F74(gobj, func_80017DBC, link_order, cam_mask, -1);
+    func_80009F74(gobj, func_80017DBC, link_order, cobj_mask, -1);
     
-    cam = gcAddCameraForGObj(gobj);
-    gcAddXObjForCamera(cam, nGCTransformPerspFastF, 1);
-    gcAddXObjForCamera(cam, nGCTransformLookAt, 1);
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    cobj = gcAddCameraForGObj(gobj);
+    gcAddXObjForCamera(cobj, nGCTransformPerspFastF, 1);
+    gcAddXObjForCamera(cobj, nGCTransformLookAt, 1);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cam->projection.persp.aspect = 15.0F / 11.0F;
-    cam->projection.persp.fovy = 45.0F;
+    cobj->projection.persp.aspect = 15.0F / 11.0F;
+    cobj->projection.persp.fovy = 45.0F;
     
-    cam->vec.eye.z = 1100.0F / tanf(F_CLC_DTOR32(cam->projection.persp.fovy * 0.5F));
+    cobj->vec.eye.z = 1100.0F / tanf(F_CLC_DTOR32(cobj->projection.persp.fovy * 0.5F));
 
-    cam->flags |= (0x4 | 0x1);
+    cobj->flags |= (0x4 | 0x1);
     
     return gobj;
 }

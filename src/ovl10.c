@@ -243,7 +243,7 @@ syTaskmanSetup dMNTitleTaskmanSetup =
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
     0,                              // Number of Cameras
-    sizeof(Camera),                 // Camera size
+    sizeof(CObj),                 	// CObj size
     
     mnTitleFuncStart               	// Task start function
 };
@@ -458,7 +458,7 @@ void mnTitleProceedDemoNext(void)
 {
 	u8 scene_previous = gSceneData.scene_previous;
 
-	gcMakeDefaultCameraGObj(2, GOBJ_LINKORDER_DEFAULT, 0, CAMERA_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(2, GOBJ_LINKORDER_DEFAULT, 0, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mnTitleSetDemoFighterKinds();
 	func_800266A0_272A0();
 
@@ -487,7 +487,7 @@ void mnTitleProceedDemoNext(void)
 // 0x80132090
 void mnTitleProceedModeSelect(void)
 {
-	gcMakeDefaultCameraGObj(2, GOBJ_LINKORDER_DEFAULT, 0, CAMERA_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(2, GOBJ_LINKORDER_DEFAULT, 0, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	gSceneData.scene_previous = gSceneData.scene_current;
 	gSceneData.scene_current = nSCKindModeSelect;
@@ -1259,7 +1259,7 @@ void mnTitleMakeSlash(void)
 // 0x80133770
 void mnTitleFireCameraProcUpdate(GObj *gobj)
 {
-	Camera *cam = CameraGetStruct(sMNTitleFireCameraGObj);
+	CObj *cobj = CObjGetStruct(sMNTitleFireCameraGObj);
 
 	if (sMNTitleTransitionTotalTimeTics >= 40)
 	{
@@ -1310,7 +1310,7 @@ void mnTitleFireCameraProcUpdate(GObj *gobj)
 		TAKE_MAX(sMNTitleFireColorG, 0.0F);
 		TAKE_MAX(sMNTitleFireColorB, 0.0F);
 
-		cam->color = GPACK_RGBA8888((s32) sMNTitleFireColorR, (s32) sMNTitleFireColorG, (s32) sMNTitleFireColorB, 0xFF);
+		cobj->color = GPACK_RGBA8888((s32) sMNTitleFireColorR, (s32) sMNTitleFireColorG, (s32) sMNTitleFireColorB, 0xFF);
 	}
 }
 
@@ -1319,9 +1319,9 @@ s32 mnTitleMakeCameras(void)
 {
 	GObj *camera_gobj;
 	s32 unused;
-	Camera *cam;
+	CObj *cobj;
 
-	sMNTitleFireCameraGObj = gcMakeDefaultCameraGObj(2, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	sMNTitleFireCameraGObj = gcMakeDefaultCameraGObj(2, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	gcAddGObjProcess(sMNTitleFireCameraGObj, mnTitleFireCameraProcUpdate, nGCProcessKindProc, 1);
 
 	camera_gobj = gcMakeCameraGObj
@@ -1332,7 +1332,7 @@ s32 mnTitleMakeCameras(void)
 		GOBJ_LINKORDER_DEFAULT,
 		lbCommonScissorSpriteCamera,
 		60,
-		CAMERA_MASK_DLLINK(1) | CAMERA_MASK_DLLINK(0),
+		COBJ_MASK_DLLINK(1) | COBJ_MASK_DLLINK(0),
 		-1,
 		FALSE,
 		nGCProcessKindProc,
@@ -1340,33 +1340,33 @@ s32 mnTitleMakeCameras(void)
 		1,
 		FALSE
 	);
-	cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-	camera_gobj = gcMakeCameraGObj(3, NULL, 3, GOBJ_LINKORDER_DEFAULT, func_80017EC0, 40, CAMERA_MASK_DLLINK(2), -1, FALSE, nGCProcessKindProc, NULL, 1, FALSE);
-	cam = CameraGetStruct(camera_gobj);
+	camera_gobj = gcMakeCameraGObj(3, NULL, 3, GOBJ_LINKORDER_DEFAULT, func_80017EC0, 40, COBJ_MASK_DLLINK(2), -1, FALSE, nGCProcessKindProc, NULL, 1, FALSE);
+	cobj = CObjGetStruct(camera_gobj);
 
-	gcAddXObjForCamera(cam, nGCTransformOrtho, 0);
-	gcAddXObjForCamera(cam, nGCTransformLookAt, 0);
+	gcAddXObjForCamera(cobj, nGCTransformOrtho, 0);
+	gcAddXObjForCamera(cobj, nGCTransformLookAt, 0);
 
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 	
-	cam->vec.at.x = cam->vec.at.y = cam->vec.at.z = 0.0F;
+	cobj->vec.at.x = cobj->vec.at.y = cobj->vec.at.z = 0.0F;
 	
-	cam->vec.eye.x = cam->vec.eye.y = 0.0F;
-	cam->vec.eye.z = 2000.0F;
+	cobj->vec.eye.x = cobj->vec.eye.y = 0.0F;
+	cobj->vec.eye.z = 2000.0F;
 
-	camera_gobj = gcMakeCameraGObj(3, NULL, 3, GOBJ_LINKORDER_DEFAULT, func_80017EC0, 80, CAMERA_MASK_DLLINK(3), -1, TRUE, nGCProcessKindProc, NULL, 1, FALSE);
-	cam = CameraGetStruct(camera_gobj);
+	camera_gobj = gcMakeCameraGObj(3, NULL, 3, GOBJ_LINKORDER_DEFAULT, func_80017EC0, 80, COBJ_MASK_DLLINK(3), -1, TRUE, nGCProcessKindProc, NULL, 1, FALSE);
+	cobj = CObjGetStruct(camera_gobj);
 
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 	
-	cam->vec.at.x = cam->vec.at.y = cam->vec.at.z = 0.0F;
+	cobj->vec.at.x = cobj->vec.at.y = cobj->vec.at.z = 0.0F;
 	
-	cam->vec.eye.x = cam->vec.eye.y = 0.0F;
-	cam->vec.eye.z = 1000.0F;
+	cobj->vec.eye.x = cobj->vec.eye.y = 0.0F;
+	cobj->vec.eye.z = 1000.0F;
 
-	cam->projection.persp.fovy = 30.0F;
+	cobj->projection.persp.fovy = 30.0F;
 
 #ifdef AVOID_UB
 	return 0;
@@ -1395,7 +1395,7 @@ void mnTitleMakeLogoFire(void)
 	GObj *gobj = gcMakeGObjSPAfter(15, NULL, 4, GOBJ_LINKORDER_DEFAULT);
 	gcAddGObjDisplay(gobj, mnTitleLogoFireFuncDisplay, 3, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-	gobj->cam_mask = CAMERA_MASK_DLLINK(0);
+	gobj->cobj_mask = COBJ_MASK_DLLINK(0);
 
 	sMNTitleParticleBankID = efAllocGetAddParticleBankID(&lMNTitleScreenParticleBankScriptsLo, &lMNTitleScreenParticleBankScriptsHi, &lMNTitleScreenParticleBankTexturesLo, &lMNTitleScreenParticleBankTexturesHi);
 }

@@ -445,7 +445,7 @@ void mn1PModeMakeDecals(void)
 // 0x80132690
 void mn1PModeMakeLink3Camera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -455,7 +455,7 @@ void mn1PModeMakeLink3Camera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             20,
-            CAMERA_MASK_DLLINK(3),
+            COBJ_MASK_DLLINK(3),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -464,13 +464,13 @@ void mn1PModeMakeLink3Camera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132730
 void mn1PModeMakeOptionsCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -480,7 +480,7 @@ void mn1PModeMakeOptionsCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             40,
-            CAMERA_MASK_DLLINK(2),
+            COBJ_MASK_DLLINK(2),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -489,13 +489,13 @@ void mn1PModeMakeOptionsCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801327D0
 void mn1PModeMakeLabelsCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -505,7 +505,7 @@ void mn1PModeMakeLabelsCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             60,
-            CAMERA_MASK_DLLINK(1),
+            COBJ_MASK_DLLINK(1),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -514,13 +514,13 @@ void mn1PModeMakeLabelsCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132870
 void mn1PModeMakeDecalsCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -530,7 +530,7 @@ void mn1PModeMakeDecalsCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             80,
-            CAMERA_MASK_DLLINK(0),
+            COBJ_MASK_DLLINK(0),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -539,7 +539,7 @@ void mn1PModeMakeDecalsCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132910
@@ -834,7 +834,7 @@ syTaskmanSetup dMN1PModeTaskmanSetup =
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
     0,                              // Number of Cameras
-    sizeof(Camera),                 // Camera size
+    sizeof(CObj),                 	// CObj size
     
     mn1PModeFuncStart               // Task start function
 };

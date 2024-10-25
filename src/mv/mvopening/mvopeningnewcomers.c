@@ -111,7 +111,7 @@ syTaskmanSetup dMVOpeningNewcomersTaskmanSetup =
     0,                                  // Number of SObjs
     sizeof(SObj),                       // SObj size
     0,                                  // Number of Cameras
-    sizeof(Camera),                     // Camera size
+    sizeof(CObj),                     // Camera size
     
     mvOpeningNewcomersFuncStart         // Task start function
 };
@@ -298,7 +298,7 @@ void mvOpeningNewcomersMakeHide(void)
 void mvOpeningNewcomersMakeNewcomersCamera(void)
 {
     s32 unused;
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -308,7 +308,7 @@ void mvOpeningNewcomersMakeNewcomersCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             func_80017EC0,
             40,
-            CAMERA_MASK_DLLINK(27),
+            COBJ_MASK_DLLINK(27),
             -1,
             TRUE,
             nGCProcessKindProc,
@@ -317,29 +317,29 @@ void mvOpeningNewcomersMakeNewcomersCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cam->vec.eye.x = 45.36104F;
-    cam->vec.eye.y = 19.91594F;
-    cam->vec.eye.z = 15494.226F;
+    cobj->vec.eye.x = 45.36104F;
+    cobj->vec.eye.y = 19.91594F;
+    cobj->vec.eye.z = 15494.226F;
 
-    cam->vec.at.x = -109.73612F;
-    cam->vec.at.y = 257.7266F;
-    cam->vec.at.z = -14.981689F;
+    cobj->vec.at.x = -109.73612F;
+    cobj->vec.at.y = 257.7266F;
+    cobj->vec.at.z = -14.981689F;
 
-    cam->vec.up.x = 0.0F;
-    cam->vec.up.y = 1.0F;
-    cam->vec.up.z = 0.0F;
+    cobj->vec.up.x = 0.0F;
+    cobj->vec.up.y = 1.0F;
+    cobj->vec.up.z = 0.0F;
 
-    cam->projection.persp.fovy = 2.864789F;
-    cam->projection.persp.near = 128.0F;
-    cam->projection.persp.far = 16384.0F;
+    cobj->projection.persp.fovy = 2.864789F;
+    cobj->projection.persp.near = 128.0F;
+    cobj->projection.persp.far = 16384.0F;
 }
 
 // 0x801322E8
 void mvOpeningNewcomersMakeHideCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -349,7 +349,7 @@ void mvOpeningNewcomersMakeHideCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             20,
-            CAMERA_MASK_DLLINK(26),
+            COBJ_MASK_DLLINK(26),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -358,7 +358,7 @@ void mvOpeningNewcomersMakeHideCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132388
@@ -443,7 +443,7 @@ void mvOpeningNewcomersFuncStart(void)
     );
     gcMakeGObjSPAfter(0, mvOpeningNewcomersFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
 
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF));
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF));
 
     mvOpeningNewcomersInitVars();
     mvOpeningNewcomersMakeNewcomersCamera();

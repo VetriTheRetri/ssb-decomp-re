@@ -46,10 +46,10 @@ f32 sMVOpeningKirbyPosedSpeedY;
 s32 sMVOpeningKirbyPad0x8018E244;
 
 // 0x8018E248
-CameraDesc dMVOpeningKirbyStartAdjustedCameraDesc;
+CObjDesc dMVOpeningKirbyStartAdjustedCObjDesc;
 
 // 0x8018E268
-CameraDesc dMVOpeningKirbyEndAdjustedCameraDesc;
+CObjDesc dMVOpeningKirbyEndAdjustedCObjDesc;
 
 // 0x8018E288
 lbFileNode sMVOpeningKirbyStatusBuffer[48];
@@ -70,10 +70,10 @@ scBattleState sMVOpeningKirbyBattleState;
 // // // // // // // // // // // //
 
 // 0x8018E0B0
-CameraDesc dMVOpeningKirbyStartCameraDesc = { { 0.0F, 400.0F, 2000.0F }, { 0.0F, 400.0F, 0.0F }, 0.0F };
+CObjDesc dMVOpeningKirbyStartCObjDesc = { { 0.0F, 400.0F, 2000.0F }, { 0.0F, 400.0F, 0.0F }, 0.0F };
 
 // 0x8018E0CC
-CameraDesc dMVOpeningKirbyEndCameraDesc = { { 1100.0F, 400.0F, 1800.0F }, { 1100.0F, 400.0F, 0.0F }, 0.0F };
+CObjDesc dMVOpeningKirbyEndCObjDesc = { { 1100.0F, 400.0F, 1800.0F }, { 1100.0F, 400.0F, 0.0F }, 0.0F };
 
 // 0x8018E0E8
 ftKeyCommand dMVOpeningKirbyInputSeq[/* */] =
@@ -188,59 +188,59 @@ void mvOpeningKirbyMakeName(void)
 // 0x8018D324
 void mvOpeningKirbyMotionCameraProcUpdate(GObj *camera_gobj)
 {
-	Camera *cam = CameraGetStruct(camera_gobj);
+	CObj *cobj = CObjGetStruct(camera_gobj);
 
 	if (sMVOpeningKirbyTotalTimeTics >= 15)
 	{
-		cam->vec.eye.x += (((dMVOpeningKirbyEndAdjustedCameraDesc.eye.x - dMVOpeningKirbyStartAdjustedCameraDesc.eye.x) / 45.0F));
-		cam->vec.eye.y += (((dMVOpeningKirbyEndAdjustedCameraDesc.eye.y - dMVOpeningKirbyStartAdjustedCameraDesc.eye.y) / 45.0F));
-		cam->vec.eye.z += (((dMVOpeningKirbyEndAdjustedCameraDesc.eye.z - dMVOpeningKirbyStartAdjustedCameraDesc.eye.z) / 45.0F));
-		cam->vec.at.x += (((dMVOpeningKirbyEndAdjustedCameraDesc.at.x - dMVOpeningKirbyStartAdjustedCameraDesc.at.x) / 45.0F));
-		cam->vec.at.y += (((dMVOpeningKirbyEndAdjustedCameraDesc.at.y - dMVOpeningKirbyStartAdjustedCameraDesc.at.y) / 45.0F));
-		cam->vec.at.z += (((dMVOpeningKirbyEndAdjustedCameraDesc.at.z - dMVOpeningKirbyStartAdjustedCameraDesc.at.z) / 45.0F));
-		cam->vec.up.x += (((dMVOpeningKirbyEndAdjustedCameraDesc.upx - dMVOpeningKirbyStartAdjustedCameraDesc.upx) / 45.0F));
+		cobj->vec.eye.x += (((dMVOpeningKirbyEndAdjustedCObjDesc.eye.x - dMVOpeningKirbyStartAdjustedCObjDesc.eye.x) / 45.0F));
+		cobj->vec.eye.y += (((dMVOpeningKirbyEndAdjustedCObjDesc.eye.y - dMVOpeningKirbyStartAdjustedCObjDesc.eye.y) / 45.0F));
+		cobj->vec.eye.z += (((dMVOpeningKirbyEndAdjustedCObjDesc.eye.z - dMVOpeningKirbyStartAdjustedCObjDesc.eye.z) / 45.0F));
+		cobj->vec.at.x += (((dMVOpeningKirbyEndAdjustedCObjDesc.at.x - dMVOpeningKirbyStartAdjustedCObjDesc.at.x) / 45.0F));
+		cobj->vec.at.y += (((dMVOpeningKirbyEndAdjustedCObjDesc.at.y - dMVOpeningKirbyStartAdjustedCObjDesc.at.y) / 45.0F));
+		cobj->vec.at.z += (((dMVOpeningKirbyEndAdjustedCObjDesc.at.z - dMVOpeningKirbyStartAdjustedCObjDesc.at.z) / 45.0F));
+		cobj->vec.up.x += (((dMVOpeningKirbyEndAdjustedCObjDesc.upx - dMVOpeningKirbyStartAdjustedCObjDesc.upx) / 45.0F));
 	}
 }
 
 // 0x8018D41C
 void mvOpeningKirbyMakeMotionCamera(Vec3f vec)
 {
-	Camera *cam;
+	CObj *cobj;
 
-	dMVOpeningKirbyStartAdjustedCameraDesc = dMVOpeningKirbyStartCameraDesc;
-	dMVOpeningKirbyEndAdjustedCameraDesc = dMVOpeningKirbyEndCameraDesc;
+	dMVOpeningKirbyStartAdjustedCObjDesc = dMVOpeningKirbyStartCObjDesc;
+	dMVOpeningKirbyEndAdjustedCObjDesc = dMVOpeningKirbyEndCObjDesc;
 
 	sMVOpeningKirbyMotionCameraGObj = func_ovl2_8010DB2C(0);
-	cam = CameraGetStruct(sMVOpeningKirbyMotionCameraGObj);
+	cobj = CObjGetStruct(sMVOpeningKirbyMotionCameraGObj);
 
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 210.0F, 230.0F);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 210.0F, 230.0F);
 
-	cam->projection.persp.aspect = 10.0F / 11.0F;
+	cobj->projection.persp.aspect = 10.0F / 11.0F;
 
 	gcEndProcessAll(sMVOpeningKirbyMotionCameraGObj);
 	gcAddGObjProcess(sMVOpeningKirbyMotionCameraGObj, mvOpeningKirbyMotionCameraProcUpdate, nGCProcessKindProc, 1);
 
-	dMVOpeningKirbyStartAdjustedCameraDesc.eye.x += vec.x;
-	dMVOpeningKirbyStartAdjustedCameraDesc.eye.y += vec.y;
-	dMVOpeningKirbyStartAdjustedCameraDesc.eye.z += vec.z;
-	dMVOpeningKirbyStartAdjustedCameraDesc.at.x += vec.x;
-	dMVOpeningKirbyStartAdjustedCameraDesc.at.y += vec.y;
-	dMVOpeningKirbyStartAdjustedCameraDesc.at.z += vec.z;
+	dMVOpeningKirbyStartAdjustedCObjDesc.eye.x += vec.x;
+	dMVOpeningKirbyStartAdjustedCObjDesc.eye.y += vec.y;
+	dMVOpeningKirbyStartAdjustedCObjDesc.eye.z += vec.z;
+	dMVOpeningKirbyStartAdjustedCObjDesc.at.x += vec.x;
+	dMVOpeningKirbyStartAdjustedCObjDesc.at.y += vec.y;
+	dMVOpeningKirbyStartAdjustedCObjDesc.at.z += vec.z;
 
-	dMVOpeningKirbyEndAdjustedCameraDesc.eye.x += vec.x;
-	dMVOpeningKirbyEndAdjustedCameraDesc.eye.y += vec.y;
-	dMVOpeningKirbyEndAdjustedCameraDesc.eye.z += vec.z;
-	dMVOpeningKirbyEndAdjustedCameraDesc.at.x += vec.x;
-	dMVOpeningKirbyEndAdjustedCameraDesc.at.y += vec.y;
-	dMVOpeningKirbyEndAdjustedCameraDesc.at.z += vec.z;
+	dMVOpeningKirbyEndAdjustedCObjDesc.eye.x += vec.x;
+	dMVOpeningKirbyEndAdjustedCObjDesc.eye.y += vec.y;
+	dMVOpeningKirbyEndAdjustedCObjDesc.eye.z += vec.z;
+	dMVOpeningKirbyEndAdjustedCObjDesc.at.x += vec.x;
+	dMVOpeningKirbyEndAdjustedCObjDesc.at.y += vec.y;
+	dMVOpeningKirbyEndAdjustedCObjDesc.at.z += vec.z;
 
-	cam->vec.eye.x = dMVOpeningKirbyStartAdjustedCameraDesc.eye.x;
-	cam->vec.eye.y = dMVOpeningKirbyStartAdjustedCameraDesc.eye.y;
-	cam->vec.eye.z = dMVOpeningKirbyStartAdjustedCameraDesc.eye.z;
-	cam->vec.at.x = dMVOpeningKirbyStartAdjustedCameraDesc.at.x;
-	cam->vec.at.y = dMVOpeningKirbyStartAdjustedCameraDesc.at.y;
-	cam->vec.at.z = dMVOpeningKirbyStartAdjustedCameraDesc.at.z;
-	cam->vec.up.x = dMVOpeningKirbyStartAdjustedCameraDesc.upx;
+	cobj->vec.eye.x = dMVOpeningKirbyStartAdjustedCObjDesc.eye.x;
+	cobj->vec.eye.y = dMVOpeningKirbyStartAdjustedCObjDesc.eye.y;
+	cobj->vec.eye.z = dMVOpeningKirbyStartAdjustedCObjDesc.eye.z;
+	cobj->vec.at.x = dMVOpeningKirbyStartAdjustedCObjDesc.at.x;
+	cobj->vec.at.y = dMVOpeningKirbyStartAdjustedCObjDesc.at.y;
+	cobj->vec.at.z = dMVOpeningKirbyStartAdjustedCObjDesc.at.z;
+	cobj->vec.up.x = dMVOpeningKirbyStartAdjustedCObjDesc.upx;
 }
 
 // 0x8018D62C
@@ -381,7 +381,7 @@ void mvOpeningKirbyMakePosedFighter(void)
 // 0x8018DB8C
 void mvOpeningKirbyMakeNameCamera(void)
 {
-	Camera *cam = CameraGetStruct
+	CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -391,7 +391,7 @@ void mvOpeningKirbyMakeNameCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             80,
-            CAMERA_MASK_DLLINK(27),
+            COBJ_MASK_DLLINK(27),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -400,7 +400,7 @@ void mvOpeningKirbyMakeNameCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8018DC2C
@@ -414,7 +414,7 @@ void mvOpeningKirbyMakePosedFighterCamera(void)
         GOBJ_LINKORDER_DEFAULT,
         func_80017EC0,
         10,
-        CAMERA_MASK_DLLINK(26),
+        COBJ_MASK_DLLINK(26),
         -1,
         TRUE,
         nGCProcessKindProc,
@@ -422,20 +422,20 @@ void mvOpeningKirbyMakePosedFighterCamera(void)
         1,
         FALSE
     );
-	Camera *cam = CameraGetStruct(camera_gobj);
+	CObj *cobj = CObjGetStruct(camera_gobj);
 
-	syRdpSetViewport(&cam->viewport, 210.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cobj->viewport, 210.0F, 10.0F, 310.0F, 230.0F);
 	
-	cam->projection.persp.aspect = 5.0F / 11.0F;
+	cobj->projection.persp.aspect = 5.0F / 11.0F;
 
-	gcAddCameraCamAnimJoint(cam, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningKirbyFiles[1], &lMVOpeningKirbyCamAnimJoint), 0.0F);
+	gcAddCameraCamAnimJoint(cobj, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningKirbyFiles[1], &lMVOpeningKirbyCamAnimJoint), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
 }
 
 // 0x8018DD14
 void mvOpeningKirbyMakePosedWallpaperCamera(void)
 {
-	Camera *cam = CameraGetStruct
+	CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -445,7 +445,7 @@ void mvOpeningKirbyMakePosedWallpaperCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             func_80017EC0,
             20,
-            CAMERA_MASK_DLLINK(28),
+            COBJ_MASK_DLLINK(28),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -454,9 +454,9 @@ void mvOpeningKirbyMakePosedWallpaperCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 210.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 210.0F, 10.0F, 310.0F, 230.0F);
 
-	cam->flags = 0x4 | 0x1;
+	cobj->flags = 0x4 | 0x1;
 }
 
 // 0x8018DDBC
@@ -510,7 +510,7 @@ void mvOpeningKirbyFuncStart(void)
 	mvOpeningKirbySetupFiles();
 
 	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningKirbyFuncRun, 13, GOBJ_LINKORDER_DEFAULT);
-	gcMakeDefaultCameraGObj(9, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(9, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	mvOpeningKirbyInitVars();
 	efAllocInitParticleBank();
@@ -587,7 +587,7 @@ syTaskmanSetup dMVOpeningKirbyTaskmanSetup =
     0,                                  // Number of SObjs
     sizeof(SObj),                       // SObj size
     0,                                  // Number of Cameras
-    sizeof(Camera),                     // Camera size
+    sizeof(CObj),                     // Camera size
     
     mvOpeningKirbyFuncStart            	// Task start function
 };

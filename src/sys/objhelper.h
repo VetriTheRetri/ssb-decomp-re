@@ -21,7 +21,7 @@ extern void gcResumeProcessByProc(GObj *gobj, void (*proc_common)(GObj*));
 extern void gcEndProcessAll(GObj *gobj);
 extern void gcAddDObjMatrixSetsRpyD(DObj* dobj);
 extern void gcAddDObjMatrixSetsRpyR(DObj* dobj);
-extern void gcAddCameraMatrixSets(Camera *cam);
+extern void gcAddCameraMatrixSets(CObj *cobj);
 extern void gcRemoveTreeMObjAll(GObj *gobj);
 extern DObj* gcAddDObjRpyD(GObj *gobj, void *dvar);
 extern DObj* gcAddDObjSiblingRpyD(DObj *dobj, void *dvar);
@@ -41,7 +41,7 @@ extern GObj* gcMakeModelGObj
     void (*func_display)(GObj*),
     u8 dl_link,
     u32 dl_link_order,
-    u32 cam_tag,
+    u32 cobj_tag,
     void *dvar,
     sb32 is_add_default_xobj,
     u8 gobjproc_kind,
@@ -57,7 +57,7 @@ extern GObj* gcMakeSpriteGObj
     void (*func_display)(GObj*),
     s32 dl_link,
     u32 dl_link_order,
-    u32 cam_tag,
+    u32 cobj_tag,
     Sprite *sprite,
     u8 gobjproc_kind,
     void (*proc)(GObj*),
@@ -71,8 +71,8 @@ GObj* gcMakeCameraGObj
     u32 link_order,
     void (*func_display)(GObj*),
     u32 dl_link_order,
-    u64 cam_mask,
-    u32 cam_tag,
+    u64 cobj_mask,
+    u32 cobj_tag,
     sb32 is_add_default_xobj,
     u8 gobjproc_kind,
     void (*proc)(GObj*),

@@ -95,7 +95,7 @@ extern void func_ovl2_800EB528(DObj *arg0);
 extern void func_ovl2_800EB648(DObj *arg0);
 extern void ftParamSetAnimLocks(ftStruct *fp);
 extern void ftParamClearAnimLocks(ftStruct *fp);
-extern void func_ovl2_800EB924(Camera *cam, Mtx44f mtx, Vec3f *vec, f32 *rx, f32 *ry);
+extern void func_ovl2_800EB924(CObj *cobj, Mtx44f mtx, Vec3f *vec, f32 *rx, f32 *ry);
 extern f32 func_ovl2_800EBA6C(Vec3f *arg0, Vec3f *arg1);
 extern f32 func_ovl2_800EBB3C(Vec3f *arg0, Vec3f *arg1, Vec3f *arg2);
 extern void func_ovl2_800EBC0C(s32 arg0, Vec3f *arg1, f32 *arg2, f32 arg3, DObj *dobj);

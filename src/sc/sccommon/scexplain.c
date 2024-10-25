@@ -127,7 +127,7 @@ syTaskmanSetup dSCExplainTaskmanSetup =
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
     0,                              // Number of Cameras
-    sizeof(Camera),                 // Camera size
+    sizeof(CObj),                 	// CObj size
     
     scExplainFuncStart           	// Task start function
 };
@@ -211,11 +211,11 @@ void scExplainStartBattle(void)
 // 0x8018D248
 void func_ovl63_8018D248(void)
 {
-    Camera *cam = CameraGetStruct(gcMakeDefaultCameraGObj(9, 0x80000000U, 0x64, 1, 0xFF));
+    CObj *cobj = CObjGetStruct(gcMakeDefaultCameraGObj(9, 0x80000000U, 0x64, 1, 0xFF));
 
     syRdpSetViewport
     (
-        &cam->viewport,
+        &cobj->viewport,
         gCMManagerCameraStruct.viewport_ulx,
         gCMManagerCameraStruct.viewport_uly,
         gCMManagerCameraStruct.viewport_lrx,
@@ -274,7 +274,7 @@ GObj* scExplainMakeTextCamera(void)
         GOBJ_LINKORDER_DEFAULT,
         lbCommonScissorSpriteCamera,
         15,
-        CAMERA_MASK_DLLINK(26), 
+        COBJ_MASK_DLLINK(26), 
         -1,
         FALSE,
         nGCProcessKindProc,
@@ -282,9 +282,9 @@ GObj* scExplainMakeTextCamera(void)
         1,
         FALSE
     );
-    Camera *cam = CameraGetStruct(camera_gobj);
+    CObj *cobj = CObjGetStruct(camera_gobj);
 
-    syRdpSetViewport(&cam->viewport, 10.0F, 160.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 160.0F, 310.0F, 230.0F);
 
     return camera_gobj;
 }
@@ -300,7 +300,7 @@ GObj* scExplainMakeControlStickCamera(void)
         GOBJ_LINKORDER_DEFAULT,
         func_80017EC0,
         15,
-        CAMERA_MASK_DLLINK(27),
+        COBJ_MASK_DLLINK(27),
         -1,
         FALSE,
         nGCProcessKindProc,
@@ -308,17 +308,17 @@ GObj* scExplainMakeControlStickCamera(void)
         1,
         FALSE
     );
-    Camera *cam = CameraGetStruct(camera_gobj);
+    CObj *cobj = CObjGetStruct(camera_gobj);
 
-    gcAddXObjForCamera(cam, nGCTransformOrtho, 1);
-    gcAddXObjForCamera(cam, 6, 1);
+    gcAddXObjForCamera(cobj, nGCTransformOrtho, 1);
+    gcAddXObjForCamera(cobj, 6, 1);
 
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cam->projection.ortho.l = -150.0F;
-    cam->projection.ortho.r = 150.0F;
-    cam->projection.ortho.b = -110.0F;
-    cam->projection.ortho.t = 110.0F;
+    cobj->projection.ortho.l = -150.0F;
+    cobj->projection.ortho.r = 150.0F;
+    cobj->projection.ortho.b = -110.0F;
+    cobj->projection.ortho.t = 110.0F;
 
     return camera_gobj;
 }

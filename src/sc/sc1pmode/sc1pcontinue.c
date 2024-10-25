@@ -785,7 +785,7 @@ void sc1PContinueMakeGameOver(void)
 // 0x801333C4
 void sc1PContinueMakeRoomFadeInCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -795,7 +795,7 @@ void sc1PContinueMakeRoomFadeInCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             80,
-            CAMERA_MASK_DLLINK(26),
+            COBJ_MASK_DLLINK(26),
 			-1,
 			FALSE,
 			nGCProcessKindProc,
@@ -804,15 +804,15 @@ void sc1PContinueMakeRoomFadeInCamera(void)
 			FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cam->flags = 4;
+    cobj->flags = 4;
 }
 
 // 0x80133474
 void sc1PContinueMakeSpotlightFadeCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -822,7 +822,7 @@ void sc1PContinueMakeSpotlightFadeCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             60,
-            CAMERA_MASK_DLLINK(31),
+            COBJ_MASK_DLLINK(31),
 			-1,
 			FALSE,
 			nGCProcessKindProc,
@@ -831,15 +831,15 @@ void sc1PContinueMakeSpotlightFadeCamera(void)
 			FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cam->flags = 4;
+    cobj->flags = 4;
 }
 
 // 0x80133524
 void sc1PContinueMakeRoomFadeOutCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -849,7 +849,7 @@ void sc1PContinueMakeRoomFadeOutCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             40,
-            CAMERA_MASK_DLLINK(32),
+            COBJ_MASK_DLLINK(32),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -858,40 +858,40 @@ void sc1PContinueMakeRoomFadeOutCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cam->flags = 4;
+    cobj->flags = 4;
 }
 
 // 0x801335D4
-void sc1PContinueSetupCamera(Camera *cam)
+void sc1PContinueSetupCamera(CObj *cobj)
 {
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cam->vec.eye.y = 1000.0F;
-    cam->vec.eye.z = 2000.0F;
-    cam->vec.at.y = 400.0F;
+    cobj->vec.eye.y = 1000.0F;
+    cobj->vec.eye.z = 2000.0F;
+    cobj->vec.at.y = 400.0F;
 
-    cam->vec.eye.x = 0.0F;
-    cam->vec.at.x = 0.0F;
-    cam->vec.at.z = 0.0F;
-    cam->vec.up.x = 0.0F;
-    cam->vec.up.z = 0.0F;
+    cobj->vec.eye.x = 0.0F;
+    cobj->vec.at.x = 0.0F;
+    cobj->vec.at.z = 0.0F;
+    cobj->vec.up.x = 0.0F;
+    cobj->vec.up.z = 0.0F;
 
-    cam->vec.up.y = 1.0F;
+    cobj->vec.up.y = 1.0F;
 
-    cam->projection.persp.fovy = 30.0F;
-    cam->projection.persp.near = 100.0F;
-    cam->projection.persp.far = 15000.0F;
+    cobj->projection.persp.fovy = 30.0F;
+    cobj->projection.persp.near = 100.0F;
+    cobj->projection.persp.far = 15000.0F;
 
-    cam->flags = 4;
+    cobj->flags = 4;
 }
 
 // 0x80133694
 void sc1PContinueMakeMainCamera(void)
 {
     // 0x08048600
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -901,9 +901,9 @@ void sc1PContinueMakeMainCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             func_80017EC0,
             50,
-            CAMERA_MASK_DLLINK(27) | CAMERA_MASK_DLLINK(18) | 
-            CAMERA_MASK_DLLINK(15) | CAMERA_MASK_DLLINK(10) | 
-            CAMERA_MASK_DLLINK(9),
+            COBJ_MASK_DLLINK(27) | COBJ_MASK_DLLINK(18) | 
+            COBJ_MASK_DLLINK(15) | COBJ_MASK_DLLINK(10) | 
+            COBJ_MASK_DLLINK(9),
             -1,
             TRUE,
             nGCProcessKindProc,
@@ -912,13 +912,13 @@ void sc1PContinueMakeMainCamera(void)
             FALSE
         )
     );
-    sc1PContinueSetupCamera(cam);
+    sc1PContinueSetupCamera(cobj);
 }
 
 // 0x80133718
 void sc1PContinueMakeRoomCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -928,7 +928,7 @@ void sc1PContinueMakeRoomCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             90,
-            CAMERA_MASK_DLLINK(29),
+            COBJ_MASK_DLLINK(29),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -937,13 +937,13 @@ void sc1PContinueMakeRoomCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801337B8
 void sc1PContinueMakeSpotlightCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -953,7 +953,7 @@ void sc1PContinueMakeSpotlightCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             70,
-            CAMERA_MASK_DLLINK(30),
+            COBJ_MASK_DLLINK(30),
 			-1,
 			FALSE,
 			nGCProcessKindProc,
@@ -962,15 +962,15 @@ void sc1PContinueMakeSpotlightCamera(void)
 			FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cam->flags = 4;
+    cobj->flags = 4;
 }
 
 // 0x80133868
 void sc1PContinueMakeTextCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -980,7 +980,7 @@ void sc1PContinueMakeTextCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             30,
-            CAMERA_MASK_DLLINK(28),
+            COBJ_MASK_DLLINK(28),
 			-1,
 			FALSE,
 			nGCProcessKindProc,
@@ -989,9 +989,9 @@ void sc1PContinueMakeTextCamera(void)
 			FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cam->flags = 4;
+    cobj->flags = 4;
 }
 
 // 0x80133918
@@ -1230,7 +1230,7 @@ void sc1PContinueFuncStart(void)
         )
     );
     gcMakeGObjSPAfter(0, sc1PContinueFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     efAllocInitParticleBank();
     sc1PContinueInitVars();
     efManagerInitEffects();
@@ -1298,7 +1298,7 @@ syTaskmanSetup dSC1PContinueTaskmanSetup =
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
     0,                              // Number of Cameras
-    sizeof(Camera),                 // Camera size
+    sizeof(CObj),                 	// CObj size
     
     sc1PContinueFuncStart           // Task start function
 };

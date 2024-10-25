@@ -170,7 +170,7 @@ void mnUnusedFightersFuncStart(void)
     s32 unused[2];
     lbRelocSetup rl_setup;
     GObj *gobj;
-    Camera *cam;
+    CObj *cobj;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
@@ -198,9 +198,9 @@ void mnUnusedFightersFuncStart(void)
         )
     );
     gcMakeGObjSPAfter(0, mnUnusedFightersFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(1, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeDefaultCameraGObj(1, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     
-    cam = CameraGetStruct
+    cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -210,7 +210,7 @@ void mnUnusedFightersFuncStart(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             50,
-            CAMERA_MASK_DLLINK(1),
+            COBJ_MASK_DLLINK(1),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -220,9 +220,9 @@ void mnUnusedFightersFuncStart(void)
         )   
     );
     
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
     
-    cam = CameraGetStruct
+    cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -232,7 +232,7 @@ void mnUnusedFightersFuncStart(void)
             GOBJ_LINKORDER_DEFAULT,
             func_80017DBC,
             30,
-            CAMERA_MASK_DLLINK(2),
+            COBJ_MASK_DLLINK(2),
             -1,
             TRUE,
             nGCProcessKindProc,
@@ -242,17 +242,17 @@ void mnUnusedFightersFuncStart(void)
         )
     );
         
-    cam->vec.eye.x = 0.0F;
-    cam->vec.eye.y = 0.0F;
-    cam->vec.eye.z = 3000.0F;
+    cobj->vec.eye.x = 0.0F;
+    cobj->vec.eye.y = 0.0F;
+    cobj->vec.eye.z = 3000.0F;
     
-    cam->vec.at.x = 0.0F;
-    cam->vec.at.y = 0.0F;
-    cam->vec.at.z = 0.0F;
+    cobj->vec.at.x = 0.0F;
+    cobj->vec.at.y = 0.0F;
+    cobj->vec.at.z = 0.0F;
     
-    cam->vec.up.x = 0.0F;
-    cam->vec.up.y = 1.0F;
-    cam->vec.up.z = 0.0F;
+    cobj->vec.up.x = 0.0F;
+    cobj->vec.up.y = 1.0F;
+    cobj->vec.up.z = 0.0F;
     
     gobj = gcMakeSpriteGObj
     (

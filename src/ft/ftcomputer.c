@@ -3745,7 +3745,7 @@ sb32 ftComputerCheckFindTarget(ftStruct *this_fp)
                             (other_pos_x <= gMPCollisionEdgeBounds.d2.right) &&
                             (gMPCollisionEdgeBounds.d2.left <= other_pos_x) &&
                             (gMPCollisionEdgeBounds.d2.bottom <= other_pos_y) &&
-                            (other_pos_y < gMPCollisionGroundData->cam_bound_top)
+                            (other_pos_y < gMPCollisionGroundData->cobj_bound_top)
                         ) 
                         ||
                         (
@@ -4817,7 +4817,7 @@ void func_ovl3_80134964(ftStruct *fp)
         }
         else ft_com->target_pos.x = -500.0F;
 
-        if ((pos.y + 1100.0F) > gMPCollisionGroundData->cam_bound_top)
+        if ((pos.y + 1100.0F) > gMPCollisionGroundData->cobj_bound_top)
         {
             ft_com->target_pos.y = pos.y;
         }
@@ -5565,7 +5565,7 @@ sb32 ftComputerCheckFindItem(ftStruct *fp)
             f32 it_pos_x = DObjGetStruct(item_gobj)->translate.vec.f.x;
             f32 it_pos_y = DObjGetStruct(item_gobj)->translate.vec.f.y;
 
-            if ((it_pos_x <= gMPCollisionEdgeBounds.d2.right) && (it_pos_x >= gMPCollisionEdgeBounds.d2.left) && (it_pos_y >= gMPCollisionEdgeBounds.d2.bottom) && (it_pos_y < gMPCollisionGroundData->cam_bound_top))
+            if ((it_pos_x <= gMPCollisionEdgeBounds.d2.right) && (it_pos_x >= gMPCollisionEdgeBounds.d2.left) && (it_pos_y >= gMPCollisionEdgeBounds.d2.bottom) && (it_pos_y < gMPCollisionGroundData->cobj_bound_top))
             {
                 f32 current_dist = SQUARE(ft_pos_x - it_pos_x) + SQUARE(ft_pos_y - it_pos_y);
 

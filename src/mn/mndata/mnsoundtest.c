@@ -735,7 +735,7 @@ syTaskmanSetup dMNSoundTestTaskmanSetup =
     256,                            // Number of SObjs
     sizeof(SObj),                   // SObj size
     8,                              // Number of Cameras
-    sizeof(Camera),                 // Camera size
+    sizeof(CObj),                 	// CObj size
     
     mnSoundTestFuncStart            // Task start function
 };
@@ -1676,7 +1676,7 @@ void mnSoundTestMakeAllSObjs(void)
 // 0x80133728
 void mnSoundTestMakeCameras(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -1686,7 +1686,7 @@ void mnSoundTestMakeCameras(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             30,
-            CAMERA_MASK_DLLINK(1),
+            COBJ_MASK_DLLINK(1),
             -1,
             0,
             1,
@@ -1695,9 +1695,9 @@ void mnSoundTestMakeCameras(void)
             0
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 630.0F, 470.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 630.0F, 470.0F);
 
-    cam = CameraGetStruct
+    cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -1707,7 +1707,7 @@ void mnSoundTestMakeCameras(void)
             GOBJ_LINKORDER_DEFAULT,
             func_80017EC0,
             50,
-            CAMERA_MASK_DLLINK(2),
+            COBJ_MASK_DLLINK(2),
             -1,
             0,
             1,
@@ -1717,7 +1717,7 @@ void mnSoundTestMakeCameras(void)
         )
     );
 
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 630.0F, 470.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 630.0F, 470.0F);
 }
 
 // 0x80133858
@@ -1744,7 +1744,7 @@ void mnSoundTestInitVars(void)
 void mnSoundTestFuncStart(void)
 {
     gcMakeGObjSPAfter(0, mnSoundTestFuncRun, 1, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(4, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeDefaultCameraGObj(4, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     mnSoundTestSetupFiles();
     mnSoundTestInitVars();
     mnSoundTestMakeAllSObjs();

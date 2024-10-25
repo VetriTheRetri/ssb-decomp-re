@@ -150,7 +150,7 @@ extern intptr_t lGMStaffrollTextBoxBracketRightSprite;	    // 0x000071D8
 
 extern sb32 gmStaffrollGetPauseStatusResume(void);
 extern void func_ovl59_80131BB0(Mtx44f mtx, Vec3f *vec, f32 *width, f32 *height);
-extern void func_ovl59_80131C88(Camera *cam);
+extern void func_ovl59_80131C88(CObj *cobj);
 extern void func_ovl59_80131D30(DObj *dobj, Vec3f *vec, f32 *width, f32 *height);
 extern void func_ovl59_80131DD0(GObj *gobj, gmStaffrollProjection *proj);
 extern void func_ovl59_80131E70(Vec3f *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4);

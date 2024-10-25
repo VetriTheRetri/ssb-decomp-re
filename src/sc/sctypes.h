@@ -57,7 +57,7 @@ struct sc1PGameBossPlan
 {
     s32 unk_sc1pbossplan_0x0;
     u8 dl_link;
-    u32 cam_tag;
+    u32 cobj_tag;
     Vec3f pos;
 };
 

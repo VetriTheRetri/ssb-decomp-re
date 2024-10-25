@@ -105,7 +105,7 @@ syTaskmanSetup dSC1PChallengerTaskmanSetup =
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
     0,                              // Number of Cameras
-    sizeof(Camera),                 // Camera size
+    sizeof(CObj),                 	// CObj size
     
     sc1PChallengerFuncStart         // Task start function
 };
@@ -232,7 +232,7 @@ void sc1PChallengerMakeFighter(s32 ft_kind)
 // 0x80131F58
 void sc1PChallengerMakeFighterCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -242,8 +242,8 @@ void sc1PChallengerMakeFighterCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             func_80017EC0,
             40,
-            CAMERA_MASK_DLLINK(18) | CAMERA_MASK_DLLINK(15) |
-            CAMERA_MASK_DLLINK(10) | CAMERA_MASK_DLLINK(9),
+            COBJ_MASK_DLLINK(18) | COBJ_MASK_DLLINK(15) |
+            COBJ_MASK_DLLINK(10) | COBJ_MASK_DLLINK(9),
             -1,
             TRUE,
             nGCProcessKindProc,
@@ -252,25 +252,25 @@ void sc1PChallengerMakeFighterCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
     
-    cam->vec.eye.x = 0.0F;
-    cam->vec.eye.y = 0.0F;
-    cam->vec.eye.z = 3000.0F;
+    cobj->vec.eye.x = 0.0F;
+    cobj->vec.eye.y = 0.0F;
+    cobj->vec.eye.z = 3000.0F;
     
-    cam->vec.at.x = 0.0F;
-    cam->vec.at.y = 0.0F;
-    cam->vec.at.z = 0.0F;
+    cobj->vec.at.x = 0.0F;
+    cobj->vec.at.y = 0.0F;
+    cobj->vec.at.z = 0.0F;
     
-    cam->vec.up.x = 0.0F;
-    cam->vec.up.y = 1.0F;
-    cam->vec.up.z = 0.0F;
+    cobj->vec.up.x = 0.0F;
+    cobj->vec.up.y = 1.0F;
+    cobj->vec.up.z = 0.0F;
 }
 
 // 0x80132040
 void sc1PChallengerMakeDecalsCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -280,7 +280,7 @@ void sc1PChallengerMakeDecalsCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             70,
-            CAMERA_MASK_DLLINK(0),
+            COBJ_MASK_DLLINK(0),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -289,7 +289,7 @@ void sc1PChallengerMakeDecalsCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801320E0
@@ -367,7 +367,7 @@ void sc1PChallengerFuncStart(void)
         )
     );
     gcMakeGObjSPAfter(0, sc1PChallengerFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     sc1PChallengerInitVars();
     efAllocInitParticleBank();
     efManagerInitEffects();

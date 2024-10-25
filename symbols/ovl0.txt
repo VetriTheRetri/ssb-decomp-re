@@ -67,7 +67,7 @@ lbCommonFinishSprite = 0x800CD214; // segment:ovl0
 lbCommonScissorSpriteCamera = 0x800CD2CC; // segment:ovl0
 lbCommonInitCameraOrtho = 0x800CD440; // segment:ovl0
 lbCommonInitCameraPersp = 0x800CD4C0; // segment:ovl0
-lbCommonInitCameraVec = 0x800CD538; // segment:ovl0
+lbCommonInitCObjVec = 0x800CD538; // segment:ovl0
 lbCommonCross3D = 0x800CD5AC; // segment:ovl0
 
 lbRelocFindFileStatusBuffer = 0x800CD620; // segment:ovl0

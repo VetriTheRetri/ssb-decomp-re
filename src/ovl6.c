@@ -25,7 +25,7 @@ extern intptr_t dIFCommonTimerDigitSpriteOffsets[];
 extern void* D_ovl2_801313F4;
 extern grStruct gGRCommonStruct;
 extern scBattleState gDefaultBattleState;
-extern GObj* gGCCommonLinks[OM_COMMON_MAX_LINKS];
+extern GObj* gGCCommonLinks[GC_COMMON_MAX_LINKS];
 extern ftCreateDesc dFTManagerDefaultFighterDesc; // ovl2 80116DD0
 
 extern void func_ovl2_8010CFA8(GObj*, f32, f32, f32, f32, f32);

@@ -1934,7 +1934,7 @@ sb32 func_ovl0_800CAB48(Mtx *mtx, DObj *dobj, Gfx **dls)
 // 0x800CB140 - NONMATCHING: 'f[2][2] = dist.z' line uses wrong FPR
 sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
-    Camera *cam;
+    CObj *cobj;
     DObj *attach_dobj;
     ftParts *ft_parts;
     Mtx44f f;
@@ -1964,9 +1964,9 @@ sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
     sp50.y = f[1][1] = ft_parts->mtx_translate[0][1] * scale;
     sp50.z = f[1][2] = ft_parts->mtx_translate[0][2] * scale;
     
-    cam = CameraGetStruct(gGCCurrentCamera);
+    cobj = CObjGetStruct(gGCCurrentCamera);
     
-    syVectorDiff3D(&dist, &cam->vec.eye, &cam->vec.at);
+    syVectorDiff3D(&dist, &cobj->vec.eye, &cobj->vec.at);
     
     if (lbCommonSim3D(&sp50, &dist) < 0.999F)
     {
@@ -2863,7 +2863,7 @@ GObj* lbCommonMakeSpriteGObj
     void (*func_display)(GObj*),
     s32 dl_link,
     u32 dl_link_order,
-    u32 cam_tag,
+    u32 cobj_tag,
     Sprite *sprite,
     u8 gobjproc_kind,
     void (*proc)(GObj*),
@@ -2876,7 +2876,7 @@ GObj* lbCommonMakeSpriteGObj
     {
         return NULL;
     }
-    gcAddGObjDisplay(gobj, func_display, dl_link, dl_link_order, cam_tag);
+    gcAddGObjDisplay(gobj, func_display, dl_link, dl_link_order, cobj_tag);
     
     lbCommonMakeSObjForGObj(gobj, sprite);
         
@@ -2941,8 +2941,8 @@ void lbCommonFinishSprite(Gfx **dls)
 // 0x800CD2CC
 void lbCommonScissorSpriteCamera(GObj *gobj)
 {
-    Camera *cam = CameraGetStruct(gobj);
-    Vp_t *viewport = &cam->viewport.vp;
+    CObj *cobj = CObjGetStruct(gobj);
+    Vp_t *viewport = &cobj->viewport.vp;
     s32 ulx = (viewport->vtrans[0] / 4) - (viewport->vscale[0] / 4);
     s32 uly = (viewport->vtrans[1] / 4) - (viewport->vscale[1] / 4);
     s32 lrx = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
@@ -2967,35 +2967,35 @@ void lbCommonScissorSpriteCamera(GObj *gobj)
     lbCommonStartSprite(gSYTaskmanDLHeads);
     lbCommonSetSpriteScissor(ulx, lrx, uly, lry);
 
-    func_80017B80(gobj, (cam->flags & CAMERA_FLAG_IDENTIFIER) ? 1 : 0);
+    func_80017B80(gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
     lbCommonFinishSprite(gSYTaskmanDLHeads);
 }
 
 // 0x800CD440
-void lbCommonInitCameraOrtho(Camera *cam, u8 tk, u8 arg2)
+void lbCommonInitCameraOrtho(CObj *cobj, u8 tk, u8 arg2)
 {
-    XObj *xobj = gcAddXObjForCamera(cam, tk, arg2);
+    XObj *xobj = gcAddXObjForCamera(cobj, tk, arg2);
     
-    cam->projection.ortho = dGCOrthoDefault;
-    cam->projection.ortho.xobj = xobj;
+    cobj->projection.ortho = dGCOrthoDefault;
+    cobj->projection.ortho.xobj = xobj;
 }
 
 // 0x800CD4C0
-void lbCommonInitCameraPersp(Camera *cam, u8 tk, u8 arg2)
+void lbCommonInitCameraPersp(CObj *cobj, u8 tk, u8 arg2)
 {
-    XObj *xobj = gcAddXObjForCamera(cam, tk, arg2);
+    XObj *xobj = gcAddXObjForCamera(cobj, tk, arg2);
     
-    cam->projection.persp = dGCPerspDefault;
-    cam->projection.persp.xobj = xobj;
+    cobj->projection.persp = dGCPerspDefault;
+    cobj->projection.persp.xobj = xobj;
 }
 
 // 0x800CD538
-void lbCommonInitCameraVec(Camera *cam, u8 tk, u8 arg2)
+void lbCommonInitCObjVec(CObj *cobj, u8 tk, u8 arg2)
 {
-    XObj *xobj = gcAddXObjForCamera(cam, tk, arg2);
+    XObj *xobj = gcAddXObjForCamera(cobj, tk, arg2);
     
-    cam->vec = dGCCameraVecDefault;
-    cam->vec.xobj = xobj;
+    cobj->vec = dGCCObjVecDefault;
+    cobj->vec.xobj = xobj;
 }
 
 // 0x800CD5AC

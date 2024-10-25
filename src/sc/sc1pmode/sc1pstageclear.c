@@ -1377,7 +1377,7 @@ void sc1PStageClearMakeWallpaper(void)
 // 0x80133B48
 void sc1PStageClearMakeTextCamera(void)
 {
-	Camera *cam = CameraGetStruct
+	CObj *cobj = CObjGetStruct
 	(
 		gcMakeCameraGObj
 		(
@@ -1387,7 +1387,7 @@ void sc1PStageClearMakeTextCamera(void)
 			GOBJ_LINKORDER_DEFAULT,
 			lbCommonScissorSpriteCamera,
 			80,
-			CAMERA_MASK_DLLINK(26),
+			COBJ_MASK_DLLINK(26),
 			-1,
 			FALSE,
 			nGCProcessKindProc,
@@ -1396,13 +1396,13 @@ void sc1PStageClearMakeTextCamera(void)
 			FALSE
 		)
 	);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80133BE8
 void sc1PStageClearMakeWallpaperCamera(void)
 {
-	Camera *cam = CameraGetStruct
+	CObj *cobj = CObjGetStruct
 	(
 		gcMakeCameraGObj
 		(
@@ -1412,7 +1412,7 @@ void sc1PStageClearMakeWallpaperCamera(void)
 			GOBJ_LINKORDER_DEFAULT,
 			lbCommonScissorSpriteCamera,
 			90,
-			CAMERA_MASK_DLLINK(27),
+			COBJ_MASK_DLLINK(27),
 			-1,
 			FALSE,
 			nGCProcessKindProc,
@@ -1421,7 +1421,7 @@ void sc1PStageClearMakeWallpaperCamera(void)
 			FALSE
 		)
 	);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80133C88
@@ -2070,7 +2070,7 @@ syTaskmanSetup dGM1PStageClearTaskmanSetup =
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
     0,                              // Number of Cameras
-    sizeof(Camera),                 // Camera size
+    sizeof(CObj),                 	// CObj size
     
     sc1PStageClearFuncStart         // Task start function
 };

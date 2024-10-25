@@ -397,7 +397,7 @@ void sc1PGameBossSetChangeWallpaper(void)
 // 0x80191120
 void sc1PGameBossMakeCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -407,7 +407,7 @@ void sc1PGameBossMakeCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             func_80017EC0,
             40,
-            CAMERA_MASK_DLLINK(5),
+            COBJ_MASK_DLLINK(5),
             1,
             1,
             1,
@@ -416,17 +416,17 @@ void sc1PGameBossMakeCamera(void)
             0
         )
     );
-    syRdpSetViewport(&cam->viewport, gCMManagerCameraStruct.viewport_ulx, gCMManagerCameraStruct.viewport_uly, gCMManagerCameraStruct.viewport_lrx, gCMManagerCameraStruct.viewport_lry);
+    syRdpSetViewport(&cobj->viewport, gCMManagerCameraStruct.viewport_ulx, gCMManagerCameraStruct.viewport_uly, gCMManagerCameraStruct.viewport_lrx, gCMManagerCameraStruct.viewport_lry);
 
-    cam->projection.persp.aspect = (f32)(gCMManagerCameraStruct.viewport_lrx - gCMManagerCameraStruct.viewport_ulx) / (f32)(gCMManagerCameraStruct.viewport_lry - gCMManagerCameraStruct.viewport_uly);
+    cobj->projection.persp.aspect = (f32)(gCMManagerCameraStruct.viewport_lrx - gCMManagerCameraStruct.viewport_ulx) / (f32)(gCMManagerCameraStruct.viewport_lry - gCMManagerCameraStruct.viewport_uly);
 
-    cam->flags |= 4;
+    cobj->flags |= 4;
 
-    cam->vec.at.x = cam->vec.at.y = cam->vec.at.z = 0.0F;
-    cam->vec.eye.x = cam->vec.eye.y = 0.0F;
-    cam->vec.eye.z = 2000.0F;
+    cobj->vec.at.x = cobj->vec.at.y = cobj->vec.at.z = 0.0F;
+    cobj->vec.eye.x = cobj->vec.eye.y = 0.0F;
+    cobj->vec.eye.z = 2000.0F;
 
-    cam = CameraGetStruct
+    cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -436,7 +436,7 @@ void sc1PGameBossMakeCamera(void)
             GOBJ_DLLINKORDER_DEFAULT,
             func_80017EC0,
             60,
-            CAMERA_MASK_DLLINK(5),
+            COBJ_MASK_DLLINK(5),
             2,
             TRUE,
             nGCProcessKindProc,
@@ -445,15 +445,15 @@ void sc1PGameBossMakeCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, gCMManagerCameraStruct.viewport_ulx, gCMManagerCameraStruct.viewport_uly, gCMManagerCameraStruct.viewport_lrx, gCMManagerCameraStruct.viewport_lry);
+    syRdpSetViewport(&cobj->viewport, gCMManagerCameraStruct.viewport_ulx, gCMManagerCameraStruct.viewport_uly, gCMManagerCameraStruct.viewport_lrx, gCMManagerCameraStruct.viewport_lry);
 
-    cam->projection.persp.aspect = (f32)(gCMManagerCameraStruct.viewport_lrx - gCMManagerCameraStruct.viewport_ulx) / (f32)(gCMManagerCameraStruct.viewport_lry - gCMManagerCameraStruct.viewport_uly);
+    cobj->projection.persp.aspect = (f32)(gCMManagerCameraStruct.viewport_lrx - gCMManagerCameraStruct.viewport_ulx) / (f32)(gCMManagerCameraStruct.viewport_lry - gCMManagerCameraStruct.viewport_uly);
 
-    cam->flags |= 4;
+    cobj->flags |= 4;
 
-    cam->vec.at.x = cam->vec.at.y = cam->vec.at.z = 0.0F;
-    cam->vec.eye.x = cam->vec.eye.y = 0.0F;
-    cam->vec.eye.z = 2000.0F;
+    cobj->vec.at.x = cobj->vec.at.y = cobj->vec.at.z = 0.0F;
+    cobj->vec.eye.x = cobj->vec.eye.y = 0.0F;
+    cobj->vec.eye.z = 2000.0F;
 }
 
 // 0x80191364
@@ -876,7 +876,7 @@ GObj* sc1PGameBossMakeWallpaperEffect(s32 effect_id, s32 anim_id, s32 plan_id)
         sSC1PGameBossMain.bosswallpaper->bosseffect[effect_id].func_display, 
         sSC1PGameBossMain.bosswallpaper->bossplan[plan_id].dl_link, 
         GOBJ_DLLINKORDER_DEFAULT, 
-        sSC1PGameBossMain.bosswallpaper->bossplan[plan_id].cam_tag
+        sSC1PGameBossMain.bosswallpaper->bossplan[plan_id].cobj_tag
     );
     sc1PGameBossSetupBackgroundDObjs
     (

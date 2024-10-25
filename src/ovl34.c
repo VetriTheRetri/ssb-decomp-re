@@ -602,8 +602,8 @@ void mvOpeningFirstDestinationCreateCloseupOverlay()
 void mvOpeningFirstDestinationCreateOverlayViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x3C, 0x04000000, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132DE8
@@ -708,13 +708,13 @@ void mvOpeningFirstDestinationDestroyDeskObjects()
 // 0x80133210
 void mvOpeningFirstDestinationConfigureFirstSceneViewport(GObj* camera_gobj)
 {
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-	cam->projection.persp.near = 80.0F;
-	cam->projection.persp.far = 15000.0F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[2], &FILE_038_CAMERA_PARAMETERS_OFFSET), 0.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	cobj->projection.persp.near = 80.0F;
+	cobj->projection.persp.far = 15000.0F;
+	gcAddCameraCamAnimJoint(cobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[2], &FILE_038_CAMERA_PARAMETERS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
-	cam->flags |= 4;
+	cobj->flags |= 4;
 }
 
 // 0x801332BC
@@ -723,8 +723,8 @@ void mvOpeningFirstDestinationCreateFirstSceneViewports()
 	GObj* camera_gobj;
 
 	gMVOpeningFirstDestinationMainCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 0, 1, 0, 1, 0);
-	gcAddXObjForCamera(CameraGetStruct(camera_gobj), 3, 0);
-	gcAddXObjForCamera(CameraGetStruct(camera_gobj), 0xE, 0);
+	gcAddXObjForCamera(CObjGetStruct(camera_gobj), 3, 0);
+	gcAddXObjForCamera(CObjGetStruct(camera_gobj), 0xE, 0);
 	mvOpeningFirstDestinationConfigureFirstSceneViewport(camera_gobj);
 
 	gMVOpeningFirstDestinationFighterCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x08000200, -1, 1, 1, 0, 1, 0);
@@ -734,11 +734,11 @@ void mvOpeningFirstDestinationCreateFirstSceneViewports()
 // 0x801333DC
 void mvOpeningFirstDestinationConfigureSecondSceneViewport(GObj* camera_gobj)
 {
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[3], &FILE_039_CAMERA_PARAMETERS_OFFSET), 0.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	gcAddCameraCamAnimJoint(cobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[3], &FILE_039_CAMERA_PARAMETERS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
-	cam->flags |= 4;
+	cobj->flags |= 4;
 }
 
 // 0x80133470
@@ -747,8 +747,8 @@ void mvOpeningFirstDestinationCreateSecondSceneViewports()
 	GObj* camera_gobj;
 
 	gMVOpeningFirstDestinationMainCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 0, 1, 0, 1, 0);
-	gcAddXObjForCamera(CameraGetStruct(camera_gobj), 3, 0);
-	gcAddXObjForCamera(CameraGetStruct(camera_gobj), 0x8, 0);
+	gcAddXObjForCamera(CObjGetStruct(camera_gobj), 3, 0);
+	gcAddXObjForCamera(CObjGetStruct(camera_gobj), 0x8, 0);
 	mvOpeningFirstDestinationConfigureSecondSceneViewport(camera_gobj);
 
 	gMVOpeningFirstDestinationFighterCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x08000200, -1, 1, 1, 0, 1, 0);
@@ -758,23 +758,23 @@ void mvOpeningFirstDestinationCreateSecondSceneViewports()
 // 0x80133590
 void mvOpeningFirstDestinationConfigureThirdSceneViewport(GObj* camera_gobj)
 {
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-	cam->vec.eye.x = 9.2993F;
-	cam->vec.eye.y = 3880.389404F;
-	cam->vec.eye.z = 4077.981689F;
-	cam->vec.at.x = 0.9915789962F;
-	cam->vec.at.y = 2995.681396F;
-	cam->vec.at.z = -388.9534302F;
-	cam->vec.up.x = 0.0F;
-	cam->vec.up.y = 1.0F;
-	cam->vec.up.z = 0.0F;
-	cam->projection.persp.fovy = 18.60718727F;
-	cam->projection.persp.near = 128.0F;
-	cam->projection.persp.far = 16384.0F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[4], &FILE_03A_CAMERA_PARAMETERS_OFFSET), 0.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	cobj->vec.eye.x = 9.2993F;
+	cobj->vec.eye.y = 3880.389404F;
+	cobj->vec.eye.z = 4077.981689F;
+	cobj->vec.at.x = 0.9915789962F;
+	cobj->vec.at.y = 2995.681396F;
+	cobj->vec.at.z = -388.9534302F;
+	cobj->vec.up.x = 0.0F;
+	cobj->vec.up.y = 1.0F;
+	cobj->vec.up.z = 0.0F;
+	cobj->projection.persp.fovy = 18.60718727F;
+	cobj->projection.persp.near = 128.0F;
+	cobj->projection.persp.far = 16384.0F;
+	gcAddCameraCamAnimJoint(cobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[4], &FILE_03A_CAMERA_PARAMETERS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
-	cam->flags |= 4;
+	cobj->flags |= 4;
 }
 
 // 0x801336A8
@@ -784,8 +784,8 @@ void mvOpeningFirstDestinationCreateThirdSceneViewports()
 	GObj* camera_gobj_2;
 
 	gMVOpeningFirstDestinationMainCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x50, 0x00000040, -1, 0, 1, 0, 1, 0);
-	gcAddXObjForCamera(CameraGetStruct(camera_gobj), 3, 0);
-	gcAddXObjForCamera(CameraGetStruct(camera_gobj), 0x8, 0);
+	gcAddXObjForCamera(CObjGetStruct(camera_gobj), 3, 0);
+	gcAddXObjForCamera(CObjGetStruct(camera_gobj), 0x8, 0);
 	mvOpeningFirstDestinationConfigureThirdSceneViewport(camera_gobj);
 
 	gMVOpeningFirstDestinationFighterCameraGObj = camera_gobj_2 = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x28, 0x08000200, -1, 1, 1, 0, 1, 0);
@@ -795,21 +795,21 @@ void mvOpeningFirstDestinationCreateThirdSceneViewports()
 // 0x801337C8
 void mvOpeningFirstDestinationConfigureFourthSceneViewport(GObj* camera_gobj)
 {
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-	cam->vec.eye.x = -1039.880615F;
-	cam->vec.eye.y = 3199.215576F;
-	cam->vec.eye.z = -1235.168823F;
-	cam->vec.at.x = -1162.40979F;
-	cam->vec.at.y = 2127.824463F;
-	cam->vec.at.z = -3853.073242F;
-	cam->vec.up.x = 0.0F;
-	cam->vec.up.y = 1.0F;
-	cam->vec.up.z = 0.0F;
-	cam->projection.persp.fovy = 11.98226547F;
-	cam->projection.persp.near = 128.0F;
-	cam->projection.persp.far = 16384.0F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[5], &FILE_03B_CAMERA_PARAMETERS_OFFSET), 0.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	cobj->vec.eye.x = -1039.880615F;
+	cobj->vec.eye.y = 3199.215576F;
+	cobj->vec.eye.z = -1235.168823F;
+	cobj->vec.at.x = -1162.40979F;
+	cobj->vec.at.y = 2127.824463F;
+	cobj->vec.at.z = -3853.073242F;
+	cobj->vec.up.x = 0.0F;
+	cobj->vec.up.y = 1.0F;
+	cobj->vec.up.z = 0.0F;
+	cobj->projection.persp.fovy = 11.98226547F;
+	cobj->projection.persp.near = 128.0F;
+	cobj->projection.persp.far = 16384.0F;
+	gcAddCameraCamAnimJoint(cobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[5], &FILE_03B_CAMERA_PARAMETERS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
@@ -830,20 +830,20 @@ void mvOpeningFirstDestinationCreateFourthSceneViewports()
 void mvOpeningFirstDestinationCreateBackgroundViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x5A, 0x10000000, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80133A6C
 void mvOpeningFirstDestinationCreateHALLogoViewport()
 {
 	GObj *camera_gobj;
-	Camera *cam;
+	CObj *cobj;
 
 	gMVOpeningFirstDestinationHALLogoCameraGObj = camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x32, 0x20000000, -1, 1, 1, 0, 1, 0);
-	cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[2], &FILE_038_CAMERA_PARAMETERS_OFFSET), 0.0F);
+	cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	gcAddCameraCamAnimJoint(cobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[2], &FILE_038_CAMERA_PARAMETERS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
@@ -910,20 +910,20 @@ void mvOpeningFirstDestinationCreateTransitionGFX()
 void mvOpeningFirstDestinationCreateTransitionGFXViewport()
 {
 	GObj* camera_gobj = gcMakeCameraGObj(0x401, 0, 0x10, 0x80000000, func_80017EC0, 0x5F, 0x40000000, -1, 1, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-	cam->vec.eye.x = 0.0F;
-	cam->vec.eye.y = 0.0F;
-	cam->vec.eye.z = 1000.0F;
-	cam->vec.at.x = 0.0F;
-	cam->vec.at.y = 0.0F;
-	cam->vec.at.z = 0.0F;
-	cam->vec.up.x = 0.0F;
-	cam->vec.up.y = 1.0F;
-	cam->vec.up.z = 0.0F;
-	cam->projection.persp.fovy = 39.56115341F;
-	cam->projection.persp.near = 128.0F;
-	cam->projection.persp.far = 16384.0F;
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	cobj->vec.eye.x = 0.0F;
+	cobj->vec.eye.y = 0.0F;
+	cobj->vec.eye.z = 1000.0F;
+	cobj->vec.at.x = 0.0F;
+	cobj->vec.at.y = 0.0F;
+	cobj->vec.at.z = 0.0F;
+	cobj->vec.up.x = 0.0F;
+	cobj->vec.up.y = 1.0F;
+	cobj->vec.up.z = 0.0F;
+	cobj->projection.persp.fovy = 39.56115341F;
+	cobj->projection.persp.near = 128.0F;
+	cobj->projection.persp.far = 16384.0F;
 }
 
 // 0x80134184
@@ -1066,7 +1066,7 @@ void mvOpeningFirstDestinationMainProc(GObj* arg0)
 		}
 		if (gMVOpeningFirstDestinationFramesElapsed == 1037)
 		{
-			CameraGetStruct(gMVOpeningFirstDestinationCameraGObj)->flags &= ~2;
+			CObjGetStruct(gMVOpeningFirstDestinationCameraGObj)->flags &= ~2;
 		}
 		if (gMVOpeningFirstDestinationFramesElapsed == 1040)
 		{
@@ -1123,7 +1123,7 @@ void mvOpeningFirstDestinationInit()
 	lbRelocLoadFilesExtern(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20), gMVOpeningFirstDestinationFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20)), 0x10));
 
 	gcMakeGObjSPAfter(0, mvOpeningFirstDestinationMainProc, 0, 0x80000000);
-	gMVOpeningFirstDestinationCameraGObj = gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gMVOpeningFirstDestinationCameraGObj = gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efAllocInitParticleBank();
 	mvOpeningFirstDestinationInitGlobals();
 	efManagerInitEffects();

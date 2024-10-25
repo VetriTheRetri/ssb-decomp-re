@@ -276,7 +276,7 @@ void ftCommonAppearSetPosition(GObj *fighter_gobj)
 
     fp->entry_pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-    DObjGetStruct(fighter_gobj)->translate.vec.f.y = (gMPCollisionGroundData->cam_bound_top + gMPCollisionGroundData->map_bound_top) * 0.5F;
+    DObjGetStruct(fighter_gobj)->translate.vec.f.y = (gMPCollisionGroundData->cobj_bound_top + gMPCollisionGroundData->map_bound_top) * 0.5F;
 
     ftCommonFallSetStatus(fighter_gobj);
 }

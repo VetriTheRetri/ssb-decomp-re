@@ -866,7 +866,7 @@ void mnVSModeMakeButtonValuesSYRdpViewport(void)
         GOBJ_LINKORDER_DEFAULT,
         lbCommonScissorSpriteCamera,
         0x14,
-        CAMERA_MASK_DLLINK(3),
+        COBJ_MASK_DLLINK(3),
         -1,
         FALSE,
         nGCProcessKindProc,
@@ -874,8 +874,8 @@ void mnVSModeMakeButtonValuesSYRdpViewport(void)
         1,
         FALSE
     );
-    Camera *cam = CameraGetStruct(camera_gobj);
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    CObj *cobj = CObjGetStruct(camera_gobj);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801334CC
@@ -889,7 +889,7 @@ void mnVSModeMakeButtonViewport(void)
         GOBJ_LINKORDER_DEFAULT,
         lbCommonScissorSpriteCamera,
         40,
-        CAMERA_MASK_DLLINK(2),
+        COBJ_MASK_DLLINK(2),
         -1,
         0,
         1,
@@ -897,8 +897,8 @@ void mnVSModeMakeButtonViewport(void)
         1,
         0
     );
-    Camera *cam = CameraGetStruct(camera_gobj);
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    CObj *cobj = CObjGetStruct(camera_gobj);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013356C
@@ -912,7 +912,7 @@ void mnVSModeMakeMenuNameViewport(void)
         GOBJ_LINKORDER_DEFAULT,
         lbCommonScissorSpriteCamera,
         60,
-        CAMERA_MASK_DLLINK(1),
+        COBJ_MASK_DLLINK(1),
         -1,
         FALSE,
         nGCProcessKindProc,
@@ -920,8 +920,8 @@ void mnVSModeMakeMenuNameViewport(void)
         1,
         FALSE
     );
-    Camera *cam = CameraGetStruct(camera_gobj);
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    CObj *cobj = CObjGetStruct(camera_gobj);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013360C
@@ -934,7 +934,7 @@ void mnVSModeMakeBackgroundViewport()
         GOBJ_LINKORDER_DEFAULT,
         lbCommonScissorSpriteCamera,
         80,
-        CAMERA_MASK_DLLINK(0),
+        COBJ_MASK_DLLINK(0),
         -1,
         0,
         1,
@@ -942,8 +942,8 @@ void mnVSModeMakeBackgroundViewport()
         1,
         0
     );
-    Camera *cam = CameraGetStruct(camera_gobj);
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    CObj *cobj = CObjGetStruct(camera_gobj);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801336AC

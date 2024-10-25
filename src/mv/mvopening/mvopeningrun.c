@@ -230,9 +230,9 @@ void mvOpeningRunMakeCrash(void)
 // 0x801320B4
 void mvOpeningRunInitMainCamera(GObj *camera_gobj)
 {
-	Camera* cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-	gcAddCameraCamAnimJoint(cam, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningRunFiles[1], &lMVOpeningRunMainCamAnimJoint), 0.0F);
+	CObj* cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	gcAddCameraCamAnimJoint(cobj, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningRunFiles[1], &lMVOpeningRunMainCamAnimJoint), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
 }
 
@@ -249,9 +249,9 @@ void mvOpeningRunMakeMainCamera(void)
         	GOBJ_LINKORDER_DEFAULT,
         	func_80017EC0,
         	60, 
-        	CAMERA_MASK_DLLINK(18) | CAMERA_MASK_DLLINK(15) |
-        	CAMERA_MASK_DLLINK(10) | CAMERA_MASK_DLLINK(9)  |
-        	CAMERA_MASK_DLLINK(6),
+        	COBJ_MASK_DLLINK(18) | COBJ_MASK_DLLINK(15) |
+        	COBJ_MASK_DLLINK(10) | COBJ_MASK_DLLINK(9)  |
+        	COBJ_MASK_DLLINK(6),
         	-1,
         	TRUE,
         	nGCProcessKindProc,
@@ -265,7 +265,7 @@ void mvOpeningRunMakeMainCamera(void)
 // 0x801321BC
 void mvOpeningRunMakeWallpaperCamera(void)
 {
-	Camera *cam = CameraGetStruct
+	CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -275,7 +275,7 @@ void mvOpeningRunMakeWallpaperCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             80,
-            CAMERA_MASK_DLLINK(28),
+            COBJ_MASK_DLLINK(28),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -284,7 +284,7 @@ void mvOpeningRunMakeWallpaperCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013225C
@@ -366,7 +366,7 @@ void mvOpeningRunFuncStart(void)
 		)
 	);
 	gcMakeGObjSPAfter(0, mvOpeningRunFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
+	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 
 	efAllocInitParticleBank();
 	mvOpeningRunInitVars();
@@ -442,7 +442,7 @@ syTaskmanSetup dMVOpeningRunTaskmanSetup =
     128,                                // Number of SObjs
     sizeof(SObj),                       // SObj size
     16,                                 // Number of Cameras
-    sizeof(Camera),                     // Camera size
+    sizeof(CObj),                     // Camera size
     
     mvOpeningRunFuncStart            	// Task start function
 };

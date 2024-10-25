@@ -749,7 +749,7 @@ struct ftCamera
 {
     ftStruct *target_fp;
     Vec3f target_pos;
-    f32 unk_ftcam_0x10;
+    f32 unk_ftcobj_0x10;
 };
 
 struct ftSprites
@@ -920,7 +920,7 @@ struct ftAttributes
     f32 jostle_width; // ???
     f32 jostle_x;
     sb32 is_metallic; // So far only seen this used to determine whether the character makes blue sparks or gray metal dust particles when hit; used by Metal Mario and Samus
-    f32 cam_offset_y;
+    f32 cobj_offset_y;
     f32 closeup_camera_zoom;
     f32 camera_zoom;
     f32 camera_zoom_default;

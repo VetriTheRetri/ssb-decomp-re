@@ -323,7 +323,7 @@ void syErrorDrawControllerInputs(GObj *gobj)
     s32 i;
     s32 unused;
 
-    func_80016338(gSYTaskmanDLHeads, CameraGetStruct(gobj), 0);
+    func_80016338(gSYTaskmanDLHeads, CObjGetStruct(gobj), 0);
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);

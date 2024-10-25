@@ -19,7 +19,7 @@ extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
 
 // Data
 // 0x8018E0C0
-CameraDesc dMVOpeningPikachuCameraDescStart = {
+CObjDesc dMVOpeningPikachuCObjDescStart = {
 
 	0.0, 0.0, 20000.0,
 	0.0, 0.0, 0.0,
@@ -27,7 +27,7 @@ CameraDesc dMVOpeningPikachuCameraDescStart = {
 };
 
 // 0x8018E0DC
-CameraDesc dMVOpeningPikachuCameraDescEnd = {
+CObjDesc dMVOpeningPikachuCObjDescEnd = {
 
 	50.0, -1640.0, 1000.0,
 	50.0, -1640.0, 0.0,
@@ -76,10 +76,10 @@ f32 gMVOpeningPikachuPosedFighterYSpeed;
 s32 D_ovl42_8018E244;
 
 // 0x8018E248
-CameraDesc dMVOpeningPikachuCameraDescAdjustedStart;
+CObjDesc dMVOpeningPikachuCObjDescAdjustedStart;
 
 // 0x8018E268
-CameraDesc dMVOpeningPikachuCameraDescAdjustedEnd;
+CObjDesc dMVOpeningPikachuCObjDescAdjustedEnd;
 
 // 0x8018E288
 lbFileNode D_ovl42_8018E288[48];
@@ -158,56 +158,56 @@ void mvOpeningPikachuDrawName()
 // 0x8018D334
 void mvOpeningPikachuAnimateStageCamera(GObj* camera_gobj)
 {
-	Camera *cam = CameraGetStruct(camera_gobj);
+	CObj *cobj = CObjGetStruct(camera_gobj);
 
 	if (gMVOpeningPikachuFramesElapsed >= 15)
 	{
-		cam->vec.eye.x += (((dMVOpeningPikachuCameraDescAdjustedEnd.eye.x - dMVOpeningPikachuCameraDescAdjustedStart.eye.x) / 45.0F));
-		cam->vec.eye.y += (((dMVOpeningPikachuCameraDescAdjustedEnd.eye.y - dMVOpeningPikachuCameraDescAdjustedStart.eye.y) / 45.0F));
-		cam->vec.eye.z += (((dMVOpeningPikachuCameraDescAdjustedEnd.eye.z - dMVOpeningPikachuCameraDescAdjustedStart.eye.z) / 45.0F));
-		cam->vec.at.x += (((dMVOpeningPikachuCameraDescAdjustedEnd.at.x - dMVOpeningPikachuCameraDescAdjustedStart.at.x) / 45.0F));
-		cam->vec.at.y += (((dMVOpeningPikachuCameraDescAdjustedEnd.at.y - dMVOpeningPikachuCameraDescAdjustedStart.at.y) / 45.0F));
-		cam->vec.at.z += (((dMVOpeningPikachuCameraDescAdjustedEnd.at.z - dMVOpeningPikachuCameraDescAdjustedStart.at.z) / 45.0F));
-		cam->vec.up.x += (((dMVOpeningPikachuCameraDescAdjustedEnd.upx - dMVOpeningPikachuCameraDescAdjustedStart.upx) / 45.0F));
+		cobj->vec.eye.x += (((dMVOpeningPikachuCObjDescAdjustedEnd.eye.x - dMVOpeningPikachuCObjDescAdjustedStart.eye.x) / 45.0F));
+		cobj->vec.eye.y += (((dMVOpeningPikachuCObjDescAdjustedEnd.eye.y - dMVOpeningPikachuCObjDescAdjustedStart.eye.y) / 45.0F));
+		cobj->vec.eye.z += (((dMVOpeningPikachuCObjDescAdjustedEnd.eye.z - dMVOpeningPikachuCObjDescAdjustedStart.eye.z) / 45.0F));
+		cobj->vec.at.x += (((dMVOpeningPikachuCObjDescAdjustedEnd.at.x - dMVOpeningPikachuCObjDescAdjustedStart.at.x) / 45.0F));
+		cobj->vec.at.y += (((dMVOpeningPikachuCObjDescAdjustedEnd.at.y - dMVOpeningPikachuCObjDescAdjustedStart.at.y) / 45.0F));
+		cobj->vec.at.z += (((dMVOpeningPikachuCObjDescAdjustedEnd.at.z - dMVOpeningPikachuCObjDescAdjustedStart.at.z) / 45.0F));
+		cobj->vec.up.x += (((dMVOpeningPikachuCObjDescAdjustedEnd.upx - dMVOpeningPikachuCObjDescAdjustedStart.upx) / 45.0F));
 	}
 }
 
 // 0x8018D42C
 void mvOpeningPikachuCreateStageViewport(Vec3f arg0)
 {
-	Camera *cam;
+	CObj *cobj;
 
-	dMVOpeningPikachuCameraDescAdjustedStart = dMVOpeningPikachuCameraDescStart;
-	dMVOpeningPikachuCameraDescAdjustedEnd = dMVOpeningPikachuCameraDescEnd;
+	dMVOpeningPikachuCObjDescAdjustedStart = dMVOpeningPikachuCObjDescStart;
+	dMVOpeningPikachuCObjDescAdjustedEnd = dMVOpeningPikachuCObjDescEnd;
 
 	gMVOpeningPikachuStageCameraGObj = func_ovl2_8010DB2C(0);
-	cam = CameraGetStruct(gMVOpeningPikachuStageCameraGObj);
-	syRdpSetViewport(&cam->viewport, 110.0F, 10.0F, 310.0F, 230.0F);
-	cam->projection.persp.aspect = 10.0F / 11.0F;
+	cobj = CObjGetStruct(gMVOpeningPikachuStageCameraGObj);
+	syRdpSetViewport(&cobj->viewport, 110.0F, 10.0F, 310.0F, 230.0F);
+	cobj->projection.persp.aspect = 10.0F / 11.0F;
 	gcEndProcessAll(gMVOpeningPikachuStageCameraGObj);
 	gcAddGObjProcess(gMVOpeningPikachuStageCameraGObj, mvOpeningPikachuAnimateStageCamera, 1, 1);
 
-	dMVOpeningPikachuCameraDescAdjustedStart.eye.x += arg0.x;
-	dMVOpeningPikachuCameraDescAdjustedStart.eye.y += arg0.y;
-	dMVOpeningPikachuCameraDescAdjustedStart.eye.z += arg0.z;
-	dMVOpeningPikachuCameraDescAdjustedStart.at.x += arg0.x;
-	dMVOpeningPikachuCameraDescAdjustedStart.at.y += arg0.y;
-	dMVOpeningPikachuCameraDescAdjustedStart.at.z += arg0.z;
+	dMVOpeningPikachuCObjDescAdjustedStart.eye.x += arg0.x;
+	dMVOpeningPikachuCObjDescAdjustedStart.eye.y += arg0.y;
+	dMVOpeningPikachuCObjDescAdjustedStart.eye.z += arg0.z;
+	dMVOpeningPikachuCObjDescAdjustedStart.at.x += arg0.x;
+	dMVOpeningPikachuCObjDescAdjustedStart.at.y += arg0.y;
+	dMVOpeningPikachuCObjDescAdjustedStart.at.z += arg0.z;
 
-	dMVOpeningPikachuCameraDescAdjustedEnd.eye.x += arg0.x;
-	dMVOpeningPikachuCameraDescAdjustedEnd.eye.y += arg0.y;
-	dMVOpeningPikachuCameraDescAdjustedEnd.eye.z += arg0.z;
-	dMVOpeningPikachuCameraDescAdjustedEnd.at.x += arg0.x;
-	dMVOpeningPikachuCameraDescAdjustedEnd.at.y += arg0.y;
-	dMVOpeningPikachuCameraDescAdjustedEnd.at.z += arg0.z;
+	dMVOpeningPikachuCObjDescAdjustedEnd.eye.x += arg0.x;
+	dMVOpeningPikachuCObjDescAdjustedEnd.eye.y += arg0.y;
+	dMVOpeningPikachuCObjDescAdjustedEnd.eye.z += arg0.z;
+	dMVOpeningPikachuCObjDescAdjustedEnd.at.x += arg0.x;
+	dMVOpeningPikachuCObjDescAdjustedEnd.at.y += arg0.y;
+	dMVOpeningPikachuCObjDescAdjustedEnd.at.z += arg0.z;
 
-	cam->vec.eye.x = dMVOpeningPikachuCameraDescAdjustedStart.eye.x;
-	cam->vec.eye.y = dMVOpeningPikachuCameraDescAdjustedStart.eye.y;
-	cam->vec.eye.z = dMVOpeningPikachuCameraDescAdjustedStart.eye.z;
-	cam->vec.at.x = dMVOpeningPikachuCameraDescAdjustedStart.at.x;
-	cam->vec.at.y = dMVOpeningPikachuCameraDescAdjustedStart.at.y;
-	cam->vec.at.z = dMVOpeningPikachuCameraDescAdjustedStart.at.z;
-	cam->vec.up.x = dMVOpeningPikachuCameraDescAdjustedStart.upx;
+	cobj->vec.eye.x = dMVOpeningPikachuCObjDescAdjustedStart.eye.x;
+	cobj->vec.eye.y = dMVOpeningPikachuCObjDescAdjustedStart.eye.y;
+	cobj->vec.eye.z = dMVOpeningPikachuCObjDescAdjustedStart.eye.z;
+	cobj->vec.at.x = dMVOpeningPikachuCObjDescAdjustedStart.at.x;
+	cobj->vec.at.y = dMVOpeningPikachuCObjDescAdjustedStart.at.y;
+	cobj->vec.at.z = dMVOpeningPikachuCObjDescAdjustedStart.at.z;
+	cobj->vec.up.x = dMVOpeningPikachuCObjDescAdjustedStart.upx;
 }
 
 // 0x8018D634
@@ -346,30 +346,30 @@ void mvOpeningPikachuCreatePosedFighter()
 void mvOpeningPikachuCreateNameViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8018DC20
 void mvOpeningPikachuCreatePosedFighterViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
-	cam->projection.persp.aspect = 5.0F / 11.0F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningPikachuFiles[1], &FILE_041_PIKACHU_CAMERA_PARAMS_OFFSET), 0.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
+	cobj->projection.persp.aspect = 5.0F / 11.0F;
+	gcAddCameraCamAnimJoint(cobj, GetAddressFromOffset(gMVOpeningPikachuFiles[1], &FILE_041_PIKACHU_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
 // 0x8018DD10
 void mvOpeningPikachuCreatePosedFighterBackgroundViewport()
 {
-	Camera *cam;
+	CObj *cobj;
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x10000000, -1, 0, 1, 0, 1, 0);
 
-	cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
-	cam->flags = 5;
+	cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
+	cobj->flags = 5;
 }
 
 // 0x8018DDC0

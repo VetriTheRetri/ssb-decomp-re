@@ -1672,83 +1672,83 @@ void mnCharsCreateMoveName()
 void mnCharsCreateBioViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x46, 0x04000000, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801330A0
 void mnCharsCreateHeaderViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x3C, 0x08000000, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80133140
 void mnCharsCreateSeriesLogoViewport()
 {
-	Camera *cam;
+	CObj *cobj;
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017DBC, 0x5A, 0x10000000, -1, 1, 1, 0, 1, 0);
 
-	cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-	cam->vec.eye.x = 0.0F;
-	cam->vec.eye.y = 0.0F;
-	cam->vec.eye.z = 1800.0F;
-	cam->vec.at.x = 0.0F;
-	cam->vec.at.y = 0.0F;
-	cam->vec.at.z = 0.0F;
-	cam->vec.up.x = 0.0F;
-	cam->vec.up.y = 1.0F;
-	cam->vec.up.z = 0.0F;
+	cobj->vec.eye.x = 0.0F;
+	cobj->vec.eye.y = 0.0F;
+	cobj->vec.eye.z = 1800.0F;
+	cobj->vec.at.x = 0.0F;
+	cobj->vec.at.y = 0.0F;
+	cobj->vec.at.z = 0.0F;
+	cobj->vec.up.x = 0.0F;
+	cobj->vec.up.y = 1.0F;
+	cobj->vec.up.z = 0.0F;
 }
 
 // 0x80133224
 void mnCharsCreateNameViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x20000000, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801332C4
 void mnCharsCreateWorksBackgroundViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x32, 0x40000000, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80133364
 void mnCharsCreateWorksSYRdpViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x28, 0x80000000, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80133404
 void mnCharsCreateFighterViewport()
 {
-	Camera *cam;
+	CObj *cobj;
 
 	gMNCharsFighterCameraGObj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017DBC, 0x1E, 0x00048600, -1, 1, 1, 0, 1, 0);
 
-	cam = CameraGetStruct(gMNCharsFighterCameraGObj);
-	cam->flags = 1;
+	cobj = CObjGetStruct(gMNCharsFighterCameraGObj);
+	cobj->flags = 1;
 
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-	cam->vec.eye.x = 0.0F;
-	cam->vec.eye.y = 0.0F;
-	cam->vec.eye.z = 3000.0F;
-	cam->vec.at.x = 700.0F;
-	cam->vec.at.y = 370.0F;
-	cam->vec.at.z = 0.0F;
-	cam->vec.up.x = 0.0F;
-	cam->vec.up.y = 1.0F;
-	cam->vec.up.z = 0.0F;
+	cobj->vec.eye.x = 0.0F;
+	cobj->vec.eye.y = 0.0F;
+	cobj->vec.eye.z = 3000.0F;
+	cobj->vec.at.x = 700.0F;
+	cobj->vec.at.y = 370.0F;
+	cobj->vec.at.z = 0.0F;
+	cobj->vec.up.x = 0.0F;
+	cobj->vec.up.y = 1.0F;
+	cobj->vec.up.z = 0.0F;
 }
 
 // 0x80133510
@@ -1844,38 +1844,38 @@ void mnCharsChangeFighter(s32 ft_kind)
 }
 
 // 0x80133754
-void mnCharsMoveFighterCamera(Camera* fighter_cam, f32 angle, s32 arg2)
+void mnCharsMoveFighterCamera(CObj* fighter_cobj, f32 angle, s32 arg2)
 {
 	f32 theta;
 	f32 radians;
 
 	radians = F_CLC_DTOR32(angle);
-	fighter_cam->vec.eye.y = __sinf(radians) * 3000.0f;
-	fighter_cam->vec.eye.z = cosf(radians) * 3000.0f;
+	fighter_cobj->vec.eye.y = __sinf(radians) * 3000.0f;
+	fighter_cobj->vec.eye.z = cosf(radians) * 3000.0f;
 
 	theta = atan2f(370.0f, 0) + radians;
-	fighter_cam->vec.at.y = __sinf(theta) * 370.0f;
-	fighter_cam->vec.at.z = cosf(theta) * 370.0f;
+	fighter_cobj->vec.at.y = __sinf(theta) * 370.0f;
+	fighter_cobj->vec.at.z = cosf(theta) * 370.0f;
 
 	theta = atan2f(1.0f, 0) + radians;
-	fighter_cam->vec.up.y = __sinf(theta);
-	fighter_cam->vec.up.z = cosf(theta);
+	fighter_cobj->vec.up.y = __sinf(theta);
+	fighter_cobj->vec.up.z = cosf(theta);
 }
 
 // 0x80133840
 void mnCharsResetFighterViewport()
 {
-	Camera *cam = CameraGetStruct(gMNCharsFighterCameraGObj);
+	CObj *cobj = CObjGetStruct(gMNCharsFighterCameraGObj);
 
-	cam->vec.eye.x = 0.0F;
-	cam->vec.eye.y = 0.0F;
-	cam->vec.eye.z = 3000.0F;
-	cam->vec.at.x = 700.0F;
-	cam->vec.at.y = 370.0F;
-	cam->vec.at.z = 0.0F;
-	cam->vec.up.x = 0.0F;
-	cam->vec.up.y = 1.0F;
-	cam->vec.up.z = 0.0F;
+	cobj->vec.eye.x = 0.0F;
+	cobj->vec.eye.y = 0.0F;
+	cobj->vec.eye.z = 3000.0F;
+	cobj->vec.at.x = 700.0F;
+	cobj->vec.at.y = 370.0F;
+	cobj->vec.at.z = 0.0F;
+	cobj->vec.up.x = 0.0F;
+	cobj->vec.up.y = 1.0F;
+	cobj->vec.up.z = 0.0F;
 
 	gMNCharsHeldStickAngle = 0;
 	gMNCharsHeldStickUnknown.f = 0;
@@ -1936,7 +1936,7 @@ void mnCharsHandleInput()
 		{
 			gMNCharsHeldStickAngle += gPlayerControllers[z_held_port].stick_range.y / 60.0f;
 
-			mnCharsMoveFighterCamera(CameraGetStruct(gMNCharsFighterCameraGObj), gMNCharsHeldStickAngle, gMNCharsHeldStickUnknown.s);
+			mnCharsMoveFighterCamera(CObjGetStruct(gMNCharsFighterCameraGObj), gMNCharsHeldStickAngle, gMNCharsHeldStickUnknown.s);
 
 			gMNCharsAutoRotateFighter = FALSE;
 		}
@@ -1945,7 +1945,7 @@ void mnCharsHandleInput()
 		{
 			gMNCharsHeldStickAngle += gPlayerControllers[z_held_port].stick_range.y / 60.0f;
 
-			mnCharsMoveFighterCamera(CameraGetStruct(gMNCharsFighterCameraGObj), gMNCharsHeldStickAngle, gMNCharsHeldStickUnknown.s);
+			mnCharsMoveFighterCamera(CObjGetStruct(gMNCharsFighterCameraGObj), gMNCharsHeldStickAngle, gMNCharsHeldStickUnknown.s);
 
 			gMNCharsAutoRotateFighter = FALSE;
 		}
@@ -2068,7 +2068,7 @@ void mnCharsInit()
 	lbRelocLoadFilesExtern(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228), gMNCharsFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228)), 0x10U));
 
 	gcMakeGObjSPAfter(0, mnCharsMain, 0, 0x80000000);
-	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efAllocInitParticleBank();
 	mnCharsInitVars();
 	efManagerInitEffects();

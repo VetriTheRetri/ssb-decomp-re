@@ -25,12 +25,12 @@ GObjProcess *sGCProcessHead;
 GObjProcess *sGCProcessQueue[6];
 u32 sGCProcessesActive;
 
-GObj *gGCCommonLinks[OM_COMMON_MAX_LINKS];
+GObj *gGCCommonLinks[GC_COMMON_MAX_LINKS];
 s32 D_80046774_40794; // used by system_03_1
-GObj *sGCCommonLinks[OM_COMMON_MAX_LINKS];
+GObj *sGCCommonLinks[GC_COMMON_MAX_LINKS];
 GObj *sGCCommonHead;
-GObj *gGCCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
-GObj *sGCCommonDLLinks[OM_COMMON_MAX_DL_LINKS];
+GObj *gGCCommonDLLinks[GC_COMMON_MAX_DLLINKS];
+GObj *sGCCommonDLLinks[GC_COMMON_MAX_DLLINKS];
 s32 sGCCommonsActiveNum;
 u16 sGCCommonSize;
 s16 sGCCommonsMaxNum;
@@ -54,7 +54,7 @@ SObj *sGCSpriteHead;
 u32 sGCSpritesActive;
 u16 sGCSpriteSize;
 
-Camera *sGCCameraHead;
+CObj *sGCCameraHead;
 u32 sGCCamerasActive;
 u16 sGCCameraSize;
 
@@ -86,7 +86,7 @@ GCPersp dGCPerspDefault = { NULL, 0, 30.0F, 4.0F / 3.0F, 100.0F, 12800.0F, 1.0F 
 GCOrtho dGCOrthoDefault = { NULL, -160.0F, 160.0F, -120.0F, 120.0F, 100.0F, 12800.0F, 1.0F };
 
 // 0x8003B8B4
-CameraVec dGCCameraVecDefault = { NULL, { 0.0F, 0.0F, 1500.0F }, { 0.0F, 0.0F, 0.0F }, { 0.0F, 1.0F, 0.0F } };
+CObjVec dGCCObjVecDefault = { NULL, { 0.0F, 0.0F, 1500.0F }, { 0.0F, 0.0F, 0.0F }, { 0.0F, 1.0F, 0.0F } };
 
 // 0x8003B8DC
 GCTranslate dGCTranslateDefault = { NULL, { 0.0F, 0.0F, 0.0F } };
@@ -633,10 +633,10 @@ void gcAppendAObjToMObj(MObj *mobj, AObj *aobj)
 }
 
 // 0x80007EA0
-void gcAppendAObjToCamera(Camera *cam, AObj *aobj)
+void gcAppendAObjToCamera(CObj *cobj, AObj *aobj)
 {
-	aobj->next = cam->aobj;
-	cam->aobj = aobj;
+	aobj->next = cobj->aobj;
+	cobj->aobj = aobj;
 }
 
 // 0x80007EB0
@@ -741,9 +741,9 @@ void gcSetSObjPrevAlloc(SObj *sobj)
 }
 
 // 0x800080DC
-Camera *gcGetCameraSetNextAlloc(void)
+CObj *gcGetCameraSetNextAlloc(void)
 {
-	Camera *cam;
+	CObj *cobj;
 
 	if (sGCCameraHead == NULL)
 	{
@@ -757,19 +757,19 @@ Camera *gcGetCameraSetNextAlloc(void)
 		while (TRUE);
 	}
 
-	cam = sGCCameraHead;
+	cobj = sGCCameraHead;
 	sGCCameraHead = sGCCameraHead->next;
 	sGCCamerasActive++;
 
-	return cam;
+	return cobj;
 }
 
 // 0x8000815C
-void gcSetCameraPrevAlloc(Camera *cam)
+void gcSetCameraPrevAlloc(CObj *cobj)
 {
-	cam->next = sGCCameraHead;
+	cobj->next = sGCCameraHead;
 	sGCCamerasActive--;
-	sGCCameraHead = cam;
+	sGCCameraHead = cobj;
 }
 
 // 0x80008188
@@ -810,8 +810,7 @@ GObjProcess* gcAddGObjProcess(GObj *gobj, void (*proc)(GObj*), u8 kind, u32 prio
 		(
 			&gobjthread->thread,
 			dGCProcessThreadID++,
-			(void (*)(void*))
-			proc,
+			(void (*)(void*)) proc,
 			gobj,
 			&gobjthread->stack[sGCThreadStackSize / sizeof(u64)],
 			51
@@ -874,7 +873,7 @@ GObjProcess* unref_80008304(GObj *gobj, void (*proc)(GObj*), u32 pri, s32 thread
 	(
 		&gobjthread->thread,
 		tid,
-		(void (*)(void*))proc,
+		(void (*)(void*)) proc,
 		gobj,
 		&gobjthread->stack[gobjthread->stack_size / sizeof(u64)],
 		51
@@ -1128,19 +1127,19 @@ XObj* gcAddXObjForDObjFixed(DObj *dobj, u8 kind, u8 arg2)
 }
 
 // 0x80008CF0
-XObj* gcAddXObjForCamera(Camera *cam, u8 kind, u8 arg2)
+XObj* gcAddXObjForCamera(CObj *cobj, u8 kind, u8 arg2)
 {
 	XObj *xobj;
 
-	if (cam->xobjs_num == ARRAY_COUNT(cam->xobj))
+	if (cobj->xobjs_num == ARRAY_COUNT(cobj->xobj))
 	{
 		syErrorPrintf("om : couldn't add OMMtx for Camera\n");
 		while (TRUE);
 	}
 	xobj = gcGetXObjSetNextAlloc();
 
-	cam->xobj[cam->xobjs_num] = xobj;
-	cam->xobjs_num++;
+	cobj->xobj[cobj->xobjs_num] = xobj;
+	cobj->xobjs_num++;
 
 	xobj->kind = kind;
 
@@ -1148,13 +1147,13 @@ XObj* gcAddXObjForCamera(Camera *cam, u8 kind, u8 arg2)
 	{
 	case nGCTransformPerspFastF:
 	case nGCTransformPerspF:
-		cam->projection.persp = dGCPerspDefault;
-		cam->projection.persp.xobj = xobj;
+		cobj->projection.persp = dGCPerspDefault;
+		cobj->projection.persp.xobj = xobj;
 		break;
 
 	case nGCTransformOrtho:
-		cam->projection.ortho = dGCOrthoDefault;
-		cam->projection.ortho.xobj = xobj;
+		cobj->projection.ortho = dGCOrthoDefault;
+		cobj->projection.ortho.xobj = xobj;
 		break;
 
 	case 6:
@@ -1169,8 +1168,8 @@ XObj* gcAddXObjForCamera(Camera *cam, u8 kind, u8 arg2)
 	case 15:
 	case 16:
 	case 17:
-		cam->vec = dGCCameraVecDefault;
-		cam->vec.xobj = xobj;
+		cobj->vec = dGCCObjVecDefault;
+		cobj->vec.xobj = xobj;
 		break;
 
 	case 1:
@@ -1259,7 +1258,7 @@ void gcRemoveAObjFromMObj(MObj *mobj)
 }
 
 // 0x80009010
-AObj* gcAddAObjForCamera(Camera *cam, u8 track)
+AObj* gcAddAObjForCamera(CObj *cobj, u8 track)
 {
 	AObj *aobj = gcGetAObjSetNextAlloc();
 
@@ -1273,18 +1272,18 @@ AObj* gcAddAObjForCamera(Camera *cam, u8 track)
 	aobj->length = 0.0F;
 	aobj->length_invert = 1.0F;
 
-	gcAppendAObjToCamera(cam, aobj);
+	gcAppendAObjToCamera(cobj, aobj);
 
 	return aobj;
 }
 
 // 0x8000907C
-void gcRemoveAObjFromCamera(Camera *cam)
+void gcRemoveAObjFromCamera(CObj *cobj)
 {
 	AObj *current_aobj;
 	AObj *next_aobj;
 
-	current_aobj = cam->aobj;
+	current_aobj = cobj->aobj;
 
 	while (current_aobj != NULL)
 	{
@@ -1292,8 +1291,8 @@ void gcRemoveAObjFromCamera(Camera *cam)
 		gcSetAObjPrevAlloc(current_aobj);
 		current_aobj = next_aobj;
 	}
-	cam->aobj = NULL;
-	cam->anim_wait = AOBJ_ANIM_NULL;
+	cobj->aobj = NULL;
+	cobj->anim_wait = AOBJ_ANIM_NULL;
 }
 
 // 0x800090DC
@@ -1616,10 +1615,10 @@ void gcEjectSObj(SObj *sobj)
 	gcSetSObjPrevAlloc(sobj);
 }
 
-Camera* gcAddCameraForGObj(GObj *gobj)
+CObj* gcAddCameraForGObj(GObj *gobj)
 {
 	s32 i;
-	Camera *new_cam;
+	CObj *new_cobj;
 
 	if (gobj == NULL)
 	{
@@ -1627,51 +1626,51 @@ Camera* gcAddCameraForGObj(GObj *gobj)
 	}
 	gobj->obj_kind = nGCCommonAppendCamera;
 
-	new_cam = gcGetCameraSetNextAlloc();
-	gobj->obj = new_cam;
-	new_cam->parent_gobj = gobj;
+	new_cobj = gcGetCameraSetNextAlloc();
+	gobj->obj = new_cobj;
+	new_cobj->parent_gobj = gobj;
 
-	syRdpSetDefaultViewport(&new_cam->viewport);
+	syRdpSetDefaultViewport(&new_cobj->viewport);
 
-	new_cam->xobjs_num = 0;
+	new_cobj->xobjs_num = 0;
 
-	for (i = 0; i < ARRAY_COUNT(new_cam->xobj); i++)
+	for (i = 0; i < ARRAY_COUNT(new_cobj->xobj); i++)
 	{
-		new_cam->xobj[i] = NULL;
+		new_cobj->xobj[i] = NULL;
 	}
-	new_cam->flags = CAMERA_FLAG_NONE;
-	new_cam->color = GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00);
-	new_cam->func_camera = NULL;
-	new_cam->unk_camera_0x8C = 0;
+	new_cobj->flags = COBJ_FLAG_NONE;
+	new_cobj->color = GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00);
+	new_cobj->func_camera = NULL;
+	new_cobj->unk_camera_0x8C = 0;
 
-	new_cam->aobj = NULL;
-	new_cam->camanim_joint.event32 = NULL;
+	new_cobj->aobj = NULL;
+	new_cobj->cobjanim_joint.event32 = NULL;
 
-	new_cam->anim_wait = AOBJ_ANIM_NULL;
-	new_cam->anim_speed = 1.0F;
-	new_cam->anim_frame = 0.0F;
+	new_cobj->anim_wait = AOBJ_ANIM_NULL;
+	new_cobj->anim_speed = 1.0F;
+	new_cobj->anim_frame = 0.0F;
 
-	return new_cam;
+	return new_cobj;
 }
 
 // 0x80009810
-void gcEjectCamera(Camera *cam)
+void gcEjectCamera(CObj *cobj)
 {
 	GObj *gobj;
 	s32 i;
 	AObj *current_aobj;
 	AObj *next_aobj;
 
-	gobj = cam->parent_gobj;
+	gobj = cobj->parent_gobj;
 	gobj->obj_kind = nGCCommonAppendNone;
 	gobj->obj = NULL;
 
-	for (i = 0; i < ARRAY_COUNT(cam->xobj); i++)
+	for (i = 0; i < ARRAY_COUNT(cobj->xobj); i++)
 	{
-		if (cam->xobj[i] != NULL)
-			gcSetXObjPrevAlloc(cam->xobj[i]);
+		if (cobj->xobj[i] != NULL)
+			gcSetXObjPrevAlloc(cobj->xobj[i]);
 	}
-	current_aobj = cam->aobj;
+	current_aobj = cobj->aobj;
 
 	while (current_aobj != NULL)
 	{
@@ -1679,7 +1678,7 @@ void gcEjectCamera(Camera *cam)
 		gcSetAObjPrevAlloc(current_aobj);
 		current_aobj = next_aobj;
 	}
-	gcSetCameraPrevAlloc(cam);
+	gcSetCameraPrevAlloc(cobj);
 }
 
 // 0x800098A4
@@ -1791,7 +1790,7 @@ void gcEjectGObj(GObj *gobj)
 
 	case nGCCommonAppendSObj: gcRemoveSObjAll(gobj); break;
 
-	case nGCCommonAppendCamera: gcEjectCamera(CameraGetStruct(gobj)); break;
+	case nGCCommonAppendCamera: gcEjectCamera(CObjGetStruct(gobj)); break;
 	}
 
 	if (gobj->dl_link_id != ARRAY_COUNT(gGCCommonDLLinks))
@@ -1875,7 +1874,7 @@ void unref_80009D3C(GObj *this_gobj, GObj *other_gobj)
 }
 
 // 0x80009D78
-void gcLinkGObjDLCommon(GObj *gobj, void (*func_display)(GObj*), u8 dl_link, u32 dl_order, u32 cam_tag)
+void gcLinkGObjDLCommon(GObj *gobj, void (*func_display)(GObj*), u8 dl_link, u32 dl_order, u32 cobj_tag)
 {
 	if (dl_link >= ARRAY_COUNT(gGCCommonDLLinks) - 1)
 	{
@@ -1886,28 +1885,28 @@ void gcLinkGObjDLCommon(GObj *gobj, void (*func_display)(GObj*), u8 dl_link, u32
 	gobj->dl_link_id = dl_link;
 	gobj->dl_link_order = dl_order;
 	gobj->func_display = func_display;
-	gobj->cam_tag = cam_tag;
+	gobj->cobj_tag = cobj_tag;
 	gobj->frame_draw_last = dSYTaskmanFrameDrawCount - 1;
 }
 
 // 0x80009DF4
-void gcAddGObjDisplay(GObj *gobj, void (*func_display)(GObj*), u8 dl_link, u32 order, u32 cam_tag)
+void gcAddGObjDisplay(GObj *gobj, void (*func_display)(GObj*), u8 dl_link, u32 order, u32 cobj_tag)
 {
 	if (gobj == NULL)
 	{
 		gobj = gGCCurrentCommon;
 	}
-	gcLinkGObjDLCommon(gobj, func_display, dl_link, order, cam_tag);
+	gcLinkGObjDLCommon(gobj, func_display, dl_link, order, cobj_tag);
 	gcDLLinkGObjTail(gobj);
 }
 
 // 0x80009E38
-void unref_80009E38(GObj *gobj, void (*func_display)(GObj*), u8 dl_link, u32 order, u32 cam_tag)
+void unref_80009E38(GObj *gobj, void (*func_display)(GObj*), u8 dl_link, u32 order, u32 cobj_tag)
 {
 	if (gobj == NULL)
 		gobj = gGCCurrentCommon;
 
-	gcLinkGObjDLCommon(gobj, func_display, dl_link, order, cam_tag);
+	gcLinkGObjDLCommon(gobj, func_display, dl_link, order, cobj_tag);
 	gcDLLinkGObjHead(gobj);
 }
 
@@ -1932,36 +1931,36 @@ void unref_80009ED0(GObj *this_gobj, void (*func_display)(GObj*), s32 arg2, GObj
 }
 
 // 0x80009F28
-void func_80009F28(GObj *gobj, void (*func_display)(GObj*), u32 order, u64 arg3, u32 cam_tag)
+void func_80009F28(GObj *gobj, void (*func_display)(GObj*), u32 order, u64 arg3, u32 cobj_tag)
 {
 	gobj->dl_link_id = ARRAY_COUNT(gGCCommonDLLinks) - 1;
 	gobj->dl_link_order = order;
 	gobj->func_display = func_display;
-	gobj->cam_mask = arg3;
-	gobj->cam_tag = cam_tag;
+	gobj->cobj_mask = arg3;
+	gobj->cobj_tag = cobj_tag;
 	gobj->unk_gobj_0x40 = 0;
 	gobj->frame_draw_last = dSYTaskmanFrameDrawCount - 1;
 }
 
 // 0x80009F74
-void func_80009F74(GObj *gobj, void (*func_display)(GObj*), u32 order, u64 arg3, u32 cam_tag)
+void func_80009F74(GObj *gobj, void (*func_display)(GObj*), u32 order, u64 arg3, u32 cobj_tag)
 {
 	if (gobj == NULL)
 	{
 		gobj = gGCCurrentCommon;
 	}
-	func_80009F28(gobj, func_display, order, arg3, cam_tag);
+	func_80009F28(gobj, func_display, order, arg3, cobj_tag);
 	gcDLLinkGObjTail(gobj);
 }
 
 // 0x80009FC0
-void unref_80009FC0(GObj *gobj, void (*func_display)(GObj*), u32 order, u64 arg3, u32 cam_tag)
+void unref_80009FC0(GObj *gobj, void (*func_display)(GObj*), u32 order, u64 arg3, u32 cobj_tag)
 {
 	if (gobj == NULL)
 	{
 		gobj = gGCCurrentCommon;
 	}
-	func_80009F28(gobj, func_display, order, arg3, cam_tag);
+	func_80009F28(gobj, func_display, order, arg3, cobj_tag);
 	gcDLLinkGObjHead(gobj);
 }
 
@@ -2383,15 +2382,15 @@ void gcSetupObjectManager(GCSetup *setup)
 
 	if (setup->cameras_num != 0)
 	{
-		Camera *current_cam;
-		sGCCameraHead = current_cam = setup->cameras;
+		CObj *current_cobj;
+		sGCCameraHead = current_cobj = setup->cameras;
 
 		for (i = 0; i < setup->cameras_num - 1; i++)
 		{
-			current_cam->next = (Camera*) ((uintptr_t)current_cam + setup->camera_size);
-			current_cam = current_cam->next;
+			current_cobj->next = (CObj*) ((uintptr_t)current_cobj + setup->camera_size);
+			current_cobj = current_cobj->next;
 		}
-		current_cam->next = NULL;
+		current_cobj->next = NULL;
 	}
 	else sGCCameraHead = NULL;
 

@@ -240,8 +240,8 @@ void mvOpeningClashMakeFightersCamera(void)
         GOBJ_LINKORDER_DEFAULT,
         func_80017EC0,
         60,
-        CAMERA_MASK_DLLINK(27) |
-        CAMERA_MASK_DLLINK(9),
+        COBJ_MASK_DLLINK(27) |
+        COBJ_MASK_DLLINK(9),
         -1,
         TRUE,
         nGCProcessKindProc,
@@ -249,23 +249,23 @@ void mvOpeningClashMakeFightersCamera(void)
         1,
         FALSE
     );
-    Camera *cam = CameraGetStruct(camera_gobj);
+    CObj *cobj = CObjGetStruct(camera_gobj);
 
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cam->flags |= 0x1;
+    cobj->flags |= 0x1;
 
-    cam->projection.persp.near = 128.0F;
-    cam->projection.persp.far = 16384.0F;
+    cobj->projection.persp.near = 128.0F;
+    cobj->projection.persp.far = 16384.0F;
 
-    gcAddCameraCamAnimJoint(cam, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningClashFiles[0], &lMVOpeningClashFightersCamAnimJoint), 0.0F);
+    gcAddCameraCamAnimJoint(cobj, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningClashFiles[0], &lMVOpeningClashFightersCamAnimJoint), 0.0F);
     gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
 }
 
 // 0x80132314
 void mvOpeningClashMakeVoidCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -275,7 +275,7 @@ void mvOpeningClashMakeVoidCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             40,
-            CAMERA_MASK_DLLINK(26),
+            COBJ_MASK_DLLINK(26),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -284,9 +284,9 @@ void mvOpeningClashMakeVoidCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
     
-    cam->flags |= 1;
+    cobj->flags |= 1;
 }
 
 // 0x801323C8
@@ -312,7 +312,7 @@ void mvOpeningClashMakeWallpaperCamera(void)
         GOBJ_LINKORDER_DEFAULT,
         mvOpeningClashWallpaperFuncDisplay,
         90,
-        CAMERA_MASK_DLLINK(29),
+        COBJ_MASK_DLLINK(29),
         -1,
         TRUE,
         nGCProcessKindProc,
@@ -320,10 +320,10 @@ void mvOpeningClashMakeWallpaperCamera(void)
         1,
         FALSE
     );
-    Camera *cam = CameraGetStruct(camera_gobj);
+    CObj *cobj = CObjGetStruct(camera_gobj);
 
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-    gcAddCameraCamAnimJoint(cam, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperCamAnimJoint), 0.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    gcAddCameraCamAnimJoint(cobj, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperCamAnimJoint), 0.0F);
 
     gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
 }
@@ -417,7 +417,7 @@ void mvOpeningClashFuncStart(void)
         )
     );
     gcMakeGObjSPAfter(0, mvOpeningClashFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
     efAllocInitParticleBank();
     mvOpeningClashInitTotalTimeTics();
@@ -496,7 +496,7 @@ syTaskmanSetup dMVOpeningClashTaskmanSetup =
     128,                                // Number of SObjs
     sizeof(SObj),                       // SObj size
     16,                                 // Number of Cameras
-    sizeof(Camera),                     // Camera size
+    sizeof(CObj),                     // Camera size
     
     mvOpeningClashFuncStart             // Task start function
 };

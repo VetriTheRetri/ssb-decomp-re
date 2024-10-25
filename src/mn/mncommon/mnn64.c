@@ -97,7 +97,7 @@ syTaskmanSetup dMNN64TaskmanSetup =
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
     0,                              // Number of Cameras
-    sizeof(Camera),                 // Camera size
+    sizeof(CObj),                 	// CObj size
     
     mnN64FuncStart               	// Task start function
 };
@@ -182,7 +182,7 @@ void mnN64ActorFuncRun(GObj *gobj)
 void mnN64FuncStart(void)
 {
 	lbRelocSetup rl_setup;
-	Camera *cam;
+	CObj *cobj;
 	GObj *gobj;
 	SObj *sobj;
 	Sprite *sprite;
@@ -203,9 +203,9 @@ void mnN64FuncStart(void)
 	lbRelocInitSetup(&rl_setup);
 
 	gcMakeGObjSPAfter(0, mnN64ActorFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
-	cam = CameraGetStruct
+	cobj = CObjGetStruct
 	(
 		gcMakeCameraGObj
 		(
@@ -215,7 +215,7 @@ void mnN64FuncStart(void)
 			GOBJ_LINKORDER_DEFAULT,
 			lbCommonScissorSpriteCamera,
 			80,
-			CAMERA_MASK_DLLINK(0),
+			COBJ_MASK_DLLINK(0),
 			-1,
 			FALSE,
 			nGCProcessKindProc,
@@ -224,7 +224,7 @@ void mnN64FuncStart(void)
 			FALSE
 		)
 	);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
 	gobj = gcMakeGObjSPAfter(nGCCommonKindWallpaper, NULL, nGCCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
 

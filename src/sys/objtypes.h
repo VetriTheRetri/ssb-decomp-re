@@ -17,19 +17,17 @@
 #include <sys/objdef.h>
 
 // General OM defines
-#define OM_COMMON_MAX_LINKS     33
-#define OM_COMMON_MAX_DL_LINKS  65
+#define GC_COMMON_MAX_LINKS     33
+#define GC_COMMON_MAX_DLLINKS  65
 
 // GObj defines
 #define GOBJ_FLAG_NONE              (0)
 #define GOBJ_FLAG_HIDDEN            (1 << 0)
 #define GOBJ_FLAG_NOANIM            (1 << 1)    // Skip applying aninmation values?
-#define GOBJ_FLAG_NOFUNC           (1 << 6)    // I actually don't know what this really does
+#define GOBJ_FLAG_NOFUNC            (1 << 6)    // I actually don't know what this really does
 
 #define GOBJ_LINKORDER_DEFAULT      0x80000000
 #define GOBJ_DLLINKORDER_DEFAULT    0x80000000
-
-#define GOBJ_CAMTAG_DEFAULT         0xFFFFFFFF
 
 // DObj defines
 #define DOBJ_PARENT_NULL            ((DObj*)1)
@@ -55,15 +53,15 @@
 // Camera defines
 
 // Create mask of draw layer (known in Smash Remix lingo as "room") to render
-#define CAMERA_MASK_DLLINK(r) (1ULL << (r))
+#define COBJ_MASK_DLLINK(r)         (1ULL << (r))
 
-#define CAMERA_FLAG_NONE            (0)
-#define CAMERA_FLAG_ZBUFFER         (1 << 0)    // Use Z-Buffer depth image
-#define CAMERA_FLAG_FILLCOLOR       (1 << 1)    // Use camera's packed RRGGBBAA `color` variable
-#define CAMERA_FLAG_DLBUFFERS       (1 << 2)    // Update DLBuffers and DisplayList branches?
-#define CAMERA_FLAG_IDENTIFIER      (1 << 3)    // If the 0x8 bit is 0, cam_tag is treated as a mask; if 1, it is treated as an ID
-#define CAMERA_FLAG_GFXEND          (1 << 4)    // Run SCTaskGfxEnd task type?
-#define CAMERA_FLAG_BRANCHSYNC      (1 << 6)    // Sync all Branch DLs with main DL buffers?
+#define COBJ_FLAG_NONE              (0)
+#define COBJ_FLAG_ZBUFFER           (1 << 0)    // Use Z-Buffer depth image
+#define COBJ_FLAG_FILLCOLOR         (1 << 1)    // Use camera's packed RRGGBBAA `color` variable
+#define COBJ_FLAG_DLBUFFERS         (1 << 2)    // Update DLBuffers and DisplayList branches?
+#define COBJ_FLAG_IDENTIFIER        (1 << 3)    // If the 0x8 bit is 0, cobj_tag is treated as a mask; if 1, it is treated as an ID
+#define COBJ_FLAG_GFXEND            (1 << 4)    // Run SCTaskGfxEnd task type?
+#define COBJ_FLAG_BRANCHSYNC        (1 << 6)    // Sync all Branch DLs with main DL buffers?
 
 union GCUserData
 {
@@ -204,8 +202,8 @@ struct GObj
     GObj *dl_link_prev;
     u32 dl_link_order;
     void (*func_display)(GObj*);
-    u64 cam_mask;
-    u32 cam_tag;                        // Usually 0xFFFFFFFF
+    u64 cobj_mask;
+    u32 cobj_tag;                       // Usually 0xFFFFFFFF
     u64 unk_gobj_0x40;
     GObjLink gobjlinks[5];
     s32 gobjlinks_num;                  // Length/number of active members of gobjlinks
@@ -439,9 +437,12 @@ struct DObj                 // Draw Object
     };
 
     u8 flags;
+    
     ub8 is_anim_root;       // TRUE if this DObj's animation script is at the top of the hierarchy?
+
     u8 xobjs_num;
     XObj *xobj[5];
+
     AObj *aobj;
 
     AObjScript anim_joint;
@@ -477,7 +478,7 @@ struct SObj                     // Sprite object
     u16 lrs, lrt;               // lower right s and t - used for wrap/mirror boundary
 };
 
-struct CameraVec
+struct CObjVec
 {
     XObj *xobj;
     Vec3f eye;
@@ -485,16 +486,16 @@ struct CameraVec
     Vec3f up;
 };
 
-struct CameraDesc
+struct CObjDesc
 {
     Vec3f eye;
     Vec3f at;
     f32 upx;
 };
 
-struct Camera
+struct CObj
 {
-    Camera *next;
+    CObj *next;
     GObj *parent_gobj;
 
     Vp viewport;
@@ -507,13 +508,13 @@ struct Camera
 
     } projection;
 
-    CameraVec vec;
+    CObjVec vec;
 
     s32 xobjs_num;
     XObj *xobj[2];
 
     AObj *aobj;
-    AObjScript camanim_joint;
+    AObjScript cobjanim_joint;
 
     f32 anim_wait;
     f32 anim_speed;
@@ -522,7 +523,7 @@ struct Camera
     u32 flags;
     u32 color;
 
-    void (*func_camera)(Camera*, s32);
+    void (*func_camera)(CObj*, s32);
 
     s32 unk_camera_0x8C;
 };
@@ -564,7 +565,7 @@ struct GCSetup
     s32 sobjs_num;
     size_t sobj_size;
 
-    Camera *cameras;
+    CObj *cameras;
     s32 cameras_num;
     size_t camera_size;
 };

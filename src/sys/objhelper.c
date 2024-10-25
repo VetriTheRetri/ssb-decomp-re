@@ -280,10 +280,10 @@ void gcAddDObjMatrixSetsRpyR(DObj *dobj)
 }
 
 // 0x8000B47C
-void gcAddCameraMatrixSets(Camera *cam)
+void gcAddCameraMatrixSets(CObj *cobj)
 {
-    gcAddXObjForCamera(cam, nGCTransformPerspFastF, 0);
-    gcAddXObjForCamera(cam, nGCTransformLookAt, 0);
+    gcAddXObjForCamera(cobj, nGCTransformPerspFastF, 0);
+    gcAddXObjForCamera(cobj, nGCTransformLookAt, 0);
 }
 
 // 0x8000B4B4
@@ -443,7 +443,7 @@ GObj* gcMakeModelGObj
     void (*func_display)(GObj*),
     u8 dl_link,
     u32 dl_link_order,
-    u32 cam_tag,
+    u32 cobj_tag,
     void *dvar,
     sb32 is_add_default_xobj,
     u8 gobjproc_kind,
@@ -460,7 +460,7 @@ GObj* gcMakeModelGObj
     {
         return NULL;
     }
-    gcAddGObjDisplay(gobj, func_display, dl_link, dl_link_order, cam_tag);
+    gcAddGObjDisplay(gobj, func_display, dl_link, dl_link_order, cobj_tag);
 
     dobj = gcAddDObjForGObj(gobj, dvar);
 
@@ -485,7 +485,7 @@ GObj* gcMakeSpriteGObj
     void (*func_display)(GObj*),
     s32 dl_link,
     u32 dl_link_order,
-    u32 cam_tag,
+    u32 cobj_tag,
     Sprite *sprite,
     u8 gobjproc_kind,
     void (*proc)(GObj*),
@@ -498,7 +498,7 @@ GObj* gcMakeSpriteGObj
     {
         return NULL;
     }
-    gcAddGObjDisplay(gobj, func_display, dl_link, dl_link_order, cam_tag);
+    gcAddGObjDisplay(gobj, func_display, dl_link, dl_link_order, cobj_tag);
     
     gcAddSObjForGObj(gobj, sprite);
         
@@ -518,8 +518,8 @@ GObj* gcMakeCameraGObj
     u32 link_order,
     void (*func_display)(GObj*),
     u32 dl_link_order,
-    u64 cam_mask,
-    u32 cam_tag,
+    u64 cobj_mask,
+    u32 cobj_tag,
     sb32 is_add_default_xobj,
     u8 gobjproc_kind,
     void (*proc)(GObj*),
@@ -528,7 +528,7 @@ GObj* gcMakeCameraGObj
 )
 {
     GObj *gobj;
-    Camera *cam;
+    CObj *cobj;
 
     gobj = gcMakeGObjSPAfter(id, func_run, link, link_order);
     
@@ -536,13 +536,13 @@ GObj* gcMakeCameraGObj
     {
         return NULL;
     }
-    func_80009F74(gobj, func_display, dl_link_order, cam_mask, cam_tag);
+    func_80009F74(gobj, func_display, dl_link_order, cobj_mask, cobj_tag);
     
-    cam = gcAddCameraForGObj(gobj);
+    cobj = gcAddCameraForGObj(gobj);
 
     if (is_add_default_xobj != FALSE)
     {
-        gcAddCameraMatrixSets(cam);
+        gcAddCameraMatrixSets(cobj);
     }
     if (proc != NULL)
     {
@@ -550,8 +550,8 @@ GObj* gcMakeCameraGObj
     }
     if (argD != 0)
     {
-        cam->flags = 0x4 | CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER;
-        cam->color = GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF);
+        cobj->flags = 0x4 | COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER;
+        cobj->color = GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF);
     }
     return gobj;
 }
@@ -575,16 +575,16 @@ GObj* gcMakeDefaultCameraGObj(s32 link, u32 link_order, u32 dl_link_order, u32 f
         0,
         FALSE
     );
-    Camera *cam;
+    CObj *cobj;
     
     if (gobj == NULL)
     {
         return NULL;
     }
-    cam = CameraGetStruct(gobj);
+    cobj = CObjGetStruct(gobj);
     
-    cam->flags = flags;
-    cam->color = color;
+    cobj->flags = flags;
+    cobj->color = color;
     
     return gobj;
 }

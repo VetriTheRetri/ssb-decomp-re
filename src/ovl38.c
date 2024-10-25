@@ -21,7 +21,7 @@ extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
 
 // Data
 // 0x8018E120
-CameraDesc dMVOpeningSamusCameraDescStart = {
+CObjDesc dMVOpeningSamusCObjDescStart = {
 
 	400.0, 1100.0, 0.0,
 	0.0, 200.0, 0.0,
@@ -29,7 +29,7 @@ CameraDesc dMVOpeningSamusCameraDescStart = {
 };
 
 // 0x8018E13C
-CameraDesc dMVOpeningSamusCameraDescEnd = {
+CObjDesc dMVOpeningSamusCObjDescEnd = {
 
 	1600.0, 230.0, 200.0,
 	0.0, 200.0, 0.0,
@@ -80,10 +80,10 @@ f32 gMVOpeningSamusPosedFighterYSpeed;
 s32 D_ovl38_8018E294;
 
 // 0x8018E298
-CameraDesc dMVOpeningSamusCameraDescAdjustedStart;
+CObjDesc dMVOpeningSamusCObjDescAdjustedStart;
 
 // 0x8018E2B8
-CameraDesc dMVOpeningSamusCameraDescAdjustedEnd;
+CObjDesc dMVOpeningSamusCObjDescAdjustedEnd;
 
 // 0x8018E2D8
 lbFileNode D_ovl38_8018E2D8[48];
@@ -162,56 +162,56 @@ void mvOpeningSamusDrawName()
 // 0x8018D314
 void mvOpeningSamusAnimateStageCamera(GObj* camera_gobj)
 {
-	Camera *cam = CameraGetStruct(camera_gobj);
+	CObj *cobj = CObjGetStruct(camera_gobj);
 
 	if (gMVOpeningSamusFramesElapsed >= 15)
 	{
-		cam->vec.eye.x += (((dMVOpeningSamusCameraDescAdjustedEnd.eye.x - dMVOpeningSamusCameraDescAdjustedStart.eye.x) / 45.0F));
-		cam->vec.eye.y += (((dMVOpeningSamusCameraDescAdjustedEnd.eye.y - dMVOpeningSamusCameraDescAdjustedStart.eye.y) / 45.0F));
-		cam->vec.eye.z += (((dMVOpeningSamusCameraDescAdjustedEnd.eye.z - dMVOpeningSamusCameraDescAdjustedStart.eye.z) / 45.0F));
-		cam->vec.at.x += (((dMVOpeningSamusCameraDescAdjustedEnd.at.x - dMVOpeningSamusCameraDescAdjustedStart.at.x) / 45.0F));
-		cam->vec.at.y += (((dMVOpeningSamusCameraDescAdjustedEnd.at.y - dMVOpeningSamusCameraDescAdjustedStart.at.y) / 45.0F));
-		cam->vec.at.z += (((dMVOpeningSamusCameraDescAdjustedEnd.at.z - dMVOpeningSamusCameraDescAdjustedStart.at.z) / 45.0F));
-		cam->vec.up.x += (((dMVOpeningSamusCameraDescAdjustedEnd.upx - dMVOpeningSamusCameraDescAdjustedStart.upx) / 45.0F));
+		cobj->vec.eye.x += (((dMVOpeningSamusCObjDescAdjustedEnd.eye.x - dMVOpeningSamusCObjDescAdjustedStart.eye.x) / 45.0F));
+		cobj->vec.eye.y += (((dMVOpeningSamusCObjDescAdjustedEnd.eye.y - dMVOpeningSamusCObjDescAdjustedStart.eye.y) / 45.0F));
+		cobj->vec.eye.z += (((dMVOpeningSamusCObjDescAdjustedEnd.eye.z - dMVOpeningSamusCObjDescAdjustedStart.eye.z) / 45.0F));
+		cobj->vec.at.x += (((dMVOpeningSamusCObjDescAdjustedEnd.at.x - dMVOpeningSamusCObjDescAdjustedStart.at.x) / 45.0F));
+		cobj->vec.at.y += (((dMVOpeningSamusCObjDescAdjustedEnd.at.y - dMVOpeningSamusCObjDescAdjustedStart.at.y) / 45.0F));
+		cobj->vec.at.z += (((dMVOpeningSamusCObjDescAdjustedEnd.at.z - dMVOpeningSamusCObjDescAdjustedStart.at.z) / 45.0F));
+		cobj->vec.up.x += (((dMVOpeningSamusCObjDescAdjustedEnd.upx - dMVOpeningSamusCObjDescAdjustedStart.upx) / 45.0F));
 	}
 }
 
 // 0x8018D40C
 void mvOpeningSamusCreateStageViewport(Vec3f arg0)
 {
-	Camera *cam;
+	CObj *cobj;
 
-	dMVOpeningSamusCameraDescAdjustedStart = dMVOpeningSamusCameraDescStart;
-	dMVOpeningSamusCameraDescAdjustedEnd = dMVOpeningSamusCameraDescEnd;
+	dMVOpeningSamusCObjDescAdjustedStart = dMVOpeningSamusCObjDescStart;
+	dMVOpeningSamusCObjDescAdjustedEnd = dMVOpeningSamusCObjDescEnd;
 
 	gMVOpeningSamusStageCameraGObj = func_ovl2_8010DB2C(0);
-	cam = CameraGetStruct(gMVOpeningSamusStageCameraGObj);
-	syRdpSetViewport(&cam->viewport, 110.0F, 10.0F, 310.0F, 230.0F);
-	cam->projection.persp.aspect = 10.0F / 11.0F;
+	cobj = CObjGetStruct(gMVOpeningSamusStageCameraGObj);
+	syRdpSetViewport(&cobj->viewport, 110.0F, 10.0F, 310.0F, 230.0F);
+	cobj->projection.persp.aspect = 10.0F / 11.0F;
 	gcEndProcessAll(gMVOpeningSamusStageCameraGObj);
 	gcAddGObjProcess(gMVOpeningSamusStageCameraGObj, mvOpeningSamusAnimateStageCamera, 1, 1);
 
-	dMVOpeningSamusCameraDescAdjustedStart.eye.x += arg0.x;
-	dMVOpeningSamusCameraDescAdjustedStart.eye.y += arg0.y;
-	dMVOpeningSamusCameraDescAdjustedStart.eye.z += arg0.z;
-	dMVOpeningSamusCameraDescAdjustedStart.at.x += arg0.x;
-	dMVOpeningSamusCameraDescAdjustedStart.at.y += arg0.y;
-	dMVOpeningSamusCameraDescAdjustedStart.at.z += arg0.z;
+	dMVOpeningSamusCObjDescAdjustedStart.eye.x += arg0.x;
+	dMVOpeningSamusCObjDescAdjustedStart.eye.y += arg0.y;
+	dMVOpeningSamusCObjDescAdjustedStart.eye.z += arg0.z;
+	dMVOpeningSamusCObjDescAdjustedStart.at.x += arg0.x;
+	dMVOpeningSamusCObjDescAdjustedStart.at.y += arg0.y;
+	dMVOpeningSamusCObjDescAdjustedStart.at.z += arg0.z;
 
-	dMVOpeningSamusCameraDescAdjustedEnd.eye.x += arg0.x;
-	dMVOpeningSamusCameraDescAdjustedEnd.eye.y += arg0.y;
-	dMVOpeningSamusCameraDescAdjustedEnd.eye.z += arg0.z;
-	dMVOpeningSamusCameraDescAdjustedEnd.at.x += arg0.x;
-	dMVOpeningSamusCameraDescAdjustedEnd.at.y += arg0.y;
-	dMVOpeningSamusCameraDescAdjustedEnd.at.z += arg0.z;
+	dMVOpeningSamusCObjDescAdjustedEnd.eye.x += arg0.x;
+	dMVOpeningSamusCObjDescAdjustedEnd.eye.y += arg0.y;
+	dMVOpeningSamusCObjDescAdjustedEnd.eye.z += arg0.z;
+	dMVOpeningSamusCObjDescAdjustedEnd.at.x += arg0.x;
+	dMVOpeningSamusCObjDescAdjustedEnd.at.y += arg0.y;
+	dMVOpeningSamusCObjDescAdjustedEnd.at.z += arg0.z;
 
-	cam->vec.eye.x = dMVOpeningSamusCameraDescAdjustedStart.eye.x;
-	cam->vec.eye.y = dMVOpeningSamusCameraDescAdjustedStart.eye.y;
-	cam->vec.eye.z = dMVOpeningSamusCameraDescAdjustedStart.eye.z;
-	cam->vec.at.x = dMVOpeningSamusCameraDescAdjustedStart.at.x;
-	cam->vec.at.y = dMVOpeningSamusCameraDescAdjustedStart.at.y;
-	cam->vec.at.z = dMVOpeningSamusCameraDescAdjustedStart.at.z;
-	cam->vec.up.x = dMVOpeningSamusCameraDescAdjustedStart.upx;
+	cobj->vec.eye.x = dMVOpeningSamusCObjDescAdjustedStart.eye.x;
+	cobj->vec.eye.y = dMVOpeningSamusCObjDescAdjustedStart.eye.y;
+	cobj->vec.eye.z = dMVOpeningSamusCObjDescAdjustedStart.eye.z;
+	cobj->vec.at.x = dMVOpeningSamusCObjDescAdjustedStart.at.x;
+	cobj->vec.at.y = dMVOpeningSamusCObjDescAdjustedStart.at.y;
+	cobj->vec.at.z = dMVOpeningSamusCObjDescAdjustedStart.at.z;
+	cobj->vec.up.x = dMVOpeningSamusCObjDescAdjustedStart.upx;
 }
 
 // 0x8018D614
@@ -365,30 +365,30 @@ void mvOpeningSamusCreatePosedFighter()
 void mvOpeningSamusCreateNameViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8018DC68
 void mvOpeningSamusCreatePosedFighterViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
-	cam->projection.persp.aspect = 5.0F / 11.0F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningSamusFiles[1], &FILE_041_SAMUS_CAMERA_PARAMS_OFFSET), 0.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
+	cobj->projection.persp.aspect = 5.0F / 11.0F;
+	gcAddCameraCamAnimJoint(cobj, GetAddressFromOffset(gMVOpeningSamusFiles[1], &FILE_041_SAMUS_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
 // 0x8018DD58
 void mvOpeningSamusCreatePosedFighterBackgroundViewport()
 {
-	Camera *cam;
+	CObj *cobj;
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x10000000, -1, 0, 1, 0, 1, 0);
 
-	cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
-	cam->flags = 5;
+	cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 110.0F, 230.0F);
+	cobj->flags = 5;
 }
 
 // 0x8018DE08

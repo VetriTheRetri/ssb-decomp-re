@@ -3778,7 +3778,7 @@ void efManagerQuakeProcUpdate(GObj *effect_gobj)
     DObj *dobj;
     Vec3f sub;
     Vec3f pos;
-    Camera *cam;
+    CObj *cobj;
     f32 mag;
 
     gcPlayAnimAll(effect_gobj);
@@ -3790,11 +3790,11 @@ void efManagerQuakeProcUpdate(GObj *effect_gobj)
     }
     else
     {
-        cam = CameraGetStruct(gCMManagerCameraGObj);
+        cobj = CObjGetStruct(gCMManagerCameraGObj);
 
         dobj = DObjGetStruct(effect_gobj);
 
-        syVectorDiff3D(&sub, &cam->vec.at, &cam->vec.eye);
+        syVectorDiff3D(&sub, &cobj->vec.at, &cobj->vec.eye);
 
         mag = syVectorMag3D(&sub);
 

@@ -110,7 +110,7 @@ syTaskmanSetup dMVOpeningCliffTaskmanSetup =
     0,                                  // Number of SObjs
     sizeof(SObj),                       // SObj size
     0,                                  // Number of Cameras
-    sizeof(Camera),                     // Camera size
+    sizeof(CObj),                     // Camera size
     
     mvOpeningCliffFuncStart             // Task start function
 };
@@ -321,7 +321,7 @@ void mvOpeningCliffCameraProcUpdate(GObj *gobj)
 void mvOpeningCliffMakeMainCamera(void)
 {
     GObj* camera_gobj;
-    Camera* cam;
+    CObj* cobj;
 
     camera_gobj = gcMakeCameraGObj
     (
@@ -331,7 +331,7 @@ void mvOpeningCliffMakeMainCamera(void)
         GOBJ_LINKORDER_DEFAULT,
         func_80017EC0,
         80,
-        CAMERA_MASK_DLLINK(26),
+        COBJ_MASK_DLLINK(26),
         -1,
         FALSE,
         nGCProcessKindProc,
@@ -339,18 +339,18 @@ void mvOpeningCliffMakeMainCamera(void)
         1,
         FALSE
     );
-    gcAddXObjForCamera(CameraGetStruct(camera_gobj), nGCTransformPerspF, 0);
-    gcAddXObjForCamera(CameraGetStruct(camera_gobj), 6, 0);
+    gcAddXObjForCamera(CObjGetStruct(camera_gobj), nGCTransformPerspF, 0);
+    gcAddXObjForCamera(CObjGetStruct(camera_gobj), 6, 0);
 
-    cam = CameraGetStruct(camera_gobj);
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    cobj = CObjGetStruct(camera_gobj);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cam->projection.persp.near = 128.0F;
-    cam->projection.persp.far = 16384.0F;
+    cobj->projection.persp.near = 128.0F;
+    cobj->projection.persp.far = 16384.0F;
 
     gcAddCameraCamAnimJoint
     (
-        cam,
+        cobj,
         lbRelocGetDataFromFile
         (
             AObjEvent32*,
@@ -369,7 +369,7 @@ void mvOpeningCliffMakeMainCamera(void)
         GOBJ_LINKORDER_DEFAULT,
         func_80017EC0,
         70,
-        CAMERA_MASK_DLLINK(28),
+        COBJ_MASK_DLLINK(28),
         -1,
         FALSE,
         nGCProcessKindProc,
@@ -377,19 +377,19 @@ void mvOpeningCliffMakeMainCamera(void)
         1,
         FALSE
     );
-    gcAddXObjForCamera(CameraGetStruct(camera_gobj), nGCTransformPerspF, 0);
-    gcAddXObjForCamera(CameraGetStruct(camera_gobj), 6, 0);
+    gcAddXObjForCamera(CObjGetStruct(camera_gobj), nGCTransformPerspF, 0);
+    gcAddXObjForCamera(CObjGetStruct(camera_gobj), 6, 0);
 
-    cam = CameraGetStruct(camera_gobj);
+    cobj = CObjGetStruct(camera_gobj);
     
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cam->projection.persp.near = 128.0F;
-    cam->projection.persp.far = 16384.0F;
+    cobj->projection.persp.near = 128.0F;
+    cobj->projection.persp.far = 16384.0F;
 
     gcAddCameraCamAnimJoint
     (
-        cam,
+        cobj,
         lbRelocGetDataFromFile
         (
             AObjEvent32*,
@@ -404,7 +404,7 @@ void mvOpeningCliffMakeMainCamera(void)
 // 0x80132368
 void mvOpeningCliffMakeWallpaperCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -414,7 +414,7 @@ void mvOpeningCliffMakeWallpaperCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             90,
-            CAMERA_MASK_DLLINK(27),
+            COBJ_MASK_DLLINK(27),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -423,7 +423,7 @@ void mvOpeningCliffMakeWallpaperCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132408
@@ -501,7 +501,7 @@ void mvOpeningCliffFuncStart(void)
     );
     gcMakeGObjSPAfter(0, mvOpeningCliffFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
 
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 
     efAllocInitParticleBank();
     mvOpeningCliffInitTotalTimeTics();

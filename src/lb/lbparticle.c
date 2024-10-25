@@ -1467,7 +1467,7 @@ void lbParticleDrawTextures(GObj *gobj)
     f32 pc0_magnitude;  // var_f14?
     f32 pc1_magnitude;  // var_f16?
     f32 tm;
-    Camera *cam;
+    CObj *cobj;
     s32 s;              // sp210
     s32 t;              // sp20C
     f32 vscale0;        // sp208
@@ -1489,22 +1489,22 @@ void lbParticleDrawTextures(GObj *gobj)
     u8 masks, maskt;
     f32 mx, my;
 
-    cam = CameraGetStruct(gGCCurrentCamera);
+    cobj = CObjGetStruct(gGCCurrentCamera);
 
-    for (i = 0; i < cam->xobjs_num; i++)
+    for (i = 0; i < cobj->xobjs_num; i++)
     {
-        switch (cam->xobj[i]->kind)
+        switch (cobj->xobj[i]->kind)
         {
             case nGCTransformPerspFastF:
                 syMatrixPerspFastF
                 (
                     &projection_f,
                     NULL,
-                    cam->projection.persp.fovy,
-                    cam->projection.persp.aspect,
-                    cam->projection.persp.near,
-                    cam->projection.persp.far,
-                    cam->projection.persp.scale
+                    cobj->projection.persp.fovy,
+                    cobj->projection.persp.aspect,
+                    cobj->projection.persp.near,
+                    cobj->projection.persp.far,
+                    cobj->projection.persp.scale
                 );
                 break;
                 
@@ -1513,11 +1513,11 @@ void lbParticleDrawTextures(GObj *gobj)
                 (
                     &projection_f,
                     NULL,
-                    cam->projection.persp.fovy,
-                    cam->projection.persp.aspect,
-                    cam->projection.persp.near,
-                    cam->projection.persp.far,
-                    cam->projection.persp.scale
+                    cobj->projection.persp.fovy,
+                    cobj->projection.persp.aspect,
+                    cobj->projection.persp.near,
+                    cobj->projection.persp.far,
+                    cobj->projection.persp.scale
                 );
                 break;
 
@@ -1525,13 +1525,13 @@ void lbParticleDrawTextures(GObj *gobj)
 				syMatrixOrthoF
                 (
                     &projection_f,
-                    cam->projection.ortho.l,
-                    cam->projection.ortho.r,
-                    cam->projection.ortho.b,
-                    cam->projection.ortho.t,
-                    cam->projection.ortho.n,
-                    cam->projection.ortho.f,
-                    cam->projection.ortho.scale
+                    cobj->projection.ortho.l,
+                    cobj->projection.ortho.r,
+                    cobj->projection.ortho.b,
+                    cobj->projection.ortho.t,
+                    cobj->projection.ortho.n,
+                    cobj->projection.ortho.f,
+                    cobj->projection.ortho.scale
                 );
                 break;
                 
@@ -1542,15 +1542,15 @@ void lbParticleDrawTextures(GObj *gobj)
                 syMatrixLookAtF
                 (
                     &look_at_f,
-                    cam->vec.eye.x,
-                    cam->vec.eye.y,
-                    cam->vec.eye.z,
-                    cam->vec.at.x,
-                    cam->vec.at.y,
-                    cam->vec.at.z,
-                    cam->vec.up.x,
-                    cam->vec.up.y,
-                    cam->vec.up.z
+                    cobj->vec.eye.x,
+                    cobj->vec.eye.y,
+                    cobj->vec.eye.z,
+                    cobj->vec.at.x,
+                    cobj->vec.at.y,
+                    cobj->vec.at.z,
+                    cobj->vec.up.x,
+                    cobj->vec.up.y,
+                    cobj->vec.up.z
                 );
                 break;
                 
@@ -1561,13 +1561,13 @@ void lbParticleDrawTextures(GObj *gobj)
                 syMatrixModLookAtF
                 (
                     &look_at_f,
-                    cam->vec.eye.x,
-                    cam->vec.eye.y,
-                    cam->vec.eye.z,
-                    cam->vec.at.x,
-                    cam->vec.at.y,
-                    cam->vec.at.z,
-                    cam->vec.up.x,
+                    cobj->vec.eye.x,
+                    cobj->vec.eye.y,
+                    cobj->vec.eye.z,
+                    cobj->vec.at.x,
+                    cobj->vec.at.y,
+                    cobj->vec.at.z,
+                    cobj->vec.up.x,
                     0.0F,
                     1.0F,
                     0.0F
@@ -1581,13 +1581,13 @@ void lbParticleDrawTextures(GObj *gobj)
                 syMatrixModLookAtF
                 (
                     &look_at_f,
-                    cam->vec.eye.x,
-                    cam->vec.eye.y,
-                    cam->vec.eye.z,
-                    cam->vec.at.x,
-                    cam->vec.at.y,
-                    cam->vec.at.z,
-                    cam->vec.up.x,
+                    cobj->vec.eye.x,
+                    cobj->vec.eye.y,
+                    cobj->vec.eye.z,
+                    cobj->vec.at.x,
+                    cobj->vec.at.y,
+                    cobj->vec.at.z,
+                    cobj->vec.up.x,
                     0.0F,
                     0.0F,
                     1.0F
@@ -1599,49 +1599,49 @@ void lbParticleDrawTextures(GObj *gobj)
                 (
                     &projection_f,
                     NULL,
-                    cam->projection.persp.fovy,
-                    cam->projection.persp.aspect,
-                    cam->projection.persp.near,
-                    cam->projection.persp.far,
-                    cam->projection.persp.scale
+                    cobj->projection.persp.fovy,
+                    cobj->projection.persp.aspect,
+                    cobj->projection.persp.near,
+                    cobj->projection.persp.far,
+                    cobj->projection.persp.scale
                 );
                 syMatrixLookAtF
                 (
                     &look_at_f,
-                    cam->vec.eye.x,
-                    cam->vec.eye.y,
-                    cam->vec.eye.z,
-                    cam->vec.at.x,
-                    cam->vec.at.y,
-                    cam->vec.at.z,
-                    cam->vec.up.x,
-                    cam->vec.up.y,
-                    cam->vec.up.z
+                    cobj->vec.eye.x,
+                    cobj->vec.eye.y,
+                    cobj->vec.eye.z,
+                    cobj->vec.at.x,
+                    cobj->vec.at.y,
+                    cobj->vec.at.z,
+                    cobj->vec.up.x,
+                    cobj->vec.up.y,
+                    cobj->vec.up.z
                 );
                 break;
         }
     }
-    if (cam->xobjs_num != 0)
+    if (cobj->xobjs_num != 0)
     {
         guMtxCatF(look_at_f, projection_f, projection_f);
         
-        vscale0 = cam->viewport.vp.vscale[0];
-        vscale1 = -cam->viewport.vp.vscale[1];
-        vscale2 = cam->viewport.vp.vscale[2];
+        vscale0 = cobj->viewport.vp.vscale[0];
+        vscale1 = -cobj->viewport.vp.vscale[1];
+        vscale2 = cobj->viewport.vp.vscale[2];
         
-        vtrans0 = cam->viewport.vp.vtrans[0];
-        vtrans1 = cam->viewport.vp.vtrans[1];
-        vtrans2 = cam->viewport.vp.vtrans[2];
+        vtrans0 = cobj->viewport.vp.vtrans[0];
+        vtrans1 = cobj->viewport.vp.vtrans[1];
+        vtrans2 = cobj->viewport.vp.vtrans[2];
     }
     else
     {
-        vscale0 = cam->viewport.vp.vscale[0];
-        vscale1 = -cam->viewport.vp.vscale[1];
-        vscale2 = cam->viewport.vp.vscale[2];
+        vscale0 = cobj->viewport.vp.vscale[0];
+        vscale1 = -cobj->viewport.vp.vscale[1];
+        vscale2 = cobj->viewport.vp.vscale[2];
         
-        vtrans0 = cam->viewport.vp.vtrans[0];
-        vtrans1 = cam->viewport.vp.vtrans[1];
-        vtrans2 = cam->viewport.vp.vtrans[2];
+        vtrans0 = cobj->viewport.vp.vtrans[0];
+        vtrans1 = cobj->viewport.vp.vtrans[1];
+        vtrans2 = cobj->viewport.vp.vtrans[2];
         
         guMtxIdentF(projection_f);
 
@@ -1673,7 +1673,7 @@ void lbParticleDrawTextures(GObj *gobj)
     
     for (j = 0; j < ARRAY_COUNT(sLBParticleStructsAllocLinks); j++)
     {
-        if (gobj->cam_mask & (1 << j))
+        if (gobj->cobj_mask & (1 << j))
         {
             for (ptcl = sLBParticleStructsAllocLinks[j]; ptcl != NULL; ptcl = ptcl->next)
             {

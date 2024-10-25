@@ -20,7 +20,7 @@ extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
 
 // Data
 // 0x8018E0C0
-CameraDesc dMVOpeningYoshiCameraDescStart = {
+CObjDesc dMVOpeningYoshiCObjDescStart = {
 
 	1200.0, 150.0, 1000.0,
 	100.0, 200.0, 0.0,
@@ -28,7 +28,7 @@ CameraDesc dMVOpeningYoshiCameraDescStart = {
 };
 
 // 0x8018E0DC
-CameraDesc dMVOpeningYoshiCameraDescEnd = {
+CObjDesc dMVOpeningYoshiCObjDescEnd = {
 
 	2000.0, 100.0, 600.0,
 	1300.0, 100.0, -100.0,
@@ -80,10 +80,10 @@ f32 gMVOpeningYoshiPosedFighterXSpeed;
 s32 D_ovl41_8018E244;
 
 // 0x8018E248
-CameraDesc dMVOpeningYoshiCameraDescAdjustedStart;
+CObjDesc dMVOpeningYoshiCObjDescAdjustedStart;
 
 // 0x8018E268
-CameraDesc dMVOpeningYoshiCameraDescAdjustedEnd;
+CObjDesc dMVOpeningYoshiCObjDescAdjustedEnd;
 
 // 0x8018E288
 lbFileNode D_ovl41_8018E288[48];
@@ -162,56 +162,56 @@ void mvOpeningYoshiDrawName()
 // 0x8018D314
 void mvOpeningYoshiAnimateStageCamera(GObj* camera_gobj)
 {
-	Camera *cam = CameraGetStruct(camera_gobj);
+	CObj *cobj = CObjGetStruct(camera_gobj);
 
 	if (gMVOpeningYoshiFramesElapsed >= 15)
 	{
-		cam->vec.eye.x += (((dMVOpeningYoshiCameraDescAdjustedEnd.eye.x - dMVOpeningYoshiCameraDescAdjustedStart.eye.x) / 45.0F));
-		cam->vec.eye.y += (((dMVOpeningYoshiCameraDescAdjustedEnd.eye.y - dMVOpeningYoshiCameraDescAdjustedStart.eye.y) / 45.0F));
-		cam->vec.eye.z += (((dMVOpeningYoshiCameraDescAdjustedEnd.eye.z - dMVOpeningYoshiCameraDescAdjustedStart.eye.z) / 45.0F));
-		cam->vec.at.x += (((dMVOpeningYoshiCameraDescAdjustedEnd.at.x - dMVOpeningYoshiCameraDescAdjustedStart.at.x) / 45.0F));
-		cam->vec.at.y += (((dMVOpeningYoshiCameraDescAdjustedEnd.at.y - dMVOpeningYoshiCameraDescAdjustedStart.at.y) / 45.0F));
-		cam->vec.at.z += (((dMVOpeningYoshiCameraDescAdjustedEnd.at.z - dMVOpeningYoshiCameraDescAdjustedStart.at.z) / 45.0F));
-		cam->vec.up.x += (((dMVOpeningYoshiCameraDescAdjustedEnd.upx - dMVOpeningYoshiCameraDescAdjustedStart.upx) / 45.0F));
+		cobj->vec.eye.x += (((dMVOpeningYoshiCObjDescAdjustedEnd.eye.x - dMVOpeningYoshiCObjDescAdjustedStart.eye.x) / 45.0F));
+		cobj->vec.eye.y += (((dMVOpeningYoshiCObjDescAdjustedEnd.eye.y - dMVOpeningYoshiCObjDescAdjustedStart.eye.y) / 45.0F));
+		cobj->vec.eye.z += (((dMVOpeningYoshiCObjDescAdjustedEnd.eye.z - dMVOpeningYoshiCObjDescAdjustedStart.eye.z) / 45.0F));
+		cobj->vec.at.x += (((dMVOpeningYoshiCObjDescAdjustedEnd.at.x - dMVOpeningYoshiCObjDescAdjustedStart.at.x) / 45.0F));
+		cobj->vec.at.y += (((dMVOpeningYoshiCObjDescAdjustedEnd.at.y - dMVOpeningYoshiCObjDescAdjustedStart.at.y) / 45.0F));
+		cobj->vec.at.z += (((dMVOpeningYoshiCObjDescAdjustedEnd.at.z - dMVOpeningYoshiCObjDescAdjustedStart.at.z) / 45.0F));
+		cobj->vec.up.x += (((dMVOpeningYoshiCObjDescAdjustedEnd.upx - dMVOpeningYoshiCObjDescAdjustedStart.upx) / 45.0F));
 	}
 }
 
 // 0x8018D40C
 void mvOpeningYoshiCreateStageViewport(Vec3f arg0)
 {
-	Camera *cam;
+	CObj *cobj;
 
-	dMVOpeningYoshiCameraDescAdjustedStart = dMVOpeningYoshiCameraDescStart;
-	dMVOpeningYoshiCameraDescAdjustedEnd = dMVOpeningYoshiCameraDescEnd;
+	dMVOpeningYoshiCObjDescAdjustedStart = dMVOpeningYoshiCObjDescStart;
+	dMVOpeningYoshiCObjDescAdjustedEnd = dMVOpeningYoshiCObjDescEnd;
 
 	gMVOpeningYoshiStageCameraGObj = func_ovl2_8010DB2C(0);
-	cam = CameraGetStruct(gMVOpeningYoshiStageCameraGObj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 150.0F);
-	cam->projection.persp.aspect = 15.0F / 7.0F;
+	cobj = CObjGetStruct(gMVOpeningYoshiStageCameraGObj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 150.0F);
+	cobj->projection.persp.aspect = 15.0F / 7.0F;
 	gcEndProcessAll(gMVOpeningYoshiStageCameraGObj);
 	gcAddGObjProcess(gMVOpeningYoshiStageCameraGObj, mvOpeningYoshiAnimateStageCamera, 1, 1);
 
-	dMVOpeningYoshiCameraDescAdjustedStart.eye.x += arg0.x;
-	dMVOpeningYoshiCameraDescAdjustedStart.eye.y += arg0.y;
-	dMVOpeningYoshiCameraDescAdjustedStart.eye.z += arg0.z;
-	dMVOpeningYoshiCameraDescAdjustedStart.at.x += arg0.x;
-	dMVOpeningYoshiCameraDescAdjustedStart.at.y += arg0.y;
-	dMVOpeningYoshiCameraDescAdjustedStart.at.z += arg0.z;
+	dMVOpeningYoshiCObjDescAdjustedStart.eye.x += arg0.x;
+	dMVOpeningYoshiCObjDescAdjustedStart.eye.y += arg0.y;
+	dMVOpeningYoshiCObjDescAdjustedStart.eye.z += arg0.z;
+	dMVOpeningYoshiCObjDescAdjustedStart.at.x += arg0.x;
+	dMVOpeningYoshiCObjDescAdjustedStart.at.y += arg0.y;
+	dMVOpeningYoshiCObjDescAdjustedStart.at.z += arg0.z;
 
-	dMVOpeningYoshiCameraDescAdjustedEnd.eye.x += arg0.x;
-	dMVOpeningYoshiCameraDescAdjustedEnd.eye.y += arg0.y;
-	dMVOpeningYoshiCameraDescAdjustedEnd.eye.z += arg0.z;
-	dMVOpeningYoshiCameraDescAdjustedEnd.at.x += arg0.x;
-	dMVOpeningYoshiCameraDescAdjustedEnd.at.y += arg0.y;
-	dMVOpeningYoshiCameraDescAdjustedEnd.at.z += arg0.z;
+	dMVOpeningYoshiCObjDescAdjustedEnd.eye.x += arg0.x;
+	dMVOpeningYoshiCObjDescAdjustedEnd.eye.y += arg0.y;
+	dMVOpeningYoshiCObjDescAdjustedEnd.eye.z += arg0.z;
+	dMVOpeningYoshiCObjDescAdjustedEnd.at.x += arg0.x;
+	dMVOpeningYoshiCObjDescAdjustedEnd.at.y += arg0.y;
+	dMVOpeningYoshiCObjDescAdjustedEnd.at.z += arg0.z;
 
-	cam->vec.eye.x = dMVOpeningYoshiCameraDescAdjustedStart.eye.x;
-	cam->vec.eye.y = dMVOpeningYoshiCameraDescAdjustedStart.eye.y;
-	cam->vec.eye.z = dMVOpeningYoshiCameraDescAdjustedStart.eye.z;
-	cam->vec.at.x = dMVOpeningYoshiCameraDescAdjustedStart.at.x;
-	cam->vec.at.y = dMVOpeningYoshiCameraDescAdjustedStart.at.y;
-	cam->vec.at.z = dMVOpeningYoshiCameraDescAdjustedStart.at.z;
-	cam->vec.up.x = dMVOpeningYoshiCameraDescAdjustedStart.upx;
+	cobj->vec.eye.x = dMVOpeningYoshiCObjDescAdjustedStart.eye.x;
+	cobj->vec.eye.y = dMVOpeningYoshiCObjDescAdjustedStart.eye.y;
+	cobj->vec.eye.z = dMVOpeningYoshiCObjDescAdjustedStart.eye.z;
+	cobj->vec.at.x = dMVOpeningYoshiCObjDescAdjustedStart.at.x;
+	cobj->vec.at.y = dMVOpeningYoshiCObjDescAdjustedStart.at.y;
+	cobj->vec.at.z = dMVOpeningYoshiCObjDescAdjustedStart.at.z;
+	cobj->vec.up.x = dMVOpeningYoshiCObjDescAdjustedStart.upx;
 }
 
 // 0x8018D61C
@@ -352,30 +352,30 @@ void mvOpeningYoshiCreatePosedFighter()
 void mvOpeningYoshiCreateNameViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8018DC30
 void mvOpeningYoshiCreatePosedFighterViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 150.0F, 310.0F, 230.0F);
-	cam->projection.persp.aspect = 3.75F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningYoshiFiles[1], &FILE_041_YOSHI_CAMERA_PARAMS_OFFSET), 0.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 150.0F, 310.0F, 230.0F);
+	cobj->projection.persp.aspect = 3.75F;
+	gcAddCameraCamAnimJoint(cobj, GetAddressFromOffset(gMVOpeningYoshiFiles[1], &FILE_041_YOSHI_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
 // 0x8018DD18
 void mvOpeningYoshiCreatePosedFighterBackgroundViewport()
 {
-	Camera *cam;
+	CObj *cobj;
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x10000000, -1, 0, 1, 0, 1, 0);
 
-	cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 150.0F, 310.0F, 230.0F);
-	cam->flags = 5;
+	cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 150.0F, 310.0F, 230.0F);
+	cobj->flags = 5;
 }
 
 // 0x8018DDC0

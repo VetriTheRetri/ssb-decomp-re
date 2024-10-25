@@ -189,10 +189,10 @@ struct mpGroundData
 	syColorRGB emblem_colors[GMCOMMON_PLAYERS_MAX]; 	// What's this doing here?
 	s32 unk_0x5C;
 	Vec3f light_angle;
-	s16 cam_bound_top;				// Normal bounds
-	s16 cam_bound_bottom;
-	s16 cam_bound_right;
-	s16 cam_bound_left;
+	s16 cobj_bound_top;				// Normal bounds
+	s16 cobj_bound_bottom;
+	s16 cobj_bound_right;
+	s16 cobj_bound_left;
 	s16 map_bound_top;
 	s16 map_bound_bottom;
 	s16 map_bound_right;
@@ -201,10 +201,10 @@ struct mpGroundData
 	void *map_nodes;
 	mpItemWeights *item_weights; 	// Randomizer weights of items
 	s16 alt_warning;				// Warning whistle plays if a player goes below this altitude
-	s16 cam_bound_team_top;			// 1P Game VS. <character> Team bounds
-	s16 cam_bound_team_bottom;
-	s16 cam_bound_team_right;
-	s16 cam_bound_team_left;
+	s16 cobj_bound_team_top;			// 1P Game VS. <character> Team bounds
+	s16 cobj_bound_team_bottom;
+	s16 cobj_bound_team_right;
+	s16 cobj_bound_team_left;
 	s16 map_bound_team_top;
 	s16 map_bound_team_bottom;
 	s16 map_bound_team_right;

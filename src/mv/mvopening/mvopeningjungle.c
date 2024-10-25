@@ -47,10 +47,10 @@ GObj* sMVOpeningJungleStageCameraGObj;
 s32 sMVOpeningJunglePad0x8018DA5C[2];
 
 // 0x8018DA68
-CameraDesc sMVOpeningJungleUnusedCameraDescAdjustedStart;
+CObjDesc sMVOpeningJungleUnusedCObjDescAdjustedStart;
 
 // 0x8018DA88
-CameraDesc sMVOpeningJungleUnusedCameraDescAdjustedEnd;
+CObjDesc sMVOpeningJungleUnusedCObjDescAdjustedEnd;
 
 // 0x8018DAA8
 lbFileNode sMVOpeningJungleStatusBuffer[48];
@@ -71,7 +71,7 @@ scBattleState sMVOpeningJungleBattleState;
 // // // // // // // // // // // //
 
 // 0x8018D870
-CameraDesc dMVOpeningJungleCameraDescStart =
+CObjDesc dMVOpeningJungleCObjDescStart =
 {
     // Eye
     { 1000.0F, 900.0F, 3600.0F },
@@ -84,7 +84,7 @@ CameraDesc dMVOpeningJungleCameraDescStart =
 };
 
 // 0x8018D88C
-CameraDesc dMVOpeningJungleCameraDescEnd =
+CObjDesc dMVOpeningJungleCObjDescEnd =
 {
     // Eye
     { -1800.0F, 800.0F, 1500.0F },
@@ -187,7 +187,7 @@ syTaskmanSetup dMVOpeningJungleTaskmanSetup =
     0,                                  // Number of SObjs
     sizeof(SObj),                       // SObj size
     0,                                  // Number of Cameras
-    sizeof(Camera),                     // Camera size
+    sizeof(CObj),                     // Camera size
     
     mvOpeningJungleFuncStart            // Task start function
 };
@@ -239,25 +239,25 @@ void func_ovl51_8018D160(void)
 // 0x8018D168
 void mvOpeningJungleMakeGroundViewport(Vec3f unused)
 {
-    Camera *cam;
+    CObj *cobj;
 
-    sMVOpeningJungleUnusedCameraDescAdjustedStart = dMVOpeningJungleCameraDescStart;
-    sMVOpeningJungleUnusedCameraDescAdjustedEnd = dMVOpeningJungleCameraDescEnd;
+    sMVOpeningJungleUnusedCObjDescAdjustedStart = dMVOpeningJungleCObjDescStart;
+    sMVOpeningJungleUnusedCObjDescAdjustedEnd = dMVOpeningJungleCObjDescEnd;
 
     sMVOpeningJungleStageCameraGObj = func_ovl2_8010DB2C(NULL);
 
-    cam = CameraGetStruct(sMVOpeningJungleStageCameraGObj);
+    cobj = CObjGetStruct(sMVOpeningJungleStageCameraGObj);
 
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cam->projection.persp.aspect = 15.0F / 11.0F;
+    cobj->projection.persp.aspect = 15.0F / 11.0F;
 
     gcEndProcessAll(sMVOpeningJungleStageCameraGObj);
 
-    cam->projection.persp.near = 50.0F;
-    cam->projection.persp.far = 15000.0F;
+    cobj->projection.persp.near = 50.0F;
+    cobj->projection.persp.far = 15000.0F;
 
-    gcAddCameraCamAnimJoint(cam, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningJungleFiles[1], &lMVOpeningJungleCamAnimJoint), 0.0F);
+    gcAddCameraCamAnimJoint(cobj, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningJungleFiles[1], &lMVOpeningJungleCamAnimJoint), 0.0F);
     gcAddGObjProcess(sMVOpeningJungleStageCameraGObj, gcPlayCamAnim, nGCProcessKindProc, 1);
 
     gcPlayCamAnim(sMVOpeningJungleStageCameraGObj);

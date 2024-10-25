@@ -92,14 +92,14 @@ sb32 itStarCommonProcHit(GObj *item_gobj)
 // 0x80174A18
 GObj* itStarMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    Camera *cam = CameraGetStruct(gCMManagerCameraGObj);
+    CObj *cobj = CObjGetStruct(gCMManagerCameraGObj);
     GObj *item_gobj;
     DObj *dobj;
     itStruct *ip;
     Vec3f vel_real;
     Vec3f translate;
 
-    vel_real.x = (pos->x < cam->vec.at.x) ? ITSTAR_VEL_X : -ITSTAR_VEL_X;
+    vel_real.x = (pos->x < cobj->vec.at.x) ? ITSTAR_VEL_X : -ITSTAR_VEL_X;
     vel_real.y = ITSTAR_BOUNCE_Y;
     vel_real.z = 0.0F;
 

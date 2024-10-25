@@ -747,11 +747,11 @@ void mnResultsCreateBackground()
 		{{ 0x69, 0x58, 0x2B }, { 0x9B, 0x8E, 0x6C }},
 		{{ 0x2B, 0x44, 0x36 }, { 0x71, 0x82, 0x78 }}
 	};
-	Camera *cam;
+	CObj *cobj;
 
 	camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x04000000, -1, 0, 1, 0, 1, 0);
-	cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
 	if (gMNResultsGameRule == 4)
 		winner_port_id = mtTrigGetRandomIntRange(4);
@@ -1114,8 +1114,8 @@ void mnResultsCreatePlayerIndicator(s32 port_id, s32 color_index)
 void mnResultsCreatePlayerIndicatorViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x1E, 0x08000000, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80133F1C
@@ -1316,8 +1316,8 @@ void mnResultsDrawWinnerText()
 void mnResultsCreateWinnerTextViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x14, 0x20000000, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80134688
@@ -1528,8 +1528,8 @@ void mnResultsCreateOverlay()
 void mnResultsCreateOverlayViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000, lbCommonScissorSpriteCamera, 0x11, 0x40000000, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80134E94
@@ -1564,8 +1564,8 @@ void mnResultsCreateBackgroundOverlay()
 void mnResultsCreateBackgroundOverlayViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000, lbCommonScissorSpriteCamera, 0x37, 0x800000000, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801350C8
@@ -1600,8 +1600,8 @@ void mnResultsCreateBackgroundOverlay2()
 void mnResultsCreateBackgroundOverlay2Viewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000, lbCommonScissorSpriteCamera, 0x46, 0x400000000, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801352FC
@@ -2073,42 +2073,42 @@ void mnResultsCreateScreenTitle()
 void mnResultsCreateResultsSYRdpViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0xF, 0x80000000, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801368D0
 void mnResultsCreateLogoViewport()
 {
-	Camera *cam = CameraGetStruct((GObj*)gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000, func_80017DBC, 0x3C, 0x200000000, -1, 1, 1, 0, 1, 0));
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct((GObj*)gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000, func_80017DBC, 0x3C, 0x200000000, -1, 1, 1, 0, 1, 0));
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-	cam->vec.eye.x = 0.0F;
-	cam->vec.eye.y = 0.0F;
-	cam->vec.eye.z = 1800.0F;
-	cam->vec.at.x = 0.0F;
-	cam->vec.at.y = 0.0F;
-	cam->vec.at.z = 0.0F;
-	cam->vec.up.x = 0.0F;
-	cam->vec.up.y = 1.0F;
-	cam->vec.up.z = 0.0F;
+	cobj->vec.eye.x = 0.0F;
+	cobj->vec.eye.y = 0.0F;
+	cobj->vec.eye.z = 1800.0F;
+	cobj->vec.at.x = 0.0F;
+	cobj->vec.at.y = 0.0F;
+	cobj->vec.at.z = 0.0F;
+	cobj->vec.up.x = 0.0F;
+	cobj->vec.up.y = 1.0F;
+	cobj->vec.up.z = 0.0F;
 }
 
 // 0x801369B4
 void mnResultsCreateFighterViewport()
 {
-	Camera *cam = CameraGetStruct((GObj*)gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000, func_80017DBC, 0x32, 0x00048600, -1, 1, 1, 0, 1, 0));
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct((GObj*)gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000, func_80017DBC, 0x32, 0x00048600, -1, 1, 1, 0, 1, 0));
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-	cam->vec.eye.x = 0.0F;
-	cam->vec.eye.y = 0.0F;
-	cam->vec.eye.z = 1800.0F;
-	cam->vec.at.x = 0.0F;
-	cam->vec.at.y = 0.0F;
-	cam->vec.at.z = 0.0F;
-	cam->vec.up.x = 0.0F;
-	cam->vec.up.y = 1.0F;
-	cam->vec.up.z = 0.0F;
+	cobj->vec.eye.x = 0.0F;
+	cobj->vec.eye.y = 0.0F;
+	cobj->vec.eye.z = 1800.0F;
+	cobj->vec.at.x = 0.0F;
+	cobj->vec.at.y = 0.0F;
+	cobj->vec.at.z = 0.0F;
+	cobj->vec.up.x = 0.0F;
+	cobj->vec.up.y = 1.0F;
+	cobj->vec.up.z = 0.0F;
 }
 
 // 0x80136A9C
@@ -2950,7 +2950,7 @@ void mnResultsInit()
 	lbRelocLoadFilesExtern(D_ovl31_80138F70, ARRAY_COUNT(D_ovl31_80138F70), gMNResultsFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl31_80138F70, ARRAY_COUNT(D_ovl31_80138F70)), 0x10));
 
 	gcMakeGObjSPAfter(0, mnResultsMain, 0, 0x80000000U);
-	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efAllocInitParticleBank();
 	efManagerInitEffects();
 	ftManagerAllocFighter(1, 4);

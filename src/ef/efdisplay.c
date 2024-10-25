@@ -118,19 +118,19 @@ void efDisplayInitAll(void)
 
     gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, efDisplayFuncDisplayZPerspCLD, 18, 1, -1);
-    gobj->cam_mask = (CAMERA_MASK_DLLINK(2) | CAMERA_MASK_DLLINK(0));
+    gobj->cobj_mask = (COBJ_MASK_DLLINK(2) | COBJ_MASK_DLLINK(0));
 
     gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, efDisplayFuncDisplayZPerspCLD, 15, 1, -1);
-    gobj->cam_mask = CAMERA_MASK_DLLINK(1);
+    gobj->cobj_mask = COBJ_MASK_DLLINK(1);
 
     gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, efDisplayFuncDisplayZPerspXLU, 25, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gobj->cam_mask = CAMERA_MASK_DLLINK(3);
+    gobj->cobj_mask = COBJ_MASK_DLLINK(3);
 
     gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, efDisplayFuncDisplayZPerspAAXLU, 10, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gobj->cam_mask = CAMERA_MASK_DLLINK(4);
+    gobj->cobj_mask = COBJ_MASK_DLLINK(4);
 
     gEFManagerParticleBankID = efAllocGetAddParticleBankID
     (

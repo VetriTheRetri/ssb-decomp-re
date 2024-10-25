@@ -406,16 +406,16 @@ void dbBattleSyncCostumes(s32 arg0)
 GObj* dbBattleCreateViewport(void (*proc)(GObj*))
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x400, gcUpdateDefault, 0xF, 0x80000000U, func_80017DBC, 0x32, 0x00048600, -1, 1, 0, proc, 1, 0);
-	Camera *cam;
+	CObj *cobj;
 
 	if (camera_gobj == NULL)
 		return NULL;
 
-	cam = CameraGetStruct(camera_gobj);
-	cam->flags = 5;
-	cam->vec.at.y = 600.0f;
-	cam->vec.eye.z = 3000.0f;
-	cam->vec.eye.y = 600.0f;
+	cobj = CObjGetStruct(camera_gobj);
+	cobj->flags = 5;
+	cobj->vec.at.y = 600.0f;
+	cobj->vec.eye.z = 3000.0f;
+	cobj->vec.eye.y = 600.0f;
 
 	return camera_gobj;
 }

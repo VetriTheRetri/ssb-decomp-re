@@ -438,7 +438,7 @@ void mnVSItemSwitchInitToggles(void)
 // 0x80132468
 void mnVSItemSwitchMakeCursorCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -448,7 +448,7 @@ void mnVSItemSwitchMakeCursorCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             30,
-            CAMERA_MASK_DLLINK(3),
+            COBJ_MASK_DLLINK(3),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -457,13 +457,13 @@ void mnVSItemSwitchMakeCursorCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132508
 void mnVSItemSwitchMakeLabelsCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -473,7 +473,7 @@ void mnVSItemSwitchMakeLabelsCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             40,
-            CAMERA_MASK_DLLINK(1),
+            COBJ_MASK_DLLINK(1),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -482,7 +482,7 @@ void mnVSItemSwitchMakeLabelsCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801325A8 - unused?
@@ -494,7 +494,7 @@ void func_ovl21_801325A8(void)
 // 0x801325B0
 void mnVSItemSwitchMakeDecalCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -504,7 +504,7 @@ void mnVSItemSwitchMakeDecalCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             60,
-            CAMERA_MASK_DLLINK(4),
+            COBJ_MASK_DLLINK(4),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -513,7 +513,7 @@ void mnVSItemSwitchMakeDecalCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132650
@@ -826,7 +826,7 @@ void mnVSItemSwitchFuncStart(void)
         )
     );
     gcMakeGObjSPAfter(0, mnVSItemSwitchFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     
     mnVSItemSwitchInitVars();
     mnVSItemSwitchMakeCursorCamera();
@@ -884,7 +884,7 @@ syTaskmanSetup dMNVSItemSwitchTaskmanSetup =
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
     0,                              // Number of Cameras
-    sizeof(Camera),                 // Camera size
+    sizeof(CObj),                 	// CObj size
     
     mnVSItemSwitchFuncStart         // Task start function
 };

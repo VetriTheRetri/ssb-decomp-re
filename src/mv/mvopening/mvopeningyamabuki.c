@@ -109,7 +109,7 @@ syTaskmanSetup dMVOpeningYamabukiTaskmanSetup =
     128,                                // Number of SObjs
     sizeof(SObj),                       // SObj size
     16,                                 // Number of Cameras
-    sizeof(Camera),                     // Camera size
+    sizeof(CObj),                     // Camera size
     
     mvOpeningYamabukiFuncStart          // Task start function
 };
@@ -298,8 +298,8 @@ void mvOpeningYamabukiMakeMainCamera(void)
         GOBJ_LINKORDER_DEFAULT,
         func_80017EC0,
         80,
-        CAMERA_MASK_DLLINK(27) |
-        CAMERA_MASK_DLLINK(9),
+        COBJ_MASK_DLLINK(27) |
+        COBJ_MASK_DLLINK(9),
         -1,
         TRUE,
         nGCProcessKindProc,
@@ -307,16 +307,16 @@ void mvOpeningYamabukiMakeMainCamera(void)
         1,
         FALSE
     );
-    Camera *cam = CameraGetStruct(camera_gobj);
+    CObj *cobj = CObjGetStruct(camera_gobj);
 
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cam->projection.persp.near = 128.0F;
-    cam->projection.persp.far = 16384.0F;
+    cobj->projection.persp.near = 128.0F;
+    cobj->projection.persp.far = 16384.0F;
 
     gcAddCameraCamAnimJoint
     (
-        cam,
+        cobj,
         lbRelocGetDataFromFile
         (
             AObjEvent32*,
@@ -331,7 +331,7 @@ void mvOpeningYamabukiMakeMainCamera(void)
 // 0x80132030
 void mvOpeningYamabukiMakeWallpaperCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -341,7 +341,7 @@ void mvOpeningYamabukiMakeWallpaperCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             90,
-            CAMERA_MASK_DLLINK(28),
+            COBJ_MASK_DLLINK(28),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -350,7 +350,7 @@ void mvOpeningYamabukiMakeWallpaperCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801320D0
@@ -428,7 +428,7 @@ void mvOpeningYamabukiFuncStart(void)
     );
     gcMakeGObjSPAfter(0, mvOpeningYamabukiFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
 
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR | CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
     efAllocInitParticleBank();
     mvOpeningYamabukiInitTotalTimeTics();

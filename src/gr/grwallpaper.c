@@ -46,7 +46,7 @@ Gfx dGRWallpaperDisplayList[/* */] =
 void grWallpaperCalcPersp(SObj *wallpaper_sobj)
 {
     f32 mag;
-    Camera *cam;
+    CObj *cobj;
     Vec2f angle;
     Vec3f dist;
     f32 bak_pos_x;
@@ -58,9 +58,9 @@ void grWallpaperCalcPersp(SObj *wallpaper_sobj)
     f32 height;
     f32 scale;
 
-    cam = CameraGetStruct(gCMManagerCameraGObj);
+    cobj = CObjGetStruct(gCMManagerCameraGObj);
 
-    syVectorDiff3D(&dist, &cam->vec.eye, &cam->vec.at);
+    syVectorDiff3D(&dist, &cobj->vec.eye, &cobj->vec.at);
 
     mag = syVectorMag3D(&dist);
 
@@ -192,16 +192,16 @@ void grWallpaperMakeStatic(void)
 // 0x80104998
 void grWallpaperSectorProcUpdate(GObj *wallpaper_gobj)
 {
-    Camera *cam;
+    CObj *cobj;
     SObj *wallpaper_sobj;
     f32 sqrt;
     Vec3f dist;
     f32 temp;
     f32 scale;
 
-    cam = gCMManagerCameraGObj->obj;
+    cobj = gCMManagerCameraGObj->obj;
 
-    syVectorDiff3D(&dist, &cam->vec.eye, &cam->vec.at);
+    syVectorDiff3D(&dist, &cobj->vec.eye, &cobj->vec.at);
 
     sqrt = sqrtf(SQUARE(dist.x) + SQUARE(dist.y) + SQUARE(dist.z));
 

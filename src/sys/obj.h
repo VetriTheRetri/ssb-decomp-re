@@ -45,8 +45,8 @@
 #define SObjGetStruct(gobj) \
 ((SObj*)(gobj)->obj)
 
-#define CameraGetStruct(gobj) \
-((Camera*)(gobj)->obj)
+#define CObjGetStruct(gobj) \
+((CObj*)(gobj)->obj)
 
 #define SObjGetSprite(sobj) \
 ((Sprite*)&(sobj)->sprite)

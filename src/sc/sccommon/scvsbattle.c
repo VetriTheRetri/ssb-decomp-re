@@ -72,7 +72,7 @@ syTaskmanSetup dSCVSBattleTaskmanSetup =
     0,                                  // Number of SObjs
     sizeof(SObj),                       // SObj size
     0,                                  // Number of Cameras
-    sizeof(Camera),                     // Camera size
+    sizeof(CObj),                     // Camera size
     
     scVSBattleFuncStart             	// Task start function
 };
@@ -156,7 +156,7 @@ void scVSBattleFuncStart(void)
 			gSaveData.error_flags |= LBBACKUP_ERROR_1PGAMEMARIO;
 		}
 	}
-	gcMakeDefaultCameraGObj(9, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(9, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efAllocInitParticleBank();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
@@ -428,7 +428,7 @@ void scVSBattleStartSudddenDeath(void)
 	gSceneData.is_reset = FALSE;
 
 	scVSBattleSetupFiles();
-	gcMakeDefaultCameraGObj(9, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(9, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efAllocInitParticleBank();
 	ftParamInitGame();
 	mpCollisionInitGroundData();

@@ -12,7 +12,7 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 // DATA
 // 0x8018E070
-CameraDesc dMVOpeningLinkCameraDescStart = {
+CObjDesc dMVOpeningLinkCObjDescStart = {
 
 	{ -800.0, 180.0, 800.0 },
 	{ 0.0, 180.0, 0.0 },
@@ -20,7 +20,7 @@ CameraDesc dMVOpeningLinkCameraDescStart = {
 };
 
 // 0x8018E08C
-CameraDesc dMVOpeningLinkCameraDescEnd = {
+CObjDesc dMVOpeningLinkCObjDescEnd = {
 
 	{ 200.0, 0.0, 400.0 },
 	{ 0.0, 240.0, 0.0 },
@@ -72,10 +72,10 @@ f32 gMVOpeningLinkPosedFighterXSpeed;
 s32 D_ovl40_8018E1E4;
 
 // 0x8018E1E8
-CameraDesc dMVOpeningLinkCameraDescAdjustedStart;
+CObjDesc dMVOpeningLinkCObjDescAdjustedStart;
 
 // 0x8018E208
-CameraDesc dMVOpeningLinkCameraDescAdjustedEnd;
+CObjDesc dMVOpeningLinkCObjDescAdjustedEnd;
 
 // 0x8018E228
 lbFileNode D_ovl40_8018E228[48];
@@ -154,56 +154,56 @@ void mvOpeningLinkDrawName()
 // 0x8018D2F4
 void mvOpeningLinkAnimateStageCamera(GObj* camera_gobj)
 {
-	Camera *cam = CameraGetStruct(camera_gobj);
+	CObj *cobj = CObjGetStruct(camera_gobj);
 
 	if (gMVOpeningLinkFramesElapsed >= 15)
 	{
-		cam->vec.eye.x += (((dMVOpeningLinkCameraDescAdjustedEnd.eye.x - dMVOpeningLinkCameraDescAdjustedStart.eye.x) / 45.0F));
-		cam->vec.eye.y += (((dMVOpeningLinkCameraDescAdjustedEnd.eye.y - dMVOpeningLinkCameraDescAdjustedStart.eye.y) / 45.0F));
-		cam->vec.eye.z += (((dMVOpeningLinkCameraDescAdjustedEnd.eye.z - dMVOpeningLinkCameraDescAdjustedStart.eye.z) / 45.0F));
-		cam->vec.at.x += (((dMVOpeningLinkCameraDescAdjustedEnd.at.x - dMVOpeningLinkCameraDescAdjustedStart.at.x) / 45.0F));
-		cam->vec.at.y += (((dMVOpeningLinkCameraDescAdjustedEnd.at.y - dMVOpeningLinkCameraDescAdjustedStart.at.y) / 45.0F));
-		cam->vec.at.z += (((dMVOpeningLinkCameraDescAdjustedEnd.at.z - dMVOpeningLinkCameraDescAdjustedStart.at.z) / 45.0F));
-		cam->vec.up.x += (((dMVOpeningLinkCameraDescAdjustedEnd.upx - dMVOpeningLinkCameraDescAdjustedStart.upx) / 45.0F));
+		cobj->vec.eye.x += (((dMVOpeningLinkCObjDescAdjustedEnd.eye.x - dMVOpeningLinkCObjDescAdjustedStart.eye.x) / 45.0F));
+		cobj->vec.eye.y += (((dMVOpeningLinkCObjDescAdjustedEnd.eye.y - dMVOpeningLinkCObjDescAdjustedStart.eye.y) / 45.0F));
+		cobj->vec.eye.z += (((dMVOpeningLinkCObjDescAdjustedEnd.eye.z - dMVOpeningLinkCObjDescAdjustedStart.eye.z) / 45.0F));
+		cobj->vec.at.x += (((dMVOpeningLinkCObjDescAdjustedEnd.at.x - dMVOpeningLinkCObjDescAdjustedStart.at.x) / 45.0F));
+		cobj->vec.at.y += (((dMVOpeningLinkCObjDescAdjustedEnd.at.y - dMVOpeningLinkCObjDescAdjustedStart.at.y) / 45.0F));
+		cobj->vec.at.z += (((dMVOpeningLinkCObjDescAdjustedEnd.at.z - dMVOpeningLinkCObjDescAdjustedStart.at.z) / 45.0F));
+		cobj->vec.up.x += (((dMVOpeningLinkCObjDescAdjustedEnd.upx - dMVOpeningLinkCObjDescAdjustedStart.upx) / 45.0F));
 	}
 }
 
 // 0x8018D3EC
 void mvOpeningLinkCreateStageViewport(Vec3f arg0)
 {
-	Camera *cam;
+	CObj *cobj;
 
-	dMVOpeningLinkCameraDescAdjustedStart = dMVOpeningLinkCameraDescStart;
-	dMVOpeningLinkCameraDescAdjustedEnd = dMVOpeningLinkCameraDescEnd;
+	dMVOpeningLinkCObjDescAdjustedStart = dMVOpeningLinkCObjDescStart;
+	dMVOpeningLinkCObjDescAdjustedEnd = dMVOpeningLinkCObjDescEnd;
 
 	gMVOpeningLinkStageCameraGObj = func_ovl2_8010DB2C(0);
-	cam = CameraGetStruct(gMVOpeningLinkStageCameraGObj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 90.0F, 310.0F, 230.0F);
-	cam->projection.persp.aspect = 15.0F / 7.0F;
+	cobj = CObjGetStruct(gMVOpeningLinkStageCameraGObj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 90.0F, 310.0F, 230.0F);
+	cobj->projection.persp.aspect = 15.0F / 7.0F;
 	gcEndProcessAll(gMVOpeningLinkStageCameraGObj);
 	gcAddGObjProcess(gMVOpeningLinkStageCameraGObj, mvOpeningLinkAnimateStageCamera, 1, 1);
 
-	dMVOpeningLinkCameraDescAdjustedStart.eye.x += arg0.x;
-	dMVOpeningLinkCameraDescAdjustedStart.eye.y += arg0.y;
-	dMVOpeningLinkCameraDescAdjustedStart.eye.z += arg0.z;
-	dMVOpeningLinkCameraDescAdjustedStart.at.x += arg0.x;
-	dMVOpeningLinkCameraDescAdjustedStart.at.y += arg0.y;
-	dMVOpeningLinkCameraDescAdjustedStart.at.z += arg0.z;
+	dMVOpeningLinkCObjDescAdjustedStart.eye.x += arg0.x;
+	dMVOpeningLinkCObjDescAdjustedStart.eye.y += arg0.y;
+	dMVOpeningLinkCObjDescAdjustedStart.eye.z += arg0.z;
+	dMVOpeningLinkCObjDescAdjustedStart.at.x += arg0.x;
+	dMVOpeningLinkCObjDescAdjustedStart.at.y += arg0.y;
+	dMVOpeningLinkCObjDescAdjustedStart.at.z += arg0.z;
 
-	dMVOpeningLinkCameraDescAdjustedEnd.eye.x += arg0.x;
-	dMVOpeningLinkCameraDescAdjustedEnd.eye.y += arg0.y;
-	dMVOpeningLinkCameraDescAdjustedEnd.eye.z += arg0.z;
-	dMVOpeningLinkCameraDescAdjustedEnd.at.x += arg0.x;
-	dMVOpeningLinkCameraDescAdjustedEnd.at.y += arg0.y;
-	dMVOpeningLinkCameraDescAdjustedEnd.at.z += arg0.z;
+	dMVOpeningLinkCObjDescAdjustedEnd.eye.x += arg0.x;
+	dMVOpeningLinkCObjDescAdjustedEnd.eye.y += arg0.y;
+	dMVOpeningLinkCObjDescAdjustedEnd.eye.z += arg0.z;
+	dMVOpeningLinkCObjDescAdjustedEnd.at.x += arg0.x;
+	dMVOpeningLinkCObjDescAdjustedEnd.at.y += arg0.y;
+	dMVOpeningLinkCObjDescAdjustedEnd.at.z += arg0.z;
 
-	cam->vec.eye.x = dMVOpeningLinkCameraDescAdjustedStart.eye.x;
-	cam->vec.eye.y = dMVOpeningLinkCameraDescAdjustedStart.eye.y;
-	cam->vec.eye.z = dMVOpeningLinkCameraDescAdjustedStart.eye.z;
-	cam->vec.at.x = dMVOpeningLinkCameraDescAdjustedStart.at.x;
-	cam->vec.at.y = dMVOpeningLinkCameraDescAdjustedStart.at.y;
-	cam->vec.at.z = dMVOpeningLinkCameraDescAdjustedStart.at.z;
-	cam->vec.up.x = dMVOpeningLinkCameraDescAdjustedStart.upx;
+	cobj->vec.eye.x = dMVOpeningLinkCObjDescAdjustedStart.eye.x;
+	cobj->vec.eye.y = dMVOpeningLinkCObjDescAdjustedStart.eye.y;
+	cobj->vec.eye.z = dMVOpeningLinkCObjDescAdjustedStart.eye.z;
+	cobj->vec.at.x = dMVOpeningLinkCObjDescAdjustedStart.at.x;
+	cobj->vec.at.y = dMVOpeningLinkCObjDescAdjustedStart.at.y;
+	cobj->vec.at.z = dMVOpeningLinkCObjDescAdjustedStart.at.z;
+	cobj->vec.up.x = dMVOpeningLinkCObjDescAdjustedStart.upx;
 }
 
 // 0x8018D5F4
@@ -337,30 +337,30 @@ void mvOpeningLinkCreatePosedFighter()
 void mvOpeningLinkCreateNameViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x08000000, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8018DBE0
 void mvOpeningLinkCreatePosedFighterViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0xA, 0x04000000, -1, 1, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 90.0F);
-	cam->projection.persp.aspect = 3.75F;
-	gcAddCameraCamAnimJoint(cam, GetAddressFromOffset(gMVOpeningLinkFiles[1], &FILE_041_LINK_CAMERA_PARAMS_OFFSET), 0.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 90.0F);
+	cobj->projection.persp.aspect = 3.75F;
+	gcAddCameraCamAnimJoint(cobj, GetAddressFromOffset(gMVOpeningLinkFiles[1], &FILE_041_LINK_CAMERA_PARAMS_OFFSET), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, 1, 1);
 }
 
 // 0x8018DCD0
 void mvOpeningLinkCreatePosedFighterBackgroundViewport()
 {
-	Camera *cam;
+	CObj *cobj;
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, func_80017EC0, 0x14, 0x10000000, -1, 0, 1, 0, 1, 0);
 
-	cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 90.0F);
-	cam->flags = 5;
+	cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 90.0F);
+	cobj->flags = 5;
 }
 
 // 0x8018DD80

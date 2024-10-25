@@ -65,7 +65,7 @@ AObjEvent32 *sGMStaffrollNameAnimJoint;
 void *sGMStaffrollNameInterpolation;
 
 // 0x8013A8E4
-Camera *sGMStaffrollCamera;
+CObj *sGMStaffrollCamera;
 
 // 0x8013A8E8
 void *sGMStaffrollDObjDesc;
@@ -588,12 +588,12 @@ void func_ovl59_80131BB0(Mtx44f mtx, Vec3f *vec, f32 *width, f32 *height)
 }
 
 // 0x80131C88
-void func_ovl59_80131C88(Camera *cam)
+void func_ovl59_80131C88(CObj *cobj)
 {
 	Mtx44f m, n;
 
-	syMatrixPerspFastF(n, &cam->projection.persp.norm, cam->projection.persp.fovy, cam->projection.persp.aspect, cam->projection.persp.near, cam->projection.persp.far, cam->projection.persp.scale);
-	syMatrixLookAtF(m, cam->vec.eye.x, cam->vec.eye.y, cam->vec.eye.z, cam->vec.at.x, cam->vec.at.y, cam->vec.at.z, cam->vec.up.x, cam->vec.up.y, cam->vec.up.z);
+	syMatrixPerspFastF(n, &cobj->projection.persp.norm, cobj->projection.persp.fovy, cobj->projection.persp.aspect, cobj->projection.persp.near, cobj->projection.persp.far, cobj->projection.persp.scale);
+	syMatrixLookAtF(m, cobj->vec.eye.x, cobj->vec.eye.y, cobj->vec.eye.z, cobj->vec.at.x, cobj->vec.at.y, cobj->vec.at.z, cobj->vec.up.x, cobj->vec.up.y, cobj->vec.up.z);
 	guMtxCatF(m, n, sGMStaffrollMatrix);
 }
 
@@ -2054,16 +2054,16 @@ void gmStaffrollInitVars(void)
 // 0x80134EA8
 void gmStaffrollUpdateCameraAt(GObj *gobj)
 {
-	Camera *cam = CameraGetStruct(gobj);
+	CObj *cobj = CObjGetStruct(gobj);
 
-	cam->vec.at.x += (sGMStaffrollCrosshairPositionX * 0.25F);
-	cam->vec.at.y -= (sGMStaffrollCrosshairPositionY * 0.25F);
+	cobj->vec.at.x += (sGMStaffrollCrosshairPositionX * 0.25F);
+	cobj->vec.at.y -= (sGMStaffrollCrosshairPositionY * 0.25F);
 }
 
 // 0x80134EE8
 void gmStaffrollMakeCamera(void)
 {
-	Camera *cam = CameraGetStruct
+	CObj *cobj = CObjGetStruct
 	(
 		gcMakeCameraGObj
 		(
@@ -2073,8 +2073,8 @@ void gmStaffrollMakeCamera(void)
 			GOBJ_LINKORDER_DEFAULT,
 			lbCommonScissorSpriteCamera,
 			30,
-			CAMERA_MASK_DLLINK(7) | CAMERA_MASK_DLLINK(6) | 
-			CAMERA_MASK_DLLINK(5) | CAMERA_MASK_DLLINK(4),
+			COBJ_MASK_DLLINK(7) | COBJ_MASK_DLLINK(6) | 
+			COBJ_MASK_DLLINK(5) | COBJ_MASK_DLLINK(4),
 			-1,
 			0,
 			1,
@@ -2083,9 +2083,9 @@ void gmStaffrollMakeCamera(void)
 			0
 		)
 	);
-	syRdpSetViewport(&cam->viewport, 20.0F, 20.0F, 620.0F, 460.0F);
+	syRdpSetViewport(&cobj->viewport, 20.0F, 20.0F, 620.0F, 460.0F);
 
-	sGMStaffrollCamera = cam = CameraGetStruct
+	sGMStaffrollCamera = cobj = CObjGetStruct
 	(
 		gcMakeCameraGObj
 		(
@@ -2095,9 +2095,9 @@ void gmStaffrollMakeCamera(void)
 			GOBJ_LINKORDER_DEFAULT,
 			func_80017EC0,
 			50,
-			CAMERA_MASK_DLLINK(9) | CAMERA_MASK_DLLINK(8) | 
-			CAMERA_MASK_DLLINK(3) | CAMERA_MASK_DLLINK(2) |
-			CAMERA_MASK_DLLINK(1),
+			COBJ_MASK_DLLINK(9) | COBJ_MASK_DLLINK(8) | 
+			COBJ_MASK_DLLINK(3) | COBJ_MASK_DLLINK(2) |
+			COBJ_MASK_DLLINK(1),
 			-1,
 			1,
 			1,
@@ -2106,21 +2106,21 @@ void gmStaffrollMakeCamera(void)
 			0
 		)
 	);
-	syRdpSetViewport(&cam->viewport, 20.0F, 20.0F, 620.0F, 460.0F);
+	syRdpSetViewport(&cobj->viewport, 20.0F, 20.0F, 620.0F, 460.0F);
 
-	cam->vec.eye.y = cam->vec.at.x = cam->vec.at.y = cam->vec.at.z = 0.0F;
+	cobj->vec.eye.y = cobj->vec.at.x = cobj->vec.at.y = cobj->vec.at.z = 0.0F;
 
-	cam->vec.eye.x = 0.0F;
-	cam->vec.eye.z = 580.0F;
+	cobj->vec.eye.x = 0.0F;
+	cobj->vec.eye.z = 580.0F;
 
-	cam->projection.persp.fovy = 50.0F;
+	cobj->projection.persp.fovy = 50.0F;
 }
 
 // 0x8013505C
 void gmStaffrollFuncStart(void)
 {
 	gcMakeGObjSPAfter(0, gmStaffrollFuncRun, 1, GOBJ_LINKORDER_DEFAULT);
-	gcMakeDefaultCameraGObj(12, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(12, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	gmStaffrollSetupFiles();
 	gmStaffrollInitNameAndJobDisplayLists();
@@ -2232,7 +2232,7 @@ syTaskmanSetup dGMStaffrollTaskmanSetup =
     256,                            // Number of SObjs
     sizeof(SObj),                   // SObj size
     8,                              // Number of Cameras
-    sizeof(Camera),                 // Camera size
+    sizeof(CObj),                 	// CObj size
     
     gmStaffrollFuncStart            // Task start function
 };

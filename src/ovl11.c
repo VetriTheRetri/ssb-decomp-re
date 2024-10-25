@@ -60,8 +60,8 @@ lbFileNode D_ovl11_800D6AF8;
 GObj* mnNoControllerCreateViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x3E8, NULL, 0, 0x80000000U, lbCommonScissorSpriteCamera, 0x64, 0x00000001, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
 	return camera_gobj;
 }

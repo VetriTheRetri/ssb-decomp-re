@@ -407,7 +407,7 @@ void mvOpeningSectorMakeMainCamera(void)
         GOBJ_LINKORDER_DEFAULT,
         func_80017EC0,
         40,
-        CAMERA_MASK_DLLINK(27),
+        COBJ_MASK_DLLINK(27),
         -1,
         TRUE,
         nGCProcessKindProc,
@@ -415,21 +415,21 @@ void mvOpeningSectorMakeMainCamera(void)
         1,
         FALSE
     );
-    Camera *cam = CameraGetStruct(camera_gobj);
+    CObj *cobj = CObjGetStruct(camera_gobj);
 
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cam->projection.persp.near = 128.0F;
-    cam->projection.persp.far = 30000.0F;
+    cobj->projection.persp.near = 128.0F;
+    cobj->projection.persp.far = 30000.0F;
 
-    gcAddCameraCamAnimJoint(cam, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningSectorFiles[0], &lMVOpeningSectorCamAnimJoint), 0.0F);
+    gcAddCameraCamAnimJoint(cobj, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningSectorFiles[0], &lMVOpeningSectorCamAnimJoint), 0.0F);
     gcAddGObjProcess(camera_gobj, mvOpeningSectorCameraProcUpdate, nGCProcessKindProc, 1);
 }
 
 // 0x80132500
 void mvOpeningSectorMakeWallpaperCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -439,7 +439,7 @@ void mvOpeningSectorMakeWallpaperCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             90,
-            CAMERA_MASK_DLLINK(28),
+            COBJ_MASK_DLLINK(28),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -448,13 +448,13 @@ void mvOpeningSectorMakeWallpaperCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801325A0
 void mvOpeningSectorMakeCockpitCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -464,7 +464,7 @@ void mvOpeningSectorMakeCockpitCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             20,
-            CAMERA_MASK_DLLINK(29),
+            COBJ_MASK_DLLINK(29),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -473,7 +473,7 @@ void mvOpeningSectorMakeCockpitCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132640
@@ -555,7 +555,7 @@ void mvOpeningSectorFuncStart(void)
     );
     gcMakeGObjSPAfter(0, mvOpeningSectorFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
 
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 
     mvOpeningSectorInitTotalTimeTics();
     mvOpeningSectorMakeMainCamera();
@@ -617,7 +617,7 @@ syTaskmanSetup mvOpeningSectorTaskmanSetup =
     0,                                  // Number of SObjs
     sizeof(SObj),                       // SObj size
     0,                                  // Number of Cameras
-    sizeof(Camera),                     // Camera size
+    sizeof(CObj),                     // Camera size
     
     mvOpeningSectorFuncStart            // Task start function
 };

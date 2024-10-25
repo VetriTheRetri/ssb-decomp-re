@@ -701,7 +701,7 @@ syTaskmanSetup dSC1PGameTaskmanSetup =
     0,                              // Number of SObjs
     sizeof(SObj),                   // SObj size
     0,                              // Number of Cameras
-    sizeof(Camera),                 // Camera size
+    sizeof(CObj),                 	// CObj size
     
     sc1PGameFuncStart               // Task start function
 };
@@ -1322,7 +1322,7 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
 
         sc1PGameGetRandomSpawnPosition(&player_spawn.pos, nMPMapObjKind1PGameEnemyTeamSpawn);
 
-        player_spawn.pos.y = (gMPCollisionGroundData->cam_bound_top + gMPCollisionGroundData->map_bound_top) * 0.5F;
+        player_spawn.pos.y = (gMPCollisionGroundData->cobj_bound_top + gMPCollisionGroundData->map_bound_top) * 0.5F;
 
         player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? nGMFacingL : nGMFacingR;
 

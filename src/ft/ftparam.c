@@ -2414,7 +2414,7 @@ void ftParamClearAnimLocks(ftStruct *fp)
 }
 
 // 0x800EB924
-void func_ovl2_800EB924(Camera *cam, Mtx44f mtx, Vec3f *vec, f32 *rx, f32 *ry)
+void func_ovl2_800EB924(CObj *cobj, Mtx44f mtx, Vec3f *vec, f32 *rx, f32 *ry)
 {
     // My math doodoo but ChatGPT says this is projecting a 3D view onto a 2D screen
     f32 x = vec->x;
@@ -2430,8 +2430,8 @@ void func_ovl2_800EB924(Camera *cam, Mtx44f mtx, Vec3f *vec, f32 *rx, f32 *ry)
     }
     scale = 1.0F / scale;
 
-    *rx = (cam->viewport.vp.vscale[0] / 4) * (tempx * scale);
-    *ry = (cam->viewport.vp.vscale[1] / 4) * (tempy * scale);
+    *rx = (cobj->viewport.vp.vscale[0] / 4) * (tempx * scale);
+    *ry = (cobj->viewport.vp.vscale[1] / 4) * (tempy * scale);
 }
 
 // 0x800EBA6C

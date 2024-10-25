@@ -115,16 +115,16 @@ void dbFallsMain(GObj* arg0)
 GObj* dbFallsCreateViewport(void (*proc)(GObj*))
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x10000002, gcUpdateDefault, 0, 0x80000000U, func_80017DBC, 0x32, 0x00000001, -1, 1, 0, proc, 1, 0);
-	Camera *cam;
+	CObj *cobj;
 
 	if (camera_gobj == NULL)
 		return NULL;
 
-	cam = CameraGetStruct(camera_gobj);
-	cam->flags = 5;
-	cam->vec.at.y = 300.0f;
-	cam->vec.eye.z = 3000.0f;
-	cam->vec.eye.y = 600.0f;
+	cobj = CObjGetStruct(camera_gobj);
+	cobj->flags = 5;
+	cobj->vec.at.y = 300.0f;
+	cobj->vec.eye.z = 3000.0f;
+	cobj->vec.eye.y = 600.0f;
 
 	return camera_gobj;
 }
@@ -133,7 +133,7 @@ GObj* dbFallsCreateViewport(void (*proc)(GObj*))
 void dbFallsInit()
 {
 	gcMakeGObjSPAfter(0, dbFallsMain, 0, 0x80000000);
-	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	dbFallsCreateViewport(0);
 	dbMenuInitMenu();
 	dbMenuCreateMenu(0x32, 0x32, 0x64, &dMNDebugFallsMenuItems, 0xD);

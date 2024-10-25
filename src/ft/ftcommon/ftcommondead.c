@@ -209,14 +209,14 @@ void ftCommonDeadDownSetStatus(GObj *fighter_gobj)
 
     if (gBattleState->game_type != nSCBattleGameTypeBonus)
     {
-        if (pos.x > gMPCollisionGroundData->cam_bound_right)
+        if (pos.x > gMPCollisionGroundData->cobj_bound_right)
         {
-            pos.x = gMPCollisionGroundData->cam_bound_right;
+            pos.x = gMPCollisionGroundData->cobj_bound_right;
         }
 
-        if (pos.x < gMPCollisionGroundData->cam_bound_left)
+        if (pos.x < gMPCollisionGroundData->cobj_bound_left)
         {
-            pos.x = gMPCollisionGroundData->cam_bound_left;
+            pos.x = gMPCollisionGroundData->cobj_bound_left;
         }
     }
     efManagerDeadExplodeMakeEffect(&pos, fp->player, 0);
@@ -251,14 +251,14 @@ void ftCommonDeadRightSetStatus(GObj *fighter_gobj)
 
     if (gBattleState->game_type != nSCBattleGameTypeBonus)
     {
-        if (pos.y > gMPCollisionGroundData->cam_bound_top)
+        if (pos.y > gMPCollisionGroundData->cobj_bound_top)
         {
-            pos.y = gMPCollisionGroundData->cam_bound_top;
+            pos.y = gMPCollisionGroundData->cobj_bound_top;
         }
 
-        if (pos.y < gMPCollisionGroundData->cam_bound_bottom)
+        if (pos.y < gMPCollisionGroundData->cobj_bound_bottom)
         {
-            pos.y = gMPCollisionGroundData->cam_bound_bottom;
+            pos.y = gMPCollisionGroundData->cobj_bound_bottom;
         }
     }
     efManagerDeadExplodeMakeEffect(&pos, fp->player, 1);
@@ -293,13 +293,13 @@ void ftCommonDeadLeftSetStatus(GObj *fighter_gobj)
 
     if (gBattleState->game_type != nSCBattleGameTypeBonus)
     {
-        if (pos.y > gMPCollisionGroundData->cam_bound_top)
+        if (pos.y > gMPCollisionGroundData->cobj_bound_top)
         {
-            pos.y = gMPCollisionGroundData->cam_bound_top;
+            pos.y = gMPCollisionGroundData->cobj_bound_top;
         }
-        if (pos.y < gMPCollisionGroundData->cam_bound_bottom)
+        if (pos.y < gMPCollisionGroundData->cobj_bound_bottom)
         {
-            pos.y = gMPCollisionGroundData->cam_bound_bottom;
+            pos.y = gMPCollisionGroundData->cobj_bound_bottom;
         }
     }
     efManagerDeadExplodeMakeEffect(&pos, fp->player, 3);
@@ -341,7 +341,7 @@ void ftCommonDeadUpStarProcUpdate(GObj *fighter_gobj)
         switch (fp->command_vars.flags.flag1)
         {
         case 0:
-            fp->phys_info.vel_air.y = ((gMPCollisionGroundData->cam_bound_top * 0.6F) - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
+            fp->phys_info.vel_air.y = ((gMPCollisionGroundData->cobj_bound_top * 0.6F) - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
             fp->phys_info.vel_air.z = FTCOMMON_DEADUPFALL_VEL_Z;
 
             fp->colanim.is_use_maincolor = TRUE;
@@ -439,16 +439,16 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
         switch (fp->command_vars.flags.flag1)
         {
         case 0:
-            fp->phys_info.vel_air.y = (gMPCollisionGroundData->cam_bound_bottom - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
+            fp->phys_info.vel_air.y = (gMPCollisionGroundData->cobj_bound_bottom - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
 
-            DObjGetStruct(fighter_gobj)->translate.vec.f.z = CameraGetStruct(gCMManagerCameraGObj)->vec.eye.z - 3000.0F;
+            DObjGetStruct(fighter_gobj)->translate.vec.f.z = CObjGetStruct(gCMManagerCameraGObj)->vec.eye.z - 3000.0F;
 
             if (DObjGetStruct(fighter_gobj)->translate.vec.f.z < 2000.0F)
             {
                 DObjGetStruct(fighter_gobj)->translate.vec.f.z = 2000.0F;
             }
-            DObjGetStruct(fighter_gobj)->translate.vec.f.x = CameraGetStruct(gCMManagerCameraGObj)->vec.eye.x;
-            DObjGetStruct(fighter_gobj)->translate.vec.f.y = CameraGetStruct(gCMManagerCameraGObj)->vec.eye.y + 3000.0F;
+            DObjGetStruct(fighter_gobj)->translate.vec.f.x = CObjGetStruct(gCMManagerCameraGObj)->vec.eye.x;
+            DObjGetStruct(fighter_gobj)->translate.vec.f.y = CObjGetStruct(gCMManagerCameraGObj)->vec.eye.y + 3000.0F;
 
             if (gMPCollisionGroundData->map_bound_top < DObjGetStruct(fighter_gobj)->translate.vec.f.y)
             {

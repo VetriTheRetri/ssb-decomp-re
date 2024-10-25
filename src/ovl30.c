@@ -28,7 +28,7 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 
 // Forward declarations
-void mnStagePositionStagePreviewCamera(Camera* stage_preview_cam, s32 stage_id);
+void mnStagePositionStagePreviewCamera(CObj* stage_preview_cobj, s32 stage_id);
 
 
 // Stuff - where does it go?!?
@@ -127,7 +127,7 @@ GObj* gMNStageHeap1StageInfoArray[4];
 mpGroundData* gMNStageGroundInfo;
 
 // 0x80134C14;
-Camera* gMNStagePreviewCam;
+CObj* gMNStagePreviewCam;
 
 // 0x80134C18
 sb32 gMNStageIsTrainingMode;
@@ -973,60 +973,60 @@ void mnStageCreateStagePreview(s32 stage_id)
 void mnStageCreateBackgroundViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x00000001, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013354C
 void mnStageCreateWoodenCircleViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x28, 0x00000040, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801335EC
 void mnStageCreateStagePreviewBackgroundViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x46, 0x00000080, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013368C
 void mnStageCreateStageSelectGfxViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x1E, 0x00000010, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013372C
 void mnStageCreateStageImagesSYRdpViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x3C, 0x00000002, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x801337CC
 void mnStageCreateStageNameAndLogoViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x14, 0x00000004, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013386C
 void mnStageCreateCursorViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x32, 0x00000020, -1, 0, 1, 0, 1, 0);
-	Camera *cam = CameraGetStruct(camera_gobj);
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	CObj *cobj = CObjGetStruct(camera_gobj);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x8013390C
-void mnStagePositionStagePreviewCamera(Camera* stage_preview_cam, s32 stage_id)
+void mnStagePositionStagePreviewCamera(CObj* stage_preview_cobj, s32 stage_id)
 {
 	Vec3f positions[9] = {
 
@@ -1044,27 +1044,27 @@ void mnStagePositionStagePreviewCamera(Camera* stage_preview_cam, s32 stage_id)
 	if (stage_id == 0xDE)
 		stage_id = 0;
 
-	stage_preview_cam->vec.eye.x = -3000.0F;
-	stage_preview_cam->vec.eye.y = 3000.0F;
-	stage_preview_cam->vec.eye.z = 9000.0F;
-	stage_preview_cam->vec.up.x = 0.0f;
-	stage_preview_cam->vec.up.y = 1.0f;
-	stage_preview_cam->vec.up.z = 0.0f;
-	stage_preview_cam->vec.at.x = positions[stage_id].x;
-	stage_preview_cam->vec.at.y = positions[stage_id].y;
-	stage_preview_cam->vec.at.z = positions[stage_id].z;
+	stage_preview_cobj->vec.eye.x = -3000.0F;
+	stage_preview_cobj->vec.eye.y = 3000.0F;
+	stage_preview_cobj->vec.eye.z = 9000.0F;
+	stage_preview_cobj->vec.up.x = 0.0f;
+	stage_preview_cobj->vec.up.y = 1.0f;
+	stage_preview_cobj->vec.up.z = 0.0f;
+	stage_preview_cobj->vec.at.x = positions[stage_id].x;
+	stage_preview_cobj->vec.at.y = positions[stage_id].y;
+	stage_preview_cobj->vec.at.z = positions[stage_id].z;
 }
 
 // 0x801339C4
-void mnStageAdjustStagePreviewY(GObj* stage_preview_cam_gobj)
+void mnStageAdjustStagePreviewY(GObj* stage_preview_cobj_gobj)
 {
-	Camera* cam = CameraGetStruct(stage_preview_cam_gobj);
-	f32 y = cam->vec.at.y;
+	CObj* cobj = CObjGetStruct(stage_preview_cobj_gobj);
+	f32 y = cobj->vec.at.y;
 	f32 deg = 0.0F;
 
 	while (TRUE)
 	{
-		cam->vec.at.y = __sinf(F_CLC_DTOR32(deg)) * 40.0F + y;
+		cobj->vec.at.y = __sinf(F_CLC_DTOR32(deg)) * 40.0F + y;
 
 		deg = (deg + 2.0F > 360.0F) ? deg + 2.0F - 360.0F : deg + 2.0F;
 
@@ -1076,18 +1076,18 @@ void mnStageAdjustStagePreviewY(GObj* stage_preview_cam_gobj)
 void mnStageCreateStagePreviewViewport()
 {
 	int foo;
-	GObj* stage_preview_cam_gobj = gcMakeCameraGObj(1U, NULL, 1, 0x80000000U, &func_80017DBC, 0x41, 0x00000008, -1, 1, 0, 0, 1, 0);
-	Camera* cam = CameraGetStruct(stage_preview_cam_gobj);
+	GObj* stage_preview_cobj_gobj = gcMakeCameraGObj(1U, NULL, 1, 0x80000000U, &func_80017DBC, 0x41, 0x00000008, -1, 1, 0, 0, 1, 0);
+	CObj* cobj = CObjGetStruct(stage_preview_cobj_gobj);
 
-	gMNStagePreviewCam = cam;
+	gMNStagePreviewCam = cobj;
 
-	syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-	cam->projection.persp.far = 16384.0F;
+	cobj->projection.persp.far = 16384.0F;
 
-	mnStagePositionStagePreviewCamera(cam, mnStageGetStageID(gMNStageCursorSlotId));
+	mnStagePositionStagePreviewCamera(cobj, mnStageGetStageID(gMNStageCursorSlotId));
 
-	gcAddGObjProcess(stage_preview_cam_gobj, mnStageAdjustStagePreviewY, 0, 1);
+	gcAddGObjProcess(stage_preview_cobj_gobj, mnStageAdjustStagePreviewY, 0, 1);
 }
 
 // 0x80133B78

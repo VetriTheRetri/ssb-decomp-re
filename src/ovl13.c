@@ -531,8 +531,8 @@ GObj* dbCubeCreateViewport(void (*proc)(GObj*))
 	if (camera_gobj == NULL)
 		return NULL;
 
-	CameraGetStruct(camera_gobj)->vec.eye.z = 700.0f;
-	CameraGetStruct(camera_gobj)->flags = 5;
+	CObjGetStruct(camera_gobj)->vec.eye.z = 700.0f;
+	CObjGetStruct(camera_gobj)->flags = 5;
 
 	return camera_gobj;
 }

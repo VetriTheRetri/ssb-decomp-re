@@ -1077,8 +1077,8 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
     gsMtxStore mtx_store;
     s32 i;
     Vec3f sp128;
-    f32 cam_pos_x;
-    f32 cam_pos_y;
+    f32 cobj_pos_x;
+    f32 cobj_pos_y;
     Vec3f sp110;
 
     fp = ftGetStruct(fighter_gobj);
@@ -1107,38 +1107,38 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
             default:
                 sp128 = fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
-                sp128.y += fp->attributes->cam_offset_y;
+                sp128.y += fp->attributes->cobj_offset_y;
 
             #if defined(AVOID_UB) || defined(NON_MATCHING)
-                syVectorDiff3D(&sp110, &CameraGetStruct(gCMManagerCameraGObj)->vec.at, &sp128);
+                syVectorDiff3D(&sp110, &CObjGetStruct(gCMManagerCameraGObj)->vec.at, &sp128);
 
-                if (fp->attributes->cam_offset_y < syVectorMag3D(&sp110))
+                if (fp->attributes->cobj_offset_y < syVectorMag3D(&sp110))
                 {
                     syVectorNorm3D(&sp110);
-                    syVectorScale3D(&sp110, fp->attributes->cam_offset_y);
+                    syVectorScale3D(&sp110, fp->attributes->cobj_offset_y);
                     syVectorAdd3D(&sp128, &sp110);
                 }
             #else
                 // SUPER FAKE. I hope I can fix this in the future. sp128 - 2 should really be sp110, but we get stack issues otherwise.
-                syVectorDiff3D(&sp128 - 2, &CameraGetStruct(gCMManagerCameraGObj)->vec.at, &sp128);
+                syVectorDiff3D(&sp128 - 2, &CObjGetStruct(gCMManagerCameraGObj)->vec.at, &sp128);
 
-                if (fp->attributes->cam_offset_y < syVectorMag3D(&sp128 - 2))
+                if (fp->attributes->cobj_offset_y < syVectorMag3D(&sp128 - 2))
                 {
                     syVectorNorm3D(&sp128 - 2);
-                    syVectorScale3D(&sp128 - 2, fp->attributes->cam_offset_y);
+                    syVectorScale3D(&sp128 - 2, fp->attributes->cobj_offset_y);
                     syVectorAdd3D(&sp128, &sp128 - 2);
                 }
             #endif
 
-                func_ovl2_800EB924(CameraGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &sp128, &cam_pos_x, &cam_pos_y);
+                func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &sp128, &cobj_pos_x, &cobj_pos_y);
 
-                if (cmManagerCheckTargetInBounds(cam_pos_x, cam_pos_y) == FALSE)
+                if (cmManagerCheckTargetInBounds(cobj_pos_x, cobj_pos_y) == FALSE)
                 {
                     sp128 = fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
                     sp128.y += 300.0F;
 
-                    func_ovl2_800EB924(CameraGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &sp128, &fp->ifpos_x, &fp->ifpos_y);
+                    func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &sp128, &fp->ifpos_x, &fp->ifpos_y);
 
                     fp->x18D_flag_b5 = TRUE;
 
@@ -1148,7 +1148,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
                         {
                             gIFCommonPlayerInterface.mglass_mode = 1;
 
-                            ifCommonPlayerArrowsUpdateFlags(cam_pos_x, cam_pos_y);
+                            ifCommonPlayerArrowsUpdateFlags(cobj_pos_x, cobj_pos_y);
                         }
                     }
                     return;

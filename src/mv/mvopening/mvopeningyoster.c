@@ -198,9 +198,9 @@ void mvOpeningYosterMakeMainCamera(void)
         GOBJ_LINKORDER_DEFAULT,
         func_80017EC0,
         80, 
-        CAMERA_MASK_DLLINK(18) | CAMERA_MASK_DLLINK(15) |
-        CAMERA_MASK_DLLINK(10) | CAMERA_MASK_DLLINK(9)  |
-        CAMERA_MASK_DLLINK(6),
+        COBJ_MASK_DLLINK(18) | COBJ_MASK_DLLINK(15) |
+        COBJ_MASK_DLLINK(10) | COBJ_MASK_DLLINK(9)  |
+        COBJ_MASK_DLLINK(6),
         -1,
         TRUE,
         nGCProcessKindProc,
@@ -208,16 +208,16 @@ void mvOpeningYosterMakeMainCamera(void)
         1,
         FALSE
     );
-    Camera *cam = CameraGetStruct(camera_gobj);
+    CObj *cobj = CObjGetStruct(camera_gobj);
 
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-    cam->projection.persp.near = 128.0F;
-    cam->projection.persp.far = 16384.0F;
+    cobj->projection.persp.near = 128.0F;
+    cobj->projection.persp.far = 16384.0F;
 
     gcAddCameraCamAnimJoint
     (
-        cam, 
+        cobj, 
         lbRelocGetDataFromFile
         (
             AObjEvent32*,
@@ -233,7 +233,7 @@ void mvOpeningYosterMakeMainCamera(void)
 // 0x80131F90
 void mvOpeningYosterMakeWallpaperCamera(void)
 {
-    Camera *cam = CameraGetStruct
+    CObj *cobj = CObjGetStruct
     (
         gcMakeCameraGObj
         (
@@ -243,7 +243,7 @@ void mvOpeningYosterMakeWallpaperCamera(void)
             GOBJ_LINKORDER_DEFAULT,
             lbCommonScissorSpriteCamera,
             90,
-            CAMERA_MASK_DLLINK(28),
+            COBJ_MASK_DLLINK(28),
             -1,
             FALSE,
             nGCProcessKindProc,
@@ -252,7 +252,7 @@ void mvOpeningYosterMakeWallpaperCamera(void)
             FALSE
         )
     );
-    syRdpSetViewport(&cam->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
+    syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
 
 // 0x80132030
@@ -329,7 +329,7 @@ void mvOpeningYosterFuncStart(void)
         )
     );
     gcMakeGObjSPAfter(0, mvOpeningYosterMainProc, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, CAMERA_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
+    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 
     efAllocInitParticleBank();
     mvOpeningYosterInitTotalTimeTics();
@@ -398,7 +398,7 @@ syTaskmanSetup dMVOpeningYosterTaskmanSetup =
     128,                                // Number of SObjs
     sizeof(SObj),                       // SObj size
     16,                                 // Number of Cameras
-    sizeof(Camera),                     // Camera size
+    sizeof(CObj),                     // Camera size
     
     mvOpeningYosterFuncStart            // Task start function
 };

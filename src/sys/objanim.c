@@ -514,9 +514,9 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 dobj->anim_frame = -dobj->anim_wait;
                 dobj->parent_gobj->anim_frame = -dobj->anim_wait;
 
-                if ((dobj->is_anim_root != FALSE) && (dobj->parent_gobj->proc_anim != NULL))
+                if ((dobj->is_anim_root != FALSE) && (dobj->parent_gobj->func_anim != NULL))
                 {
-                    dobj->parent_gobj->proc_anim(dobj, -2, 0);
+                    dobj->parent_gobj->func_anim(dobj, -2, 0);
                 }
                 break;
 
@@ -524,9 +524,9 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 AObjAnimAdvance(dobj->anim_joint.event32);
                 dobj->anim_joint.event32 = dobj->anim_joint.event32->p;
 
-                if ((dobj->is_anim_root != FALSE) && (dobj->parent_gobj->proc_anim != NULL)) 
+                if ((dobj->is_anim_root != FALSE) && (dobj->parent_gobj->func_anim != NULL)) 
                 {
-                    dobj->parent_gobj->proc_anim(dobj, -2, 0);
+                    dobj->parent_gobj->func_anim(dobj, -2, 0);
                 }
                 break;
 
@@ -578,9 +578,9 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 dobj->parent_gobj->anim_frame = dobj->anim_wait;
                 dobj->anim_wait = AOBJ_ANIM_END;
 
-                if ((dobj->is_anim_root != FALSE) && (dobj->parent_gobj->proc_anim != NULL))
+                if ((dobj->is_anim_root != FALSE) && (dobj->parent_gobj->func_anim != NULL))
                 {
-                    dobj->parent_gobj->proc_anim(dobj, -1, 0);
+                    dobj->parent_gobj->func_anim(dobj, -1, 0);
                 }
                 return; // not break
 
@@ -590,10 +590,10 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 break;
 
             case ANIM_CMD_16:
-                if (dobj->parent_gobj->proc_anim != NULL)
+                if (dobj->parent_gobj->func_anim != NULL)
                 {
                     // only seems to match when spelled out...
-                    dobj->parent_gobj->proc_anim
+                    dobj->parent_gobj->func_anim
                     (
                         dobj,
                         dobj->anim_joint.event32->command.flags >> 8,
@@ -615,9 +615,9 @@ void gcParseDObjAnimJoint(DObj *dobj)
                     }
                     if (flags & 1)
                     {
-                        if (dobj->parent_gobj->proc_anim != NULL)
+                        if (dobj->parent_gobj->func_anim != NULL)
                         {
-                            dobj->parent_gobj->proc_anim(dobj, i, dobj->anim_joint.event32->f);
+                            dobj->parent_gobj->func_anim(dobj, i, dobj->anim_joint.event32->f);
                         }
                         AObjAnimAdvance(dobj->anim_joint.event32);
                     }

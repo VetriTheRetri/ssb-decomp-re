@@ -2189,17 +2189,17 @@ void lbParticleGetPosVelDObj(Vec3f *pos, Vec3f *vel, DObj *dobj)
 			syMatrixTraF(&tmp, dobj->translate.vec.f.x, dobj->translate.vec.f.y, dobj->translate.vec.f.z);
 			guMtxCatF(dst, tmp, dst);
 		}
-		if (dobj->dynstore != NULL)
+		if (dobj->vec != NULL)
 		{
 			GCTranslate *translate = NULL;
 			GCRotate *rotate = NULL;
 			GCScale *scale = NULL;
-			uintptr_t csr = (uintptr_t)dobj->dynstore->data;
+			uintptr_t csr = (uintptr_t)dobj->vec->data;
 			s32 i;
 
-			for (i = 0; i < ARRAY_COUNT(dobj->dynstore->kinds); i++)
+			for (i = 0; i < ARRAY_COUNT(dobj->vec->kinds); i++)
 			{
-				switch (dobj->dynstore->kinds[i])
+				switch (dobj->vec->kinds[i])
 				{
 				case nGCDrawVecKindNone:
                     break;

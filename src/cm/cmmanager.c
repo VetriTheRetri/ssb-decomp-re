@@ -71,6 +71,12 @@ f32 dCMManagerPlayerZoomRanges[/* */] =
     1.00F   // 4 Players
 };
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x8010B810
 u32 cmManagerGetCamBoundsMask(Vec3f *pos)
 {

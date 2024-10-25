@@ -826,7 +826,7 @@ syTaskmanSetup dMN1PModeTaskmanSetup =
     sizeof(GObj),                   // GObj size
     0,                              // Number of Object Manager Matrices
     NULL,                           // Matrix function list
-    NULL,                           // Function for ejecting DObjDynamicStore?
+    NULL,                           // Function for ejecting DObjVec?
     0,                              // Number of AObjs
     0,                              // Number of MObjs
     0,                              // Number of DObjs

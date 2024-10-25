@@ -2593,7 +2593,7 @@ void func_ovl2_80113638(GObj *interface_gobj, u32 unused)
 {
     gcPauseProcessAll(interface_gobj);
 
-    interface_gobj->flags |= GOBJ_FLAG_NOEJECT;
+    interface_gobj->flags |= GOBJ_FLAG_NOFUNC;
 }
 
 // 0x8011366C
@@ -2601,7 +2601,7 @@ void func_ovl2_8011366C(GObj *interface_gobj, u32 unused)
 {
     gcResumeProcessAll(interface_gobj);
 
-    interface_gobj->flags &= ~GOBJ_FLAG_NOEJECT;
+    interface_gobj->flags &= ~GOBJ_FLAG_NOFUNC;
 }
 
 // 0x801136A4
@@ -3147,7 +3147,7 @@ void ifCommonSetMaxNumGObj(void)
 
     if ((gcGetMaxNumGObj() == -1) && (free_space < (25 * 1024)))
     {
-        gcSetMaxNumGObj(gcGetGObjActiveCount());
+        gcSetMaxNumGObj(gcGetGObjsActiveNum());
     }
 }
 

@@ -24,7 +24,7 @@
 #define GOBJ_FLAG_NONE              (0)
 #define GOBJ_FLAG_HIDDEN            (1 << 0)
 #define GOBJ_FLAG_NOANIM            (1 << 1)    // Skip applying aninmation values?
-#define GOBJ_FLAG_NOEJECT           (1 << 6)    // I actually don't know what this really does
+#define GOBJ_FLAG_NOFUNC           (1 << 6)    // I actually don't know what this really does
 
 #define GOBJ_LINKORDER_DEFAULT      0x80000000
 #define GOBJ_DLLINKORDER_DEFAULT    0x80000000
@@ -57,12 +57,13 @@
 // Create mask of draw layer (known in Smash Remix lingo as "room") to render
 #define CAMERA_MASK_DLLINK(r) (1ULL << (r))
 
-#define CAMERA_FLAG_ZBUFFER         0x1     // Use Z-Buffer depth image
-#define CAMERA_FLAG_FILLCOLOR       0x2     // Use camera's packed RRGGBBAA `color` variable
-#define CAMERA_FLAG_DLBUFFERS       0x4     // Update DLBuffers and DisplayList branches?
-#define CAMERA_FLAG_IDENTIFIER      0x8     // If the 0x8 bit is 0, cam_tag is treated as a mask; if 1, it is treated as an ID
-#define CAMERA_FLAG_GFXEND          0x10    // Run SCTaskGfxEnd task type?
-#define CAMERA_FLAG_BRANCHSYNC      0x40    // Sync all Branch DLs with main DL buffers?
+#define CAMERA_FLAG_NONE            (0)
+#define CAMERA_FLAG_ZBUFFER         (1 << 0)    // Use Z-Buffer depth image
+#define CAMERA_FLAG_FILLCOLOR       (1 << 1)    // Use camera's packed RRGGBBAA `color` variable
+#define CAMERA_FLAG_DLBUFFERS       (1 << 2)    // Update DLBuffers and DisplayList branches?
+#define CAMERA_FLAG_IDENTIFIER      (1 << 3)    // If the 0x8 bit is 0, cam_tag is treated as a mask; if 1, it is treated as an ID
+#define CAMERA_FLAG_GFXEND          (1 << 4)    // Run SCTaskGfxEnd task type?
+#define CAMERA_FLAG_BRANCHSYNC      (1 << 6)    // Sync all Branch DLs with main DL buffers?
 
 union GCUserData
 {
@@ -139,18 +140,18 @@ struct GObjThread
     size_t stack_size;
 };
 
-struct GCThreadStackNode
+struct GObjStack
 {
-    GCThreadStackNode *next;
+    GObjStack *next;
     size_t stack_size;
     u64 stack[1];
 }; // size == 0x08 + VLA
 
 // List that connects lists of stack nodes of `size` bytes
-struct GCThreadStackList 
+struct GObjThreadStack 
 {
-    GCThreadStackList *next;
-    GCThreadStackNode *stack;
+    GObjThreadStack *next;
+    GObjStack *stack;
     size_t size;
 };
 
@@ -164,6 +165,7 @@ struct GObjProcess
     u8 kind;
     ub8 is_paused;
     GObj *parent_gobj;
+    
     union // These are based on 0x14
     {
         GObjThread *gobjthread; // GObjThread
@@ -185,7 +187,7 @@ struct GObj
     GObj *link_prev;
     u8 link_id;
     u8 dl_link_id;
-    u8 frame_draw_last;                         // Last frame drawn?
+    u8 frame_draw_last;                 // Last frame drawn?
     u8 obj_kind;                        // Determines kind of *obj: 0 = NULL, 1 = DObj, 2 = SObj, 3 = Camera
     u32 link_order;
     void (*func_run)(GObj*);
@@ -203,14 +205,14 @@ struct GObj
     u32 dl_link_order;
     void (*func_display)(GObj*);
     u64 cam_mask;
-    u32 cam_tag;                        // 0xFFFFFFFF, textures or series of flags?
+    u32 cam_tag;                        // Usually 0xFFFFFFFF
     u64 unk_gobj_0x40;
     GObjLink gobjlinks[5];
     s32 gobjlinks_num;                  // Length/number of active members of gobjlinks
     void *obj;                          // Can be: NULL, DObj, SObj or Camera
-    f32 anim_frame;                     // Current frame of animation?
+    f32 anim_frame;                     // Current frame of animation
     u32 flags;                          // GObj logic flags (e.g. 0x1 = skip rendering)
-    void(*proc_anim)(DObj*, s32, f32);  // DObj animation renderer?
+    void (*func_anim)(DObj*, s32, f32);
     GCUserData user_data;
 };
 
@@ -288,7 +290,8 @@ struct GCScale
 /// Kind 1 - `struct Mtx3Int` or `union Mtx3fi`
 /// Kind 2 - `struct Mtx4Float`
 /// Kind 3 - `struct Mtx3Float`
-struct DObjDynamicStore
+
+struct DObjVec
 {
     /* 0x00 */ u8 kinds[3];
     /* 0x03 */ u8 pad;
@@ -339,7 +342,7 @@ struct MObjSub
     s32 unk74;
 };
 
-struct MObj
+struct MObj                         // Material Object
 {
     MObj *next;
     GObj *parent_gobj;              // Unconfirmed
@@ -409,19 +412,20 @@ struct GCGfxLink
     Gfx *dls[4];
 };
 
-struct DObj
+struct DObj                 // Draw Object
 {
     DObj *alloc_free;       // Has to do with memory allocation
-    GObj *parent_gobj;
-    DObj *sib_next;         // Next sibling? 0x8
-    DObj *sib_prev;         // Previous sibling? 0xC
-    DObj *child;            // Child? 0x10
-    DObj *parent;
-    GCTranslate translate;
-    GCRotate rotate;
-    GCScale scale;
+    GObj *parent_gobj;      // GObj that this DObj belongs to
+    DObj *sib_next;         // Next sibling
+    DObj *sib_prev;         // Previous sibling
+    DObj *child;            // Child
+    DObj *parent;           // Parent
 
-    DObjDynamicStore *dynstore;
+    GCTranslate translate;  // Translation XObj and vector
+    GCRotate rotate;        // Rotation XObj and vector
+    GCScale scale;          // Scale XObj and vector
+
+    DObjVec *vec;
 
     union
     {
@@ -458,7 +462,7 @@ struct DObj
     GCUserData user_data;
 };
 
-struct SObj                    // Sprite object
+struct SObj                     // Sprite object
 {
     SObj *alloc_free;           // Has to do with memory allocation
     GObj *parent_gobj;          // GObj that owns this SObj
@@ -476,8 +480,8 @@ struct SObj                    // Sprite object
 struct CameraVec
 {
     XObj *xobj;
-    Vec3f eye; // Either camera terms do not translate very well here or I'm just too incompetent... this rotates about the focus point
-    Vec3f at;  // This moves the camera on the XYZ planes
+    Vec3f eye;
+    Vec3f at;
     Vec3f up;
 };
 
@@ -518,7 +522,7 @@ struct Camera
     u32 flags;
     u32 color;
 
-    void(*func_camera)(Camera*, s32);
+    void (*func_camera)(Camera*, s32);
 
     s32 unk_camera_0x8C;
 };
@@ -528,9 +532,9 @@ struct GCSetup
     GObjThread *gobjthreads;
     s32 gobjthreads_num;
 
-    size_t threadstack_size;
-    GCThreadStackNode *threadstacks;
-    u32 num_stacks;
+    size_t gobjthreadstack_size;
+    GObjStack *gobjthreadstacks;
+    u32 gobjthreadstacks_num;
 
     s32 unk_omsetup_0x14;
 
@@ -544,7 +548,7 @@ struct GCSetup
     XObj *xobjs;
     s32 xobjs_num;
 
-    void (*proc_eject)(DObjDynamicStore*);
+    void (*func_eject)(DObjVec*);
 
     AObj *aobjs;
     s32 aobjs_num;

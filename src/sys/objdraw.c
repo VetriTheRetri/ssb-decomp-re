@@ -341,13 +341,13 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
 
     sp2CC = 0;
 
-    if (dobj->dynstore != NULL)
+    if (dobj->vec != NULL)
     {
-        uintptr_t csr = (uintptr_t)dobj->dynstore->data;
+        uintptr_t csr = (uintptr_t)dobj->vec->data;
 
-        for (i = 0; i < ARRAY_COUNT(dobj->dynstore->kinds); i++)
+        for (i = 0; i < ARRAY_COUNT(dobj->vec->kinds); i++)
         {
-            switch (dobj->dynstore->kinds[i])
+            switch (dobj->vec->kinds[i])
             {
             case 0:
                 break;

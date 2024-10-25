@@ -40,15 +40,15 @@ typedef struct syTaskmanSetup
 {
 	/* 0x00 */ syTaskmanBufferSetup buffer_setup;
 	/* 0x40 */ u32 gobjthreads_num;
-	/* 0x44 */ u32 threadstack_size;
-	/* 0x48 */ u32 threadstacks_num;
+	/* 0x44 */ u32 gobjthreadstack_size;
+	/* 0x48 */ u32 gobjthreadstacks_num;
 	/* 0x4C */ s32 unk4C;
 	/* 0x50 */ u32 gobjprocs_num;
 	/* 0x54 */ u32 gobjs_num;
 	/* 0x58 */ u32 gobj_size;
 	/* 0x5C */ u32 xobjs_num;
 	/* 0x60 */ void *unk60;
-	/* 0x64 */ void (*proc_eject)(DObjDynamicStore*); 	// fn pointer void(*)(struct DObjDynamicStore *)
+	/* 0x64 */ void (*func_eject)(DObjVec*); 	// fn pointer void(*)(struct DObjVec *)
 	/* 0x68 */ u32 aobjs_num;
 	/* 0x6C */ u32 mobjs_num;
 	/* 0x70 */ u32 dobjs_num;

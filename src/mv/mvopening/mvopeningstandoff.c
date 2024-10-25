@@ -102,7 +102,7 @@ syTaskmanSetup dMVOpeningStandoffTaskmanSetup =
     sizeof(GObj),                       // GObj size
     512,                                // Number of Object Manager Matrices
     dLBCommonFuncMatrixList,            // Matrix function list
-    NULL,                               // Function for ejecting DObjDynamicStore?
+    NULL,                               // Function for ejecting DObjVec?
     512,                                // Number of AObjs
     160,                                // Number of MObjs
     512,                                // Number of DObjs

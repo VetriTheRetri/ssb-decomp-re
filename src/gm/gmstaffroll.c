@@ -2224,7 +2224,7 @@ syTaskmanSetup dGMStaffrollTaskmanSetup =
     sizeof(GObj),                   // GObj size
     256,                            // Number of Object Manager Matrices
     NULL,                           // Matrix function list
-    NULL,                           // Function for ejecting DObjDynamicStore?
+    NULL,                           // Function for ejecting DObjVec?
     32,                             // Number of AObjs
     16,                             // Number of MObjs
     1024,                           // Number of DObjs

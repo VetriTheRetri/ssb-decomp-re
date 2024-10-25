@@ -316,9 +316,9 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
 
                 if (root_dobj->is_anim_root != FALSE)
                 {
-                    if (root_dobj->parent_gobj->proc_anim != NULL)
+                    if (root_dobj->parent_gobj->func_anim != NULL)
                     {
-                        root_dobj->parent_gobj->proc_anim(root_dobj, -2, 0);
+                        root_dobj->parent_gobj->func_anim(root_dobj, -2, 0);
                     }
                 }
                 break;
@@ -374,9 +374,9 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
 
                 if (root_dobj->is_anim_root != FALSE)
                 {
-                    if (root_dobj->parent_gobj->proc_anim != NULL)
+                    if (root_dobj->parent_gobj->func_anim != NULL)
                     {
-                        root_dobj->parent_gobj->proc_anim(root_dobj, -1, 0);
+                        root_dobj->parent_gobj->func_anim(root_dobj, -1, 0);
                     }
                 }
                 return;

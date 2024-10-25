@@ -1245,15 +1245,15 @@ void syTaskmanInit(syTaskmanSetup *ts)
 
 	omsetup.gobjthreads      = syTaskmanMalloc(sizeof(GObjThread) * ts->gobjthreads_num, 0x8);
 	omsetup.gobjthreads_num  = ts->gobjthreads_num;
-	omsetup.threadstack_size = ts->threadstack_size;
+	omsetup.gobjthreadstack_size = ts->gobjthreadstack_size;
 
-	if (ts->threadstack_size != 0)
+	if (ts->gobjthreadstack_size != 0)
 	{
-		omsetup.threadstacks = syTaskmanMalloc((ts->threadstack_size + offsetof(GCThreadStackNode, stack)) * ts->threadstacks_num, 0x8);
+		omsetup.gobjthreadstacks = syTaskmanMalloc((ts->gobjthreadstack_size + offsetof(GObjStack, stack)) * ts->gobjthreadstacks_num, 0x8);
 	}
-	else omsetup.threadstacks = NULL;
+	else omsetup.gobjthreadstacks = NULL;
 	
-	omsetup.num_stacks = ts->threadstacks_num;
+	omsetup.gobjthreadstacks_num = ts->gobjthreadstacks_num;
 	omsetup.unk_omsetup_0x14 = ts->unk4C;
 
 	omsetup.gobjprocs     = syTaskmanMalloc(sizeof(GObjProcess) * ts->gobjprocs_num, 0x4);
@@ -1267,7 +1267,7 @@ void syTaskmanInit(syTaskmanSetup *ts)
 	omsetup.xobjs_num = ts->xobjs_num;
 
 	gcSetMatrixProcess(ts->unk60);
-	omsetup.proc_eject = ts->proc_eject;
+	omsetup.func_eject = ts->func_eject;
 
 	omsetup.aobjs     = syTaskmanMalloc(sizeof(AObj) * ts->aobjs_num, 0x4);
 	omsetup.aobjs_num = ts->aobjs_num;

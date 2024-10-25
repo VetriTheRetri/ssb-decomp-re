@@ -886,7 +886,7 @@ void lbCommonInitDObjTriTransform(DObj *dobj, u8 tk1, u8 tk2, u8 tk3)
     gcAddDObjTriTransformKind(dobj, tk1, tk2, tk3);
     
     dobj->translate.vec = dGCTranslateDefault.vec;
-    dobj->rotate.vec = dGCRotateDefaultRPY.vec;
+    dobj->rotate.vec = dGCRotateDefaultRpy.vec;
     dobj->scale.vec = dGCScaleDefault.vec;
 }
 
@@ -906,7 +906,7 @@ void lbCommonInitDObj(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, u8 arg4)
         gcAddXObjForDObjFixed(dobj, tk3, arg4);
     }
     dobj->translate.vec = dGCTranslateDefault.vec;
-    dobj->rotate.vec = dGCRotateDefaultRPY.vec;
+    dobj->rotate.vec = dGCRotateDefaultRpy.vec;
     dobj->scale.vec = dGCScaleDefault.vec;
 }
 
@@ -2994,7 +2994,7 @@ void lbCommonInitCameraVec(Camera *cam, u8 tk, u8 arg2)
 {
     XObj *xobj = gcAddXObjForCamera(cam, tk, arg2);
     
-    cam->vec = dOMCameraVecDefault;
+    cam->vec = dGCCameraVecDefault;
     cam->vec.xobj = xobj;
 }
 

@@ -138,7 +138,7 @@ void gcStopCurrentGObjThread(s32 tics)
     }
     while (tics != 0)
     {
-        osSendMesg(&gOMMesgQueue, (OSMesg)1, OS_MESG_NOBLOCK);
+        osSendMesg(&gGCMesgQueue, (OSMesg)1, OS_MESG_NOBLOCK);
         osStopThread(NULL);
         tics--;
     }

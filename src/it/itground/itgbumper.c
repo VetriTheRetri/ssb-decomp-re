@@ -16,7 +16,7 @@ extern intptr_t lITGBumperItemAttributes;   // 0x00000CF0
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITGBumperItemDesc =
+ITCreateDesc dITGBumperItemDesc =
 {
     nITKindGBumper,                         // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -49,7 +49,7 @@ itCreateDesc dITGBumperItemDesc =
 // 0x8017D590
 sb32 itGBumperCommonProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     if ((ip->item_vars.bumper.hit_anim_length == 0) && (dobj->mobj->palette_id == 1.0F))
@@ -72,7 +72,7 @@ sb32 itGBumperCommonProcUpdate(GObj *item_gobj)
 // 0x8017D63C
 sb32 itGBumperCommonProcHit(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     dobj->scale.vec.f.x = 2.0F;
@@ -94,7 +94,7 @@ GObj* itGBumperMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
     if (item_gobj != NULL)
     {
-        itStruct *ip;
+        ITStruct *ip;
         DObj *dobj;
 
         itMainClearOwnerStats(item_gobj);
@@ -104,19 +104,19 @@ GObj* itGBumperMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->it_multi = 0;
 
-        ip->item_hit.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
-        ip->item_hit.can_rehit_shield = TRUE;
+        ip->hit_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
+        ip->hit_coll.can_rehit_shield = TRUE;
 
-        ip->phys_info.vel_air.x = 0.0F;
-        ip->phys_info.vel_air.y = 0.0F;
-        ip->phys_info.vel_air.z = 0.0F;
+        ip->physics.vel_air.x = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
+        ip->physics.vel_air.z = 0.0F;
 
         dobj->mobj->palette_id = 0;
 
         if (gBattleState->gr_kind == nGRKindCastle)
         {
-            ip->item_hit.knockback_weight = ITBUMPER_CASTLE_KNOCKBACK;
-            ip->item_hit.angle = ITBUMPER_CASTLE_ANGLE;
+            ip->hit_coll.knockback_weight = ITBUMPER_CASTLE_KNOCKBACK;
+            ip->hit_coll.angle = ITBUMPER_CASTLE_ANGLE;
         }
     }
     return item_gobj;

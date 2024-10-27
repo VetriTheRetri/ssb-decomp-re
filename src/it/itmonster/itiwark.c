@@ -21,7 +21,7 @@ extern intptr_t lITIwarkDisplayList;        // 0x0000A640
 // // // // // // // // // // // //
 
 // 0x8018AA90
-itCreateDesc dITIwarkItemDesc =
+ITCreateDesc dITIwarkItemDesc =
 {
     nITKindIwark,                           // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -46,7 +46,7 @@ itCreateDesc dITIwarkItemDesc =
 };
 
 // 0x8018AAC4
-itStatusDesc dITIwarkStatusDescs[/* */] = 
+ITStatusDesc dITIwarkStatusDescs[/* */] = 
 {
     // Status 0 (Neutral Fly)
     {
@@ -74,7 +74,7 @@ itStatusDesc dITIwarkStatusDescs[/* */] =
 };
 
 // 0x8018AB04
-wpCreateDesc dITIwarkWeaponRockWeaponDesc =
+WPCreateDesc dITIwarkWeaponRockWeaponDesc =
 {
     0x01,                                   // Render flags?
     nWPKindIwarkRock,                       // Weapon Kind
@@ -120,12 +120,12 @@ enum itIwarkStatus
 // 0x8017D740
 void itIwarkAttackUpdateRock(GObj *iwark_gobj)
 {
-    itStruct *ip = itGetStruct(iwark_gobj);
+    ITStruct *ip = itGetStruct(iwark_gobj);
     DObj *dobj = DObjGetStruct(iwark_gobj);
 
     if (ip->item_vars.iwark.rock_spawn_wait <= 0)
     {
-        wpStruct *wp;
+        WPStruct *wp;
         GObj *rock_gobj;
         Vec3f pos = dobj->translate.vec.f;
 
@@ -157,7 +157,7 @@ void itIwarkAttackUpdateRock(GObj *iwark_gobj)
 // 0x8017D820
 sb32 itIwarkAttackProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
     f32 pos_y = gMPCollisionGroundData->map_bound_top - ITIWARK_FLY_STOP_Y;
 
@@ -165,7 +165,7 @@ sb32 itIwarkAttackProcUpdate(GObj *item_gobj)
     {
         dobj->translate.vec.f.y = pos_y;
 
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
 
         if (ip->item_vars.iwark.rock_spawn_remain != 0)
         {
@@ -201,14 +201,14 @@ sb32 itIwarkAttackProcUpdate(GObj *item_gobj)
 // 0x8017D948
 void itIwarkAttackInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
     Gfx *dl;
     Vec3f pos;
 
     ip->ga = nMPKineticsAir;
 
-    ip->phys_info.vel_air.y = ITIWARK_FLY_VEL_Y;
+    ip->physics.vel_air.y = ITIWARK_FLY_VEL_Y;
 
     ip->item_vars.iwark.rock_spawn_remain = mtTrigGetRandomIntRange(ITIWARK_ROCK_SPAWN_COUNT_RANDOM) + ITIWARK_ROCK_SPAWN_COUNT_MIN;
     ip->item_vars.iwark.rock_spawn_max = ip->item_vars.iwark.rock_spawn_remain;
@@ -247,7 +247,7 @@ void itIwarkAttackSetStatus(GObj *item_gobj)
 // 0x8017DA94
 sb32 itIwarkFlyProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {
@@ -261,11 +261,11 @@ sb32 itIwarkFlyProcUpdate(GObj *item_gobj)
 // 0x8017DAD8
 void itIwarkFlySetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi = ITIWARK_FLY_WAIT;
 
-    ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0.0F;
+    ip->physics.vel_air.x = ip->physics.vel_air.y = 0.0F;
 
     itMainSetItemStatus(item_gobj, dITIwarkStatusDescs, nITIwarkStatusFly);
 }
@@ -273,7 +273,7 @@ void itIwarkFlySetStatus(GObj *item_gobj)
 // 0x8017DB18
 sb32 itIwarkCommonProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {
@@ -287,11 +287,11 @@ sb32 itIwarkCommonProcUpdate(GObj *item_gobj)
 // 0x8017DB5C
 sb32 itIwarkCommonProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_GROUND) != FALSE)
     {
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
 
         itMapSetGround(ip);
     }
@@ -303,7 +303,7 @@ GObj* itIwarkMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
     GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITIwarkItemDesc, pos, vel, flags);
     DObj *dobj;
-    itStruct *ip;
+    ITStruct *ip;
 
     if (item_gobj != NULL)
     {
@@ -320,12 +320,12 @@ GObj* itIwarkMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ip->item_hit.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
+        ip->hit_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
 
-        ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
-        ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
+        ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
+        ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        dobj->translate.vec.f.y -= ip->attributes->objcoll_bottom;
+        dobj->translate.vec.f.y -= ip->attributes->object_coll_bottom;
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITIwarkDataStart), 0.0F); // Linker thing
     }
@@ -335,8 +335,8 @@ GObj* itIwarkMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 // 0x8017DCAC
 sb32 itIwarkWeaponRockProcDead(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    itStruct *ip = itGetStruct(wp->weapon_vars.rock.owner_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    ITStruct *ip = itGetStruct(wp->weapon_vars.rock.owner_gobj);
 
     ip->item_vars.iwark.rock_spawn_count++;
 
@@ -346,7 +346,7 @@ sb32 itIwarkWeaponRockProcDead(GObj *weapon_gobj)
 // 0x8017DCCC
 sb32 itIwarkWeaponRockProcUpdate(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
     DObj *dobj;
 
     wpMainApplyGravityClampTVel(wp, WPIWARK_ROCK_GRAVITY, WPIWARK_ROCK_TVEL);
@@ -361,9 +361,9 @@ sb32 itIwarkWeaponRockProcUpdate(GObj *weapon_gobj)
 // 0x8017DD18
 sb32 itIwarkWeaponRockProcMap(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    itStruct *ip = itGetStruct(wp->weapon_vars.rock.owner_gobj);
-    mpCollData *coll_data = &wp->coll_data;
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    ITStruct *ip = itGetStruct(wp->weapon_vars.rock.owner_gobj);
+    MPCollData *coll_data = &wp->coll_data;
     Vec3f pos = DObjGetStruct(weapon_gobj)->translate.vec.f;
     s32 line_id = wp->weapon_vars.rock.ground_line_id;
 
@@ -373,8 +373,8 @@ sb32 itIwarkWeaponRockProcMap(GObj *weapon_gobj)
     {
         if (line_id != coll_data->ground_line_id)
         {
-            lbCommonReflect2D(&wp->phys_info.vel_air, &coll_data->ground_angle);
-            lbCommonScale2D(&wp->phys_info.vel_air, WPIWARK_ROCK_COLLIDE_MUL_VEL_Y);
+            lbCommonReflect2D(&wp->physics.vel_air, &coll_data->ground_angle);
+            lbCommonScale2D(&wp->physics.vel_air, WPIWARK_ROCK_COLLIDE_MUL_VEL_Y);
 
             wp->weapon_vars.rock.ground_line_id = coll_data->ground_line_id;
 
@@ -395,14 +395,14 @@ sb32 itIwarkWeaponRockProcMap(GObj *weapon_gobj)
 // 0x8017DE10
 sb32 itIwarkWeaponRockProcHop(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_80019438(&wp->phys_info.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
+    func_80019438(&wp->physics.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
-    if (wp->phys_info.vel_air.x > 0.0F)
+    if (wp->physics.vel_air.x > 0.0F)
     {
         wp->lr = nGMFacingR;
     }
@@ -414,12 +414,12 @@ sb32 itIwarkWeaponRockProcHop(GObj *weapon_gobj)
 // 0x8017DEB8
 sb32 itIwarkWeaponRockProcReflector(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    ftStruct *fp = ftGetStruct(wp->owner_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    FTStruct *fp = ftGetStruct(wp->owner_gobj);
 
     wpMainReflectorSetLR(wp, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     wp->lr = -wp->lr;
@@ -434,7 +434,7 @@ GObj* itIwarkWeaponRockMakeWeapon(GObj *parent_gobj, Vec3f *pos, u8 random)
     GObj *weapon_gobj = wpManagerMakeWeapon(parent_gobj, &dITIwarkWeaponRockWeaponDesc, pos, WEAPON_FLAG_PARENT_ITEM);
     DObj *dobj;
     f32 vel_y;
-    wpStruct *wp;
+    WPStruct *wp;
 
     if (weapon_gobj == NULL)
     {
@@ -448,9 +448,9 @@ GObj* itIwarkWeaponRockMakeWeapon(GObj *parent_gobj, Vec3f *pos, u8 random)
 
     if (random32 == 0)
     {
-        wp->phys_info.vel_air.y = WPIWARK_ROCK_VEL_Y_START_A;
+        wp->physics.vel_air.y = WPIWARK_ROCK_VEL_Y_START_A;
     }
-    else wp->phys_info.vel_air.y = vel_y = (random32 == 1) ? WPIWARK_ROCK_VEL_Y_START_B : WPIWARK_ROCK_VEL_Y_START_C;
+    else wp->physics.vel_air.y = vel_y = (random32 == 1) ? WPIWARK_ROCK_VEL_Y_START_B : WPIWARK_ROCK_VEL_Y_START_C;
 
     if (mtTrigGetRandomIntRange(2) == 0)
     {

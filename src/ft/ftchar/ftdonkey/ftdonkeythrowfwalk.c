@@ -21,7 +21,7 @@
 // // // // // // // // // // // //
 
 // 0x8014D530
-f32 ftDonkeyThrowFWalkGetWalkAnimLength(ftStruct *fp, s32 status_id)
+f32 ftDonkeyThrowFWalkGetWalkAnimLength(FTStruct *fp, s32 status_id)
 {
     f32 walk_anim_length;
 
@@ -45,15 +45,15 @@ f32 ftDonkeyThrowFWalkGetWalkAnimLength(ftStruct *fp, s32 status_id)
 // 0x8014D590
 void ftDonkeyThrowFWalkProcInterrupt(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (!(ftDonkeyThrowFWalkCheckInterrupt(fighter_gobj)))
     {
         s32 status_id = ftCommonWalkGetWalkStatus(ABS(fp->input.pl.stick_range.x)) + (nFTDonkeyStatusThrowFWalkSlow - nFTCommonStatusWalkSlow);
 
-        if (status_id != fp->status_info.status_id)
+        if (status_id != fp->status_id)
         {
-            f32 div = ftDonkeyThrowFWalkGetWalkAnimLength(fp, fp->status_info.status_id);
+            f32 div = ftDonkeyThrowFWalkGetWalkAnimLength(fp, fp->status_id);
             f32 mul = ftDonkeyThrowFWalkGetWalkAnimLength(fp, status_id);
 
             ftDonkeyThrowFWalkSetStatusParam(fighter_gobj, (s32) (mul * (fighter_gobj->anim_frame / div)));
@@ -64,7 +64,7 @@ void ftDonkeyThrowFWalkProcInterrupt(GObj *fighter_gobj)
 // 0x8014D68C
 void ftDonkeyThrowFWalkSetStatusParam(GObj *fighter_gobj, f32 frame_begin)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, ftCommonWalkGetWalkStatus(fp->input.pl.stick_range.x) + (nFTDonkeyStatusThrowFWalkSlow - nFTCommonStatusWalkSlow), frame_begin, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);

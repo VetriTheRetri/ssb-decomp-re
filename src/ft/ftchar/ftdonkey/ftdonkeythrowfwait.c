@@ -39,7 +39,7 @@ void ftDonkeyThrowFCommonProcMap(GObj *fighter_gobj)
 // 0x8014D49C
 void ftDonkeyThrowFWaitSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->ga == nMPKineticsAir)
     {

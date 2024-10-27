@@ -14,7 +14,7 @@ extern intptr_t lITHeartItemAttributes;     // 0x00000100
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITHeartItemDesc =
+ITCreateDesc dITHeartItemDesc =
 {
     nITKindHeart,                           // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -38,7 +38,7 @@ itCreateDesc dITHeartItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITHeartStatusDescs[/* */] =
+ITStatusDesc dITHeartStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -100,7 +100,7 @@ enum itHeartStatus
 // 0x801746F0
 sb32 itHeartFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITHEART_GRAVITY, ITHEART_TVEL);
     itVisualsUpdateSpin(item_gobj);
@@ -132,7 +132,7 @@ void itHeartWaitSetStatus(GObj *item_gobj)
 // 0x801747B4
 void itHeartFallSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
@@ -158,7 +158,7 @@ GObj* itHeartMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITHeartItemDesc, pos, vel, flags);
     DObj *dobj;
     Vec3f translate;
-    itStruct *ip;
+    ITStruct *ip;
 
     if (item_gobj != NULL)
     {
@@ -174,7 +174,7 @@ GObj* itHeartMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->is_unused_item_bool = TRUE;
 
-        ip->indicator_gobj = ifCommonItemArrowMakeInterface(ip);
+        ip->arrow_gobj = ifCommonItemArrowMakeInterface(ip);
     }
     return item_gobj;
 }

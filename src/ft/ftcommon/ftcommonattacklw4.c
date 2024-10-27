@@ -15,7 +15,7 @@ void ftCommonAttackLw4SetStatus(GObj *fighter_gobj)
 }
 
 // 0x80150798
-sb32 ftCommonAttackLw4CheckInputSuccess(ftStruct *fp)
+sb32 ftCommonAttackLw4CheckInputSuccess(FTStruct *fp)
 {
     if ((fp->input.pl.stick_range.y <= FTCOMMON_ATTACKLW4_STICK_RANGE_MIN) && (fp->input.pl.button_tap & fp->input.button_mask_a))
     {
@@ -25,9 +25,9 @@ sb32 ftCommonAttackLw4CheckInputSuccess(ftStruct *fp)
 }
 
 // 0x801507D0
-sb32 ftCommonAttackLw4CheckInterruptMain(ftStruct *fp)
+sb32 ftCommonAttackLw4CheckInterruptMain(FTStruct *fp)
 {
-    ftAttributes *attributes = fp->attributes;
+    FTAttributes *attributes = fp->attributes;
 
     if (ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE)
     {
@@ -47,7 +47,7 @@ sb32 ftCommonAttackLw4CheckInterruptMain(ftStruct *fp)
 // 0x80150838
 sb32 ftCommonAttackLw4CheckInterruptSquat(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((ftCommonAttackLw4CheckInputSuccess(fp) != FALSE) && (fp->status_vars.common.attack4.is_goto_attacklw4 != FALSE))
     {
@@ -59,7 +59,7 @@ sb32 ftCommonAttackLw4CheckInterruptSquat(GObj *fighter_gobj)
 // 0x80150884
 sb32 ftCommonAttackLw4CheckInterruptCommon(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((ftCommonAttackLw4CheckInputSuccess(fp) != FALSE) && (fp->tap_stick_y < FTCOMMON_ATTACKLW4_BUFFER_FRAMES_MAX))
     {

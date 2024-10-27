@@ -2,66 +2,89 @@
 #define _ITDEF_H_
 
 // Macros
+
+// Allocate this many item user_data structs at once
 #define ITEM_ALLOC_MAX 16
 
-#define ITEM_FLAG_COLLPROJECT (1 << 31) // Perform initial collision check when spawning item?
+// Perform initial collision check when spawning item?
+#define ITEM_FLAG_COLLPROJECT (1 << 31)
 
-#define ITEM_FLAG_PARENT_FIGHTER 0 // Item spawned by fighter
-#define ITEM_FLAG_PARENT_GROUND 1  // Item spawned by stage
-#define ITEM_FLAG_PARENT_WEAPON 2  // Item spawned by weapon
-#define ITEM_FLAG_PARENT_ITEM 3	  // Item spawned by another item
+// Item spawned by fighter
+#define ITEM_FLAG_PARENT_FIGHTER 0
+
+// Item spawned by stage
+#define ITEM_FLAG_PARENT_GROUND 1
+
+// Item spawned by weapon
+#define ITEM_FLAG_PARENT_WEAPON 2
+
+// Item spawned by another item
+#define ITEM_FLAG_PARENT_ITEM 3
+
 #define ITEM_FLAG_PARENT_DEFAULT 4
 
-#define ITEM_MASK_PARENT 0xF // Mask all GObj classes that can spawn items?
+// Mask all GObj classes that can spawn items?
+#define ITEM_MASK_PARENT 0xF
 
-#define ITEM_TEAM_DEFAULT 4 // Item is teamless; deals damage to any eligible target
+// Item is teamless; deals damage to any eligible target
+#define ITEM_TEAM_DEFAULT 4
 #define ITEM_PORT_DEFAULT GMCOMMON_PLAYERS_MAX
-#define ITEM_HANDICAP_DEFAULT 9 // Handicap?
+#define ITEM_HANDICAP_DEFAULT 9
 #define ITEM_STALE_DEFAULT 1.0F
 #define ITEM_THROW_DEFAULT 1.0F
 
-#define ITEM_PICKUP_WAIT_DEFAULT 1400 // "Lifetime" while item is not being carried
+// "Lifetime" while item is not being carried
+#define ITEM_PICKUP_WAIT_DEFAULT 1400
 
-#define ITEM_REFLECT_MAX_DEFAULT 100   // Maximum damage cap for reflected items
-#define ITEM_REFLECT_MUL_DEFAULT 1.8F  // Universal reflect damage multiplier
-#define ITEM_REFLECT_ADD_DEFAULT 0.99F // Added after multiplying item's hitbox damage
+// Maximum damage cap for reflected items
+#define ITEM_REFLECT_MAX_DEFAULT 100
 
-#define ITEM_DESPAWN_FLASH_BEGIN_DEFAULT                                                                               \
-	180U // Item starts flashing rapidly once its pickup duration drops below
-		 // this value
-#define ITEM_ARROW_FLASH_INT_DEFAULT                                                                                   \
-	45 // Red arrow pointing downward at article "blinks" at this frequency (45
-	   // frames visible, 45 frames invisible)
+// Universal reflect damage multiplier
+#define ITEM_REFLECT_MUL_DEFAULT 1.8F
+
+// Added after multiplying item's hitbox damage
+#define ITEM_REFLECT_ADD_DEFAULT 0.99F
+
+// Item starts flashing rapidly once its pickup duration drops below this value
+#define ITEM_DESPAWN_FLASH_BEGIN_DEFAULT 180U
+
+// Red arrow pointing downward at item "blinks" at this frequency (45 frames visible, 45 frames invisible)
+#define ITEM_ARROW_FLASH_INT_DEFAULT 45
 
 #define ITEM_REHIT_TIME_DEFAULT 16
-#define ITEM_HITBOX_NUM_MAX 2
+#define ITEM_HITCOLL_NUM_MAX 2
 
-#define ITEM_HOP_ANGLE_DEFAULT F_CST_DTOR32(135.0F) // 2.3561945F
+#define ITEM_HOP_ANGLE_DEFAULT F_CST_DTOR32(135.0F)
 
-#define ITEM_SPIN_SPEED_MUL_DEFAULT F_CST_DTOR32(18.0F)	   // 0.31415927F
-#define ITEM_SPIN_SPEED_MUL_NEW_SPAWN F_CLC_DTOR32(10.0F)  // 0.17453294F, F_CLC_DTOR32 angle might actually be incorrect
-#define ITEM_SPIN_SPEED_MUL_PREV_SPAWN F_CST_DTOR32(16.0F) // 0.27925268F
+#define ITEM_SPIN_SPEED_MUL_DEFAULT F_CST_DTOR32(18.0F)
+#define ITEM_SPIN_SPEED_MUL_NEW_SPAWN F_CLC_DTOR32(10.0F)
+#define ITEM_SPIN_SPEED_MUL_PREV_SPAWN F_CST_DTOR32(16.0F)
 
-#define ITEM_SPIN_SPEED_SET_SMASH_THROW F_CST_DTOR32(-21.0F)  // -0.36651915F
-#define ITEM_SPIN_SPEED_SET_NORMAL_THROW F_CLC_DTOR32(-10.0F) // -0.17453294F
+#define ITEM_SPIN_SPEED_SET_SMASH_THROW F_CST_DTOR32(-21.0F)
+#define ITEM_SPIN_SPEED_SET_NORMAL_THROW F_CLC_DTOR32(-10.0F)
 
-#define ITEM_SPIN_SPEED_FRACTION_DEFAULT 0.01F // Also multiplies spin speed
+// Also multiplies spin speed
+#define ITEM_SPIN_SPEED_FRACTION_DEFAULT 0.01F
 
 #define ITEM_TOGGLE_MASK_KIND(it_kind) (1 << (it_kind))
 
-#define ITEM_THROW_NUM_MAX                                                                                             \
-	4 /* Maximum number of times item can be thrown/dropped before it is                                               \
-	  guaranteed to despawn; default is 4 and caps at 7 due to being 3 bits                                            \
-	  wide */
+/* 
+ * Maximum number of times item can be thrown/dropped before it is guaranteed to despawn
+ * Default is 4 and caps at 7 due to being 3 bits wide
+ */
+#define ITEM_THROW_NUM_MAX 4
 
-#define ITEM_THROW_DESPAWN_RANDOM                                                                                      \
-	4 // Random chance for item to despawn when landing after being
-	  // thrown/dropped; guaranteed despawn after ITEM_THROW_NUM_MAX
+/*
+ * Random chance for item to despawn when landing after being thrown/dropped
+ * Guaranteed despawn beyond ITEM_THROW_NUM_MAX
+ */
+#define ITEM_THROW_DESPAWN_RANDOM 4
+
 #define ITEM_LANDING_DESPAWN_CHECK 1
 #define ITEM_LANDING_NUM_MAX 2
 
 // Enums
-typedef enum itKind
+typedef enum ITKind
 {
 	// Common items
 	nITKindCommonStart, // Start of common item IDs
@@ -140,40 +163,39 @@ typedef enum itKind
 
 	nITKindEnumMax 										// End of all item IDs
 
-} itKind;
+} ITKind;
 
-typedef enum itType
+typedef enum ITType
 {
-	nITTypeDamage,	 // Item has a hurtbox that can be damaged (?)
-	nITTypeSwing,	 // Item can be thrown and swung
-	nITTypeShoot,	 // Item can be fired
-	nITTypeThrow,	 // Item can only be thrown
-	nITTypeTouch,	 // Item has special properties on hitbox interaction
+	nITTypeDamage,	// Item has a hurtbox that can be damaged (?)
+	nITTypeSwing,	// Item can be thrown and swung
+	nITTypeShoot,	// Item can be fired
+	nITTypeThrow,	// Item can only be thrown
+	nITTypeTouch,	// Item has special properties on hitbox interaction
 	nITTypeConsume, // Hammer, Heart and Maxim Tomato?
-	nITTypeFighter	 // Item spawned by fighter's weapon?
+	nITTypeFighter	// Item spawned by fighter's weapon?
 
-} itType;
+} ITType;
 
-typedef enum itWeight
+typedef enum ITWeight
 {
-	nITWeightHeavy, // Crate and barrel
-	nITWeightLight	 // Everything else lol
+	nITWeightHeavy, 	// Crate and barrel
+	nITWeightLight	 	// Everything else lol
 
-} itWeight;
+} ITWeight;
 
 // Structs
-typedef struct itStruct itStruct; // Main item struct
-typedef struct itAttributes itAttributes;
-typedef struct itMonsterInfo itMonsterInfo; // Info specific to Pokémon
-typedef struct itFileData itFileData;
-typedef struct itCreateDesc itCreateDesc;
-typedef struct itStatusDesc itStatusDesc;
-typedef struct itSpawnActor itSpawnActor;
-typedef struct itRandomWeights itRandomWeights;
-typedef struct itHitPositions itHitPositions;
-typedef struct itHitbox itHitbox;
-typedef struct itHitEvent itHitEvent;
-typedef struct itHitParty itHitParty;
-typedef struct itHurtbox itHurtbox;
+typedef struct ITStruct 		ITStruct; 				// Main item struct
+typedef struct ITAttributes 	ITAttributes;
+typedef struct ITMonsterData 	ITMonsterData; 	// Info specific to summoning Pokémon
+typedef struct ITCreateDesc 	ITCreateDesc;
+typedef struct ITStatusDesc 	ITStatusDesc;
+typedef struct ITSpawnActor 	ITSpawnActor;
+typedef struct ITRandomWeights 	ITRandomWeights;
+typedef struct ITHitPositions 	ITHitPositions;
+typedef struct ITHitColl 	ITHitColl;
+typedef struct ITHitEvent 		ITHitEvent;
+typedef struct ITMonsterEvent 	ITMonsterEvent;
+typedef struct ITDamageColl 	ITDamageColl;
 
 #endif

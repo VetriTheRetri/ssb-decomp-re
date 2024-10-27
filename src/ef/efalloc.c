@@ -27,9 +27,9 @@ uintptr_t sEFAllocParticleScriptBanks[7];
 // 0x80115890
 void efAllocInitParticleBank(void)
 {
-    D_ovl2_80131A10 = lbParticleAllocStructs(0x70);
-    D_ovl2_80131A14 = lbParticleAllocGenerators(0x18);
-    lbParticleAllocTransforms(0x50, 0xC0);
+    D_ovl2_80131A10 = LBParticleAllocStructs(0x70);
+    D_ovl2_80131A14 = LBParticleAllocGenerators(0x18);
+    LBParticleAllocTransforms(0x50, 0xC0);
     sEFAllocParticleBanksNum = 0;
 }
 
@@ -109,7 +109,7 @@ s32 efAllocGetAddParticleBankID(uintptr_t scripts_lo, uintptr_t scripts_hi, uint
     syDmaReadRom(scripts_lo, script_desc, script_size);
     syDmaReadRom(textures_lo, texture_desc, texture_size);
 
-    lbParticleSetupBankID(sEFAllocParticleBanksNum++, script_desc, texture_desc);
+    LBParticleSetupBankID(sEFAllocParticleBanksNum++, script_desc, texture_desc);
 
     sEFAllocParticleScriptBanks[bank_id] = scripts_lo;
 

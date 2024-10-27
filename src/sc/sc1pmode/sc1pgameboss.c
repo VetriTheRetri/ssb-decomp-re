@@ -18,7 +18,7 @@ GObj *sSC1PGameBossWallpaperGObj;
 s32 sSC1PGamePad0x801938D4;
 
 // 0x801938D8
-sc1PGameBossMain sSC1PGameBossMain;
+SC1PGameBossMain sSC1PGameBossMain;
 
 // 0x801938F0
 f32 sSC1PGameBossWallpaperStepRGBA;
@@ -39,19 +39,19 @@ u8 dSC1PGameBossCometEnvColorG[/* */] = { 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x
 u8 dSC1PGameBossCometEnvColorB[/* */] = { 0x00, 0x00, 0xFF, 0x00, 0xFF, 0xFF, 0x78 };
 
 // 0x80192BD8
-sc1PGameBossEffect dSC1PGameBossEffects0[/* */] =
+SC1PGameBossEffect dSC1PGameBossEffects0[/* */] =
 {
     // Effect 0
     {
-        sc1PGameBossWallpaper0ProcUpdate,       // Proc Update
-        sc1PGameBossWallpaper0FuncDisplay,       // Proc Render
+        SC1PGameBossWallpaper0ProcUpdate,       // Proc Update
+        SC1PGameBossWallpaper0FuncDisplay,       // Proc Render
         &lSC1PGameBossEffects0DObjDesc,         // DObjDesc offset
         &lSC1PGameBossEffects0MObjSub           // MObjSub offset
     }
 };
 
 // 0x80192BE8
-sc1PGameBossAnim dSC1PGameBossAnims0[/* */] =
+SC1PGameBossAnim dSC1PGameBossAnims0[/* */] =
 {
     // Anim 0
     {
@@ -83,7 +83,7 @@ sc1PGameBossAnim dSC1PGameBossAnims0[/* */] =
 };
 
 // 0x80192C18
-sc1PGameBossPlan dSC1PGameBossPlans0[/* */] =
+SC1PGameBossPlan dSC1PGameBossPlans0[/* */] =
 {
     // Plan 0
     {
@@ -115,19 +115,19 @@ sc1PGameBossPlan dSC1PGameBossPlans0[/* */] =
 };
 
 // 0x80192C48
-sc1PGameBossEffect dSC1PGameBossEffects1[/* */] =
+SC1PGameBossEffect dSC1PGameBossEffects1[/* */] =
 {
     // Effect 0
     {
-        sc1PGameBossWallpaper1ProcUpdate,       // Proc Update
-        sc1PGameBossWallpaper1FuncDisplay,       // Proc Render
+        SC1PGameBossWallpaper1ProcUpdate,       // Proc Update
+        SC1PGameBossWallpaper1FuncDisplay,       // Proc Render
         &lSC1PGameBossEffects1DObjDesc,         // DObjDesc offset
         &lSC1PGameBossEffects1MObjSub           // MObjSub offset
     }
 };
 
 // 0x80192C58
-sc1PGameBossAnim dSC1PGameBossAnims1[/* */] =
+SC1PGameBossAnim dSC1PGameBossAnims1[/* */] =
 {
     // Anim 0
     {
@@ -138,7 +138,7 @@ sc1PGameBossAnim dSC1PGameBossAnims1[/* */] =
 };
 
 // 0x80192C64
-sc1PGameBossPlan dSC1PGameBossPlans1[/* */] =
+SC1PGameBossPlan dSC1PGameBossPlans1[/* */] =
 {
     // Plan 0
     {
@@ -156,27 +156,27 @@ sc1PGameBossPlan dSC1PGameBossPlans1[/* */] =
 };
 
 // 0x80192C7C
-sc1PGameBossEffect dSC1PGameBossEffects2[/* */] =
+SC1PGameBossEffect dSC1PGameBossEffects2[/* */] =
 {
     // Effect 0
     {
-        sc1PGameBossWallpaper2ProcUpdate0,      // Proc Update
-        sc1PGameBossWallpaper2FuncDisplay,       // Proc Render
+        SC1PGameBossWallpaper2ProcUpdate0,      // Proc Update
+        SC1PGameBossWallpaper2FuncDisplay,       // Proc Render
         &lSC1PGameBossEffects2DObjDesc0,        // DObjDesc offset
         &lSC1PGameBossEffects2MObjSub0          // MObjSub offset
     },
 
     // Effect 1
     {
-        sc1PGameBossWallpaper2ProcUpdate1,      // Proc Update
-        sc1PGameBossWallpaper3FuncDisplay0,       // Proc Render
+        SC1PGameBossWallpaper2ProcUpdate1,      // Proc Update
+        SC1PGameBossWallpaper3FuncDisplay0,       // Proc Render
         &lSC1PGameBossEffects2DObjDesc1,        // DObjDesc offset
         &lSC1PGameBossEffects2MObjSub1          // MObjSub offset
     }
 };
 
 // 0x80192C9C
-sc1PGameBossAnim dSC1PGameBossAnims2[/* */] =
+SC1PGameBossAnim dSC1PGameBossAnims2[/* */] =
 {
     // Anim 0
     {
@@ -194,7 +194,7 @@ sc1PGameBossAnim dSC1PGameBossAnims2[/* */] =
 };
 
 // 0x801292CB4
-sc1PGameBossPlan dSC1PGameBossPlans2[/* */] =
+SC1PGameBossPlan dSC1PGameBossPlans2[/* */] =
 {
     // Plan 0
     {
@@ -226,27 +226,27 @@ sc1PGameBossPlan dSC1PGameBossPlans2[/* */] =
 };
 
 // 0x80192CE4
-sc1PGameBossEffect dSC1PGameBossEffects3[/* */] =
+SC1PGameBossEffect dSC1PGameBossEffects3[/* */] =
 {
     // Effect 0
     {
-        sc1PGameBossWallpaper3ProcUpdate0,      // Proc Update
-        sc1PGameBossWallpaper3FuncDisplay0,      // Proc Render
+        SC1PGameBossWallpaper3ProcUpdate0,      // Proc Update
+        SC1PGameBossWallpaper3FuncDisplay0,      // Proc Render
         &lSC1PGameBossEffects3DObjDesc0,        // DObjDesc offset
         &lSC1PGameBossEffects3MObjSub0          // MObjSub offset
     },
 
     // Effect 1
     {
-        sc1PGameBossWallpaper3ProcUpdate1,      // Proc Update
-        sc1PGameBossWallpaper2FuncDisplay,       // Proc Render
+        SC1PGameBossWallpaper3ProcUpdate1,      // Proc Update
+        SC1PGameBossWallpaper2FuncDisplay,       // Proc Render
         &lSC1PGameBossEffects3DObjDesc1,        // DObjDesc offset
         0x0                                     // MObjSub offset
     }
 };
 
 // 0x80192D04
-sc1PGameBossAnim dSC1PGameBossAnims3[/* */] =
+SC1PGameBossAnim dSC1PGameBossAnims3[/* */] =
 {
     // Anim 0
     {
@@ -264,7 +264,7 @@ sc1PGameBossAnim dSC1PGameBossAnims3[/* */] =
 };
 
 // 0x80192D1C
-sc1PGameBossPlan dSC1PGameBossPlans3[/* */] =
+SC1PGameBossPlan dSC1PGameBossPlans3[/* */] =
 {
     // Plan 0
     {
@@ -296,7 +296,7 @@ sc1PGameBossPlan dSC1PGameBossPlans3[/* */] =
 };
 
 // 0x80192D4C
-sc1PGameBossWallpaper dSC1PGameBossWallpapers[/* */] =
+SC1PGameBossWallpaper dSC1PGameBossWallpapers[/* */] =
 {
     // Space background?
     {
@@ -457,7 +457,7 @@ void sc1PGameBossMakeCamera(void)
 }
 
 // 0x80191364
-void sc1PGameBossWallpaper0FuncDisplay(GObj *gobj)
+void SC1PGameBossWallpaper0FuncDisplay(GObj *gobj)
 {
     s32 color_id = DObjGetStruct(gobj)->child->user_data.s;
     s32 alpha = gobj->user_data.s;
@@ -474,7 +474,7 @@ void sc1PGameBossWallpaper0FuncDisplay(GObj *gobj)
 }
 
 // 0x80191498
-void sc1PGameBossWallpaper1FuncDisplay(GObj *gobj)
+void SC1PGameBossWallpaper1FuncDisplay(GObj *gobj)
 {
     s32 alpha = gobj->user_data.s;
     DObj *dobj = DObjGetStruct(gobj);
@@ -499,7 +499,7 @@ void sc1PGameBossWallpaper1FuncDisplay(GObj *gobj)
 }
 
 // 0x801915B8
-void sc1PGameBossWallpaper2FuncDisplay(GObj *gobj)
+void SC1PGameBossWallpaper2FuncDisplay(GObj *gobj)
 {
     s32 alpha = gobj->user_data.s;
     DObj *dobj = DObjGetStruct(gobj);
@@ -523,7 +523,7 @@ void sc1PGameBossWallpaper2FuncDisplay(GObj *gobj)
 }
 
 // 0x801916A8
-void sc1PGameBossWallpaper3FuncDisplay0(GObj *gobj)
+void SC1PGameBossWallpaper3FuncDisplay0(GObj *gobj)
 {
     s32 alpha = gobj->user_data.s;
     DObj *dobj = DObjGetStruct(gobj);
@@ -613,7 +613,7 @@ void sc1PGameBossUpdateWallpaperColorID(void)
 }
 
 // 0x80191AEC
-void sc1PGameBossWallpaper3ProcUpdate0(GObj *gobj)
+void SC1PGameBossWallpaper3ProcUpdate0(GObj *gobj)
 {
     DObj *dobj = DObjGetStruct(gobj);
 
@@ -677,9 +677,9 @@ void func_ovl65_80191B44(GObj *gobj)
 }
 
 // 0x80191D60
-void sc1PGameBossWallpaper0ProcUpdate(GObj *gobj)
+void SC1PGameBossWallpaper0ProcUpdate(GObj *gobj)
 {
-    sc1PGameBossWallpaper3ProcUpdate0(gobj);
+    SC1PGameBossWallpaper3ProcUpdate0(gobj);
 
     if (gobj->anim_frame <= 0.0F)
     {
@@ -688,7 +688,7 @@ void sc1PGameBossWallpaper0ProcUpdate(GObj *gobj)
 }
 
 // 0x80191DA4
-void sc1PGameBossWallpaper1ProcUpdate(GObj *gobj)
+void SC1PGameBossWallpaper1ProcUpdate(GObj *gobj)
 {
     DObj *dobj = DObjGetStruct(gobj);
 
@@ -702,11 +702,11 @@ void sc1PGameBossWallpaper1ProcUpdate(GObj *gobj)
     {
         dobj->translate.vec.f.y += (-18.8F);
     }
-    sc1PGameBossWallpaper3ProcUpdate0(gobj);
+    SC1PGameBossWallpaper3ProcUpdate0(gobj);
 }
 
 // 0x80191E28
-void sc1PGameBossWallpaper2ProcUpdate0(GObj *gobj)
+void SC1PGameBossWallpaper2ProcUpdate0(GObj *gobj)
 {
     DObj *dobj = DObjGetStruct(gobj);
 
@@ -726,23 +726,23 @@ void sc1PGameBossWallpaper2ProcUpdate0(GObj *gobj)
         dobj->scale.vec.f.y += 0.004;
         dobj->scale.vec.f.z += 0.004;
     }
-    sc1PGameBossWallpaper3ProcUpdate0(gobj);
+    SC1PGameBossWallpaper3ProcUpdate0(gobj);
 }
 
 // 0x80191F28
-void sc1PGameBossWallpaper2ProcUpdate1(GObj *gobj)
+void SC1PGameBossWallpaper2ProcUpdate1(GObj *gobj)
 {
     if (gBattleState->players[sSC1PGameBossMain.bossplayer].stock_damage_all > 270)
     {
         gobj->flags = GOBJ_FLAG_NONE;
 
-        sc1PGameBossWallpaper3ProcUpdate0(gobj);
+        SC1PGameBossWallpaper3ProcUpdate0(gobj);
     }
     else gobj->flags = GOBJ_FLAG_HIDDEN;
 }
 
 // 0x80191F90
-void sc1PGameBossWallpaper3ProcUpdate1(GObj *gobj)
+void SC1PGameBossWallpaper3ProcUpdate1(GObj *gobj)
 {
     DObj *dobj = DObjGetStruct(gobj)->child;
 
@@ -774,7 +774,7 @@ void sc1PGameBossWallpaper3ProcUpdate1(GObj *gobj)
             }
         }
     }
-    else sc1PGameBossWallpaper3ProcUpdate0(gobj);
+    else SC1PGameBossWallpaper3ProcUpdate0(gobj);
 }
 
 // 0x80192078
@@ -961,7 +961,7 @@ void sc1PGameBossAdvanceWallpaper(void)
 }
 
 // 0x80192620
-void sc1PGameBossWallpaperProcUpdate(GObj *gobj)
+void SC1PGameBossWallpaperProcUpdate(GObj *gobj)
 {
     if (sSC1PGameBossMain.is_skip_wallpaper_change == FALSE)
     {
@@ -1009,7 +1009,7 @@ void sc1PGameBossInitWallpaper(void)
 
     if (gobj != NULL)
     {
-        gcAddGObjProcess(gobj, sc1PGameBossWallpaperProcUpdate, nGCProcessKindProc, 3);
+        gcAddGObjProcess(gobj, SC1PGameBossWallpaperProcUpdate, nGCProcessKindProc, 3);
 
         sc1PGameBossMakeCamera();
         sc1PGameBossSetBossPlayer();

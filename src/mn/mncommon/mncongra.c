@@ -17,7 +17,7 @@ extern void* func_800269C0_275C0(u16);
 s32 sMNCongraPad0x801322B0[2];
 
 // 0x801322B8
-lbFileNode sMNCongraStatusBuffer[5];
+LBFileNode sMNCongraStatusBuffer[5];
 
 // 0x801322E0
 s32 sMNCongraFighterKind;
@@ -257,7 +257,7 @@ void mnCongraActorFuncRun(GObj *gobj)
 // 0x80131CA4
 void mnCongraFuncStart(void)
 {
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 	CObj *cobj;
 	GObj *gobj;
 	SObj *sobj;

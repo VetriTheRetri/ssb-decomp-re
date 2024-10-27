@@ -79,7 +79,7 @@ void (*dFTCommonSpecialNStatusList[/* */])(GObj*) =
 // 0x80151060
 void ftKirbySpecialNSetStatusSelect(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     dFTKirbySpecialNStatusList[fp->fighter_vars.kirby.copy_id](fighter_gobj);
 }
@@ -87,8 +87,8 @@ void ftKirbySpecialNSetStatusSelect(GObj *fighter_gobj)
 // 0x80151098
 sb32 ftCommonSpecialNCheckInterruptCommon(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     if ((fp->input.pl.button_tap & fp->input.button_mask_b) && (attributes->is_have_specialn))
     {

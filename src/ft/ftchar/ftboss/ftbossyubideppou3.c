@@ -9,7 +9,7 @@
 // 0x8015A3C0
 void ftBossYubideppou3ProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((fp->fighter_vars.boss.p->wait_div == 1.5F) && (fighter_gobj->anim_frame >= 20.0F) && (fp->status_vars.boss.yubideppou.bullet_count != 3))
     {
@@ -24,7 +24,7 @@ void ftBossYubideppou3ProcUpdate(GObj *fighter_gobj)
 // 0x8015A45C
 void ftBossYubideppou3ProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
 
     if (fp->status_vars.boss.yubideppou.shoot_timer != 0)
@@ -53,7 +53,7 @@ void ftBossYubideppou3ProcPhysics(GObj *fighter_gobj)
 // 0x8015A538
 void ftBossYubideppou3SetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp;
+    FTStruct *fp;
     Vec3f pos;
 
     ftMainSetFighterStatus(fighter_gobj, nFTBossStatusYubideppou3, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);

@@ -16,7 +16,7 @@ extern intptr_t lITMarumineHitEvents;       // 0x0000014C
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITMarumineItemDesc = 
+ITCreateDesc dITMarumineItemDesc = 
 {
     nITKindMarumine,                        // Item Kind
     &gGRCommonStruct.yamabuki.item_head,    // Pointer to item file data?
@@ -40,7 +40,7 @@ itCreateDesc dITMarumineItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITMarumineStatusDescs[/* */] = 
+ITStatusDesc dITMarumineStatusDescs[/* */] = 
 {
     // Status 0 (Neutral Explosion)
     {
@@ -77,11 +77,11 @@ enum itMarumineStatus
 void itMarumineExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 {
     s32 unused;
-    lbParticle *ptcl;
-    itStruct *ip = itGetStruct(item_gobj);
+    LBParticle *ptcl;
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    ip->item_hurt.hitstatus = nGMHitStatusNone;
+    ip->damage_coll.hitstatus = nGMHitStatusNone;
 
     ptcl = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 
@@ -95,7 +95,7 @@ void itMarumineExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_HIDDEN;
 
-    ip->item_hit.hit_sfx = nSYAudioFGMExplodeL;
+    ip->hit_coll.hit_sfx = nSYAudioFGMExplodeL;
 
     itMainRefreshHit(item_gobj);
     itMarumineExplodeSetStatus(item_gobj);
@@ -104,21 +104,21 @@ void itMarumineExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 // 0x80183830
 void itMarumineExplodeUpdateHitEvent(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
-    itHitEvent *ev = itGetHitEvent(dITMarumineItemDesc, lITMarumineHitEvents); // (itHitEvent*) ((uintptr_t)*dITMarumineItemDesc.p_file + (intptr_t)&lITMarumineHitEvents); // Linker thing
+    ITStruct *ip = itGetStruct(item_gobj);
+    ITHitEvent *ev = itGetHitEvent(dITMarumineItemDesc, lITMarumineHitEvents); // (ITHitEvent*) ((uintptr_t)*dITMarumineItemDesc.p_file + (intptr_t)&lITMarumineHitEvents); // Linker thing
 
     if (ip->it_multi == ev[ip->item_event_id].timer)
     {
-        ip->item_hit.angle  = ev[ip->item_event_id].angle;
-        ip->item_hit.damage = ev[ip->item_event_id].damage;
-        ip->item_hit.size   = ev[ip->item_event_id].size;
+        ip->hit_coll.angle  = ev[ip->item_event_id].angle;
+        ip->hit_coll.damage = ev[ip->item_event_id].damage;
+        ip->hit_coll.size   = ev[ip->item_event_id].size;
 
-        ip->item_hit.can_reflect = FALSE;
-        ip->item_hit.can_shield = FALSE;
+        ip->hit_coll.can_reflect = FALSE;
+        ip->hit_coll.can_shield = FALSE;
 
-        ip->item_hit.element = nGMHitElementFire;
+        ip->hit_coll.element = nGMHitElementFire;
 
-        ip->item_hit.can_setoff = FALSE;
+        ip->hit_coll.can_setoff = FALSE;
 
         ip->item_event_id++;
 
@@ -132,7 +132,7 @@ void itMarumineExplodeUpdateHitEvent(GObj *item_gobj)
 // 0x80183914
 sb32 itMarumineCommonProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     dobj->translate.vec.f.x += ip->item_vars.marumine.offset.x;
@@ -155,7 +155,7 @@ sb32 itMarumineCommonProcUpdate(GObj *item_gobj)
 // 0x801839A8
 sb32 itMarumineExplodeProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     dobj->translate.vec.f.x += ip->item_vars.marumine.offset.x;
@@ -177,11 +177,11 @@ sb32 itMarumineExplodeProcUpdate(GObj *item_gobj)
 // 0x80183A20
 void itMarumineExplodeSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi = 0;
 
-    ip->item_hit.throw_mul = 1.0F;
+    ip->hit_coll.throw_mul = 1.0F;
 
     ip->item_event_id = 0;
 
@@ -196,7 +196,7 @@ GObj* itMarumineMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
     if (item_gobj != NULL)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
         DObj *dobj = DObjGetStruct(item_gobj);
 
         ip->item_vars.marumine.offset = *pos;

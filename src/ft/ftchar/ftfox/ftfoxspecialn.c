@@ -10,7 +10,7 @@
 // 0x8015BB50
 void ftFoxSpecialNProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
 
     if (fp->command_vars.flags.flag0 != 0)
@@ -33,7 +33,7 @@ void ftFoxSpecialNProcUpdate(GObj *fighter_gobj)
 // 0x8015BBD8
 void ftFoxSpecialNProcInterrupt(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((fp->command_vars.flags.flag1 != 0) && (fp->input.pl.button_tap & fp->input.button_mask_b))
     {
@@ -50,9 +50,9 @@ void ftFoxSpecialNProcInterrupt(GObj *fighter_gobj)
 }
 
 // 0x8015BC68
-void ftFoxSpecialNInitStatusVars(GObj *fighter_gobj)
+void ftFoxSpecialNInITStatusVars(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->command_vars.flags.flag0 = 0;
     fp->command_vars.flags.flag1 = 0;
@@ -63,7 +63,7 @@ void ftFoxSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftFoxSpecialNInitStatusVars(fighter_gobj);
+    ftFoxSpecialNInITStatusVars(fighter_gobj);
 }
 
 // 0x8015BCB8
@@ -71,5 +71,5 @@ void ftFoxSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftFoxSpecialNInitStatusVars(fighter_gobj);
+    ftFoxSpecialNInITStatusVars(fighter_gobj);
 }

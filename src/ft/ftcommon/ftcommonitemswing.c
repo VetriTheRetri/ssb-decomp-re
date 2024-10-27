@@ -12,11 +12,11 @@ extern alSoundEffect* func_800269C0_275C0(u16);
 // 0x80146C40
 void ftCommonHarisenSwingProcHit(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->item_hold != NULL)
     {
-        itStruct *ip = itGetStruct(fp->item_hold);
+        ITStruct *ip = itGetStruct(fp->item_hold);
 
         if (ip->it_kind == nITKindHarisen)
         {
@@ -30,7 +30,7 @@ void ftCommonHarisenSwingProcHit(GObj *fighter_gobj)
 // 0x80146C98
 void ftCommonHarisenSwingProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->item_hold != NULL)
     {
@@ -50,8 +50,8 @@ void ftCommonHarisenSwingProcUpdate(GObj *fighter_gobj)
 // 0x80146CF4
 void ftCommonStarRodSwingProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    itStruct *ip;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    ITStruct *ip;
     f32 scale_mul;
     s32 unused;
 
@@ -113,8 +113,8 @@ s32 dFTCommonItemSwingStatusIDs[/* */][nFTItemSwingTypeEnumMax] =
 // 0x80146E94
 void ftCommonItemSwingSetStatus(GObj *fighter_gobj, s32 swing_type)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    itStruct *ip = itGetStruct(fp->item_hold);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    ITStruct *ip = itGetStruct(fp->item_hold);
     s32 swing_item;
     s32 status_id;
     f32 anim_speed;

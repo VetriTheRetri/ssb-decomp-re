@@ -26,7 +26,7 @@ lITLizardonMatAnimJoint;                    // 0x0000D688
 // // // // // // // // // // // //
 
 // 0x8018AD30
-itCreateDesc dITLizardonItemDesc = 
+ITCreateDesc dITLizardonItemDesc = 
 {
     nITKindLizardon,                        // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -51,7 +51,7 @@ itCreateDesc dITLizardonItemDesc =
 };
 
 // 0x8018AD64
-itStatusDesc dITLizardonStatusDescs[/* */] = 
+ITStatusDesc dITLizardonStatusDescs[/* */] = 
 {
     // Status 0 (Unused Fall)
     {
@@ -91,7 +91,7 @@ itStatusDesc dITLizardonStatusDescs[/* */] =
 };
 
 // 0x8018ADC4
-wpCreateDesc dITLizardonWeaponFlameWeaponDesc = 
+WPCreateDesc dITLizardonWeaponFlameWeaponDesc = 
 {
     0x00,                                   // Render flags?
     nWPKindLizardonFlame,                   // Weapon Kind
@@ -138,7 +138,7 @@ enum itLizardonStatus
 // 0x8017F470
 sb32 itLizardonFallUnusedProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITLIZARDON_GRAVITY, ITLIZARDON_TVEL);
 
@@ -148,13 +148,13 @@ sb32 itLizardonFallUnusedProcUpdate(GObj *item_gobj)
 // 0x8017F49C
 sb32 itLizardonFallUnusedProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMapCheckLanding(item_gobj, ITLIZARDON_MAP_REBOUND_COMMON, ITLIZARDON_MAP_REBOUND_GROUND, itLizardonAttackSetStatus);
 
     if (ip->coll_data.coll_mask_current & MPCOLL_FLAG_GROUND)
     {
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
     }
     return FALSE;
 }
@@ -162,7 +162,7 @@ sb32 itLizardonFallUnusedProcMap(GObj *item_gobj)
 // 0x8017F49C
 sb32 itLizardonFallUnusedSetStatus(GObj *item_gobj) // Unused
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
@@ -173,7 +173,7 @@ sb32 itLizardonFallUnusedSetStatus(GObj *item_gobj) // Unused
 // 0x8017F53C
 sb32 itLizardonFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITLIZARDON_GRAVITY, ITLIZARDON_TVEL);
 
@@ -183,13 +183,13 @@ sb32 itLizardonFallProcUpdate(GObj *item_gobj)
 // 0x8017F568
 sb32 itLizardonFallProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMapTestAllCheckCollEnd(item_gobj);
 
     if (ip->coll_data.coll_mask_current & MPCOLL_FLAG_GROUND)
     {
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
 
         itLizardonAttackSetStatus(item_gobj);
         itLizardonAttackInitItemVars(item_gobj);
@@ -206,7 +206,7 @@ void itLizardonFallSetStatus(GObj *item_gobj)
 // 0x8017F5EC
 sb32 itLizardonAttackProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
     Vec3f pos = dobj->translate.vec.f;
 
@@ -238,9 +238,9 @@ sb32 itLizardonAttackProcUpdate(GObj *item_gobj)
 
         pos = dobj->translate.vec.f;
 
-        pos.y += ip->attributes->objcoll_bottom;
+        pos.y += ip->attributes->object_coll_bottom;
 
-        pos.x += (ip->attributes->objcoll_width + ITLIZARDON_DUST_GFX_OFF_X) * -ip->lr;
+        pos.x += (ip->attributes->object_coll_width + ITLIZARDON_DUST_GFX_OFF_X) * -ip->lr;
 
         efManagerDustHeavyMakeEffect(&pos, -ip->lr);
 
@@ -267,7 +267,7 @@ sb32 itLizardonAttackProcMap(GObj *item_gobj)
 // 0x8017F810
 void itLizardonAttackInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
     s32 unused[2];
     void *addr;
@@ -302,13 +302,13 @@ void itLizardonAttackSetStatus(GObj *item_gobj)
 // 0x8017F90C
 sb32 itLizardonCommonProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {
         ip->it_multi = ITLIZARDON_LIFETIME;
 
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
 
         if (ip->it_kind == nITKindLizardon)
         {
@@ -324,11 +324,11 @@ sb32 itLizardonCommonProcUpdate(GObj *item_gobj)
 // 0x8017F98C
 sb32 itLizardonCommonProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_GROUND) != FALSE)
     {
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
     }
     return FALSE;
 }
@@ -338,7 +338,7 @@ GObj* itLizardonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
     GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITLizardonItemDesc, pos, vel, flags);
     DObj *dobj;
-    itStruct *ip;
+    ITStruct *ip;
 
     if (item_gobj != NULL)
     {
@@ -353,10 +353,10 @@ GObj* itLizardonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
-        ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
+        ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
+        ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        dobj->translate.vec.f.y -= ip->attributes->objcoll_bottom;
+        dobj->translate.vec.f.y -= ip->attributes->object_coll_bottom;
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITLizardonDataStart), 0.0F);
     }
@@ -366,7 +366,7 @@ GObj* itLizardonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 // 0x8017FACC
 sb32 itLizardonWeaponFlameProcUpdate(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
@@ -399,8 +399,8 @@ sb32 itLizardonWeaponFlameProcHit(GObj *weapon_gobj)
 // 0x8017FB74
 sb32 itLizardonWeaponFlameProcReflector(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    ftStruct *fp = ftGetStruct(wp->owner_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    FTStruct *fp = ftGetStruct(wp->owner_gobj);
     Vec3f *translate;
 
     wp->lifetime = ITLIZARDON_FLAME_LIFETIME;
@@ -409,8 +409,8 @@ sb32 itLizardonWeaponFlameProcReflector(GObj *weapon_gobj)
 
     translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
 
-    lbParticleMakePosVel(gITManagerParticleBankID | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
-    lbParticleMakePosVel(gITManagerParticleBankID | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    LBParticleMakePosVel(gITManagerParticleBankID | 8, 2, translate->x, translate->y, 0.0F, wp->physics.vel_air.x, wp->physics.vel_air.y, 0.0F);
+    LBParticleMakePosVel(gITManagerParticleBankID | 8, 0, translate->x, translate->y, 0.0F, wp->physics.vel_air.x, wp->physics.vel_air.y, 0.0F);
 
     return FALSE;
 }
@@ -419,7 +419,7 @@ sb32 itLizardonWeaponFlameProcReflector(GObj *weapon_gobj)
 GObj* itLizardonWeaponFlameMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 {
     GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITLizardonWeaponFlameWeaponDesc, pos, WEAPON_FLAG_PARENT_ITEM);
-    wpStruct *ip;
+    WPStruct *ip;
 
     if (weapon_gobj == NULL)
     {
@@ -427,12 +427,12 @@ GObj* itLizardonWeaponFlameMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
     }
     ip = wpGetStruct(weapon_gobj);
 
-    ip->phys_info.vel_air = *vel;
+    ip->physics.vel_air = *vel;
 
     ip->lifetime = ITLIZARDON_FLAME_LIFETIME;
 
-    lbParticleMakePosVel(gITManagerParticleBankID | 8, 2, pos->x, pos->y, 0.0F, ip->phys_info.vel_air.x, ip->phys_info.vel_air.y, 0.0F); // This needs to return something in v0 to match
-    lbParticleMakePosVel(gITManagerParticleBankID | 8, 0, pos->x, pos->y, 0.0F, ip->phys_info.vel_air.x, ip->phys_info.vel_air.y, 0.0F);
+    LBParticleMakePosVel(gITManagerParticleBankID | 8, 2, pos->x, pos->y, 0.0F, ip->physics.vel_air.x, ip->physics.vel_air.y, 0.0F); // This needs to return something in v0 to match
+    LBParticleMakePosVel(gITManagerParticleBankID | 8, 0, pos->x, pos->y, 0.0F, ip->physics.vel_air.x, ip->physics.vel_air.y, 0.0F);
 
     return weapon_gobj;
 }
@@ -440,7 +440,7 @@ GObj* itLizardonWeaponFlameMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 // 0x8017FD2C
 void itLizardonAttackMakeFlame(GObj *item_gobj, Vec3f *pos, s32 lr)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     Vec3f vel;
 
     vel.x = __cosf(ITLIZARDON_FLAME_SPAWN_ANGLE) * ITLIZARDON_FLAME_VEL_XY * lr;

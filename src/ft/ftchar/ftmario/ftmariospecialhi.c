@@ -18,7 +18,7 @@ void ftMarioSpecialHiProcUpdate(GObj *fighter_gobj)
 // 0x801560F4
 void ftMarioSpecialHiProcInterrupt(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     f32 rot_z;
     f32 stick_rot;
     f32 joint_rot;
@@ -65,8 +65,8 @@ void ftMarioSpecialHiProcInterrupt(GObj *fighter_gobj)
 // 0x80156240
 void ftMarioSpecialHiProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     if (fp->status_vars.mario.specialhi.is_air_bool == FALSE)
     {
@@ -80,9 +80,9 @@ void ftMarioSpecialHiProcPhysics(GObj *fighter_gobj)
     {
         ftPhysicsApplyAirVelTransNAll(fighter_gobj);
 
-        fp->phys_info.vel_air.x *= 0.95F;
-        fp->phys_info.vel_air.y *= 0.95F;
-        fp->phys_info.vel_air.z *= 0.95F;
+        fp->physics.vel_air.x *= 0.95F;
+        fp->physics.vel_air.y *= 0.95F;
+        fp->physics.vel_air.z *= 0.95F;
     }
     else
     {
@@ -98,7 +98,7 @@ void ftMarioSpecialHiProcPhysics(GObj *fighter_gobj)
 // 0x80156320
 sb32 ftMarioSpecialHiProcPass(GObj *fighter_gobj) // TRUE = no platform pass?
 {
-    ftStruct* fp = ftGetStruct(fighter_gobj);
+    FTStruct* fp = ftGetStruct(fighter_gobj);
 
     if (!(fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS) || (fp->input.pl.stick_range.y >= FTMARIO_SUPERJUMP_STICK_Y_UNK))
     {
@@ -110,11 +110,11 @@ sb32 ftMarioSpecialHiProcPass(GObj *fighter_gobj) // TRUE = no platform pass?
 // 0x80156358
 void ftMarioSpecialHiProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->ga == nMPKineticsAir)
     {
-        if ((fp->command_vars.flags.flag1 == 0) || ((fp->phys_info.vel_air.y >= 0.0F)))
+        if ((fp->command_vars.flags.flag1 == 0) || ((fp->physics.vel_air.y >= 0.0F)))
         {
             mpCommonCheckFighterProject(fighter_gobj);
         }
@@ -131,9 +131,9 @@ void ftMarioSpecialHiProcMap(GObj *fighter_gobj)
 }
 
 // 0x80156418
-void ftMarioSpecialHiInitStatusVars(GObj *fighter_gobj)
+void ftMarioSpecialHiInITStatusVars(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->command_vars.flags.flag1 = fp->command_vars.flags.flag2 = 0;
 }
@@ -141,9 +141,9 @@ void ftMarioSpecialHiInitStatusVars(GObj *fighter_gobj)
 // 0x80156428
 void ftMarioSpecialHiSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMarioSpecialHiInitStatusVars(fighter_gobj);
+    ftMarioSpecialHiInITStatusVars(fighter_gobj);
 
     fp->status_vars.mario.specialhi.is_air_bool = FALSE;
 
@@ -154,14 +154,14 @@ void ftMarioSpecialHiSetStatus(GObj *fighter_gobj)
 // 0x80156478
 void ftMarioSpecialAirHiSetStatus(GObj* fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMarioSpecialHiInitStatusVars(fighter_gobj);
+    ftMarioSpecialHiInITStatusVars(fighter_gobj);
 
     fp->status_vars.mario.specialhi.is_air_bool = TRUE;
 
-    fp->phys_info.vel_air.y = 0.0F;
-    fp->phys_info.vel_air.x /= 1.5F;
+    fp->physics.vel_air.y = 0.0F;
+    fp->physics.vel_air.x /= 1.5F;
 
     ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);

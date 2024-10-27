@@ -20,7 +20,7 @@ extern intptr_t lITDogasAnimJoint;          // 0x000128DC
 // // // // // // // // // // // //
 
 // 0x8018B2C0
-itCreateDesc dITDogasItemDesc =
+ITCreateDesc dITDogasItemDesc =
 {
     nITKindDogas,                           // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -45,7 +45,7 @@ itCreateDesc dITDogasItemDesc =
 };
 
 // 0x80182BF4
-itStatusDesc dITDogasStatusDescs[/* */] =
+ITStatusDesc dITDogasStatusDescs[/* */] =
 {
     // Status 0 (Neutral Active)
     {
@@ -73,7 +73,7 @@ itStatusDesc dITDogasStatusDescs[/* */] =
 };
 
 // 0x8018B334
-wpCreateDesc dITDogasWeaponSmogWeaponDesc = 
+WPCreateDesc dITDogasWeaponSmogWeaponDesc = 
 {
     0x03,                                   // Render flags?
     nWPKindDogasSmog,                       // Weapon Kind
@@ -119,7 +119,7 @@ enum itDogasStatus
 // 0x80182C80
 sb32 itDogasDisappearProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {
@@ -133,7 +133,7 @@ sb32 itDogasDisappearProcUpdate(GObj *item_gobj)
 // 0x80182CA8
 void itDogasDisappearSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi = ITDOGAS_DESPAWN_WAIT;
 
@@ -143,7 +143,7 @@ void itDogasDisappearSetStatus(GObj *item_gobj)
 // 0x80182CDC
 void itDogasAttackUpdateSmog(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
     Vec3f pos;
     Vec3f vel;
@@ -179,7 +179,7 @@ void itDogasAttackUpdateSmog(GObj *item_gobj)
 // 0x80182E1C
 sb32 itDogasAttackProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itDogasAttackUpdateSmog(item_gobj);
 
@@ -197,7 +197,7 @@ sb32 itDogasAttackProcUpdate(GObj *item_gobj)
 // 0x80182E78
 void itDogasAttackInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     ip->it_multi = ITDOGAS_SMOG_SPAWN_COUNT;
@@ -225,11 +225,11 @@ void itDogasAttackSetStatus(GObj *item_gobj)
 // 0x80182F40
 sb32 itDogasCommonProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {   
-        ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.x = ip->physics.vel_air.y = 0.0F;
 
         itDogasAttackSetStatus(item_gobj);
     }
@@ -241,11 +241,11 @@ sb32 itDogasCommonProcUpdate(GObj *item_gobj)
 // 0x80182F94
 sb32 itDogasCommonProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_GROUND) != FALSE)
     {
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
     }
     return FALSE;
 }
@@ -255,7 +255,7 @@ GObj* itDogasMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
     GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITDogasItemDesc, pos, vel, flags);
     DObj *dobj;
-    itStruct *ip;
+    ITStruct *ip;
 
     if (item_gobj != NULL)
     {
@@ -268,13 +268,13 @@ GObj* itDogasMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip = itGetStruct(item_gobj);
 
-        dobj->translate.vec.f.y -= ip->attributes->objcoll_bottom;
+        dobj->translate.vec.f.y -= ip->attributes->object_coll_bottom;
 
         ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ip->phys_info.vel_air.x = 0.0F;
-        ip->phys_info.vel_air.z = 0.0F;
-        ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
+        ip->physics.vel_air.x = 0.0F;
+        ip->physics.vel_air.z = 0.0F;
+        ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
         gcAddDObjAnimJoint(dobj->child, itGetMonsterAnimNode(ip, lITDogasDataStart), 0.0F); // Linker thing
     }
@@ -284,10 +284,10 @@ GObj* itDogasMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 // 0x801830DC
 sb32 itDogasWeaponSmogProcUpdate(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
     DObj *dobj = DObjGetStruct(weapon_gobj)->child;
 
-    wp->weapon_hit.size = dobj->scale.vec.f.x * wp->weapon_vars.smog.attributes->size;
+    wp->hit_coll.size = dobj->scale.vec.f.x * wp->weapon_vars.smog.attributes->size;
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
@@ -299,10 +299,10 @@ sb32 itDogasWeaponSmogProcUpdate(GObj *weapon_gobj)
 // 0x80183144
 GObj* itDogasWeaponSmogMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 {
-    wpCreateDesc *weapon_desc = &dITDogasWeaponSmogWeaponDesc;
+    WPCreateDesc *weapon_desc = &dITDogasWeaponSmogWeaponDesc;
     GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITDogasWeaponSmogWeaponDesc, pos, WEAPON_FLAG_PARENT_ITEM);
     DObj *dobj;
-    wpStruct *wp;
+    WPStruct *wp;
 
     if (weapon_gobj == NULL)
     {
@@ -312,11 +312,11 @@ GObj* itDogasWeaponSmogMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 
     wp->lifetime = ITDOGAS_SMOG_LIFETIME;
 
-    wp->weapon_vars.smog.attributes = (wpAttributes*) ((uintptr_t)*weapon_desc->p_weapon + (intptr_t)weapon_desc->o_attributes); // Dude I had a stroke trying to match this
+    wp->weapon_vars.smog.attributes = (WPAttributes*) ((uintptr_t)*weapon_desc->p_weapon + (intptr_t)weapon_desc->o_attributes); // Dude I had a stroke trying to match this
 
     dobj = DObjGetStruct(weapon_gobj);
 
-    wp->phys_info.vel_air = *vel;
+    wp->physics.vel_air = *vel;
 
     gcAddXObjForDObjFixed(dobj->child, 0x2C, 0);
 

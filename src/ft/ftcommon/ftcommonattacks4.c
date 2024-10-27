@@ -10,7 +10,7 @@
 // 0x8014FE40
 void ftCommonAttackS4ProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f offset;
 
     switch (fp->ft_kind)
@@ -69,7 +69,7 @@ void ftCommonAttackS4ProcUpdate(GObj *fighter_gobj)
 // 0x8014FFE0
 void ftCommonAttackS4SetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     f32 stick_angle;
     s32 status_id;
 
@@ -121,7 +121,7 @@ void ftCommonAttackS4SetStatus(GObj *fighter_gobj)
 
     case nFTKindNess:
     case nFTKindNNess:
-        fp->special_hit = (ftSpecialHit*) ((uintptr_t)gFTNessFileMainMotion + (intptr_t)&lFTNessAttackS4Reflector); // Linker thing
+        fp->special_coll = (FTSpecialColl*) ((uintptr_t)gFTNessFileMainMotion + (intptr_t)&lFTNessAttackS4Reflector); // Linker thing
         break;
     }
 }
@@ -129,8 +129,8 @@ void ftCommonAttackS4SetStatus(GObj *fighter_gobj)
 // 0x801501E0
 sb32 ftCommonAttackS4CheckInterruptDash(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     if (((fp->input.pl.stick_range.x * fp->lr) >= FTCOMMON_ATTACKS4_STICK_RANGE_MIN) && (fp->input.pl.button_tap & fp->input.button_mask_a))
     {
@@ -138,7 +138,7 @@ sb32 ftCommonAttackS4CheckInterruptDash(GObj *fighter_gobj)
 
         if (item_gobj != NULL)
         {
-            itStruct *ip = itGetStruct(item_gobj);
+            ITStruct *ip = itGetStruct(item_gobj);
 
             if ((fp->input.pl.button_hold & fp->input.button_mask_z) || ((ip->type == nITTypeThrow) || (ip->type == nITTypeShoot) && (itMainCheckShootNoAmmo(item_gobj) != FALSE)))
             {
@@ -170,8 +170,8 @@ sb32 ftCommonAttackS4CheckInterruptDash(GObj *fighter_gobj)
 // 0x8015030C
 sb32 ftCommonAttackS4CheckInterruptTurn(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     if (((fp->input.pl.stick_range.x * fp->status_vars.common.attack4.lr) >= FTCOMMON_ATTACKS4_STICK_RANGE_MIN) && (fp->input.pl.button_tap & fp->input.button_mask_a))
     {
@@ -179,7 +179,7 @@ sb32 ftCommonAttackS4CheckInterruptTurn(GObj *fighter_gobj)
 
         if (item_gobj != NULL)
         {
-            itStruct *ip = itGetStruct(item_gobj);
+            ITStruct *ip = itGetStruct(item_gobj);
 
             if ((fp->input.pl.button_hold & fp->input.button_mask_z) || ((ip->type == nITTypeThrow) || (ip->type == nITTypeShoot) && (itMainCheckShootNoAmmo(item_gobj) != FALSE)))
             {
@@ -214,8 +214,8 @@ sb32 ftCommonAttackS4CheckInterruptTurn(GObj *fighter_gobj)
 // 0x80150470
 sb32 ftCommonAttackS4CheckInterruptCommon(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_ATTACKS4_STICK_RANGE_MIN) && (fp->tap_stick_x < FTCOMMON_ATTACKS4_BUFFER_FRAMES_MAX) && (fp->input.pl.button_tap & fp->input.button_mask_a))
     {
@@ -223,7 +223,7 @@ sb32 ftCommonAttackS4CheckInterruptCommon(GObj *fighter_gobj)
 
         if (item_gobj != NULL)
         {
-            itStruct *ip = itGetStruct(item_gobj);
+            ITStruct *ip = itGetStruct(item_gobj);
 
             if ((fp->input.pl.button_hold & fp->input.button_mask_z) || ((ip->type == nITTypeThrow) || (ip->type == nITTypeShoot) && (itMainCheckShootNoAmmo(item_gobj) != FALSE)))
             {

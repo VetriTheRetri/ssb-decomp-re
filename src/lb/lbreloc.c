@@ -12,18 +12,18 @@
 // // // // // // // // // // // //
 
 // 0x800D62E0
-lbInternBuffer sLBRelocInternBuffer;
+LBInternBuffer sLBRelocInternBuffer;
 
 // this buffer and pointers are used to DMA table entry info from the rom
 // as needed for reading in file data
 // 0x800D6310
-lbTableEntry sLBRelocTableEntries[nLBFileLocationEnumMax];
+LBTableEntry sLBRelocTableEntries[nLBFileLocationEnumMax];
 
 // 0x800D6334
-lbTableEntry *sLBRelocCurrentTableEntry;
+LBTableEntry *sLBRelocCurrentTableEntry;
 
 // 0x800D6338
-lbTableEntry *sLBRelocNextTableEntry;
+LBTableEntry *sLBRelocNextTableEntry;
 
 // external data pointers and buffers
 // loaded files in an external heap
@@ -130,16 +130,16 @@ void lbRelocReadDmaTableEntry(u32 entry_id)
 {
     syDmaReadRom
     (
-        (u32)sLBRelocInternBuffer.rom_table_lo + (entry_id * sizeof(lbTableEntry)),
+        (u32)sLBRelocInternBuffer.rom_table_lo + (entry_id * sizeof(LBTableEntry)),
         sLBRelocCurrentTableEntry,
-        sizeof(lbTableEntry) * 2
+        sizeof(LBTableEntry) * 2
     );
 }
 
 void lbRelocLoadAndRelocFile(u32 file_id, void *ram_dst, u32 bytes_num, s32 loc)
 {
     u16 *file_id_extern;
-    lbRelocDesc *intern_desc, *extern_desc;
+    LBRelocDesc *intern_desc, *extern_desc;
     void *vaddr_extern;
     u16 reloc_intern, reloc_extern;
     u8 file_ids[16];
@@ -147,7 +147,7 @@ void lbRelocLoadAndRelocFile(u32 file_id, void *ram_dst, u32 bytes_num, s32 loc)
 
     data_rom_offset = sLBRelocInternBuffer.rom_table_hi + sLBRelocCurrentTableEntry->data_offset;
 
-    if (sLBRelocCurrentTableEntry->is_vpk0)
+    if (sLBRelocCurrentTableEntry->is_compressed)
         syDmaReadVpk0(data_rom_offset, ram_dst);
     else
         syDmaReadRom(data_rom_offset, ram_dst, bytes_num);
@@ -161,7 +161,7 @@ void lbRelocLoadAndRelocFile(u32 file_id, void *ram_dst, u32 bytes_num, s32 loc)
     
     while (reloc_intern != 0xFFFF)
     {
-        intern_desc = (lbRelocDesc*) ((uintptr_t)ram_dst + (reloc_intern * sizeof(u32)));
+        intern_desc = (LBRelocDesc*) ((uintptr_t)ram_dst + (reloc_intern * sizeof(u32)));
         reloc_intern = intern_desc->info.reloc;
         intern_desc->p = (void*) ((intern_desc->info.words_num * sizeof(u32)) + (uintptr_t)ram_dst);
     }
@@ -173,7 +173,7 @@ void lbRelocLoadAndRelocFile(u32 file_id, void *ram_dst, u32 bytes_num, s32 loc)
     
     while (reloc_extern != 0xFFFF)
     {
-        extern_desc = (lbRelocDesc*) ((uintptr_t)ram_dst + (reloc_extern * sizeof(u32)));
+        extern_desc = (LBRelocDesc*) ((uintptr_t)ram_dst + (reloc_extern * sizeof(u32)));
         reloc_extern = extern_desc->info.reloc;
 
         syDmaReadRom(data_rom_offset, file_id_extern, sizeof(u16));
@@ -430,11 +430,11 @@ size_t lbRelocGetAllocSize(u32 *ids, u32 len)
     return allocated;
 }
 
-void lbRelocInitSetup(lbRelocSetup *setup)
+void lbRelocInitSetup(LBRelocSetup *setup)
 {
     sLBRelocInternBuffer.rom_table_lo = setup->table_addr;
     sLBRelocInternBuffer.total_files_num = setup->table_files_num;
-    sLBRelocInternBuffer.rom_table_hi = setup->table_addr + ((setup->table_files_num + 1) * sizeof(lbTableEntry));
+    sLBRelocInternBuffer.rom_table_hi = setup->table_addr + ((setup->table_files_num + 1) * sizeof(LBTableEntry));
 
     sLBRelocInternBuffer.heap_start = sLBRelocInternBuffer.heap_ptr = setup->file_heap;
     sLBRelocInternBuffer.heap_end = (void*) ((uintptr_t)setup->file_heap + setup->file_heap_size);

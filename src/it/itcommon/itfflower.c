@@ -19,7 +19,7 @@ extern intptr_t lITFFlowerFlameAngles;      // 0x00000360
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITFFlowerItemDesc = 
+ITCreateDesc dITFFlowerItemDesc = 
 {
     nITKindFFlower,                         // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -43,7 +43,7 @@ itCreateDesc dITFFlowerItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITFFlowerStatusDescs[/* */] =
+ITStatusDesc dITFFlowerStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -106,7 +106,7 @@ itStatusDesc dITFFlowerStatusDescs[/* */] =
     }
 };
 
-wpCreateDesc dITFFlowerWeaponFlameWeaponDesc =
+WPCreateDesc dITFFlowerWeaponFlameWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindFFlowerFlame,                    // Weapon Kind
@@ -155,7 +155,7 @@ enum itFFlowerStatus
 // 0x80175B20
 sb32 itFFlowerFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITFFLOWER_GRAVITY, ITFFLOWER_TVEL);
     itVisualsUpdateSpin(item_gobj);
@@ -187,7 +187,7 @@ void itFFlowerWaitSetStatus(GObj *item_gobj)
 // 0x80175BE4
 void itFFlowerFallSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
@@ -204,7 +204,7 @@ void itFFlowerHoldSetStatus(GObj *item_gobj)
 // 0x80175C50
 sb32 itFFlowerThrownProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {
@@ -216,9 +216,9 @@ sb32 itFFlowerThrownProcMap(GObj *item_gobj)
 // 0x80175C9C
 sb32 itFFlowerCommonProcHit(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hit.update_state = nGMHitUpdateDisable;
+    ip->hit_coll.update_state = nGMHitUpdateDisable;
 
     itMainVelSetRebound(item_gobj);
 
@@ -234,7 +234,7 @@ void itFFlowerThrownSetStatus(GObj *item_gobj)
 // 0x80175CEC
 sb32 itFFlowerDroppedProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {
@@ -256,13 +256,13 @@ GObj* itFFlowerMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
     if (item_gobj != NULL)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         ip->it_multi = ITFFLOWER_AMMO_MAX;
 
         ip->is_unused_item_bool = TRUE;
 
-        ip->indicator_gobj = ifCommonItemArrowMakeInterface(ip);
+        ip->arrow_gobj = ifCommonItemArrowMakeInterface(ip);
     }
     return item_gobj;
 }
@@ -270,7 +270,7 @@ GObj* itFFlowerMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 // 0x80175DDC
 sb32 itFFlowerWeaponFlameProcUpdate(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
@@ -303,8 +303,8 @@ sb32 itFFlowerWeaponFlameProcHit(GObj *weapon_gobj)
 // 0x80175E84
 sb32 itFFlowerWeaponFlameProcReflector(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    ftStruct *fp = ftGetStruct(wp->owner_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    FTStruct *fp = ftGetStruct(wp->owner_gobj);
     Vec3f *translate;
 
     wp->lifetime = ITFFLOWER_AMMO_LIFETIME;
@@ -313,8 +313,8 @@ sb32 itFFlowerWeaponFlameProcReflector(GObj *weapon_gobj)
 
     translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
 
-    lbParticleMakePosVel(gITManagerParticleBankID | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
-    lbParticleMakePosVel(gITManagerParticleBankID | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    LBParticleMakePosVel(gITManagerParticleBankID | 8, 2, translate->x, translate->y, 0.0F, wp->physics.vel_air.x, wp->physics.vel_air.y, 0.0F);
+    LBParticleMakePosVel(gITManagerParticleBankID | 8, 0, translate->x, translate->y, 0.0F, wp->physics.vel_air.x, wp->physics.vel_air.y, 0.0F);
 
     return FALSE;
 }
@@ -323,7 +323,7 @@ sb32 itFFlowerWeaponFlameProcReflector(GObj *weapon_gobj)
 GObj* itFFlowerWeaponFlameMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 {
     GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dITFFlowerWeaponFlameWeaponDesc, pos, (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_FIGHTER));
-    wpStruct *wp;
+    WPStruct *wp;
 
     if (weapon_gobj == NULL)
     {
@@ -331,14 +331,14 @@ GObj* itFFlowerWeaponFlameMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
     }
     wp = wpGetStruct(weapon_gobj);
 
-    wp->phys_info.vel_air.x = vel->x * wp->lr;
-    wp->phys_info.vel_air.y = vel->y;
-    wp->phys_info.vel_air.z = vel->z;
+    wp->physics.vel_air.x = vel->x * wp->lr;
+    wp->physics.vel_air.y = vel->y;
+    wp->physics.vel_air.z = vel->z;
 
     wp->lifetime = ITFFLOWER_AMMO_LIFETIME;
 
-    lbParticleMakePosVel(gITManagerParticleBankID | 8, 2, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
-    lbParticleMakePosVel(gITManagerParticleBankID | 8, 0, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    LBParticleMakePosVel(gITManagerParticleBankID | 8, 2, pos->x, pos->y, 0.0F, wp->physics.vel_air.x, wp->physics.vel_air.y, 0.0F);
+    LBParticleMakePosVel(gITManagerParticleBankID | 8, 0, pos->x, pos->y, 0.0F, wp->physics.vel_air.x, wp->physics.vel_air.y, 0.0F);
 
     return weapon_gobj;
 }
@@ -346,7 +346,7 @@ GObj* itFFlowerWeaponFlameMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 // 0x8017604C
 void itFFlowerShootFlame(GObj *fighter_gobj, Vec3f *pos, s32 index, s32 ammo_sub)
 {
-    itStruct *ip = itGetStruct(ftGetStruct(fighter_gobj)->item_hold);
+    ITStruct *ip = itGetStruct(ftGetStruct(fighter_gobj)->item_hold);
     Vec3f vel;
     f32 *angle = (f32*) ((uintptr_t)*dITFFlowerItemDesc.p_file + (intptr_t)&lITFFlowerFlameAngles); // Linker thing
 

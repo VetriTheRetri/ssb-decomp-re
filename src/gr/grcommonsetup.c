@@ -11,7 +11,7 @@
 void *sGRCommonFileNodes[4];
 
 // 0x801313F0
-grStruct gGRCommonStruct;
+GRStruct gGRCommonStruct;
 
 // // // // // // // // // // // //
 //                               //

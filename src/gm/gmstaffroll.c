@@ -41,7 +41,7 @@ f32 sGMStaffrollRollSpeed;
 s32 sGMStaffrollStatus;
 
 // 0x8013A8C4
-gmStaffrollName *sGMStaffrollNameAllocFree;
+GMStaffrollName *sGMStaffrollNameAllocFree;
 
 // 0x8013A8C8
 GObj *sGMStaffrollScrollGObj;
@@ -95,7 +95,7 @@ u8 sGMStaffrollPlayer;
 s32 sGMStaffrollRollEndWait;
 
 // 0x8013A910
-lbFileNode sGMStaffrollStatusBuffer[32];
+LBFileNode sGMStaffrollStatusBuffer[32];
 
 // 0x8013AA10
 void *sGMStaffrollFiles[1];
@@ -116,7 +116,7 @@ s32 dGMStaffrollNameCharacters[/* */] =
 };
 
 // 0x801364F4
-gmStaffrollText dGMStaffrollNameTextInfo[/* */] =
+GMStaffrollText dGMStaffrollNameTextInfo[/* */] =
 {
 	#include "credits/staff.credits.metadata"
 };
@@ -128,7 +128,7 @@ s32 dGMStaffrollUnused0x80136794[/* */] =
 };
 
 // 0x8013679C
-gmStaffrollJob dGMStaffrollJobDescriptions[/* */] =
+GMStaffrollJob dGMStaffrollJobDescriptions[/* */] =
 {
 	// Director
 	{ 
@@ -250,7 +250,7 @@ s32 dGMStaffrollJobCharacters[/* */] =
 };
 
 // 0x80136B10
-gmStaffrollText dGMStaffrollJobTextInfo[/* */] =
+GMStaffrollText dGMStaffrollJobTextInfo[/* */] =
 {
 	#include "credits/titles.credits.metadata"
 };
@@ -262,7 +262,7 @@ s32 dGMStaffrollStaffRoleCharacters[/* */] =
 };
 
 // 0x80139B68
-gmStaffrollText dGMStaffrollStaffRoleTextInfo[/* */] =
+GMStaffrollText dGMStaffrollStaffRoleTextInfo[/* */] =
 {
 	#include "credits/info.credits.metadata"
 };
@@ -274,7 +274,7 @@ s32 dGMStaffrollCompanyCharacters[/* */] =
 };
 
 // 0x80139FD4
-gmStaffrollText dGMStaffrollCompanyTextInfo[/* */] =
+GMStaffrollText dGMStaffrollCompanyTextInfo[/* */] =
 {
 	#include "credits/companies.credits.metadata"
 };
@@ -375,7 +375,7 @@ s32 dGMStaffrollCompanyIDs[/* */] =
 u32 dGMStaffrollFileIDs[/* */] = { &D_NF_000000C3 };
 
 // 0x8013A188
-gmStaffrollSprite dGMStaffrollNameAndJobSpriteInfo[/* */] =
+GMStaffrollSprite dGMStaffrollNameAndJobSpriteInfo[/* */] =
 {
 	{ 20, 22, &lGMStaffrollNameAndJobAUpperSprite },
 	{ 15, 22, &lGMStaffrollNameAndJobBUpperSprite },
@@ -436,7 +436,7 @@ gmStaffrollSprite dGMStaffrollNameAndJobSpriteInfo[/* */] =
 };
 
 // 0x8013A348
-gmStaffrollSprite dGMStaffrollTextBoxSpriteInfo[/* */] =
+GMStaffrollSprite dGMStaffrollTextBoxSpriteInfo[/* */] =
 {
 	{ 12, 14, &lGMStaffrollTextBoxAUpperSprite },
 	{ 12, 14, &lGMStaffrollTextBoxBUpperSprite },
@@ -620,9 +620,9 @@ void func_ovl59_80131D30(DObj *dobj, Vec3f *vec, f32 *width, f32 *height)
 }
 
 // 0x80131DD0
-void func_ovl59_80131DD0(GObj *gobj, gmStaffrollProjection *proj)
+void func_ovl59_80131DD0(GObj *gobj, GMStaffrollProjection *proj)
 {
-	gmStaffrollMatrix *credits = gobj->user_data.p;
+	GMStaffrollMatrix *credits = gobj->user_data.p;
 
 	proj->pv0.z = proj->pv1.z = proj->pv2.z = proj->pv3.z = 0.0F;
 	proj->pv0.y = proj->pv2.y = 28.0F;
@@ -661,7 +661,7 @@ sb32 gmStaffrollCheckCursorNameOverlap(Vec3f *vec)
 void func_ovl59_80131F34(GObj *arg0)
 {
 	GObj *ugobj = arg0->user_data.p;
-	gmStaffrollMatrix *credits = ugobj->user_data.p;
+	GMStaffrollMatrix *credits = ugobj->user_data.p;
 
 	if ((credits->unk_gmcreditsmtx_0x14 + sGMStaffrollRollSpeed) >= 1.0F)
 	{
@@ -984,7 +984,7 @@ void gmStaffrollMakeStaffRoleTextSObjs(GObj *text_gobj, GObj *staff_gobj)
 	s32 character_count;
 	f32 wbase;
 	f32 hbase;
-	gmStaffrollName *staff = staff_gobj->user_data.p;
+	GMStaffrollName *staff = staff_gobj->user_data.p;
 
 	wbase = 350.0F;
 	hbase = 40.0F;
@@ -1102,7 +1102,7 @@ void gmStaffrollMakeCompanyTextSObjs(GObj *text_gobj, GObj *staff_gobj)
 	f32 wbase;
 	s32 character_id;
 	s32 character_count;
-	gmStaffrollName *staff = staff_gobj->user_data.p;
+	GMStaffrollName *staff = staff_gobj->user_data.p;
 	s32 i;
 
 	if (dGMStaffrollCompanyIDs[staff->name_id] != -1)
@@ -1199,7 +1199,7 @@ void gmStaffrollMakeCompanyTextGObj(GObj *staff_gobj)
 }
 
 // 0x80133200
-sb32 gmStaffrollCheckCursorHighlightPrompt(GObj *gobj, gmStaffrollProjection *proj)
+sb32 gmStaffrollCheckCursorHighlightPrompt(GObj *gobj, GMStaffrollProjection *proj)
 {
 	sb32 b;
 	s32 unused;
@@ -1240,7 +1240,7 @@ void func_ovl59_8013330C(void)
 {
 	GObj *gobj;
 	DObj *dobj;
-	gmStaffrollProjection proj;
+	GMStaffrollProjection proj;
 	sb32 b;
 
 	func_ovl59_80131C88(sGMStaffrollCamera);
@@ -1353,13 +1353,13 @@ void gmStaffrollFuncRun(GObj *gobj)
 }
 
 // 0x80133618
-gmStaffrollName* gmStaffrollNameUpdateAlloc(GObj *gobj)
+GMStaffrollName* GMStaffrollNameUpdateAlloc(GObj *gobj)
 {
-	gmStaffrollName *cn;
+	GMStaffrollName *cn;
 
 	if (sGMStaffrollNameAllocFree == NULL)
 	{
-		cn = syTaskmanMalloc(sizeof(gmStaffrollName), 0x4);
+		cn = syTaskmanMalloc(sizeof(GMStaffrollName), 0x4);
 	}
 	else
 	{
@@ -1374,16 +1374,16 @@ gmStaffrollName* gmStaffrollNameUpdateAlloc(GObj *gobj)
 }
 
 // 0x80133684
-void gmStaffrollNameSetPrevAlloc(gmStaffrollName *cn)
+void GMStaffrollNameSetPrevAlloc(GMStaffrollName *cn)
 {
 	cn->next = sGMStaffrollNameAllocFree;
 	sGMStaffrollNameAllocFree = cn;
 }
 
 // 0x8013369C
-void gmStaffrollJobAndNameThreadUpdate(GObj *gobj)
+void GMStaffrollJobAndNameThreadUpdate(GObj *gobj)
 {
-	gmStaffrollName *cn;
+	GMStaffrollName *cn;
 	Vec3f pos;
 	DObj *dobj;
 	s32 unused[3];
@@ -1424,13 +1424,13 @@ void gmStaffrollJobAndNameThreadUpdate(GObj *gobj)
 	{
 		sGMStaffrollStatus = -1;
 	}
-	gmStaffrollNameSetPrevAlloc(cn);
+	GMStaffrollNameSetPrevAlloc(cn);
 	gcEjectGObj(NULL);
 	gcStopCurrentGObjThread(1);
 }
 
 // 0x80133854
-void gmStaffrollJobFuncDisplay(GObj *gobj)
+void GMStaffrollJobFuncDisplay(GObj *gobj)
 {
 	if (gobj == gGCCommonLinks[nGCCommonLinkIDCreditsJob])
 	{
@@ -1444,7 +1444,7 @@ void gmStaffrollJobFuncDisplay(GObj *gobj)
 }
 
 // 0x80133930
-void gmStaffrollNameFuncDisplay(GObj *gobj)
+void GMStaffrollNameFuncDisplay(GObj *gobj)
 {
 	if (gobj == gGCCommonLinks[nGCCommonLinkIDCreditsName])
 	{
@@ -1458,9 +1458,9 @@ void gmStaffrollNameFuncDisplay(GObj *gobj)
 }
 
 // 0x80133A0C
-void gmStaffrollJobAndNameInitStruct(GObj *gobj, DObj *first_dobj, DObj *second_dobj, sb32 job_or_name)
+void GMStaffrollJobAndNameInITStruct(GObj *gobj, DObj *first_dobj, DObj *second_dobj, sb32 job_or_name)
 {
-	gmStaffrollName *cn = gmStaffrollNameUpdateAlloc(gobj);
+	GMStaffrollName *cn = GMStaffrollNameUpdateAlloc(gobj);
 
 	cn->offset_x = (first_dobj->translate.vec.f.x - second_dobj->translate.vec.f.x) * 0.5F;
 
@@ -1471,9 +1471,9 @@ void gmStaffrollJobAndNameInitStruct(GObj *gobj, DObj *first_dobj, DObj *second_
 }
 
 // 0x80133A78
-gmStaffrollSetup* gmStaffrollMakeJobDObjs(gmStaffrollSetup *name_setup, DObj *dobj, s32 name_id, f32 wbase)
+GMStaffrollSetup* gmStaffrollMakeJobDObjs(GMStaffrollSetup *name_setup, DObj *dobj, s32 name_id, f32 wbase)
 {
-	gmStaffrollSetup local_setup;
+	GMStaffrollSetup local_setup;
 	DObj *new_dobj;
 	f32 width;
 	f32 height;
@@ -1612,9 +1612,9 @@ gmStaffrollSetup* gmStaffrollMakeJobDObjs(gmStaffrollSetup *name_setup, DObj *do
 }
 
 // 0x80133E68
-GObj* gmStaffrollMakeJobGObj(gmStaffrollJob *job)
+GObj* gmStaffrollMakeJobGObj(GMStaffrollJob *job)
 {
-	gmStaffrollSetup job_setup;
+	GMStaffrollSetup job_setup;
 	s32 unused;
 	GObj *gobj;
 	DObj *dobj;
@@ -1624,7 +1624,7 @@ GObj* gmStaffrollMakeJobGObj(gmStaffrollJob *job)
 
 	gobj = gcMakeGObjSPAfter(1, NULL, nGCCommonLinkIDCreditsJob, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(gobj, gmStaffrollJobFuncDisplay, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, GMStaffrollJobFuncDisplay, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	dobj = gcAddDObjForGObj(gobj, NULL);
 
@@ -1636,8 +1636,8 @@ GObj* gmStaffrollMakeJobGObj(gmStaffrollJob *job)
 		wbase = 16.0F + job_setup.spacing;
 	}
 	gmStaffrollMakeJobDObjs(&job_setup, dobj, job->job_id, wbase);
-	gmStaffrollJobAndNameInitStruct(gobj, dobj, job_setup.dobj, 0);
-	gcAddGObjProcess(gobj, gmStaffrollJobAndNameThreadUpdate, nGCProcessKindThread, 1);
+	GMStaffrollJobAndNameInITStruct(gobj, dobj, job_setup.dobj, 0);
+	gcAddGObjProcess(gobj, GMStaffrollJobAndNameThreadUpdate, nGCProcessKindThread, 1);
 
 	return gobj;
 }
@@ -1661,7 +1661,7 @@ GObj* gmStaffrollMakeNameGObjAndDObjs(void)
 
 	gobj = gcMakeGObjSPAfter(1, NULL, nGCCommonLinkIDCreditsName, GOBJ_LINKORDER_DEFAULT);
 
-	gcAddGObjDisplay(gobj, gmStaffrollNameFuncDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, GMStaffrollNameFuncDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	new_dobj = dobj = gcAddDObjForGObj(gobj, NULL);
 
@@ -1792,8 +1792,8 @@ GObj* gmStaffrollMakeNameGObjAndDObjs(void)
 		}
 
 	}
-	gmStaffrollJobAndNameInitStruct(gobj, dobj, new_dobj, 1);
-	gcAddGObjProcess(gobj, gmStaffrollJobAndNameThreadUpdate, 0, 1);
+	GMStaffrollJobAndNameInITStruct(gobj, dobj, new_dobj, 1);
+	gcAddGObjProcess(gobj, GMStaffrollJobAndNameThreadUpdate, 0, 1);
 
 	return gobj;
 }
@@ -1909,8 +1909,8 @@ void gmStaffrollMakeTextBoxGObj(void)
 void gmStaffrollScrollThreadUpdate(GObj *gobj)
 {
 	GObj *name_gobj;
-	gmStaffrollJob *job;
-	gmStaffrollName *name;
+	GMStaffrollJob *job;
+	GMStaffrollName *name;
 	sb32 is_queued_name;    // Whether next block of rolling text is job or name
 	f32 interpolation;
 
@@ -1966,9 +1966,9 @@ void gmStaffrollMakeScrollGObj(void)
 }
 
 // 0x801349DC
-void gmStaffrollSetupFiles(void)
+void GMStaffrollSetupFiles(void)
 {
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
@@ -2122,7 +2122,7 @@ void gmStaffrollFuncStart(void)
 	gcMakeGObjSPAfter(0, gmStaffrollFuncRun, 1, GOBJ_LINKORDER_DEFAULT);
 	gcMakeDefaultCameraGObj(12, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
-	gmStaffrollSetupFiles();
+	GMStaffrollSetupFiles();
 	gmStaffrollInitNameAndJobDisplayLists();
 	gmStaffrollTryHideUnlocks();
 	gmStaffrollInitVars();

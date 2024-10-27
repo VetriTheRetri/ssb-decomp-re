@@ -154,7 +154,7 @@ s32 gMnBattleMaxFramesElapsed;
 u8 D_ovl26_8013BDD4[0x2d0];
 
 // 0x8013C0A8
-lbFileNode D_ovl26_8013C0A8;
+LBFileNode D_ovl26_8013C0A8;
 
 // 0x8013C0B0
 u8 D_ovl26_8013C0B0[0x30];
@@ -371,12 +371,12 @@ void func_ovl26_80132110() {}
 // 0x80132118
 s32 mnBattleGetFtKind(s32 portrait_id)
 {
-	s32 ftKind_order[12] = {
+	s32 FTKind_order[12] = {
 
 		0x00000004, 0x00000000, 0x00000002, 0x00000005, 0x00000003, 0x00000007,
 		0x0000000B, 0x00000006, 0x00000008, 0x00000001, 0x00000009, 0x0000000A
 	};
-	return ftKind_order[portrait_id];
+	return FTKind_order[portrait_id];
 }
 
 // 0x80132168
@@ -1315,7 +1315,7 @@ s32 mnBattleGetSelectedAnimation(s32 ft_kind)
 // 0x8013494C
 void mnBattleRotateFighter(GObj* fighter_gobj)
 {
-	ftStruct* fp = ftGetStruct(fighter_gobj);
+	FTStruct* fp = ftGetStruct(fighter_gobj);
 	s32 port_id = fp->player;
 	mnCharPanelBattle* panel_info = &gMnBattlePanels[port_id];
 
@@ -1353,7 +1353,7 @@ void mnBattleRotateFighter(GObj* fighter_gobj)
 void mnBattleSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 costume_id)
 {
 	f32 initial_y_rotation;
-	ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	if (ft_kind != nFTKindNull)
 	{
@@ -4213,7 +4213,7 @@ void mnBattleInitPanels()
 void mnBattleInitCSS()
 {
 	s32 bar, baz;
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 	f32 foo;
 	s32 i;
 	s32 j;
@@ -4222,9 +4222,9 @@ void mnBattleInitCSS()
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buffer = (lbFileNode*)&D_ovl26_8013C0E0;
+	rl_setup.status_buffer = (LBFileNode*)&D_ovl26_8013C0E0;
 	rl_setup.status_buffer_size = 0x78;
-	rl_setup.force_status_buffer = (lbFileNode*)&D_ovl26_8013C0A8;
+	rl_setup.force_status_buffer = (LBFileNode*)&D_ovl26_8013C0A8;
 	rl_setup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl26_8013B3A0, 7U, gMnBattleFiles,

@@ -11,7 +11,7 @@ extern syRdpSetViewport(void*, f32, f32, f32, f32);
 // // // // // // // // // // // //
 
 // 0x800D5D60
-lbTransitionDesc dLBTransitionDescs[/* */] =
+LBTransitionDesc dLBTransitionDescs[/* */] =
 {
     // Paper Plane
     {
@@ -172,7 +172,7 @@ void lbTransitionProcUpdate(GObj *gobj)
 // 0x800D430C
 GObj* lbTransitionMakeTransition(s32 transition_id, u32 id, s32 link, void (*func_display)(GObj*), u8 dl_link_id, void (*proc_common)(GObj*))
 {
-    lbTransitionDesc *transition_desc = &dLBTransitionDescs[transition_id];
+    LBTransitionDesc *transition_desc = &dLBTransitionDescs[transition_id];
     GObj *gobj;
 
     lbRelocGetFileExternHeap(transition_desc->file_id, sLBTransitionFileHeap);

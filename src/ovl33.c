@@ -1003,7 +1003,7 @@ s32 gMNCharsFramesElapsed;
 u32 D_ovl33_80136720[200];
 
 // 0x80136A40
-lbFileNode D_ovl33_80136A40;
+LBFileNode D_ovl33_80136A40;
 
 // 0x80136A48
 u32 D_ovl33_80136A48[12];
@@ -1479,7 +1479,7 @@ void mnCharsUpdateFighter(GObj* fighter_gobj)
 {
 	charsActionInfo new_action_info;
 	charsActionInfo next_action_info;
-	ftStruct* ft_struct;
+	FTStruct* ft_struct;
 
 	ft_struct = ftGetStruct(fighter_gobj);
 
@@ -1492,7 +1492,7 @@ void mnCharsUpdateFighter(GObj* fighter_gobj)
 			mnCharsMoveToNextTrack(&new_action_info, mnCharsGetFtKind(gMNCharsCurrentIndex));
 			mnCharsGetActionInfo(&next_action_info, mnCharsGetFtKind(gMNCharsCurrentIndex), gMNCharsActionType, gMNCharsUnknown, gMNCharsCurrentActionTrack + 1);
 
-			if (ft_struct->status_info.status_id == 0x31)
+			if (ft_struct->status_id == 0x31)
 				ftParamResetFighterColAnim(fighter_gobj);
 
 			ftMainSetFighterStatus(fighter_gobj, new_action_info.status_id, 0.0f, 1.0f, new_action_info.flags);
@@ -1544,8 +1544,8 @@ void mnCharsUpdateFighter(GObj* fighter_gobj)
 void mnCharsCreateFighter(s32 ft_kind)
 {
 	GObj* fighter_gobj;
-	ftStruct* ft_struct;
-	ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTStruct* ft_struct;
+	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 	charsActionInfo action_info;
 
 	spawn_info.ft_kind = mnCharsGetFtKind(gMNCharsCurrentIndex);
@@ -2054,15 +2054,15 @@ void mnCharsMain(GObj* arg0)
 void mnCharsInit()
 {
 	s32 i;
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buffer = (lbFileNode*) &D_ovl33_80136720;
+	rl_setup.status_buffer = (LBFileNode*) &D_ovl33_80136720;
 	rl_setup.status_buffer_size = 0x64;
-	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl33_80136A40;
+	rl_setup.force_status_buffer = (LBFileNode*) &D_ovl33_80136A40;
 	rl_setup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228), gMNCharsFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl33_80136228, ARRAY_COUNT(D_ovl33_80136228)), 0x10U));

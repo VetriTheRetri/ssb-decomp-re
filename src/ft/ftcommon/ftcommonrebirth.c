@@ -19,10 +19,10 @@ f32 dFTCommonRebirthOffsetsX[/* */] = { 0.0F, -1000.0F, 1000.0F, -2000.0F };
 // 0x8013CF60
 void ftCommonRebirthDownSetStatus(GObj *this_gobj)
 {
-    ftStruct *this_fp = ftGetStruct(this_gobj);
-    ftCreateDesc rebirth_vars = dFTManagerDefaultFighterDesc;
+    FTStruct *this_fp = ftGetStruct(this_gobj);
+    FTCreateDesc rebirth_vars = dFTManagerDefaultFighterDesc;
     GObj *other_gobj;
-    ftStruct *other_fp;
+    FTStruct *other_fp;
     s32 halo_number;
     s32 halo_mapobj;
     Vec3f halo_spawn_pos;
@@ -46,8 +46,8 @@ loop: // This makes no sense
 
             if
             (
-                (other_fp->status_info.status_id >= nFTCommonStatusRebirthDown) && 
-                (other_fp->status_info.status_id <= nFTCommonStatusRebirthWait)
+                (other_fp->status_id >= nFTCommonStatusRebirthDown) && 
+                (other_fp->status_id <= nFTCommonStatusRebirthWait)
             )
             {
                 if (halo_number == other_fp->status_vars.common.rebirth.halo_number)
@@ -108,7 +108,7 @@ loop: // This makes no sense
 // 0x8013D1D4
 void ftCommonRebirthCommonUpdateHaloWait(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->status_vars.common.rebirth.halo_despawn_wait != 0)
     {
@@ -123,7 +123,7 @@ void ftCommonRebirthCommonUpdateHaloWait(GObj *fighter_gobj)
 // 0x8013D200
 void ftCommonRebirthDownProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonRebirthCommonUpdateHaloWait(fighter_gobj);
 
@@ -140,7 +140,7 @@ void ftCommonRebirthDownProcUpdate(GObj *fighter_gobj)
 // 0x8013D264
 void ftCommonRebirthCommonProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     DObjGetStruct(fighter_gobj)->translate.vec.f.y = (((fp->status_vars.common.rebirth.pos.y - fp->status_vars.common.rebirth.halo_offset.y) / 8100.0F) *
                                                SQUARE(fp->status_vars.common.rebirth.halo_lower_wait)) + fp->status_vars.common.rebirth.halo_offset.y;
@@ -156,7 +156,7 @@ void ftCommonRebirthStandProcUpdate(GObj *fighter_gobj)
 // 0x8013D2DC
 void ftCommonRebirthStandSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusRebirthStand, 0.0F, 1.0F, (FTSTATUS_PRESERVE_PLAYERTAG | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
     ftMainPlayAnimNoEffect(fighter_gobj);
@@ -172,7 +172,7 @@ void ftCommonRebirthStandSetStatus(GObj *fighter_gobj)
 // 0x8013D358
 void ftCommonRebirthWaitProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonRebirthCommonUpdateHaloWait(fighter_gobj);
 
@@ -186,7 +186,7 @@ void ftCommonRebirthWaitProcUpdate(GObj *fighter_gobj)
 // 0x8013D3A4
 void ftCommonRebirthWaitProcInterrupt(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (ftCommonGroundCheckInterrupt(fighter_gobj))
     {
@@ -197,7 +197,7 @@ void ftCommonRebirthWaitProcInterrupt(GObj *fighter_gobj)
 // 0x8013D518
 void ftCommonRebirthWaitSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusRebirthWait, 0.0F, 1.0F, (FTSTATUS_PRESERVE_PLAYERTAG | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
 

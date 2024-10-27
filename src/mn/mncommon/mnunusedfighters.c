@@ -35,7 +35,7 @@ extern intptr_t D_NF_000159A8;                          // 0x000159A8
 s32 sMNUnusedFightersPad0x800D7110[2];
 
 // 0x800D7118
-lbFileNode sMNUnusedFightersStatusBuffer[10];
+LBFileNode sMNUnusedFightersStatusBuffer[10];
 
 // 0x800D7168
 void *sMNUnusedFightersFiles[1];
@@ -168,7 +168,7 @@ void mnUnusedFightersFuncRun(GObj *gobj)
 void mnUnusedFightersFuncStart(void)
 {
     s32 unused[2];
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
     GObj *gobj;
     CObj *cobj;
 

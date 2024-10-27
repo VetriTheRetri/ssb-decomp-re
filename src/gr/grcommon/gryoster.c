@@ -49,9 +49,9 @@ enum grYosterCloudStatus
 // // // // // // // // // // // //
 
 // 0x80108550
-lbGenerator* grYosterCloudVaporMakeEffect(Vec3f *pos)
+LBGenerator* grYosterCloudVaporMakeEffect(Vec3f *pos)
 {
-    lbGenerator *gtor = lbParticleMakeGenerator(gGRCommonStruct.yoster.particle_bank_id, 0);
+    LBGenerator *gtor = LBParticleMakeGenerator(gGRCommonStruct.yoster.particle_bank_id, 0);
 
     if (gtor != NULL)
     {
@@ -70,7 +70,7 @@ sb32 grYosterCheckFighterCloudStand(s32 cloud_id)
 
     while (fighter_gobj != NULL)
     {
-        ftStruct *fp = ftGetStruct(fighter_gobj);
+        FTStruct *fp = ftGetStruct(fighter_gobj);
 
         if (fp->ga == nMPKineticsGround)
         {

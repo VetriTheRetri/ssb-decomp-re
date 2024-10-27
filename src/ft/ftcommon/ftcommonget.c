@@ -11,9 +11,9 @@
 // 0x80145990
 GObj* ftCommonGetFindItem(GObj *fighter_gobj, u8 pickup_mask)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     GObj *pickup_gobj = NULL;
-    ftItemPickup *item_pickup = &fp->attributes->item_pickup;
+    FTItemPickup *item_pickup = &fp->attributes->item_pickup;
     GObj *item_gobj = gGCCommonLinks[nGCCommonLinkIDItem];
     f32 closest_item_dist = F32_MAX;
     sb32 is_pickup;
@@ -22,7 +22,7 @@ GObj* ftCommonGetFindItem(GObj *fighter_gobj, u8 pickup_mask)
 
     while (item_gobj != NULL)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         if (ip->is_allow_pickup)
         {
@@ -30,7 +30,7 @@ GObj* ftCommonGetFindItem(GObj *fighter_gobj, u8 pickup_mask)
             {
                 Vec3f *ft_translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
                 Vec3f *it_translate = &DObjGetStruct(item_gobj)->translate.vec.f;
-                mpObjectColl *objcoll = &ip->coll_data.objcoll;
+                MPObjectColl *object_coll = &ip->coll_data.object_coll;
 
                 is_pickup = FALSE;
 
@@ -39,9 +39,9 @@ GObj* ftCommonGetFindItem(GObj *fighter_gobj, u8 pickup_mask)
                     pickup_range.x = ft_translate->x + (fp->lr * item_pickup->pickup_offset_light.x);
                     pickup_range.y = ft_translate->y + item_pickup->pickup_offset_light.y;
 
-                    if ((((pickup_range.x - item_pickup->pickup_range_light.x) - objcoll->width) < it_translate->x) && (it_translate->x < (item_pickup->pickup_range_light.x + pickup_range.x + objcoll->width)))
+                    if ((((pickup_range.x - item_pickup->pickup_range_light.x) - object_coll->width) < it_translate->x) && (it_translate->x < (item_pickup->pickup_range_light.x + pickup_range.x + object_coll->width)))
                     {
-                        if ((((pickup_range.y - item_pickup->pickup_range_light.y) - objcoll->top) < it_translate->y) && (it_translate->y < ((item_pickup->pickup_range_light.y + pickup_range.y) - objcoll->bottom)))
+                        if ((((pickup_range.y - item_pickup->pickup_range_light.y) - object_coll->top) < it_translate->y) && (it_translate->y < ((item_pickup->pickup_range_light.y + pickup_range.y) - object_coll->bottom)))
                         {
                             is_pickup = TRUE;
                         }
@@ -52,9 +52,9 @@ GObj* ftCommonGetFindItem(GObj *fighter_gobj, u8 pickup_mask)
                     pickup_range.x = ft_translate->x + (fp->lr * item_pickup->pickup_offset_heavy.x);
                     pickup_range.y = ft_translate->y + item_pickup->pickup_offset_heavy.y;
 
-                    if ((((pickup_range.x - item_pickup->pickup_range_heavy.x) - objcoll->width) < it_translate->x) && (it_translate->x < (item_pickup->pickup_range_heavy.x + pickup_range.x + objcoll->width)))
+                    if ((((pickup_range.x - item_pickup->pickup_range_heavy.x) - object_coll->width) < it_translate->x) && (it_translate->x < (item_pickup->pickup_range_heavy.x + pickup_range.x + object_coll->width)))
                     {
-                        if ((((pickup_range.y - item_pickup->pickup_range_heavy.y) - objcoll->top) < it_translate->y) && (it_translate->y < ((item_pickup->pickup_range_heavy.y + pickup_range.y) - objcoll->bottom)))
+                        if ((((pickup_range.y - item_pickup->pickup_range_heavy.y) - object_coll->top) < it_translate->y) && (it_translate->y < ((item_pickup->pickup_range_heavy.y + pickup_range.y) - object_coll->bottom)))
                         {
                             is_pickup = TRUE;
                         }
@@ -80,12 +80,12 @@ GObj* ftCommonGetFindItem(GObj *fighter_gobj, u8 pickup_mask)
 // 0x80145BE4
 void ftCommonLightGetProcDamage(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     GObj *item_gobj = fp->item_hold;
 
     if (item_gobj != NULL)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         if (ip->type == nITTypeConsume)
         {
@@ -127,7 +127,7 @@ void ftCommonLightGetProcDamage(GObj *fighter_gobj)
 // 0x80145D28
 void ftCommonHeavyGetProcDamage(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->item_hold != NULL)
     {
@@ -138,14 +138,14 @@ void ftCommonHeavyGetProcDamage(GObj *fighter_gobj)
 // 0x80145D70
 void ftCommonGetProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     GObj *item_gobj;
 
     if (fp->command_vars.flags.flag1 != 0)
     {
         fp->command_vars.flags.flag1 = 0;
 
-        item_gobj = ftCommonGetFindItem(fighter_gobj, ((fp->status_info.status_id == nFTCommonStatusHeavyGet) ? FTCOMMON_GET_MASK_HEAVY : FTCOMMON_GET_MASK_LIGHT));
+        item_gobj = ftCommonGetFindItem(fighter_gobj, ((fp->status_id == nFTCommonStatusHeavyGet) ? FTCOMMON_GET_MASK_HEAVY : FTCOMMON_GET_MASK_LIGHT));
 
         if (item_gobj != NULL)
         {
@@ -154,7 +154,7 @@ void ftCommonGetProcUpdate(GObj *fighter_gobj)
     }
     if (fighter_gobj->anim_frame <= 0.0F)
     {
-        if (fp->status_info.status_id == nFTCommonStatusHeavyGet)
+        if (fp->status_id == nFTCommonStatusHeavyGet)
         {
             if (fp->item_hold != NULL)
             {
@@ -172,7 +172,7 @@ void ftCommonGetProcUpdate(GObj *fighter_gobj)
 
             if (item_gobj != NULL)
             {
-                itStruct *ip = itGetStruct(item_gobj);
+                ITStruct *ip = itGetStruct(item_gobj);
 
                 if (ip->type == nITTypeConsume)
                 {
@@ -204,7 +204,7 @@ void ftCommonLightGetProcMap(GObj *fighter_gobj)
 // 0x80145F10
 void ftCommonHeavyGetProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
     {
@@ -219,7 +219,7 @@ void ftCommonHeavyGetProcMap(GObj *fighter_gobj)
 // 0x80145F74
 void ftCommonHeavyThrowProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (mpCommonCheckFighterOnEdge(fighter_gobj) == FALSE)
     {
@@ -234,15 +234,15 @@ void ftCommonHeavyThrowProcMap(GObj *fighter_gobj)
 // 0x80145FD8
 void ftCommonGetSetStatus(GObj *fighter_gobj, GObj *item_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    itStruct *ip = itGetStruct(item_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     fp->command_vars.flags.flag1 = 0;
 
     ftMainSetFighterStatus(fighter_gobj, ((ip->weight == nITWeightHeavy) ? nFTCommonStatusHeavyGet : nFTCommonStatusLightGet), 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
-    if (fp->status_info.status_id == nFTCommonStatusHeavyGet)
+    if (fp->status_id == nFTCommonStatusHeavyGet)
     {
         fp->proc_damage = ftCommonHeavyGetProcDamage;
     }
@@ -252,7 +252,7 @@ void ftCommonGetSetStatus(GObj *fighter_gobj, GObj *item_gobj)
 // 0x80146064
 sb32 ftCommonGetCheckInterruptCommon(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->item_hold == NULL)
     {
@@ -280,7 +280,7 @@ void ftCommonLiftWaitProcInterrupt(GObj *fighter_gobj)
 // 0x801460E8
 void ftCommonLiftWaitSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusLiftWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_SLOPECONTOUR);
 
@@ -288,7 +288,7 @@ void ftCommonLiftWaitSetStatus(GObj *fighter_gobj)
 }
 
 // 0x80146130
-void ftCommonLiftTurnUpdateModelPitch(ftStruct *fp)
+void ftCommonLiftTurnUpdateModelPitch(FTStruct *fp)
 {
     fp->status_vars.common.lift.turn_frames--;
 
@@ -299,14 +299,14 @@ void ftCommonLiftTurnUpdateModelPitch(ftStruct *fp)
     if (fp->status_vars.common.lift.turn_frames == (FTCOMMON_LIFT_TURN_FRAMES / 2))
     {
         fp->lr = -fp->lr;
-        fp->phys_info.vel_ground.x = -fp->phys_info.vel_ground.x;
+        fp->physics.vel_ground.x = -fp->physics.vel_ground.x;
     }
 }
 
 // 0x801461A8
 void ftCommonLiftTurnProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonLiftTurnUpdateModelPitch(fp);
 
@@ -325,7 +325,7 @@ void ftCommonLiftTurnProcInterrupt(GObj *fighter_gobj)
 // 0x80146208
 void ftCommonLiftTurnSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusLiftTurn, 0.0F, 1.0F, FTSTATUS_PRESERVE_SLOPECONTOUR);
 

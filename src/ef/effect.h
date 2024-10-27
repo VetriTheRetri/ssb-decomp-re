@@ -5,7 +5,7 @@
 #include "effunctions.h"
 
 #define efGetStruct(effect_gobj) \
-((efStruct*)(effect_gobj)->user_data.p) \
+((EFStruct*)(effect_gobj)->user_data.p) \
 
 extern void *sEFManagerTexturesFile1;
 extern void *sEFManagerTexturesFile2;

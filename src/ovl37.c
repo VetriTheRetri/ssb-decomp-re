@@ -31,7 +31,7 @@ CObjDesc dMVOpeningDKCObjDescEnd = {
 };
 
 // 0x8018E0A8
-ftKeyCommand dMVOpeningDKInputSeq[] =
+FTKeyCommand dMVOpeningDKInputSeq[] =
 {
 	FTKEY_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0), // 0x2000, 0x00B0
 	FTKEY_EVENT_BUTTON(B_BUTTON, 1),                  // 0x1001, 0x4000
@@ -78,30 +78,30 @@ CObjDesc dMVOpeningDKCObjDescAdjustedStart;
 CObjDesc dMVOpeningDKCObjDescAdjustedEnd;
 
 // 0x8018E228
-lbFileNode D_ovl37_8018E228[48];
+LBFileNode D_ovl37_8018E228[48];
 
 // 0x8018E3A8
-lbFileNode D_ovl37_8018E3A8[7];
+LBFileNode D_ovl37_8018E3A8[7];
 
 // 0x8018E3E0
 uintptr_t gMVOpeningDKFiles[2];
 
 // 0x8018E3E8
-scBattleState gMVOpeningDKBattleState;
+SCBattleState gMVOpeningDKBattleState;
 
 
 // 0x8018D0C0
 void mvOpeningDKLoadFiles()
 {
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buffer = (lbFileNode*) &D_ovl37_8018E228;
+	rl_setup.status_buffer = (LBFileNode*) &D_ovl37_8018E228;
 	rl_setup.status_buffer_size = 0x30;
-	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl37_8018E3A8;
+	rl_setup.force_status_buffer = (LBFileNode*) &D_ovl37_8018E3A8;
 	rl_setup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl37_8018E0BC, ARRAY_COUNT(D_ovl37_8018E0BC), gMVOpeningDKFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl37_8018E0BC, ARRAY_COUNT(D_ovl37_8018E0BC)), 0x10));
@@ -237,7 +237,7 @@ void mvOpeningDKInitFighterStagePanel()
 
 	for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
 	{
-		ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+		FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 		if (gBattleState->players[i].pl_kind == nFTPlayerKindNot)
 			continue;
@@ -318,7 +318,7 @@ void mvOpeningDKAnimatePosedFighter(GObj* fighter_gobj)
 void mvOpeningDKCreatePosedFighter()
 {
 	GObj* fighter_gobj;
-	ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	spawn_info.ft_kind = nFTKindDonkey;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindDonkey, 0);

@@ -64,21 +64,21 @@ u8 dFTBossWaitRandomArrayLookup[/* */] =
 // 0x801587B0
 void ftBossWaitSetVelStickRange(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     s32 vel_x = (ABS(fp->input.pl.stick_range.x) >= 8) ? fp->input.pl.stick_range.x : 0;
     s32 vel_y = (ABS(fp->input.pl.stick_range.y) >= 8) ? fp->input.pl.stick_range.y : 0;
 
-    fp->phys_info.vel_air.x = vel_x;
-    fp->phys_info.vel_air.y = vel_y;
+    fp->physics.vel_air.x = vel_x;
+    fp->physics.vel_air.y = vel_y;
 }
 
 // 0x80158824
 void ftBossWaitDecideStatusPlayer(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     f32 angle;
-    ftStruct *target_fp;
+    FTStruct *target_fp;
     Vec3f pos;
 
     if (ftCommonTurnCheckInputSuccess(fighter_gobj) != FALSE)
@@ -171,7 +171,7 @@ void ftBossWaitDecideStatusPlayer(GObj *fighter_gobj)
 // 0x80158C34
 void ftBossWaitDecideStatusComputer(GObj *fighter_gobj) // Decide Master Hand's next attack
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
     s32 random;
     s32 var;
@@ -286,9 +286,9 @@ void ftBossWaitDecideStatusComputer(GObj *fighter_gobj) // Decide Master Hand's 
 // 0x80158F74
 void ftBossWaitProcInterrupt(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->status_info.pl_kind == nFTPlayerKindMan)
+    if (fp->pl_kind == nFTPlayerKindMan)
     {
         ftBossWaitDecideStatusPlayer(fighter_gobj);
     }
@@ -298,11 +298,11 @@ void ftBossWaitProcInterrupt(GObj *fighter_gobj)
 // 0x80158FB4
 void ftBossWaitProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f vel;
     f32 magnitude;
 
-    if (fp->status_info.pl_kind != nFTPlayerKindMan)
+    if (fp->pl_kind != nFTPlayerKindMan)
     {
         syVectorDiff3D(&vel, &fp->status_vars.boss.wait.pos, &DObjGetStruct(fighter_gobj)->translate.vec.f);
 
@@ -312,15 +312,15 @@ void ftBossWaitProcPhysics(GObj *fighter_gobj)
 
         syVectorScale3D(&vel, magnitude * 0.1F);
 
-        fp->phys_info.vel_air.x = vel.x;
-        fp->phys_info.vel_air.y = vel.y;
+        fp->physics.vel_air.x = vel.x;
+        fp->physics.vel_air.y = vel.y;
     }
 }
 
 // 0x80159040
 void ftBossWaitSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp;
+    FTStruct *fp;
     Vec3f *translate;
     Vec3f pos;
     s32 ground_line_id;

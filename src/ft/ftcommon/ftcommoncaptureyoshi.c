@@ -54,7 +54,7 @@ void func_ovl3_8014C770(void) // Unused
 // 0x8014C778
 void ftCommonCaptureYoshiProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
 
     ftCommonCapturePulledRotateScale(fighter_gobj, &pos, &DObjGetStruct(fighter_gobj)->rotate.vec.f);
@@ -62,7 +62,7 @@ void ftCommonCaptureYoshiProcPhysics(GObj *fighter_gobj)
     DObjGetStruct(fighter_gobj)->translate.vec.f.x = pos.x;
     DObjGetStruct(fighter_gobj)->translate.vec.f.z = pos.z;
 
-    if (fp->status_info.status_id == nFTCommonStatusCaptureYoshi)
+    if (fp->status_id == nFTCommonStatusCaptureYoshi)
     {
         if (fp->status_vars.common.captureyoshi.stage == 3)
         {
@@ -82,8 +82,8 @@ void ftCommonCaptureYoshiProcPhysics(GObj *fighter_gobj)
 // 0x8014C83C
 void ftCommonCaptureYoshiProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
-    ftStruct *capture_fp;
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *capture_fp;
 
     ftParamStopVoiceRunProcDamage(fighter_gobj);
 
@@ -125,7 +125,7 @@ void ftCommonCaptureYoshiProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
 // 0x8014C958
 void ftCommonYoshiEggMakeEffect(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->status_vars.common.captureyoshi.effect_gobj == NULL)
     {
@@ -141,7 +141,7 @@ void ftCommonYoshiEggMakeEffect(GObj *fighter_gobj)
 // 0x8014C9A0
 void ftCommonYoshiEggProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     sb32 is_escape = FALSE;
 
     if (fp->status_vars.common.captureyoshi.is_damagefloor == TRUE)
@@ -161,7 +161,7 @@ void ftCommonYoshiEggProcUpdate(GObj *fighter_gobj)
 
         if (fp->status_vars.common.captureyoshi.effect_gobj != NULL)
         {
-            efStruct *ep = efGetStruct(fp->status_vars.common.captureyoshi.effect_gobj);
+            EFStruct *ep = efGetStruct(fp->status_vars.common.captureyoshi.effect_gobj);
 
             if ((ep->effect_vars.yoshi_egg_lay.index == 1) && (fp->status_vars.common.captureyoshi.effect_gobj->anim_frame <= 0.0F))
             {
@@ -186,9 +186,9 @@ void ftCommonYoshiEggProcUpdate(GObj *fighter_gobj)
         efManagerEggBreakMakeEffect(&pos);
         func_800269C0_275C0(nSYAudioFGMYoshiEggLayShatter);
 
-        fp->phys_info.vel_air.y = FTCOMMON_YOSHIEGG_ESCAPE_VEL_Y;
-        fp->phys_info.vel_air.z = 0.0F;
-        fp->phys_info.vel_air.x = 0.0F;
+        fp->physics.vel_air.y = FTCOMMON_YOSHIEGG_ESCAPE_VEL_Y;
+        fp->physics.vel_air.z = 0.0F;
+        fp->physics.vel_air.x = 0.0F;
 
         DObjGetStruct(fighter_gobj)->translate.vec.f.y += FTCOMMON_YOSHIEGG_ESCAPE_OFF_Y;
 
@@ -201,7 +201,7 @@ void ftCommonYoshiEggProcUpdate(GObj *fighter_gobj)
 // 0x8014CB24
 void ftCommonYoshiEggProcInterrupt(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->status_vars.common.captureyoshi.effect_gobj != NULL)
     {
@@ -232,7 +232,7 @@ void ftCommonYoshiEggProcInterrupt(GObj *fighter_gobj)
 // 0x8014CC0C
 void ftCommonYoshiEggProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->command_vars.flags.flag0 == 0)
     {
@@ -261,7 +261,7 @@ void ftCommonYoshiEggProcPhysics(GObj *fighter_gobj)
     {
         if (fp->status_vars.common.captureyoshi.effect_gobj != NULL)
         {
-            efStruct *ep = efGetStruct(fp->status_vars.common.captureyoshi.effect_gobj);
+            EFStruct *ep = efGetStruct(fp->status_vars.common.captureyoshi.effect_gobj);
 
             ep->effect_vars.yoshi_egg_lay.force_index = 1;
         }
@@ -276,7 +276,7 @@ void ftCommonYoshiEggProcPhysics(GObj *fighter_gobj)
 // 0x8014CD24
 void ftCommonYoshiEggProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->ga == nMPKineticsGround)
     {
@@ -294,7 +294,7 @@ void ftCommonYoshiEggProcMap(GObj *fighter_gobj)
 // 0x8014CD7C
 void ftCommonYoshiEggProcTrap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->command_vars.flags.flag0 == 0)
     {
@@ -311,25 +311,25 @@ void ftCommonYoshiEggProcTrap(GObj *fighter_gobj)
 // 0x8014CDFC
 void ftCommonYoshiEggSetHurtCollisions(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftHurtbox *ft_hurt = &fp->fighter_hurt[0];
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTDamageColl *ft_dmgcoll = &fp->damage_colls[0];
     ftCommonYoshiEggDesc *egg = &dFTCommonYoshiEggHurtboxDescs[fp->ft_kind];
     s32 i;
 
-    ft_hurt->joint = fp->joints[nFTPartsJointTopN];
-    ft_hurt->joint_id = nFTPartsJointTopN;
-    ft_hurt->placement = nFTPartsPlacementMiddle;
-    ft_hurt->is_grabbable = FALSE;
-    ft_hurt->offset = egg->offset;
-    ft_hurt->size = egg->size;
+    ft_dmgcoll->joint = fp->joints[nFTPartsJointTopN];
+    ft_dmgcoll->joint_id = nFTPartsJointTopN;
+    ft_dmgcoll->placement = nFTPartsPlacementMiddle;
+    ft_dmgcoll->is_grabbable = FALSE;
+    ft_dmgcoll->offset = egg->offset;
+    ft_dmgcoll->size = egg->size;
 
-    ft_hurt++;
+    ft_dmgcoll++;
 
-    for (i = 1; i < ARRAY_COUNT(fp->fighter_hurt); i++, ft_hurt++)
+    for (i = 1; i < ARRAY_COUNT(fp->damage_colls); i++, ft_dmgcoll++)
     {
-        if (ft_hurt->hitstatus != nGMHitStatusNone)
+        if (ft_dmgcoll->hitstatus != nGMHitStatusNone)
         {
-            ft_hurt->hitstatus = nGMHitStatusIntangible;
+            ft_dmgcoll->hitstatus = nGMHitStatusIntangible;
         }
     }
     fp->is_hitstatus_nodamage = TRUE;
@@ -339,7 +339,7 @@ void ftCommonYoshiEggSetHurtCollisions(GObj *fighter_gobj)
 // 0x8014CF0C
 void ftCommonYoshiEggProcStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->status_vars.common.captureyoshi.breakout_wait = FTCOMMON_YOSHIEGG_ESCAPE_WAIT_MAX;
 
@@ -349,8 +349,8 @@ void ftCommonYoshiEggProcStatus(GObj *fighter_gobj)
 // 0x8014CF20
 void ftCommonYoshiEggSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
-    ftStruct *capture_fp;
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *capture_fp;
 
     if (this_fp->ga == nMPKineticsGround)
     {
@@ -378,8 +378,8 @@ void ftCommonYoshiEggSetStatus(GObj *fighter_gobj)
 
     mpCommonRunFighterCollisionDefault(fighter_gobj, &DObjGetStruct(this_fp->capture_gobj)->translate.vec.f, &ftGetStruct(this_fp->capture_gobj)->coll_data);
 
-    this_fp->phys_info.vel_air.x = -capture_fp->lr * FTCOMMON_YOSHIEGG_LAY_VEL_X;
-    this_fp->phys_info.vel_air.y = FTCOMMON_YOSHIEGG_LAY_VEL_Y;
+    this_fp->physics.vel_air.x = -capture_fp->lr * FTCOMMON_YOSHIEGG_LAY_VEL_X;
+    this_fp->physics.vel_air.y = FTCOMMON_YOSHIEGG_LAY_VEL_Y;
     this_fp->damage_mul = FTCOMMON_YOSHIEGG_DAMAGE_MUL;
 
     this_fp->capture_gobj = NULL;

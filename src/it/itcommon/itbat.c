@@ -15,7 +15,7 @@ extern intptr_t lITBatItemAttributes;       // 0x000001D8
 // // // // // // // // // // // //
 
 // 0x80189990
-itCreateDesc dITBatItemDesc =
+ITCreateDesc dITBatItemDesc =
 {
     nITKindBat,                             // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -40,7 +40,7 @@ itCreateDesc dITBatItemDesc =
 };
 
 // 0x801899C4
-itStatusDesc dITBatStatusDescs[/* */] =
+ITStatusDesc dITBatStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -128,7 +128,7 @@ enum itBatStatus
 // 0x80174E30 
 sb32 itBatFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITBAT_GRAVITY, ITBAT_TVEL);
     itVisualsUpdateSpin(item_gobj);
@@ -162,7 +162,7 @@ void itBatWaitSetStatus(GObj *item_gobj)
 // 0x80174EF8
 void itBatFallSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
@@ -196,9 +196,9 @@ sb32 itBatThrownProcMap(GObj *item_gobj)
 // 0x80174FD8
 sb32 itBatThrownProcHit(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hit.update_state = nGMHitUpdateDisable;
+    ip->hit_coll.update_state = nGMHitUpdateDisable;
 
     itMainVelSetRebound(item_gobj);
 
@@ -234,13 +234,13 @@ GObj* itBatMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
     if (item_gobj != NULL)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 
         ip->is_unused_item_bool = TRUE;
 
-        ip->indicator_gobj = ifCommonItemArrowMakeInterface(ip);
+        ip->arrow_gobj = ifCommonItemArrowMakeInterface(ip);
     }
     return item_gobj;
 }

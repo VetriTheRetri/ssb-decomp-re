@@ -498,11 +498,11 @@ typedef struct ftCommonTaruCannStatusVars
 
 } ftCommonTaruCannStatusVars;
 
-typedef struct ftCommonDownWaitStatusVars
+typedef struct ftCommonDownWaITStatusVars
 {
 	s32 stand_wait;
 
-} ftCommonDownWaitStatusVars;
+} ftCommonDownWaITStatusVars;
 
 typedef struct ftCommonDownBounceStatusVars
 {
@@ -517,12 +517,12 @@ typedef struct ftCommonReboundStatusVars
 
 } ftCommonReboundStatusVars;
 
-typedef struct ftCommonCliffWaitStatusVars
+typedef struct ftCommonCliffWaITStatusVars
 {
 	s32 status_id;
 	s32 fall_wait;
 
-} ftCommonCliffWaitStatusVars;
+} ftCommonCliffWaITStatusVars;
 
 typedef struct ftCommonCliffMotionStatusVars
 {
@@ -610,11 +610,11 @@ typedef struct ftCommonCatchStatusVars
 
 } ftCommonCatchStatusVars;
 
-typedef struct ftCommonCatchWaitStatusVars
+typedef struct ftCommonCatchWaITStatusVars
 {
 	s32 throw_wait;
 
-} ftCommonCatchWaitStatusVars;
+} ftCommonCatchWaITStatusVars;
 
 typedef struct ftCommonCaptureStatusVars
 {
@@ -732,7 +732,7 @@ typedef struct ftCommonAttackAirStatusVars
 
 } ftCommonAttackAirStatusVars;
 
-typedef union ftCommonStatusVars
+typedef union FTCommonStatusVars
 {
 	ftCommonDeadStatusVars dead;
 	ftCommonRebirthStatusVars rebirth;
@@ -748,10 +748,10 @@ typedef union ftCommonStatusVars
 	ftCommonFallSpecialStatusVars fallspecial;
 	ftCommonTwisterStatusVars twister;
 	ftCommonTaruCannStatusVars tarucann;
-	ftCommonDownWaitStatusVars downwait;
+	ftCommonDownWaITStatusVars downwait;
 	ftCommonDownBounceStatusVars downbounce;
 	ftCommonReboundStatusVars rebound;
-	ftCommonCliffWaitStatusVars cliffwait;
+	ftCommonCliffWaITStatusVars cliffwait;
 	ftCommonCliffMotionStatusVars cliffmotion;
 	ftCommonLiftStatusVars lift;
 	ftCommonItemThrowStatusVars itemthrow;
@@ -761,7 +761,7 @@ typedef union ftCommonStatusVars
 	ftCommonGuardStatusVars guard;
 	ftCommonEscapeStatusVars escape;
 	ftCommonCatchStatusVars catchmain;
-	ftCommonCatchWaitStatusVars catchwait;
+	ftCommonCatchWaITStatusVars catchwait;
 	ftCommonCaptureStatusVars capture;
 	ftCommonThrownStatusVars thrown;
 	ftCommonCaptureKirbyStatusVars capturekirby;
@@ -776,6 +776,6 @@ typedef union ftCommonStatusVars
 	ftCommonAttack4StatusVars attack4;
 	ftCommonAttackAirStatusVars attackair;
 
-} ftCommonStatusVars;
+} FTCommonStatusVars;
 
 #endif

@@ -64,7 +64,7 @@ s32 sMNVSItemSwitchTotalTimeTics;
 s32 sMNVSItemSwitchReturnTic;
 
 // 0x80133470
-lbFileNode sMNVSItemSwitchStatusBuffer[24];
+LBFileNode sMNVSItemSwitchStatusBuffer[24];
 
 // 0x80133530
 void *sMNVSItemSwitchFiles[1];
@@ -798,7 +798,7 @@ void mnVSItemSwitchFuncRun(GObj *gobj)
 // 0x80133090
 void mnVSItemSwitchFuncStart(void)
 {
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

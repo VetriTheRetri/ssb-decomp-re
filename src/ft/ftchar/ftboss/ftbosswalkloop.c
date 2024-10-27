@@ -9,7 +9,7 @@
 // 0x801598C0
 sb32 ftBossWalkLoopCheckPlayerInRange(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     Vec3f *translate_m = &DObjGetStruct(fighter_gobj)->translate.vec.f;
     Vec3f *translate_t = &DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f;
@@ -47,11 +47,11 @@ void ftBossWalkLoopProcMap(GObj *fighter_gobj)
 // 0x801599C4
 void ftBossWalkLoopSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->phys_info.vel_air.y = 0;
+    fp->physics.vel_air.y = 0;
 
     ftMainSetFighterStatus(fighter_gobj, nFTBossStatusWalkLoop, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
-    fp->phys_info.vel_air.x = fp->lr * 35.0F;
+    fp->physics.vel_air.x = fp->lr * 35.0F;
 }

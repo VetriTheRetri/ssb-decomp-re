@@ -7,7 +7,7 @@
 #define FTPURIN_POUND_VEL_BASE 65.0F
 #define FTPURIN_POUND_VEL_MUL 0.92F
 
-extern ftStatusDesc dFTPurinSpecialStatusDescs[/* */];
+extern FTStatusDesc dFTPurinSpecialStatusDescs[/* */];
 
 extern void *gFTDataPurinMain;
 extern void *gFTDataPurinMainMotion;
@@ -55,10 +55,10 @@ typedef enum ftPurinStatus
 
 } ftPurinStatus;
 
-typedef struct ftPurinFighterVars
+typedef struct FTPurinFighterVars
 {
     u32 unk_0x0;
 
-} ftPurinFighterVars;
+} FTPurinFighterVars;
 
 #endif

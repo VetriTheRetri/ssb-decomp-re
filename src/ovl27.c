@@ -13,7 +13,7 @@ extern intptr_t lOverlay27ArenaLo;  // 0x801396D0
 extern intptr_t lOverlay27ArenaHi;  // 0x803903E0
 
 extern f32 menu_zoom[12]; // dSCSubsysFighterScales
-extern scBattleState D_800A4B18;
+extern SCBattleState D_800A4B18;
 
 // Offsets
 extern intptr_t FILE_011_START_IMAGE_OFFSET; // Press Start's "Start" texture
@@ -180,7 +180,7 @@ s32 gMN1PFtKind;
 s32 gMN1PCostumeId[182];
 
 // 0x801392A8
-lbFileNode D_ovl27_801392A8[7];
+LBFileNode D_ovl27_801392A8[7];
 
 // 0x801392E0
 u32 D_ovl27_801392E0[240];
@@ -576,12 +576,12 @@ void func_ovl27_80132794() {}
 // 0x8013279C
 s32 mn1PGetFtKind(s32 portrait_id)
 {
-	s32 ftKind_order[12] = {
+	s32 FTKind_order[12] = {
 
 		4, 0, 2, 5, 3, 7, 11, 6, 8, 1, 9, 10
 	};
 
-	return ftKind_order[portrait_id];
+	return FTKind_order[portrait_id];
 }
 
 // 0x801327EC
@@ -1172,7 +1172,7 @@ void mn1PDrawStock(s32 stock, s32 ft_kind)
 {
 	GObj* stock_gobj;
 	SObj* icon_sobj;
-	ftStruct* ft_struct;
+	FTStruct* ft_struct;
 
 	if (gMN1PStockGObj != NULL)
 		gcEjectGObj(gMN1PStockGObj);
@@ -1190,8 +1190,8 @@ void mn1PDrawStock(s32 stock, s32 ft_kind)
 		else
 		{
 			ft_struct = gMN1PPanel.player->user_data.p;
-			icon_sobj = lbCommonMakeSObjForGObj(stock_gobj, ft_struct->attributes->sprites->stock_spr);
-			icon_sobj->sprite.LUT = ft_struct->attributes->sprites->stock_lut[ft_struct->costume];
+			icon_sobj = lbCommonMakeSObjForGObj(stock_gobj, ft_struct->attributes->sprites->stock_sprite);
+			icon_sobj->sprite.LUT = ft_struct->attributes->sprites->stock_luts[ft_struct->costume];
 			icon_sobj->pos.y = 178.0F;
 		}
 
@@ -1539,7 +1539,7 @@ s32 mn1PGetSelectedAnimation(s32 ft_kind)
 // 0x80134F40
 void mn1PRotateFighter(GObj *fighter_gobj)
 {
-	ftStruct* fp = ftGetStruct(fighter_gobj);
+	FTStruct* fp = ftGetStruct(fighter_gobj);
 	s32 port_id = fp->player;
 
 	if (gMN1PPanel.unk_0x88 == 1)
@@ -1580,7 +1580,7 @@ void mn1PRotateFighter(GObj *fighter_gobj)
 void mn1PSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 costume_id)
 {
 	f32 initial_y_rotation;
-	ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	if (ft_kind != nFTKindNull)
 	{
@@ -3086,7 +3086,7 @@ void mn1PInitPanel(s32 port_id)
 void mn1PInitCSS()
 {
 	s32 bar, baz;
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 	f32 foo;
 	s32 i;
 	s32 j;
@@ -3095,9 +3095,9 @@ void mn1PInitCSS()
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buffer = (lbFileNode*) &D_ovl27_801392E0;
+	rl_setup.status_buffer = (LBFileNode*) &D_ovl27_801392E0;
 	rl_setup.status_buffer_size = 0x78;
-	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl27_801392A8;
+	rl_setup.force_status_buffer = (LBFileNode*) &D_ovl27_801392A8;
 	rl_setup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl27_80138630, 11U, gMN1PFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl27_80138630, 11U), 0x10U));

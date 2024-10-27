@@ -11,8 +11,8 @@ extern void ftYoshiJumpAerialProcPhysics(GObj* fighter_gobj); // Contemplating w
 
 // SpecialHi / SpecialAirHi
 extern void ftYoshiSpecialHiProcDamage(GObj* fighter_gobj);
-extern void ftYoshiSpecialHiGetEggPosition(ftStruct* fp, Vec3f* pos);
-extern void ftYoshiSpecialHiUpdateEggVectors(ftStruct* fp);
+extern void ftYoshiSpecialHiGetEggPosition(FTStruct* fp, Vec3f* pos);
+extern void ftYoshiSpecialHiUpdateEggVectors(FTStruct* fp);
 extern void ftYoshiSpecialHiUpdateEggVars(GObj* fighter_gobj);
 extern void ftYoshiSpecialHiUpdateEggThrowForce(GObj* fighter_gobj);
 extern void ftYoshiSpecialHiProcUpdate(GObj* fighter_gobj);
@@ -23,16 +23,16 @@ extern void ftYoshiSpecialAirHiSwitchStatusGround(GObj* fighter_gobj);
 extern void ftYoshiSpecialHiSwitchStatusAir(GObj* fighter_gobj);
 extern void ftYoshiSpecialHiProcMap(GObj* fighter_gobj);
 extern void ftYoshiSpecialAirHiProcMap(GObj* fighter_gobj);
-extern void ftYoshiSpecialHiInitStatusVars(GObj* fighter_gobj);
+extern void ftYoshiSpecialHiInITStatusVars(GObj* fighter_gobj);
 extern void ftYoshiSpecialHiSetStatus(GObj* fighter_gobj);
 extern void ftYoshiSpecialAirHiSetStatus(GObj* fighter_gobj);
 
 // SpecialN / SpecialAirN
-extern void ftYoshiSpecialNSetCatchParams(ftStruct* fp, void (*proc_catch)(GObj*));
+extern void ftYoshiSpecialNSetCatchParams(FTStruct* fp, void (*proc_catch)(GObj*));
 extern void ftYoshiSpecialNCatchUpdateProcStatus(GObj* fighter_gobj, void (*proc_status)(GObj*));
 extern void ftYoshiSpecialNCatchProcUpdate(GObj* fighter_gobj);
 extern void ftYoshiSpecialAirNCatchProcUpdate(GObj* fighter_gobj);
-extern void ftYoshiSpecialNCatchUpdateCaptureVars(ftStruct* fp);
+extern void ftYoshiSpecialNCatchUpdateCaptureVars(FTStruct* fp);
 extern void ftYoshiSpecialNReleaseProcUpdate(GObj* fighter_gobj);
 extern void ftYoshiSpecialAirNReleaseProcUpdate(GObj* fighter_gobj);
 extern void ftYoshiSpecialNProcMap(GObj* fighter_gobj);
@@ -51,10 +51,10 @@ extern void ftYoshiSpecialAirNReleaseSwitchStatusGround(GObj* fighter_gobj);
 extern void ftYoshiSpecialNReleaseSwitchStatusAir(GObj* fighter_gobj);
 extern void ftYoshiSpecialNSetStatus(GObj* fighter_gobj);
 extern void ftYoshiSpecialAirNSetStatus(GObj* fighter_gobj);
-extern void ftYoshiSpecialNCatchInitStatusVars(GObj* fighter_gobj);
+extern void ftYoshiSpecialNCatchInITStatusVars(GObj* fighter_gobj);
 extern void ftYoshiSpecialNCatchProcCatch(GObj* fighter_gobj);
 extern void ftYoshiSpecialAirNCatchProcCatch(GObj* fighter_gobj);
-extern void ftYoshiSpecialNReleaseInitStatusVars(GObj* fighter_gobj);
+extern void ftYoshiSpecialNReleaseInITStatusVars(GObj* fighter_gobj);
 extern void ftYoshiSpecialNReleaseSetStatus(GObj* fighter_gobj);
 extern void ftYoshiSpecialAirNReleaseSetStatus(GObj* fighter_gobj);
 

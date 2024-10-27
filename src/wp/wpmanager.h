@@ -7,15 +7,15 @@
 void wpManagerAllocWeapons(void);
 
 // Get memory region for weapon struct and advance global region pointer
-wpStruct* wpManagerGetNextStructAlloc(void);
+WPStruct* wpManagerGetNextStructAlloc(void);
 
 // Roll back local and global weapon struct pointer by one unit
-void wpManagerSetPrevStructAlloc(wpStruct* wp);
+void wpManagerSetPrevStructAlloc(WPStruct* wp);
 
 // Get group index for weapon and increment global group count
 u32 wpManagerGetGroupID();
 
 // Create new weapon
-GObj* wpManagerMakeWeapon(GObj* parent_gobj, wpCreateDesc* wp_desc, Vec3f* spawn_pos, u32 flags);
+GObj* wpManagerMakeWeapon(GObj* parent_gobj, WPCreateDesc* wp_desc, Vec3f* spawn_pos, u32 flags);
 
 #endif

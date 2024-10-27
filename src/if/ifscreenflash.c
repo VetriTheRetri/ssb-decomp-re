@@ -8,7 +8,7 @@
 // // // // // // // // // // // //
 
 // 0x80131A40
-gmColAnim sIFScreenFlashColAnim; 
+GMColAnim sIFScreenFlashColAnim; 
 
 // 0x80131AA4
 u8 sIFScreenFlashAlpha;
@@ -28,7 +28,7 @@ void ifScreenFlashSetColAnimID(s32 colanim_id, s32 colanim_duration)
 // 0x80115C20
 void ifScreenFlashFuncDisplay(GObj *gobj)
 {
-    gmColAnim *ca = &sIFScreenFlashColAnim;
+    GMColAnim *ca = &sIFScreenFlashColAnim;
     s32 alpha;
 
     if (ca->is_use_maincolor)

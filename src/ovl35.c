@@ -64,7 +64,7 @@ s32 gIntroPortraitsUnusedCounter;
 u32 D_ovl35_801329F8[96];
 
 // 0x80132B78
-lbFileNode D_ovl35_80132B78;
+LBFileNode D_ovl35_80132B78;
 
 // 0x80132B80
 u32 D_ovl35_80132B80[12];
@@ -388,15 +388,15 @@ void mvPortraitsMain(GObj* arg0)
 void mvPortraitsInit()
 {
 	s32 foo;
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buffer = (lbFileNode*) &D_ovl35_801329F8;
+	rl_setup.status_buffer = (LBFileNode*) &D_ovl35_801329F8;
 	rl_setup.status_buffer_size = 0x30;
-	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl35_80132B78;
+	rl_setup.force_status_buffer = (LBFileNode*) &D_ovl35_80132B78;
 	rl_setup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0), gIntroPortraitsFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0)), 0x10));

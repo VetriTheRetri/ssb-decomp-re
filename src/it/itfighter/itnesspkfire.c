@@ -16,7 +16,7 @@ extern intptr_t lITNessPKFireItemAttributes;// 0x00000034
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITNessPKFireItemDesc = 
+ITCreateDesc dITNessPKFireItemDesc = 
 {
     nITKindNessPKFire,                      // Item Kind
     &gFTNessFileSpecial1,                   // Pointer to item file data?
@@ -40,7 +40,7 @@ itCreateDesc dITNessPKFireItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITNessPKFireStatusDescs[/* */] =
+ITStatusDesc dITNessPKFireStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -97,32 +97,32 @@ sb32 itNessPKFireCommonProcUpdate(GObj *item_gobj)
 // 0x80185374
 sb32 itNessPKFireCommonUpdateAllCheckDestroy(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
-    itAttributes *attributes;
+    ITStruct *ip = itGetStruct(item_gobj);
+    ITAttributes *attributes;
     f32 unused;
     f32 half = 0.5;
     f32 lifetime_scale = ((ip->lifetime * half) / 100.0F) + half;
-    lbTransform *tfrm = ip->item_vars.pkfire.tfrm;
+    LBTransform *tfrm = ip->item_vars.pkfire.tfrm;
 
     DObjGetStruct(item_gobj)->scale.vec.f.x = DObjGetStruct(item_gobj)->scale.vec.f.y = DObjGetStruct(item_gobj)->scale.vec.f.z = lifetime_scale;
 
     attributes = ip->attributes;
 
-    ip->item_hit.offset[0].x = attributes->hit_offset1_x * lifetime_scale;
-    ip->item_hit.offset[0].y = attributes->hit_offset1_y * lifetime_scale;
-    ip->item_hit.offset[0].z = attributes->hit_offset1_z * lifetime_scale;
-    ip->item_hit.offset[1].x = attributes->hit_offset2_x * lifetime_scale;
-    ip->item_hit.offset[1].y = attributes->hit_offset2_y * lifetime_scale;
-    ip->item_hit.offset[1].z = attributes->hit_offset2_z * lifetime_scale;
+    ip->hit_coll.offset[0].x = attributes->hit_offset1_x * lifetime_scale;
+    ip->hit_coll.offset[0].y = attributes->hit_offset1_y * lifetime_scale;
+    ip->hit_coll.offset[0].z = attributes->hit_offset1_z * lifetime_scale;
+    ip->hit_coll.offset[1].x = attributes->hit_offset2_x * lifetime_scale;
+    ip->hit_coll.offset[1].y = attributes->hit_offset2_y * lifetime_scale;
+    ip->hit_coll.offset[1].z = attributes->hit_offset2_z * lifetime_scale;
 
-    ip->item_hit.size = attributes->size * 0.5F * lifetime_scale;
+    ip->hit_coll.size = attributes->size * 0.5F * lifetime_scale;
 
-    ip->item_hurt.offset.x = attributes->hurt_offset.x * lifetime_scale;
-    ip->item_hurt.offset.y = attributes->hurt_offset.y * lifetime_scale;
-    ip->item_hurt.offset.z = attributes->hurt_offset.z * lifetime_scale;
-    ip->item_hurt.size.x = attributes->hurt_size.x * 0.5F * lifetime_scale;
-    ip->item_hurt.size.y = attributes->hurt_size.y * 0.5F * lifetime_scale;
-    ip->item_hurt.size.z = attributes->hurt_size.z * 0.5F * lifetime_scale;
+    ip->damage_coll.offset.x = attributes->hurt_offset.x * lifetime_scale;
+    ip->damage_coll.offset.y = attributes->hurt_offset.y * lifetime_scale;
+    ip->damage_coll.offset.z = attributes->hurt_offset.z * lifetime_scale;
+    ip->damage_coll.size.x = attributes->hurt_size.x * 0.5F * lifetime_scale;
+    ip->damage_coll.size.y = attributes->hurt_size.y * 0.5F * lifetime_scale;
+    ip->damage_coll.size.z = attributes->hurt_size.z * 0.5F * lifetime_scale;
 
     if (tfrm != NULL)
     {
@@ -140,7 +140,7 @@ sb32 itNessPKFireCommonUpdateAllCheckDestroy(GObj *item_gobj)
 
         if (tfrm != NULL)
         {
-            lbParticleEjectStructID(tfrm->generator_id, 0);
+            LBParticleEjectStructID(tfrm->generator_id, 0);
         }
         return TRUE;
     }
@@ -160,7 +160,7 @@ sb32 itNessPKFireWaitProcUpdate(GObj *item_gobj)
 // 0x80185614
 sb32 itNessPKFireFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (itNessPKFireCommonUpdateAllCheckDestroy(item_gobj) == TRUE)
     {
@@ -190,7 +190,7 @@ sb32 itNessPKFireFallProcMap(GObj *item_gobj)
 // 0x801856BC
 sb32 itNessPKFireCommonProcDamage(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->lifetime > 0)
     {
@@ -206,52 +206,52 @@ sb32 itNessPKFireCommonProcDamage(GObj *item_gobj)
 // 0x80185710
 void itNessPKFireWaitSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
-    gmStatFlags stat_flags;
+    ITStruct *ip = itGetStruct(item_gobj);
+    GMStatFlags stat_flags;
     u16 stat_count;
 
     itMapSetGround(ip);
 
-    ip->phys_info.vel_ground = 0.0F;
-    ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0.0F;
+    ip->physics.vel_ground = 0.0F;
+    ip->physics.vel_air.x = ip->physics.vel_air.y = 0.0F;
 
-    stat_flags = ip->item_hit.stat_flags;
-    stat_count = ip->item_hit.stat_count;
+    stat_flags = ip->hit_coll.stat_flags;
+    stat_count = ip->hit_coll.stat_count;
 
     itMainSetItemStatus(item_gobj, dITNessPKFireStatusDescs, nITNessPKFireStatusWait);
 
-    ip->item_hit.stat_flags = stat_flags;
-    ip->item_hit.stat_count = stat_count;
+    ip->hit_coll.stat_flags = stat_flags;
+    ip->hit_coll.stat_count = stat_count;
 }
 
 // 0x8018579C
 void itNessPKFireFallSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
-    gmStatFlags stat_flags;
+    ITStruct *ip = itGetStruct(item_gobj);
+    GMStatFlags stat_flags;
     u16 stat_count;
 
     itMapSetAir(ip);
 
-    ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0.0F;
+    ip->physics.vel_air.x = ip->physics.vel_air.y = 0.0F;
 
-    stat_flags = ip->item_hit.stat_flags;
-    stat_count = ip->item_hit.stat_count;
+    stat_flags = ip->hit_coll.stat_flags;
+    stat_count = ip->hit_coll.stat_count;
 
     itMainSetItemStatus(item_gobj, dITNessPKFireStatusDescs, nITNessPKFireStatusFall);
 
-    ip->item_hit.stat_flags = stat_flags;
-    ip->item_hit.stat_count = stat_count;
+    ip->hit_coll.stat_flags = stat_flags;
+    ip->hit_coll.stat_count = stat_count;
 }
 
 // 0x80185824
 GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
 {
     GObj *item_gobj;
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    itStruct *ip;
-    lbParticle *ptcl;
-    lbTransform *tfrm;
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    ITStruct *ip;
+    LBParticle *ptcl;
+    LBTransform *tfrm;
 
     item_gobj = itManagerMakeItem(weapon_gobj, &dITNessPKFireItemDesc, pos, vel, (ITEM_FLAG_COLLPROJECT | ITEM_FLAG_PARENT_WEAPON));
 
@@ -271,30 +271,30 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
     ip->handicap = wp->handicap;
     ip->player_number = wp->player_number;
 
-    ip->item_hit.can_rehit_shield = TRUE;
+    ip->hit_coll.can_rehit_shield = TRUE;
 
-    ip->item_hit.stale = wp->weapon_hit.stale;
-    ip->item_hit.attack_id = wp->weapon_hit.attack_id;
-    ip->item_hit.motion_count = wp->weapon_hit.motion_count;
-    ip->item_hit.stat_flags = wp->weapon_hit.stat_flags;
-    ip->item_hit.stat_count = wp->weapon_hit.stat_count;
+    ip->hit_coll.stale = wp->hit_coll.stale;
+    ip->hit_coll.attack_id = wp->hit_coll.attack_id;
+    ip->hit_coll.motion_count = wp->hit_coll.motion_count;
+    ip->hit_coll.stat_flags = wp->hit_coll.stat_flags;
+    ip->hit_coll.stat_count = wp->hit_coll.stat_count;
 
     itMapSetAir(ip);
     itProcessUpdateHitPositions(item_gobj);
 
     ip->lifetime = ITPKFIRE_LIFETIME;
 
-    ptcl = lbParticleMakeScriptID(gFTNessParticleBankID, 0);
+    ptcl = LBParticleMakeScriptID(gFTNessParticleBankID, 0);
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForStruct(ptcl, 0);
+        tfrm = LBParticleAddTransformForStruct(ptcl, 0);
 
         if (tfrm != NULL)
         {
             ip->item_vars.pkfire.tfrm = tfrm;
 
-            lbParticleProcessStruct(ptcl);
+            LBParticleProcessStruct(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -304,7 +304,7 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
         }
         else
         {
-            lbParticleEjectStruct(ptcl);
+            LBParticleEjectStruct(ptcl);
 
             ip->item_vars.pkfire.tfrm = NULL;
         }

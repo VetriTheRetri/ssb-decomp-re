@@ -4,7 +4,7 @@
 #include <ft/fighter.h>
 
 // 0x8012A4F8
-ftStatusDesc dFTLuigiSpecialStatusDescs[/* */] =
+FTStatusDesc dFTLuigiSpecialStatusDescs[/* */] =
 {
 	// Status 220 (0xDC): Attack13
 	{

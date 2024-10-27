@@ -7,7 +7,7 @@
 // // // // // // // // // // // //
 
 // 0x80141FF0
-void ftCommonDokanStartUpdateModelPitch(ftStruct *fp)
+void ftCommonDokanStartUpdateModelPitch(FTStruct *fp)
 {
     if (fp->status_vars.common.dokan.turn_stop_wait != 0)
     {
@@ -22,7 +22,7 @@ void ftCommonDokanStartUpdateModelPitch(ftStruct *fp)
 // 0x8014204C
 void ftCommonDokanStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonDokanStartUpdateModelPitch(fp);
     ftAnimEndCheckSetStatus(fighter_gobj, ftCommonDokanWaitSetStatus);
@@ -31,7 +31,7 @@ void ftCommonDokanStartProcUpdate(GObj *fighter_gobj)
 // 0x80142080
 void ftCommonDokanStartProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f dokan_pos;
     Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
     s32 ground_line_id;
@@ -68,7 +68,7 @@ void ftCommonDokanStartProcPhysics(GObj *fighter_gobj)
 // 0x80142164
 void ftCommonDokanStartSetStatus(GObj *fighter_gobj, s32 material)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 new_point_id;
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDokanStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
@@ -111,7 +111,7 @@ void ftCommonDokanStartSetStatus(GObj *fighter_gobj, s32 material)
 // 0x80142258
 sb32 ftCommonDokanStartCheckInterruptCommon(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
     s32 ground_line_id;
     f32 dist_x;
@@ -161,7 +161,7 @@ sb32 ftCommonDokanStartCheckInterruptCommon(GObj *fighter_gobj)
 // 0x801423B4
 void ftCommonDokanWaitProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->status_vars.common.dokan.pos_adjust_wait++;
 
@@ -178,7 +178,7 @@ void ftCommonDokanWaitProcUpdate(GObj *fighter_gobj)
 // 0x80142424
 void ftCommonDokanWaitProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     DObjGetStruct(fighter_gobj)->translate.vec.f.x = gcGetInterpValueCubic(0.033333335F, fp->status_vars.common.dokan.pos_adjust_wait, fp->status_vars.common.dokan.pos_current.x, fp->status_vars.common.dokan.pos_target.x, 0.0F, 0.0F);
     DObjGetStruct(fighter_gobj)->translate.vec.f.y = gcGetInterpValueCubic(0.033333335F, fp->status_vars.common.dokan.pos_adjust_wait, fp->status_vars.common.dokan.pos_current.y, fp->status_vars.common.dokan.pos_target.y, 0.0F, 0.0F);
@@ -187,7 +187,7 @@ void ftCommonDokanWaitProcMap(GObj *fighter_gobj)
 // 0x801424BC
 void ftCommonDokanWaitSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     f32 pos_target_x;
     s32 line_id;
 
@@ -221,7 +221,7 @@ void ftCommonDokanWaitSetStatus(GObj *fighter_gobj)
 
         if (func_ovl2_800F9C30(&fp->status_vars.common.dokan.pos_target, NULL, &pos_target_x, NULL, NULL) != FALSE)
         {
-            fp->status_vars.common.dokan.pos_target.x += pos_target_x + fp->coll_data.objcoll.width;
+            fp->status_vars.common.dokan.pos_target.x += pos_target_x + fp->coll_data.object_coll.width;
         }
     }
 }
@@ -229,7 +229,7 @@ void ftCommonDokanWaitSetStatus(GObj *fighter_gobj)
 // 0x801425E4
 void ftCommonDokanEndUpdateModelPitch(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fighter_gobj->anim_frame >= FTCOMMON_DOKAN_EXIT_WAIT)
     {
@@ -247,7 +247,7 @@ void ftCommonDokanEndUpdateModelPitch(GObj *fighter_gobj)
 // 0x80142660
 void ftCommonDokanEndUpdatePlayerTag(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->status_vars.common.dokan.playertag_wait != 0)
     {
@@ -271,7 +271,7 @@ void ftCommonDokanEndProcUpdate(GObj *fighter_gobj)
 // 0x801426D0
 void ftCommonDokanEndSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDokanEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_HITSTATUS);
@@ -298,7 +298,7 @@ void ftCommonDokanEndSetStatus(GObj *fighter_gobj)
 // 0x801427CC
 void ftCommonDokanWalkSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
 

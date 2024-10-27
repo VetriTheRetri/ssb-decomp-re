@@ -27,21 +27,21 @@ enum grHyruleTwisterStatus
 // // // // // // // // // // // //
 
 // 0x8010A140
-lbParticle* grHyruleTwisterMakeEffect(Vec3f *pos, s32 effect_id)
+LBParticle* grHyruleTwisterMakeEffect(Vec3f *pos, s32 effect_id)
 {
-    lbParticle *ptcl = lbParticleMakeScriptID(gGRCommonStruct.hyrule.particle_bank_id | 8, effect_id);
+    LBParticle *ptcl = LBParticleMakeScriptID(gGRCommonStruct.hyrule.particle_bank_id | 8, effect_id);
 
     if (ptcl != NULL)
     {
-        lbTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 0);
+        LBTransform *tfrm = LBParticleAddTransformForStruct(ptcl, 0);
 
         if (tfrm == NULL)
         {
-            lbParticleEjectStruct(ptcl);
+            LBParticleEjectStruct(ptcl);
 
             return NULL;
         }
-        lbParticleProcessStruct(ptcl);
+        LBParticleProcessStruct(ptcl);
 
         if (tfrm->users_num == 0)
         {
@@ -59,7 +59,7 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
     f32 ground_dist;
     GObj *twister_gobj;
     DObj *twister_dobj;
-    lbParticle *ptcl;
+    LBParticle *ptcl;
     Vec3f edge_pos;
     s32 edge_under;
 
@@ -199,7 +199,7 @@ s32 grHyruleTwisterGetLR(void)
 
     while (fighter_gobj != NULL)
     {
-        ftStruct *fp = ftGetStruct(fighter_gobj);
+        FTStruct *fp = ftGetStruct(fighter_gobj);
 
         if ((fp->ga == nMPKineticsGround) && (fp->coll_data.ground_line_id == gGRCommonStruct.hyrule.twister_line_id))
         {
@@ -310,9 +310,9 @@ void grHyruleTwisterUpdateStop(void)
 
     while (fighter_gobj != NULL)
     {
-        ftStruct *fp = ftGetStruct(fighter_gobj);
+        FTStruct *fp = ftGetStruct(fighter_gobj);
 
-        if (fp->status_info.status_id != nFTCommonStatusTwister)
+        if (fp->status_id != nFTCommonStatusTwister)
         {
             fighter_gobj = fighter_gobj->link_next;
         }
@@ -342,7 +342,7 @@ void grHyruleTwisterUpdateSubside(void)
 
         if (gGRCommonStruct.hyrule.twister_tfrm != NULL)
         {
-            lbParticleEjectStructID(gGRCommonStruct.hyrule.twister_tfrm->generator_id, 1);
+            LBParticleEjectStructID(gGRCommonStruct.hyrule.twister_tfrm->generator_id, 1);
         }
     }
 }
@@ -426,14 +426,14 @@ GObj* grHyruleMakeGround(void)
 // 0x8010AB74
 sb32 grHyruleTwisterCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, s32 *kind)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     f32 dist_y;
     f32 dist_x;
 
     if 
     (
         (fp->twister_wait == 0)                                && 
-        (fp->status_info.status_id != nFTCommonStatusTwister) && 
+        (fp->status_id != nFTCommonStatusTwister) && 
         !(fp->capture_immune_mask & FTCATCHKIND_MASK_TWISTER)  &&
         (ftParamGetBestHitStatusAll(fighter_gobj) == nGMHitStatusNormal)
     )

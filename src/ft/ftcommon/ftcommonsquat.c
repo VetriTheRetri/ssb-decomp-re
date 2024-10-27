@@ -77,7 +77,7 @@
 // 0x80142E70
 sb32 ftCommonSquatCheckGotoPass(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->status_vars.common.squat.is_allow_pass != FALSE)
     {
@@ -118,7 +118,7 @@ void ftCommonSquatProcInterrupt(GObj *fighter_gobj)
 // 0x80143024
 void ftCommonSquatSetStatusNoPass(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusSquat, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
@@ -138,7 +138,7 @@ void ftCommonSquatSetStatusNoPass(GObj *fighter_gobj)
 // 0x801430A8
 void ftCommonSquatSetStatusPass(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusSquat, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
@@ -153,7 +153,7 @@ void ftCommonSquatSetStatusPass(GObj *fighter_gobj)
 // 0x8014310C
 sb32 ftCommonSquatCheckInterruptCommon(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->input.pl.stick_range.y <= (FTCOMMON_SQUAT_STICK_RANGE_MIN - 2))
     {
@@ -182,7 +182,7 @@ void ftCommonSquatWaitProcInterrupt(GObj *fighter_gobj)
 // 0x8014329C
 void ftCommonSquatWaitSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusSquatWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
@@ -194,7 +194,7 @@ void ftCommonSquatWaitSetStatus(GObj *fighter_gobj)
 // 0x801432F0
 void ftCommonSquatWaitSetStatusNoPass(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusSquatWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
@@ -210,7 +210,7 @@ void ftCommonSquatWaitSetStatusNoPass(GObj *fighter_gobj)
 // 0x80143354
 sb32 ftCommonSquatWaitCheckInterruptLanding(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->input.pl.stick_range.y <= (FTCOMMON_SQUAT_STICK_RANGE_MIN - 2))
     {
@@ -233,7 +233,7 @@ void ftCommonSquatRvProcInterrupt(GObj *fighter_gobj)
 // 0x801434CC
 void ftCommonSquatRvSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusSquatRv, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
@@ -244,7 +244,7 @@ void ftCommonSquatRvSetStatus(GObj *fighter_gobj)
 // 0x8014351C
 sb32 ftCommonSquatRvCheckInterruptSquatWait(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->input.pl.stick_range.y >= (FTCOMMON_SQUAT_STICK_RANGE_MIN + 4))
     {

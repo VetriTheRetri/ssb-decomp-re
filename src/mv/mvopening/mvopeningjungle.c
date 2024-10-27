@@ -53,16 +53,16 @@ CObjDesc sMVOpeningJungleUnusedCObjDescAdjustedStart;
 CObjDesc sMVOpeningJungleUnusedCObjDescAdjustedEnd;
 
 // 0x8018DAA8
-lbFileNode sMVOpeningJungleStatusBuffer[48];
+LBFileNode sMVOpeningJungleStatusBuffer[48];
 
 // 0x8018DC28
-lbFileNode sMVOpeningJungleForceStatusBuffer[7];
+LBFileNode sMVOpeningJungleForceStatusBuffer[7];
 
 // 0x8018DC60
 void *sMVOpeningJungleFiles[2];
 
 // 0x8018DC68
-scBattleState sMVOpeningJungleBattleState;
+SCBattleState sMVOpeningJungleBattleState;
 
 // // // // // // // // // // // //
 //                               //
@@ -97,7 +97,7 @@ CObjDesc dMVOpeningJungleCObjDescEnd =
 };
 
 // 0x8018D8A8
-ftKeyCommand dMVOpeningJungleDonkeyInputSeq[/* */] =
+FTKeyCommand dMVOpeningJungleDonkeyInputSeq[/* */] =
 {
     FTKEY_EVENT_STICK(0, -I_CONTROLLER_RANGE_MAX, 0),   // 0x2000, 0x00B0
     FTKEY_EVENT_BUTTON(B_BUTTON, 1),                    // 0x1001, 0x4000
@@ -120,7 +120,7 @@ ftKeyCommand dMVOpeningJungleDonkeyInputSeq[/* */] =
 };
 
 // 0x8018D8F0
-ftKeyCommand dMVOpeningJungleSamusInputSeq[/* */] =
+FTKeyCommand dMVOpeningJungleSamusInputSeq[/* */] =
 {
     FTKEY_EVENT_STICK(-I_CONTROLLER_RANGE_MAX, 0, 20),  // 0x2014, 0xB000
     FTKEY_EVENT_STICK(0, 0, 75),                        // 0x204B, 0x0000
@@ -201,7 +201,7 @@ syTaskmanSetup dMVOpeningJungleTaskmanSetup =
 // 0x8018D0C0
 void mvOpeningJungleSetupFiles(void)
 {
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
@@ -271,7 +271,7 @@ void mvOpeningJungleMakeFighters(void)
     s32 unused[2];
     s32 pos_ids[2];
     Vec3f spawn_position[2];
-    ftStruct *fp;
+    FTStruct *fp;
 
     grWallpaperMakeDecideKind();
     grCommonSetupInitAll();
@@ -307,7 +307,7 @@ void mvOpeningJungleMakeFighters(void)
 
     for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
     {
-        ftCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+        FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
         if (gBattleState->players[i].pl_kind == nFTPlayerKindNot)
         {

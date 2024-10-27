@@ -24,7 +24,7 @@ void ftKirbyCopyMarioSpecialNProcUpdate(GObj *fighter_gobj)
 // 0x801569D4
 void ftKirbyCopyMarioSpecialNProcAccessory(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
     s32 fireball_kind;
 
@@ -76,7 +76,7 @@ void ftKirbyCopyMarioSpecialAirNProcMap(GObj *fighter_gobj)
 // 0x80156ABC
 void ftKirbyCopyMarioSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
 
@@ -88,7 +88,7 @@ void ftKirbyCopyMarioSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 // 0x80156B38
 void ftKirbyCopyMarioSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
 
@@ -100,9 +100,9 @@ void ftKirbyCopyMarioSpecialNSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x80156BB8
-void ftKirbyCopyMarioSpecialNInitStatusVars(GObj *fighter_gobj)
+void ftKirbyCopyMarioSpecialNInITStatusVars(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->command_vars.flags.flag0 = 0;
     fp->proc_accessory = ftKirbyCopyMarioSpecialNProcAccessory;
@@ -111,19 +111,19 @@ void ftKirbyCopyMarioSpecialNInitStatusVars(GObj *fighter_gobj)
 // 0x80156BD0
 void ftKirbyCopyMarioSpecialNSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, nFTKirbyStatusCopyMarioSpecialN, nFTKirbyStatusCopyLuigiSpecialN), 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftKirbyCopyMarioSpecialNInitStatusVars(fighter_gobj);
+    ftKirbyCopyMarioSpecialNInITStatusVars(fighter_gobj);
 }
 
 // 0x80156C38
 void ftKirbyCopyMarioSpecialAirNSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, nFTKirbyStatusCopyMarioSpecialAirN, nFTKirbyStatusCopyLuigiSpecialAirN), 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftKirbyCopyMarioSpecialNInitStatusVars(fighter_gobj);
+    ftKirbyCopyMarioSpecialNInITStatusVars(fighter_gobj);
 }

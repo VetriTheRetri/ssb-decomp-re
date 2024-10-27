@@ -21,7 +21,7 @@
 // // // // // // // // // // // //
 
 // 0x80148120
-void ftCommonGuardCheckScheduleRelease(ftStruct *fp)
+void ftCommonGuardCheckScheduleRelease(FTStruct *fp)
 {
     if (!(fp->input.pl.button_hold & fp->input.button_mask_z))
     {
@@ -70,7 +70,7 @@ void ftCommonGuardOffSetHitStatusYoshi(GObj *fighter_gobj)
 // 0x80148304
 void ftCommonGuardUpdateShieldVars(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->is_shield)
     {
@@ -121,7 +121,7 @@ void ftCommonGuardUpdateShieldVars(GObj *fighter_gobj)
 }
 
 // 0x80148408
-void ftCommonGuardUpdateShieldCollision(ftStruct *fp)
+void ftCommonGuardUpdateShieldCollision(FTStruct *fp)
 {
     Vec3f *scale = &fp->joints[nFTPartsJointYRotN]->scale.vec.f;
     f32 scale_final;
@@ -145,7 +145,7 @@ void ftCommonGuardUpdateShieldCollision(ftStruct *fp)
 }
 
 // 0x80148488
-void ftCommonGuardUpdateShieldAngle(ftStruct *fp)
+void ftCommonGuardUpdateShieldAngle(FTStruct *fp)
 {
     f32 angle_r = atan2f(fp->input.pl.stick_range.y, fp->input.pl.stick_range.x * fp->lr);
     f32 angle_d;
@@ -210,10 +210,10 @@ void ftCommonGuardGetJointTransformScale(DObj *joint, DObjDesc *joint_desc, f32 
     joint->translate.vec.f.z = ((joint->translate.vec.f.z - scale_translate) * range) + scale_translate;
 }
 
-// Return to this when the struct at 0x2D8 of ftAttributes is mapped
+// Return to this when the struct at 0x2D8 of FTAttributes is mapped
 void ftCommonGuardUpdateJoints(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 unused2;
     DObj *yrotn_joint = fp->joints[nFTPartsJointYRotN];
     DObj **p_joint = &fp->joints[nFTPartsJointXRotN];
@@ -259,15 +259,15 @@ void ftCommonGuardUpdateJoints(GObj *fighter_gobj)
 // Need to revisit this when once I have a better understanding of these structs...
 void ftCommonGuardInitJoints(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
     DObj **p_joint = &fp->joints[nFTPartsJointCommonStart];
     DObjDesc *dobjdesc = &attributes->dobj_lookup[1];
     DObj *joint;
     Vec3f *scale;
     s32 i;
 
-    if (fp->status_info.status_id != nFTCommonStatusGuardSetOff)
+    if (fp->status_id != nFTCommonStatusGuardSetOff)
     {
         ftCommonGuardUpdateShieldAngle(fp);
     }
@@ -359,7 +359,7 @@ void ftCommonGuardInitJoints(GObj *fighter_gobj)
 // 0x80148A88
 void ftCommonGuardOnProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonGuardCheckScheduleRelease(fp);
     ftCommonGuardUpdateShieldVars(fighter_gobj);
@@ -412,7 +412,7 @@ void ftCommonGuardCommonProcInterrupt(GObj *fighter_gobj)
 // 0x80148BFC
 void ftCommonGuardOnSetStatus(GObj *fighter_gobj, s32 slide_frames)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusGuardOn, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
@@ -443,7 +443,7 @@ void ftCommonGuardOnSetStatus(GObj *fighter_gobj, s32 slide_frames)
 // 0x80148CBC
 sb32 ftCommonGuardOnCheckInterruptSuccess(GObj *fighter_gobj, s32 slide_frames)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((fp->input.pl.button_hold & fp->input.button_mask_z) && (fp->shield_health != 0))
     {
@@ -469,7 +469,7 @@ sb32 ftCommonGuardOnCheckInterruptDashRun(GObj *fighter_gobj, s32 slide_frames)
 // 0x80148D4C
 void ftCommonGuardProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonGuardCheckScheduleRelease(fp);
     ftCommonGuardUpdateShieldVars(fighter_gobj);
@@ -488,7 +488,7 @@ void ftCommonGuardProcUpdate(GObj *fighter_gobj)
 // 0x80148DDC
 void ftCommonGuardSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusGuard, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT));
     ftCommonGuardInitJoints(fighter_gobj);

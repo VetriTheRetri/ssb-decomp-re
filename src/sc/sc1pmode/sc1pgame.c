@@ -61,7 +61,7 @@ Vec3f sSC1PGameBossDefeatZoomPosition;
 u16 sSC1PGameBossDefeatSoundTerminateTemp;
 
 // 0x80192FE0
-sc1PGameFighter sSC1PGamePlayerSetups[GMCOMMON_PLAYERS_MAX];
+SC1PGameFighter sSC1PGamePlayerSetups[GMCOMMON_PLAYERS_MAX];
 
 // 0x80193060 - Costume ID for all members of Kirby Team?
 s32 sSC1PGameEnemyKirbyCostume;
@@ -70,10 +70,10 @@ s32 sSC1PGameEnemyKirbyCostume;
 void *sSC1PGameZakoStockSprite;
 
 // 0x80193068
-lbFileNode sSC1PGameStatusBuffer[100];
+LBFileNode sSC1PGameStatusBuffer[100];
 
 // 0x80193388
-lbFileNode sSC1PGameForceStatusBuffer[7];
+LBFileNode sSC1PGameForceStatusBuffer[7];
 
 // 0x801933C0
 sb32 sSC1PGameIsEndStage;
@@ -88,7 +88,7 @@ s32 sSC1PGameBonusStatEndPlayerStatus;
 s32 sSC1PGameBonusStatInvincibleTimer;
 
 // 0x801933D0 - Specific stats of all enemy players?
-sc1PGameStats sSC1PGameBonusStatEnemyStats[SC1PGAME_STAGE_MAX_TEAM_COUNT];
+SC1PGameStats sSC1PGameBonusStatEnemyStats[SC1PGAME_STAGE_MAX_TEAM_COUNT];
 
 // 0x801936A0 - Player's number of KOs scored on enemies
 s32 sSC1PGameBonusStatNumPlayerKOs;
@@ -151,7 +151,7 @@ s32 sSC1PGamePlayerInterfacePositionsX[GMCOMMON_PLAYERS_MAX];
 u8 sSC1PGameEnemyStocksDisplay;
 
 // 0x801938CC
-ftSprites *sSC1PGameEnemyTeamSprites;
+FTSprites *sSC1PGameEnemyTeamSprites;
 
 // // // // // // // // // // // //
 //                               //
@@ -178,7 +178,7 @@ f32 D_ovl65_80192808[/* */] = { -15.0F, 0.0F, 15.0F, 30.0F, 45.0F, 60.0F };
 f32 D_ovl65_80192820[/* */] = { 1.0F, 2.0F, -8.0F, -30.0F };
 
 // 0x80192830
-sc1PGameComputer dSC1PGameComputerDesc[/* */] = 
+SC1PGameComputer dSC1PGameComputerDesc[/* */] = 
 {
     // VS Link
     {
@@ -362,7 +362,7 @@ sc1PGameComputer dSC1PGameComputerDesc[/* */] =
 };
 
 // 0x801929BC
-sc1PGameStage dSC1PGameStageDesc[/* */] =
+SC1PGameStage dSC1PGameStageDesc[/* */] =
 {
     // VS Link
     {
@@ -715,7 +715,7 @@ syTaskmanSetup dSC1PGameTaskmanSetup =
 // 0x8018D0C0
 void sc1PGameSetupFiles(void)
 {
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
@@ -759,14 +759,14 @@ void sc1PGameSetGameStart(void)
 void sc1PGameSetGameEnd(void)
 {
     GObj *fighter_gobj;
-    ftStruct *fp;
+    FTStruct *fp;
 
     sSC1PGameIsEndStage = TRUE;
 
     fighter_gobj = gBattleState->players[gSceneData.spgame_player].fighter_gobj;
     fp = ftGetStruct(fighter_gobj);
 
-    sSC1PGameBonusStatEndPlayerStatus = fp->status_info.status_id;
+    sSC1PGameBonusStatEndPlayerStatus = fp->status_id;
     sSC1PGameBonusStatInvincibleTimer = fp->star_invincible_tics;
 }
 
@@ -901,7 +901,7 @@ void sc1PGameGetRandomSpawnPosition(Vec3f *mapobj_pos, s32 mapobj_kind)
 }
 
 // 0x8018D4EC
-void sc1PGameSetupEnemyPlayer(sc1PGameStage *stagesetup, sc1PGameComputer *comsetup, s32 player, s32 enemy_player_num)
+void sc1PGameSetupEnemyPlayer(SC1PGameStage *stagesetup, SC1PGameComputer *comsetup, s32 player, s32 enemy_player_num)
 {
     s32 level = comsetup->enemy_level[gSaveData.spgame_difficulty];
 
@@ -932,8 +932,8 @@ void sc1PGameSetupEnemyPlayer(sc1PGameStage *stagesetup, sc1PGameComputer *comse
 // 0x8018D60C
 void sc1PGameSetupStageAll(void)
 {
-    sc1PGameStage *stagesetup = &dSC1PGameStageDesc[gSceneData.spgame_stage];
-    sc1PGameComputer *comsetup = &dSC1PGameComputerDesc[gSceneData.spgame_stage];
+    SC1PGameStage *stagesetup = &dSC1PGameStageDesc[gSceneData.spgame_stage];
+    SC1PGameComputer *comsetup = &dSC1PGameComputerDesc[gSceneData.spgame_stage];
     s32 player, com;
     u16 flags;
     s32 i;
@@ -1267,10 +1267,10 @@ void sc1PGameSetupStageAll(void)
 // 0x8018E18C - Spawn next member of enemy team
 void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
 {
-    ftStruct *fp;
-    ftAttributes *attributes;
+    FTStruct *fp;
+    FTAttributes *attributes;
     void *unused2;
-    ftCreateDesc player_spawn;
+    FTCreateDesc player_spawn;
     void **figatree;
     GObj *com_gobj;
     s32 player;
@@ -1365,7 +1365,7 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
         ftParamInitPlayerBattleStats(player, com_gobj);
         ftParamUnlockPlayerControl(com_gobj);
 
-        fp->fighter_com.trait = sSC1PGamePlayerSetups[player].cp_trait;
+        fp->computer.trait = sSC1PGamePlayerSetups[player].cp_trait;
 
         ifCommonPlayerDamageStopBreakAnim(fp);
 
@@ -1497,8 +1497,8 @@ void sc1PGameWaitStageBonus3Update(void)
 void sc1PGameWaitStageBossUpdate(void)
 {
     GObj *player_gobj;
-    ftStruct *player_fp;
-    ftStruct *com_fp;
+    FTStruct *player_fp;
+    FTStruct *com_fp;
     GObj *com_gobj;
     s32 player;
     Vec3f sp20;
@@ -1644,13 +1644,13 @@ void sc1PGameTeamStockDisplayFuncDisplay(GObj *interface_gobj)
                     switch (gSceneData.spgame_stage)
                     {
                     case nSC1PGameStageYoshi:
-                        sobj->sprite = *sSC1PGameEnemyTeamSprites->stock_spr;
-                        sobj->sprite.LUT = sSC1PGameEnemyTeamSprites->stock_lut[sSC1PGameEnemyVariations[stock_num]];
+                        sobj->sprite = *sSC1PGameEnemyTeamSprites->stock_sprite;
+                        sobj->sprite.LUT = sSC1PGameEnemyTeamSprites->stock_luts[sSC1PGameEnemyVariations[stock_num]];
                         break;
 
                     case nSC1PGameStageKirby:
-                        sobj->sprite = *sSC1PGameEnemyTeamSprites->stock_spr;
-                        sobj->sprite.LUT = sSC1PGameEnemyTeamSprites->stock_lut[sSC1PGameEnemyKirbyCostume];
+                        sobj->sprite = *sSC1PGameEnemyTeamSprites->stock_sprite;
+                        sobj->sprite.LUT = sSC1PGameEnemyTeamSprites->stock_luts[sSC1PGameEnemyKirbyCostume];
                         break;
 
                     case nSC1PGameStageZako:
@@ -1669,7 +1669,7 @@ void sc1PGameTeamStockDisplayFuncDisplay(GObj *interface_gobj)
 void sc1PGameInitTeamStockDisplay(void)
 {
     GObj *interface_gobj;
-    ftStruct *fp;
+    FTStruct *fp;
     Sprite *sprite;
     s32 i;
 
@@ -1696,7 +1696,7 @@ void sc1PGameInitTeamStockDisplay(void)
         }
         sSC1PGameEnemyTeamSprites = fp->attributes->sprites;
 
-        sprite = sSC1PGameEnemyTeamSprites->stock_spr;
+        sprite = sSC1PGameEnemyTeamSprites->stock_sprite;
 
         sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 
@@ -1735,8 +1735,8 @@ void sc1PGameInitTeamStockDisplay(void)
 void sc1PGameSetPlayerDefeatStats(s32 player, s32 team_order)
 {
     GObj *fighter_gobj = gBattleState->players[player].fighter_gobj;
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    sc1PGameStats *enemy_stats;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    SC1PGameStats *enemy_stats;
 
     if 
     (
@@ -1755,7 +1755,7 @@ void sc1PGameSetPlayerDefeatStats(s32 player, s32 team_order)
         enemy_stats = &sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs];
 
         enemy_stats->team_order = fp->team_order;
-        enemy_stats->damage_status_id = fp->status_info.status_id;
+        enemy_stats->damage_status_id = fp->status_id;
         enemy_stats->damage_player = fp->damage_player;
         enemy_stats->damage_object_class = fp->damage_object_class;
         enemy_stats->damage_object_kind = fp->damage_object_kind;
@@ -1847,7 +1847,7 @@ s32 sc1PGameGetEnemySpawnLR(s32 target_player)
 void func_ovl65_8018F3AC(void)
 {
     GObj *fighter_gobj = gBattleState->players[gSceneData.spgame_player].fighter_gobj;
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     func_ovl2_8010CF44
     (
@@ -1862,7 +1862,7 @@ void func_ovl65_8018F3AC(void)
 }
 
 // 0x8018F4B0
-void sc1PGameBossSetZoomCamera(ftStruct *fp)
+void sc1PGameBossSetZoomCamera(FTStruct *fp)
 {
     Vec3f world_pos;
     Vec3f zoom;
@@ -1887,7 +1887,7 @@ void sc1PGameBossHidePlayerTagAll(void)
 
     while (fighter_gobj != NULL)
     {
-        ftStruct *fp = ftGetStruct(fighter_gobj);
+        FTStruct *fp = ftGetStruct(fighter_gobj);
 
         fp->is_playertag_bossend = TRUE;
 
@@ -1898,7 +1898,7 @@ void sc1PGameBossHidePlayerTagAll(void)
 // 0x8018F574
 void sc1PGameBossAddBossInterface(GObj *fighter_gobj, u32 unused)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->ft_kind == nFTKindBoss)
     {
@@ -1915,7 +1915,7 @@ void sc1PGameBossLockPlayerControl(GObj *fighter_gobj, u32 unused)
 // 0x8018F5CC
 void sc1PGameBossSetIgnorePlayerMapBounds(GObj *fighter_gobj, u32 unused)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->is_limit_map_bounds = TRUE;
 }
@@ -1968,7 +1968,7 @@ void sc1PGameBossDefeatInterfaceProcSet(void)
 // 0x8018F75C
 void sc1PGameBossDefeatInitInterface(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     gIFCommonPlayerInterface.is_mglass_display = FALSE;
 
@@ -1982,14 +1982,14 @@ void sc1PGameBossDefeatInitInterface(GObj *fighter_gobj)
 void sc1PGameFuncStart(void)
 {
     GObj *fighter_gobj;
-    ftData *plns;
+    FTData *plns;
     u32 largest_size;
-    ftStruct *fp;
+    FTStruct *fp;
     sb32(*proc)(void*);
     void *addr;
     u8 spA0[0x10];
     s32 i;
-    ftCreateDesc player_spawn;
+    FTCreateDesc player_spawn;
     syColorRGBA color;
 
     sc1PGameSetupStageAll();
@@ -2124,7 +2124,7 @@ void sc1PGameFuncStart(void)
 
         ftParamInitPlayerBattleStats(i, fighter_gobj);
 
-        fp->fighter_com.trait = sSC1PGamePlayerSetups[i].cp_trait;
+        fp->computer.trait = sSC1PGamePlayerSetups[i].cp_trait;
 
         fp->camera_zoom_frame *= sSC1PGamePlayerSetups[i].camera_frame_mul;
     }
@@ -2172,7 +2172,7 @@ void sc1PGameAppendBonusStats(void)
     s32 damage_jackpot_bak;
     s32 variation;
     s32 special_count;
-    u32 attack_count;
+    u32 hit_count;
     u8 variation_order[SC1PGAME_STAGE_MAX_VARIATIONS_COUNT]; // Full array of 12? Almost half of this goes unused, but stack suggests this is correct.
     s32 i;
 
@@ -2781,17 +2781,17 @@ check_heavy_damage:
         !(gSceneData.bonus_get_mask[1] & SC1PGAME_BONUS_MASK1_SMASHMANIA)
     )
     {
-        attack_count = 0;
+        hit_count = 0;
 
         for (i = nFTStatusAttackIDAttackStart; i < ARRAY_COUNT(gSC1PGameBonusAttackIDCount); i++)
         {
-            attack_count += gSC1PGameBonusAttackIDCount[i];
+            hit_count += gSC1PGameBonusAttackIDCount[i];
         }
-        if (attack_count != 0)
+        if (hit_count != 0)
         {
             for (i = nFTStatusAttackIDAttackStart; i < ARRAY_COUNT(gSC1PGameBonusAttackIDCount); i++)
             {
-                if ((gSC1PGameBonusAttackIDCount[i] / (f32)attack_count) >= F_PCT_TO_DEC(35.0F))
+                if ((gSC1PGameBonusAttackIDCount[i] / (f32)hit_count) >= F_PCT_TO_DEC(35.0F))
                 {
                     // Cheap Shot
                     gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_CHEAPSHOT;

@@ -34,10 +34,10 @@ s32 sSC1PChallengerTotalTimeTics;
 s32 sSC1PChallengerPad0x8013249C;
 
 // 0x801324A0
-lbFileNode sSC1PChallengerForceStatusBuffer[7];
+LBFileNode sSC1PChallengerForceStatusBuffer[7];
 
 // 0x801324D8
-lbFileNode sSC1PChallengerStatusBuffer[100];
+LBFileNode sSC1PChallengerStatusBuffer[100];
 
 // 0x801327F8
 void *sSC1PChallengerFiles[1];
@@ -207,7 +207,7 @@ void sc1PChallengerFighterProcUpdate(GObj *fighter_gobj)
 void sc1PChallengerMakeFighter(s32 ft_kind)
 {
     GObj *fighter_gobj;
-    ftCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
     ft_desc.ft_kind = ft_kind;
     ft_desc.costume = ftParamGetCostumeCommonID(ft_kind, 0);
@@ -338,7 +338,7 @@ void sc1PChallengerFuncRun(GObj *gobj)
 // 0x801321C0
 void sc1PChallengerFuncStart(void)
 {
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
     s32 unused;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;

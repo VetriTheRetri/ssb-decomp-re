@@ -30,19 +30,19 @@ void *gITManagerFileData;
 s32 gITManagerParticleBankID;
 
 // 0x8018D048
-itRandomWeights gITManagerRandomWeights;
+ITRandomWeights gITManagerRandomWeights;
 
 // 0x8018D060
-itMonsterInfo gITManagerMonsterData;
+ITMonsterData gITManagerMonsterData;
 
 // 0x8018D090
 s32 gITManagerDisplayMode;
 
 // 0x8018D094 - points to next available item struct
-itStruct *gITManagerStructsAllocFree;
+ITStruct *gITManagerStructsAllocFree;
 
 // 0x8018D098
-itSpawnActor gITManagerSpawnActor;
+ITSpawnActor gITManagerSpawnActor;
 
 // // // // // // // // // // // //
 //                               //
@@ -143,10 +143,10 @@ GObj* (*dITManagerProcMakeList[/* */])(GObj*, Vec3f*, Vec3f*, u32) =
 // 0x8016DEA0
 void itManagerInitItems(void) // Many linker things here
 {
-    itStruct *ip;
+    ITStruct *ip;
     s32 i;
 
-    gITManagerStructsAllocFree = ip = syTaskmanMalloc(sizeof(itStruct) * ITEM_ALLOC_MAX, 0x8);
+    gITManagerStructsAllocFree = ip = syTaskmanMalloc(sizeof(ITStruct) * ITEM_ALLOC_MAX, 0x8);
 
     for (i = 0; i < (ITEM_ALLOC_MAX - 1); i++)
     {
@@ -173,10 +173,10 @@ void itManagerInitItems(void) // Many linker things here
 }
 
 // 0x8016DFAC
-itStruct* itManagerGetNextStructAlloc(void) // Set global Item user_data link pointer to next member
+ITStruct* itManagerGetNextStructAlloc(void) // Set global Item user_data link pointer to next member
 {
-    itStruct *new_item = gITManagerStructsAllocFree;
-    itStruct *get_item;
+    ITStruct *new_item = gITManagerStructsAllocFree;
+    ITStruct *get_item;
 
     if (new_item == NULL)
     {
@@ -190,7 +190,7 @@ itStruct* itManagerGetNextStructAlloc(void) // Set global Item user_data link po
 }
 
 // 0x8016DFDC
-void itManagerSetPrevStructAlloc(itStruct *ip) // Set global Item user_data link pointer to previous member
+void itManagerSetPrevStructAlloc(ITStruct *ip) // Set global Item user_data link pointer to previous member
 {
     ip->alloc_next = gITManagerStructsAllocFree;
 
@@ -237,11 +237,11 @@ void itManagerSetupItemDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs, u8 tr
 }
 
 // 0x8016E174
-GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    itStruct *ip = itManagerGetNextStructAlloc();
+    ITStruct *ip = itManagerGetNextStructAlloc();
     GObj *item_gobj;
-    itAttributes *attributes;
+    ITAttributes *attributes;
     void (*func_display)(GObj*);
     s32 unused[4];
 
@@ -257,13 +257,13 @@ GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, 
 
         return NULL;
     }
-    attributes = lbRelocGetDataFromFile(itAttributes*, *item_desc->p_file, item_desc->o_attributes);
+    attributes = lbRelocGetDataFromFile(ITAttributes*, *item_desc->p_file, item_desc->o_attributes);
 
-    if (attributes->is_render_colanim)
+    if (attributes->is_display_colanim)
     {
-        func_display = (attributes->is_render_xlu) ? itDisplayColAnimXLUFuncDisplay : itDisplayColAnimOPAFuncDisplay;
+        func_display = (attributes->is_display_xlu) ? itDisplayColAnimXLUFuncDisplay : itDisplayColAnimOPAFuncDisplay;
     }
-    else func_display = (attributes->is_render_xlu) ? itDisplayXLUFuncDisplay : itDisplayOPAFuncDisplay;
+    else func_display = (attributes->is_display_xlu) ? itDisplayXLUFuncDisplay : itDisplayOPAFuncDisplay;
 
     gcAddGObjDisplay(item_gobj, func_display, 11, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -275,8 +275,8 @@ GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, 
     ip->it_kind = item_desc->it_kind;
     ip->type = attributes->type;
 
-    ip->phys_info.vel_air = *vel;
-    ip->phys_info.vel_ground = 0.0F;
+    ip->physics.vel_air = *vel;
+    ip->physics.vel_ground = 0.0F;
 
     ip->attributes = attributes;
 
@@ -315,54 +315,54 @@ GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, 
 
     ip->rotate_step         = 0.0F;
 
-    ip->indicator_gobj      = NULL;
-    ip->indicator_timer     = 0;
+    ip->arrow_gobj      = NULL;
+    ip->arrow_timer     = 0;
 
-    ip->item_hit.update_state       = item_desc->update_state;
-    ip->item_hit.damage             = attributes->damage;
-    ip->item_hit.throw_mul          = 1.0F;
-    ip->item_hit.stale              = 1.0F;
-    ip->item_hit.element            = attributes->element;
-    ip->item_hit.offset[0].x        = attributes->hit_offset1_x;
-    ip->item_hit.offset[0].y        = attributes->hit_offset1_y;
-    ip->item_hit.offset[0].z        = attributes->hit_offset1_z;
-    ip->item_hit.offset[1].x        = attributes->hit_offset2_x;
-    ip->item_hit.offset[1].y        = attributes->hit_offset2_y;
-    ip->item_hit.offset[1].z        = attributes->hit_offset2_z;
-    ip->item_hit.size               = attributes->size * 0.5F;
-    ip->item_hit.angle              = attributes->angle;
-    ip->item_hit.knockback_scale    = attributes->knockback_scale;
-    ip->item_hit.knockback_weight   = attributes->knockback_weight;
-    ip->item_hit.knockback_base     = attributes->knockback_base;
-    ip->item_hit.can_setoff         = attributes->can_setoff;
-    ip->item_hit.shield_damage      = attributes->shield_damage;
-    ip->item_hit.hit_sfx            = attributes->hit_sfx;
-    ip->item_hit.priority           = attributes->priority;
-    ip->item_hit.can_rehit_item     = attributes->can_rehit_item;
-    ip->item_hit.can_rehit_fighter  = attributes->can_rehit_fighter;
-    ip->item_hit.can_rehit_shield   = FALSE;
-    ip->item_hit.can_hop            = attributes->can_hop;
-    ip->item_hit.can_reflect        = attributes->can_reflect;
-    ip->item_hit.can_shield         = attributes->can_shield;
-    ip->item_hit.hitbox_count       = attributes->hitbox_count;
-    ip->item_hit.interact_mask      = GMHITCOLLISION_FLAG_ALL;
+    ip->hit_coll.update_state       = item_desc->update_state;
+    ip->hit_coll.damage             = attributes->damage;
+    ip->hit_coll.throw_mul          = 1.0F;
+    ip->hit_coll.stale              = 1.0F;
+    ip->hit_coll.element            = attributes->element;
+    ip->hit_coll.offset[0].x        = attributes->hit_offset1_x;
+    ip->hit_coll.offset[0].y        = attributes->hit_offset1_y;
+    ip->hit_coll.offset[0].z        = attributes->hit_offset1_z;
+    ip->hit_coll.offset[1].x        = attributes->hit_offset2_x;
+    ip->hit_coll.offset[1].y        = attributes->hit_offset2_y;
+    ip->hit_coll.offset[1].z        = attributes->hit_offset2_z;
+    ip->hit_coll.size               = attributes->size * 0.5F;
+    ip->hit_coll.angle              = attributes->angle;
+    ip->hit_coll.knockback_scale    = attributes->knockback_scale;
+    ip->hit_coll.knockback_weight   = attributes->knockback_weight;
+    ip->hit_coll.knockback_base     = attributes->knockback_base;
+    ip->hit_coll.can_setoff         = attributes->can_setoff;
+    ip->hit_coll.shield_damage      = attributes->shield_damage;
+    ip->hit_coll.hit_sfx            = attributes->hit_sfx;
+    ip->hit_coll.priority           = attributes->priority;
+    ip->hit_coll.can_rehit_item     = attributes->can_rehit_item;
+    ip->hit_coll.can_rehit_fighter  = attributes->can_rehit_fighter;
+    ip->hit_coll.can_rehit_shield   = FALSE;
+    ip->hit_coll.can_hop            = attributes->can_hop;
+    ip->hit_coll.can_reflect        = attributes->can_reflect;
+    ip->hit_coll.can_shield         = attributes->can_shield;
+    ip->hit_coll.hit_count       = attributes->hit_count;
+    ip->hit_coll.interact_mask      = GMHITCOLLISION_FLAG_ALL;
 
-    ip->item_hit.attack_id                  = nFTMotionAttackIDNone;
-    ip->item_hit.motion_count               = ftParamGetMotionCount();
-    ip->item_hit.stat_flags.stat_attack_id  = nFTStatusAttackIDNull;
-    ip->item_hit.stat_flags.is_smash_attack = ip->item_hit.stat_flags.ga = ip->item_hit.stat_flags.is_projectile = 0;
-    ip->item_hit.stat_count                 = ftParamGetStatUpdateCount();
+    ip->hit_coll.attack_id                  = nFTMotionAttackIDNone;
+    ip->hit_coll.motion_count               = ftParamGetMotionCount();
+    ip->hit_coll.stat_flags.stat_attack_id  = nFTStatusAttackIDNull;
+    ip->hit_coll.stat_flags.is_smash_attack = ip->hit_coll.stat_flags.ga = ip->hit_coll.stat_flags.is_projectile = 0;
+    ip->hit_coll.stat_count                 = ftParamGetStatUpdateCount();
 
     itMainClearHitRecord(ip);
 
-    ip->item_hurt.hitstatus     = attributes->hitstatus;
-    ip->item_hurt.offset.x      = attributes->hurt_offset.x;
-    ip->item_hurt.offset.y      = attributes->hurt_offset.y;
-    ip->item_hurt.offset.z      = attributes->hurt_offset.z;
-    ip->item_hurt.size.x        = attributes->hurt_size.x * 0.5F;
-    ip->item_hurt.size.y        = attributes->hurt_size.y * 0.5F;
-    ip->item_hurt.size.z        = attributes->hurt_size.z * 0.5F;
-    ip->item_hurt.interact_mask = GMHITCOLLISION_FLAG_ALL;
+    ip->damage_coll.hitstatus     = attributes->hitstatus;
+    ip->damage_coll.offset.x      = attributes->hurt_offset.x;
+    ip->damage_coll.offset.y      = attributes->hurt_offset.y;
+    ip->damage_coll.offset.z      = attributes->hurt_offset.z;
+    ip->damage_coll.size.x        = attributes->hurt_size.x * 0.5F;
+    ip->damage_coll.size.y        = attributes->hurt_size.y * 0.5F;
+    ip->damage_coll.size.z        = attributes->hurt_size.z * 0.5F;
+    ip->damage_coll.interact_mask = GMHITCOLLISION_FLAG_ALL;
 
     ip->shield_collide_angle = 0.0F;
     ip->shield_collide_vec.x = 0.0F;
@@ -402,11 +402,11 @@ GObj* itManagerMakeItem(GObj *parent_gobj, itCreateDesc *item_desc, Vec3f *pos, 
     
     ip->coll_data.p_translate       = &DObjGetStruct(item_gobj)->translate.vec.f;
     ip->coll_data.p_lr              = &ip->lr;
-    ip->coll_data.objcoll.top       = attributes->objcoll_top;
-    ip->coll_data.objcoll.center    = attributes->objcoll_center;
-    ip->coll_data.objcoll.bottom    = attributes->objcoll_bottom;
-    ip->coll_data.objcoll.width     = attributes->objcoll_width;
-    ip->coll_data.p_objcoll         = &ip->coll_data.objcoll;
+    ip->coll_data.object_coll.top       = attributes->object_coll_top;
+    ip->coll_data.object_coll.center    = attributes->object_coll_center;
+    ip->coll_data.object_coll.bottom    = attributes->object_coll_bottom;
+    ip->coll_data.object_coll.width     = attributes->object_coll_width;
+    ip->coll_data.p_object_coll         = &ip->coll_data.object_coll;
     ip->coll_data.ignore_line_id    = -1;
     ip->coll_data.coll_update_frame = gMPCollisionUpdateFrame;
     ip->coll_data.coll_mask_current    = 0;
@@ -479,7 +479,7 @@ GObj* itManagerMakeItemSetupCommon(GObj *parent_gobj, s32 index, Vec3f *pos, Vec
 }
 
 // 0x8016EB00
-itStruct* itManagerGetCurrentAlloc(void)
+ITStruct* itManagerGetCurrentAlloc(void)
 {
     return gITManagerStructsAllocFree;
 }
@@ -530,14 +530,14 @@ GObj* itManagerMakeItemSpawnActor(void)
     GObj *gobj;
     s32 i;
     s32 item_count;
-    mpItemWeights *item_count_qty;
+    MPItemWeights *item_count_qty;
     s32 item_weights;
     s32 item_mapobj_count;
     s32 item_mapobj_ids[30];
     u32 item_count_toggles;
     s32 j;
     u32 item_id_toggles;
-    mpItemWeights *item_weight_qty;
+    MPItemWeights *item_weight_qty;
     u32 item_num_toggles;
 
     if (gBattleState->item_appearance_rate != nSCBattleItemSwitchNone)
@@ -641,8 +641,8 @@ void itManagerSetupContainerDrops(void)
     s32 i;
     s32 j;
     s32 item_weights;
-    mpItemWeights *item_count_qty;
-    mpItemWeights *item_weight_qty;
+    MPItemWeights *item_count_qty;
+    MPItemWeights *item_weight_qty;
     s32 item_tenth_round;
 
     if ((gBattleState->item_appearance_rate != nSCBattleItemSwitchNone) && (gBattleState->item_toggles != 0) && (gMPCollisionGroundData->item_weights != NULL))

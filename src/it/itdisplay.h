@@ -10,7 +10,7 @@ void itDisplayHitCollisions(GObj* item_gobj);
 void itDisplayMapCollisions(GObj* item_gobj);
 
 // Check whether item should be rendered
-sb32 itDisplayCheckItemVisible(itStruct* ip);
+sb32 itDisplayCheckItemVisible(ITStruct* ip);
 
 // Render item with opacity flag
 void itDisplayOPAFuncDisplay(GObj* item_gobj);

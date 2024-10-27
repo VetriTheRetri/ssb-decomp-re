@@ -35,7 +35,7 @@
 // 0x80142B70
 void ftCommonLandingProcInterrupt(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fighter_gobj->anim_frame < FTCOMMON_LANDING_INTERRUPT_BEGIN)
     {
@@ -59,7 +59,7 @@ void ftCommonLandingProcInterrupt(GObj *fighter_gobj)
 // 0x80142D44
 void ftCommonLandingSetStatusParam(GObj *fighter_gobj, s32 status_id, sb32 is_allow_interrupt, f32 anim_speed)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, anim_speed, FTSTATUS_PRESERVE_NONE);
@@ -70,9 +70,9 @@ void ftCommonLandingSetStatusParam(GObj *fighter_gobj, s32 status_id, sb32 is_al
 // 0x80142D9C
 void ftCommonLandingSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->is_fast_fall) && (fp->phys_info.vel_air.y <= -fp->attributes->tvel_fast))
+    if ((fp->is_fast_fall) && (fp->physics.vel_air.y <= -fp->attributes->tvel_fast))
     {
         ftCommonLandingSetStatusParam(fighter_gobj, nFTCommonStatusLandingHeavy, TRUE, FTCOMMON_LANDING_HEAVY_ANIM_SPEED);
     }

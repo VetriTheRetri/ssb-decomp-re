@@ -27,7 +27,7 @@
 #define FTSAMUS_BOMB_VEL_Y_SUB 10.0F
 #define FTSAMUS_BOMB_DRIFT 0.66F
 
-extern ftStatusDesc dFTSamusSpecialStatusDescs[/* */];
+extern FTStatusDesc dFTSamusSpecialStatusDescs[/* */];
 
 extern void *gFTDataSamusMain;
 extern void *gFTDataSamusMainMotion;
@@ -69,12 +69,12 @@ typedef enum ftSamusStatus
 
 } ftSamusStatus;
 
-typedef struct ftSamusFighterVars
+typedef struct FTSamusFighterVars
 {
     s32 charge_level;
     s32 charge_recoil;
 
-} ftSamusFighterVars;
+} FTSamusFighterVars;
 
 typedef struct ftSamusSpecialNStatusVars
 {
@@ -90,11 +90,11 @@ typedef struct ftSamusSpecialLwStatusVars
 
 } ftSamusSpecialLwStatusVars;
 
-typedef union ftSamusStatusVars
+typedef union FTSamusStatusVars
 {
     ftSamusSpecialNStatusVars specialn;
     ftSamusSpecialLwStatusVars speciallw;
 
-} ftSamusStatusVars;
+} FTSamusStatusVars;
 
 #endif

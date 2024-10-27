@@ -343,7 +343,7 @@ void sc1PManagerUpdateScene(void)
                 break;
 
             case nSC1PGameStageKirby:
-                this_mask = (gSaveData.fighter_mask | LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindKirby));
+                this_mask = (gSaveData.fighter_mask | LBBACKUP_MASK_FIGHTER(nFTKindKirby));
 
                 gSC1PManagerKirbyTeamFinalCopy = sc1PManagerGetShuffledKirbyCopy(this_mask, mtTrigGetRandomIntRange(sc1PManagerGetFighterKindsNum(this_mask)));
 

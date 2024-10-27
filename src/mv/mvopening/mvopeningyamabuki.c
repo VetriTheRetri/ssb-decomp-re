@@ -43,10 +43,10 @@ s32 sMVOpeningYamabukiPad0x80132498;
 s32 sMVOpeningYamabukiUnused0x8013249C;
 
 // 0x801324A0
-lbFileNode sMVOpeningYamabukiStatusBuffer[48];
+LBFileNode sMVOpeningYamabukiStatusBuffer[48];
 
 // 0x80132620
-lbFileNode sMVOpeningYamabukiForceStatusBuffer[7];
+LBFileNode sMVOpeningYamabukiForceStatusBuffer[7];
 
 // 0x80132658
 void *sMVOpeningYamabukiFiles[1];
@@ -154,7 +154,7 @@ void mvOpeningYamabukiMakeWallpaper(void)
 void mvOpeningYamabukiMakeFighter(void)
 {
     GObj* fighter_gobj;
-    ftCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
     ft_desc.ft_kind = nFTKindPikachu;
     ft_desc.costume = ftParamGetCostumeCommonID(nFTKindPikachu, 0);
@@ -399,7 +399,7 @@ void mvOpeningYamabukiFuncRun(GObj *gobj)
 void mvOpeningYamabukiFuncStart(void)
 {
     s32 unused;
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

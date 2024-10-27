@@ -9,8 +9,8 @@
 // 0x8014D850
 void ftDonkeyThrowFKneeBendProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     fp->status_vars.common.throwf.kneebend_anim_frame++;
 
@@ -32,7 +32,7 @@ void ftDonkeyThrowFKneeBendProcUpdate(GObj *fighter_gobj)
 // 0x8014D8E4
 void ftDonkeyThrowFKneeBendProcInterrupt(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (ftCommonHeavyThrowCheckInterruptCommon(fighter_gobj) == FALSE)
     {
@@ -49,7 +49,7 @@ void ftDonkeyThrowFKneeBendProcInterrupt(GObj *fighter_gobj)
 // 0x8014D950
 void ftDonkeyThrowFKneeBendSetStatus(GObj *fighter_gobj, s32 input_source)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowFKneeBend, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
 
@@ -62,7 +62,7 @@ void ftDonkeyThrowFKneeBendSetStatus(GObj *fighter_gobj, s32 input_source)
 // 0x8014D9B8
 sb32 ftDonkeyThrowFKneeBendCheckInterruptThrowFCommon(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 input_source = ftCommonKneeBendGetInputTypeCommon(fp);
 
     if (input_source != FTCOMMON_KNEEBEND_INPUT_TYPE_NONE)

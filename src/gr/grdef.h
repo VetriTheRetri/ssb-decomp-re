@@ -1,7 +1,8 @@
 #ifndef _GRDEF_H_
 #define _GRDEF_H_
 
-typedef enum grKind
+// Enums
+typedef enum GRKind
 {
 	nGRKindCommonStart,							// Start of common stages
 	
@@ -59,7 +60,7 @@ typedef enum grKind
 	nGRKindBonus2Link,
 	nGRKindBonus2Yoshi,
 	nGRKindBonus2Captain,
-	Gr_kind_Bonus2Kirby,
+	nGRKindBonus2Kirby,
 	nGRKindBonus2Pikachu,
 	nGRKindBonus2Purin,
 	nGRKindBonus2Ness,
@@ -67,13 +68,14 @@ typedef enum grKind
 
 	nGRKindBonusGameEnd = nGRKindBonus2End		// End of bonus stages
 
-} grKind;
+} GRKind;
 
-typedef struct grDisplayDesc grDisplayDesc;
-typedef struct grHitbox grHitbox;
-typedef struct grObstacle grObstacle;
-typedef struct grHazard grHazard;
-typedef struct grFileInfo grFileInfo;
-typedef union  grStruct grStruct;
+// Structs
+typedef struct GRDisplayDesc 	GRDisplayDesc;
+typedef struct GRHitCollision 	GRHitCollision;
+typedef struct GRObstacle 		GRObstacle;
+typedef struct GRHazard 		GRHazard;
+typedef struct GRFileInfo 		GRFileInfo;
+typedef union  GRStruct 		GRStruct;
 
 #endif

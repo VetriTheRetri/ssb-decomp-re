@@ -139,7 +139,7 @@ s32 grPupupuWhispyGetLR(GObj *ground_gobj)
 
     while (fighter_gobj != NULL)
     {
-        ftStruct *fp = ftGetStruct(fighter_gobj);
+        FTStruct *fp = ftGetStruct(fighter_gobj);
 
         if (fp->joints[nFTPartsJointTopN]->translate.vec.f.x > GRPUPUPU_WHISPY_POS_X)
         {
@@ -168,7 +168,7 @@ void grPupupuWhispySetWindPush(void)
 
     while (fighter_gobj != NULL)
     {
-        ftStruct *fp = ftGetStruct(fighter_gobj);
+        FTStruct *fp = ftGetStruct(fighter_gobj);
         DObj *joint = fp->joints[nFTPartsJointTopN];
         f32 dist_x;
         Vec3f push;
@@ -213,23 +213,23 @@ void grPupupuWhispyUpdateSleep(void)
 // 0x80105B18
 void grPupupuWhispyLeavesMakeEffect(void)
 {
-    lbParticle *ptcl;
-    lbTransform *tfrm;
+    LBParticle *ptcl;
+    LBTransform *tfrm;
 
     tfrm = NULL;
-    ptcl = lbParticleMakeScriptID(gGRCommonStruct.pupupu.particle_bank_id | 8, 0);
+    ptcl = LBParticleMakeScriptID(gGRCommonStruct.pupupu.particle_bank_id | 8, 0);
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForStruct(ptcl, 1);
+        tfrm = LBParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm == NULL)
         {
-            lbParticleEjectStruct(ptcl);
+            LBParticleEjectStruct(ptcl);
         }
         else
         {
-            lbParticleProcessStruct(ptcl);
+            LBParticleProcessStruct(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -331,7 +331,7 @@ void grPupupuWhispyUpdateBlow(void)
 
         if (gGRCommonStruct.pupupu.leaves_tfrm != NULL)
         {
-            lbParticleEjectStructID(gGRCommonStruct.pupupu.leaves_tfrm->generator_id, 1);
+            LBParticleEjectStructID(gGRCommonStruct.pupupu.leaves_tfrm->generator_id, 1);
         }
     }
     grPupupuWhispyUpdateWindRumble();
@@ -472,23 +472,23 @@ void grPupupuFlowersFrontWindStart(void)
 // 0x801060E0
 void grPupupuWhispyDustMakeEffect(void)
 {
-    lbParticle *ptcl;
-    lbTransform *tfrm;
+    LBParticle *ptcl;
+    LBTransform *tfrm;
 
     tfrm = NULL;
-    ptcl = lbParticleMakeScriptID(gGRCommonStruct.pupupu.particle_bank_id | 8, 1);
+    ptcl = LBParticleMakeScriptID(gGRCommonStruct.pupupu.particle_bank_id | 8, 1);
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForStruct(ptcl, 1);
+        tfrm = LBParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm == NULL)
         {
-            lbParticleEjectStruct(ptcl);
+            LBParticleEjectStruct(ptcl);
         }
         else
         {
-            lbParticleProcessStruct(ptcl);
+            LBParticleProcessStruct(ptcl);
 
             if (tfrm->users_num == 0)
             {
@@ -531,7 +531,7 @@ void grPupupuFlowersFrontLoopEnd(void)
 
         if (gGRCommonStruct.pupupu.dust_tfrm != NULL)
         {
-            lbParticleEjectStructID(gGRCommonStruct.pupupu.dust_tfrm->generator_id, 1);
+            LBParticleEjectStructID(gGRCommonStruct.pupupu.dust_tfrm->generator_id, 1);
         }
     }
     else grPupupuWhispySetWindPush();

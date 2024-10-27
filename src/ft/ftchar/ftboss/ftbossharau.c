@@ -17,7 +17,7 @@ void ftBossHarauProcUpdate(GObj *fighter_gobj)
 {
     if (fighter_gobj->anim_frame <= 0.0F)
     {
-        ftStruct *fp = ftGetStruct(fighter_gobj);
+        FTStruct *fp = ftGetStruct(fighter_gobj);
 
         if (fp->coll_data.ground_line_id == -1)
         {
@@ -30,13 +30,13 @@ void ftBossHarauProcUpdate(GObj *fighter_gobj)
 // 0x8015946C
 void ftBossHarauProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp;
+    FTStruct *fp;
 
     ftPhysicsApplyAirVelTransNAll(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);
 
-    fp->phys_info.vel_air.x += fp->lr * FTBOSS_HARAU_VEL_X;
+    fp->physics.vel_air.x += fp->lr * FTBOSS_HARAU_VEL_X;
 }
 
 // 0x801594BC

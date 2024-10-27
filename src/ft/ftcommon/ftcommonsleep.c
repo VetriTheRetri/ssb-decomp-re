@@ -11,13 +11,13 @@
 // 0x8013D580
 sb32 ftCommonSleepCheckIgnorePauseMenu(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 steal_from_player[GMCOMMON_PLAYERS_MAX];
     s32 active_teammate_count;
     s32 player;
     s32 stock_count;
 
-    if ((gBattleState->game_rules & SCBATTLE_GAMERULE_STOCK) && (gBattleState->is_team_battle == TRUE) && (fp->status_info.status_id == nFTCommonStatusSleep))
+    if ((gBattleState->game_rules & SCBATTLE_GAMERULE_STOCK) && (gBattleState->is_team_battle == TRUE) && (fp->status_id == nFTCommonStatusSleep))
     {
         if (fp->status_vars.common.sleep.stock_steal_wait == 0)
         {
@@ -50,7 +50,7 @@ sb32 ftCommonSleepCheckIgnorePauseMenu(GObj *fighter_gobj)
 // 0x8013D6D0
 void ftCommonSleepProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *steal_gobj;
     s32 active_teammate_count;
     s32 steal_from_player[GMCOMMON_PLAYERS_MAX];
@@ -120,7 +120,7 @@ void ftCommonSleepProcUpdate(GObj *fighter_gobj)
 // 0x8013D8B0
 void ftCommonSleepSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusSleep, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 

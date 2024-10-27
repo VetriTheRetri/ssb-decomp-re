@@ -4,25 +4,25 @@
 #include "wptypes.h"
 
 // Check if weapon collides with ground
-sb32 wpMapProcLRWallCheckGround(mpCollData* coll_data, GObj* weapon_gobj, u32 flags);
+sb32 wpMapProcLRWallCheckGround(MPCollData* coll_data, GObj* weapon_gobj, u32 flags);
 
 // Unknown
 sb32 wpMapTestLRWallCheckGround(GObj* weapon_gobj);
 
 // Unknown
-sb32 wpMapProcAll(mpCollData* coll_data, GObj* weapon_gobj, u32 flags);
+sb32 wpMapProcAll(MPCollData* coll_data, GObj* weapon_gobj, u32 flags);
 
 // Unknown
 sb32 wpMapTestAll(GObj* weapon_gobj);
 
 // Unknown
-sb32 wpMapProcAllCheckGround(mpCollData* coll_data, GObj* weapon_gobj, u32 flags);
+sb32 wpMapProcAllCheckGround(MPCollData* coll_data, GObj* weapon_gobj, u32 flags);
 
 // Unknown
 sb32 wpMapTestAllCheckGround(GObj* weapon_gobj);
 
 // Unknown
-sb32 wpMapProcAllCheckCollEnd(mpCollData* coll_data, GObj* weapon_gobj, u32 flags);
+sb32 wpMapProcAllCheckCollEnd(MPCollData* coll_data, GObj* weapon_gobj, u32 flags);
 
 // Unknown
 sb32 wpMapTestAllCheckCollEnd(GObj* weapon_gobj);
@@ -31,9 +31,9 @@ sb32 wpMapTestAllCheckCollEnd(GObj* weapon_gobj);
 sb32 wpMapCheckAllRebound(GObj* weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f* pos);
 
 // Make weapon grounded
-void wpMapSetGround(wpStruct* ip);
+void wpMapSetGround(WPStruct* ip);
 
 // Make weapon airborne
-void wpMapSetAir(wpStruct* ip);
+void wpMapSetAir(WPStruct* ip);
 
 #endif

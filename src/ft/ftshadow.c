@@ -49,7 +49,7 @@ Gfx dFTShadowNoNextLinkDL[/* */] =
 // // // // // // // // // // // //
 
 // 0x8013AE10
-f32 ftShadowGetAltitude(Vec3f *a, Vec3f *b, f32 f)
+f32 FTShadowGetAltitude(Vec3f *a, Vec3f *b, f32 f)
 {
     if (b->x == a->x)
     {
@@ -59,10 +59,10 @@ f32 ftShadowGetAltitude(Vec3f *a, Vec3f *b, f32 f)
 }
 
 // 0x8013AE60
-void ftShadowFuncDisplay(GObj *shadow_gobj)
+void FTShadowFuncDisplay(GObj *shadow_gobj)
 {
-    ftShadow *fs;
-    ftStruct *fp;
+    FTShadow *fs;
+    FTStruct *fp;
     f32 shadow_center;
     Vtx *shadow_vertex;
     f32 shadow_size;
@@ -96,7 +96,7 @@ void ftShadowFuncDisplay(GObj *shadow_gobj)
         // Linker thing here
         gDPLoadTextureBlock_4b(gSYTaskmanDLHeads[0]++, ((uintptr_t)sEFManagerTexturesFile2 + (intptr_t)&lFTShadowTextureImage), G_IM_FMT_I, 16, 16, 0, G_TX_MIRROR | G_TX_WRAP, G_TX_MIRROR | G_TX_WRAP, 4, 4, G_TX_NOLOD, G_TX_NOLOD);
     }
-    fs = (ftShadow*)shadow_gobj->user_data.p;
+    fs = (FTShadow*)shadow_gobj->user_data.p;
 
     fighter_gobj = gBattleState->players[fs->player].fighter_gobj;
 
@@ -194,11 +194,11 @@ void ftShadowFuncDisplay(GObj *shadow_gobj)
 
                             if ((vertex_pos0.x <= shadow_edge_left) && (shadow_edge_left <= vertex_pos1.x))
                             {
-                                shadow_alt_left = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_left);
+                                shadow_alt_left = FTShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_left);
 
                                 if ((vertex_pos0.x <= shadow_edge_right) && (shadow_edge_right <= vertex_pos1.x))
                                 {
-                                    shadow_alt_right = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_right);
+                                    shadow_alt_right = FTShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_right);
                                 }
                                 else
                                 {
@@ -213,7 +213,7 @@ void ftShadowFuncDisplay(GObj *shadow_gobj)
 
                                     if (shadow_edge_right <= vertex_pos1.x)
                                     {
-                                        shadow_alt_right = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_right);
+                                        shadow_alt_right = FTShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_right);
                                     }
                                     else
                                     {
@@ -221,7 +221,7 @@ void ftShadowFuncDisplay(GObj *shadow_gobj)
                                         vertex_pos0 = vertex_pos1;
 
                                         mpCollisionGetVertexPositionID(ground_line_id, i + 2, &vertex_pos1);
-                                        shadow_alt_right = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_right);
+                                        shadow_alt_right = FTShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_right);
                                         spE0 = vertex_pos0.x;
                                         spDC = vertex_pos0.y;
                                         spEC = (((shadow_calc_right - shadow_calc_left) * (vertex_pos0.x - shadow_edge_left)) / (shadow_edge_right - shadow_edge_left)) + shadow_calc_left;
@@ -243,11 +243,11 @@ void ftShadowFuncDisplay(GObj *shadow_gobj)
 
                             if ((vertex_pos0.x <= shadow_edge_right) && (shadow_edge_right <= vertex_pos1.x))
                             {
-                                shadow_alt_right = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_right);
+                                shadow_alt_right = FTShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_right);
 
                                 if ((vertex_pos0.x <= shadow_edge_left) && (vertex_pos1.x >= shadow_edge_left))
                                 {
-                                    shadow_alt_left = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_left);
+                                    shadow_alt_left = FTShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_left);
                                 }
                                 else
                                 {
@@ -262,7 +262,7 @@ void ftShadowFuncDisplay(GObj *shadow_gobj)
 
                                     if (vertex_pos0.x <= shadow_edge_left)
                                     {
-                                        shadow_alt_left = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_left);
+                                        shadow_alt_left = FTShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_left);
                                     }
                                     else
                                     {
@@ -271,7 +271,7 @@ void ftShadowFuncDisplay(GObj *shadow_gobj)
 
                                         mpCollisionGetVertexPositionID(ground_line_id, i + 2, &vertex_pos0);
 
-                                        shadow_alt_left = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_left);
+                                        shadow_alt_left = FTShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_left);
                                         spE0 = vertex_pos1.x;
                                         spDC = vertex_pos1.y;
 
@@ -286,8 +286,8 @@ void ftShadowFuncDisplay(GObj *shadow_gobj)
                 }
                 else
                 {
-                    shadow_alt_left = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_left);
-                    shadow_alt_right = ftShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_right);
+                    shadow_alt_left = FTShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_left);
+                    shadow_alt_right = FTShadowGetAltitude(&vertex_pos0, &vertex_pos1, shadow_edge_right);
                 }
 
                 if (gfx_vertex_num != 0)
@@ -430,11 +430,11 @@ void ftShadowFuncDisplay(GObj *shadow_gobj)
 }
 
 // 0x8013BB88
-GObj* ftShadowMakeShadow(GObj *fighter_gobj)
+GObj* FTShadowMakeShadow(GObj *fighter_gobj)
 {
     GObj *shadow_gobj = gcMakeGObjSPAfter(nGCCommonKindShadow, NULL, nGCCommonLinkIDShadow, GOBJ_LINKORDER_DEFAULT);
-    ftStruct *fp;
-    ftShadow *fs = syTaskmanMalloc(sizeof(ftShadow), 0x8);
+    FTStruct *fp;
+    FTShadow *fs = syTaskmanMalloc(sizeof(FTShadow), 0x8);
     s32 i;
 
     if (fs == NULL) 
@@ -460,7 +460,7 @@ GObj* ftShadowMakeShadow(GObj *fighter_gobj)
     }
     shadow_gobj->user_data.p = fs;
 
-    gcAddGObjDisplay(shadow_gobj, ftShadowFuncDisplay, 7, GOBJ_LINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(shadow_gobj, FTShadowFuncDisplay, 7, GOBJ_LINKORDER_DEFAULT, -1);
 
     return shadow_gobj;
 }

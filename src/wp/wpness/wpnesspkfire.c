@@ -17,7 +17,7 @@ lWPNessPKFireWeaponAttributes;              // 0x00000000
 //                               //
 // // // // // // // // // // // //
 
-wpCreateDesc dWPNessPKFireWeaponDesc =
+WPCreateDesc dWPNessPKFireWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindPKFire,                         // Weapon Kind
@@ -74,7 +74,7 @@ sb32 wpNessPKFireProcMap(GObj *weapon_gobj)
 // 0x8016AACC
 sb32 wpNessPKFireProcHit(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f pos;
     Vec3f vel;
 
@@ -82,7 +82,7 @@ sb32 wpNessPKFireProcHit(GObj *weapon_gobj)
     vel.y = 0.0F;
     vel.z = 0.0F;
 
-    pos = wp->phys_info.vel_air;
+    pos = wp->physics.vel_air;
 
     syVectorNorm3D(&pos);
 
@@ -98,9 +98,9 @@ sb32 wpNessPKFireProcHit(GObj *weapon_gobj)
 // 0x8016AB84
 sb32 wpNessPKFireProcHop(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_80019438(&wp->phys_info.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
+    func_80019438(&wp->physics.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
     wpMainVelSetLR(weapon_gobj);
 
     DObjGetStruct(weapon_gobj)->rotate.vec.f.z *= -1.0F;
@@ -111,8 +111,8 @@ sb32 wpNessPKFireProcHop(GObj *weapon_gobj)
 // 0x8016ABF0
 sb32 wpNessPKFireProcReflector(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    ftStruct *fp = ftGetStruct(wp->owner_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    FTStruct *fp = ftGetStruct(wp->owner_gobj);
 
     wp->lifetime = WPPKFIRE_LIFETIME;
 
@@ -137,7 +137,7 @@ GObj* wpNessPKFireMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel, f32 ang
 {
     s32 unused;
     GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPNessPKFireWeaponDesc, pos, (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_FIGHTER));
-    wpStruct *wp;
+    WPStruct *wp;
 
     if (weapon_gobj == NULL)
     {
@@ -147,7 +147,7 @@ GObj* wpNessPKFireMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel, f32 ang
 
     wp->lifetime = WPPKFIRE_LIFETIME;
 
-    wp->phys_info.vel_air = *vel;
+    wp->physics.vel_air = *vel;
 
     wpMainVelSetLR(weapon_gobj);
 

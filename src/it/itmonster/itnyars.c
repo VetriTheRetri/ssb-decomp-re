@@ -20,7 +20,7 @@ extern intptr_t lITNyarsAnimJoint;          // 0x0000C130
 // // // // // // // // // // // //
 
 // 0x8018ACA0
-itCreateDesc dITNyarsItemDesc =
+ITCreateDesc dITNyarsItemDesc =
 {
     nITKindNyars,                           // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -45,7 +45,7 @@ itCreateDesc dITNyarsItemDesc =
 };
 
 // 0x8018ACD4
-itStatusDesc dITNyarsStatusDescs[/* */] =
+ITStatusDesc dITNyarsStatusDescs[/* */] =
 {
     // Status 0 (Neutral Attack)
     {
@@ -61,7 +61,7 @@ itStatusDesc dITNyarsStatusDescs[/* */] =
 };
 
 // 0x8018ACF4
-wpCreateDesc dITNyarsWeaponCoinWeaponDesc =
+WPCreateDesc dITNyarsWeaponCoinWeaponDesc =
 {
     0x01,                                   // Render flags?
     nWPKindNyarsCoin,                       // Weapon Kind
@@ -106,7 +106,7 @@ enum itNyarsStatus
 // 0x8017EEB0
 sb32 itNyarsAttackProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
@@ -138,7 +138,7 @@ sb32 itNyarsAttackProcUpdate(GObj *item_gobj)
 // 0x8017EFA0
 void itNyarsAttackInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi = ITNYARS_LIFETIME;
 
@@ -157,11 +157,11 @@ void itNyarsAttackSetStatus(GObj *item_gobj)
 // 0x8017EFF8
 sb32 itNyarsCommonProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {
-        ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.x = ip->physics.vel_air.y = 0.0F;
 
         itNyarsAttackSetStatus(item_gobj);
     }
@@ -173,11 +173,11 @@ sb32 itNyarsCommonProcUpdate(GObj *item_gobj)
 // 0x8017F04C
 sb32 itNyarsCommonProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_GROUND) != FALSE)
     {
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
     }
     return FALSE;
 }
@@ -187,7 +187,7 @@ GObj* itNyarsMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
     GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITNyarsItemDesc, pos, vel, flags);
     DObj *dobj;
-    itStruct *ip;
+    ITStruct *ip;
 
     if (item_gobj != NULL)
     {
@@ -201,10 +201,10 @@ GObj* itNyarsMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
-        ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
+        ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
+        ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        dobj->translate.vec.f.y -= ip->attributes->objcoll_bottom;
+        dobj->translate.vec.f.y -= ip->attributes->object_coll_bottom;
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITNyarsAnimJoint), 0.0F);
     }
@@ -214,7 +214,7 @@ GObj* itNyarsMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 // 0x8017F17C
 sb32 itNyarsWeaponCoinProcUpdate(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
     if (wp->weapon_vars.coin.lifetime == 0)
     {
@@ -236,14 +236,14 @@ sb32 itNyarsWeaponCoinProcHit(GObj *weapon_gobj)
 // 0x8017F1CC
 sb32 itNyarsWeaponCoinProcHop(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_80019438(&wp->phys_info.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
+    func_80019438(&wp->physics.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
-    if (wp->phys_info.vel_air.x > 0.0F)
+    if (wp->physics.vel_air.x > 0.0F)
     {
         wp->lr = nGMFacingR;
     }
@@ -255,12 +255,12 @@ sb32 itNyarsWeaponCoinProcHop(GObj *weapon_gobj)
 // 0x8017F274
 sb32 itNyarsWeaponCoinProcReflector(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    ftStruct *fp = ftGetStruct(wp->owner_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    FTStruct *fp = ftGetStruct(wp->owner_gobj);
 
     wpMainReflectorSetLR(wp, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     wp->lr = -wp->lr;
@@ -271,7 +271,7 @@ sb32 itNyarsWeaponCoinProcReflector(GObj *weapon_gobj)
 // 0x8017F2E4
 GObj* itNyarsWeaponCoinMakeWeapon(GObj *item_gobj, u8 coin_number, f32 rotate_angle)
 {
-    wpStruct *wp;
+    WPStruct *wp;
     GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITNyarsWeaponCoinWeaponDesc, &DObjGetStruct(item_gobj)->translate.vec.f, WEAPON_FLAG_PARENT_ITEM);
     DObj *dobj;
 
@@ -283,10 +283,10 @@ GObj* itNyarsWeaponCoinMakeWeapon(GObj *item_gobj, u8 coin_number, f32 rotate_an
 
     wp->weapon_vars.coin.lifetime = ITNYARS_COIN_LIFETIME;
 
-    wp->phys_info.vel_air.y = wp->phys_info.vel_air.z = 0.0F;
-    wp->phys_info.vel_air.x = ITNYARS_COIN_VEL_X;
+    wp->physics.vel_air.y = wp->physics.vel_air.z = 0.0F;
+    wp->physics.vel_air.x = ITNYARS_COIN_VEL_X;
 
-    syVectorRotate3D(&wp->phys_info.vel_air, SYVECTOR_AXIS_Z, F_CLC_DTOR32((coin_number * ITNYARS_COIN_ANGLE_DIFF) + rotate_angle));
+    syVectorRotate3D(&wp->physics.vel_air, SYVECTOR_AXIS_Z, F_CLC_DTOR32((coin_number * ITNYARS_COIN_ANGLE_DIFF) + rotate_angle));
 
     dobj = DObjGetStruct(weapon_gobj);
 

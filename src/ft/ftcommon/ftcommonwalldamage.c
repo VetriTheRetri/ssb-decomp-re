@@ -11,7 +11,7 @@ extern f32 ftParamGetHitStun(f32);
 // 0x80141AC0
 void ftCommonWallDamageProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonDamageUpdateDustEffect(fighter_gobj);
     ftCommonDamageDecHitStunSetPublicity(fighter_gobj);
@@ -25,24 +25,24 @@ void ftCommonWallDamageProcUpdate(GObj *fighter_gobj)
 // 0x80141B08
 void ftCommonWallDamageSetStatus(GObj *fighter_gobj, Vec3f *angle, Vec3f *pos)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f vel_air;
     f32 knockback;
 
     efManagerImpactWaveMakeEffect(pos, SYVECTOR_AXIS_Z, atan2f(-angle->x, angle->y));
     efManagerQuakeMakeEffect(2);
 
-    vel_air = fp->phys_info.vel_air;
+    vel_air = fp->physics.vel_air;
 
-    lbCommonAdd2D(&vel_air, &fp->phys_info.vel_damage_air);
+    lbCommonAdd2D(&vel_air, &fp->physics.vel_damage_air);
     lbCommonReflect2D(&vel_air, angle);
     lbCommonScale2D(&vel_air, 0.8F);
 
-    fp->phys_info.vel_damage_air = vel_air;
+    fp->physics.vel_damage_air = vel_air;
 
-    fp->phys_info.vel_air.x = fp->phys_info.vel_air.y = fp->phys_info.vel_air.z = 0.0F;
+    fp->physics.vel_air.x = fp->physics.vel_air.y = fp->physics.vel_air.z = 0.0F;
 
-    fp->lr = (fp->phys_info.vel_damage_air.x < 0.0F) ? nGMFacingR : nGMFacingL;
+    fp->lr = (fp->physics.vel_damage_air.x < 0.0F) ? nGMFacingR : nGMFacingL;
 
     knockback = lbCommonMag2D(&vel_air);
 
@@ -62,7 +62,7 @@ void ftCommonWallDamageSetStatus(GObj *fighter_gobj, Vec3f *angle, Vec3f *pos)
 // 0x80141C6C
 sb32 ftCommonWallDamageCheckGoto(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
 
     pos.x = DObjGetStruct(fighter_gobj)->translate.vec.f.x;
@@ -71,8 +71,8 @@ sb32 ftCommonWallDamageCheckGoto(GObj *fighter_gobj)
 
     if (fp->status_vars.common.damage.coll_mask_current & MPCOLL_FLAG_LWALL)
     {
-        pos.x += fp->coll_data.objcoll.width;
-        pos.y += fp->coll_data.objcoll.center;
+        pos.x += fp->coll_data.object_coll.width;
+        pos.y += fp->coll_data.object_coll.center;
 
         ftCommonWallDamageSetStatus(fighter_gobj, &fp->coll_data.lwall_angle, &pos);
 
@@ -80,8 +80,8 @@ sb32 ftCommonWallDamageCheckGoto(GObj *fighter_gobj)
     }
     else if (fp->status_vars.common.damage.coll_mask_current & MPCOLL_FLAG_RWALL)
     {
-        pos.x -= fp->coll_data.objcoll.width;
-        pos.y += fp->coll_data.objcoll.center;
+        pos.x -= fp->coll_data.object_coll.width;
+        pos.y += fp->coll_data.object_coll.center;
 
         ftCommonWallDamageSetStatus(fighter_gobj, &fp->coll_data.rwall_angle, &pos);
 
@@ -89,7 +89,7 @@ sb32 ftCommonWallDamageCheckGoto(GObj *fighter_gobj)
     }
     else if (fp->status_vars.common.damage.coll_mask_current & MPCOLL_FLAG_CEIL)
     {
-        pos.y += fp->coll_data.objcoll.top;
+        pos.y += fp->coll_data.object_coll.top;
 
         ftCommonWallDamageSetStatus(fighter_gobj, &fp->coll_data.ceil_angle, &pos);
 

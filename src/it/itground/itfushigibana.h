@@ -5,7 +5,7 @@
 #include <sys/objdef.h>
 #include <it/itdef.h>
 
-extern void itFushigibanaCommonUpdateHitParty(GObj *item_gobj);
+extern void itFushigibanaCommonUpdateMonsterEvent(GObj *item_gobj);
 extern sb32 itFushigibanaCommonProcUpdate(GObj *item_gobj);
 extern GObj* itFushigibanaMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags);
 extern sb32 itFushigibanaWeaponRazorProcUpdate(GObj *weapon_gobj);

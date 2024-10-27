@@ -9,7 +9,7 @@
 // 0x80144A10
 void ftCommonReboundProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->status_vars.common.rebound.rebound_timer--;
 
@@ -22,7 +22,7 @@ void ftCommonReboundProcUpdate(GObj *fighter_gobj)
 // 0x80144A60
 void ftCommonReboundSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusRebound, 0.0F, fp->status_vars.common.rebound.anim_speed, FTSTATUS_PRESERVE_NONE);
 }
@@ -36,7 +36,7 @@ void ftCommonReboundWaitProcUpdate(GObj *fighter_gobj)
 // 0x80144AB0
 void ftCommonReboundWaitSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 lr_rebound;
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusReboundWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
@@ -45,11 +45,11 @@ void ftCommonReboundWaitSetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.rebound.rebound_timer = fp->attack_rebound;
 
-    if (fp->lr == fp->lr_attack)
+    if (fp->lr == fp->attack_lr)
     {
         lr_rebound = nGMFacingL;
     }
     else lr_rebound = nGMFacingR;
 
-    fp->phys_info.vel_ground.x = (lr_rebound * (2.0F * fp->status_vars.common.rebound.rebound_timer));
+    fp->physics.vel_ground.x = (lr_rebound * (2.0F * fp->status_vars.common.rebound.rebound_timer));
 }

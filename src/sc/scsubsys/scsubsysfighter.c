@@ -59,7 +59,7 @@ u8 scSubsysFighterDrawLightColorGetAlpha(Gfx **dls)
 // 0x80390584
 void scSubsysFighterProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftMainRunUpdateColAnim(fighter_gobj);
@@ -79,7 +79,7 @@ void scSubsysFighterSetStatus(GObj *fighter_gobj, s32 status_id)
 // 0x803905F4 - Is this to attach models to Master Hand in the opening movie?
 void func_ovl1_803905F4(GObj *this_gobj, GObj *other_gobj)
 {
-    ftStruct *fp = ftGetStruct(this_gobj);
+    FTStruct *fp = ftGetStruct(this_gobj);
     s32 unused;
     DObj *child_dobj = DObjGetStruct(other_gobj)->child;
     Mtx44f mtx_f;
@@ -97,7 +97,7 @@ void func_ovl1_803905F4(GObj *this_gobj, GObj *other_gobj)
 // 0x8039069C
 void scSubsysFighterApplyVelTransN(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     DObj *transn_joint = fp->joints[nFTPartsJointTransN], *topn_joint = fp->joints[nFTPartsJointTopN];
     
     topn_joint->translate.vec.f.x += (transn_joint->translate.vec.f.x - fp->anim_vel.x);

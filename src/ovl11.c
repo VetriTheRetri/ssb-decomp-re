@@ -53,7 +53,7 @@ s32 gMNNoControllerFiles[1];
 u32 D_ovl11_800D67D8[200];
 
 // 0x800D6AF8
-lbFileNode D_ovl11_800D6AF8;
+LBFileNode D_ovl11_800D6AF8;
 
 
 // 0x800D6490

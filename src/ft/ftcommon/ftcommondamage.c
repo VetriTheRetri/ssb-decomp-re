@@ -34,9 +34,9 @@ s32 dFTCommonDamageStatusAirIDs[/* */][3] =
 // // // // // // // // // // // //
 
 // 0x80140340
-void ftCommonDamageSetDustEffectInterval(ftStruct *fp)
+void ftCommonDamageSetDustEffectInterval(FTStruct *fp)
 {
-    f32 vel = (fp->ga == nMPKineticsAir) ? syVectorMag3D(&fp->phys_info.vel_damage_air) : ABSF(fp->phys_info.vel_damage_ground);
+    f32 vel = (fp->ga == nMPKineticsAir) ? syVectorMag3D(&fp->physics.vel_damage_air) : ABSF(fp->physics.vel_damage_ground);
     s32 make_effect_wait;
 
     if (vel < FTCOMMON_DAMAGE_EFFECT_KNOCKBACK_LOW)
@@ -67,7 +67,7 @@ void ftCommonDamageSetDustEffectInterval(ftStruct *fp)
 // 0x80140454
 void ftCommonDamageUpdateDustEffect(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->status_vars.common.damage.dust_effect_int != 0)
     {
@@ -84,7 +84,7 @@ void ftCommonDamageUpdateDustEffect(GObj *fighter_gobj)
 // 0x801404B8
 void ftCommonDamageDecHitStunSetPublicity(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->status_vars.common.damage.hitstun_tics != 0)
     {
@@ -100,7 +100,7 @@ void ftCommonDamageDecHitStunSetPublicity(GObj *fighter_gobj)
 // 0x801404E0
 void ftCommonDamageCommonProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonDamageDecHitStunSetPublicity(fighter_gobj);
 
@@ -113,7 +113,7 @@ void ftCommonDamageCommonProcUpdate(GObj *fighter_gobj)
 // 0x8014053C
 void ftCommonDamageAirCommonProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonDamageUpdateDustEffect(fighter_gobj);
     ftCommonDamageDecHitStunSetPublicity(fighter_gobj);
@@ -127,7 +127,7 @@ void ftCommonDamageAirCommonProcUpdate(GObj *fighter_gobj)
 // 0x801405A0
 void ftCommonDamageCheckSetInvincible(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((fp->hitlag_tics <= 0) && (fp->status_vars.common.damage.is_knockback_over != FALSE))
     {
@@ -140,14 +140,14 @@ void ftCommonDamageCheckSetInvincible(GObj *fighter_gobj)
 // 0x801405E4
 void ftCommonDamageSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->hitlag_tics <= 0)
     {
         ftMainSetFighterStatus(fighter_gobj, fp->status_vars.common.damage.status_id, 0.0F, 1.0F, (FTSTATUS_PRESERVE_DAMAGEPLAYER | FTSTATUS_PRESERVE_SHUFFLETIME));
         ftMainPlayAnimNoEffect(fighter_gobj);
 
-        if (fp->status_info.status_id == nFTCommonStatusDamageFlyRoll)
+        if (fp->status_id == nFTCommonStatusDamageFlyRoll)
         {
             ftCommonDamageFlyRollUpdateModelRoll(fighter_gobj);
         }
@@ -165,7 +165,7 @@ void ftCommonDamageSetStatus(GObj *fighter_gobj)
 // 0x80140674
 void ftCommonDamageCommonProcInterrupt(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->status_vars.common.damage.hitstun_tics == 0)
     {
@@ -190,7 +190,7 @@ void ftCommonDamageCommonProcInterrupt(GObj *fighter_gobj)
 // 0x8014070C
 void ftCommonDamageAirCommonProcInterrupt(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->status_vars.common.damage.hitstun_tics == 0)
     {
@@ -203,9 +203,9 @@ void ftCommonDamageAirCommonProcInterrupt(GObj *fighter_gobj)
 // 0x80140744
 void ftCommonDamageFlyRollUpdateModelRoll(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->joints[4]->rotate.vec.f.x = atan2f(fp->phys_info.vel_air.x + fp->phys_info.vel_damage_air.x, fp->phys_info.vel_air.y + fp->phys_info.vel_damage_air.y) * fp->lr;
+    fp->joints[4]->rotate.vec.f.x = atan2f(fp->physics.vel_air.x + fp->physics.vel_damage_air.x, fp->physics.vel_air.y + fp->physics.vel_damage_air.y) * fp->lr;
 
     func_ovl2_800EB528(fp->joints[4]);
 }
@@ -213,7 +213,7 @@ void ftCommonDamageFlyRollUpdateModelRoll(GObj *fighter_gobj)
 // 0x801407A8
 void ftCommonDamageCommonProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->ga == nMPKineticsAir)
     {
@@ -225,11 +225,11 @@ void ftCommonDamageCommonProcPhysics(GObj *fighter_gobj)
     }
     else ftPhysicsApplyGroundVelFriction(fighter_gobj);
     
-    if (fp->status_info.status_id == nFTCommonStatusDamageFlyRoll)
+    if (fp->status_id == nFTCommonStatusDamageFlyRoll)
     {
         ftCommonDamageFlyRollUpdateModelRoll(fighter_gobj);
     }
-    if ((fp->throw_gobj != NULL) && (syVectorMag3D(&fp->phys_info.vel_damage_air) < 70.0F))
+    if ((fp->throw_gobj != NULL) && (syVectorMag3D(&fp->physics.vel_damage_air) < 70.0F))
     {
         ftParamClearHitAll(fighter_gobj);
     }
@@ -238,7 +238,7 @@ void ftCommonDamageCommonProcPhysics(GObj *fighter_gobj)
 // 0x80140878
 void ftCommonDamageCommonProcLagUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->hitlag_tics != 0)
     {
@@ -266,7 +266,7 @@ void func_ovl3_80140934(void) // Unused?
 // 0x8014093C
 void ftCommonDamageAirCommonProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if 
     (
@@ -333,7 +333,7 @@ s32 ftCommonDamageGetDamageLevel(f32 hitstun)
 }
 
 // 0x80140B00
-void ftCommonDamageSetPublicity(ftStruct *this_fp, f32 knockback, f32 angle)
+void ftCommonDamageSetPublicity(FTStruct *this_fp, f32 knockback, f32 angle)
 {
     GObj *attacker_gobj = ftParamGetPlayerNumGObj(this_fp->damage_player_number);
     sb32 is_force_current_knockback;
@@ -418,7 +418,7 @@ void ftCommonDamageCheckMakeScreenFlash(f32 knockback, s32 element)
 }
 
 // 0x80140D30
-sb32 ftCommonDamageCheckCatchResist(ftStruct *fp)
+sb32 ftCommonDamageCheckCatchResist(FTStruct *fp)
 {
     // Something to do with a fighter in Catch(Wait) being hit?
 
@@ -436,7 +436,7 @@ sb32 ftCommonDamageCheckCatchResist(ftStruct *fp)
     }
     if ((fp->ft_kind == nFTKindDonkey) || (fp->ft_kind == nFTKindNDonkey) || (fp->ft_kind == nFTKindGDonkey))
     {
-        if ((fp->status_info.status_id >= nFTDonkeyStatusThrowFStartDamage) && (fp->status_info.status_id <= nFTDonkeyStatusThrowFEndDamage) && (ftCommonDamageGetDamageLevel(ftParamGetHitStun(fp->damage_knockback)) < 3))
+        if ((fp->status_id >= nFTDonkeyStatusThrowFStartDamage) && (fp->status_id <= nFTDonkeyStatusThrowFEndDamage) && (ftCommonDamageGetDamageLevel(ftParamGetHitStun(fp->damage_knockback)) < 3))
         {
             return TRUE;
         }
@@ -447,7 +447,7 @@ sb32 ftCommonDamageCheckCatchResist(ftStruct *fp)
 // 0x80140E2C
 void ftCommonDamageUpdateCatchResist(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((fp->damage_knockback == 0.0F) || ((fp->hitlag_tics > 0) && (fp->x192_flag_b6) && (fp->damage_knockback < (fp->damage_stack + 30.0F))))
     {
@@ -461,7 +461,7 @@ void ftCommonDamageUpdateCatchResist(GObj *fighter_gobj)
 }
 
 // 0x80140EC0
-sb32 ftCommonDamageCheckCaptureKeepHold(ftStruct *fp)
+sb32 ftCommonDamageCheckCaptureKeepHold(FTStruct *fp)
 {
     if (fp->damage_queue < FTCOMMON_DAMAGE_CATCH_RELEASE_THRESHOLD)
     {
@@ -471,10 +471,10 @@ sb32 ftCommonDamageCheckCaptureKeepHold(ftStruct *fp)
 }
 
 // 0x80140EE4
-void ftCommonDamageInitDamageVars(GObj *this_gobj, s32 status_id_replace, s32 damage, f32 knockback, s32 angle_start, s32 lr_damage,
+void ftCommonDamageInitDamageVars(GObj *this_gobj, s32 status_id_replace, s32 damage, f32 knockback, s32 angle_start, s32 damage_lr,
 s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is_force_damage_sfx, sb32 is_allow_losecopy)
 {
-    ftStruct *this_fp = ftGetStruct(this_gobj);
+    FTStruct *this_fp = ftGetStruct(this_gobj);
     GObj *attacker_gobj;
     f32 angle_end = ftCommonDamageGetKnockbackAngle(angle_start, this_fp->ga, knockback);
     f32 vel_x = __cosf(angle_end) * knockback;
@@ -502,15 +502,15 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
         damage_level = 3;
     }
 
-    this_fp->lr = lr_damage;
+    this_fp->lr = damage_lr;
 
     if (this_fp->ga == nMPKineticsAir)
     {
         status_id_var = status_id_set = dFTCommonDamageStatusAirIDs[damage_level][damage_index];
 
-        this_fp->phys_info.vel_damage_air.x = -vel_x * this_fp->lr;
-        this_fp->phys_info.vel_damage_air.y = vel_y;
-        this_fp->phys_info.vel_damage_ground = 0.0F;
+        this_fp->physics.vel_damage_air.x = -vel_x * this_fp->lr;
+        this_fp->physics.vel_damage_air.y = vel_y;
+        this_fp->physics.vel_damage_ground = 0.0F;
     }
     else
     {
@@ -526,9 +526,9 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
 
             mpCommonSetFighterAir(this_fp);
 
-            this_fp->phys_info.vel_damage_air.x = vel_damage.x;
-            this_fp->phys_info.vel_damage_air.y = vel_damage.y;
-            this_fp->phys_info.vel_damage_ground = 0.0F;
+            this_fp->physics.vel_damage_air.x = vel_damage.x;
+            this_fp->physics.vel_damage_air.y = vel_damage.y;
+            this_fp->physics.vel_damage_ground = 0.0F;
         }
         else if (damage_level == 3)
         {
@@ -538,30 +538,30 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
 
             if (angle_diff > F_CST_DTOR32(100.0F)) // 1.7453293F
             {
-                this_fp->phys_info.vel_damage_air.x = vel_damage.x;
-                this_fp->phys_info.vel_damage_air.y = -vel_damage.y * 0.8F;
-                this_fp->phys_info.vel_damage_ground = 0.0F;
+                this_fp->physics.vel_damage_air.x = vel_damage.x;
+                this_fp->physics.vel_damage_air.y = -vel_damage.y * 0.8F;
+                this_fp->physics.vel_damage_ground = 0.0F;
 
                 ftParamMakeEffect(this_gobj, nEFKindImpactWave, 0, NULL, NULL, this_fp->lr, 0, 0);
                 ftParamMakeEffect(this_gobj, nEFKindQuakeMag0, 0, NULL, NULL, this_fp->lr, 0, 0);
             }
             else
             {
-                this_fp->phys_info.vel_damage_air.x = vel_damage.x;
-                this_fp->phys_info.vel_damage_air.y = vel_damage.y;
-                this_fp->phys_info.vel_damage_ground = 0.0F;
+                this_fp->physics.vel_damage_air.x = vel_damage.x;
+                this_fp->physics.vel_damage_air.y = vel_damage.y;
+                this_fp->physics.vel_damage_ground = 0.0F;
             }
         }
         else
         {
             status_id_var = status_id_set = dFTCommonDamageStatusGroundIDs[damage_level][damage_index];
 
-            this_fp->phys_info.vel_damage_ground = (-vel_x * this_fp->lr);
-            this_fp->phys_info.vel_damage_air.x = this_fp->coll_data.ground_angle.y * (-vel_x * this_fp->lr);
-            this_fp->phys_info.vel_damage_air.y = -this_fp->coll_data.ground_angle.x * (-vel_x * this_fp->lr);
+            this_fp->physics.vel_damage_ground = (-vel_x * this_fp->lr);
+            this_fp->physics.vel_damage_air.x = this_fp->coll_data.ground_angle.y * (-vel_x * this_fp->lr);
+            this_fp->physics.vel_damage_air.y = -this_fp->coll_data.ground_angle.x * (-vel_x * this_fp->lr);
         }
     }
-    this_fp->phys_info.vel_air.x = this_fp->phys_info.vel_air.y = this_fp->phys_info.vel_air.z = this_fp->phys_info.vel_ground.x = 0.0F;
+    this_fp->physics.vel_air.x = this_fp->physics.vel_air.y = this_fp->physics.vel_air.z = this_fp->physics.vel_ground.x = 0.0F;
 
     if ((damage_level == 3) && (this_fp->ga == nMPKineticsAir))
     {
@@ -608,7 +608,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
     }
     else this_fp->status_vars.common.damage.is_knockback_over = FALSE;
     
-    if ((this_fp->status_info.status_id == nFTCommonStatusDamageE1) || (this_fp->status_info.status_id == nFTCommonStatusDamageE2))
+    if ((this_fp->status_id == nFTCommonStatusDamageE1) || (this_fp->status_id == nFTCommonStatusDamageE2))
     {
         this_fp->proc_effect = ftCommonDamageSetStatus;
         this_fp->status_vars.common.damage.status_id = status_id_var;
@@ -625,7 +625,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
     {
         ftParamMakeRumble(this_fp, 2, 0);
     }
-    if (this_fp->status_info.status_id == nFTCommonStatusDamageFlyRoll)
+    if (this_fp->status_id == nFTCommonStatusDamageFlyRoll)
     {
         ftCommonDamageFlyRollUpdateModelRoll(this_gobj);
     }
@@ -653,7 +653,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
 
     if (attacker_gobj != NULL)
     {
-        ftStruct *attacker_fp = ftGetStruct(attacker_gobj);
+        FTStruct *attacker_fp = ftGetStruct(attacker_gobj);
 
         attacker_fp->attack_hit_count++;
         attacker_fp->attack_knockback = knockback;
@@ -663,7 +663,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
 // 0x80141560 - Enter sleep or common damage state
 void ftCommonDamageGotoDamageStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->is_cliff_hold)
     {
@@ -673,7 +673,7 @@ void ftCommonDamageGotoDamageStatus(GObj *fighter_gobj)
     {
         ftCommonFuraSleepSetStatus(fighter_gobj);
     }
-    else ftCommonDamageInitDamageVars(fighter_gobj, -1, fp->damage_queue, fp->damage_knockback, fp->damage_angle, fp->lr_damage, fp->damage_index, fp->damage_element, fp->damage_player_number, FALSE, FALSE, TRUE);
+    else ftCommonDamageInitDamageVars(fighter_gobj, -1, fp->damage_queue, fp->damage_knockback, fp->damage_angle, fp->damage_lr, fp->damage_index, fp->damage_element, fp->damage_player_number, FALSE, FALSE, TRUE);
 }
 
 // 0x801415F8
@@ -688,7 +688,7 @@ void ftCommonDamageUpdateDamageColAnim(GObj *fighter_gobj, f32 knockback, s32 el
 // 0x80141648
 void ftCommonDamageSetDamageColAnim(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonDamageUpdateDamageColAnim(fighter_gobj, fp->damage_knockback, fp->damage_element);
 }
@@ -696,9 +696,9 @@ void ftCommonDamageSetDamageColAnim(GObj *fighter_gobj)
 // 0x80141670
 void ftCommonDamageUpdateMain(GObj *fighter_gobj)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *grab_gobj = this_fp->catch_gobj;
-    ftStruct *grab_fp;
+    FTStruct *grab_fp;
 
     if (grab_gobj != NULL)
     {
@@ -786,7 +786,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
             }
             else
             {
-                grab_fp->hitlag_tics = ftParamGetHitLag(this_fp->damage_lag, grab_fp->status_info.status_id, grab_fp->hitlag_mul);
+                grab_fp->hitlag_tics = ftParamGetHitLag(this_fp->damage_lag, grab_fp->status_id, grab_fp->hitlag_mul);
 
                 this_fp->input.pl.button_tap = this_fp->input.pl.button_tap_prev = 0;
 

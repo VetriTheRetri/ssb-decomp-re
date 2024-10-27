@@ -206,10 +206,10 @@ GObj* gMVOpeningFirstDestinationCameraGObj;
 s32 gMVOpeningFirstDestinationUnusedCounter;
 
 // 0x80134D58
-lbFileNode D_ovl34_80134D58[100];
+LBFileNode D_ovl34_80134D58[100];
 
 // 0x80135078
-lbFileNode D_ovl34_80135078[7];
+LBFileNode D_ovl34_80135078[7];
 
 // 0x801350B0
 uintptr_t gMVOpeningFirstDestinationFiles[9];
@@ -358,7 +358,7 @@ void mvOpeningFirstDestinationCreateTissueBox()
 void mvOpeningFirstDestinationCreateMasterHand()
 {
 	GObj* fighter_gobj;
-	ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	spawn_info.ft_kind = nFTKindBoss;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindBoss, 0);
@@ -380,7 +380,7 @@ void func_ovl34_801322A0(s32 arg0)
 // 0x801322C8 - Unused?
 void func_ovl34_801322C8(GObj* fighter_gobj)
 {
-	ftStruct* fp;
+	FTStruct* fp;
 	DObj* topJoint;
 	DObj* firstJoint;
 
@@ -402,7 +402,7 @@ void func_ovl34_80132328() {}
 void mvOpeningFirstDestinationCreatePluckedFighter(s32 ft_kind)
 {
 	GObj* fighter_gobj;
-	ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	spawn_info.ft_kind = ft_kind;
 	spawn_info.costume = ftParamGetCostumeCommonID(ft_kind, 0);
@@ -518,7 +518,7 @@ void mvOpeningFirstDestinationCreateCloseUpGFX()
 void mvOpeningFirstDestinationCreateDroppedFighter(s32 ft_kind)
 {
 	GObj* fighter_gobj;
-	ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	spawn_info.ft_kind = ft_kind;
 	spawn_info.costume = ftParamGetCostumeCommonID(ft_kind, 0);
@@ -1107,7 +1107,7 @@ void mvOpeningFirstDestinationMainProc(GObj* arg0)
 void mvOpeningFirstDestinationInit()
 {
 	s32 foo;
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 
 	func_800048D0(mvOpeningFirstDestinationSetFrameBuffer);
 
@@ -1115,9 +1115,9 @@ void mvOpeningFirstDestinationInit()
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buffer = (lbFileNode*) &D_ovl34_80134D58;
+	rl_setup.status_buffer = (LBFileNode*) &D_ovl34_80134D58;
 	rl_setup.status_buffer_size = ARRAY_COUNT(D_ovl34_80134D58);
-	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl34_80135078;
+	rl_setup.force_status_buffer = (LBFileNode*) &D_ovl34_80135078;
 	rl_setup.force_status_buffer_size = ARRAY_COUNT(D_ovl34_80135078);
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20), gMVOpeningFirstDestinationFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20)), 0x10));

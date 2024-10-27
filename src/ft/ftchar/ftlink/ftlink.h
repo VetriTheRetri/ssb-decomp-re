@@ -9,17 +9,17 @@
 
 #define FTLINK_SPINATTACK_SPAWN_JOINT nFTPartsJointTopN
 #define FTLINK_SPINATTACK_EXTEND_POS_COUNT 4
-#define FTLINK_SPINATTACK_FLAG_SIZE_1 0.0F             // Size of Spin Attack item hitbox when 0x184 @ ftStruct is 1
-#define FTLINK_SPINATTACK_FLAG_SIZE_2 120.0F           // Size of Spin Attack item hitbox when 0x184 @ ftStruct is 2
-#define FTLINK_SPINATTACK_FLAG_SIZE_3 100.0F           // Size of Spin Attack item hitbox when 0x184 @ ftStruct is 3
-#define FTLINK_SPINATTACK_FLAG_SIZE_4 80.0F            // Size of Spin Attack item hitbox when 0x184 @ ftStruct is 4
+#define FTLINK_SPINATTACK_FLAG_SIZE_1 0.0F             // Size of Spin Attack item hitbox when 0x184 @ FTStruct is 1
+#define FTLINK_SPINATTACK_FLAG_SIZE_2 120.0F           // Size of Spin Attack item hitbox when 0x184 @ FTStruct is 2
+#define FTLINK_SPINATTACK_FLAG_SIZE_3 100.0F           // Size of Spin Attack item hitbox when 0x184 @ FTStruct is 3
+#define FTLINK_SPINATTACK_FLAG_SIZE_4 80.0F            // Size of Spin Attack item hitbox when 0x184 @ FTStruct is 4
 #define FTLINK_SPINATTACK_AIR_VEL_Y 69.0F              // Nice vertical height gain
 #define FTLINK_SPINATTACK_GRAVITY_MUL 0.23F            // Multiplies gravity
 #define FTLINK_SPINATTACK_AIR_DRIFT_MUL 0.5F           // Multiplies aerial drift
 #define FTLINK_SPINATTACK_FALLSPECIAL_DRIFT 0.6F       // Aerial drift multiplier once Link enters freefall after aerial Spin Attack
 #define FTLINK_SPINATTACK_LANDING_LAG 0.65F            // Divide landing animation length by this value
 
-extern ftStatusDesc dFTLinkSpecialStatusDescs[/* */];
+extern FTStatusDesc dFTLinkSpecialStatusDescs[/* */];
 
 extern void *gFTDataLinkMain;
 extern void *gFTDataLinkMainMotion;
@@ -73,11 +73,11 @@ typedef enum ftLinkStatus
 
 } ftLinkStatus;
 
-typedef struct ftLinkFighterVars
+typedef struct FTLinkFighterVars
 {
     GObj *boomerang_gobj;
 
-} ftLinkFighterVars;
+} FTLinkFighterVars;
 
 typedef struct ftLinkSpecialNStatusVars
 {
@@ -91,11 +91,11 @@ typedef struct ftLinkSpecialHiStatusVars
 
 } ftLinkSpecialHiStatusVars;
 
-typedef union ftLinkStatusVars
+typedef union FTLinkStatusVars
 {
     ftLinkSpecialNStatusVars specialn;
     ftLinkSpecialHiStatusVars specialhi;
 
-} ftLinkStatusVars;
+} FTLinkStatusVars;
 
 #endif

@@ -15,12 +15,12 @@ typedef struct scTrainingMenu
 	s32 speed_menu_option;					  // Option selected in "Speed" settings
 	s32 view_menu_option;					  // Option selected in "View" settings
 	s32 opponent;							  // Dummy fighter's port ID
-	scTrainingSprites* display_label_sprites; // "DAMAGE", "COMBO", "ENEMY", "SPEED" text
+	SCTrainingSprites* display_label_sprites; // "DAMAGE", "COMBO", "ENEMY", "SPEED" text
 	Sprite** display_option_sprites;
-	scTrainingSprites* menu_label_sprites; // Orange text describing what each option is?
+	SCTrainingSprites* menu_label_sprites; // Orange text describing what each option is?
 	Sprite** menu_option_sprites;
-	scTrainingSprites* unk_trainmenu_0x34;
-	scTrainingSprites* unk_trainmenu_0x38;
+	SCTrainingSprites* unk_trainmenu_0x34;
+	SCTrainingSprites* unk_trainmenu_0x38;
 	GObj* damage_display_gobj; // Interface GObj of damage stat display
 	GObj* combo_display_gobj;  // Interface GObj of combo stat display
 	GObj* cp_display_gobj;	   // Interface GObj of CP behavior display

@@ -16,7 +16,7 @@ extern intptr_t lITMewDataStart;            // 0x0000BCC0
 // // // // // // // // // // // //
 
 // 0x8018AC40
-itCreateDesc dITMewItemDesc =
+ITCreateDesc dITMewItemDesc =
 {
     nITKindMew,                             // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -41,7 +41,7 @@ itCreateDesc dITMewItemDesc =
 };
 
 // 0x8018AC74
-itStatusDesc dITMewStatusDescs[/* */] =
+ITStatusDesc dITMewStatusDescs[/* */] =
 {
     // Status 0 (Neutral FLy)
     {
@@ -77,7 +77,7 @@ enum itMewStatus
 // 0x8017EBE0
 sb32 itMewFlyProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     Vec3f pos = DObjGetStruct(item_gobj)->translate.vec.f;
 
     if (ip->it_multi == 0)
@@ -94,7 +94,7 @@ sb32 itMewFlyProcUpdate(GObj *item_gobj)
 
     ip->it_multi--;
 
-    ip->phys_info.vel_air.y += ITMEW_FLY_ADD_VEL_Y;
+    ip->physics.vel_air.y += ITMEW_FLY_ADD_VEL_Y;
 
     return FALSE;
 }
@@ -102,17 +102,17 @@ sb32 itMewFlyProcUpdate(GObj *item_gobj)
 // 0x8017EC84
 void itMewFlyInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi = ITMEW_LIFETIME;
 
     if (mtTrigGetRandomIntRange(2) != 0)
     {
-        ip->phys_info.vel_air.x = ITMEW_STARTVEL_X;
+        ip->physics.vel_air.x = ITMEW_STARTVEL_X;
     }
-    else ip->phys_info.vel_air.x = -ITMEW_STARTVEL_X;
+    else ip->physics.vel_air.x = -ITMEW_STARTVEL_X;
     
-    ip->phys_info.vel_air.y = ITMEW_STARTVEL_Y;
+    ip->physics.vel_air.y = ITMEW_STARTVEL_Y;
 
     func_800269C0_275C0(nSYAudioFGMMewFly);
 
@@ -135,11 +135,11 @@ void itMewFlySetStatus(GObj *item_gobj)
 // 0x8017ED54
 sb32 itMewCommonProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
 
         itMewFlySetStatus(item_gobj);
     }
@@ -151,11 +151,11 @@ sb32 itMewCommonProcUpdate(GObj *item_gobj)
 // 0x8017EDA4
 sb32 itMewCommonProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_GROUND) != FALSE)
     {
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
     }
     return FALSE;
 }
@@ -168,14 +168,14 @@ GObj* itMewMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     if (item_gobj != NULL)
     {
         DObj *dobj = DObjGetStruct(item_gobj);
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
-        ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y; // Starting to think this is a macro
+        ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
+        ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y; // Starting to think this is a macro
 
-        dobj->translate.vec.f.y -= ip->attributes->objcoll_bottom;
+        dobj->translate.vec.f.y -= ip->attributes->object_coll_bottom;
             
         // This ptr stuff is likely also a macro
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITMewDataStart), 0.0F); // Linker thing

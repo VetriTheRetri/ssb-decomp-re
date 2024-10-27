@@ -9,19 +9,19 @@
 // 0x80159B00
 void ftBossGootsubusuUpProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp;
+    FTStruct *fp;
 
     ftPhysicsApplyAirVelTransNYZ(fighter_gobj);
 
     fp = ftGetStruct(fighter_gobj);
 
-    fp->phys_info.vel_air.y += 50.0F;
+    fp->physics.vel_air.y += 50.0F;
 }
 
 // 0x80159B3C
 void ftBossGootsubusuUpProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp;
+    FTStruct *fp;
 
     mpCommonSetFighterProjectGround(fighter_gobj);
 

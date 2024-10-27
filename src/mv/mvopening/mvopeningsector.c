@@ -53,10 +53,10 @@ s32 sMVOpeningSectorCockpitAlpha;
 s32 sMVOpeningSectorUnused0x80132A40;
 
 // 0x80132A48
-lbFileNode sMVOpeningSectorStatusBuffer[48];
+LBFileNode sMVOpeningSectorStatusBuffer[48];
 
 // 0x80132BC8
-lbFileNode sMVOpeningSectorForceStatusBuffer[7];
+LBFileNode sMVOpeningSectorForceStatusBuffer[7];
 
 // 0x80132C00
 void *sMVOpeningSectorFiles[3];
@@ -526,7 +526,7 @@ void mvOpeningSectorFuncRun(GObj *gobj)
 void mvOpeningSectorFuncStart(void)
 {
     s32 i;
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

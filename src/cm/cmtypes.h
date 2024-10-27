@@ -10,7 +10,7 @@
 
 #include <cm/cmdef.h>
 
-struct cmStruct
+struct CMStruct
 {
 	s32 status_default;
 	s32 status_curr;

@@ -7,7 +7,7 @@
 // // // // // // // // // // // //
 
 // 0x8015E310
-void ftYoshiSpecialNSetCatchParams(ftStruct *fp, void (*proc_catch)(GObj*))
+void ftYoshiSpecialNSetCatchParams(FTStruct *fp, void (*proc_catch)(GObj*))
 {
     ftParamSetCatchParams(fp, FTCATCHKIND_MASK_YOSHISPECIALN, proc_catch, ftCommonCaptureYoshiProcCapture);
 }
@@ -15,7 +15,7 @@ void ftYoshiSpecialNSetCatchParams(ftStruct *fp, void (*proc_catch)(GObj*))
 // 0x8015E33C
 void ftYoshiSpecialNCatchUpdateProcStatus(GObj *fighter_gobj, void (*proc_status)(GObj*))
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (((fp->command_vars.flags.flag1 != 0) && (fp->catch_gobj != NULL)) || (fighter_gobj->anim_frame <= 0.0F))
     {
@@ -38,13 +38,13 @@ void ftYoshiSpecialAirNCatchProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x8015E3D8
-void ftYoshiSpecialNCatchUpdateCaptureVars(ftStruct *fp)
+void ftYoshiSpecialNCatchUpdateCaptureVars(FTStruct *fp)
 {
     if (fp->command_vars.flags.flag2 != 0)
     {
         if (fp->catch_gobj != NULL)
         {
-            ftStruct *catch_fp = ftGetStruct(fp->catch_gobj);
+            FTStruct *catch_fp = ftGetStruct(fp->catch_gobj);
 
             catch_fp->status_vars.common.captureyoshi.stage = 1;
 
@@ -55,7 +55,7 @@ void ftYoshiSpecialNCatchUpdateCaptureVars(ftStruct *fp)
     {
         if (fp->catch_gobj != NULL)
         {
-            ftStruct *catch_fp = ftGetStruct(fp->catch_gobj);
+            FTStruct *catch_fp = ftGetStruct(fp->catch_gobj);
 
             catch_fp->status_vars.common.captureyoshi.stage = 3;
 
@@ -121,7 +121,7 @@ void ftYoshiSpecialAirNReleaseProcMap(GObj *fighter_gobj)
 // 0x8015E57C
 void ftYoshiSpecialNProcStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->command_vars.flags.flag1 = 0;
 }
@@ -129,7 +129,7 @@ void ftYoshiSpecialNProcStatus(GObj *fighter_gobj)
 // 0x8015E588
 void ftYoshiSpecialAirNProcStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->command_vars.flags.flag2 = 0;
     fp->command_vars.flags.flag1 = 0;
@@ -138,7 +138,7 @@ void ftYoshiSpecialAirNProcStatus(GObj *fighter_gobj)
 // 0x8015E598
 void ftYoshiSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_HIT));
@@ -148,7 +148,7 @@ void ftYoshiSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 // 0x8015E5EC
 void ftYoshiSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_HIT));
@@ -186,7 +186,7 @@ void ftYoshiSpecialNReleaseSwitchStatusAir(GObj *fighter_gobj)
 // 0x8015E740
 void ftYoshiSpecialNSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->proc_status = ftYoshiSpecialNProcStatus;
 
@@ -198,7 +198,7 @@ void ftYoshiSpecialNSetStatus(GObj *fighter_gobj)
 // 0x8015E
 void ftYoshiSpecialAirNSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->proc_status = ftYoshiSpecialAirNProcStatus;
 
@@ -208,9 +208,9 @@ void ftYoshiSpecialAirNSetStatus(GObj *fighter_gobj)
 }
 
 // 0x8015E7F8
-void ftYoshiSpecialNCatchInitStatusVars(GObj *fighter_gobj)
+void ftYoshiSpecialNCatchInITStatusVars(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL); // Store grab vulnerability flags?
     ftPhysicsStopVelAll(fighter_gobj);
@@ -223,7 +223,7 @@ void ftYoshiSpecialNCatchProcCatch(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftYoshiSpecialNCatchInitStatusVars(fighter_gobj);
+    ftYoshiSpecialNCatchInITStatusVars(fighter_gobj);
 }
 
 // 0x8015E880
@@ -231,13 +231,13 @@ void ftYoshiSpecialAirNCatchProcCatch(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialAirNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftYoshiSpecialNCatchInitStatusVars(fighter_gobj);
+    ftYoshiSpecialNCatchInITStatusVars(fighter_gobj);
 }
 
 // 0x8015E8C4
-void ftYoshiSpecialNReleaseInitStatusVars(GObj *fighter_gobj)
+void ftYoshiSpecialNReleaseInITStatusVars(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
 
@@ -250,7 +250,7 @@ void ftYoshiSpecialNReleaseSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialNRelease, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftYoshiSpecialNReleaseInitStatusVars(fighter_gobj);
+    ftYoshiSpecialNReleaseInITStatusVars(fighter_gobj);
 }
 
 // 0x8015E93C
@@ -258,5 +258,5 @@ void ftYoshiSpecialAirNReleaseSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialAirNRelease, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftYoshiSpecialNReleaseInitStatusVars(fighter_gobj);
+    ftYoshiSpecialNReleaseInITStatusVars(fighter_gobj);
 }

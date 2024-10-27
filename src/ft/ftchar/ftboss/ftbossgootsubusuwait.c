@@ -9,7 +9,7 @@
 // 0x80159BD0
 void ftBossGootsubusuWaitProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftPhysicsApplyAirVelTransNYZ(fighter_gobj);
 
@@ -25,16 +25,16 @@ void ftBossGootsubusuWaitProcPhysics(GObj *fighter_gobj)
 
         if (ABSF(dist_x) > 35.0F)
         {
-            fp->phys_info.vel_air.x = (dist_x > 0.0F) ? 35.0F : -35.0F;
+            fp->physics.vel_air.x = (dist_x > 0.0F) ? 35.0F : -35.0F;
         }
-        else fp->phys_info.vel_air.x = dist_x;
+        else fp->physics.vel_air.x = dist_x;
     }
 }
 
 // 0x80159CA4
 void ftBossGootsubusuWaitProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
     f32 var;
 
@@ -60,7 +60,7 @@ void ftBossGootsubusuWaitProcMap(GObj *fighter_gobj)
 // 0x80159D34
 void ftBossGootsubusuWaitSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
 
     ftMainSetFighterStatus(fighter_gobj, nFTBossStatusGootsubusuWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);

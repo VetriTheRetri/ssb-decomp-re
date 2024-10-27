@@ -16,8 +16,8 @@ void ftCommonLGunShootProcUpdate(GObj *fighter_gobj)
 // 0x80146FD4
 void ftCommonLGunShootProcAccessory(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    itStruct *ip;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    ITStruct *ip;
     f32 size_mul;
 
     if ((fp->item_hold != NULL) && (fp->command_vars.flags.flag0 != 0))
@@ -81,7 +81,7 @@ void ftCommonLGunShootAirProcMap(GObj *fighter_gobj)
 // 0x80147208
 void ftCommonLGunShootAirSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusLGunShoot, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
@@ -92,7 +92,7 @@ void ftCommonLGunShootAirSwitchStatusGround(GObj *fighter_gobj)
 // 0x80147258
 void ftCommonLGunShootSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusLGunShootAir, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
@@ -108,9 +108,9 @@ void ftCommonFireFlowerShootProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x801472D4
-void ftCommonFireFlowerShootUpdateAmmoStats(ftStruct *fp, s32 ammo_sub)
+void ftCommonFireFlowerShootUpdateAmmoStats(FTStruct *fp, s32 ammo_sub)
 {
-    itStruct *ip = itGetStruct(fp->item_hold);
+    ITStruct *ip = itGetStruct(fp->item_hold);
 
     // 0x80188678
     Vec3f make_flame_offset = { 60.0F, 100.0F, 0.0F };
@@ -158,8 +158,8 @@ void ftCommonFireFlowerShootUpdateAmmoStats(ftStruct *fp, s32 ammo_sub)
 // 0x80147434
 void ftCommonFireFlowerShootProcAccessory(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    itStruct *ip;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    ITStruct *ip;
     s32 ammo_sub;
 
     if (!(fp->input.pl.button_hold & fp->input.button_mask_a))
@@ -258,7 +258,7 @@ void ftCommonFireFlowerShootAirProcMap(GObj *fighter_gobj)
 // 0x80147774
 void ftCommonFireFlowerShootAirSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusFireFlowerShoot, fighter_gobj->anim_frame, DObjGetStruct(fighter_gobj)->anim_speed, FTSTATUS_PRESERVE_NONE);
@@ -269,7 +269,7 @@ void ftCommonFireFlowerShootAirSwitchStatusGround(GObj *fighter_gobj)
 // 0x801477C8
 void ftCommonFireFlowerShootSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusFireFlowerShootAir, fighter_gobj->anim_frame, DObjGetStruct(fighter_gobj)->anim_speed, FTSTATUS_PRESERVE_NONE);
@@ -279,7 +279,7 @@ void ftCommonFireFlowerShootSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x80147824
-void ftCommonFireFlowerShootInitStatusVars(ftStruct *fp)
+void ftCommonFireFlowerShootInITStatusVars(FTStruct *fp)
 {
     fp->status_vars.common.fireflower.flame_vel_index = 0;
     fp->status_vars.common.fireflower.ammo_sub = 1;
@@ -292,8 +292,8 @@ void ftCommonFireFlowerShootInitStatusVars(ftStruct *fp)
 // 0x80147844
 void ftCommonItemShootSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    itStruct *ip = itGetStruct(fp->item_hold);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    ITStruct *ip = itGetStruct(fp->item_hold);
     s32 status_id;
     void (*proc_accessory)(GObj*);
 
@@ -316,14 +316,14 @@ void ftCommonItemShootSetStatus(GObj *fighter_gobj)
 
     fp->proc_accessory = proc_accessory;
 
-    ftCommonFireFlowerShootInitStatusVars(fp);
+    ftCommonFireFlowerShootInITStatusVars(fp);
 }
 
 // 0x801478EC
 void ftCommonItemShootAirSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    itStruct *ip = itGetStruct(fp->item_hold);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    ITStruct *ip = itGetStruct(fp->item_hold);
     s32 status_id;
     void (*proc_accessory)(GObj*);
 
@@ -347,5 +347,5 @@ void ftCommonItemShootAirSetStatus(GObj *fighter_gobj)
     fp->proc_accessory = proc_accessory;
 
     ftPhysicsClampAirVelXMax(fp);
-    ftCommonFireFlowerShootInitStatusVars(fp);
+    ftCommonFireFlowerShootInITStatusVars(fp);
 }

@@ -19,7 +19,7 @@ extern intptr_t lITNBumperWaitDisplayList;  // 0x00007AF8
 // // // // // // // // // // // //
 
 // 0x8018A690
-itCreateDesc dITNBumperItemDesc =
+ITCreateDesc dITNBumperItemDesc =
 {
     nITKindNBumper,                         // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -44,7 +44,7 @@ itCreateDesc dITNBumperItemDesc =
 };
 
 // 0x8018A6C4
-itStatusDesc dITNBumperStatusDescs[/* */] =
+ITStatusDesc dITNBumperStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -171,7 +171,7 @@ enum itNBumperStatus
 // 0x8017B430
 sb32 itNBumperFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITBUMPER_GRAVITY_NORMAL, ITBUMPER_TVEL);
@@ -216,7 +216,7 @@ sb32 itNBumperFallProcMap(GObj *item_gobj)
 // 0x8017B57C
 sb32 itNBumperThrownProcHit(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     dobj->scale.vec.f.x = 2.0F;
@@ -227,8 +227,8 @@ sb32 itNBumperThrownProcHit(GObj *item_gobj)
 
     dobj->mobj->palette_id = 1.0F;
 
-    ip->phys_info.vel_air.x = ITBUMPER_REBOUND_AIR_X * ip->lr_attack;
-    ip->phys_info.vel_air.y = ITBUMPER_REBOUND_AIR_Y;
+    ip->physics.vel_air.x = ITBUMPER_REBOUND_AIR_X * ip->attack_lr;
+    ip->physics.vel_air.y = ITBUMPER_REBOUND_AIR_Y;
 
     ip->it_multi = ITBUMPER_HIT_SCALE;
 
@@ -247,7 +247,7 @@ void itNBumperWaitSetStatus(GObj *item_gobj)
 // 0x8017B634
 void itNBumperFallSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
@@ -264,7 +264,7 @@ void itNBumperHoldSetStatus(GObj *item_gobj)
 // 0x8017B6A0
 sb32 itNBumperThrownProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITBUMPER_GRAVITY_NORMAL, ITBUMPER_TVEL);
 
@@ -301,12 +301,12 @@ sb32 itNBumperThrownProcShield(GObj *item_gobj)
 // 0x8017B778
 sb32 itNBumperThrownProcReflector(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
-    ftStruct *fp = ftGetStruct(ip->owner_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
+    FTStruct *fp = ftGetStruct(ip->owner_gobj);
 
-    if ((ip->phys_info.vel_air.x * fp->lr) < 0.0F)
+    if ((ip->physics.vel_air.x * fp->lr) < 0.0F)
     {
-        ip->phys_info.vel_air.x = -ip->phys_info.vel_air.x;
+        ip->physics.vel_air.x = -ip->physics.vel_air.x;
     }
     itMainClearOwnerStats(item_gobj);
 
@@ -316,12 +316,12 @@ sb32 itNBumperThrownProcReflector(GObj *item_gobj)
 // 0x8017B7DC
 void itNBumperThrownSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->item_vars.bumper.damage_all_delay = ITBUMPER_DAMAGE_ALL_WAIT;
 
-    ip->coll_data.objcoll.top = ITBUMPER_COLL_SIZE;
-    ip->coll_data.objcoll.bottom = -ITBUMPER_COLL_SIZE;
+    ip->coll_data.object_coll.top = ITBUMPER_COLL_SIZE;
+    ip->coll_data.object_coll.bottom = -ITBUMPER_COLL_SIZE;
 
     itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusThrown);
 }
@@ -329,12 +329,12 @@ void itNBumperThrownSetStatus(GObj *item_gobj)
 // 0x8017B828
 void itNBumperDroppedSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->item_vars.bumper.damage_all_delay = ITBUMPER_DAMAGE_ALL_WAIT;
 
-    ip->coll_data.objcoll.top = ITBUMPER_COLL_SIZE;
-    ip->coll_data.objcoll.bottom = -ITBUMPER_COLL_SIZE;
+    ip->coll_data.object_coll.top = ITBUMPER_COLL_SIZE;
+    ip->coll_data.object_coll.bottom = -ITBUMPER_COLL_SIZE;
 
     itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusDropped);
 }
@@ -342,7 +342,7 @@ void itNBumperDroppedSetStatus(GObj *item_gobj)
 // 0x8017B874
 void itNBumperAttachedSetModelYaw(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     s32 unused;
     Vec3f ground_angle;
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -359,16 +359,16 @@ void itNBumperAttachedInitItemVars(GObj *item_gobj)
 {
     s32 unused[2];
     DObj *dobj;
-    itStruct *ip;
+    ITStruct *ip;
     MObjSub *mobjsub;
     Gfx *dl;
 
     ip = itGetStruct(item_gobj);
     dobj = DObjGetStruct(item_gobj);
 
-    ip->phys_info.vel_air.x = 0.0F;
-    ip->phys_info.vel_air.y = 0.0F;
-    ip->phys_info.vel_air.z = 0.0F;
+    ip->physics.vel_air.x = 0.0F;
+    ip->physics.vel_air.y = 0.0F;
+    ip->physics.vel_air.z = 0.0F;
 
     dl = itGetPData(ip, lITNBumperDataStart, lITNBumperWaitDisplayList); // (uintptr_t)((uintptr_t)ip->attributes->dobj_setup - (intptr_t)&lITNBumperDataStart) + (intptr_t)&lITNBumperWaitDisplayList; Linker thing
 
@@ -381,8 +381,8 @@ void itNBumperAttachedInitItemVars(GObj *item_gobj)
 
     dobj->scale.vec.f.x = dobj->scale.vec.f.y = dobj->scale.vec.f.z = 1.0F;
 
-    ip->coll_data.objcoll.top = ITBUMPER_COLL_SIZE;
-    ip->coll_data.objcoll.bottom = -ITBUMPER_COLL_SIZE;
+    ip->coll_data.object_coll.top = ITBUMPER_COLL_SIZE;
+    ip->coll_data.object_coll.bottom = -ITBUMPER_COLL_SIZE;
 
     itNBumperAttachedSetModelYaw(item_gobj);
 
@@ -396,7 +396,7 @@ void itNBumperAttachedInitItemVars(GObj *item_gobj)
 // 0x8017B9C8
 sb32 itNBumperAttachedProcHit(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     dobj->scale.vec.f.x = 2.0F;
@@ -406,9 +406,9 @@ sb32 itNBumperAttachedProcHit(GObj *item_gobj)
 
     dobj->mobj->palette_id = 1.0F;
 
-    ip->lr = -ip->lr_attack;
+    ip->lr = -ip->attack_lr;
 
-    ip->phys_info.vel_air.x = ip->lr_attack * ITBUMPER_REBOUND_VEL_X;
+    ip->physics.vel_air.x = ip->attack_lr * ITBUMPER_REBOUND_VEL_X;
 
     ip->it_multi = ITBUMPER_HIT_SCALE;
 
@@ -418,8 +418,8 @@ sb32 itNBumperAttachedProcHit(GObj *item_gobj)
 // 0x8017BA2C
 sb32 itNBumperAttachedProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
-    itAttributes *attributes = ip->attributes;
+    ITStruct *ip = itGetStruct(item_gobj);
+    ITAttributes *attributes = ip->attributes;
     DObj *dobj = DObjGetStruct(item_gobj);
     Vec3f edge_pos;
 
@@ -435,24 +435,24 @@ sb32 itNBumperAttachedProcUpdate(GObj *item_gobj)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &edge_pos);
 
-            if (edge_pos.x >= (dobj->translate.vec.f.x - attributes->objcoll_width))
+            if (edge_pos.x >= (dobj->translate.vec.f.x - attributes->object_coll_width))
             {
-                ip->phys_info.vel_air.x = 0.0F;
+                ip->physics.vel_air.x = 0.0F;
             }
         }
         else
         {
             mpCollisionGetLREdgeRight(ip->coll_data.ground_line_id, &edge_pos);
 
-            if (edge_pos.x <= (dobj->translate.vec.f.x + attributes->objcoll_width))
+            if (edge_pos.x <= (dobj->translate.vec.f.x + attributes->object_coll_width))
             {
-                ip->phys_info.vel_air.x = 0.0F;
+                ip->physics.vel_air.x = 0.0F;
             }
         }
     }
     if (ip->it_multi < ITBUMPER_RESETVEL_TIMER)
     {
-        ip->phys_info.vel_air.x = 0.0F;
+        ip->physics.vel_air.x = 0.0F;
     }
     if (ip->it_multi != 0)
     {
@@ -474,7 +474,7 @@ sb32 itNBumperAttachedProcUpdate(GObj *item_gobj)
 // 0x8017BBFC
 sb32 itNBumperAttachedProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
     if (itMapCheckLRWallProcGround(item_gobj, itNBumperDroppedSetStatus) != FALSE)
@@ -500,8 +500,8 @@ sb32 itNBumperAttachedProcMap(GObj *item_gobj)
 // 0x8017BCC0
 sb32 itNBumperAttachedProcReflector(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
-    ftStruct *fp = ftGetStruct(ip->owner_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
+    FTStruct *fp = ftGetStruct(ip->owner_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     dobj->scale.vec.f.x = 2.0F;
@@ -511,7 +511,7 @@ sb32 itNBumperAttachedProcReflector(GObj *item_gobj)
 
     dobj->mobj->palette_id = 1.0F;
 
-    ip->phys_info.vel_air.x = (-fp->lr * ITBUMPER_REBOUND_VEL_X);
+    ip->physics.vel_air.x = (-fp->lr * ITBUMPER_REBOUND_VEL_X);
 
     ip->lr = fp->lr;
 
@@ -532,7 +532,7 @@ void itNBumperAttachedSetStatus(GObj *item_gobj)
 // 0x8017BD80
 sb32 itNBumperHitAirProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     if ((ip->item_vars.bumper.hit_anim_length == 0) && (dobj->mobj->palette_id == 1.0F))
@@ -567,7 +567,7 @@ sb32 itNBumperHitAirProcUpdate(GObj *item_gobj)
 // 0x8017BEA0
 void itNBumperHitAirSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->item_vars.bumper.damage_all_delay = ITBUMPER_DAMAGE_ALL_WAIT;
 
@@ -577,7 +577,7 @@ void itNBumperHitAirSetStatus(GObj *item_gobj)
 // 0x8017BED4
 sb32 itNBumperGDisappearProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->lifetime == 0)
     {
@@ -597,7 +597,7 @@ sb32 itNBumperGDisappearProcUpdate(GObj *item_gobj)
 // 0x8017BF1C
 void itNBumperGDisappearSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     dobj->mobj->palette_id = 0;
@@ -610,11 +610,11 @@ void itNBumperGDisappearSetStatus(GObj *item_gobj)
 
     dobj->flags = DOBJ_FLAG_NONE;
 
-    ip->item_hit.update_state = nGMHitUpdateDisable;
+    ip->hit_coll.update_state = nGMHitUpdateDisable;
 
-    ip->phys_info.vel_air.x = 0.0F;
-    ip->phys_info.vel_air.y = 0.0F;
-    ip->phys_info.vel_air.z = 0.0F;
+    ip->physics.vel_air.x = 0.0F;
+    ip->physics.vel_air.y = 0.0F;
+    ip->physics.vel_air.z = 0.0F;
 
     itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusGDisappear);
 }
@@ -627,16 +627,16 @@ GObj* itNBumperMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     if (item_gobj != NULL)
     {
         DObj *dobj = DObjGetStruct(item_gobj);
-        itStruct *ip;
+        ITStruct *ip;
         Vec3f translate = dobj->translate.vec.f;
 
         ip = itGetStruct(item_gobj);
 
         ip->it_multi = 0;
 
-        ip->item_hit.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
+        ip->hit_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
 
-        ip->item_hit.can_rehit_shield = TRUE;
+        ip->hit_coll.can_rehit_shield = TRUE;
 
         dobj->mobj->palette_id = 0.0F;
 
@@ -648,7 +648,7 @@ GObj* itNBumperMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->is_unused_item_bool = TRUE;
 
-        ip->indicator_gobj = ifCommonItemArrowMakeInterface(ip);
+        ip->arrow_gobj = ifCommonItemArrowMakeInterface(ip);
     }
     return item_gobj;
 }

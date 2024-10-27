@@ -17,7 +17,7 @@ extern intptr_t lITKabigonAnimJoint;        // 0x0000B158
 // // // // // // // // // // // //
 
 // 0x8018AB40
-itCreateDesc dITKabigonItemDesc = 
+ITCreateDesc dITKabigonItemDesc = 
 {
     nITKindKabigon,                         // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -42,7 +42,7 @@ itCreateDesc dITKabigonItemDesc =
 };
 
 // 0x8018AB74
-itStatusDesc dITKabigonStatusDescs[/* */] = 
+ITStatusDesc dITKabigonStatusDescs[/* */] = 
 {
     // Status 0 (Neutral Jump)
     {
@@ -91,7 +91,7 @@ enum itKabigonStatus
 // 0x8017E070
 sb32 itKabigonFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     if (ip->item_vars.kabigon.rumble_wait == 0)
@@ -112,7 +112,7 @@ sb32 itKabigonFallProcUpdate(GObj *item_gobj)
 // 0x8017E100
 void itKabigonFallFuncDisplay(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
@@ -131,7 +131,7 @@ void itKabigonFallFuncDisplay(GObj *item_gobj)
             gcDrawDObjTreeForGObj(item_gobj);
             itDisplayMapCollisions(item_gobj);
         }
-        else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
+        else if ((ip->damage_coll.hitstatus == nGMHitStatusNone) && (ip->hit_coll.update_state == nGMHitUpdateDisable))
         {
             gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
@@ -145,10 +145,10 @@ void itKabigonFallFuncDisplay(GObj *item_gobj)
 // 0x8017E25C
 void itKabigonFallInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    ip->phys_info.vel_air.y = ITKABIGON_DROP_VEL_Y;
+    ip->physics.vel_air.y = ITKABIGON_DROP_VEL_Y;
 
     dobj->translate.vec.f.x += ((ITKABIGON_DROP_OFF_X_MUL * mtTrigGetRandomFloat()) + ITKABIGON_DROP_OFF_X_ADD);
 
@@ -164,13 +164,13 @@ void itKabigonFallInitItemVars(GObj *item_gobj)
 
         dobj->scale.vec.f.x = dobj->scale.vec.f.y = ITKABIGON_DROP_SIZE_KABIGON;
 
-        ip->item_hit.size *= ITKABIGON_DROP_SIZE_KABIGON;
+        ip->hit_coll.size *= ITKABIGON_DROP_SIZE_KABIGON;
     }
     else
     {
         dobj->scale.vec.f.x = dobj->scale.vec.f.y = ITKABIGON_DROP_SIZE_OTHER;
 
-        ip->item_hit.size *= ITKABIGON_DROP_SIZE_OTHER;
+        ip->hit_coll.size *= ITKABIGON_DROP_SIZE_OTHER;
     }
     item_gobj->func_display = itKabigonFallFuncDisplay;
 
@@ -187,14 +187,14 @@ void itKabigonFallSetStatus(GObj *item_gobj)
 // 0x8017E384
 sb32 itKabigonJumpProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     if (dobj->translate.vec.f.y >= (gMPCollisionGroundData->map_bound_top - ITKABIGON_MAP_OFF_Y))
     {
         ip->it_multi--;
 
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
 
         if (ip->it_multi == 0)
         {
@@ -220,7 +220,7 @@ sb32 itKabigonJumpProcUpdate(GObj *item_gobj)
 // 0x8017E4A4
 void itKabigonCommonFuncDisplay(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
@@ -239,7 +239,7 @@ void itKabigonCommonFuncDisplay(GObj *item_gobj)
             gcDrawDObjTreeForGObj(item_gobj);
             itDisplayMapCollisions(item_gobj);
         }
-        else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
+        else if ((ip->damage_coll.hitstatus == nGMHitStatusNone) && (ip->hit_coll.update_state == nGMHitUpdateDisable))
         {
             gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
@@ -253,7 +253,7 @@ void itKabigonCommonFuncDisplay(GObj *item_gobj)
 // 0x8017E600
 void itKabigonJumpInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     func_800269C0_275C0(nSYAudioFGMKabigonJump);
 
@@ -261,7 +261,7 @@ void itKabigonJumpInitItemVars(GObj *item_gobj)
 
     ip->item_vars.kabigon.dust_effect_int = ITKABIGON_EFFECT_SPAWN_INT;
 
-    ip->phys_info.vel_air.y = ITKABIGON_JUMP_VEL_Y;
+    ip->physics.vel_air.y = ITKABIGON_JUMP_VEL_Y;
 }
 
 // 0x8017E648
@@ -274,7 +274,7 @@ void itKabigonJumpSetStatus(GObj *item_gobj)
 // 0x8017E67C
 sb32 itKabigonCommonProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {
@@ -293,14 +293,14 @@ GObj* itKabigonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     if (item_gobj != NULL)
     {
         DObj *dobj = DObjGetStruct(item_gobj);
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ip->item_hit.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
+        ip->hit_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
 
-        ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
-        ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
+        ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
+        ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITKabigonAnimJoint), 0.0F); // Linker thing
 

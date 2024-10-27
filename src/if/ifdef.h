@@ -1,19 +1,20 @@
 #ifndef _IFDEF_H_
 #define _IFDEF_H_
 
-#define IFCOMMON_PLAYERARROWS_MASK_LEFT  	(1 << nIFPlayerArrowKindLeft)
-#define IFCOMMON_PLAYERARROWS_MASK_RIGHT 	(1 << nIFPlayerArrowKindRight)
+// Macros
+#define IFCOMMON_PLAYERARROWS_MASK_LEFT  	(1 << 0)
+#define IFCOMMON_PLAYERARROWS_MASK_RIGHT 	(1 << 1)
 
 // Enums
-typedef enum ifPauseKind
+typedef enum IFPauseKind
 {
 	nIFPauseKindPlayerNA, // Player not available (not within pause zoom range)
 	nIFPauseKindDefault,  // Default
-	nIFPauseKindBonus	   // Bonus games
+	nIFPauseKindBonus	  // Bonus Stages
 
-} ifPauseKind;
+} IFPauseKind;
 
-typedef enum ifPlayerTagKind
+typedef enum IFPlayerTagKind
 {
 	nIFPlayerTagKind1P,
 	nIFPlayerTagKind2P,
@@ -22,23 +23,16 @@ typedef enum ifPlayerTagKind
 	nIFPlayerTagKindCP,
 	nIFPlayerTagKindHeart
 
-} ifPlayerTagKind;
-
-typedef enum ifPlayerArrowsKind
-{
-	nIFPlayerArrowKindLeft,
-	nIFPlayerArrowKindRight
-
-} ifPlayerArrowsKind;
+} IFPlayerTagKind;
 
 // Structs
-typedef struct ifPlayerCommon	ifPlayerCommon;
-typedef struct ifDCharacter 	ifDCharacter;
-typedef struct ifACharacter 	ifACharacter;
-typedef struct ifPlayerDamage 	ifPlayerDamage;
-typedef struct ifPlayerSteal 	ifPlayerSteal;
-typedef struct ifPlayerMGlass 	ifPlayerMGlass;
-typedef struct ifTraffic 		ifTraffic;
-typedef struct ifPauseDecal 	ifPauseDecal;
+typedef struct IFPlayerCommon	IFPlayerCommon;
+typedef struct IFDCharacter 	IFDCharacter;
+typedef struct IFACharacter 	IFACharacter;
+typedef struct IFPlayerDamage 	IFPlayerDamage;
+typedef struct IFPlayerSteal 	IFPlayerSteal;
+typedef struct IFPlayerMGlass 	IFPlayerMGlass;
+typedef struct IFTraffic 		IFTraffic;
+typedef struct IFPauseDecal 	IFPauseDecal;
 
 #endif

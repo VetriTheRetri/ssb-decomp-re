@@ -16,7 +16,7 @@
 #define FTCAPTAIN_FALCONKICK_VEL_SCALE_APPLY_TIME 6
 #define FTCAPTAIN_FALCONKICK_VEL_SCALE_DIV 2.0F
 
-extern ftStatusDesc dFTCaptainSpecialStatusDescs[/* */];
+extern FTStatusDesc dFTCaptainSpecialStatusDescs[/* */];
 
 extern void *gFTDataCaptainMain;
 extern void *gFTDataCaptainMainMotion;
@@ -73,11 +73,11 @@ typedef enum ftCaptainStatus
 
 } ftCaptainStatus;
 
-typedef struct ftCaptainFighterVars
+typedef struct FTCaptainFighterVars
 {
     s32 falcon_punch_unk;
 
-} ftCaptainFighterVars;
+} FTCaptainFighterVars;
 
 typedef struct ftCaptainSpecialHiStatusVars
 {
@@ -93,11 +93,11 @@ typedef struct ftCaptainSpecialLwStatusVars
 
 } ftCaptainSpecialLwStatusVars;
 
-typedef union ftCaptainStatusVars
+typedef union FTCaptainStatusVars
 {
     ftCaptainSpecialHiStatusVars specialhi;
     ftCaptainSpecialLwStatusVars speciallw;
 
-} ftCaptainStatusVars;
+} FTCaptainStatusVars;
 
 #endif

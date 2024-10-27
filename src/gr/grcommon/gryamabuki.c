@@ -58,7 +58,7 @@ sb32 grYamabukiGateCheckPlayersNear(void)
 
     while (fighter_gobj != NULL)
     {
-        ftStruct *fp = ftGetStruct(fighter_gobj);
+        FTStruct *fp = ftGetStruct(fighter_gobj);
 
         if ((fp->ga == nMPKineticsGround) && ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect))
         {
@@ -179,9 +179,9 @@ void grYamabukiGateUpdateOpen(void)
     }
     else if (gGRCommonStruct.yamabuki.gate_noentry == FALSE)
     {
-        itStruct *ip = itGetStruct(gGRCommonStruct.yamabuki.monster_gobj);
+        ITStruct *ip = itGetStruct(gGRCommonStruct.yamabuki.monster_gobj);
 
-        gGRCommonStruct.yamabuki.gate_pos.x = DObjGetStruct(gGRCommonStruct.yamabuki.monster_gobj)->translate.vec.f.x - ip->coll_data.objcoll.width;
+        gGRCommonStruct.yamabuki.gate_pos.x = DObjGetStruct(gGRCommonStruct.yamabuki.monster_gobj)->translate.vec.f.x - ip->coll_data.object_coll.width;
         gGRCommonStruct.yamabuki.gate_pos.y = gMPCollisionYakumonoDObjs->yakumono_dobj[3]->translate.vec.f.y;
 
         if (gGRCommonStruct.yamabuki.gate_pos.x < 960.0F)

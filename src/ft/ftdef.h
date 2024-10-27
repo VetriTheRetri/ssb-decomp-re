@@ -70,8 +70,8 @@
     FTCATCHKIND_MASK_YOSHISPECIALN      \
 )
 
-#define FTSLOPECONTOUR_FLAG_RFOOT   (1 << nFTSlopeContourRFoot)
 #define FTSLOPECONTOUR_FLAG_LFOOT   (1 << nFTSlopeContourLFoot)
+#define FTSLOPECONTOUR_FLAG_RFOOT   (1 << nFTSlopeContourRFoot)
 #define FTSLOPECONTOUR_FLAG_FULL    (1 << nFTSlopeContourFull)
 
 #define FTCOMPUTER_COMMAND_TIMER_BITS           (0x4)
@@ -121,7 +121,7 @@
 #define ftMotionEventCastAdvance(event, type) ((type*)(event)->p_script++)
 
 // Enums
-typedef enum ftStatusUpdateFlags
+typedef enum FTStatusUpdateFlags
 {
     nFTStatusPreserveHit,               // Preserve hitboxes between action states
     nFTStatusPreserveColAnim,           // Preserve color animation between action states
@@ -139,9 +139,9 @@ typedef enum ftStatusUpdateFlags
     nFTStatusPreserveAfterImage,        // Preserve sword trail display state
     nFTStatusPreserveRumble             // Preserve rumble
 
-} ftStatusUpdateFlags;
+} FTStatusUpdateFlags;
 
-typedef enum ftCommonMotion
+typedef enum FTCommonMotion
 {
     nFTCommonMotionNull = -1,
     nFTCommonMotionEntryNull,
@@ -348,9 +348,9 @@ typedef enum ftCommonMotion
     nFTCommonMotionLandingAirNull,
     nFTCommonMotionSpecialStart
 
-} ftCommonMotion;
+} FTCommonMotion;
 
-typedef enum ftCommonStatus
+typedef enum FTCommonStatus
 {
     nFTCommonStatusDeadDown,
     nFTCommonStatusDeadLeftRight,
@@ -612,9 +612,9 @@ typedef enum ftCommonStatus
 
     nFTCommonStatusSpecialStart // Start of special move table
 
-} ftCommonStatus;
+} FTCommonStatus;
 
-typedef enum ftMotionAttackIndex
+typedef enum FTMotionAttackIndex
 {
     nFTMotionAttackIDNone,
 
@@ -683,9 +683,9 @@ typedef enum ftMotionAttackIndex
     nFTMotionAttackIDNull,
     nFTMotionAttackIDEnumMax
 
-} ftMotionAttackIndex;
+} FTMotionAttackIndex;
 
-typedef enum ftStatusAttackIndex
+typedef enum FTStatusAttackIndex
 {
     nFTStatusAttackIDNone,
 
@@ -763,9 +763,9 @@ typedef enum ftStatusAttackIndex
     nFTStatusAttackIDNull,
     nFTStatusAttackIDEnumMax
 
-} ftStatusAttackIndex;
+} FTStatusAttackIndex;
 
-typedef enum ftMotionEventKind
+typedef enum FTMotionEventKind
 {
 	nFTMotionEventKindEnd,
 	nFTMotionEventKindSyncWait,
@@ -820,9 +820,9 @@ typedef enum ftMotionEventKind
 	nFTMotionEventKindStopRumble,
 	nFTMotionEventKindSetAfterImage // Sword Trail
 
-} ftMotionEventKind;
+} FTMotionEventKind;
 
-typedef enum ftCameraModes
+typedef enum FTCameraModes
 {
     nFTCameraModeDefault,
     nFTCameraModeRebirth,
@@ -830,17 +830,17 @@ typedef enum ftCameraModes
     nFTCameraModeEntry,
     nFTCameraModeExplain
 
-} ftCameraModes;
+} FTCameraModes;
 
-typedef enum ftSlopeContours
+typedef enum FTSlopeContours
 {
     nFTSlopeContourLFoot,
     nFTSlopeContourRFoot,
     nFTSlopeContourFull
 
-} ftSlopeContours;
+} FTSlopeContours;
 
-typedef enum ftHitlogObjectKind
+typedef enum FTHitlogObjectKind
 {
 	nFTHitlogObjectNone,
 	nFTHitlogObjectFighter,
@@ -848,9 +848,9 @@ typedef enum ftHitlogObjectKind
 	nFTHitlogObjectItem,
 	nFTHitlogObjectGround
 
-} ftHitlogObjectKind;
+} FTHitlogObjectKind;
 
-typedef enum ftItemSwingKind
+typedef enum FTItemSwingKind
 {
     nFTItemSwingKindSword,
     nFTItemSwingKindBat,
@@ -858,9 +858,9 @@ typedef enum ftItemSwingKind
     nFTItemSwingKindStarRod,
     nFTItemSwingKindEnumMax
 
-} ftItemSwingKind;
+} FTItemSwingKind;
 
-typedef enum ftItemSwingType
+typedef enum FTItemSwingType
 {
     nFTItemSwingTypeAttack1,
     nFTItemSwingTypeAttack3,
@@ -868,17 +868,17 @@ typedef enum ftItemSwingType
     nFTItemSwingTypeAttackDash,
     nFTItemSwingTypeEnumMax
 	
-} ftItemSwingType;
+} FTItemSwingType;
 
-typedef enum ftSpecialHitKind
+typedef enum FTSpecialCollKind
 {
-    nFTSpecialHitKindFoxReflector,
-    nFTSpecialHitKindNessAbsorb,
-    nFTSpecialHitKindNessReflector
+    nFTSpecialHITKindFoxReflector,
+    nFTSpecialHITKindNessAbsorb,
+    nFTSpecialHITKindNessReflector
 
-} ftSpecialHitKind;
+} FTSpecialCollKind;
 
-typedef enum ftCatchKind
+typedef enum FTCatchKind
 {
     nFTCatchKindYoshiSpecialN,              // Yoshi's Egg Lay, also used for Kirby's copy ability version of it
     nFTCatchKindKirbySpecialN,              // Kirby's Inhale
@@ -887,17 +887,17 @@ typedef enum ftCatchKind
     nFTCatchKindCommon,                     // Common grab
     nFTCatchKindCaptainSpecialHi            // Captain Falcon's Falcon Dive
 
-} ftCatchKind;
+} FTCatchKind;
 
-typedef enum ftPartsPlacement
+typedef enum FTPartsPlacement
 {
     nFTPartsPlacementLow,
     nFTPartsPlacementMiddle,
     nFTPartsPlacementHigh
 
-} ftPartsPlacement;
+} FTPartsPlacement;
 
-typedef enum ftPartsJointLabels
+typedef enum FTPartsJointLabels
 {
     nFTPartsJointTopN,
     nFTPartsJointTransN,
@@ -905,18 +905,18 @@ typedef enum ftPartsJointLabels
     nFTPartsJointYRotN,
     nFTPartsJointCommonStart
 
-} ftPartsJointLabels;
+} FTPartsJointLabels;
 
-typedef enum ftPartsLevelDetail
+typedef enum FTPartsLevelDetail
 {
     nFTPartsDetailNone,                         // Unused?
     nFTPartsDetailStart,                        // Start of actual detail values
     nFTPartsDetailHigh = nFTPartsDetailStart,   // Hi-poly
     nFTPartsDetailLow                           // Lo-poly
         
-} ftPartsLevelDetail;
+} FTPartsLevelDetail;
 
-typedef enum ftKind
+typedef enum FTKind
 {
     nFTKindPlayableStart,
     nFTKindMario = nFTKindPlayableStart,
@@ -955,9 +955,9 @@ typedef enum ftKind
     nFTKindEnumMax,
     nFTKindNull        // NONE
 
-} ftKind;
+} FTKind;
 
-typedef enum ftPlayerKind
+typedef enum FTPlayerKind
 {
     nFTPlayerKindMan,        // Player-controlled
     nFTPlayerKindCom,        // CPU-controlled
@@ -966,9 +966,9 @@ typedef enum ftPlayerKind
     nFTPlayerKindKey,        // Intro movie?
     nFTPlayerKindGameKey     // How to Play?
 
-} ftPlayerKind;
+} FTPlayerKind;
 
-typedef enum ftComputerCommandKind
+typedef enum FTComputerCommandKind
 {
     nFTComputerCommandButtonAPress,
     nFTComputerCommandButtonARelease,
@@ -987,9 +987,9 @@ typedef enum ftComputerCommandKind
     nFTComputerCommandStickYVar,
     nFTComputerCommandEnumMax
 
-} ftComputerCommandKind;
+} FTComputerCommandKind;
 
-typedef enum ftComputerInputKind
+typedef enum FTComputerInputKind
 {
     nFTComputerInputStickN,                                                // Reset stick to neutral
     nFTComputerInputMoveAuto,                                              // Move towards target (all directions)
@@ -1041,10 +1041,10 @@ typedef enum ftComputerInputKind
     nFTComputerInputYoshiSpecialHiAim,                                     // Yoshi Up Special
     nFTComputerInputNessSpecialHiAim                                       // Ness Up Special
 
-} ftComputerInputKind;
+} FTComputerInputKind;
 
 // The CPUs' "personality traits," overriding behavior if present (mostly 1P Game?)
-typedef enum ftComputerTraitKind
+typedef enum FTComputerTraitKind
 {
     nFTComputerTraitDefault,           // "? Used in VS and for some 1P Game characters"
     nFTComputerTraitLink,              // Wait around for a while (1P Game Link)
@@ -1058,9 +1058,9 @@ typedef enum ftComputerTraitKind
     nFTComputerTraitAlly,              // Ally fighter in 1P Game
     nFTComputerTraitNone               // No overriding behavior (Training Mode)
 
-} ftComputerTraitKind;
+} FTComputerTraitKind;
 
-typedef enum ftComputerBehaviorKind
+typedef enum FTComputerBehaviorKind
 {
     nFTComputerBehaviorDefault,
     nFTComputerBehaviorUnk1,
@@ -1083,9 +1083,9 @@ typedef enum ftComputerBehaviorKind
     nFTComputerBehaviorJump,
     nFTComputerBehaviorUnk5
 
-} ftComputerBehaviorKind;
+} FTComputerBehaviorKind;
 
-typedef enum ftComputerObjectiveKind
+typedef enum FTComputerObjectiveKind
 {
     nFTComputerObjectiveStand,         // CPU player will idle (?)
     nFTComputerObjectiveWalk,          // CPU player will walk around (?)
@@ -1100,17 +1100,17 @@ typedef enum ftComputerObjectiveKind
     nFTComputerObjectivePatrol,        // CPU player will walk around and attack opposing bystanders (not ally behavior, used in Kirby Team)
     nFTComputerObjectiveRush           // CPU player will try to relentlessly target opponents (Race to the Finish)
 
-} ftComputerObjectiveKind;
+} FTComputerObjectiveKind;
 
-typedef enum ftKeyCommandKind
+typedef enum FTKeyCommandKind
 {
     nFTKeyCommandEnd,
     nFTKeyCommandButton,
     nFTKeyCommandStick
 
-} ftKeyCommandKind;
+} FTKeyCommandKind;
 
-typedef enum ftAnimCommandKind
+typedef enum FTAnimCommandKind
 {
     nFTFigatreeCommandEnd,
     nFTFigatreeCommandBlock,
@@ -1128,106 +1128,106 @@ typedef enum ftAnimCommandKind
     nFTFigatreeCommandLoop,
     nFTFigatreeCommandSetFlags
 
-} ftAnimCommandKind;
+} FTAnimCommandKind;
 
 // Structs
-typedef struct ftStruct					        ftStruct;
-typedef struct ftSpecialHit				        ftSpecialHit;
-typedef struct ftItemPickup				        ftItemPickup;
-typedef struct ftThrownStatus			        ftThrownStatus;
-typedef struct ftThrownStatusArray		        ftThrownStatusArray;
-typedef struct ftMotionDesc				        ftMotionDesc;
-typedef struct ftMotionDescArray		        ftMotionDescArray;
-typedef struct ftFileSize                       ftFileSize;
-typedef struct ftData					        ftData;
-typedef struct ftCommonPart                     ftCommonPart;
-typedef struct ftCommonPartContainer            ftCommonPartContainer;
-typedef struct ftModelPart				        ftModelPart;
-typedef struct ftModelPartDesc			        ftModelPartDesc;
-typedef struct ftModelPartContainer		        ftModelPartContainer;
-typedef struct ftModelPartStatus	            ftModelPartStatus;
-typedef struct ftTexturePart		            ftTexturePart;
-typedef struct ftTexturePartContainer	        ftTexturePartContainer;
-typedef struct ftTexturePartStatus              ftTexturePartStatus;
-typedef union  ftAnimDesc				        ftAnimDesc;
-typedef struct ftMotionFlags		            ftMotionFlags;
-typedef struct ftMotionScript                   ftMotionScript;
-typedef struct ftMotionEventDefault             ftMotionEventDefault;
-typedef struct ftMotionEventDouble              ftMotionEventDouble;
-typedef struct ftMotionEventMakeHit1            ftMotionEventMakeHit1;
-typedef struct ftMotionEventMakeHit2            ftMotionEventMakeHit2;
-typedef struct ftMotionEventMakeHit3            ftMotionEventMakeHit3;
-typedef struct ftMotionEventMakeHit4            ftMotionEventMakeHit4;
-typedef struct ftMotionEventMakeHit5            ftMotionEventMakeHit5;
-typedef struct ftMotionEventMakeHit             ftMotionEventMakeHit;
-typedef struct ftMotionEventSetHitOffset1       ftMotionEventSetHitOffset1;
-typedef struct ftMotionEventSetHitOffset2       ftMotionEventSetHitOffset2;
-typedef struct ftMotionEventSetHitOffset        ftMotionEventSetHitOffset;
-typedef struct ftMotionEventSetHitDamage        ftMotionEventSetHitDamage;
-typedef struct ftMotionEventSetHitSize          ftMotionEventSetHitSize;
-typedef struct ftMotionEventSetHitSound         ftMotionEventSetHitSound;
-typedef struct ftMotionEventSetThrow1           ftMotionEventSetThrow1;
-typedef struct ftMotionEventSetThrow2           ftMotionEventSetThrow2;
-typedef struct ftMotionEventSetThrow            ftMotionEventSetThrow;
-typedef struct ftMotionEventMakeEffect1         ftMotionEventMakeEffect1;
-typedef struct ftMotionEventMakeEffect2         ftMotionEventMakeEffect2;
-typedef struct ftMotionEventMakeEffect3         ftMotionEventMakeEffect3;
-typedef struct ftMotionEventMakeEffect4         ftMotionEventMakeEffect4;
-typedef struct ftMotionEventMakeEffect          ftMotionEventMakeEffect;
-typedef struct ftMotionEventSetHitStatusPartID  ftMotionEventSetHitStatusPartID;
-typedef struct ftMotionEventModifyHurtPartID1   ftMotionEventModifyHurtPartID1;
-typedef struct ftMotionEventModifyHurtPartID2   ftMotionEventModifyHurtPartID2;
-typedef struct ftMotionEventModifyHurtPartID3   ftMotionEventModifyHurtPartID3;
-typedef struct ftMotionEventModifyHurtPartID4   ftMotionEventModifyHurtPartID4;
-typedef struct ftMotionEventModifyHurtPartID    ftMotionEventModifyHurtPartID;
-typedef struct ftMotionEventSubroutine1         ftMotionEventSubroutine1;
-typedef struct ftMotionEventSubroutine2         ftMotionEventSubroutine2;
-typedef struct ftMotionEventSubroutine          ftMotionEventSubroutine;
-typedef struct ftMotionEventSetDamageThrown1    ftMotionEventSetDamageThrown1;
-typedef struct ftMotionEventSetDamageThrown2    ftMotionEventSetDamageThrown2;
-typedef struct ftMotionEventSetDamageThrown     ftMotionEventSetDamageThrown;
-typedef struct ftMotionDamageScript             ftMotionDamageScript;
-typedef struct ftMotionEventGoto1               ftMotionEventGoto1;
-typedef struct ftMotionEventGoto2               ftMotionEventGoto2;
-typedef struct ftMotionEventGoto                ftMotionEventGoto;
-typedef struct ftMotionEventParallel1           ftMotionEventParallel1;
-typedef struct ftMotionEventParallel2           ftMotionEventParallel2;
-typedef struct ftMotionEventParallel            ftMotionEventParallel;
-typedef struct ftMotionEventSetModelPartID      ftMotionEventSetModelPartID;
-typedef struct ftMotionEventSetTexturePartID    ftMotionEventSetTexturePartID;
-typedef struct ftMotionEventSetColAnimID        ftMotionEventSetColAnimID;
-typedef struct ftMotionEventSetSlopeContour     ftMotionEventSetSlopeContour;
-typedef struct ftMotionEventSetAfterImage       ftMotionEventSetAfterImage;
-typedef struct ftMotionEventMakeRumble          ftMotionEventMakeRumble;
-typedef struct ftMotionEventStopRumble          ftMotionEventStopRumble;
-typedef struct ftStatusDesc				        ftStatusDesc;
-typedef struct ftOpeningDesc		            ftOpeningDesc;
-typedef struct ftThrowHitDesc			        ftThrowHitDesc;
-typedef struct ftThrowReleaseDesc		        ftThrowReleaseDesc;
-typedef struct ftCreateDesc				        ftCreateDesc;
-typedef struct ftHitMatrix                      ftHitMatrix;
-typedef struct ftHitbox					        ftHitbox;
-typedef struct ftHurtboxDesc			        ftHurtboxDesc;
-typedef struct ftHurtbox				        ftHurtbox;
-typedef struct ftHitlog		                    ftHitlog;
-typedef struct ftItemThrow				        ftItemThrow;
-typedef struct ftItemSwing				        ftItemSwing;
-typedef struct ftParts                          ftParts;
-typedef struct ftWithheldPart			        ftWithheldPart;
-typedef struct ftShadow                         ftShadow;
-typedef struct ftCostume                        ftCostume;
-typedef struct ftDemoDesc                       ftDemoDesc;
-typedef struct ftSkeleton                       ftSkeleton;
-typedef struct ftAfterImage				        ftAfterImage;
-typedef struct ftCamera                         ftCamera;
-typedef struct ftSprites                        ftSprites;
-typedef struct ftComputer				        ftComputer;
-typedef struct ftPlayerInput                    ftPlayerInput;
-typedef struct ftComputerInput                  ftComputerInput;
-typedef struct ftComputerAttack                 ftComputerAttack;
-typedef union  ftKeyCommand                 ftKeyCommand;
-typedef struct ftKey                   ftKey;
-typedef struct ftAttributes				        ftAttributes;
-typedef struct ftMesh		                    ftMesh;
+typedef struct FTStruct					        FTStruct;
+typedef struct FTSpecialColl				    FTSpecialColl;
+typedef struct FTItemPickup				        FTItemPickup;
+typedef struct FTThrownStatus			        FTThrownStatus;
+typedef struct FTThrownStatusArray		        FTThrownStatusArray;
+typedef struct FTMotionDesc				        FTMotionDesc;
+typedef struct FTMotionDescArray		        FTMotionDescArray;
+typedef struct FTFileSize                       FTFileSize;
+typedef struct FTData					        FTData;
+typedef struct FTCommonPart                     FTCommonPart;
+typedef struct FTCommonPartContainer            FTCommonPartContainer;
+typedef struct FTModelPart				        FTModelPart;
+typedef struct FTModelPartDesc			        FTModelPartDesc;
+typedef struct FTModelPartContainer		        FTModelPartContainer;
+typedef struct FTModelPartStatus	            FTModelPartStatus;
+typedef struct FTTexturePart		            FTTexturePart;
+typedef struct FTTexturePartContainer	        FTTexturePartContainer;
+typedef struct FTTexturePartStatus              FTTexturePartStatus;
+typedef union  FTAnimDesc				        FTAnimDesc;
+typedef struct FTMotionFlags		            FTMotionFlags;
+typedef struct FTMotionScript                   FTMotionScript;
+typedef struct FTMotionEventDefault             FTMotionEventDefault;
+typedef struct FTMotionEventDouble              FTMotionEventDouble;
+typedef struct FTMotionEventMakeHit1            FTMotionEventMakeHit1;
+typedef struct FTMotionEventMakeHit2            FTMotionEventMakeHit2;
+typedef struct FTMotionEventMakeHit3            FTMotionEventMakeHit3;
+typedef struct FTMotionEventMakeHit4            FTMotionEventMakeHit4;
+typedef struct FTMotionEventMakeHit5            FTMotionEventMakeHit5;
+typedef struct FTMotionEventMakeHit             FTMotionEventMakeHit;
+typedef struct FTMotionEventSetHitOffset1       FTMotionEventSetHitOffset1;
+typedef struct FTMotionEventSetHitOffset2       FTMotionEventSetHitOffset2;
+typedef struct FTMotionEventSetHitOffset        FTMotionEventSetHitOffset;
+typedef struct FTMotionEventSetHitDamage        FTMotionEventSetHitDamage;
+typedef struct FTMotionEventSetHitSize          FTMotionEventSetHitSize;
+typedef struct FTMotionEventSetHitSound         FTMotionEventSetHitSound;
+typedef struct FTMotionEventSetThrow1           FTMotionEventSetThrow1;
+typedef struct FTMotionEventSetThrow2           FTMotionEventSetThrow2;
+typedef struct FTMotionEventSetThrow            FTMotionEventSetThrow;
+typedef struct FTMotionEventMakeEffect1         FTMotionEventMakeEffect1;
+typedef struct FTMotionEventMakeEffect2         FTMotionEventMakeEffect2;
+typedef struct FTMotionEventMakeEffect3         FTMotionEventMakeEffect3;
+typedef struct FTMotionEventMakeEffect4         FTMotionEventMakeEffect4;
+typedef struct FTMotionEventMakeEffect          FTMotionEventMakeEffect;
+typedef struct FTMotionEventSetHitStatusPartID  FTMotionEventSetHitStatusPartID;
+typedef struct FTMotionEventModifyHurtPartID1   FTMotionEventModifyHurtPartID1;
+typedef struct FTMotionEventModifyHurtPartID2   FTMotionEventModifyHurtPartID2;
+typedef struct FTMotionEventModifyHurtPartID3   FTMotionEventModifyHurtPartID3;
+typedef struct FTMotionEventModifyHurtPartID4   FTMotionEventModifyHurtPartID4;
+typedef struct FTMotionEventModifyHurtPartID    FTMotionEventModifyHurtPartID;
+typedef struct FTMotionEventSubroutine1         FTMotionEventSubroutine1;
+typedef struct FTMotionEventSubroutine2         FTMotionEventSubroutine2;
+typedef struct FTMotionEventSubroutine          FTMotionEventSubroutine;
+typedef struct FTMotionEventSetDamageThrown1    FTMotionEventSetDamageThrown1;
+typedef struct FTMotionEventSetDamageThrown2    FTMotionEventSetDamageThrown2;
+typedef struct FTMotionEventSetDamageThrown     FTMotionEventSetDamageThrown;
+typedef struct FTMotionDamageScript             FTMotionDamageScript;
+typedef struct FTMotionEventGoto1               FTMotionEventGoto1;
+typedef struct FTMotionEventGoto2               FTMotionEventGoto2;
+typedef struct FTMotionEventGoto                FTMotionEventGoto;
+typedef struct FTMotionEventParallel1           FTMotionEventParallel1;
+typedef struct FTMotionEventParallel2           FTMotionEventParallel2;
+typedef struct FTMotionEventParallel            FTMotionEventParallel;
+typedef struct FTMotionEventSetModelPartID      FTMotionEventSetModelPartID;
+typedef struct FTMotionEventSetTexturePartID    FTMotionEventSetTexturePartID;
+typedef struct FTMotionEventSetColAnimID        FTMotionEventSetColAnimID;
+typedef struct FTMotionEventSetSlopeContour     FTMotionEventSetSlopeContour;
+typedef struct FTMotionEventSetAfterImage       FTMotionEventSetAfterImage;
+typedef struct FTMotionEventMakeRumble          FTMotionEventMakeRumble;
+typedef struct FTMotionEventStopRumble          FTMotionEventStopRumble;
+typedef struct FTStatusDesc				        FTStatusDesc;
+typedef struct FTOpeningDesc		            FTOpeningDesc;
+typedef struct FTThrowHitDesc			        FTThrowHitDesc;
+typedef struct FTThrowReleaseDesc		        FTThrowReleaseDesc;
+typedef struct FTCreateDesc				        FTCreateDesc;
+typedef struct FTHitMatrix                      FTHitMatrix;
+typedef struct FTHitColl					        FTHitColl;
+typedef struct FTDamageCollDesc			        FTDamageCollDesc;
+typedef struct FTDamageColl				        FTDamageColl;
+typedef struct FTHitlog		                    FTHitlog;
+typedef struct FTItemThrow				        FTItemThrow;
+typedef struct FTItemSwing				        FTItemSwing;
+typedef struct FTParts                          FTParts;
+typedef struct FTWithheldPart			        FTWithheldPart;
+typedef struct FTShadow                         FTShadow;
+typedef struct FTCostume                        FTCostume;
+typedef struct FTDemoDesc                       FTDemoDesc;
+typedef struct FTSkeleton                       FTSkeleton;
+typedef struct FTAfterImage				        FTAfterImage;
+typedef struct FTCamera                         FTCamera;
+typedef struct FTSprites                        FTSprites;
+typedef struct FTComputer				        FTComputer;
+typedef struct FTPlayerInput                    FTPlayerInput;
+typedef struct FTComputerInput                  FTComputerInput;
+typedef struct FTComputerAttack                 FTComputerAttack;
+typedef union  FTKeyCommand                 FTKeyCommand;
+typedef struct FTKey                   FTKey;
+typedef struct FTAttributes				        FTAttributes;
+typedef struct FTMesh		                    FTMesh;
 
 #endif

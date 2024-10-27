@@ -9,7 +9,7 @@
 // 0x80149A10
 void ftCommonCatchProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->status_vars.common.catchmain.catch_pull_frame_begin > 0.0F)
     {
@@ -34,8 +34,8 @@ void ftCommonCatchProcUpdate(GObj *fighter_gobj)
 // 0x80149AC8
 void ftCommonCatchCaptureSetStatusRelease(GObj *fighter_gobj)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
-    ftStruct *catch_fp;
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *catch_fp;
     GObj *catch_gobj;
 
     ftCommonFallSetStatus(fighter_gobj);
@@ -80,7 +80,7 @@ void ftCommonCatchProcMap(GObj *fighter_gobj)
 // 0x80149BA8
 void ftCommonCatchSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCatch, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
@@ -104,8 +104,8 @@ void ftCommonCatchSetStatus(GObj *fighter_gobj)
 // 0x80149C60
 sb32 ftCommonCatchCheckInterruptGuard(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
     sb32 is_shield_catch = fp->status_vars.common.guard.is_setoff;
 
     if ((fp->input.pl.button_tap & fp->input.button_mask_a) && (attributes->is_have_catch))
@@ -122,8 +122,8 @@ sb32 ftCommonCatchCheckInterruptGuard(GObj *fighter_gobj)
 // 0x80149CE0
 sb32 ftCommonCatchCheckInterruptCommon(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     if (ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE)
     {
@@ -143,8 +143,8 @@ sb32 ftCommonCatchCheckInterruptCommon(GObj *fighter_gobj)
 // 0x80149D80
 sb32 ftCommonCatchCheckInterruptDashRun(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     if (ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE)
     {
@@ -164,8 +164,8 @@ sb32 ftCommonCatchCheckInterruptDashRun(GObj *fighter_gobj)
 // 0x80149E24
 sb32 ftCommonCatchCheckInterruptAttack11(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     if (ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE)
     {

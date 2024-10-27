@@ -18,7 +18,7 @@ extern intptr_t lITMBallMatAnimJoint;       // 0x00009520
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITMBallItemDesc =
+ITCreateDesc dITMBallItemDesc =
 {
     nITKindMBall,                           // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -42,7 +42,7 @@ itCreateDesc dITMBallItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITMBallStatusDescs[/* */] =
+ITStatusDesc dITMBallStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -156,7 +156,7 @@ enum itMBallStatus
 // 0x8017C690
 void itMBallOpenAddAnim(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
     void *matanim_joint = itGetPData(ip, lITMBallDataStart, lITMBallMatAnimJoint); // Linker thing
 
@@ -175,7 +175,7 @@ void itMBallOpenClearAnim(GObj *item_gobj)
 // 0x8017C710
 sb32 itMBallFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITMBALL_GRAVITY, ITMBALL_TVEL);
@@ -212,7 +212,7 @@ void itMBallWaitSetStatus(GObj *item_gobj)
 // 0x8017C7FC
 void itMBallFallSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
@@ -223,7 +223,7 @@ void itMBallFallSetStatus(GObj *item_gobj)
 // 0x8017C840
 void itMBallHoldSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     DObjGetStruct(item_gobj)->rotate.vec.f.y = 0.0F;
 
@@ -235,7 +235,7 @@ void itMBallHoldSetStatus(GObj *item_gobj)
 // 0x8017C880
 sb32 itMBallThrownProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITMBALL_GRAVITY, ITMBALL_TVEL);
@@ -249,7 +249,7 @@ sb32 itMBallThrownProcUpdate(GObj *item_gobj)
 // 0x8017C8D8
 sb32 itMBallThrownProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->item_vars.mball.is_rebound != FALSE)
     {
@@ -263,9 +263,9 @@ sb32 itMBallThrownProcMap(GObj *item_gobj)
 // 0x8017C94C
 sb32 itMBallCommonProcHit(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hit.update_state = nGMHitUpdateDisable;
+    ip->hit_coll.update_state = nGMHitUpdateDisable;
 
     ip->item_vars.mball.is_rebound = TRUE;
 
@@ -277,11 +277,11 @@ sb32 itMBallCommonProcHit(GObj *item_gobj)
 // 0x8017C97C
 sb32 itMBallCommonProcReflector(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
-    ftStruct *fp;
+    ITStruct *ip = itGetStruct(item_gobj);
+    FTStruct *fp;
     GObj *fighter_gobj;
 
-    ip->item_hit.update_state = nGMHitUpdateDisable;
+    ip->hit_coll.update_state = nGMHitUpdateDisable;
 
     ip->item_vars.mball.is_rebound = TRUE;
 
@@ -316,8 +316,8 @@ void itMBallDroppedSetStatus(GObj *item_gobj)
 // 0x8017CA48
 sb32 itMBallOpenProcUpdate(GObj *mball_gobj)
 {
-    itStruct *mball_ip = itGetStruct(mball_gobj);
-    itStruct *monster_ip;
+    ITStruct *mball_ip = itGetStruct(mball_gobj);
+    ITStruct *monster_ip;
     GObj *monster_gobj;
     Vec3f vel;
     s32 unused[2];
@@ -359,7 +359,7 @@ sb32 itMBallOpenProcUpdate(GObj *mball_gobj)
 // 0x8017CB38
 sb32 itMBallOpenProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (mpCollisionCheckExistLineID(ip->attach_line_id) == FALSE)
     {
@@ -375,13 +375,13 @@ void itMBallOpenInitItemVars(GObj *item_gobj)
 {
     s32 unused[2];
     DObj *dobj = DObjGetStruct(item_gobj);
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *child;
     DObj *sibling;
 
-    ip->phys_info.vel_air.x = 0.0F;
-    ip->phys_info.vel_air.y = 0.0F;
-    ip->phys_info.vel_air.z = 0.0F;
+    ip->physics.vel_air.x = 0.0F;
+    ip->physics.vel_air.y = 0.0F;
+    ip->physics.vel_air.z = 0.0F;
 
     child = dobj->child;
     child->flags ^= DOBJ_FLAG_HIDDEN;
@@ -401,7 +401,7 @@ void itMBallOpenInitItemVars(GObj *item_gobj)
 
         if (fighter_gobj != NULL)
         {
-            ftStruct *fp = ftGetStruct(fighter_gobj);
+            FTStruct *fp = ftGetStruct(fighter_gobj);
 
             ftParamMakeRumble(fp, 8, 20);
         }
@@ -410,8 +410,8 @@ void itMBallOpenInitItemVars(GObj *item_gobj)
 
     itMBallOpenClearAnim(item_gobj);
 
-    ip->item_hit.update_state = nGMHitUpdateDisable;
-    ip->item_hit.can_reflect = FALSE;
+    ip->hit_coll.update_state = nGMHitUpdateDisable;
+    ip->hit_coll.can_reflect = FALSE;
 }
 
 // 0x8017CC88
@@ -424,8 +424,8 @@ void itMBallOpenSetStatus(GObj *item_gobj)
 // 0x8017CCBC
 sb32 itMBallOpenAirProcUpdate(GObj *mball_gobj)
 {
-    itStruct *mball_ip = itGetStruct(mball_gobj);
-    itStruct *monster_ip;
+    ITStruct *mball_ip = itGetStruct(mball_gobj);
+    ITStruct *monster_ip;
     GObj *monster_gobj;
     Vec3f vel;
     s32 unused[2];
@@ -486,7 +486,7 @@ GObj* itMBallMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     if (item_gobj != NULL)
     {
         DObj *dobj = DObjGetStruct(item_gobj);
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
         Vec3f translate = dobj->translate.vec.f;
 
         dobj->child->flags = DOBJ_FLAG_HIDDEN;
@@ -505,7 +505,7 @@ GObj* itMBallMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->rotate.vec.f.z = 0.0F;
 
-        ip->indicator_gobj = ifCommonItemArrowMakeInterface(ip);
+        ip->arrow_gobj = ifCommonItemArrowMakeInterface(ip);
     }
     return item_gobj;
 }

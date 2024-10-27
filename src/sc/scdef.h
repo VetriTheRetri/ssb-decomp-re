@@ -129,7 +129,7 @@
 }
 */
 
-typedef enum scKind
+typedef enum SCKind
 {
 	nSCKindNoController,      	  // "No Controller" screen
 	nSCKindTitle,             	  // Title screen
@@ -184,9 +184,9 @@ typedef enum scKind
 	nSCKindExplain,         	  // How to Play
 	nSCKindAutoDemo               // Auto-Demo
 
-} scKind;
+} SCKind;
 
-typedef enum scBattlePlayerColor
+typedef enum SCBattlePlayerColor
 {
 	nSCBattlePlayerColorRed,
 	nSCBattlePlayerColorBlue,
@@ -194,18 +194,18 @@ typedef enum scBattlePlayerColor
 	nSCBattlePlayerColorGreen,
 	nSCBattlePlayerColorCP
 
-} scBattlePlayerColor;
+} SCBattlePlayerColor;
 
-typedef enum scBattleTeamID
+typedef enum SCBattleTeamID
 {
     nSCBattleTeamIDRed,
     nSCBattleTeamIDBlue,
     nSCBattleTeamIDGreen,
     nSCBattleTeamIDCom
 
-} scBattleTeamID;
+} SCBattleTeamID;
 
-typedef enum scBattleGameStatus
+typedef enum SCBattleGameStatus
 {
 	nSCBattleGameStatusWait,	   // Match not yet started
 	nSCBattleGameStatusGo,		   // Ongoing match
@@ -215,18 +215,18 @@ typedef enum scBattleGameStatus
 	nSCBattleGameStatusBossDefeat, // Master Hand defeated
 	nSCBattleGameStatusSet		   // Player has input A + B + Z + R / 1P Game Stage End?
 
-} scBattleGameStatus;
+} SCBattleGameStatus;
 
-typedef enum scBattleHandicap
+typedef enum SCBattleHandicap
 {
 	nSCBattleHandicapOff,
 	nSCBattleHandicapOn,
 	nSCBattleHandicapAuto,
 	nSCBattleHandicapEnumMax
 
-} scBattleHandicap;
+} SCBattleHandicap;
 
-typedef enum scBattleItemSwitch
+typedef enum SCBattleItemSwitch
 {
 	nSCBattleItemSwitchNone,
 	nSCBattleItemSwitchVeryLow,
@@ -236,18 +236,18 @@ typedef enum scBattleItemSwitch
 	nSCBattleItemSwitchVeryHigh,
 	nSCBattleItemSwitchEnumMax
 
-} scBattleItemSwitch;
+} SCBattleItemSwitch;
 
-typedef enum scBattleGameRules
+typedef enum SCBattleGameRules
 {
 	nSCBattleGameRuleTime,
 	nSCBattleGameRuleStock,
 	nSCBattleGameRuleBonus,
 	nSCBattleGameRule1PGame
 
-} scBattleGameRules;
+} SCBattleGameRules;
 
-typedef enum scBattleGameType
+typedef enum SCBattleGameType
 {
 	nSCBattleGameTypeDemo,          // 0x0
 	nSCBattleGameTypeRoyal,        	// 0x1
@@ -258,9 +258,9 @@ typedef enum scBattleGameType
 	nSCBattleGameTypeUnk6,          // 0x6
 	nSCBattleGameTypeTraining   	// 0x7
 
-} scBattleGameType;
+} SCBattleGameType;
 
-typedef enum sc1PGameDifficulty
+typedef enum SC1PGameDifficulty
 {
 	nSC1PGameDifficultyVeryEasy,
 	nSC1PGameDifficultyEasy,
@@ -268,9 +268,9 @@ typedef enum sc1PGameDifficulty
 	nSC1PGameDifficultyHard,
 	nSC1PGameDifficultyVeryHard
 
-} sc1PGameDifficulty;
+} SC1PGameDifficulty;
 
-typedef enum sc1PGameStageKind
+typedef enum SC1PGameStageKind
 {
 	nSC1PGameStageCommonStart,
 	nSC1PGameStageLink = nSC1PGameStageCommonStart,			// VS Link
@@ -296,9 +296,9 @@ typedef enum sc1PGameStageKind
 	nSC1PGameStageCaptain,								   	// Challenger Approaching: Captain Falcon
 	nSC1PGameStageChallengerEnd = nSC1PGameStageCaptain  	// End of unlockable character stages
 
-} sc1PGameStageKind;
+} SC1PGameStageKind;
 
-typedef enum sc1PGameBonus
+typedef enum SC1PGameBonus
 {
 	nSC1PGameBonusCheapShot,
 	nSC1PGameBonusStarFinish,
@@ -360,25 +360,25 @@ typedef enum sc1PGameBonus
 	nSC1PGameBonusTrueFriend,
 	nSC1PGameBonusEnumMax
 
-} sc1PGameBonus;
+} SC1PGameBonus;
 
-typedef enum sc1PContinueOption
+typedef enum SC1PContinueOption
 {
     nSC1PContinueOptionYes,
     nSC1PContinueOptionNo,
     nSC1PContinueOptionEnumMax
 
-} sc1PContinueOption;
+} SC1PContinueOption;
 
-typedef enum sc1PStageClearKind
+typedef enum SC1PStageClearKind
 {
 	nSC1PStageClearKindStage,        // Normal stage clear
 	nSC1PStageClearKindGame,         // Final stage clear
 	nSC1PStageClearKindResult        // Bonus stage results
 
-} sc1PStageClearKind;
+} SC1PStageClearKind;
 
-typedef enum scTrainingMain
+typedef enum SCTrainingMain
 {
 	nSCTrainingMenuMainEnumStart,
 
@@ -395,9 +395,9 @@ typedef enum scTrainingMain
 
 	nSCTrainingMenuMainEnumMax
 
-} scTrainingMain;
+} SCTrainingMain;
 
-typedef enum scTrainingCP
+typedef enum SCTrainingCP
 {
 	nSCTrainingMenuCPEnumStart,
 	nSCTrainingMenuCPStand = nSCTrainingMenuCPEnumStart,
@@ -407,9 +407,9 @@ typedef enum scTrainingCP
 	nSCTrainingMenuCPAttack,
 	nSCTrainingMenuCPEnumMax
 
-} scTrainingCP;
+} SCTrainingCP;
 
-typedef enum scTrainingIT
+typedef enum SCTrainingItem
 {
 	nSCTrainingMenuItemEnumStart,
 	nSCTrainingMenuItemNone = nSCTrainingMenuItemEnumStart,
@@ -431,9 +431,9 @@ typedef enum scTrainingIT
 	nSCTrainingMenuItemPokeBall,
 	nSCTrainingMenuItemEnumMax
 
-} scTrainingIT;
+} SCTrainingItem;
 
-typedef enum scTrainingSpeed
+typedef enum SCTrainingSpeed
 {
 	nSCTrainingMenuSpeedEnumStart,
 	nSCTrainingMenuSpeedFull = nSCTrainingMenuSpeedEnumStart,
@@ -442,18 +442,18 @@ typedef enum scTrainingSpeed
 	nSCTrainingMenuSpeedQuarter,
 	nSCTrainingMenuSpeedEnumMax
 
-} scTrainingSpeed;
+} SCTrainingSpeed;
 
-typedef enum scTrainingView
+typedef enum SCTrainingView
 {
 	nSCTrainingMenuViewEnumStart,
 	nSCTrainingMenuViewCloseUp = nSCTrainingMenuViewEnumStart,
 	nSCTrainingMenuViewNormal,
 	nSCTrainingMenuViewEnumMax
 
-} scTrainingView;
+} SCTrainingView;
 
-typedef enum nSCTrainingMenuOptionSprites
+typedef enum SCTrainingMenuOptionSprites
 {
 	nSCTrainingMenuOptionSpriteItemStart,
 	nSCTrainingMenuOptionSpriteItemNone = nSCTrainingMenuOptionSpriteItemStart,
@@ -502,28 +502,28 @@ typedef enum nSCTrainingMenuOptionSprites
 
 	nSCTrainingMenuOptionSpriteEnumMax
 
-} nSCTrainingMenuOptionSprites;
+} SCTrainingMenuOptionSprites;
 
-typedef struct sc1PGameComputer				sc1PGameComputer;
-typedef struct sc1PGameStage				sc1PGameStage;
-typedef struct sc1PGameFighter				sc1PGameFighter;
-typedef struct sc1PGameStats				sc1PGameStats;
-typedef struct sc1PGameBossPlan				sc1PGameBossPlan;
-typedef struct sc1PGameBossAnim				sc1PGameBossAnim;
-typedef struct sc1PGameBossEffect			sc1PGameBossEffect;
-typedef struct sc1PGameBossWallpaper		sc1PGameBossWallpaper;
-typedef struct sc1PGameBossMain				sc1PGameBossMain;
-typedef struct sc1PStageClearStats			sc1PStageClearStats;
-typedef struct sc1PStageClearScore			sc1PStageClearScore;
-typedef struct scTrainingSprites			scTrainingSprites;
-typedef struct scTrainingFiles				scTrainingFiles;
-typedef struct scExplainMain				scExplainMain;
-typedef struct scExplainArgs				scExplainArgs;
-typedef struct scExplainPhase				scExplainPhase;
-typedef struct scAutoDemoProc				scAutoDemoProc;
-typedef struct scBattleResults				scBattleResults;
-typedef struct scPlayerData					scPlayerData;
-typedef struct scBattleState				scBattleState;
-typedef struct scCommonData					scCommonData;
+typedef struct SC1PGameComputer				SC1PGameComputer;
+typedef struct SC1PGameStage				SC1PGameStage;
+typedef struct SC1PGameFighter				SC1PGameFighter;
+typedef struct SC1PGameStats				SC1PGameStats;
+typedef struct SC1PGameBossPlan				SC1PGameBossPlan;
+typedef struct SC1PGameBossAnim				SC1PGameBossAnim;
+typedef struct SC1PGameBossEffect			SC1PGameBossEffect;
+typedef struct SC1PGameBossWallpaper		SC1PGameBossWallpaper;
+typedef struct SC1PGameBossMain				SC1PGameBossMain;
+typedef struct SC1PStageClearStats			SC1PStageClearStats;
+typedef struct SC1PStageClearScore			SC1PStageClearScore;
+typedef struct SCTrainingSprites			SCTrainingSprites;
+typedef struct SCTrainingFiles				SCTrainingFiles;
+typedef struct SCExplainMain				SCExplainMain;
+typedef struct SCExplainArgs				SCExplainArgs;
+typedef struct SCExplainPhase				SCExplainPhase;
+typedef struct SCAutoDemoProc				SCAutoDemoProc;
+typedef struct SCBattleResults				SCBattleResults;
+typedef struct SCPlayerData					SCPlayerData;
+typedef struct SCBattleState				SCBattleState;
+typedef struct SCCommonData					SCCommonData;
 
 #endif

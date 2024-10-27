@@ -510,14 +510,14 @@
 #define ITLINKBOMB_MAP_REBOUND_COMMON 0.4F
 #define ITLINKBOMB_MAP_REBOUND_GROUND 0.3F
 
-typedef struct itCommonItemVarsBombHei
+typedef struct ITCommonItemVarsBombHei
 {
 	u16 smoke_delay; // Frames before smoke effect is created when Bob-Omb
 					 // begins walking?
 
-} itCommonItemVarsBombHei;
+} ITCommonItemVarsBombHei;
 
-typedef struct itCommonItemVarsShell
+typedef struct ITCommonItemVarsShell
 {
 	u8 damage_all_delay; // Shell can hit owner and teammates once this frame
 						 // timer reaches -1
@@ -530,15 +530,15 @@ typedef struct itCommonItemVarsShell
 				 // it hits something; despawns shell at 0
 	f32 vel_x;
 
-} itCommonItemVarsShell;
+} ITCommonItemVarsShell;
 
-typedef struct itCommonItemVarsTaru
+typedef struct ITCommonItemVarsTaru
 {
 	f32 roll_rotate_step;
 
-} itCommonItemVarsTaru;
+} ITCommonItemVarsTaru;
 
-typedef struct itCommonItemVarsBumper
+typedef struct ITCommonItemVarsBumper
 {
 	u16 hit_anim_length; // Number of frames "hit" animation lasts after
 						 // bouncing off a target in midair
@@ -546,16 +546,16 @@ typedef struct itCommonItemVarsBumper
 	u16 damage_all_delay; // Bumper is able to hit its owner (and teammates?)
 						  // once this timer runs out
 
-} itCommonItemVarsBumper;
+} ITCommonItemVarsBumper;
 
-typedef struct itGroundItemVarsGrLucky
+typedef struct ITGroundItemVarsGLucky
 {
 	Vec3f pos;
 	u16 egg_spawn_count;
 
-} itGroundItemVarsGrLucky;
+} ITGroundItemVarsGLucky;
 
-typedef struct itCommonItemVarsMBall
+typedef struct ITCommonItemVarsMBall
 {
 	ub16 is_rebound;   // Set to TRUE when Poké Ball bounces back off a target
 	GObj* owner_gobj;  // While Poké Balls can be reflected, ownership is not
@@ -563,16 +563,16 @@ typedef struct itCommonItemVarsMBall
 					   // originally picked it up
 	GObj* effect_gobj; // Poké Ball ray scatter GFX
 
-} itCommonItemVarsMBall;
+} ITCommonItemVarsMBall;
 
-typedef struct itGroundItemVarsPakkun
+typedef struct ITGroundItemVarsPakkun
 {
 	Vec3f pos;
 	ub8 is_wait_fighter; // TRUE if a fighter is occupying the pipe
 
-} itGroundItemVarsPakkun;
+} ITGroundItemVarsPakkun;
 
-typedef struct itMonsterItemVarsIwark
+typedef struct ITMonsterItemVarsIwark
 {
 	u16 rock_spawn_remain;
 	s32 rock_spawn_wait; // Delay between rock projectiles
@@ -583,52 +583,52 @@ typedef struct itMonsterItemVarsIwark
 	u16 rumble_wait;
 	u16 rock_spawn_count; // Number of rocks to spawn?
 
-} itMonsterItemVarsIwark;
+} ITMonsterItemVarsIwark;
 
-typedef struct itMonsterItemVarsKabigon
+typedef struct ITMonsterItemVarsKabigon
 {
 	s32 dust_effect_int;
 	s32 rumble_wait;
 
-} itMonsterItemVarsKabigon;
+} ITMonsterItemVarsKabigon;
 
-typedef struct itMonsterItemVarsTosakinto
+typedef struct ITMonsterItemVarsTosakinto
 {
 	Vec3f pos;
 
-} itMonsterItemVarsTosakinto;
+} ITMonsterItemVarsTosakinto;
 
-typedef struct itMonsterItemVarsMew
+typedef struct ITMonsterItemVarsMew
 {
 	s32 esper_gfx_int;
 
-} itMonsterItemVarsMew;
+} ITMonsterItemVarsMew;
 
-typedef struct itMonsterItemVarsNyars
+typedef struct ITMonsterItemVarsNyars
 {
 	u16 coin_spawn_wait;
 	u16 coin_rotate_step;
 	u16 model_rotate_wait;
 
-} itMonsterItemVarsNyars;
+} ITMonsterItemVarsNyars;
 
-typedef struct itMonsterItemVarsLizardon
+typedef struct ITMonsterItemVarsLizardon
 {
 	Vec3f pos;
 	u16 turn_wait;
 	u16 flame_spawn_wait;
 
-} itMonsterItemVarsLizardon;
+} ITMonsterItemVarsLizardon;
 
-typedef struct itMonsterItemVarsSpear
+typedef struct ITMonsterItemVarsSpear
 {
 	u16 spear_spawn_count;
 	s32 spear_spawn_wait;
 	f32 spear_spawn_pos_y;
 
-} itMonsterItemVarsSpear;
+} ITMonsterItemVarsSpear;
 
-typedef struct itMonsterItemVarsKamex
+typedef struct ITMonsterItemVarsKamex
 {
 	s32 hydro_spawn_wait;
 	f32 hydro_push_vel_x; // Added to Blastoise's velocity if is_apply_push is
@@ -636,16 +636,16 @@ typedef struct itMonsterItemVarsKamex
 	sb32 is_apply_push;	  // Blastoise will be pushed forward after each Hydro
 						  // Pump stream if enabled
 
-} itMonsterItemVarsKamex;
+} ITMonsterItemVarsKamex;
 
-typedef struct itMonsterItemVarsMbLucky
+typedef struct ITMonsterItemVarsMLucky
 {
 	u16 egg_spawn_wait;
 	u16 lifetime;
 
-} itMonsterItemVarsMbLucky;
+} ITMonsterItemVarsMLucky;
 
-typedef struct itMonsterItemVarsStarmie
+typedef struct ITMonsterItemVarsStarmie
 {
 	s32 unk_0x0;
 	s32 swift_spawn_wait;
@@ -654,56 +654,56 @@ typedef struct itMonsterItemVarsStarmie
 	Vec3f victim_pos; // Position of Starmie's selected victim
 	f32 add_vel_x;
 
-} itMonsterItemVarsStarmie;
+} ITMonsterItemVarsStarmie;
 
-typedef struct itMonsterItemVarsDogas
+typedef struct ITMonsterItemVarsDogas
 {
 	Vec3f pos;
 	s32 smog_spawn_wait;
 
-} itMonsterItemVarsDogas;
+} ITMonsterItemVarsDogas;
 
-typedef struct itGroundItemVarsMarumine
+typedef struct ITGroundItemVarsMarumine
 {
 	Vec3f offset;
 
-} itGroundItemVarsMarumine;
+} ITGroundItemVarsMarumine;
 
-typedef struct itGroundItemVarsPorygon
+typedef struct ITGroundItemVarsPorygon
 {
 	Vec3f offset;
 
-} itGroundItemVarsPorygon;
+} ITGroundItemVarsPorygon;
 
-typedef struct itGroundItemVarsHitokage
+typedef struct ITGroundItemVarsHitokage
 {
 	Vec3f offset;
 	u16 flags;
 	u16 flame_spawn_wait;
 
-} itGroundItemVarsHitokage;
+} ITGroundItemVarsHitokage;
 
-typedef struct itGroundItemVarsFushigibana
+typedef struct ITGroundItemVarsFushigibana
 {
 	Vec3f offset;
 	u16 flags;
 	u16 razor_spawn_wait;
 
-} itGroundItemVarsFushigibana;
+} ITGroundItemVarsFushigibana;
 
-typedef struct itGroundItemVarsTaruBomb
+typedef struct ITGroundItemVarsTaruBomb
 {
 	f32 roll_rotate_step;
 
-} itGroundItemVarsTaruBomb;
+} ITGroundItemVarsTaruBomb;
 
-typedef struct itFighterItemVarsPKFire
+typedef struct ITFighterItemVarsPKFire
 {
-	lbTransform *tfrm;
+	LBTransform *tfrm;
 
-} itFighterItemVarsPKFire;
+} ITFighterItemVarsPKFire;
 
-typedef struct itFighterItemVarsLinkBomb
+typedef struct ITFighterItemVarsLinkBomb
 {
 	u16 unk_0x0;
 	u16 drop_update_wait; // Wait frames when dropping bomb, must pass before
@@ -712,6 +712,6 @@ typedef struct itFighterItemVarsLinkBomb
 	u16 scale_int; // Interval between Bomb inflate/deflate animation updates;
 				   // effectively animation speed
 
-} itFighterItemVarsLinkBomb;
+} ITFighterItemVarsLinkBomb;
 
 #endif

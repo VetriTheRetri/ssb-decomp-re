@@ -22,7 +22,7 @@
 #define FTDONKEY_SPINNINGKONG_FALLSPECIAL_DRIFT 1.0F
 #define FTDONKEY_SPINNINGKONG_LANDING_LAG 0.3F
 
-extern ftStatusDesc dFTDonkeySpecialStatusDescs[/* */];
+extern FTStatusDesc dFTDonkeySpecialStatusDescs[/* */];
 
 extern void *gFTDataDonkeyMain;
 extern void *gFTDataDonkeyMainMotion;
@@ -110,11 +110,11 @@ typedef enum ftDonkeyStatus
 
 } ftDonkeyStatus;
 
-typedef struct ftDonkeyFighterVars
+typedef struct FTDonkeyFighterVars
 {
 	s32 charge_level;
 
-} ftDonkeyFighterVars;
+} FTDonkeyFighterVars;
 
 typedef struct ftDonkeySpecialNStatusVars
 {
@@ -137,12 +137,12 @@ typedef struct ftDonkeySpecialLwStatusVars
 
 } ftDonkeySpecialLwStatusVars;
 
-typedef union ftDonkeyStatusVars
+typedef union FTDonkeyStatusVars
 {
 	ftDonkeySpecialNStatusVars specialn;
 	ftDonkeySpecialHiStatusVars specialhi;
 	ftDonkeySpecialLwStatusVars speciallw;
 
-} ftDonkeyStatusVars;
+} FTDonkeyStatusVars;
 
 #endif

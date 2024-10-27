@@ -7,13 +7,13 @@
 
 #include <lb/lbdef.h>
 
-struct lbFileNode
+struct LBFileNode
 {
     u32 id;
     void *addr;
 };
 
-union lbRelocDesc
+union LBRelocDesc
 {
     struct lbRelocInfo
     {
@@ -22,24 +22,24 @@ union lbRelocDesc
 
     } info;
 
-    void *p;   
+    void *p;
 };
 
-struct lbRelocSetup
+struct LBRelocSetup
 {
     uintptr_t table_addr;        // ROM address
     u32 table_files_num;         // Total number of files in table?
     void *file_heap;         
     size_t file_heap_size;
-    lbFileNode *status_buffer;
+    LBFileNode *status_buffer;
     size_t status_buffer_size;
-    lbFileNode *force_status_buffer;
+    LBFileNode *force_status_buffer;
     size_t force_status_buffer_size;
 };
 
-struct lbTableEntry
+struct LBTableEntry
 {
-    ub32 is_vpk0 : 1;
+    ub32 is_compressed : 1;
     u32 data_offset : 31;
     u16 reloc_intern_offset;    // in words
     u16 compressed_size;        // in words
@@ -47,7 +47,7 @@ struct lbTableEntry
     u16 decompressed_size;      // in words
 };
 
-struct lbInternBuffer
+struct LBInternBuffer
 {
     uintptr_t rom_table_lo; // Start of file table
     u32 total_files_num;
@@ -59,21 +59,21 @@ struct lbInternBuffer
     // "status buffer"
     s32 status_buffer_num;
     s32 status_buffer_max;
-    lbFileNode *status_buffer;
+    LBFileNode *status_buffer;
 
     // "force status buffer"
     s32 force_status_buffer_num;
     s32 force_status_buffer_max;
-    lbFileNode *force_status_buffer;
+    LBFileNode *force_status_buffer;
 };
 
-struct lbScriptDesc
+struct LBScriptDesc
 {
     s32 scripts_num;        // Number of scripts in array?
-    lbScript *scripts[1];   // Dynamic array
+    LBScript *scripts[1];   // Dynamic array
 };
 
-struct lbScript
+struct LBScript
 {
     u16 kind;               // Generator kind
 	u16 texture_id;         // Texture ID?
@@ -90,13 +90,13 @@ struct lbScript
     u8 bytecode[1];         // Particle bytecode
 };
 
-struct lbTextureDesc
+struct LBTextureDesc
 {
     s32 textures_num;
-    lbTexture *textures[1];
+    LBTexture *textures[1];
 };
 
-struct lbTexture
+struct LBTexture
 {
     u32 count;
     s32 fmt;
@@ -106,9 +106,9 @@ struct lbTexture
     void *data[1];        // Offsets to image, then palette data
 };
 
-struct lbGenerator
+struct LBGenerator
 {
-    lbGenerator *next;
+    LBGenerator *next;
 	u16 generator_id;
 	u16 flags;
 	u8 kind;
@@ -127,11 +127,11 @@ struct lbGenerator
     f32 unk_gtor_0x40;
     f32 unk_gtor_0x44;
     DObj *dobj;
-    lbTransform *tfrm;
+    LBTransform *tfrm;
 
-    union lbGeneratorVars
+    union LBGeneratorVars
     {
-        struct lbGeneratorRotate
+        struct LBGeneratorRotate
         {
             f32 base, target;
 
@@ -139,7 +139,7 @@ struct lbGenerator
 
         Vec3f move;
 
-        struct lbGeneratorUnkVars
+        struct LBGeneratorUnkVars
         {
             f32 f;
             u16 halfword;
@@ -149,27 +149,27 @@ struct lbGenerator
     } generator_vars;
 };
 
-struct lbTransform
+struct LBTransform
 {
-    lbTransform *next;
+    LBTransform *next;
     Vec3f translate;
     Vec3f rotate;
     Vec3f scale;
     u8 transform_status;        // 0 = ???, 1 = prepare matrix for transformation, 2 = finished transformation
     u8 transform_id;
-    u16 users_num;              // Number of other structs using this particular lbTransform struct?
+    u16 users_num;              // Number of other structs using this particular LBTransform struct?
     Mtx44f affine;              // Translate + rotate + scale matrix
     Mtx44f projection;          // Projection matrix
     f32 pc0_magnitude;          // Projection matrix column 0 magnitude
     f32 pc1_magnitude;          // Projection matrix column 1 magnitude
-    void (*proc_dead)(lbTransform*);
+    void (*proc_dead)(LBTransform*);
     u16 generator_id;
     GObj *effect_gobj;
 };
 
-struct lbParticle
+struct LBParticle
 {
-    lbParticle *next;
+    LBParticle *next;
     u16 generator_id;
     u16 flags;
     u8 bank_id;
@@ -195,11 +195,11 @@ struct lbParticle
     syColorRGBA target_primcolor;
     syColorRGBA envcolor;
     syColorRGBA target_envcolor;
-    lbGenerator *gtor;
-    lbTransform *tfrm;
+    LBGenerator *gtor;
+    LBTransform *tfrm;
 };
 
-struct lbTransitionDesc
+struct LBTransitionDesc
 {
     u32 file_id;
     intptr_t o_dobjdesc;
@@ -207,7 +207,7 @@ struct lbTransitionDesc
     s32 unk_lbtransition_0xC;
 };
 
-struct lbBackupVSRecord
+struct LBBackupVSRecord
 {
 	u16 ko_count[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
 	u32 time_used;              // In seconds
@@ -221,7 +221,7 @@ struct lbBackupVSRecord
 	u16 played_against[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
 };
 
-struct lbBackup1PRecord
+struct LBBackup1PRecord
 {
 	u32 spgame_hiscore;
 	u32 spgame_continues;
@@ -235,9 +235,9 @@ struct lbBackup1PRecord
 };
 
 // Save Data structure
-struct lbBackupData
+struct LBBackupData
 {
-	lbBackupVSRecord vs_records[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
+	LBBackupVSRecord vs_records[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
 	ub8 is_allow_screenflash; 	// Toggle for enabling white screen flash when, for example, a character takes too much damage
 							  	// Likely tied to the unused "background flash" option? It is always toggled ON, even after clearing save data
 	ub8 sound_mono_or_stereo;   // Whether sound mode is mono or stereo
@@ -248,7 +248,7 @@ struct lbBackupData
 	u16 fighter_mask; 		    // Mask of available characters
 	u8 spgame_difficulty;       // Last 1P Game difficulty selected
 	u8 spgame_stock_count;      // Last 1P Game stock count selected
-	lbBackup1PRecord spgame_records[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
+	LBBackup1PRecord spgame_records[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
 	u16 unlock_task_inishie;   	// Records mask of unique stages played in VS mode
 	u8 unlock_task_itemswitch; 	// Records number of VS games played for Item Switch unlock
 	u16 vs_total_battles;		// Total amount of VS games played?

@@ -28,7 +28,7 @@ CObjDesc dMVOpeningLinkCObjDescEnd = {
 };
 
 // 0x8018E0A8
-ftKeyCommand dMVOpeningLinkGameKey[] = {
+FTKeyCommand dMVOpeningLinkGameKey[] = {
 
     FTKEY_EVENT_BUTTON(L_TRIG, 1),  // 0x1001, 0x0020
     FTKEY_EVENT_END()               // 0x0000
@@ -78,22 +78,22 @@ CObjDesc dMVOpeningLinkCObjDescAdjustedStart;
 CObjDesc dMVOpeningLinkCObjDescAdjustedEnd;
 
 // 0x8018E228
-lbFileNode D_ovl40_8018E228[48];
+LBFileNode D_ovl40_8018E228[48];
 
 // 0x8018E3A8
-lbFileNode D_ovl40_8018E3A8[7];
+LBFileNode D_ovl40_8018E3A8[7];
 
 // 0x8018E3E0
 uintptr_t gMVOpeningLinkFiles[2];
 
 // 0x8018E3E8
-scBattleState gMVOpeningLinkBattleState;
+SCBattleState gMVOpeningLinkBattleState;
 
 
 // 0x8018D0C0
 void mvOpeningLinkLoadFiles()
 {
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
@@ -235,7 +235,7 @@ void mvOpeningLinkInitFighterStagePanel()
 
 	for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
 	{
-		ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+		FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 		if (gBattleState->players[i].pl_kind == nFTPlayerKindNot) continue;
 
@@ -314,7 +314,7 @@ void mvOpeningLinkAnimatePosedFighter(GObj* fighter_gobj)
 void mvOpeningLinkCreatePosedFighter()
 {
 	GObj* fighter_gobj;
-	ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	spawn_info.ft_kind = nFTKindLink;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindLink, 0);

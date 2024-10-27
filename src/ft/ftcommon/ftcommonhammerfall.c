@@ -15,11 +15,11 @@ void ftCommonHammerFallProcInterrupt(GObj *fighter_gobj)
 // 0x80147BE8
 void ftCommonHammerFallProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (mpCommonCheckFighterLanding(fighter_gobj) != FALSE)
     {
-        if (fp->phys_info.vel_air.y > FTCOMMON_HAMMER_SKIPLANDING_VEL_Y_MAX)
+        if (fp->physics.vel_air.y > FTCOMMON_HAMMER_SKIPLANDING_VEL_Y_MAX)
         {
             ftHammerSetStatusHammerWait(fighter_gobj);
         }
@@ -30,7 +30,7 @@ void ftCommonHammerFallProcMap(GObj *fighter_gobj)
 // 0x80147C50
 void ftCommonHammerFallSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->ga == nMPKineticsGround)
     {
@@ -44,7 +44,7 @@ void ftCommonHammerFallSetStatus(GObj *fighter_gobj)
 // 0x80147CCC
 sb32 ftCommonHammerFallCheckInterruptDamageFall(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((ftHammerCheckHoldHammer(fighter_gobj) != FALSE) && (fp->input.pl.button_tap & (fp->input.button_mask_a | fp->input.button_mask_b)))
     {
@@ -58,8 +58,8 @@ sb32 ftCommonHammerFallCheckInterruptDamageFall(GObj *fighter_gobj)
 // 0x80147D30
 void ftCommonHammerFallSetStatusJump(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
     s32 vel_x, vel_y;
 
     mpCommonSetFighterAir(fp);
@@ -78,8 +78,8 @@ void ftCommonHammerFallSetStatusJump(GObj *fighter_gobj)
         vel_y = fp->status_vars.common.hammer.jump_force;
         break;
     }
-    fp->phys_info.vel_air.y = (vel_y * attributes->jump_height_mul) + attributes->jump_height_base;
-    fp->phys_info.vel_air.x = vel_x * attributes->jump_vel_x;
+    fp->physics.vel_air.y = (vel_y * attributes->jump_height_mul) + attributes->jump_height_base;
+    fp->physics.vel_air.x = vel_x * attributes->jump_vel_x;
 
     fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 }
@@ -94,7 +94,7 @@ void ftCommonHammerFallSetStatusPass(GObj *fighter_gobj)
 // 0x80147E7C
 sb32 ftCommonHammerFallCheckInterruptCommon(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (ftCommonPassCheckInputSuccess(fp) != FALSE)
     {

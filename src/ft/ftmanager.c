@@ -9,7 +9,7 @@
 //                               //
 // // // // // // // // // // // //
 
-extern ftFileSize D_800A50F8[nFTKindEnumMax];
+extern FTFileSize D_800A50F8[nFTKindEnumMax];
 
 extern intptr_t D_NF_000000A3;
 extern intptr_t D_NF_000000C9;
@@ -21,16 +21,16 @@ extern intptr_t D_NF_000000C9;
 // // // // // // // // // // // //
 
 // 0x80130D80
-ftStruct *sFTManagerStructsAllocFree;
+FTStruct *sFTManagerStructsAllocFree;
 
 // 0x80130D84
-ftStruct *sFTManagerStructsAllocBuf;
+FTStruct *sFTManagerStructsAllocBuf;
 
 // 0x80130D88
-ftParts *sFTManagerPartsAllocFree;
+FTParts *sFTManagerPartsAllocFree;
 
 // 0x80130D8C
-ftParts *sFTManagerPartsAllocBuf;
+FTParts *sFTManagerPartsAllocBuf;
 
 // 0x80130D90
 u32 gFTManagerPlayersNum;
@@ -48,7 +48,7 @@ void *gFTManagerCommonFile;
 size_t gFTManagerFigatreeHeapSize;
 
 // 0x80130DA0
-lbFileNode sFTManagerForceStatusBuffer[7];
+LBFileNode sFTManagerForceStatusBuffer[7];
 
 // // // // // // // // // // // //
 //                               //
@@ -57,10 +57,10 @@ lbFileNode sFTManagerForceStatusBuffer[7];
 // // // // // // // // // // // //
 
 // 0x80116E10
-extern ftData *dFTManagerDataFiles[nFTKindEnumMax];
+extern FTData *dFTManagerDataFiles[nFTKindEnumMax];
 
 /*
-ftData *dFTManagerDataFiles[] =
+FTData *dFTManagerDataFiles[] =
 {
     D_ovl2_80117810,
     D_ovl2_801196F4,
@@ -105,10 +105,10 @@ void ftManagerSetupFileSize(void)
     s32 i, j;
     size_t largest_size;
     size_t current_anim_size;
-    ftData *ft_data;
-    ftFileSize *ft_size;
-    lbRelocSetup rl_setup;
-    ftMotionDesc *script_info;
+    FTData *ft_data;
+    FTFileSize *ft_size;
+    LBRelocSetup rl_setup;
+    FTMotionDesc *script_info;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
@@ -180,15 +180,15 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
     size_t largest_size;
     s32 i;
     size_t current_size;
-    ftData *ft_data;
-    ftFileSize *ft_size;
+    FTData *ft_data;
+    FTFileSize *ft_size;
     size_t heap_size;
 
     heap_size = 0;
 
-    sFTManagerStructsAllocBuf = sFTManagerStructsAllocFree = syTaskmanMalloc(sizeof(ftStruct) * allocs_num, 0x8);
+    sFTManagerStructsAllocBuf = sFTManagerStructsAllocFree = syTaskmanMalloc(sizeof(FTStruct) * allocs_num, 0x8);
 
-    bzero(sFTManagerStructsAllocBuf, sizeof(ftStruct) * allocs_num);
+    bzero(sFTManagerStructsAllocBuf, sizeof(FTStruct) * allocs_num);
 
     for (i = 0; i < (allocs_num - 1); i++)
     {
@@ -196,7 +196,7 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
     }
     sFTManagerStructsAllocBuf[i].alloc_next = NULL;
 
-    sFTManagerPartsAllocFree = sFTManagerPartsAllocBuf = syTaskmanMalloc(sizeof(ftParts) * allocs_num * FTPARTS_JOINT_NUM_MAX, 0x8);
+    sFTManagerPartsAllocFree = sFTManagerPartsAllocBuf = syTaskmanMalloc(sizeof(FTParts) * allocs_num * FTPARTS_JOINT_NUM_MAX, 0x8);
 
     for (i = 0; i < ((allocs_num * FTPARTS_JOINT_NUM_MAX) - 1); i++)
     {
@@ -257,10 +257,10 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
 }
 
 // 0x800D7594
-ftStruct* ftManagerGetNextStructAlloc(void)
+FTStruct* ftManagerGetNextStructAlloc(void)
 {
-    ftStruct *current_fighter;
-    ftStruct *new_fighter = sFTManagerStructsAllocFree;
+    FTStruct *current_fighter;
+    FTStruct *new_fighter = sFTManagerStructsAllocFree;
 
     if (new_fighter == NULL)
     {
@@ -278,17 +278,17 @@ ftStruct* ftManagerGetNextStructAlloc(void)
 }
 
 // 0x800D75EC
-void ftManagerSetPrevStructAlloc(ftStruct *fp)
+void ftManagerSetPrevStructAlloc(FTStruct *fp)
 {
     fp->alloc_next = sFTManagerStructsAllocFree;
     sFTManagerStructsAllocFree = fp;
 }
 
 // 0x800D7604
-ftParts* ftManagerGetNextPartsAlloc(void)
+FTParts* ftManagerGetNextPartsAlloc(void)
 {
-    ftParts *current_part;
-    ftParts *new_part;
+    FTParts *current_part;
+    FTParts *new_part;
 
     new_part = sFTManagerPartsAllocFree;
 
@@ -316,7 +316,7 @@ ftParts* ftManagerGetNextPartsAlloc(void)
 }
 
 // 0x800D767C
-void ftManagerSetPrevPartsAlloc(ftParts *ft_parts)
+void ftManagerSetPrevPartsAlloc(FTParts *ft_parts)
 {
     ft_parts->alloc_next = sFTManagerPartsAllocFree;
     sFTManagerPartsAllocFree = ft_parts;
@@ -325,7 +325,7 @@ void ftManagerSetPrevPartsAlloc(ftParts *ft_parts)
 // 0x800D7694
 void ftManagerSetupFilesMainKind(s32 ft_kind)
 {
-    ftData *ft_data = dFTManagerDataFiles[ft_kind];
+    FTData *ft_data = dFTManagerDataFiles[ft_kind];
 
     *ft_data->p_file_main = lbRelocGetFileExternHeap(ft_data->file_main_id, syTaskmanMalloc(lbRelocGetFileSize(ft_data->file_main_id), 0x10));
 
@@ -344,7 +344,7 @@ void ftManagerSetupFilesMainKind(s32 ft_kind)
 // 0x800D7710
 void ftManagerSetupFilesKind(s32 ft_kind)
 {
-    ftData *ft_data = dFTManagerDataFiles[ft_kind];
+    FTData *ft_data = dFTManagerDataFiles[ft_kind];
 
     if (ft_data->file_mainmotion_id != 0)
     {
@@ -396,7 +396,7 @@ void ftManagerSetupFilesPlayablesAll(void)
 // 0x800D786C
 void ftManagerSetupFilesAllKind(s32 ft_kind)
 {
-    ftData *ft_data = dFTManagerDataFiles[ft_kind];
+    FTData *ft_data = dFTManagerDataFiles[ft_kind];
 
     if (*ft_data->p_file_main == NULL)
     {
@@ -408,7 +408,7 @@ void ftManagerSetupFilesAllKind(s32 ft_kind)
 // 0x800D78B4
 void* ftManagerAllocFigatreeHeapKind(s32 ft_kind)
 {
-    ftData *ft_data = dFTManagerDataFiles[ft_kind];
+    FTData *ft_data = dFTManagerDataFiles[ft_kind];
 
     return syTaskmanMalloc(ft_data->file_anim_size, 0x10);
 }
@@ -416,7 +416,7 @@ void* ftManagerAllocFigatreeHeapKind(s32 ft_kind)
 // 0x800D78E8
 void ftManagerDestroyFighter(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
 
     if (fp->is_attach_effect)
@@ -427,7 +427,7 @@ void ftManagerDestroyFighter(GObj *fighter_gobj)
     {
         if (fp->joints[i] != NULL)
         {
-            ftParts *ft_parts = fp->joints[i]->user_data.p;
+            FTParts *ft_parts = fp->joints[i]->user_data.p;
 
             if (ft_parts->gobj != NULL)
             {
@@ -443,7 +443,7 @@ void ftManagerDestroyFighter(GObj *fighter_gobj)
 // 0x800D7994
 void ftManagerDestroyFighterWeapons(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     switch (fp->ft_kind)
     {
@@ -460,16 +460,16 @@ void ftManagerDestroyFighterWeapons(GObj *fighter_gobj)
 }
 
 // 0x800D79F0
-void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *ft_desc)
+void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
     f32 scale;
 
     fp->lr = ft_desc->lr_spawn;
     fp->percent_damage = ft_desc->damage;
 
-    if (fp->status_info.pl_kind != nFTPlayerKindDemo)
+    if (fp->pl_kind != nFTPlayerKindDemo)
     {
         gBattleState->players[fp->player].stock_damage_all = fp->percent_damage;
     }
@@ -513,7 +513,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *ft_desc)
 
     fp->hitstatus = nGMHitStatusNormal;
     fp->star_hitstatus = nGMHitStatusNormal;
-    fp->special_hitstatus = nGMHitStatusNormal;
+    fp->special_collstatus = nGMHitStatusNormal;
 
     fp->throw_gobj = NULL;
     fp->catch_gobj = NULL;
@@ -527,7 +527,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *ft_desc)
 
     fp->reflect_damage = 0;
 
-    fp->special_hit = NULL;
+    fp->special_coll = NULL;
 
     fp->attack1_followup_frames = 0.0F;
     fp->unk_ft_0x7A0 = 0.0F;
@@ -569,7 +569,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *ft_desc)
     DObjGetStruct(fighter_gobj)->translate.vec.f = ft_desc->pos;
     DObjGetStruct(fighter_gobj)->scale.vec.f.x = DObjGetStruct(fighter_gobj)->scale.vec.f.y = DObjGetStruct(fighter_gobj)->scale.vec.f.z = attributes->size_mul;
 
-    if (fp->status_info.pl_kind != nFTPlayerKindDemo)
+    if (fp->pl_kind != nFTPlayerKindDemo)
     {
         sb32 is_collide_ground = func_ovl2_800F9348(&DObjGetStruct(fighter_gobj)->translate.vec.f, &fp->coll_data.ground_line_id, &fp->coll_data.ground_dist, &fp->coll_data.ground_flags, &fp->coll_data.ground_angle);
 
@@ -677,7 +677,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *ft_desc)
         fp->fighter_vars.boss.p->status_id_random = -1;
         fp->fighter_vars.boss.p->status_id_guard = 0;
 
-        if (fp->status_info.pl_kind != nFTPlayerKindDemo)
+        if (fp->pl_kind != nFTPlayerKindDemo)
         {
             ftBossCommonSetNextAttackWait(fighter_gobj);
             ftBossCommonSetDefaultLineID(fighter_gobj);
@@ -690,16 +690,16 @@ void ftManagerInitFighter(GObj *fighter_gobj, ftCreateDesc *ft_desc)
 }
 
 // 0x800D7F3C
-GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
+GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
 {
-    ftStruct *fp;
+    FTStruct *fp;
     GObj *fighter_gobj;
     s32 i;
-    ftParts *ft_parts;
-    ftAttributes *attributes;
+    FTParts *ft_parts;
+    FTAttributes *attributes;
     s32 unused;
     DObj *topn_joint;
-    ftMesh *ft_mesh;
+    FTMesh *ft_mesh;
 
     fighter_gobj = gcMakeGObjSPAfter(nGCCommonKindFighter, NULL, nGCCommonLinkIDFighter, GOBJ_LINKORDER_DEFAULT);
 
@@ -709,17 +709,17 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
 
     fighter_gobj->user_data.p = fp;
 
-    fp->status_info.pl_kind = ft_desc->pl_kind;
+    fp->pl_kind = ft_desc->pl_kind;
     fp->fighter_gobj = fighter_gobj;
     fp->ft_kind = ft_desc->ft_kind;
     fp->ft_data = dFTManagerDataFiles[fp->ft_kind];
-    attributes = fp->attributes = (ftAttributes*) ((uintptr_t)*fp->ft_data->p_file_main + (intptr_t)fp->ft_data->o_attributes);
+    attributes = fp->attributes = (FTAttributes*) ((uintptr_t)*fp->ft_data->p_file_main + (intptr_t)fp->ft_data->o_attributes);
     fp->figatree_heap = ft_desc->figatree_heap;
     fp->team = ft_desc->team;
     fp->player = ft_desc->player;
     fp->stock_count = ft_desc->stock_count;
 
-    if (fp->status_info.pl_kind != nFTPlayerKindDemo)
+    if (fp->pl_kind != nFTPlayerKindDemo)
     {
         gBattleState->players[fp->player].stock_count = ft_desc->stock_count;
     }
@@ -764,7 +764,7 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
 
     fp->is_magnify_hide = ft_desc->is_skip_magnify;
 
-    fp->status_info.status_time_spent = 0;
+    fp->status_total_tics = 0;
 
     fp->camera_zoom_frame = attributes->camera_zoom;
     fp->camera_zoom_range = 1.0F;
@@ -837,34 +837,34 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
 
     fp->tap_stick_x = fp->tap_stick_y = fp->hold_stick_x = fp->hold_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 
-    for (i = 0; i < ARRAY_COUNT(fp->fighter_hurt); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->damage_colls); i++)
     {
-        if (attributes->fighter_hurt_desc[i].joint_id != -1)
+        if (attributes->damage_colls_desc[i].joint_id != -1)
         {
-            fp->fighter_hurt[i].hitstatus = nGMHitStatusNormal;
-            fp->fighter_hurt[i].joint_id = attributes->fighter_hurt_desc[i].joint_id;
-            fp->fighter_hurt[i].joint = fp->joints[fp->fighter_hurt[i].joint_id];
-            fp->fighter_hurt[i].placement = attributes->fighter_hurt_desc[i].placement;
-            fp->fighter_hurt[i].is_grabbable = attributes->fighter_hurt_desc[i].is_grabbable;
-            fp->fighter_hurt[i].offset = attributes->fighter_hurt_desc[i].offset;
-            fp->fighter_hurt[i].size = attributes->fighter_hurt_desc[i].size;
+            fp->damage_colls[i].hitstatus = nGMHitStatusNormal;
+            fp->damage_colls[i].joint_id = attributes->damage_colls_desc[i].joint_id;
+            fp->damage_colls[i].joint = fp->joints[fp->damage_colls[i].joint_id];
+            fp->damage_colls[i].placement = attributes->damage_colls_desc[i].placement;
+            fp->damage_colls[i].is_grabbable = attributes->damage_colls_desc[i].is_grabbable;
+            fp->damage_colls[i].offset = attributes->damage_colls_desc[i].offset;
+            fp->damage_colls[i].size = attributes->damage_colls_desc[i].size;
 
-            fp->fighter_hurt[i].size.x *= 0.5F;
-            fp->fighter_hurt[i].size.y *= 0.5F;
-            fp->fighter_hurt[i].size.z *= 0.5F;
+            fp->damage_colls[i].size.x *= 0.5F;
+            fp->damage_colls[i].size.y *= 0.5F;
+            fp->damage_colls[i].size.z *= 0.5F;
         }
-        else fp->fighter_hurt[i].hitstatus = nGMHitStatusNone;
+        else fp->damage_colls[i].hitstatus = nGMHitStatusNone;
     }
     fp->coll_data.p_translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
     fp->coll_data.p_lr = &fp->lr;
-    fp->coll_data.objcoll = attributes->objcoll;
-    fp->coll_data.p_objcoll = &fp->coll_data.objcoll;
+    fp->coll_data.object_coll = attributes->object_coll;
+    fp->coll_data.p_object_coll = &fp->coll_data.object_coll;
     fp->coll_data.cliffcatch_coll = attributes->cliffcatch_coll;
     fp->coll_data.ignore_line_id = -1;
     fp->coll_data.coll_update_frame = gMPCollisionUpdateFrame;
     fp->coll_data.coll_mask_current = 0;
 
-    if (fp->status_info.pl_kind != nFTPlayerKindDemo)
+    if (fp->pl_kind != nFTPlayerKindDemo)
     {
         gcAddGObjProcess(fighter_gobj, ftMainProcInterruptMain, nGCProcessKindProc, 5);
         gcAddGObjProcess(fighter_gobj, ftMainProcPhysicsMapDefault, nGCProcessKindProc, 4);
@@ -877,16 +877,16 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
 
     ftManagerInitFighter(fighter_gobj, ft_desc);
 
-    if (fp->status_info.pl_kind == nFTPlayerKindCom)
+    if (fp->pl_kind == nFTPlayerKindCom)
     {
-        ftComputerSetupAll(fighter_gobj);
+        FTComputerSetupAll(fighter_gobj);
     }
-    if ((fp->status_info.pl_kind == nFTPlayerKindKey) || (fp->status_info.pl_kind == nFTPlayerKindGameKey))
+    if ((fp->pl_kind == nFTPlayerKindKey) || (fp->pl_kind == nFTPlayerKindGameKey))
     {
         fp->key.input_seq = NULL;
         fp->key.input_wait = 0;
     }
-    switch (fp->status_info.pl_kind)
+    switch (fp->pl_kind)
     {
     case nFTPlayerKindDemo:
         scSubsysFighterSetStatus(fighter_gobj, 0x10000);
@@ -909,13 +909,13 @@ GObj* ftManagerMakeFighter(ftCreateDesc *ft_desc) // Create fighter
         }
         break;
     }
-    if ((fp->status_info.pl_kind == nFTPlayerKindMan) || (fp->status_info.pl_kind == nFTPlayerKindCom))
+    if ((fp->pl_kind == nFTPlayerKindMan) || (fp->pl_kind == nFTPlayerKindCom))
     {
-        ftComputerSetFighterHurtboxSizeInfo(fighter_gobj);
+        FTComputerSetFighterHurtboxSizeInfo(fighter_gobj);
     }
-    if ((fp->status_info.pl_kind != nFTPlayerKindDemo) && !(ft_desc->is_skip_shadow_setup))
+    if ((fp->pl_kind != nFTPlayerKindDemo) && !(ft_desc->is_skip_shadow_setup))
     {
-        ftShadowMakeShadow(fighter_gobj);
+        FTShadowMakeShadow(fighter_gobj);
     }
     return fighter_gobj;
 }

@@ -6,10 +6,10 @@
 #include <ft/ftdef.h>
 
 // SpecialN / SpecialAirN
-extern void ftSamusSpecialNDestroyChargeShot(ftStruct* fp);
+extern void ftSamusSpecialNDestroyChargeShot(FTStruct* fp);
 extern void ftSamusSpecialNProcDamage(GObj* fighter_gobj);
-extern void ftSamusSpecialNGetChargeShotPosition(ftStruct* fp, Vec3f* pos);
-extern void ftSamusSpecialNSetChargeShotPosition(ftStruct* fp);
+extern void ftSamusSpecialNGetChargeShotPosition(FTStruct* fp, Vec3f* pos);
+extern void ftSamusSpecialNSetChargeShotPosition(FTStruct* fp);
 extern void ftSamusSpecialNStartProcUpdate(GObj* fighter_gobj);
 extern void ftSamusSpecialNStartProcInterrupt(GObj* fighter_gobj);
 extern void ftSamusSpecialNStartProcMap(GObj* fighter_gobj);
@@ -27,8 +27,8 @@ extern void ftSamusSpecialAirNEndSwitchStatusGround(GObj* fighter_gobj);
 extern void ftSamusSpecialNEndSwitchStatusAir(GObj* fighter_gobj);
 extern void ftSamusSpecialNEndSetStatus(GObj* fighter_gobj);
 extern void ftSamusSpecialAirNEndSetStatus(GObj* fighter_gobj);
-extern f32 ftSamusSpecialNStartGetAnimSpeed(ftStruct* fp);
-extern void ftSamusSpecialNStartInitStatusVars(ftStruct* fp);
+extern f32 ftSamusSpecialNStartGetAnimSpeed(FTStruct* fp);
+extern void ftSamusSpecialNStartInITStatusVars(FTStruct* fp);
 extern void ftSamusSpecialNStartSetStatus(GObj* fighter_gobj);
 extern void ftSamusSpecialAirNStartSetStatus(GObj* fighter_gobj);
 
@@ -52,7 +52,7 @@ extern void ftSamusSpecialAirLwProcMap(GObj* fighter_gobj);
 extern void ftSamusSpecialAirLwSwitchStatusGround(GObj* fighter_gobj);
 extern void ftSamusSpecialLwTransferStatusAir(GObj* fighter_gobj);
 extern void ftSamusSpecialLwSwitchStatusAir(GObj* fighter_gobj);
-extern void ftSamusSpecialLwInitStatusVars(ftStruct* fp);
+extern void ftSamusSpecialLwInITStatusVars(FTStruct* fp);
 extern void ftSamusSpecialLwSetStatus(GObj* fighter_gobj);
 extern void ftSamusSpecialAirLwSetStatus(GObj* fighter_gobj);
 

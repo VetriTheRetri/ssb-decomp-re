@@ -29,7 +29,7 @@ extern void ftDonkeySpecialAirNEndSwitchStatusGround(GObj* fighter_gobj);
 extern void ftDonkeySpecialNGetStatusChargeLevelReset(GObj* fighter_gobj);
 extern void ftDonkeySpecialNEndSetStatus(GObj* fighter_gobj);
 extern void ftDonkeySpecialAirNEndSetStatus(GObj* fighter_gobj);
-extern void ftDonkeySpecialNInitStatusVars(GObj* fighter_gobj);
+extern void ftDonkeySpecialNInITStatusVars(GObj* fighter_gobj);
 extern void ftDonkeySpecialNStartSetStatus(GObj* fighter_gobj);
 extern void ftDonkeySpecialAirNStartSetStatus(GObj* fighter_gobj);
 
@@ -66,7 +66,7 @@ extern void ftDonkeyThrowFWaitSetStatus(GObj* fighter_gobj);
 extern sb32 ftDonkeyThrowFWaitCheckInterruptThrowFWalk(GObj* fighter_gobj);
 
 // ThrowFWalk
-extern f32 ftDonkeyThrowFWalkGetWalkAnimLength(ftStruct* fp, s32 status_id);
+extern f32 ftDonkeyThrowFWalkGetWalkAnimLength(FTStruct* fp, s32 status_id);
 extern void ftDonkeyThrowFWalkProcInterrupt(GObj* fighter_gobj);
 extern void ftDonkeyThrowFWalkSetStatusParam(GObj* fighter_gobj, f32 frame_begin);
 extern void ftDonkeyThrowFWalkSetStatusDefault(GObj* fighter_gobj);

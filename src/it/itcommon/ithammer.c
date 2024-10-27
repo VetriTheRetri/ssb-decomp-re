@@ -14,7 +14,7 @@ extern intptr_t lITHammerItemAttributes;    // 0x00000374
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITHammerItemDesc =
+ITCreateDesc dITHammerItemDesc =
 {
     nITKindHammer,                          // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -38,7 +38,7 @@ itCreateDesc dITHammerItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITHammerStatusDescs[/* */] =
+ITStatusDesc dITHammerStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -132,7 +132,7 @@ void itHammerCommonSetColAnim(GObj *item_gobj)
 // 0x80176134
 sb32 itHammerFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITHAMMER_GRAVITY, ITHAMMER_TVEL);
     itVisualsUpdateSpin(item_gobj);
@@ -164,7 +164,7 @@ void itHammerWaitSetStatus(GObj *item_gobj)
 // 0x801761F8
 void itHammerFallSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
@@ -183,7 +183,7 @@ void itHammerHoldSetStatus(GObj *item_gobj)
 // 0x80176270
 sb32 itHammerThrownProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITHAMMER_GRAVITY, ITHAMMER_TVEL);
     itVisualsUpdateSpin(item_gobj);
@@ -200,9 +200,9 @@ sb32 itHammerThrownProcMap(GObj *item_gobj)
 // 0x801762D8
 sb32 itHammerCommonProcHit(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hit.update_state = nGMHitUpdateDisable;
+    ip->hit_coll.update_state = nGMHitUpdateDisable;
 
     itMainVelSetRebound(item_gobj);
 
@@ -243,13 +243,13 @@ GObj* itHammerMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
     if (item_gobj != NULL)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
 
         ip->is_unused_item_bool = TRUE;
 
-        ip->indicator_gobj = ifCommonItemArrowMakeInterface(ip);
+        ip->arrow_gobj = ifCommonItemArrowMakeInterface(ip);
     }
     return item_gobj;
 }

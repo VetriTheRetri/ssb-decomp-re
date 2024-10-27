@@ -64,16 +64,16 @@ GObj *sMVEndingRoomFadeInGObj;
 GObj *sMVEndingRoomLightGObj;
 
 // 0x80132C08
-ftDemoDesc sMVEndingFighterDemoDesc;
+FTDemoDesc sMVEndingFighterDemoDesc;
 
 // 0x80132C14
 s32 sMVEndingUnused0x80132C14;
 
 // 0x80132C18
-lbFileNode sMVEndingStatusBuffer[100];
+LBFileNode sMVEndingStatusBuffer[100];
 
 // 0x80132F38
-lbFileNode sMVEndingForceStatusBuffer[7];
+LBFileNode sMVEndingForceStatusBuffer[7];
 
 // 0x80132F70
 void *sMVEndingFiles[2];
@@ -239,7 +239,7 @@ void mvEndingMakeRoomTissues(void)
 void mvEndingMakeFighter(s32 ft_kind)
 {
     GObj *fighter_gobj;
-    ftCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
     ft_desc.ft_kind = ft_kind;
 
@@ -509,7 +509,7 @@ void mvEndingFuncRun(GObj *gobj)
 void mvEndingFuncStart(void)
 {
     s32 unused;
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

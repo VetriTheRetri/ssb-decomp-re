@@ -9,7 +9,7 @@
 #include <ef/efdef.h>
 #include <ef/efvars.h>
 
-struct efCreateDesc
+struct EFCreateDesc
 {
     u8 flags;
     u8 dl_link;
@@ -24,16 +24,16 @@ struct efCreateDesc
     intptr_t o_matanim_joint;
 };
 
-typedef struct efGroundParam
+typedef struct EFGroundParam
 {
     u16 effect_id;                      // Array index of effect desc to use
     u16 make_queue;                     // How many of this effect ID to spawn
     s32 lr;                             // 0 = random, -3 or 3 = ???
     u8 effect_weight;                   // Randomizer weight?
 
-} efGroundParam;
+} EFGroundParam;
 
-typedef struct efGroundCreateDesc
+typedef struct EFGroundCreateDesc
 {
     f32 alt_high;                       // Maximum alt
     f32 alt_low;                        // Minimum alt
@@ -41,20 +41,20 @@ typedef struct efGroundCreateDesc
     f32 scale;                          // Scale
     u16 effect_status;                  // Effect status? Always -1?
     void (*proc_groundeffect)(GObj*);   // ???
-    efCreateDesc effect_desc;           // Effect description
+    EFCreateDesc effect_desc;           // Effect description
 
-} efGroundCreateDesc;
+} EFGroundCreateDesc;
 
-typedef struct efGroundData
+typedef struct EFGroundData
 {
-    u8 param_num;                       // Number of elements in effect_param
-    efGroundParam *effect_param;        // Effect parameter descriptions
+    u8 params_num;                      // Number of elements in effect_params
+    EFGroundParam *effect_params;       // Effect parameter descriptions
     intptr_t o_data;                    // ???
-    efGroundCreateDesc *effect_descs;   // Ground effect creation descriptions
+    EFGroundCreateDesc *effect_descs;   // Ground effect creation descriptions
 
-} efGroundData;
+} EFGroundData;
 
-typedef struct efGroundActor
+typedef struct EFGroundActor
 {
     s32 make_wait;
     u16 effect_id;
@@ -63,17 +63,17 @@ typedef struct efGroundActor
     u8 *effect_ids;
     s32 lr;                     // Number of effects spawned, multiplied by LR sign
     void *file_head;
-    efGroundData *effect_data;
+    EFGroundData *effect_data;
 
-} efGroundActor;
+} EFGroundActor;
 
-struct efStruct
+struct EFStruct
 {
-    efStruct *alloc_next;
+    EFStruct *alloc_next;
     GObj *fighter_gobj;
 
     u16 bank_id;
-    lbTransform *tfrm;
+    LBTransform *tfrm;
 
     ub32 is_pause_effect : 1;
 
@@ -81,31 +81,31 @@ struct efStruct
 
     union efEffectVars // Effect vars union?
     {
-        efCommonEffectVarsCommon common;
-        efCommonEffectVarsContainer container;
-        efCommonEffectVarsDamageNormalHeavy damage_normal_heavy;
-        efCommonEffectVarsDustLight dust_light;
-        efCommonEffectVarsDustHeavy dust_heavy;
-        efCommonEffectVarsDamageFlyOrbs damage_fly_orbs;
-        efCommonEffectVarsDamageSpawnOrbs damage_spawn_orbs;
-        efCommonEffectVarsImpactWave impact_wave;
-        efCommonEffectVarsStarRodSpark star_rod_spark;
-        efCommonEffectVarsDamageFlySpark damage_fly_sparks;
-        efCommonEffectVarsDamageSpawnSpark damage_spawn_sparks;
-        efCommonEffectVarsDamageFlyMDust damage_fly_mdust;
-        efCommonEffectVarsDamageSpawnMDust damage_spawn_mdust;
-        efCommonEffectVarsQuake quake;
-        efCommonEffectVarsReflector reflector;
-        efCommonEffectVarsShield shield;
-        efCommonEffectVarsUnknown1 unknown1;
-        efCommonEffectVarsThunderTrail thunder_trail;
-        efCommonEffectVarsVulcanJab vulcan_jab;
-        efCommonEffectVarsPKThunder pkthunder;
-        efCommonEffectVarsYoshiEggLay yoshi_egg_lay;
-        efCommonEffectVarsCaptureKirbyStar capture_kirby_star;
-        efCommonEffectVarsLoseKirbyStar lose_kirby_star;
+        EFCommonEffectVarsCommon common;
+        EFCommonEffectVarsContainer container;
+        EFCommonEffectVarsDamageNormalHeavy damage_normal_heavy;
+        EFCommonEffectVarsDustLight dust_light;
+        EFCommonEffectVarsDustHeavy dust_heavy;
+        EFCommonEffectVarsDamageFlyOrbs damage_fly_orbs;
+        EFCommonEffectVarsDamageSpawnOrbs damage_spawn_orbs;
+        EFCommonEffectVarsImpactWave impact_wave;
+        EFCommonEffectVarsStarRodSpark star_rod_spark;
+        EFCommonEffectVarsDamageFlySpark damage_fly_sparks;
+        EFCommonEffectVarsDamageSpawnSpark damage_spawn_sparks;
+        EFCommonEffectVarsDamageFlyMDust damage_fly_mdust;
+        EFCommonEffectVarsDamageSpawnMDust damage_spawn_mdust;
+        EFCommonEffectVarsQuake quake;
+        EFCommonEffectVarsReflector reflector;
+        EFCommonEffectVarsShield shield;
+        EFCommonEffectVarsUnknown1 unknown1;
+        EFCommonEffectVarsThunderTrail thunder_trail;
+        EFCommonEffectVarsVulcanJab vulcan_jab;
+        EFCommonEffectVarsPKThunder pkthunder;
+        EFCommonEffectVarsYoshiEggLay yoshi_egg_lay;
+        EFCommonEffectVarsCaptureKirbyStar capture_kirby_star;
+        EFCommonEffectVarsLoseKirbyStar lose_kirby_star;
 
-        efGroundEffectVarsCommon ground_effect; // Used in efGroundCheckEffectInBounds
+        EFGroundEffectVarsCommon ground_effect; // Used in efGroundCheckEffectInBounds
 
     } effect_vars;
 };

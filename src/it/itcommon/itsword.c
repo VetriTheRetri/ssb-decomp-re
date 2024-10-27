@@ -14,7 +14,7 @@ extern intptr_t lITSwordItemAttributes;     // 0x00000190
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITSwordITemDesc =
+ITCreateDesc dITSwordITemDesc =
 {
     nITKindSword,                           // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -38,7 +38,7 @@ itCreateDesc dITSwordITemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITSwordStatusDescs[/* */] = 
+ITStatusDesc dITSwordStatusDescs[/* */] = 
 {
     // Status 0 (Ground Wait)
     {
@@ -126,7 +126,7 @@ enum itSwordStatus
 // 0x80174B50
 sb32 itSwordFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITSWORD_GRAVITY, ITSWORD_TVEL);
     itVisualsUpdateSpin(item_gobj);
@@ -158,7 +158,7 @@ void itSwordWaitSetStatus(GObj *item_gobj)
 // 0x80174C18
 void itSwordFallSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
@@ -183,9 +183,9 @@ sb32 itSwordThrownProcMap(GObj *item_gobj)
 // 0x80174CC0
 sb32 itSwordThrownProcHit(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hit.update_state = nGMHitUpdateDisable;
+    ip->hit_coll.update_state = nGMHitUpdateDisable;
 
     itMainVelSetRebound(item_gobj);
 
@@ -221,13 +221,13 @@ GObj* itSwordMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
     if (item_gobj != NULL)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 
         ip->is_unused_item_bool = TRUE;
 
-        ip->indicator_gobj = ifCommonItemArrowMakeInterface(ip);
+        ip->arrow_gobj = ifCommonItemArrowMakeInterface(ip);
     }
     return item_gobj;
 }

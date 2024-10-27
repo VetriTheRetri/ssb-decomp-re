@@ -39,8 +39,8 @@ typedef struct grCommonGroundVarsPupupu
 	void* map_head;
 	GObj* map_gobj[4];
 	s32 particle_bank_id;
-	lbTransform* leaves_tfrm;
-	lbTransform* dust_tfrm;
+	LBTransform* leaves_tfrm;
+	LBTransform* dust_tfrm;
 	u16 whispy_wind_wait;
 	u16 whispy_wind_duration;
 	s16 whispy_blink_wait;
@@ -114,7 +114,7 @@ typedef struct grCommonGroundVarsZebes
 {
 	void* map_head;
 	GObj* map_gobj;
-	grHitbox* gr_hit;
+	GRHitCollision* gr_hitcoll;
 	f32 acid_level_current;
 	f32 acid_level_step;
 	u16 acid_level_wait;
@@ -170,7 +170,7 @@ typedef struct grCommonGroundVarsInishie
 					   // grounded/airborne
 	ub8 players_ga[4]; // Players ground or air
 	GObj* pblock_gobj;
-	grHitbox* gr_hit;
+	GRHitCollision* gr_hitcoll;
 	u16 pblock_appear_wait;
 	u8 pblock_pos_count;
 	u8* pblock_pos_ids;
@@ -193,7 +193,7 @@ typedef struct grCommonGroundVarsHyrule
 {
 	void* map_head;
 	GObj* twister_gobj;
-	lbTransform* twister_tfrm;
+	LBTransform* twister_tfrm;
 	f32 twister_leftedge_x;
 	f32 twister_rightedge_x;
 	f32 twister_vel;

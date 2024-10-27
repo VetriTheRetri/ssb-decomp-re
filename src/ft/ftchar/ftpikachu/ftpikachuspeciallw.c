@@ -20,7 +20,7 @@
 // 0x80151DB0
 void ftPikachuSpecialLwCreateThunder(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
     Vec3f vel;
 
@@ -42,7 +42,7 @@ void ftPikachuSpecialLwCreateThunder(GObj *fighter_gobj)
 // 0x80151E44
 void ftPikachuSpecialLwStartUpdateThunder(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->command_vars.flags.flag0 != 0)
     {
@@ -86,7 +86,7 @@ void ftPikachuSpecialAirLwStartSwitchStatusGround(GObj *fighter_gobj)
 // 0x80151F5C
 void ftPikachuSpecialLwStartSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirLwStart, fighter_gobj->anim_frame, 1.0F, FTPIKACHU_SPECIALLWSTART_STATUS_FLAGS);
@@ -94,9 +94,9 @@ void ftPikachuSpecialLwStartSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x80151FA8
-void ftPikachuSpecialLwStartInitStatusVars(GObj *fighter_gobj)
+void ftPikachuSpecialLwStartInITStatusVars(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->command_vars.flags.flag1 = 0;
     fp->command_vars.flags.flag0 = 0;
@@ -109,7 +109,7 @@ void ftPikachuSpecialLwStartSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftPikachuSpecialLwStartInitStatusVars(fighter_gobj);
+    ftPikachuSpecialLwStartInITStatusVars(fighter_gobj);
 }
 
 // 0x80151FFC
@@ -117,14 +117,14 @@ void ftPikachuSpecialAirLwStartSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftPikachuSpecialLwStartInitStatusVars(fighter_gobj);
+    ftPikachuSpecialLwStartInITStatusVars(fighter_gobj);
 }
 
 // 0x8015203C
 sb32 ftPikachuSpecialLwCheckCollideThunder(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    wpStruct *wp;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    WPStruct *wp;
     DObj *fj;
     DObj *wj;
     GObj *thunder_gobj;
@@ -177,7 +177,7 @@ sb32 ftPikachuSpecialLwCheckCollideThunder(GObj *fighter_gobj)
 // 0x80152124
 void ftPikachuSpecialLwLoopProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (ftPikachuSpecialLwCheckCollideThunder(fighter_gobj) != FALSE)
     {
@@ -196,7 +196,7 @@ void ftPikachuSpecialLwLoopProcUpdate(GObj *fighter_gobj)
 // 0x8015219C
 void ftPikachuSpecialAirLwLoopProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (ftPikachuSpecialLwCheckCollideThunder(fighter_gobj) != FALSE)
     {
@@ -227,7 +227,7 @@ void ftPikachuSpecialAirLwLoopProcMap(GObj *fighter_gobj)
 // 0x8015225C
 void ftPikachuSpecialLwProcDamage(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     GObj *thunder_gobj = fp->status_vars.pikachu.speciallw.thunder_gobj;
 
     if (thunder_gobj == NULL)
@@ -236,7 +236,7 @@ void ftPikachuSpecialLwProcDamage(GObj *fighter_gobj)
     }
     if (!(fp->fighter_vars.pikachu.is_thunder_destroy & TRUE))
     {
-        wpStruct *wp = wpGetStruct(thunder_gobj);
+        WPStruct *wp = wpGetStruct(thunder_gobj);
 
         wp->weapon_vars.thunder.thunder_state = nWPPikachuThunderStatusDestroy;
     }
@@ -252,7 +252,7 @@ void ftPikachuSpecialAirLwLoopSwitchStatusGround(GObj *fighter_gobj)
 // 0x801522DC
 void ftPikachuSpecialLwLoopSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirLwLoop, fighter_gobj->anim_frame, 1.0F, FTPIKACHU_SPECIALLWLOOP_STATUS_FLAGS);
@@ -262,7 +262,7 @@ void ftPikachuSpecialLwLoopSwitchStatusAir(GObj *fighter_gobj)
 // 0x80152328
 void ftPikachuSpecialLwLoopUpdateThunder(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->command_vars.flags.flag0 == 0)
     {
@@ -292,7 +292,7 @@ void ftPikachuSpecialAirLwLoopSetStatus(GObj *fighter_gobj)
 // 0x801523F4
 void ftPikachuSpecialLwHitProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->command_vars.flags.flag1 != 0)
     {
@@ -303,7 +303,7 @@ void ftPikachuSpecialLwHitProcUpdate(GObj *fighter_gobj)
 // 0x80152424
 void ftPikachuSpecialAirLwHitProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->command_vars.flags.flag1 != 0)
     {
@@ -314,8 +314,8 @@ void ftPikachuSpecialAirLwHitProcUpdate(GObj *fighter_gobj)
 // 0x80152454
 void ftPikachuSpecialAirLwHitProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     ftPhysicsApplyGravityClampTVel(fp, FTPIKACHU_THUNDER_HIT_GRAVITY, attributes->tvel_default);
 
@@ -347,7 +347,7 @@ void ftPikachuSpecialAirLwHitSwitchStatusGround(GObj *fighter_gobj)
 // 0x8015252C
 void ftPikachuSpecialLwHitSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirLwHit, fighter_gobj->anim_frame, 1.0F, FTPIKACHU_SPECIALLWHIT_STATUS_FLAGS);
@@ -355,9 +355,9 @@ void ftPikachuSpecialLwHitSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x80152578
-void ftPikachuSpecialLwHitInitStatusVars(GObj *fighter_gobj)
+void ftPikachuSpecialLwHitInITStatusVars(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->command_vars.flags.flag1 = 0;
 
@@ -369,19 +369,19 @@ void ftPikachuSpecialLwHitSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialLwHit, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftPikachuSpecialLwHitInitStatusVars(fighter_gobj);
+    ftPikachuSpecialLwHitInITStatusVars(fighter_gobj);
 }
 
 // 0x801525C8
 void ftPikachuSpecialAirLwHitSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirLwHit, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftPikachuSpecialLwHitInitStatusVars(fighter_gobj);
+    ftPikachuSpecialLwHitInITStatusVars(fighter_gobj);
 
-    fp->phys_info.vel_air.y = FTPIKACHU_THUNDER_HITVEL_Y;
+    fp->physics.vel_air.y = FTPIKACHU_THUNDER_HITVEL_Y;
 }
 
 // 0x80152620
@@ -412,7 +412,7 @@ void ftPikachuSpecialAirLwEndSwitchStatusGround(GObj *fighter_gobj)
 // 0x801526CC
 void ftPikachuSpecialLwEndSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirLwEnd, fighter_gobj->anim_frame, 1.0F, FTPIKACHU_SPECIALLWEND_STATUS_FLAGS);
@@ -422,7 +422,7 @@ void ftPikachuSpecialLwEndSwitchStatusAir(GObj *fighter_gobj)
 // 0x80152718
 void ftPikachuSpecialLwClearProcDamage(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->proc_damage = NULL;
 }

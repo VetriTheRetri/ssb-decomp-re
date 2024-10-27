@@ -13,19 +13,19 @@ extern void *gITManagerFileData;
 extern s32 gITManagerParticleBankID;
 
 // 0x8018D048
-extern itRandomWeights gITManagerRandomWeights;
+extern ITRandomWeights gITManagerRandomWeights;
 
 // 0x8018D060
-extern itMonsterInfo gITManagerMonsterData;
+extern ITMonsterData gITManagerMonsterData;
 
 // 0x8018D090
 extern s32 gITManagerDisplayMode;
 
 // 0x8018D094
-extern itStruct* gITManagerStructsAllocFree;
+extern ITStruct* gITManagerStructsAllocFree;
 
 // 0x8018D098
-extern itSpawnActor gITManagerSpawnActor;
+extern ITSpawnActor gITManagerSpawnActor;
 
 // Global data
 
@@ -35,7 +35,7 @@ extern s32 dITManagerForceMonsterKind;
 // Linker variable, points to base of animation bank in item file? 0x00013624
 extern intptr_t lITMonsterAnimBankStart;
 
-#define itGetStruct(item_gobj) ((itStruct*)(item_gobj)->user_data.p)
+#define itGetStruct(item_gobj) ((ITStruct*)(item_gobj)->user_data.p)
 
 // Points to all sorts of data
 #define itGetPData(ip, off1, off2)                                                                                     \
@@ -44,8 +44,8 @@ extern intptr_t lITMonsterAnimBankStart;
 #define itGetMonsterAnimNode(ip, off)                                                                                  \
 	((void*)(((uintptr_t)(ip)->attributes->dobj_setup - (intptr_t) & (off)) + (intptr_t)&lITMonsterAnimBankStart))
 
-#define itGetHitEvent(it_desc, off) ((itHitEvent*)((uintptr_t) * (it_desc).p_file + (intptr_t) & (off)))
+#define itGetHitEvent(it_desc, off) ((ITHitEvent*)((uintptr_t) * (it_desc).p_file + (intptr_t) & (off)))
 
-#define itGetHitParty(it_desc, off) ((itHitParty*)((uintptr_t) * (it_desc).p_file + (intptr_t) & (off)))
+#define itGetMonsterEvent(it_desc, off) ((ITMonsterEvent*)((uintptr_t) * (it_desc).p_file + (intptr_t) & (off)))
 
 #endif

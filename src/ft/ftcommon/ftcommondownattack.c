@@ -16,12 +16,12 @@ void ftCommonDownAttackSetStatus(GObj *fighter_gobj, s32 status_id)
 // 0x80144944
 sb32 ftCommonDownAttackCheckInterruptDownBounce(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
 
     if (fp->status_vars.common.downbounce.attack_buffer != 0)
     {
-        if (fp->status_info.status_id == nFTCommonStatusDownBounceD)
+        if (fp->status_id == nFTCommonStatusDownBounceD)
         {
             status_id = nFTCommonStatusDownAttackD;
         }
@@ -37,12 +37,12 @@ sb32 ftCommonDownAttackCheckInterruptDownBounce(GObj *fighter_gobj)
 // 0x8014499C
 sb32 ftCommonDownAttackCheckInterruptDownWait(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
 
     if (fp->input.pl.button_tap & (fp->input.button_mask_a | fp->input.button_mask_b))
     {
-        if (fp->status_info.status_id == nFTCommonStatusDownWaitD)
+        if (fp->status_id == nFTCommonStatusDownWaitD)
         {
             status_id = nFTCommonStatusDownAttackD;
         }

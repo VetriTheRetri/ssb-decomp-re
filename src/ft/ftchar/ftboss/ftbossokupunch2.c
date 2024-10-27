@@ -20,7 +20,7 @@ void ftBossOkupunch2ProcUpdate(GObj *fighter_gobj)
 // 0x8015A890
 void ftBossOkupunch2ProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp;
+    FTStruct *fp;
     f32 dist_x;
 
     ftPhysicsSetAirVelTransN(fighter_gobj);
@@ -33,9 +33,9 @@ void ftBossOkupunch2ProcPhysics(GObj *fighter_gobj)
     {
         f32 vel_x = (dist_x > 0.0F) ? 40.0F : -40.0F;
 
-        fp->phys_info.vel_air.x += vel_x;
+        fp->physics.vel_air.x += vel_x;
     }
-    else fp->phys_info.vel_air.x += dist_x;
+    else fp->physics.vel_air.x += dist_x;
     
     ftBossCommonUpdateFogColor(fighter_gobj);
 }
@@ -43,7 +43,7 @@ void ftBossOkupunch2ProcPhysics(GObj *fighter_gobj)
 // 0x8015A950
 void ftBossOkupunch2SetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f *translate;
     Vec3f sp34;
     Vec3f sp28;

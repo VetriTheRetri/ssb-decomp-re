@@ -92,181 +92,171 @@
 #define EFPART_LOSEKIRBYSTAR_VEL_Y 80.0F
 #define EFPART_LOSEKIRBYSTAR_OFF_Y 210.0F
 
-typedef struct efCommonEffectVarsContainer
+typedef struct EFCommonEffectVarsContainer
 {
 	s32 lifetime;
 	s32 unk_ef_0x1C;
 
-} efCommonEffectVarsContainer;
+} EFCommonEffectVarsContainer;
 
-typedef struct lbParticle_EffectVars_Basic2 // Stuff like the effect that is created when hit by a normal element attack
-{
-    Vec3f vel;
-    u8 player;
-    s32 size;
-    lbTransform *tfrm;
-    u8 filler_0x2C[0x3C - 0x30];
-
-} lbParticle_EffectVars_Basic2;
-
-typedef struct efCommonEffectVarsDamageNormalHeavy
+typedef struct EFCommonEffectVarsDamageNormalHeavy
 {
     Vec3f pos;
     u8 player;
     s32 size;
 
-} efCommonEffectVarsDamageNormalHeavy;
+} EFCommonEffectVarsDamageNormalHeavy;
 
-typedef struct efCommonEffectVarsCommon
+typedef struct EFCommonEffectVarsCommon
 {
     Vec3f vel;
     s32 size;
-    lbTransform *tfrm;
+    LBTransform *tfrm;
 
-} efCommonEffectVarsCommon;
+} EFCommonEffectVarsCommon;
 
-typedef struct efCommonEffectVarsDustLight
+typedef struct EFCommonEffectVarsDustLight
 {
     Vec3f vel1, vel2;
     s32 lifetime;
-    lbTransform *tfrm;
+    LBTransform *tfrm;
 
-} efCommonEffectVarsDustLight;
+} EFCommonEffectVarsDustLight;
 
-typedef struct efCommonEffectVarsDustHeavy
+typedef struct EFCommonEffectVarsDustHeavy
 {
     Vec3f pos;
     s32 lr;
     s32 anim_frame;
-    lbTransform *tfrm;
+    LBTransform *tfrm;
 
-} efCommonEffectVarsDustHeavy;
+} EFCommonEffectVarsDustHeavy;
 
-typedef struct efCommonEffectVarsDamageFlyOrbs
+typedef struct EFCommonEffectVarsDamageFlyOrbs
 {
     Vec3f vel;
     s32 lifetime;
 
-} efCommonEffectVarsDamageFlyOrbs;
+} EFCommonEffectVarsDamageFlyOrbs;
 
-typedef struct efCommonEffectVarsDamageSpawnOrbs
+typedef struct EFCommonEffectVarsDamageSpawnOrbs
 {
     s32 lifetime;
     Vec3f pos;
 
-} efCommonEffectVarsDamageSpawnOrbs;
+} EFCommonEffectVarsDamageSpawnOrbs;
 
-typedef struct efCommonEffectVarsImpactWave
+typedef struct EFCommonEffectVarsImpactWave
 {
     u8 index;
     f32 alpha;
     f32 decay;
 
-} efCommonEffectVarsImpactWave;
+} EFCommonEffectVarsImpactWave;
 
-typedef struct efCommonEffectVarsStarRodSpark
+typedef struct EFCommonEffectVarsStarRodSpark
 {
     Vec3f vel, add;
     s32 add_timer;
 
-} efCommonEffectVarsStarRodSpark;
+} EFCommonEffectVarsStarRodSpark;
 
-typedef struct efCommonEffectVarsDamageFlySpark
+typedef struct EFCommonEffectVarsDamageFlySpark
 {
     Vec3f vel, add;
     s32 add_timer;
 
-} efCommonEffectVarsDamageFlySpark;
+} EFCommonEffectVarsDamageFlySpark;
 
-typedef struct efCommonEffectVarsDamageSpawnSpark
+typedef struct EFCommonEffectVarsDamageSpawnSpark
 {
     s32 lifetime;
     Vec3f pos;
     s32 lr;
 
-} efCommonEffectVarsDamageSpawnSpark;
+} EFCommonEffectVarsDamageSpawnSpark;
 
-typedef struct efCommonEffectVarsDamageFlyMDust
+typedef struct EFCommonEffectVarsDamageFlyMDust
 {
     Vec3f vel, add;
     s32 add_timer;
 
-} efCommonEffectVarsDamageFlyMDust;
+} EFCommonEffectVarsDamageFlyMDust;
 
-typedef struct efCommonEffectVarsDamageSpawnMDust
+typedef struct EFCommonEffectVarsDamageSpawnMDust
 {
     s32 lifetime;
     Vec3f pos;
     s32 lr;
 
-} efCommonEffectVarsDamageSpawnMDust;
+} EFCommonEffectVarsDamageSpawnMDust;
 
-typedef struct efCommonEffectVarsQuake
+typedef struct EFCommonEffectVarsQuake
 {
     u8 priority;
 
-} efCommonEffectVarsQuake;
+} EFCommonEffectVarsQuake;
 
-typedef struct efCommonEffectVarsReflector
+typedef struct EFCommonEffectVarsReflector
 {
     s32 index, status;
 
-} efCommonEffectVarsReflector;
+} EFCommonEffectVarsReflector;
 
-typedef struct efCommonEffectVarsShield
+typedef struct EFCommonEffectVarsShield
 {
     s32 player;
     sb32 is_damage_shield;
 
-} efCommonEffectVarsShield;
+} EFCommonEffectVarsShield;
 
-typedef struct efCommonEffectVarsUnknown1
+typedef struct EFCommonEffectVarsUnknown1
 {
     s32 efvars_unk1_0x0;
 
-} efCommonEffectVarsUnknown1;
+} EFCommonEffectVarsUnknown1;
 
-typedef struct efCommonEffectVarsThunderTrail
+typedef struct EFCommonEffectVarsThunderTrail
 {
     s32 lifetime;
 
-} efCommonEffectVarsThunderTrail;
+} EFCommonEffectVarsThunderTrail;
 
-typedef struct efCommonEffectVarsVulcanJab
+typedef struct EFCommonEffectVarsVulcanJab
 {
     s32 lifetime;
     Vec3f vel, add;
 
-} efCommonEffectVarsVulcanJab;
+} EFCommonEffectVarsVulcanJab;
 
-typedef struct efCommonEffectVarsPKThunder
+typedef struct EFCommonEffectVarsPKThunder
 {
     s32 status;
     GObj *owner_gobj;
 
-} efCommonEffectVarsPKThunder;
+} EFCommonEffectVarsPKThunder;
 
-typedef struct efCommonEffectVarsYoshiEggLay
+typedef struct EFCommonEffectVarsYoshiEggLay
 {
     s32 index, force_index;
 
-} efCommonEffectVarsYoshiEggLay;
+} EFCommonEffectVarsYoshiEggLay;
 
-typedef struct efCommonEffectVarsCaptureKirbyStar
+typedef struct EFCommonEffectVarsCaptureKirbyStar
 {
     s32 effect_timer;
 
-} efCommonEffectVarsCaptureKirbyStar;
+} EFCommonEffectVarsCaptureKirbyStar;
 
-typedef struct efCommonEffectVarsLoseKirbyStar
+typedef struct EFCommonEffectVarsLoseKirbyStar
 {
     Vec2f vel;
     s16 lifetime;
     s16 lr;
 
-} efCommonEffectVarsLoseKirbyStar;
+} EFCommonEffectVarsLoseKirbyStar;
 
-typedef struct efGroundEffectVarsCommon
+typedef struct EFGroundEffectVarsCommon
 {
     Vec3f pos;
     s32 effect_status;
@@ -276,6 +266,6 @@ typedef struct efGroundEffectVarsCommon
     void *matanim_joint;
     u8 lr_bool;
 
-} efGroundEffectVarsCommon;
+} EFGroundEffectVarsCommon;
 
 #endif

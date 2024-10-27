@@ -9,8 +9,7 @@
 #define MPCOLL_FLAG_RCLIFF (1 << 13)	// 0x2000
 #define MPCOLL_FLAG_CEILHEAVY (1 << 14) // 0x4000 - hard ceiling, can't pass through
 
-#define MPCOLL_FLAG_MAIN_MASK                                                                                          \
-	(MPCOLL_FLAG_GROUND | MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL) // Mask every main collision flag
+#define MPCOLL_FLAG_MAIN_MASK (MPCOLL_FLAG_GROUND | MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL) // Mask every main collision flag
 #define MPCOLL_FLAG_CLIFF_MASK (MPCOLL_FLAG_LCLIFF | MPCOLL_FLAG_RCLIFF)			// Mask all ledge flags
 
 #define MPCOLL_VERTEX_ATTR_BITS 8
@@ -21,12 +20,8 @@
 #define MPCOLL_VERTEX_CLL_BITS (0xFF << (MPCOLL_VERTEX_ATTR_BITS * 1))
 #define MPCOLL_VERTEX_MAT_BITS (0xFF << (MPCOLL_VERTEX_ATTR_BITS * 0))
 
-#define MPCOLL_VERTEX_CLL_MASK                                                                                         \
-	(~MPCOLL_VERTEX_MAT_BITS) // This is what the game covers when checking
-							  // flags & 0xFFFF00FF
-#define MPCOLL_VERTEX_MAT_MASK                                                                                         \
-	(~MPCOLL_VERTEX_CLL_BITS) // This is what the game looks for when checking
-							  // flags & 0xFFFF00FF
+#define MPCOLL_VERTEX_CLL_MASK (~MPCOLL_VERTEX_MAT_BITS) // This is what the game covers when checking flags & 0xFFFF00FF
+#define MPCOLL_VERTEX_MAT_MASK (~MPCOLL_VERTEX_CLL_BITS) // This is what the game looks for when checking 0xFFFF00FF
 
 #define MPCOLL_VERTEX_ALL_BITS (MPCOLL_VERTEX_CLL_BITS | MPCOLL_VERTEX_MAT_BITS)
 
@@ -38,15 +33,15 @@
 #define MPCOLL_PROC_TYPE_PASS (1 << 2)
 #define MPCOLL_PROC_TYPE_CEILHEAVY (1 << 3)
 
-typedef enum mpKinetics
+typedef enum MPKinetics
 {
 	nMPKineticsGround,
 	nMPKineticsAir,
     nMPKineticsEnumMax
 
-} mpKinetics;
+} MPKinetics;
 
-typedef enum mpMaterial
+typedef enum MPMaterial
 {
 	nMPMaterial0,
 	nMPMaterial1,
@@ -67,9 +62,9 @@ typedef enum mpMaterial
 	nMPMaterialFireWeakVt3,
 	nMPMaterialCustom
 
-} mpMaterial;
+} MPMaterial;
 
-typedef enum mpLineType
+typedef enum MPLineType
 {
 	nMPLineKindGround,
 	nMPLineKindCeil,
@@ -77,9 +72,9 @@ typedef enum mpLineType
 	nMPLineKindLWall,
 	nMPLineKindEnumMax
 
-} mpLineType;
+} MPLineType;
 
-typedef enum mpMapObjKind
+typedef enum MPMapObjKind
 {
     nMPMapObjKindBattlePlayerSpawnStart,
     nMPMapObjKindBattlePlayer1Spawn = nMPMapObjKindBattlePlayerSpawnStart,                      // 0x0
@@ -143,9 +138,9 @@ typedef enum mpMapObjKind
     nMPMapObjKind1PGameChallengerUnused2Spawn,                                                  // 0x2F
     nMPMapObjKind1PGameChallengerEnemySpawnEnd = nMPMapObjKind1PGameChallengerUnused2Spawn      // 0x2F
     
-} mpMapObjKind;
+} MPMapObjKind;
 
-typedef enum mpYakumonoStatus // State of collision line?
+typedef enum MPYakumonoStatus // State of collision line?
 {
 	nMPYakumonoStatusNone,
 	nMPYakumonoStatusOn,
@@ -153,28 +148,28 @@ typedef enum mpYakumonoStatus // State of collision line?
 	nMPYakumonoStatusOff,
     nMPYakumonoStatusUnk4
 
-} mpYakumonoStatus;
+} MPYakumonoStatus;
 
-typedef struct mpCollData mpCollData;
-typedef struct mpVertexInfo mpVertexInfo;
-typedef struct mpVertexInfoContainer mpVertexInfoContainer;
-typedef struct mpVertexLinks mpVertexLinks;
-typedef struct mpVertexLinksContainer mpVertexLinksContainer;
-typedef struct mpVertexArray mpVertexArray;
-typedef struct mpVertexData mpVertexData;
-typedef struct mpVertexPosContainer mpVertexPosContainer;
-typedef struct mpLineData mpLineData;
-typedef struct mpLineInfo mpLineInfo;
-typedef struct mpLineGroup mpLineGroup;
-typedef struct mpDirection mpDirection;
-typedef struct mpEdgeBounds mpEdgeBounds;
-typedef struct mpGeometryInfo mpGeometryInfo;
-typedef struct mpYakumonoDObj mpYakumonoDObj;
-typedef struct mpMapObjData mpMapObjData;
-typedef struct mpMapObjContainer mpMapObjContainer;
-typedef struct mpObjectColl mpObjectColl;
-typedef struct mpItemWeights mpItemWeights;
-typedef struct mpGroundDesc mpGroundDesc;
-typedef struct mpGroundData mpGroundData;
+typedef struct MPCollData MPCollData;
+typedef struct MPVertexInfo MPVertexInfo;
+typedef struct MPVertexInfoContainer MPVertexInfoContainer;
+typedef struct MPVertexLinks MPVertexLinks;
+typedef struct MPVertexLinksContainer MPVertexLinksContainer;
+typedef struct MPVertexArray MPVertexArray;
+typedef struct MPVertexData MPVertexData;
+typedef struct MPVertexPosContainer MPVertexPosContainer;
+typedef struct MPLineData MPLineData;
+typedef struct MPLineInfo MPLineInfo;
+typedef struct MPLineGroup MPLineGroup;
+typedef struct MPDirection MPDirection;
+typedef struct MPEdgeBounds MPEdgeBounds;
+typedef struct MPGeometryData MPGeometryData;
+typedef struct MPYakumonoDObj MPYakumonoDObj;
+typedef struct MPMapObjData MPMapObjData;
+typedef struct MPMapObjContainer MPMapObjContainer;
+typedef struct MPObjectColl MPObjectColl;
+typedef struct MPItemWeights MPItemWeights;
+typedef struct MPGroundDesc MPGroundDesc;
+typedef struct MPGroundData MPGroundData;
 
 #endif

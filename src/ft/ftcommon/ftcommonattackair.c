@@ -10,7 +10,7 @@
 // 0x801508E0
 void ftCommonAttackAirLwProcHit(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindNLink))
     {
@@ -18,7 +18,7 @@ void ftCommonAttackAirLwProcHit(GObj *fighter_gobj)
 
         fp->is_fast_fall = FALSE;
 
-        fp->phys_info.vel_air.y = FTCOMMON_ATTACKAIRLW_LINK_REHIT_BOUNCE_VEL_Y;
+        fp->physics.vel_air.y = FTCOMMON_ATTACKAIRLW_LINK_REHIT_BOUNCE_VEL_Y;
 
         if (fighter_gobj->anim_frame > FTCOMMON_ATTACKAIRLW_LINK_REHIT_FRAME_BEGIN)
         {
@@ -31,7 +31,7 @@ void ftCommonAttackAirLwProcHit(GObj *fighter_gobj)
 // 0x80150980
 void ftCommonAttackAirLwProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindNLink))
     {
@@ -52,7 +52,7 @@ void ftCommonAttackAirLwProcUpdate(GObj *fighter_gobj)
 // 0x80150A08
 void ftCommonAttackAirProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (mpCommonCheckFighterLanding(fighter_gobj) != FALSE)
     {
@@ -60,13 +60,13 @@ void ftCommonAttackAirProcMap(GObj *fighter_gobj)
         {
             s32 landing_motion_id = nFTCommonMotionLandingAirStart - nFTCommonMotionAttackAirStart;
 
-            if (fp->ft_data->mainmotion->script_info[fp->status_info.motion_id + landing_motion_id].anim_file_id != 0)
+            if (fp->ft_data->mainmotion->script_info[fp->motion_id + landing_motion_id].anim_file_id != 0)
             {
                 ftCommonLandingAirSetStatus(fighter_gobj);
             }
             else ftCommonLandingAirNullSetStatus(fighter_gobj, F_PCT_TO_DEC(fp->command_vars.flags.flag1));
         }
-        else if (fp->phys_info.vel_air.y > FTCOMMON_ATTACKAIR_SKIPLANDING_VEL_Y_MAX)
+        else if (fp->physics.vel_air.y > FTCOMMON_ATTACKAIR_SKIPLANDING_VEL_Y_MAX)
         {
             ftCommonWaitSetStatus(fighter_gobj);
         }
@@ -77,8 +77,8 @@ void ftCommonAttackAirProcMap(GObj *fighter_gobj)
 // 0x80150B00 - Also checks LightThrowAir and ItemShoot
 sb32 ftCommonAttackAirCheckInterruptCommon(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
     s32 status_id;
     ub32 is_have_attack_flag;
     f32 angle;

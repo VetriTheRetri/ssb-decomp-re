@@ -17,7 +17,7 @@
 // 0x80155B40
 void ftKirbyCopyNessSpecialNProcAccessory(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
     Vec3f vel;
     f32 angle;
@@ -69,7 +69,7 @@ void ftKirbyCopyNessSpecialAirNProcMap(GObj *fighter_gobj)
 // 0x80155CF4
 void ftKirbyCopyNessSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyNessSpecialN, fighter_gobj->anim_frame, 1.0F, FTKIRBY_COPYNESS_SPECIALN_STATUS_FLAGS);
@@ -80,7 +80,7 @@ void ftKirbyCopyNessSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 // 0x80155D48
 void ftKirbyCopyNessSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyNessSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTKIRBY_COPYNESS_SPECIALN_STATUS_FLAGS);
@@ -90,9 +90,9 @@ void ftKirbyCopyNessSpecialNSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x80155DA4
-void ftKirbyCopyNessSpecialNInitStatusVars(GObj *fighter_gobj)
+void ftKirbyCopyNessSpecialNInITStatusVars(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->command_vars.flags.flag0 = 0;
 
@@ -104,7 +104,7 @@ void ftKirbyCopyNessSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyNessSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftKirbyCopyNessSpecialNInitStatusVars(fighter_gobj);
+    ftKirbyCopyNessSpecialNInITStatusVars(fighter_gobj);
 }
 
 // 0x80155DFC
@@ -112,5 +112,5 @@ void ftKirbyCopyNessSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyNessSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftKirbyCopyNessSpecialNInitStatusVars(fighter_gobj);
+    ftKirbyCopyNessSpecialNInITStatusVars(fighter_gobj);
 }

@@ -16,7 +16,7 @@ lWPKirbyCutterWeaponAttributes;             // 0x00000008
 //                               //
 // // // // // // // // // // // //
 
-wpCreateDesc dWPKirbyCutterWeaponDesc =
+WPCreateDesc dWPKirbyCutterWeaponDesc =
 {
     0x03,                                   // Render flags?
     nWPKindCutter,                         // Weapon Kind
@@ -49,7 +49,7 @@ wpCreateDesc dWPKirbyCutterWeaponDesc =
 // 0x8016BC50
 sb32 wpKirbyCutterProcUpdate(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
@@ -67,7 +67,7 @@ sb32 wpKirbyCutterProcUpdate(GObj *weapon_gobj)
 // 0x8016BCC8
 sb32 wpKirbyCutterProcMap(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
     if (wp->ga == nMPKineticsAir)
     {
@@ -80,13 +80,13 @@ sb32 wpKirbyCutterProcMap(GObj *weapon_gobj)
     {
         wpMapSetAir(wp);
 
-        wp->phys_info.vel_air.x = __cosf(DObjGetStruct(weapon_gobj)->rotate.vec.f.z) * wp->phys_info.vel_ground;
-        wp->phys_info.vel_air.y = __sinf(DObjGetStruct(weapon_gobj)->rotate.vec.f.z) * wp->phys_info.vel_ground;
+        wp->physics.vel_air.x = __cosf(DObjGetStruct(weapon_gobj)->rotate.vec.f.z) * wp->physics.vel_ground;
+        wp->physics.vel_air.y = __sinf(DObjGetStruct(weapon_gobj)->rotate.vec.f.z) * wp->physics.vel_ground;
 
         if (DObjGetStruct(weapon_gobj)->rotate.vec.f.y < 0.0F)
         {
-            wp->phys_info.vel_air.x = -wp->phys_info.vel_air.x;
-            wp->phys_info.vel_air.y = -wp->phys_info.vel_air.y;
+            wp->physics.vel_air.x = -wp->physics.vel_air.x;
+            wp->physics.vel_air.y = -wp->physics.vel_air.y;
         }
     }
 
@@ -126,8 +126,8 @@ sb32 wpKirbyCutterProcSetOff(GObj *weapon_gobj)
 // 0x8016BE4C
 sb32 wpKirbyCutterProcReflector(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    ftStruct *fp = ftGetStruct(wp->owner_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    FTStruct *fp = ftGetStruct(wp->owner_gobj);
 
     wp->lifetime = WPFINALCUTTER_LIFETIME;
 
@@ -140,9 +140,9 @@ sb32 wpKirbyCutterProcReflector(GObj *weapon_gobj)
 // 0x8016BE8C
 GObj* wpKirbyCutterMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPKirbyCutterWeaponDesc, pos, (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_FIGHTER));
-    wpStruct *wp;
+    WPStruct *wp;
 
     if (weapon_gobj == NULL)
     {
@@ -152,7 +152,7 @@ GObj* wpKirbyCutterMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     wp->lifetime = WPFINALCUTTER_LIFETIME;
 
-    wp->phys_info.vel_air.x = wp->lr * WPFINALCUTTER_VEL;
+    wp->physics.vel_air.x = wp->lr * WPFINALCUTTER_VEL;
 
     if (mpCollisionGetUDCommonUp(fp->coll_data.ground_line_id, pos, NULL, NULL, &wp->coll_data.ground_angle) != FALSE)
     {

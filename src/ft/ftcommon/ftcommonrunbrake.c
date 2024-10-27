@@ -9,7 +9,7 @@
 // 0x8013EFB0
 void ftCommonRunBrakeProcInterrupt(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((ftCommonKneeBendCheckInterruptRun(fighter_gobj) == FALSE) && (fp->command_vars.flags.flag1 != 0) && (fighter_gobj->anim_frame <= 4.0F))
     {
@@ -20,8 +20,8 @@ void ftCommonRunBrakeProcInterrupt(GObj *fighter_gobj)
 // 0x8013F014
 void ftCommonRunBrakeProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     ftPhysicsSetGroundVelFriction(fp, attributes->traction * 1.25F);
     ftPhysicsSetGroundVelTransferAir(fighter_gobj);
@@ -30,7 +30,7 @@ void ftCommonRunBrakeProcPhysics(GObj *fighter_gobj)
 // 0x8013F05C
 void ftCommonRunBrakeSetStatus(GObj *fighter_gobj, u32 flag)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusRunBrake, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
@@ -40,7 +40,7 @@ void ftCommonRunBrakeSetStatus(GObj *fighter_gobj, u32 flag)
 // 0x8013F0A0
 sb32 ftCommonRunBrakeCheckInterruptRun(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((fp->input.pl.stick_range.x * fp->lr) < FTCOMMON_RUN_STICK_RANGE_MIN)
     {
@@ -54,15 +54,15 @@ sb32 ftCommonRunBrakeCheckInterruptRun(GObj *fighter_gobj)
 // 0x8013F0EC
 sb32 ftCommonRunBrakeCheckInterruptTurnRun(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (ABS(fp->input.pl.stick_range.x) < FTCOMMON_RUN_STICK_RANGE_MIN)
     {
         ftCommonRunBrakeSetStatus(fighter_gobj, 0);
 
-        if (fp->phys_info.vel_ground.x > fp->attributes->run_speed)
+        if (fp->physics.vel_ground.x > fp->attributes->run_speed)
         {
-            fp->phys_info.vel_ground.x = fp->attributes->run_speed;
+            fp->physics.vel_ground.x = fp->attributes->run_speed;
         }
         return TRUE;
     }

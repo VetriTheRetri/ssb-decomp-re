@@ -21,7 +21,7 @@ extern intptr_t lITKamexDisplayList;        // 0x0000ED60
 // // // // // // // // // // // //
 
 // 0x8018AEE0
-itCreateDesc dITKamexItemDesc = 
+ITCreateDesc dITKamexItemDesc = 
 {
     nITKindKamex,                           // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -46,7 +46,7 @@ itCreateDesc dITKamexItemDesc =
 };
 
 // 0x8018AF14
-itStatusDesc dITKamexStatusDescs[/* */] =
+ITStatusDesc dITKamexStatusDescs[/* */] =
 {
     // Status 0 (Air Fall)
     {
@@ -86,7 +86,7 @@ itStatusDesc dITKamexStatusDescs[/* */] =
 };
 
 // 0x8018AF74
-wpCreateDesc dITKamexWeaponHydroWeaponDesc =
+WPCreateDesc dITKamexWeaponHydroWeaponDesc =
 {
     0x01,                                   // Render flags?
     nWPKindKamexHydro,                      // Weapon Kind
@@ -132,7 +132,7 @@ enum itKamexStatus
 // 0x80180630
 void itKamexAttackUpdateHydro(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     if (ip->item_vars.kamex.hydro_spawn_wait <= 0)
@@ -154,15 +154,15 @@ void itKamexAttackUpdateHydro(GObj *item_gobj)
 
         pos = dobj->translate.vec.f;
 
-        pos.y += ip->attributes->objcoll_bottom;
+        pos.y += ip->attributes->object_coll_bottom;
 
         if (ip->it_kind == nITKindKamex)
         {
-            pos.x += (ip->attributes->objcoll_width + ITKAMEX_DUST_SPAWN_OFF_X) * -ip->lr;
+            pos.x += (ip->attributes->object_coll_width + ITKAMEX_DUST_SPAWN_OFF_X) * -ip->lr;
         }
         ip->item_vars.kamex.is_apply_push = TRUE;
 
-        ip->phys_info.vel_air.x = -ip->lr * ITKAMEX_CONSTVEL_X;
+        ip->physics.vel_air.x = -ip->lr * ITKAMEX_CONSTVEL_X;
 
         efManagerDustHeavyMakeEffect(&pos, -ip->lr);
     }
@@ -171,7 +171,7 @@ void itKamexAttackUpdateHydro(GObj *item_gobj)
 // 0x801807DC
 sb32 itKamexFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITKAMEX_GRAVITY, ITKAMEX_TVEL);
 
@@ -181,7 +181,7 @@ sb32 itKamexFallProcUpdate(GObj *item_gobj)
 // 0x80180808
 sb32 itKamexFallProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMapTestAllCollisionFlag(item_gobj, (MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL));
 
@@ -196,11 +196,11 @@ sb32 itKamexFallProcMap(GObj *item_gobj)
 // 0x80180860
 void itKamexFallInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMapSetAir(ip);
 
-    ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0.0F;
+    ip->physics.vel_air.x = ip->physics.vel_air.y = 0.0F;
 
     ip->is_allow_pickup = FALSE;
 
@@ -217,7 +217,7 @@ void itKamexFallSetStatus(GObj *item_gobj)
 // 0x801808D8
 sb32 itKamexAppearProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITKAMEX_GRAVITY, ITKAMEX_TVEL);
 
@@ -227,13 +227,13 @@ sb32 itKamexAppearProcUpdate(GObj *item_gobj)
 // 0x80180904
 sb32 itKamexAppearProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMapTestAllCollisionFlag(item_gobj, (MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL));
 
     if (ip->coll_data.coll_mask_current & MPCOLL_FLAG_GROUND)
     {
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
 
         itKamexAttackInitItemVars(item_gobj, FALSE);
         itKamexAttackSetStatus(item_gobj);
@@ -244,7 +244,7 @@ sb32 itKamexAppearProcMap(GObj *item_gobj)
 // 0x80180964
 void itKamexAppearSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi = ITKAMEX_LIFETIME;
 
@@ -258,7 +258,7 @@ void itKamexAppearSetStatus(GObj *item_gobj)
 // 0x801809BC
 sb32 itKamexAttackProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {
@@ -268,7 +268,7 @@ sb32 itKamexAttackProcUpdate(GObj *item_gobj)
 
     if (ip->item_vars.kamex.is_apply_push != FALSE)
     {
-        ip->phys_info.vel_air.x += ip->item_vars.kamex.hydro_push_vel_x;
+        ip->physics.vel_air.x += ip->item_vars.kamex.hydro_push_vel_x;
     }
     ip->item_vars.kamex.hydro_spawn_wait--;
 
@@ -288,7 +288,7 @@ sb32 itKamexAttackProcMap(GObj *item_gobj)
 // 0x80180A58
 void itKamexAttackInitItemVars(GObj *item_gobj, sb32 is_ignore_setup)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     if (is_ignore_setup == FALSE)
@@ -301,13 +301,13 @@ void itKamexAttackInitItemVars(GObj *item_gobj, sb32 is_ignore_setup)
 
             dobj->display_list = dl;
 
-            ip->coll_data.objcoll.top = ITKAMEX_COLL_SIZE;
-            ip->coll_data.objcoll.center = 0.0F;
-            ip->coll_data.objcoll.bottom = -ITKAMEX_COLL_SIZE;
-            ip->coll_data.objcoll.width = ITKAMEX_COLL_SIZE;
+            ip->coll_data.object_coll.top = ITKAMEX_COLL_SIZE;
+            ip->coll_data.object_coll.center = 0.0F;
+            ip->coll_data.object_coll.bottom = -ITKAMEX_COLL_SIZE;
+            ip->coll_data.object_coll.width = ITKAMEX_COLL_SIZE;
         }
     }
-    ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0;
+    ip->physics.vel_air.x = ip->physics.vel_air.y = 0;
 
     ip->item_vars.kamex.hydro_push_vel_x = ip->lr * ITKAMEX_PUSH_VEL_X;
     ip->item_vars.kamex.hydro_spawn_wait = 0;
@@ -323,11 +323,11 @@ void itKamexAttackSetStatus(GObj *item_gobj)
 // 0x80180B1C
 sb32 itKamexCommonProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
 
         itKamexAppearSetStatus(item_gobj);
     }
@@ -339,11 +339,11 @@ sb32 itKamexCommonProcUpdate(GObj *item_gobj)
 // 0x80180B6C
 sb32 itKamexCommonProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_GROUND) != FALSE)
     {
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
     }
     return FALSE;
 }
@@ -355,7 +355,7 @@ void itKamexCommonFindTargetsSetLR(GObj *item_gobj)
     s32 unused1;
     GObj *victim_gobj;
     s32 unused2[3];
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
     f32 dist_xy;
     f32 dist_x;
@@ -365,7 +365,7 @@ void itKamexCommonFindTargetsSetLR(GObj *item_gobj)
 
     while (fighter_gobj != NULL)
     {
-        ftStruct *fp = ftGetStruct(fighter_gobj);
+        FTStruct *fp = ftGetStruct(fighter_gobj);
 
         if ((fighter_gobj != ip->owner_gobj) && (fp->team != ip->team))
         {
@@ -398,8 +398,8 @@ GObj* itKamexMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
     GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITKamexItemDesc, pos, vel, flags);
     DObj *dobj;
-    itStruct *kamex_ip;
-    itStruct *mball_ip;
+    ITStruct *kamex_ip;
+    ITStruct *mball_ip;
 
     if (item_gobj != NULL)
     {
@@ -413,8 +413,8 @@ GObj* itKamexMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         kamex_ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        kamex_ip->phys_info.vel_air.x = kamex_ip->phys_info.vel_air.z = 0.0F;
-        kamex_ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
+        kamex_ip->physics.vel_air.x = kamex_ip->physics.vel_air.z = 0.0F;
+        kamex_ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
         mball_ip = itGetStruct(parent_gobj);
 
@@ -427,7 +427,7 @@ GObj* itKamexMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         {
             dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
         }
-        dobj->translate.vec.f.y -= kamex_ip->attributes->objcoll_bottom;
+        dobj->translate.vec.f.y -= kamex_ip->attributes->object_coll_bottom;
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(kamex_ip, lITKamexDataStart), 0.0F); // Linker thing
     }
@@ -437,10 +437,10 @@ GObj* itKamexMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 // 0x80180E10
 sb32 itKamexWeaponHydroProcUpdate(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
     DObj *dobj = DObjGetStruct(weapon_gobj);
 
-    wp->weapon_hit.offset[0].x = dobj->child->translate.vec.f.x * wp->lr;
+    wp->hit_coll.offset[0].x = dobj->child->translate.vec.f.x * wp->lr;
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
@@ -458,12 +458,12 @@ sb32 itKamexWeaponHydroProcHit(GObj *weapon_gobj)
 // 0x80180E6C
 sb32 itKamexWeaponHydroProcReflector(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    ftStruct *fp = ftGetStruct(wp->owner_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    FTStruct *fp = ftGetStruct(wp->owner_gobj);
 
     wpMainReflectorSetLR(wp, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     wp->lr = -wp->lr;
@@ -474,11 +474,11 @@ sb32 itKamexWeaponHydroProcReflector(GObj *weapon_gobj)
 // 0x80180EDC
 GObj* itKamexWeaponHydroMakeWeapon(GObj *item_gobj, Vec3f *pos)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITKamexWeaponHydroWeaponDesc, pos, WEAPON_FLAG_PARENT_ITEM);
     DObj *dobj;
     s32 unused;
-    wpStruct *wp;
+    WPStruct *wp;
     Vec3f translate;
 
     if (weapon_gobj == NULL)

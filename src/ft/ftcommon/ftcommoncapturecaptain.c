@@ -21,8 +21,8 @@ void ftCommonCaptureCaptainUpdatePositions(GObj *fighter_gobj, GObj *capture_gob
     // 0x80188A20
     Vec3f offset = { 0.0F, 0.0F, 0.0F };
 
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
-    ftStruct *capture_fp = ftGetStruct(capture_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *capture_fp = ftGetStruct(capture_gobj);
     Vec2h *offset_add = (Vec2h*) ((uintptr_t)gFTDataCaptainMainMotion + (intptr_t)&lFTCaptainSpecialHiOffset);
     s32 unused;
 
@@ -42,7 +42,7 @@ void ftCommonCaptureCaptainUpdatePositions(GObj *fighter_gobj, GObj *capture_gob
 // 0x8014D200
 void ftCommonCaptureCaptainProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f offset;
 
     if (fp->status_vars.common.capturecaptain.capture_flag & FTCOMMON_CAPTURECAPTAIN_MASK_THROW)
@@ -65,8 +65,8 @@ void ftCommonCaptureCaptainProcPhysics(GObj *fighter_gobj)
 // 0x8014D2A0
 void ftCommonCaptureCaptainProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
-    ftStruct *capture_fp;
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *capture_fp;
 
     ftParamStopVoiceRunProcDamage(fighter_gobj);
 
@@ -107,7 +107,7 @@ void ftCommonCaptureCaptainProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
 // 0x8014D3BC
 void ftCommonCaptureCaptainRelease(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonThrownReleaseThrownUpdateStats(fighter_gobj, fp->lr, 0, 0);
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_NONE);

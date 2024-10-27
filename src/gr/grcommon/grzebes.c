@@ -110,7 +110,7 @@ GObj* grZebesMakeAcid(void)
     gGRCommonStruct.zebes.acid_level_current = dGRZebesAcidAttributes[ARRAY_COUNT(dGRZebesAcidAttributes) - 1].acid_level;
     gGRCommonStruct.zebes.acid_attr_id = 0;
 
-    gGRCommonStruct.zebes.gr_hit = (void*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRZebesAcidHit);
+    gGRCommonStruct.zebes.gr_hitcoll = (void*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRZebesAcidHit);
 
     grZebesAcidSetRandomWait();
 
@@ -227,9 +227,9 @@ GObj* grZebesMakeGround(void)
 }
 
 // 0x801084AC
-sb32 grZebesAcidCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, grHitbox **gr_hit, s32 *kind)
+sb32 grZebesAcidCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, GRHitCollision **gr_hitcoll, s32 *kind)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->acid_wait == 0)
     {
@@ -237,7 +237,7 @@ sb32 grZebesAcidCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, grHitb
 
         if (DObjGetStruct(fighter_gobj)->translate.vec.f.y < (dobj->translate.vec.f.y + dobj->child->translate.vec.f.y))
         {
-            *gr_hit = gGRCommonStruct.zebes.gr_hit;
+            *gr_hitcoll = gGRCommonStruct.zebes.gr_hitcoll;
             *kind = nGMHitEnvironmentAcid;
 
             return TRUE;

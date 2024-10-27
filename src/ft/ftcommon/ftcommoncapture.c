@@ -8,10 +8,10 @@
 // // // // // // // // // // // //
 
 // 0x80188A30
-ftThrowReleaseDesc dFTCommonCaptureKnockbackCatch = { 361, 100, 30, 0 };  // Knockback suffered by throwing player
+FTThrowReleaseDesc dFTCommonCaptureKnockbackCatch = { 361, 100, 30, 0 };  // Knockback suffered by throwing player
 
 // 0x80188A40
-ftThrowReleaseDesc dFTCommonCaptureKnockbackCapture = { 361, 80, 0, 20 };  // Knockback suffered by caught player
+FTThrowReleaseDesc dFTCommonCaptureKnockbackCapture = { 361, 80, 0, 20 };  // Knockback suffered by caught player
 
 // // // // // // // // // // // //
 //                               //
@@ -20,11 +20,11 @@ ftThrowReleaseDesc dFTCommonCaptureKnockbackCapture = { 361, 80, 0, 20 };  // Kn
 // // // // // // // // // // // //
 
 // 0x8014E1D0
-void ftCommonCaptureApplyCatchKnockback(GObj *fighter_gobj, ftThrowReleaseDesc *throw_release) 
+void ftCommonCaptureApplyCatchKnockback(GObj *fighter_gobj, FTThrowReleaseDesc *throw_release) 
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *catch_gobj = this_fp->catch_gobj;
-    ftStruct *catch_fp = ftGetStruct(catch_gobj);
+    FTStruct *catch_fp = ftGetStruct(catch_gobj);
     f32 knockback = ftParamGetCommonKnockback(this_fp->percent_damage, 0, 0, throw_release->knockback_weight, throw_release->knockback_scale, throw_release->knockback_base, this_fp->attributes->weight, catch_fp->handicap, this_fp->handicap);
     
     ftCommonDamageInitDamageVars(fighter_gobj, -1, 0, knockback, throw_release->angle, this_fp->lr, 1, 0, 0, FALSE, FALSE, FALSE);
@@ -32,11 +32,11 @@ void ftCommonCaptureApplyCatchKnockback(GObj *fighter_gobj, ftThrowReleaseDesc *
 }
 
 // 0x8014E2A8
-void ftCommonCaptureApplyCaptureKnockback(GObj *fighter_gobj, ftThrowReleaseDesc *throw_release)
+void ftCommonCaptureApplyCaptureKnockback(GObj *fighter_gobj, FTThrowReleaseDesc *throw_release)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *capture_gobj = this_fp->capture_gobj;
-    ftStruct *capture_fp = ftGetStruct(capture_gobj);
+    FTStruct *capture_fp = ftGetStruct(capture_gobj);
     f32 knockback;
     s32 lr;
 
@@ -48,7 +48,7 @@ void ftCommonCaptureApplyCaptureKnockback(GObj *fighter_gobj, ftThrowReleaseDesc
 
         DObjGetStruct(fighter_gobj)->translate.vec.f.z = 0.0F;
 
-        this_fp->phys_info.vel_air.z = DObjGetStruct(fighter_gobj)->translate.vec.f.z;
+        this_fp->physics.vel_air.z = DObjGetStruct(fighter_gobj)->translate.vec.f.z;
     }
     knockback = ftParamGetCommonKnockback(this_fp->percent_damage, 0, 0, throw_release->knockback_weight, throw_release->knockback_scale, throw_release->knockback_base, this_fp->attributes->weight, capture_fp->handicap, this_fp->handicap);
 
@@ -63,14 +63,14 @@ void ftCommonCaptureApplyCaptureKnockback(GObj *fighter_gobj, ftThrowReleaseDesc
 }
 
 // 0x8014E3EC
-void ftCommonCaptureTrappedInitBreakoutVars(ftStruct *fp, s32 breakout_wait)
+void ftCommonCaptureTrappedInitBreakoutVars(FTStruct *fp, s32 breakout_wait)
 {
     fp->breakout_wait = breakout_wait;
     fp->breakout_lr = fp->breakout_ud = 0;
 }
 
 // 0x8014E400
-sb32 ftCommonCaptureTrappedUpdateBreakoutVars(ftStruct *fp)
+sb32 ftCommonCaptureTrappedUpdateBreakoutVars(FTStruct *fp)
 {
     sb32 is_mash = FALSE;
     s32 breakout_lr_bak, breakout_ud_bak;
@@ -111,9 +111,9 @@ sb32 ftCommonCaptureTrappedUpdateBreakoutVars(ftStruct *fp)
 // 0x8014E4D4
 void ftCommonCaptureShoulderedProcInterrupt(GObj *fighter_gobj)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *capture_gobj = this_fp->capture_gobj;
-    ftStruct *capture_fp = ftGetStruct(capture_gobj);
+    FTStruct *capture_fp = ftGetStruct(capture_gobj);
 
     ftCommonCaptureTrappedUpdateBreakoutVars(this_fp);
 
@@ -130,9 +130,9 @@ void ftCommonCaptureShoulderedProcInterrupt(GObj *fighter_gobj)
 // 0x8014E558
 void ftCommonCaptureShoulderedSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *capture_gobj = this_fp->capture_gobj;
-    ftStruct *capture_fp = ftGetStruct(capture_gobj);
+    FTStruct *capture_fp = ftGetStruct(capture_gobj);
     s32 damage;
 
     ftCommonThrownSetStatusImmediate(fighter_gobj, nFTCommonStatusShouldered);

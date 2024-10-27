@@ -9,7 +9,7 @@
 // 0x80144530
 void ftCommonDownStandProcInterrupt(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((fp->command_vars.flags.flag1 != 0) && (ftCommonKneeBendCheckInterruptCommon(fighter_gobj) == FALSE) && (ftCommonPassCheckInterruptCommon(fighter_gobj) == FALSE))
     {
@@ -20,10 +20,10 @@ void ftCommonDownStandProcInterrupt(GObj *fighter_gobj)
 // 0x80144580
 void ftCommonDownStandSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
 
-    if ((fp->status_info.status_id == nFTCommonStatusDownBounceD) || (fp->status_info.status_id == nFTCommonStatusDownWaitD))
+    if ((fp->status_id == nFTCommonStatusDownBounceD) || (fp->status_id == nFTCommonStatusDownWaitD))
     {
         status_id = nFTCommonStatusDownStandD;
     }
@@ -37,7 +37,7 @@ void ftCommonDownStandSetStatus(GObj *fighter_gobj)
 // 0x801445D8
 sb32 ftCommonDownStandCheckInterruptCommon(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (((fp->input.pl.stick_range.y >= FTCOMMON_DOWNWAIT_STAND_STICK_RANGE_MIN) && (ftParamGetStickAngleRads(fp) >= F_CST_DTOR32(50.0F)) || (fp->input.pl.button_tap & fp->input.button_mask_z)))
     {

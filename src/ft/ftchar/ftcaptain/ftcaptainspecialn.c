@@ -3,7 +3,7 @@
 // 0x8015F7F0
 void ftCaptainSpecialNUpdateEffect(GObj *fighter_gobj) // Falcon Punch
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (!(fp->is_attach_effect))
     {
@@ -60,7 +60,7 @@ void ftCaptainSpecialNProcPhysics(GObj *fighter_gobj)
 // 0x8015F914
 void ftCaptainSpecialAirNProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     f32 unused;
     f32 boost;
 
@@ -71,8 +71,8 @@ void ftCaptainSpecialAirNProcPhysics(GObj *fighter_gobj)
 
         boost = ftCaptainSpecialNGetAngle(fp->input.pl.stick_range.y);
 
-        fp->phys_info.vel_air.y = (__sinf(boost) * FTCAPTAIN_FALCONPUNCH_VEL_BASE);
-        fp->phys_info.vel_air.x = (__cosf(boost) * fp->lr * FTCAPTAIN_FALCONPUNCH_VEL_BASE);
+        fp->physics.vel_air.y = (__sinf(boost) * FTCAPTAIN_FALCONPUNCH_VEL_BASE);
+        fp->physics.vel_air.x = (__cosf(boost) * fp->lr * FTCAPTAIN_FALCONPUNCH_VEL_BASE);
     }
 
     ftCaptainSpecialNUpdateEffect(fighter_gobj);
@@ -84,8 +84,8 @@ void ftCaptainSpecialAirNProcPhysics(GObj *fighter_gobj)
         break;
 
     case 1:
-        fp->phys_info.vel_air.y *= FTCAPTAIN_FALCONPUNCH_VEL_MUL;
-        fp->phys_info.vel_air.x *= FTCAPTAIN_FALCONPUNCH_VEL_MUL;
+        fp->physics.vel_air.y *= FTCAPTAIN_FALCONPUNCH_VEL_MUL;
+        fp->physics.vel_air.x *= FTCAPTAIN_FALCONPUNCH_VEL_MUL;
         break;
 
     case 2:
@@ -97,7 +97,7 @@ void ftCaptainSpecialAirNProcPhysics(GObj *fighter_gobj)
 // 0x8015FA2C
 void ftCaptainSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
@@ -109,7 +109,7 @@ void ftCaptainSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 // 0x8015FA8C
 void ftCaptainSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
@@ -132,9 +132,9 @@ void ftCaptainSpecialAirNProcMap(GObj *fighter_gobj)
 }
 
 // 0x8015FB40
-void ftCaptainSpecialNInitStatusVars(GObj *fighter_gobj)
+void ftCaptainSpecialNInITStatusVars(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->command_vars.flags.flag2 = 0;
     fp->command_vars.flags.flag1 = 0;
@@ -150,11 +150,11 @@ void func_ovl3_8015FB54() // Unused???
 // 0x8015FB5C
 void ftCaptainSpecialNSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftCaptainSpecialNInitStatusVars(fighter_gobj);
+    ftCaptainSpecialNInITStatusVars(fighter_gobj);
 
     fp->proc_lagstart = ftParamProcPauseEffect;
     fp->proc_lagend = ftParamProcResumeEffect;
@@ -163,11 +163,11 @@ void ftCaptainSpecialNSetStatus(GObj *fighter_gobj)
 // 0x8015FBC0
 void ftCaptainSpecialAirNSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftCaptainSpecialNInitStatusVars(fighter_gobj);
+    ftCaptainSpecialNInITStatusVars(fighter_gobj);
 
     fp->proc_lagstart = ftParamProcPauseEffect;
     fp->proc_lagend = ftParamProcResumeEffect;

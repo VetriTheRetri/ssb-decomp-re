@@ -456,7 +456,7 @@ struct DObj                 // Draw Object
     /* 
      * Can be:
      * Other DObj that this DObj is attached to
-     * ftParts
+     * FTParts
      * YakumonoID
      * Color for 1P Game Master Hand defeat fadeout (?)
      */

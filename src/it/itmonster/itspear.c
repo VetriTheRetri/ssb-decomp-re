@@ -25,7 +25,7 @@ extern intptr_t lITSpearMatAnimJoint;       // 0x0000E12C
 // // // // // // // // // // // //
 
 // 0x8018AE00
-itCreateDesc dITSpearItemDesc =
+ITCreateDesc dITSpearItemDesc =
 {
     nITKindSpear,                           // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -50,7 +50,7 @@ itCreateDesc dITSpearItemDesc =
 };
 
 // 0x8018AE34
-itStatusDesc dITSpearStatusDescs[/* */] =
+ITStatusDesc dITSpearStatusDescs[/* */] =
 {
     // Status 0 (Neutral Appear)
     {
@@ -78,7 +78,7 @@ itStatusDesc dITSpearStatusDescs[/* */] =
 };
 
 // 0x8018AE74
-wpCreateDesc dITSpearWeaponSwarmWeaponDesc =
+WPCreateDesc dITSpearWeaponSwarmWeaponDesc =
 {
     0x01,                                   // Render flags?
     nWPKindSpearSwarm,                      // Weapon Kind
@@ -103,7 +103,7 @@ wpCreateDesc dITSpearWeaponSwarmWeaponDesc =
 };
 
 // 0x8018AEA8
-wpCreateDesc dITPippiWeaponSwarmWeaponDesc =
+WPCreateDesc dITPippiWeaponSwarmWeaponDesc =
 {
     0x01,                                   // Render flags?
     nWPKindSpearSwarm,                      // Weapon Kind
@@ -149,7 +149,7 @@ enum itSpearStatus
 // 0x8017FDC0
 void itSpearFlyCallSwarmMember(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     if (ip->item_vars.spear.spear_spawn_wait <= 0)
@@ -185,12 +185,12 @@ sb32 itSpearAppearProcUpdate(GObj *item_gobj)
 // 0x8017FEB8
 void itSpearAppearInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     ip->it_multi = 0;
 
-    ip->phys_info.vel_air.y = 0;
+    ip->physics.vel_air.y = 0;
 
     if (ip->it_kind == nITKindSpear)
     {
@@ -219,19 +219,19 @@ void itSpearAppearSetStatus(GObj *item_gobj)
 // 0x8017FFA8
 sb32 itSpearFlyProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITSPEAR_GRAVITY, ITSPEAR_TVEL);
 
-    ip->phys_info.vel_air.x += ITSPEAR_SWARM_CALL_VEL_X * ip->lr;
+    ip->physics.vel_air.x += ITSPEAR_SWARM_CALL_VEL_X * ip->lr;
 
     if (ip->lr == nGMFacingR)
     {
         if (dobj->translate.vec.f.x >= (gMPCollisionGroundData->map_bound_right - ITSPEAR_SWARM_CALL_OFF_X))
         {
-            ip->phys_info.vel_air.x = 0.0F;
-            ip->phys_info.vel_air.y = 0.0F;
+            ip->physics.vel_air.x = 0.0F;
+            ip->physics.vel_air.y = 0.0F;
 
             if (ip->item_vars.spear.spear_spawn_count != 0)
             {
@@ -246,8 +246,8 @@ sb32 itSpearFlyProcUpdate(GObj *item_gobj)
     {
         if (dobj->translate.vec.f.x <= (gMPCollisionGroundData->map_bound_left + ITSPEAR_SWARM_CALL_OFF_X))
         {
-            ip->phys_info.vel_air.x = 0.0F;
-            ip->phys_info.vel_air.y = 0.0F;
+            ip->physics.vel_air.x = 0.0F;
+            ip->physics.vel_air.y = 0.0F;
 
             if (ip->item_vars.spear.spear_spawn_count != 0)
             {
@@ -264,9 +264,9 @@ sb32 itSpearFlyProcUpdate(GObj *item_gobj)
 // 0x8018010C
 void itSpearFlyInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->phys_info.vel_air.y = ITSPEAR_SWARM_CALL_VEL_Y;
+    ip->physics.vel_air.y = ITSPEAR_SWARM_CALL_VEL_Y;
 
     ip->item_vars.spear.spear_spawn_pos_y = DObjGetStruct(item_gobj)->translate.vec.f.y;
     ip->item_vars.spear.spear_spawn_wait = 0;
@@ -288,7 +288,7 @@ void itSpearFlySetStatus(GObj *item_gobj)
 // 0x80180194
 sb32 itSpearCommonProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {
@@ -302,11 +302,11 @@ sb32 itSpearCommonProcUpdate(GObj *item_gobj)
 // 0x801801D8
 sb32 itSpearCommonProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_GROUND) != FALSE)
     {
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
     }
     return FALSE;
 }
@@ -316,7 +316,7 @@ GObj* itSpearMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
     GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITSpearItemDesc, pos, vel, flags);
     DObj *dobj;
-    itStruct *ip;
+    ITStruct *ip;
 
     if (item_gobj != NULL)
     {
@@ -341,12 +341,12 @@ GObj* itSpearMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ip->item_hit.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
+        ip->hit_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
 
-        ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
-        ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
+        ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
+        ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        dobj->translate.vec.f.y -= ip->attributes->objcoll_bottom;
+        dobj->translate.vec.f.y -= ip->attributes->object_coll_bottom;
 
         gcAddDObjAnimJoint(dobj->child, itGetMonsterAnimNode(ip, lITSpearDataStart), 0.0F);
     }
@@ -356,7 +356,7 @@ GObj* itSpearMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 // 0x80180354
 sb32 itSpearWeaponSwarmProcUpdate(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
     DObj *dobj = DObjGetStruct(weapon_gobj);
 
     if ((wp->lr == nGMFacingR) && (dobj->translate.vec.f.x >= (gMPCollisionGroundData->map_bound_right - ITSPEAR_SWARM_CALL_OFF_X)))
@@ -391,11 +391,11 @@ void itPippiWeaponSwarmFuncDisplay(GObj *item_gobj)
 // 0x801804A4
 GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, ((it_kind == nITKindSpear) ? &dITSpearWeaponSwarmWeaponDesc : &dITPippiWeaponSwarmWeaponDesc), pos, WEAPON_FLAG_PARENT_ITEM);
     DObj *dobj;
     s32 unused;
-    wpStruct *wp;
+    WPStruct *wp;
 
     if (weapon_gobj == NULL)
     {
@@ -405,7 +405,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 
     wp->lr = -ip->lr;
 
-    wp->phys_info.vel_air.x = wp->lr * ITSPEAR_SWARM_FLY_VEL_X;
+    wp->physics.vel_air.x = wp->lr * ITSPEAR_SWARM_FLY_VEL_X;
 
     dobj = DObjGetStruct(weapon_gobj);
 

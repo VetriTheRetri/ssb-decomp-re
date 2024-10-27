@@ -14,7 +14,7 @@ extern intptr_t lOverlay14ArenaLo;  // 0x80133130
 extern intptr_t lOverlay14ArenaHi;  // 0x80369240
 
 extern void gcUpdateDefault(UNUSED GObj* arg0);
-extern ftCreateDesc dFTManagerDefaultFighterDesc;
+extern FTCreateDesc dFTManagerDefaultFighterDesc;
 extern sb32 gMNDebugMenuIsMenuOpen; // isMenuShown
 extern void dbMenuCreateMenu(s32, s32, s32, void*, s32);
 extern dbMenuDestroyMenu();
@@ -294,7 +294,7 @@ void dbBattleMain(GObj* arg0)
 	void **figatree_heap;
 	s32 i;
 	GObj* fighter_gobj;
-	ftStruct *fp;
+	FTStruct *fp;
 
 	if (gSysController.button_tap & START_BUTTON)
 	{
@@ -308,7 +308,7 @@ void dbBattleMain(GObj* arg0)
 	{
 		if (gTransferBattleState.players[i].ft_kind != gMNDebugBattleFighters[i].ft_kind)
 		{
-			ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+			FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 			fighter_gobj = gMNDebugBattleFighters[i].fighter_gobj;
 			fp = ftGetStruct(fighter_gobj);
 
@@ -424,16 +424,16 @@ GObj* dbBattleCreateViewport(void (*proc)(GObj*))
 void dbBattleInit()
 {
 	s32 i;
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 	GObj *main_gobj;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buffer = (lbFileNode*) &D_ovl14_80132C28;
+	rl_setup.status_buffer = (LBFileNode*) &D_ovl14_80132C28;
 	rl_setup.status_buffer_size = 0x96;
-	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl14_801330D8;
+	rl_setup.force_status_buffer = (LBFileNode*) &D_ovl14_801330D8;
 	rl_setup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rl_setup);
 
@@ -459,7 +459,7 @@ void dbBattleInit()
 
 	for (i = 0; i < ARRAY_COUNT(gTransferBattleState.players); i++)
 	{
-		ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+		FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 		spawn_info.ft_kind = gTransferBattleState.players[i].ft_kind;
 		spawn_info.costume = gTransferBattleState.players[i].costume;
 		spawn_info.pos.x = (i * 400.0f) - 600.0f;

@@ -5,269 +5,269 @@
 #include <sys/objdef.h>
 #include <ft/ftdef.h>
 
-typedef struct gmColEventDefault
+typedef struct GMColEventDefault
 {
 	u32 opcode : 6;
 	u32 value1 : 26;
 
-} gmColEventDefault;
+} GMColEventDefault;
 
-typedef struct gmColEventGoto1
+typedef struct GMColEventGoto1
 {
 	u32 opocode : 6;
 
-} gmColEventGoto1;
+} GMColEventGoto1;
 
-typedef struct gmColEventGoto2
+typedef struct GMColEventGoto2
 {
 	void* p_goto;
 
-} gmColEventGoto2;
+} GMColEventGoto2;
 
-typedef struct gmColEventGoto
+typedef struct GMColEventGoto
 {
-	gmColEventGoto1 s1;
-	gmColEventGoto2 s2;
+	GMColEventGoto1 s1;
+	GMColEventGoto2 s2;
 
-} gmColEventGoto;
+} GMColEventGoto;
 
-typedef struct gmColEventLoopBegin
+typedef struct GMColEventLoopBegin
 {
 	u32 opcode : 6;
 	u32 loop_count : 26;
 
-} gmColEventLoopBegin;
+} GMColEventLoopBegin;
 
-typedef struct gmColEventSubroutine1
+typedef struct GMColEventSubroutine1
 {
 	u32 opcode : 6;
 
-} gmColEventSubroutine1;
+} GMColEventSubroutine1;
 
-typedef struct gmColEventSubroutine2
+typedef struct GMColEventSubroutine2
 {
 	void* p_subroutine;
 
-} gmColEventSubroutine2;
+} GMColEventSubroutine2;
 
-typedef struct gmColEventSubroutine
+typedef struct GMColEventSubroutine
 {
-	gmColEventSubroutine1 s1;
-	gmColEventSubroutine2 s2;
+	GMColEventSubroutine1 s1;
+	GMColEventSubroutine2 s2;
 
-} gmColEventSubroutine;
+} GMColEventSubroutine;
 
-typedef struct gmColEventParallel1
+typedef struct GMColEventParallel1
 {
 	u32 opcode : 6;
 
-} gmColEventParallel1;
+} GMColEventParallel1;
 
-typedef struct gmColEventParallel2
+typedef struct GMColEventParallel2
 {
 	void* p_script;
 
-} gmColEventParallel2;
+} GMColEventParallel2;
 
-typedef struct gmColEventParallel
+typedef struct GMColEventParallel
 {
-	gmColEventParallel1 s1;
-	gmColEventParallel2 s2;
+	GMColEventParallel1 s1;
+	GMColEventParallel2 s2;
 
-} gmColEventParallel;
+} GMColEventParallel;
 
-typedef struct gmColEventSetRGBA1
+typedef struct GMColEventSetRGBA1
 {
 	u32 opcode : 6;
 
-} gmColEventSetRGBA1;
+} GMColEventSetRGBA1;
 
-typedef struct gmColEventSetRGBA2
+typedef struct GMColEventSetRGBA2
 {
 	u32 r : 8;
 	u32 g : 8;
 	u32 b : 8;
 	u32 a : 8;
 
-} gmColEventSetRGBA2;
+} GMColEventSetRGBA2;
 
-typedef struct gmColEventSetRGBA
+typedef struct GMColEventSetRGBA
 {
-	gmColEventSetRGBA1 s1;
-	gmColEventSetRGBA2 s2;
+	GMColEventSetRGBA1 s1;
+	GMColEventSetRGBA2 s2;
 
-} gmColEventSetRGBA;
+} GMColEventSetRGBA;
 
-typedef struct gmColEventBlendRGBA1
+typedef struct GMColEventBlendRGBA1
 {
 	u32 opcode : 6;
 	u32 blend_frames : 26;
 
-} gmColEventBlendRGBA1;
+} GMColEventBlendRGBA1;
 
-typedef struct gmColEventBlendRGBA2
+typedef struct GMColEventBlendRGBA2
 {
 	u32 r : 8;
 	u32 g : 8;
 	u32 b : 8;
 	u32 a : 8;
 
-} gmColEventBlendRGBA2;
+} GMColEventBlendRGBA2;
 
-typedef struct gmColEventBlendRGBA
+typedef struct GMColEventBlendRGBA
 {
-	gmColEventBlendRGBA1 s1;
-	gmColEventBlendRGBA2 s2;
+	GMColEventBlendRGBA1 s1;
+	GMColEventBlendRGBA2 s2;
 
-} gmColEventBlendRGBA;
+} GMColEventBlendRGBA;
 
-typedef struct gmColEventMakeEffect1
+typedef struct GMColEventMakeEffect1
 {
 	u32 opcode : 6;
 	s32 joint_id : 7;
 	u32 effect_id : 9;
 	u32 flag : 10;
 
-} gmColEventMakeEffect1;
+} GMColEventMakeEffect1;
 
-typedef struct gmColEventMakeEffect2
+typedef struct GMColEventMakeEffect2
 {
 	s32 off_x : 16;
 	s32 off_y : 16;
 
-} gmColEventMakeEffect2;
+} GMColEventMakeEffect2;
 
-typedef struct gmColEventMakeEffect3
+typedef struct GMColEventMakeEffect3
 {
 	s32 off_z : 16;
 	s32 rng_x : 16;
 
-} gmColEventMakeEffect3;
+} GMColEventMakeEffect3;
 
-typedef struct gmColEventMakeEffect4
+typedef struct GMColEventMakeEffect4
 {
 	s32 rng_y : 16;
 	s32 rng_z : 16;
 
-} gmColEventMakeEffect4;
+} GMColEventMakeEffect4;
 
-typedef struct gmColEventMakeEffect
+typedef struct GMColEventMakeEffect
 {
-	gmColEventMakeEffect1 s1;
-	gmColEventMakeEffect2 s2;
-	gmColEventMakeEffect3 s3;
-	gmColEventMakeEffect4 s4;
+	GMColEventMakeEffect1 s1;
+	GMColEventMakeEffect2 s2;
+	GMColEventMakeEffect3 s3;
+	GMColEventMakeEffect4 s4;
 
-} gmColEventMakeEffect;
+} GMColEventMakeEffect;
 
-typedef struct gmColEventSetLight
+typedef struct GMColEventSetLight
 {
 	u32 opcode : 6;
 	s32 light1 : 13;
 	s32 light2 : 13;
 
-} gmColEventSetLight;
+} GMColEventSetLight;
 
-typedef struct gmColEventPlaySFX
+typedef struct GMColEventPlaySFX
 {
 	u32 opcode : 6;
 	u32 sfx_id : 26;
 
-} gmColEventPlaySFX;
+} GMColEventPlaySFX;
 
-typedef union gmColEventAll
+typedef union GMColEventAll
 {
-	gmColEventDefault ca_default;
-	gmColEventGoto1 ca_goto1;
-	gmColEventGoto2 ca_goto2;
-	gmColEventLoopBegin ca_loopstart;
-	gmColEventSubroutine1 ca_sub1;
-	gmColEventSubroutine2 ca_sub2;
-	gmColEventParallel1 ca_par1;
-	gmColEventParallel2 ca_par2;
-	gmColEventSetRGBA1 ca_rgba1;
-	gmColEventSetRGBA2 ca_rgba2;
-	gmColEventBlendRGBA1 ca_blend1;
-	gmColEventBlendRGBA2 ca_blend2;
-	gmColEventMakeEffect1 ca_effect1;
-	gmColEventMakeEffect2 ca_effect2;
-	gmColEventMakeEffect3 ca_effect3;
-	gmColEventMakeEffect4 ca_effect4;
-	gmColEventSetLight ca_light;
-	gmColEventPlaySFX ca_sfx;
+	GMColEventDefault ca_default;
+	GMColEventGoto1 ca_goto1;
+	GMColEventGoto2 ca_goto2;
+	GMColEventLoopBegin ca_loopstart;
+	GMColEventSubroutine1 ca_sub1;
+	GMColEventSubroutine2 ca_sub2;
+	GMColEventParallel1 ca_par1;
+	GMColEventParallel2 ca_par2;
+	GMColEventSetRGBA1 ca_rgba1;
+	GMColEventSetRGBA2 ca_rgba2;
+	GMColEventBlendRGBA1 ca_blend1;
+	GMColEventBlendRGBA2 ca_blend2;
+	GMColEventMakeEffect1 ca_effect1;
+	GMColEventMakeEffect2 ca_effect2;
+	GMColEventMakeEffect3 ca_effect3;
+	GMColEventMakeEffect4 ca_effect4;
+	GMColEventSetLight ca_light;
+	GMColEventPlaySFX ca_sfx;
 
-} gmColEventAll;
+} GMColEventAll;
 
 // // ColAnim Script 0 is NULL
 
 // // 0x8012CA90 - ColAnim Script 1
-// gmColEventSetRGBA     gmColEvents_Col1_Ev0 = {
-// nGMColEventKindSetColor1, 0xFF, 0xFF, 0xFF, 0x30 }; gmColEventDefault
-// gmColEvents_Col1_Ev1 = { nGMColEventKindWait, 65535 }; gmColEventGoto
-// gmColEvents_Col1_Ev2 = { nGMColEventKindGoto, &gmColEvents_Col1_Ev0 };
+// GMColEventSetRGBA     GMColEvents_Col1_Ev0 = {
+// nGMColEventKindSetColor1, 0xFF, 0xFF, 0xFF, 0x30 }; GMColEventDefault
+// GMColEvents_Col1_Ev1 = { nGMColEventKindWait, 65535 }; GMColEventGoto
+// GMColEvents_Col1_Ev2 = { nGMColEventKindGoto, &GMColEvents_Col1_Ev0 };
 
 // // 0x8012CAA4 - ColAnim Script 2
-// gmColEventDefault     gmColEvents_Col2_Ev0 = {
-// nGMColEventKindToggleColorOff }; gmColEventDefault
-// gmColEvents_Col2_Ev1 = { nGMColEventKindEnd };
+// GMColEventDefault     GMColEvents_Col2_Ev0 = {
+// nGMColEventKindToggleColorOff }; GMColEventDefault
+// GMColEvents_Col2_Ev1 = { nGMColEventKindEnd };
 
 // // 0x8012CAAC - ColAnim Script 3
-// gmColEventSetRGBA     gmColEvents_Col3_Ev0 = {
-// nGMColEventKindSetColor1, 0xFF, 0xFF, 0xFF, 0x82 }; gmColEventBlendRGBA
-// gmColEvents_Col3_Ev1 = { nGMColEventKindBlendColor1, 3, 0xFF, 0xFF,
-// 0xFF, 0x32 }; gmColEventDefault     gmColEvents_Col3_Ev2 = {
-// nGMColEventKindWait, 3 }; gmColEventDefault     gmColEvents_Col3_Ev3
-// = { nGMColEventKindToggleColorOff }; gmColEventDefault
-// gmColEvents_Col3_Ev4 = { nGMColEventKindWait, 1 }; gmColEventGoto
-// gmColEvents_Col3_Ev5 = { nGMColEventKindGoto, &gmColEvents_Col3_Ev0
+// GMColEventSetRGBA     GMColEvents_Col3_Ev0 = {
+// nGMColEventKindSetColor1, 0xFF, 0xFF, 0xFF, 0x82 }; GMColEventBlendRGBA
+// GMColEvents_Col3_Ev1 = { nGMColEventKindBlendColor1, 3, 0xFF, 0xFF,
+// 0xFF, 0x32 }; GMColEventDefault     GMColEvents_Col3_Ev2 = {
+// nGMColEventKindWait, 3 }; GMColEventDefault     GMColEvents_Col3_Ev3
+// = { nGMColEventKindToggleColorOff }; GMColEventDefault
+// GMColEvents_Col3_Ev4 = { nGMColEventKindWait, 1 }; GMColEventGoto
+// GMColEvents_Col3_Ev5 = { nGMColEventKindGoto, &GMColEvents_Col3_Ev0
 // };
 
 // // 0x8012CAD0 - ColAnim Script 4
-// gmColEventSetRGBA     gmColEvents_Col4_Ev0 = {
-// nGMColEventKindSetColor1, 0x80, 0xFF, 0x80, 0x50 }; gmColEventBlendRGBA
-// gmColEvents_Col4_Ev1 = { nGMColEventKindBlendColor1, 3, 0x80, 0xFF,
-// 0x80, 0x14 }; gmColEventDefault     gmColEvents_Col4_Ev2 = {
-// nGMColEventKindWait, 3 }; gmColEventDefault     gmColEvents_Col4_Ev3
-// = { nGMColEventKindToggleColorOff }; gmColEventDefault
-// gmColEvents_Col4_Ev4 = { nGMColEventKindWait, 1 }; gmColEventGoto
-// gmColEvents_Col4_Ev5 = { nGMColEventKindGoto, &gmColEvents_Col4_Ev0
+// GMColEventSetRGBA     GMColEvents_Col4_Ev0 = {
+// nGMColEventKindSetColor1, 0x80, 0xFF, 0x80, 0x50 }; GMColEventBlendRGBA
+// GMColEvents_Col4_Ev1 = { nGMColEventKindBlendColor1, 3, 0x80, 0xFF,
+// 0x80, 0x14 }; GMColEventDefault     GMColEvents_Col4_Ev2 = {
+// nGMColEventKindWait, 3 }; GMColEventDefault     GMColEvents_Col4_Ev3
+// = { nGMColEventKindToggleColorOff }; GMColEventDefault
+// GMColEvents_Col4_Ev4 = { nGMColEventKindWait, 1 }; GMColEventGoto
+// GMColEvents_Col4_Ev5 = { nGMColEventKindGoto, &GMColEvents_Col4_Ev0
 // };
 
 // // 0x8012CAF4 - ColAnim Script 5
-// gmColEventSetLight    gmColEvents_Col5_Ev0 = {
-// nGMColEventKindSetLight, 90, 0 }; gmColEventDefault
-// gmColEvents_Col5_Ev1 = { nGMColEventKindToggleColorOff };
-// gmColEventDefault     gmColEvents_Col5_Ev2 = { nGMColEventKindWait, 1
-// }; gmColEventSetRGBA     gmColEvents_Col5_Ev3 = {
-// nGMColEventKindSetColor1, 0xFF, 0xFF, 0xFF, 0xE6 }; gmColEventDefault
-// gmColEvents_Col5_Ev4 = { nGMColEventKindWait, 1 }; gmColEventBlendRGBA
-// gmColEvents_Col5_Ev5 = { nGMColEventKindBlendColor1, 6, 0xFF, 0xFF,
-// 0xFF, 0x1E }; gmColEventDefault     gmColEvents_Col5_Ev6 = {
-// nGMColEventKindWait, 6 }; gmColEventDefault     gmColEvents_Col5_Ev7
-// = { nGMColEventKindToggleColorOff }; gmColEventDefault
-// gmColEvents_Col5_Ev8 = { nGMColEventKindEnd };
+// GMColEventSetLight    GMColEvents_Col5_Ev0 = {
+// nGMColEventKindSetLight, 90, 0 }; GMColEventDefault
+// GMColEvents_Col5_Ev1 = { nGMColEventKindToggleColorOff };
+// GMColEventDefault     GMColEvents_Col5_Ev2 = { nGMColEventKindWait, 1
+// }; GMColEventSetRGBA     GMColEvents_Col5_Ev3 = {
+// nGMColEventKindSetColor1, 0xFF, 0xFF, 0xFF, 0xE6 }; GMColEventDefault
+// GMColEvents_Col5_Ev4 = { nGMColEventKindWait, 1 }; GMColEventBlendRGBA
+// GMColEvents_Col5_Ev5 = { nGMColEventKindBlendColor1, 6, 0xFF, 0xFF,
+// 0xFF, 0x1E }; GMColEventDefault     GMColEvents_Col5_Ev6 = {
+// nGMColEventKindWait, 6 }; GMColEventDefault     GMColEvents_Col5_Ev7
+// = { nGMColEventKindToggleColorOff }; GMColEventDefault
+// GMColEvents_Col5_Ev8 = { nGMColEventKindEnd };
 
 // // Next: 8012CB20
 
 // // 0x8012CA90 - ColAnim Script 1
-// uintptr_t gmColEventScript1[/* */] =
+// uintptr_t GMColEventScript1[/* */] =
 // {
 //     gmColCommandSetColor1S1(),
 //     gmColCommandSetColor1S2(0xFF, 0xFF, 0xFF, 0x30),
 //     gmColCommandWaitS1(65535),
 //     gmColCommandGotoS1(),
-//     gmColCommandGotoS2(gmColEventScript1)
+//     gmColCommandGotoS2(GMColEventScript1)
 // };
 
 // // 0x8012CAA4 - ColAnim Script 2
-// uintptr_t gmColEventScript2[/* */] =
+// uintptr_t GMColEventScript2[/* */] =
 // {
 //     gmColCommandToggleColorOffS1(),
 //     gmColCommandEndS1()
 // };
 
 // // 0x8012CAAC - ColAnim Script 3
-// uintptr_t gmColEventScript3[/* */] =
+// uintptr_t GMColEventScript3[/* */] =
 // {
 //     gmColCommandSetColor1S1(),
 //     gmColCommandSetColor1S2(0xFF, 0xFF, 0xFF, 0x82),
@@ -277,11 +277,11 @@ typedef union gmColEventAll
 //     gmColCommandToggleColorOffS1(),
 //     gmColCommandWaitS1(1),
 //     gmColCommandGotoS1(),
-//     gmColCommandGotoS2(gmColEventScript3)
+//     gmColCommandGotoS2(GMColEventScript3)
 // };
 
 // // 0x8012CAD0 - ColAnim Script 4
-// uintptr_t gmColEventScript4[/* */] =
+// uintptr_t GMColEventScript4[/* */] =
 // {
 //     gmColCommandSetColor1S1(),
 //     gmColCommandSetColor1S2(0x80, 0xFF, 0x80, 0x50),
@@ -291,11 +291,11 @@ typedef union gmColEventAll
 //     gmColCommandToggleColorOffS1(),
 //     gmColCommandWaitS1(1),
 //     gmColCommandGotoS1(),
-//     gmColCommandGotoS2(gmColEventScript4)
+//     gmColCommandGotoS2(GMColEventScript4)
 // };
 
 // // 0x8012CAF4 - ColAnim Script 5
-// uintptr_t gmColEventScript5[/* */] =
+// uintptr_t GMColEventScript5[/* */] =
 // {
 //     gmColCommandSetLightS1(90, 0),
 //     gmColCommandToggleColorOffS1(),
@@ -310,12 +310,12 @@ typedef union gmColEventAll
 //     gmColCommandEndS1()
 // };
 
-typedef struct gmRumbleEventDefault
+typedef struct GMRumbleEventDefault
 {
 	u16 opcode : 3;
 	u16 param : 13;
 
-} gmRumbleEventDefault;
+} GMRumbleEventDefault;
 
 typedef struct gmRumbleEvent
 {
@@ -325,23 +325,23 @@ typedef struct gmRumbleEvent
 	u16 loop_count;
 	s32 rumble_timer;
 	void* p_goto;
-	gmRumbleEventDefault* p_script;
+	GMRumbleEventDefault* p_script;
 
 } gmRumbleEvent;
 
-typedef struct gmRumbleLink
+typedef struct GMRumbleLink
 {
 	gmRumbleEvent* p_event;
-	struct gmRumbleLink* rnext;
-	struct gmRumbleLink* rprev;
+	struct GMRumbleLink* rnext;
+	struct GMRumbleLink* rprev;
 
-} gmRumbleLink;
+} GMRumbleLink;
 
-typedef struct gmRumblePlayer
+typedef struct GMRumblePlayer
 {
 	ub8 is_active;
-	gmRumbleLink* rlink;
+	GMRumbleLink* rlink;
 
-} gmRumblePlayer;
+} GMRumblePlayer;
 
 #endif

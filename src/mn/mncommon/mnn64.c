@@ -23,7 +23,7 @@ extern uintptr_t D_NF_000000C2;
 s32 sMNN64Pad0x80132040[2];
 
 // 0x80132048
-lbFileNode sMNN64StatusBuffer[5];
+LBFileNode sMNN64StatusBuffer[5];
 
 // 0x80132070 - Delay frames before N64 logo can be skipped
 s32 sMNN64SkipAllowWait;
@@ -181,7 +181,7 @@ void mnN64ActorFuncRun(GObj *gobj)
 // 0x80131CB8
 void mnN64FuncStart(void)
 {
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 	CObj *cobj;
 	GObj *gobj;
 	SObj *sobj;

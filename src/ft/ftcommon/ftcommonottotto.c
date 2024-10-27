@@ -43,7 +43,7 @@ void ftCommonOttottoProcUpdate(GObj *fighter_gobj)
 // 0x80142874
 void ftCommonOttottoProcInterrupt(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (!(ftCommonOttottoCheckInterrupt(fighter_gobj)))
     {
@@ -57,7 +57,7 @@ void ftCommonOttottoProcInterrupt(GObj *fighter_gobj)
 // 0x801429F4
 void ftCommonOttottoProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
     f32 dist_x;
 
@@ -89,7 +89,7 @@ void ftCommonOttottoProcMap(GObj *fighter_gobj)
 // 0x80142AC4
 void ftCommonOttottoWaitSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusOttottoWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
@@ -99,12 +99,12 @@ void ftCommonOttottoWaitSetStatus(GObj *fighter_gobj)
 // 0x80142B08
 void ftCommonOttottoSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusOttotto, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
-    fp->phys_info.vel_air.x = fp->phys_info.vel_air.y = fp->phys_info.vel_air.z = 0.0F;
-    fp->phys_info.vel_ground.x = 0.0F;
+    fp->physics.vel_air.x = fp->physics.vel_air.y = fp->physics.vel_air.z = 0.0F;
+    fp->physics.vel_ground.x = 0.0F;
 
     fp->is_special_interrupt = TRUE;
 }

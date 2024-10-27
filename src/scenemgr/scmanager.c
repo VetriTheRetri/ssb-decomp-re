@@ -16,14 +16,14 @@
 
 // BSS
 u8 D_800A44D0[16];
-lbBackupData gSaveData;
+LBBackupData gSaveData;
 // current screen info
-scCommonData gSceneData;
-scBattleState gSCManager1PGameBattleState;
-scBattleState gTransferBattleState;
-scBattleState D_800A4EF8;
+SCCommonData gSceneData;
+SCBattleState gSCManager1PGameBattleState;
+SCBattleState gTransferBattleState;
+SCBattleState D_800A4EF8;
 // pointer to battle settings, probably has to be moved here from battle.h
-scBattleState *_gBattleState;
+SCBattleState *_gBattleState;
 u32 D_800A50EC;
 u8 D_800A50F0[8];
 u8 D_800A50F8[324];
@@ -101,7 +101,7 @@ syOverlay D_800A3070[65] = {
 	GENERATE_OVERLAY_SECTION_DATA(64)
 };
 
-lbBackupData gDefaultSaveData = {
+LBBackupData gDefaultSaveData = {
 	{{{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 0, 0, 0, 0, 0, 0, 0,
 		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
 		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -120,7 +120,7 @@ lbBackupData gDefaultSaveData = {
 		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0}}, 0, 0, 0, 0, 0, 0x029a, 0, 0, 0
 };
 
-scCommonData gDefaultSceneData =
+SCCommonData gDefaultSceneData =
 {
 	0x1B, 0x1B,
 	{ nLBBackupUnlockEnumMax, nLBBackupUnlockEnumMax },
@@ -138,7 +138,7 @@ scCommonData gDefaultSceneData =
 	0x00, 0x1C, 0x00, 0x1C, 0x00, 0x1C, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
  };
 
-scBattleState gDefaultBattleState = {
+SCBattleState gDefaultBattleState = {
 	0, 0, 0, TIMESTOCK_TIME_ON,
 	0, 0, 3, 2,
 	HANDICAP_MODE_OFF, FALSE, 1, 100,
@@ -248,8 +248,8 @@ void start_scene_manager(u32 set)
 {
 	u16* csr;
 	uintptr_t end;
-	scBattleState sp220;
-	scBattleState sp30;
+	SCBattleState sp220;
+	SCBattleState sp30;
 
 	set_contstatus_delay(60);
 	syErrorSetFuncPrint(scManagerProcPrintGObjStatus);
@@ -710,10 +710,10 @@ void unref_800A2BA8(s32 link, u32 arg1, s32 arg2) // set_up_debug_objs ? somethi
 // 0x800A2C30
 void scManagerInspectGObj(GObj *gobj)
 {
-    ftStruct *fp;
-    wpStruct *wp;
-    itStruct *ip;
-    efStruct *ep;
+    FTStruct *fp;
+    WPStruct *wp;
+    ITStruct *ip;
+    EFStruct *ep;
 
     syErrorDebugPrintf("gobj id:%d:", gobj->gobj_id);
 
@@ -723,8 +723,8 @@ void scManagerInspectGObj(GObj *gobj)
         fp = ftGetStruct(gobj);
 
         syErrorDebugPrintf("fighter\n");
-        syErrorDebugPrintf("kind:%d, player:%d, pkind:%d\n", fp->ft_kind, fp->player, fp->status_info.pl_kind);
-        syErrorDebugPrintf("stat:%d, mstat:%d\n", fp->status_info.status_id, fp->status_info.motion_id);
+        syErrorDebugPrintf("kind:%d, player:%d, pkind:%d\n", fp->ft_kind, fp->player, fp->pl_kind);
+        syErrorDebugPrintf("stat:%d, mstat:%d\n", fp->status_id, fp->motion_id);
         syErrorDebugPrintf("ga:%d\n", fp->ga);
         break;
 
@@ -733,7 +733,7 @@ void scManagerInspectGObj(GObj *gobj)
 
         syErrorDebugPrintf("weapon\n");
         syErrorDebugPrintf("kind:%d, player:%d\n", wp->wp_kind, wp->player);
-        syErrorDebugPrintf("atk stat:%d\n", wp->weapon_hit.update_state);
+        syErrorDebugPrintf("atk stat:%d\n", wp->hit_coll.update_state);
         syErrorDebugPrintf("ga:%d\n", wp->ga);
         break;
 
@@ -742,7 +742,7 @@ void scManagerInspectGObj(GObj *gobj)
 
         syErrorDebugPrintf("item\n");
         syErrorDebugPrintf("kind:%d, player:%d\n", ip->it_kind, ip->player);
-        syErrorDebugPrintf("atk stat:%d\n", ip->item_hit.update_state);
+        syErrorDebugPrintf("atk stat:%d\n", ip->hit_coll.update_state);
         syErrorDebugPrintf("ga:%d\n", ip->ga);
         syErrorDebugPrintf("proc update:%x\n", ip->proc_update);
         syErrorDebugPrintf("proc map:%x\n", ip->proc_map);

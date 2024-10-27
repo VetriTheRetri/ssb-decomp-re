@@ -9,7 +9,7 @@
 // 0x80148E30
 void ftCommonGuardSetStatusFromEscape(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusGuardOn, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE); // Why? It overwrites this with Guard later down.
     ftMainPlayAnimNoEffect(fighter_gobj);
@@ -45,7 +45,7 @@ void ftCommonGuardSetStatusFromEscape(GObj *fighter_gobj)
 // 0x80148F24
 sb32 ftCommonGuardCheckInterruptEscape(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((fp->input.pl.button_hold & fp->input.button_mask_z) && (fp->shield_health != 0))
     {
@@ -59,7 +59,7 @@ sb32 ftCommonGuardCheckInterruptEscape(GObj *fighter_gobj)
 // 0x80148F74
 void ftCommonGuardOffProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonGuardUpdateShieldVars(fighter_gobj);
 
@@ -77,7 +77,7 @@ void ftCommonGuardOffProcUpdate(GObj *fighter_gobj)
 // 0x80148FF0
 void ftCommonGuardOffSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     ub32 flag = fp->is_shield;
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusGuardOff, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT));
@@ -92,7 +92,7 @@ void ftCommonGuardOffSetStatus(GObj *fighter_gobj)
 // 0x80149074
 void ftCommonGuardSetOffProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonGuardCheckScheduleRelease(fp);
 
@@ -112,17 +112,17 @@ void ftCommonGuardSetOffProcUpdate(GObj *fighter_gobj)
 // 0x80149108
 void ftCommonGuardSetOffSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusGuardSetOff, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_EFFECT));
 
     fp->status_vars.common.guard.setoff_frames = (fp->shield_damage * FTCOMMON_GUARD_SETOFF_MUL) + FTCOMMON_GUARD_SETOFF_ADD;
 
-    fp->phys_info.vel_ground.x = ((fp->lr == fp->lr_shield) ? nGMFacingL : nGMFacingR) * (fp->status_vars.common.guard.setoff_frames * FTCOMMON_GUARD_VEL_MUL);
+    fp->physics.vel_ground.x = ((fp->lr == fp->shield_lr) ? nGMFacingL : nGMFacingR) * (fp->status_vars.common.guard.setoff_frames * FTCOMMON_GUARD_VEL_MUL);
 
     if (fp->status_vars.common.guard.effect_gobj != NULL)
     {
-        efStruct *ep = efGetStruct(fp->status_vars.common.guard.effect_gobj);
+        EFStruct *ep = efGetStruct(fp->status_vars.common.guard.effect_gobj);
 
         ep->effect_vars.shield.is_damage_shield = TRUE;
     }

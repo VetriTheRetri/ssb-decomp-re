@@ -63,7 +63,7 @@ s32 sMN1PModeTotalTimeTics;
 s32 sMN1PModeReturnTic;
 
 // 0x801331D0
-lbFileNode sMN1PModeStatusBuffer[24];
+LBFileNode sMN1PModeStatusBuffer[24];
 
 // 0x80133290
 void *sMN1PModeFiles[2];
@@ -737,7 +737,7 @@ void mn1PModeFuncRun(GObj *gobj)
 // 0x80132E9C
 void mn1PModeFuncStart(void)
 {
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
     
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

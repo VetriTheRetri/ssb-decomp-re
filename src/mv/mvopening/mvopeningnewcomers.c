@@ -37,10 +37,10 @@ u16 sMVOpeningNewcomersCharacterMask;
 s32 sMVOpeningNewcomersUnused0x80132754;
 
 // 0x80132758
-lbFileNode dMVOpeningNewcomersStatusBuffer[48];
+LBFileNode dMVOpeningNewcomersStatusBuffer[48];
 
 // 0x801328D8
-lbFileNode dMVOpeningNewcomersForceStatusBuffer[7];
+LBFileNode dMVOpeningNewcomersForceStatusBuffer[7];
 
 // 0x80132910
 void *sMVOpeningNewcomersFiles[2];
@@ -135,16 +135,16 @@ sb32 mvOpeningNewcomersCheckLocked(s32 ft_kind)
     switch (ft_kind)
     {
     case nFTKindCaptain:
-        return (sMVOpeningNewcomersCharacterMask & LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindCaptain)) ? FALSE : TRUE;
+        return (sMVOpeningNewcomersCharacterMask & LBBACKUP_MASK_FIGHTER(nFTKindCaptain)) ? FALSE : TRUE;
 
     case nFTKindNess:
-        return (sMVOpeningNewcomersCharacterMask & LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindNess)) ? FALSE : TRUE;
+        return (sMVOpeningNewcomersCharacterMask & LBBACKUP_MASK_FIGHTER(nFTKindNess)) ? FALSE : TRUE;
 
     case nFTKindPurin:
-        return (sMVOpeningNewcomersCharacterMask & LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindPurin)) ? FALSE : TRUE;
+        return (sMVOpeningNewcomersCharacterMask & LBBACKUP_MASK_FIGHTER(nFTKindPurin)) ? FALSE : TRUE;
 
     case nFTKindLuigi:
-        return (sMVOpeningNewcomersCharacterMask & LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindLuigi)) ? FALSE : TRUE;
+        return (sMVOpeningNewcomersCharacterMask & LBBACKUP_MASK_FIGHTER(nFTKindLuigi)) ? FALSE : TRUE;
 
     default:
         return FALSE;
@@ -414,7 +414,7 @@ void mvOpeningNewcomersFuncRun(GObj *gobj)
 void mvOpeningNewcomersFuncStart(void)
 {
     s32 unused;
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

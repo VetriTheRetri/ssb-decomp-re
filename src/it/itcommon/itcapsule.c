@@ -15,7 +15,7 @@ extern intptr_t lITCapsuleHitEvents;        // 0x00000098
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITCapsuleItemDesc = 
+ITCreateDesc dITCapsuleItemDesc = 
 {
     nITKindCapsule,                         // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -39,7 +39,7 @@ itCreateDesc dITCapsuleItemDesc =
     itCapsuleCommonProcHit                  // Proc Damage
 };
 
-itStatusDesc dITCapsuleStatusDescs[/* */] =
+ITStatusDesc dITCapsuleStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -140,7 +140,7 @@ enum itCapsuleStatus
 // 0x80173F90
 sb32 itCapsuleFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITCAPSULE_GRAVITY, ITCAPSULE_TVEL);
     itVisualsUpdateSpin(item_gobj);
@@ -184,7 +184,7 @@ void itCapsuleWaitSetStatus(GObj *item_gobj)
 // 0x80174098
 void itCapsuleFallSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
@@ -192,7 +192,7 @@ void itCapsuleFallSetStatus(GObj *item_gobj)
 
     ip->is_damage_all = TRUE;
 
-    ip->item_hurt.hitstatus = nGMHitStatusNormal;
+    ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
     itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusFall);
 }
@@ -206,7 +206,7 @@ void itCapsuleHoldSetStatus(GObj *item_gobj)
 // 0x80174124
 sb32 itCapsuleThrownProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITCAPSULE_GRAVITY, ITCAPSULE_TVEL);
     itVisualsUpdateSpin(item_gobj);
@@ -231,11 +231,11 @@ sb32 itCapsuleThrownProcMap(GObj *item_gobj)
 // 0x801741B0
 void itCapsuleThrownSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->is_damage_all = TRUE;
 
-    ip->item_hurt.hitstatus = nGMHitStatusNormal;
+    ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
     itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusThrown);
 }
@@ -263,7 +263,7 @@ void itCapsuleDroppedSetStatus(GObj *item_gobj)
 // 0x80174270
 sb32 itCapsuleExplodeProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi++;
 
@@ -271,7 +271,7 @@ sb32 itCapsuleExplodeProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITCapsuleItemDesc, lITCapsuleHitEvents)); // (itHitEvent*) ((uintptr_t)*dITCapsuleItemDesc.p_file + (intptr_t)&D_NF_00000098); Linker thing
+    itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITCapsuleItemDesc, lITCapsuleHitEvents)); // (ITHitEvent*) ((uintptr_t)*dITCapsuleItemDesc.p_file + (intptr_t)&D_NF_00000098); Linker thing
 
     return FALSE;
 }
@@ -282,11 +282,11 @@ GObj* itCapsuleMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
     if (item_gobj != NULL)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         ip->is_unused_item_bool = TRUE;
 
-        ip->indicator_gobj = ifCommonItemArrowMakeInterface(ip);
+        ip->arrow_gobj = ifCommonItemArrowMakeInterface(ip);
     }
     return item_gobj;
 }
@@ -294,24 +294,24 @@ GObj* itCapsuleMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 // 0x80174340
 void itCapsuleExplodeInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi = 0;
     ip->item_event_id = 0;
-    ip->item_hit.hit_sfx = nSYAudioFGMExplodeL;
-    ip->item_hit.throw_mul = ITEM_STALE_DEFAULT;
+    ip->hit_coll.hit_sfx = nSYAudioFGMExplodeL;
+    ip->hit_coll.throw_mul = ITEM_STALE_DEFAULT;
 
     func_800269C0_275C0(nSYAudioFGMExplodeL);
 
-    ip->item_hit.can_rehit_item = TRUE;
-    ip->item_hit.can_hop = FALSE;
-    ip->item_hit.can_reflect = FALSE;
+    ip->hit_coll.can_rehit_item = TRUE;
+    ip->hit_coll.can_hop = FALSE;
+    ip->hit_coll.can_reflect = FALSE;
 
-    ip->item_hit.element = nGMHitElementFire;
+    ip->hit_coll.element = nGMHitElementFire;
 
-    ip->item_hit.can_setoff = FALSE;
+    ip->hit_coll.can_setoff = FALSE;
 
-    ip->item_hurt.hitstatus = nGMHitStatusNone;
+    ip->damage_coll.hitstatus = nGMHitStatusNone;
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshHit(item_gobj);
@@ -329,15 +329,15 @@ void itCapsuleExplodeSetStatus(GObj *item_gobj)
 // 0x80174428
 void itCapsuleExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
-    lbParticle *ep;
+    LBParticle *ep;
 
-    ip->item_hit.update_state = nGMHitUpdateDisable;
+    ip->hit_coll.update_state = nGMHitUpdateDisable;
 
-    ip->phys_info.vel_air.x = 0.0F;
-    ip->phys_info.vel_air.y = 0.0F;
-    ip->phys_info.vel_air.z = 0.0F;
+    ip->physics.vel_air.x = 0.0F;
+    ip->physics.vel_air.y = 0.0F;
+    ip->physics.vel_air.z = 0.0F;
 
     ep = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 

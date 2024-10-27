@@ -18,7 +18,7 @@ lITLGunWeaponAmmoWeaponAttributes;          // 0x000002B0
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITLGunItemDesc =
+ITCreateDesc dITLGunItemDesc =
 {
     nITKindLGun,                            // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -42,7 +42,7 @@ itCreateDesc dITLGunItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITLGunStatusDescs[/* */] =
+ITStatusDesc dITLGunStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -105,7 +105,7 @@ itStatusDesc dITLGunStatusDescs[/* */] =
     }
 };
 
-wpCreateDesc itLGunWeaponAmmoWeaponDesc =
+WPCreateDesc itLGunWeaponAmmoWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindLGunAmmo,                        // Weapon Kind
@@ -154,7 +154,7 @@ enum itLGunStatus
 // 0x801754F0
 sb32 itLGunFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITLGUN_GRAVITY, ITLGUN_TVEL);
     itVisualsUpdateSpin(item_gobj);
@@ -186,7 +186,7 @@ void itLGunWaitSetStatus(GObj *item_gobj)
 // 0x801755B8
 void itLGunFallSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
@@ -205,7 +205,7 @@ void itLGunHoldSetStatus(GObj *item_gobj)
 // 0x80175630
 sb32 itLGunThrownProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {
@@ -217,9 +217,9 @@ sb32 itLGunThrownProcMap(GObj *item_gobj)
 // 0x80175684
 sb32 itLGunCommonProcHit(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hit.update_state = nGMHitUpdateDisable;
+    ip->hit_coll.update_state = nGMHitUpdateDisable;
 
     itMainVelSetRebound(item_gobj);
 
@@ -239,7 +239,7 @@ void itLGunThrownSetStatus(GObj *item_gobj)
 // 0x8017572C
 sb32 itLGunDroppedProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {
@@ -265,7 +265,7 @@ GObj* itLGunMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
     if (item_gobj != NULL)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         ip->it_multi = ITLGUN_AMMO_MAX;
 
@@ -273,7 +273,7 @@ GObj* itLGunMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->is_unused_item_bool = TRUE;
 
-        ip->indicator_gobj = ifCommonItemArrowMakeInterface(ip);
+        ip->arrow_gobj = ifCommonItemArrowMakeInterface(ip);
     }
     return item_gobj;
 }
@@ -314,9 +314,9 @@ sb32 itLGunWeaponAmmoProcMap(GObj *weapon_gobj)
 // 0x80175958
 sb32 itLGunWeaponAmmoProcHit(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
+    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->hit_coll.damage);
 
     return TRUE;
 }
@@ -324,11 +324,11 @@ sb32 itLGunWeaponAmmoProcHit(GObj *weapon_gobj)
 // 0x80175988
 sb32 itLGunWeaponAmmoProcHop(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_80019438(&wp->phys_info.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
+    func_80019438(&wp->physics.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     return FALSE;
@@ -337,12 +337,12 @@ sb32 itLGunWeaponAmmoProcHop(GObj *weapon_gobj)
 // 0x80175A00
 sb32 itLGunWeaponAmmoProcReflector(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    ftStruct *fp = ftGetStruct(wp->owner_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    FTStruct *fp = ftGetStruct(wp->owner_gobj);
 
     wpMainReflectorSetLR(wp, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     return FALSE;
@@ -352,7 +352,7 @@ sb32 itLGunWeaponAmmoProcReflector(GObj *weapon_gobj)
 GObj* itLGunWeaponAmmoMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
     GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &itLGunWeaponAmmoWeaponDesc, pos, (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_FIGHTER));
-    wpStruct *wp;
+    WPStruct *wp;
 
     if (weapon_gobj == NULL)
     {
@@ -360,9 +360,9 @@ GObj* itLGunWeaponAmmoMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
     }
     wp = wpGetStruct(weapon_gobj);
 
-    wp->phys_info.vel_air.x = wp->lr * ITLGUN_AMMO_VEL_X;
+    wp->physics.vel_air.x = wp->lr * ITLGUN_AMMO_VEL_X;
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
 
     return weapon_gobj;
 }
@@ -370,7 +370,7 @@ GObj* itLGunWeaponAmmoMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 // 0x80175AD8
 void itLGunMakeAmmo(GObj *fighter_gobj, Vec3f *pos)
 {
-    itStruct *ip = itGetStruct(ftGetStruct(fighter_gobj)->item_hold);
+    ITStruct *ip = itGetStruct(ftGetStruct(fighter_gobj)->item_hold);
 
     itLGunWeaponAmmoMakeWeapon(fighter_gobj, pos);
 

@@ -19,7 +19,7 @@
 #include <ft/ftchar.h>
 
 // Structs
-struct ftSpecialHit
+struct FTSpecialColl
 {
     s32 kind;
     s32 joint_id;
@@ -28,7 +28,7 @@ struct ftSpecialHit
     s32 damage_resist;
 };
 
-struct ftItemPickup
+struct FTItemPickup
 {
     Vec2f pickup_offset_light;
     Vec2f pickup_range_light;
@@ -36,17 +36,17 @@ struct ftItemPickup
     Vec2f pickup_range_heavy;
 };
 
-struct ftThrownStatus
+struct FTThrownStatus
 {
     s32 status1, status2;
 };
 
-struct ftThrownStatusArray
+struct FTThrownStatusArray
 {
-    ftThrownStatus ft_thrown[2];
+    FTThrownStatus ft_thrown[2];
 };
 
-union ftAnimDesc
+union FTAnimDesc
 {
     u32 word;
 
@@ -88,26 +88,26 @@ union ftAnimDesc
     } flags;
 };
 
-struct ftMotionDesc
+struct FTMotionDesc
 {
     u32 anim_file_id;       // Animation file ID
     intptr_t offset;        // Offset?
-    ftAnimDesc anim_desc;   // Animation flags
+    FTAnimDesc anim_desc;   // Animation flags
 };
 
-struct ftMotionDescArray
+struct FTMotionDescArray
 {
-    ftMotionDesc script_info[1]; // Array size = last animation ID?
+    FTMotionDesc script_info[1]; // Array size = last animation ID?
 };
 
-struct ftFileSize
+struct FTFileSize
 {
     size_t main;
     size_t mainmotion_largest_anim;
     size_t submotion_largest_anim;
 };
 
-struct ftData
+struct FTData
 {
     u32 file_main_id; // File size in bytes?
     u32 file_mainmotion_id;
@@ -134,14 +134,14 @@ struct ftData
     uintptr_t particles_texture_lo;
     uintptr_t particles_texture_hi;
     intptr_t o_attributes; // Offset to fighter's attributes
-    ftMotionDescArray *mainmotion;
-    ftMotionDescArray *submotion;
+    FTMotionDescArray *mainmotion;
+    FTMotionDescArray *submotion;
     s32 mainmotion_array_count;
     s32 *submotion_array_count;
     size_t file_anim_size;
 };
 
-struct ftModelPart
+struct FTModelPart
 {
     void *display_list;
     MObjSub **mobjsubs;
@@ -150,7 +150,7 @@ struct ftModelPart
     u8 flags;
 };
 
-struct ftCommonPart
+struct FTCommonPart
 {
     DObjDesc *dobjdesc;
     MObjSub ***p_mobjsubs;
@@ -158,49 +158,49 @@ struct ftCommonPart
     u8 flags;
 };
 
-struct ftCommonPartContainer
+struct FTCommonPartContainer
 {
-    ftCommonPart commonparts[2];
+    FTCommonPart commonparts[2];
 };
 
-struct ftModelPartDesc
+struct FTModelPartDesc
 {
-    ftModelPart modelparts[1][2];
+    FTModelPart modelparts[1][2];
 };
 
-struct ftModelPartContainer
+struct FTModelPartContainer
 {
-    ftModelPartDesc *modelparts_desc[FTPARTS_JOINT_NUM_MAX - nFTPartsJointCommonStart];
+    FTModelPartDesc *modelparts_desc[FTPARTS_JOINT_NUM_MAX - nFTPartsJointCommonStart];
 };
 
-struct ftModelPartStatus
+struct FTModelPartStatus
 {
     s8 modelpart_id_default, modelpart_id_current;
 };
 
-struct ftTexturePart
+struct FTTexturePart
 {
     u8 joint_id;
     u8 detail[2];
 };
 
-struct ftTexturePartContainer
+struct FTTexturePartContainer
 {
-    ftTexturePart textureparts[2];
+    FTTexturePart textureparts[2];
 };
 
-struct ftTexturePartStatus
+struct FTTexturePartStatus
 {
     s8 texture_id_default, texture_id_current;
 };
 
-struct ftMotionFlags
+struct FTMotionFlags
 {
     s16 motion_id : 10;
     u16 motion_attack_id : 6;
 };
 
-struct ftMotionScript
+struct FTMotionScript
 {
 	f32 frame_timer;
 	u32* p_script;
@@ -209,20 +209,20 @@ struct ftMotionScript
 	s32 loop_count[4];
 };
 
-struct ftMotionEventDefault // Event with no arguments
+struct FTMotionEventDefault // Event with no arguments
 {
 	u32 opcode : 6;
     u32 value : 26;
 };
 
-struct ftMotionEventDouble // Event with no arguments
+struct FTMotionEventDouble // Event with no arguments
 {
 	u32 opcode : 6;
 	u32 pad1 : 26;
 	u32 pad2 : 32;
 };
 
-struct ftMotionEventMakeHit1
+struct FTMotionEventMakeHit1
 {
 	u32 opcode : 6;
 	u32 hit_id : 3;
@@ -233,19 +233,19 @@ struct ftMotionEventMakeHit1
 	u32 element : 4;
 };
 
-struct ftMotionEventMakeHit2
+struct FTMotionEventMakeHit2
 {
 	u32 size : 16;
 	s32 off_x : 16;
 };
 
-struct ftMotionEventMakeHit3
+struct FTMotionEventMakeHit3
 {
 	s32 off_y : 16;
 	s32 off_z : 16;
 };
 
-struct ftMotionEventMakeHit4
+struct FTMotionEventMakeHit4
 {
 	s32 angle : 10;
 	u32 knockback_scale : 10;
@@ -253,7 +253,7 @@ struct ftMotionEventMakeHit4
 	u32 is_hit_ground_air : 2;  // This should really be two separate bits, but it doesn't match that way
 };
 
-struct ftMotionEventMakeHit5
+struct FTMotionEventMakeHit5
 {
 	s32 shield_damage : 8;
 	u32 sfx_level : 3;
@@ -261,72 +261,72 @@ struct ftMotionEventMakeHit5
 	u32 knockback_base : 10;
 };
 
-struct ftMotionEventMakeHit
+struct FTMotionEventMakeHit
 {
-	ftMotionEventMakeHit1 s1;
-	ftMotionEventMakeHit2 s2;
-	ftMotionEventMakeHit3 s3;
-	ftMotionEventMakeHit4 s4;
-	ftMotionEventMakeHit5 s5;
+	FTMotionEventMakeHit1 s1;
+	FTMotionEventMakeHit2 s2;
+	FTMotionEventMakeHit3 s3;
+	FTMotionEventMakeHit4 s4;
+	FTMotionEventMakeHit5 s5;
 };
 
-struct ftMotionEventSetHitOffset1
+struct FTMotionEventSetHitOffset1
 {
 	u32 opcode : 6;
 	u32 hit_id : 3;
 	s32 off_x : 16;
 };
 
-struct ftMotionEventSetHitOffset2
+struct FTMotionEventSetHitOffset2
 {
 	s32 off_y : 16;
 	s32 off_z : 16;
 };
 
-struct ftMotionEventSetHitOffset
+struct FTMotionEventSetHitOffset
 {
-	ftMotionEventSetHitOffset1 s1;
-	ftMotionEventSetHitOffset2 s2;
+	FTMotionEventSetHitOffset1 s1;
+	FTMotionEventSetHitOffset2 s2;
 };
 
-struct ftMotionEventSetHitDamage
+struct FTMotionEventSetHitDamage
 {
 	u32 opcode : 6;
 	u32 hit_id : 3;
 	u32 damage : 8;
 };
 
-struct ftMotionEventSetHitSize
+struct FTMotionEventSetHitSize
 {
 	u32 opcode : 6;
 	u32 hit_id : 3;
 	u32 size : 16;
 };
 
-struct ftMotionEventSetHitSound
+struct FTMotionEventSetHitSound
 {
 	u32 opcode : 6;
 	u32 hit_id : 3;
 	u32 sfx_level : 3;
 };
 
-struct ftMotionEventSetThrow1
+struct FTMotionEventSetThrow1
 {
 	u32 opcode : 6;
 };
 
-struct ftMotionEventSetThrow2
+struct FTMotionEventSetThrow2
 {
-	ftThrowHitDesc* fighter_throw;
+	FTThrowHitDesc* fighter_throw;
 };
 
-struct ftMotionEventSetThrow
+struct FTMotionEventSetThrow
 {
-	ftMotionEventSetThrow1 s1;
-	ftMotionEventSetThrow2 s2;
+	FTMotionEventSetThrow1 s1;
+	FTMotionEventSetThrow2 s2;
 };
 
-struct ftMotionEventMakeEffect1
+struct FTMotionEventMakeEffect1
 {
 	u32 opcode : 6;
 	s32 joint_id : 7;
@@ -334,192 +334,192 @@ struct ftMotionEventMakeEffect1
 	u32 flag : 10;
 };
 
-struct ftMotionEventMakeEffect2
+struct FTMotionEventMakeEffect2
 {
 	s32 off_x : 16;
 	s32 off_y : 16;
 };
 
-struct ftMotionEventMakeEffect3
+struct FTMotionEventMakeEffect3
 {
 	s32 off_z : 16;
 	s32 rng_x : 16;
 };
 
-struct ftMotionEventMakeEffect4
+struct FTMotionEventMakeEffect4
 {
 	s32 rng_y : 16;
 	s32 rng_z : 16;
 };
 
-struct ftMotionEventMakeEffect
+struct FTMotionEventMakeEffect
 {
-	ftMotionEventMakeEffect1 s1;
-	ftMotionEventMakeEffect2 s2;
-	ftMotionEventMakeEffect3 s3;
-	ftMotionEventMakeEffect4 s4;
+	FTMotionEventMakeEffect1 s1;
+	FTMotionEventMakeEffect2 s2;
+	FTMotionEventMakeEffect3 s3;
+	FTMotionEventMakeEffect4 s4;
 };
 
-struct ftMotionEventSetHitStatusPartID
+struct FTMotionEventSetHitStatusPartID
 {
 	u32 opcode : 6;
 	s32 joint_id : 7;
 	u32 hitstatus : 19;
 };
 
-struct ftMotionEventModifyHurtPartID1
+struct FTMotionEventModifyHurtPartID1
 {
 	u32 opcode : 6;
 	s32 joint_id : 7;
 };
 
-struct ftMotionEventModifyHurtPartID2
+struct FTMotionEventModifyHurtPartID2
 {
 	s32 off_x : 16;
 	s32 off_y : 16;
 };
 
-struct ftMotionEventModifyHurtPartID3
+struct FTMotionEventModifyHurtPartID3
 {
 	s32 off_z : 16;
 	s32 size_x : 16;
 };
 
-struct ftMotionEventModifyHurtPartID4
+struct FTMotionEventModifyHurtPartID4
 {
 	s32 size_y : 16;
 	s32 size_z : 16;
 };
 
-struct ftMotionEventModifyHurtPartID
+struct FTMotionEventModifyHurtPartID
 {
-	ftMotionEventModifyHurtPartID1 s1;
-	ftMotionEventModifyHurtPartID2 s2;
-	ftMotionEventModifyHurtPartID3 s3;
-	ftMotionEventModifyHurtPartID4 s4;
+	FTMotionEventModifyHurtPartID1 s1;
+	FTMotionEventModifyHurtPartID2 s2;
+	FTMotionEventModifyHurtPartID3 s3;
+	FTMotionEventModifyHurtPartID4 s4;
 };
 
-struct ftMotionEventSubroutine1
+struct FTMotionEventSubroutine1
 {
 	u32 opcode : 6;
 };
 
-struct ftMotionEventSubroutine2
+struct FTMotionEventSubroutine2
 {
 	void* p_goto;
 };
 
-struct ftMotionEventSubroutine
+struct FTMotionEventSubroutine
 {
-	ftMotionEventSubroutine1 s1;
-	ftMotionEventSubroutine2 s2;
+	FTMotionEventSubroutine1 s1;
+	FTMotionEventSubroutine2 s2;
 };
 
-struct ftMotionEventSetDamageThrown1
+struct FTMotionEventSetDamageThrown1
 {
 	u32 opcode : 6;
 };
 
-struct ftMotionEventSetDamageThrown2
+struct FTMotionEventSetDamageThrown2
 {
 	void* p_subroutine;
 };
 
-struct ftMotionDamageScript
+struct FTMotionDamageScript
 {
 	void* p_script[2][nFTKindEnumMax];
 };
 
-struct ftMotionEventSetDamageThrown
+struct FTMotionEventSetDamageThrown
 {
-	ftMotionEventSetDamageThrown1 s1;
-	ftMotionEventSetDamageThrown2 s2;
+	FTMotionEventSetDamageThrown1 s1;
+	FTMotionEventSetDamageThrown2 s2;
 };
 
-struct ftMotionEventGoto1
-{
-	u32 opcode : 6;
-};
-
-struct ftMotionEventGoto2
-{
-	void* p_goto;
-};
-
-struct ftMotionEventGoto
-{
-	ftMotionEventGoto1 s1;
-	ftMotionEventGoto2 s2;
-};
-
-struct ftMotionEventParallel1
+struct FTMotionEventGoto1
 {
 	u32 opcode : 6;
 };
 
-struct ftMotionEventParallel2
+struct FTMotionEventGoto2
 {
 	void* p_goto;
 };
 
-struct ftMotionEventParallel
+struct FTMotionEventGoto
 {
-	ftMotionEventParallel1 s1;
-	ftMotionEventParallel2 s2;
+	FTMotionEventGoto1 s1;
+	FTMotionEventGoto2 s2;
 };
 
-struct ftMotionEventSetModelPartID
+struct FTMotionEventParallel1
+{
+	u32 opcode : 6;
+};
+
+struct FTMotionEventParallel2
+{
+	void* p_goto;
+};
+
+struct FTMotionEventParallel
+{
+	FTMotionEventParallel1 s1;
+	FTMotionEventParallel2 s2;
+};
+
+struct FTMotionEventSetModelPartID
 {
 	u32 opcode : 6;
 	s32 joint_id : 7;
 	s32 modelpart_id : 19;
 };
 
-struct ftMotionEventSetTexturePartID
+struct FTMotionEventSetTexturePartID
 {
 	u32 opcode : 6;
 	u32 texturepart_id : 6;
 	u32 frame : 20;
 };
 
-struct ftMotionEventSetColAnimID
+struct FTMotionEventSetColAnimID
 {
 	u32 opcode : 6;
 	u32 colanim_id : 8;
 	u32 length : 18;
 };
 
-struct ftMotionEventSetSlopeContour
+struct FTMotionEventSetSlopeContour
 {
 	u32 opcode : 6;
 	u32 pad : 23;
 	u32 flags : 3;
 };
 
-struct ftMotionEventSetAfterImage
+struct FTMotionEventSetAfterImage
 {
 	u32 opcode : 6;
 	u32 is_itemswing : 8;
 	s32 drawstatus : 18;
 };
 
-struct ftMotionEventMakeRumble
+struct FTMotionEventMakeRumble
 {
 	u32 opcode : 6;
 	u32 length : 13;
 	u32 rumble_id : 13;
 };
 
-struct ftMotionEventStopRumble
+struct FTMotionEventStopRumble
 {
 	u32 opcode : 6;
 	u32 rumble_id : 26;
 };
 
-struct ftStatusDesc
+struct FTStatusDesc
 {
-    ftMotionFlags mflags;
-    gmStatFlags sflags;
+    FTMotionFlags mflags;
+    GMStatFlags sflags;
 
     void (*proc_update)(GObj*);
     void (*proc_interrupt)(GObj*);
@@ -527,13 +527,13 @@ struct ftStatusDesc
     void (*proc_map)(GObj*);
 };
 
-struct ftOpeningDesc
+struct FTOpeningDesc
 {
     s32 motion_id;
     void (*proc_update)(GObj*);
 };
 
-struct ftThrowHitDesc
+struct FTThrowHitDesc
 {
     s32 status_id;
     s32 damage;
@@ -544,7 +544,7 @@ struct ftThrowHitDesc
     s32 element;
 };
 
-struct ftThrowReleaseDesc
+struct FTThrowReleaseDesc
 {
     s32 angle;
     s32 knockback_scale;
@@ -552,7 +552,7 @@ struct ftThrowReleaseDesc
     s32 knockback_base;
 };
 
-struct ftCreateDesc
+struct FTCreateDesc
 {
     s32 ft_kind;
     Vec3f pos;
@@ -583,20 +583,20 @@ struct ftCreateDesc
     void *func_display;
 };
 
-struct ftHitMatrix
+struct FTHitMatrix
 {
     sb32 unk_fthitmtx_0x0;
     Mtx44f mtx;
     f32 unk_fthitmtx_0x44;
 };
 
-struct ftHitbox
+struct FTHitColl
 {
-    gmHitCollisionUpdateState update_state;
+    s32 update_state;
     u32 group_id;
     s32 joint_id;
     s32 damage;
-    gmHitCollisionElement element;
+    s32 element;
     DObj *joint;
     Vec3f offset;
     f32 size;
@@ -616,11 +616,11 @@ struct ftHitbox
     u16 stat_count;
     Vec3f pos;
     Vec3f pos_prev;
-    gmHitRecord hit_targets[GMHITRECORD_NUM_MAX];
-    ftHitMatrix hit_matrix;
+    GMHitRecord hit_record[GMHITRECORD_NUM_MAX];
+    FTHitMatrix hit_matrix;
 };
 
-struct ftHurtboxDesc
+struct FTDamageCollDesc
 {
     s32 joint_id;
     s32 placement;
@@ -629,7 +629,7 @@ struct ftHurtboxDesc
     Vec3f size;
 };
 
-struct ftHurtbox
+struct FTDamageColl
 {
     s32 hitstatus;
     s32 joint_id;
@@ -640,18 +640,18 @@ struct ftHurtbox
     Vec3f size;
 };
 
-struct ftHitlog // Might have to return once structs are cleaned up (alas once forward declarations are implemented to replace void* with struct*)
+struct FTHitlog // Might have to return once structs are cleaned up (alas once forward declarations are implemented to replace void* with struct*)
 {
     s32 attacker_object_class;
     void *attacker_hit;
     s32 hitbox_id;
     GObj *attacker_gobj;
-    ftHurtbox *victim_hurt; // Victim fighter's hurtbox
+    FTDamageColl *victim_hurt; // Victim fighter's hurtbox
     u8 attacker_player;
     s32 attacker_player_number;
 };
 
-struct ftItemThrow
+struct FTItemThrow
 {
     sb32 is_smash_throw : 1;
     s32 velocity : 10;
@@ -659,13 +659,13 @@ struct ftItemThrow
     u32 damage : 10;
 };
 
-struct ftItemSwing
+struct FTItemSwing
 {
     u32 anim_speed : 10;
 };
 
 // PObj / Polygon object?
-struct ftParts
+struct FTParts
 {
     s32 transform_update_mode;              // Update mode of DObj's transformations?
     // 0 = free transformation updates
@@ -684,7 +684,7 @@ struct ftParts
         s32 unk_dobjtrans_word;
     };
 
-    ftParts *alloc_next;
+    FTParts *alloc_next;
     u8 flags;
     u8 joint_id;
     ub8 is_have_anim;
@@ -696,7 +696,7 @@ struct ftParts
     GObj *gobj;
 };
 
-struct ftWithheldPart
+struct FTWithheldPart
 {
     s32 root_joint_id;
     s32 parent_joint_id;
@@ -705,7 +705,7 @@ struct ftWithheldPart
 };
 
 // Skeleton joints for electric shock effects?
-struct ftSkeleton
+struct FTSkeleton
 {
     union
     {
@@ -715,7 +715,7 @@ struct ftSkeleton
     u8 flags;
 };
 
-struct ftShadow
+struct FTShadow
 {
     Vtx shadow_vertex1[8];
     Vtx shadow_vertex2[8];
@@ -723,21 +723,21 @@ struct ftShadow
     s32 unk_0x104;
 };
 
-struct ftCostume
+struct FTCostume
 {
     u8 royal[4];
     u8 team[3];
     u8 develop;
 };
 
-struct ftDemoDesc
+struct FTDemoDesc
 {
     s32 ft_kind;
     s32 costume;
     s32 shade;
 };
 
-struct ftAfterImage
+struct FTAfterImage
 {
     s16 translate_x;
     s16 translate_y;
@@ -745,21 +745,21 @@ struct ftAfterImage
     Vec3f vec;
 };
 
-struct ftCamera
+struct FTCamera
 {
-    ftStruct *target_fp;
+    FTStruct *target_fp;
     Vec3f target_pos;
     f32 unk_ftcobj_0x10;
 };
 
-struct ftSprites
+struct FTSprites
 {
-    Sprite *stock_spr;
-    int **stock_lut;
+    Sprite *stock_sprite;
+    int **stock_luts;
     Sprite *emblem;
 };
 
-struct ftComputer
+struct FTComputer
 {
     u8 objective;                           // CPU player's current objective
     u8 objective_default;                   // CPU player's default objective
@@ -828,7 +828,7 @@ struct ftComputer
     s32 target_line_id;                     // CPU's target's line ID
     Vec2f target_pos;                       // CPU's target's position
     f32 target_dist;                        // FLOAT_MAX when offstage
-    void *target_user;                      // ftStruct* most of the time, but can be itStruct* too when looking for nearest item
+    void *target_user;                      // FTStruct* most of the time, but can be ITStruct* too when looking for nearest item
     Vec2f origin_pos;                       // CPU player's TopN position at creation?
     Vec2f edge_pos;                         // CPU player's patrol range? (ends at edges of ground_line_id?)
     Vec2f stand_pos;                        // ??? Is this where the CPU player is supposed to stand when idling?
@@ -837,7 +837,7 @@ struct ftComputer
     f32 jump_predict;                       // CPU player uses this to predict what jump height to go for?
 };
 
-struct ftComputerAttack
+struct FTComputerAttack
 {
     s32 input_kind;
     s32 hit_start_frame;
@@ -848,7 +848,7 @@ struct ftComputerAttack
     f32 detect_far_y;
 };
 
-struct ftPlayerInput
+struct FTPlayerInput
 {
     u16 button_hold;
     u16 button_tap;
@@ -857,13 +857,13 @@ struct ftPlayerInput
     Vec2b stick_prev; // Previous stick range?
 };
 
-struct ftComputerInput
+struct FTComputerInput
 {
     u16 button_inputs;
     Vec2b stick_range; // CPU stick input?
 };
 
-union ftKeyCommand
+union FTKeyCommand
 {
     u16 halfword;
 
@@ -877,13 +877,13 @@ union ftKeyCommand
     Vec2b stick_range;
 };
 
-struct ftKey
+struct FTKey
 {
     s32 input_wait;
-    ftKeyCommand *input_seq;
+    FTKeyCommand *input_seq;
 };
 
-struct ftAttributes
+struct FTAttributes
 {
     f32 size_mul;
     f32 walkslow_anim_length;
@@ -924,13 +924,13 @@ struct ftAttributes
     f32 closeup_camera_zoom;
     f32 camera_zoom;
     f32 camera_zoom_default;
-    mpObjectColl objcoll;
+    MPObjectColl object_coll;
     Vec2f cliffcatch_coll; // Ledge grab box
     u16 dead_sfx[2]; // KO voices
     u16 deadup_sfx;  // Star-KO voice
     u16 damage_sfx;
     u16 smash_sfx[3]; // Random Smash SFX
-    ftItemPickup item_pickup;
+    FTItemPickup item_pickup;
     u16 item_throw_vel;
     u16 item_throw_mul;
     u16 heavyget_sfx;
@@ -959,7 +959,7 @@ struct ftAttributes
     ub32 is_have_specialairlw: 1;
     ub32 is_have_catch       : 1;   // Whether fighter has a grab
     ub32 is_have_voice       : 1;
-    ftHurtboxDesc fighter_hurt_desc[FTPARTS_HURT_NUM_MAX];
+    FTDamageCollDesc damage_colls_desc[FTPARTS_HURT_NUM_MAX];
     Vec3f hit_detect_range;         // This is a radius around the fighter within which hitbox detection can occur
     u32 *setup_parts;               // Pointer to two sets of flags marking joints that should be initialized on fighter creation
     u32 *animlock;                  // Pointer to two sets of flags marking joints that should not be animated;
@@ -967,8 +967,8 @@ struct ftAttributes
     s32 effect_joint_ids[5];        // The game will cycle through these joints when applying certain particles such as electricity and flames
     sb32 cliff_status_ga[5];        // Bool for whether fighter is grounded or airborne during each cliff state
     u8 filler_0x2CC[0x2D0 - 0x2CC];
-    ftWithheldPart *withheld_parts;
-    ftCommonPartContainer *commonparts_container;
+    FTWithheldPart *withheld_parts;
+    FTCommonPartContainer *commonparts_container;
     DObjDesc *dobj_lookup; // WARNING: Not actually DObjDesc* but I don't know what this struct is or what its bounds are; bunch of consecutive floats
     AObjEvent32 **shield_anim_joints[8];  // One for each ordinal direction
     s32 joint_rfoot_id; // What does this do?
@@ -979,17 +979,17 @@ struct ftAttributes
     f32 unk_0x31C;
     f32 unk_0x320;
     Vec3f *translate_scales; // Scales the translation vector of a given joint?
-    ftModelPartContainer *modelparts_container;
-    ftMesh *mesh;
-    ftTexturePartContainer *textureparts_container;
+    FTModelPartContainer *modelparts_container;
+    FTMesh *mesh;
+    FTTexturePartContainer *textureparts_container;
     s32 joint_itemheavy_id;
-    ftThrownStatusArray *thrown_status;
+    FTThrownStatusArray *thrown_status;
     s32 joint_itemlight_id;
-    ftSprites *sprites;
-    ftSkeleton **skeleton;
+    FTSprites *sprites;
+    FTSkeleton **skeleton;
 };
 
-struct ftMesh
+struct FTMesh
 {
     s32 joint_id;
     Gfx *dl;
@@ -998,11 +998,11 @@ struct ftMesh
 };
 
 // Main fighter struct
-struct ftStruct
+struct FTStruct
 {
-    ftStruct *alloc_next;
+    FTStruct *alloc_next;
     GObj *fighter_gobj;
-    ftKind ft_kind;
+    FTKind ft_kind;
     u8 team;
     u8 player;
     u8 detail_current;          // Hi-Poly = 1, Low-Poly = 2
@@ -1017,14 +1017,12 @@ struct ftStruct
     s32 player_number;          // Player's number? (Note: NOT player port, e.g. if players 2 and 4 are in a match,
                                 // player 2 will be number 1 and player 4 will be number 2; used to match fighters and items?)
 
-    struct ftStatusInfo         // Status = Action State
-    {
-        u32 status_time_spent;  // Frames spent in this action state
-        ftPlayerKind pl_kind;
-        s32 status_id;
-        s32 motion_id;          // Index of moveset command script to use
+    u32 status_total_tics;      // Frames spent in this action state
 
-    } status_info;
+    FTPlayerKind pl_kind;
+
+    s32 status_id;
+    s32 motion_id;              // Index of moveset command script to use
 
     s32 percent_damage;
     s32 damage_resist;          // Resits a specific amount of % damage before breaking, effectively damage-based armor
@@ -1034,7 +1032,7 @@ struct ftStruct
     u32 hitlag_tics;
     s32 lr;                     // Facing direction; -1 = nGMFacingL, 1 = nGMFacingR
 
-    struct ftPhysicsInfo
+    struct FTPhysics
     {
         Vec3f vel_air; // Aerial self-induced velocity
         Vec3f vel_damage_air; // Aerial knockback velocity
@@ -1043,9 +1041,9 @@ struct ftStruct
         f32 vel_jostle_x;
         f32 vel_jostle_z;
 
-    } phys_info;
+    } physics;
 
-    mpCollData coll_data;
+    MPCollData coll_data;
 
     u8 jumps_used;
     u8 unk_ft_0x149;
@@ -1064,9 +1062,9 @@ struct ftStruct
 
     s32 card_anim_frame_id;             // Index of fighter's role on 1P Stage Card scene? (e.g. player character, opponent, ally etc.)
 
-    union ftCommandVars
+    union FTCommandVars
     {
-        struct ftCommandFlags
+        struct FTCommandFlags
         {
             u32 flag0;
             u32 flag1;
@@ -1075,7 +1073,7 @@ struct ftStruct
 
         } flags;
 
-        struct ftItemThrowFlags
+        struct FTItemThrowFlags
         {
             sb32 is_throw_item;
             u8 unk1;
@@ -1109,7 +1107,7 @@ struct ftStruct
     ub32 is_playertag_hide : 1;         // Skip rendering player indicator if TRUE
     ub32 is_playertag_bossend : 1;      // Also skips rendering player indicator? Used only in "Master Hand defeated" cinematic from what I can tell so far
     ub32 is_playing_effect : 1;
-    u32 effect_joint_array_id : 4;      // Goes up to 5 by default; index of the array from effect_joint_ids from ftAttributes which houses the actual joint ID
+    u32 effect_joint_array_id : 4;      // Goes up to 5 by default; index of the array from effect_joint_ids from FTAttributes which houses the actual joint ID
     ub32 is_shield : 1;                 // Fighter's shield bubble is active
     ub32 is_attach_effect : 1;          // Destroy GFX on action state change if TRUE, not sure why this and is_playing_effect are different
     ub32 is_ignore_jostle : 1;
@@ -1138,27 +1136,27 @@ struct ftStruct
     u8 capture_immune_mask;             // Fighter is immune to these grab types
     u8 catch_mask;                      // Fighter's current grab type
 
-    ftAnimDesc anim_desc;
+    FTAnimDesc anim_desc;
     Vec3f anim_vel;
 
     f32 ifpos_x;
     f32 ifpos_y;
 
-    struct ftInputStruct
+    struct FTInputStruct
     {
         void *controller;               // Controller inputs?
         u16 button_mask_a;
         u16 button_mask_b;
         u16 button_mask_z;
         u16 button_mask_l;
-        ftPlayerInput pl;
-        ftComputerInput cp;
+        FTPlayerInput pl;
+        FTComputerInput cp;
 
     } input;
 
-    ftComputer fighter_com;
+    FTComputer computer;
 
-    Vec2f hurtbox_size;                 // Width and height of fighter's hurtbox; calculated from distance of TopN position to farthest hurtbox multiplied by 0.55
+    Vec2f damage_coll_size;             // Width and height of fighter's hurtbox; calculated from distance of TopN position to farthest hurtbox multiplied by 0.55
 
     u8 tap_stick_x;                     // Frames control stick has been tapped
     u8 tap_stick_y;                     // Frames control stick has been tapped
@@ -1175,41 +1173,41 @@ struct ftStruct
     u16 shuffle_tics;                   // Model shift timer
 
     GObj *throw_gobj;                   // GObj of opponent that threw this fighter
-    ftKind throw_ft_kind;               // Kind of opponent that threw this fighter
+    FTKind throw_ft_kind;               // Kind of opponent that threw this fighter
     u8 throw_team;                      // Team of opponent that threw this fighter
     u8 throw_player;                    // Port of opponent that threw this fighter
     s32 throw_player_number;            // Player number of opponent that threw this fighter
 
     u32 attack_id;                      // Also used in staling queue
     u16 motion_count;                   // This is used to tell the game not to stale multihit attacks
-    gmStatFlags stat_flags;
+    GMStatFlags stat_flags;
     u16 stat_count;
 
-    ftHitbox fighter_hit[4];
+    FTHitColl hit_colls[4];
 
     s32 invincible_tics;
     s32 intangible_tics;
-    s32 special_hitstatus;
+    s32 special_collstatus;
     s32 star_invincible_tics;
-    s32 star_hitstatus;  // Enemy CPUs avoid player depending on this?
+    s32 star_hitstatus;                 // Enemy CPUs avoid player depending on this?
     s32 hitstatus;
 
-    ftHurtbox fighter_hurt[FTPARTS_HURT_NUM_MAX];
+    FTDamageColl damage_colls[FTPARTS_HURT_NUM_MAX];
 
-    f32 unk_ft_0x7A0;       // Unused?
+    f32 unk_ft_0x7A0;                   // Unused?
     f32 hitlag_mul;
     f32 shield_lifeup_wait;
-    s32 unk_ft_0x7AC;       // Unused?
+    s32 unk_ft_0x7AC;                   // Unused?
 
     s32 attack_damage;
     f32 attack_knockback;
     u16 attack_hit_count;               // Number of times this fighter successfully dealt damage 
     s32 attack_shield_push;             // Used to calculate shield/rebound pushback
     f32 attack_rebound;                 // Actually 2x staled damage?
-    s32 lr_attack;
+    s32 attack_lr;
     s32 shield_damage;
     s32 shield_damage_total;            // shield_damage + hitbox damage + hitbox shield damage, does not persist?
-    s32 lr_shield;
+    s32 shield_lr;
     s32 shield_player;                  // Port of player hitting this fighter's shield
     s32 reflect_damage;
     s32 damage_lag;                     // Used to calculate hitlag?
@@ -1220,7 +1218,7 @@ struct ftStruct
     s32 damage_queue;                   // Used to calculate knockback?
     s32 damage_angle;
     s32 damage_element;
-    s32 lr_damage;
+    s32 damage_lr;
     s32 damage_index;
     s32 damage_joint_id;
     s32 damage_player_number;
@@ -1230,8 +1228,8 @@ struct ftStruct
     s32 damage_heal;                    // Percent damage to heal
     f32 damage_mul;
     s32 damage_object_class;            // Fighter, Weapon, Item or Ground
-    s32 damage_object_kind;             // ftKind, wpKind, itKind, envKind
-    gmStatFlags damage_stat_flags;
+    s32 damage_object_kind;             // FTKind, WPKind, ITKind, envKind
+    GMStatFlags damage_stat_flags;
     u16 damage_stat_count;
 
     f32 publicity_knockback;            // Knockback value used for crowd reactions
@@ -1243,26 +1241,26 @@ struct ftStruct
     GObj *catch_gobj;                   // GObj this fighter has caught
     GObj *capture_gobj;                 // GObj this fighter is captured by
 
-    ftThrowHitDesc *fighter_throw;      // Pointer to throw description
+    FTThrowHitDesc *fighter_throw;      // Pointer to throw description
 
     GObj *item_hold;
 
-    ftSpecialHit *special_hit;
+    FTSpecialColl *special_coll;
 
     Vec3f entry_pos;
 
     f32 camera_zoom_frame;              // Maximum size of fighter's camera range?
     f32 camera_zoom_range;              // Multiplier of fighter's camera range?
 
-    ftMotionScript motion_script[2][2];
+    FTMotionScript motion_script[2][2];
 
     DObj *joints[FTPARTS_JOINT_NUM_MAX];
 
-    ftModelPartStatus modelpart_status[FTPARTS_JOINT_NUM_MAX - nFTPartsJointCommonStart]; // -1 = hidden, 0 and up = draw model part ID
-    ftTexturePartStatus texturepart_status[2];
+    FTModelPartStatus modelpart_status[FTPARTS_JOINT_NUM_MAX - nFTPartsJointCommonStart]; // -1 = hidden, 0 and up = draw model part ID
+    FTTexturePartStatus texturepart_status[2];
 
-    ftData *ft_data;
-    ftAttributes *attributes;
+    FTData *ft_data;
+    FTAttributes *attributes;
 
     void **figatree;                // Main animation bank?
     void **figatree_heap;           // Load animations into this?
@@ -1290,53 +1288,53 @@ struct ftStruct
     alSoundEffect *p_loop_sfx;
     u16 loop_sfx_id;
 
-    gmColAnim colanim;
+    GMColAnim colanim;
 
     syColorRGBA fog_color;      // Used only by Master Hand, when in the background on the -Z plane?
     syColorRGBA shade_color;    // Shade colors of character costume
 
-    ftKey key;                  // Automatic input sequence struct
+    FTKey key;                  // Automatic input sequence struct
 
-    struct ftAfterImageInfo
+    struct FTAfterImageInfo
     {
         ub8 is_itemswing;
         s8 drawstatus;
         u8 desc_index;
-        ftAfterImage desc[3];
+        FTAfterImage desc[3];
 
     } afterimage;
 
-    union ftFighterVars
+    union FTFighterVars
     {
-        ftMarioFighterVars      mario;
-        ftDonkeyFighterVars     donkey;
-        ftSamusFighterVars      samus;
-        ftLinkFighterVars       link;
-        ftCaptainFighterVars    captain;
-        ftKirbyFighterVars      kirby;
-        ftPikachuFighterVars    pikachu;
-        ftPurinFighterVars      purin;
-        ftNessFighterVars       ness;
-        ftBossFighterVars       boss;
+        FTMarioFighterVars      mario;
+        FTDonkeyFighterVars     donkey;
+        FTSamusFighterVars      samus;
+        FTLinkFighterVars       link;
+        FTCaptainFighterVars    captain;
+        FTKirbyFighterVars      kirby;
+        FTPikachuFighterVars    pikachu;
+        FTPurinFighterVars      purin;
+        FTNessFighterVars       ness;
+        FTBossFighterVars       boss;
 
     } fighter_vars;
 
     s32 hammer_tics;
 
-    union ftStatusVars
+    union FTStatusVars
     {
-        ftCommonStatusVars      common;
-        ftMarioStatusVars       mario;
-        ftFoxStatusVars         fox;
-        ftDonkeyStatusVars      donkey;
-        ftSamusStatusVars       samus;
-        ftLinkStatusVars        link;
-        ftYoshiStatusVars       yoshi;
-        ftCaptainStatusVars     captain;
-        ftKirbyStatusVars       kirby;
-        ftPikachuStatusVars     pikachu;
-        ftNessStatusVars        ness;
-        ftBossStatusVars        boss;
+        FTCommonStatusVars      common;
+        FTMarioStatusVars       mario;
+        FTFoxStatusVars         fox;
+        FTDonkeyStatusVars      donkey;
+        FTSamusStatusVars       samus;
+        FTLinkStatusVars        link;
+        FTYoshiStatusVars       yoshi;
+        FTCaptainStatusVars     captain;
+        FTKirbyStatusVars       kirby;
+        FTPikachuStatusVars     pikachu;
+        FTNessStatusVars        ness;
+        FTBossStatusVars        boss;
 
     } status_vars;
 

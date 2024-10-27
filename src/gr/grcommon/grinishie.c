@@ -63,7 +63,7 @@ void grInishieScaleUpdateFighterStatsGA(void)
 
     while (fighter_gobj != NULL)
     {
-        ftStruct *fp = ftGetStruct(fighter_gobj);
+        FTStruct *fp = ftGetStruct(fighter_gobj);
         s32 player = fp->player;
 
         if (fp->ga == nMPKineticsGround)
@@ -93,7 +93,7 @@ f32 grInishieScaleGetPressure(s32 line_id)
 
     while (fighter_gobj != NULL)
     {
-        ftStruct *fp = ftGetStruct(fighter_gobj);
+        FTStruct *fp = ftGetStruct(fighter_gobj);
 
         if (fp->ga == nMPKineticsGround)
         {
@@ -528,7 +528,7 @@ void grInishieMakePowerBlock(void)
         gGRCommonStruct.inishie.pblock_pos_ids[i] = pos_ids[i];
     }
     gGRCommonStruct.inishie.pblock_status = nGRInishiePowerBlockStatusWait;
-    gGRCommonStruct.inishie.gr_hit = (grHitbox*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRInishiePowerBlockHit);
+    gGRCommonStruct.inishie.gr_hitcoll = (GRHitCollision*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRInishiePowerBlockHit);
 }
 
 // 0x80109B4C
@@ -541,17 +541,17 @@ void grInishiePowerBlockSetDamage(void)
 }
 
 // 0x80109B8C
-sb32 grInishiePowerBlockCheckGetDamageKind(GObj *item_gobj, GObj *fighter_gobj, grHitbox **gr_hit, s32 *kind)
+sb32 grInishiePowerBlockCheckGetDamageKind(GObj *item_gobj, GObj *fighter_gobj, GRHitCollision **gr_hitcoll, s32 *kind)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->ga == nMPKineticsGround)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         if (fighter_gobj != ip->damage_gobj)
         {
-            *gr_hit = gGRCommonStruct.inishie.gr_hit;
+            *gr_hitcoll = gGRCommonStruct.inishie.gr_hitcoll;
             *kind = nGMHitEnvironmentPowerBlock;
 
             return TRUE;

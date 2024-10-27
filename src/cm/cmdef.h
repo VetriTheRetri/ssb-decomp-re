@@ -7,16 +7,16 @@
 #define CAMERA_FLAG_BOUND_TOP    (1 << nCMDirectionBoundTop)
 
 // Enums
-typedef enum cmDirectionBounds
+typedef enum CMDirectionBounds
 {
     nCMDirectionBoundLeft,
     nCMDirectionBoundRight,
     nCMDirectionBoundBottom,
     nCMDirectionBoundTop
 } 
-cmDirectionBounds;
+CMDirectionBounds;
 
 // Structs
-typedef struct cmStruct                 cmStruct;
+typedef struct CMStruct CMStruct;
 
 #endif

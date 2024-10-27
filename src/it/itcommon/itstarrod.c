@@ -20,7 +20,7 @@ lITStarRodWeaponStarSmashAttributes;        // 0x00000508
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITStarRodItemDesc =
+ITCreateDesc dITStarRodItemDesc =
 {
     nITKindStarRod,                         // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -44,7 +44,7 @@ itCreateDesc dITStarRodItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITStarRodStatusDescs[/* */] =
+ITStatusDesc dITStarRodStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -107,7 +107,7 @@ itStatusDesc dITStarRodStatusDescs[/* */] =
     }
 };
 
-wpCreateDesc dITStarRodWeaponStarWeaponDesc =
+WPCreateDesc dITStarRodWeaponStarWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindStarRodStar,                     // Weapon Kind
@@ -156,7 +156,7 @@ enum itStarRodStatus
 // 0x80177E80
 sb32 itStarRodFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITSTARROD_GRAVITY, ITSTARROD_TVEL);
     itVisualsUpdateSpin(item_gobj);
@@ -190,7 +190,7 @@ void itStarRodWaitSetStatus(GObj *item_gobj)
 // 0x80177F4C
 void itStarRodFallSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
@@ -209,7 +209,7 @@ void itStarRodHoldSetStatus(GObj *item_gobj)
 // 0x80177FC4
 sb32 itStarRodThrownProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITSTARROD_GRAVITY, ITSTARROD_TVEL);
     itVisualsUpdateSpin(item_gobj);
@@ -226,9 +226,9 @@ sb32 itStarRodThrownProcMap(GObj *item_gobj)
 // 0x80178030
 sb32 itStarRodThrownProcHit(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hit.update_state = nGMHitUpdateDisable;
+    ip->hit_coll.update_state = nGMHitUpdateDisable;
 
     itMainVelSetRebound(item_gobj);
 
@@ -245,7 +245,7 @@ void itStarRodThrownSetStatus(GObj *item_gobj)
 // 0x8017809C
 sb32 itStarRodDroppedProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {
@@ -268,13 +268,13 @@ GObj* itStarRodMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
     if (item_gobj != NULL)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         ip->it_multi = ITSTARROD_AMMO_MAX;
 
         ip->is_unused_item_bool = TRUE;
 
-        ip->indicator_gobj = ifCommonItemArrowMakeInterface(ip);
+        ip->arrow_gobj = ifCommonItemArrowMakeInterface(ip);
     }
     return item_gobj;
 }
@@ -282,7 +282,7 @@ GObj* itStarRodMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 // 0x801781B0
 sb32 itStarRodWeaponStarProcUpdate(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f pos;
     DObj *dobj;
 
@@ -315,7 +315,7 @@ sb32 itStarRodWeaponStarProcUpdate(GObj *weapon_gobj)
 // 0x801782D4
 sb32 itStarRodWeaponStarProcMap(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
     if (wpMapTestAllCheckCollEnd(weapon_gobj) != FALSE)
     {
@@ -331,7 +331,7 @@ sb32 itStarRodWeaponStarProcMap(GObj *weapon_gobj)
 // 0x8017832C
 sb32 itStarRodWeaponStarProcHit(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
     efManagerStarSplashMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->lr);
 
@@ -341,14 +341,14 @@ sb32 itStarRodWeaponStarProcHit(GObj *weapon_gobj)
 // 0x8017835C
 sb32 itStarRodWeaponStarProcHop(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_80019438(&wp->phys_info.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
+    func_80019438(&wp->physics.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
-    if (wp->phys_info.vel_air.x > 0.0F)
+    if (wp->physics.vel_air.x > 0.0F)
     {
         wp->lr = nGMFacingR;
     }
@@ -360,12 +360,12 @@ sb32 itStarRodWeaponStarProcHop(GObj *weapon_gobj)
 // 0x80178404
 sb32 itStarRodWeaponStarProcReflector(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    ftStruct *fp = ftGetStruct(wp->owner_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    FTStruct *fp = ftGetStruct(wp->owner_gobj);
 
     wpMainReflectorSetLR(wp, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     wp->lr = -wp->lr;
@@ -378,7 +378,7 @@ GObj* itStarRodWeaponStarMakeWeapon(GObj *fighter_gobj, Vec3f *pos, ub8 is_smash
 {
     GObj *weapon_gobj;
     DObj *dobj;
-    wpStruct *wp;
+    WPStruct *wp;
 
     if (is_smash == TRUE)
     {
@@ -393,7 +393,7 @@ GObj* itStarRodWeaponStarMakeWeapon(GObj *fighter_gobj, Vec3f *pos, ub8 is_smash
     dobj = DObjGetStruct(weapon_gobj);
     wp = wpGetStruct(weapon_gobj);
 
-    wp->phys_info.vel_air.x = ((!(is_smash)) ? ITSTARROD_AMMO_TILTVEL_X : ITSTARROD_AMMO_SMASH_VEL_X) * wp->lr;
+    wp->physics.vel_air.x = ((!(is_smash)) ? ITSTARROD_AMMO_TILTVEL_X : ITSTARROD_AMMO_SMASH_VEL_X) * wp->lr;
 
     wp->weapon_vars.star.lifetime = (!(is_smash)) ? ITSTARROD_AMMO_TILT_LIFETIME : ITSTARROD_AMMO_SMASH_LIFETIME; // Why float lol
 
@@ -409,7 +409,7 @@ GObj* itStarRodWeaponStarMakeWeapon(GObj *fighter_gobj, Vec3f *pos, ub8 is_smash
 // 0x80178594
 void itStarRodMakeStar(GObj *fighter_gobj, Vec3f *pos, ub8 is_smash)
 {
-    itStruct *ip = itGetStruct(ftGetStruct(fighter_gobj)->item_hold);
+    ITStruct *ip = itGetStruct(ftGetStruct(fighter_gobj)->item_hold);
 
     itStarRodWeaponStarMakeWeapon(fighter_gobj, pos, is_smash);
 

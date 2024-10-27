@@ -15,8 +15,8 @@ void ftBossOkuhikouki1ProcUpdate(GObj *fighter_gobj)
 // 0x80159524
 void ftBossOkuhikouki1SetStatus(GObj *fighter_gobj)
 {
-    ftStruct *target_fp;
-    ftStruct *boss_fp;
+    FTStruct *target_fp;
+    FTStruct *boss_fp;
     s32 line_id;
 
     ftMainSetFighterStatus(fighter_gobj, nFTBossStatusOkuhikouki1, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);

@@ -18,7 +18,7 @@ extern void ftCaptainSpecialAirNSwitchStatusGround(GObj* fighter_gobj);
 extern void ftCaptainSpecialNSwitchStatusAir(GObj* fighter_gobj);
 extern void ftCaptainSpecialNProcMap(GObj* fighter_gobj);
 extern void ftCaptainSpecialAirNProcMap(GObj* fighter_gobj);
-extern void ftCaptainSpecialNInitStatusVars(GObj* fighter_gobj);
+extern void ftCaptainSpecialNInITStatusVars(GObj* fighter_gobj);
 extern void func_ovl3_8015FB54();
 extern void ftCaptainSpecialNSetStatus(GObj* fighter_gobj);
 extern void ftCaptainSpecialAirNSetStatus(GObj* fighter_gobj);
@@ -48,7 +48,7 @@ extern void jtgt_ovl3_801601A0(GObj* fighter_gobj);
 extern void ftCaptainSpecialAirLwSetStatus(GObj* fighter_gobj);
 
 // SpecialHi / SpecialAirHi
-extern void ftCaptainSpecialHiSetCatchParams(ftStruct* fp);
+extern void ftCaptainSpecialHiSetCatchParams(FTStruct* fp);
 extern void ftCaptainSpecialHiProcUpdate(GObj* fighter_gobj);
 extern void ftCaptainSpecialHiCatchProcUpdate(GObj* fighter_gobj);
 extern void ftCaptainSpecialHiProcInterrupt(GObj* fighter_gobj);

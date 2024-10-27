@@ -15,11 +15,11 @@ extern Gfx dFTDisplayMainHitCollisionCubeDL[/* */];
 extern Gfx dFTDisplayMainMapCollisionBottomDL[/* */];
 extern Gfx dFTDisplayMainMapCollisionTopDL[/* */];
 
-extern ftOpeningDesc *D_ovl1_80390D20[/* */];
-extern ftOpeningDesc D_ovl1_80390BE8;
+extern FTOpeningDesc *D_ovl1_80390D20[/* */];
+extern FTOpeningDesc D_ovl1_80390BE8;
 
-#define ftGetStruct(fighter_gobj) 	((ftStruct*)(fighter_gobj)->user_data.p)
-#define ftGetParts(fighter_dobj) 	((ftParts *)(fighter_dobj)->user_data.p)
+#define ftGetStruct(fighter_gobj) 	((FTStruct*)(fighter_gobj)->user_data.p)
+#define ftGetParts(fighter_dobj) 	((FTParts *)(fighter_dobj)->user_data.p)
 
 #define ftSetupDropItem(fp)                          	\
 {                                                     	\
@@ -28,20 +28,20 @@ extern ftOpeningDesc D_ovl1_80390BE8;
 	itMainSetFighterDrop((fp)->item_hold, &vel, 1.0F);	\
 }
 
-#define ftKeyCommandCast(input_seq, type) ((type*)(input_seq))
+#define FTKeyCommandCast(input_seq, type) ((type*)(input_seq))
 
-#define ftKeyGetButtons(input_seq) (*(ftKeyCommandCast((input_seq), u16)))
+#define FTKeyGetButtons(input_seq) (*(FTKeyCommandCast((input_seq), u16)))
 
-#define ftKeyGetStickRange(input_seq) (ftKeyCommandCast((input_seq), Vec2b))
+#define FTKeyGetStickRange(input_seq) (FTKeyCommandCast((input_seq), Vec2b))
 
 #define ftGetComTargetFighter(ft_com) \
-((ftStruct*)(ft_com)->target_user)
+((FTStruct*)(ft_com)->target_user)
 
 #define ftGetComTargetWeapon(ft_com) \
-((wpStruct*)(ft_com)->target_user)
+((WPStruct*)(ft_com)->target_user)
 
 #define ftGetComTargetItem(ft_com) \
-((itStruct*)(ft_com)->target_user)
+((ITStruct*)(ft_com)->target_user)
 
 // Macro to check if a move has been interrupted by any standard action
 #define ftCommonGroundCheckInterrupt(fighter_gobj)                    	\

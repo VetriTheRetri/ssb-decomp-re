@@ -134,7 +134,7 @@ void scVSBattleFuncStart(void)
 	s32 player;
 	sb32 (*func_dmem)(void);
 	void *file;
-	ftCreateDesc ft_desc;
+	FTCreateDesc ft_desc;
 	syColorRGBA color;
 
 	gSceneData.is_reset = FALSE;
@@ -237,8 +237,8 @@ sb32 scVSBattleSetScoreCheckSuddenDeath(void)
 	s32 result_count;
 	s32 tied_players;
 	s32 i, j;
-	scBattleResults winner_results;
-	scBattleResults player_results[GMCOMMON_PLAYERS_MAX];
+	SCBattleResults winner_results;
+	SCBattleResults player_results[GMCOMMON_PLAYERS_MAX];
 
 	if (!(gBattleState->game_rules & SCBATTLE_GAMERULE_TIME))
 	{
@@ -422,7 +422,7 @@ void scVSBattleStartSudddenDeath(void)
 	s32 unused[3];
 	GObj *fighter_gobj;
 	s32 player;
-	ftCreateDesc ft_desc;
+	FTCreateDesc ft_desc;
 	syColorRGBA color;
 
 	gSceneData.is_reset = FALSE;

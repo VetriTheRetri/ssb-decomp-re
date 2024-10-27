@@ -64,7 +64,7 @@ s32 sMNModeSelectTotalTimeTics;
 s32 sMNModeSelectReturnTic;
 
 // 0x80132CA8
-lbFileNode sMNModeSelectStatusBuffer[24];
+LBFileNode sMNModeSelectStatusBuffer[24];
 
 // 0x80132D68
 void *sMNModeSelectFiles[2];
@@ -716,7 +716,7 @@ void mnModeSelectFuncRun(GObj *gobj)
 // 0x80132A0C
 void mnModeSelectFuncStart(void)
 {
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

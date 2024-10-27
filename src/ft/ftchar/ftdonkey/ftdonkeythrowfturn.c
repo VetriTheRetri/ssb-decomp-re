@@ -20,7 +20,7 @@
 // 0x8014D740
 void ftDonkeyThrowFTurnProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->command_vars.flags.flag1 != 0)
     {
@@ -28,7 +28,7 @@ void ftDonkeyThrowFTurnProcUpdate(GObj *fighter_gobj)
 
         fp->lr = -fp->lr;
 
-        fp->phys_info.vel_ground.x = -fp->phys_info.vel_ground.x;
+        fp->physics.vel_ground.x = -fp->physics.vel_ground.x;
     }
     ftAnimEndCheckSetStatus(fighter_gobj, ftDonkeyThrowFWaitSetStatus);
 }
@@ -45,7 +45,7 @@ void ftDonkeyThrowFTurnProcInterrupt(GObj *fighter_gobj)
 // 0x8014D7D0
 void ftDonkeyThrowFTurnSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->command_vars.flags.flag1 = 0;
 

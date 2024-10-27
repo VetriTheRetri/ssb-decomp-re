@@ -10,8 +10,8 @@
 // 0x8014A5F0
 void ftCommonCapturePulledRotateScale(GObj *fighter_gobj, Vec3f *this_pos, Vec3f *rotate)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
-    ftStruct *capture_fp = ftGetStruct(this_fp->capture_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *capture_fp = ftGetStruct(this_fp->capture_gobj);
     DObj *joint = DObjGetStruct(fighter_gobj)->child;
     Mtx44f mtx;
 
@@ -28,7 +28,7 @@ void ftCommonCapturePulledRotateScale(GObj *fighter_gobj, Vec3f *this_pos, Vec3f
 // 0x8014A6B4
 void ftCommonCapturePulledProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
 
     ftCommonCapturePulledRotateScale(fighter_gobj, &pos, &DObjGetStruct(fighter_gobj)->rotate.vec.f);
@@ -36,7 +36,7 @@ void ftCommonCapturePulledProcPhysics(GObj *fighter_gobj)
     DObjGetStruct(fighter_gobj)->translate.vec.f.x = pos.x;
     DObjGetStruct(fighter_gobj)->translate.vec.f.z = pos.z;
 
-    if ((fp->status_info.status_id == nFTCommonStatusCapturePulled) && (fp->status_vars.common.capture.is_goto_pulled_wait != FALSE))
+    if ((fp->status_id == nFTCommonStatusCapturePulled) && (fp->status_vars.common.capture.is_goto_pulled_wait != FALSE))
     {
         ftCommonCaptureWaitSetStatus(fighter_gobj);
     }
@@ -45,9 +45,9 @@ void ftCommonCapturePulledProcPhysics(GObj *fighter_gobj)
 // 0x8014A72C
 void ftCommonCapturePulledProcMap(GObj *fighter_gobj)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *capture_gobj = this_fp->capture_gobj;
-    ftStruct *capture_fp = ftGetStruct(capture_gobj);
+    FTStruct *capture_fp = ftGetStruct(capture_gobj);
     Vec3f *this_pos = &DObjGetStruct(fighter_gobj)->translate.vec.f;
     Vec3f capture_pos;
     f32 dist_y;
@@ -91,8 +91,8 @@ void ftCommonCapturePulledProcMap(GObj *fighter_gobj)
 // 0x8014A860
 void ftCommonCapturePulledProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
-    ftStruct *capture_fp;
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *capture_fp;
 
     ftParamStopVoiceRunProcDamage(fighter_gobj);
 

@@ -9,7 +9,7 @@
 // 0x8015A600
 void ftBossYubideppou2UpdatePosition(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
     Vec3f vel;
     f32 magnitude;
@@ -24,23 +24,23 @@ void ftBossYubideppou2UpdatePosition(GObj *fighter_gobj)
 
     if (magnitude < 5.0F)
     {
-        fp->phys_info.vel_air.x = vel.x;
-        fp->phys_info.vel_air.y = vel.y;
+        fp->physics.vel_air.x = vel.x;
+        fp->physics.vel_air.y = vel.y;
     }
     else
     {
         syVectorNorm3D(&vel);
         syVectorScale3D(&vel, magnitude * 0.1F);
 
-        fp->phys_info.vel_air.x = vel.x;
-        fp->phys_info.vel_air.y = vel.y;
+        fp->physics.vel_air.x = vel.x;
+        fp->physics.vel_air.y = vel.y;
     }
 }
 
 // 0x8015A6FC
 void ftBossYubideppou2ProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->status_vars.boss.yubideppou.wait_timer--;
 
@@ -54,7 +54,7 @@ void ftBossYubideppou2ProcPhysics(GObj *fighter_gobj)
 // 0x8015A748
 void ftBossYubideppou2SetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp;
+    FTStruct *fp;
 
     ftMainSetFighterStatus(fighter_gobj, nFTBossStatusYubideppou2, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 

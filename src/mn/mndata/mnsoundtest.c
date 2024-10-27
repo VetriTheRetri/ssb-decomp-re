@@ -86,7 +86,7 @@ f32 sMNSoundTestSelectIDPositionsX[nMNSoundTestOptionEnumMax];      // X-Positio
 s32 sMNSoundTestFadeOutWait;                                        // Frames to wait until fadeout is complete
 
 // 0x80134368
-lbFileNode sMNSoundTestStatusBuffer[32];
+LBFileNode sMNSoundTestStatusBuffer[32];
 
 // 0x80134468
 void *sMNSoundTestFiles[5];
@@ -1023,7 +1023,7 @@ void mnSoundTestFuncRun(GObj *gobj)
 // 0x801322B8
 void mnSoundTestSetupFiles(void)
 {
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

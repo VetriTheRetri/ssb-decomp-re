@@ -90,31 +90,31 @@
     }                                                 \
 }
 
-#define LBBACKUP_FIGHTER_MASK_DEFINE(kind) (1 << (kind))
-#define LBBACKUP_GROUND_MASK_DEFINE(kind) (1 << (kind))
+#define LBBACKUP_MASK_FIGHTER(kind) (1 << (kind))
+#define LBBACKUP_MASK_STAGE(kind) (1 << (kind))
 
 #define LBBACKUP_CHARACTER_MASK_ALL					\
 (									 				\
-	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindMario) 	|	\
-	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindFox) 	|	\
-	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindDonkey)	|	\
-	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindSamus) 	|	\
-	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindLuigi) 	|	\
-	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindLink) 	|	\
-	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindYoshi) 	|	\
-	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindCaptain)|	\
-	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindKirby)	|	\
-	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindPikachu)|	\
-	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindPurin) 	|	\
-	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindNess)		\
+	LBBACKUP_MASK_FIGHTER(nFTKindMario) 	|	\
+	LBBACKUP_MASK_FIGHTER(nFTKindFox) 	|	\
+	LBBACKUP_MASK_FIGHTER(nFTKindDonkey)	|	\
+	LBBACKUP_MASK_FIGHTER(nFTKindSamus) 	|	\
+	LBBACKUP_MASK_FIGHTER(nFTKindLuigi) 	|	\
+	LBBACKUP_MASK_FIGHTER(nFTKindLink) 	|	\
+	LBBACKUP_MASK_FIGHTER(nFTKindYoshi) 	|	\
+	LBBACKUP_MASK_FIGHTER(nFTKindCaptain)|	\
+	LBBACKUP_MASK_FIGHTER(nFTKindKirby)	|	\
+	LBBACKUP_MASK_FIGHTER(nFTKindPikachu)|	\
+	LBBACKUP_MASK_FIGHTER(nFTKindPurin) 	|	\
+	LBBACKUP_MASK_FIGHTER(nFTKindNess)		\
 )
 
 #define LBBACKUP_CHARACTER_MASK_UNLOCK				\
 (													\
-	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindNess) 	|	\
-	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindPurin) 	|	\
-	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindCaptain)| 	\
-	LBBACKUP_FIGHTER_MASK_DEFINE(nFTKindLuigi)		\
+	LBBACKUP_MASK_FIGHTER(nFTKindNess) 	|	\
+	LBBACKUP_MASK_FIGHTER(nFTKindPurin) 	|	\
+	LBBACKUP_MASK_FIGHTER(nFTKindCaptain)| 	\
+	LBBACKUP_MASK_FIGHTER(nFTKindLuigi)		\
 )
 
 #define LBBACKUP_CHARACTER_MASK_STARTER (LBBACKUP_CHARACTER_MASK_ALL & ~LBBACKUP_CHARACTER_MASK_UNLOCK)
@@ -143,14 +143,14 @@
 
 #define LBBACKUP_GROUND_MASK_ALL 					\
 (													\
-	LBBACKUP_GROUND_MASK_DEFINE(nGRKindCastle) 	| 	\
-	LBBACKUP_GROUND_MASK_DEFINE(nGRKindSector) 	|	\
-	LBBACKUP_GROUND_MASK_DEFINE(nGRKindJungle) 	|	\
-	LBBACKUP_GROUND_MASK_DEFINE(nGRKindZebes) 	|	\
-	LBBACKUP_GROUND_MASK_DEFINE(nGRKindHyrule) 	|	\
-	LBBACKUP_GROUND_MASK_DEFINE(nGRKindYoster) 	|	\
-	LBBACKUP_GROUND_MASK_DEFINE(nGRKindPupupu) 	| 	\
-	LBBACKUP_GROUND_MASK_DEFINE(nGRKindYamabuki)	\
+	LBBACKUP_MASK_STAGE(nGRKindCastle) 	| 	\
+	LBBACKUP_MASK_STAGE(nGRKindSector) 	|	\
+	LBBACKUP_MASK_STAGE(nGRKindJungle) 	|	\
+	LBBACKUP_MASK_STAGE(nGRKindZebes) 	|	\
+	LBBACKUP_MASK_STAGE(nGRKindHyrule) 	|	\
+	LBBACKUP_MASK_STAGE(nGRKindYoster) 	|	\
+	LBBACKUP_MASK_STAGE(nGRKindPupupu) 	| 	\
+	LBBACKUP_MASK_STAGE(nGRKindYamabuki)	\
 )
 
 #define LBBACKUP_ERROR_RANDOMKNOCKBACK (1 << nLBBackupErrorRandomKnockback)		// 0x1 - Random knockback between 0.1 (?) and 1.0 x 200u
@@ -189,21 +189,21 @@ typedef enum lbBackupErrors
 
 } lbBackupErrors;
 
-typedef struct lbRelocSetup					lbRelocSetup;
-typedef union  lbRelocDesc					lbRelocDesc;
-typedef struct lbInternBuffer					lbInternBuffer;
-typedef struct lbFileNode					lbFileNode;
-typedef struct lbTableEntry 				lbTableEntry;
-typedef struct lbScript                     lbScript;
-typedef struct lbScriptDesc                 lbScriptDesc;
-typedef struct lbTexture                    lbTexture;
-typedef struct lbTextureDesc                lbTextureDesc;
-typedef struct lbTransform		            lbTransform;
-typedef struct lbGenerator		            lbGenerator;
-typedef struct lbParticle		            lbParticle;
-typedef struct lbTransitionDesc				lbTransitionDesc;
-typedef struct lbBackup1PRecord             lbBackup1PRecord;
-typedef struct lbBackupVSRecord         lbBackupVSRecord;
-typedef struct lbBackupData                 lbBackupData;
+typedef struct LBRelocSetup					LBRelocSetup;
+typedef union  LBRelocDesc					LBRelocDesc;
+typedef struct LBInternBuffer					LBInternBuffer;
+typedef struct LBFileNode					LBFileNode;
+typedef struct LBTableEntry 				LBTableEntry;
+typedef struct LBScript                     LBScript;
+typedef struct LBScriptDesc                 LBScriptDesc;
+typedef struct LBTexture                    LBTexture;
+typedef struct LBTextureDesc                LBTextureDesc;
+typedef struct LBTransform		            LBTransform;
+typedef struct LBGenerator		            LBGenerator;
+typedef struct LBParticle		            LBParticle;
+typedef struct LBTransitionDesc				LBTransitionDesc;
+typedef struct LBBackup1PRecord             LBBackup1PRecord;
+typedef struct LBBackupVSRecord         LBBackupVSRecord;
+typedef struct LBBackupData                 LBBackupData;
 
 #endif

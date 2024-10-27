@@ -112,7 +112,7 @@ f32 sSC1PContinueGameOverFadeOutScale;
 f32 sSC1PContinueGameOverColorStep;
 
 // 0x80134348
-ftDemoDesc sSC1PContinueFighterDemoDesc;
+FTDemoDesc sSC1PContinueFighterDemoDesc;
 
 // 0x80134354 - ??? set but never used?
 s32 D_ovl55_80134354;
@@ -136,10 +136,10 @@ GObj *sSC1PContinueScoreGObj;
 s32 sSC1PContinueOptionChangeWait;
 
 // 0x80134370
-lbFileNode sSC1PContinueStatusBuffer[48];
+LBFileNode sSC1PContinueStatusBuffer[48];
 
 // 0x801344F0
-lbFileNode sSC1PContinueForceStatusBuffer[7];
+LBFileNode sSC1PContinueForceStatusBuffer[7];
 
 // 0x80134528
 void *sSC1PContinueFiles[5];
@@ -343,7 +343,7 @@ void sc1PContinueSetFighterScale(GObj *gobj, s32 ft_kind)
 void sc1PContinueMakeFighter(s32 ft_kind)
 {
     GObj *fighter_gobj;
-    ftCreateDesc ft_desc;
+    FTCreateDesc ft_desc;
 
     ft_desc = dFTManagerDefaultFighterDesc;
 
@@ -536,7 +536,7 @@ void sc1PContinueMakeContinue(void)
 }
 
 // 0x801328D8
-void sc1PContinueOptionSetHighlightColors(GObj *gobj, s32 option)
+void SC1PContinueOptionSetHighlightColors(GObj *gobj, s32 option)
 {
     SObj *sobj;
 
@@ -574,9 +574,9 @@ void sc1PContinueOptionSetHighlightColors(GObj *gobj, s32 option)
 }
 
 // 0x801329AC
-void sc1PContinueOptionProcUpdate(GObj *gobj)
+void SC1PContinueOptionProcUpdate(GObj *gobj)
 {
-    sc1PContinueOptionSetHighlightColors(gobj, sSC1PContinueOptionSelect);
+    SC1PContinueOptionSetHighlightColors(gobj, sSC1PContinueOptionSelect);
 }
 
 // 0x801329D0
@@ -587,7 +587,7 @@ void sc1PContinueMakeOptions(void)
 
     sSC1PContinueOptionGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjProcess(gobj, sc1PContinueOptionProcUpdate, nGCProcessKindProc, 1);
+    gcAddGObjProcess(gobj, SC1PContinueOptionProcUpdate, nGCProcessKindProc, 1);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueTextYes));
 
@@ -605,7 +605,7 @@ void sc1PContinueMakeOptions(void)
     sobj->pos.x = 189.0F;
     sobj->pos.y = 129.0F;
 
-    sc1PContinueOptionSetHighlightColors(gobj, sSC1PContinueOptionSelect);
+    SC1PContinueOptionSetHighlightColors(gobj, sSC1PContinueOptionSelect);
 }
 
 // 0x80132AE8
@@ -1202,7 +1202,7 @@ void sc1PContinueFuncRun(GObj *gobj)
 void sc1PContinueFuncStart(void)
 {
     s32 unused;
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

@@ -17,7 +17,7 @@ extern intptr_t lITGShellMatAnimJoint;      // 0x00006048
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITGShellItemDesc =
+ITCreateDesc dITGShellItemDesc =
 {
     nITKindGShell,                          // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -41,7 +41,7 @@ itCreateDesc dITGShellItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITGShellStatusDescs[/* */] =
+ITStatusDesc dITGShellStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -155,7 +155,7 @@ enum itGShellStatus
 // 0x801785E0
 void itGShellSpinUpdateEffect(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
     Vec3f pos;
 
@@ -163,7 +163,7 @@ void itGShellSpinUpdateEffect(GObj *item_gobj)
     {
         pos = dobj->translate.vec.f;
 
-        pos.y += ip->attributes->objcoll_bottom;
+        pos.y += ip->attributes->object_coll_bottom;
 
         efManagerDustLightMakeEffect(&pos, ip->lr, 1.0F);
 
@@ -175,7 +175,7 @@ void itGShellSpinUpdateEffect(GObj *item_gobj)
 // 0x80178670
 void itGShellSpinAddAnim(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
     s32 unused[2];
 
@@ -194,7 +194,7 @@ void itGShellCommonClearAnim(GObj *item_gobj)
 // 0x8017871C
 sb32 itGShellFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITGSHELL_GRAVITY, ITGSHELL_TVEL);
 
@@ -212,7 +212,7 @@ sb32 itGShellWaitProcMap(GObj *item_gobj)
 // 0x80178774
 sb32 itGShellFallProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->item_vars.shell.health == 0)
     {
@@ -226,11 +226,11 @@ sb32 itGShellFallProcMap(GObj *item_gobj)
 // 0x801787CC
 void itGShellWaitInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMapSetGround(ip);
 
-    if (ABSF(ip->phys_info.vel_air.x) < ITGSHELL_STOP_VEL_X)
+    if (ABSF(ip->physics.vel_air.x) < ITGSHELL_STOP_VEL_X)
     {
         itMainSetGroundAllowPickup(item_gobj);
 
@@ -238,17 +238,17 @@ void itGShellWaitInitItemVars(GObj *item_gobj)
 
         ip->is_damage_all = TRUE;
 
-        ip->item_hurt.hitstatus = nGMHitStatusNormal;
-        ip->item_hit.update_state = nGMHitUpdateDisable;
+        ip->damage_coll.hitstatus = nGMHitStatusNormal;
+        ip->hit_coll.update_state = nGMHitUpdateDisable;
 
-        ip->phys_info.vel_air.x = 0.0F;
+        ip->physics.vel_air.x = 0.0F;
 
         itGShellCommonClearAnim(item_gobj);
         itMainSetItemStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusWait);
     }
     else if (ip->item_vars.shell.is_damage != FALSE)
     {
-        ip->item_hit.update_state = nGMHitUpdateNew;
+        ip->hit_coll.update_state = nGMHitUpdateNew;
 
         itProcessUpdateHitPositions(item_gobj);
         itGShellSpinSetStatus(item_gobj);
@@ -259,10 +259,10 @@ void itGShellWaitInitItemVars(GObj *item_gobj)
 
         ip->is_damage_all = TRUE;
 
-        ip->item_hurt.hitstatus = nGMHitStatusNormal;
-        ip->item_hit.update_state = nGMHitUpdateDisable;
+        ip->damage_coll.hitstatus = nGMHitStatusNormal;
+        ip->hit_coll.update_state = nGMHitUpdateDisable;
 
-        ip->phys_info.vel_air.x = 0.0F;
+        ip->physics.vel_air.x = 0.0F;
 
         itGShellCommonClearAnim(item_gobj);
         itMainSetItemStatus(item_gobj, dITGShellStatusDescs, nITGShellStatusWait);
@@ -278,11 +278,11 @@ void itGShellWaitSetStatus(GObj *item_gobj)
 // 0x80178930
 void itGShellFallSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hurt.hitstatus = nGMHitStatusNone;
+    ip->damage_coll.hitstatus = nGMHitStatusNone;
 
-    ip->item_hit.update_state = nGMHitUpdateDisable;
+    ip->hit_coll.update_state = nGMHitUpdateDisable;
 
     ip->is_allow_pickup = FALSE;
 
@@ -293,19 +293,19 @@ void itGShellFallSetStatus(GObj *item_gobj)
 // 0x8017897C
 sb32 itGShellCommonProcDamage(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->phys_info.vel_air.x = ip->damage_queue * ITGSHELL_DAMAGE_MUL_NORMAL * (-ip->lr_damage);
+    ip->physics.vel_air.x = ip->damage_queue * ITGSHELL_DAMAGE_MUL_NORMAL * (-ip->damage_lr);
 
-    if (ABSF(ip->phys_info.vel_air.x) > ITGSHELL_STOP_VEL_X)
+    if (ABSF(ip->physics.vel_air.x) > ITGSHELL_STOP_VEL_X)
     {
         ip->item_vars.shell.is_damage = TRUE;
 
-        ip->item_hit.update_state = nGMHitUpdateNew;
+        ip->hit_coll.update_state = nGMHitUpdateNew;
 
         itProcessUpdateHitPositions(item_gobj);
 
-        ip->item_hurt.hitstatus = nGMHitStatusNone;
+        ip->damage_coll.hitstatus = nGMHitStatusNone;
 
         itMainCopyDamageStats(item_gobj);
 
@@ -317,7 +317,7 @@ sb32 itGShellCommonProcDamage(GObj *item_gobj)
     }
     else
     {
-        ip->phys_info.vel_air.x = 0.0F;
+        ip->physics.vel_air.x = 0.0F;
 
         if (ip->ga != nMPKineticsGround)
         {
@@ -347,7 +347,7 @@ sb32 itGShellThrownProcMap(GObj *item_gobj)
 // 0x80178AF8
 sb32 itGShellThrownProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITGSHELL_GRAVITY, ITGSHELL_TVEL);
 
@@ -357,7 +357,7 @@ sb32 itGShellThrownProcUpdate(GObj *item_gobj)
 // 0x80178B28
 void itGShellThrownSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->item_vars.shell.health = 1;
     ip->item_vars.shell.is_damage = TRUE;
@@ -368,7 +368,7 @@ void itGShellThrownSetStatus(GObj *item_gobj)
 // 0x80178B60
 void itGShellDroppedSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->item_vars.shell.health = 1;
     ip->item_vars.shell.is_damage = TRUE;
@@ -379,7 +379,7 @@ void itGShellDroppedSetStatus(GObj *item_gobj)
 // 0x80178B98
 sb32 itGShellSpinProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itGShellSpinUpdateEffect(item_gobj);
 
@@ -418,15 +418,15 @@ sb32 itGShellSpinProcMap(GObj *item_gobj)
 // 0x80178C6C
 sb32 itGShellCommonProcHit(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hurt.hitstatus = nGMHitStatusNormal;
+    ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
     ip->item_vars.shell.health = mtTrigGetRandomIntRange(ITGSHELL_HEALTH_MAX);
 
-    ip->phys_info.vel_air.y = ITGSHELL_REBOUND_VEL_Y;
+    ip->physics.vel_air.y = ITGSHELL_REBOUND_VEL_Y;
 
-    ip->phys_info.vel_air.x = mtTrigGetRandomFloat() * (-ip->phys_info.vel_air.x * ITGSHELL_REBOUND_MUL_X);
+    ip->physics.vel_air.x = mtTrigGetRandomFloat() * (-ip->physics.vel_air.x * ITGSHELL_REBOUND_MUL_X);
 
     itMainClearOwnerStats(item_gobj);
     itGShellCommonClearAnim(item_gobj);
@@ -438,13 +438,13 @@ sb32 itGShellCommonProcHit(GObj *item_gobj)
 // 0x80178CF8
 sb32 itGShellSpinProcDamage(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->phys_info.vel_air.x += (ip->damage_queue * ITGSHELL_DAMAGE_MUL_ADD * -ip->lr_damage);
+    ip->physics.vel_air.x += (ip->damage_queue * ITGSHELL_DAMAGE_MUL_ADD * -ip->damage_lr);
 
-    if (ABSF(ip->phys_info.vel_air.x) > ITGSHELL_STOP_VEL_X)
+    if (ABSF(ip->physics.vel_air.x) > ITGSHELL_STOP_VEL_X)
     {
-        ip->item_hit.update_state = nGMHitUpdateNew;
+        ip->hit_coll.update_state = nGMHitUpdateNew;
 
         itProcessUpdateHitPositions(item_gobj);
         itMainCopyDamageStats(item_gobj);
@@ -457,7 +457,7 @@ sb32 itGShellSpinProcDamage(GObj *item_gobj)
     }
     else
     {
-        ip->phys_info.vel_air.x = 0.0F;
+        ip->physics.vel_air.x = 0.0F;
 
         if (ip->ga != nMPKineticsGround)
         {
@@ -471,23 +471,23 @@ sb32 itGShellSpinProcDamage(GObj *item_gobj)
 // 0x80178E04
 void itGShellSpinInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
     ip->pickup_wait = ITEM_PICKUP_WAIT_DEFAULT;
 
-    if (ip->phys_info.vel_air.x > ITGSHELL_CLAMP_VEL_X)
+    if (ip->physics.vel_air.x > ITGSHELL_CLAMP_VEL_X)
     {
-        ip->phys_info.vel_air.x = ITGSHELL_CLAMP_VEL_X;
+        ip->physics.vel_air.x = ITGSHELL_CLAMP_VEL_X;
     }
-    if (ip->phys_info.vel_air.x < -ITGSHELL_CLAMP_VEL_X)
+    if (ip->physics.vel_air.x < -ITGSHELL_CLAMP_VEL_X)
     {
-        ip->phys_info.vel_air.x = -ITGSHELL_CLAMP_VEL_X;
+        ip->physics.vel_air.x = -ITGSHELL_CLAMP_VEL_X;
     }
-    ip->phys_info.vel_air.y = 0.0F;
+    ip->physics.vel_air.y = 0.0F;
 
-    if (ip->phys_info.vel_air.x < 0.0F)
+    if (ip->physics.vel_air.x < 0.0F)
     {
         ip->lr = nGMFacingL;
     }
@@ -514,17 +514,17 @@ void itGShellSpinSetStatus(GObj *item_gobj)
 // 0x80178F10
 void itGShellSpinAirInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->phys_info.vel_air.x > ITGSHELL_CLAMP_VEL_X)
+    if (ip->physics.vel_air.x > ITGSHELL_CLAMP_VEL_X)
     {
-        ip->phys_info.vel_air.x = ITGSHELL_CLAMP_VEL_X;
+        ip->physics.vel_air.x = ITGSHELL_CLAMP_VEL_X;
     }
-    if (ip->phys_info.vel_air.x < -ITGSHELL_CLAMP_VEL_X)
+    if (ip->physics.vel_air.x < -ITGSHELL_CLAMP_VEL_X)
     {
-        ip->phys_info.vel_air.x = -ITGSHELL_CLAMP_VEL_X;
+        ip->physics.vel_air.x = -ITGSHELL_CLAMP_VEL_X;
     }
-    if (ip->phys_info.vel_air.x < 0.0F)
+    if (ip->physics.vel_air.x < 0.0F)
     {
         ip->lr = nGMFacingL;
     }
@@ -550,7 +550,7 @@ GObj* itGShellMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     if (item_gobj != NULL)
     {
         DObj *dobj = DObjGetStruct(item_gobj);
-        itStruct *ip;
+        ITStruct *ip;
         Vec3f translate = dobj->translate.vec.f;
 
         dobj->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
@@ -564,14 +564,14 @@ GObj* itGShellMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip = itGetStruct(item_gobj);
 
-        ip->item_hit.can_rehit_shield = TRUE;
+        ip->hit_coll.can_rehit_shield = TRUE;
 
         ip->item_vars.shell.health = 1;
         ip->item_vars.shell.is_damage = FALSE;
 
         ip->is_unused_item_bool = TRUE;
 
-        ip->indicator_gobj = ifCommonItemArrowMakeInterface(ip);
+        ip->arrow_gobj = ifCommonItemArrowMakeInterface(ip);
 
         ip->lifetime = ITGSHELL_LIFETIME;
     }

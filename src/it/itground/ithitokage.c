@@ -22,7 +22,7 @@ extern s32 dGRYamabukiMonsterAttackKind;
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITHitokageItemDesc =
+ITCreateDesc dITHitokageItemDesc =
 {
     nITKindHitokage,                        // Item Kind
     &gGRCommonStruct.yamabuki.item_head,    // Pointer to item file data?
@@ -46,7 +46,7 @@ itCreateDesc dITHitokageItemDesc =
     itHitokageCommonProcDamage              // Proc Damage
 };
 
-itStatusDesc dITHitokageStatusDescs[/* */] =
+ITStatusDesc dITHitokageStatusDescs[/* */] =
 {
     // Status 0 (Neutral Damage)
     {
@@ -61,7 +61,7 @@ itStatusDesc dITHitokageStatusDescs[/* */] =
     }
 };
 
-wpCreateDesc dITHitokageWeaponFlameWeaponDesc =
+WPCreateDesc dITHitokageWeaponFlameWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindHitokageFlame,                   // Weapon Kind
@@ -114,7 +114,7 @@ void itHitokageDamagedSetStatus(GObj *item_gobj)
 // 0x80183DE0
 sb32 itHitokageCommonProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
     Vec3f pos;
 
@@ -156,7 +156,7 @@ sb32 itHitokageCommonProcUpdate(GObj *item_gobj)
 // 0x80183F20
 sb32 itHitokageDamagedProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj;
 
     itMainApplyGravityClampTVel(ip, ITHITOKAGE_GRAVITY, ITHITOKAGE_TVEL);
@@ -177,18 +177,18 @@ sb32 itHitokageDamagedProcDead(GObj *item_gobj)
 // 0x80183F94
 sb32 itHitokageCommonProcDamage(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     if (ip->damage_knockback >= ITHITOKAGE_NDAMAGE_KNOCKBACK_MIN)
     {
         f32 angle = ftCommonDamageGetKnockbackAngle(ip->damage_angle, ip->ga, ip->damage_knockback);
 
-        ip->phys_info.vel_air.x = __cosf(angle) * ip->damage_knockback * -ip->lr_damage;
-        ip->phys_info.vel_air.y = __sinf(angle) * ip->damage_knockback;
+        ip->physics.vel_air.x = __cosf(angle) * ip->damage_knockback * -ip->damage_lr;
+        ip->physics.vel_air.y = __sinf(angle) * ip->damage_knockback;
 
-        ip->item_hit.update_state = nGMHitUpdateDisable;
-        ip->item_hurt.hitstatus = nGMHitStatusNone;
+        ip->hit_coll.update_state = nGMHitUpdateDisable;
+        ip->damage_coll.hitstatus = nGMHitStatusNone;
 
         dobj->anim_wait = AOBJ_ANIM_NULL;
 
@@ -204,7 +204,7 @@ GObj* itHitokageMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITHitokageItemDesc, pos, vel, flags);
     s32 unused;
     DObj *dobj;
-    itStruct *ip;
+    ITStruct *ip;
 
     if (item_gobj != NULL)
     {
@@ -238,7 +238,7 @@ GObj* itHitokageMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 // 0x8018415C
 sb32 itHitokageWeaponFlameProcUpdate(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
@@ -271,8 +271,8 @@ sb32 itHitokageWeaponFlameProcHit(GObj *weapon_gobj)
 // 0x80184204
 sb32 itHitokageWeaponFlameProcReflector(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    ftStruct *fp = ftGetStruct(wp->owner_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    FTStruct *fp = ftGetStruct(wp->owner_gobj);
     Vec3f *translate;
 
     wp->lifetime = ITHITOKAGE_FLAME_LIFETIME;
@@ -281,8 +281,8 @@ sb32 itHitokageWeaponFlameProcReflector(GObj *weapon_gobj)
 
     translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
 
-    lbParticleMakePosVel(gITManagerParticleBankID | 8, 2, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
-    lbParticleMakePosVel(gITManagerParticleBankID | 8, 0, translate->x, translate->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    LBParticleMakePosVel(gITManagerParticleBankID | 8, 2, translate->x, translate->y, 0.0F, wp->physics.vel_air.x, wp->physics.vel_air.y, 0.0F);
+    LBParticleMakePosVel(gITManagerParticleBankID | 8, 0, translate->x, translate->y, 0.0F, wp->physics.vel_air.x, wp->physics.vel_air.y, 0.0F);
 
     return FALSE;
 }
@@ -291,7 +291,7 @@ sb32 itHitokageWeaponFlameProcReflector(GObj *weapon_gobj)
 GObj* itHitokageWeaponFlameMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 {
     GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITHitokageWeaponFlameWeaponDesc, pos, WEAPON_FLAG_PARENT_ITEM);
-    wpStruct *wp;
+    WPStruct *wp;
 
     if (weapon_gobj == NULL)
     {
@@ -299,14 +299,14 @@ GObj* itHitokageWeaponFlameMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
     }
     wp = wpGetStruct(weapon_gobj);
 
-    wp->phys_info.vel_air = *vel;
+    wp->physics.vel_air = *vel;
 
     wp->lifetime = ITHITOKAGE_FLAME_LIFETIME;
 
     wp->lr = nGMFacingL;
 
-    lbParticleMakePosVel(gITManagerParticleBankID | 8, 2, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
-    lbParticleMakePosVel(gITManagerParticleBankID | 8, 0, pos->x, pos->y, 0.0F, wp->phys_info.vel_air.x, wp->phys_info.vel_air.y, 0.0F);
+    LBParticleMakePosVel(gITManagerParticleBankID | 8, 2, pos->x, pos->y, 0.0F, wp->physics.vel_air.x, wp->physics.vel_air.y, 0.0F);
+    LBParticleMakePosVel(gITManagerParticleBankID | 8, 0, pos->x, pos->y, 0.0F, wp->physics.vel_air.x, wp->physics.vel_air.y, 0.0F);
 
     return weapon_gobj;
 }
@@ -314,7 +314,7 @@ GObj* itHitokageWeaponFlameMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 // 0x801843C4
 void itHitokageCommonMakeFlame(GObj *item_gobj, Vec3f *pos)
 {
-    itStruct *ip;
+    ITStruct *ip;
     Vec3f vel;
 
     vel.x = __cosf(ITHITOKAGE_FLAME_SPAWN_ANGLE) * -ITHITOKAGE_FLAME_VEL_BASE;

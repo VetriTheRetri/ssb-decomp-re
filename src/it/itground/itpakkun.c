@@ -23,7 +23,7 @@ intptr_t lITPakkunDamagedMatAnimJoint;      // 0x00000E04
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITPakkunItemDesc =
+ITCreateDesc dITPakkunItemDesc =
 {
     nITKindPakkun,                          // Item Kind
     &gGRCommonStruct.inishie.item_head,     // Pointer to item file data?
@@ -47,7 +47,7 @@ itCreateDesc dITPakkunItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITPakkunStatusDescs[/* */] = 
+ITStatusDesc dITPakkunStatusDescs[/* */] = 
 {
     // Status 0 (Dokan Wait)
     {
@@ -136,7 +136,7 @@ void itPakkunCommonSetWaitFighter(GObj *item_gobj)
 {
     if (item_gobj != NULL)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         ip->item_vars.pakkun.is_wait_fighter = TRUE;
     }
@@ -147,14 +147,14 @@ sb32 itPakkunCommonCheckNoPlayersNear(GObj *item_gobj)
 {
     if (item_gobj != NULL)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
         GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
         f32 it_pos_x = ip->item_vars.pakkun.pos.x;
         f32 it_pos_y = ip->item_vars.pakkun.pos.y;
 
         while (fighter_gobj != NULL)
         {
-            ftStruct *fp = ftGetStruct(fighter_gobj);
+            FTStruct *fp = ftGetStruct(fighter_gobj);
             DObj *dobj = fp->joints[nFTPartsJointTopN];
             f32 dist_x, ft_pos_y;
 
@@ -179,7 +179,7 @@ sb32 itPakkunCommonCheckNoPlayersNear(GObj *item_gobj)
 // 0x8017D0A4
 sb32 itPakkunWaitProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->item_vars.pakkun.is_wait_fighter != FALSE)
     {
@@ -210,14 +210,14 @@ sb32 itPakkunWaitProcUpdate(GObj *item_gobj)
 // 0x8017D190
 void itPakkunWaitInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi = ITPAKKUN_APPEAR_WAIT;
 
     itPakkunWaitSetStatus(item_gobj);
 
-    ip->item_hurt.hitstatus = nGMHitStatusNone;
-    ip->item_hit.update_state = nGMHitUpdateDisable;
+    ip->damage_coll.hitstatus = nGMHitStatusNone;
+    ip->hit_coll.update_state = nGMHitUpdateDisable;
 
     DObjGetStruct(item_gobj)->translate.vec.f.y = ip->item_vars.pakkun.pos.y;
 }
@@ -225,32 +225,32 @@ void itPakkunWaitInitItemVars(GObj *item_gobj)
 // 0x8017D1DC
 void itPakkunAppearUpdateHurtbox(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     f32 pos_y = DObjGetStruct(item_gobj)->translate.vec.f.y - ip->item_vars.pakkun.pos.y;
     f32 off_y = pos_y + ITPAKKUN_APPEAR_OFF_Y;
 
     if (off_y <= ITPAKKUN_CLAMP_OFF_Y)
     {
-        ip->item_hurt.hitstatus = nGMHitStatusNone;
-        ip->item_hit.update_state = nGMHitUpdateDisable;
+        ip->damage_coll.hitstatus = nGMHitStatusNone;
+        ip->hit_coll.update_state = nGMHitUpdateDisable;
     }
     else
     {
-        if (ip->item_hurt.hitstatus == nGMHitStatusNone)
+        if (ip->damage_coll.hitstatus == nGMHitStatusNone)
         {
-            ip->item_hurt.hitstatus = nGMHitStatusNormal;
+            ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
             itMainRefreshHit(item_gobj);
         }
-        ip->item_hurt.size.y = (off_y - ITPAKKUN_CLAMP_OFF_Y) * ITPAKKUN_HURT_SIZE_MUL_Y;
-        ip->item_hurt.offset.y = (ip->item_hurt.size.y + ITPAKKUN_CLAMP_OFF_Y) - pos_y;
+        ip->damage_coll.size.y = (off_y - ITPAKKUN_CLAMP_OFF_Y) * ITPAKKUN_HURT_SIZE_MUL_Y;
+        ip->damage_coll.offset.y = (ip->damage_coll.size.y + ITPAKKUN_CLAMP_OFF_Y) - pos_y;
     }
 }
 
 // 0x8017D298
 sb32 itPakkunAppearProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj;
 
     if (ip->item_vars.pakkun.is_wait_fighter != FALSE)
@@ -277,7 +277,7 @@ sb32 itPakkunAppearProcUpdate(GObj *item_gobj)
 // 0x8017D334
 sb32 itPakkunAppearProcDamage(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->damage_knockback >= ITPAKKUN_NDAMAGE_KNOCKBACK_MIN)
     {
@@ -290,11 +290,11 @@ sb32 itPakkunAppearProcDamage(GObj *item_gobj)
 
         angle = ftCommonDamageGetKnockbackAngle(ip->damage_angle, ip->ga, ip->damage_knockback);
 
-        ip->phys_info.vel_air.x = __cosf(angle) * ip->damage_knockback * -ip->lr_damage;
-        ip->phys_info.vel_air.y = __sinf(angle) * ip->damage_knockback;
+        ip->physics.vel_air.x = __cosf(angle) * ip->damage_knockback * -ip->damage_lr;
+        ip->physics.vel_air.y = __sinf(angle) * ip->damage_knockback;
 
-        ip->item_hurt.hitstatus = nGMHitStatusNone;
-        ip->item_hit.update_state = nGMHitUpdateDisable;
+        ip->damage_coll.hitstatus = nGMHitStatusNone;
+        ip->hit_coll.update_state = nGMHitUpdateDisable;
 
         itPakkunDamagedSetStatus(item_gobj);
 
@@ -309,7 +309,7 @@ sb32 itPakkunAppearProcDamage(GObj *item_gobj)
 // 0x8017D434
 sb32 itPakkunDamagedProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITPAKKUN_GRAVITY, ITPAKKUN_TVEL);
 
@@ -319,16 +319,16 @@ sb32 itPakkunDamagedProcUpdate(GObj *item_gobj)
 // 0x8017D460
 sb32 itPakkunDamagedProcDead(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     dobj->translate.vec.f = ip->item_vars.pakkun.pos;
 
     ip->it_multi = ITPAKKUN_REBIRTH_WAIT;
 
-    ip->phys_info.vel_air.x = 0.0F;
-    ip->phys_info.vel_air.y = 0.0F;
-    ip->phys_info.vel_air.z = 0.0F;
+    ip->physics.vel_air.x = 0.0F;
+    ip->physics.vel_air.y = 0.0F;
+    ip->physics.vel_air.z = 0.0F;
 
     dobj->rotate.vec.f.z = 0.0F;
 
@@ -348,7 +348,7 @@ GObj* itPakkunMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
     if (item_gobj != NULL)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         ip->item_vars.pakkun.pos = *pos;
 
@@ -360,7 +360,7 @@ GObj* itPakkunMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->item_vars.pakkun.is_wait_fighter = FALSE;
 
-        ip->item_hit.can_rehit_shield = TRUE;
+        ip->hit_coll.can_rehit_shield = TRUE;
     }
     return item_gobj;
 }

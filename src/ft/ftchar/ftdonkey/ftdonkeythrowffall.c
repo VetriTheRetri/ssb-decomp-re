@@ -18,11 +18,11 @@ void ftDonkeyThrowFFallProcInterrupt(GObj *fighter_gobj)
 // 0x8014DA30
 void ftDonkeyThrowFFallProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (mpCommonCheckFighterLanding(fighter_gobj) != FALSE)
     {
-        if (fp->phys_info.vel_air.y > FTCOMMON_THROWFFALL_SKIPLANDING_VEL_Y_MAX)
+        if (fp->physics.vel_air.y > FTCOMMON_THROWFFALL_SKIPLANDING_VEL_Y_MAX)
         {
             ftDonkeyThrowFWaitSetStatus(fighter_gobj);
         }
@@ -33,7 +33,7 @@ void ftDonkeyThrowFFallProcMap(GObj *fighter_gobj)
 // 0x8014DA98
 void ftDonkeyThrowFFallSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->ga == nMPKineticsGround)
     {
@@ -46,8 +46,8 @@ void ftDonkeyThrowFFallSetStatus(GObj *fighter_gobj)
 // 0x8014DAF8
 void ftDonkeyThrowFJumpSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
     s32 vel_x;
     s32 vel_y;
 
@@ -65,8 +65,8 @@ void ftDonkeyThrowFJumpSetStatus(GObj *fighter_gobj)
         vel_x = fp->input.pl.stick_range.x;
         vel_y = fp->status_vars.common.throwf.jump_force;
     }
-    fp->phys_info.vel_air.y = (vel_y * attributes->jump_height_mul) + attributes->jump_height_base;
-    fp->phys_info.vel_air.x = vel_x * attributes->jump_vel_x;
+    fp->physics.vel_air.y = (vel_y * attributes->jump_height_mul) + attributes->jump_height_base;
+    fp->physics.vel_air.x = vel_x * attributes->jump_vel_x;
 
     fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 }
@@ -80,7 +80,7 @@ void ftDonkeyThrowFFallSetStatusPass(GObj *fighter_gobj)
 // 0x8014DC08
 sb32 ftDonkeyThrowFFallCheckInterruptPass(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (ftCommonPassCheckInputSuccess(fp) != FALSE)
     {

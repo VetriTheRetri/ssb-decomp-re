@@ -7,12 +7,12 @@
 
 extern Vec2f dFTDisplayMainShufflePositions[/* */][4];
 
-extern void ftDisplayMainDrawAfterImage(ftStruct *fp);
-extern void ftDisplayMainCalcFogColor(ftStruct *fp);
-extern void ftDisplayMainSetFogColor(ftStruct *fp);
-extern void ftDisplayMainDecideFogColor(ftStruct *fp);
-extern void ftDisplayMainDecideFogDraw(u8 flags, ftStruct *fp);
-extern void ftDisplayMainDrawAccessory(ftStruct *fp, DObj *dobj, ftParts *ft_parts);
+extern void ftDisplayMainDrawAfterImage(FTStruct *fp);
+extern void ftDisplayMainCalcFogColor(FTStruct *fp);
+extern void ftDisplayMainSetFogColor(FTStruct *fp);
+extern void ftDisplayMainDecideFogColor(FTStruct *fp);
+extern void ftDisplayMainDecideFogDraw(u8 flags, FTStruct *fp);
+extern void ftDisplayMainDrawAccessory(FTStruct *fp, DObj *dobj, FTParts *ft_parts);
 extern void ftDisplayMainDrawDefault(DObj *dobj);
 extern void ftDisplayMainDrawSkeleton(DObj *dobj);
 extern void ftDisplayMainDrawAll(GObj *fighter_gobj);

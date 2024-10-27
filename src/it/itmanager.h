@@ -9,22 +9,22 @@
 void itManagerInitItems();
 
 // Get memory region for item struct and advance global region pointer
-itStruct* itManagerGetNextStructAlloc();
+ITStruct* itManagerGetNextStructAlloc();
 
 // Roll back local and global item struct pointer by one unit
-void itManagerSetPrevStructAlloc(itStruct* ip);
+void itManagerSetPrevStructAlloc(ITStruct* ip);
 
 // Unknown, something to do with setting up item models?
 void itManagerSetupItemDObjs(GObj* gobj, DObjDesc* dobjdesc, DObj** dobjs, u8 transform_kind);
 
 // Create new item
-GObj* itManagerMakeItem(GObj* parent_gobj, itCreateDesc* item_desc, Vec3f* pos, Vec3f* vel, u32 flags);
+GObj* itManagerMakeItem(GObj* parent_gobj, ITCreateDesc* item_desc, Vec3f* pos, Vec3f* vel, u32 flags);
 
 // Create item and init spawn GFX + spin rotation if common item (indexes 0 - 19)
 GObj* itManagerMakeItemSetupCommon(GObj* parent_gobj, s32 index, Vec3f* pos, Vec3f* vel, u32 spawn_flags);
 
 // Get current item user_data to see if != NULL
-itStruct* itManagerGetCurrentAlloc();
+ITStruct* itManagerGetCurrentAlloc();
 
 // Set wait timer for next item spawn
 void itManagerSetItemSpawnWait();

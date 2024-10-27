@@ -9,11 +9,11 @@
 // 0x8013EA40
 void ftCommonDashProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fighter_gobj->anim_frame <= 0.0F)
     {
-        fp->phys_info.vel_ground.x *= 0.75F;
+        fp->physics.vel_ground.x *= 0.75F;
 
         ftCommonWaitSetStatus(fighter_gobj);
     }
@@ -22,7 +22,7 @@ void ftCommonDashProcUpdate(GObj *fighter_gobj)
 // 0x8013EA90
 void ftCommonDashProcInterrupt(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((fp->command_vars.flags.flag1 != 0) && (fighter_gobj->anim_frame <= 5.0F))
     {
@@ -85,8 +85,8 @@ void ftCommonDashProcInterrupt(GObj *fighter_gobj)
 // 0x8013EC58
 void ftCommonDashProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     if (fighter_gobj->anim_frame >= FTCOMMON_DASH_DECELERATE_BEGIN)
     {
@@ -98,8 +98,8 @@ void ftCommonDashProcPhysics(GObj *fighter_gobj)
 // 0x8013ECB0
 void ftCommonDashProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     if (attributes->dash_to_run <= fighter_gobj->anim_frame)
     {
@@ -111,12 +111,12 @@ void ftCommonDashProcMap(GObj *fighter_gobj)
 // 0x8013ED00
 void ftCommonDashSetStatus(GObj *fighter_gobj, u32 flag)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDash, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
-    fp->phys_info.vel_ground.x = fp->attributes->dash_speed;
+    fp->physics.vel_ground.x = fp->attributes->dash_speed;
     fp->tap_stick_x = FTINPUT_STICKBUFFER_FRAMES_MAX;
     fp->command_vars.flags.flag1 = flag;
 }
@@ -124,7 +124,7 @@ void ftCommonDashSetStatus(GObj *fighter_gobj, u32 flag)
 // 0x8013ED64
 sb32 ftCommonDashCheckInterruptCommon(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_DASH_STICK_RANGE_MIN) && (fp->tap_stick_x < FTCOMMON_DASH_BUFFER_FRAMES_MAX))
     {
@@ -145,7 +145,7 @@ sb32 ftCommonDashCheckInterruptCommon(GObj *fighter_gobj)
 // 0x8013EDFC
 sb32 ftCommonDashCheckTurn(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (((fp->input.pl.stick_range.x * fp->status_vars.common.turn.lr_turn) >= FTCOMMON_DASH_STICK_RANGE_MIN) && (fp->tap_stick_x < FTCOMMON_DASH_BUFFER_FRAMES_MAX))
     {

@@ -21,7 +21,7 @@ extern intptr_t lGRJungleTaruCannThrowHitDesc;  // 0x000000BC
 // 0x80143E10
 void ftCommonTaruCannProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->status_vars.common.tarucann.shoot_wait != 0)
     {
@@ -51,7 +51,7 @@ void ftCommonTaruCannProcUpdate(GObj *fighter_gobj)
 // 0x80143EB0
 void ftCommonTaruCannProcInterrupt(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((fp->status_vars.common.tarucann.shoot_wait == 0) && (fp->input.pl.button_tap & (fp->input.button_mask_a | fp->input.button_mask_b)))
     {
@@ -64,7 +64,7 @@ void ftCommonTaruCannProcInterrupt(GObj *fighter_gobj)
 // 0x80143F04
 void ftCommonTaruCannProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     GObj *tarucann_gobj = fp->status_vars.common.tarucann.tarucann_gobj;
 
     DObjGetStruct(fighter_gobj)->translate.vec.f = DObjGetStruct(tarucann_gobj)->translate.vec.f;
@@ -73,7 +73,7 @@ void ftCommonTaruCannProcPhysics(GObj *fighter_gobj)
 // 0x80143F30
 void ftCommonTaruCannSetStatus(GObj *fighter_gobj, GObj *tarucann_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftParamStopVoiceRunProcDamage(fighter_gobj);
 
@@ -110,8 +110,8 @@ void ftCommonTaruCannSetStatus(GObj *fighter_gobj, GObj *tarucann_gobj)
 // 0x80144038
 void ftCommonTaruCannShootFighter(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftThrowHitDesc *tarucann = (ftThrowHitDesc*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRJungleDataStart) + (intptr_t)&lGRJungleTaruCannThrowHitDesc); // Linker thing
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTThrowHitDesc *tarucann = (FTThrowHitDesc*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRJungleDataStart) + (intptr_t)&lGRJungleTaruCannThrowHitDesc); // Linker thing
     f32 knockback;
     s32 angle;
 

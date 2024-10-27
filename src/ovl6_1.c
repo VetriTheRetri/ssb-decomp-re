@@ -12,7 +12,7 @@ extern void* gBonusGameFileData[/* */];
 sb32 itTargetCommonProcDamage(GObj* item_gobj);
 
 // 0x8018F130
-itCreateDesc dItTargetItemDesc = {
+ITCreateDesc dItTargetItemDesc = {
 	nITKindTarget,			// Item Kind
 	&gBonusGameFileData[0], // Pointer to item file data?
 	0,						// Offset of item attributes in file?
@@ -36,15 +36,15 @@ itCreateDesc dItTargetItemDesc = {
 };
 
 // 0x8018F3B0
-lbFileNode gOverlay6StatusBuffer[100];
+LBFileNode gOverlay6StatusBuffer[100];
 
 // 0x8018F6D0
-lbFileNode gOverlay6ForceStatusBuffer[7];
+LBFileNode gOverlay6ForceStatusBuffer[7];
 
 // 0x8018ED70
 void func_ovl6_8018ED70()
 {
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
@@ -80,7 +80,7 @@ GObj* itTargetMakeItem(GObj* parent_gobj, Vec3f* pos, Vec3f* vel, u32 flags)
 
 	if (item_gobj != NULL)
 	{
-		itStruct* ip = itGetStruct(item_gobj);
+		ITStruct* ip = itGetStruct(item_gobj);
 
 		ip->ga = nMPKineticsGround;
 		ip->coll_data.ground_line_id = -1;

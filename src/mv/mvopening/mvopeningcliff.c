@@ -44,10 +44,10 @@ f32 sMVOpeningCliffWallpaperScrollSpeed;
 s32 sMVOpeningCliffUnused0x801327DC;
 
 // 0x801327E0
-lbFileNode sMVOpeningCliffStatusBuffer[48];
+LBFileNode sMVOpeningCliffStatusBuffer[48];
 
 // 0x80132960
-lbFileNode sMVOpeningCliffForceStatusBuffer[7];
+LBFileNode sMVOpeningCliffForceStatusBuffer[7];
 
 // 0x80132998
 void *sMVOpeningCliffFiles[2];
@@ -170,7 +170,7 @@ void func_ovl46_80131CA4()
 void mvOpeningCliffMakeFighter(void)
 {
     GObj* fighter_gobj;
-    ftCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
     ft_desc.ft_kind = nFTKindLink;
     ft_desc.costume = ftParamGetCostumeCommonID(nFTKindLink, 0);
@@ -472,7 +472,7 @@ void mvOpeningCliffFuncRun(GObj *gobj)
 void mvOpeningCliffFuncStart(void)
 {
     s32 unused;
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

@@ -145,7 +145,7 @@ s32 gMNTrainingHumanPanelPort;
 s32 gMNTrainingCPUPanelPort;
 
 // 0x801388A0
-lbFileNode D_ovl28_801388A0;
+LBFileNode D_ovl28_801388A0;
 
 // 0x801388A8
 s32 D_ovl28_801388A8[12];
@@ -328,12 +328,12 @@ void func_ovl28_80131FC8() {}
 // 0x80131FD0
 s32 mnTrainingGetFtKind(s32 portrait_id)
 {
-	s32 ftKind_order[12] = {
+	s32 FTKind_order[12] = {
 
 		4, 0, 2, 5, 3, 7, 11, 6, 8, 1, 9, 10
 	};
 
-	return ftKind_order[portrait_id];
+	return FTKind_order[portrait_id];
 }
 
 // 0x80132020
@@ -902,7 +902,7 @@ s32 mnTrainingGetSelectedAnimation(s32 ft_kind)
 // 0x8013367C
 void mnTrainingRotateFighter(GObj *fighter_gobj)
 {
-	ftStruct* fp = ftGetStruct(fighter_gobj);
+	FTStruct* fp = ftGetStruct(fighter_gobj);
 	s32 port_id = fp->player;
 	mnCharPanelTraining* panel_info = &gMNTrainingPanels[port_id];
 
@@ -946,7 +946,7 @@ void mnTrainingRotateFighter(GObj *fighter_gobj)
 void mnTrainingSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 costume_id)
 {
 	f32 initial_y_rotation;
-	ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	if (ft_kind != nFTKindNull)
 	{
@@ -2726,7 +2726,7 @@ void mnTrainingInitPanels()
 void mnTrainingInitCSS()
 {
 	s32 bar, baz;
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 	f32 foo;
 	s32 i;
 	s32 j;
@@ -2735,9 +2735,9 @@ void mnTrainingInitCSS()
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buffer = (lbFileNode*) &D_ovl28_801388D8;
+	rl_setup.status_buffer = (LBFileNode*) &D_ovl28_801388D8;
 	rl_setup.status_buffer_size = 0x78;
-	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl28_801388A0;
+	rl_setup.force_status_buffer = (LBFileNode*) &D_ovl28_801388A0;
 	rl_setup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl28_80137F60, 8U, gMNTrainingFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl28_80137F60, 8U), 0x10U));

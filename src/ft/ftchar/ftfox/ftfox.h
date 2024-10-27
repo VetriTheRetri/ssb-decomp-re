@@ -24,7 +24,7 @@
 #define FTFOX_REFLECTOR_GRAVITY_DELAY 4                 // Frames required for gravity to take effect
 #define FTFOX_REFLECTOR_GRAVITY 0.8F
 
-extern ftStatusDesc dFTFoxSpecialStatusDescs[/* */];
+extern FTStatusDesc dFTFoxSpecialStatusDescs[/* */];
 
 extern intptr_t lFTFoxSpecialLwReflector;       // 0x000019B0
 
@@ -121,11 +121,11 @@ typedef struct ftFoxSpecialLwStatusVars
 
 } ftFoxSpecialLwStatusVars;
 
-typedef union ftFoxStatusVars
+typedef union FTFoxStatusVars
 {
     ftFoxSpecialHiStatusVars specialhi;
     ftFoxSpecialLwStatusVars speciallw;
 
-} ftFoxStatusVars;
+} FTFoxStatusVars;
 
 #endif

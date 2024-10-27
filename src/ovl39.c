@@ -36,7 +36,7 @@ CObjDesc dMVOpeningFoxCObjDescEnd = {
 };
 
 // 0x8018E0C8
-ftKeyCommand dMVOpeningFoxInputSeq[] =
+FTKeyCommand dMVOpeningFoxInputSeq[] =
 {
 	FTKEY_EVENT_STICK(206, 0, 1),     // 2001, CE00
 	FTKEY_EVENT_BUTTON(B_BUTTON, 1),  // 1001, 4000
@@ -85,30 +85,30 @@ CObjDesc dMVOpeningFoxCObjDescAdjustedStart;
 CObjDesc dMVOpeningFoxCObjDescAdjustedEnd;
 
 // 0x8018E258
-lbFileNode D_ovl39_8018E258[48];
+LBFileNode D_ovl39_8018E258[48];
 
 // 0x8018E3D8
-lbFileNode D_ovl39_8018E3D8[7];
+LBFileNode D_ovl39_8018E3D8[7];
 
 // 0x8018E410
 uintptr_t gMVOpeningFoxFiles[2];
 
 // 0x8018E418
-scBattleState gMVOpeningFoxBattleState;
+SCBattleState gMVOpeningFoxBattleState;
 
 
 // 0x8018D0C0
 void mvOpeningFoxLoadFiles()
 {
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buffer = (lbFileNode*) &D_ovl39_8018E258;
+	rl_setup.status_buffer = (LBFileNode*) &D_ovl39_8018E258;
 	rl_setup.status_buffer_size = 0x30;
-	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl39_8018E3D8;
+	rl_setup.force_status_buffer = (LBFileNode*) &D_ovl39_8018E3D8;
 	rl_setup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl39_8018E0E0, ARRAY_COUNT(D_ovl39_8018E0E0), gMVOpeningFoxFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl39_8018E0E0, ARRAY_COUNT(D_ovl39_8018E0E0)), 0x10));
@@ -245,7 +245,7 @@ void mvOpeningFoxInitFighterStagePanel()
 
 	for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
 	{
-		ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+		FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 		if (gBattleState->players[i].pl_kind == nFTPlayerKindNot) continue;
 
@@ -325,7 +325,7 @@ void mvOpeningFoxAnimatePosedFighter(GObj* fighter_gobj)
 void mvOpeningFoxCreatePosedFighter()
 {
 	GObj* fighter_gobj;
-	ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	spawn_info.ft_kind = nFTKindFox;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindFox, 0);

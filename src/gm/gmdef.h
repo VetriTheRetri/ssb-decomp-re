@@ -34,12 +34,12 @@
 // Only paragraph font has all ASCII numbers. Title font has only number 4 at 0x37
 #define GMSTAFFROLL_ASCII_NUMBER_TO_PARA_FONT_INDEX(c) (0x35 + ('9' - (c)))
 
-#define gmColEventAdvance(event, type) ((event) = (void*)((uintptr_t)event + sizeof(type)))
+#define GMColEventAdvance(event, type) ((event) = (void*)((uintptr_t)event + sizeof(type)))
 
-#define gmColEventCast(event, type) ((type*)(event))
+#define GMColEventCast(event, type) ((type*)(event))
 
 // WARNING: Only advances 4 bytes at a time
-#define gmColEventCastAdvance(event, type) ((type*)(event)++)
+#define GMColEventCastAdvance(event, type) ((type*)(event)++)
 
 #define gmRumbleEventAdvance(event, type) ((event) = (void*)((uintptr_t)(event) + (sizeof(type))))
 
@@ -120,7 +120,7 @@
 #define gmColCommandSetSkeletonID(skeleton_id)                                                                       \
 	(GC_FIELDSET(nGMColEventKindSetSkeletonID, 26, 6) | GC_FIELDSET(skeleton_id, 0, 26))
 
-typedef enum gmDirectionSign
+typedef enum GMDirectionSign
 {
 	nGMFacingL = -1,
 	nGMFacingD = -1,
@@ -130,18 +130,18 @@ typedef enum gmDirectionSign
 	nGMFacingWallU = 2,    	// Exclusive to Pikachu's Thunder Jolt for riding walls up?
 	nGMFacingWallD = 3     	// Exclusive to Pikachu's Thunder Jolt for riding walls down?
 
-} gmDirectionSign;
+} GMDirectionSign;
 
-typedef enum gmHitCollisionStatus
+typedef enum GMHitStatus
 {
 	nGMHitStatusNone,		 	// User's hurtboxes are disabled
 	nGMHitStatusNormal,	 		// User can be hit
 	nGMHitStatusInvincible, 	// User can be hit, but is immune to damage
 	nGMHitStatusIntangible	 	// User cannot be hit
 
-} gmHitCollisionStatus;
+} GMHitStatus;
 
-typedef enum gmHitCollisionElement
+typedef enum GMHitElement
 {
 	nGMHitElementNormal,
 	nGMHitElementFire,
@@ -152,34 +152,34 @@ typedef enum gmHitCollisionElement
 	nGMHitElementSleep,
 	nGMHitElementUnk2
 
-} gmHitCollisionElement;
+} GMHitElement;
 
-typedef enum gmHitCollisionType 	// Hitbox types, this is universal but I don't
+typedef enum GMHitType 				// Hitbox types, this is universal but I don't
 									// know where else to put it so both fighters
 									// and items can see it without redefining it
 									// for each
 {
-	nGMHitTypeHurt,
-	nGMHitTypeShield,
-	nGMHitTypeShieldRehit,
-	nGMHitTypeHit,
-	nGMHitTypeHurtRehit, 			// Only used for specific articles? e.g.
+	nGMHITTypeHurt,
+	nGMHITTypeShield,
+	nGMHITTypeShieldRehit,
+	nGMHITTypeHit,
+	nGMHITTypeHurtRehit, 			// Only used for specific articles? e.g.
 								   	// Pirahna Plants dealing damage
-	nGMHitTypeAbsorb,
-	nGMHitTypeReflect
+	nGMHITTypeAbsorb,
+	nGMHITTypeReflect
 
-} gmHitCollisionType;
+} GMHitType;
 
-typedef enum gmHitCollisionUpdateState
+typedef enum GMHitUpdateState
 {
 	nGMHitUpdateDisable,	   		// No active hitbox or updates
 	nGMHitUpdateNew,		   		// Initialize hitbox positions
 	nGMHitUpdateTransfer,   		// Transitions to interpolation mode, that's it
 	nGMHitUpdateInterpolate 		// Copies current position to previous
 
-} gmHitCollisionUpdateState;
+} GMHitUpdateState;
 
-typedef enum gmHitCollisionSoundEffect
+typedef enum GMHitSoundEffect
 {
 	nGMHitSoundPunch,
 	nGMHitSoundKick,
@@ -191,27 +191,27 @@ typedef enum gmHitCollisionSoundEffect
 	nGMHitSoundBat,
 	nGMHitSoundEnumMax
 
-} gmHitCollisionSoundEffect;
+} GMHitSoundEffect;
 
-typedef enum gmHitCollisionSoundLevel
+typedef enum GMHitSoundLevel
 {
 	nGMHitLevelWeak,
 	nGMHitLevelMedium,
 	nGMHitLevelStrong,
 	nGMHitLevelEnumMax
 
-} gmHitCollisionSoundLevel;
+} GMHitSoundLevel;
 
-typedef enum gmHitCollisionEnvironment
+typedef enum GMHitEnvironment
 {
 	nGMHitEnvironmentAcid,
 	nGMHitEnvironmentPowerBlock,
 	nGMHitEnvironmentTwister,
 	nGMHitEnvironmentTaruCann
 
-} gmHitCollisionEnvironment;
+} GMHitEnvironment;
 
-typedef enum gmColEventKind
+typedef enum GMColEventKind
 {
 	nGMColEventKindEnd,
 	nGMColEventKindWait,
@@ -233,9 +233,9 @@ typedef enum gmColEventKind
 	nGMColEventKindPlaySFX,
 	nGMColEventKindSetSkeletonID
 
-} gmColEventKind;
+} GMColEventKind;
 
-typedef enum gmRumbleEventKind
+typedef enum GMRumbleEventKind
 {
 	nGMRumbleEventKindEnd,
 	nGMRumbleEventKindStartRumble,
@@ -243,9 +243,9 @@ typedef enum gmRumbleEventKind
 	nGMRumbleEventKindLoopBegin,
 	nGMRumbleEventKindLoopEnd
 
-} gmRumbleEventKind;
+} GMRumbleEventKind;
 
-typedef enum gmStaffrollCompany
+typedef enum GMStaffrollCompany
 {
 	nGMStaffrollCompanyNull = -1,
 	nGMStaffrollCompanyHAL,
@@ -260,49 +260,49 @@ typedef enum gmStaffrollCompany
 	nGMStaffrollCompanyEZAKIProd,
 	nGMStaffrollCompanyNOA
 
-} gmStaffrollCompany;
+} GMStaffrollCompany;
 
-typedef struct gmHitCollisionFlags          gmHitCollisionFlags;
-typedef struct gmHitRecord                  gmHitRecord;
-typedef union  gmStatFlags                  gmStatFlags;
-typedef struct gmColScript                  gmColScript;
-typedef struct gmColKeys                    gmColKeys;
-typedef struct gmColAnim                    gmColAnim;
-typedef struct gmColDesc                    gmColDesc;
-typedef struct gmColEventDefault            gmColEventDefault;
-typedef struct gmColEventGoto1              gmColEventGoto1;
-typedef struct gmColEventGoto2              gmColEventGoto2;
-typedef struct gmColEventGoto               gmColEventGoto;
-typedef struct gmColEventSubroutine1        gmColEventSubroutine1;
-typedef struct gmColEventSubroutine2        gmColEventSubroutine2;
-typedef struct gmColEventSubroutine         gmColEventSubroutine;
-typedef struct gmColEventParallel1          gmColEventParallel1;
-typedef struct gmColEventParallel2          gmColEventParallel2;
-typedef struct gmColEventParallel           gmColEventParallel;
-typedef struct gmColEventSetRGBA1           gmColEventSetRGBA1;
-typedef struct gmColEventSetRGBA2           gmColEventSetRGBA2;
-typedef struct gmColEventSetRGBA            gmColEventSetRGBA;
-typedef struct gmColEventBlendRGBA1         gmColEventBlendRGBA1;
-typedef struct gmColEventBlendRGBA2         gmColEventBlendRGBA2;
-typedef struct gmColEventBlendRGBA          gmColEventBlendRGBA;
-typedef struct gmColEventMakeEffect1        gmColEventMakeEffect1;
-typedef struct gmColEventMakeEffect2        gmColEventMakeEffect2;
-typedef struct gmColEventMakeEffect3        gmColEventMakeEffect3;
-typedef struct gmColEventMakeEffect4        gmColEventMakeEffect4;
-typedef struct gmColEventMakeEffect         gmColEventMakeEffect;
-typedef struct gmColEventSetLight           gmColEventSetLight;
-typedef union  gmColEventAll                gmColEventAll;
-typedef struct gmRumbleEventDefault         gmRumbleEventDefault;
-typedef struct gmRumbleScript               gmRumbleScript;
-typedef struct gmRumbleLink                 gmRumbleLink;
-typedef struct gmRumblePlayer               gmRumblePlayer;
-typedef struct gmStaffrollMatrix				gmStaffrollMatrix;
-typedef struct gmStaffrollText				gmStaffrollText;
-typedef struct gmStaffrollSprite				gmStaffrollSprite;
-typedef struct gmStaffrollStaff				gmStaffrollStaff;
-typedef struct gmStaffrollName				gmStaffrollName;
-typedef struct gmStaffrollJob					gmStaffrollJob;
-typedef struct gmStaffrollSetup				gmStaffrollSetup;
-typedef struct gmStaffrollProjection			gmStaffrollProjection;
+typedef struct GMHitFlags          			GMHitFlags;
+typedef struct GMHitRecord                  GMHitRecord;
+typedef union  GMStatFlags                  GMStatFlags;
+typedef struct GMColScript                  GMColScript;
+typedef struct GMColKeys                    GMColKeys;
+typedef struct GMColAnim                    GMColAnim;
+typedef struct GMColDesc                    GMColDesc;
+typedef struct GMColEventDefault            GMColEventDefault;
+typedef struct GMColEventGoto1              GMColEventGoto1;
+typedef struct GMColEventGoto2              GMColEventGoto2;
+typedef struct GMColEventGoto               GMColEventGoto;
+typedef struct GMColEventSubroutine1        GMColEventSubroutine1;
+typedef struct GMColEventSubroutine2        GMColEventSubroutine2;
+typedef struct GMColEventSubroutine         GMColEventSubroutine;
+typedef struct GMColEventParallel1          GMColEventParallel1;
+typedef struct GMColEventParallel2          GMColEventParallel2;
+typedef struct GMColEventParallel           GMColEventParallel;
+typedef struct GMColEventSetRGBA1           GMColEventSetRGBA1;
+typedef struct GMColEventSetRGBA2           GMColEventSetRGBA2;
+typedef struct GMColEventSetRGBA            GMColEventSetRGBA;
+typedef struct GMColEventBlendRGBA1         GMColEventBlendRGBA1;
+typedef struct GMColEventBlendRGBA2         GMColEventBlendRGBA2;
+typedef struct GMColEventBlendRGBA          GMColEventBlendRGBA;
+typedef struct GMColEventMakeEffect1        GMColEventMakeEffect1;
+typedef struct GMColEventMakeEffect2        GMColEventMakeEffect2;
+typedef struct GMColEventMakeEffect3        GMColEventMakeEffect3;
+typedef struct GMColEventMakeEffect4        GMColEventMakeEffect4;
+typedef struct GMColEventMakeEffect         GMColEventMakeEffect;
+typedef struct GMColEventSetLight           GMColEventSetLight;
+typedef union  GMColEventAll                GMColEventAll;
+typedef struct GMRumbleEventDefault         GMRumbleEventDefault;
+typedef struct GMRumbleScript               GMRumbleScript;
+typedef struct GMRumbleLink                 GMRumbleLink;
+typedef struct GMRumblePlayer               GMRumblePlayer;
+typedef struct GMStaffrollMatrix			GMStaffrollMatrix;
+typedef struct GMStaffrollText				GMStaffrollText;
+typedef struct GMStaffrollSprite			GMStaffrollSprite;
+typedef struct GMStaffrollStaff				GMStaffrollStaff;
+typedef struct GMStaffrollName				GMStaffrollName;
+typedef struct GMStaffrollJob				GMStaffrollJob;
+typedef struct GMStaffrollSetup				GMStaffrollSetup;
+typedef struct GMStaffrollProjection		GMStaffrollProjection;
 
 #endif

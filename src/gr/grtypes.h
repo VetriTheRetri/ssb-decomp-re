@@ -10,7 +10,7 @@
 #include <gr/grdef.h>
 #include <gr/grvars.h>
 
-struct grDisplayDesc
+struct GRDisplayDesc
 {
 	void *func_displaypri;
 	void *func_displaysec;
@@ -18,7 +18,7 @@ struct grDisplayDesc
 	void *proc_update;
 };
 
-struct grHitbox
+struct GRHitCollision
 {
 	s32 kind;
 	s32 damage;
@@ -29,24 +29,24 @@ struct grHitbox
 	s32 element;
 };
 
-struct grObstacle
+struct GRObstacle
 {
 	GObj *gobj;
 	sb32 (*proc_update)(GObj*, GObj*, s32*);
 };
 
-struct grHazard
+struct GRHazard
 {
 	GObj *gobj;
-	sb32 (*proc_update)(GObj*, GObj*, grHitbox**, s32*);
+	sb32 (*proc_update)(GObj*, GObj*, GRHitCollision**, s32*);
 };
 
-struct grFileInfo
+struct GRFileInfo
 {
 	intptr_t file_id, offset;
 };
 
-union grStruct
+union GRStruct
 {
 	// Common stages
 	grCommonGroundVarsPupupu pupupu;

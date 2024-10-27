@@ -18,11 +18,11 @@ Vec3f dFTCommonCatchPullEffectOffset = { 0.0F, 0.0F, 0.0F };
 // 0x80149EC0
 void ftCommonCatchPullProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
 
     if (ftAnimEndCheckSetStatus(fighter_gobj, ftCommonCatchWaitSetStatus) != FALSE)
     {
-        ftStruct *catch_fp = ftGetStruct(this_fp->catch_gobj);
+        FTStruct *catch_fp = ftGetStruct(this_fp->catch_gobj);
 
         catch_fp->status_vars.common.capture.is_goto_pulled_wait = TRUE;
     }
@@ -31,7 +31,7 @@ void ftCommonCatchPullProcUpdate(GObj *fighter_gobj)
 // 0x80149F04
 void ftCommonCatchPullProcCatch(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCatchPull, fp->status_vars.common.catchmain.catch_pull_frame_begin, 1.0F, (FTSTATUS_PRESERVE_SLOPECONTOUR | FTSTATUS_PRESERVE_EFFECT));
@@ -56,7 +56,7 @@ void ftCommonCatchPullProcCatch(GObj *fighter_gobj)
 // 0x80149FCC
 void ftCommonCatchWaitProcInterrupt(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->status_vars.common.catchwait.throw_wait != 0)
     {
@@ -68,7 +68,7 @@ void ftCommonCatchWaitProcInterrupt(GObj *fighter_gobj)
 // 0x8014A000
 void ftCommonCatchWaitSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCatchWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_SLOPECONTOUR);
 

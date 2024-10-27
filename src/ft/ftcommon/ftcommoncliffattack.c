@@ -9,7 +9,7 @@
 // 0x80145620
 sb32 ftCommonCliffAttackCheckInterruptCommon(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->input.pl.button_tap & (fp->input.button_mask_a | fp->input.button_mask_b))
     {
@@ -35,7 +35,7 @@ void ftCommonCliffAttackSlow1ProcUpdate(GObj *fighter_gobj)
 // 0x801456B4
 void ftCommonCliffAttackQuick1SetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffAttackQuick1, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
@@ -47,7 +47,7 @@ void ftCommonCliffAttackQuick1SetStatus(GObj *fighter_gobj)
 // 0x80145704
 void ftCommonCliffAttackSlow1SetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffAttackSlow1, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
@@ -61,7 +61,7 @@ void ftCommonCliffAttackQuick2SetStatus(GObj *fighter_gobj)
 {
     ftCommonCliffCommon2UpdateCollData(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffAttackQuick2, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftCommonCliffCommon2InitStatusVars(fighter_gobj);
+    ftCommonCliffCommon2InITStatusVars(fighter_gobj);
 }
 
 // 0x80145794
@@ -69,5 +69,5 @@ void ftCommonCliffAttackSlow2SetStatus(GObj *fighter_gobj)
 {
     ftCommonCliffCommon2UpdateCollData(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffAttackSlow2, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftCommonCliffCommon2InitStatusVars(fighter_gobj);
+    ftCommonCliffCommon2InITStatusVars(fighter_gobj);
 }

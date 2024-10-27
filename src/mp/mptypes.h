@@ -11,7 +11,7 @@
 // Group = collection of lines
 // Line = collection of vertices
 
-struct mpVertexInfo
+struct MPVertexInfo
 {
 	u8 yakumono_id;
 	u8 line_type;
@@ -23,17 +23,17 @@ struct mpVertexInfo
 					   // for orientation (Under/Down/Ceil and Left)
 };
 
-struct mpVertexLinks
+struct MPVertexLinks
 {
 	u16 vertex1, vertex2;
 };
 
-struct mpVertexArray
+struct MPVertexArray
 {
 	u16 vertex_id[1];
 };
 
-struct mpVertexData
+struct MPVertexData
 {
 	Vec2h pos;
 	u16 vertex_flags; // upper 8 bits = surface type (e.g. drop-through,
@@ -41,79 +41,79 @@ struct mpVertexData
 					  // floor, etc.)
 };
 
-struct mpVertexPosContainer
+struct MPVertexPosContainer
 {
-	mpVertexData vpos[1];
+	MPVertexData vpos[1];
 };
 
-struct mpLineData
+struct MPLineData
 {
 	u16 group_id;
 	u16 line_count; // Number of lines with collision type? e.g. there are 4
 					// ground lines on Saffron City in the main group
 };
 
-struct mpLineInfo
+struct MPLineInfo
 {
 	u16 yakumono_id; // Group that this line
-	mpLineData line_data[4];
+	MPLineData line_data[4];
 };
 
-struct mpGeometryInfo // 0x80131368
+struct MPGeometryData // 0x80131368
 {
 	u16 yakumono_count;
 	void* vertex_data;
 	void* vertex_id;
 	void* vertex_links;
-	mpLineInfo* line_info;
+	MPLineInfo* line_info;
 	u16 mapobj_count;
 	void* mapobjs;
 };
 
-struct mpVertexInfoContainer
+struct MPVertexInfoContainer
 {
-	mpVertexInfo vertex_info[1];
+	MPVertexInfo vertex_info[1];
 };
 
-struct mpVertexLinksContainer
+struct MPVertexLinksContainer
 {
-	mpVertexLinks vertex_links[1];
+	MPVertexLinks vertex_links[1];
 };
 
-struct mpYakumonoDObj
+struct MPYakumonoDObj
 {
 	DObj *yakumono_dobj[1];
 };
 
-struct mpMapObjData
+struct MPMapObjData
 {
 	u16 mapobj_kind;
 	Vec2h pos;
 };
 
-struct mpMapObjContainer
+struct MPMapObjContainer
 {
-	mpMapObjData mapobjs[1];
+	MPMapObjData mapobjs[1];
 };
 
-struct mpLineGroup // This is all getting hard to wrap one's head around, but
+struct MPLineGroup // This is all getting hard to wrap one's head around, but
 				   // this is basically a group of line types (ground, ceil,
 				   // rwall, lwall)
 {
 	u16 line_count, *line_id;
 };
 
-struct mpDirection
+struct MPDirection
 {
 	f32 top, bottom, right, left;
 };
 
-struct mpEdgeBounds
+struct MPEdgeBounds
 {
-	mpDirection d0, d1, d2, d3;
+	MPDirection d0, d1, d2, d3;
 };
 
-struct mpObjectColl
+struct MPObjectColl
 {
 	f32 top;
 	f32 center;
@@ -121,7 +121,7 @@ struct mpObjectColl
 	f32 width;
 };
 
-struct mpCollData
+struct MPCollData
 {
 	Vec3f* p_translate;			 	// Points to object's TopN translation vector
 	s32* p_lr;					 	// Points to object's facing direction sign
@@ -129,8 +129,8 @@ struct mpCollData
 	Vec3f pos_correct;			 	// Unconfirmed
 	Vec3f pos_speed;			 	// Applied from moving collisions
 	Vec3f vel_push;				 	// Applied from extern stage objects such as Whispy's Wind
-	mpObjectColl objcoll;	 		// Environmental collision box
-	mpObjectColl *p_objcoll; 		// Points back to environmental collision box???
+	MPObjectColl object_coll;	 		// Environmental collision box
+	MPObjectColl *p_object_coll; 		// Points back to environmental collision box???
 	Vec2f cliffcatch_coll;		 	// Ledge grab collision box
 	u16 coll_mask_prev;			 	// Previous collision flags?
 	u16 coll_mask_current;			// Current collision flags
@@ -165,12 +165,12 @@ struct mpCollData
 	s32 ignore_line_id; 			// Ignore this line when checking for collision
 };
 
-struct mpItemWeights
+struct MPItemWeights
 {
     u8 item_quantities[1];
 };
 
-struct mpGroundDesc
+struct MPGroundDesc
 {
 	void *dobjdesc;
 	AObjEvent32 **anim_joints;
@@ -178,10 +178,10 @@ struct mpGroundDesc
 	AObjEvent32 ***p_matanim_joints;
 };
 
-struct mpGroundData
+struct MPGroundData
 {
-	mpGroundDesc gr_desc[4];
-	mpGeometryInfo *map_geometry;
+	MPGroundDesc gr_desc[4];
+	MPGeometryData *map_geometry;
 	u8 layer_mask; // render mask which determines render type for each geo layer (gr_desc) - 0 = primary, 1 = secondary (more alpha control w/2 display lists)
 	Sprite *wallpaper; 								// Background image?
 	syColorRGB fog_color;
@@ -199,7 +199,7 @@ struct mpGroundData
 	s16 map_bound_left;
 	u32 bgm_id;
 	void *map_nodes;
-	mpItemWeights *item_weights; 	// Randomizer weights of items
+	MPItemWeights *item_weights; 	// Randomizer weights of items
 	s16 alt_warning;				// Warning whistle plays if a player goes below this altitude
 	s16 cobj_bound_team_top;			// 1P Game VS. <character> Team bounds
 	s16 cobj_bound_team_bottom;

@@ -10,7 +10,7 @@
 // 0x800F36E0
 void ftHammerUpdateStats(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->hammer_tics != 0)
     {
@@ -45,7 +45,7 @@ void ftHammerUpdateStats(GObj *fighter_gobj)
 // 0x800F3794
 sb32 ftHammerCheckHoldHammer(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer))
     {
@@ -57,9 +57,9 @@ sb32 ftHammerCheckHoldHammer(GObj *fighter_gobj)
 // 0x800F37CC
 sb32 ftHammerCheckStatusHammerAll(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->status_info.status_id >= nFTCommonStatusHammerStart) && (fp->status_info.status_id <= nFTCommonStatusHammerEnd))
+    if ((fp->status_id >= nFTCommonStatusHammerStart) && (fp->status_id <= nFTCommonStatusHammerEnd))
     {
         return TRUE;
     }
@@ -69,9 +69,9 @@ sb32 ftHammerCheckStatusHammerAll(GObj *fighter_gobj)
 // 0x800F37FC
 sb32 ftHammerCheckMotionWaitOrWalk(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->status_info.motion_id == nFTCommonMotionHammerWait) || (fp->status_info.motion_id == nFTCommonMotionHammerWalk))
+    if ((fp->motion_id == nFTCommonMotionHammerWait) || (fp->motion_id == nFTCommonMotionHammerWalk))
     {
         return TRUE;
     }
@@ -105,7 +105,7 @@ u32 ftHammerGetStatUpdateFlags(GObj *fighter_gobj)
 // 0x800F388C
 void ftHammerSetColAnim(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->colanim.colanim_id != FTCOMMON_HAMMER_COLANIM_ID)
     {
@@ -136,7 +136,7 @@ void ftHammerProcMap(GObj *fighter_gobj)
 // 0x800F3938
 void ftHammerSetStatusHammerWait(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->ga == nMPKineticsAir)
     {

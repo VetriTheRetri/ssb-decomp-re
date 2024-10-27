@@ -35,7 +35,7 @@ void (*dITPippiStatusProcList[/* */])(GObj*) =
 };
 
 // 0x8018B3A0
-itCreateDesc dITPippiItemDesc = 
+ITCreateDesc dITPippiItemDesc = 
 {
     nITKindPippi,                           // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -62,7 +62,7 @@ itCreateDesc dITPippiItemDesc =
 #if !defined(DAIRANTOU_OPT0)
 
 // 0x8018B3D4 - why
-itStatusDesc dITPippiStatusDesc = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL };
+ITStatusDesc dITPippiStatusDesc = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL };
 
 #endif
 
@@ -77,7 +77,7 @@ void itPippiCommonSelectMonster(GObj *item_gobj)
 {
     s32 it_kind;
     s32 index;
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     index = mtTrigGetRandomIntRange(ARRAY_COUNT(dITPippiStatusProcList));
@@ -96,7 +96,7 @@ void itPippiCommonSelectMonster(GObj *item_gobj)
     }
     if ((it_kind == nITKindPippi) || (it_kind == nITKindTosakinto) || (it_kind == nITKindMLucky))
     {
-        ip->item_hit.update_state = nGMHitUpdateDisable;
+        ip->hit_coll.update_state = nGMHitUpdateDisable;
     }
     if (it_kind == nITKindSawamura)
     {
@@ -118,7 +118,7 @@ void itPippiCommonSelectMonster(GObj *item_gobj)
 // 0x80183344
 void itPippiCommonFuncDisplay(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
@@ -137,7 +137,7 @@ void itPippiCommonFuncDisplay(GObj *item_gobj)
             gcDrawDObjTreeForGObj(item_gobj);
             itDisplayMapCollisions(item_gobj);
         }
-        else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
+        else if ((ip->damage_coll.hitstatus == nGMHitStatusNone) && (ip->hit_coll.update_state == nGMHitUpdateDisable))
         {
             gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
@@ -151,7 +151,7 @@ void itPippiCommonFuncDisplay(GObj *item_gobj)
 // 0x801834A0 - Render routine of Hitmonlee / Starmie metronome abilities
 void itPippiCommonMoveDLFuncDisplay(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
@@ -170,7 +170,7 @@ void itPippiCommonMoveDLFuncDisplay(GObj *item_gobj)
             gcDrawDObjTreeForGObj(item_gobj);
             itDisplayMapCollisions(item_gobj);
         }
-        else if ((ip->item_hurt.hitstatus == nGMHitStatusNone) && (ip->item_hit.update_state == nGMHitUpdateDisable))
+        else if ((ip->damage_coll.hitstatus == nGMHitStatusNone) && (ip->hit_coll.update_state == nGMHitUpdateDisable))
         {
             gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
@@ -184,11 +184,11 @@ void itPippiCommonMoveDLFuncDisplay(GObj *item_gobj)
 // 0x801835FC
 sb32 itPippiCommonProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {
-        ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.x = ip->physics.vel_air.y = 0.0F;
 
         itPippiCommonSelectMonster(item_gobj);
     }
@@ -200,11 +200,11 @@ sb32 itPippiCommonProcUpdate(GObj *item_gobj)
 // 0x80183650
 sb32 itPippiCommonProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_GROUND) != FALSE)
     {
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
     }
     return FALSE;
 }
@@ -217,18 +217,18 @@ GObj* itPippiMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     if (item_gobj != NULL)
     {
         DObj *dobj = DObjGetStruct(item_gobj);
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
-        ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
+        ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
+        ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
         gcAddXObjForDObjFixed(dobj, 0x48, 0);
 
         dobj->translate.vec.f = *pos;
 
-        dobj->translate.vec.f.y -= ip->attributes->objcoll_bottom;
+        dobj->translate.vec.f.y -= ip->attributes->object_coll_bottom;
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITPippiDataStart), 0.0F); // Linker thing
         func_800269C0_275C0(nSYAudioVoiceMBallPippiAppear);

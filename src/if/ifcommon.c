@@ -34,13 +34,13 @@ extern GObj *D_ovl2_80131A14;
 s32 sIFCommonPad0x80131570[4];
 
 // 0x80131580
-ifPlayerCommon gIFCommonPlayerInterface;
+IFPlayerCommon gIFCommonPlayerInterface;
 
 // 0x80131598
-ifPlayerDamage sIFCommonPlayerDamageInterface[GMCOMMON_PLAYERS_MAX];
+IFPlayerDamage sIFCommonPlayerDamageInterface[GMCOMMON_PLAYERS_MAX];
 
 // 0x80131748
-ifPlayerMGlass sIFCommonPlayerMGlassInterface[GMCOMMON_PLAYERS_MAX];
+IFPlayerMGlass sIFCommonPlayerMGlassInterface[GMCOMMON_PLAYERS_MAX];
 
 // 0x801317C8 - Values of digits displayed on the match timer
 u8 sIFCommonTimerDigitsInterface[4];
@@ -106,7 +106,7 @@ void (*sIFCommonBattleInterfaceProcSet)();
 s32 sIFCommonPad0x80131834;
 
 // 0x80131838
-ifPlayerSteal sIFCommonPlayerStealInterface[GMCOMMON_PLAYERS_MAX];
+IFPlayerSteal sIFCommonPlayerStealInterface[GMCOMMON_PLAYERS_MAX];
 
 // 0x80131858
 u8 sIFCommonPlayerMGlassSoundWait;
@@ -192,7 +192,7 @@ u8 dIFCommonTrafficGoShadowG[/* */] = { 0x00, 0x12 };
 u8 dIFCommonTrafficGoShadowB[/* */] = { 0x00, 0x2E };
 
 // 0x8012ECE4
-ifTraffic dIFCommonTrafficSpriteData[/* */] =
+IFTraffic dIFCommonTrafficSpriteData[/* */] =
 {
     { 123, -13, 0x00 },
     { 140, -11, 0x01 },
@@ -220,7 +220,7 @@ intptr_t dIFCommonTrafficSpriteOffsets[/* */] =
 };
 
 // 0x8012ED64 - Announcer text: "GO!"
-ifACharacter dIFCommonAnnounceGoSpriteData[/* */] =
+IFACharacter dIFCommonAnnounceGoSpriteData[/* */] =
 {
     {  82, 93, &lIFCommonAnnounceGoLetterG       },
     { 144, 93, &lIFCommonAnnounceGoLetterO       },
@@ -228,7 +228,7 @@ ifACharacter dIFCommonAnnounceGoSpriteData[/* */] =
 };
 
 // 0x8012ED7C
-ifACharacter dIFCommonAnnounceSuddenDeathSpriteData[/* */] =
+IFACharacter dIFCommonAnnounceSuddenDeathSpriteData[/* */] =
 {
     {  74,  67, &lIFCommonAnnounceCommonLetterS       },
     { 102,  67, &lIFCommonAnnounceCommonLetterU       },
@@ -248,7 +248,7 @@ ifACharacter dIFCommonAnnounceSuddenDeathSpriteData[/* */] =
 syColorRGBPair dIFCommonAnnounceSuddenDeathSpriteColors = { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0x00 } };
 
 // 0x8012EDE4
-ifACharacter dIFCommonAnnounceTimeUpSpriteData[/* */] =
+IFACharacter dIFCommonAnnounceTimeUpSpriteData[/* */] =
 {
     {  45, 95, &lIFCommonAnnounceTimeUpLetterT },
     {  82, 95, &lIFCommonAnnounceTimeUpLetterI },
@@ -259,7 +259,7 @@ ifACharacter dIFCommonAnnounceTimeUpSpriteData[/* */] =
 };
 
 // 0x8012EE14
-ifACharacter dIFCommonAnnounceGameSetSpriteData[/* */] =
+IFACharacter dIFCommonAnnounceGameSetSpriteData[/* */] =
 {
     {  22, 95, &lIFCommonAnnounceGameSetLetterG },
     {  62, 95, &lIFCommonAnnounceGameSetLetterA },
@@ -418,7 +418,7 @@ intptr_t dIFCommonPlayerTagSpriteOffsets[/* */] =
 };
 
 // 0x8012EFC4
-ifPauseDecal dIFCommonBattlePauseDecalsSpriteData[/* */] =
+IFPauseDecal dIFCommonBattlePauseDecalsSpriteData[/* */] =
 {
     { &lIFCommonBattlePauseDecalPause,          { 232, 191 }, { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0x00 } } },
     { &lIFCommonBattlePauseDecalAButton,        {  99, 203 }, { { 0x00, 0x95, 0xFF }, { 0x00, 0x05, 0xC7 } } },
@@ -447,7 +447,7 @@ syRectangle dIFCommonBattlePauseBorderRectangle[/* */] =
 };
 
 // 0x8012F0F4
-ifACharacter dIFCommonAnnounceFailureSpriteData[/* */] =
+IFACharacter dIFCommonAnnounceFailureSpriteData[/* */] =
 {
     {  77, 101, &lIFCommonAnnounceCommonLetterF },
     {  97, 101, &lIFCommonAnnounceCommonLetterA },
@@ -462,7 +462,7 @@ ifACharacter dIFCommonAnnounceFailureSpriteData[/* */] =
 syColorRGBPair dIFCommonAnnounceFailureSpriteColors = { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0xFF } };
 
 // 0x8012F134
-ifACharacter dIFCommonAnnounceCompleteSpriteData[/* */] =
+IFACharacter dIFCommonAnnounceCompleteSpriteData[/* */] =
 {
     {  46, 101, &lIFCommonAnnounceCommonLetterC       },
     {  71, 101, &lIFCommonAnnounceCommonLetterO       },
@@ -570,7 +570,7 @@ s32 ifCommonPlayerDamageGetDigitOffset(s32 digit_count, u8 *digit_ids)
 void ifCommonPlayerDamageUpdateDigits(GObj *interface_gobj)
 {
     s32 player;
-    ifDCharacter *ifchar;
+    IFDCharacter *ifchar;
     SObj *sobj;
     s32 damage_scale;
     s32 start_damage;
@@ -704,7 +704,7 @@ void ifCommonPlayerDamageUpdateAnim(GObj *interface_gobj)
     s32 random;
     s32 modulo;
     s32 i, j;
-    ifDCharacter *ifchar;
+    IFDCharacter *ifchar;
     SObj *sobj;
 
     player = ifGetPlayer(interface_gobj);
@@ -793,7 +793,7 @@ void ifCommonPlayerDamageFuncDisplay(GObj *interface_gobj)
     u8 color_g;
     u8 color_b;
     SObj *sobj, *sub_sobj;
-    ifDCharacter *ifchar;
+    IFDCharacter *ifchar;
 
     sobj = SObjGetStruct(interface_gobj);
 
@@ -904,8 +904,8 @@ void ifCommonPlayerDamageSetDigitPositions(void)
 // 0x8010F3C0
 void ifCommonPlayerDamageInitInterface(void)
 {
-    ftStruct *fp;
-    ftSprites *ft_sprites;
+    FTStruct *fp;
+    FTSprites *ft_sprites;
     GObj *interface_gobj;
     SObj *sobj;
     s32 player;
@@ -976,7 +976,7 @@ void ifCommonPlayerDamageInitInterface(void)
 }
 
 // 0x8010F76C
-void ifCommonPlayerDamageStartBreakAnim(ftStruct *fp)
+void ifCommonPlayerDamageStartBreakAnim(FTStruct *fp)
 {
     s32 player = fp->player;
     s32 i;
@@ -993,7 +993,7 @@ void ifCommonPlayerDamageStartBreakAnim(ftStruct *fp)
 }
 
 // 0x8010F840
-void ifCommonPlayerDamageStopBreakAnim(ftStruct *fp)
+void ifCommonPlayerDamageStopBreakAnim(FTStruct *fp)
 {
     s32 player = fp->player;
 
@@ -1005,7 +1005,7 @@ void ifCommonPlayerDamageStopBreakAnim(ftStruct *fp)
 void ifCommonPlayerStockMultiFuncDisplay(GObj *interface_gobj)
 {
     s32 player;
-    ftStruct *fp;
+    FTStruct *fp;
     s32 unused;
     s32 stock_count;
     s32 digit_count;
@@ -1041,9 +1041,9 @@ void ifCommonPlayerStockMultiFuncDisplay(GObj *interface_gobj)
                 {
                     if (stock_order < stock_count)
                     {
-                        lt_sobj->sprite = *fp->attributes->sprites->stock_spr;
+                        lt_sobj->sprite = *fp->attributes->sprites->stock_sprite;
 
-                        lt_sobj->sprite.LUT = fp->attributes->sprites->stock_lut[fp->costume];
+                        lt_sobj->sprite.LUT = fp->attributes->sprites->stock_luts[fp->costume];
 
                         lt_sobj->pos.x = ((gIFCommonPlayerInterface.ifplayers_pos_x[player] + dIFCommonPlayerStocksIconOffsetsX[player] + (stock_order * 10)) - (lt_sobj->sprite.width * 0.5F));
                         lt_sobj->pos.y = ((gIFCommonPlayerInterface.ifplayers_pos_y - (s32)(lt_sobj->sprite.height * 0.5F)) - 20);
@@ -1065,9 +1065,9 @@ void ifCommonPlayerStockMultiFuncDisplay(GObj *interface_gobj)
 
                 gt_sobj = SObjGetStruct(interface_gobj);
 
-                gt_sobj->sprite = *fp->attributes->sprites->stock_spr;
+                gt_sobj->sprite = *fp->attributes->sprites->stock_sprite;
 
-                gt_sobj->sprite.LUT = fp->attributes->sprites->stock_lut[fp->costume];
+                gt_sobj->sprite.LUT = fp->attributes->sprites->stock_luts[fp->costume];
 
                 gt_sobj->pos.x = ((trunc_pos_x - 22) - (gt_sobj->sprite.width * 0.5F));
                 gt_sobj->pos.y = ((gIFCommonPlayerInterface.ifplayers_pos_y - (s32)(gt_sobj->sprite.height * 0.5F)) - 20);
@@ -1125,10 +1125,10 @@ void ifCommonPlayerStockSetIconAttr(void)
 // 0x8010FDD4
 void ifCommonPlayerStockMultiMakeInterface(s32 player)
 {
-    ftStruct *fp = ftGetStruct(gBattleState->players[player].fighter_gobj);
+    FTStruct *fp = ftGetStruct(gBattleState->players[player].fighter_gobj);
     Sprite *sprite;
 
-    if ((fp->attributes->sprites != NULL) && (fp->attributes->sprites->stock_spr != NULL))
+    if ((fp->attributes->sprites != NULL) && (fp->attributes->sprites->stock_sprite != NULL))
     {
         GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
         gcAddGObjDisplay(interface_gobj, ifCommonPlayerStockMultiFuncDisplay, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
@@ -1142,7 +1142,7 @@ void ifCommonPlayerStockMultiMakeInterface(s32 player)
 
         sIFCommonPlayerStocksNum[player] = S8_MAX;
 
-        sprite = fp->attributes->sprites->stock_spr;
+        sprite = fp->attributes->sprites->stock_sprite;
         sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 
         ifSetPlayer(interface_gobj, player);
@@ -1162,28 +1162,28 @@ void ifCommonPlayerStockSingleFuncDisplay(GObj *interface_gobj)
 }
 
 // 0x8010FF78
-void ifCommonPlayerStockSetLUT(s32 player, s32 lut_id, ftAttributes *attributes)
+void ifCommonPlayerStockSetLUT(s32 player, s32 lut_id, FTAttributes *attributes)
 {
-    SObjGetStruct(sIFCommonPlayerStocksGObj[player])->sprite.LUT = attributes->sprites->stock_lut[lut_id];
+    SObjGetStruct(sIFCommonPlayerStocksGObj[player])->sprite.LUT = attributes->sprites->stock_luts[lut_id];
 }
 
 // 0x8010FFA8
 void ifCommonPlayerStockSingleMakeInterface(s32 player)
 {
-    ftStruct *fp = ftGetStruct(gBattleState->players[player].fighter_gobj);
+    FTStruct *fp = ftGetStruct(gBattleState->players[player].fighter_gobj);
     GObj *interface_gobj;
     SObj *sobj;
 
-    if ((fp->attributes->sprites != NULL) && (fp->attributes->sprites->stock_spr != NULL))
+    if ((fp->attributes->sprites != NULL) && (fp->attributes->sprites->stock_sprite != NULL))
     {
         sIFCommonPlayerStocksGObj[player] = interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
         gcAddGObjDisplay(interface_gobj, ifCommonPlayerStockSingleFuncDisplay, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-        sobj = lbCommonMakeSObjForGObj(interface_gobj, fp->attributes->sprites->stock_spr);
+        sobj = lbCommonMakeSObjForGObj(interface_gobj, fp->attributes->sprites->stock_sprite);
 
         sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
-        sobj->sprite.LUT = fp->attributes->sprites->stock_lut[fp->costume];
+        sobj->sprite.LUT = fp->attributes->sprites->stock_luts[fp->costume];
 
         sobj->pos.x = ((gIFCommonPlayerInterface.ifplayers_pos_x[player] + dIFCommonPlayerStocksIconOffsetsX[player]) - (s32)(sobj->sprite.width * 0.5F));
         sobj->pos.y = ((gIFCommonPlayerInterface.ifplayers_pos_y - (s32)(sobj->sprite.height * 0.5F)) - 20);
@@ -1199,7 +1199,7 @@ void ifCommonPlayerStockStealProcUpdate(GObj *interface_gobj)
     f32 vel_x;
     f32 vel_y;
     SObj *sobj;
-    ifPlayerSteal *s_steal = &sIFCommonPlayerStealInterface[ifGetPlayer(interface_gobj)];
+    IFPlayerSteal *s_steal = &sIFCommonPlayerStealInterface[ifGetPlayer(interface_gobj)];
 
     s_steal->anim_frames--;
 
@@ -1234,7 +1234,7 @@ void ifCommonPlayerStockStealProcUpdate(GObj *interface_gobj)
 // 0x801102B0
 void ifCommonPlayerStockStealMakeInterface(s32 thief, s32 stolen)
 {
-    ftStruct *fp = ftGetStruct(gBattleState->players[stolen].fighter_gobj);
+    FTStruct *fp = ftGetStruct(gBattleState->players[stolen].fighter_gobj);
     GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
     if (interface_gobj != NULL)
@@ -1244,7 +1244,7 @@ void ifCommonPlayerStockStealMakeInterface(s32 thief, s32 stolen)
         gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
         gcAddGObjProcess(interface_gobj, ifCommonPlayerStockStealProcUpdate, nGCProcessKindProc, 0);
 
-        check_sobj = lbCommonMakeSObjForGObj(interface_gobj, fp->attributes->sprites->stock_spr);
+        check_sobj = lbCommonMakeSObjForGObj(interface_gobj, fp->attributes->sprites->stock_sprite);
 
         if (check_sobj == NULL)
         {
@@ -1257,7 +1257,7 @@ void ifCommonPlayerStockStealMakeInterface(s32 thief, s32 stolen)
             sobj = check_sobj;
 
             sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
-            sobj->sprite.LUT = fp->attributes->sprites->stock_lut[fp->costume];
+            sobj->sprite.LUT = fp->attributes->sprites->stock_luts[fp->costume];
 
             sIFCommonPlayerStealInterface[thief].steal_pos_x = ((gIFCommonPlayerInterface.ifplayers_pos_x[stolen] + dIFCommonPlayerStocksIconOffsetsX[stolen]) - (s32)(sobj->sprite.width * 0.5F));
             sIFCommonPlayerStealInterface[thief].steal_pos_y = ((gIFCommonPlayerInterface.ifplayers_pos_y - (s32)(sobj->sprite.height * 0.5F)) - 20);
@@ -1485,12 +1485,12 @@ void ifCommonPlayerMGlassUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly)
 }
 
 // 0x80110DD4
-void ifCommonPlayerMGlassUpdateViewport(Gfx **dls, ftStruct *fp)
+void ifCommonPlayerMGlassUpdateViewport(Gfx **dls, FTStruct *fp)
 {
     Gfx *dl;
     f32 magnify_x;
     f32 magnify_y;
-    ifPlayerMGlass *ifmag;
+    IFPlayerMGlass *ifmag;
     CObj *cobj;
     f32 scale;
     s32 ulx;
@@ -1565,11 +1565,11 @@ void ifCommonPlayerMGlassUpdateViewport(Gfx **dls, ftStruct *fp)
 }
 
 // 0x801111A0
-void ifCommonPlayerMGlassFuncDisplay(ftStruct *fp)
+void ifCommonPlayerMGlassFuncDisplay(FTStruct *fp)
 {
     GObj *interface_gobj;
     DObj *dobj;
-    ifPlayerMGlass *ifmag;
+    IFPlayerMGlass *ifmag;
     CObj *cobj;
 
     if (gIFCommonPlayerInterface.is_mglass_display != FALSE)
@@ -1608,7 +1608,7 @@ void ifCommonPlayerMGlassMakeInterface(void)
 
     while (fighter_gobj != NULL)
     {
-        ftStruct *fp = ftGetStruct(fighter_gobj);
+        FTStruct *fp = ftGetStruct(fighter_gobj);
         GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDMagnify, GOBJ_LINKORDER_DEFAULT);
 
         gcAddXObjForDObjFixed(gcAddDObjForGObj(interface_gobj, (Gfx*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&lIFCommonPlayerMGlassDisplayList)), nGCTransformTraRotRpyRSca, 0);
@@ -1712,7 +1712,7 @@ void ifCommonPlayerArrowsFuncRun(GObj *interface_gobj)
 
         while (fighter_gobj != NULL)
         {
-            ftStruct *fp = ftGetStruct(fighter_gobj);
+            FTStruct *fp = ftGetStruct(fighter_gobj);
 
             if (!(fp->is_magnify_hide) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
             {
@@ -1814,7 +1814,7 @@ void ifCommonPlayerArrowsUpdateFlags(f32 x, f32 y)
 void ifCommonPlayerTagFuncDisplay(GObj *interface_gobj)
 {
     s32 player = ifGetPlayer(interface_gobj);
-    ftStruct *fp;
+    FTStruct *fp;
     f32 x;
     f32 y;
     Vec3f pos;
@@ -1880,19 +1880,19 @@ void ifCommonPlayerTagMakeInterface(void)
 // 0x80111D64
 void ifCommonItemArrowFuncDisplay(GObj *interface_gobj)
 {
-    itStruct *ip = itGetStruct(interface_gobj); // So I'm guessing this copies the corresponding item's user_data? Its classifier is 0x3F8.
+    ITStruct *ip = itGetStruct(interface_gobj); // So I'm guessing this copies the corresponding item's user_data? Its classifier is 0x3F8.
     SObj *sobj;
     f32 x;
     f32 y;
     Vec3f pos;
 
-    if ((ip->is_allow_pickup) && (ip->indicator_timer >= 15))
+    if ((ip->is_allow_pickup) && (ip->arrow_timer >= 15))
     {
         sobj = SObjGetStruct(interface_gobj);
 
         pos = DObjGetStruct(ip->item_gobj)->translate.vec.f;
 
-        pos.y += ip->coll_data.objcoll.top + 100.0F;
+        pos.y += ip->coll_data.object_coll.top + 100.0F;
 
         func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &pos, &x, &y);
 
@@ -1907,7 +1907,7 @@ void ifCommonItemArrowFuncDisplay(GObj *interface_gobj)
 }
 
 // 0x80111EC0
-GObj* ifCommonItemArrowMakeInterface(itStruct *ip)
+GObj* ifCommonItemArrowMakeInterface(ITStruct *ip)
 {
     GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
@@ -1955,7 +1955,7 @@ void ifCommonAnnounceThread(GObj *interface_gobj)
 }
 
 // 0x80112024
-void ifCommonAnnounceSetAttr(GObj *interface_gobj, s32 file_id, ifACharacter *character, s32 sprite_count)
+void ifCommonAnnounceSetAttr(GObj *interface_gobj, s32 file_id, IFACharacter *character, s32 sprite_count)
 {
     SObj *sobj;
     void *sprite_head = gGMCommonFiles[file_id];
@@ -2000,7 +2000,7 @@ void ifCommonAnnounceGoSetStatus(void)
 
     while (fighter_gobj != NULL)
     {
-        ftStruct *fp = ftGetStruct(fighter_gobj);
+        FTStruct *fp = ftGetStruct(fighter_gobj);
 
         ftParamUnlockPlayerControl(fighter_gobj);
 
@@ -2624,7 +2624,7 @@ void ifCommonBattleInterfaceProcUpdate(void)
 // 0x80113744 - Unused?
 void func_ovl2_80113744(GObj *fighter_gobj, u32 unused) 
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     
     if (fp->ft_kind == nFTKindBoss) 
     {
@@ -2672,7 +2672,7 @@ void ifCommonBattleEndSetBossDefeat(void)
 }
 
 // 0x8011388C
-void ifCommonBattleUpdateScoreStocks(ftStruct *fp)
+void ifCommonBattleUpdateScoreStocks(FTStruct *fp)
 {
     s32 teammates_remain; // Live teammates remaining
     s32 current_team; // Current team being checked
@@ -2729,7 +2729,7 @@ void ifCommonBattleUpdateScoreStocks(ftStruct *fp)
     }
     if ((sIFCommonBattlePlacement != 0) && (fp->stock_count == -1))
     {
-        if (fp->status_info.pl_kind == nFTPlayerKindMan)
+        if (fp->pl_kind == nFTPlayerKindMan)
         {
             ftPublicityDefeatedAddID(dIFCommonAnnounceDefeatedVoiceIDs[fp->player]);
         }
@@ -2888,7 +2888,7 @@ void ifCommonBattlePauseInitInterface(s32 player)
 void ifCommonBattleGoUpdateInterface(void)
 {
     GObj *fighter_gobj;
-    ftStruct *fp;
+    FTStruct *fp;
     s32 player;
     Vec3f sp68;
     Vec3f sp5C;
@@ -2905,7 +2905,7 @@ void ifCommonBattleGoUpdateInterface(void)
 
                     fp = ftGetStruct(fighter_gobj);
 
-                    if ((fp->status_info.status_id == nFTCommonStatusSleep) && (ftCommonSleepCheckIgnorePauseMenu(fighter_gobj) != FALSE)) 
+                    if ((fp->status_id == nFTCommonStatusSleep) && (ftCommonSleepCheckIgnorePauseMenu(fighter_gobj) != FALSE)) 
                     {
                         continue;
                     }
@@ -3205,13 +3205,13 @@ void ifCommonBattleSetGameStatusWait(void)
 }
 
 // 0x80114968
-void ifCommonPlayerInterfaceAddToViewport(ftStruct *fp)
+void ifCommonPlayerInterfaceAddToViewport(FTStruct *fp)
 {
     func_ovl2_80103974(gIFCommonPlayerInterface.ifplayers_pos_x[fp->player], gIFCommonPlayerInterface.ifplayers_pos_y);
 }
 
 // 0x801149CC
-void ifCommonPlayerScoreMakeEffect(ftStruct *fp, s32 score)
+void ifCommonPlayerScoreMakeEffect(FTStruct *fp, s32 score)
 {
     Vec3f pos;
 

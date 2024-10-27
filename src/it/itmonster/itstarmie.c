@@ -21,7 +21,7 @@ extern intptr_t lITStarmieMatAnimJoint;     // 0x00011338
 // // // // // // // // // // // //
 
 // 0x8018B170
-itCreateDesc dITStarmieItemDesc = 
+ITCreateDesc dITStarmieItemDesc = 
 {
     nITKindStarmie,                         // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -46,7 +46,7 @@ itCreateDesc dITStarmieItemDesc =
 };
 
 // 0x8018B1A4
-itStatusDesc dITStarmieStatusDescs[/* */] =
+ITStatusDesc dITStarmieStatusDescs[/* */] =
 {
     // Status 0 (Neutral Follow)
     {
@@ -74,7 +74,7 @@ itStatusDesc dITStarmieStatusDescs[/* */] =
 };
 
 // 0x8018B1E4
-wpCreateDesc dITStarmieWeaponSwiftWeaponDesc = 
+WPCreateDesc dITStarmieWeaponSwiftWeaponDesc = 
 {
     0x03,                                   // Render flags?
     nWPKindStarmieSwift,                    // Weapon Kind
@@ -120,7 +120,7 @@ enum itStarmieStatus
 // 0x80181C20
 void itStarmieAttackUpdateSwift(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     if (ip->item_vars.starmie.swift_spawn_wait <= 0)
@@ -140,14 +140,14 @@ void itStarmieAttackUpdateSwift(GObj *item_gobj)
 
         ip->item_vars.starmie.swift_spawn_wait = (mtTrigGetRandomIntRange(ITSTARMIE_SWIFT_SPAWN_WAIT_RANDOM) + ITSTARMIE_SWIFT_SPAWN_WAIT_CONST);
 
-        ip->phys_info.vel_air.x = -ip->lr * ITSTARMIE_PUSH_VEL_X;
+        ip->physics.vel_air.x = -ip->lr * ITSTARMIE_PUSH_VEL_X;
     }
 }
 
 // 0x80181D24
 sb32 itStarmieAttackProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {
@@ -157,7 +157,7 @@ sb32 itStarmieAttackProcUpdate(GObj *item_gobj)
 
     ip->item_vars.starmie.swift_spawn_wait--;
 
-    ip->phys_info.vel_air.x += ip->item_vars.starmie.add_vel_x;
+    ip->physics.vel_air.x += ip->item_vars.starmie.add_vel_x;
 
     ip->it_multi--;
 
@@ -167,7 +167,7 @@ sb32 itStarmieAttackProcUpdate(GObj *item_gobj)
 // 0x80181D8C
 void itStarmieAttackInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
     s32 lr_bak = ip->lr;
 
@@ -193,20 +193,20 @@ void itStarmieAttackSetStatus(GObj *item_gobj)
 // 0x80181E40
 sb32 itStarmieNFollowProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     if ((ip->lr == nGMFacingR) && (dobj->translate.vec.f.x >= ip->item_vars.starmie.target_pos.x))
     {
-        ip->phys_info.vel_air.x = 0.0F;
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.x = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
 
         itStarmieAttackSetStatus(item_gobj);
     }
     if ((ip->lr == nGMFacingL) && (dobj->translate.vec.f.x <= ip->item_vars.starmie.target_pos.x))
     {
-        ip->phys_info.vel_air.x = 0.0F;
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.x = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
 
         itStarmieAttackSetStatus(item_gobj);
     }
@@ -216,8 +216,8 @@ sb32 itStarmieNFollowProcUpdate(GObj *item_gobj)
 // 0x80181EF4
 void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     DObj *item_dobj = DObjGetStruct(item_gobj);
     DObj *fighter_dobj = DObjGetStruct(fighter_gobj);
     Vec3f dist;
@@ -228,18 +228,18 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 
     dist.x = fighter_dobj->translate.vec.f.x - item_dobj->translate.vec.f.x;
 
-    target_pos.y += ITSTARMIE_TARGET_POS_OFF_Y - fp->coll_data.objcoll.bottom;
+    target_pos.y += ITSTARMIE_TARGET_POS_OFF_Y - fp->coll_data.object_coll.bottom;
 
-    target_pos.x -= (fp->coll_data.objcoll.width + ITSTARMIE_TARGET_POS_OFF_X) * ((dist.x < 0.0F) ? nGMFacingL : nGMFacingR);
+    target_pos.x -= (fp->coll_data.object_coll.width + ITSTARMIE_TARGET_POS_OFF_X) * ((dist.x < 0.0F) ? nGMFacingL : nGMFacingR);
 
     victim_pos = &fighter_dobj->translate.vec.f;
 
     syVectorDiff3D(&dist, &target_pos, &item_dobj->translate.vec.f);
     
-    ip->phys_info.vel_air.y = ip->phys_info.vel_air.z = 0.0F;
-    ip->phys_info.vel_air.x = ITSTARMIE_FOLLOW_VEL_X;
+    ip->physics.vel_air.y = ip->physics.vel_air.z = 0.0F;
+    ip->physics.vel_air.x = ITSTARMIE_FOLLOW_VEL_X;
 
-    syVectorRotate3D(&ip->phys_info.vel_air, SYVECTOR_AXIS_Z, atan2f(dist.y, dist.x));
+    syVectorRotate3D(&ip->physics.vel_air, SYVECTOR_AXIS_Z, atan2f(dist.y, dist.x));
 
     ip->item_vars.starmie.target_pos = target_pos;
 
@@ -263,7 +263,7 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 void itStarmieNFollowInitItemVars(GObj *item_gobj)
 {
     GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     GObj *victim_gobj;
     s32 unused2[2];
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -275,7 +275,7 @@ void itStarmieNFollowInitItemVars(GObj *item_gobj)
 
     while (fighter_gobj != NULL)
     {
-        ftStruct *fp = ftGetStruct(fighter_gobj);
+        FTStruct *fp = ftGetStruct(fighter_gobj);
 
         if ((fighter_gobj != ip->owner_gobj) && (fp->team != ip->team))
         {
@@ -316,11 +316,11 @@ void itStarmieNFollowSetStatus(GObj *item_gobj)
 // 0x8018221C
 sb32 itStarmieCommonProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {    
-        ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.x = ip->physics.vel_air.y = 0.0F;
 
         itStarmieNFollowSetStatus(item_gobj);
     }
@@ -332,11 +332,11 @@ sb32 itStarmieCommonProcUpdate(GObj *item_gobj)
 // 0x80182270
 sb32 itStarmieCommonProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_GROUND) != FALSE)
     {
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
     }
     return FALSE;
 }
@@ -349,18 +349,18 @@ GObj* itStarmieMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     if (item_gobj != NULL)
     {
         DObj *dobj = DObjGetStruct(item_gobj);
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
-        ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
+        ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
+        ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
         gcAddXObjForDObjFixed(dobj, 0x48, 0);
 
         dobj->translate.vec.f = *pos;
 
-        dobj->translate.vec.f.y -= ip->attributes->objcoll_bottom;
+        dobj->translate.vec.f.y -= ip->attributes->object_coll_bottom;
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITStarmieDataStart), 0.0F); // Linker thing
 
@@ -372,9 +372,9 @@ GObj* itStarmieMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 // 0x801823B4
 sb32 itStarmieWeaponSwiftProcUpdate(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    wp->phys_info.vel_air.x = wp->phys_info.vel_air.x; // Bruh
+    wp->physics.vel_air.x = wp->physics.vel_air.x; // Bruh
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
@@ -386,7 +386,7 @@ sb32 itStarmieWeaponSwiftProcUpdate(GObj *weapon_gobj)
 // 0x801823E8
 sb32 itStarmieWeaponSwiftProcHit(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
     efManagerStarSplashMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->lr);
 
@@ -396,14 +396,14 @@ sb32 itStarmieWeaponSwiftProcHit(GObj *weapon_gobj)
 // 0x80182418
 sb32 itStarmieWeaponSwiftProcHop(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_80019438(&wp->phys_info.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
+    func_80019438(&wp->physics.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
-    if (wp->phys_info.vel_air.x > 0.0F)
+    if (wp->physics.vel_air.x > 0.0F)
     {
         wp->lr = nGMFacingR;
     }
@@ -415,12 +415,12 @@ sb32 itStarmieWeaponSwiftProcHop(GObj *weapon_gobj)
 // 0x801824C0
 sb32 itStarmieWeaponSwiftProcReflector(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    ftStruct *fp = ftGetStruct(wp->owner_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    FTStruct *fp = ftGetStruct(wp->owner_gobj);
 
     wpMainReflectorSetLR(wp, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     wp->lr = -wp->lr;
@@ -431,11 +431,11 @@ sb32 itStarmieWeaponSwiftProcReflector(GObj *weapon_gobj)
 // 0x80182530
 GObj* itStarmieWeaponSwiftMakeWeapon(GObj *item_gobj, Vec3f *pos)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, &dITStarmieWeaponSwiftWeaponDesc, pos, WEAPON_FLAG_PARENT_ITEM);
     DObj *dobj;
     s32 unused;
-    wpStruct *wp;
+    WPStruct *wp;
 
     if (weapon_gobj == NULL)
     {
@@ -445,7 +445,7 @@ GObj* itStarmieWeaponSwiftMakeWeapon(GObj *item_gobj, Vec3f *pos)
 
     wp->lr = ip->lr;
 
-    wp->phys_info.vel_air.x = wp->lr * ITSTARMIE_SWIFTVEL_X;
+    wp->physics.vel_air.x = wp->lr * ITSTARMIE_SWIFTVEL_X;
 
     dobj = DObjGetStruct(weapon_gobj);
 

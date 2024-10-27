@@ -114,7 +114,7 @@ void mnVsRecordsSetLighting(Gfx **display_list)
 // 0x80131B24
 s32 mnVsRecordsGetFtKindByIndex(s32 index)
 {
-	s32 ftKinds[12] = {
+	s32 FTKinds[12] = {
 
 		nFTKindMario,
 		nFTKindDonkey,
@@ -129,7 +129,7 @@ s32 mnVsRecordsGetFtKindByIndex(s32 index)
 		nFTKindNess,
 		nFTKindPurin
 	};
-	return ftKinds[index];
+	return FTKinds[index];
 }
 
 // 0x80131B74
@@ -1787,13 +1787,13 @@ void mnVsRecordsMain(GObj* arg0)
 // 0x80136488
 void mnVsRecordsInit()
 {
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buffer = (lbFileNode*) &D_ovl32_80136CC8;
+	rl_setup.status_buffer = (LBFileNode*) &D_ovl32_80136CC8;
 	rl_setup.status_buffer_size = 0x18;
 	rl_setup.force_status_buffer = 0;
 	rl_setup.force_status_buffer_size = 0;

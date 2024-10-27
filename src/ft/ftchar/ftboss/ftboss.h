@@ -10,7 +10,7 @@
 
 #define FTBOSS_OKUHIKOUKI_VEL_ADD 40.0F	
 
-extern ftStatusDesc dFTBossSpecialStatusDescs[/* */];
+extern FTStatusDesc dFTBossSpecialStatusDescs[/* */];
 
 extern void *gFTDataBossMain;
 extern void *gFTDataBossMainMotion;
@@ -103,17 +103,17 @@ typedef struct ftBossInfo
 
 } ftBossInfo;
 
-typedef struct ftBossFighterVars
+typedef struct FTBossFighterVars
 {
     ftBossInfo *p, s;
 
-} ftBossFighterVars;
+} FTBossFighterVars;
 
-typedef struct ftBossWaitStatusVars
+typedef struct ftBossWaITStatusVars
 {
     Vec3f pos;
 
-} ftBossWaitStatusVars;
+} ftBossWaITStatusVars;
 
 typedef struct ftBossMoveStatusVars
 {
@@ -178,9 +178,9 @@ typedef struct ftBossDeadStatusVars
 
 } ftBossDeadStatusVars;
 
-typedef union ftBossStatusVars
+typedef union FTBossStatusVars
 {
-    ftBossWaitStatusVars wait;
+    ftBossWaITStatusVars wait;
     ftBossMoveStatusVars move;
     ftBossOkuhikoukiStatusVars okuhikouki;
     ftBossGootsubusuStatusVars gootsubu;
@@ -191,6 +191,6 @@ typedef union ftBossStatusVars
     ftBossOkutsubushiStatusVars okutsubushi;
     ftBossDeadStatusVars dead;
 
-} ftBossStatusVars;
+} FTBossStatusVars;
 
 #endif

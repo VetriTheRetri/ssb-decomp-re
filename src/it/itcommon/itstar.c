@@ -15,7 +15,7 @@ extern intptr_t lITStarItemAttributes;      // 0x00000148
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITStarItemDesc =
+ITCreateDesc dITStarItemDesc =
 {
     nITKindStar,                            // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -48,7 +48,7 @@ itCreateDesc dITStarItemDesc =
 // 0x80174930
 sb32 itStarCommonProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITSTAR_GRAVITY, ITSTAR_TVEL);
 
@@ -66,7 +66,7 @@ sb32 itStarCommonProcUpdate(GObj *item_gobj)
 // 0x80174990
 sb32 itStarCommonProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     s32 unused;
     sb32 is_collide_ground = itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_GROUND);
 
@@ -76,7 +76,7 @@ sb32 itStarCommonProcMap(GObj *item_gobj)
     }
     if (is_collide_ground != FALSE)
     {
-        ip->phys_info.vel_air.y = ITSTAR_BOUNCE_Y;
+        ip->physics.vel_air.y = ITSTAR_BOUNCE_Y;
 
         func_800269C0_275C0(nSYAudioFGMStarMapCollide);
     }
@@ -95,7 +95,7 @@ GObj* itStarMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     CObj *cobj = CObjGetStruct(gCMManagerCameraGObj);
     GObj *item_gobj;
     DObj *dobj;
-    itStruct *ip;
+    ITStruct *ip;
     Vec3f vel_real;
     Vec3f translate;
 
@@ -113,7 +113,7 @@ GObj* itStarMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip = itGetStruct(item_gobj);
 
-        ip->item_hit.interact_mask = GMHITCOLLISION_FLAG_FIGHTER; // Star Man can only interact with fighters
+        ip->hit_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER; // Star Man can only interact with fighters
         
         ip->it_multi = ITSTAR_INTERACT_DELAY;
 

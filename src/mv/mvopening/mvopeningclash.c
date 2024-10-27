@@ -44,10 +44,10 @@ s32 sMVOpeningClashVoidAlpha;
 s32 sMVOpeningClashUnused0x80132A10;
 
 // 0x80132A18
-lbFileNode sMVOpeningClashStatusBuffer[100];
+LBFileNode sMVOpeningClashStatusBuffer[100];
 
 // 0x80132D38
-lbFileNode sMVOpeningClashForceStatusBuffer[7];
+LBFileNode sMVOpeningClashForceStatusBuffer[7];
 
 // 0x80132D70
 void *sMVOpeningClashFiles[2];
@@ -105,7 +105,7 @@ void mvOpeningClashMakeFighters(void)
     };
 
     s32 i;
-    ftCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
     for (i = 0; i < (ARRAY_COUNT(ft_kinds) + ARRAY_COUNT(sMVOpeningClashFigatreeHeaps)) / 2; i++)
     {
@@ -389,7 +389,7 @@ void mvOpeningClashFuncRun(GObj *gobj)
 void mvOpeningClashFuncStart(void)
 {
     s32 i;
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

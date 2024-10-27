@@ -11,7 +11,7 @@ extern alSoundEffect* func_800269C0_275C0(u16);
 // // // // // // // // // // // //
 
 // 0x80167EB0
-void wpMainStopSFX(wpStruct *wp) // Stop weapon's ongoing SFX
+void wpMainStopSFX(WPStruct *wp) // Stop weapon's ongoing SFX
 {
     if (wp->p_sfx != NULL)
     {
@@ -25,7 +25,7 @@ void wpMainStopSFX(wpStruct *wp) // Stop weapon's ongoing SFX
 }
 
 // 0x80167F08
-void wpMainPlaySFX(wpStruct *wp, u16 sfx_id) // Play sound effect for weapon
+void wpMainPlaySFX(WPStruct *wp, u16 sfx_id) // Play sound effect for weapon
 {
     if (wp->p_sfx != NULL)
     {
@@ -43,21 +43,21 @@ void wpMainPlaySFX(wpStruct *wp, u16 sfx_id) // Play sound effect for weapon
 // 0x80167F68
 void wpMainVelSetLR(GObj *weapon_gobj) // Set weapon's facing direction based on velocity
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    wp->lr = (wp->phys_info.vel_air.x >= 0.0F) ? nGMFacingR : nGMFacingL;
+    wp->lr = (wp->physics.vel_air.x >= 0.0F) ? nGMFacingR : nGMFacingL;
 }
 
 // 0x80167FA0
 void wpMainVelSetModelPitch(GObj *weapon_gobj) // Set pitch rotation based on velocity
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.y = (wp->phys_info.vel_air.x >= 0.0F) ? F_CST_DTOR32(90.0F) /* HALF_PI32 */ : F_CST_DTOR32(-90.0F); // -HALF_PI32
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.y = (wp->physics.vel_air.x >= 0.0F) ? F_CST_DTOR32(90.0F) /* HALF_PI32 */ : F_CST_DTOR32(-90.0F); // -HALF_PI32
 }
 
 // 0x80167FE8
-sb32 wpMainDecLifeCheckExpire(wpStruct *wp) // Decrement lifetime and check whether item has expired
+sb32 wpMainDecLifeCheckExpire(WPStruct *wp) // Decrement lifetime and check whether item has expired
 {
     wp->lifetime--;
 
@@ -71,7 +71,7 @@ sb32 wpMainDecLifeCheckExpire(wpStruct *wp) // Decrement lifetime and check whet
 // 0x8016800C
 void wpMainDestroyWeapon(GObj *weapon_gobj) // Destroy weapon?
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
     wpMainStopSFX(wp);                  // Stop weapon's SFX
     wpManagerSetPrevStructAlloc(wp);    // Eject weapon's user_data from memory?
@@ -81,47 +81,47 @@ void wpMainDestroyWeapon(GObj *weapon_gobj) // Destroy weapon?
 // 0x80168044
 void wpMainVelGroundTransferAir(GObj *weapon_gobj) // Transfer weapon's base ground velocity to aerial velocity
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    wp->phys_info.vel_air.x = wp->lr * wp->coll_data.ground_angle.y * wp->phys_info.vel_ground;
-    wp->phys_info.vel_air.y = wp->lr * -wp->coll_data.ground_angle.x * wp->phys_info.vel_ground;
+    wp->physics.vel_air.x = wp->lr * wp->coll_data.ground_angle.y * wp->physics.vel_ground;
+    wp->physics.vel_air.y = wp->lr * -wp->coll_data.ground_angle.x * wp->physics.vel_ground;
 }
 
 // 0x80168088
-void wpMainApplyGravityClampTVel(wpStruct *wp, f32 gravity, f32 terminal_velocity) // Subtract vertical velocity every frame and clamp to terminal velocity
+void wpMainApplyGravityClampTVel(WPStruct *wp, f32 gravity, f32 terminal_velocity) // Subtract vertical velocity every frame and clamp to terminal velocity
 {
-    wp->phys_info.vel_air.y -= gravity;
+    wp->physics.vel_air.y -= gravity;
 
-    if (lbCommonMag2D(&wp->phys_info.vel_air) > terminal_velocity)
+    if (lbCommonMag2D(&wp->physics.vel_air) > terminal_velocity)
     {
-        lbCommonNormDist2D(&wp->phys_info.vel_air);
-        lbCommonScale2D(&wp->phys_info.vel_air, terminal_velocity);
+        lbCommonNormDist2D(&wp->physics.vel_air);
+        lbCommonScale2D(&wp->physics.vel_air, terminal_velocity);
     }
 }
 
 // 0x801680EC
-void wpMainReflectorSetLR(wpStruct *wp, ftStruct *fp) // Invert direction on reflect
+void wpMainReflectorSetLR(WPStruct *wp, FTStruct *fp) // Invert direction on reflect
 {
-    if ((wp->phys_info.vel_air.x * fp->lr) < 0.0F)
+    if ((wp->physics.vel_air.x * fp->lr) < 0.0F)
     {
-        wp->phys_info.vel_air.x = -wp->phys_info.vel_air.x;
+        wp->physics.vel_air.x = -wp->physics.vel_air.x;
     }
 }
 
 // 0x80168128
-s32 wpMainGetStaledDamage(wpStruct *wp) // Return final damage after applying staling and bonus 0.999%
+s32 wpMainGetStaledDamage(WPStruct *wp) // Return final damage after applying staling and bonus 0.999%
 {
-    return (wp->weapon_hit.damage * wp->weapon_hit.stale) + 0.999F;
+    return (wp->hit_coll.damage * wp->hit_coll.stale) + 0.999F;
 }
 
 // 0x80168158
-void wpMainClearHitRecord(wpStruct *wp) // Clear hit victims array
+void wpMainClearHitRecord(WPStruct *wp) // Clear hit victims array
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(wp->weapon_hit.hit_targets); i++)
+    for (i = 0; i < ARRAY_COUNT(wp->hit_coll.hit_record); i++)
     {
-        gmHitRecord *targets = &wp->weapon_hit.hit_targets[i];
+        GMHitRecord *targets = &wp->hit_coll.hit_record[i];
 
         targets->victim_gobj = NULL;
 
@@ -169,8 +169,8 @@ void func_ovl3_8016830C(DObj *dobj, Vec3f *vec)
 // 0x80168428
 void wpMainReflectorRotateWeaponModel(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    Vec3f vel = wp->phys_info.vel_air, direction, angle, *rotate;
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    Vec3f vel = wp->physics.vel_air, direction, angle, *rotate;
 
     direction.x = 0;
     direction.y = 0;

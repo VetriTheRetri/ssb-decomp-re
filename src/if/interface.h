@@ -4,12 +4,12 @@
 #include "iftypes.h"
 #include "iffunctions.h"
 
-// extern s32 ifPlayerDamageDigitWidths[/* */];
-// extern u8 ifPlayerDamageDigitColorsR[/* */];
-// extern u8 ifPlayerDamageDigitColorsG[/* */];
-// extern u8 ifPlayerDamageDigitColorsB[/* */];
+// extern s32 IFPlayerDamageDigitWidths[/* */];
+// extern u8 IFPlayerDamageDigitColorsR[/* */];
+// extern u8 IFPlayerDamageDigitColorsG[/* */];
+// extern u8 IFPlayerDamageDigitColorsB[/* */];
 
-extern ifPlayerCommon gIFCommonPlayerInterface;
+extern IFPlayerCommon gIFCommonPlayerInterface;
 
 #define ifGetPlayer(interface_gobj) ((interface_gobj)->user_data.s)
 

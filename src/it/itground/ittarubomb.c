@@ -23,7 +23,7 @@ extern intptr_t lITTaruBombEffectDisplayList;  // 0x000008A0
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITTaruBombItemDesc =
+ITCreateDesc dITTaruBombItemDesc =
 {
     nITKindTaruBomb,                            // Item Kind
     &gGRCommonStruct.bonus3.item_head,          // Pointer to item file data?
@@ -47,7 +47,7 @@ itCreateDesc dITTaruBombItemDesc =
     itTaruBombCommonProcDamage                  // Proc Damage
 };
 
-itStatusDesc dITTaruBombStatusDescs[/* */] =
+ITStatusDesc dITTaruBombStatusDescs[/* */] =
 {
     // Status 0 (Air Wait Fall)
     {
@@ -109,7 +109,7 @@ enum itTaruBombStatus
 // 0x80184A70
 void itTaruBombContainerSmashUpdateEffect(GObj *effect_gobj) // RTTF bomb explode GFX process
 {
-    efStruct *ep = efGetStruct(effect_gobj);
+    EFStruct *ep = efGetStruct(effect_gobj);
     DObj *dobj = DObjGetStruct(effect_gobj);
 
     ep->effect_vars.container.lifetime--;
@@ -139,7 +139,7 @@ void itTaruBombContainerSmashUpdateEffect(GObj *effect_gobj) // RTTF bomb explod
 void itTaruBombContainerSmashMakeEffect(Vec3f *pos)
 {
     GObj *effect_gobj;
-    efStruct *ep = efManagerGetEffectNoForce();
+    EFStruct *ep = efManagerGetEffectNoForce();
     DObj *dobj;
     s32 i;
     Gfx *dl;
@@ -182,7 +182,7 @@ void itTaruBombContainerSmashMakeEffect(Vec3f *pos)
 // 0x80184D74
 sb32 itTaruBombFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj;
 
     itMainApplyGravityClampTVel(ip, ITTARUBOMB_GRAVITY, ITTARUBOMB_TVEL);
@@ -206,7 +206,7 @@ sb32 itTaruBombCommonProcHit(GObj *item_gobj)
 // 0x80184E04
 sb32 itTaruBombCommonProcDamage(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->percent_damage >= ITTARUBOMB_HEALTH_MAX)
     {
@@ -218,9 +218,9 @@ sb32 itTaruBombCommonProcDamage(GObj *item_gobj)
 // 0x80184E44
 void itTaruBombRollSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->phys_info.vel_air.y = 0.0F;
+    ip->physics.vel_air.y = 0.0F;
 
     itMainSetItemStatus(item_gobj, dITTaruBombStatusDescs, nITTaruBombStatusRoll);
 }
@@ -229,7 +229,7 @@ void itTaruBombRollSetStatus(GObj *item_gobj)
 sb32 itTaruBombFallCheckCollideGround(GObj *item_gobj, f32 common_rebound)
 {
     s32 unused;
-    itStruct *ip;
+    ITStruct *ip;
     sb32 is_collide_ground = itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_GROUND);
 
     if (itMapCheckCollideAllRebound(item_gobj, (MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL), common_rebound, NULL) != FALSE)
@@ -248,23 +248,23 @@ sb32 itTaruBombFallProcMap(GObj *item_gobj)
 {
     if (itTaruBombFallCheckCollideGround(item_gobj, ITTARUBOMB_MAP_REBOUND_COMMON) != FALSE)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
-        if (ip->phys_info.vel_air.y >= 90.0F) // Is it even possible to meet this condition? Didn't they mean <= inverse of this value?
+        if (ip->physics.vel_air.y >= 90.0F) // Is it even possible to meet this condition? Didn't they mean <= inverse of this value?
         {
             itTaruBombCommonProcHit(item_gobj); // This causes the bomb to smash on impact when landing from too high; doesn't seem possible to trigger
 
             return TRUE;
         }
-        else if (ip->phys_info.vel_air.y < 30.0F)
+        else if (ip->physics.vel_air.y < 30.0F)
         {
             itTaruBombRollSetStatus(item_gobj);
         }
         else
         {
-            lbCommonReflect2D(&ip->phys_info.vel_air, &ip->coll_data.ground_angle);
+            lbCommonReflect2D(&ip->physics.vel_air, &ip->coll_data.ground_angle);
 
-            ip->phys_info.vel_air.y *= 0.2F;
+            ip->physics.vel_air.y *= 0.2F;
 
             itMainVelSetRotateStepLR(item_gobj);
         }
@@ -278,18 +278,18 @@ sb32 itTaruBombFallProcMap(GObj *item_gobj)
 // 0x80184FAC
 void itTaruBombCommonSetMapCollisionBox(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     DObjGetStruct(item_gobj)->rotate.vec.f.x = F_CLC_DTOR32(90.0F); // HALF_PI32
 
-    ip->coll_data.objcoll.top = ip->coll_data.objcoll.width;
-    ip->coll_data.objcoll.bottom = -ip->coll_data.objcoll.width;
+    ip->coll_data.object_coll.top = ip->coll_data.object_coll.width;
+    ip->coll_data.object_coll.bottom = -ip->coll_data.object_coll.width;
 }
 
 // 0x80184FD4
 sb32 itTaruBombExplodeProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi++;
 
@@ -305,15 +305,15 @@ sb32 itTaruBombExplodeProcUpdate(GObj *item_gobj)
 // 0x80185030
 sb32 itTaruBombRollProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     f32 roll_rotate_step;
     f32 sqrt_vel;
 
-    ip->phys_info.vel_air.x += (-(atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CLC_DTOR32(90.0F) /*HALF_PI32*/) * ITTARUBOMB_MUL_VEL_X);
+    ip->physics.vel_air.x += (-(atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CLC_DTOR32(90.0F) /*HALF_PI32*/) * ITTARUBOMB_MUL_VEL_X);
 
-    ip->lr = (ip->phys_info.vel_air.x >= 0.0F) ? nGMFacingR : nGMFacingL;
+    ip->lr = (ip->physics.vel_air.x >= 0.0F) ? nGMFacingR : nGMFacingL;
 
-    sqrt_vel = sqrtf(SQUARE(ip->phys_info.vel_air.x) + SQUARE(ip->phys_info.vel_air.y));
+    sqrt_vel = sqrtf(SQUARE(ip->physics.vel_air.x) + SQUARE(ip->physics.vel_air.y));
 
     roll_rotate_step = ((ip->lr == nGMFacingL) ? ITTARUBOMB_ROLL_ROTATE_MUL : -ITTARUBOMB_ROLL_ROTATE_MUL) * sqrt_vel;
 
@@ -327,7 +327,7 @@ sb32 itTaruBombRollProcUpdate(GObj *item_gobj)
 // 0x8018511C
 sb32 itTaruBombRollProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (itMapTestLRWallCheckGround(item_gobj) == FALSE)
     {
@@ -347,7 +347,7 @@ GObj* itTaruBombMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
     if (item_gobj != NULL)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         ip->item_vars.tarubomb.roll_rotate_step = 0.0F;
 
@@ -359,22 +359,22 @@ GObj* itTaruBombMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 // 0x801851F4
 void itTaruBombExplodeInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi = 0;
     ip->item_event_id = 0;
 
-    ip->item_hit.hit_sfx = nSYAudioFGMExplodeL;
+    ip->hit_coll.hit_sfx = nSYAudioFGMExplodeL;
 
-    ip->item_hit.can_rehit_item = TRUE;
-    ip->item_hit.can_reflect = FALSE;
+    ip->hit_coll.can_rehit_item = TRUE;
+    ip->hit_coll.can_reflect = FALSE;
 
-    ip->item_hit.throw_mul = ITEM_STALE_DEFAULT;
-    ip->item_hit.element = nGMHitElementFire;
+    ip->hit_coll.throw_mul = ITEM_STALE_DEFAULT;
+    ip->hit_coll.element = nGMHitElementFire;
 
-    ip->item_hit.can_setoff = FALSE;
+    ip->hit_coll.can_setoff = FALSE;
 
-    ip->item_hurt.hitstatus = nGMHitStatusNone;
+    ip->damage_coll.hitstatus = nGMHitStatusNone;
 
     itMainRefreshHit(item_gobj);
     itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITTaruBombItemDesc, lITTaruBombHitEvents));
@@ -390,15 +390,15 @@ void itTaruBombExplodeSetStatus(GObj *item_gobj)
 // 0x801852B8
 void itTaruBombExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 {
-    lbParticle *ptcl;
-    itStruct *ip = itGetStruct(item_gobj);
+    LBParticle *ptcl;
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    ip->item_hit.update_state = nGMHitUpdateDisable;
+    ip->hit_coll.update_state = nGMHitUpdateDisable;
 
-    ip->phys_info.vel_air.x = 0.0F;
-    ip->phys_info.vel_air.y = 0.0F;
-    ip->phys_info.vel_air.z = 0.0F;
+    ip->physics.vel_air.x = 0.0F;
+    ip->physics.vel_air.y = 0.0F;
+    ip->physics.vel_air.z = 0.0F;
 
     ptcl = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 

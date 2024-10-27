@@ -21,7 +21,7 @@ extern uintptr_t D_NF_0000000C;
 // // // // // // // // // // // //
 
 // 0x8018E2F0
-scBattleState sSCAutoDemoBattleState;
+SCBattleState sSCAutoDemoBattleState;
 
 // 0x8018E4E0
 s32 sSCAutoDemoFocusChangeWait;
@@ -33,7 +33,7 @@ u16 sSCAutoDemoCharacterFlag;
 GObj *sSCAutoDemoFighterNameGObj;
 
 // 0x8018E4EC
-scAutoDemoProc *sSCAutoDemoProc;
+SCAutoDemoProc *sSCAutoDemoProc;
 
 // 0x8018E4F0
 s16 sSCAutoDemoMapObjs[8];
@@ -77,7 +77,7 @@ s16 dSCAutoDemoMapObjKindList[/* */] =
 };
 
 // 0x8018E180
-scAutoDemoProc dSCAutoDemoProcList[/* */] =
+SCAutoDemoProc dSCAutoDemoProcList[/* */] =
 {
 	// Nothing?
 	{
@@ -104,14 +104,14 @@ scAutoDemoProc dSCAutoDemoProcList[/* */] =
 	{
 		340,                            // Wait frames until focus changes 
 		scAutoDemoSetFocusPlayer2,      // Function to run on focus change
-		scAutoDemoProcFocusPlayer1      // Function to run when focusing
+		SCAutoDemoProcFocusPlayer1      // Function to run when focusing
 	},
 
 	// End focus
 	{
 		400,                            // Wait frames until focus changes 
 		scAutoDemoResetFocusPlayerAll,  // Function to run on focus change
-		scAutoDemoProcFocusPlayer2      // Function to run when focusing
+		SCAutoDemoProcFocusPlayer2      // Function to run when focusing
 	},
 
 	// Unknown
@@ -258,9 +258,9 @@ void scAutoDemoMakeFade(void)
 }
 
 // 0x8018D1EC
-sb32 scAutoDemoCheckStopFocusPlayer(ftStruct *fp)
+sb32 scAutoDemoCheckStopFocusPlayer(FTStruct *fp)
 {
-	switch (fp->status_info.status_id)
+	switch (fp->status_id)
 	{
 	case nFTCommonStatusDeadDown:
 	case nFTCommonStatusDeadLeftRight:
@@ -290,7 +290,7 @@ void func_ovl64_8018D220(GObj *fighter_gobj)
 void scAutoDemoSetFocusPlayer1(void)
 {
 	GObj *fighter_gobj = gBattleState->players[0].fighter_gobj;
-	ftStruct *fp = ftGetStruct(fighter_gobj);
+	FTStruct *fp = ftGetStruct(fighter_gobj);
 
 	if (scAutoDemoCheckStopFocusPlayer(fp) != FALSE)
 	{
@@ -314,7 +314,7 @@ void scAutoDemoSetFocusPlayer1(void)
 }
 
 // 0x8018D39C
-void scAutoDemoProcFocusPlayer1(void)
+void SCAutoDemoProcFocusPlayer1(void)
 {
 	if (scAutoDemoCheckStopFocusPlayer(ftGetStruct(gBattleState->players[0].fighter_gobj)) != FALSE)
 	{
@@ -327,7 +327,7 @@ void scAutoDemoSetFocusPlayer2(void)
 {
 	GObj *p2_gobj = gBattleState->players[1].fighter_gobj;
 	GObj *p1_gobj = gBattleState->players[0].fighter_gobj;
-	ftStruct *p2_fp = ftGetStruct(p2_gobj);
+	FTStruct *p2_fp = ftGetStruct(p2_gobj);
 
 	SObjGetStruct(sSCAutoDemoFighterNameGObj)->sprite.attr |= SP_HIDDEN;
 
@@ -356,7 +356,7 @@ void scAutoDemoSetFocusPlayer2(void)
 }
 
 // 0x8018D4F0
-void scAutoDemoProcFocusPlayer2(void)
+void SCAutoDemoProcFocusPlayer2(void)
 {
 	if (scAutoDemoCheckStopFocusPlayer(ftGetStruct(gBattleState->players[1].fighter_gobj)) != FALSE)
 	{
@@ -627,7 +627,7 @@ void scAutoDemoInitSObjs(void)
 void scAutoDemoFuncStart(void)
 {
 	GObj *fighter_gobj;
-	ftCreateDesc player_spawn;
+	FTCreateDesc player_spawn;
 	s32 player;
 
 	scAutoDemoInitDemo();

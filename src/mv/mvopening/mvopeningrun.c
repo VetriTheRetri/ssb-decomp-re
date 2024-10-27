@@ -36,10 +36,10 @@ s32 sMVOpeningRunUnused0x80132740;
 s32 sMVOpeningRunPad0x80132744;
 
 // 0x80132748
-lbFileNode sMVOpeningRunStatusBuffer[100];
+LBFileNode sMVOpeningRunStatusBuffer[100];
 
 // 0x80132A68
-lbFileNode sMVOpeningRunForceStatusBuffer[7];
+LBFileNode sMVOpeningRunForceStatusBuffer[7];
 
 // 0x80132AA0
 void *sMVOpeningRunFiles[3];
@@ -125,7 +125,7 @@ void mvOpeningRunMakeFighters(void)
 
 	for (i = 0; i < ARRAY_COUNT(ft_kinds); i++)
 	{
-		ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+		FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 		spawn_info.ft_kind = ft_kinds[i];
 		spawn_info.costume = ftParamGetCostumeCommonID(ft_kinds[i], 0);
@@ -338,7 +338,7 @@ void mvOpeningRunFuncRun(GObj *gobj)
 void mvOpeningRunFuncStart(void)
 {
 	s32 i;
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

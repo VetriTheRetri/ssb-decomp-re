@@ -20,7 +20,7 @@
 #define mnCommonSetOptionChangeWaitN(wait, is_button, stick_range, div)\
 ((wait) = (((is_button) != FALSE) ? (12) : mnCommonGetOptionChangeWaitN(stick_range, div)))
 
-typedef enum mnSoundTestOptions
+typedef enum MNSoundTestOptions
 {
 	nMNSoundTestOptionStart,
 	nMNSoundTestOptionMusic = nMNSoundTestOptionStart,
@@ -30,9 +30,9 @@ typedef enum mnSoundTestOptions
 
 	nMNSoundTestOptionEnumMax
 
-} mnSoundTestOptions;
+} MNSoundTestOptions;
 
-typedef enum mnDataOptions
+typedef enum MNDataOptions
 {
 	nMNDataOptionStart,
 	nMNDataOptionCharacters = nMNDataOptionStart,
@@ -42,9 +42,9 @@ typedef enum mnDataOptions
 
 	nMNDataOptionEnumMax
 
-} mnDataOptions;
+} MNDataOptions;
 
-typedef enum mnOptionOptions
+typedef enum MNOptionOptions
 {
 	nMNOptionOptionStart,
 	nMNOptionOptionSound = nMNOptionOptionStart,
@@ -54,9 +54,9 @@ typedef enum mnOptionOptions
 
 	nMNOptionOptionEnumMax
 
-} mnOptionOptions;
+} MNOptionOptions;
 
-typedef enum mnBackupClearOptions
+typedef enum MNBackupClearOptions
 {
 	nMNBackupClearOptionStart,
 	nMNBackupClearOptionNewcomers = nMNBackupClearOptionStart,
@@ -69,9 +69,9 @@ typedef enum mnBackupClearOptions
 
 	nMNBackupClearOptionEnumMax
 
-} mnBackupClearOptions;
+} MNBackupClearOptions;
 
-typedef enum mnVSModeOptions
+typedef enum MNVSModeOptions
 {
     nMNVSModeOptionStart,           // VS Start
     nMNVSModeOptionRule,            // Rule
@@ -79,18 +79,18 @@ typedef enum mnVSModeOptions
     nMNVSModeOptionOptions,         // VS Options
 	nMNVSModeOptionEnumMax
 
-} mnVSModeOptions;
+} MNVSModeOptions;
 
-typedef enum mnVSModeRule
+typedef enum MNVSModeRule
 {
     nMNVSModeRuleTime,            // Time
     nMNVSModeRuleStock,           // Stock
     nMNVSModeRuleTimeTeam,        // Time Team
     nMNVSModeRuleStockTeam,       // Stock Team
 
-} mnVSModeRule;
+} MNVSModeRule;
 
-typedef enum mnVSModeInputDirection
+typedef enum MNVSModeInputDirection
 {
     nMNVSModeInputDirectionNone,  // None
     nMNVSModeInputDirectionUp,    // Up
@@ -98,9 +98,9 @@ typedef enum mnVSModeInputDirection
     nMNVSModeInputDirectionLeft,  // Left
     nMNVSModeInputDirectionRight  // Right
 
-} mnVSModeInputDirection;
+} MNVSModeInputDirection;
 
-typedef enum mnVSOptionsOptions
+typedef enum MNVSOptionsOptions
 {
 	nMNVSOptionsOptionStart,
 	nMNVSOptionsOptionHandicap = nMNVSOptionsOptionStart,
@@ -112,9 +112,9 @@ typedef enum mnVSOptionsOptions
 
 	nMNVSOptionsOptionEnumMax
 
-} mnVSOptionsOptions;
+} MNVSOptionsOptions;
 
-typedef enum sMNModeSelectOptions
+typedef enum MNModeSelectOptions
 {
 	nMNModeSelectOptionStart,
 	nMNModeSelectOption1PMode = nMNModeSelectOptionStart,
@@ -125,9 +125,9 @@ typedef enum sMNModeSelectOptions
 
 	nMNModeSelectOptionEnumMax
 
-} sMNModeSelectOptions;
+} MNModeSelectOptions;
 
-typedef enum mn1PModeOptions
+typedef enum MN1PModeOptions
 {
 	nMN1PModeOptionStart,
 	nMN1PModeOption1PGame = nMN1PModeOptionStart,
@@ -138,23 +138,23 @@ typedef enum mn1PModeOptions
 	
 	nMN1PModeOptionEnumMax
 
-} mn1PModeOptions;
+} MN1PModeOptions;
 
-typedef enum mnOptionTabStatus
+typedef enum MNOptionTabStatus
 {
 	nMNOptionTabStatusNot,
 	nMNOptionTabStatusHighlight,
 	nMNOptionTabStatusSelected,
 	nMNOptionTabStatusEnumMax
 
-} mnOptionTabStatus;
+} MNOptionTabStatus;
 
-typedef enum mnOptionTabOnOff
+typedef enum MNOptionTabOnOff
 {
 	nMNOptionTabStatusOff,
 	nMNOptionTabStatusOn
 
-} mnOptionTabOnOff;
+} MNOptionTabOnOff;
 
 typedef struct mnCongraPicture             mnCongraPicture;
 

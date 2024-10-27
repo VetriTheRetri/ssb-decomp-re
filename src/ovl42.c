@@ -35,7 +35,7 @@ CObjDesc dMVOpeningPikachuCObjDescEnd = {
 };
 
 // 0x8018E0F8
-ftKeyCommand dMVOpeningPikachuInputSeq[] =
+FTKeyCommand dMVOpeningPikachuInputSeq[] =
 {
 	FTKEY_EVENT_END() // 0000
 };
@@ -82,22 +82,22 @@ CObjDesc dMVOpeningPikachuCObjDescAdjustedStart;
 CObjDesc dMVOpeningPikachuCObjDescAdjustedEnd;
 
 // 0x8018E288
-lbFileNode D_ovl42_8018E288[48];
+LBFileNode D_ovl42_8018E288[48];
 
 // 0x8018E408
-lbFileNode D_ovl42_8018E408[7];
+LBFileNode D_ovl42_8018E408[7];
 
 // 0x8018E440
 uintptr_t gMVOpeningPikachuFiles[2];
 
 // 0x8018E448
-scBattleState gMVOpeningPikachuBattleState;
+SCBattleState gMVOpeningPikachuBattleState;
 
 
 // 0x8018D0C0
 void mvOpeningPikachuLoadFiles()
 {
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
@@ -239,7 +239,7 @@ void mvOpeningPikachuInitFighterStagePanel()
 
 	for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
 	{
-		ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+		FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 		if (gBattleState->players[i].pl_kind == nFTPlayerKindNot)
 			continue;
@@ -323,7 +323,7 @@ void mvOpeningPikachuAnimatePosedFighter(GObj* fighter_gobj)
 void mvOpeningPikachuCreatePosedFighter()
 {
 	GObj* fighter_gobj;
-	ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	spawn_info.ft_kind = nFTKindPikachu;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindPikachu, 0);

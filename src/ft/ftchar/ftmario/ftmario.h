@@ -18,8 +18,8 @@
 #define FTMARIO_TORNADO_VEL_Y_BASE 15.0F            // Subtract 0.0 or FTMARIO_TORNADO_VEL_Y_TAP based on whether tornado charge is empty or full, respectively
 #define FTMARIO_TORNADO_VEL_Y_TAP 22.0F             // Y-velocity added per B-tap during Mario Tornado
 
-extern ftStatusDesc dFTMarioSpecialStatusDescs[/* */];
-extern ftMotionDesc dFTMarioMotionDescs[/* */];
+extern FTStatusDesc dFTMarioSpecialStatusDescs[/* */];
+extern FTMotionDesc dFTMarioMotionDescs[/* */];
 
 extern void *gFTMarioFileMain;
 extern void *gFTMarioFileMainMotion;
@@ -57,11 +57,11 @@ typedef enum ftMarioStatus
 
 } ftMarioStatus;
 
-typedef struct ftMarioFighterVars
+typedef struct FTMarioFighterVars
 {
     sb32 is_expend_tornado;
 
-} ftMarioFighterVars;
+} FTMarioFighterVars;
 
 typedef struct ftMarioSpecialHiStatusVars
 {
@@ -76,11 +76,11 @@ typedef struct ftMarioSpecialLwStatusVars
 
 } ftMarioSpecialLwStatusVars;
 
-typedef union ftMarioStatusVars
+typedef union FTMarioStatusVars
 {
     ftMarioSpecialHiStatusVars specialhi;
     ftMarioSpecialLwStatusVars speciallw;
 
-} ftMarioStatusVars;
+} FTMarioStatusVars;
 
 #endif

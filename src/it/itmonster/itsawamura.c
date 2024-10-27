@@ -19,7 +19,7 @@ extern intptr_t lITSawamuraDisplayList;     // 0x00012340
 // // // // // // // // // // // //
 
 // 0x8018B220
-itCreateDesc dITSawamuraItemDesc =
+ITCreateDesc dITSawamuraItemDesc =
 {
     nITKindSawamura,                        // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -44,7 +44,7 @@ itCreateDesc dITSawamuraItemDesc =
 };
 
 // 0x8018B254
-itStatusDesc dITSawamuraStatusDescs[/* */] =
+ITStatusDesc dITSawamuraStatusDescs[/* */] =
 {
     // Status 0 (Air Fall)
     {
@@ -106,7 +106,7 @@ enum itSawamuraStatus
 // 0x80182630
 sb32 itSawamuraFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_TVEL);
 
@@ -116,11 +116,11 @@ sb32 itSawamuraFallProcUpdate(GObj *item_gobj)
 // 0x80182660
 sb32 itSawamuraFallProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_GROUND) != FALSE)
     {
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
 
         itSawamuraWaitSetStatus(item_gobj);
     }
@@ -136,7 +136,7 @@ void itSawamuraFallSetStatus(GObj *item_gobj)
 // 0x801826D0
 sb32 itSawamuraWaitProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {
@@ -164,7 +164,7 @@ void itSawamuraWaitSetStatus(GObj *item_gobj)
 // 0x80182764
 sb32 itSawamuraAttackProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_TVEL);
@@ -189,8 +189,8 @@ sb32 itSawamuraAttackProcUpdate(GObj *item_gobj)
 // 0x8018285C
 void itSawamuraAttackSetFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     DObj *ij = DObjGetStruct(item_gobj);
     DObj *fj = DObjGetStruct(fighter_gobj);
     s32 unused;
@@ -199,14 +199,14 @@ void itSawamuraAttackSetFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 
     target_pos = fj->translate.vec.f;
 
-    target_pos.y += ITSAWAMURA_TARGET_POS_OFF_Y - fp->coll_data.objcoll.bottom;
+    target_pos.y += ITSAWAMURA_TARGET_POS_OFF_Y - fp->coll_data.object_coll.bottom;
 
     syVectorDiff3D(&dist, &target_pos, &ij->translate.vec.f);
 
-    ip->phys_info.vel_air.y = ip->phys_info.vel_air.z = 0.0F;
-    ip->phys_info.vel_air.x = ITSAWAMURA_KICK_VEL_X;
+    ip->physics.vel_air.y = ip->physics.vel_air.z = 0.0F;
+    ip->physics.vel_air.x = ITSAWAMURA_KICK_VEL_X;
 
-    syVectorRotate3D(&ip->phys_info.vel_air, SYVECTOR_AXIS_Z, atan2f(dist.y, dist.x));
+    syVectorRotate3D(&ip->physics.vel_air, SYVECTOR_AXIS_Z, atan2f(dist.y, dist.x));
 
     ip->lr = (dist.x < 0.0F) ? nGMFacingL : nGMFacingR;
 
@@ -220,7 +220,7 @@ void itSawamuraAttackSetFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 void itSawamuraAttackInitItemVars(GObj *item_gobj)
 {
     GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     GObj *victim_gobj;
     s32 unused2[3];
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -232,7 +232,7 @@ void itSawamuraAttackInitItemVars(GObj *item_gobj)
 
     while (fighter_gobj != NULL)
     {
-        ftStruct *fp = ftGetStruct(fighter_gobj);
+        FTStruct *fp = ftGetStruct(fighter_gobj);
 
         if ((fighter_gobj != ip->owner_gobj) && (fp->team != ip->team))
         {
@@ -267,7 +267,7 @@ void itSawamuraAttackInitItemVars(GObj *item_gobj)
     }
     ip->it_multi = ITSAWAMURA_LIFETIME;
 
-    ip->item_hit.size = ITSAWAMURA_KICK_SIZE;
+    ip->hit_coll.size = ITSAWAMURA_KICK_SIZE;
 }
 
 // 0x80182AAC
@@ -280,13 +280,13 @@ void itSawamuraAttackSetStatus(GObj *item_gobj)
 // 0x80182AE0
 sb32 itSawamuraCommonProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {
         ip->it_multi = ITSAWAMURA_KICK_WAIT;
 
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
 
         itSawamuraFallSetStatus(item_gobj);
     }
@@ -298,11 +298,11 @@ sb32 itSawamuraCommonProcUpdate(GObj *item_gobj)
 // 0x80182B34
 sb32 itSawamuraCommonProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_GROUND) != FALSE)
     {
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
     }
     return FALSE;
 }
@@ -315,18 +315,18 @@ GObj* itSawamuraMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     if (item_gobj != NULL)
     {
         DObj *dobj = DObjGetStruct(item_gobj);
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
-        ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
+        ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
+        ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
         gcAddXObjForDObjFixed(dobj, 0x48, 0);
 
         dobj->translate.vec.f = *pos;
 
-        dobj->translate.vec.f.y -= ip->attributes->objcoll_bottom;
+        dobj->translate.vec.f.y -= ip->attributes->object_coll_bottom;
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITSawamuraDataStart), 0.0F); // Linker thing
 

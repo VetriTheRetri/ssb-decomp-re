@@ -37,7 +37,7 @@
 #define FTNESS_PSYCHICMAGNET_COLANIM_ID 0x3F
 #define FTNESS_PSYCHICMAGNET_COLANIM_LENGTH 0
 
-extern ftStatusDesc dFTNessSpecialStatusDescs[/* */];
+extern FTStatusDesc dFTNessSpecialStatusDescs[/* */];
 
 extern intptr_t lFTNessAttackS4Reflector;       // 0x00001114
 extern intptr_t lFTNessSpecialLwAbsorb;         // 0x000016D4
@@ -115,14 +115,14 @@ typedef enum ftNessStatus
 
 } ftNessStatus;
 
-typedef struct ftNessFighterVars
+typedef struct FTNessFighterVars
 {
     sb32 is_thunder_destroy;      // Bool to check if PK Thunder exists
     s32 pkthunder_trail_id;
     s16 pkthunder_trail_x[FTNESS_PKTHUNDER_TRAIL_POS_COUNT];
     s16 pkthunder_trail_y[FTNESS_PKTHUNDER_TRAIL_POS_COUNT];
 
-} ftNessFighterVars;
+} FTNessFighterVars;
 
 typedef struct ftNessSpecialHiStatusVars
 {
@@ -144,11 +144,11 @@ typedef struct ftNessSpecialLwStatusVars
 
 } ftNessSpecialLwStatusVars;
 
-typedef union ftNessStatusVars
+typedef union FTNessStatusVars
 {
     ftNessSpecialHiStatusVars specialhi;
     ftNessSpecialLwStatusVars speciallw;
 
-} ftNessStatusVars;
+} FTNessStatusVars;
 
 #endif

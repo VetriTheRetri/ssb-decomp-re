@@ -70,7 +70,7 @@ intptr_t dMNStageBackgroundFileOffsets[9] = {
 };
 
 // 0x80134550
-lbFileNode dMNStageTrainingBackgroundFileNodes[3] = {
+LBFileNode dMNStageTrainingBackgroundFileNodes[3] = {
 
 	{ 0x0000001a, 0x00000000 },
 	{ 0x0000001b, 0xee9e0600 },
@@ -124,7 +124,7 @@ GObj* gMNStageHeap0StageInfoArray[4];
 GObj* gMNStageHeap1StageInfoArray[4];
 
 // 0x80134C10
-mpGroundData* gMNStageGroundInfo;
+MPGroundData* gMNStageGroundInfo;
 
 // 0x80134C14;
 CObj* gMNStagePreviewCam;
@@ -151,7 +151,7 @@ s32 gMNStageMaxFramesElapsed;
 u32 D_ovl30_80134C30[60]; // 240 bytes
 
 // 0x80134D20
-lbFileNode D_ovl30_80134D20[30];
+LBFileNode D_ovl30_80134D20[30];
 
 // 0x80134E10
 s32 gMNStageFiles[5];
@@ -836,7 +836,7 @@ void mnStageRenderStagePreviewSecondary(GObj* stage_geo_gobj)
 }
 
 // 0x8013303C
-GObj* mnStageCreateStageGeo(s32 stage_id, mpGroundData* stage_info, mpGroundDesc* stage_geo, s32 stage_geo_id)
+GObj* mnStageCreateStageGeo(s32 stage_id, MPGroundData* stage_info, MPGroundDesc* stage_geo, s32 stage_geo_id)
 {
 	GObj* stage_geo_gobj;
 	f32 scale[9] = {
@@ -874,7 +874,7 @@ GObj* mnStageCreateStageGeo(s32 stage_id, mpGroundData* stage_info, mpGroundDesc
 }
 
 // 0x801331AC
-void mnStageCreateStageGeos(s32 stage_id, mpGroundData* stage_info, s32 heap_id)
+void mnStageCreateStageGeos(s32 stage_id, MPGroundData* stage_info, s32 heap_id)
 {
 	DObj* stage_dobj;
 	DObj* next_dobj;
@@ -1345,16 +1345,16 @@ void mnStageInitSSS()
 {
 	s32 foo;
 	s32 bar;
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 	s32 baz;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buffer = (lbFileNode*) &D_ovl30_80134C30;
+	rl_setup.status_buffer = (LBFileNode*) &D_ovl30_80134C30;
 	rl_setup.status_buffer_size = 0x1E;
-	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl30_80134D20;
+	rl_setup.force_status_buffer = (LBFileNode*) &D_ovl30_80134D20;
 	rl_setup.force_status_buffer_size = 0x1E;
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0), gMNStageFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl30_801344D0, ARRAY_COUNT(D_ovl30_801344D0)), 0x10));

@@ -7,7 +7,7 @@
 // // // // // // // // // // // //
 
 // 0x8012E800
-grDisplayDesc dGRDisplayDescs[/* */] =
+GRDisplayDesc dGRDisplayDescs[/* */] =
 {
     // Layer 0
     {
@@ -179,7 +179,7 @@ void grDisplayDObjSetNoAnimMtx(GObj *ground_gobj, DObjDesc *dobjdesc)
 }
 
 // 0x8010547C
-GObj* grDisplayMakeGeometryLayer(mpGroundDesc *gr_desc, s32 gr_desc_id, DObj **p_dobj)
+GObj* grDisplayMakeGeometryLayer(MPGroundDesc *gr_desc, s32 gr_desc_id, DObj **p_dobj)
 {
     GObj *ground_gobj;
     void (*func_display)(GObj*);

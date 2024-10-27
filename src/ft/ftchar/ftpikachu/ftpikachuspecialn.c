@@ -17,7 +17,7 @@
 // 0x80151B50
 void ftPikachuSpecialNProcAccessory(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
     Vec3f vel;
 
@@ -55,7 +55,7 @@ void ftPikachuSpecialAirNProcMap(GObj *fighter_gobj)
 // 0x80151C5C
 void ftPikachuSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialN, fighter_gobj->anim_frame, 1.0F, FTPIKACHU_SPECIALN_STATUS_FLAGS);
@@ -66,7 +66,7 @@ void ftPikachuSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 // 0x80151CB0
 void ftPikachuSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTPIKACHU_SPECIALN_STATUS_FLAGS);
@@ -76,9 +76,9 @@ void ftPikachuSpecialNSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x80151D0C
-void ftPikachuSpecialNInitStatusVars(GObj *fighter_gobj)
+void ftPikachuSpecialNInITStatusVars(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->command_vars.flags.flag0 = 0;
     fp->proc_accessory = ftPikachuSpecialNProcAccessory;
@@ -89,7 +89,7 @@ void ftPikachuSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftPikachuSpecialNInitStatusVars(fighter_gobj);
+    ftPikachuSpecialNInITStatusVars(fighter_gobj);
 }
 
 // 0x80151D64
@@ -97,5 +97,5 @@ void ftPikachuSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftPikachuSpecialNInitStatusVars(fighter_gobj);
+    ftPikachuSpecialNInITStatusVars(fighter_gobj);
 }

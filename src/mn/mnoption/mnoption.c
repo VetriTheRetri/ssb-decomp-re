@@ -99,7 +99,7 @@ s32 sMNOptionReturnTic;
 // s32 sMNOptionPad0x801337EC;
 
 // 0x801337F0
-lbFileNode sMNOptionStatusBuffer[24];
+LBFileNode sMNOptionStatusBuffer[24];
 
 // 0x801338B0
 void *sMNOptionFiles[2];
@@ -973,7 +973,7 @@ void mnOptionFuncRun(GObj *gobj)
 // 0x8013346C
 void mnOptionFuncStart(void)
 {
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

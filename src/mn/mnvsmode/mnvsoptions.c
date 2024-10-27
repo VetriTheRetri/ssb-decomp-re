@@ -86,7 +86,7 @@ s32 sMNVSOptionsReturnTic;
 // s32 sMNVSOptionsPad0x80134914;
 
 // 0x80134918
-lbFileNode sMNVSOptionsStatusBuffer[24];
+LBFileNode sMNVSOptionsStatusBuffer[24];
 
 // 0x801349D8
 void *sMNVSOptionsFiles[2];
@@ -1360,7 +1360,7 @@ void mnVSOptionsFuncRun(GObj *gobj)
 // 0x80134504
 void mnVSOptionsFuncStart(void)
 {
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

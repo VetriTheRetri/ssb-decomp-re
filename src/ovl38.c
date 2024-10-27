@@ -37,7 +37,7 @@ CObjDesc dMVOpeningSamusCObjDescEnd = {
 };
 
 // 0x8018E158
-ftKeyCommand dMVOpeningSamusInputSeq[] =
+FTKeyCommand dMVOpeningSamusInputSeq[] =
 {
 	FTKEY_EVENT_BUTTON(Z_TRIG, 1),   // 1001, 0x2000
 	FTKEY_EVENT_BUTTON(A_BUTTON, 1), // 1001, 0x8000
@@ -86,30 +86,30 @@ CObjDesc dMVOpeningSamusCObjDescAdjustedStart;
 CObjDesc dMVOpeningSamusCObjDescAdjustedEnd;
 
 // 0x8018E2D8
-lbFileNode D_ovl38_8018E2D8[48];
+LBFileNode D_ovl38_8018E2D8[48];
 
 // 0x8018E458
-lbFileNode D_ovl38_8018E458[7];
+LBFileNode D_ovl38_8018E458[7];
 
 // 0x8018E490
 uintptr_t gMVOpeningSamusFiles[2];
 
 // 0x8018E498
-scBattleState gMVOpeningSamusBattleState;
+SCBattleState gMVOpeningSamusBattleState;
 
 
 // 0x8018D0C0
 void mvOpeningSamusLoadFiles()
 {
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buffer = (lbFileNode*) &D_ovl38_8018E2D8;
+	rl_setup.status_buffer = (LBFileNode*) &D_ovl38_8018E2D8;
 	rl_setup.status_buffer_size = 0x30;
-	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl38_8018E458;
+	rl_setup.force_status_buffer = (LBFileNode*) &D_ovl38_8018E458;
 	rl_setup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl38_8018E164, ARRAY_COUNT(D_ovl38_8018E164), gMVOpeningSamusFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl38_8018E164, ARRAY_COUNT(D_ovl38_8018E164)), 0x10));
@@ -262,7 +262,7 @@ void mvOpeningSamusInitFighterStagePanel()
 
 	for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
 	{
-		ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+		FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 		if (gBattleState->players[i].pl_kind == nFTPlayerKindNot) continue;
 
@@ -342,7 +342,7 @@ void mvOpeningSamusAnimatePosedFighter(GObj* fighter_gobj)
 void mvOpeningSamusCreatePosedFighter()
 {
 	GObj* fighter_gobj;
-	ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	spawn_info.ft_kind = nFTKindSamus;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindSamus, 0);

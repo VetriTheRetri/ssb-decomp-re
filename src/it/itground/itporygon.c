@@ -16,7 +16,7 @@ extern intptr_t lITPorygonHitParties;       // 0x000001B4
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITPorygonItemDesc = 
+ITCreateDesc dITPorygonItemDesc = 
 {
     nITKindPorygon,                         // Item Kind
     &gGRCommonStruct.yamabuki.item_head,    // Pointer to item file data?
@@ -47,23 +47,23 @@ itCreateDesc dITPorygonItemDesc =
 // // // // // // // // // // // //
 
 // 0x80183B10
-void itPorygonCommonUpdateHitParty(GObj *item_gobj)
+void itPorygonCommonUpdateMonsterEvent(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
-    itHitParty *hit_party = itGetHitParty(dITPorygonItemDesc, lITPorygonHitParties); // (itHitParty*) ((uintptr_t)*dITPorygonItemDesc.p_file + (intptr_t)&Porygon_Event); // Linker thing
+    ITStruct *ip = itGetStruct(item_gobj);
+    ITMonsterEvent *hit_party = itGetMonsterEvent(dITPorygonItemDesc, lITPorygonHitParties); // (ITMonsterEvent*) ((uintptr_t)*dITPorygonItemDesc.p_file + (intptr_t)&Porygon_Event); // Linker thing
 
     if (ip->it_multi == hit_party[ip->item_event_id].timer)
     {
-        ip->item_hit.angle            = hit_party[ip->item_event_id].angle;
-        ip->item_hit.damage           = hit_party[ip->item_event_id].damage;
-        ip->item_hit.size             = hit_party[ip->item_event_id].size;
-        ip->item_hit.knockback_scale  = hit_party[ip->item_event_id].knockback_scale;
-        ip->item_hit.knockback_weight = hit_party[ip->item_event_id].knockback_weight;
-        ip->item_hit.knockback_base   = hit_party[ip->item_event_id].knockback_base;
-        ip->item_hit.element          = hit_party[ip->item_event_id].element;
-        ip->item_hit.can_setoff       = hit_party[ip->item_event_id].can_setoff;
-        ip->item_hit.shield_damage    = hit_party[ip->item_event_id].shield_damage;
-        ip->item_hit.hit_sfx          = hit_party[ip->item_event_id].hit_sfx;
+        ip->hit_coll.angle            = hit_party[ip->item_event_id].angle;
+        ip->hit_coll.damage           = hit_party[ip->item_event_id].damage;
+        ip->hit_coll.size             = hit_party[ip->item_event_id].size;
+        ip->hit_coll.knockback_scale  = hit_party[ip->item_event_id].knockback_scale;
+        ip->hit_coll.knockback_weight = hit_party[ip->item_event_id].knockback_weight;
+        ip->hit_coll.knockback_base   = hit_party[ip->item_event_id].knockback_base;
+        ip->hit_coll.element          = hit_party[ip->item_event_id].element;
+        ip->hit_coll.can_setoff       = hit_party[ip->item_event_id].can_setoff;
+        ip->hit_coll.shield_damage    = hit_party[ip->item_event_id].shield_damage;
+        ip->hit_coll.hit_sfx          = hit_party[ip->item_event_id].hit_sfx;
 
         ip->item_event_id++;
 
@@ -87,13 +87,13 @@ void itPorygonCommonUpdateHitParty(GObj *item_gobj)
 // 0x80183C84
 sb32 itPorygonCommonProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     dobj->translate.vec.f.x += ip->item_vars.porygon.offset.x;
     dobj->translate.vec.f.y += ip->item_vars.porygon.offset.y;
 
-    itPorygonCommonUpdateHitParty(item_gobj);
+    itPorygonCommonUpdateMonsterEvent(item_gobj);
 
     if (dobj->anim_wait == AOBJ_ANIM_NULL)
     {
@@ -111,7 +111,7 @@ GObj* itPorygonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
     if (item_gobj != NULL)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         ip->item_vars.porygon.offset = *pos;
 

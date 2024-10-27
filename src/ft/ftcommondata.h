@@ -18,10 +18,10 @@ extern u16 dFTCommonDataDownBounceSFX[/* */];
 extern u16 dFTCommonDataPublicityFighterChantFGMs[/* */];
 
 // 0x8012C9E0
-extern ftItemThrow dFTCommonDataItemThrowDescs[/* */];
+extern FTItemThrow dFTCommonDataItemThrowDescs[/* */];
 
 // 0x8012CA38
-extern ftItemSwing dFTCommonDataItemSwingAnimRates[/* */];
+extern FTItemSwing dFTCommonDataItemSwingAnimRates[/* */];
 
 // 0x8012CA78
 extern syColorRGBA dFTCommonDataShadowColorDefault;
@@ -30,6 +30,6 @@ extern syColorRGBA dFTCommonDataShadowColorDefault;
 extern syColorRGBA dFTCommonDataShadowColorTeams[/* */];
 
 // 0x8012DBD0
-extern gmColDesc dFTCommonDataColAnimDescs[/* */]; // 0x8012DBD0
+extern GMColDesc dFTCommonDataColAnimDescs[/* */]; // 0x8012DBD0
 
 #endif

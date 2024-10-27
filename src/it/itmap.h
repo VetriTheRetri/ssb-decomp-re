@@ -4,7 +4,7 @@
 #include "ittypes.h"
 
 // Process for Left/Right Wall collision; check and return whether item collided with ground
-sb32 itMapProcLRWallCheckGround(mpCollData* coll_data, GObj* item_gobj, u32 flags);
+sb32 itMapProcLRWallCheckGround(MPCollData* coll_data, GObj* item_gobj, u32 flags);
 
 // Test for Left/Right Wall collision; return whether item collided with ground
 sb32 itMapTestLRWallCheckGround(GObj* item_gobj);
@@ -14,13 +14,13 @@ sb32 itMapTestLRWallCheckGround(GObj* item_gobj);
 sb32 itMapCheckLRWallProcGround(GObj* item_gobj, void (*proc_map)(GObj*));
 
 // Process for all collisions; check and return whether all collision tests have ended for current tick (?)
-sb32 itMapProcAllCheckCollEnd(mpCollData* coll_data, GObj* item_gobj, u32 flags);
+sb32 itMapProcAllCheckCollEnd(MPCollData* coll_data, GObj* item_gobj, u32 flags);
 
 // Test for all wall collisions; check and return whether all collision tests have ended for current tick (?)
 sb32 itMapTestAllCheckCollEnd(GObj* item_gobj);
 
 // Process for all collisions; check and return whether collision with specified type(s) is successful
-sb32 itMapProcAllCheckCollisionFlag(mpCollData* coll_data, GObj* item_gobj, u32 coll_flags);
+sb32 itMapProcAllCheckCollisionFlag(MPCollData* coll_data, GObj* item_gobj, u32 coll_flags);
 
 // Test for all collisions; check and return whether collision with specified type(s) is successful
 sb32 itMapTestAllCollisionFlag(GObj* item_gobj, u32 flag);
@@ -55,9 +55,9 @@ sb32 func_ovl3_80173E9C(GObj* item_gobj, void (*proc_map)(GObj*));
 sb32 itMapCheckMapReboundProcGround(GObj* item_gobj, f32 common_rebound, void (*proc)(GObj*));
 
 // Make item grounded
-void itMapSetGround(itStruct* ip);
+void itMapSetGround(ITStruct* ip);
 
 // Make item airborne
-void itMapSetAir(itStruct* ip);
+void itMapSetAir(ITStruct* ip);
 
 #endif

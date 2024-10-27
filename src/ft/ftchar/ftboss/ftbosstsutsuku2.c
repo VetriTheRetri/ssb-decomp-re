@@ -9,7 +9,7 @@
 // 0x80159F40
 void ftBossTsutsuku2ProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f translate;
     Vec3f vel;
     f32 magnitude;
@@ -32,16 +32,16 @@ void ftBossTsutsuku2ProcPhysics(GObj *fighter_gobj)
 
         if (magnitude < 5.0F)
         {
-            fp->phys_info.vel_air.x = vel.x;
-            fp->phys_info.vel_air.y = vel.y;
+            fp->physics.vel_air.x = vel.x;
+            fp->physics.vel_air.y = vel.y;
         }
         else
         {
             syVectorNorm3D(&vel);
             syVectorScale3D(&vel, magnitude * 0.1F);
 
-            fp->phys_info.vel_air.x = vel.x;
-            fp->phys_info.vel_air.y = vel.y;
+            fp->physics.vel_air.x = vel.x;
+            fp->physics.vel_air.y = vel.y;
         }
     }
 }
@@ -49,7 +49,7 @@ void ftBossTsutsuku2ProcPhysics(GObj *fighter_gobj)
 // 0x8015A070
 void ftBossTsutsuku2SetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp;
+    FTStruct *fp;
 
     ftMainSetFighterStatus(fighter_gobj, nFTBossStatusTsutsuku2, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 

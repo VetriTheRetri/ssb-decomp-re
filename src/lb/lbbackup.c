@@ -10,12 +10,12 @@
 // // // // // // // // // // // //
 
 // 0x800D4520
-s32 lbBackupCreateChecksum(lbBackupData *backup)
+s32 lbBackupCreateChecksum(LBBackupData *backup)
 {
     s32 i, checksum = 0;
     u8 *bytes = (u8*)backup;
 
-    for (i = 0; i < (sizeof(lbBackupData) - sizeof(gSaveData.checksum)); i++)
+    for (i = 0; i < (sizeof(LBBackupData) - sizeof(gSaveData.checksum)); i++)
     {
         checksum += *bytes++ * (i + 1);
     }
@@ -36,18 +36,18 @@ sb32 lbBackupIsChecksumValid(void)
 void lbBackupWrite(void)
 {
     gSaveData.checksum = lbBackupCreateChecksum(&gSaveData);
-    syDmaWriteSram(&gSaveData, ALIGN(sizeof(lbBackupData),  0x0), sizeof(lbBackupData));
-    syDmaWriteSram(&gSaveData, ALIGN(sizeof(lbBackupData), 0x10), sizeof(lbBackupData));
+    syDmaWriteSram(&gSaveData, ALIGN(sizeof(LBBackupData),  0x0), sizeof(LBBackupData));
+    syDmaWriteSram(&gSaveData, ALIGN(sizeof(LBBackupData), 0x10), sizeof(LBBackupData));
 }
 
 // 0x800D4644
 sb32 lbBackupIsSramValid(void)
 {
-    syDmaReadSram(ALIGN(sizeof(lbBackupData), 0x0), &gSaveData, sizeof(lbBackupData));
+    syDmaReadSram(ALIGN(sizeof(LBBackupData), 0x0), &gSaveData, sizeof(LBBackupData));
 
     if (lbBackupIsChecksumValid() == FALSE)
     {
-        syDmaReadSram(ALIGN(sizeof(lbBackupData), 0x10), &gSaveData, sizeof(lbBackupData));
+        syDmaReadSram(ALIGN(sizeof(LBBackupData), 0x10), &gSaveData, sizeof(LBBackupData));
 
         if (lbBackupIsChecksumValid() == FALSE)
         {

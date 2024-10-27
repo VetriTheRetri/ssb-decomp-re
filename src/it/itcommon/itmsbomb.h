@@ -20,7 +20,7 @@ extern void itMSBombDroppedSetStatus(GObj *item_gobj);
 extern void itMSBombAttachedUpdateSurface(GObj *item_gobj);
 extern void itMSBombAttachedInitItemVars(GObj *item_gobj);
 extern void itMSBombExplodeMakeEffect(GObj *item_gobj);
-extern void itMSBombExplodeInitStatusVars(GObj *item_gobj, sb32 is_make_effect);
+extern void itMSBombExplodeInITStatusVars(GObj *item_gobj, sb32 is_make_effect);
 extern sb32 itMSBombCommonProcDamage(GObj *item_gobj);
 extern sb32 itMSBombAttachedProcUpdate(GObj *item_gobj);
 extern void itMSBombAttachedSetStatus(GObj *item_gobj);

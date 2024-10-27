@@ -156,10 +156,10 @@ s32 sSC1PStageClearDamageEjectTic;
 s32 sSC1PStageClearPad0x801353C8[2];
 
 // 0x801353D0
-lbFileNode sSC1PStageClearStatusBuffer[48];
+LBFileNode sSC1PStageClearStatusBuffer[48];
 
 // 0x80135550
-lbFileNode sSC1PStageClearForceStatusBuffer[7];
+LBFileNode sSC1PStageClearForceStatusBuffer[7];
 
 // 0x80135588
 void *sSC1PStageClearFiles[7];
@@ -183,7 +183,7 @@ u32 dSC1PStageClearFileIDs[/* */] =
 };
 
 // 0x80134EFC
-sc1PStageClearScore dSC1PStageClearBonusData[/* */] =
+SC1PStageClearScore dSC1PStageClearBonusData[/* */] =
 {
 	// Cheap Shot
 	{ &lSC1PStageClearBonusCheapShot, -99 },
@@ -1027,9 +1027,9 @@ void func_ovl56_80132F78(void)
 }
 
 // 0x80132FF8
-sc1PStageClearStats* sc1PStageClearSetupBonusStats(sc1PStageClearStats *bonus_setup, s32 bonus_id)
+SC1PStageClearStats* sc1PStageClearSetupBonusStats(SC1PStageClearStats *bonus_setup, s32 bonus_id)
 {
-	sc1PStageClearStats bonus;
+	SC1PStageClearStats bonus;
 
 	if (bonus_id < 32)
 	{
@@ -1055,7 +1055,7 @@ sc1PStageClearStats* sc1PStageClearSetupBonusStats(sc1PStageClearStats *bonus_se
 sb32 sc1PStageClearCheckHaveBonusStats(void)
 {
 	s32 unused[3];
-	sc1PStageClearStats bonus;
+	SC1PStageClearStats bonus;
 	s32 i = 0; while (TRUE) // WARNING: Newline memes
 	{
 		sc1PStageClearSetupBonusStats(&bonus, i);
@@ -1231,7 +1231,7 @@ void sc1PStageClearMakeBonusPageArrow(void)
 // 0x80133668
 sb32 sc1PStageClearCheckHaveBonusStatID(s32 bonus_id)
 {
-	sc1PStageClearStats bonus;
+	SC1PStageClearStats bonus;
 
 	while (bonus_id < GS_BITCOUNT(sSC1PStageClearBonusFlags))
 	{
@@ -1253,7 +1253,7 @@ s32 sc1PStageClearGetUpdateBonusStatPointsAll(void)
 	s32 unused[2];
 	s32 i;
 	s32 points;
-	sc1PStageClearStats bonus;
+	SC1PStageClearStats bonus;
 
 	points = 0;
 
@@ -1961,7 +1961,7 @@ void sc1PStageClearCopyFramebufToWallpaper(void)
 void sc1PStageClearFuncStart(void)
 {
 	s32 unused;
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

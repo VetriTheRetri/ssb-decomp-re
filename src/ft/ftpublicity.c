@@ -75,7 +75,7 @@ u16 sFTPublicityDefeatedCurrentOrder;           // Current "<player> defeated" a
 // 0x80164AB0
 sb32 ftPublicityTryStartChant(GObj *gobj, f32 knockback, s32 player_number)
 {
-    ftStruct *fp;
+    FTStruct *fp;
     GObj *fighter_gobj = ftParamGetPlayerNumGObj(player_number);
     u16 sfx_id;
 
@@ -226,7 +226,7 @@ void ftPublicityDecideCommon(GObj *fighter_gobj, s32 player_number, f32 knockbac
 // 0x80164F2C
 void ftPublicityCommonCheck(GObj *fighter_gobj, f32 knockback, sb32 is_force_current_knockback)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (knockback >= 100.0F) // Check if knockback is over 100 units
     {
@@ -237,7 +237,7 @@ void ftPublicityCommonCheck(GObj *fighter_gobj, f32 knockback, sb32 is_force_cur
 // 0x80164F70 - Play audience gasp when fighter successfully recovers
 void ftPublicityPlayCliffReact(GObj *fighter_gobj, f32 knockback)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (sFTPublicityChantPlayerNum == fp->player_number)
     {
@@ -260,7 +260,7 @@ void ftPublicityPlayCliffReact(GObj *fighter_gobj, f32 knockback)
 // 0x80165024
 void ftPublicityTryPlayFallSpecialReact(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     f32 pos_y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
 
     if ((pos_y >= gMPCollisionEdgeBounds.d2.bottom) || (pos_y < -2400.0F))
@@ -316,7 +316,7 @@ void ftPublicityProcUpdate(GObj *public_gobj)
 
     while (fighter_gobj != NULL)
     {
-        ftStruct *fp = ftGetStruct(fighter_gobj);
+        FTStruct *fp = ftGetStruct(fighter_gobj);
 
         if (!(gBattleState->game_rules & SCBATTLE_GAMERULE_STOCK) || (fp->stock_count != -1))
         {

@@ -22,7 +22,7 @@ void ftCommonShieldBreakFallProcMap(GObj *fighter_gobj)
 // 0x80149744
 void ftCommonShieldBreakFallSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusShieldBreakFall, 0.0F, 1.0F, FTCOMMON_SHIELDBREAKFALL_STATUS_FLAGS); // 0x10B2
     ftPhysicsClampAirVelXMax(fp);

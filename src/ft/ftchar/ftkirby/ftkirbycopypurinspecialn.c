@@ -14,9 +14,9 @@
 // // // // // // // // // // // //
 
 // 0x80151860
-void ftKirbyCopyPurinSpecialNInitStatusVars(GObj *fighter_gobj)
+void ftKirbyCopyPurinSpecialNInITStatusVars(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     
     fp->command_vars.flags.flag0 = fp->command_vars.flags.flag1 = fp->command_vars.flags.flag2 = 0;
 }
@@ -49,7 +49,7 @@ f32 ftKirbyCopyPurinSpecialNGetAngle(s32 stick_y)
 // 0x801518EC
 void ftKirbyCopyPurinSpecialAirNProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     f32 unused;
     f32 boost;
 
@@ -61,8 +61,8 @@ void ftKirbyCopyPurinSpecialAirNProcPhysics(GObj *fighter_gobj)
 
         boost = ftKirbyCopyPurinSpecialNGetAngle(fp->input.pl.stick_range.y);
 
-        fp->phys_info.vel_air.y = __sinf(boost) * FTKIRBY_COPYPURIN_POUND_VEL_BASE;
-        fp->phys_info.vel_air.x = __cosf(boost) * fp->lr * FTKIRBY_COPYPURIN_POUND_VEL_BASE;
+        fp->physics.vel_air.y = __sinf(boost) * FTKIRBY_COPYPURIN_POUND_VEL_BASE;
+        fp->physics.vel_air.x = __cosf(boost) * fp->lr * FTKIRBY_COPYPURIN_POUND_VEL_BASE;
     }
 
     switch (fp->command_vars.flags.flag2)
@@ -72,8 +72,8 @@ void ftKirbyCopyPurinSpecialAirNProcPhysics(GObj *fighter_gobj)
         break;
 
     case 1:
-        fp->phys_info.vel_air.y *= FTKIRBY_COPYPURIN_POUND_VEL_MUL;
-        fp->phys_info.vel_air.x *= FTKIRBY_COPYPURIN_POUND_VEL_MUL;
+        fp->physics.vel_air.y *= FTKIRBY_COPYPURIN_POUND_VEL_MUL;
+        fp->physics.vel_air.x *= FTKIRBY_COPYPURIN_POUND_VEL_MUL;
         break;
 
     case 2:
@@ -104,7 +104,7 @@ void ftKirbyCopyPurinSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 // 0x80151A78
 void ftKirbyCopyPurinSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyPurinSpecialAirN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_HITSTATUS | FTSTATUS_PRESERVE_COLANIM));
@@ -115,7 +115,7 @@ void ftKirbyCopyPurinSpecialNSwitchStatusAir(GObj *fighter_gobj)
 void ftKirbyCopyPurinSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyPurinSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftKirbyCopyPurinSpecialNInitStatusVars(fighter_gobj);
+    ftKirbyCopyPurinSpecialNInITStatusVars(fighter_gobj);
     ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
@@ -123,6 +123,6 @@ void ftKirbyCopyPurinSpecialNSetStatus(GObj *fighter_gobj)
 void ftKirbyCopyPurinSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyPurinSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftKirbyCopyPurinSpecialNInitStatusVars(fighter_gobj);
+    ftKirbyCopyPurinSpecialNInITStatusVars(fighter_gobj);
     ftMainPlayAnimNoEffect(fighter_gobj);
 }

@@ -44,10 +44,10 @@ s32 sMVOpeningStandoffPad0x801329D8;
 s32 sMVOpeningStandoffUnused0x801329DC;
 
 // 0x801329E0
-lbFileNode sMVOpeningStandoffStatusBuffer[48];
+LBFileNode sMVOpeningStandoffStatusBuffer[48];
 
 // 0x80132B60
-lbFileNode sMVOpeningStandoffForceStatusBuffer[7];
+LBFileNode sMVOpeningStandoffForceStatusBuffer[7];
 
 // 0x80132B98
 void *sMVOpeningStandoffFiles[2];
@@ -151,7 +151,7 @@ void func_ovl47_80131BF8()
 void mvOpeningStandoffMakeFighters(void)
 {
     GObj* fighter_gobj;
-    ftCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
     ft_desc.ft_kind = nFTKindMario;
     ft_desc.costume = ftParamGetCostumeCommonID(nFTKindMario, 0);
@@ -559,7 +559,7 @@ void mvOpeningStandoffFuncRun(GObj *gobj)
 void mvOpeningStandoffFuncStart(void)
 {
     s32 unused;
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

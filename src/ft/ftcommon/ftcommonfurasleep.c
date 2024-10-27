@@ -9,7 +9,7 @@
 // 0x80149940
 void ftCommonFuraSleepProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 breakout_wait;
 
     fp->breakout_wait--;
@@ -29,7 +29,7 @@ void ftCommonFuraSleepProcUpdate(GObj *fighter_gobj)
 // 0x801499A4
 void ftCommonFuraSleepSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 breakout_wait;
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusFuraSleep, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);

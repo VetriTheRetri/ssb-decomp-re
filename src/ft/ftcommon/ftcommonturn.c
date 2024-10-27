@@ -9,7 +9,7 @@
 // 0x8013E690
 void ftCommonTurnProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->command_vars.flags.flag1 != 0)
     {
@@ -19,7 +19,7 @@ void ftCommonTurnProcUpdate(GObj *fighter_gobj)
         fp->status_vars.common.turn.is_disable_sa_interrupts = TRUE;
 
         fp->lr = -fp->lr;
-        fp->phys_info.vel_ground.x = -fp->phys_info.vel_ground.x;
+        fp->physics.vel_ground.x = -fp->physics.vel_ground.x;
     }
     if (fighter_gobj->anim_frame <= 0.0F)
     {
@@ -30,7 +30,7 @@ void ftCommonTurnProcUpdate(GObj *fighter_gobj)
 // Dawg what
 void ftCommonTurnProcInterrupt(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     sb32 is_interrupt_attacks4;
 
     if (fp->status_vars.common.turn.is_allow_turn_direction != FALSE)
@@ -109,7 +109,7 @@ skip_interrupt_specials:
 // 0x8013E908
 void ftCommonTurnSetStatus(GObj *fighter_gobj, s32 lr_dash)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->command_vars.flags.flag1 = 0;
 
@@ -133,7 +133,7 @@ void ftCommonTurnSetStatusCenter(GObj *fighter_gobj)
 // 0x8013E9A8
 void ftCommonTurnSetStatusInvertLR(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonTurnSetStatus(fighter_gobj, -fp->lr);
 }
@@ -141,7 +141,7 @@ void ftCommonTurnSetStatusInvertLR(GObj *fighter_gobj)
 // 0x8013ED90
 sb32 ftCommonTurnCheckInputSuccess(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((fp->input.pl.stick_range.x * fp->lr) <= FTCOMMON_TURN_STICK_RANGE_MIN)
     {

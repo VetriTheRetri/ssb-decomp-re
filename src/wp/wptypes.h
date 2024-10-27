@@ -17,10 +17,10 @@
 // Structs
 
 // Weapon's blueprint to feed into wpManagerMakeWeapon
-struct wpCreateDesc
+struct WPCreateDesc
 {
     u8 flags;
-    wpKind wp_kind;
+    WPKind wp_kind;
     void **p_weapon;               		    // Pointer to various weapon data
     intptr_t o_attributes;                  // Offset to weapon's attributes
     DObjTransformTypes transform_types;
@@ -34,17 +34,17 @@ struct wpCreateDesc
     sb32  (*proc_absorb)    (GObj*);
 };
 
-struct wpAttributes // Moreso hitbox stuff
+struct WPAttributes // Moreso hitbox stuff
 {
     void *dobj_setup;                       // If WEAPON_FLAG_DOBJSETUP is true, this is a DObjDesc*; else it's a display list
     MObjSub ***p_mobjsubs;                     // Triple pointer???
     AObjEvent32 **anim_joints;
     AObjEvent32 ***p_matanim_joints;
     Vec3h offset[2];
-    s16 objcoll_top;
-    s16 objcoll_center;
-    s16 objcoll_bottom;
-    s16 objcoll_width;
+    s16 object_coll_top;
+    s16 object_coll_center;
+    s16 object_coll_bottom;
+    s16 object_coll_width;
     u16 size;
     s32 angle : 10;
     u32 knockback_scale : 10;
@@ -52,7 +52,7 @@ struct wpAttributes // Moreso hitbox stuff
     u32 element : 4;
     u32 knockback_weight : 10;
     s32 shield_damage : 8;
-    u32 hitbox_count : 2;
+    u32 hit_count : 2;
     ub32 can_setoff : 1;
     u32 sfx : 10;
     u32 priority : 3;
@@ -68,7 +68,7 @@ struct wpAttributes // Moreso hitbox stuff
 };
 
 // Current and previous hitbox position are stored here
-struct wpHitPositions
+struct WPHitPositions
 {
     Vec3f pos;
     Vec3f pos_prev;
@@ -78,13 +78,13 @@ struct wpHitPositions
 };
 
 // Weapon's hitbox parameters
-struct wpHitbox
+struct WPHitColl
 {
-    gmHitCollisionUpdateState update_state;                 // 0 = disabled, 1 = new hitbox, 2 and 3 = interpolate/copy current position to previous
+    s32 update_state;                                       // 0 = disabled, 1 = new hitbox, 2 and 3 = interpolate/copy current position to previous
     s32 damage;                                             // Hitbox base damage in %
     f32 stale;                                              // Stale move negation multiplier
-    gmHitCollisionElement element;                          // Hitbox hit effect
-    Vec3f offset[WEAPON_HITBOX_NUM_MAX];                  	// Offset from TopN joint; up to two hitboxes by default
+    s32 element;                                            // Hitbox hit effect
+    Vec3f offset[WEAPON_HITCOLL_NUM_MAX];                  	// Offset from TopN joint; up to two hitboxes by default
     f32 size;                                               // Hitbox size
     s32 angle;                                              // Hitbox angle
     u32 knockback_scale;                                    // Knockback scaling/growth
@@ -105,20 +105,20 @@ struct wpHitbox
     ub32 can_shield : 1;                                    // Whether weapon can be shielded
     u32 attack_id : 6;                                      // Attack ID used for stale move negation queues
     u16 motion_count;                                       // Motion count used for stale move negation queues
-    gmStatFlags stat_flags;                                 // Weapon's status flags
+    GMStatFlags stat_flags;                                 // Weapon's status flags
     u16 stat_count;                                         // Weapon's status update count
-    s32 hitbox_count;                                       // Weapon's hitbox count
-    wpHitPositions hit_positions[WEAPON_HITBOX_NUM_MAX];  	// Weapon's hitbox world positions
-    gmHitRecord hit_targets[GMHITRECORD_NUM_MAX];         // Weapon's record of interacted targets
+    s32 hit_count;                                          // Weapon's hitbox count
+    WPHitPositions hit_positions[WEAPON_HITCOLL_NUM_MAX];  	// Weapon's hitbox world positions
+    GMHitRecord hit_record[GMHITRECORD_NUM_MAX];            // Weapon's record of interacted targets
 };
 
 // Main weapon struct
-struct wpStruct
+struct WPStruct
 {
-    wpStruct *alloc_next;               // Memory region allocated for next wpStruct
+    WPStruct *alloc_next;               // Memory region allocated for next WPStruct
     GObj *weapon_gobj;                  // Weapon's GObj pointer
     GObj *owner_gobj;                   // Weapon's owner
-    wpKind wp_kind;                     // Weapon ID
+    WPKind wp_kind;                     // Weapon ID
     u8 team;                            // Weapon's team
     u8 player;                          // Weapon's port index
     u8 handicap;                        // Weapon's handicap
@@ -130,12 +130,12 @@ struct wpStruct
         f32 vel_ground;                 // Weapon's ground velocity
         Vec3f vel_air;                  // Weapon's aerial velocity
 
-    } phys_info;
+    } physics;
 
-    mpCollData coll_data;               // Weapon's collision data
-    sb32 ga;          // Ground or air bool
+    MPCollData coll_data;               // Weapon's collision data
+    sb32 ga;                            // Ground or air bool
 
-    wpHitbox weapon_hit;                // Weapon's hitbox
+    WPHitColl hit_coll;               // Weapon's hitbox
 
     s32 hit_normal_damage;              // Damage applied to entity this weapon has hit
     s32 hit_refresh_damage;             // Damage applied to entity this item has hit, if rehit is possible?
@@ -144,7 +144,7 @@ struct wpStruct
     f32 shield_collide_angle;           // Angle at which item collided with shield?
     Vec3f shield_collide_vec;           // Position of shield item collided with? (Update: only Z axis appears to be used, can be 0, -1 or 1 depending on attack direction
     GObj *reflect_gobj;                 // GObj that reflected this weapon
-    gmStatFlags reflect_stat_flags;     // Status flags of GObj reflecting this item (e.g. is_smash_attack, ga, is_projectile, etc.)
+    GMStatFlags reflect_stat_flags;     // Status flags of GObj reflecting this item (e.g. is_smash_attack, ga, is_projectile, etc.)
     u16 reflect_stat_count;             // Status update count at the time the item is reflected?
     GObj *absorb_gobj;                  // GObj that absorbed this item
 

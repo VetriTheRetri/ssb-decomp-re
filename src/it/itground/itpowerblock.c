@@ -17,7 +17,7 @@ extern intptr_t lITPowerBlockAnimJoint;     // 0x00001288
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITPowerBlockItemDesc =
+ITCreateDesc dITPowerBlockItemDesc =
 {
     nITKindPowerBlock,                      // Item Kind
     &gGRCommonStruct.inishie.item_head,     // Pointer to item file data?
@@ -41,7 +41,7 @@ itCreateDesc dITPowerBlockItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITPowerBlockStatusDescs[/* */] =
+ITStatusDesc dITPowerBlockStatusDescs[/* */] =
 {
     // Status 0 (Neutral Wait)
     {
@@ -87,11 +87,11 @@ sb32 itPowerBlockCommonProcUpdate(GObj *item_gobj)
 // 0x8017C0D4
 void itPowerBlockWaitSetStatus(GObj *item_gobj)
 {
-    itStruct *ip;
+    ITStruct *ip;
 
     itMainSetItemStatus(item_gobj, dITPowerBlockStatusDescs, nITPowerBlockStatusWait);
 
-    ip = itGetStruct(item_gobj), ip->item_hurt.hitstatus = nGMHitStatusNormal;
+    ip = itGetStruct(item_gobj), ip->damage_coll.hitstatus = nGMHitStatusNormal;
 }
 
 // 0x8017C110
@@ -109,10 +109,10 @@ sb32 itPowerBlockNDamageProcUpdate(GObj *item_gobj)
 // 0x8017C15C
 sb32 itPowerBlockWaitProcDamage(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->proc_update = itPowerBlockNDamageProcUpdate;
-    ip->item_hurt.hitstatus = nGMHitStatusNone;
+    ip->damage_coll.hitstatus = nGMHitStatusNone;
 
     gcAddDObjAnimJoint(DObjGetStruct(item_gobj), itGetPData(ip, lITPowerBlockDataStart, lITPowerBlockAnimJoint), 0.0F); // Linker thing
     gcPlayAnimAll(item_gobj);
@@ -130,9 +130,9 @@ GObj* itPowerBlockMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
     if (item_gobj != NULL)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
-        ip->item_hurt.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
+        ip->damage_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
     }
     return item_gobj;
 }

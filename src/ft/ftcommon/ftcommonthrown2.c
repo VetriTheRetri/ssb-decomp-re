@@ -17,7 +17,7 @@ s32 sFTCommonThrownScriptID;
 // // // // // // // // // // // //
 
 // 0x801886E0
-ftThrowHitDesc dFTCommonThrownNoDamageKnockback = { -1, 0, 361, 0, 0, 20, 0 };
+FTThrowHitDesc dFTCommonThrownNoDamageKnockback = { -1, 0, 361, 0, 0, 20, 0 };
 
 // // // // // // // // // // // //
 //                               //
@@ -28,9 +28,9 @@ ftThrowHitDesc dFTCommonThrownNoDamageKnockback = { -1, 0, 361, 0, 0, 20, 0 };
 // 0x8014ADB0
 void ftCommonThrownReleaseFighterLoseGrip(GObj *fighter_gobj)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *interact_gobj;
-    ftStruct *interact_fp;
+    FTStruct *interact_fp;
     Vec3f pos;
 
     if (this_fp->x192_flag_b3)
@@ -41,7 +41,7 @@ void ftCommonThrownReleaseFighterLoseGrip(GObj *fighter_gobj)
 
     interact_fp = ftGetStruct(interact_gobj);
 
-    if ((this_fp->status_info.status_id >= nFTCommonStatusThrownStart) && (this_fp->status_info.status_id <= nFTCommonStatusThrownEnd))
+    if ((this_fp->status_id >= nFTCommonStatusThrownStart) && (this_fp->status_id <= nFTCommonStatusThrownEnd))
     {
         pos.x = pos.y = pos.z = 0.0F;
 
@@ -65,8 +65,8 @@ void ftCommonThrownReleaseFighterLoseGrip(GObj *fighter_gobj)
 // 0x8014AECC
 void ftCommonThrownDecideFighterLoseGrip(GObj *fighter_gobj, GObj *interact_gobj)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
-    ftStruct *interact_fp = ftGetStruct(interact_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *interact_fp = ftGetStruct(interact_gobj);
 
     if (this_fp->x192_flag_b3)
     {
@@ -81,7 +81,7 @@ void ftCommonThrownDecideFighterLoseGrip(GObj *fighter_gobj, GObj *interact_gobj
 // 0x8014AF2C
 void ftCommonThrownDecideDeadResult(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     GObj *interact_gobj = fp->catch_gobj;
 
     if (interact_gobj != NULL)
@@ -105,7 +105,7 @@ void ftCommonThrownDecideDeadResult(GObj *fighter_gobj)
 // 0x8014AF98
 void ftCommonThrownProcStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftParamSetThrowParams(fp, fp->capture_gobj);
 
@@ -115,10 +115,10 @@ void ftCommonThrownProcStatus(GObj *fighter_gobj)
 // 0x8014AFD0
 void ftCommonThrownReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 script_id, sb32 is_proc_status)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *capture_gobj = this_fp->capture_gobj;
-    ftStruct *capture_fp = ftGetStruct(capture_gobj);
-    ftThrowHitDesc *ft_throw;
+    FTStruct *capture_fp = ftGetStruct(capture_gobj);
+    FTThrowHitDesc *ft_throw;
     f32 knockback_final;
     s32 damage;
     f32 knockback_resist;
@@ -184,11 +184,11 @@ void ftCommonThrownReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 scri
 }
 
 // 0x8014B2AC
-void ftCommonThrownUpdateDamageStats(ftStruct *this_fp)
+void ftCommonThrownUpdateDamageStats(FTStruct *this_fp)
 {
     GObj *capture_gobj = this_fp->capture_gobj;
-    ftStruct *capture_fp = ftGetStruct(capture_gobj);
-    ftThrowHitDesc *ft_throw = &capture_fp->fighter_throw[1];
+    FTStruct *capture_fp = ftGetStruct(capture_gobj);
+    FTThrowHitDesc *ft_throw = &capture_fp->fighter_throw[1];
     s32 damage = ftParamGetStaledDamage(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);
 
     ftParamUpdateDamage(this_fp, damage);
@@ -199,10 +199,10 @@ void ftCommonThrownUpdateDamageStats(ftStruct *this_fp)
 // 0x8014B330
 void ftCommonThrownSetStatusDamageRelease(GObj *fighter_gobj)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *capture_gobj = this_fp->capture_gobj;
-    ftStruct *capture_fp = ftGetStruct(capture_gobj);
-    ftThrowHitDesc *ft_throw;
+    FTStruct *capture_fp = ftGetStruct(capture_gobj);
+    FTThrowHitDesc *ft_throw;
     f32 knockback_final;
     s32 lr;
     s32 damage;
@@ -260,8 +260,8 @@ void ftCommonThrownSetStatusDamageRelease(GObj *fighter_gobj)
 // 0x8014B5B4
 void ftCommonThrownSetStatusNoDamageRelease(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftThrowHitDesc *ft_throw = &dFTCommonThrownNoDamageKnockback;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTThrowHitDesc *ft_throw = &dFTCommonThrownNoDamageKnockback;
     f32 knockback_calc;
     f32 knockback_resist;
     f32 knockback_final;

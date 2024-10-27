@@ -33,8 +33,8 @@ extern void ftKirbySpecialAirHiFallSetStatus(GObj* fighter_gobj);
 extern void ftKirbySpecialLwUnused(GObj* fighter_gobj);
 extern void ftKirbySpecialLwUpdateColAnim(GObj* fighter_gobj);
 extern void ftKirbySpecialLwSetDamageResist(GObj* fighter_gobj);
-extern void ftKirbySpecialLwSetDropFallVel(ftStruct* fp);
-extern f32 ftKirbySpecialLwGetGroundAxisYaw(ftStruct* fp);
+extern void ftKirbySpecialLwSetDropFallVel(FTStruct* fp);
+extern f32 ftKirbySpecialLwGetGroundAxisYaw(FTStruct* fp);
 extern sb32 ftKirbySpecialLwCheckRelease(GObj* fighter_gobj, sb32 is_allow_release);
 extern void ftKirbySpecialLwStartProcUpdate(GObj* fighter_gobj);
 extern void ftKirbySpecialAirLwStartProcUpdate(GObj* fighter_gobj);
@@ -60,11 +60,11 @@ extern void ftKirbySpecialAirLwEndSetStatus(GObj* fighter_gobj);
 // SpecialN / SpecialAirN
 extern void ftKirbySpecialNApplyCaptureDamage(GObj* kirby_gobj, GObj* victim_gobj, s32 damage);
 extern f32 ftKirbySpecialNGetCaptureDistance(Vec3f* kirby_pos, Vec3f* victim_pos);
-extern void ftKirbySpecialNAddCaptureDistance(ftStruct* fp, GObj* fighter_gobj, Vec3f* pos);
-extern void ftKirbySpecialNInitStatusVars(GObj* fighter_gobj, sb32 unused);
-extern void ftKirbySpecialNSetCatchParams(ftStruct* fp);
+extern void ftKirbySpecialNAddCaptureDistance(FTStruct* fp, GObj* fighter_gobj, Vec3f* pos);
+extern void ftKirbySpecialNInITStatusVars(GObj* fighter_gobj, sb32 unused);
+extern void ftKirbySpecialNSetCatchParams(FTStruct* fp);
 extern void ftKirbySpecialNGotoSetCatchParams(GObj* fighter_gobj);
-extern void ftKirbySpecialNInitFighterVars(ftStruct* fp);
+extern void ftKirbySpecialNInitFighterVars(FTStruct* fp);
 extern void ftKirbySpecialNCopyInitCopyVars(GObj* fighter_gobj);
 extern void ftKirbySpecialNStopEffect(GObj* fighter_gobj);
 extern void ftKirbySpecialNStartProcUpdate(GObj* fighter_gobj);
@@ -158,22 +158,22 @@ extern void ftKirbyCopyMarioSpecialNProcMap(GObj* fighter_gobj);
 extern void ftKirbyCopyMarioSpecialAirNProcMap(GObj* fighter_gobj);
 extern void ftKirbyCopyMarioSpecialAirNSwitchStatusGround(GObj* fighter_gobj);
 extern void ftKirbyCopyMarioSpecialNSwitchStatusAir(GObj* fighter_gobj);
-extern void ftKirbyCopyMarioSpecialNInitStatusVars(GObj* fighter_gobj);
+extern void ftKirbyCopyMarioSpecialNInITStatusVars(GObj* fighter_gobj);
 extern void ftKirbyCopyMarioSpecialNSetStatus(GObj* fighter_gobj);
 extern void ftKirbyCopyMarioSpecialAirNSetStatus(GObj* fighter_gobj);
 
 // CopyFoxSpecialN
 extern void ftKirbyCopyFoxSpecialNProcUpdate(GObj* fighter_gobj);
 extern void ftKirbyCopyFoxSpecialNProcInterrupt(GObj* fighter_gobj);
-extern void ftKirbyCopyFoxSpecialNInitStatusVars(GObj* fighter_gobj);
+extern void ftKirbyCopyFoxSpecialNInITStatusVars(GObj* fighter_gobj);
 extern void ftKirbyCopyFoxSpecialNSetStatus(GObj* fighter_gobj);
 extern void ftKirbyCopyFoxSpecialAirNSetStatus(GObj* fighter_gobj);
 
 // CopySamusSpecialN
-extern void ftKirbyCopySamusSpecialNDestroyChargeShot(ftStruct* fp);
+extern void ftKirbyCopySamusSpecialNDestroyChargeShot(FTStruct* fp);
 extern void ftKirbyCopySamusSpecialNProcDamage(GObj* fighter_gobj);
-extern void ftKirbyCopySamusSpecialNGetChargeShotPosition(ftStruct* fp, Vec3f* pos);
-extern void ftKirbyCopySamusSpecialNSetChargeShotPosition(ftStruct* fp);
+extern void ftKirbyCopySamusSpecialNGetChargeShotPosition(FTStruct* fp, Vec3f* pos);
+extern void ftKirbyCopySamusSpecialNSetChargeShotPosition(FTStruct* fp);
 extern void ftKirbyCopySamusSpecialNStartProcUpdate(GObj* fighter_gobj);
 extern void ftKirbyCopySamusSpecialNStartProcInterrupt(GObj* fighter_gobj);
 extern void ftKirbyCopySamusSpecialNStartProcMap(GObj* fighter_gobj);
@@ -191,8 +191,8 @@ extern void ftKirbyCopySamusSpecialAirNEndSwitchStatusGround(GObj* fighter_gobj)
 extern void ftKirbyCopySamusSpecialNEndSwitchStatusAir(GObj* fighter_gobj);
 extern void ftKirbyCopySamusSpecialNEndSetStatus(GObj* fighter_gobj);
 extern void ftKirbyCopySamusSpecialAirNEndSetStatus(GObj* fighter_gobj);
-extern f32 ftKirbyCopySamusSpecialNStartGetAnimSpeed(ftStruct* fp);
-extern void ftKirbyCopySamusSpecialNInitStatusVars(ftStruct* fp);
+extern f32 ftKirbyCopySamusSpecialNStartGetAnimSpeed(FTStruct* fp);
+extern void ftKirbyCopySamusSpecialNInITStatusVars(FTStruct* fp);
 extern void ftKirbyCopySamusSpecialNStartSetStatus(GObj* fighter_gobj);
 extern void ftKirbyCopySamusSpecialAirNStartSetStatus(GObj* fighter_gobj);
 
@@ -220,7 +220,7 @@ extern void ftKirbyCopyDonkeySpecialAirNEndSwitchStatusGround(GObj* fighter_gobj
 extern void ftKirbyCopyDonkeySpecialNGetStatusChargeLevelReset(GObj* fighter_gobj);
 extern void ftKirbyCopyDonkeySpecialNEndSetStatus(GObj* fighter_gobj);
 extern void ftKirbyCopyDonkeySpecialAirNEndSetStatus(GObj* fighter_gobj);
-extern void ftKirbyCopyDonkeySpecialNInitStatusVars(GObj* fighter_gobj);
+extern void ftKirbyCopyDonkeySpecialNInITStatusVars(GObj* fighter_gobj);
 extern void ftKirbyCopyDonkeySpecialNStartSetStatus(GObj* fighter_gobj);
 extern void ftKirbyCopyDonkeySpecialAirNStartSetStatus(GObj* fighter_gobj);
 
@@ -230,7 +230,7 @@ extern void ftKirbyCopyPikachuSpecialNProcMap(GObj* fighter_gobj);
 extern void ftKirbyCopyPikachuSpecialAirNProcMap(GObj* fighter_gobj);
 extern void ftKirbyCopyPikachuSpecialAirNSwitchStatusGround(GObj* fighter_gobj);
 extern void ftKirbyCopyPikachuSpecialNSwitchStatusAir(GObj* fighter_gobj);
-extern void ftKirbyCopyPikachuSpecialNInitStatusVars(GObj* fighter_gobj);
+extern void ftKirbyCopyPikachuSpecialNInITStatusVars(GObj* fighter_gobj);
 extern void ftKirbyCopyPikachuSpecialNSetStatus(GObj* fighter_gobj);
 extern void ftKirbyCopyPikachuSpecialAirNSetStatus(GObj* fighter_gobj);
 
@@ -240,7 +240,7 @@ extern void ftKirbyCopyNessSpecialNProcMap(GObj* fighter_gobj);
 extern void ftKirbyCopyNessSpecialAirNProcMap(GObj* fighter_gobj);
 extern void ftKirbyCopyNessSpecialAirNSwitchStatusGround(GObj* fighter_gobj);
 extern void ftKirbyCopyNessSpecialNSwitchStatusAir(GObj* fighter_gobj);
-extern void ftKirbyCopyNessSpecialNInitStatusVars(GObj* fighter_gobj);
+extern void ftKirbyCopyNessSpecialNInITStatusVars(GObj* fighter_gobj);
 extern void ftKirbyCopyNessSpecialNSetStatus(GObj* fighter_gobj);
 extern void ftKirbyCopyNessSpecialAirNSetStatus(GObj* fighter_gobj);
 
@@ -263,7 +263,7 @@ extern void ftKirbyCopyLinkSpecialAirNSetStatus(GObj* fighter_gobj);
 extern void ftKirbyCopyLinkSpecialNGetSetStatus(GObj* fighter_gobj);
 
 // CopyPurinSpecialN
-extern void ftKirbyCopyPurinSpecialNInitStatusVars(GObj* fighter_gobj);
+extern void ftKirbyCopyPurinSpecialNInITStatusVars(GObj* fighter_gobj);
 extern f32 ftKirbyCopyPurinSpecialNGetAngle(s32 stick_y);
 extern void ftKirbyCopyPurinSpecialAirNProcPhysics(GObj* fighter_gobj);
 extern void ftKirbyCopyPurinSpecialNProcMap(GObj* fighter_gobj);
@@ -282,17 +282,17 @@ extern void ftKirbyCopyCaptainSpecialAirNSwitchStatusGround(GObj* fighter_gobj);
 extern void ftKirbyCopyCaptainSpecialNSwitchStatusAir(GObj* fighter_gobj);
 extern void ftKirbyCopyCaptainSpecialNProcMap(GObj* fighter_gobj);
 extern void ftKirbyCopyCaptainSpecialAirNProcMap(GObj* fighter_gobj);
-extern void ftKirbyCopyCaptainSpecialNInitStatusVars(GObj* fighter_gobj);
+extern void ftKirbyCopyCaptainSpecialNInITStatusVars(GObj* fighter_gobj);
 extern void func_ovl3_80160B28(); // Unused
 extern void ftKirbyCopyCaptainSpecialNSetStatus(GObj* fighter_gobj);
 extern void ftKirbyCopyCaptainSpecialAirNSetStatus(GObj* fighter_gobj);
 
 // CopyYoshiSpecialN
-extern void ftKirbyCopyYoshiSpecialNSetCatchParams(ftStruct* fp, void (*proc_catch)(GObj*));
+extern void ftKirbyCopyYoshiSpecialNSetCatchParams(FTStruct* fp, void (*proc_catch)(GObj*));
 extern void ftKirbyCopyYoshiSpecialNCatchUpdateProcStatus(GObj* fighter_gobj, void (*proc_status)(GObj*));
 extern void ftKirbyCopyYoshiSpecialNCatchProcUpdate(GObj* fighter_gobj);
 extern void ftKirbyCopyYoshiSpecialAirNCatchProcUpdate(GObj* fighter_gobj);
-extern void ftKirbyCopyYoshiSpecialAirNCatchUpdateCaptureVars(ftStruct* fp);
+extern void ftKirbyCopyYoshiSpecialAirNCatchUpdateCaptureVars(FTStruct* fp);
 extern void ftKirbyCopyYoshiSpecialNReleaseProcUpdate(GObj* fighter_gobj);
 extern void ftKirbyCopyYoshiSpecialAirNReleaseProcUpdate(GObj* fighter_gobj);
 extern void ftKirbyCopyYoshiSpecialNProcMap(GObj* fighter_gobj);
@@ -311,10 +311,10 @@ extern void ftKirbyCopyYoshiSpecialAirNReleaseSwitchStatusGround(GObj* fighter_g
 extern void ftKirbyCopyYoshiSpecialNReleaseSwitchStatusAir(GObj* fighter_gobj);
 extern void ftKirbyCopyYoshiSpecialNSetStatus(GObj* fighter_gobj);
 extern void ftKirbyCopyYoshiSpecialAirNSetStatus(GObj* fighter_gobj);
-extern void ftKirbyCopyYoshiSpecialNCatchInitStatusVars(GObj* fighter_gobj);
+extern void ftKirbyCopyYoshiSpecialNCatchInITStatusVars(GObj* fighter_gobj);
 extern void ftKirbyCopyYoshiSpecialNCatchProcCatch(GObj* fighter_gobj);
 extern void ftKirbyCopyYoshiSpecialAirNCatchProcCatch(GObj* fighter_gobj);
-extern void ftKirbyCopyYoshiSpecialNReleaseInitStatusVars(GObj* fighter_gobj);
+extern void ftKirbyCopyYoshiSpecialNReleaseInITStatusVars(GObj* fighter_gobj);
 extern void ftKirbyCopyYoshiSpecialNReleaseSetStatus(GObj* fighter_gobj);
 extern void ftKirbyCopyYoshiSpecialAirNReleaseSetStatus(GObj* fighter_gobj);
 

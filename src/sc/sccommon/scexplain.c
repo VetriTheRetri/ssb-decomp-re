@@ -28,7 +28,7 @@ extern intptr_t D_NF_0001E018;
 // // // // // // // // // // // //
 
 // 0x8018E7F0
-scBattleState sSCExplainBattleState;
+SCBattleState sSCExplainBattleState;
 
 // 0x8018E9E0
 void *sSCExplainGraphicsFileHead;
@@ -37,10 +37,10 @@ void *sSCExplainGraphicsFileHead;
 void *sSCExplainMainFileHead;
 
 // 0x8018E9E8
-scExplainPhase *sSCExplainPhase;
+SCExplainPhase *sSCExplainPhase;
 
 // 0x8018E9F0
-scExplainMain sSCExplainStruct;
+SCExplainMain sSCExplainStruct;
 
 // // // // // // // // // // // //
 //                               //
@@ -165,7 +165,7 @@ void scExplainLoadExplainFiles(void)
             0x10
         )
     );
-    sSCExplainPhase = lbRelocGetDataFromFile(scExplainPhase*, sSCExplainMainFileHead, &lSCExplainPhases);
+    sSCExplainPhase = lbRelocGetDataFromFile(SCExplainPhase*, sSCExplainMainFileHead, &lSCExplainPhases);
 }
 
 // 0x8018D14C
@@ -196,7 +196,7 @@ void scExplainStartBattle(void)
 
     while (fighter_gobj != NULL)
     {
-        ftStruct *fp = ftGetStruct(fighter_gobj);
+        FTStruct *fp = ftGetStruct(fighter_gobj);
 
         ftCommonAppearSetStatus(fighter_gobj);
         ftParamUnlockPlayerControl(fighter_gobj);
@@ -586,7 +586,7 @@ void scExplainHideTapSpark(void)
 }
 
 // 0x8018DEB4
-void scExplainUpdateArgsSObj(scExplainArgs *args, SObj *sobj)
+void scExplainUpdateArgsSObj(SCExplainArgs *args, SObj *sobj)
 {
     if (args->sprite_status == 1)
     {
@@ -710,7 +710,7 @@ void scExplainFuncStart(void)
     s32 unused[3];
     GObj *fighter_gobj;
     s32 player;
-    ftCreateDesc player_spawn;
+    FTCreateDesc player_spawn;
     syColorRGBA color;
 
     scExplainSetBattleState();
@@ -783,7 +783,7 @@ void scExplainFuncStart(void)
             fighter_gobj,
             lbRelocGetDataFromFile
             (
-                ftKeyCommand*,
+                FTKeyCommand*,
                 sSCExplainMainFileHead,
                 dSCExplainKeyInputSequences[player]
             )

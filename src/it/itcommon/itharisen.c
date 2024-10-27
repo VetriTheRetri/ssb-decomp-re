@@ -21,7 +21,7 @@ intptr_t dITHarisenAnimJoint[/* */] =
     0x2250, 0x2270 
 };
 
-itCreateDesc dITHarisenItemDesc =
+ITCreateDesc dITHarisenItemDesc =
 {
     nITKindHarisen,                         // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -45,7 +45,7 @@ itCreateDesc dITHarisenItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITHarisenStatusDescs[/* */] =
+ITStatusDesc dITHarisenStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -141,7 +141,7 @@ void itHarisenCommonSetScale(GObj *item_gobj, f32 scale)
 // 0x80175160
 sb32 itHarisenFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITHARISEN_GRAVITY, ITHARISEN_TVEL);
     itVisualsUpdateSpin(item_gobj);
@@ -175,7 +175,7 @@ void itHarisenWaitSetStatus(GObj *item_gobj)
 // 0x80175228
 void itHarisenFallSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
@@ -198,7 +198,7 @@ void itHarisenHoldSetStatus(GObj *item_gobj)
 // 0x801752C0
 sb32 itHarisenThrownProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITHARISEN_GRAVITY, ITHARISEN_TVEL);
     itVisualsUpdateSpin(item_gobj);
@@ -215,9 +215,9 @@ sb32 itHarisenThrownProcMap(GObj *item_gobj)
 // 0x80175328
 sb32 itHarisenCommonProcHit(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_hit.update_state = nGMHitUpdateDisable;
+    ip->hit_coll.update_state = nGMHitUpdateDisable;
 
     itMainVelSetRebound(item_gobj);
 
@@ -249,7 +249,7 @@ void itHarisenDroppedSetStatus(GObj *item_gobj)
 // 0x80175408
 void func_ovl3_80175408(GObj *item_gobj, s32 index) // Unused
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     gcAddAnimJointAll(item_gobj, (((uintptr_t)ip->attributes->dobj_setup + dITHarisenAnimJoint[index]) - (intptr_t)&lITHarisenDataStart), 0.0F); // Linker thing
     gcPlayAnimAll(item_gobj);
@@ -262,13 +262,13 @@ GObj* itHarisenMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
     if (item_gobj != NULL)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(-90.0F); // HALF_PI32
 
         ip->is_unused_item_bool = TRUE;
 
-        ip->indicator_gobj = ifCommonItemArrowMakeInterface(ip);
+        ip->arrow_gobj = ifCommonItemArrowMakeInterface(ip);
     }
     return item_gobj;
 }

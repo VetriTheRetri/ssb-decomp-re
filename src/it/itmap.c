@@ -8,7 +8,7 @@
 // // // // // // // // // // // //
 
 // 0x80173480
-sb32 itMapProcLRWallCheckGround(mpCollData *coll_data, GObj *item_gobj, u32 flags)
+sb32 itMapProcLRWallCheckGround(MPCollData *coll_data, GObj *item_gobj, u32 flags)
 {
     s32 ground_line_id = coll_data->ground_line_id;
     sb32 is_collide_ground = FALSE;
@@ -66,9 +66,9 @@ sb32 itMapCheckLRWallProcGround(GObj *item_gobj, void (*proc_map)(GObj*))
 }
 
 // 0x801735E0
-sb32 itMapProcAllCheckCollEnd(mpCollData *coll_data, GObj *item_gobj, u32 flags)
+sb32 itMapProcAllCheckCollEnd(MPCollData *coll_data, GObj *item_gobj, u32 flags)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
     if (mpProcessCheckTestLWallCollisionAdjNew(coll_data) != FALSE)
@@ -102,9 +102,9 @@ sb32 itMapTestAllCheckCollEnd(GObj *item_gobj)
 }
 
 // 0x801736B4
-sb32 itMapProcAllCheckCollisionFlag(mpCollData *coll_data, GObj *item_gobj, u32 coll_flags)
+sb32 itMapProcAllCheckCollisionFlag(MPCollData *coll_data, GObj *item_gobj, u32 coll_flags)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *joint = DObjGetStruct(item_gobj);
 
     if (mpProcessCheckTestLWallCollisionAdjNew(coll_data) != FALSE)
@@ -155,8 +155,8 @@ sb32 itMapTestAllCollisionFlag(GObj *item_gobj, u32 flag)
 // 0x801737EC
 sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, Vec3f *pos) // Modify velocity based on angle of collision
 {
-    itStruct *ip = itGetStruct(item_gobj);
-    mpCollData *coll_data = &ip->coll_data;
+    ITStruct *ip = itGetStruct(item_gobj);
+    MPCollData *coll_data = &ip->coll_data;
     Vec3f *translate = &DObjGetStruct(item_gobj)->translate.vec.f;
     Vec3f mod_pos;
     sb32 return_bool = FALSE;
@@ -164,12 +164,12 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
 
     if (coll_flags & check_flags & MPCOLL_FLAG_LWALL)
     {
-        if (lbCommonSim2D(&ip->phys_info.vel_air, &coll_data->lwall_angle) < 0.0F)
+        if (lbCommonSim2D(&ip->physics.vel_air, &coll_data->lwall_angle) < 0.0F)
         {
-            lbCommonReflect2D(&ip->phys_info.vel_air, &coll_data->lwall_angle);
+            lbCommonReflect2D(&ip->physics.vel_air, &coll_data->lwall_angle);
 
-            mod_pos.x = translate->x + coll_data->objcoll.width;
-            mod_pos.y = translate->y + coll_data->objcoll.center;
+            mod_pos.x = translate->x + coll_data->object_coll.width;
+            mod_pos.y = translate->y + coll_data->object_coll.center;
 
             return_bool = TRUE;
 
@@ -178,12 +178,12 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
     }
     if (coll_flags & check_flags & MPCOLL_FLAG_RWALL)
     {
-        if (lbCommonSim2D(&ip->phys_info.vel_air, &coll_data->rwall_angle) < 0.0F)
+        if (lbCommonSim2D(&ip->physics.vel_air, &coll_data->rwall_angle) < 0.0F)
         {
-            lbCommonReflect2D(&ip->phys_info.vel_air, &coll_data->rwall_angle);
+            lbCommonReflect2D(&ip->physics.vel_air, &coll_data->rwall_angle);
 
-            mod_pos.x = translate->x - coll_data->objcoll.width;
-            mod_pos.y = translate->y + coll_data->objcoll.center;
+            mod_pos.x = translate->x - coll_data->object_coll.width;
+            mod_pos.y = translate->y + coll_data->object_coll.center;
 
             return_bool = TRUE;
 
@@ -192,24 +192,24 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
     }
     if (coll_flags & check_flags & MPCOLL_FLAG_CEIL)
     {
-        if (lbCommonSim2D(&ip->phys_info.vel_air, &coll_data->ceil_angle) < 0.0F)
+        if (lbCommonSim2D(&ip->physics.vel_air, &coll_data->ceil_angle) < 0.0F)
         {
-            lbCommonReflect2D(&ip->phys_info.vel_air, &coll_data->ceil_angle);
+            lbCommonReflect2D(&ip->physics.vel_air, &coll_data->ceil_angle);
 
             mod_pos.x = translate->x;
-            mod_pos.y = translate->y + coll_data->objcoll.top;
+            mod_pos.y = translate->y + coll_data->object_coll.top;
 
             return_bool = TRUE;
         }
     }
     if (coll_flags & check_flags & MPCOLL_FLAG_GROUND)
     {
-        if (lbCommonSim2D(&ip->phys_info.vel_air, &coll_data->ground_angle) < 0.0F)
+        if (lbCommonSim2D(&ip->physics.vel_air, &coll_data->ground_angle) < 0.0F)
         {
-            lbCommonReflect2D(&ip->phys_info.vel_air, &coll_data->ground_angle);
+            lbCommonReflect2D(&ip->physics.vel_air, &coll_data->ground_angle);
 
             mod_pos.x = translate->x;
-            mod_pos.y = translate->y + coll_data->objcoll.bottom;
+            mod_pos.y = translate->y + coll_data->object_coll.bottom;
 
             return_bool = TRUE;
 
@@ -218,7 +218,7 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
     }
     if (return_bool != FALSE)
     {
-        lbCommonScale2D(&ip->phys_info.vel_air, mod_vel);
+        lbCommonScale2D(&ip->physics.vel_air, mod_vel);
 
         if (pos != NULL)
         {
@@ -258,7 +258,7 @@ void itMapSetGroundRebound(Vec3f *vel, Vec3f *ground_angle, f32 ground_rebound)
 // 0x80173B24
 sb32 itMapCheckDestroyDropped(GObj *item_gobj, f32 common_rebound, f32 ground_rebound, void (*proc_status)(GObj*))
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     s32 unused;
     sb32 is_collide_ground = itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_GROUND);
 
@@ -268,7 +268,7 @@ sb32 itMapCheckDestroyDropped(GObj *item_gobj, f32 common_rebound, f32 ground_re
     }
     if (is_collide_ground != FALSE)
     {
-        itMapSetGroundRebound(&ip->phys_info.vel_air, &ip->coll_data.ground_angle, ground_rebound);
+        itMapSetGroundRebound(&ip->physics.vel_air, &ip->coll_data.ground_angle, ground_rebound);
         itMainVelSetRotateStepLR(item_gobj);
 
         ip->times_landed++;
@@ -300,7 +300,7 @@ sb32 itMapCheckDestroyDropped(GObj *item_gobj, f32 common_rebound, f32 ground_re
 // 0x80173C68
 sb32 itMapCheckLanding(GObj *item_gobj, f32 common_rebound, f32 ground_rebound, void (*proc_map)(GObj*))
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     s32 unused;
     sb32 is_collide_ground = itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_GROUND);
 
@@ -310,8 +310,8 @@ sb32 itMapCheckLanding(GObj *item_gobj, f32 common_rebound, f32 ground_rebound, 
     }
     if (is_collide_ground != FALSE)
     {
-        lbCommonReflect2D(&ip->phys_info.vel_air, &ip->coll_data.ground_angle);
-        lbCommonScale2D(&ip->phys_info.vel_air, ground_rebound);
+        lbCommonReflect2D(&ip->physics.vel_air, &ip->coll_data.ground_angle);
+        lbCommonScale2D(&ip->physics.vel_air, ground_rebound);
         itMainVelSetRotateStepLR(item_gobj);
 
         if (proc_map != NULL)
@@ -326,8 +326,8 @@ sb32 itMapCheckLanding(GObj *item_gobj, f32 common_rebound, f32 ground_rebound, 
 // 0x80173D24
 sb32 itMapCheckMapReboundProcAll(GObj *item_gobj, f32 common_rebound, f32 ground_rebound, void (*proc_map)(GObj*))
 {
-    itStruct *ip = itGetStruct(item_gobj);
-    mpCollData *coll_data = &ip->coll_data;
+    ITStruct *ip = itGetStruct(item_gobj);
+    MPCollData *coll_data = &ip->coll_data;
     sb32 is_collide_any = itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_MAIN_MASK);
 
     if (itMapCheckCollideAllRebound(item_gobj, (MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL), common_rebound, NULL) != FALSE)
@@ -336,8 +336,8 @@ sb32 itMapCheckMapReboundProcAll(GObj *item_gobj, f32 common_rebound, f32 ground
     }
     if (coll_data->coll_mask_current & MPCOLL_FLAG_GROUND)
     {
-        lbCommonReflect2D(&ip->phys_info.vel_air, &coll_data->ground_angle);
-        lbCommonScale2D(&ip->phys_info.vel_air, ground_rebound);
+        lbCommonReflect2D(&ip->physics.vel_air, &coll_data->ground_angle);
+        lbCommonScale2D(&ip->physics.vel_air, ground_rebound);
         itMainVelSetRotateStepLR(item_gobj);
     }
     if (is_collide_any != FALSE)
@@ -406,14 +406,14 @@ sb32 itMapCheckMapReboundProcGround(GObj *item_gobj, f32 common_rebound, void (*
 }
 
 // 0x80173F54
-void itMapSetGround(itStruct *ip)
+void itMapSetGround(ITStruct *ip)
 {
     ip->ga = nMPKineticsGround;
-    ip->phys_info.vel_ground = ip->phys_info.vel_air.x * ip->lr;
+    ip->physics.vel_ground = ip->physics.vel_air.x * ip->lr;
 }
 
 // 0x80173F78
-void itMapSetAir(itStruct *ip)
+void itMapSetAir(ITStruct *ip)
 {
     ip->ga = nMPKineticsAir;
 }

@@ -22,8 +22,8 @@ void ftCommonShieldBreakStandProcUpdate(GObj *fighter_gobj)
 // 0x801497C4
 void ftCommonShieldBreakStandSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    s32 status_id = (fp->status_info.status_id == nFTCommonStatusShieldBreakDownD) ? nFTCommonStatusShieldBreakStandD : nFTCommonStatusShieldBreakStandU;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    s32 status_id = (fp->status_id == nFTCommonStatusShieldBreakDownD) ? nFTCommonStatusShieldBreakStandD : nFTCommonStatusShieldBreakStandU;
 
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTCOMMON_SHIELDBREAKSTAND_STATUS_FLAGS);
 }

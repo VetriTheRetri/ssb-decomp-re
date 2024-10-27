@@ -4,7 +4,7 @@
 #include <ft/fighter.h>
 
 // 0x8012A700
-ftStatusDesc dFTKirbySpecialStatusDescs[/* */] =
+FTStatusDesc dFTKirbySpecialStatusDescs[/* */] =
 {
 	// Status 220 (0xDC): Attack100Start
 	{

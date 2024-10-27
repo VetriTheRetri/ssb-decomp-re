@@ -18,7 +18,7 @@ void ftCommonFallProcInterrupt(GObj *fighter_gobj)
 // 0x8013F9E0
 void ftCommonFallSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (ftHammerCheckHoldHammer(fighter_gobj) != FALSE)
     {

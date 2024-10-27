@@ -10,7 +10,7 @@
 // 0x8014F760
 void ftCommonAttackS3SetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     f32 stick_angle;
     s32 status_id;
 
@@ -44,8 +44,8 @@ void ftCommonAttackS3SetStatus(GObj *fighter_gobj)
 // 0x8014F8C0
 sb32 ftCommonAttackS3CheckInterruptCommon(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     if ((fp->input.pl.button_tap & fp->input.button_mask_a) && ((fp->input.pl.stick_range.x * fp->lr) >= FTCOMMON_ATTACKS3_STICK_RANGE_MIN))
     {

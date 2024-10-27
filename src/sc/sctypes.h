@@ -8,7 +8,7 @@
 
 #include <gm/generic.h>
 
-struct sc1PGameComputer
+struct SC1PGameComputer
 {
 	ub8 is_team_attack;
 	u8 item_appearance_rate;
@@ -18,7 +18,7 @@ struct sc1PGameComputer
 	u8 ally_handicap[5];
 };
 
-struct sc1PGameStage
+struct SC1PGameStage
 {
 	u8 screenflash_alpha;
 	u8 gr_kind;
@@ -30,7 +30,7 @@ struct sc1PGameStage
 	u8 ally_behavior;
 };
 
-struct sc1PGameFighter
+struct SC1PGameFighter
 {
 	s32 mapobj_kind; // Spawn position?
 	void *figatree;
@@ -42,18 +42,18 @@ struct sc1PGameFighter
 	f32 camera_frame_mul;
 };
 
-struct sc1PGameStats
+struct SC1PGameStats
 {
 	s32 team_order;
 	s32 damage_status_id;
 	s32 damage_player;
 	s32 damage_object_class;
 	s32 damage_object_kind;
-	gmStatFlags damage_stat_flags;
+	GMStatFlags damage_stat_flags;
 	u16 damage_stat_count;
 };
 
-struct sc1PGameBossPlan
+struct SC1PGameBossPlan
 {
     s32 unk_sc1pbossplan_0x0;
     u8 dl_link;
@@ -61,14 +61,14 @@ struct sc1PGameBossPlan
     Vec3f pos;
 };
 
-struct sc1PGameBossAnim
+struct SC1PGameBossAnim
 {
     intptr_t o_anim_joint;
     intptr_t o_matanim_joint;
     f32 anim_speed;
 };
 
-struct sc1PGameBossEffect
+struct SC1PGameBossEffect
 {
     void (*proc_update)(GObj*);
     void (*func_display)(GObj*);
@@ -76,7 +76,7 @@ struct sc1PGameBossEffect
     intptr_t o_mobjsub;
 };
 
-struct sc1PGameBossWallpaper
+struct SC1PGameBossWallpaper
 {
     s32 loop_count;
     s32 effect_count;
@@ -87,40 +87,40 @@ struct sc1PGameBossWallpaper
     s32 change_wait_base;
     s32 change_damage_min;
     sb32 is_random_wallpaper;
-    sc1PGameBossEffect *bosseffect;
-    sc1PGameBossAnim *bossanim;
-    sc1PGameBossPlan *bossplan;
+    SC1PGameBossEffect *bosseffect;
+    SC1PGameBossAnim *bossanim;
+    SC1PGameBossPlan *bossplan;
 };
 
-struct sc1PGameBossMain
+struct SC1PGameBossMain
 {
     sb32 is_skip_wallpaper_change;
     s32 wallpaper_id;
     s32 change_wait;
     void *file_head;
-    sc1PGameBossWallpaper *bosswallpaper;
+    SC1PGameBossWallpaper *bosswallpaper;
     s32 bossplayer;
 };
 
-struct sc1PStageClearStats
+struct SC1PStageClearStats
 {
 	s32 bonus_array_id;
 	s32 bonus_id;
 };
 
-struct sc1PStageClearScore
+struct SC1PStageClearScore
 {
 	intptr_t offset;
 	s32 points;
 };
 
-struct scTrainingSprites
+struct SCTrainingSprites
 {
 	Vec2h pos;
 	Sprite *sprite;
 };
 
-struct scTrainingFiles
+struct SCTrainingFiles
 {
 	s32 file_id;
 	uintptr_t addr;
@@ -138,12 +138,12 @@ struct scTrainingStruct
 	s32 speed_menu_option;					    // Option selected in "Speed" settings
 	s32 view_menu_option;					    // Option selected in "View" settings
 	s32 opponent;							    // Dummy fighter's port ID
-	scTrainingSprites* display_label_sprites;   // "DAMAGE", "COMBO", "ENEMY", "SPEED" text
+	SCTrainingSprites* display_label_sprites;   // "DAMAGE", "COMBO", "ENEMY", "SPEED" text
 	Sprite** display_option_sprites;
-	scTrainingSprites* menu_label_sprites;      // Orange text describing what each option is?
+	SCTrainingSprites* menu_label_sprites;      // Orange text describing what each option is?
 	Sprite** menu_option_sprites;
-	scTrainingSprites* unk_trainmenu_0x34;
-	scTrainingSprites* unk_trainmenu_0x38;
+	SCTrainingSprites* unk_trainmenu_0x34;
+	SCTrainingSprites* unk_trainmenu_0x38;
 	GObj* damage_display_gobj;	                // Interface GObj of damage stat display
 	GObj* combo_display_gobj;	                // Interface GObj of combo stat display
 	GObj* cp_display_gobj;		                // Interface GObj of CP behavior display
@@ -181,7 +181,7 @@ struct scTrainingStruct
 	ub8 is_read_menu_inputs;                    // Menu navigation inputs are ignored if FALSE
 };
 
-struct scExplainMain
+struct SCExplainMain
 {
     SObj *textbox_sobj;
     GObj *stick_gobj;
@@ -199,38 +199,38 @@ struct scExplainMain
     u8 stick_status;
 };
 
-struct scExplainArgs
+struct SCExplainArgs
 {
     u16 sprite_pos_x;
     u8 sprite_pos_y;
     u8 sprite_status;
 };
 
-struct scExplainPhase
+struct SCExplainPhase
 {
     u16 phase_time;                     // Time the given explanation phase of the How to Play tutorial should last
     u16 unused;
     u8 textbox_pos_x;
     u8 textbox_pos_y;
     Sprite *sprite;
-    scExplainArgs control_stick_args;
-    scExplainArgs phase_args0;
-    scExplainArgs phase_args1;
-    scExplainArgs phase_args2;
-    scExplainArgs phase_args3;
-    scExplainArgs phase_args4;
-    scExplainArgs rgb_overlay_args;
-    scExplainArgs phase_args5;
+    SCExplainArgs control_stick_args;
+    SCExplainArgs phase_args0;
+    SCExplainArgs phase_args1;
+    SCExplainArgs phase_args2;
+    SCExplainArgs phase_args3;
+    SCExplainArgs phase_args4;
+    SCExplainArgs rgb_overlay_args;
+    SCExplainArgs phase_args5;
 };
 
-struct scAutoDemoProc
+struct SCAutoDemoProc
 {
 	u16 focus_end_wait;
 	void (*proc_change)();
 	void (*proc_focus)();
 };
 
-struct scBattleResults
+struct SCBattleResults
 {
 	s32 tko;
 	s32 kos;
@@ -239,7 +239,7 @@ struct scBattleResults
 	ub8 is_human_player;
 };
 
-struct scPlayerData
+struct SCPlayerData
 {
 	u8 level;		   		                        // Actually begins at 1 instead of 0
 	u8 handicap;	   		                        // Master Hand's handicap value is 35!?
@@ -278,7 +278,7 @@ struct scPlayerData
 	} stale_info[5];
 };
 
-struct scBattleState
+struct SCBattleState
 {
 	u8 game_type;
 	u8 gr_kind;
@@ -304,10 +304,10 @@ struct scBattleState
 	ub32 is_display_score : 1;						// Displays score when a fighter falls
 	ub32 is_not_teamshadows : 1;					// If FALSE, shadows are colored based on
 													// players' team affiliation, otherwise use default shadow color
-	scPlayerData players[GMCOMMON_PLAYERS_MAX]; 	// Holds data for each player
+	SCPlayerData players[GMCOMMON_PLAYERS_MAX]; 	// Holds data for each player
 };
 
-struct scCommonData
+struct SCCommonData
 {
 	u8 scene_current;
 	u8 scene_previous;

@@ -99,7 +99,7 @@ u8 D_ovl7_8019081C[4][2] = {
 };
 
 // 0x80190824
-scTrainingFiles scTrainingMode_Files_BackgroundImageInfo[] = {
+SCTrainingFiles scTrainingMode_Files_BackgroundImageInfo[] = {
 
 	{ 0x1A, 0x20718, { 0x00, 0x00, 0x00 } },
 	{ 0x1B, 0x20718, { 0xEE, 0x9E, 0x06 } },
@@ -150,16 +150,16 @@ s32 D_ovl7_80190960;
 s32 D_ovl7_80190964;
 
 // 0x80190968
-scBattleState gTrainingModeBattleState;
+SCBattleState gTrainingModeBattleState;
 
 // 0x80190B58
 scTrainingMenu gTrainingModeStruct;
 
 // 0x80190C40
-lbFileNode gOverlay7StatusBuffer[100];
+LBFileNode gOverlay7StatusBuffer[100];
 
 // 0x80190F60
-lbFileNode gOverlay7ForceStatusBuffer[7];
+LBFileNode gOverlay7ForceStatusBuffer[7];
 
 
 // 0x8018D0C0
@@ -182,7 +182,7 @@ void scTrainingMode_CheckEnterTrainingMenu()
 	if (gPlayerControllers[player].button_tap & HAL_BUTTON_START)
 	{
 		GObj* fighter_gobj = gBattleState->players[player].fighter_gobj;
-		ftStruct* fp = ftGetStruct(fighter_gobj);
+		FTStruct* fp = ftGetStruct(fighter_gobj);
 
 		if (!(fp->is_ignore_training_menu))
 		{
@@ -220,7 +220,7 @@ void scTrainingMode_CheckLeaveTrainingMenu()
 
 		if (gPlayerControllers[player].button_tap & HAL_BUTTON_B)
 		{
-			ftStruct* fp = ftGetStruct(fighter_gobj);
+			FTStruct* fp = ftGetStruct(fighter_gobj);
 			fp->input.pl.button_hold |= HAL_BUTTON_B;
 		}
 		auSetBGMVolume(0, 0x7800);
@@ -610,7 +610,7 @@ void scTrainingMode_InitMiscVars()
 }
 
 // 0x8018DEDC
-SObj* scTrainingMode_MakeStatDisplaySObj(GObj* interface_gobj, scTrainingSprites* tms)
+SObj* scTrainingMode_MakeStatDisplaySObj(GObj* interface_gobj, SCTrainingSprites* tms)
 {
 	SObj* sobj = lbCommonMakeSObjForGObj(interface_gobj, tms->sprite);
 	sobj->pos.x = tms->pos.x;
@@ -869,13 +869,13 @@ void scTrainingMode_InitItemDisplaySprite()
 // 0x8018E9AC
 void scTrainingMode_UpdateItemDisplay(s32 interface_gobj)
 {
-	ftStruct* fp = ftGetStruct(gBattleState->players[gSceneData.spgame_player].fighter_gobj);
+	FTStruct* fp = ftGetStruct(gBattleState->players[gSceneData.spgame_player].fighter_gobj);
 	GObj* item_gobj = fp->item_hold;
 	s32 item_id;
 
 	if (item_gobj != NULL)
 	{
-		itStruct* ip = itGetStruct(item_gobj);
+		ITStruct* ip = itGetStruct(item_gobj);
 
 		if (ip->it_kind <= nITKindContainerEnd)
 		{
@@ -1245,7 +1245,7 @@ void scTrainingMode_MakeOptionArrowInterface()
 }
 
 // 0x8018F7C8
-SObj* func_ovl7_8018F7C8(GObj* interface_gobj, scTrainingSprites* tms)
+SObj* func_ovl7_8018F7C8(GObj* interface_gobj, SCTrainingSprites* tms)
 {
 	SObj* sobj = lbCommonMakeSObjForGObj(interface_gobj, tms->sprite);
 	sobj->pos.x = tms->pos.x;
@@ -1471,12 +1471,12 @@ void scTrainingMode_SetGameStatusGo()
 // 0x801901F4
 void scTrainingMode_UpdateOpponentBehavior()
 {
-	ftStruct* fp = ftGetStruct(gBattleState->players[gTrainingModeStruct.opponent].fighter_gobj);
+	FTStruct* fp = ftGetStruct(gBattleState->players[gTrainingModeStruct.opponent].fighter_gobj);
 
-	if (fp->status_info.pl_kind == nFTPlayerKindCom)
+	if (fp->pl_kind == nFTPlayerKindCom)
 	{
-		fp->fighter_com.behavior = scTrainingMode_CPOpponent_BehaviorKind[gTrainingModeStruct.cp_menu_option];
-		fp->fighter_com.trait = 0xA;
+		fp->computer.behavior = scTrainingMode_CPOpponent_BehaviorKind[gTrainingModeStruct.cp_menu_option];
+		fp->computer.trait = 0xA;
 	}
 }
 
@@ -1484,7 +1484,7 @@ void scTrainingMode_UpdateOpponentBehavior()
 void scTrainingMode_InitTrainingMode()
 {
 	GObj* fighter_gobj;
-	ftCreateDesc player_spawn;
+	FTCreateDesc player_spawn;
 	s32 player;
 	syColorRGBA color;
 
@@ -1598,7 +1598,7 @@ void scManager_TrainingMode_InitScene()
 // 0x801906D0
 void scTrainingMode_LoadFiles()
 {
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

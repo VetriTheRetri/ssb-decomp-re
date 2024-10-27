@@ -9,7 +9,7 @@
 // 0x801591A0
 void ftBossMoveProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f vel;
     f32 magnitude;
 
@@ -20,8 +20,8 @@ void ftBossMoveProcPhysics(GObj *fighter_gobj)
     if (magnitude < 5.0F)
     {
         fp->status_vars.boss.move.magnitude = 0.0F;
-        fp->phys_info.vel_air.x = vel.x;
-        fp->phys_info.vel_air.y = vel.y;
+        fp->physics.vel_air.x = vel.x;
+        fp->physics.vel_air.y = vel.y;
     }
     else
     {
@@ -31,15 +31,15 @@ void ftBossMoveProcPhysics(GObj *fighter_gobj)
 
         syVectorScale3D(&vel, magnitude * 0.1F);
 
-        fp->phys_info.vel_air.x = vel.x;
-        fp->phys_info.vel_air.y = vel.y;
+        fp->physics.vel_air.x = vel.x;
+        fp->physics.vel_air.y = vel.y;
     }
 }
 
 // 0x80159260
 void ftBossMoveProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp;
+    FTStruct *fp;
 
     mpCommonSetFighterProjectGround(fighter_gobj);
 
@@ -47,7 +47,7 @@ void ftBossMoveProcMap(GObj *fighter_gobj)
 
     if (fp->status_vars.boss.move.magnitude == 0.0F)
     {
-        fp->phys_info.vel_air.x = fp->phys_info.vel_air.y = fp->phys_info.vel_air.z = 0.0F;
+        fp->physics.vel_air.x = fp->physics.vel_air.y = fp->physics.vel_air.z = 0.0F;
 
         fp->status_vars.boss.move.proc_setstatus(fighter_gobj);
     }
@@ -56,7 +56,7 @@ void ftBossMoveProcMap(GObj *fighter_gobj)
 // 0x801592B4
 void ftBossMoveSetStatus(GObj *fighter_gobj, void (*proc_setstatus)(GObj*), Vec3f *vel)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTBossStatusMove, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
 

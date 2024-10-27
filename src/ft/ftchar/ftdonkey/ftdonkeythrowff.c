@@ -9,7 +9,7 @@
 // 0x8014DD00
 void ftDonkeyThrowFFProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->status_vars.common.throwff.is_turn != FALSE)
     {
@@ -45,7 +45,7 @@ void ftDonkeyThrowFFProcUpdate(GObj *fighter_gobj)
 // 0x8014DE30
 void ftDonkeyThrowAirFFSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowFF, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
@@ -58,7 +58,7 @@ void ftDonkeyThrowAirFFSwitchStatusGround(GObj *fighter_gobj)
 // 0x8014DE80
 void ftDonkeyThrowFFSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusThrowAirFF, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
@@ -80,7 +80,7 @@ void ftDonkeyThrowAirFFProcMap(GObj *fighter_gobj)
 // 0x8014DF14
 void ftDonkeyThrowFFSetStatus(GObj *fighter_gobj, sb32 is_turn)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
     u32 flags;
 
@@ -113,7 +113,7 @@ void ftDonkeyThrowFFSetStatus(GObj *fighter_gobj, sb32 is_turn)
 // 0x8014DFA8
 sb32 ftDonkeyThrowFFCheckInterruptThrowFCommon(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     sb32 is_turn = FALSE;
 
     if (fp->input.pl.button_tap & (fp->input.button_mask_a | fp->input.button_mask_b))

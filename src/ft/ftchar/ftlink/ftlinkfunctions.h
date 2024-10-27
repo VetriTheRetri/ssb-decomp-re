@@ -7,10 +7,10 @@
 #include <wp/wpdef.h>
 
 // SpecialHi / SpecialAirHi
-extern void ftLinkSpecialHiDestroyWeapon(ftStruct* fp, wpStruct* wp);
-extern void ftLinkSpecialHiUpdateWeaponPos(GObj* fighter_gobj, wpStruct* wp);
-extern void ftLinkSpecialHiDecWeaponLifeCheckDestroy(GObj* fighter_gobj, wpStruct* wp);
-extern void ftLinkSpecialHiUpdateWeaponHit(GObj* fighter_gobj, wpStruct* wp);
+extern void ftLinkSpecialHiDestroyWeapon(FTStruct* fp, WPStruct* wp);
+extern void ftLinkSpecialHiUpdateWeaponPos(GObj* fighter_gobj, WPStruct* wp);
+extern void ftLinkSpecialHiDecWeaponLifeCheckDestroy(GObj* fighter_gobj, WPStruct* wp);
+extern void ftLinkSpecialHiUpdateWeaponHit(GObj* fighter_gobj, WPStruct* wp);
 extern void ftLinkSpecialHiProcEffect(GObj* fighter_gobj);
 extern void ftLinkSpecialHiUpdateWeaponVars(GObj* fighter_gobj);
 extern void ftLinkSpecialHiMakeWeapon(GObj* fighter_gobj, sb32 is_skip_gobj);

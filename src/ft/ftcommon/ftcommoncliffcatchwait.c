@@ -15,7 +15,7 @@ void ftCommonCliffCatchProcUpdate(GObj *fighter_gobj)
 // 0x80144B54
 void ftCommonCliffCommonProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     DObj *topn_joint = fp->joints[nFTPartsJointTopN], *transn_joint = fp->joints[nFTPartsJointTransN];
     Vec3f vel;
 
@@ -38,7 +38,7 @@ void ftCommonCliffCommonProcMap(GObj *fighter_gobj)
 // 0x80144C24
 void ftCommonCliffCatchSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f vel;
 
     mpCommonSetFighterGround(fp);
@@ -69,8 +69,8 @@ void ftCommonCliffCatchSetStatus(GObj *fighter_gobj)
 // 0x80144CF8
 void ftCommonCliffCommonProcDamage(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    mpObjectColl *objcoll = &fp->coll_data.objcoll;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    MPObjectColl *object_coll = &fp->coll_data.object_coll;
     Vec3f vel;
 
     if (fp->lr == nGMFacingR)
@@ -79,8 +79,8 @@ void ftCommonCliffCommonProcDamage(GObj *fighter_gobj)
     }
     else mpCollisionGetLREdgeRight(fp->coll_data.cliff_id, &vel);
 
-    vel.x -= ((objcoll->width + 30.0F) * fp->lr);
-    vel.y -= objcoll->center;
+    vel.x -= ((object_coll->width + 30.0F) * fp->lr);
+    vel.y -= object_coll->center;
 
     mpCommonRunFighterCollisionDefault(fighter_gobj, &vel, &fp->coll_data);
 }
@@ -97,7 +97,7 @@ void ftCommonCliffWaitProcInterrupt(GObj *fighter_gobj)
 // 0x80144DF4
 void ftCommonCliffWaitSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
@@ -121,7 +121,7 @@ void ftCommonCliffWaitSetStatus(GObj *fighter_gobj)
 // 0x80144E84
 sb32 ftCommonCliffWaitCheckFall(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->status_vars.common.cliffwait.fall_wait--;
 

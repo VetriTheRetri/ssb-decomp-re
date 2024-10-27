@@ -16,7 +16,7 @@
 // 0x80144220
 void ftCommonDownWaitProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->status_vars.common.downwait.stand_wait--;
 
@@ -38,10 +38,10 @@ void ftCommonDownWaitProcInterrupt(GObj *fighter_gobj)
 // 0x80144294
 void ftCommonDownWaitSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
 
-    if (fp->status_info.status_id == nFTCommonStatusDownBounceD)
+    if (fp->status_id == nFTCommonStatusDownBounceD)
     {
         status_id = nFTCommonStatusDownWaitD;
     }
@@ -59,7 +59,7 @@ void ftCommonDownWaitSetStatus(GObj *fighter_gobj)
 // 0x80144308
 void ftCommonDownBounceProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->status_vars.common.downbounce.attack_buffer != 0)
     {
@@ -78,7 +78,7 @@ void ftCommonDownBounceProcUpdate(GObj *fighter_gobj)
 // 0x80144398
 sb32 ftCommonDownBounceCheckUpOrDown(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     f32 rot_x = fp->joints[4]->rotate.vec.f.x;
 
     rot_x /= F_CST_DTOR32(360.0F); // DOUBLE_PI32
@@ -95,7 +95,7 @@ sb32 ftCommonDownBounceCheckUpOrDown(GObj *fighter_gobj)
 // 0x80144428
 void ftCommonDownBounceUpdateEffects(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftParamMakeEffect(fighter_gobj, nEFKindImpactWave, nFTPartsJointTopN, NULL, NULL, fp->lr, FALSE, FALSE);
     func_800269C0_275C0(dFTCommonDataDownBounceSFX[fp->ft_kind]);
@@ -105,7 +105,7 @@ void ftCommonDownBounceUpdateEffects(GObj *fighter_gobj)
 // 0x80144498
 void ftCommonDownBounceSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
 
     if (fp->ga == nMPKineticsAir)

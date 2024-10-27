@@ -32,7 +32,7 @@ CObjDesc dMVOpeningMarioCObjDescEnd = {
 };
 
 // 0x8018E0C8
-ftKeyCommand dMVOpeningMarioGameKey[] = {
+FTKeyCommand dMVOpeningMarioGameKey[] = {
 
 	FTKEY_EVENT_STICK(0, 0, 0),                         // 0x2000, 0x0000
 	FTKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 0x1001, 0x8000
@@ -89,22 +89,22 @@ CObjDesc dMVOpeningMarioCObjDescAdjustedStart;
 CObjDesc dMVOpeningMarioCObjDescAdjustedEnd;
 
 // 0x8018E268
-lbFileNode D_ovl36_8018E268[48];
+LBFileNode D_ovl36_8018E268[48];
 
 // 0x8018E3E8
-lbFileNode D_ovl36_8018E3E8[7];
+LBFileNode D_ovl36_8018E3E8[7];
 
 // 0x8018E420
 uintptr_t gMVOpeningMarioFiles[2];
 
 // 0x8018E428
-scBattleState gMVOpeningMarioBattleState;
+SCBattleState gMVOpeningMarioBattleState;
 
 
 // 0x8018D0C0
 void mvOpeningMarioLoadFiles()
 {
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
@@ -246,7 +246,7 @@ void mvOpeningMarioInitFighterStagePanel()
 
 	for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
 	{
-		ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+		FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 		if (gBattleState->players[i].pl_kind == nFTPlayerKindNot) continue;
 
@@ -329,7 +329,7 @@ void mvOpeningMarioAnimatePosedFighter(GObj* fighter_gobj)
 void mvOpeningMarioCreatePosedFighter()
 {
 	GObj* fighter_gobj;
-	ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	spawn_info.ft_kind = nFTKindMario;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindMario, 0);

@@ -30,7 +30,7 @@ Vec2f dITBoxItemSpawnVelocities[/* */] =
 };
 
 // 0x8018A350
-itCreateDesc dITBoxItemDesc = 
+ITCreateDesc dITBoxItemDesc = 
 {
     nITKindBox,                             // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -55,7 +55,7 @@ itCreateDesc dITBoxItemDesc =
 };
 
 // 0x8018A384
-itStatusDesc dITBoxStatusDescs[/* */] =
+ITStatusDesc dITBoxStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -156,7 +156,7 @@ enum itBoxStatus
 // 0x80179120
 void itBoxContainerSmashUpdateEffect(GObj *effect_gobj) // Barrel/Crate smash GFX process
 {
-    efStruct *ep = efGetStruct(effect_gobj);
+    EFStruct *ep = efGetStruct(effect_gobj);
     DObj *dobj = DObjGetStruct(effect_gobj);
 
     ep->effect_vars.container.lifetime--;
@@ -186,7 +186,7 @@ void itBoxContainerSmashUpdateEffect(GObj *effect_gobj) // Barrel/Crate smash GF
 void itBoxContainerSmashMakeEffect(Vec3f *pos)
 {
     GObj *effect_gobj;
-    efStruct *ep = efManagerGetEffectNoForce();
+    EFStruct *ep = efManagerGetEffectNoForce();
     DObj *dobj;
     s32 i;
     Gfx *dl;
@@ -315,7 +315,7 @@ sb32 itBoxCommonCheckSpawnItems(GObj *item_gobj)
 // 0x8017963C
 sb32 itBoxFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITBOX_GRAVITY, ITBOX_TVEL);
     itVisualsUpdateSpin(item_gobj);
@@ -346,7 +346,7 @@ sb32 itBoxCommonProcHit(GObj *item_gobj)
 // 0x801796D8
 sb32 itBoxCommonProcDamage(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->percent_damage >= ITBOX_HEALTH_MAX)
     {
@@ -364,7 +364,7 @@ sb32 itBoxFallProcMap(GObj *item_gobj)
 // 0x80179748
 void itBoxWaitSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     DObjGetStruct(item_gobj)->rotate.vec.f.z = atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CST_DTOR32(90.0F); // HALF_PI32
 
@@ -375,7 +375,7 @@ void itBoxWaitSetStatus(GObj *item_gobj)
 // 0x801797A4
 void itBoxFallSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
@@ -439,7 +439,7 @@ void itBoxDroppedSetStatus(GObj *item_gobj)
 // 0x80179948
 sb32 itBoxExplodeProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi++;
 
@@ -459,14 +459,14 @@ GObj* itBoxMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
     if (item_gobj != NULL)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 
         ip->is_damage_all = TRUE;
         ip->is_unused_item_bool = TRUE;
 
-        ip->indicator_gobj = ifCommonItemArrowMakeInterface(ip);
+        ip->arrow_gobj = ifCommonItemArrowMakeInterface(ip);
     }
     return item_gobj;
 }
@@ -474,23 +474,23 @@ GObj* itBoxMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 // 0x80179A34
 void itBoxExplodeInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->item_event_id = 0;
     ip->it_multi = 0;
 
-    ip->item_hit.hit_sfx = nSYAudioFGMExplodeL;
+    ip->hit_coll.hit_sfx = nSYAudioFGMExplodeL;
 
-    ip->item_hit.can_rehit_item = TRUE;
-    ip->item_hit.can_hop = FALSE;
-    ip->item_hit.can_reflect = FALSE;
+    ip->hit_coll.can_rehit_item = TRUE;
+    ip->hit_coll.can_hop = FALSE;
+    ip->hit_coll.can_reflect = FALSE;
 
-    ip->item_hit.throw_mul = ITEM_STALE_DEFAULT;
-    ip->item_hit.element = nGMHitElementFire;
+    ip->hit_coll.throw_mul = ITEM_STALE_DEFAULT;
+    ip->hit_coll.element = nGMHitElementFire;
 
-    ip->item_hit.can_setoff = FALSE;
+    ip->hit_coll.can_setoff = FALSE;
 
-    ip->item_hurt.hitstatus = nGMHitStatusNone;
+    ip->damage_coll.hitstatus = nGMHitStatusNone;
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshHit(item_gobj);
@@ -507,15 +507,15 @@ void itBoxExplodeSetStatus(GObj *item_gobj)
 // 0x80179B08
 void itBoxExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 {
-    lbParticle *ptcl;
-    itStruct *ip = itGetStruct(item_gobj);
+    LBParticle *ptcl;
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    ip->item_hit.update_state = nGMHitUpdateDisable;
+    ip->hit_coll.update_state = nGMHitUpdateDisable;
 
-    ip->phys_info.vel_air.x = 0.0F;
-    ip->phys_info.vel_air.y = 0.0F;
-    ip->phys_info.vel_air.z = 0.0F;
+    ip->physics.vel_air.x = 0.0F;
+    ip->physics.vel_air.y = 0.0F;
+    ip->physics.vel_air.z = 0.0F;
 
     ptcl = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 

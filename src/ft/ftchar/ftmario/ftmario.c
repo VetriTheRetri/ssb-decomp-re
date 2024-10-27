@@ -46,7 +46,7 @@ s32 gFTMarioParticleBankID;
 // // // // // // // // // // // //
 
 // 0x80116E80
-ftMotionDesc dFTMarioMotionDescs[/* */] =
+FTMotionDesc dFTMarioMotionDescs[/* */] =
 {
     // EntryNull?
     {

@@ -9,7 +9,7 @@
 // 0x80148050
 void ftCommonHammerLandingProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->status_vars.common.hammer.landing_anim_frame++;
 
@@ -22,7 +22,7 @@ void ftCommonHammerLandingProcUpdate(GObj *fighter_gobj)
 // 0x801480A4
 void ftCommonHammerLandingSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusHammerLanding, ftHammerGetAnimFrame(fighter_gobj), 1.0F, ftHammerGetStatUpdateFlags(fighter_gobj));

@@ -110,7 +110,7 @@ u16 dFTCommonDataPublicityFighterChantFGMs[/* */] =
 };
 
 // 0x8012C9E0
-ftItemThrow dFTCommonDataItemThrowDescs[/* */] =
+FTItemThrow dFTCommonDataItemThrowDescs[/* */] =
 {
     // LightThrowDrop
     {
@@ -290,7 +290,7 @@ ftItemThrow dFTCommonDataItemThrowDescs[/* */] =
 };
 
 // 0x8012CA38
-ftItemSwing dFTCommonDataItemSwingAnimRates[/* */] =
+FTItemSwing dFTCommonDataItemSwingAnimRates[/* */] =
 {
     100,        // SwordSwing1
     100,        // SwordSwing3

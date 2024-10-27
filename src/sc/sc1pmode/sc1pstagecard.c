@@ -50,19 +50,19 @@ sb32 sSC1PStageCardIsAnnouncedVSFighterName;
 s32 sSC1PStageCardPad0x80135CC4;
 
 // 0x80135CC8
-ftDemoDesc sSC1PStageCardPlayerFighterDemoDesc;
+FTDemoDesc sSC1PStageCardPlayerFighterDemoDesc;
 
 // 0x80135CD4
 s32 sSC1PStageCardPad0x80135CD4;
 
 // 0x80135CD8
-ftDemoDesc sSC1PStageCardAlly1FighterDemoDesc;
+FTDemoDesc sSC1PStageCardAlly1FighterDemoDesc;
 
 // 0x80135CE4
 s32 sSC1PStageCardPad0x80135CE4;
 
 // 0x80135CE8
-ftDemoDesc sSC1PStageCardAlly2FighterDemoDesc;
+FTDemoDesc sSC1PStageCardAlly2FighterDemoDesc;
 
 // 0x80135CF4
 s32 sSC1PStageCardUnk0x80135CF4;
@@ -71,10 +71,10 @@ s32 sSC1PStageCardUnk0x80135CF4;
 s32 sc1PStageCardTotalTimeTics;
 
 // 0x80135D00
-lbFileNode sSC1PStageCardForceStatusBuffer[7];
+LBFileNode sSC1PStageCardForceStatusBuffer[7];
 
 // 0x80135D38
-lbFileNode sSC1PStageCardStatusBuffer[100];
+LBFileNode sSC1PStageCardStatusBuffer[100];
 
 // 0x80136058
 void *sSC1PStageCardFiles[4];
@@ -709,7 +709,7 @@ f32 sc1PStageCardGetFighterVelocityZ(s32 card_anim_frame_id)
 // 0x80132BD4
 void sc1PStageCardUpdateFighterPositionZ(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     DObj *dobj = DObjGetStruct(fighter_gobj);
     s32 id = fp->card_anim_frame_id;
     
@@ -741,11 +741,11 @@ f32 sc1PStageCardGetFighterPositionZ(s32 card_anim_frame_id)
 }
 
 // 0x80132C98
-void sc1PStageCardMakeFighter(ftDemoDesc fighter, s32 card_anim_frame_id, void **figatree)
+void sc1PStageCardMakeFighter(FTDemoDesc fighter, s32 card_anim_frame_id, void **figatree)
 {
-    ftStruct *fp;
+    FTStruct *fp;
     GObj *fighter_gobj;
-    ftCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
     
     // 0x80134FC0
     s32 dl_links[/* */] =
@@ -848,7 +848,7 @@ f32 sc1PStageCardGetVSFighterVelocityZ(s32 stage, s32 ft_kind)
 // 0x80132F84
 void sc1PStageCardVSFighterProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     DObj *dobj = DObjGetStruct(fighter_gobj);
     s32 id = fp->card_anim_frame_id;
     
@@ -895,7 +895,7 @@ void sc1PStageCardSetKirbyTeamModelPartIDs(GObj *fighter_gobj, s32 ft_kind)
         8
     };
 
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 id = fp->card_anim_frame_id;
     
     if (ft_kind == nFTKindKirby)
@@ -927,7 +927,7 @@ f32 sc1PStageCardGetVSFighterPositionZ(s32 stage, s32 ft_kind)
 // 0x80133170
 void sc1PStageCardVSFighterFuncDisplay(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
     gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_2CYCLE);
@@ -969,8 +969,8 @@ void sc1PStageCardVSFighterFuncDisplay(GObj *fighter_gobj)
 GObj* sc1PStageCardMakeVSFighter(s32 ft_kind, s32 stage, s32 card_anim_frame_id, void **figatree, u8 dl_link)
 {
     GObj *fighter_gobj;
-    ftStruct *fp;
-    ftCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTStruct *fp;
+    FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
     ft_desc.ft_kind = ft_kind;
     ft_desc.costume = ftParamGetCostumeCommonID(ft_kind, 0);
@@ -1914,7 +1914,7 @@ void sc1PStageCardSetupFighterFiles(s32 stage)
 // 0x80134B38
 void sc1PStageCardFuncStart(void)
 {
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
     s32 i;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;

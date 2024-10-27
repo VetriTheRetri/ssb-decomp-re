@@ -10,7 +10,7 @@
 // 0x8015DF00
 void ftSamusSpecialLwCreateBomb(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
     DObj *joint;
 
@@ -31,7 +31,7 @@ void ftSamusSpecialLwCreateBomb(GObj *fighter_gobj)
 // 0x8015DF64
 void ftSamusSpecialLwProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftSamusSpecialLwCreateBomb(fighter_gobj);
 
@@ -52,8 +52,8 @@ void ftSamusSpecialAirLwProcUpdate(GObj *fighter_gobj)
 // 0x8015DFE4
 void ftSamusSpecialLwProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     if (fp->command_vars.flags.flag3 != FALSE)
     {
@@ -66,8 +66,8 @@ void ftSamusSpecialLwProcPhysics(GObj *fighter_gobj)
 // 0x8015E050
 void ftSamusSpecialAirLwProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     ftPhysicsApplyGravityDefault(fp, attributes);
 
@@ -93,7 +93,7 @@ void ftSamusSpecialAirLwProcMap(GObj *fighter_gobj)
 // 0x8015E130
 void ftSamusSpecialAirLwSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->command_vars.flags.flag3 = FALSE;
 
@@ -104,13 +104,13 @@ void ftSamusSpecialAirLwSwitchStatusGround(GObj *fighter_gobj)
 // 0x8015E170 - Go to aerial Screw Attack from grounded update process
 void ftSamusSpecialLwTransferStatusAir(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
 
-    fp->phys_info.vel_air.y = FTSAMUS_BOMB_VEL_Y_BASE;
+    fp->physics.vel_air.y = FTSAMUS_BOMB_VEL_Y_BASE;
     fp->jumps_used = attributes->jumps_max;
 }
 
@@ -122,7 +122,7 @@ void ftSamusSpecialLwSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x8015E218
-void ftSamusSpecialLwInitStatusVars(ftStruct *fp)
+void ftSamusSpecialLwInITStatusVars(FTStruct *fp)
 {
     fp->command_vars.flags.flag0 = FALSE;
 }
@@ -130,13 +130,13 @@ void ftSamusSpecialLwInitStatusVars(ftStruct *fp)
 // 0x8015E220
 void ftSamusSpecialLwSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->command_vars.flags.flag3 = FALSE;
 
     ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftSamusSpecialLwInitStatusVars(fp);
+    ftSamusSpecialLwInITStatusVars(fp);
 
     fp->status_vars.samus.speciallw.unused = FALSE;
 }
@@ -144,14 +144,14 @@ void ftSamusSpecialLwSetStatus(GObj *fighter_gobj)
 // 0x8015E274
 void ftSamusSpecialAirLwSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftSamusSpecialLwInitStatusVars(fp);
+    ftSamusSpecialLwInITStatusVars(fp);
 
-    fp->phys_info.vel_air.y = FTSAMUS_BOMB_VEL_Y_BASE - FTSAMUS_BOMB_VEL_Y_SUB;
+    fp->physics.vel_air.y = FTSAMUS_BOMB_VEL_Y_BASE - FTSAMUS_BOMB_VEL_Y_SUB;
 
     ftPhysicsClampAirVelX(fp, attributes->aerial_speed_max_x * FTSAMUS_BOMB_DRIFT);
 

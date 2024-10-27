@@ -9,7 +9,7 @@
 #include "character_select.h"
 
 // Externs
-extern scBattleState D_800A4B18;
+extern SCBattleState D_800A4B18;
 extern f32 menu_zoom[12]; // dSCSubsysFighterScales
 extern uintptr_t D_NF_800A5240;
 extern intptr_t lOverlay29ArenaLo;  // 0x80137E30
@@ -150,7 +150,7 @@ s32 gMnBonusPressStartFlashTimer;
 s32 D_ovl29_80137730[180];
 
 // 0x80137A00
-lbFileNode D_ovl29_80137A00[7];
+LBFileNode D_ovl29_80137A00[7];
 
 // 0x80137A38
 u32 D_ovl29_80137A38[240];
@@ -428,12 +428,12 @@ void func_ovl29_80132388() {}
 // 0x80132390
 s32 mnBonusGetFtKind(s32 portrait_id)
 {
-	s32 ftKind_order[12] = {
+	s32 FTKind_order[12] = {
 
 		4, 0, 2, 5, 3, 7, 11, 6, 8, 1, 9, 10
 	};
 
-	return ftKind_order[portrait_id];
+	return FTKind_order[portrait_id];
 }
 
 // 0x801323E0
@@ -1162,7 +1162,7 @@ s32 mnBonusGetSelectedAnimation(s32 ft_kind)
 // 0x80133FE8
 void mnBonusRotateFighter(GObj *fighter_gobj)
 {
-	ftStruct* fp = ftGetStruct(fighter_gobj);
+	FTStruct* fp = ftGetStruct(fighter_gobj);
 	s32 port_id = fp->player;
 
 	if (gMnBonusPanel.unk_0x88 == 1)
@@ -1203,7 +1203,7 @@ void mnBonusRotateFighter(GObj *fighter_gobj)
 void mnBonusSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind)
 {
 	f32 initial_y_rotation;
-	ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	if (ft_kind != nFTKindNull)
 	{
@@ -2482,7 +2482,7 @@ sb32 mnBonusAreAllCompleted()
 void mnBonusInitCSS()
 {
 	s32 bar, baz;
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 	f32 foo;
 	s32 i;
 	s32 j;
@@ -2491,9 +2491,9 @@ void mnBonusInitCSS()
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buffer = (lbFileNode*) &D_ovl29_80137A38;
+	rl_setup.status_buffer = (LBFileNode*) &D_ovl29_80137A38;
 	rl_setup.status_buffer_size = 0x78;
-	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl29_80137A00;
+	rl_setup.force_status_buffer = (LBFileNode*) &D_ovl29_80137A00;
 	rl_setup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl29_80136F50, 11U, gMnBonusFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl29_80136F50, 11U), 0x10U));

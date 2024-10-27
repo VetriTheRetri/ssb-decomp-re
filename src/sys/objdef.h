@@ -180,18 +180,18 @@ typedef enum AObjTrackKind
 {
     // model
     nGCAnimTrackNone,
-    nGCAnimTrackJointStart,                      // Start of joint tracks
-    nGCAnimTrackRotX = nGCAnimTrackJointStart,// Rotation X (Roll)
-    nGCAnimTrackRotY,                            // Rotation Y (Pitch)
-    nGCAnimTrackRotZ,                            // Rotation Z (Yaw)
-    nGCAnimTrackTraI,                            // Translation cubic interpolation?
-    nGCAnimTrackTraX,                            // Translation X 
-    nGCAnimTrackTraY,                            // Translation Y
-    nGCAnimTrackTraZ,                            // Translation Z
-    nGCAnimTrackScaX,                            // Scale X
-    nGCAnimTrackScaY,                            // Scale Y
-    nGCAnimTrackScaZ,                            // Scale Z
-    nGCAnimTrackJointEnd = nGCAnimTrackScaZ,  // End of joint tracks
+    nGCAnimTrackJointStart,                     // Start of joint tracks
+    nGCAnimTrackRotX = nGCAnimTrackJointStart,  // Rotation X (Roll)
+    nGCAnimTrackRotY,                           // Rotation Y (Pitch)
+    nGCAnimTrackRotZ,                           // Rotation Z (Yaw)
+    nGCAnimTrackTraI,                           // Translation cubic interpolation?
+    nGCAnimTrackTraX,                           // Translation X 
+    nGCAnimTrackTraY,                           // Translation Y
+    nGCAnimTrackTraZ,                           // Translation Z
+    nGCAnimTrackScaX,                           // Scale X
+    nGCAnimTrackScaY,                           // Scale Y
+    nGCAnimTrackScaZ,                           // Scale Z
+    nGCAnimTrackJointEnd = nGCAnimTrackScaZ,    // End of joint tracks
     // texture
     nGCAnimTrackMaterialStart = 13,
     nGCAnimTrackSetTextureIDCurrent = nGCAnimTrackMaterialStart,

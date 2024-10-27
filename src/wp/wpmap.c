@@ -7,7 +7,7 @@
 // // // // // // // // // // // //
 
 // 0x80167880
-sb32 wpMapProcLRWallCheckGround(mpCollData *coll_data, GObj *weapon_gobj, u32 flags)
+sb32 wpMapProcLRWallCheckGround(MPCollData *coll_data, GObj *weapon_gobj, u32 flags)
 {
     s32 ground_line_id = coll_data->ground_line_id;
     sb32 is_collide_ground = FALSE;
@@ -57,7 +57,7 @@ sb32 wpMapTestLRWallCheckGround(GObj *weapon_gobj)
 }
 
 // 0x801679A0
-sb32 wpMapProcAll(mpCollData *coll_data, GObj *weapon_gobj, u32 flags)
+sb32 wpMapProcAll(MPCollData *coll_data, GObj *weapon_gobj, u32 flags)
 {
     if (mpProcessCheckTestLWallCollisionAdjNew(coll_data) != FALSE)
     {
@@ -95,7 +95,7 @@ sb32 wpMapTestAll(GObj *weapon_gobj)
 }
 
 // 0x80167A8C
-sb32 wpMapProcAllCheckGround(mpCollData *coll_data, GObj *weapon_gobj, u32 flags)
+sb32 wpMapProcAllCheckGround(MPCollData *coll_data, GObj *weapon_gobj, u32 flags)
 {
     if (mpProcessCheckTestLWallCollisionAdjNew(coll_data) != FALSE)
     {
@@ -137,7 +137,7 @@ sb32 wpMapTestAllCheckGround(GObj *weapon_gobj)
 }
 
 // 0x80167B8C
-sb32 wpMapProcAllCheckCollEnd(mpCollData *coll_data, GObj *weapon_gobj, u32 flags)
+sb32 wpMapProcAllCheckCollEnd(MPCollData *coll_data, GObj *weapon_gobj, u32 flags)
 {
     if (mpProcessCheckTestLWallCollisionAdjNew(coll_data) != FALSE)
     {
@@ -167,8 +167,8 @@ sb32 wpMapTestAllCheckCollEnd(GObj *weapon_gobj)
 // 0x80167C38
 sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f *pos) // Modify velocity based on angle of collision
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    mpCollData *coll_data = &wp->coll_data;
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    MPCollData *coll_data = &wp->coll_data;
     sb32 return_bool = FALSE;
     Vec3f mod_pos, *translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
     u16 coll_flags = (wp->coll_data.coll_mask_prev ^ wp->coll_data.coll_mask_current) & wp->coll_data.coll_mask_current & MPCOLL_FLAG_MAIN_MASK;
@@ -176,55 +176,55 @@ sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f
 
     if (coll_flags & check_flags & MPCOLL_FLAG_LWALL)
     {
-        if (lbCommonSim2D(&wp->phys_info.vel_air, &coll_data->lwall_angle) < 0.0F)
+        if (lbCommonSim2D(&wp->physics.vel_air, &coll_data->lwall_angle) < 0.0F)
         {
-            lbCommonReflect2D(&wp->phys_info.vel_air, &coll_data->lwall_angle);
+            lbCommonReflect2D(&wp->physics.vel_air, &coll_data->lwall_angle);
 
             return_bool = TRUE;
 
-            mod_pos.x = translate->x + coll_data->objcoll.width;
-            mod_pos.y = translate->y + coll_data->objcoll.center;
+            mod_pos.x = translate->x + coll_data->object_coll.width;
+            mod_pos.y = translate->y + coll_data->object_coll.center;
         }
     }
     if (coll_flags & check_flags & MPCOLL_FLAG_RWALL)
     {
-        if (lbCommonSim2D(&wp->phys_info.vel_air, &coll_data->rwall_angle) < 0.0F)
+        if (lbCommonSim2D(&wp->physics.vel_air, &coll_data->rwall_angle) < 0.0F)
         {
             return_bool = TRUE;
 
-            lbCommonReflect2D(&wp->phys_info.vel_air, &coll_data->rwall_angle);
+            lbCommonReflect2D(&wp->physics.vel_air, &coll_data->rwall_angle);
 
-            mod_pos.x = translate->x - coll_data->objcoll.width;
-            mod_pos.y = translate->y + coll_data->objcoll.center;
+            mod_pos.x = translate->x - coll_data->object_coll.width;
+            mod_pos.y = translate->y + coll_data->object_coll.center;
         }
     }
     if (coll_flags & check_flags & MPCOLL_FLAG_CEIL)
     {
-        if (lbCommonSim2D(&wp->phys_info.vel_air, &coll_data->ceil_angle) < 0.0F)
+        if (lbCommonSim2D(&wp->physics.vel_air, &coll_data->ceil_angle) < 0.0F)
         {
             return_bool = TRUE;
 
-            lbCommonReflect2D(&wp->phys_info.vel_air, &coll_data->ceil_angle);
+            lbCommonReflect2D(&wp->physics.vel_air, &coll_data->ceil_angle);
 
             mod_pos.x = translate->x;
-            mod_pos.y = translate->y + coll_data->objcoll.top;
+            mod_pos.y = translate->y + coll_data->object_coll.top;
         }
     }
     if (coll_flags & check_flags & MPCOLL_FLAG_GROUND)
     {
-        if (lbCommonSim2D(&wp->phys_info.vel_air, &coll_data->ground_angle) < 0.0F)
+        if (lbCommonSim2D(&wp->physics.vel_air, &coll_data->ground_angle) < 0.0F)
         {
             return_bool = TRUE;
 
-            lbCommonReflect2D(&wp->phys_info.vel_air, &coll_data->ground_angle);
+            lbCommonReflect2D(&wp->physics.vel_air, &coll_data->ground_angle);
 
             mod_pos.x = translate->x;
-            mod_pos.y = translate->y + coll_data->objcoll.bottom;
+            mod_pos.y = translate->y + coll_data->object_coll.bottom;
         }
     }
     if (return_bool != FALSE)
     {
-        lbCommonScale2D(&wp->phys_info.vel_air, mod_vel);
+        lbCommonScale2D(&wp->physics.vel_air, mod_vel);
 
         if (pos != NULL)
         {
@@ -237,14 +237,14 @@ sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f
 }
 
 // 0x80167E78
-void wpMapSetGround(wpStruct *wp) // Make weapon grounded
+void wpMapSetGround(WPStruct *wp) // Make weapon grounded
 {
     wp->ga = nMPKineticsGround;
-    wp->phys_info.vel_ground = wp->phys_info.vel_air.x * wp->lr;
+    wp->physics.vel_ground = wp->physics.vel_air.x * wp->lr;
 }
 
 // 0x80167E9C
-void wpMapSetAir(wpStruct *wp) // Make item airborne
+void wpMapSetAir(WPStruct *wp) // Make item airborne
 {
     wp->ga = nMPKineticsAir;
 }

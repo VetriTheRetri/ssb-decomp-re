@@ -29,7 +29,7 @@ f32 gCMManagerPauseCameraEyeX; // Also from .bss
 Mtx44f gCMManagerMtx; // Mtx44f?
 
 // 0x801314B0
-cmStruct gCMManagerCameraStruct;
+CMStruct gCMManagerCameraStruct;
 
 // // // // // // // // // // // //
 //                               //
@@ -205,12 +205,12 @@ f32 cmManagerGetPlayerNumZoomRange(s32 player_num)
 }
 
 // 0x8010BB98
-f32 cmManagerCalcFighterZoomRange(ftStruct *fp, f32 camera_zoom)
+f32 cmManagerCalcFighterZoomRange(FTStruct *fp, f32 camera_zoom)
 {
     camera_zoom *= fp->camera_zoom_frame;
     camera_zoom *= fp->camera_zoom_range;
 
-    if ((fp->status_info.status_id == nFTCommonStatusWait) && (fp->status_info.status_time_spent >= 120))
+    if ((fp->status_id == nFTCommonStatusWait) && (fp->status_total_tics >= 120))
     {
         camera_zoom *= 0.75F;
     }
@@ -236,9 +236,9 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
 {
     s32 player_num;
     s32 cobj_num;
-    ftCamera ft_cobj[GMCOMMON_PLAYERS_MAX];
-    ftStruct *fp;
-    wpStruct *wp;
+    FTCamera ft_cobj[GMCOMMON_PLAYERS_MAX];
+    FTStruct *fp;
+    WPStruct *wp;
     f32 pos_top;
     f32 pos_left;
     f32 pos_bottom;
@@ -248,7 +248,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
     f32 ft_bottom;
     f32 zoom;
     GObj *fighter_gobj;
-    ftStruct *cobj_fp;
+    FTStruct *cobj_fp;
     f32 wp_top;
     f32 wp_bottom;
     f32 wp_left;
@@ -707,7 +707,7 @@ void jtgt_ovl2_8010C8C4(GObj *camera_gobj)
 void func_ovl2_8010C960(GObj *camera_gobj)
 {
     CObj *cobj;
-    ftStruct *fp;
+    FTStruct *fp;
     Vec3f sp54;
     Vec3f sp48;
     Vec3f sp3C;
@@ -850,7 +850,7 @@ void jtgt_ovl2_8010CDAC(GObj *camera_gobj)
     Vec3f sp3C;
     Vec3f sp30;
     CObj *cobj;
-    ftStruct *fp;
+    FTStruct *fp;
 
     cobj = CObjGetStruct(camera_gobj);
     sp30 = DObjGetStruct(gCMManagerCameraStruct.pl_bonus_gobj)->translate.vec.f;

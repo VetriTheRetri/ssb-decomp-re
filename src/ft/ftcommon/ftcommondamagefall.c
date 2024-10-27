@@ -23,7 +23,7 @@ void ftCommonDamageFallProcInterrupt(GObj *fighter_gobj)
 // 0x801435B0
 void ftCommonDamageFallProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (mpCommonCheckFighterCliff(fighter_gobj) != FALSE)
     {
@@ -41,7 +41,7 @@ void ftCommonDamageFallProcMap(GObj *fighter_gobj)
 // 0x80143630
 void ftCommonDamageFallClampRumble(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftPhysicsClampAirVelXMax(fp);
     ftParamMakeRumble(fp, 3, 0);
@@ -57,7 +57,7 @@ void ftCommonDamageFallSetStatusFromDamage(GObj *fighter_gobj)
 // 0x801436A0
 void ftCommonDamageFallSetStatusFromCliffWait(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDamageFall, 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
     ftCommonDamageFallClampRumble(fighter_gobj);

@@ -140,11 +140,11 @@ GObj* grJungleMakeGround(void)
 // 0x80109FD8
 sb32 grJungleTaruCannCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, s32 *kind)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
     f32 dist_x;
     f32 dist_y;
 
-    if ((this_fp->tarucann_wait == 0) && (this_fp->status_info.status_id != nFTCommonStatusTaruCann) && !(this_fp->capture_immune_mask & FTCATCHKIND_MASK_TARUCANN))
+    if ((this_fp->tarucann_wait == 0) && (this_fp->status_id != nFTCommonStatusTaruCann) && !(this_fp->capture_immune_mask & FTCATCHKIND_MASK_TARUCANN))
     {
         DObj *gr_dobj = DObjGetStruct(ground_gobj);
         DObj *ft_dobj = DObjGetStruct(fighter_gobj);
@@ -169,9 +169,9 @@ sb32 grJungleTaruCannCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, s
             {
                 if (other_gobj != fighter_gobj)
                 {
-                    ftStruct *other_fp = ftGetStruct(other_gobj);
+                    FTStruct *other_fp = ftGetStruct(other_gobj);
 
-                    if ((other_fp->status_info.status_id == nFTCommonStatusTaruCann) && (ground_gobj == other_fp->status_vars.common.tarucann.tarucann_gobj))
+                    if ((other_fp->status_id == nFTCommonStatusTaruCann) && (ground_gobj == other_fp->status_vars.common.tarucann.tarucann_gobj))
                     {
                         return FALSE;
                     }

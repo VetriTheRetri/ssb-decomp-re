@@ -22,7 +22,7 @@ lWPPikachuThunderJoltMatAnimJoint;                      // 0x00001AE0
 //                               //
 // // // // // // // // // // // //
 
-wpCreateDesc dWPPikachuThunderJoltAirWeaponDesc =
+WPCreateDesc dWPPikachuThunderJoltAirWeaponDesc =
 {
     0x00,                                               // Render flags?
     nWPKindThunderJoltAir,                             // Weapon Kind
@@ -46,7 +46,7 @@ wpCreateDesc dWPPikachuThunderJoltAirWeaponDesc =
     wpPikachuThunderJoltAirProcHit                      // Proc Absorb
 };
 
-wpCreateDesc dWPPikachuThunderJoltGroundWeaponDesc =
+WPCreateDesc dWPPikachuThunderJoltGroundWeaponDesc =
 {
     0x03,                                               // Render flags?
     nWPKindThunderJoltGround,                          // Weapon Kind
@@ -79,7 +79,7 @@ wpCreateDesc dWPPikachuThunderJoltGroundWeaponDesc =
 // 0x80169390
 sb32 wpPikachuThunderJoltAirProcUpdate(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
@@ -95,7 +95,7 @@ sb32 wpPikachuThunderJoltAirProcUpdate(GObj *weapon_gobj)
 // 0x801693EC
 sb32 wpPikachuThunderJoltAirProcMap(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f pos;
     u32 unused[2];
 
@@ -149,9 +149,9 @@ sb32 wpPikachuThunderJoltAirProcMap(GObj *weapon_gobj)
 // 0x8016953C
 sb32 wpPikachuThunderJoltAirProcHit(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
+    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->hit_coll.damage);
 
     return TRUE;
 }
@@ -159,9 +159,9 @@ sb32 wpPikachuThunderJoltAirProcHit(GObj *weapon_gobj)
 // 0x8016956C
 sb32 wpPikachuThunderJoltAirProcHop(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_80019438(&wp->phys_info.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
+    func_80019438(&wp->physics.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
 
     return FALSE;
 }
@@ -169,8 +169,8 @@ sb32 wpPikachuThunderJoltAirProcHop(GObj *weapon_gobj)
 // 0x801695B0
 sb32 wpPikachuThunderJoltAirProcReflector(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    ftStruct *fp = ftGetStruct(wp->owner_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    FTStruct *fp = ftGetStruct(wp->owner_gobj);
 
     wp->lifetime = WPPIKACHUJOLT_LIFETIME;
 
@@ -183,7 +183,7 @@ sb32 wpPikachuThunderJoltAirProcReflector(GObj *weapon_gobj)
 GObj* wpPikachuThunderJoltAirMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 {
     GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPPikachuThunderJoltAirWeaponDesc, pos, (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_FIGHTER));
-    wpStruct *wp;
+    WPStruct *wp;
 
     if (weapon_gobj == NULL)
     {
@@ -193,7 +193,7 @@ GObj* wpPikachuThunderJoltAirMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *v
 
     wp->lifetime = WPPIKACHUJOLT_LIFETIME;
 
-    wp->phys_info.vel_air = *vel;
+    wp->physics.vel_air = *vel;
 
     return weapon_gobj;
 }
@@ -214,7 +214,7 @@ void wpPikachuThunderJoltGroundAddAnim(GObj *weapon_gobj)
 // 0x801696A0
 sb32 wpPikachuThunderJoltGroundProcUpdate(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
     if (weapon_gobj->anim_frame == WPPIKACHUJOLT_ANIM_PUSH_FRAME)
     {
@@ -226,29 +226,29 @@ sb32 wpPikachuThunderJoltGroundProcUpdate(GObj *weapon_gobj)
         efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
         return TRUE;
     }
-    wp->phys_info.vel_air.x = cosf(DObjGetStruct(weapon_gobj)->rotate.vec.f.z) * WPPIKACHUJOLTVEL;
-    wp->phys_info.vel_air.y = __sinf(DObjGetStruct(weapon_gobj)->rotate.vec.f.z) * WPPIKACHUJOLTVEL;
+    wp->physics.vel_air.x = cosf(DObjGetStruct(weapon_gobj)->rotate.vec.f.z) * WPPIKACHUJOLTVEL;
+    wp->physics.vel_air.y = __sinf(DObjGetStruct(weapon_gobj)->rotate.vec.f.z) * WPPIKACHUJOLTVEL;
 
     switch (wp->weapon_vars.thunder_jolt.line_type)
     {
     case nMPLineKindGround:
-        wp->phys_info.vel_air.x *= wp->lr;
+        wp->physics.vel_air.x *= wp->lr;
         break;
 
     case nMPLineKindRWall:
     case nMPLineKindLWall:
         if (wp->lr == nMPLineKindRWall)
         {
-            if (wp->phys_info.vel_air.y < 0.0F)
+            if (wp->physics.vel_air.y < 0.0F)
             {
-                wp->phys_info.vel_air.y *= -1.0F;
+                wp->physics.vel_air.y *= -1.0F;
             }
         }
         if (wp->lr == nMPLineKindLWall)
         {
-            if (wp->phys_info.vel_air.y > 0.0F)
+            if (wp->physics.vel_air.y > 0.0F)
             {
-                wp->phys_info.vel_air.y *= -1.0F;
+                wp->physics.vel_air.y *= -1.0F;
             }
         }
         break;
@@ -259,7 +259,7 @@ sb32 wpPikachuThunderJoltGroundProcUpdate(GObj *weapon_gobj)
 // 0x8016981C
 s32 wpPikachuThunderJoltGroundGetStatus(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f pos;
     Vec3f rotate;
     s32 line_id;
@@ -393,7 +393,7 @@ s32 wpPikachuThunderJoltGroundGetStatus(GObj *weapon_gobj)
 // 0x80169BF0
 sb32 wpPikachuThunderJoltGroundCheckDestroy(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f angle;
 
     wpPikachuThunderJoltGroundAddAnim(weapon_gobj);
@@ -426,7 +426,7 @@ sb32 wpPikachuThunderJoltGroundCheckDestroy(GObj *weapon_gobj)
 // 0x80169D08
 sb32 wpPikachuThunderJoltGroundProcMap(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
     s32 coll_type;
     Vec3f pos;
     s32 line_id;
@@ -673,9 +673,9 @@ sb32 wpPikachuThunderJoltGroundProcMap(GObj *weapon_gobj)
 // 0x8016A374
 sb32 wpPikachuThunderJoltGroundProcHit(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
+    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->hit_coll.damage);
 
     return TRUE;
 }
@@ -683,14 +683,14 @@ sb32 wpPikachuThunderJoltGroundProcHit(GObj *weapon_gobj)
 // 0x8016A3A4
 sb32 wpPikachuThunderJoltGroundProcReflector(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    ftStruct *fp = ftGetStruct(wp->owner_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    FTStruct *fp = ftGetStruct(wp->owner_gobj);
 
     wp->lifetime = WPPIKACHUJOLT_LIFETIME;
 
     wpMainReflectorSetLR(wp, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.y = (wp->phys_info.vel_air.x >= 0.0F) ? F_CST_DTOR32(180.0F) : 0;
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.y = (wp->physics.vel_air.x >= 0.0F) ? F_CST_DTOR32(180.0F) : 0;
 
     wpMainVelSetLR(weapon_gobj);
 
@@ -701,8 +701,8 @@ sb32 wpPikachuThunderJoltGroundProcReflector(GObj *weapon_gobj)
 GObj* wpPikachuThunderJoltGroundMakeWeapon(GObj *prev_gobj, Vec3f *pos, s32 coll_type)
 {
     s32 unused[2];
-    wpStruct *prev_wp = wpGetStruct(prev_gobj);
-    wpStruct *new_wp;
+    WPStruct *prev_wp = wpGetStruct(prev_gobj);
+    WPStruct *new_wp;
     GObj *new_gobj = wpManagerMakeWeapon(prev_gobj, &dWPPikachuThunderJoltGroundWeaponDesc, pos, (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_WEAPON));
 
     if (new_gobj == NULL)
@@ -726,7 +726,7 @@ GObj* wpPikachuThunderJoltGroundMakeWeapon(GObj *prev_gobj, Vec3f *pos, s32 coll
     switch (new_wp->weapon_vars.thunder_jolt.line_type)
     {
     case nMPLineKindGround:
-        new_wp->lr = (prev_wp->phys_info.vel_air.x >= 0.0F) ? nGMFacingR : nGMFacingL;
+        new_wp->lr = (prev_wp->physics.vel_air.x >= 0.0F) ? nGMFacingR : nGMFacingL;
 
         DObjGetStruct(new_gobj)->rotate.vec.f.y = (new_wp->lr >= 0.0F) ? F_CST_DTOR32(180.0F) : 0; // PI32
         break;

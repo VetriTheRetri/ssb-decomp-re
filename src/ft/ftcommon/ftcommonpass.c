@@ -18,13 +18,13 @@ void ftCommonPassProcInterrupt(GObj *fighter_gobj)
 // 0x80141DA0
 void ftCommonPassSetStatusParam(GObj *fighter_gobj, s32 status_id, f32 frame_begin, u32 flags)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, status_id, frame_begin, 1.0F, flags);
     ftPhysicsClampAirVelXMax(fp);
 
-    fp->phys_info.vel_air.y = 0.0F;
+    fp->physics.vel_air.y = 0.0F;
 
     fp->coll_data.ignore_line_id = fp->coll_data.ground_line_id;
 
@@ -44,7 +44,7 @@ void ftCommonGuardPassSetStatus(GObj *fighter_gobj)
 }
 
 // 0x80141E60
-sb32 ftCommonPassCheckInputSuccess(ftStruct *fp)
+sb32 ftCommonPassCheckInputSuccess(FTStruct *fp)
 {
     if ((fp->input.pl.stick_range.y <= FTCOMMON_PASS_STICK_RANGE_MIN) && (fp->tap_stick_y < FTCOMMON_PASS_BUFFER_FRAMES_MAX) && (fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS))
     {
@@ -56,7 +56,7 @@ sb32 ftCommonPassCheckInputSuccess(ftStruct *fp)
 // 0x80141EA4
 sb32 ftCommonPassCheckInterruptCommon(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (ftHammerCheckHoldHammer(fighter_gobj) != FALSE)
     {
@@ -74,7 +74,7 @@ sb32 ftCommonPassCheckInterruptCommon(GObj *fighter_gobj)
 // 0x80141F0C
 sb32 ftCommonPassCheckInterruptSquat(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (ftHammerCheckHoldHammer(fighter_gobj) != FALSE)
     {
@@ -96,7 +96,7 @@ sb32 ftCommonPassCheckInterruptSquat(GObj *fighter_gobj)
 // 0x80141F8C
 sb32 ftCommonGuardPassCheckInterruptGuard(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((ftCommonPassCheckInputSuccess(fp) != FALSE) && (fp->input.pl.button_hold & fp->input.button_mask_z))
     {

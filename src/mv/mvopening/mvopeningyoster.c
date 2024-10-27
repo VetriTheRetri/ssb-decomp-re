@@ -36,10 +36,10 @@ s32 sMVOpeningYosterTotalTimeTics;
 s32 sMVOpeningYosterUnused0x8013243C;
 
 // 0x80132440
-lbFileNode sMVOpeningYosterStatusBuffer[48];
+LBFileNode sMVOpeningYosterStatusBuffer[48];
 
 // 0x801325C0
-lbFileNode sMVOpeningYosterForceStatusBuffer[7];
+LBFileNode sMVOpeningYosterForceStatusBuffer[7];
 
 // 0x801325F8
 void *sMVOpeningYosterFiles[2];
@@ -109,7 +109,7 @@ void mvOpeningYosterMakeFighters(void)
     };
 
     s32 i;
-    ftCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+    FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
     for (i = 0; i < (ARRAY_COUNT(sMVOpeningYosterFigatreeHeaps) + ARRAY_COUNT(status_ids)) / 2; i++)
     {
@@ -301,7 +301,7 @@ void mvOpeningYosterMainProc(GObj *gobj)
 void mvOpeningYosterFuncStart(void)
 {
     s32 i;
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

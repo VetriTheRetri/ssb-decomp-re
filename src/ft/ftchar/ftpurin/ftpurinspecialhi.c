@@ -16,7 +16,7 @@
 // 0x80151550
 void ftPurinSpecialHiProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->command_vars.flags.flag1 == 1)
     {
@@ -26,7 +26,7 @@ void ftPurinSpecialHiProcUpdate(GObj *fighter_gobj)
         }
         fp->command_vars.flags.flag1 = 0;
     }
-    if (fp->status_info.status_id == nFTPurinStatusSpecialHi)
+    if (fp->status_id == nFTPurinStatusSpecialHi)
     {
         ftAnimEndSetWait(fighter_gobj);
     }
@@ -55,7 +55,7 @@ void ftPurinSpecialAirHiSwitchStatusGround(GObj *fighter_gobj)
 // 0x80151654
 void ftPurinSpecialHiSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialAirHi, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALHI_STATUS_FLAGS);

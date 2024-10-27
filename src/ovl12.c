@@ -11,7 +11,7 @@
 extern intptr_t D_NF_800A5240;      // 0x800A5240
 extern intptr_t lOverlay12ArenaLo;  // 0x800D69F0
 extern intptr_t lOverlay12ArenaHi;  // 0x80369240
-extern scBattleState D_800A4B18;
+extern SCBattleState D_800A4B18;
 // ovl9
 extern sb32 gMNDebugMenuIsMenuOpen;
 extern void dbMenuCreateMenu(s32, s32, s32, dbMenuItem*, s32);

@@ -4,7 +4,7 @@
 #include <ft/fighter.h>
 
 // 0x80128DD8
-ftStatusDesc dFTCommonNullStatusDescs[/* */] =
+FTStatusDesc dFTCommonNullStatusDescs[/* */] =
 {
 	// Status 0 (0x0): DeadDown
 	{
@@ -128,7 +128,7 @@ ftStatusDesc dFTCommonNullStatusDescs[/* */] =
 };
 
 // 0x80128E50
-ftStatusDesc dFTCommonActionStatusDescs[/* */] =
+FTStatusDesc dFTCommonActionStatusDescs[/* */] =
 {
 	// Status 6 (0x6): EntryNull
 	{

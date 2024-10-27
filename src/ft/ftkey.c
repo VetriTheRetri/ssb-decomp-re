@@ -7,11 +7,11 @@
 // // // // // // // // // // // //
 
 // 0x80115B10
-void ftKeyProcessInputSequence(GObj *fighter_gobj)
+void FTKeyProcessInputSequence(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftComputerInput *cp = &fp->input.cp;
-    ftKey *key = &fp->key;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTComputerInput *cp = &fp->input.cp;
+    FTKey *key = &fp->key;
 
     if (key->input_seq != NULL)
     {
@@ -36,7 +36,7 @@ void ftKeyProcessInputSequence(GObj *fighter_gobj)
             case nFTKeyCommandButton:
                 key->input_seq++;
 
-                cp->button_inputs = ftKeyGetButtons(key->input_seq);
+                cp->button_inputs = FTKeyGetButtons(key->input_seq);
 
                 key->input_seq++;
                 break;
@@ -44,8 +44,8 @@ void ftKeyProcessInputSequence(GObj *fighter_gobj)
             case nFTKeyCommandStick:
                 key->input_seq++;
 
-                cp->stick_range.x = ftKeyGetStickRange(key->input_seq)->x;
-                cp->stick_range.y = ftKeyGetStickRange(key->input_seq)->y;
+                cp->stick_range.x = FTKeyGetStickRange(key->input_seq)->x;
+                cp->stick_range.y = FTKeyGetStickRange(key->input_seq)->y;
 
                 key->input_seq++;
                 break;

@@ -35,7 +35,7 @@ void ftPurinSpecialAirLwSwitchStatusGround(GObj *fighter_gobj)
 // 0x80151798
 void ftPurinSpecialLwSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialAirLw, fighter_gobj->anim_frame, 1.0F, FTPURIN_SPECIALLW_STATUS_FLAGS);

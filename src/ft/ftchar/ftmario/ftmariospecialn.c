@@ -16,7 +16,7 @@ void ftMarioSpecialNProcUpdate(GObj *fighter_gobj)
 // 0x80155E64
 void ftMarioSpecialNProcAccessory(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
     s32 fireball_item_id; // 0 = Mario, 1 = Luigi
 
@@ -69,7 +69,7 @@ void ftMarioSpecialAirNProcMap(GObj *fighter_gobj)
 // 0x80155F4C
 void ftMarioSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
 
@@ -81,7 +81,7 @@ void ftMarioSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 // 0x80155FA0
 void ftMarioSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialAirN, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_COLANIM);
@@ -91,9 +91,9 @@ void ftMarioSpecialNSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x80155FFC
-void ftMarioSpecialNInitStatusVars(GObj *fighter_gobj)
+void ftMarioSpecialNInITStatusVars(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->command_vars.flags.flag0 = FALSE;
     fp->proc_accessory = ftMarioSpecialNProcAccessory;
@@ -104,7 +104,7 @@ void ftMarioSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftMarioSpecialNInitStatusVars(fighter_gobj);
+    ftMarioSpecialNInITStatusVars(fighter_gobj);
 }
 
 // 0x80156054
@@ -112,5 +112,5 @@ void ftMarioSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTMarioStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftMarioSpecialNInitStatusVars(fighter_gobj);
+    ftMarioSpecialNInITStatusVars(fighter_gobj);
 }

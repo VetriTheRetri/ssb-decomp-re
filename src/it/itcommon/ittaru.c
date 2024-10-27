@@ -15,7 +15,7 @@ extern intptr_t lITTaruHitEvents;           // 0x0000067C
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITTaruItemDesc =
+ITCreateDesc dITTaruItemDesc =
 {
     nITKindTaru,                            // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -39,7 +39,7 @@ itCreateDesc dITTaruItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITTaruStatusDescs[/* */] = 
+ITStatusDesc dITTaruStatusDescs[/* */] = 
 {
     // Status 0 (Ground Wait)
     {
@@ -153,7 +153,7 @@ enum itTaruStatus
 // 0x80179BA0
 sb32 itTaruFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITTARU_GRAVITY, ITTARU_TVEL);
 
@@ -191,7 +191,7 @@ sb32 itTaruCommonProcHit(GObj *item_gobj)
 // 0x80179C78
 sb32 itTaruCommonProcDamage(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->percent_damage >= ITTARU_HEALTH_MAX)
     {
@@ -216,7 +216,7 @@ void itTaruWaitSetStatus(GObj *item_gobj)
 // 0x80179D1C
 void itTaruFallSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
@@ -234,7 +234,7 @@ void itTaruHoldSetStatus(GObj *item_gobj)
 sb32 itTaruThrownCheckMapCollision(GObj *item_gobj, f32 common_rebound)
 {
     s32 unused;
-    itStruct *ip;
+    ITStruct *ip;
     sb32 is_collide_ground = itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_GROUND);
 
     if (itMapCheckCollideAllRebound(item_gobj, (MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL), common_rebound, NULL) != FALSE)
@@ -251,11 +251,11 @@ sb32 itTaruThrownCheckMapCollision(GObj *item_gobj, f32 common_rebound)
 // 0x80179DEC
 void itTaruRollSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->lifetime = ITTARU_LIFETIME;
 
-    ip->phys_info.vel_air.y = 0.0F;
+    ip->physics.vel_air.y = 0.0F;
 
     itMainSetItemStatus(item_gobj, dITTaruStatusDescs, nITTaruStatusRoll);
 }
@@ -265,23 +265,23 @@ sb32 itTaruThrownProcMap(GObj *item_gobj)
 {
     if (itTaruThrownCheckMapCollision(item_gobj, 0.5F) != FALSE)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
-        if (ip->phys_info.vel_air.y >= 90.0F)       // Is it even possible to meet this condition? Didn't they mean ABSF(ip->phys_info.vel_air.y)?
+        if (ip->physics.vel_air.y >= 90.0F)       // Is it even possible to meet this condition? Didn't they mean ABSF(ip->physics.vel_air.y)?
         {
             itTaruCommonProcHit(item_gobj);       // This causes the barrel to smash on impact when landing from too high; doesn't seem possible to trigger
 
             return TRUE;
         }
-        else if (ip->phys_info.vel_air.y < 30.0F)
+        else if (ip->physics.vel_air.y < 30.0F)
         {
             itTaruRollSetStatus(item_gobj);
         }
         else
         {
-            lbCommonReflect2D(&ip->phys_info.vel_air, &ip->coll_data.ground_angle);
+            lbCommonReflect2D(&ip->physics.vel_air, &ip->coll_data.ground_angle);
 
-            ip->phys_info.vel_air.y *= 0.2F;
+            ip->physics.vel_air.y *= 0.2F;
 
             itMainVelSetRotateStepLR(item_gobj);
         }
@@ -293,12 +293,12 @@ sb32 itTaruThrownProcMap(GObj *item_gobj)
 // 0x80179EF0
 void itTaruThrownInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.x = F_CST_DTOR32(90.0F); // HALF_PI32
 
-    ip->coll_data.objcoll.top = ip->coll_data.objcoll.width;
-    ip->coll_data.objcoll.bottom = -ip->coll_data.objcoll.width;
+    ip->coll_data.object_coll.top = ip->coll_data.object_coll.width;
+    ip->coll_data.object_coll.bottom = -ip->coll_data.object_coll.width;
 }
 
 // 0x80179F1C
@@ -326,7 +326,7 @@ void itTaruDroppedSetStatus(GObj *item_gobj)
 // 0x80179FA8
 sb32 itTaruExplodeProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi++;
 
@@ -342,15 +342,15 @@ sb32 itTaruExplodeProcUpdate(GObj *item_gobj)
 // 0x8017A004
 sb32 itTaruRollProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     f32 roll_rotate_step;
     f32 sqrt_vel;
 
-    ip->phys_info.vel_air.x += (-(atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CLC_DTOR32(90.0F)) * ITTARU_MUL_VEL_X);
+    ip->physics.vel_air.x += (-(atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CLC_DTOR32(90.0F)) * ITTARU_MUL_VEL_X);
 
-    ip->lr = (ip->phys_info.vel_air.x >= 0.0F) ? nGMFacingR : nGMFacingL;
+    ip->lr = (ip->physics.vel_air.x >= 0.0F) ? nGMFacingR : nGMFacingL;
 
-    sqrt_vel = sqrtf(SQUARE(ip->phys_info.vel_air.x) + SQUARE(ip->phys_info.vel_air.y));
+    sqrt_vel = sqrtf(SQUARE(ip->physics.vel_air.x) + SQUARE(ip->physics.vel_air.y));
 
     if (sqrt_vel < ITTARU_MIN_VEL_XY)
     {
@@ -380,7 +380,7 @@ sb32 itTaruRollProcUpdate(GObj *item_gobj)
 // 0x8017A148
 sb32 itTaruRollProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (itMapTestLRWallCheckGround(item_gobj) == FALSE)
     {
@@ -400,7 +400,7 @@ GObj* itTaruMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
     if (item_gobj != NULL)
     {
-        itStruct *ip = itGetStruct(item_gobj);
+        ITStruct *ip = itGetStruct(item_gobj);
 
         ip->item_vars.taru.roll_rotate_step = 0.0F;
 
@@ -408,7 +408,7 @@ GObj* itTaruMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->is_unused_item_bool = TRUE;
 
-        ip->indicator_gobj = ifCommonItemArrowMakeInterface(ip);
+        ip->arrow_gobj = ifCommonItemArrowMakeInterface(ip);
     }
     return item_gobj;
 }
@@ -416,22 +416,22 @@ GObj* itTaruMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 // 0x8017A240
 void itTaruExplodeInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi = 0;
     ip->item_event_id = 0;
 
-    ip->item_hit.hit_sfx = nSYAudioFGMExplodeL;
+    ip->hit_coll.hit_sfx = nSYAudioFGMExplodeL;
 
-    ip->item_hit.can_rehit_item = TRUE;
-    ip->item_hit.can_reflect = FALSE;
+    ip->hit_coll.can_rehit_item = TRUE;
+    ip->hit_coll.can_reflect = FALSE;
 
-    ip->item_hit.throw_mul = ITEM_STALE_DEFAULT;
-    ip->item_hit.element = nGMHitElementFire;
+    ip->hit_coll.throw_mul = ITEM_STALE_DEFAULT;
+    ip->hit_coll.element = nGMHitElementFire;
 
-    ip->item_hit.can_setoff = FALSE;
+    ip->hit_coll.can_setoff = FALSE;
 
-    ip->item_hurt.hitstatus = nGMHitStatusNone;
+    ip->damage_coll.hitstatus = nGMHitStatusNone;
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshHit(item_gobj);
@@ -448,15 +448,15 @@ void itTaruExplodeSetStatus(GObj *item_gobj)
 // 0x8017A30C
 void itTaruExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 {
-    lbParticle *ptcl;
-    itStruct *ip = itGetStruct(item_gobj);
+    LBParticle *ptcl;
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    ip->item_hit.update_state = nGMHitUpdateDisable;
+    ip->hit_coll.update_state = nGMHitUpdateDisable;
 
-    ip->phys_info.vel_air.x = 0.0F;
-    ip->phys_info.vel_air.y = 0.0F;
-    ip->phys_info.vel_air.z = 0.0F;
+    ip->physics.vel_air.x = 0.0F;
+    ip->physics.vel_air.y = 0.0F;
+    ip->physics.vel_air.z = 0.0F;
 
     ptcl = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 

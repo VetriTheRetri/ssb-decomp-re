@@ -9,7 +9,7 @@
 // 0x8014FBF0
 void ftCommonAttackLw3ProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((fp->command_vars.flags.flag1 != 0) && (fp->status_vars.common.attacklw3.is_goto_attacklw3 != FALSE))
     {
@@ -27,8 +27,8 @@ void ftCommonAttackLw3ProcInterrupt(GObj *fighter_gobj)
 // 0x8014FC60
 sb32 ftCommonAttackLw3CheckInterruptSelf(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     if ((fp->input.pl.button_tap & fp->input.button_mask_a) && (attributes->is_have_attacklw3))
     {
@@ -44,9 +44,9 @@ sb32 ftCommonAttackLw3CheckInterruptSelf(GObj *fighter_gobj)
 }
 
 // 0x8014FCCC
-void ftCommonAttackLw3InitStatusVars(GObj *fighter_gobj)
+void ftCommonAttackLw3InITStatusVars(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->command_vars.flags.flag1 = 0;
 
@@ -60,11 +60,11 @@ void ftCommonAttackLw3InitStatusVars(GObj *fighter_gobj)
 // 0x8014FD14
 void ftCommonAttackLw3SetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (ftCommonGetCheckInterruptCommon(fighter_gobj) == FALSE)
     {
-        fp->proc_status = ftCommonAttackLw3InitStatusVars;
+        fp->proc_status = ftCommonAttackLw3InITStatusVars;
 
         ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusAttackLw3, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
         ftMainPlayAnimNoEffect(fighter_gobj);
@@ -74,8 +74,8 @@ void ftCommonAttackLw3SetStatus(GObj *fighter_gobj)
 // 0x8014FD70
 sb32 ftCommonAttackLw3CheckInterruptCommon(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     if ((fp->input.pl.button_tap & fp->input.button_mask_a) && (fp->input.pl.stick_range.y <= FTCOMMON_ATTACKLW3_STICK_RANGE_MIN))
     {

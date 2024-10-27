@@ -8,10 +8,10 @@
 // // // // // // // // // // // //
 
 // 0x8018E500
-lbFileNode sSCAutoDemoStatusBuffer[100];
+LBFileNode sSCAutoDemoStatusBuffer[100];
 
 // 0x8018E820
-lbFileNode sSCAutoDemoForceStatusBuffer[7];
+LBFileNode sSCAutoDemoForceStatusBuffer[7];
 
 // // // // // // // // // // // //
 //                               //
@@ -22,7 +22,7 @@ lbFileNode sSCAutoDemoForceStatusBuffer[7];
 // 0x8018E0C0
 void scAutoDemoSetupFiles(void)
 {
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

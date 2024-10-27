@@ -11,7 +11,7 @@ extern intptr_t
 lWPSamusChargeShotWeaponAttributes;         // 0x00000000
 
 extern alSoundEffect* func_800269C0_275C0(u16);
-extern void ftParamPlayLoopSFX(ftStruct*, u16);
+extern void ftParamPlayLoopSFX(FTStruct*, u16);
 
 // // // // // // // // // // // //
 //                               //
@@ -126,7 +126,7 @@ wpSamusChargeShotAttributes dWPSamusChargeShotWeaponAttributes[/* */] =
     }
 };
 
-wpCreateDesc dWPSamusChargeShotWeaponDesc =
+WPCreateDesc dWPSamusChargeShotWeaponDesc =
 {
     0x00,                                   // Render flags?
     nWPKindChargeShot,                     // Weapon Kind
@@ -159,24 +159,24 @@ wpCreateDesc dWPSamusChargeShotWeaponDesc =
 // 0x80168B00
 void wpSamusChargeShotLaunch(GObj *weapon_gobj) // Set Charge Shot's attributes upon firing
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
     f32 coll_size;
 
-    wp->phys_info.vel_air.x = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].vel_x * wp->lr;
+    wp->physics.vel_air.x = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].vel_x * wp->lr;
 
-    wp->weapon_hit.damage = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].damage;
-    wp->weapon_hit.size = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].hit_size * 0.5F;
+    wp->hit_coll.damage = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].damage;
+    wp->hit_coll.size = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].hit_size * 0.5F;
 
     coll_size = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].coll_size * 0.5F;
 
-    wp->coll_data.objcoll.width = coll_size;
-    wp->coll_data.objcoll.top = coll_size;
-    wp->coll_data.objcoll.bottom = -coll_size;
+    wp->coll_data.object_coll.width = coll_size;
+    wp->coll_data.object_coll.top = coll_size;
+    wp->coll_data.object_coll.bottom = -coll_size;
 
     func_800269C0_275C0(dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].shoot_sfx_id);
 
-    wp->weapon_hit.hit_sfx = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].hit_sfx_id;
-    wp->weapon_hit.priority = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].priority;
+    wp->hit_coll.hit_sfx = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].hit_sfx_id;
+    wp->hit_coll.priority = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].priority;
 
     wp->weapon_vars.charge_shot.owner_gobj = NULL;
 }
@@ -184,11 +184,11 @@ void wpSamusChargeShotLaunch(GObj *weapon_gobj) // Set Charge Shot's attributes 
 // 0x80168BDC
 sb32 wpSamusChargeShotProcDead(GObj *weapon_gobj) // Clear GObj pointers
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
     if (wp->weapon_vars.charge_shot.owner_gobj != NULL) // Always NULL though?
     {
-        ftStruct *fp = ftGetStruct(wp->weapon_vars.charge_shot.owner_gobj);
+        FTStruct *fp = ftGetStruct(wp->weapon_vars.charge_shot.owner_gobj);
 
         fp->status_vars.samus.specialn.charge_gobj = NULL; // This would quite problematic if Samus and Kirby's SpecialN statevar structs deviated...
     }
@@ -198,7 +198,7 @@ sb32 wpSamusChargeShotProcDead(GObj *weapon_gobj) // Clear GObj pointers
 // 0x80168BFC
 sb32 wpSamusChargeShotProcUpdate(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
     if (wp->weapon_vars.charge_shot.is_release == FALSE)
     {
@@ -211,7 +211,7 @@ sb32 wpSamusChargeShotProcUpdate(GObj *weapon_gobj)
 
             wpSamusChargeShotLaunch(weapon_gobj);
 
-            wp->weapon_hit.update_state = nGMHitUpdateNew;
+            wp->hit_coll.update_state = nGMHitUpdateNew;
 
             wpProcessUpdateHitPositions(weapon_gobj);
         }
@@ -224,7 +224,7 @@ sb32 wpSamusChargeShotProcUpdate(GObj *weapon_gobj)
 // 0x80168CC4
 sb32 wpSamusChargeShotProcMap(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
     if (wp->weapon_vars.charge_shot.is_release != FALSE)
     {
@@ -244,9 +244,9 @@ sb32 wpSamusChargeShotProcMap(GObj *weapon_gobj)
 // 0x80168D24
 sb32 wpSamusChargeShotProcHit(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
+    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->hit_coll.damage);
 
     return TRUE;
 }
@@ -254,9 +254,9 @@ sb32 wpSamusChargeShotProcHit(GObj *weapon_gobj)
 // 0x80168D54
 sb32 wpSamusChargeShotProcHop(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_80019438(&wp->phys_info.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
+    func_80019438(&wp->physics.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
     wpMainVelSetLR(weapon_gobj);
 
     return FALSE;
@@ -265,8 +265,8 @@ sb32 wpSamusChargeShotProcHop(GObj *weapon_gobj)
 // 0x80168DA4
 sb32 wpSamusChargeShotProcReflector(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    ftStruct *fp = ftGetStruct(wp->owner_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    FTStruct *fp = ftGetStruct(wp->owner_gobj);
 
     wpMainReflectorSetLR(wp, fp);
     wpMainVelSetLR(weapon_gobj);
@@ -277,9 +277,9 @@ sb32 wpSamusChargeShotProcReflector(GObj *weapon_gobj)
 // 0x80168DDC
 GObj* wpSamusChargeShotMakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 charge_level, sb32 is_release) 
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPSamusChargeShotWeaponDesc, pos, (is_release != FALSE) ? (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_FIGHTER) : WEAPON_FLAG_PARENT_FIGHTER);
-    wpStruct *wp;
+    WPStruct *wp;
 
     if (weapon_gobj == NULL)
     {
@@ -296,7 +296,7 @@ GObj* wpSamusChargeShotMakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 charge_lev
     }
     else
     {
-        wp->weapon_hit.update_state = nGMHitUpdateDisable;
+        wp->hit_coll.update_state = nGMHitUpdateDisable;
         wp->weapon_vars.charge_shot.is_full_charge = FALSE;
 
         wp->weapon_vars.charge_shot.owner_gobj = fighter_gobj;

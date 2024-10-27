@@ -52,16 +52,16 @@ CObjDesc dMVOpeningKirbyStartAdjustedCObjDesc;
 CObjDesc dMVOpeningKirbyEndAdjustedCObjDesc;
 
 // 0x8018E288
-lbFileNode sMVOpeningKirbyStatusBuffer[48];
+LBFileNode sMVOpeningKirbyStatusBuffer[48];
 
 // 0x8018E408
-lbFileNode sMVOpeningKirbyForceStatusBuffer[7];
+LBFileNode sMVOpeningKirbyForceStatusBuffer[7];
 
 // 0x8018E440
 void *sMVOpeningKirbyFiles[2];
 
 // 0x8018E448
-scBattleState sMVOpeningKirbyBattleState;
+SCBattleState sMVOpeningKirbyBattleState;
 
 // // // // // // // // // // // //
 //                               //
@@ -76,7 +76,7 @@ CObjDesc dMVOpeningKirbyStartCObjDesc = { { 0.0F, 400.0F, 2000.0F }, { 0.0F, 400
 CObjDesc dMVOpeningKirbyEndCObjDesc = { { 1100.0F, 400.0F, 1800.0F }, { 1100.0F, 400.0F, 0.0F }, 0.0F };
 
 // 0x8018E0E8
-ftKeyCommand dMVOpeningKirbyInputSeq[/* */] =
+FTKeyCommand dMVOpeningKirbyInputSeq[/* */] =
 {
 	FTKEY_EVENT_STICK(45, I_CONTROLLER_RANGE_MAX, 1),   // 2001, 2D50
 	FTKEY_EVENT_BUTTON(A_BUTTON, 1),                    // 1001, 8000
@@ -95,7 +95,7 @@ u32 dMVOpeningKirbyFileIDs[/* */] = { &D_NF_00000025, &D_NF_00000041 };
 // 0x8018D0C0
 void mvOpeningKirbySetupFiles(void)
 {
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
@@ -274,7 +274,7 @@ void mvOpeningKirbyMakeMotionWindow(void)
 
 	for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
 	{
-		ftCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+		FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
 		if (gBattleState->players[i].pl_kind == nFTPlayerKindNot)
 		{
@@ -358,7 +358,7 @@ void mvOpeningKirbyPosedFighterProcUpdate(GObj *fighter_gobj)
 void mvOpeningKirbyMakePosedFighter(void)
 {
 	GObj* fighter_gobj;
-	ftCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
+	FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
 	ft_desc.ft_kind = nFTKindKirby;
 	ft_desc.costume = ftParamGetCostumeCommonID(nFTKindKirby, 0);

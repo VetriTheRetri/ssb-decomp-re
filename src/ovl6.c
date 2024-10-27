@@ -23,10 +23,10 @@ extern uintptr_t lOverlay6ArenaHi; // 0x80392A00
 extern void* gGMCommonFiles[];
 extern intptr_t dIFCommonTimerDigitSpriteOffsets[];
 extern void* D_ovl2_801313F4;
-extern grStruct gGRCommonStruct;
-extern scBattleState gDefaultBattleState;
+extern GRStruct gGRCommonStruct;
+extern SCBattleState gDefaultBattleState;
 extern GObj* gGCCommonLinks[GC_COMMON_MAX_LINKS];
-extern ftCreateDesc dFTManagerDefaultFighterDesc; // ovl2 80116DD0
+extern FTCreateDesc dFTManagerDefaultFighterDesc; // ovl2 80116DD0
 
 extern void func_ovl2_8010CFA8(GObj*, f32, f32, f32, f32, f32);
 
@@ -210,7 +210,7 @@ scRuntimeInfo D_ovl6_8018F09C = {
 void* gBonusGameFileData[4];
 
 // 0x8018F1B0
-scBattleState gBonusBattleState;
+SCBattleState gBonusBattleState;
 
 // 0x8018F3A0
 u8 gBonusTimerDigits[6];
@@ -503,7 +503,7 @@ void scBonusGame_CheckBonus2PlatformLanding(GObj* ground_gobj)
 
 	while (fighter_gobj != NULL)
 	{
-		ftStruct* fp = ftGetStruct(fighter_gobj);
+		FTStruct* fp = ftGetStruct(fighter_gobj);
 		if ((fp->ga == nMPKineticsGround)
 			&& ((fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK) == nMPMaterialDetect))
 		{
@@ -791,7 +791,7 @@ void scBonusGame_InitBonusGame()
 	s32 unused[3];
 	s32 player;
 	GObj* fighter_gobj;
-	ftCreateDesc player_spawn;
+	FTCreateDesc player_spawn;
 	syColorRGBA color;
 
 	func_ovl6_8018D0F0();

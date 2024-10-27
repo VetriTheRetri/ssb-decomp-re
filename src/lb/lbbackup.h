@@ -5,7 +5,7 @@
 #include <sys/objdef.h>
 #include <lb/lbdef.h>
 
-extern s32 lbBackupCreateChecksum(lbBackupData *backup);
+extern s32 lbBackupCreateChecksum(LBBackupData *backup);
 extern sb32 lbBackupIsChecksumValid(void);
 extern void lbBackupWrite(void);
 extern sb32 lbBackupIsSramValid(void);

@@ -27,14 +27,14 @@ syColorRGB dWPRenderPKThunderEnvColors[/* */] = { { 0x3A, 0x00, 0x83 }, { 0x5B, 
 // 0x80166E80
 void wpDisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    wpHitbox *weapon_hit = &wp->weapon_hit;
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    WPHitColl *hit_coll = &wp->hit_coll;
     gsMtxStore mtx_store;
     s32 i;
 
-    for (i = 0; i < weapon_hit->hitbox_count; i++)
+    for (i = 0; i < hit_coll->hit_count; i++)
     {
-        if ((weapon_hit->update_state != nGMHitUpdateDisable) && (weapon_hit->update_state != nGMHitUpdateNew))
+        if ((hit_coll->update_state != nGMHitUpdateDisable) && (hit_coll->update_state != nGMHitUpdateNew))
         {
             gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
@@ -50,17 +50,17 @@ void wpDisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
                 gDPSetEnvColor(gSYTaskmanDLHeads[0]++, 0xB0, 0x00, 0x00, 0xFF);
                 gDPSetBlendColor(gSYTaskmanDLHeads[0]++, 0x00, 0x00, 0x00, 0x00);
             }
-            if (weapon_hit->update_state == nGMHitUpdateInterpolate)
+            if (hit_coll->update_state == nGMHitUpdateInterpolate)
             {
                 syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                syMatrixTranslate(mtx_store.gbi, weapon_hit->hit_positions[i].pos_prev.x, weapon_hit->hit_positions[i].pos_prev.y, weapon_hit->hit_positions[i].pos_prev.z);
+                syMatrixTranslate(mtx_store.gbi, hit_coll->hit_positions[i].pos_prev.x, hit_coll->hit_positions[i].pos_prev.y, hit_coll->hit_positions[i].pos_prev.z);
 
                 gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
                 syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                syMatrixSca(mtx_store.gbi, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F);
+                syMatrixSca(mtx_store.gbi, hit_coll->size / 15.0F, hit_coll->size / 15.0F, hit_coll->size / 15.0F);
 
                 gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -70,17 +70,17 @@ void wpDisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
             }
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixTranslate(mtx_store.gbi, weapon_hit->hit_positions[i].pos.x, weapon_hit->hit_positions[i].pos.y, weapon_hit->hit_positions[i].pos.z);
+            syMatrixTranslate(mtx_store.gbi, hit_coll->hit_positions[i].pos.x, hit_coll->hit_positions[i].pos.y, hit_coll->hit_positions[i].pos.z);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixSca(mtx_store.gbi, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F, weapon_hit->size / 15.0F);
+            syMatrixSca(mtx_store.gbi, hit_coll->size / 15.0F, hit_coll->size / 15.0F, hit_coll->size / 15.0F);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            if (weapon_hit->update_state == nGMHitUpdateInterpolate)
+            if (hit_coll->update_state == nGMHitUpdateInterpolate)
             {
                 gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionBlendDL);
             }
@@ -94,22 +94,22 @@ void wpDisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
 // 0x801671F0
 void wpDisplayMapCollisions(GObj *weapon_gobj) // Render weapon ECB?
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f *translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
-    mpObjectColl *objcoll = &wp->coll_data.objcoll;
+    MPObjectColl *object_coll = &wp->coll_data.object_coll;
     gsMtxStore mtx_store;
 
     gDPPipeSync(gSYTaskmanDLHeads[1]++);
 
     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-    syMatrixTranslate(mtx_store.gbi, translate->x, translate->y + objcoll->bottom, translate->z);
+    syMatrixTranslate(mtx_store.gbi, translate->x, translate->y + object_coll->bottom, translate->z);
 
     gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-    syMatrixSca(mtx_store.gbi, objcoll->width / 30.0F, (objcoll->center - objcoll->bottom) / 30.0F, 1.0F);
+    syMatrixSca(mtx_store.gbi, object_coll->width / 30.0F, (object_coll->center - object_coll->bottom) / 30.0F, 1.0F);
 
     gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -119,13 +119,13 @@ void wpDisplayMapCollisions(GObj *weapon_gobj) // Render weapon ECB?
 
     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-    syMatrixTranslate(mtx_store.gbi, translate->x, translate->y + objcoll->center, translate->z);
+    syMatrixTranslate(mtx_store.gbi, translate->x, translate->y + object_coll->center, translate->z);
 
     gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-    syMatrixSca(mtx_store.gbi, objcoll->width / 30.0F, (objcoll->top - objcoll->center) / 30.0F, 1.0F);
+    syMatrixSca(mtx_store.gbi, object_coll->width / 30.0F, (object_coll->top - object_coll->center) / 30.0F, 1.0F);
 
     gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -157,7 +157,7 @@ void wpDisplayDrawZBuffer(void)
 // 0x80167520
 void wpDisplayMain(GObj *weapon_gobj, void(*func_display)(GObj*))
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
     if (wp->display_mode == nDBDisplayModeMapCollision)
     {
@@ -169,7 +169,7 @@ void wpDisplayMain(GObj *weapon_gobj, void(*func_display)(GObj*))
 
         wpDisplayMapCollisions(weapon_gobj);
     }
-    else if ((wp->display_mode == nDBDisplayModeMaster) || (wp->weapon_hit.update_state == nGMHitUpdateDisable))
+    else if ((wp->display_mode == nDBDisplayModeMaster) || (wp->hit_coll.update_state == nGMHitUpdateDisable))
     {
         wpDisplayDrawNormal();
 
@@ -207,7 +207,7 @@ void wpDisplayDObjTreeDLLinks(GObj *weapon_gobj)
 // 0x80167660
 void wpDisplayPKThunder(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
     s32 index = wp->weapon_vars.pkthunder_trail.trail_index;
 
     if (wp->display_mode == nDBDisplayModeMapCollision)
@@ -226,7 +226,7 @@ void wpDisplayPKThunder(GObj *weapon_gobj)
 
         wpDisplayMapCollisions(weapon_gobj);
     }
-    else if ((wp->display_mode == nDBDisplayModeMaster) || (wp->weapon_hit.update_state == nGMHitUpdateDisable))
+    else if ((wp->display_mode == nDBDisplayModeMaster) || (wp->hit_coll.update_state == nGMHitUpdateDisable))
     {
         wpDisplayDrawNormal();
 

@@ -394,7 +394,7 @@ syColorRGBA dFTDisplayMainItemAfterImageColor2 = { 0xFF, 0xFF, 0xFF, 0x00 };
 // // // // // // // // // // // //
 
 // 0x800F1020
-void ftDisplayMainDrawAfterImage(ftStruct *fp)
+void ftDisplayMainDrawAfterImage(FTStruct *fp)
 {
     s32 i, j;
     s32 next_index;
@@ -409,9 +409,9 @@ void ftDisplayMainDrawAfterImage(ftStruct *fp)
     f32 rotate;
     syColorRGBA *color1, *color2;
     Gfx *vtx_dl, *tri_dl;
-    ftAfterImage *afterimage;
+    FTAfterImage *afterimage;
     Vec3f spC8;
-    ftAfterImage *next_afterimage;
+    FTAfterImage *next_afterimage;
     s32 alpha;
     f32 scale;
     s32 alphainc;
@@ -597,7 +597,7 @@ void ftDisplayMainDrawAfterImage(ftStruct *fp)
 }
 
 // 0x800F17E8
-void ftDisplayMainCalcFogColor(ftStruct *fp)
+void ftDisplayMainCalcFogColor(FTStruct *fp)
 {
     s32 shade;
     s32 temp_color;
@@ -617,7 +617,7 @@ void ftDisplayMainCalcFogColor(ftStruct *fp)
     else
     {
         syColorRGBA *attr_shade_color = &fp->attributes->shade_color[fp->shade - 1];
-        gmColKeys *ck = &fp->colanim.maincolor;
+        GMColKeys *ck = &fp->colanim.maincolor;
 
         shade_default = (((0xFF - attr_shade_color->a) * (0xFF - ck->a)) / 0xFF);
 
@@ -663,13 +663,13 @@ void ftDisplayMainCalcFogColor(ftStruct *fp)
 }
 
 // 0x800F1B24
-void ftDisplayMainSetFogColor(ftStruct *fp)
+void ftDisplayMainSetFogColor(FTStruct *fp)
 {
     gDPSetFogColor(gSYTaskmanDLHeads[0]++, sFTDisplayMainFogColor.r, sFTDisplayMainFogColor.g, sFTDisplayMainFogColor.b, sFTDisplayMainFogColor.a);
 }
 
 // 0x800F1B7C
-void ftDisplayMainDecideFogColor(ftStruct *fp)
+void ftDisplayMainDecideFogColor(FTStruct *fp)
 {
     if (fp->shade == 0)
     {
@@ -684,7 +684,7 @@ void ftDisplayMainDecideFogColor(ftStruct *fp)
 }
 
 // 0x800F1C08
-void ftDisplayMainDecideFogDraw(u8 flags, ftStruct *fp)
+void ftDisplayMainDecideFogDraw(u8 flags, FTStruct *fp)
 {
     gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
@@ -721,7 +721,7 @@ void ftDisplayMainDecideFogDraw(u8 flags, ftStruct *fp)
 }
 
 // 0x800F1D44
-void ftDisplayMainDrawAccessory(ftStruct *fp, DObj *dobj, ftParts *ft_parts)
+void ftDisplayMainDrawAccessory(FTStruct *fp, DObj *dobj, FTParts *ft_parts)
 {
     DObj *root_dobj = DObjGetStruct(ft_parts->gobj);
 
@@ -752,11 +752,11 @@ void ftDisplayMainDrawAccessory(ftStruct *fp, DObj *dobj, ftParts *ft_parts)
 // 0x800F1E60
 void ftDisplayMainDrawDefault(DObj *dobj)
 {
-    ftStruct *fp = ftGetStruct(dobj->parent_gobj);
+    FTStruct *fp = ftGetStruct(dobj->parent_gobj);
     s32 sp58;
     s32 unused;
     Vec3f sp48;
-    ftParts *ft_parts;
+    FTParts *ft_parts;
     DObj *sibling_dobj;
     Gfx **dls;
 
@@ -846,14 +846,14 @@ void ftDisplayMainDrawDefault(DObj *dobj)
 // 0x800F21B4
 void ftDisplayMainDrawSkeleton(DObj *dobj)
 {
-    ftStruct *fp;
+    FTStruct *fp;
     s32 sp60;
     s32 unused;
     Vec3f sp50;
     Gfx **dls;
-    ftParts *ft_parts;
+    FTParts *ft_parts;
     DObj *sibling_dobj;
-    ftSkeleton *skeleton;
+    FTSkeleton *skeleton;
 
     fp = ftGetStruct(dobj->parent_gobj);
     ft_parts = ftGetParts(dobj);
@@ -928,8 +928,8 @@ void ftDisplayMainDrawSkeleton(DObj *dobj)
 // 0x800F24A0
 void ftDisplayMainDrawAll(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     if
     (
@@ -962,7 +962,7 @@ void ftDisplayMainDrawAll(GObj *fighter_gobj)
 // 0x800F2584
 void ftDisplayMainDrawParts(DObj *dobj)
 {
-    ftStruct *fp;
+    FTStruct *fp;
     s32 sp90;
     s32 hitstatus;
     DObj *sibling_dobj;
@@ -976,21 +976,21 @@ void ftDisplayMainDrawParts(DObj *dobj)
 
     sp90 = gcPrepDObjMatrix(gSYTaskmanDLHeads, dobj);
 
-    for (i = 0; i < ARRAY_COUNT(fp->fighter_hurt); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->damage_colls); i++)
     {
-        ftHurtbox *ft_hurt = &fp->fighter_hurt[i];
+        FTDamageColl *ft_dmgcoll = &fp->damage_colls[i];
 
-        if ((ft_hurt->hitstatus != nGMHitStatusNone) && (dobj == ft_hurt->joint))
+        if ((ft_dmgcoll->hitstatus != nGMHitStatusNone) && (dobj == ft_dmgcoll->joint))
         {
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixTranslate(mtx_store.gbi, ft_hurt->offset.x, ft_hurt->offset.y, ft_hurt->offset.z);
+            syMatrixTranslate(mtx_store.gbi, ft_dmgcoll->offset.x, ft_dmgcoll->offset.y, ft_dmgcoll->offset.z);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixSca(mtx_store.gbi, ft_hurt->size.x / 15.0F, ft_hurt->size.y / 15.0F, ft_hurt->size.z / 15.0F);
+            syMatrixSca(mtx_store.gbi, ft_dmgcoll->size.x / 15.0F, ft_dmgcoll->size.y / 15.0F, ft_dmgcoll->size.z / 15.0F);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -998,20 +998,20 @@ void ftDisplayMainDrawParts(DObj *dobj)
 
             if
             (
-                (fp->special_hitstatus == nGMHitStatusIntangible)  ||
+                (fp->special_collstatus == nGMHitStatusIntangible)  ||
                 (fp->star_hitstatus == nGMHitStatusIntangible)     ||
                 (fp->hitstatus == nGMHitStatusIntangible)          ||
-                (ft_hurt->hitstatus == nGMHitStatusIntangible)
+                (ft_dmgcoll->hitstatus == nGMHitStatusIntangible)
             )
             {
                 hitstatus = nGMHitStatusIntangible;
             }
             else if
             (
-                (fp->special_hitstatus == nGMHitStatusInvincible)  ||
+                (fp->special_collstatus == nGMHitStatusInvincible)  ||
                 (fp->star_hitstatus == nGMHitStatusInvincible)     ||
                 (fp->hitstatus == nGMHitStatusInvincible)          ||
-                (ft_hurt->hitstatus == nGMHitStatusInvincible)
+                (ft_dmgcoll->hitstatus == nGMHitStatusInvincible)
             )
             {
                 hitstatus = nGMHitStatusInvincible;
@@ -1071,9 +1071,9 @@ void ftDisplayMainDrawParts(DObj *dobj)
 // 0x800F293C - WARNING: Fake match. sp110 snaps to sp114, cannot make room on stack to align it.
 void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 {
-    ftStruct *fp;
-    ftAttributes *attributes;
-    ftHitbox *ft_hit;
+    FTStruct *fp;
+    FTAttributes *attributes;
+    FTHitColl *ft_hitcoll;
     gsMtxStore mtx_store;
     s32 i;
     Vec3f sp128;
@@ -1093,11 +1093,11 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
         return;
     }
-    if ((fp->status_info.pl_kind == nFTPlayerKindMan) || (fp->status_info.pl_kind == nFTPlayerKindCom) || (fp->status_info.pl_kind == nFTPlayerKindGameKey))
+    if ((fp->pl_kind == nFTPlayerKindMan) || (fp->pl_kind == nFTPlayerKindCom) || (fp->pl_kind == nFTPlayerKindGameKey))
     {
         if (gGCCurrentCamera->gobj_id == nGCCommonKindMainCamera)
         {
-            switch (fp->status_info.status_id)
+            switch (fp->status_id)
             {
             case nFTCommonStatusDeadUpStar:
             case nFTCommonStatusDeadUpFall:
@@ -1172,7 +1172,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
         if (fp->colanim.is_use_light)
         {
-            if (fp->status_info.pl_kind != nFTPlayerKindDemo)
+            if (fp->pl_kind != nFTPlayerKindDemo)
             {
                 ftDisplayLightsDrawReflect(gSYTaskmanDLHeads, fp->lr * fp->colanim.light_angle_x, fp->colanim.light_angle_y);
             }
@@ -1196,7 +1196,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
             sFTDisplayMainSkyFogAlpha = fp->fog_color.a;
         }
-        else if (fp->status_info.pl_kind != nFTPlayerKindDemo)
+        else if (fp->pl_kind != nFTPlayerKindDemo)
         {
             sFTDisplayMainSkyFogAlpha = mpCollisionSetLightColorGetAlpha(gSYTaskmanDLHeads);
         }
@@ -1222,7 +1222,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
             );
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
         }
-        if ((fp->status_info.pl_kind == nFTPlayerKindDemo) || (fp->status_info.pl_kind == nFTPlayerKindKey) || (gGCCurrentCamera->gobj_id == nGCCommonKindMainCamera))
+        if ((fp->pl_kind == nFTPlayerKindDemo) || (fp->pl_kind == nFTPlayerKindKey) || (gGCCurrentCamera->gobj_id == nGCCommonKindMainCamera))
         {
             ftDisplayMainDrawAll(fighter_gobj);
         }
@@ -1244,7 +1244,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
         gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
-        if (fp->status_info.pl_kind != nFTPlayerKindDemo)
+        if (fp->pl_kind != nFTPlayerKindDemo)
         {
             ftDisplayLightsDrawReflect(gSYTaskmanDLHeads, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
         }
@@ -1260,7 +1260,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
             (
                 mtx_store.gbi,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.x,
-                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attributes->objcoll.bottom,
+                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attributes->object_coll.bottom,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.z
             );
 
@@ -1268,7 +1268,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixSca(mtx_store.gbi, attributes->objcoll.width / 30.0F, attributes->objcoll.center / 30.0F, 1.0F);
+            syMatrixSca(mtx_store.gbi, attributes->object_coll.width / 30.0F, attributes->object_coll.center / 30.0F, 1.0F);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -1282,7 +1282,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
             (
                 mtx_store.gbi,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.x,
-                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attributes->objcoll.center,
+                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attributes->object_coll.center,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.z
             );
 
@@ -1290,7 +1290,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixSca(mtx_store.gbi, attributes->objcoll.width / 30.0F, (attributes->objcoll.top - attributes->objcoll.center) / 30.0F, 1.0F);
+            syMatrixSca(mtx_store.gbi, attributes->object_coll.width / 30.0F, (attributes->object_coll.top - attributes->object_coll.center) / 30.0F, 1.0F);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -1341,11 +1341,11 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
             fp->joints[nFTPartsJointTopN]->xobj[0]->kind = 0x4B;
         }
-        for (i = 0; i < ARRAY_COUNT(fp->fighter_hit); i++)
+        for (i = 0; i < ARRAY_COUNT(fp->hit_colls); i++)
         {
-            ft_hit = &fp->fighter_hit[i];
+            ft_hitcoll = &fp->hit_colls[i];
 
-            if ((ft_hit->update_state != nGMHitUpdateDisable) && (ft_hit->update_state != nGMHitUpdateNew))
+            if ((ft_hitcoll->update_state != nGMHitUpdateDisable) && (ft_hitcoll->update_state != nGMHitUpdateNew))
             {
                 gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
@@ -1365,17 +1365,17 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
                     gDPSetBlendColor(gSYTaskmanDLHeads[0]++, 0x00, 0x00, 0x00, 0x00);
                 }
-                if (ft_hit->update_state == nGMHitUpdateInterpolate)
+                if (ft_hitcoll->update_state == nGMHitUpdateInterpolate)
                 {
                     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                    syMatrixTranslate(mtx_store.gbi, ft_hit->pos_prev.x, ft_hit->pos_prev.y, ft_hit->pos_prev.z);
+                    syMatrixTranslate(mtx_store.gbi, ft_hitcoll->pos_prev.x, ft_hitcoll->pos_prev.y, ft_hitcoll->pos_prev.z);
 
                     gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
                     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                    syMatrixSca(mtx_store.gbi, ft_hit->size / 15.0F, ft_hit->size / 15.0F, ft_hit->size / 15.0F);
+                    syMatrixSca(mtx_store.gbi, ft_hitcoll->size / 15.0F, ft_hitcoll->size / 15.0F, ft_hitcoll->size / 15.0F);
 
                     gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -1385,17 +1385,17 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
                 }
                 syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                syMatrixTranslate(mtx_store.gbi, ft_hit->pos.x, ft_hit->pos.y, ft_hit->pos.z);
+                syMatrixTranslate(mtx_store.gbi, ft_hitcoll->pos.x, ft_hitcoll->pos.y, ft_hitcoll->pos.z);
 
                 gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
                 syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                syMatrixSca(mtx_store.gbi, ft_hit->size / 15.0F, ft_hit->size / 15.0F, ft_hit->size / 15.0F);
+                syMatrixSca(mtx_store.gbi, ft_hitcoll->size / 15.0F, ft_hitcoll->size / 15.0F, ft_hitcoll->size / 15.0F);
 
                 gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                if (ft_hit->update_state == nGMHitUpdateInterpolate)
+                if (ft_hitcoll->update_state == nGMHitUpdateInterpolate)
                 {
                     gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionBlendDL);
                 }
@@ -1405,7 +1405,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
             }
         }
     }
-    if ((fp->status_info.pl_kind == nFTPlayerKindMan) || (fp->status_info.pl_kind == nFTPlayerKindCom) || (fp->status_info.pl_kind == nFTPlayerKindGameKey))
+    if ((fp->pl_kind == nFTPlayerKindMan) || (fp->pl_kind == nFTPlayerKindCom) || (fp->pl_kind == nFTPlayerKindGameKey))
     {
         if (gGCCurrentCamera->gobj_id != nGCCommonKindMainCamera)
         {

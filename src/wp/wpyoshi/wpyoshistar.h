@@ -5,7 +5,7 @@
 #include <sys/objdef.h>
 #include <wp/wpdef.h>
 
-extern f32 wpYoshiStarGetScale(wpStruct *wp);
+extern f32 wpYoshiStarGetScale(WPStruct *wp);
 extern sb32 wpYoshiStarProcUpdate(GObj *weapon_gobj);
 extern sb32 wpYoshiStarProcMap(GObj *weapon_gobj);
 extern sb32 wpYoshiStarProcHit(GObj *weapon_gobj);

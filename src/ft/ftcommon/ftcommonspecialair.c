@@ -143,7 +143,7 @@ void (*dFTCommonSpecialAirLwStatusList[/* */])(GObj*) =
 // 0x80150ED0
 void ftKirbySpecialAirNSetStatusSelect(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     dFTKirbySpecialAirNStatusList[fp->fighter_vars.kirby.copy_id](fighter_gobj);
 }
@@ -151,8 +151,8 @@ void ftKirbySpecialAirNSetStatusSelect(GObj *fighter_gobj)
 // 0x80150F08
 sb32 ftCommonSpecialAirCheckInterruptCommon(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     if (fp->input.pl.button_tap & fp->input.button_mask_b)
     {

@@ -1,6 +1,6 @@
 #include <ft/fighter.h>
 
-extern void ftParamSetCaptureImmuneMask(ftStruct*, u8);
+extern void ftParamSetCaptureImmuneMask(FTStruct*, u8);
 
 // // // // // // // // // // // //
 //                               //
@@ -11,7 +11,7 @@ extern void ftParamSetCaptureImmuneMask(ftStruct*, u8);
 // 0x8014A0C0
 void ftCommonThrowProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->command_vars.flags.flag1 != 0)
     {
@@ -19,13 +19,13 @@ void ftCommonThrowProcUpdate(GObj *fighter_gobj)
 
         fp->lr = -fp->lr;
 
-        fp->phys_info.vel_ground.x = -fp->phys_info.vel_ground.x;
+        fp->physics.vel_ground.x = -fp->physics.vel_ground.x;
     }
     if (fp->command_vars.flags.flag2 != 0)
     {
         ftCommonThrownProcPhysics(fp->catch_gobj);
 
-        ftCommonThrownReleaseThrownUpdateStats(fp->catch_gobj, (fp->command_vars.flags.flag2 == 1) ? -fp->lr : fp->lr, (fp->status_info.status_id == nFTCommonStatusThrowB) ? 1 : 0, TRUE);
+        ftCommonThrownReleaseThrownUpdateStats(fp->catch_gobj, (fp->command_vars.flags.flag2 == 1) ? -fp->lr : fp->lr, (fp->status_id == nFTCommonStatusThrowB) ? 1 : 0, TRUE);
 
         fp->command_vars.flags.flag2 = 0;
 
@@ -37,7 +37,7 @@ void ftCommonThrowProcUpdate(GObj *fighter_gobj)
     {
         if ((fp->ft_kind == nFTKindDonkey) || (fp->ft_kind == nFTKindNDonkey) || (fp->ft_kind == nFTKindGDonkey))
         {
-            if (fp->status_info.status_id == nFTCommonStatusThrowF)
+            if (fp->status_id == nFTCommonStatusThrowF)
             {
                 ftCommonCaptureShoulderedSetStatus(fp->catch_gobj);
                 ftDonkeyThrowFWaitSetStatus(fighter_gobj);
@@ -52,11 +52,11 @@ void ftCommonThrowProcUpdate(GObj *fighter_gobj)
 // 0x8014A1E8
 void ftCommonThrowSetStatus(GObj *fighter_gobj, sb32 is_throwf)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
     s32 status_id;
     GObj *catch_gobj;
-    ftStruct *catch_fp;
-    ftThrownStatus *thrown_status;
+    FTStruct *catch_fp;
+    FTThrownStatus *thrown_status;
 
     catch_gobj = this_fp->catch_gobj;
     catch_fp = ftGetStruct(catch_gobj);
@@ -110,7 +110,7 @@ void ftCommonThrowSetStatus(GObj *fighter_gobj, sb32 is_throwf)
 // 0x8014A394
 sb32 ftCommonThrowCheckInterruptCatchWait(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     sb32 is_throwf = FALSE;
 
     if ((fp->status_vars.common.catchwait.throw_wait == 0) || (fp->input.pl.button_tap & (fp->input.button_mask_a | fp->input.button_mask_b)))

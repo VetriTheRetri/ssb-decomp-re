@@ -10,10 +10,10 @@
 // // // // // // // // // // // //
 
 // 0x8018EA30
-lbFileNode sSCExplainStatusBuffer[50];
+LBFileNode sSCExplainStatusBuffer[50];
 
 // 0x8018EBC0
-lbFileNode sSCExplainForceStatusBuffer[7];
+LBFileNode sSCExplainForceStatusBuffer[7];
 
 // // // // // // // // // // // //
 //                               //
@@ -24,7 +24,7 @@ lbFileNode sSCExplainForceStatusBuffer[7];
 // 0x8018E640
 void scExplainSetupFiles(void)
 {
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

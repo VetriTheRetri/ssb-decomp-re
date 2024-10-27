@@ -14,7 +14,7 @@ extern intptr_t lITTomatoItemAttributes;    // 0x000000B8
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITTomatoItemDesc =
+ITCreateDesc dITTomatoItemDesc =
 {
     nITKindTomato,                          // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -38,7 +38,7 @@ itCreateDesc dITTomatoItemDesc =
     NULL                                    // Proc Damage
 };
 
-itStatusDesc dITTomatoStatusDescs[/* */] =
+ITStatusDesc dITTomatoStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -100,7 +100,7 @@ enum itTomatoStatus
 // 0x801744C0
 sb32 itTomatoFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITTOMATO_GRAVITY, ITTOMATO_TVEL);
     itVisualsUpdateSpin(item_gobj);
@@ -132,7 +132,7 @@ void itTomatoWaitSetStatus(GObj *item_gobj)
 // 0x80174588
 void itTomatoFallSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
@@ -158,7 +158,7 @@ GObj* itTomatoMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITTomatoItemDesc, pos, vel, flags);
     DObj *joint;
     Vec3f translate;
-    itStruct *ip;
+    ITStruct *ip;
 
     if (item_gobj != NULL)
     {
@@ -172,7 +172,7 @@ GObj* itTomatoMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->is_unused_item_bool = TRUE;
 
-        ip->indicator_gobj = ifCommonItemArrowMakeInterface(ip);
+        ip->arrow_gobj = ifCommonItemArrowMakeInterface(ip);
     }
     return item_gobj;
 }

@@ -16,7 +16,7 @@
 // 0x801527B0
 void ftPikachuSpecialHiStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->status_vars.pikachu.specialhi.anim_frames--;
 
@@ -29,7 +29,7 @@ void ftPikachuSpecialHiStartProcUpdate(GObj *fighter_gobj)
 // 0x801527E4
 void ftPikachuSpecialAirHiStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->status_vars.pikachu.specialhi.anim_frames--;
 
@@ -42,8 +42,8 @@ void ftPikachuSpecialAirHiStartProcUpdate(GObj *fighter_gobj)
 // 0x80152818
 void ftPikachuSpecialAirHiStartProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     ftPhysicsApplyGravityClampTVel(fp, 0.8F, attributes->tvel_default);
 
@@ -80,9 +80,9 @@ void ftPikachuSpecialHiStartSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x80152934
-void ftPikachuSpecialHiStartInitStatusVars(GObj *fighter_gobj)
+void ftPikachuSpecialHiStartInITStatusVars(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->command_vars.flags.flag1 = 0;
 
@@ -90,7 +90,7 @@ void ftPikachuSpecialHiStartInitStatusVars(GObj *fighter_gobj)
     fp->status_vars.pikachu.specialhi.is_subsequent_zip = FALSE;
     fp->status_vars.pikachu.specialhi.pass_timer = 0;
     
-    fp->phys_info.vel_air.x = fp->phys_info.vel_air.y = fp->phys_info.vel_ground.x = 0.0F;
+    fp->physics.vel_air.x = fp->physics.vel_air.y = fp->physics.vel_ground.x = 0.0F;
 }
 
 // 0x80152960 - Set hit collision, color animation and anim rate
@@ -106,7 +106,7 @@ void ftPikachuSpecialHiInitMiscVars(GObj *fighter_gobj)
 // 0x801529A0
 void ftPikachuSpecialHiStartSetStatus(GObj *fighter_gobj)
 {
-    ftPikachuSpecialHiStartInitStatusVars(fighter_gobj);
+    ftPikachuSpecialHiStartInITStatusVars(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialHiStart, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftPikachuSpecialHiInitMiscVars(fighter_gobj);
@@ -115,7 +115,7 @@ void ftPikachuSpecialHiStartSetStatus(GObj *fighter_gobj)
 // 0x801529EC
 void ftPikachuSpecialAirHiStartSetStatus(GObj *fighter_gobj)
 {
-    ftPikachuSpecialHiStartInitStatusVars(fighter_gobj);
+    ftPikachuSpecialHiStartInITStatusVars(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirHiStart, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftPikachuSpecialHiInitMiscVars(fighter_gobj);
@@ -124,7 +124,7 @@ void ftPikachuSpecialAirHiStartSetStatus(GObj *fighter_gobj)
 // 0x80152A38
 void ftPikachuSpecialHiProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->status_vars.pikachu.specialhi.anim_frames--;
 
@@ -137,7 +137,7 @@ void ftPikachuSpecialHiProcUpdate(GObj *fighter_gobj)
 // 0x80152A6C
 void ftPikachuSpecialAirHiProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->status_vars.pikachu.specialhi.anim_frames--;
 
@@ -150,9 +150,9 @@ void ftPikachuSpecialAirHiProcUpdate(GObj *fighter_gobj)
 // 0x80152AA0
 void ftPikachuSpecialHiUpdateModelRollScale(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->joints[FTPIKACHU_QUICKATTACK_BASE_JOINT]->rotate.vec.f.x = (atan2f(fp->phys_info.vel_air.x, fp->phys_info.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F); // HALF_PI32
+    fp->joints[FTPIKACHU_QUICKATTACK_BASE_JOINT]->rotate.vec.f.x = (atan2f(fp->physics.vel_air.x, fp->physics.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F); // HALF_PI32
 
     fp->joints[FTPIKACHU_QUICKATTACK_BASE_JOINT]->scale.vec.f.x = FTPIKACHU_QUICKATTACK_SCALE_X;
     fp->joints[FTPIKACHU_QUICKATTACK_BASE_JOINT]->scale.vec.f.y = FTPIKACHU_QUICKATTACK_SCALE_Y;
@@ -177,7 +177,7 @@ void ftPikachuSpecialAirHiProcPhysics(GObj *fighter_gobj)
 // 0x80152B6C
 void ftPikachuSpecialHiProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
     {
@@ -197,7 +197,7 @@ void ftPikachuSpecialHiProcMap(GObj *fighter_gobj)
 // 0x80152BF4
 sb32 ftPikachuSpecialHiProcPass(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (!(fp->coll_data.ground_flags & MPCOLL_VERTEX_CLL_PASS) || (fp->status_vars.pikachu.specialhi.pass_timer >= FTPIKACHU_QUICKATTACK_PASS_BUFFER_MAX))
     {
@@ -209,7 +209,7 @@ sb32 ftPikachuSpecialHiProcPass(GObj *fighter_gobj)
 // 0x80152C2C
 void ftPikachuSpecialAirHiProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->status_vars.pikachu.specialhi.pass_timer++;
 
@@ -220,7 +220,7 @@ void ftPikachuSpecialAirHiProcMap(GObj *fighter_gobj)
             ftCommonCliffCatchSetStatus(fighter_gobj);
 
         }
-        else if (syVectorAngleDiff3D(&fp->coll_data.ground_angle, &fp->phys_info.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE)
+        else if (syVectorAngleDiff3D(&fp->coll_data.ground_angle, &fp->physics.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE)
         {
             mpCommonSetFighterGround(fp);
             ftPikachuSpecialHiEndSetStatus(fighter_gobj);
@@ -229,15 +229,15 @@ void ftPikachuSpecialAirHiProcMap(GObj *fighter_gobj)
     }
     else
     {
-        if ((fp->coll_data.coll_mask_current & MPCOLL_FLAG_CEIL) && (syVectorAngleDiff3D(&fp->coll_data.ceil_angle, &fp->phys_info.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE))
+        if ((fp->coll_data.coll_mask_current & MPCOLL_FLAG_CEIL) && (syVectorAngleDiff3D(&fp->coll_data.ceil_angle, &fp->physics.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE))
         {
             ftPikachuSpecialAirHiEndSetStatus(fighter_gobj);
         }
-        if ((fp->coll_data.coll_mask_current & MPCOLL_FLAG_LWALL) && (syVectorAngleDiff3D(&fp->coll_data.lwall_angle, &fp->phys_info.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE))
+        if ((fp->coll_data.coll_mask_current & MPCOLL_FLAG_LWALL) && (syVectorAngleDiff3D(&fp->coll_data.lwall_angle, &fp->physics.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE))
         {
             ftPikachuSpecialAirHiEndSetStatus(fighter_gobj);
         }
-        if ((fp->coll_data.coll_mask_current & MPCOLL_FLAG_RWALL) && (syVectorAngleDiff3D(&fp->coll_data.rwall_angle, &fp->phys_info.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE))
+        if ((fp->coll_data.coll_mask_current & MPCOLL_FLAG_RWALL) && (syVectorAngleDiff3D(&fp->coll_data.rwall_angle, &fp->physics.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE))
         {
             ftPikachuSpecialAirHiEndSetStatus(fighter_gobj);
         }
@@ -254,7 +254,7 @@ void ftPikachuSpecialAirHiSwitchStatusGround(GObj *fighter_gobj)
 // 0x80152DD8
 void ftPikachuSpecialHiSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirHi, fighter_gobj->anim_frame, 0.0F, FTPIKACHU_SPECIALHI_STATUS_FLAGS);
@@ -263,9 +263,9 @@ void ftPikachuSpecialHiSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x80152E2C
-void ftPikachuSpecialHiInitStatusVarsZip(GObj *fighter_gobj)
+void ftPikachuSpecialHiInITStatusVarsZip(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->status_vars.pikachu.specialhi.anim_frames = FTPIKACHU_QUICKATTACK_ZIP_TIME;
     fp->jumps_used = fp->attributes->jumps_max;
@@ -274,7 +274,7 @@ void ftPikachuSpecialHiInitStatusVarsZip(GObj *fighter_gobj)
 // 0x80152E48
 void ftPikachuSpecialHiSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     f32 sqrt_stick_range;
     f32 temp_stick_x;
     Vec3f stick_range;
@@ -301,13 +301,13 @@ void ftPikachuSpecialHiSetStatus(GObj *fighter_gobj)
         fp->status_vars.pikachu.specialhi.stick_range.y = stick_range.y;
 
         ftParamSetStickLR(fp);
-        ftPikachuSpecialHiInitStatusVarsZip(fighter_gobj);
+        ftPikachuSpecialHiInITStatusVarsZip(fighter_gobj);
 
-        fp->phys_info.vel_ground.x = (FTPIKACHU_QUICKATTACK_VEL_BASE * sqrt_stick_range) + FTPIKACHU_QUICKATTACK_VEL_ADD;
+        fp->physics.vel_ground.x = (FTPIKACHU_QUICKATTACK_VEL_BASE * sqrt_stick_range) + FTPIKACHU_QUICKATTACK_VEL_ADD;
 
         if (fp->status_vars.pikachu.specialhi.is_subsequent_zip != FALSE)
         {
-            fp->phys_info.vel_ground.x *= FTPIKACHU_QUICKATTACK_VEL_MUL;
+            fp->physics.vel_ground.x *= FTPIKACHU_QUICKATTACK_VEL_MUL;
         }
         ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialHi, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
         ftMainPlayAnimNoEffect(fighter_gobj);
@@ -323,7 +323,7 @@ block_end:
 // 0x80152FEC
 void ftPikachuSpecialAirHiSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     f32 tangent;
     f32 sqrt_stick_range = sqrtf(SQUARE((f32)fp->input.pl.stick_range.x) + SQUARE((f32)fp->input.pl.stick_range.y));
 
@@ -349,15 +349,15 @@ void ftPikachuSpecialAirHiSetStatus(GObj *fighter_gobj)
         fp->status_vars.pikachu.specialhi.stick_range.y = I_CONTROLLER_RANGE_MAX;
     }
 
-    ftPikachuSpecialHiInitStatusVarsZip(fighter_gobj);
+    ftPikachuSpecialHiInITStatusVarsZip(fighter_gobj);
 
-    fp->phys_info.vel_air.x = __cosf(tangent) * ((FTPIKACHU_QUICKATTACK_VEL_BASE * sqrt_stick_range) + FTPIKACHU_QUICKATTACK_VEL_ADD) * fp->lr;
-    fp->phys_info.vel_air.y = __sinf(tangent) * ((FTPIKACHU_QUICKATTACK_VEL_BASE * sqrt_stick_range) + FTPIKACHU_QUICKATTACK_VEL_ADD);
+    fp->physics.vel_air.x = __cosf(tangent) * ((FTPIKACHU_QUICKATTACK_VEL_BASE * sqrt_stick_range) + FTPIKACHU_QUICKATTACK_VEL_ADD) * fp->lr;
+    fp->physics.vel_air.y = __sinf(tangent) * ((FTPIKACHU_QUICKATTACK_VEL_BASE * sqrt_stick_range) + FTPIKACHU_QUICKATTACK_VEL_ADD);
 
     if (fp->status_vars.pikachu.specialhi.is_subsequent_zip != FALSE)
     {
-        fp->phys_info.vel_air.x *= FTPIKACHU_QUICKATTACK_VEL_MUL;
-        fp->phys_info.vel_air.y *= FTPIKACHU_QUICKATTACK_VEL_MUL;
+        fp->physics.vel_air.x *= FTPIKACHU_QUICKATTACK_VEL_MUL;
+        fp->physics.vel_air.y *= FTPIKACHU_QUICKATTACK_VEL_MUL;
     }
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirHi, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
@@ -366,7 +366,7 @@ void ftPikachuSpecialAirHiSetStatus(GObj *fighter_gobj)
 // 0x801531AC
 sb32 ftPikachuSpecialHiCheckGotoSubZip(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f current_angle;
     Vec3f previous_angle;
     f32 unused[2];
@@ -402,7 +402,7 @@ sb32 ftPikachuSpecialHiCheckGotoSubZip(GObj *fighter_gobj)
 // 0x801532B8
 void ftPikachuSpecialHiEndProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->command_vars.flags.flag1 == 1)
     {
@@ -425,7 +425,7 @@ void ftPikachuSpecialHiEndProcUpdate(GObj *fighter_gobj)
 // 0x80153340
 void ftPikachuSpecialAirHiEndProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->command_vars.flags.flag1 == 1)
     {
@@ -447,7 +447,7 @@ void ftPikachuSpecialAirHiEndProcUpdate(GObj *fighter_gobj)
 // 0x801533E4
 void ftPikachuSpecialHiEndProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->command_vars.flags.flag1 != 0)
     {
@@ -458,11 +458,11 @@ void ftPikachuSpecialHiEndProcPhysics(GObj *fighter_gobj)
 // 0x80153414
 void ftPikachuSpecialAirHiEndProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->command_vars.flags.flag1 != 0)
     {
-        ftAttributes *attributes;
+        FTAttributes *attributes;
 
         ftPhysicsApplyGravityDefault(fp, fp->attributes);
 
@@ -474,7 +474,7 @@ void ftPikachuSpecialAirHiEndProcPhysics(GObj *fighter_gobj)
     }
     else
     {
-        fp->phys_info.vel_air.y -= (fp->phys_info.vel_air.y / FTPIKACHU_QUICKATTACK_VEL_Y_DIV);
+        fp->physics.vel_air.y -= (fp->physics.vel_air.y / FTPIKACHU_QUICKATTACK_VEL_Y_DIV);
 
         ftPhysicsApplyAirVelXFriction(fp, fp->attributes);
     }
@@ -489,7 +489,7 @@ void ftPikachuSpecialHiEndProcMap(GObj *fighter_gobj)
 // 0x801534E0
 void ftPikachuSpecialAirHiEndProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (mpCommonCheckFighterCliff(fighter_gobj) != FALSE)
     {
@@ -518,24 +518,24 @@ void ftPikachuSpecialHiEndSwitchStatusAir(GObj *fighter_gobj)
 // 0x801535C4
 void ftPikachuSpecialHiEndBackupVel(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->status_vars.pikachu.specialhi.vel_x_bak = fp->phys_info.vel_air.x;
-    fp->status_vars.pikachu.specialhi.vel_y_bak = fp->phys_info.vel_air.y;
-    fp->status_vars.pikachu.specialhi.vel_ground_bak = fp->phys_info.vel_ground.x;
+    fp->status_vars.pikachu.specialhi.vel_x_bak = fp->physics.vel_air.x;
+    fp->status_vars.pikachu.specialhi.vel_y_bak = fp->physics.vel_air.y;
+    fp->status_vars.pikachu.specialhi.vel_ground_bak = fp->physics.vel_ground.x;
 
-    fp->phys_info.vel_air.x = fp->phys_info.vel_air.y = 0.0F;
-    fp->phys_info.vel_ground.x = 0.0F;
+    fp->physics.vel_air.x = fp->physics.vel_air.y = 0.0F;
+    fp->physics.vel_ground.x = 0.0F;
 }
 
 // 0x801535F4
 void ftPikachuSpecialHiEndSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftPikachuSpecialHiEndBackupVel(fighter_gobj);
 
-    fp->phys_info.vel_ground.x = fp->status_vars.pikachu.specialhi.vel_ground_bak * FTPIKACHU_QUICKATTACK_VEL_BAK_MUL;
+    fp->physics.vel_ground.x = fp->status_vars.pikachu.specialhi.vel_ground_bak * FTPIKACHU_QUICKATTACK_VEL_BAK_MUL;
 
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialHiEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
@@ -544,12 +544,12 @@ void ftPikachuSpecialHiEndSetStatus(GObj *fighter_gobj)
 // 0x80153654
 void ftPikachuSpecialAirHiEndSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftPikachuSpecialHiEndBackupVel(fighter_gobj);
 
-    fp->phys_info.vel_air.x = fp->status_vars.pikachu.specialhi.vel_x_bak * FTPIKACHU_QUICKATTACK_VEL_BAK_MUL;
-    fp->phys_info.vel_air.y = fp->status_vars.pikachu.specialhi.vel_y_bak * FTPIKACHU_QUICKATTACK_VEL_BAK_MUL;
+    fp->physics.vel_air.x = fp->status_vars.pikachu.specialhi.vel_x_bak * FTPIKACHU_QUICKATTACK_VEL_BAK_MUL;
+    fp->physics.vel_air.y = fp->status_vars.pikachu.specialhi.vel_y_bak * FTPIKACHU_QUICKATTACK_VEL_BAK_MUL;
 
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirHiEnd, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);

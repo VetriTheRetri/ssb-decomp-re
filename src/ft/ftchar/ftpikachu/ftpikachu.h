@@ -42,7 +42,7 @@
 #define FTPIKACHU_THUNDER_HIT_GRAVITY 0.5F
 #define FTPIKACHU_THUNDER_HITVEL_Y	20.0F						// Vertical velocity gained if Thunder connects with Pikachu
 
-extern ftStatusDesc dFTPikachuSpecialStatusDescs[/* */];
+extern FTStatusDesc dFTPikachuSpecialStatusDescs[/* */];
 
 extern void *gFTDataPikachuMain;
 extern void *gFTDataPikachuMainMotion;
@@ -98,11 +98,11 @@ typedef enum ftPikachuStatus
 
 } ftPikachuStatus;
 
-typedef struct ftPikachuFighterVars
+typedef struct FTPikachuFighterVars
 {
 	sb32 is_thunder_destroy;
 
-} ftPikachuFighterVars;
+} FTPikachuFighterVars;
 
 typedef struct ftPikachuSpecialHiStatusVars
 {
@@ -123,11 +123,11 @@ typedef struct ftPikachuSpecialLwStatusVars
 
 } ftPikachuSpecialLwStatusVars;
 
-typedef union ftPikachuStatusVars
+typedef union FTPikachuStatusVars
 {
 	ftPikachuSpecialHiStatusVars specialhi;
 	ftPikachuSpecialLwStatusVars speciallw;
 
-} ftPikachuStatusVars;
+} FTPikachuStatusVars;
 
 #endif

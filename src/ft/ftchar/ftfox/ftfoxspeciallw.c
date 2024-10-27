@@ -8,7 +8,7 @@
 // // // // // // // // // // // //
 
 // 0x8015CB80
-void ftFoxSpecialLwCheckSetRelease(ftStruct *fp)
+void ftFoxSpecialLwCheckSetRelease(FTStruct *fp)
 {
     if (!(fp->input.pl.button_hold & fp->input.button_mask_b))
     {
@@ -17,13 +17,13 @@ void ftFoxSpecialLwCheckSetRelease(ftStruct *fp)
 }
 
 // 0x8015CBA4
-void ftFoxSpecialLwUpdateEffect(ftStruct *fp)
+void ftFoxSpecialLwUpdateEffect(FTStruct *fp)
 {
     if (fp->command_vars.flags.flag2 != 4)
     {
         if (fp->status_vars.fox.speciallw.effect_gobj != NULL)
         {
-            efStruct *ep = efGetStruct(fp->status_vars.fox.speciallw.effect_gobj);
+            EFStruct *ep = efGetStruct(fp->status_vars.fox.speciallw.effect_gobj);
 
             ep->effect_vars.reflector.status = fp->command_vars.flags.flag2;
         }
@@ -32,7 +32,7 @@ void ftFoxSpecialLwUpdateEffect(ftStruct *fp)
 }
 
 // 0x8015CBD4
-void ftFoxSpecialLwDecReleaseLag(ftStruct *fp)
+void ftFoxSpecialLwDecReleaseLag(FTStruct *fp)
 {
     if (fp->status_vars.fox.speciallw.release_lag != 0)
     {
@@ -43,7 +43,7 @@ void ftFoxSpecialLwDecReleaseLag(ftStruct *fp)
 // 0x8015CBEC
 void ftFoxSpecialLwStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftFoxSpecialLwUpdateEffect(fp);
     ftFoxSpecialLwCheckSetRelease(fp);
@@ -61,8 +61,8 @@ void ftFoxSpecialLwStartProcUpdate(GObj *fighter_gobj)
 // 0x8015CC64
 void ftFoxSpecialAirLwCommonProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     if (fp->status_vars.fox.speciallw.gravity_delay != 0)
     {
@@ -79,7 +79,7 @@ void ftFoxSpecialAirLwCommonProcPhysics(GObj *fighter_gobj)
 // 0x8015CCE0
 void ftFoxSpecialLwLoopProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftFoxSpecialLwUpdateEffect(fp);
     ftFoxSpecialLwCheckSetRelease(fp);
@@ -104,7 +104,7 @@ void ftFoxSpecialLwLoopProcInterrupt(GObj *fighter_gobj)
 // 0x8015CD7C
 void ftFoxSpecialLwLoopSetReflectFlag(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->is_reflect = TRUE;
 }
@@ -126,7 +126,7 @@ void ftFoxSpecialAirLwLoopSetStatus(GObj *fighter_gobj)
 // 0x8015CE08
 void ftFoxSpecialLwHitDecideSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((fp->status_vars.fox.speciallw.release_lag <= 0) && (fp->status_vars.fox.speciallw.is_release != FALSE))
     {
@@ -146,7 +146,7 @@ void ftFoxSpecialLwHitDecideSetStatus(GObj *fighter_gobj)
 // 0x8015CE8C
 void ftFoxSpecialLwHitProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftFoxSpecialLwUpdateEffect(fp);
     ftFoxSpecialLwCheckSetRelease(fp);
@@ -161,7 +161,7 @@ void ftFoxSpecialLwHitProcUpdate(GObj *fighter_gobj)
 // 0x8015CEE8
 void ftFoxSpecialLwHitSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->lr = fp->lr_reflect;
 
@@ -173,7 +173,7 @@ void ftFoxSpecialLwHitSetStatus(GObj *fighter_gobj)
 // 0x8015CF50
 void ftFoxSpecialLwTurnDecTurnFrames(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->status_vars.fox.speciallw.turn_frames--;
 
@@ -190,7 +190,7 @@ void ftFoxSpecialLwTurnDecTurnFrames(GObj *fighter_gobj)
 // 0x8015CFC0
 void ftFoxSpecialLwTurnProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftFoxSpecialLwUpdateEffect(fp);
     ftFoxSpecialLwCheckSetRelease(fp);
@@ -204,9 +204,9 @@ void ftFoxSpecialLwTurnProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x8015D01C
-void ftFoxSpecialLwTurnInitStatusVars(GObj *fighter_gobj)
+void ftFoxSpecialLwTurnInITStatusVars(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->is_reflect = TRUE;
     fp->status_vars.fox.speciallw.turn_frames = FTFOX_REFLECTOR_TURN_FRAMES;
@@ -219,20 +219,20 @@ void ftFoxSpecialLwTurnInitStatusVars(GObj *fighter_gobj)
 void ftFoxSpecialLwTurnSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialLwTurn, 0.0F, 1.0F, (FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
-    ftFoxSpecialLwTurnInitStatusVars(fighter_gobj);
+    ftFoxSpecialLwTurnInITStatusVars(fighter_gobj);
 }
 
 // 0x8015D090
 void ftFox_SpecialAirLwTurn_SetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialAirLwTurn, 0.0F, 1.0F, (FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
-    ftFoxSpecialLwTurnInitStatusVars(fighter_gobj);
+    ftFoxSpecialLwTurnInITStatusVars(fighter_gobj);
 }
 
 // 0x8015D0CC
 sb32 ftFoxSpecialLwTurnCheckInterruptLoop(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (ftCommonTurnCheckInputSuccess(fighter_gobj) != FALSE)
     {
@@ -274,9 +274,9 @@ void ftFoxSpecialAirLwEndSetStatus(GObj *fighter_gobj)
 }
 
 // 0x8015D1E0
-void ftFoxSpecialLwStartInitStatusVars(GObj *fighter_gobj)
+void ftFoxSpecialLwStartInITStatusVars(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->status_vars.fox.speciallw.release_lag = FTFOX_REFLECTOR_RELEASE_LAG;
     fp->status_vars.fox.speciallw.is_release = FALSE;
@@ -289,7 +289,7 @@ void ftFoxSpecialLwStartInitStatusVars(GObj *fighter_gobj)
     {
         fp->is_attach_effect = TRUE;
     }
-    fp->special_hit = (ftSpecialHit*) ((uintptr_t)gFTDataFoxMainMotion + (intptr_t)&lFTFoxSpecialLwReflector); // Another linker thing
+    fp->special_coll = (FTSpecialColl*) ((uintptr_t)gFTDataFoxMainMotion + (intptr_t)&lFTFoxSpecialLwReflector); // Another linker thing
 }
 
 // 0x8015D250
@@ -297,18 +297,18 @@ void ftFoxSpecialLwStartSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftFoxSpecialLwStartInitStatusVars(fighter_gobj);
+    ftFoxSpecialLwStartInITStatusVars(fighter_gobj);
 }
 
 // 0x8015D290
 void ftFoxSpecialAirLwStartSetStatus(GObj* fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialAirLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftFoxSpecialLwStartInitStatusVars(fighter_gobj);
+    ftFoxSpecialLwStartInITStatusVars(fighter_gobj);
 
-    fp->phys_info.vel_air.y = 0.0F;
-    fp->phys_info.vel_air.x /= 2;
+    fp->physics.vel_air.y = 0.0F;
+    fp->physics.vel_air.x /= 2;
 }

@@ -16,7 +16,7 @@ lWPFoxBlasterWeaponAttributes;              // 0x00000000
 //                               //
 // // // // // // // // // // // //
 
-wpCreateDesc dWPFoxBlasterWeaponDesc = 
+WPCreateDesc dWPFoxBlasterWeaponDesc = 
 {
     0x00,                                   // Render flags?
     nWPKindBlaster,                        // Weapon Kind
@@ -84,11 +84,11 @@ sb32 wpFoxBlasterProcHit(GObj *weapon_gobj)
 // 0x8016898C
 sb32 wpFoxBlasterProcHop(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_80019438(&wp->phys_info.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
+    func_80019438(&wp->physics.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     efManagerFoxBlasterGlowMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f);
@@ -99,12 +99,12 @@ sb32 wpFoxBlasterProcHop(GObj *weapon_gobj)
 // 0x80168A14
 sb32 wpFoxBlasterProcReflector(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    ftStruct *fp = ftGetStruct(wp->owner_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    FTStruct *fp = ftGetStruct(wp->owner_gobj);
 
     wpMainReflectorSetLR(wp, fp);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;
 
     return FALSE;
@@ -113,7 +113,7 @@ sb32 wpFoxBlasterProcReflector(GObj *weapon_gobj)
 // 0x80168A74
 GObj* wpFoxBlasterMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
-    wpStruct *wp;
+    WPStruct *wp;
     GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPFoxBlasterWeaponDesc, pos, (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_FIGHTER));
 
     if (weapon_gobj == NULL)
@@ -122,9 +122,9 @@ GObj* wpFoxBlasterMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
     }
     wp = wpGetStruct(weapon_gobj);
 
-    wp->phys_info.vel_air.x = wp->lr * WPBLASTER_VEL_X;
+    wp->physics.vel_air.x = wp->lr * WPBLASTER_VEL_X;
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->phys_info.vel_air.y, wp->phys_info.vel_air.x);
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
 
     efManagerFoxBlasterGlowMakeEffect(pos);
 

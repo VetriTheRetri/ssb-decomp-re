@@ -23,9 +23,9 @@ typedef struct halAudioUnknown
 
 
 #define AttributesGetStruct(fp) \
-((ftAttributes*)fp->attributes)
-#define ftSpritesGetStruct(fa) \
-((ftSprites*)fa->sprites)
+((FTAttributes*)fp->attributes)
+#define FTSpritesGetStruct(fa) \
+((FTSprites*)fa->sprites)
 
 
 // Externs
@@ -229,7 +229,7 @@ s32 gMNResultsDrawFightersFrame;
 u32 D_ovl31_80139C50[240];
 
 // 0x8013A010
-lbFileNode D_ovl31_8013A010;
+LBFileNode D_ovl31_8013A010;
 
 // 0x8013A018
 s32 D_ovl31_8013A018[12];
@@ -255,7 +255,7 @@ s32 mnResultsGetPlayerCount()
 // 0x80131B90
 void mnResultsSaveDataToSRAM()
 {
-	lbBackupVSRecord* vs_record;
+	LBBackupVSRecord* vs_record;
 	s32 i, j;
 	u8 ft_kind, opp_ft_kind;
 
@@ -993,7 +993,7 @@ void mnResultsSetFighterScale(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 
 void mnResultsSpawnFighter(s32 port_id)
 {
 	s32 foo, bar, baz;
-	ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	spawn_info.ft_kind = mnResultsGetFtKind(port_id);
 	spawn_info.costume = gTransferBattleState.players[port_id].costume;
@@ -1671,7 +1671,7 @@ void mnResultsCreateColumnHeaders()
 		0x49E8, 0x4B08, 0x4C28, 0x4D48
 	};
 	s32 i;
-	ftStruct* ft_struct;
+	FTStruct* ft_struct;
 
 	column_header_gobj = gcMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
 	gcAddGObjDisplay(column_header_gobj, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1);
@@ -1687,8 +1687,8 @@ void mnResultsCreateColumnHeaders()
 
 			ft_struct = ftGetStruct(gMNResultsFighterGObjs[i]);
 
-			column_stock_icon_sobj = lbCommonMakeSObjForGObj(column_header_gobj, ftSpritesGetStruct(AttributesGetStruct(ft_struct))->stock_spr);
-			column_stock_icon_sobj->sprite.LUT = ftSpritesGetStruct(AttributesGetStruct(ft_struct))->stock_lut[ft_struct->costume];
+			column_stock_icon_sobj = lbCommonMakeSObjForGObj(column_header_gobj, FTSpritesGetStruct(AttributesGetStruct(ft_struct))->stock_sprite);
+			column_stock_icon_sobj->sprite.LUT = FTSpritesGetStruct(AttributesGetStruct(ft_struct))->stock_luts[ft_struct->costume];
 			column_stock_icon_sobj->sprite.attr &= ~SP_FASTCOPY;
 			column_stock_icon_sobj->sprite.attr |= SP_TRANSPARENT;
 			column_stock_icon_sobj->pos.x = column_port_indicator_sobj->pos.x - 10.0F;
@@ -2935,16 +2935,16 @@ scRuntimeInfo D_ovl31_8013972C = {
 // 0x80138B70
 void mnResultsInit()
 {
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 	s32 i;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
 	rl_setup.file_heap = NULL;
 	rl_setup.file_heap_size = 0;
-	rl_setup.status_buffer = (lbFileNode*) &D_ovl31_80139C50;
+	rl_setup.status_buffer = (LBFileNode*) &D_ovl31_80139C50;
 	rl_setup.status_buffer_size = 0x78;
-	rl_setup.force_status_buffer = (lbFileNode*) &D_ovl31_8013A010;
+	rl_setup.force_status_buffer = (LBFileNode*) &D_ovl31_8013A010;
 	rl_setup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl31_80138F70, ARRAY_COUNT(D_ovl31_80138F70), gMNResultsFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl31_80138F70, ARRAY_COUNT(D_ovl31_80138F70)), 0x10));

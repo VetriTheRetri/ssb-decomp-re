@@ -24,7 +24,7 @@ void ftDonkeySpecialAirHiProcUpdate(GObj *fighter_gobj)
 // 0x8015B744
 void ftDonkeySpecialHiProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftPhysicsApplyClampGroundVelStickRange(fp, 0, FTDONKEY_SPINNINGKONG_GROUND_ACCEL, FTDONKEY_SPINNINGKONG_GROUND_VEL_MAX);
     ftPhysicsSetGroundVelTransferAir(fighter_gobj);
@@ -33,9 +33,9 @@ void ftDonkeySpecialHiProcPhysics(GObj *fighter_gobj)
 // 0x8015B780
 void ftDonkeySpecialAirHiProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftAttributes *attributes = fp->attributes;
+    FTAttributes *attributes = fp->attributes;
 
     f32 gravity_mul = (fp->command_vars.flags.flag1 != 0) ? FTDONKEY_SPINNINGKONG_END_GRAVITY_MUL : FTDONKEY_SPINNINGKONG_START_GRAVITY_MUL;
 
@@ -59,7 +59,7 @@ void ftDonkeySpecialAirHiProcMap(GObj *fighter_gobj)
 // 0x8015B848
 void ftDonkeySpecialAirHiSwitchStatusGround(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialHi, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_RUMBLE);
@@ -69,7 +69,7 @@ void ftDonkeySpecialAirHiSwitchStatusGround(GObj *fighter_gobj)
 // 0x8015B898
 void ftDonkeySpecialHiSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialAirHi, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_RUMBLE);
@@ -79,8 +79,8 @@ void ftDonkeySpecialHiSwitchStatusAir(GObj *fighter_gobj)
 // 0x8015B8E8
 void ftDonkeySpecialHiSetStatusFlagGA(GObj *fighter_gobj, sb32 ga)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
@@ -102,11 +102,11 @@ void ftDonkeySpecialHiSetStatusFlagGA(GObj *fighter_gobj, sb32 ga)
 // 0x8015B974
 void ftDonkeySpecialHiSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
 
-    fp->phys_info.vel_air.y = 0.0F;
+    fp->physics.vel_air.y = 0.0F;
 
     ftDonkeySpecialHiSetStatusFlagGA(fighter_gobj, nMPKineticsGround);
 }
@@ -114,9 +114,9 @@ void ftDonkeySpecialHiSetStatus(GObj *fighter_gobj)
 // 0x8015B9B8
 void ftDonkeySpecialAirHiSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->phys_info.vel_air.y = FTDONKEY_SPINNINGKONG_AIR_VEL_Y;
+    fp->physics.vel_air.y = FTDONKEY_SPINNINGKONG_AIR_VEL_Y;
 
     ftDonkeySpecialHiSetStatusFlagGA(fighter_gobj, nMPKineticsAir);
 }

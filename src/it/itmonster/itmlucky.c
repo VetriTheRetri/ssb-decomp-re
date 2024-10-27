@@ -18,7 +18,7 @@ extern intptr_t lITLuckyAnimJoint;          // 0x000100BC
 // // // // // // // // // // // //
 
 // 0x8018AFB0
-itCreateDesc dITMLuckyItemDesc = 
+ITCreateDesc dITMLuckyItemDesc = 
 {
     nITKindMLucky,                          // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -43,7 +43,7 @@ itCreateDesc dITMLuckyItemDesc =
 };
 
 // 0x8018AFE4
-itStatusDesc dITMLuckyStatusDescs[/* */] =
+ITStatusDesc dITMLuckyStatusDescs[/* */] =
 {
     // Status 0 (Air Fall)
     {
@@ -118,7 +118,7 @@ enum itMLuckyStatus
 // 0x80180FC0
 void itMLuckyMakeEggInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     if (ip->it_kind == nITKindMLucky)
@@ -126,7 +126,7 @@ void itMLuckyMakeEggInitItemVars(GObj *item_gobj)
         gcAddDObjAnimJoint(dobj->child, itGetPData(ip, lITLuckyDataStart, lITLuckyAnimJoint), 0.0F); // Linker thing
         gcPlayAnimAll(item_gobj);
     }
-    ip->item_hurt.hitstatus = nGMHitStatusNormal;
+    ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
     ip->item_vars.mlucky.egg_spawn_wait = ITMLUCKY_EGG_SPAWN_WAIT_CONST;
 
@@ -136,7 +136,7 @@ void itMLuckyMakeEggInitItemVars(GObj *item_gobj)
 // 0x80181048
 sb32 itMLuckyFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITMLUCKY_GRAVITY, ITMLUCKY_TVEL);
 
@@ -146,13 +146,13 @@ sb32 itMLuckyFallProcUpdate(GObj *item_gobj)
 // 0x80181074
 sb32 itMLuckyFallProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMapTestAllCheckCollEnd(item_gobj);
 
     if (ip->coll_data.coll_mask_current & MPCOLL_FLAG_GROUND)
     {
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
 
         if (ip->it_multi != 0)
         {
@@ -166,7 +166,7 @@ sb32 itMLuckyFallProcMap(GObj *item_gobj)
 // 0x801810E0
 void itMLuckyFallSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
@@ -177,7 +177,7 @@ void itMLuckyFallSetStatus(GObj *item_gobj)
 // 0x80181124
 sb32 itMLuckyAppearProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITMLUCKY_GRAVITY, ITMLUCKY_TVEL);
 
@@ -187,13 +187,13 @@ sb32 itMLuckyAppearProcUpdate(GObj *item_gobj)
 // 0x80181150
 sb32 itMLuckyAppearProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     itMapTestAllCheckCollEnd(item_gobj);
 
     if (ip->coll_data.coll_mask_current & MPCOLL_FLAG_GROUND)
     {
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
 
         itMLuckyMakeEggSetStatus(item_gobj);
 
@@ -205,7 +205,7 @@ sb32 itMLuckyAppearProcMap(GObj *item_gobj)
 // 0x801811AC
 void itMLuckyAppearSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_kind == nITKindMLucky)
     {
@@ -217,7 +217,7 @@ void itMLuckyAppearSetStatus(GObj *item_gobj)
 // 0x80181200
 sb32 itMLuckyMakeEggProcUpdate(GObj *lucky_gobj)
 {
-    itStruct *lucky_ip = itGetStruct(lucky_gobj), *egg_ip;
+    ITStruct *lucky_ip = itGetStruct(lucky_gobj), *egg_ip;
     DObj *dobj = DObjGetStruct(lucky_gobj);
     GObj *egg_gobj;
     s32 unused;
@@ -281,7 +281,7 @@ sb32 itMLuckyMakeEggProcMap(GObj *item_gobj)
 // 0x80181390
 sb32 itMLuckyMakeEggProcDamage(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->item_vars.mlucky.egg_spawn_wait += ITMLUCKY_EGG_SPAWN_WAIT_ADD;
 
@@ -297,7 +297,7 @@ void itMLuckyMakeEggSetStatus(GObj *item_gobj)
 // 0x801813D0
 sb32 itMLuckyDisappearProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->item_vars.mlucky.lifetime == 0)
     {
@@ -311,11 +311,11 @@ sb32 itMLuckyDisappearProcUpdate(GObj *item_gobj)
 // 0x801813F8
 void itMLuckyDisappearSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->item_vars.mlucky.lifetime = ITMLUCKY_LIFETIME;
 
-    ip->item_hurt.hitstatus = nGMHitStatusNone;
+    ip->damage_coll.hitstatus = nGMHitStatusNone;
 
     itMainSetItemStatus(item_gobj, dITMLuckyStatusDescs, nITMLuckyStatusDisappear);
 }
@@ -323,11 +323,11 @@ void itMLuckyDisappearSetStatus(GObj *item_gobj)
 // 0x80181430
 sb32 itMLuckyCommonProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (ip->it_multi == 0)
     {
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
 
         itMLuckyAppearSetStatus(item_gobj);
     }
@@ -339,11 +339,11 @@ sb32 itMLuckyCommonProcUpdate(GObj *item_gobj)
 // 0x80181480
 sb32 itMLuckyCommonProcMap(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     if (itMapTestAllCollisionFlag(item_gobj, MPCOLL_FLAG_GROUND) != FALSE)
     {
-        ip->phys_info.vel_air.y = 0.0F;
+        ip->physics.vel_air.y = 0.0F;
     }
     return FALSE;
 }
@@ -353,7 +353,7 @@ GObj* itMLuckyMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 {
     GObj *item_gobj = itManagerMakeItem(parent_gobj, &dITMLuckyItemDesc, pos, vel, flags);
     DObj *dobj;
-    itStruct *ip;
+    ITStruct *ip;
 
     if (item_gobj != NULL)
     {
@@ -367,10 +367,10 @@ GObj* itMLuckyMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
         
-        ip->phys_info.vel_air.x = ip->phys_info.vel_air.z = 0.0F;
-        ip->phys_info.vel_air.y = ITMONSTER_RISE_VEL_Y;
+        ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
+        ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        dobj->translate.vec.f.y -= ip->attributes->objcoll_bottom;
+        dobj->translate.vec.f.y -= ip->attributes->object_coll_bottom;
 
         gcAddDObjAnimJoint(dobj->child, itGetMonsterAnimNode(ip, lITLuckyDataStart), 0.0F); // Linker thing
     }

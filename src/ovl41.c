@@ -36,7 +36,7 @@ CObjDesc dMVOpeningYoshiCObjDescEnd = {
 };
 
 // 0x8018E0F8
-ftKeyCommand dMVOpeningYoshiInputSeq[] =
+FTKeyCommand dMVOpeningYoshiInputSeq[] =
 {
 	FTKEY_EVENT_STICK(I_CONTROLLER_RANGE_MAX, 0, 20),   // 2014, 5000
 	FTKEY_EVENT_BUTTON(Z_TRIG, 1),                      // 1001, 2000
@@ -86,22 +86,22 @@ CObjDesc dMVOpeningYoshiCObjDescAdjustedStart;
 CObjDesc dMVOpeningYoshiCObjDescAdjustedEnd;
 
 // 0x8018E288
-lbFileNode D_ovl41_8018E288[48];
+LBFileNode D_ovl41_8018E288[48];
 
 // 0x8018E408
-lbFileNode D_ovl41_8018E408[7];
+LBFileNode D_ovl41_8018E408[7];
 
 // 0x8018E440
 uintptr_t gMVOpeningYoshiFiles[2];
 
 // 0x8018E448
-scBattleState gMVOpeningYoshiBattleState;
+SCBattleState gMVOpeningYoshiBattleState;
 
 
 // 0x8018D0C0
 void mvOpeningYoshiLoadFiles()
 {
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
@@ -245,7 +245,7 @@ void mvOpeningYoshiInitFighterStagePanel()
 
 	for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
 	{
-		ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+		FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 		if (gBattleState->players[i].pl_kind == nFTPlayerKindNot)
 			continue;
@@ -329,7 +329,7 @@ void mvOpeningYoshiAnimatePosedFighter(GObj* fighter_gobj)
 void mvOpeningYoshiCreatePosedFighter()
 {
 	GObj* fighter_gobj;
-	ftCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
+	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
 	spawn_info.ft_kind = nFTKindYoshi;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindYoshi, 0);

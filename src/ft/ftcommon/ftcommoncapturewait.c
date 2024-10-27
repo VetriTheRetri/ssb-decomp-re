@@ -9,9 +9,9 @@
 // 0x8014A980
 void ftCommonCaptureWaitProcMap(GObj *fighter_gobj)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *capture_gobj = this_fp->capture_gobj;
-    ftStruct *capture_fp = ftGetStruct(capture_gobj);
+    FTStruct *capture_fp = ftGetStruct(capture_gobj);
     Vec3f *this_pos = &DObjGetStruct(fighter_gobj)->translate.vec.f;
     Vec3f capture_pos;
     f32 dist_y;
@@ -45,8 +45,8 @@ void ftCommonCaptureWaitProcMap(GObj *fighter_gobj)
 // 0x8014AA58
 void ftCommonCaptureWaitSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
-    ftStruct *capture_fp = ftGetStruct(this_fp->capture_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *capture_fp = ftGetStruct(this_fp->capture_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCaptureWait, 0.0F, 1.0F, (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_MODELPART));
 

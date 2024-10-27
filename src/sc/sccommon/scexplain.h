@@ -49,7 +49,7 @@ extern void scExplainSetPhaseSObjs(void);
 extern void scExplainUpdateTextBoxSprite(void);
 extern void func_ovl63_8018DDBC(void);
 extern void scExplainHideTapSpark(void);
-extern void scExplainUpdateArgsSObj(scExplainArgs *args, SObj *sobj);
+extern void scExplainUpdateArgsSObj(SCExplainArgs *args, SObj *sobj);
 extern void scExplainDetectExit(void);
 extern void scExplainTryMakeFireFlower(void);
 extern void scExplainUpdatePhase(void);

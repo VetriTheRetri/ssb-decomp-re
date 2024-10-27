@@ -90,7 +90,7 @@ s32 sMNVSModeFramesElapsed;
 s32 sMNVSModeMaxFramesElapsed;
 
 // 0x80134988
-lbFileNode sMNVSModeStatusBuffer[24];
+LBFileNode sMNVSModeStatusBuffer[24];
 
 // 0x80134A48
 void *sMNVSModeFiles[2];
@@ -1460,7 +1460,7 @@ void mnVSModeMain(GObj *gobj)
 // 0x801345C4
 void mnVSModeFuncStart(void)
 {
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

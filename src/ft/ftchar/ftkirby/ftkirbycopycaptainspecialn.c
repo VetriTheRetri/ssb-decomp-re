@@ -9,7 +9,7 @@
 // 0x80160810
 void ftKirbyCopyCaptainSpecialNUpdateEffect(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (!(fp->is_attach_effect))
     {
@@ -65,7 +65,7 @@ void ftKirbyCopyCaptainSpecialNProcPhysics(GObj *fighter_gobj)
 // 0x80160934
 void ftKirbyCopyCaptainSpecialAirNProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     f32 unused;
     f32 boost;
 
@@ -76,8 +76,8 @@ void ftKirbyCopyCaptainSpecialAirNProcPhysics(GObj *fighter_gobj)
 
         boost = ftKirbyCopyCaptainSpecialNGetAngle(fp->input.pl.stick_range.y);
 
-        fp->phys_info.vel_air.y = __sinf(boost) * FTKIRBY_COPYCAPTAIN_FALCONPUNCH_VEL_BASE;
-        fp->phys_info.vel_air.x = __cosf(boost) * fp->lr * FTKIRBY_COPYCAPTAIN_FALCONPUNCH_VEL_BASE;
+        fp->physics.vel_air.y = __sinf(boost) * FTKIRBY_COPYCAPTAIN_FALCONPUNCH_VEL_BASE;
+        fp->physics.vel_air.x = __cosf(boost) * fp->lr * FTKIRBY_COPYCAPTAIN_FALCONPUNCH_VEL_BASE;
     }
     ftKirbyCopyCaptainSpecialNUpdateEffect(fighter_gobj);
 
@@ -88,8 +88,8 @@ void ftKirbyCopyCaptainSpecialAirNProcPhysics(GObj *fighter_gobj)
         break;
 
     case 1:
-        fp->phys_info.vel_air.y *= FTKIRBY_COPYCAPTAIN_FALCONPUNCH_VEL_MUL; // Interestingly, Kirby's version multiplies by singles, 
-        fp->phys_info.vel_air.x *= FTKIRBY_COPYCAPTAIN_FALCONPUNCH_VEL_MUL; // as opposed to Falcon's multiplying by doubles
+        fp->physics.vel_air.y *= FTKIRBY_COPYCAPTAIN_FALCONPUNCH_VEL_MUL; // Interestingly, Kirby's version multiplies by singles, 
+        fp->physics.vel_air.x *= FTKIRBY_COPYCAPTAIN_FALCONPUNCH_VEL_MUL; // as opposed to Falcon's multiplying by doubles
         break;
 
     case 2:
@@ -108,7 +108,7 @@ void ftKirbyCopyCaptainSpecialAirNSwitchStatusGround(GObj *fighter_gobj)
 // 0x80160A80
 void ftKirbyCopyCaptainSpecialNSwitchStatusAir(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyCaptainSpecialAirN, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_RUMBLE | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
@@ -128,9 +128,9 @@ void ftKirbyCopyCaptainSpecialAirNProcMap(GObj *fighter_gobj)
 }
 
 // 0x80160B14
-void ftKirbyCopyCaptainSpecialNInitStatusVars(GObj *fighter_gobj)
+void ftKirbyCopyCaptainSpecialNInITStatusVars(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     
     fp->command_vars.flags.flag0 = fp->command_vars.flags.flag1 = fp->command_vars.flags.flag2 = 0;
 }
@@ -146,7 +146,7 @@ void ftKirbyCopyCaptainSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyCaptainSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftKirbyCopyCaptainSpecialNInitStatusVars(fighter_gobj);
+    ftKirbyCopyCaptainSpecialNInITStatusVars(fighter_gobj);
 }
 
 // 0x80160B70
@@ -154,5 +154,5 @@ void ftKirbyCopyCaptainSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyCaptainSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftKirbyCopyCaptainSpecialNInitStatusVars(fighter_gobj);
+    ftKirbyCopyCaptainSpecialNInITStatusVars(fighter_gobj);
 }

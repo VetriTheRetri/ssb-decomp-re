@@ -21,7 +21,7 @@ extern intptr_t lGRHyruleTwisterThrowHitDesc;   // 0x000000BC
 // 0x801439D0
 void ftCommonTwisterProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->status_vars.common.twister.release_wait++;
 
@@ -34,7 +34,7 @@ void ftCommonTwisterProcUpdate(GObj *fighter_gobj)
 // 0x80143A20
 void ftCommonTwisterProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     GObj *tornado_gobj = fp->status_vars.common.twister.tornado_gobj;
     Vec3f pos = DObjGetStruct(tornado_gobj)->translate.vec.f;
     Vec3f vel;
@@ -58,7 +58,7 @@ void ftCommonTwisterProcPhysics(GObj *fighter_gobj)
     {
         syVectorScale3D(&vel, 50.0F / mag);
     }
-    fp->phys_info.vel_air = vel;
+    fp->physics.vel_air = vel;
 
     DObjGetStruct(fighter_gobj)->rotate.vec.f.y = (fp->lr * F_CLC_DTOR32(90.0F)) + F_CLC_DTOR32(1800.0F * angle_d);
 }
@@ -66,7 +66,7 @@ void ftCommonTwisterProcPhysics(GObj *fighter_gobj)
 // 0x80143BC4
 void ftCommonTwisterSetStatus(GObj *fighter_gobj, GObj *tornado_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftParamStopVoiceRunProcDamage(fighter_gobj);
 
@@ -102,8 +102,8 @@ void ftCommonTwisterSetStatus(GObj *fighter_gobj, GObj *tornado_gobj)
 // 0x80143CC4
 void ftCommonTwisterShootFighter(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftThrowHitDesc *tornado = (ftThrowHitDesc*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRHyruleDataStart) + (intptr_t)&lGRHyruleTwisterThrowHitDesc); // Linker thing
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTThrowHitDesc *tornado = (FTThrowHitDesc*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRHyruleDataStart) + (intptr_t)&lGRHyruleTwisterThrowHitDesc); // Linker thing
     f32 knockback;
     s32 damage;
 

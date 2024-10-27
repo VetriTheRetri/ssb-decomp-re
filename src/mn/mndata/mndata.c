@@ -88,7 +88,7 @@ s32 sMNDataReturnTic;
 // s32 sMNDataPad0x8013309C;
 
 // 0x801330A0
-lbFileNode sMNDataStatusBuffer[24];
+LBFileNode sMNDataStatusBuffer[24];
 
 // 0x80133160
 void *sMNDataFiles[2];
@@ -760,7 +760,7 @@ void mnDataFuncRun(GObj *gobj)
 // 0x80132D64
 void mnDataFuncStart(void)
 {
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

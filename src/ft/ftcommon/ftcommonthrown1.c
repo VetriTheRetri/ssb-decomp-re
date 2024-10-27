@@ -9,18 +9,18 @@
 // 0x8014AAF0
 void ftCommonThrownProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
 
     if (fighter_gobj->anim_frame <= 0.0F)
     {
-        ftStruct *capture_fp = ftGetStruct(this_fp->capture_gobj);
+        FTStruct *capture_fp = ftGetStruct(this_fp->capture_gobj);
 
         if 
         (
             (capture_fp->ft_kind != nFTKindDonkey)                      &&
             (capture_fp->ft_kind != nFTKindNDonkey)                     &&
             (capture_fp->ft_kind != nFTKindGDonkey)                     ||
-            (capture_fp->status_info.status_id != nFTCommonStatusThrowF)
+            (capture_fp->status_id != nFTCommonStatusThrowF)
         )
         {
             ftCommonThrownSetStatusImmediate(fighter_gobj, this_fp->status_vars.common.thrown.status_id);
@@ -38,9 +38,9 @@ void ftCommonThrownProcPhysics(GObj *fighter_gobj)
 // 0x8014AB8C
 void ftCommonThrownProcMap(GObj *fighter_gobj)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *capture_gobj = this_fp->capture_gobj;
-    ftStruct *capture_fp = ftGetStruct(capture_gobj);
+    FTStruct *capture_fp = ftGetStruct(capture_gobj);
     Vec3f *this_pos = &DObjGetStruct(fighter_gobj)->translate.vec.f;
     Vec3f unused;
     f32 dist_y;
@@ -60,8 +60,8 @@ void ftCommonThrownProcMap(GObj *fighter_gobj)
 // 0x8014AC0C
 void ftCommonThrownSetStatusQueue(GObj *fighter_gobj, s32 status_id_new, s32 status_id_queue)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
-    ftStruct *capture_fp = ftGetStruct(this_fp->capture_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *capture_fp = ftGetStruct(this_fp->capture_gobj);
 
     this_fp->ga = nMPKineticsAir;
     this_fp->jumps_used = 1;
@@ -83,8 +83,8 @@ void ftCommonThrownSetStatusQueue(GObj *fighter_gobj, s32 status_id_new, s32 sta
 // 0x8014ACB4
 void ftCommonThrownSetStatusImmediate(GObj *fighter_gobj, s32 status_id)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
-    ftStruct *capture_fp = ftGetStruct(this_fp->capture_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *capture_fp = ftGetStruct(this_fp->capture_gobj);
 
     this_fp->ga = nMPKineticsAir;
     this_fp->jumps_used = 1;
@@ -109,7 +109,7 @@ void ftCommonThrownSetStatusImmediate(GObj *fighter_gobj, s32 status_id)
         (capture_fp->ft_kind == nFTKindNLuigi)
     )
     {
-        if (capture_fp->status_info.status_id == nFTCommonStatusThrowB)
+        if (capture_fp->status_id == nFTCommonStatusThrowB)
         {
             ftParamMakeRumble(this_fp, 7, 0);
         }

@@ -22,7 +22,7 @@ void ftCommonShieldBreakDownProcUpdate(GObj *fighter_gobj)
 // 0x801496A4
 void ftCommonShieldBreakDownSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
 
     if (fp->ga == nMPKineticsAir)

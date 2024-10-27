@@ -17,6 +17,6 @@ extern f32 gCMManagerPauseCameraEyeX; // Also from .bss
 extern Mtx44f gCMManagerMtx; // Mtx44f?
 
 // 0x801314B0
-extern cmStruct gCMManagerCameraStruct;
+extern CMStruct gCMManagerCameraStruct;
 
 #endif

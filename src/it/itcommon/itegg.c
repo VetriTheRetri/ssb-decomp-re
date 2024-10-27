@@ -16,7 +16,7 @@ extern intptr_t lITEggHitEvents;            // 0x00000B14
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dITEggItemDesc =
+ITCreateDesc dITEggItemDesc =
 {
     nITKindEgg,                             // Item Kind
     &gITManagerFileData,                    // Pointer to item file data?
@@ -40,7 +40,7 @@ itCreateDesc dITEggItemDesc =
     itEggCommonProcHit                      // Proc Damage
 };
 
-itStatusDesc dITEggStatusDescs[/* */] =
+ITStatusDesc dITEggStatusDescs[/* */] =
 {
     // Status 0 (Ground Wait)
     {
@@ -141,7 +141,7 @@ enum itEggStatus
 // 0x801815C0
 sb32 itEggFallProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITEGG_GRAVITY, ITEGG_TVEL);
@@ -201,12 +201,12 @@ void itEggWaitSetStatus(GObj *item_gobj)
 // 0x8018171C
 void itEggFallSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->is_allow_pickup = FALSE;
 
-    ip->item_hurt.hitstatus = nGMHitStatusNormal;
-    ip->item_hit.update_state = nGMHitUpdateDisable;
+    ip->damage_coll.hitstatus = nGMHitStatusNormal;
+    ip->hit_coll.update_state = nGMHitUpdateDisable;
 
     ip->is_damage_all = TRUE;
 
@@ -223,7 +223,7 @@ void itEggHoldSetStatus(GObj *item_gobj)
 // 0x801817A0
 sb32 itEggThrownProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     itMainApplyGravityClampTVel(ip, ITEGG_GRAVITY, ITEGG_TVEL);
@@ -253,11 +253,11 @@ sb32 itEggThrownProcMap(GObj *item_gobj)
 // 0x80181854
 void itEggThrownSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->is_damage_all = TRUE;
 
-    ip->item_hurt.hitstatus = nGMHitStatusNormal;
+    ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
     itMainSetItemStatus(item_gobj, dITEggStatusDescs, nITEggStatusThrown);
 }
@@ -279,11 +279,11 @@ sb32 itEggDroppedProcMap(GObj *item_gobj)
 // 0x801818E8
 void itEggDroppedSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->is_damage_all = TRUE;
 
-    ip->item_hurt.hitstatus = nGMHitStatusNormal;
+    ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
     itMainSetItemStatus(item_gobj, dITEggStatusDescs, nITEggStatusDropped);
 }
@@ -291,7 +291,7 @@ void itEggDroppedSetStatus(GObj *item_gobj)
 // 0x80181928
 sb32 itEggExplodeProcUpdate(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi++;
 
@@ -314,11 +314,11 @@ GObj* itEggMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     if (item_gobj != NULL)
     {
         DObj *dobj = DObjGetStruct(item_gobj);
-        itStruct *egg_ip = itGetStruct(item_gobj);
+        ITStruct *egg_ip = itGetStruct(item_gobj);
 
         egg_ip->is_unused_item_bool = TRUE;
 
-        egg_ip->indicator_gobj = ifCommonItemArrowMakeInterface(egg_ip);
+        egg_ip->arrow_gobj = ifCommonItemArrowMakeInterface(egg_ip);
 
         gcAddXObjForDObjFixed(dobj->child, 0x2E, 0);
 
@@ -326,13 +326,13 @@ GObj* itEggMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         if (flags & ITEM_FLAG_PARENT_ITEM)
         {
-            itStruct *spawn_ip = itGetStruct(parent_gobj);
+            ITStruct *spawn_ip = itGetStruct(parent_gobj);
 
             if ((spawn_ip->it_kind == nITKindMLucky) && (mtTrigGetRandomIntRange(2) == 0))
             {
                 dobj->child->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
 
-                egg_ip->phys_info.vel_air.x = -egg_ip->phys_info.vel_air.x;
+                egg_ip->physics.vel_air.x = -egg_ip->physics.vel_air.x;
 
                 egg_ip->lr = -egg_ip->lr;
             }
@@ -344,24 +344,24 @@ GObj* itEggMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 // 0x80181AA8
 void itEggExplodeInitItemVars(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
 
     ip->it_multi = 0;
 
     ip->item_event_id = 0;
 
-    ip->item_hit.hit_sfx = nSYAudioFGMExplodeL;
-    ip->item_hit.throw_mul = ITEM_THROW_DEFAULT;
+    ip->hit_coll.hit_sfx = nSYAudioFGMExplodeL;
+    ip->hit_coll.throw_mul = ITEM_THROW_DEFAULT;
 
     func_800269C0_275C0(nSYAudioFGMExplodeL);
 
-    ip->item_hit.can_rehit_item = TRUE;
-    ip->item_hit.can_hop = FALSE;
-    ip->item_hit.can_reflect = FALSE;
-    ip->item_hit.can_setoff = FALSE;
-    ip->item_hit.element = nGMHitElementFire;
+    ip->hit_coll.can_rehit_item = TRUE;
+    ip->hit_coll.can_hop = FALSE;
+    ip->hit_coll.can_reflect = FALSE;
+    ip->hit_coll.can_setoff = FALSE;
+    ip->hit_coll.element = nGMHitElementFire;
 
-    ip->item_hurt.hitstatus = nGMHitStatusNone;
+    ip->damage_coll.hitstatus = nGMHitStatusNone;
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshHit(item_gobj);
@@ -378,15 +378,15 @@ void itEggExplodeSetStatus(GObj *item_gobj)
 // 0x80181B90
 void itEggExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 {
-    itStruct *ip = itGetStruct(item_gobj);
+    ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
-    lbParticle *ep;
+    LBParticle *ep;
 
-    ip->item_hit.update_state = nGMHitUpdateDisable;
+    ip->hit_coll.update_state = nGMHitUpdateDisable;
 
-    ip->phys_info.vel_air.x = 0.0F;
-    ip->phys_info.vel_air.y = 0.0F;
-    ip->phys_info.vel_air.z = 0.0F;
+    ip->physics.vel_air.x = 0.0F;
+    ip->physics.vel_air.y = 0.0F;
+    ip->physics.vel_air.z = 0.0F;
 
     ep = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 

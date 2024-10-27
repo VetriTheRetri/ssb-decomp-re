@@ -15,7 +15,7 @@ void ftBossOkupunch1ProcUpdate(GObj *fighter_gobj)
 // 0x8015A7C4
 void ftBossOkupunch1SetStatus(GObj *fighter_gobj)
 {
-    ftStruct *boss_fp, *target_fp;
+    FTStruct *boss_fp, *target_fp;
     s32 ground_line_id;
     s32 line_id;
 

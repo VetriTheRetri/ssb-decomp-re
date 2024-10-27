@@ -20,7 +20,7 @@ extern intptr_t lITLinkBombBloatScales; 	// 0x000000A8
 //                               //
 // // // // // // // // // // // //
 
-itCreateDesc dItLinkBombItemDesc =
+ITCreateDesc dItLinkBombItemDesc =
 {
 	nITKindLinkBomb, 						// Item Kind
 	&gFTDataLinkMain, 						// Pointer to item file data?
@@ -44,7 +44,7 @@ itCreateDesc dItLinkBombItemDesc =
 	NULL									// Proc Damage
 };
 
-itStatusDesc dItLinkBombStatusDescs[/* */] = 
+ITStatusDesc dItLinkBombStatusDescs[/* */] = 
 {
 	// Status 0 (Ground Wait)
 	{
@@ -146,7 +146,7 @@ enum itLinkBombStatus
 void itLinkBombExplodeWaitUpdateScale(GObj *item_gobj)
 {
 	DObj *dobj = DObjGetStruct(item_gobj);
-	itStruct *ip = itGetStruct(item_gobj);
+	ITStruct *ip = itGetStruct(item_gobj);
 
 	if (ip->item_vars.link_bomb.scale_int == 0)
 	{
@@ -177,8 +177,8 @@ void itLinkBombExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 {
 	s32 unused;
 	DObj *dobj = DObjGetStruct(item_gobj);
-	itStruct *ip = itGetStruct(item_gobj);
-	lbParticle *ptcl;
+	ITStruct *ip = itGetStruct(item_gobj);
+	LBParticle *ptcl;
 
 	itLinkBombCommonSetHitStatusNone(item_gobj);
 
@@ -194,7 +194,7 @@ void itLinkBombExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 
 	DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_HIDDEN;
 
-	ip->item_hit.hit_sfx = nSYAudioFGMExplodeL;
+	ip->hit_coll.hit_sfx = nSYAudioFGMExplodeL;
 
 	itMainRefreshHit(item_gobj);
 	itLinkBombExplodeSetStatus(item_gobj);
@@ -204,12 +204,12 @@ void itLinkBombExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 void func_ovl3_80185B18(GObj *item_gobj)
 {
 	s32 unused[5];
-	itStruct *ip = itGetStruct(item_gobj);
-	itAttributes *attributes = ip->attributes;
+	ITStruct *ip = itGetStruct(item_gobj);
+	ITAttributes *attributes = ip->attributes;
 	DObj *dobj = DObjGetStruct(item_gobj);
 	Vec3f pos = dobj->translate.vec.f;
 
-	pos.y += attributes->objcoll_bottom;
+	pos.y += attributes->object_coll_bottom;
 
 	efManagerDustHeavyDoubleMakeEffect(&pos, ip->lr, 1.0F);
 }
@@ -217,16 +217,16 @@ void func_ovl3_80185B18(GObj *item_gobj)
 // 0x80185B84
 sb32 itLinkBombCommonProcDamage(GObj *item_gobj)
 {
-	itStruct *ip = itGetStruct(item_gobj);
+	ITStruct *ip = itGetStruct(item_gobj);
 
 	if (ip->damage_queue >= ITLINKBOMB_HEALTH)
 		itLinkBombExplodeInitItemVars(item_gobj);
 	else
 	{
-		ip->lr = -ip->lr_damage;
+		ip->lr = -ip->damage_lr;
 
-		ip->phys_info.vel_air.x = -ip->lr_damage  *ITLINKBOMB_DAMAGE_RECOIL_VEL_X;
-		ip->phys_info.vel_air.y = -ip->lr_damage  *ITLINKBOMB_DAMAGE_RECOIL_VEL_Y;
+		ip->physics.vel_air.x = -ip->damage_lr  *ITLINKBOMB_DAMAGE_RECOIL_VEL_X;
+		ip->physics.vel_air.y = -ip->damage_lr  *ITLINKBOMB_DAMAGE_RECOIL_VEL_Y;
 	}
 	return FALSE;
 }
@@ -234,22 +234,22 @@ sb32 itLinkBombCommonProcDamage(GObj *item_gobj)
 // 0x80185BFC
 sb32 itLinkBombThrownProcHit(GObj *item_gobj)
 {
-	itStruct *ip = itGetStruct(item_gobj);
+	ITStruct *ip = itGetStruct(item_gobj);
 
 	if 
 	(
-		(ABSF(ip->phys_info.vel_air.x) > ITLINKBOMB_EXPLODE_THRESHOLD_VEL_X) || 
-		(ABSF(ip->phys_info.vel_air.y) > ITLINKBOMB_EXPLODE_THRESHOLD_VEL_Y)
+		(ABSF(ip->physics.vel_air.x) > ITLINKBOMB_EXPLODE_THRESHOLD_VEL_X) || 
+		(ABSF(ip->physics.vel_air.y) > ITLINKBOMB_EXPLODE_THRESHOLD_VEL_Y)
 	)
 	{
 		itLinkBombExplodeInitItemVars(item_gobj);
 	}
 	else
 	{
-		ip->lr = -ip->lr_attack;
+		ip->lr = -ip->attack_lr;
 
-		ip->phys_info.vel_air.x = -ip->lr_attack * ITLINKBOMB_HIT_RECOIL_VEL_X;
-		ip->phys_info.vel_air.y = ITLINKBOMB_HIT_RECOIL_VEL_Y;
+		ip->physics.vel_air.x = -ip->attack_lr * ITLINKBOMB_HIT_RECOIL_VEL_X;
+		ip->physics.vel_air.y = ITLINKBOMB_HIT_RECOIL_VEL_Y;
 
 		itLinkBombFallSetStatus(item_gobj);
 	}
@@ -259,23 +259,23 @@ sb32 itLinkBombThrownProcHit(GObj *item_gobj)
 // 0x80185CD4
 void itLinkBombCommonSetHitStatusNormal(GObj *item_gobj)
 {
-	itStruct *ip = itGetStruct(item_gobj);
+	ITStruct *ip = itGetStruct(item_gobj);
 
-	ip->item_hurt.hitstatus = nGMHitStatusNormal;
+	ip->damage_coll.hitstatus = nGMHitStatusNormal;
 }
 
 // 0x80185CE4
 void itLinkBombCommonSetHitStatusNone(GObj *item_gobj)
 {
-	itStruct *ip = itGetStruct(item_gobj);
+	ITStruct *ip = itGetStruct(item_gobj);
 
-	ip->item_hurt.hitstatus = nGMHitStatusNone;
+	ip->damage_coll.hitstatus = nGMHitStatusNone;
 }
 
 // 0x80185CF0
 sb32 itLinkBombFallProcUpdate(GObj *item_gobj)
 {
-	itStruct *ip = itGetStruct(item_gobj);
+	ITStruct *ip = itGetStruct(item_gobj);
 
 	itMainApplyGravityClampTVel(ip, ITLINKBOMB_GRAVITY, ITLINKBOMB_TVEL);
 
@@ -303,15 +303,15 @@ sb32 itLinkBombFallProcUpdate(GObj *item_gobj)
 // 0x80185DCC
 sb32 itLinkBombWaitProcUpdate(GObj *item_gobj)
 {
-	itStruct *ip = itGetStruct(item_gobj);
+	ITStruct *ip = itGetStruct(item_gobj);
 
-	if (ip->phys_info.vel_air.x != 0.0F)
+	if (ip->physics.vel_air.x != 0.0F)
 	{
-		ip->phys_info.vel_air.x += (-1.0F) * ip->lr;
+		ip->physics.vel_air.x += (-1.0F) * ip->lr;
 	}
-	if (ABSF(ip->phys_info.vel_air.x) < 1.0F)
+	if (ABSF(ip->physics.vel_air.x) < 1.0F)
 	{
-		ip->phys_info.vel_air.x = 0;
+		ip->physics.vel_air.x = 0;
 	}
 	if (ip->lifetime == 0)
 	{
@@ -351,15 +351,15 @@ sb32 itLinkBombFallProcMap(GObj *item_gobj)
 // 0x80185F70
 void itLinkBombWaitSetStatus(GObj *item_gobj)
 {
-	itStruct *ip = itGetStruct(item_gobj);
+	ITStruct *ip = itGetStruct(item_gobj);
 
-	ip->item_hit.update_state = nGMHitUpdateDisable;
+	ip->hit_coll.update_state = nGMHitUpdateDisable;
 
 	ip->is_allow_pickup = TRUE;
 
 	ip->times_landed = 0;
 
-	ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = ip->phys_info.vel_air.z = 0.0F;
+	ip->physics.vel_air.x = ip->physics.vel_air.y = ip->physics.vel_air.z = 0.0F;
 
 	itMapSetGround(ip);
 	itLinkBombCommonSetHitStatusNormal(item_gobj);
@@ -369,7 +369,7 @@ void itLinkBombWaitSetStatus(GObj *item_gobj)
 // 0x80185FD8
 void itLinkBombFallSetStatus(GObj *item_gobj)
 {
-	itStruct *ip = itGetStruct(item_gobj);
+	ITStruct *ip = itGetStruct(item_gobj);
 
 	ip->is_allow_pickup = FALSE;
 
@@ -381,10 +381,10 @@ void itLinkBombFallSetStatus(GObj *item_gobj)
 // 0x80186024
 sb32 itLinkBombHoldProcUpdate(GObj *item_gobj)
 {
-	itStruct *ip = itGetStruct(item_gobj);
-	ftStruct *fp = ftGetStruct(ip->owner_gobj);
+	ITStruct *ip = itGetStruct(item_gobj);
+	FTStruct *fp = ftGetStruct(ip->owner_gobj);
 
-	if (fp->status_info.status_id == nFTCommonStatusDokanWait) // Kind of odd but sure
+	if (fp->status_id == nFTCommonStatusDokanWait) // Kind of odd but sure
 	{
 		return FALSE;
 	}
@@ -401,7 +401,7 @@ sb32 itLinkBombHoldProcUpdate(GObj *item_gobj)
 			// Update 3/23/2023: itMainSetFighterRelease matches as variadic. No comment.
 			// Update  7/2/2023: variadic match confirmed fake, so does this file really use an erroneous decleration?
 
-			itMainSetFighterRelease(item_gobj, &ip->phys_info.vel_air, 1.0F);
+			itMainSetFighterRelease(item_gobj, &ip->physics.vel_air, 1.0F);
 			itMainClearOwnerStats(item_gobj);
 			itLinkBombExplodeInitItemVars(item_gobj);
 		}
@@ -432,8 +432,8 @@ void itLinkBombHoldSetStatus(GObj *item_gobj)
 sb32 itLinkBombThrownProcMap(GObj *item_gobj)
 {
 	s32 unused;
-	itStruct *ip = itGetStruct(item_gobj);
-	Vec3f vel = ip->phys_info.vel_air;
+	ITStruct *ip = itGetStruct(item_gobj);
+	Vec3f vel = ip->physics.vel_air;
 
 	if (itMapCheckMapReboundProcAll(item_gobj, 0.4F, 0.3F, itLinkBombFallSetStatus) != FALSE)
 	{
@@ -448,7 +448,7 @@ sb32 itLinkBombThrownProcMap(GObj *item_gobj)
 // 0x80186224
 void itLinkBombThrownSetStatus(GObj *item_gobj)
 {
-	itStruct *ip = itGetStruct(item_gobj);
+	ITStruct *ip = itGetStruct(item_gobj);
 
 	itLinkBombCommonSetHitStatusNormal(item_gobj);
 
@@ -460,7 +460,7 @@ void itLinkBombThrownSetStatus(GObj *item_gobj)
 // 0x80186270
 sb32 itLinkBombDroppedProcUpdate(GObj *item_gobj)
 {
-	itStruct *ip = itGetStruct(item_gobj);
+	ITStruct *ip = itGetStruct(item_gobj);
 
 	if (ip->item_vars.link_bomb.drop_update_wait != 0)
 	{
@@ -474,7 +474,7 @@ sb32 itLinkBombDroppedProcUpdate(GObj *item_gobj)
 // 0x801862AC
 sb32 itLinkBombDroppedProcHit(GObj *item_gobj)
 {
-	itStruct *ip = itGetStruct(item_gobj);
+	ITStruct *ip = itGetStruct(item_gobj);
 
 	if (ip->item_vars.link_bomb.drop_update_wait == 0)
 	{
@@ -486,7 +486,7 @@ sb32 itLinkBombDroppedProcHit(GObj *item_gobj)
 // 0x801862E0
 sb32 itLinkBombDroppedProcDamage(GObj *item_gobj)
 {
-	itStruct *ip = itGetStruct(item_gobj);
+	ITStruct *ip = itGetStruct(item_gobj);
 
 	if (ip->item_vars.link_bomb.drop_update_wait == 0)
 	{
@@ -498,7 +498,7 @@ sb32 itLinkBombDroppedProcDamage(GObj *item_gobj)
 // 0x80186314
 void itLinkBombDroppedSetStatus(GObj *item_gobj)
 {
-	itStruct *ip = itGetStruct(item_gobj);
+	ITStruct *ip = itGetStruct(item_gobj);
 
 	itLinkBombCommonSetHitStatusNormal(item_gobj);
 
@@ -511,9 +511,9 @@ void itLinkBombDroppedSetStatus(GObj *item_gobj)
 
 void itLinkBombExplodeInitItemVars(GObj *item_gobj)
 {
-	itStruct *ip = itGetStruct(item_gobj);
+	ITStruct *ip = itGetStruct(item_gobj);
 
-	ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = ip->phys_info.vel_air.z = 0.0F;
+	ip->physics.vel_air.x = ip->physics.vel_air.y = ip->physics.vel_air.z = 0.0F;
 
 	itMainClearOwnerStats(item_gobj);
 	itLinkBombExplodeMakeEffectGotoSetStatus(item_gobj);
@@ -523,21 +523,21 @@ void itLinkBombExplodeInitItemVars(GObj *item_gobj)
 // 0x801863AC
 void itLinkBombExplodeUpdateHitEvent(GObj *item_gobj)
 {
-	itStruct *ip = itGetStruct(item_gobj);
-	itHitEvent *ev = itGetHitEvent(dItLinkBombItemDesc, lITLinkBombHitEvents);
+	ITStruct *ip = itGetStruct(item_gobj);
+	ITHitEvent *ev = itGetHitEvent(dItLinkBombItemDesc, lITLinkBombHitEvents);
 
 	if (ip->it_multi == ev[ip->item_event_id].timer)
 	{
-		ip->item_hit.angle = ev[ip->item_event_id].angle;
-		ip->item_hit.damage = ev[ip->item_event_id].damage;
-		ip->item_hit.size = ev[ip->item_event_id].size;
+		ip->hit_coll.angle = ev[ip->item_event_id].angle;
+		ip->hit_coll.damage = ev[ip->item_event_id].damage;
+		ip->hit_coll.size = ev[ip->item_event_id].size;
 
-		ip->item_hit.can_rehit_item = TRUE;
-		ip->item_hit.can_hop = FALSE;
-		ip->item_hit.can_reflect = FALSE;
-		ip->item_hit.can_setoff = FALSE;
+		ip->hit_coll.can_rehit_item = TRUE;
+		ip->hit_coll.can_hop = FALSE;
+		ip->hit_coll.can_reflect = FALSE;
+		ip->hit_coll.can_setoff = FALSE;
 
-		ip->item_hit.element = nGMHitElementFire;
+		ip->hit_coll.element = nGMHitElementFire;
 
 		ip->item_event_id++;
 
@@ -564,14 +564,14 @@ sb32 func_ovl3_801864BC(GObj *item_gobj) // Unused
 }
 
 // 0x801864E8
-void itLinkBombExplodeInitHitbox(GObj *item_gobj)
+void itLinkBombExplodeInITHitColl(GObj *item_gobj)
 {
-	itStruct *ip = itGetStruct(item_gobj);
+	ITStruct *ip = itGetStruct(item_gobj);
 
 	ip->it_multi = 0;
 	ip->item_event_id = 0;
 
-	ip->item_hit.throw_mul = 1.0F;
+	ip->hit_coll.throw_mul = 1.0F;
 
 	itLinkBombExplodeUpdateHitEvent(item_gobj);
 }
@@ -579,7 +579,7 @@ void itLinkBombExplodeInitHitbox(GObj *item_gobj)
 // 0x80186524
 sb32 itLinkBombExplodeProcUpdate(GObj *item_gobj)
 {
-	itStruct *ip = itGetStruct(item_gobj);
+	ITStruct *ip = itGetStruct(item_gobj);
 
 	itLinkBombExplodeUpdateHitEvent(item_gobj);
 
@@ -595,7 +595,7 @@ sb32 itLinkBombExplodeProcUpdate(GObj *item_gobj)
 // 0x8018656C
 void itLinkBombExplodeSetStatus(GObj *item_gobj)
 {
-	itLinkBombExplodeInitHitbox(item_gobj);
+	itLinkBombExplodeInITHitColl(item_gobj);
 	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, nITLinkBombStatusExplode);
 }
 
@@ -604,7 +604,7 @@ GObj *itLinkBombMakeItem(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 {
 	GObj *item_gobj = itManagerMakeItem(fighter_gobj, &dItLinkBombItemDesc, pos, vel, ITEM_FLAG_PARENT_FIGHTER);
 	DObj *dobj;
-	itStruct *ip;
+	ITStruct *ip;
 
 	if (item_gobj != NULL)
 	{
@@ -621,9 +621,9 @@ GObj *itLinkBombMakeItem(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 		ip->item_vars.link_bomb.scale_id = 0;
 		ip->item_vars.link_bomb.scale_int = ITLINKBOMB_SCALE_INT;
 
-		ip->item_hit.can_rehit_shield = TRUE;
+		ip->hit_coll.can_rehit_shield = TRUE;
 
-		ip->phys_info.vel_air.x = ip->phys_info.vel_air.y = ip->phys_info.vel_air.z = 0.0F;
+		ip->physics.vel_air.x = ip->physics.vel_air.y = ip->physics.vel_air.z = 0.0F;
 
 		itMainSetFighterHold(item_gobj, fighter_gobj);
 	}

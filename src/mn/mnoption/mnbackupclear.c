@@ -102,7 +102,7 @@ s32 sMNBackupClearOptionConfirmAnimLength;
 s32 sMNBackupClearReturnTic;
 
 // 0x801330F0
-lbFileNode sMNBackupClearStatusBuffer[24];
+LBFileNode sMNBackupClearStatusBuffer[24];
 
 // 0x801331B0
 void *sMNBackupClearFiles[3];
@@ -777,7 +777,7 @@ void mnBackupClearFuncRun(GObj *gobj)
 // 0x80132D34
 void mnBackupClearFuncStart(void)
 {
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

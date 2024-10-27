@@ -9,7 +9,7 @@
 /* Can't actually use this in a matching build, newline memes :(
 #define rdManagerSetupCommonFiles(status_buffer, force_status_buffer)                    \
 {                                                                           \
-    lbRelocSetup rl_setup;                                                  \
+    LBRelocSetup rl_setup;                                                  \
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;                               \
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;                      \
     rl_setup.file_heap = NULL;                                              \
@@ -58,6 +58,6 @@ extern void* lbRelocGetFileExternForceStatusBufferHeap(u32 id, void *heap);
 extern size_t lbRelocLoadFilesExtern(u32 *ids, u32 len, void **files, void *heap);
 extern size_t lbRelocLoadFilesIntern(u32 *ids, u32 len, void **files);
 extern size_t lbRelocGetAllocSize(u32 *ids, u32 len);
-extern void lbRelocInitSetup(lbRelocSetup *setup);
+extern void lbRelocInitSetup(LBRelocSetup *setup);
 
 #endif

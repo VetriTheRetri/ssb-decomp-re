@@ -15,7 +15,7 @@ void ftBossOkupunch3ProcUpdate(GObj *fighter_gobj)
 // 0x8015AA34
 void ftBossOkupunch3SetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f *translate;
 
     fp->lr = nGMFacingL;

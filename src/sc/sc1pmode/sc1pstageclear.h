@@ -160,7 +160,7 @@ extern void sc1PStageClearMakeTargetTextSObjs(void);
 extern void func_ovl56_80132DC0(GObj *gobj);
 extern void func_ovl56_80132E40(f32 x, f32 y, s32 objective_num);
 extern void func_ovl56_80132F78(void);
-extern sc1PStageClearStats* sc1PStageClearSetupBonusStats(sc1PStageClearStats *bonus_setup, s32 bonus_id);
+extern SC1PStageClearStats* sc1PStageClearSetupBonusStats(SC1PStageClearStats *bonus_setup, s32 bonus_id);
 extern sb32 sc1PStageClearCheckHaveBonusStats(void);
 extern sb32 sc1PStageClearCheckGameClearBonus(s32 bonus_id);
 extern s32 sc1PStageClearGetNoMissMultiplier(s32 stage);

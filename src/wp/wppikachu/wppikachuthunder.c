@@ -18,7 +18,7 @@ lWPPikachuThunderTrailWeaponAttributes;         // 0x00000040
 //                               //
 // // // // // // // // // // // //
 
-wpCreateDesc dWPPikachuThunderHeadWeaponDesc =
+WPCreateDesc dWPPikachuThunderHeadWeaponDesc =
 {
     0x02,                                       // Render flags?
     nWPKindThunderHead,                        // Weapon Kind
@@ -42,7 +42,7 @@ wpCreateDesc dWPPikachuThunderHeadWeaponDesc =
     NULL                                        // Proc Absorb
 };
 
-wpCreateDesc dWPPikachuThunderTrailWeaponDesc =
+WPCreateDesc dWPPikachuThunderTrailWeaponDesc =
 {
     0x02,                                       // Render flags?
     nWPKindThunderTrail,                       // Weapon Kind
@@ -75,11 +75,11 @@ wpCreateDesc dWPPikachuThunderTrailWeaponDesc =
 // 0x8016A640
 void wpPikachuThunderHeadSetDestroy(GObj *weapon_gobj, sb32 is_destroy)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
     if (!(wp->weapon_vars.thunder.thunder_state & nWPPikachuThunderStatusDestroy))
     {
-        ftStruct *fp = ftGetStruct(wp->owner_gobj);
+        FTStruct *fp = ftGetStruct(wp->owner_gobj);
 
         if (fp->player_number == wp->player_number) // Check number of player that spawned Thunder
         {
@@ -112,7 +112,7 @@ void wpPikachuThunderHeadMakeTrailEffect(GObj *weapon_gobj, s32 arg1)
 // 0x8016A700
 sb32 wpPikachuThunderHeadProcUpdate(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
     if (wp->weapon_vars.thunder.thunder_state == nWPPikachuThunderStatusCollide)
     {
@@ -160,7 +160,7 @@ GObj* wpPikachuThunderHeadMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 {
     s32 unused;
     GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPPikachuThunderHeadWeaponDesc, pos, WEAPON_FLAG_PARENT_FIGHTER);
-    wpStruct *wp;
+    WPStruct *wp;
 
     if (weapon_gobj == NULL)
     {
@@ -172,9 +172,9 @@ GObj* wpPikachuThunderHeadMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 
     wp->lifetime = WPPIKACHUTHUNDER_SPAWN_LIFETIME;
 
-    wp->phys_info.vel_air = *vel;
+    wp->physics.vel_air = *vel;
 
-    wp->weapon_hit.update_state = nGMHitUpdateDisable;
+    wp->hit_coll.update_state = nGMHitUpdateDisable;
     wp->weapon_vars.thunder.thunder_state = nWPPikachuThunderStatusActive;
 
     wp->group_id = wpManagerGetGroupID();
@@ -191,7 +191,7 @@ GObj* wpPikachuThunderHeadMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 // 0x8016A8D8
 sb32 wpPikachuThunderTrailProcUpdate(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
@@ -211,9 +211,9 @@ sb32 wpPikachuThunderTrailProcUpdate(GObj *weapon_gobj)
 // 0x8016A950
 sb32 wpPikachuThunderTrailProcHit(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
+    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->hit_coll.damage);
 
     return FALSE;
 }
@@ -222,9 +222,9 @@ sb32 wpPikachuThunderTrailProcHit(GObj *weapon_gobj)
 GObj* wpPikachuThunderTrailMakeWeapon(GObj *weapon_gobj, Vec3f *pos)
 {
     s32 unused[2];
-    wpStruct *spawn_wp = wpGetStruct(weapon_gobj);
+    WPStruct *spawn_wp = wpGetStruct(weapon_gobj);
     GObj *trail_gobj = wpManagerMakeWeapon(weapon_gobj, &dWPPikachuThunderTrailWeaponDesc, pos, WEAPON_FLAG_PARENT_WEAPON);
-    wpStruct *trail_wp;
+    WPStruct *trail_wp;
     s32 i;
 
     if (trail_gobj == NULL)
@@ -236,9 +236,9 @@ GObj* wpPikachuThunderTrailMakeWeapon(GObj *weapon_gobj, Vec3f *pos)
     trail_wp->lifetime = WPPIKACHUTHUNDER_TRAIL_LIFETIME;
     trail_wp->group_id = spawn_wp->group_id;
 
-    for (i = 0; i < ARRAY_COUNT(spawn_wp->weapon_hit.hit_targets); i++)
+    for (i = 0; i < ARRAY_COUNT(spawn_wp->hit_coll.hit_record); i++)
     {
-        trail_wp->weapon_hit.hit_targets[i] = spawn_wp->weapon_hit.hit_targets[i];
+        trail_wp->hit_coll.hit_record[i] = spawn_wp->hit_coll.hit_record[i];
     }
     DObjGetStruct(trail_gobj)->scale.vec.f.x = 0.5F;
     DObjGetStruct(trail_gobj)->scale.vec.f.y = 0.5F;

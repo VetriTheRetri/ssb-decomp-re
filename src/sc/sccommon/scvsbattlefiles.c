@@ -2,15 +2,15 @@
 #include <lb/library.h>
 
 // 0x8018E480
-lbFileNode sSCVSBattleStatusBuffer[100];
+LBFileNode sSCVSBattleStatusBuffer[100];
 
 // 0x8018E7A0
-lbFileNode sSCVSBattleForceStatusBuffer[7];
+LBFileNode sSCVSBattleForceStatusBuffer[7];
 
 // 0x8018E330
 void scVSBattleSetupFiles(void)
 {
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

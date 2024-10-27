@@ -22,15 +22,15 @@ void ftCommonShieldBreakFlyProcMap(GObj *fighter_gobj)
 // 0x80149488
 void ftCommonShieldBreakFlySetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusShieldBreakFly, 0.0F, 1.0F, FTSTATUS_PRESERVE_DAMAGEPLAYER);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
-    fp->phys_info.vel_air.x = 0.0F;
-    fp->phys_info.vel_air.y = attributes->shield_break_vel_y;
+    fp->physics.vel_air.x = 0.0F;
+    fp->physics.vel_air.y = attributes->shield_break_vel_y;
 
     ftParamCheckSetFighterColAnimID(fighter_gobj, FTCOMMON_SHIELDBREAK_COLANIM_ID, FTCOMMON_SHIELDBREAK_COLANIM_LENGTH);
     func_800269C0_275C0(nSYAudioFGMShieldBreak);
@@ -39,7 +39,7 @@ void ftCommonShieldBreakFlySetStatus(GObj *fighter_gobj)
 // 0x80149510
 void ftCommonShieldBreakFlyCommonSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f offset;
 
     offset.x = 0.0F;
@@ -70,11 +70,11 @@ void ftCommonShieldBreakFlyCommonSetStatus(GObj *fighter_gobj)
 // 0x80149608
 void ftCommonShieldBreakFlyReflectorSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftSpecialHit *special_hit = fp->special_hit;
-    Vec3f offset = special_hit->offset;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTSpecialColl *special_coll = fp->special_coll;
+    Vec3f offset = special_coll->offset;
 
-    gmCollisionGetFighterPartsWorldPosition(fp->joints[special_hit->joint_id], &offset);
+    gmCollisionGetFighterPartsWorldPosition(fp->joints[special_coll->joint_id], &offset);
     efManagerReflectBreakMakeEffect(&offset, fp->lr_reflect);
     ftCommonShieldBreakFlySetStatus(fighter_gobj);
 }

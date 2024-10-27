@@ -78,7 +78,7 @@ f32 dMPCollisionMaterialFrictions[/* */] =
 };
 
 // 0x8012C520
-grFileInfo dMPCollisionGroundFileInfos[/* */] =
+GRFileInfo dMPCollisionGroundFileInfos[/* */] =
 {
     { &lGRCastleGroundFileID, &lGRCommonHeaderStart },      // Peach's Castle
     { &lGRSectorGroundFileID, &lGRCommonHeaderStart },      // Sector Z
@@ -173,37 +173,37 @@ u8 dMPCollisionUnusedFloats[/* */] =
 // // // // // // // // // // // //
 
 // 0x80131300
-mpGroundData *gMPCollisionGroundData;
+MPGroundData *gMPCollisionGroundData;
 
 // 0x80131304
-mpYakumonoDObj *gMPCollisionYakumonoDObjs;
+MPYakumonoDObj *gMPCollisionYakumonoDObjs;
 
 // 0x80131308
-mpEdgeBounds gMPCollisionEdgeBounds;
+MPEdgeBounds gMPCollisionEdgeBounds;
 
 // 0x80131348
-mpLineGroup gMPCollisionLineGroups[nMPLineKindEnumMax];
+MPLineGroup gMPCollisionLineGroups[nMPLineKindEnumMax];
 
 // 0x80131368
-mpGeometryInfo *gMPCollisionGeometry;
+MPGeometryData *gMPCollisionGeometry;
 
 // 0x8013136C
-mpVertexInfoContainer *gMPCollisionVertexInfo;
+MPVertexInfoContainer *gMPCollisionVertexInfo;
 
 // 0x80131370
-mpVertexPosContainer *gMPCollisionVertexData; // Vertex positions
+MPVertexPosContainer *gMPCollisionVertexData; // Vertex positions
 
 // 0x80131374
-mpVertexArray *gMPCollisionVertexIDs;
+MPVertexArray *gMPCollisionVertexIDs;
 
 // 0x80131378
-mpVertexLinks *gMPCollisionVertexLinks;
+MPVertexLinks *gMPCollisionVertexLinks;
 
 // 0x8013137C
 Vec3f *gMPCollisionDynamics;
 
 // 0x80131380
-mpMapObjContainer *gMPCollisionMapObjs;
+MPMapObjContainer *gMPCollisionMapObjs;
 
 // 0x80131384
 s32 gMPCollisionLinesNum;
@@ -250,7 +250,7 @@ f32 mpCollisionGetLineDistanceLR(f32 opy, s32 v1x, s32 v1y, s32 v2x, s32 v2y)
 // 0x800F3A78
 sb32 mpCollisionGetUDCommon(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *flags, Vec3f *angle, s32 ud)
 {
-    mpVertexLinks *vlinks;
+    MPVertexLinks *vlinks;
     DObj *yakumono_dobj;
     f32 vnear;
     u16 *pv;
@@ -379,7 +379,7 @@ sb32 mpCollisionGetUDCommonDown(s32 line_id, Vec3f *object_pos, f32 *dist, u32 *
 // 0x800F3E30
 sb32 mpCollisionGetLRCommon(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 *flags, Vec3f *angle, s32 lr)
 {
-    mpVertexLinks *vlinks;
+    MPVertexLinks *vlinks;
     DObj *yakumono_dobj;
     f32 vnear;
     f32 vfar;
@@ -508,7 +508,7 @@ sb32 mpCollisionGetLRCommonRight(s32 line_id, Vec3f *object_pos, f32 *arg2, u32 
 // 0x800F41EC
 void mpCollisionGetLREdge(s32 line_id, Vec3f *object_pos, s32 lr)
 {
-    mpVertexLinks *vlinks;
+    MPVertexLinks *vlinks;
     DObj *yakumono_dobj;
     s32 v1x;
     s32 v1y;
@@ -590,10 +590,10 @@ void func_ovl2_800F4468(s32 line_id, Vec3f *object_pos)
 // 0x800F4488
 void mpCollisionGetUDEdge(s32 line_id, Vec3f *object_pos, s32 ud)
 {
-    mpVertexLinks *vlinks;
+    MPVertexLinks *vlinks;
     DObj *yakumono_dobj;
-    mpVertexData *vpos1;
-    mpVertexData *vpos2;
+    MPVertexData *vpos1;
+    MPVertexData *vpos2;
     s32 v1x;
     s32 v1y;
     s32 v2x;
@@ -837,8 +837,8 @@ sb32 mpCollisionCheckGroundSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d
 // 0x800F4BD8
 sb32 mpCollisionCheckGroundLineCollisionSame(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
-    mpLineInfo *line_info;
-    mpLineData *line_data;
+    MPLineInfo *line_info;
+    MPLineData *line_data;
     DObj *yakumono_dobj;
     s32 i;
     f32 vdist1;
@@ -995,8 +995,8 @@ sb32 mpCollisionCheckGroundLineCollisionSame(Vec3f *position, Vec3f *translate, 
 // 0x800F521C
 sb32 mpCollisionCheckGroundLineCollisionDiff(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
-    mpLineInfo *line_info;
-    mpLineData *line_data;
+    MPLineInfo *line_info;
+    MPLineData *line_data;
     DObj *yakumono_dobj;
     s32 i;
     f32 vdist1;
@@ -1341,8 +1341,8 @@ sb32 mpCollisionCheckCeilSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1x
 // 0x800F5E90
 sb32 mpCollisionCheckCeilLineCollisionSame(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
-    mpLineInfo *line_info;
-    mpLineData *line_data;
+    MPLineInfo *line_info;
+    MPLineData *line_data;
     DObj *yakumono_dobj;
     s32 i;
     f32 vdist1;
@@ -1499,8 +1499,8 @@ sb32 mpCollisionCheckCeilLineCollisionSame(Vec3f *position, Vec3f *translate, Ve
 // 0x800F64D4
 sb32 mpCollisionCheckCeilLineCollisionDiff(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
-    mpLineInfo *line_info;
-    mpLineData *line_data;
+    MPLineInfo *line_info;
+    MPLineData *line_data;
     DObj *yakumono_dobj;
     s32 i;
     f32 vdist1;
@@ -1661,8 +1661,8 @@ sb32 mpCollisionCheckCeilLineCollisionDiff(Vec3f *position, Vec3f *translate, Ve
 // 0x800F6B58
 sb32 mpCollisionCheckRWallLineCollisionSame(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
-    mpLineInfo *line_info;
-    mpLineData *line_data;
+    MPLineInfo *line_info;
+    MPLineData *line_data;
     DObj *yakumono_dobj;
     s32 i;
     f32 vdist1;
@@ -1980,8 +1980,8 @@ sb32 mpCollisionCheckRWallSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1
 // 0x800F769C
 sb32 mpCollisionCheckRWallLineCollisionDiff(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
-    mpLineInfo *line_info;
-    mpLineData *line_data;
+    MPLineInfo *line_info;
+    MPLineData *line_data;
     DObj *yakumono_dobj;
     s32 i;
     f32 vdist1;
@@ -2202,8 +2202,8 @@ sb32 mpCollisionCheckLRSurfaceFlat(s32 v1x, s32 v1y, s32 vpos_x, f32 vpdist_x, f
 // 0x800F7F00
 sb32 mpCollisionCheckLWallLineCollisionSame(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
-    mpLineInfo *line_info;
-    mpLineData *line_data;
+    MPLineInfo *line_info;
+    MPLineData *line_data;
     DObj *yakumono_dobj;
     s32 i;
     f32 vdist1;
@@ -2486,8 +2486,8 @@ sb32 mpCollisionCheckLWallSurfaceTilt(s32 v1x, s32 v1y, s32 v2x, s32 v2y, f32 d1
 // 0x800F8974
 sb32 mpCollisionCheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, Vec3f *ga_last, s32 *stand_line_id, u32 *stand_coll_flags, Vec3f *angle)
 {
-    mpLineInfo *line_info;
-    mpLineData *line_data;
+    MPLineInfo *line_info;
+    MPLineData *line_data;
     DObj *yakumono_dobj;
     s32 i;
     f32 vdist1;
@@ -2648,8 +2648,8 @@ sb32 mpCollisionCheckLWallLineCollisionDiff(Vec3f *position, Vec3f *translate, V
 // 0x800F8FFC
 sb32 func_ovl2_800F8FFC(Vec3f *position)
 {
-    mpLineInfo *line_info;
-    mpLineData *line_data;
+    MPLineInfo *line_info;
+    MPLineData *line_data;
     s32 i, j;
     DObj *yakumono_dobj;
     f32 vpdist_x, vpdist_y;
@@ -2715,8 +2715,8 @@ sb32 func_ovl2_800F8FFC(Vec3f *position)
 // 0x800F9348
 sb32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle)
 {
-    mpLineInfo *line_info;
-    mpLineData *line_data;
+    MPLineInfo *line_info;
+    MPLineData *line_data;
     DObj *yakumono_dobj;
     s32 i, j;
     f32 vpdist_x, vpdist_y;
@@ -2818,8 +2818,8 @@ sb32 func_ovl2_800F9348(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
 // Unused?
 sb32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle)
 {
-    mpLineInfo *line_info;
-    mpLineData *line_data;
+    MPLineInfo *line_info;
+    MPLineData *line_data;
     DObj *yakumono_dobj;
     s32 i, j;
     f32 vpdist_x, vpdist_y;
@@ -2921,8 +2921,8 @@ sb32 func_ovl2_800F97BC(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
 // 0x800F9C30
 sb32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle)
 {
-    mpLineInfo *line_info;
-    mpLineData *line_data;
+    MPLineInfo *line_info;
+    MPLineData *line_data;
     DObj *yakumono_dobj;
     s32 i, j;
     f32 vpdist_x, vpdist_y;
@@ -3024,8 +3024,8 @@ sb32 func_ovl2_800F9C30(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32
 // Unused?
 sb32 func_ovl2_800FA0A4(Vec3f *position, s32 *project_line_id, f32 *ga_dist, u32 *stand_coll_flags, Vec3f *angle)
 {
-    mpLineInfo *line_info;
-    mpLineData *line_data;
+    MPLineInfo *line_info;
+    MPLineData *line_data;
     DObj *yakumono_dobj;
     s32 i, j;
     f32 vpdist_x, vpdist_y;
@@ -3219,7 +3219,7 @@ void mpCollisionGetSpeedLineID(s32 line_id, Vec3f *speed)
 s32 mpCollisionGetLineTypeID(s32 line_id)
 {
     DObj *yakumono_dobj;
-    mpVertexInfo *vertex_info;
+    MPVertexInfo *vertex_info;
     u8 yakumono_id;
 
     if ((line_id == -1) || (line_id == -2))
@@ -3248,7 +3248,7 @@ s32 mpCollisionGetLineTypeID(s32 line_id)
 s32 mpCollisionGetEdgeUnderRLineID(s32 line_id)
 {
     DObj *yakumono_dobj;
-    mpVertexInfo *vertex_info;
+    MPVertexInfo *vertex_info;
 
     if ((line_id == -1) || (line_id == -2))
     {
@@ -3276,7 +3276,7 @@ s32 mpCollisionGetEdgeUnderRLineID(s32 line_id)
 s32 mpCollisionGetEdgeUnderLLineID(s32 line_id)
 {
     DObj *yakumono_dobj;
-    mpVertexInfo *vertex_info;
+    MPVertexInfo *vertex_info;
 
     if ((line_id == -1) || (line_id == -2))
     {
@@ -3304,7 +3304,7 @@ s32 mpCollisionGetEdgeUnderLLineID(s32 line_id)
 s32 mpCollisionGetEdgeUpperRLineID(s32 line_id)
 {
     DObj *yakumono_dobj;
-    mpVertexInfo *vertex_info;
+    MPVertexInfo *vertex_info;
 
     if ((line_id == -1) || (line_id == -2))
     {
@@ -3332,7 +3332,7 @@ s32 mpCollisionGetEdgeUpperRLineID(s32 line_id)
 s32 mpCollisionGetEdgeUpperLLineID(s32 line_id)
 {
     DObj *yakumono_dobj;
-    mpVertexInfo *vertex_info;
+    MPVertexInfo *vertex_info;
 
     if ((line_id == -1) || (line_id == -2))
     {
@@ -3360,7 +3360,7 @@ s32 mpCollisionGetEdgeUpperLLineID(s32 line_id)
 s32 mpCollisionGetEdgeRightULineID(s32 line_id)
 {
     DObj *yakumono_dobj;
-    mpVertexInfo *vertex_info;
+    MPVertexInfo *vertex_info;
 
     if ((line_id == -1) || (line_id == -2))
     {
@@ -3388,7 +3388,7 @@ s32 mpCollisionGetEdgeRightULineID(s32 line_id)
 s32 mpCollisionGetEdgeRightDLineID(s32 line_id)
 {
     DObj *yakumono_dobj;
-    mpVertexInfo *vertex_info;
+    MPVertexInfo *vertex_info;
 
     if ((line_id == -1) || (line_id == -2))
     {
@@ -3416,7 +3416,7 @@ s32 mpCollisionGetEdgeRightDLineID(s32 line_id)
 s32 mpCollisionGetEdgeLeftULineID(s32 line_id)
 {
     DObj *yakumono_dobj;
-    mpVertexInfo *vertex_info;
+    MPVertexInfo *vertex_info;
 
     if ((line_id == -1) || (line_id == -2))
     {
@@ -3444,7 +3444,7 @@ s32 mpCollisionGetEdgeLeftULineID(s32 line_id)
 s32 mpCollisionGetEdgeLeftDLineID(s32 line_id)
 {
     DObj *yakumono_dobj;
-    mpVertexInfo *vertex_info;
+    MPVertexInfo *vertex_info;
 
     if ((line_id == -1) || (line_id == -2))
     {
@@ -3496,7 +3496,7 @@ void mpCollisionGetPlayerMapObjPosition(s32 player, Vec3f *pos)
 // 0x800FB010
 void mpCollisionAllocVertexInfo(void)
 {
-    gMPCollisionVertexInfo = syTaskmanMalloc(gMPCollisionLinesNum * sizeof(mpVertexInfo), 0x8);
+    gMPCollisionVertexInfo = syTaskmanMalloc(gMPCollisionLinesNum * sizeof(MPVertexInfo), 0x8);
 }
 
 // 0x800FB04C
@@ -3504,8 +3504,8 @@ void func_ovl2_800FB04C(void)
 {
     s32 line_id;
     s32 i;
-    mpLineInfo *line_info;
-    mpLineData *line_data;
+    MPLineInfo *line_info;
+    MPLineData *line_data;
     s32 j;
     s32 k;
     s32 l;
@@ -3526,7 +3526,7 @@ void func_ovl2_800FB04C(void)
         {
             for (index = line_data[j].group_id, line_id = 0; line_id < line_data[j].line_count; line_id++, index++)
             {
-                mpVertexLinks *vlinks = &gMPCollisionVertexLinks[index];
+                MPVertexLinks *vlinks = &gMPCollisionVertexLinks[index];
 
                 vfar = vnear = (j < ARRAY_COUNT(line_info->line_data) / 2) ? gMPCollisionVertexData->vpos[gMPCollisionVertexIDs->vertex_id[vlinks->vertex1]].pos.y:
                                                                              gMPCollisionVertexData->vpos[gMPCollisionVertexIDs->vertex_id[vlinks->vertex1]].pos.x;
@@ -3683,11 +3683,11 @@ void mpCollisionAllocYakumono(DObjDesc *gr_yakumono)
 void func_ovl2_800FB808(void)
 {
     s32 index;
-    mpDirection dir;
-    mpLineData *line_data;
-    mpLineInfo *line_info;
+    MPDirection dir;
+    MPLineData *line_data;
+    MPLineInfo *line_info;
     DObj *yakumono_dobj;
-    mpVertexLinks *vlinks;
+    MPVertexLinks *vlinks;
     s32 i, j, k, l;
 
     dir = gMPCollisionEdgeBounds.d1;
@@ -3858,15 +3858,15 @@ void func_ovl2_800FBD14(void)
 {
     s32 index;
     DObj *yakumono_dobj;
-    mpDirection dir1;
-    mpDirection dir2;
+    MPDirection dir1;
+    MPDirection dir2;
     s32 vx;
     s32 vy;
     f32 tx;
     f32 ty;
-    mpLineData *line_data;
-    mpLineInfo *line_info;
-    mpVertexLinks *vlinks;
+    MPLineData *line_data;
+    MPLineInfo *line_info;
+    MPVertexLinks *vlinks;
     s32 i, j, k, l;
     s32 unused[2];
 
@@ -3964,8 +3964,8 @@ void func_ovl2_800FBD14(void)
 // 0x800FC09C
 s32 mpCollisionAllocLinesGetCountTotal(void)
 {
-    mpLineInfo *line_info;
-    mpLineData *line_data;
+    MPLineInfo *line_info;
+    MPLineData *line_data;
     s32 i;
     s32 line_count[nMPLineKindEnumMax];
     s32 line_total, j;
@@ -4002,8 +4002,8 @@ s32 mpCollisionAllocLinesGetCountTotal(void)
 // 0x800FC1A4
 void mpCollisionInitLineIDsAll(void)
 {
-    mpLineData *line_data;
-    mpLineInfo *line_info;
+    MPLineData *line_data;
+    MPLineInfo *line_info;
     s32 i;
     s32 line_count[nMPLineKindEnumMax];
     s32 j, line_id;
@@ -4032,11 +4032,11 @@ void mpCollisionInitLineIDsAll(void)
 // 0x800FC284
 void mpCollisionInitGroundData(void)
 {
-    mpGeometryInfo *geometry_info;
+    MPGeometryData *geometry_info;
 
     gMPCollisionGroundData = lbRelocGetDataFromFile
     (
-        mpGroundData*,
+        MPGroundData*,
         (uintptr_t)lbRelocGetFileExternHeap
         (
             dMPCollisionGroundFileInfos[gBattleState->gr_kind].file_id, 

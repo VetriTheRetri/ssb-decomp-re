@@ -9,7 +9,7 @@
 // 0x80157F60
 void ftBossCommonInvertLR(GObj *fighter_gobj) // Turn Master Hand around?
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->lr = -fp->lr;
 
@@ -19,7 +19,7 @@ void ftBossCommonInvertLR(GObj *fighter_gobj) // Turn Master Hand around?
 // 0x80157F90
 void ftBossCommonCheckEdgeInvertLR(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos_left;
     Vec3f pos_right;
 
@@ -36,7 +36,7 @@ void ftBossCommonCheckEdgeInvertLR(GObj *fighter_gobj)
 // 0x80158030
 void ftBossCommonCheckPlayerInvertLR(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (((DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f.x - DObjGetStruct(fighter_gobj)->translate.vec.f.x) * fp->lr) < 0.0F)
     {
@@ -57,8 +57,8 @@ void ftBossCommonGetRandomEdgeLR(s32 line_id, Vec3f *pos)
 // 0x801580E0
 void ftBossCommonGotoTargetEdge(GObj *fighter_gobj, Vec3f *pos)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftStruct *player_fp = ftGetStruct(fp->fighter_vars.boss.p->target_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *player_fp = ftGetStruct(fp->fighter_vars.boss.p->target_gobj);
     ftBossInfo *boss = fp->fighter_vars.boss.p;
 
     if ((player_fp->coll_data.ground_line_id != -1) && (player_fp->coll_data.ground_line_id != -2))
@@ -81,7 +81,7 @@ void ftBossCommonGotoTargetEdge(GObj *fighter_gobj, Vec3f *pos)
 // 0x8015817C
 void ftBossCommonSetPosOffsetY(GObj *fighter_gobj, Vec3f *pos, f32 off_y)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     pos->x = DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f.x;
     pos->y = DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f.y + off_y;
@@ -91,8 +91,8 @@ void ftBossCommonSetPosOffsetY(GObj *fighter_gobj, Vec3f *pos, f32 off_y)
 // 0x801581BC
 void ftBossCommonSetPosAddVelPlayer(GObj *fighter_gobj, Vec3f *pos, f32 vel_x, f32 vel_y)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftStruct *fp_unk = ftGetStruct(fp->fighter_vars.boss.p->target_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp_unk = ftGetStruct(fp->fighter_vars.boss.p->target_gobj);
     Vec3f translate = DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f;
     f32 x;
     f32 y;
@@ -118,7 +118,7 @@ void ftBossCommonSetPosAddVelPlayer(GObj *fighter_gobj, Vec3f *pos, f32 vel_x, f
 // 0x80158310
 void ftBossCommonSetPosAddVelAuto(GObj *fighter_gobj, Vec3f *pos, f32 vel_x, f32 vel_y)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     pos->x = DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f.x + (((mtTrigGetRandomUShort() % 2) != 0) ? vel_x : -vel_x);
     pos->y = DObjGetStruct(fp->fighter_vars.boss.p->target_gobj)->translate.vec.f.y + vel_y;
@@ -150,7 +150,7 @@ void ftBossCommonGetPositionCenter(s32 line_id, Vec3f *pos_input)
 // 0x80158428
 void ftBossCommonSetNextAttackWait(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->fighter_vars.boss.p->wait_timer = ((mtTrigGetRandomIntRange(FTBOSS_ATTACK_WAIT_MAX) + (FTBOSS_ATTACK_WAIT_LEVEL_DIV / fp->cp_level)) / fp->fighter_vars.boss.p->wait_div);
 }
@@ -158,7 +158,7 @@ void ftBossCommonSetNextAttackWait(GObj *fighter_gobj)
 // 0x80158528
 void ftBossCommonUpdateFogColor(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     f32 fog_dist;
     s32 fog_blend;
 
@@ -178,7 +178,7 @@ void ftBossCommonUpdateFogColor(GObj *fighter_gobj)
 // 0x80158604
 void ftBossCommonSetUseFogColor(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->is_use_fogcolor = TRUE;
     fp->fog_color.a = 0xFF;
@@ -187,7 +187,7 @@ void ftBossCommonSetUseFogColor(GObj *fighter_gobj)
 // 0x80158620
 void ftBossCommonSetDisableFogColor(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->is_use_fogcolor = FALSE;
 }
@@ -195,7 +195,7 @@ void ftBossCommonSetDisableFogColor(GObj *fighter_gobj)
 // 0x80158634
 void ftBossCommonSetDefaultLineID(GObj *fighter_gobj)
 {
-    ftStruct *fp;
+    FTStruct *fp;
 
     if (mpCollisionGetLineCountType(nMPLineKindGround) == 0)
     {
@@ -213,8 +213,8 @@ void ftBossCommonSetDefaultLineID(GObj *fighter_gobj)
 // 0x801586A0
 void ftBossCommonUpdateDamageStats(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    s32 status_id = fp->status_info.status_id;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    s32 status_id = fp->status_id;
 
     if ((status_id != nFTBossStatusDeadLeft) && (status_id != nFTBossStatusDeadCenter) && (status_id != nFTBossStatusDeadRight))
     {

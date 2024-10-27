@@ -8,13 +8,13 @@
 //                               //
 // // // // // // // // // // // //
 
-extern efGroundParam dEFGroundCastleParams[2];
-extern efGroundParam dEFGroundSectorParams[7];
-extern efGroundParam dEFGroundJungleParams[2];
-extern efGroundParam dEFGroundZebesParams[3];
-extern efGroundParam dEFGroundYosterParams[7];
-extern efGroundParam dEFGroundPupupuParams[6];
-extern efGroundParam dEFGroundYamabukiParams[6];
+extern EFGroundParam dEFGroundCastleParams[2];
+extern EFGroundParam dEFGroundSectorParams[7];
+extern EFGroundParam dEFGroundJungleParams[2];
+extern EFGroundParam dEFGroundZebesParams[3];
+extern EFGroundParam dEFGroundYosterParams[7];
+extern EFGroundParam dEFGroundPupupuParams[6];
+extern EFGroundParam dEFGroundYamabukiParams[6];
 
 // // // // // // // // // // // //
 //                               //
@@ -26,7 +26,7 @@ extern efGroundParam dEFGroundYamabukiParams[6];
 u8 sEFGroundPad0x80131AD0[40];
 
 // 0x80131AD8
-efGroundActor sEFGroundActor;
+EFGroundActor sEFGroundActor;
 
 // // // // // // // // // // // //
 //                               //
@@ -35,7 +35,7 @@ efGroundActor sEFGroundActor;
 // // // // // // // // // // // //
 
 // 0x8012F240
-efGroundCreateDesc dEFGroundCastleEffectDescs[/* */] =
+EFGroundCreateDesc dEFGroundCastleEffectDescs[/* */] =
 {
     // Right-facing Lakitu
     {
@@ -117,7 +117,7 @@ efGroundCreateDesc dEFGroundCastleEffectDescs[/* */] =
 };
 
 // 0x8012F2C0
-efGroundCreateDesc dEFGroundJungleEffectDescs[/* */] =
+EFGroundCreateDesc dEFGroundJungleEffectDescs[/* */] =
 {
     // Kongo Jungle Birds
     {
@@ -160,7 +160,7 @@ efGroundCreateDesc dEFGroundJungleEffectDescs[/* */] =
 };
 
 // 0x8012F300
-efGroundCreateDesc dEFGroundSectorEffectDescs[/* */] =
+EFGroundCreateDesc dEFGroundSectorEffectDescs[/* */] =
 {
     // Distant rocket with step physics (?)
     {
@@ -359,7 +359,7 @@ efGroundCreateDesc dEFGroundSectorEffectDescs[/* */] =
 };
 
 // 0x8012F440
-efGroundCreateDesc dEFGroundZebesEffectDescs[/* */] =
+EFGroundCreateDesc dEFGroundZebesEffectDescs[/* */] =
 {
     // Spaceship
     {
@@ -441,7 +441,7 @@ efGroundCreateDesc dEFGroundZebesEffectDescs[/* */] =
 };
 
 // 0x8012F4C0
-efGroundCreateDesc dEFGroundYosterEffectDescs[/* */] =
+EFGroundCreateDesc dEFGroundYosterEffectDescs[/* */] =
 {
     // Bird
     {
@@ -679,7 +679,7 @@ efGroundCreateDesc dEFGroundYosterEffectDescs[/* */] =
 };
 
 // 0x8012F640
-efGroundCreateDesc dEFGroundPupupuEffectDescs[/* */] =
+EFGroundCreateDesc dEFGroundPupupuEffectDescs[/* */] =
 {
     // Left-facing Bronto Burt
     {
@@ -839,7 +839,7 @@ efGroundCreateDesc dEFGroundPupupuEffectDescs[/* */] =
 };
 
 // 0x8012F740
-efGroundCreateDesc dEFGroundYamabukiEffectDescs[/* */] =
+EFGroundCreateDesc dEFGroundYamabukiEffectDescs[/* */] =
 {
     // Butterfree
     {
@@ -999,7 +999,7 @@ efGroundCreateDesc dEFGroundYamabukiEffectDescs[/* */] =
 };
 
 // 0x8012F840
-efGroundData dEFGroundDatas[/* */] =
+EFGroundData dEFGroundDatas[/* */] =
 {
     // Peach's Castle
     { 
@@ -1067,21 +1067,21 @@ efGroundData dEFGroundDatas[/* */] =
 };
 
 // 0x8012F8C0
-efGroundParam dEFGroundCastleParams[/* */] = 
+EFGroundParam dEFGroundCastleParams[/* */] = 
 {
     { 0, 0, nGMFacingC, 2 },
     { 1, 0, nGMFacingC, 1 }
 };
 
 // 0x8012F8D8
-efGroundParam dEFGroundJungleParams[/* */] =
+EFGroundParam dEFGroundJungleParams[/* */] =
 {
     { 0, 0, nGMFacingC, 2 },
     { 0, 1, nGMFacingC, 1 }
 };
 
 // 0x8012F8F0
-efGroundParam dEFGroundZebesParams[/* */] =
+EFGroundParam dEFGroundZebesParams[/* */] =
 {
     { 0, 0, nGMFacingC, 1 },
     { 0, 1, nGMFacingC, 1 },
@@ -1089,7 +1089,7 @@ efGroundParam dEFGroundZebesParams[/* */] =
 };
 
 // 0x8012F914
-efGroundParam dEFGroundSectorParams[/* */] =
+EFGroundParam dEFGroundSectorParams[/* */] =
 {
     { 3, 0, nGMFacingL,  3 },
     { 4, 0, nGMFacingR, 3 },
@@ -1101,7 +1101,7 @@ efGroundParam dEFGroundSectorParams[/* */] =
 };
 
 // 0x8012F968
-efGroundParam dEFGroundYosterParams[/* */] =
+EFGroundParam dEFGroundYosterParams[/* */] =
 {
     { 3, 0, nGMFacingC, 2 },
     { 3, 1, nGMFacingC, 1 },
@@ -1113,7 +1113,7 @@ efGroundParam dEFGroundYosterParams[/* */] =
 };
 
 // 0x8012F9BC
-efGroundParam dEFGroundPupupuParams[/* */] =
+EFGroundParam dEFGroundPupupuParams[/* */] =
 {
     { 0, 0, nGMFacingC, 2 },
     { 0, 1, nGMFacingC, 1 },
@@ -1124,7 +1124,7 @@ efGroundParam dEFGroundPupupuParams[/* */] =
 };
 
 // 0x8012FA04
-efGroundParam dEFGroundYamabukiParams[/* */] =
+EFGroundParam dEFGroundYamabukiParams[/* */] =
 {
     { 0, 0, nGMFacingC, 6 },
     { 0, 1, nGMFacingC, 6 },
@@ -1143,7 +1143,7 @@ efGroundParam dEFGroundYamabukiParams[/* */] =
 // 0x80115E80
 sb32 efGroundCheckEffectInBounds(GObj *effect_gobj)
 {
-    efStruct *ep = efGetStruct(effect_gobj);
+    EFStruct *ep = efGetStruct(effect_gobj);
     DObj *dobj = DObjGetStruct(effect_gobj);
 
     if (ep->effect_vars.ground_effect.lr == nGMFacingL)
@@ -1171,7 +1171,7 @@ void efGroundCommonProcUpdate(GObj *effect_gobj)
 {
     DObj *root_dobj = DObjGetStruct(effect_gobj);
     DObj *child_dobj = root_dobj->child;
-    efStruct *ep = efGetStruct(effect_gobj);
+    EFStruct *ep = efGetStruct(effect_gobj);
 
     if (efGroundCheckEffectInBounds(effect_gobj) != FALSE)
     {
@@ -1204,7 +1204,7 @@ void efGroundCommonProcUpdate(GObj *effect_gobj)
 // 0x80116090
 void efGroundUpdateEffectYaw(GObj *effect_gobj)
 {
-    efStruct *ep = efGetStruct(effect_gobj);
+    EFStruct *ep = efGetStruct(effect_gobj);
     DObj *root_dobj = DObjGetStruct(effect_gobj);
 
     efGroundCommonProcUpdate(effect_gobj);
@@ -1220,7 +1220,7 @@ void efGroundUpdateEffectYaw(GObj *effect_gobj)
 // 0x801160E8
 void efGroundUpdateStepPositions(GObj *effect_gobj)
 {
-    efStruct *ep = efGetStruct(effect_gobj);
+    EFStruct *ep = efGetStruct(effect_gobj);
     DObj *dobj = DObjGetStruct(effect_gobj);
 
     efGroundCommonProcUpdate(effect_gobj);
@@ -1241,7 +1241,7 @@ void efGroundUpdateStepPositions(GObj *effect_gobj)
 // 0x801161A0
 void efGroundSetStepPositions(GObj *effect_gobj)
 {
-    efStruct *ep = efGetStruct(effect_gobj);
+    EFStruct *ep = efGetStruct(effect_gobj);
     DObj *dobj = DObjGetStruct(effect_gobj);
     f32 step_div;
 
@@ -1261,7 +1261,7 @@ void efGroundSetStepPositions(GObj *effect_gobj)
 // 0x80116204
 void efGroundUpdatePhysics(GObj *effect_gobj, s32 effect_id)
 {
-    efStruct *ep = efGetStruct(effect_gobj);
+    EFStruct *ep = efGetStruct(effect_gobj);
     DObj *dobj = DObjGetStruct(effect_gobj);
 
     dobj->translate.vec.f.z = sEFGroundActor.effect_data->effect_descs[effect_id].pos_z;
@@ -1290,7 +1290,7 @@ void efGroundUpdatePhysics(GObj *effect_gobj, s32 effect_id)
 // 0x8011633C
 void efGroundSetupEffectDObjs(GObj *effect_gobj, DObjDesc *dobjdesc, DObj **dobjs, u8 tk1, u8 tk2, u8 arg5, s32 lr)
 {
-    efStruct *ep;
+    EFStruct *ep;
     DObj *effect_dobj;
     s32 i;
     s32 j;
@@ -1353,12 +1353,12 @@ void efGroundSetupEffectDObjs(GObj *effect_gobj, DObjDesc *dobjdesc, DObj **dobj
 }
 
 // 0x8011652C
-GObj* efGroundMakeEffect(efCreateDesc *effect_desc, s32 lr)
+GObj* efGroundMakeEffect(EFCreateDesc *effect_desc, s32 lr)
 {
     GObj *effect_gobj;
     DObj *other_dobj;
     DObj *main_dobj;
-    efStruct *ep;
+    EFStruct *ep;
     s32 unused[2];
     DObjTransformTypes *rtypes1;
     DObjTransformTypes *rtypes2;
@@ -1451,7 +1451,7 @@ GObj* efGroundMakeEffect(efCreateDesc *effect_desc, s32 lr)
 void efGroundMakeEffectID(s32 effect_id)
 {
     GObj *effect_gobj;
-    efStruct *ep;
+    EFStruct *ep;
     uintptr_t addr;
 
     sEFGroundActor.effect_data->effect_descs[effect_id].effect_desc.file_head = &sEFGroundActor.file_head;
@@ -1498,13 +1498,13 @@ void efGroundMakeEffectID(s32 effect_id)
 }
 
 // 0x801168CC
-void efGroundActorProcUpdate(GObj *gobj)
+void EFGroundActorProcUpdate(GObj *gobj)
 {
     s32 param_id;
     s32 random;
     s32 unused;
     s32 effect_id;
-    efGroundParam *param;
+    EFGroundParam *param;
 
     if (sEFGroundActor.make_wait == 0)
     {
@@ -1516,7 +1516,7 @@ void efGroundActorProcUpdate(GObj *gobj)
 
             param_id = sEFGroundActor.effect_ids[param_id];
 
-            param = sEFGroundActor.effect_data->effect_param;
+            param = sEFGroundActor.effect_data->effect_params;
 
             effect_id = sEFGroundActor.effect_id = (param + param_id)->effect_id; // Any other solution results in a regswap or sEFGroundActor getting duplicated???
 
@@ -1546,11 +1546,11 @@ void efGroundSetupRandomWeights(void)
     u8 *effect_ids;
     u8 j, i, k;
     u8 effect_weights;
-    efGroundParam *param;
+    EFGroundParam *param;
 
-    param = sEFGroundActor.effect_data->effect_param;
+    param = sEFGroundActor.effect_data->effect_params;
 
-    for (i = 0, j = 0; i < sEFGroundActor.effect_data->param_num; i++)
+    for (i = 0, j = 0; i < sEFGroundActor.effect_data->params_num; i++)
     {
         j += (param + i)->effect_weight;
     }
@@ -1576,13 +1576,13 @@ void efGroundMakeEffectSpawnActor(void)
 {
     GObj *effect_gobj;
 
-    if ((gBattleState->gr_kind <= nGRKindBattleEnd) && (gSceneData.scene_current != nSCKind1PTraining) && (dEFGroundDatas[gBattleState->gr_kind].effect_param != NULL))
+    if ((gBattleState->gr_kind <= nGRKindBattleEnd) && (gSceneData.scene_current != nSCKind1PTraining) && (dEFGroundDatas[gBattleState->gr_kind].effect_params != NULL))
     {
         effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, 7, GOBJ_LINKORDER_DEFAULT);
 
         if (effect_gobj != NULL)
         {
-            gcAddGObjProcess(effect_gobj, efGroundActorProcUpdate, nGCProcessKindProc, 1);
+            gcAddGObjProcess(effect_gobj, EFGroundActorProcUpdate, nGCProcessKindProc, 1);
 
             effect_gobj->user_data.p = &sEFGroundActor;
 

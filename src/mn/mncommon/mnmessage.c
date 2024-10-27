@@ -30,7 +30,7 @@ s32 sMNMessageUnk0x80132660;
 s32 sMNMessageTotalTimeTics;
 
 // 0x80132668
-lbFileNode sMNMessageStatusBuffer[100];
+LBFileNode sMNMessageStatusBuffer[100];
 
 // 0x80132988
 void *sMNMessageFiles[2];
@@ -320,7 +320,7 @@ void mnMessageFuncRun(GObj *gobj)
 // 0x801322D4
 void mnMessageFuncStart(void)
 {
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

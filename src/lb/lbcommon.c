@@ -814,7 +814,7 @@ void lbCommonAddFighterPartsFigatree(DObj *root_dobj, void **figatree, f32 anim_
     while (current_dobj != NULL)
     {
         void *anim = *figatree;
-        ftParts *ft_parts = current_dobj->user_data.p;
+        FTParts *ft_parts = current_dobj->user_data.p;
         
         if (anim != NULL)
         {
@@ -1004,7 +1004,7 @@ void lbCommonAddMObjForFighterPartsDObj
 void lbCommonSetupFighterPartsDObjs
 (
     DObj *root_dobj,
-    ftCommonPartContainer *commonparts_container,
+    FTCommonPartContainer *commonparts_container,
     s32 detail_current,
     DObj **dobjs,
     u32 *setup_parts,
@@ -1369,7 +1369,7 @@ sb32 func_ovl0_800C9714(Mtx *mtx, DObj *dobj, Gfx **dls)
 sb32 lbCommonFighterPartsFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     ub32 flag = ftGetStruct(dobj->parent_gobj)->is_use_animlocks;
-    ftParts *ft_parts = ftGetParts(dobj);
+    FTParts *ft_parts = ftGetParts(dobj);
     
     if (!(flag))
     {
@@ -1446,7 +1446,7 @@ sb32 func_ovl0_800C994C(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     s32 unused;
     DObj *attach_dobj = dobj->user_data.p;
-    ftParts *ft_parts = attach_dobj->user_data.p;
+    FTParts *ft_parts = attach_dobj->user_data.p;
     Mtx44f f;
     
     func_ovl2_800EDBA4(attach_dobj);
@@ -1476,8 +1476,8 @@ sb32 func_ovl0_800C99CC(Mtx *mtx, DObj *dobj, Gfx **dls)
 // 0x800C9A38
 void func_ovl0_800C9A38(Mtx44f mtx, DObj *dobj)
 {
-    ftParts *ft_parts = ftGetParts(dobj);
-    ftStruct *fp = ftGetStruct(dobj->parent_gobj);
+    FTParts *ft_parts = ftGetParts(dobj);
+    FTStruct *fp = ftGetStruct(dobj->parent_gobj);
     Mtx44f *p;
     f32 scale;
     DObj *parent_dobj;
@@ -1618,7 +1618,7 @@ sb32 func_ovl0_800C9F30(Mtx *mtx, DObj *dobj, Gfx **dls)
 sb32 func_ovl0_800C9F70(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     DObj *attach_dobj = dobj->user_data.p;
-    ftStruct *fp = ftGetStruct(attach_dobj->parent_gobj);
+    FTStruct *fp = ftGetStruct(attach_dobj->parent_gobj);
     Mtx44f f;
     
     func_ovl0_800C9A38(f, attach_dobj);
@@ -1936,7 +1936,7 @@ sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     CObj *cobj;
     DObj *attach_dobj;
-    ftParts *ft_parts;
+    FTParts *ft_parts;
     Mtx44f f;
     Vec3f sp50;
     Vec3f dist;

@@ -32,10 +32,10 @@ s32 sMNScreenAdjustTotalTimeTics;
 s32 sMNScreenAdjustReturnTic;
 
 // 0x80132940
-lbFileNode sMNScreenAdjustForceStatusBuffer[7];
+LBFileNode sMNScreenAdjustForceStatusBuffer[7];
 
 // 0x80132978
-lbFileNode sMNScreenAdjustStatusBuffer[24];
+LBFileNode sMNScreenAdjustStatusBuffer[24];
 
 // 0x80132A38
 void *sMNScreenAdjustFiles[1];
@@ -415,7 +415,7 @@ void mnScreenAdjustFuncRun(GObj *gobj)
 // 0x801326CC
 void mnScreenAdjustFuncStart(void)
 {
-    lbRelocSetup rl_setup;
+    LBRelocSetup rl_setup;
     s32 unused[2];
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;

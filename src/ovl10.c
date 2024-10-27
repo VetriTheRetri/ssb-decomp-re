@@ -96,7 +96,7 @@ s32 sMNTitleFireColorID;
 u32 sMNTitleAllowProceedWait;
 
 // 0x801344A0
-lbFileNode sMNTitleStatusBuffer[32];
+LBFileNode sMNTitleStatusBuffer[32];
 
 // 0x801345A0
 void *sMNTitleFiles[2];
@@ -286,7 +286,7 @@ s32 mnTitleGetShuffledFighterKind(u16 this_mask, u16 prev_mask, s32 random)
 	{
 		ft_kind++;
 
-		if ((this_mask & LBBACKUP_FIGHTER_MASK_DEFINE(ft_kind)) && !(prev_mask & LBBACKUP_FIGHTER_MASK_DEFINE(ft_kind)))
+		if ((this_mask & LBBACKUP_MASK_FIGHTER(ft_kind)) && !(prev_mask & LBBACKUP_MASK_FIGHTER(ft_kind)))
 		{
 			random--;
 		}
@@ -323,7 +323,7 @@ s32 mnTitleSetDemoFighterKinds(void)
 	{
 		gSceneData.demo_first_ft_kind = gSceneData.demo_ft_kind[0];
 	}
-	gSceneData.demo_mask_prev |= LBBACKUP_FIGHTER_MASK_DEFINE(gSceneData.demo_ft_kind[0]);
+	gSceneData.demo_mask_prev |= LBBACKUP_MASK_FIGHTER(gSceneData.demo_ft_kind[0]);
 
 	unlocked_count = mnTitleGetFighterKindsNum(unlocked_mask);
 
@@ -336,7 +336,7 @@ s32 mnTitleSetDemoFighterKinds(void)
 	else
 	{
 		gSceneData.demo_ft_kind[1] = mnTitleGetShuffledFighterKind(unlocked_mask, gSceneData.demo_mask_prev, mtTrigGetRandomIntRange(non_recently_demoed_count));
-		gSceneData.demo_mask_prev |= LBBACKUP_FIGHTER_MASK_DEFINE(gSceneData.demo_ft_kind[1]);
+		gSceneData.demo_mask_prev |= LBBACKUP_MASK_FIGHTER(gSceneData.demo_ft_kind[1]);
 	}
 }
 
@@ -419,7 +419,6 @@ void mnTitleSetEndLayout(void)
 		}
 		gobj = gobj->link_next;
 	}
-
 	gobj = gGCCommonLinks[8];
 
 	while (gobj != NULL)
@@ -504,7 +503,7 @@ void mnTitleFuncRun(GObj *gobj)
 	s32 i;
 	u16 buttons;
 
-	if (sMNTitleIsStartActorProcess == 0)
+	if (sMNTitleIsStartActorProcess == FALSE)
 	{
 		sMNTitleIsStartActorProcess++;
 	}
@@ -1381,7 +1380,7 @@ void mnTitleLogoFireFuncDisplay(GObj *gobj)
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-	lbParticleDrawTextures(gobj);
+	LBParticleDrawTextures(gobj);
 
 	gDPSetTexturePersp(gSYTaskmanDLHeads[0]++, G_TP_PERSP);
 	gDPSetDepthSource(gSYTaskmanDLHeads[0]++, G_ZS_PIXEL);
@@ -1404,7 +1403,7 @@ void mnTitleMakeLogoFire(void)
 void mnTitleMakeLogoFireParticles(void)
 {
 	GObj *logo_fire_effect_gobj;
-	lbGenerator *gtor;
+	LBGenerator *gtor;
 
 	if (gSceneData.scene_previous == nSCKindOpeningNewcomers)
 	{
@@ -1415,7 +1414,7 @@ void mnTitleMakeLogoFireParticles(void)
 		gcPlayAnimAll(logo_fire_effect_gobj);
 		gcAddGObjProcess(logo_fire_effect_gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
 
-		gtor = lbParticleMakeGenerator(sMNTitleParticleBankID, 0);
+		gtor = LBParticleMakeGenerator(sMNTitleParticleBankID, 0);
 
 		if (gtor != NULL)
 		{
@@ -1493,7 +1492,7 @@ void mnTitleStartScene(void)
 // 0x80134140
 void mnTitleLoadFiles(void)
 {
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;

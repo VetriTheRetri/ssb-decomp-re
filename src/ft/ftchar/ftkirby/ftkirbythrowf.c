@@ -15,9 +15,9 @@ void ftKirbyThrowFProcUpdate(GObj *fighter_gobj)
 // 0x8014A454
 void ftKirbyThrowFProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((mpCommonCheckFighterLanding(fighter_gobj) != FALSE) && (fp->phys_info.vel_air.y < 0.0F))
+    if ((mpCommonCheckFighterLanding(fighter_gobj) != FALSE) && (fp->physics.vel_air.y < 0.0F))
     {
         ftKirbyThrowFLandingSetStatus(fighter_gobj);
     }
@@ -26,9 +26,9 @@ void ftKirbyThrowFProcMap(GObj *fighter_gobj)
 // 0x8014A4A8
 void ftKirbyThrowFFallSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *this_fp = ftGetStruct(fighter_gobj);
+    FTStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *catch_gobj = this_fp->catch_gobj;
-    ftStruct *catch_fp = ftGetStruct(catch_gobj);
+    FTStruct *catch_fp = ftGetStruct(catch_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusThrowFFall, 0.0F, 1.0F, FTSTATUS_PRESERVE_TEXTUREPART);
 
@@ -38,7 +38,7 @@ void ftKirbyThrowFFallSetStatus(GObj *fighter_gobj)
 // 0x8014A4F8
 void ftKirbyThrowFLandingProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->ga == nMPKineticsGround)
     {
@@ -50,13 +50,13 @@ void ftKirbyThrowFLandingProcPhysics(GObj *fighter_gobj)
 // 0x8014A538
 void ftKirbyThrowFLandingProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->ga == nMPKineticsGround)
     {
         ftCommonCatchProcMap(fighter_gobj);
     }
-    else if ((mpCommonCheckFighterLanding(fighter_gobj) != FALSE) && (fp->phys_info.vel_air.y < 0.0F))
+    else if ((mpCommonCheckFighterLanding(fighter_gobj) != FALSE) && (fp->physics.vel_air.y < 0.0F))
     {
         mpCommonSetFighterWaitOrLanding(fighter_gobj);
     }
@@ -65,7 +65,7 @@ void ftKirbyThrowFLandingProcMap(GObj *fighter_gobj)
 // 0x8014A5AC
 void ftKirbyThrowFLandingSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusThrowFLanding, 0.0F, 1.0F, FTSTATUS_PRESERVE_TEXTUREPART);

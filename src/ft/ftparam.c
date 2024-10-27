@@ -53,7 +53,7 @@ f32 dFTParamStaleTable[/* */] =
 };
 
 // 0x8012B830
-ftCostume dFTParamCostumeIDs[/* */] =
+FTCostume dFTParamCostumeIDs[/* */] =
 {
     { { 0, 1, 2, 3 }, { 0, 3, 4 }, 4 },     // Mario
     { { 0, 1, 2, 3 }, { 1, 2, 3 }, 3 },     // Fox
@@ -126,7 +126,7 @@ void ftParamTryUpdateItemMusic(void)
 
     while (fighter_gobj != NULL)
     {
-        ftStruct *fp = ftGetStruct(fighter_gobj);
+        FTStruct *fp = ftGetStruct(fighter_gobj);
         u32 bgm_id = gMPCollisionBGMDefault;
         s32 length_new;
 
@@ -189,7 +189,7 @@ GObj* ftParamGetPlayerNumGObj(s32 player_number)
 
     while (fighter_gobj != NULL)
     {
-        ftStruct *fp = ftGetStruct(fighter_gobj);
+        FTStruct *fp = ftGetStruct(fighter_gobj);
 
         if (player_number == fp->player_number)
         {
@@ -203,7 +203,7 @@ GObj* ftParamGetPlayerNumGObj(s32 player_number)
 // 0x800E7F14
 void ftParamLockPlayerControl(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->input.pl.button_hold = fp->input.pl.button_tap = fp->input.cp.button_inputs = 0;
 
@@ -217,7 +217,7 @@ void ftParamLockPlayerControl(GObj *fighter_gobj)
 // 0x800E7F68
 void ftParamUnlockPlayerControl(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->is_disable_control = FALSE;
 }
@@ -225,13 +225,13 @@ void ftParamUnlockPlayerControl(GObj *fighter_gobj)
 // 0x800E7F7C
 void ftParamSetPlayerTagWait(GObj *fighter_gobj, s32 playertag_wait)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->playertag_wait = playertag_wait;
 }
 
 // 0x800E7F88
-void ftParamSetDamageShuffle(ftStruct *fp, sb32 is_electric, s32 damage, s32 status_id, f32 hitlag_mul)
+void ftParamSetDamageShuffle(FTStruct *fp, sb32 is_electric, s32 damage, s32 status_id, f32 hitlag_mul)
 {
     s32 shuffle_tics = ftParamGetHitLag(damage, status_id, hitlag_mul) * FTCOMMON_DAMAGE_SHUFFLE_MUL;
 
@@ -242,34 +242,34 @@ void ftParamSetDamageShuffle(ftStruct *fp, sb32 is_electric, s32 damage, s32 sta
 }
 
 // 0x800E8000
-f32 ftParamGetStickAngleRads(ftStruct *fp)
+f32 ftParamGetStickAngleRads(FTStruct *fp)
 {
     return atan2f(fp->input.pl.stick_range.y, ABS(fp->input.pl.stick_range.x));
 }
 
 // 0x800E8044
-void ftParamSetStickLR(ftStruct *fp)
+void ftParamSetStickLR(FTStruct *fp)
 {
     fp->lr = (fp->input.pl.stick_range.x >= 0) ? nGMFacingR : nGMFacingL;
 }
 
 // 0x800E806C
-void ftParamMakeRumble(ftStruct *fp, s32 rumble_id, s32 length)
+void ftParamMakeRumble(FTStruct *fp, s32 rumble_id, s32 length)
 {
-    if (fp->status_info.pl_kind == nFTPlayerKindMan)
+    if (fp->pl_kind == nFTPlayerKindMan)
     {
         gmRumbleSetPlayerRumbleParams(fp->player, rumble_id, length);
     }
 }
 
 // 0x800E8098
-void ftParamSetCaptureImmuneMask(ftStruct *fp, u8 capture_immune_mask)
+void ftParamSetCaptureImmuneMask(FTStruct *fp, u8 capture_immune_mask)
 {
     fp->capture_immune_mask = capture_immune_mask;
 }
 
 // 0x800E80A4
-void ftParamSetCatchParams(ftStruct *fp, u8 catch_mask, void (*proc_catch)(GObj*), void (*proc_capture)(GObj*, GObj*))
+void ftParamSetCatchParams(FTStruct *fp, u8 catch_mask, void (*proc_catch)(GObj*), void (*proc_capture)(GObj*, GObj*))
 {
     fp->is_catchstatus = TRUE;
 
@@ -279,9 +279,9 @@ void ftParamSetCatchParams(ftStruct *fp, u8 catch_mask, void (*proc_catch)(GObj*
 }
 
 // 0x800E80C4 - Fetch data of throwing fighter: character ID, port ID, team, player number and GObj pointer
-void ftParamSetThrowParams(ftStruct *this_fp, GObj *throw_gobj)
+void ftParamSetThrowParams(FTStruct *this_fp, GObj *throw_gobj)
 {
-    ftStruct *throw_fp = ftGetStruct(throw_gobj); // Fighter throwing this player
+    FTStruct *throw_fp = ftGetStruct(throw_gobj); // Fighter throwing this player
 
     this_fp->throw_gobj = throw_gobj;
     this_fp->throw_ft_kind = throw_fp->ft_kind;
@@ -291,7 +291,7 @@ void ftParamSetThrowParams(ftStruct *this_fp, GObj *throw_gobj)
 }
 
 // 0x800E80F0
-void ftParamPlayVoice(ftStruct *fp, u16 voice_id)
+void ftParamPlayVoice(FTStruct *fp, u16 voice_id)
 {
     fp->p_voice = func_800269C0_275C0(voice_id);
 
@@ -299,7 +299,7 @@ void ftParamPlayVoice(ftStruct *fp, u16 voice_id)
 }
 
 // 0x800E8138
-void ftParamStopVoice(ftStruct *fp)
+void ftParamStopVoice(FTStruct *fp)
 {
     if (fp->p_voice != NULL)
     {
@@ -313,7 +313,7 @@ void ftParamStopVoice(ftStruct *fp)
 }
 
 // 0x800E8190
-void ftParamPlayLoopSFX(ftStruct *fp, u16 sfx_id)
+void ftParamPlayLoopSFX(FTStruct *fp, u16 sfx_id)
 {
     if (fp->p_loop_sfx == NULL)
     {
@@ -324,7 +324,7 @@ void ftParamPlayLoopSFX(ftStruct *fp, u16 sfx_id)
 }
 
 // 0x800E81E4
-void ftParamStopLoopSFX(ftStruct *fp)
+void ftParamStopLoopSFX(FTStruct *fp)
 {
     if (fp->p_loop_sfx != NULL)
     {
@@ -340,7 +340,7 @@ void ftParamStopLoopSFX(ftStruct *fp)
 // 0x800E823C
 void ftParamStopVoiceRunProcDamage(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftParamStopVoice(fp);
 
@@ -353,7 +353,7 @@ void ftParamStopVoiceRunProcDamage(GObj *fighter_gobj)
 // Update render priority? Runs when a fighter gets Screen KO'd
 void ftParamMoveDLLink(GObj *fighter_gobj, u8 dl_link)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     gcMoveGObjDL(fighter_gobj, dl_link, GOBJ_DLLINKORDER_DEFAULT);
 
@@ -363,15 +363,15 @@ void ftParamMoveDLLink(GObj *fighter_gobj, u8 dl_link)
 // 0x800E82B8
 void ftParamUpdateAnimKeys(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     DObj **p_joint = &fp->joints[nFTPartsJointTopN];
     DObj *joint;
     MObj *mobj;
-    ftParts *ft_parts;
+    FTParts *ft_parts;
     f32 anim_wait_bak;
     s32 i;
 
-    if (fp->status_info.motion_id != -2)
+    if (fp->motion_id != -2)
     {
         if (fp->is_have_translate_scale)
         {
@@ -479,26 +479,26 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
 // 0x800E8518
 void ftParamClearHitAll(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->fighter_hit); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->hit_colls); i++)
     {
-        ftHitbox *ft_hit = &fp->fighter_hit[i];
+        FTHitColl *ft_hitcoll = &fp->hit_colls[i];
 
-        ft_hit->update_state = nGMHitUpdateDisable;
+        ft_hitcoll->update_state = nGMHitUpdateDisable;
     }
     fp->is_hitbox_active = FALSE;
 }
 
 // 0x800E853C
-void ftParamClearHitRecordID(ftStruct *fp, s32 hit_id)
+void ftParamClearHitRecordID(FTStruct *fp, s32 hit_id)
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->fighter_hit[hit_id].hit_targets); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->hit_colls[hit_id].hit_record); i++)
     {
-        gmHitRecord *targets = &fp->fighter_hit[hit_id].hit_targets[i];
+        GMHitRecord *targets = &fp->hit_colls[hit_id].hit_record[i];
 
         targets->victim_gobj = NULL;
 
@@ -513,9 +513,9 @@ void ftParamClearHitRecordID(ftStruct *fp, s32 hit_id)
 // 0x800E8668
 void ftParamRefreshHitID(GObj *fighter_gobj, s32 hit_id)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->fighter_hit[hit_id].update_state = nGMHitUpdateNew;
+    fp->hit_colls[hit_id].update_state = nGMHitUpdateNew;
 
     fp->is_hitbox_active = TRUE;
 
@@ -525,13 +525,13 @@ void ftParamRefreshHitID(GObj *fighter_gobj, s32 hit_id)
 // 0x800E86B4
 void ftParamSetCollDataVelPush(GObj *fighter_gobj, Vec3f *vel_push)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->coll_data.vel_push = *vel_push;
 }
 
 // 0x800E86D4
-s32 ftParamGetJointID(ftStruct *fp, s32 joint_id)
+s32 ftParamGetJointID(FTStruct *fp, s32 joint_id)
 {
     if (joint_id == -2)
     {
@@ -543,7 +543,7 @@ s32 ftParamGetJointID(ftStruct *fp, s32 joint_id)
 // 0x800E86F0
 void ftParamLinkResetShieldModelParts(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindNLink))
     {
@@ -555,7 +555,7 @@ void ftParamLinkResetShieldModelParts(GObj *fighter_gobj)
 // 0x800E8744
 void ftParamSetHammerParams(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindNLink))
     {
@@ -587,16 +587,16 @@ void ftParamSetHitStatusColAnim(GObj *fighter_gobj, s32 hitstatus)
 // 0x800E880C
 void ftParamSetHitStatusPartAll(GObj *fighter_gobj, s32 hitstatus)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->fighter_hurt); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->damage_colls); i++)
     {
-        ftHurtbox *ft_hurt = &fp->fighter_hurt[i];
+        FTDamageColl *ft_dmgcoll = &fp->damage_colls[i];
 
-        if (ft_hurt->hitstatus != nGMHitStatusNone)
+        if (ft_dmgcoll->hitstatus != nGMHitStatusNone)
         {
-            ft_hurt->hitstatus = hitstatus;
+            ft_dmgcoll->hitstatus = hitstatus;
         }
     }
     fp->is_hitstatus_nodamage = (hitstatus == nGMHitStatusNormal) ? FALSE : TRUE;
@@ -607,18 +607,18 @@ void ftParamSetHitStatusPartAll(GObj *fighter_gobj, s32 hitstatus)
 // 0x800E8884
 void ftParamSetHitStatusPartID(GObj *fighter_gobj, s32 joint_id, s32 hitstatus)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->fighter_hurt); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->damage_colls); i++)
     {
-        ftHurtbox *ft_hurt = &fp->fighter_hurt[i];
+        FTDamageColl *ft_dmgcoll = &fp->damage_colls[i];
 
-        if ((ft_hurt->hitstatus != nGMHitStatusNone) && (joint_id == ft_hurt->joint_id))
+        if ((ft_dmgcoll->hitstatus != nGMHitStatusNone) && (joint_id == ft_dmgcoll->joint_id))
         {
-            ft_hurt->hitstatus = hitstatus;
+            ft_dmgcoll->hitstatus = hitstatus;
 
-            if (ft_hurt->hitstatus != nGMHitStatusNormal)
+            if (ft_dmgcoll->hitstatus != nGMHitStatusNormal)
             {
                 fp->is_hitstatus_nodamage = TRUE;
             }
@@ -630,7 +630,7 @@ void ftParamSetHitStatusPartID(GObj *fighter_gobj, s32 joint_id, s32 hitstatus)
 // 0x800E8A24
 void ftParamSetHitStatusAll(GObj *fighter_gobj, s32 hitstatus)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->hitstatus = hitstatus;
 
@@ -640,24 +640,24 @@ void ftParamSetHitStatusAll(GObj *fighter_gobj, s32 hitstatus)
 // 0x800E8A48 - Get most effective bone collision state
 s32 ftParamGetBestHitStatusPart(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 hitstatus_default = fp->hitstatus;
-    s32 hitstatus_best = fp->fighter_hurt[0].hitstatus;
+    s32 hitstatus_best = fp->damage_colls[0].hitstatus;
     s32 i;
 
     if (hitstatus_best != nGMHitStatusNormal)
     {
-        for (i = 1; i < ARRAY_COUNT(fp->fighter_hurt); i++)
+        for (i = 1; i < ARRAY_COUNT(fp->damage_colls); i++)
         {
-            ftHurtbox *ft_hurt = &fp->fighter_hurt[i];
+            FTDamageColl *ft_dmgcoll = &fp->damage_colls[i];
 
-            if (ft_hurt->hitstatus == nGMHitStatusNone) 
+            if (ft_dmgcoll->hitstatus == nGMHitStatusNone) 
             {
                 break;
             }
-            else if (hitstatus_best > ft_hurt->hitstatus)
+            else if (hitstatus_best > ft_dmgcoll->hitstatus)
             {
-                hitstatus_best = ft_hurt->hitstatus;
+                hitstatus_best = ft_dmgcoll->hitstatus;
             }
         }
     }
@@ -671,16 +671,16 @@ s32 ftParamGetBestHitStatusPart(GObj *fighter_gobj)
 // 0x800E8AAC - Get overall best collision state
 s32 ftParamGetBestHitStatusAll(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 hitstatus_best = ftParamGetBestHitStatusPart(fighter_gobj);
 
     if (hitstatus_best < fp->star_hitstatus)
     {
         hitstatus_best = fp->star_hitstatus;
     }
-    if (hitstatus_best < fp->special_hitstatus)
+    if (hitstatus_best < fp->special_collstatus)
     {
-        hitstatus_best = fp->special_hitstatus;
+        hitstatus_best = fp->special_collstatus;
     }
     return hitstatus_best;
 }
@@ -688,27 +688,27 @@ s32 ftParamGetBestHitStatusAll(GObj *fighter_gobj)
 // 0x800E8B00
 void ftParamResetFighterHurtPartAll(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftHurtbox *ft_hurt = &fp->fighter_hurt[0];
-    ftHurtboxDesc *ft_hurt_desc = &fp->attributes->fighter_hurt_desc[0];
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTDamageColl *ft_dmgcoll = &fp->damage_colls[0];
+    FTDamageCollDesc *ft_dmgcoll_desc = &fp->attributes->damage_colls_desc[0];
     s32 i;
 
-    for (i = 0; i < FTPARTS_HURT_NUM_MAX; i++, ft_hurt++, ft_hurt_desc++)
+    for (i = 0; i < FTPARTS_HURT_NUM_MAX; i++, ft_dmgcoll++, ft_dmgcoll_desc++)
     {
-        if (ft_hurt_desc->joint_id != -1)
+        if (ft_dmgcoll_desc->joint_id != -1)
         {
-            ft_hurt->joint_id = ft_hurt_desc->joint_id;
-            ft_hurt->joint = fp->joints[ft_hurt->joint_id];
+            ft_dmgcoll->joint_id = ft_dmgcoll_desc->joint_id;
+            ft_dmgcoll->joint = fp->joints[ft_dmgcoll->joint_id];
 
-            ft_hurt->placement = ft_hurt_desc->placement;
-            ft_hurt->is_grabbable = ft_hurt_desc->is_grabbable;
+            ft_dmgcoll->placement = ft_dmgcoll_desc->placement;
+            ft_dmgcoll->is_grabbable = ft_dmgcoll_desc->is_grabbable;
 
-            ft_hurt->offset = ft_hurt_desc->offset;
-            ft_hurt->size = ft_hurt_desc->size;
+            ft_dmgcoll->offset = ft_dmgcoll_desc->offset;
+            ft_dmgcoll->size = ft_dmgcoll_desc->size;
 
-            ft_hurt->size.x *= 0.5F;
-            ft_hurt->size.y *= 0.5F;
-            ft_hurt->size.z *= 0.5F;
+            ft_dmgcoll->size.x *= 0.5F;
+            ft_dmgcoll->size.y *= 0.5F;
+            ft_dmgcoll->size.z *= 0.5F;
         }
     }
     fp->is_hurtbox_modify = FALSE;
@@ -717,21 +717,21 @@ void ftParamResetFighterHurtPartAll(GObj *fighter_gobj)
 // 0x800E8BC8
 void ftParamModifyFighterHurtPartID(GObj *fighter_gobj, s32 joint_id, Vec3f *offset, Vec3f *size)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->fighter_hurt); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->damage_colls); i++)
     {
-        ftHurtbox *ft_hurt = &fp->fighter_hurt[i];
+        FTDamageColl *ft_dmgcoll = &fp->damage_colls[i];
 
-        if (joint_id == ft_hurt->joint_id)
+        if (joint_id == ft_dmgcoll->joint_id)
         {
-            ft_hurt->offset = *offset;
-            ft_hurt->size = *size;
+            ft_dmgcoll->offset = *offset;
+            ft_dmgcoll->size = *size;
 
-            fp->fighter_hurt[i].size.x *= 0.5F;
-            fp->fighter_hurt[i].size.y *= 0.5F;
-            fp->fighter_hurt[i].size.z *= 0.5F;
+            fp->damage_colls[i].size.x *= 0.5F;
+            fp->damage_colls[i].size.y *= 0.5F;
+            fp->damage_colls[i].size.z *= 0.5F;
 
             fp->is_hurtbox_modify = TRUE;
 
@@ -743,12 +743,12 @@ void ftParamModifyFighterHurtPartID(GObj *fighter_gobj, s32 joint_id, Vec3f *off
 // 0x800E8C70
 void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 modelpart_id)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
-    ftCommonPartContainer *commonparts_container;
-    ftModelPart *modelpart;
-    ftModelPartStatus *modelpart_status;
-    ftParts *ft_parts;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
+    FTCommonPartContainer *commonparts_container;
+    FTModelPart *modelpart;
+    FTModelPartStatus *modelpart_status;
+    FTParts *ft_parts;
     DObj *joint;
     s32 detail_id;
     AObjEvent32 **costume_matanim_joints;
@@ -816,7 +816,7 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 modelpart_id)
 // 0x800E8EAC
 void ftParamSetModelPartDefaultID(GObj *fighter_gobj, s32 joint_id, s32 modelpart_id)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->modelpart_status[joint_id - nFTPartsJointCommonStart].modelpart_id_default = modelpart_id;
 
@@ -826,12 +826,12 @@ void ftParamSetModelPartDefaultID(GObj *fighter_gobj, s32 joint_id, s32 modelpar
 // 0x800E8ECC
 void ftParamResetModelPartAll(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
-    ftCommonPartContainer *commonparts_container;
-    ftModelPart *modelpart;
-    ftModelPartStatus *modelpart_status;
-    ftParts *ft_parts;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
+    FTCommonPartContainer *commonparts_container;
+    FTModelPart *modelpart;
+    FTModelPartStatus *modelpart_status;
+    FTParts *ft_parts;
     DObj *joint;
     s32 detail_id;
     AObjEvent32 **costume_matanim_joints;
@@ -908,7 +908,7 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
 // 0x800E90F8
 void ftParamHideModelPartAll(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
 
     for (i = nFTPartsJointCommonStart; i < ARRAY_COUNT(fp->joints); i++)
@@ -937,7 +937,7 @@ void ftParamHideModelPartAll(GObj *fighter_gobj)
 // 0x800E9198
 void ftParamSetModelPartDetailAll(GObj *fighter_gobj, u8 detail)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
 
     if (detail != fp->detail_current)
@@ -971,16 +971,16 @@ void ftParamSetModelPartDetailAll(GObj *fighter_gobj, u8 detail)
 // 0x800E9248
 void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
     DObj *joint;
     GObj *ft_parts_gobj;
-    ftParts *ft_parts;
-    ftCommonPartContainer *commonparts_container;
-    ftMesh *ft_mesh;
-    ftModelPartStatus *modelpart_status;
+    FTParts *ft_parts;
+    FTCommonPartContainer *commonparts_container;
+    FTMesh *ft_mesh;
+    FTModelPartStatus *modelpart_status;
     s32 detail_id;
-    ftModelPart *modelpart;
+    FTModelPart *modelpart;
     MObjSub **mobjsubs;
     AObjEvent32 **costume_matanim_joints;
     s32 i;
@@ -1065,9 +1065,9 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
 // 0x800E9598
 void ftParamInitTexturePartAll(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftTexturePartStatus *texturepart_status;
-    ftTexturePart *texturepart;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTTexturePartStatus *texturepart_status;
+    FTTexturePart *texturepart;
     DObj *joint;
     MObj *mobj;
     s32 detail;
@@ -1108,8 +1108,8 @@ void ftParamInitTexturePartAll(GObj *fighter_gobj)
 // 0x800E962C
 void ftParamSetTexturePartID(GObj *fighter_gobj, s32 texturepart_id, s32 texture_id)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftTexturePart *texturepart = &fp->attributes->textureparts_container->textureparts[texturepart_id];
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTTexturePart *texturepart = &fp->attributes->textureparts_container->textureparts[texturepart_id];
     s32 detail = texturepart->detail[fp->detail_current - nFTPartsDetailStart];
     DObj *joint = fp->joints[texturepart->joint_id];
 
@@ -1142,9 +1142,9 @@ void ftParamSetTexturePartID(GObj *fighter_gobj, s32 texturepart_id, s32 texture
 // 0x800E96B0
 void ftParamResetTexturePartAll(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftTexturePartStatus *texturepart_status;
-    ftTexturePart *texturepart;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTTexturePartStatus *texturepart_status;
+    FTTexturePart *texturepart;
     DObj *joint;
     MObj *mobj;
     s32 detail;
@@ -1185,7 +1185,7 @@ void ftParamResetTexturePartAll(GObj *fighter_gobj)
 }
 
 // 0x800E974C
-sb32 ftParamCheckSetColAnimID(gmColAnim *colanim, s32 colanim_id, s32 length)
+sb32 ftParamCheckSetColAnimID(GMColAnim *colanim, s32 colanim_id, s32 length)
 {
     if (dFTCommonDataColAnimDescs[colanim_id].priority >= dFTCommonDataColAnimDescs[colanim->colanim_id].priority)
     {
@@ -1211,13 +1211,13 @@ sb32 ftParamCheckSetColAnimID(gmColAnim *colanim, s32 colanim_id, s32 length)
 // 0x800E9814
 sb32 ftParamCheckSetFighterColAnimID(GObj *fighter_gobj, s32 colanim_id, s32 length)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     return ftParamCheckSetColAnimID(&fp->colanim, colanim_id, length);
 }
 
 // 0x800E9838
-void ftParamResetColAnim(gmColAnim *colanim)
+void ftParamResetColAnim(GMColAnim *colanim)
 {
     s32 i;
 
@@ -1234,7 +1234,7 @@ void ftParamResetColAnim(gmColAnim *colanim)
 // 0x800E98B0
 void ftParamResetFighterColAnim(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftParamResetColAnim(&fp->colanim);
 }
@@ -1242,7 +1242,7 @@ void ftParamResetFighterColAnim(GObj *fighter_gobj)
 // 0x800E98D4
 void ftParamResetStatUpdateColAnim(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftParamResetFighterColAnim(fighter_gobj);
 
@@ -1321,15 +1321,15 @@ void ftParamResetStatUpdateColAnim(GObj *fighter_gobj)
 // 0x800E9AF4
 sb32 ftParamCheckSetSkeletonColAnimID(GObj *fighter_gobj, s32 colanim_id)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     return ftParamCheckSetFighterColAnimID(fighter_gobj, dFTParamSkeletonColAnimIDs[fp->ft_kind] + colanim_id, 0);
 }
 
 // 0x800E9B30 - Set automatic input sequence
-void ftParamSetKey(GObj *fighter_gobj, ftKeyCommand *input_seq)
+void ftParamSetKey(GObj *fighter_gobj, FTKeyCommand *input_seq)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->key.input_wait = 0;
     fp->key.input_seq = input_seq;
@@ -1338,7 +1338,7 @@ void ftParamSetKey(GObj *fighter_gobj, ftKeyCommand *input_seq)
 // 0x800E9B40 - Check if automatic input sequence exists
 sb32 ftParamCheckHaveKey(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->key.input_seq != NULL)
     {
@@ -1348,9 +1348,9 @@ sb32 ftParamCheckHaveKey(GObj *fighter_gobj)
 }
 
 // 0x800E9B64
-void ftParamRunProcEffect(GObj *fighter_gobj, void (*proc)(GObj*, efStruct*))
+void ftParamRunProcEffect(GObj *fighter_gobj, void (*proc)(GObj*, EFStruct*))
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->is_attach_effect)
     {
@@ -1358,7 +1358,7 @@ void ftParamRunProcEffect(GObj *fighter_gobj, void (*proc)(GObj*, efStruct*))
 
         while (effect_gobj != NULL)
         {
-            efStruct *ep = efGetStruct(effect_gobj);
+            EFStruct *ep = efGetStruct(effect_gobj);
 
             GObj *next_effect_gobj = effect_gobj->link_next;
 
@@ -1372,13 +1372,13 @@ void ftParamRunProcEffect(GObj *fighter_gobj, void (*proc)(GObj*, efStruct*))
 }
 
 // 0x800E9BE8
-void ftParamStopEffect(GObj *effect_gobj, efStruct *ep)
+void ftParamStopEffect(GObj *effect_gobj, EFStruct *ep)
 {
-    lbTransform *einfo = ep->tfrm;
+    LBTransform *einfo = ep->tfrm;
 
     if (einfo != NULL)
     {
-        lbParticleEjectStructID(einfo->generator_id, ep->bank_id >> 3);
+        LBParticleEjectStructID(einfo->generator_id, ep->bank_id >> 3);
     }
     efManagerSetPrevStructAlloc(ep);
     gcEjectGObj(effect_gobj);
@@ -1387,7 +1387,7 @@ void ftParamStopEffect(GObj *effect_gobj, efStruct *ep)
 // 0x800E9C3C
 void ftParamProcStopEffect(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftParamRunProcEffect(fighter_gobj, ftParamStopEffect);
 
@@ -1395,7 +1395,7 @@ void ftParamProcStopEffect(GObj *fighter_gobj)
 }
 
 // 0x800E9C78
-void ftParamPauseEffect(GObj *effect_gobj, efStruct *ep)
+void ftParamPauseEffect(GObj *effect_gobj, EFStruct *ep)
 {
     ep->is_pause_effect = TRUE;
 }
@@ -1407,7 +1407,7 @@ void ftParamProcPauseEffect(GObj *effect_gobj)
 }
 
 // 0x800E9CB0
-void ftParamResumeEffect(GObj *effect_gobj, efStruct *ep)
+void ftParamResumeEffect(GObj *effect_gobj, EFStruct *ep)
 {
     ep->is_pause_effect = FALSE;
 }
@@ -1419,26 +1419,26 @@ void ftParamProcResumeEffect(GObj *fighter_gobj)
 }
 
 // 0x800E9CE8
-void ftParamVelDamageTransferGround(ftStruct *fp)
+void ftParamVelDamageTransferGround(FTStruct *fp)
 {
     if (fp->ga == nMPKineticsGround)
     {
         Vec3f *ground_angle = &fp->coll_data.ground_angle;
 
-        if (fp->phys_info.vel_damage_ground == 0.0F)
+        if (fp->physics.vel_damage_ground == 0.0F)
         {
-            fp->phys_info.vel_damage_ground = fp->phys_info.vel_damage_air.x;
+            fp->physics.vel_damage_ground = fp->physics.vel_damage_air.x;
 
-            if (fp->phys_info.vel_damage_ground > 250.0F)
+            if (fp->physics.vel_damage_ground > 250.0F)
             {
-                fp->phys_info.vel_damage_ground = 250.0F;
+                fp->physics.vel_damage_ground = 250.0F;
             }
-            if (fp->phys_info.vel_damage_ground < -250.0F)
+            if (fp->physics.vel_damage_ground < -250.0F)
             {
-                fp->phys_info.vel_damage_ground = -250.0F;
+                fp->physics.vel_damage_ground = -250.0F;
             }
-            fp->phys_info.vel_damage_air.x = ground_angle->y * fp->phys_info.vel_damage_ground;
-            fp->phys_info.vel_damage_air.y = -ground_angle->x * fp->phys_info.vel_damage_ground;
+            fp->physics.vel_damage_air.x = ground_angle->y * fp->physics.vel_damage_ground;
+            fp->physics.vel_damage_air.y = -ground_angle->x * fp->physics.vel_damage_ground;
         }
     }
 }
@@ -1514,7 +1514,7 @@ s32 ftParamGetHitLag(s32 damage, s32 status_id, f32 hitlag_mul)
 }
 
 // 0x800EA248
-void ftParamUpdateDamage(ftStruct *fp, s32 damage)
+void ftParamUpdateDamage(FTStruct *fp, s32 damage)
 {
     fp->percent_damage += damage;
 
@@ -1530,7 +1530,7 @@ void ftParamUpdateDamage(ftStruct *fp, s32 damage)
     {
         if ((fp->damage_knockback != 0.0F) && ((fp->hitlag_tics == 0) || !(fp->x192_flag_b6) || !(fp->damage_knockback < (fp->damage_stack + 30.0F))))
         {
-            itStruct *ip = itGetStruct(fp->item_hold);
+            ITStruct *ip = itGetStruct(fp->item_hold);
 
             if ((ip->weight != nITWeightHeavy) || (fp->ft_kind != nFTKindDonkey) && (fp->ft_kind != nFTKindNDonkey) && (fp->ft_kind != nFTKindGDonkey))
             {
@@ -1544,7 +1544,7 @@ void ftParamUpdateDamage(ftStruct *fp, s32 damage)
 }
 
 // 0x800EA3D4
-void ftParamSetHealDamage(ftStruct *fp, s32 heal)
+void ftParamSetHealDamage(FTStruct *fp, s32 heal)
 {
     fp->damage_heal += heal;
 
@@ -1552,7 +1552,7 @@ void ftParamSetHealDamage(ftStruct *fp, s32 heal)
 }
 
 // 0x800EA40C - If fighter is grabbed, halve damage received
-s32 ftParamGetCapturedDamage(ftStruct *fp, s32 damage)
+s32 ftParamGetCapturedDamage(FTStruct *fp, s32 damage)
 {
     if (fp->capture_gobj != NULL)
     {
@@ -1619,7 +1619,7 @@ u16 ftParamGetMotionCount(void)
 }
 
 // 0x800EA5E8
-void ftParamSetMotionID(ftStruct *fp, s32 attack_id)
+void ftParamSetMotionID(FTStruct *fp, s32 attack_id)
 {
     fp->attack_id = attack_id;
     fp->motion_count = ftParamGetMotionCount();
@@ -1667,18 +1667,18 @@ u16 ftParamGetStatUpdateCount(void)
 }
 
 // 0x800EA778
-void ftParamSetStatUpdate(ftStruct *fp, u16 flags)
+void ftParamSetStatUpdate(FTStruct *fp, u16 flags)
 {
-    fp->stat_flags = *(gmStatFlags*)&flags;
+    fp->stat_flags = *(GMStatFlags*)&flags;
     fp->stat_count = ftParamGetStatUpdateCount();
 }
 
 // 0x800EA7B0
-void ftParamUpdate1PGameAttackStats(ftStruct *fp, u16 flags)
+void ftParamUpdate1PGameAttackStats(FTStruct *fp, u16 flags)
 {
-    gmStatFlags stat_flags = *(gmStatFlags*)&flags;
+    GMStatFlags stat_flags = *(GMStatFlags*)&flags;
 
-    if ((fp->status_info.pl_kind != nFTPlayerKindDemo) && (gBattleState->game_type == nSCBattleGameType1PGame) && (fp->player == gSceneData.spgame_player))
+    if ((fp->pl_kind != nFTPlayerKindDemo) && (gBattleState->game_type == nSCBattleGameType1PGame) && (fp->player == gSceneData.spgame_player))
     {
         if ((fp->stat_flags.stat_attack_id != nFTStatusAttackIDNone) && (fp->stat_flags.stat_attack_id != stat_flags.stat_attack_id))
         {
@@ -1694,7 +1694,7 @@ void ftParamUpdate1PGameAttackStats(ftStruct *fp, u16 flags)
 }
 
 // 0x800EA8B0
-void ftParamSetStarHitStatusInvincible(ftStruct *fp, s32 star_invincible_tics)
+void ftParamSetStarHitStatusInvincible(FTStruct *fp, s32 star_invincible_tics)
 {
     fp->star_hitstatus = nGMHitStatusInvincible;
     fp->star_invincible_tics = star_invincible_tics;
@@ -1703,7 +1703,7 @@ void ftParamSetStarHitStatusInvincible(ftStruct *fp, s32 star_invincible_tics)
 }
 
 // 0x800EA8EC
-void ftParamSetTimedHitStatusInvincible(ftStruct *fp, s32 invincible_tics)
+void ftParamSetTimedHitStatusInvincible(FTStruct *fp, s32 invincible_tics)
 {
     if (fp->invincible_tics < invincible_tics)
     {
@@ -1711,21 +1711,21 @@ void ftParamSetTimedHitStatusInvincible(ftStruct *fp, s32 invincible_tics)
     }
     if (fp->intangible_tics != 0)
     {
-        fp->special_hitstatus = nGMHitStatusIntangible;
+        fp->special_collstatus = nGMHitStatusIntangible;
     }
-    else fp->special_hitstatus = nGMHitStatusInvincible;
+    else fp->special_collstatus = nGMHitStatusInvincible;
 
     ftParamCheckSetFighterColAnimID(fp->fighter_gobj, 0xA, 0);
 }
 
 // 0x800EA948
-void ftParamSetTimedHitStatusIntangible(ftStruct *fp, s32 intangible_tics)
+void ftParamSetTimedHitStatusIntangible(FTStruct *fp, s32 intangible_tics)
 {
     if (fp->intangible_tics < intangible_tics)
     {
         fp->intangible_tics = intangible_tics;
     }
-    fp->special_hitstatus = nGMHitStatusIntangible;
+    fp->special_collstatus = nGMHitStatusIntangible;
 
     ftParamCheckSetFighterColAnimID(fp->fighter_gobj, 0xA, 0);
 }
@@ -1744,7 +1744,7 @@ void ftParamUpdatePlayerBattleStats(s32 attack_player, s32 defend_player, s32 at
 }
 
 // 0x800EAA2C
-void ftParamUpdate1PGameDamageStats(ftStruct *fp, s32 damage_player, s32 damage_object_class, s32 damage_object_kind, u16 flags, u16 damage_stat_count)
+void ftParamUpdate1PGameDamageStats(FTStruct *fp, s32 damage_player, s32 damage_object_class, s32 damage_object_kind, u16 flags, u16 damage_stat_count)
 {
     fp->damage_player = damage_player;
     fp->damage_object_class = damage_object_class;
@@ -1753,7 +1753,7 @@ void ftParamUpdate1PGameDamageStats(ftStruct *fp, s32 damage_player, s32 damage_
 
     if (!(damage_stat_count) || (fp->damage_stat_count != damage_stat_count))
     {
-        fp->damage_stat_flags = *(gmStatFlags*)&flags;
+        fp->damage_stat_flags = *(GMStatFlags*)&flags;
         fp->damage_stat_count = damage_stat_count;
 
         if (gBattleState->game_type == nSCBattleGameType1PGame)
@@ -1770,9 +1770,9 @@ void ftParamUpdate1PGameDamageStats(ftStruct *fp, s32 damage_player, s32 damage_
 }
 
 // 0x800EAB40
-void ftParamGetEffectJointPosition(ftStruct *fp, Vec3f *pos)
+void ftParamGetEffectJointPosition(FTStruct *fp, Vec3f *pos)
 {
-    ftAttributes *attributes = fp->attributes;
+    FTAttributes *attributes = fp->attributes;
 
     fp->effect_joint_array_id++;
 
@@ -1788,12 +1788,12 @@ void ftParamGetEffectJointPosition(ftStruct *fp, Vec3f *pos)
 // 0x800EABDC
 void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *effect_pos, Vec3f *effect_scatter, s32 lr, sb32 is_scale_pos, u32 arg7)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
     Vec3f effect_pos_mod;
     void *effect;
     f32 scale;
-    lbParticle *ptcl;
+    LBParticle *ptcl;
 
     effect = NULL;
 
@@ -1998,21 +1998,21 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
         break;
 
     case nEFKindQuakeMag0:
-        if (fp->status_info.pl_kind != nFTPlayerKindDemo)
+        if (fp->pl_kind != nFTPlayerKindDemo)
         {
             effect = efManagerQuakeMakeEffect(0);
         }
         break;
 
     case nEFKindQuakeMag1:
-        if (fp->status_info.pl_kind != nFTPlayerKindDemo)
+        if (fp->pl_kind != nFTPlayerKindDemo)
         {
             effect = efManagerQuakeMakeEffect(1);
         }
         break;
 
     case nEFKindQuakeMag2:
-        if (fp->status_info.pl_kind != nFTPlayerKindDemo)
+        if (fp->pl_kind != nFTPlayerKindDemo)
         {
             effect = efManagerQuakeMakeEffect(2);
         }
@@ -2104,7 +2104,7 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
 // 0x800EB39C - Check to spawn Kirby star GFX on stage collision
 void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     u16 coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask_current) & fp->coll_data.coll_mask_current & MPCOLL_FLAG_MAIN_MASK;
     Vec3f pos;
 
@@ -2114,8 +2114,8 @@ void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj)
         {
             pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-            pos.x += fp->coll_data.objcoll.width;
-            pos.y += fp->coll_data.objcoll.center;
+            pos.x += fp->coll_data.object_coll.width;
+            pos.y += fp->coll_data.object_coll.center;
 
             efManagerKirbyStarMakeEffect(&pos);
         }
@@ -2123,8 +2123,8 @@ void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj)
         {
             pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-            pos.x -= fp->coll_data.objcoll.width;
-            pos.y += fp->coll_data.objcoll.center;
+            pos.x -= fp->coll_data.object_coll.width;
+            pos.y += fp->coll_data.object_coll.center;
 
             efManagerKirbyStarMakeEffect(&pos);
         }
@@ -2132,7 +2132,7 @@ void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj)
         {
             pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-            pos.y += fp->coll_data.objcoll.top;
+            pos.y += fp->coll_data.object_coll.top;
 
             efManagerKirbyStarMakeEffect(&pos);
         }
@@ -2140,7 +2140,7 @@ void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj)
         {
             pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-            pos.y += fp->coll_data.objcoll.bottom;
+            pos.y += fp->coll_data.object_coll.bottom;
 
             efManagerKirbyStarMakeEffect(&pos);
         }
@@ -2160,8 +2160,8 @@ void func_ovl2_800EB528(DObj *arg0)
     DObj *temp_v1_8;
     DObj *var_v0;
     DObj *var_v0_2;
-    ftParts *temp_v1;
-    ftParts *temp_v1_5;
+    FTParts *temp_v1;
+    FTParts *temp_v1_5;
 
     var_v0 = arg0;
     temp_v1 = arg0->user_data.p;
@@ -2281,7 +2281,7 @@ void func_ovl2_800EB648(DObj *arg0)
     DObj *temp_v1_3;
     DObj *temp_v1_4;
     DObj *var_v0;
-    ftParts *temp_v1;
+    FTParts *temp_v1;
 
     var_v0 = arg0;
 
@@ -2345,15 +2345,15 @@ void func_ovl2_800EB648(DObj *arg0)
 }
 
 // 0x800EB6EC
-void ftParamSetAnimLocks(ftStruct *fp)
+void ftParamSetAnimLocks(FTStruct *fp)
 {
     u32 flags0;         // First set of 32-bit mask of joint IDs to avoid animating
     u32 flags1;         // Second set of 32-bit mask of joint IDs to avoid animating
     u32 current_flags;
-    ftParts *ft_parts;
+    FTParts *ft_parts;
     s32 i;
     u32 *animlock;
-    ftAttributes *attributes = fp->attributes;
+    FTAttributes *attributes = fp->attributes;
 
     animlock = attributes->animlock;
     flags0 = animlock[0];
@@ -2390,7 +2390,7 @@ void ftParamSetAnimLocks(ftStruct *fp)
 }
 
 // 0x800EB7F4
-void ftParamClearAnimLocks(ftStruct *fp)
+void ftParamClearAnimLocks(FTStruct *fp)
 {
     s32 i;
 
@@ -2398,7 +2398,7 @@ void ftParamClearAnimLocks(ftStruct *fp)
     {
         if (fp->joints[i] != NULL)
         {
-            ftParts *ft_parts = fp->joints[i]->user_data.p;
+            FTParts *ft_parts = fp->joints[i]->user_data.p;
 
             if (ft_parts != NULL)
             {

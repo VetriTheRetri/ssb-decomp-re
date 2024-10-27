@@ -64,8 +64,8 @@ void ftCommonJumpGetJumpForceButton(s32 stick_range_x, s32 *jump_vel_x, s32 *jum
 // 0x8013F880
 void ftCommonJumpSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    ftAttributes *attributes = fp->attributes;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    FTAttributes *attributes = fp->attributes;
     s32 status_id;
     s32 vel_x, vel_y;
 
@@ -92,8 +92,8 @@ void ftCommonJumpSetStatus(GObj *fighter_gobj)
         }
         break;
     }
-    fp->phys_info.vel_air.y = (vel_y * attributes->jump_height_mul) + attributes->jump_height_base;
-    fp->phys_info.vel_air.x = vel_x * attributes->jump_vel_x;
+    fp->physics.vel_air.y = (vel_y * attributes->jump_height_mul) + attributes->jump_height_base;
+    fp->physics.vel_air.x = vel_x * attributes->jump_vel_x;
 
     fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 

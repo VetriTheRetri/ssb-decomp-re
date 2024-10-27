@@ -6,7 +6,7 @@
 #include <ft/ftdef.h>
 
 // SpecialN / SpecialAirN
-extern void ftPurinSpecialNInitStatusVars(GObj* fighter_gobj);
+extern void ftPurinSpecialNInITStatusVars(GObj* fighter_gobj);
 extern f32 ftPurinSpecialNGetAngle(s32 stick_y);
 extern void ftPurinSpecialAirNProcPhysics(GObj* fighter_gobj);
 extern void ftPurinSpecialNProcMap(GObj* fighter_gobj);

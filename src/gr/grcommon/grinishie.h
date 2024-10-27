@@ -27,7 +27,7 @@ extern void grInishiePowerBlockUpdateDamage(void);
 extern void grInishiePowerBlockProcUpdate(GObj *ground_gobj);
 extern void grInishieMakePowerBlock(void);
 extern void grInishiePowerBlockSetDamage(void);
-extern sb32 grInishiePowerBlockCheckGetDamageKind(GObj *item_gobj, GObj *fighter_gobj, grHitbox **gr_hit, s32 *kind);
+extern sb32 grInishiePowerBlockCheckGetDamageKind(GObj *item_gobj, GObj *fighter_gobj, GRHitCollision **gr_hitcoll, s32 *kind);
 extern void grInishieInitHeaders(void);
 extern GObj* grInishieMakeGround(void);
 extern void grInishieScaleGetPlatformInfo(f32 *alt, f32 *accel);

@@ -36,25 +36,25 @@ extern intptr_t lSC1PGameBossAnims3AnimJoint1;              // 0x000128E0
 extern void func_ovl65_801910B0(void);
 extern void sc1PGameBossSetChangeWallpaper(void);
 extern void sc1PGameBossMakeCamera(void);
-extern void sc1PGameBossWallpaper0FuncDisplay(GObj *gobj);
-extern void sc1PGameBossWallpaper1FuncDisplay(GObj *gobj);
-extern void sc1PGameBossWallpaper2FuncDisplay(GObj *gobj);
-extern void sc1PGameBossWallpaper3FuncDisplay0(GObj *gobj);
+extern void SC1PGameBossWallpaper0FuncDisplay(GObj *gobj);
+extern void SC1PGameBossWallpaper1FuncDisplay(GObj *gobj);
+extern void SC1PGameBossWallpaper2FuncDisplay(GObj *gobj);
+extern void SC1PGameBossWallpaper3FuncDisplay0(GObj *gobj);
 extern void sc1PGameBossFuncDisplayFadeAlpha(GObj *gobj);
 extern void sc1PGameBossFuncDisplayFadeColor(GObj *gobj);
 extern void sc1PGameBossUpdateWallpaperColorID(void);
-extern void sc1PGameBossWallpaper3ProcUpdate0(GObj *gobj);
+extern void SC1PGameBossWallpaper3ProcUpdate0(GObj *gobj);
 extern void func_ovl65_80191B44(GObj *gobj);
-extern void sc1PGameBossWallpaper0ProcUpdate(GObj *gobj);
-extern void sc1PGameBossWallpaper1ProcUpdate(GObj *gobj);
-extern void sc1PGameBossWallpaper2ProcUpdate0(GObj *gobj);
-extern void sc1PGameBossWallpaper2ProcUpdate1(GObj *gobj);
-extern void sc1PGameBossWallpaper3ProcUpdate1(GObj *gobj);
+extern void SC1PGameBossWallpaper0ProcUpdate(GObj *gobj);
+extern void SC1PGameBossWallpaper1ProcUpdate(GObj *gobj);
+extern void SC1PGameBossWallpaper2ProcUpdate0(GObj *gobj);
+extern void SC1PGameBossWallpaper2ProcUpdate1(GObj *gobj);
+extern void SC1PGameBossWallpaper3ProcUpdate1(GObj *gobj);
 extern void sc1PGameBossSetupBackgroundDObjs(GObj *gobj, DObjDesc *dobjdesc, MObjSub ***p_mobjsubs, u8 transform_kind);
 extern void sc1PGameBossSetWallpaperTranslate(GObj *gobj, s32 plan_id);
 extern GObj* sc1PGameBossMakeWallpaperEffect(s32 effect_id, s32 anim_id, s32 plan_id);
 extern void sc1PGameBossAdvanceWallpaper(void);
-extern void sc1PGameBossWallpaperProcUpdate(GObj *gobj);
+extern void SC1PGameBossWallpaperProcUpdate(GObj *gobj);
 extern void sc1PGameBossSetBossPlayer(void);
 
 #endif

@@ -153,7 +153,7 @@ DObjTransformTypes dGRSectorArwingTransformKinds[/* */] =
 };
 
 // 0x8012E9F0
-wpCreateDesc dGRSectorArwingWeaponLaser2DWeaponDesc =
+WPCreateDesc dGRSectorArwingWeaponLaser2DWeaponDesc =
 {
     0,                                                  // Render flags?
     nWPKindArwingLaser2D,                              // Weapon Kind
@@ -178,7 +178,7 @@ wpCreateDesc dGRSectorArwingWeaponLaser2DWeaponDesc =
 };
 
 // 0x8012EA24
-wpCreateDesc dGRSectorArwingWeaponLaser3DWeaponDesc =
+WPCreateDesc dGRSectorArwingWeaponLaser3DWeaponDesc =
 {
     0,                                                  // Render flags?
     nWPKindArwingLaser3D,                              // Weapon Kind
@@ -532,7 +532,7 @@ s32 grSectorArwingGetLaserAmmoCount(void)
 
     while (fighter_gobj != NULL)
     {
-        ftStruct *fp = ftGetStruct(fighter_gobj);
+        FTStruct *fp = ftGetStruct(fighter_gobj);
 
         if (gGRCommonStruct.sector.arwing_laser_count == 2)
         {
@@ -566,9 +566,9 @@ sb32 grSectorArwingWeaponLaser2DProcMap(GObj *weapon_gobj)
 // 0x80107074
 sb32 grSectorArwingWeaponLaser2DProcHit(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->weapon_hit.damage);
+    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->hit_coll.damage);
 
     return TRUE;
 }
@@ -623,12 +623,12 @@ void func_ovl2_8010719C(Vec3f *vel, Vec3f *rotate)
 // 0x80107238
 sb32 grSectorArwingWeaponLaser2DProcHop(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f vel;
 
-    func_80019438(&wp->phys_info.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
+    func_80019438(&wp->physics.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
 
-    vel = wp->phys_info.vel_air;
+    vel = wp->physics.vel_air;
 
     syVectorNorm3D(&vel);
     func_ovl2_8010719C(&vel, &DObjGetStruct(weapon_gobj)->rotate.vec.f);
@@ -639,13 +639,13 @@ sb32 grSectorArwingWeaponLaser2DProcHop(GObj *weapon_gobj)
 // 0x801072C0
 sb32 grSectorArwingWeaponLaser2DProcReflector(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    ftStruct *fp = ftGetStruct(wp->owner_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    FTStruct *fp = ftGetStruct(wp->owner_gobj);
     Vec3f vel;
 
     wpMainReflectorSetLR(wp, fp);
 
-    vel = wp->phys_info.vel_air;
+    vel = wp->physics.vel_air;
 
     syVectorNorm3D(&vel);
     func_ovl2_8010719C(&vel, &DObjGetStruct(weapon_gobj)->rotate.vec.f);
@@ -657,7 +657,7 @@ sb32 grSectorArwingWeaponLaser2DProcReflector(GObj *weapon_gobj)
 void grSectorArwingWeaponLaser2DMakeWeapon(void)
 {
     GObj *weapon_gobj;
-    wpStruct *wp;
+    WPStruct *wp;
     Vec3f sp54;
     Vec3f sp48;
     Vec3f pos;
@@ -682,7 +682,7 @@ void grSectorArwingWeaponLaser2DMakeWeapon(void)
     {
         wp = wpGetStruct(weapon_gobj);
 
-        wp->phys_info.vel_air.x = -230.0F;
+        wp->physics.vel_air.x = -230.0F;
 
         vel.y = vel.z = 0.0F;
         vel.x = -1.0F;
@@ -705,7 +705,7 @@ void grSectorArwingWeaponLaser2DMakeWeapon(void)
         {
             wp = wpGetStruct(weapon_gobj);
 
-            wp->phys_info.vel_air.x = -230.0F;
+            wp->physics.vel_air.x = -230.0F;
 
             DObjGetStruct(weapon_gobj)->rotate.vec.f = rotate;
         }
@@ -725,17 +725,17 @@ sb32 grSectorArwingWeaponLaserExplodeProcUpdate(GObj *weapon_gobj)
 // 0x80107544
 void grSectorArwingWeaponLaserExplodeInitWeaponVars(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
     wp->lifetime = 16;
 
-    wp->weapon_hit.can_reflect = FALSE;
-    wp->weapon_hit.can_absorb = TRUE;
-    wp->weapon_hit.can_shield = FALSE;
+    wp->hit_coll.can_reflect = FALSE;
+    wp->hit_coll.can_absorb = TRUE;
+    wp->hit_coll.can_shield = FALSE;
 
-    wp->phys_info.vel_air.x = wp->phys_info.vel_air.y = wp->phys_info.vel_air.z = 0.0F;
+    wp->physics.vel_air.x = wp->physics.vel_air.y = wp->physics.vel_air.z = 0.0F;
 
-    wp->weapon_hit.size = 200.0F;
+    wp->hit_coll.size = 200.0F;
 
     DObjGetStruct(weapon_gobj)->display_list = NULL;
 
@@ -795,8 +795,8 @@ void grSectorArwingWeaponLaser3DMakeWeapon(void)
     GObj *fighter_gobj;
     s32 random;
     s32 player;
-    ftStruct *fp;
-    wpStruct *wp;
+    FTStruct *fp;
+    WPStruct *wp;
     Vec3f wp_pos;
     Vec3f ft_pos;
     Vec3f sp94;
@@ -869,9 +869,9 @@ void grSectorArwingWeaponLaser3DMakeWeapon(void)
     {
         wp = wpGetStruct(weapon_gobj);
 
-        wp->phys_info.vel_air.x = wp_angle.x * 230.0F;
-        wp->phys_info.vel_air.y = wp_angle.y * 230.0F;
-        wp->phys_info.vel_air.z = wp_angle.z * 230.0F;
+        wp->physics.vel_air.x = wp_angle.x * 230.0F;
+        wp->physics.vel_air.y = wp_angle.y * 230.0F;
+        wp->physics.vel_air.z = wp_angle.z * 230.0F;
 
         func_ovl2_8010719C(&wp_angle, &DObjGetStruct(weapon_gobj)->rotate.vec.f);
     }

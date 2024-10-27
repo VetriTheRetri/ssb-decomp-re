@@ -48,7 +48,7 @@ s32 dFTCommonEntryAppearStatusIDs[/* */][2] =
 // 0x8013D930
 void ftCommonEntrySetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusEntry, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
@@ -61,7 +61,7 @@ void ftCommonEntrySetStatus(GObj *fighter_gobj)
 // 0x8013D994
 void ftCommonEntryNullProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->status_vars.common.entry.entry_wait != 0)
     {
@@ -90,7 +90,7 @@ void ftCommonEntryNullProcUpdate(GObj *fighter_gobj)
 // 0x8013DA14
 void ftCommonAppearUpdateEffects(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->command_vars.flags.flag1 != 0)
     {
@@ -111,7 +111,7 @@ void ftCommonAppearUpdateEffects(GObj *fighter_gobj)
 // 0x8013DA94
 void ftCommonAppearProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonAppearUpdateEffects(fighter_gobj);
 
@@ -134,7 +134,7 @@ void ftCommonAppearProcUpdate(GObj *fighter_gobj)
 // 0x8013DB2C
 void ftCommonAppearProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     DObj *topn_joint = fp->joints[nFTPartsJointTopN];
     DObj *transn_joint = fp->joints[nFTPartsJointTransN];
 
@@ -155,9 +155,9 @@ void ftCommonAppearProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x8013DBAC
-void ftCommonAppearInitStatusVars(GObj *fighter_gobj)
+void ftCommonAppearInITStatusVars(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->is_nullstatus = TRUE;
 
@@ -170,7 +170,7 @@ void ftCommonAppearInitStatusVars(GObj *fighter_gobj)
 // 0x8013DBE0
 void ftCommonAppearSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
     s32 entry_id;
     GObj *boss_target_gobj;
@@ -253,7 +253,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
     }
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftCommonAppearInitStatusVars(fighter_gobj);
+    ftCommonAppearInITStatusVars(fighter_gobj);
 
     fp->status_vars.common.entry.entry_wait = FTCOMMON_ENTRY_WAIT;
 
@@ -270,7 +270,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
 // 0x8013DDE0
 void ftCommonAppearSetPosition(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->camera_mode = 3;
 
@@ -298,10 +298,10 @@ void ftNessAppearWaitProcUpdate(GObj *fighter_gobj)
 // 0x8013DEC0
 void ftNessAppearWaitSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTNessStatusAppearWait, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_COLANIM));
-    ftCommonAppearInitStatusVars(fighter_gobj);
+    ftCommonAppearInITStatusVars(fighter_gobj);
 
     fp->x18E_flag_b0 = FALSE;
 }
@@ -309,10 +309,10 @@ void ftNessAppearWaitSetStatus(GObj *fighter_gobj)
 // 0x8013DF14
 void ftNessAppearEndSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, ((fp->status_vars.common.entry.lr_entry == nGMFacingR) ? nFTNessStatusAppearREnd : nFTNessStatusAppearLEnd), 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_COLANIM));
-    ftCommonAppearInitStatusVars(fighter_gobj);
+    ftCommonAppearInITStatusVars(fighter_gobj);
 
     fp->x18E_flag_b0 = FALSE;
 }
@@ -320,7 +320,7 @@ void ftNessAppearEndSetStatus(GObj *fighter_gobj)
 // 0x8013DF7C
 void ftCaptainAppearStartProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftCommonAppearUpdateEffects(fighter_gobj);
 
@@ -334,10 +334,10 @@ void ftCaptainAppearStartProcUpdate(GObj *fighter_gobj)
 // 0x8013E008
 void ftCaptainAppearEndSetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, ((fp->status_vars.common.entry.lr_entry == nGMFacingR) ? nFTCaptainStatusAppearREnd : nFTCaptainStatusAppearLEnd), 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftCommonAppearInitStatusVars(fighter_gobj);
+    ftCommonAppearInITStatusVars(fighter_gobj);
 
     fp->x18E_flag_b0 = FALSE;
 }

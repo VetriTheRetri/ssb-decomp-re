@@ -8,7 +8,7 @@ extern uintptr_t ovl5_BSS_END; 	// 0x8018D950
 // DATA
 
 // 0x8018D580
-ftKeyCommand D_ovl5_8018D580[] =
+FTKeyCommand D_ovl5_8018D580[] =
 {
 	FTKEY_EVENT_BUTTON(0, 180),                                       // 0x10B4, 0x0000
 	FTKEY_EVENT_STICK(30, 0, 60),                                     // 0x203C, 0x1E00
@@ -47,15 +47,15 @@ scRuntimeInfo D_ovl5_8018D5D8 = {
 // BSS
 u32 D_8018D670;
 u32 D_ovl5_8018D674;
-lbFileNode D_ovl5_8018D678[20];
-lbFileNode D_ovl5_8018D718[7];
+LBFileNode D_ovl5_8018D678[20];
+LBFileNode D_ovl5_8018D718[7];
 GObj *gUnkExplainFighterGObj;
-scBattleState gUnkExplainBattleState;
+SCBattleState gUnkExplainBattleState;
 
 // 0x8018D0C0
 void func_ovl5_8018D0C0()
 {
-	lbRelocSetup rl_setup;
+	LBRelocSetup rl_setup;
 
 	rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
 	rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
@@ -86,7 +86,7 @@ void func_ovl5_8018D1A0()
 	s32 unused[3];
 	GObj *fighter_gobj;
 	s32 player;
-	ftCreateDesc player_spawn;
+	FTCreateDesc player_spawn;
 	syColorRGBA color;
 
 	gUnkExplainBattleState = gDefaultBattleState;

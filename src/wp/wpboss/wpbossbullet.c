@@ -18,7 +18,7 @@ lWPBossBulletHardWeaponAttributes;          // 0x000007A8
 //                               //
 // // // // // // // // // // // //
 
-wpCreateDesc dWPBossBulletNormalWeaponDesc =
+WPCreateDesc dWPBossBulletNormalWeaponDesc =
 {
     0x01,                                   // Render flags?
     nWPKindBulletNormal,                   // Weapon Kind
@@ -42,7 +42,7 @@ wpCreateDesc dWPBossBulletNormalWeaponDesc =
     wpBossBulletProcHit                     // Proc Absorb
 };
 
-wpCreateDesc dWPBossBulletHardWeaponDesc =
+WPCreateDesc dWPBossBulletHardWeaponDesc =
 {
     0x01,                                   // Render flags?
     nWPKindBulletHard,                     // Weapon Kind
@@ -85,21 +85,21 @@ sb32 wpBossBulletExplodeProcUpdate(GObj *weapon_gobj)
 // 0x8016DC2C
 void wpBossBulletExplodeInitWeaponVars(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    wp->weapon_hit.hit_sfx = nSYAudioFGMExplodeL;
+    wp->hit_coll.hit_sfx = nSYAudioFGMExplodeL;
 
-    wp->weapon_hit.can_rehit_item = TRUE;
-    wp->weapon_hit.can_hop = FALSE;
-    wp->weapon_hit.can_reflect = FALSE;
+    wp->hit_coll.can_rehit_item = TRUE;
+    wp->hit_coll.can_hop = FALSE;
+    wp->hit_coll.can_reflect = FALSE;
 
-    wp->weapon_hit.element = nGMHitElementFire;
+    wp->hit_coll.element = nGMHitElementFire;
 
     wp->lifetime = WPYUBIBULLET_EXPLODE_LIFETIME;
 
-    wp->phys_info.vel_air.x = wp->phys_info.vel_air.y = wp->phys_info.vel_air.z = 0.0F;
+    wp->physics.vel_air.x = wp->physics.vel_air.y = wp->physics.vel_air.z = 0.0F;
 
-    wp->weapon_hit.size = WPYUBIBULLET_EXPLODE_SIZE;
+    wp->hit_coll.size = WPYUBIBULLET_EXPLODE_SIZE;
 
     DObjGetStruct(weapon_gobj)->display_ptr = NULL;
 
@@ -137,9 +137,9 @@ sb32 wpBossBulletProcHit(GObj *weapon_gobj)
 // 0x8016DD2C
 sb32 wpBossBulletProcHop(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_80019438(&wp->phys_info.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
+    func_80019438(&wp->physics.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
     wpMainReflectorRotateWeaponModel(weapon_gobj);
 
     return FALSE;
@@ -148,8 +148,8 @@ sb32 wpBossBulletProcHop(GObj *weapon_gobj)
 // 0x8016DD7C
 sb32 wpBossBulletProcReflector(GObj *weapon_gobj)
 {
-    wpStruct *wp = wpGetStruct(weapon_gobj);
-    ftStruct *fp = ftGetStruct(wp->owner_gobj);
+    WPStruct *wp = wpGetStruct(weapon_gobj);
+    FTStruct *fp = ftGetStruct(wp->owner_gobj);
 
     wpMainReflectorSetLR(wp, fp);
     wpMainReflectorRotateWeaponModel(weapon_gobj);
@@ -161,7 +161,7 @@ sb32 wpBossBulletProcReflector(GObj *weapon_gobj)
 GObj* wpBossBulletNormalMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
     GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPBossBulletNormalWeaponDesc, pos, (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_FIGHTER));
-    wpStruct *wp;
+    WPStruct *wp;
 
     if (weapon_gobj == NULL)
     {
@@ -169,8 +169,8 @@ GObj* wpBossBulletNormalMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
     }
     wp = wpGetStruct(weapon_gobj);
 
-    wp->phys_info.vel_air.x = WPYUBIBULLETVEL_X * wp->lr;
-    wp->phys_info.vel_air.y = WPYUBIBULLETVEL_Y;
+    wp->physics.vel_air.x = WPYUBIBULLETVEL_X * wp->lr;
+    wp->physics.vel_air.y = WPYUBIBULLETVEL_Y;
 
     wpMainReflectorRotateWeaponModel(weapon_gobj);
 
@@ -181,7 +181,7 @@ GObj* wpBossBulletNormalMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 GObj* wpBossBulletHardMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 {
     GObj *weapon_gobj = wpManagerMakeWeapon(fighter_gobj, &dWPBossBulletHardWeaponDesc, pos, (WEAPON_FLAG_COLLPROJECT | WEAPON_FLAG_PARENT_FIGHTER));
-    wpStruct *wp;
+    WPStruct *wp;
 
     if (weapon_gobj == NULL)
     {
@@ -189,8 +189,8 @@ GObj* wpBossBulletHardMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
     }
     wp = wpGetStruct(weapon_gobj);
 
-    wp->phys_info.vel_air.x = WPYUBIBULLETVEL_X * wp->lr;
-    wp->phys_info.vel_air.y = WPYUBIBULLETVEL_Y;
+    wp->physics.vel_air.x = WPYUBIBULLETVEL_X * wp->lr;
+    wp->physics.vel_air.y = WPYUBIBULLETVEL_Y;
 
     wpMainReflectorRotateWeaponModel(weapon_gobj);
 

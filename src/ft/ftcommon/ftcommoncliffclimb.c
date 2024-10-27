@@ -9,7 +9,7 @@
 // 0x80144EE0
 void ftCommonCliffQuickProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fighter_gobj->anim_frame <= 0.0F)
     {
@@ -33,7 +33,7 @@ void ftCommonCliffQuickProcUpdate(GObj *fighter_gobj)
 // 0x80144F64
 void ftCommonCliffSlowProcUpdate(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fighter_gobj->anim_frame <= 0.0F)
     {
@@ -57,7 +57,7 @@ void ftCommonCliffSlowProcUpdate(GObj *fighter_gobj)
 // 0x80144FE8
 void ftCommonCliffQuickOrSlowSetStatus(GObj *fighter_gobj, s32 status_input)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
     s32 status_queue;
 
@@ -81,7 +81,7 @@ void ftCommonCliffQuickOrSlowSetStatus(GObj *fighter_gobj, s32 status_input)
 // 0x80145084
 sb32 ftCommonCliffClimbOrFallCheckInterruptCommon(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_CLIFF_MOTION_STICK_RANGE_MIN) || (ABS(fp->input.pl.stick_range.y) >= FTCOMMON_CLIFF_MOTION_STICK_RANGE_MIN))
     {
@@ -128,7 +128,7 @@ void ftCommonCliffClimbSlow1ProcUpdate(GObj *fighter_gobj)
 // 0x801451F0
 void ftCommonCliffClimbQuick1SetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffClimbQuick1, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
@@ -140,7 +140,7 @@ void ftCommonCliffClimbQuick1SetStatus(GObj *fighter_gobj)
 // 0x80145240
 void ftCommonCliffClimbSlow1SetStatus(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffClimbSlow1, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
@@ -158,7 +158,7 @@ void ftCommonCliffCommon2ProcUpdate(GObj *fighter_gobj)
 // 0x801452B4
 void ftCommonCliffCommon2ProcPhysics(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
     Vec3f vel;
     Vec3f *translate;
@@ -189,9 +189,9 @@ void ftCommonCliffCommon2ProcPhysics(GObj *fighter_gobj)
 
             pos.y += fp->joints[nFTPartsJointTransN]->translate.vec.f.y;
 
-            fp->phys_info.vel_air.x = pos.x - translate->x;
-            fp->phys_info.vel_air.y = pos.y - translate->y;
-            fp->phys_info.vel_air.z = pos.z - translate->z;
+            fp->physics.vel_air.x = pos.x - translate->x;
+            fp->physics.vel_air.y = pos.y - translate->y;
+            fp->physics.vel_air.z = pos.z - translate->z;
         }
         else ftPhysicsApplyAirVelTransNAll(fighter_gobj);
     }
@@ -200,7 +200,7 @@ void ftCommonCliffCommon2ProcPhysics(GObj *fighter_gobj)
 // 0x801453F0
 void ftCommonCliffClimbCommon2ProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->ga == nMPKineticsGround)
     {
@@ -215,7 +215,7 @@ void ftCommonCliffClimbCommon2ProcMap(GObj *fighter_gobj)
 // 0x80145440
 void ftCommonCliffAttackEscape2ProcMap(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->ga == nMPKineticsGround)
     {
@@ -230,8 +230,8 @@ void ftCommonCliffAttackEscape2ProcMap(GObj *fighter_gobj)
 // 0x80145490
 void ftCommonCliffCommon2UpdateCollData(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
-    mpCollData *coll_data = &fp->coll_data;
+    FTStruct *fp = ftGetStruct(fighter_gobj);
+    MPCollData *coll_data = &fp->coll_data;
     Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     if (fp->attributes->cliff_status_ga[fp->status_vars.common.cliffmotion.status_id] == nMPKineticsGround)
@@ -260,9 +260,9 @@ void ftCommonCliffCommon2UpdateCollData(GObj *fighter_gobj)
 }
 
 // 0x8014557C
-void ftCommonCliffCommon2InitStatusVars(GObj *fighter_gobj)
+void ftCommonCliffCommon2InITStatusVars(GObj *fighter_gobj)
 {
-    ftStruct *fp = ftGetStruct(fighter_gobj);
+    FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (fp->ga == nMPKineticsGround)
     {
@@ -275,7 +275,7 @@ void ftCommonCliffClimbQuick2SetStatus(GObj *fighter_gobj)
 {
     ftCommonCliffCommon2UpdateCollData(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffClimbQuick2, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftCommonCliffCommon2InitStatusVars(fighter_gobj);
+    ftCommonCliffCommon2InITStatusVars(fighter_gobj);
 }
 
 // 0x801455E0
@@ -283,5 +283,5 @@ void ftCommonCliffClimbSlow2SetStatus(GObj *fighter_gobj)
 {
     ftCommonCliffCommon2UpdateCollData(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffClimbSlow2, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftCommonCliffCommon2InitStatusVars(fighter_gobj);
+    ftCommonCliffCommon2InITStatusVars(fighter_gobj);
 }

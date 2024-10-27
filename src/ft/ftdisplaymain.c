@@ -936,8 +936,8 @@ void ftDisplayMainDrawAll(GObj *fighter_gobj)
         (fp->colanim.skeleton_id)                                           &&
         (attributes->skeleton != NULL)                                      &&
         (attributes->skeleton[fp->colanim.skeleton_id] != NULL)             &&
-        (fp->joints[(s32)(attributes->skeleton[0])] != NULL)                 &&        // ???
-        (fp->joints[(s32)(attributes->skeleton[0])]->display_list != NULL)             // What kind of Flintstones gummies were you on I need them right now
+        (fp->joints[(s32)(attributes->skeleton[0])] != NULL)                &&  // ???
+        (fp->joints[(s32)(attributes->skeleton[0])]->display_list != NULL)      // What kind of Flintstones gummies were you on I need them right now
     )
     {
         ftDisplayMainDrawSkeleton(DObjGetStruct(fighter_gobj));
@@ -978,19 +978,19 @@ void ftDisplayMainDrawParts(DObj *dobj)
 
     for (i = 0; i < ARRAY_COUNT(fp->damage_colls); i++)
     {
-        FTDamageColl *ft_dmgcoll = &fp->damage_colls[i];
+        FTDamageColl *damage_coll = &fp->damage_colls[i];
 
-        if ((ft_dmgcoll->hitstatus != nGMHitStatusNone) && (dobj == ft_dmgcoll->joint))
+        if ((damage_coll->hitstatus != nGMHitStatusNone) && (dobj == damage_coll->joint))
         {
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixTranslate(mtx_store.gbi, ft_dmgcoll->offset.x, ft_dmgcoll->offset.y, ft_dmgcoll->offset.z);
+            syMatrixTranslate(mtx_store.gbi, damage_coll->offset.x, damage_coll->offset.y, damage_coll->offset.z);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixSca(mtx_store.gbi, ft_dmgcoll->size.x / 15.0F, ft_dmgcoll->size.y / 15.0F, ft_dmgcoll->size.z / 15.0F);
+            syMatrixSca(mtx_store.gbi, damage_coll->size.x / 15.0F, damage_coll->size.y / 15.0F, damage_coll->size.z / 15.0F);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -998,20 +998,20 @@ void ftDisplayMainDrawParts(DObj *dobj)
 
             if
             (
-                (fp->special_collstatus == nGMHitStatusIntangible)  ||
+                (fp->special_hitstatus == nGMHitStatusIntangible)  ||
                 (fp->star_hitstatus == nGMHitStatusIntangible)     ||
                 (fp->hitstatus == nGMHitStatusIntangible)          ||
-                (ft_dmgcoll->hitstatus == nGMHitStatusIntangible)
+                (damage_coll->hitstatus == nGMHitStatusIntangible)
             )
             {
                 hitstatus = nGMHitStatusIntangible;
             }
             else if
             (
-                (fp->special_collstatus == nGMHitStatusInvincible)  ||
+                (fp->special_hitstatus == nGMHitStatusInvincible)  ||
                 (fp->star_hitstatus == nGMHitStatusInvincible)     ||
                 (fp->hitstatus == nGMHitStatusInvincible)          ||
-                (ft_dmgcoll->hitstatus == nGMHitStatusInvincible)
+                (damage_coll->hitstatus == nGMHitStatusInvincible)
             )
             {
                 hitstatus = nGMHitStatusInvincible;
@@ -1073,12 +1073,12 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 {
     FTStruct *fp;
     FTAttributes *attributes;
-    FTHitColl *ft_hitcoll;
+    FTHitColl *hit_coll;
     gsMtxStore mtx_store;
     s32 i;
     Vec3f sp128;
-    f32 cobj_pos_x;
-    f32 cobj_pos_y;
+    f32 cam_pos_x;
+    f32 cam_pos_y;
     Vec3f sp110;
 
     fp = ftGetStruct(fighter_gobj);
@@ -1089,7 +1089,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
     if ((fp->is_invisible) && (fp->display_mode == nDBDisplayModeMaster))
     {
-        fp->x18D_flag_b5 = FALSE;
+        fp->is_show_magnify = FALSE;
 
         return;
     }
@@ -1101,66 +1101,66 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
             {
             case nFTCommonStatusDeadUpStar:
             case nFTCommonStatusDeadUpFall:
-                fp->x18D_flag_b5 = FALSE;
+                fp->is_show_magnify = FALSE;
                 break;
 
             default:
                 sp128 = fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
-                sp128.y += fp->attributes->cobj_offset_y;
+                sp128.y += fp->attributes->cam_offset_y;
 
             #if defined(AVOID_UB) || defined(NON_MATCHING)
                 syVectorDiff3D(&sp110, &CObjGetStruct(gCMManagerCameraGObj)->vec.at, &sp128);
 
-                if (fp->attributes->cobj_offset_y < syVectorMag3D(&sp110))
+                if (fp->attributes->cam_offset_y < syVectorMag3D(&sp110))
                 {
                     syVectorNorm3D(&sp110);
-                    syVectorScale3D(&sp110, fp->attributes->cobj_offset_y);
+                    syVectorScale3D(&sp110, fp->attributes->cam_offset_y);
                     syVectorAdd3D(&sp128, &sp110);
                 }
             #else
                 // SUPER FAKE. I hope I can fix this in the future. sp128 - 2 should really be sp110, but we get stack issues otherwise.
                 syVectorDiff3D(&sp128 - 2, &CObjGetStruct(gCMManagerCameraGObj)->vec.at, &sp128);
 
-                if (fp->attributes->cobj_offset_y < syVectorMag3D(&sp128 - 2))
+                if (fp->attributes->cam_offset_y < syVectorMag3D(&sp128 - 2))
                 {
                     syVectorNorm3D(&sp128 - 2);
-                    syVectorScale3D(&sp128 - 2, fp->attributes->cobj_offset_y);
+                    syVectorScale3D(&sp128 - 2, fp->attributes->cam_offset_y);
                     syVectorAdd3D(&sp128, &sp128 - 2);
                 }
             #endif
 
-                func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &sp128, &cobj_pos_x, &cobj_pos_y);
+                func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &sp128, &cam_pos_x, &cam_pos_y);
 
-                if (cmManagerCheckTargetInBounds(cobj_pos_x, cobj_pos_y) == FALSE)
+                if (cmManagerCheckTargetInBounds(cam_pos_x, cam_pos_y) == FALSE)
                 {
                     sp128 = fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
                     sp128.y += 300.0F;
 
-                    func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &sp128, &fp->ifpos_x, &fp->ifpos_y);
+                    func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &sp128, &fp->magnify_pos_x, &fp->magnify_pos_y);
 
-                    fp->x18D_flag_b5 = TRUE;
+                    fp->is_show_magnify = TRUE;
 
-                    if (gIFCommonPlayerInterface.is_mglass_display != FALSE)
+                    if (gIFCommonPlayerInterface.is_magnify_display != FALSE)
                     {
-                        if (!(fp->is_magnify_hide) && !(fp->x18E_flag_b1))
+                        if (!(fp->is_skip_magnify) && !(fp->is_rebirth))
                         {
-                            gIFCommonPlayerInterface.mglass_mode = 1;
+                            gIFCommonPlayerInterface.magnify_mode = 1;
 
-                            ifCommonPlayerArrowsUpdateFlags(cobj_pos_x, cobj_pos_y);
+                            ifCommonPlayerArrowsUpdateFlags(cam_pos_x, cam_pos_y);
                         }
                     }
                     return;
                 }
-                else fp->x18D_flag_b5 = FALSE;
+                else fp->is_show_magnify = FALSE;
 
                 break;
             }
         }
-        else if (!(fp->is_magnify_hide) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
+        else if (!(fp->is_skip_magnify) && !(fp->is_rebirth) && (fp->is_show_magnify))
         {
-            ifCommonPlayerMGlassUpdateViewport(gSYTaskmanDLHeads, fp);
+            ifCommonPlayerMagnifyUpdateViewport(gSYTaskmanDLHeads, fp);
         }
         else return;
     }
@@ -1343,9 +1343,9 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
         }
         for (i = 0; i < ARRAY_COUNT(fp->hit_colls); i++)
         {
-            ft_hitcoll = &fp->hit_colls[i];
+            hit_coll = &fp->hit_colls[i];
 
-            if ((ft_hitcoll->update_state != nGMHitUpdateDisable) && (ft_hitcoll->update_state != nGMHitUpdateNew))
+            if ((hit_coll->update_state != nGMHitUpdateDisable) && (hit_coll->update_state != nGMHitUpdateNew))
             {
                 gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
@@ -1365,17 +1365,17 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
                     gDPSetBlendColor(gSYTaskmanDLHeads[0]++, 0x00, 0x00, 0x00, 0x00);
                 }
-                if (ft_hitcoll->update_state == nGMHitUpdateInterpolate)
+                if (hit_coll->update_state == nGMHitUpdateInterpolate)
                 {
                     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                    syMatrixTranslate(mtx_store.gbi, ft_hitcoll->pos_prev.x, ft_hitcoll->pos_prev.y, ft_hitcoll->pos_prev.z);
+                    syMatrixTranslate(mtx_store.gbi, hit_coll->pos_prev.x, hit_coll->pos_prev.y, hit_coll->pos_prev.z);
 
                     gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
                     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                    syMatrixSca(mtx_store.gbi, ft_hitcoll->size / 15.0F, ft_hitcoll->size / 15.0F, ft_hitcoll->size / 15.0F);
+                    syMatrixSca(mtx_store.gbi, hit_coll->size / 15.0F, hit_coll->size / 15.0F, hit_coll->size / 15.0F);
 
                     gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -1385,17 +1385,17 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
                 }
                 syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                syMatrixTranslate(mtx_store.gbi, ft_hitcoll->pos.x, ft_hitcoll->pos.y, ft_hitcoll->pos.z);
+                syMatrixTranslate(mtx_store.gbi, hit_coll->pos.x, hit_coll->pos.y, hit_coll->pos.z);
 
                 gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
                 syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                syMatrixSca(mtx_store.gbi, ft_hitcoll->size / 15.0F, ft_hitcoll->size / 15.0F, ft_hitcoll->size / 15.0F);
+                syMatrixSca(mtx_store.gbi, hit_coll->size / 15.0F, hit_coll->size / 15.0F, hit_coll->size / 15.0F);
 
                 gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                if (ft_hitcoll->update_state == nGMHitUpdateInterpolate)
+                if (hit_coll->update_state == nGMHitUpdateInterpolate)
                 {
                     gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionBlendDL);
                 }
@@ -1409,9 +1409,9 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
     {
         if (gGCCurrentCamera->gobj_id != nGCCommonKindMainCamera)
         {
-            if (!(fp->is_magnify_hide) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
+            if (!(fp->is_skip_magnify) && !(fp->is_rebirth) && (fp->is_show_magnify))
             {
-                ifCommonPlayerMGlassFuncDisplay(fp);
+                ifCommonPlayerMagnifyFuncDisplay(fp);
             }
         }
     }

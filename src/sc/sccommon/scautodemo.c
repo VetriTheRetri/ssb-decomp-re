@@ -309,7 +309,7 @@ void scAutoDemoSetFocusPlayer1(void)
 
 		SObjGetStruct(sSCAutoDemoFighterNameGObj)->sprite.attr &= ~SP_HIDDEN;
 
-		gIFCommonPlayerInterface.is_mglass_display = FALSE;
+		gIFCommonPlayerInterface.is_magnify_display = FALSE;
 	}
 }
 
@@ -386,7 +386,7 @@ void scAutoDemoResetFocusPlayerAll(void)
 // 0x8018D5E0
 void scAutoDemoSetMagnifyDisplayOn(void)
 {
-	gIFCommonPlayerInterface.is_mglass_display = TRUE;
+	gIFCommonPlayerInterface.is_magnify_display = TRUE;
 }
 
 // 0x8018D5F0
@@ -699,9 +699,9 @@ void scAutoDemoFuncStart(void)
 	func_ovl2_8010E2D4();
 	ifCommonPlayerArrowsInitInterface();
 	func_ovl2_8010E1A4();
-	ifCommonPlayerMGlassMakeInterface();
+	ifCommonPlayerMagnifyMakeInterface();
 
-	gIFCommonPlayerInterface.is_mglass_display = TRUE;
+	gIFCommonPlayerInterface.is_magnify_display = TRUE;
 
 	func_ovl2_8010DDC4();
 	func_ovl2_8010E374();

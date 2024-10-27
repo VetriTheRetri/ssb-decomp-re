@@ -513,7 +513,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
 
     fp->hitstatus = nGMHitStatusNormal;
     fp->star_hitstatus = nGMHitStatusNormal;
-    fp->special_collstatus = nGMHitStatusNormal;
+    fp->special_hitstatus = nGMHitStatusNormal;
 
     fp->throw_gobj = NULL;
     fp->catch_gobj = NULL;
@@ -522,8 +522,8 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
 
     fp->item_hold = NULL;
 
-    fp->lr_reflect = nGMFacingC;
-    fp->lr_absorb = nGMFacingC;
+    fp->reflect_lr = nGMFacingC;
+    fp->absorb_lr = nGMFacingC;
 
     fp->reflect_damage = 0;
 
@@ -749,7 +749,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
     fp->effect_joint_array_id = 0;
 
     fp->is_invisible = FALSE;
-    fp->x18E_flag_b0 = FALSE;
+    fp->is_hide_shadow = FALSE;
 
     fp->display_mode = nDBDisplayModeMaster;
 
@@ -762,7 +762,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
     fp->team_order = ft_desc->team_order;
     fp->dl_link = FTRENDER_DLLINK_DEFAULT;
 
-    fp->is_magnify_hide = ft_desc->is_skip_magnify;
+    fp->is_skip_magnify = ft_desc->is_skip_magnify;
 
     fp->status_total_tics = 0;
 

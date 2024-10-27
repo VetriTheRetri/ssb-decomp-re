@@ -203,11 +203,11 @@ void ftKirbyCopyDonkeySpecialNEndProcUpdate(GObj *fighter_gobj)
 
         for (i = 0; i < ARRAY_COUNT(fp->hit_colls); i++)
         {
-            FTHitColl *ft_hitcoll = &fp->hit_colls[i];
+            FTHitColl *hit_coll = &fp->hit_colls[i];
 
-            if (ft_hitcoll->update_state == nGMHitUpdateNew)
+            if (hit_coll->update_state == nGMHitUpdateNew)
             {
-                ft_hitcoll->damage += fp->status_vars.kirby.copydonkey_specialn.charge_level * FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_DAMAGE_MUL;
+                hit_coll->damage += fp->status_vars.kirby.copydonkey_specialn.charge_level * FTKIRBY_COPYDONKEY_GIANTPUNCH_CHARGE_DAMAGE_MUL;
             }
         }
     }

@@ -212,9 +212,9 @@ void itMainClearHitRecord(ITStruct *ip)
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(ip->hit_coll.hit_record); i++)
+    for (i = 0; i < ARRAY_COUNT(ip->hit_coll.hit_records); i++)
     {
-        GMHitRecord *targets = &ip->hit_coll.hit_record[i];
+        GMHitRecord *targets = &ip->hit_coll.hit_records[i];
 
         targets->victim_gobj = NULL;
 

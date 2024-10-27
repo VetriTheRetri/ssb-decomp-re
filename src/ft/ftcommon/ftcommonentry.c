@@ -53,7 +53,7 @@ void ftCommonEntrySetStatus(GObj *fighter_gobj)
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusEntry, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->is_invisible = TRUE;
-    fp->x18E_flag_b0 = TRUE;
+    fp->is_hide_shadow = TRUE;
     fp->is_nullstatus = TRUE;
     fp->is_playertag_hide = TRUE;
 }
@@ -104,7 +104,7 @@ void ftCommonAppearUpdateEffects(GObj *fighter_gobj)
     {
         fp->command_vars.flags.flag2 = 0;
 
-        fp->x18E_flag_b0 = FALSE;
+        fp->is_hide_shadow = FALSE;
     }
 }
 
@@ -163,7 +163,7 @@ void ftCommonAppearInITStatusVars(GObj *fighter_gobj)
 
     fp->camera_mode = 3;
 
-    fp->x18E_flag_b0 = TRUE;
+    fp->is_hide_shadow = TRUE;
     fp->is_playertag_hide = TRUE;
 }
 
@@ -303,7 +303,7 @@ void ftNessAppearWaitSetStatus(GObj *fighter_gobj)
     ftMainSetFighterStatus(fighter_gobj, nFTNessStatusAppearWait, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_COLANIM));
     ftCommonAppearInITStatusVars(fighter_gobj);
 
-    fp->x18E_flag_b0 = FALSE;
+    fp->is_hide_shadow = FALSE;
 }
 
 // 0x8013DF14
@@ -314,7 +314,7 @@ void ftNessAppearEndSetStatus(GObj *fighter_gobj)
     ftMainSetFighterStatus(fighter_gobj, ((fp->status_vars.common.entry.lr_entry == nGMFacingR) ? nFTNessStatusAppearREnd : nFTNessStatusAppearLEnd), 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_COLANIM));
     ftCommonAppearInITStatusVars(fighter_gobj);
 
-    fp->x18E_flag_b0 = FALSE;
+    fp->is_hide_shadow = FALSE;
 }
 
 // 0x8013DF7C
@@ -339,5 +339,5 @@ void ftCaptainAppearEndSetStatus(GObj *fighter_gobj)
     ftMainSetFighterStatus(fighter_gobj, ((fp->status_vars.common.entry.lr_entry == nGMFacingR) ? nFTCaptainStatusAppearREnd : nFTCaptainStatusAppearLEnd), 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftCommonAppearInITStatusVars(fighter_gobj);
 
-    fp->x18E_flag_b0 = FALSE;
+    fp->is_hide_shadow = FALSE;
 }

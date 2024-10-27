@@ -72,7 +72,7 @@ void ftCommonCaptureYoshiProcPhysics(GObj *fighter_gobj)
         {
             fp->status_vars.common.captureyoshi.stage = 2;
 
-            fp->is_invisible = fp->x18E_flag_b0 = TRUE;
+            fp->is_invisible = fp->is_hide_shadow = TRUE;
 
             ftParamSetHitStatusAll(fighter_gobj, nGMHitStatusIntangible);
         }

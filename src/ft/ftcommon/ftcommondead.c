@@ -148,7 +148,7 @@ void ftCommonDeadClearSpecialStats(GObj *fighter_gobj)
 
     fp->star_invincible_tics = 0;
     fp->is_nullstatus = TRUE;
-    fp->x18E_flag_b0 = TRUE;
+    fp->is_hide_shadow = TRUE;
 
     ftParamTryUpdateItemMusic();
 }

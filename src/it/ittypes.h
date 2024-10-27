@@ -107,7 +107,7 @@ struct ITHitColl
 	u16 stat_count;										// Item's status update number
 	s32 hit_count;									// Item's hitbox count, up to two
 	ITHitPositions hit_positions[ITEM_HITCOLL_NUM_MAX]; // Item hitbox positions
-	GMHitRecord hit_record[GMHITRECORD_NUM_MAX];		// Item's record of attacked targets
+	GMHitRecord hit_records[GMHITRECORD_NUM_MAX];		// Item's record of attacked targets
 };
 
 struct ITHitEvent 	// Miniature Hitbox subaction event? Used by explosions.

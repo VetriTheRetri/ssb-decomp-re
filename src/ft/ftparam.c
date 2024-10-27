@@ -496,9 +496,9 @@ void ftParamClearHitRecordID(FTStruct *fp, s32 hit_id)
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->hit_colls[hit_id].hit_record); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->hit_colls[hit_id].hit_records); i++)
     {
-        GMHitRecord *targets = &fp->hit_colls[hit_id].hit_record[i];
+        GMHitRecord *targets = &fp->hit_colls[hit_id].hit_records[i];
 
         targets->victim_gobj = NULL;
 
@@ -678,9 +678,9 @@ s32 ftParamGetBestHitStatusAll(GObj *fighter_gobj)
     {
         hitstatus_best = fp->star_hitstatus;
     }
-    if (hitstatus_best < fp->special_collstatus)
+    if (hitstatus_best < fp->special_hitstatus)
     {
-        hitstatus_best = fp->special_collstatus;
+        hitstatus_best = fp->special_hitstatus;
     }
     return hitstatus_best;
 }
@@ -1711,9 +1711,9 @@ void ftParamSetTimedHitStatusInvincible(FTStruct *fp, s32 invincible_tics)
     }
     if (fp->intangible_tics != 0)
     {
-        fp->special_collstatus = nGMHitStatusIntangible;
+        fp->special_hitstatus = nGMHitStatusIntangible;
     }
-    else fp->special_collstatus = nGMHitStatusInvincible;
+    else fp->special_hitstatus = nGMHitStatusInvincible;
 
     ftParamCheckSetFighterColAnimID(fp->fighter_gobj, 0xA, 0);
 }
@@ -1725,7 +1725,7 @@ void ftParamSetTimedHitStatusIntangible(FTStruct *fp, s32 intangible_tics)
     {
         fp->intangible_tics = intangible_tics;
     }
-    fp->special_collstatus = nGMHitStatusIntangible;
+    fp->special_hitstatus = nGMHitStatusIntangible;
 
     ftParamCheckSetFighterColAnimID(fp->fighter_gobj, 0xA, 0);
 }

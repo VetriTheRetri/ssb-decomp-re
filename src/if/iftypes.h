@@ -11,9 +11,9 @@
 
 struct IFPlayerCommon
 {
-	ub8 is_mglass_display;
-	u8 mglass_mode;
-	f32 mglass_scale;
+	ub8 is_magnify_display;
+	u8 magnify_mode;
+	f32 magnify_scale;
 	s32* ifplayers_pos_x; // Pointer to each player's HUD X-position
 	u16 ifplayers_pos_y;  // Player HUD's Y-positions - subtracted from center
 						  // Y-position?
@@ -63,7 +63,7 @@ struct IFPlayerSteal
 	u16 target_pos_x; // X-Position the stolen stock will fly to
 };
 
-struct IFPlayerMGlass
+struct IFPlayerMagnify
 {
 	Vec2f pos;
 	Vp viewport;

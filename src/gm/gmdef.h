@@ -159,11 +159,11 @@ typedef enum GMHitType 				// Hitbox types, this is universal but I don't
 									// and items can see it without redefining it
 									// for each
 {
-	nGMHITTypeHurt,
+	nGMHitTypeDamage,
 	nGMHITTypeShield,
 	nGMHITTypeShieldRehit,
 	nGMHITTypeHit,
-	nGMHITTypeHurtRehit, 			// Only used for specific articles? e.g.
+	nGMHitTypeDamageRehit, 			// Only used for specific articles? e.g.
 								   	// Pirahna Plants dealing damage
 	nGMHITTypeAbsorb,
 	nGMHITTypeReflect

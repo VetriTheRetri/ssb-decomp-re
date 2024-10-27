@@ -89,8 +89,8 @@ loop: // This makes no sense
 
     this_fp->is_ignore_training_menu = TRUE;
     this_fp->is_nullstatus = TRUE;
-    this_fp->x18E_flag_b0 = TRUE;
-    this_fp->x18E_flag_b1 = TRUE;
+    this_fp->is_hide_shadow = TRUE;
+    this_fp->is_rebirth = TRUE;
     this_fp->camera_mode = 1;
 
     this_fp->status_vars.common.rebirth.halo_number = halo_number;
@@ -163,8 +163,8 @@ void ftCommonRebirthStandSetStatus(GObj *fighter_gobj)
 
     fp->is_ignore_training_menu = TRUE;
     fp->is_nullstatus = TRUE;
-    fp->x18E_flag_b0 = TRUE;
-    fp->x18E_flag_b1 = TRUE;
+    fp->is_hide_shadow = TRUE;
+    fp->is_rebirth = TRUE;
 
     fp->camera_zoom_range = 0.6F;
 }
@@ -202,8 +202,8 @@ void ftCommonRebirthWaitSetStatus(GObj *fighter_gobj)
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusRebirthWait, 0.0F, 1.0F, (FTSTATUS_PRESERVE_PLAYERTAG | FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
 
     fp->is_nullstatus = TRUE;
-    fp->x18E_flag_b0 = TRUE;
-    fp->x18E_flag_b1 = TRUE;
+    fp->is_hide_shadow = TRUE;
+    fp->is_rebirth = TRUE;
 
     fp->camera_zoom_range = 0.6F;
 }

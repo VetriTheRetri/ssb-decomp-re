@@ -1544,7 +1544,7 @@ void sc1PGameWaitStageBossUpdate(void)
 
     gBattleState->game_status = nSCBattleGameStatusGo;
 
-    gIFCommonPlayerInterface.is_mglass_display = TRUE;
+    gIFCommonPlayerInterface.is_magnify_display = TRUE;
 
     ifCommonPlayerDamageSetShowInterface();
 
@@ -1970,7 +1970,7 @@ void sc1PGameBossDefeatInitInterface(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    gIFCommonPlayerInterface.is_mglass_display = FALSE;
+    gIFCommonPlayerInterface.is_magnify_display = FALSE;
 
     sc1PGameBossHidePlayerTagAll();
     ifCommonPlayerDamageStartBreakAnim(fp);
@@ -2132,7 +2132,7 @@ void sc1PGameFuncStart(void)
     ifCommonBattleSetGameStatusWait();
     sc1PGameTryInitPlayerArrows();
     func_ovl2_8010E1A4();
-    ifCommonPlayerMGlassMakeInterface();
+    ifCommonPlayerMagnifyMakeInterface();
     func_ovl2_8010DDC4();
     func_ovl2_8010E374();
     func_ovl2_8010E498();

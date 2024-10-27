@@ -11,8 +11,8 @@
 extern intptr_t lIFCommonPlayerArrowsDObjDesc;              // 0x00000188
 extern intptr_t lIFCommonPlayerArrowsAnimJoint;             // 0x00000270
 
-extern intptr_t lIFCommonPlayerMGlassFrame;                // 0x000002C8
-extern intptr_t lIFCommonPlayerMGlassDisplayList;          // 0x00000030
+extern intptr_t lIFCommonPlayerMagnifyFrame;                // 0x000002C8
+extern intptr_t lIFCommonPlayerMagnifyDisplayList;          // 0x00000030
 
 extern intptr_t lIFCommonItemArrow;                         // 0x00000050
 
@@ -157,11 +157,11 @@ extern void ifCommonPlayerStockSingleMakeInterface(s32 player);
 extern void ifCommonPlayerStockStealProcUpdate(GObj *interface_gobj);
 extern void ifCommonPlayerStockStealMakeInterface(s32 thief, s32 stolen);
 extern void ifCommonPlayerStockInitInterface(void);
-extern void ifCommonPlayerMGlassGetPosition(f32 player_pos_x, f32 player_pos_y, Vec2f *magnify_pos);
-extern void ifCommonPlayerMGlassUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly);
-extern void ifCommonPlayerMGlassUpdateViewport(Gfx **dls, FTStruct *fp);
-extern void ifCommonPlayerMGlassFuncDisplay(FTStruct *fp);
-extern void ifCommonPlayerMGlassMakeInterface(void);
+extern void ifCommonPlayerMagnifyGetPosition(f32 player_pos_x, f32 player_pos_y, Vec2f *magnify_pos);
+extern void ifCommonPlayerMagnifyUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly);
+extern void ifCommonPlayerMagnifyUpdateViewport(Gfx **dls, FTStruct *fp);
+extern void ifCommonPlayerMagnifyFuncDisplay(FTStruct *fp);
+extern void ifCommonPlayerMagnifyMakeInterface(void);
 extern void ifCommonPlayerArrowsLeftFuncDisplay(GObj *interface_gobj);
 extern void ifCommonPlayerArrowsRightFuncDisplay(GObj *interface_gobj);
 extern void ifCommonPlayerArrowsAddAnim(GObj *interface_gobj);

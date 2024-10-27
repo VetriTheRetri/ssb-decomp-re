@@ -436,7 +436,7 @@ sb32 ftCommonDamageCheckCatchResist(FTStruct *fp)
     }
     if ((fp->ft_kind == nFTKindDonkey) || (fp->ft_kind == nFTKindNDonkey) || (fp->ft_kind == nFTKindGDonkey))
     {
-        if ((fp->status_id >= nFTDonkeyStatusThrowFStartDamage) && (fp->status_id <= nFTDonkeyStatusThrowFEndDamage) && (ftCommonDamageGetDamageLevel(ftParamGetHitStun(fp->damage_knockback)) < 3))
+        if ((fp->status_id >= nFTDonkeyStatusThrowFStart) && (fp->status_id <= nFTDonkeyStatusThrowFEnd) && (ftCommonDamageGetDamageLevel(ftParamGetHitStun(fp->damage_knockback)) < 3))
         {
             return TRUE;
         }

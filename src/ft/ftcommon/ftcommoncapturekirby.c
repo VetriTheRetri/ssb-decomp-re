@@ -497,14 +497,14 @@ void ftCommonThrownKirbyStarSetStatus(GObj *fighter_gobj)
 
     for (i = 0; i < ARRAY_COUNT(fp->hit_colls); i++)
     {
-        FTHitColl *ft_hitcoll = &fp->hit_colls[i];
+        FTHitColl *hit_coll = &fp->hit_colls[i];
 
-        if (ft_hitcoll->update_state == nGMHitUpdateNew)
+        if (hit_coll->update_state == nGMHitUpdateNew)
         {
-            ft_hitcoll->damage = copy_data[fp->ft_kind].star_damage;
+            hit_coll->damage = copy_data[fp->ft_kind].star_damage;
         }
     }
-    fp->is_invisible = fp->x18E_flag_b0 = TRUE;
+    fp->is_invisible = fp->is_hide_shadow = TRUE;
 
     ftParamSetHitStatusAll(fighter_gobj, nGMHitStatusIntangible);
     ftParamSetPlayerTagWait(fighter_gobj, 1);
@@ -549,7 +549,7 @@ void ftCommonThrownCopyStarSetStatus(GObj *fighter_gobj)
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
 
     fp->proc_hit = ftCommonThrownCommonStarProcHit;
-    fp->is_invisible = fp->x18E_flag_b0 = TRUE;
+    fp->is_invisible = fp->is_hide_shadow = TRUE;
 
     ftParamSetHitStatusAll(fighter_gobj, nGMHitStatusIntangible);
     ftParamSetPlayerTagWait(fighter_gobj, 1);

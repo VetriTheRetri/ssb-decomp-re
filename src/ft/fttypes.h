@@ -616,7 +616,7 @@ struct FTHitColl
     u16 stat_count;
     Vec3f pos;
     Vec3f pos_prev;
-    GMHitRecord hit_record[GMHITRECORD_NUM_MAX];
+    GMHitRecord hit_records[GMHITRECORD_NUM_MAX];
     FTHitMatrix hit_matrix;
 };
 
@@ -920,7 +920,7 @@ struct FTAttributes
     f32 jostle_width; // ???
     f32 jostle_x;
     sb32 is_metallic; // So far only seen this used to determine whether the character makes blue sparks or gray metal dust particles when hit; used by Metal Mario and Samus
-    f32 cobj_offset_y;
+    f32 cam_offset_y;
     f32 closeup_camera_zoom;
     f32 camera_zoom;
     f32 camera_zoom_default;
@@ -1092,18 +1092,18 @@ struct FTStruct
     ub32 is_modelpart_modify : 1;
     ub32 is_texturepart_modify : 1;
     ub32 is_reflect : 1;                // Fighter's reflect box is active
-    s32 lr_reflect : 2;
+    s32 reflect_lr : 2;
     ub32 is_absorb : 1;                 // Fighter's absorb box is active
-    s32 lr_absorb : 2;
+    s32 absorb_lr : 2;
     ub32 is_goto_attack100 : 1;
     ub32 is_fast_fall : 1;
-    ub32 x18D_flag_b5 : 1;
+    ub32 is_show_magnify : 1;
     ub32 is_limit_map_bounds : 1;       // When Master Hand is defeated, this is set to TRUE so the player cannot die if they are offstage;
                                         // Effectively keeps the player at the blast zone and ignores the dead action state
     ub32 is_invisible : 1;
-    ub32 x18E_flag_b0 : 1;
-    ub32 x18E_flag_b1 : 1;
-    ub32 is_magnify_hide : 1;           // Skip rendering magnifying glass if TRUE?
+    ub32 is_hide_shadow : 1;
+    ub32 is_rebirth : 1;
+    ub32 is_skip_magnify : 1;           // Skip rendering magnifying glass if TRUE?
     ub32 is_playertag_hide : 1;         // Skip rendering player indicator if TRUE
     ub32 is_playertag_bossend : 1;      // Also skips rendering player indicator? Used only in "Master Hand defeated" cinematic from what I can tell so far
     ub32 is_playing_effect : 1;
@@ -1117,7 +1117,7 @@ struct FTStruct
     u32 slope_contour : 3;
     ub32 is_use_animlocks : 1;
     ub32 is_playing_sfx : 1;
-    ub32 x190_flag_b5 : 1;              // Never seen this used
+    ub32 unk_ft_0x190_b5 : 1;           // Never seen this used
     ub32 is_show_item : 1;
     ub32 is_cliff_hold : 1;             // Whether fighter is holding onto a ledge
     ub32 is_effect_interrupt : 1;       // Is this flag's sole purpose to fast-forward GFX in the moveset event parser?
@@ -1128,7 +1128,7 @@ struct FTStruct
     ub32 is_special_interrupt : 1;      // Whether move can be interrupted by Link's boomerang? Have not seen this used anywhere else
     ub32 is_ignore_dead : 1;            // Ignore dead action states altogether
     ub32 is_catchstatus : 1;
-    ub32 x192_flag_b3 : 1;
+    ub32 x192_flag_b3 : 1;              // My brain stops working every time I try to understand what this does
     ub32 is_use_fogcolor : 1;
     ub32 is_shield_catch : 1;           // Set to TRUE when fighter grabs after getting shield poked; there is a check for this flag that halves throw damage if TRUE
     ub32 x192_flag_b6 : 1;
@@ -1139,8 +1139,8 @@ struct FTStruct
     FTAnimDesc anim_desc;
     Vec3f anim_vel;
 
-    f32 ifpos_x;
-    f32 ifpos_y;
+    f32 magnify_pos_x;
+    f32 magnify_pos_y;
 
     struct FTInputStruct
     {
@@ -1187,7 +1187,7 @@ struct FTStruct
 
     s32 invincible_tics;
     s32 intangible_tics;
-    s32 special_collstatus;
+    s32 special_hitstatus;
     s32 star_invincible_tics;
     s32 star_hitstatus;                 // Enemy CPUs avoid player depending on this?
     s32 hitstatus;

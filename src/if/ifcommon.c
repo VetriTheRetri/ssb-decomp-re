@@ -40,7 +40,7 @@ IFPlayerCommon gIFCommonPlayerInterface;
 IFPlayerDamage sIFCommonPlayerDamageInterface[GMCOMMON_PLAYERS_MAX];
 
 // 0x80131748
-IFPlayerMGlass sIFCommonPlayerMGlassInterface[GMCOMMON_PLAYERS_MAX];
+IFPlayerMagnify sIFCommonPlayerMagnifyInterface[GMCOMMON_PLAYERS_MAX];
 
 // 0x801317C8 - Values of digits displayed on the match timer
 u8 sIFCommonTimerDigitsInterface[4];
@@ -109,7 +109,7 @@ s32 sIFCommonPad0x80131834;
 IFPlayerSteal sIFCommonPlayerStealInterface[GMCOMMON_PLAYERS_MAX];
 
 // 0x80131858
-u8 sIFCommonPlayerMGlassSoundWait;
+u8 sIFCommonPlayerMagnifySoundWait;
 
 // 0x80131859
 u8 D_ovl2_80131859;
@@ -380,13 +380,13 @@ intptr_t dIFCommonBattlePausePlayerNumSpriteOffsets[/* */] =
 };
 
 // 0x8012EF64
-u8 dIFCommonPlayerMGlassColorsR[/* */] = { 0xEF, 0x00, 0xFF, 0x00, 0xFF };
+u8 dIFCommonPlayerMagnifyColorsR[/* */] = { 0xEF, 0x00, 0xFF, 0x00, 0xFF };
 
 // 0x8012EF6C
-u8 dIFCommonPlayerMGlassColorsG[/* */] = { 0x0D, 0x00, 0xE1, 0xFF, 0xFF };
+u8 dIFCommonPlayerMagnifyColorsG[/* */] = { 0x0D, 0x00, 0xE1, 0xFF, 0xFF };
 
 // 0x8012EF74
-u8 dIFCommonPlayerMGlassColorsB[/* */] = { 0x17, 0xFF, 0x00, 0x00, 0xFF };
+u8 dIFCommonPlayerMagnifyColorsB[/* */] = { 0x17, 0xFF, 0x00, 0x00, 0xFF };
 
 // 0x8012EF7C
 u8 dIFCommonPlayerTagSpriteColorsR[/* */] = { 0xED, 0x4E, 0xFF, 0x4E, 0xAC };
@@ -1302,7 +1302,7 @@ void ifCommonPlayerStockInitInterface(void)
 }
 
 // 0x801105CC - Get magnifying glass position / arrow point direction?
-void ifCommonPlayerMGlassGetPosition(f32 player_pos_x, f32 player_pos_y, Vec2f *magnify_pos)
+void ifCommonPlayerMagnifyGetPosition(f32 player_pos_x, f32 player_pos_y, Vec2f *magnify_pos)
 {
     f32 left;
     f32 right;
@@ -1314,10 +1314,10 @@ void ifCommonPlayerMGlassGetPosition(f32 player_pos_x, f32 player_pos_y, Vec2f *
     f32 diag_vt;
     f32 div_xy;
 
-    left = (-gCMManagerCameraStruct.viewport_width / 2) + (20 * gIFCommonPlayerInterface.mglass_scale) + 5;
-    bak_right = right = (+gCMManagerCameraStruct.viewport_width / 2) - (20 * gIFCommonPlayerInterface.mglass_scale) - 5;
-    bak_up = up = (+gCMManagerCameraStruct.viewport_height / 2) - (20 * gIFCommonPlayerInterface.mglass_scale);
-    down = (-gCMManagerCameraStruct.viewport_height / 2) + (20 * gIFCommonPlayerInterface.mglass_scale);
+    left = (-gCMManagerCameraStruct.viewport_width / 2) + (20 * gIFCommonPlayerInterface.magnify_scale) + 5;
+    bak_right = right = (+gCMManagerCameraStruct.viewport_width / 2) - (20 * gIFCommonPlayerInterface.magnify_scale) - 5;
+    bak_up = up = (+gCMManagerCameraStruct.viewport_height / 2) - (20 * gIFCommonPlayerInterface.magnify_scale);
+    down = (-gCMManagerCameraStruct.viewport_height / 2) + (20 * gIFCommonPlayerInterface.magnify_scale);
 
     if (player_pos_x == 0.0F)
     {
@@ -1387,7 +1387,7 @@ void ifCommonPlayerMGlassGetPosition(f32 player_pos_x, f32 player_pos_y, Vec2f *
 }
 
 // 0x801107F0
-void ifCommonPlayerMGlassUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly)
+void ifCommonPlayerMagnifyUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly)
 {
     Gfx *dl = dls[0];
     syColorRGB *color;
@@ -1408,7 +1408,7 @@ void ifCommonPlayerMGlassUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly)
     gSPClearGeometryMode(dl++, G_ZBUFFER);
 
     // This is a compound macro but I cannot find anything that would correspond to this
-    gDPSetTextureImage(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, lbRelocGetDataFromFile(Sprite*, gGMCommonFiles[0], &lIFCommonPlayerMGlassFrame));
+    gDPSetTextureImage(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, lbRelocGetDataFromFile(Sprite*, gGMCommonFiles[0], &lIFCommonPlayerMagnifyFrame));
 
     // NEEDS TO BE ALL ON THE SAME LINE OR GLUED, OTHERWISE IT DOESN'T MATCH
     gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_MIRROR | G_TX_WRAP, 4, G_TX_NOLOD, G_TX_MIRROR | G_TX_WRAP, 4, G_TX_NOLOD);\
@@ -1420,14 +1420,14 @@ void ifCommonPlayerMGlassUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly)
     gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_8b, 2, 0x0000, G_TX_RENDERTILE, 0, G_TX_MIRROR | G_TX_WRAP, 4, G_TX_NOLOD, G_TX_MIRROR | G_TX_WRAP, 4, G_TX_NOLOD);\
     gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x003C, 0x003C);
 
-    temp_f0 = (s32)((1024.0F / gIFCommonPlayerInterface.mglass_scale) + 0.5F);
+    temp_f0 = (s32)((1024.0F / gIFCommonPlayerInterface.magnify_scale) + 0.5F);
 
     var_ulx = ulx;
     var_uly = uly;
 
-    var_lrx = ((ulx == var_ulx) ? 0 : 1) + (s32)(ulx + (32.0F * gIFCommonPlayerInterface.mglass_scale));
+    var_lrx = ((ulx == var_ulx) ? 0 : 1) + (s32)(ulx + (32.0F * gIFCommonPlayerInterface.magnify_scale));
 
-    var_lry = ((uly == var_uly) ? 0 : 1) + (s32)(uly + (32.0F * gIFCommonPlayerInterface.mglass_scale));
+    var_lry = ((uly == var_uly) ? 0 : 1) + (s32)(uly + (32.0F * gIFCommonPlayerInterface.magnify_scale));
 
     if (var_ulx < gCMManagerCameraStruct.viewport_ulx)
     {
@@ -1466,7 +1466,7 @@ void ifCommonPlayerMGlassUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly)
     color = &gMPCollisionGroundData->fog_color;
 
     gDPSetPrimColor(dl++, 0, 0, color->r, color->g, color->b, 0xFF);
-    gDPSetEnvColor(dl++, dIFCommonPlayerMGlassColorsR[color_id], dIFCommonPlayerMGlassColorsG[color_id], dIFCommonPlayerMGlassColorsB[color_id], 0xFF);
+    gDPSetEnvColor(dl++, dIFCommonPlayerMagnifyColorsR[color_id], dIFCommonPlayerMagnifyColorsG[color_id], dIFCommonPlayerMagnifyColorsB[color_id], 0xFF);
     gDPSetCombineMode(dl++, G_CC_BLENDPEDECALA, G_CC_BLENDPEDECALA);
     gSPTextureRectangle
     (
@@ -1485,12 +1485,12 @@ void ifCommonPlayerMGlassUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly)
 }
 
 // 0x80110DD4
-void ifCommonPlayerMGlassUpdateViewport(Gfx **dls, FTStruct *fp)
+void ifCommonPlayerMagnifyUpdateViewport(Gfx **dls, FTStruct *fp)
 {
     Gfx *dl;
     f32 magnify_x;
     f32 magnify_y;
-    IFPlayerMGlass *ifmag;
+    IFPlayerMagnify *ifmag;
     CObj *cobj;
     f32 scale;
     s32 ulx;
@@ -1498,21 +1498,21 @@ void ifCommonPlayerMGlassUpdateViewport(Gfx **dls, FTStruct *fp)
     s32 lrx;
     s32 lry;
 
-    if (gIFCommonPlayerInterface.is_mglass_display != FALSE)
+    if (gIFCommonPlayerInterface.is_magnify_display != FALSE)
     {
-        ifmag = &sIFCommonPlayerMGlassInterface[fp->player];
+        ifmag = &sIFCommonPlayerMagnifyInterface[fp->player];
 
-        magnify_x = fp->ifpos_x;
-        magnify_y = fp->ifpos_y;
+        magnify_x = fp->magnify_pos_x;
+        magnify_y = fp->magnify_pos_y;
 
-        ifCommonPlayerMGlassGetPosition(magnify_x, magnify_y, &ifmag->pos);
+        ifCommonPlayerMagnifyGetPosition(magnify_x, magnify_y, &ifmag->pos);
 
         magnify_x = ifmag->pos.x + gCMManagerCameraStruct.viewport_center_x;
         magnify_y = gCMManagerCameraStruct.viewport_center_y - ifmag->pos.y;
 
         gSPMatrix(dls[0]++, &CObjGetStruct(gGCCurrentCamera)->xobj[0]->mtx, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
-        if (gIFCommonPlayerInterface.mglass_mode != 1)
+        if (gIFCommonPlayerInterface.magnify_mode != 1)
         {
             cobj = CObjGetStruct(gCMManagerCameraGObj);
 
@@ -1520,15 +1520,15 @@ void ifCommonPlayerMGlassUpdateViewport(Gfx **dls, FTStruct *fp)
 
             gDPSetScissor(dls[0]++, G_SC_NON_INTERLACE, gCMManagerCameraStruct.viewport_ulx, gCMManagerCameraStruct.viewport_uly, gCMManagerCameraStruct.viewport_lrx, gCMManagerCameraStruct.viewport_lry);
         }
-        else gIFCommonPlayerInterface.mglass_mode = 2;
+        else gIFCommonPlayerInterface.magnify_mode = 2;
 
-        scale = (16.0F * gIFCommonPlayerInterface.mglass_scale);
+        scale = (16.0F * gIFCommonPlayerInterface.magnify_scale);
 
-        ifCommonPlayerMGlassUpdateRender(dls, ifmag->color_id, magnify_x - scale, magnify_y - scale);
+        ifCommonPlayerMagnifyUpdateRender(dls, ifmag->color_id, magnify_x - scale, magnify_y - scale);
 
         dl = dls[0];
 
-        scale = (18.0F * gIFCommonPlayerInterface.mglass_scale);
+        scale = (18.0F * gIFCommonPlayerInterface.magnify_scale);
 
         magnify_x -= (scale / 2);
         magnify_y -= (scale / 2);
@@ -1565,16 +1565,16 @@ void ifCommonPlayerMGlassUpdateViewport(Gfx **dls, FTStruct *fp)
 }
 
 // 0x801111A0
-void ifCommonPlayerMGlassFuncDisplay(FTStruct *fp)
+void ifCommonPlayerMagnifyFuncDisplay(FTStruct *fp)
 {
     GObj *interface_gobj;
     DObj *dobj;
-    IFPlayerMGlass *ifmag;
+    IFPlayerMagnify *ifmag;
     CObj *cobj;
 
-    if (gIFCommonPlayerInterface.is_mglass_display != FALSE)
+    if (gIFCommonPlayerInterface.is_magnify_display != FALSE)
     {
-        ifmag = &sIFCommonPlayerMGlassInterface[fp->player];
+        ifmag = &sIFCommonPlayerMagnifyInterface[fp->player];
 
         interface_gobj = ifmag->interface_gobj;
 
@@ -1583,9 +1583,9 @@ void ifCommonPlayerMGlassFuncDisplay(FTStruct *fp)
         dobj->translate.vec.f.x = ifmag->pos.x;
         dobj->translate.vec.f.y = ifmag->pos.y;
 
-        dobj->rotate.vec.f.z = atan2f(fp->ifpos_y, fp->ifpos_x) - F_CST_DTOR32(90.0F);
+        dobj->rotate.vec.f.z = atan2f(fp->magnify_pos_y, fp->magnify_pos_x) - F_CST_DTOR32(90.0F);
 
-        dobj->scale.vec.f.x = dobj->scale.vec.f.y = gIFCommonPlayerInterface.mglass_scale * 0.5F;
+        dobj->scale.vec.f.x = dobj->scale.vec.f.y = gIFCommonPlayerInterface.magnify_scale * 0.5F;
 
         cobj = CObjGetStruct(gCMManagerCameraGObj);
 
@@ -1596,13 +1596,13 @@ void ifCommonPlayerMGlassFuncDisplay(FTStruct *fp)
         gDPPipeSync(gSYTaskmanDLHeads[0]++);
         gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
         gDPSetAlphaCompare(gSYTaskmanDLHeads[0]++, G_AC_NONE);
-        gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, dIFCommonPlayerMGlassColorsR[ifmag->color_id], dIFCommonPlayerMGlassColorsG[ifmag->color_id], dIFCommonPlayerMGlassColorsB[ifmag->color_id], 0xFF);
+        gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, dIFCommonPlayerMagnifyColorsR[ifmag->color_id], dIFCommonPlayerMagnifyColorsG[ifmag->color_id], dIFCommonPlayerMagnifyColorsB[ifmag->color_id], 0xFF);
         gcDrawDObjDLHead0(interface_gobj);
     }
 }
 
 // 0x80111440
-void ifCommonPlayerMGlassMakeInterface(void)
+void ifCommonPlayerMagnifyMakeInterface(void)
 {
     GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
@@ -1611,14 +1611,14 @@ void ifCommonPlayerMGlassMakeInterface(void)
         FTStruct *fp = ftGetStruct(fighter_gobj);
         GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDMagnify, GOBJ_LINKORDER_DEFAULT);
 
-        gcAddXObjForDObjFixed(gcAddDObjForGObj(interface_gobj, (Gfx*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&lIFCommonPlayerMGlassDisplayList)), nGCTransformTraRotRpyRSca, 0);
+        gcAddXObjForDObjFixed(gcAddDObjForGObj(interface_gobj, (Gfx*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&lIFCommonPlayerMagnifyDisplayList)), nGCTransformTraRotRpyRSca, 0);
 
-        sIFCommonPlayerMGlassInterface[fp->player].interface_gobj = interface_gobj;
-        sIFCommonPlayerMGlassInterface[fp->player].color_id = gBattleState->players[fp->player].player_color;
+        sIFCommonPlayerMagnifyInterface[fp->player].interface_gobj = interface_gobj;
+        sIFCommonPlayerMagnifyInterface[fp->player].color_id = gBattleState->players[fp->player].player_color;
 
         fighter_gobj = fighter_gobj->link_next;
     }
-    gIFCommonPlayerInterface.is_mglass_display = FALSE;
+    gIFCommonPlayerInterface.is_magnify_display = FALSE;
 }
 
 // 0x80111554
@@ -1706,7 +1706,7 @@ void ifCommonPlayerArrowsFuncRun(GObj *interface_gobj)
     s32 lr_right = FALSE;
     s32 lr_left = FALSE;
 
-    if (gIFCommonPlayerInterface.is_mglass_display != FALSE)
+    if (gIFCommonPlayerInterface.is_magnify_display != FALSE)
     {
         GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
@@ -1714,11 +1714,11 @@ void ifCommonPlayerArrowsFuncRun(GObj *interface_gobj)
         {
             FTStruct *fp = ftGetStruct(fighter_gobj);
 
-            if (!(fp->is_magnify_hide) && !(fp->x18E_flag_b1) && (fp->x18D_flag_b5))
+            if (!(fp->is_skip_magnify) && !(fp->is_rebirth) && (fp->is_show_magnify))
             {
-                if (ABSF(fp->ifpos_x) > ABSF(fp->ifpos_y))
+                if (ABSF(fp->magnify_pos_x) > ABSF(fp->magnify_pos_y))
                 {
-                    if (fp->ifpos_x < 0.0F)
+                    if (fp->magnify_pos_x < 0.0F)
                     {
                         lr_left = TRUE;
                     }
@@ -1749,15 +1749,15 @@ void ifCommonPlayerArrowsFuncRun(GObj *interface_gobj)
     }
     if ((lr_left != FALSE) || (lr_right != FALSE))
     {
-        if (sIFCommonPlayerMGlassSoundWait == 0)
+        if (sIFCommonPlayerMagnifySoundWait == 0)
         {
             func_800269C0_275C0(nSYAudioFGMMagnify);
 
-            sIFCommonPlayerMGlassSoundWait = 30;
+            sIFCommonPlayerMagnifySoundWait = 30;
         }
-        sIFCommonPlayerMGlassSoundWait--;
+        sIFCommonPlayerMagnifySoundWait--;
     }
-    else sIFCommonPlayerMGlassSoundWait = 0;
+    else sIFCommonPlayerMagnifySoundWait = 0;
 }
 
 // 0x801118B4
@@ -1794,7 +1794,7 @@ void ifCommonPlayerArrowsInitInterface(void)
 
     gIFCommonPlayerInterface.arrows_right_status = 0;
 
-    sIFCommonPlayerMGlassSoundWait = 0;
+    sIFCommonPlayerMagnifySoundWait = 0;
 }
 
 // 0x801119AC
@@ -2010,7 +2010,7 @@ void ifCommonAnnounceGoSetStatus(void)
     }
     gBattleState->game_status = nSCBattleGameStatusGo;
 
-    gIFCommonPlayerInterface.is_mglass_display = TRUE;
+    gIFCommonPlayerInterface.is_magnify_display = TRUE;
 }
 
 // 0x80112234
@@ -2873,7 +2873,7 @@ void ifCommonBattlePauseInitInterface(s32 player)
     gmRumbleInitPlayers();
     grWallpaperPausePerspUpdate();
 
-    gIFCommonPlayerInterface.is_mglass_display = FALSE;
+    gIFCommonPlayerInterface.is_magnify_display = FALSE;
     gBattleState->game_status = nSCBattleGameStatusPause;
 
     sIFCommonBattlePausePlayer = player;
@@ -3077,7 +3077,7 @@ void ifCommonBattlePauseRestoreInterfaceAll(void)
     ifCommonInterfaceSetGObjFlagsAll(0);
     grWallpaperResumePerspUpdate();
 
-    gIFCommonPlayerInterface.is_mglass_display = TRUE;
+    gIFCommonPlayerInterface.is_magnify_display = TRUE;
 
     gBattleState->game_status = nSCBattleGameStatusGo;
 
@@ -3296,7 +3296,7 @@ void ifCommon1PGameInterfaceProcSet(void)
 
     func_ovl65_8018F3AC();
 
-    gIFCommonPlayerInterface.is_mglass_display = FALSE;
+    gIFCommonPlayerInterface.is_magnify_display = FALSE;
 }
 
 // 0x80114C80

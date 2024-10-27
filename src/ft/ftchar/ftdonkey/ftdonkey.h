@@ -86,9 +86,9 @@ typedef enum ftDonkeyStatus
 	nFTDonkeyStatusSpecialLwLoop,
 	nFTDonkeyStatusSpecialLwEnd,
 
-	nFTDonkeyStatusThrowFStartDamage,
+	nFTDonkeyStatusThrowFStart,
 
-	nFTDonkeyStatusThrowFWait = nFTDonkeyStatusThrowFStartDamage,
+	nFTDonkeyStatusThrowFWait = nFTDonkeyStatusThrowFStart,
 	nFTDonkeyStatusThrowFWalkSlow,
 	nFTDonkeyStatusThrowFWalkMiddle,
 	nFTDonkeyStatusThrowFWalkFast,
@@ -97,7 +97,7 @@ typedef enum ftDonkeyStatus
 	nFTDonkeyStatusThrowFFall,
 	nFTDonkeyStatusThrowFLanding,
 	nFTDonkeyStatusThrowFDamage,
-	nFTDonkeyStatusThrowFEndDamage = nFTDonkeyStatusThrowFDamage,
+	nFTDonkeyStatusThrowFEnd = nFTDonkeyStatusThrowFDamage,
 	nFTDonkeyStatusThrowFF,
 	nFTDonkeyStatusThrowAirFF,
 

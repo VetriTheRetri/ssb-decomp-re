@@ -62,9 +62,9 @@ void itProcessUpdateHitRecord(GObj *item_gobj)
 
     if (it_atkcoll->update_state != nGMHitUpdateDisable)
     {
-        for (i = 0; i < ARRAY_COUNT(ip->hit_coll.hit_record); i++)
+        for (i = 0; i < ARRAY_COUNT(ip->hit_coll.hit_records); i++)
         {
-            targets = &it_atkcoll->hit_record[i];
+            targets = &it_atkcoll->hit_records[i];
 
             if (targets->victim_gobj != NULL)
             {
@@ -206,37 +206,37 @@ void itProcessSetHitInteractStats(ITHitColl *it_atkcoll, GObj *victim_gobj, s32 
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(it_atkcoll->hit_record); i++)
+    for (i = 0; i < ARRAY_COUNT(it_atkcoll->hit_records); i++)
     {
-        if (victim_gobj == it_atkcoll->hit_record[i].victim_gobj) // Run this if the victim we're checking has already been hit
+        if (victim_gobj == it_atkcoll->hit_records[i].victim_gobj) // Run this if the victim we're checking has already been hit
         {
             switch (hitbox_type)
             {
-            case nGMHITTypeHurt:
-                it_atkcoll->hit_record[i].victim_flags.is_interact_hurt = TRUE;
+            case nGMHitTypeDamage:
+                it_atkcoll->hit_records[i].victim_flags.is_interact_hurt = TRUE;
                 break;
 
             case nGMHITTypeShield:
-                it_atkcoll->hit_record[i].victim_flags.is_interact_shield = TRUE;
+                it_atkcoll->hit_records[i].victim_flags.is_interact_shield = TRUE;
                 break;
 
             case nGMHITTypeShieldRehit:
-                it_atkcoll->hit_record[i].victim_flags.is_interact_shield = TRUE;
-                it_atkcoll->hit_record[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
+                it_atkcoll->hit_records[i].victim_flags.is_interact_shield = TRUE;
+                it_atkcoll->hit_records[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
                 break;
 
             case nGMHITTypeReflect:
-                it_atkcoll->hit_record[i].victim_flags.is_interact_reflect = TRUE;
-                it_atkcoll->hit_record[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
+                it_atkcoll->hit_records[i].victim_flags.is_interact_reflect = TRUE;
+                it_atkcoll->hit_records[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
                 break;
 
             case nGMHITTypeHit:
-                it_atkcoll->hit_record[i].victim_flags.group_id = interact_mask;
+                it_atkcoll->hit_records[i].victim_flags.group_id = interact_mask;
                 break;
 
-            case nGMHITTypeHurtRehit:
-                it_atkcoll->hit_record[i].victim_flags.is_interact_hurt = TRUE;
-                it_atkcoll->hit_record[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
+            case nGMHitTypeDamageRehit:
+                it_atkcoll->hit_records[i].victim_flags.is_interact_hurt = TRUE;
+                it_atkcoll->hit_records[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
                 break;
 
             default: 
@@ -245,43 +245,43 @@ void itProcessSetHitInteractStats(ITHitColl *it_atkcoll, GObj *victim_gobj, s32 
             break;
         }
     }
-    if (i == ARRAY_COUNT(it_atkcoll->hit_record)) // Check if all victim slots have been filled
+    if (i == ARRAY_COUNT(it_atkcoll->hit_records)) // Check if all victim slots have been filled
     {
-        for (i = 0; i < ARRAY_COUNT(it_atkcoll->hit_record); i++) // Reset hit count and increment until there is an empty slot
+        for (i = 0; i < ARRAY_COUNT(it_atkcoll->hit_records); i++) // Reset hit count and increment until there is an empty slot
         {
-            if (it_atkcoll->hit_record[i].victim_gobj == NULL) break;
+            if (it_atkcoll->hit_records[i].victim_gobj == NULL) break;
         }
-        if (i == ARRAY_COUNT(it_atkcoll->hit_record)) i = 0; // Reset hit count again if all victim slots are full
+        if (i == ARRAY_COUNT(it_atkcoll->hit_records)) i = 0; // Reset hit count again if all victim slots are full
 
-        it_atkcoll->hit_record[i].victim_gobj = victim_gobj; // Store victim's pointer to slot
+        it_atkcoll->hit_records[i].victim_gobj = victim_gobj; // Store victim's pointer to slot
 
         switch (hitbox_type)
         {
-        case nGMHITTypeHurt:
-            it_atkcoll->hit_record[i].victim_flags.is_interact_hurt = TRUE;
+        case nGMHitTypeDamage:
+            it_atkcoll->hit_records[i].victim_flags.is_interact_hurt = TRUE;
             break;
 
         case nGMHITTypeShield:
-            it_atkcoll->hit_record[i].victim_flags.is_interact_shield = TRUE;
+            it_atkcoll->hit_records[i].victim_flags.is_interact_shield = TRUE;
             break;
 
         case nGMHITTypeShieldRehit:
-            it_atkcoll->hit_record[i].victim_flags.is_interact_shield = TRUE;
-            it_atkcoll->hit_record[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
+            it_atkcoll->hit_records[i].victim_flags.is_interact_shield = TRUE;
+            it_atkcoll->hit_records[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
             break;
 
         case nGMHITTypeReflect:
-            it_atkcoll->hit_record[i].victim_flags.is_interact_reflect = TRUE;
-            it_atkcoll->hit_record[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
+            it_atkcoll->hit_records[i].victim_flags.is_interact_reflect = TRUE;
+            it_atkcoll->hit_records[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
             break;
 
         case nGMHITTypeHit:
-            it_atkcoll->hit_record[i].victim_flags.group_id = interact_mask;
+            it_atkcoll->hit_records[i].victim_flags.group_id = interact_mask;
             break;
 
-        case nGMHITTypeHurtRehit:
-            it_atkcoll->hit_record[i].victim_flags.is_interact_hurt = TRUE;
-            it_atkcoll->hit_record[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
+        case nGMHitTypeDamageRehit:
+            it_atkcoll->hit_records[i].victim_flags.is_interact_hurt = TRUE;
+            it_atkcoll->hit_records[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
             break;
 
         default: 
@@ -297,7 +297,7 @@ void itProcessUpdateDamageStatFighter(FTStruct *fp, FTHitColl *ft_hitcoll, ITStr
     f32 damage_knockback;
     Vec3f pos;
 
-    ftMainSetHitInteractStats(fp, ft_hitcoll->group_id, item_gobj, nGMHITTypeHurt, 0, FALSE);
+    ftMainSetHitInteractStats(fp, ft_hitcoll->group_id, item_gobj, nGMHitTypeDamage, 0, FALSE);
 
     damage = ft_hitcoll->damage;
 
@@ -448,7 +448,7 @@ void itProcessUpdateDamageStatItem(ITStruct *attack_ip, ITHitColl *attack_it_atk
 
     is_rehit = ((defend_ip->type == nITTypeDamage) && (attack_it_atkcoll->can_rehit_item)) ? TRUE : FALSE;
 
-    itProcessSetHitInteractStats(attack_it_atkcoll, defend_gobj, (is_rehit != FALSE) ? nGMHITTypeHurtRehit : nGMHITTypeHurt, 0);
+    itProcessSetHitInteractStats(attack_it_atkcoll, defend_gobj, (is_rehit != FALSE) ? nGMHitTypeDamageRehit : nGMHitTypeDamage, 0);
 
     if (is_rehit != FALSE)
     {
@@ -551,7 +551,7 @@ void itProcessUpdateDamageStatWeapon(WPStruct *wp, WPHitColl *wp_atkcoll, s32 hi
 
     is_rehit = ((ip->type == nITTypeDamage) && (wp_atkcoll->can_rehit_item)) ? TRUE : FALSE;
 
-    wpProcessUpdateHitInteractStatsGroupID(wp, wp_atkcoll, item_gobj, ((is_rehit != FALSE) ? nGMHITTypeHurtRehit : nGMHITTypeHurt), 0);
+    wpProcessUpdateHitInteractStatsGroupID(wp, wp_atkcoll, item_gobj, ((is_rehit != FALSE) ? nGMHitTypeDamageRehit : nGMHitTypeDamage), 0);
 
     if (is_rehit != FALSE)
     {
@@ -676,11 +676,11 @@ void itProcessSearchFighterHit(GObj *item_gobj) // Check fighters for hit detect
 
                         fighter_victim_flags.group_id = 7;
 
-                        for (j = 0; j < ARRAY_COUNT(ft_hitcoll->hit_record); j++)
+                        for (j = 0; j < ARRAY_COUNT(ft_hitcoll->hit_records); j++)
                         {
-                            if (item_gobj == ft_hitcoll->hit_record[j].victim_gobj)
+                            if (item_gobj == ft_hitcoll->hit_records[j].victim_gobj)
                             {
-                                fighter_victim_flags = ft_hitcoll->hit_record[j].victim_flags;
+                                fighter_victim_flags = ft_hitcoll->hit_records[j].victim_flags;
 
                                 break;
                             }
@@ -766,11 +766,11 @@ void itProcessSearchItemHit(GObj *this_gobj) // Check other items for hit detect
 
                 those_flags.group_id = 7;
 
-                for (m = 0; m < ARRAY_COUNT(other_hit->hit_record); m++) // IDO will flip you off if you don't use a new iterator here...
+                for (m = 0; m < ARRAY_COUNT(other_hit->hit_records); m++) // IDO will flip you off if you don't use a new iterator here...
                 {
-                    if (this_gobj == other_hit->hit_record[m].victim_gobj)
+                    if (this_gobj == other_hit->hit_records[m].victim_gobj)
                     {
-                        those_flags = other_hit->hit_record[m].victim_flags;
+                        those_flags = other_hit->hit_records[m].victim_flags;
 
                         break;
                     }
@@ -789,11 +789,11 @@ void itProcessSearchItemHit(GObj *this_gobj) // Check other items for hit detect
 
                                 these_flags.group_id = 7;
 
-                                for (n = 0; n < ARRAY_COUNT(this_hit->hit_record); n++)
+                                for (n = 0; n < ARRAY_COUNT(this_hit->hit_records); n++)
                                 {
-                                    if (other_gobj == this_hit->hit_record[n].victim_gobj)
+                                    if (other_gobj == this_hit->hit_records[n].victim_gobj)
                                     {
-                                        these_flags = this_hit->hit_record[n].victim_flags;
+                                        these_flags = this_hit->hit_records[n].victim_flags;
 
                                         break;
                                     }
@@ -879,11 +879,11 @@ void itProcessSearchWeaponHit(GObj *item_gobj) // Check weapons for hit detectio
 
                     those_flags.group_id = 7;
 
-                    for (m = 0; m < ARRAY_COUNT(wp_atkcoll->hit_record); m++) // IDO will flip you off if you don't use a new iterator here...
+                    for (m = 0; m < ARRAY_COUNT(wp_atkcoll->hit_records); m++) // IDO will flip you off if you don't use a new iterator here...
                     {
-                        if (item_gobj == wp_atkcoll->hit_record[m].victim_gobj)
+                        if (item_gobj == wp_atkcoll->hit_records[m].victim_gobj)
                         {
-                            those_flags = wp_atkcoll->hit_record[m].victim_flags;
+                            those_flags = wp_atkcoll->hit_records[m].victim_flags;
 
                             break;
                         }
@@ -902,11 +902,11 @@ void itProcessSearchWeaponHit(GObj *item_gobj) // Check weapons for hit detectio
 
                                     these_flags.group_id = 7;
 
-                                    for (n = 0; n < ARRAY_COUNT(it_atkcoll->hit_record); n++)
+                                    for (n = 0; n < ARRAY_COUNT(it_atkcoll->hit_records); n++)
                                     {
-                                        if (weapon_gobj == it_atkcoll->hit_record[n].victim_gobj)
+                                        if (weapon_gobj == it_atkcoll->hit_records[n].victim_gobj)
                                         {
-                                            these_flags = it_atkcoll->hit_record[n].victim_flags;
+                                            these_flags = it_atkcoll->hit_records[n].victim_flags;
 
                                             break;
                                         }

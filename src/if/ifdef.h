@@ -31,7 +31,7 @@ typedef struct IFDCharacter 	IFDCharacter;
 typedef struct IFACharacter 	IFACharacter;
 typedef struct IFPlayerDamage 	IFPlayerDamage;
 typedef struct IFPlayerSteal 	IFPlayerSteal;
-typedef struct IFPlayerMGlass 	IFPlayerMGlass;
+typedef struct IFPlayerMagnify 	IFPlayerMagnify;
 typedef struct IFTraffic 		IFTraffic;
 typedef struct IFPauseDecal 	IFPauseDecal;
 

@@ -75,6 +75,6 @@ void ftCommonShieldBreakFlyReflectorSetStatus(GObj *fighter_gobj)
     Vec3f offset = special_coll->offset;
 
     gmCollisionGetFighterPartsWorldPosition(fp->joints[special_coll->joint_id], &offset);
-    efManagerReflectBreakMakeEffect(&offset, fp->lr_reflect);
+    efManagerReflectBreakMakeEffect(&offset, fp->reflect_lr);
     ftCommonShieldBreakFlySetStatus(fighter_gobj);
 }

@@ -125,7 +125,7 @@ void ftCommonSleepSetStatus(GObj *fighter_gobj)
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusSleep, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
     fp->is_invisible = TRUE;
-    fp->x18E_flag_b0 = TRUE;
+    fp->is_hide_shadow = TRUE;
     fp->is_nullstatus = TRUE;
     fp->is_ignore_training_menu = TRUE;
 

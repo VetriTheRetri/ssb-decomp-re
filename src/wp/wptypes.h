@@ -109,7 +109,7 @@ struct WPHitColl
     u16 stat_count;                                         // Weapon's status update count
     s32 hit_count;                                          // Weapon's hitbox count
     WPHitPositions hit_positions[WEAPON_HITCOLL_NUM_MAX];  	// Weapon's hitbox world positions
-    GMHitRecord hit_record[GMHITRECORD_NUM_MAX];            // Weapon's record of interacted targets
+    GMHitRecord hit_records[GMHITRECORD_NUM_MAX];            // Weapon's record of interacted targets
 };
 
 // Main weapon struct

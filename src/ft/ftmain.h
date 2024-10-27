@@ -29,7 +29,7 @@ extern void ftMainProcPhysicsMap(GObj* fighter_gobj);
 extern void ftMainProcPhysicsMapDefault(GObj* fighter_gobj);
 extern void ftMainProcPhysicsMapCapture(GObj* fighter_gobj);
 extern void ftMainSetHitInteractStats(FTStruct* fp, u32 attack_group_id, GObj* victim_gobj, s32 hitbox_type,
-									  u32 victim_group_id, sb32 ignore_hurt_or_hit);
+									  u32 victim_group_id, sb32 ignore_damage_or_hit);
 extern void ftMainSetHitRebound(GObj* attacker_gobj, FTStruct* fp, FTHitColl* ft_hitcoll, GObj* victim_gobj);
 extern void ftMainUpdateAttackStatFighter(FTStruct* other_fp, FTHitColl* other_hit, FTStruct* this_fp, FTHitColl* this_hit,
 									GObj* other_gobj, GObj* this_gobj);

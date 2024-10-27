@@ -299,7 +299,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
                 ft_cobj[player_num].target_pos = fp->status_vars.common.dead.pos;
                 break;
             }
-            ft_cobj[player_num].target_pos.y += fp->attributes->cobj_offset_y;
+            ft_cobj[player_num].target_pos.y += fp->attributes->cam_offset_y;
 
             if ((gBattleState->game_type == nSCBattleGameType1PGame) && (gBattleState->players[fp->player].is_spgame_team != FALSE))
             {
@@ -720,7 +720,7 @@ void func_ovl2_8010C960(GObj *camera_gobj)
 
     fp = ftGetStruct(gCMManagerCameraStruct.pl_pause_gobj);
 
-    sp30.y += fp->attributes->cobj_offset_y;
+    sp30.y += fp->attributes->cam_offset_y;
 
     cmManagerAdjustFOV(gCMManagerCameraStruct.unk_cmstruct_0x58);
 
@@ -857,7 +857,7 @@ void jtgt_ovl2_8010CDAC(GObj *camera_gobj)
 
     fp = ftGetStruct(gCMManagerCameraStruct.pl_bonus_gobj);
 
-    sp30.y += fp->attributes->cobj_offset_y;
+    sp30.y += fp->attributes->cam_offset_y;
     sp30.z = 0.0F;
 
     cmManagerSetCameraBoundsPos(&sp30);
@@ -1060,7 +1060,7 @@ void func_ovl2_8010D4C0(GObj *camera_gobj)
     gcPrepCameraMatrix(gSYTaskmanDLHeads, cobj);
     gcRunFuncCamera(cobj, 0);
 
-    gIFCommonPlayerInterface.mglass_mode = 0;
+    gIFCommonPlayerInterface.magnify_mode = 0;
     gIFCommonPlayerInterface.arrows_flags = 0;
 
     // gIFCommonPlayerInterface.unk1 = 0;
@@ -1213,7 +1213,7 @@ void func_ovl2_8010DC24(GObj *camera_gobj)
 {
     CObj *cobj = CObjGetStruct(camera_gobj);
 
-    if (gIFCommonPlayerInterface.mglass_mode != 0)
+    if (gIFCommonPlayerInterface.magnify_mode != 0)
     {
         Vp_t *viewport;
         s32 ulx, uly, lrx, lry;
@@ -1260,7 +1260,7 @@ void func_ovl2_8010DDC4(void)
 }
 
 // 0x8010DE48
-sb32 cmManagerPlayerMGlassFuncMatrix(Mtx *mtx, CObj *cobj, Gfx **dls)
+sb32 cmManagerPlayerMagnifyFuncMatrix(Mtx *mtx, CObj *cobj, Gfx **dls)
 {
     f32 unused1;
     Mtx44f spA4;
@@ -1289,11 +1289,11 @@ sb32 cmManagerPlayerMGlassFuncMatrix(Mtx *mtx, CObj *cobj, Gfx **dls)
 
     func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), spA4, &sp50, &var_x, &var_y);
 
-    gIFCommonPlayerInterface.mglass_scale = (var_y / 18.0F);
+    gIFCommonPlayerInterface.magnify_scale = (var_y / 18.0F);
 
-    if (gIFCommonPlayerInterface.mglass_scale > 3.0F)
+    if (gIFCommonPlayerInterface.magnify_scale > 3.0F)
     {
-        gIFCommonPlayerInterface.mglass_scale = 3.0F;
+        gIFCommonPlayerInterface.magnify_scale = 3.0F;
     }
     syMatrixOrthoF(&spA4, -450.0F, 450.0F, -450.0F, 450.0F, 256.0F, 39936.0F, 1.0F);
     guMtxCatF(sp64, spA4, spA4);
@@ -1333,7 +1333,7 @@ sb32 cmManagerPrepProjectionFuncMatrix(Mtx *mtx, CObj *cobj, Gfx **dls)
 // 0x8010E134
 void func_ovl2_8010E134(GObj *camera_gobj)
 {
-    if (gIFCommonPlayerInterface.mglass_mode != 0)
+    if (gIFCommonPlayerInterface.magnify_mode != 0)
     {
         CObj *cobj = CObjGetStruct(camera_gobj);
 
@@ -1354,7 +1354,7 @@ void func_ovl2_8010E1A4(void)
 
     cobj->flags |= COBJ_FLAG_DLBUFFERS;
 
-    gIFCommonPlayerInterface.mglass_mode = 0;
+    gIFCommonPlayerInterface.magnify_mode = 0;
 }
 
 // 0x8010E254

@@ -2137,7 +2137,7 @@ sb32 (*dLBCommonFuncMatrixList[/* */])(/* */) =
 	lbCommonFighterPartsFuncMatrix,
 	cmManagerLookAtFuncMatrix,
 	cmManagerPrepLookAtFuncMatrix,
-	cmManagerPlayerMGlassFuncMatrix,
+	cmManagerPlayerMagnifyFuncMatrix,
 	NULL,
 	cmManageOrthoLookAtFuncMatrix,
 	NULL,

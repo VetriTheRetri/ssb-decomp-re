@@ -56,7 +56,7 @@ extern GObj* func_ovl2_8010DB2C(void (*func_camera)(GObj*));
 extern GObj* cmManagerMakeWallpaperCamera(void);
 extern void func_ovl2_8010DC24(GObj *camera_gobj);
 extern void func_ovl2_8010DDC4(void);
-extern sb32 cmManagerPlayerMGlassFuncMatrix(Mtx *mtx, CObj *cobj, Gfx **dl);
+extern sb32 cmManagerPlayerMagnifyFuncMatrix(Mtx *mtx, CObj *cobj, Gfx **dl);
 extern sb32 cmManageOrthoLookAtFuncMatrix(Mtx *mtx, CObj *cobj, Gfx **dl);
 extern sb32 cmManagerPrepProjectionFuncMatrix(Mtx *mtx, CObj *cobj, Gfx **dl);
 extern void func_ovl2_8010E134(GObj *camera_gobj);

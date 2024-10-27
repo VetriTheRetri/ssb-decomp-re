@@ -212,7 +212,7 @@ void scVSBattleFuncStart(void)
 	func_ovl2_8010E2D4();
 	ifCommonPlayerArrowsInitInterface();
 	func_ovl2_8010E1A4();
-	ifCommonPlayerMGlassMakeInterface();
+	ifCommonPlayerMagnifyMakeInterface();
 	func_ovl2_8010DDC4();
 	func_ovl2_8010E374();
 	func_ovl2_8010E498();
@@ -489,7 +489,7 @@ void scVSBattleStartSudddenDeath(void)
 	func_ovl2_8010E2D4();
 	ifCommonPlayerArrowsInitInterface();
 	func_ovl2_8010E1A4();
-	ifCommonPlayerMGlassMakeInterface();
+	ifCommonPlayerMagnifyMakeInterface();
 	func_ovl2_8010DDC4();
 	func_ovl2_8010E374();
 	func_ovl2_8010E498();

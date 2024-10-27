@@ -119,9 +119,9 @@ void wpMainClearHitRecord(WPStruct *wp) // Clear hit victims array
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(wp->hit_coll.hit_record); i++)
+    for (i = 0; i < ARRAY_COUNT(wp->hit_coll.hit_records); i++)
     {
-        GMHitRecord *targets = &wp->hit_coll.hit_record[i];
+        GMHitRecord *targets = &wp->hit_coll.hit_records[i];
 
         targets->victim_gobj = NULL;
 

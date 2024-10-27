@@ -759,8 +759,8 @@ lMNTitleFireAnimFrame30Sprite = 0x0001EAF8;
 lIFCommonPlayerArrowsDObjDesc = 0x00000188;
 lIFCommonPlayerArrowsAnimJoint = 0x00000270;
 
-lIFCommonPlayerMGlassFrame = 0x000002C8;
-lIFCommonPlayerMGlassDisplayList = 0x00000030;
+lIFCommonPlayerMagnifyFrame = 0x000002C8;
+lIFCommonPlayerMagnifyDisplayList = 0x00000030;
 
 lIFCommonItemArrow = 0x00000050;
 

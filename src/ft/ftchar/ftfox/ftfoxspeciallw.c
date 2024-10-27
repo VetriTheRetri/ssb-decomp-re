@@ -163,7 +163,7 @@ void ftFoxSpecialLwHitSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->lr = fp->lr_reflect;
+    fp->lr = fp->reflect_lr;
 
     ftMainSetFighterStatus(fighter_gobj, (fp->ga == nMPKineticsGround) ? nFTFoxStatusSpecialLwHit : nFTFoxStatusSpecialAirLwHit, 0.0F, 1.0F, (FTSTATUS_PRESERVE_EFFECT | FTSTATUS_PRESERVE_COLANIM));
 

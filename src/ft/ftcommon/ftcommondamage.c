@@ -430,7 +430,7 @@ sb32 ftCommonDamageCheckCatchResist(FTStruct *fp)
     {
         return TRUE;
     }
-    if ((fp->hitlag_tics > 0) && (fp->x192_flag_b6) && (fp->damage_knockback < (fp->damage_stack + 30.0F)))
+    if ((fp->hitlag_tics > 0) && (fp->is_knockback_paused) && (fp->damage_knockback < (fp->damage_stack + 30.0F)))
     {
         return TRUE;
     }
@@ -449,7 +449,7 @@ void ftCommonDamageUpdateCatchResist(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->damage_knockback == 0.0F) || ((fp->hitlag_tics > 0) && (fp->x192_flag_b6) && (fp->damage_knockback < (fp->damage_stack + 30.0F))))
+    if ((fp->damage_knockback == 0.0F) || ((fp->hitlag_tics > 0) && (fp->is_knockback_paused) && (fp->damage_knockback < (fp->damage_stack + 30.0F))))
     {
         ftCommonDamageSetDamageColAnim(fighter_gobj);
     }
@@ -745,7 +745,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
             ftParamStopVoiceRunProcDamage(grab_gobj);
             ftCommonThrownSetStatusDamageRelease(grab_gobj);
 
-            if (this_fp->x192_flag_b3)
+            if (this_fp->unk_ft_0x192_b3)
             {
                 ftCommonThrownReleaseFighterLoseGrip(fighter_gobj);
             }
@@ -832,7 +832,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
             return;
         }
     }
-    if ((this_fp->damage_element != nGMHitElementSleep) && ((this_fp->damage_knockback == 0.0F) || ((this_fp->hitlag_tics > 0) && (this_fp->x192_flag_b6) && (this_fp->damage_knockback < (this_fp->damage_stack + 30.0F)))))
+    if ((this_fp->damage_element != nGMHitElementSleep) && ((this_fp->damage_knockback == 0.0F) || ((this_fp->hitlag_tics > 0) && (this_fp->is_knockback_paused) && (this_fp->damage_knockback < (this_fp->damage_stack + 30.0F)))))
     {
         ftCommonDamageSetDamageColAnim(fighter_gobj);
     }

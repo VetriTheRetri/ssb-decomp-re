@@ -872,9 +872,9 @@ typedef enum FTItemSwingType
 
 typedef enum FTSpecialCollKind
 {
-    nFTSpecialHITKindFoxReflector,
-    nFTSpecialHITKindNessAbsorb,
-    nFTSpecialHITKindNessReflector
+    nFTSpecialCollKindFoxReflector,
+    nFTSpecialCollKindNessAbsorb,
+    nFTSpecialCollKindNessReflector
 
 } FTSpecialCollKind;
 

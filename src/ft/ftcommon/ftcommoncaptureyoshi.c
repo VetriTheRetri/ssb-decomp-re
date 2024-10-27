@@ -101,7 +101,7 @@ void ftCommonCaptureYoshiProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
     {
         ftCommonThrownDecideFighterLoseGrip(this_fp->capture_gobj, fighter_gobj);
     }
-    this_fp->x192_flag_b3 = FALSE;
+    this_fp->unk_ft_0x192_b3 = FALSE;
 
     this_fp->capture_gobj = capture_gobj;
 

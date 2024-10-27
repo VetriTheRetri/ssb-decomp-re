@@ -1138,7 +1138,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
                     sp128.y += 300.0F;
 
-                    func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &sp128, &fp->magnify_pos_x, &fp->magnify_pos_y);
+                    func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &sp128, &fp->magnify_pos.x, &fp->magnify_pos.y);
 
                     fp->is_show_magnify = TRUE;
 

@@ -1502,8 +1502,8 @@ void ifCommonPlayerMagnifyUpdateViewport(Gfx **dls, FTStruct *fp)
     {
         ifmag = &sIFCommonPlayerMagnifyInterface[fp->player];
 
-        magnify_x = fp->magnify_pos_x;
-        magnify_y = fp->magnify_pos_y;
+        magnify_x = fp->magnify_pos.x;
+        magnify_y = fp->magnify_pos.y;
 
         ifCommonPlayerMagnifyGetPosition(magnify_x, magnify_y, &ifmag->pos);
 
@@ -1583,7 +1583,7 @@ void ifCommonPlayerMagnifyFuncDisplay(FTStruct *fp)
         dobj->translate.vec.f.x = ifmag->pos.x;
         dobj->translate.vec.f.y = ifmag->pos.y;
 
-        dobj->rotate.vec.f.z = atan2f(fp->magnify_pos_y, fp->magnify_pos_x) - F_CST_DTOR32(90.0F);
+        dobj->rotate.vec.f.z = atan2f(fp->magnify_pos.y, fp->magnify_pos.x) - F_CST_DTOR32(90.0F);
 
         dobj->scale.vec.f.x = dobj->scale.vec.f.y = gIFCommonPlayerInterface.magnify_scale * 0.5F;
 
@@ -1716,9 +1716,9 @@ void ifCommonPlayerArrowsFuncRun(GObj *interface_gobj)
 
             if (!(fp->is_skip_magnify) && !(fp->is_rebirth) && (fp->is_show_magnify))
             {
-                if (ABSF(fp->magnify_pos_x) > ABSF(fp->magnify_pos_y))
+                if (ABSF(fp->magnify_pos.x) > ABSF(fp->magnify_pos.y))
                 {
-                    if (fp->magnify_pos_x < 0.0F)
+                    if (fp->magnify_pos.x < 0.0F)
                     {
                         lr_left = TRUE;
                     }

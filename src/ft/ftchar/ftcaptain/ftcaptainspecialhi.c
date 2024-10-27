@@ -171,9 +171,9 @@ void ftCaptainSpecialHiProcCatch(GObj *fighter_gobj)
     if (catch_fp->ga == nMPKineticsAir)
     {
         fp->status_vars.common.capturecaptain.capture_flag |= FTCOMMON_CAPTURECAPTAIN_MASK_NOUPDATE;
-        fp->x192_flag_b3 = FALSE;
+        fp->unk_ft_0x192_b3 = FALSE;
     }
-    else fp->x192_flag_b3 = TRUE;
+    else fp->unk_ft_0x192_b3 = TRUE;
 }
 
 // 0x80160730
@@ -185,7 +185,7 @@ void ftCaptainSpecialHiThrowSetStatus(GObj *fighter_gobj)
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_NONE);
 
-    if ((fp->x192_flag_b3 == TRUE) && (fp->catch_gobj != NULL))
+    if ((fp->unk_ft_0x192_b3 == TRUE) && (fp->catch_gobj != NULL))
     {
         ftCommonThrownReleaseFighterLoseGrip(fighter_gobj);
     }

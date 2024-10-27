@@ -1370,7 +1370,7 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
 
         if (this_fp->hitlag_tics == 0)
         {
-            this_fp->x192_flag_b6 = FALSE;
+            this_fp->is_knockback_paused = FALSE;
 
             if (this_fp->proc_lagend != NULL)
             {
@@ -1900,7 +1900,7 @@ void ftMainProcPhysicsMapDefault(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (((fp->capture_gobj == NULL) || (fp->x192_flag_b3)) && ((fp->catch_gobj == NULL) || !(fp->x192_flag_b3)))
+    if (((fp->capture_gobj == NULL) || (fp->unk_ft_0x192_b3)) && ((fp->catch_gobj == NULL) || !(fp->unk_ft_0x192_b3)))
     {
         ftMainProcPhysicsMap(fighter_gobj);
     }
@@ -1911,7 +1911,7 @@ void ftMainProcPhysicsMapCapture(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (((fp->capture_gobj != NULL) && !(fp->x192_flag_b3)) || ((fp->catch_gobj != NULL) && (fp->x192_flag_b3)))
+    if (((fp->capture_gobj != NULL) && !(fp->unk_ft_0x192_b3)) || ((fp->catch_gobj != NULL) && (fp->unk_ft_0x192_b3)))
     {
         ftMainProcPhysicsMap(fighter_gobj);
     }
@@ -3782,14 +3782,14 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
     f32 knockback_resist;
     sb32 is_shieldbreak;
     u32 hitlag_tics;
-    s32 sp84;
+    sb32 is_knockback_paused;
     s32 element;
 
     damage = 0;
     is_shieldbreak = FALSE;
     status_id = fp->status_id;
     hitlag_tics = fp->hitlag_tics;
-    sp84 = 0;
+    is_knockback_paused = FALSE;
 
     if (fp->unk_ft_0x7AC != 0)
     {
@@ -3874,7 +3874,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
             ftBossCommonUpdateDamageStats(fighter_gobj);
         }
         damage = fp->damage_lag;
-        sp84 = 1;
+        is_knockback_paused = TRUE;
 
         ftParamSetDamageShuffle(fp, (fp->damage_element == nGMHitElementElectric) ? TRUE : FALSE, damage, status_id, fp->hitlag_mul);
 
@@ -3931,11 +3931,11 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
     {
         switch (fp->special_coll->kind)
         {
-        case nFTSpecialHITKindFoxReflector:
+        case nFTSpecialCollKindFoxReflector:
             ftFoxSpecialLwHitSetStatus(fighter_gobj);
             break;
 
-        case nFTSpecialHITKindNessReflector:
+        case nFTSpecialCollKindNessReflector:
             func_800269C0_275C0(nSYAudioFGMBatHit);
             break;
         }
@@ -3948,9 +3948,9 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
     {
         fp->hitlag_tics = ftParamGetHitLag(damage, status_id, fp->hitlag_mul);
 
-        if ((fp->hitlag_tics != 0) && (sp84 != 0))
+        if ((fp->hitlag_tics != 0) && (is_knockback_paused != FALSE))
         {
-            fp->x192_flag_b6 = TRUE;
+            fp->is_knockback_paused = TRUE;
         }
         fp->input.pl.button_tap = fp->input.pl.button_tap_prev = 0;
 
@@ -3966,10 +3966,11 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
     fp->shield_damage_total = 0;
     fp->damage_lag = 0;
     fp->damage_queue = 0;
-    fp->damage_kind = 0;
+    fp->damage_kind = nGMHitEnvironmentAcid;
 
     fp->reflect_lr = nGMFacingC;
     fp->reflect_damage = 0;
+
     fp->absorb_lr = nGMFacingC;
 
     fp->unk_ft_0x7A0 = 0;

@@ -1528,7 +1528,7 @@ void ftParamUpdateDamage(FTStruct *fp, s32 damage)
 
     if (fp->item_hold != NULL)
     {
-        if ((fp->damage_knockback != 0.0F) && ((fp->hitlag_tics == 0) || !(fp->x192_flag_b6) || !(fp->damage_knockback < (fp->damage_stack + 30.0F))))
+        if ((fp->damage_knockback != 0.0F) && ((fp->hitlag_tics == 0) || !(fp->is_knockback_paused) || !(fp->damage_knockback < (fp->damage_stack + 30.0F))))
         {
             ITStruct *ip = itGetStruct(fp->item_hold);
 

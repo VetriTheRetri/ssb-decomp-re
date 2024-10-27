@@ -781,7 +781,7 @@ void ftKirbySpecialNCatchEatSetStatusParam(GObj *fighter_gobj, s32 status_id)
 
     fp->catch_gobj = fp->search_gobj;
 
-    fp->x192_flag_b3 = FALSE;
+    fp->unk_ft_0x192_b3 = FALSE;
 
     if (fp->proc_slope != NULL)
     {

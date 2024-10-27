@@ -477,7 +477,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
 
     fp->unk_ft_0x38 = 0.0F;
     fp->hitlag_tics = 0;
-    fp->x192_flag_b6 = FALSE;
+    fp->is_knockback_paused = FALSE;
 
     ftPhysicsStopVelAll(fighter_gobj);
 
@@ -518,7 +518,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
     fp->throw_gobj = NULL;
     fp->catch_gobj = NULL;
     fp->capture_gobj = NULL;
-    fp->x192_flag_b3 = FALSE;
+    fp->unk_ft_0x192_b3 = FALSE;
 
     fp->item_hold = NULL;
 

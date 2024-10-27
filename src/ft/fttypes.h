@@ -1128,19 +1128,18 @@ struct FTStruct
     ub32 is_special_interrupt : 1;      // Whether move can be interrupted by Link's boomerang? Have not seen this used anywhere else
     ub32 is_ignore_dead : 1;            // Ignore dead action states altogether
     ub32 is_catchstatus : 1;
-    ub32 x192_flag_b3 : 1;              // My brain stops working every time I try to understand what this does
+    ub32 unk_ft_0x192_b3 : 1;           // My brain stops working every time I try to understand what this does
     ub32 is_use_fogcolor : 1;
     ub32 is_shield_catch : 1;           // Set to TRUE when fighter grabs after getting shield poked; there is a check for this flag that halves throw damage if TRUE
-    ub32 x192_flag_b6 : 1;
-    ub32 x192_flag_b7 : 1;
+    ub32 is_knockback_paused : 1;       // Whether fighter's knockback is paused by hitlag?
+
     u8 capture_immune_mask;             // Fighter is immune to these grab types
     u8 catch_mask;                      // Fighter's current grab type
 
     FTAnimDesc anim_desc;
     Vec3f anim_vel;
 
-    f32 magnify_pos_x;
-    f32 magnify_pos_y;
+    Vec2f magnify_pos;
 
     struct FTInputStruct
     {

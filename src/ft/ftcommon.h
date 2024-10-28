@@ -654,7 +654,7 @@ typedef struct ftCommonYoshiEggDesc
 
 } ftCommonYoshiEggDesc;
 
-extern ftCommonYoshiEggDesc dFTCommonYoshiEggHurtboxDescs[/* */];
+extern ftCommonYoshiEggDesc dFTCommonYoshiEggDamageCollDescs[/* */];
 
 typedef struct ftCommonCaptureCaptainStatusVars
 {

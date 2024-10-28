@@ -976,21 +976,21 @@ void ftDisplayMainDrawParts(DObj *dobj)
 
     sp90 = gcPrepDObjMatrix(gSYTaskmanDLHeads, dobj);
 
-    for (i = 0; i < ARRAY_COUNT(fp->damage_colls); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->dmg_colls); i++)
     {
-        FTDamageColl *damage_coll = &fp->damage_colls[i];
+        FTDamageColl *dmg_coll = &fp->dmg_colls[i];
 
-        if ((damage_coll->hitstatus != nGMHitStatusNone) && (dobj == damage_coll->joint))
+        if ((dmg_coll->hitstatus != nGMHitStatusNone) && (dobj == dmg_coll->joint))
         {
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixTranslate(mtx_store.gbi, damage_coll->offset.x, damage_coll->offset.y, damage_coll->offset.z);
+            syMatrixTranslate(mtx_store.gbi, dmg_coll->offset.x, dmg_coll->offset.y, dmg_coll->offset.z);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixSca(mtx_store.gbi, damage_coll->size.x / 15.0F, damage_coll->size.y / 15.0F, damage_coll->size.z / 15.0F);
+            syMatrixSca(mtx_store.gbi, dmg_coll->size.x / 15.0F, dmg_coll->size.y / 15.0F, dmg_coll->size.z / 15.0F);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -1001,7 +1001,7 @@ void ftDisplayMainDrawParts(DObj *dobj)
                 (fp->special_hitstatus == nGMHitStatusIntangible)  ||
                 (fp->star_hitstatus == nGMHitStatusIntangible)     ||
                 (fp->hitstatus == nGMHitStatusIntangible)          ||
-                (damage_coll->hitstatus == nGMHitStatusIntangible)
+                (dmg_coll->hitstatus == nGMHitStatusIntangible)
             )
             {
                 hitstatus = nGMHitStatusIntangible;
@@ -1011,7 +1011,7 @@ void ftDisplayMainDrawParts(DObj *dobj)
                 (fp->special_hitstatus == nGMHitStatusInvincible)  ||
                 (fp->star_hitstatus == nGMHitStatusInvincible)     ||
                 (fp->hitstatus == nGMHitStatusInvincible)          ||
-                (damage_coll->hitstatus == nGMHitStatusInvincible)
+                (dmg_coll->hitstatus == nGMHitStatusInvincible)
             )
             {
                 hitstatus = nGMHitStatusInvincible;
@@ -1073,7 +1073,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 {
     FTStruct *fp;
     FTAttributes *attributes;
-    FTHitColl *hit_coll;
+    FTAttackColl *atk_coll;
     gsMtxStore mtx_store;
     s32 i;
     Vec3f sp128;
@@ -1341,11 +1341,11 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
             fp->joints[nFTPartsJointTopN]->xobj[0]->kind = 0x4B;
         }
-        for (i = 0; i < ARRAY_COUNT(fp->hit_colls); i++)
+        for (i = 0; i < ARRAY_COUNT(fp->atk_colls); i++)
         {
-            hit_coll = &fp->hit_colls[i];
+            atk_coll = &fp->atk_colls[i];
 
-            if ((hit_coll->update_state != nGMHitUpdateDisable) && (hit_coll->update_state != nGMHitUpdateNew))
+            if ((atk_coll->atk_state != nGMAttackStateOff) && (atk_coll->atk_state != nGMAttackStateNew))
             {
                 gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
@@ -1365,17 +1365,17 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
                     gDPSetBlendColor(gSYTaskmanDLHeads[0]++, 0x00, 0x00, 0x00, 0x00);
                 }
-                if (hit_coll->update_state == nGMHitUpdateInterpolate)
+                if (atk_coll->atk_state == nGMAttackStateInterpolate)
                 {
                     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                    syMatrixTranslate(mtx_store.gbi, hit_coll->pos_prev.x, hit_coll->pos_prev.y, hit_coll->pos_prev.z);
+                    syMatrixTranslate(mtx_store.gbi, atk_coll->pos_prev.x, atk_coll->pos_prev.y, atk_coll->pos_prev.z);
 
                     gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
                     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                    syMatrixSca(mtx_store.gbi, hit_coll->size / 15.0F, hit_coll->size / 15.0F, hit_coll->size / 15.0F);
+                    syMatrixSca(mtx_store.gbi, atk_coll->size / 15.0F, atk_coll->size / 15.0F, atk_coll->size / 15.0F);
 
                     gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -1385,17 +1385,17 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
                 }
                 syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                syMatrixTranslate(mtx_store.gbi, hit_coll->pos.x, hit_coll->pos.y, hit_coll->pos.z);
+                syMatrixTranslate(mtx_store.gbi, atk_coll->pos.x, atk_coll->pos.y, atk_coll->pos.z);
 
                 gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
                 syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                syMatrixSca(mtx_store.gbi, hit_coll->size / 15.0F, hit_coll->size / 15.0F, hit_coll->size / 15.0F);
+                syMatrixSca(mtx_store.gbi, atk_coll->size / 15.0F, atk_coll->size / 15.0F, atk_coll->size / 15.0F);
 
                 gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-                if (hit_coll->update_state == nGMHitUpdateInterpolate)
+                if (atk_coll->atk_state == nGMAttackStateInterpolate)
                 {
                     gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionBlendDL);
                 }

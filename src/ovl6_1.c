@@ -24,7 +24,7 @@ ITCreateDesc dItTargetItemDesc = {
 		0							   // ???
 	},
 
-	nGMHitUpdateDisable, // Hitbox Update State
+	nGMAttackStateOff, // Hitbox Update State
 	NULL,								// Proc Update
 	NULL,								// Proc Map
 	NULL,								// Proc Hit

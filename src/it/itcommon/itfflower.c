@@ -32,7 +32,7 @@ ITCreateDesc dITFFlowerItemDesc =
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,                    // Hitbox Update State
+    nGMAttackStateOff,                      // Hitbox Update State
     itFFlowerFallProcUpdate,                // Proc Update
     itFFlowerFallProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
@@ -218,7 +218,7 @@ sb32 itFFlowerCommonProcHit(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->hit_coll.update_state = nGMHitUpdateDisable;
+    ip->atk_coll.atk_state = nGMAttackStateOff;
 
     itMainVelSetRebound(item_gobj);
 

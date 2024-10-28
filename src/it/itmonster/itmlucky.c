@@ -31,7 +31,7 @@ ITCreateDesc dITMLuckyItemDesc =
         0,                                  // ???
     },
 
-    nGMHitUpdateDisable,                    // Hitbox Update State
+    nGMAttackStateOff,                      // Hitbox Update State
     itMLuckyCommonProcUpdate,               // Proc Update
     itMLuckyCommonProcMap,                  // Proc Map
     NULL,                                   // Proc Hit
@@ -126,7 +126,7 @@ void itMLuckyMakeEggInitItemVars(GObj *item_gobj)
         gcAddDObjAnimJoint(dobj->child, itGetPData(ip, lITLuckyDataStart, lITLuckyAnimJoint), 0.0F); // Linker thing
         gcPlayAnimAll(item_gobj);
     }
-    ip->damage_coll.hitstatus = nGMHitStatusNormal;
+    ip->dmg_coll.hitstatus = nGMHitStatusNormal;
 
     ip->item_vars.mlucky.egg_spawn_wait = ITMLUCKY_EGG_SPAWN_WAIT_CONST;
 
@@ -315,7 +315,7 @@ void itMLuckyDisappearSetStatus(GObj *item_gobj)
 
     ip->item_vars.mlucky.lifetime = ITMLUCKY_LIFETIME;
 
-    ip->damage_coll.hitstatus = nGMHitStatusNone;
+    ip->dmg_coll.hitstatus = nGMHitStatusNone;
 
     itMainSetItemStatus(item_gobj, dITMLuckyStatusDescs, nITMLuckyStatusDisappear);
 }

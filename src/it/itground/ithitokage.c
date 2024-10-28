@@ -35,7 +35,7 @@ ITCreateDesc dITHitokageItemDesc =
         0                                   // ???
     },
 
-    nGMHitUpdateNew,                        // Hitbox Update State
+    nGMAttackStateNew,                      // Hitbox Update State
     itHitokageCommonProcUpdate,             // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
@@ -187,8 +187,8 @@ sb32 itHitokageCommonProcDamage(GObj *item_gobj)
         ip->physics.vel_air.x = __cosf(angle) * ip->damage_knockback * -ip->damage_lr;
         ip->physics.vel_air.y = __sinf(angle) * ip->damage_knockback;
 
-        ip->hit_coll.update_state = nGMHitUpdateDisable;
-        ip->damage_coll.hitstatus = nGMHitStatusNone;
+        ip->atk_coll.atk_state = nGMAttackStateOff;
+        ip->dmg_coll.hitstatus = nGMHitStatusNone;
 
         dobj->anim_wait = AOBJ_ANIM_NULL;
 

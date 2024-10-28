@@ -15,26 +15,26 @@ void itProcessUpdateHitRecord(GObj* item_gobj);
 void itProcessProcItemMain(GObj* item_gobj);
 
 // Set type of interaction and record hit target when item's hitbox collides with another GObj
-void itProcessSetHitInteractStats(ITHitColl* it_atkcoll, GObj* victim_gobj, s32 hitbox_type, u32 interact_mask);
+void itProcessSetHitInteractStats(ITAttackColl* it_atk_coll, GObj* victim_gobj, s32 atk_type, u32 interact_mask);
 
 // Set stuff when item's hurtbox gets hit by a fighter
-void itProcessUpdateDamageStatFighter(FTStruct* fp, FTHitColl* ft_hitcoll, ITStruct* ip, ITDamageColl* it_dmgcoll,
+void itProcessUpdateDamageStatFighter(FTStruct* fp, FTAttackColl* ft_atk_coll, ITStruct* ip, ITDamageColl* it_dmgcoll,
 									  GObj* fighter_gobj, GObj* item_gobj);
 
 // Set stuff when item's hitbox collides with another item's hitbox
-void itProcessUpdateAttackStatItem(ITStruct* this_ip, ITHitColl* this_hit, s32 this_hit_id, ITStruct* victim_ip,
-								   ITHitColl* victim_hit, s32 victim_hit_id, GObj* this_gobj, GObj* victim_gobj);
+void itProcessUpdateAttackStatItem(ITStruct* this_ip, ITAttackColl* this_hit, s32 this_atk_id, ITStruct* victim_ip,
+								   ITAttackColl* victim_hit, s32 victim_atk_id, GObj* this_gobj, GObj* victim_gobj);
 
 // Set stuff when item's hitbox collides with a weapon's hitbox
-void itProcessUpdateAttackStatWeapon(WPStruct* wp, WPHitColl* wp_atkcoll, s32 wp_atkcoll_id, ITStruct* ip, ITHitColl* it_atkcoll,
-									 s32 it_atkcoll_id, GObj* weapon_gobj, GObj* item_gobj);
+void itProcessUpdateAttackStatWeapon(WPStruct* wp, WPAttackColl* wp_atk_coll, s32 wp_atk_coll_id, ITStruct* ip, ITAttackColl* it_atk_coll,
+									 s32 it_atk_coll_id, GObj* weapon_gobj, GObj* item_gobj);
 
 // Set stuff when item's hurtbox gets hit by another item's hitbox
-void itProcessUpdateDamageStatItem(ITStruct* attack_ip, ITHitColl* attack_it_atkcoll, s32 hitbox_id, ITStruct* defend_ip,
+void itProcessUpdateDamageStatItem(ITStruct* attack_ip, ITAttackColl* attack_it_atk_coll, s32 atk_id, ITStruct* defend_ip,
 								   ITDamageColl* it_dmgcoll, GObj* attack_gobj, GObj* defend_gobj);
 
 // Set  stuff when item's hurtbox gets hit by a weapon's hitbox
-void itProcessUpdateDamageStatWeapon(WPStruct* wp, WPHitColl* wp_atkcoll, s32 hitbox_id, ITStruct* ip, ITDamageColl* it_dmgcoll,
+void itProcessUpdateDamageStatWeapon(WPStruct* wp, WPAttackColl* wp_atk_coll, s32 atk_id, ITStruct* ip, ITDamageColl* it_dmgcoll,
 									 GObj* weapon_gobj, GObj* item_gobj);
 
 // Search for collision with fighter hitbox

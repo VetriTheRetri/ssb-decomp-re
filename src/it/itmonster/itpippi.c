@@ -48,7 +48,7 @@ ITCreateDesc dITPippiItemDesc =
         0,                                  // ???
     },
 
-    nGMHitUpdateNew,                        // Hitbox Update State
+    nGMAttackStateNew,                      // Hitbox Update State
     itPippiCommonProcUpdate,                // Proc Update
     itPippiCommonProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
@@ -96,7 +96,7 @@ void itPippiCommonSelectMonster(GObj *item_gobj)
     }
     if ((it_kind == nITKindPippi) || (it_kind == nITKindTosakinto) || (it_kind == nITKindMLucky))
     {
-        ip->hit_coll.update_state = nGMHitUpdateDisable;
+        ip->atk_coll.atk_state = nGMAttackStateOff;
     }
     if (it_kind == nITKindSawamura)
     {
@@ -137,7 +137,7 @@ void itPippiCommonFuncDisplay(GObj *item_gobj)
             gcDrawDObjTreeForGObj(item_gobj);
             itDisplayMapCollisions(item_gobj);
         }
-        else if ((ip->damage_coll.hitstatus == nGMHitStatusNone) && (ip->hit_coll.update_state == nGMHitUpdateDisable))
+        else if ((ip->dmg_coll.hitstatus == nGMHitStatusNone) && (ip->atk_coll.atk_state == nGMAttackStateOff))
         {
             gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
@@ -170,7 +170,7 @@ void itPippiCommonMoveDLFuncDisplay(GObj *item_gobj)
             gcDrawDObjTreeForGObj(item_gobj);
             itDisplayMapCollisions(item_gobj);
         }
-        else if ((ip->damage_coll.hitstatus == nGMHitStatusNone) && (ip->hit_coll.update_state == nGMHitUpdateDisable))
+        else if ((ip->dmg_coll.hitstatus == nGMHitStatusNone) && (ip->atk_coll.atk_state == nGMAttackStateOff))
         {
             gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 

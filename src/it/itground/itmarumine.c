@@ -29,7 +29,7 @@ ITCreateDesc dITMarumineItemDesc =
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,                    // Hitbox Update State
+    nGMAttackStateOff,                      // Hitbox Update State
     itMarumineCommonProcUpdate,             // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
@@ -81,7 +81,7 @@ void itMarumineExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    ip->damage_coll.hitstatus = nGMHitStatusNone;
+    ip->dmg_coll.hitstatus = nGMHitStatusNone;
 
     ptcl = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 
@@ -95,7 +95,7 @@ void itMarumineExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_HIDDEN;
 
-    ip->hit_coll.hit_sfx = nSYAudioFGMExplodeL;
+    ip->atk_coll.hit_sfx = nSYAudioFGMExplodeL;
 
     itMainRefreshHit(item_gobj);
     itMarumineExplodeSetStatus(item_gobj);
@@ -105,20 +105,20 @@ void itMarumineExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 void itMarumineExplodeUpdateHitEvent(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITHitEvent *ev = itGetHitEvent(dITMarumineItemDesc, lITMarumineHitEvents); // (ITHitEvent*) ((uintptr_t)*dITMarumineItemDesc.p_file + (intptr_t)&lITMarumineHitEvents); // Linker thing
+    ITAttackEvent *ev = itGetHitEvent(dITMarumineItemDesc, lITMarumineHitEvents); // (ITAttackEvent*) ((uintptr_t)*dITMarumineItemDesc.p_file + (intptr_t)&lITMarumineHitEvents); // Linker thing
 
     if (ip->it_multi == ev[ip->item_event_id].timer)
     {
-        ip->hit_coll.angle  = ev[ip->item_event_id].angle;
-        ip->hit_coll.damage = ev[ip->item_event_id].damage;
-        ip->hit_coll.size   = ev[ip->item_event_id].size;
+        ip->atk_coll.angle  = ev[ip->item_event_id].angle;
+        ip->atk_coll.damage = ev[ip->item_event_id].damage;
+        ip->atk_coll.size   = ev[ip->item_event_id].size;
 
-        ip->hit_coll.can_reflect = FALSE;
-        ip->hit_coll.can_shield = FALSE;
+        ip->atk_coll.can_reflect = FALSE;
+        ip->atk_coll.can_shield = FALSE;
 
-        ip->hit_coll.element = nGMHitElementFire;
+        ip->atk_coll.element = nGMHitElementFire;
 
-        ip->hit_coll.can_setoff = FALSE;
+        ip->atk_coll.can_setoff = FALSE;
 
         ip->item_event_id++;
 
@@ -181,7 +181,7 @@ void itMarumineExplodeSetStatus(GObj *item_gobj)
 
     ip->it_multi = 0;
 
-    ip->hit_coll.throw_mul = 1.0F;
+    ip->atk_coll.throw_mul = 1.0F;
 
     ip->item_event_id = 0;
 

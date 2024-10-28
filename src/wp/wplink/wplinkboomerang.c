@@ -130,7 +130,7 @@ void wpLinkBoomerangSetReturnVars(GObj *weapon_gobj, sb32 angle_max_or_min)
 
     wp->weapon_vars.boomerang.flags |= WPLINK_BOOMERANG_FLAG_RETURN;
 
-    wp->hit_coll.damage = WPBOOMERANG_RETURN_DAMAGE;
+    wp->atk_coll.damage = WPBOOMERANG_RETURN_DAMAGE;
 
     wp->weapon_vars.boomerang.default_angle -= F_CST_DTOR32(180.0F); // PI32
 
@@ -482,7 +482,7 @@ sb32 wpLinkBoomerangProcHop(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    if (wp->shield_collide_vec.z > 0.0F)
+    if (wp->shield_collide_dir.z > 0.0F)
     {
         wp->weapon_vars.boomerang.default_angle += (wp->shield_collide_angle * 2);
     }

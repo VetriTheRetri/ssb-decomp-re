@@ -28,7 +28,7 @@ struct ITCreateDesc
 	void **p_file;
 	intptr_t o_attributes;
 	DObjTransformTypes transform_types;
-	s32 update_state;
+	s32 atk_state;
 	sb32 (*proc_update)(GObj*);
 	sb32 (*proc_map)(GObj*);
 	sb32 (*proc_hit)(GObj*);
@@ -68,7 +68,7 @@ struct ITSpawnActor
     ITRandomWeights weights;    // Randomizer struct
 };
 
-struct ITHitPositions
+struct ITAttackPos
 {
 	Vec3f pos;
 	Vec3f pos_prev;
@@ -77,9 +77,9 @@ struct ITHitPositions
 	f32 unk_ithitpos_0x5C;
 };
 
-struct ITHitColl
+struct ITAttackColl
 {
-	s32 update_state;									// Hitbox's position update mode (0 = disabled, 1 = fresh, 2 = transfer, 3 = interpolate)
+	s32 atk_state;										// Hitbox's position update mode (0 = disabled, 1 = fresh, 2 = transfer, 3 = interpolate)
 	s32 damage;											// Hitbox's base damage output
 	f32 throw_mul;										// Might be swapped with stale
 	f32 stale;											// Might be swapped with throw_mul
@@ -105,12 +105,12 @@ struct ITHitColl
 	u16 motion_count;									// Item's animation update number?
 	GMStatFlags stat_flags;								// Item's status flags
 	u16 stat_count;										// Item's status update number
-	s32 hit_count;									// Item's hitbox count, up to two
-	ITHitPositions hit_positions[ITEM_HITCOLL_NUM_MAX]; // Item hitbox positions
+	s32 atk_count;										// Item's hitbox count, up to two
+	ITAttackPos hit_positions[ITEM_HITCOLL_NUM_MAX];	// Item hitbox positions
 	GMHitRecord hit_records[GMHITRECORD_NUM_MAX];		// Item's record of attacked targets
 };
 
-struct ITHitEvent 	// Miniature Hitbox subaction event? Used by explosions.
+struct ITAttackEvent 	// Miniature hitbox subaction event? Commonly Used by explosions.
 {
 	u8 timer;
 	s32 angle : 10;
@@ -133,12 +133,12 @@ struct ITMonsterEvent	// Full-scale hitbox subaction event? Used by Venusaur and
 	u16 hit_sfx;
 };
 
-struct ITDamageColl						// Hurtbox struct
+struct ITDamageColl						// DamageColl struct
 {
 	u8 interact_mask; 					// 0x1 = interact with fighters, 0x2 = interact with weapons, 0x4 = interact with other items
 	s32 hitstatus;	  					// 0 = none, 1 = normal, 2 = invincible, 3 = intangible
 	Vec3f offset;	  					// Offset added to TopN joint's translation vector
-	Vec3f size;		  					// Hurtbox size
+	Vec3f size;		  					// DamageColl size
 };
 
 struct ITAttributes
@@ -158,12 +158,12 @@ struct ITAttributes
 	s32 hit_offset2_x : 16;				// Hitbox ID1 offset X
 	s32 hit_offset2_y : 16;				// Hitbox ID1 offset Y
 	s32 hit_offset2_z : 16;				// Hitbox ID1 offset Z
-	Vec3h hurt_offset;					// Hurtbox offsets
-	Vec3h hurt_size;					// Hurtbox size
-	s16 object_coll_top;					// Map Collision Box top
-	s16 object_coll_center;					// Map Collision Box center
-	s16 object_coll_bottom;					// Map Collision Box bottom
-	s16 object_coll_width;					// Map Collision Box width
+	Vec3h hurt_offset;					// DamageColl offsets
+	Vec3h hurt_size;					// DamageColl size
+	s16 object_coll_top;				// Map Collision Box top
+	s16 object_coll_center;				// Map Collision Box center
+	s16 object_coll_bottom;				// Map Collision Box bottom
+	s16 object_coll_width;				// Map Collision Box width
 	u16 size;							// Hitbox size
 	s32 angle : 10;						// Hitbox launch angle
 	u32 knockback_scale : 10;			// Hitbox knockback scale
@@ -171,7 +171,7 @@ struct ITAttributes
 	u32 element : 4;					// Hitbox element
 	u32 knockback_weight : 10;			// Hitbox fixed knockback
 	s32 shield_damage : 8;				// Hitbox shield damage
-	u32 hit_count : 2;				// Number of hitboxes
+	u32 atk_count : 2;					// Number of hitboxes
 	ub32 can_setoff : 1;				// Whether hitbox can clang or not
 	u32 hit_sfx : 10;					// Hitbox FGM
 	u32 priority : 3;					// Hitbox priority
@@ -217,8 +217,8 @@ struct ITStruct 					// Common items, stage hazards, fighter items and Pokémon
 	MPCollData coll_data;	   		// Item's collision data
 	sb32 ga; 						// Ground or air bool
 
-	ITHitColl hit_coll;	 		// Item's hitbox
-	ITDamageColl damage_coll; 			// Item's hurtbox
+	ITAttackColl atk_coll;	 		// Item's hitbox
+	ITDamageColl dmg_coll; 			// Item's hurtbox
 
 	s32 hit_normal_damage;			// Damage applied to entity this item has hit
 	s32 attack_lr;					// Direction of outgoing attack?
@@ -227,7 +227,7 @@ struct ITStruct 					// Common items, stage hazards, fighter items and Pokémon
 	s32 hit_shield_damage;	 	 	// Damage item dealt to shield
 
 	f32 shield_collide_angle; 		// Angle at which item collided with shield?
-	Vec3f shield_collide_vec; 		/* Position of shield item collided with?
+	Vec3f shield_collide_dir; 		/* Position of shield item collided with?
 							  		 * (Update: only Z axis appears to be used,
 							  		 * can be 0, -1 or 1 depending on attack direction
 									 */

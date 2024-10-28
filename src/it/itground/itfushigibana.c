@@ -39,7 +39,7 @@ ITCreateDesc dITFushigibanaItemDesc =
         0                                       // ???
     },
 
-    nGMHitUpdateNew,                            // Hitbox Update State
+    nGMAttackStateNew,                          // Hitbox Update State
     itFushigibanaCommonProcUpdate,              // Proc Update
     NULL,                                       // Proc Map
     NULL,                                       // Proc Hit
@@ -88,16 +88,16 @@ void itFushigibanaCommonUpdateMonsterEvent(GObj *item_gobj)
 
     if (ip->it_multi == hit_party[ip->item_event_id].timer)
     {
-        ip->hit_coll.angle            = hit_party[ip->item_event_id].angle;
-        ip->hit_coll.damage           = hit_party[ip->item_event_id].damage;
-        ip->hit_coll.size             = hit_party[ip->item_event_id].size;
-        ip->hit_coll.knockback_scale  = hit_party[ip->item_event_id].knockback_scale;
-        ip->hit_coll.knockback_weight = hit_party[ip->item_event_id].knockback_weight;
-        ip->hit_coll.knockback_base   = hit_party[ip->item_event_id].knockback_base;
-        ip->hit_coll.element          = hit_party[ip->item_event_id].element;
-        ip->hit_coll.can_setoff       = hit_party[ip->item_event_id].can_setoff;
-        ip->hit_coll.shield_damage    = hit_party[ip->item_event_id].shield_damage;
-        ip->hit_coll.hit_sfx          = hit_party[ip->item_event_id].hit_sfx;
+        ip->atk_coll.angle            = hit_party[ip->item_event_id].angle;
+        ip->atk_coll.damage           = hit_party[ip->item_event_id].damage;
+        ip->atk_coll.size             = hit_party[ip->item_event_id].size;
+        ip->atk_coll.knockback_scale  = hit_party[ip->item_event_id].knockback_scale;
+        ip->atk_coll.knockback_weight = hit_party[ip->item_event_id].knockback_weight;
+        ip->atk_coll.knockback_base   = hit_party[ip->item_event_id].knockback_base;
+        ip->atk_coll.element          = hit_party[ip->item_event_id].element;
+        ip->atk_coll.can_setoff       = hit_party[ip->item_event_id].can_setoff;
+        ip->atk_coll.shield_damage    = hit_party[ip->item_event_id].shield_damage;
+        ip->atk_coll.hit_sfx          = hit_party[ip->item_event_id].hit_sfx;
 
         ip->item_event_id++;
 
@@ -229,7 +229,7 @@ sb32 itFushigibanaWeaponRazorProcHit(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    efManagerDamageSlashMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->hit_coll.damage, wp->lr);
+    efManagerDamageSlashMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->atk_coll.damage, wp->lr);
 
     return TRUE;
 }
@@ -239,7 +239,7 @@ sb32 itFushigibanaWeaponRazorProcHop(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_80019438(&wp->physics.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
+    func_80019438(&wp->physics.vel_air, &wp->shield_collide_dir, wp->shield_collide_angle * 2);
 
     DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x) + F_CLC_DTOR32(180.0F); // PI32
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;

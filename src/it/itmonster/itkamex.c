@@ -34,7 +34,7 @@ ITCreateDesc dITKamexItemDesc =
         0,                                  // ???
     },
 
-    nGMHitUpdateNew,                        // Hitbox Update State
+    nGMAttackStateNew,                      // Hitbox Update State
     itKamexCommonProcUpdate,                // Proc Update
     itKamexCommonProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
@@ -440,7 +440,7 @@ sb32 itKamexWeaponHydroProcUpdate(GObj *weapon_gobj)
     WPStruct *wp = wpGetStruct(weapon_gobj);
     DObj *dobj = DObjGetStruct(weapon_gobj);
 
-    wp->hit_coll.offset[0].x = dobj->child->translate.vec.f.x * wp->lr;
+    wp->atk_coll.offset[0].x = dobj->child->translate.vec.f.x * wp->lr;
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {

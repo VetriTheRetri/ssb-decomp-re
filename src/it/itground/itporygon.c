@@ -29,7 +29,7 @@ ITCreateDesc dITPorygonItemDesc =
         0                                   // ???
     },
 
-    nGMHitUpdateNew,                        // Hitbox Update State
+    nGMAttackStateNew,                      // Hitbox Update State
     itPorygonCommonProcUpdate,              // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
@@ -54,16 +54,16 @@ void itPorygonCommonUpdateMonsterEvent(GObj *item_gobj)
 
     if (ip->it_multi == hit_party[ip->item_event_id].timer)
     {
-        ip->hit_coll.angle            = hit_party[ip->item_event_id].angle;
-        ip->hit_coll.damage           = hit_party[ip->item_event_id].damage;
-        ip->hit_coll.size             = hit_party[ip->item_event_id].size;
-        ip->hit_coll.knockback_scale  = hit_party[ip->item_event_id].knockback_scale;
-        ip->hit_coll.knockback_weight = hit_party[ip->item_event_id].knockback_weight;
-        ip->hit_coll.knockback_base   = hit_party[ip->item_event_id].knockback_base;
-        ip->hit_coll.element          = hit_party[ip->item_event_id].element;
-        ip->hit_coll.can_setoff       = hit_party[ip->item_event_id].can_setoff;
-        ip->hit_coll.shield_damage    = hit_party[ip->item_event_id].shield_damage;
-        ip->hit_coll.hit_sfx          = hit_party[ip->item_event_id].hit_sfx;
+        ip->atk_coll.angle            = hit_party[ip->item_event_id].angle;
+        ip->atk_coll.damage           = hit_party[ip->item_event_id].damage;
+        ip->atk_coll.size             = hit_party[ip->item_event_id].size;
+        ip->atk_coll.knockback_scale  = hit_party[ip->item_event_id].knockback_scale;
+        ip->atk_coll.knockback_weight = hit_party[ip->item_event_id].knockback_weight;
+        ip->atk_coll.knockback_base   = hit_party[ip->item_event_id].knockback_base;
+        ip->atk_coll.element          = hit_party[ip->item_event_id].element;
+        ip->atk_coll.can_setoff       = hit_party[ip->item_event_id].can_setoff;
+        ip->atk_coll.shield_damage    = hit_party[ip->item_event_id].shield_damage;
+        ip->atk_coll.hit_sfx          = hit_party[ip->item_event_id].hit_sfx;
 
         ip->item_event_id++;
 

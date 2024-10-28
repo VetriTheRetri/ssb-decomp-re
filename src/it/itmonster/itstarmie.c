@@ -34,7 +34,7 @@ ITCreateDesc dITStarmieItemDesc =
         0,                                  // ???
     },
 
-    nGMHitUpdateNew,                        // Hitbox Update State
+    nGMAttackStateNew,                      // Hitbox Update State
     itStarmieCommonProcUpdate,              // Proc Update
     itStarmieCommonProcMap,                 // Proc Map
     NULL,                                   // Proc Hit
@@ -398,7 +398,7 @@ sb32 itStarmieWeaponSwiftProcHop(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_80019438(&wp->physics.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
+    func_80019438(&wp->physics.vel_air, &wp->shield_collide_dir, wp->shield_collide_angle * 2);
 
     DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;

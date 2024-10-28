@@ -29,7 +29,7 @@ ITCreateDesc dITGLuckyItemDesc =
         0                                   // ???
     },
 
-    nGMHitUpdateNew,                        // Hitbox Update State
+    nGMAttackStateNew,                      // Hitbox Update State
     itGLuckyCommonProcUpdate,               // Proc Update
     NULL,                                   // Proc Map
     itGLuckyCommonProcHit,                  // Proc Hit
@@ -164,7 +164,7 @@ sb32 itGLuckyCommonProcHit(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->hit_coll.update_state = nGMHitUpdateDisable;
+    ip->atk_coll.atk_state = nGMAttackStateOff;
 
     return FALSE;
 }
@@ -203,8 +203,8 @@ sb32 itGLuckyCommonProcDamage(GObj *item_gobj)
         ip->physics.vel_air.x = (__cosf(angle) * ip->damage_knockback * -ip->damage_lr);
         ip->physics.vel_air.y = (__sinf(angle) * ip->damage_knockback);
 
-        ip->hit_coll.update_state = nGMHitUpdateDisable;
-        ip->damage_coll.hitstatus = nGMHitStatusNone;
+        ip->atk_coll.atk_state = nGMAttackStateOff;
+        ip->dmg_coll.hitstatus = nGMHitStatusNone;
 
         dobj->anim_wait = AOBJ_ANIM_NULL;
 
@@ -223,7 +223,7 @@ GObj* itGLuckyMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         ITStruct *ip = itGetStruct(item_gobj);
 
-        ip->hit_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
+        ip->atk_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
 
         ip->item_vars.glucky.pos = *pos;
 

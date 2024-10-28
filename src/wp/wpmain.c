@@ -111,7 +111,7 @@ void wpMainReflectorSetLR(WPStruct *wp, FTStruct *fp) // Invert direction on ref
 // 0x80168128
 s32 wpMainGetStaledDamage(WPStruct *wp) // Return final damage after applying staling and bonus 0.999%
 {
-    return (wp->hit_coll.damage * wp->hit_coll.stale) + 0.999F;
+    return (wp->atk_coll.damage * wp->atk_coll.stale) + 0.999F;
 }
 
 // 0x80168158
@@ -119,9 +119,9 @@ void wpMainClearHitRecord(WPStruct *wp) // Clear hit victims array
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(wp->hit_coll.hit_records); i++)
+    for (i = 0; i < ARRAY_COUNT(wp->atk_coll.hit_records); i++)
     {
-        GMHitRecord *targets = &wp->hit_coll.hit_records[i];
+        GMHitRecord *targets = &wp->atk_coll.hit_records[i];
 
         targets->victim_gobj = NULL;
 

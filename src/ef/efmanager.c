@@ -5431,7 +5431,7 @@ GObj* efManagerYoshiEggLayMakeEffect(GObj *fighter_gobj)
     dobj = DObjGetStruct(effect_gobj);
     dobj->user_data.p = ftGetStruct(fighter_gobj)->joints[nFTPartsJointTopN];
 
-    dobj->scale.vec.f.x = dobj->scale.vec.f.y = dFTCommonYoshiEggHurtboxDescs[fp->ft_kind].effect_size;
+    dobj->scale.vec.f.x = dobj->scale.vec.f.y = dFTCommonYoshiEggDamageCollDescs[fp->ft_kind].effect_size;
     dobj->scale.vec.f.z = 1.0F;
 
     dobj->child->child->xobj[0]->kind = nGCTransformTra;

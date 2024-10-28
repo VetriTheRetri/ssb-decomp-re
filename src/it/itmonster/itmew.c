@@ -29,7 +29,7 @@ ITCreateDesc dITMewItemDesc =
         0,                                  // ???
     },
 
-    nGMHitUpdateDisable,                    // Hitbox Update State
+    nGMAttackStateOff,                      // Hitbox Update State
     itMewCommonProcUpdate,                  // Proc Update
     itMewCommonProcMap,                     // Proc Map
     NULL,                                   // Proc Hit

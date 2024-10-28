@@ -160,22 +160,22 @@ typedef enum GMHitType 				// Hitbox types, this is universal but I don't
 									// for each
 {
 	nGMHitTypeDamage,
-	nGMHITTypeShield,
-	nGMHITTypeShieldRehit,
-	nGMHITTypeHit,
+	nGMHitTypeShield,
+	nGMHitTypeShieldRehit,
+	nGMHitTypeAttack,
 	nGMHitTypeDamageRehit, 			// Only used for specific articles? e.g.
 								   	// Pirahna Plants dealing damage
-	nGMHITTypeAbsorb,
-	nGMHITTypeReflect
+	nGMHitTypeAbsorb,
+	nGMHitTypeReflect
 
 } GMHitType;
 
 typedef enum GMHitUpdateState
 {
-	nGMHitUpdateDisable,	   		// No active hitbox or updates
-	nGMHitUpdateNew,		   		// Initialize hitbox positions
-	nGMHitUpdateTransfer,   		// Transitions to interpolation mode, that's it
-	nGMHitUpdateInterpolate 		// Copies current position to previous
+	nGMAttackStateOff,	   		// No active hitbox or updates
+	nGMAttackStateNew,		   		// Initialize hitbox positions
+	nGMAttackStateTransfer,   		// Transitions to interpolation mode, that's it
+	nGMAttackStateInterpolate 		// Copies current position to previous
 
 } GMHitUpdateState;
 

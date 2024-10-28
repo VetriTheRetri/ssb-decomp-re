@@ -36,7 +36,7 @@ ITCreateDesc dITPakkunItemDesc =
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,                    // Hitbox Update State
+    nGMAttackStateOff,                      // Hitbox Update State
     itPakkunWaitProcUpdate,                 // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
@@ -216,14 +216,14 @@ void itPakkunWaitInitItemVars(GObj *item_gobj)
 
     itPakkunWaitSetStatus(item_gobj);
 
-    ip->damage_coll.hitstatus = nGMHitStatusNone;
-    ip->hit_coll.update_state = nGMHitUpdateDisable;
+    ip->dmg_coll.hitstatus = nGMHitStatusNone;
+    ip->atk_coll.atk_state = nGMAttackStateOff;
 
     DObjGetStruct(item_gobj)->translate.vec.f.y = ip->item_vars.pakkun.pos.y;
 }
 
 // 0x8017D1DC
-void itPakkunAppearUpdateHurtbox(GObj *item_gobj)
+void itPakkunAppearUpdateDamageColl(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     f32 pos_y = DObjGetStruct(item_gobj)->translate.vec.f.y - ip->item_vars.pakkun.pos.y;
@@ -231,19 +231,19 @@ void itPakkunAppearUpdateHurtbox(GObj *item_gobj)
 
     if (off_y <= ITPAKKUN_CLAMP_OFF_Y)
     {
-        ip->damage_coll.hitstatus = nGMHitStatusNone;
-        ip->hit_coll.update_state = nGMHitUpdateDisable;
+        ip->dmg_coll.hitstatus = nGMHitStatusNone;
+        ip->atk_coll.atk_state = nGMAttackStateOff;
     }
     else
     {
-        if (ip->damage_coll.hitstatus == nGMHitStatusNone)
+        if (ip->dmg_coll.hitstatus == nGMHitStatusNone)
         {
-            ip->damage_coll.hitstatus = nGMHitStatusNormal;
+            ip->dmg_coll.hitstatus = nGMHitStatusNormal;
 
             itMainRefreshHit(item_gobj);
         }
-        ip->damage_coll.size.y = (off_y - ITPAKKUN_CLAMP_OFF_Y) * ITPAKKUN_HURT_SIZE_MUL_Y;
-        ip->damage_coll.offset.y = (ip->damage_coll.size.y + ITPAKKUN_CLAMP_OFF_Y) - pos_y;
+        ip->dmg_coll.size.y = (off_y - ITPAKKUN_CLAMP_OFF_Y) * ITPAKKUN_HURT_SIZE_MUL_Y;
+        ip->dmg_coll.offset.y = (ip->dmg_coll.size.y + ITPAKKUN_CLAMP_OFF_Y) - pos_y;
     }
 }
 
@@ -269,7 +269,7 @@ sb32 itPakkunAppearProcUpdate(GObj *item_gobj)
     }
     else dobj->translate.vec.f.y += ip->item_vars.pakkun.pos.y;
     
-    itPakkunAppearUpdateHurtbox(item_gobj);
+    itPakkunAppearUpdateDamageColl(item_gobj);
 
     return FALSE;
 }
@@ -293,8 +293,8 @@ sb32 itPakkunAppearProcDamage(GObj *item_gobj)
         ip->physics.vel_air.x = __cosf(angle) * ip->damage_knockback * -ip->damage_lr;
         ip->physics.vel_air.y = __sinf(angle) * ip->damage_knockback;
 
-        ip->damage_coll.hitstatus = nGMHitStatusNone;
-        ip->hit_coll.update_state = nGMHitUpdateDisable;
+        ip->dmg_coll.hitstatus = nGMHitStatusNone;
+        ip->atk_coll.atk_state = nGMAttackStateOff;
 
         itPakkunDamagedSetStatus(item_gobj);
 
@@ -360,7 +360,7 @@ GObj* itPakkunMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->item_vars.pakkun.is_wait_fighter = FALSE;
 
-        ip->hit_coll.can_rehit_shield = TRUE;
+        ip->atk_coll.can_rehit_shield = TRUE;
     }
     return item_gobj;
 }

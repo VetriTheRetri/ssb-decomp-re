@@ -495,7 +495,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
 
     fp->unk_ft_0x7AC = 0;
     fp->attack_damage = 0;
-    fp->attack_hit_count = 0;
+    fp->attack_atk_count = 0;
     fp->attack_shield_push = 0;
     fp->shield_damage = 0;
     fp->damage_lag = 0;
@@ -837,23 +837,23 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
 
     fp->tap_stick_x = fp->tap_stick_y = fp->hold_stick_x = fp->hold_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 
-    for (i = 0; i < ARRAY_COUNT(fp->damage_colls); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->dmg_colls); i++)
     {
-        if (attributes->damage_colls_desc[i].joint_id != -1)
+        if (attributes->dmg_colls_desc[i].joint_id != -1)
         {
-            fp->damage_colls[i].hitstatus = nGMHitStatusNormal;
-            fp->damage_colls[i].joint_id = attributes->damage_colls_desc[i].joint_id;
-            fp->damage_colls[i].joint = fp->joints[fp->damage_colls[i].joint_id];
-            fp->damage_colls[i].placement = attributes->damage_colls_desc[i].placement;
-            fp->damage_colls[i].is_grabbable = attributes->damage_colls_desc[i].is_grabbable;
-            fp->damage_colls[i].offset = attributes->damage_colls_desc[i].offset;
-            fp->damage_colls[i].size = attributes->damage_colls_desc[i].size;
+            fp->dmg_colls[i].hitstatus = nGMHitStatusNormal;
+            fp->dmg_colls[i].joint_id = attributes->dmg_colls_desc[i].joint_id;
+            fp->dmg_colls[i].joint = fp->joints[fp->dmg_colls[i].joint_id];
+            fp->dmg_colls[i].placement = attributes->dmg_colls_desc[i].placement;
+            fp->dmg_colls[i].is_grabbable = attributes->dmg_colls_desc[i].is_grabbable;
+            fp->dmg_colls[i].offset = attributes->dmg_colls_desc[i].offset;
+            fp->dmg_colls[i].size = attributes->dmg_colls_desc[i].size;
 
-            fp->damage_colls[i].size.x *= 0.5F;
-            fp->damage_colls[i].size.y *= 0.5F;
-            fp->damage_colls[i].size.z *= 0.5F;
+            fp->dmg_colls[i].size.x *= 0.5F;
+            fp->dmg_colls[i].size.y *= 0.5F;
+            fp->dmg_colls[i].size.z *= 0.5F;
         }
-        else fp->damage_colls[i].hitstatus = nGMHitStatusNone;
+        else fp->dmg_colls[i].hitstatus = nGMHitStatusNone;
     }
     fp->coll_data.p_translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
     fp->coll_data.p_lr = &fp->lr;
@@ -879,7 +879,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
 
     if (fp->pl_kind == nFTPlayerKindCom)
     {
-        FTComputerSetupAll(fighter_gobj);
+        ftComputerSetupAll(fighter_gobj);
     }
     if ((fp->pl_kind == nFTPlayerKindKey) || (fp->pl_kind == nFTPlayerKindGameKey))
     {
@@ -911,7 +911,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
     }
     if ((fp->pl_kind == nFTPlayerKindMan) || (fp->pl_kind == nFTPlayerKindCom))
     {
-        FTComputerSetFighterHurtboxSizeInfo(fighter_gobj);
+        ftComputerSetFighterDamageCollSizeInfo(fighter_gobj);
     }
     if ((fp->pl_kind != nFTPlayerKindDemo) && !(ft_desc->is_skip_shadow_setup))
     {

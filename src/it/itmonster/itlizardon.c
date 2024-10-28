@@ -39,7 +39,7 @@ ITCreateDesc dITLizardonItemDesc =
         0,                                  // ???
     },
 
-    nGMHitUpdateNew,                        // Hitbox Update State
+    nGMAttackStateNew,                      // Hitbox Update State
     itLizardonCommonProcUpdate,             // Proc Update
     itLizardonCommonProcMap,                // Proc Map
     NULL,                                   // Proc Hit

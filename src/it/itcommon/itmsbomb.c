@@ -30,7 +30,7 @@ ITCreateDesc dITMSBombItemDesc =
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,                    // Hitbox Update State
+    nGMAttackStateOff,                      // Hitbox Update State
     itMSBombFallProcUpdate,                 // Proc Update
     itMSBombFallProcMap,                    // Proc Map
     NULL,                                   // Proc Hit
@@ -339,9 +339,9 @@ void itMSBombAttachedInitItemVars(GObj *item_gobj)
 
     ip->is_attach_surface = TRUE;
 
-    ip->damage_coll.hitstatus = nGMHitStatusNormal;
+    ip->dmg_coll.hitstatus = nGMHitStatusNormal;
 
-    ip->hit_coll.update_state = nGMHitUpdateDisable;
+    ip->atk_coll.atk_state = nGMAttackStateOff;
 
     if ((ip->player != -1) && (ip->player != GMCOMMON_PLAYERS_MAX))
     {
@@ -476,20 +476,20 @@ sb32 itMSBombAttachedProcMap(GObj *item_gobj)
 void itMSBombExplodeUpdateHitEvent(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITHitEvent *ev = itGetHitEvent(dITMSBombItemDesc, lITMSBombHitEvents); // (ITHitEvent *)((uintptr_t)*dITMSBombItemDesc.p_file + &lITMSBombHitEvents); - Linker thing
+    ITAttackEvent *ev = itGetHitEvent(dITMSBombItemDesc, lITMSBombHitEvents); // (ITAttackEvent *)((uintptr_t)*dITMSBombItemDesc.p_file + &lITMSBombHitEvents); - Linker thing
 
     if (ip->it_multi == ev[ip->item_event_id].timer)
     {
-        ip->hit_coll.angle  = ev[ip->item_event_id].angle;
-        ip->hit_coll.damage = ev[ip->item_event_id].damage;
-        ip->hit_coll.size   = ev[ip->item_event_id].size;
+        ip->atk_coll.angle  = ev[ip->item_event_id].angle;
+        ip->atk_coll.damage = ev[ip->item_event_id].damage;
+        ip->atk_coll.size   = ev[ip->item_event_id].size;
 
-        ip->hit_coll.can_rehit_item = TRUE;
-        ip->hit_coll.can_hop = FALSE;
-        ip->hit_coll.can_reflect = FALSE;
-        ip->hit_coll.can_setoff = FALSE;
+        ip->atk_coll.can_rehit_item = TRUE;
+        ip->atk_coll.can_hop = FALSE;
+        ip->atk_coll.can_reflect = FALSE;
+        ip->atk_coll.can_setoff = FALSE;
 
-        ip->hit_coll.element = nGMHitElementFire;
+        ip->atk_coll.element = nGMHitElementFire;
 
         ip->item_event_id++;
 
@@ -505,8 +505,8 @@ void itMSBombDetachedInitItemVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->damage_coll.hitstatus = nGMHitStatusNormal;
-    ip->hit_coll.update_state = nGMHitUpdateDisable;
+    ip->dmg_coll.hitstatus = nGMHitStatusNormal;
+    ip->atk_coll.atk_state = nGMAttackStateOff;
 
     itMainClearOwnerStats(item_gobj);
 }
@@ -572,10 +572,10 @@ void itMSBombExplodeInitItemVars(GObj *item_gobj)
 
     ip->item_event_id = 0;
 
-    ip->hit_coll.throw_mul = ITEM_STALE_DEFAULT;
-    ip->hit_coll.hit_sfx = nSYAudioFGMExplodeL;
+    ip->atk_coll.throw_mul = ITEM_STALE_DEFAULT;
+    ip->atk_coll.hit_sfx = nSYAudioFGMExplodeL;
 
-    ip->damage_coll.hitstatus = nGMHitStatusNone;
+    ip->dmg_coll.hitstatus = nGMHitStatusNone;
 
     itMSBombExplodeUpdateHitEvent(item_gobj);
 }

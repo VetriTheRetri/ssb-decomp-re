@@ -34,7 +34,7 @@ ITCreateDesc dITHarisenItemDesc =
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,                    // Hitbox Update State
+    nGMAttackStateOff,                      // Hitbox Update State
     itHarisenFallProcUpdate,                // Proc Update
     itHarisenFallProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
@@ -217,7 +217,7 @@ sb32 itHarisenCommonProcHit(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->hit_coll.update_state = nGMHitUpdateDisable;
+    ip->atk_coll.atk_state = nGMAttackStateOff;
 
     itMainVelSetRebound(item_gobj);
 

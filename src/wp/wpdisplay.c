@@ -28,13 +28,13 @@ syColorRGB dWPRenderPKThunderEnvColors[/* */] = { { 0x3A, 0x00, 0x83 }, { 0x5B, 
 void wpDisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
-    WPHitColl *hit_coll = &wp->hit_coll;
+    WPAttackColl *atk_coll = &wp->atk_coll;
     gsMtxStore mtx_store;
     s32 i;
 
-    for (i = 0; i < hit_coll->hit_count; i++)
+    for (i = 0; i < atk_coll->atk_count; i++)
     {
-        if ((hit_coll->update_state != nGMHitUpdateDisable) && (hit_coll->update_state != nGMHitUpdateNew))
+        if ((atk_coll->atk_state != nGMAttackStateOff) && (atk_coll->atk_state != nGMAttackStateNew))
         {
             gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
@@ -50,17 +50,17 @@ void wpDisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
                 gDPSetEnvColor(gSYTaskmanDLHeads[0]++, 0xB0, 0x00, 0x00, 0xFF);
                 gDPSetBlendColor(gSYTaskmanDLHeads[0]++, 0x00, 0x00, 0x00, 0x00);
             }
-            if (hit_coll->update_state == nGMHitUpdateInterpolate)
+            if (atk_coll->atk_state == nGMAttackStateInterpolate)
             {
                 syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                syMatrixTranslate(mtx_store.gbi, hit_coll->hit_positions[i].pos_prev.x, hit_coll->hit_positions[i].pos_prev.y, hit_coll->hit_positions[i].pos_prev.z);
+                syMatrixTranslate(mtx_store.gbi, atk_coll->hit_positions[i].pos_prev.x, atk_coll->hit_positions[i].pos_prev.y, atk_coll->hit_positions[i].pos_prev.z);
 
                 gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
                 syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                syMatrixSca(mtx_store.gbi, hit_coll->size / 15.0F, hit_coll->size / 15.0F, hit_coll->size / 15.0F);
+                syMatrixSca(mtx_store.gbi, atk_coll->size / 15.0F, atk_coll->size / 15.0F, atk_coll->size / 15.0F);
 
                 gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -70,17 +70,17 @@ void wpDisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
             }
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixTranslate(mtx_store.gbi, hit_coll->hit_positions[i].pos.x, hit_coll->hit_positions[i].pos.y, hit_coll->hit_positions[i].pos.z);
+            syMatrixTranslate(mtx_store.gbi, atk_coll->hit_positions[i].pos.x, atk_coll->hit_positions[i].pos.y, atk_coll->hit_positions[i].pos.z);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixSca(mtx_store.gbi, hit_coll->size / 15.0F, hit_coll->size / 15.0F, hit_coll->size / 15.0F);
+            syMatrixSca(mtx_store.gbi, atk_coll->size / 15.0F, atk_coll->size / 15.0F, atk_coll->size / 15.0F);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            if (hit_coll->update_state == nGMHitUpdateInterpolate)
+            if (atk_coll->atk_state == nGMAttackStateInterpolate)
             {
                 gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionBlendDL);
             }
@@ -169,7 +169,7 @@ void wpDisplayMain(GObj *weapon_gobj, void(*func_display)(GObj*))
 
         wpDisplayMapCollisions(weapon_gobj);
     }
-    else if ((wp->display_mode == nDBDisplayModeMaster) || (wp->hit_coll.update_state == nGMHitUpdateDisable))
+    else if ((wp->display_mode == nDBDisplayModeMaster) || (wp->atk_coll.atk_state == nGMAttackStateOff))
     {
         wpDisplayDrawNormal();
 
@@ -226,7 +226,7 @@ void wpDisplayPKThunder(GObj *weapon_gobj)
 
         wpDisplayMapCollisions(weapon_gobj);
     }
-    else if ((wp->display_mode == nDBDisplayModeMaster) || (wp->hit_coll.update_state == nGMHitUpdateDisable))
+    else if ((wp->display_mode == nDBDisplayModeMaster) || (wp->atk_coll.atk_state == nGMAttackStateOff))
     {
         wpDisplayDrawNormal();
 

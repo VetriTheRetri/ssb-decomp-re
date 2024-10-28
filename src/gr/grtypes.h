@@ -18,7 +18,7 @@ struct GRDisplayDesc
 	void *proc_update;
 };
 
-struct GRHitCollision
+struct GRAttackColl
 {
 	s32 kind;
 	s32 damage;
@@ -38,7 +38,7 @@ struct GRObstacle
 struct GRHazard
 {
 	GObj *gobj;
-	sb32 (*proc_update)(GObj*, GObj*, GRHitCollision**, s32*);
+	sb32 (*proc_update)(GObj*, GObj*, GRAttackColl**, s32*);
 };
 
 struct GRFileInfo

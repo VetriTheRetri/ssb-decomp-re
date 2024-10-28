@@ -12,7 +12,7 @@ extern void itPakkunCommonSetWaitFighter(GObj *item_gobj);
 extern sb32 itPakkunCommonCheckNoPlayersNear(GObj *item_gobj);
 extern sb32 itPakkunWaitProcUpdate(GObj *item_gobj);
 extern void itPakkunWaitInitItemVars(GObj *item_gobj);
-extern void itPakkunAppearUpdateHurtbox(GObj *item_gobj);
+extern void itPakkunAppearUpdateDamageColl(GObj *item_gobj);
 extern sb32 itPakkunAppearProcUpdate(GObj *item_gobj);
 extern sb32 itPakkunAppearProcDamage(GObj *item_gobj);
 extern sb32 itPakkunDamagedProcUpdate(GObj *item_gobj);

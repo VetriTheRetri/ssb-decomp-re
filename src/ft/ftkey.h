@@ -5,6 +5,6 @@
 #include <sys/objdef.h>
 #include <ft/ftdef.h>
 
-extern void FTKeyProcessInputSequence(GObj *fighter_gobj);
+extern void ftKeyProcessInputSequence(GObj *fighter_gobj);
 
 #endif

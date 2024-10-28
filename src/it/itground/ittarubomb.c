@@ -36,7 +36,7 @@ ITCreateDesc dITTaruBombItemDesc =
         0                                       // ???
     },
 
-    nGMHitUpdateNew,                            // Hitbox Update State
+    nGMAttackStateNew,                          // Hitbox Update State
     itTaruBombFallProcUpdate,                   // Proc Update
     itTaruBombFallProcMap,                      // Proc Map
     itTaruBombCommonProcHit,                    // Proc Hit
@@ -364,17 +364,17 @@ void itTaruBombExplodeInitItemVars(GObj *item_gobj)
     ip->it_multi = 0;
     ip->item_event_id = 0;
 
-    ip->hit_coll.hit_sfx = nSYAudioFGMExplodeL;
+    ip->atk_coll.hit_sfx = nSYAudioFGMExplodeL;
 
-    ip->hit_coll.can_rehit_item = TRUE;
-    ip->hit_coll.can_reflect = FALSE;
+    ip->atk_coll.can_rehit_item = TRUE;
+    ip->atk_coll.can_reflect = FALSE;
 
-    ip->hit_coll.throw_mul = ITEM_STALE_DEFAULT;
-    ip->hit_coll.element = nGMHitElementFire;
+    ip->atk_coll.throw_mul = ITEM_STALE_DEFAULT;
+    ip->atk_coll.element = nGMHitElementFire;
 
-    ip->hit_coll.can_setoff = FALSE;
+    ip->atk_coll.can_setoff = FALSE;
 
-    ip->damage_coll.hitstatus = nGMHitStatusNone;
+    ip->dmg_coll.hitstatus = nGMHitStatusNone;
 
     itMainRefreshHit(item_gobj);
     itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITTaruBombItemDesc, lITTaruBombHitEvents));
@@ -394,7 +394,7 @@ void itTaruBombExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    ip->hit_coll.update_state = nGMHitUpdateDisable;
+    ip->atk_coll.atk_state = nGMAttackStateOff;
 
     ip->physics.vel_air.x = 0.0F;
     ip->physics.vel_air.y = 0.0F;

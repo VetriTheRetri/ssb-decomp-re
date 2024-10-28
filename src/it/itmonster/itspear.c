@@ -38,7 +38,7 @@ ITCreateDesc dITSpearItemDesc =
         0,                                  // ???
     },
 
-    nGMHitUpdateNew,                        // Hitbox Update State
+    nGMAttackStateNew,                      // Hitbox Update State
     itSpearCommonProcUpdate,                // Proc Update
     itSpearCommonProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
@@ -341,7 +341,7 @@ GObj* itSpearMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ip->hit_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
+        ip->atk_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
 
         ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
         ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;

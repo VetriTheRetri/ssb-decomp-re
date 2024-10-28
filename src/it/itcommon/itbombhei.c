@@ -40,7 +40,7 @@ ITCreateDesc dITBombHeiItemDesc =
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,                    // Hitbox Update State
+    nGMAttackStateOff,                      // Hitbox Update State
     itBombHeiFallProcUpdate,                // Proc Update
     itBombHeiFallProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
@@ -211,7 +211,7 @@ void itBombHeiCommonSetExplode(GObj *item_gobj, u8 unused_arg)
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_HIDDEN;
 
-    ip->hit_coll.hit_sfx = nSYAudioFGMExplodeL;
+    ip->atk_coll.hit_sfx = nSYAudioFGMExplodeL;
 
     itMainRefreshHit(item_gobj);
     itMainClearOwnerStats(item_gobj);
@@ -265,7 +265,7 @@ void itBombHeiCommonSetHitStatusNormal(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->damage_coll.hitstatus = nGMHitStatusNormal;
+    ip->dmg_coll.hitstatus = nGMHitStatusNormal;
 }
 
 // 0x80177218
@@ -273,7 +273,7 @@ void itBombHeiCommonSetHitStatusNone(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->damage_coll.hitstatus = nGMHitStatusNone;
+    ip->dmg_coll.hitstatus = nGMHitStatusNone;
 }
 
 // 0x80177224
@@ -590,20 +590,20 @@ void itBombHeiCommonClearVelSetExplode(GObj *item_gobj, u8 unused)
 void itBombHeiCommonUpdateHitEvent(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITHitEvent *ev = itGetHitEvent(dITBombHeiItemDesc, lITBombHeiHitEvents); // Linker thing
+    ITAttackEvent *ev = itGetHitEvent(dITBombHeiItemDesc, lITBombHeiHitEvents); // Linker thing
 
     if (ip->it_multi == ev[ip->item_event_id].timer)
     {
-        ip->hit_coll.angle = ev[ip->item_event_id].angle;
-        ip->hit_coll.damage = ev[ip->item_event_id].damage;
-        ip->hit_coll.size = ev[ip->item_event_id].size;
+        ip->atk_coll.angle = ev[ip->item_event_id].angle;
+        ip->atk_coll.damage = ev[ip->item_event_id].damage;
+        ip->atk_coll.size = ev[ip->item_event_id].size;
 
-        ip->hit_coll.can_rehit_item = TRUE;
-        ip->hit_coll.can_hop = FALSE;
-        ip->hit_coll.can_reflect = FALSE;
-        ip->hit_coll.can_setoff = FALSE;
+        ip->atk_coll.can_rehit_item = TRUE;
+        ip->atk_coll.can_hop = FALSE;
+        ip->atk_coll.can_reflect = FALSE;
+        ip->atk_coll.can_setoff = FALSE;
 
-        ip->hit_coll.element = nGMHitElementFire;
+        ip->atk_coll.element = nGMHitElementFire;
 
         ip->item_event_id++;
 
@@ -646,7 +646,7 @@ void itBombHeiExplodeInitItemVars(GObj *item_gobj)
 
     ip->it_multi = 0;
 
-    ip->hit_coll.throw_mul = ITEM_STALE_DEFAULT;
+    ip->atk_coll.throw_mul = ITEM_STALE_DEFAULT;
 
     ip->item_event_id = 0;
 

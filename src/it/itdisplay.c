@@ -17,16 +17,16 @@ void itDisplayHitCollisions(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     s32 i;
-    ITHitColl *it_atkcoll;
+    ITAttackColl *it_atk_coll;
     ITDamageColl *it_dmgcoll;
     gsMtxStore mtx_store;
     Vec3f *translate;
 
-    it_atkcoll = &ip->hit_coll;
+    it_atk_coll = &ip->atk_coll;
 
-    for (i = 0; i < it_atkcoll->hit_count; i++)
+    for (i = 0; i < it_atk_coll->atk_count; i++)
     {
-        if ((it_atkcoll->update_state != nGMHitUpdateDisable) && (it_atkcoll->update_state != nGMHitUpdateNew))
+        if ((it_atk_coll->atk_state != nGMAttackStateOff) && (it_atk_coll->atk_state != nGMAttackStateNew))
         {
             gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
@@ -42,17 +42,17 @@ void itDisplayHitCollisions(GObj *item_gobj)
                 gDPSetEnvColor(gSYTaskmanDLHeads[0]++, 0xB0, 0x00, 0x00, 0xFF);
                 gDPSetBlendColor(gSYTaskmanDLHeads[0]++, 0x00, 0x00, 0x00, 0x00);
             }
-            if (it_atkcoll->update_state == nGMHitUpdateInterpolate)
+            if (it_atk_coll->atk_state == nGMAttackStateInterpolate)
             {
                 syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                syMatrixTranslate(mtx_store.gbi, it_atkcoll->hit_positions[i].pos_prev.x, it_atkcoll->hit_positions[i].pos_prev.y, it_atkcoll->hit_positions[i].pos_prev.z);
+                syMatrixTranslate(mtx_store.gbi, it_atk_coll->hit_positions[i].pos_prev.x, it_atk_coll->hit_positions[i].pos_prev.y, it_atk_coll->hit_positions[i].pos_prev.z);
 
                 gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
                 syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                syMatrixSca(mtx_store.gbi, it_atkcoll->size / 15.0F, it_atkcoll->size / 15.0F, it_atkcoll->size / 15.0F);
+                syMatrixSca(mtx_store.gbi, it_atk_coll->size / 15.0F, it_atk_coll->size / 15.0F, it_atk_coll->size / 15.0F);
 
                 gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
                 gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionEdgeDL);
@@ -60,17 +60,17 @@ void itDisplayHitCollisions(GObj *item_gobj)
             }
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixTranslate(mtx_store.gbi, it_atkcoll->hit_positions[i].pos.x, it_atkcoll->hit_positions[i].pos.y, it_atkcoll->hit_positions[i].pos.z);
+            syMatrixTranslate(mtx_store.gbi, it_atk_coll->hit_positions[i].pos.x, it_atk_coll->hit_positions[i].pos.y, it_atk_coll->hit_positions[i].pos.z);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixSca(mtx_store.gbi, it_atkcoll->size / 15.0F, it_atkcoll->size / 15.0F, it_atkcoll->size / 15.0F);
+            syMatrixSca(mtx_store.gbi, it_atk_coll->size / 15.0F, it_atk_coll->size / 15.0F, it_atk_coll->size / 15.0F);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            if (it_atkcoll->update_state == nGMHitUpdateInterpolate)
+            if (it_atk_coll->atk_state == nGMAttackStateInterpolate)
             {
                 gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionBlendDL);
             }
@@ -78,7 +78,7 @@ void itDisplayHitCollisions(GObj *item_gobj)
             gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
         }
     }
-    it_dmgcoll = &ip->damage_coll;
+    it_dmgcoll = &ip->dmg_coll;
 
     if (it_dmgcoll->hitstatus != nGMHitStatusNone)
     {
@@ -201,7 +201,7 @@ void itDisplayOPAFuncDisplay(GObj *item_gobj)
             gcDrawDObjTreeForGObj(item_gobj);
             itDisplayMapCollisions(item_gobj);
         }
-        else if ((ip->damage_coll.hitstatus == nGMHitStatusNone) && (ip->hit_coll.update_state == nGMHitUpdateDisable))
+        else if ((ip->dmg_coll.hitstatus == nGMHitStatusNone) && (ip->atk_coll.atk_state == nGMAttackStateOff))
         {
             gcDrawDObjTreeForGObj(item_gobj);
         }
@@ -225,7 +225,7 @@ void itDisplayXLUFuncDisplay(GObj *item_gobj)
             gcDrawDObjTreeDLLinksForGObj(item_gobj);
             itDisplayMapCollisions(item_gobj);
         }
-        else if ((ip->damage_coll.hitstatus == nGMHitStatusNone) && (ip->hit_coll.update_state == nGMHitUpdateDisable))
+        else if ((ip->dmg_coll.hitstatus == nGMHitStatusNone) && (ip->atk_coll.atk_state == nGMAttackStateOff))
         {
             gcDrawDObjTreeDLLinksForGObj(item_gobj);
         }
@@ -271,7 +271,7 @@ void itDisplayColAnimOPAFuncDisplay(GObj *item_gobj)
             itDisplayColAnimOPA(item_gobj);
             itDisplayMapCollisions(item_gobj);
         }
-        else if ((ip->damage_coll.hitstatus == nGMHitStatusNone) && (ip->hit_coll.update_state == nGMHitUpdateDisable))
+        else if ((ip->dmg_coll.hitstatus == nGMHitStatusNone) && (ip->atk_coll.atk_state == nGMAttackStateOff))
         {
             itDisplayColAnimOPA(item_gobj);
         }
@@ -327,7 +327,7 @@ void itDisplayColAnimXLUFuncDisplay(GObj *item_gobj)
             itDisplayColAnimXLU(item_gobj);
             itDisplayMapCollisions(item_gobj);
         }
-        else if ((ip->damage_coll.hitstatus == nGMHitStatusNone) && (ip->hit_coll.update_state == nGMHitUpdateDisable))
+        else if ((ip->dmg_coll.hitstatus == nGMHitStatusNone) && (ip->atk_coll.atk_state == nGMAttackStateOff))
         {
             itDisplayColAnimXLU(item_gobj);
         }

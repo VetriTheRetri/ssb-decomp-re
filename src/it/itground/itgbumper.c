@@ -29,7 +29,7 @@ ITCreateDesc dITGBumperItemDesc =
         0                                   // ???
     },
 
-    nGMHitUpdateNew,                        // Hitbox Update State
+    nGMAttackStateNew,                      // Hitbox Update State
     itGBumperCommonProcUpdate,              // Proc Update
     NULL,                                   // Proc Map
     itGBumperCommonProcHit,                 // Proc Hit
@@ -104,8 +104,8 @@ GObj* itGBumperMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->it_multi = 0;
 
-        ip->hit_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
-        ip->hit_coll.can_rehit_shield = TRUE;
+        ip->atk_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
+        ip->atk_coll.can_rehit_shield = TRUE;
 
         ip->physics.vel_air.x = 0.0F;
         ip->physics.vel_air.y = 0.0F;
@@ -115,8 +115,8 @@ GObj* itGBumperMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         if (gBattleState->gr_kind == nGRKindCastle)
         {
-            ip->hit_coll.knockback_weight = ITBUMPER_CASTLE_KNOCKBACK;
-            ip->hit_coll.angle = ITBUMPER_CASTLE_ANGLE;
+            ip->atk_coll.knockback_weight = ITBUMPER_CASTLE_KNOCKBACK;
+            ip->atk_coll.angle = ITBUMPER_CASTLE_ANGLE;
         }
     }
     return item_gobj;

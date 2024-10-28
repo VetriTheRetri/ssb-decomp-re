@@ -31,7 +31,7 @@ ITCreateDesc dITMBallItemDesc =
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,                    // Hitbox Update State
+    nGMAttackStateOff,                      // Hitbox Update State
     itMBallFallProcUpdate,                  // Proc Update
     itMBallFallProcMap,                     // Proc Map
     NULL,                                   // Proc Hit
@@ -265,7 +265,7 @@ sb32 itMBallCommonProcHit(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->hit_coll.update_state = nGMHitUpdateDisable;
+    ip->atk_coll.atk_state = nGMAttackStateOff;
 
     ip->item_vars.mball.is_rebound = TRUE;
 
@@ -281,7 +281,7 @@ sb32 itMBallCommonProcReflector(GObj *item_gobj)
     FTStruct *fp;
     GObj *fighter_gobj;
 
-    ip->hit_coll.update_state = nGMHitUpdateDisable;
+    ip->atk_coll.atk_state = nGMAttackStateOff;
 
     ip->item_vars.mball.is_rebound = TRUE;
 
@@ -410,8 +410,8 @@ void itMBallOpenInitItemVars(GObj *item_gobj)
 
     itMBallOpenClearAnim(item_gobj);
 
-    ip->hit_coll.update_state = nGMHitUpdateDisable;
-    ip->hit_coll.can_reflect = FALSE;
+    ip->atk_coll.atk_state = nGMAttackStateOff;
+    ip->atk_coll.can_reflect = FALSE;
 }
 
 // 0x8017CC88

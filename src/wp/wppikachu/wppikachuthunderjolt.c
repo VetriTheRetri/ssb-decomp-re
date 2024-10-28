@@ -151,7 +151,7 @@ sb32 wpPikachuThunderJoltAirProcHit(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->hit_coll.damage);
+    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->atk_coll.damage);
 
     return TRUE;
 }
@@ -161,7 +161,7 @@ sb32 wpPikachuThunderJoltAirProcHop(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_80019438(&wp->physics.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
+    func_80019438(&wp->physics.vel_air, &wp->shield_collide_dir, wp->shield_collide_angle * 2);
 
     return FALSE;
 }
@@ -675,7 +675,7 @@ sb32 wpPikachuThunderJoltGroundProcHit(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->hit_coll.damage);
+    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->atk_coll.damage);
 
     return TRUE;
 }

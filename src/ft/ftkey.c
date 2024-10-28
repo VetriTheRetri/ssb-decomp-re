@@ -7,7 +7,7 @@
 // // // // // // // // // // // //
 
 // 0x80115B10
-void FTKeyProcessInputSequence(GObj *fighter_gobj)
+void ftKeyProcessInputSequence(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTComputerInput *cp = &fp->input.cp;

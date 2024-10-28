@@ -174,7 +174,7 @@ GObj* wpPikachuThunderHeadMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 
     wp->physics.vel_air = *vel;
 
-    wp->hit_coll.update_state = nGMHitUpdateDisable;
+    wp->atk_coll.atk_state = nGMAttackStateOff;
     wp->weapon_vars.thunder.thunder_state = nWPPikachuThunderStatusActive;
 
     wp->group_id = wpManagerGetGroupID();
@@ -213,7 +213,7 @@ sb32 wpPikachuThunderTrailProcHit(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->hit_coll.damage);
+    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->atk_coll.damage);
 
     return FALSE;
 }
@@ -236,9 +236,9 @@ GObj* wpPikachuThunderTrailMakeWeapon(GObj *weapon_gobj, Vec3f *pos)
     trail_wp->lifetime = WPPIKACHUTHUNDER_TRAIL_LIFETIME;
     trail_wp->group_id = spawn_wp->group_id;
 
-    for (i = 0; i < ARRAY_COUNT(spawn_wp->hit_coll.hit_records); i++)
+    for (i = 0; i < ARRAY_COUNT(spawn_wp->atk_coll.hit_records); i++)
     {
-        trail_wp->hit_coll.hit_records[i] = spawn_wp->hit_coll.hit_records[i];
+        trail_wp->atk_coll.hit_records[i] = spawn_wp->atk_coll.hit_records[i];
     }
     DObjGetStruct(trail_gobj)->scale.vec.f.x = 0.5F;
     DObjGetStruct(trail_gobj)->scale.vec.f.y = 0.5F;

@@ -217,7 +217,7 @@ sb32 wpNessPKThunderHeadProcUpdate(GObj *weapon_gobj)
 
     if (wp->weapon_vars.pkthunder.status & nWPNessPKThunderStatusDestroy)
     {
-        efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->hit_coll.damage);
+        efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->atk_coll.damage);
         wpNessPKThunderHeadSetDestroyTrails(weapon_gobj, TRUE);
 
         return TRUE;
@@ -227,7 +227,7 @@ sb32 wpNessPKThunderHeadProcUpdate(GObj *weapon_gobj)
 
     if (wp->weapon_vars.pkthunder.status & nWPNessPKThunderStatusCollide)
     {
-        efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->hit_coll.damage);
+        efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->atk_coll.damage);
         wpNessPKThunderHeadSetDestroyTrails(weapon_gobj, TRUE);
 
         return TRUE;
@@ -302,7 +302,7 @@ sb32 wpNessPKThunderHeadProcHit(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->hit_coll.damage);
+    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->atk_coll.damage);
     wpNessPKThunderHeadSetDestroyTrails(weapon_gobj, TRUE);
 
     return TRUE;
@@ -422,7 +422,7 @@ sb32 wpNessPKThunderTrailProcHit(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->hit_coll.damage);
+    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->atk_coll.damage);
 
     return FALSE;
 }
@@ -551,7 +551,7 @@ sb32 wpNessPKReflectHeadProcHit(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->hit_coll.damage);
+    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->atk_coll.damage);
     wpNessPKReflectHeadSetDestroyTrails(weapon_gobj, nWPNessPKThunderStatusDestroy);
 
     return TRUE;
@@ -658,7 +658,7 @@ sb32 wpNessPKReflectTrailProcHit(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->hit_coll.damage);
+    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->atk_coll.damage);
 
     return FALSE;
 }

@@ -32,7 +32,7 @@ ITCreateDesc dITSawamuraItemDesc =
         0,                                  // ???
     },
 
-    nGMHitUpdateNew,                        // Hitbox Update State
+    nGMAttackStateNew,                      // Hitbox Update State
     itSawamuraCommonProcUpdate,             // Proc Update
     itSawamuraCommonProcMap,                // Proc Map
     NULL,                                   // Proc Hit
@@ -267,7 +267,7 @@ void itSawamuraAttackInitItemVars(GObj *item_gobj)
     }
     ip->it_multi = ITSAWAMURA_LIFETIME;
 
-    ip->hit_coll.size = ITSAWAMURA_KICK_SIZE;
+    ip->atk_coll.size = ITSAWAMURA_KICK_SIZE;
 }
 
 // 0x80182AAC

@@ -34,7 +34,7 @@ ITCreateDesc dITIwarkItemDesc =
         0,                                  // ???
     },
 
-    nGMHitUpdateNew,                        // Hitbox Update State
+    nGMAttackStateNew,                      // Hitbox Update State
     itIwarkCommonProcUpdate,                // Proc Update
     itIwarkCommonProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
@@ -320,7 +320,7 @@ GObj* itIwarkMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ip->hit_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
+        ip->atk_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
 
         ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
         ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;
@@ -397,7 +397,7 @@ sb32 itIwarkWeaponRockProcHop(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_80019438(&wp->physics.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
+    func_80019438(&wp->physics.vel_air, &wp->shield_collide_dir, wp->shield_collide_angle * 2);
 
     DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f(wp->physics.vel_air.y, wp->physics.vel_air.x);
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = 1.0F;

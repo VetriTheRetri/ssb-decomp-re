@@ -30,7 +30,7 @@ ITCreateDesc dITRShellItemDesc =
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,                    // Hitbox Update State
+    nGMAttackStateOff,                      // Hitbox Update State
     itRShellFallProcUpdate,                 // Proc Update
     itRShellFallProcMap,                    // Proc Map
     NULL,                                   // Proc Hit
@@ -184,11 +184,11 @@ void itRShellSpinUpdateFollowPlayer(GObj *item_gobj, GObj *fighter_gobj)
                 ip->physics.vel_air.x = ip->lr * ITRSHELL_CLAMP_VEL_X;
             }
         }
-        if (ip->hit_coll.update_state == nGMHitUpdateDisable)
+        if (ip->atk_coll.atk_state == nGMAttackStateOff)
         {
             if (ABSF(ip->physics.vel_air.x) <= ITRSHELL_HIT_INITVEL_X)
             {
-                ip->hit_coll.update_state = nGMHitUpdateNew;
+                ip->atk_coll.atk_state = nGMAttackStateNew;
 
                 itProcessUpdateHitPositions(item_gobj);
             }
@@ -329,15 +329,15 @@ void itRShellCommonSetStatusWaitOrSpin(GObj *item_gobj)
 
         itMainClearOwnerStats(item_gobj);
 
-        ip->damage_coll.hitstatus = nGMHitStatusNormal;
-        ip->hit_coll.update_state = nGMHitUpdateDisable;
+        ip->dmg_coll.hitstatus = nGMHitStatusNormal;
+        ip->atk_coll.atk_state = nGMAttackStateOff;
 
         itRShellCommonClearAnim(item_gobj);
         itMainSetItemStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusWait);
     }
     else if (ip->item_vars.shell.is_damage != FALSE)
     {
-        ip->hit_coll.update_state = nGMHitUpdateNew;
+        ip->atk_coll.atk_state = nGMAttackStateNew;
 
         itProcessUpdateHitPositions(item_gobj);
         itRShellSpinSetStatus(item_gobj);
@@ -350,8 +350,8 @@ void itRShellCommonSetStatusWaitOrSpin(GObj *item_gobj)
 
         itMainClearOwnerStats(item_gobj);
 
-        ip->damage_coll.hitstatus = nGMHitStatusNormal;
-        ip->hit_coll.update_state = nGMHitUpdateDisable;
+        ip->dmg_coll.hitstatus = nGMHitStatusNormal;
+        ip->atk_coll.atk_state = nGMAttackStateOff;
 
         itRShellCommonClearAnim(item_gobj);
         itMainSetItemStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusWait);
@@ -371,7 +371,7 @@ void itRShellFallSetStatus(GObj *item_gobj)
 
     ip->is_allow_pickup = FALSE;
 
-    ip->damage_coll.hitstatus = nGMHitStatusNormal;
+    ip->dmg_coll.hitstatus = nGMHitStatusNormal;
 
     itMapSetAir(ip);
     itMainSetItemStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusFall);
@@ -388,7 +388,7 @@ sb32 itRShellCommonProcDamage(GObj *item_gobj)
     {
         ip->item_vars.shell.is_damage = TRUE;
 
-        ip->hit_coll.update_state = nGMHitUpdateNew;
+        ip->atk_coll.atk_state = nGMAttackStateNew;
 
         itProcessUpdateHitPositions(item_gobj);
         itMainCopyDamageStats(item_gobj);
@@ -403,7 +403,7 @@ sb32 itRShellCommonProcDamage(GObj *item_gobj)
     {
         ip->physics.vel_air.x = 0.0F;
 
-        ip->hit_coll.update_state = nGMHitUpdateDisable;
+        ip->atk_coll.atk_state = nGMAttackStateOff;
     }
     return FALSE;
 }
@@ -557,7 +557,7 @@ sb32 itRShellCommonProcHit(GObj *item_gobj)
     {
         return TRUE;
     }
-    ip->damage_coll.hitstatus = nGMHitStatusNormal;
+    ip->dmg_coll.hitstatus = nGMHitStatusNormal;
 
     ip->item_vars.shell.health = mtTrigGetRandomIntRange(ITRSHELL_HEALTH_MAX);
 
@@ -589,7 +589,7 @@ sb32 itRShellSpinProcDamage(GObj *item_gobj)
 
     if (ABSF(ip->physics.vel_air.x) > ITRSHELL_STOP_VEL_X)
     {
-        ip->hit_coll.update_state = nGMHitUpdateNew;
+        ip->atk_coll.atk_state = nGMAttackStateNew;
 
         itProcessUpdateHitPositions(item_gobj);
         itMainCopyDamageStats(item_gobj);
@@ -597,7 +597,7 @@ sb32 itRShellSpinProcDamage(GObj *item_gobj)
     }
     else
     {
-        ip->hit_coll.update_state = nGMHitUpdateDisable;
+        ip->atk_coll.atk_state = nGMAttackStateOff;
     }
     return FALSE;
 }
@@ -703,7 +703,7 @@ GObj* itRShellMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip = itGetStruct(item_gobj);
 
-        ip->hit_coll.can_rehit_shield = TRUE;
+        ip->atk_coll.can_rehit_shield = TRUE;
 
         ip->item_vars.shell.health = 1;
         ip->item_vars.shell.is_setup_vars = FALSE;

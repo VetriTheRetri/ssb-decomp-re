@@ -8,7 +8,7 @@
 // // // // // // // // // // // //
 
 // 0x80188720
-ftCommonYoshiEggDesc dFTCommonYoshiEggHurtboxDescs[/* */] =
+ftCommonYoshiEggDesc dFTCommonYoshiEggDamageCollDescs[/* */] =
 {
     { 2.0F, { 0.0F, 157.0F, 0.0F }, { 180.0F, 180.0F, 180.0F } },   // Mario
     { 1.9F, { 0.0F, 155.0F, 0.0F }, { 171.0F, 171.0F, 171.0F } },   // Fox
@@ -312,8 +312,8 @@ void ftCommonYoshiEggProcTrap(GObj *fighter_gobj)
 void ftCommonYoshiEggSetHurtCollisions(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTDamageColl *ft_dmgcoll = &fp->damage_colls[0];
-    ftCommonYoshiEggDesc *egg = &dFTCommonYoshiEggHurtboxDescs[fp->ft_kind];
+    FTDamageColl *ft_dmgcoll = &fp->dmg_colls[0];
+    ftCommonYoshiEggDesc *egg = &dFTCommonYoshiEggDamageCollDescs[fp->ft_kind];
     s32 i;
 
     ft_dmgcoll->joint = fp->joints[nFTPartsJointTopN];
@@ -325,7 +325,7 @@ void ftCommonYoshiEggSetHurtCollisions(GObj *fighter_gobj)
 
     ft_dmgcoll++;
 
-    for (i = 1; i < ARRAY_COUNT(fp->damage_colls); i++, ft_dmgcoll++)
+    for (i = 1; i < ARRAY_COUNT(fp->dmg_colls); i++, ft_dmgcoll++)
     {
         if (ft_dmgcoll->hitstatus != nGMHitStatusNone)
         {

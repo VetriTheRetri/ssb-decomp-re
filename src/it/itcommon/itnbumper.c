@@ -32,7 +32,7 @@ ITCreateDesc dITNBumperItemDesc =
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,                    // Hitbox Update State
+    nGMAttackStateOff,                      // Hitbox Update State
     itNBumperFallProcUpdate,                // Proc Update
     itNBumperFallProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
@@ -610,7 +610,7 @@ void itNBumperGDisappearSetStatus(GObj *item_gobj)
 
     dobj->flags = DOBJ_FLAG_NONE;
 
-    ip->hit_coll.update_state = nGMHitUpdateDisable;
+    ip->atk_coll.atk_state = nGMAttackStateOff;
 
     ip->physics.vel_air.x = 0.0F;
     ip->physics.vel_air.y = 0.0F;
@@ -634,9 +634,9 @@ GObj* itNBumperMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->it_multi = 0;
 
-        ip->hit_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
+        ip->atk_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
 
-        ip->hit_coll.can_rehit_shield = TRUE;
+        ip->atk_coll.can_rehit_shield = TRUE;
 
         dobj->mobj->palette_id = 0.0F;
 

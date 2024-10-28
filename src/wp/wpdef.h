@@ -78,7 +78,7 @@ typedef enum WPKind
 typedef struct WPStruct 		WPStruct;
 typedef struct WPAttributes 	WPAttributes;
 typedef struct WPCreateDesc 	WPCreateDesc;
-typedef struct WPHitPositions	WPHitPositions;
-typedef struct WPHitColl 	WPHitColl;
+typedef struct WPAttackPos	WPAttackPos;
+typedef struct WPAttackColl 	WPAttackColl;
 
 #endif

@@ -29,7 +29,7 @@ ITCreateDesc dITNessPKFireItemDesc =
         0                                   // ???
     },
 
-    nGMHitUpdateNew,                        // Hitbox Update State
+    nGMAttackStateNew,                      // Hitbox Update State
     itNessPKFireCommonProcUpdate,           // Proc Update
     NULL,                                   // Proc Map
     NULL,                                   // Proc Hit
@@ -108,21 +108,21 @@ sb32 itNessPKFireCommonUpdateAllCheckDestroy(GObj *item_gobj)
 
     attributes = ip->attributes;
 
-    ip->hit_coll.offset[0].x = attributes->hit_offset1_x * lifetime_scale;
-    ip->hit_coll.offset[0].y = attributes->hit_offset1_y * lifetime_scale;
-    ip->hit_coll.offset[0].z = attributes->hit_offset1_z * lifetime_scale;
-    ip->hit_coll.offset[1].x = attributes->hit_offset2_x * lifetime_scale;
-    ip->hit_coll.offset[1].y = attributes->hit_offset2_y * lifetime_scale;
-    ip->hit_coll.offset[1].z = attributes->hit_offset2_z * lifetime_scale;
+    ip->atk_coll.offset[0].x = attributes->hit_offset1_x * lifetime_scale;
+    ip->atk_coll.offset[0].y = attributes->hit_offset1_y * lifetime_scale;
+    ip->atk_coll.offset[0].z = attributes->hit_offset1_z * lifetime_scale;
+    ip->atk_coll.offset[1].x = attributes->hit_offset2_x * lifetime_scale;
+    ip->atk_coll.offset[1].y = attributes->hit_offset2_y * lifetime_scale;
+    ip->atk_coll.offset[1].z = attributes->hit_offset2_z * lifetime_scale;
 
-    ip->hit_coll.size = attributes->size * 0.5F * lifetime_scale;
+    ip->atk_coll.size = attributes->size * 0.5F * lifetime_scale;
 
-    ip->damage_coll.offset.x = attributes->hurt_offset.x * lifetime_scale;
-    ip->damage_coll.offset.y = attributes->hurt_offset.y * lifetime_scale;
-    ip->damage_coll.offset.z = attributes->hurt_offset.z * lifetime_scale;
-    ip->damage_coll.size.x = attributes->hurt_size.x * 0.5F * lifetime_scale;
-    ip->damage_coll.size.y = attributes->hurt_size.y * 0.5F * lifetime_scale;
-    ip->damage_coll.size.z = attributes->hurt_size.z * 0.5F * lifetime_scale;
+    ip->dmg_coll.offset.x = attributes->hurt_offset.x * lifetime_scale;
+    ip->dmg_coll.offset.y = attributes->hurt_offset.y * lifetime_scale;
+    ip->dmg_coll.offset.z = attributes->hurt_offset.z * lifetime_scale;
+    ip->dmg_coll.size.x = attributes->hurt_size.x * 0.5F * lifetime_scale;
+    ip->dmg_coll.size.y = attributes->hurt_size.y * 0.5F * lifetime_scale;
+    ip->dmg_coll.size.z = attributes->hurt_size.z * 0.5F * lifetime_scale;
 
     if (tfrm != NULL)
     {
@@ -215,13 +215,13 @@ void itNessPKFireWaitSetStatus(GObj *item_gobj)
     ip->physics.vel_ground = 0.0F;
     ip->physics.vel_air.x = ip->physics.vel_air.y = 0.0F;
 
-    stat_flags = ip->hit_coll.stat_flags;
-    stat_count = ip->hit_coll.stat_count;
+    stat_flags = ip->atk_coll.stat_flags;
+    stat_count = ip->atk_coll.stat_count;
 
     itMainSetItemStatus(item_gobj, dITNessPKFireStatusDescs, nITNessPKFireStatusWait);
 
-    ip->hit_coll.stat_flags = stat_flags;
-    ip->hit_coll.stat_count = stat_count;
+    ip->atk_coll.stat_flags = stat_flags;
+    ip->atk_coll.stat_count = stat_count;
 }
 
 // 0x8018579C
@@ -235,13 +235,13 @@ void itNessPKFireFallSetStatus(GObj *item_gobj)
 
     ip->physics.vel_air.x = ip->physics.vel_air.y = 0.0F;
 
-    stat_flags = ip->hit_coll.stat_flags;
-    stat_count = ip->hit_coll.stat_count;
+    stat_flags = ip->atk_coll.stat_flags;
+    stat_count = ip->atk_coll.stat_count;
 
     itMainSetItemStatus(item_gobj, dITNessPKFireStatusDescs, nITNessPKFireStatusFall);
 
-    ip->hit_coll.stat_flags = stat_flags;
-    ip->hit_coll.stat_count = stat_count;
+    ip->atk_coll.stat_flags = stat_flags;
+    ip->atk_coll.stat_count = stat_count;
 }
 
 // 0x80185824
@@ -271,13 +271,13 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
     ip->handicap = wp->handicap;
     ip->player_number = wp->player_number;
 
-    ip->hit_coll.can_rehit_shield = TRUE;
+    ip->atk_coll.can_rehit_shield = TRUE;
 
-    ip->hit_coll.stale = wp->hit_coll.stale;
-    ip->hit_coll.attack_id = wp->hit_coll.attack_id;
-    ip->hit_coll.motion_count = wp->hit_coll.motion_count;
-    ip->hit_coll.stat_flags = wp->hit_coll.stat_flags;
-    ip->hit_coll.stat_count = wp->hit_coll.stat_count;
+    ip->atk_coll.stale = wp->atk_coll.stale;
+    ip->atk_coll.attack_id = wp->atk_coll.attack_id;
+    ip->atk_coll.motion_count = wp->atk_coll.motion_count;
+    ip->atk_coll.stat_flags = wp->atk_coll.stat_flags;
+    ip->atk_coll.stat_count = wp->atk_coll.stat_count;
 
     itMapSetAir(ip);
     itProcessUpdateHitPositions(item_gobj);

@@ -72,7 +72,7 @@ typedef enum GRKind
 
 // Structs
 typedef struct GRDisplayDesc 	GRDisplayDesc;
-typedef struct GRHitCollision 	GRHitCollision;
+typedef struct GRAttackColl 	GRAttackColl;
 typedef struct GRObstacle 		GRObstacle;
 typedef struct GRHazard 		GRHazard;
 typedef struct GRFileInfo 		GRFileInfo;

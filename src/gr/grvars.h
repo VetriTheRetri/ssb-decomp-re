@@ -114,7 +114,7 @@ typedef struct grCommonGroundVarsZebes
 {
 	void* map_head;
 	GObj* map_gobj;
-	GRHitCollision* gr_hitcoll;
+	GRAttackColl* gr_atk_coll;
 	f32 acid_level_current;
 	f32 acid_level_step;
 	u16 acid_level_wait;
@@ -170,7 +170,7 @@ typedef struct grCommonGroundVarsInishie
 					   // grounded/airborne
 	ub8 players_ga[4]; // Players ground or air
 	GObj* pblock_gobj;
-	GRHitCollision* gr_hitcoll;
+	GRAttackColl* gr_atk_coll;
 	u16 pblock_appear_wait;
 	u8 pblock_pos_count;
 	u8* pblock_pos_ids;

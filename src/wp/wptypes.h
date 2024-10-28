@@ -52,7 +52,7 @@ struct WPAttributes // Moreso hitbox stuff
     u32 element : 4;
     u32 knockback_weight : 10;
     s32 shield_damage : 8;
-    u32 hit_count : 2;
+    u32 atk_count : 2;
     ub32 can_setoff : 1;
     u32 sfx : 10;
     u32 priority : 3;
@@ -68,7 +68,7 @@ struct WPAttributes // Moreso hitbox stuff
 };
 
 // Current and previous hitbox position are stored here
-struct WPHitPositions
+struct WPAttackPos
 {
     Vec3f pos;
     Vec3f pos_prev;
@@ -78,9 +78,9 @@ struct WPHitPositions
 };
 
 // Weapon's hitbox parameters
-struct WPHitColl
+struct WPAttackColl
 {
-    s32 update_state;                                       // 0 = disabled, 1 = new hitbox, 2 and 3 = interpolate/copy current position to previous
+    s32 atk_state;                                       // 0 = disabled, 1 = new hitbox, 2 and 3 = interpolate/copy current position to previous
     s32 damage;                                             // Hitbox base damage in %
     f32 stale;                                              // Stale move negation multiplier
     s32 element;                                            // Hitbox hit effect
@@ -107,8 +107,8 @@ struct WPHitColl
     u16 motion_count;                                       // Motion count used for stale move negation queues
     GMStatFlags stat_flags;                                 // Weapon's status flags
     u16 stat_count;                                         // Weapon's status update count
-    s32 hit_count;                                          // Weapon's hitbox count
-    WPHitPositions hit_positions[WEAPON_HITCOLL_NUM_MAX];  	// Weapon's hitbox world positions
+    s32 atk_count;                                          // Weapon's hitbox count
+    WPAttackPos hit_positions[WEAPON_HITCOLL_NUM_MAX];  	// Weapon's hitbox world positions
     GMHitRecord hit_records[GMHITRECORD_NUM_MAX];            // Weapon's record of interacted targets
 };
 
@@ -125,7 +125,7 @@ struct WPStruct
     s32 player_number;                  // Weapon's player number
     s32 lr;                             // Weapon's facing direction; -1 = nGMFacingL, 0 = nGMFacingC, 1 = nGMFacingR, 2 = WALL_UP (Thunder Jolt only?), 3 = WALL_DOWN (Thunder Jolt only?)
 
-    struct wpPhysicsInfo
+    struct WPPhysics
     {
         f32 vel_ground;                 // Weapon's ground velocity
         Vec3f vel_air;                  // Weapon's aerial velocity
@@ -135,14 +135,14 @@ struct WPStruct
     MPCollData coll_data;               // Weapon's collision data
     sb32 ga;                            // Ground or air bool
 
-    WPHitColl hit_coll;               // Weapon's hitbox
+    WPAttackColl atk_coll;               // Weapon's hitbox
 
     s32 hit_normal_damage;              // Damage applied to entity this weapon has hit
     s32 hit_refresh_damage;             // Damage applied to entity this item has hit, if rehit is possible?
     s32 hit_attack_damage;              // Damage weapon dealt to other attack
     s32 hit_shield_damage;              // Damage weapon dealt to shield
     f32 shield_collide_angle;           // Angle at which item collided with shield?
-    Vec3f shield_collide_vec;           // Position of shield item collided with? (Update: only Z axis appears to be used, can be 0, -1 or 1 depending on attack direction
+    Vec3f shield_collide_dir;           // Position of shield item collided with? (Update: only Z axis appears to be used, can be 0, -1 or 1 depending on attack direction
     GObj *reflect_gobj;                 // GObj that reflected this weapon
     GMStatFlags reflect_stat_flags;     // Status flags of GObj reflecting this item (e.g. is_smash_attack, ga, is_projectile, etc.)
     u16 reflect_stat_count;             // Status update count at the time the item is reflected?

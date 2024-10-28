@@ -482,23 +482,23 @@ void ftParamClearHitAll(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->hit_colls); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->atk_colls); i++)
     {
-        FTHitColl *ft_hitcoll = &fp->hit_colls[i];
+        FTAttackColl *ft_atk_coll = &fp->atk_colls[i];
 
-        ft_hitcoll->update_state = nGMHitUpdateDisable;
+        ft_atk_coll->atk_state = nGMAttackStateOff;
     }
-    fp->is_hitbox_active = FALSE;
+    fp->is_atk_active = FALSE;
 }
 
 // 0x800E853C
-void ftParamClearHitRecordID(FTStruct *fp, s32 hit_id)
+void ftParamClearHitRecordID(FTStruct *fp, s32 atk_id)
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->hit_colls[hit_id].hit_records); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->atk_colls[atk_id].hit_records); i++)
     {
-        GMHitRecord *targets = &fp->hit_colls[hit_id].hit_records[i];
+        GMHitRecord *targets = &fp->atk_colls[atk_id].hit_records[i];
 
         targets->victim_gobj = NULL;
 
@@ -511,15 +511,15 @@ void ftParamClearHitRecordID(FTStruct *fp, s32 hit_id)
 }
 
 // 0x800E8668
-void ftParamRefreshHitID(GObj *fighter_gobj, s32 hit_id)
+void ftParamRefreshHitID(GObj *fighter_gobj, s32 atk_id)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->hit_colls[hit_id].update_state = nGMHitUpdateNew;
+    fp->atk_colls[atk_id].atk_state = nGMAttackStateNew;
 
-    fp->is_hitbox_active = TRUE;
+    fp->is_atk_active = TRUE;
 
-    ftParamClearHitRecordID(fp, hit_id);
+    ftParamClearHitRecordID(fp, atk_id);
 }
 
 // 0x800E86B4
@@ -590,9 +590,9 @@ void ftParamSetHitStatusPartAll(GObj *fighter_gobj, s32 hitstatus)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->damage_colls); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->dmg_colls); i++)
     {
-        FTDamageColl *ft_dmgcoll = &fp->damage_colls[i];
+        FTDamageColl *ft_dmgcoll = &fp->dmg_colls[i];
 
         if (ft_dmgcoll->hitstatus != nGMHitStatusNone)
         {
@@ -610,9 +610,9 @@ void ftParamSetHitStatusPartID(GObj *fighter_gobj, s32 joint_id, s32 hitstatus)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->damage_colls); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->dmg_colls); i++)
     {
-        FTDamageColl *ft_dmgcoll = &fp->damage_colls[i];
+        FTDamageColl *ft_dmgcoll = &fp->dmg_colls[i];
 
         if ((ft_dmgcoll->hitstatus != nGMHitStatusNone) && (joint_id == ft_dmgcoll->joint_id))
         {
@@ -642,14 +642,14 @@ s32 ftParamGetBestHitStatusPart(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 hitstatus_default = fp->hitstatus;
-    s32 hitstatus_best = fp->damage_colls[0].hitstatus;
+    s32 hitstatus_best = fp->dmg_colls[0].hitstatus;
     s32 i;
 
     if (hitstatus_best != nGMHitStatusNormal)
     {
-        for (i = 1; i < ARRAY_COUNT(fp->damage_colls); i++)
+        for (i = 1; i < ARRAY_COUNT(fp->dmg_colls); i++)
         {
-            FTDamageColl *ft_dmgcoll = &fp->damage_colls[i];
+            FTDamageColl *ft_dmgcoll = &fp->dmg_colls[i];
 
             if (ft_dmgcoll->hitstatus == nGMHitStatusNone) 
             {
@@ -689,8 +689,8 @@ s32 ftParamGetBestHitStatusAll(GObj *fighter_gobj)
 void ftParamResetFighterHurtPartAll(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTDamageColl *ft_dmgcoll = &fp->damage_colls[0];
-    FTDamageCollDesc *ft_dmgcoll_desc = &fp->attributes->damage_colls_desc[0];
+    FTDamageColl *ft_dmgcoll = &fp->dmg_colls[0];
+    FTDamageCollDesc *ft_dmgcoll_desc = &fp->attributes->dmg_colls_desc[0];
     s32 i;
 
     for (i = 0; i < FTPARTS_HURT_NUM_MAX; i++, ft_dmgcoll++, ft_dmgcoll_desc++)
@@ -720,18 +720,18 @@ void ftParamModifyFighterHurtPartID(GObj *fighter_gobj, s32 joint_id, Vec3f *off
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->damage_colls); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->dmg_colls); i++)
     {
-        FTDamageColl *ft_dmgcoll = &fp->damage_colls[i];
+        FTDamageColl *ft_dmgcoll = &fp->dmg_colls[i];
 
         if (joint_id == ft_dmgcoll->joint_id)
         {
             ft_dmgcoll->offset = *offset;
             ft_dmgcoll->size = *size;
 
-            fp->damage_colls[i].size.x *= 0.5F;
-            fp->damage_colls[i].size.y *= 0.5F;
-            fp->damage_colls[i].size.z *= 0.5F;
+            fp->dmg_colls[i].size.x *= 0.5F;
+            fp->dmg_colls[i].size.y *= 0.5F;
+            fp->dmg_colls[i].size.z *= 0.5F;
 
             fp->is_hurtbox_modify = TRUE;
 

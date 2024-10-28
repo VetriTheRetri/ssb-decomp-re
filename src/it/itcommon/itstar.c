@@ -28,7 +28,7 @@ ITCreateDesc dITStarItemDesc =
         0                                   // ???
     },
 
-    nGMHitUpdateDisable,                    // Hitbox Update State
+    nGMAttackStateOff,                      // Hitbox Update State
     itStarCommonProcUpdate,                 // Proc Update
     itStarCommonProcMap,                    // Proc Map
     itStarCommonProcHit,                    // Proc Hit
@@ -113,7 +113,7 @@ GObj* itStarMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip = itGetStruct(item_gobj);
 
-        ip->hit_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER; // Star Man can only interact with fighters
+        ip->atk_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER; // Star Man can only interact with fighters
         
         ip->it_multi = ITSTAR_INTERACT_DELAY;
 

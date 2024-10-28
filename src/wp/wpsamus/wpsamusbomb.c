@@ -63,12 +63,12 @@ void wpSamusBombExplodeInitWeaponVars(GObj *weapon_gobj)
 
     wp->lifetime = WPSAMUSBOMB_EXPLODE_LIFETIME;
 
-    wp->hit_coll.can_rehit_item = TRUE;
-    wp->hit_coll.can_hop = FALSE;
+    wp->atk_coll.can_rehit_item = TRUE;
+    wp->atk_coll.can_hop = FALSE;
 
     wp->physics.vel_air.x = wp->physics.vel_air.y = wp->physics.vel_air.z = 0.0F;
 
-    wp->hit_coll.size = WPSAMUSBOMB_EXPLODE_SIZE;
+    wp->atk_coll.size = WPSAMUSBOMB_EXPLODE_SIZE;
 
     DObjGetStruct(weapon_gobj)->display_ptr = NULL;
 
@@ -188,7 +188,7 @@ sb32 wpSamusBombProcHop(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_80019438(&wp->physics.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
+    func_80019438(&wp->physics.vel_air, &wp->shield_collide_dir, wp->shield_collide_angle * 2);
     wpMainVelSetLR(weapon_gobj);
 
     return FALSE;

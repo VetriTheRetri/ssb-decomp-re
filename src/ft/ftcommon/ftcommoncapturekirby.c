@@ -495,13 +495,13 @@ void ftCommonThrownKirbyStarSetStatus(GObj *fighter_gobj)
 
     fp->proc_hit = ftCommonThrownCommonStarProcHit;
 
-    for (i = 0; i < ARRAY_COUNT(fp->hit_colls); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->atk_colls); i++)
     {
-        FTHitColl *hit_coll = &fp->hit_colls[i];
+        FTAttackColl *atk_coll = &fp->atk_colls[i];
 
-        if (hit_coll->update_state == nGMHitUpdateNew)
+        if (atk_coll->atk_state == nGMAttackStateNew)
         {
-            hit_coll->damage = copy_data[fp->ft_kind].star_damage;
+            atk_coll->damage = copy_data[fp->ft_kind].star_damage;
         }
     }
     fp->is_invisible = fp->is_hide_shadow = TRUE;

@@ -33,7 +33,7 @@ ITCreateDesc dITDogasItemDesc =
         0,                                  // ???
     },
 
-    nGMHitUpdateDisable,                    // Hitbox Update State
+    nGMAttackStateOff,                      // Hitbox Update State
     itDogasCommonProcUpdate,                // Proc Update
     itDogasCommonProcMap,                   // Proc Map
     NULL,                                   // Proc Hit
@@ -287,7 +287,7 @@ sb32 itDogasWeaponSmogProcUpdate(GObj *weapon_gobj)
     WPStruct *wp = wpGetStruct(weapon_gobj);
     DObj *dobj = DObjGetStruct(weapon_gobj)->child;
 
-    wp->hit_coll.size = dobj->scale.vec.f.x * wp->weapon_vars.smog.attributes->size;
+    wp->atk_coll.size = dobj->scale.vec.f.x * wp->weapon_vars.smog.attributes->size;
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {

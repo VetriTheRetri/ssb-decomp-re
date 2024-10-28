@@ -31,7 +31,7 @@ ITCreateDesc dITTosakintoItemDesc =
         0,                                  // ???
     },
 
-    nGMHitUpdateDisable,                    // Hitbox Update State
+    nGMAttackStateOff,                      // Hitbox Update State
     itTosakintoCommonProcUpdate,            // Proc Update
     itTosakintoCommonProcMap,               // Proc Map
     NULL,                                   // Proc Hit

@@ -164,8 +164,8 @@ void wpSamusChargeShotLaunch(GObj *weapon_gobj) // Set Charge Shot's attributes 
 
     wp->physics.vel_air.x = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].vel_x * wp->lr;
 
-    wp->hit_coll.damage = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].damage;
-    wp->hit_coll.size = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].hit_size * 0.5F;
+    wp->atk_coll.damage = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].damage;
+    wp->atk_coll.size = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].hit_size * 0.5F;
 
     coll_size = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].coll_size * 0.5F;
 
@@ -175,8 +175,8 @@ void wpSamusChargeShotLaunch(GObj *weapon_gobj) // Set Charge Shot's attributes 
 
     func_800269C0_275C0(dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].shoot_sfx_id);
 
-    wp->hit_coll.hit_sfx = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].hit_sfx_id;
-    wp->hit_coll.priority = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].priority;
+    wp->atk_coll.hit_sfx = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].hit_sfx_id;
+    wp->atk_coll.priority = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].priority;
 
     wp->weapon_vars.charge_shot.owner_gobj = NULL;
 }
@@ -211,7 +211,7 @@ sb32 wpSamusChargeShotProcUpdate(GObj *weapon_gobj)
 
             wpSamusChargeShotLaunch(weapon_gobj);
 
-            wp->hit_coll.update_state = nGMHitUpdateNew;
+            wp->atk_coll.atk_state = nGMAttackStateNew;
 
             wpProcessUpdateHitPositions(weapon_gobj);
         }
@@ -246,7 +246,7 @@ sb32 wpSamusChargeShotProcHit(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->hit_coll.damage);
+    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->atk_coll.damage);
 
     return TRUE;
 }
@@ -256,7 +256,7 @@ sb32 wpSamusChargeShotProcHop(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    func_80019438(&wp->physics.vel_air, &wp->shield_collide_vec, wp->shield_collide_angle * 2);
+    func_80019438(&wp->physics.vel_air, &wp->shield_collide_dir, wp->shield_collide_angle * 2);
     wpMainVelSetLR(weapon_gobj);
 
     return FALSE;
@@ -296,7 +296,7 @@ GObj* wpSamusChargeShotMakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 charge_lev
     }
     else
     {
-        wp->hit_coll.update_state = nGMHitUpdateDisable;
+        wp->atk_coll.atk_state = nGMAttackStateOff;
         wp->weapon_vars.charge_shot.is_full_charge = FALSE;
 
         wp->weapon_vars.charge_shot.owner_gobj = fighter_gobj;

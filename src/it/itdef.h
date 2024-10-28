@@ -185,16 +185,16 @@ typedef enum ITWeight
 } ITWeight;
 
 // Structs
-typedef struct ITStruct 		ITStruct; 				// Main item struct
+typedef struct ITStruct 		ITStruct; 		// Main item struct
 typedef struct ITAttributes 	ITAttributes;
 typedef struct ITMonsterData 	ITMonsterData; 	// Info specific to summoning Pokémon
 typedef struct ITCreateDesc 	ITCreateDesc;
 typedef struct ITStatusDesc 	ITStatusDesc;
 typedef struct ITSpawnActor 	ITSpawnActor;
 typedef struct ITRandomWeights 	ITRandomWeights;
-typedef struct ITHitPositions 	ITHitPositions;
-typedef struct ITHitColl 	ITHitColl;
-typedef struct ITHitEvent 		ITHitEvent;
+typedef struct ITAttackPos 		ITAttackPos;
+typedef struct ITAttackColl 	ITAttackColl;
+typedef struct ITAttackEvent 		ITAttackEvent;
 typedef struct ITMonsterEvent 	ITMonsterEvent;
 typedef struct ITDamageColl 	ITDamageColl;
 

@@ -1700,7 +1700,7 @@ GObj* gcInitGObjCommon(u32 id, void (*func_run)(GObj*), u8 link, u32 order)
 	if (new_gobj == NULL)
 		return NULL;
 
-	new_gobj->gobj_id = id;
+	new_gobj->id = id;
 	new_gobj->link_id = link;
 	new_gobj->link_order = order;
 	new_gobj->func_run = func_run;
@@ -1812,7 +1812,7 @@ void gcMoveGObjCommon(s32 sw, GObj *this_gobj, u8 link, u32 order, GObj *other_g
 
 	if (link >= ARRAY_COUNT(gGCCommonLinks))
 	{
-		syErrorPrintf("omGMoveCommon() : link num over : link = %d : id = %d\n", link, this_gobj->gobj_id);
+		syErrorPrintf("omGMoveCommon() : link num over : link = %d : id = %d\n", link, this_gobj->id);
 
 		while (TRUE);
 	}
@@ -1881,7 +1881,7 @@ void gcLinkGObjDLCommon(GObj *gobj, void (*func_display)(GObj*), u8 dl_link, u32
 {
 	if (dl_link >= ARRAY_COUNT(gGCCommonDLLinks) - 1)
 	{
-		syErrorPrintf("omGLinkObjDLCommon() : dl_link num over : dl_link = %d : id = %d\n", dl_link, gobj->gobj_id);
+		syErrorPrintf("omGLinkObjDLCommon() : dl_link num over : dl_link = %d : id = %d\n", dl_link, gobj->id);
 		while (TRUE);
 	}
 
@@ -1994,7 +1994,7 @@ void gcMoveGObjDL(GObj *gobj, u8 dl_link, u32 order)
 {
 	if (dl_link >= ARRAY_COUNT(gGCCommonDLLinks) - 1)
 	{
-		syErrorPrintf("omGMoveObjDL() : dl_link num over : dl_link = %d : id = %d\n", dl_link, gobj->gobj_id);
+		syErrorPrintf("omGMoveObjDL() : dl_link num over : dl_link = %d : id = %d\n", dl_link, gobj->id);
 		while (TRUE);
 	}
 	gcRemoveGObjFromDLLinkedList(gobj);
@@ -2010,7 +2010,7 @@ void gcMoveGObjDLHead(GObj *gobj, u8 dl_link, u32 order)
 {
 	if (dl_link >= ARRAY_COUNT(gGCCommonDLLinks) - 1)
 	{
-		syErrorPrintf("omGMoveObjDLHead() : dl_link num over : dl_link = %d : id = %d\n", dl_link, gobj->gobj_id);
+		syErrorPrintf("omGMoveObjDLHead() : dl_link num over : dl_link = %d : id = %d\n", dl_link, gobj->id);
 		while (TRUE);
 	}
 	gcRemoveGObjFromDLLinkedList(gobj);

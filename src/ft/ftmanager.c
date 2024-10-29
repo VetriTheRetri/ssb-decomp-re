@@ -527,7 +527,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
 
     fp->reflect_damage = 0;
 
-    fp->special_coll = NULL;
+    fp->spc_coll = NULL;
 
     fp->attack1_followup_frames = 0.0F;
     fp->unk_ft_0x7A0 = 0.0F;

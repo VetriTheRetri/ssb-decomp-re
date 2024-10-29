@@ -413,7 +413,7 @@ void mnTitleSetEndLayout(void)
 
 	while (gobj != NULL)
 	{
-		if (gobj->gobj_id == 5)
+		if (gobj->id == 5)
 		{
 			mnTitleShowFire(gobj);
 		}
@@ -423,7 +423,7 @@ void mnTitleSetEndLayout(void)
 
 	while (gobj != NULL)
 	{
-		if (gobj->gobj_id == 8)
+		if (gobj->id == 8)
 		{
 			texture_gobj = gobj;
 		}
@@ -573,7 +573,7 @@ void mnTitleTransitionFromFireLogo(void)
 	{
 		next_gobj = current_gobj->link_next;
 
-		if (current_gobj->gobj_id == 6)
+		if (current_gobj->id == 6)
 		{
 			current_gobj->flags = GOBJ_FLAG_HIDDEN;
 		}

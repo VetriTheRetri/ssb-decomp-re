@@ -108,7 +108,7 @@ GObj* gcApplyToAllEx(GObj* (*proc)(GObj*, u32), u32 param, sb32 is_return_immedi
 // 0x8000B14C
 GObj* gcGetGObjByID(GObj *gobj, u32 id)
 {
-    return (gobj->gobj_id == id) ? gobj : NULL;
+    return (gobj->id == id) ? gobj : NULL;
 }
 
 // 0x8000B16C
@@ -134,7 +134,7 @@ void gcStopCurrentGObjThread(s32 tics)
 {
     if (gGCCurrentProcess->gobjthread->stack[7] != 0xFEDCBA98)
     {
-        syErrorPrintf("gobjthread stack over  gobjid = %d\n", gGCCurrentProcess->parent_gobj->gobj_id);
+        syErrorPrintf("gobjthread stack over  gobjid = %d\n", gGCCurrentProcess->parent_gobj->id);
     }
     while (tics != 0)
     {

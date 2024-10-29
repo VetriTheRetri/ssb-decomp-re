@@ -1095,7 +1095,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
     }
     if ((fp->pl_kind == nFTPlayerKindMan) || (fp->pl_kind == nFTPlayerKindCom) || (fp->pl_kind == nFTPlayerKindGameKey))
     {
-        if (gGCCurrentCamera->gobj_id == nGCCommonKindMainCamera)
+        if (gGCCurrentCamera->id == nGCCommonKindMainCamera)
         {
             switch (fp->status_id)
             {
@@ -1222,7 +1222,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
             );
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
         }
-        if ((fp->pl_kind == nFTPlayerKindDemo) || (fp->pl_kind == nFTPlayerKindKey) || (gGCCurrentCamera->gobj_id == nGCCommonKindMainCamera))
+        if ((fp->pl_kind == nFTPlayerKindDemo) || (fp->pl_kind == nFTPlayerKindKey) || (gGCCurrentCamera->id == nGCCommonKindMainCamera))
         {
             ftDisplayMainDrawAll(fighter_gobj);
         }
@@ -1329,7 +1329,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
     }
     else
     {
-        if (gGCCurrentCamera->gobj_id == nGCCommonKindMainCamera)
+        if (gGCCurrentCamera->id == nGCCommonKindMainCamera)
         {
             ftDisplayMainDrawParts(DObjGetStruct(fighter_gobj));
         }
@@ -1407,7 +1407,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
     }
     if ((fp->pl_kind == nFTPlayerKindMan) || (fp->pl_kind == nFTPlayerKindCom) || (fp->pl_kind == nFTPlayerKindGameKey))
     {
-        if (gGCCurrentCamera->gobj_id != nGCCommonKindMainCamera)
+        if (gGCCurrentCamera->id != nGCCommonKindMainCamera)
         {
             if (!(fp->is_skip_magnify) && !(fp->is_rebirth) && (fp->is_show_magnify))
             {

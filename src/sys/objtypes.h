@@ -180,7 +180,7 @@ struct GObjLink
 
 struct GObj
 {
-    GObjKind gobj_id;
+    u32 id;
     GObj *link_next;
     GObj *link_prev;
     u8 link_id;

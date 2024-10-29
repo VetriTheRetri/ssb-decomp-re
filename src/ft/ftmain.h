@@ -56,15 +56,15 @@ extern void ftMainUpdateAttackStatItem(ITStruct* ip, ITAttackColl* it_atk_coll, 
 extern void ftMainUpdateShieldStatItem(ITStruct* ip, ITAttackColl* it_atk_coll, s32 atk_id, FTStruct* fp, GObj* item_gobj,
 								 GObj* fighter_gobj, f32 angle, Vec3f* vec);
 extern void ftMainUpdateReflectorStatItem(ITStruct* ip, ITAttackColl* it_atk_coll, FTStruct* fp, GObj* fighter_gobj);
-extern void ftMainUpdateDamageStatItem(ITStruct* ip, ITAttackColl* it_atk_coll, s32 atk_id, FTStruct* fp, FTDamageColl* ft_dmgcoll,
+extern void ftMainUpdateDamageStatItem(ITStruct* ip, ITAttackColl* it_atk_coll, s32 atk_id, FTStruct* fp, FTDamageColl* dmg_coll,
 								 GObj* item_gobj, GObj* fighter_gobj);
 extern void ftMainUpdateDamageStatGround(GObj* special_gobj, GObj* fighter_gobj, FTStruct* fp, GRAttackColl* gr_atk_coll,
 								   s32 target_kind);
 extern void ftMainGetBumperDamageAngle(GObj* fighter_gobj, GObj* attacker_gobj);
 extern void ftMainProcessHitCollisionStatsMain(GObj* fighter_gobj);
-extern void ftMainSearchFighterHit(GObj* this_gobj);
-extern void ftMainSearchWeaponHit(GObj* fighter_gobj);
-extern void ftMainSearchItemHit(GObj* fighter_gobj);
+extern void ftMainSearchFighterAttack(GObj* this_gobj);
+extern void ftMainSearchWeaponAttack(GObj* fighter_gobj);
+extern void ftMainSearchItemAttack(GObj* fighter_gobj);
 extern sb32 ftMainGetGroundHitObstacle(FTStruct* fp, GRAttackColl** p_gr_atk_coll);
 extern void ftMainSearchGroundHit(GObj* fighter_gobj);
 extern void ftMainSearchFighterCatch(GObj* this_gobj);

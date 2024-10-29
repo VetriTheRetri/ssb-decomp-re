@@ -1244,7 +1244,7 @@ struct FTStruct
 
     GObj *item_hold;
 
-    FTSpecialColl *special_coll;
+    FTSpecialColl *spc_coll;
 
     Vec3f entry_pos;
 

@@ -71,10 +71,10 @@ void ftCommonShieldBreakFlyCommonSetStatus(GObj *fighter_gobj)
 void ftCommonShieldBreakFlyReflectorSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTSpecialColl *special_coll = fp->special_coll;
-    Vec3f offset = special_coll->offset;
+    FTSpecialColl *spc_coll = fp->spc_coll;
+    Vec3f offset = spc_coll->offset;
 
-    gmCollisionGetFighterPartsWorldPosition(fp->joints[special_coll->joint_id], &offset);
+    gmCollisionGetFighterPartsWorldPosition(fp->joints[spc_coll->joint_id], &offset);
     efManagerReflectBreakMakeEffect(&offset, fp->reflect_lr);
     ftCommonShieldBreakFlySetStatus(fighter_gobj);
 }

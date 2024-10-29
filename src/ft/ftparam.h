@@ -41,8 +41,8 @@ extern void ftParamSetHitStatusPartID(GObj *fighter_gobj, s32 joint_id, s32 hits
 extern void ftParamSetHitStatusAll(GObj *fighter_gobj, s32 hitstatus);
 extern s32 ftParamGetBestHitStatusPart(GObj *fighter_gobj);
 extern s32 ftParamGetBestHitStatusAll(GObj *fighter_gobj);
-extern void ftParamResetFighterHurtPartAll(GObj *fighter_gobj);
-extern void ftParamModifyFighterHurtPartID(GObj *fighter_gobj, s32 joint_id, Vec3f *offset, Vec3f *size);
+extern void ftParamResetFighterDamagePartAll(GObj *fighter_gobj);
+extern void ftParamModifyFighterDamagePartID(GObj *fighter_gobj, s32 joint_id, Vec3f *offset, Vec3f *size);
 extern void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 modelpart_id);
 extern void ftParamSetModelPartDefaultID(GObj *fighter_gobj, s32 joint_id, s32 modelpart_id);
 extern void ftParamResetModelPartAll(GObj *fighter_gobj);

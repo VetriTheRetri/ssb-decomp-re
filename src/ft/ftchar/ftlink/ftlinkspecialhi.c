@@ -41,7 +41,7 @@ void ftLinkSpecialHiDecWeaponLifeCheckDestroy(GObj *fighter_gobj, WPStruct *wp)
 }
 
 // 0x80163C2C
-void ftLinkSpecialHiUpdateWeaponHit(GObj *fighter_gobj, WPStruct *wp)
+void ftLinkSpecialHiUpdateWeaponAttack(GObj *fighter_gobj, WPStruct *wp)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -141,7 +141,7 @@ void ftLinkSpecialHiUpdateWeaponVars(GObj *fighter_gobj)
     {
         WPStruct *wp = wpGetStruct(fp->status_vars.link.specialhi.spin_attack_gobj);
 
-        ftLinkSpecialHiUpdateWeaponHit(fighter_gobj, wp);
+        ftLinkSpecialHiUpdateWeaponAttack(fighter_gobj, wp);
         ftLinkSpecialHiUpdateWeaponPos(fighter_gobj, wp);
         ftLinkSpecialHiDecWeaponLifeCheckDestroy(fighter_gobj, wp);
     }

@@ -380,7 +380,7 @@ void func_ovl65_801910B0(void)
 
     while (gobj != NULL)
     {
-        if (gobj->gobj_id == nGCCommonKindBossWallpaper)
+        if (gobj->id == nGCCommonKindBossWallpaper)
         {
             gcResumeProcessAll(gobj);
         }
@@ -602,7 +602,7 @@ void sc1PGameBossUpdateWallpaperColorID(void)
 
     while (gobj != NULL)
     {
-        if (gobj->gobj_id == nGCCommonKindBossWallpaper)
+        if (gobj->id == nGCCommonKindBossWallpaper)
         {
             s32 color = sSC1PGameBossMain.bosswallpaper->color_id;
 

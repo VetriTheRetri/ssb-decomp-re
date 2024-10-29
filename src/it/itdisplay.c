@@ -18,7 +18,7 @@ void itDisplayHitCollisions(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     s32 i;
     ITAttackColl *it_atk_coll;
-    ITDamageColl *it_dmgcoll;
+    ITDamageColl *dmg_coll;
     gsMtxStore mtx_store;
     Vec3f *translate;
 
@@ -46,7 +46,7 @@ void itDisplayHitCollisions(GObj *item_gobj)
             {
                 syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                syMatrixTranslate(mtx_store.gbi, it_atk_coll->hit_positions[i].pos_prev.x, it_atk_coll->hit_positions[i].pos_prev.y, it_atk_coll->hit_positions[i].pos_prev.z);
+                syMatrixTranslate(mtx_store.gbi, it_atk_coll->atk_pos[i].pos_prev.x, it_atk_coll->atk_pos[i].pos_prev.y, it_atk_coll->atk_pos[i].pos_prev.z);
 
                 gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -60,7 +60,7 @@ void itDisplayHitCollisions(GObj *item_gobj)
             }
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixTranslate(mtx_store.gbi, it_atk_coll->hit_positions[i].pos.x, it_atk_coll->hit_positions[i].pos.y, it_atk_coll->hit_positions[i].pos.z);
+            syMatrixTranslate(mtx_store.gbi, it_atk_coll->atk_pos[i].pos.x, it_atk_coll->atk_pos[i].pos.y, it_atk_coll->atk_pos[i].pos.z);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -78,26 +78,26 @@ void itDisplayHitCollisions(GObj *item_gobj)
             gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
         }
     }
-    it_dmgcoll = &ip->dmg_coll;
+    dmg_coll = &ip->dmg_coll;
 
-    if (it_dmgcoll->hitstatus != nGMHitStatusNone)
+    if (dmg_coll->hitstatus != nGMHitStatusNone)
     {
         translate = &DObjGetStruct(item_gobj)->translate.vec.f;
 
         syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-        syMatrixTranslate(mtx_store.gbi, it_dmgcoll->offset.x + translate->x, it_dmgcoll->offset.y + translate->y, it_dmgcoll->offset.z + translate->z);
+        syMatrixTranslate(mtx_store.gbi, dmg_coll->offset.x + translate->x, dmg_coll->offset.y + translate->y, dmg_coll->offset.z + translate->z);
 
         gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
         syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-        syMatrixSca(mtx_store.gbi, it_dmgcoll->size.x / 15.0F, it_dmgcoll->size.y / 15.0F, it_dmgcoll->size.z / 15.0F);
+        syMatrixSca(mtx_store.gbi, dmg_coll->size.x / 15.0F, dmg_coll->size.y / 15.0F, dmg_coll->size.z / 15.0F);
 
         gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
         gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
-        switch (it_dmgcoll->hitstatus)
+        switch (dmg_coll->hitstatus)
         {
         case nGMHitStatusNormal:
             gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);

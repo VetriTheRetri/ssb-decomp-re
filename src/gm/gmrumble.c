@@ -695,7 +695,7 @@ void gmRumbleResumeProcessAll(void)
 
     while (rumble_gobj != NULL)
     {
-        if (rumble_gobj->gobj_id == nGCCommonKindRumble)
+        if (rumble_gobj->id == nGCCommonKindRumble)
         {
             gcResumeProcessAll(rumble_gobj);
         }

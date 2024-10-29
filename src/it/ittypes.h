@@ -106,7 +106,7 @@ struct ITAttackColl
 	GMStatFlags stat_flags;								// Item's status flags
 	u16 stat_count;										// Item's status update number
 	s32 atk_count;										// Item's hitbox count, up to two
-	ITAttackPos hit_positions[ITEM_HITCOLL_NUM_MAX];	// Item hitbox positions
+	ITAttackPos atk_pos[ITEM_HITCOLL_NUM_MAX];	// Item hitbox positions
 	GMHitRecord hit_records[GMHITRECORD_NUM_MAX];		// Item's record of attacked targets
 };
 
@@ -227,10 +227,7 @@ struct ITStruct 					// Common items, stage hazards, fighter items and Pokémon
 	s32 hit_shield_damage;	 	 	// Damage item dealt to shield
 
 	f32 shield_collide_angle; 		// Angle at which item collided with shield?
-	Vec3f shield_collide_dir; 		/* Position of shield item collided with?
-							  		 * (Update: only Z axis appears to be used,
-							  		 * can be 0, -1 or 1 depending on attack direction
-									 */
+	Vec3f shield_collide_dir; 		// Direction of incoming velocity vector?
 
 	GObj* reflect_gobj;				// GObj that reflected this item
 	GMStatFlags reflect_stat_flags; // Status flags of GObj reflecting this

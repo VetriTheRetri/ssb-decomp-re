@@ -54,7 +54,7 @@ void wpDisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
             {
                 syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                syMatrixTranslate(mtx_store.gbi, atk_coll->hit_positions[i].pos_prev.x, atk_coll->hit_positions[i].pos_prev.y, atk_coll->hit_positions[i].pos_prev.z);
+                syMatrixTranslate(mtx_store.gbi, atk_coll->atk_pos[i].pos_prev.x, atk_coll->atk_pos[i].pos_prev.y, atk_coll->atk_pos[i].pos_prev.z);
 
                 gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -70,7 +70,7 @@ void wpDisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
             }
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixTranslate(mtx_store.gbi, atk_coll->hit_positions[i].pos.x, atk_coll->hit_positions[i].pos.y, atk_coll->hit_positions[i].pos.z);
+            syMatrixTranslate(mtx_store.gbi, atk_coll->atk_pos[i].pos.x, atk_coll->atk_pos[i].pos.y, atk_coll->atk_pos[i].pos.z);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 

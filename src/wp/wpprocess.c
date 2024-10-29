@@ -31,7 +31,7 @@ void wpProcessUpdateHitPositions(GObj *weapon_gobj) // Update hitbox(es?)
 
     for (i = 0; i < wp->atk_coll.atk_count; i++)
     {
-        WPAttackPos *positions = &wp->atk_coll.hit_positions[i];
+        WPAttackPos *positions = &wp->atk_coll.atk_pos[i];
         Vec3f *offset = &wp->atk_coll.offset[i];
         Vec3f *translate = &dobj->translate.vec.f;
 
@@ -320,7 +320,7 @@ void wpProcessUpdateAttackStatWeapon(WPStruct *this_wp, WPAttackColl *this_hit, 
     Vec3f pos;
     s32 priority_high;
 
-    gmCollisionGetWeaponHitWeaponHitPosition(&pos, victim_hit, victim_atk_id, this_hit, this_atk_id);
+    gmCollisionGetWeaponAttacksPosition(&pos, victim_hit, victim_atk_id, this_hit, this_atk_id);
 
     priority_high = this_hit->priority;
 
@@ -420,7 +420,7 @@ void wpProcessProcSearchHitWeapon(GObj *this_gobj) // Scan for hitbox collision 
                                 {
                                     for (j = 0; j < this_hit->atk_count; j++)
                                     {
-                                        if (gmCollisionCheckWeaponHitWeaponHitCollide(other_hit, i, this_hit, j) != FALSE)
+                                        if (gmCollisionCheckWeaponAttacksCollide(other_hit, i, this_hit, j) != FALSE)
                                         {
                                             wpProcessUpdateAttackStatWeapon(other_wp, other_hit, i, this_wp, this_hit, j, other_gobj, this_gobj);
 

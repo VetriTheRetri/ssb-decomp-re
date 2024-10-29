@@ -5,8 +5,8 @@
 #include "ftfunctions.h"
 #include "ftcommondata.h"
 
-extern sb32 gFTMainIsHurtDetect[4];
-extern sb32 gFTMainIsHitDetect[4];
+extern sb32 gFTMainIsDamageDetect[4];
+extern sb32 gFTMainIsAttackDetect[4];
 
 extern Gfx dFTDisplayMainHurtCollisionCuboidDL[/* */];
 extern Gfx dFTDisplayMainHitCollisionEdgeDL[/* */];
@@ -34,14 +34,14 @@ extern FTOpeningDesc D_ovl1_80390BE8;
 
 #define FTKeyGetStickRange(input_seq) (FTKeyCommandCast((input_seq), Vec2b))
 
-#define ftGetComTargetFighter(ft_com) \
-((FTStruct*)(ft_com)->target_user)
+#define ftGetComTargetFighter(com) \
+((FTStruct*)(com)->target_user)
 
-#define ftGetComTargetWeapon(ft_com) \
-((WPStruct*)(ft_com)->target_user)
+#define ftGetComTargetWeapon(com) \
+((WPStruct*)(com)->target_user)
 
-#define ftGetComTargetItem(ft_com) \
-((ITStruct*)(ft_com)->target_user)
+#define ftGetComTargetItem(com) \
+((ITStruct*)(com)->target_user)
 
 // Macro to check if a move has been interrupted by any standard action
 #define ftCommonGroundCheckInterrupt(fighter_gobj)                    	\

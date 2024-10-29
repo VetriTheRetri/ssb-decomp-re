@@ -715,9 +715,9 @@ void scManagerInspectGObj(GObj *gobj)
     ITStruct *ip;
     EFStruct *ep;
 
-    syErrorDebugPrintf("gobj id:%d:", gobj->gobj_id);
+    syErrorDebugPrintf("gobj id:%d:", gobj->id);
 
-    switch (gobj->gobj_id)
+    switch (gobj->id)
     {
     case nGCCommonKindFighter:
         fp = ftGetStruct(gobj);

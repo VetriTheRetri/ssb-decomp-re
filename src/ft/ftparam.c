@@ -592,11 +592,11 @@ void ftParamSetHitStatusPartAll(GObj *fighter_gobj, s32 hitstatus)
 
     for (i = 0; i < ARRAY_COUNT(fp->dmg_colls); i++)
     {
-        FTDamageColl *ft_dmgcoll = &fp->dmg_colls[i];
+        FTDamageColl *dmg_coll = &fp->dmg_colls[i];
 
-        if (ft_dmgcoll->hitstatus != nGMHitStatusNone)
+        if (dmg_coll->hitstatus != nGMHitStatusNone)
         {
-            ft_dmgcoll->hitstatus = hitstatus;
+            dmg_coll->hitstatus = hitstatus;
         }
     }
     fp->is_hitstatus_nodamage = (hitstatus == nGMHitStatusNormal) ? FALSE : TRUE;
@@ -612,17 +612,22 @@ void ftParamSetHitStatusPartID(GObj *fighter_gobj, s32 joint_id, s32 hitstatus)
 
     for (i = 0; i < ARRAY_COUNT(fp->dmg_colls); i++)
     {
-        FTDamageColl *ft_dmgcoll = &fp->dmg_colls[i];
+        FTDamageColl *dmg_coll = &fp->dmg_colls[i];
 
-        if ((ft_dmgcoll->hitstatus != nGMHitStatusNone) && (joint_id == ft_dmgcoll->joint_id))
+        if ((dmg_coll->hitstatus != nGMHitStatusNone) && (joint_id == dmg_coll->joint_id))
         {
-            ft_dmgcoll->hitstatus = hitstatus;
+            dmg_coll->hitstatus = hitstatus;
 
-            if (ft_dmgcoll->hitstatus != nGMHitStatusNormal)
+            if (dmg_coll->hitstatus != nGMHitStatusNormal)
             {
                 fp->is_hitstatus_nodamage = TRUE;
             }
-            return; // This means if there are multiple hurtboxes on the same bone/joint ID, only the first one is checked; same as Melee with Mr. Game & Watch / Fox's nose hurtboxes 
+            /*
+             * This approach means if there are multiple hurtboxes on the same bone/joint ID, only the first one is checked
+             * Same issue as Melee with Mr. Game & Watch / Fox's nose hurtboxes
+             */
+
+            return;
         }
     }
 }
@@ -649,15 +654,15 @@ s32 ftParamGetBestHitStatusPart(GObj *fighter_gobj)
     {
         for (i = 1; i < ARRAY_COUNT(fp->dmg_colls); i++)
         {
-            FTDamageColl *ft_dmgcoll = &fp->dmg_colls[i];
+            FTDamageColl *dmg_coll = &fp->dmg_colls[i];
 
-            if (ft_dmgcoll->hitstatus == nGMHitStatusNone) 
+            if (dmg_coll->hitstatus == nGMHitStatusNone) 
             {
                 break;
             }
-            else if (hitstatus_best > ft_dmgcoll->hitstatus)
+            else if (hitstatus_best > dmg_coll->hitstatus)
             {
-                hitstatus_best = ft_dmgcoll->hitstatus;
+                hitstatus_best = dmg_coll->hitstatus;
             }
         }
     }
@@ -686,48 +691,48 @@ s32 ftParamGetBestHitStatusAll(GObj *fighter_gobj)
 }
 
 // 0x800E8B00
-void ftParamResetFighterHurtPartAll(GObj *fighter_gobj)
+void ftParamResetFighterDamagePartAll(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTDamageColl *ft_dmgcoll = &fp->dmg_colls[0];
-    FTDamageCollDesc *ft_dmgcoll_desc = &fp->attributes->dmg_colls_desc[0];
+    FTDamageColl *dmg_coll = &fp->dmg_colls[0];
+    FTDamageCollDesc *dmg_coll_desc = &fp->attributes->dmg_colls_desc[0];
     s32 i;
 
-    for (i = 0; i < FTPARTS_HURT_NUM_MAX; i++, ft_dmgcoll++, ft_dmgcoll_desc++)
+    for (i = 0; i < FTPARTS_HURT_NUM_MAX; i++, dmg_coll++, dmg_coll_desc++)
     {
-        if (ft_dmgcoll_desc->joint_id != -1)
+        if (dmg_coll_desc->joint_id != -1)
         {
-            ft_dmgcoll->joint_id = ft_dmgcoll_desc->joint_id;
-            ft_dmgcoll->joint = fp->joints[ft_dmgcoll->joint_id];
+            dmg_coll->joint_id = dmg_coll_desc->joint_id;
+            dmg_coll->joint = fp->joints[dmg_coll->joint_id];
 
-            ft_dmgcoll->placement = ft_dmgcoll_desc->placement;
-            ft_dmgcoll->is_grabbable = ft_dmgcoll_desc->is_grabbable;
+            dmg_coll->placement = dmg_coll_desc->placement;
+            dmg_coll->is_grabbable = dmg_coll_desc->is_grabbable;
 
-            ft_dmgcoll->offset = ft_dmgcoll_desc->offset;
-            ft_dmgcoll->size = ft_dmgcoll_desc->size;
+            dmg_coll->offset = dmg_coll_desc->offset;
+            dmg_coll->size = dmg_coll_desc->size;
 
-            ft_dmgcoll->size.x *= 0.5F;
-            ft_dmgcoll->size.y *= 0.5F;
-            ft_dmgcoll->size.z *= 0.5F;
+            dmg_coll->size.x *= 0.5F;
+            dmg_coll->size.y *= 0.5F;
+            dmg_coll->size.z *= 0.5F;
         }
     }
     fp->is_hurtbox_modify = FALSE;
 }
 
 // 0x800E8BC8
-void ftParamModifyFighterHurtPartID(GObj *fighter_gobj, s32 joint_id, Vec3f *offset, Vec3f *size)
+void ftParamModifyFighterDamagePartID(GObj *fighter_gobj, s32 joint_id, Vec3f *offset, Vec3f *size)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
 
     for (i = 0; i < ARRAY_COUNT(fp->dmg_colls); i++)
     {
-        FTDamageColl *ft_dmgcoll = &fp->dmg_colls[i];
+        FTDamageColl *dmg_coll = &fp->dmg_colls[i];
 
-        if (joint_id == ft_dmgcoll->joint_id)
+        if (joint_id == dmg_coll->joint_id)
         {
-            ft_dmgcoll->offset = *offset;
-            ft_dmgcoll->size = *size;
+            dmg_coll->offset = *offset;
+            dmg_coll->size = *size;
 
             fp->dmg_colls[i].size.x *= 0.5F;
             fp->dmg_colls[i].size.y *= 0.5F;

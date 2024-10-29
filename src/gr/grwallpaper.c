@@ -339,7 +339,7 @@ void grWallpaperResumeAll(void)
 
     while (gobj != NULL)
     {
-        if (gobj->gobj_id == nGCCommonKindWallpaper)
+        if (gobj->id == nGCCommonKindWallpaper)
         {
             gcResumeProcessAll(gobj);
         }

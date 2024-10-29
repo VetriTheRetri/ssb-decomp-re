@@ -694,12 +694,12 @@ void func_ovl59_8013202C(GObj *arg0)
 		gcAddGObjProcess(gobj, func_ovl59_80131F34, nGCProcessKindProc, 1);
 
 		gobj->user_data.p = arg0;
-		ugobj->unk_0x1C = gobj;
+		ugobj->unk_gobj_0x1C = gobj;
 	}
 	else
 	{
 		gobj->user_data.p = arg0;
-		ugobj->unk_0x1C = gobj;
+		ugobj->unk_gobj_0x1C = gobj;
 	}
 }
 

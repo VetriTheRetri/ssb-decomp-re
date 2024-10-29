@@ -176,11 +176,11 @@ sb32 itNBumperFallProcUpdate(GObj *item_gobj)
 
     itMainApplyGravityClampTVel(ip, ITBUMPER_GRAVITY_NORMAL, ITBUMPER_TVEL);
 
-    if (ip->it_multi != 0)
+    if (ip->multi != 0)
     {
-        dobj->scale.vec.f.x = dobj->scale.vec.f.y = dobj->scale.vec.f.z = (2.0F - (10 - ip->it_multi) * 0.1F);
+        dobj->scale.vec.f.x = dobj->scale.vec.f.y = dobj->scale.vec.f.z = (2.0F - (10 - ip->multi) * 0.1F);
 
-        ip->it_multi--;
+        ip->multi--;
     }
     else dobj->scale.vec.f.x = dobj->scale.vec.f.y = dobj->scale.vec.f.z = 1.0F;
     
@@ -230,7 +230,7 @@ sb32 itNBumperThrownProcHit(GObj *item_gobj)
     ip->physics.vel_air.x = ITBUMPER_REBOUND_AIR_X * ip->attack_lr;
     ip->physics.vel_air.y = ITBUMPER_REBOUND_AIR_Y;
 
-    ip->it_multi = ITBUMPER_HIT_SCALE;
+    ip->multi = ITBUMPER_HIT_SCALE;
 
     itNBumperHitAirSetStatus(item_gobj);
 
@@ -410,7 +410,7 @@ sb32 itNBumperAttachedProcHit(GObj *item_gobj)
 
     ip->physics.vel_air.x = ip->attack_lr * ITBUMPER_REBOUND_VEL_X;
 
-    ip->it_multi = ITBUMPER_HIT_SCALE;
+    ip->multi = ITBUMPER_HIT_SCALE;
 
     return FALSE;
 }
@@ -450,15 +450,15 @@ sb32 itNBumperAttachedProcUpdate(GObj *item_gobj)
             }
         }
     }
-    if (ip->it_multi < ITBUMPER_RESETVEL_TIMER)
+    if (ip->multi < ITBUMPER_RESETVEL_TIMER)
     {
         ip->physics.vel_air.x = 0.0F;
     }
-    if (ip->it_multi != 0)
+    if (ip->multi != 0)
     {
-        dobj->scale.vec.f.x = dobj->scale.vec.f.z = 2.0F - ((10 - ip->it_multi) * 0.1F);
+        dobj->scale.vec.f.x = dobj->scale.vec.f.z = 2.0F - ((10 - ip->multi) * 0.1F);
 
-        ip->it_multi--;
+        ip->multi--;
     }
     else dobj->scale.vec.f.x = dobj->scale.vec.f.y = dobj->scale.vec.f.z = 1.0F;
     
@@ -489,7 +489,7 @@ sb32 itNBumperAttachedProcMap(GObj *item_gobj)
 
             joint->mobj->palette_id = 0.0F;
         }
-        else if (ip->it_multi == 0)
+        else if (ip->multi == 0)
         {
             itNBumperAttachedSetModelYaw(item_gobj);
         }
@@ -515,7 +515,7 @@ sb32 itNBumperAttachedProcReflector(GObj *item_gobj)
 
     ip->lr = fp->lr;
 
-    ip->it_multi = ITBUMPER_HIT_SCALE;
+    ip->multi = ITBUMPER_HIT_SCALE;
 
     itMainClearOwnerStats(item_gobj);
 
@@ -543,11 +543,11 @@ sb32 itNBumperHitAirProcUpdate(GObj *item_gobj)
 
     itMainApplyGravityClampTVel(ip, ITBUMPER_GRAVITY_HIT, ITBUMPER_TVEL);
 
-    if (ip->it_multi != 0)
+    if (ip->multi != 0)
     {
-        dobj->scale.vec.f.x = dobj->scale.vec.f.y = dobj->scale.vec.f.z = (2.0F - (10 - ip->it_multi) * 0.1F);
+        dobj->scale.vec.f.x = dobj->scale.vec.f.y = dobj->scale.vec.f.z = (2.0F - (10 - ip->multi) * 0.1F);
 
-        ip->it_multi--;
+        ip->multi--;
     }
     else dobj->scale.vec.f.x = dobj->scale.vec.f.y = dobj->scale.vec.f.z = 1;
     
@@ -632,7 +632,7 @@ GObj* itNBumperMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip = itGetStruct(item_gobj);
 
-        ip->it_multi = 0;
+        ip->multi = 0;
 
         ip->atk_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
 

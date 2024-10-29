@@ -226,7 +226,7 @@ sb32 itLizardonAttackProcUpdate(GObj *item_gobj)
     }
     ip->item_vars.lizardon.flame_spawn_wait--;
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         return TRUE;
     }
@@ -251,7 +251,7 @@ sb32 itLizardonAttackProcUpdate(GObj *item_gobj)
     }
     ip->item_vars.lizardon.turn_wait--;
 
-    ip->it_multi--;
+    ip->multi--;
 
     return FALSE;
 }
@@ -304,9 +304,9 @@ sb32 itLizardonCommonProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
-        ip->it_multi = ITLIZARDON_LIFETIME;
+        ip->multi = ITLIZARDON_LIFETIME;
 
         ip->physics.vel_air.y = 0.0F;
 
@@ -316,7 +316,7 @@ sb32 itLizardonCommonProcUpdate(GObj *item_gobj)
         }
         itLizardonFallSetStatus(item_gobj);
     }
-    ip->it_multi--;
+    ip->multi--;
 
     return FALSE;
 }
@@ -351,7 +351,7 @@ GObj* itLizardonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip = itGetStruct(item_gobj);
 
-        ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
+        ip->multi = ITMONSTER_RISE_STOP_WAIT;
 
         ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
         ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;

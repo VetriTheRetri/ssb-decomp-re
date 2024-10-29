@@ -52,7 +52,7 @@ void itPorygonCommonUpdateMonsterEvent(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     ITMonsterEvent *hit_party = itGetMonsterEvent(dITPorygonItemDesc, lITPorygonHitParties); // (ITMonsterEvent*) ((uintptr_t)*dITPorygonItemDesc.p_file + (intptr_t)&Porygon_Event); // Linker thing
 
-    if (ip->it_multi == hit_party[ip->item_event_id].timer)
+    if (ip->multi == hit_party[ip->item_event_id].timer)
     {
         ip->atk_coll.angle            = hit_party[ip->item_event_id].angle;
         ip->atk_coll.damage           = hit_party[ip->item_event_id].damage;
@@ -72,9 +72,9 @@ void itPorygonCommonUpdateMonsterEvent(GObj *item_gobj)
             ip->item_event_id = 1;
         }
     }
-    ip->it_multi++;
+    ip->multi++;
 
-    if (ip->it_multi == ITPORYGON_SHAKE_STOP_WAIT)
+    if (ip->multi == ITPORYGON_SHAKE_STOP_WAIT)
     {
         Vec3f pos = DObjGetStruct(item_gobj)->translate.vec.f;
 
@@ -117,7 +117,7 @@ GObj* itPorygonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->is_allow_knockback = TRUE;
 
-        ip->it_multi = 0;
+        ip->multi = 0;
 
         ip->item_event_id = 0;
 

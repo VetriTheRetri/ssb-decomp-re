@@ -206,7 +206,7 @@ sb32 itFFlowerThrownProcMap(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         return itMapCheckDestroyLanding(item_gobj, ITFFLOWER_MAP_REBOUND_COMMON);
     }
@@ -236,7 +236,7 @@ sb32 itFFlowerDroppedProcMap(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         return itMapCheckDestroyLanding(item_gobj, ITFFLOWER_MAP_REBOUND_COMMON);
     }
@@ -258,7 +258,7 @@ GObj* itFFlowerMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         ITStruct *ip = itGetStruct(item_gobj);
 
-        ip->it_multi = ITFFLOWER_AMMO_MAX;
+        ip->multi = ITFFLOWER_AMMO_MAX;
 
         ip->is_unused_item_bool = TRUE;
 
@@ -356,5 +356,5 @@ void itFFlowerShootFlame(GObj *fighter_gobj, Vec3f *pos, s32 index, s32 ammo_sub
 
     itFFlowerWeaponFlameMakeWeapon(fighter_gobj, pos, &vel);
 
-    ip->it_multi -= ammo_sub;
+    ip->multi -= ammo_sub;
 }

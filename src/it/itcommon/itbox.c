@@ -441,9 +441,9 @@ sb32 itBoxExplodeProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->it_multi++;
+    ip->multi++;
 
-    if (ip->it_multi == ITBOX_EXPLODE_FRAME_END)
+    if (ip->multi == ITBOX_EXPLODE_FRAME_END)
     {
         return TRUE;
     }
@@ -477,7 +477,7 @@ void itBoxExplodeInitItemVars(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
 
     ip->item_event_id = 0;
-    ip->it_multi = 0;
+    ip->multi = 0;
 
     ip->atk_coll.hit_sfx = nSYAudioFGMExplodeL;
 

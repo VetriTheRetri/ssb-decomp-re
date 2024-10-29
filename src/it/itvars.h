@@ -200,7 +200,7 @@
 	60 // Bumper's lifetime is reset to this value; there is no hitbox during
 	   // this state, and it vanishes for good once it runs out
 #define ITBUMPER_RESETVEL_TIMER                                                                                       \
-	4 // Bumper's X-velocity is reset to 0.0 when it_multi is less than this
+	4 // Bumper's X-velocity is reset to 0.0 when multi is less than this
 	  // value
 #define ITBUMPER_DAMAGE_ALL_WAIT 16
 #define ITBUMPER_HIT_SCALE 10	   // Initial of bumper when hitting a target while airborne

@@ -247,7 +247,7 @@ sb32 itStarRodDroppedProcMap(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         return itMapCheckDestroyLanding(item_gobj, ITSTARROD_MAP_REBOUND_COMMON);
     }
@@ -270,7 +270,7 @@ GObj* itStarRodMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         ITStruct *ip = itGetStruct(item_gobj);
 
-        ip->it_multi = ITSTARROD_AMMO_MAX;
+        ip->multi = ITSTARROD_AMMO_MAX;
 
         ip->is_unused_item_bool = TRUE;
 
@@ -413,5 +413,5 @@ void itStarRodMakeStar(GObj *fighter_gobj, Vec3f *pos, ub8 is_smash)
 
     itStarRodWeaponStarMakeWeapon(fighter_gobj, pos, is_smash);
 
-    ip->it_multi--;
+    ip->multi--;
 }

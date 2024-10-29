@@ -246,7 +246,7 @@ void itKamexAppearSetStatus(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->it_multi = ITKAMEX_LIFETIME;
+    ip->multi = ITKAMEX_LIFETIME;
 
     if (ip->it_kind == nITKindKamex)
     {
@@ -260,7 +260,7 @@ sb32 itKamexAttackProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         return TRUE;
     }
@@ -272,7 +272,7 @@ sb32 itKamexAttackProcUpdate(GObj *item_gobj)
     }
     ip->item_vars.kamex.hydro_spawn_wait--;
 
-    ip->it_multi--;
+    ip->multi--;
 
     return FALSE;
 }
@@ -293,7 +293,7 @@ void itKamexAttackInitItemVars(GObj *item_gobj, sb32 is_ignore_setup)
 
     if (is_ignore_setup == FALSE)
     {
-        ip->it_multi = ITKAMEX_LIFETIME;
+        ip->multi = ITKAMEX_LIFETIME;
 
         if (ip->it_kind == nITKindKamex)
         {
@@ -325,13 +325,13 @@ sb32 itKamexCommonProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         ip->physics.vel_air.y = 0.0F;
 
         itKamexAppearSetStatus(item_gobj);
     }
-    ip->it_multi--;
+    ip->multi--;
 
     return FALSE;
 }
@@ -411,7 +411,7 @@ GObj* itKamexMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         kamex_ip = itGetStruct(item_gobj);
 
-        kamex_ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
+        kamex_ip->multi = ITMONSTER_RISE_STOP_WAIT;
 
         kamex_ip->physics.vel_air.x = kamex_ip->physics.vel_air.z = 0.0F;
         kamex_ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;

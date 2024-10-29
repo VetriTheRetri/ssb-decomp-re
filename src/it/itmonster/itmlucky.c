@@ -130,7 +130,7 @@ void itMLuckyMakeEggInitItemVars(GObj *item_gobj)
 
     ip->item_vars.mlucky.egg_spawn_wait = ITMLUCKY_EGG_SPAWN_WAIT_CONST;
 
-    ip->it_multi = ITMLUCKY_EGG_SPAWN_COUNT;
+    ip->multi = ITMLUCKY_EGG_SPAWN_COUNT;
 }
 
 // 0x80181048
@@ -154,7 +154,7 @@ sb32 itMLuckyFallProcMap(GObj *item_gobj)
     {
         ip->physics.vel_air.y = 0.0F;
 
-        if (ip->it_multi != 0)
+        if (ip->multi != 0)
         {
             itMLuckyMakeEggSetStatus(item_gobj);
         }
@@ -224,7 +224,7 @@ sb32 itMLuckyMakeEggProcUpdate(GObj *lucky_gobj)
     Vec3f pos;
     Vec3f vel;
 
-    if (lucky_ip->it_multi == 0)
+    if (lucky_ip->multi == 0)
     {
         itMLuckyDisappearSetStatus(lucky_gobj);
 
@@ -251,7 +251,7 @@ sb32 itMLuckyMakeEggProcUpdate(GObj *lucky_gobj)
                     func_800269C0_275C0(nSYAudioFGMKirbySpecialLwStart);
 
                     lucky_ip->item_vars.mlucky.egg_spawn_wait = ITMLUCKY_EGG_SPAWN_WAIT_CONST;
-                    lucky_ip->it_multi--;
+                    lucky_ip->multi--;
 
                     efManagerDustLightMakeEffect(&pos, egg_ip->lr, 1.0F);
                 }
@@ -259,7 +259,7 @@ sb32 itMLuckyMakeEggProcUpdate(GObj *lucky_gobj)
             else
             {
                 lucky_ip->item_vars.mlucky.egg_spawn_wait = ITMLUCKY_EGG_SPAWN_WAIT_CONST;
-                lucky_ip->it_multi--;
+                lucky_ip->multi--;
             }
         }
         if (lucky_ip->item_vars.mlucky.egg_spawn_wait > 0)
@@ -325,13 +325,13 @@ sb32 itMLuckyCommonProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         ip->physics.vel_air.y = 0.0F;
 
         itMLuckyAppearSetStatus(item_gobj);
     }
-    ip->it_multi--;
+    ip->multi--;
 
     return FALSE;
 }
@@ -365,7 +365,7 @@ GObj* itMLuckyMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip = itGetStruct(item_gobj);
 
-        ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
+        ip->multi = ITMONSTER_RISE_STOP_WAIT;
         
         ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
         ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;

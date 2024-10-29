@@ -107,7 +107,7 @@ void itMarumineExplodeUpdateHitEvent(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     ITAttackEvent *ev = itGetHitEvent(dITMarumineItemDesc, lITMarumineHitEvents); // (ITAttackEvent*) ((uintptr_t)*dITMarumineItemDesc.p_file + (intptr_t)&lITMarumineHitEvents); // Linker thing
 
-    if (ip->it_multi == ev[ip->item_event_id].timer)
+    if (ip->multi == ev[ip->item_event_id].timer)
     {
         ip->atk_coll.angle  = ev[ip->item_event_id].angle;
         ip->atk_coll.damage = ev[ip->item_event_id].damage;
@@ -163,9 +163,9 @@ sb32 itMarumineExplodeProcUpdate(GObj *item_gobj)
 
     itMarumineExplodeUpdateHitEvent(item_gobj);
 
-    ip->it_multi++;
+    ip->multi++;
 
-    if (ip->it_multi == ITMARUMINE_EXPLODE_LIFETIME)
+    if (ip->multi == ITMARUMINE_EXPLODE_LIFETIME)
     {
         grYamabukiGateSetClosedWait();
 
@@ -179,7 +179,7 @@ void itMarumineExplodeSetStatus(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->it_multi = 0;
+    ip->multi = 0;
 
     ip->atk_coll.throw_mul = 1.0F;
 

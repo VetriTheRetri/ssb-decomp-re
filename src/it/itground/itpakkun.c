@@ -183,12 +183,12 @@ sb32 itPakkunWaitProcUpdate(GObj *item_gobj)
 
     if (ip->item_vars.pakkun.is_wait_fighter != FALSE)
     {
-        ip->it_multi = ITPAKKUN_APPEAR_WAIT;
+        ip->multi = ITPAKKUN_APPEAR_WAIT;
         ip->item_vars.pakkun.is_wait_fighter = FALSE;
     }
-    ip->it_multi--;
+    ip->multi--;
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         if (itPakkunCommonCheckNoPlayersNear(item_gobj) != FALSE)
         {
@@ -202,7 +202,7 @@ sb32 itPakkunWaitProcUpdate(GObj *item_gobj)
 
             itPakkunAppearSetStatus(item_gobj);
         }
-        else ip->it_multi = ITPAKKUN_APPEAR_WAIT;
+        else ip->multi = ITPAKKUN_APPEAR_WAIT;
     }
     return FALSE;
 }
@@ -212,7 +212,7 @@ void itPakkunWaitInitItemVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->it_multi = ITPAKKUN_APPEAR_WAIT;
+    ip->multi = ITPAKKUN_APPEAR_WAIT;
 
     itPakkunWaitSetStatus(item_gobj);
 
@@ -324,7 +324,7 @@ sb32 itPakkunDamagedProcDead(GObj *item_gobj)
 
     dobj->translate.vec.f = ip->item_vars.pakkun.pos;
 
-    ip->it_multi = ITPAKKUN_REBIRTH_WAIT;
+    ip->multi = ITPAKKUN_REBIRTH_WAIT;
 
     ip->physics.vel_air.x = 0.0F;
     ip->physics.vel_air.y = 0.0F;
@@ -354,7 +354,7 @@ GObj* itPakkunMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         DObjGetStruct(item_gobj)->translate.vec.f = *pos;
 
-        ip->it_multi = ITPAKKUN_APPEAR_WAIT;
+        ip->multi = ITPAKKUN_APPEAR_WAIT;
 
         ip->is_allow_knockback = TRUE;
 

@@ -58,11 +58,11 @@ sb32 itGBumperCommonProcUpdate(GObj *item_gobj)
     }
     else ip->item_vars.bumper.hit_anim_length--;
     
-    if (ip->it_multi != 0)
+    if (ip->multi != 0)
     {
-        dobj->scale.vec.f.x = dobj->scale.vec.f.y = ( 2.0F - ( (10 - ip->it_multi) * 0.1F ) );
+        dobj->scale.vec.f.x = dobj->scale.vec.f.y = ( 2.0F - ( (10 - ip->multi) * 0.1F ) );
 
-        ip->it_multi--;
+        ip->multi--;
     }
     else dobj->scale.vec.f.x = dobj->scale.vec.f.y = 1;
     
@@ -82,7 +82,7 @@ sb32 itGBumperCommonProcHit(GObj *item_gobj)
 
     dobj->mobj->palette_id = 1.0F;
 
-    ip->it_multi = ITBUMPER_HIT_SCALE;
+    ip->multi = ITBUMPER_HIT_SCALE;
 
     return FALSE;
 }
@@ -102,7 +102,7 @@ GObj* itGBumperMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip = itGetStruct(item_gobj);
         dobj = DObjGetStruct(item_gobj);
 
-        ip->it_multi = 0;
+        ip->multi = 0;
 
         ip->atk_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
         ip->atk_coll.can_rehit_shield = TRUE;

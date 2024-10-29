@@ -322,7 +322,7 @@ sb32 itMBallOpenProcUpdate(GObj *mball_gobj)
     Vec3f vel;
     s32 unused[2];
 
-    if (mball_ip->it_multi == 0)
+    if (mball_ip->multi == 0)
     {
         vel.x = vel.y = vel.z = 0.0F;
 
@@ -347,7 +347,7 @@ sb32 itMBallOpenProcUpdate(GObj *mball_gobj)
         }
         return TRUE;
     }
-    mball_ip->it_multi--;
+    mball_ip->multi--;
 
     if (mball_ip->item_vars.mball.effect_gobj != NULL)
     {
@@ -430,7 +430,7 @@ sb32 itMBallOpenAirProcUpdate(GObj *mball_gobj)
     Vec3f vel;
     s32 unused[2];
 
-    if (mball_ip->it_multi == 0)
+    if (mball_ip->multi == 0)
     {
         vel.x = vel.y = vel.z = 0.0F;
 
@@ -455,7 +455,7 @@ sb32 itMBallOpenAirProcUpdate(GObj *mball_gobj)
         }
         return TRUE;
     }
-    mball_ip->it_multi--;
+    mball_ip->multi--;
 
     if (mball_ip->item_vars.mball.effect_gobj != NULL)
     {
@@ -497,7 +497,7 @@ GObj* itMBallMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f = translate;
 
-        ip->it_multi = ITMBALL_SPAWN_WAIT;
+        ip->multi = ITMBALL_SPAWN_WAIT;
 
         ip->item_vars.mball.is_rebound = FALSE;
 

@@ -420,9 +420,9 @@ sb32 itMSBombAttachedProcUpdate(GObj *item_gobj)
     DObj *item_dobj = DObjGetStruct(item_gobj);
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi < ITMSBOMB_DETECT_FIGHTER_DELAY)
+    if (ip->multi < ITMSBOMB_DETECT_FIGHTER_DELAY)
     {
-        ip->it_multi++;
+        ip->multi++;
     }
     else
     {
@@ -478,7 +478,7 @@ void itMSBombExplodeUpdateHitEvent(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     ITAttackEvent *ev = itGetHitEvent(dITMSBombItemDesc, lITMSBombHitEvents); // (ITAttackEvent *)((uintptr_t)*dITMSBombItemDesc.p_file + &lITMSBombHitEvents); - Linker thing
 
-    if (ip->it_multi == ev[ip->item_event_id].timer)
+    if (ip->multi == ev[ip->item_event_id].timer)
     {
         ip->atk_coll.angle  = ev[ip->item_event_id].angle;
         ip->atk_coll.damage = ev[ip->item_event_id].damage;
@@ -524,9 +524,9 @@ sb32 itMSBombDetachedProcUpdate(GObj *item_gobj)
 
     itMainApplyGravityClampTVel(ip, ITMSBOMB_GRAVITY, ITMSBOMB_TVEL);
 
-    if (ip->it_multi < ITMSBOMB_DETECT_FIGHTER_DELAY)
+    if (ip->multi < ITMSBOMB_DETECT_FIGHTER_DELAY)
     {
-        ip->it_multi++;
+        ip->multi++;
     }
     else
     {
@@ -568,7 +568,7 @@ void itMSBombExplodeInitItemVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->it_multi = 0;
+    ip->multi = 0;
 
     ip->item_event_id = 0;
 
@@ -587,9 +587,9 @@ sb32 itMSBombExplodeProcUpdate(GObj *item_gobj)
 
     itMSBombExplodeUpdateHitEvent(item_gobj);
 
-    ip->it_multi++;
+    ip->multi++;
 
-    if (ip->it_multi == ITMSBOMB_EXPLODE_LIFETIME)
+    if (ip->multi == ITMSBOMB_EXPLODE_LIFETIME)
     {
         return TRUE;
     }
@@ -627,7 +627,7 @@ GObj* itMSBombMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip = itGetStruct(item_gobj);
 
-        ip->it_multi = 0;
+        ip->multi = 0;
 
         ip->is_unused_item_bool = TRUE;
 

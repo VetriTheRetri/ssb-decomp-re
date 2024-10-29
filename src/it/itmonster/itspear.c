@@ -188,7 +188,7 @@ void itSpearAppearInitItemVars(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    ip->it_multi = 0;
+    ip->multi = 0;
 
     ip->physics.vel_air.y = 0;
 
@@ -290,11 +290,11 @@ sb32 itSpearCommonProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         itSpearAppearSetStatus(item_gobj);
     }
-    ip->it_multi--;
+    ip->multi--;
 
     return FALSE;
 }
@@ -339,7 +339,7 @@ GObj* itSpearMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         }
         else ip->lr = +1;
 
-        ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
+        ip->multi = ITMONSTER_RISE_STOP_WAIT;
 
         ip->atk_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
 

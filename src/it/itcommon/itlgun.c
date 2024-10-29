@@ -207,7 +207,7 @@ sb32 itLGunThrownProcMap(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         return itMapCheckDestroyLanding(item_gobj, ITLGUN_MAP_REBOUND_COMMON);
     }
@@ -241,7 +241,7 @@ sb32 itLGunDroppedProcMap(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         return itMapCheckDestroyLanding(item_gobj, ITLGUN_MAP_REBOUND_COMMON);
     }
@@ -267,7 +267,7 @@ GObj* itLGunMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         ITStruct *ip = itGetStruct(item_gobj);
 
-        ip->it_multi = ITLGUN_AMMO_MAX;
+        ip->multi = ITLGUN_AMMO_MAX;
 
         DObjGetStruct(item_gobj)->rotate.vec.f.y = ((mtTrigGetRandomUShort() % 2) != 0) ? F_CST_DTOR32(90.0F) : F_CST_DTOR32(-90.0F);
 
@@ -374,5 +374,5 @@ void itLGunMakeAmmo(GObj *fighter_gobj, Vec3f *pos)
 
     itLGunWeaponAmmoMakeWeapon(fighter_gobj, pos);
 
-    ip->it_multi--;
+    ip->multi--;
 }

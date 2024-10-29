@@ -79,7 +79,7 @@ s32 itMainGetWeightedItemKind(ITRandomWeights* container_drops);
 // Spawn new item from container?
 sb32 itMainMakeContainerItem(GObj* gobj);
 
-// Some basic item subaction event? Updates hitbox damage, size and angle; it_multi acts as asynchronous timer
+// Some basic item subaction event? Updates hitbox damage, size and angle; multi acts as asynchronous timer
 void itMainUpdateHitEvent(GObj* item_gobj, ITAttackEvent* ev);
 
 // Create Pokémon

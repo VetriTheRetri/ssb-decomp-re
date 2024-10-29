@@ -149,7 +149,7 @@ sb32 itStarmieAttackProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         return TRUE;
     }
@@ -159,7 +159,7 @@ sb32 itStarmieAttackProcUpdate(GObj *item_gobj)
 
     ip->physics.vel_air.x += ip->item_vars.starmie.add_vel_x;
 
-    ip->it_multi--;
+    ip->multi--;
 
     return FALSE;
 }
@@ -177,7 +177,7 @@ void itStarmieAttackInitItemVars(GObj *item_gobj)
     {
         dobj->rotate.vec.f.y += F_CST_DTOR32(180.0F);
     }
-    ip->it_multi = ITSTARMIE_LIFETIME;
+    ip->multi = ITSTARMIE_LIFETIME;
 
     ip->item_vars.starmie.swift_spawn_wait = 0;
     ip->item_vars.starmie.add_vel_x = ip->lr * ITSTARMIE_ADD_VEL_X;
@@ -318,13 +318,13 @@ sb32 itStarmieCommonProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {    
         ip->physics.vel_air.x = ip->physics.vel_air.y = 0.0F;
 
         itStarmieNFollowSetStatus(item_gobj);
     }
-    ip->it_multi--;
+    ip->multi--;
 
     return FALSE;
 }
@@ -351,7 +351,7 @@ GObj* itStarmieMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         DObj *dobj = DObjGetStruct(item_gobj);
         ITStruct *ip = itGetStruct(item_gobj);
 
-        ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
+        ip->multi = ITMONSTER_RISE_STOP_WAIT;
 
         ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
         ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;

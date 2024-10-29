@@ -192,11 +192,11 @@ sb32 itKabigonJumpProcUpdate(GObj *item_gobj)
 
     if (dobj->translate.vec.f.y >= (gMPCollisionGroundData->map_bound_top - ITKABIGON_MAP_OFF_Y))
     {
-        ip->it_multi--;
+        ip->multi--;
 
         ip->physics.vel_air.y = 0.0F;
 
-        if (ip->it_multi == 0)
+        if (ip->multi == 0)
         {
             itKabigonFallSetStatus(item_gobj);
         }
@@ -257,7 +257,7 @@ void itKabigonJumpInitItemVars(GObj *item_gobj)
 
     func_800269C0_275C0(nSYAudioFGMKabigonJump);
 
-    ip->it_multi = ITKABIGON_DROP_WAIT;
+    ip->multi = ITKABIGON_DROP_WAIT;
 
     ip->item_vars.kabigon.dust_effect_int = ITKABIGON_EFFECT_SPAWN_INT;
 
@@ -276,11 +276,11 @@ sb32 itKabigonCommonProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         itKabigonJumpSetStatus(item_gobj);
     }
-    ip->it_multi--;
+    ip->multi--;
 
     return FALSE;
 }
@@ -295,7 +295,7 @@ GObj* itKabigonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         DObj *dobj = DObjGetStruct(item_gobj);
         ITStruct *ip = itGetStruct(item_gobj);
 
-        ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
+        ip->multi = ITMONSTER_RISE_STOP_WAIT;
 
         ip->atk_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
 

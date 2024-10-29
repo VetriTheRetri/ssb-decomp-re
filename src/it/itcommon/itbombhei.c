@@ -323,7 +323,7 @@ sb32 itBombHeiWaitProcUpdate(GObj *item_gobj)
     void *dll = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkLeftDisplayList); // Linker thing
     s32 lr;
 
-    if (ip->it_multi == ITBOMBHEI_WALK_WAIT)
+    if (ip->multi == ITBOMBHEI_WALK_WAIT)
     {
         lr = itBombHeiWalkGetLR(item_gobj);
 
@@ -346,7 +346,7 @@ sb32 itBombHeiWaitProcUpdate(GObj *item_gobj)
         }
         itBombHeiWalkSetStatus(item_gobj);
     }
-    ip->it_multi++;
+    ip->multi++;
 
     return FALSE;
 }
@@ -487,13 +487,13 @@ sb32 itBombHeiWalkProcUpdate(GObj *item_gobj)
             }
         }
     }
-    if (ip->it_multi == ITBOMBHEI_FLASH_WAIT)
+    if (ip->multi == ITBOMBHEI_FLASH_WAIT)
     {
         ip->physics.vel_air.x = ip->physics.vel_air.y = ip->physics.vel_air.z = 0.0F;
 
         itBombHeiExplodeWaitSetStatus(item_gobj);
     }
-    ip->it_multi++;
+    ip->multi++;
 
     return FALSE;
 }
@@ -528,7 +528,7 @@ void itBombHeiWalkInitItemVars(GObj *item_gobj)
 
     ip->is_allow_pickup = FALSE;
 
-    ip->it_multi = 0;
+    ip->multi = 0;
 
     ip->item_vars.bombhei.smoke_delay = ITBOMBHEI_SMOKE_WAIT;
 
@@ -592,7 +592,7 @@ void itBombHeiCommonUpdateHitEvent(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     ITAttackEvent *ev = itGetHitEvent(dITBombHeiItemDesc, lITBombHeiHitEvents); // Linker thing
 
-    if (ip->it_multi == ev[ip->item_event_id].timer)
+    if (ip->multi == ev[ip->item_event_id].timer)
     {
         ip->atk_coll.angle = ev[ip->item_event_id].angle;
         ip->atk_coll.damage = ev[ip->item_event_id].damage;
@@ -644,7 +644,7 @@ void itBombHeiExplodeInitItemVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->it_multi = 0;
+    ip->multi = 0;
 
     ip->atk_coll.throw_mul = ITEM_STALE_DEFAULT;
 
@@ -660,9 +660,9 @@ sb32 itBombHeiExplodeProcUpdate(GObj *item_gobj)
 
     itBombHeiCommonUpdateHitEvent(item_gobj);
 
-    ip->it_multi++;
+    ip->multi++;
 
-    if (ip->it_multi == ITBOMBHEI_EXPLODE_LIFETIME)
+    if (ip->multi == ITBOMBHEI_EXPLODE_LIFETIME)
     {
         return TRUE;
     }
@@ -683,13 +683,13 @@ sb32 itBombHeiExplodeWaitProcUpdate(GObj *item_gobj)
 
     itBombHeiWalkUpdateEffect(item_gobj);
 
-    if (ip->it_multi == ITBOMBHEI_EXPLODE_WAIT)
+    if (ip->multi == ITBOMBHEI_EXPLODE_WAIT)
     {
         itBombHeiCommonCheckMakeDustEffect(item_gobj, TRUE);
         itBombHeiCommonClearVelSetExplode(item_gobj, 0);
         func_800269C0_275C0(nSYAudioFGMExplodeL);
     }
-    ip->it_multi++;
+    ip->multi++;
 
     return FALSE;
 }
@@ -708,7 +708,7 @@ void itBombHeiExplodeWaitInitItemVars(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    ip->it_multi = 0;
+    ip->multi = 0;
 
     dobj->mobj->matanim_joint.event32 = NULL;
 
@@ -739,7 +739,7 @@ GObj* itBombHeiMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip = itGetStruct(item_gobj);
 
-        ip->it_multi = 0;
+        ip->multi = 0;
 
         itMainClearOwnerStats(item_gobj);
 

@@ -187,13 +187,13 @@ sb32 itIwarkAttackProcUpdate(GObj *item_gobj)
         }
         ip->item_vars.iwark.rock_spawn_wait--;
     }
-    if (ip->it_multi == ITIWARK_MODEL_ROTATE_WAIT)
+    if (ip->multi == ITIWARK_MODEL_ROTATE_WAIT)
     {
         dobj->rotate.vec.f.y += F_CST_DTOR32(180.0F);
 
-        ip->it_multi = 0;
+        ip->multi = 0;
     }
-    ip->it_multi++;
+    ip->multi++;
 
     return FALSE;
 }
@@ -217,7 +217,7 @@ void itIwarkAttackInitItemVars(GObj *item_gobj)
     ip->item_vars.iwark.rumble_frame = 0;
     ip->item_vars.iwark.rumble_wait = 0;
 
-    ip->it_multi = 0;
+    ip->multi = 0;
 
     pos = dobj->translate.vec.f;
 
@@ -249,11 +249,11 @@ sb32 itIwarkFlyProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         itIwarkAttackSetStatus(item_gobj);
     }
-    ip->it_multi--;
+    ip->multi--;
 
     return FALSE;
 }
@@ -263,7 +263,7 @@ void itIwarkFlySetStatus(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->it_multi = ITIWARK_FLY_WAIT;
+    ip->multi = ITIWARK_FLY_WAIT;
 
     ip->physics.vel_air.x = ip->physics.vel_air.y = 0.0F;
 
@@ -275,11 +275,11 @@ sb32 itIwarkCommonProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         itIwarkFlySetStatus(item_gobj);
     }
-    ip->it_multi--;
+    ip->multi--;
 
     return FALSE;
 }
@@ -318,7 +318,7 @@ GObj* itIwarkMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip = itGetStruct(item_gobj);
 
-        ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
+        ip->multi = ITMONSTER_RISE_STOP_WAIT;
 
         ip->atk_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
 

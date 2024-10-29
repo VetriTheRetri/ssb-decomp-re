@@ -92,7 +92,7 @@ void itGLuckyCommonUpdateEggSpawn(GObj *lucky_gobj)
     Vec3f pos;
     Vec3f vel;
 
-    if (lucky_ip->it_multi == 0)
+    if (lucky_ip->multi == 0)
     {
         if (lucky_ip->item_vars.glucky.egg_spawn_count != 0)
         {
@@ -115,7 +115,7 @@ void itGLuckyCommonUpdateEggSpawn(GObj *lucky_gobj)
 
                     func_800269C0_275C0(nSYAudioFGMKirbySpecialLwStart); // Bruh lol
 
-                    lucky_ip->it_multi = 10;
+                    lucky_ip->multi = 10;
                     lucky_ip->item_vars.glucky.egg_spawn_count--;
 
                     efManagerDustLightMakeEffect(&pos, egg_ip->lr, 1.0F);
@@ -123,16 +123,16 @@ void itGLuckyCommonUpdateEggSpawn(GObj *lucky_gobj)
             }
             else
             {
-                lucky_ip->it_multi = 10;
+                lucky_ip->multi = 10;
                 lucky_ip->item_vars.glucky.egg_spawn_count--;
             }
         }
     }
     if (lucky_ip->item_vars.glucky.egg_spawn_count != 0)
     {
-        if (lucky_ip->it_multi > 0)
+        if (lucky_ip->multi > 0)
         {
-            lucky_ip->it_multi--;
+            lucky_ip->multi--;
         }
     }
 }
@@ -229,7 +229,7 @@ GObj* itGLuckyMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->is_allow_knockback = TRUE;
 
-        ip->it_multi = 0;
+        ip->multi = 0;
 
         ip->item_vars.glucky.egg_spawn_count = ITGLUCKY_EGG_SPAWN_COUNT;
 

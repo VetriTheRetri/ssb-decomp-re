@@ -52,9 +52,9 @@ sb32 itStarCommonProcUpdate(GObj *item_gobj)
 
     itMainApplyGravityClampTVel(ip, ITSTAR_GRAVITY, ITSTAR_TVEL);
 
-    ip->it_multi--;
+    ip->multi--;
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         itMainRefreshHit(item_gobj);
     }
@@ -115,7 +115,7 @@ GObj* itStarMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->atk_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER; // Star Man can only interact with fighters
         
-        ip->it_multi = ITSTAR_INTERACT_DELAY;
+        ip->multi = ITSTAR_INTERACT_DELAY;
 
         ip->is_unused_item_bool = TRUE;
 

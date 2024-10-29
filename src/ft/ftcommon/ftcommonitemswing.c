@@ -61,7 +61,7 @@ void ftCommonStarRodSwingProcUpdate(GObj *fighter_gobj)
         {
             ip = itGetStruct(fp->item_hold);
 
-            if (ip->it_multi != 0)
+            if (ip->multi != 0)
             {
                 func_800269C0_275C0(fp->command_vars.flags.flag1);
             }
@@ -74,7 +74,7 @@ void ftCommonStarRodSwingProcUpdate(GObj *fighter_gobj)
     {
         ip = itGetStruct(fp->item_hold);
 
-        if (ip->it_multi != 0)
+        if (ip->multi != 0)
         {
             // 0x80188600
             Vec3f make_star_offset = { 0.0F, 200.0F, 0.0F };

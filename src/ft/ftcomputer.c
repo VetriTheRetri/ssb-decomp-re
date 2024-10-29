@@ -6614,7 +6614,7 @@ void ftComputerFollowObjectiveUseItem(FTStruct *fp)
     switch (ip->type)
     {
     case nITTypeShoot:
-        if (ip->it_multi != 0)
+        if (ip->multi != 0)
         {
             ftComputerCheckFindTarget(fp);
             target_fp = ftGetComTargetFighter(com);

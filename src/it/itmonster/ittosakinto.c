@@ -122,7 +122,7 @@ void itTosakintoAppearSetStatus(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->it_multi = ITTOSAKINTO_LIFETIME;
+    ip->multi = ITTOSAKINTO_LIFETIME;
 
     if (ip->it_kind == nITKindTosakinto)
     {
@@ -138,11 +138,11 @@ sb32 itTosakintoBounceProcUpdate(GObj *item_gobj)
 
     itMainApplyGravityClampTVel(ip, ITTOSAKINTO_GRAVITY, ITTOSAKINTO_TVEL);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         return TRUE;
     }
-    ip->it_multi--;
+    ip->multi--;
 
     return FALSE;
 }
@@ -207,13 +207,13 @@ sb32 itTosakintoCommonProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         ip->physics.vel_air.y = 0.0F;
 
         itTosakintoAppearSetStatus(item_gobj);
     }
-    ip->it_multi--;
+    ip->multi--;
 
     return FALSE;
 }
@@ -250,7 +250,7 @@ GObj* itTosakintoMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip = itGetStruct(item_gobj);
 
-        ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
+        ip->multi = ITMONSTER_RISE_STOP_WAIT;
 
         ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
         ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;

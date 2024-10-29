@@ -277,7 +277,7 @@ struct ITStruct 					// Common items, stage hazards, fighter items and Pokémon
 
 	ub32 is_hitlag_victim : 1; 		// Item can deal hitlag to target
 
-	u16 it_multi;			  		// Multi-purpose, e.g. it is used as intangibility delay for Star Man and ammo count for Ray Gun
+	u16 multi;			  			// Multi-purpose variable; e.g. it is used as intangibility delay for Star Man and ammo count for Ray Gun
 
 	u32 item_event_id : 4; 			// Item hitbox script index? When in doubt, make this u8 : 4
 

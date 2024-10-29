@@ -328,9 +328,9 @@ sb32 itTaruExplodeProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->it_multi++;
+    ip->multi++;
 
-    if (ip->it_multi == ITTARU_EXPLODE_LIFETIME)
+    if (ip->multi == ITTARU_EXPLODE_LIFETIME)
     {
         return TRUE;
     }
@@ -418,7 +418,7 @@ void itTaruExplodeInitItemVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->it_multi = 0;
+    ip->multi = 0;
     ip->item_event_id = 0;
 
     ip->atk_coll.hit_sfx = nSYAudioFGMExplodeL;

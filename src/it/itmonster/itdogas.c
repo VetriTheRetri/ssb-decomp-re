@@ -121,11 +121,11 @@ sb32 itDogasDisappearProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         return TRUE;
     }
-    ip->it_multi--;
+    ip->multi--;
 
     return FALSE;
 }
@@ -135,7 +135,7 @@ void itDogasDisappearSetStatus(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->it_multi = ITDOGAS_DESPAWN_WAIT;
+    ip->multi = ITDOGAS_DESPAWN_WAIT;
 
     itMainSetItemStatus(item_gobj, dITDogasStatusDescs, itDogasStatusDisappear);
 }
@@ -172,7 +172,7 @@ void itDogasAttackUpdateSmog(GObj *item_gobj)
 
         ip->item_vars.dogas.smog_spawn_wait = ITDOGAS_SMOG_SPAWN_WAIT;
 
-        ip->it_multi--;
+        ip->multi--;
     }
 }
 
@@ -183,7 +183,7 @@ sb32 itDogasAttackProcUpdate(GObj *item_gobj)
 
     itDogasAttackUpdateSmog(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         itDogasDisappearSetStatus(item_gobj);
 
@@ -200,7 +200,7 @@ void itDogasAttackInitItemVars(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    ip->it_multi = ITDOGAS_SMOG_SPAWN_COUNT;
+    ip->multi = ITDOGAS_SMOG_SPAWN_COUNT;
 
     ip->item_vars.dogas.smog_spawn_wait = 0;
 
@@ -227,13 +227,13 @@ sb32 itDogasCommonProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {   
         ip->physics.vel_air.x = ip->physics.vel_air.y = 0.0F;
 
         itDogasAttackSetStatus(item_gobj);
     }
-    ip->it_multi--;
+    ip->multi--;
 
     return FALSE;
 }
@@ -270,7 +270,7 @@ GObj* itDogasMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attributes->obj_coll_bottom;
 
-        ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
+        ip->multi = ITMONSTER_RISE_STOP_WAIT;
 
         ip->physics.vel_air.x = 0.0F;
         ip->physics.vel_air.z = 0.0F;

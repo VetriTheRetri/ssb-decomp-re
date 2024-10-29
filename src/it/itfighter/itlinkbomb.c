@@ -526,7 +526,7 @@ void itLinkBombExplodeUpdateHitEvent(GObj *item_gobj)
 	ITStruct *ip = itGetStruct(item_gobj);
 	ITAttackEvent *ev = itGetHitEvent(dItLinkBombItemDesc, lITLinkBombHitEvents);
 
-	if (ip->it_multi == ev[ip->item_event_id].timer)
+	if (ip->multi == ev[ip->item_event_id].timer)
 	{
 		ip->atk_coll.angle = ev[ip->item_event_id].angle;
 		ip->atk_coll.damage = ev[ip->item_event_id].damage;
@@ -568,7 +568,7 @@ void itLinkBombExplodeInITAttackColl(GObj *item_gobj)
 {
 	ITStruct *ip = itGetStruct(item_gobj);
 
-	ip->it_multi = 0;
+	ip->multi = 0;
 	ip->item_event_id = 0;
 
 	ip->atk_coll.throw_mul = 1.0F;
@@ -583,9 +583,9 @@ sb32 itLinkBombExplodeProcUpdate(GObj *item_gobj)
 
 	itLinkBombExplodeUpdateHitEvent(item_gobj);
 
-	ip->it_multi++;
+	ip->multi++;
 
-	if (ip->it_multi == ITLINKBOMB_EXPLODE_LIFETIME)
+	if (ip->multi == ITLINKBOMB_EXPLODE_LIFETIME)
 	{
 		return TRUE;
 	}
@@ -614,7 +614,7 @@ GObj *itLinkBombMakeItem(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 		gcAddXObjForDObjFixed(dobj, 0x2E, 0);
 		gcAddXObjForDObjFixed(dobj->child, 0x2E, 0);
 
-		ip->it_multi = 0;
+		ip->multi = 0;
 
 		ip->lifetime = ITLINKBOMB_LIFETIME;
 

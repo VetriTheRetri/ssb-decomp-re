@@ -80,7 +80,7 @@ sb32 itMewFlyProcUpdate(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     Vec3f pos = DObjGetStruct(item_gobj)->translate.vec.f;
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         return TRUE;
     }
@@ -92,7 +92,7 @@ sb32 itMewFlyProcUpdate(GObj *item_gobj)
     }
     ip->item_vars.mew.esper_gfx_int--;
 
-    ip->it_multi--;
+    ip->multi--;
 
     ip->physics.vel_air.y += ITMEW_FLY_ADD_VEL_Y;
 
@@ -104,7 +104,7 @@ void itMewFlyInitItemVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->it_multi = ITMEW_LIFETIME;
+    ip->multi = ITMEW_LIFETIME;
 
     if (mtTrigGetRandomIntRange(2) != 0)
     {
@@ -137,13 +137,13 @@ sb32 itMewCommonProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         ip->physics.vel_air.y = 0.0F;
 
         itMewFlySetStatus(item_gobj);
     }
-    ip->it_multi--;
+    ip->multi--;
 
     return FALSE;
 }
@@ -170,7 +170,7 @@ GObj* itMewMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         DObj *dobj = DObjGetStruct(item_gobj);
         ITStruct *ip = itGetStruct(item_gobj);
 
-        ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
+        ip->multi = ITMONSTER_RISE_STOP_WAIT;
 
         ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
         ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y; // Starting to think this is a macro

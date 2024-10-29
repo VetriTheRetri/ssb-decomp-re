@@ -100,7 +100,7 @@ void itPippiCommonSelectMonster(GObj *item_gobj)
     }
     if (it_kind == nITKindSawamura)
     {
-        ip->it_multi = ITSAWAMURA_KICK_WAIT;
+        ip->multi = ITSAWAMURA_KICK_WAIT;
     }
     if ((it_kind == nITKindSawamura) || (it_kind == nITKindStarmie))
     {
@@ -110,7 +110,7 @@ void itPippiCommonSelectMonster(GObj *item_gobj)
     }
     if (it_kind == nITKindLizardon)
     {
-        ip->it_multi = ITLIZARDON_LIFETIME;
+        ip->multi = ITLIZARDON_LIFETIME;
     }
     dITPippiStatusProcList[index](item_gobj);
 }
@@ -186,13 +186,13 @@ sb32 itPippiCommonProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         ip->physics.vel_air.x = ip->physics.vel_air.y = 0.0F;
 
         itPippiCommonSelectMonster(item_gobj);
     }
-    ip->it_multi--;
+    ip->multi--;
 
     return FALSE;
 }
@@ -219,7 +219,7 @@ GObj* itPippiMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         DObj *dobj = DObjGetStruct(item_gobj);
         ITStruct *ip = itGetStruct(item_gobj);
 
-        ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
+        ip->multi = ITMONSTER_RISE_STOP_WAIT;
 
         ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
         ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;

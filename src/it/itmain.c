@@ -284,7 +284,7 @@ sb32 itMainCheckShootNoAmmo(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (((ip->it_kind == nITKindStarRod) || (ip->it_kind == nITKindLGun) || (ip->it_kind == nITKindFFlower)) && (ip->it_multi == 0))
+    if (((ip->it_kind == nITKindStarRod) || (ip->it_kind == nITKindLGun) || (ip->it_kind == nITKindFFlower)) && (ip->multi == 0))
     {
         return TRUE;
     }
@@ -609,7 +609,7 @@ void itMainUpdateHitEvent(GObj *item_gobj, ITAttackEvent *ev)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == ev[ip->item_event_id].timer)
+    if (ip->multi == ev[ip->item_event_id].timer)
     {
         ip->atk_coll.angle  = ev[ip->item_event_id].angle;
         ip->atk_coll.damage = ev[ip->item_event_id].damage;

@@ -109,16 +109,16 @@ sb32 itNyarsAttackProcUpdate(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         return TRUE;
     }
-    if (ip->it_multi == ip->item_vars.nyars.coin_spawn_wait)
+    if (ip->multi == ip->item_vars.nyars.coin_spawn_wait)
     {
         itNyarsAttackMakeCoin(item_gobj, ip->item_vars.nyars.coin_rotate_step * ITNYARS_COIN_ANGLE_STEP);
 
         ip->item_vars.nyars.coin_rotate_step++;
-        ip->item_vars.nyars.coin_spawn_wait = ip->it_multi - ITNYARS_COIN_SPAWN_WAIT;
+        ip->item_vars.nyars.coin_spawn_wait = ip->multi - ITNYARS_COIN_SPAWN_WAIT;
 
         func_800269C0_275C0(nSYAudioFGMNyarsCoin);
     }
@@ -130,7 +130,7 @@ sb32 itNyarsAttackProcUpdate(GObj *item_gobj)
     }
     ip->item_vars.nyars.model_rotate_wait--;
 
-    ip->it_multi--;
+    ip->multi--;
 
     return FALSE;
 }
@@ -140,9 +140,9 @@ void itNyarsAttackInitItemVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->it_multi = ITNYARS_LIFETIME;
+    ip->multi = ITNYARS_LIFETIME;
 
-    ip->item_vars.nyars.coin_spawn_wait = ip->it_multi - (ITNYARS_COIN_SPAWN_WAIT / 2);
+    ip->item_vars.nyars.coin_spawn_wait = ip->multi - (ITNYARS_COIN_SPAWN_WAIT / 2);
     ip->item_vars.nyars.coin_rotate_step = 0;
     ip->item_vars.nyars.model_rotate_wait = ITNYARS_MODEL_ROTATE_WAIT;
 }
@@ -159,13 +159,13 @@ sb32 itNyarsCommonProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_multi == 0)
+    if (ip->multi == 0)
     {
         ip->physics.vel_air.x = ip->physics.vel_air.y = 0.0F;
 
         itNyarsAttackSetStatus(item_gobj);
     }
-    ip->it_multi--;
+    ip->multi--;
 
     return FALSE;
 }
@@ -199,7 +199,7 @@ GObj* itNyarsMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip = itGetStruct(item_gobj);
 
-        ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
+        ip->multi = ITMONSTER_RISE_STOP_WAIT;
 
         ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
         ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;

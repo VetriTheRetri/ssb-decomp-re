@@ -24,7 +24,7 @@ void ftCommonLGunShootProcAccessory(GObj *fighter_gobj)
     {
         ip = itGetStruct(fp->item_hold);
 
-        if (ip->it_multi != 0)
+        if (ip->multi != 0)
         {
             // 0x80188660
             Vec3f make_ammo_offset = { 0.0F, 60.0F, 180.0F };
@@ -118,7 +118,7 @@ void ftCommonFireFlowerShootUpdateAmmoStats(FTStruct *fp, s32 ammo_sub)
     f32 size_mul;
     s32 flame_vel_index;
 
-    if (ip->it_multi >= ammo_sub)
+    if (ip->multi >= ammo_sub)
     {
         size_mul = 1.0F / fp->attributes->size_mul;
 
@@ -188,7 +188,7 @@ void ftCommonFireFlowerShootProcAccessory(GObj *fighter_gobj)
             {
                 fp->status_vars.common.fireflower.effect_make_int = FTCOMMON_FIREFLOWERSHOOT_EFFECT_SPAWN_INT;
 
-                if (ip->it_multi < ammo_sub)
+                if (ip->multi < ammo_sub)
                 {
                     // 0x80188684
                     Vec3f effect_noammo_offset = { 60.0F, 100.0F, 0.0F };
@@ -215,7 +215,7 @@ void ftCommonFireFlowerShootProcAccessory(GObj *fighter_gobj)
             }
             if (fp->command_vars.flags.flag0 == 1)
             {
-                if (ip->it_multi >= ammo_sub)
+                if (ip->multi >= ammo_sub)
                 {
                     // 0x8018869C
                     Vec3f effect_spark_offset = { 0.0F, 80.0F, 0.0F };

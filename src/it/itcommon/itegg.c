@@ -293,9 +293,9 @@ sb32 itEggExplodeProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->it_multi++;
+    ip->multi++;
 
-    if (ip->it_multi == ITEGG_EXPLODE_EFFECT_WAIT)
+    if (ip->multi == ITEGG_EXPLODE_EFFECT_WAIT)
     {
         efManagerEggBreakMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
 
@@ -346,7 +346,7 @@ void itEggExplodeInitItemVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->it_multi = 0;
+    ip->multi = 0;
 
     ip->item_event_id = 0;
 

@@ -175,7 +175,7 @@ void itStarmieAttackInitItemVars(GObj *item_gobj)
 
     if (ip->lr != lr_bak)
     {
-        dobj->rotate.vec.f.y += F_CST_DTOR32(180.0F); // PI32
+        dobj->rotate.vec.f.y += F_CST_DTOR32(180.0F);
     }
     ip->it_multi = ITSTARMIE_LIFETIME;
 
@@ -228,9 +228,9 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 
     dist.x = fighter_dobj->translate.vec.f.x - item_dobj->translate.vec.f.x;
 
-    target_pos.y += ITSTARMIE_TARGET_POS_OFF_Y - fp->coll_data.object_coll.bottom;
+    target_pos.y += ITSTARMIE_TARGET_POS_OFF_Y - fp->coll_data.obj_coll.bottom;
 
-    target_pos.x -= (fp->coll_data.object_coll.width + ITSTARMIE_TARGET_POS_OFF_X) * ((dist.x < 0.0F) ? -1 : +1);
+    target_pos.x -= (fp->coll_data.obj_coll.width + ITSTARMIE_TARGET_POS_OFF_X) * ((dist.x < 0.0F) ? -1 : +1);
 
     victim_pos = &fighter_dobj->translate.vec.f;
 
@@ -249,7 +249,7 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 
     if (ip->lr == +1)
     {
-        item_dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
+        item_dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F);
     }
     if (ip->it_kind == nITKindStarmie)
     {
@@ -360,7 +360,7 @@ GObj* itStarmieMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f = *pos;
 
-        dobj->translate.vec.f.y -= ip->attributes->object_coll_bottom;
+        dobj->translate.vec.f.y -= ip->attributes->obj_coll_bottom;
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITStarmieDataStart), 0.0F); // Linker thing
 
@@ -457,7 +457,7 @@ GObj* itStarmieWeaponSwiftMakeWeapon(GObj *item_gobj, Vec3f *pos)
 
     if (wp->lr == +1)
     {
-        dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
+        dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F);
     }
     return weapon_gobj;
 }

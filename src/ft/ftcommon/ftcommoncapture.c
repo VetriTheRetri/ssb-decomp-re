@@ -136,7 +136,7 @@ void ftCommonCaptureShoulderedSetStatus(GObj *fighter_gobj)
     s32 damage;
 
     ftCommonThrownSetStatusImmediate(fighter_gobj, nFTCommonStatusShouldered);
-    ftCommonCaptureTrappedInitBreakoutVars(this_fp, ((this_fp->percent_damage * 0.08F) + 14.0F));
+    ftCommonCaptureTrappedInitBreakoutVars(this_fp, (this_fp->percent_damage * 0.08F) + 14.0F);
 
     damage = ftParamGetStaledDamage(capture_fp->player, 8, capture_fp->attack_id, capture_fp->motion_count);
 

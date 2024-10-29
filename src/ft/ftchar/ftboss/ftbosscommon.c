@@ -13,7 +13,7 @@ void ftBossCommonInvertLR(GObj *fighter_gobj) // Turn Master Hand around?
 
     fp->lr = -fp->lr;
 
-    fp->joints[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F); // HALF_PI32
+    fp->joints[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F);
 }
 
 // 0x80157F90

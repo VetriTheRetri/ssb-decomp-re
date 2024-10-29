@@ -21,7 +21,7 @@ sb32 (*sMPCommonProcPass)(GObj*);
 sb32 mpCommonCheckSetFighterCliffEdge(GObj *fighter_gobj, s32 ground_line_id)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    MPObjectColl *object_coll = &fp->coll_data.object_coll;
+    MPObjectColl *obj_coll = &fp->coll_data.obj_coll;
     Vec3f *translate = fp->coll_data.p_translate;
     Vec3f edge_pos;
     Vec3f sp4C;
@@ -46,8 +46,8 @@ sb32 mpCommonCheckSetFighterCliffEdge(GObj *fighter_gobj, s32 ground_line_id)
                 mpCollisionGetUDCommonUp(ground_line_id, &edge_pos, &ground_dist, &flags, &angle);
 
                 edge_pos.y += ground_dist;
-                sp4C.x = object_coll->width + edge_pos.x;
-                sp4C.y = (object_coll->center + edge_pos.y) - object_coll->bottom;
+                sp4C.x = obj_coll->width + edge_pos.x;
+                sp4C.y = (obj_coll->center + edge_pos.y) - obj_coll->bottom;
 
                 if (mpCollisionCheckLWallLineCollisionSame(&edge_pos, &sp4C, NULL, NULL, NULL, NULL) == FALSE)
                 {
@@ -66,8 +66,8 @@ sb32 mpCommonCheckSetFighterCliffEdge(GObj *fighter_gobj, s32 ground_line_id)
             mpCollisionGetUDCommonUp(ground_line_id, &edge_pos, &ground_dist, &flags, &angle);
 
             edge_pos.y += ground_dist;
-            sp4C.x = edge_pos.x - object_coll->width;
-            sp4C.y = (object_coll->center + edge_pos.y) - object_coll->bottom;
+            sp4C.x = edge_pos.x - obj_coll->width;
+            sp4C.y = (obj_coll->center + edge_pos.y) - obj_coll->bottom;
 
             if (mpCollisionCheckRWallLineCollisionSame(&edge_pos, &sp4C, NULL, NULL, NULL, NULL) == FALSE)
             {
@@ -96,7 +96,7 @@ setground: // ???
 sb32 mpCommonCheckSetFighterEdge(GObj *fighter_gobj, s32 ground_line_id)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    MPObjectColl *object_coll = &fp->coll_data.object_coll;
+    MPObjectColl *obj_coll = &fp->coll_data.obj_coll;
     Vec3f *translate = fp->coll_data.p_translate;
     Vec3f edge_pos;
     Vec3f sp4C;
@@ -120,8 +120,8 @@ sb32 mpCommonCheckSetFighterEdge(GObj *fighter_gobj, s32 ground_line_id)
             sp4C.x = edge_pos.x + 1.0F;
             sp4C.y = edge_pos.y + 1.0F;
 
-            sp40.x = object_coll->width + edge_pos.x;
-            sp40.y = (object_coll->center + edge_pos.y) - object_coll->bottom;
+            sp40.x = obj_coll->width + edge_pos.x;
+            sp40.y = (obj_coll->center + edge_pos.y) - obj_coll->bottom;
 
             if (mpCollisionCheckLWallLineCollisionSame(&sp4C, &sp40, NULL, NULL, NULL, NULL) == FALSE)
             {
@@ -137,8 +137,8 @@ sb32 mpCommonCheckSetFighterEdge(GObj *fighter_gobj, s32 ground_line_id)
             sp4C.x = edge_pos.x - 1.0F;
             sp4C.y = edge_pos.y + 1.0F;
 
-            sp40.x = edge_pos.x - object_coll->width;
-            sp40.y = (object_coll->center + edge_pos.y) - object_coll->bottom;
+            sp40.x = edge_pos.x - obj_coll->width;
+            sp40.y = (obj_coll->center + edge_pos.y) - obj_coll->bottom;
 
             if (mpCollisionCheckRWallLineCollisionSame(&sp4C, &sp40, NULL, NULL, NULL, NULL) == FALSE)
             {
@@ -937,7 +937,7 @@ void mpCommonCopyCollDataStats(MPCollData *this_coll_data, Vec3f *pos, MPCollDat
 {
     this_coll_data->pos_current = *pos;
 
-    this_coll_data->p_object_coll = &other_coll_data->object_coll;
+    this_coll_data->p_obj_coll = &other_coll_data->obj_coll;
     this_coll_data->coll_mask_current = 0;
     this_coll_data->coll_mask_unk = 0;
     this_coll_data->coll_mask_stat = 0;
@@ -948,7 +948,7 @@ void mpCommonCopyCollDataStats(MPCollData *this_coll_data, Vec3f *pos, MPCollDat
 // 0x800DEFF8
 void mpCommonResetCollDataStats(MPCollData *coll_data)
 {
-    coll_data->p_object_coll = &coll_data->object_coll;
+    coll_data->p_obj_coll = &coll_data->obj_coll;
 
     coll_data->coll_update_frame = gMPCollisionUpdateFrame;
     coll_data->coll_mask_current = 0;

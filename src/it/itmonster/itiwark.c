@@ -189,7 +189,7 @@ sb32 itIwarkAttackProcUpdate(GObj *item_gobj)
     }
     if (ip->it_multi == ITIWARK_MODEL_ROTATE_WAIT)
     {
-        dobj->rotate.vec.f.y += F_CST_DTOR32(180.0F); // PI32
+        dobj->rotate.vec.f.y += F_CST_DTOR32(180.0F);
 
         ip->it_multi = 0;
     }
@@ -325,7 +325,7 @@ GObj* itIwarkMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
         ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        dobj->translate.vec.f.y -= ip->attributes->object_coll_bottom;
+        dobj->translate.vec.f.y -= ip->attributes->obj_coll_bottom;
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITIwarkDataStart), 0.0F); // Linker thing
     }

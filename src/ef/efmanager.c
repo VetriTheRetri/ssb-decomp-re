@@ -2965,7 +2965,7 @@ LBParticle* efManagerDustHeavyMakeEffect(Vec3f *pos, s32 lr)
 
             if (lr == -1)
             {
-                tfrm->rotate.y = F_CLC_DTOR32(180.0F); // PI32
+                tfrm->rotate.y = F_CLC_DTOR32(180.0F);
             }
             tfrm->proc_dead = efManagerDefaultProcDead;
         }
@@ -3047,7 +3047,7 @@ LBParticle* efManagerDustHeavyDoubleMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
 
             if (lr == -1)
             {
-                tfrm->rotate.y = F_CLC_DTOR32(180.0F); // PI32
+                tfrm->rotate.y = F_CLC_DTOR32(180.0F);
             }
             tfrm->proc_dead = efManagerDefaultProcDead;
         }
@@ -3182,7 +3182,7 @@ LBParticle* efManagerDustDashMakeEffect(Vec3f *pos, s32 lr, f32 scale)
 
             if (lr == -1)
             {
-                tfrm->rotate.y = F_CLC_DTOR32(180.0F); // PI32
+                tfrm->rotate.y = F_CLC_DTOR32(180.0F);
             }
         }
         else

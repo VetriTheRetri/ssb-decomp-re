@@ -168,8 +168,8 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
         {
             lbCommonReflect2D(&ip->physics.vel_air, &coll_data->lwall_angle);
 
-            mod_pos.x = translate->x + coll_data->object_coll.width;
-            mod_pos.y = translate->y + coll_data->object_coll.center;
+            mod_pos.x = translate->x + coll_data->obj_coll.width;
+            mod_pos.y = translate->y + coll_data->obj_coll.center;
 
             return_bool = TRUE;
 
@@ -182,8 +182,8 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
         {
             lbCommonReflect2D(&ip->physics.vel_air, &coll_data->rwall_angle);
 
-            mod_pos.x = translate->x - coll_data->object_coll.width;
-            mod_pos.y = translate->y + coll_data->object_coll.center;
+            mod_pos.x = translate->x - coll_data->obj_coll.width;
+            mod_pos.y = translate->y + coll_data->obj_coll.center;
 
             return_bool = TRUE;
 
@@ -197,7 +197,7 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
             lbCommonReflect2D(&ip->physics.vel_air, &coll_data->ceil_angle);
 
             mod_pos.x = translate->x;
-            mod_pos.y = translate->y + coll_data->object_coll.top;
+            mod_pos.y = translate->y + coll_data->obj_coll.top;
 
             return_bool = TRUE;
         }
@@ -209,7 +209,7 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
             lbCommonReflect2D(&ip->physics.vel_air, &coll_data->ground_angle);
 
             mod_pos.x = translate->x;
-            mod_pos.y = translate->y + coll_data->object_coll.bottom;
+            mod_pos.y = translate->y + coll_data->obj_coll.bottom;
 
             return_bool = TRUE;
 

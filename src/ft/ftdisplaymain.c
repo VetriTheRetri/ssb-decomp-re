@@ -1260,7 +1260,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
             (
                 mtx_store.gbi,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.x,
-                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attributes->object_coll.bottom,
+                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attributes->obj_coll.bottom,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.z
             );
 
@@ -1268,7 +1268,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixSca(mtx_store.gbi, attributes->object_coll.width / 30.0F, attributes->object_coll.center / 30.0F, 1.0F);
+            syMatrixSca(mtx_store.gbi, attributes->obj_coll.width / 30.0F, attributes->obj_coll.center / 30.0F, 1.0F);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -1282,7 +1282,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
             (
                 mtx_store.gbi,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.x,
-                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attributes->object_coll.center,
+                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attributes->obj_coll.center,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.z
             );
 
@@ -1290,7 +1290,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixSca(mtx_store.gbi, attributes->object_coll.width / 30.0F, (attributes->object_coll.top - attributes->object_coll.center) / 30.0F, 1.0F);
+            syMatrixSca(mtx_store.gbi, attributes->obj_coll.width / 30.0F, (attributes->obj_coll.top - attributes->obj_coll.center) / 30.0F, 1.0F);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 

@@ -1228,7 +1228,7 @@ void efGroundUpdateStepPositions(GObj *effect_gobj)
     if
     (
         ((ep->effect_vars.ground_effect.lr == +1) && (ep->effect_vars.ground_effect.pos.x <= dobj->translate.vec.f.x)) ||
-        ((ep->effect_vars.ground_effect.lr == -1)  && (ep->effect_vars.ground_effect.pos.x >= dobj->translate.vec.f.x))
+        ((ep->effect_vars.ground_effect.lr == -1) && (ep->effect_vars.ground_effect.pos.x >= dobj->translate.vec.f.x))
     )
     {
         ep->effect_vars.ground_effect.scale_step = 0.0F;

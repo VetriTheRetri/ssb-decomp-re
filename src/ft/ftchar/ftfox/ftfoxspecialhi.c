@@ -139,7 +139,7 @@ void ftFoxSpecialHiUpdateModelRoll(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->joints[4]->rotate.vec.f.x = (atan2f(fp->physics.vel_air.x, fp->physics.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F); // HALF_PI32
+    fp->joints[4]->rotate.vec.f.x = (atan2f(fp->physics.vel_air.x, fp->physics.vel_air.y) * fp->lr) - F_CST_DTOR32(90.0F);
     func_ovl2_800EB528(fp->joints[4]);
 }
 
@@ -259,7 +259,7 @@ void ftFoxSpecialAirHiProcMap(GObj *fighter_gobj)
     coll_end:
         fp->lr = (fp->physics.vel_air.x >= 0.0F) ? +1 : -1;
 
-        fp->joints[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F); // HALF_PI32
+        fp->joints[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F);
 
         fp->status_vars.fox.specialhi.angle = atan2f(fp->physics.vel_air.y, fp->physics.vel_air.x * fp->lr);
 
@@ -328,7 +328,7 @@ void ftFoxSpecialHiDecideSetStatus(GObj *fighter_gobj)
         angle.y = fp->input.pl.stick_range.y;
         angle.z = 0.0F;
 
-        if (syVectorAngleDiff3D(&fp->coll_data.ground_angle, &angle) < F_CST_DTOR32(90.0F)) // HALF_PI32
+        if (syVectorAngleDiff3D(&fp->coll_data.ground_angle, &angle) < F_CST_DTOR32(90.0F))
         {
             goto setair;
         }
@@ -364,7 +364,7 @@ void ftFoxSpecialAirHiSetStatusFromGround(GObj *fighter_gobj)
     }
     else
     {
-        fp->status_vars.fox.specialhi.angle = F_CST_DTOR32(90.0F); // HALF_PI32
+        fp->status_vars.fox.specialhi.angle = F_CST_DTOR32(90.0F);
     }
     ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_COLANIM);
     ftFoxSpecialHiInITStatusVars(fp);

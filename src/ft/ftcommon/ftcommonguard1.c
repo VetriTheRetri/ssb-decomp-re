@@ -153,7 +153,7 @@ void ftCommonGuardUpdateShieldAngle(FTStruct *fp)
 
     if (angle_r < 0.0F)
     {
-        angle_r += F_CST_DTOR32(360.0F); // DOUBLE_PI32
+        angle_r += F_CST_DTOR32(360.0F);
     }
     angle_d = F_CLC_RTOD32(angle_r);
 

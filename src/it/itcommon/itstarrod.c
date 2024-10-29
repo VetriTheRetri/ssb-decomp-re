@@ -239,7 +239,7 @@ sb32 itStarRodThrownProcHit(GObj *item_gobj)
 void itStarRodThrownSetStatus(GObj *item_gobj)
 {
     itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, nITStarRodStatusThrown);
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 }
 
 // 0x8017809C
@@ -258,7 +258,7 @@ sb32 itStarRodDroppedProcMap(GObj *item_gobj)
 void itStarRodDroppedSetStatus(GObj *item_gobj)
 {
     itMainSetItemStatus(item_gobj, dITStarRodStatusDescs, nITStarRodStatusDropped);
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 }
 
 // 0x80178134

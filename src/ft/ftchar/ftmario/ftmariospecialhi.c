@@ -57,7 +57,7 @@ void ftMarioSpecialHiProcInterrupt(GObj *fighter_gobj)
         {
             ftParamSetStickLR(fp);
 
-            fp->joints[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F); // HALF_PI32
+            fp->joints[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F);
         }
     }
 }

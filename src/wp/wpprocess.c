@@ -461,7 +461,7 @@ void wpProcessProcHitCollisions(GObj *weapon_gobj)
         {
             if (wp->shield_collide_angle < WEAPON_HOP_ANGLE_DEFAULT)
             {
-                wp->shield_collide_angle -= F_CST_DTOR32(90.0F); // HALF_PI32
+                wp->shield_collide_angle -= F_CST_DTOR32(90.0F);
 
                 if (wp->shield_collide_angle < 0.0F)
                 {

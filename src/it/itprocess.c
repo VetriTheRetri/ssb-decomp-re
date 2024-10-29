@@ -1033,7 +1033,7 @@ void itProcessProcHitCollisions(GObj *item_gobj)
         {
             if (ip->shield_collide_angle < ITEM_HOP_ANGLE_DEFAULT)
             {
-                ip->shield_collide_angle -= F_CST_DTOR32(90.0F); // HALF_PI32
+                ip->shield_collide_angle -= F_CST_DTOR32(90.0F);
 
                 if (ip->shield_collide_angle < 0.0F)
                 {

@@ -728,7 +728,7 @@ GObj* wpPikachuThunderJoltGroundMakeWeapon(GObj *prev_gobj, Vec3f *pos, s32 coll
     case nMPLineKindGround:
         new_wp->lr = (prev_wp->physics.vel_air.x >= 0.0F) ? +1 : -1;
 
-        DObjGetStruct(new_gobj)->rotate.vec.f.y = (new_wp->lr >= 0.0F) ? F_CST_DTOR32(180.0F) : 0; // PI32
+        DObjGetStruct(new_gobj)->rotate.vec.f.y = (new_wp->lr >= 0.0F) ? F_CST_DTOR32(180.0F) : 0;
         break;
 
     case nMPLineKindLWall:
@@ -745,7 +745,7 @@ GObj* wpPikachuThunderJoltGroundMakeWeapon(GObj *prev_gobj, Vec3f *pos, s32 coll
         break;
 
     case nMPLineKindRWall:
-        if (atan2f(new_wp->weapon_vars.thunder_jolt.rotate.y, new_wp->weapon_vars.thunder_jolt.rotate.x) > F_CST_DTOR32(45.0F)) // QUART_PI32
+        if (atan2f(new_wp->weapon_vars.thunder_jolt.rotate.y, new_wp->weapon_vars.thunder_jolt.rotate.x) > F_CST_DTOR32(45.0F))
         {
             DObjGetStruct(new_gobj)->rotate.vec.f.y = 0;
             new_wp->lr = 2;

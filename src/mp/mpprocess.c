@@ -93,7 +93,7 @@ void mpProcessGetLastWallCollideStats(f32 *pos, s32 *line_id, u32 *flags, Vec3f 
 // 0x800D9628
 sb32 mpProcessCheckCeilEdgeCollisionLeft(MPCollData *coll_data)
 {
-    MPObjectColl *object_coll = &coll_data->object_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f b;
     Vec3f a;
@@ -103,9 +103,9 @@ sb32 mpProcessCheckCeilEdgeCollisionLeft(MPCollData *coll_data)
     sp28 = mpCollisionGetEdgeUpperRLineID(coll_data->ceil_line_id);
 
     b.x = translate->x;
-    b.y = translate->y + object_coll->top;
-    a.x = translate->x + object_coll->width;
-    a.y = translate->y + object_coll->center;
+    b.y = translate->y + obj_coll->top;
+    a.x = translate->x + obj_coll->width;
+    a.y = translate->y + obj_coll->center;
 
     if ((mpCollisionCheckLWallLineCollisionSame(&b, &a, NULL, &sp2C, NULL, NULL) != FALSE) && (sp2C != sp28))
     {
@@ -117,25 +117,25 @@ sb32 mpProcessCheckCeilEdgeCollisionLeft(MPCollData *coll_data)
 // 0x800D96D8
 void mpProcessCeilEdgeAdjustLeft(MPCollData *coll_data)
 {
-    MPObjectColl *object_coll = &coll_data->object_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f sp3C;
     Vec3f object_pos;
     f32 ceil_dist;
 
-    object_pos.x = translate->x + object_coll->width;
+    object_pos.x = translate->x + obj_coll->width;
     sp3C.x = object_pos.x;
 
-    object_pos.y = translate->y + object_coll->center;
+    object_pos.y = translate->y + obj_coll->center;
     sp3C.y = object_pos.y;
 
-    sp3C.x += (2.0F * (coll_data->ceil_angle.y * object_coll->width));
-    sp3C.y += (2.0F * (-coll_data->ceil_angle.x * object_coll->width));
+    sp3C.x += (2.0F * (coll_data->ceil_angle.y * obj_coll->width));
+    sp3C.y += (2.0F * (-coll_data->ceil_angle.x * obj_coll->width));
 
     if (mpCollisionCheckLWallLineCollisionSame(&sp3C, &object_pos, &coll_data->line_coll_dist, NULL, NULL, NULL) != FALSE)
     {
-        object_pos.x = coll_data->line_coll_dist.x - object_coll->width;
-        object_pos.y = translate->y + object_coll->top;
+        object_pos.x = coll_data->line_coll_dist.x - obj_coll->width;
+        object_pos.y = translate->y + obj_coll->top;
 
         if (mpCollisionGetUDCommonDown(coll_data->ceil_line_id, &object_pos, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE)
         {
@@ -148,7 +148,7 @@ void mpProcessCeilEdgeAdjustLeft(MPCollData *coll_data)
 // 0x800D97F0
 sb32 mpProcessCheckCeilEdgeCollisionRight(MPCollData *coll_data)
 {
-    MPObjectColl *object_coll = &coll_data->object_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f b;
     Vec3f a;
@@ -158,9 +158,9 @@ sb32 mpProcessCheckCeilEdgeCollisionRight(MPCollData *coll_data)
     sp28 = mpCollisionGetEdgeUpperLLineID(coll_data->ceil_line_id);
 
     b.x = translate->x;
-    b.y = translate->y + object_coll->top;
-    a.x = translate->x - object_coll->width;
-    a.y = translate->y + object_coll->center;
+    b.y = translate->y + obj_coll->top;
+    a.x = translate->x - obj_coll->width;
+    a.y = translate->y + obj_coll->center;
 
     if ((mpCollisionCheckRWallLineCollisionSame(&b, &a, NULL, &sp2C, NULL, NULL) != FALSE) && (sp2C != sp28))
     {
@@ -172,25 +172,25 @@ sb32 mpProcessCheckCeilEdgeCollisionRight(MPCollData *coll_data)
 // 0x800D98A0
 void mpProcessCeilEdgeAdjustRight(MPCollData *coll_data)
 {
-    MPObjectColl *object_coll = &coll_data->object_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f sp3C;
     Vec3f object_pos;
     f32 ceil_dist;
 
-    object_pos.x = translate->x - object_coll->width;
+    object_pos.x = translate->x - obj_coll->width;
     sp3C.x = object_pos.x;
 
-    object_pos.y = translate->y + object_coll->center;
+    object_pos.y = translate->y + obj_coll->center;
     sp3C.y = object_pos.y;
 
-    sp3C.x += (2.0F * (-coll_data->ceil_angle.y * object_coll->width));
-    sp3C.y += (2.0F * (coll_data->ceil_angle.x * object_coll->width));
+    sp3C.x += (2.0F * (-coll_data->ceil_angle.y * obj_coll->width));
+    sp3C.y += (2.0F * (coll_data->ceil_angle.x * obj_coll->width));
 
     if (mpCollisionCheckRWallLineCollisionSame(&sp3C, &object_pos, &coll_data->line_coll_dist, NULL, NULL, NULL) != 0)
     {
-        object_pos.x = coll_data->line_coll_dist.x + object_coll->width;
-        object_pos.y = translate->y + object_coll->top;
+        object_pos.x = coll_data->line_coll_dist.x + obj_coll->width;
+        object_pos.y = translate->y + obj_coll->top;
 
         if (mpCollisionGetUDCommonDown(coll_data->ceil_line_id, &object_pos, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE)
         {
@@ -216,16 +216,16 @@ void mpProcessRunCeilEdgeAdjust(MPCollData *coll_data)
 // 0x800D9A00
 sb32 mpProcessCheckGroundEdgeCollisionLeft(MPCollData *coll_data)
 {
-    MPObjectColl *object_coll = &coll_data->object_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f b;
     Vec3f a;
     s32 sp2C = mpCollisionGetEdgeUnderLLineID(coll_data->ground_line_id);
 
     b.x = translate->x;
-    b.y = translate->y + object_coll->bottom;
-    a.x = translate->x + object_coll->width;
-    a.y = translate->y + object_coll->center;
+    b.y = translate->y + obj_coll->bottom;
+    a.x = translate->x + obj_coll->width;
+    a.y = translate->y + obj_coll->center;
 
     if ((mpCollisionCheckLWallLineCollisionSame(&b, &a, NULL, &coll_data->ewall_line_id, NULL, NULL) != FALSE) && (sp2C != coll_data->ewall_line_id))
     {
@@ -237,29 +237,29 @@ sb32 mpProcessCheckGroundEdgeCollisionLeft(MPCollData *coll_data)
 // 0x800D9AB0
 void mpProcessGroundEdgeLeftAdjust(MPCollData *coll_data)
 {
-    MPObjectColl *object_coll = &coll_data->object_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f sp44;
     Vec3f sp38;
     f32 sp34;
 
-    sp38.x = translate->x + object_coll->width;
-    sp38.y = translate->y + object_coll->center;
+    sp38.x = translate->x + obj_coll->width;
+    sp38.y = translate->y + obj_coll->center;
 
     if (mpCollisionGetLRCommonLeft(coll_data->ewall_line_id, &sp38, NULL, NULL, NULL) != FALSE)
     {
-        sp38.x = translate->x + object_coll->width;
+        sp38.x = translate->x + obj_coll->width;
         sp44.x = sp38.x;
-        sp38.y = translate->y + object_coll->center;
+        sp38.y = translate->y + obj_coll->center;
         sp44.y = sp38.y;
 
-        sp44.x += (2.0F * (-coll_data->ground_angle.y * object_coll->width));
-        sp44.y += (2.0F * (coll_data->ground_angle.x * object_coll->width));
+        sp44.x += (2.0F * (-coll_data->ground_angle.y * obj_coll->width));
+        sp44.y += (2.0F * (coll_data->ground_angle.x * obj_coll->width));
 
         if (mpCollisionCheckLWallLineCollisionSame(&sp44, &sp38, &coll_data->line_coll_dist, NULL, NULL, NULL) != FALSE)
         {
-            sp38.x = coll_data->line_coll_dist.x - object_coll->width;
-            sp38.y = translate->y + object_coll->bottom;
+            sp38.x = coll_data->line_coll_dist.x - obj_coll->width;
+            sp38.y = translate->y + obj_coll->bottom;
 
             if (mpCollisionGetUDCommonUp(coll_data->ground_line_id, &sp38, &sp34, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
             {
@@ -273,8 +273,8 @@ void mpProcessGroundEdgeLeftAdjust(MPCollData *coll_data)
         mpCollisionGetUDEdgeUp(coll_data->ewall_line_id, &sp44);
 
         sp44.x -= 2.0F;
-        sp38.x = sp44.x - (2.0F * object_coll->width);
-        sp38.y = sp44.y - (2.0F * (object_coll->center - object_coll->bottom));
+        sp38.x = sp44.x - (2.0F * obj_coll->width);
+        sp38.y = sp44.y - (2.0F * (obj_coll->center - obj_coll->bottom));
 
         if (mpCollisionCheckGroundLineCollisionSame(&sp44, &sp38, &coll_data->line_coll_dist, NULL, NULL, NULL) != FALSE)
         {
@@ -293,16 +293,16 @@ void mpProcessGroundEdgeLeftAdjust(MPCollData *coll_data)
 // 0x800D9CC0
 sb32 mpProcessCheckGroundEdgeCollisionRight(MPCollData *coll_data)
 {
-    MPObjectColl *object_coll = &coll_data->object_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f b;
     Vec3f a;
     s32 sp2C = mpCollisionGetEdgeUnderRLineID(coll_data->ground_line_id);
 
     b.x = translate->x;
-    b.y = translate->y + object_coll->bottom;
-    a.x = translate->x - object_coll->width;
-    a.y = translate->y + object_coll->center;
+    b.y = translate->y + obj_coll->bottom;
+    a.x = translate->x - obj_coll->width;
+    a.y = translate->y + obj_coll->center;
 
     if ((mpCollisionCheckRWallLineCollisionSame(&b, &a, NULL, &coll_data->ewall_line_id, NULL, NULL) != FALSE) && (sp2C != coll_data->ewall_line_id))
     {
@@ -314,29 +314,29 @@ sb32 mpProcessCheckGroundEdgeCollisionRight(MPCollData *coll_data)
 // 0x800D9D70
 void mpProcessGroundEdgeRightAdjust(MPCollData *coll_data)
 {
-    MPObjectColl *object_coll = &coll_data->object_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f sp44;
     Vec3f sp38;
     f32 ground_dist;
 
-    sp38.x = translate->x - object_coll->width;
-    sp38.y = translate->y + object_coll->center;
+    sp38.x = translate->x - obj_coll->width;
+    sp38.y = translate->y + obj_coll->center;
 
     if (mpCollisionGetLRCommonRight(coll_data->ewall_line_id, &sp38, NULL, NULL, NULL) != FALSE)
     {
-        sp38.x = translate->x - object_coll->width;
+        sp38.x = translate->x - obj_coll->width;
         sp44.x = sp38.x;
-        sp38.y = translate->y + object_coll->center;
+        sp38.y = translate->y + obj_coll->center;
         sp44.y = sp38.y;
 
-        sp44.x += (2.0F * (coll_data->ground_angle.y * object_coll->width));
-        sp44.y += (2.0F * (-coll_data->ground_angle.x * object_coll->width));
+        sp44.x += (2.0F * (coll_data->ground_angle.y * obj_coll->width));
+        sp44.y += (2.0F * (-coll_data->ground_angle.x * obj_coll->width));
 
         if (mpCollisionCheckRWallLineCollisionSame(&sp44, &sp38, &coll_data->line_coll_dist, NULL, NULL, NULL) != FALSE)
         {
-            sp38.x = coll_data->line_coll_dist.x + object_coll->width;
-            sp38.y = translate->y + object_coll->bottom;
+            sp38.x = coll_data->line_coll_dist.x + obj_coll->width;
+            sp38.y = translate->y + obj_coll->bottom;
 
             if (mpCollisionGetUDCommonUp(coll_data->ground_line_id, &sp38, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
             {
@@ -350,8 +350,8 @@ void mpProcessGroundEdgeRightAdjust(MPCollData *coll_data)
         func_ovl2_800F4690(coll_data->ewall_line_id, &sp44);
 
         sp44.x += 2.0F;
-        sp44.x = sp38.x + (2.0F * object_coll->width);
-        sp44.y = sp38.y - (2.0F * (object_coll->center - object_coll->bottom));
+        sp44.x = sp38.x + (2.0F * obj_coll->width);
+        sp44.y = sp38.y - (2.0F * (obj_coll->center - obj_coll->bottom));
 
         if (mpCollisionCheckGroundLineCollisionSame(&sp44, &sp38, &coll_data->line_coll_dist, NULL, NULL, NULL) != FALSE)
         {
@@ -383,12 +383,12 @@ void mpProcessRunGroundEdgeAdjust(MPCollData *coll_data)
 // 0x800D9FCC
 void mpProcessSetCollProjectGroundID(MPCollData *coll_data) // Check if object is above ground while airborne
 {
-    MPObjectColl *object_coll = &coll_data->object_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f sp2C;
 
     sp2C.x = translate->x;
-    sp2C.y = translate->y + object_coll->bottom;
+    sp2C.y = translate->y + obj_coll->bottom;
 
     if (func_ovl2_800F9348(&sp2C, &coll_data->ground_line_id, &coll_data->ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) == FALSE)
     {
@@ -466,8 +466,8 @@ sb32 mpProcessUpdateMapProcMain(MPCollData *coll_data, sb32(*proc_coll)(MPCollDa
 // 0x800DA294
 sb32 mpProcessCheckTestLWallCollision(MPCollData *coll_data)
 {
-    MPObjectColl *object_coll = &coll_data->object_coll;
-    MPObjectColl *p_object_coll = coll_data->p_object_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
+    MPObjectColl *p_obj_coll = coll_data->p_obj_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f *pcurr = &coll_data->pos_current;
     Vec3f sp4C;
@@ -481,10 +481,10 @@ sb32 mpProcessCheckTestLWallCollision(MPCollData *coll_data)
 
     ground_line_id = (mpCollisionCheckExistLineID(coll_data->ground_line_id) != FALSE) ? mpCollisionGetEdgeUnderLLineID(coll_data->ground_line_id) : -1;
 
-    sp4C.x = pcurr->x + p_object_coll->width;
-    sp4C.y = pcurr->y + p_object_coll->center;
-    sp40.x = translate->x + object_coll->width;
-    sp40.y = translate->y + object_coll->center;
+    sp4C.x = pcurr->x + p_obj_coll->width;
+    sp4C.y = pcurr->y + p_obj_coll->center;
+    sp40.x = translate->x + obj_coll->width;
+    sp40.y = translate->y + obj_coll->center;
 
         wall_collide = (coll_data->coll_update_frame != gMPCollisionUpdateFrame) 
                     
@@ -503,9 +503,9 @@ sb32 mpProcessCheckTestLWallCollision(MPCollData *coll_data)
         is_collide_lwall = TRUE;
     }
     sp4C.x = pcurr->x;
-    sp4C.y = pcurr->y + p_object_coll->bottom;
+    sp4C.y = pcurr->y + p_obj_coll->bottom;
     sp40.x = translate->x;
-    sp40.y = translate->y + object_coll->bottom;
+    sp40.y = translate->y + obj_coll->bottom;
 
         wall_collide = (coll_data->coll_update_frame != gMPCollisionUpdateFrame) 
             
@@ -524,9 +524,9 @@ sb32 mpProcessCheckTestLWallCollision(MPCollData *coll_data)
         is_collide_lwall = TRUE;
     }
     sp4C.x = pcurr->x;
-    sp4C.y = pcurr->y + p_object_coll->top;
+    sp4C.y = pcurr->y + p_obj_coll->top;
     sp40.x = translate->x;
-    sp40.y = translate->y + object_coll->top;
+    sp40.y = translate->y + obj_coll->top;
 
         wall_collide = (coll_data->coll_update_frame != gMPCollisionUpdateFrame) 
             
@@ -545,9 +545,9 @@ sb32 mpProcessCheckTestLWallCollision(MPCollData *coll_data)
         is_collide_lwall = TRUE;
     }
     sp4C.x = translate->x;
-    sp4C.y = translate->y + object_coll->bottom;
-    sp40.x = translate->x + object_coll->width;
-    sp40.y = translate->y + object_coll->center;
+    sp4C.y = translate->y + obj_coll->bottom;
+    sp40.x = translate->x + obj_coll->width;
+    sp40.y = translate->y + obj_coll->center;
 
     if ((mpCollisionCheckLWallLineCollisionSame(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) != FALSE) && (test_line_id != ground_line_id))
     {
@@ -556,9 +556,9 @@ sb32 mpProcessCheckTestLWallCollision(MPCollData *coll_data)
         is_collide_lwall = TRUE;
     }
     sp4C.x = translate->x;
-    sp4C.y = translate->y + object_coll->top;
-    sp40.x = translate->x + object_coll->width;
-    sp40.y = translate->y + object_coll->center;
+    sp4C.y = translate->y + obj_coll->top;
+    sp40.x = translate->x + obj_coll->width;
+    sp40.y = translate->y + obj_coll->center;
 
     if ((mpCollisionCheckLWallLineCollisionSame(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) != FALSE) && (test_line_id != ground_line_id))
     {
@@ -576,7 +576,7 @@ sb32 mpProcessCheckTestLWallCollision(MPCollData *coll_data)
 // 0x800DA658
 void mpProcessRunLWallCollision(MPCollData *coll_data)
 {
-    MPObjectColl *object_coll = &coll_data->object_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f wall_pos;
     Vec3f wall_angle;
@@ -596,7 +596,7 @@ void mpProcessRunLWallCollision(MPCollData *coll_data)
 
         mpCollisionGetUDEdgeUp(wall_line_id, &wall_pos);
 
-        if (wall_pos.y < (translate->y + object_coll->bottom))
+        if (wall_pos.y < (translate->y + obj_coll->bottom))
         {
             if ((wall_pos.x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
             {
@@ -607,7 +607,7 @@ void mpProcessRunLWallCollision(MPCollData *coll_data)
         {
             mpCollisionGetUDEdgeDown(wall_line_id, &wall_pos);
 
-            if ((translate->y + object_coll->top) < wall_pos.y)
+            if ((translate->y + obj_coll->top) < wall_pos.y)
             {
                 if ((wall_pos.x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
                 {
@@ -617,7 +617,7 @@ void mpProcessRunLWallCollision(MPCollData *coll_data)
             else
             {
                 wall_pos.x = translate->x;
-                wall_pos.y = translate->y + object_coll->bottom;
+                wall_pos.y = translate->y + obj_coll->bottom;
 
                 if (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
@@ -626,8 +626,8 @@ void mpProcessRunLWallCollision(MPCollData *coll_data)
                         mpProcessSetLastWallCollideStats((translate->x + last_wall_x), wall_line_id, wall_flags, &wall_angle);
                     }
                 }
-                wall_pos.x = translate->x + object_coll->width;
-                wall_pos.y = translate->y + object_coll->center;
+                wall_pos.x = translate->x + obj_coll->width;
+                wall_pos.y = translate->y + obj_coll->center;
 
                 if (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
@@ -637,7 +637,7 @@ void mpProcessRunLWallCollision(MPCollData *coll_data)
                     }
                 }
                 wall_pos.x = translate->x;
-                wall_pos.y = translate->y + object_coll->top;
+                wall_pos.y = translate->y + obj_coll->top;
 
                 if (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
@@ -652,20 +652,20 @@ void mpProcessRunLWallCollision(MPCollData *coll_data)
                 {
                     mpCollisionGetVertexPositionID(wall_line_id, j, &vertex_pos);
 
-                    if ((translate->y + object_coll->bottom) <= vertex_pos.y)
+                    if ((translate->y + obj_coll->bottom) <= vertex_pos.y)
                     {
-                        if (vertex_pos.y <= (translate->y + object_coll->center))
+                        if (vertex_pos.y <= (translate->y + obj_coll->center))
                         {
-                            last_wall_x = vertex_pos.x - (((vertex_pos.y - (translate->y + object_coll->bottom)) * object_coll->width) / (object_coll->center - object_coll->bottom));
+                            last_wall_x = vertex_pos.x - (((vertex_pos.y - (translate->y + obj_coll->bottom)) * obj_coll->width) / (obj_coll->center - obj_coll->bottom));
 
                             goto next;
                         }
                     }
-                    if ((translate->y + object_coll->center) <= vertex_pos.y)
+                    if ((translate->y + obj_coll->center) <= vertex_pos.y)
                     {
-                        if (vertex_pos.y <= (translate->y + object_coll->top))
+                        if (vertex_pos.y <= (translate->y + obj_coll->top))
                         {
-                            last_wall_x = vertex_pos.x - ((((translate->y + object_coll->top) - vertex_pos.y) * object_coll->width) / (object_coll->top - object_coll->center));
+                            last_wall_x = vertex_pos.x - ((((translate->y + obj_coll->top) - vertex_pos.y) * obj_coll->width) / (obj_coll->top - obj_coll->center));
 
                         next:
                             if ((last_wall_x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLeft(wall_line_id, &vertex_pos, NULL, &wall_flags, &wall_angle) != FALSE))
@@ -690,8 +690,8 @@ void mpProcessRunLWallCollision(MPCollData *coll_data)
 // 0x800DAAA8
 sb32 mpProcessCheckTestRWallCollision(MPCollData *coll_data)
 {
-    MPObjectColl *object_coll = &coll_data->object_coll;
-    MPObjectColl *p_object_coll = coll_data->p_object_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
+    MPObjectColl *p_obj_coll = coll_data->p_obj_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f *pcurr = &coll_data->pos_current;
     Vec3f sp4C;
@@ -705,10 +705,10 @@ sb32 mpProcessCheckTestRWallCollision(MPCollData *coll_data)
 
     ground_line_id = (mpCollisionCheckExistLineID(coll_data->ground_line_id) != FALSE) ? mpCollisionGetEdgeUnderRLineID(coll_data->ground_line_id) : -1;
 
-    sp4C.x = pcurr->x - p_object_coll->width;
-    sp4C.y = pcurr->y + p_object_coll->center;
-    sp40.x = translate->x - object_coll->width;
-    sp40.y = translate->y + object_coll->center;
+    sp4C.x = pcurr->x - p_obj_coll->width;
+    sp4C.y = pcurr->y + p_obj_coll->center;
+    sp40.x = translate->x - obj_coll->width;
+    sp40.y = translate->y + obj_coll->center;
 
         wall_collide = (coll_data->coll_update_frame != gMPCollisionUpdateFrame) 
             
@@ -727,9 +727,9 @@ sb32 mpProcessCheckTestRWallCollision(MPCollData *coll_data)
         is_collide_rwall = TRUE;
     }
     sp4C.x = pcurr->x;
-    sp4C.y = pcurr->y + p_object_coll->bottom;
+    sp4C.y = pcurr->y + p_obj_coll->bottom;
     sp40.x = translate->x;
-    sp40.y = translate->y + object_coll->bottom;
+    sp40.y = translate->y + obj_coll->bottom;
 
         wall_collide = (coll_data->coll_update_frame != gMPCollisionUpdateFrame) 
             
@@ -748,9 +748,9 @@ sb32 mpProcessCheckTestRWallCollision(MPCollData *coll_data)
         is_collide_rwall = TRUE;
     }
     sp4C.x = pcurr->x;
-    sp4C.y = pcurr->y + p_object_coll->top;
+    sp4C.y = pcurr->y + p_obj_coll->top;
     sp40.x = translate->x;
-    sp40.y = translate->y + object_coll->top;
+    sp40.y = translate->y + obj_coll->top;
 
         wall_collide = (coll_data->coll_update_frame != gMPCollisionUpdateFrame) 
             
@@ -769,9 +769,9 @@ sb32 mpProcessCheckTestRWallCollision(MPCollData *coll_data)
         is_collide_rwall = TRUE;
     }
     sp4C.x = translate->x;
-    sp4C.y = translate->y + object_coll->bottom;
-    sp40.x = translate->x - object_coll->width;
-    sp40.y = translate->y + object_coll->center;
+    sp4C.y = translate->y + obj_coll->bottom;
+    sp40.x = translate->x - obj_coll->width;
+    sp40.y = translate->y + obj_coll->center;
 
     if ((mpCollisionCheckRWallLineCollisionSame(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) != FALSE) && (test_line_id != ground_line_id))
     {
@@ -780,9 +780,9 @@ sb32 mpProcessCheckTestRWallCollision(MPCollData *coll_data)
         is_collide_rwall = TRUE;
     }
     sp4C.x = translate->x;
-    sp4C.y = translate->y + object_coll->top;
-    sp40.x = translate->x - object_coll->width;
-    sp40.y = translate->y + object_coll->center;
+    sp4C.y = translate->y + obj_coll->top;
+    sp40.x = translate->x - obj_coll->width;
+    sp40.y = translate->y + obj_coll->center;
 
     if ((mpCollisionCheckRWallLineCollisionSame(&sp4C, &sp40, NULL, &test_line_id, NULL, NULL) != FALSE) && (test_line_id != ground_line_id))
     {
@@ -800,7 +800,7 @@ sb32 mpProcessCheckTestRWallCollision(MPCollData *coll_data)
 // 0x800DAE6C
 void mpProcessRunRWallCollision(MPCollData *coll_data)
 {
-    MPObjectColl *object_coll = &coll_data->object_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f wall_pos;
     Vec3f wall_angle;
@@ -820,7 +820,7 @@ void mpProcessRunRWallCollision(MPCollData *coll_data)
 
         func_ovl2_800F4690(wall_line_id, &wall_pos);
 
-        if (wall_pos.y < (translate->y + object_coll->bottom))
+        if (wall_pos.y < (translate->y + obj_coll->bottom))
         {
             if ((sMPProcessLastWallCollidePosition < wall_pos.x) && (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
             {
@@ -831,7 +831,7 @@ void mpProcessRunRWallCollision(MPCollData *coll_data)
         {
             func_ovl2_800F46B0(wall_line_id, &wall_pos);
 
-            if ((translate->y + object_coll->top) < wall_pos.y)
+            if ((translate->y + obj_coll->top) < wall_pos.y)
             {
                 if ((sMPProcessLastWallCollidePosition < wall_pos.x) && (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
                 {
@@ -841,7 +841,7 @@ void mpProcessRunRWallCollision(MPCollData *coll_data)
             else
             {
                 wall_pos.x = translate->x;
-                wall_pos.y = translate->y + object_coll->bottom;
+                wall_pos.y = translate->y + obj_coll->bottom;
 
                 if (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
@@ -850,8 +850,8 @@ void mpProcessRunRWallCollision(MPCollData *coll_data)
                         mpProcessSetLastWallCollideStats((translate->x + last_wall_x), wall_line_id, wall_flags, &wall_angle);
                     }
                 }
-                wall_pos.x = translate->x - object_coll->width;
-                wall_pos.y = translate->y + object_coll->center;
+                wall_pos.x = translate->x - obj_coll->width;
+                wall_pos.y = translate->y + obj_coll->center;
 
                 if (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
@@ -861,7 +861,7 @@ void mpProcessRunRWallCollision(MPCollData *coll_data)
                     }
                 }
                 wall_pos.x = translate->x;
-                wall_pos.y = translate->y + object_coll->top;
+                wall_pos.y = translate->y + obj_coll->top;
 
                 if (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
@@ -876,20 +876,20 @@ void mpProcessRunRWallCollision(MPCollData *coll_data)
                 {
                     mpCollisionGetVertexPositionID(wall_line_id, j, &vertex_pos);
 
-                    if ((translate->y + object_coll->bottom) <= vertex_pos.y)
+                    if ((translate->y + obj_coll->bottom) <= vertex_pos.y)
                     {
-                        if (vertex_pos.y <= (translate->y + object_coll->center))
+                        if (vertex_pos.y <= (translate->y + obj_coll->center))
                         {
-                            last_wall_x = vertex_pos.x + (((vertex_pos.y - (translate->y + object_coll->bottom)) * object_coll->width) / (object_coll->center - object_coll->bottom));
+                            last_wall_x = vertex_pos.x + (((vertex_pos.y - (translate->y + obj_coll->bottom)) * obj_coll->width) / (obj_coll->center - obj_coll->bottom));
 
                             goto next;
                         }
                     }
-                    if ((translate->y + object_coll->center) <= vertex_pos.y)
+                    if ((translate->y + obj_coll->center) <= vertex_pos.y)
                     {
-                        if (vertex_pos.y <= (translate->y + object_coll->top))
+                        if (vertex_pos.y <= (translate->y + obj_coll->top))
                         {
-                            last_wall_x = vertex_pos.x + ((((translate->y + object_coll->top) - vertex_pos.y) * object_coll->width) / (object_coll->top - object_coll->center));
+                            last_wall_x = vertex_pos.x + ((((translate->y + obj_coll->top) - vertex_pos.y) * obj_coll->width) / (obj_coll->top - obj_coll->center));
 
                         next:
                             if ((sMPProcessLastWallCollidePosition < last_wall_x) && (mpCollisionGetLRCommonRight(wall_line_id, &vertex_pos, NULL, &wall_flags, &wall_angle) != FALSE))
@@ -924,7 +924,7 @@ sb32 mpProcessCheckTestGroundCollisionNew(MPCollData *coll_data)
     coll_data->coll_mask_stat &= ~MPCOLL_FLAG_GROUND;
 
     object_pos.x = translate->x;
-    object_pos.y = translate->y + coll_data->object_coll.bottom;
+    object_pos.y = translate->y + coll_data->obj_coll.bottom;
 
     if (mpCollisionCheckExistLineID(coll_data->ground_line_id) == FALSE)
     {
@@ -965,7 +965,7 @@ sb32 mpProcessCheckTestGroundCollisionNew(MPCollData *coll_data)
             is_wall_edge = TRUE;
         }
     }
-    translate->y = object_pos.y - coll_data->object_coll.bottom;
+    translate->y = object_pos.y - coll_data->obj_coll.bottom;
 
     if (is_wall_edge != FALSE)
     {
@@ -986,8 +986,8 @@ sb32 mpProcessCheckTestGroundCollisionNew(MPCollData *coll_data)
 // 0x800DB474
 sb32 mpProcessCheckTestGroundCollision(MPCollData *coll_data, s32 line_id)
 {
-    MPObjectColl *p_object_coll = coll_data->p_object_coll;
-    MPObjectColl *object_coll = &coll_data->object_coll;
+    MPObjectColl *p_obj_coll = coll_data->p_obj_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
     Vec3f *translate = coll_data->p_translate;
     s32 is_collide_ground;
     Vec3f sp4C;
@@ -997,9 +997,9 @@ sb32 mpProcessCheckTestGroundCollision(MPCollData *coll_data, s32 line_id)
     Vec3f ground_angle;
 
     sp4C.x = coll_data->pos_current.x;
-    sp4C.y = coll_data->pos_current.y + p_object_coll->bottom;
+    sp4C.y = coll_data->pos_current.y + p_obj_coll->bottom;
     sp40.x = translate->x;
-    sp40.y = translate->y + object_coll->bottom;
+    sp40.y = translate->y + obj_coll->bottom;
 
                     is_collide_ground
                               
@@ -1131,8 +1131,8 @@ sb32 mpProcessCheckTestRCliffCollision(MPCollData *coll_data)
 // 0x800DB838
 sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
 {
-    MPObjectColl *object_coll = &coll_data->object_coll;
-    MPObjectColl *p_object_coll = coll_data->p_object_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
+    MPObjectColl *p_obj_coll = coll_data->p_obj_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f *pcurr = &coll_data->pos_current;
     Vec3f sp54;
@@ -1151,10 +1151,10 @@ sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
 
     mpProcessResetMultiWallCount();
 
-    sp54.x = pcurr->x + p_object_coll->width;
-    sp54.y = pcurr->y + p_object_coll->center;
-    sp48.x = translate->x + object_coll->width;
-    sp48.y = translate->y + object_coll->center;
+    sp54.x = pcurr->x + p_obj_coll->width;
+    sp54.y = pcurr->y + p_obj_coll->center;
+    sp48.x = translate->x + obj_coll->width;
+    sp48.y = translate->y + obj_coll->center;
 
                           line_collide
 
@@ -1177,9 +1177,9 @@ sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
         is_collide_lwall = TRUE;
     }
     sp54.x = pcurr->x;
-    sp54.y = pcurr->y + p_object_coll->bottom;
+    sp54.y = pcurr->y + p_obj_coll->bottom;
     sp48.x = translate->x;
-    sp48.y = translate->y + object_coll->bottom;
+    sp48.y = translate->y + obj_coll->bottom;
 
                       line_collide
 
@@ -1202,9 +1202,9 @@ sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
         is_collide_lwall = TRUE;
     }
     sp54.x = pcurr->x;
-    sp54.y = pcurr->y + p_object_coll->top;
+    sp54.y = pcurr->y + p_obj_coll->top;
     sp48.x = translate->x;
-    sp48.y = translate->y + object_coll->top;
+    sp48.y = translate->y + obj_coll->top;
 
                   line_collide
 
@@ -1227,9 +1227,9 @@ sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
         is_collide_lwall = TRUE;
     }
     sp54.x = translate->x;
-    sp54.y = translate->y + object_coll->bottom;
-    sp48.x = translate->x + object_coll->width;
-    sp48.y = translate->y + object_coll->center;
+    sp54.y = translate->y + obj_coll->bottom;
+    sp48.x = translate->x + obj_coll->width;
+    sp48.y = translate->y + obj_coll->center;
 
     if (mpCollisionCheckLWallLineCollisionSame(&sp54, &sp48, NULL, &test_line_id, NULL, NULL) != FALSE)
     {
@@ -1238,9 +1238,9 @@ sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
         is_collide_lwall = TRUE;
     }
     sp54.x = translate->x;
-    sp54.y = translate->y + object_coll->top;
-    sp48.x = translate->x + object_coll->width;
-    sp48.y = translate->y + object_coll->center;
+    sp54.y = translate->y + obj_coll->top;
+    sp48.x = translate->x + obj_coll->width;
+    sp48.y = translate->y + obj_coll->center;
 
     if (mpCollisionCheckLWallLineCollisionSame(&sp54, &sp48, NULL, &test_line_id, NULL, NULL) != FALSE)
     {
@@ -1248,10 +1248,10 @@ sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
 
         is_collide_lwall = TRUE;
     }
-    sp54.x = pcurr->x + p_object_coll->width;
-    sp54.y = pcurr->y + p_object_coll->center;
-    sp48.x = translate->x + object_coll->width;
-    sp48.y = translate->y + object_coll->center;
+    sp54.x = pcurr->x + p_obj_coll->width;
+    sp54.y = pcurr->y + p_obj_coll->center;
+    sp48.x = translate->x + obj_coll->width;
+    sp48.y = translate->y + obj_coll->center;
 
                   line_collide
 
@@ -1276,9 +1276,9 @@ sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
             if (mpCollisionGetLineTypeID(edge_line_id) == nMPLineKindLWall)
             {
                 sp54.x = pcurr->x;
-                sp54.y = pcurr->y + p_object_coll->top;
+                sp54.y = pcurr->y + p_obj_coll->top;
                 sp48.x = translate->x;
-                sp48.y = translate->y + object_coll->top;
+                sp48.y = translate->y + obj_coll->top;
 
                                   line_collide
 
@@ -1297,9 +1297,9 @@ sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
                 if ((line_collide == FALSE) || (test_line_id != ud_line_id))
                 {
                     sp54.x = translate->x;
-                    sp54.y = translate->y + object_coll->top;
-                    sp48.x = translate->x + object_coll->width;
-                    sp48.y = translate->y + object_coll->center;
+                    sp54.y = translate->y + obj_coll->top;
+                    sp48.x = translate->x + obj_coll->width;
+                    sp48.y = translate->y + obj_coll->center;
 
                     if ((mpCollisionCheckCeilLineCollisionSame(&sp54, &sp48, NULL, &ud_line_id, NULL, NULL) == FALSE) || (test_line_id != ud_line_id))
                     {
@@ -1311,10 +1311,10 @@ sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
             }
         }
     }
-    sp54.x = pcurr->x + p_object_coll->width;
-    sp54.y = pcurr->y + p_object_coll->center;
-    sp48.x = translate->x + object_coll->width;
-    sp48.y = translate->y + object_coll->center;
+    sp54.x = pcurr->x + p_obj_coll->width;
+    sp54.y = pcurr->y + p_obj_coll->center;
+    sp48.x = translate->x + obj_coll->width;
+    sp48.y = translate->y + obj_coll->center;
 
                        line_collide
 
@@ -1339,9 +1339,9 @@ sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
             if (mpCollisionGetLineTypeID(edge_line_id) == nMPLineKindLWall)
             {
                 sp54.x = pcurr->x;
-                sp54.y = pcurr->y + p_object_coll->bottom;
+                sp54.y = pcurr->y + p_obj_coll->bottom;
                 sp48.x = translate->x;
-                sp48.y = translate->y + object_coll->bottom;
+                sp48.y = translate->y + obj_coll->bottom;
 
                                line_collide
 
@@ -1360,9 +1360,9 @@ sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
                 if ((line_collide == FALSE) || (test_line_id != ud_line_id))
                 {
                     sp54.x = translate->x;
-                    sp54.y = translate->y + object_coll->bottom;
-                    sp48.x = translate->x + object_coll->width;
-                    sp48.y = translate->y + object_coll->center;
+                    sp54.y = translate->y + obj_coll->bottom;
+                    sp48.x = translate->x + obj_coll->width;
+                    sp48.y = translate->y + obj_coll->center;
 
                     if ((mpCollisionCheckGroundLineCollisionSame(&sp54, &sp48, NULL, &ud_line_id, NULL, NULL) == FALSE) || (test_line_id != ud_line_id))
                     {
@@ -1384,7 +1384,7 @@ sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
 // 0x800DBF58
 void mpProcessRunLWallCollisionAdjNew(MPCollData *coll_data)
 {
-    MPObjectColl *object_coll = &coll_data->object_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f wall_pos;
     Vec3f wall_angle;
@@ -1404,7 +1404,7 @@ void mpProcessRunLWallCollisionAdjNew(MPCollData *coll_data)
 
         mpCollisionGetUDEdgeUp(wall_line_id, &wall_pos);
 
-        if (wall_pos.y < (translate->y + object_coll->bottom))
+        if (wall_pos.y < (translate->y + obj_coll->bottom))
         {
             if ((wall_pos.x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
             {
@@ -1415,7 +1415,7 @@ void mpProcessRunLWallCollisionAdjNew(MPCollData *coll_data)
         {
             mpCollisionGetUDEdgeDown(wall_line_id, &wall_pos);
 
-            if ((translate->y + object_coll->top) < wall_pos.y)
+            if ((translate->y + obj_coll->top) < wall_pos.y)
             {
                 if ((wall_pos.x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
                 {
@@ -1425,7 +1425,7 @@ void mpProcessRunLWallCollisionAdjNew(MPCollData *coll_data)
             else
             {
                 wall_pos.x = translate->x;
-                wall_pos.y = translate->y + object_coll->bottom;
+                wall_pos.y = translate->y + obj_coll->bottom;
 
                 if (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
@@ -1434,8 +1434,8 @@ void mpProcessRunLWallCollisionAdjNew(MPCollData *coll_data)
                         mpProcessSetLastWallCollideStats((translate->x + last_wall_x), wall_line_id, wall_flags, &wall_angle);
                     }
                 }
-                wall_pos.x = translate->x + object_coll->width;
-                wall_pos.y = translate->y + object_coll->center;
+                wall_pos.x = translate->x + obj_coll->width;
+                wall_pos.y = translate->y + obj_coll->center;
 
                 if (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
@@ -1445,7 +1445,7 @@ void mpProcessRunLWallCollisionAdjNew(MPCollData *coll_data)
                     }
                 }
                 wall_pos.x = translate->x;
-                wall_pos.y = translate->y + object_coll->top;
+                wall_pos.y = translate->y + obj_coll->top;
 
                 if (mpCollisionGetLRCommonLeft(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
@@ -1460,20 +1460,20 @@ void mpProcessRunLWallCollisionAdjNew(MPCollData *coll_data)
                 {
                     mpCollisionGetVertexPositionID(wall_line_id, j, &vertex_pos);
 
-                    if ((translate->y + object_coll->bottom) <= vertex_pos.y)
+                    if ((translate->y + obj_coll->bottom) <= vertex_pos.y)
                     {
-                        if (vertex_pos.y <= (translate->y + object_coll->center))
+                        if (vertex_pos.y <= (translate->y + obj_coll->center))
                         {
-                            last_wall_x = vertex_pos.x - (((vertex_pos.y - (translate->y + object_coll->bottom)) * object_coll->width) / (object_coll->center - object_coll->bottom));
+                            last_wall_x = vertex_pos.x - (((vertex_pos.y - (translate->y + obj_coll->bottom)) * obj_coll->width) / (obj_coll->center - obj_coll->bottom));
 
                             goto next;
                         }
                     }
-                    if ((translate->y + object_coll->center) <= vertex_pos.y)
+                    if ((translate->y + obj_coll->center) <= vertex_pos.y)
                     {
-                        if (vertex_pos.y <= (translate->y + object_coll->top))
+                        if (vertex_pos.y <= (translate->y + obj_coll->top))
                         {
-                            last_wall_x = vertex_pos.x - ((((translate->y + object_coll->top) - vertex_pos.y) * object_coll->width) / (object_coll->top - object_coll->center));
+                            last_wall_x = vertex_pos.x - ((((translate->y + obj_coll->top) - vertex_pos.y) * obj_coll->width) / (obj_coll->top - obj_coll->center));
 
                         next:
                             if ((last_wall_x < sMPProcessLastWallCollidePosition) && (mpCollisionGetLRCommonLeft(wall_line_id, &vertex_pos, NULL, &wall_flags, &wall_angle) != FALSE))
@@ -1501,8 +1501,8 @@ void mpProcessRunLWallCollisionAdjNew(MPCollData *coll_data)
 // 0x800DC3C8
 sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
 {
-    MPObjectColl *object_coll = &coll_data->object_coll;
-    MPObjectColl *p_object_coll = coll_data->p_object_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
+    MPObjectColl *p_obj_coll = coll_data->p_obj_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f *pcurr = &coll_data->pos_current;
     Vec3f sp54;
@@ -1521,10 +1521,10 @@ sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
 
     mpProcessResetMultiWallCount();
 
-    sp54.x = pcurr->x - p_object_coll->width;
-    sp54.y = pcurr->y + p_object_coll->center;
-    sp48.x = translate->x - object_coll->width;
-    sp48.y = translate->y + object_coll->center;
+    sp54.x = pcurr->x - p_obj_coll->width;
+    sp54.y = pcurr->y + p_obj_coll->center;
+    sp48.x = translate->x - obj_coll->width;
+    sp48.y = translate->y + obj_coll->center;
 
                           line_collide
 
@@ -1547,9 +1547,9 @@ sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
         is_collide_rwall = TRUE;
     }
     sp54.x = pcurr->x;
-    sp54.y = pcurr->y + p_object_coll->bottom;
+    sp54.y = pcurr->y + p_obj_coll->bottom;
     sp48.x = translate->x;
-    sp48.y = translate->y + object_coll->bottom;
+    sp48.y = translate->y + obj_coll->bottom;
 
                       line_collide
 
@@ -1572,9 +1572,9 @@ sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
         is_collide_rwall = TRUE;
     }
     sp54.x = pcurr->x;
-    sp54.y = pcurr->y + p_object_coll->top;
+    sp54.y = pcurr->y + p_obj_coll->top;
     sp48.x = translate->x;
-    sp48.y = translate->y + object_coll->top;
+    sp48.y = translate->y + obj_coll->top;
 
                    line_collide
 
@@ -1597,9 +1597,9 @@ sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
         is_collide_rwall = TRUE;
     }
     sp54.x = translate->x;
-    sp54.y = translate->y + object_coll->bottom;
-    sp48.x = translate->x - object_coll->width;
-    sp48.y = translate->y + object_coll->center;
+    sp54.y = translate->y + obj_coll->bottom;
+    sp48.x = translate->x - obj_coll->width;
+    sp48.y = translate->y + obj_coll->center;
 
     if (mpCollisionCheckRWallLineCollisionSame(&sp54, &sp48, NULL, &test_line_id, NULL, NULL) != FALSE)
     {
@@ -1608,9 +1608,9 @@ sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
         is_collide_rwall = TRUE;
     }
     sp54.x = translate->x;
-    sp54.y = translate->y + object_coll->top;
-    sp48.x = translate->x - object_coll->width;
-    sp48.y = translate->y + object_coll->center;
+    sp54.y = translate->y + obj_coll->top;
+    sp48.x = translate->x - obj_coll->width;
+    sp48.y = translate->y + obj_coll->center;
 
     if (mpCollisionCheckRWallLineCollisionSame(&sp54, &sp48, NULL, &test_line_id, NULL, NULL) != FALSE)
     {
@@ -1618,10 +1618,10 @@ sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
 
         is_collide_rwall = TRUE;
     }
-    sp54.x = pcurr->x - p_object_coll->width;
-    sp54.y = pcurr->y + p_object_coll->center;
-    sp48.x = translate->x - object_coll->width;
-    sp48.y = translate->y + object_coll->center;
+    sp54.x = pcurr->x - p_obj_coll->width;
+    sp54.y = pcurr->y + p_obj_coll->center;
+    sp48.x = translate->x - obj_coll->width;
+    sp48.y = translate->y + obj_coll->center;
 
                   line_collide
 
@@ -1646,9 +1646,9 @@ sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
             if (mpCollisionGetLineTypeID(edge_line_id) == nMPLineKindRWall)
             {
                 sp54.x = pcurr->x;
-                sp54.y = pcurr->y + p_object_coll->top;
+                sp54.y = pcurr->y + p_obj_coll->top;
                 sp48.x = translate->x;
-                sp48.y = translate->y + object_coll->top;
+                sp48.y = translate->y + obj_coll->top;
 
                                   line_collide
 
@@ -1667,9 +1667,9 @@ sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
                 if ((line_collide == FALSE) || (test_line_id != ud_line_id))
                 {
                     sp54.x = translate->x;
-                    sp54.y = translate->y + object_coll->top;
-                    sp48.x = translate->x - object_coll->width;
-                    sp48.y = translate->y + object_coll->center;
+                    sp54.y = translate->y + obj_coll->top;
+                    sp48.x = translate->x - obj_coll->width;
+                    sp48.y = translate->y + obj_coll->center;
 
                     if ((mpCollisionCheckCeilLineCollisionSame(&sp54, &sp48, 0, &ud_line_id, 0, 0) == 0) || (test_line_id != ud_line_id))
                     {
@@ -1681,10 +1681,10 @@ sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
             }
         }
     }
-    sp54.x = pcurr->x - p_object_coll->width;
-    sp54.y = pcurr->y + p_object_coll->center;
-    sp48.x = translate->x - object_coll->width;
-    sp48.y = translate->y + object_coll->center;
+    sp54.x = pcurr->x - p_obj_coll->width;
+    sp54.y = pcurr->y + p_obj_coll->center;
+    sp48.x = translate->x - obj_coll->width;
+    sp48.y = translate->y + obj_coll->center;
 
                       line_collide
 
@@ -1709,9 +1709,9 @@ sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
             if (mpCollisionGetLineTypeID(edge_line_id) == nMPLineKindRWall)
             {
                 sp54.x = pcurr->x;
-                sp54.y = pcurr->y + p_object_coll->bottom;
+                sp54.y = pcurr->y + p_obj_coll->bottom;
                 sp48.x = translate->x;
-                sp48.y = translate->y + object_coll->bottom;
+                sp48.y = translate->y + obj_coll->bottom;
 
                               line_collide
 
@@ -1730,9 +1730,9 @@ sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
                 if ((line_collide == FALSE) || (test_line_id != ud_line_id))
                 {
                     sp54.x = translate->x;
-                    sp54.y = translate->y + object_coll->bottom;
-                    sp48.x = translate->x - object_coll->width;
-                    sp48.y = translate->y + object_coll->center;
+                    sp54.y = translate->y + obj_coll->bottom;
+                    sp48.x = translate->x - obj_coll->width;
+                    sp48.y = translate->y + obj_coll->center;
 
                     if ((mpCollisionCheckGroundLineCollisionSame(&sp54, &sp48, NULL, &ud_line_id, NULL, NULL) == FALSE) || (test_line_id != ud_line_id))
                     {
@@ -1754,7 +1754,7 @@ sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
 // 0x800DCAE8
 void mpProcessRunRWallCollisionAdjNew(MPCollData *coll_data)
 {
-    MPObjectColl *object_coll = &coll_data->object_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f wall_pos;
     Vec3f wall_angle;
@@ -1774,7 +1774,7 @@ void mpProcessRunRWallCollisionAdjNew(MPCollData *coll_data)
 
         func_ovl2_800F4690(wall_line_id, &wall_pos);
 
-        if (wall_pos.y < (translate->y + object_coll->bottom))
+        if (wall_pos.y < (translate->y + obj_coll->bottom))
         {
             if ((sMPProcessLastWallCollidePosition < wall_pos.x) && (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
             {
@@ -1785,7 +1785,7 @@ void mpProcessRunRWallCollisionAdjNew(MPCollData *coll_data)
         {
             func_ovl2_800F46B0(wall_line_id, &wall_pos);
 
-            if ((translate->y + object_coll->top) < wall_pos.y)
+            if ((translate->y + obj_coll->top) < wall_pos.y)
             {
                 if ((sMPProcessLastWallCollidePosition < wall_pos.x) && (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, NULL, &wall_flags, &wall_angle) != FALSE))
                 {
@@ -1795,7 +1795,7 @@ void mpProcessRunRWallCollisionAdjNew(MPCollData *coll_data)
             else
             {
                 wall_pos.x = translate->x;
-                wall_pos.y = translate->y + object_coll->bottom;
+                wall_pos.y = translate->y + obj_coll->bottom;
 
                 if (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
@@ -1804,8 +1804,8 @@ void mpProcessRunRWallCollisionAdjNew(MPCollData *coll_data)
                         mpProcessSetLastWallCollideStats((translate->x + last_wall_x), wall_line_id, wall_flags, &wall_angle);
                     }
                 }
-                wall_pos.x = translate->x - object_coll->width;
-                wall_pos.y = translate->y + object_coll->center;
+                wall_pos.x = translate->x - obj_coll->width;
+                wall_pos.y = translate->y + obj_coll->center;
 
                 if (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
@@ -1815,7 +1815,7 @@ void mpProcessRunRWallCollisionAdjNew(MPCollData *coll_data)
                     }
                 }
                 wall_pos.x = translate->x;
-                wall_pos.y = translate->y + object_coll->top;
+                wall_pos.y = translate->y + obj_coll->top;
 
                 if (mpCollisionGetLRCommonRight(wall_line_id, &wall_pos, &last_wall_x, &wall_flags, &wall_angle) != FALSE)
                 {
@@ -1830,20 +1830,20 @@ void mpProcessRunRWallCollisionAdjNew(MPCollData *coll_data)
                 {
                     mpCollisionGetVertexPositionID(wall_line_id, j, &vertex_pos);
 
-                    if ((translate->y + object_coll->bottom) <= vertex_pos.y)
+                    if ((translate->y + obj_coll->bottom) <= vertex_pos.y)
                     {
-                        if (vertex_pos.y <= (translate->y + object_coll->center))
+                        if (vertex_pos.y <= (translate->y + obj_coll->center))
                         {
-                            last_wall_x = vertex_pos.x + (((vertex_pos.y - (translate->y + object_coll->bottom)) * object_coll->width) / (object_coll->center - object_coll->bottom));
+                            last_wall_x = vertex_pos.x + (((vertex_pos.y - (translate->y + obj_coll->bottom)) * obj_coll->width) / (obj_coll->center - obj_coll->bottom));
 
                             goto next;
                         }
                     }
-                    if ((translate->y + object_coll->center) <= vertex_pos.y)
+                    if ((translate->y + obj_coll->center) <= vertex_pos.y)
                     {
-                        if (vertex_pos.y <= (translate->y + object_coll->top))
+                        if (vertex_pos.y <= (translate->y + obj_coll->top))
                         {
-                            last_wall_x = vertex_pos.x + ((((translate->y + object_coll->top) - vertex_pos.y) * object_coll->width) / (object_coll->top - object_coll->center));
+                            last_wall_x = vertex_pos.x + ((((translate->y + obj_coll->top) - vertex_pos.y) * obj_coll->width) / (obj_coll->top - obj_coll->center));
 
                         next:
                             if ((sMPProcessLastWallCollidePosition < last_wall_x) && (mpCollisionGetLRCommonRight(wall_line_id, &vertex_pos, NULL, &wall_flags, &wall_angle) != FALSE))
@@ -1871,8 +1871,8 @@ void mpProcessRunRWallCollisionAdjNew(MPCollData *coll_data)
 // 0x800DCF58
 sb32 mpProcessCheckTestCeilCollisionAdjNew(MPCollData *coll_data)
 {
-    MPObjectColl *object_coll = &coll_data->object_coll;
-    MPObjectColl *p_object_coll = coll_data->p_object_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
+    MPObjectColl *p_obj_coll = coll_data->p_obj_coll;
     Vec3f *translate = coll_data->p_translate;
     s32 unused;
     Vec3f sp4C;
@@ -1884,10 +1884,10 @@ sb32 mpProcessCheckTestCeilCollisionAdjNew(MPCollData *coll_data)
     coll_data->coll_mask_stat &= ~MPCOLL_FLAG_CEIL;
 
     sp4C.x = coll_data->pos_current.x;
-    sp4C.y = coll_data->pos_current.y + p_object_coll->top;
+    sp4C.y = coll_data->pos_current.y + p_obj_coll->top;
 
     sp40.x = translate->x;
-    sp40.y = translate->y + object_coll->top;
+    sp40.y = translate->y + obj_coll->top;
 
     ceil_collide
 
@@ -1938,7 +1938,7 @@ sb32 mpProcessCheckTestCeilCollisionAdjNew(MPCollData *coll_data)
 // 0x800DD160
 void mpProcessRunCeilCollisionAdjNew(MPCollData *coll_data)
 {
-    MPObjectColl *object_coll = &coll_data->object_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f object_pos;
     s32 line_id;
@@ -1946,7 +1946,7 @@ void mpProcessRunCeilCollisionAdjNew(MPCollData *coll_data)
     f32 ceil_dist;
 
     object_pos.x = translate->x;
-    object_pos.y = translate->y + object_coll->top;
+    object_pos.y = translate->y + obj_coll->top;
 
     if (mpCollisionGetUDCommonDown(coll_data->ceil_line_id, &object_pos, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE)
     {
@@ -1979,7 +1979,7 @@ void mpProcessRunCeilCollisionAdjNew(MPCollData *coll_data)
             is_collide_ceil = TRUE;
         }
     }
-    translate->y = object_pos.y - object_coll->top;
+    translate->y = object_pos.y - obj_coll->top;
 
     if (is_collide_ceil != FALSE)
     {
@@ -1994,8 +1994,8 @@ void mpProcessRunCeilCollisionAdjNew(MPCollData *coll_data)
 // 0x800DD2C8
 sb32 mpProcessCheckTestGroundCollisionAdjNew(MPCollData *coll_data, sb32(*proc_map)(GObj*), GObj *gobj)
 {
-    MPObjectColl *p_object_coll = coll_data->p_object_coll;
-    MPObjectColl *object_coll = &coll_data->object_coll;
+    MPObjectColl *p_obj_coll = coll_data->p_obj_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f *pcurr = &coll_data->pos_current;
     Vec3f sp4C;
@@ -2007,10 +2007,10 @@ sb32 mpProcessCheckTestGroundCollisionAdjNew(MPCollData *coll_data, sb32(*proc_m
     coll_data->coll_mask_stat &= ~MPCOLL_FLAG_GROUND;
 
     sp4C.x = pcurr->x;
-    sp4C.y = pcurr->y + p_object_coll->bottom;
+    sp4C.y = pcurr->y + p_obj_coll->bottom;
 
     sp40.x = translate->x;
-    sp40.y = translate->y + object_coll->bottom;
+    sp40.y = translate->y + obj_coll->bottom;
 
                                                                          var_v0 
                                                                             
@@ -2088,13 +2088,13 @@ sb32 mpProcessRunGroundCollisionAdjNewNULL(MPCollData *coll_data)
 // 0x800DD59C
 void func_ovl2_800DD59C(MPCollData *coll_data)
 {
-    MPObjectColl *object_coll = &coll_data->object_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f object_pos;
     f32 ground_dist;
 
     object_pos.x = translate->x;
-    object_pos.y = translate->y + object_coll->bottom;
+    object_pos.y = translate->y + obj_coll->bottom;
 
     if (mpCollisionGetUDCommonUp(coll_data->ground_line_id, &object_pos, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
     {
@@ -2108,7 +2108,7 @@ void func_ovl2_800DD59C(MPCollData *coll_data)
         {
             mpCollisionGetLREdgeRight(coll_data->ground_line_id, &object_pos);
         }
-        translate->y = object_pos.y - object_coll->bottom;
+        translate->y = object_pos.y - obj_coll->bottom;
         translate->x = object_pos.x;
 
         mpCollisionGetUDCommonUp(coll_data->ground_line_id, &object_pos, NULL, &coll_data->ground_flags, &coll_data->ground_angle);
@@ -2120,7 +2120,7 @@ void func_ovl2_800DD59C(MPCollData *coll_data)
 // 0x800DD6A8
 void func_ovl2_800DD6A8(MPCollData *coll_data)
 {
-    MPObjectColl *object_coll = &coll_data->object_coll;
+    MPObjectColl *obj_coll = &coll_data->obj_coll;
     Vec3f *translate = coll_data->p_translate;
     Vec3f object_pos;
     s32 edge_line_id;
@@ -2128,7 +2128,7 @@ void func_ovl2_800DD6A8(MPCollData *coll_data)
     f32 ground_dist;
 
     object_pos.x = translate->x;
-    object_pos.y = translate->y + object_coll->bottom;
+    object_pos.y = translate->y + obj_coll->bottom;
 
     if (mpCollisionGetUDCommonUp(coll_data->ground_line_id, &object_pos, &ground_dist, &coll_data->ground_flags, &coll_data->ground_angle) != FALSE)
     {
@@ -2163,7 +2163,7 @@ void func_ovl2_800DD6A8(MPCollData *coll_data)
             is_collide_ground = TRUE;
         }
     }
-    translate->y = object_pos.y - object_coll->bottom;
+    translate->y = object_pos.y - obj_coll->bottom;
 
     if (is_collide_ground != FALSE)
     {

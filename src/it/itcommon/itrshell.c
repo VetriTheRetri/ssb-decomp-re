@@ -243,7 +243,7 @@ void itRShellSpinUpdateGFX(GObj *item_gobj)
     {
         Vec3f pos = dobj->translate.vec.f;
 
-        pos.y += ip->attributes->object_coll_bottom;
+        pos.y += ip->attributes->obj_coll_bottom;
 
         efManagerDustLightMakeEffect(&pos, ip->lr, 1.0F);
 
@@ -494,7 +494,7 @@ void itRShellSpinCheckCollisionEdge(GObj *item_gobj)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x >= (joint->translate.vec.f.x - attributes->object_coll_width))
+            if (pos.x >= (joint->translate.vec.f.x - attributes->obj_coll_width))
             {
                 itRShellSpinEdgeInvertVelLR(item_gobj, 1);
             }
@@ -503,7 +503,7 @@ void itRShellSpinCheckCollisionEdge(GObj *item_gobj)
         {
             mpCollisionGetLREdgeRight(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x <= (joint->translate.vec.f.x + attributes->object_coll_width))
+            if (pos.x <= (joint->translate.vec.f.x + attributes->obj_coll_width))
             {
                 itRShellSpinEdgeInvertVelLR(item_gobj, 0);
             }
@@ -692,7 +692,7 @@ GObj* itRShellMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ITStruct *ip;
         Vec3f translate = dobj->translate.vec.f;
 
-        dobj->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
+        dobj->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 
         gcAddXObjForDObjFixed(dobj, nGCTransformTraRotRpyR, 0);
         gcAddXObjForDObjFixed(dobj, 0x48, 0);

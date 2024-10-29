@@ -857,8 +857,8 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
     }
     fp->coll_data.p_translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
     fp->coll_data.p_lr = &fp->lr;
-    fp->coll_data.object_coll = attributes->object_coll;
-    fp->coll_data.p_object_coll = &fp->coll_data.object_coll;
+    fp->coll_data.obj_coll = attributes->obj_coll;
+    fp->coll_data.p_obj_coll = &fp->coll_data.obj_coll;
     fp->coll_data.cliffcatch_coll = attributes->cliffcatch_coll;
     fp->coll_data.ignore_line_id = -1;
     fp->coll_data.coll_update_frame = gMPCollisionUpdateFrame;

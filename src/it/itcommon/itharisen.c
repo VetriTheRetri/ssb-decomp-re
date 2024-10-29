@@ -229,7 +229,7 @@ void itHarisenThrownSetStatus(GObj *item_gobj)
 {
     itMainSetItemStatus(item_gobj, dITHarisenStatusDescs, nITHarisenStatusThrown);
 
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(-90.0F); // HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(-90.0F);
 }
 
 // 0x80175394
@@ -264,7 +264,7 @@ GObj* itHarisenMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         ITStruct *ip = itGetStruct(item_gobj);
 
-        DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(-90.0F); // HALF_PI32
+        DObjGetStruct(item_gobj)->rotate.vec.f.y = F_CST_DTOR32(-90.0F);
 
         ip->is_unused_item_bool = TRUE;
 

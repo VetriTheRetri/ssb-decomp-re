@@ -41,10 +41,10 @@ struct WPAttributes // Moreso hitbox stuff
     AObjEvent32 **anim_joints;
     AObjEvent32 ***p_matanim_joints;
     Vec3h offset[2];
-    s16 object_coll_top;
-    s16 object_coll_center;
-    s16 object_coll_bottom;
-    s16 object_coll_width;
+    s16 obj_coll_top;
+    s16 obj_coll_center;
+    s16 obj_coll_bottom;
+    s16 obj_coll_width;
     u16 size;
     s32 angle : 10;
     u32 knockback_scale : 10;

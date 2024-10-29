@@ -254,7 +254,7 @@ void itBombHeiCommonCheckMakeDustEffect(GObj *item_gobj, u8 override)
     {
         Vec3f pos = dobj->translate.vec.f;
 
-        pos.y += attributes->object_coll_bottom;
+        pos.y += attributes->obj_coll_bottom;
 
         efManagerDustHeavyDoubleMakeEffect(&pos, ip->lr, 1.0F);
     }
@@ -472,7 +472,7 @@ sb32 itBombHeiWalkProcUpdate(GObj *item_gobj)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x >= (dobj->translate.vec.f.x - attributes->object_coll_width))
+            if (pos.x >= (dobj->translate.vec.f.x - attributes->obj_coll_width))
             {
                 itBombHeiCommonSetWalkLR(item_gobj, 1);
             }
@@ -481,7 +481,7 @@ sb32 itBombHeiWalkProcUpdate(GObj *item_gobj)
         {
             mpCollisionGetLREdgeRight(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x <= (dobj->translate.vec.f.x + attributes->object_coll_width))
+            if (pos.x <= (dobj->translate.vec.f.x + attributes->obj_coll_width))
             {
                 itBombHeiCommonSetWalkLR(item_gobj, 0);
             }
@@ -546,7 +546,7 @@ void itBombHeiWalkInitItemVars(GObj *item_gobj)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x >= (dobj->translate.vec.f.x - attributes->object_coll_width))
+            if (pos.x >= (dobj->translate.vec.f.x - attributes->obj_coll_width))
             {
                 itBombHeiCommonSetWalkLR(item_gobj, 1);
             }
@@ -555,7 +555,7 @@ void itBombHeiWalkInitItemVars(GObj *item_gobj)
         {
             mpCollisionGetLREdgeRight(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x <= (dobj->translate.vec.f.x + attributes->object_coll_width))
+            if (pos.x <= (dobj->translate.vec.f.x + attributes->obj_coll_width))
             {
                 itBombHeiCommonSetWalkLR(item_gobj, 0);
             }

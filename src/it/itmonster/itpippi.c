@@ -88,7 +88,7 @@ void itPippiCommonSelectMonster(GObj *item_gobj)
     {
         if (mtTrigGetRandomIntRange(2) == 0)
         {
-            dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
+            dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F);
 
             ip->lr = +1;
         }
@@ -228,7 +228,7 @@ GObj* itPippiMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f = *pos;
 
-        dobj->translate.vec.f.y -= ip->attributes->object_coll_bottom;
+        dobj->translate.vec.f.y -= ip->attributes->obj_coll_bottom;
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITPippiDataStart), 0.0F); // Linker thing
         func_800269C0_275C0(nSYAudioVoiceMBallPippiAppear);

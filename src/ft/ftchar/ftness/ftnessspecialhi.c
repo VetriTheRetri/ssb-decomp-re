@@ -591,7 +591,7 @@ void ftNessSpecialAirHiJibakuProcMap(GObj *fighter_gobj)
     {
         if (syVectorAngleDiff3D(&fp->coll_data.ceil_angle, &fp->physics.vel_air) > FTNESS_PKJIBAKU_HALT_ANGLE)
         {
-            pos.y += fp->coll_data.object_coll.top;
+            pos.y += fp->coll_data.obj_coll.top;
 
             ftNessSpecialAirHiJibakuBoundSetStatus(fighter_gobj, &fp->coll_data.ceil_angle, &pos);
         }
@@ -600,8 +600,8 @@ void ftNessSpecialAirHiJibakuProcMap(GObj *fighter_gobj)
     {
         if (syVectorAngleDiff3D(&fp->coll_data.lwall_angle, &fp->physics.vel_air) > FTNESS_PKJIBAKU_HALT_ANGLE)
         {
-            pos.x += fp->coll_data.object_coll.width;
-            pos.y += fp->coll_data.object_coll.center;
+            pos.x += fp->coll_data.obj_coll.width;
+            pos.y += fp->coll_data.obj_coll.center;
 
             ftNessSpecialAirHiJibakuBoundSetStatus(fighter_gobj, &fp->coll_data.lwall_angle, &pos);
         }
@@ -611,8 +611,8 @@ void ftNessSpecialAirHiJibakuProcMap(GObj *fighter_gobj)
     {
         if (syVectorAngleDiff3D(&fp->coll_data.rwall_angle, &fp->physics.vel_air) > FTNESS_PKJIBAKU_HALT_ANGLE)
         {
-            pos.x -= fp->coll_data.object_coll.width;
-            pos.y += fp->coll_data.object_coll.center;
+            pos.x -= fp->coll_data.obj_coll.width;
+            pos.y += fp->coll_data.obj_coll.center;
 
             ftNessSpecialAirHiJibakuBoundSetStatus(fighter_gobj, &fp->coll_data.rwall_angle, &pos);
         }
@@ -687,7 +687,7 @@ void ftNessSpecialHiJibakuSetStatus(GObj *fighter_gobj)
 
     angle_diff = syVectorAngleDiff3D(&fp->coll_data.ground_angle, &pos);
 
-    if (angle_diff < F_CST_DTOR32(90.0F)) goto setair; // HALF_PI32
+    if (angle_diff < F_CST_DTOR32(90.0F)) goto setair;
     
     if (angle_diff > F_CST_DTOR32(155.0F)) goto setdown; // 2.3561945F
         

@@ -332,7 +332,7 @@ GObj* itSpearMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         if (mtTrigGetRandomIntRange(2) == 0)
         {
-            dobj->child->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
+            dobj->child->rotate.vec.f.y = F_CST_DTOR32(180.0F);
 
             ip->lr = -1;
 
@@ -346,7 +346,7 @@ GObj* itSpearMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
         ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        dobj->translate.vec.f.y -= ip->attributes->object_coll_bottom;
+        dobj->translate.vec.f.y -= ip->attributes->obj_coll_bottom;
 
         gcAddDObjAnimJoint(dobj->child, itGetMonsterAnimNode(ip, lITSpearDataStart), 0.0F);
     }
@@ -415,7 +415,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 
         if (wp->lr == -1)
         {
-            dobj->child->child->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
+            dobj->child->child->rotate.vec.f.y = F_CST_DTOR32(180.0F);
         }
     }
     else
@@ -426,7 +426,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 
         if (wp->lr == +1)
         {
-            dobj->child->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
+            dobj->child->rotate.vec.f.y = F_CST_DTOR32(180.0F);
         }
     }
     dobj->translate.vec.f = *pos;

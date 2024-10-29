@@ -78,11 +78,11 @@ typedef enum wpLinkBoomerangFlags
 // 0x8016CC50
 void wpLinkBoomerangClampAngle360(f32 *angle)
 {
-    if (*angle > F_CST_DTOR32(360.0F)) // DOUBLE_PI32
+    if (*angle > F_CST_DTOR32(360.0F))
     {
         *angle -= F_CST_DTOR32(360.0F);
     }
-    else if (*angle < F_CST_DTOR32(-360.0F)) // -DOUBLE_PI32
+    else if (*angle < F_CST_DTOR32(-360.0F))
     {
         *angle += F_CST_DTOR32(360.0F);
     }
@@ -132,11 +132,11 @@ void wpLinkBoomerangSetReturnVars(GObj *weapon_gobj, sb32 angle_max_or_min)
 
     wp->atk_coll.damage = WPBOOMERANG_RETURN_DAMAGE;
 
-    wp->weapon_vars.boomerang.default_angle -= F_CST_DTOR32(180.0F); // PI32
+    wp->weapon_vars.boomerang.default_angle -= F_CST_DTOR32(180.0F);
 
     if (wp->weapon_vars.boomerang.default_angle < 0.0F)
     {
-        wp->weapon_vars.boomerang.default_angle += F_CST_DTOR32(360.0F); // DOUBLE_PI32
+        wp->weapon_vars.boomerang.default_angle += F_CST_DTOR32(360.0F);
     }
     wp->lr = -wp->lr;
 
@@ -176,10 +176,7 @@ f32 wpLinkBoomerangSubVelSqrt(WPStruct *wp, f32 vel_sub)
 // 0x8016CF48
 void wpLinkBoomerangUpdateVelLR(WPStruct *wp, f32 vel_mul)
 {
-    /*
-        The following floating point operations and sqrtf subroutine call are unused and waste CPU cycles.
-        Guarded by the preprocessor flag DAIRANTOU_OPT0.
-    */
+    // The following floating point operations and sqrtf subroutine call are unused and waste CPU cycles
 
 #if !defined(DAIRANTOU_OPT0)
     sqrtf(SQUARE(wp->physics.vel_air.x) + SQUARE(wp->physics.vel_air.y)); // Can we just talk about how this doesn't do anything
@@ -188,25 +185,25 @@ void wpLinkBoomerangUpdateVelLR(WPStruct *wp, f32 vel_mul)
     wp->physics.vel_air.x = __cosf(wp->weapon_vars.boomerang.default_angle) * vel_mul;
     wp->physics.vel_air.y = __sinf(wp->weapon_vars.boomerang.default_angle) * vel_mul;
 
-    wp->lr = ((wp->weapon_vars.boomerang.default_angle > F_CST_DTOR32(90.0F)) && (wp->weapon_vars.boomerang.default_angle < F_CST_DTOR32(270.0F))) ? -1 : +1; // HALF_PI32, 4.712389F
+    wp->lr = ((wp->weapon_vars.boomerang.default_angle > F_CST_DTOR32(90.0F)) && (wp->weapon_vars.boomerang.default_angle < F_CST_DTOR32(270.0F))) ? -1 : +1;
 }
 
 // 0x8016CFFC
 void wpLinkBoomerangClampAngleForward(f32 *angle)
 {
-    if ((*angle > F_CST_DTOR32(30.0F)) && (*angle <= F_CST_DTOR32(90.0F))) // 0.5235988F, HALF_PI32
+    if ((*angle > F_CST_DTOR32(30.0F)) && (*angle <= F_CST_DTOR32(90.0F)))
     {
         *angle = F_CST_DTOR32(30.0F);
     }
-    else if ((*angle < F_CST_DTOR32(150.0F)) && (*angle >= F_CST_DTOR32(90.0F))) // 2.6179938F, HALF_PI32
+    else if ((*angle < F_CST_DTOR32(150.0F)) && (*angle >= F_CST_DTOR32(90.0F)))
     {
         *angle = F_CST_DTOR32(150.0F);
     }
-    else if ((*angle > F_CLC_DTOR32(210.0F)) && (*angle <= F_CST_DTOR32(270.0F))) // 3.6651917F, 4.712389F
+    else if ((*angle > F_CLC_DTOR32(210.0F)) && (*angle <= F_CST_DTOR32(270.0F)))
     {
         *angle = F_CLC_DTOR32(210.0F);
     }
-    else if ((*angle < F_CLC_DTOR32(330.0F)) && (*angle >= F_CST_DTOR32(270.0F))) // 5.759587F, 4.712389F
+    else if ((*angle < F_CLC_DTOR32(330.0F)) && (*angle >= F_CST_DTOR32(270.0F)))
     {
         *angle = F_CLC_DTOR32(330.0F);
     }
@@ -248,23 +245,23 @@ f32 wpLinkBoomerangGetDistUpdateAngle(GObj *weapon_gobj)
         {
             angle = atan2f(dist_y, dist_x);
 
-            if (angle < F_CST_DTOR32(-180.0F)) // -PI32
+            if (angle < F_CST_DTOR32(-180.0F))
             {
-                angle += F_CST_DTOR32(360.0F); // DOUBLE_PI32
-            }
-            else if (angle > F_CST_DTOR32(180.0F)) // PI32
-            {
-                angle -= F_CST_DTOR32(360.0F); // DOUBLE_PI32
-            }
-            angle -= wp->weapon_vars.boomerang.default_angle;
-
-            if (angle < F_CST_DTOR32(-180.0F)) // -PI32
-            {
-                angle += F_CST_DTOR32(360.0F); // DOUBLE_PI32
+                angle += F_CST_DTOR32(360.0F);
             }
             else if (angle > F_CST_DTOR32(180.0F))
             {
-                angle -= F_CST_DTOR32(360.0F); // DOUBLE_PI32
+                angle -= F_CST_DTOR32(360.0F);
+            }
+            angle -= wp->weapon_vars.boomerang.default_angle;
+
+            if (angle < F_CST_DTOR32(-180.0F))
+            {
+                angle += F_CST_DTOR32(360.0F);
+            }
+            else if (angle > F_CST_DTOR32(180.0F))
+            {
+                angle -= F_CST_DTOR32(360.0F);
             }
             if (angle > wp->weapon_vars.boomerang.homing_angle)
             {
@@ -544,13 +541,13 @@ f32 wpLinkBoomerangGetAngleSetVel(Vec3f *vel, FTStruct *fp, s32 lr, f32 vel_mul)
     {
         if (angle < 0.0F)
         {
-            angle = F_CST_DTOR32(-180.0F) - angle; // PI32
+            angle = F_CST_DTOR32(-180.0F) - angle;
         }
-        else angle = F_CST_DTOR32(180.0F) - angle; // -PI32
+        else angle = F_CST_DTOR32(180.0F) - angle;
     }
     if (angle < 0.0F)
     {
-        angle += F_CST_DTOR32(360.0F); // DOUBLE_PI32
+        angle += F_CST_DTOR32(360.0F);
     }
     return angle;
 }

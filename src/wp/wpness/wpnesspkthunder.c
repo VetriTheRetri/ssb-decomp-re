@@ -259,11 +259,11 @@ sb32 wpNessPKThunderHeadProcUpdate(GObj *weapon_gobj)
 
             syVectorNormCross3D(&wp->physics.vel_air, &stick_angle, &thunder_angle);
 
-            if (angle_diff >= F_CST_DTOR32(45.0F)) // QUART_PI32
+            if (angle_diff >= F_CST_DTOR32(45.0F))
             {
                 wp->weapon_vars.pkthunder.angle = (thunder_angle.z > 0.0F) ? (wp->weapon_vars.pkthunder.angle + WPPKTHUNDER_ANGLE_STEP) : (wp->weapon_vars.pkthunder.angle - WPPKTHUNDER_ANGLE_STEP);
             }
-            if (angle_diff < F_CST_DTOR32(45.0F))  // QUART_PI32
+            if (angle_diff < F_CST_DTOR32(45.0F)) 
             {
                 wp->weapon_vars.pkthunder.angle = (thunder_angle.z > 0.0F) ? (wp->weapon_vars.pkthunder.angle + (angle_diff / WPPKTHUNDER_ANGLE_DIV)) : (wp->weapon_vars.pkthunder.angle - (angle_diff / WPPKTHUNDER_ANGLE_DIV));
             }
@@ -271,7 +271,7 @@ sb32 wpNessPKThunderHeadProcUpdate(GObj *weapon_gobj)
             wp->physics.vel_air.y = __sinf(wp->weapon_vars.pkthunder.angle) * WPPKTHUNDER_VEL;
             wp->physics.vel_air.z = 0.0F;
 
-            DObjGetStruct(weapon_gobj)->rotate.vec.f.z = wp->weapon_vars.pkthunder.angle - F_CST_DTOR32(90.0F); // HALF_PI32
+            DObjGetStruct(weapon_gobj)->rotate.vec.f.z = wp->weapon_vars.pkthunder.angle - F_CST_DTOR32(90.0F);
         }
     }
     else
@@ -356,7 +356,7 @@ GObj* wpNessPKThunderHeadMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
     wp->physics.vel_air = *vel;
 
     wp->weapon_vars.pkthunder.status = nWPNessPKThunderStatusActive;
-    wp->weapon_vars.pkthunder.angle = F_CST_DTOR32(90.0F); // HALF_PI32
+    wp->weapon_vars.pkthunder.angle = F_CST_DTOR32(90.0F);
     wp->weapon_vars.pkthunder.parent_gobj = fighter_gobj;
 
     wp->is_camera_follow = TRUE;
@@ -400,7 +400,7 @@ sb32 wpNessPKThunderTrailProcUpdate(GObj *weapon_gobj)
     {
         DObjGetStruct(weapon_gobj)->rotate.vec.f.z = atan2f((fp->fighter_vars.ness.pkthunder_trail_y[index] - fp->fighter_vars.ness.pkthunder_trail_y[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]), (fp->fighter_vars.ness.pkthunder_trail_x[index] - fp->fighter_vars.ness.pkthunder_trail_x[FTNESS_PKTHUNDER_TRAIL_POS_COUNT - 1]));
     }
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z -= F_CST_DTOR32(90.0F); // HALF_PI32
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z -= F_CST_DTOR32(90.0F);
 
     if ((wp->weapon_vars.pkthunder_trail.trail_index < (WPPKTHUNDER_PARTS_COUNT - 2)) && (wp->lifetime == WPPKTHUNDER_SPAWN_TRAIL_FRAME))
     {

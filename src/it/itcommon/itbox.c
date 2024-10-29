@@ -366,7 +366,7 @@ void itBoxWaitSetStatus(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    DObjGetStruct(item_gobj)->rotate.vec.f.z = atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CST_DTOR32(90.0F); // HALF_PI32
+    DObjGetStruct(item_gobj)->rotate.vec.f.z = atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CST_DTOR32(90.0F);
 
     itMainSetGroundAllowPickup(item_gobj);
     itMainSetItemStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusWait);
@@ -409,7 +409,7 @@ sb32 itBoxThrownProcMap(GObj *item_gobj)
 // 0x8017987C
 void itBoxThrownSetStatus(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 
     itMainSetItemStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusThrown);
 }
@@ -431,7 +431,7 @@ sb32 itBoxDroppedProcMap(GObj *item_gobj)
 // 0x8017990C
 void itBoxDroppedSetStatus(GObj *item_gobj)
 {
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F); // HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 
     itMainSetItemStatus(item_gobj, dITBoxStatusDescs, nITBoxStatusDropped);
 }

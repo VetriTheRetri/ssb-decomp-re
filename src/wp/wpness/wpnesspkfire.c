@@ -151,7 +151,7 @@ GObj* wpNessPKFireMakeWeapon(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel, f32 ang
 
     wpMainVelSetLR(weapon_gobj);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = (angle + F_CST_DTOR32(90.0F)) * wp->lr; // HALF_PI32
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.z = (angle + F_CST_DTOR32(90.0F)) * wp->lr;
 
     return weapon_gobj;
 }

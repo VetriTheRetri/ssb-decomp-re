@@ -124,7 +124,7 @@ sb32 itNyarsAttackProcUpdate(GObj *item_gobj)
     }
     if (ip->item_vars.nyars.model_rotate_wait == 0)
     {
-        dobj->rotate.vec.f.y += F_CST_DTOR32(180.0F); // PI32
+        dobj->rotate.vec.f.y += F_CST_DTOR32(180.0F);
 
         ip->item_vars.nyars.model_rotate_wait = ITNYARS_MODEL_ROTATE_WAIT;
     }
@@ -204,7 +204,7 @@ GObj* itNyarsMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
         ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        dobj->translate.vec.f.y -= ip->attributes->object_coll_bottom;
+        dobj->translate.vec.f.y -= ip->attributes->obj_coll_bottom;
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITNyarsAnimJoint), 0.0F);
     }

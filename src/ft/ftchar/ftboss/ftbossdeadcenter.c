@@ -30,7 +30,7 @@ void ftBossDeadCenterSetStatus(GObj *fighter_gobj)
     fp = ftGetStruct(fighter_gobj);
 
     fp->physics.vel_air.x = 0.0F;
-    fp->physics.vel_air.y = __sinf(F_CST_DTOR32(45.0F)) * 100.0F; // QUART_PI32
+    fp->physics.vel_air.y = __sinf(F_CST_DTOR32(45.0F)) * 100.0F;
 
     vel_z = __cosf(F_CST_DTOR32(45.0F)) * 100.0F;
 

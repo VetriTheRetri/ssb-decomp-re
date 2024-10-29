@@ -53,7 +53,7 @@ void wpMainVelSetModelPitch(GObj *weapon_gobj) // Set pitch rotation based on ve
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    DObjGetStruct(weapon_gobj)->rotate.vec.f.y = (wp->physics.vel_air.x >= 0.0F) ? F_CST_DTOR32(90.0F) /* HALF_PI32 */ : F_CST_DTOR32(-90.0F); // -HALF_PI32
+    DObjGetStruct(weapon_gobj)->rotate.vec.f.y = (wp->physics.vel_air.x >= 0.0F) ? F_CST_DTOR32(90.0F) /* HALF_PI32 */ : F_CST_DTOR32(-90.0F);
 }
 
 // 0x80167FE8
@@ -184,12 +184,12 @@ void wpMainReflectorRotateWeaponModel(GObj *weapon_gobj)
 
     if (direction.z == -1)
     {
-        rotate->y = F_CST_DTOR32(90.0F); // HALF_PI32
+        rotate->y = F_CST_DTOR32(90.0F);
         rotate->x = atan2f(angle.x, angle.y);
     }
     else
     {
-        rotate->y = F_CST_DTOR32(-90.0F); // -HALF_PI32
+        rotate->y = F_CST_DTOR32(-90.0F);
         rotate->x = atan2f(-angle.x, angle.y);
     }
     rotate->z = 0.0F;

@@ -81,7 +81,7 @@ sb32 ftCommonDownBounceCheckUpOrDown(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     f32 rot_x = fp->joints[4]->rotate.vec.f.x;
 
-    rot_x /= F_CST_DTOR32(360.0F); // DOUBLE_PI32
+    rot_x /= F_CST_DTOR32(360.0F);
 
     rot_x -= (s32)rot_x;
 

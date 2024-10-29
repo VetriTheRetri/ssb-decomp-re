@@ -43,7 +43,7 @@ void ftNessSpecialLwProcAbsorb(GObj *fighter_gobj)
 
     fp->lr = fp->absorb_lr;
 
-    joint->rotate.vec.f.y += F_CST_DTOR32(-180.0F); // -PI32
+    joint->rotate.vec.f.y += F_CST_DTOR32(-180.0F);
 
     func_ovl2_800EB528(fp->joints[nFTPartsJointTopN]);
 

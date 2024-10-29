@@ -320,8 +320,8 @@ void itNBumperThrownSetStatus(GObj *item_gobj)
 
     ip->item_vars.bumper.damage_all_delay = ITBUMPER_DAMAGE_ALL_WAIT;
 
-    ip->coll_data.object_coll.top = ITBUMPER_COLL_SIZE;
-    ip->coll_data.object_coll.bottom = -ITBUMPER_COLL_SIZE;
+    ip->coll_data.obj_coll.top = ITBUMPER_COLL_SIZE;
+    ip->coll_data.obj_coll.bottom = -ITBUMPER_COLL_SIZE;
 
     itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusThrown);
 }
@@ -333,8 +333,8 @@ void itNBumperDroppedSetStatus(GObj *item_gobj)
 
     ip->item_vars.bumper.damage_all_delay = ITBUMPER_DAMAGE_ALL_WAIT;
 
-    ip->coll_data.object_coll.top = ITBUMPER_COLL_SIZE;
-    ip->coll_data.object_coll.bottom = -ITBUMPER_COLL_SIZE;
+    ip->coll_data.obj_coll.top = ITBUMPER_COLL_SIZE;
+    ip->coll_data.obj_coll.bottom = -ITBUMPER_COLL_SIZE;
 
     itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusDropped);
 }
@@ -351,7 +351,7 @@ void itNBumperAttachedSetModelYaw(GObj *item_gobj)
 
     ip->attach_line_id = ip->coll_data.ground_line_id;
 
-    dobj->rotate.vec.f.z = atan2f(ground_angle.y, ground_angle.x) - F_CLC_DTOR32(90.0F); // HALF_PI32
+    dobj->rotate.vec.f.z = atan2f(ground_angle.y, ground_angle.x) - F_CLC_DTOR32(90.0F);
 }
 
 // 0x8017B8DC
@@ -381,8 +381,8 @@ void itNBumperAttachedInitItemVars(GObj *item_gobj)
 
     dobj->scale.vec.f.x = dobj->scale.vec.f.y = dobj->scale.vec.f.z = 1.0F;
 
-    ip->coll_data.object_coll.top = ITBUMPER_COLL_SIZE;
-    ip->coll_data.object_coll.bottom = -ITBUMPER_COLL_SIZE;
+    ip->coll_data.obj_coll.top = ITBUMPER_COLL_SIZE;
+    ip->coll_data.obj_coll.bottom = -ITBUMPER_COLL_SIZE;
 
     itNBumperAttachedSetModelYaw(item_gobj);
 
@@ -435,7 +435,7 @@ sb32 itNBumperAttachedProcUpdate(GObj *item_gobj)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &edge_pos);
 
-            if (edge_pos.x >= (dobj->translate.vec.f.x - attributes->object_coll_width))
+            if (edge_pos.x >= (dobj->translate.vec.f.x - attributes->obj_coll_width))
             {
                 ip->physics.vel_air.x = 0.0F;
             }
@@ -444,7 +444,7 @@ sb32 itNBumperAttachedProcUpdate(GObj *item_gobj)
         {
             mpCollisionGetLREdgeRight(ip->coll_data.ground_line_id, &edge_pos);
 
-            if (edge_pos.x <= (dobj->translate.vec.f.x + attributes->object_coll_width))
+            if (edge_pos.x <= (dobj->translate.vec.f.x + attributes->obj_coll_width))
             {
                 ip->physics.vel_air.x = 0.0F;
             }

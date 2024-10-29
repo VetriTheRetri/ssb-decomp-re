@@ -520,7 +520,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
 
         angle_diff = syVectorAngleDiff3D(&this_fp->coll_data.ground_angle, &vel_damage);
 
-        if (angle_diff < F_CST_DTOR32(90.0F)) // HALF_PI32
+        if (angle_diff < F_CST_DTOR32(90.0F))
         {
             status_id_var = status_id_set = dFTCommonDamageStatusGroundIDs[damage_level][damage_index];
 

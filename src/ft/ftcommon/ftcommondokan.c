@@ -221,7 +221,7 @@ void ftCommonDokanWaitSetStatus(GObj *fighter_gobj)
 
         if (func_ovl2_800F9C30(&fp->status_vars.common.dokan.pos_target, NULL, &pos_target_x, NULL, NULL) != FALSE)
         {
-            fp->status_vars.common.dokan.pos_target.x += pos_target_x + fp->coll_data.object_coll.width;
+            fp->status_vars.common.dokan.pos_target.x += pos_target_x + fp->coll_data.obj_coll.width;
         }
     }
 }

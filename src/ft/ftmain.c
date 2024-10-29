@@ -2616,7 +2616,7 @@ void ftMainGetBumperDamageAngle(GObj *fighter_gobj, GObj *attacker_gobj)
         {
             dist_x = -dist_x;
         }
-        dist_y = (DObjGetStruct(fighter_gobj)->translate.vec.f.y + fp->coll_data.object_coll.center) - DObjGetStruct(attacker_gobj)->translate.vec.f.y;
+        dist_y = (DObjGetStruct(fighter_gobj)->translate.vec.f.y + fp->coll_data.obj_coll.center) - DObjGetStruct(attacker_gobj)->translate.vec.f.y;
 
         fp->damage_angle = (dist_x == 0) ? 0 : F_CLC_RTOD32(atanf(dist_y / dist_x));
     }
@@ -4434,7 +4434,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
         {
             gmRumbleSetRumbleID(fp->player, 7);
         }
-        fp->joints[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CLC_DTOR32(90.0F); // HALF_PI32
+        fp->joints[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CLC_DTOR32(90.0F);
 
         DObjGetStruct(fighter_gobj)->rotate.vec.f.z = 0.0F;
 

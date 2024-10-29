@@ -2963,7 +2963,7 @@ LBParticle* efManagerDustHeavyMakeEffect(Vec3f *pos, s32 lr)
 
             tfrm->translate.y += EFPART_DUSTHEAVY_OFF_Y;
 
-            if (lr == nGMFacingL)
+            if (lr == -1)
             {
                 tfrm->rotate.y = F_CLC_DTOR32(180.0F); // PI32
             }
@@ -3045,7 +3045,7 @@ LBParticle* efManagerDustHeavyDoubleMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
 
             ep->effect_vars.dust_heavy.lr = lr;
 
-            if (lr == nGMFacingL)
+            if (lr == -1)
             {
                 tfrm->rotate.y = F_CLC_DTOR32(180.0F); // PI32
             }
@@ -3180,7 +3180,7 @@ LBParticle* efManagerDustDashMakeEffect(Vec3f *pos, s32 lr, f32 scale)
 
             tfrm->translate.y += EFPART_DUSTDASH_OFF_Y;
 
-            if (lr == nGMFacingL)
+            if (lr == -1)
             {
                 tfrm->rotate.y = F_CLC_DTOR32(180.0F); // PI32
             }
@@ -4295,7 +4295,7 @@ GObj* efManagerReflectBreakMakeEffect(Vec3f *pos, s32 lr)
 
     dobj->translate.vec.f = *pos;
 
-    if (lr == nGMFacingL)
+    if (lr == -1)
     {
         dobj->rotate.vec.f.y = F_CLC_DTOR32(180.0F);
     }
@@ -4446,7 +4446,7 @@ GObj* efManagerPikachuThunderShockMakeEffect(GObj *fighter_gobj, Vec3f *pos, s32
 
     dobj->child->translate.vec.f = *pos;
 
-    dobj->child->translate.vec.f.x = (ftGetStruct(fighter_gobj)->lr == nGMFacingL) ? -pos->x : pos->x;
+    dobj->child->translate.vec.f.x = (ftGetStruct(fighter_gobj)->lr == -1) ? -pos->x : pos->x;
 
     gcAddXObjForDObjFixed(dobj->child->child, 0x2E, 0);
 
@@ -4609,7 +4609,7 @@ GObj* efManagerKirbyVulcanJabMakeEffect(Vec3f *pos, s32 lr, f32 rotate, f32 vel,
 
     dobj->translate.vec.f = *pos;
 
-    if (lr == nGMFacingL)
+    if (lr == -1)
     {
         dobj->rotate.vec.f.y = F_CLC_DTOR32(180.0F);
 
@@ -4739,7 +4739,7 @@ LBGenerator* efManagerKirbyStarMakeEffect(Vec3f *pos)
 // 0x80102070
 LBGenerator* efManagerStarSplashMakeEffect(Vec3f *pos, s32 lr)
 {
-    LBGenerator *gtor = (lr == nGMFacingL) ? LBParticleMakeGenerator(gEFManagerParticleBankID, 0x10) : LBParticleMakeGenerator(gEFManagerParticleBankID, 0x11);
+    LBGenerator *gtor = (lr == -1) ? LBParticleMakeGenerator(gEFManagerParticleBankID, 0x10) : LBParticleMakeGenerator(gEFManagerParticleBankID, 0x11);
 
     if (gtor != NULL)
     {
@@ -5211,7 +5211,7 @@ GObj* efManagerKirbyEntryStarMakeEffect(Vec3f *pos, s32 lr)
     GObj *effect_gobj;
     DObj *dobj;
 
-    dEFManagerKirbyEntryStarEffectDesc.o_anim_joint = (lr == nGMFacingR) ? &lEFManagerKirbyEntryStarRAnimJoint : &lEFManagerKirbyEntryStarLAnimJoint; // Linker thing
+    dEFManagerKirbyEntryStarEffectDesc.o_anim_joint = (lr == +1) ? &lEFManagerKirbyEntryStarRAnimJoint : &lEFManagerKirbyEntryStarLAnimJoint; // Linker thing
 
     effect_gobj = efManagerMakeEffectNoForce(&dEFManagerKirbyEntryStarEffectDesc);
 
@@ -5278,7 +5278,7 @@ GObj* efManagerMBallThrownMakeEffect(Vec3f *pos, s32 lr) // Many linker things h
 
     file = ((uintptr_t)*p_file - (intptr_t)&lEFManagerMBallThrownDObjSetup);
 
-    if (lr == nGMFacingR)
+    if (lr == +1)
     {
         dEFManagerMBallThrownEffectDesc.o_anim_joint = (intptr_t)&lEFManagerMBallThrownRAnimJoint;
         dEFManagerMBallThrownEffectDesc.o_matanim_joint = (intptr_t)&lEFManagerMBallThrownRMatAnimJoint;
@@ -5576,7 +5576,7 @@ GObj* efManagerLinkSpinAttackMakeEffect(GObj *fighter_gobj)
 
     dobj->user_data.p = fp->joints[nFTPartsJointTopN];
 
-    dobj->rotate.vec.f.y = (ftGetStruct(fighter_gobj)->lr == nGMFacingR) ? F_CLC_DTOR32(30.0F) : F_CLC_DTOR32(210.0F);
+    dobj->rotate.vec.f.y = (ftGetStruct(fighter_gobj)->lr == +1) ? F_CLC_DTOR32(30.0F) : F_CLC_DTOR32(210.0F);
 
     return effect_gobj;
 }
@@ -5674,7 +5674,7 @@ GObj* efManagerCaptainEntryCarMakeEffect(Vec3f *pos, s32 lr)
 
     dobj->translate.vec.f = *pos;
 
-    if (lr == nGMFacingL)
+    if (lr == -1)
     {
         dobj->rotate.vec.f.y = F_CLC_DTOR32(180.0F);
     }
@@ -5750,7 +5750,7 @@ GObj* efManagerFoxEntryArwingMakeEffect(Vec3f *pos, s32 lr)
     gcAddXObjForDObjFixed(what, 0x2C, 0);
     gcAddDObjAnimJoint(what, lbRelocGetDataFromFile(AObjEvent32*, gFTDataFoxSpecial3, &D_NF_00002E74), 0.0F); // Linker thing
 
-    if (lr == nGMFacingR)
+    if (lr == +1)
     {
         lbCommonAddDObjAnimJointAll(dobj->child, (uintptr_t)gFTDataFoxSpecial2 + (intptr_t)&D_NF_000009E0, 0.0F); // Linker thing
     }
@@ -5885,12 +5885,12 @@ void efManagerCaptureKirbyStarProcUpdate(GObj *effect_gobj)
         if (fp->physics.vel_air.x > 0.0F)
         {
             pos.x -= mtTrigGetRandomIntRange(copy_data[fp->ft_kind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_X);
-            efManagerStarRodSparkMakeEffect(&pos, nGMFacingL);
+            efManagerStarRodSparkMakeEffect(&pos, -1);
         }
         else
         {
             pos.x += mtTrigGetRandomIntRange(copy_data[fp->ft_kind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_X);
-            efManagerStarRodSparkMakeEffect(&pos, nGMFacingR);
+            efManagerStarRodSparkMakeEffect(&pos, +1);
         }
     }
     ep->effect_vars.capture_kirby_star.effect_timer++;
@@ -6155,7 +6155,7 @@ LBParticle* efManagerKirbyInhaleWindMakeEffect(GObj *fighter_gobj)
             tfrm->scale.y = 1.0F;
             tfrm->scale.z = 1.0F;
 
-            tfrm->rotate.z = (ftGetStruct(fighter_gobj)->lr == nGMFacingL) ? F_CLC_DTOR32(90.0F) : F_CLC_DTOR32(-90.0F);
+            tfrm->rotate.z = (ftGetStruct(fighter_gobj)->lr == -1) ? F_CLC_DTOR32(90.0F) : F_CLC_DTOR32(-90.0F);
 
             effect_gobj->user_data.p = ep; // y u do dis again
 

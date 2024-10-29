@@ -15,7 +15,7 @@ void ftDonkeyThrowFFProcUpdate(GObj *fighter_gobj)
     {
         fp->status_vars.common.throwff.turn_frames--;
 
-        if (fp->lr == nGMFacingR)
+        if (fp->lr == +1)
         {
             DObjGetStruct(fighter_gobj)->rotate.vec.f.y = F_CST_DTOR32(90.0F) - (((f32)fp->status_vars.common.throwff.turn_frames / FTCOMMON_THROWFF_TURN_FRAMES) * F_CST_DTOR32(180.0F)); // HALF_PI32, PI32
         }

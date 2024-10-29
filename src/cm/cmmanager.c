@@ -356,7 +356,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
                                                                         cobj_fp->status_vars.common.entry.lr_entry   :
                                                                                                        cobj_fp->lr;
 
-            if (lr == nGMFacingL)
+            if (lr == -1)
             {
                 pos_left = ft_cobj[cobj_num].target_pos.x - (1000.0F * adjust);
                 pos_right = ft_cobj[cobj_num].target_pos.x + (700.0F * adjust);

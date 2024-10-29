@@ -323,7 +323,7 @@ void mvOpeningJungleMakeFighters(void)
             ft_desc.pos.y = spawn_position[1].y;
             ft_desc.pos.z = spawn_position[1].z;
 
-            ft_desc.lr_spawn = nGMFacingR;
+            ft_desc.lr_spawn = +1;
 
             ft_desc.damage = 200;
         }
@@ -333,7 +333,7 @@ void mvOpeningJungleMakeFighters(void)
             ft_desc.pos.y = spawn_position[0].y;
             ft_desc.pos.z = spawn_position[0].z;
 
-            ft_desc.lr_spawn = nGMFacingL;
+            ft_desc.lr_spawn = -1;
 
             ft_desc.damage = 40;
         }

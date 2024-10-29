@@ -257,7 +257,7 @@ void ftFoxSpecialAirHiProcMap(GObj *fighter_gobj)
     else if ((coll_mask & MPCOLL_FLAG_RWALL) && (lbCommonCheckAdjustSim2D(&fp->physics.vel_air, &fp->coll_data.rwall_angle, FTFOX_FIREFOX_BOUND_ANGLE) != FALSE))
     {
     coll_end:
-        fp->lr = (fp->physics.vel_air.x >= 0.0F) ? nGMFacingR : nGMFacingL;
+        fp->lr = (fp->physics.vel_air.x >= 0.0F) ? +1 : -1;
 
         fp->joints[nFTPartsJointTopN]->rotate.vec.f.y = fp->lr * F_CST_DTOR32(90.0F); // HALF_PI32
 

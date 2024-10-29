@@ -27,7 +27,7 @@ void ftCommonCaptureWaitProcMap(GObj *fighter_gobj)
     }
     else
     {
-        if (capture_fp->lr == nGMFacingR)
+        if (capture_fp->lr == +1)
         {
             mpCollisionGetLREdgeRight(capture_fp->coll_data.ground_line_id, &capture_pos);
         }

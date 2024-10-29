@@ -171,7 +171,7 @@ void itStarmieAttackInitItemVars(GObj *item_gobj)
     DObj *dobj = DObjGetStruct(item_gobj);
     s32 lr_bak = ip->lr;
 
-    ip->lr = (ip->item_vars.starmie.victim_pos.x < dobj->translate.vec.f.x) ? nGMFacingL : nGMFacingR;
+    ip->lr = (ip->item_vars.starmie.victim_pos.x < dobj->translate.vec.f.x) ? -1 : +1;
 
     if (ip->lr != lr_bak)
     {
@@ -196,14 +196,14 @@ sb32 itStarmieNFollowProcUpdate(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    if ((ip->lr == nGMFacingR) && (dobj->translate.vec.f.x >= ip->item_vars.starmie.target_pos.x))
+    if ((ip->lr == +1) && (dobj->translate.vec.f.x >= ip->item_vars.starmie.target_pos.x))
     {
         ip->physics.vel_air.x = 0.0F;
         ip->physics.vel_air.y = 0.0F;
 
         itStarmieAttackSetStatus(item_gobj);
     }
-    if ((ip->lr == nGMFacingL) && (dobj->translate.vec.f.x <= ip->item_vars.starmie.target_pos.x))
+    if ((ip->lr == -1) && (dobj->translate.vec.f.x <= ip->item_vars.starmie.target_pos.x))
     {
         ip->physics.vel_air.x = 0.0F;
         ip->physics.vel_air.y = 0.0F;
@@ -230,7 +230,7 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 
     target_pos.y += ITSTARMIE_TARGET_POS_OFF_Y - fp->coll_data.object_coll.bottom;
 
-    target_pos.x -= (fp->coll_data.object_coll.width + ITSTARMIE_TARGET_POS_OFF_X) * ((dist.x < 0.0F) ? nGMFacingL : nGMFacingR);
+    target_pos.x -= (fp->coll_data.object_coll.width + ITSTARMIE_TARGET_POS_OFF_X) * ((dist.x < 0.0F) ? -1 : +1);
 
     victim_pos = &fighter_dobj->translate.vec.f;
 
@@ -245,9 +245,9 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 
     ip->item_vars.starmie.victim_pos = *victim_pos;
 
-    ip->lr = (dist.x < 0.0F) ? nGMFacingL : nGMFacingR;
+    ip->lr = (dist.x < 0.0F) ? -1 : +1;
 
-    if (ip->lr == nGMFacingR)
+    if (ip->lr == +1)
     {
         item_dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
     }
@@ -405,9 +405,9 @@ sb32 itStarmieWeaponSwiftProcHop(GObj *weapon_gobj)
 
     if (wp->physics.vel_air.x > 0.0F)
     {
-        wp->lr = nGMFacingR;
+        wp->lr = +1;
     }
-    else wp->lr = nGMFacingL;
+    else wp->lr = -1;
 
     return FALSE;
 }
@@ -455,7 +455,7 @@ GObj* itStarmieWeaponSwiftMakeWeapon(GObj *item_gobj, Vec3f *pos)
 
     wp->lifetime = ITSTARMIE_SWIFT_LIFETIME;
 
-    if (wp->lr == nGMFacingR)
+    if (wp->lr == +1)
     {
         dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
     }

@@ -1324,7 +1324,7 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
 
         player_spawn.pos.y = (gMPCollisionGroundData->cobj_bound_top + gMPCollisionGroundData->map_bound_top) * 0.5F;
 
-        player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? nGMFacingL : nGMFacingR;
+        player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? -1 : +1;
 
         player_spawn.team = gBattleState->players[player].team;
 
@@ -1838,7 +1838,7 @@ s32 sc1PGameGetEnemySpawnLR(s32 target_player)
             }
         }
     }
-    lr = (lr_dist >= 0.0F) ? nGMFacingR : nGMFacingL;
+    lr = (lr_dist >= 0.0F) ? +1 : -1;
 
     return lr;
 }

@@ -286,7 +286,7 @@ void mvOpeningKirbyMakeMotionWindow(void)
 		ft_desc.pos.x = pos.x;
 		ft_desc.pos.y = pos.y;
 		ft_desc.pos.z = pos.z;
-		ft_desc.lr_spawn = nGMFacingR;
+		ft_desc.lr_spawn = +1;
 		ft_desc.team = gBattleState->players[i].team;
 		ft_desc.player = i;
 		ft_desc.detail = nFTPartsDetailHigh;

@@ -222,7 +222,7 @@ void ftBossCommonUpdateDamageStats(GObj *fighter_gobj)
         {
             sc1PGameBossDefeatInitInterface(fighter_gobj);
 
-            if (fp->lr == nGMFacingL)
+            if (fp->lr == -1)
             {
                 ftBossDeadLeftSetStatus(fighter_gobj);
             }

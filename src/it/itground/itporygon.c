@@ -80,7 +80,7 @@ void itPorygonCommonUpdateMonsterEvent(GObj *item_gobj)
 
         pos.y = 0.0F;
 
-        efManagerDustLightMakeEffect(&pos, nGMFacingL, 1.0F);
+        efManagerDustLightMakeEffect(&pos, -1, 1.0F);
     }
 }
 

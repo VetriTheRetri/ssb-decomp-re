@@ -114,7 +114,7 @@ void itFushigibanaCommonUpdateMonsterEvent(GObj *item_gobj)
 
         pos.y = 0.0F;
 
-        efManagerDustLightMakeEffect(&pos, nGMFacingL, 1.0F);
+        efManagerDustLightMakeEffect(&pos, -1, 1.0F);
     }
 }
 
@@ -246,9 +246,9 @@ sb32 itFushigibanaWeaponRazorProcHop(GObj *weapon_gobj)
 
     if (wp->physics.vel_air.x > 0.0F)
     {
-        wp->lr = nGMFacingR;
+        wp->lr = +1;
     }
-    else wp->lr = nGMFacingL;
+    else wp->lr = -1;
 
     return FALSE;
 }
@@ -282,7 +282,7 @@ GObj* itFushigibanaWeaponRazorMakeWeapon(GObj *item_gobj, Vec3f *pos)
     }
     wp = wpGetStruct(weapon_gobj);
 
-    wp->lr = nGMFacingL;
+    wp->lr = -1;
 
     wp->physics.vel_air.x = ITFUSHIGIBANA_RAZOR_VEL_X;
 

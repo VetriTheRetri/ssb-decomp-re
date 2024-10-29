@@ -350,9 +350,9 @@ sb32 itStarRodWeaponStarProcHop(GObj *weapon_gobj)
 
     if (wp->physics.vel_air.x > 0.0F)
     {
-        wp->lr = nGMFacingR;
+        wp->lr = +1;
     }
-    else wp->lr = nGMFacingL;
+    else wp->lr = -1;
 
     return FALSE;
 }

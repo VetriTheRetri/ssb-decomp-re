@@ -747,7 +747,7 @@ void scExplainFuncStart(void)
 
         mpCollisionGetPlayerMapObjPosition(player, &player_spawn.pos);
 
-        player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? nGMFacingL : nGMFacingR;
+        player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? -1 : +1;
 
         player_spawn.team = gBattleState->players[player].team;
 

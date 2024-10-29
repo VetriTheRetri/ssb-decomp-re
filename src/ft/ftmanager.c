@@ -522,8 +522,8 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
 
     fp->item_hold = NULL;
 
-    fp->reflect_lr = nGMFacingC;
-    fp->absorb_lr = nGMFacingC;
+    fp->reflect_lr = 0;
+    fp->absorb_lr = 0;
 
     fp->reflect_damage = 0;
 

@@ -281,7 +281,7 @@ void itLizardonAttackInitItemVars(GObj *item_gobj)
 
     ip->item_vars.lizardon.flame_spawn_wait = 0;
 
-    ip->lr = nGMFacingL;
+    ip->lr = -1;
 
     if (ip->it_kind == nITKindLizardon)
     {

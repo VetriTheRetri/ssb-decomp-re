@@ -82,7 +82,7 @@ skip_interrupt_specials:
 
             if (fp->status_vars.common.turn.is_allow_turn_direction != FALSE)
             {
-                if (fp->status_vars.common.turn.lr_dash != nGMFacingC)
+                if (fp->status_vars.common.turn.lr_dash != 0)
                 {
                     if ((fp->input.pl.stick_range.x * fp->status_vars.common.turn.lr_turn) >= FTCOMMON_DASH_STICK_RANGE_MIN)
                     {
@@ -127,7 +127,7 @@ void ftCommonTurnSetStatus(GObj *fighter_gobj, s32 lr_dash)
 // 0x8013E988
 void ftCommonTurnSetStatusCenter(GObj *fighter_gobj)
 {
-    ftCommonTurnSetStatus(fighter_gobj, nGMFacingC);
+    ftCommonTurnSetStatus(fighter_gobj, 0);
 }
 
 // 0x8013E9A8

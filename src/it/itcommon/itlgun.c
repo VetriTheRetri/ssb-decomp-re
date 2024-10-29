@@ -233,7 +233,7 @@ void itLGunThrownSetStatus(GObj *item_gobj)
 
     itMainSetItemStatus(item_gobj, dITLGunStatusDescs, nITLGunStatusThrown);
 
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = (lr == nGMFacingL) ? F_CST_DTOR32(-90.0F) : F_CST_DTOR32(90.0F); // -HALF_PI32, HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = (lr == -1) ? F_CST_DTOR32(-90.0F) : F_CST_DTOR32(90.0F); // -HALF_PI32, HALF_PI32
 }
 
 // 0x8017572C
@@ -255,7 +255,7 @@ void itLGunDroppedSetStatus(GObj *item_gobj)
 
     itMainSetItemStatus(item_gobj, dITLGunStatusDescs, nITLGunStatusDropped);
 
-    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = (lr == nGMFacingL) ? F_CST_DTOR32(-90.0F) : F_CST_DTOR32(90.0F); // -HALF_PI32, HALF_PI32
+    DObjGetStruct(item_gobj)->child->rotate.vec.f.y = (lr == -1) ? F_CST_DTOR32(-90.0F) : F_CST_DTOR32(90.0F); // -HALF_PI32, HALF_PI32
 }
 
 // 0x80175800

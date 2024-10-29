@@ -54,9 +54,9 @@ void ftCommonCaptureApplyCaptureKnockback(GObj *fighter_gobj, FTThrowReleaseDesc
 
     if (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(capture_gobj)->translate.vec.f.x)
     {
-        lr = nGMFacingR;
+        lr = +1;
     }
-    else lr = nGMFacingL;
+    else lr = -1;
 
     ftCommonDamageInitDamageVars(fighter_gobj, -1, 0, knockback, throw_release->angle, lr, 1, 0, 0, FALSE, FALSE, FALSE);
     ftParamUpdate1PGameDamageStats(this_fp, GMCOMMON_PLAYERS_MAX, nFTHitlogObjectNone, 0, 0, 0);
@@ -85,19 +85,19 @@ sb32 ftCommonCaptureTrappedUpdateBreakoutVars(FTStruct *fp)
 
     if (fp->input.pl.stick_range.x < -FTCOMMON_CAPTURE_MASH_STICK_RANGE_MIN)
     {
-        fp->breakout_lr = nGMFacingL;
+        fp->breakout_lr = -1;
     }
     if (fp->input.pl.stick_range.x > FTCOMMON_CAPTURE_MASH_STICK_RANGE_MIN)
     {
-        fp->breakout_lr = nGMFacingR;
+        fp->breakout_lr = +1;
     }
     if (fp->input.pl.stick_range.y < -FTCOMMON_CAPTURE_MASH_STICK_RANGE_MIN)
     {
-        fp->breakout_ud = nGMFacingD;
+        fp->breakout_ud = -1;
     }
     if (fp->input.pl.stick_range.y > FTCOMMON_CAPTURE_MASH_STICK_RANGE_MIN)
     {
-        fp->breakout_ud = nGMFacingU;
+        fp->breakout_ud = +1;
     }
     if ((fp->breakout_lr != breakout_lr_bak) || (fp->breakout_ud != breakout_ud_bak))
     {

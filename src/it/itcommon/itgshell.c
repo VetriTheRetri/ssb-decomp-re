@@ -489,9 +489,9 @@ void itGShellSpinInitItemVars(GObj *item_gobj)
 
     if (ip->physics.vel_air.x < 0.0F)
     {
-        ip->lr = nGMFacingL;
+        ip->lr = -1;
     }
-    else ip->lr = nGMFacingR;
+    else ip->lr = +1;
 
     ip->item_vars.shell.dust_effect_int = ITGSHELL_EFFECT_SPAWN_INT;
     ip->item_vars.shell.damage_all_delay = ITGSHELL_DAMAGE_ALL_WAIT;
@@ -526,9 +526,9 @@ void itGShellSpinAirInitItemVars(GObj *item_gobj)
     }
     if (ip->physics.vel_air.x < 0.0F)
     {
-        ip->lr = nGMFacingL;
+        ip->lr = -1;
     }
-    else ip->lr = nGMFacingR;
+    else ip->lr = +1;
 
     ip->is_damage_all = FALSE;
 

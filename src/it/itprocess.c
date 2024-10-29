@@ -315,7 +315,7 @@ void itProcessUpdateDamageStatFighter(FTStruct *fp, FTAttackColl *atk_coll, ITSt
             ip->damage_angle = atk_coll->angle;
             ip->damage_element = atk_coll->element;
 
-            ip->damage_lr = (DObjGetStruct(item_gobj)->translate.vec.f.x < DObjGetStruct(fighter_gobj)->translate.vec.f.x) ? nGMFacingR : nGMFacingL;
+            ip->damage_lr = (DObjGetStruct(item_gobj)->translate.vec.f.x < DObjGetStruct(fighter_gobj)->translate.vec.f.x) ? +1 : -1;
 
             ip->damage_gobj = fighter_gobj;
             ip->damage_team = fp->team;
@@ -475,11 +475,11 @@ void itProcessUpdateDamageStatItem(ITStruct *attack_ip, ITAttackColl *atk_coll, 
 
     if (vel < 5.0F)
     {
-        attack_ip->attack_lr = lr = (DObjGetStruct(defend_gobj)->translate.vec.f.x < DObjGetStruct(attack_gobj)->translate.vec.f.x) ? nGMFacingL : nGMFacingR;
+        attack_ip->attack_lr = lr = (DObjGetStruct(defend_gobj)->translate.vec.f.x < DObjGetStruct(attack_gobj)->translate.vec.f.x) ? -1 : +1;
     }
     else
     {
-        lr = (attack_ip->physics.vel_air.x < 0) ? nGMFacingL : nGMFacingR;
+        lr = (attack_ip->physics.vel_air.x < 0) ? -1 : +1;
 
         attack_ip->attack_lr = lr;
     }
@@ -497,11 +497,11 @@ void itProcessUpdateDamageStatItem(ITStruct *attack_ip, ITAttackColl *atk_coll, 
 
             if (vel < 5.0F)
             {
-                defend_ip->damage_lr = lr = (DObjGetStruct(defend_gobj)->translate.vec.f.x < DObjGetStruct(attack_gobj)->translate.vec.f.x) ? nGMFacingR : nGMFacingL;
+                defend_ip->damage_lr = lr = (DObjGetStruct(defend_gobj)->translate.vec.f.x < DObjGetStruct(attack_gobj)->translate.vec.f.x) ? +1 : -1;
             }
             else
             {
-                lr = (attack_ip->physics.vel_air.x < 0) ? nGMFacingR : nGMFacingL;
+                lr = (attack_ip->physics.vel_air.x < 0) ? +1 : -1;
 
                 defend_ip->damage_lr = lr;
             }
@@ -598,11 +598,11 @@ void itProcessUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *wp_atk_coll, s3
 
             if (vel < 5.0F)
             {
-                ip->damage_lr = lr = (DObjGetStruct(item_gobj)->translate.vec.f.x < DObjGetStruct(weapon_gobj)->translate.vec.f.x) ? nGMFacingR : nGMFacingL;
+                ip->damage_lr = lr = (DObjGetStruct(item_gobj)->translate.vec.f.x < DObjGetStruct(weapon_gobj)->translate.vec.f.x) ? +1 : -1;
             }
             else
             {
-                lr = (wp->physics.vel_air.x < 0) ? nGMFacingR : nGMFacingL;
+                lr = (wp->physics.vel_air.x < 0) ? +1 : -1;
 
                 ip->damage_lr = lr;
             }

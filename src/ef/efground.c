@@ -1069,69 +1069,69 @@ EFGroundData dEFGroundDatas[/* */] =
 // 0x8012F8C0
 EFGroundParam dEFGroundCastleParams[/* */] = 
 {
-    { 0, 0, nGMFacingC, 2 },
-    { 1, 0, nGMFacingC, 1 }
+    { 0, 0, 0, 2 },
+    { 1, 0, 0, 1 }
 };
 
 // 0x8012F8D8
 EFGroundParam dEFGroundJungleParams[/* */] =
 {
-    { 0, 0, nGMFacingC, 2 },
-    { 0, 1, nGMFacingC, 1 }
+    { 0, 0, 0, 2 },
+    { 0, 1, 0, 1 }
 };
 
 // 0x8012F8F0
 EFGroundParam dEFGroundZebesParams[/* */] =
 {
-    { 0, 0, nGMFacingC, 1 },
-    { 0, 1, nGMFacingC, 1 },
-    { 1, 0, nGMFacingC, 1 }
+    { 0, 0, 0, 1 },
+    { 0, 1, 0, 1 },
+    { 1, 0, 0, 1 }
 };
 
 // 0x8012F914
 EFGroundParam dEFGroundSectorParams[/* */] =
 {
-    { 3, 0, nGMFacingL,  3 },
-    { 4, 0, nGMFacingR, 3 },
-    { 4, 1, nGMFacingR, 4 },
-    { 0, 0, nGMFacingL,  3 },
-    { 1, 0, nGMFacingL,  2 },
-    { 2, 0, nGMFacingL,  2 },
-    { 2, 0, nGMFacingR, 1 }
+    { 3, 0, -1,  3 },
+    { 4, 0, +1, 3 },
+    { 4, 1, +1, 4 },
+    { 0, 0, -1,  3 },
+    { 1, 0, -1,  2 },
+    { 2, 0, -1,  2 },
+    { 2, 0, +1, 1 }
 };
 
 // 0x8012F968
 EFGroundParam dEFGroundYosterParams[/* */] =
 {
-    { 3, 0, nGMFacingC, 2 },
-    { 3, 1, nGMFacingC, 1 },
-    { 1, 0, 3*nGMFacingL, 1 },
-    { 2, 0, 3*nGMFacingR,1 },
-    { 4, 0, nGMFacingC, 1 },
-    { 5, 0, nGMFacingC, 1 },
-    { 0, 0, nGMFacingC, 4 }
+    { 3, 0, 0, 2 },
+    { 3, 1, 0, 1 },
+    { 1, 0, 3*-1, 1 },
+    { 2, 0, 3*+1,1 },
+    { 4, 0, 0, 1 },
+    { 5, 0, 0, 1 },
+    { 0, 0, 0, 4 }
 };
 
 // 0x8012F9BC
 EFGroundParam dEFGroundPupupuParams[/* */] =
 {
-    { 0, 0, nGMFacingC, 2 },
-    { 0, 1, nGMFacingC, 1 },
-    { 1, 0, nGMFacingC, 2 },
-    { 1, 1, nGMFacingC, 1 },
-    { 2, 0, nGMFacingC, 1 },
-    { 3, 0, nGMFacingC, 1 }
+    { 0, 0, 0, 2 },
+    { 0, 1, 0, 1 },
+    { 1, 0, 0, 2 },
+    { 1, 1, 0, 1 },
+    { 2, 0, 0, 1 },
+    { 3, 0, 0, 1 }
 };
 
 // 0x8012FA04
 EFGroundParam dEFGroundYamabukiParams[/* */] =
 {
-    { 0, 0, nGMFacingC, 6 },
-    { 0, 1, nGMFacingC, 6 },
-    { 3, 0, nGMFacingC, 8 },
-    { 3, 1, nGMFacingC, 8 },
-    { 2, 0, nGMFacingC,10 },
-    { 1, 0, nGMFacingC, 1 }
+    { 0, 0, 0, 6 },
+    { 0, 1, 0, 6 },
+    { 3, 0, 0, 8 },
+    { 3, 1, 0, 8 },
+    { 2, 0, 0,10 },
+    { 1, 0, 0, 1 }
 };
 
 // // // // // // // // // // // //
@@ -1146,7 +1146,7 @@ sb32 efGroundCheckEffectInBounds(GObj *effect_gobj)
     EFStruct *ep = efGetStruct(effect_gobj);
     DObj *dobj = DObjGetStruct(effect_gobj);
 
-    if (ep->effect_vars.ground_effect.lr == nGMFacingL)
+    if (ep->effect_vars.ground_effect.lr == -1)
     {
         if (dobj->translate.vec.f.x <= (gMPCollisionGroundData->map_bound_left + 500.0F))
         {
@@ -1183,7 +1183,7 @@ void efGroundCommonProcUpdate(GObj *effect_gobj)
             {
                 Vec3f pos = child_dobj->translate.vec.f;
 
-                if (ep->effect_vars.ground_effect.lr == nGMFacingL)
+                if (ep->effect_vars.ground_effect.lr == -1)
                 {
                     root_dobj->translate.vec.f.x += (pos.x * root_dobj->scale.vec.f.x);
                 }
@@ -1209,7 +1209,7 @@ void efGroundUpdateEffectYaw(GObj *effect_gobj)
 
     efGroundCommonProcUpdate(effect_gobj);
 
-    if (ep->effect_vars.ground_effect.lr == nGMFacingR)
+    if (ep->effect_vars.ground_effect.lr == +1)
     {
         DObj *child_dobj = root_dobj->child->child;
 
@@ -1227,8 +1227,8 @@ void efGroundUpdateStepPositions(GObj *effect_gobj)
 
     if
     (
-        ((ep->effect_vars.ground_effect.lr == nGMFacingR) && (ep->effect_vars.ground_effect.pos.x <= dobj->translate.vec.f.x)) ||
-        ((ep->effect_vars.ground_effect.lr == nGMFacingL)  && (ep->effect_vars.ground_effect.pos.x >= dobj->translate.vec.f.x))
+        ((ep->effect_vars.ground_effect.lr == +1) && (ep->effect_vars.ground_effect.pos.x <= dobj->translate.vec.f.x)) ||
+        ((ep->effect_vars.ground_effect.lr == -1)  && (ep->effect_vars.ground_effect.pos.x >= dobj->translate.vec.f.x))
     )
     {
         ep->effect_vars.ground_effect.scale_step = 0.0F;
@@ -1245,7 +1245,7 @@ void efGroundSetStepPositions(GObj *effect_gobj)
     DObj *dobj = DObjGetStruct(effect_gobj);
     f32 step_div;
 
-    if (ep->effect_vars.ground_effect.lr == nGMFacingR)
+    if (ep->effect_vars.ground_effect.lr == +1)
     {
         step_div = 1000.0F - dobj->translate.vec.f.x;
         ep->effect_vars.ground_effect.pos.x = 1000.0F;
@@ -1274,7 +1274,7 @@ void efGroundUpdatePhysics(GObj *effect_gobj, s32 effect_id)
 
     dobj->scale.vec.f.x = dobj->scale.vec.f.y = dobj->scale.vec.f.z = sEFGroundActor.effect_data->effect_descs[effect_id].scale;
 
-    if (ep->effect_vars.ground_effect.lr == nGMFacingR)
+    if (ep->effect_vars.ground_effect.lr == +1)
     {
         dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F);
         dobj->translate.vec.f.x = gMPCollisionGroundData->map_bound_left + 500.0F;
@@ -1334,7 +1334,7 @@ void efGroundSetupEffectDObjs(GObj *effect_gobj, DObjDesc *dobjdesc, DObj **dobj
             }
             else gcAddXObjForDObjFixed(current_dobj, 0x48, 0);
 
-            if (lr == nGMFacingR)
+            if (lr == +1)
             {
                 rotate_step = F_CST_DTOR32(180.0F);
             }
@@ -1480,12 +1480,12 @@ void efGroundMakeEffectID(s32 effect_id)
 
         switch (ep->effect_vars.ground_effect.lr)
         {
-        case (3 * nGMFacingL):
-            ep->effect_vars.ground_effect.lr = nGMFacingL;
+        case (3 * -1):
+            ep->effect_vars.ground_effect.lr = -1;
             break;
 
-        case (3 * nGMFacingR):
-            ep->effect_vars.ground_effect.lr = nGMFacingR;
+        case (3 * +1):
+            ep->effect_vars.ground_effect.lr = +1;
             break;
         }
         efGroundUpdatePhysics(effect_gobj, effect_id);
@@ -1522,9 +1522,9 @@ void EFGroundActorProcUpdate(GObj *gobj)
 
             sEFGroundActor.lr = (param + param_id)->lr;
 
-            if (sEFGroundActor.lr == nGMFacingC)
+            if (sEFGroundActor.lr == 0)
             {
-                sEFGroundActor.lr = (mtTrigGetRandomIntRange(2) == 0) ? nGMFacingL : nGMFacingR;
+                sEFGroundActor.lr = (mtTrigGetRandomIntRange(2) == 0) ? -1 : +1;
             }
             sEFGroundActor.make_queue = (param + param_id)->make_queue;
 

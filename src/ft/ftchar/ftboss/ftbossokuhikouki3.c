@@ -18,7 +18,7 @@ void ftBossOkuhikouki3SetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f *translate;
 
-    fp->lr = nGMFacingL;
+    fp->lr = -1;
 
     ftMainSetFighterStatus(fighter_gobj, nFTBossStatusOkuhikouki3, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);

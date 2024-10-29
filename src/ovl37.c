@@ -248,7 +248,7 @@ void mvOpeningDKInitFighterStagePanel()
 		spawn_info.pos.x = spawn_position.x;
 		spawn_info.pos.y = spawn_position.y;
 		spawn_info.pos.z = spawn_position.z;
-		spawn_info.lr_spawn = nGMFacingL;
+		spawn_info.lr_spawn = -1;
 		spawn_info.team = gBattleState->players[i].team;
 		spawn_info.player = i;
 		spawn_info.detail = nFTPartsDetailHigh;

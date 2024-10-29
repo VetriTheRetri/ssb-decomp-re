@@ -42,7 +42,7 @@ void ftCommonWallDamageSetStatus(GObj *fighter_gobj, Vec3f *angle, Vec3f *pos)
 
     fp->physics.vel_air.x = fp->physics.vel_air.y = fp->physics.vel_air.z = 0.0F;
 
-    fp->lr = (fp->physics.vel_damage_air.x < 0.0F) ? nGMFacingR : nGMFacingL;
+    fp->lr = (fp->physics.vel_damage_air.x < 0.0F) ? +1 : -1;
 
     knockback = lbCommonMag2D(&vel_air);
 

@@ -122,7 +122,7 @@ s32 scVSBattleGetStartPlayerLR(s32 target_player)
 			}
 		}
 	}
-	lr = (near_spawn >= 0.0F) ? nGMFacingR : nGMFacingL;
+	lr = (near_spawn >= 0.0F) ? +1 : -1;
 
 	return lr;
 }

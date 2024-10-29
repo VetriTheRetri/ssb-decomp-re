@@ -120,18 +120,6 @@
 #define gmColCommandSetSkeletonID(skeleton_id)                                                                       \
 	(GC_FIELDSET(nGMColEventKindSetSkeletonID, 26, 6) | GC_FIELDSET(skeleton_id, 0, 26))
 
-typedef enum GMDirectionSign
-{
-	nGMFacingL = -1,
-	nGMFacingD = -1,
-	nGMFacingC = 0,
-	nGMFacingR = 1,
-	nGMFacingU = 1,
-	nGMFacingWallU = 2,    	// Exclusive to Pikachu's Thunder Jolt for riding walls up?
-	nGMFacingWallD = 3     	// Exclusive to Pikachu's Thunder Jolt for riding walls down?
-
-} GMDirectionSign;
-
 typedef enum GMHitStatus
 {
 	nGMHitStatusNone,		 	// User's hurtboxes are disabled
@@ -170,16 +158,16 @@ typedef enum GMHitType 				// Hitbox types, this is universal but I don't
 
 } GMHitType;
 
-typedef enum GMHitUpdateState
+typedef enum GMAttackState
 {
-	nGMAttackStateOff,	   		// No active hitbox or updates
+	nGMAttackStateOff,	   			// No active hitbox or updates
 	nGMAttackStateNew,		   		// Initialize hitbox positions
 	nGMAttackStateTransfer,   		// Transitions to interpolation mode, that's it
 	nGMAttackStateInterpolate 		// Copies current position to previous
 
-} GMHitUpdateState;
+} GMAttackState;
 
-typedef enum GMHitSoundEffect
+typedef enum GMAttackSound
 {
 	nGMHitSoundPunch,
 	nGMHitSoundKick,
@@ -191,16 +179,16 @@ typedef enum GMHitSoundEffect
 	nGMHitSoundBat,
 	nGMHitSoundEnumMax
 
-} GMHitSoundEffect;
+} GMAttackSound;
 
-typedef enum GMHitSoundLevel
+typedef enum GMAttackLevel
 {
 	nGMHitLevelWeak,
 	nGMHitLevelMedium,
 	nGMHitLevelStrong,
 	nGMHitLevelEnumMax
 
-} GMHitSoundLevel;
+} GMAttackLevel;
 
 typedef enum GMHitEnvironment
 {

@@ -303,7 +303,7 @@ GObj* itHitokageWeaponFlameMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 
     wp->lifetime = ITHITOKAGE_FLAME_LIFETIME;
 
-    wp->lr = nGMFacingL;
+    wp->lr = -1;
 
     LBParticleMakePosVel(gITManagerParticleBankID | 8, 2, pos->x, pos->y, 0.0F, wp->physics.vel_air.x, wp->physics.vel_air.y, 0.0F);
     LBParticleMakePosVel(gITManagerParticleBankID | 8, 0, pos->x, pos->y, 0.0F, wp->physics.vel_air.x, wp->physics.vel_air.y, 0.0F);

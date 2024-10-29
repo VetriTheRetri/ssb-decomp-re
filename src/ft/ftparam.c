@@ -250,7 +250,7 @@ f32 ftParamGetStickAngleRads(FTStruct *fp)
 // 0x800E8044
 void ftParamSetStickLR(FTStruct *fp)
 {
-    fp->lr = (fp->input.pl.stick_range.x >= 0) ? nGMFacingR : nGMFacingL;
+    fp->lr = (fp->input.pl.stick_range.x >= 0) ? +1 : -1;
 }
 
 // 0x800E806C

@@ -90,9 +90,9 @@ void itPippiCommonSelectMonster(GObj *item_gobj)
         {
             dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
 
-            ip->lr = nGMFacingR;
+            ip->lr = +1;
         }
-        else ip->lr = nGMFacingL;
+        else ip->lr = -1;
     }
     if ((it_kind == nITKindPippi) || (it_kind == nITKindTosakinto) || (it_kind == nITKindMLucky))
     {

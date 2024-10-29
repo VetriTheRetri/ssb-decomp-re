@@ -169,11 +169,11 @@ sb32 itSawamuraAttackProcUpdate(GObj *item_gobj)
 
     itMainApplyGravityClampTVel(ip, ITSAWAMURA_GRAVITY, ITSAWAMURA_TVEL);
 
-    if ((ip->lr == nGMFacingR) && (dobj->translate.vec.f.x >= (gMPCollisionGroundData->map_bound_right - ITSAWAMURA_DESPAWN_OFF_X)))
+    if ((ip->lr == +1) && (dobj->translate.vec.f.x >= (gMPCollisionGroundData->map_bound_right - ITSAWAMURA_DESPAWN_OFF_X)))
     {
         return TRUE;
     }
-    else if ((ip->lr == nGMFacingL) && (dobj->translate.vec.f.x <= (gMPCollisionGroundData->map_bound_left + ITSAWAMURA_DESPAWN_OFF_X)))
+    else if ((ip->lr == -1) && (dobj->translate.vec.f.x <= (gMPCollisionGroundData->map_bound_left + ITSAWAMURA_DESPAWN_OFF_X)))
     {
         return TRUE;
     }
@@ -208,9 +208,9 @@ void itSawamuraAttackSetFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 
     syVectorRotate3D(&ip->physics.vel_air, SYVECTOR_AXIS_Z, atan2f(dist.y, dist.x));
 
-    ip->lr = (dist.x < 0.0F) ? nGMFacingL : nGMFacingR;
+    ip->lr = (dist.x < 0.0F) ? -1 : +1;
 
-    if (ip->lr == nGMFacingR)
+    if (ip->lr == +1)
     {
         ij->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
     }

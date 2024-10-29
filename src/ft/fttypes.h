@@ -1030,7 +1030,7 @@ struct FTStruct
     f32 unk_ft_0x38;
     s32 unk_ft_0x3C;
     u32 hitlag_tics;
-    s32 lr;                     // Facing direction; -1 = nGMFacingL, 1 = nGMFacingR
+    s32 lr;                     // Facing direction; -1 = -1, 1 = +1
 
     struct FTPhysics
     {

@@ -229,7 +229,7 @@ void itIwarkAttackInitItemVars(GObj *item_gobj)
     }
     else pos.y += ITIWARK_OTHER_ADD_POS_Y;
 
-    efManagerDustHeavyDoubleMakeEffect(&pos, nGMFacingL, 1.0F);
+    efManagerDustHeavyDoubleMakeEffect(&pos, -1, 1.0F);
 
     if (ip->it_kind == nITKindIwark)
     {
@@ -404,9 +404,9 @@ sb32 itIwarkWeaponRockProcHop(GObj *weapon_gobj)
 
     if (wp->physics.vel_air.x > 0.0F)
     {
-        wp->lr = nGMFacingR;
+        wp->lr = +1;
     }
-    else wp->lr = nGMFacingL;
+    else wp->lr = -1;
 
     return FALSE;
 }
@@ -454,9 +454,9 @@ GObj* itIwarkWeaponRockMakeWeapon(GObj *parent_gobj, Vec3f *pos, u8 random)
 
     if (mtTrigGetRandomIntRange(2) == 0)
     {
-        wp->lr = nGMFacingL;
+        wp->lr = -1;
     }
-    else wp->lr = nGMFacingR;
+    else wp->lr = +1;
 
     dobj = DObjGetStruct(weapon_gobj);
 

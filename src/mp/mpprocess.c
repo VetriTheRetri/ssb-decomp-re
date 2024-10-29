@@ -1038,7 +1038,7 @@ sb32 mpProcessCheckTestLCliffCollision(MPCollData *coll_data)
     u32 ground_flags;
     s32 is_collide_ground;
 
-    if (*coll_data->p_lr != nGMFacingR)
+    if (*coll_data->p_lr != +1)
     {
         return FALSE;
     }
@@ -1089,7 +1089,7 @@ sb32 mpProcessCheckTestRCliffCollision(MPCollData *coll_data)
     u32 ground_flags;
     s32 is_collide_ground;
 
-    if (*coll_data->p_lr != nGMFacingL)
+    if (*coll_data->p_lr != -1)
     {
         return FALSE;
     }

@@ -176,7 +176,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
         wp->player = WEAPON_PORT_DEFAULT;
         wp->handicap = WEAPON_HANDICAP_DEFAULT;
         wp->player_number = 0;
-        wp->lr = nGMFacingR;
+        wp->lr = +1;
 
         wp->display_mode = sWPManagerDisplayMode;
 

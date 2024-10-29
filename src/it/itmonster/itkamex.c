@@ -390,7 +390,7 @@ void itKamexCommonFindTargetsSetLR(GObj *item_gobj)
     }
     dist_x = DObjGetStruct(victim_gobj)->translate.vec.f.x - dobj->translate.vec.f.x;
 
-    ip->lr = (dist_x < 0.0F) ? nGMFacingL : nGMFacingR;
+    ip->lr = (dist_x < 0.0F) ? -1 : +1;
 }
 
 // 0x80180CDC
@@ -423,7 +423,7 @@ GObj* itKamexMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         itKamexCommonFindTargetsSetLR(item_gobj);
 
-        if (kamex_ip->lr == nGMFacingL)
+        if (kamex_ip->lr == -1)
         {
             dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
         }
@@ -495,7 +495,7 @@ GObj* itKamexWeaponHydroMakeWeapon(GObj *item_gobj, Vec3f *pos)
 
     efManagerSparkleWhiteScaleMakeEffect(&translate, 1.0F);
 
-    if (wp->lr == nGMFacingL)
+    if (wp->lr == -1)
     {
         dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
     }

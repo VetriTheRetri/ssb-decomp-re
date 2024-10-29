@@ -228,14 +228,14 @@ void itBombHeiCommonSetWalkLR(GObj *item_gobj, ub8 lr)
 
     if (lr != 0)
     {
-        ip->lr = nGMFacingR;
+        ip->lr = +1;
         ip->physics.vel_air.x = ITBOMBHEI_WALK_VEL_X;
 
         dobj->display_list = dlr;
     }
     else
     {
-        ip->lr = nGMFacingL;
+        ip->lr = -1;
         ip->physics.vel_air.x = -ITBOMBHEI_WALK_VEL_X;
 
         dobj->display_list = dll;
@@ -306,7 +306,7 @@ s32 itBombHeiWalkGetLR(GObj *item_gobj)
 
         syVectorDiff3D(&dist, translate, &fighter_dobj->translate.vec.f);
 
-        lr = (dist.x < 0.0F) ? nGMFacingL : nGMFacingR;
+        lr = (dist.x < 0.0F) ? -1 : +1;
 
         fighter_gobj = fighter_gobj->link_next;
 
@@ -327,13 +327,13 @@ sb32 itBombHeiWaitProcUpdate(GObj *item_gobj)
     {
         lr = itBombHeiWalkGetLR(item_gobj);
 
-        if (lr == nGMFacingC)
+        if (lr == 0)
         {
             lr = mtTrigGetRandomIntRange(2) - 1;
         }
         if (lr < 0)
         {
-            ip->lr = nGMFacingR;
+            ip->lr = +1;
             ip->physics.vel_air.x = ITBOMBHEI_WALK_VEL_X;
         }
         else
@@ -342,7 +342,7 @@ sb32 itBombHeiWaitProcUpdate(GObj *item_gobj)
 
             dobj->display_list = dll;
 
-            ip->lr = nGMFacingL;
+            ip->lr = -1;
         }
         itBombHeiWalkSetStatus(item_gobj);
     }
@@ -468,7 +468,7 @@ sb32 itBombHeiWalkProcUpdate(GObj *item_gobj)
 
     if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {
-        if (ip->lr == nGMFacingL)
+        if (ip->lr == -1)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
@@ -542,7 +542,7 @@ void itBombHeiWalkInitItemVars(GObj *item_gobj)
 
     if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {
-        if (ip->lr == nGMFacingL)
+        if (ip->lr == -1)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 

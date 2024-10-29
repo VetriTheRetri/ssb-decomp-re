@@ -7092,7 +7092,7 @@ void ftComputerFollowObjectiveAttack(FTStruct *fp)
             mtTrigGetRandomFloat();
             random = mtTrigGetRandomFloat();
 
-            if (((fp->joints[nFTPartsJointTopN]->translate.vec.f.x < com->target_pos.x) && (fp->lr == nGMFacingR)) || ((fp->joints[nFTPartsJointTopN]->translate.vec.f.x > com->target_pos.x) && (fp->lr == nGMFacingL)))
+            if (((fp->joints[nFTPartsJointTopN]->translate.vec.f.x < com->target_pos.x) && (fp->lr == +1)) || ((fp->joints[nFTPartsJointTopN]->translate.vec.f.x > com->target_pos.x) && (fp->lr == -1)))
             {
                 var_a1 = FALSE;
             }
@@ -7224,7 +7224,7 @@ void func_ovl3_801397F4(FTStruct *fp)
             mtTrigGetRandomFloat();
             random = mtTrigGetRandomFloat();
 
-            if (((fp->joints[nFTPartsJointTopN]->translate.vec.f.x < com->target_pos.x) && (fp->lr == nGMFacingR)) || ((fp->joints[nFTPartsJointTopN]->translate.vec.f.x > com->target_pos.x) && (fp->lr == nGMFacingL)))
+            if (((fp->joints[nFTPartsJointTopN]->translate.vec.f.x < com->target_pos.x) && (fp->lr == +1)) || ((fp->joints[nFTPartsJointTopN]->translate.vec.f.x > com->target_pos.x) && (fp->lr == -1)))
             {
                 var_a1 = FALSE;
             }
@@ -7310,7 +7310,7 @@ void ftComputerFollowObjectiveAlly(FTStruct *fp)
             mtTrigGetRandomFloat();
             random = mtTrigGetRandomFloat();
 
-            if (((fp->joints[nFTPartsJointTopN]->translate.vec.f.x < com->target_pos.x) && (fp->lr == nGMFacingR)) || ((fp->joints[nFTPartsJointTopN]->translate.vec.f.x > com->target_pos.x) && (fp->lr == nGMFacingL)))
+            if (((fp->joints[nFTPartsJointTopN]->translate.vec.f.x < com->target_pos.x) && (fp->lr == +1)) || ((fp->joints[nFTPartsJointTopN]->translate.vec.f.x > com->target_pos.x) && (fp->lr == -1)))
             {
                 var_a1 = FALSE;
             }
@@ -7392,7 +7392,7 @@ void ftComputerFollowObjectivePatrol(FTStruct *fp)
             mtTrigGetRandomFloat();
             random = mtTrigGetRandomFloat();
 
-            if (((fp->joints[nFTPartsJointTopN]->translate.vec.f.x < com->target_pos.x) && (fp->lr == nGMFacingR)) || ((fp->joints[nFTPartsJointTopN]->translate.vec.f.x > com->target_pos.x) && (fp->lr == nGMFacingL)))
+            if (((fp->joints[nFTPartsJointTopN]->translate.vec.f.x < com->target_pos.x) && (fp->lr == +1)) || ((fp->joints[nFTPartsJointTopN]->translate.vec.f.x > com->target_pos.x) && (fp->lr == -1)))
             {
                 var_a1 = FALSE;
             }
@@ -7516,7 +7516,7 @@ void ftComputerFollowObjectiveRush(FTStruct *fp)
         mtTrigGetRandomFloat();
         random = mtTrigGetRandomFloat();
 
-        if (((fp->joints[nFTPartsJointTopN]->translate.vec.f.x < com->target_pos.x) && (fp->lr == nGMFacingR)) || ((fp->joints[nFTPartsJointTopN]->translate.vec.f.x > com->target_pos.x) && (fp->lr == nGMFacingL)))
+        if (((fp->joints[nFTPartsJointTopN]->translate.vec.f.x < com->target_pos.x) && (fp->lr == +1)) || ((fp->joints[nFTPartsJointTopN]->translate.vec.f.x > com->target_pos.x) && (fp->lr == -1)))
         {
             var_a1 = FALSE;
         }

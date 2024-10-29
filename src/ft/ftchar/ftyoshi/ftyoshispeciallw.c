@@ -133,7 +133,7 @@ void ftYoshiSpecialAirLwLoopSetStatus(GObj *fighter_gobj)
 
     if (ABSF(fp->physics.vel_air.x) > FTYOSHI_YOSHIBOMB_VEL_X_CLAMP)
     {
-        fp->physics.vel_air.x = ((fp->physics.vel_air.x < 0.0F) ? nGMFacingL : nGMFacingR) * FTYOSHI_YOSHIBOMB_VEL_X_CLAMP;
+        fp->physics.vel_air.x = ((fp->physics.vel_air.x < 0.0F) ? -1 : +1) * FTYOSHI_YOSHIBOMB_VEL_X_CLAMP;
     }
 
     vel_y_bak = fp->physics.vel_air.y;

@@ -311,11 +311,11 @@ sb32 itTaruBombRollProcUpdate(GObj *item_gobj)
 
     ip->physics.vel_air.x += (-(atan2f(ip->coll_data.ground_angle.y, ip->coll_data.ground_angle.x) - F_CLC_DTOR32(90.0F) /*HALF_PI32*/) * ITTARUBOMB_MUL_VEL_X);
 
-    ip->lr = (ip->physics.vel_air.x >= 0.0F) ? nGMFacingR : nGMFacingL;
+    ip->lr = (ip->physics.vel_air.x >= 0.0F) ? +1 : -1;
 
     sqrt_vel = sqrtf(SQUARE(ip->physics.vel_air.x) + SQUARE(ip->physics.vel_air.y));
 
-    roll_rotate_step = ((ip->lr == nGMFacingL) ? ITTARUBOMB_ROLL_ROTATE_MUL : -ITTARUBOMB_ROLL_ROTATE_MUL) * sqrt_vel;
+    roll_rotate_step = ((ip->lr == -1) ? ITTARUBOMB_ROLL_ROTATE_MUL : -ITTARUBOMB_ROLL_ROTATE_MUL) * sqrt_vel;
 
     ip->item_vars.tarubomb.roll_rotate_step = roll_rotate_step;
 

@@ -108,7 +108,7 @@ void ftKirbySpecialHiLandingProcUpdate(GObj *fighter_gobj)
 
         gmCollisionGetFighterPartsWorldPosition(fp->joints[FTKIRBY_FINALCUTTER_BEAM_SPAWN_JOINT], &pos);
 
-        if (fp->lr == nGMFacingR) pos.x += FTKIRBY_FINALCUTTER_OFF_X; // Ternary doesn't match here, only if/else :(
+        if (fp->lr == +1) pos.x += FTKIRBY_FINALCUTTER_OFF_X; // Ternary doesn't match here, only if/else :(
 
         else pos.x -= FTKIRBY_FINALCUTTER_OFF_X;
 

@@ -233,7 +233,7 @@ void ftCommonThrownSetStatusDamageRelease(GObj *fighter_gobj)
     {
         knockback_final = 0.0F;
     }
-    lr = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(capture_gobj)->translate.vec.f.x) ? nGMFacingR : nGMFacingL;
+    lr = (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(capture_gobj)->translate.vec.f.x) ? +1 : -1;
 
     damage = ftParamGetStaledDamage(capture_fp->player, ft_throw->damage, capture_fp->attack_id, capture_fp->motion_count);
 

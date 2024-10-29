@@ -165,7 +165,7 @@ void itRShellSpinUpdateFollowPlayer(GObj *item_gobj, GObj *fighter_gobj)
     {
         dist_x = (DObjGetStruct(fighter_gobj)->translate.vec.f.x - DObjGetStruct(item_gobj)->translate.vec.f.x);
 
-        lr_dist = (dist_x < 0.0F) ? nGMFacingL : nGMFacingR;
+        lr_dist = (dist_x < 0.0F) ? -1 : +1;
 
         vel_x = lr_dist * ITRSHELL_MUL_VEL_X;
 
@@ -173,9 +173,9 @@ void itRShellSpinUpdateFollowPlayer(GObj *item_gobj, GObj *fighter_gobj)
 
         ip->physics.vel_air.x += vel_x;
 
-        lr_vel = (ip->physics.vel_air.x < 0.0F) ? nGMFacingL : nGMFacingR;
+        lr_vel = (ip->physics.vel_air.x < 0.0F) ? -1 : +1;
 
-        lr_dist = (ip->item_vars.shell.vel_x < 0.0F) ? nGMFacingL : nGMFacingR;
+        lr_dist = (ip->item_vars.shell.vel_x < 0.0F) ? -1 : +1;
 
         if (lr_dist == lr_vel)
         {
@@ -193,7 +193,7 @@ void itRShellSpinUpdateFollowPlayer(GObj *item_gobj, GObj *fighter_gobj)
                 itProcessUpdateHitPositions(item_gobj);
             }
         }
-        ip->lr = (ip->physics.vel_air.x < 0.0F) ? nGMFacingL : nGMFacingR;
+        ip->lr = (ip->physics.vel_air.x < 0.0F) ? -1 : +1;
     }
 }
 
@@ -455,9 +455,9 @@ sb32 itRShellThrownProcMap(GObj *item_gobj)
     {
         if (ip->physics.vel_air.x < 0.0F)
         {
-            ip->lr = nGMFacingL;
+            ip->lr = -1;
         }
-        else ip->lr = nGMFacingR;
+        else ip->lr = +1;
 
         ip->physics.vel_air.x = ((ip->lr * -8.0F) + -10.0F) * 0.7F;
     }
@@ -475,9 +475,9 @@ void itRShellSpinEdgeInvertVelLR(GObj *item_gobj, ub8 lr)
 
     if (lr != 0)
     {
-        ip->lr = nGMFacingR;
+        ip->lr = +1;
     }
-    else ip->lr = nGMFacingL;
+    else ip->lr = -1;
 }
 
 // 0x8017AC84
@@ -490,7 +490,7 @@ void itRShellSpinCheckCollisionEdge(GObj *item_gobj)
 
     if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {
-        if (ip->lr == nGMFacingL)
+        if (ip->lr == -1)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
@@ -622,9 +622,9 @@ void itRShellSpinInitItemVars(GObj *item_gobj)
 
     if (ip->physics.vel_air.x < 0.0F)
     {
-        ip->lr = nGMFacingL;
+        ip->lr = -1;
     }
-    else ip->lr = nGMFacingR;
+    else ip->lr = +1;
 
     if (ip->item_vars.shell.is_setup_vars == FALSE)
     {
@@ -666,9 +666,9 @@ void itRShellSpinAirInitItemVars(GObj *item_gobj)
     }
     if (ip->physics.vel_air.x < 0.0F)
     {
-        ip->lr = nGMFacingL;
+        ip->lr = -1;
     }
-    else ip->lr = nGMFacingR;
+    else ip->lr = +1;
 
     itMainClearOwnerStats(item_gobj);
     itMapSetAir(ip);
@@ -741,7 +741,7 @@ sb32 itRShellCommonProcReflector(GObj *item_gobj)
 
     if (item_dobj->translate.vec.f.x < fighter_dobj->translate.vec.f.x)
     {
-        ip->lr = nGMFacingL;
+        ip->lr = -1;
 
         if (ip->physics.vel_air.x >= 0.0F)
         {
@@ -751,7 +751,7 @@ sb32 itRShellCommonProcReflector(GObj *item_gobj)
     }
     else
     {
-        ip->lr = nGMFacingR;
+        ip->lr = +1;
 
         if (ip->physics.vel_air.x < 0.0F)
         {

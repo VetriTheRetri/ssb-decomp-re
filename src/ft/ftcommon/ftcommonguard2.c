@@ -118,7 +118,7 @@ void ftCommonGuardSetOffSetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.guard.setoff_frames = (fp->shield_damage * FTCOMMON_GUARD_SETOFF_MUL) + FTCOMMON_GUARD_SETOFF_ADD;
 
-    fp->physics.vel_ground.x = ((fp->lr == fp->shield_lr) ? nGMFacingL : nGMFacingR) * (fp->status_vars.common.guard.setoff_frames * FTCOMMON_GUARD_VEL_MUL);
+    fp->physics.vel_ground.x = ((fp->lr == fp->shield_lr) ? -1 : +1) * (fp->status_vars.common.guard.setoff_frames * FTCOMMON_GUARD_VEL_MUL);
 
     if (fp->status_vars.common.guard.effect_gobj != NULL)
     {

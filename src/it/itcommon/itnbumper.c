@@ -431,7 +431,7 @@ sb32 itNBumperAttachedProcUpdate(GObj *item_gobj)
 
     if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
     {
-        if (ip->lr == nGMFacingL)
+        if (ip->lr == -1)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &edge_pos);
 

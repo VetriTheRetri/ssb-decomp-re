@@ -226,7 +226,7 @@ sb32 itSpearFlyProcUpdate(GObj *item_gobj)
 
     ip->physics.vel_air.x += ITSPEAR_SWARM_CALL_VEL_X * ip->lr;
 
-    if (ip->lr == nGMFacingR)
+    if (ip->lr == +1)
     {
         if (dobj->translate.vec.f.x >= (gMPCollisionGroundData->map_bound_right - ITSPEAR_SWARM_CALL_OFF_X))
         {
@@ -242,7 +242,7 @@ sb32 itSpearFlyProcUpdate(GObj *item_gobj)
             ip->item_vars.spear.spear_spawn_wait--;
         }
     }
-    if (ip->lr == nGMFacingL)
+    if (ip->lr == -1)
     {
         if (dobj->translate.vec.f.x <= (gMPCollisionGroundData->map_bound_left + ITSPEAR_SWARM_CALL_OFF_X))
         {
@@ -334,10 +334,10 @@ GObj* itSpearMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         {
             dobj->child->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
 
-            ip->lr = nGMFacingL;
+            ip->lr = -1;
 
         }
-        else ip->lr = nGMFacingR;
+        else ip->lr = +1;
 
         ip->it_multi = ITMONSTER_RISE_STOP_WAIT;
 
@@ -359,11 +359,11 @@ sb32 itSpearWeaponSwarmProcUpdate(GObj *weapon_gobj)
     WPStruct *wp = wpGetStruct(weapon_gobj);
     DObj *dobj = DObjGetStruct(weapon_gobj);
 
-    if ((wp->lr == nGMFacingR) && (dobj->translate.vec.f.x >= (gMPCollisionGroundData->map_bound_right - ITSPEAR_SWARM_CALL_OFF_X)))
+    if ((wp->lr == +1) && (dobj->translate.vec.f.x >= (gMPCollisionGroundData->map_bound_right - ITSPEAR_SWARM_CALL_OFF_X)))
     {
         return TRUE;
     }
-    else if ((wp->lr == nGMFacingL) && (dobj->translate.vec.f.x <= (gMPCollisionGroundData->map_bound_left + ITSPEAR_SWARM_CALL_OFF_X)))
+    else if ((wp->lr == -1) && (dobj->translate.vec.f.x <= (gMPCollisionGroundData->map_bound_left + ITSPEAR_SWARM_CALL_OFF_X)))
     {
         return TRUE;
     }
@@ -413,7 +413,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
     {
         gcAddXObjForDObjFixed(dobj->child->child, 0x48, 0);
 
-        if (wp->lr == nGMFacingL)
+        if (wp->lr == -1)
         {
             dobj->child->child->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
         }
@@ -424,7 +424,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 
         gcAddXObjForDObjFixed(dobj->child, 0x48, 0);
 
-        if (wp->lr == nGMFacingR)
+        if (wp->lr == +1)
         {
             dobj->child->rotate.vec.f.y = F_CST_DTOR32(180.0F); // PI32
         }

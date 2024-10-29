@@ -40,15 +40,15 @@ f32 ftCommonWalkGetWalkAnimLength(FTStruct *fp, s32 status_id)
     switch (status_id)
     {
     case nFTCommonStatusWalkSlow:
-        walk_anim_length = fp->attributes->walkslow_anim_length;
+        walk_anim_length = fp->attr->walkslow_anim_length;
         break;
 
     case nFTCommonStatusWalkMiddle:
-        walk_anim_length = fp->attributes->walkmiddle_anim_length;
+        walk_anim_length = fp->attr->walkmiddle_anim_length;
         break;
 
     case nFTCommonStatusWalkFast:
-        walk_anim_length = fp->attributes->walkfast_anim_length;
+        walk_anim_length = fp->attr->walkfast_anim_length;
         break;
     }
     return walk_anim_length;
@@ -98,7 +98,7 @@ void ftCommonWalkProcPhysics(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftPhysicsSetGroundVelAbsStickRange(fp, fp->attributes->walk_speed_mul, fp->attributes->traction);
+    ftPhysicsSetGroundVelAbsStickRange(fp, fp->attr->walk_speed_mul, fp->attr->traction);
     ftPhysicsSetGroundVelTransferAir(fighter_gobj);
 }
 

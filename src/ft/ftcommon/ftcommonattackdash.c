@@ -17,26 +17,26 @@ void ftCommonAttackDashSetStatus(GObj *fighter_gobj)
 sb32 ftCommonAttackDashCheckInterruptCommon(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if (fp->input.pl.button_tap & fp->input.button_mask_a)
     {
-        if (fp->item_hold != NULL)
+        if (fp->item_gobj != NULL)
         {
-            if ((fp->input.pl.button_hold & fp->input.button_mask_z) || (itGetStruct(fp->item_hold)->type == nITTypeThrow))
+            if ((fp->input.pl.button_hold & fp->input.button_mask_z) || (itGetStruct(fp->item_gobj)->type == nITTypeThrow))
             {
                 ftCommonItemThrowSetStatus(fighter_gobj, nFTCommonStatusLightThrowDash);
 
                 return TRUE;
             }
-            if (itGetStruct(fp->item_hold)->type == nITTypeSwing)
+            if (itGetStruct(fp->item_gobj)->type == nITTypeSwing)
             {
                 ftCommonItemSwingSetStatus(fighter_gobj, nFTItemSwingTypeAttackDash);
 
                 return TRUE;
             }
         }
-        if (attributes->is_have_attackdash)
+        if (attr->is_have_attackdash)
         {
             ftCommonAttackDashSetStatus(fighter_gobj);
 

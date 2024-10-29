@@ -130,11 +130,11 @@ void ftCommonAttackS4SetStatus(GObj *fighter_gobj)
 sb32 ftCommonAttackS4CheckInterruptDash(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if (((fp->input.pl.stick_range.x * fp->lr) >= FTCOMMON_ATTACKS4_STICK_RANGE_MIN) && (fp->input.pl.button_tap & fp->input.button_mask_a))
     {
-        GObj *item_gobj = fp->item_hold;
+        GObj *item_gobj = fp->item_gobj;
 
         if (item_gobj != NULL)
         {
@@ -157,7 +157,7 @@ sb32 ftCommonAttackS4CheckInterruptDash(GObj *fighter_gobj)
                 return TRUE;
             }
         }
-        if (attributes->is_have_attacks4)
+        if (attr->is_have_attacks4)
         {
             ftCommonAttackS4SetStatus(fighter_gobj);
 
@@ -171,11 +171,11 @@ sb32 ftCommonAttackS4CheckInterruptDash(GObj *fighter_gobj)
 sb32 ftCommonAttackS4CheckInterruptTurn(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if (((fp->input.pl.stick_range.x * fp->status_vars.common.attack4.lr) >= FTCOMMON_ATTACKS4_STICK_RANGE_MIN) && (fp->input.pl.button_tap & fp->input.button_mask_a))
     {
-        GObj *item_gobj = fp->item_hold;
+        GObj *item_gobj = fp->item_gobj;
 
         if (item_gobj != NULL)
         {
@@ -200,7 +200,7 @@ sb32 ftCommonAttackS4CheckInterruptTurn(GObj *fighter_gobj)
                 return TRUE;
             }
         }
-        if (attributes->is_have_attacks4)
+        if (attr->is_have_attacks4)
         {
             ftParamSetStickLR(fp);
             ftCommonAttackS4SetStatus(fighter_gobj);
@@ -215,11 +215,11 @@ sb32 ftCommonAttackS4CheckInterruptTurn(GObj *fighter_gobj)
 sb32 ftCommonAttackS4CheckInterruptCommon(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if ((ABS(fp->input.pl.stick_range.x) >= FTCOMMON_ATTACKS4_STICK_RANGE_MIN) && (fp->tap_stick_x < FTCOMMON_ATTACKS4_BUFFER_FRAMES_MAX) && (fp->input.pl.button_tap & fp->input.button_mask_a))
     {
-        GObj *item_gobj = fp->item_hold;
+        GObj *item_gobj = fp->item_gobj;
 
         if (item_gobj != NULL)
         {
@@ -244,7 +244,7 @@ sb32 ftCommonAttackS4CheckInterruptCommon(GObj *fighter_gobj)
                 return TRUE;
             }
         }
-        if (attributes->is_have_attacks4)
+        if (attr->is_have_attacks4)
         {
             ftParamSetStickLR(fp);
             ftCommonAttackS4SetStatus(fighter_gobj);

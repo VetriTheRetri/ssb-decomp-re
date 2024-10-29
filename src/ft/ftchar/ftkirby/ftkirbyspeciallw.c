@@ -190,7 +190,7 @@ void ftKirbySpecialAirLwFallProcUpdate(GObj *fighter_gobj)
 void ftKirbySpecialLwHoldProcPhysics(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
     f32 temp_slide_angle;
     f32 ground_vel_x;
     f32 slide_angle;
@@ -221,7 +221,7 @@ void ftKirbySpecialLwHoldProcPhysics(GObj *fighter_gobj)
         fp->physics.vel_ground.x = -FTKIRBY_STONE_SLIDE_CLAMP_VEL_X;
     }
 
-    ftPhysicsSetGroundVelFriction(fp, (dMPCollisionMaterialFrictions[fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK] * attributes->traction * FTKIRBY_STONE_SLIDE_TRACTION_MUL));
+    ftPhysicsSetGroundVelFriction(fp, (dMPCollisionMaterialFrictions[fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK] * attr->traction * FTKIRBY_STONE_SLIDE_TRACTION_MUL));
     ftPhysicsSetGroundVelTransferAir(fighter_gobj);
 }
 

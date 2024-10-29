@@ -38,9 +38,9 @@ void ftYoshiSpecialAirLwLoopProcPhysics(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (ftPhysicsCheckClampAirVelXDecMax(fp, fp->attributes) == FALSE)
+    if (ftPhysicsCheckClampAirVelXDecMax(fp, fp->attr) == FALSE)
     {
-        ftPhysicsApplyAirVelXFriction(fp, fp->attributes);
+        ftPhysicsApplyAirVelXFriction(fp, fp->attr);
     }
 }
 
@@ -109,7 +109,7 @@ void ftYoshiSpecialLwStartSetStatus(GObj *fighter_gobj)
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
-    fp->jumps_used = fp->attributes->jumps_max;
+    fp->jumps_used = fp->attr->jumps_max;
 }
 
 // 0x8015F04C
@@ -122,7 +122,7 @@ void ftYoshiSpecialAirLwStartSetStatus(GObj *fighter_gobj)
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialAirLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
-    fp->jumps_used = fp->attributes->jumps_max;
+    fp->jumps_used = fp->attr->jumps_max;
 }
 
 // 0x8015F0A8

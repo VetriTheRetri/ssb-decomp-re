@@ -165,7 +165,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
     u32 flag;
     Vec3f dmg_coll_offset;
     Vec3f dmg_coll_size;
-    FTAttributes *attributes;
+    FTAttributes *attr;
     FTMotionDamageScript *p_damage;
     s32 ft_kind;
     s32 script_id;
@@ -372,7 +372,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         break;
 
     case nFTMotionEventKindPlayVoiceStoreInfo:
-        if (!(fp->is_playing_sfx) && (fp->attributes->is_have_voice))
+        if (!(fp->is_playing_sfx) && (fp->attr->is_have_voice))
         {
             ftParamPlayVoice(fp, ftMotionEventCastAdvance(ms, FTMotionEventDefault)->value);
         }
@@ -380,7 +380,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         break;
 
     case nFTMotionEventKindPlayLoopVoiceStoreInfo:
-        if (!(fp->is_playing_sfx) && (fp->attributes->is_have_voice))
+        if (!(fp->is_playing_sfx) && (fp->attr->is_have_voice))
         {
             ftParamPlayLoopSFX(fp, ftMotionEventCastAdvance(ms, FTMotionEventDefault)->value);
         }
@@ -390,7 +390,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
     case nFTMotionEventKindPlaySmashVoice:
         if (!(fp->is_playing_sfx))
         {
-            ftParamPlayVoice(fp, fp->attributes->smash_sfx[mtTrigGetRandomIntRange(ARRAY_COUNT(fp->attributes->smash_sfx))]);
+            ftParamPlayVoice(fp, fp->attr->smash_sfx[mtTrigGetRandomIntRange(ARRAY_COUNT(fp->attr->smash_sfx))]);
 
             ftMotionEventAdvance(ms, FTMotionEventDefault);
         }
@@ -408,13 +408,13 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         break;
 
     case nFTMotionEventKindSetAirJumpMax:
-        attributes = fp->attributes;
+        attr = fp->attr;
 
         fp->ga = nMPKineticsAir;
 
         fp->physics.vel_air.z = DObjGetStruct(fighter_gobj)->translate.vec.f.z = 0.0F;
 
-        fp->jumps_used = attributes->jumps_max;
+        fp->jumps_used = attr->jumps_max;
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
@@ -1192,8 +1192,8 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
 {
     FTStruct *this_fp = ftGetStruct(fighter_gobj);
     FTStruct *other_fp;
-    FTAttributes *this_attributes;
-    FTAttributes *other_attributes;
+    FTAttributes *this_attr;
+    FTAttributes *other_attr;
     FTPlayerInput *pl;
     FTComputerInput *cp;
     gsController *controller;
@@ -1452,7 +1452,7 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
             ftParamResetStatUpdateColAnim(fighter_gobj);
         }
     }
-    if ((this_fp->item_hold != NULL) && (this_fp->status_id != nFTCommonStatusLightGet) && (itGetStruct(this_fp->item_hold)->it_kind == nITKindHammer))
+    if ((this_fp->item_gobj != NULL) && (this_fp->status_id != nFTCommonStatusLightGet) && (itGetStruct(this_fp->item_gobj)->it_kind == nITKindHammer))
     {
         ftHammerUpdateStats(fighter_gobj);
     }
@@ -1508,14 +1508,14 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
                 {
                     if ((other_fp->ga == nMPKineticsGround) && (this_fp->coll_data.ground_line_id == other_fp->coll_data.ground_line_id))
                     {
-                        this_attributes = this_fp->attributes;
-                        other_attributes = other_fp->attributes;
+                        this_attr = this_fp->attr;
+                        other_attr = other_fp->attr;
 
-                        this_jostle = this_fp->attributes->jostle_width;
+                        this_jostle = this_fp->attr->jostle_width;
 
-                        jostle_dist_x = (DObjGetStruct(fighter_gobj)->translate.vec.f.x + (this_attributes->jostle_x * this_fp->lr)) - (DObjGetStruct(other_gobj)->translate.vec.f.x + (other_attributes->jostle_x * other_fp->lr));
+                        jostle_dist_x = (DObjGetStruct(fighter_gobj)->translate.vec.f.x + (this_attr->jostle_x * this_fp->lr)) - (DObjGetStruct(other_gobj)->translate.vec.f.x + (other_attr->jostle_x * other_fp->lr));
 
-                        if (ABS(jostle_dist_x) < (this_jostle + other_attributes->jostle_width))
+                        if (ABS(jostle_dist_x) < (this_jostle + other_attr->jostle_width))
                         {
                             is_jostle = TRUE;
 
@@ -1768,7 +1768,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
                 {
                     fp->physics.vel_damage_ground = fp->physics.vel_damage_air.x;
                 }
-                ftMainUpdateVelDamageGround(fp, dMPCollisionMaterialFrictions[fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK] * fp->attributes->traction * 0.25F);
+                ftMainUpdateVelDamageGround(fp, dMPCollisionMaterialFrictions[fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK] * fp->attr->traction * 0.25F);
 
                 vel_damage_air->x = (ground_angle->y * fp->physics.vel_damage_ground);
                 vel_damage_air->y = (-ground_angle->x * fp->physics.vel_damage_ground);
@@ -1853,7 +1853,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
 
             if (atk_coll->is_scale_pos)
             {
-                size_mul = 1.0F / fp->attributes->size_mul;
+                size_mul = 1.0F / fp->attr->size_mul;
 
                 atk_coll->pos.x *= size_mul;
                 atk_coll->pos.y *= size_mul;
@@ -1878,7 +1878,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
 
             if (atk_coll->is_scale_pos)
             {
-                size_mul = 1.0F / fp->attributes->size_mul;
+                size_mul = 1.0F / fp->attr->size_mul;
 
                 atk_coll->pos.x *= size_mul;
                 atk_coll->pos.y *= size_mul;
@@ -2629,7 +2629,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
     FTStruct *attacker_fp;
     WPStruct *wp;
     ITStruct *ip;
-    FTAttributes *attributes = this_fp->attributes;
+    FTAttributes *attr = this_fp->attr;
     FTHitlog *hitlog;
     s32 i, j;
     f32 knockback_temp;
@@ -2663,7 +2663,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
                 ft_atk_coll->knockback_weight, 
                 ft_atk_coll->knockback_scale, 
                 ft_atk_coll->knockback_base, 
-                attributes->weight, 
+                attr->weight, 
                 attacker_fp->handicap, 
                 this_fp->handicap
             );
@@ -2699,7 +2699,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
                 {
                     efManagerDamageSpawnOrbsRandgcMakeEffect(&pos);
 
-                    switch (this_fp->attributes->is_metallic)
+                    switch (this_fp->attr->is_metallic)
                     {
                     case FALSE:
                         efManagerDamageSpawnSparksRandgcMakeEffect(&pos, this_fp->lr);
@@ -2721,7 +2721,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
             wp = wpGetStruct(hitlog->attacker_gobj);
             damage = wpMainGetStaledDamage(wp);
 
-            knockback_temp = ftParamGetCommonKnockback(this_fp->percent_damage, this_fp->damage_queue, damage, wp_atk_coll->knockback_weight, wp_atk_coll->knockback_scale, wp_atk_coll->knockback_base, attributes->weight, wp->handicap, this_fp->handicap);
+            knockback_temp = ftParamGetCommonKnockback(this_fp->percent_damage, this_fp->damage_queue, damage, wp_atk_coll->knockback_weight, wp_atk_coll->knockback_scale, wp_atk_coll->knockback_base, attr->weight, wp->handicap, this_fp->handicap);
 
             if (wp->is_hitlag_victim)
             {
@@ -2758,7 +2758,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
 
             damage = itMainGetDamageOutput(ip);
 
-            knockback_temp = ftParamGetCommonKnockback(this_fp->percent_damage, this_fp->damage_queue, damage, it_atk_coll->knockback_weight, it_atk_coll->knockback_scale, it_atk_coll->knockback_base, attributes->weight, ip->handicap, this_fp->handicap);
+            knockback_temp = ftParamGetCommonKnockback(this_fp->percent_damage, this_fp->damage_queue, damage, it_atk_coll->knockback_weight, it_atk_coll->knockback_scale, it_atk_coll->knockback_base, attr->weight, ip->handicap, this_fp->handicap);
 
             if (ip->is_hitlag_victim)
             {
@@ -2798,7 +2798,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
             }
             else gr_handicap = 9;
 
-            knockback_temp = ftParamGetCommonKnockback(this_fp->percent_damage, this_fp->damage_queue, gr_atk_coll->damage, gr_atk_coll->knockback_weight, gr_atk_coll->knockback_scale, gr_atk_coll->knockback_base, attributes->weight, gr_handicap, this_fp->handicap);
+            knockback_temp = ftParamGetCommonKnockback(this_fp->percent_damage, this_fp->damage_queue, gr_atk_coll->damage, gr_atk_coll->knockback_weight, gr_atk_coll->knockback_scale, gr_atk_coll->knockback_base, attr->weight, gr_handicap, this_fp->handicap);
             break;
 
         default:
@@ -4009,12 +4009,12 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
             break;
 
         case TRUE:
-            if ((fp->item_hold != NULL) && (fp->is_show_item) && (itGetStruct(fp->item_hold)->it_kind == nITKindSword))
+            if ((fp->item_gobj != NULL) && (fp->is_show_item) && (itGetStruct(fp->item_gobj)->it_kind == nITKindSword))
             {
                 s32 unused;
                 Mtx44f mtx;
 
-                func_ovl0_800C9A38(mtx, fp->joints[fp->attributes->joint_itemlight_id]);
+                func_ovl0_800C9A38(mtx, fp->joints[fp->attr->joint_itemlight_id]);
 
                 fp->afterimage.desc[fp->afterimage.desc_index].translate_x = mtx[3][0];
                 fp->afterimage.desc[fp->afterimage.desc_index].translate_y = mtx[3][1];
@@ -4049,25 +4049,25 @@ void ftMainUpdateWithheldPartID(FTStruct *fp, s32 withheld_part_id)
     DObj *root_joint;
     DObj *child_joint;
     DObj *sibling_joint;
-    FTAttributes *attributes;
+    FTAttributes *attr;
     FTCommonPart *commonpart;
     DObj *parent_joint;
     FTParts *ft_parts;
 
-    attributes = fp->attributes;
-    withheld_part = &attributes->withheld_parts[withheld_part_id];
+    attr = fp->attr;
+    withheld_part = &attr->withheld_parts[withheld_part_id];
 
     if (withheld_part->root_joint_id >= nFTPartsJointCommonStart)
     {
         if (fp->detail_current == nFTPartsDetailHigh)
         {
-            commonpart = &fp->attributes->commonparts_container->commonparts[0];
+            commonpart = &fp->attr->commonparts_container->commonparts[0];
         }
-        else if (attributes->commonparts_container->commonparts[1].dobjdesc[withheld_part->root_joint_id - nFTPartsJointCommonStart].display_list != NULL)
+        else if (attr->commonparts_container->commonparts[1].dobjdesc[withheld_part->root_joint_id - nFTPartsJointCommonStart].display_list != NULL)
         {
-            commonpart = &attributes->commonparts_container->commonparts[1];
+            commonpart = &attr->commonparts_container->commonparts[1];
         }
-        else commonpart = &attributes->commonparts_container->commonparts[0];
+        else commonpart = &attr->commonparts_container->commonparts[0];
     }
     else commonpart = NULL;
 
@@ -4150,7 +4150,7 @@ void ftMainUpdateWithheldPartID(FTStruct *fp, s32 withheld_part_id)
 
     root_joint->user_data.p = ft_parts = ftManagerGetNextPartsAlloc();
 
-    ft_parts->flags = attributes->commonparts_container->commonparts[fp->detail_current - nFTPartsDetailStart].flags;
+    ft_parts->flags = attr->commonparts_container->commonparts[fp->detail_current - nFTPartsDetailStart].flags;
     ft_parts->joint_id = withheld_part->root_joint_id;
 
     if (withheld_part->partindex_0x8 != 0)
@@ -4170,7 +4170,7 @@ void ftMainAddWithheldPartID(FTStruct *fp, s32 withheld_part_id)
     DObj *new_child_joint;
     DObj *parent_joint;
 
-    withheld_part = &fp->attributes->withheld_parts[withheld_part_id];
+    withheld_part = &fp->attr->withheld_parts[withheld_part_id];
     root_joint = fp->joints[withheld_part->root_joint_id];
 
     if (withheld_part->root_joint_id == nFTPartsJointTransN)
@@ -4258,7 +4258,7 @@ void ftMainAddWithheldPartID(FTStruct *fp, s32 withheld_part_id)
 // 0x800E6E00
 void ftMainEjectWithheldPartID(FTStruct *fp, s32 withheld_part_id)
 {
-    FTWithheldPart *withheld_part = &fp->attributes->withheld_parts[withheld_part_id];
+    FTWithheldPart *withheld_part = &fp->attr->withheld_parts[withheld_part_id];
     DObj *root_joint = fp->joints[withheld_part->root_joint_id];
     DObj *parent_joint;
     DObj *child_joint;
@@ -4326,7 +4326,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     intptr_t event_file_head;
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
     FTStatusDesc *status_struct;
     FTOpeningDesc *opening_struct;
     f32 anim_frame;
@@ -4607,7 +4607,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
                 else ftMainEjectWithheldPartID(fp, i);
             }
 
-            dobjdesc = attributes->commonparts_container->commonparts[fp->detail_current - nFTPartsDetailStart].dobjdesc;
+            dobjdesc = attr->commonparts_container->commonparts[fp->detail_current - nFTPartsDetailStart].dobjdesc;
 
             for (i = nFTPartsJointCommonStart; dobjdesc->index != DOBJ_ARRAY_MAX; i++, dobjdesc++)
             {
@@ -4691,7 +4691,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
             }
             fp->is_use_animlocks = fp->anim_desc.flags.is_use_animlocks;
 
-            if (attributes->translate_scales != NULL)
+            if (attr->translate_scales != NULL)
             {
                 if (fp->anim_desc.flags.is_have_translate_scale)
                 {

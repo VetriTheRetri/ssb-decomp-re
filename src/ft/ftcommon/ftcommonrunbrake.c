@@ -21,9 +21,9 @@ void ftCommonRunBrakeProcInterrupt(GObj *fighter_gobj)
 void ftCommonRunBrakeProcPhysics(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
-    ftPhysicsSetGroundVelFriction(fp, attributes->traction * 1.25F);
+    ftPhysicsSetGroundVelFriction(fp, attr->traction * 1.25F);
     ftPhysicsSetGroundVelTransferAir(fighter_gobj);
 }
 
@@ -60,9 +60,9 @@ sb32 ftCommonRunBrakeCheckInterruptTurnRun(GObj *fighter_gobj)
     {
         ftCommonRunBrakeSetStatus(fighter_gobj, 0);
 
-        if (fp->physics.vel_ground.x > fp->attributes->run_speed)
+        if (fp->physics.vel_ground.x > fp->attr->run_speed)
         {
-            fp->physics.vel_ground.x = fp->attributes->run_speed;
+            fp->physics.vel_ground.x = fp->attr->run_speed;
         }
         return TRUE;
     }

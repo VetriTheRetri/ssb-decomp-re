@@ -59,16 +59,16 @@ void ftCaptainSpecialHiProcInterrupt(GObj *fighter_gobj)
 void ftCaptainSpecialHiProcPhysics(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     fp->physics.vel_air.x = fp->status_vars.captain.specialhi.vel.x;
     fp->physics.vel_air.y = fp->status_vars.captain.specialhi.vel.y;
     fp->physics.vel_air.z = 0.0F;
 
-    if (ftPhysicsCheckClampAirVelXDec(fp, attributes->aerial_speed_max_x * FTCAPTAIN_FALCONDIVE_AIR_SPEED_MAX_MUL) == FALSE)
+    if (ftPhysicsCheckClampAirVelXDec(fp, attr->aerial_speed_max_x * FTCAPTAIN_FALCONDIVE_AIR_SPEED_MAX_MUL) == FALSE)
     {
-        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTCAPTAIN_FALCONDIVE_AIR_ACCEL_MUL, attributes->aerial_speed_max_x * FTCAPTAIN_FALCONDIVE_AIR_SPEED_MAX_MUL);
-        ftPhysicsApplyAirVelXFriction(fp, attributes);
+        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->aerial_acceleration * FTCAPTAIN_FALCONDIVE_AIR_ACCEL_MUL, attr->aerial_speed_max_x * FTCAPTAIN_FALCONDIVE_AIR_SPEED_MAX_MUL);
+        ftPhysicsApplyAirVelXFriction(fp, attr);
     }
     fp->status_vars.captain.specialhi.vel.x = fp->physics.vel_air.x;
     fp->status_vars.captain.specialhi.vel.y = fp->physics.vel_air.y;
@@ -126,7 +126,7 @@ void ftCaptainSpecialHiProcStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->jumps_used = fp->attributes->jumps_max;
+    fp->jumps_used = fp->attr->jumps_max;
 
     fp->status_vars.captain.specialhi.flags = 0;
 

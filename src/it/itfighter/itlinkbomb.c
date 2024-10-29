@@ -205,11 +205,11 @@ void func_ovl3_80185B18(GObj *item_gobj)
 {
 	s32 unused[5];
 	ITStruct *ip = itGetStruct(item_gobj);
-	ITAttributes *attributes = ip->attributes;
+	ITAttributes *attr = ip->attr;
 	DObj *dobj = DObjGetStruct(item_gobj);
 	Vec3f pos = dobj->translate.vec.f;
 
-	pos.y += attributes->obj_coll_bottom;
+	pos.y += attr->obj_coll_bottom;
 
 	efManagerDustHeavyDoubleMakeEffect(&pos, ip->lr, 1.0F);
 }

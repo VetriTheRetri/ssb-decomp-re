@@ -70,7 +70,7 @@ void ftCommonTwisterSetStatus(GObj *fighter_gobj, GObj *tornado_gobj)
 
     ftParamStopVoiceRunProcDamage(fighter_gobj);
 
-    if ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->weight == nITWeightHeavy))
+    if ((fp->item_gobj != NULL) && (itGetStruct(fp->item_gobj)->weight == nITWeightHeavy))
     {
         ftSetupDropItem(fp);
     }
@@ -109,7 +109,7 @@ void ftCommonTwisterShootFighter(GObj *fighter_gobj)
 
     DObjGetStruct(fighter_gobj)->translate.vec.f.z = 0.0F;
 
-    knockback = ftParamGetCommonKnockback(fp->percent_damage, tornado->damage, tornado->damage, tornado->knockback_weight, tornado->knockback_scale, tornado->knockback_base, fp->attributes->weight, 9, fp->handicap);
+    knockback = ftParamGetCommonKnockback(fp->percent_damage, tornado->damage, tornado->damage, tornado->knockback_weight, tornado->knockback_scale, tornado->knockback_base, fp->attr->weight, 9, fp->handicap);
 
     if (ftParamGetBestHitStatusAll(fighter_gobj) != nGMHitStatusNormal)
     {

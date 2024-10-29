@@ -268,7 +268,7 @@ GObj* itDogasMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip = itGetStruct(item_gobj);
 
-        dobj->translate.vec.f.y -= ip->attributes->obj_coll_bottom;
+        dobj->translate.vec.f.y -= ip->attr->obj_coll_bottom;
 
         ip->multi = ITMONSTER_RISE_STOP_WAIT;
 
@@ -287,7 +287,7 @@ sb32 itDogasWeaponSmogProcUpdate(GObj *weapon_gobj)
     WPStruct *wp = wpGetStruct(weapon_gobj);
     DObj *dobj = DObjGetStruct(weapon_gobj)->child;
 
-    wp->atk_coll.size = dobj->scale.vec.f.x * wp->weapon_vars.smog.attributes->size;
+    wp->atk_coll.size = dobj->scale.vec.f.x * wp->weapon_vars.smog.attr->size;
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {
@@ -312,7 +312,7 @@ GObj* itDogasWeaponSmogMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 
     wp->lifetime = ITDOGAS_SMOG_LIFETIME;
 
-    wp->weapon_vars.smog.attributes = (WPAttributes*) ((uintptr_t)*weapon_desc->p_weapon + (intptr_t)weapon_desc->o_attributes); // Dude I had a stroke trying to match this
+    wp->weapon_vars.smog.attr = (WPAttributes*) ((uintptr_t)*weapon_desc->p_weapon + (intptr_t)weapon_desc->o_attributes); // Dude I had a stroke trying to match this
 
     dobj = DObjGetStruct(weapon_gobj);
 

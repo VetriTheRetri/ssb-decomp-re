@@ -360,7 +360,7 @@ GObj* itStarmieMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f = *pos;
 
-        dobj->translate.vec.f.y -= ip->attributes->obj_coll_bottom;
+        dobj->translate.vec.f.y -= ip->attr->obj_coll_bottom;
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITStarmieDataStart), 0.0F); // Linker thing
 

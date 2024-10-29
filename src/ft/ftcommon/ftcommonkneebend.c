@@ -10,7 +10,7 @@
 void ftCommonKneeBendProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     fp->status_vars.common.kneebend.anim_frame += DObjGetStruct(fighter_gobj)->anim_speed;
 
@@ -23,7 +23,7 @@ void ftCommonKneeBendProcUpdate(GObj *fighter_gobj)
     {
         fp->status_vars.common.kneebend.is_short_hop = TRUE;
     }
-    if (attributes->kneebend_anim_length <= fp->status_vars.common.kneebend.anim_frame) 
+    if (attr->kneebend_anim_length <= fp->status_vars.common.kneebend.anim_frame) 
     {
         ftCommonJumpSetStatus(fighter_gobj);
     }

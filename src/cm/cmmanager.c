@@ -299,7 +299,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
                 ft_cobj[player_num].target_pos = fp->status_vars.common.dead.pos;
                 break;
             }
-            ft_cobj[player_num].target_pos.y += fp->attributes->cam_offset_y;
+            ft_cobj[player_num].target_pos.y += fp->attr->cam_offset_y;
 
             if ((gBattleState->game_type == nSCBattleGameType1PGame) && (gBattleState->players[fp->player].is_spgame_team != FALSE))
             {
@@ -720,7 +720,7 @@ void func_ovl2_8010C960(GObj *camera_gobj)
 
     fp = ftGetStruct(gCMManagerCameraStruct.pl_pause_gobj);
 
-    sp30.y += fp->attributes->cam_offset_y;
+    sp30.y += fp->attr->cam_offset_y;
 
     cmManagerAdjustFOV(gCMManagerCameraStruct.unk_cmstruct_0x58);
 
@@ -857,7 +857,7 @@ void jtgt_ovl2_8010CDAC(GObj *camera_gobj)
 
     fp = ftGetStruct(gCMManagerCameraStruct.pl_bonus_gobj);
 
-    sp30.y += fp->attributes->cam_offset_y;
+    sp30.y += fp->attr->cam_offset_y;
     sp30.z = 0.0F;
 
     cmManagerSetCameraBoundsPos(&sp30);

@@ -241,7 +241,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
 {
     ITStruct *ip = itManagerGetNextStructAlloc();
     GObj *item_gobj;
-    ITAttributes *attributes;
+    ITAttributes *attr;
     void (*func_display)(GObj*);
     s32 unused[4];
 
@@ -257,13 +257,13 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
 
         return NULL;
     }
-    attributes = lbRelocGetDataFromFile(ITAttributes*, *item_desc->p_file, item_desc->o_attributes);
+    attr = lbRelocGetDataFromFile(ITAttributes*, *item_desc->p_file, item_desc->o_attributes);
 
-    if (attributes->is_display_colanim)
+    if (attr->is_display_colanim)
     {
-        func_display = (attributes->is_display_xlu) ? itDisplayColAnimXLUFuncDisplay : itDisplayColAnimOPAFuncDisplay;
+        func_display = (attr->is_display_xlu) ? itDisplayColAnimXLUFuncDisplay : itDisplayColAnimOPAFuncDisplay;
     }
-    else func_display = (attributes->is_display_xlu) ? itDisplayXLUFuncDisplay : itDisplayOPAFuncDisplay;
+    else func_display = (attr->is_display_xlu) ? itDisplayXLUFuncDisplay : itDisplayOPAFuncDisplay;
 
     gcAddGObjDisplay(item_gobj, func_display, 11, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -273,12 +273,12 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
     ip->owner_gobj = NULL;
 
     ip->it_kind = item_desc->it_kind;
-    ip->type = attributes->type;
+    ip->type = attr->type;
 
     ip->physics.vel_air = *vel;
     ip->physics.vel_ground = 0.0F;
 
-    ip->attributes = attributes;
+    ip->attr = attr;
 
     itMainVelSetRotateStepLR(item_gobj);
     itMainResetPlayerVars(item_gobj);
@@ -292,7 +292,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
     ip->pickup_wait         = ITEM_PICKUP_WAIT_DEFAULT;
 
     ip->percent_damage      = 0;
-    ip->hitlag_tics        = 0;
+    ip->hitlag_tics         = 0;
     ip->damage_highest      = 0;
     ip->damage_knockback    = 0.0F;
     ip->damage_queue        = 0;
@@ -301,13 +301,13 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
     ip->times_landed        = 0;
     ip->times_thrown        = 0;
 
-    ip->weight              = attributes->weight;
-    ip->is_hitlag_victim    = attributes->is_give_hitlag;
-    ip->drop_sfx            = attributes->drop_sfx;
-    ip->throw_sfx           = attributes->throw_sfx;
-    ip->smash_sfx           = attributes->smash_sfx;
+    ip->weight              = attr->weight;
+    ip->is_hitlag_victim    = attr->is_give_hitlag;
+    ip->drop_sfx            = attr->drop_sfx;
+    ip->throw_sfx           = attr->throw_sfx;
+    ip->smash_sfx           = attr->smash_sfx;
 
-    ip->vel_scale           = F_PCT_TO_DEC(attributes->vel_scale);
+    ip->vel_scale           = F_PCT_TO_DEC(attr->vel_scale);
 
     ip->is_damage_all       = FALSE;
     ip->is_thrown           = FALSE; // Applies magnitude and stale multiplier if TRUE and hitbox is active?
@@ -315,36 +315,36 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
 
     ip->rotate_step         = 0.0F;
 
-    ip->arrow_gobj      = NULL;
-    ip->arrow_timer     = 0;
+    ip->arrow_gobj          = NULL;
+    ip->arrow_timer         = 0;
 
-    ip->atk_coll.atk_state       = item_desc->atk_state;
-    ip->atk_coll.damage             = attributes->damage;
+    ip->atk_coll.atk_state          = item_desc->atk_state;
+    ip->atk_coll.damage             = attr->damage;
     ip->atk_coll.throw_mul          = 1.0F;
     ip->atk_coll.stale              = 1.0F;
-    ip->atk_coll.element            = attributes->element;
-    ip->atk_coll.offset[0].x        = attributes->atk_offset0_x;
-    ip->atk_coll.offset[0].y        = attributes->atk_offset0_y;
-    ip->atk_coll.offset[0].z        = attributes->atk_offset0_z;
-    ip->atk_coll.offset[1].x        = attributes->atk_offset1_x;
-    ip->atk_coll.offset[1].y        = attributes->atk_offset1_y;
-    ip->atk_coll.offset[1].z        = attributes->atk_offset1_z;
-    ip->atk_coll.size               = attributes->size * 0.5F;
-    ip->atk_coll.angle              = attributes->angle;
-    ip->atk_coll.knockback_scale    = attributes->knockback_scale;
-    ip->atk_coll.knockback_weight   = attributes->knockback_weight;
-    ip->atk_coll.knockback_base     = attributes->knockback_base;
-    ip->atk_coll.can_setoff         = attributes->can_setoff;
-    ip->atk_coll.shield_damage      = attributes->shield_damage;
-    ip->atk_coll.hit_sfx            = attributes->hit_sfx;
-    ip->atk_coll.priority           = attributes->priority;
-    ip->atk_coll.can_rehit_item     = attributes->can_rehit_item;
-    ip->atk_coll.can_rehit_fighter  = attributes->can_rehit_fighter;
+    ip->atk_coll.element            = attr->element;
+    ip->atk_coll.offset[0].x        = attr->atk_offset0_x;
+    ip->atk_coll.offset[0].y        = attr->atk_offset0_y;
+    ip->atk_coll.offset[0].z        = attr->atk_offset0_z;
+    ip->atk_coll.offset[1].x        = attr->atk_offset1_x;
+    ip->atk_coll.offset[1].y        = attr->atk_offset1_y;
+    ip->atk_coll.offset[1].z        = attr->atk_offset1_z;
+    ip->atk_coll.size               = attr->size * 0.5F;
+    ip->atk_coll.angle              = attr->angle;
+    ip->atk_coll.knockback_scale    = attr->knockback_scale;
+    ip->atk_coll.knockback_weight   = attr->knockback_weight;
+    ip->atk_coll.knockback_base     = attr->knockback_base;
+    ip->atk_coll.can_setoff         = attr->can_setoff;
+    ip->atk_coll.shield_damage      = attr->shield_damage;
+    ip->atk_coll.hit_sfx            = attr->hit_sfx;
+    ip->atk_coll.priority           = attr->priority;
+    ip->atk_coll.can_rehit_item     = attr->can_rehit_item;
+    ip->atk_coll.can_rehit_fighter  = attr->can_rehit_fighter;
     ip->atk_coll.can_rehit_shield   = FALSE;
-    ip->atk_coll.can_hop            = attributes->can_hop;
-    ip->atk_coll.can_reflect        = attributes->can_reflect;
-    ip->atk_coll.can_shield         = attributes->can_shield;
-    ip->atk_coll.atk_count       = attributes->atk_count;
+    ip->atk_coll.can_hop            = attr->can_hop;
+    ip->atk_coll.can_reflect        = attr->can_reflect;
+    ip->atk_coll.can_shield         = attr->can_shield;
+    ip->atk_coll.atk_count          = attr->atk_count;
     ip->atk_coll.interact_mask      = GMHITCOLLISION_FLAG_ALL;
 
     ip->atk_coll.attack_id                  = nFTMotionAttackIDNone;
@@ -355,13 +355,13 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
 
     itMainClearHitRecord(ip);
 
-    ip->dmg_coll.hitstatus     = attributes->hitstatus;
-    ip->dmg_coll.offset.x      = attributes->dmg_coll_offset.x;
-    ip->dmg_coll.offset.y      = attributes->dmg_coll_offset.y;
-    ip->dmg_coll.offset.z      = attributes->dmg_coll_offset.z;
-    ip->dmg_coll.size.x        = attributes->dmg_coll_size.x * 0.5F;
-    ip->dmg_coll.size.y        = attributes->dmg_coll_size.y * 0.5F;
-    ip->dmg_coll.size.z        = attributes->dmg_coll_size.z * 0.5F;
+    ip->dmg_coll.hitstatus     = attr->hitstatus;
+    ip->dmg_coll.offset.x      = attr->dmg_coll_offset.x;
+    ip->dmg_coll.offset.y      = attr->dmg_coll_offset.y;
+    ip->dmg_coll.offset.z      = attr->dmg_coll_offset.z;
+    ip->dmg_coll.size.x        = attr->dmg_coll_size.x * 0.5F;
+    ip->dmg_coll.size.y        = attr->dmg_coll_size.y * 0.5F;
+    ip->dmg_coll.size.z        = attr->dmg_coll_size.z * 0.5F;
     ip->dmg_coll.interact_mask = GMHITCOLLISION_FLAG_ALL;
 
     ip->shield_collide_angle = 0.0F;
@@ -376,24 +376,24 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
 
     ip->reflect_gobj = NULL;
 
-    if (attributes->dobj_setup != NULL)
+    if (attr->dobj_setup != NULL)
     {
-        if (!(attributes->is_item_dobjs))
+        if (!(attr->is_item_dobjs))
         {
-            gcSetupCustomDObjsWithMObj(item_gobj, attributes->dobj_setup, attributes->p_mobjsubs, NULL, item_desc->transform_types.tk1, item_desc->transform_types.tk2, item_desc->transform_types.tk3);
+            gcSetupCustomDObjsWithMObj(item_gobj, attr->dobj_setup, attr->p_mobjsubs, NULL, item_desc->transform_types.tk1, item_desc->transform_types.tk2, item_desc->transform_types.tk3);
         }
         else
         {
-            itManagerSetupItemDObjs(item_gobj, attributes->dobj_setup, NULL, item_desc->transform_types.tk1);
+            itManagerSetupItemDObjs(item_gobj, attr->dobj_setup, NULL, item_desc->transform_types.tk1);
 
-            if (attributes->p_mobjsubs != NULL)
+            if (attr->p_mobjsubs != NULL)
             {
-                gcAddMObjAll(item_gobj, attributes->p_mobjsubs);
+                gcAddMObjAll(item_gobj, attr->p_mobjsubs);
             }
         }
-        if ((attributes->anim_joints != NULL) || (attributes->p_matanim_joints != NULL))
+        if ((attr->anim_joints != NULL) || (attr->p_matanim_joints != NULL))
         {
-            gcAddAnimAll(item_gobj, attributes->anim_joints, attributes->p_matanim_joints, 0.0F);
+            gcAddAnimAll(item_gobj, attr->anim_joints, attr->p_matanim_joints, 0.0F);
             gcPlayAnimAll(item_gobj);
         }
         lbCommonEjectTreeDObj(DObjGetStruct(item_gobj));
@@ -402,10 +402,10 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
     
     ip->coll_data.p_translate       = &DObjGetStruct(item_gobj)->translate.vec.f;
     ip->coll_data.p_lr              = &ip->lr;
-    ip->coll_data.obj_coll.top       = attributes->obj_coll_top;
-    ip->coll_data.obj_coll.center    = attributes->obj_coll_center;
-    ip->coll_data.obj_coll.bottom    = attributes->obj_coll_bottom;
-    ip->coll_data.obj_coll.width     = attributes->obj_coll_width;
+    ip->coll_data.obj_coll.top       = attr->obj_coll_top;
+    ip->coll_data.obj_coll.center    = attr->obj_coll_center;
+    ip->coll_data.obj_coll.bottom    = attr->obj_coll_bottom;
+    ip->coll_data.obj_coll.width     = attr->obj_coll_width;
     ip->coll_data.p_obj_coll         = &ip->coll_data.obj_coll;
     ip->coll_data.ignore_line_id    = -1;
     ip->coll_data.coll_update_frame = gMPCollisionUpdateFrame;

@@ -137,7 +137,7 @@ void FTShadowFuncDisplay(GObj *shadow_gobj)
             )
             {
                 shadow_center = DObjGetStruct(fighter_gobj)->translate.vec.f.x;
-                shadow_size = fp->attributes->shadow_size;
+                shadow_size = fp->attr->shadow_size;
                 shadow_calc_left = 0.0F, shadow_calc_right = 1984.0F;
 
                 mpCollisionGetLREdgeLeft(ground_line_id, &vertex_pos0);

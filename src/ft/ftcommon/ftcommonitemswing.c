@@ -14,13 +14,13 @@ void ftCommonHarisenSwingProcHit(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->item_hold != NULL)
+    if (fp->item_gobj != NULL)
     {
-        ITStruct *ip = itGetStruct(fp->item_hold);
+        ITStruct *ip = itGetStruct(fp->item_gobj);
 
         if (ip->it_kind == nITKindHarisen)
         {
-            itHarisenCommonSetScale(fp->item_hold, FTCOMMON_HARISENSWING_SCALE_HIT);
+            itHarisenCommonSetScale(fp->item_gobj, FTCOMMON_HARISENSWING_SCALE_HIT);
 
             fp->status_vars.common.itemswing.harisen_scale_reset_wait = FTCOMMON_HARISENSWING_SCALE_RESET_WAIT;
         }
@@ -32,7 +32,7 @@ void ftCommonHarisenSwingProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->item_hold != NULL)
+    if (fp->item_gobj != NULL)
     {
         if (fp->status_vars.common.itemswing.harisen_scale_reset_wait != 0)
         {
@@ -40,7 +40,7 @@ void ftCommonHarisenSwingProcUpdate(GObj *fighter_gobj)
 
             if (fp->status_vars.common.itemswing.harisen_scale_reset_wait == 0)
             {
-                itHarisenCommonSetScale(fp->item_hold, 1.0F);
+                itHarisenCommonSetScale(fp->item_gobj, 1.0F);
             }
         }
     }
@@ -55,11 +55,11 @@ void ftCommonStarRodSwingProcUpdate(GObj *fighter_gobj)
     f32 scale_mul;
     s32 unused;
 
-    if (fp->item_hold != NULL)
+    if (fp->item_gobj != NULL)
     {
         if (fp->command_vars.flags.flag1 != 0)
         {
-            ip = itGetStruct(fp->item_hold);
+            ip = itGetStruct(fp->item_gobj);
 
             if (ip->multi != 0)
             {
@@ -70,22 +70,22 @@ void ftCommonStarRodSwingProcUpdate(GObj *fighter_gobj)
             fp->command_vars.flags.flag1 = 0;
         }
     }
-    if ((fp->item_hold != NULL) && (fp->command_vars.flags.flag0 != 0))
+    if ((fp->item_gobj != NULL) && (fp->command_vars.flags.flag0 != 0))
     {
-        ip = itGetStruct(fp->item_hold);
+        ip = itGetStruct(fp->item_gobj);
 
         if (ip->multi != 0)
         {
             // 0x80188600
             Vec3f make_star_offset = { 0.0F, 200.0F, 0.0F };
 
-            scale_mul = 1.0F / fp->attributes->size_mul;
+            scale_mul = 1.0F / fp->attr->size_mul;
 
             make_star_offset.x *= scale_mul;
             make_star_offset.y *= scale_mul;
             make_star_offset.z *= scale_mul;
 
-            gmCollisionGetFighterPartsWorldPosition(fp->joints[fp->attributes->joint_itemlight_id], &make_star_offset);
+            gmCollisionGetFighterPartsWorldPosition(fp->joints[fp->attr->joint_itemlight_id], &make_star_offset);
 
             itStarRodMakeStar(fighter_gobj, &make_star_offset, (fp->command_vars.flags.flag0 == 1) ? FALSE : TRUE);
         }
@@ -94,7 +94,7 @@ void ftCommonStarRodSwingProcUpdate(GObj *fighter_gobj)
             // 0x8018860C
             Vec3f effect_offset = { 0.0F, 200.0F, 0.0F };
 
-            ftParamMakeEffect(fighter_gobj, nEFKindDustLight, fp->attributes->joint_itemlight_id, &effect_offset, NULL, -fp->lr, TRUE, FALSE);
+            ftParamMakeEffect(fighter_gobj, nEFKindDustLight, fp->attr->joint_itemlight_id, &effect_offset, NULL, -fp->lr, TRUE, FALSE);
         }
         fp->command_vars.flags.flag0 = 0;
     }
@@ -114,7 +114,7 @@ s32 dFTCommonItemSwingStatusIDs[/* */][nFTItemSwingTypeEnumMax] =
 void ftCommonItemSwingSetStatus(GObj *fighter_gobj, s32 swing_type)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    ITStruct *ip = itGetStruct(fp->item_hold);
+    ITStruct *ip = itGetStruct(fp->item_gobj);
     s32 swing_item;
     s32 status_id;
     f32 anim_speed;

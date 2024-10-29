@@ -70,7 +70,7 @@ void ftCommonCaptureCaptainProcCapture(GObj *fighter_gobj, GObj *capture_gobj)
 
     ftParamStopVoiceRunProcDamage(fighter_gobj);
 
-    if ((this_fp->item_hold != NULL) && (itGetStruct(this_fp->item_hold)->weight == nITWeightHeavy))
+    if ((this_fp->item_gobj != NULL) && (itGetStruct(this_fp->item_gobj)->weight == nITWeightHeavy))
     {
         ftSetupDropItem(this_fp);
     }

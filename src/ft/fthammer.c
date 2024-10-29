@@ -18,13 +18,13 @@ void ftHammerUpdateStats(GObj *fighter_gobj)
     }
     if (fp->hammer_tics == ITHAMMER_WARN_BEGIN_FRAME)
     {
-        itHammerCommonSetColAnim(fp->item_hold);
+        itHammerCommonSetColAnim(fp->item_gobj);
     }
     if (fp->hammer_tics == 0)
     {
         sb32 is_colanim_reset = FALSE;
 
-        itMainDestroyItem(fp->item_hold);
+        itMainDestroyItem(fp->item_gobj);
         ftParamTryUpdateItemMusic();
 
         if (fp->colanim.colanim_id == FTCOMMON_HAMMER_COLANIM_ID)
@@ -47,7 +47,7 @@ sb32 ftHammerCheckHoldHammer(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer))
+    if ((fp->item_gobj != NULL) && (itGetStruct(fp->item_gobj)->it_kind == nITKindHammer))
     {
         return TRUE;
     }

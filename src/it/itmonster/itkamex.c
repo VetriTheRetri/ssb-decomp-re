@@ -154,11 +154,11 @@ void itKamexAttackUpdateHydro(GObj *item_gobj)
 
         pos = dobj->translate.vec.f;
 
-        pos.y += ip->attributes->obj_coll_bottom;
+        pos.y += ip->attr->obj_coll_bottom;
 
         if (ip->it_kind == nITKindKamex)
         {
-            pos.x += (ip->attributes->obj_coll_width + ITKAMEX_DUST_SPAWN_OFF_X) * -ip->lr;
+            pos.x += (ip->attr->obj_coll_width + ITKAMEX_DUST_SPAWN_OFF_X) * -ip->lr;
         }
         ip->item_vars.kamex.is_apply_push = TRUE;
 
@@ -427,7 +427,7 @@ GObj* itKamexMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         {
             dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F);
         }
-        dobj->translate.vec.f.y -= kamex_ip->attributes->obj_coll_bottom;
+        dobj->translate.vec.f.y -= kamex_ip->attr->obj_coll_bottom;
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(kamex_ip, lITKamexDataStart), 0.0F); // Linker thing
     }

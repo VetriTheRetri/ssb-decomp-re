@@ -41,7 +41,7 @@ void ftCommonReboundWaitSetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusReboundWait, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
-    fp->status_vars.common.rebound.anim_speed = fp->attributes->rebound_anim_length / fp->attack_rebound;
+    fp->status_vars.common.rebound.anim_speed = fp->attr->rebound_anim_length / fp->attack_rebound;
 
     fp->status_vars.common.rebound.rebound_timer = fp->attack_rebound;
 

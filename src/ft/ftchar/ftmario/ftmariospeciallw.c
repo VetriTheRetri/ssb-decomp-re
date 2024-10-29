@@ -80,13 +80,13 @@ void ftMarioSpecialLwProcPhysics(GObj *fighter_gobj)
 void ftMarioSpecialAirLwProcPhysics(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if ((fp->fighter_vars.mario.is_expend_tornado == FALSE) && (fp->command_vars.flags.flag3 != 0) && (fp->input.pl.button_tap & fp->input.button_mask_b))
     {
         ftPhysicsAddClampAirVelY(fp, FTMARIO_TORNADO_VEL_Y_TAP, FTMARIO_TORNADO_VEL_Y_CLAMP);
     }
-    ftPhysicsApplyGravityDefault(fp, attributes);
+    ftPhysicsApplyGravityDefault(fp, attr);
     ftPhysicsClampAirVelXStickRange(fp, 0, FTMARIO_TORNADO_VEL_X_AIR, ftMarioSpecialLwUpdateFriction(fp, FTMARIO_TORNADO_VEL_X_CLAMP));
 }
 

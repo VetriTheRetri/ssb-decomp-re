@@ -10,7 +10,7 @@
 void ftDonkeyThrowFKneeBendProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     fp->status_vars.common.throwf.kneebend_anim_frame++;
 
@@ -23,7 +23,7 @@ void ftDonkeyThrowFKneeBendProcUpdate(GObj *fighter_gobj)
     {
         fp->status_vars.common.throwf.is_short_hop = TRUE;
     }
-    if (attributes->kneebend_anim_length <= fp->status_vars.common.throwf.kneebend_anim_frame)
+    if (attr->kneebend_anim_length <= fp->status_vars.common.throwf.kneebend_anim_frame)
     {
         ftDonkeyThrowFJumpSetStatus(fighter_gobj);
     }

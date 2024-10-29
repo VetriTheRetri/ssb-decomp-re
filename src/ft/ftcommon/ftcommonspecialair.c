@@ -152,7 +152,7 @@ void ftKirbySpecialAirNSetStatusSelect(GObj *fighter_gobj)
 sb32 ftCommonSpecialAirCheckInterruptCommon(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if (fp->input.pl.button_tap & fp->input.button_mask_b)
     {
@@ -160,7 +160,7 @@ sb32 ftCommonSpecialAirCheckInterruptCommon(GObj *fighter_gobj)
         {
             if (fp->input.pl.stick_range.y >= FTCOMMON_SPECIALHI_STICK_RANGE_MIN)
             {
-                if (attributes->is_have_specialairhi)
+                if (attr->is_have_specialairhi)
                 {
                     dFTCommonSpecialAirHiStatusList[fp->ft_kind](fighter_gobj);
 
@@ -169,14 +169,14 @@ sb32 ftCommonSpecialAirCheckInterruptCommon(GObj *fighter_gobj)
             }
             else if (fp->input.pl.stick_range.y <= FTCOMMON_SPECIALLW_STICK_RANGE_MIN)
             {
-                if (attributes->is_have_specialairlw)
+                if (attr->is_have_specialairlw)
                 {
                     dFTCommonSpecialAirLwStatusList[fp->ft_kind](fighter_gobj);
 
                     return TRUE;
                 }
             }
-            else if (attributes->is_have_specialairn)
+            else if (attr->is_have_specialairn)
             {
                 if ((fp->input.pl.stick_range.x * fp->lr) < FTCOMMON_SPECIALN_TURN_STICK_RANGE_MIN)
                 {

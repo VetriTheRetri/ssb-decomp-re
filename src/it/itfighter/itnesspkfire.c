@@ -98,7 +98,7 @@ sb32 itNessPKFireCommonProcUpdate(GObj *item_gobj)
 sb32 itNessPKFireCommonUpdateAllCheckDestroy(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITAttributes *attributes;
+    ITAttributes *attr;
     f32 unused;
     f32 half = 0.5;
     f32 lifetime_scale = ((ip->lifetime * half) / 100.0F) + half;
@@ -106,23 +106,23 @@ sb32 itNessPKFireCommonUpdateAllCheckDestroy(GObj *item_gobj)
 
     DObjGetStruct(item_gobj)->scale.vec.f.x = DObjGetStruct(item_gobj)->scale.vec.f.y = DObjGetStruct(item_gobj)->scale.vec.f.z = lifetime_scale;
 
-    attributes = ip->attributes;
+    attr = ip->attr;
 
-    ip->atk_coll.offset[0].x = attributes->atk_offset0_x * lifetime_scale;
-    ip->atk_coll.offset[0].y = attributes->atk_offset0_y * lifetime_scale;
-    ip->atk_coll.offset[0].z = attributes->atk_offset0_z * lifetime_scale;
-    ip->atk_coll.offset[1].x = attributes->atk_offset1_x * lifetime_scale;
-    ip->atk_coll.offset[1].y = attributes->atk_offset1_y * lifetime_scale;
-    ip->atk_coll.offset[1].z = attributes->atk_offset1_z * lifetime_scale;
+    ip->atk_coll.offset[0].x = attr->atk_offset0_x * lifetime_scale;
+    ip->atk_coll.offset[0].y = attr->atk_offset0_y * lifetime_scale;
+    ip->atk_coll.offset[0].z = attr->atk_offset0_z * lifetime_scale;
+    ip->atk_coll.offset[1].x = attr->atk_offset1_x * lifetime_scale;
+    ip->atk_coll.offset[1].y = attr->atk_offset1_y * lifetime_scale;
+    ip->atk_coll.offset[1].z = attr->atk_offset1_z * lifetime_scale;
 
-    ip->atk_coll.size = attributes->size * 0.5F * lifetime_scale;
+    ip->atk_coll.size = attr->size * 0.5F * lifetime_scale;
 
-    ip->dmg_coll.offset.x = attributes->dmg_coll_offset.x * lifetime_scale;
-    ip->dmg_coll.offset.y = attributes->dmg_coll_offset.y * lifetime_scale;
-    ip->dmg_coll.offset.z = attributes->dmg_coll_offset.z * lifetime_scale;
-    ip->dmg_coll.size.x = attributes->dmg_coll_size.x * 0.5F * lifetime_scale;
-    ip->dmg_coll.size.y = attributes->dmg_coll_size.y * 0.5F * lifetime_scale;
-    ip->dmg_coll.size.z = attributes->dmg_coll_size.z * 0.5F * lifetime_scale;
+    ip->dmg_coll.offset.x = attr->dmg_coll_offset.x * lifetime_scale;
+    ip->dmg_coll.offset.y = attr->dmg_coll_offset.y * lifetime_scale;
+    ip->dmg_coll.offset.z = attr->dmg_coll_offset.z * lifetime_scale;
+    ip->dmg_coll.size.x = attr->dmg_coll_size.x * 0.5F * lifetime_scale;
+    ip->dmg_coll.size.y = attr->dmg_coll_size.y * 0.5F * lifetime_scale;
+    ip->dmg_coll.size.z = attr->dmg_coll_size.z * 0.5F * lifetime_scale;
 
     if (tfrm != NULL)
     {

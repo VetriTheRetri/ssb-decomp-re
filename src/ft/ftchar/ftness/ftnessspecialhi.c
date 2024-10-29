@@ -129,17 +129,17 @@ void ftNessSpecialHiProcPhysics(GObj *fighter_gobj)
 void ftNessSpecialAirHiProcPhysics(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if (fp->status_vars.ness.specialhi.pkthunder_gravity_delay != 0)
     {
         fp->status_vars.ness.specialhi.pkthunder_gravity_delay--;
     }
-    else ftPhysicsApplyGravityClampTVel(fp, 0.5F, attributes->tvel_default);
+    else ftPhysicsApplyGravityClampTVel(fp, 0.5F, attr->tvel_default);
 
-    if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
+    if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
     {
-        ftPhysicsApplyAirVelXFriction(fp, attributes);
+        ftPhysicsApplyAirVelXFriction(fp, attr);
     }
 }
 
@@ -315,7 +315,7 @@ void ftNessSpecialHiHoldInITStatusVars(GObj *fighter_gobj)
     {
         fp->is_attach_effect = TRUE;
     }
-    fp->jumps_used = fp->attributes->jumps_max;
+    fp->jumps_used = fp->attr->jumps_max;
 }
 
 // 0x8015435C
@@ -654,7 +654,7 @@ void ftNessSpecialHiJibakuSwitchStatusAir(GObj *fighter_gobj)
 
     fp->status_vars.ness.specialhi.pkjibaku_angle = atan2f(fp->physics.vel_air.y, fp->physics.vel_air.x * fp->lr);
 
-    fp->jumps_used = fp->attributes->jumps_max;
+    fp->jumps_used = fp->attr->jumps_max;
 }
 
 // 0x80154DBC
@@ -668,7 +668,7 @@ void ftNessSpecialHiJibakuInITStatusVars(GObj *fighter_gobj)
 
     fp->proc_damage = NULL;
 
-    fp->jumps_used = fp->attributes->jumps_max;
+    fp->jumps_used = fp->attr->jumps_max;
 }
 
 // 0x80154DFC

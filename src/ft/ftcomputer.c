@@ -3822,7 +3822,7 @@ sb32 ftComputerCheckEvadeDistance(FTStruct *this_fp)
                 {
                     return TRUE;
                 }
-                else if ((other_fp->item_hold != NULL) && (itGetStruct(other_fp->item_hold)->it_kind == nITKindHammer) && (sqrt_xy < 2500.0F))
+                else if ((other_fp->item_gobj != NULL) && (itGetStruct(other_fp->item_gobj)->it_kind == nITKindHammer) && (sqrt_xy < 2500.0F))
                 {
                     return TRUE;
                 }
@@ -3979,14 +3979,14 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
     target_vel_x = target_fp->physics.vel_air.x;
     target_vel_y = target_fp->physics.vel_air.y;
 
-    target_tvel_default = -target_fp->attributes->tvel_default;
-    target_gravity = target_fp->attributes->gravity;
+    target_tvel_default = -target_fp->attr->tvel_default;
+    target_gravity = target_fp->attr->gravity;
 
     this_vel_x = this_fp->physics.vel_air.x;
     this_vel_y = this_fp->physics.vel_air.y;
 
-    this_tvel_default = -this_fp->attributes->tvel_default;
-    this_gravity = this_fp->attributes->gravity;
+    this_tvel_default = -this_fp->attr->tvel_default;
+    this_gravity = this_fp->attr->gravity;
 
     comattack = dFTComputerAttackList[this_fp->ft_kind];
 
@@ -4068,9 +4068,9 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
                 case nFTComputerInputStickNButtonA:
                 case nFTComputerInputStickTiltAutoXButtonA:
                 case nFTComputerInputStickSmashAutoXNYButtonA:
-                    if (this_fp->item_hold != NULL)
+                    if (this_fp->item_gobj != NULL)
                     {
-                        user_data = itGetStruct(this_fp->item_hold);
+                        user_data = itGetStruct(this_fp->item_gobj);
 
                         if (user_data != NULL)
                         {
@@ -4216,18 +4216,18 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
                     switch (comattack->input_kind)
                     {
                     case nFTComputerInputStickSmashAutoXNYButtonA:
-                        if (this_fp->item_hold != NULL)
+                        if (this_fp->item_gobj != NULL)
                         {
-                            if (itGetStruct(this_fp->item_hold) != NULL)
+                            if (itGetStruct(this_fp->item_gobj) != NULL)
                             {
-                                if (itGetStruct(this_fp->item_hold)->type == nITTypeSwing)
+                                if (itGetStruct(this_fp->item_gobj)->type == nITTypeSwing)
                                 {
                                     detect_range_base = -0.8F;
                                 }
                             }
-                            if (itGetStruct(this_fp->item_hold) != NULL)
+                            if (itGetStruct(this_fp->item_gobj) != NULL)
                             {
-                                if (itGetStruct(this_fp->item_hold)->it_kind == nITKindBat)
+                                if (itGetStruct(this_fp->item_gobj)->it_kind == nITKindBat)
                                 {
                                     if (this_fp->ga == nMPKineticsGround)
                                     {
@@ -4566,8 +4566,8 @@ sb32 ftComputerCheckSetTargetEdgeRight(FTStruct *fp, sb32 is_find_edge_target)
 
             if (edge_dist_x > 0.0F)
             {
-                edge_predict_x = (edge_dist_x / fp->attributes->aerial_speed_max_x);
-                fall_predict = -(-fp->attributes->tvel_default - fp->physics.vel_air.y) / fp->attributes->gravity;
+                edge_predict_x = (edge_dist_x / fp->attr->aerial_speed_max_x);
+                fall_predict = -(-fp->attr->tvel_default - fp->physics.vel_air.y) / fp->attr->gravity;
 
                 if (fall_predict <= 0)
                 {
@@ -4577,13 +4577,13 @@ sb32 ftComputerCheckSetTargetEdgeRight(FTStruct *fp, sb32 is_find_edge_target)
                 {
                     edge_predict_y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y +
                     (
-                        (fp->physics.vel_air.y * edge_predict_x) - (fp->attributes->gravity * SQUARE(edge_predict_x) * 0.5F)
+                        (fp->physics.vel_air.y * edge_predict_x) - (fp->attr->gravity * SQUARE(edge_predict_x) * 0.5F)
                     );
                 }
                 else edge_predict_y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y +
                 (
-                    ((fp->physics.vel_air.y * edge_predict_x) - (fp->attributes->gravity * SQUARE(fall_predict) * 0.5F)) -
-                    (fp->attributes->tvel_default * (edge_predict_x - fall_predict))
+                    ((fp->physics.vel_air.y * edge_predict_x) - (fp->attr->gravity * SQUARE(fall_predict) * 0.5F)) -
+                    (fp->attr->tvel_default * (edge_predict_x - fall_predict))
                 );
                 if ((is_find_edge_target == FALSE) && (edge_predict_y < (edge_pos.y - com->jump_predict)))
                 {
@@ -4660,8 +4660,8 @@ sb32 ftComputerCheckSetTargetEdgeLeft(FTStruct *fp, sb32 is_find_edge_target)
 
             if (edge_dist_x < 0.0F)
             {
-                edge_predict_x = (edge_dist_x / -fp->attributes->aerial_speed_max_x);
-                fall_predict = -(-fp->attributes->tvel_default - fp->physics.vel_air.y) / fp->attributes->gravity;
+                edge_predict_x = (edge_dist_x / -fp->attr->aerial_speed_max_x);
+                fall_predict = -(-fp->attr->tvel_default - fp->physics.vel_air.y) / fp->attr->gravity;
 
                 if (fall_predict <= 0)
                 {
@@ -4671,13 +4671,13 @@ sb32 ftComputerCheckSetTargetEdgeLeft(FTStruct *fp, sb32 is_find_edge_target)
                 {
                     edge_predict_y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y +
                     (
-                        (fp->physics.vel_air.y * edge_predict_x) - (fp->attributes->gravity * SQUARE(edge_predict_x) * 0.5F)
+                        (fp->physics.vel_air.y * edge_predict_x) - (fp->attr->gravity * SQUARE(edge_predict_x) * 0.5F)
                     );
                 }
                 else edge_predict_y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y +
                 (
-                    ((fp->physics.vel_air.y * edge_predict_x) - (fp->attributes->gravity * SQUARE(fall_predict) * 0.5F)) -
-                    (fp->attributes->tvel_default * (edge_predict_x - fall_predict))
+                    ((fp->physics.vel_air.y * edge_predict_x) - (fp->attr->gravity * SQUARE(fall_predict) * 0.5F)) -
+                    (fp->attr->tvel_default * (edge_predict_x - fall_predict))
                 );
                 if ((is_find_edge_target == FALSE) && (edge_predict_y < (edge_pos.y - com->jump_predict)))
                 {
@@ -4704,7 +4704,7 @@ void func_ovl3_801346D4(FTStruct *fp)
     Vec3f pos = fp->joints[nFTPartsJointTopN]->translate.vec.f;
     f32 range = fp->computer.jump_predict;
 
-    if (fp->jumps_used == fp->attributes->jumps_max)
+    if (fp->jumps_used == fp->attr->jumps_max)
     {
         switch (fp->ft_kind)
         {
@@ -4739,7 +4739,7 @@ void func_ovl3_801346D4(FTStruct *fp)
         {
             range = 0.0F;
         }
-        if (((fp->jumps_used < fp->attributes->jumps_max) && ((pos.x - gMPCollisionEdgeBounds.d2.right) > 1500.0F)) || ((fp->joints[nFTPartsJointTopN]->translate.vec.f.y + fp->physics.vel_air.y) < (com->cliff_right_pos.y - range)))
+        if (((fp->jumps_used < fp->attr->jumps_max) && ((pos.x - gMPCollisionEdgeBounds.d2.right) > 1500.0F)) || ((fp->joints[nFTPartsJointTopN]->translate.vec.f.y + fp->physics.vel_air.y) < (com->cliff_right_pos.y - range)))
         {
             com->target_pos.y = pos.y + 1100.0F;
         }
@@ -4760,7 +4760,7 @@ void func_ovl3_801346D4(FTStruct *fp)
         if
         (
             (
-                (fp->jumps_used < fp->attributes->jumps_max) && 
+                (fp->jumps_used < fp->attr->jumps_max) && 
                 (
                     (gMPCollisionEdgeBounds.d2.left - pos.x) > 1500.0F
                 )
@@ -5079,7 +5079,7 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
 
                 if ((fp->joints[nFTPartsJointTopN]->translate.vec.f.y < (gMPCollisionGroundData->map_bound_top - 4000.0F)) && (fp->physics.vel_air.y < 0.0F))
                 {
-                    if (fp->jumps_used < fp->attributes->jumps_max)
+                    if (fp->jumps_used < fp->attr->jumps_max)
                     {
                         if
                         (
@@ -5097,7 +5097,7 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
                             }
                         }
                     }
-                    if (fp->jumps_used < fp->attributes->jumps_max)
+                    if (fp->jumps_used < fp->attr->jumps_max)
                     {
                         if
                         (
@@ -5537,7 +5537,7 @@ sb32 ftComputerCheckFindItem(FTStruct *fp)
     f32 ft_pos_x;
     f32 ft_pos_y;
 
-    if (fp->item_hold != NULL)
+    if (fp->item_gobj != NULL)
     {
         fp->computer.target_line_id = -1;
 
@@ -5599,7 +5599,7 @@ sb32 ftComputerCheckFindItem(FTStruct *fp)
 // 0x80136550
 sb32 ftComputerCheckTargetItemInRange(FTStruct *fp)
 {
-    FTItemPickup *item_pickup = &fp->attributes->item_pickup;
+    FTItemPickup *item_pickup = &fp->attr->item_pickup;
     ITStruct *ip = ftGetComTargetItem(&fp->computer);
     Vec3f *ft_pos = &DObjGetStruct(fp->fighter_gobj)->translate.vec.f;
     Vec3f *it_pos = &DObjGetStruct(ip->item_gobj)->translate.vec.f;
@@ -5676,7 +5676,7 @@ sb32 ftComputerCheckSetEvadeTarget(FTStruct *this_fp)
         predict_x = target_fp->joints[nFTPartsJointTopN]->translate.vec.f.x + (target_fp->physics.vel_air.x * 3.0F);
         predict_y = target_fp->joints[nFTPartsJointTopN]->translate.vec.f.y + (target_fp->physics.vel_air.x * 3.0F);
 
-        if ((target_fp->star_hitstatus == nGMHitStatusInvincible) || ((target_fp->item_hold != NULL) && (itGetStruct(target_fp->item_hold)->it_kind == nITKindHammer)))
+        if ((target_fp->star_hitstatus == nGMHitStatusInvincible) || ((target_fp->item_gobj != NULL) && (itGetStruct(target_fp->item_gobj)->it_kind == nITKindHammer)))
         {
             com->target_user = target_fp;
 
@@ -6327,9 +6327,9 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
     }
     else com->item_track_wait = 0;
 
-    if (fp->item_hold != NULL)
+    if (fp->item_gobj != NULL)
     {
-        ITStruct *ip = itGetStruct(fp->item_hold);
+        ITStruct *ip = itGetStruct(fp->item_gobj);
 
         switch (ip->type)
         {
@@ -6608,7 +6608,7 @@ void ftComputerFollowObjectiveTrackItem(FTStruct *fp)
 void ftComputerFollowObjectiveUseItem(FTStruct *fp)
 {
     FTComputer *com = &fp->computer;
-    ITStruct *ip = itGetStruct(fp->item_hold);
+    ITStruct *ip = itGetStruct(fp->item_gobj);
     FTStruct *target_fp;
 
     switch (ip->type)
@@ -7166,7 +7166,7 @@ void ftComputerFollowObjectiveAttack(FTStruct *fp)
                     com->walk_stop_wait = 0;
                     return;
                 }
-                if ((fp->star_hitstatus == nGMHitStatusInvincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer)))
+                if ((fp->star_hitstatus == nGMHitStatusInvincible) || ((fp->item_gobj != NULL) && (itGetStruct(fp->item_gobj)->it_kind == nITKindHammer)))
                 {
                     ftComputerFollowObjectiveWalk(fp);
 
@@ -7273,7 +7273,7 @@ void func_ovl3_801397F4(FTStruct *fp)
                 {
                     com->walk_stop_wait = 0;
                 }
-                else if ((fp->star_hitstatus == nGMHitStatusInvincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer)))
+                else if ((fp->star_hitstatus == nGMHitStatusInvincible) || ((fp->item_gobj != NULL) && (itGetStruct(fp->item_gobj)->it_kind == nITKindHammer)))
                 {
                     ftComputerFollowObjectiveWalk(fp);
 
@@ -7338,7 +7338,7 @@ void ftComputerFollowObjectiveAlly(FTStruct *fp)
                 com->walk_stop_wait = 0;
                 return;
             }
-            if ((fp->star_hitstatus == nGMHitStatusInvincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer)))
+            if ((fp->star_hitstatus == nGMHitStatusInvincible) || ((fp->item_gobj != NULL) && (itGetStruct(fp->item_gobj)->it_kind == nITKindHammer)))
             {
                 ftComputerFollowObjectiveWalk(fp);
 
@@ -7465,7 +7465,7 @@ void ftComputerFollowObjectivePatrol(FTStruct *fp)
                     com->walk_stop_wait = 0;
                     return;
                 }
-                if ((fp->star_hitstatus == nGMHitStatusInvincible) || ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->it_kind == nITKindHammer)))
+                if ((fp->star_hitstatus == nGMHitStatusInvincible) || ((fp->item_gobj != NULL) && (itGetStruct(fp->item_gobj)->it_kind == nITKindHammer)))
                 {
                     ftComputerFollowObjectiveWalk(fp);
 
@@ -7829,23 +7829,23 @@ void ftComputerSetupAll(GObj *fighter_gobj)
         com->behavior_change_wait = i;
         com->dash_predict = 0.0F;
 
-        dash_speed = fp->attributes->dash_speed;
+        dash_speed = fp->attr->dash_speed;
 
-        for (i = 0; i < fp->attributes->dash_to_run; i++)
+        for (i = 0; i < fp->attr->dash_to_run; i++)
         {
             if (i >= 7)
             {
-                dash_speed -= fp->attributes->dash_decelerate;
+                dash_speed -= fp->attr->dash_decelerate;
             }
             com->dash_predict += dash_speed;
         }
         com->jump_predict = -200.0F;
 
-        jump = (fp->attributes->jump_height_mul * F_CONTROLLER_RANGE_MAX) + fp->attributes->jump_height_base;
+        jump = (fp->attr->jump_height_mul * F_CONTROLLER_RANGE_MAX) + fp->attr->jump_height_base;
 
         while (jump > 0.0F)
         {
-            jump -= fp->attributes->gravity;
+            jump -= fp->attr->gravity;
 
             com->jump_predict += jump;
         }

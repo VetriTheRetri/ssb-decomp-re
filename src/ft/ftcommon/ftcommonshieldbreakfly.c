@@ -23,14 +23,14 @@ void ftCommonShieldBreakFlyProcMap(GObj *fighter_gobj)
 void ftCommonShieldBreakFlySetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusShieldBreakFly, 0.0F, 1.0F, FTSTATUS_PRESERVE_DAMAGEPLAYER);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
     fp->physics.vel_air.x = 0.0F;
-    fp->physics.vel_air.y = attributes->shield_break_vel_y;
+    fp->physics.vel_air.y = attr->shield_break_vel_y;
 
     ftParamCheckSetFighterColAnimID(fighter_gobj, FTCOMMON_SHIELDBREAK_COLANIM_ID, FTCOMMON_SHIELDBREAK_COLANIM_LENGTH);
     func_800269C0_275C0(nSYAudioFGMShieldBreak);

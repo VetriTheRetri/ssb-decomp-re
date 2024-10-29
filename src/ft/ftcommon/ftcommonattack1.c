@@ -127,7 +127,7 @@ void ftCommonAttack11ProcStatus(GObj *fighter_gobj)
 void ftCommonAttack11SetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if (ftCommonGetCheckInterruptCommon(fighter_gobj) == FALSE)
     {
@@ -144,7 +144,7 @@ void ftCommonAttack11SetStatus(GObj *fighter_gobj)
         fp->attack1_input_count = 0;
         fp->attack1_status_id = fp->status_id;
         fp->is_goto_attack100 = FALSE;
-        fp->attack1_followup_frames = attributes->attack1_followup_frames;
+        fp->attack1_followup_frames = attr->attack1_followup_frames;
     }
 }
 
@@ -246,13 +246,13 @@ void ftCommonAttack13SetStatus(GObj *fighter_gobj)
 sb32 ftCommonAttack1CheckInterruptCommon(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if (fp->input.pl.button_tap & fp->input.button_mask_a)
     {
-        if (fp->item_hold != NULL)
+        if (fp->item_gobj != NULL)
         {
-            if (itGetStruct(fp->item_hold)->type == nITTypeThrow)
+            if (itGetStruct(fp->item_gobj)->type == nITTypeThrow)
             {
                 ftCommonItemThrowSetStatus(fighter_gobj, nFTCommonStatusLightThrowF);
 
@@ -264,7 +264,7 @@ sb32 ftCommonAttack1CheckInterruptCommon(GObj *fighter_gobj)
 
                 return TRUE;
             }
-            switch (itGetStruct(fp->item_hold)->type)
+            switch (itGetStruct(fp->item_gobj)->type)
             {
             case nITTypeSwing:
                 ftCommonItemSwingSetStatus(fighter_gobj, nFTItemSwingTypeAttack1);
@@ -282,7 +282,7 @@ sb32 ftCommonAttack1CheckInterruptCommon(GObj *fighter_gobj)
             case nFTCommonStatusAttack11:
                 if ((fp->ft_kind == nFTKindPikachu) || (fp->ft_kind == nFTKindNPikachu))
                 {
-                    if (attributes->is_have_attack11)
+                    if (attr->is_have_attack11)
                     {
                         ftCommonAttack11SetStatus(fighter_gobj);
 
@@ -292,7 +292,7 @@ sb32 ftCommonAttack1CheckInterruptCommon(GObj *fighter_gobj)
                     }
                     break;
                 }
-                else if (attributes->is_have_attack12)
+                else if (attr->is_have_attack12)
                 {
                     ftCommonAttack12SetStatus(fighter_gobj);
 
@@ -312,7 +312,7 @@ sb32 ftCommonAttack1CheckInterruptCommon(GObj *fighter_gobj)
                 break;
             }
         }
-        else if (attributes->is_have_attack11)
+        else if (attr->is_have_attack11)
         {
             ftCommonAttack11SetStatus(fighter_gobj);
 
@@ -330,13 +330,13 @@ sb32 ftCommonAttack1CheckInterruptCommon(GObj *fighter_gobj)
 sb32 ftCommonAttack11CheckGoto(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if (fp->attack1_followup_frames != 0.0F)
     {
         fp->attack1_followup_frames -= DObjGetStruct(fighter_gobj)->anim_speed;
 
-        if ((fp->input.pl.button_tap & fp->input.button_mask_a) && (attributes->is_have_attack11))
+        if ((fp->input.pl.button_tap & fp->input.button_mask_a) && (attr->is_have_attack11))
         {
             if (fp->command_vars.flags.flag1 != 0)
             {
@@ -354,13 +354,13 @@ sb32 ftCommonAttack11CheckGoto(GObj *fighter_gobj)
 sb32 ftCommonAttack12CheckGoto(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if (fp->attack1_followup_frames != 0.0F)
     {
         fp->attack1_followup_frames -= DObjGetStruct(fighter_gobj)->anim_speed;
 
-        if ((fp->input.pl.button_tap & fp->input.button_mask_a) && (attributes->is_have_attack12))
+        if ((fp->input.pl.button_tap & fp->input.button_mask_a) && (attr->is_have_attack12))
         {
             if (fp->command_vars.flags.flag1 != 0)
             {

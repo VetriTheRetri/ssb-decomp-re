@@ -88,7 +88,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
 {
     GObj *weapon_gobj;
     void (*func_display)(GObj*);
-    WPAttributes *attributes;
+    WPAttributes *attr;
     WPStruct *wp;
     WPStruct *owner_wp;
     ITStruct *ip;
@@ -108,7 +108,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
         wpManagerSetPrevStructAlloc(wp);
         return NULL;
     }
-    attributes = lbRelocGetDataFromFile(WPAttributes*, *wp_desc->p_weapon, wp_desc->o_attributes); // I hope this is correct?
+    attr = lbRelocGetDataFromFile(WPAttributes*, *wp_desc->p_weapon, wp_desc->o_attributes); // I hope this is correct?
     weapon_gobj->user_data.p = wp;
     wp->weapon_gobj = weapon_gobj;
     wp->wp_kind = wp_desc->wp_kind;
@@ -194,44 +194,44 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
 
     wp->physics.vel_ground = 0.0F;
 
-    wp->atk_coll.damage = attributes->damage;
+    wp->atk_coll.damage = attr->damage;
 
-    wp->atk_coll.element = attributes->element;
+    wp->atk_coll.element = attr->element;
 
-    wp->atk_coll.offset[0].x = attributes->atk_offsets[0].x;
-    wp->atk_coll.offset[0].y = attributes->atk_offsets[0].y;
-    wp->atk_coll.offset[0].z = attributes->atk_offsets[0].z;
-    wp->atk_coll.offset[1].x = attributes->atk_offsets[1].x;
-    wp->atk_coll.offset[1].y = attributes->atk_offsets[1].y;
-    wp->atk_coll.offset[1].z = attributes->atk_offsets[1].z;
+    wp->atk_coll.offset[0].x = attr->atk_offsets[0].x;
+    wp->atk_coll.offset[0].y = attr->atk_offsets[0].y;
+    wp->atk_coll.offset[0].z = attr->atk_offsets[0].z;
+    wp->atk_coll.offset[1].x = attr->atk_offsets[1].x;
+    wp->atk_coll.offset[1].y = attr->atk_offsets[1].y;
+    wp->atk_coll.offset[1].z = attr->atk_offsets[1].z;
 
-    wp->atk_coll.size = attributes->size * 0.5F;
+    wp->atk_coll.size = attr->size * 0.5F;
 
-    wp->atk_coll.angle = attributes->angle;
+    wp->atk_coll.angle = attr->angle;
 
-    wp->atk_coll.knockback_scale = attributes->knockback_scale;
-    wp->atk_coll.knockback_weight = attributes->knockback_weight;
-    wp->atk_coll.knockback_base = attributes->knockback_base;
+    wp->atk_coll.knockback_scale = attr->knockback_scale;
+    wp->atk_coll.knockback_weight = attr->knockback_weight;
+    wp->atk_coll.knockback_base = attr->knockback_base;
 
-    wp->atk_coll.can_setoff = attributes->can_setoff;
+    wp->atk_coll.can_setoff = attr->can_setoff;
 
-    wp->atk_coll.shield_damage = attributes->shield_damage;
+    wp->atk_coll.shield_damage = attr->shield_damage;
 
-    wp->atk_coll.hit_sfx = attributes->sfx;
+    wp->atk_coll.hit_sfx = attr->sfx;
 
-    wp->atk_coll.priority = attributes->priority;
+    wp->atk_coll.priority = attr->priority;
 
-    wp->atk_coll.can_rehit_item = attributes->can_rehit_item;
-    wp->atk_coll.can_rehit_fighter = attributes->can_rehit_fighter;
+    wp->atk_coll.can_rehit_item = attr->can_rehit_item;
+    wp->atk_coll.can_rehit_fighter = attr->can_rehit_fighter;
     wp->atk_coll.can_rehit_shield = FALSE;
 
-    wp->atk_coll.can_hop = attributes->can_hop;
-    wp->atk_coll.can_reflect = attributes->can_reflect;
-    wp->atk_coll.can_absorb = attributes->can_absorb;
+    wp->atk_coll.can_hop = attr->can_hop;
+    wp->atk_coll.can_reflect = attr->can_reflect;
+    wp->atk_coll.can_absorb = attr->can_absorb;
     wp->atk_coll.can_not_heal = FALSE;
-    wp->atk_coll.can_shield = attributes->can_shield;
+    wp->atk_coll.can_shield = attr->can_shield;
     
-    wp->atk_coll.atk_count = attributes->atk_count;
+    wp->atk_coll.atk_count = attr->atk_count;
 
     wp->atk_coll.interact_mask = GMHITCOLLISION_FLAG_ALL;
 
@@ -261,33 +261,33 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
 
     if (wp_desc->flags & WEAPON_FLAG_DOBJSETUP)
     {
-        gcSetupCustomDObjs(weapon_gobj, attributes->dobj_setup, NULL, wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.tk3);
+        gcSetupCustomDObjs(weapon_gobj, attr->dobj_setup, NULL, wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.tk3);
 
         func_display = (wp_desc->flags & WEAPON_FLAG_DOBJLINKS) ? wpDisplayDObjTreeDLLinks : func_ovl3_80167618;
     }
     else
     {
-        lbCommonInitDObjTriTransform(gcAddDObjForGObj(weapon_gobj, attributes->dobj_setup), wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.tk3);
+        lbCommonInitDObjTriTransform(gcAddDObjForGObj(weapon_gobj, attr->dobj_setup), wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.tk3);
 
         func_display = (wp_desc->flags & WEAPON_FLAG_DOBJLINKS) ? wpDisplayDObjDLLinks : wpDisplayDLHead1;
     }
     gcAddGObjDisplay(weapon_gobj, func_display, 14, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    if (attributes->p_mobjsubs != NULL)
+    if (attr->p_mobjsubs != NULL)
     {
-        gcAddMObjAll(weapon_gobj, attributes->p_mobjsubs);
+        gcAddMObjAll(weapon_gobj, attr->p_mobjsubs);
     }
-    if ((attributes->anim_joints != NULL) || (attributes->p_matanim_joints != NULL))
+    if ((attr->anim_joints != NULL) || (attr->p_matanim_joints != NULL))
     {
-        gcAddAnimAll(weapon_gobj, attributes->anim_joints, attributes->p_matanim_joints, 0.0F);
+        gcAddAnimAll(weapon_gobj, attr->anim_joints, attr->p_matanim_joints, 0.0F);
     }
     wp->coll_data.p_translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
     wp->coll_data.p_lr = &wp->lr;
 
-    wp->coll_data.obj_coll.top = attributes->obj_coll_top;
-    wp->coll_data.obj_coll.center = attributes->obj_coll_center;
-    wp->coll_data.obj_coll.bottom = attributes->obj_coll_bottom;
-    wp->coll_data.obj_coll.width = attributes->obj_coll_width;
+    wp->coll_data.obj_coll.top = attr->obj_coll_top;
+    wp->coll_data.obj_coll.center = attr->obj_coll_center;
+    wp->coll_data.obj_coll.bottom = attr->obj_coll_bottom;
+    wp->coll_data.obj_coll.width = attr->obj_coll_width;
     wp->coll_data.p_obj_coll = &wp->coll_data.obj_coll;
 
     wp->coll_data.ignore_line_id = -1;

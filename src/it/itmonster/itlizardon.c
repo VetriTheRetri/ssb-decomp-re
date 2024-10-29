@@ -238,9 +238,9 @@ sb32 itLizardonAttackProcUpdate(GObj *item_gobj)
 
         pos = dobj->translate.vec.f;
 
-        pos.y += ip->attributes->obj_coll_bottom;
+        pos.y += ip->attr->obj_coll_bottom;
 
-        pos.x += (ip->attributes->obj_coll_width + ITLIZARDON_DUST_GFX_OFF_X) * -ip->lr;
+        pos.x += (ip->attr->obj_coll_width + ITLIZARDON_DUST_GFX_OFF_X) * -ip->lr;
 
         efManagerDustHeavyMakeEffect(&pos, -ip->lr);
 
@@ -285,7 +285,7 @@ void itLizardonAttackInitItemVars(GObj *item_gobj)
 
     if (ip->it_kind == nITKindLizardon)
     {
-        addr = (void*) ((uintptr_t)ip->attributes->dobj_setup - (intptr_t)&lITLizardonDataStart); // Linker thing
+        addr = (void*) ((uintptr_t)ip->attr->dobj_setup - (intptr_t)&lITLizardonDataStart); // Linker thing
 
         gcAddDObjAnimJoint(dobj, (void*) ((uintptr_t)addr + (intptr_t)&lITLizardonAnimJoint), 0.0F); // Linker thing
         gcAddMObjMatAnimJoint(dobj->mobj, (void*) ((uintptr_t)addr + (intptr_t)&lITLizardonMatAnimJoint), 0.0F); // Linker thing
@@ -356,7 +356,7 @@ GObj* itLizardonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
         ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        dobj->translate.vec.f.y -= ip->attributes->obj_coll_bottom;
+        dobj->translate.vec.f.y -= ip->attr->obj_coll_bottom;
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITLizardonDataStart), 0.0F);
     }

@@ -1268,7 +1268,7 @@ void sc1PGameSetupStageAll(void)
 void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
 {
     FTStruct *fp;
-    FTAttributes *attributes;
+    FTAttributes *attr;
     void *unused2;
     FTCreateDesc player_spawn;
     void **figatree;
@@ -1277,7 +1277,7 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
     void *unused1;
 
     fp = ftGetStruct(player_gobj);
-    attributes = fp->attributes;
+    attr = fp->attr;
     player = fp->player;
     figatree = fp->figatree_heap;
 
@@ -1300,7 +1300,7 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
 
             gBattleState->players[player].shade = ((gSceneData.ft_kind == nFTKindYoshi) && (gSceneData.costume == gBattleState->players[player].costume)) ? 1 : 0;
 
-            ifCommonPlayerStockSetLUT(player, gBattleState->players[player].costume, attributes);
+            ifCommonPlayerStockSetLUT(player, gBattleState->players[player].costume, attr);
             break;
 
         case nSC1PGameStageZako:
@@ -1428,7 +1428,7 @@ void sc1PGameWaitStageCommonUpdate(void)
         if (random == 2)
         {
             gcStopCurrentGObjThread(30);
-            func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_camera_zoom, 0.1F, 28.0F);
+            func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attr->closeup_camera_zoom, 0.1F, 28.0F);
             gcStopCurrentGObjThread(stop_tics - 30);
         }
         else gcStopCurrentGObjThread(stop_tics);
@@ -1694,7 +1694,7 @@ void sc1PGameInitTeamStockDisplay(void)
                 break;
             }
         }
-        sSC1PGameEnemyTeamSprites = fp->attributes->sprites;
+        sSC1PGameEnemyTeamSprites = fp->attr->sprites;
 
         sprite = sSC1PGameEnemyTeamSprites->stock_sprite;
 
@@ -1854,7 +1854,7 @@ void func_ovl65_8018F3AC(void)
         fighter_gobj,
         F_CLC_DTOR32(D_ovl65_80192808[mtTrigGetRandomIntRange(ARRAY_COUNT(D_ovl65_80192808))]) * fp->lr,
         F_CLC_DTOR32(D_ovl65_80192820[mtTrigGetRandomIntRange(ARRAY_COUNT(D_ovl65_80192820))]),
-        ftGetStruct(fighter_gobj)->attributes->closeup_camera_zoom,
+        ftGetStruct(fighter_gobj)->attr->closeup_camera_zoom,
         0.06F,
         28.0F
     );

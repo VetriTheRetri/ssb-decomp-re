@@ -31,18 +31,18 @@ void ftCommonRunSetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusRun, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
-    fp->physics.vel_ground.x = fp->attributes->run_speed;
+    fp->physics.vel_ground.x = fp->attr->run_speed;
 }
 
 // 0x8013EF2C
 sb32 ftCommonRunCheckInterruptDash(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
-    if (attributes->dash_to_run <= fighter_gobj->anim_frame)
+    if (attr->dash_to_run <= fighter_gobj->anim_frame)
     {
-        if (fighter_gobj->anim_frame < (attributes->dash_to_run + DObjGetStruct(fighter_gobj)->anim_speed))
+        if (fighter_gobj->anim_frame < (attr->dash_to_run + DObjGetStruct(fighter_gobj)->anim_speed))
         {
             if ((fp->input.pl.stick_range.x * fp->lr) >= FTCOMMON_RUN_STICK_RANGE_MIN)
             {

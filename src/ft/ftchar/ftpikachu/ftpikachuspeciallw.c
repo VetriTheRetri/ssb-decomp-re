@@ -315,13 +315,13 @@ void ftPikachuSpecialAirLwHitProcUpdate(GObj *fighter_gobj)
 void ftPikachuSpecialAirLwHitProcPhysics(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
-    ftPhysicsApplyGravityClampTVel(fp, FTPIKACHU_THUNDER_HIT_GRAVITY, attributes->tvel_default);
+    ftPhysicsApplyGravityClampTVel(fp, FTPIKACHU_THUNDER_HIT_GRAVITY, attr->tvel_default);
 
-    if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
+    if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
     {
-        ftPhysicsApplyAirVelXFriction(fp, attributes);
+        ftPhysicsApplyAirVelXFriction(fp, attr);
     }
 }
 

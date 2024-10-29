@@ -135,9 +135,9 @@ void ftCommonDeadResetCommonVars(GObj *fighter_gobj)
     fp->ga = nMPKineticsAir;
     fp->coll_data.ground_line_id = -1;
 
-    if (fp->item_hold != NULL)
+    if (fp->item_gobj != NULL)
     {
-        itMainDestroyItem(fp->item_hold);
+        itMainDestroyItem(fp->item_gobj);
     }
 }
 
@@ -183,13 +183,13 @@ void ftCommonDeadInITStatusVars(GObj *fighter_gobj)
     ftCommonDeadUpdateRumble(fp);
     ftCommonDeadUpdateScore(fp);
 
-    if (fp->attributes->dead_sfx[0] != nSYAudioFGMVoiceEnd)
+    if (fp->attr->dead_sfx[0] != nSYAudioFGMVoiceEnd)
     {
-        ftCommonDeadAddDeadSFXSoundQueue(fp->attributes->dead_sfx[0]);
+        ftCommonDeadAddDeadSFXSoundQueue(fp->attr->dead_sfx[0]);
     }
-    if (fp->attributes->dead_sfx[1] != nSYAudioFGMVoiceEnd)
+    if (fp->attr->dead_sfx[1] != nSYAudioFGMVoiceEnd)
     {
-        ftCommonDeadAddDeadSFXSoundQueue(fp->attributes->dead_sfx[1]);
+        ftCommonDeadAddDeadSFXSoundQueue(fp->attr->dead_sfx[1]);
     }
 }
 
@@ -404,9 +404,9 @@ void ftCommonDeadUpStarSetStatus(GObj *fighter_gobj)
     ftCommonDeadClearSpecialStats(fighter_gobj);
     ftParamSetPlayerTagWait(fighter_gobj, 1);
 
-    if (fp->attributes->deadup_sfx != nSYAudioFGMVoiceEnd)
+    if (fp->attr->deadup_sfx != nSYAudioFGMVoiceEnd)
     {
-        func_800269C0_275C0(fp->attributes->deadup_sfx);
+        func_800269C0_275C0(fp->attr->deadup_sfx);
     }
     ftParamMoveDLLink(fighter_gobj, 1);
     ftParamResetFighterColAnim(fighter_gobj);
@@ -483,13 +483,13 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
 
             ftCommonDeadAddDeadSFXSoundQueue(sfx_id);
 
-            if (fp->attributes->dead_sfx[0] != nSYAudioFGMVoiceEnd)
+            if (fp->attr->dead_sfx[0] != nSYAudioFGMVoiceEnd)
             {
-                ftCommonDeadAddDeadSFXSoundQueue(fp->attributes->dead_sfx[0]);
+                ftCommonDeadAddDeadSFXSoundQueue(fp->attr->dead_sfx[0]);
             }
-            if (fp->attributes->dead_sfx[1] != nSYAudioFGMVoiceEnd)
+            if (fp->attr->dead_sfx[1] != nSYAudioFGMVoiceEnd)
             {
-                ftCommonDeadAddDeadSFXSoundQueue(fp->attributes->dead_sfx[1]);
+                ftCommonDeadAddDeadSFXSoundQueue(fp->attr->dead_sfx[1]);
             }
             fp->status_vars.common.dead.rebirth_wait = FTCOMMON_DEAD_REBIRTH_WAIT;
             fp->command_vars.flags.flag1++;
@@ -525,9 +525,9 @@ void ftCommonDeadUpFallSetStatus(GObj *fighter_gobj)
     ftCommonDeadClearSpecialStats(fighter_gobj);
     ftParamSetPlayerTagWait(fighter_gobj, 1);
 
-    if (fp->attributes->deadup_sfx != nSYAudioFGMVoiceEnd)
+    if (fp->attr->deadup_sfx != nSYAudioFGMVoiceEnd)
     {
-        func_800269C0_275C0(fp->attributes->deadup_sfx);
+        func_800269C0_275C0(fp->attr->deadup_sfx);
     }
     ftParamMoveDLLink(fighter_gobj, 19);
     ftParamSetModelPartDetailAll(fighter_gobj, nFTPartsDetailHigh);

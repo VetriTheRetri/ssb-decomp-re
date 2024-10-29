@@ -86,11 +86,11 @@ void ftCommonDashProcInterrupt(GObj *fighter_gobj)
 void ftCommonDashProcPhysics(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if (fighter_gobj->anim_frame >= FTCOMMON_DASH_DECELERATE_BEGIN)
     {
-        ftPhysicsSetGroundVelFriction(fp, attributes->dash_decelerate);
+        ftPhysicsSetGroundVelFriction(fp, attr->dash_decelerate);
     }
     ftPhysicsSetGroundVelTransferAir(fighter_gobj);
 }
@@ -99,9 +99,9 @@ void ftCommonDashProcPhysics(GObj *fighter_gobj)
 void ftCommonDashProcMap(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
-    if (attributes->dash_to_run <= fighter_gobj->anim_frame)
+    if (attr->dash_to_run <= fighter_gobj->anim_frame)
     {
         mpCommonProcFighterOnCliffEdge(fighter_gobj);
     }
@@ -116,7 +116,7 @@ void ftCommonDashSetStatus(GObj *fighter_gobj, u32 flag)
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDash, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
-    fp->physics.vel_ground.x = fp->attributes->dash_speed;
+    fp->physics.vel_ground.x = fp->attr->dash_speed;
     fp->tap_stick_x = FTINPUT_STICKBUFFER_FRAMES_MAX;
     fp->command_vars.flags.flag1 = flag;
 }

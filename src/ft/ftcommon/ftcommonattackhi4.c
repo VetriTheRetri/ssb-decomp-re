@@ -27,7 +27,7 @@ sb32 ftCommonAttackHi4CheckInputSuccess(FTStruct *fp)
 // 0x80150660
 sb32 ftCommonAttackHi4CheckInterruptMain(FTStruct *fp)
 {
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if (ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE)
     {
@@ -35,7 +35,7 @@ sb32 ftCommonAttackHi4CheckInterruptMain(FTStruct *fp)
 
         return TRUE;
     }
-    if (attributes->is_have_attackhi4)
+    if (attr->is_have_attackhi4)
     {
         ftCommonAttackHi4SetStatus(fp->fighter_gobj);
 

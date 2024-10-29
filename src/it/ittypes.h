@@ -271,7 +271,7 @@ struct ITStruct 					// Common items, stage hazards, fighter items and Pokémon
 	ub32 is_unused_item_bool : 1; 	// Unused? Set various times, but no item function ever checks this
 	ub32 is_static_damage : 1;	  	// Ignore reflect multiplier if TRUE
 
-	ITAttributes* attributes; 		// Pointer to standard attributes
+	ITAttributes *attr; 			// Pointer to standard attributes
 
 	GMColAnim colanim; 				// Item's ColAnim struct
 

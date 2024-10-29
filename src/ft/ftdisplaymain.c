@@ -616,7 +616,7 @@ void ftDisplayMainCalcFogColor(FTStruct *fp)
     }
     else
     {
-        syColorRGBA *attr_shade_color = &fp->attributes->shade_color[fp->shade - 1];
+        syColorRGBA *attr_shade_color = &fp->attr->shade_color[fp->shade - 1];
         GMColKeys *ck = &fp->colanim.maincolor;
 
         shade_default = (((0xFF - attr_shade_color->a) * (0xFF - ck->a)) / 0xFF);
@@ -652,9 +652,9 @@ void ftDisplayMainCalcFogColor(FTStruct *fp)
         }
     }
 
-    if (fp->attributes->fog_color.r != 0xFF)
+    if (fp->attr->fog_color.r != 0xFF)
     {
-        alpha = (fp->attributes->fog_color.r * alpha) / 0xFF;
+        alpha = (fp->attr->fog_color.r * alpha) / 0xFF;
     }
     sFTDisplayMainFogColor.r = red;
     sFTDisplayMainFogColor.g = green;
@@ -677,7 +677,7 @@ void ftDisplayMainDecideFogColor(FTStruct *fp)
     }
     else
     {
-        syColorRGBA *fog_color = &fp->attributes->shade_color[fp->shade - 1];
+        syColorRGBA *fog_color = &fp->attr->shade_color[fp->shade - 1];
 
         gDPSetFogColor(gSYTaskmanDLHeads[0]++, fog_color->r, fog_color->g, fog_color->b, fog_color->a);
     }
@@ -864,7 +864,7 @@ void ftDisplayMainDrawSkeleton(DObj *dobj)
 
         if ((ft_parts != NULL) && (ft_parts->joint_id >= nFTPartsJointCommonStart))
         {
-            skeleton = &fp->attributes->skeleton[fp->colanim.skeleton_id][ft_parts->joint_id - nFTPartsJointCommonStart];
+            skeleton = &fp->attr->skeleton[fp->colanim.skeleton_id][ft_parts->joint_id - nFTPartsJointCommonStart];
 
             switch (skeleton->flags & 0xF)
             {
@@ -929,15 +929,15 @@ void ftDisplayMainDrawSkeleton(DObj *dobj)
 void ftDisplayMainDrawAll(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if
     (
         (fp->colanim.skeleton_id)                                           &&
-        (attributes->skeleton != NULL)                                      &&
-        (attributes->skeleton[fp->colanim.skeleton_id] != NULL)             &&
-        (fp->joints[(s32)(attributes->skeleton[0])] != NULL)                &&  // ???
-        (fp->joints[(s32)(attributes->skeleton[0])]->display_list != NULL)      // What kind of Flintstones gummies were you on I need them right now
+        (attr->skeleton != NULL)                                      &&
+        (attr->skeleton[fp->colanim.skeleton_id] != NULL)             &&
+        (fp->joints[(s32)(attr->skeleton[0])] != NULL)                &&  // ???
+        (fp->joints[(s32)(attr->skeleton[0])]->display_list != NULL)      // What kind of Flintstones gummies were you on I need them right now
     )
     {
         ftDisplayMainDrawSkeleton(DObjGetStruct(fighter_gobj));
@@ -1072,7 +1072,7 @@ void ftDisplayMainDrawParts(DObj *dobj)
 void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 {
     FTStruct *fp;
-    FTAttributes *attributes;
+    FTAttributes *attr;
     FTAttackColl *atk_coll;
     gsMtxStore mtx_store;
     s32 i;
@@ -1082,7 +1082,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
     Vec3f sp110;
 
     fp = ftGetStruct(fighter_gobj);
-    attributes = fp->attributes;
+    attr = fp->attr;
 
     sFTDisplayMainSkyFogAlpha = 0xFF;
     sFTDisplayMainIsShadeFog = FALSE;
@@ -1107,25 +1107,25 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
             default:
                 sp128 = fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
-                sp128.y += fp->attributes->cam_offset_y;
+                sp128.y += fp->attr->cam_offset_y;
 
             #if defined(AVOID_UB) || defined(NON_MATCHING)
                 syVectorDiff3D(&sp110, &CObjGetStruct(gCMManagerCameraGObj)->vec.at, &sp128);
 
-                if (fp->attributes->cam_offset_y < syVectorMag3D(&sp110))
+                if (fp->attr->cam_offset_y < syVectorMag3D(&sp110))
                 {
                     syVectorNorm3D(&sp110);
-                    syVectorScale3D(&sp110, fp->attributes->cam_offset_y);
+                    syVectorScale3D(&sp110, fp->attr->cam_offset_y);
                     syVectorAdd3D(&sp128, &sp110);
                 }
             #else
                 // SUPER FAKE. I hope I can fix this in the future. sp128 - 2 should really be sp110, but we get stack issues otherwise.
                 syVectorDiff3D(&sp128 - 2, &CObjGetStruct(gCMManagerCameraGObj)->vec.at, &sp128);
 
-                if (fp->attributes->cam_offset_y < syVectorMag3D(&sp128 - 2))
+                if (fp->attr->cam_offset_y < syVectorMag3D(&sp128 - 2))
                 {
                     syVectorNorm3D(&sp128 - 2);
-                    syVectorScale3D(&sp128 - 2, fp->attributes->cam_offset_y);
+                    syVectorScale3D(&sp128 - 2, fp->attr->cam_offset_y);
                     syVectorAdd3D(&sp128, &sp128 - 2);
                 }
             #endif
@@ -1260,7 +1260,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
             (
                 mtx_store.gbi,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.x,
-                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attributes->obj_coll.bottom,
+                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attr->obj_coll.bottom,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.z
             );
 
@@ -1268,7 +1268,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixSca(mtx_store.gbi, attributes->obj_coll.width / 30.0F, attributes->obj_coll.center / 30.0F, 1.0F);
+            syMatrixSca(mtx_store.gbi, attr->obj_coll.width / 30.0F, attr->obj_coll.center / 30.0F, 1.0F);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -1282,7 +1282,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
             (
                 mtx_store.gbi,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.x,
-                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attributes->obj_coll.center,
+                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attr->obj_coll.center,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.z
             );
 
@@ -1290,7 +1290,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixSca(mtx_store.gbi, attributes->obj_coll.width / 30.0F, (attributes->obj_coll.top - attributes->obj_coll.center) / 30.0F, 1.0F);
+            syMatrixSca(mtx_store.gbi, attr->obj_coll.width / 30.0F, (attr->obj_coll.top - attr->obj_coll.center) / 30.0F, 1.0F);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 

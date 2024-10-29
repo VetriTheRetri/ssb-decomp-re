@@ -409,7 +409,7 @@ GObj* itStarRodWeaponStarMakeWeapon(GObj *fighter_gobj, Vec3f *pos, ub8 is_smash
 // 0x80178594
 void itStarRodMakeStar(GObj *fighter_gobj, Vec3f *pos, ub8 is_smash)
 {
-    ITStruct *ip = itGetStruct(ftGetStruct(fighter_gobj)->item_hold);
+    ITStruct *ip = itGetStruct(ftGetStruct(fighter_gobj)->item_gobj);
 
     itStarRodWeaponStarMakeWeapon(fighter_gobj, pos, is_smash);
 

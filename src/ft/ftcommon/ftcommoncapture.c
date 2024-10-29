@@ -25,7 +25,7 @@ void ftCommonCaptureApplyCatchKnockback(GObj *fighter_gobj, FTThrowReleaseDesc *
     FTStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *catch_gobj = this_fp->catch_gobj;
     FTStruct *catch_fp = ftGetStruct(catch_gobj);
-    f32 knockback = ftParamGetCommonKnockback(this_fp->percent_damage, 0, 0, throw_release->knockback_weight, throw_release->knockback_scale, throw_release->knockback_base, this_fp->attributes->weight, catch_fp->handicap, this_fp->handicap);
+    f32 knockback = ftParamGetCommonKnockback(this_fp->percent_damage, 0, 0, throw_release->knockback_weight, throw_release->knockback_scale, throw_release->knockback_base, this_fp->attr->weight, catch_fp->handicap, this_fp->handicap);
     
     ftCommonDamageInitDamageVars(fighter_gobj, -1, 0, knockback, throw_release->angle, this_fp->lr, 1, 0, 0, FALSE, FALSE, FALSE);
     ftParamUpdate1PGameDamageStats(this_fp, GMCOMMON_PLAYERS_MAX, nFTHitlogObjectNone, 0, 0, 0);
@@ -50,7 +50,7 @@ void ftCommonCaptureApplyCaptureKnockback(GObj *fighter_gobj, FTThrowReleaseDesc
 
         this_fp->physics.vel_air.z = DObjGetStruct(fighter_gobj)->translate.vec.f.z;
     }
-    knockback = ftParamGetCommonKnockback(this_fp->percent_damage, 0, 0, throw_release->knockback_weight, throw_release->knockback_scale, throw_release->knockback_base, this_fp->attributes->weight, capture_fp->handicap, this_fp->handicap);
+    knockback = ftParamGetCommonKnockback(this_fp->percent_damage, 0, 0, throw_release->knockback_weight, throw_release->knockback_scale, throw_release->knockback_base, this_fp->attr->weight, capture_fp->handicap, this_fp->handicap);
 
     if (DObjGetStruct(fighter_gobj)->translate.vec.f.x < DObjGetStruct(capture_gobj)->translate.vec.f.x)
     {
@@ -146,7 +146,7 @@ void ftCommonCaptureShoulderedSetStatus(GObj *fighter_gobj)
     }
     if (damage != 0)
     {
-        ftCommonDamageUpdateDamageColAnim(fighter_gobj, ftParamGetCommonKnockback(this_fp->percent_damage, damage, damage, 0, 100, 0, this_fp->attributes->weight, capture_fp->handicap, this_fp->handicap), 0);
+        ftCommonDamageUpdateDamageColAnim(fighter_gobj, ftParamGetCommonKnockback(this_fp->percent_damage, damage, damage, 0, 100, 0, this_fp->attr->weight, capture_fp->handicap, this_fp->handicap), 0);
         ftParamUpdateDamage(this_fp, damage);
         ftParamUpdatePlayerBattleStats(capture_fp->player, this_fp->player, damage);
         ftParamUpdateStaleQueue(capture_fp->player, this_fp->player, capture_fp->attack_id, capture_fp->motion_count);

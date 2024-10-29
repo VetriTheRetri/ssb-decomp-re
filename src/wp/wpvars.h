@@ -295,7 +295,7 @@ typedef struct wpKamexWeaponVarsHydro
 
 typedef struct wpDogasWeaponVarsSmog
 {
-	WPAttributes* attributes;
+	WPAttributes *attr;
 
 } wpDogasWeaponVarsSmog;
 

@@ -297,7 +297,7 @@ void mpCommonSetFighterFallOnEdgeBreak(GObj *fighter_gobj)
 }
 
 // 0x800DDF74
-sb32 func_ovl2_800DDF74(GObj *fighter_gobj, FTStruct *fp, FTAttributes *attributes, DObj *target_joint, Vec3f *vec)
+sb32 func_ovl2_800DDF74(GObj *fighter_gobj, FTStruct *fp, FTAttributes *attr, DObj *target_joint, Vec3f *vec)
 {
     Vec3f sp64;
     Vec3f vec_translate;
@@ -339,7 +339,7 @@ sb32 func_ovl2_800DDF74(GObj *fighter_gobj, FTStruct *fp, FTAttributes *attribut
     {
         ternary = ((joint->translate.vec.f.x < vec->x) ? -(joint->translate.vec.f.x - vec->x) : (joint->translate.vec.f.x - vec->x));
 
-        tangent = DObjGetStruct(fighter_gobj)->translate.vec.f.y - ternary * tanf(attributes->unk_0x320);
+        tangent = DObjGetStruct(fighter_gobj)->translate.vec.f.y - ternary * tanf(attr->unk_0x320);
 
         if (vec->y < tangent)
         {
@@ -351,9 +351,9 @@ sb32 func_ovl2_800DDF74(GObj *fighter_gobj, FTStruct *fp, FTAttributes *attribut
 
     gmCollisionGetFighterPartsWorldPosition(target_joint, &sp4C);
 
-    if (vec->y > sp4C.y - attributes->unk_0x31C)
+    if (vec->y > sp4C.y - attr->unk_0x31C)
     {
-        vec->y = sp4C.y - attributes->unk_0x31C;
+        vec->y = sp4C.y - attr->unk_0x31C;
     }
     return TRUE;
 }
@@ -362,7 +362,7 @@ sb32 func_ovl2_800DDF74(GObj *fighter_gobj, FTStruct *fp, FTAttributes *attribut
 void mpCommonUpdateFighterSlopeContour(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
     DObj *joint;
     Vec3f sp30;
     f32 sp2C;
@@ -373,26 +373,26 @@ void mpCommonUpdateFighterSlopeContour(GObj *fighter_gobj)
         {
             if (fp->slope_contour & FTSLOPECONTOUR_FLAG_RFOOT)
             {
-                joint = fp->joints[attributes->joint_rfoot_id];
+                joint = fp->joints[attr->joint_rfoot_id];
 
-                func_ovl2_800EBC0C(fp, &sp30, &sp2C, attributes->joint_rfoot_rotate, joint);
+                func_ovl2_800EBC0C(fp, &sp30, &sp2C, attr->joint_rfoot_rotate, joint);
 
-                if (func_ovl2_800DDF74(fighter_gobj, fp, attributes, joint, &sp30) != FALSE)
+                if (func_ovl2_800DDF74(fighter_gobj, fp, attr, joint, &sp30) != FALSE)
                 {
-                    func_ovl2_800EE018(fp->joints[attributes->joint_rfoot_id], &sp30);
-                    func_ovl2_800EBD08(fp->joints[attributes->joint_rfoot_id], attributes->joint_rfoot_rotate, &sp30, sp2C);
+                    func_ovl2_800EE018(fp->joints[attr->joint_rfoot_id], &sp30);
+                    func_ovl2_800EBD08(fp->joints[attr->joint_rfoot_id], attr->joint_rfoot_rotate, &sp30, sp2C);
                 }
             }
             if (fp->slope_contour & FTSLOPECONTOUR_FLAG_LFOOT)
             {
-                joint = fp->joints[attributes->joint_lfoot_id];
+                joint = fp->joints[attr->joint_lfoot_id];
 
-                func_ovl2_800EBC0C(fp, &sp30, &sp2C, attributes->joint_lfoot_rotate, joint);
+                func_ovl2_800EBC0C(fp, &sp30, &sp2C, attr->joint_lfoot_rotate, joint);
 
-                if (func_ovl2_800DDF74(fighter_gobj, fp, attributes, joint, &sp30) != FALSE)
+                if (func_ovl2_800DDF74(fighter_gobj, fp, attr, joint, &sp30) != FALSE)
                 {
-                    func_ovl2_800EE018(fp->joints[attributes->joint_lfoot_id], &sp30);
-                    func_ovl2_800EBD08(fp->joints[attributes->joint_lfoot_id], attributes->joint_lfoot_rotate, &sp30, sp2C);
+                    func_ovl2_800EE018(fp->joints[attr->joint_lfoot_id], &sp30);
+                    func_ovl2_800EBD08(fp->joints[attr->joint_lfoot_id], attr->joint_lfoot_rotate, &sp30, sp2C);
                 }
             }
             if (fp->slope_contour & FTSLOPECONTOUR_FLAG_FULL)

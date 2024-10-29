@@ -397,7 +397,7 @@ sb32 scTrainingMode_UpdateViewOption()
 		else
 		{
 			fighter_gobj = gBattleState->players[gSceneData.spgame_player].fighter_gobj;
-			func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_camera_zoom, 0.1F,
+			func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attr->closeup_camera_zoom, 0.1F,
 							   28.0F);
 			gIFCommonPlayerInterface.is_magnify_display = FALSE;
 			gTrainingModeStruct.magnify_wait = 0;
@@ -870,7 +870,7 @@ void scTrainingMode_InitItemDisplaySprite()
 void scTrainingMode_UpdateItemDisplay(s32 interface_gobj)
 {
 	FTStruct* fp = ftGetStruct(gBattleState->players[gSceneData.spgame_player].fighter_gobj);
-	GObj* item_gobj = fp->item_hold;
+	GObj* item_gobj = fp->item_gobj;
 	s32 item_id;
 
 	if (item_gobj != NULL)

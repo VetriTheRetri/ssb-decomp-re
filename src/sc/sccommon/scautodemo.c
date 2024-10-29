@@ -280,7 +280,7 @@ void func_ovl64_8018D220(GObj *fighter_gobj)
 		fighter_gobj,
 		F_CLC_DTOR32(D_ovl64_8018E1D4[mtTrigGetRandomIntRange(ARRAY_COUNT(D_ovl64_8018E1D4))]),
 		F_CLC_DTOR32(D_ovl64_8018E1EC[mtTrigGetRandomIntRange(ARRAY_COUNT(D_ovl64_8018E1EC))]),
-		ftGetStruct(fighter_gobj)->attributes->closeup_camera_zoom,
+		ftGetStruct(fighter_gobj)->attr->closeup_camera_zoom,
 		0.3F,
 		28.0F
 	);

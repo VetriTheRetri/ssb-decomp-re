@@ -140,7 +140,7 @@ void ftCommonThrownReleaseThrownUpdateStats(GObj *fighter_gobj, s32 lr, s32 scri
 
     ft_throw = capture_fp->fighter_throw;
 
-    knockback_calc = ftParamGetCommonKnockback(this_fp->percent_damage, ft_throw->damage, ft_throw->damage, ft_throw->knockback_weight, ft_throw->knockback_scale, ft_throw->knockback_base, this_fp->attributes->weight, capture_fp->handicap, this_fp->handicap);
+    knockback_calc = ftParamGetCommonKnockback(this_fp->percent_damage, ft_throw->damage, ft_throw->damage, ft_throw->knockback_weight, ft_throw->knockback_scale, ft_throw->knockback_base, this_fp->attr->weight, capture_fp->handicap, this_fp->handicap);
 
     knockback_final = knockback_calc - knockback_resist;
 
@@ -225,7 +225,7 @@ void ftCommonThrownSetStatusDamageRelease(GObj *fighter_gobj)
     }
     ft_throw = &capture_fp->fighter_throw[1];
 
-    knockback_calc = ftParamGetCommonKnockback(this_fp->percent_damage, ft_throw->damage, ft_throw->damage, ft_throw->knockback_weight, ft_throw->knockback_scale, ft_throw->knockback_base, this_fp->attributes->weight, capture_fp->handicap, this_fp->handicap);
+    knockback_calc = ftParamGetCommonKnockback(this_fp->percent_damage, ft_throw->damage, ft_throw->damage, ft_throw->knockback_weight, ft_throw->knockback_scale, ft_throw->knockback_base, this_fp->attr->weight, capture_fp->handicap, this_fp->handicap);
 
     knockback_final = knockback_calc - knockback_resist;
 
@@ -274,7 +274,7 @@ void ftCommonThrownSetStatusNoDamageRelease(GObj *fighter_gobj)
 
     DObjGetStruct(fighter_gobj)->translate.vec.f.z = 0.0F;
 
-    knockback_calc = ftParamGetCommonKnockback(fp->percent_damage, ft_throw->damage, ft_throw->damage, ft_throw->knockback_weight, ft_throw->knockback_scale, ft_throw->knockback_base, fp->attributes->weight, 9, fp->handicap);
+    knockback_calc = ftParamGetCommonKnockback(fp->percent_damage, ft_throw->damage, ft_throw->damage, ft_throw->knockback_weight, ft_throw->knockback_scale, ft_throw->knockback_base, fp->attr->weight, 9, fp->handicap);
 
     knockback_final = knockback_calc - knockback_resist;
 

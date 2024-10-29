@@ -23,7 +23,7 @@ typedef struct halAudioUnknown
 
 
 #define AttributesGetStruct(fp) \
-((FTAttributes*)fp->attributes)
+((FTAttributes*)fp->attr)
 #define FTSpritesGetStruct(fa) \
 ((FTSprites*)fa->sprites)
 

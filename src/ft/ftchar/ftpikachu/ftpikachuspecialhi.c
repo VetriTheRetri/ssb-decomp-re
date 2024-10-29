@@ -43,13 +43,13 @@ void ftPikachuSpecialAirHiStartProcUpdate(GObj *fighter_gobj)
 void ftPikachuSpecialAirHiStartProcPhysics(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
-    ftPhysicsApplyGravityClampTVel(fp, 0.8F, attributes->tvel_default);
+    ftPhysicsApplyGravityClampTVel(fp, 0.8F, attr->tvel_default);
 
-    if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
+    if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
     {
-        ftPhysicsApplyAirVelXFriction(fp, attributes);
+        ftPhysicsApplyAirVelXFriction(fp, attr);
     }
 }
 
@@ -259,7 +259,7 @@ void ftPikachuSpecialHiSwitchStatusAir(GObj *fighter_gobj)
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirHi, fighter_gobj->anim_frame, 0.0F, FTPIKACHU_SPECIALHI_STATUS_FLAGS);
 
-    fp->jumps_used = fp->attributes->jumps_max;
+    fp->jumps_used = fp->attr->jumps_max;
 }
 
 // 0x80152E2C
@@ -268,7 +268,7 @@ void ftPikachuSpecialHiInITStatusVarsZip(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->status_vars.pikachu.specialhi.anim_frames = FTPIKACHU_QUICKATTACK_ZIP_TIME;
-    fp->jumps_used = fp->attributes->jumps_max;
+    fp->jumps_used = fp->attr->jumps_max;
 }
 
 // 0x80152E48
@@ -462,21 +462,21 @@ void ftPikachuSpecialAirHiEndProcPhysics(GObj *fighter_gobj)
 
     if (fp->command_vars.flags.flag1 != 0)
     {
-        FTAttributes *attributes;
+        FTAttributes *attr;
 
-        ftPhysicsApplyGravityDefault(fp, fp->attributes);
+        ftPhysicsApplyGravityDefault(fp, fp->attr);
 
-        attributes = fp->attributes;
+        attr = fp->attr;
 
-        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration * FTPIKACHU_QUICKATTACK_AIR_ACCEL_MUL, attributes->aerial_speed_max_x * FTPIKACHU_QUICKATTACK_AIR_SPEED_MUL);
+        ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->aerial_acceleration * FTPIKACHU_QUICKATTACK_AIR_ACCEL_MUL, attr->aerial_speed_max_x * FTPIKACHU_QUICKATTACK_AIR_SPEED_MUL);
        
-        ftPhysicsApplyAirVelXFriction(fp, fp->attributes);
+        ftPhysicsApplyAirVelXFriction(fp, fp->attr);
     }
     else
     {
         fp->physics.vel_air.y -= (fp->physics.vel_air.y / FTPIKACHU_QUICKATTACK_VEL_Y_DIV);
 
-        ftPhysicsApplyAirVelXFriction(fp, fp->attributes);
+        ftPhysicsApplyAirVelXFriction(fp, fp->attr);
     }
 }
 

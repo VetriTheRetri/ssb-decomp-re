@@ -45,21 +45,21 @@ void ftCommonAttackS3SetStatus(GObj *fighter_gobj)
 sb32 ftCommonAttackS3CheckInterruptCommon(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if ((fp->input.pl.button_tap & fp->input.button_mask_a) && ((fp->input.pl.stick_range.x * fp->lr) >= FTCOMMON_ATTACKS3_STICK_RANGE_MIN))
     {
         if (((ftParamGetStickAngleRads(fp) < 0.0F) ? -ftParamGetStickAngleRads(fp) : ftParamGetStickAngleRads(fp)) <= F_CST_DTOR32(50.0F)) // 0.87266463F
         {
-            if (fp->item_hold != NULL)
+            if (fp->item_gobj != NULL)
             {
-                if ((fp->input.pl.button_hold & fp->input.button_mask_z) || (itGetStruct(fp->item_hold)->type == nITTypeThrow))
+                if ((fp->input.pl.button_hold & fp->input.button_mask_z) || (itGetStruct(fp->item_gobj)->type == nITTypeThrow))
                 {
                     ftCommonItemThrowSetStatus(fighter_gobj, nFTCommonStatusLightThrowF);
 
                     return TRUE;
                 }
-                switch (itGetStruct(fp->item_hold)->type)
+                switch (itGetStruct(fp->item_gobj)->type)
                 {
                 case nITTypeSwing:
                     ftCommonItemSwingSetStatus(fighter_gobj, nFTItemSwingTypeAttack3);
@@ -70,7 +70,7 @@ sb32 ftCommonAttackS3CheckInterruptCommon(GObj *fighter_gobj)
                     return TRUE;
                 }
             }
-            if (attributes->is_have_attacks3)
+            if (attr->is_have_attacks3)
             {
                 ftCommonAttackS3SetStatus(fighter_gobj);
 

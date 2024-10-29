@@ -62,17 +62,17 @@ void ftFoxSpecialLwStartProcUpdate(GObj *fighter_gobj)
 void ftFoxSpecialAirLwCommonProcPhysics(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if (fp->status_vars.fox.speciallw.gravity_delay != 0)
     {
         fp->status_vars.fox.speciallw.gravity_delay--;
     }
-    else ftPhysicsApplyGravityClampTVel(fp, FTFOX_REFLECTOR_GRAVITY, attributes->tvel_default);
+    else ftPhysicsApplyGravityClampTVel(fp, FTFOX_REFLECTOR_GRAVITY, attr->tvel_default);
     
-    if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
+    if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
     {
-        ftPhysicsApplyAirVelXFriction(fp, attributes);
+        ftPhysicsApplyAirVelXFriction(fp, attr);
     }
 }
 

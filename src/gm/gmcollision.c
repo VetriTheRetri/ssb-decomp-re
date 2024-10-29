@@ -1132,16 +1132,16 @@ sb32 gmCollisionCheckAttackInFighterRange(Vec3f *hit_position, Vec3f *obj_positi
 sb32 gmCollisionCheckFighterInFighterRange(FTAttackColl *atk_coll, GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if (atk_coll->atk_state == nGMAttackStateTransfer)
     {
-        return gmCollisionCheckAttackInFighterRange(&atk_coll->pos, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attributes->hit_detect_range, atk_coll->size);
+        return gmCollisionCheckAttackInFighterRange(&atk_coll->pos, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, atk_coll->size);
     }
     else if
     (
-        (gmCollisionCheckAttackInFighterRange(&atk_coll->pos, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attributes->hit_detect_range, atk_coll->size) != FALSE)      ||
-        (gmCollisionCheckAttackInFighterRange(&atk_coll->pos_prev, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attributes->hit_detect_range, atk_coll->size) != FALSE)
+        (gmCollisionCheckAttackInFighterRange(&atk_coll->pos, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, atk_coll->size) != FALSE)      ||
+        (gmCollisionCheckAttackInFighterRange(&atk_coll->pos_prev, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, atk_coll->size) != FALSE)
     )
     {
         return TRUE;
@@ -1153,16 +1153,16 @@ sb32 gmCollisionCheckFighterInFighterRange(FTAttackColl *atk_coll, GObj *fighter
 sb32 gmCollisionCheckWeaponInFighterRange(WPAttackColl *atk_coll, s32 atk_id, GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if (atk_coll->atk_state == nGMAttackStateTransfer)
     {
-        return gmCollisionCheckAttackInFighterRange(&atk_coll->atk_pos[atk_id].pos, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attributes->hit_detect_range, atk_coll->size);
+        return gmCollisionCheckAttackInFighterRange(&atk_coll->atk_pos[atk_id].pos, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, atk_coll->size);
     }
     else if
     (
-        (gmCollisionCheckAttackInFighterRange(&atk_coll->atk_pos[atk_id].pos, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attributes->hit_detect_range, atk_coll->size) != FALSE)      ||
-        (gmCollisionCheckAttackInFighterRange(&atk_coll->atk_pos[atk_id].pos_prev, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attributes->hit_detect_range, atk_coll->size) != FALSE)
+        (gmCollisionCheckAttackInFighterRange(&atk_coll->atk_pos[atk_id].pos, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, atk_coll->size) != FALSE)      ||
+        (gmCollisionCheckAttackInFighterRange(&atk_coll->atk_pos[atk_id].pos_prev, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, atk_coll->size) != FALSE)
     )
     {
         return TRUE;
@@ -1174,16 +1174,16 @@ sb32 gmCollisionCheckWeaponInFighterRange(WPAttackColl *atk_coll, s32 atk_id, GO
 sb32 gmCollisionCheckItemInFighterRange(ITAttackColl *atk_coll, s32 atk_id, GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if (atk_coll->atk_state == nGMAttackStateTransfer)
     {
-        return gmCollisionCheckAttackInFighterRange(&atk_coll->atk_pos[atk_id].pos, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attributes->hit_detect_range, atk_coll->size);
+        return gmCollisionCheckAttackInFighterRange(&atk_coll->atk_pos[atk_id].pos, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, atk_coll->size);
     }
     else if
     (
-        (gmCollisionCheckAttackInFighterRange(&atk_coll->atk_pos[atk_id].pos, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attributes->hit_detect_range, atk_coll->size) != FALSE)      ||
-        (gmCollisionCheckAttackInFighterRange(&atk_coll->atk_pos[atk_id].pos_prev, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attributes->hit_detect_range, atk_coll->size) != FALSE)
+        (gmCollisionCheckAttackInFighterRange(&atk_coll->atk_pos[atk_id].pos, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, atk_coll->size) != FALSE)      ||
+        (gmCollisionCheckAttackInFighterRange(&atk_coll->atk_pos[atk_id].pos_prev, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, atk_coll->size) != FALSE)
     )
     {
         return TRUE;

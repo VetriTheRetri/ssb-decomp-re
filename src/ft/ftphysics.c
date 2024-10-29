@@ -158,9 +158,9 @@ void ftPhysicsApplyGroundVelTransferAir(GObj *fighter_gobj)
 void ftPhysicsApplyGroundVelFriction(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
-    ftPhysicsSetGroundVelFriction(fp, dMPCollisionMaterialFrictions[fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK] * attributes->traction);
+    ftPhysicsSetGroundVelFriction(fp, dMPCollisionMaterialFrictions[fp->coll_data.ground_flags & MPCOLL_VERTEX_MAT_MASK] * attr->traction);
     ftPhysicsSetGroundVelTransferAir(fighter_gobj);
 }
 
@@ -224,9 +224,9 @@ void ftPhysicsApplyGravityClampTVel(FTStruct *fp, f32 gravity, f32 tvel)
 }
 
 // 0x800D8DA0
-void ftPhysicsApplyFastFall(FTStruct *fp, FTAttributes *attributes)
+void ftPhysicsApplyFastFall(FTStruct *fp, FTAttributes *attr)
 {
-    fp->physics.vel_air.y = -attributes->tvel_fast;
+    fp->physics.vel_air.y = -attr->tvel_fast;
 }
 
 // 0x800D8DB0
@@ -246,9 +246,9 @@ void ftPhysicsCheckSetFastFall(FTStruct *fp)
 }
 
 // 0x800D8E50
-void ftPhysicsApplyGravityDefault(FTStruct *fp, FTAttributes *attributes)
+void ftPhysicsApplyGravityDefault(FTStruct *fp, FTAttributes *attr)
 {
-    ftPhysicsApplyGravityClampTVel(fp, attributes->gravity, attributes->tvel_default);
+    ftPhysicsApplyGravityClampTVel(fp, attr->gravity, attr->tvel_default);
 }
 
 // 0x800D8E78
@@ -267,7 +267,7 @@ void ftPhysicsClampAirVelX(FTStruct *fp, f32 clamp)
 // 0x800D8EB8
 void ftPhysicsClampAirVelXMax(FTStruct *fp)
 {
-    ftPhysicsClampAirVelX(fp, fp->attributes->aerial_speed_max_x);
+    ftPhysicsClampAirVelX(fp, fp->attr->aerial_speed_max_x);
 }
 
 // 0x800D8EDC
@@ -291,9 +291,9 @@ sb32 ftPhysicsCheckClampAirVelXDec(FTStruct *fp, f32 clamp)
 }
 
 // 0x800D8FA8
-sb32 ftPhysicsCheckClampAirVelXDecMax(FTStruct *fp, FTAttributes *attributes)
+sb32 ftPhysicsCheckClampAirVelXDecMax(FTStruct *fp, FTAttributes *attr)
 {
-    return ftPhysicsCheckClampAirVelXDec(fp, attributes->aerial_speed_max_x);
+    return ftPhysicsCheckClampAirVelXDec(fp, attr->aerial_speed_max_x);
 }
 
 // 0x800D8FC8
@@ -315,17 +315,17 @@ void ftPhysicsClampAirVelXStickRange(FTStruct *fp, s32 stick_range_min, f32 vel,
 }
 
 // 0x800D9044
-void ftPhysicsClampAirVelXStickDefault(FTStruct *fp, FTAttributes *attributes)
+void ftPhysicsClampAirVelXStickDefault(FTStruct *fp, FTAttributes *attr)
 {
-    ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attributes->aerial_acceleration, attributes->aerial_speed_max_x);
+    ftPhysicsClampAirVelXStickRange(fp, FTPHYSICS_AIRDRIFT_CLAMP_RANGE_MIN, attr->aerial_acceleration, attr->aerial_speed_max_x);
 }
 
 // 0x800D9074
-void ftPhysicsApplyAirVelXFriction(FTStruct *fp, FTAttributes *attributes)
+void ftPhysicsApplyAirVelXFriction(FTStruct *fp, FTAttributes *attr)
 {
     if (fp->physics.vel_air.x < 0.0F)
     {
-        fp->physics.vel_air.x += attributes->aerial_friction;
+        fp->physics.vel_air.x += attr->aerial_friction;
 
         if (fp->physics.vel_air.x >= 0.0F)
         {
@@ -334,7 +334,7 @@ void ftPhysicsApplyAirVelXFriction(FTStruct *fp, FTAttributes *attributes)
     }
     else
     {
-        fp->physics.vel_air.x -= attributes->aerial_friction;
+        fp->physics.vel_air.x -= attr->aerial_friction;
 
         if (fp->physics.vel_air.x <= 0.0F)
         {
@@ -347,14 +347,14 @@ void ftPhysicsApplyAirVelXFriction(FTStruct *fp, FTAttributes *attributes)
 void ftPhysicsApplyAirVelDrift(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
-    (fp->is_fast_fall) ? ftPhysicsApplyFastFall(fp, attributes) : ftPhysicsApplyGravityDefault(fp, attributes);
+    (fp->is_fast_fall) ? ftPhysicsApplyFastFall(fp, attr) : ftPhysicsApplyGravityDefault(fp, attr);
 
-    if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
+    if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
     {
-        ftPhysicsClampAirVelXStickDefault(fp, attributes);
-        ftPhysicsApplyAirVelXFriction(fp, attributes);
+        ftPhysicsClampAirVelXStickDefault(fp, attr);
+        ftPhysicsApplyAirVelXFriction(fp, attr);
     }
 }
 
@@ -362,16 +362,16 @@ void ftPhysicsApplyAirVelDrift(GObj *fighter_gobj)
 void ftPhysicsApplyAirVelDriftFastFall(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     ftPhysicsCheckSetFastFall(fp);
 
-    (fp->is_fast_fall) ? ftPhysicsApplyFastFall(fp, attributes) : ftPhysicsApplyGravityDefault(fp, attributes);
+    (fp->is_fast_fall) ? ftPhysicsApplyFastFall(fp, attr) : ftPhysicsApplyGravityDefault(fp, attr);
 
-    if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
+    if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
     {
-        ftPhysicsClampAirVelXStickDefault(fp, attributes);
-        ftPhysicsApplyAirVelXFriction(fp, attributes);
+        ftPhysicsClampAirVelXStickDefault(fp, attr);
+        ftPhysicsApplyAirVelXFriction(fp, attr);
     }
 }
 
@@ -379,13 +379,13 @@ void ftPhysicsApplyAirVelDriftFastFall(GObj *fighter_gobj)
 void ftPhysicsApplyAirVelFriction(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
-    (fp->is_fast_fall) ? ftPhysicsApplyFastFall(fp, attributes) : ftPhysicsApplyGravityDefault(fp, attributes);
+    (fp->is_fast_fall) ? ftPhysicsApplyFastFall(fp, attr) : ftPhysicsApplyGravityDefault(fp, attr);
 
-    if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
+    if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
     {
-        ftPhysicsApplyAirVelXFriction(fp, attributes);
+        ftPhysicsApplyAirVelXFriction(fp, attr);
     }
 }
 

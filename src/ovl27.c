@@ -1190,8 +1190,8 @@ void mn1PDrawStock(s32 stock, s32 ft_kind)
 		else
 		{
 			ft_struct = gMN1PPanel.player->user_data.p;
-			icon_sobj = lbCommonMakeSObjForGObj(stock_gobj, ft_struct->attributes->sprites->stock_sprite);
-			icon_sobj->sprite.LUT = ft_struct->attributes->sprites->stock_luts[ft_struct->costume];
+			icon_sobj = lbCommonMakeSObjForGObj(stock_gobj, ft_struct->attr->sprites->stock_sprite);
+			icon_sobj->sprite.LUT = ft_struct->attr->sprites->stock_luts[ft_struct->costume];
 			icon_sobj->pos.y = 178.0F;
 		}
 

@@ -84,7 +84,7 @@ void func_ovl1_803905F4(GObj *this_gobj, GObj *other_gobj)
     DObj *child_dobj = DObjGetStruct(other_gobj)->child;
     Mtx44f mtx_f;
     
-    func_ovl0_800C9A38(mtx_f, fp->joints[fp->attributes->joint_itemheavy_id]);
+    func_ovl0_800C9A38(mtx_f, fp->joints[fp->attr->joint_itemheavy_id]);
     func_ovl2_800EDA0C(mtx_f, &DObjGetStruct(other_gobj)->rotate.vec.f);
     
     DObjGetStruct(other_gobj)->translate.vec.f.x = -child_dobj->translate.vec.f.x;

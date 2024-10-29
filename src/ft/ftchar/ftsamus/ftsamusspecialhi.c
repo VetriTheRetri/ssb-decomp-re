@@ -84,7 +84,7 @@ void ftSamusSpecialAirHiProcPhysics(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftPhysicsApplyGravityDefault(fp, fp->attributes);
+    ftPhysicsApplyGravityDefault(fp, fp->attr);
     ftPhysicsClampAirVelXStickRange(fp, 0, FTSAMUS_SCREWATTACK_DRIFT_MUL, FTSAMUS_SCREWATTACK_DRIFT_CLAMP);
 }
 
@@ -96,7 +96,7 @@ void ftSamusSpecialAirHiSetStatus(GObj *fighter_gobj)
     ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
-    fp->jumps_used = fp->attributes->jumps_max;
+    fp->jumps_used = fp->attr->jumps_max;
     fp->physics.vel_air.y = FTSAMUS_SCREWATTACK_VEL_Y_BASE;
 
     ftPhysicsClampAirVelX(fp, FTSAMUS_SCREWATTACK_DRIFT_CLAMP);

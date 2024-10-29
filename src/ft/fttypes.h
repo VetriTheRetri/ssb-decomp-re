@@ -1242,7 +1242,7 @@ struct FTStruct
 
     FTThrowHitDesc *fighter_throw;      // Pointer to throw description
 
-    GObj *item_hold;
+    GObj *item_gobj;
 
     FTSpecialColl *spc_coll;
 
@@ -1259,7 +1259,7 @@ struct FTStruct
     FTTexturePartStatus texturepart_status[2];
 
     FTData *ft_data;
-    FTAttributes *attributes;
+    FTAttributes *attr;
 
     void **figatree;                // Main animation bank?
     void **figatree_heap;           // Load animations into this?

@@ -66,7 +66,7 @@ void ftMarioSpecialHiProcInterrupt(GObj *fighter_gobj)
 void ftMarioSpecialHiProcPhysics(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if (fp->status_vars.mario.specialhi.is_air_bool == FALSE)
     {
@@ -86,11 +86,11 @@ void ftMarioSpecialHiProcPhysics(GObj *fighter_gobj)
     }
     else
     {
-        ftPhysicsApplyGravityClampTVel(fp, 0.5F, attributes->tvel_default);
+        ftPhysicsApplyGravityClampTVel(fp, 0.5F, attr->tvel_default);
 
-        if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
+        if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
         {
-            ftPhysicsApplyAirVelXFriction(fp, attributes);
+            ftPhysicsApplyAirVelXFriction(fp, attr);
         }
     }
 }

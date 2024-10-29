@@ -10,7 +10,7 @@
 void ftCommonHammerKneeBendProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     fp->status_vars.common.hammer.kneebend_anim_frame++;
 
@@ -23,7 +23,7 @@ void ftCommonHammerKneeBendProcUpdate(GObj *fighter_gobj)
     {
         fp->status_vars.common.hammer.is_short_hop = TRUE;
     }
-    if (fp->status_vars.common.hammer.kneebend_anim_frame >= attributes->kneebend_anim_length)
+    if (fp->status_vars.common.hammer.kneebend_anim_frame >= attr->kneebend_anim_length)
     {
         ftCommonHammerFallSetStatusJump(fighter_gobj);
     }

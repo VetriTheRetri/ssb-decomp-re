@@ -17,7 +17,7 @@ extern sb32 mpCommonProcFighterOnEdge(GObj* fighter_gobj, void (*proc_map)(GObj*
 extern void mpCommonSetFighterFallOnGroundBreak(GObj* fighter_gobj);
 extern void mpCommonProcFighterOnCliffEdge(GObj* fighter_gobj);
 extern void mpCommonSetFighterFallOnEdgeBreak(GObj* fighter_gobj);
-extern sb32 func_ovl2_800DDF74(GObj* fighter_gobj, FTStruct* fp, FTAttributes* attributes, DObj* target_joint, Vec3f* vec);
+extern sb32 func_ovl2_800DDF74(GObj* fighter_gobj, FTStruct* fp, FTAttributes* attr, DObj* target_joint, Vec3f* vec);
 extern void mpCommonUpdateFighterSlopeContour(GObj* fighter_gobj);
 extern void mpCommonSetFighterProjectGround(GObj* fighter_gobj);
 extern void mpCommonUpdateFighterProjectGround(GObj* fighter_gobj);

@@ -635,9 +635,9 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
     {
         this_fp->status_vars.common.damage.dust_effect_int = 1;
     }
-    if ((hitstun_tics >= FTCOMMON_DAMAGE_FIGHTER_DAMAGEVOICE_MIN) && (this_fp->attributes->damage_sfx != nSYAudioFGMVoiceEnd) || (is_force_damage_sfx != FALSE))
+    if ((hitstun_tics >= FTCOMMON_DAMAGE_FIGHTER_DAMAGEVOICE_MIN) && (this_fp->attr->damage_sfx != nSYAudioFGMVoiceEnd) || (is_force_damage_sfx != FALSE))
     {
-        func_800269C0_275C0(this_fp->attributes->damage_sfx);
+        func_800269C0_275C0(this_fp->attr->damage_sfx);
     }
 
     this_fp->is_hitstun = TRUE;
@@ -815,9 +815,9 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
         }
         return;
     }
-    if (this_fp->item_hold != NULL)
+    if (this_fp->item_gobj != NULL)
     {
-        if ((itGetStruct(this_fp->item_hold)->weight == nITWeightHeavy) && ((this_fp->ft_kind == nFTKindDonkey) || (this_fp->ft_kind == nFTKindNDonkey) || (this_fp->ft_kind == nFTKindGDonkey)))
+        if ((itGetStruct(this_fp->item_gobj)->weight == nITWeightHeavy) && ((this_fp->ft_kind == nFTKindDonkey) || (this_fp->ft_kind == nFTKindNDonkey) || (this_fp->ft_kind == nFTKindGDonkey)))
         {
             if (ftCommonDamageCheckCatchResist(this_fp) != FALSE)
             {

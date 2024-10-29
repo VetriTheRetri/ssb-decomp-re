@@ -152,7 +152,7 @@ extern void ifCommonPlayerStockMultiFuncDisplay(GObj *interface_gobj);
 extern void ifCommonPlayerStockSetIconAttr(void);
 extern void ifCommonPlayerStockMultiMakeInterface(s32 player);
 extern void ifCommonPlayerStockSingleFuncDisplay(GObj *interface_gobj);
-extern void ifCommonPlayerStockSetLUT(s32 player, s32 lut_id, FTAttributes *attributes);
+extern void ifCommonPlayerStockSetLUT(s32 player, s32 lut_id, FTAttributes *attr);
 extern void ifCommonPlayerStockSingleMakeInterface(s32 player);
 extern void ifCommonPlayerStockStealProcUpdate(GObj *interface_gobj);
 extern void ifCommonPlayerStockStealMakeInterface(s32 thief, s32 stolen);

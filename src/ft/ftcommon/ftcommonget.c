@@ -13,7 +13,7 @@ GObj* ftCommonGetFindItem(GObj *fighter_gobj, u8 pickup_mask)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     GObj *pickup_gobj = NULL;
-    FTItemPickup *item_pickup = &fp->attributes->item_pickup;
+    FTItemPickup *item_pickup = &fp->attr->item_pickup;
     GObj *item_gobj = gGCCommonLinks[nGCCommonLinkIDItem];
     f32 closest_item_dist = F32_MAX;
     sb32 is_pickup;
@@ -81,7 +81,7 @@ GObj* ftCommonGetFindItem(GObj *fighter_gobj, u8 pickup_mask)
 void ftCommonLightGetProcDamage(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    GObj *item_gobj = fp->item_hold;
+    GObj *item_gobj = fp->item_gobj;
 
     if (item_gobj != NULL)
     {
@@ -129,7 +129,7 @@ void ftCommonHeavyGetProcDamage(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->item_hold != NULL)
+    if (fp->item_gobj != NULL)
     {
         ftSetupDropItem(fp);
     }
@@ -156,7 +156,7 @@ void ftCommonGetProcUpdate(GObj *fighter_gobj)
     {
         if (fp->status_id == nFTCommonStatusHeavyGet)
         {
-            if (fp->item_hold != NULL)
+            if (fp->item_gobj != NULL)
             {
                 if ((fp->ft_kind == nFTKindDonkey) || (fp->ft_kind == nFTKindNDonkey) || (fp->ft_kind == nFTKindGDonkey))
                 {
@@ -168,7 +168,7 @@ void ftCommonGetProcUpdate(GObj *fighter_gobj)
         }
         else
         {
-            item_gobj = fp->item_hold;
+            item_gobj = fp->item_gobj;
 
             if (item_gobj != NULL)
             {
@@ -208,7 +208,7 @@ void ftCommonHeavyGetProcMap(GObj *fighter_gobj)
 
     if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
     {
-        if (fp->item_hold != NULL)
+        if (fp->item_gobj != NULL)
         {
             ftSetupDropItem(fp);
         }
@@ -223,7 +223,7 @@ void ftCommonHeavyThrowProcMap(GObj *fighter_gobj)
 
     if (mpCommonCheckFighterOnEdge(fighter_gobj) == FALSE)
     {
-        if (fp->item_hold != NULL)
+        if (fp->item_gobj != NULL)
         {
             ftSetupDropItem(fp);
         }
@@ -254,7 +254,7 @@ sb32 ftCommonGetCheckInterruptCommon(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->item_hold == NULL)
+    if (fp->item_gobj == NULL)
     {
         GObj *item_gobj = ftCommonGetFindItem(fighter_gobj, (FTCOMMON_GET_MASK_LIGHT | FTCOMMON_GET_MASK_HEAVY));
 

@@ -370,7 +370,7 @@ GObj* itLGunWeaponAmmoMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 // 0x80175AD8
 void itLGunMakeAmmo(GObj *fighter_gobj, Vec3f *pos)
 {
-    ITStruct *ip = itGetStruct(ftGetStruct(fighter_gobj)->item_hold);
+    ITStruct *ip = itGetStruct(ftGetStruct(fighter_gobj)->item_gobj);
 
     itLGunWeaponAmmoMakeWeapon(fighter_gobj, pos);
 

@@ -35,11 +35,11 @@ void ftDonkeySpecialAirHiProcPhysics(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     f32 gravity_mul = (fp->command_vars.flags.flag1 != 0) ? FTDONKEY_SPINNINGKONG_END_GRAVITY_MUL : FTDONKEY_SPINNINGKONG_START_GRAVITY_MUL;
 
-    ftPhysicsApplyGravityClampTVel(fp, attributes->gravity * gravity_mul, attributes->tvel_default);
+    ftPhysicsApplyGravityClampTVel(fp, attr->gravity * gravity_mul, attr->tvel_default);
 
     ftPhysicsClampAirVelXStickRange(fp, 0, FTDONKEY_SPINNINGKONG_AIR_ACCEL, FTDONKEY_SPINNINGKONG_AIR_VEL_MAX);
 }
@@ -80,14 +80,14 @@ void ftDonkeySpecialHiSwitchStatusAir(GObj *fighter_gobj)
 void ftDonkeySpecialHiSetStatusFlagGA(GObj *fighter_gobj, sb32 ga)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     ftMainSetFighterStatus(fighter_gobj, nFTDonkeyStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
     ftPhysicsClampAirVelX(fp, FTDONKEY_SPINNINGKONG_AIR_VEL_MAX);
 
-    fp->jumps_used = attributes->jumps_max;
+    fp->jumps_used = attr->jumps_max;
 
     fp->command_vars.flags.flag1 = 0;
 

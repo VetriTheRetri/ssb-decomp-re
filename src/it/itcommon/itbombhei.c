@@ -223,8 +223,8 @@ void itBombHeiCommonSetWalkLR(GObj *item_gobj, ub8 lr)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
-    Gfx *dll = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkLeftDisplayList);  // (void*)((uintptr_t)((uintptr_t)ip->attributes->dobj_setup - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkLeftDisplayList); // Linker thing
-    Gfx *dlr = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkRightDisplayList); // (void*)((uintptr_t)((uintptr_t)ip->attributes->dobj_setup - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkRightDisplayList); // Linker thing
+    Gfx *dll = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkLeftDisplayList);  // (void*)((uintptr_t)((uintptr_t)ip->attr->dobj_setup - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkLeftDisplayList); // Linker thing
+    Gfx *dlr = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkRightDisplayList); // (void*)((uintptr_t)((uintptr_t)ip->attr->dobj_setup - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkRightDisplayList); // Linker thing
 
     if (lr != 0)
     {
@@ -247,14 +247,14 @@ void itBombHeiCommonCheckMakeDustEffect(GObj *item_gobj, u8 override)
 {
     s32 unused[4];
     ITStruct *ip = itGetStruct(item_gobj);
-    ITAttributes *attributes = ip->attributes;
+    ITAttributes *attr = ip->attr;
     DObj *dobj = DObjGetStruct(item_gobj);
 
     if ((ip->coll_data.coll_mask_current & MPCOLL_FLAG_GROUND) || (override != FALSE))
     {
         Vec3f pos = dobj->translate.vec.f;
 
-        pos.y += attributes->obj_coll_bottom;
+        pos.y += attr->obj_coll_bottom;
 
         efManagerDustHeavyDoubleMakeEffect(&pos, ip->lr, 1.0F);
     }
@@ -460,7 +460,7 @@ void itBombHeiWalkUpdateEffect(GObj *item_gobj)
 sb32 itBombHeiWalkProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITAttributes *attributes = ip->attributes;
+    ITAttributes *attr = ip->attr;
     DObj *dobj = DObjGetStruct(item_gobj);
     Vec3f pos;
 
@@ -472,7 +472,7 @@ sb32 itBombHeiWalkProcUpdate(GObj *item_gobj)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x >= (dobj->translate.vec.f.x - attributes->obj_coll_width))
+            if (pos.x >= (dobj->translate.vec.f.x - attr->obj_coll_width))
             {
                 itBombHeiCommonSetWalkLR(item_gobj, 1);
             }
@@ -481,7 +481,7 @@ sb32 itBombHeiWalkProcUpdate(GObj *item_gobj)
         {
             mpCollisionGetLREdgeRight(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x <= (dobj->translate.vec.f.x + attributes->obj_coll_width))
+            if (pos.x <= (dobj->translate.vec.f.x + attr->obj_coll_width))
             {
                 itBombHeiCommonSetWalkLR(item_gobj, 0);
             }
@@ -520,7 +520,7 @@ sb32 itBombHeiWalkProcMap(GObj *item_gobj)
 void itBombHeiWalkInitItemVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITAttributes *attributes = ip->attributes;
+    ITAttributes *attr = ip->attr;
     DObj *dobj = DObjGetStruct(item_gobj);
     void *matanim_joint;
     s32 unused;
@@ -534,7 +534,7 @@ void itBombHeiWalkInitItemVars(GObj *item_gobj)
 
     itMainRefreshHit(item_gobj);
 
-    matanim_joint = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkMatAnimJoint); // ((uintptr_t)ip->attributes->dobj_setup - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkMatAnimJoint; // Linker thing
+    matanim_joint = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkMatAnimJoint); // ((uintptr_t)ip->attr->dobj_setup - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkMatAnimJoint; // Linker thing
 
     gcAddMObjMatAnimJoint(dobj->mobj, matanim_joint, 0.0F); // Set texture animation?
 
@@ -546,7 +546,7 @@ void itBombHeiWalkInitItemVars(GObj *item_gobj)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x >= (dobj->translate.vec.f.x - attributes->obj_coll_width))
+            if (pos.x >= (dobj->translate.vec.f.x - attr->obj_coll_width))
             {
                 itBombHeiCommonSetWalkLR(item_gobj, 1);
             }
@@ -555,7 +555,7 @@ void itBombHeiWalkInitItemVars(GObj *item_gobj)
         {
             mpCollisionGetLREdgeRight(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x <= (dobj->translate.vec.f.x + attributes->obj_coll_width))
+            if (pos.x <= (dobj->translate.vec.f.x + attr->obj_coll_width))
             {
                 itBombHeiCommonSetWalkLR(item_gobj, 0);
             }

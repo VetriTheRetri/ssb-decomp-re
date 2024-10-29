@@ -31,7 +31,7 @@ void ftCommonAttackHi3SetStatus(GObj *fighter_gobj)
 sb32 ftCommonAttackHi3CheckInterruptCommon(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if ((fp->input.pl.button_tap & fp->input.button_mask_a) && (fp->input.pl.stick_range.y >= FTCOMMON_ATTACKHI3_STICK_RANGE_MIN))
     {
@@ -43,7 +43,7 @@ sb32 ftCommonAttackHi3CheckInterruptCommon(GObj *fighter_gobj)
 
                 return TRUE;
             }
-            else if (attributes->is_have_attackhi3)
+            else if (attr->is_have_attackhi3)
             {
                 ftCommonAttackHi3SetStatus(fighter_gobj);
 

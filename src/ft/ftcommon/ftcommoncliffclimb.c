@@ -234,7 +234,7 @@ void ftCommonCliffCommon2UpdateCollData(GObj *fighter_gobj)
     MPCollData *coll_data = &fp->coll_data;
     Vec3f *translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-    if (fp->attributes->cliff_status_ga[fp->status_vars.common.cliffmotion.status_id] == nMPKineticsGround)
+    if (fp->attr->cliff_status_ga[fp->status_vars.common.cliffmotion.status_id] == nMPKineticsGround)
     {
         mpCommonSetFighterGround(fp);
     }

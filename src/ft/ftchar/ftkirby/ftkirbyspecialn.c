@@ -31,7 +31,7 @@ void ftKirbySpecialNApplyCaptureDamage(GObj *kirby_gobj, GObj *victim_gobj, s32 
 
     damage = star_dmg_victim;
 
-    ftCommonDamageUpdateDamageColAnim(victim_gobj, ftParamGetCommonKnockback(victim_fp->percent_damage, star_dmg_victim, star_dmg_victim, 0, 100, 0, victim_fp->attributes->weight, kirby_fp->handicap, victim_fp->handicap), 0);
+    ftCommonDamageUpdateDamageColAnim(victim_gobj, ftParamGetCommonKnockback(victim_fp->percent_damage, star_dmg_victim, star_dmg_victim, 0, 100, 0, victim_fp->attr->weight, kirby_fp->handicap, victim_fp->handicap), 0);
     ftParamUpdateDamage(victim_fp, damage);
     ftParamUpdatePlayerBattleStats(kirby_fp->player, victim_fp->player, damage);
     ftParamUpdateStaleQueue(kirby_fp->player, victim_fp->player, kirby_fp->attack_id, kirby_fp->motion_count);
@@ -428,17 +428,17 @@ void ftKirbySpecialAirNWaitProcInterrupt(GObj *fighter_gobj)
 void ftKirbySpecialAirNWaitProcPhysics(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if (fp->is_fast_fall)
     {
-        ftPhysicsApplyFastFall(fp, attributes);
+        ftPhysicsApplyFastFall(fp, attr);
     }
-    else ftPhysicsApplyGravityClampTVel(fp, FTKIRBY_VACUUM_GRAVITY_MUL * attributes->gravity, FTKIRBY_VACUUM_FALL_MAX_MUL * attributes->tvel_default);
+    else ftPhysicsApplyGravityClampTVel(fp, FTKIRBY_VACUUM_GRAVITY_MUL * attr->gravity, FTKIRBY_VACUUM_FALL_MAX_MUL * attr->tvel_default);
     
-    if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
+    if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
     {
-        ftPhysicsApplyAirVelXFriction(fp, attributes);
+        ftPhysicsApplyAirVelXFriction(fp, attr);
     }
 }
 

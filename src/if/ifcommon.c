@@ -929,7 +929,7 @@ void ifCommonPlayerDamageInitInterface(void)
 
             fp = ftGetStruct(gBattleState->players[player].fighter_gobj);
 
-            ft_sprites = fp->attributes->sprites;
+            ft_sprites = fp->attr->sprites;
 
             if ((ft_sprites != NULL) && (ft_sprites->emblem != NULL))
             {
@@ -1041,9 +1041,9 @@ void ifCommonPlayerStockMultiFuncDisplay(GObj *interface_gobj)
                 {
                     if (stock_order < stock_count)
                     {
-                        lt_sobj->sprite = *fp->attributes->sprites->stock_sprite;
+                        lt_sobj->sprite = *fp->attr->sprites->stock_sprite;
 
-                        lt_sobj->sprite.LUT = fp->attributes->sprites->stock_luts[fp->costume];
+                        lt_sobj->sprite.LUT = fp->attr->sprites->stock_luts[fp->costume];
 
                         lt_sobj->pos.x = ((gIFCommonPlayerInterface.ifplayers_pos_x[player] + dIFCommonPlayerStocksIconOffsetsX[player] + (stock_order * 10)) - (lt_sobj->sprite.width * 0.5F));
                         lt_sobj->pos.y = ((gIFCommonPlayerInterface.ifplayers_pos_y - (s32)(lt_sobj->sprite.height * 0.5F)) - 20);
@@ -1065,9 +1065,9 @@ void ifCommonPlayerStockMultiFuncDisplay(GObj *interface_gobj)
 
                 gt_sobj = SObjGetStruct(interface_gobj);
 
-                gt_sobj->sprite = *fp->attributes->sprites->stock_sprite;
+                gt_sobj->sprite = *fp->attr->sprites->stock_sprite;
 
-                gt_sobj->sprite.LUT = fp->attributes->sprites->stock_luts[fp->costume];
+                gt_sobj->sprite.LUT = fp->attr->sprites->stock_luts[fp->costume];
 
                 gt_sobj->pos.x = ((trunc_pos_x - 22) - (gt_sobj->sprite.width * 0.5F));
                 gt_sobj->pos.y = ((gIFCommonPlayerInterface.ifplayers_pos_y - (s32)(gt_sobj->sprite.height * 0.5F)) - 20);
@@ -1128,7 +1128,7 @@ void ifCommonPlayerStockMultiMakeInterface(s32 player)
     FTStruct *fp = ftGetStruct(gBattleState->players[player].fighter_gobj);
     Sprite *sprite;
 
-    if ((fp->attributes->sprites != NULL) && (fp->attributes->sprites->stock_sprite != NULL))
+    if ((fp->attr->sprites != NULL) && (fp->attr->sprites->stock_sprite != NULL))
     {
         GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
         gcAddGObjDisplay(interface_gobj, ifCommonPlayerStockMultiFuncDisplay, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
@@ -1142,7 +1142,7 @@ void ifCommonPlayerStockMultiMakeInterface(s32 player)
 
         sIFCommonPlayerStocksNum[player] = S8_MAX;
 
-        sprite = fp->attributes->sprites->stock_sprite;
+        sprite = fp->attr->sprites->stock_sprite;
         sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 
         ifSetPlayer(interface_gobj, player);
@@ -1162,9 +1162,9 @@ void ifCommonPlayerStockSingleFuncDisplay(GObj *interface_gobj)
 }
 
 // 0x8010FF78
-void ifCommonPlayerStockSetLUT(s32 player, s32 lut_id, FTAttributes *attributes)
+void ifCommonPlayerStockSetLUT(s32 player, s32 lut_id, FTAttributes *attr)
 {
-    SObjGetStruct(sIFCommonPlayerStocksGObj[player])->sprite.LUT = attributes->sprites->stock_luts[lut_id];
+    SObjGetStruct(sIFCommonPlayerStocksGObj[player])->sprite.LUT = attr->sprites->stock_luts[lut_id];
 }
 
 // 0x8010FFA8
@@ -1174,16 +1174,16 @@ void ifCommonPlayerStockSingleMakeInterface(s32 player)
     GObj *interface_gobj;
     SObj *sobj;
 
-    if ((fp->attributes->sprites != NULL) && (fp->attributes->sprites->stock_sprite != NULL))
+    if ((fp->attr->sprites != NULL) && (fp->attr->sprites->stock_sprite != NULL))
     {
         sIFCommonPlayerStocksGObj[player] = interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
         gcAddGObjDisplay(interface_gobj, ifCommonPlayerStockSingleFuncDisplay, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-        sobj = lbCommonMakeSObjForGObj(interface_gobj, fp->attributes->sprites->stock_sprite);
+        sobj = lbCommonMakeSObjForGObj(interface_gobj, fp->attr->sprites->stock_sprite);
 
         sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
-        sobj->sprite.LUT = fp->attributes->sprites->stock_luts[fp->costume];
+        sobj->sprite.LUT = fp->attr->sprites->stock_luts[fp->costume];
 
         sobj->pos.x = ((gIFCommonPlayerInterface.ifplayers_pos_x[player] + dIFCommonPlayerStocksIconOffsetsX[player]) - (s32)(sobj->sprite.width * 0.5F));
         sobj->pos.y = ((gIFCommonPlayerInterface.ifplayers_pos_y - (s32)(sobj->sprite.height * 0.5F)) - 20);
@@ -1244,7 +1244,7 @@ void ifCommonPlayerStockStealMakeInterface(s32 thief, s32 stolen)
         gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
         gcAddGObjProcess(interface_gobj, ifCommonPlayerStockStealProcUpdate, nGCProcessKindProc, 0);
 
-        check_sobj = lbCommonMakeSObjForGObj(interface_gobj, fp->attributes->sprites->stock_sprite);
+        check_sobj = lbCommonMakeSObjForGObj(interface_gobj, fp->attr->sprites->stock_sprite);
 
         if (check_sobj == NULL)
         {
@@ -1257,7 +1257,7 @@ void ifCommonPlayerStockStealMakeInterface(s32 thief, s32 stolen)
             sobj = check_sobj;
 
             sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
-            sobj->sprite.LUT = fp->attributes->sprites->stock_luts[fp->costume];
+            sobj->sprite.LUT = fp->attr->sprites->stock_luts[fp->costume];
 
             sIFCommonPlayerStealInterface[thief].steal_pos_x = ((gIFCommonPlayerInterface.ifplayers_pos_x[stolen] + dIFCommonPlayerStocksIconOffsetsX[stolen]) - (s32)(sobj->sprite.width * 0.5F));
             sIFCommonPlayerStealInterface[thief].steal_pos_y = ((gIFCommonPlayerInterface.ifplayers_pos_y - (s32)(sobj->sprite.height * 0.5F)) - 20);
@@ -1827,7 +1827,7 @@ void ifCommonPlayerTagFuncDisplay(GObj *interface_gobj)
         {
             pos = fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
-            pos.y += fp->attributes->camera_zoom_default;
+            pos.y += fp->attr->camera_zoom_default;
 
             func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &pos, &x, &y);
 
@@ -2273,7 +2273,7 @@ void ifCommonEntryFocusThread(GObj *interface_gobj)
         {
             gcStopCurrentGObjThread(30);
 
-            func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_camera_zoom, 0.1F, 28.0F);
+            func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attr->closeup_camera_zoom, 0.1F, 28.0F);
             gcStopCurrentGObjThread(stop_tics - 30);
         }
         else gcStopCurrentGObjThread(stop_tics);
@@ -2931,7 +2931,7 @@ void ifCommonBattleGoUpdateInterface(void)
                         }
                         else
                         {
-                            func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attributes->closeup_camera_zoom, 0.1F, 29.0F);
+                            func_ovl2_8010CF44(fighter_gobj, 0.0F, 0.0F, ftGetStruct(fighter_gobj)->attr->closeup_camera_zoom, 0.1F, 29.0F);
 
                             sIFCommonBattlePauseCameraEyeXOrigin = gCMManagerPauseCameraEyeX;
                             sIFCommonBattlePauseCameraEyeYOrigin = gCMManagerPauseCameraEyeY;

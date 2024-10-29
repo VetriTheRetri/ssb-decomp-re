@@ -370,11 +370,11 @@ void itNBumperAttachedInitItemVars(GObj *item_gobj)
     ip->physics.vel_air.y = 0.0F;
     ip->physics.vel_air.z = 0.0F;
 
-    dl = itGetPData(ip, lITNBumperDataStart, lITNBumperWaitDisplayList); // (uintptr_t)((uintptr_t)ip->attributes->dobj_setup - (intptr_t)&lITNBumperDataStart) + (intptr_t)&lITNBumperWaitDisplayList; Linker thing
+    dl = itGetPData(ip, lITNBumperDataStart, lITNBumperWaitDisplayList); // (uintptr_t)((uintptr_t)ip->attr->dobj_setup - (intptr_t)&lITNBumperDataStart) + (intptr_t)&lITNBumperWaitDisplayList; Linker thing
 
     dobj->display_list = dl;
 
-    mobjsub = itGetPData(ip, lITNBumperDataStart, lITNBumperWaitMObjSub); // ((uintptr_t)((uintptr_t)ip->attributes->dobj_setup - (intptr_t)&lITNBumperDataStart) + (intptr_t)&lITNBumperWaitMObjSub); // Linker thing
+    mobjsub = itGetPData(ip, lITNBumperDataStart, lITNBumperWaitMObjSub); // ((uintptr_t)((uintptr_t)ip->attr->dobj_setup - (intptr_t)&lITNBumperDataStart) + (intptr_t)&lITNBumperWaitMObjSub); // Linker thing
 
     gcRemoveMObjAll(dobj);
     gcAddMObjForDObj(dobj, mobjsub);
@@ -419,7 +419,7 @@ sb32 itNBumperAttachedProcHit(GObj *item_gobj)
 sb32 itNBumperAttachedProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITAttributes *attributes = ip->attributes;
+    ITAttributes *attr = ip->attr;
     DObj *dobj = DObjGetStruct(item_gobj);
     Vec3f edge_pos;
 
@@ -435,7 +435,7 @@ sb32 itNBumperAttachedProcUpdate(GObj *item_gobj)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &edge_pos);
 
-            if (edge_pos.x >= (dobj->translate.vec.f.x - attributes->obj_coll_width))
+            if (edge_pos.x >= (dobj->translate.vec.f.x - attr->obj_coll_width))
             {
                 ip->physics.vel_air.x = 0.0F;
             }
@@ -444,7 +444,7 @@ sb32 itNBumperAttachedProcUpdate(GObj *item_gobj)
         {
             mpCollisionGetLREdgeRight(ip->coll_data.ground_line_id, &edge_pos);
 
-            if (edge_pos.x <= (dobj->translate.vec.f.x + attributes->obj_coll_width))
+            if (edge_pos.x <= (dobj->translate.vec.f.x + attr->obj_coll_width))
             {
                 ip->physics.vel_air.x = 0.0F;
             }

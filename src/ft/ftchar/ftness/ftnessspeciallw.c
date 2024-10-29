@@ -81,17 +81,17 @@ void ftNessSpecialLwProcPhysics(GObj *fighter_gobj)
 void ftNessSpecialAirLwProcPhysics(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if (fp->status_vars.ness.speciallw.gravity_delay != 0)
     {
         fp->status_vars.ness.speciallw.gravity_delay--;
     }
-    else ftPhysicsApplyGravityClampTVel(fp, 0.8F, attributes->tvel_default);
+    else ftPhysicsApplyGravityClampTVel(fp, 0.8F, attr->tvel_default);
     
-    if (ftPhysicsCheckClampAirVelXDecMax(fp, attributes) == FALSE)
+    if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
     {
-        ftPhysicsApplyAirVelXFriction(fp, attributes);
+        ftPhysicsApplyAirVelXFriction(fp, attr);
     }
 }
 // 0x80155380

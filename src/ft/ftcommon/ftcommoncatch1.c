@@ -105,10 +105,10 @@ void ftCommonCatchSetStatus(GObj *fighter_gobj)
 sb32 ftCommonCatchCheckInterruptGuard(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
     sb32 is_shield_catch = fp->status_vars.common.guard.is_setoff;
 
-    if ((fp->input.pl.button_tap & fp->input.button_mask_a) && (attributes->is_have_catch))
+    if ((fp->input.pl.button_tap & fp->input.button_mask_a) && (attr->is_have_catch))
     {
         ftCommonCatchSetStatus(fighter_gobj);
 
@@ -123,7 +123,7 @@ sb32 ftCommonCatchCheckInterruptGuard(GObj *fighter_gobj)
 sb32 ftCommonCatchCheckInterruptCommon(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if (ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE)
     {
@@ -131,7 +131,7 @@ sb32 ftCommonCatchCheckInterruptCommon(GObj *fighter_gobj)
 
         return TRUE;
     }
-    else if ((fp->input.pl.button_hold & fp->input.button_mask_z) && (fp->input.pl.button_tap & fp->input.button_mask_a) && (attributes->is_have_catch))
+    else if ((fp->input.pl.button_hold & fp->input.button_mask_z) && (fp->input.pl.button_tap & fp->input.button_mask_a) && (attr->is_have_catch))
     {
         ftCommonCatchSetStatus(fighter_gobj);
 
@@ -144,7 +144,7 @@ sb32 ftCommonCatchCheckInterruptCommon(GObj *fighter_gobj)
 sb32 ftCommonCatchCheckInterruptDashRun(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if (ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE)
     {
@@ -152,7 +152,7 @@ sb32 ftCommonCatchCheckInterruptDashRun(GObj *fighter_gobj)
 
         return TRUE;
     }
-    else if ((fp->input.pl.button_hold & fp->input.button_mask_z) && (fp->input.pl.button_tap & fp->input.button_mask_a) && (attributes->is_have_catch))
+    else if ((fp->input.pl.button_hold & fp->input.button_mask_z) && (fp->input.pl.button_tap & fp->input.button_mask_a) && (attr->is_have_catch))
     {
         ftCommonCatchSetStatus(fighter_gobj);
 
@@ -165,7 +165,7 @@ sb32 ftCommonCatchCheckInterruptDashRun(GObj *fighter_gobj)
 sb32 ftCommonCatchCheckInterruptAttack11(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
     if (ftCommonLightThrowCheckItemTypeThrow(fp) != FALSE)
     {
@@ -173,7 +173,7 @@ sb32 ftCommonCatchCheckInterruptAttack11(GObj *fighter_gobj)
 
         return TRUE;
     }
-    else if ((fp->input.pl.button_tap & fp->input.button_mask_z) && (attributes->is_have_catch))
+    else if ((fp->input.pl.button_tap & fp->input.button_mask_z) && (attr->is_have_catch))
     {
         ftCommonCatchSetStatus(fighter_gobj);
 

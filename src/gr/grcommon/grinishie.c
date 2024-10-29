@@ -99,7 +99,7 @@ f32 grInishieScaleGetPressure(s32 line_id)
         {
             if ((fp->coll_data.ground_line_id != -2) && (mpCollisionSetDObjNoID(fp->coll_data.ground_line_id) == line_id))
             {
-                f32 weight = (1.0F - fp->attributes->weight) + 1.4F;
+                f32 weight = (1.0F - fp->attr->weight) + 1.4F;
 
                 if (gGRCommonStruct.inishie.players_tt[fp->player] != 0)
                 {

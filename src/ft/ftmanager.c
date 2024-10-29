@@ -463,7 +463,7 @@ void ftManagerDestroyFighterWeapons(GObj *fighter_gobj)
 void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
     f32 scale;
 
     fp->lr = ft_desc->lr_spawn;
@@ -520,7 +520,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
     fp->capture_gobj = NULL;
     fp->unk_ft_0x192_b3 = FALSE;
 
-    fp->item_hold = NULL;
+    fp->item_gobj = NULL;
 
     fp->reflect_lr = 0;
     fp->absorb_lr = 0;
@@ -567,7 +567,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
     fp->afterimage.desc_index = 0;
 
     DObjGetStruct(fighter_gobj)->translate.vec.f = ft_desc->pos;
-    DObjGetStruct(fighter_gobj)->scale.vec.f.x = DObjGetStruct(fighter_gobj)->scale.vec.f.y = DObjGetStruct(fighter_gobj)->scale.vec.f.z = attributes->size_mul;
+    DObjGetStruct(fighter_gobj)->scale.vec.f.x = DObjGetStruct(fighter_gobj)->scale.vec.f.y = DObjGetStruct(fighter_gobj)->scale.vec.f.z = attr->size_mul;
 
     if (fp->pl_kind != nFTPlayerKindDemo)
     {
@@ -696,7 +696,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
     GObj *fighter_gobj;
     s32 i;
     FTParts *ft_parts;
-    FTAttributes *attributes;
+    FTAttributes *attr;
     s32 unused;
     DObj *topn_joint;
     FTMesh *ft_mesh;
@@ -713,7 +713,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
     fp->fighter_gobj = fighter_gobj;
     fp->ft_kind = ft_desc->ft_kind;
     fp->ft_data = dFTManagerDataFiles[fp->ft_kind];
-    attributes = fp->attributes = (FTAttributes*) ((uintptr_t)*fp->ft_data->p_file_main + (intptr_t)fp->ft_data->o_attributes);
+    attr = fp->attr = (FTAttributes*) ((uintptr_t)*fp->ft_data->p_file_main + (intptr_t)fp->ft_data->o_attributes);
     fp->figatree_heap = ft_desc->figatree_heap;
     fp->team = ft_desc->team;
     fp->player = ft_desc->player;
@@ -728,9 +728,9 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
     fp->costume = ft_desc->costume;
     fp->shade = ft_desc->shade;
 
-    fp->shade_color.r = (attributes->shade_color[fp->shade - 1].r * attributes->shade_color[fp->shade - 1].a) / 0xFF;
-    fp->shade_color.g = (attributes->shade_color[fp->shade - 1].g * attributes->shade_color[fp->shade - 1].a) / 0xFF;
-    fp->shade_color.b = (attributes->shade_color[fp->shade - 1].b * attributes->shade_color[fp->shade - 1].a) / 0xFF;
+    fp->shade_color.r = (attr->shade_color[fp->shade - 1].r * attr->shade_color[fp->shade - 1].a) / 0xFF;
+    fp->shade_color.g = (attr->shade_color[fp->shade - 1].g * attr->shade_color[fp->shade - 1].a) / 0xFF;
+    fp->shade_color.b = (attr->shade_color[fp->shade - 1].b * attr->shade_color[fp->shade - 1].a) / 0xFF;
 
     fp->handicap = ft_desc->handicap;
     fp->cp_level = ft_desc->cp_level;
@@ -766,13 +766,13 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
 
     fp->status_total_tics = 0;
 
-    fp->camera_zoom_frame = attributes->camera_zoom;
+    fp->camera_zoom_frame = attr->camera_zoom;
     fp->camera_zoom_range = 1.0F;
 
     fp->is_playertag_bossend = FALSE;
     fp->is_limit_map_bounds = FALSE;
 
-    fp->is_have_translate_scale = (attributes->translate_scales != NULL) ? TRUE : FALSE;
+    fp->is_have_translate_scale = (attr->translate_scales != NULL) ? TRUE : FALSE;
 
     for (i = 0; i < ARRAY_COUNT(fp->joints); i++)
     {
@@ -785,7 +785,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
 
     fp->joints[nFTPartsJointTopN]->xobj[0]->unk05 = ft_desc->unk_rebirth_0x1D;
 
-    lbCommonSetupFighterPartsDObjs(DObjGetStruct(fighter_gobj), attributes->commonparts_container, fp->detail_current, &fp->joints[nFTPartsJointCommonStart], attributes->setup_parts, 0x4B, 0, 0, fp->costume, fp->unk_ft_0x149);
+    lbCommonSetupFighterPartsDObjs(DObjGetStruct(fighter_gobj), attr->commonparts_container, fp->detail_current, &fp->joints[nFTPartsJointCommonStart], attr->setup_parts, 0x4B, 0, 0, fp->costume, fp->unk_ft_0x149);
 
     for (i = 0; i < ARRAY_COUNT(fp->joints); i++)
     {
@@ -794,14 +794,14 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
             fp->joints[i]->user_data.p = ftManagerGetNextPartsAlloc();
 
             ft_parts = fp->joints[i]->user_data.p;
-            ft_parts->flags = attributes->commonparts_container->commonparts[fp->detail_current - nFTPartsDetailStart].flags;
+            ft_parts->flags = attr->commonparts_container->commonparts[fp->detail_current - nFTPartsDetailStart].flags;
             ft_parts->joint_id = i;
 
             if (fp->costume != 0)
             {
-                if ((attributes->mesh != NULL) && (i == attributes->mesh->joint_id))
+                if ((attr->mesh != NULL) && (i == attr->mesh->joint_id))
                 {
-                    ft_mesh = attributes->mesh;
+                    ft_mesh = attr->mesh;
 
                     ft_parts->gobj = gcMakeGObjSPAfter(nGCCommonKindFighterParts, NULL, nGCCommonLinkIDFighterParts, GOBJ_LINKORDER_DEFAULT);
 
@@ -839,15 +839,15 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
 
     for (i = 0; i < ARRAY_COUNT(fp->dmg_colls); i++)
     {
-        if (attributes->dmg_colls_desc[i].joint_id != -1)
+        if (attr->dmg_colls_desc[i].joint_id != -1)
         {
             fp->dmg_colls[i].hitstatus = nGMHitStatusNormal;
-            fp->dmg_colls[i].joint_id = attributes->dmg_colls_desc[i].joint_id;
+            fp->dmg_colls[i].joint_id = attr->dmg_colls_desc[i].joint_id;
             fp->dmg_colls[i].joint = fp->joints[fp->dmg_colls[i].joint_id];
-            fp->dmg_colls[i].placement = attributes->dmg_colls_desc[i].placement;
-            fp->dmg_colls[i].is_grabbable = attributes->dmg_colls_desc[i].is_grabbable;
-            fp->dmg_colls[i].offset = attributes->dmg_colls_desc[i].offset;
-            fp->dmg_colls[i].size = attributes->dmg_colls_desc[i].size;
+            fp->dmg_colls[i].placement = attr->dmg_colls_desc[i].placement;
+            fp->dmg_colls[i].is_grabbable = attr->dmg_colls_desc[i].is_grabbable;
+            fp->dmg_colls[i].offset = attr->dmg_colls_desc[i].offset;
+            fp->dmg_colls[i].size = attr->dmg_colls_desc[i].size;
 
             fp->dmg_colls[i].size.x *= 0.5F;
             fp->dmg_colls[i].size.y *= 0.5F;
@@ -857,9 +857,9 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
     }
     fp->coll_data.p_translate = &DObjGetStruct(fighter_gobj)->translate.vec.f;
     fp->coll_data.p_lr = &fp->lr;
-    fp->coll_data.obj_coll = attributes->obj_coll;
+    fp->coll_data.obj_coll = attr->obj_coll;
     fp->coll_data.p_obj_coll = &fp->coll_data.obj_coll;
-    fp->coll_data.cliffcatch_coll = attributes->cliffcatch_coll;
+    fp->coll_data.cliffcatch_coll = attr->cliffcatch_coll;
     fp->coll_data.ignore_line_id = -1;
     fp->coll_data.coll_update_frame = gMPCollisionUpdateFrame;
     fp->coll_data.coll_mask_current = 0;

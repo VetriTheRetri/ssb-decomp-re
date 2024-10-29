@@ -88,9 +88,9 @@ void ftKirbySpecialNSetStatusSelect(GObj *fighter_gobj)
 sb32 ftCommonSpecialNCheckInterruptCommon(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
 
-    if ((fp->input.pl.button_tap & fp->input.button_mask_b) && (attributes->is_have_specialn))
+    if ((fp->input.pl.button_tap & fp->input.button_mask_b) && (attr->is_have_specialn))
     {
         if ((fp->input.pl.stick_range.y < FTCOMMON_SPECIALHI_STICK_RANGE_MIN) && (fp->input.pl.stick_range.y > FTCOMMON_SPECIALLW_STICK_RANGE_MIN))
         {

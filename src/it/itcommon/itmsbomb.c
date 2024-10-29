@@ -361,7 +361,7 @@ void itMSBombAttachedInitItemVars(GObj *item_gobj)
 void itMSBombExplodeMakeEffect(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITAttributes *attributes = ip->attributes;
+    ITAttributes *attr = ip->attr;
     DObj *dobj = DObjGetStruct(item_gobj);
     s32 unused[4];
 
@@ -369,7 +369,7 @@ void itMSBombExplodeMakeEffect(GObj *item_gobj)
     {
         Vec3f translate = dobj->translate.vec.f;
 
-        translate.y += attributes->obj_coll_bottom;
+        translate.y += attr->obj_coll_bottom;
 
         efManagerDustHeavyDoubleMakeEffect(&translate, ip->lr, 1.0F);
     }
@@ -434,7 +434,7 @@ sb32 itMSBombAttachedProcUpdate(GObj *item_gobj)
         {
             FTStruct *fp = ftGetStruct(fighter_gobj);
             DObj *fighter_dobj = DObjGetStruct(fighter_gobj);
-            f32 var = fp->attributes->obj_coll.top * 0.5F;
+            f32 var = fp->attr->obj_coll.top * 0.5F;
 
             fighter_pos = fighter_dobj->translate.vec.f;
 
@@ -538,7 +538,7 @@ sb32 itMSBombDetachedProcUpdate(GObj *item_gobj)
         {
             FTStruct *fp = ftGetStruct(fighter_gobj);
             DObj *fighter_dobj = DObjGetStruct(fighter_gobj);
-            f32 offset_y = fp->attributes->obj_coll.top * 0.5F;
+            f32 offset_y = fp->attr->obj_coll.top * 0.5F;
 
             fighter_pos = fighter_dobj->translate.vec.f;
 

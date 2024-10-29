@@ -126,7 +126,7 @@ void func_ovl3_80172310(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->rotate_step = (ip->attributes->spin_speed != 0) ? (ip->attributes->spin_speed * ITEM_SPIN_SPEED_FRACTION_DEFAULT * ITEM_SPIN_SPEED_MUL_DEFAULT) : 0.0F;
+    ip->rotate_step = (ip->attr->spin_speed != 0) ? (ip->attr->spin_speed * ITEM_SPIN_SPEED_FRACTION_DEFAULT * ITEM_SPIN_SPEED_MUL_DEFAULT) : 0.0F;
 
     if (ip->lr == -1)
     {
@@ -143,15 +143,15 @@ void func_ovl3_80172394(GObj *item_gobj, sb32 is_prev_spawn)
 
     if (is_prev_spawn == FALSE)
     {
-        if (ip->attributes->spin_speed != 0)
+        if (ip->attr->spin_speed != 0)
         {
-            ip->rotate_step = ip->attributes->spin_speed * ITEM_SPIN_SPEED_FRACTION_DEFAULT * ITEM_SPIN_SPEED_MUL_NEW_SPAWN;
+            ip->rotate_step = ip->attr->spin_speed * ITEM_SPIN_SPEED_FRACTION_DEFAULT * ITEM_SPIN_SPEED_MUL_NEW_SPAWN;
         }
         else ip->rotate_step = 0.0F;
     }
-    else if (ip->attributes->spin_speed != 0)
+    else if (ip->attr->spin_speed != 0)
     {
-        ip->rotate_step = ip->attributes->spin_speed * ITEM_SPIN_SPEED_FRACTION_DEFAULT * ITEM_SPIN_SPEED_MUL_PREV_SPAWN;
+        ip->rotate_step = ip->attr->spin_speed * ITEM_SPIN_SPEED_FRACTION_DEFAULT * ITEM_SPIN_SPEED_MUL_PREV_SPAWN;
     }
     else ip->rotate_step = 0.0F;
 }
@@ -167,7 +167,7 @@ void func_ovl3_8017245C(GObj *item_gobj, Vec3f *vel, sb32 is_smash_throw)
     {
         ip->rotate_step = -ip->rotate_step;
     }
-    ip->rotate_step = (ip->attributes->spin_speed != 0) ? (ip->attributes->spin_speed * ITEM_SPIN_SPEED_FRACTION_DEFAULT * ip->rotate_step) : 0.0F;
+    ip->rotate_step = (ip->attr->spin_speed != 0) ? (ip->attr->spin_speed * ITEM_SPIN_SPEED_FRACTION_DEFAULT * ip->rotate_step) : 0.0F;
 }
 
 // 0x80172508
@@ -300,7 +300,7 @@ void itMainDestroyItem(GObj *item_gobj)
     {
         FTStruct *fp = ftGetStruct(ip->owner_gobj);
 
-        fp->item_hold = NULL;
+        fp->item_gobj = NULL;
 
         ftParamSetHammerParams(ip->owner_gobj);
     }
@@ -329,7 +329,7 @@ void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_fl
 
     pos.x = pos.y = pos.z = 0.0F;
 
-    joint_id = (ip->weight == nITWeightHeavy) ? fp->attributes->joint_itemheavy_id : fp->attributes->joint_itemlight_id;
+    joint_id = (ip->weight == nITWeightHeavy) ? fp->attr->joint_itemheavy_id : fp->attr->joint_itemlight_id;
 
     gmCollisionGetFighterPartsWorldPosition(fp->joints[joint_id], &pos);
 
@@ -339,7 +339,7 @@ void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_fl
 
     mpCommonRunItemCollisionDefault(item_gobj, fp->coll_data.p_translate, &fp->coll_data);
 
-    fp->item_hold = NULL;
+    fp->item_gobj = NULL;
 
     ip->is_hold = FALSE;
 
@@ -418,7 +418,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
     Vec3f pos;
     s32 joint_id;
 
-    fp->item_hold = item_gobj;
+    fp->item_gobj = item_gobj;
     ip->owner_gobj = fighter_gobj;
 
     ip->is_allow_pickup = FALSE;
@@ -449,7 +449,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     gcAddXObjForDObjFixed(joint, 0x52, 0);
 
-    joint_id = (ip->weight == nITWeightHeavy) ? fp->attributes->joint_itemheavy_id : fp->attributes->joint_itemlight_id;
+    joint_id = (ip->weight == nITWeightHeavy) ? fp->attr->joint_itemheavy_id : fp->attr->joint_itemlight_id;
 
     joint->user_data.p = fp->joints[joint_id];
 
@@ -461,7 +461,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     efManagerItemGetSwirlProcUpdate(&pos);
 
-    gcSetDObjTransformsForGObj(item_gobj, ip->attributes->dobj_setup);
+    gcSetDObjTransformsForGObj(item_gobj, ip->attr->dobj_setup);
 
     proc_pickup = dITMainProcHoldList[ip->it_kind];
 
@@ -475,9 +475,9 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
     {
         func_800269C0_275C0(nSYAudioFGMItemGet);
     }
-    else if (fp->attributes->heavyget_sfx != nSYAudioFGMVoiceEnd)
+    else if (fp->attr->heavyget_sfx != nSYAudioFGMVoiceEnd)
     {
-        func_800269C0_275C0(fp->attributes->heavyget_sfx);
+        func_800269C0_275C0(fp->attr->heavyget_sfx);
     }
     
     ftParamMakeRumble(fp, 6, 0);

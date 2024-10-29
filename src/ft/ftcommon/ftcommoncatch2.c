@@ -48,7 +48,7 @@ void ftCommonCatchPullProcCatch(GObj *fighter_gobj)
     }
     pos = dFTCommonCatchPullEffectOffset;
 
-    gmCollisionGetFighterPartsWorldPosition(fp->joints[fp->attributes->joint_itemheavy_id], &pos);
+    gmCollisionGetFighterPartsWorldPosition(fp->joints[fp->attr->joint_itemheavy_id], &pos);
     efManagerCatchSwirlMakeEffect(&pos);
     ftParamMakeRumble(fp, 9, 0);
 }

@@ -59,7 +59,7 @@ sb32 ftCommonHammerFallCheckInterruptDamageFall(GObj *fighter_gobj)
 void ftCommonHammerFallSetStatusJump(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
     s32 vel_x, vel_y;
 
     mpCommonSetFighterAir(fp);
@@ -78,8 +78,8 @@ void ftCommonHammerFallSetStatusJump(GObj *fighter_gobj)
         vel_y = fp->status_vars.common.hammer.jump_force;
         break;
     }
-    fp->physics.vel_air.y = (vel_y * attributes->jump_height_mul) + attributes->jump_height_base;
-    fp->physics.vel_air.x = vel_x * attributes->jump_vel_x;
+    fp->physics.vel_air.y = (vel_y * attr->jump_height_mul) + attr->jump_height_base;
+    fp->physics.vel_air.x = vel_x * attr->jump_vel_x;
 
     fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
 }

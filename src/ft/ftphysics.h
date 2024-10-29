@@ -47,13 +47,13 @@ void ftPhysicsAddClampAirVelY(FTStruct* fp, f32 vel, f32 clamp);
 void ftPhysicsApplyGravityClampTVel(FTStruct* fp, f32 gravity, f32 t_vel);
 
 // Set aerial Y velocity to fast fall speed
-void ftPhysicsApplyFastFall(FTStruct* fp, FTAttributes* attributes);
+void ftPhysicsApplyFastFall(FTStruct* fp, FTAttributes *attr);
 
 // Check for fast fall input from player
 void ftPhysicsCheckSetFastFall(FTStruct* fp);
 
 // Runs ftPhysicsApplyGravityClampTVel
-void ftPhysicsApplyGravityDefault(FTStruct* fp, FTAttributes* attributes);
+void ftPhysicsApplyGravityDefault(FTStruct* fp, FTAttributes *attr);
 
 // Clamp aerial X velocity
 void ftPhysicsClampAirVelX(FTStruct* fp, f32 clamp);
@@ -67,16 +67,16 @@ sb32 ftPhysicsCheckClampAirVelXDec(FTStruct* fp, f32 clamp);
 
 // Run ftPhysicsCheckClampAirVelXDec with character's maximum horizontal air
 // speed as clamp value
-sb32 ftPhysicsCheckClampAirVelXDecMax(FTStruct* fp, FTAttributes* attributes);
+sb32 ftPhysicsCheckClampAirVelXDecMax(FTStruct* fp, FTAttributes *attr);
 
 // Apply and clamp aerial X velocity if stick range is greater than stick_x_min
 void ftPhysicsClampAirVelXStickRange(FTStruct* fp, s32 stick_range_min, f32 vel, f32 clamp);
 
 // Apply and clamp aerial X velocity if stick range is greater than 8 units
-void ftPhysicsClampAirVelXStickDefault(FTStruct* fp, FTAttributes* attributes);
+void ftPhysicsClampAirVelXStickDefault(FTStruct* fp, FTAttributes *attr);
 
 // Apply friction to aerial X velocity
-void ftPhysicsApplyAirVelXFriction(FTStruct* fp, FTAttributes* attributes);
+void ftPhysicsApplyAirVelXFriction(FTStruct* fp, FTAttributes *attr);
 
 // Standard air drift physics
 void ftPhysicsApplyAirVelDrift(GObj* fighter_gobj);

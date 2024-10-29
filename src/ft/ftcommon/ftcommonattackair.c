@@ -78,7 +78,7 @@ void ftCommonAttackAirProcMap(GObj *fighter_gobj)
 sb32 ftCommonAttackAirCheckInterruptCommon(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTAttributes *attributes = fp->attributes;
+    FTAttributes *attr = fp->attr;
     s32 status_id;
     ub32 is_have_attack_flag;
     f32 angle;
@@ -92,7 +92,7 @@ sb32 ftCommonAttackAirCheckInterruptCommon(GObj *fighter_gobj)
             {
                 if ((ABS(fp->input.pl.stick_range.x) < FTCOMMON_ATTACKAIR_DIRECTION_STICK_RANGE_MIN) && (ABS(fp->input.pl.stick_range.y) < FTCOMMON_ATTACKAIR_DIRECTION_STICK_RANGE_MIN))
                 {
-                    if (itGetStruct(fp->item_hold)->type == nITTypeThrow)
+                    if (itGetStruct(fp->item_gobj)->type == nITTypeThrow)
                     {
                         ftCommonItemThrowSetStatus(fighter_gobj, nFTCommonStatusLightThrowAirF);
 
@@ -146,7 +146,7 @@ sb32 ftCommonAttackAirCheckInterruptCommon(GObj *fighter_gobj)
                 if ((ABS(fp->input.pl.stick_range.x) < FTCOMMON_ATTACKAIR_DIRECTION_STICK_RANGE_MIN) && (ABS(fp->input.pl.stick_range.y) < FTCOMMON_ATTACKAIR_DIRECTION_STICK_RANGE_MIN))
                 {
                     status_id = nFTCommonStatusAttackAirN;
-                    is_have_attack_flag = attributes->is_have_attackairn;
+                    is_have_attack_flag = attr->is_have_attackairn;
                     is_goto_shoot = TRUE;
                 }
                 else
@@ -156,29 +156,29 @@ sb32 ftCommonAttackAirCheckInterruptCommon(GObj *fighter_gobj)
                     if (angle > F_CST_DTOR32(50.0F)) // 0.87266463F
                     {
                         status_id = nFTCommonStatusAttackAirHi;
-                        is_have_attack_flag = attributes->is_have_attackairhi;
+                        is_have_attack_flag = attr->is_have_attackairhi;
                     }
                     else if (angle < F_CST_DTOR32(-50.0F)) // -0.87266463F
                     {
                         status_id = nFTCommonStatusAttackAirLw;
-                        is_have_attack_flag = attributes->is_have_attackairlw;
+                        is_have_attack_flag = attr->is_have_attackairlw;
                     }
                     else if ((fp->input.pl.stick_range.x * fp->lr) >= 0)
                     {
                         status_id = nFTCommonStatusAttackAirF;
-                        is_have_attack_flag = attributes->is_have_attackairf;
+                        is_have_attack_flag = attr->is_have_attackairf;
                         is_goto_shoot = TRUE;
                     }
                     else
                     {
                         status_id = nFTCommonStatusAttackAirB;
-                        is_have_attack_flag = attributes->is_have_attackairb;
+                        is_have_attack_flag = attr->is_have_attackairb;
                     }
                 }
             }
             if (is_goto_shoot != FALSE)
             {
-                if ((fp->item_hold != NULL) && (itGetStruct(fp->item_hold)->type == nITTypeShoot))
+                if ((fp->item_gobj != NULL) && (itGetStruct(fp->item_gobj)->type == nITTypeShoot))
                 {
                     ftCommonItemShootAirSetStatus(fighter_gobj);
 

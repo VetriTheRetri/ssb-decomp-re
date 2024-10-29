@@ -163,8 +163,8 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
     Vec3f effect_offset;
     Vec3f effect_scatter;
     u32 flag;
-    Vec3f hurt_offset;
-    Vec3f hurt_size;
+    Vec3f dmg_coll_offset;
+    Vec3f dmg_coll_size;
     FTAttributes *attributes;
     FTMotionDamageScript *p_damage;
     s32 ft_kind;
@@ -478,22 +478,22 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
 
         ftMotionEventAdvance(ms, FTMotionEventModifyHurtPartID1);
 
-        hurt_offset.x = ftMotionEventCast(ms, FTMotionEventModifyHurtPartID2)->off_x;
-        hurt_offset.y = ftMotionEventCast(ms, FTMotionEventModifyHurtPartID2)->off_y;
+        dmg_coll_offset.x = ftMotionEventCast(ms, FTMotionEventModifyHurtPartID2)->off_x;
+        dmg_coll_offset.y = ftMotionEventCast(ms, FTMotionEventModifyHurtPartID2)->off_y;
 
         ftMotionEventAdvance(ms, FTMotionEventModifyHurtPartID2);
 
-        hurt_offset.z = ftMotionEventCast(ms, FTMotionEventModifyHurtPartID3)->off_z;
-        hurt_size.x = ftMotionEventCast(ms, FTMotionEventModifyHurtPartID3)->size_x;
+        dmg_coll_offset.z = ftMotionEventCast(ms, FTMotionEventModifyHurtPartID3)->off_z;
+        dmg_coll_size.x = ftMotionEventCast(ms, FTMotionEventModifyHurtPartID3)->size_x;
 
         ftMotionEventAdvance(ms, FTMotionEventModifyHurtPartID3);
 
-        hurt_size.y = ftMotionEventCast(ms, FTMotionEventModifyHurtPartID4)->size_y;
-        hurt_size.z = ftMotionEventCast(ms, FTMotionEventModifyHurtPartID4)->size_z;
+        dmg_coll_size.y = ftMotionEventCast(ms, FTMotionEventModifyHurtPartID4)->size_y;
+        dmg_coll_size.z = ftMotionEventCast(ms, FTMotionEventModifyHurtPartID4)->size_z;
 
         ftMotionEventAdvance(ms, FTMotionEventModifyHurtPartID4);
 
-        ftParamModifyFighterDamagePartID(fighter_gobj, joint_id, &hurt_offset, &hurt_size);
+        ftParamModifyFighterDamagePartID(fighter_gobj, joint_id, &dmg_coll_offset, &dmg_coll_size);
         break;
 
     case nFTMotionEventKindLoopBegin:

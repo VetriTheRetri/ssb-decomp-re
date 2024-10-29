@@ -40,7 +40,7 @@ struct WPAttributes // Moreso hitbox stuff
     MObjSub ***p_mobjsubs;                     // Triple pointer???
     AObjEvent32 **anim_joints;
     AObjEvent32 ***p_matanim_joints;
-    Vec3h offset[2];
+    Vec3h atk_offsets[2];
     s16 obj_coll_top;
     s16 obj_coll_center;
     s16 obj_coll_bottom;

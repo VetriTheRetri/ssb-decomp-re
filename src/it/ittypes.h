@@ -152,18 +152,18 @@ struct ITAttributes
 	ub32 is_display_colanim : 1;		// If TRUE, use ColAnim renderer
 	ub32 is_give_hitlag : 1;			// If TRUE, deal hitlag on contact
 	ub32 weight : 1; 					// Heavy = 0, Light = 1
-	s32 hit_offset1_x : 16;				// Hitbox ID0 offset X
-	s32 hit_offset1_y : 16; 			// Hitbox ID0 offset Y
-	s32 hit_offset1_z : 16;				// Hitbox ID0 offset Z
-	s32 hit_offset2_x : 16;				// Hitbox ID1 offset X
-	s32 hit_offset2_y : 16;				// Hitbox ID1 offset Y
-	s32 hit_offset2_z : 16;				// Hitbox ID1 offset Z
-	Vec3h hurt_offset;					// DamageColl offsets
-	Vec3h hurt_size;					// DamageColl size
-	s16 obj_coll_top;				// Map Collision Box top
+	s32 atk_offset0_x : 16;				// Hitbox ID0 offset X
+	s32 atk_offset0_y : 16; 			// Hitbox ID0 offset Y
+	s32 atk_offset0_z : 16;				// Hitbox ID0 offset Z
+	s32 atk_offset1_x : 16;				// Hitbox ID1 offset X
+	s32 atk_offset1_y : 16;				// Hitbox ID1 offset Y
+	s32 atk_offset1_z : 16;				// Hitbox ID1 offset Z
+	Vec3h dmg_coll_offset;				// Hurtbox offset
+	Vec3h dmg_coll_size;				// Hurtbox size
+	s16 obj_coll_top;					// Map Collision Box top
 	s16 obj_coll_center;				// Map Collision Box center
 	s16 obj_coll_bottom;				// Map Collision Box bottom
-	s16 obj_coll_width;				// Map Collision Box width
+	s16 obj_coll_width;					// Map Collision Box width
 	u16 size;							// Hitbox size
 	s32 angle : 10;						// Hitbox launch angle
 	u32 knockback_scale : 10;			// Hitbox knockback scale

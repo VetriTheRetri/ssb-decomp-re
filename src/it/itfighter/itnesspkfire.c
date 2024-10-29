@@ -108,21 +108,21 @@ sb32 itNessPKFireCommonUpdateAllCheckDestroy(GObj *item_gobj)
 
     attributes = ip->attributes;
 
-    ip->atk_coll.offset[0].x = attributes->hit_offset1_x * lifetime_scale;
-    ip->atk_coll.offset[0].y = attributes->hit_offset1_y * lifetime_scale;
-    ip->atk_coll.offset[0].z = attributes->hit_offset1_z * lifetime_scale;
-    ip->atk_coll.offset[1].x = attributes->hit_offset2_x * lifetime_scale;
-    ip->atk_coll.offset[1].y = attributes->hit_offset2_y * lifetime_scale;
-    ip->atk_coll.offset[1].z = attributes->hit_offset2_z * lifetime_scale;
+    ip->atk_coll.offset[0].x = attributes->atk_offset0_x * lifetime_scale;
+    ip->atk_coll.offset[0].y = attributes->atk_offset0_y * lifetime_scale;
+    ip->atk_coll.offset[0].z = attributes->atk_offset0_z * lifetime_scale;
+    ip->atk_coll.offset[1].x = attributes->atk_offset1_x * lifetime_scale;
+    ip->atk_coll.offset[1].y = attributes->atk_offset1_y * lifetime_scale;
+    ip->atk_coll.offset[1].z = attributes->atk_offset1_z * lifetime_scale;
 
     ip->atk_coll.size = attributes->size * 0.5F * lifetime_scale;
 
-    ip->dmg_coll.offset.x = attributes->hurt_offset.x * lifetime_scale;
-    ip->dmg_coll.offset.y = attributes->hurt_offset.y * lifetime_scale;
-    ip->dmg_coll.offset.z = attributes->hurt_offset.z * lifetime_scale;
-    ip->dmg_coll.size.x = attributes->hurt_size.x * 0.5F * lifetime_scale;
-    ip->dmg_coll.size.y = attributes->hurt_size.y * 0.5F * lifetime_scale;
-    ip->dmg_coll.size.z = attributes->hurt_size.z * 0.5F * lifetime_scale;
+    ip->dmg_coll.offset.x = attributes->dmg_coll_offset.x * lifetime_scale;
+    ip->dmg_coll.offset.y = attributes->dmg_coll_offset.y * lifetime_scale;
+    ip->dmg_coll.offset.z = attributes->dmg_coll_offset.z * lifetime_scale;
+    ip->dmg_coll.size.x = attributes->dmg_coll_size.x * 0.5F * lifetime_scale;
+    ip->dmg_coll.size.y = attributes->dmg_coll_size.y * 0.5F * lifetime_scale;
+    ip->dmg_coll.size.z = attributes->dmg_coll_size.z * 0.5F * lifetime_scale;
 
     if (tfrm != NULL)
     {

@@ -323,12 +323,12 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
     ip->atk_coll.throw_mul          = 1.0F;
     ip->atk_coll.stale              = 1.0F;
     ip->atk_coll.element            = attributes->element;
-    ip->atk_coll.offset[0].x        = attributes->hit_offset1_x;
-    ip->atk_coll.offset[0].y        = attributes->hit_offset1_y;
-    ip->atk_coll.offset[0].z        = attributes->hit_offset1_z;
-    ip->atk_coll.offset[1].x        = attributes->hit_offset2_x;
-    ip->atk_coll.offset[1].y        = attributes->hit_offset2_y;
-    ip->atk_coll.offset[1].z        = attributes->hit_offset2_z;
+    ip->atk_coll.offset[0].x        = attributes->atk_offset0_x;
+    ip->atk_coll.offset[0].y        = attributes->atk_offset0_y;
+    ip->atk_coll.offset[0].z        = attributes->atk_offset0_z;
+    ip->atk_coll.offset[1].x        = attributes->atk_offset1_x;
+    ip->atk_coll.offset[1].y        = attributes->atk_offset1_y;
+    ip->atk_coll.offset[1].z        = attributes->atk_offset1_z;
     ip->atk_coll.size               = attributes->size * 0.5F;
     ip->atk_coll.angle              = attributes->angle;
     ip->atk_coll.knockback_scale    = attributes->knockback_scale;
@@ -356,12 +356,12 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
     itMainClearHitRecord(ip);
 
     ip->dmg_coll.hitstatus     = attributes->hitstatus;
-    ip->dmg_coll.offset.x      = attributes->hurt_offset.x;
-    ip->dmg_coll.offset.y      = attributes->hurt_offset.y;
-    ip->dmg_coll.offset.z      = attributes->hurt_offset.z;
-    ip->dmg_coll.size.x        = attributes->hurt_size.x * 0.5F;
-    ip->dmg_coll.size.y        = attributes->hurt_size.y * 0.5F;
-    ip->dmg_coll.size.z        = attributes->hurt_size.z * 0.5F;
+    ip->dmg_coll.offset.x      = attributes->dmg_coll_offset.x;
+    ip->dmg_coll.offset.y      = attributes->dmg_coll_offset.y;
+    ip->dmg_coll.offset.z      = attributes->dmg_coll_offset.z;
+    ip->dmg_coll.size.x        = attributes->dmg_coll_size.x * 0.5F;
+    ip->dmg_coll.size.y        = attributes->dmg_coll_size.y * 0.5F;
+    ip->dmg_coll.size.z        = attributes->dmg_coll_size.z * 0.5F;
     ip->dmg_coll.interact_mask = GMHITCOLLISION_FLAG_ALL;
 
     ip->shield_collide_angle = 0.0F;

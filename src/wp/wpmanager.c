@@ -198,12 +198,12 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
 
     wp->atk_coll.element = attributes->element;
 
-    wp->atk_coll.offset[0].x = attributes->offset[0].x;
-    wp->atk_coll.offset[0].y = attributes->offset[0].y;
-    wp->atk_coll.offset[0].z = attributes->offset[0].z;
-    wp->atk_coll.offset[1].x = attributes->offset[1].x;
-    wp->atk_coll.offset[1].y = attributes->offset[1].y;
-    wp->atk_coll.offset[1].z = attributes->offset[1].z;
+    wp->atk_coll.offset[0].x = attributes->atk_offsets[0].x;
+    wp->atk_coll.offset[0].y = attributes->atk_offsets[0].y;
+    wp->atk_coll.offset[0].z = attributes->atk_offsets[0].z;
+    wp->atk_coll.offset[1].x = attributes->atk_offsets[1].x;
+    wp->atk_coll.offset[1].y = attributes->atk_offsets[1].y;
+    wp->atk_coll.offset[1].z = attributes->atk_offsets[1].z;
 
     wp->atk_coll.size = attributes->size * 0.5F;
 

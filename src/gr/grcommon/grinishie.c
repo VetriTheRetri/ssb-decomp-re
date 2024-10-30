@@ -345,7 +345,7 @@ void grInishieMakeScale(void)
 {
     void *map_head;
     GObj *ground_gobj;
-    DObj *map_dobj[5];
+    DObj *map_dobjs[5];
     DObj *platform_dobj;
     s32 i;
     s32 mapobj;
@@ -355,13 +355,13 @@ void grInishieMakeScale(void)
     ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
 
     gcAddGObjDisplay(ground_gobj, gcDrawDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
-    grModelSetupGroundDObjs(ground_gobj, (DObjDesc*) ((uintptr_t)map_head + (intptr_t)&lGRInishieScaleDObjDesc), map_dobj, dGRInishieScaleTransformKinds);
+    grModelSetupGroundDObjs(ground_gobj, (DObjDesc*) ((uintptr_t)map_head + (intptr_t)&lGRInishieScaleDObjDesc), map_dobjs, dGRInishieScaleTransformKinds);
 
-    gGRCommonStruct.inishie.scale[0].string_dobj = map_dobj[4];
-    gGRCommonStruct.inishie.scale[0].string_length = map_dobj[0]->translate.vec.f.y + map_dobj[3]->translate.vec.f.y;
+    gGRCommonStruct.inishie.scale[0].string_dobj = map_dobjs[4];
+    gGRCommonStruct.inishie.scale[0].string_length = map_dobjs[0]->translate.vec.f.y + map_dobjs[3]->translate.vec.f.y;
 
-    gGRCommonStruct.inishie.scale[1].string_dobj = map_dobj[2];
-    gGRCommonStruct.inishie.scale[1].string_length = map_dobj[0]->translate.vec.f.y + map_dobj[1]->translate.vec.f.y;
+    gGRCommonStruct.inishie.scale[1].string_dobj = map_dobjs[2];
+    gGRCommonStruct.inishie.scale[1].string_length = map_dobjs[0]->translate.vec.f.y + map_dobjs[1]->translate.vec.f.y;
 
     for (i = 0; i < ARRAY_COUNT(gGRCommonStruct.inishie.scale); i++)
     {

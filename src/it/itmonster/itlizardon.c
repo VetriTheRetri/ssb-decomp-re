@@ -285,10 +285,10 @@ void itLizardonAttackInitItemVars(GObj *item_gobj)
 
     if (ip->kind == nITKindLizardon)
     {
-        addr = (void*) ((uintptr_t)ip->attr->dobj_setup - (intptr_t)&lITLizardonDataStart); // Linker thing
+        addr = (void*) ((uintptr_t)ip->attr->dobj_setup - (intptr_t)&lITLizardonDataStart);
 
-        gcAddDObjAnimJoint(dobj, (void*) ((uintptr_t)addr + (intptr_t)&lITLizardonAnimJoint), 0.0F); // Linker thing
-        gcAddMObjMatAnimJoint(dobj->mobj, (void*) ((uintptr_t)addr + (intptr_t)&lITLizardonMatAnimJoint), 0.0F); // Linker thing
+        gcAddDObjAnimJoint(dobj, (void*) ((uintptr_t)addr + (intptr_t)&lITLizardonAnimJoint), 0.0F);
+        gcAddMObjMatAnimJoint(dobj->mobj, (void*) ((uintptr_t)addr + (intptr_t)&lITLizardonMatAnimJoint), 0.0F);
         gcPlayAnimAll(item_gobj);
     }
 }

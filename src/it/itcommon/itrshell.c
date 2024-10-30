@@ -259,8 +259,8 @@ void itRShellSpinAddAnim(GObj *item_gobj) // Identical to Green Shell function
     DObj *dobj = DObjGetStruct(item_gobj);
     s32 unused[2];
 
-    gcAddDObjAnimJoint(dobj, itGetPData(ip, lITRShellDataStart, lITRShellAnimJoint), 0.0F); // Linker thing
-    gcAddMObjMatAnimJoint(dobj->mobj, itGetPData(ip, lITRShellDataStart, lITRShellMatAnimJoint), 0.0F); // Linker thing
+    gcAddDObjAnimJoint(dobj, itGetPData(ip, lITRShellDataStart, lITRShellAnimJoint), 0.0F);
+    gcAddMObjMatAnimJoint(dobj->mobj, itGetPData(ip, lITRShellDataStart, lITRShellMatAnimJoint), 0.0F);
     gcPlayAnimAll(item_gobj);
 }
 

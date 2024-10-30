@@ -74,7 +74,7 @@ typedef struct grCommonGroundVarsSector
 {
 	void* map_head;
 	GObj* map_gobj;
-	DObj* map_dobj[12];
+	DObj* map_dobjs[12];
 	void* weapon_head;
 	void* map_file;
 	f32 arwing_target_x;

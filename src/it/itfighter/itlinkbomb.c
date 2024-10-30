@@ -150,7 +150,7 @@ void itLinkBombExplodeWaitUpdateScale(GObj *item_gobj)
 
 	if (ip->item_vars.link_bomb.scale_int == 0)
 	{
-		f32 *scales = (f32*) ((uintptr_t)*dItLinkBombItemDesc.p_file + (intptr_t)&lITLinkBombBloatScales); // Linker thing
+		f32 *scales = (f32*) ((uintptr_t)*dItLinkBombItemDesc.p_file + (intptr_t)&lITLinkBombBloatScales);
 		s32 scale_id = (ip->item_vars.link_bomb.scale_id > ITLINKBOMB_SCALE_INDEX_REWIND) ?
 					      (ITLINKBOMB_SCALE_INDEX_MAX - ip->item_vars.link_bomb.scale_id) :
 					   								    ip->item_vars.link_bomb.scale_id;

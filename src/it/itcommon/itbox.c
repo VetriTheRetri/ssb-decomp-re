@@ -199,7 +199,7 @@ void itBoxContainerSmashMakeEffect(Vec3f *pos)
         {
             gcAddGObjDisplay(effect_gobj, gcDrawDObjTreeForGObj, 11, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-            dl = (Gfx*) ((*(uintptr_t*) ((uintptr_t)*dITBoxItemDesc.p_file + dITBoxItemDesc.o_attributes) - (intptr_t)&lITBoxDataStart) + (intptr_t)&lITBoxEffectDisplayList); // Linker thing
+            dl = (Gfx*) ((*(uintptr_t*) ((uintptr_t)*dITBoxItemDesc.p_file + dITBoxItemDesc.o_attributes) - (intptr_t)&lITBoxDataStart) + (intptr_t)&lITBoxEffectDisplayList);
 
             for (i = 0; i < ITCONTAINER_EFFECT_COUNT; i++)
             {
@@ -447,7 +447,7 @@ sb32 itBoxExplodeProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITBoxItemDesc, lITBoxAttackEvents)); // Linker thing
+    else itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITBoxItemDesc, lITBoxAttackEvents));
 
     return FALSE;
 }
@@ -494,7 +494,7 @@ void itBoxExplodeInitItemVars(GObj *item_gobj)
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshAtk(item_gobj);
-    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITBoxItemDesc, lITBoxAttackEvents)); // Linker thing
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITBoxItemDesc, lITBoxAttackEvents));
 }
 
 // 0x80179AD4

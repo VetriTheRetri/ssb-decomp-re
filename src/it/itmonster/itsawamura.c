@@ -259,7 +259,7 @@ void itSawamuraAttackInitItemVars(GObj *item_gobj)
 
     if (ip->kind == nITKindSawamura)
     {
-        Gfx *dl = (Gfx*)itGetPData(ip, lITSawamuraDataStart, lITSawamuraDisplayList); // Linker thing
+        Gfx *dl = (Gfx*)itGetPData(ip, lITSawamuraDataStart, lITSawamuraDisplayList);
 
         dobj->display_list = dl;
 
@@ -328,7 +328,7 @@ GObj* itSawamuraMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attr->obj_coll_bottom;
 
-        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITSawamuraDataStart), 0.0F); // Linker thing
+        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITSawamuraDataStart), 0.0F);
 
         func_800269C0_275C0(nSYAudioVoiceMBallSawamuraAppear);
 

@@ -116,7 +116,7 @@ void ftKirbySpecialNCopyInitCopyVars(GObj *fighter_gobj)
 {
     s16 copy_id;
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbySpecialNCopyData); // Linker thing
+    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbySpecialNCopyData);
 
     if (fp->motion_vars.flags.flag1 != 0)
     {
@@ -175,7 +175,7 @@ void ftKirbySpecialNLoopProcUpdate(GObj *fighter_gobj)
 void ftKirbySpecialNCatchProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *kirby_fp = ftGetStruct(fighter_gobj);
-    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbySpecialNCopyData); // Linker thing
+    ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbySpecialNCopyData);
     FTStruct *victim_fp;
     Vec3f kirby_pos;
     f32 dist;

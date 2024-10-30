@@ -223,7 +223,7 @@ void itIwarkAttackInitItemVars(GObj *item_gobj)
 
     if (ip->kind == nITKindIwark)
     {
-        dobj->display_list = dl = (Gfx*)itGetPData(ip, lITIwarkDataStart, lITIwarkDisplayList); // Linker thing
+        dobj->display_list = dl = (Gfx*)itGetPData(ip, lITIwarkDataStart, lITIwarkDisplayList);
 
         pos.y += ITIWARK_IWARK_ADD_POS_Y;
     }
@@ -327,7 +327,7 @@ GObj* itIwarkMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attr->obj_coll_bottom;
 
-        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITIwarkDataStart), 0.0F); // Linker thing
+        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITIwarkDataStart), 0.0F);
     }
     return item_gobj;
 }

@@ -374,7 +374,7 @@ void itNBumperAttachedInitItemVars(GObj *item_gobj)
 
     dobj->display_list = dl;
 
-    mobjsub = itGetPData(ip, lITNBumperDataStart, lITNBumperWaitMObjSub); // ((uintptr_t)((uintptr_t)ip->attr->dobj_setup - (intptr_t)&lITNBumperDataStart) + (intptr_t)&lITNBumperWaitMObjSub); // Linker thing
+    mobjsub = itGetPData(ip, lITNBumperDataStart, lITNBumperWaitMObjSub); // ((uintptr_t)((uintptr_t)ip->attr->dobj_setup - (intptr_t)&lITNBumperDataStart) + (intptr_t)&lITNBumperWaitMObjSub);
 
     gcRemoveMObjAll(dobj);
     gcAddMObjForDObj(dobj, mobjsub);

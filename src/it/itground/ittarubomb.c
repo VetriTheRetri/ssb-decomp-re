@@ -152,7 +152,7 @@ void itTaruBombContainerSmashMakeEffect(Vec3f *pos)
         {
             gcAddGObjDisplay(effect_gobj, gcDrawDObjTreeForGObj, 11, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-            dl = (Gfx*) ((*(uintptr_t*)((uintptr_t)*dITTaruBombItemDesc.p_file + dITTaruBombItemDesc.o_attributes) - (uintptr_t)&lITTaruBombDataStart) + (uintptr_t)&lITTaruBombEffectDisplayList); // Linker thing
+            dl = (Gfx*) ((*(uintptr_t*)((uintptr_t)*dITTaruBombItemDesc.p_file + dITTaruBombItemDesc.o_attributes) - (uintptr_t)&lITTaruBombDataStart) + (uintptr_t)&lITTaruBombEffectDisplayList);
 
             for (i = 0; i < ITTARUBOMB_EFFECT_COUNT; i++)
             {
@@ -297,7 +297,7 @@ sb32 itTaruBombExplodeProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruBombItemDesc, lITTaruBombAttackEvents)); // Linker thing
+    else itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruBombItemDesc, lITTaruBombAttackEvents));
 
     return FALSE;
 }

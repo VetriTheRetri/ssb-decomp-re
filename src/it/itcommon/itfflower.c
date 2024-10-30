@@ -348,7 +348,7 @@ void itFFlowerShootFlame(GObj *fighter_gobj, Vec3f *pos, s32 index, s32 ammo_sub
 {
     ITStruct *ip = itGetStruct(ftGetStruct(fighter_gobj)->item_gobj);
     Vec3f vel;
-    f32 *angle = (f32*) ((uintptr_t)*dITFFlowerItemDesc.p_file + (intptr_t)&lITFFlowerFlameAngles); // Linker thing
+    f32 *angle = (f32*) ((uintptr_t)*dITFFlowerItemDesc.p_file + (intptr_t)&lITFFlowerFlameAngles);
 
     vel.x = __cosf(angle[index]) * ITFFLOWER_AMMO_VEL;
     vel.y = __sinf(angle[index]) * ITFFLOWER_AMMO_VEL;

@@ -111,7 +111,7 @@ void ftCommonTaruCannSetStatus(GObj *fighter_gobj, GObj *tarucann_gobj)
 void ftCommonTaruCannShootFighter(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTThrowHitDesc *tarucann = (FTThrowHitDesc*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRJungleDataStart) + (intptr_t)&lGRJungleTaruCannThrowHitDesc); // Linker thing
+    FTThrowHitDesc *tarucann = (FTThrowHitDesc*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRJungleDataStart) + (intptr_t)&lGRJungleTaruCannThrowHitDesc);
     f32 knockback;
     s32 angle;
 

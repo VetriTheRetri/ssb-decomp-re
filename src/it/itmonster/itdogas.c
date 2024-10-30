@@ -208,7 +208,7 @@ void itDogasAttackInitItemVars(GObj *item_gobj)
     {
         ip->item_vars.dogas.pos = dobj->translate.vec.f;
 
-        gcAddDObjAnimJoint(dobj->child, itGetPData(ip, lITDogasDataStart, lITDogasAnimJoint), 0.0F); // Linker thing
+        gcAddDObjAnimJoint(dobj->child, itGetPData(ip, lITDogasDataStart, lITDogasAnimJoint), 0.0F);
 
         gcPlayAnimAll(item_gobj);
         func_800269C0_275C0(nSYAudioVoiceMBallDogasAppear);
@@ -276,7 +276,7 @@ GObj* itDogasMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip->physics.vel_air.z = 0.0F;
         ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        gcAddDObjAnimJoint(dobj->child, itGetMonsterAnimNode(ip, lITDogasDataStart), 0.0F); // Linker thing
+        gcAddDObjAnimJoint(dobj->child, itGetMonsterAnimNode(ip, lITDogasDataStart), 0.0F);
     }
     return item_gobj;
 }

@@ -316,7 +316,7 @@ void itCapsuleExplodeInitItemVars(GObj *item_gobj)
     itMainClearOwnerStats(item_gobj);
     itMainRefreshAtk(item_gobj);
 
-    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITCapsuleItemDesc, lITCapsuleAttackEvents)); // Linker thing
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITCapsuleItemDesc, lITCapsuleAttackEvents));
 }
 
 // 0x801743F4

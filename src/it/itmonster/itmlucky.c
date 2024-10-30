@@ -123,7 +123,7 @@ void itMLuckyMakeEggInitItemVars(GObj *item_gobj)
 
     if (ip->kind == nITKindMLucky)
     {
-        gcAddDObjAnimJoint(dobj->child, itGetPData(ip, lITLuckyDataStart, lITLuckyAnimJoint), 0.0F); // Linker thing
+        gcAddDObjAnimJoint(dobj->child, itGetPData(ip, lITLuckyDataStart, lITLuckyAnimJoint), 0.0F);
         gcPlayAnimAll(item_gobj);
     }
     ip->dmg_coll.hitstatus = nGMHitStatusNormal;
@@ -372,7 +372,7 @@ GObj* itMLuckyMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attr->obj_coll_bottom;
 
-        gcAddDObjAnimJoint(dobj->child, itGetMonsterAnimNode(ip, lITLuckyDataStart), 0.0F); // Linker thing
+        gcAddDObjAnimJoint(dobj->child, itGetMonsterAnimNode(ip, lITLuckyDataStart), 0.0F);
     }
     return item_gobj;
 }

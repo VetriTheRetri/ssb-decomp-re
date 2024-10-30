@@ -179,8 +179,8 @@ void itGShellSpinAddAnim(GObj *item_gobj)
     DObj *dobj = DObjGetStruct(item_gobj);
     s32 unused[2];
 
-    gcAddDObjAnimJoint(dobj, itGetPData(ip, lITGShellDataStart, lITGShellAnimJoint), 0.0F); // Linker thing
-    gcAddMObjMatAnimJoint(dobj->mobj, itGetPData(ip, lITGShellDataStart, lITGShellMatAnimJoint), 0.0F); // Linker thing
+    gcAddDObjAnimJoint(dobj, itGetPData(ip, lITGShellDataStart, lITGShellAnimJoint), 0.0F);
+    gcAddMObjMatAnimJoint(dobj->mobj, itGetPData(ip, lITGShellDataStart, lITGShellMatAnimJoint), 0.0F);
     gcPlayAnimAll(item_gobj);
 }
 

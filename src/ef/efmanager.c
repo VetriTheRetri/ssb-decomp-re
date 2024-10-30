@@ -3827,7 +3827,7 @@ void efManagerQuakeAddProcUpdate(GObj *effect_gobj)
 }
 
 // 0x801008F4
-GObj* efManagerQuakeMakeEffect(s32 magnitude) // Linker things here
+GObj* efManagerQuakeMakeEffect(s32 magnitude)
 {
     s32 unused[2];
     EFStruct *ep;
@@ -4038,7 +4038,7 @@ GObj* efManagerFireSparkMakeEffect(GObj *fighter_gobj) // I really have no idea 
     dobj->translate.vec.f.y = 160.0F;
     dobj->user_data.p = fp->joints[16];
 
-    lbCommonSetDObjTransformsForTreeDObjs(dobj->child, (uintptr_t)sEFManagerTexturesFile2 + (intptr_t)&lEFManagerFireSparkDObjSetup); // Linker thing
+    lbCommonSetDObjTransformsForTreeDObjs(dobj->child, (uintptr_t)sEFManagerTexturesFile2 + (intptr_t)&lEFManagerFireSparkDObjSetup);
 
     return effect_gobj;
 }
@@ -5211,7 +5211,7 @@ GObj* efManagerKirbyEntryStarMakeEffect(Vec3f *pos, s32 lr)
     GObj *effect_gobj;
     DObj *dobj;
 
-    dEFManagerKirbyEntryStarEffectDesc.o_anim_joint = (lr == +1) ? &lEFManagerKirbyEntryStarRAnimJoint : &lEFManagerKirbyEntryStarLAnimJoint; // Linker thing
+    dEFManagerKirbyEntryStarEffectDesc.o_anim_joint = (lr == +1) ? &lEFManagerKirbyEntryStarRAnimJoint : &lEFManagerKirbyEntryStarLAnimJoint;
 
     effect_gobj = efManagerMakeEffectNoForce(&dEFManagerKirbyEntryStarEffectDesc);
 
@@ -5265,7 +5265,7 @@ void efManagerMBallThrownProcUpdate(GObj *effect_gobj)
 }
 
 // 0x80102D14
-GObj* efManagerMBallThrownMakeEffect(Vec3f *pos, s32 lr) // Many linker things here
+GObj* efManagerMBallThrownMakeEffect(Vec3f *pos, s32 lr)
 {
     GObj *effect_gobj;
     DObj *dobj;
@@ -5748,13 +5748,13 @@ GObj* efManagerFoxEntryArwingMakeEffect(Vec3f *pos, s32 lr)
     what = dobj->child->child->child->sib_next->sib_next->sib_next->sib_next->sib_next->sib_next->child;
 
     gcAddXObjForDObjFixed(what, 0x2C, 0);
-    gcAddDObjAnimJoint(what, lbRelocGetDataFromFile(AObjEvent32*, gFTDataFoxSpecial3, &D_NF_00002E74), 0.0F); // Linker thing
+    gcAddDObjAnimJoint(what, lbRelocGetDataFromFile(AObjEvent32*, gFTDataFoxSpecial3, &D_NF_00002E74), 0.0F);
 
     if (lr == +1)
     {
-        lbCommonAddDObjAnimJointAll(dobj->child, (uintptr_t)gFTDataFoxSpecial2 + (intptr_t)&D_NF_000009E0, 0.0F); // Linker thing
+        lbCommonAddDObjAnimJointAll(dobj->child, (uintptr_t)gFTDataFoxSpecial2 + (intptr_t)&D_NF_000009E0, 0.0F);
     }
-    else lbCommonAddDObjAnimJointAll(dobj->child, (uintptr_t)gFTDataFoxSpecial2 + (intptr_t)&D_NF_00000590, 0.0F); // Linker thing
+    else lbCommonAddDObjAnimJointAll(dobj->child, (uintptr_t)gFTDataFoxSpecial2 + (intptr_t)&D_NF_00000590, 0.0F);
 
     gcPlayAnimAll(effect_gobj);
 

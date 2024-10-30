@@ -183,11 +183,11 @@ void itTosakintoBounceInitItemVars(GObj *item_gobj)
 
     if (ip->kind == nITKindTosakinto)
     {
-        anim_joint = itGetPData(ip, lITTosakintoDataStart, lITTosakintoAnimJoint); // Linker thing
+        anim_joint = itGetPData(ip, lITTosakintoDataStart, lITTosakintoAnimJoint);
 
         gcAddDObjAnimJoint(dobj->child, anim_joint, 0.0F);
 
-        matanim_joint = itGetPData(ip, lITTosakintoDataStart, lITTosakintoMatAnimJoint); // Linker thing
+        matanim_joint = itGetPData(ip, lITTosakintoDataStart, lITTosakintoMatAnimJoint);
 
         gcAddMObjMatAnimJoint(dobj->child->mobj, matanim_joint, 0.0F);
 
@@ -257,7 +257,7 @@ GObj* itTosakintoMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attr->obj_coll_bottom;
 
-        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITTosakintoDataStart), 0.0F); // Linker thing
+        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITTosakintoDataStart), 0.0F);
     }
     return item_gobj;
 }

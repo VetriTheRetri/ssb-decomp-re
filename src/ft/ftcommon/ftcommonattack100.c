@@ -94,7 +94,7 @@ void ftCommonAttack100LoopKirbyUpdateEffect(FTStruct *fp)
     {
         if (fp->motion_vars.flags.flag2 != 0)
         {
-            ftKirbyAttack100Effect *effect = (ftKirbyAttack100Effect*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbyAttack100Effect); // Linker thing
+            ftKirbyAttack100Effect *effect = (ftKirbyAttack100Effect*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbyAttack100Effect);
 
             pos.x = effect[fp->motion_vars.flags.flag2 - 1].offset.x;
             pos.y = effect[fp->motion_vars.flags.flag2 - 1].offset.y;

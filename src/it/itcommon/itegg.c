@@ -301,7 +301,7 @@ sb32 itEggExplodeProcUpdate(GObj *item_gobj)
 
         return TRUE;
     }
-    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITEggItemDesc, lITEggAttackEvents)); // Linker thing
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITEggItemDesc, lITEggAttackEvents));
 
     return FALSE;
 }
@@ -365,7 +365,7 @@ void itEggExplodeInitItemVars(GObj *item_gobj)
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshAtk(item_gobj);
-    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITEggItemDesc, lITCapsuleAttackEvents)); // Linker thing - should this be lITEggAttackEvents?
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITEggItemDesc, lITCapsuleAttackEvents)); // Should this be lITEggAttackEvents?
 }
 
 // 0x80181B5C

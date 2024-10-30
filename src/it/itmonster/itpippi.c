@@ -230,7 +230,7 @@ GObj* itPippiMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f.y -= ip->attr->obj_coll_bottom;
 
-        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITPippiDataStart), 0.0F); // Linker thing
+        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITPippiDataStart), 0.0F);
         func_800269C0_275C0(nSYAudioVoiceMBallPippiAppear);
 
         item_gobj->func_display = itPippiCommonFuncDisplay;

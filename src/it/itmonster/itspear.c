@@ -197,11 +197,11 @@ void itSpearAppearInitItemVars(GObj *item_gobj)
         void *anim_joint; 
         void *matanim_joint;
 
-        anim_joint = itGetPData(ip, lITSpearDataStart, lITSpearAnimJoint); // Linker thing
+        anim_joint = itGetPData(ip, lITSpearDataStart, lITSpearAnimJoint);
 
         gcAddDObjAnimJoint(dobj->child, anim_joint, 0.0F);
 
-        matanim_joint = itGetPData(ip, lITSpearDataStart, lITSpearMatAnimJoint); // Linker thing
+        matanim_joint = itGetPData(ip, lITSpearDataStart, lITSpearMatAnimJoint);
 
         gcAddMObjMatAnimJoint(dobj->child->mobj, matanim_joint, 0.0F);
         gcPlayAnimAll(item_gobj);

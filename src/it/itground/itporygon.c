@@ -50,7 +50,7 @@ ITCreateDesc dITPorygonItemDesc =
 void itPorygonCommonUpdateMonsterEvent(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITMonsterEvent *ev = itGetMonsterEvent(dITPorygonItemDesc, lITPorygonHitParties); // (ITMonsterEvent*) ((uintptr_t)*dITPorygonItemDesc.p_file + (intptr_t)&Porygon_Event); // Linker thing
+    ITMonsterEvent *ev = itGetMonsterEvent(dITPorygonItemDesc, lITPorygonHitParties); // (ITMonsterEvent*) ((uintptr_t)*dITPorygonItemDesc.p_file + (intptr_t)&Porygon_Event);
 
     if (ip->multi == ev[ip->event_id].timer)
     {

@@ -297,7 +297,7 @@ void itKamexAttackInitItemVars(GObj *item_gobj, sb32 is_ignore_setup)
 
         if (ip->kind == nITKindKamex)
         {
-            Gfx *dl = (Gfx*)itGetPData(ip, lITKamexDataStart, lITKamexDisplayList); // Linker thing
+            Gfx *dl = (Gfx*)itGetPData(ip, lITKamexDataStart, lITKamexDisplayList);
 
             dobj->display_list = dl;
 
@@ -429,7 +429,7 @@ GObj* itKamexMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         }
         dobj->translate.vec.f.y -= kamex_ip->attr->obj_coll_bottom;
 
-        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(kamex_ip, lITKamexDataStart), 0.0F); // Linker thing
+        gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(kamex_ip, lITKamexDataStart), 0.0F);
     }
     return item_gobj;
 }

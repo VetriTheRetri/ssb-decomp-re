@@ -223,8 +223,8 @@ void itBombHeiCommonSetWalkLR(GObj *item_gobj, ub8 lr)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
-    Gfx *dll = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkLeftDisplayList);  // (void*)((uintptr_t)((uintptr_t)ip->attr->dobj_setup - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkLeftDisplayList); // Linker thing
-    Gfx *dlr = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkRightDisplayList); // (void*)((uintptr_t)((uintptr_t)ip->attr->dobj_setup - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkRightDisplayList); // Linker thing
+    Gfx *dll = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkLeftDisplayList);  // (void*)((uintptr_t)((uintptr_t)ip->attr->dobj_setup - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkLeftDisplayList);
+    Gfx *dlr = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkRightDisplayList); // (void*)((uintptr_t)((uintptr_t)ip->attr->dobj_setup - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkRightDisplayList);
 
     if (lr != 0)
     {
@@ -320,7 +320,7 @@ sb32 itBombHeiWaitProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
-    void *dll = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkLeftDisplayList); // Linker thing
+    void *dll = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkLeftDisplayList);
     s32 lr;
 
     if (ip->multi == ITBOMBHEI_WALK_WAIT)
@@ -522,7 +522,7 @@ void itBombHeiWalkInitItemVars(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     ITAttributes *attr = ip->attr;
     DObj *dobj = DObjGetStruct(item_gobj);
-    void *matanim_joint;
+    AObjEvent32 *matanim_joint;
     s32 unused;
     Vec3f pos;
 
@@ -534,10 +534,9 @@ void itBombHeiWalkInitItemVars(GObj *item_gobj)
 
     itMainRefreshAtk(item_gobj);
 
-    matanim_joint = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkMatAnimJoint); // ((uintptr_t)ip->attr->dobj_setup - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkMatAnimJoint; // Linker thing
+    matanim_joint = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkMatAnimJoint);
 
-    gcAddMObjMatAnimJoint(dobj->mobj, matanim_joint, 0.0F); // Set texture animation?
-
+    gcAddMObjMatAnimJoint(dobj->mobj, matanim_joint, 0.0F);
     gcPlayAnimAll(item_gobj);
 
     if (mpCollisionCheckExistLineID(ip->coll_data.ground_line_id) != FALSE)
@@ -590,7 +589,7 @@ void itBombHeiCommonClearVelSetExplode(GObj *item_gobj, u8 unused)
 void itBombHeiCommonUpdateAttackEvent(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITAttackEvent *ev = itGetAttackEvent(dITBombHeiItemDesc, lITBombHeiAttackEvents); // Linker thing
+    ITAttackEvent *ev = itGetAttackEvent(dITBombHeiItemDesc, lITBombHeiAttackEvents);
 
     if (ip->multi == ev[ip->event_id].timer)
     {

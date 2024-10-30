@@ -238,7 +238,7 @@ void ftNessSpecialLwInitVars(GObj *fighter_gobj)
     }
     fp->is_absorb = TRUE;
 
-    fp->spc_coll = (FTSpecialColl*) ((uintptr_t)gFTNessFileMainMotion + (intptr_t)&lFTNessSpecialLwAbsorb); // Linker thing (attempt uintptr_t for 64-bit compatibility?)
+    fp->spc_coll = (FTSpecialColl*) ((uintptr_t)gFTNessFileMainMotion + (intptr_t)&lFTNessSpecialLwAbsorb);
 
     fp->motion_vars.flags.flag1 = 0;
 }

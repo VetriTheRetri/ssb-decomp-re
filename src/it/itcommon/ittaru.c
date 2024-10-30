@@ -334,7 +334,7 @@ sb32 itTaruExplodeProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruItemDesc, lITTaruAttackEvents)); // Linker thing
+    else itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruItemDesc, lITTaruAttackEvents));
 
     return FALSE;
 }

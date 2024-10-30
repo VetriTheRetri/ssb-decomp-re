@@ -661,8 +661,6 @@ GObj* grPupupuMakeMapGObj(intptr_t o_dobjdesc, intptr_t o_mobjsub, void (*func_d
 // 0x8010658C
 void grPupupuInitAll(void)
 {
-    // Many linker things here
-
     gGRCommonStruct.pupupu.map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRPupupuMapHead);
 
     gGRCommonStruct.pupupu.map_gobj[0] = grPupupuMakeMapGObj(&lGRPupupuMapHead, &D_NF_00000F00, grDisplayLayer0PriFuncDisplay, 4);

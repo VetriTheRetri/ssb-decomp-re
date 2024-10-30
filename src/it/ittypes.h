@@ -19,12 +19,12 @@ struct ITMonsterData
 	u8 monster_curr;
 	u8 monster_prev;
 	u8 monster_id[44];
-	u8 monster_count;
+	u8 monsters_num;
 };
 
 struct ITCreateDesc
 {
-	ITKind it_kind;
+	ITKind kind;
 	void **p_file;
 	intptr_t o_attributes;
 	DObjTransformTypes transform_types;
@@ -197,7 +197,7 @@ struct ITStruct 					// Common items, stage hazards, fighter items and Pokémon
 	ITStruct *alloc_next;    		// Memory region allocated for next ITStruct
 	GObj* item_gobj;		 		// Item's GObj pointer
 	GObj* owner_gobj;		 		// Item's owner
-	ITKind it_kind;			 		// Item ID
+	ITKind kind;			 		// Item ID
 	ITType type;			 		// Item type
 	u8 team;				 		// Item's team
 	u8 player;				 		// Item's port index

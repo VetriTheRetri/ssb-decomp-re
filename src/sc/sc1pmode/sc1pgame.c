@@ -797,14 +797,14 @@ s32 sc1PGameGetNextFreeCostume(s32 com)
     s32 player;
     s32 used_costume;
     s32 cp_costume;
-    s32 cp_ft_kind;
+    s32 cp_fkind;
 
-    cp_ft_kind = gBattleState->players[com].ft_kind;
+    cp_fkind = gBattleState->players[com].fkind;
 
     // WARNING: Newline memes. get_costume should be on the same line as used_costume = 0, player = 0;
     used_costume = 0, player = 0; get_costume:
 
-    cp_costume = ftParamGetCostumeCommonID(cp_ft_kind, used_costume);
+    cp_costume = ftParamGetCostumeCommonID(cp_fkind, used_costume);
 
     while (player != ARRAY_COUNT(gBattleState->players))
     {
@@ -812,13 +812,13 @@ s32 sc1PGameGetNextFreeCostume(s32 com)
         {
             goto l_continue; // This goto is required
         }
-        else if (gBattleState->players[player].pl_kind == nFTPlayerKindNot) 
+        else if (gBattleState->players[player].pkind == nFTPlayerKindNot) 
         {
             goto l_continue; // This one is not
         }
         else if
         (
-            (gBattleState->players[player].ft_kind == cp_ft_kind) && 
+            (gBattleState->players[player].fkind == cp_fkind) && 
             (gBattleState->players[player].costume == cp_costume)
         )
         {
@@ -913,7 +913,7 @@ void sc1PGameSetupEnemyPlayer(SC1PGameStage *stagesetup, SC1PGameComputer *comse
     }
     gBattleState->players[player].level = level;
     gBattleState->players[player].handicap = comsetup->enemy_handicap[gSaveData.spgame_difficulty];
-    gBattleState->players[player].ft_kind = stagesetup->ft_kind[enemy_player_num];
+    gBattleState->players[player].fkind = stagesetup->fkind[enemy_player_num];
     gBattleState->players[player].team = nSCBattleTeamIDCom;
     gBattleState->players[player].costume = 0;
     gBattleState->players[player].shade = 0;
@@ -922,7 +922,7 @@ void sc1PGameSetupEnemyPlayer(SC1PGameStage *stagesetup, SC1PGameComputer *comse
     gBattleState->players[player].is_single_stockicon = TRUE;
     gBattleState->players[player].stock_count = 0;
     gBattleState->players[player].is_spgame_team = TRUE;
-    gBattleState->players[player].pl_kind = nFTPlayerKindCom;
+    gBattleState->players[player].pkind = nFTPlayerKindCom;
 
     sSC1PGamePlayerSetups[player].cp_trait = stagesetup->opponent_behavior;
 
@@ -982,7 +982,7 @@ void sc1PGameSetupStageAll(void)
 
         if (i != gSceneData.spgame_player)
         {
-            gBattleState->players[i].pl_kind = nFTPlayerKindNot;
+            gBattleState->players[i].pkind = nFTPlayerKindNot;
         }
     }
     if (gSceneData.spgame_stage <= nSC1PGameStageCommonEnd)
@@ -1032,7 +1032,7 @@ void sc1PGameSetupStageAll(void)
             gBattleState->players[gSceneData.ally_players[i]].is_single_stockicon = TRUE;
             gBattleState->players[gSceneData.ally_players[i]].stock_count = 0;
             gBattleState->players[gSceneData.ally_players[i]].is_spgame_team = FALSE;
-            gBattleState->players[gSceneData.ally_players[i]].pl_kind = nFTPlayerKindCom;
+            gBattleState->players[gSceneData.ally_players[i]].pkind = nFTPlayerKindCom;
 
             player = gSceneData.ally_players[i];
 
@@ -1098,7 +1098,7 @@ void sc1PGameSetupStageAll(void)
 
             gBattleState->players[player].costume = sSC1PGameEnemyVariations[sSC1PGameCurrentEnemyVariation];
 
-            if ((gSceneData.ft_kind == nFTKindYoshi) && (gSceneData.costume == gBattleState->players[player].costume))
+            if ((gSceneData.fkind == nFTKindYoshi) && (gSceneData.costume == gBattleState->players[player].costume))
             {
                 gBattleState->players[player].shade = 1;
             }
@@ -1145,7 +1145,7 @@ void sc1PGameSetupStageAll(void)
 
             sc1PGameSetupEnemyPlayer(stagesetup, comsetup, player, 0);
 
-            gBattleState->players[player].ft_kind = sSC1PGameEnemyVariations[sSC1PGameCurrentEnemyVariation];
+            gBattleState->players[player].fkind = sSC1PGameEnemyVariations[sSC1PGameCurrentEnemyVariation];
 
             sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameEnemySpawnStart;
             sSC1PGamePlayerSetups[player].team_order = sSC1PGameCurrentEnemyVariation;
@@ -1167,7 +1167,7 @@ void sc1PGameSetupStageAll(void)
 
             sSC1PGameEnemyKirbyCostume = gBattleState->players[player].costume =
 
-            ((gSceneData.ft_kind == nFTKindKirby) && (gSceneData.costume == gBattleState->players[player].costume)) ? 
+            ((gSceneData.fkind == nFTKindKirby) && (gSceneData.costume == gBattleState->players[player].costume)) ? 
                                                                           ftParamGetCostumeCommonID(nFTKindKirby, 1) : 
                                                                                                                   0 ;
 
@@ -1204,7 +1204,7 @@ void sc1PGameSetupStageAll(void)
 
             sc1PGameSetupEnemyPlayer(stagesetup, comsetup, player, 0);
 
-            gBattleState->players[player].ft_kind = sSC1PGameEnemyVariations[sSC1PGameCurrentEnemyVariation];
+            gBattleState->players[player].fkind = sSC1PGameEnemyVariations[sSC1PGameCurrentEnemyVariation];
 
             sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameEnemySpawnStart;
             sSC1PGamePlayerSetups[player].is_skip_magnify = sSC1PGamePlayerSetups[player].is_skip_entry = TRUE;
@@ -1220,7 +1220,7 @@ void sc1PGameSetupStageAll(void)
 
     for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
     {
-        switch (gBattleState->players[i].pl_kind)
+        switch (gBattleState->players[i].pkind)
         {
         case nFTPlayerKindMan:
             gBattleState->pl_count++;
@@ -1298,13 +1298,13 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
         case nSC1PGameStageYoshi:
             gBattleState->players[player].costume = sSC1PGameEnemyVariations[sSC1PGameCurrentEnemyVariation];
 
-            gBattleState->players[player].shade = ((gSceneData.ft_kind == nFTKindYoshi) && (gSceneData.costume == gBattleState->players[player].costume)) ? 1 : 0;
+            gBattleState->players[player].shade = ((gSceneData.fkind == nFTKindYoshi) && (gSceneData.costume == gBattleState->players[player].costume)) ? 1 : 0;
 
             ifCommonPlayerStockSetLUT(player, gBattleState->players[player].costume, attr);
             break;
 
         case nSC1PGameStageZako:
-            gBattleState->players[player].ft_kind = sSC1PGameEnemyVariations[sSC1PGameCurrentEnemyVariation];
+            gBattleState->players[player].fkind = sSC1PGameEnemyVariations[sSC1PGameCurrentEnemyVariation];
             break;
 
         case nSC1PGameStageKirby:
@@ -1318,7 +1318,7 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
 
         player_spawn = dFTManagerDefaultFighterDesc;
 
-        player_spawn.ft_kind = gBattleState->players[player].ft_kind;
+        player_spawn.fkind = gBattleState->players[player].fkind;
 
         sc1PGameGetRandomSpawnPosition(&player_spawn.pos, nMPMapObjKind1PGameEnemyTeamSpawn);
 
@@ -1344,7 +1344,7 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
 
         player_spawn.damage = 0;
 
-        player_spawn.pl_kind = gBattleState->players[player].pl_kind;
+        player_spawn.pkind = gBattleState->players[player].pkind;
 
         player_spawn.controller = &gPlayerControllers[player];
 
@@ -1515,7 +1515,7 @@ void sc1PGameWaitStageBossUpdate(void)
 
     for (player = 0; TRUE; player++) // Wut da haeiyll
     {
-        if (gBattleState->players[player].pl_kind == nFTPlayerKindNot)
+        if (gBattleState->players[player].pkind == nFTPlayerKindNot)
         {
             continue;
         }
@@ -1679,7 +1679,7 @@ void sc1PGameInitTeamStockDisplay(void)
     case nSC1PGameStageKirby:
         for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
         {
-            if (gBattleState->players[i].pl_kind == nFTPlayerKindNot)
+            if (gBattleState->players[i].pkind == nFTPlayerKindNot)
             {
                 continue;
             }
@@ -1764,7 +1764,7 @@ void sc1PGameSetPlayerDefeatStats(s32 player, s32 team_order)
 
         sSC1PGameBonusStatNumPlayerKOs++;
 
-        if ((gSceneData.spgame_stage == nSC1PGameStageMario) && (fp->ft_kind == nFTKindLuigi) && (sSC1PGameEnemyStocksRemaining != 0) && (fp->damage_player == gSceneData.spgame_player))
+        if ((gSceneData.spgame_stage == nSC1PGameStageMario) && (fp->fkind == nFTKindLuigi) && (sSC1PGameEnemyStocksRemaining != 0) && (fp->damage_player == gSceneData.spgame_player))
         {
             if (gBattleState->players[(fp->player == 0) ? (GMCOMMON_PLAYERS_MAX - 1) : fp->player - 1].total_damage_player[gSceneData.spgame_player] == 0)
             {
@@ -1820,7 +1820,7 @@ s32 sc1PGameGetEnemySpawnLR(s32 target_player)
         {
             continue;
         }
-        else if (gBattleState->players[current_player].pl_kind == nFTPlayerKindNot)
+        else if (gBattleState->players[current_player].pkind == nFTPlayerKindNot)
         {
             continue;
         }
@@ -1900,7 +1900,7 @@ void sc1PGameBossAddBossInterface(GObj *fighter_gobj, u32 unused)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->ft_kind == nFTKindBoss)
+    if (fp->fkind == nFTKindBoss)
     {
         ifCommonPlayerInterfaceAddToViewport(fp);
     }
@@ -2060,7 +2060,7 @@ void sc1PGameFuncStart(void)
         }
         for (i = 0; i < (ARRAY_COUNT(gBattleState->players) + ARRAY_COUNT(sSC1PGamePlayerSetups)) / 2; i++)
         {
-            if (gBattleState->players[i].pl_kind == nFTPlayerKindNot)
+            if (gBattleState->players[i].pkind == nFTPlayerKindNot)
             {
                 continue;
             }
@@ -2076,13 +2076,13 @@ void sc1PGameFuncStart(void)
     {
         player_spawn = dFTManagerDefaultFighterDesc;
 
-        if (gBattleState->players[i].pl_kind == nFTPlayerKindNot)
+        if (gBattleState->players[i].pkind == nFTPlayerKindNot)
         {
             continue;
         }
-        ftManagerSetupFilesAllKind(gBattleState->players[i].ft_kind);
+        ftManagerSetupFilesAllKind(gBattleState->players[i].fkind);
 
-        player_spawn.ft_kind = gBattleState->players[i].ft_kind;
+        player_spawn.fkind = gBattleState->players[i].fkind;
 
         sc1PGameGetSpawnPosition(&player_spawn.pos, sSC1PGamePlayerSetups[i].mapobj_kind);
 
@@ -2106,11 +2106,11 @@ void sc1PGameFuncStart(void)
 
         player_spawn.damage = 0;
 
-        player_spawn.pl_kind = gBattleState->players[i].pl_kind;
+        player_spawn.pkind = gBattleState->players[i].pkind;
 
         player_spawn.controller = &gPlayerControllers[i];
 
-        player_spawn.figatree_heap = (sSC1PGamePlayerSetups[i].figatree != NULL) ? sSC1PGamePlayerSetups[i].figatree : ftManagerAllocFigatreeHeapKind(gBattleState->players[i].ft_kind);
+        player_spawn.figatree_heap = (sSC1PGamePlayerSetups[i].figatree != NULL) ? sSC1PGamePlayerSetups[i].figatree : ftManagerAllocFigatreeHeapKind(gBattleState->players[i].fkind);
 
         player_spawn.copy_kind = sSC1PGamePlayerSetups[i].copy_kind;
 
@@ -2289,7 +2289,7 @@ check_hawk:
         }
         else goto check_itemthrow;
     }
-    switch (gSceneData.ft_kind)
+    switch (gSceneData.fkind)
     {
     case nFTKindMario:
         if (gSC1PGameBonusDefendIDCount[nFTStatusAttackIDAttack12] == 0)

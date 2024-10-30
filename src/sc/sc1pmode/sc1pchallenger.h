@@ -15,7 +15,7 @@ extern void sc1PChallengerFuncLights(Gfx **dls);
 extern void sc1PChallengerDecalsFuncDisplay(GObj *gobj);
 extern void sc1PChallengerMakeDecals(void);
 extern void sc1PChallengerFighterProcUpdate(GObj *fighter_gobj);
-extern void sc1PChallengerMakeFighter(s32 ft_kind);
+extern void sc1PChallengerMakeFighter(s32 fkind);
 extern void sc1PChallengerMakeFighterCamera(void);
 extern void sc1PChallengerMakeDecalsCamera(void);
 extern void sc1PChallengerInitVars(void);

@@ -33,8 +33,8 @@ void ftCommonCaptureCaptainUpdatePositions(GObj *fighter_gobj, GObj *capture_gob
     gmCollisionGetFighterPartsWorldPosition(this_fp->joints[29], pos);
     gmCollisionGetFighterPartsWorldPosition(capture_fp->joints[nFTPartsJointTopN], &offset);
 
-    offset.x += (offset_add[capture_fp->ft_kind].x * this_fp->lr);
-    offset.y += offset_add[capture_fp->ft_kind].y;
+    offset.x += (offset_add[capture_fp->fkind].x * this_fp->lr);
+    offset.y += offset_add[capture_fp->fkind].y;
 
     syVectorSub3D(pos, &offset);
 }

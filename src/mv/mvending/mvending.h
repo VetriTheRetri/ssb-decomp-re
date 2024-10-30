@@ -14,7 +14,7 @@ extern void mvEndingMakeRoomBooks(void);
 extern void mvEndingMakeRoomPencils(void);
 extern void mvEndingMakeRoomLamp(void);
 extern void mvEndingMakeRoomTissues(void);
-extern void mvEndingMakeFighter(s32 ft_kind);
+extern void mvEndingMakeFighter(s32 fkind);
 extern void mvEndingRoomFadeInFuncDisplay(GObj *gobj);
 extern void mvEndingMakeRoomFadeIn(void);
 extern void mvEndingMakeRoomFadeInCamera(void);

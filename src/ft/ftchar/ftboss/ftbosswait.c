@@ -288,7 +288,7 @@ void ftBossWaitProcInterrupt(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->pl_kind == nFTPlayerKindMan)
+    if (fp->pkind == nFTPlayerKindMan)
     {
         ftBossWaitDecideStatusPlayer(fighter_gobj);
     }
@@ -302,7 +302,7 @@ void ftBossWaitProcPhysics(GObj *fighter_gobj)
     Vec3f vel;
     f32 magnitude;
 
-    if (fp->pl_kind != nFTPlayerKindMan)
+    if (fp->pkind != nFTPlayerKindMan)
     {
         syVectorDiff3D(&vel, &fp->status_vars.boss.wait.pos, &DObjGetStruct(fighter_gobj)->translate.vec.f);
 

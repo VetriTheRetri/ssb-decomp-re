@@ -243,7 +243,7 @@ struct LBBackupData
 	ub8 sound_mono_or_stereo;   // Whether sound mode is mono or stereo
 	s16 screen_adjust_h;		// Offset from screen center horizontally
 	s16 screen_adjust_v;		// Offset from screen center vertically
-	u8 characters_ft_kind;		// Last character viewed on Character Data menu
+	u8 characters_fkind;		// Last character viewed on Character Data menu
 	u8 unlock_mask;             // Mask of unlocked features
 	u16 fighter_mask; 		    // Mask of available characters
 	u8 spgame_difficulty;       // Last 1P Game difficulty selected

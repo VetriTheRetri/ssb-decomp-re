@@ -66,7 +66,7 @@
 // Also multiplies spin speed
 #define ITEM_SPIN_SPEED_FRACTION_DEFAULT 0.01F
 
-#define ITEM_TOGGLE_MASK_KIND(it_kind) (1 << (it_kind))
+#define ITEM_TOGGLE_MASK_KIND(kind) (1 << (kind))
 
 /* 
  * Maximum number of times item can be thrown/dropped before it is guaranteed to despawn

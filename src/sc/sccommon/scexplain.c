@@ -182,11 +182,11 @@ void scExplainSetBattleState(void)
     gBattleState->pl_count = 2;
     gBattleState->cp_count = 0;
 
-    gBattleState->players[0].ft_kind = nFTKindMario;
-    gBattleState->players[1].ft_kind = nFTKindLuigi;
+    gBattleState->players[0].fkind = nFTKindMario;
+    gBattleState->players[1].fkind = nFTKindLuigi;
 
-    gBattleState->players[0].pl_kind = nFTPlayerKindGameKey;
-    gBattleState->players[1].pl_kind = nFTPlayerKindGameKey;
+    gBattleState->players[0].pkind = nFTPlayerKindGameKey;
+    gBattleState->players[1].pkind = nFTPlayerKindGameKey;
 }
 
 // 0x8018D1D4
@@ -737,13 +737,13 @@ void scExplainFuncStart(void)
     {
         player_spawn = dFTManagerDefaultFighterDesc;
 
-        if (gBattleState->players[player].pl_kind == nFTPlayerKindNot)
+        if (gBattleState->players[player].pkind == nFTPlayerKindNot)
         {
             continue;
         }
-        ftManagerSetupFilesAllKind(gBattleState->players[player].ft_kind);
+        ftManagerSetupFilesAllKind(gBattleState->players[player].fkind);
 
-        player_spawn.ft_kind = gBattleState->players[player].ft_kind;
+        player_spawn.fkind = gBattleState->players[player].fkind;
 
         mpCollisionGetPlayerMapObjPosition(player, &player_spawn.pos);
 
@@ -765,11 +765,11 @@ void scExplainFuncStart(void)
 
         player_spawn.damage = 0;
 
-        player_spawn.pl_kind = gBattleState->players[player].pl_kind;
+        player_spawn.pkind = gBattleState->players[player].pkind;
 
         player_spawn.controller = &gPlayerControllers[player];
 
-        player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[player].ft_kind);
+        player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[player].fkind);
 
         fighter_gobj = ftManagerMakeFighter(&player_spawn);
 

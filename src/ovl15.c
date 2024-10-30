@@ -48,16 +48,16 @@ char* dMNDebugFallsFighterKindStrings[5] = {
 // 0x800D6738
 dbMenuItem dMNDebugFallsMenuItems[13] = {
 	{ dbMenuItemKindExitLabel,  dbFallsExit, (char*) "Exit",                          (void*) NULL,                                     0.0F, 0.0F,     0 },
-	{ dbMenuItemKindStringByte, 0,                (char*) dMNDebugFallsFighterKindStrings, (void*) &gTransferBattleState.players[0].ft_kind, 0.0F, 26.0F,    0 },
+	{ dbMenuItemKindStringByte, 0,                (char*) dMNDebugFallsFighterKindStrings, (void*) &gTransferBattleState.players[0].fkind, 0.0F, 26.0F,    0 },
 	{ dbMenuItemKindNumeric,    0,                (char*) " Dead : %3d",                   (void*) &gTransferBattleState.players[0].falls,   0.0F, 65536.0F, 0 },
 	{ dbMenuItemKindNumeric,    0,                (char*) " Finish : %3d",                 (void*) &gTransferBattleState.players[0].score,   0.0F, 65536.0F, 0 },
-	{ dbMenuItemKindStringByte, 0,                (char*) dMNDebugFallsFighterKindStrings, (void*) &gTransferBattleState.players[1].ft_kind, 0.0F, 26.0F,    0 },
+	{ dbMenuItemKindStringByte, 0,                (char*) dMNDebugFallsFighterKindStrings, (void*) &gTransferBattleState.players[1].fkind, 0.0F, 26.0F,    0 },
 	{ dbMenuItemKindNumeric,    0,                (char*) " Dead : %3d",                   (void*) &gTransferBattleState.players[1].falls,   0.0F, 65536.0F, 0 },
 	{ dbMenuItemKindNumeric,    0,                (char*) " Finish : %3d",                 (void*) &gTransferBattleState.players[1].score,   0.0F, 65536.0F, 0 },
-	{ dbMenuItemKindStringByte, 0,                (char*) dMNDebugFallsFighterKindStrings, (void*) &gTransferBattleState.players[2].ft_kind, 0.0F, 26.0F,    0 },
+	{ dbMenuItemKindStringByte, 0,                (char*) dMNDebugFallsFighterKindStrings, (void*) &gTransferBattleState.players[2].fkind, 0.0F, 26.0F,    0 },
 	{ dbMenuItemKindNumeric,    0,                (char*) " Dead : %3d",                   (void*) &gTransferBattleState.players[2].falls,   0.0F, 65536.0F, 0 },
 	{ dbMenuItemKindNumeric,    0,                (char*) " Finish : %3d",                 (void*) &gTransferBattleState.players[2].score,   0.0F, 65536.0F, 0 },
-	{ dbMenuItemKindStringByte, 0,                (char*) dMNDebugFallsFighterKindStrings, (void*) &gTransferBattleState.players[3].ft_kind, 0.0F, 26.0F,    0 },
+	{ dbMenuItemKindStringByte, 0,                (char*) dMNDebugFallsFighterKindStrings, (void*) &gTransferBattleState.players[3].fkind, 0.0F, 26.0F,    0 },
 	{ dbMenuItemKindNumeric,    0,                (char*) " Dead : %3d",                   (void*) &gTransferBattleState.players[3].falls,   0.0F, 65536.0F, 0 },
 	{ dbMenuItemKindNumeric,    0,                (char*) " Finish : %3d",                 (void*) &gTransferBattleState.players[3].score,   0.0F, 65536.0F, 0 }
 };

@@ -130,7 +130,7 @@ void ftParamTryUpdateItemMusic(void)
         u32 bgm_id = gMPCollisionBGMDefault;
         s32 length_new;
 
-        if ((fp->item_gobj != NULL) && (itGetStruct(fp->item_gobj)->it_kind == nITKindHammer))
+        if ((fp->item_gobj != NULL) && (itGetStruct(fp->item_gobj)->kind == nITKindHammer))
         {
             bgm_id = nSYAudioBGMHammer;
         }
@@ -256,7 +256,7 @@ void ftParamSetStickLR(FTStruct *fp)
 // 0x800E806C
 void ftParamMakeRumble(FTStruct *fp, s32 rumble_id, s32 length)
 {
-    if (fp->pl_kind == nFTPlayerKindMan)
+    if (fp->pkind == nFTPlayerKindMan)
     {
         gmRumbleSetPlayerRumbleParams(fp->player, rumble_id, length);
     }
@@ -284,7 +284,7 @@ void ftParamSetThrowParams(FTStruct *this_fp, GObj *throw_gobj)
     FTStruct *throw_fp = ftGetStruct(throw_gobj); // Fighter throwing this player
 
     this_fp->throw_gobj = throw_gobj;
-    this_fp->throw_ft_kind = throw_fp->ft_kind;
+    this_fp->throw_fkind = throw_fp->fkind;
     this_fp->throw_player = throw_fp->player;
     this_fp->throw_player_number = throw_fp->player_number;
     this_fp->throw_team = throw_fp->team;
@@ -545,7 +545,7 @@ void ftParamLinkResetShieldModelParts(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindNLink))
+    if ((fp->fkind == nFTKindLink) || (fp->fkind == nFTKindNLink))
     {
         ftParamSetModelPartDefaultID(fighter_gobj, 0x15, 0);
         ftParamSetModelPartDefaultID(fighter_gobj, 0x13, -1);
@@ -557,7 +557,7 @@ void ftParamSetHammerParams(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindNLink))
+    if ((fp->fkind == nFTKindLink) || (fp->fkind == nFTKindNLink))
     {
         ftParamSetModelPartDefaultID(fighter_gobj, 0x15, -1);
         ftParamSetModelPartDefaultID(fighter_gobj, 0x13, 0);
@@ -1261,7 +1261,7 @@ void ftParamResetStatUpdateColAnim(GObj *fighter_gobj)
         ftParamCheckSetFighterColAnimID(fighter_gobj, 3, 0);
         break;
     }
-    switch (fp->ft_kind)
+    switch (fp->fkind)
     {
     case nFTKindDonkey:
     case nFTKindNDonkey:
@@ -1328,7 +1328,7 @@ sb32 ftParamCheckSetSkeletonColAnimID(GObj *fighter_gobj, s32 colanim_id)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    return ftParamCheckSetFighterColAnimID(fighter_gobj, dFTParamSkeletonColAnimIDs[fp->ft_kind] + colanim_id, 0);
+    return ftParamCheckSetFighterColAnimID(fighter_gobj, dFTParamSkeletonColAnimIDs[fp->fkind] + colanim_id, 0);
 }
 
 // 0x800E9B30 - Set automatic input sequence
@@ -1537,7 +1537,7 @@ void ftParamUpdateDamage(FTStruct *fp, s32 damage)
         {
             ITStruct *ip = itGetStruct(fp->item_gobj);
 
-            if ((ip->weight != nITWeightHeavy) || (fp->ft_kind != nFTKindDonkey) && (fp->ft_kind != nFTKindNDonkey) && (fp->ft_kind != nFTKindGDonkey))
+            if ((ip->weight != nITWeightHeavy) || (fp->fkind != nFTKindDonkey) && (fp->fkind != nFTKindNDonkey) && (fp->fkind != nFTKindGDonkey))
             {
                 if ((damage > mtTrigGetRandomIntRange(60)) || ((itMainCheckShootNoAmmo(fp->item_gobj) != FALSE) && (mtTrigGetRandomIntRange(2) == 0)))
                 {
@@ -1683,7 +1683,7 @@ void ftParamUpdate1PGameAttackStats(FTStruct *fp, u16 flags)
 {
     GMStatFlags stat_flags = *(GMStatFlags*)&flags;
 
-    if ((fp->pl_kind != nFTPlayerKindDemo) && (gBattleState->game_type == nSCBattleGameType1PGame) && (fp->player == gSceneData.spgame_player))
+    if ((fp->pkind != nFTPlayerKindDemo) && (gBattleState->game_type == nSCBattleGameType1PGame) && (fp->player == gSceneData.spgame_player))
     {
         if ((fp->stat_flags.stat_attack_id != nFTStatusAttackIDNone) && (fp->stat_flags.stat_attack_id != stat_flags.stat_attack_id))
         {
@@ -1805,7 +1805,7 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
     switch (effect_id)
     {
     case nEFKindChargeSparkle:
-        switch (fp->ft_kind)
+        switch (fp->fkind)
         {
         case nFTKindSamus:
             joint_id = FTSAMUS_CHARGE_EFFECT_JOINT;
@@ -2003,21 +2003,21 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
         break;
 
     case nEFKindQuakeMag0:
-        if (fp->pl_kind != nFTPlayerKindDemo)
+        if (fp->pkind != nFTPlayerKindDemo)
         {
             effect = efManagerQuakeMakeEffect(0);
         }
         break;
 
     case nEFKindQuakeMag1:
-        if (fp->pl_kind != nFTPlayerKindDemo)
+        if (fp->pkind != nFTPlayerKindDemo)
         {
             effect = efManagerQuakeMakeEffect(1);
         }
         break;
 
     case nEFKindQuakeMag2:
-        if (fp->pl_kind != nFTPlayerKindDemo)
+        if (fp->pkind != nFTPlayerKindDemo)
         {
             effect = efManagerQuakeMakeEffect(2);
         }
@@ -2093,7 +2093,7 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
         break;
 
     case nEFKindYoshiEggEscape:
-        if (fp->ft_kind == nFTKindYoshi)
+        if (fp->fkind == nFTKindYoshi)
         {
             efManagerYoshiEggEscapeMakeEffect(fighter_gobj);
         }
@@ -2640,21 +2640,21 @@ void func_ovl2_800EBD08(DObj *root_dobj, f32 arg1, Vec3f *vec, f32 arg3)
 }
 
 // 0x800EC0EC
-s32 ftParamGetCostumeCommonID(s32 ft_kind, s32 color)
+s32 ftParamGetCostumeCommonID(s32 fkind, s32 color)
 {
-    return dFTParamCostumeIDs[ft_kind].royal[color];
+    return dFTParamCostumeIDs[fkind].royal[color];
 }
 
 // 0x800EC104
-s32 ftParamGetCostumeTeamID(s32 ft_kind, s32 color)
+s32 ftParamGetCostumeTeamID(s32 fkind, s32 color)
 {
-    return dFTParamCostumeIDs[ft_kind].team[color];
+    return dFTParamCostumeIDs[fkind].team[color];
 }
 
 // 0x800EC11C
-s32 ftParamGetCostumeDevelop(s32 ft_kind)
+s32 ftParamGetCostumeDevelop(s32 fkind)
 {
-    return dFTParamCostumeIDs[ft_kind].develop;
+    return dFTParamCostumeIDs[fkind].develop;
 }
 
 // 0x800EC130

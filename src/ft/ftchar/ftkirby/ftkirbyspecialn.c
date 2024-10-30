@@ -190,12 +190,12 @@ void ftKirbySpecialNCatchProcUpdate(GObj *fighter_gobj)
 
         victim_fp->status_vars.common.capturekirby.is_goto_capturewait = TRUE;
 
-        if ((victim_fp->ft_kind == nFTKindKirby) || (victim_fp->ft_kind == nFTKindNKirby))
+        if ((victim_fp->fkind == nFTKindKirby) || (victim_fp->fkind == nFTKindNKirby))
         {
             kirby_fp->status_vars.kirby.specialn.copy_id = victim_fp->fighter_vars.kirby.copy_id;
             victim_fp->status_vars.common.capturekirby.is_kirby = TRUE;
         }
-        else kirby_fp->status_vars.kirby.specialn.copy_id = copy_data[victim_fp->ft_kind].copy_id;
+        else kirby_fp->status_vars.kirby.specialn.copy_id = copy_data[victim_fp->fkind].copy_id;
         
         func_800269C0_275C0(nSYAudioFGMKirbySpecialNCopyEat);
 
@@ -969,8 +969,8 @@ void ftKirbySpecialNDamageCheckLoseCopy(GObj *fighter_gobj)
     if 
     (
         (
-            (fp->ft_kind == nFTKindKirby)    ||
-            (fp->ft_kind == nFTKindNKirby)
+            (fp->fkind == nFTKindKirby)    ||
+            (fp->fkind == nFTKindNKirby)
         )                                                       &&
         (fp->fighter_vars.kirby.copy_id != nFTKindKirby)       &&
         (fp->fighter_vars.kirby.is_ignore_losecopy == FALSE)    &&

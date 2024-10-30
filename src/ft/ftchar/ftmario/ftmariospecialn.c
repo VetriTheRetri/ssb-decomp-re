@@ -30,7 +30,7 @@ void ftMarioSpecialNProcAccessory(GObj *fighter_gobj)
 
         gmCollisionGetFighterPartsWorldPosition(fp->joints[FTMARIO_FIREBALL_SPAWN_JOINT], &pos);
 
-        switch (fp->ft_kind) // jtbl at 0x8018C630
+        switch (fp->fkind) // jtbl at 0x8018C630
         {
         case nFTKindMario:
         case nFTKindMMario:

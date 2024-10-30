@@ -99,7 +99,7 @@ void ftCommonGuardUpdateShieldVars(GObj *fighter_gobj)
         if ((fp->status_vars.common.guard.release_lag == 0) && (fp->status_vars.common.guard.is_release != FALSE))
         {
         lag_end:
-            if (fp->ft_kind == nFTKindYoshi)
+            if (fp->fkind == nFTKindYoshi)
             {
                 ftParamResetModelPartAll(fighter_gobj);
                 ftCommonGuardOffSetHitStatusYoshi(fighter_gobj);
@@ -127,7 +127,7 @@ void ftCommonGuardUpdateShieldCollision(FTStruct *fp)
     f32 scale_final;
     f32 scale_mul;
 
-    if (fp->ft_kind == nFTKindYoshi)
+    if (fp->fkind == nFTKindYoshi)
     {
         scale_mul = 1.0F;
     }
@@ -374,7 +374,7 @@ void ftCommonGuardOnProcUpdate(GObj *fighter_gobj)
         {
             if (fp->status_vars.common.guard.is_release != FALSE)
             {
-                if (fp->ft_kind == nFTKindYoshi)
+                if (fp->fkind == nFTKindYoshi)
                 {
                     ftCommonGuardOffSetHitStatusYoshi(fighter_gobj);
                 }
@@ -382,7 +382,7 @@ void ftCommonGuardOnProcUpdate(GObj *fighter_gobj)
             }
             else
             {
-                if (fp->ft_kind == nFTKindYoshi)
+                if (fp->fkind == nFTKindYoshi)
                 {
                     fp->status_vars.common.guard.effect_gobj = efManagerYoshiShieldMakeEffect(fighter_gobj);
 
@@ -419,7 +419,7 @@ void ftCommonGuardOnSetStatus(GObj *fighter_gobj, s32 slide_frames)
 
     if (fp->shield_health != 0)
     {
-        if (fp->ft_kind == nFTKindYoshi)
+        if (fp->fkind == nFTKindYoshi)
         {
             ftCommonGuardOnSetHitStatusYoshi(fighter_gobj);
         }

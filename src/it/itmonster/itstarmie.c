@@ -127,7 +127,7 @@ void itStarmieAttackUpdateSwift(GObj *item_gobj)
     {
         Vec3f pos = dobj->translate.vec.f;
 
-        if (ip->it_kind == nITKindStarmie)
+        if (ip->kind == nITKindStarmie)
         {
             pos.x += ITSTARMIE_STARMIE_SWIFT_SPAWN_OFF_X * ip->lr;
             pos.y += ITSTARMIE_STARMIE_SWIFT_SPAWN_OFF_Y;
@@ -251,7 +251,7 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
     {
         item_dobj->rotate.vec.f.y = F_CST_DTOR32(180.0F);
     }
-    if (ip->it_kind == nITKindStarmie)
+    if (ip->kind == nITKindStarmie)
     {
         gcAddMObjMatAnimJoint(item_dobj->mobj, itGetPData(ip, lITStarmieDataStart, lITStarmieMatAnimJoint), 0); // Linker thing
 
@@ -300,7 +300,7 @@ void itStarmieNFollowInitItemVars(GObj *item_gobj)
     }
     itStarmieNFollowFindFollowPlayerLR(item_gobj, victim_gobj);
 
-    if (ip->it_kind == nITKindStarmie)
+    if (ip->kind == nITKindStarmie)
     {
         func_800269C0_275C0(nSYAudioVoiceMBallStarmieAppear);
     }

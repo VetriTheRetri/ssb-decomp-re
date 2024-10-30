@@ -41,7 +41,7 @@ void itManagerSetupContainerDrops();
 // Set up global Pokémon spawn variables
 void itManagerInitMonsterVars();
 
-// Make immediate item with index
-GObj* itManagerMakeItemKind(GObj* parent_gobj, s32 index, Vec3f* pos, Vec3f* vel, u32 flags);
+// Make immediate item of ID
+GObj* itManagerMakeItemKind(GObj* parent_gobj, s32 kind, Vec3f* pos, Vec3f* vel, u32 flags);
 
 #endif

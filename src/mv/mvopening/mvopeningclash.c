@@ -92,7 +92,7 @@ void mvOpeningClashMakeFighters(void)
     GObj* fighter_gobj;
 
     // 0x80132908
-    s32 ft_kinds[/* */] =
+    s32 fkinds[/* */] =
     {
         nFTKindMario,
         nFTKindKirby,
@@ -107,10 +107,10 @@ void mvOpeningClashMakeFighters(void)
     s32 i;
     FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
-    for (i = 0; i < (ARRAY_COUNT(ft_kinds) + ARRAY_COUNT(sMVOpeningClashFigatreeHeaps)) / 2; i++)
+    for (i = 0; i < (ARRAY_COUNT(fkinds) + ARRAY_COUNT(sMVOpeningClashFigatreeHeaps)) / 2; i++)
     {
-        ft_desc.ft_kind = ft_kinds[i];
-        ft_desc.costume = ftParamGetCostumeCommonID(ft_kinds[i], 0);
+        ft_desc.fkind = fkinds[i];
+        ft_desc.costume = ftParamGetCostumeCommonID(fkinds[i], 0);
 
         ft_desc.pos.x = 0.0F;
         ft_desc.pos.y = 0.0F;

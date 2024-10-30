@@ -257,7 +257,7 @@ void itSawamuraAttackInitItemVars(GObj *item_gobj)
     }
     itSawamuraAttackSetFollowPlayerLR(item_gobj, victim_gobj);
 
-    if (ip->it_kind == nITKindSawamura)
+    if (ip->kind == nITKindSawamura)
     {
         Gfx *dl = (Gfx*)itGetPData(ip, lITSawamuraDataStart, lITSawamuraDisplayList); // Linker thing
 

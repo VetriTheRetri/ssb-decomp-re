@@ -322,7 +322,7 @@ void ftCommonThrownCommonStarUpdatePhysics(GObj *fighter_gobj, f32 decelerate)
     {
         if (fp->command_vars.flags.flag2 == 1)
         {
-            if (((fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindNKirby)) && (fp->status_vars.common.capturekirby.is_kirby != FALSE))
+            if (((fp->fkind == nFTKindKirby) || (fp->fkind == nFTKindNKirby)) && (fp->status_vars.common.capturekirby.is_kirby != FALSE))
             {
                 ftKirbySpecialNInitFighterVars(fp);
 
@@ -455,7 +455,7 @@ void ftCommonThrownKirbyStarInITStatusVars(GObj *fighter_gobj)
         ftCommonThrownReleaseFighterLoseGrip(fighter_gobj);
         ftParamSetCaptureImmuneMask(this_fp, FTCATCHKIND_MASK_NONE);
         ftParamSetCaptureImmuneMask(capture_fp, FTCATCHKIND_MASK_NONE);
-        ftParamUpdate1PGameDamageStats(this_fp, capture_fp->player, nFTHitlogObjectFighter, capture_fp->ft_kind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
+        ftParamUpdate1PGameDamageStats(this_fp, capture_fp->player, nFTHitlogObjectFighter, capture_fp->fkind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
 
         this_fp->capture_gobj = NULL;
         this_fp->catch_gobj = NULL;
@@ -501,7 +501,7 @@ void ftCommonThrownKirbyStarSetStatus(GObj *fighter_gobj)
 
         if (atk_coll->atk_state == nGMAttackStateNew)
         {
-            atk_coll->damage = copy_data[fp->ft_kind].star_damage;
+            atk_coll->damage = copy_data[fp->fkind].star_damage;
         }
     }
     fp->is_invisible = fp->is_hide_shadow = TRUE;

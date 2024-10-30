@@ -96,8 +96,8 @@ void ftCommonDokanStartSetStatus(GObj *fighter_gobj, s32 material)
 
     if
     (
-        (fp->ft_kind == nFTKindMario) || (fp->ft_kind == nFTKindMMario) || (fp->ft_kind == nFTKindNMario) ||
-        (fp->ft_kind == nFTKindLuigi) || (fp->ft_kind == nFTKindNLuigi)
+        (fp->fkind == nFTKindMario) || (fp->fkind == nFTKindMMario) || (fp->fkind == nFTKindNMario) ||
+        (fp->fkind == nFTKindLuigi) || (fp->fkind == nFTKindNLuigi)
     )
     {
         fp->status_vars.common.dokan.turn_stop_wait = 0;
@@ -283,7 +283,7 @@ void ftCommonDokanEndSetStatus(GObj *fighter_gobj)
     fp->is_ignore_jostle = TRUE;
     fp->status_vars.common.dokan.playertag_wait = FTCOMMON_DOKAN_PLAYERTAG_WAIT;
 
-    if ((fp->ft_kind != nFTKindMario) && (fp->ft_kind != nFTKindMMario) && (fp->ft_kind != nFTKindNMario) && (fp->ft_kind != nFTKindLuigi) && (fp->ft_kind != nFTKindNLuigi))
+    if ((fp->fkind != nFTKindMario) && (fp->fkind != nFTKindMMario) && (fp->fkind != nFTKindNMario) && (fp->fkind != nFTKindLuigi) && (fp->fkind != nFTKindNLuigi))
     {
         fp->status_vars.common.dokan.turn_stop_wait = FTCOMMON_DOKAN_TURN_STOP_WAIT_DEFAULT;
         fp->joints[nFTPartsJointTopN]->rotate.vec.f.y = 0.0F;

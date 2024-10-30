@@ -100,7 +100,7 @@ void ftCommonJumpAerialProcPhysics(GObj *fighter_gobj)
 
     (fp->is_fast_fall) ? ftPhysicsApplyFastFall(fp, attr) : ftPhysicsApplyGravityDefault(fp, attr);
 
-    switch (fp->ft_kind)
+    switch (fp->fkind)
     {
     case nFTKindKirby:
     case nFTKindNKirby:
@@ -134,12 +134,12 @@ void ftCommonJumpAerialSetStatus(GObj *fighter_gobj, s32 input_source)
 
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_PLAYERTAG);
 
-    if ((fp->ft_kind == nFTKindYoshi) || (fp->ft_kind == nFTKindNYoshi))
+    if ((fp->fkind == nFTKindYoshi) || (fp->fkind == nFTKindNYoshi))
     {
         fp->proc_physics = ftYoshiJumpAerialProcPhysics;
         fp->knockback_resist_status = FTYOSHI_JUMPAERIAL_KNOCKBACK_RESIST;
     }
-    else if ((fp->ft_kind == nFTKindNess) || (fp->ft_kind == nFTKindNNess))
+    else if ((fp->fkind == nFTKindNess) || (fp->fkind == nFTKindNNess))
     {
         fp->proc_physics = ftNessJumpAerialProcPhysics;
         fp->status_vars.common.jumpaerial.drift = 0.0F;
@@ -157,7 +157,7 @@ void ftCommonJumpAerialSetStatus(GObj *fighter_gobj, s32 input_source)
     } 
     fp->physics.vel_air.y = (((stick_range_y * attr->jump_height_mul) + attr->jump_height_base) * attr->aerial_jump_height);
 
-    if ((fp->ft_kind == nFTKindNess) || (fp->ft_kind == nFTKindNNess))
+    if ((fp->fkind == nFTKindNess) || (fp->fkind == nFTKindNNess))
     {
         fp->status_vars.common.jumpaerial.vel_x = stick_range_x * attr->aerial_jump_vel_x;
     }
@@ -169,7 +169,7 @@ void ftCommonJumpAerialSetStatus(GObj *fighter_gobj, s32 input_source)
 
     fp->is_special_interrupt = TRUE;
 
-    if (((fp->ft_kind == nFTKindYoshi) || (fp->ft_kind == nFTKindNYoshi)) && ((fp->input.pl.stick_range.x * fp->lr) < FTCOMMON_JUMPAERIAL_TURN_STICK_RANGE_MIN))
+    if (((fp->fkind == nFTKindYoshi) || (fp->fkind == nFTKindNYoshi)) && ((fp->input.pl.stick_range.x * fp->lr) < FTCOMMON_JUMPAERIAL_TURN_STICK_RANGE_MIN))
     {
         fp->status_vars.common.jumpaerial.turn_frames = FTCOMMON_JUMPAERIAL_TURN_FRAMES;
     }
@@ -187,7 +187,7 @@ void ftCommonJumpAerialMultiSetStatus(GObj *fighter_gobj, s32 input_source)
     s32 stick_range_x;
     s32 stick_range_y = I_CONTROLLER_RANGE_MAX;
 
-    switch (fp->ft_kind)
+    switch (fp->fkind)
     {
     case nFTKindKirby:
     case nFTKindNKirby:
@@ -221,7 +221,7 @@ void ftCommonJumpAerialMultiSetStatus(GObj *fighter_gobj, s32 input_source)
 
         fp->tap_stick_y = FTINPUT_STICKBUFFER_FRAMES_MAX;
     }
-    else switch (fp->ft_kind)
+    else switch (fp->fkind)
     {
     case nFTKindKirby:
     case nFTKindNKirby:
@@ -284,7 +284,7 @@ sb32 ftCommonJumpAerialCheckInterruptCommon(GObj *fighter_gobj)
     {
         return FALSE;
     }
-    else if ((fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindNKirby) || (fp->ft_kind == nFTKindPurin) || (fp->ft_kind == nFTKindNPurin))
+    else if ((fp->fkind == nFTKindKirby) || (fp->fkind == nFTKindNKirby) || (fp->fkind == nFTKindPurin) || (fp->fkind == nFTKindNPurin))
     {
         if (fp->jumps_used < fp->attr->jumps_max)
         {
@@ -299,7 +299,7 @@ sb32 ftCommonJumpAerialCheckInterruptCommon(GObj *fighter_gobj)
                     return TRUE;
                 }
             }
-            else switch (fp->ft_kind)
+            else switch (fp->fkind)
             {
             case nFTKindKirby:
             case nFTKindNKirby:

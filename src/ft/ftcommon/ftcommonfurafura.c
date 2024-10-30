@@ -12,7 +12,7 @@ void ftCommonFuraFuraProcUpdate(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 breakout_wait;
 
-    fp->shield_health = (fp->ft_kind == nFTKindYoshi) ? 30 : 30;
+    fp->shield_health = (fp->fkind == nFTKindYoshi) ? 30 : 30;
 
     fp->breakout_wait--;
 
@@ -36,7 +36,7 @@ void ftCommonFuraFuraSetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusFuraFura, 0.0F, 1.0F, (FTSTATUS_PRESERVE_TEXTUREPART | FTSTATUS_PRESERVE_MODELPART));
 
-    fp->shield_health = (fp->ft_kind == nFTKindYoshi) ? 30 : 30;
+    fp->shield_health = (fp->fkind == nFTKindYoshi) ? 30 : 30;
 
     breakout_wait = FTCOMMON_FURAFURA_BREAKOUT_WAIT_DEFAULT - fp->percent_damage;
 

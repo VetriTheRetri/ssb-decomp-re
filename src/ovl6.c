@@ -235,7 +235,7 @@ void func_ovl6_8018D0D0()
 void func_ovl6_8018D0F0()
 {
 	s32 player;
-	s32 ft_kind;
+	s32 fkind;
 
 	gSceneData.is_reset = FALSE;
 	gBonusBattleState = gDefaultBattleState;
@@ -249,37 +249,37 @@ void func_ovl6_8018D0F0()
 
 	if (gSceneData.scene_previous == 0x34)
 	{
-		ft_kind = gSceneData.ft_kind;
+		fkind = gSceneData.fkind;
 		gBattleState->time_limit = 100;
 
 		if (gSceneData.spgame_stage == 3)
 		{
 			if (gSceneData.spgame_time_limit != 0x64)
 				gBattleState->time_limit = 2;
-			gBattleState->gr_kind = ft_kind + nGRKindBonus1Start;
+			gBattleState->gr_kind = fkind + nGRKindBonus1Start;
 		}
 		else
 		{
 			if (gSceneData.spgame_time_limit != 0x64)
 				gBattleState->time_limit = 2;
-			gBattleState->gr_kind = ft_kind + nGRKindBonus2Start;
+			gBattleState->gr_kind = fkind + nGRKindBonus2Start;
 		}
 	}
 	else
 	{
-		ft_kind = gSceneData.bonus_ft_kind;
+		fkind = gSceneData.bonus_fkind;
 		gBattleState->time_limit = 0x64;
 		if (gSceneData.scene_previous == 0x13)
-			gBattleState->gr_kind = ft_kind + nGRKindBonus1Start;
+			gBattleState->gr_kind = fkind + nGRKindBonus1Start;
 		else
-			gBattleState->gr_kind = ft_kind + nGRKindBonus2Start;
+			gBattleState->gr_kind = fkind + nGRKindBonus2Start;
 	}
 	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
 		if (player == gSceneData.spgame_player)
 		{
-			gBattleState->players[player].pl_kind = nFTPlayerKindMan;
-			gBattleState->players[player].ft_kind = ft_kind;
+			gBattleState->players[player].pkind = nFTPlayerKindMan;
+			gBattleState->players[player].fkind = fkind;
 
 			if (gSceneData.scene_previous == 0x34)
 				gBattleState->players[player].costume = gSceneData.costume;
@@ -289,7 +289,7 @@ void func_ovl6_8018D0F0()
 			gBattleState->players[player].player_color = player;
 		}
 		else
-			gBattleState->players[player].pl_kind = nFTPlayerKindNot;
+			gBattleState->players[player].pkind = nFTPlayerKindNot;
 	}
 }
 
@@ -357,8 +357,8 @@ void scBonusGame_UpdateBonus1TargetCount()
 	if (gGRCommonStruct.bonus1.target_count == 0)
 	{
 		if ((gSceneData.scene_previous != 0x34)
-			&& (gSaveData.spgame_records[gSceneData.bonus_ft_kind].bonus1_task_count == 10)
-			&& (gBattleState->battle_time_current < gSaveData.spgame_records[gSceneData.bonus_ft_kind].bonus1_time))
+			&& (gSaveData.spgame_records[gSceneData.bonus_fkind].bonus1_task_count == 10)
+			&& (gBattleState->battle_time_current < gSaveData.spgame_records[gSceneData.bonus_fkind].bonus1_time))
 			ifCommonAnnounceCompleteInitInterface(0x1D0);
 		else
 			ifCommonAnnounceCompleteInitInterface(0x1CB);
@@ -486,8 +486,8 @@ void scBonusGame_UpdateBonus2PlatformCount(DObj* dobj)
 	if (gGRCommonStruct.bonus2.platform_count == 0)
 	{
 		if ((gSceneData.scene_previous != 0x34)
-			&& (gSaveData.spgame_records[gSceneData.bonus_ft_kind].bonus2_task_count == SCBATTLE_BONUSGAME_TASK_MAX)
-			&& (gBattleState->battle_time_current < gSaveData.spgame_records[gSceneData.bonus_ft_kind].bonus2_time))
+			&& (gSaveData.spgame_records[gSceneData.bonus_fkind].bonus2_task_count == SCBATTLE_BONUSGAME_TASK_MAX)
+			&& (gBattleState->battle_time_current < gSaveData.spgame_records[gSceneData.bonus_fkind].bonus2_time))
 			ifCommonAnnounceCompleteInitInterface(nSYAudioVoiceAnnounceNewRecord);
 		else
 			ifCommonAnnounceCompleteInitInterface(nSYAudioVoiceAnnounceComplete);
@@ -597,7 +597,7 @@ void scBonusGame_InitCameraVars()
 
 	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
-		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot)
+		if (gBattleState->players[player].pkind == nFTPlayerKindNot)
 			continue;
 
 		if (gBattleState->gr_kind >= nGRKindBonus2Start)
@@ -817,12 +817,12 @@ void scBonusGame_InitBonusGame()
 	for (player = 0, player_spawn = dFTManagerDefaultFighterDesc; player < ARRAY_COUNT(gBattleState->players);
 		 player++)
 	{
-		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot)
+		if (gBattleState->players[player].pkind == nFTPlayerKindNot)
 			continue;
 
-		ftManagerSetupFilesAllKind(gBattleState->players[player].ft_kind);
+		ftManagerSetupFilesAllKind(gBattleState->players[player].fkind);
 
-		player_spawn.ft_kind = gBattleState->players[player].ft_kind;
+		player_spawn.fkind = gBattleState->players[player].fkind;
 
 		scBonusGame_GetPlayerSpawnPosition(&player_spawn.pos);
 
@@ -833,10 +833,10 @@ void scBonusGame_InitBonusGame()
 		player_spawn.detail = nFTPartsDetailHigh;
 		player_spawn.costume = gBattleState->players[player].costume;
 
-		player_spawn.pl_kind = gBattleState->players[player].pl_kind;
+		player_spawn.pkind = gBattleState->players[player].pkind;
 		player_spawn.controller = &gPlayerControllers[player];
 
-		player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[player].ft_kind);
+		player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[player].fkind);
 		player_spawn.is_skip_entry = TRUE;
 
 		fighter_gobj = ftManagerMakeFighter(&player_spawn);
@@ -890,7 +890,7 @@ void scBonusGame_SetBonusEndStats(sb32 is_practice)
 }
 
 // 0x8018E95C
-void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
+void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 fkind)
 {
 	if (gSceneData.is_reset == FALSE)
 	{
@@ -898,20 +898,20 @@ void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
 		{
 			if (is_tasks_fail != FALSE)
 			{
-				if (gSaveData.spgame_records[ft_kind].bonus1_task_count < gSceneData.bonus_tasks_current)
+				if (gSaveData.spgame_records[fkind].bonus1_task_count < gSceneData.bonus_tasks_current)
 				{
-					gSaveData.spgame_records[ft_kind].bonus1_task_count = gSceneData.bonus_tasks_current;
+					gSaveData.spgame_records[fkind].bonus1_task_count = gSceneData.bonus_tasks_current;
 
 					lbBackupWrite();
 				}
 			}
 			else
 			{
-				gSaveData.spgame_records[ft_kind].bonus1_task_count = SCBATTLE_BONUSGAME_TASK_MAX;
+				gSaveData.spgame_records[fkind].bonus1_task_count = SCBATTLE_BONUSGAME_TASK_MAX;
 
-				if (gBattleState->battle_time_current < gSaveData.spgame_records[ft_kind].bonus1_time)
+				if (gBattleState->battle_time_current < gSaveData.spgame_records[fkind].bonus1_time)
 				{
-					gSaveData.spgame_records[ft_kind].bonus1_time = gBattleState->battle_time_current;
+					gSaveData.spgame_records[fkind].bonus1_time = gBattleState->battle_time_current;
 
 					lbBackupWrite();
 				}
@@ -919,20 +919,20 @@ void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 ft_kind)
 		}
 		else if (is_tasks_fail != FALSE)
 		{
-			if (gSaveData.spgame_records[ft_kind].bonus2_task_count < gSceneData.bonus_tasks_current)
+			if (gSaveData.spgame_records[fkind].bonus2_task_count < gSceneData.bonus_tasks_current)
 			{
-				gSaveData.spgame_records[ft_kind].bonus2_task_count = gSceneData.bonus_tasks_current;
+				gSaveData.spgame_records[fkind].bonus2_task_count = gSceneData.bonus_tasks_current;
 
 				lbBackupWrite();
 			}
 		}
 		else
 		{
-			gSaveData.spgame_records[ft_kind].bonus2_task_count = SCBATTLE_BONUSGAME_TASK_MAX;
+			gSaveData.spgame_records[fkind].bonus2_task_count = SCBATTLE_BONUSGAME_TASK_MAX;
 
-			if (gBattleState->battle_time_current < gSaveData.spgame_records[ft_kind].bonus2_time)
+			if (gBattleState->battle_time_current < gSaveData.spgame_records[fkind].bonus2_time)
 			{
-				gSaveData.spgame_records[ft_kind].bonus2_time = gBattleState->battle_time_current;
+				gSaveData.spgame_records[fkind].bonus2_time = gBattleState->battle_time_current;
 
 				lbBackupWrite();
 			}
@@ -990,11 +990,11 @@ void sc1PBonusGameStartScene()
 		{
 		case 0x34:
 			scBonusGame_SetBonusEndStats(task_count);
-			scBonusGame_SaveBonusRecordSRAM(task_count, gSceneData.ft_kind);
+			scBonusGame_SaveBonusRecordSRAM(task_count, gSceneData.fkind);
 			break;
 
 		default:
-			scBonusGame_SaveBonusRecordSRAM(task_count, gSceneData.bonus_ft_kind);
+			scBonusGame_SaveBonusRecordSRAM(task_count, gSceneData.bonus_fkind);
 
 			switch (gSceneData.scene_previous)
 			{
@@ -1013,7 +1013,7 @@ void sc1PBonusGameStartScene()
 						if ((bonus_complete_chars & LBBACKUP_CHARACTER_MASK_STARTER)
 							== LBBACKUP_CHARACTER_MASK_STARTER)
 						{
-							gSceneData.ft_kind = gSceneData.bonus_ft_kind;
+							gSceneData.fkind = gSceneData.bonus_fkind;
 							gSceneData.costume = gSceneData.bonus_costume;
 
 							gSceneData.spgame_stage = nSC1PGameStageLuigi;

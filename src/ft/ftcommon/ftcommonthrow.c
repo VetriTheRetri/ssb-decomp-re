@@ -35,7 +35,7 @@ void ftCommonThrowProcUpdate(GObj *fighter_gobj)
     }
     if (fighter_gobj->anim_frame <= 0.0F)
     {
-        if ((fp->ft_kind == nFTKindDonkey) || (fp->ft_kind == nFTKindNDonkey) || (fp->ft_kind == nFTKindGDonkey))
+        if ((fp->fkind == nFTKindDonkey) || (fp->fkind == nFTKindNDonkey) || (fp->fkind == nFTKindGDonkey))
         {
             if (fp->status_id == nFTCommonStatusThrowF)
             {
@@ -63,19 +63,19 @@ void ftCommonThrowSetStatus(GObj *fighter_gobj, sb32 is_throwf)
 
     if ((is_throwf != FALSE) || ((this_fp->input.pl.stick_range.x * this_fp->lr) >= 0))
     {
-        if ((this_fp->ft_kind == nFTKindKirby) || (this_fp->ft_kind == nFTKindNKirby))
+        if ((this_fp->fkind == nFTKindKirby) || (this_fp->fkind == nFTKindNKirby))
         {
             status_id = nFTKirbyStatusThrowF;
 
             mpCommonSetFighterAir(this_fp);
         }
         else status_id = nFTCommonStatusThrowF;
-        thrown_status = &this_fp->attr->thrown_status[catch_fp->ft_kind].ft_thrown[0];
+        thrown_status = &this_fp->attr->thrown_status[catch_fp->fkind].ft_thrown[0];
     }
     else
     {
         status_id = nFTCommonStatusThrowB;
-        thrown_status = &this_fp->attr->thrown_status[catch_fp->ft_kind].ft_thrown[1];
+        thrown_status = &this_fp->attr->thrown_status[catch_fp->fkind].ft_thrown[1];
     }
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
@@ -84,7 +84,7 @@ void ftCommonThrowSetStatus(GObj *fighter_gobj, sb32 is_throwf)
     this_fp->command_vars.flags.flag2 = 0;
     this_fp->command_vars.flags.flag1 = 0;
 
-    if ((this_fp->ft_kind == nFTKindSamus) || (this_fp->ft_kind == nFTKindNSamus))
+    if ((this_fp->fkind == nFTKindSamus) || (this_fp->fkind == nFTKindNSamus))
     {
         if (efManagerSamusGrappleBeamGlowMakeEffect(fighter_gobj) != NULL)
         {
@@ -97,7 +97,7 @@ void ftCommonThrowSetStatus(GObj *fighter_gobj, sb32 is_throwf)
     }
     else ftCommonThrownSetStatusImmediate(catch_gobj, thrown_status->status2);
 
-    if ((this_fp->ft_kind == nFTKindKirby) || (this_fp->ft_kind == nFTKindNKirby))
+    if ((this_fp->fkind == nFTKindKirby) || (this_fp->fkind == nFTKindNKirby))
     {
         if (status_id == nFTKirbyStatusThrowF)
         {

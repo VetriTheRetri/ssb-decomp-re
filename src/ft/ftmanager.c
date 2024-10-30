@@ -323,9 +323,9 @@ void ftManagerSetPrevPartsAlloc(FTParts *ft_parts)
 }
 
 // 0x800D7694
-void ftManagerSetupFilesMainKind(s32 ft_kind)
+void ftManagerSetupFilesMainKind(s32 fkind)
 {
-    FTData *ft_data = dFTManagerDataFiles[ft_kind];
+    FTData *ft_data = dFTManagerDataFiles[fkind];
 
     *ft_data->p_file_main = lbRelocGetFileExternHeap(ft_data->file_main_id, syTaskmanMalloc(lbRelocGetFileSize(ft_data->file_main_id), 0x10));
 
@@ -342,9 +342,9 @@ void ftManagerSetupFilesMainKind(s32 ft_kind)
 }
 
 // 0x800D7710
-void ftManagerSetupFilesKind(s32 ft_kind)
+void ftManagerSetupFilesKind(s32 fkind)
 {
-    FTData *ft_data = dFTManagerDataFiles[ft_kind];
+    FTData *ft_data = dFTManagerDataFiles[fkind];
 
     if (ft_data->file_mainmotion_id != 0)
     {
@@ -394,21 +394,21 @@ void ftManagerSetupFilesPlayablesAll(void)
 }
 
 // 0x800D786C
-void ftManagerSetupFilesAllKind(s32 ft_kind)
+void ftManagerSetupFilesAllKind(s32 fkind)
 {
-    FTData *ft_data = dFTManagerDataFiles[ft_kind];
+    FTData *ft_data = dFTManagerDataFiles[fkind];
 
     if (*ft_data->p_file_main == NULL)
     {
-        ftManagerSetupFilesMainKind(ft_kind);
-        ftManagerSetupFilesKind(ft_kind);
+        ftManagerSetupFilesMainKind(fkind);
+        ftManagerSetupFilesKind(fkind);
     }
 }
 
 // 0x800D78B4
-void* ftManagerAllocFigatreeHeapKind(s32 ft_kind)
+void* ftManagerAllocFigatreeHeapKind(s32 fkind)
 {
-    FTData *ft_data = dFTManagerDataFiles[ft_kind];
+    FTData *ft_data = dFTManagerDataFiles[fkind];
 
     return syTaskmanMalloc(ft_data->file_anim_size, 0x10);
 }
@@ -445,7 +445,7 @@ void ftManagerDestroyFighterWeapons(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    switch (fp->ft_kind)
+    switch (fp->fkind)
     {
     case nFTKindKirby:
     case nFTKindNKirby:
@@ -469,11 +469,11 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
     fp->lr = ft_desc->lr_spawn;
     fp->percent_damage = ft_desc->damage;
 
-    if (fp->pl_kind != nFTPlayerKindDemo)
+    if (fp->pkind != nFTPlayerKindDemo)
     {
         gBattleState->players[fp->player].stock_damage_all = fp->percent_damage;
     }
-    fp->shield_health = (fp->ft_kind == nFTKindYoshi) ? 55 : 55;
+    fp->shield_health = (fp->fkind == nFTKindYoshi) ? 55 : 55;
 
     fp->unk_ft_0x38 = 0.0F;
     fp->hitlag_tics = 0;
@@ -569,7 +569,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
     DObjGetStruct(fighter_gobj)->translate.vec.f = ft_desc->pos;
     DObjGetStruct(fighter_gobj)->scale.vec.f.x = DObjGetStruct(fighter_gobj)->scale.vec.f.y = DObjGetStruct(fighter_gobj)->scale.vec.f.z = attr->size_mul;
 
-    if (fp->pl_kind != nFTPlayerKindDemo)
+    if (fp->pkind != nFTPlayerKindDemo)
     {
         sb32 is_collide_ground = func_ovl2_800F9348(&DObjGetStruct(fighter_gobj)->translate.vec.f, &fp->coll_data.ground_line_id, &fp->coll_data.ground_dist, &fp->coll_data.ground_flags, &fp->coll_data.ground_angle);
 
@@ -577,7 +577,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
         {
             fp->coll_data.ground_line_id = -1;
         }
-        if ((is_collide_ground != FALSE) && (fp->coll_data.ground_dist > -300.0F) && (fp->ft_kind != nFTKindBoss))
+        if ((is_collide_ground != FALSE) && (fp->coll_data.ground_dist > -300.0F) && (fp->fkind != nFTKindBoss))
         {
             fp->ga = nMPKineticsGround;
 
@@ -598,7 +598,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
     }
     fp->coll_data.pos_current = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-    switch (fp->ft_kind)
+    switch (fp->fkind)
     {
     case nFTKindMMario:
         fp->knockback_resist_passive = 30.0F;
@@ -649,7 +649,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
         }
         else fp->fighter_vars.kirby.is_ignore_losecopy = TRUE;
 
-        if (fp->ft_kind == nFTKindKirby)
+        if (fp->fkind == nFTKindKirby)
         {
             ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbySpecialNCopyData);
 
@@ -677,7 +677,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
         fp->fighter_vars.boss.p->status_id_random = -1;
         fp->fighter_vars.boss.p->status_id_guard = 0;
 
-        if (fp->pl_kind != nFTPlayerKindDemo)
+        if (fp->pkind != nFTPlayerKindDemo)
         {
             ftBossCommonSetNextAttackWait(fighter_gobj);
             ftBossCommonSetDefaultLineID(fighter_gobj);
@@ -709,17 +709,17 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
 
     fighter_gobj->user_data.p = fp;
 
-    fp->pl_kind = ft_desc->pl_kind;
+    fp->pkind = ft_desc->pkind;
     fp->fighter_gobj = fighter_gobj;
-    fp->ft_kind = ft_desc->ft_kind;
-    fp->ft_data = dFTManagerDataFiles[fp->ft_kind];
+    fp->fkind = ft_desc->fkind;
+    fp->ft_data = dFTManagerDataFiles[fp->fkind];
     attr = fp->attr = (FTAttributes*) ((uintptr_t)*fp->ft_data->p_file_main + (intptr_t)fp->ft_data->o_attributes);
     fp->figatree_heap = ft_desc->figatree_heap;
     fp->team = ft_desc->team;
     fp->player = ft_desc->player;
     fp->stock_count = ft_desc->stock_count;
 
-    if (fp->pl_kind != nFTPlayerKindDemo)
+    if (fp->pkind != nFTPlayerKindDemo)
     {
         gBattleState->players[fp->player].stock_count = ft_desc->stock_count;
     }
@@ -864,7 +864,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
     fp->coll_data.coll_update_frame = gMPCollisionUpdateFrame;
     fp->coll_data.coll_mask_current = 0;
 
-    if (fp->pl_kind != nFTPlayerKindDemo)
+    if (fp->pkind != nFTPlayerKindDemo)
     {
         gcAddGObjProcess(fighter_gobj, ftMainProcInterruptMain, nGCProcessKindProc, 5);
         gcAddGObjProcess(fighter_gobj, ftMainProcPhysicsMapDefault, nGCProcessKindProc, 4);
@@ -877,16 +877,16 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
 
     ftManagerInitFighter(fighter_gobj, ft_desc);
 
-    if (fp->pl_kind == nFTPlayerKindCom)
+    if (fp->pkind == nFTPlayerKindCom)
     {
         ftComputerSetupAll(fighter_gobj);
     }
-    if ((fp->pl_kind == nFTPlayerKindKey) || (fp->pl_kind == nFTPlayerKindGameKey))
+    if ((fp->pkind == nFTPlayerKindKey) || (fp->pkind == nFTPlayerKindGameKey))
     {
         fp->key.input_seq = NULL;
         fp->key.input_wait = 0;
     }
-    switch (fp->pl_kind)
+    switch (fp->pkind)
     {
     case nFTPlayerKindDemo:
         scSubsysFighterSetStatus(fighter_gobj, 0x10000);
@@ -909,11 +909,11 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
         }
         break;
     }
-    if ((fp->pl_kind == nFTPlayerKindMan) || (fp->pl_kind == nFTPlayerKindCom))
+    if ((fp->pkind == nFTPlayerKindMan) || (fp->pkind == nFTPlayerKindCom))
     {
         ftComputerSetFighterDamageCollSizeInfo(fighter_gobj);
     }
-    if ((fp->pl_kind != nFTPlayerKindDemo) && !(ft_desc->is_skip_shadow_setup))
+    if ((fp->pkind != nFTPlayerKindDemo) && !(ft_desc->is_skip_shadow_setup))
     {
         FTShadowMakeShadow(fighter_gobj);
     }

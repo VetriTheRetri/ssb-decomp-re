@@ -204,7 +204,7 @@ void itDogasAttackInitItemVars(GObj *item_gobj)
 
     ip->item_vars.dogas.smog_spawn_wait = 0;
 
-    if (ip->it_kind == nITKindDogas)
+    if (ip->kind == nITKindDogas)
     {
         ip->item_vars.dogas.pos = dobj->translate.vec.f;
 

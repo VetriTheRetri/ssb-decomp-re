@@ -1041,20 +1041,20 @@ s32 mnCharsGetFtKind(s32 index)
 }
 
 // 0x80131BA8
-s32 mnCharsGetIndex(s32 ft_kind)
+s32 mnCharsGetIndex(s32 fkind)
 {
 	s32 indexes[12] = {
 
 		0, 7, 2, 4, 1, 3, 5, 10, 6, 8, 9, 11
 	};
-	return indexes[ft_kind];
+	return indexes[fkind];
 }
 
 // 0x80131BF8 - Unused?
 void func_ovl33_80131BF8() {}
 
 // 0x80131C00
-void mnCharsCreateBio(s32 ft_kind)
+void mnCharsCreateBio(s32 fkind)
 {
 	GObj* bio_gobj;
 	SObj* bio_sobj;
@@ -1076,7 +1076,7 @@ void mnCharsCreateBio(s32 ft_kind)
 	bio_sobj->pos.x = 126.0f;
 	bio_sobj->pos.y = 54.0f;
 
-	bio_sobj = lbCommonMakeSObjForGObj(bio_gobj, GetAddressFromOffset(gMNCharsFiles[0], offsets[ft_kind]));
+	bio_sobj = lbCommonMakeSObjForGObj(bio_gobj, GetAddressFromOffset(gMNCharsFiles[0], offsets[fkind]));
 	bio_sobj->sprite.attr &= ~SP_FASTCOPY;
 	bio_sobj->sprite.attr |= SP_TRANSPARENT;
 	bio_sobj->sprite.red = 0xFF;
@@ -1140,7 +1140,7 @@ void mnCharsCreateHeader()
 }
 
 // 0x80131F28
-void mnCharsCreateSeriesLogo(s32 ft_kind)
+void mnCharsCreateSeriesLogo(s32 fkind)
 {
 	GObj* series_logo_gobj;
 	intptr_t offsets[12] = {
@@ -1160,10 +1160,10 @@ void mnCharsCreateSeriesLogo(s32 ft_kind)
 	};
 
 	gMNCharsSeriesLogoGObj = series_logo_gobj = gcMakeGObjSPAfter(0, 0, 0x13, 0x80000000);
-	gcSetupCommonDObjs(series_logo_gobj, GetAddressFromOffset(gMNCharsFiles[3], offsets[ft_kind]), 0);
+	gcSetupCommonDObjs(series_logo_gobj, GetAddressFromOffset(gMNCharsFiles[3], offsets[fkind]), 0);
 	gcAddGObjDisplay(series_logo_gobj, gcDrawDObjTreeForGObj, 0x1C, 0x80000000, -1);
-	gcAddMObjAll(series_logo_gobj, GetAddressFromOffset(gMNCharsFiles[3], zoom_offsets[ft_kind]));
-	gcAddMatAnimJointAll(series_logo_gobj, GetAddressFromOffset(gMNCharsFiles[3], color_offsets[ft_kind]), 4.0F);
+	gcAddMObjAll(series_logo_gobj, GetAddressFromOffset(gMNCharsFiles[3], zoom_offsets[fkind]));
+	gcAddMatAnimJointAll(series_logo_gobj, GetAddressFromOffset(gMNCharsFiles[3], color_offsets[fkind]), 4.0F);
 	gcPlayAnimAll(series_logo_gobj);
 
 	DObjGetStruct(series_logo_gobj)->translate.vec.f.x = -350.0f;
@@ -1174,7 +1174,7 @@ void mnCharsCreateSeriesLogo(s32 ft_kind)
 }
 
 // 0x801320E4
-void mnCharsCreateName(s32 ft_kind)
+void mnCharsCreateName(s32 fkind)
 {
 	GObj* name_gobj;
 	SObj* name_sobj;
@@ -1202,7 +1202,7 @@ void mnCharsCreateName(s32 ft_kind)
 	gMNCharsNameGObj = name_gobj = gcMakeGObjSPAfter(0, 0, 0x14, 0x80000000);
 	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 0x1D, 0x80000000, -1);
 
-	if ((ft_kind == nFTKindPurin) || (ft_kind == nFTKindCaptain))
+	if ((fkind == nFTKindPurin) || (fkind == nFTKindCaptain))
 	{
 		name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMNCharsFiles[0], &FILE_010_NAME_BORDER_TALL_IMAGE_OFFSET));
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1225,11 +1225,11 @@ void mnCharsCreateName(s32 ft_kind)
 		name_sobj->sprite.blue = 0x07;
 	}
 
-	name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMNCharsFiles[0], offsets[ft_kind]));
+	name_sobj = lbCommonMakeSObjForGObj(name_gobj, GetAddressFromOffset(gMNCharsFiles[0], offsets[fkind]));
 	name_sobj->sprite.attr &= ~SP_FASTCOPY;
 	name_sobj->sprite.attr |= SP_TRANSPARENT;
-	name_sobj->pos.x = coords[ft_kind].x;
-	name_sobj->pos.y = coords[ft_kind].y;
+	name_sobj->pos.x = coords[fkind].x;
+	name_sobj->pos.y = coords[fkind].y;
 	name_sobj->sprite.red = 0x7D;
 	name_sobj->sprite.green = 0x45;
 	name_sobj->sprite.blue = 0x07;
@@ -1255,7 +1255,7 @@ void mnCharsCreateWorksBackground()
 }
 
 // 0x8013239C
-void mnCharsCreateWorks(s32 ft_kind)
+void mnCharsCreateWorks(s32 fkind)
 {
 	GObj* works_gobj;
 	SObj* works_sobj;
@@ -1268,7 +1268,7 @@ void mnCharsCreateWorks(s32 ft_kind)
 	gMNCharsWorksGObj = works_gobj = gcMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
 	gcAddGObjDisplay(works_gobj, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1);
 
-	works_sobj = lbCommonMakeSObjForGObj(works_gobj, GetAddressFromOffset(gMNCharsFiles[0], works_offsets[ft_kind]));
+	works_sobj = lbCommonMakeSObjForGObj(works_gobj, GetAddressFromOffset(gMNCharsFiles[0], works_offsets[fkind]));
 	works_sobj->sprite.attr &= ~SP_FASTCOPY;
 	works_sobj->sprite.attr |= SP_TRANSPARENT;
 	works_sobj->pos.x = 139.0f;
@@ -1279,15 +1279,15 @@ void mnCharsCreateWorks(s32 ft_kind)
 }
 
 // 0x80132494
-void mnCharsSetScale(GObj* fighter_gobj, s32 ft_kind)
+void mnCharsSetScale(GObj* fighter_gobj, s32 fkind)
 {
-	DObjGetStruct(fighter_gobj)->scale.vec.f.x = menu_zoom[ft_kind];
-	DObjGetStruct(fighter_gobj)->scale.vec.f.y = menu_zoom[ft_kind];
-	DObjGetStruct(fighter_gobj)->scale.vec.f.z = menu_zoom[ft_kind];
+	DObjGetStruct(fighter_gobj)->scale.vec.f.x = menu_zoom[fkind];
+	DObjGetStruct(fighter_gobj)->scale.vec.f.y = menu_zoom[fkind];
+	DObjGetStruct(fighter_gobj)->scale.vec.f.z = menu_zoom[fkind];
 }
 
 // 0x801324CC
-void mnCharsSetPosition(GObj* fighter_gobj, s32 ft_kind)
+void mnCharsSetPosition(GObj* fighter_gobj, s32 fkind)
 {
 	DObjGetStruct(fighter_gobj)->translate.vec.f.x = 0.0f;
 	DObjGetStruct(fighter_gobj)->translate.vec.f.y = -100.0f;
@@ -1298,7 +1298,7 @@ void mnCharsSetPosition(GObj* fighter_gobj, s32 ft_kind)
 void func_ovl33_801324F8() {}
 
 // 0x80132500
-charsActionInfo* mnCharsGetActionInfo(charsActionInfo* info, s32 ft_kind, s32 action_type, s32 arg3, s32 track)
+charsActionInfo* mnCharsGetActionInfo(charsActionInfo* info, s32 fkind, s32 action_type, s32 arg3, s32 track)
 {
 	charsSpecialActionInfo* special_actions[12] = {
 
@@ -1318,13 +1318,13 @@ charsActionInfo* mnCharsGetActionInfo(charsActionInfo* info, s32 ft_kind, s32 ac
 
 	if ((action_type == charsActionKindSpecialHi) || (action_type == charsActionKindSpecialN) || (action_type == charsActionKindSpecialLw))
 	{
-		*info = special_actions[ft_kind]->info[action_type][track];
+		*info = special_actions[fkind]->info[action_type][track];
 
 		return info;
 	}
 	else
 	{
-		if (ft_kind == nFTKindKirby)
+		if (fkind == nFTKindKirby)
 		{
 			if ((action_type == 9) || (action_type == 10))
 			{
@@ -1340,7 +1340,7 @@ charsActionInfo* mnCharsGetActionInfo(charsActionInfo* info, s32 ft_kind, s32 ac
 			}
 		}
 
-		if (ft_kind == nFTKindPurin)
+		if (fkind == nFTKindPurin)
 		{
 			if ((action_type == 9) || (action_type == 10))
 			{
@@ -1358,7 +1358,7 @@ charsActionInfo* mnCharsGetActionInfo(charsActionInfo* info, s32 ft_kind, s32 ac
 
 		if (action_type == 0x12)
 		{
-			*info = D_ovl33_80135DA8[ft_kind][track];
+			*info = D_ovl33_80135DA8[fkind][track];
 
 			return info;
 		}
@@ -1541,14 +1541,14 @@ void mnCharsUpdateFighter(GObj* fighter_gobj)
 }
 
 // 0x80132C40
-void mnCharsCreateFighter(s32 ft_kind)
+void mnCharsCreateFighter(s32 fkind)
 {
 	GObj* fighter_gobj;
 	FTStruct* ft_struct;
 	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 	charsActionInfo action_info;
 
-	spawn_info.ft_kind = mnCharsGetFtKind(gMNCharsCurrentIndex);
+	spawn_info.fkind = mnCharsGetFtKind(gMNCharsCurrentIndex);
 	spawn_info.costume = ftParamGetCostumeCommonID(mnCharsGetFtKind(gMNCharsCurrentIndex), 0);
 	spawn_info.figatree_heap = gMNCharsFigatreeHeap;
 	gMNCharsFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
@@ -1558,8 +1558,8 @@ void mnCharsCreateFighter(s32 ft_kind)
 	ft_struct = ftGetStruct(fighter_gobj);
 	ft_struct->is_playing_sfx = TRUE;
 
-	mnCharsSetScale(fighter_gobj, ft_kind);
-	mnCharsSetPosition(fighter_gobj, ft_kind);
+	mnCharsSetScale(fighter_gobj, fkind);
+	mnCharsSetPosition(fighter_gobj, fkind);
 
 	gMNCharsUnknown = 1;
 
@@ -1629,10 +1629,10 @@ void mnCharsUpdateMoveName(GObj* move_name_gobj)
 		0x2CDA8, 0x2CE78, 0x2CF48
 	};
 	s32 move_type;
-	s32 ft_kind;
+	s32 fkind;
 
 	move_type = mnCharsGetMoveType();
-	ft_kind = mnCharsGetFtKind(gMNCharsCurrentIndex);
+	fkind = mnCharsGetFtKind(gMNCharsCurrentIndex);
 	gcRemoveSObjAll(move_name_gobj);
 
 	if (move_type != 3)
@@ -1646,7 +1646,7 @@ void mnCharsUpdateMoveName(GObj* move_name_gobj)
 		move_name_sobj->sprite.green = 0x7D;
 		move_name_sobj->sprite.blue = 0xC;
 
-		move_name_sobj = lbCommonMakeSObjForGObj(move_name_gobj, GetAddressFromOffset(gMNCharsFiles[0], move_name_offsets[ft_kind][move_type]));
+		move_name_sobj = lbCommonMakeSObjForGObj(move_name_gobj, GetAddressFromOffset(gMNCharsFiles[0], move_name_offsets[fkind][move_type]));
 		move_name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		move_name_sobj->sprite.attr |= SP_TRANSPARENT;
 		move_name_sobj->pos.x = 24.0f;
@@ -1752,15 +1752,15 @@ void mnCharsCreateFighterViewport()
 }
 
 // 0x80133510
-sb32 mnCharsIsUnlocked(s32 ft_kind)
+sb32 mnCharsIsUnlocked(s32 fkind)
 {
-	if ((ft_kind == nFTKindLuigi) ||
-		(ft_kind == nFTKindCaptain) ||
-		(ft_kind == nFTKindPurin) ||
-		(ft_kind == nFTKindNess)
+	if ((fkind == nFTKindLuigi) ||
+		(fkind == nFTKindCaptain) ||
+		(fkind == nFTKindPurin) ||
+		(fkind == nFTKindNess)
 	)
 	{
-		if (gMNCharsUnlockedMask & gmSaveChrMask(ft_kind))
+		if (gMNCharsUnlockedMask & gmSaveChrMask(fkind))
 			return TRUE;
 		else
 			return FALSE;
@@ -1791,14 +1791,14 @@ void mnCharsInitVars()
 
 	if (gSceneData.scene_previous == nSCKindData)
 	{
-		gMNCharsCurrentIndex = mnCharsGetIndex(gSaveData.characters_ft_kind);
+		gMNCharsCurrentIndex = mnCharsGetIndex(gSaveData.characters_fkind);
 		gMNCharsIsDemoMode = FALSE;
 	}
 	else
 	{
 		gMNCharsIsDemoMode = TRUE;
-		gMNCharsFirstFtKind = gSceneData.demo_ft_kind[0];
-		gMNCharsSecondFtKind = gSceneData.demo_ft_kind[1];
+		gMNCharsFirstFtKind = gSceneData.demo_fkind[0];
+		gMNCharsSecondFtKind = gSceneData.demo_fkind[1];
 		gMNCharsCurrentIndex = mnCharsGetIndex(gMNCharsFirstFtKind);
 	}
 
@@ -1808,38 +1808,38 @@ void mnCharsInitVars()
 // 0x8013366C
 void mnCharsSaveFtKindToSRAM()
 {
-	gSaveData.characters_ft_kind = mnCharsGetFtKind(gMNCharsCurrentIndex);
+	gSaveData.characters_fkind = mnCharsGetFtKind(gMNCharsCurrentIndex);
 
 	lbBackupWrite();
 }
 
 // 0x8013369C
-void mnCharsChangeFighter(s32 ft_kind)
+void mnCharsChangeFighter(s32 fkind)
 {
 	if (gMNCharsSeriesLogoGObj != NULL)
 	{
 		gcEjectGObj(gMNCharsSeriesLogoGObj);
-		mnCharsCreateSeriesLogo(ft_kind);
+		mnCharsCreateSeriesLogo(fkind);
 	}
 	if (gMNCharsNameGObj != NULL)
 	{
 		gcEjectGObj(gMNCharsNameGObj);
-		mnCharsCreateName(ft_kind);
+		mnCharsCreateName(fkind);
 	}
 	if (gMNCharsBioGObj != NULL)
 	{
 		gcEjectGObj(gMNCharsBioGObj);
-		mnCharsCreateBio(ft_kind);
+		mnCharsCreateBio(fkind);
 	}
 	if (gMNCharsWorksGObj != NULL)
 	{
 		gcEjectGObj(gMNCharsWorksGObj);
-		mnCharsCreateWorks(ft_kind);
+		mnCharsCreateWorks(fkind);
 	}
 	if (gMNCharsFighterGObj != NULL)
 	{
 		ftManagerDestroyFighter(gMNCharsFighterGObj);
-		mnCharsCreateFighter(ft_kind);
+		mnCharsCreateFighter(fkind);
 	}
 }
 

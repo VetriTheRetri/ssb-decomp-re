@@ -438,7 +438,7 @@ void mpCommonSetFighterLandingParams(GObj *fighter_gobj)
         }
         fp->publicity_knockback = 0.0F;
     }
-    switch (fp->ft_kind)
+    switch (fp->fkind)
     {
     case nFTKindMario:
     case nFTKindMMario:

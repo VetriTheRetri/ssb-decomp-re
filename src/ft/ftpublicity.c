@@ -91,7 +91,7 @@ sb32 ftPublicityTryStartChant(GObj *gobj, f32 knockback, s32 player_number)
     {
         return FALSE;
     }
-    else sFTPublicityChantID = dFTCommonDataPublicityFighterChantFGMs[ftGetStruct(fighter_gobj)->ft_kind];
+    else sFTPublicityChantID = dFTCommonDataPublicityFighterChantFGMs[ftGetStruct(fighter_gobj)->fkind];
 
     if (sFTPublicityChantID == nSYAudioFGMVoiceEnd)
     {

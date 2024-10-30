@@ -116,7 +116,7 @@ void itMewFlyInitItemVars(GObj *item_gobj)
 
     func_800269C0_275C0(nSYAudioFGMMewFly);
 
-    if (ip->it_kind == nITKindMew)
+    if (ip->kind == nITKindMew)
     {
         func_800269C0_275C0(nSYAudioVoiceMBallMewAppear);
     }

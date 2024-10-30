@@ -414,11 +414,11 @@ void mnCongraStartScene(void)
 		break;
 
 	case nSCKind1PGame:
-		sMNCongraFighterKind = gSceneData.ft_kind;
+		sMNCongraFighterKind = gSceneData.fkind;
 		break;
 
 	case nSCKindDebugFighters:
-		sMNCongraFighterKind = gTransferBattleState.players[0].ft_kind;
+		sMNCongraFighterKind = gTransferBattleState.players[0].fkind;
 		break;
 	}
 	dMNCongraDisplaySetup.zbuffer = syVideoGetZBuffer(6400);

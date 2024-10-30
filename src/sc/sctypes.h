@@ -24,7 +24,7 @@ struct SC1PGameStage
 	u8 gr_kind;
 	u32 item_toggles;
 	u8 opponent_count;            // Number of enemy players to spawn?
-	u8 ft_kind[2];
+	u8 fkind[2];
 	u8 opponent_behavior;
 	u8 ally_count;
 	u8 ally_behavior;
@@ -243,8 +243,8 @@ struct SCPlayerData
 {
 	u8 level;		   		                        // Actually begins at 1 instead of 0
 	u8 handicap;	   		                        // Master Hand's handicap value is 35!?
-	u8 pl_kind;	   			                        // 0 = HMN, 1 = CPU, 2 = none (?), 5 = How to Play (?)
-	u8 ft_kind;
+	u8 pkind;	   			                        // 0 = HMN, 1 = CPU, 2 = none (?), 5 = How to Play (?)
+	u8 fkind;
 	u8 team;
 	u8 player; 				                        // Identical to team if team battle is on?
 	u8 costume;
@@ -313,16 +313,16 @@ struct SCCommonData
 	u8 scene_previous;
 	u8 unlock_messages[2];		// Queued unlock messages?
 	u8 pad04[0x09 - 0x04];
-	u8 challenger_ft_kind;		// Opponent being fought in "Challenger Approaching" battle
+	u8 challenger_fkind;		// Opponent being fought in "Challenger Approaching" battle
 	u16 demo_mask_prev;
-	u8 demo_first_ft_kind;
-	u8 demo_ft_kind[2];
+	u8 demo_first_fkind;
+	u8 demo_fkind[2];
 	u8 gr_kind;
 	u8 unk10;
 	ub8 is_select_continue;
 	ub8 is_reset; 				// Player did A + B + R + Z button combination
 	u8 spgame_player;
-	u8 ft_kind;
+	u8 fkind;
 	u8 costume;
 	u8 spgame_time_limit;
 	u8 spgame_stage; 			// 1P Game stage (0 = VS Link, 1 = VS Yoshi Team, etc.)
@@ -334,11 +334,11 @@ struct SCCommonData
 	u32 bonus_get_mask[3]; 		// Different bonuses the player has accumulated per match;
 								// also includes total Bonus Stage tasks completed in last member
 	u8 bonus_tasks_current;
-	u8 bonus_ft_kind;
+	u8 bonus_fkind;
 	u8 bonus_costume;
-	u8 training_man_ft_kind;
+	u8 training_man_fkind;
 	u8 training_man_costume;
-	u8 training_com_ft_kind;
+	u8 training_com_fkind;
 	u8 training_com_costume;
 	ub8 is_extend_demo_wait;
 	u8 demo_ground_order;

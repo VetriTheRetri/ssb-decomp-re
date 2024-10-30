@@ -313,7 +313,7 @@ void ftCommonYoshiEggSetHurtCollisions(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTDamageColl *dmg_coll = &fp->dmg_colls[0];
-    ftCommonYoshiEggDesc *egg = &dFTCommonYoshiEggDamageCollDescs[fp->ft_kind];
+    ftCommonYoshiEggDesc *egg = &dFTCommonYoshiEggDamageCollDescs[fp->fkind];
     s32 i;
 
     dmg_coll->joint = fp->joints[nFTPartsJointTopN];
@@ -390,6 +390,6 @@ void ftCommonYoshiEggSetStatus(GObj *fighter_gobj)
     this_fp->status_vars.common.captureyoshi.effect_gobj = NULL;
     this_fp->status_vars.common.captureyoshi.is_damagefloor = FALSE;
 
-    ftParamUpdate1PGameDamageStats(this_fp, capture_fp->player, nFTHitlogObjectFighter, capture_fp->ft_kind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
+    ftParamUpdate1PGameDamageStats(this_fp, capture_fp->player, nFTHitlogObjectFighter, capture_fp->fkind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
     ftCommonYoshiEggMakeEffect(fighter_gobj);
 }

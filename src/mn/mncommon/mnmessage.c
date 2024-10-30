@@ -277,7 +277,7 @@ void mnMessageInitVars(void)
 void mnMessageApplyUnlock(void)
 {
     // 0x8013259C
-    u8 ft_kinds[/* */] = { nFTKindLuigi, nFTKindNess, nFTKindCaptain, nFTKindPurin };
+    u8 fkinds[/* */] = { nFTKindLuigi, nFTKindNess, nFTKindCaptain, nFTKindPurin };
     
     gSaveData.unlock_mask |= (1 << sMNMessageUnlockID);
     
@@ -287,8 +287,8 @@ void mnMessageApplyUnlock(void)
     case nLBBackupUnlockNess:
     case nLBBackupUnlockCaptain:
     case nLBBackupUnlockPurin:
-        gSaveData.fighter_mask |= (1 << ft_kinds[sMNMessageUnlockID]);
-        gSaveData.characters_ft_kind = ft_kinds[sMNMessageUnlockID];
+        gSaveData.fighter_mask |= (1 << fkinds[sMNMessageUnlockID]);
+        gSaveData.characters_fkind = fkinds[sMNMessageUnlockID];
         break;
     }
     lbBackupWrite();

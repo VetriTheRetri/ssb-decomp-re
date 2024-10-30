@@ -72,7 +72,7 @@ void ftCommonItemThrowProcUpdate(GObj *fighter_gobj)
         if 
         (
 
-            (fp->ft_kind == nFTKindDonkey || fp->ft_kind == nFTKindNDonkey || fp->ft_kind == nFTKindGDonkey)
+            (fp->fkind == nFTKindDonkey || fp->fkind == nFTKindNDonkey || fp->fkind == nFTKindGDonkey)
 
                                                                     &&
 
@@ -207,7 +207,7 @@ void ftCommonHeavyThrowDecideSetStatus(GObj *fighter_gobj)
     }
     else status_id = nFTCommonStatusHeavyThrowStart;
 
-    if ((fp->ft_kind == nFTKindDonkey) || (fp->ft_kind == nFTKindNDonkey) || (fp->ft_kind == nFTKindGDonkey))
+    if ((fp->fkind == nFTKindDonkey) || (fp->fkind == nFTKindNDonkey) || (fp->fkind == nFTKindGDonkey))
     {
         status_id += nFTCommonStatusHeavyThrow4Start;
     }

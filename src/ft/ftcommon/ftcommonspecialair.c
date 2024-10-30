@@ -162,7 +162,7 @@ sb32 ftCommonSpecialAirCheckInterruptCommon(GObj *fighter_gobj)
             {
                 if (attr->is_have_specialairhi)
                 {
-                    dFTCommonSpecialAirHiStatusList[fp->ft_kind](fighter_gobj);
+                    dFTCommonSpecialAirHiStatusList[fp->fkind](fighter_gobj);
 
                     return TRUE;
                 }
@@ -171,7 +171,7 @@ sb32 ftCommonSpecialAirCheckInterruptCommon(GObj *fighter_gobj)
             {
                 if (attr->is_have_specialairlw)
                 {
-                    dFTCommonSpecialAirLwStatusList[fp->ft_kind](fighter_gobj);
+                    dFTCommonSpecialAirLwStatusList[fp->fkind](fighter_gobj);
 
                     return TRUE;
                 }
@@ -182,7 +182,7 @@ sb32 ftCommonSpecialAirCheckInterruptCommon(GObj *fighter_gobj)
                 {
                     ftParamSetStickLR(fp);
                 }
-                dFTCommonSpecialAirNStatusList[fp->ft_kind](fighter_gobj);
+                dFTCommonSpecialAirNStatusList[fp->fkind](fighter_gobj);
 
                 return TRUE;
             }

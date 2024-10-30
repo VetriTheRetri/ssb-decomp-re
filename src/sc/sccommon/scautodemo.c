@@ -523,7 +523,7 @@ s32 scAutoDemoGetFighterKind(s32 player)
 
 	if (player < 2)
 	{
-		return gSceneData.demo_ft_kind[player];
+		return gSceneData.demo_fkind[player];
 	}
 	character_flag = (gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER);
 
@@ -564,12 +564,12 @@ void scAutoDemoInitDemo(void)
 	{
 		gSceneData.demo_ground_order = 0;
 	}
-	sSCAutoDemoCharacterFlag = (1 << gSceneData.demo_ft_kind[0]) | (1 << gSceneData.demo_ft_kind[1]);
+	sSCAutoDemoCharacterFlag = (1 << gSceneData.demo_fkind[0]) | (1 << gSceneData.demo_fkind[1]);
 
 	for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
 	{
-		gBattleState->players[i].pl_kind = nFTPlayerKindCom;
-		gBattleState->players[i].ft_kind = scAutoDemoGetFighterKind(i);
+		gBattleState->players[i].pkind = nFTPlayerKindCom;
+		gBattleState->players[i].fkind = scAutoDemoGetFighterKind(i);
 		gBattleState->players[i].level = 9;
 
 		gBattleState->players[i].stock_damage_all = scAutoDemoGetPlayerDamage(i);
@@ -608,9 +608,9 @@ void scAutoDemoInitSObjs(void)
 	);
 	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-	for (player = 0; player < ARRAY_COUNT(gSceneData.demo_ft_kind); player++)
+	for (player = 0; player < ARRAY_COUNT(gSceneData.demo_fkind); player++)
 	{
-		SObj *sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetDataFromFile(Sprite*, file, dSCAutoDemoFighterNameSpriteOffsets[gBattleState->players[player].ft_kind]));
+		SObj *sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetDataFromFile(Sprite*, file, dSCAutoDemoFighterNameSpriteOffsets[gBattleState->players[player].fkind]));
 
 		sobj->sprite.red   = 0xFF;
 		sobj->sprite.green = 0xFF;
@@ -653,9 +653,9 @@ void scAutoDemoFuncStart(void)
 	{
 		player_spawn = dFTManagerDefaultFighterDesc;
 
-		ftManagerSetupFilesAllKind(gBattleState->players[player].ft_kind);
+		ftManagerSetupFilesAllKind(gBattleState->players[player].fkind);
 
-		player_spawn.ft_kind = gBattleState->players[player].ft_kind;
+		player_spawn.fkind = gBattleState->players[player].fkind;
 
 		scAutoDemoGetPlayerSpawnPosition(player, &player_spawn.pos);
 
@@ -679,11 +679,11 @@ void scAutoDemoFuncStart(void)
 
 		player_spawn.damage = gBattleState->players[player].stock_damage_all;
 
-		player_spawn.pl_kind = gBattleState->players[player].pl_kind;
+		player_spawn.pkind = gBattleState->players[player].pkind;
 
 		player_spawn.controller = &gPlayerControllers[player];
 
-		player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[player].ft_kind);
+		player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[player].fkind);
 
 		player_spawn.is_skip_entry = TRUE;
 

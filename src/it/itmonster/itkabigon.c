@@ -158,7 +158,7 @@ void itKabigonFallInitItemVars(GObj *item_gobj)
 
     func_800269C0_275C0(nSYAudioFGMKabigonFall);
 
-    if (ip->it_kind == nITKindKabigon)
+    if (ip->kind == nITKindKabigon)
     {
         func_800269C0_275C0(nSYAudioVoiceMBallKabigonFall);
 
@@ -304,7 +304,7 @@ GObj* itKabigonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITKabigonAnimJoint), 0.0F); // Linker thing
 
-        if (ip->it_kind == nITKindKabigon)
+        if (ip->kind == nITKindKabigon)
         {
             func_800269C0_275C0(nSYAudioVoiceMBallKabigonAppear);
         }

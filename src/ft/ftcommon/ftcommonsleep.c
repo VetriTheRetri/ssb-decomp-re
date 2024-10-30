@@ -23,7 +23,7 @@ sb32 ftCommonSleepCheckIgnorePauseMenu(GObj *fighter_gobj)
         {
             for (active_teammate_count = 0, stock_count = 0, player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
             {
-                if ((player != fp->player) && (gBattleState->players[player].pl_kind != nFTPlayerKindNot) && (fp->team == gBattleState->players[player].player))
+                if ((player != fp->player) && (gBattleState->players[player].pkind != nFTPlayerKindNot) && (fp->team == gBattleState->players[player].player))
                 {
                     if (gBattleState->players[player].stock_count > 0)
                     {
@@ -78,7 +78,7 @@ void ftCommonSleepProcUpdate(GObj *fighter_gobj)
             {
                 for (active_teammate_count = 0, stock_count = 0, player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
                 {
-                    if ((player != this_fp->player) && (gBattleState->players[player].pl_kind != nFTPlayerKindNot) && (this_fp->team == gBattleState->players[player].player)) 
+                    if ((player != this_fp->player) && (gBattleState->players[player].pkind != nFTPlayerKindNot) && (this_fp->team == gBattleState->players[player].player)) 
                     {
                         if (gBattleState->players[player].stock_count > 0)
                         {

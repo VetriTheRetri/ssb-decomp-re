@@ -75,7 +75,7 @@ sb32 ftLinkSpecialLwCheckGotoItemThrow(GObj *fighter_gobj, sb32 is_ground)
     {
         ITStruct *ip = itGetStruct(fp->item_gobj);
 
-        if (ip->it_kind == nITKindLinkBomb)
+        if (ip->kind == nITKindLinkBomb)
         {
             if (is_ground == TRUE)
             {

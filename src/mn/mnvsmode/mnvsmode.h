@@ -40,7 +40,7 @@ extern void mnVSModeMakeBackgroundViewport(void);
 extern void mnVSModeFuncStartVars(void);
 extern void mnVSModeSaveSettings(void);
 extern s32 mnVSModeGetShade(s32 port_id);
-extern s32 mnVSModeGetCostume(s32 ft_kind, s32 arg1);
+extern s32 mnVSModeGetCostume(s32 fkind, s32 arg1);
 extern void mnVSModeSetCostumesAndShades(void);
 extern void mnVSModeMain(GObj* arg0);
 extern void mnVSModeFuncStart(void);

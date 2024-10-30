@@ -21,7 +21,7 @@ void ftCommonEscapeProcUpdate(GObj *fighter_gobj)
         fp->physics.vel_air.x = fp->physics.vel_air.y = fp->physics.vel_air.z = 0.0F;
         fp->physics.vel_ground.x = fp->physics.vel_ground.y = fp->physics.vel_ground.z = 0.0F;
 
-        if ((fp->ft_kind != nFTKindYoshi) && (fp->ft_kind != nFTKindNYoshi) || (ftCommonGuardCheckInterruptEscape(fighter_gobj) == FALSE))
+        if ((fp->fkind != nFTKindYoshi) && (fp->fkind != nFTKindNYoshi) || (ftCommonGuardCheckInterruptEscape(fighter_gobj) == FALSE))
         {
             ftCommonWaitSetStatus(fighter_gobj);
         }

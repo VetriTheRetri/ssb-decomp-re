@@ -333,7 +333,7 @@ f32 mnBonusGetNextPortraitX(s32 portrait_id, f32 current_x_position)
 }
 
 // 0x80132144
-sb32 mnBonusCheckFighterIsXBoxed(s32 ft_kind)
+sb32 mnBonusCheckFighterIsXBoxed(s32 fkind)
 {
 	return FALSE;
 }
@@ -437,14 +437,14 @@ s32 mnBonusGetFtKind(s32 portrait_id)
 }
 
 // 0x801323E0
-s32 mnBonusGetPortraitId(s32 ft_kind)
+s32 mnBonusGetPortraitId(s32 fkind)
 {
 	s32 portrait_id_order[12] = {
 
 		1, 9, 2, 4, 0, 3, 7, 5, 8, 10, 11, 6
 	};
 
-	return portrait_id_order[ft_kind];
+	return portrait_id_order[fkind];
 }
 
 // 0x80132430
@@ -573,7 +573,7 @@ void mnBonusCreatePortraits()
 }
 
 // 0x80132A98
-void mnBonusSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
+void mnBonusSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 fkind)
 {
 	SObj* sobj;
 	Vec2f coords[12] = {
@@ -594,12 +594,12 @@ void mnBonusSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
 		0x2ED8, 0x3998, 0x28E8, 0x32F8, 0x3DB8, 0x35B0
 	};
 
-	if (ft_kind != nFTKindNull)
+	if (fkind != nFTKindNull)
 	{
 		gcRemoveSObjAll(name_logo_gobj);
 
 		// logo
-		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMnBonusFiles[1], logo_offsets[ft_kind]));
+		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMnBonusFiles[1], logo_offsets[fkind]));
 		sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
 		sobj->sprite.attr = sobj->sprite.attr | SP_TRANSPARENT;
 		sobj->sprite.red = 0;
@@ -609,7 +609,7 @@ void mnBonusSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
 		sobj->pos.y = 144.0F;
 
 		// name
-		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMnBonusFiles[0], name_offsets[ft_kind]));
+		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMnBonusFiles[0], name_offsets[fkind]));
 		sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
 		sobj->sprite.attr = sobj->sprite.attr | SP_TRANSPARENT;
 		sobj->pos.x = 66.0F;
@@ -807,13 +807,13 @@ void mnBonusCreateTitleOptionsAndBackViewport()
 }
 
 // 0x80133410
-u32 mnBonusGetBestTime(s32 ft_kind)
+u32 mnBonusGetBestTime(s32 fkind)
 {
 	u32 time;
 
 	if (gMnBonusType == 0)
 	{
-		time = gSaveData.spgame_records[ft_kind].bonus1_time;
+		time = gSaveData.spgame_records[fkind].bonus1_time;
 
 		if (time >= 0x34BC0U)
 			return 0x34BBFU;
@@ -822,7 +822,7 @@ u32 mnBonusGetBestTime(s32 ft_kind)
 	}
 	else
 	{
-		time = gSaveData.spgame_records[ft_kind].bonus2_time;
+		time = gSaveData.spgame_records[fkind].bonus2_time;
 
 		if (time >= 0x34BC0U)
 			return 0x34BBFU;
@@ -914,7 +914,7 @@ void mnBonusDrawBestTime()
 		0x00, 0x00, 0x00, 0x7E, 0x7C, 0x77
 	};
 	s32 best_time;
-	s32 ft_kind = mnBonusGetFtKindFromTokenPositionEvenIfLocked();
+	s32 fkind = mnBonusGetFtKindFromTokenPositionEvenIfLocked();
 
 	if (gMnBonusHighscoreGobj != NULL)
 	{
@@ -922,9 +922,9 @@ void mnBonusDrawBestTime()
 		gMnBonusHighscoreGobj = NULL;
 	}
 
-	if (ft_kind != nFTKindNull)
+	if (fkind != nFTKindNull)
 	{
-		best_time = mnBonusGetBestTime(ft_kind);
+		best_time = mnBonusGetBestTime(fkind);
 
 		gMnBonusHighscoreGobj = best_time_gobj = gcMakeGObjSPAfter(0U, NULL, 0x17U, 0x80000000U);
 		gcAddGObjDisplay(best_time_gobj, lbCommonDrawSObjAttr, 0x1AU, 0x80000000U, -1);
@@ -971,12 +971,12 @@ void mnBonusDrawBestTime()
 }
 
 // 0x80133990
-u8 mnBonusGetBestCount(s32 ft_kind)
+u8 mnBonusGetBestCount(s32 fkind)
 {
 	if (gMnBonusType == 0)
-		return gSaveData.spgame_records[ft_kind].bonus1_task_count;
+		return gSaveData.spgame_records[fkind].bonus1_task_count;
 	else
-		return gSaveData.spgame_records[ft_kind].bonus2_task_count;
+		return gSaveData.spgame_records[fkind].bonus2_task_count;
 }
 
 // 0x801339C8
@@ -993,7 +993,7 @@ void mnBonusDrawBestCount()
 
 		0x00, 0x00, 0x00, 0x7E, 0x7C, 0x77
 	};
-	s32 ft_kind = mnBonusGetFtKindFromTokenPositionEvenIfLocked();
+	s32 fkind = mnBonusGetFtKindFromTokenPositionEvenIfLocked();
 
 	if (gMnBonusHighscoreGobj != NULL)
 	{
@@ -1001,7 +1001,7 @@ void mnBonusDrawBestCount()
 		gMnBonusHighscoreGobj = NULL;
 	}
 
-	if (ft_kind != nFTKindNull)
+	if (fkind != nFTKindNull)
 	{
 		gMnBonusHighscoreGobj = count_gobj = gcMakeGObjSPAfter(0U, NULL, 0x17U, 0x80000000U);
 		gcAddGObjDisplay(count_gobj, lbCommonDrawSObjAttr, 0x1AU, 0x80000000U, -1);
@@ -1023,19 +1023,19 @@ void mnBonusDrawBestCount()
 		label_sobj->sprite.green = 0x7C;
 		label_sobj->sprite.blue = 0x77;
 
-		mnBonusCreateSmallerNumber(count_gobj, mnBonusGetBestCount(ft_kind), 225.0F, 194.0F, colors2, 2, 1);
+		mnBonusCreateSmallerNumber(count_gobj, mnBonusGetBestCount(fkind), 225.0F, 194.0F, colors2, 2, 1);
 	}
 }
 
 // 0x80133B7C
-sb32 mnBonusIsCompleted(s32 ft_kind)
+sb32 mnBonusIsCompleted(s32 fkind)
 {
 	u8 count;
 
 	if (gMnBonusType == 0)
-		count = gSaveData.spgame_records[ft_kind].bonus1_task_count;
+		count = gSaveData.spgame_records[fkind].bonus1_task_count;
 	else
-		count = gSaveData.spgame_records[ft_kind].bonus2_task_count;
+		count = gSaveData.spgame_records[fkind].bonus2_task_count;
 
 	if (count == 10)
 		return TRUE;
@@ -1129,15 +1129,15 @@ void func_ovl29_80133F4C() {}
 void func_ovl29_80133F54() {}
 
 // 0x80133F5C
-s32 mnBonusGetAvailableCostume(s32 ft_kind, s32 select_button)
+s32 mnBonusGetAvailableCostume(s32 fkind, s32 select_button)
 {
-	ftParamGetCostumeCommonID(ft_kind, ftParamGetCostumeCommonID(ft_kind, select_button));
+	ftParamGetCostumeCommonID(fkind, ftParamGetCostumeCommonID(fkind, select_button));
 }
 
 // 0x80133F88
-s32 mnBonusGetSelectedAnimation(s32 ft_kind)
+s32 mnBonusGetSelectedAnimation(s32 fkind)
 {
-	switch (ft_kind)
+	switch (fkind)
 	{
 		case nFTKindFox:
 		case nFTKindSamus:
@@ -1200,12 +1200,12 @@ void mnBonusRotateFighter(GObj *fighter_gobj)
 }
 
 // 0x80134108
-void mnBonusSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind)
+void mnBonusSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 fkind)
 {
 	f32 initial_y_rotation;
 	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
-	if (ft_kind != nFTKindNull)
+	if (fkind != nFTKindNull)
 	{
 		if (fighter_gobj != NULL)
 		{
@@ -1215,8 +1215,8 @@ void mnBonusSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind)
 		else
 			initial_y_rotation = 0.0F;
 
-		spawn_info.ft_kind = ft_kind;
-		gMnBonusPanel.costume_id = spawn_info.costume = mnBonusGetAvailableCostume(ft_kind, 0);
+		spawn_info.fkind = fkind;
+		gMnBonusPanel.costume_id = spawn_info.costume = mnBonusGetAvailableCostume(fkind, 0);
 		// spawn_info.shade = 0;
 		spawn_info.figatree_heap = gMnBonusFigatreeHeap;
 		spawn_info.player = port_id;
@@ -1229,9 +1229,9 @@ void mnBonusSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind)
 
 		DObjGetStruct(fighter_gobj)->rotate.vec.f.y = initial_y_rotation;
 
-		DObjGetStruct(fighter_gobj)->scale.vec.f.x = menu_zoom[ft_kind];
-		DObjGetStruct(fighter_gobj)->scale.vec.f.y = menu_zoom[ft_kind];
-		DObjGetStruct(fighter_gobj)->scale.vec.f.z = menu_zoom[ft_kind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.x = menu_zoom[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.y = menu_zoom[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.z = menu_zoom[fkind];
 	}
 }
 
@@ -2006,7 +2006,7 @@ void mnBonusMoveToken(s32 port_id)
 // 0x80135BF4
 void mnBonusSyncTokenAndFighter(GObj* token_gobj)
 {
-	s32 ft_kind;
+	s32 fkind;
 	s32 port_id = token_gobj->user_data.s;
 
 	if ((gMnBonusPanel.cursor_state != mnCursorStatePointer)
@@ -2031,12 +2031,12 @@ void mnBonusSyncTokenAndFighter(GObj* token_gobj)
 		mnBonusMoveToken(port_id);
 	}
 
-	ft_kind = mnBonusGetFtKindFromTokenPosition(port_id);
+	fkind = mnBonusGetFtKindFromTokenPosition(port_id);
 
 	if ((!gMnBonusPanel.is_selected)
-		&& (ft_kind != gMnBonusPanel.char_id))
+		&& (fkind != gMnBonusPanel.char_id))
 	{
-		gMnBonusPanel.char_id = ft_kind;
+		gMnBonusPanel.char_id = fkind;
 
 		mnBonusSyncFighterDisplay(port_id);
 		mnBonusSyncNameAndLogo(port_id);
@@ -2363,7 +2363,7 @@ void func_ovl29_80136990() {}
 void mnBonusSaveMatchInfo()
 {
 	gSceneData.spgame_player = gMnBonusHumanPanelPort;
-	gSceneData.bonus_ft_kind = gMnBonusPanel.char_id;
+	gSceneData.bonus_fkind = gMnBonusPanel.char_id;
 	gSceneData.bonus_costume = gMnBonusPanel.costume_id;
 }
 

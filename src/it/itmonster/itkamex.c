@@ -139,7 +139,7 @@ void itKamexAttackUpdateHydro(GObj *item_gobj)
     {
         Vec3f pos = dobj->translate.vec.f;
 
-        if (ip->it_kind == nITKindKamex)
+        if (ip->kind == nITKindKamex)
         {
             pos.x += ITKAMEX_KAMEX_HYDRO_SPAWN_OFF_X * ip->lr;
             pos.y += ITKAMEX_KAMEX_HYDRO_SPAWN_OFF_Y;
@@ -156,7 +156,7 @@ void itKamexAttackUpdateHydro(GObj *item_gobj)
 
         pos.y += ip->attr->obj_coll_bottom;
 
-        if (ip->it_kind == nITKindKamex)
+        if (ip->kind == nITKindKamex)
         {
             pos.x += (ip->attr->obj_coll_width + ITKAMEX_DUST_SPAWN_OFF_X) * -ip->lr;
         }
@@ -248,7 +248,7 @@ void itKamexAppearSetStatus(GObj *item_gobj)
 
     ip->multi = ITKAMEX_LIFETIME;
 
-    if (ip->it_kind == nITKindKamex)
+    if (ip->kind == nITKindKamex)
     {
         func_800269C0_275C0(nSYAudioVoiceMBallKamexAppear);
     }
@@ -295,7 +295,7 @@ void itKamexAttackInitItemVars(GObj *item_gobj, sb32 is_ignore_setup)
     {
         ip->multi = ITKAMEX_LIFETIME;
 
-        if (ip->it_kind == nITKindKamex)
+        if (ip->kind == nITKindKamex)
         {
             Gfx *dl = (Gfx*)itGetPData(ip, lITKamexDataStart, lITKamexDisplayList); // Linker thing
 

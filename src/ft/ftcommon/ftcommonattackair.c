@@ -12,7 +12,7 @@ void ftCommonAttackAirLwProcHit(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindNLink))
+    if ((fp->fkind == nFTKindLink) || (fp->fkind == nFTKindNLink))
     {
         ftParamClearHitAll(fighter_gobj);
 
@@ -33,7 +33,7 @@ void ftCommonAttackAirLwProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->ft_kind == nFTKindLink) || (fp->ft_kind == nFTKindNLink))
+    if ((fp->fkind == nFTKindLink) || (fp->fkind == nFTKindNLink))
     {
         if (fp->status_vars.common.attackair.rehit_timer != 0)
         {

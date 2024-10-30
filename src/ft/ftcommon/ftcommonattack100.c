@@ -15,16 +15,16 @@ extern intptr_t lFTKirbyAttack100Effect;            // 0x00001220
 
 #define ftCommonAttack100CheckFighterKind(fp) \
 (                                             \
-    ((fp)->ft_kind == nFTKindFox)        ||  \
-    ((fp)->ft_kind == nFTKindNFox)    ||  \
-    ((fp)->ft_kind == nFTKindLink)       ||  \
-    ((fp)->ft_kind == nFTKindNLink)   ||  \
-    ((fp)->ft_kind == nFTKindKirby)      ||  \
-    ((fp)->ft_kind == nFTKindNKirby)  ||  \
-    ((fp)->ft_kind == nFTKindPurin)      ||  \
-    ((fp)->ft_kind == nFTKindNPurin)  ||  \
-    ((fp)->ft_kind == nFTKindCaptain)    ||  \
-    ((fp)->ft_kind == nFTKindNCaptain)    \
+    ((fp)->fkind == nFTKindFox)        ||  \
+    ((fp)->fkind == nFTKindNFox)    ||  \
+    ((fp)->fkind == nFTKindLink)       ||  \
+    ((fp)->fkind == nFTKindNLink)   ||  \
+    ((fp)->fkind == nFTKindKirby)      ||  \
+    ((fp)->fkind == nFTKindNKirby)  ||  \
+    ((fp)->fkind == nFTKindPurin)      ||  \
+    ((fp)->fkind == nFTKindNPurin)  ||  \
+    ((fp)->fkind == nFTKindCaptain)    ||  \
+    ((fp)->fkind == nFTKindNCaptain)    \
 )
 
 // // // // // // // // // // // //
@@ -47,7 +47,7 @@ void ftCommonAttack100StartSetStatus(GObj *fighter_gobj)
 
     if (ftCommonGetCheckInterruptCommon(fighter_gobj) == FALSE)
     {
-        switch (fp->ft_kind)
+        switch (fp->fkind)
         {
         case nFTKindFox:
         case nFTKindNFox:
@@ -90,7 +90,7 @@ void ftCommonAttack100LoopKirbyUpdateEffect(FTStruct *fp)
 {
     Vec3f pos;
 
-    if (fp->ft_kind == nFTKindKirby)
+    if (fp->fkind == nFTKindKirby)
     {
         if (fp->command_vars.flags.flag2 != 0)
         {
@@ -158,7 +158,7 @@ void ftCommonAttack100LoopSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
 
-    switch (fp->ft_kind)
+    switch (fp->fkind)
     {
     case nFTKindFox:
     case nFTKindNFox:
@@ -195,7 +195,7 @@ void ftCommonAttack100EndSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 status_id;
 
-    switch (fp->ft_kind)
+    switch (fp->fkind)
     {
     case nFTKindFox:
     case nFTKindNFox:
@@ -240,7 +240,7 @@ sb32 ftCommonAttack100StartCheckInterruptCommon(GObj *fighter_gobj)
     {
         fp->attack1_input_count++;
 
-        switch (fp->ft_kind)
+        switch (fp->fkind)
         {
         case nFTKindFox:
         case nFTKindNFox:

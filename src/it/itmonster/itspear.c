@@ -161,7 +161,7 @@ void itSpearFlyCallSwarmMember(GObj *item_gobj)
 
         pos.y += (ITSPEAR_SPAWN_OFF_Y_MUL * mtTrigGetRandomFloat()) + ITSPEAR_SPAWN_OFF_Y_ADD;
 
-        itSpearFlyMakeSwarm(item_gobj, &pos, ip->it_kind);
+        itSpearFlyMakeSwarm(item_gobj, &pos, ip->kind);
 
         ip->item_vars.spear.spear_spawn_count--;
         ip->item_vars.spear.spear_spawn_wait = mtTrigGetRandomIntRange(ITSPEAR_SPAWN_WAIT_RANDOM) + ITSPEAR_SPAWN_WAIT_CONST;
@@ -192,7 +192,7 @@ void itSpearAppearInitItemVars(GObj *item_gobj)
 
     ip->physics.vel_air.y = 0;
 
-    if (ip->it_kind == nITKindSpear)
+    if (ip->kind == nITKindSpear)
     {
         void *anim_joint; 
         void *matanim_joint;
@@ -272,7 +272,7 @@ void itSpearFlyInitItemVars(GObj *item_gobj)
     ip->item_vars.spear.spear_spawn_wait = 0;
     ip->item_vars.spear.spear_spawn_count = ITSPEAR_SPAWN_COUNT;
 
-    if (ip->it_kind == nITKindSpear)
+    if (ip->kind == nITKindSpear)
     {
         func_800269C0_275C0(nSYAudioVoiceMBallSpearSwarm);
     }
@@ -389,10 +389,10 @@ void itPippiWeaponSwarmFuncDisplay(GObj *item_gobj)
 }
 
 // 0x801804A4
-GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
+GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 kind)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, ((it_kind == nITKindSpear) ? &dITSpearWeaponSwarmWeaponDesc : &dITPippiWeaponSwarmWeaponDesc), pos, WEAPON_FLAG_PARENT_ITEM);
+    GObj *weapon_gobj = wpManagerMakeWeapon(item_gobj, ((kind == nITKindSpear) ? &dITSpearWeaponSwarmWeaponDesc : &dITPippiWeaponSwarmWeaponDesc), pos, WEAPON_FLAG_PARENT_ITEM);
     DObj *dobj;
     s32 unused;
     WPStruct *wp;
@@ -409,7 +409,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 
     dobj = DObjGetStruct(weapon_gobj);
 
-    if (it_kind == nITKindSpear)
+    if (kind == nITKindSpear)
     {
         gcAddXObjForDObjFixed(dobj->child->child, 0x48, 0);
 
@@ -437,7 +437,7 @@ GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind)
 }
 
 // 0x80180608
-void itSpearFlyMakeSwarm(GObj *item_gobj, Vec3f *pos, s32 it_kind)
+void itSpearFlyMakeSwarm(GObj *item_gobj, Vec3f *pos, s32 kind)
 {
-    itSpearWeaponSwarmMakeWeapon(item_gobj, pos, it_kind);
+    itSpearWeaponSwarmMakeWeapon(item_gobj, pos, kind);
 }

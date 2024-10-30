@@ -773,7 +773,7 @@ void ftDisplayMainDrawDefault(DObj *dobj)
             case 0:
                 sp58 = gcPrepDObjMatrix(gSYTaskmanDLHeads, dobj);
 
-                if ((ft_parts != NULL) && (ft_parts->gobj != NULL) && (fp->ft_kind == nFTKindPurin))
+                if ((ft_parts != NULL) && (ft_parts->gobj != NULL) && (fp->fkind == nFTKindPurin))
                 {
                     ftDisplayMainDrawAccessory(fp, dobj, ft_parts);
                 }
@@ -811,12 +811,12 @@ void ftDisplayMainDrawDefault(DObj *dobj)
         {
             sp58 = gcPrepDObjMatrix(gSYTaskmanDLHeads, dobj);
 
-            if ((ft_parts != NULL) && (ft_parts->gobj != NULL) && (fp->ft_kind == nFTKindPurin))
+            if ((ft_parts != NULL) && (ft_parts->gobj != NULL) && (fp->fkind == nFTKindPurin))
             {
                 ftDisplayMainDrawAccessory(fp, dobj, ft_parts);
             }
         }
-        if ((ft_parts != NULL) && (ft_parts->gobj != NULL) && (fp->ft_kind == nFTKindPikachu))
+        if ((ft_parts != NULL) && (ft_parts->gobj != NULL) && (fp->fkind == nFTKindPikachu))
         {
             ftDisplayMainDrawAccessory(fp, dobj, ft_parts);
         }
@@ -1093,7 +1093,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
         return;
     }
-    if ((fp->pl_kind == nFTPlayerKindMan) || (fp->pl_kind == nFTPlayerKindCom) || (fp->pl_kind == nFTPlayerKindGameKey))
+    if ((fp->pkind == nFTPlayerKindMan) || (fp->pkind == nFTPlayerKindCom) || (fp->pkind == nFTPlayerKindGameKey))
     {
         if (gGCCurrentCamera->id == nGCCommonKindMainCamera)
         {
@@ -1172,7 +1172,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
         if (fp->colanim.is_use_light)
         {
-            if (fp->pl_kind != nFTPlayerKindDemo)
+            if (fp->pkind != nFTPlayerKindDemo)
             {
                 ftDisplayLightsDrawReflect(gSYTaskmanDLHeads, fp->lr * fp->colanim.light_angle_x, fp->colanim.light_angle_y);
             }
@@ -1196,7 +1196,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
             sFTDisplayMainSkyFogAlpha = fp->fog_color.a;
         }
-        else if (fp->pl_kind != nFTPlayerKindDemo)
+        else if (fp->pkind != nFTPlayerKindDemo)
         {
             sFTDisplayMainSkyFogAlpha = mpCollisionSetLightColorGetAlpha(gSYTaskmanDLHeads);
         }
@@ -1222,7 +1222,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
             );
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
         }
-        if ((fp->pl_kind == nFTPlayerKindDemo) || (fp->pl_kind == nFTPlayerKindKey) || (gGCCurrentCamera->id == nGCCommonKindMainCamera))
+        if ((fp->pkind == nFTPlayerKindDemo) || (fp->pkind == nFTPlayerKindKey) || (gGCCurrentCamera->id == nGCCommonKindMainCamera))
         {
             ftDisplayMainDrawAll(fighter_gobj);
         }
@@ -1244,7 +1244,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
         gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
-        if (fp->pl_kind != nFTPlayerKindDemo)
+        if (fp->pkind != nFTPlayerKindDemo)
         {
             ftDisplayLightsDrawReflect(gSYTaskmanDLHeads, gMPCollisionLightAngleX, gMPCollisionLightAngleY);
         }
@@ -1405,7 +1405,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
             }
         }
     }
-    if ((fp->pl_kind == nFTPlayerKindMan) || (fp->pl_kind == nFTPlayerKindCom) || (fp->pl_kind == nFTPlayerKindGameKey))
+    if ((fp->pkind == nFTPlayerKindMan) || (fp->pkind == nFTPlayerKindCom) || (fp->pkind == nFTPlayerKindGameKey))
     {
         if (gGCCurrentCamera->id != nGCCommonKindMainCamera)
         {

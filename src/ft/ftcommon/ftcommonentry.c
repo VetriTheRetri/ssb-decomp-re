@@ -69,7 +69,7 @@ void ftCommonEntryNullProcUpdate(GObj *fighter_gobj)
 
         if (fp->status_vars.common.entry.entry_wait == 0)
         {
-            if (fp->ft_kind == nFTKindBoss)
+            if (fp->fkind == nFTKindBoss)
             {
                 ftBossWaitSetStatus(fighter_gobj);
             }
@@ -94,7 +94,7 @@ void ftCommonAppearUpdateEffects(GObj *fighter_gobj)
 
     if (fp->command_vars.flags.flag1 != 0)
     {
-        if ((fp->ft_kind == nFTKindPikachu) || (fp->ft_kind == nFTKindPurin) || (fp->ft_kind == nFTKindNPikachu) || (fp->ft_kind == nFTKindNPurin))
+        if ((fp->fkind == nFTKindPikachu) || (fp->fkind == nFTKindPurin) || (fp->fkind == nFTKindNPikachu) || (fp->fkind == nFTKindNPurin))
         {
             efManagerMBallRaysMakeEffect(&fp->entry_pos);
         }
@@ -123,7 +123,7 @@ void ftCommonAppearProcUpdate(GObj *fighter_gobj)
 
         fp->coll_data.ground_line_id = fp->status_vars.common.entry.ground_line_id;
 
-        if (fp->ft_kind == nFTKindBoss)
+        if (fp->fkind == nFTKindBoss)
         {
             ftBossWaitSetStatus(fighter_gobj);
         }
@@ -187,14 +187,14 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.entry.ground_line_id = fp->coll_data.ground_line_id;
 
-    status_id = dFTCommonEntryAppearStatusIDs[fp->ft_kind][entry_id];
+    status_id = dFTCommonEntryAppearStatusIDs[fp->fkind][entry_id];
 
-    switch (fp->ft_kind)
+    switch (fp->fkind)
     {
     case nFTKindMario:
     case nFTKindLuigi:
     case nFTKindMMario:
-        efManagerMarioEntryDokanMakeEffect(&fp->entry_pos, fp->ft_kind);
+        efManagerMarioEntryDokanMakeEffect(&fp->entry_pos, fp->fkind);
         break;
 
     case nFTKindFox:
@@ -261,7 +261,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
     fp->command_vars.flags.flag2 = 0;
     fp->command_vars.flags.flag0 = 0;
 
-    if ((fp->ft_kind == nFTKindCaptain) && (fp->status_vars.common.entry.lr_entry == -1))
+    if ((fp->fkind == nFTKindCaptain) && (fp->status_vars.common.entry.lr_entry == -1))
     {
         ftParamMoveDLLink(fighter_gobj, 1);
     }

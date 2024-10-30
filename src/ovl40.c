@@ -237,11 +237,11 @@ void mvOpeningLinkInitFighterStagePanel()
 	{
 		FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
-		if (gBattleState->players[i].pl_kind == nFTPlayerKindNot) continue;
+		if (gBattleState->players[i].pkind == nFTPlayerKindNot) continue;
 
-		ftManagerSetupFilesAllKind(gBattleState->players[i].ft_kind);
+		ftManagerSetupFilesAllKind(gBattleState->players[i].fkind);
 
-		spawn_info.ft_kind = gBattleState->players[i].ft_kind;
+		spawn_info.fkind = gBattleState->players[i].fkind;
 		spawn_info.pos.x = spawn_position.x;
 		spawn_info.pos.y = spawn_position.y;
 		spawn_info.pos.z = spawn_position.z;
@@ -254,9 +254,9 @@ void mvOpeningLinkInitFighterStagePanel()
 		spawn_info.cp_level = gBattleState->players[i].level;
 		spawn_info.stock_count = gBattleState->stock_setting;
 		spawn_info.damage = 0;
-		spawn_info.pl_kind = gBattleState->players[i].pl_kind;
+		spawn_info.pkind = gBattleState->players[i].pkind;
 		spawn_info.controller = &gPlayerControllers[i];
-		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[i].ft_kind);
+		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[i].fkind);
 
 		gMVOpeningLinkStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
@@ -316,7 +316,7 @@ void mvOpeningLinkCreatePosedFighter()
 	GObj* fighter_gobj;
 	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
-	spawn_info.ft_kind = nFTKindLink;
+	spawn_info.fkind = nFTKindLink;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindLink, 0);
 	spawn_info.figatree_heap = gMVOpeningLinkFigatreeHeap;
 	spawn_info.pos.x = 600.0f;
@@ -408,8 +408,8 @@ void mvOpeningLinkInit()
 	gBattleState->gr_kind = nGRKindHyrule;
 	gBattleState->pl_count = 1;
 
-	gBattleState->players[0].ft_kind = nFTKindLink;
-	gBattleState->players[0].pl_kind = nFTPlayerKindKey;
+	gBattleState->players[0].fkind = nFTKindLink;
+	gBattleState->players[0].pkind = nFTPlayerKindKey;
 
 	mvOpeningLinkLoadFiles();
 	gcMakeGObjSPAfter(0x3F7, mvOpeningLinkMainProc, 0xD, 0x80000000);

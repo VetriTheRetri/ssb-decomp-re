@@ -328,7 +328,7 @@ GObj* itEggMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         {
             ITStruct *spawn_ip = itGetStruct(parent_gobj);
 
-            if ((spawn_ip->it_kind == nITKindMLucky) && (mtTrigGetRandomIntRange(2) == 0))
+            if ((spawn_ip->kind == nITKindMLucky) && (mtTrigGetRandomIntRange(2) == 0))
             {
                 dobj->child->rotate.vec.f.y = F_CST_DTOR32(180.0F);
 

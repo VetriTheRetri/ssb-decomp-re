@@ -16,7 +16,7 @@ void ftCommonGuardSetStatusFromEscape(GObj *fighter_gobj)
 
     if (fp->shield_health != 0)
     {
-        if (fp->ft_kind == nFTKindYoshi)
+        if (fp->fkind == nFTKindYoshi)
         {
             fp->status_vars.common.guard.effect_gobj = efManagerYoshiShieldMakeEffect(fighter_gobj);
 

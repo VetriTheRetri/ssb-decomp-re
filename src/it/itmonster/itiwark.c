@@ -221,7 +221,7 @@ void itIwarkAttackInitItemVars(GObj *item_gobj)
 
     pos = dobj->translate.vec.f;
 
-    if (ip->it_kind == nITKindIwark)
+    if (ip->kind == nITKindIwark)
     {
         dobj->display_list = dl = (Gfx*)itGetPData(ip, lITIwarkDataStart, lITIwarkDisplayList); // Linker thing
 
@@ -231,7 +231,7 @@ void itIwarkAttackInitItemVars(GObj *item_gobj)
 
     efManagerDustHeavyDoubleMakeEffect(&pos, -1, 1.0F);
 
-    if (ip->it_kind == nITKindIwark)
+    if (ip->kind == nITKindIwark)
     {
         func_800269C0_275C0(nSYAudioVoiceMBallIwarkAppear);
     }

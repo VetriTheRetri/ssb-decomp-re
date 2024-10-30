@@ -210,7 +210,7 @@ sb32 itLizardonAttackProcUpdate(GObj *item_gobj)
     DObj *dobj = DObjGetStruct(item_gobj);
     Vec3f pos = dobj->translate.vec.f;
 
-    if (ip->it_kind == nITKindLizardon)
+    if (ip->kind == nITKindLizardon)
     {
         pos.y += ITLIZARDON_LIZARDON_FLAME_OFF_Y;
 
@@ -244,7 +244,7 @@ sb32 itLizardonAttackProcUpdate(GObj *item_gobj)
 
         efManagerDustHeavyMakeEffect(&pos, -ip->lr);
 
-        if (ip->it_kind == nITKindPippi)
+        if (ip->kind == nITKindPippi)
         {
             dobj->rotate.vec.f.y += F_CST_DTOR32(180.0F);
         }
@@ -283,7 +283,7 @@ void itLizardonAttackInitItemVars(GObj *item_gobj)
 
     ip->lr = -1;
 
-    if (ip->it_kind == nITKindLizardon)
+    if (ip->kind == nITKindLizardon)
     {
         addr = (void*) ((uintptr_t)ip->attr->dobj_setup - (intptr_t)&lITLizardonDataStart); // Linker thing
 
@@ -310,7 +310,7 @@ sb32 itLizardonCommonProcUpdate(GObj *item_gobj)
 
         ip->physics.vel_air.y = 0.0F;
 
-        if (ip->it_kind == nITKindLizardon)
+        if (ip->kind == nITKindLizardon)
         {
             func_800269C0_275C0(nSYAudioVoiceMBallLizardonAppear);
         }

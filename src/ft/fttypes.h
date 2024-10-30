@@ -554,7 +554,7 @@ struct FTThrowReleaseDesc
 
 struct FTCreateDesc
 {
-    s32 ft_kind;
+    s32 fkind;
     Vec3f pos;
     s32 lr_spawn;
     u8 team;
@@ -573,7 +573,7 @@ struct FTCreateDesc
     ub32 is_skip_magnify : 1;       // If TRUE, fighter's magnifying glass is not rendered?
     s32 copy_kind;                  // Kirby's copy ID on spawn
     s32 damage;
-    s32 pl_kind;
+    s32 pkind;
     gsController *controller;       // Pointer to player's controller input struct
     u16 button_mask_a;
     u16 button_mask_b;
@@ -732,7 +732,7 @@ struct FTCostume
 
 struct FTDemoDesc
 {
-    s32 ft_kind;
+    s32 fkind;
     s32 costume;
     s32 shade;
 };
@@ -1002,7 +1002,7 @@ struct FTStruct
 {
     FTStruct *alloc_next;
     GObj *fighter_gobj;
-    FTKind ft_kind;
+    FTKind fkind;
     u8 team;
     u8 player;
     u8 detail_current;          // Hi-Poly = 1, Low-Poly = 2
@@ -1019,7 +1019,7 @@ struct FTStruct
 
     u32 status_total_tics;      // Frames spent in this action state
 
-    FTPlayerKind pl_kind;
+    FTPlayerKind pkind;
 
     s32 status_id;
     s32 motion_id;              // Index of moveset command script to use
@@ -1172,7 +1172,7 @@ struct FTStruct
     u16 shuffle_tics;                   // Model shift timer
 
     GObj *throw_gobj;                   // GObj of opponent that threw this fighter
-    FTKind throw_ft_kind;               // Kind of opponent that threw this fighter
+    FTKind throw_fkind;               // Kind of opponent that threw this fighter
     u8 throw_team;                      // Team of opponent that threw this fighter
     u8 throw_player;                    // Port of opponent that threw this fighter
     s32 throw_player_number;            // Player number of opponent that threw this fighter

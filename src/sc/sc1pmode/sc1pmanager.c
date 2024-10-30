@@ -115,22 +115,22 @@ s32 sc1PManagerGetFighterKindsNum(u16 mask)
 // 0x800D6508
 s32 sc1PManagerGetShuffledFighterKind(u16 this_mask, u16 prev_mask, s32 random)
 {
-    s32 ft_kind = -1;
+    s32 fkind = -1;
 
     random++;
 
     do
     {
-        ft_kind++;
+        fkind++;
 
-        if ((this_mask & (1 << ft_kind)) && !(prev_mask & (1 << ft_kind)))
+        if ((this_mask & (1 << fkind)) && !(prev_mask & (1 << fkind)))
         {
             random--;
         }
     }
     while (random != 0);
 
-    return ft_kind;
+    return fkind;
 }
 
 // 0x800D6554
@@ -181,25 +181,25 @@ void sc1PManagerTrySetChallengers(void)
 // 0x800D6630
 sb32 sc1PManagerCheckUnlockSoundTest(void)
 {
-    s32 ft_kind;
+    s32 fkind;
     u16 bonus_record_count;
 
     if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_SOUNDTEST))
     {
-        for (ft_kind = 0, bonus_record_count = 0; ft_kind < ARRAY_COUNT(gSaveData.spgame_records); ft_kind++)
+        for (fkind = 0, bonus_record_count = 0; fkind < ARRAY_COUNT(gSaveData.spgame_records); fkind++)
         {
-            if (gSaveData.spgame_records[ft_kind].bonus1_task_count == SCBATTLE_BONUSGAME_TASK_MAX) // Check if fighter has broken all targets
+            if (gSaveData.spgame_records[fkind].bonus1_task_count == SCBATTLE_BONUSGAME_TASK_MAX) // Check if fighter has broken all targets
             {
-                bonus_record_count |= (1 << ft_kind);
+                bonus_record_count |= (1 << fkind);
             }
         }
         if ((bonus_record_count & LBBACKUP_CHARACTER_MASK_ALL) == LBBACKUP_CHARACTER_MASK_ALL)
         {
-            for (ft_kind = 0, bonus_record_count = 0; ft_kind < ARRAY_COUNT(gSaveData.spgame_records); ft_kind++)
+            for (fkind = 0, bonus_record_count = 0; fkind < ARRAY_COUNT(gSaveData.spgame_records); fkind++)
             {
-                if (gSaveData.spgame_records[ft_kind].bonus2_task_count == SCBATTLE_BONUSGAME_TASK_MAX) // Check if fighter has boarded all platforms
+                if (gSaveData.spgame_records[fkind].bonus2_task_count == SCBATTLE_BONUSGAME_TASK_MAX) // Check if fighter has boarded all platforms
                 {
-                    bonus_record_count |= (1 << ft_kind);
+                    bonus_record_count |= (1 << fkind);
                 }
             }
             if ((bonus_record_count & LBBACKUP_CHARACTER_MASK_ALL) == LBBACKUP_CHARACTER_MASK_ALL)
@@ -216,23 +216,23 @@ void sc1PManagerTrySaveBackup(sb32 is_complete_spgame)
 {
     sb32 is_write_data = FALSE;
 
-    if (gSaveData.spgame_records[gSceneData.ft_kind].spgame_hiscore < gSceneData.spgame_score)
+    if (gSaveData.spgame_records[gSceneData.fkind].spgame_hiscore < gSceneData.spgame_score)
     {
-        gSaveData.spgame_records[gSceneData.ft_kind].spgame_hiscore   = gSceneData.spgame_score;
-        gSaveData.spgame_records[gSceneData.ft_kind].spgame_continues = gSceneData.continues_used;
-        gSaveData.spgame_records[gSceneData.ft_kind].spgame_bonuses   = gSceneData.bonus_count;
+        gSaveData.spgame_records[gSceneData.fkind].spgame_hiscore   = gSceneData.spgame_score;
+        gSaveData.spgame_records[gSceneData.fkind].spgame_continues = gSceneData.continues_used;
+        gSaveData.spgame_records[gSceneData.fkind].spgame_bonuses   = gSceneData.bonus_count;
 
         if (is_complete_spgame != FALSE)
         {
-            gSaveData.spgame_records[gSceneData.ft_kind].spgame_best_difficulty = gSaveData.spgame_difficulty + 1;
+            gSaveData.spgame_records[gSceneData.fkind].spgame_best_difficulty = gSaveData.spgame_difficulty + 1;
         }
-        else gSaveData.spgame_records[gSceneData.ft_kind].spgame_best_difficulty = 0;
+        else gSaveData.spgame_records[gSceneData.fkind].spgame_best_difficulty = 0;
 
         is_write_data = TRUE;
     }
-    if ((gSaveData.spgame_records[gSceneData.ft_kind].spgame_complete == FALSE) && (is_complete_spgame != 0))
+    if ((gSaveData.spgame_records[gSceneData.fkind].spgame_complete == FALSE) && (is_complete_spgame != 0))
     {
-        gSaveData.spgame_records[gSceneData.ft_kind].spgame_complete = TRUE;
+        gSaveData.spgame_records[gSceneData.fkind].spgame_complete = TRUE;
 
         is_write_data = TRUE;
     }
@@ -265,16 +265,16 @@ void sc1PManagerUpdateScene(void)
 
     if (gSaveData.error_flags & LBBACKUP_ERROR_1PGAMEMARIO)
     {
-        gSceneData.ft_kind = nFTKindMario;
+        gSceneData.fkind = nFTKindMario;
         gSceneData.costume = 0;
     }
     gSCManager1PGameBattleState.players[gSceneData.spgame_player].handicap = FTCOMMON_HANDICAP_DEFAULT;
-    gSCManager1PGameBattleState.players[gSceneData.spgame_player].pl_kind = nFTPlayerKindMan;
+    gSCManager1PGameBattleState.players[gSceneData.spgame_player].pkind = nFTPlayerKindMan;
     gSCManager1PGameBattleState.players[gSceneData.spgame_player].team = 0;
     gSCManager1PGameBattleState.players[gSceneData.spgame_player].shade = 0;
     gSCManager1PGameBattleState.players[gSceneData.spgame_player].player_color = gSceneData.spgame_player;
     gSCManager1PGameBattleState.players[gSceneData.spgame_player].tag_kind = gSceneData.spgame_player;
-    gSCManager1PGameBattleState.players[gSceneData.spgame_player].ft_kind = gSceneData.ft_kind;
+    gSCManager1PGameBattleState.players[gSceneData.spgame_player].fkind = gSceneData.fkind;
     gSCManager1PGameBattleState.players[gSceneData.spgame_player].costume = gSceneData.costume;
     gSCManager1PGameBattleState.players[gSceneData.spgame_player].stock_count = gSaveData.spgame_stock_count;
     gSCManager1PGameBattleState.players[gSceneData.spgame_player].is_spgame_team = FALSE;
@@ -310,7 +310,7 @@ void sc1PManagerUpdateScene(void)
     {
         while (gSceneData.spgame_stage <= nSC1PGameStageCommonEnd)
         {
-            this_mask = (gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER) & ~(1 << gSceneData.ft_kind);
+            this_mask = (gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER) & ~(1 << gSceneData.fkind);
 
             is_player_lose = FALSE;
 
@@ -319,9 +319,9 @@ void sc1PManagerUpdateScene(void)
             case nSC1PGameStageMario:
                 this_mask &= ~1;
 
-                gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].ft_kind = sc1PManagerGetShuffledFighterKind(this_mask, 0, mtTrigGetRandomIntRange(sc1PManagerGetFighterKindsNum(this_mask)));
+                gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].fkind = sc1PManagerGetShuffledFighterKind(this_mask, 0, mtTrigGetRandomIntRange(sc1PManagerGetFighterKindsNum(this_mask)));
 
-                if (gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].ft_kind == nFTKindLuigi)
+                if (gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].fkind == nFTKindLuigi)
                 {
                     gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].costume = ftParamGetCostumeCommonID(nFTKindLuigi, 1);
                 }
@@ -333,11 +333,11 @@ void sc1PManagerUpdateScene(void)
             case nSC1PGameStageDonkey:
                 random = sc1PManagerGetFighterKindsNum(this_mask);
 
-                gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].ft_kind = sc1PManagerGetShuffledFighterKind(this_mask, 0, mtTrigGetRandomIntRange(random));
+                gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].fkind = sc1PManagerGetShuffledFighterKind(this_mask, 0, mtTrigGetRandomIntRange(random));
                 gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].costume = 0;
                 gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].shade = 0;
 
-                gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].ft_kind = sc1PManagerGetShuffledFighterKind(this_mask, (1 << gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].ft_kind), mtTrigGetRandomIntRange(random - 1));
+                gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].fkind = sc1PManagerGetShuffledFighterKind(this_mask, (1 << gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].fkind), mtTrigGetRandomIntRange(random - 1));
                 gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].costume = 0;
                 gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].shade = 0;
                 break;
@@ -492,7 +492,7 @@ void sc1PManagerUpdateScene(void)
 skip_main_stages:
     if (gSceneData.spgame_stage >= nSC1PGameStageChallengerStart)
     {
-        gSceneData.challenger_ft_kind = dSC1PManagerChallangerFighterKinds[gSceneData.spgame_stage - nSC1PGameStageChallengerStart];
+        gSceneData.challenger_fkind = dSC1PManagerChallangerFighterKinds[gSceneData.spgame_stage - nSC1PGameStageChallengerStart];
 
         syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
         syDmaLoadOverlay(&dSC1PManager1PChallengerOverlay);

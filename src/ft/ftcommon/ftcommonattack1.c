@@ -8,17 +8,17 @@
 
 #define ftCommonAttack13CheckFighterKind(fp)  \
 (                                             \
-    ((fp)->ft_kind == nFTKindMario)      ||  \
-    ((fp)->ft_kind == nFTKindMMario) ||  \
-    ((fp)->ft_kind == nFTKindNMario)  ||  \
-    ((fp)->ft_kind == nFTKindLuigi)      ||  \
-    ((fp)->ft_kind == nFTKindNLuigi)  ||  \
-    ((fp)->ft_kind == nFTKindCaptain)    ||  \
-    ((fp)->ft_kind == nFTKindNCaptain)||  \
-    ((fp)->ft_kind == nFTKindLink)       ||  \
-    ((fp)->ft_kind == nFTKindNLink)   ||  \
-    ((fp)->ft_kind == nFTKindNess)       ||  \
-    ((fp)->ft_kind == nFTKindNNess)       \
+    ((fp)->fkind == nFTKindMario)      ||  \
+    ((fp)->fkind == nFTKindMMario) ||  \
+    ((fp)->fkind == nFTKindNMario)  ||  \
+    ((fp)->fkind == nFTKindLuigi)      ||  \
+    ((fp)->fkind == nFTKindNLuigi)  ||  \
+    ((fp)->fkind == nFTKindCaptain)    ||  \
+    ((fp)->fkind == nFTKindNCaptain)||  \
+    ((fp)->fkind == nFTKindLink)       ||  \
+    ((fp)->fkind == nFTKindNLink)   ||  \
+    ((fp)->fkind == nFTKindNess)       ||  \
+    ((fp)->fkind == nFTKindNNess)       \
 )
 
 // // // // // // // // // // // //
@@ -34,7 +34,7 @@ void ftCommonAttack11ProcUpdate(GObj *fighter_gobj)
 
     if ((fp->command_vars.flags.flag1 != 0) && (fp->status_vars.common.attack1.is_goto_followup != FALSE))
     {
-        if ((fp->ft_kind == nFTKindPikachu) || (fp->ft_kind == nFTKindNPikachu))
+        if ((fp->fkind == nFTKindPikachu) || (fp->fkind == nFTKindNPikachu))
         {
             ftCommonAttack11SetStatus(fighter_gobj);
         }
@@ -48,7 +48,7 @@ void ftCommonAttack12ProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->ft_kind != nFTKindCaptain) && (fp->ft_kind != nFTKindNCaptain) && (fp->command_vars.flags.flag1 != 0) && (fp->is_goto_attack100))
+    if ((fp->fkind != nFTKindCaptain) && (fp->fkind != nFTKindNCaptain) && (fp->command_vars.flags.flag1 != 0) && (fp->is_goto_attack100))
     {
         ftCommonAttack100StartSetStatus(fighter_gobj);
     }
@@ -64,7 +64,7 @@ void ftCommonAttack13ProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (((fp->ft_kind == nFTKindCaptain) || (fp->ft_kind == nFTKindNCaptain)) && (fp->command_vars.flags.flag1 != 0) && (fp->is_goto_attack100))
+    if (((fp->fkind == nFTKindCaptain) || (fp->fkind == nFTKindNCaptain)) && (fp->command_vars.flags.flag1 != 0) && (fp->is_goto_attack100))
     {
         ftCommonAttack100StartSetStatus(fighter_gobj);
     }
@@ -87,7 +87,7 @@ void ftCommonAttack11ProcInterrupt(GObj *fighter_gobj)
     }
     if (ftCommonAttack100StartCheckInterruptCommon(fighter_gobj) == FALSE)
     {
-        if ((fp->ft_kind == nFTKindPikachu) || (fp->ft_kind == nFTKindNPikachu))
+        if ((fp->fkind == nFTKindPikachu) || (fp->fkind == nFTKindNPikachu))
         {
             if (ftCommonAttack11CheckGoto(fighter_gobj) != FALSE)
             {
@@ -164,7 +164,7 @@ void ftCommonAttack12SetStatus(GObj *fighter_gobj)
 
         fp->attack1_status_id = fp->status_id;
 
-        switch (fp->ft_kind)
+        switch (fp->fkind)
         {
         case nFTKindMario:
         case nFTKindMMario:
@@ -203,7 +203,7 @@ void ftCommonAttack13SetStatus(GObj *fighter_gobj)
 
     if (ftCommonGetCheckInterruptCommon(fighter_gobj) == FALSE)
     {
-        switch (fp->ft_kind)
+        switch (fp->fkind)
         {
         case nFTKindMario:
         case nFTKindMMario:
@@ -280,7 +280,7 @@ sb32 ftCommonAttack1CheckInterruptCommon(GObj *fighter_gobj)
             switch (fp->attack1_status_id)
             {
             case nFTCommonStatusAttack11:
-                if ((fp->ft_kind == nFTKindPikachu) || (fp->ft_kind == nFTKindNPikachu))
+                if ((fp->fkind == nFTKindPikachu) || (fp->fkind == nFTKindNPikachu))
                 {
                     if (attr->is_have_attack11)
                     {

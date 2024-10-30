@@ -284,7 +284,7 @@ sb32 itMainCheckShootNoAmmo(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (((ip->it_kind == nITKindStarRod) || (ip->it_kind == nITKindLGun) || (ip->it_kind == nITKindFFlower)) && (ip->multi == 0))
+    if (((ip->kind == nITKindStarRod) || (ip->kind == nITKindLGun) || (ip->kind == nITKindFFlower)) && (ip->multi == 0))
     {
         return TRUE;
     }
@@ -304,7 +304,7 @@ void itMainDestroyItem(GObj *item_gobj)
 
         ftParamSetHammerParams(ip->owner_gobj);
     }
-    else if ((ip->it_kind < nITKindGroundMonsterStart) || (ip->it_kind > nITKindGroundMonsterEnd))
+    else if ((ip->kind < nITKindGroundMonsterStart) || (ip->kind > nITKindGroundMonsterEnd))
     {
         efManagerDustExpandLargeMakeEffect(&DObjGetStruct(item_gobj)->translate.vec.f);
     }
@@ -365,7 +365,7 @@ void itMainSetFighterDrop(GObj *item_gobj, Vec3f *vel, f32 stale)
     ITStruct *ip = itGetStruct(item_gobj);
     GObj *owner_gobj = ip->owner_gobj;
     FTStruct *fp = ftGetStruct(owner_gobj);
-    void (*proc_drop)(GObj*) = dITMainProcDroppedList[ip->it_kind];
+    void (*proc_drop)(GObj*) = dITMainProcDroppedList[ip->kind];
 
     if (proc_drop != NULL)
     {
@@ -393,7 +393,7 @@ void itMainSetFighterThrow(GObj *item_gobj, Vec3f *vel, f32 stale, sb32 is_smash
     }
     else ftParamMakeRumble(fp, (is_smash_throw != FALSE) ? 9 : 6, 0);
     
-    proc_throw = dITMainProcThrownList[ip->it_kind];
+    proc_throw = dITMainProcThrownList[ip->kind];
 
     if (proc_throw != NULL)
     {
@@ -463,7 +463,7 @@ void itMainSetFighterHold(GObj *item_gobj, GObj *fighter_gobj)
 
     gcSetDObjTransformsForGObj(item_gobj, ip->attr->dobj_setup);
 
-    proc_pickup = dITMainProcHoldList[ip->it_kind];
+    proc_pickup = dITMainProcHoldList[ip->kind];
 
     if (proc_pickup != NULL)
     {
@@ -654,11 +654,11 @@ GObj* itMainMakeMonster(GObj *item_gobj)
                 j++;
             }
         }
-        index = gITManagerMonsterData.monster_id[mtTrigGetRandomIntRange(gITManagerMonsterData.monster_count)];
+        index = gITManagerMonsterData.monster_id[mtTrigGetRandomIntRange(gITManagerMonsterData.monsters_num)];
     }
-    if (gITManagerMonsterData.monster_count != 10)
+    if (gITManagerMonsterData.monsters_num != 10)
     {
-        gITManagerMonsterData.monster_count--;
+        gITManagerMonsterData.monsters_num--;
     }
     gITManagerMonsterData.monster_prev = gITManagerMonsterData.monster_curr;
     gITManagerMonsterData.monster_curr = index;
@@ -678,7 +678,7 @@ GObj* itMainMakeMonster(GObj *item_gobj)
 
         if (gBattleState->game_type == nSCBattleGameType1PGame)
         {
-            if ((mp->player == gSceneData.spgame_player) && (mp->it_kind == nITKindMew))
+            if ((mp->player == gSceneData.spgame_player) && (mp->kind == nITKindMew))
             {
                 gSC1PGameBonusMewCatcher = TRUE;
             }

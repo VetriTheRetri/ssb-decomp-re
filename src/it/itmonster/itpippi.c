@@ -75,16 +75,16 @@ ITStatusDesc dITPippiStatusDesc = { NULL, NULL, NULL, NULL, NULL, NULL, NULL, NU
 // 0x80183210
 void itPippiCommonSelectMonster(GObj *item_gobj)
 {
-    s32 it_kind;
+    s32 kind;
     s32 index;
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
     index = mtTrigGetRandomIntRange(ARRAY_COUNT(dITPippiStatusProcList));
 
-    it_kind = index + nITKindMBallMonsterStart;
+    kind = index + nITKindMBallMonsterStart;
 
-    if ((it_kind == nITKindSpear) || (it_kind == nITKindKamex))
+    if ((kind == nITKindSpear) || (kind == nITKindKamex))
     {
         if (mtTrigGetRandomIntRange(2) == 0)
         {
@@ -94,21 +94,21 @@ void itPippiCommonSelectMonster(GObj *item_gobj)
         }
         else ip->lr = -1;
     }
-    if ((it_kind == nITKindPippi) || (it_kind == nITKindTosakinto) || (it_kind == nITKindMLucky))
+    if ((kind == nITKindPippi) || (kind == nITKindTosakinto) || (kind == nITKindMLucky))
     {
         ip->atk_coll.atk_state = nGMAttackStateOff;
     }
-    if (it_kind == nITKindSawamura)
+    if (kind == nITKindSawamura)
     {
         ip->multi = ITSAWAMURA_KICK_WAIT;
     }
-    if ((it_kind == nITKindSawamura) || (it_kind == nITKindStarmie))
+    if ((kind == nITKindSawamura) || (kind == nITKindStarmie))
     {
         item_gobj->func_display = itPippiCommonMoveDLFuncDisplay;
 
         gcMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_order);
     }
-    if (it_kind == nITKindLizardon)
+    if (kind == nITKindLizardon)
     {
         ip->multi = ITLIZARDON_LIFETIME;
     }

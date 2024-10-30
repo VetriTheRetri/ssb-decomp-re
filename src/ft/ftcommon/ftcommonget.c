@@ -89,7 +89,7 @@ void ftCommonLightGetProcDamage(GObj *fighter_gobj)
 
         if (ip->type == nITTypeConsume)
         {
-            switch (ip->it_kind)
+            switch (ip->kind)
             {
             case nITKindTomato:
                 ftParamSetHealDamage(fp, ITTOMATO_DAMAGE_HEAL);
@@ -158,7 +158,7 @@ void ftCommonGetProcUpdate(GObj *fighter_gobj)
         {
             if (fp->item_gobj != NULL)
             {
-                if ((fp->ft_kind == nFTKindDonkey) || (fp->ft_kind == nFTKindNDonkey) || (fp->ft_kind == nFTKindGDonkey))
+                if ((fp->fkind == nFTKindDonkey) || (fp->fkind == nFTKindNDonkey) || (fp->fkind == nFTKindGDonkey))
                 {
                     ftDonkeyThrowFWaitSetStatus(fighter_gobj);
                 }
@@ -178,7 +178,7 @@ void ftCommonGetProcUpdate(GObj *fighter_gobj)
                 {
                     ftCommonLightGetProcDamage(fighter_gobj);
 
-                    if (ip->it_kind == nITKindHammer)
+                    if (ip->kind == nITKindHammer)
                     {
                         ftHammerSetStatusHammerWait(fighter_gobj);
 

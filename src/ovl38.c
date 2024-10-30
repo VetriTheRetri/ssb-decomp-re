@@ -264,11 +264,11 @@ void mvOpeningSamusInitFighterStagePanel()
 	{
 		FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
-		if (gBattleState->players[i].pl_kind == nFTPlayerKindNot) continue;
+		if (gBattleState->players[i].pkind == nFTPlayerKindNot) continue;
 
-		ftManagerSetupFilesAllKind(gBattleState->players[i].ft_kind);
+		ftManagerSetupFilesAllKind(gBattleState->players[i].fkind);
 
-		spawn_info.ft_kind = gBattleState->players[i].ft_kind;
+		spawn_info.fkind = gBattleState->players[i].fkind;
 		spawn_info.pos.x = spawn_position.x;
 		spawn_info.pos.y = spawn_position.y;
 		spawn_info.pos.z = spawn_position.z;
@@ -281,9 +281,9 @@ void mvOpeningSamusInitFighterStagePanel()
 		spawn_info.cp_level = gBattleState->players[i].level;
 		spawn_info.stock_count = gBattleState->stock_setting;
 		spawn_info.damage = 0;
-		spawn_info.pl_kind = gBattleState->players[i].pl_kind;
+		spawn_info.pkind = gBattleState->players[i].pkind;
 		spawn_info.controller = &gPlayerControllers[i];
-		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[i].ft_kind);
+		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[i].fkind);
 
 		gMVOpeningSamusStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
@@ -344,7 +344,7 @@ void mvOpeningSamusCreatePosedFighter()
 	GObj* fighter_gobj;
 	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
-	spawn_info.ft_kind = nFTKindSamus;
+	spawn_info.fkind = nFTKindSamus;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindSamus, 0);
 	spawn_info.figatree_heap = gMVOpeningSamusFigatreeHeap;
 	spawn_info.pos.x = 0.0f;
@@ -437,8 +437,8 @@ void mvOpeningSamusInit()
 	gBattleState->gr_kind = nGRKindZebes;
 	gBattleState->pl_count = 1;
 
-	gBattleState->players[0].ft_kind = nFTKindSamus;
-	gBattleState->players[0].pl_kind = nFTPlayerKindKey;
+	gBattleState->players[0].fkind = nFTKindSamus;
+	gBattleState->players[0].pkind = nFTPlayerKindKey;
 
 	mvOpeningSamusLoadFiles();
 	gcMakeGObjSPAfter(0x3F7, mvOpeningSamusMainProc, 0xD, 0x80000000);

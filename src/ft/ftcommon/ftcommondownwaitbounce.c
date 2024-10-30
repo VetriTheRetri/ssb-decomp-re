@@ -98,7 +98,7 @@ void ftCommonDownBounceUpdateEffects(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftParamMakeEffect(fighter_gobj, nEFKindImpactWave, nFTPartsJointTopN, NULL, NULL, fp->lr, FALSE, FALSE);
-    func_800269C0_275C0(dFTCommonDataDownBounceSFX[fp->ft_kind]);
+    func_800269C0_275C0(dFTCommonDataDownBounceSFX[fp->fkind]);
     ftParamMakeRumble(fp, 4, 0);
 }
 

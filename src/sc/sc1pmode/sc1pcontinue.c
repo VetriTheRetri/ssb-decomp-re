@@ -332,22 +332,22 @@ void func_ovl55_80132094(void)
 }
 
 // 0x8013209C
-void sc1PContinueSetFighterScale(GObj *gobj, s32 ft_kind)
+void sc1PContinueSetFighterScale(GObj *gobj, s32 fkind)
 {
-    DObjGetStruct(gobj)->scale.vec.f.x = dSCSubsysFighterScales[ft_kind];
-    DObjGetStruct(gobj)->scale.vec.f.y = dSCSubsysFighterScales[ft_kind];
-    DObjGetStruct(gobj)->scale.vec.f.z = dSCSubsysFighterScales[ft_kind];
+    DObjGetStruct(gobj)->scale.vec.f.x = dSCSubsysFighterScales[fkind];
+    DObjGetStruct(gobj)->scale.vec.f.y = dSCSubsysFighterScales[fkind];
+    DObjGetStruct(gobj)->scale.vec.f.z = dSCSubsysFighterScales[fkind];
 }
 
 // 0x801320D4
-void sc1PContinueMakeFighter(s32 ft_kind)
+void sc1PContinueMakeFighter(s32 fkind)
 {
     GObj *fighter_gobj;
     FTCreateDesc ft_desc;
 
     ft_desc = dFTManagerDefaultFighterDesc;
 
-    ft_desc.ft_kind = ft_kind;
+    ft_desc.fkind = fkind;
 
     ft_desc.pos.x = 90.0F;
 
@@ -361,7 +361,7 @@ void sc1PContinueMakeFighter(s32 ft_kind)
     sSC1PContinueFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);
 
     scSubsysFighterSetStatus(fighter_gobj, 0x10009);
-    sc1PContinueSetFighterScale(fighter_gobj, sSC1PContinueFighterDemoDesc.ft_kind);
+    sc1PContinueSetFighterScale(fighter_gobj, sSC1PContinueFighterDemoDesc.fkind);
 }
 
 // 0x801321A8
@@ -765,9 +765,9 @@ void sc1PContinueGameOverProcUpdate(GObj *gobj)
 
         DObjGetStruct(sSC1PContinueFighterGObj)->translate.vec.f.y += 3.0F;
 
-        DObjGetStruct(sSC1PContinueFighterGObj)->scale.vec.f.x = dSCSubsysFighterScales[sSC1PContinueFighterDemoDesc.ft_kind] * sSC1PContinueGameOverFadeOutScale;
-        DObjGetStruct(sSC1PContinueFighterGObj)->scale.vec.f.y = dSCSubsysFighterScales[sSC1PContinueFighterDemoDesc.ft_kind] * sSC1PContinueGameOverFadeOutScale;
-        DObjGetStruct(sSC1PContinueFighterGObj)->scale.vec.f.z = dSCSubsysFighterScales[sSC1PContinueFighterDemoDesc.ft_kind] * sSC1PContinueGameOverFadeOutScale;
+        DObjGetStruct(sSC1PContinueFighterGObj)->scale.vec.f.x = dSCSubsysFighterScales[sSC1PContinueFighterDemoDesc.fkind] * sSC1PContinueGameOverFadeOutScale;
+        DObjGetStruct(sSC1PContinueFighterGObj)->scale.vec.f.y = dSCSubsysFighterScales[sSC1PContinueFighterDemoDesc.fkind] * sSC1PContinueGameOverFadeOutScale;
+        DObjGetStruct(sSC1PContinueFighterGObj)->scale.vec.f.z = dSCSubsysFighterScales[sSC1PContinueFighterDemoDesc.fkind] * sSC1PContinueGameOverFadeOutScale;
     }
 }
 
@@ -999,7 +999,7 @@ void sc1PContinueInitVars(void)
 {
     sSC1PContinueTotalTimeTics = 0;
 
-    sSC1PContinueFighterDemoDesc.ft_kind = gSCManager1PGameBattleState.players[gSceneData.spgame_player].ft_kind;
+    sSC1PContinueFighterDemoDesc.fkind = gSCManager1PGameBattleState.players[gSceneData.spgame_player].fkind;
     sSC1PContinueFighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSceneData.spgame_player].costume;
     sSC1PContinueFighterDemoDesc.shade   = gSCManager1PGameBattleState.players[gSceneData.spgame_player].shade;
 
@@ -1235,7 +1235,7 @@ void sc1PContinueFuncStart(void)
     sc1PContinueInitVars();
     efManagerInitEffects();
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
-    ftManagerSetupFilesAllKind(sSC1PContinueFighterDemoDesc.ft_kind);
+    ftManagerSetupFilesAllKind(sSC1PContinueFighterDemoDesc.fkind);
     
     sSC1PContinueFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
@@ -1246,7 +1246,7 @@ void sc1PContinueFuncStart(void)
     sc1PContinueMakeRoomCamera();
     sc1PContinueMakeSpotlightCamera();
     sc1PContinueMakeTextCamera();
-    sc1PContinueMakeFighter(sSC1PContinueFighterDemoDesc.ft_kind);
+    sc1PContinueMakeFighter(sSC1PContinueFighterDemoDesc.fkind);
     sc1PContinueMakeScoreDisplay(gSceneData.spgame_score);
 
     scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);

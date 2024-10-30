@@ -297,7 +297,7 @@ void ftCommonItemShootSetStatus(GObj *fighter_gobj)
     s32 status_id;
     void (*proc_accessory)(GObj*);
 
-    switch (ip->it_kind)
+    switch (ip->kind)
     {
     case nITKindLGun:
         status_id = nFTCommonStatusLGunShoot;
@@ -327,7 +327,7 @@ void ftCommonItemShootAirSetStatus(GObj *fighter_gobj)
     s32 status_id;
     void (*proc_accessory)(GObj*);
 
-    switch (ip->it_kind)
+    switch (ip->kind)
     {
     case nITKindLGun:
         status_id = nFTCommonStatusLGunShootAir;

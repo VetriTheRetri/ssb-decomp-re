@@ -26,7 +26,7 @@ void ftCommonDeadUpdateRumble(FTStruct *this_fp)
 
     for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
     {
-        if ((i != this_fp->player) && (gBattleState->players[i].pl_kind == nFTPlayerKindMan))
+        if ((i != this_fp->player) && (gBattleState->players[i].pkind == nFTPlayerKindMan))
         {
             GObj *fighter_gobj = gBattleState->players[i].fighter_gobj;
 
@@ -539,7 +539,7 @@ sb32 ftCommonDeadCheckInterruptCommon(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f *pos = &fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
-    if (fp->ft_kind == nFTKindBoss)
+    if (fp->fkind == nFTKindBoss)
     {
         return FALSE;
     }

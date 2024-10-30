@@ -4713,7 +4713,7 @@ GObj* efManagerCaptainFalconPunchMakeEffect(GObj *fighter_gobj)
 
     dobj = DObjGetStruct(effect_gobj);
 
-    joint = ((fp->ft_kind == nFTKindCaptain) || (fp->ft_kind == nFTKindNCaptain)) ? fp->joints[16] : fp->joints[30];
+    joint = ((fp->fkind == nFTKindCaptain) || (fp->fkind == nFTKindNCaptain)) ? fp->joints[16] : fp->joints[30];
 
     dobj->user_data.p = joint;
 
@@ -5431,7 +5431,7 @@ GObj* efManagerYoshiEggLayMakeEffect(GObj *fighter_gobj)
     dobj = DObjGetStruct(effect_gobj);
     dobj->user_data.p = ftGetStruct(fighter_gobj)->joints[nFTPartsJointTopN];
 
-    dobj->scale.vec.f.x = dobj->scale.vec.f.y = dFTCommonYoshiEggDamageCollDescs[fp->ft_kind].effect_size;
+    dobj->scale.vec.f.x = dobj->scale.vec.f.y = dFTCommonYoshiEggDamageCollDescs[fp->fkind].effect_size;
     dobj->scale.vec.f.z = 1.0F;
 
     dobj->child->child->xobj[0]->kind = nGCTransformTra;
@@ -5688,12 +5688,12 @@ GObj* efManagerCaptainEntryCarMakeEffect(Vec3f *pos, s32 lr)
 }
 
 // 0x801036EC
-GObj* efManagerMarioEntryDokanMakeEffect(Vec3f *pos, s32 ft_kind)
+GObj* efManagerMarioEntryDokanMakeEffect(Vec3f *pos, s32 fkind)
 {
     GObj *effect_gobj;
     DObj *dobj;
 
-    switch (ft_kind)
+    switch (fkind)
     {
     case nFTKindMario:
         dEFManagerMarioEntryDokanEffectDesc.file_head = &gFTMarioFileSpecial2;
@@ -5880,16 +5880,16 @@ void efManagerCaptureKirbyStarProcUpdate(GObj *effect_gobj)
     {
         pos = DObjGetStruct(ep->fighter_gobj)->translate.vec.f;
 
-        pos.y += mtTrigGetRandomIntRange(copy_data[fp->ft_kind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_Y);
+        pos.y += mtTrigGetRandomIntRange(copy_data[fp->fkind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_Y);
 
         if (fp->physics.vel_air.x > 0.0F)
         {
-            pos.x -= mtTrigGetRandomIntRange(copy_data[fp->ft_kind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_X);
+            pos.x -= mtTrigGetRandomIntRange(copy_data[fp->fkind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_X);
             efManagerStarRodSparkMakeEffect(&pos, -1);
         }
         else
         {
-            pos.x += mtTrigGetRandomIntRange(copy_data[fp->ft_kind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_X);
+            pos.x += mtTrigGetRandomIntRange(copy_data[fp->fkind].effect_scale * EFPART_CAPTUREKIRBYSTAR_SPARK_SCATTER_X);
             efManagerStarRodSparkMakeEffect(&pos, +1);
         }
     }
@@ -5929,7 +5929,7 @@ GObj* efManagerCaptureKirbyStarMakeEffect(GObj *fighter_gobj)
 
     dobj->child->user_data.p = ftGetStruct(fighter_gobj)->joints[nFTPartsJointTopN];
 
-    dobj->child->scale.vec.f.x = dobj->child->scale.vec.f.y = copy_data[ftGetStruct(fighter_gobj)->ft_kind].effect_scale;
+    dobj->child->scale.vec.f.x = dobj->child->scale.vec.f.y = copy_data[ftGetStruct(fighter_gobj)->fkind].effect_scale;
     dobj->child->scale.vec.f.z = 1.0F;
 
     ep->effect_vars.capture_kirby_star.effect_timer = 0;

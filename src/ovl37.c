@@ -239,12 +239,12 @@ void mvOpeningDKInitFighterStagePanel()
 	{
 		FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
-		if (gBattleState->players[i].pl_kind == nFTPlayerKindNot)
+		if (gBattleState->players[i].pkind == nFTPlayerKindNot)
 			continue;
 
-		ftManagerSetupFilesAllKind(gBattleState->players[i].ft_kind);
+		ftManagerSetupFilesAllKind(gBattleState->players[i].fkind);
 
-		spawn_info.ft_kind = gBattleState->players[i].ft_kind;
+		spawn_info.fkind = gBattleState->players[i].fkind;
 		spawn_info.pos.x = spawn_position.x;
 		spawn_info.pos.y = spawn_position.y;
 		spawn_info.pos.z = spawn_position.z;
@@ -257,9 +257,9 @@ void mvOpeningDKInitFighterStagePanel()
 		spawn_info.cp_level = gBattleState->players[i].level;
 		spawn_info.stock_count = gBattleState->stock_setting;
 		spawn_info.damage = 0;
-		spawn_info.pl_kind = gBattleState->players[i].pl_kind;
+		spawn_info.pkind = gBattleState->players[i].pkind;
 		spawn_info.controller = &gPlayerControllers[i];
-		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[i].ft_kind);
+		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[i].fkind);
 
 		gMVOpeningDKStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
@@ -320,7 +320,7 @@ void mvOpeningDKCreatePosedFighter()
 	GObj* fighter_gobj;
 	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
-	spawn_info.ft_kind = nFTKindDonkey;
+	spawn_info.fkind = nFTKindDonkey;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindDonkey, 0);
 	spawn_info.figatree_heap = gMVOpeningDKFigatreeHeap;
 	spawn_info.pos.x = 0.0f;
@@ -412,8 +412,8 @@ void mvOpeningDKInit()
 	gBattleState->gr_kind = nGRKindJungle;
 	gBattleState->pl_count = 1;
 
-	gBattleState->players[0].ft_kind = nFTKindDonkey;
-	gBattleState->players[0].pl_kind = nFTPlayerKindKey;
+	gBattleState->players[0].fkind = nFTKindDonkey;
+	gBattleState->players[0].pkind = nFTPlayerKindKey;
 
 	mvOpeningDKLoadFiles();
 	gcMakeGObjSPAfter(0x3F7, mvOpeningDKMainProc, 0xD, 0x80000000);

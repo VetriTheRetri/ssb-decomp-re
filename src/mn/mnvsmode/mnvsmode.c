@@ -1035,7 +1035,7 @@ s32 mnVSModeGetShade(s32 player)
         if
         (
             (player != i) &&
-            (gTransferBattleState.players[player].ft_kind == gTransferBattleState.players[i].ft_kind) &&
+            (gTransferBattleState.players[player].fkind == gTransferBattleState.players[i].fkind) &&
             (gTransferBattleState.players[player].team == gTransferBattleState.players[i].team)
         )
         {
@@ -1052,7 +1052,7 @@ s32 mnVSModeGetShade(s32 player)
 }
 
 // 0x8013394C
-s32 mnVSModeGetCostume(s32 ft_kind, s32 arg1)
+s32 mnVSModeGetCostume(s32 fkind, s32 arg1)
 {
     s32 i;
     s32 j;
@@ -1067,11 +1067,11 @@ s32 mnVSModeGetCostume(s32 ft_kind, s32 arg1)
     {
         if (i != arg1)
         {
-            if (ft_kind == gTransferBattleState.players[i].ft_kind)
+            if (fkind == gTransferBattleState.players[i].fkind)
             {
                 for (j = 0; j < ARRAY_COUNT(is_same_costume); j++)
                 {
-                    if (ftParamGetCostumeCommonID(ft_kind, j) == gTransferBattleState.players[i].costume)
+                    if (ftParamGetCostumeCommonID(fkind, j) == gTransferBattleState.players[i].costume)
                     {
                         is_same_costume[j] = TRUE;
                     }
@@ -1099,9 +1099,9 @@ void mnVSModeSetCostumesAndShades(void)
         case nMNVSModeRuleStock:
             for (i = 0; i < ARRAY_COUNT(gTransferBattleState.players); i++)
             {
-                if (gTransferBattleState.players[i].ft_kind != nFTKindNull)
+                if (gTransferBattleState.players[i].fkind != nFTKindNull)
                 {
-                    gTransferBattleState.players[i].costume = ftParamGetCostumeCommonID(gTransferBattleState.players[i].ft_kind, mnVSModeGetCostume(gTransferBattleState.players[i].ft_kind, i));
+                    gTransferBattleState.players[i].costume = ftParamGetCostumeCommonID(gTransferBattleState.players[i].fkind, mnVSModeGetCostume(gTransferBattleState.players[i].fkind, i));
                     gTransferBattleState.players[i].shade = mnVSModeGetShade(i);
                 }
             }
@@ -1110,9 +1110,9 @@ void mnVSModeSetCostumesAndShades(void)
         case nMNVSModeRuleStockTeam:
             for (i = 0; i < ARRAY_COUNT(gTransferBattleState.players); i++)
             {
-                if (gTransferBattleState.players[i].ft_kind != nFTKindNull)
+                if (gTransferBattleState.players[i].fkind != nFTKindNull)
                 {
-                    gTransferBattleState.players[i].costume = ftParamGetCostumeTeamID(gTransferBattleState.players[i].ft_kind, gTransferBattleState.players[i].team);
+                    gTransferBattleState.players[i].costume = ftParamGetCostumeTeamID(gTransferBattleState.players[i].fkind, gTransferBattleState.players[i].team);
                     gTransferBattleState.players[i].shade = mnVSModeGetShade(i);
                 }
             }

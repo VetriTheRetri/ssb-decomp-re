@@ -434,7 +434,7 @@ sb32 ftCommonDamageCheckCatchResist(FTStruct *fp)
     {
         return TRUE;
     }
-    if ((fp->ft_kind == nFTKindDonkey) || (fp->ft_kind == nFTKindNDonkey) || (fp->ft_kind == nFTKindGDonkey))
+    if ((fp->fkind == nFTKindDonkey) || (fp->fkind == nFTKindNDonkey) || (fp->fkind == nFTKindGDonkey))
     {
         if ((fp->status_id >= nFTDonkeyStatusThrowFStart) && (fp->status_id <= nFTDonkeyStatusThrowFEnd) && (ftCommonDamageGetDamageLevel(ftParamGetHitStun(fp->damage_knockback)) < 3))
         {
@@ -817,7 +817,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
     }
     if (this_fp->item_gobj != NULL)
     {
-        if ((itGetStruct(this_fp->item_gobj)->weight == nITWeightHeavy) && ((this_fp->ft_kind == nFTKindDonkey) || (this_fp->ft_kind == nFTKindNDonkey) || (this_fp->ft_kind == nFTKindGDonkey)))
+        if ((itGetStruct(this_fp->item_gobj)->weight == nITWeightHeavy) && ((this_fp->fkind == nFTKindDonkey) || (this_fp->fkind == nFTKindNDonkey) || (this_fp->fkind == nFTKindGDonkey)))
         {
             if (ftCommonDamageCheckCatchResist(this_fp) != FALSE)
             {

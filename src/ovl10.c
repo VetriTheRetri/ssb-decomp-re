@@ -278,22 +278,22 @@ s32 mnTitleGetFighterKindsNum(u16 mask)
 // 0x80131B78
 s32 mnTitleGetShuffledFighterKind(u16 this_mask, u16 prev_mask, s32 random)
 {
-	s32 ft_kind = -1;
+	s32 fkind = -1;
 
 	random++;
 
 	do
 	{
-		ft_kind++;
+		fkind++;
 
-		if ((this_mask & LBBACKUP_MASK_FIGHTER(ft_kind)) && !(prev_mask & LBBACKUP_MASK_FIGHTER(ft_kind)))
+		if ((this_mask & LBBACKUP_MASK_FIGHTER(fkind)) && !(prev_mask & LBBACKUP_MASK_FIGHTER(fkind)))
 		{
 			random--;
 		}
 	}
 	while (random != 0);
 
-	return ft_kind;
+	return fkind;
 }
 
 // 0x80131BC4
@@ -317,13 +317,13 @@ s32 mnTitleSetDemoFighterKinds(void)
 	}
 	unlocked_count = mnTitleGetFighterKindsNum(unlocked_mask);
 
-	gSceneData.demo_ft_kind[0] = mnTitleGetShuffledFighterKind(unlocked_mask, gSceneData.demo_mask_prev, mtTrigGetRandomIntRange(unlocked_count - mnTitleGetFighterKindsNum(gSceneData.demo_mask_prev)));
+	gSceneData.demo_fkind[0] = mnTitleGetShuffledFighterKind(unlocked_mask, gSceneData.demo_mask_prev, mtTrigGetRandomIntRange(unlocked_count - mnTitleGetFighterKindsNum(gSceneData.demo_mask_prev)));
 
 	if (!(gSceneData.demo_mask_prev))
 	{
-		gSceneData.demo_first_ft_kind = gSceneData.demo_ft_kind[0];
+		gSceneData.demo_first_fkind = gSceneData.demo_fkind[0];
 	}
-	gSceneData.demo_mask_prev |= LBBACKUP_MASK_FIGHTER(gSceneData.demo_ft_kind[0]);
+	gSceneData.demo_mask_prev |= LBBACKUP_MASK_FIGHTER(gSceneData.demo_fkind[0]);
 
 	unlocked_count = mnTitleGetFighterKindsNum(unlocked_mask);
 
@@ -331,12 +331,12 @@ s32 mnTitleSetDemoFighterKinds(void)
 
 	if (non_recently_demoed_count == 0)
 	{
-		gSceneData.demo_ft_kind[1] = gSceneData.demo_first_ft_kind;
+		gSceneData.demo_fkind[1] = gSceneData.demo_first_fkind;
 	}
 	else
 	{
-		gSceneData.demo_ft_kind[1] = mnTitleGetShuffledFighterKind(unlocked_mask, gSceneData.demo_mask_prev, mtTrigGetRandomIntRange(non_recently_demoed_count));
-		gSceneData.demo_mask_prev |= LBBACKUP_MASK_FIGHTER(gSceneData.demo_ft_kind[1]);
+		gSceneData.demo_fkind[1] = mnTitleGetShuffledFighterKind(unlocked_mask, gSceneData.demo_mask_prev, mtTrigGetRandomIntRange(non_recently_demoed_count));
+		gSceneData.demo_mask_prev |= LBBACKUP_MASK_FIGHTER(gSceneData.demo_fkind[1]);
 	}
 }
 

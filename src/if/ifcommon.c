@@ -625,7 +625,7 @@ void ifCommonPlayerDamageUpdateDigits(GObj *interface_gobj)
     }
     else color_id = player;
 
-    if (gBattleState->players[player].ft_kind == nFTKindBoss)
+    if (gBattleState->players[player].fkind == nFTKindBoss)
     {
         hitpoints = 300 - damage;
 
@@ -915,7 +915,7 @@ void ifCommonPlayerDamageInitInterface(void)
 
     for (player = 0; player < ARRAY_COUNT(sIFCommonPlayerDamageInterface); player++)
     {
-        if (gBattleState->players[player].pl_kind == nFTPlayerKindNot)
+        if (gBattleState->players[player].pkind == nFTPlayerKindNot)
         {
             sIFCommonPlayerDamageInterface[player].interface_gobj = NULL;
         }
@@ -1285,7 +1285,7 @@ void ifCommonPlayerStockInitInterface(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
     {
-        if (gBattleState->players[player].pl_kind != nFTPlayerKindNot)
+        if (gBattleState->players[player].pkind != nFTPlayerKindNot)
         {
             switch (gBattleState->players[player].is_single_stockicon)
             {
@@ -1852,7 +1852,7 @@ void ifCommonPlayerTagMakeInterface(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
     {
-        if (gBattleState->players[player].pl_kind != nFTPlayerKindNot)
+        if (gBattleState->players[player].pkind != nFTPlayerKindNot)
         {
             interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
 
@@ -2561,7 +2561,7 @@ void ifCommonBattleInitPlacement(void)
     case FALSE:
         for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
         {
-            if (gBattleState->players[i].pl_kind != nFTPlayerKindNot)
+            if (gBattleState->players[i].pkind != nFTPlayerKindNot)
             {
                 members[i]++;
             }
@@ -2571,7 +2571,7 @@ void ifCommonBattleInitPlacement(void)
     case TRUE:
         for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
         {
-            if (gBattleState->players[i].pl_kind != nFTPlayerKindNot)
+            if (gBattleState->players[i].pkind != nFTPlayerKindNot)
             {
                 members[gBattleState->players[i].team]++;
             }
@@ -2626,7 +2626,7 @@ void func_ovl2_80113744(GObj *fighter_gobj, u32 unused)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     
-    if (fp->ft_kind == nFTKindBoss) 
+    if (fp->fkind == nFTKindBoss) 
     {
         gcResumeProcessAll(fighter_gobj);
         
@@ -2683,7 +2683,7 @@ void ifCommonBattleUpdateScoreStocks(FTStruct *fp)
 
     for (i = teammates_remain = 0; i < ARRAY_COUNT(gBattleState->players); i++)
     {
-        if (gBattleState->players[i].pl_kind == nFTPlayerKindNot) continue;
+        if (gBattleState->players[i].pkind == nFTPlayerKindNot) continue;
 
         switch (gBattleState->is_team_battle)
         {
@@ -2711,7 +2711,7 @@ void ifCommonBattleUpdateScoreStocks(FTStruct *fp)
         case TRUE:
             for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
             {
-                if (gBattleState->players[i].pl_kind == nFTPlayerKindNot) continue;
+                if (gBattleState->players[i].pkind == nFTPlayerKindNot) continue;
 
                 if (gBattleState->players[i].team == team)
                 {
@@ -2729,7 +2729,7 @@ void ifCommonBattleUpdateScoreStocks(FTStruct *fp)
     }
     if ((sIFCommonBattlePlacement != 0) && (fp->stock_count == -1))
     {
-        if (fp->pl_kind == nFTPlayerKindMan)
+        if (fp->pkind == nFTPlayerKindMan)
         {
             ftPublicityDefeatedAddID(dIFCommonAnnounceDefeatedVoiceIDs[fp->player]);
         }
@@ -2897,9 +2897,9 @@ void ifCommonBattleGoUpdateInterface(void)
     {
         if (gPlayerControllers[player].button_tap & START_BUTTON)
         {
-            if (gBattleState->players[player].pl_kind != nFTPlayerKindNot)
+            if (gBattleState->players[player].pkind != nFTPlayerKindNot)
             {
-                if ((gBattleState->gr_kind != nGRKindBonus3) || (gBattleState->players[player].pl_kind != nFTPlayerKindCom))
+                if ((gBattleState->gr_kind != nGRKindBonus3) || (gBattleState->players[player].pkind != nFTPlayerKindCom))
                 {
                     fighter_gobj = gBattleState->players[player].fighter_gobj;
 

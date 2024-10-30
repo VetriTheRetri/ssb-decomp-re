@@ -13,7 +13,7 @@ void ftCommonAttackS4ProcUpdate(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f offset;
 
-    switch (fp->ft_kind)
+    switch (fp->fkind)
     {
     case nFTKindPikachu:
     case nFTKindNPikachu:
@@ -93,7 +93,7 @@ void ftCommonAttackS4SetStatus(GObj *fighter_gobj)
     }
     else status_id = nFTCommonStatusAttackS4;
 
-    switch (fp->ft_kind)
+    switch (fp->fkind)
     {
     case nFTKindPikachu:
     case nFTKindNPikachu:
@@ -109,7 +109,7 @@ void ftCommonAttackS4SetStatus(GObj *fighter_gobj)
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
-    switch (fp->ft_kind)
+    switch (fp->fkind)
     {
     case nFTKindPikachu:
     case nFTKindNPikachu:

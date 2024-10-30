@@ -236,12 +236,12 @@ void mvEndingMakeRoomTissues(void)
 }
 
 // 0x80131F24
-void mvEndingMakeFighter(s32 ft_kind)
+void mvEndingMakeFighter(s32 fkind)
 {
     GObj *fighter_gobj;
     FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
-    ft_desc.ft_kind = ft_kind;
+    ft_desc.fkind = fkind;
 
     ft_desc.pos.x = -1077.804F;
     ft_desc.pos.y = 4038.864F;
@@ -460,7 +460,7 @@ void mvEndingInitVars(void)
 {
     sMVEndingTotalTimeTics = 0;
 
-    sMVEndingFighterDemoDesc.ft_kind = gSCManager1PGameBattleState.players[gSceneData.spgame_player].ft_kind;
+    sMVEndingFighterDemoDesc.fkind = gSCManager1PGameBattleState.players[gSceneData.spgame_player].fkind;
     sMVEndingFighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSceneData.spgame_player].costume;
     sMVEndingFighterDemoDesc.shade   = gSCManager1PGameBattleState.players[gSceneData.spgame_player].shade;
 }
@@ -542,7 +542,7 @@ void mvEndingFuncStart(void)
     mvEndingInitVars();
     efManagerInitEffects();
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
-    ftManagerSetupFilesAllKind(sMVEndingFighterDemoDesc.ft_kind);
+    ftManagerSetupFilesAllKind(sMVEndingFighterDemoDesc.fkind);
 
     sMVEndingFigatreeHeap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
@@ -555,7 +555,7 @@ void mvEndingFuncStart(void)
     mvEndingMakeRoomLamp();
     mvEndingMakeRoomPencils();
     mvEndingMakeRoomTissues();
-    mvEndingMakeFighter(sMVEndingFighterDemoDesc.ft_kind);
+    mvEndingMakeFighter(sMVEndingFighterDemoDesc.fkind);
     mvEndingMakeRoomFadeIn();
 
     scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);

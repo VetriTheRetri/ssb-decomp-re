@@ -276,13 +276,13 @@ void mvOpeningKirbyMakeMotionWindow(void)
 	{
 		FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
-		if (gBattleState->players[i].pl_kind == nFTPlayerKindNot)
+		if (gBattleState->players[i].pkind == nFTPlayerKindNot)
 		{
 			continue;
 		}
-		ftManagerSetupFilesAllKind(gBattleState->players[i].ft_kind);
+		ftManagerSetupFilesAllKind(gBattleState->players[i].fkind);
 
-		ft_desc.ft_kind = gBattleState->players[i].ft_kind;
+		ft_desc.fkind = gBattleState->players[i].fkind;
 		ft_desc.pos.x = pos.x;
 		ft_desc.pos.y = pos.y;
 		ft_desc.pos.z = pos.z;
@@ -295,9 +295,9 @@ void mvOpeningKirbyMakeMotionWindow(void)
 		ft_desc.cp_level = gBattleState->players[i].level;
 		ft_desc.stock_count = gBattleState->stock_setting;
 		ft_desc.damage = 0;
-		ft_desc.pl_kind = gBattleState->players[i].pl_kind;
+		ft_desc.pkind = gBattleState->players[i].pkind;
 		ft_desc.controller = &gPlayerControllers[i];
-		ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[i].ft_kind);
+		ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[i].fkind);
 
 		sMVOpeningKirbyStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);
 
@@ -360,7 +360,7 @@ void mvOpeningKirbyMakePosedFighter(void)
 	GObj* fighter_gobj;
 	FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
-	ft_desc.ft_kind = nFTKindKirby;
+	ft_desc.fkind = nFTKindKirby;
 	ft_desc.costume = ftParamGetCostumeCommonID(nFTKindKirby, 0);
 	ft_desc.figatree_heap = sMVOpeningKirbyFigatreeHeap;
 
@@ -504,8 +504,8 @@ void mvOpeningKirbyFuncStart(void)
 	gBattleState->gr_kind = nGRKindPupupu;
 	gBattleState->pl_count = 1;
 
-	gBattleState->players[0].ft_kind = nFTKindKirby;
-	gBattleState->players[0].pl_kind = nFTPlayerKindKey;
+	gBattleState->players[0].fkind = nFTKindKirby;
+	gBattleState->players[0].pkind = nFTPlayerKindKey;
 
 	mvOpeningKirbySetupFiles();
 

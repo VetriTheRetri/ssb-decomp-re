@@ -172,7 +172,7 @@ void mvOpeningCliffMakeFighter(void)
     GObj* fighter_gobj;
     FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
-    ft_desc.ft_kind = nFTKindLink;
+    ft_desc.fkind = nFTKindLink;
     ft_desc.costume = ftParamGetCostumeCommonID(nFTKindLink, 0);
     ft_desc.pos.x = 0.0F;
     ft_desc.pos.y = 0.0F;

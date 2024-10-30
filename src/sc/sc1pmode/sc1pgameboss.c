@@ -993,7 +993,7 @@ void sc1PGameBossSetBossPlayer(void)
 
     for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
     {
-        if (gBattleState->players[player].ft_kind == nFTKindBoss)
+        if (gBattleState->players[player].fkind == nFTKindBoss)
         {
             sSC1PGameBossMain.bossplayer = player;
         }

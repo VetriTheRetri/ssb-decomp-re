@@ -95,8 +95,8 @@ void func_ovl5_8018D1A0()
 	gBattleState->game_type = nSCBattleGameTypeUnk6;
 	gBattleState->gr_kind = nGRKindPupupu;
 	gBattleState->pl_count = 1;
-	gBattleState->players[0].ft_kind = nFTKindMario;
-	gBattleState->players[0].pl_kind = nFTPlayerKindKey;
+	gBattleState->players[0].fkind = nFTKindMario;
+	gBattleState->players[0].pkind = nFTPlayerKindKey;
 
 	func_ovl5_8018D0C0();
 	gcMakeGObjSPAfter(0x3F7U, func_ovl5_8018D160, 0xDU, GOBJ_LINKORDER_DEFAULT);
@@ -120,13 +120,13 @@ void func_ovl5_8018D1A0()
 	{
 		player_spawn = dFTManagerDefaultFighterDesc;
 
-		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot)
+		if (gBattleState->players[player].pkind == nFTPlayerKindNot)
 		{
 			continue;
 		}
-		ftManagerSetupFilesAllKind(gBattleState->players[player].ft_kind);
+		ftManagerSetupFilesAllKind(gBattleState->players[player].fkind);
 
-		player_spawn.ft_kind = gBattleState->players[player].ft_kind;
+		player_spawn.fkind = gBattleState->players[player].fkind;
 		player_spawn.pos.x = 0.0F;
 		player_spawn.pos.y = 150.0F;
 		player_spawn.pos.z = 0.0F;
@@ -139,10 +139,10 @@ void func_ovl5_8018D1A0()
 		player_spawn.cp_level = gBattleState->players[player].level;
 		player_spawn.stock_count = gBattleState->stock_setting;
 		player_spawn.damage = 0;
-		player_spawn.pl_kind = gBattleState->players[player].pl_kind;
+		player_spawn.pkind = gBattleState->players[player].pkind;
 		player_spawn.controller = &gPlayerControllers[player];
 
-		player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[player].ft_kind);
+		player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[player].fkind);
 
 		fighter_gobj = ftManagerMakeFighter(&player_spawn);
 		gUnkExplainFighterGObj = fighter_gobj;

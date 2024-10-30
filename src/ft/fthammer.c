@@ -47,7 +47,7 @@ sb32 ftHammerCheckHoldHammer(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->item_gobj != NULL) && (itGetStruct(fp->item_gobj)->it_kind == nITKindHammer))
+    if ((fp->item_gobj != NULL) && (itGetStruct(fp->item_gobj)->kind == nITKindHammer))
     {
         return TRUE;
     }

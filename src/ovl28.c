@@ -54,7 +54,7 @@ extern void ftDisplayLightsDrawReflect(Gfx**, f32, f32);
 // Forward declarations
 void mnTrainingCreateWhiteSquare(s32 port_id);
 void mnTrainingSyncNameAndLogo(s32 port_id);
-sb32 mnTrainingIsCostumeInUse(s32 ft_kind, s32 port_id, s32 costume_id);
+sb32 mnTrainingIsCostumeInUse(s32 fkind, s32 port_id, s32 costume_id);
 void mnTrainingAnnounceFighter(s32 port_id, s32 panel_id);
 void mnTrainingRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state);
 void mnTrainingDrawHandicapCPULevel(s32 port_id);
@@ -233,7 +233,7 @@ f32 mnTrainingGetNextPortraitX(s32 portrait_id, f32 current_x_position)
 }
 
 // 0x80131D84
-sb32 mnTrainingCheckFighterIsXBoxed(s32 ft_kind)
+sb32 mnTrainingCheckFighterIsXBoxed(s32 fkind)
 {
 	return FALSE;
 }
@@ -337,14 +337,14 @@ s32 mnTrainingGetFtKind(s32 portrait_id)
 }
 
 // 0x80132020
-s32 mnTrainingGetPortraitId(s32 ft_kind)
+s32 mnTrainingGetPortraitId(s32 fkind)
 {
 	s32 portrait_id_order[12] = {
 
 		1, 9, 2, 4, 0, 3, 7, 5, 8, 10, 11, 6
 	};
 
-	return portrait_id_order[ft_kind];
+	return portrait_id_order[fkind];
 }
 
 // 0x80132070
@@ -468,7 +468,7 @@ void mnTrainingCreatePortraits()
 }
 
 // 0x801325D4
-void mnTrainingSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
+void mnTrainingSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 fkind)
 {
 	SObj* sobj;
 	Vec2f coords[12] = {
@@ -489,12 +489,12 @@ void mnTrainingSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
 		0x2ED8, 0x3998, 0x28E8, 0x32F8, 0x3DB8, 0x35B0
 	};
 
-	if (ft_kind != nFTKindNull)
+	if (fkind != nFTKindNull)
 	{
 		gcRemoveSObjAll(name_logo_gobj);
 
 		// logo
-		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMNTrainingFiles[3], logo_offsets[ft_kind]));
+		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMNTrainingFiles[3], logo_offsets[fkind]));
 		sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
 		sobj->sprite.attr = sobj->sprite.attr | SP_TRANSPARENT;
 
@@ -516,7 +516,7 @@ void mnTrainingSetNameAndLogo(GObj* name_logo_gobj, s32 port_id, s32 ft_kind)
 		}
 
 		// name
-		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMNTrainingFiles[0], name_offsets[ft_kind]));
+		sobj = lbCommonMakeSObjForGObj(name_logo_gobj, GetAddressFromOffset(gMNTrainingFiles[0], name_offsets[fkind]));
 		sobj->sprite.attr = sobj->sprite.attr & ~SP_FASTCOPY;
 		sobj->sprite.attr = sobj->sprite.attr | SP_TRANSPARENT;
 
@@ -787,15 +787,15 @@ void func_ovl28_801332CC() {}
 void func_ovl28_801332D4() {}
 
 // 0x801332DC
-s32 mnTrainingGetAdditionalSelectedCount(s32 ft_kind)
+s32 mnTrainingGetAdditionalSelectedCount(s32 fkind)
 {
 	s32 count = 0;
 
-	if (ft_kind == gMNTrainingPanels[gMNTrainingHumanPanelPort].char_id)
+	if (fkind == gMNTrainingPanels[gMNTrainingHumanPanelPort].char_id)
 	{
 		count += 1;
 	}
-	if (ft_kind == gMNTrainingPanels[gMNTrainingCPUPanelPort].char_id)
+	if (fkind == gMNTrainingPanels[gMNTrainingCPUPanelPort].char_id)
 	{
 		count += 1;
 	}
@@ -803,12 +803,12 @@ s32 mnTrainingGetAdditionalSelectedCount(s32 ft_kind)
 }
 
 // 0x80133350
-sb32 mnTrainingIsCostumeInUse(s32 ft_kind, s32 port_id, s32 costume_id)
+sb32 mnTrainingIsCostumeInUse(s32 fkind, s32 port_id, s32 costume_id)
 {
 	if (port_id == gMNTrainingHumanPanelPort)
 	{
 		if (
-			(ft_kind == gMNTrainingPanels[gMNTrainingCPUPanelPort].char_id)
+			(fkind == gMNTrainingPanels[gMNTrainingCPUPanelPort].char_id)
 			&& (costume_id == gMNTrainingPanels[gMNTrainingCPUPanelPort].costume_id)
 			)
 		{
@@ -819,7 +819,7 @@ sb32 mnTrainingIsCostumeInUse(s32 ft_kind, s32 port_id, s32 costume_id)
 	if (port_id == gMNTrainingCPUPanelPort)
 	{
 		if (
-			(ft_kind == gMNTrainingPanels[gMNTrainingHumanPanelPort].char_id)
+			(fkind == gMNTrainingPanels[gMNTrainingHumanPanelPort].char_id)
 			&& (costume_id == gMNTrainingPanels[gMNTrainingHumanPanelPort].costume_id)
 			)
 		{
@@ -830,7 +830,7 @@ sb32 mnTrainingIsCostumeInUse(s32 ft_kind, s32 port_id, s32 costume_id)
 }
 
 // 0x80133408
-s32 mnTrainingGetAvailableCostumeFFA(s32 ft_kind, s32 port_id)
+s32 mnTrainingGetAvailableCostumeFFA(s32 fkind, s32 port_id)
 {
 	s32 i, j, k, l;
 	sb32 some_array[4];
@@ -840,22 +840,22 @@ s32 mnTrainingGetAvailableCostumeFFA(s32 ft_kind, s32 port_id)
 
 	if (port_id == gMNTrainingHumanPanelPort)
 	{
-		if (ft_kind == gMNTrainingPanels[gMNTrainingCPUPanelPort].char_id)
+		if (fkind == gMNTrainingPanels[gMNTrainingCPUPanelPort].char_id)
 		{
 			for (j = 0; j < 4; j++)
 			{
-				if (ftParamGetCostumeCommonID(ft_kind, j) == gMNTrainingPanels[gMNTrainingCPUPanelPort].costume_id)
+				if (ftParamGetCostumeCommonID(fkind, j) == gMNTrainingPanels[gMNTrainingCPUPanelPort].costume_id)
 					some_array[j] = TRUE;
 			}
 		}
 	}
 	else
 	{
-		if (ft_kind ==gMNTrainingPanels[gMNTrainingHumanPanelPort].char_id)
+		if (fkind ==gMNTrainingPanels[gMNTrainingHumanPanelPort].char_id)
 		{
 			for (k = 0; k < 4; k++)
 			{
-				if (ftParamGetCostumeCommonID(ft_kind, k) == gMNTrainingPanels[gMNTrainingHumanPanelPort].costume_id)
+				if (ftParamGetCostumeCommonID(fkind, k) == gMNTrainingPanels[gMNTrainingHumanPanelPort].costume_id)
 					some_array[k] = TRUE;
 			}
 		}
@@ -869,15 +869,15 @@ s32 mnTrainingGetAvailableCostumeFFA(s32 ft_kind, s32 port_id)
 }
 
 // 0x801335F0
-s32 mnTrainingGetAvailableCostume(s32 ft_kind, s32 port_id)
+s32 mnTrainingGetAvailableCostume(s32 fkind, s32 port_id)
 {
-	return ftParamGetCostumeCommonID(ft_kind, mnTrainingGetAvailableCostumeFFA(ft_kind, port_id));
+	return ftParamGetCostumeCommonID(fkind, mnTrainingGetAvailableCostumeFFA(fkind, port_id));
 }
 
 // 0x8013361C
-s32 mnTrainingGetSelectedAnimation(s32 ft_kind)
+s32 mnTrainingGetSelectedAnimation(s32 fkind)
 {
-	switch (ft_kind)
+	switch (fkind)
 	{
 		case nFTKindFox:
 		case nFTKindSamus:
@@ -943,12 +943,12 @@ void mnTrainingRotateFighter(GObj *fighter_gobj)
 }
 
 // 0x801337BC
-void mnTrainingSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 costume_id)
+void mnTrainingSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 fkind, s32 costume_id)
 {
 	f32 initial_y_rotation;
 	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
-	if (ft_kind != nFTKindNull)
+	if (fkind != nFTKindNull)
 	{
 		if (fighter_gobj != NULL)
 		{
@@ -960,7 +960,7 @@ void mnTrainingSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 co
 			initial_y_rotation = 0.0F;
 		}
 
-		spawn_info.ft_kind = ft_kind;
+		spawn_info.fkind = fkind;
 		gMNTrainingPanels[port_id].costume_id = spawn_info.costume = costume_id;
 		spawn_info.shade = 0;
 		spawn_info.figatree_heap = gMNTrainingPanels[port_id].figatree_heap;
@@ -983,9 +983,9 @@ void mnTrainingSpawnFighter(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 co
 		}
 		DObjGetStruct(fighter_gobj)->rotate.vec.f.y = initial_y_rotation;
 
-		DObjGetStruct(fighter_gobj)->scale.vec.f.x = menu_zoom[ft_kind];
-		DObjGetStruct(fighter_gobj)->scale.vec.f.y = menu_zoom[ft_kind];
-		DObjGetStruct(fighter_gobj)->scale.vec.f.z = menu_zoom[ft_kind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.x = menu_zoom[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.y = menu_zoom[fkind];
+		DObjGetStruct(fighter_gobj)->scale.vec.f.z = menu_zoom[fkind];
 
 		if (port_id == gMNTrainingCPUPanelPort)
 			ftParamCheckSetFighterColAnimID(fighter_gobj, 1, 0);
@@ -1928,9 +1928,9 @@ void mnTrainingRedrawToken(GObj* token_gobj, s32 token_index)
 }
 
 // 0x80135CCC
-void mnTrainingCenterTokenInPortrait(GObj* token_gobj, s32 ft_kind)
+void mnTrainingCenterTokenInPortrait(GObj* token_gobj, s32 fkind)
 {
-	s32 portrait_id = mnTrainingGetPortraitId(ft_kind);
+	s32 portrait_id = mnTrainingGetPortraitId(fkind);
 
 	if (portrait_id >= 6)
 	{
@@ -1959,7 +1959,7 @@ void mnTrainingMoveToken(s32 port_id)
 // 0x80135DD8
 void mnTrainingSyncTokenAndFighter(GObj* token_gobj)
 {
-	s32 ft_kind;
+	s32 fkind;
 	s32 port_id = token_gobj->user_data.s;
 
 	if (gMNTrainingFramesElapsed < 0x1E)
@@ -1996,20 +1996,20 @@ void mnTrainingSyncTokenAndFighter(GObj* token_gobj)
 		else
 			mnTrainingMoveToken(port_id);
 
-		ft_kind = mnTrainingGetFtKindFromTokenPosition(port_id);
+		fkind = mnTrainingGetFtKindFromTokenPosition(port_id);
 
 		if ((gMNTrainingPanels[port_id].player_type == mnPanelTypeCPU)
-			&& (ft_kind != gMNTrainingPanels[port_id].char_id)
-			&& (ft_kind == nFTKindNull))
+			&& (fkind != gMNTrainingPanels[port_id].char_id)
+			&& (fkind == nFTKindNull))
 		{
 			if (gMNTrainingPanels[port_id].holder_port_id != 4)
 				mnTrainingSelectCharWithToken(gMNTrainingPanels[port_id].holder_port_id, 4);
 		}
 
 		if ((gMNTrainingPanels[port_id].is_selected == FALSE)
-			&& (ft_kind != gMNTrainingPanels[port_id].char_id))
+			&& (fkind != gMNTrainingPanels[port_id].char_id))
 		{
-			gMNTrainingPanels[port_id].char_id = ft_kind;
+			gMNTrainingPanels[port_id].char_id = fkind;
 
 			mnTrainingSyncFighterDisplay(port_id);
 			mnTrainingSyncNameAndLogo(port_id);
@@ -2493,10 +2493,10 @@ void func_ovl28_801375D0() {}
 // 0x801375D8
 void mnTrainingSaveMatchInfo()
 {
-	gSceneData.training_man_ft_kind = gMNTrainingPanels[gMNTrainingHumanPanelPort].char_id;
+	gSceneData.training_man_fkind = gMNTrainingPanels[gMNTrainingHumanPanelPort].char_id;
 	gSceneData.training_man_costume = gMNTrainingPanels[gMNTrainingHumanPanelPort].costume_id;
 
-	gSceneData.training_com_ft_kind = gMNTrainingPanels[gMNTrainingCPUPanelPort].char_id;
+	gSceneData.training_com_fkind = gMNTrainingPanels[gMNTrainingCPUPanelPort].char_id;
 	gSceneData.training_com_costume = gMNTrainingPanels[gMNTrainingCPUPanelPort].costume_id;
 }
 
@@ -2581,7 +2581,7 @@ void mnTrainingInitPort(s32 port_id)
 		panel_info->player_type = mnPanelTypeHuman;
 		panel_info->holder_port_id = 4;
 		panel_info->held_port_id = -1;
-		panel_info->char_id = gSceneData.training_man_ft_kind;
+		panel_info->char_id = gSceneData.training_man_fkind;
 		panel_info->costume_id = gSceneData.training_man_costume;
 		panel_info->unk_0x88 = TRUE;
 		panel_info->is_selected = TRUE;
@@ -2644,7 +2644,7 @@ void mnTrainingResetPortToNA(s32 port_id)
 void mnTrainingLoadMatchInfo()
 {
 	s32 i;
-	s32 ft_kind, costume_id;
+	s32 fkind, costume_id;
 
 	gMNTrainingFramesElapsed = 0;
 	gMNTrainingIsStartTriggered = FALSE;
@@ -2653,34 +2653,34 @@ void mnTrainingLoadMatchInfo()
 	gMNTrainingCPUPanelPort = (gMNTrainingHumanPanelPort == 0) ? 1 : 0;
 	gMNTrainingCharacterUnlockedMask = gSaveData.fighter_mask;
 
-	if (gSceneData.training_man_ft_kind == nFTKindNull)
+	if (gSceneData.training_man_fkind == nFTKindNull)
 		mnTrainingResetPort(gMNTrainingHumanPanelPort);
 	else
 		mnTrainingInitPort(gMNTrainingHumanPanelPort);
 
 	gMNTrainingPanels[gMNTrainingHumanPanelPort].min_frames_elapsed_until_recall = FALSE;
 
-	ft_kind = gSceneData.training_com_ft_kind;
+	fkind = gSceneData.training_com_fkind;
 
-	if (ft_kind == nFTKindNull)
+	if (fkind == nFTKindNull)
 	{
 		do
 		{
 			do
 			{
-				ft_kind = mtTrigGetRandomTimeUCharRange(12);
-			} while (mnTrainingCheckFighterIsXBoxed(ft_kind));
-		} while (mnTrainingGetIsLocked(ft_kind));
+				fkind = mtTrigGetRandomTimeUCharRange(12);
+			} while (mnTrainingCheckFighterIsXBoxed(fkind));
+		} while (mnTrainingGetIsLocked(fkind));
 
-		if (mnTrainingIsCostumeInUse(ft_kind, gMNTrainingCPUPanelPort, ftParamGetCostumeCommonID(ft_kind, 0)))
-			costume_id = ftParamGetCostumeCommonID(ft_kind, 1);
+		if (mnTrainingIsCostumeInUse(fkind, gMNTrainingCPUPanelPort, ftParamGetCostumeCommonID(fkind, 0)))
+			costume_id = ftParamGetCostumeCommonID(fkind, 1);
 		else
-			costume_id = ftParamGetCostumeCommonID(ft_kind, 0);
+			costume_id = ftParamGetCostumeCommonID(fkind, 0);
 	}
 	else
 		costume_id = gSceneData.training_com_costume;
 
-	gMNTrainingPanels[gMNTrainingCPUPanelPort].char_id = ft_kind;
+	gMNTrainingPanels[gMNTrainingCPUPanelPort].char_id = fkind;
 	gMNTrainingPanels[gMNTrainingCPUPanelPort].costume_id = costume_id;
 	gMNTrainingPanels[gMNTrainingCPUPanelPort].player_type = 1;
 	mnTrainingInitPort(gMNTrainingCPUPanelPort);

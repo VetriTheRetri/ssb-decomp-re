@@ -78,28 +78,28 @@ void lbBackupCorrectErrors(void)
 {
     s32 i;
 
-    if (!((gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER) & (1 << gSaveData.characters_ft_kind)))
+    if (!((gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER) & (1 << gSaveData.characters_fkind)))
     {
-        gSaveData.characters_ft_kind = gDefaultSaveData.characters_ft_kind;
+        gSaveData.characters_fkind = gDefaultSaveData.characters_fkind;
     }
-    if (!((gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER) & (1 << gSceneData.ft_kind)))
+    if (!((gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER) & (1 << gSceneData.fkind)))
     {
-        gSceneData.ft_kind = nFTKindNull;
+        gSceneData.fkind = nFTKindNull;
     }
-    if (!((gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER) & (1 << gSceneData.training_man_ft_kind)))
+    if (!((gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER) & (1 << gSceneData.training_man_fkind)))
     {
-        gSceneData.training_man_ft_kind = nFTKindNull;
+        gSceneData.training_man_fkind = nFTKindNull;
     }
-    if (!((gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER) & (1 << gSceneData.training_com_ft_kind)))
+    if (!((gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER) & (1 << gSceneData.training_com_fkind)))
     {
-        gSceneData.training_com_ft_kind = nFTKindNull;
+        gSceneData.training_com_fkind = nFTKindNull;
     }
     for (i = 0; i < ARRAY_COUNT(gTransferBattleState.players); i++)
     {
-        if (!((1 << gTransferBattleState.players[i].ft_kind) & (gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER)))
+        if (!((1 << gTransferBattleState.players[i].fkind) & (gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER)))
         {
-            gTransferBattleState.players[i].ft_kind = nFTKindNull;
-            gTransferBattleState.players[i].pl_kind = nFTPlayerKindMan;
+            gTransferBattleState.players[i].fkind = nFTKindNull;
+            gTransferBattleState.players[i].pkind = nFTPlayerKindMan;
         }
     }
     if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_INISHIE))

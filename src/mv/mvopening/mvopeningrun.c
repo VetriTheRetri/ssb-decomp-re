@@ -98,7 +98,7 @@ void mvOpeningRunMakeFighters(void)
 	s32 i;
 	
 	// 0x80132610
-	s32 ft_kinds[/* */] =
+	s32 fkinds[/* */] =
 	{
 		nFTKindMario,
 		nFTKindFox,
@@ -123,12 +123,12 @@ void mvOpeningRunMakeFighters(void)
 		&lMVOpeningRunPikachuAnimJoint
 	};
 
-	for (i = 0; i < ARRAY_COUNT(ft_kinds); i++)
+	for (i = 0; i < ARRAY_COUNT(fkinds); i++)
 	{
 		FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
-		spawn_info.ft_kind = ft_kinds[i];
-		spawn_info.costume = ftParamGetCostumeCommonID(ft_kinds[i], 0);
+		spawn_info.fkind = fkinds[i];
+		spawn_info.costume = ftParamGetCostumeCommonID(fkinds[i], 0);
 
 		spawn_info.pos.x = 0.0F;
 		spawn_info.pos.y = 0.0F;
@@ -137,7 +137,7 @@ void mvOpeningRunMakeFighters(void)
 		spawn_info.figatree_heap = sMVOpeningRunFigatreeHeaps[i];
 		fighter_gobj = fighter_proxy_gobj = ftManagerMakeFighter(&spawn_info);
 
-		if (ft_kinds[i] == nFTKindLink)
+		if (fkinds[i] == nFTKindLink)
 		{
 			sMVOpeningRunLinkFighterGObj = fighter_proxy_gobj;
 		}

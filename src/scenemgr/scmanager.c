@@ -723,7 +723,7 @@ void scManagerInspectGObj(GObj *gobj)
         fp = ftGetStruct(gobj);
 
         syErrorDebugPrintf("fighter\n");
-        syErrorDebugPrintf("kind:%d, player:%d, pkind:%d\n", fp->ft_kind, fp->player, fp->pl_kind);
+        syErrorDebugPrintf("kind:%d, player:%d, pkind:%d\n", fp->fkind, fp->player, fp->pkind);
         syErrorDebugPrintf("stat:%d, mstat:%d\n", fp->status_id, fp->motion_id);
         syErrorDebugPrintf("ga:%d\n", fp->ga);
         break;
@@ -732,7 +732,7 @@ void scManagerInspectGObj(GObj *gobj)
         wp = wpGetStruct(gobj);
 
         syErrorDebugPrintf("weapon\n");
-        syErrorDebugPrintf("kind:%d, player:%d\n", wp->wp_kind, wp->player);
+        syErrorDebugPrintf("kind:%d, player:%d\n", wp->kind, wp->player);
         syErrorDebugPrintf("atk stat:%d\n", wp->atk_coll.atk_state);
         syErrorDebugPrintf("ga:%d\n", wp->ga);
         break;
@@ -741,7 +741,7 @@ void scManagerInspectGObj(GObj *gobj)
         ip = itGetStruct(gobj);
 
         syErrorDebugPrintf("item\n");
-        syErrorDebugPrintf("kind:%d, player:%d\n", ip->it_kind, ip->player);
+        syErrorDebugPrintf("kind:%d, player:%d\n", ip->kind, ip->player);
         syErrorDebugPrintf("atk stat:%d\n", ip->atk_coll.atk_state);
         syErrorDebugPrintf("ga:%d\n", ip->ga);
         syErrorDebugPrintf("proc update:%x\n", ip->proc_update);

@@ -257,7 +257,7 @@ void mnResultsSaveDataToSRAM()
 {
 	LBBackupVSRecord* vs_record;
 	s32 i, j;
-	u8 ft_kind, opp_ft_kind;
+	u8 fkind, opp_fkind;
 
 	gSaveData.vs_total_battles += 1;
 	gSaveData.unlock_task_inishie |= 1 << gTransferBattleState.gr_kind;
@@ -269,10 +269,10 @@ void mnResultsSaveDataToSRAM()
 
 	for (i = 0; i < 4; i++)
 	{
-		if (gTransferBattleState.players[i].pl_kind != 2)
+		if (gTransferBattleState.players[i].pkind != 2)
 		{
-			ft_kind = gTransferBattleState.players[i].ft_kind;
-			vs_record = &gSaveData.vs_records[ft_kind];
+			fkind = gTransferBattleState.players[i].fkind;
+			vs_record = &gSaveData.vs_records[fkind];
 
 			vs_record->time_used += (gTransferBattleState.battle_time_current / 60);
 
@@ -299,17 +299,17 @@ void mnResultsSaveDataToSRAM()
 
 			for (j = 0; j < 4; j++)
 			{
-				if ((i != j) && (gTransferBattleState.players[j].pl_kind != nFTPlayerKindNot))
+				if ((i != j) && (gTransferBattleState.players[j].pkind != nFTPlayerKindNot))
 				{
-					opp_ft_kind = gTransferBattleState.players[j].ft_kind;
+					opp_fkind = gTransferBattleState.players[j].fkind;
 
-					gSaveData.vs_records[ft_kind].ko_count[opp_ft_kind] += gTransferBattleState.players[i].total_ko_player[j];
+					gSaveData.vs_records[fkind].ko_count[opp_fkind] += gTransferBattleState.players[i].total_ko_player[j];
 
-					if (gSaveData.vs_records[ft_kind].ko_count[opp_ft_kind] >= 10000)
-						gSaveData.vs_records[ft_kind].ko_count[opp_ft_kind] = 9999;
+					if (gSaveData.vs_records[fkind].ko_count[opp_fkind] >= 10000)
+						gSaveData.vs_records[fkind].ko_count[opp_fkind] = 9999;
 
-					gSaveData.vs_records[ft_kind].player_count_tallies[opp_ft_kind] += mnResultsGetPlayerCount();
-					gSaveData.vs_records[ft_kind].played_against[opp_ft_kind] += 1;
+					gSaveData.vs_records[fkind].player_count_tallies[opp_fkind] += mnResultsGetPlayerCount();
+					gSaveData.vs_records[fkind].played_against[opp_fkind] += 1;
 				}
 			}
 		}
@@ -799,7 +799,7 @@ void mnResultsSetFtKind()
 	for (i = 0; i < ARRAY_COUNT(gMNResultsIsPresent); i++)
 	{
 		if (gMNResultsIsPresent[i])
-			gMNResultsFTKind[i] = gTransferBattleState.players[i].ft_kind;
+			gMNResultsFTKind[i] = gTransferBattleState.players[i].fkind;
 	}
 }
 
@@ -869,21 +869,21 @@ void mnResultsMakeFighterFaceWinner(GObj* fighter_gobj, s32 port_id, s32 place)
 }
 
 // 0x8013345C
-s32 mnResultsGetVictoryAnim(s32 ft_kind)
+s32 mnResultsGetVictoryAnim(s32 fkind)
 {
 	s32 victory_anims[3] = {
 
 		0x10001, 0x10002, 0x10003
 	};
 
-	if (ft_kind == nFTKindKirby)
+	if (fkind == nFTKindKirby)
 		return victory_anims[mtTrigGetRandomIntRange(2)];
 	else
 		return victory_anims[mtTrigGetRandomIntRange(3)];
 }
 
 // 0x801334CC
-s32 mnResultsGetDefeatedAnim(s32 ft_kind)
+s32 mnResultsGetDefeatedAnim(s32 fkind)
 {
 	return 0x10005;
 }
@@ -982,11 +982,11 @@ s32 func_ovl31_80133810(s32 port_id)
 }
 
 // 0x801338EC
-void mnResultsSetFighterScale(GObj* fighter_gobj, s32 port_id, s32 ft_kind, s32 place)
+void mnResultsSetFighterScale(GObj* fighter_gobj, s32 port_id, s32 fkind, s32 place)
 {
-	DObjGetStruct(fighter_gobj)->scale.vec.f.x = menu_zoom[ft_kind];
-	DObjGetStruct(fighter_gobj)->scale.vec.f.y = menu_zoom[ft_kind];
-	DObjGetStruct(fighter_gobj)->scale.vec.f.z = menu_zoom[ft_kind];
+	DObjGetStruct(fighter_gobj)->scale.vec.f.x = menu_zoom[fkind];
+	DObjGetStruct(fighter_gobj)->scale.vec.f.y = menu_zoom[fkind];
+	DObjGetStruct(fighter_gobj)->scale.vec.f.z = menu_zoom[fkind];
 }
 
 // 0x8013392C
@@ -995,7 +995,7 @@ void mnResultsSpawnFighter(s32 port_id)
 	s32 foo, bar, baz;
 	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
-	spawn_info.ft_kind = mnResultsGetFtKind(port_id);
+	spawn_info.fkind = mnResultsGetFtKind(port_id);
 	spawn_info.costume = gTransferBattleState.players[port_id].costume;
 	spawn_info.shade = gTransferBattleState.players[port_id].shade;
 	spawn_info.figatree_heap = gMNResultsFigatreeHeaps[port_id];
@@ -1082,7 +1082,7 @@ void mnResultsCreatePlayerIndicator(s32 port_id, s32 color_index)
 	indicator_gobj = gcMakeGObjSPAfter(0, 0, 0x12, 0x80000000);
 	gcAddGObjDisplay(indicator_gobj, lbCommonDrawSObjAttr, 0x1B, 0x80000000, -1);
 
-	if (gTransferBattleState.players[port_id].pl_kind == 0)
+	if (gTransferBattleState.players[port_id].pkind == 0)
 	{
 		indicator_sobj = lbCommonMakeSObjForGObj(indicator_gobj, GetAddressFromOffset(gMNResultsFiles[1], offsets[port_id]));
 		indicator_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -1235,7 +1235,7 @@ s32 mnResultsGetWinnerKind()
 // 0x8013438C
 void mnResultsDrawFighterWins()
 {
-	s32 ft_kind;
+	s32 fkind;
 	char* name_strings[12] = {
 
 		"MARIO",
@@ -1262,10 +1262,10 @@ void mnResultsDrawFighterWins()
 		1.0, 0.7, 1.0, 0.7, 0.6, 1.0
 	};
 
-	ft_kind = mnResultsGetWinnerKind();
+	fkind = mnResultsGetWinnerKind();
 
-	mnResultsDrawString(name_strings[ft_kind], x_positions[ft_kind], 180.0F, 0, scale[ft_kind]);
-	mnResultsDrawWinsText(ft_kind);
+	mnResultsDrawString(name_strings[fkind], x_positions[fkind], 180.0F, 0, scale[fkind]);
+	mnResultsDrawWinsText(fkind);
 }
 
 // 0x80134480
@@ -2246,7 +2246,7 @@ s32 mnResultsGetFirstPortForTeam(s32 team_id)
 
 	for (i = 0; i < 4; i++)
 	{
-		if ((team_id == gTransferBattleState.players[i].team) && (gTransferBattleState.players[i].pl_kind != nFTPlayerKindNot))
+		if ((team_id == gTransferBattleState.players[i].team) && (gTransferBattleState.players[i].pkind != nFTPlayerKindNot))
 			return i + 1;
 	}
 
@@ -2347,7 +2347,7 @@ void mnResultsSetIsPresent()
 
 	for (i = 0; i < ARRAY_COUNT(gMNResultsIsPresent); i++)
 	{
-		if (gTransferBattleState.players[i].pl_kind == nFTPlayerKindNot)
+		if (gTransferBattleState.players[i].pkind == nFTPlayerKindNot)
 			gMNResultsIsPresent[i] = FALSE;
 		else
 			gMNResultsIsPresent[i] = TRUE;
@@ -2516,7 +2516,7 @@ s32 mnResultsGetHumanCount()
 
 	for (i = 0; i < 4; i++)
 	{
-		if (gTransferBattleState.players[i].pl_kind == nFTPlayerKindMan)
+		if (gTransferBattleState.players[i].pkind == nFTPlayerKindMan)
 			total += 1;
 	}
 
@@ -2533,7 +2533,7 @@ s32 mnResultsGetBestHuman()
 
 	// determine if human or cpu
 	for (i = 0; i < 4; i++)
-		is_human[i] = (gTransferBattleState.players[i].pl_kind == nFTPlayerKindMan) ? TRUE : FALSE;
+		is_human[i] = (gTransferBattleState.players[i].pkind == nFTPlayerKindMan) ? TRUE : FALSE;
 
 	// determine port_id of first human
 	for (i = 0; i < 4; i++)
@@ -2590,7 +2590,7 @@ s32 mnResultsGetBestHumanOtherThan(s32 port_id)
 	// determine if human or cpu
 	for (i = 0; i < 4; i++)
 	{
-		is_human[i] = (gTransferBattleState.players[i].pl_kind == nFTPlayerKindMan) ? TRUE : FALSE;
+		is_human[i] = (gTransferBattleState.players[i].pkind == nFTPlayerKindMan) ? TRUE : FALSE;
 	}
 
 	// determine port_id of first human - shouldn't have been commented out! first_human is undefined below!
@@ -2643,7 +2643,7 @@ s32 mnResultsGetWorstHuman()
 
 	// determine if human or cpu
 	for (i = 0; i < 4; i++)
-		is_human[i] = (gTransferBattleState.players[i].pl_kind == nFTPlayerKindMan) ? TRUE : FALSE;
+		is_human[i] = (gTransferBattleState.players[i].pkind == nFTPlayerKindMan) ? TRUE : FALSE;
 
 	// determine port_id of first human
 	for (i = 0; i < 4; i++)
@@ -2991,7 +2991,7 @@ void mnResultsInit()
 	mnResultsCreateBackgroundOverlay();
 	func_ovl31_8013797C();
 
-	if ((gMNResultsGameRule != 4) && (gTransferBattleState.players[mnResultsGetWinnerPort()].pl_kind == nFTPlayerKindMan))
+	if ((gMNResultsGameRule != 4) && (gTransferBattleState.players[mnResultsGetWinnerPort()].pkind == nFTPlayerKindMan))
 		func_ovl31_80137938();
 
 	scSubsysFighterSetLightParams(10.0F, 10.0F, 0xFF, 0xFF, 0xFF, gMNResultsCharacterAlpha);

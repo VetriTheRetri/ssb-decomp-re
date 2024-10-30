@@ -113,7 +113,7 @@ void mvOpeningYosterMakeFighters(void)
 
     for (i = 0; i < (ARRAY_COUNT(sMVOpeningYosterFigatreeHeaps) + ARRAY_COUNT(status_ids)) / 2; i++)
     {
-        ft_desc.ft_kind = nFTKindYoshi;
+        ft_desc.fkind = nFTKindYoshi;
         ft_desc.costume = ftParamGetCostumeCommonID(nFTKindYoshi, i);
         ft_desc.pos.x = 0.0F;
         ft_desc.pos.y = 0.0F;

@@ -247,12 +247,12 @@ void mvOpeningYoshiInitFighterStagePanel()
 	{
 		FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
-		if (gBattleState->players[i].pl_kind == nFTPlayerKindNot)
+		if (gBattleState->players[i].pkind == nFTPlayerKindNot)
 			continue;
 
-		ftManagerSetupFilesAllKind(gBattleState->players[i].ft_kind);
+		ftManagerSetupFilesAllKind(gBattleState->players[i].fkind);
 
-		spawn_info.ft_kind = gBattleState->players[i].ft_kind;
+		spawn_info.fkind = gBattleState->players[i].fkind;
 		spawn_info.pos.x = spawn_position.x;
 		spawn_info.pos.y = spawn_position.y;
 		spawn_info.pos.z = spawn_position.z;
@@ -265,9 +265,9 @@ void mvOpeningYoshiInitFighterStagePanel()
 		spawn_info.cp_level = gBattleState->players[i].level;
 		spawn_info.stock_count = gBattleState->stock_setting;
 		spawn_info.damage = 0;
-		spawn_info.pl_kind = gBattleState->players[i].pl_kind;
+		spawn_info.pkind = gBattleState->players[i].pkind;
 		spawn_info.controller = &gPlayerControllers[i];
-		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[i].ft_kind);
+		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[i].fkind);
 
 		gMVOpeningYoshiStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
@@ -331,7 +331,7 @@ void mvOpeningYoshiCreatePosedFighter()
 	GObj* fighter_gobj;
 	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
-	spawn_info.ft_kind = nFTKindYoshi;
+	spawn_info.fkind = nFTKindYoshi;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindYoshi, 0);
 	spawn_info.figatree_heap = gMVOpeningYoshiFigatreeHeap;
 	spawn_info.pos.x = -600.0f;
@@ -423,8 +423,8 @@ void mvOpeningYoshiInit()
 	gBattleState->gr_kind = nGRKindYoster;
 	gBattleState->pl_count = 1;
 
-	gBattleState->players[0].ft_kind = nFTKindYoshi;
-	gBattleState->players[0].pl_kind = nFTPlayerKindKey;
+	gBattleState->players[0].fkind = nFTKindYoshi;
+	gBattleState->players[0].pkind = nFTPlayerKindKey;
 
 	mvOpeningYoshiLoadFiles();
 	gcMakeGObjSPAfter(0x3F7, mvOpeningYoshiMainProc, 0xD, 0x80000000);

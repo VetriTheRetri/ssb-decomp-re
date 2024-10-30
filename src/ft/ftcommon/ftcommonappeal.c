@@ -22,7 +22,7 @@ void ftCommonAppealSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->ft_kind == nFTKindKirby) || (fp->ft_kind == nFTKindNKirby))
+    if ((fp->fkind == nFTKindKirby) || (fp->fkind == nFTKindNKirby))
     {
         if ((fp->fighter_vars.kirby.copy_id != nFTKindKirby) && (fp->fighter_vars.kirby.is_ignore_losecopy == FALSE))
         {

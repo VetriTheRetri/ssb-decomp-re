@@ -321,8 +321,8 @@ s32 scTrainingMode_GetSpawnableItemCount()
 
 	for (item_count = 0; item_gobj != NULL; item_gobj = item_gobj->link_next)
 	{
-		if ((itGetStruct(item_gobj)->it_kind <= nITKindCommonEnd)
-			|| (itGetStruct(item_gobj)->it_kind >= nITKindMBallMonsterStart))
+		if ((itGetStruct(item_gobj)->kind <= nITKindCommonEnd)
+			|| (itGetStruct(item_gobj)->kind >= nITKindMBallMonsterStart))
 			item_count++;
 	}
 	return item_count;
@@ -529,21 +529,21 @@ void func_ovl7_8018DA98()
 	{
 		if (player == gSceneData.spgame_player)
 		{
-			gBattleState->players[player].pl_kind = nFTPlayerKindMan;
-			gBattleState->players[player].ft_kind = gSceneData.training_man_ft_kind;
+			gBattleState->players[player].pkind = nFTPlayerKindMan;
+			gBattleState->players[player].fkind = gSceneData.training_man_fkind;
 			gBattleState->players[player].costume = gSceneData.training_man_costume;
 			gBattleState->players[player].team = 0;
 			gBattleState->players[player].player_color = player;
 		}
 		else
-			gBattleState->players[player].pl_kind = nFTPlayerKindNot;
+			gBattleState->players[player].pkind = nFTPlayerKindNot;
 	}
 
 	opponent = (gSceneData.spgame_player == 0) ? 1 : 0;
 
-	gBattleState->players[opponent].pl_kind = 1;
+	gBattleState->players[opponent].pkind = 1;
 	gBattleState->players[opponent].tag_kind = 4;
-	gBattleState->players[opponent].ft_kind = gSceneData.training_com_ft_kind;
+	gBattleState->players[opponent].fkind = gSceneData.training_com_fkind;
 	gBattleState->players[opponent].costume = gSceneData.training_com_costume;
 	gBattleState->players[opponent].level = 3;
 	gBattleState->players[opponent].team = 1;
@@ -877,15 +877,15 @@ void scTrainingMode_UpdateItemDisplay(s32 interface_gobj)
 	{
 		ITStruct* ip = itGetStruct(item_gobj);
 
-		if (ip->it_kind <= nITKindContainerEnd)
+		if (ip->kind <= nITKindContainerEnd)
 		{
 			while (TRUE)
 			{
-				syErrorPrintf("Error : wrong item! %d\n", ip->it_kind);
+				syErrorPrintf("Error : wrong item! %d\n", ip->kind);
 				scManagerRunPrintGObjStatus();
 			}
 		}
-		item_id = (ip->it_kind <= nITKindCommonEnd) ? scGetTrainingModeItemKind(ip->it_kind) : 0;
+		item_id = (ip->kind <= nITKindCommonEnd) ? scGetTrainingModeItemKind(ip->kind) : 0;
 	}
 	else
 		item_id = 0;
@@ -1473,7 +1473,7 @@ void scTrainingMode_UpdateOpponentBehavior()
 {
 	FTStruct* fp = ftGetStruct(gBattleState->players[gTrainingModeStruct.opponent].fighter_gobj);
 
-	if (fp->pl_kind == nFTPlayerKindCom)
+	if (fp->pkind == nFTPlayerKindCom)
 	{
 		fp->computer.behavior = scTrainingMode_CPOpponent_BehaviorKind[gTrainingModeStruct.cp_menu_option];
 		fp->computer.trait = 0xA;
@@ -1512,11 +1512,11 @@ void scTrainingMode_InitTrainingMode()
 	{
 		player_spawn = dFTManagerDefaultFighterDesc;
 
-		if (gBattleState->players[player].pl_kind == nFTPlayerKindNot)
+		if (gBattleState->players[player].pkind == nFTPlayerKindNot)
 			continue;
 
-		ftManagerSetupFilesAllKind(gBattleState->players[player].ft_kind);
-		player_spawn.ft_kind = gBattleState->players[player].ft_kind;
+		ftManagerSetupFilesAllKind(gBattleState->players[player].fkind);
+		player_spawn.fkind = gBattleState->players[player].fkind;
 		mpCollisionGetPlayerMapObjPosition(player, &player_spawn.pos);
 		player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? -1 : +1;
 		player_spawn.team = gBattleState->players[player].team;
@@ -1529,9 +1529,9 @@ void scTrainingMode_InitTrainingMode()
 		player_spawn.cp_level = gBattleState->players[player].level;
 		player_spawn.stock_count = gBattleState->stock_setting;
 		player_spawn.damage = 0;
-		player_spawn.pl_kind = gBattleState->players[player].pl_kind;
+		player_spawn.pkind = gBattleState->players[player].pkind;
 		player_spawn.controller = &gPlayerControllers[player];
-		player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[player].ft_kind);
+		player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[player].fkind);
 		player_spawn.is_skip_entry = TRUE;
 		fighter_gobj = ftManagerMakeFighter(&player_spawn);
 		ftParamInitPlayerBattleStats(player, fighter_gobj);

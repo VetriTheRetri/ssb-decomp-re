@@ -360,7 +360,7 @@ void mvOpeningFirstDestinationCreateMasterHand()
 	GObj* fighter_gobj;
 	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
-	spawn_info.ft_kind = nFTKindBoss;
+	spawn_info.fkind = nFTKindBoss;
 	spawn_info.costume = ftParamGetCostumeCommonID(nFTKindBoss, 0);
 	spawn_info.pos.x = 0.0f;
 	spawn_info.pos.y = 0.0f;
@@ -399,13 +399,13 @@ void func_ovl34_80132320() {}
 void func_ovl34_80132328() {}
 
 // 0x80132330
-void mvOpeningFirstDestinationCreatePluckedFighter(s32 ft_kind)
+void mvOpeningFirstDestinationCreatePluckedFighter(s32 fkind)
 {
 	GObj* fighter_gobj;
 	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
-	spawn_info.ft_kind = ft_kind;
-	spawn_info.costume = ftParamGetCostumeCommonID(ft_kind, 0);
+	spawn_info.fkind = fkind;
+	spawn_info.costume = ftParamGetCostumeCommonID(fkind, 0);
 	spawn_info.pos.x = 0.0f;
 	spawn_info.pos.y = 0.0f;
 	spawn_info.pos.z = 0.0f;
@@ -515,13 +515,13 @@ void mvOpeningFirstDestinationCreateCloseUpGFX()
 }
 
 // 0x80132928
-void mvOpeningFirstDestinationCreateDroppedFighter(s32 ft_kind)
+void mvOpeningFirstDestinationCreateDroppedFighter(s32 fkind)
 {
 	GObj* fighter_gobj;
 	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
-	spawn_info.ft_kind = ft_kind;
-	spawn_info.costume = ftParamGetCostumeCommonID(ft_kind, 0);
+	spawn_info.fkind = fkind;
+	spawn_info.costume = ftParamGetCostumeCommonID(fkind, 0);
 	spawn_info.figatree_heap = gMVOpeningFirstDestinationDroppedFigatreeHeap;
 	spawn_info.pos.x = 872.3249512F;
 	spawn_info.pos.y = 4038.864014F;
@@ -638,7 +638,7 @@ void mvOpeningFirstDestinationCreateBackground()
 }
 
 // 0x80132FCC
-void mvOpeningFirstDestinationPositionSpotlight(GObj* spotlight_gobj, s32 ft_kind)
+void mvOpeningFirstDestinationPositionSpotlight(GObj* spotlight_gobj, s32 fkind)
 {
 	Vec3f positions[12] = {
 
@@ -671,12 +671,12 @@ void mvOpeningFirstDestinationPositionSpotlight(GObj* spotlight_gobj, s32 ft_kin
 		0.0, 0.0, 0.0
 	};
 
-	DObjGetStruct(spotlight_gobj)->translate.vec.f.x = positions[ft_kind].x * 30.0F;
-	DObjGetStruct(spotlight_gobj)->translate.vec.f.y = positions[ft_kind].y * 30.0F;
-	DObjGetStruct(spotlight_gobj)->translate.vec.f.z = positions[ft_kind].z * 30.0F;
-	DObjGetStruct(spotlight_gobj)->scale.vec.f.x = scales[ft_kind].x;
-	DObjGetStruct(spotlight_gobj)->scale.vec.f.y = scales[ft_kind].y;
-	DObjGetStruct(spotlight_gobj)->scale.vec.f.z = scales[ft_kind].z;
+	DObjGetStruct(spotlight_gobj)->translate.vec.f.x = positions[fkind].x * 30.0F;
+	DObjGetStruct(spotlight_gobj)->translate.vec.f.y = positions[fkind].y * 30.0F;
+	DObjGetStruct(spotlight_gobj)->translate.vec.f.z = positions[fkind].z * 30.0F;
+	DObjGetStruct(spotlight_gobj)->scale.vec.f.x = scales[fkind].x;
+	DObjGetStruct(spotlight_gobj)->scale.vec.f.y = scales[fkind].y;
+	DObjGetStruct(spotlight_gobj)->scale.vec.f.z = scales[fkind].z;
 }
 
 // 0x801330B8
@@ -936,26 +936,26 @@ void mvOpeningFirstDestinationDestroyViewports()
 // 0x801341B4
 s32 mvOpeningFirstDestinationGetDroppedFighterKind()
 {
-	s32 ft_kinds[8] = {
+	s32 fkinds[8] = {
 
 		0, 1, 2, 3, 5, 6, 8, 9
 	};
-	s32 ft_kind;
+	s32 fkind;
 
-	while (ft_kind = ft_kinds[mtTrigGetRandomTimeUCharRange(ARRAY_COUNT(ft_kinds))], ft_kind == gMVOpeningFirstDestinationPluckedFighterKind);
+	while (fkind = fkinds[mtTrigGetRandomTimeUCharRange(ARRAY_COUNT(fkinds))], fkind == gMVOpeningFirstDestinationPluckedFighterKind);
 
-	return ft_kind;
+	return fkind;
 }
 
 // 0x80134270
 s32 mvOpeningFirstDestinationGetPluckedFighterKind()
 {
-	s32 ft_kinds[8] = {
+	s32 fkinds[8] = {
 
 		0, 1, 2, 3, 5, 6, 8, 9
 	};
 
-	return ft_kinds[mtTrigGetRandomTimeUCharRange(8)];
+	return fkinds[mtTrigGetRandomTimeUCharRange(8)];
 }
 
 // 0x801342E4

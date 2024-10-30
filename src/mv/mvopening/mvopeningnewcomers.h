@@ -22,7 +22,7 @@ extern intptr_t lMVOpeningNewcomersNessAnimJoint;               // 0x0002A864
 extern intptr_t lMVOpeningNewcomersNessHiddenDisplayList;       // 0x0003BAF8
 
 extern void mvOpeningNewcomersFuncLights(Gfx **dls);
-extern sb32 mvOpeningNewcomersCheckLocked(s32 ft_kind);
+extern sb32 mvOpeningNewcomersCheckLocked(s32 fkind);
 extern void mvOpeningNewcomersMakePurin(void);
 extern void mvOpeningNewcomersMakeCaptain(void);
 extern void mvOpeningNewcomersMakeLuigi(void);

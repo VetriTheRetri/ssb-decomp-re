@@ -153,7 +153,7 @@ void mvOpeningStandoffMakeFighters(void)
     GObj* fighter_gobj;
     FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
-    ft_desc.ft_kind = nFTKindMario;
+    ft_desc.fkind = nFTKindMario;
     ft_desc.costume = ftParamGetCostumeCommonID(nFTKindMario, 0);
     ft_desc.pos.x = 0.0F;
     ft_desc.pos.y = 0.0F;
@@ -168,7 +168,7 @@ void mvOpeningStandoffMakeFighters(void)
     DObjGetStruct(fighter_gobj)->scale.vec.f.y = 1.0F;
     DObjGetStruct(fighter_gobj)->scale.vec.f.z = 1.0F;
 
-    ft_desc.ft_kind = nFTKindKirby;
+    ft_desc.fkind = nFTKindKirby;
     ft_desc.costume = ftParamGetCostumeCommonID(nFTKindKirby, 0);
     ft_desc.pos.x = 0.0F;
     ft_desc.pos.y = 0.0F;

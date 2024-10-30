@@ -130,9 +130,9 @@ void mvOpeningNewcomersFuncLights(Gfx **dls)
 }
 
 // 0x80131B58
-sb32 mvOpeningNewcomersCheckLocked(s32 ft_kind)
+sb32 mvOpeningNewcomersCheckLocked(s32 fkind)
 {
-    switch (ft_kind)
+    switch (fkind)
     {
     case nFTKindCaptain:
         return (sMVOpeningNewcomersCharacterMask & LBBACKUP_MASK_FIGHTER(nFTKindCaptain)) ? FALSE : TRUE;

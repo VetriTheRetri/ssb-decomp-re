@@ -204,13 +204,13 @@ void sc1PChallengerFighterProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x80131E3C
-void sc1PChallengerMakeFighter(s32 ft_kind)
+void sc1PChallengerMakeFighter(s32 fkind)
 {
     GObj *fighter_gobj;
     FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
-    ft_desc.ft_kind = ft_kind;
-    ft_desc.costume = ftParamGetCostumeCommonID(ft_kind, 0);
+    ft_desc.fkind = fkind;
+    ft_desc.costume = ftParamGetCostumeCommonID(fkind, 0);
     ft_desc.player = 0;
     ft_desc.figatree_heap = sSC1PChallengerFigatreeHeap;
     
@@ -222,9 +222,9 @@ void sc1PChallengerMakeFighter(s32 ft_kind)
     DObjGetStruct(fighter_gobj)->translate.vec.f.y = -550.0F;
     DObjGetStruct(fighter_gobj)->translate.vec.f.z = 0.0F;
     
-    DObjGetStruct(fighter_gobj)->scale.vec.f.x = dSCSubsysFighterScales[ft_kind];
-    DObjGetStruct(fighter_gobj)->scale.vec.f.y = dSCSubsysFighterScales[ft_kind];
-    DObjGetStruct(fighter_gobj)->scale.vec.f.z = dSCSubsysFighterScales[ft_kind];
+    DObjGetStruct(fighter_gobj)->scale.vec.f.x = dSCSubsysFighterScales[fkind];
+    DObjGetStruct(fighter_gobj)->scale.vec.f.y = dSCSubsysFighterScales[fkind];
+    DObjGetStruct(fighter_gobj)->scale.vec.f.z = dSCSubsysFighterScales[fkind];
     
     ftParamCheckSetFighterColAnimID(fighter_gobj, 0x50, 0);
 }
@@ -295,7 +295,7 @@ void sc1PChallengerMakeDecalsCamera(void)
 // 0x801320E0
 void sc1PChallengerInitVars(void)
 {
-    sSC1PChallengerFighterKind = gSceneData.challenger_ft_kind;
+    sSC1PChallengerFighterKind = gSceneData.challenger_fkind;
     
     sSC1PChallengerUnk0x80132490 = 0.0F;
     

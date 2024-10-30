@@ -156,7 +156,7 @@ void mvOpeningYamabukiMakeFighter(void)
     GObj* fighter_gobj;
     FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
-    ft_desc.ft_kind = nFTKindPikachu;
+    ft_desc.fkind = nFTKindPikachu;
     ft_desc.costume = ftParamGetCostumeCommonID(nFTKindPikachu, 0);
 
     ft_desc.pos.x = 0.0F;

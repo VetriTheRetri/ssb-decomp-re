@@ -48,7 +48,7 @@ void ftCommonShieldBreakFlyCommonSetStatus(GObj *fighter_gobj)
 
     gmCollisionGetFighterPartsWorldPosition(fp->joints[nFTPartsJointYRotN], &offset);
 
-    if (fp->ft_kind == nFTKindYoshi)
+    if (fp->fkind == nFTKindYoshi)
     {
         efManagerYoshiEggExplodeMakeEffect(&DObjGetStruct(fighter_gobj)->translate.vec.f);
         efManagerEggBreakMakeEffect(&DObjGetStruct(fighter_gobj)->translate.vec.f);

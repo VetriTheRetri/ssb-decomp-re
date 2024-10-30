@@ -121,7 +121,7 @@ void itMLuckyMakeEggInitItemVars(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    if (ip->it_kind == nITKindMLucky)
+    if (ip->kind == nITKindMLucky)
     {
         gcAddDObjAnimJoint(dobj->child, itGetPData(ip, lITLuckyDataStart, lITLuckyAnimJoint), 0.0F); // Linker thing
         gcPlayAnimAll(item_gobj);
@@ -207,7 +207,7 @@ void itMLuckyAppearSetStatus(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->it_kind == nITKindMLucky)
+    if (ip->kind == nITKindMLucky)
     {
         func_800269C0_275C0(nSYAudioVoiceMBallLuckyAppear);
     }

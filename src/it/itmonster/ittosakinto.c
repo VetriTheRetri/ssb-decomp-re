@@ -124,7 +124,7 @@ void itTosakintoAppearSetStatus(GObj *item_gobj)
 
     ip->multi = ITTOSAKINTO_LIFETIME;
 
-    if (ip->it_kind == nITKindTosakinto)
+    if (ip->kind == nITKindTosakinto)
     {
         func_800269C0_275C0(nSYAudioVoiceMBallTosakintoAppear);
     }
@@ -181,7 +181,7 @@ void itTosakintoBounceInitItemVars(GObj *item_gobj)
     ip->physics.vel_air.y = ITTOSAKINTO_FLAP_VEL_Y;
     ip->physics.vel_air.x = ITTOSAKINTO_FLAP_VEL_X;
 
-    if (ip->it_kind == nITKindTosakinto)
+    if (ip->kind == nITKindTosakinto)
     {
         anim_joint = itGetPData(ip, lITTosakintoDataStart, lITTosakintoAnimJoint); // Linker thing
 

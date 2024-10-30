@@ -47,7 +47,7 @@ typedef struct dbMenuPosition
 
 typedef struct dbFighter
 {
-	u8 ft_kind;
+	u8 fkind;
 	u8 costume_index;
 	GObj* fighter_gobj;
 

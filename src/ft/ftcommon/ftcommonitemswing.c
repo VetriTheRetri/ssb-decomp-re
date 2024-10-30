@@ -18,7 +18,7 @@ void ftCommonHarisenSwingProcHit(GObj *fighter_gobj)
     {
         ITStruct *ip = itGetStruct(fp->item_gobj);
 
-        if (ip->it_kind == nITKindHarisen)
+        if (ip->kind == nITKindHarisen)
         {
             itHarisenCommonSetScale(fp->item_gobj, FTCOMMON_HARISENSWING_SCALE_HIT);
 
@@ -119,7 +119,7 @@ void ftCommonItemSwingSetStatus(GObj *fighter_gobj, s32 swing_type)
     s32 status_id;
     f32 anim_speed;
 
-    switch (ip->it_kind)
+    switch (ip->kind)
     {
     case nITKindSword:
         swing_item = nFTItemSwingKindSword;

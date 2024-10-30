@@ -272,7 +272,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
     ip->item_gobj = item_gobj;
     ip->owner_gobj = NULL;
 
-    ip->it_kind = item_desc->it_kind;
+    ip->kind = item_desc->kind;
     ip->type = attr->type;
 
     ip->physics.vel_air = *vel;
@@ -524,7 +524,7 @@ void itManagerMakeRandomItem(GObj *item_gobj)
     }
 }
 
-// 0x8016EC40 - create item spawner GObj?
+// 0x8016EC40 - create item spawner GObj
 GObj* itManagerMakeItemSpawnActor(void)
 {
     GObj *gobj;
@@ -604,8 +604,8 @@ GObj* itManagerMakeItemSpawnActor(void)
                     }
                 }
                 gITManagerSpawnActor.weights.item_count = j;
-                gITManagerSpawnActor.weights.item_kinds = (u8*)syTaskmanMalloc(j * sizeof(*gITManagerSpawnActor.weights.item_kinds), 0x0);
-                gITManagerSpawnActor.weights.item_totals = (u16*)syTaskmanMalloc(j * sizeof(*gITManagerSpawnActor.weights.item_totals), 0x2);
+                gITManagerSpawnActor.weights.item_kinds = (u8*) syTaskmanMalloc(j * sizeof(*gITManagerSpawnActor.weights.item_kinds), 0x0);
+                gITManagerSpawnActor.weights.item_totals = (u16*) syTaskmanMalloc(j * sizeof(*gITManagerSpawnActor.weights.item_totals), 0x2);
 
                 item_id_toggles = gBattleState->item_toggles;
 
@@ -676,11 +676,10 @@ void itManagerSetupContainerDrops(void)
             j++;
 
             gITManagerRandomWeights.item_count = j;
-            gITManagerRandomWeights.item_kinds = (u8*)syTaskmanMalloc(j * sizeof(*gITManagerRandomWeights.item_kinds), 0x0);
-            gITManagerRandomWeights.item_totals = (u16*)syTaskmanMalloc(j * sizeof(*gITManagerRandomWeights.item_totals), 0x2);
+            gITManagerRandomWeights.item_kinds = (u8*) syTaskmanMalloc(j * sizeof(*gITManagerRandomWeights.item_kinds), 0x0);
+            gITManagerRandomWeights.item_totals = (u16*) syTaskmanMalloc(j * sizeof(*gITManagerRandomWeights.item_totals), 0x2);
 
             item_id_toggles = gBattleState->item_toggles >> nITKindUtilityStart;
-
             item_weights = 0;
 
             for (j = 0, i = nITKindUtilityStart; i <= nITKindUtilityEnd; i++, item_id_toggles >>= 1)
@@ -689,6 +688,7 @@ void itManagerSetupContainerDrops(void)
                 {
                     gITManagerRandomWeights.item_kinds[j] = i;
                     gITManagerRandomWeights.item_totals[j] = item_weights;
+
                     item_weights += item_weight_qty->item_quantities[i];
                     j++;
                 }
@@ -714,11 +714,11 @@ void itManagerSetupContainerDrops(void)
 void itManagerInitMonsterVars(void)
 {
     gITManagerMonsterData.monster_curr = gITManagerMonsterData.monster_prev = U8_MAX;
-    gITManagerMonsterData.monster_count = (nITKindMBallMonsterEnd - nITKindMBallMonsterStart);
+    gITManagerMonsterData.monsters_num = (nITKindMBallMonsterEnd - nITKindMBallMonsterStart);
 }
 
 // 0x8016F238
-GObj* itManagerMakeItemKind(GObj *parent_gobj, s32 index, Vec3f *pos, Vec3f *vel, u32 flags)
+GObj* itManagerMakeItemKind(GObj *parent_gobj, s32 kind, Vec3f *pos, Vec3f *vel, u32 flags)
 {
-    return dITManagerProcMakeList[index](parent_gobj, pos, vel, flags);
+    return dITManagerProcMakeList[kind](parent_gobj, pos, vel, flags);
 }

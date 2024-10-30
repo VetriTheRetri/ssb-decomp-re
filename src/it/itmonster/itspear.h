@@ -18,7 +18,7 @@ extern GObj* itSpearMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flag
 extern sb32 itSpearWeaponSwarmProcUpdate(GObj *weapon_gobj);
 extern void itPippiWeaponSwarmRenderSwarm(GObj *item_gobj);
 extern void itPippiWeaponSwarmFuncDisplay(GObj *item_gobj);
-extern GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 it_kind);
-extern void itSpearFlyMakeSwarm(GObj *item_gobj, Vec3f *pos, s32 it_kind);
+extern GObj* itSpearWeaponSwarmMakeWeapon(GObj *item_gobj, Vec3f *pos, s32 kind);
+extern void itSpearFlyMakeSwarm(GObj *item_gobj, Vec3f *pos, s32 kind);
 
 #endif

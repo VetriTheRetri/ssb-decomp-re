@@ -33,8 +33,8 @@ extern void sc1PContinueMakeScoreDigits
     sb32 is_fixed_digit_count
 );
 extern void sc1PContinueMakeScoreDisplay(s32 points);
-extern void sc1PContinueSetFighterScale(GObj *gobj, s32 ft_kind);
-extern void sc1PContinueMakeFighter(s32 ft_kind);
+extern void sc1PContinueSetFighterScale(GObj *gobj, s32 fkind);
+extern void sc1PContinueMakeFighter(s32 fkind);
 extern void sc1PContinueRoomFadeOutFuncDisplay(GObj *gobj);
 extern void sc1PContinueMakeRoomFadeOut(void);
 extern void sc1PContinueRoomFadeInFuncDisplay(GObj *gobj);

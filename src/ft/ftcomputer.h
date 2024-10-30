@@ -7,7 +7,7 @@
 #include <wp/wpdef.h>
 
 extern WPStruct* ftComputerGetOwnWeapon(FTStruct *fp);
-extern Vec3f* ftComputerGetOwnWeaponPositionKind(FTStruct *fp, s32 wp_kind);
+extern Vec3f* ftComputerGetOwnWeaponPositionKind(FTStruct *fp, s32 kind);
 extern void ftComputerSetControlPKThunder(FTStruct *fp);
 extern void ftComputerUpdateInputs(FTStruct *this_fp);
 extern void ftComputerSetCommandWaitShort(FTStruct *fp, s32 index);

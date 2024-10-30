@@ -350,7 +350,7 @@ extern GObj* efManagerDonkeyEntryTaruMakeEffect(Vec3f *pos);
 extern GObj* efManagerSamusEntryPointMakeEffect(Vec3f *pos);
 extern void efManagerCaptainEntryCarProcUpdate(GObj *effect_gobj);
 extern GObj* efManagerCaptainEntryCarMakeEffect(Vec3f *pos, s32 lr);
-extern GObj* efManagerMarioEntryDokanMakeEffect(Vec3f *pos, s32 ft_kind);
+extern GObj* efManagerMarioEntryDokanMakeEffect(Vec3f *pos, s32 fkind);
 extern void efManagerFoxEntryArwingProcUpdate(GObj *effect_gobj);
 extern GObj* efManagerFoxEntryArwingMakeEffect(Vec3f *pos, s32 lr);
 extern void func_ovl2_80103918(f32 arg0, f32 arg1, s32 arg2);

@@ -167,7 +167,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
     Vec3f dmg_coll_size;
     FTAttributes *attr;
     FTMotionDamageScript *p_damage;
-    s32 ft_kind;
+    s32 fkind;
     s32 script_id;
     s32 slope_contour;
     sb32 unused3;
@@ -192,7 +192,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
 
     case nFTMotionEventKindMakeHit:
     case nFTMotionEventKindMakeHitScaleOffset:
-        if (fp->pl_kind != nFTPlayerKindDemo)
+        if (fp->pkind != nFTPlayerKindDemo)
         {
             atk_id = ftMotionEventCast(ms, FTMotionEventMakeHit1)->atk_id;
             atk_coll = &fp->atk_colls[atk_id];
@@ -282,7 +282,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         break;
 
     case nFTMotionEventKindSetHitDamage:
-        if (fp->pl_kind != nFTPlayerKindDemo)
+        if (fp->pkind != nFTPlayerKindDemo)
         {
             atk_id = ftMotionEventCast(ms, FTMotionEventSetHitDamage)->atk_id;
 
@@ -525,19 +525,19 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
     case nFTMotionEventKindSetDamageThrown:
         if (fp->throw_gobj != NULL)
         {
-            ft_kind = fp->throw_ft_kind;
+            fkind = fp->throw_fkind;
 
             ftMotionEventAdvance(ms, FTMotionEventSetDamageThrown1);
 
             p_damage = ftMotionEventCast(ms, FTMotionEventSetDamageThrown2)->p_subroutine;
 
-            if (p_damage->p_script[fp->status_vars.common.damage.script_id][ft_kind] != NULL)
+            if (p_damage->p_script[fp->status_vars.common.damage.script_id][fkind] != NULL)
             {
                 ms->p_goto[ms->script_id] = (void*) ((uintptr_t)ms->p_script + sizeof(FTMotionEventSetDamageThrown2));
 
                 ms->script_id++;
 
-                ms->p_script = p_damage->p_script[fp->status_vars.common.damage.script_id][ft_kind];
+                ms->p_script = p_damage->p_script[fp->status_vars.common.damage.script_id][fkind];
             }
             else ftMotionEventAdvance(ms, FTMotionEventSetDamageThrown2);
         }
@@ -671,7 +671,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         break;
 
     case nFTMotionEventKindMakeRumble:
-        if (fp->pl_kind != nFTPlayerKindDemo)
+        if (fp->pkind != nFTPlayerKindDemo)
         {
             ftParamMakeRumble
             (
@@ -684,7 +684,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         break;
 
     case nFTMotionEventKindStopRumble:
-        if (fp->pl_kind != nFTPlayerKindDemo)
+        if (fp->pkind != nFTPlayerKindDemo)
         {
             gmRumbleSetRumbleID(fp->player, ftMotionEventCast(ms, FTMotionEventStopRumble)->rumble_id);
         }
@@ -1216,7 +1216,7 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
         this_fp->input.pl.stick_prev.x = this_fp->input.pl.stick_range.x;
         this_fp->input.pl.stick_prev.y = this_fp->input.pl.stick_range.y;
 
-        switch (this_fp->pl_kind)
+        switch (this_fp->pkind)
         {
         default:
             pl = &this_fp->input.pl;
@@ -1452,7 +1452,7 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
             ftParamResetStatUpdateColAnim(fighter_gobj);
         }
     }
-    if ((this_fp->item_gobj != NULL) && (this_fp->status_id != nFTCommonStatusLightGet) && (itGetStruct(this_fp->item_gobj)->it_kind == nITKindHammer))
+    if ((this_fp->item_gobj != NULL) && (this_fp->status_id != nFTCommonStatusLightGet) && (itGetStruct(this_fp->item_gobj)->kind == nITKindHammer))
     {
         ftHammerUpdateStats(fighter_gobj);
     }
@@ -1794,7 +1794,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
 
     ftCommonDeadCheckInterruptCommon(fighter_gobj);
 
-    if ((fp->coll_data.pos_current.y >= gMPCollisionGroundData->alt_warning) && (topn_translate->y < gMPCollisionGroundData->alt_warning) && (fp->ft_kind != nFTKindBoss))
+    if ((fp->coll_data.pos_current.y >= gMPCollisionGroundData->alt_warning) && (topn_translate->y < gMPCollisionGroundData->alt_warning) && (fp->fkind != nFTKindBoss))
     {
         func_800269C0_275C0(nSYAudioFGMAltitudeWarn);
     }
@@ -1815,7 +1815,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
 
         fp->proc_map(fighter_gobj);
 
-        if (fp->ft_kind == nFTKindKirby)
+        if (fp->fkind == nFTKindKirby)
         {
             ftParamKirbyTryMakeMapStarEffect(fighter_gobj);
         }
@@ -2473,7 +2473,7 @@ void ftMainUpdateDamageStatItem(ITStruct *ip, ITAttackColl *it_atk_coll, s32 atk
 
     if (ip->type == nITTypeTouch)
     {
-        switch (ip->it_kind)
+        switch (ip->kind)
         {
         case nITKindStar:
             it_atk_coll->atk_state = nGMAttackStateOff;
@@ -2826,7 +2826,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
 
         this_fp->damage_player_number = hitlog->attacker_player_number;
 
-        ftParamUpdate1PGameDamageStats(this_fp, hitlog->attacker_player, hitlog->attacker_object_class, attacker_fp->ft_kind, attacker_fp->stat_flags.halfword & ~0x400, attacker_fp->stat_count);
+        ftParamUpdate1PGameDamageStats(this_fp, hitlog->attacker_player, hitlog->attacker_object_class, attacker_fp->fkind, attacker_fp->stat_flags.halfword & ~0x400, attacker_fp->stat_count);
 
         this_fp->damage_joint_id = hitlog->victim_hurt->joint_id;
         this_fp->damage_index = hitlog->victim_hurt->placement;
@@ -2857,13 +2857,13 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
         {
             this_fp->damage_player_number = 0;
 
-            ftParamUpdate1PGameDamageStats(this_fp, GMCOMMON_PLAYERS_MAX, hitlog->attacker_object_class, wp->wp_kind, 0, 0);
+            ftParamUpdate1PGameDamageStats(this_fp, GMCOMMON_PLAYERS_MAX, hitlog->attacker_object_class, wp->kind, 0, 0);
         }
         else
         {
             this_fp->damage_player_number = hitlog->attacker_player_number;
 
-            ftParamUpdate1PGameDamageStats(this_fp, hitlog->attacker_player, hitlog->attacker_object_class, wp->wp_kind, wp_atk_coll->stat_flags.halfword, wp_atk_coll->stat_count);
+            ftParamUpdate1PGameDamageStats(this_fp, hitlog->attacker_player, hitlog->attacker_object_class, wp->kind, wp_atk_coll->stat_flags.halfword, wp_atk_coll->stat_count);
         }
         this_fp->damage_joint_id = hitlog->victim_hurt->joint_id;
         this_fp->damage_index = hitlog->victim_hurt->placement;
@@ -2893,12 +2893,12 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
         {
             this_fp->damage_player_number = 0;
 
-            ftParamUpdate1PGameDamageStats(this_fp, GMCOMMON_PLAYERS_MAX, hitlog->attacker_object_class, ip->it_kind, 0, 0);
+            ftParamUpdate1PGameDamageStats(this_fp, GMCOMMON_PLAYERS_MAX, hitlog->attacker_object_class, ip->kind, 0, 0);
         }
         else
         {
             this_fp->damage_player_number = hitlog->attacker_player_number;
-            ftParamUpdate1PGameDamageStats(this_fp, hitlog->attacker_player, hitlog->attacker_object_class, ip->it_kind, it_atk_coll->stat_flags.halfword, it_atk_coll->stat_count);
+            ftParamUpdate1PGameDamageStats(this_fp, hitlog->attacker_player, hitlog->attacker_object_class, ip->kind, it_atk_coll->stat_flags.halfword, it_atk_coll->stat_count);
         }
         this_fp->damage_joint_id = hitlog->victim_hurt->joint_id;
         this_fp->damage_index = hitlog->victim_hurt->placement;
@@ -3665,7 +3665,7 @@ void ftMainSearchFighterCatch(GObj *this_gobj)
         {
             goto next_gobj;
         }
-        if (other_fp->ft_kind == nFTKindBoss)
+        if (other_fp->fkind == nFTKindBoss)
         {
             goto next_gobj;
         }
@@ -3809,7 +3809,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
 
     if (fp->shield_health <= 0)
     {
-        fp->shield_health = (fp->ft_kind == nFTKindYoshi) ? 30 : 30;
+        fp->shield_health = (fp->fkind == nFTKindYoshi) ? 30 : 30;
 
         is_shieldbreak = TRUE;
     }
@@ -3841,7 +3841,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
         {
             fp->proc_trap(fighter_gobj);
         }
-        if (fp->ft_kind != nFTKindBoss)
+        if (fp->fkind != nFTKindBoss)
         {
             switch (fp->damage_kind)
             {
@@ -3982,7 +3982,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
         switch (fp->afterimage.is_itemswing)
         {
         case FALSE:
-            if ((fp->ft_kind == nFTKindLink) && (fp->modelpart_status[11 - nFTPartsJointCommonStart].modelpart_id_current == 0))
+            if ((fp->fkind == nFTKindLink) && (fp->modelpart_status[11 - nFTPartsJointCommonStart].modelpart_id_current == 0))
             {
                 FTParts *ft_parts = fp->joints[11]->user_data.p;
 
@@ -4009,7 +4009,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
             break;
 
         case TRUE:
-            if ((fp->item_gobj != NULL) && (fp->is_show_item) && (itGetStruct(fp->item_gobj)->it_kind == nITKindSword))
+            if ((fp->item_gobj != NULL) && (fp->is_show_item) && (itGetStruct(fp->item_gobj)->kind == nITKindSword))
             {
                 s32 unused;
                 Mtx44f mtx;
@@ -4425,7 +4425,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     fp->is_playertag_hide = FALSE;
     fp->is_playing_effect = FALSE; // Not sure exactly what this is, but it prevents certain ColAnim events from running if true?
 
-    if (fp->pl_kind != nFTPlayerKindDemo)
+    if (fp->pkind != nFTPlayerKindDemo)
     {
         gmRumbleSetRumbleID(fp->player, 2);
         gmRumbleSetRumbleID(fp->player, 3);
@@ -4501,7 +4501,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     {
         fp->attack1_followup_frames = 0.0F;
     }
-    if ((fp->pl_kind != nFTPlayerKindDemo) && (fp->dl_link != FTRENDER_DLLINK_DEFAULT))
+    if ((fp->pkind != nFTPlayerKindDemo) && (fp->dl_link != FTRENDER_DLLINK_DEFAULT))
     {
         ftParamMoveDLLink(fighter_gobj, 9);
     }
@@ -4513,7 +4513,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     }
     if (status_id >= FTSTAT_OPENING1_START) // Check if Opening status ID 1
     {
-        opening_struct = D_ovl1_80390D20[fp->ft_kind];
+        opening_struct = D_ovl1_80390D20[fp->fkind];
         status_struct_id = status_id - FTSTAT_OPENING1_START;
     }
     else if (status_id >= FTSTAT_OPENING2_START) // Check if Opening status ID 2
@@ -4523,7 +4523,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     }
     else if (status_id >= nFTCommonStatusSpecialStart)
     {
-        status_struct = dFTMainSpecialStatusDescs[fp->ft_kind];
+        status_struct = dFTMainSpecialStatusDescs[fp->fkind];
         status_struct_id = status_id - nFTCommonStatusSpecialStart;
     }
     else if (status_id >= nFTCommonStatusActionStart)
@@ -4538,7 +4538,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     }
     status_desc = &status_struct[status_struct_id];
 
-    if (fp->pl_kind != nFTPlayerKindDemo)
+    if (fp->pkind != nFTPlayerKindDemo)
     {
         if ((status_struct[status_struct_id].mflags.motion_attack_id == nFTMotionAttackIDNone) || (status_struct[status_struct_id].mflags.motion_attack_id != fp->attack_id))
         {
@@ -4757,7 +4757,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     {
         fp->motion_script[0][i].p_script = fp->motion_script[1][i].p_script = NULL;
     }
-    if (fp->pl_kind != nFTPlayerKindDemo)
+    if (fp->pkind != nFTPlayerKindDemo)
     {
         fp->proc_update = status_struct[status_struct_id].proc_update;
         fp->proc_interrupt = status_struct[status_struct_id].proc_interrupt;

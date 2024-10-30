@@ -798,7 +798,7 @@ void scBonusGame_InitBonusGame()
 	func_ovl6_8018ED70();
 	func_ovl6_8018D330();
 	gcMakeDefaultCameraGObj(9, 0x80000000U, 0x64, 1, 0xFF);
-	efAllocInitParticleBank();
+	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);

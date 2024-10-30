@@ -538,7 +538,7 @@ void mvEndingFuncStart(void)
     );
     gcMakeGObjSPAfter(0, mvEndingFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF));
-    efAllocInitParticleBank();
+    efParticleInitAll();
     mvEndingInitVars();
     efManagerInitEffects();
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);

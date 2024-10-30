@@ -424,7 +424,7 @@ void mvOpeningPikachuInit()
 	gcMakeGObjSPAfter(0x3F7, mvOpeningPikachuMainProc, 0xD, 0x80000000);
 	gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 3, 0xFF);
 	mvOpeningPikachuInitFramesElapsed();
-	efAllocInitParticleBank();
+	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);

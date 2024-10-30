@@ -217,15 +217,15 @@ void grPupupuWhispyLeavesMakeEffect(void)
     LBTransform *tfrm;
 
     tfrm = NULL;
-    ptcl = LBParticleMakeScriptID(gGRCommonStruct.pupupu.particle_bank_id | 8, 0);
+    ptcl = lbParticleMakeScriptID(gGRCommonStruct.pupupu.particle_bank_id | 8, 0);
 
     if (ptcl != NULL)
     {
-        tfrm = LBParticleAddTransformForStruct(ptcl, 1);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm == NULL)
         {
-            LBParticleEjectStruct(ptcl);
+            lbParticleEjectStruct(ptcl);
         }
         else
         {
@@ -331,7 +331,7 @@ void grPupupuWhispyUpdateBlow(void)
 
         if (gGRCommonStruct.pupupu.leaves_tfrm != NULL)
         {
-            LBParticleEjectStructID(gGRCommonStruct.pupupu.leaves_tfrm->generator_id, 1);
+            lbParticleEjectStructID(gGRCommonStruct.pupupu.leaves_tfrm->generator_id, 1);
         }
     }
     grPupupuWhispyUpdateWindRumble();
@@ -476,15 +476,15 @@ void grPupupuWhispyDustMakeEffect(void)
     LBTransform *tfrm;
 
     tfrm = NULL;
-    ptcl = LBParticleMakeScriptID(gGRCommonStruct.pupupu.particle_bank_id | 8, 1);
+    ptcl = lbParticleMakeScriptID(gGRCommonStruct.pupupu.particle_bank_id | 8, 1);
 
     if (ptcl != NULL)
     {
-        tfrm = LBParticleAddTransformForStruct(ptcl, 1);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 1);
 
         if (tfrm == NULL)
         {
-            LBParticleEjectStruct(ptcl);
+            lbParticleEjectStruct(ptcl);
         }
         else
         {
@@ -531,7 +531,7 @@ void grPupupuFlowersFrontLoopEnd(void)
 
         if (gGRCommonStruct.pupupu.dust_tfrm != NULL)
         {
-            LBParticleEjectStructID(gGRCommonStruct.pupupu.dust_tfrm->generator_id, 1);
+            lbParticleEjectStructID(gGRCommonStruct.pupupu.dust_tfrm->generator_id, 1);
         }
     }
     else grPupupuWhispySetWindPush();
@@ -688,7 +688,7 @@ void grPupupuInitAll(void)
     gGRCommonStruct.pupupu.flowers_back_wait    = 15;
     gGRCommonStruct.pupupu.flowers_front_wait   = 22;
 
-    gGRCommonStruct.pupupu.particle_bank_id = efAllocGetAddParticleBankID(&lGRPupupuParticleBankScriptsLo, &lGRPupupuParticleBankScriptsHi, &lGRPupupuParticleBankTexturesLo, &lGRPupupuParticleBankTexturesHi);
+    gGRCommonStruct.pupupu.particle_bank_id = efParticleGetLoadBankID(&lGRPupupuParticleBankScriptsLo, &lGRPupupuParticleBankScriptsHi, &lGRPupupuParticleBankTexturesLo, &lGRPupupuParticleBankTexturesHi);
 }
 
 // 0x801066D4

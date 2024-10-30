@@ -7,16 +7,16 @@
 // // // // // // // // // // // //
 
 // 0x80131A10
-GObj *D_ovl2_80131A10;
+GObj *gEFParticleStructsHead;
 
 // 0x80131A14
-GObj *D_ovl2_80131A14;
+GObj *gEFParticleGeneratorsHead;
 
 // 0x80131A18
-s32 sEFAllocParticleBanksNum;
+s32 sEFParticleBanksNum;
 
 // 0x80131A20 - Particle script banks that have already been loaded
-uintptr_t sEFAllocParticleScriptBanks[7];
+uintptr_t sEFParticleScriptBanks[7];
 
 // // // // // // // // // // // //
 //                               //
@@ -25,51 +25,47 @@ uintptr_t sEFAllocParticleScriptBanks[7];
 // // // // // // // // // // // //
 
 // 0x80115890
-void efAllocInitParticleBank(void)
+void efParticleInitAll(void)
 {
-    D_ovl2_80131A10 = LBParticleAllocStructs(0x70);
-    D_ovl2_80131A14 = LBParticleAllocGenerators(0x18);
-    LBParticleAllocTransforms(0x50, 0xC0);
-    sEFAllocParticleBanksNum = 0;
+    gEFParticleStructsHead = lbParticleAllocStructs(112);
+    gEFParticleGeneratorsHead = lbParticleAllocGenerators(24);
+    
+    lbParticleAllocTransforms(80, sizeof(LBTransform));
+    sEFParticleBanksNum = 0;
 }
 
-// 0x801158D8 - Unused?
-void func_ovl2_801158D8(u32 lshift)
+// 0x801158D8
+void efParticleHeadSetSkipID(u32 id)
 {
-    D_ovl2_80131A10->flags |= (0x10000 << lshift);
-
-    D_ovl2_80131A14->flags = D_ovl2_80131A10->flags;
+    gEFParticleGeneratorsHead->flags = gEFParticleStructsHead->flags |= (0x10000 << id);
 }
 
 // 0x80115910
-void func_ovl2_80115910(void)
+void efParticleHeadSetSkipAll(void)
 {
-    D_ovl2_80131A10->flags |= ~0xFFFF;
-    D_ovl2_80131A14->flags = D_ovl2_80131A10->flags;
+    gEFParticleGeneratorsHead->flags = gEFParticleStructsHead->flags |= ~0xFFFF;
 }
 
 // 0x80115944
-void func_ovl2_80115944(u32 lshift)
+void efParticleHeadClearSkipID(u32 id)
 {
-    D_ovl2_80131A10->flags &= ~(0x10000 << lshift);
-    D_ovl2_80131A14->flags = D_ovl2_80131A10->flags;
+    gEFParticleGeneratorsHead->flags = gEFParticleStructsHead->flags &= ~(0x10000 << id);
 }
 
 // 0x80115980
-void func_ovl2_80115980(void)
+void efParticleHeadClearSkipAll(void)
 {
-    D_ovl2_80131A10->flags &= 0xFFFF;
-    D_ovl2_80131A14->flags = D_ovl2_80131A10->flags;
+    gEFParticleGeneratorsHead->flags = gEFParticleStructsHead->flags &= 0xFFFF;
 }
 
 // 0x801159B0
-s32 efAllocGetParticleBankID(uintptr_t scripts_lo)
+s32 efParticleGetBankID(uintptr_t scripts_lo)
 {
     s32 i;
 
-    for (i = 0; i < sEFAllocParticleBanksNum; i++)
+    for (i = 0; i < sEFParticleBanksNum; i++)
     {
-        if (scripts_lo == sEFAllocParticleScriptBanks[i])
+        if (scripts_lo == sEFParticleScriptBanks[i])
         {
             return i;
         }
@@ -78,13 +74,13 @@ s32 efAllocGetParticleBankID(uintptr_t scripts_lo)
 }
 
 // 0x801159F8
-s32 efAllocGetAddParticleBankID(uintptr_t scripts_lo, uintptr_t scripts_hi, uintptr_t textures_lo, uintptr_t textures_hi)
+s32 efParticleGetLoadBankID(uintptr_t scripts_lo, uintptr_t scripts_hi, uintptr_t textures_lo, uintptr_t textures_hi)
 {
     void *script_desc, *texture_desc;
     size_t script_size, texture_size;
     s32 bank_id;
 
-    if (sEFAllocParticleBanksNum > ARRAY_COUNT(sEFAllocParticleScriptBanks))
+    if (sEFParticleBanksNum > ARRAY_COUNT(sEFParticleScriptBanks))
     {
         while (TRUE)
         {
@@ -92,7 +88,7 @@ s32 efAllocGetAddParticleBankID(uintptr_t scripts_lo, uintptr_t scripts_hi, uint
             scManagerRunPrintGObjStatus();
         }
     }
-    bank_id = efAllocGetParticleBankID(scripts_lo);
+    bank_id = efParticleGetBankID(scripts_lo);
 
     if (bank_id != -1)
     {
@@ -101,7 +97,7 @@ s32 efAllocGetAddParticleBankID(uintptr_t scripts_lo, uintptr_t scripts_hi, uint
     script_size = scripts_hi - scripts_lo;
     texture_size = textures_hi - textures_lo;
 
-    bank_id = sEFAllocParticleBanksNum;
+    bank_id = sEFParticleBanksNum;
 
     script_desc = syTaskmanMalloc(script_size, 0x8);
     texture_desc = syTaskmanMalloc(texture_size, 0x8);
@@ -109,9 +105,9 @@ s32 efAllocGetAddParticleBankID(uintptr_t scripts_lo, uintptr_t scripts_hi, uint
     syDmaReadRom(scripts_lo, script_desc, script_size);
     syDmaReadRom(textures_lo, texture_desc, texture_size);
 
-    LBParticleSetupBankID(sEFAllocParticleBanksNum++, script_desc, texture_desc);
+    lbParticleSetupBankID(sEFParticleBanksNum++, script_desc, texture_desc);
 
-    sEFAllocParticleScriptBanks[bank_id] = scripts_lo;
+    sEFParticleScriptBanks[bank_id] = scripts_lo;
 
     return bank_id;
 }

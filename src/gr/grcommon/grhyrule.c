@@ -29,15 +29,15 @@ enum grHyruleTwisterStatus
 // 0x8010A140
 LBParticle* grHyruleTwisterMakeEffect(Vec3f *pos, s32 effect_id)
 {
-    LBParticle *ptcl = LBParticleMakeScriptID(gGRCommonStruct.hyrule.particle_bank_id | 8, effect_id);
+    LBParticle *ptcl = lbParticleMakeScriptID(gGRCommonStruct.hyrule.particle_bank_id | 8, effect_id);
 
     if (ptcl != NULL)
     {
-        LBTransform *tfrm = LBParticleAddTransformForStruct(ptcl, 0);
+        LBTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 0);
 
         if (tfrm == NULL)
         {
-            LBParticleEjectStruct(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             return NULL;
         }
@@ -342,7 +342,7 @@ void grHyruleTwisterUpdateSubside(void)
 
         if (gGRCommonStruct.hyrule.twister_tfrm != NULL)
         {
-            LBParticleEjectStructID(gGRCommonStruct.hyrule.twister_tfrm->generator_id, 1);
+            lbParticleEjectStructID(gGRCommonStruct.hyrule.twister_tfrm->generator_id, 1);
         }
     }
 }
@@ -409,7 +409,7 @@ void grHyruleTwisterInitVars(void)
     }
 
     gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusSleep;
-    gGRCommonStruct.hyrule.particle_bank_id = efAllocGetAddParticleBankID((intptr_t)&lGRHyruleParticleBankScriptsLo, (intptr_t)&lGRHyruleParticleBankScriptsHi, (intptr_t)&lGRHyruleParticleBankTexturesLo, (intptr_t)&lGRHyruleParticleBankTexturesHi);
+    gGRCommonStruct.hyrule.particle_bank_id = efParticleGetLoadBankID((intptr_t)&lGRHyruleParticleBankScriptsLo, (intptr_t)&lGRHyruleParticleBankScriptsHi, (intptr_t)&lGRHyruleParticleBankTexturesLo, (intptr_t)&lGRHyruleParticleBankTexturesHi);
 }
 
 // 0x8010AB20

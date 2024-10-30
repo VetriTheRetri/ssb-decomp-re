@@ -21,8 +21,8 @@ extern intptr_t D_NF_00000057;                              // 0x00000057
 
 extern syMallocRegion gSYTaskmanGeneralHeap;
 
-extern GObj *D_ovl2_80131A10; // I don't think these belong in this file
-extern GObj *D_ovl2_80131A14;
+extern GObj *gEFParticleStructsHead; // I don't think these belong in this file
+extern GObj *gEFParticleGeneratorsHead;
 
 // // // // // // // // // // // //
 //                               //
@@ -2612,11 +2612,11 @@ void ifCommonBattleInterfaceProcUpdate(void)
     gcApplyByLink(8, func_ovl2_8011366C, 0);
     gcApplyByLink(0xB, func_ovl2_8011366C, 0);
     gmRumbleResumeProcessAll();
-    func_ovl2_8011366C(D_ovl2_80131A10, 0);
-    func_ovl2_8011366C(D_ovl2_80131A14, 0);
-    func_ovl2_80115910();
-    func_ovl2_80115944(2);
-    func_ovl2_80115944(3);
+    func_ovl2_8011366C(gEFParticleStructsHead, 0);
+    func_ovl2_8011366C(gEFParticleGeneratorsHead, 0);
+    efParticleHeadSetSkipAll();
+    efParticleHeadClearSkipID(2);
+    efParticleHeadClearSkipID(3);
     func_800266A0_272A0();
     ifCommonBattleEndPlaySoundQueue();
 }

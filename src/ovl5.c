@@ -101,7 +101,7 @@ void func_ovl5_8018D1A0()
 	func_ovl5_8018D0C0();
 	gcMakeGObjSPAfter(0x3F7U, func_ovl5_8018D160, 0xDU, GOBJ_LINKORDER_DEFAULT);
 	gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 1, 0xFF);
-	efAllocInitParticleBank();
+	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);

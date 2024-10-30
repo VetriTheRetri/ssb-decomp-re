@@ -51,7 +51,7 @@ enum grYosterCloudStatus
 // 0x80108550
 LBGenerator* grYosterCloudVaporMakeEffect(Vec3f *pos)
 {
-    LBGenerator *gtor = LBParticleMakeGenerator(gGRCommonStruct.yoster.particle_bank_id, 0);
+    LBGenerator *gtor = lbParticleMakeGenerator(gGRCommonStruct.yoster.particle_bank_id, 0);
 
     if (gtor != NULL)
     {
@@ -269,7 +269,7 @@ void grYosterInitAll(void)
 
         mpCollisionSetYakumonoOnID(dGRYosterCloudLineIDs[i]);
     }
-    gGRCommonStruct.yoster.particle_bank_id = efAllocGetAddParticleBankID(&lGRYosterParticleBankScriptsLo, &lGRYosterParticleBankScriptsHi, &lGRYosterParticleBankTexturesLo, &lGRYosterParticleBankTexturesHi);
+    gGRCommonStruct.yoster.particle_bank_id = efParticleGetLoadBankID(&lGRYosterParticleBankScriptsLo, &lGRYosterParticleBankScriptsHi, &lGRYosterParticleBankTexturesLo, &lGRYosterParticleBankTexturesHi);
 }
 
 // 0x80108C80

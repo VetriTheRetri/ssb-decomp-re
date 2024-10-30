@@ -1492,7 +1492,7 @@ void scTrainingMode_InitTrainingMode()
 	scTrainingMode_LoadFiles();
 	scTrainingMode_LoadSprites();
 	gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 1, 0xFF);
-	efAllocInitParticleBank();
+	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);

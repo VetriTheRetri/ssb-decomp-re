@@ -418,7 +418,7 @@ void mvOpeningJungleFuncStart(void)
     mvOpeningJungleSetupFiles();
     gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningJungleFuncRun, 13, GOBJ_LINKORDER_DEFAULT);
     gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 3, 0xFF);
-    efAllocInitParticleBank();
+    efParticleInitAll();
     ftParamInitGame();
     mpCollisionInitGroundData();
     cmManagerSetViewportDimensions(10, 10, 310, 230);

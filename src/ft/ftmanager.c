@@ -331,7 +331,7 @@ void ftManagerSetupFilesMainKind(s32 fkind)
 
     if (ft_data->particles_script_lo != 0)
     {
-        *ft_data->p_particle = efAllocGetAddParticleBankID
+        *ft_data->p_particle = efParticleGetLoadBankID
         (
             ft_data->particles_script_lo, 
             ft_data->particles_script_hi, 
@@ -378,7 +378,7 @@ void ftManagerSetupFilesKind(s32 fkind)
     }
     if (ft_data->particles_script_lo != 0)
     {
-        *ft_data->p_particle = efAllocGetParticleBankID(ft_data->particles_script_lo);
+        *ft_data->p_particle = efParticleGetBankID(ft_data->particles_script_lo);
     }
 }
 

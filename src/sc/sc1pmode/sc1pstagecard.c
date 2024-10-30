@@ -1944,7 +1944,7 @@ void sc1PStageCardFuncStart(void)
     gcMakeGObjSPAfter(0, sc1PStageCardFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     sc1PStageCardInitVars();
-    efAllocInitParticleBank();
+    efParticleInitAll();
     efManagerInitEffects();
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, sc1PStageCardGetFighterAllocsNum(sSC1PStageCardStage));
     sc1PStageCardSetupFighterFiles(sSC1PStageCardStage);

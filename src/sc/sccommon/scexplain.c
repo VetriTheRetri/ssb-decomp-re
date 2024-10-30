@@ -718,7 +718,7 @@ void scExplainFuncStart(void)
     scExplainLoadExplainFiles();
     cmManagerSetViewportDimensions(10, 10, 310, 160);
     func_ovl63_8018D248();
-    efAllocInitParticleBank();
+    efParticleInitAll();
     ftParamInitGame();
     mpCollisionInitGroundData();
     cmManagerMakeWallpaperCamera();

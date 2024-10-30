@@ -2951,7 +2951,7 @@ void mnResultsInit()
 
 	gcMakeGObjSPAfter(0, mnResultsMain, 0, 0x80000000U);
 	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
-	efAllocInitParticleBank();
+	efParticleInitAll();
 	efManagerInitEffects();
 	ftManagerAllocFighter(1, 4);
 

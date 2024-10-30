@@ -1124,7 +1124,7 @@ void mvOpeningFirstDestinationInit()
 
 	gcMakeGObjSPAfter(0, mvOpeningFirstDestinationMainProc, 0, 0x80000000);
 	gMVOpeningFirstDestinationCameraGObj = gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
-	efAllocInitParticleBank();
+	efParticleInitAll();
 	mvOpeningFirstDestinationInitGlobals();
 	efManagerInitEffects();
 	ftManagerAllocFighter(1, 3);

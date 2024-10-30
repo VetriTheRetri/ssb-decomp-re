@@ -369,7 +369,7 @@ void sc1PChallengerFuncStart(void)
     gcMakeGObjSPAfter(0, sc1PChallengerFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
     gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     sc1PChallengerInitVars();
-    efAllocInitParticleBank();
+    efParticleInitAll();
     efManagerInitEffects();
     ftManagerAllocFighter(FTDATA_FLAG_SUBMOTION, 1);
     ftManagerSetupFilesAllKind(sSC1PChallengerFighterKind);

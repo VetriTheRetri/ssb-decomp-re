@@ -513,7 +513,7 @@ void mvOpeningKirbyFuncStart(void)
 	gcMakeDefaultCameraGObj(9, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	mvOpeningKirbyInitVars();
-	efAllocInitParticleBank();
+	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();
 	cmManagerSetViewportDimensions(10, 10, 310, 230);

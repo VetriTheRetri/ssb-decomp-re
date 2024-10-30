@@ -4234,7 +4234,7 @@ void mnBattleInitCSS()
 
 	gcMakeDefaultCameraGObj(0x10, 0x80000000U, 0x64, 1, 0);
 
-	efAllocInitParticleBank();
+	efParticleInitAll();
 	efManagerInitEffects();
 	mnSyncControllerOrderArray();
 	mnBattleLoadMatchInfo();

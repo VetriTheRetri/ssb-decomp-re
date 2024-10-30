@@ -1396,7 +1396,7 @@ void mnTitleMakeLogoFire(void)
 
 	gobj->cobj_mask = COBJ_MASK_DLLINK(0);
 
-	sMNTitleParticleBankID = efAllocGetAddParticleBankID(&lMNTitleScreenParticleBankScriptsLo, &lMNTitleScreenParticleBankScriptsHi, &lMNTitleScreenParticleBankTexturesLo, &lMNTitleScreenParticleBankTexturesHi);
+	sMNTitleParticleBankID = efParticleGetLoadBankID(&lMNTitleScreenParticleBankScriptsLo, &lMNTitleScreenParticleBankScriptsHi, &lMNTitleScreenParticleBankTexturesLo, &lMNTitleScreenParticleBankTexturesHi);
 }
 
 // 0x80133E68
@@ -1414,7 +1414,7 @@ void mnTitleMakeLogoFireParticles(void)
 		gcPlayAnimAll(logo_fire_effect_gobj);
 		gcAddGObjProcess(logo_fire_effect_gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
 
-		gtor = LBParticleMakeGenerator(sMNTitleParticleBankID, 0);
+		gtor = lbParticleMakeGenerator(sMNTitleParticleBankID, 0);
 
 		if (gtor != NULL)
 		{
@@ -1441,7 +1441,7 @@ void mnTitleFuncStart(void)
 	}
 	mnTitleLoadFiles();
 	mnTitleMakeActors();
-	efAllocInitParticleBank();
+	efParticleInitAll();
 	mnTitleMakeLogoFire();
 	mnTitleMakeCameras();
 	mnTitleInitVars();

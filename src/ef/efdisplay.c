@@ -132,7 +132,7 @@ void efDisplayInitAll(void)
     gcAddGObjDisplay(gobj, efDisplayFuncDisplayZPerspAAXLU, 10, GOBJ_DLLINKORDER_DEFAULT, -1);
     gobj->cobj_mask = COBJ_MASK_DLLINK(4);
 
-    gEFManagerParticleBankID = efAllocGetAddParticleBankID
+    gEFManagerParticleBankID = efParticleGetLoadBankID
     (
         &lEFCommonParticleBankScriptsLo,
         &lEFCommonParticleBankScriptsHi,

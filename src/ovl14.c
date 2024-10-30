@@ -441,7 +441,7 @@ void dbBattleInit()
 	gcAddGObjProcess(main_gobj, dbBattleSyncCostumes, 1, 0);
 
 	gcMakeDefaultCameraGObj(0xF, 0x80000000, 0x64, 2, 0xFF);
-	efAllocInitParticleBank();
+	efParticleInitAll();
 	dbBattleCreateViewport(0);
 	efManagerInitEffects();
 	ftManagerAllocFighter(3, 4);

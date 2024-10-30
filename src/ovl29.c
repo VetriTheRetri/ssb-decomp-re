@@ -2500,7 +2500,7 @@ void mnBonusInitCSS()
 
 	gcMakeGObjSPAfter(0x400U, mnBonusMain, 0xFU, 0x80000000U);
 	gcMakeDefaultCameraGObj(0x10, 0x80000000U, 0x64, 1, 0);
-	efAllocInitParticleBank();
+	efParticleInitAll();
 	efManagerInitEffects();
 	ftManagerAllocFighter(1U, 1);
 

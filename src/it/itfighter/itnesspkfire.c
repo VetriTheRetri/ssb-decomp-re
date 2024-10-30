@@ -140,7 +140,7 @@ sb32 itNessPKFireCommonUpdateAllCheckDestroy(GObj *item_gobj)
 
         if (tfrm != NULL)
         {
-            LBParticleEjectStructID(tfrm->generator_id, 0);
+            lbParticleEjectStructID(tfrm->generator_id, 0);
         }
         return TRUE;
     }
@@ -284,11 +284,11 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
 
     ip->lifetime = ITPKFIRE_LIFETIME;
 
-    ptcl = LBParticleMakeScriptID(gFTNessParticleBankID, 0);
+    ptcl = lbParticleMakeScriptID(gFTNessParticleBankID, 0);
 
     if (ptcl != NULL)
     {
-        tfrm = LBParticleAddTransformForStruct(ptcl, 0);
+        tfrm = lbParticleAddTransformForStruct(ptcl, 0);
 
         if (tfrm != NULL)
         {
@@ -304,7 +304,7 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
         }
         else
         {
-            LBParticleEjectStruct(ptcl);
+            lbParticleEjectStruct(ptcl);
 
             ip->item_vars.pkfire.tfrm = NULL;
         }

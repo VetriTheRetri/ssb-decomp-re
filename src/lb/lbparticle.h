@@ -9,14 +9,14 @@ extern u16 gLBParticleStructsUsedNum;
 extern u16 gLBParticleGeneratorsUsedNum;
 extern u16 gLBParticleTransformsUsedNum;
 
-extern s32 LBParticleAllocTransforms(s32 num, size_t size);
-extern LBTransform* LBParticleGetTransform(u8 status, u16 generator_id);
-extern void LBParticleEjectTransform(LBTransform *tfrm);
-extern LBTransform* LBParticleAddTransformForStruct(LBParticle *ptcl, u8 status);
-extern LBTransform* LBParticleAddTransformForGenerator(LBGenerator* gtor, u8 status);
-extern void LBParticleSetupBankID(s32 bank_id, LBScriptDesc *script_desc, LBTextureDesc *texture_desc);
-extern GObj* LBParticleAllocStructs(s32 num);
-extern LBParticle* LBParticleMakeStruct
+extern s32 lbParticleAllocTransforms(s32 num, size_t size);
+extern LBTransform* lbParticleGetTransform(u8 status, u16 generator_id);
+extern void lbParticleEjectTransform(LBTransform *tfrm);
+extern LBTransform* lbParticleAddTransformForStruct(LBParticle *ptcl, u8 status);
+extern LBTransform* lbParticleAddTransformForGenerator(LBGenerator* gtor, u8 status);
+extern void lbParticleSetupBankID(s32 bank_id, LBScriptDesc *script_desc, LBTextureDesc *texture_desc);
+extern GObj* lbParticleAllocStructs(s32 num);
+extern LBParticle* lbParticleMakeStruct
 (
 	LBParticle *this_ptcl,
 	s32 bank_id,
@@ -36,8 +36,8 @@ extern LBParticle* LBParticleMakeStruct
 	u32 argF,
 	LBGenerator *gtor
 );
-extern LBParticle* LBParticleMakeChildScriptID(LBParticle *ptcl, s32 bank_id, s32 script_id);
-extern LBParticle* LBParticleMakeParam
+extern LBParticle* lbParticleMakeChildScriptID(LBParticle *ptcl, s32 bank_id, s32 script_id);
+extern LBParticle* lbParticleMakeParam
 (
 	s32 bank_id,
 	u32 flags,
@@ -56,35 +56,36 @@ extern LBParticle* LBParticleMakeParam
 	u32 argE,
 	LBGenerator *gtor
 );
-extern LBParticle* LBParticleMakeCommon(s32 bank_id, s32 script_id);
-extern LBParticle* LBParticleMakePosVel(s32 bank_id, s32 script_id, f32 pos_x, f32 pos_y, f32 pos_z, f32 vel_x, f32 vel_y, f32 vel_z);
-extern LBParticle* LBParticleMakeScriptID(s32 bank_id, s32 script_id);
+extern LBParticle* lbParticleMakeCommon(s32 bank_id, s32 script_id);
+extern LBParticle* lbParticleMakePosVel(s32 bank_id, s32 script_id, f32 pos_x, f32 pos_y, f32 pos_z, f32 vel_x, f32 vel_y, f32 vel_z);
+extern LBParticle* lbParticleMakeScriptID(s32 bank_id, s32 script_id);
 extern void LBParticleProcessStruct(LBParticle *ptcl);
-extern void LBParticleEjectStruct(LBParticle *this_ptcl);
-extern void LBParticleEjectStructAll(void);
-extern u8* LBParticleReadUShort(u8 *csr, u16 *s);
-extern void LBParticleRotateVel(LBParticle *ptcl, f32 angle);
-extern void LBParticleSetDistVelDObj(LBParticle *ptcl, DObj *dobj);
-extern void LBParticleAddDistVelMagDObj(LBParticle *ptcl, DObj *dobj, f32 magnitude);
-extern LBParticle* LBParticleUpdateStruct(LBParticle *this_ptcl, LBParticle *other_ptcl, s32 bank_id);
-extern void LBParticleStructFuncRun(GObj *gobj);
+extern void lbParticleEjectStruct(LBParticle *this_ptcl);
+extern void lbParticleEjectStructAll(void);
+extern u8* lbParticleReadFloatBigEnd(u8 *csr, f32 *f);
+extern u8* lbParticleReadUShort(u8 *csr, u16 *s);
+extern void lbParticleRotateVel(LBParticle *ptcl, f32 angle);
+extern void lbParticleSetDistVelDObj(LBParticle *ptcl, DObj *dobj);
+extern void lbParticleAddDistVelMagDObj(LBParticle *ptcl, DObj *dobj, f32 magnitude);
+extern LBParticle* lbParticleUpdateStruct(LBParticle *this_ptcl, LBParticle *other_ptcl, s32 bank_id);
+extern void lbParticleStructFuncRun(GObj *gobj);
 extern void LBParticleDrawTextures(GObj *gobj);
-extern void LBParticleAddAttachDObj(s32 bank_id, DObj *dobj);
-extern void LBParticleSetDitherModes(s32 colordither_mode, s32 alphadither_mode);
-extern GObj* LBParticleAllocGenerators(s32 num);
-extern void LBParticleGetPosVelDObj(Vec3f *pos, Vec3f *vel, DObj *dobj);
-extern void LBParticleGeneratorFuncRun(GObj *gobj);
-extern LBGenerator* LBParticleGetGenerator(void);
-extern LBGenerator* LBParticleMakeGenerator(s32 bank_id, s32 script_id);
-extern void LBParticleEjectGenerator(LBGenerator *this_gtor);
-extern void LBParticleEjectGeneratorAll(void);
-extern void LBParticleSetGeneratorProcs(void (*proc_setup)(LBGenerator*), void (*proc_default)(LBGenerator*, Vec3f*));
-extern void LBParticleEjectStructID(u16 generator_id, s32 link_id);
-extern void LBParticleEjectStructSelf(LBParticle *ptcl);
-extern void LBParticleEjectStructGenerator(LBGenerator *gtor);
-extern void LBParticleEjectGeneratorDObj(GObj *gobj);
-extern void LBParticleSetStructPosAll(f32 pos_x, f32 pos_y, f32 pos_z);
-extern void LBParticlePauseAllID(u16 generator_id, s32 link_id);
-extern void LBParticleResumeAllID(u16 generator_id, s32 link_id);
+extern void lbParticleAddAttachDObj(s32 bank_id, DObj *dobj);
+extern void lbParticleSetDitherModes(s32 colordither_mode, s32 alphadither_mode);
+extern GObj* lbParticleAllocGenerators(s32 num);
+extern void lbParticleGetPosVelDObj(Vec3f *pos, Vec3f *vel, DObj *dobj);
+extern void lbParticleGeneratorFuncRun(GObj *gobj);
+extern LBGenerator* lbParticleGetGenerator(void);
+extern LBGenerator* lbParticleMakeGenerator(s32 bank_id, s32 script_id);
+extern void lbParticleEjectGenerator(LBGenerator *this_gtor);
+extern void lbParticleEjectGeneratorAll(void);
+extern void lbParticleSetGeneratorProcs(void (*proc_setup)(LBGenerator*), void (*proc_default)(LBGenerator*, Vec3f*));
+extern void lbParticleEjectStructID(u16 generator_id, s32 link_id);
+extern void lbParticleEjectStructSelf(LBParticle *ptcl);
+extern void lbParticleEjectStructGenerator(LBGenerator *gtor);
+extern void lbParticleEjectGeneratorDObj(GObj *gobj);
+extern void lbParticleSetStructPosAll(f32 pos_x, f32 pos_y, f32 pos_z);
+extern void lbParticlePauseAllID(u16 generator_id, s32 link_id);
+extern void lbParticleResumeAllID(u16 generator_id, s32 link_id);
 
 #endif

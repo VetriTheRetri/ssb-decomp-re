@@ -2012,7 +2012,7 @@ void sc1PGameFuncStart(void)
         }
     }
     gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 1, 0xFF);
-    efAllocInitParticleBank();
+    efParticleInitAll();
     ftParamInitGame();
     mpCollisionInitGroundData();
     cmManagerSetViewportDimensions(10, 10, 310, 230);
@@ -2035,7 +2035,7 @@ void sc1PGameFuncStart(void)
         plns = dFTManagerDataFiles[nFTKindNess];
 
         lbRelocGetFileExternHeap((uintptr_t)&D_NF_000000E6, syTaskmanMalloc(lbRelocGetFileSize((uintptr_t)&D_NF_000000E6), 0x10));
-        efAllocGetAddParticleBankID
+        efParticleGetLoadBankID
         (
             plns->particles_script_lo, 
             plns->particles_script_hi, 

@@ -292,7 +292,7 @@ void ftCommonThrownCommonStarUpdatePhysics(GObj *fighter_gobj, f32 decelerate)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->command_vars.flags.flag1 != 0) && (fp->command_vars.flags.flag2 != 3))
+    if ((fp->motion_vars.flags.flag1 != 0) && (fp->motion_vars.flags.flag2 != 3))
     {
         f32 sqrt_vel = sqrtf(SQUARE(fp->physics.vel_air.x) + SQUARE(fp->physics.vel_air.y));
 
@@ -309,18 +309,18 @@ void ftCommonThrownCommonStarUpdatePhysics(GObj *fighter_gobj, f32 decelerate)
         }
         else fp->physics.vel_air.x = fp->physics.vel_air.y = 0;
 
-        fp->command_vars.flags.flag1--;
+        fp->motion_vars.flags.flag1--;
 
         ftCommonCaptureTrappedUpdateBreakoutVars(fp);
 
         if (fp->breakout_wait <= 0)
         {
-            fp->command_vars.flags.flag1 = 0;
+            fp->motion_vars.flags.flag1 = 0;
         }
     }
     else
     {
-        if (fp->command_vars.flags.flag2 == 1)
+        if (fp->motion_vars.flags.flag2 == 1)
         {
             if (((fp->fkind == nFTKindKirby) || (fp->fkind == nFTKindNKirby)) && (fp->status_vars.common.capturekirby.is_kirby != FALSE))
             {
@@ -344,10 +344,10 @@ void ftCommonThrownCommonStarUpdatePhysics(GObj *fighter_gobj, f32 decelerate)
         }
         else
         {
-            if (fp->command_vars.flags.flag2 == 2)
+            if (fp->motion_vars.flags.flag2 == 2)
             {
-                fp->command_vars.flags.flag1 = 4;
-                fp->command_vars.flags.flag2 = 3;
+                fp->motion_vars.flags.flag1 = 4;
+                fp->motion_vars.flags.flag2 = 3;
 
                 fp->physics.vel_air.y = FTCOMMON_THROWNKIRBYSTAR_RELEASE_VEL_Y;
 
@@ -367,16 +367,16 @@ void ftCommonThrownCommonStarUpdatePhysics(GObj *fighter_gobj, f32 decelerate)
 
                 ftParamSetHitStatusAll(fighter_gobj, nGMHitStatusNormal);
             }
-            if (fp->command_vars.flags.flag2 == 3)
+            if (fp->motion_vars.flags.flag2 == 3)
             {
                 DObj *joint = DObjGetStruct(fighter_gobj)->child;
-                f32 scale = (4.0F - fp->command_vars.flags.flag1) * 0.25F;
+                f32 scale = (4.0F - fp->motion_vars.flags.flag1) * 0.25F;
 
                 scale *= FTCOMMON_CAPTUREKIRBY_MAGNITUDE_MUL;
 
                 joint->scale.vec.f.x = joint->scale.vec.f.y = joint->scale.vec.f.z = FTCOMMON_CAPTUREKIRBY_MAGNITUDE_ADD + scale;
 
-                if (fp->command_vars.flags.flag1-- <= 0)
+                if (fp->motion_vars.flags.flag1-- <= 0)
                 {
                     ftCommonThrownKirbyEscape(fighter_gobj);
                 }
@@ -435,7 +435,7 @@ void ftCommonThrownCommonStarProcMap(GObj *fighter_gobj)
         {
             fp->status_vars.common.capturekirby.lr = (angle->x < 0) ? -1 : +1;
 
-            fp->command_vars.flags.flag1 = 0;
+            fp->motion_vars.flags.flag1 = 0;
         }
         efManagerQuakeMakeEffect(2);
         efManagerImpactWaveMakeEffect(&pos, SYVECTOR_AXIS_Z, atan2f(-angle->x, angle->y));
@@ -471,8 +471,8 @@ void ftCommonThrownKirbyStarProcStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag1 = 30;
-    fp->command_vars.flags.flag2 = 2;
+    fp->motion_vars.flags.flag1 = 30;
+    fp->motion_vars.flags.flag2 = 2;
 
     ftCommonThrownKirbyStarInITStatusVars(fighter_gobj);
 }
@@ -528,8 +528,8 @@ void ftCommonThrownCopyStarProcStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag1 = 10;
-    fp->command_vars.flags.flag2 = 1;
+    fp->motion_vars.flags.flag1 = 10;
+    fp->motion_vars.flags.flag2 = 1;
 
     ftCommonThrownKirbyStarInITStatusVars(fighter_gobj);
 }

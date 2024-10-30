@@ -92,17 +92,17 @@ void ftCommonAppearUpdateEffects(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag1 != 0)
+    if (fp->motion_vars.flags.flag1 != 0)
     {
         if ((fp->fkind == nFTKindPikachu) || (fp->fkind == nFTKindPurin) || (fp->fkind == nFTKindNPikachu) || (fp->fkind == nFTKindNPurin))
         {
             efManagerMBallRaysMakeEffect(&fp->entry_pos);
         }
-        fp->command_vars.flags.flag1 = 0;
+        fp->motion_vars.flags.flag1 = 0;
     }
-    if (fp->command_vars.flags.flag2 != 0)
+    if (fp->motion_vars.flags.flag2 != 0)
     {
-        fp->command_vars.flags.flag2 = 0;
+        fp->motion_vars.flags.flag2 = 0;
 
         fp->is_hide_shadow = FALSE;
     }
@@ -257,9 +257,9 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.entry.entry_wait = FTCOMMON_ENTRY_WAIT;
 
-    fp->command_vars.flags.flag1 = 0;
-    fp->command_vars.flags.flag2 = 0;
-    fp->command_vars.flags.flag0 = 0;
+    fp->motion_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag2 = 0;
+    fp->motion_vars.flags.flag0 = 0;
 
     if ((fp->fkind == nFTKindCaptain) && (fp->status_vars.common.entry.lr_entry == -1))
     {

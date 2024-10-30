@@ -20,9 +20,9 @@ void ftSamusSpecialHiProcPhysics(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag1 != FALSE)
+    if (fp->motion_vars.flags.flag1 != FALSE)
     {
-        fp->command_vars.flags.flag1 = FALSE;
+        fp->motion_vars.flags.flag1 = FALSE;
         fp->physics.vel_air.x = fp->lr * FTSAMUS_SCREWATTACK_VEL_X_BASE;
     }
     if (fp->ga == nMPKineticsAir)
@@ -76,7 +76,7 @@ void ftSamusSpecialHiSetStatus(GObj *fighter_gobj)
     ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 }
 
 // 0x8015DE54

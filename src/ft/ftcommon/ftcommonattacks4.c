@@ -17,7 +17,7 @@ void ftCommonAttackS4ProcUpdate(GObj *fighter_gobj)
     {
     case nFTKindPikachu:
     case nFTKindNPikachu:
-        if ((fp->command_vars.flags.flag1 != 0) || (fp->command_vars.flags.flag2 != 0))
+        if ((fp->motion_vars.flags.flag1 != 0) || (fp->motion_vars.flags.flag2 != 0))
         {
             fp->status_vars.common.attack4.gfx_id += mtTrigGetRandomIntRange((FTCOMMON_ATTACKS4_THUNDERSHOCK_GFX_ID_MAX - 1)) + 1;
 
@@ -25,17 +25,17 @@ void ftCommonAttackS4ProcUpdate(GObj *fighter_gobj)
             {
                 fp->status_vars.common.attack4.gfx_id -= FTCOMMON_ATTACKS4_THUNDERSHOCK_GFX_ID_MAX;
             }
-            if (fp->command_vars.flags.flag1 != 0)
+            if (fp->motion_vars.flags.flag1 != 0)
             {
-                fp->command_vars.flags.flag1 = 0;
+                fp->motion_vars.flags.flag1 = 0;
 
                 offset.x = -FTCOMMON_ATTACKS4_THUNDERSHOCK_GFX_OFF_X;
                 offset.z = FTCOMMON_ATTACKS4_THUNDERSHOCK_GFX_OFF_Z;
                 offset.y = FTCOMMON_ATTACKS4_THUNDERSHOCK_GFX_OFF_Y;
             }
-            if (fp->command_vars.flags.flag2 != 0)
+            if (fp->motion_vars.flags.flag2 != 0)
             {
-                fp->command_vars.flags.flag2 = 0;
+                fp->motion_vars.flags.flag2 = 0;
 
                 offset.x = FTCOMMON_ATTACKS4_THUNDERSHOCK_GFX_OFF_X;
                 offset.z = FTCOMMON_ATTACKS4_THUNDERSHOCK_GFX_OFF_Z;
@@ -53,11 +53,11 @@ void ftCommonAttackS4ProcUpdate(GObj *fighter_gobj)
         // Fallthrough, should break here for efficiency
     case nFTKindNess:
     case nFTKindNNess:
-        if ((fp->command_vars.flags.flag1 != 0) && !(fp->is_reflect))
+        if ((fp->motion_vars.flags.flag1 != 0) && !(fp->is_reflect))
         {
             fp->is_reflect = TRUE;
         }
-        if ((fp->command_vars.flags.flag1 == 0) && (fp->is_reflect))
+        if ((fp->motion_vars.flags.flag1 == 0) && (fp->is_reflect))
         {
             fp->is_reflect = FALSE;
         }
@@ -97,13 +97,13 @@ void ftCommonAttackS4SetStatus(GObj *fighter_gobj)
     {
     case nFTKindPikachu:
     case nFTKindNPikachu:
-        fp->command_vars.flags.flag2 = 0;
-        fp->command_vars.flags.flag1 = 0;
+        fp->motion_vars.flags.flag2 = 0;
+        fp->motion_vars.flags.flag1 = 0;
         break;
 
     case nFTKindNess:
     case nFTKindNNess:
-        fp->command_vars.flags.flag1 = 0;
+        fp->motion_vars.flags.flag1 = 0;
         break;
     }
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);

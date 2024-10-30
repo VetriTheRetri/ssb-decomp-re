@@ -18,9 +18,9 @@ void ftPurinSpecialNInITStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag2 = 0;
-    fp->command_vars.flags.flag1 = 0;
-    fp->command_vars.flags.flag0 = 0;
+    fp->motion_vars.flags.flag2 = 0;
+    fp->motion_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag0 = 0;
 }
 
 // 0x80151274
@@ -55,9 +55,9 @@ void ftPurinSpecialAirNProcPhysics(GObj *fighter_gobj)
     f32 unused;
     f32 angle;
 
-    if (fp->command_vars.flags.flag1 != 0)
+    if (fp->motion_vars.flags.flag1 != 0)
     {
-        fp->command_vars.flags.flag1 = 0;
+        fp->motion_vars.flags.flag1 = 0;
 
         fp->fighter_vars.purin.unk_0x0++;
 
@@ -67,7 +67,7 @@ void ftPurinSpecialAirNProcPhysics(GObj *fighter_gobj)
         fp->physics.vel_air.x = __cosf(angle) * fp->lr * FTPURIN_POUND_VEL_BASE;
     }
 
-    switch (fp->command_vars.flags.flag2)
+    switch (fp->motion_vars.flags.flag2)
     {
     case 0:
         ftPhysicsApplyAirVelFriction(fighter_gobj);

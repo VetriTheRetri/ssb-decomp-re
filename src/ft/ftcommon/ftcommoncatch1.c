@@ -20,13 +20,13 @@ void ftCommonCatchProcUpdate(GObj *fighter_gobj)
             fp->status_vars.common.catchmain.catch_pull_frame_begin = 0.0F;
         }
     }
-    if (fp->command_vars.flags.flag2 != 0)
+    if (fp->motion_vars.flags.flag2 != 0)
     {
-        fp->status_vars.common.catchmain.catch_pull_frame_begin = fp->command_vars.flags.flag2;
+        fp->status_vars.common.catchmain.catch_pull_frame_begin = fp->motion_vars.flags.flag2;
 
-        fp->status_vars.common.catchmain.catch_pull_anim_frames = fp->status_vars.common.catchmain.catch_pull_frame_begin / fp->command_vars.flags.flag1;
+        fp->status_vars.common.catchmain.catch_pull_anim_frames = fp->status_vars.common.catchmain.catch_pull_frame_begin / fp->motion_vars.flags.flag1;
 
-        fp->command_vars.flags.flag2 = 0;
+        fp->motion_vars.flags.flag2 = 0;
     }
     ftAnimEndSetWait(fighter_gobj);
 }
@@ -85,8 +85,8 @@ void ftCommonCatchSetStatus(GObj *fighter_gobj)
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCatch, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
-    fp->command_vars.flags.flag1 = 1;
-    fp->command_vars.flags.flag2 = 0;
+    fp->motion_vars.flags.flag1 = 1;
+    fp->motion_vars.flags.flag2 = 0;
 
     fp->status_vars.common.catchmain.catch_pull_anim_frames = 0.0F;
     fp->status_vars.common.catchmain.catch_pull_frame_begin = 0.0F;

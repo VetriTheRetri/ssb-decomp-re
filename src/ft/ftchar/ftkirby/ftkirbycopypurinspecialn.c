@@ -18,7 +18,7 @@ void ftKirbyCopyPurinSpecialNInITStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     
-    fp->command_vars.flags.flag0 = fp->command_vars.flags.flag1 = fp->command_vars.flags.flag2 = 0;
+    fp->motion_vars.flags.flag0 = fp->motion_vars.flags.flag1 = fp->motion_vars.flags.flag2 = 0;
 }
 
 // 0x80151874
@@ -53,9 +53,9 @@ void ftKirbyCopyPurinSpecialAirNProcPhysics(GObj *fighter_gobj)
     f32 unused;
     f32 boost;
 
-    if (fp->command_vars.flags.flag1 != 0)
+    if (fp->motion_vars.flags.flag1 != 0)
     {
-        fp->command_vars.flags.flag1 = 0;
+        fp->motion_vars.flags.flag1 = 0;
 
         fp->fighter_vars.kirby.copypurin_unk++;
 
@@ -65,7 +65,7 @@ void ftKirbyCopyPurinSpecialAirNProcPhysics(GObj *fighter_gobj)
         fp->physics.vel_air.x = __cosf(boost) * fp->lr * FTKIRBY_COPYPURIN_POUND_VEL_BASE;
     }
 
-    switch (fp->command_vars.flags.flag2)
+    switch (fp->motion_vars.flags.flag2)
     {
     case 0:
         ftPhysicsApplyAirVelFriction(fighter_gobj);

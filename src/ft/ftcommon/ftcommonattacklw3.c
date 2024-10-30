@@ -11,7 +11,7 @@ void ftCommonAttackLw3ProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->command_vars.flags.flag1 != 0) && (fp->status_vars.common.attacklw3.is_goto_attacklw3 != FALSE))
+    if ((fp->motion_vars.flags.flag1 != 0) && (fp->status_vars.common.attacklw3.is_goto_attacklw3 != FALSE))
     {
         ftCommonAttackLw3SetStatus(fighter_gobj);
     }
@@ -32,7 +32,7 @@ sb32 ftCommonAttackLw3CheckInterruptSelf(GObj *fighter_gobj)
 
     if ((fp->input.pl.button_tap & fp->input.button_mask_a) && (attr->is_have_attacklw3))
     {
-        if (fp->command_vars.flags.flag1 != 0)
+        if (fp->motion_vars.flags.flag1 != 0)
         {
             ftCommonAttackLw3SetStatus(fighter_gobj);
 
@@ -48,7 +48,7 @@ void ftCommonAttackLw3InITStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 
     fp->status_vars.common.attacklw3.is_goto_attacklw3 = FALSE;
 

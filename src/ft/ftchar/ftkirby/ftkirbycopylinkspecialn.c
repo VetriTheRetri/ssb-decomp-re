@@ -26,9 +26,9 @@ void ftKirbyCopyLinkSpecialNCreateBoomerang(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
 
-    if (fp->command_vars.flags.flag0 != 0)
+    if (fp->motion_vars.flags.flag0 != 0)
     {
-        fp->command_vars.flags.flag0 = 0;
+        fp->motion_vars.flags.flag0 = 0;
 
         pos.x = 0.0F;
         pos.y = 0.0F;
@@ -83,7 +83,7 @@ void ftKirbyCopyLinkSpecialNProcStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag0 = 0;
+    fp->motion_vars.flags.flag0 = 0;
 
     if ((ABS(fp->input.pl.stick_range.x) >= FTKIRBY_COPYLINK_BOOMERANG_SMASH_STICK_MIN) && (fp->hold_stick_x < FTKIRBY_COPYLINK_BOOMERANG_SMASH_BUFFER))
     {

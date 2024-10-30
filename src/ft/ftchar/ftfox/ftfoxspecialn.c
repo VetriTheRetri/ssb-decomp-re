@@ -13,9 +13,9 @@ void ftFoxSpecialNProcUpdate(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
 
-    if (fp->command_vars.flags.flag0 != 0)
+    if (fp->motion_vars.flags.flag0 != 0)
     {
-        fp->command_vars.flags.flag0 = 0;
+        fp->motion_vars.flags.flag0 = 0;
 
         pos.x = FTFOX_BLASTER_SPAWN_OFF_X;
         pos.y = 0.0F;
@@ -35,7 +35,7 @@ void ftFoxSpecialNProcInterrupt(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->command_vars.flags.flag1 != 0) && (fp->input.pl.button_tap & fp->input.button_mask_b))
+    if ((fp->motion_vars.flags.flag1 != 0) && (fp->input.pl.button_tap & fp->input.button_mask_b))
     {
         if (fp->ga == nMPKineticsAir)
         {
@@ -54,8 +54,8 @@ void ftFoxSpecialNInITStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag0 = 0;
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag0 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 }
 
 // 0x8015BC78

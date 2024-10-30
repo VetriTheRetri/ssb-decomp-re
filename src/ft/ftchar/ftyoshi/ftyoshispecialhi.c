@@ -50,9 +50,9 @@ void ftYoshiSpecialHiUpdateEggVars(GObj *fighter_gobj)
     Vec3f pos;
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag2 == 2)
+    if (fp->motion_vars.flags.flag2 == 2)
     {
-        fp->command_vars.flags.flag2 = 0;
+        fp->motion_vars.flags.flag2 = 0;
 
         if (fp->status_vars.yoshi.specialhi.egg_gobj != NULL)
         {
@@ -66,11 +66,11 @@ void ftYoshiSpecialHiUpdateEggVars(GObj *fighter_gobj)
 
             fp->status_vars.yoshi.specialhi.egg_gobj = NULL;
         }
-        fp->command_vars.flags.flag1 = 1;
+        fp->motion_vars.flags.flag1 = 1;
     }
-    else if (fp->command_vars.flags.flag2 == 1)
+    else if (fp->motion_vars.flags.flag2 == 1)
     {
-        fp->command_vars.flags.flag2 = 0;
+        fp->motion_vars.flags.flag2 = 0;
 
         ftYoshiSpecialHiGetEggPosition(fp, &pos);
 
@@ -154,7 +154,7 @@ void ftYoshiSpecialAirHiProcMap(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag1 != 0)
+    if (fp->motion_vars.flags.flag1 != 0)
     {
         mpCommonProcFighterCliff(fighter_gobj, ftYoshiSpecialAirHiSwitchStatusGround);
     }
@@ -167,8 +167,8 @@ void ftYoshiSpecialHiInITStatusVars(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     fp->proc_damage = ftYoshiSpecialHiProcDamage;
-    fp->command_vars.flags.flag2 = 0;
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag2 = 0;
+    fp->motion_vars.flags.flag1 = 0;
     fp->status_vars.yoshi.specialhi.egg_gobj = NULL;
     fp->status_vars.yoshi.specialhi.throw_force = 0;
 }

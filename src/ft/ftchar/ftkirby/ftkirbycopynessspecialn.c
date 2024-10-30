@@ -22,9 +22,9 @@ void ftKirbyCopyNessSpecialNProcAccessory(GObj *fighter_gobj)
     Vec3f vel;
     f32 angle;
 
-    if (fp->command_vars.flags.flag0 != FALSE) // Check if flag to summon PK Fire is true
+    if (fp->motion_vars.flags.flag0 != FALSE) // Check if flag to summon PK Fire is true
     {
-        fp->command_vars.flags.flag0 = FALSE; // Revert to 0 if PK Fire is summoned, so it doesn't repeat on every frame of the move
+        fp->motion_vars.flags.flag0 = FALSE; // Revert to 0 if PK Fire is summoned, so it doesn't repeat on every frame of the move
 
         pos.x = 0.0F;
         pos.y = 0.0F;
@@ -94,7 +94,7 @@ void ftKirbyCopyNessSpecialNInITStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag0 = 0;
+    fp->motion_vars.flags.flag0 = 0;
 
     fp->proc_accessory = ftKirbyCopyNessSpecialNProcAccessory;
 }

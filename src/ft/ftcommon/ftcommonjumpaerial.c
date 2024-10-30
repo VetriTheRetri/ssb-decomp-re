@@ -237,7 +237,7 @@ void ftCommonJumpAerialMultiSetStatus(GObj *fighter_gobj, s32 input_source)
     }
     fp->jumps_used++;
 
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 
     fp->is_special_interrupt = TRUE;
 
@@ -303,7 +303,7 @@ sb32 ftCommonJumpAerialCheckInterruptCommon(GObj *fighter_gobj)
             {
             case nFTKindKirby:
             case nFTKindNKirby:
-                if ((fp->status_id < nFTKirbyStatusJumpAerialF1) || (fp->status_id > nFTKirbyStatusJumpAerialF5) || (fp->command_vars.flags.flag1 != 0))
+                if ((fp->status_id < nFTKirbyStatusJumpAerialF1) || (fp->status_id > nFTKirbyStatusJumpAerialF5) || (fp->motion_vars.flags.flag1 != 0))
                 {
                     input_source = ftCommonJumpAerialMultiGetJumpInputType(fp);
 
@@ -318,7 +318,7 @@ sb32 ftCommonJumpAerialCheckInterruptCommon(GObj *fighter_gobj)
 
             case nFTKindPurin:
             case nFTKindNPurin:
-                if ((fp->status_id < nFTPurinStatusJumpAerialF1) || (fp->status_id > nFTPurinStatusJumpAerialF5) || (fp->command_vars.flags.flag1 != 0))
+                if ((fp->status_id < nFTPurinStatusJumpAerialF1) || (fp->status_id > nFTPurinStatusJumpAerialF5) || (fp->motion_vars.flags.flag1 != 0))
                 {
                     input_source = ftCommonJumpAerialMultiGetJumpInputType(fp);
 

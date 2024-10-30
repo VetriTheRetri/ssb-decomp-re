@@ -26,7 +26,7 @@ void ftCaptainSpecialHiCatchProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *this_fp = ftGetStruct(fighter_gobj);
 
-    if ((fighter_gobj->anim_frame <= 0.0F) || (this_fp->command_vars.flags.flag0 != 0))
+    if ((fighter_gobj->anim_frame <= 0.0F) || (this_fp->motion_vars.flags.flag0 != 0))
     {
         FTStruct *catch_fp = ftGetStruct(this_fp->catch_gobj);
 
@@ -42,9 +42,9 @@ void ftCaptainSpecialHiProcInterrupt(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag1 != 0)
+    if (fp->motion_vars.flags.flag1 != 0)
     {
-        fp->command_vars.flags.flag1 = 0;
+        fp->motion_vars.flags.flag1 = 0;
 
         if (ABS(fp->input.pl.stick_range.x) > FTCAPTAIN_FALCONDIVE_TURN_STICK_RANGE_MIN)
         {
@@ -105,14 +105,14 @@ void ftCaptainSpecialHiProcMap(GObj *fighter_gobj)
 
     if (fp->physics.vel_air.y < 0.0F)
     {
-        if (fp->command_vars.flags.flag2 == 0)
+        if (fp->motion_vars.flags.flag2 == 0)
         {
             mpCommonProcFighterCliffWaitOrLanding(fighter_gobj);
         }
         else
         {
             mpCommonProcFighterProject(fighter_gobj);
-            fp->command_vars.flags.flag2--;
+            fp->motion_vars.flags.flag2--;
         }
     }
     else if ((mpCommonCheckFighterCeilHeavyCliff(fighter_gobj) != FALSE) && (fp->coll_data.coll_mask_stat & MPCOLL_FLAG_CLIFF_MASK))
@@ -130,9 +130,9 @@ void ftCaptainSpecialHiProcStatus(GObj *fighter_gobj)
 
     fp->status_vars.captain.specialhi.flags = 0;
 
-    fp->command_vars.flags.flag0 = 0;
-    fp->command_vars.flags.flag1 = 0;
-    fp->command_vars.flags.flag2 = FTCAPTAIN_FALCONDIVE_UNK_TIMER;
+    fp->motion_vars.flags.flag0 = 0;
+    fp->motion_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag2 = FTCAPTAIN_FALCONDIVE_UNK_TIMER;
 
     fp->status_vars.captain.specialhi.vel.x = 0.0F;
     fp->status_vars.captain.specialhi.vel.y = 0.0F;

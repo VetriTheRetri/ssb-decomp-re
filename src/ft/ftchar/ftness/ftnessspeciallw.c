@@ -240,7 +240,7 @@ void ftNessSpecialLwInitVars(GObj *fighter_gobj)
 
     fp->spc_coll = (FTSpecialColl*) ((uintptr_t)gFTNessFileMainMotion + (intptr_t)&lFTNessSpecialLwAbsorb); // Linker thing (attempt uintptr_t for 64-bit compatibility?)
 
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 }
 
 // 0x80155750
@@ -264,7 +264,7 @@ void ftNessSpecialLwHitProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag1 != 0)
+    if (fp->motion_vars.flags.flag1 != 0)
     {
         ftNessSpecialLwHoldSetStatus(fighter_gobj);
     }
@@ -275,7 +275,7 @@ void ftNessSpecialAirLwHitProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag1 != 0)
+    if (fp->motion_vars.flags.flag1 != 0)
     {
         ftNessSpecialAirLwHoldSetStatus(fighter_gobj);
     }

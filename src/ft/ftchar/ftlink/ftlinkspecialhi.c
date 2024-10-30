@@ -55,7 +55,7 @@ void ftLinkSpecialHiUpdateWeaponAttack(GObj *fighter_gobj, WPStruct *wp)
      * It is absolutely ridiculous how close HAL were to casually making the game collapse from Link's specials on two occasions.
      */
 
-    switch (fp->command_vars.flags.flag2) 
+    switch (fp->motion_vars.flags.flag2) 
     {
     case 0:
         break;
@@ -112,7 +112,7 @@ void ftLinkSpecialHiUpdateWeaponAttack(GObj *fighter_gobj, WPStruct *wp)
         wp->atk_coll.atk_state = nGMAttackStateOff;
         break;
     }
-    fp->command_vars.flags.flag2 = 0;
+    fp->motion_vars.flags.flag2 = 0;
 }
 
 // 0x80163D00
@@ -154,9 +154,9 @@ void ftLinkSpecialHiMakeWeapon(GObj *fighter_gobj, sb32 is_skip_gobj)
     GObj *spin_attack_gobj;
     Vec3f pos;
 
-    if ((fp->command_vars.flags.flag0 != 0) && (fp->status_vars.link.specialhi.spin_attack_gobj == NULL))
+    if ((fp->motion_vars.flags.flag0 != 0) && (fp->status_vars.link.specialhi.spin_attack_gobj == NULL))
     {
-        fp->command_vars.flags.flag0 = 0;
+        fp->motion_vars.flags.flag0 = 0;
 
         if (efManagerLinkSpinAttackMakeEffect(fighter_gobj) != NULL)
         {
@@ -251,7 +251,7 @@ void ftLinkSpecialAirHiProcPhysics(GObj *fighter_gobj)
     ftLinkSpecialHiUpdateWeaponVars(fighter_gobj);
     ftLinkSpecialHiMakeWeapon(fighter_gobj, TRUE);
 
-    gravity = (fp->command_vars.flags.flag1 != 0) ? fp->attr->gravity : fp->attr->gravity * FTLINK_SPINATTACK_GRAVITY_MUL;
+    gravity = (fp->motion_vars.flags.flag1 != 0) ? fp->attr->gravity : fp->attr->gravity * FTLINK_SPINATTACK_GRAVITY_MUL;
 
     ftPhysicsApplyGravityClampTVel(fp, gravity, fp->attr->tvel_default);
 
@@ -317,9 +317,9 @@ void ftLinkSpecialHiProcStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag0 = 0;
-    fp->command_vars.flags.flag2 = 0;
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag0 = 0;
+    fp->motion_vars.flags.flag2 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 
     fp->status_vars.link.specialhi.spin_attack_gobj = NULL;
 }

@@ -11,7 +11,7 @@ void ftCommonRunBrakeProcInterrupt(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((ftCommonKneeBendCheckInterruptRun(fighter_gobj) == FALSE) && (fp->command_vars.flags.flag1 != 0) && (fighter_gobj->anim_frame <= 4.0F))
+    if ((ftCommonKneeBendCheckInterruptRun(fighter_gobj) == FALSE) && (fp->motion_vars.flags.flag1 != 0) && (fighter_gobj->anim_frame <= 4.0F))
     {
         ftCommonTurnRunCheckInterruptRun(fighter_gobj);
     }
@@ -34,7 +34,7 @@ void ftCommonRunBrakeSetStatus(GObj *fighter_gobj, u32 flag)
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusRunBrake, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
-    fp->command_vars.flags.flag1 = flag;
+    fp->motion_vars.flags.flag1 = flag;
 }
 
 // 0x8013F0A0

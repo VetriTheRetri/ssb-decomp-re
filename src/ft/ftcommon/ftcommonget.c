@@ -141,9 +141,9 @@ void ftCommonGetProcUpdate(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     GObj *item_gobj;
 
-    if (fp->command_vars.flags.flag1 != 0)
+    if (fp->motion_vars.flags.flag1 != 0)
     {
-        fp->command_vars.flags.flag1 = 0;
+        fp->motion_vars.flags.flag1 = 0;
 
         item_gobj = ftCommonGetFindItem(fighter_gobj, ((fp->status_id == nFTCommonStatusHeavyGet) ? FTCOMMON_GET_MASK_HEAVY : FTCOMMON_GET_MASK_LIGHT));
 
@@ -237,7 +237,7 @@ void ftCommonGetSetStatus(GObj *fighter_gobj, GObj *item_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     ITStruct *ip = itGetStruct(item_gobj);
 
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 
     ftMainSetFighterStatus(fighter_gobj, ((ip->weight == nITWeightHeavy) ? nFTCommonStatusHeavyGet : nFTCommonStatusLightGet), 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);

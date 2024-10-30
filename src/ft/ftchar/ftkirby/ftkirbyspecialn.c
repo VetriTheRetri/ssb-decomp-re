@@ -61,9 +61,9 @@ void ftKirbySpecialNInITStatusVars(GObj *fighter_gobj, sb32 unused)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag0 = 0;
-    fp->command_vars.flags.flag2 = 0;
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag0 = 0;
+    fp->motion_vars.flags.flag2 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 
     fp->status_vars.kirby.specialn.copy_id = nFTKindKirby;
     fp->status_vars.kirby.specialn.release_lag = FTKIRBY_VACUUM_RELEASE_LAG;
@@ -118,7 +118,7 @@ void ftKirbySpecialNCopyInitCopyVars(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     ftKirbyCopy *copy_data = (ftKirbyCopy*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbySpecialNCopyData); // Linker thing
 
-    if (fp->command_vars.flags.flag1 != 0)
+    if (fp->motion_vars.flags.flag1 != 0)
     {
         if (fp->fighter_vars.kirby.copy_id == fp->status_vars.kirby.specialn.copy_id)
         {
@@ -135,7 +135,7 @@ void ftKirbySpecialNCopyInitCopyVars(GObj *fighter_gobj)
             ftParamResetModelPartAll(fighter_gobj);
             ftKirbySpecialNInitFighterVars(fp);
         }
-        fp->command_vars.flags.flag1 = 0;
+        fp->motion_vars.flags.flag1 = 0;
     }
 }
 
@@ -161,11 +161,11 @@ void ftKirbySpecialNLoopProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (!(fp->is_attach_effect) && (fp->command_vars.flags.flag0 == 1))
+    if (!(fp->is_attach_effect) && (fp->motion_vars.flags.flag0 == 1))
     {
         if (efManagerKirbyInhaleWindMakeEffect(fighter_gobj) != NULL)
         {
-            fp->command_vars.flags.flag0 = 0;
+            fp->motion_vars.flags.flag0 = 0;
             fp->is_attach_effect = TRUE;
         }
     }
@@ -243,7 +243,7 @@ void ftKirbySpecialNThrowUpdateCheckThrowStar(GObj *fighter_gobj)
 {
     FTStruct *kirby_fp = ftGetStruct(fighter_gobj);
 
-    if (kirby_fp->command_vars.flags.flag2 != 0)
+    if (kirby_fp->motion_vars.flags.flag2 != 0)
     {
         if (kirby_fp->catch_gobj != NULL)
         {
@@ -264,7 +264,7 @@ void ftKirbySpecialNCopyUpdateCheckCopyStar(GObj *fighter_gobj)
 {
     FTStruct *kirby_fp = ftGetStruct(fighter_gobj);
 
-    if (kirby_fp->command_vars.flags.flag2 != 0)
+    if (kirby_fp->motion_vars.flags.flag2 != 0)
     {
         if (kirby_fp->catch_gobj != NULL)
         {

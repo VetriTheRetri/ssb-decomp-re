@@ -11,9 +11,9 @@ void ftCommonTurnRunProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag1 != 0)
+    if (fp->motion_vars.flags.flag1 != 0)
     {
-        fp->command_vars.flags.flag1 = 0;
+        fp->motion_vars.flags.flag1 = 0;
 
         fp->lr = -fp->lr;
         fp->physics.vel_ground.x = -fp->physics.vel_ground.x;
@@ -26,7 +26,7 @@ void ftCommonTurnRunProcInterrupt(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((ftCommonKneeBendCheckInterruptRun(fighter_gobj) == FALSE) && (fp->command_vars.flags.flag2 != 0))
+    if ((ftCommonKneeBendCheckInterruptRun(fighter_gobj) == FALSE) && (fp->motion_vars.flags.flag2 != 0))
     {
         ftCommonRunBrakeCheckInterruptTurnRun(fighter_gobj);
     }
@@ -39,8 +39,8 @@ void ftCommonTurnRunSetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusTurnRun, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
-    fp->command_vars.flags.flag1 = 0;
-    fp->command_vars.flags.flag2 = 0;
+    fp->motion_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag2 = 0;
 }
 
 // 0x8013F248

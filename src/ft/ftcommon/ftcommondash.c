@@ -24,7 +24,7 @@ void ftCommonDashProcInterrupt(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->command_vars.flags.flag1 != 0) && (fighter_gobj->anim_frame <= 5.0F))
+    if ((fp->motion_vars.flags.flag1 != 0) && (fighter_gobj->anim_frame <= 5.0F))
     {
         if 
         (
@@ -118,7 +118,7 @@ void ftCommonDashSetStatus(GObj *fighter_gobj, u32 flag)
 
     fp->physics.vel_ground.x = fp->attr->dash_speed;
     fp->tap_stick_x = FTINPUT_STICKBUFFER_FRAMES_MAX;
-    fp->command_vars.flags.flag1 = flag;
+    fp->motion_vars.flags.flag1 = flag;
 }
 
 // 0x8013ED64

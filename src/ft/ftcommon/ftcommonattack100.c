@@ -80,8 +80,8 @@ void ftCommonAttack100StartSetStatus(GObj *fighter_gobj)
         fp->status_vars.common.attack100.is_anim_end = FALSE;
         fp->status_vars.common.attack100.is_goto_loop = FALSE;
 
-        fp->command_vars.flags.flag1 = 0;
-        fp->command_vars.flags.flag2 = 0;
+        fp->motion_vars.flags.flag1 = 0;
+        fp->motion_vars.flags.flag2 = 0;
     }
 }
 
@@ -92,19 +92,19 @@ void ftCommonAttack100LoopKirbyUpdateEffect(FTStruct *fp)
 
     if (fp->fkind == nFTKindKirby)
     {
-        if (fp->command_vars.flags.flag2 != 0)
+        if (fp->motion_vars.flags.flag2 != 0)
         {
             ftKirbyAttack100Effect *effect = (ftKirbyAttack100Effect*) ((uintptr_t)gFTDataKirbyMainMotion + (intptr_t)&lFTKirbyAttack100Effect); // Linker thing
 
-            pos.x = effect[fp->command_vars.flags.flag2 - 1].offset.x;
-            pos.y = effect[fp->command_vars.flags.flag2 - 1].offset.y;
-            pos.z = effect[fp->command_vars.flags.flag2 - 1].offset.z;
+            pos.x = effect[fp->motion_vars.flags.flag2 - 1].offset.x;
+            pos.y = effect[fp->motion_vars.flags.flag2 - 1].offset.y;
+            pos.z = effect[fp->motion_vars.flags.flag2 - 1].offset.z;
 
             gmCollisionGetFighterPartsWorldPosition(fp->joints[nFTPartsJointTopN], &pos);
 
-            efManagerKirbyVulcanJabMakeEffect(&pos, fp->lr, effect[fp->command_vars.flags.flag2 - 1].rotate, effect[fp->command_vars.flags.flag2 - 1].vel, effect[fp->command_vars.flags.flag2 - 1].add);
+            efManagerKirbyVulcanJabMakeEffect(&pos, fp->lr, effect[fp->motion_vars.flags.flag2 - 1].rotate, effect[fp->motion_vars.flags.flag2 - 1].vel, effect[fp->motion_vars.flags.flag2 - 1].add);
 
-            fp->command_vars.flags.flag2 = 0;
+            fp->motion_vars.flags.flag2 = 0;
         }
     }
 }
@@ -122,9 +122,9 @@ void ftCommonAttack100LoopProcUpdate(GObj *fighter_gobj)
         ftParamSetStatUpdate(fp, fp->stat_flags.halfword);
         ftParamUpdate1PGameAttackStats(fp, 0);
     }
-    if (fp->command_vars.flags.flag1 != 0)
+    if (fp->motion_vars.flags.flag1 != 0)
     {
-        fp->command_vars.flags.flag1 = 0;
+        fp->motion_vars.flags.flag1 = 0;
 
         if ((fp->status_vars.common.attack100.is_anim_end != FALSE) && (fp->status_vars.common.attack100.is_goto_loop == FALSE))
         {
@@ -274,7 +274,7 @@ sb32 ftCommonAttack100StartCheckInterruptCommon(GObj *fighter_gobj)
         }
         if (fp->attack1_input_count >= inputs_req)
         {
-            if ((status_id == fp->status_id) && (fp->command_vars.flags.flag1 != 0))
+            if ((status_id == fp->status_id) && (fp->motion_vars.flags.flag1 != 0))
             {
                 ftCommonAttack100StartSetStatus(fighter_gobj);
 

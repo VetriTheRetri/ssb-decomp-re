@@ -11,9 +11,9 @@ void ftCommonEscapeProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag1 != 0)
+    if (fp->motion_vars.flags.flag1 != 0)
     {
-        fp->command_vars.flags.flag1 = 0;
+        fp->motion_vars.flags.flag1 = 0;
         fp->lr = -fp->lr;
     }
     if (fighter_gobj->anim_frame <= 0.0F)
@@ -39,7 +39,7 @@ void ftCommonEscapeProcStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 }
 
 // 0x80149294

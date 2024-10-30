@@ -323,7 +323,7 @@ void ftCommonDeadUpStarProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    switch (fp->command_vars.flags.flag1)
+    switch (fp->motion_vars.flags.flag1)
     {
     case 1:
         fp->colanim.maincolor.a = 128 - ((fp->status_vars.common.dead.rebirth_wait * 128) / FTCOMMON_DEADUP_REBIRTH_WAIT);
@@ -338,7 +338,7 @@ void ftCommonDeadUpStarProcUpdate(GObj *fighter_gobj)
     }
     if (fp->status_vars.common.dead.rebirth_wait == 0)
     {
-        switch (fp->command_vars.flags.flag1)
+        switch (fp->motion_vars.flags.flag1)
         {
         case 0:
             fp->physics.vel_air.y = ((gMPCollisionGroundData->cobj_bound_top * 0.6F) - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
@@ -353,7 +353,7 @@ void ftCommonDeadUpStarProcUpdate(GObj *fighter_gobj)
 
             fp->status_vars.common.dead.rebirth_wait = FTCOMMON_DEADUP_REBIRTH_WAIT;
 
-            fp->command_vars.flags.flag1++;
+            fp->motion_vars.flags.flag1++;
             break;
 
         case 1:
@@ -371,7 +371,7 @@ void ftCommonDeadUpStarProcUpdate(GObj *fighter_gobj)
 
             fp->status_vars.common.dead.rebirth_wait = FTCOMMON_DEAD_REBIRTH_WAIT;
 
-            fp->command_vars.flags.flag1++;
+            fp->motion_vars.flags.flag1++;
             break;
 
         case 2:
@@ -399,7 +399,7 @@ void ftCommonDeadUpStarSetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.dead.rebirth_wait = 1;
 
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 
     ftCommonDeadClearSpecialStats(fighter_gobj);
     ftParamSetPlayerTagWait(fighter_gobj, 1);
@@ -418,7 +418,7 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 sfx_id;
 
-    switch (fp->command_vars.flags.flag1)
+    switch (fp->motion_vars.flags.flag1)
     {
     case 1:
         if (DObjGetStruct(fighter_gobj)->translate.vec.f.y < gMPCollisionGroundData->map_bound_bottom)
@@ -436,7 +436,7 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
     }
     if (fp->status_vars.common.dead.rebirth_wait == 0)
     {
-        switch (fp->command_vars.flags.flag1)
+        switch (fp->motion_vars.flags.flag1)
         {
         case 0:
             fp->physics.vel_air.y = (gMPCollisionGroundData->cobj_bound_bottom - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
@@ -456,7 +456,7 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
             }
             fp->status_vars.common.dead.rebirth_wait = FTCOMMON_DEADUP_REBIRTH_WAIT;
 
-            fp->command_vars.flags.flag1++;
+            fp->motion_vars.flags.flag1++;
             break;
 
         case 1:
@@ -492,7 +492,7 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
                 ftCommonDeadAddDeadSFXSoundQueue(fp->attr->dead_sfx[1]);
             }
             fp->status_vars.common.dead.rebirth_wait = FTCOMMON_DEAD_REBIRTH_WAIT;
-            fp->command_vars.flags.flag1++;
+            fp->motion_vars.flags.flag1++;
             break;
 
         case 2:
@@ -520,7 +520,7 @@ void ftCommonDeadUpFallSetStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.dead.rebirth_wait = 1;
 
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 
     ftCommonDeadClearSpecialStats(fighter_gobj);
     ftParamSetPlayerTagWait(fighter_gobj, 1);

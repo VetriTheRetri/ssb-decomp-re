@@ -20,9 +20,9 @@ void ftMarioSpecialNProcAccessory(GObj *fighter_gobj)
     Vec3f pos;
     s32 fireball_item_id; // 0 = Mario, 1 = Luigi
 
-    if (fp->command_vars.flags.flag0 != 0)
+    if (fp->motion_vars.flags.flag0 != 0)
     {
-        fp->command_vars.flags.flag0 = 0;
+        fp->motion_vars.flags.flag0 = 0;
 
         pos.x = 0.0F;
         pos.y = 0.0F;
@@ -95,7 +95,7 @@ void ftMarioSpecialNInITStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag0 = FALSE;
+    fp->motion_vars.flags.flag0 = FALSE;
     fp->proc_accessory = ftMarioSpecialNProcAccessory;
 }
 

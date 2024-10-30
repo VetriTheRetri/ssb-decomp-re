@@ -213,9 +213,9 @@ void ftKirbyCopySamusSpecialNEndProcUpdate(GObj *fighter_gobj)
     f32 charge_recoil_x;
     f32 charge_recoil_y;
 
-    if (fp->command_vars.flags.flag0 != FALSE)
+    if (fp->motion_vars.flags.flag0 != FALSE)
     {
-        fp->command_vars.flags.flag0 = FALSE;
+        fp->motion_vars.flags.flag0 = FALSE;
 
         ftKirbyCopySamusSpecialNGetChargeShotPosition(fp, &pos);
 
@@ -337,7 +337,7 @@ void ftKirbyCopySamusSpecialNInITStatusVars(FTStruct *fp)
 {
     fp->proc_damage = ftKirbyCopySamusSpecialNProcDamage;
     fp->status_vars.kirby.copysamus_specialn.charge_gobj = NULL;
-    fp->command_vars.flags.flag0 = 0;
+    fp->motion_vars.flags.flag0 = 0;
 }
 
 // 0x801576CC

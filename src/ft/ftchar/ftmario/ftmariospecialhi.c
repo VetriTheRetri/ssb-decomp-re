@@ -24,7 +24,7 @@ void ftMarioSpecialHiProcInterrupt(GObj *fighter_gobj)
     f32 joint_rot;
     s32 stick_x;
 
-    if (fp->command_vars.flags.flag1 == 0)
+    if (fp->motion_vars.flags.flag1 == 0)
     {
         stick_x = ABS(fp->input.pl.stick_range.x);
 
@@ -47,9 +47,9 @@ void ftMarioSpecialHiProcInterrupt(GObj *fighter_gobj)
         }
     }
 
-    if (fp->command_vars.flags.flag2 != 0)
+    if (fp->motion_vars.flags.flag2 != 0)
     {
-        fp->command_vars.flags.flag2 = 0;
+        fp->motion_vars.flags.flag2 = 0;
 
         stick_x = ABS(fp->input.pl.stick_range.x);
 
@@ -76,7 +76,7 @@ void ftMarioSpecialHiProcPhysics(GObj *fighter_gobj)
         }
         else ftPhysicsApplyGroundVelTransN(fighter_gobj);
     }
-    else if (fp->command_vars.flags.flag1 != 0)
+    else if (fp->motion_vars.flags.flag1 != 0)
     {
         ftPhysicsApplyAirVelTransNAll(fighter_gobj);
 
@@ -114,7 +114,7 @@ void ftMarioSpecialHiProcMap(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsAir)
     {
-        if ((fp->command_vars.flags.flag1 == 0) || ((fp->physics.vel_air.y >= 0.0F)))
+        if ((fp->motion_vars.flags.flag1 == 0) || ((fp->physics.vel_air.y >= 0.0F)))
         {
             mpCommonCheckFighterProject(fighter_gobj);
         }
@@ -135,7 +135,7 @@ void ftMarioSpecialHiInITStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag1 = fp->command_vars.flags.flag2 = 0;
+    fp->motion_vars.flags.flag1 = fp->motion_vars.flags.flag2 = 0;
 }
 
 // 0x80156428

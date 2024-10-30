@@ -168,7 +168,7 @@ void ftCommonYoshiEggProcUpdate(GObj *fighter_gobj)
                 is_escape = TRUE;
             }
         }
-        else if (fp->command_vars.flags.flag0 == 1)
+        else if (fp->motion_vars.flags.flag0 == 1)
         {
             if (fp->status_vars.common.captureyoshi.breakout_wait-- <= 0)
             {
@@ -234,7 +234,7 @@ void ftCommonYoshiEggProcPhysics(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag0 == 0)
+    if (fp->motion_vars.flags.flag0 == 0)
     {
         s32 breakout_wait = fp->breakout_wait;
 
@@ -253,11 +253,11 @@ void ftCommonYoshiEggProcPhysics(GObj *fighter_gobj)
 
         if (fp->status_vars.common.captureyoshi.breakout_wait-- <= 0)
         {
-            fp->command_vars.flags.flag0 = 1;
+            fp->motion_vars.flags.flag0 = 1;
             fp->status_vars.common.captureyoshi.breakout_wait = FTCOMMON_YOSHIEGG_ESCAPE_WAIT_DEFAULT;
         }
     }
-    if (fp->command_vars.flags.flag0 == 1)
+    if (fp->motion_vars.flags.flag0 == 1)
     {
         if (fp->status_vars.common.captureyoshi.effect_gobj != NULL)
         {
@@ -296,7 +296,7 @@ void ftCommonYoshiEggProcTrap(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag0 == 0)
+    if (fp->motion_vars.flags.flag0 == 0)
     {
         fp->status_vars.common.captureyoshi.breakout_wait -= ((2.0F * fp->damage_queue) / 0.5F);
     }
@@ -343,7 +343,7 @@ void ftCommonYoshiEggProcStatus(GObj *fighter_gobj)
 
     fp->status_vars.common.captureyoshi.breakout_wait = FTCOMMON_YOSHIEGG_ESCAPE_WAIT_MAX;
 
-    fp->command_vars.flags.flag0 = 0;
+    fp->motion_vars.flags.flag0 = 0;
 }
 
 // 0x8014CF20

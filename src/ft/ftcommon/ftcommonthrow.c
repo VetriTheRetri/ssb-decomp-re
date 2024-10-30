@@ -13,21 +13,21 @@ void ftCommonThrowProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag1 != 0)
+    if (fp->motion_vars.flags.flag1 != 0)
     {
-        fp->command_vars.flags.flag1 = 0;
+        fp->motion_vars.flags.flag1 = 0;
 
         fp->lr = -fp->lr;
 
         fp->physics.vel_ground.x = -fp->physics.vel_ground.x;
     }
-    if (fp->command_vars.flags.flag2 != 0)
+    if (fp->motion_vars.flags.flag2 != 0)
     {
         ftCommonThrownProcPhysics(fp->catch_gobj);
 
-        ftCommonThrownReleaseThrownUpdateStats(fp->catch_gobj, (fp->command_vars.flags.flag2 == 1) ? -fp->lr : fp->lr, (fp->status_id == nFTCommonStatusThrowB) ? 1 : 0, TRUE);
+        ftCommonThrownReleaseThrownUpdateStats(fp->catch_gobj, (fp->motion_vars.flags.flag2 == 1) ? -fp->lr : fp->lr, (fp->status_id == nFTCommonStatusThrowB) ? 1 : 0, TRUE);
 
-        fp->command_vars.flags.flag2 = 0;
+        fp->motion_vars.flags.flag2 = 0;
 
         fp->catch_gobj = NULL;
 
@@ -81,8 +81,8 @@ void ftCommonThrowSetStatus(GObj *fighter_gobj, sb32 is_throwf)
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftParamSetCaptureImmuneMask(this_fp, FTCATCHKIND_MASK_ALL);
 
-    this_fp->command_vars.flags.flag2 = 0;
-    this_fp->command_vars.flags.flag1 = 0;
+    this_fp->motion_vars.flags.flag2 = 0;
+    this_fp->motion_vars.flags.flag1 = 0;
 
     if ((this_fp->fkind == nFTKindSamus) || (this_fp->fkind == nFTKindNSamus))
     {

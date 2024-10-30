@@ -19,9 +19,9 @@ void ftYoshiSpecialLwLandingProcUpdate(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
 
-    if (fp->command_vars.flags.flag0 != 0)
+    if (fp->motion_vars.flags.flag0 != 0)
     {
-        fp->command_vars.flags.flag0 = 0;
+        fp->motion_vars.flags.flag0 = 0;
 
         pos.x = 0.0F;
         pos.y = 0.0F;
@@ -49,7 +49,7 @@ void ftYoshiSpecialLwStartProcMap(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->command_vars.flags.flag1 != 0) && (fp->physics.vel_air.y <= 0.0F))
+    if ((fp->motion_vars.flags.flag1 != 0) && (fp->physics.vel_air.y <= 0.0F))
     {
         if (mpCommonCheckFighterCeilHeavyCliff(fighter_gobj) != FALSE)
         {
@@ -94,8 +94,8 @@ void ftYoshiSpecialLwStartProcStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag0 = 0;
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag0 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 }
 
 // 0x8015EFE4

@@ -18,13 +18,13 @@ void ftPurinSpecialHiProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag1 == 1)
+    if (fp->motion_vars.flags.flag1 == 1)
     {
         if (efManagerPurinSingMakeEffect(fighter_gobj) != NULL)
         {
             fp->is_attach_effect = TRUE;
         }
-        fp->command_vars.flags.flag1 = 0;
+        fp->motion_vars.flags.flag1 = 0;
     }
     if (fp->status_id == nFTPurinStatusSpecialHi)
     {

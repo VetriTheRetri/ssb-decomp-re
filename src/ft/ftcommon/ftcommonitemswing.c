@@ -57,20 +57,20 @@ void ftCommonStarRodSwingProcUpdate(GObj *fighter_gobj)
 
     if (fp->item_gobj != NULL)
     {
-        if (fp->command_vars.flags.flag1 != 0)
+        if (fp->motion_vars.flags.flag1 != 0)
         {
             ip = itGetStruct(fp->item_gobj);
 
             if (ip->multi != 0)
             {
-                func_800269C0_275C0(fp->command_vars.flags.flag1);
+                func_800269C0_275C0(fp->motion_vars.flags.flag1);
             }
             else func_800269C0_275C0(nSYAudioFGMStarRodEmpty);
 
-            fp->command_vars.flags.flag1 = 0;
+            fp->motion_vars.flags.flag1 = 0;
         }
     }
-    if ((fp->item_gobj != NULL) && (fp->command_vars.flags.flag0 != 0))
+    if ((fp->item_gobj != NULL) && (fp->motion_vars.flags.flag0 != 0))
     {
         ip = itGetStruct(fp->item_gobj);
 
@@ -87,7 +87,7 @@ void ftCommonStarRodSwingProcUpdate(GObj *fighter_gobj)
 
             gmCollisionGetFighterPartsWorldPosition(fp->joints[fp->attr->joint_itemlight_id], &make_star_offset);
 
-            itStarRodMakeStar(fighter_gobj, &make_star_offset, (fp->command_vars.flags.flag0 == 1) ? FALSE : TRUE);
+            itStarRodMakeStar(fighter_gobj, &make_star_offset, (fp->motion_vars.flags.flag0 == 1) ? FALSE : TRUE);
         }
         else
         {
@@ -96,7 +96,7 @@ void ftCommonStarRodSwingProcUpdate(GObj *fighter_gobj)
 
             ftParamMakeEffect(fighter_gobj, nEFKindDustLight, fp->attr->joint_itemlight_id, &effect_offset, NULL, -fp->lr, TRUE, FALSE);
         }
-        fp->command_vars.flags.flag0 = 0;
+        fp->motion_vars.flags.flag0 = 0;
     }
     ftAnimEndSetWait(fighter_gobj);
 }
@@ -140,7 +140,7 @@ void ftCommonItemSwingSetStatus(GObj *fighter_gobj, s32 swing_type)
     status_id = dFTCommonItemSwingStatusIDs[swing_item][swing_type];
     anim_speed = F_PCT_TO_DEC(dFTCommonDataItemSwingAnimRates[status_id - nFTCommonStatusItemSwingStart].anim_speed);
 
-    fp->command_vars.flags.flag0 = 0;
+    fp->motion_vars.flags.flag0 = 0;
 
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, anim_speed, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
@@ -149,5 +149,5 @@ void ftCommonItemSwingSetStatus(GObj *fighter_gobj, s32 swing_type)
 
     fp->status_vars.common.itemswing.harisen_scale_reset_wait = 0;
 
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 }

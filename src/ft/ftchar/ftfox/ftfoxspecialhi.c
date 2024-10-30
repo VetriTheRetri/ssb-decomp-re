@@ -429,7 +429,7 @@ void ftFoxSpecialAirHiBoundProcUpdate(GObj* fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->command_vars.flags.flag1 != 0) && (fp->ga == nMPKineticsAir))
+    if ((fp->motion_vars.flags.flag1 != 0) && (fp->ga == nMPKineticsAir))
     {
         ftCommonFallSpecialSetStatus(fighter_gobj, FTFOX_FIREFOX_AIR_DRIFT, FALSE, TRUE, FALSE, FTFOX_FIREFOX_LANDING_LAG, TRUE);
     }
@@ -488,7 +488,7 @@ void ftFoxSpecialAirHiBoundSetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialAirHiBound, 0.0F, 1.0F, FTSTATUS_PRESERVE_COLANIM);
 
-    fp->command_vars.flags.flag1 = FALSE;
+    fp->motion_vars.flags.flag1 = FALSE;
 }
 
 // 0x8015CAA4

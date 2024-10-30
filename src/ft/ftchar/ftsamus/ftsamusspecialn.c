@@ -209,9 +209,9 @@ void ftSamusSpecialNEndProcUpdate(GObj *fighter_gobj)
     f32 charge_recoil_x;
     f32 charge_recoil_y;
 
-    if (fp->command_vars.flags.flag0 != FALSE)
+    if (fp->motion_vars.flags.flag0 != FALSE)
     {
-        fp->command_vars.flags.flag0 = FALSE;
+        fp->motion_vars.flags.flag0 = FALSE;
 
         ftSamusSpecialNGetChargeShotPosition(fp, &pos);
 
@@ -332,7 +332,7 @@ void ftSamusSpecialNStartInITStatusVars(FTStruct *fp)
 {
     fp->proc_damage = ftSamusSpecialNProcDamage;
     fp->status_vars.samus.specialn.charge_gobj = NULL;
-    fp->command_vars.flags.flag0 = FALSE;
+    fp->motion_vars.flags.flag0 = FALSE;
 }
 
 // 0x8015DB64

@@ -14,9 +14,9 @@ void ftLinkSpecialLwCreateBomb(GObj *fighter_gobj)
     Vec3f pos;
     Vec3f vel;
 
-    if (fp->command_vars.flags.flag0 != 0)
+    if (fp->motion_vars.flags.flag0 != 0)
     {
-        fp->command_vars.flags.flag0 = 0;
+        fp->motion_vars.flags.flag0 = 0;
 
         pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
@@ -97,7 +97,7 @@ void ftLinkSpecialLwSetStatus(GObj *fighter_gobj)
 
     if (ftLinkSpecialLwCheckGotoItemThrow(fighter_gobj, TRUE) != TRUE)
     {
-        fp->command_vars.flags.flag0 = 0;
+        fp->motion_vars.flags.flag0 = 0;
 
         ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
         ftMainPlayAnimNoEffect(fighter_gobj);
@@ -111,7 +111,7 @@ void ftLinkSpecialAirLwSetStatus(GObj *fighter_gobj)
 
     if (ftLinkSpecialLwCheckGotoItemThrow(fighter_gobj, FALSE) != TRUE)
     {
-        fp->command_vars.flags.flag0 = 0;
+        fp->motion_vars.flags.flag0 = 0;
 
         ftMainSetFighterStatus(fighter_gobj, nFTLinkStatusSpecialAirLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
         ftMainPlayAnimNoEffect(fighter_gobj);

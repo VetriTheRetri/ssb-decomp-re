@@ -21,9 +21,9 @@ void ftPikachuSpecialNProcAccessory(GObj *fighter_gobj)
     Vec3f pos;
     Vec3f vel;
 
-    if (fp->command_vars.flags.flag0 != 0)
+    if (fp->motion_vars.flags.flag0 != 0)
     {
-        fp->command_vars.flags.flag0 = 0;
+        fp->motion_vars.flags.flag0 = 0;
 
         pos.x = 0.0F;
         pos.y = 0.0F;
@@ -80,7 +80,7 @@ void ftPikachuSpecialNInITStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag0 = 0;
+    fp->motion_vars.flags.flag0 = 0;
     fp->proc_accessory = ftPikachuSpecialNProcAccessory;
 }
 

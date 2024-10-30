@@ -14,9 +14,9 @@ void ftSamusSpecialLwCreateBomb(GObj *fighter_gobj)
     Vec3f pos;
     DObj *joint;
 
-    if (fp->command_vars.flags.flag0 != FALSE)
+    if (fp->motion_vars.flags.flag0 != FALSE)
     {
-        fp->command_vars.flags.flag0 = FALSE;
+        fp->motion_vars.flags.flag0 = FALSE;
 
         pos.x = pos.z = 0.0F;
         pos.y = FTSAMUS_BOMB_OFF_Y;
@@ -55,7 +55,7 @@ void ftSamusSpecialLwProcPhysics(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTAttributes *attr = fp->attr;
 
-    if (fp->command_vars.flags.flag3 != FALSE)
+    if (fp->motion_vars.flags.flag3 != FALSE)
     {
         ftPhysicsSetGroundVelStickRange(fp, attr->walk_speed_mul * FTSAMUS_BOMB_DRIFT, attr->traction);
         ftPhysicsSetGroundVelTransferAir(fighter_gobj);
@@ -95,7 +95,7 @@ void ftSamusSpecialAirLwSwitchStatusGround(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag3 = FALSE;
+    fp->motion_vars.flags.flag3 = FALSE;
 
     mpCommonSetFighterGround(fp);
     ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialLw, fighter_gobj->anim_frame, 1.0F, FTSTATUS_PRESERVE_NONE);
@@ -124,7 +124,7 @@ void ftSamusSpecialLwSwitchStatusAir(GObj *fighter_gobj)
 // 0x8015E218
 void ftSamusSpecialLwInITStatusVars(FTStruct *fp)
 {
-    fp->command_vars.flags.flag0 = FALSE;
+    fp->motion_vars.flags.flag0 = FALSE;
 }
 
 // 0x8015E220
@@ -132,7 +132,7 @@ void ftSamusSpecialLwSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag3 = FALSE;
+    fp->motion_vars.flags.flag3 = FALSE;
 
     ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);

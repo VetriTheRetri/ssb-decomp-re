@@ -19,15 +19,15 @@ void ftFoxSpecialLwCheckSetRelease(FTStruct *fp)
 // 0x8015CBA4
 void ftFoxSpecialLwUpdateEffect(FTStruct *fp)
 {
-    if (fp->command_vars.flags.flag2 != 4)
+    if (fp->motion_vars.flags.flag2 != 4)
     {
         if (fp->status_vars.fox.speciallw.effect_gobj != NULL)
         {
             EFStruct *ep = efGetStruct(fp->status_vars.fox.speciallw.effect_gobj);
 
-            ep->effect_vars.reflector.status = fp->command_vars.flags.flag2;
+            ep->effect_vars.reflector.status = fp->motion_vars.flags.flag2;
         }
-        fp->command_vars.flags.flag2 = 4;
+        fp->motion_vars.flags.flag2 = 4;
     }
 }
 
@@ -177,9 +177,9 @@ void ftFoxSpecialLwTurnDecTurnFrames(GObj *fighter_gobj)
 
     fp->status_vars.fox.speciallw.turn_frames--;
 
-    if ((fp->command_vars.flags.flag1 == 0) && (fp->status_vars.fox.speciallw.turn_frames <= FTFOX_REFLECTOR_TURN_FRAMES))
+    if ((fp->motion_vars.flags.flag1 == 0) && (fp->status_vars.fox.speciallw.turn_frames <= FTFOX_REFLECTOR_TURN_FRAMES))
     {
-        fp->command_vars.flags.flag1 = 1;
+        fp->motion_vars.flags.flag1 = 1;
         fp->lr = -fp->lr;
     }
     fp->joints[nFTPartsJointTopN]->rotate.vec.f.y += (F_CLC_DTOR32(-(180.0F / (f32)FTFOX_REFLECTOR_TURN_FRAMES)));
@@ -210,7 +210,7 @@ void ftFoxSpecialLwTurnInITStatusVars(GObj *fighter_gobj)
 
     fp->is_reflect = TRUE;
     fp->status_vars.fox.speciallw.turn_frames = FTFOX_REFLECTOR_TURN_FRAMES;
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 
     ftFoxSpecialLwTurnDecTurnFrames(fighter_gobj);
 }
@@ -280,7 +280,7 @@ void ftFoxSpecialLwStartInITStatusVars(GObj *fighter_gobj)
 
     fp->status_vars.fox.speciallw.release_lag = FTFOX_REFLECTOR_RELEASE_LAG;
     fp->status_vars.fox.speciallw.is_release = FALSE;
-    fp->command_vars.flags.flag2 = 4;
+    fp->motion_vars.flags.flag2 = 4;
     fp->status_vars.fox.speciallw.gravity_delay = FTFOX_REFLECTOR_GRAVITY_DELAY;
 
     fp->status_vars.fox.speciallw.effect_gobj = efManagerFoxReflectorMakeEffect(fighter_gobj);

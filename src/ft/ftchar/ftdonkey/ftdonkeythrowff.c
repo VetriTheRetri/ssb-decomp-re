@@ -26,12 +26,12 @@ void ftDonkeyThrowFFProcUpdate(GObj *fighter_gobj)
             fp->status_vars.common.throwff.is_turn = FALSE;
         }
     }
-    if (fp->command_vars.flags.flag2 != 0)
+    if (fp->motion_vars.flags.flag2 != 0)
     {
         ftCommonThrownProcPhysics(fp->catch_gobj);
         ftCommonThrownReleaseThrownUpdateStats(fp->catch_gobj, -fp->lr, 0, TRUE);
 
-        fp->command_vars.flags.flag2 = 0;
+        fp->motion_vars.flags.flag2 = 0;
         fp->catch_gobj = NULL;
 
         ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_NONE);
@@ -98,7 +98,7 @@ void ftDonkeyThrowFFSetStatus(GObj *fighter_gobj, sb32 is_turn)
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
 
-    fp->command_vars.flags.flag2 = 0;
+    fp->motion_vars.flags.flag2 = 0;
 
     fp->status_vars.common.throwff.is_turn = is_turn;
 

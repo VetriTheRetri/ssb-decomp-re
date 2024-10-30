@@ -17,9 +17,9 @@ void ftYoshiSpecialNCatchUpdateProcStatus(GObj *fighter_gobj, void (*proc_status
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (((fp->command_vars.flags.flag1 != 0) && (fp->catch_gobj != NULL)) || (fighter_gobj->anim_frame <= 0.0F))
+    if (((fp->motion_vars.flags.flag1 != 0) && (fp->catch_gobj != NULL)) || (fighter_gobj->anim_frame <= 0.0F))
     {
-        fp->command_vars.flags.flag1 = 0;
+        fp->motion_vars.flags.flag1 = 0;
 
         proc_status(fighter_gobj);
     }
@@ -40,7 +40,7 @@ void ftYoshiSpecialAirNCatchProcUpdate(GObj *fighter_gobj)
 // 0x8015E3D8
 void ftYoshiSpecialNCatchUpdateCaptureVars(FTStruct *fp)
 {
-    if (fp->command_vars.flags.flag2 != 0)
+    if (fp->motion_vars.flags.flag2 != 0)
     {
         if (fp->catch_gobj != NULL)
         {
@@ -48,10 +48,10 @@ void ftYoshiSpecialNCatchUpdateCaptureVars(FTStruct *fp)
 
             catch_fp->status_vars.common.captureyoshi.stage = 1;
 
-            fp->command_vars.flags.flag2 = 0;
+            fp->motion_vars.flags.flag2 = 0;
         }
     }
-    if (fp->command_vars.flags.flag1 != 0)
+    if (fp->motion_vars.flags.flag1 != 0)
     {
         if (fp->catch_gobj != NULL)
         {
@@ -61,7 +61,7 @@ void ftYoshiSpecialNCatchUpdateCaptureVars(FTStruct *fp)
 
             fp->catch_gobj = NULL;
 
-            fp->command_vars.flags.flag1 = 0;
+            fp->motion_vars.flags.flag1 = 0;
 
             ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_NONE);
         }
@@ -123,7 +123,7 @@ void ftYoshiSpecialNProcStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 }
 
 // 0x8015E588
@@ -131,8 +131,8 @@ void ftYoshiSpecialAirNProcStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag2 = 0;
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag2 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 }
 
 // 0x8015E598
@@ -241,8 +241,8 @@ void ftYoshiSpecialNReleaseInITStatusVars(GObj *fighter_gobj)
 
     ftParamSetCaptureImmuneMask(fp, FTCATCHKIND_MASK_ALL);
 
-    fp->command_vars.flags.flag2 = 0;
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag2 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 }
 
 // 0x8015E8F8

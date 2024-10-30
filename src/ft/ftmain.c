@@ -623,25 +623,25 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         break;
 
     case nFTMotionEventKindSetFlag0:
-        fp->command_vars.flags.flag0 = ftMotionEventCast(ms, FTMotionEventDefault)->value;
+        fp->motion_vars.flags.flag0 = ftMotionEventCast(ms, FTMotionEventDefault)->value;
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
     case nFTMotionEventKindSetFlag1:
-        fp->command_vars.flags.flag1 = ftMotionEventCast(ms, FTMotionEventDefault)->value;
+        fp->motion_vars.flags.flag1 = ftMotionEventCast(ms, FTMotionEventDefault)->value;
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
     case nFTMotionEventKindSetFlag2:
-        fp->command_vars.flags.flag2 = ftMotionEventCast(ms, FTMotionEventDefault)->value;
+        fp->motion_vars.flags.flag2 = ftMotionEventCast(ms, FTMotionEventDefault)->value;
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
     case nFTMotionEventKindSetFlag3:
-        fp->command_vars.flags.flag3 = ftMotionEventCast(ms, FTMotionEventDefault)->value;
+        fp->motion_vars.flags.flag3 = ftMotionEventCast(ms, FTMotionEventDefault)->value;
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;

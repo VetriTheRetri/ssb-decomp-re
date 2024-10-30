@@ -44,7 +44,7 @@ void ftPikachuSpecialLwStartUpdateThunder(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag0 != 0)
+    if (fp->motion_vars.flags.flag0 != 0)
     {
         ftPikachuSpecialLwCreateThunder(fighter_gobj);
     }
@@ -98,8 +98,8 @@ void ftPikachuSpecialLwStartInITStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag1 = 0;
-    fp->command_vars.flags.flag0 = 0;
+    fp->motion_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag0 = 0;
 
     fp->fighter_vars.pikachu.is_thunder_destroy = FALSE;
 }
@@ -187,7 +187,7 @@ void ftPikachuSpecialLwLoopProcUpdate(GObj *fighter_gobj)
     {
         ftPikachuSpecialLwEndSetStatus(fighter_gobj);
     }
-    else if (fp->command_vars.flags.flag1 != 0)
+    else if (fp->motion_vars.flags.flag1 != 0)
     {
         ftPikachuSpecialLwEndSetStatus(fighter_gobj);
     }
@@ -206,7 +206,7 @@ void ftPikachuSpecialAirLwLoopProcUpdate(GObj *fighter_gobj)
     {
         ftPikachuSpecialAirLwEndSetStatus(fighter_gobj);
     }
-    else if (fp->command_vars.flags.flag1 != 0)
+    else if (fp->motion_vars.flags.flag1 != 0)
     {
         ftPikachuSpecialAirLwEndSetStatus(fighter_gobj);
     }
@@ -264,11 +264,11 @@ void ftPikachuSpecialLwLoopUpdateThunder(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag0 == 0)
+    if (fp->motion_vars.flags.flag0 == 0)
     {
         ftPikachuSpecialLwCreateThunder(fighter_gobj);
     }
-    fp->command_vars.flags.flag0 = 0;
+    fp->motion_vars.flags.flag0 = 0;
 
     fp->proc_damage = ftPikachuSpecialLwProcDamage;
 }
@@ -294,7 +294,7 @@ void ftPikachuSpecialLwHitProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag1 != 0)
+    if (fp->motion_vars.flags.flag1 != 0)
     {
         ftPikachuSpecialLwEndSetStatus(fighter_gobj);
     }
@@ -305,7 +305,7 @@ void ftPikachuSpecialAirLwHitProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag1 != 0)
+    if (fp->motion_vars.flags.flag1 != 0)
     {
         ftPikachuSpecialAirLwEndSetStatus(fighter_gobj);
     }
@@ -359,7 +359,7 @@ void ftPikachuSpecialLwHitInITStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 
     fp->proc_damage = NULL;
 }

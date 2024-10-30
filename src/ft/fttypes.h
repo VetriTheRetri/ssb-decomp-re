@@ -1084,7 +1084,7 @@ struct FTStruct
 
         } item_throw;
 
-    } command_vars;
+    } motion_vars;
 
     ub32 is_atk_active : 1;
     ub32 is_hitstatus_nodamage : 1;

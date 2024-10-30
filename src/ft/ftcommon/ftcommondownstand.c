@@ -11,7 +11,7 @@ void ftCommonDownStandProcInterrupt(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->command_vars.flags.flag1 != 0) && (ftCommonKneeBendCheckInterruptCommon(fighter_gobj) == FALSE) && (ftCommonPassCheckInterruptCommon(fighter_gobj) == FALSE))
+    if ((fp->motion_vars.flags.flag1 != 0) && (ftCommonKneeBendCheckInterruptCommon(fighter_gobj) == FALSE) && (ftCommonPassCheckInterruptCommon(fighter_gobj) == FALSE))
     {
         ftCommonDokanStartCheckInterruptCommon(fighter_gobj);
     }
@@ -31,7 +31,7 @@ void ftCommonDownStandSetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 }
 
 // 0x801445D8

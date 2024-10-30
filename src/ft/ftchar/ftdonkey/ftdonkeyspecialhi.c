@@ -37,7 +37,7 @@ void ftDonkeySpecialAirHiProcPhysics(GObj *fighter_gobj)
 
     FTAttributes *attr = fp->attr;
 
-    f32 gravity_mul = (fp->command_vars.flags.flag1 != 0) ? FTDONKEY_SPINNINGKONG_END_GRAVITY_MUL : FTDONKEY_SPINNINGKONG_START_GRAVITY_MUL;
+    f32 gravity_mul = (fp->motion_vars.flags.flag1 != 0) ? FTDONKEY_SPINNINGKONG_END_GRAVITY_MUL : FTDONKEY_SPINNINGKONG_START_GRAVITY_MUL;
 
     ftPhysicsApplyGravityClampTVel(fp, attr->gravity * gravity_mul, attr->tvel_default);
 
@@ -89,7 +89,7 @@ void ftDonkeySpecialHiSetStatusFlagGA(GObj *fighter_gobj, sb32 ga)
 
     fp->jumps_used = attr->jumps_max;
 
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 
     fp->status_vars.donkey.specialhi.unk_0x0 = 9;
 

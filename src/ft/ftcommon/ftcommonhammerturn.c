@@ -11,11 +11,11 @@ void ftCommonHammerTurnUpdateModelPitch(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag1 != 0)
+    if (fp->motion_vars.flags.flag1 != 0)
     {
-        fp->command_vars.flags.flag1--;
+        fp->motion_vars.flags.flag1--;
 
-        if (fp->command_vars.flags.flag1 == (FTCOMMON_HAMMER_TURN_FRAMES / 2))
+        if (fp->motion_vars.flags.flag1 == (FTCOMMON_HAMMER_TURN_FRAMES / 2))
         {
             fp->lr = -fp->lr;
         }
@@ -32,7 +32,7 @@ void ftCommonHammerTurnProcUpdate(GObj *fighter_gobj)
 
     ftCommonHammerTurnUpdateModelPitch(fighter_gobj);
 
-    if (fp->command_vars.flags.flag1 == 0)
+    if (fp->motion_vars.flags.flag1 == 0)
     {
         ftHammerSetStatusHammerWait(fighter_gobj);
     }
@@ -49,7 +49,7 @@ void ftCommonHammerTurnSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag1 = FTCOMMON_HAMMER_TURN_FRAMES;
+    fp->motion_vars.flags.flag1 = FTCOMMON_HAMMER_TURN_FRAMES;
 
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusHammerTurn, ftHammerGetAnimFrame(fighter_gobj), 1.0F, ftHammerGetStatUpdateFlags(fighter_gobj));
     ftHammerSetColAnim(fighter_gobj);

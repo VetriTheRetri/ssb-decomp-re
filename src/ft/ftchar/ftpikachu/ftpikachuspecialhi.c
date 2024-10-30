@@ -84,7 +84,7 @@ void ftPikachuSpecialHiStartInITStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->command_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag1 = 0;
 
     fp->status_vars.pikachu.specialhi.anim_frames = FTPIKACHU_QUICKATTACK_START_TIME;
     fp->status_vars.pikachu.specialhi.is_subsequent_zip = FALSE;
@@ -404,17 +404,17 @@ void ftPikachuSpecialHiEndProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag1 == 1)
+    if (fp->motion_vars.flags.flag1 == 1)
     {
         if (ftPikachuSpecialHiCheckGotoSubZip(fighter_gobj) != FALSE)
         {
-            fp->command_vars.flags.flag1 = 0;
+            fp->motion_vars.flags.flag1 = 0;
 
             fp->status_vars.pikachu.specialhi.is_subsequent_zip = TRUE;
 
             ftPikachuSpecialHiSetStatus(fighter_gobj);
         }
-        else fp->command_vars.flags.flag1 = 2;
+        else fp->motion_vars.flags.flag1 = 2;
     }
     else if (fighter_gobj->anim_frame <= 0.0F)
     {
@@ -427,16 +427,16 @@ void ftPikachuSpecialAirHiEndProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag1 == 1)
+    if (fp->motion_vars.flags.flag1 == 1)
     {
         if (ftPikachuSpecialHiCheckGotoSubZip(fighter_gobj) != FALSE)
         {
-            fp->command_vars.flags.flag1 = 0;
+            fp->motion_vars.flags.flag1 = 0;
             fp->status_vars.pikachu.specialhi.is_subsequent_zip = TRUE;
 
             ftPikachuSpecialAirHiSetStatus(fighter_gobj);
         }
-        else fp->command_vars.flags.flag1 = 2;
+        else fp->motion_vars.flags.flag1 = 2;
     }
     else if (fighter_gobj->anim_frame <= 0.0F)
     {
@@ -449,7 +449,7 @@ void ftPikachuSpecialHiEndProcPhysics(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag1 != 0)
+    if (fp->motion_vars.flags.flag1 != 0)
     {
         ftPhysicsApplyGroundVelFriction(fighter_gobj);
     }
@@ -460,7 +460,7 @@ void ftPikachuSpecialAirHiEndProcPhysics(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag1 != 0)
+    if (fp->motion_vars.flags.flag1 != 0)
     {
         FTAttributes *attr;
 

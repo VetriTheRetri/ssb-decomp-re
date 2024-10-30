@@ -12,27 +12,27 @@ void ftKirbySpecialHiUpdateEffect(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag1 != 0)
+    if (fp->motion_vars.flags.flag1 != 0)
     {
-        switch (fp->command_vars.flags.flag1)
+        switch (fp->motion_vars.flags.flag1)
         {
         case 1:
             if (fp->is_attach_effect)
             {
                 ftParamProcStopEffect(fighter_gobj);
-                fp->command_vars.flags.flag1 = 0;
+                fp->motion_vars.flags.flag1 = 0;
             }
             break;
 
         default:
             while (TRUE)
             {
-                syErrorPrintf("gcFighterSpecialHiEffectKirby : Error  Unknown value %d \n", fp->command_vars.flags.flag1);
+                syErrorPrintf("gcFighterSpecialHiEffectKirby : Error  Unknown value %d \n", fp->motion_vars.flags.flag1);
                 scManagerRunPrintGObjStatus();
             }
         }
     }
-    switch (fp->command_vars.flags.flag2)
+    switch (fp->motion_vars.flags.flag2)
     {
     case 0:
         break;
@@ -41,7 +41,7 @@ void ftKirbySpecialHiUpdateEffect(GObj *fighter_gobj)
         if (fp->is_attach_effect)
         {
             ftParamProcStopEffect(fighter_gobj);
-            fp->command_vars.flags.flag2 = 0;
+            fp->motion_vars.flags.flag2 = 0;
         }
         break;
 
@@ -49,7 +49,7 @@ void ftKirbySpecialHiUpdateEffect(GObj *fighter_gobj)
         if (efManagerKirbyCutterDrawMakeEffect(fighter_gobj) != NULL)
         {
             fp->is_attach_effect = TRUE;
-            fp->command_vars.flags.flag2 = 0;
+            fp->motion_vars.flags.flag2 = 0;
         }
         break;
 
@@ -57,7 +57,7 @@ void ftKirbySpecialHiUpdateEffect(GObj *fighter_gobj)
         if (efManagerKirbyCutterUpMakeEffect(fighter_gobj) != NULL)
         {
             fp->is_attach_effect = TRUE;
-            fp->command_vars.flags.flag2 = 0;
+            fp->motion_vars.flags.flag2 = 0;
         }
         break;
 
@@ -65,7 +65,7 @@ void ftKirbySpecialHiUpdateEffect(GObj *fighter_gobj)
         if (efManagerKirbyCutterDownMakeEffect(fighter_gobj) != NULL)
         {
             fp->is_attach_effect = TRUE;
-            fp->command_vars.flags.flag2 = 0;
+            fp->motion_vars.flags.flag2 = 0;
         }
         break;
 
@@ -73,14 +73,14 @@ void ftKirbySpecialHiUpdateEffect(GObj *fighter_gobj)
         if (efManagerKirbyCutterTrailMakeEffect(fighter_gobj) != NULL)
         {
             fp->is_attach_effect = TRUE;
-            fp->command_vars.flags.flag2 = 0;
+            fp->motion_vars.flags.flag2 = 0;
         }
         break;
 
     default:
         while (TRUE)
         {
-            syErrorPrintf("gcFighterSpecialHiEffectKirby : Error  Unknown value %d \n", fp->command_vars.flags.flag2);
+            syErrorPrintf("gcFighterSpecialHiEffectKirby : Error  Unknown value %d \n", fp->motion_vars.flags.flag2);
             scManagerRunPrintGObjStatus();
         }
     }
@@ -98,9 +98,9 @@ void ftKirbySpecialHiLandingProcUpdate(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
 
-    if (fp->command_vars.flags.flag0 != 0)
+    if (fp->motion_vars.flags.flag0 != 0)
     {
-        fp->command_vars.flags.flag0 = 0;
+        fp->motion_vars.flags.flag0 = 0;
 
         pos.x = 0.0F;
         pos.y = 0.0F;
@@ -251,7 +251,7 @@ void ftKirbySpecialHiProcStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     
-    fp->command_vars.flags.flag0 = fp->command_vars.flags.flag1 = fp->command_vars.flags.flag2 = 0;
+    fp->motion_vars.flags.flag0 = fp->motion_vars.flags.flag1 = fp->motion_vars.flags.flag2 = 0;
 }
 
 // 0x801611A8

@@ -56,7 +56,7 @@ void ftCommonAttackAirProcMap(GObj *fighter_gobj)
 
     if (mpCommonCheckFighterLanding(fighter_gobj) != FALSE)
     {
-        if ((fp->command_vars.flags.flag1 != 0) && (fp->tics_since_last_z > FTCOMMON_ATTACKAIR_SMOOTHLANDING_TICS_MAX))
+        if ((fp->motion_vars.flags.flag1 != 0) && (fp->tics_since_last_z > FTCOMMON_ATTACKAIR_SMOOTHLANDING_TICS_MAX))
         {
             s32 landing_motion_id = nFTCommonMotionLandingAirStart - nFTCommonMotionAttackAirStart;
 
@@ -64,7 +64,7 @@ void ftCommonAttackAirProcMap(GObj *fighter_gobj)
             {
                 ftCommonLandingAirSetStatus(fighter_gobj);
             }
-            else ftCommonLandingAirNullSetStatus(fighter_gobj, F_PCT_TO_DEC(fp->command_vars.flags.flag1));
+            else ftCommonLandingAirNullSetStatus(fighter_gobj, F_PCT_TO_DEC(fp->motion_vars.flags.flag1));
         }
         else if (fp->physics.vel_air.y > FTCOMMON_ATTACKAIR_SKIPLANDING_VEL_Y_MAX)
         {
@@ -187,7 +187,7 @@ sb32 ftCommonAttackAirCheckInterruptCommon(GObj *fighter_gobj)
             }
             if (is_have_attack_flag)
             {
-                fp->command_vars.flags.flag1 = 0;
+                fp->motion_vars.flags.flag1 = 0;
 
                 ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
 

@@ -13,19 +13,19 @@ void ftCaptainSpecialLwUpdateEffect(GObj *fighter_gobj)
 
     if (!(fp->is_attach_effect))
     {
-        if (fp->command_vars.flags.flag2 == 1)
+        if (fp->motion_vars.flags.flag2 == 1)
         {
             if (efManagerCaptainFalconKickMakeEffect(fighter_gobj) != NULL)
             {
                 fp->is_attach_effect = TRUE;
             }
-            fp->command_vars.flags.flag2 = 0;
+            fp->motion_vars.flags.flag2 = 0;
         }
     }
-    else if (fp->command_vars.flags.flag2 == 2)
+    else if (fp->motion_vars.flags.flag2 == 2)
     {
         ftParamProcStopEffect(fighter_gobj);
-        fp->command_vars.flags.flag2 = 0;
+        fp->motion_vars.flags.flag2 = 0;
     }
 }
 
@@ -51,7 +51,7 @@ void ftCaptainSpecialLwDecideMapCollide(GObj *fighter_gobj)
 
     if (fp->ga == nMPKineticsGround)
     {
-        if (fp->command_vars.flags.flag3 != 0)
+        if (fp->motion_vars.flags.flag3 != 0)
         {
             mpCommonProcFighterOnEdge(fighter_gobj, ftCaptainSpecialLwSetAir);
         }
@@ -88,7 +88,7 @@ void ftCaptainSpecialLwProcPhysics(GObj *fighter_gobj)
         fp->joints[nFTPartsJointTopN]->rotate.vec.f.z = -atan2f(fp->coll_data.ground_angle.x, fp->coll_data.ground_angle.y);
         ftPhysicsApplyGroundVelTransN(fighter_gobj);
     }
-    else if (fp->command_vars.flags.flag0 != 0)
+    else if (fp->motion_vars.flags.flag0 != 0)
     {
         ftPhysicsApplyAirVelFriction(fighter_gobj);
     }
@@ -123,12 +123,12 @@ sb32 ftCaptainSpecialLwBoundCheckGoto(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if ((fp->command_vars.flags.flag1 == 1) && (fp->coll_data.coll_mask_current & (MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL)))
+    if ((fp->motion_vars.flags.flag1 == 1) && (fp->coll_data.coll_mask_current & (MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL)))
     {
         mpCommonSetFighterAir(fp);
         ftMainSetFighterStatus(fighter_gobj, nFTCaptainStatusSpecialLwBound, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
 
-        fp->command_vars.flags.flag1 = 0;
+        fp->motion_vars.flags.flag1 = 0;
 
         return TRUE;
     }
@@ -140,17 +140,17 @@ sb32 ftCaptainSpecialLwAirCheckAirGoto(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    if (fp->command_vars.flags.flag1 == 2)
+    if (fp->motion_vars.flags.flag1 == 2)
     {
         if (fp->ga == nMPKineticsAir)
         {
             ftCaptainSpecialLwAirSetStatus(fighter_gobj);
 
-            fp->command_vars.flags.flag1 = 0;
+            fp->motion_vars.flags.flag1 = 0;
 
             return TRUE;
         }
-        fp->command_vars.flags.flag1 = 0;
+        fp->motion_vars.flags.flag1 = 0;
     }
     return FALSE;
 }
@@ -198,10 +198,10 @@ void ftCaptainSpecialLwProcStatus(GObj *fighter_gobj)
 
     fp->status_vars.captain.speciallw.scale_apply_timer = 0;
 
-    fp->command_vars.flags.flag0 = 0;
-    fp->command_vars.flags.flag3 = 0;
-    fp->command_vars.flags.flag1 = 0;
-    fp->command_vars.flags.flag2 = 0;
+    fp->motion_vars.flags.flag0 = 0;
+    fp->motion_vars.flags.flag3 = 0;
+    fp->motion_vars.flags.flag1 = 0;
+    fp->motion_vars.flags.flag2 = 0;
 
     fp->status_vars.captain.speciallw.vel_scale = 1.0F;
 }

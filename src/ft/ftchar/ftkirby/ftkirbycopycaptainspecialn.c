@@ -13,20 +13,20 @@ void ftKirbyCopyCaptainSpecialNUpdateEffect(GObj *fighter_gobj)
 
     if (!(fp->is_attach_effect))
     {
-        if (fp->command_vars.flags.flag0 == 1)
+        if (fp->motion_vars.flags.flag0 == 1)
         {
             if (efManagerCaptainFalconPunchMakeEffect(fighter_gobj) != FALSE)
             {
                 fp->is_attach_effect = TRUE;
             }
-            fp->command_vars.flags.flag0 = 0;
+            fp->motion_vars.flags.flag0 = 0;
         }
     }
-    else if (fp->command_vars.flags.flag0 == 1)
+    else if (fp->motion_vars.flags.flag0 == 1)
     {
         ftParamProcStopEffect(fighter_gobj);
 
-        fp->command_vars.flags.flag0 = 2;
+        fp->motion_vars.flags.flag0 = 2;
     }
 }
 
@@ -69,9 +69,9 @@ void ftKirbyCopyCaptainSpecialAirNProcPhysics(GObj *fighter_gobj)
     f32 unused;
     f32 boost;
 
-    if (fp->command_vars.flags.flag1 != 0)
+    if (fp->motion_vars.flags.flag1 != 0)
     {
-        fp->command_vars.flags.flag1 = 0;
+        fp->motion_vars.flags.flag1 = 0;
         fp->fighter_vars.kirby.copycaptain_falcon_punch_unk++;
 
         boost = ftKirbyCopyCaptainSpecialNGetAngle(fp->input.pl.stick_range.y);
@@ -81,7 +81,7 @@ void ftKirbyCopyCaptainSpecialAirNProcPhysics(GObj *fighter_gobj)
     }
     ftKirbyCopyCaptainSpecialNUpdateEffect(fighter_gobj);
 
-    switch (fp->command_vars.flags.flag2)
+    switch (fp->motion_vars.flags.flag2)
     {
     case 0:
         ftPhysicsApplyAirVelFriction(fighter_gobj);
@@ -132,7 +132,7 @@ void ftKirbyCopyCaptainSpecialNInITStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     
-    fp->command_vars.flags.flag0 = fp->command_vars.flags.flag1 = fp->command_vars.flags.flag2 = 0;
+    fp->motion_vars.flags.flag0 = fp->motion_vars.flags.flag1 = fp->motion_vars.flags.flag2 = 0;
 }
 
 // 0x80160B28

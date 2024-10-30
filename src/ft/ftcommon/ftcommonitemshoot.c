@@ -20,7 +20,7 @@ void ftCommonLGunShootProcAccessory(GObj *fighter_gobj)
     ITStruct *ip;
     f32 size_mul;
 
-    if ((fp->item_gobj != NULL) && (fp->command_vars.flags.flag0 != 0))
+    if ((fp->item_gobj != NULL) && (fp->motion_vars.flags.flag0 != 0))
     {
         ip = itGetStruct(fp->item_gobj);
 
@@ -62,7 +62,7 @@ void ftCommonLGunShootProcAccessory(GObj *fighter_gobj)
             ftParamMakeEffect(fighter_gobj, nEFKindDustLight, fp->attr->joint_itemlight_id, &dust_effect_offset, NULL, -fp->lr, TRUE, FALSE);
             func_800269C0_275C0(nSYAudioFGMLGunEmpty);
         }
-        fp->command_vars.flags.flag0 = 0;
+        fp->motion_vars.flags.flag0 = 0;
     }
 }
 
@@ -176,7 +176,7 @@ void ftCommonFireFlowerShootProcAccessory(GObj *fighter_gobj)
     }
     if (fp->item_gobj != NULL)
     {
-        if (fp->command_vars.flags.flag0 != 0)
+        if (fp->motion_vars.flags.flag0 != 0)
         {
             ip = itGetStruct(fp->item_gobj);
 
@@ -213,7 +213,7 @@ void ftCommonFireFlowerShootProcAccessory(GObj *fighter_gobj)
 
                 ftCommonFireFlowerShootUpdateAmmoStats(fp, ammo_sub);
             }
-            if (fp->command_vars.flags.flag0 == 1)
+            if (fp->motion_vars.flags.flag0 == 1)
             {
                 if (ip->multi >= ammo_sub)
                 {
@@ -229,14 +229,14 @@ void ftCommonFireFlowerShootProcAccessory(GObj *fighter_gobj)
                     ftParamMakeEffect(fighter_gobj, nEFKindSparkleWhiteScale, fp->attr->joint_itemlight_id, &effect_spark_offset, &effect_spark_scatter, fp->lr, TRUE, FALSE);
                     ftParamMakeEffect(fighter_gobj, nEFKindDustDashSmall, nFTPartsJointTopN, &effect_dust_offset, NULL, fp->lr, FALSE, FALSE);
                 }
-                fp->command_vars.flags.flag0 = 2;
+                fp->motion_vars.flags.flag0 = 2;
 
                 gcSetAnimSpeed(fighter_gobj, 0.0F);
             }
         }
         if ((fp->status_vars.common.fireflower.ammo_fire_count >= 5) && (fp->status_vars.common.fireflower.is_release != FALSE) && (fp->status_vars.common.fireflower.release_lag >= 20))
         {
-            fp->command_vars.flags.flag0 = 0;
+            fp->motion_vars.flags.flag0 = 0;
 
             gcSetAnimSpeed(fighter_gobj, 1.0F);
         }
@@ -309,7 +309,7 @@ void ftCommonItemShootSetStatus(GObj *fighter_gobj)
         proc_accessory = ftCommonFireFlowerShootProcAccessory;
         break;
     }
-    fp->command_vars.flags.flag0 = 0;
+    fp->motion_vars.flags.flag0 = 0;
 
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
@@ -339,7 +339,7 @@ void ftCommonItemShootAirSetStatus(GObj *fighter_gobj)
         proc_accessory = ftCommonFireFlowerShootProcAccessory;
         break;
     }
-    fp->command_vars.flags.flag0 = 0;
+    fp->motion_vars.flags.flag0 = 0;
 
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);

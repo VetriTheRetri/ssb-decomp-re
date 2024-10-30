@@ -50,26 +50,26 @@ ITCreateDesc dITPorygonItemDesc =
 void itPorygonCommonUpdateMonsterEvent(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITMonsterEvent *hit_party = itGetMonsterEvent(dITPorygonItemDesc, lITPorygonHitParties); // (ITMonsterEvent*) ((uintptr_t)*dITPorygonItemDesc.p_file + (intptr_t)&Porygon_Event); // Linker thing
+    ITMonsterEvent *ev = itGetMonsterEvent(dITPorygonItemDesc, lITPorygonHitParties); // (ITMonsterEvent*) ((uintptr_t)*dITPorygonItemDesc.p_file + (intptr_t)&Porygon_Event); // Linker thing
 
-    if (ip->multi == hit_party[ip->item_event_id].timer)
+    if (ip->multi == ev[ip->event_id].timer)
     {
-        ip->atk_coll.angle            = hit_party[ip->item_event_id].angle;
-        ip->atk_coll.damage           = hit_party[ip->item_event_id].damage;
-        ip->atk_coll.size             = hit_party[ip->item_event_id].size;
-        ip->atk_coll.knockback_scale  = hit_party[ip->item_event_id].knockback_scale;
-        ip->atk_coll.knockback_weight = hit_party[ip->item_event_id].knockback_weight;
-        ip->atk_coll.knockback_base   = hit_party[ip->item_event_id].knockback_base;
-        ip->atk_coll.element          = hit_party[ip->item_event_id].element;
-        ip->atk_coll.can_setoff       = hit_party[ip->item_event_id].can_setoff;
-        ip->atk_coll.shield_damage    = hit_party[ip->item_event_id].shield_damage;
-        ip->atk_coll.fgm          = hit_party[ip->item_event_id].fgm;
+        ip->atk_coll.angle            = ev[ip->event_id].angle;
+        ip->atk_coll.damage           = ev[ip->event_id].damage;
+        ip->atk_coll.size             = ev[ip->event_id].size;
+        ip->atk_coll.knockback_scale  = ev[ip->event_id].knockback_scale;
+        ip->atk_coll.knockback_weight = ev[ip->event_id].knockback_weight;
+        ip->atk_coll.knockback_base   = ev[ip->event_id].knockback_base;
+        ip->atk_coll.element          = ev[ip->event_id].element;
+        ip->atk_coll.can_setoff       = ev[ip->event_id].can_setoff;
+        ip->atk_coll.shield_damage    = ev[ip->event_id].shield_damage;
+        ip->atk_coll.fgm_id          = ev[ip->event_id].fgm_id;
 
-        ip->item_event_id++;
+        ip->event_id++;
 
-        if (ip->item_event_id == 2)
+        if (ip->event_id == 2)
         {
-            ip->item_event_id = 1;
+            ip->event_id = 1;
         }
     }
     ip->multi++;
@@ -119,7 +119,7 @@ GObj* itPorygonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->multi = 0;
 
-        ip->item_event_id = 0;
+        ip->event_id = 0;
 
         func_800269C0_275C0(nSYAudioVoiceYamabukiPorygon);
     }

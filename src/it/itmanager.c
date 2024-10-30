@@ -336,7 +336,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
     ip->atk_coll.knockback_base    = attr->knockback_base;
     ip->atk_coll.can_setoff        = attr->can_setoff;
     ip->atk_coll.shield_damage     = attr->shield_damage;
-    ip->atk_coll.fgm           = attr->hit_sfx;
+    ip->atk_coll.fgm_id           = attr->hit_sfx;
     ip->atk_coll.priority          = attr->priority;
     ip->atk_coll.can_rehit_item    = attr->can_rehit_item;
     ip->atk_coll.can_rehit_fighter = attr->can_rehit_fighter;

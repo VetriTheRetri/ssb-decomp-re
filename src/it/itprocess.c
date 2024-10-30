@@ -553,7 +553,7 @@ void itProcessUpdateDamageStatItem(ITStruct *attack_ip, ITAttackColl *atk_coll, 
             }
         }
     }
-    func_800269C0_275C0(atk_coll->fgm);
+    func_800269C0_275C0(atk_coll->fgm_id);
 }
 
 // 0x801702C8 - Item's hurtbox gets hit by a weapon
@@ -656,7 +656,7 @@ void itProcessUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *atk_coll, s32 a
             }
         }
     }
-    func_800269C0_275C0(atk_coll->fgm);
+    func_800269C0_275C0(atk_coll->fgm_id);
 }
 
 // 0x801705C4

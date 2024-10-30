@@ -27,7 +27,7 @@ extern sb32 itLinkBombDroppedProcHit(GObj* item_gobj);
 extern sb32 itLinkBombDroppedProcDamage(GObj* item_gobj);
 extern void itLinkBombDroppedSetStatus(GObj* item_gobj);
 extern void itLinkBombExplodeInitItemVars(GObj* item_gobj);
-extern void itLinkBombExplodeUpdateHitEvent(GObj* item_gobj);
+extern void itLinkBombExplodeUpdateAttackEvent(GObj* item_gobj);
 extern sb32 itLinkBombCommonProcShield(GObj* item_gobj);
 extern sb32 func_ovl3_801864BC(GObj* item_gobj);
 extern void itLinkBombExplodeInITAttackColl(GObj* item_gobj);

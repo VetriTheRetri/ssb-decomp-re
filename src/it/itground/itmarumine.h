@@ -6,7 +6,7 @@
 #include <it/itdef.h>
 
 extern void itMarumineExplodeMakeEffectGotoSetStatus(GObj *item_gobj);
-extern void itMarumineExplodeUpdateHitEvent(GObj *item_gobj);
+extern void itMarumineExplodeUpdateAttackEvent(GObj *item_gobj);
 extern sb32 itMarumineCommonProcUpdate(GObj *item_gobj);
 extern sb32 itMarumineExplodeProcUpdate(GObj *item_gobj);
 extern void itMarumineExplodeSetStatus(GObj *item_gobj);

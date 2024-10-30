@@ -173,9 +173,9 @@ void wpSamusChargeShotLaunch(GObj *weapon_gobj) // Set Charge Shot's attributes 
     wp->coll_data.obj_coll.top = coll_size;
     wp->coll_data.obj_coll.bottom = -coll_size;
 
-    func_800269C0_275C0(dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].shoot_fgm);
+    func_800269C0_275C0(dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].shoot_fgm_id);
 
-    wp->atk_coll.fgm = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].atk_fgm;
+    wp->atk_coll.fgm_id = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].atk_fgm_id;
     wp->atk_coll.priority = dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].priority;
 
     wp->weapon_vars.charge_shot.owner_gobj = NULL;
@@ -301,7 +301,7 @@ GObj* wpSamusChargeShotMakeWeapon(GObj *fighter_gobj, Vec3f *pos, s32 charge_lev
 
         wp->weapon_vars.charge_shot.owner_gobj = fighter_gobj;
 
-        ftParamPlayLoopSFX(fp, dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].charge_sfx_id);
+        ftParamPlayLoopSFX(fp, dWPSamusChargeShotWeaponAttributes[wp->weapon_vars.charge_shot.charge_size].charge_fgm_id);
     }
     DObjGetStruct(weapon_gobj)->scale.vec.f.x = DObjGetStruct(weapon_gobj)->scale.vec.f.y = dWPSamusChargeShotWeaponAttributes[charge_level].gfx_size / WPCHARGESHOT_GFX_SIZE_DIV;
 

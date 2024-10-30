@@ -7,7 +7,7 @@
 // // // // // // // // // // // //
 
 extern intptr_t lITCapsuleItemAttributes;   // 0x00000050
-extern intptr_t lITCapsuleHitEvents;        // 0x00000098
+extern intptr_t lITCapsuleAttackEvents;        // 0x00000098
 
 // // // // // // // // // // // //
 //                               //
@@ -271,7 +271,7 @@ sb32 itCapsuleExplodeProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITCapsuleItemDesc, lITCapsuleHitEvents)); // (ITAttackEvent*) ((uintptr_t)*dITCapsuleItemDesc.p_file + (intptr_t)&D_NF_00000098); Linker thing
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITCapsuleItemDesc, lITCapsuleAttackEvents)); // (ITAttackEvent*) ((uintptr_t)*dITCapsuleItemDesc.p_file + (intptr_t)&D_NF_00000098); Linker thing
 
     return FALSE;
 }
@@ -297,8 +297,8 @@ void itCapsuleExplodeInitItemVars(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
 
     ip->multi = 0;
-    ip->item_event_id = 0;
-    ip->atk_coll.fgm = nSYAudioFGMExplodeL;
+    ip->event_id = 0;
+    ip->atk_coll.fgm_id = nSYAudioFGMExplodeL;
     ip->atk_coll.throw_mul = ITEM_STALE_DEFAULT;
 
     func_800269C0_275C0(nSYAudioFGMExplodeL);
@@ -316,7 +316,7 @@ void itCapsuleExplodeInitItemVars(GObj *item_gobj)
     itMainClearOwnerStats(item_gobj);
     itMainRefreshAtk(item_gobj);
 
-    itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITCapsuleItemDesc, lITCapsuleHitEvents)); // Linker thing
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITCapsuleItemDesc, lITCapsuleAttackEvents)); // Linker thing
 }
 
 // 0x801743F4

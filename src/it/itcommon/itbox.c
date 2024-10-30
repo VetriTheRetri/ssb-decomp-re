@@ -8,7 +8,7 @@
 // // // // // // // // // // // //
 
 extern intptr_t lITBoxItemAttributes;       // 0x000005CC
-extern intptr_t lITBoxHitEvents;            // 0x00000614
+extern intptr_t lITBoxAttackEvents;            // 0x00000614
 extern intptr_t lITBoxDataStart;            // 0x00006778
 extern intptr_t lITBoxEffectDisplayList;    // 0x000068F0
 
@@ -447,7 +447,7 @@ sb32 itBoxExplodeProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITBoxItemDesc, lITBoxHitEvents)); // Linker thing
+    else itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITBoxItemDesc, lITBoxAttackEvents)); // Linker thing
 
     return FALSE;
 }
@@ -476,10 +476,10 @@ void itBoxExplodeInitItemVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->item_event_id = 0;
+    ip->event_id = 0;
     ip->multi = 0;
 
-    ip->atk_coll.fgm = nSYAudioFGMExplodeL;
+    ip->atk_coll.fgm_id = nSYAudioFGMExplodeL;
 
     ip->atk_coll.can_rehit_item = TRUE;
     ip->atk_coll.can_hop = FALSE;
@@ -494,7 +494,7 @@ void itBoxExplodeInitItemVars(GObj *item_gobj)
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshAtk(item_gobj);
-    itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITBoxItemDesc, lITBoxHitEvents)); // Linker thing
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITBoxItemDesc, lITBoxAttackEvents)); // Linker thing
 }
 
 // 0x80179AD4

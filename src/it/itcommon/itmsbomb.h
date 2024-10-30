@@ -25,7 +25,7 @@ extern sb32 itMSBombCommonProcDamage(GObj *item_gobj);
 extern sb32 itMSBombAttachedProcUpdate(GObj *item_gobj);
 extern void itMSBombAttachedSetStatus(GObj *item_gobj);
 extern sb32 itMSBombAttachedProcMap(GObj *item_gobj);
-extern void itMSBombExplodeUpdateHitEvent(GObj *item_gobj);
+extern void itMSBombExplodeUpdateAttackEvent(GObj *item_gobj);
 extern void itMSBombDetachedInitItemVars(GObj *item_gobj);
 extern sb32 itMSBombDetachedProcUpdate(GObj *item_gobj);
 extern void itMSBombDetachedSetStatus(GObj *item_gobj);

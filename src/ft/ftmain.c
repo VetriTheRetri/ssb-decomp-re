@@ -2359,7 +2359,7 @@ void ftMainUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *wp_atk_coll, s32 w
         ftParamUpdatePlayerBattleStats(wp->player, fp->player, damage);
         ftParamUpdateStaleQueue(wp->player, fp->player, wp_atk_coll->attack_id, wp_atk_coll->motion_count);
     }
-    func_800269C0_275C0(wp_atk_coll->fgm);
+    func_800269C0_275C0(wp_atk_coll->fgm_id);
 }
 
 // 0x800E35BC
@@ -2546,7 +2546,7 @@ void ftMainUpdateDamageStatItem(ITStruct *ip, ITAttackColl *it_atk_coll, s32 atk
             ftParamUpdatePlayerBattleStats(ip->player, fp->player, damage);
             ftParamUpdateStaleQueue(ip->player, fp->player, it_atk_coll->attack_id, it_atk_coll->motion_count);
         }
-        func_800269C0_275C0(it_atk_coll->fgm);
+        func_800269C0_275C0(it_atk_coll->fgm_id);
     }
 }
 

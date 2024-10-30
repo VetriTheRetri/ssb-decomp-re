@@ -44,7 +44,7 @@ extern intptr_t lITMonsterAnimBankStart;
 #define itGetMonsterAnimNode(ip, off)                                                                                  \
 	((void*)(((uintptr_t)(ip)->attr->dobj_setup - (intptr_t) & (off)) + (intptr_t)&lITMonsterAnimBankStart))
 
-#define itGetHitEvent(it_desc, off) ((ITAttackEvent*)((uintptr_t) * (it_desc).p_file + (intptr_t) & (off)))
+#define itGetAttackEvent(it_desc, off) ((ITAttackEvent*)((uintptr_t) * (it_desc).p_file + (intptr_t) & (off)))
 
 #define itGetMonsterEvent(it_desc, off) ((ITMonsterEvent*)((uintptr_t) * (it_desc).p_file + (intptr_t) & (off)))
 

@@ -11,7 +11,7 @@
 extern void itMainSetFighterRelease(GObj*, Vec3f*, f32);
 
 extern intptr_t lITLinkBombItemAttributes;	// 0x00000040
-extern intptr_t lITLinkBombHitEvents;  		// 0x00000088
+extern intptr_t lITLinkBombAttackEvents;  		// 0x00000088
 extern intptr_t lITLinkBombBloatScales; 	// 0x000000A8
 
 // // // // // // // // // // // //
@@ -194,7 +194,7 @@ void itLinkBombExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 
 	DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_HIDDEN;
 
-	ip->atk_coll.fgm = nSYAudioFGMExplodeL;
+	ip->atk_coll.fgm_id = nSYAudioFGMExplodeL;
 
 	itMainRefreshAtk(item_gobj);
 	itLinkBombExplodeSetStatus(item_gobj);
@@ -521,16 +521,16 @@ void itLinkBombExplodeInitItemVars(GObj *item_gobj)
 }
 
 // 0x801863AC
-void itLinkBombExplodeUpdateHitEvent(GObj *item_gobj)
+void itLinkBombExplodeUpdateAttackEvent(GObj *item_gobj)
 {
 	ITStruct *ip = itGetStruct(item_gobj);
-	ITAttackEvent *ev = itGetHitEvent(dItLinkBombItemDesc, lITLinkBombHitEvents);
+	ITAttackEvent *ev = itGetAttackEvent(dItLinkBombItemDesc, lITLinkBombAttackEvents);
 
-	if (ip->multi == ev[ip->item_event_id].timer)
+	if (ip->multi == ev[ip->event_id].timer)
 	{
-		ip->atk_coll.angle = ev[ip->item_event_id].angle;
-		ip->atk_coll.damage = ev[ip->item_event_id].damage;
-		ip->atk_coll.size = ev[ip->item_event_id].size;
+		ip->atk_coll.angle = ev[ip->event_id].angle;
+		ip->atk_coll.damage = ev[ip->event_id].damage;
+		ip->atk_coll.size = ev[ip->event_id].size;
 
 		ip->atk_coll.can_rehit_item = TRUE;
 		ip->atk_coll.can_hop = FALSE;
@@ -539,10 +539,10 @@ void itLinkBombExplodeUpdateHitEvent(GObj *item_gobj)
 
 		ip->atk_coll.element = nGMHitElementFire;
 
-		ip->item_event_id++;
+		ip->event_id++;
 
-		if (ip->item_event_id == 4)
-			ip->item_event_id = 3;
+		if (ip->event_id == 4)
+			ip->event_id = 3;
 	}
 }
 
@@ -569,11 +569,11 @@ void itLinkBombExplodeInITAttackColl(GObj *item_gobj)
 	ITStruct *ip = itGetStruct(item_gobj);
 
 	ip->multi = 0;
-	ip->item_event_id = 0;
+	ip->event_id = 0;
 
 	ip->atk_coll.throw_mul = 1.0F;
 
-	itLinkBombExplodeUpdateHitEvent(item_gobj);
+	itLinkBombExplodeUpdateAttackEvent(item_gobj);
 }
 
 // 0x80186524
@@ -581,7 +581,7 @@ sb32 itLinkBombExplodeProcUpdate(GObj *item_gobj)
 {
 	ITStruct *ip = itGetStruct(item_gobj);
 
-	itLinkBombExplodeUpdateHitEvent(item_gobj);
+	itLinkBombExplodeUpdateAttackEvent(item_gobj);
 
 	ip->multi++;
 

@@ -1043,7 +1043,7 @@ lITManagerParticleBankTexturesHi = 0x00B1E640;
 lITMainContainerVelocitiesY = 0x00000000;
 
 lITCapsuleItemAttributes = 0x00000050;
-lITCapsuleHitEvents = 0x00000098;
+lITCapsuleAttackEvents = 0x00000098;
 
 lITTomatoItemAttributes = 0x000000B8;
 
@@ -1068,10 +1068,10 @@ lITFFlowerFlameAngles = 0x00000360;
 lITHammerItemAttributes = 0x00000374;
 
 lITMSBombItemAttributes = 0x000003BC;
-lITMSBombHitEvents = 0x00000404;
+lITMSBombAttackEvents = 0x00000404;
 
 lITBombHeiItemAttributes = 0x00000424;
-lITBombHeiHitEvents = 0x0000046C;
+lITBombHeiAttackEvents = 0x0000046C;
 lITBombHeiDataStart = 0x000033F8;
 lITBombHeiWalkRightDisplayList = 0x00003310;
 lITBombHeiWalkLeftDisplayList = 0x000034C0;
@@ -1087,12 +1087,12 @@ lITGShellAnimJoint = 0x00006018;
 lITGShellMatAnimJoint = 0x00006048;
 
 lITBoxItemAttributes = 0x000005CC;
-lITBoxHitEvents = 0x00000614;
+lITBoxAttackEvents = 0x00000614;
 lITBoxDataStart = 0x00006778;
 lITBoxEffectDisplayList = 0x000068F0;
 
 lITTaruItemAttributes = 0x00000634;
-lITTaruHitEvents = 0x0000067C;
+lITTaruAttackEvents = 0x0000067C;
 
 lITRShellITemAttributes = 0x00000584;
 lITRShellDataStart = 0x00005F88;
@@ -1164,7 +1164,7 @@ lITLuckyDataStart = 0x00010000;
 lITLuckyAnimJoint = 0x000100BC;
 
 lITEggItemAttributes = 0x00000ACC;
-lITEggHitEvents = 0x00000B14;
+lITEggAttackEvents = 0x00000B14;
 
 lITStarmieItemAttributes = 0x00000B34;
 lITStarmieWeaponSwiftWeaponAttributes = 0x00000B7C;
@@ -1184,7 +1184,7 @@ lITPippiItemAttributes = 0x00000C74;
 lITPippiDataStart = 0x00013598;
 
 lITMarumineItemAttributes = 0x00000104;
-lITMarumineHitEvents = 0x0000014C;
+lITMarumineAttackEvents = 0x0000014C;
 
 lITPorygonItemAttributes = 0x0000016C;
 lITPorygonHitParties = 0x000001B4;
@@ -1197,14 +1197,14 @@ lITFushigibanaHitParties = 0x000002C0;
 lITFushigibanaWeaponRazorWeaponAttributes = 0x00000308;
 
 lITTaruBombItemAttributes = 0x000000A8;
-lITTaruBombHitEvents = 0x000000F0;
+lITTaruBombAttackEvents = 0x000000F0;
 lITTaruBombDataStart = 0x00000788;
 lITTaruBombEffectDisplayList = 0x000008A0;
 
 lITNessPKFireItemAttributes = 0x00000034;
 
 lITLinkBombItemAttributes = 0x00000040;
-lITLinkBombHitEvents = 0x00000088;
+lITLinkBombAttackEvents = 0x00000088;
 lITLinkBombBloatScales = 0x000000A8;
 
 lITMonsterAnimBankStart = 0x00013624;

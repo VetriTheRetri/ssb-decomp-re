@@ -93,7 +93,7 @@ struct ITAttackColl
 	s32 shield_damage;									// Shield damage
 	s32 priority;										// Priority?
 	u8 interact_mask;									// Mask of object classes hitbox can interact with; 0x1 = fighters, 0x2 = weapons, 0x4 = items
-	u16 fgm;											// Played when hitbox connects with a hurtbox
+	u16 fgm_id;											// Played when hitbox connects with a hurtbox
 	ub32 can_setoff : 1;								// Item's hitbox can collide with other hitboxes
 	ub32 can_rehit_item : 1;							// Item can rehit item after default rehit cooldown expires
 	ub32 can_rehit_fighter : 1;							// Item can rehit fighter after default rehit cooldown expires
@@ -130,7 +130,7 @@ struct ITMonsterEvent	// Full-scale hitbox subaction event? Used by Venusaur and
 	s32 element;
 	ub32 can_setoff : 1;
 	s32 shield_damage;
-	u16 fgm;
+	u16 fgm_id;
 };
 
 struct ITDamageColl						// DamageColl struct
@@ -279,7 +279,7 @@ struct ITStruct 					// Common items, stage hazards, fighter items and Pokémon
 
 	u16 multi;			  			// Multi-purpose variable; e.g. it is used as intangibility delay for Star Man and ammo count for Ray Gun
 
-	u32 item_event_id : 4; 			// Item hitbox script index? When in doubt, make this u8 : 4
+	u32 event_id : 4; 			// Item hitbox script index? When in doubt, make this u8 : 4
 
 	f32 rotate_step; 				// Item spin rotation step
 

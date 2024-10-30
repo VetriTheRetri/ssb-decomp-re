@@ -13,7 +13,7 @@ extern f32 atan2f(f32, f32);
 extern alSoundEffect *func_800269C0_275C0(u16);
 
 extern intptr_t lITTaruBombItemAttributes;     // 0x000000A8
-extern intptr_t lITTaruBombHitEvents;          // 0x000000F0
+extern intptr_t lITTaruBombAttackEvents;          // 0x000000F0
 extern intptr_t lITTaruBombDataStart;          // 0x00000788
 extern intptr_t lITTaruBombEffectDisplayList;  // 0x000008A0
 
@@ -297,7 +297,7 @@ sb32 itTaruBombExplodeProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITTaruBombItemDesc, lITTaruBombHitEvents)); // Linker thing
+    else itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruBombItemDesc, lITTaruBombAttackEvents)); // Linker thing
 
     return FALSE;
 }
@@ -362,9 +362,9 @@ void itTaruBombExplodeInitItemVars(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
 
     ip->multi = 0;
-    ip->item_event_id = 0;
+    ip->event_id = 0;
 
-    ip->atk_coll.fgm = nSYAudioFGMExplodeL;
+    ip->atk_coll.fgm_id = nSYAudioFGMExplodeL;
 
     ip->atk_coll.can_rehit_item = TRUE;
     ip->atk_coll.can_reflect = FALSE;
@@ -377,7 +377,7 @@ void itTaruBombExplodeInitItemVars(GObj *item_gobj)
     ip->dmg_coll.hitstatus = nGMHitStatusNone;
 
     itMainRefreshAtk(item_gobj);
-    itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITTaruBombItemDesc, lITTaruBombHitEvents));
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruBombItemDesc, lITTaruBombAttackEvents));
 }
 
 // 0x80185284

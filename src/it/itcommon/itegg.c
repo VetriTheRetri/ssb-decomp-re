@@ -7,8 +7,8 @@
 // // // // // // // // // // // //
 
 extern intptr_t lITEggItemAttributes;       // 0x00000ACC
-extern intptr_t lITCapsuleHitEvents;        // 0x00000098
-extern intptr_t lITEggHitEvents;            // 0x00000B14
+extern intptr_t lITCapsuleAttackEvents;        // 0x00000098
+extern intptr_t lITEggAttackEvents;            // 0x00000B14
 
 // // // // // // // // // // // //
 //                               //
@@ -301,7 +301,7 @@ sb32 itEggExplodeProcUpdate(GObj *item_gobj)
 
         return TRUE;
     }
-    itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITEggItemDesc, lITEggHitEvents)); // Linker thing
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITEggItemDesc, lITEggAttackEvents)); // Linker thing
 
     return FALSE;
 }
@@ -348,9 +348,9 @@ void itEggExplodeInitItemVars(GObj *item_gobj)
 
     ip->multi = 0;
 
-    ip->item_event_id = 0;
+    ip->event_id = 0;
 
-    ip->atk_coll.fgm = nSYAudioFGMExplodeL;
+    ip->atk_coll.fgm_id = nSYAudioFGMExplodeL;
     ip->atk_coll.throw_mul = ITEM_THROW_DEFAULT;
 
     func_800269C0_275C0(nSYAudioFGMExplodeL);
@@ -365,7 +365,7 @@ void itEggExplodeInitItemVars(GObj *item_gobj)
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshAtk(item_gobj);
-    itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITEggItemDesc, lITCapsuleHitEvents)); // Linker thing - should this be lITEggHitEvents?
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITEggItemDesc, lITCapsuleAttackEvents)); // Linker thing - should this be lITEggAttackEvents?
 }
 
 // 0x80181B5C

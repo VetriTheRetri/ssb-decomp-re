@@ -217,7 +217,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
 
     wp->atk_coll.shield_damage = attr->shield_damage;
 
-    wp->atk_coll.fgm = attr->sfx;
+    wp->atk_coll.fgm_id = attr->sfx;
 
     wp->atk_coll.priority = attr->priority;
 

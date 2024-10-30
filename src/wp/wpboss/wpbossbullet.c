@@ -87,7 +87,7 @@ void wpBossBulletExplodeInitWeaponVars(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    wp->atk_coll.fgm = nSYAudioFGMExplodeL;
+    wp->atk_coll.fgm_id = nSYAudioFGMExplodeL;
 
     wp->atk_coll.can_rehit_item = TRUE;
     wp->atk_coll.can_hop = FALSE;

@@ -30,7 +30,7 @@ extern sb32 itBombHeiWalkProcMap(GObj *item_gobj);
 extern void itBombHeiWalkInitItemVars(GObj *item_gobj);
 extern void itBombHeiWalkSetStatus(GObj *item_gobj);
 extern void itBombHeiCommonClearVelSetExplode(GObj *item_gobj, u8 unused);
-extern void itBombHeiCommonUpdateHitEvent(GObj *item_gobj);
+extern void itBombHeiCommonUpdateAttackEvent(GObj *item_gobj);
 extern sb32 itBombHeiExplodeMapProcUpdate(GObj *item_gobj);
 extern sb32 itBombHeiExplodeCommonProcHit(GObj *item_gobj);
 extern void itBombHeiExplodeMapSetStatus(GObj *item_gobj);

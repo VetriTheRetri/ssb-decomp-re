@@ -605,21 +605,21 @@ sb32 itMainMakeContainerItem(GObj *parent_gobj)
 }
 
 // 0x80173180
-void itMainUpdateHitEvent(GObj *item_gobj, ITAttackEvent *ev)
+void itMainUpdateAttackEvent(GObj *item_gobj, ITAttackEvent *ev)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if (ip->multi == ev[ip->item_event_id].timer)
+    if (ip->multi == ev[ip->event_id].timer)
     {
-        ip->atk_coll.angle  = ev[ip->item_event_id].angle;
-        ip->atk_coll.damage = ev[ip->item_event_id].damage;
-        ip->atk_coll.size   = ev[ip->item_event_id].size;
+        ip->atk_coll.angle  = ev[ip->event_id].angle;
+        ip->atk_coll.damage = ev[ip->event_id].damage;
+        ip->atk_coll.size   = ev[ip->event_id].size;
 
-        ip->item_event_id++;
+        ip->event_id++;
 
-        if (ip->item_event_id == 4)
+        if (ip->event_id == 4)
         {
-            ip->item_event_id = 3;
+            ip->event_id = 3;
         }
     }
 }

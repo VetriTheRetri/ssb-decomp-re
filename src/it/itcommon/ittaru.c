@@ -7,7 +7,7 @@
 // // // // // // // // // // // //
 
 extern intptr_t lITTaruItemAttributes;      // 0x00000634
-extern intptr_t lITTaruHitEvents;           // 0x0000067C
+extern intptr_t lITTaruAttackEvents;           // 0x0000067C
 
 // // // // // // // // // // // //
 //                               //
@@ -334,7 +334,7 @@ sb32 itTaruExplodeProcUpdate(GObj *item_gobj)
     {
         return TRUE;
     }
-    else itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITTaruItemDesc, lITTaruHitEvents)); // Linker thing
+    else itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruItemDesc, lITTaruAttackEvents)); // Linker thing
 
     return FALSE;
 }
@@ -419,9 +419,9 @@ void itTaruExplodeInitItemVars(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
 
     ip->multi = 0;
-    ip->item_event_id = 0;
+    ip->event_id = 0;
 
-    ip->atk_coll.fgm = nSYAudioFGMExplodeL;
+    ip->atk_coll.fgm_id = nSYAudioFGMExplodeL;
 
     ip->atk_coll.can_rehit_item = TRUE;
     ip->atk_coll.can_reflect = FALSE;
@@ -435,7 +435,7 @@ void itTaruExplodeInitItemVars(GObj *item_gobj)
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshAtk(item_gobj);
-    itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITTaruItemDesc, lITTaruHitEvents));
+    itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruItemDesc, lITTaruAttackEvents));
 }
 
 // 0x8017A2D8

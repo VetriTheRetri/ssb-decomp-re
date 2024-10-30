@@ -8,7 +8,7 @@
 // // // // // // // // // // // //
 
 extern intptr_t lITMarumineItemAttributes;  // 0x00000104
-extern intptr_t lITMarumineHitEvents;       // 0x0000014C
+extern intptr_t lITMarumineAttackEvents;       // 0x0000014C
 
 // // // // // // // // // // // //
 //                               //
@@ -95,23 +95,23 @@ void itMarumineExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_HIDDEN;
 
-    ip->atk_coll.fgm = nSYAudioFGMExplodeL;
+    ip->atk_coll.fgm_id = nSYAudioFGMExplodeL;
 
     itMainRefreshAtk(item_gobj);
     itMarumineExplodeSetStatus(item_gobj);
 }
 
 // 0x80183830
-void itMarumineExplodeUpdateHitEvent(GObj *item_gobj)
+void itMarumineExplodeUpdateAttackEvent(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITAttackEvent *ev = itGetHitEvent(dITMarumineItemDesc, lITMarumineHitEvents); // (ITAttackEvent*) ((uintptr_t)*dITMarumineItemDesc.p_file + (intptr_t)&lITMarumineHitEvents); // Linker thing
+    ITAttackEvent *ev = itGetAttackEvent(dITMarumineItemDesc, lITMarumineAttackEvents); // (ITAttackEvent*) ((uintptr_t)*dITMarumineItemDesc.p_file + (intptr_t)&lITMarumineAttackEvents); // Linker thing
 
-    if (ip->multi == ev[ip->item_event_id].timer)
+    if (ip->multi == ev[ip->event_id].timer)
     {
-        ip->atk_coll.angle  = ev[ip->item_event_id].angle;
-        ip->atk_coll.damage = ev[ip->item_event_id].damage;
-        ip->atk_coll.size   = ev[ip->item_event_id].size;
+        ip->atk_coll.angle  = ev[ip->event_id].angle;
+        ip->atk_coll.damage = ev[ip->event_id].damage;
+        ip->atk_coll.size   = ev[ip->event_id].size;
 
         ip->atk_coll.can_reflect = FALSE;
         ip->atk_coll.can_shield = FALSE;
@@ -120,11 +120,11 @@ void itMarumineExplodeUpdateHitEvent(GObj *item_gobj)
 
         ip->atk_coll.can_setoff = FALSE;
 
-        ip->item_event_id++;
+        ip->event_id++;
 
-        if (ip->item_event_id == 4)
+        if (ip->event_id == 4)
         {
-            ip->item_event_id = 3;
+            ip->event_id = 3;
         }
     }
 }
@@ -161,7 +161,7 @@ sb32 itMarumineExplodeProcUpdate(GObj *item_gobj)
     dobj->translate.vec.f.x += ip->item_vars.marumine.offset.x;
     dobj->translate.vec.f.y += ip->item_vars.marumine.offset.y;
 
-    itMarumineExplodeUpdateHitEvent(item_gobj);
+    itMarumineExplodeUpdateAttackEvent(item_gobj);
 
     ip->multi++;
 
@@ -183,9 +183,9 @@ void itMarumineExplodeSetStatus(GObj *item_gobj)
 
     ip->atk_coll.throw_mul = 1.0F;
 
-    ip->item_event_id = 0;
+    ip->event_id = 0;
 
-    itMarumineExplodeUpdateHitEvent(item_gobj);
+    itMarumineExplodeUpdateAttackEvent(item_gobj);
     itMainSetItemStatus(item_gobj, dITMarumineStatusDescs, nITMarumineStatusExplode);
 }
 

@@ -9,7 +9,7 @@
 // // // // // // // // // // // //
 
 extern intptr_t lITMSBombItemAttributes;    // 0x000003BC
-extern intptr_t lITMSBombHitEvents;         // 0x00000404
+extern intptr_t lITMSBombAttackEvents;         // 0x00000404
 
 // // // // // // // // // // // //
 //                               //
@@ -473,16 +473,16 @@ sb32 itMSBombAttachedProcMap(GObj *item_gobj)
     return FALSE;
 }
 
-void itMSBombExplodeUpdateHitEvent(GObj *item_gobj)
+void itMSBombExplodeUpdateAttackEvent(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITAttackEvent *ev = itGetHitEvent(dITMSBombItemDesc, lITMSBombHitEvents); // (ITAttackEvent *)((uintptr_t)*dITMSBombItemDesc.p_file + &lITMSBombHitEvents); - Linker thing
+    ITAttackEvent *ev = itGetAttackEvent(dITMSBombItemDesc, lITMSBombAttackEvents); // (ITAttackEvent *)((uintptr_t)*dITMSBombItemDesc.p_file + &lITMSBombAttackEvents); - Linker thing
 
-    if (ip->multi == ev[ip->item_event_id].timer)
+    if (ip->multi == ev[ip->event_id].timer)
     {
-        ip->atk_coll.angle  = ev[ip->item_event_id].angle;
-        ip->atk_coll.damage = ev[ip->item_event_id].damage;
-        ip->atk_coll.size   = ev[ip->item_event_id].size;
+        ip->atk_coll.angle  = ev[ip->event_id].angle;
+        ip->atk_coll.damage = ev[ip->event_id].damage;
+        ip->atk_coll.size   = ev[ip->event_id].size;
 
         ip->atk_coll.can_rehit_item = TRUE;
         ip->atk_coll.can_hop = FALSE;
@@ -491,11 +491,11 @@ void itMSBombExplodeUpdateHitEvent(GObj *item_gobj)
 
         ip->atk_coll.element = nGMHitElementFire;
 
-        ip->item_event_id++;
+        ip->event_id++;
 
-        if (ip->item_event_id == 4)
+        if (ip->event_id == 4)
         {
-            ip->item_event_id = 3;
+            ip->event_id = 3;
         }
     }
 }
@@ -570,14 +570,14 @@ void itMSBombExplodeInitItemVars(GObj *item_gobj)
 
     ip->multi = 0;
 
-    ip->item_event_id = 0;
+    ip->event_id = 0;
 
     ip->atk_coll.throw_mul = ITEM_STALE_DEFAULT;
-    ip->atk_coll.fgm = nSYAudioFGMExplodeL;
+    ip->atk_coll.fgm_id = nSYAudioFGMExplodeL;
 
     ip->dmg_coll.hitstatus = nGMHitStatusNone;
 
-    itMSBombExplodeUpdateHitEvent(item_gobj);
+    itMSBombExplodeUpdateAttackEvent(item_gobj);
 }
 
 // 0x80176EE4
@@ -585,7 +585,7 @@ sb32 itMSBombExplodeProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    itMSBombExplodeUpdateHitEvent(item_gobj);
+    itMSBombExplodeUpdateAttackEvent(item_gobj);
 
     ip->multi++;
 

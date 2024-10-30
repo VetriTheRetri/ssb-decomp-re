@@ -7,7 +7,7 @@
 // // // // // // // // // // // //
 
 extern intptr_t lITBombHeiItemAttributes;       // 0x00000424
-extern intptr_t lITBombHeiHitEvents;            // 0x0000046C
+extern intptr_t lITBombHeiAttackEvents;            // 0x0000046C
 extern intptr_t lITBombHeiDataStart;            // 0x000033F8
 extern intptr_t lITBombHeiWalkRightDisplayList; // 0x00003310
 extern intptr_t lITBombHeiWalkLeftDisplayList;  // 0x000034C0         
@@ -211,7 +211,7 @@ void itBombHeiCommonSetExplode(GObj *item_gobj, u8 unused_arg)
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_HIDDEN;
 
-    ip->atk_coll.fgm = nSYAudioFGMExplodeL;
+    ip->atk_coll.fgm_id = nSYAudioFGMExplodeL;
 
     itMainRefreshAtk(item_gobj);
     itMainClearOwnerStats(item_gobj);
@@ -587,16 +587,16 @@ void itBombHeiCommonClearVelSetExplode(GObj *item_gobj, u8 unused)
 }
 
 // 0x80177A24
-void itBombHeiCommonUpdateHitEvent(GObj *item_gobj)
+void itBombHeiCommonUpdateAttackEvent(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
-    ITAttackEvent *ev = itGetHitEvent(dITBombHeiItemDesc, lITBombHeiHitEvents); // Linker thing
+    ITAttackEvent *ev = itGetAttackEvent(dITBombHeiItemDesc, lITBombHeiAttackEvents); // Linker thing
 
-    if (ip->multi == ev[ip->item_event_id].timer)
+    if (ip->multi == ev[ip->event_id].timer)
     {
-        ip->atk_coll.angle = ev[ip->item_event_id].angle;
-        ip->atk_coll.damage = ev[ip->item_event_id].damage;
-        ip->atk_coll.size = ev[ip->item_event_id].size;
+        ip->atk_coll.angle = ev[ip->event_id].angle;
+        ip->atk_coll.damage = ev[ip->event_id].damage;
+        ip->atk_coll.size = ev[ip->event_id].size;
 
         ip->atk_coll.can_rehit_item = TRUE;
         ip->atk_coll.can_hop = FALSE;
@@ -605,11 +605,11 @@ void itBombHeiCommonUpdateHitEvent(GObj *item_gobj)
 
         ip->atk_coll.element = nGMHitElementFire;
 
-        ip->item_event_id++;
+        ip->event_id++;
 
-        if (ip->item_event_id == 4)
+        if (ip->event_id == 4)
         {
-            ip->item_event_id = 3;
+            ip->event_id = 3;
         }
     }
 }
@@ -648,9 +648,9 @@ void itBombHeiExplodeInitItemVars(GObj *item_gobj)
 
     ip->atk_coll.throw_mul = ITEM_STALE_DEFAULT;
 
-    ip->item_event_id = 0;
+    ip->event_id = 0;
 
-    itBombHeiCommonUpdateHitEvent(item_gobj);
+    itBombHeiCommonUpdateAttackEvent(item_gobj);
 }
 
 // 0x80177BE8
@@ -658,7 +658,7 @@ sb32 itBombHeiExplodeProcUpdate(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    itBombHeiCommonUpdateHitEvent(item_gobj);
+    itBombHeiCommonUpdateAttackEvent(item_gobj);
 
     ip->multi++;
 

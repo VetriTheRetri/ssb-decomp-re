@@ -93,7 +93,7 @@ struct WPAttackColl
     s32 shield_damage;                                      // Additional shield damage; if (hitbox damage - shield damage) is negative, heals shield
     s32 priority;                                           // Used to determine winner in hitbox vs hitbox interaction?
     u8 interact_mask;                                       // Mask of object classes hitbox can interact with; 0x1 = fighters, 0x2 = weapons, 0x4 = items
-    u16 fgm;                                                // Sound effect to play when colliding with a hurtbox
+    u16 fgm_id;                                             // Sound effect to play when colliding with a hurtbox
     ub32 can_setoff : 1;                                    // Whether weapon can collide with other hitboxes
     ub32 can_rehit_item : 1;                                // Whether weapon can hit items repeatedly
     ub32 can_rehit_fighter : 1;                             // Whether weapon can hit fighters repeatedly

@@ -356,7 +356,7 @@ void mvOpeningYosterFuncStart(void)
 }
 
 // 0x80132378
-syVideoSetup dMVOpeningYosterDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dMVOpeningYosterVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132394
 syTaskmanSetup dMVOpeningYosterTaskmanSetup =
@@ -406,8 +406,8 @@ syTaskmanSetup dMVOpeningYosterTaskmanSetup =
 // 0x801322CC
 void mvOpeningYosterStartScene(void)
 {
-    dMVOpeningYosterDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-    syVideoInit(&dMVOpeningYosterDisplaySetup);
+    dMVOpeningYosterVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMVOpeningYosterVideoSetup);
 
     dMVOpeningYosterTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl45_BSS_END);
     syTaskmanInit(&dMVOpeningYosterTaskmanSetup);

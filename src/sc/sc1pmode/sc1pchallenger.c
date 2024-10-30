@@ -63,7 +63,7 @@ Gfx dSC1PChallengerDisplayList[/* */] =
 };
 
 // 0x801323B8
-syVideoSetup dSC1PChallengerDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dSC1PChallengerVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x801323D4
 syTaskmanSetup dSC1PChallengerTaskmanSetup =
@@ -388,8 +388,8 @@ void sc1PChallengerFuncStart(void)
 // 0x80132310
 void sc1PChallengerStartScene(void)
 {
-    dSC1PChallengerDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-    syVideoInit(&dSC1PChallengerDisplaySetup);
+    dSC1PChallengerVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dSC1PChallengerVideoSetup);
     
     dSC1PChallengerTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl23_BSS_END);
     syTaskmanInit(&dSC1PChallengerTaskmanSetup);

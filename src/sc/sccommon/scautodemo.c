@@ -156,7 +156,7 @@ intptr_t dSCAutoDemoFighterNameSpriteOffsets[/* */] =
 syColorRGBA dSCAutoDemoFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x8018E234
-syVideoSetup dSCAutoDemoDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dSCAutoDemoVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8018E250
 syTaskmanSetup dSCAutoDemoTaskmanSetup = 
@@ -728,9 +728,9 @@ void scAutoDemoFuncLights(Gfx **dls)
 // 0x8018E014
 void scAutoDemoStartScene(void)
 {
-	dSCAutoDemoDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+	dSCAutoDemoVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 
-	syVideoInit(&dSCAutoDemoDisplaySetup);
+	syVideoInit(&dSCAutoDemoVideoSetup);
 
 	dSCAutoDemoTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl64_BSS_END);
 	dSCAutoDemoTaskmanSetup.func_start = scAutoDemoFuncStart;

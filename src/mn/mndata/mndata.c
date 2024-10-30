@@ -818,7 +818,7 @@ void mnDataFuncStart(void)
 }
 
 // 0x80132FB0
-syVideoSetup dMNDataDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dMNDataVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132FCC
 syTaskmanSetup dMNDataTaskmanSetup = 
@@ -868,8 +868,8 @@ syTaskmanSetup dMNDataTaskmanSetup =
 // 0x80132EC0
 void mnDataStartScene(void)
 {
-    dMNDataDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-    syVideoInit(&dMNDataDisplaySetup);
+    dMNDataVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMNDataVideoSetup);
 
     dMNDataTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl61_BSS_END);
     syTaskmanInit(&dMNDataTaskmanSetup);

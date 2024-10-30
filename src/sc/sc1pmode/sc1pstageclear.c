@@ -2028,7 +2028,7 @@ void sc1PStageClearFuncStart(void)
 }
 
 // 0x801351EC
-syVideoSetup dGM1PStageClearDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dGM1PStageClearVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80135208
 syTaskmanSetup dGM1PStageClearTaskmanSetup =
@@ -2078,8 +2078,8 @@ syTaskmanSetup dGM1PStageClearTaskmanSetup =
 // 0x80134E84
 void sc1PStageClearStartScene(void)
 {
-	dGM1PStageClearDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-	syVideoInit(&dGM1PStageClearDisplaySetup);
+	dGM1PStageClearVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&dGM1PStageClearVideoSetup);
 
 	dGM1PStageClearTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl56_BSS_END);
 	syTaskmanInit(&dGM1PStageClearTaskmanSetup);

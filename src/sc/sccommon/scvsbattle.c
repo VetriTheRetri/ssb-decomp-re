@@ -30,7 +30,7 @@ syColorRGBA dSCVSBattleCommonFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 syColorRGBA dSCVSBattleSuddenDeathFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x8018E3D8
-syVideoSetup dSCVSBattleDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dSCVSBattleVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8018E3F4
 syTaskmanSetup dSCVSBattleTaskmanSetup =
@@ -529,8 +529,8 @@ void scVSBattleStartScene(void)
 	{
 		gBattleState->gr_kind = nGRKindCastle;
 	}
-	dSCVSBattleDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-	syVideoInit(&dSCVSBattleDisplaySetup);
+	dSCVSBattleVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&dSCVSBattleVideoSetup);
 
 	dSCVSBattleTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl4_BSS_END);
 	dSCVSBattleTaskmanSetup.func_start = scVSBattleFuncStart;

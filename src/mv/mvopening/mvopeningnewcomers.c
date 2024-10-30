@@ -69,7 +69,7 @@ u32 dMVOpeningUnused0x8013265C[/* */] =
 };
 
 // 0x80132678
-syVideoSetup dMVOpeningNewcomersDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dMVOpeningNewcomersVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132694
 syTaskmanSetup dMVOpeningNewcomersTaskmanSetup =
@@ -464,8 +464,8 @@ void mvOpeningNewcomersFuncStart(void)
 // 0x801325E0
 void mvOpeningNewcomersStartScene(void)
 {
-    dMVOpeningNewcomersDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-    syVideoInit(&dMVOpeningNewcomersDisplaySetup);
+    dMVOpeningNewcomersVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMVOpeningNewcomersVideoSetup);
 
     dMVOpeningNewcomersTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl52_BSS_END);
     syTaskmanInit(&dMVOpeningNewcomersTaskmanSetup);

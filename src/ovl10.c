@@ -190,7 +190,7 @@ Gfx dMNTitleDisplayList[/* */] =
 };
 
 // 0x80134370
-syVideoSetup dMNTitleDisplaySetup =
+syVideoSetup dMNTitleVideoSetup =
 {
 	&gSCSubsysFramebuffer0,
 	&gSCSubsysFramebuffer1,
@@ -1477,8 +1477,8 @@ void mnTitleFuncUpdate(void)
 // 0x801340B8
 void mnTitleStartScene(void)
 {
-	dMNTitleDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-	syVideoInit(&dMNTitleDisplaySetup);
+	dMNTitleVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&dMNTitleVideoSetup);
 
 	if ((!gSceneData.is_title_anim_viewed) && (gSaveData.unk5E3 <= U8_MAX))
 	{

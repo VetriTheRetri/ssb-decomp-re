@@ -792,7 +792,7 @@ void mn1PModeFuncStart(void)
 }
 
 // 0x801330F0
-syVideoSetup dMN1PModeDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dMN1PModeVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8013310C
 syTaskmanSetup dMN1PModeTaskmanSetup =
@@ -842,8 +842,8 @@ syTaskmanSetup dMN1PModeTaskmanSetup =
 // 0x80133020
 void mn1PModeStartScene(void)
 {
-    dMN1PModeDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-    syVideoInit(&dMN1PModeDisplaySetup);
+    dMN1PModeVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMN1PModeVideoSetup);
     
     dMN1PModeTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl18_BSS_END);
     syTaskmanInit(&dMN1PModeTaskmanSetup);

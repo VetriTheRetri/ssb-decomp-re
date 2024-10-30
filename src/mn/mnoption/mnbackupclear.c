@@ -817,7 +817,7 @@ void mnBackupClearFuncStart(void)
 Vec2f dMNBackupClearUnused0x80132FB8[/* */] = { { 193.0F, 110.0F }, { 87.0F, 110.0F } };
 
 // 0x80132FC8
-syVideoSetup dMNBackupClearDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dMNBackupClearVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132FE4
 syTaskmanSetup dMNBackupClearTaskmanSetup =
@@ -867,8 +867,8 @@ syTaskmanSetup dMNBackupClearTaskmanSetup =
 // 0x80132E28
 void mnBackupClearStartScene(void)
 {
-    dMNBackupClearDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-    syVideoInit(&dMNBackupClearDisplaySetup);
+    dMNBackupClearVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMNBackupClearVideoSetup);
     
     dMNBackupClearTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl53_BSS_END);
     syTaskmanInit(&dMNBackupClearTaskmanSetup);

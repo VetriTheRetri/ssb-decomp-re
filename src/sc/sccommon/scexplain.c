@@ -85,7 +85,7 @@ s32 dSCExplainRandomSeed1 = 0x00000001;
 s32 dSCExplainRandomSeed2 = 0x00000001;
 
 // 0x8018E72C
-syVideoSetup dSCExplainDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dSCExplainVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8018E748
 syTaskmanSetup dSCExplainTaskmanSetup =
@@ -844,9 +844,9 @@ void scExplainFuncDraw(void)
 // 0x8018E5C0
 void scExplainStartScene(void)
 {
-    dSCExplainDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+    dSCExplainVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 
-    syVideoInit(&dSCExplainDisplaySetup);
+    syVideoInit(&dSCExplainVideoSetup);
 
     set_lcg_seed_ptr(&dSCExplainRandomSeed1);
 

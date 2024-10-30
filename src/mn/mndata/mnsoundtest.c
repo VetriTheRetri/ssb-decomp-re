@@ -693,7 +693,7 @@ Gfx dMNSoundTestDisplayList[/* */] =
 };
 
 // 0x80134240
-syVideoSetup dMNSoundTestDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dMNSoundTestVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8013425C
 syTaskmanSetup dMNSoundTestTaskmanSetup =
@@ -1760,8 +1760,8 @@ void mnSoundTestFuncLights(Gfx **dls)
 // 0x80133988
 void mnSoundTestStartScene(void)
 {
-    dMNSoundTestDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-    syVideoInit(&dMNSoundTestDisplaySetup);
+    dMNSoundTestVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMNSoundTestVideoSetup);
 
     dMNSoundTestTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl62_BSS_END);
     syTaskmanInit(&dMNSoundTestTaskmanSetup);

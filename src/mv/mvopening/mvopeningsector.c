@@ -575,7 +575,7 @@ void mvOpeningSectorFuncStart(void)
 }
 
 // 0x8013293C
-syVideoSetup dMVOpeningSectorDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dMVOpeningSectorVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132958
 syTaskmanSetup mvOpeningSectorTaskmanSetup =
@@ -625,8 +625,8 @@ syTaskmanSetup mvOpeningSectorTaskmanSetup =
 // 0x80132898
 void mvOpeningSectorStartScene(void)
 {
-    dMVOpeningSectorDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-    syVideoInit(&dMVOpeningSectorDisplaySetup);
+    dMVOpeningSectorVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMVOpeningSectorVideoSetup);
 
     mvOpeningSectorTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl50_BSS_END);
     syTaskmanInit(&mvOpeningSectorTaskmanSetup);

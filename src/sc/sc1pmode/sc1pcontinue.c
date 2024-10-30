@@ -1256,7 +1256,7 @@ void sc1PContinueFuncStart(void)
 }
 
 // 0x80134238
-syVideoSetup dSC1PContinueDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dSC1PContinueVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80134254
 syTaskmanSetup dSC1PContinueTaskmanSetup =
@@ -1306,9 +1306,9 @@ syTaskmanSetup dSC1PContinueTaskmanSetup =
 // 0x801340FC
 void sc1PContinueStartScene(void)
 {
-    dSC1PContinueDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+    dSC1PContinueVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 
-    syVideoInit(&dSC1PContinueDisplaySetup);
+    syVideoInit(&dSC1PContinueVideoSetup);
 
     dSC1PContinueTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl55_BSS_END);
 

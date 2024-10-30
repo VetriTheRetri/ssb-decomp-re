@@ -145,7 +145,7 @@ FTKeyCommand dMVOpeningJungleSamusInputSeq[/* */] =
 u32 dMVOpeningJungleFileIDs[/* */] = { &D_NF_00000025, &D_NF_00000040 };
 
 // 0x8018D93C
-syVideoSetup dMVOpeningJungleDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dMVOpeningJungleVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8018D958
 syTaskmanSetup dMVOpeningJungleTaskmanSetup =
@@ -446,8 +446,8 @@ void mvOpeningJungleFuncLights(Gfx **dls)
 // 0x8018D818
 void mvOpeningJungleStartScene(void)
 {
-    dMVOpeningJungleDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-    syVideoInit(&dMVOpeningJungleDisplaySetup);
+    dMVOpeningJungleVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMVOpeningJungleVideoSetup);
 
     dMVOpeningJungleTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl51_BSS_END);
     syTaskmanInit(&dMVOpeningJungleTaskmanSetup);

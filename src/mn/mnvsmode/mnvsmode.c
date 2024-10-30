@@ -1522,7 +1522,7 @@ void mnVSModeFuncStart(void)
 }
 
 // 0x80134880
-syVideoSetup dMNVSModeDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dMNVSModeVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8013489C
 scRuntimeInfo dMNVSModeTaskmanSetup =
@@ -1567,8 +1567,8 @@ scRuntimeInfo dMNVSModeTaskmanSetup =
 // 0x80134758
 void mnVSModeStartScene(void)
 {
-    dMNVSModeDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-    syVideoInit(&dMNVSModeDisplaySetup);
+    dMNVSModeVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMNVSModeVideoSetup);
 
     dMNVSModeTaskmanSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl19_BSS_END);
     syTaskmanInit(&dMNVSModeTaskmanSetup);

@@ -659,7 +659,7 @@ u16 dSC1PGameStageCommonStopTics[/* */] = { 22, 15, 60 };
 syColorRGBA dSC1PGameFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x80192B18
-syVideoSetup dSC1PGameDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dSC1PGameVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132B34
 syTaskmanSetup dSC1PGameTaskmanSetup =
@@ -2844,8 +2844,8 @@ void sc1PGameStartScene(void)
     gBattleState = &gSCManager1PGameBattleState;
     gBattleState->game_type = nSCBattleGameType1PGame;
 
-    dSC1PGameDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-    syVideoInit(&dSC1PGameDisplaySetup);
+    dSC1PGameVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dSC1PGameVideoSetup);
 
     dSC1PGameTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl65_BSS_END);
     dSC1PGameTaskmanSetup.func_start = sc1PGameFuncStart;

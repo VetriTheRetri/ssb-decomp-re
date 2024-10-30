@@ -2179,7 +2179,7 @@ void gmStaffrollFuncDraw(void)
 }
 
 // 0x8013A708
-syVideoSetup dGMStaffrollDisplaySetup =
+syVideoSetup dGMStaffrollVideoSetup =
 {
 	SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(640, 480, 0, 0, u16, 0),
 	SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(640, 480, 0, 0, u16, 1),
@@ -2255,8 +2255,8 @@ void gmStaffrollStartScene(void)
 
 	while ((uintptr_t)arena32 < 0x80400000) { *arena32++ = 0x00000000; }
 
-	dGMStaffrollDisplaySetup.zbuffer = syVideoGetZBuffer(12800);
-	syVideoInit(&dGMStaffrollDisplaySetup);
+	dGMStaffrollVideoSetup.zbuffer = syVideoGetZBuffer(12800);
+	syVideoInit(&dGMStaffrollVideoSetup);
 
 	dGMStaffrollTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(640, 480, 0, 0, u16, 0) - (uintptr_t)&ovl59_BSS_END);
 	syTaskmanInit(&dGMStaffrollTaskmanSetup);

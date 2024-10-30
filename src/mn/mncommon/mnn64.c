@@ -55,7 +55,7 @@ Gfx dMNN64DisplayList[/* */] =
 };
 
 // 0x80131F98
-syVideoSetup dMNN64DisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dMNN64VideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80131FB4
 syTaskmanSetup dMNN64TaskmanSetup =
@@ -271,8 +271,8 @@ void mnN64StartScene(void)
 {
 	auStopBGM();
 	
-	dMNN64DisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-	syVideoInit(&dMNN64DisplaySetup);
+	dMNN64VideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&dMNN64VideoSetup);
 
 	dMNN64TaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl58_BSS_END);
 	syTaskmanInit(&dMNN64TaskmanSetup);

@@ -454,7 +454,7 @@ void mvOpeningClashFuncStart(void)
 }
 
 // 0x80132928
-syVideoSetup dMVOpeningClashDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dMVOpeningClashVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132944
 syTaskmanSetup dMVOpeningClashTaskmanSetup =
@@ -504,8 +504,8 @@ syTaskmanSetup dMVOpeningClashTaskmanSetup =
 // 0x80132874
 void mvOpeningClashStartScene(void)
 {
-    dMVOpeningClashDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-    syVideoInit(&dMVOpeningClashDisplaySetup);
+    dMVOpeningClashVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMVOpeningClashVideoSetup);
 
     dMVOpeningClashTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl49_BSS_END);
     syTaskmanInit(&dMVOpeningClashTaskmanSetup);

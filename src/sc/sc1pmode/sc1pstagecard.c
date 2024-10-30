@@ -1986,7 +1986,7 @@ void sc1PStageCardFuncStart(void)
 }
 
 // 0x80135B38
-syVideoSetup dSC1PStageCardDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dSC1PStageCardVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80135B54
 syTaskmanSetup dSC1PStageCardTaskmanSetup =
@@ -2036,8 +2036,8 @@ syTaskmanSetup dSC1PStageCardTaskmanSetup =
 // 0x80134D98
 void sc1PStageCardStartScene(void)
 {
-    dSC1PStageCardDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-    syVideoInit(&dSC1PStageCardDisplaySetup);
+    dSC1PStageCardVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dSC1PStageCardVideoSetup);
     
     dSC1PStageCardTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl24_BSS_END);
     func_800A2698(&dSC1PStageCardTaskmanSetup);

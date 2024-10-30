@@ -1025,7 +1025,7 @@ void mnOptionFuncStart(void)
 }
 
 // 0x801336F8
-syVideoSetup dMNOptionDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dMNOptionVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80133714
 syTaskmanSetup dMNOptionTaskmanSetup =
@@ -1075,8 +1075,8 @@ syTaskmanSetup dMNOptionTaskmanSetup =
 // 0x801335C0
 void mnOptionStartScene(void)
 {
-    dMNOptionDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-    syVideoInit(&dMNOptionDisplaySetup);
+    dMNOptionVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMNOptionVideoSetup);
 
     dMNOptionTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl60_BSS_END);
     syTaskmanInit(&dMNOptionTaskmanSetup);

@@ -842,7 +842,7 @@ void mnVSItemSwitchFuncStart(void)
 }
 
 // 0x80133320
-syVideoSetup dMNVSItemSwitchDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dMNVSItemSwitchVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8013333C
 syTaskmanSetup dMNVSItemSwitchTaskmanSetup =
@@ -892,8 +892,8 @@ syTaskmanSetup dMNVSItemSwitchTaskmanSetup =
 // 0x801331B0
 void mnVSItemSwitchStartScene(void)
 {
-    dMNVSItemSwitchDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-    syVideoInit(&dMNVSItemSwitchDisplaySetup);
+    dMNVSItemSwitchVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMNVSItemSwitchVideoSetup);
     
     dMNVSItemSwitchTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl21_BSS_END);
     syTaskmanInit(&dMNVSItemSwitchTaskmanSetup);

@@ -68,7 +68,7 @@ Lights1 dMVOpeningCliffLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0
 Lights1 dMVOpeningCliffLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
 
 // 0x80132708
-syVideoSetup dMVOpeningCliffDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dMVOpeningCliffVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132724
 syTaskmanSetup dMVOpeningCliffTaskmanSetup =
@@ -529,8 +529,8 @@ void mvOpeningCliffFuncStart(void)
 // 0x80132674
 void mvOpeningCliffStartScene(void)
 {
-    dMVOpeningCliffDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-    syVideoInit(&dMVOpeningCliffDisplaySetup);
+    dMVOpeningCliffVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMVOpeningCliffVideoSetup);
 
     dMVOpeningCliffTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl46_BSS_END);
     syTaskmanInit(&dMVOpeningCliffTaskmanSetup);

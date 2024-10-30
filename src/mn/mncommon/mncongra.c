@@ -134,7 +134,7 @@ Gfx dMNCongraDisplayList[/* */] =
 };
 
 // 0x80132208
-syVideoSetup dMNCongraDisplaySetup =
+syVideoSetup dMNCongraVideoSetup =
 {
 	SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(320, 230, 0, 10, u32, 0),
 	SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(320, 230, 0, 10, u32, 1),
@@ -421,8 +421,8 @@ void mnCongraStartScene(void)
 		sMNCongraFighterKind = gTransferBattleState.players[0].fkind;
 		break;
 	}
-	dMNCongraDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-	syVideoInit(&dMNCongraDisplaySetup);
+	dMNCongraVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&dMNCongraVideoSetup);
 
 	dMNCongraTaskmanSetup.buffer_setup.arena_size = (size_t) (SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(320, 230, 0, 10, u32, 0) - (uintptr_t)&ovl57_BSS_END);
 	syTaskmanInit(&dMNCongraTaskmanSetup); subsys_arena_lo = gSCSubsysFramebuffer0; // WARNING: Newline memes!

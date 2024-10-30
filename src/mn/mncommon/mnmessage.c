@@ -365,56 +365,61 @@ void mnMessageFuncStart(void)
 }
 
 // 0x801325A0
-syVideoSetup dMNMessageDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dMNMessageVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x801325BC
-scRuntimeInfo dMNMessageTaskmanSetup =
+syTaskmanSetup dMNMessageTaskmanSetup =
 {
-    0x00000000,
-    func_8000A5E4,
-    func_8000A340,
-    &ovl22_BSS_END,
-    0,
-    1,
-    2,
-    0x4E20,
-    0,
-    0,
-    0,
-    0x8000,
-    0x20000,
-    0xC000,
-    mnMessageFuncLights,
-    update_contdata,
-    0,
-    0x600,
-    0,
-    0,
-    0,
-    0,
-    0x88,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0x88,
-    0,
-    0x6C,
-    0,
-    0x90,
-    mnMessageFuncStart
+    // Task Logic Buffer Setup
+    {
+        0,                          // ???
+        func_8000A5E4,              // Update function
+        func_8000A340,              // Frame draw function
+        &ovl22_BSS_END,             // Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        sizeof(Gfx) * 2500,         // Display List Buffer 0 Size
+        0,                          // Display List Buffer 1 Size
+        0,                          // Display List Buffer 2 Size
+        0,                          // Display List Buffer 3 Size
+        0x8000,                     // Graphics Heap Size
+        2,                          // ???
+        0xC000,                     // RDP Output Buffer Size
+        mnMessageFuncLights,        // Pre-render function
+        update_contdata,            // Controller I/O function
+    },
+
+    0,                              // Number of GObjThreads
+    sizeof(u64) * 192,              // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of Object Manager Matrices
+    NULL,                           // Matrix function list
+    NULL,                           // Function for ejecting DObjVec?
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(CObj),                 	// Camera size
+    
+    mnMessageFuncStart              // Task start function
 };
 
 // 0x801323F8
 void mnMessageStartScene(void)
 {
-    dMNMessageDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
+    dMNMessageVideoSetup.zbuffer = syVideoGetZBuffer(6400);
     
-    syVideoInit(&dMNMessageDisplaySetup);
+    syVideoInit(&dMNMessageVideoSetup);
     
-    dMNMessageTaskmanSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl22_BSS_END);
+    dMNMessageTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl22_BSS_END);
 
     for
     (

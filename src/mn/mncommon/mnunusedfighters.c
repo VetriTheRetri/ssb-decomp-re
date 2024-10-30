@@ -64,7 +64,7 @@ Gfx dMNUnusedFightersDisplayList[/* */] =
 };
 
 // 0x800D7058
-syVideoSetup dMNUnusedFightersDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dMNUnusedFightersVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x800D7074
 scRuntimeInfo dMNUnusedFightersTaskmanSetup =
@@ -568,8 +568,8 @@ void mnUnusedFightersFuncStart(void)
 // 0x800D6FB0
 void mnUnusedFightersStartScene(void)
 {
-    dMNUnusedFightersDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-    syVideoInit(&dMNUnusedFightersDisplaySetup);
+    dMNUnusedFightersVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMNUnusedFightersVideoSetup);
 
     dMNUnusedFightersTaskmanSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl16_BSS_END);
     syTaskmanInit(&dMNUnusedFightersTaskmanSetup);

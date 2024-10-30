@@ -67,7 +67,7 @@ Lights1 dMVOpeningYamabukiLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF
 Lights1 dMVOpeningYamabukiLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
 
 // 0x801323D8
-syVideoSetup dMVOpeningYamabukiDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dMVOpeningYamabukiVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x801323F4
 syTaskmanSetup dMVOpeningYamabukiTaskmanSetup =
@@ -457,8 +457,8 @@ void mvOpeningYamabukiFuncStart(void)
 // 0x80132344
 void mvOpeningYamabukiStartScene(void)
 {
-    dMVOpeningYamabukiDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-    syVideoInit(&dMVOpeningYamabukiDisplaySetup);
+    dMVOpeningYamabukiVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMVOpeningYamabukiVideoSetup);
 
     dMVOpeningYamabukiTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl48_BSS_END);
     syTaskmanInit(&dMVOpeningYamabukiTaskmanSetup);

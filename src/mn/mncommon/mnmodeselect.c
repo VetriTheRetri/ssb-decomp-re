@@ -90,7 +90,7 @@ Gfx dMNModeSelectDisplayList[/* */] =
 };
 
 // 0x80132BD8
-syVideoSetup dMNModeSelectDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dMNModeSelectVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132BF4
 scRuntimeInfo dMNModeSelectTaskmanSetup =
@@ -768,8 +768,8 @@ void mnModeSelectFuncStart(void)
 // 0x80132B34
 void mnModeSelectStartScene(void)
 {
-    dMNModeSelectDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-    syVideoInit(&dMNModeSelectDisplaySetup);
+    dMNModeSelectVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+    syVideoInit(&dMNModeSelectVideoSetup);
     
     dMNModeSelectTaskmanSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl17_BSS_END);
     syTaskmanInit(&dMNModeSelectTaskmanSetup);

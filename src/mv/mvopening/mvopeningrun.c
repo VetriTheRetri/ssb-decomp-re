@@ -400,7 +400,7 @@ void mvOpeningRunFuncStart(void)
 }
 
 // 0x80132650
-syVideoSetup dMVOpeningRunDisplaySetup = SYVIDEO_DEFINE_DEFAULT();
+syVideoSetup dMVOpeningRunVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8013266C
 syTaskmanSetup dMVOpeningRunTaskmanSetup =
@@ -450,8 +450,8 @@ syTaskmanSetup dMVOpeningRunTaskmanSetup =
 // 0x8013256C
 void mvOpeningRunStartScene(void)
 {
-	dMVOpeningRunDisplaySetup.zbuffer = syVideoGetZBuffer(6400);
-	syVideoInit(&dMVOpeningRunDisplaySetup);
+	dMVOpeningRunVideoSetup.zbuffer = syVideoGetZBuffer(6400);
+	syVideoInit(&dMVOpeningRunVideoSetup);
 
 	dMVOpeningRunTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl44_BSS_END);
 	syTaskmanInit(&dMVOpeningRunTaskmanSetup);

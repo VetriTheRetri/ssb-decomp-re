@@ -299,7 +299,7 @@ void itCapsuleExplodeInitItemVars(GObj *item_gobj)
     ip->multi = 0;
     ip->event_id = 0;
     ip->atk_coll.fgm_id = nSYAudioFGMExplodeL;
-    ip->atk_coll.throw_mul = ITEM_STALE_DEFAULT;
+    ip->atk_coll.throw_mul = ITEM_THROW_DEFAULT;
 
     func_800269C0_275C0(nSYAudioFGMExplodeL);
 

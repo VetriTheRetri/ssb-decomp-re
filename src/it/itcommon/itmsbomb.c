@@ -572,7 +572,7 @@ void itMSBombExplodeInitItemVars(GObj *item_gobj)
 
     ip->event_id = 0;
 
-    ip->atk_coll.throw_mul = ITEM_STALE_DEFAULT;
+    ip->atk_coll.throw_mul = ITEM_THROW_DEFAULT;
     ip->atk_coll.fgm_id = nSYAudioFGMExplodeL;
 
     ip->dmg_coll.hitstatus = nGMHitStatusNone;

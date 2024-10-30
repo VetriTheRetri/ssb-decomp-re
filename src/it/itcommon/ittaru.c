@@ -426,7 +426,7 @@ void itTaruExplodeInitItemVars(GObj *item_gobj)
     ip->atk_coll.can_rehit_item = TRUE;
     ip->atk_coll.can_reflect = FALSE;
 
-    ip->atk_coll.throw_mul = ITEM_STALE_DEFAULT;
+    ip->atk_coll.throw_mul = ITEM_THROW_DEFAULT;
     ip->atk_coll.element = nGMHitElementFire;
 
     ip->atk_coll.can_setoff = FALSE;

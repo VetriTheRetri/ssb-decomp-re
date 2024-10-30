@@ -646,7 +646,7 @@ void itBombHeiExplodeInitItemVars(GObj *item_gobj)
 
     ip->multi = 0;
 
-    ip->atk_coll.throw_mul = ITEM_STALE_DEFAULT;
+    ip->atk_coll.throw_mul = ITEM_THROW_DEFAULT;
 
     ip->event_id = 0;
 

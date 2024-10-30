@@ -21,7 +21,7 @@ void ftLinkSpecialNDestroyBoomerang(GObj *fighter_gobj)
 }
 
 // 0x80163708
-void ftLinkSpecialNCreateBoomerang(GObj *fighter_gobj)
+void ftLinkSpecialNMakeBoomerang(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
@@ -43,14 +43,14 @@ void ftLinkSpecialNCreateBoomerang(GObj *fighter_gobj)
 // 0x80163770
 void ftLinkSpecialNProcUpdate(GObj *fighter_gobj)
 {
-    ftLinkSpecialNCreateBoomerang(fighter_gobj);
+    ftLinkSpecialNMakeBoomerang(fighter_gobj);
     ftAnimEndSetWait(fighter_gobj);
 }
 
 // 0x80163798
 void ftLinkSpecialAirNProcUpdate(GObj *fighter_gobj)
 {
-    ftLinkSpecialNCreateBoomerang(fighter_gobj);
+    ftLinkSpecialNMakeBoomerang(fighter_gobj);
     ftAnimEndSetFall(fighter_gobj);
 }
 

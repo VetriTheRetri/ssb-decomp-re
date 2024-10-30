@@ -42,7 +42,7 @@ extern void ftSamusSpecialAirHiProcPhysics(GObj* fighter_gobj);
 extern void ftSamusSpecialAirHiSetStatus(GObj* fighter_gobj);
 
 // SpecialLw / SpecialAirLw
-extern void ftSamusSpecialLwCreateBomb(GObj* fighter_gobj);
+extern void ftSamusSpecialLwMakeBomb(GObj* fighter_gobj);
 extern void ftSamusSpecialLwProcUpdate(GObj* fighter_gobj);
 extern void ftSamusSpecialAirLwProcUpdate(GObj* fighter_gobj);
 extern void ftSamusSpecialLwProcPhysics(GObj* fighter_gobj);

@@ -35,7 +35,7 @@ void ftNessSpecialHiDecThunderTimers(FTStruct *fp)
 }
 
 // 0x80153C88
-void ftNessSpecialHiCreatePKThunder(GObj *fighter_gobj)
+void ftNessSpecialHiMakePKThunder(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
@@ -309,7 +309,7 @@ void ftNessSpecialHiHoldInITStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftNessSpecialHiCreatePKThunder(fighter_gobj);
+    ftNessSpecialHiMakePKThunder(fighter_gobj);
 
     if (!(fp->is_attach_effect) && (efManagerNessPKThunderWaveMakeEffect(fighter_gobj) != NULL))
     {

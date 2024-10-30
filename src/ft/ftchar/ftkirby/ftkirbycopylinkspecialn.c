@@ -21,7 +21,7 @@ void ftKirbyCopyLinkSpecialNDestroyBoomerang(GObj *fighter_gobj)
 }
 
 // 0x80164688
-void ftKirbyCopyLinkSpecialNCreateBoomerang(GObj *fighter_gobj)
+void ftKirbyCopyLinkSpecialNMakeBoomerang(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
@@ -43,14 +43,14 @@ void ftKirbyCopyLinkSpecialNCreateBoomerang(GObj *fighter_gobj)
 // 0x801646F0
 void ftKirbyCopyLinkSpecialNProcUpdate(GObj *fighter_gobj)
 {
-    ftKirbyCopyLinkSpecialNCreateBoomerang(fighter_gobj);
+    ftKirbyCopyLinkSpecialNMakeBoomerang(fighter_gobj);
     ftAnimEndSetWait(fighter_gobj);
 }
 
 // 0x80164718
 void ftKirbyCopyLinkSpecialAirNProcUpdate(GObj *fighter_gobj)
 {
-    ftKirbyCopyLinkSpecialNCreateBoomerang(fighter_gobj);
+    ftKirbyCopyLinkSpecialNMakeBoomerang(fighter_gobj);
     ftAnimEndSetFall(fighter_gobj);
 }
 

@@ -17,7 +17,7 @@ extern void ftPikachuSpecialNSetStatus(GObj* fighter_gobj);
 extern void ftPikachuSpecialAirNSetStatus(GObj* fighter_gobj);
 
 // SpecialLw / SpecialAirLw
-extern void ftPikachuSpecialLwCreateThunder(GObj* fighter_gobj);
+extern void ftPikachuSpecialLwMakeThunder(GObj* fighter_gobj);
 extern void ftPikachuSpecialLwStartUpdateThunder(GObj* fighter_gobj);
 extern void ftPikachuSpecialLwStartProcUpdate(GObj* fighter_gobj);
 extern void ftPikachuSpecialAirLwStartProcUpdate(GObj* fighter_gobj);

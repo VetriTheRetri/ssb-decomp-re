@@ -246,7 +246,7 @@ extern void ftKirbyCopyNessSpecialAirNSetStatus(GObj* fighter_gobj);
 
 // CopyLinkSpecialN
 extern void ftKirbyCopyLinkSpecialNDestroyBoomerang(GObj* fighter_gobj);
-extern void ftKirbyCopyLinkSpecialNCreateBoomerang(GObj* fighter_gobj);
+extern void ftKirbyCopyLinkSpecialNMakeBoomerang(GObj* fighter_gobj);
 extern void ftKirbyCopyLinkSpecialNProcUpdate(GObj* fighter_gobj);
 extern void ftKirbyCopyLinkSpecialAirNProcUpdate(GObj* fighter_gobj);
 extern void ftKirbyCopyLinkSpecialNProcMap(GObj* fighter_gobj);

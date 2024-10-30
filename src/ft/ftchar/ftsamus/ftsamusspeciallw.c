@@ -8,7 +8,7 @@
 // // // // // // // // // // // //
 
 // 0x8015DF00
-void ftSamusSpecialLwCreateBomb(GObj *fighter_gobj)
+void ftSamusSpecialLwMakeBomb(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
@@ -33,7 +33,7 @@ void ftSamusSpecialLwProcUpdate(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftSamusSpecialLwCreateBomb(fighter_gobj);
+    ftSamusSpecialLwMakeBomb(fighter_gobj);
 
     if (fp->ga == nMPKineticsAir)
     {
@@ -45,7 +45,7 @@ void ftSamusSpecialLwProcUpdate(GObj *fighter_gobj)
 // 0x8015DFBC
 void ftSamusSpecialAirLwProcUpdate(GObj *fighter_gobj)
 {
-    ftSamusSpecialLwCreateBomb(fighter_gobj);
+    ftSamusSpecialLwMakeBomb(fighter_gobj);
     ftAnimEndSetFall(fighter_gobj);
 }
 

@@ -30,7 +30,7 @@ extern void ftLinkSpecialAirHiSetStatus(GObj* fighter_gobj);
 
 // SpecialN / SpecialAirN
 extern void ftLinkSpecialNDestroyBoomerang(GObj* fighter_gobj);
-extern void ftLinkSpecialNCreateBoomerang(GObj* fighter_gobj);
+extern void ftLinkSpecialNMakeBoomerang(GObj* fighter_gobj);
 extern void ftLinkSpecialNProcUpdate(GObj* fighter_gobj);
 extern void ftLinkSpecialAirNProcUpdate(GObj* fighter_gobj);
 extern void ftLinkSpecialNProcMap(GObj* fighter_gobj);
@@ -47,7 +47,7 @@ extern void ftLinkSpecialAirNSetStatus(GObj* fighter_gobj);
 extern void ftLinkSpecialNGetSetStatus(GObj* fighter_gobj);
 
 // SpecialLw / SpecialAirLw
-extern void ftLinkSpecialLwCreateBomb(GObj* fighter_gobj);
+extern void ftLinkSpecialLwMakeBomb(GObj* fighter_gobj);
 extern void ftLinkSpecialLwProcUpdate(GObj* fighter_gobj);
 extern void ftLinkSpecialAirLwProcUpdate(GObj* fighter_gobj);
 extern void ftLinkSpecialLwProcMap(GObj* fighter_gobj);

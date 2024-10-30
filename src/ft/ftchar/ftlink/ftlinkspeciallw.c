@@ -8,7 +8,7 @@
 // // // // // // // // // // // //
 
 // 0x801643D0
-void ftLinkSpecialLwCreateBomb(GObj *fighter_gobj)
+void ftLinkSpecialLwMakeBomb(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
@@ -31,14 +31,14 @@ void ftLinkSpecialLwCreateBomb(GObj *fighter_gobj)
 // 0x80164434
 void ftLinkSpecialLwProcUpdate(GObj *fighter_gobj)
 {
-    ftLinkSpecialLwCreateBomb(fighter_gobj);
+    ftLinkSpecialLwMakeBomb(fighter_gobj);
     ftAnimEndSetWait(fighter_gobj);
 }
 
 // 0x8016445C
 void ftLinkSpecialAirLwProcUpdate(GObj *fighter_gobj)
 {
-    ftLinkSpecialLwCreateBomb(fighter_gobj);
+    ftLinkSpecialLwMakeBomb(fighter_gobj);
     ftAnimEndSetFall(fighter_gobj);
 }
 

@@ -27,7 +27,7 @@ extern void ftNessSpecialAirNSetStatus(GObj* fighter_gobj);
 
 // SpecialHi / SpecialAirHi
 extern void ftNessSpecialHiDecThunderTimers(FTStruct* fp);
-extern void ftNessSpecialHiCreatePKThunder(GObj* fighter_gobj);
+extern void ftNessSpecialHiMakePKThunder(GObj* fighter_gobj);
 extern sb32 ftNessSpecialHiCheckCollidePKThunder(GObj* fighter_gobj);
 extern void ftNessSpecialHiStartProcUpdate(GObj* fighter_gobj);
 extern void ftNessSpecialAirHiStartProcUpdate(GObj* fighter_gobj);

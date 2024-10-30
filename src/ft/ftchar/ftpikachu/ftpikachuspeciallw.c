@@ -18,7 +18,7 @@
 // // // // // // // // // // // //
 
 // 0x80151DB0
-void ftPikachuSpecialLwCreateThunder(GObj *fighter_gobj)
+void ftPikachuSpecialLwMakeThunder(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f pos;
@@ -46,7 +46,7 @@ void ftPikachuSpecialLwStartUpdateThunder(GObj *fighter_gobj)
 
     if (fp->motion_vars.flags.flag0 != 0)
     {
-        ftPikachuSpecialLwCreateThunder(fighter_gobj);
+        ftPikachuSpecialLwMakeThunder(fighter_gobj);
     }
 }
 
@@ -266,7 +266,7 @@ void ftPikachuSpecialLwLoopUpdateThunder(GObj *fighter_gobj)
 
     if (fp->motion_vars.flags.flag0 == 0)
     {
-        ftPikachuSpecialLwCreateThunder(fighter_gobj);
+        ftPikachuSpecialLwMakeThunder(fighter_gobj);
     }
     fp->motion_vars.flags.flag0 = 0;
 

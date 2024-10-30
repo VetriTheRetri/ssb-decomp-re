@@ -1495,7 +1495,7 @@ void LBParticleDrawTextures(GObj *gobj)
     {
         switch (cobj->xobjs[i]->kind)
         {
-            case nGCTransformPerspFastF:
+            case nGCMatrixKindPerspFastF:
                 syMatrixPerspFastF
                 (
                     &projection_f,
@@ -1508,7 +1508,7 @@ void LBParticleDrawTextures(GObj *gobj)
                 );
                 break;
                 
-            case nGCTransformPerspF:
+            case nGCMatrixKindPerspF:
                 syMatrixPerspF
                 (
                     &projection_f,
@@ -1521,7 +1521,7 @@ void LBParticleDrawTextures(GObj *gobj)
                 );
                 break;
 
-			case nGCTransformOrtho:
+			case nGCMatrixKindOrtho:
 				syMatrixOrthoF
                 (
                     &projection_f,

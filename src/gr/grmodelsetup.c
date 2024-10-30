@@ -26,11 +26,11 @@ void grModelSetupGroundDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs, DObjT
         }
         else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobjdesc->display_list);
         
-        if (transform_types[i].tk1 != nGCTransformNull)
+        if (transform_types[i].tk1 != nGCMatrixKindNull)
         {
             gcAddXObjForDObjFixed(dobj, transform_types[i].tk1, transform_types[i].tk3);
         }
-        if (transform_types[i].tk2 != nGCTransformNull)
+        if (transform_types[i].tk2 != nGCMatrixKindNull)
         {
             gcAddXObjForDObjFixed(dobj, transform_types[i].tk2, 0);
         }

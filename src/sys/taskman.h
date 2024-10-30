@@ -36,7 +36,7 @@ typedef struct syTaskmanBufferSetup
 
 } syTaskmanBufferSetup; // size == 0x40
 
-typedef struct syTaskmanSetup
+typedef struct SYTaskmanSetup
 {
 	/* 0x00 */ syTaskmanBufferSetup buffer_setup;
 	/* 0x40 */ u32 gobjthreads_num;
@@ -59,7 +59,7 @@ typedef struct syTaskmanSetup
 	/* 0x84 */ u32 camera_size;
 	/* 0x88 */ void (*func_start)(void);	// Scene start function
 
-} syTaskmanSetup; // size >= 0x8C
+} SYTaskmanSetup; // size >= 0x8C
 
 extern u32 sSYTaskmanUpdateCount;
 extern u32 dSYTaskmanFrameDrawCount;
@@ -83,7 +83,7 @@ extern void syTaskmanAppendGfxUcodeLoad(Gfx **dlist, u32 ucodeIdx);
 extern void func_800053CC(void);
 extern void syTaskmanUpdateDLBuffers(void);
 extern void syTaskmanSetLoadScene(void);
-extern void syTaskmanInit(syTaskmanSetup *arg);
+extern void syTaskmanInit(SYTaskmanSetup *arg);
 extern void func_80006B80(void);
 
 #endif

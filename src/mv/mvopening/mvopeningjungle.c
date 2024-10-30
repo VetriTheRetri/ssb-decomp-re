@@ -145,10 +145,10 @@ FTKeyCommand dMVOpeningJungleSamusInputSeq[/* */] =
 u32 dMVOpeningJungleFileIDs[/* */] = { &D_NF_00000025, &D_NF_00000040 };
 
 // 0x8018D93C
-syVideoSetup dMVOpeningJungleVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMVOpeningJungleVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8018D958
-syTaskmanSetup dMVOpeningJungleTaskmanSetup =
+SYTaskmanSetup dMVOpeningJungleTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {

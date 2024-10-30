@@ -1237,7 +1237,7 @@ void unref_800067E4(syTaskmanBufferSetup *arg)
 }
 
 // 0x8000683C
-void syTaskmanInit(syTaskmanSetup *ts)
+void syTaskmanInit(SYTaskmanSetup *ts)
 {
 	GCSetup omsetup;
 

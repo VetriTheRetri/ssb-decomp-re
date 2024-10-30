@@ -123,7 +123,7 @@ s32 scTrainingMode_Files_BackgroundImageIDs[] = {
 // 0x8019086C
 syColorRGBA dSCTrainingFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
-syVideoSetup D_ovl7_80190870 = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup D_ovl7_80190870 = SYVIDEO_DEFINE_DEFAULT();
 
 scRuntimeInfo D_ovl7_8019088C = {
 

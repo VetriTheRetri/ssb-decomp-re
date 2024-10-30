@@ -25,7 +25,7 @@ WPCreateDesc dWPYoshiEggThrowWeaponDesc =
 
     // DObj transformation struct
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
         0x2E,                               // Secondary matrix transformations?
         0                                   // ???
     },

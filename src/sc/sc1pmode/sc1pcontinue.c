@@ -1256,10 +1256,10 @@ void sc1PContinueFuncStart(void)
 }
 
 // 0x80134238
-syVideoSetup dSC1PContinueVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dSC1PContinueVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80134254
-syTaskmanSetup dSC1PContinueTaskmanSetup =
+SYTaskmanSetup dSC1PContinueTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {

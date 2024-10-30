@@ -38,8 +38,8 @@ ITCreateDesc dITBoxItemDesc =
 
     // DObj transformation struct
     {
-        nGCTransformTraRotRpyR,             // Main matrix transformations
-        nGCTransformNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
+        nGCMatrixKindNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -205,7 +205,7 @@ void itBoxContainerSmashMakeEffect(Vec3f *pos)
             {
                 dobj = gcAddDObjForGObj(effect_gobj, dl);
 
-                gcAddXObjForDObjFixed(dobj, nGCTransformTraRotRpyR, 0);
+                gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyR, 0);
 
                 dobj->translate.vec.f = *pos;
 

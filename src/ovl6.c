@@ -187,7 +187,7 @@ s32 D_ovl6_8018F040[16] = {
 };
 
 // 0x8018F080
-syVideoSetup D_ovl6_8018F080 = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup D_ovl6_8018F080 = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8018F09C
 scRuntimeInfo D_ovl6_8018F09C = {

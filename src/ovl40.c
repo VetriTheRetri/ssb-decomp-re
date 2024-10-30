@@ -443,7 +443,7 @@ void gMVOpeningLinkFuncLights(Gfx **display_list)
 }
 
 // 0x8018E0DC
-syVideoSetup D_ovl40_8018E0DC = {
+SYVideoSetup D_ovl40_8018E0DC = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,

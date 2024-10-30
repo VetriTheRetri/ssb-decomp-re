@@ -64,7 +64,7 @@ Gfx dMNUnusedFightersDisplayList[/* */] =
 };
 
 // 0x800D7058
-syVideoSetup dMNUnusedFightersVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMNUnusedFightersVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x800D7074
 scRuntimeInfo dMNUnusedFightersTaskmanSetup =

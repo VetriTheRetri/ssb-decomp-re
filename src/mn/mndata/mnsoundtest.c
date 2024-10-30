@@ -693,10 +693,10 @@ Gfx dMNSoundTestDisplayList[/* */] =
 };
 
 // 0x80134240
-syVideoSetup dMNSoundTestVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMNSoundTestVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8013425C
-syTaskmanSetup dMNSoundTestTaskmanSetup =
+SYTaskmanSetup dMNSoundTestTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {

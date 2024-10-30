@@ -781,7 +781,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
     topn_joint = gcAddDObjForGObj(fighter_gobj, NULL);
     fp->joints[nFTPartsJointTopN] = topn_joint;
 
-    lbCommonInitDObjTriTransform(topn_joint, 0x4B, nGCTransformNull, nGCTransformNull);
+    lbCommonInitDObjTriTransform(topn_joint, 0x4B, nGCMatrixKindNull, nGCMatrixKindNull);
 
     fp->joints[nFTPartsJointTopN]->xobjs[0]->unk05 = ft_desc->unk_rebirth_0x1D;
 

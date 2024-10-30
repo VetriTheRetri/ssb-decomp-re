@@ -454,10 +454,10 @@ void mvOpeningClashFuncStart(void)
 }
 
 // 0x80132928
-syVideoSetup dMVOpeningClashVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMVOpeningClashVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132944
-syTaskmanSetup dMVOpeningClashTaskmanSetup =
+SYTaskmanSetup dMVOpeningClashTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {

@@ -1158,7 +1158,7 @@ void mvOpeningFirstDestinationInit()
 }
 
 // 0x80134BD0
-syVideoSetup D_ovl34_80134BD0 = {
+SYVideoSetup D_ovl34_80134BD0 = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,

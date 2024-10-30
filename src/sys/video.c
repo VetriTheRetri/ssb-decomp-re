@@ -169,7 +169,7 @@ void syVideoSetScreenSettings(s32 width, s32 height, u32 flags)
 }
 
 // Apply video setup
-void syVideoInit(syVideoSetup *video_setup)
+void syVideoInit(SYVideoSetup *video_setup)
 {
     syVideoSetFramebuffers(video_setup->framebuf0, video_setup->framebuf1, video_setup->framebuf2);
     gSYVideoZBuffer = video_setup->zbuffer;

@@ -365,10 +365,10 @@ void mnMessageFuncStart(void)
 }
 
 // 0x801325A0
-syVideoSetup dMNMessageVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMNMessageVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x801325BC
-syTaskmanSetup dMNMessageTaskmanSetup =
+SYTaskmanSetup dMNMessageTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {

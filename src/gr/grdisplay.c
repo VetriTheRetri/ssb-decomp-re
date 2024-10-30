@@ -188,7 +188,7 @@ GObj* grDisplayMakeGeometryLayer(MPGroundDesc *gr_desc, s32 gr_desc_id, DObj **p
     {
         return NULL;
     }
-    ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGrRender, NULL, nGCCommonLinkIDGroundRender, GOBJ_LINKORDER_DEFAULT);
+    ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGroundDisplay, NULL, nGCCommonLinkIDGroundDisplay, GOBJ_LINKORDER_DEFAULT);
 
     if (gMPCollisionGroundData->layer_mask & (1 << gr_desc_id))
     {
@@ -197,7 +197,7 @@ GObj* grDisplayMakeGeometryLayer(MPGroundDesc *gr_desc, s32 gr_desc_id, DObj **p
     else func_display = dGRDisplayDescs[gr_desc_id].func_displaypri;
 
     gcAddGObjDisplay(ground_gobj, func_display, dGRDisplayDescs[gr_desc_id].dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcSetupCustomDObjs(ground_gobj, gr_desc->dobjdesc, p_dobj, nGCTransformTraRotRpyRSca, nGCTransformNull, nGCTransformNull);
+    gcSetupCustomDObjs(ground_gobj, gr_desc->dobjdesc, p_dobj, nGCMatrixKindTraRotRpyRSca, nGCMatrixKindNull, nGCMatrixKindNull);
 
     if (gr_desc->p_mobjsubs != NULL)
     {

@@ -34,8 +34,8 @@ ITCreateDesc dITLizardonItemDesc =
 
     // DObj transformation struct
     {
-        nGCTransformNull,                   // Main matrix transformations
-        nGCTransformNull,                   // Secondary matrix transformations?
+        nGCMatrixKindNull,                   // Main matrix transformations
+        nGCMatrixKindNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -100,8 +100,8 @@ WPCreateDesc dITLizardonWeaponFlameWeaponDesc =
 
     // DObj transformation struct
     {
-        nGCTransformTraRotRpyRSca,          // Main matrix transformations
-        nGCTransformNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyRSca,          // Main matrix transformations
+        nGCMatrixKindNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -344,7 +344,7 @@ GObj* itLizardonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         dobj = DObjGetStruct(item_gobj);
 
-        gcAddXObjForDObjFixed(dobj, nGCTransformTraRotRpyR, 0);
+        gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyR, 0);
         gcAddXObjForDObjFixed(dobj, 0x48, 0);
 
         dobj->translate.vec.f = *pos;

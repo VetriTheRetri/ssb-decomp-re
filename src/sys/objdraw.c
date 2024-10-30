@@ -501,17 +501,17 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 {
                     break;
                 }
-                case nGCTransformTra:
+                case nGCMatrixKindTra:
                 {
                     syMatrixTranslate(mtx_store.gbi, dobj->translate.vec.f.x, dobj->translate.vec.f.y, dobj->translate.vec.f.z);
                     break;
                 }
-                case nGCTransformRotD:
+                case nGCMatrixKindRotD:
                 {
                     syMatrixRotD(mtx_store.gbi, dobj->rotate.a, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
                     break;
                 }
-                case nGCTransformTraRotD:
+                case nGCMatrixKindTraRotD:
                 {
                     syMatrixTraRotD
                     (
@@ -526,12 +526,12 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case nGCTransformRotRpyD:
+                case nGCMatrixKindRotRpyD:
                 {
                     syMatrixRotRpyD(mtx_store.gbi, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
                     break;
                 }
-                case nGCTransformTraRotRpyD:
+                case nGCMatrixKindTraRotRpyD:
                 {
                     syMatrixTraRotRpyD
                     (
@@ -545,7 +545,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case nGCTransformRotR:
+                case nGCMatrixKindRotR:
                 {
                     syMatrixRotR
                     (
@@ -557,7 +557,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case nGCTransformTraRotR:
+                case nGCMatrixKindTraRotR:
                 {
                     syMatrixRotR_translate
                     (
@@ -572,7 +572,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case nGCTransformTraRotRSca:
+                case nGCMatrixKindTraRotRSca:
                 {
                     syMatrixTraRotRSca
                     (
@@ -591,12 +591,12 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     gODScaleX *= dobj->scale.vec.f.x;
                     break;
                 }
-                case nGCTransformRotRpyR:
+                case nGCMatrixKindRotRpyR:
                 {
                     syMatrixRotRpyR(mtx_store.gbi, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
                     break;
                 }
-                case nGCTransformTraRotRpyR:
+                case nGCMatrixKindTraRotRpyR:
                 {
                     syMatrixTraRotRpyR
                     (
@@ -610,7 +610,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case nGCTransformTraRotRpyRSca:
+                case nGCMatrixKindTraRotRpyRSca:
                 {
                     syMatrixTraRotRpyRSca
                     (
@@ -628,12 +628,12 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     gODScaleX *= dobj->scale.vec.f.x;
                     break;
                 }
-                case nGCTransformRotPyrR:
+                case nGCMatrixKindRotPyrR:
                 {
                     syMatrixRotPyrR(mtx_store.gbi, dobj->rotate.vec.f.x, dobj->rotate.vec.f.y, dobj->rotate.vec.f.z);
                     break;
                 }
-                case nGCTransformTraRotPyrR:
+                case nGCMatrixKindTraRotPyrR:
                 {
                     syMatrixTraRotPyrR
                     (
@@ -647,7 +647,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case nGCTransformTraRotPyrRSca:
+                case nGCMatrixKindTraRotPyrRSca:
                 {
                     syMatrixTraRotPyrRSca
                     (
@@ -665,7 +665,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     gODScaleX *= dobj->scale.vec.f.x;
                     break;
                 }
-                case nGCTransformSca:
+                case nGCMatrixKindSca:
                 {
                     syMatrixSca(mtx_store.gbi, dobj->scale.vec.f.x, dobj->scale.vec.f.y, dobj->scale.vec.f.z);
                     gODScaleX *= dobj->scale.vec.f.x;
@@ -711,28 +711,28 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     func_80010918(mtx_store.f, dobj, TRUE);
                     break;
                 }
-                case nGCTransformVecTra:
+                case nGCMatrixKindVecTra:
                 {
                     syMatrixTranslate(mtx_store.gbi, translate->vec.f.x, translate->vec.f.y, translate->vec.f.z);
                     break;
                 }
-                case nGCTransformVecRotR:
+                case nGCMatrixKindVecRotR:
                 {
                     syMatrixRotR(mtx_store.gbi, rotate->a, rotate->vec.f.x, rotate->vec.f.y, rotate->vec.f.z);
                     break;
                 }
-                case nGCTransformVecRotRpyR:
+                case nGCMatrixKindVecRotRpyR:
                 {
                     syMatrixRotRpyR(mtx_store.gbi, rotate->vec.f.x, rotate->vec.f.y, rotate->vec.f.z);
                     break;
                 }
-                case nGCTransformVecSca:
+                case nGCMatrixKindVecSca:
                 {
                     syMatrixSca(mtx_store.gbi, scale->vec.f.x, scale->vec.f.y, scale->vec.f.z);
                     gODScaleX *= scale->vec.f.x;
                     break;
                 }
-                case nGCTransformVecTraRotR:
+                case nGCMatrixKindVecTraRotR:
                 {
                     syMatrixRotR_translate
                     (
@@ -747,7 +747,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case nGCTransformVecTraRotRSca:
+                case nGCMatrixKindVecTraRotRSca:
                 {
                     syMatrixTraRotRSca
                     (
@@ -766,7 +766,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     gODScaleX *= scale->vec.f.x;
                     break;
                 }
-                case nGCTransformVecTraRotRpyR:
+                case nGCMatrixKindVecTraRotRpyR:
                 {
                     syMatrixTraRotRpyR
                     (
@@ -780,7 +780,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     );
                     break;
                 }
-                case nGCTransformVecTraRotRpyRSca:
+                case nGCMatrixKindVecTraRotRpyRSca:
                 {
                     syMatrixTraRotRpyRSca
                     (
@@ -2874,7 +2874,7 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                     case 2:
                         break;
 
-                    case nGCTransformPerspFastF:
+                    case nGCMatrixKindPerspFastF:
                         syMatrixPerspFastF
                         (
                             gODMatrixPerspF,
@@ -2889,7 +2889,7 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                         sODMatrixProjectL = mtx_store.gbi;
                         break;
 
-                    case nGCTransformPerspF:
+                    case nGCMatrixKindPerspF:
                         syMatrixPerspF
                         (
                             gODMatrixPerspF,
@@ -2904,7 +2904,7 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                         sODMatrixProjectL = mtx_store.gbi;
                         break;
 
-                    case nGCTransformOrtho:
+                    case nGCMatrixKindOrtho:
                         syMatrixOrtho
                         (
                             mtx_store.gbi,
@@ -3007,13 +3007,13 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                 case 2:
                     break;
 
-                case nGCTransformPerspFastF:
-                case nGCTransformPerspF:
+                case nGCMatrixKindPerspFastF:
+                case nGCMatrixKindPerspF:
                     gSPMatrix(dl++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
                     gSPPerspNormalize(dl++, cobj->projection.persp.norm);
                     break;
 
-                case nGCTransformOrtho:
+                case nGCMatrixKindOrtho:
                     gSPMatrix(dl++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
                     break;
 

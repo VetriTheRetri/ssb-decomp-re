@@ -63,7 +63,7 @@ dbMenuItem dMNDebugFallsMenuItems[13] = {
 };
 
 // 0x800D68A4
-syVideoSetup D_ovl15_800D68A4 = { 0x80392A00, 0x803B6900, 0x803DA800, 0, 0x00140, 0x00F0, 0x00016a99 };
+SYVideoSetup D_ovl15_800D68A4 = { 0x80392A00, 0x803B6900, 0x803DA800, 0, 0x00140, 0x00F0, 0x00016a99 };
 
 // 0x800D68C0
 scRuntimeInfo D_ovl15_800D68C0 = {

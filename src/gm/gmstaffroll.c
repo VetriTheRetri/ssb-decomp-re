@@ -690,7 +690,7 @@ void func_ovl59_8013202C(GObj *arg0)
 	{
 		gobj = gcMakeGObjSPAfter(8, NULL, nGCCommonLinkID02, GOBJ_LINKORDER_DEFAULT);
 		gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 3, GOBJ_DLLINKORDER_DEFAULT, -1);
-		gcSetupCustomDObjs(gobj, sGMStaffrollDObjDesc, NULL, nGCTransformTraRotRpyRSca, nGCTransformNull, nGCTransformNull);
+		gcSetupCustomDObjs(gobj, sGMStaffrollDObjDesc, NULL, nGCMatrixKindTraRotRpyRSca, nGCMatrixKindNull, nGCMatrixKindNull);
 		gcAddGObjProcess(gobj, func_ovl59_80131F34, nGCProcessKindProc, 1);
 
 		gobj->user_data.p = arg0;
@@ -1503,7 +1503,7 @@ GMStaffrollSetup* gmStaffrollMakeJobDObjs(GMStaffrollSetup *name_setup, DObj *do
 
 			new_dobj = gcAddChildForDObj(dobj, dl);
 
-			gcAddXObjForDObjFixed(new_dobj, nGCTransformTra, 1);
+			gcAddXObjForDObjFixed(new_dobj, nGCMatrixKindTra, 1);
 
 			if (job_character_id != -1)
 			{
@@ -1628,7 +1628,7 @@ GObj* gmStaffrollMakeJobGObj(GMStaffrollJob *job)
 
 	dobj = gcAddDObjForGObj(gobj, NULL);
 
-	gcAddXObjForDObjFixed(dobj, nGCTransformTraRotRpyRSca, 0);
+	gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyRSca, 0);
 
 	if (job->prefix_id != -1)
 	{
@@ -1665,7 +1665,7 @@ GObj* gmStaffrollMakeNameGObjAndDObjs(void)
 
 	new_dobj = dobj = gcAddDObjForGObj(gobj, NULL);
 
-	gcAddXObjForDObjFixed(dobj, nGCTransformTraRotRpyRSca, 0);
+	gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyRSca, 0);
 
 	wbase = 0.0F;
 
@@ -1691,7 +1691,7 @@ GObj* gmStaffrollMakeNameGObjAndDObjs(void)
 
 			new_dobj = gcAddChildForDObj(dobj, dl);
 
-			gcAddXObjForDObjFixed(new_dobj, nGCTransformTra, 1);
+			gcAddXObjForDObjFixed(new_dobj, nGCMatrixKindTra, 1);
 
 			if (name_character_id != -1)
 			{
@@ -2179,7 +2179,7 @@ void gmStaffrollFuncDraw(void)
 }
 
 // 0x8013A708
-syVideoSetup dGMStaffrollVideoSetup =
+SYVideoSetup dGMStaffrollVideoSetup =
 {
 	SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(640, 480, 0, 0, u16, 0),
 	SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(640, 480, 0, 0, u16, 1),
@@ -2193,7 +2193,7 @@ syVideoSetup dGMStaffrollVideoSetup =
 };
 
 // 0x8013A724
-syTaskmanSetup dGMStaffrollTaskmanSetup =
+SYTaskmanSetup dGMStaffrollTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {

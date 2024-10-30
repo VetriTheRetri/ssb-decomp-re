@@ -1005,8 +1005,8 @@ struct FTStruct
     s32 fkind;
     u8 team;
     u8 player;
-    u8 detail_curr;          // Hi-Poly = 1, Low-Poly = 2
-    u8 detail_base;          // Hi-Poly = 1, Low-Poly = 2
+    u8 detail_curr;             // Hi-Poly = 1, Low-Poly = 2
+    u8 detail_base;             // Hi-Poly = 1, Low-Poly = 2
     u8 costume;
     u8 shade;                   // i.e. When multiple instances of the same character costume are in-game
     u8 handicap;

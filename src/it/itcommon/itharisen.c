@@ -29,8 +29,8 @@ ITCreateDesc dITHarisenItemDesc =
 
     // DObj transformation struct
     {
-        nGCTransformTraRotRpyRSca,          // Main matrix transformations
-        nGCTransformNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyRSca,          // Main matrix transformations
+        nGCMatrixKindNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -188,7 +188,7 @@ void itHarisenHoldSetStatus(GObj *item_gobj)
 {
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    gcAddXObjForDObjFixed(dobj, nGCTransformSca, 0);
+    gcAddXObjForDObjFixed(dobj, nGCMatrixKindSca, 0);
 
     dobj->rotate.vec.f.y = 0.0F;
 

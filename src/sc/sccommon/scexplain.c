@@ -85,10 +85,10 @@ s32 dSCExplainRandomSeed1 = 0x00000001;
 s32 dSCExplainRandomSeed2 = 0x00000001;
 
 // 0x8018E72C
-syVideoSetup dSCExplainVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dSCExplainVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8018E748
-syTaskmanSetup dSCExplainTaskmanSetup =
+SYTaskmanSetup dSCExplainTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -310,7 +310,7 @@ GObj* scExplainMakeControlStickCamera(void)
     );
     CObj *cobj = CObjGetStruct(camera_gobj);
 
-    gcAddXObjForCamera(cobj, nGCTransformOrtho, 1);
+    gcAddXObjForCamera(cobj, nGCMatrixKindOrtho, 1);
     gcAddXObjForCamera(cobj, 6, 1);
 
     syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -367,9 +367,9 @@ GObj* scExplainMakeControlStickInterface(void)
         interface_gobj, 
         ((uintptr_t)sSCExplainGraphicsFileHead + (intptr_t)&lSCExplainStickDObjDesc), 
         NULL, 
-        nGCTransformTra, 
-        nGCTransformNull, 
-        nGCTransformNull
+        nGCMatrixKindTra, 
+        nGCMatrixKindNull, 
+        nGCMatrixKindNull
     );
     gcAddMObjAll
     (
@@ -443,7 +443,7 @@ GObj* scExplainMakeTapSpark(void)
 
     gcAddGObjDisplay(interface_gobj, scExplainTapSparkFuncDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjForGObj(interface_gobj, (void*) ((uintptr_t)sSCExplainGraphicsFileHead + (intptr_t)&lSCExplainTapSparkDisplayList));
-    gcAddXObjForDObjFixed(DObjGetStruct(interface_gobj), nGCTransformTra, 0);
+    gcAddXObjForDObjFixed(DObjGetStruct(interface_gobj), nGCMatrixKindTra, 0);
     gcAddMObjAll(interface_gobj, lbRelocGetFileData(MObjSub***, sSCExplainGraphicsFileHead, &lSCExplainTapSparkMObjSub));
     gcAddGObjProcess(interface_gobj, scExplainTapSparkProcUpdate, nGCProcessKindProc, 5);
 
@@ -486,7 +486,7 @@ GObj* scExplainMakeSpecialMoveRGB(void)
     );
     gcAddGObjDisplay(interface_gobj, scExplainTapSparkFuncDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjForGObj(interface_gobj, lbRelocGetFileData(void*, sSCExplainGraphicsFileHead, &lSCExplainSpecialMoveRGBDisplayList));
-    gcAddXObjForDObjFixed(DObjGetStruct(interface_gobj), nGCTransformTra, 0);
+    gcAddXObjForDObjFixed(DObjGetStruct(interface_gobj), nGCMatrixKindTra, 0);
 
     interface_gobj->flags = GOBJ_FLAG_HIDDEN;
 

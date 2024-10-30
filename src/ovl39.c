@@ -454,7 +454,7 @@ void mvOpeningFoxFuncLights(Gfx **display_list)
 }
 
 // 0x8018E110
-syVideoSetup D_ovl39_8018E110 = {
+SYVideoSetup D_ovl39_8018E110 = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,

@@ -19,7 +19,7 @@ void mnNoControllerLoadFiles();
 
 
 // Data
-syVideoSetup D_ovl11_800D6700 = {
+SYVideoSetup D_ovl11_800D6700 = {
 
 	0x80392A00,
 	0x803B6900,

@@ -68,10 +68,10 @@ Lights1 dMVOpeningStandoffLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF
 Lights1 dMVOpeningStandoffLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
 
 // 0x80132908
-syVideoSetup dMVOpeningStandoffVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMVOpeningStandoffVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132924
-syTaskmanSetup dMVOpeningStandoffTaskmanSetup =
+SYTaskmanSetup dMVOpeningStandoffTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -133,7 +133,7 @@ void mvOpeningStandoffMakeGround(void)
 {
     GObj *gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
     gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningStandoffFiles[0], &lMVOpeningStandoffGroundDisplayList));
-    gcAddXObjForDObjFixed(DObjGetStruct(gobj), nGCTransformTraRotRpyRSca, 0);
+    gcAddXObjForDObjFixed(DObjGetStruct(gobj), nGCMatrixKindTraRotRpyRSca, 0);
     gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     DObjGetStruct(gobj)->translate.vec.f.x = 0.0F;
@@ -322,9 +322,9 @@ void mvOpeningStandoffMakeLightning(void)
             &lMVOpeningStandoffLightningDObjDesc
         ),
         NULL,
-        nGCTransformTraRotRpyRSca,
-        nGCTransformNull,
-        nGCTransformNull
+        nGCMatrixKindTraRotRpyRSca,
+        nGCMatrixKindNull,
+        nGCMatrixKindNull
     );
     gcAddMObjAll
     (

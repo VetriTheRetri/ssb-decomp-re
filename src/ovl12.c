@@ -96,7 +96,7 @@ dbMenuItem dMNDebugStageSelectMenuItems[] = {
 };
 
 // 0x800D6764
-syVideoSetup D_ovl12_800D6764 = {
+SYVideoSetup D_ovl12_800D6764 = {
 
 	0x80392A00,
 	0x803B6900,

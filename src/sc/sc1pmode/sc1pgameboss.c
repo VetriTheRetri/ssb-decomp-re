@@ -802,8 +802,8 @@ void sc1PGameBossSetupBackgroundDObjs(GObj *gobj, DObjDesc *dobjdesc, MObjSub **
 
         if (id != 0)
         {
-            gcAddXObjForDObjFixed(dobj, nGCTransformTraRotRpyR, 0);
-            gcAddXObjForDObjFixed(dobj, nGCTransform46, 0);
+            gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyR, 0);
+            gcAddXObjForDObjFixed(dobj, nGCMatrixKind46, 0);
         }
         else gcAddXObjForDObjFixed(dobj, transform_kind, 0);
 
@@ -883,7 +883,7 @@ GObj* sc1PGameBossMakeWallpaperEffect(s32 effect_id, s32 anim_id, s32 plan_id)
         effect_gobj, 
         (DObjDesc*)(sSC1PGameBossMain.bosswallpaper->bosseffect[effect_id].o_dobjdesc + addr),
         (o_mobjsub != 0) ? (MObjSub***)(addr + o_mobjsub) : NULL, 
-        nGCTransformTraRotRpyRSca
+        nGCMatrixKindTraRotRpyRSca
     );
     gcSetAllAnimSpeed(effect_gobj, sSC1PGameBossMain.bosswallpaper->bossanim[anim_id].anim_speed);
     gcAddGObjProcess(effect_gobj, sSC1PGameBossMain.bosswallpaper->bosseffect[effect_id].proc_update, nGCProcessKindProc, 1);

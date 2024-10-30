@@ -255,9 +255,9 @@ void mvOpeningSectorMakeGreatFox(void)
             &lMVOpeningSectorGreatFoxDObjDesc
         ),
         NULL,
-        nGCTransformTraRotRpyRSca,
-        nGCTransformNull,
-        nGCTransformNull
+        nGCMatrixKindTraRotRpyRSca,
+        nGCMatrixKindNull,
+        nGCMatrixKindNull
     );
     gcAddGObjDisplay(great_fox_gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -380,9 +380,9 @@ void mvOpeningSectorMakeArwings(void)
                 &lMVOpeningSectorArwingDObjDesc
             ),
             NULL,
-            nGCTransformTraRotRpyRSca,
-            nGCTransformNull,
-            nGCTransformNull
+            nGCMatrixKindTraRotRpyRSca,
+            nGCMatrixKindNull,
+            nGCMatrixKindNull
         );
         gcAddGObjDisplay(arwing_gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
         gcAddAnimJointAll(arwing_gobj, lbRelocGetFileData(AObjEvent32**, sMVOpeningSectorFiles[0], anim_joints[i]), 0.0F);
@@ -575,10 +575,10 @@ void mvOpeningSectorFuncStart(void)
 }
 
 // 0x8013293C
-syVideoSetup dMVOpeningSectorVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMVOpeningSectorVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132958
-syTaskmanSetup mvOpeningSectorTaskmanSetup =
+SYTaskmanSetup mvOpeningSectorTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {

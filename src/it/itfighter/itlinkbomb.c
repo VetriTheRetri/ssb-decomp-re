@@ -28,8 +28,8 @@ ITCreateDesc dItLinkBombItemDesc =
 
 	// DObj transformation struct
 	{
-		nGCTransformTra,  					// Main matrix transformations
-		nGCTransformNull, 					// Secondary matrix transformations?
+		nGCMatrixKindTra,  					// Main matrix transformations
+		nGCMatrixKindNull, 					// Secondary matrix transformations?
 		0					  				// ???
 	},
 

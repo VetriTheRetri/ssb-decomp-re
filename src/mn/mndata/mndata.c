@@ -818,10 +818,10 @@ void mnDataFuncStart(void)
 }
 
 // 0x80132FB0
-syVideoSetup dMNDataVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMNDataVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132FCC
-syTaskmanSetup dMNDataTaskmanSetup = 
+SYTaskmanSetup dMNDataTaskmanSetup = 
 {
     // Task Logic Buffer Setup
     {

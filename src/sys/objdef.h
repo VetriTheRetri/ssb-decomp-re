@@ -12,7 +12,7 @@ typedef enum GObjKind
     nGCCommonKindUnkCamera2,                 // 1006 - ???
     nGCCommonKindUnkCamera3,                 // 1007
     nGCCommonKindWallpaper = 1008,           // 1008 - Stage background?
-    nGCCommonKindGrRender,                   // 1009 - Stage renderer?
+    nGCCommonKindGroundDisplay,                   // 1009 - Stage renderer?
     nGCCommonKindGround,                     // 1010
     nGCCommonKindEffect,                     // 1011
     nGCCommonKindWeapon,                     // 1012
@@ -52,7 +52,7 @@ typedef enum GObjLinkIndex
     // GObj link indexes with ID 1
     nGCCommonLinkIDGround = 1,         // ID 1: Stage object
 
-    nGCCommonLinkIDGroundRender = 2,   // ID 2: Stage renderer?
+    nGCCommonLinkIDGroundDisplay = 2,   // ID 2: Stage renderer?
     nGCCommonLinkIDItemActor = 2,      // ID 2: Item spawn actor
     nGCCommonLinkID02 = 2,             // ID 2: ???
 
@@ -96,44 +96,44 @@ typedef enum DObjVecKind
 
 typedef enum XObjTransformKind
 {
-    nGCTransformNull,
-    nGCTransformPerspFastF = 3,     // Camera Fast FP perspective projection
-    nGCTransformPerspF,             // Camera FP perspective projection
-    nGCTransformOrtho,              // Camera Orthographic projection
-    nGCTransformLookAt,
-    nGCTransformTra = 18,           // DObj Translate
-    nGCTransformRotD,               // DObj Rotate degrees
-    nGCTransformTraRotD,            // DObj Translate + rotate degrees
-    nGCTransformRotRpyD,            // DObj Rotate Roll/Pitch/Yaw degrees
-    nGCTransformTraRotRpyD,         // DObj Translate + rotate Roll/Pitch/Yaw degrees
-    nGCTransformRotR,               // DObj Rotate radians (?)
-    nGCTransformTraRotR,            // DObj Translate + rotate radians
-    nGCTransformTraRotRSca,         // DObj Translate + rotate radians + scale
-    nGCTransformRotRpyR,            // DObj Rotate Roll/Pitch/Yaw radians
-    nGCTransformTraRotRpyR,         // DObj Translate + rotate Roll/Pitch/Yaw radians
-    nGCTransformTraRotRpyRSca,      // DObj Translate + rotate Roll/Pitch/Yaw radians + rowscale (?)
-    nGCTransformRotPyrR,            // DObj Rotate Pitch/Yaw/Roll radians (?)
-    nGCTransformTraRotPyrR,         // DObj Translate + rotate Pitch/Yaw/Roll radians (?)
-    nGCTransformTraRotPyrRSca,      // DObj Translate + rotate Pitch/Yaw/Roll radians (?) + scale
-    nGCTransformSca,                // DObj Scale
-    nGCTransformRecalcRotPyrR = 41, // MVP Recalc Pitch/Yaw/Roll radians (?)
-    nGCTransformRecalcRotRpyR,      // MVP Recalc Roll/Pitch/Yaw radians (?)
-    nGCTransformRecalcRotPyrRSca,   // MVP Recalc Pitch/Yaw/Roll radians + scale (?)
-    nGCTransformRecalcRotRpyRSca,   // MVP Recalc Roll/Pitch/Yaw radians + scale (?)
-    nGCTransform45,
-    nGCTransform46,
-    nGCTransform47,
-    nGCTransform48,
-    nGCTransform49,
-    nGCTransform50,
-    nGCTransformVecTra = 56,        // Standalone (?) vector translate
-    nGCTransformVecRotR,            // Standalone (?) vector rotate radians
-    nGCTransformVecRotRpyR,         // Standalone (?) vector rotate Roll/Pitch/Yaw radians
-    nGCTransformVecSca,             // Standalone (?) vector scale
-    nGCTransformVecTraRotR,         // Standalone (?) vector translate + rotate radians
-    nGCTransformVecTraRotRSca,      // Standalone (?) vector translate + rotate radians + rowscale (?)
-    nGCTransformVecTraRotRpyR,      // Standalone (?) vector translate + rotate Roll/Pitch/Yaw radians
-    nGCTransformVecTraRotRpyRSca    // Standalone (?) vector translate + rotate Roll/Pitch/Yaw radians + rowscale (?) 
+    nGCMatrixKindNull,
+    nGCMatrixKindPerspFastF = 3,     // Camera Fast FP perspective projection
+    nGCMatrixKindPerspF,             // Camera FP perspective projection
+    nGCMatrixKindOrtho,              // Camera Orthographic projection
+    nGCMatrixKindLookAt,
+    nGCMatrixKindTra = 18,           // DObj Translate
+    nGCMatrixKindRotD,               // DObj Rotate degrees
+    nGCMatrixKindTraRotD,            // DObj Translate + rotate degrees
+    nGCMatrixKindRotRpyD,            // DObj Rotate Roll/Pitch/Yaw degrees
+    nGCMatrixKindTraRotRpyD,         // DObj Translate + rotate Roll/Pitch/Yaw degrees
+    nGCMatrixKindRotR,               // DObj Rotate radians (?)
+    nGCMatrixKindTraRotR,            // DObj Translate + rotate radians
+    nGCMatrixKindTraRotRSca,         // DObj Translate + rotate radians + scale
+    nGCMatrixKindRotRpyR,            // DObj Rotate Roll/Pitch/Yaw radians
+    nGCMatrixKindTraRotRpyR,         // DObj Translate + rotate Roll/Pitch/Yaw radians
+    nGCMatrixKindTraRotRpyRSca,      // DObj Translate + rotate Roll/Pitch/Yaw radians + rowscale (?)
+    nGCMatrixKindRotPyrR,            // DObj Rotate Pitch/Yaw/Roll radians (?)
+    nGCMatrixKindTraRotPyrR,         // DObj Translate + rotate Pitch/Yaw/Roll radians (?)
+    nGCMatrixKindTraRotPyrRSca,      // DObj Translate + rotate Pitch/Yaw/Roll radians (?) + scale
+    nGCMatrixKindSca,                // DObj Scale
+    nGCMatrixKindRecalcRotPyrR = 41, // MVP Recalc Pitch/Yaw/Roll radians (?)
+    nGCMatrixKindRecalcRotRpyR,      // MVP Recalc Roll/Pitch/Yaw radians (?)
+    nGCMatrixKindRecalcRotPyrRSca,   // MVP Recalc Pitch/Yaw/Roll radians + scale (?)
+    nGCMatrixKindRecalcRotRpyRSca,   // MVP Recalc Roll/Pitch/Yaw radians + scale (?)
+    nGCMatrixKind45,
+    nGCMatrixKind46,
+    nGCMatrixKind47,
+    nGCMatrixKind48,
+    nGCMatrixKind49,
+    nGCMatrixKind50,
+    nGCMatrixKindVecTra = 56,        // Standalone (?) vector translate
+    nGCMatrixKindVecRotR,            // Standalone (?) vector rotate radians
+    nGCMatrixKindVecRotRpyR,         // Standalone (?) vector rotate Roll/Pitch/Yaw radians
+    nGCMatrixKindVecSca,             // Standalone (?) vector scale
+    nGCMatrixKindVecTraRotR,         // Standalone (?) vector translate + rotate radians
+    nGCMatrixKindVecTraRotRSca,      // Standalone (?) vector translate + rotate radians + rowscale (?)
+    nGCMatrixKindVecTraRotRpyR,      // Standalone (?) vector translate + rotate Roll/Pitch/Yaw radians
+    nGCMatrixKindVecTraRotRpyRSca    // Standalone (?) vector translate + rotate Roll/Pitch/Yaw radians + rowscale (?) 
 
 } XObjTransformKind;
 

@@ -414,7 +414,7 @@ void mvPortraitsInit()
 }
 
 // 0x80132938
-syVideoSetup D_ovl35_80132938 = {
+SYVideoSetup D_ovl35_80132938 = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,

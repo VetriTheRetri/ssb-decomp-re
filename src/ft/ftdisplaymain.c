@@ -1228,7 +1228,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
         }
         else
         {
-            fp->joints[nFTPartsJointTopN]->xobjs[0]->kind = nGCTransformRotRpyR;
+            fp->joints[nFTPartsJointTopN]->xobjs[0]->kind = nGCMatrixKindRotRpyR;
 
             ftDisplayMainDrawAll(fighter_gobj);
 
@@ -1325,7 +1325,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
         }
         else
         {
-            fp->joints[nFTPartsJointTopN]->xobjs[0]->kind = nGCTransformRotRpyR;
+            fp->joints[nFTPartsJointTopN]->xobjs[0]->kind = nGCMatrixKindRotRpyR;
 
             ftDisplayMainDrawParts(DObjGetStruct(fighter_gobj));
 

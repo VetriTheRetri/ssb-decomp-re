@@ -1611,7 +1611,7 @@ void ifCommonPlayerMagnifyMakeInterface(void)
         FTStruct *fp = ftGetStruct(fighter_gobj);
         GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDMagnify, GOBJ_LINKORDER_DEFAULT);
 
-        gcAddXObjForDObjFixed(gcAddDObjForGObj(interface_gobj, (Gfx*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&lIFCommonPlayerMagnifyDisplayList)), nGCTransformTraRotRpyRSca, 0);
+        gcAddXObjForDObjFixed(gcAddDObjForGObj(interface_gobj, (Gfx*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&lIFCommonPlayerMagnifyDisplayList)), nGCMatrixKindTraRotRpyRSca, 0);
 
         sIFCommonPlayerMagnifyInterface[fp->player].interface_gobj = interface_gobj;
         sIFCommonPlayerMagnifyInterface[fp->player].color_id = gBattleState->players[fp->player].player_color;
@@ -1691,9 +1691,9 @@ GObj* ifCommonPlayerArrowsMakeInterface(void (*func_display)(GObj*), void (*proc
         interface_gobj, 
         (DObjDesc*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&lIFCommonPlayerArrowsDObjDesc), 
         NULL, 
-        nGCTransformTraRotRpyR, 
-        nGCTransformNull, 
-        nGCTransformNull
+        nGCMatrixKindTraRotRpyR, 
+        nGCMatrixKindNull, 
+        nGCMatrixKindNull
     );
     gcAddGObjProcess(interface_gobj, proc_update, nGCProcessKindProc, 5);
 

@@ -1132,7 +1132,7 @@ GObj* cmManagerMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
 
     gcAddXObjForCamera(cobj, tk1, 0);
 
-    if (tk2 != nGCTransformNull)
+    if (tk2 != nGCMatrixKindNull)
     {
         gcAddXObjForCamera(cobj, tk2, 0);
     }
@@ -1188,13 +1188,13 @@ GObj* cmManagerMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
 // 0x8010DB00
 void func_ovl2_8010DB00(void)
 {
-    cmManagerMakeBattleCamera(0x4C, nGCTransformNull, cmManagerRunGlobalFuncCamera);
+    cmManagerMakeBattleCamera(0x4C, nGCMatrixKindNull, cmManagerRunGlobalFuncCamera);
 }
 
 // 0x8010DB2C
 GObj* func_ovl2_8010DB2C(void (*func_camera)(GObj*))
 {
-    return cmManagerMakeBattleCamera(nGCTransformPerspFastF, 8, func_camera);
+    return cmManagerMakeBattleCamera(nGCMatrixKindPerspFastF, 8, func_camera);
 }
 
 // 0x8010DB54

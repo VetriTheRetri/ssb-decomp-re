@@ -156,10 +156,10 @@ intptr_t dSCAutoDemoFighterNameSpriteOffsets[/* */] =
 syColorRGBA dSCAutoDemoFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x8018E234
-syVideoSetup dSCAutoDemoVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dSCAutoDemoVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8018E250
-syTaskmanSetup dSCAutoDemoTaskmanSetup = 
+SYTaskmanSetup dSCAutoDemoTaskmanSetup = 
 {
     // Task Logic Buffer Setup
     {

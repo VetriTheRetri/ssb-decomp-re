@@ -133,8 +133,8 @@ GObj* lbTransitionMakeCamera(u32 id, s32 link, u32 link_order, u64 cobj_mask)
     func_80009F74(gobj, func_80017DBC, link_order, cobj_mask, -1);
     
     cobj = gcAddCameraForGObj(gobj);
-    gcAddXObjForCamera(cobj, nGCTransformPerspFastF, 1);
-    gcAddXObjForCamera(cobj, nGCTransformLookAt, 1);
+    gcAddXObjForCamera(cobj, nGCMatrixKindPerspFastF, 1);
+    gcAddXObjForCamera(cobj, nGCMatrixKindLookAt, 1);
     syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
     cobj->projection.persp.aspect = 15.0F / 11.0F;
@@ -186,9 +186,9 @@ GObj* lbTransitionMakeTransition(s32 transition_id, u32 id, s32 link, void (*fun
         gobj, 
         (DObjDesc*) (transition_desc->o_dobjdesc + (uintptr_t)sLBTransitionFileHeap),
         NULL,
-        nGCTransformTraRotRpyRSca,
-        nGCTransformNull,
-        nGCTransformNull
+        nGCMatrixKindTraRotRpyRSca,
+        nGCMatrixKindNull,
+        nGCMatrixKindNull
     );
     if (transition_desc->o_anim_joint != 0)
     {

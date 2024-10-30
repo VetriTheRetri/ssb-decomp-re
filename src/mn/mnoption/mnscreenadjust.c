@@ -61,10 +61,10 @@ Gfx dMNScreenAdjustDisplayList[/* */] =
 };
 
 // 0x80132878
-syVideoSetup dMNScreenAdjustVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMNScreenAdjustVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132894
-syTaskmanSetup dMNScreenAdjustTaskmanSetup =
+SYTaskmanSetup dMNScreenAdjustTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {

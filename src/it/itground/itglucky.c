@@ -24,8 +24,8 @@ ITCreateDesc dITGLuckyItemDesc =
 
     // DObj transformation struct
     {
-        nGCTransformTraRotRpyR,             // Main matrix transformations
-        nGCTransformNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
+        nGCMatrixKindNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 

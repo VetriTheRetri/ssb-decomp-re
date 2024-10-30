@@ -148,7 +148,7 @@ void mvOpeningRunMakeFighters(void)
 
 		fighter_proxy_dobj = gcAddDObjForGObj(fighter_proxy_gobj, NULL);
 
-		gcAddXObjForDObjFixed(fighter_proxy_dobj, nGCTransformTraRotRpyRSca, 0);
+		gcAddXObjForDObjFixed(fighter_proxy_dobj, nGCMatrixKindTraRotRpyRSca, 0);
 		gcAddDObjAnimJoint(fighter_proxy_dobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRunFiles[0], offsets[i]), 0.0F);
 
 		gcAddGObjProcess(fighter_proxy_gobj, mvOpeningRunFighterProcUpdate, nGCProcessKindProc, 1);
@@ -400,10 +400,10 @@ void mvOpeningRunFuncStart(void)
 }
 
 // 0x80132650
-syVideoSetup dMVOpeningRunVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMVOpeningRunVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8013266C
-syTaskmanSetup dMVOpeningRunTaskmanSetup =
+SYTaskmanSetup dMVOpeningRunTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {

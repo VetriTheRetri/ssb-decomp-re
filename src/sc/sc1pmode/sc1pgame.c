@@ -659,10 +659,10 @@ u16 dSC1PGameStageCommonStopTics[/* */] = { 22, 15, 60 };
 syColorRGBA dSC1PGameFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x80192B18
-syVideoSetup dSC1PGameVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dSC1PGameVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132B34
-syTaskmanSetup dSC1PGameTaskmanSetup =
+SYTaskmanSetup dSC1PGameTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {

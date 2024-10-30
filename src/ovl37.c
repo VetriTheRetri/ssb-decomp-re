@@ -447,7 +447,7 @@ void mvOpeningDKFuncLights(Gfx **display_list)
 }
 
 // 0x8018E0E0
-syVideoSetup D_ovl37_8018E0E0 = {
+SYVideoSetup D_ovl37_8018E0E0 = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,

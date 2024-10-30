@@ -2122,8 +2122,8 @@ void func_8000EE40_FA40(GObj *gobj, AObjEvent32 **anim_joints, f32 anim_frame, D
 
 void gcAddDObjTransformTraRotSca(DObj *dobj)
 {
-    gcAddXObjForDObjFixed(dobj, nGCTransformTraRotRpyR, 0);
-    gcAddXObjForDObjFixed(dobj, nGCTransformSca, 0);
+    gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyR, 0);
+    gcAddXObjForDObjFixed(dobj, nGCMatrixKindSca, 0);
 }
 
 DObj* gcAddDObjForGObjTraRotSca(GObj *gobj, void *dvar)
@@ -2174,23 +2174,23 @@ void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs)
         
         if (dobjdesc->index & 0xF000)
         {
-            gcAddXObjForDObjFixed(dobj, nGCTransformTra, 0);
+            gcAddXObjForDObjFixed(dobj, nGCMatrixKindTra, 0);
         }
         if (dobjdesc->index & 0x8000)
         {
-            gcAddXObjForDObjFixed(dobj, nGCTransformRecalcRotRpyRSca, 0);
+            gcAddXObjForDObjFixed(dobj, nGCMatrixKindRecalcRotRpyRSca, 0);
         } 
         else if (dobjdesc->index & 0x4000)
         {
-            gcAddXObjForDObjFixed(dobj, nGCTransform46, 0);
+            gcAddXObjForDObjFixed(dobj, nGCMatrixKind46, 0);
         }
         else if (dobjdesc->index & 0x2000)
         {
-            gcAddXObjForDObjFixed(dobj, nGCTransform48, 0);
+            gcAddXObjForDObjFixed(dobj, nGCMatrixKind48, 0);
         }
         else if (dobjdesc->index & 0x1000)
         {
-            gcAddXObjForDObjFixed(dobj, nGCTransform50, 0);
+            gcAddXObjForDObjFixed(dobj, nGCMatrixKind50, 0);
         }
         else gcAddDObjTransformTraRotSca(dobj);
         
@@ -2208,15 +2208,15 @@ void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs)
 
 void gcAddDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3)
 {
-    if (tk1 != nGCTransformNull) 
+    if (tk1 != nGCMatrixKindNull) 
     {
         gcAddXObjForDObjFixed(dobj, tk1, 0);
     }
-    if (tk2 != nGCTransformNull) 
+    if (tk2 != nGCMatrixKindNull) 
     {
         gcAddXObjForDObjFixed(dobj, tk2, 0);
     }
-    if (tk3 != nGCTransformNull) 
+    if (tk3 != nGCMatrixKindNull) 
     {
         gcAddXObjForDObjFixed(dobj, tk3, 0);
     }
@@ -2230,103 +2230,103 @@ void gcDecideDObjTriTransformKind(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, s32 flags)
 
     switch (tk1)
     {
-    case nGCTransformTra:
+    case nGCMatrixKindTra:
         tra_mode = 1;
         break;
 
-    case nGCTransformRotRpyR: 
+    case nGCMatrixKindRotRpyR: 
         rot_mode = 1;
         break;
 
-    case nGCTransformTraRotRpyR:
+    case nGCMatrixKindTraRotRpyR:
         rot_mode = 1;
         tra_mode = 1;
         break;
             
-    case nGCTransformTraRotRpyRSca:
+    case nGCMatrixKindTraRotRpyRSca:
         sca_mode = 1;
         rot_mode = 1;
         tra_mode = 1;
         break;
 
-    case nGCTransformRotPyrR: 
+    case nGCMatrixKindRotPyrR: 
         rot_mode = 2; 
         break;
 
-    case nGCTransformTraRotPyrR:
+    case nGCMatrixKindTraRotPyrR:
         rot_mode = 2;
         tra_mode = 1;
         break;
             
-    case nGCTransformTraRotPyrRSca:
+    case nGCMatrixKindTraRotPyrRSca:
         rot_mode = 2;
         sca_mode = 1;
         tra_mode = 1;
         break;
 
-    case nGCTransformSca: 
+    case nGCMatrixKindSca: 
         sca_mode = 1;
         break;
     }
     switch (tk2)
     {
-    case nGCTransformRotRpyR:
+    case nGCMatrixKindRotRpyR:
         rot_mode = 1; 
         break;
 
-    case nGCTransformRotPyrR:
+    case nGCMatrixKindRotPyrR:
         rot_mode = 2;
         break;
 
-    case nGCTransformSca:
+    case nGCMatrixKindSca:
         sca_mode = 1;
         break;
     }
-    if (tk3 == nGCTransformSca)
+    if (tk3 == nGCMatrixKindSca)
     {
         sca_mode = 1;
     }
     if (tra_mode != 0)
     {
-        gcAddXObjForDObjFixed(dobj, nGCTransformTra, 0);
+        gcAddXObjForDObjFixed(dobj, nGCMatrixKindTra, 0);
     }
     if (flags & 0x4000)
     {
         if (rot_mode == 1)
         {
-            gcAddXObjForDObjFixed(dobj, nGCTransform46, 0);
+            gcAddXObjForDObjFixed(dobj, nGCMatrixKind46, 0);
         } 
-        else gcAddXObjForDObjFixed(dobj, nGCTransform45, 0);
+        else gcAddXObjForDObjFixed(dobj, nGCMatrixKind45, 0);
     }
     else if (flags & 0x2000)
     {
         if (rot_mode == 1)
         {
-            gcAddXObjForDObjFixed(dobj, nGCTransform48, 0);
+            gcAddXObjForDObjFixed(dobj, nGCMatrixKind48, 0);
         }
-        else gcAddXObjForDObjFixed(dobj, nGCTransform47, 0);
+        else gcAddXObjForDObjFixed(dobj, nGCMatrixKind47, 0);
     } 
     else if (flags & 0x1000)
     {
         if (rot_mode == 1)
         {
-            gcAddXObjForDObjFixed(dobj, nGCTransform50, 0);
+            gcAddXObjForDObjFixed(dobj, nGCMatrixKind50, 0);
         }
-        else gcAddXObjForDObjFixed(dobj, nGCTransform49, 0);
+        else gcAddXObjForDObjFixed(dobj, nGCMatrixKind49, 0);
     } 
     else if (sca_mode != 0)
     {
         if (rot_mode == 1)
         {
-            gcAddXObjForDObjFixed(dobj, nGCTransformRecalcRotRpyRSca, 0);
+            gcAddXObjForDObjFixed(dobj, nGCMatrixKindRecalcRotRpyRSca, 0);
         }
-        else gcAddXObjForDObjFixed(dobj, nGCTransformRecalcRotPyrRSca, 0);
+        else gcAddXObjForDObjFixed(dobj, nGCMatrixKindRecalcRotPyrRSca, 0);
     }
     else if (rot_mode == 1)
     {
-        gcAddXObjForDObjFixed(dobj, nGCTransformRecalcRotRpyR, 0);
+        gcAddXObjForDObjFixed(dobj, nGCMatrixKindRecalcRotRpyR, 0);
     }
-    else gcAddXObjForDObjFixed(dobj, nGCTransformRecalcRotPyrR, 0);
+    else gcAddXObjForDObjFixed(dobj, nGCMatrixKindRecalcRotPyrR, 0);
 }
 
 // 0x8000F590

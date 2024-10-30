@@ -94,10 +94,10 @@ Lights1 dMVEndingLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0
 Lights1 dMVEndingLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
 
 // 0x80132B08
-syVideoSetup dMVEndingVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMVEndingVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132B24
-syTaskmanSetup dMVEndingTaskmanSetup =
+SYTaskmanSetup dMVEndingTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -229,7 +229,7 @@ void mvEndingMakeRoomTissues(void)
 
     dobj = gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVEndingFiles[0], &lMVCommonRoomTissuesDisplayList));
 
-    gcAddXObjForDObjFixed(dobj, nGCTransformTraRotRpyRSca, 0);
+    gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyRSca, 0);
     gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjAnimJoint(dobj, lbRelocGetFileData(AObjEvent32*, sMVEndingFiles[0], &lMVCommonRoomTissuesAnimJoint), 300.0F);
     gcPlayAnimAll(gobj);
@@ -428,7 +428,7 @@ void mvEndingMakeMainCameras(void)
         1,
         FALSE
     );
-    gcAddXObjForCamera(CObjGetStruct(gobj), nGCTransformPerspFastF, 0);
+    gcAddXObjForCamera(CObjGetStruct(gobj), nGCMatrixKindPerspFastF, 0);
     gcAddXObjForCamera(CObjGetStruct(gobj), 8, 0);
     mvEndingSetupOperatorCamera(gobj);
 

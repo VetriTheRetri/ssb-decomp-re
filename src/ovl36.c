@@ -459,7 +459,7 @@ void mvOpeningMarioFuncLights(Gfx **display_list)
 }
 
 // 0x8018E11C
-syVideoSetup D_ovl36_8018E11C = {
+SYVideoSetup D_ovl36_8018E11C = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,

@@ -28,8 +28,8 @@ ITCreateDesc dITDogasItemDesc =
 
     // DObj transformation struct
     {
-        nGCTransformNull,                   // Main matrix transformations
-        nGCTransformNull,                   // Secondary matrix transformations?
+        nGCMatrixKindNull,                   // Main matrix transformations
+        nGCMatrixKindNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -82,8 +82,8 @@ WPCreateDesc dITDogasWeaponSmogWeaponDesc =
 
     // DObj transformation struct
     {
-        nGCTransformTraRotRpyR,             // Main matrix transformations
-        nGCTransformNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
+        nGCMatrixKindNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -262,7 +262,7 @@ GObj* itDogasMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         dobj = DObjGetStruct(item_gobj);
 
         gcAddXObjForDObjFixed(dobj, 0x28, 0);
-        gcAddXObjForDObjFixed(dobj->child, nGCTransformTraRotRpyRSca, 0);
+        gcAddXObjForDObjFixed(dobj->child, nGCMatrixKindTraRotRpyRSca, 0);
 
         dobj->translate.vec.f = *pos;
 

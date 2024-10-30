@@ -30,10 +30,10 @@ syColorRGBA dSCVSBattleCommonFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 syColorRGBA dSCVSBattleSuddenDeathFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x8018E3D8
-syVideoSetup dSCVSBattleVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dSCVSBattleVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8018E3F4
-syTaskmanSetup dSCVSBattleTaskmanSetup =
+SYTaskmanSetup dSCVSBattleTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {

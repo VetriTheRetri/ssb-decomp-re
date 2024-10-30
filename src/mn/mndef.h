@@ -20,6 +20,29 @@
 #define mnCommonSetOptionChangeWaitN(wait, is_button, stick_range, div)\
 ((wait) = (((is_button) != FALSE) ? (12) : mnCommonGetOptionChangeWaitN(stick_range, div)))
 
+typedef enum MNTitleLayout
+{
+    nMNTitleLayoutOpening,      // logo animation intro
+    nMNTitleLayoutAnimate,      // Super Smash Bros. animation
+    nMNTitleLayoutFinal         // final layout
+
+} MNTitleLayout;
+
+typedef enum MNTitleSpriteKind
+{
+    nMNTitleSpriteKindDropShadow,
+    nMNTitleSpriteKindSmash,
+    nMNTitleSpriteKindSuper,
+    nMNTitleSpriteKindBros,
+    nMNTitleSpriteKindTM,
+    nMNTitleSpriteKindFooter,
+    nMNTitleSpriteKindHeader,
+    nMNTitleSpriteKindPressStart,
+    nMNTitleSpriteKindLogo,
+    nMNTitleSpriteKindTM2
+
+} MNTitleSpriteKind;
+
 typedef enum MNSoundTestOptions
 {
 	nMNSoundTestOptionStart,
@@ -156,6 +179,7 @@ typedef enum MNOptionTabOnOff
 
 } MNOptionTabOnOff;
 
-typedef struct mnCongraPicture             mnCongraPicture;
+typedef struct MNTitleSpriteDesc	MNTitleSpriteDesc;
+typedef struct MNCongraPicture		MNCongraPicture;
 
 #endif

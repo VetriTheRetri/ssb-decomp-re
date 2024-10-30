@@ -1,27 +1,16 @@
+#include <mn/menu.h>
 #include <ft/fighter.h>
 #include <if/interface.h>
 #include <sc/scene.h>
 #include <sys/video.h>
 
-#include "ovl10.h"
-
 extern void dbMenuUpdateMenuInputs();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
-// Forward declarations
-void mnTitleTransitionFromFireLogo();
-void mnTitleShowGObjLinkID(s32 link_id);
-void mnTitleSetPosition(DObj* dobj, SObj *sobj, s32 index);
-void mnTitleSetColors(SObj *sobj, s32 index);
-void mnTitleShowFire(GObj *fire_gobj);
-void mnTitleLoadFiles();
-void mnTitleFuncUpdate(void);
-void mnTitleFuncStart(void);
-void mnTitleFuncLights(Gfx**);
-
-extern char dSCManagerBuildDate[/* */];
-
 extern u32 func_8000092C();
+
+extern uintptr_t D_NF_000000A7;
+extern uintptr_t D_NF_000000A8;
 
 // // // // // // // // // // // //
 //                               //
@@ -39,7 +28,7 @@ GObj *sMNTitleFireCameraGObj;
 s32 sMNTitleParticleBankID;
 
 // 0x80134450
-mnTitleLayout sMNTitleLayout;
+s32 sMNTitleLayout;
 
 // 0x80134454
 GObj *sMNTitleTransitionsGObj;
@@ -152,7 +141,7 @@ intptr_t dMNTitleFireSpriteOffsets[/* */] =
 };
 
 // 0x80134268
-mnTitleSpriteDesc dMNTitleCommonSpriteDescs[/* */] =
+MNTitleSpriteDesc dMNTitleCommonSpriteDescs[/* */] =
 {
 	{ { 157,  94 }, &lMNTitleCutoutSprite 		},
 	{ { 161,  88 }, &lMNTitleSmashSprite 		},
@@ -190,7 +179,7 @@ Gfx dMNTitleDisplayList[/* */] =
 };
 
 // 0x80134370
-syVideoSetup dMNTitleVideoSetup =
+SYVideoSetup dMNTitleVideoSetup =
 {
 	&gSCSubsysFramebuffer0,
 	&gSCSubsysFramebuffer1,
@@ -204,7 +193,7 @@ syVideoSetup dMNTitleVideoSetup =
 };
 
 // 0x8013438C
-syTaskmanSetup dMNTitleTaskmanSetup =
+SYTaskmanSetup dMNTitleTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -252,7 +241,7 @@ syTaskmanSetup dMNTitleTaskmanSetup =
 s32 dMNTitleUnused0x80134418[/* */] = { 0, 0 };
 
 // 0x80134420
-u32 dMNTitleFileIDs[/* */] = { 0xA7, 0xA8 };
+u32 dMNTitleFileIDs[/* */] = { &D_NF_000000A7, &D_NF_000000A8 };
 
 // // // // // // // // // // // //
 //                               //
@@ -388,7 +377,7 @@ void mnTitleSetEndLogoPosition(void)
 	}
 	smash_logo_sobj = SObjGetStruct(smash_logo_gobj);
 
-	mnTitleSetPosition(NULL, smash_logo_sobj, nMNTitleTextureIndexLogo);
+	mnTitleSetPosition(NULL, smash_logo_sobj, nMNTitleSpriteKindLogo);
 
 	smash_logo_sobj->user_data.s = 0xFF;
 	sMNTitleLogoAlpha = 0x4C;
@@ -550,15 +539,15 @@ void mnTitleFuncRun(GObj *gobj)
 // 0x80132210
 void mnTitleUpdateFireVars(void)
 {
-	s32 index = mtTrigGetRandomTimeUCharRange(7);
+	s32 kind = mtTrigGetRandomTimeUCharRange(7);
 
-	sMNTitleFireColorID = index;
+	sMNTitleFireColorID = kind;
 
 	sMNTitleFireColorR = sMNTitleFireColorG = sMNTitleFireColorB = 0.0F;
 
-	sMNTitleFireColorDeltaR = (dMNTitleFireColorsR[index] - sMNTitleFireColorR) / 80.0F;
-	sMNTitleFireColorDeltaG = (dMNTitleFireColorsG[index] - sMNTitleFireColorG) / 80.0F;
-	sMNTitleFireColorDeltaB = (dMNTitleFireColorsB[index] - sMNTitleFireColorB) / 80.0F;
+	sMNTitleFireColorDeltaR = (dMNTitleFireColorsR[kind] - sMNTitleFireColorR) / 80.0F;
+	sMNTitleFireColorDeltaG = (dMNTitleFireColorsG[kind] - sMNTitleFireColorG) / 80.0F;
+	sMNTitleFireColorDeltaB = (dMNTitleFireColorsB[kind] - sMNTitleFireColorB) / 80.0F;
 }
 
 // 0x80132320
@@ -605,7 +594,7 @@ void mnTitleShowGObjLinkID(s32 link_id)
 }
 
 // 0x801323DC
-void mnTitleNextLayout(void)
+void mnTitleAdvanceLayout(void)
 {
 	if ((sMNTitleLayout == nMNTitleLayoutOpening) && (gSceneData.scene_prev == nSCKindOpeningNewcomers))
 	{
@@ -615,7 +604,7 @@ void mnTitleNextLayout(void)
 }
 
 // 0x80132414
-void mnTitleSetMainMenuFramesToWait(void)
+void mnTitleSetAllowProceedWait(void)
 {
 	if (sMNTitleLayout == nMNTitleLayoutFinal)
 	{
@@ -642,8 +631,8 @@ void mnTitleTransitionsFuncRun(GObj *gobj)
 	case 170:
 		mnTitleSetEndLogoPosition();
 		mnTitleShowGObjLinkID(8);
-		mnTitleNextLayout();
-		mnTitleSetMainMenuFramesToWait();
+		mnTitleAdvanceLayout();
+		mnTitleSetAllowProceedWait();
 		break;
 
 	case 220:
@@ -690,13 +679,9 @@ void mnTitleTransitionsFuncRun(GObj *gobj)
 // 0x801325D4
 void mnTitlePlayAnim(GObj *gobj)
 {
-	GObj *effect_gobj;
-	SObj *sobj;
-	DObj* dobj;
-
-	effect_gobj = gobj->user_data.p;
-	sobj = SObjGetStruct(gobj);
-	dobj = DObjGetStruct(effect_gobj);
+	GObj *effect_gobj = gobj->user_data.p;
+	SObj *sobj = SObjGetStruct(gobj);
+	DObj *dobj = DObjGetStruct(effect_gobj);
 
 	gcPlayAnimAll(effect_gobj);
 
@@ -715,58 +700,57 @@ void mnTitlePlayAnim(GObj *gobj)
 }
 
 // 0x801326A4
-void mnTitlePressStartProcUpdate(GObj *press_start_gobj)
+void mnTitlePressStartProcUpdate(GObj *gobj)
 {
-	if (press_start_gobj->flags != GOBJ_FLAG_HIDDEN)
+	if (gobj->flags != GOBJ_FLAG_HIDDEN)
 	{
-		mnTitlePlayAnim(press_start_gobj);
+		mnTitlePlayAnim(gobj);
 	}
 }
 
 // 0x801326D4
-void mnTitleProcUpdate(GObj *title_gobj)
+void mnTitleProcUpdate(GObj *gobj)
 {
-	if (title_gobj->flags != GOBJ_FLAG_HIDDEN)
+	if (gobj->flags != GOBJ_FLAG_HIDDEN)
 	{
-		mnTitlePlayAnim(title_gobj);
+		mnTitlePlayAnim(gobj);
 	}
 }
 
 // 0x80132704
-void mnTitleUpdateHeaderAndFooterPosition(GObj *header_footer_gobj)
+void mnTitleUpdateLabelsPosition(GObj *gobj)
 {
-	SObj *header_footer_sobj = SObjGetStruct(header_footer_gobj);
+	SObj *sobj = SObjGetStruct(gobj);
 
 	if ((sMNTitleLayout != nMNTitleLayoutOpening) || (gSceneData.scene_prev != nSCKindOpeningNewcomers))
 	{
-		mnTitleSetPosition(NULL, header_footer_sobj, nMNTitleTextureIndexFooter);
-		mnTitleSetPosition(NULL, header_footer_sobj->next, nMNTitleTextureIndexHeader);
+		mnTitleSetPosition(NULL, sobj, nMNTitleSpriteKindFooter);
+		mnTitleSetPosition(NULL, sobj->next, nMNTitleSpriteKindHeader);
 	}
 }
 
 // 0x80132764
-void mnTitleSetPosition(DObj* dobj, SObj *sobj, s32 index)
+void mnTitleSetPosition(DObj *dobj, SObj *sobj, s32 kind)
 {
-	mnTitleSpriteDesc *desc;
+	MNTitleSpriteDesc *desc;
 
 	if (dobj != NULL)
 	{
-		desc = &dMNTitleCommonSpriteDescs[index];
+		desc = &dMNTitleCommonSpriteDescs[kind];
 		dobj->translate.vec.f.x = desc->pos.x - 160.0F;
 		dobj->translate.vec.f.y = -(desc->pos.y - 120.0F);
 	}
-
-	desc = &dMNTitleCommonSpriteDescs[index];
+	desc = &dMNTitleCommonSpriteDescs[kind];
 	sobj->pos.x = (desc->pos.x - (sobj->sprite.width * 0.5F));
 	sobj->pos.y = (desc->pos.y - (sobj->sprite.height * 0.5F));
 }
 
 // 0x8013282C
-void mnTitleSetColors(SObj *sobj, s32 index)
+void mnTitleSetColors(SObj *sobj, s32 kind)
 {
-	if (index < nMNTitleTextureIndexFooter)
+	if (kind < nMNTitleSpriteKindFooter)
 	{
-		if ((index == nMNTitleTextureIndexDropShadow) || (index == nMNTitleTextureIndexTM))
+		if ((kind == nMNTitleSpriteKindDropShadow) || (kind == nMNTitleSpriteKindTM))
 		{
 			sobj->sprite.red = 0x00;
 			sobj->sprite.green = 0x00;
@@ -782,9 +766,9 @@ void mnTitleSetColors(SObj *sobj, s32 index)
 			sobj->envcolor.b = 0x00;
 		}
 	}
-	else switch (index)
+	else switch (kind)
 	{
-	case nMNTitleTextureIndexFooter:
+	case nMNTitleSpriteKindFooter:
 		sobj->sprite.red = 0xB7;
 		sobj->sprite.green = 0xAE;
 		sobj->sprite.blue = 0x7C;
@@ -793,13 +777,13 @@ void mnTitleSetColors(SObj *sobj, s32 index)
 		sobj->envcolor.b = 0x06;
 		break;
 			
-	case nMNTitleTextureIndexHeader:
+	case nMNTitleSpriteKindHeader:
 		sobj->sprite.red = 0x14;
 		sobj->sprite.green = 0x12;
 		sobj->sprite.blue = 0x06;
 		break;
 
-	case nMNTitleTextureIndexPressStart:
+	case nMNTitleSpriteKindPressStart:
 		sobj->sprite.red = 0xFF;
 		sobj->sprite.green = 0xFF;
 		sobj->sprite.blue = 0xFF;
@@ -808,7 +792,7 @@ void mnTitleSetColors(SObj *sobj, s32 index)
 		sobj->envcolor.b = 0xA4;
 		break;
 
-	case nMNTitleTextureIndexTM2:
+	case nMNTitleSpriteKindTM2:
 		sobj->sprite.red = 0x15;
 		sobj->sprite.green = 0x13;
 		sobj->sprite.blue = 0x06;
@@ -826,7 +810,7 @@ void mnTitleFireFuncDisplay(GObj *fire_gobj)
 	{
 		lbCommonPrepSObjSpriteAttrs(gSYTaskmanDLHeads, fire_sobj);
 
-		gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0, 0, 0, sMNTitleFireAlpha);
+		gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sMNTitleFireAlpha);
 		gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, TEXEL0,  TEXEL0, 0, PRIMITIVE, 0,  0, 0, 0, TEXEL0,  TEXEL0, 0, PRIMITIVE, 0);
 
 		lbCommonPrepSObjDraw(gSYTaskmanDLHeads, fire_sobj);
@@ -837,9 +821,9 @@ void mnTitleFireFuncDisplay(GObj *fire_gobj)
 }
 
 // 0x80132A20
-void mnTitleFireFuncRun(GObj *fire_gobj)
+void mnTitleFireFuncRun(GObj *gobj)
 {
-	if (fire_gobj->flags != GOBJ_FLAG_HIDDEN)
+	if (gobj->flags != GOBJ_FLAG_HIDDEN)
 	{
 		sMNTitleFireAlpha += 0x0D;
 
@@ -851,11 +835,11 @@ void mnTitleFireFuncRun(GObj *fire_gobj)
 }
 
 // 0x80132A58
-void mnTitleShowFire(GObj *fire_gobj)
+void mnTitleShowFire(GObj *gobj)
 {
 	sMNTitleFireAlpha = 0xFF;
 
-	fire_gobj->flags = GOBJ_FLAG_NONE;
+	gobj->flags = GOBJ_FLAG_NONE;
 }
 
 // 0x80132A6C
@@ -867,7 +851,7 @@ void mnTitleUpdateFireSprite(SObj *sobj, sb32 is_next)
 	sobj->sprite.attr = SP_TRANSPARENT;
 
 	sobj->sprite.scalex = (is_next != FALSE) ? 9.5F : 12.0F;
-	sobj->sprite.scaley = (is_next != FALSE) ? 7.0F : 8.5F;
+	sobj->sprite.scaley = (is_next != FALSE) ? 7.0F :  8.5F;
 
 	sobj->user_data.s++;
 
@@ -878,12 +862,12 @@ void mnTitleUpdateFireSprite(SObj *sobj, sb32 is_next)
 }
 
 // 0x80132B38
-void mnTitleFireProcUpdate(GObj *fire_gobj)
+void mnTitleFireProcUpdate(GObj *gobj)
 {
-	SObj *fire_sobj_1 = SObjGetStruct(fire_gobj), *fire_sobj_2 = fire_sobj_1->next;
+	SObj *base_sobj = SObjGetStruct(gobj), *next_sobj = base_sobj->next;
 
-	mnTitleUpdateFireSprite(fire_sobj_1, FALSE);
-	mnTitleUpdateFireSprite(fire_sobj_2, TRUE);
+	mnTitleUpdateFireSprite(base_sobj, FALSE);
+	mnTitleUpdateFireSprite(next_sobj, TRUE);
 }
 
 // 0x80132B70
@@ -939,8 +923,8 @@ void mnTitleMakeFire(void)
 
 			fire_sobj->user_data.s = target_texture;
 		}
-
 		sMNTitleFireAlpha = sMNTitleFireAlphaUnused = 0;
+
 		fire_gobj->flags = GOBJ_FLAG_HIDDEN;
 
 		if (gSceneData.scene_prev != nSCKindOpeningNewcomers)
@@ -951,44 +935,44 @@ void mnTitleMakeFire(void)
 }
 
 // 0x80132D5C
-void mnTitleLogoProcUpdate(GObj *logo_gobj)
+void mnTitleLogoProcUpdate(GObj *gobj)
 {
-	GObj *effect_gobj = logo_gobj->user_data.p;
-	SObj *logo_sobj = SObjGetStruct(logo_gobj);
-	DObj *logo_animation_dobj = DObjGetStruct(effect_gobj)->child->sib_next->sib_next->sib_next;
+	GObj *effect_gobj = gobj->user_data.p;
+	SObj *logo_sobj = SObjGetStruct(gobj);
+	DObj *logo_dobj = DObjGetStruct(effect_gobj)->child->sib_next->sib_next->sib_next;
 
-	logo_sobj->sprite.scalex = logo_animation_dobj->scale.vec.f.x;
-	logo_sobj->sprite.scaley = logo_animation_dobj->scale.vec.f.y;
-	logo_sobj->pos.x = ((logo_animation_dobj->translate.vec.f.x + 160.0F) - (logo_sobj->sprite.width * logo_sobj->sprite.scalex * 0.5F));
-	logo_sobj->pos.y = ((120.0F - logo_animation_dobj->translate.vec.f.y) - (logo_sobj->sprite.height * logo_sobj->sprite.scaley * 0.5F));
+	logo_sobj->sprite.scalex = logo_dobj->scale.vec.f.x;
+	logo_sobj->sprite.scaley = logo_dobj->scale.vec.f.y;
+	logo_sobj->pos.x = ((logo_dobj->translate.vec.f.x + 160.0F) - (logo_sobj->sprite.width * logo_sobj->sprite.scalex * 0.5F));
+	logo_sobj->pos.y = ((120.0F - logo_dobj->translate.vec.f.y) - (logo_sobj->sprite.height * logo_sobj->sprite.scaley * 0.5F));
 }
 
 // 0x80132DFC
-void mnTitleLogoFuncDisplay(GObj *logo_gobj)
+void mnTitleLogoFuncDisplay(GObj *gobj)
 {
-	SObj *logo_sobj = SObjGetStruct(logo_gobj);
+	SObj *sobj = SObjGetStruct(gobj);
 
-	if ((logo_sobj->sprite.scalex < 0.0001F) || (logo_sobj->sprite.scaley < 0.0001F))
+	if ((sobj->sprite.scalex < 0.0001F) || (sobj->sprite.scaley < 0.0001F))
 	{
 		return;
 	}
 	else
 	{
-		lbCommonPrepSObjSpriteAttrs(gSYTaskmanDLHeads, logo_sobj);
+		lbCommonPrepSObjSpriteAttrs(gSYTaskmanDLHeads, sobj);
 
-		gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, logo_sobj->sprite.red, logo_sobj->sprite.green, logo_sobj->sprite.blue, sMNTitleLogoAlpha);
+		gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, sobj->sprite.red, sobj->sprite.green, sobj->sprite.blue, sMNTitleLogoAlpha);
 		gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE,  TEXEL0, 0, PRIMITIVE, 0,  0, 0, 0, PRIMITIVE,  TEXEL0, 0, PRIMITIVE, 0);
 
-		lbCommonDrawSObjNoAttr(logo_gobj);
+		lbCommonDrawSObjNoAttr(gobj);
 	}
 }
 
 // 0x80132EDC
-void mnTitleFadeOutLogoFuncRun(GObj *logo_gobj)
+void mnTitleFadeOutLogoFuncRun(GObj *gobj)
 {
-	SObj *logo_sobj = SObjGetStruct(logo_gobj);
+	SObj *sobj = SObjGetStruct(gobj);
 
-	if ((logo_sobj->sprite.scalex < 0.0001F) || (logo_sobj->sprite.scaley < 0.0001F))
+	if ((sobj->sprite.scalex < 0.0001F) || (sobj->sprite.scaley < 0.0001F))
 	{
 		return;
 	}
@@ -1006,7 +990,7 @@ void mnTitleFadeOutLogoFuncRun(GObj *logo_gobj)
 // 0x80132F3C
 void mnTitleMakeLogoNoOpening(void)
 {
-	GObj *logo_gobj = lbCommonMakeSpriteGObj
+	GObj *gobj = lbCommonMakeSpriteGObj
 	(
 		11,
 		NULL,
@@ -1021,15 +1005,15 @@ void mnTitleMakeLogoNoOpening(void)
 		NULL,
 		1
 	);
-	SObj *logo_sobj = SObjGetStruct(logo_gobj);
+	SObj *sobj = SObjGetStruct(gobj);
 
-	logo_sobj->sprite.attr = SP_TRANSPARENT;
+	sobj->sprite.attr = SP_TRANSPARENT;
 
-	logo_sobj->sprite.red = 0xFF;
-	logo_sobj->sprite.green = 0x00;
-	logo_sobj->sprite.blue = 0x00;
+	sobj->sprite.red = 0xFF;
+	sobj->sprite.green = 0x00;
+	sobj->sprite.blue = 0x00;
 
-	mnTitleSetPosition(NULL, logo_sobj, nMNTitleTextureIndexLogo);
+	mnTitleSetPosition(NULL, sobj, nMNTitleSpriteKindLogo);
 }
 
 // 0x80132FD8
@@ -1050,8 +1034,8 @@ void mnTitleMakeLogo(void)
 	else
 	{
 		animated_logo_gobj = gcMakeGObjSPAfter(7, NULL, 7, GOBJ_LINKORDER_DEFAULT);
-		gcSetupCommonDObjs(animated_logo_gobj, lbRelocGetFileData(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_ANIMATED_LOGO_OFFSET_2), 0);
-		gcAddAnimJointAll(animated_logo_gobj, lbRelocGetFileData(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_ANIMATED_LOGO_OFFSET_1), 0);
+		gcSetupCommonDObjs(animated_logo_gobj, lbRelocGetFileData(DObjDesc*, sMNTitleFiles[0], &lMNTitleLogoDObjDesc), 0);
+		gcAddAnimJointAll(animated_logo_gobj, lbRelocGetFileData(AObjEvent32**, sMNTitleFiles[0], &lMNTitleLogoAnimJoint), 0.0F);
 		gcPlayAnimAll(animated_logo_gobj);
 
 		fire_logo_gobj = gcMakeGObjSPAfter(6, NULL, 7, GOBJ_LINKORDER_DEFAULT);
@@ -1067,15 +1051,15 @@ void mnTitleMakeLogo(void)
 
 			fire_logo_sobj->sprite.attr = SP_TRANSPARENT;
 
-			fire_logo_sobj->pos.x = 0.0F;
-			fire_logo_sobj->pos.y = 0.0F;
+			fire_logo_sobj->pos.x = 0;
+			fire_logo_sobj->pos.y = 0;
 
 			fire_logo_sobj->sprite.red = 0x00;
 			fire_logo_sobj->sprite.green = 0x00;
 			fire_logo_sobj->sprite.blue = 0x00;
 
-			fire_logo_dobj->translate.vec.f.x = 0;
-			fire_logo_dobj->translate.vec.f.y = 0;
+			fire_logo_dobj->translate.vec.f.x = 0.0F;
+			fire_logo_dobj->translate.vec.f.y = 0.0F;
 
 			fire_logo_dobj = fire_logo_dobj->sib_next;
 		};
@@ -1103,8 +1087,8 @@ void mnTitleMakeLogo(void)
 		logo_sobj->sprite.green = 0x00;
 		logo_sobj->sprite.blue = 0x00;
 
-		fire_logo_dobj->translate.vec.f.x = 0;
-		fire_logo_dobj->translate.vec.f.y = 0;
+		fire_logo_dobj->translate.vec.f.x = 0.0F;
+		fire_logo_dobj->translate.vec.f.y = 0.0F;
 
 		logo_gobj->user_data.p = animated_logo_gobj;
 
@@ -1139,11 +1123,11 @@ void mnTitleMakeLabels(void)
 	GObj *animation_gobj;
 	GObj *gobj;
 	SObj *texture_sobj;
-	DObj* animation_dobj;
+	DObj *animation_dobj;
 
 	animation_gobj = gcMakeGObjSPAfter(10, NULL, 8, GOBJ_LINKORDER_DEFAULT);
-	gcSetupCommonDObjs(animation_gobj, lbRelocGetFileData(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_ANIMATED_TITLE_HEADER_FOOTER_OFFSET_2), 0);
-	gcAddAnimJointAll(animation_gobj, lbRelocGetFileData(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_ANIMATED_TITLE_HEADER_FOOTER_OFFSET_1), 0);
+	gcSetupCommonDObjs(animation_gobj, lbRelocGetFileData(DObjDesc*, sMNTitleFiles[0], &lMNTitleLabelsDObjDesc), 0);
+	gcAddAnimJointAll(animation_gobj, lbRelocGetFileData(AObjEvent32**, sMNTitleFiles[0], &lMNTitleLabelsAnimJoint), 0.0F);
 	gcPlayAnimAll(animation_gobj);
 
 	gobj = gcMakeGObjSPAfter(8, NULL, 8, GOBJ_LINKORDER_DEFAULT);
@@ -1167,7 +1151,7 @@ void mnTitleMakeLabels(void)
 
 	gobj = gcMakeGObjSPAfter(9, NULL, 8, GOBJ_LINKORDER_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjProcess(gobj, mnTitleUpdateHeaderAndFooterPosition, nGCProcessKindProc, 1);
+	gcAddGObjProcess(gobj, mnTitleUpdateLabelsPosition, nGCProcessKindProc, 1);
 
 	gobj->user_data.p = animation_gobj;
 
@@ -1193,8 +1177,8 @@ void mnTitleMakePressStart(void)
 	SObj *press_start_sobj;
 
 	press_start_anim_gobj = gcMakeGObjSPAfter(10, NULL, 8, GOBJ_LINKORDER_DEFAULT);
-	gcSetupCommonDObjs(press_start_anim_gobj, lbRelocGetFileData(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_ANIMATED_PRESS_START_OFFSET_2), 0);
-	gcAddAnimJointAll(press_start_anim_gobj, lbRelocGetFileData(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_ANIMATED_PRESS_START_OFFSET_1), 0);
+	gcSetupCommonDObjs(press_start_anim_gobj, lbRelocGetFileData(DObjDesc*, sMNTitleFiles[0], &lMNTitlePressStartDObjDesc), 0);
+	gcAddAnimJointAll(press_start_anim_gobj, lbRelocGetFileData(AObjEvent32**, sMNTitleFiles[0], &lMNTitlePressStartAnimJoint), 0.0F);
 	gcPlayAnimAll(press_start_anim_gobj);
 
 	press_start_anim_dobj = DObjGetStruct(press_start_anim_gobj)->child;
@@ -1208,8 +1192,8 @@ void mnTitleMakePressStart(void)
 	press_start_sobj = lbCommonMakeSObjForGObj(press_start_gobj, lbRelocGetFileData(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[7].offset));
 	press_start_sobj->sprite.attr = SP_TRANSPARENT;
 
-	mnTitleSetPosition(press_start_anim_dobj, press_start_sobj, nMNTitleTextureIndexPressStart);
-	mnTitleSetColors(press_start_sobj, nMNTitleTextureIndexPressStart);
+	mnTitleSetPosition(press_start_anim_dobj, press_start_sobj, nMNTitleSpriteKindPressStart);
+	mnTitleSetColors(press_start_sobj, nMNTitleSpriteKindPressStart);
 
 	press_start_gobj->flags = GOBJ_FLAG_HIDDEN;
 }
@@ -1241,15 +1225,15 @@ void mnTitleMakeSlash(void)
 		gcSetupCustomDObjsWithMObj
 		(
 			gobj,
-			lbRelocGetFileData(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_2),
-			lbRelocGetFileData(MObjSub***, sMNTitleFiles[0], &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_1),
+			lbRelocGetFileData(DObjDesc*, sMNTitleFiles[0], &lMNTitleSlashDObjDesc),
+			lbRelocGetFileData(MObjSub***, sMNTitleFiles[0], &lMNTitleSlashMObjSub),
 			NULL,
-			nGCTransformTraRotRpyRSca,
-			nGCTransformNull,
-			nGCTransformNull
+			nGCMatrixKindTraRotRpyRSca,
+			nGCMatrixKindNull,
+			nGCMatrixKindNull
 		);
-		gcAddAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_3), 0.0F);
-		gcAddMatAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32***, sMNTitleFiles[0], &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_4), 0.0F);
+		gcAddAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32**, sMNTitleFiles[0], &lMNTitleSlashAnimJoint), 0.0F);
+		gcAddMatAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32***, sMNTitleFiles[0], &lMNTitleSlashMatAnimJoint), 0.0F);
 		gcPlayAnimAll(gobj);
 		gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
 	}
@@ -1345,8 +1329,8 @@ s32 mnTitleMakeCameras(void)
 	camera_gobj = gcMakeCameraGObj(3, NULL, 3, GOBJ_LINKORDER_DEFAULT, func_80017EC0, 40, COBJ_MASK_DLLINK(2), -1, FALSE, nGCProcessKindProc, NULL, 1, FALSE);
 	cobj = CObjGetStruct(camera_gobj);
 
-	gcAddXObjForCamera(cobj, nGCTransformOrtho, 0);
-	gcAddXObjForCamera(cobj, nGCTransformLookAt, 0);
+	gcAddXObjForCamera(cobj, nGCMatrixKindOrtho, 0);
+	gcAddXObjForCamera(cobj, nGCMatrixKindLookAt, 0);
 
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 	
@@ -1396,7 +1380,7 @@ void mnTitleMakeLogoFire(void)
 
 	gobj->cobj_mask = COBJ_MASK_DLLINK(0);
 
-	sMNTitleParticleBankID = efParticleGetLoadBankID(&lMNTitleScreenParticleBankScriptsLo, &lMNTitleScreenParticleBankScriptsHi, &lMNTitleScreenParticleBankTexturesLo, &lMNTitleScreenParticleBankTexturesHi);
+	sMNTitleParticleBankID = efParticleGetLoadBankID(&lMNTitleParticleBankScriptsLo, &lMNTitleParticleBankScriptsHi, &lMNTitleParticleBankTexturesLo, &lMNTitleParticleBankTexturesHi);
 }
 
 // 0x80133E68
@@ -1409,8 +1393,8 @@ void mnTitleMakeLogoFireParticles(void)
 	{
 		logo_fire_effect_gobj = gcMakeGObjSPAfter(14, NULL, 5, GOBJ_LINKORDER_DEFAULT);
 
-		gcSetupCommonDObjs(logo_fire_effect_gobj, lbRelocGetFileData(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_1), NULL);
-		gcAddAnimJointAll(logo_fire_effect_gobj, lbRelocGetFileData(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_2), 0.0F);
+		gcSetupCommonDObjs(logo_fire_effect_gobj, lbRelocGetFileData(DObjDesc*, sMNTitleFiles[0], &lMNLogoFireDObjDesc), NULL);
+		gcAddAnimJointAll(logo_fire_effect_gobj, lbRelocGetFileData(AObjEvent32**, sMNTitleFiles[0], &lMNLogoFireAnimJoint), 0.0F);
 		gcPlayAnimAll(logo_fire_effect_gobj);
 		gcAddGObjProcess(logo_fire_effect_gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
 

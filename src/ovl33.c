@@ -2101,7 +2101,7 @@ void mnCharsInit()
 }
 
 // 0x801364FC
-syVideoSetup D_ovl33_801364FC = {
+SYVideoSetup D_ovl33_801364FC = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,

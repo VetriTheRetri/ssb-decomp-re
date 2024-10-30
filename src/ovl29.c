@@ -2538,7 +2538,7 @@ void mnBonusInitCSS()
 }
 
 // 0x80137530
-syVideoSetup D_ovl29_80137530 = {
+SYVideoSetup D_ovl29_80137530 = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,

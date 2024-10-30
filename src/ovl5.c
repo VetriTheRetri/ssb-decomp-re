@@ -29,7 +29,7 @@ FTKeyCommand D_ovl5_8018D580[] =
 // 0x8018D5B8
 syColorRGBA dSCUnusedMarioFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
-syVideoSetup D_ovl5_8018D5BC = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup D_ovl5_8018D5BC = SYVIDEO_DEFINE_DEFAULT();
 
 scRuntimeInfo D_ovl5_8018D5D8 = {
 	0x00000000, 0x8000a5e4,

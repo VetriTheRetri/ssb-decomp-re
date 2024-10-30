@@ -26,8 +26,8 @@ ITCreateDesc dITMBallItemDesc =
 
     // DObj transformation struct
     {
-        nGCTransformNull,                   // Main matrix transformations
-        nGCTransformNull,                   // Secondary matrix transformations?
+        nGCMatrixKindNull,                   // Main matrix transformations
+        nGCMatrixKindNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -492,7 +492,7 @@ GObj* itMBallMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         dobj->child->flags = DOBJ_FLAG_HIDDEN;
         dobj->child->sib_next->flags = DOBJ_FLAG_NONE;
 
-        gcAddXObjForDObjFixed(dobj, nGCTransformTraRotRpyR, 0);
+        gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyR, 0);
         gcAddXObjForDObjFixed(dobj->child->sib_next, 0x46, 0);
 
         dobj->translate.vec.f = translate;

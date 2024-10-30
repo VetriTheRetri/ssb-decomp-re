@@ -4281,7 +4281,7 @@ void mnBattleInitCSS()
 }
 
 // 0x8013B980
-syVideoSetup D_ovl26_8013B980 = {
+SYVideoSetup D_ovl26_8013B980 = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,

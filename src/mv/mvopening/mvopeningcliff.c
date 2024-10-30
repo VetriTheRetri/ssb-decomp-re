@@ -68,10 +68,10 @@ Lights1 dMVOpeningCliffLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0
 Lights1 dMVOpeningCliffLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
 
 // 0x80132708
-syVideoSetup dMVOpeningCliffVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMVOpeningCliffVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132724
-syTaskmanSetup dMVOpeningCliffTaskmanSetup =
+SYTaskmanSetup dMVOpeningCliffTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -287,9 +287,9 @@ void mvOpeningCliffMakeOcarina(void)
             &lMVOpeningCliffOcarinaDObjDesc
         ),
         NULL,
-        nGCTransformTraRotRpyRSca,
-        nGCTransformNull,
-        nGCTransformNull
+        nGCMatrixKindTraRotRpyRSca,
+        nGCMatrixKindNull,
+        nGCMatrixKindNull
     );
     gcAddGObjDisplay(ocarina_gobj, gcDrawDObjTreeForGObj, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -339,7 +339,7 @@ void mvOpeningCliffMakeMainCamera(void)
         1,
         FALSE
     );
-    gcAddXObjForCamera(CObjGetStruct(camera_gobj), nGCTransformPerspF, 0);
+    gcAddXObjForCamera(CObjGetStruct(camera_gobj), nGCMatrixKindPerspF, 0);
     gcAddXObjForCamera(CObjGetStruct(camera_gobj), 6, 0);
 
     cobj = CObjGetStruct(camera_gobj);
@@ -377,7 +377,7 @@ void mvOpeningCliffMakeMainCamera(void)
         1,
         FALSE
     );
-    gcAddXObjForCamera(CObjGetStruct(camera_gobj), nGCTransformPerspF, 0);
+    gcAddXObjForCamera(CObjGetStruct(camera_gobj), nGCMatrixKindPerspF, 0);
     gcAddXObjForCamera(CObjGetStruct(camera_gobj), 6, 0);
 
     cobj = CObjGetStruct(camera_gobj);

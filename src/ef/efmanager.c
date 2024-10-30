@@ -130,8 +130,8 @@ EFCreateDesc dEFManagerDamageSlashEffectDesc =
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations  
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations  
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -160,8 +160,8 @@ EFCreateDesc dEFManagerShockSmallEffectDesc =
 
     // DObj transformation struct 2
     {
-        nGCTransformNull,               // Main matrix transformations  
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Main matrix transformations  
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -184,14 +184,14 @@ EFCreateDesc dEFManagerDamageFlyOrbsEffectDesc =
     // DObj transformation struct 1
     {
         0x28,                               // Main matrix transformations   
-        nGCTransformSca,                // Secondary matrix transformations
+        nGCMatrixKindSca,                // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformSca,                // Main matrix transformations  
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindSca,                // Main matrix transformations  
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -213,15 +213,15 @@ EFCreateDesc dEFManagerDamageSpawnOrbsEffectDesc =
 
     // DObj transformation struct 1
     {
-        nGCTransformNull,               // Main matrix transformations   
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Main matrix transformations   
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformNull,               // Main matrix transformations  
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Main matrix transformations  
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -243,15 +243,15 @@ EFCreateDesc dEFManagerImpactWaveEffectDesc =
 
     // DObj transformation struct 1
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations   
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations   
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformNull,               // Main matrix transformations  
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Main matrix transformations  
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -281,7 +281,7 @@ EFCreateDesc dEFStarRodSparkEffectDesc =
     // DObj transformation struct 2
     {
         0x45,                               // Main matrix transformations  
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -304,14 +304,14 @@ EFCreateDesc dEFManagerDamageFlySparksEffectDesc =
     // DObj transformation struct 1
     {
         0x28,                               // Main matrix transformations   
-        nGCTransformRotRpyR,            // Secondary matrix transformations
+        nGCMatrixKindRotRpyR,            // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
         0x45,                               // Main matrix transformations  
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -333,15 +333,15 @@ EFCreateDesc dEFManagerDamageSpawnSparksEffectDesc =
 
     // DObj transformation struct 1
     {
-        nGCTransformNull,               // Main matrix transformations   
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Main matrix transformations   
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformNull,               // Main matrix transformations  
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Main matrix transformations  
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -364,14 +364,14 @@ EFCreateDesc dEFManagerDamageFlyMDustEffectDesc =
     // DObj transformation struct 1
     {
         0x28,                               // Main matrix transformations   
-        nGCTransformRotRpyR,            // Secondary matrix transformations
+        nGCMatrixKindRotRpyR,            // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
         0x44,                               // Main matrix transformations  
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -393,15 +393,15 @@ EFCreateDesc dEFManagerDamageSpawnMDustEffectDesc =
 
     // DObj transformation struct 1
     {
-        nGCTransformNull,               // Main matrix transformations   
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Main matrix transformations   
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformNull,               // Main matrix transformations  
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Main matrix transformations  
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -431,7 +431,7 @@ EFCreateDesc dEFFireSparkEffectDesc =
     // DObj transformation struct 2
     {
         0x45,                               // Main matrix transformations  
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -463,13 +463,13 @@ EFCreateDesc dEFManagerFoxReflectorEffectDesc =
     // DObj transformation struct 1
     {
         0x4F,                               // Main matrix transformations   
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTra,                // Main matrix transformations  
+        nGCMatrixKindTra,                // Main matrix transformations  
         0x2C,                               // Secondary matrix transformations
         0x00                                // ???
     },
@@ -503,14 +503,14 @@ EFCreateDesc dEFManagerShieldEffectDesc =
     // DObj transformation struct 1
     {
         0x4F,                               // Main matrix transformations   
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
         0x2C,                               // Main matrix transformations  
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -539,8 +539,8 @@ EFCreateDesc dEFManagerYoshiShieldEffectDesc =
 
     // DObj transformation struct 2
     {
-        nGCTransformNull,               // Main matrix transformations  
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Main matrix transformations  
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -563,14 +563,14 @@ EFCreateDesc dEFCatchSwirlEffectDesc =
     // DObj transformation struct 1
     {
         0x28,                               // Main matrix transformations   
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations  
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations  
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -593,14 +593,14 @@ EFCreateDesc dEFReflectBreakEffectDesc =
     // DObj transformation struct 1
     {
         0x28,                               // Main matrix transformations   
-        nGCTransformRotRpyR,            // Secondary matrix transformations
+        nGCMatrixKindRotRpyR,            // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations  
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations  
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -623,14 +623,14 @@ EFCreateDesc dEFManagerPikachuUnkEffectDesc =
     // DObj transformation struct 1
     {
         0x28,                               // Main matrix transformations   
-        nGCTransformRotRpyR,            // Secondary matrix transformations
+        nGCMatrixKindRotRpyR,            // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations  
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations  
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -653,14 +653,14 @@ EFCreateDesc dEFManagerPikachuThunderShockEffectDesc =
     // DObj transformation struct 1
     {
         0x4F,                               // Main matrix transformations   
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations  
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations  
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -682,15 +682,15 @@ EFCreateDesc dEFManagerPikachuThunderTrailEffectDesc =
 
     // DObj transformation struct 1
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformNull,               // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -712,15 +712,15 @@ EFCreateDesc dEFThunderJoltEffectDesc =
 
     // DObj transformation struct 1
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -742,15 +742,15 @@ EFCreateDesc dEFVulcanJabEffectDesc =
 
     // DObj transformation struct 1
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformRotRpyR,            // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindRotRpyR,            // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -773,14 +773,14 @@ EFCreateDesc dEFManagerSamusGrappleBeamEffectDesc =
     // DObj transformation struct 1
     {
         0x4F,                               // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
         0x2E,                               // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -803,14 +803,14 @@ EFCreateDesc dEFManagerCaptainFalconKickEffectDesc =
     // DObj transformation struct 1
     {
         0x50,                               // Main matrix transformations
-        nGCTransformRotRpyR,            // Secondary matrix transformations
+        nGCMatrixKindRotRpyR,            // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -833,14 +833,14 @@ EFCreateDesc dEFManagerCaptainFalconPunchEffectDesc =
     // DObj transformation struct 1
     {
         0x50,                               // Main matrix transformations
-        nGCTransformRotRpyR,            // Secondary matrix transformations
+        nGCMatrixKindRotRpyR,            // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformNull,               // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -863,14 +863,14 @@ EFCreateDesc dEFManagerPurinSingEffectDesc =
     // DObj transformation struct 1
     {
         0x4F,                               // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTra,                // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTra,                // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -892,15 +892,15 @@ EFCreateDesc dEFManagerDeadExplodeEffectDesc =
 
     // DObj transformation struct 1
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -935,14 +935,14 @@ EFCreateDesc dEFManagerKirbyCutterUpEffectDesc =
     // DObj transformation struct 1
     {
         0x50,                               // Main matrix transformations
-        nGCTransformRotRpyR,            // Secondary matrix transformations
+        nGCMatrixKindRotRpyR,            // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -965,14 +965,14 @@ EFCreateDesc dEFManagerKirbyCutterDownEffectDesc =
     // DObj transformation struct 1
     {
         0x50,                               // Main matrix transformations
-        nGCTransformRotRpyR,            // Secondary matrix transformations
+        nGCMatrixKindRotRpyR,            // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -995,14 +995,14 @@ EFCreateDesc dEFManagerKirbyCutterDrawEffectDesc =
     // DObj transformation struct 1
     {
         0x4F,                               // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -1025,14 +1025,14 @@ EFCreateDesc dEFManagerKirbyCutterTrailEffectDesc =
     // DObj transformation struct 1
     {
         0x50,                               // Main matrix transformations
-        nGCTransformRotRpyR,            // Secondary matrix transformations
+        nGCMatrixKindRotRpyR,            // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -1055,13 +1055,13 @@ EFCreateDesc dEFManagerNessPsychicMagnetEffectDesc =
     // DObj transformation struct 1
     {
         0x50,                               // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTra,                // Main matrix transformations
+        nGCMatrixKindTra,                // Main matrix transformations
         0x2E,                               // Secondary matrix transformations
         0x00                                // ???
     },
@@ -1084,15 +1084,15 @@ EFCreateDesc dEFManagerNessPKThunderTrailEffectDesc =
 
     // DObj transformation struct 1
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformNull,               // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -1114,15 +1114,15 @@ EFCreateDesc dEFManagerNessPKReflectTrailEffectDesc =
 
     // DObj transformation struct 1
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformNull,               // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -1145,13 +1145,13 @@ EFCreateDesc dEFManagerNessPKThunderWaveEffectDesc =
     // DObj transformation struct 1
     {
         0x50,                               // Main matrix transformations
-        nGCTransformRotRpyR,            // Secondary matrix transformations
+        nGCMatrixKindRotRpyR,            // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTra,                // Main matrix transformations
+        nGCMatrixKindTra,                // Main matrix transformations
         0x2E,                               // Secondary matrix transformations
         0x00                                // ???
     },
@@ -1175,14 +1175,14 @@ EFCreateDesc dEFManagerNessPKFlashEffectDesc =
     // DObj transformation struct 1
     {
         0x28,                               // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -1204,15 +1204,15 @@ EFCreateDesc dEFManagerLinkEntryWaveEffectDesc =
 
     // DObj transformation struct 1
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformNull,               // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -1234,15 +1234,15 @@ EFCreateDesc dEFManagerLinkEntryBeamEffectDesc =
 
     // DObj transformation struct 1
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformNull,               // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -1264,15 +1264,15 @@ EFCreateDesc dEFManagerKirbyEntryStarEffectDesc =
 
     // DObj transformation struct 1
     {
-        nGCTransformTra,                // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTra,                // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -1295,14 +1295,14 @@ EFCreateDesc dEFManagerMBallRaysEffectDesc =
     // DObj transformation struct 1
     {
         0x44,                               // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -1325,14 +1325,14 @@ EFCreateDesc dEFManagerMBallThrownEffectDesc =
     // DObj transformation struct 1
     {
         0x44,                               // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -1354,15 +1354,15 @@ EFCreateDesc dEFManagerYoshiEntryEggEffectDesc =
 
     // DObj transformation struct 1
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -1388,14 +1388,14 @@ EFCreateDesc dEFManagerYoshiEggLayEffectDesc =
     // DObj transformation struct 1
     {
         0x50,                               // Main matrix transformations
-        nGCTransformSca,                // Secondary matrix transformations
+        nGCMatrixKindSca,                // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -1424,8 +1424,8 @@ EFCreateDesc dEFManagerYoshiEggEscapeEffectDesc =
 
     // DObj transformation struct 2
     {
-        nGCTransformNull,               // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -1448,14 +1448,14 @@ EFCreateDesc dEFManagerLinkSpinAttackEffectDesc =
     // DObj transformation struct 1
     {
         0x50,                               // Main matrix transformations
-        nGCTransformRotRpyR,            // Secondary matrix transformations
+        nGCMatrixKindRotRpyR,            // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -1477,15 +1477,15 @@ EFCreateDesc dEFManagerDonkeyEntryTaruEffectDesc =
 
     // DObj transformation struct 1
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -1507,15 +1507,15 @@ EFCreateDesc dEFManagerSamusEntryPointEffectDesc =
 
     // DObj transformation struct 1
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -1537,15 +1537,15 @@ EFCreateDesc dEFManagerCaptainEntryCarEffectDesc =
 
     // DObj transformation struct 1
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -1567,15 +1567,15 @@ EFCreateDesc dEFManagerMarioEntryDokanEffectDesc =
 
     // DObj transformation struct 1
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -1597,15 +1597,15 @@ EFCreateDesc dEFManagerFoxEntryArwingEffectDesc =
 
     // DObj transformation struct 1
     {
-        nGCTransformTraRotRpyR,         // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyR,         // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -1630,8 +1630,8 @@ EFCreateDesc dEFCaptureKirbyStarEffectDesc =
 
     // DObj transformation struct 1
     {
-        nGCTransformTra,                // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTra,                // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
@@ -1660,14 +1660,14 @@ EFCreateDesc dEFManagerLoseKirbyStarEffectDesc =
 
     // DObj transformation struct 1
     {
-        nGCTransformTra,                // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindTra,                // Main matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTra,                // Main matrix transformations
+        nGCMatrixKindTra,                // Main matrix transformations
         0x2E,                               // Secondary matrix transformations
         0x00                                // ???
     },
@@ -1691,13 +1691,13 @@ EFCreateDesc dEFManagerRebirthHaloEffectDesc =
     // DObj transformation struct 1
     {
         0x50,                               // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
         0x00,                               // Secondary matrix transformations
         0x00                                // ???
     },
@@ -1721,13 +1721,13 @@ EFCreateDesc dEFManagerItemGetSwirlEffectDesc =
     // DObj transformation struct 1
     {
         0x28,                               // Main matrix transformations
-        nGCTransformNull,               // Secondary matrix transformations
+        nGCMatrixKindNull,               // Secondary matrix transformations
         0x00                                // ???
     },
 
     // DObj transformation struct 2
     {
-        nGCTransformTraRotRpyRSca,      // Main matrix transformations
+        nGCMatrixKindTraRotRpyRSca,      // Main matrix transformations
         0x00,                               // Secondary matrix transformations
         0x00                                // ???
     },
@@ -2036,7 +2036,7 @@ GObj* efManagerMakeEffect(EFCreateDesc *effect_desc, sb32 is_force_return)
 
         if (effect_flags & 0x4)
         {
-            gcSetupCustomDObjs(effect_gobj, (void*)(addr + effect_desc->o_dobjsetup), NULL, nGCTransformNull, nGCTransformNull, nGCTransformNull);
+            gcSetupCustomDObjs(effect_gobj, (void*)(addr + effect_desc->o_dobjsetup), NULL, nGCMatrixKindNull, nGCMatrixKindNull, nGCMatrixKindNull);
 
             other_dobj = DObjGetStruct(effect_gobj);
 
@@ -3847,7 +3847,7 @@ GObj* efManagerQuakeMakeEffect(s32 magnitude)
     }
     effect_gobj->user_data.p = ep;
 
-    gcAddXObjForDObjFixed(gcAddDObjForGObj(effect_gobj, NULL), nGCTransformTra, 0);
+    gcAddXObjForDObjFixed(gcAddDObjForGObj(effect_gobj, NULL), nGCMatrixKindTra, 0);
 
     switch (magnitude)
     {
@@ -4775,7 +4775,7 @@ GObj* efManagerPurinSingMakeEffect(GObj *fighter_gobj)
 
     sibling_dobj = dobj->child->sib_next;
 
-    gcAddXObjForDObjFixed(sibling_dobj, nGCTransformRotRpyR, 0);
+    gcAddXObjForDObjFixed(sibling_dobj, nGCMatrixKindRotRpyR, 0);
 
     sibling_dobj = sibling_dobj->child;
 
@@ -5434,7 +5434,7 @@ GObj* efManagerYoshiEggLayMakeEffect(GObj *fighter_gobj)
     dobj->scale.vec.f.x = dobj->scale.vec.f.y = dFTCommonYoshiEggDamageCollDescs[fp->fkind].effect_size;
     dobj->scale.vec.f.z = 1.0F;
 
-    dobj->child->child->xobjs[0]->kind = nGCTransformTra;
+    dobj->child->child->xobjs[0]->kind = nGCMatrixKindTra;
 
     gcAddXObjForDObjFixed(dobj->child->child, 0x2E, 0);
     lbCommonSetDObjTransformsForTreeDObjs(dobj->child, (uintptr_t)gFTDataYoshiSpecial3 + (intptr_t)&lEFManagerYoshiEggLayDObjSetup);
@@ -5660,7 +5660,7 @@ GObj* efManagerCaptainEntryCarMakeEffect(Vec3f *pos, s32 lr)
 
     for (i = nFTPartsJointCommonStart; i > 0; i--)
     {
-        gcAddXObjForDObjFixed(node_dobj, nGCTransformRecalcRotRpyRSca, 0);
+        gcAddXObjForDObjFixed(node_dobj, nGCMatrixKindRecalcRotRpyRSca, 0);
 
         gcAddDObjAnimJoint(node_dobj, lbRelocGetFileData(AObjEvent32*, gFTDataCaptainSpecial2, &D_NF_00006518), 0.0F);
 

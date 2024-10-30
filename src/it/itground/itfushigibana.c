@@ -34,8 +34,8 @@ ITCreateDesc dITFushigibanaItemDesc =
 
     // DObj transformation struct
     {
-        nGCTransformTraRotRpyR,                 // Main matrix transformations
-        nGCTransformNull,                       // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,                 // Main matrix transformations
+        nGCMatrixKindNull,                       // Secondary matrix transformations?
         0                                       // ???
     },
 
@@ -59,8 +59,8 @@ WPCreateDesc dITFushigibanaWeaponRazorWeaponDesc =
 
     // DObj transformation struct
     {
-        nGCTransformTraRotRpyRSca,              // Main matrix transformations
-        nGCTransformNull,                       // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyRSca,              // Main matrix transformations
+        nGCMatrixKindNull,                       // Secondary matrix transformations?
         0                                       // ???
     },
 

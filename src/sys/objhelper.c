@@ -266,24 +266,24 @@ void gcEndProcessAll(GObj *gobj)
 // 0x8000B3EC
 void gcAddDObjMatrixSetsRpyD(DObj* dobj)
 {
-    gcAddXObjForDObjFixed(dobj, nGCTransformTra, 0);
-    gcAddXObjForDObjFixed(dobj, nGCTransformRotRpyD, 0);
-    gcAddXObjForDObjFixed(dobj, nGCTransformSca, 0);
+    gcAddXObjForDObjFixed(dobj, nGCMatrixKindTra, 0);
+    gcAddXObjForDObjFixed(dobj, nGCMatrixKindRotRpyD, 0);
+    gcAddXObjForDObjFixed(dobj, nGCMatrixKindSca, 0);
 }
 
 // 0x8000B434
 void gcAddDObjMatrixSetsRpyR(DObj *dobj)
 {
-    gcAddXObjForDObjFixed(dobj, nGCTransformTra, 0);
-    gcAddXObjForDObjFixed(dobj, nGCTransformRotRpyR, 0);
-    gcAddXObjForDObjFixed(dobj, nGCTransformSca, 0);
+    gcAddXObjForDObjFixed(dobj, nGCMatrixKindTra, 0);
+    gcAddXObjForDObjFixed(dobj, nGCMatrixKindRotRpyR, 0);
+    gcAddXObjForDObjFixed(dobj, nGCMatrixKindSca, 0);
 }
 
 // 0x8000B47C
 void gcAddCameraMatrixSets(CObj *cobj)
 {
-    gcAddXObjForCamera(cobj, nGCTransformPerspFastF, 0);
-    gcAddXObjForCamera(cobj, nGCTransformLookAt, 0);
+    gcAddXObjForCamera(cobj, nGCMatrixKindPerspFastF, 0);
+    gcAddXObjForCamera(cobj, nGCMatrixKindLookAt, 0);
 }
 
 // 0x8000B4B4

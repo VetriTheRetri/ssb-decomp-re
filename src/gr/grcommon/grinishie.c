@@ -18,11 +18,11 @@ u8 dGRInishieScaleLineGroups[/* */] = { 0x01, 0x02 };
 // 0x8012EB38
 DObjTransformTypes dGRInishieScaleTransformKinds[/* */] =
 {
-    { nGCTransformTra, nGCTransformNull, 0x01 },
-    { nGCTransformTra, nGCTransformNull, 0x01 },
-    { nGCTransformTra, nGCTransformNull, 0x00 },
-    { nGCTransformTra, nGCTransformNull, 0x01 },
-    { nGCTransformTra, nGCTransformNull, 0x00 }
+    { nGCMatrixKindTra, nGCMatrixKindNull, 0x01 },
+    { nGCMatrixKindTra, nGCMatrixKindNull, 0x01 },
+    { nGCMatrixKindTra, nGCMatrixKindNull, 0x00 },
+    { nGCMatrixKindTra, nGCMatrixKindNull, 0x01 },
+    { nGCMatrixKindTra, nGCMatrixKindNull, 0x00 }
 };
 
 // 0xx8012EB48
@@ -371,7 +371,7 @@ void grInishieMakeScale(void)
         platform_dobj = gcAddDObjForGObj(ground_gobj, (void*) ((uintptr_t)map_head + (intptr_t)&lGRInishieMapHead));
         gGRCommonStruct.inishie.scale[i].platform_dobj = platform_dobj;
 
-        gcAddXObjForDObjFixed(platform_dobj, nGCTransformTra, 0);
+        gcAddXObjForDObjFixed(platform_dobj, nGCMatrixKindTra, 0);
         gcAddGObjProcess(ground_gobj, gcPlayAnimAll, nGCProcessKindProc, 5);
 
         mpCollisionGetMapObjIDsKind(dGRInishieScaleMapObjKinds[i], &mapobj);

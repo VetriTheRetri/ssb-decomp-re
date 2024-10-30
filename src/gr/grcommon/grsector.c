@@ -138,18 +138,18 @@ u8 dGRSectorArwingPilotWaitTimers[/* */][2] =
 // 0x8012E9CC
 DObjTransformTypes dGRSectorArwingTransformKinds[/* */] =
 {
-    { 0x53, nGCTransformNull, 0x00 },
-    { nGCTransformTraRotRpyR, nGCTransformNull, 0x00 },
-    { nGCTransformTra, 0x2C, 0x01 },
-    { nGCTransformTra, 0x2C, 0x01 },
-    { nGCTransformTra, 0x2C, 0x00 },
-    { nGCTransformTra, 0x2C, 0x00 },
-    { nGCTransformTra, nGCTransformNull, 0x01 },
-    { nGCTransformTra, nGCTransformNull, 0x00 },
-    { nGCTransformTra, 0x2C, 0x00 },
-    { nGCTransformTra, nGCTransformNull, 0x00 },
-    { nGCTransformTra, 0x2C, 0x01 },
-    { nGCTransformNull, nGCTransformNull, 0x00 } // This might just be padding
+    { 0x53, nGCMatrixKindNull, 0x00 },
+    { nGCMatrixKindTraRotRpyR, nGCMatrixKindNull, 0x00 },
+    { nGCMatrixKindTra, 0x2C, 0x01 },
+    { nGCMatrixKindTra, 0x2C, 0x01 },
+    { nGCMatrixKindTra, 0x2C, 0x00 },
+    { nGCMatrixKindTra, 0x2C, 0x00 },
+    { nGCMatrixKindTra, nGCMatrixKindNull, 0x01 },
+    { nGCMatrixKindTra, nGCMatrixKindNull, 0x00 },
+    { nGCMatrixKindTra, 0x2C, 0x00 },
+    { nGCMatrixKindTra, nGCMatrixKindNull, 0x00 },
+    { nGCMatrixKindTra, 0x2C, 0x01 },
+    { nGCMatrixKindNull, nGCMatrixKindNull, 0x00 } // This might just be padding
 };
 
 // 0x8012E9F0
@@ -162,8 +162,8 @@ WPCreateDesc dGRSectorArwingWeaponLaser2DWeaponDesc =
     
     // DObj transformation struct
     {
-        nGCTransformTraRotRpyR,                 // Main matrix transformations
-        nGCTransformNull,                       // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,                 // Main matrix transformations
+        nGCMatrixKindNull,                       // Secondary matrix transformations?
         0                                       // ???
     },
 
@@ -187,8 +187,8 @@ WPCreateDesc dGRSectorArwingWeaponLaser3DWeaponDesc =
     
     // DObj transformation struct
     {
-        nGCTransformTraRotRpyR,                 // Main matrix transformations
-        nGCTransformNull,                       // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,                 // Main matrix transformations
+        nGCMatrixKindNull,                       // Secondary matrix transformations?
         0                                       // ???
     },
 

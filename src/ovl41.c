@@ -458,7 +458,7 @@ void gMVOpeningYoshiFuncLights(Gfx **display_list)
 }
 
 // 0x8018E13C
-syVideoSetup D_ovl41_8018E13C = {
+SYVideoSetup D_ovl41_8018E13C = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,

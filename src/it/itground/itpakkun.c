@@ -31,7 +31,7 @@ ITCreateDesc dITPakkunItemDesc =
 
     // DObj transformation struct
     {
-        nGCTransformTra,                    // Main matrix transformations
+        nGCMatrixKindTra,                    // Main matrix transformations
         0x30,                               // Secondary matrix transformations?
         0                                   // ???
     },

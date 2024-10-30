@@ -67,10 +67,10 @@ Lights1 dMVOpeningYamabukiLights11 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF
 Lights1 dMVOpeningYamabukiLights12 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x00, 0x14, 0x00);
 
 // 0x801323D8
-syVideoSetup dMVOpeningYamabukiVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMVOpeningYamabukiVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x801323F4
-syTaskmanSetup dMVOpeningYamabukiTaskmanSetup =
+SYTaskmanSetup dMVOpeningYamabukiTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -134,7 +134,7 @@ void mvOpeningYamabukiMakeWallpaper(void)
     SObj* sobj;
 
     gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, nGCTransformTraRotRpyRSca, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, nGCMatrixKindTraRotRpyRSca, GOBJ_DLLINKORDER_DEFAULT, -1);
 
     sobj = lbCommonMakeSObjForGObj
     (
@@ -187,9 +187,9 @@ void mvOpeningYamabukiMakeLegs(void)
             &lMVOpeningYamabukiLegsDObjDesc
         ),
         NULL,
-        nGCTransformTraRotRpyRSca,
-        nGCTransformNull,
-        nGCTransformNull
+        nGCMatrixKindTraRotRpyRSca,
+        nGCMatrixKindNull,
+        nGCMatrixKindNull
     );
     gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -225,9 +225,9 @@ void mvOpeningYamabukiMakeLegsShadow(void)
             &lMVOpeningYamabukiLegsShadowDObjDesc
         ),
         NULL,
-        nGCTransformTraRotRpyRSca,
-        nGCTransformNull,
-        nGCTransformNull
+        nGCMatrixKindTraRotRpyRSca,
+        nGCMatrixKindNull,
+        nGCMatrixKindNull
     );
     gcAddGObjDisplay(gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_LINKORDER_DEFAULT, -1);
 
@@ -263,9 +263,9 @@ void mvOpeningYamabukiMakeMBall(void)
             &lMVOpeningYamabukiMBallDObjDesc
         ),
         NULL,
-        nGCTransformTraRotRpyRSca,
-        nGCTransformNull,
-        nGCTransformNull
+        nGCMatrixKindTraRotRpyRSca,
+        nGCMatrixKindNull,
+        nGCMatrixKindNull
     );
     gcAddGObjDisplay(gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
 

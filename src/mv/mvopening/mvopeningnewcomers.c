@@ -69,10 +69,10 @@ u32 dMVOpeningUnused0x8013265C[/* */] =
 };
 
 // 0x80132678
-syVideoSetup dMVOpeningNewcomersVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMVOpeningNewcomersVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80132694
-syTaskmanSetup dMVOpeningNewcomersTaskmanSetup =
+SYTaskmanSetup dMVOpeningNewcomersTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {
@@ -177,7 +177,7 @@ void mvOpeningNewcomersMakePurin(void)
     }
     else dobj = gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningNewcomersFiles[0], &lMVOpeningNewcomersPurinShowDisplayList));
     
-    gcAddXObjForDObjFixed(dobj, nGCTransformTraRotRpyRSca, 0);
+    gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyRSca, 0);
     gcAddGObjDisplay(gobj, gcDrawDObjDLHead1, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjAnimJoint(dobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningNewcomersFiles[0], &lMVOpeningNewcomersPurinAnimJoint), 0.0F);
     gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
@@ -197,7 +197,7 @@ void mvOpeningNewcomersMakeCaptain(void)
     }
     else dobj = gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningNewcomersFiles[1], &lMVOpeningNewcomersCaptainShowDisplayList));
 
-    gcAddXObjForDObjFixed(dobj, nGCTransformTraRotRpyRSca, 0);
+    gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyRSca, 0);
     gcAddGObjDisplay(gobj, gcDrawDObjDLHead1, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjAnimJoint(dobj, lbRelocGetFileData(void*, sMVOpeningNewcomersFiles[1], &lMVOpeningNewcomersCaptainAnimJoint), 0.0F);
     gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
@@ -217,7 +217,7 @@ void mvOpeningNewcomersMakeLuigi(void)
     }
     else dobj = gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningNewcomersFiles[0], &lMVOpeningNewcomersLuigiShowDisplayList));
     
-    gcAddXObjForDObjFixed(dobj, nGCTransformTraRotRpyRSca, 0);
+    gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyRSca, 0);
     gcAddGObjDisplay(gobj, gcDrawDObjDLHead1, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjAnimJoint(dobj, lbRelocGetFileData(void*, sMVOpeningNewcomersFiles[0], &lMVOpeningNewcomersLuigiAnimJoint), 0.0F);
     gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
@@ -237,7 +237,7 @@ void mvOpeningNewcomersMakeNess(void)
     }
     else dobj = gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningNewcomersFiles[1], &lMVOpeningNewcomersNessShowDisplayList));
 
-    gcAddXObjForDObjFixed(dobj, nGCTransformTraRotRpyRSca, 0);
+    gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyRSca, 0);
     gcAddGObjDisplay(gobj, gcDrawDObjDLHead1, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjAnimJoint(dobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningNewcomersFiles[1], &lMVOpeningNewcomersNessAnimJoint), 0.0F);
     gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);

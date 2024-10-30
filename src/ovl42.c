@@ -452,7 +452,7 @@ void gMVOpeningPikachuFuncLights(Gfx **display_list)
 }
 
 // 0x8018E140
-syVideoSetup D_ovl42_8018E140 = {
+SYVideoSetup D_ovl42_8018E140 = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,

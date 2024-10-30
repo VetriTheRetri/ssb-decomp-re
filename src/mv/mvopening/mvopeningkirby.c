@@ -545,10 +545,10 @@ void mvOpeningKirbyFuncLights(Gfx **dls)
 }
 
 // 0x8018E13C
-syVideoSetup dMVOpeningKirbyVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMVOpeningKirbyVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8018E158
-syTaskmanSetup dMVOpeningKirbyTaskmanSetup =
+SYTaskmanSetup dMVOpeningKirbyTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {

@@ -2786,7 +2786,7 @@ void mnTrainingInitCSS()
 }
 
 // 0x8013842C
-syVideoSetup D_ovl28_8013842C = {
+SYVideoSetup D_ovl28_8013842C = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,

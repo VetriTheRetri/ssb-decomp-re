@@ -1156,7 +1156,7 @@ CObj* sc1PStageCardMakeStageCamera(s32 stage, u32 dl_link)
         1,
         FALSE
     );
-    gcAddXObjForCamera(CObjGetStruct(gobj), nGCTransformPerspFastF, 0);
+    gcAddXObjForCamera(CObjGetStruct(gobj), nGCMatrixKindPerspFastF, 0);
     gcAddXObjForCamera(CObjGetStruct(gobj), 15, 0);
     
     cobj = CObjGetStruct(gobj);
@@ -1533,7 +1533,7 @@ void sc1PStageCardMakeFighterCamera(s32 fkind, s32 cobj_id)
         1,
         FALSE
     );
-    gcAddXObjForCamera(CObjGetStruct(gobj), nGCTransformPerspFastF, 0);
+    gcAddXObjForCamera(CObjGetStruct(gobj), nGCMatrixKindPerspFastF, 0);
     gcAddXObjForCamera(CObjGetStruct(gobj), 7, 0);
 
     cobj = CObjGetStruct(gobj);
@@ -1986,10 +1986,10 @@ void sc1PStageCardFuncStart(void)
 }
 
 // 0x80135B38
-syVideoSetup dSC1PStageCardVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dSC1PStageCardVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x80135B54
-syTaskmanSetup dSC1PStageCardTaskmanSetup =
+SYTaskmanSetup dSC1PStageCardTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {

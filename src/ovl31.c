@@ -2905,7 +2905,7 @@ void mnResultsMain(s32 arg0)
 }
 
 // 0x80139710
-syVideoSetup D_ovl31_80139710 = {
+SYVideoSetup D_ovl31_80139710 = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,

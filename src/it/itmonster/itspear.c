@@ -33,8 +33,8 @@ ITCreateDesc dITSpearItemDesc =
 
     // DObj transformation struct
     {
-        nGCTransformTraRotRpyR,             // Main matrix transformations
-        nGCTransformNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
+        nGCMatrixKindNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -87,8 +87,8 @@ WPCreateDesc dITSpearWeaponSwarmWeaponDesc =
 
     // DObj transformation struct
     {
-        nGCTransformTraRotRpyR,             // Main matrix transformations
-        nGCTransformNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
+        nGCMatrixKindNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 
@@ -112,8 +112,8 @@ WPCreateDesc dITPippiWeaponSwarmWeaponDesc =
 
     // DObj transformation struct
     {
-        nGCTransformTraRotRpyR,             // Main matrix transformations
-        nGCTransformNull,                   // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyR,             // Main matrix transformations
+        nGCMatrixKindNull,                   // Secondary matrix transformations?
         0,                                  // ???
     },
 

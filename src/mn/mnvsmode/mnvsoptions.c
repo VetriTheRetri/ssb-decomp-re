@@ -1415,10 +1415,10 @@ void mnVSOptionsFuncStart(void)
 }
 
 // 0x80134810
-syVideoSetup dMNVSOptionsVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMNVSOptionsVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8013482C
-syTaskmanSetup dMNVSOptionsTaskmanSetup =
+SYTaskmanSetup dMNVSOptionsTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {

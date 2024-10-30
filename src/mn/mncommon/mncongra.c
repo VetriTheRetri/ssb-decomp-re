@@ -41,7 +41,7 @@ sb32 sMNCongraIsProceedScene;
 // // // // // // // // // // // //
 
 // 0x80132100
-mnCongraPicture dMNCongraPictures[/* */] =
+MNCongraPicture dMNCongraPictures[/* */] =
 {
 	// Mario
 	{ 
@@ -134,7 +134,7 @@ Gfx dMNCongraDisplayList[/* */] =
 };
 
 // 0x80132208
-syVideoSetup dMNCongraVideoSetup =
+SYVideoSetup dMNCongraVideoSetup =
 {
 	SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(320, 230, 0, 10, u32, 0),
 	SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(320, 230, 0, 10, u32, 1),
@@ -148,7 +148,7 @@ syVideoSetup dMNCongraVideoSetup =
 };
 
 // 0x80132224
-syTaskmanSetup dMNCongraTaskmanSetup =
+SYTaskmanSetup dMNCongraTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {

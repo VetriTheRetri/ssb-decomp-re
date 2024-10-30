@@ -473,7 +473,7 @@ void mvOpeningSamusFuncLights(Gfx **display_list)
 }
 
 // 0x8018E198
-syVideoSetup D_ovl38_8018E198 = {
+SYVideoSetup D_ovl38_8018E198 = {
 
 	gSCSubsysFramebuffer0,
 	gSCSubsysFramebuffer1,

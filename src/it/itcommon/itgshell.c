@@ -25,8 +25,8 @@ ITCreateDesc dITGShellItemDesc =
 
     // DObj transformation struct
     {
-        nGCTransformNull,                   // Main matrix transformations
-        nGCTransformNull,                   // Secondary matrix transformations?
+        nGCMatrixKindNull,                   // Main matrix transformations
+        nGCMatrixKindNull,                   // Secondary matrix transformations?
         0                                   // ???
     },
 
@@ -555,7 +555,7 @@ GObj* itGShellMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->rotate.vec.f.y = F_CST_DTOR32(90.0F);
 
-        gcAddXObjForDObjFixed(dobj, nGCTransformTraRotRpyR, 0);
+        gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyR, 0);
         gcAddXObjForDObjFixed(dobj, 0x48, 0);
 
         dobj->translate.vec.f = translate;

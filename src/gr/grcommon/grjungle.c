@@ -10,8 +10,8 @@
 // 0x8012EB50
 DObjTransformTypes dGRJungleTaruCannTransformKinds[/* */] =
 {
-    { 0x28, nGCTransformRotRpyR, 0x00 },
-    { nGCTransformTraRotRpyRSca, nGCTransformNull, 0x00 }
+    { 0x28, nGCMatrixKindRotRpyR, 0x00 },
+    { nGCMatrixKindTraRotRpyRSca, nGCMatrixKindNull, 0x00 }
 };
 
 // // // // // // // // // // // //

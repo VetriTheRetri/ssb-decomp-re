@@ -31,7 +31,7 @@ WPCreateDesc dWPPikachuThunderJoltAirWeaponDesc =
 
     // DObj transformation struct
     {
-        nGCTransformTra,                            // Main matrix transformations
+        nGCMatrixKindTra,                            // Main matrix transformations
         0x2E,                                           // Secondary matrix transformations?
         0                                               // ???
     },
@@ -55,8 +55,8 @@ WPCreateDesc dWPPikachuThunderJoltGroundWeaponDesc =
 
     // DObj transformation struct
     {
-        nGCTransformTraRotRpyRSca,                  // Main matrix transformations
-        nGCTransformNull,                           // Secondary matrix transformations?
+        nGCMatrixKindTraRotRpyRSca,                  // Main matrix transformations
+        nGCMatrixKindNull,                           // Secondary matrix transformations?
         0                                               // ???
     },
 

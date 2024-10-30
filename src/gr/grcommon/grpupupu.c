@@ -645,9 +645,9 @@ GObj* grPupupuMakeMapGObj(intptr_t o_dobjdesc, intptr_t o_mobjsub, void (*func_d
         (DObjDesc*) 
         ((uintptr_t)gGRCommonStruct.pupupu.map_head + o_dobjdesc), 
         NULL, 
-        nGCTransformTraRotRpyRSca, 
-        nGCTransformNull, 
-        nGCTransformNull
+        nGCMatrixKindTraRotRpyRSca, 
+        nGCMatrixKindNull, 
+        nGCMatrixKindNull
     );
     if (o_mobjsub != 0)
     {

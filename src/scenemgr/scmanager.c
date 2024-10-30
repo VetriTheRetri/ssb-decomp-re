@@ -614,7 +614,7 @@ void start_scene_manager(u32 set)
 }
 
 // 0x800A2698
-void func_800A2698(syTaskmanSetup *arg) // set up gtl and om systems
+void func_800A2698(SYTaskmanSetup *arg) // set up gtl and om systems
 {
 	syTaskmanInit(arg);
 }

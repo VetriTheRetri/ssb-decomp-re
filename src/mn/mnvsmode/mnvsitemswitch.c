@@ -842,10 +842,10 @@ void mnVSItemSwitchFuncStart(void)
 }
 
 // 0x80133320
-syVideoSetup dMNVSItemSwitchVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMNVSItemSwitchVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8013333C
-syTaskmanSetup dMNVSItemSwitchTaskmanSetup =
+SYTaskmanSetup dMNVSItemSwitchTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {

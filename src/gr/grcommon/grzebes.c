@@ -97,9 +97,9 @@ GObj* grZebesMakeAcid(void)
         map_gobj, 
         (DObjDesc*) ((intptr_t)&lGRZebesAcidDObjSetup + (uintptr_t)map_head), 
         NULL, 
-        nGCTransformTra, 
-        nGCTransformNull,
-        nGCTransformNull
+        nGCMatrixKindTra, 
+        nGCMatrixKindNull,
+        nGCMatrixKindNull
     );
     gcAddMObjAll(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000008C0);
     gcAddGObjProcess(map_gobj, gcPlayAnimAll, nGCProcessKindProc, 5);

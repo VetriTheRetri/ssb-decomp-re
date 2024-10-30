@@ -129,7 +129,7 @@ dbMenuItem dMNDebugBattleMenuItems[15] = {
 s32 dMNDebugBattleInitialFtKinds[4] = { nFTKindMario, nFTKindDonkey, nFTKindSamus, nFTKindFox };
 
 // 0x80132934
-syVideoSetup D_ovl14_80132934 = { 0x80392a00, 0x803b6900, 0x803da800, 0x00000000, 0x00000140, 0x000000f0, 0x00016a99 };
+SYVideoSetup D_ovl14_80132934 = { 0x80392a00, 0x803b6900, 0x803da800, 0x00000000, 0x00000140, 0x000000f0, 0x00016a99 };
 
 // 0x80132950
 scRuntimeInfo D_ovl14_80132950 = {

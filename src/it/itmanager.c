@@ -219,11 +219,11 @@ void itManagerSetupItemDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs, u8 tr
         
         if (i == 1)
         {
-            gcDecideDObjTriTransformKind(dobj, transform_kind, nGCTransformNull, nGCTransformNull, nGCTransformNull);
+            gcDecideDObjTriTransformKind(dobj, transform_kind, nGCMatrixKindNull, nGCMatrixKindNull, nGCMatrixKindNull);
         }
-        else if (transform_kind != nGCTransformNull)
+        else if (transform_kind != nGCMatrixKindNull)
         {
-            gcAddXObjForDObjFixed(dobj, transform_kind, nGCTransformNull);
+            gcAddXObjForDObjFixed(dobj, transform_kind, nGCMatrixKindNull);
         }
         dobj->translate.vec.f = dobjdesc->translate;
         dobj->rotate.vec.f = dobjdesc->rotate;

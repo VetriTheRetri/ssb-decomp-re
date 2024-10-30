@@ -53,7 +53,7 @@
 /*
  * Seems to deal with setting the screen size and zbuffer?
  */
-typedef struct syVideoSetup
+typedef struct SYVideoSetup
 {
     /* 0x00 */ void *framebuf0;
     /* 0x04 */ void *framebuf1;
@@ -63,7 +63,7 @@ typedef struct syVideoSetup
     /* 0x14 */ u32 height;
     /* 0x18 */ u32 flags;
 
-} syVideoSetup; // size >= 0x18
+} SYVideoSetup; // size >= 0x18
 
 extern uintptr_t scmanager_BSS_END;         // Z-Buffer pointer = this - 6400 (or 12800 in ovl59)
 
@@ -87,6 +87,6 @@ extern void syVideoSetCenterOffsets(s16 left, s16 right, s16 top, s16 bottom);
 extern void syVideoInitViTask(SCTaskVi *task);
 extern void syVideoApplySettingsNoBlock(SCTaskVi *task);
 extern void syVideoSetScreenSettings(s32 width, s32 height, u32 flags);
-extern void syVideoInit(syVideoSetup *video_setup);
+extern void syVideoInit(SYVideoSetup *video_setup);
 
 #endif

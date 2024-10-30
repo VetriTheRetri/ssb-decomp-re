@@ -11,4 +11,6 @@ extern SCBattleState *gBattleState, gDefaultBattleState, gSCManager1PGameBattleS
 extern SCCommonData gSceneData, gDefaultSceneData;
 extern LBBackupData gSaveData, gDefaultSaveData;
 
+extern char dSCManagerBuildDate[/* */];
+
 #endif

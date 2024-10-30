@@ -982,7 +982,7 @@ XObj* gcAddXObjForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 xobj_id)
 
 	switch (kind)
 	{
-	case nGCTransformTra:
+	case nGCMatrixKindTra:
 	case 34:
 	case 36:
 	case 38:
@@ -992,30 +992,30 @@ XObj* gcAddXObjForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 xobj_id)
 		dobj->translate.xobj = xobj;
 		break;
 
-	case nGCTransformRotD:
-	case nGCTransformRotR:
+	case nGCMatrixKindRotD:
+	case nGCMatrixKindRotR:
 		dobj->rotate = dGCRotateDefaultAXYZ;
 		dobj->rotate.xobj = xobj;
 		break;
 
-	case nGCTransformTraRotD:
-	case nGCTransformTraRotR:
+	case nGCMatrixKindTraRotD:
+	case nGCMatrixKindTraRotR:
 		dobj->translate = dGCTranslateDefault;
 		dobj->rotate = dGCRotateDefaultAXYZ;
 		dobj->translate.xobj = xobj;
 		dobj->rotate.xobj = xobj;
 		break;
 
-	case nGCTransformRotRpyD:
-	case nGCTransformRotRpyR:
-	case nGCTransformRotPyrR:
+	case nGCMatrixKindRotRpyD:
+	case nGCMatrixKindRotRpyR:
+	case nGCMatrixKindRotPyrR:
 		dobj->rotate = dGCRotateDefaultRpy;
 		dobj->rotate.xobj = xobj;
 		break;
 
-	case nGCTransformTraRotRpyD:
-	case nGCTransformTraRotRpyR:
-	case nGCTransformTraRotPyrR:
+	case nGCMatrixKindTraRotRpyD:
+	case nGCMatrixKindTraRotRpyR:
+	case nGCMatrixKindTraRotPyrR:
 	case 51:
 	case 52:
 		dobj->translate = dGCTranslateDefault;
@@ -1024,7 +1024,7 @@ XObj* gcAddXObjForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 xobj_id)
 		dobj->rotate.xobj = xobj;
 		break;
 
-	case nGCTransformTraRotRSca:
+	case nGCMatrixKindTraRotRSca:
 		dobj->translate = dGCTranslateDefault;
 		dobj->rotate = dGCRotateDefaultAXYZ;
 		dobj->scale = dGCScaleDefault;
@@ -1033,8 +1033,8 @@ XObj* gcAddXObjForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 xobj_id)
 		dobj->scale.xobj = xobj;
 		break;
 
-	case nGCTransformTraRotRpyRSca:
-	case nGCTransformTraRotPyrRSca:
+	case nGCMatrixKindTraRotRpyRSca:
+	case nGCMatrixKindTraRotPyrRSca:
 	case 54:
 		dobj->translate = dGCTranslateDefault;
 		dobj->rotate = dGCRotateDefaultRpy;
@@ -1044,7 +1044,7 @@ XObj* gcAddXObjForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 xobj_id)
 		dobj->scale.xobj = xobj;
 		break;
 
-	case nGCTransformSca:
+	case nGCMatrixKindSca:
 	case 43:
 	case 44:
 	case 47:
@@ -1064,34 +1064,34 @@ XObj* gcAddXObjForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 xobj_id)
 		dobj->scale.xobj = xobj;
 		break;
 
-	case nGCTransformVecTra:
+	case nGCMatrixKindVecTra:
 		*translate = dGCTranslateDefault;
 		translate->xobj = xobj;
 		break;
 
-	case nGCTransformVecRotR:
+	case nGCMatrixKindVecRotR:
 		*rotate = dGCRotateDefaultAXYZ;
 		rotate->xobj = xobj;
 		break;
 
-	case nGCTransformVecRotRpyR:
+	case nGCMatrixKindVecRotRpyR:
 		*rotate = dGCRotateDefaultRpy;
 		rotate->xobj = xobj;
 		break;
 
-	case nGCTransformVecSca:
+	case nGCMatrixKindVecSca:
 		*scale = dGCScaleDefault;
 		scale->xobj = xobj;
 		break;
 
-	case nGCTransformVecTraRotR:
+	case nGCMatrixKindVecTraRotR:
 		*translate = dGCTranslateDefault;
 		*rotate = dGCRotateDefaultAXYZ;
 
 		translate->xobj = rotate->xobj = xobj;
 		break;
 
-	case nGCTransformVecTraRotRSca:
+	case nGCMatrixKindVecTraRotRSca:
 		*translate = dGCTranslateDefault;
 		*rotate = dGCRotateDefaultAXYZ;
 		*scale = dGCScaleDefault;
@@ -1099,14 +1099,14 @@ XObj* gcAddXObjForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 xobj_id)
 		translate->xobj = rotate->xobj = scale->xobj = xobj;
 		break;
 
-	case nGCTransformVecTraRotRpyR:
+	case nGCMatrixKindVecTraRotRpyR:
 		*translate = dGCTranslateDefault;
 		*rotate = dGCRotateDefaultRpy;
 
 		translate->xobj = rotate->xobj = xobj;
 		break;
 
-	case nGCTransformVecTraRotRpyRSca:
+	case nGCMatrixKindVecTraRotRpyRSca:
 		*translate = dGCTranslateDefault;
 		*rotate = dGCRotateDefaultRpy;
 		*scale = dGCScaleDefault;
@@ -1148,13 +1148,13 @@ XObj* gcAddXObjForCamera(CObj *cobj, u8 kind, u8 arg2)
 
 	switch (kind)
 	{
-	case nGCTransformPerspFastF:
-	case nGCTransformPerspF:
+	case nGCMatrixKindPerspFastF:
+	case nGCMatrixKindPerspF:
 		cobj->projection.persp = dGCPerspDefault;
 		cobj->projection.persp.xobj = xobj;
 		break;
 
-	case nGCTransformOrtho:
+	case nGCMatrixKindOrtho:
 		cobj->projection.ortho = dGCOrthoDefault;
 		cobj->projection.ortho.xobj = xobj;
 		break;

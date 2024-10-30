@@ -893,15 +893,15 @@ void lbCommonInitDObjTriTransform(DObj *dobj, u8 tk1, u8 tk2, u8 tk3)
 // 0x800C8A58
 void lbCommonInitDObj(DObj *dobj, u8 tk1, u8 tk2, u8 tk3, u8 arg4)
 {
-    if (tk1 != nGCTransformNull)
+    if (tk1 != nGCMatrixKindNull)
     {
         gcAddXObjForDObjFixed(dobj, tk1, arg4);
     }
-    if (tk2 != nGCTransformNull)
+    if (tk2 != nGCMatrixKindNull)
     {
         gcAddXObjForDObjFixed(dobj, tk2, arg4);
     }
-    if (tk3 != nGCTransformNull)
+    if (tk3 != nGCMatrixKindNull)
     {
         gcAddXObjForDObjFixed(dobj, tk3, arg4);
     }

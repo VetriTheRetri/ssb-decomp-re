@@ -255,9 +255,9 @@ void grYamabukiMakeGate(void)
         (DObjDesc*) 
         ((uintptr_t)gGRCommonStruct.yamabuki.map_head + (intptr_t)&lGRYamabukiMapHead), 
         NULL, 
-        nGCTransformTraRotRpyR, 
-        nGCTransformNull, 
-        nGCTransformNull
+        nGCMatrixKindTraRotRpyR, 
+        nGCMatrixKindNull, 
+        nGCMatrixKindNull
     );
     gcAddGObjProcess(gate_gobj, gcPlayAnimAll, nGCProcessKindProc, 5);
     grYamabukiGateAddAnimClose();

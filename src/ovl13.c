@@ -338,7 +338,7 @@ dbMenuItem dMNDebugCubeMenuItems[15] = {
 	{ dbMenuItemKindExitLabel,   dbCubeExit,         "Exit",                                0,                                0.0F, 0.0F,    0 }
 };
 
-syVideoSetup D_ovl13_80132F6C = {
+SYVideoSetup D_ovl13_80132F6C = {
 
 	0x80392A00,
 	0x803B6900,

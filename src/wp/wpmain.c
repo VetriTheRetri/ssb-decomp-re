@@ -152,7 +152,7 @@ void func_ovl3_8016830C(DObj *dobj, Vec3f *vec)
         {
             XObj *xobj = current_dobj->xobjs[j];
 
-            if (xobj->kind == nGCTransformNull)
+            if (xobj->kind == nGCMatrixKindNull)
             {
                 break;
             }

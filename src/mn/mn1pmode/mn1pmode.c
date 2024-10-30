@@ -792,10 +792,10 @@ void mn1PModeFuncStart(void)
 }
 
 // 0x801330F0
-syVideoSetup dMN1PModeVideoSetup = SYVIDEO_DEFINE_DEFAULT();
+SYVideoSetup dMN1PModeVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8013310C
-syTaskmanSetup dMN1PModeTaskmanSetup =
+SYTaskmanSetup dMN1PModeTaskmanSetup =
 {
     // Task Logic Buffer Setup
     {

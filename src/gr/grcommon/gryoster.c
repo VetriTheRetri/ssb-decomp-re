@@ -235,9 +235,9 @@ void grYosterInitAll(void)
             map_gobj, 
             (DObjDesc*) ((intptr_t)&lGRYosterMapHead + (uintptr_t)map_head), 
             NULL, 
-            nGCTransformTra,    // Make this nGCTransformTraRotRpyRSca to see cloud scale animation
-            nGCTransformNull, 
-            nGCTransformNull
+            nGCMatrixKindTra,    // Make this nGCMatrixKindTraRotRpyRSca to see cloud scale animation
+            nGCMatrixKindNull, 
+            nGCMatrixKindNull
         );
         gcAddGObjProcess(map_gobj, gcPlayAnimAll, nGCProcessKindProc, 5);
 
@@ -255,8 +255,8 @@ void grYosterInitAll(void)
             cloud_dobj = gcAddChildForDObj(coll_dobj, (uintptr_t)map_head + (intptr_t)&lGRYosterCloudDisplayList);
             gGRCommonStruct.yoster.clouds[i].dobj[j] = cloud_dobj;
 
-            gcAddXObjForDObjFixed(cloud_dobj, nGCTransformTra, 0);
-            gcAddXObjForDObjFixed(cloud_dobj, nGCTransform48, 0);
+            gcAddXObjForDObjFixed(cloud_dobj, nGCMatrixKindTra, 0);
+            gcAddXObjForDObjFixed(cloud_dobj, nGCMatrixKind48, 0);
             lbCommonAddMObjForTreeDObjs(cloud_dobj, (uintptr_t)map_head + (intptr_t)&D_NF_000004B8);
         }
         gcPlayAnimAll(map_gobj);

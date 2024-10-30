@@ -150,7 +150,7 @@ void func_ovl3_8016830C(DObj *dobj, Vec3f *vec)
     {
         for (j = 0; j < current_dobj->xobjs_num; j++)
         {
-            XObj *xobj = current_dobj->xobj[j];
+            XObj *xobj = current_dobj->xobjs[j];
 
             if (xobj->kind == nGCTransformNull)
             {

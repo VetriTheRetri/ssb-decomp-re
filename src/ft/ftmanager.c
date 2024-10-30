@@ -783,7 +783,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
 
     lbCommonInitDObjTriTransform(topn_joint, 0x4B, nGCTransformNull, nGCTransformNull);
 
-    fp->joints[nFTPartsJointTopN]->xobj[0]->unk05 = ft_desc->unk_rebirth_0x1D;
+    fp->joints[nFTPartsJointTopN]->xobjs[0]->unk05 = ft_desc->unk_rebirth_0x1D;
 
     lbCommonSetupFighterPartsDObjs(DObjGetStruct(fighter_gobj), attr->commonparts_container, fp->detail_current, &fp->joints[nFTPartsJointCommonStart], attr->setup_parts, 0x4B, 0, 0, fp->costume, fp->unk_ft_0x149);
 

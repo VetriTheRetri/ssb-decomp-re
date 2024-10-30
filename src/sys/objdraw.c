@@ -371,7 +371,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
     }
     for (i = 0; i < dobj->xobjs_num; i++) // Can use "j" here without any consequences
     {
-        xobj = dobj->xobj[i]; // s3
+        xobj = dobj->xobjs[i]; // s3
 
         if (xobj != NULL)
         {
@@ -2853,7 +2853,7 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
     {
         for (i = 0; i < cobj->xobjs_num; i++)
         {
-            xobj = cobj->xobj[i];
+            xobj = cobj->xobjs[i];
 
             if (xobj != NULL)
             {

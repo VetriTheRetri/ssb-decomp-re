@@ -1493,7 +1493,7 @@ void LBParticleDrawTextures(GObj *gobj)
 
     for (i = 0; i < cobj->xobjs_num; i++)
     {
-        switch (cobj->xobj[i]->kind)
+        switch (cobj->xobjs[i]->kind)
         {
             case nGCTransformPerspFastF:
                 syMatrixPerspFastF

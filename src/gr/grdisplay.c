@@ -169,7 +169,7 @@ void grDisplayDObjSetNoAnimMtx(GObj *ground_gobj, DObjDesc *dobjdesc)
         {
             for (i = 0; i < next_dobj->xobjs_num; i++)
             {
-                next_dobj->xobj[i]->unk05 = 1;
+                next_dobj->xobjs[i]->unk05 = 1;
             }
         }
         dobjdesc++;

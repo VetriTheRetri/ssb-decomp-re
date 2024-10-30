@@ -441,7 +441,7 @@ struct DObj                 // Draw Object
     ub8 is_anim_root;       // TRUE if this DObj's animation script is at the top of the hierarchy?
 
     u8 xobjs_num;
-    XObj *xobj[5];
+    XObj *xobjs[5];
 
     AObj *aobj;
 
@@ -511,7 +511,7 @@ struct CObj
     CObjVec vec;
 
     s32 xobjs_num;
-    XObj *xobj[2];
+    XObj *xobjs[2];
 
     AObj *aobj;
     AObjScript cobjanim_joint;

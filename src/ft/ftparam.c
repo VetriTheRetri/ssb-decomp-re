@@ -2382,7 +2382,7 @@ void ftParamSetAnimLocks(FTStruct *fp)
                 {
                     gmCollisionTransformMatrixAll(fp->joints[i], parts, parts->unk_dobjtrans_0x10);
                     parts->transform_update_mode = 3;
-                    fp->joints[i]->xobj[0]->unk05 = 1;
+                    fp->joints[i]->xobjs[0]->unk05 = 1;
                 }
             }
         }
@@ -2411,7 +2411,7 @@ void ftParamClearAnimLocks(FTStruct *fp)
                 {
                     parts->transform_update_mode = 0;
 
-                    fp->joints[i]->xobj[0]->unk05 = 0;
+                    fp->joints[i]->xobjs[0]->unk05 = 0;
                 }
             }
         }

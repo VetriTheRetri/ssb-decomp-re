@@ -939,7 +939,7 @@ XObj* gcAddXObjForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 xobj_id)
 	XObj *xobj;
 	s32 i;
 
-	if (dobj->xobjs_num == ARRAY_COUNT(dobj->xobj))
+	if (dobj->xobjs_num == ARRAY_COUNT(dobj->xobjs))
 	{
 		syErrorPrintf("om : couldn\'t add OMMtx for DObj\n");
 		while (TRUE);
@@ -973,11 +973,11 @@ XObj* gcAddXObjForDObjVar(DObj *dobj, u8 kind, u8 arg2, s32 xobj_id)
 	}
 	for (i = dobj->xobjs_num; i > xobj_id; i--)
 	{
-		dobj->xobj[i] = dobj->xobj[i - 1];
+		dobj->xobjs[i] = dobj->xobjs[i - 1];
 	}
 	dobj->xobjs_num++;
 
-	dobj->xobj[xobj_id] = xobj = gcGetXObjSetNextAlloc();
+	dobj->xobjs[xobj_id] = xobj = gcGetXObjSetNextAlloc();
 	xobj->kind = kind;
 
 	switch (kind)
@@ -1134,14 +1134,14 @@ XObj* gcAddXObjForCamera(CObj *cobj, u8 kind, u8 arg2)
 {
 	XObj *xobj;
 
-	if (cobj->xobjs_num == ARRAY_COUNT(cobj->xobj))
+	if (cobj->xobjs_num == ARRAY_COUNT(cobj->xobjs))
 	{
 		syErrorPrintf("om : couldn't add OMMtx for Camera\n");
 		while (TRUE);
 	}
 	xobj = gcGetXObjSetNextAlloc();
 
-	cobj->xobj[cobj->xobjs_num] = xobj;
+	cobj->xobjs[cobj->xobjs_num] = xobj;
 	cobj->xobjs_num++;
 
 	xobj->kind = kind;
@@ -1372,9 +1372,9 @@ void gcInitDObj(DObj *dobj)
 	dobj->is_anim_root = FALSE;
 	dobj->xobjs_num = 0;
 
-	for (i = 0; i < ARRAY_COUNT(dobj->xobj); i++)
+	for (i = 0; i < ARRAY_COUNT(dobj->xobjs); i++)
 	{
-		dobj->xobj[i] = NULL;
+		dobj->xobjs[i] = NULL;
 	}
 	dobj->aobj = NULL;
 	dobj->anim_joint.event32 = NULL;
@@ -1516,11 +1516,11 @@ void gcEjectDObj(DObj *dobj)
 	{
 		dobj->sib_next->sib_prev = dobj->sib_prev;
 	}
-	for (i = 0; i < ARRAY_COUNT(dobj->xobj); i++)
+	for (i = 0; i < ARRAY_COUNT(dobj->xobjs); i++)
 	{
-		if (dobj->xobj[i] != NULL)
+		if (dobj->xobjs[i] != NULL)
 		{
-			gcSetXObjPrevAlloc(dobj->xobj[i]);
+			gcSetXObjPrevAlloc(dobj->xobjs[i]);
 		}
 	}
 	if ((dobj->vec != NULL) && (sGCDrawFuncEject != NULL))
@@ -1637,9 +1637,9 @@ CObj* gcAddCameraForGObj(GObj *gobj)
 
 	new_cobj->xobjs_num = 0;
 
-	for (i = 0; i < ARRAY_COUNT(new_cobj->xobj); i++)
+	for (i = 0; i < ARRAY_COUNT(new_cobj->xobjs); i++)
 	{
-		new_cobj->xobj[i] = NULL;
+		new_cobj->xobjs[i] = NULL;
 	}
 	new_cobj->flags = COBJ_FLAG_NONE;
 	new_cobj->color = GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00);
@@ -1668,10 +1668,10 @@ void gcEjectCamera(CObj *cobj)
 	gobj->obj_kind = nGCCommonAppendNone;
 	gobj->obj = NULL;
 
-	for (i = 0; i < ARRAY_COUNT(cobj->xobj); i++)
+	for (i = 0; i < ARRAY_COUNT(cobj->xobjs); i++)
 	{
-		if (cobj->xobj[i] != NULL)
-			gcSetXObjPrevAlloc(cobj->xobj[i]);
+		if (cobj->xobjs[i] != NULL)
+			gcSetXObjPrevAlloc(cobj->xobjs[i]);
 	}
 	current_aobj = cobj->aobj;
 

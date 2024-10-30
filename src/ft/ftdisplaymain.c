@@ -1228,20 +1228,18 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
         }
         else
         {
-            fp->joints[nFTPartsJointTopN]->xobj[0]->kind = nGCTransformRotRpyR;
+            fp->joints[nFTPartsJointTopN]->xobjs[0]->kind = nGCTransformRotRpyR;
 
             ftDisplayMainDrawAll(fighter_gobj);
 
-            fp->joints[nFTPartsJointTopN]->xobj[0]->kind = 0x4B;
+            fp->joints[nFTPartsJointTopN]->xobjs[0]->kind = 0x4B;
         }
         if (fp->shuffle_tics != 0)
         {
             gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
         }
         gDPPipeSync(gSYTaskmanDLHeads[0]++);
-
         gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
-
         gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
         if (fp->pkind != nFTPlayerKindDemo)
@@ -1271,9 +1269,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
             syMatrixSca(mtx_store.gbi, attr->obj_coll.width / 30.0F, attr->obj_coll.center / 30.0F, 1.0F);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-
             gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainMapCollisionBottomDL);
-
             gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
 
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
@@ -1293,9 +1289,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
             syMatrixSca(mtx_store.gbi, attr->obj_coll.width / 30.0F, (attr->obj_coll.top - attr->obj_coll.center) / 30.0F, 1.0F);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-
             gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainMapCollisionTopDL);
-
             gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
 
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
@@ -1317,13 +1311,9 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
             syMatrixSca(mtx_store.gbi, 3.0F, 3.0F, 3.0F);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-
             gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-
             gDPSetEnvColor(gSYTaskmanDLHeads[0]++, 0xD0, 0x00, 0xD0, 0xFF);
-
             gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHurtCollisionCuboidDL);
-
             gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
         }
     }
@@ -1335,11 +1325,11 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
         }
         else
         {
-            fp->joints[nFTPartsJointTopN]->xobj[0]->kind = nGCTransformRotRpyR;
+            fp->joints[nFTPartsJointTopN]->xobjs[0]->kind = nGCTransformRotRpyR;
 
             ftDisplayMainDrawParts(DObjGetStruct(fighter_gobj));
 
-            fp->joints[nFTPartsJointTopN]->xobj[0]->kind = 0x4B;
+            fp->joints[nFTPartsJointTopN]->xobjs[0]->kind = 0x4B;
         }
         for (i = 0; i < ARRAY_COUNT(fp->atk_colls); i++)
         {
@@ -1352,17 +1342,13 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
                 if (fp->display_mode == nDBDisplayModeHitAttackOutline)
                 {
                     gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0xB0, 0x00, 0x00, 0xFF);
-
                     gDPSetEnvColor(gSYTaskmanDLHeads[0]++, 0xB0, 0x00, 0x00, 0xFF);
-
                     gDPSetBlendColor(gSYTaskmanDLHeads[0]++, 0x00, 0x00, 0x00, 0xE0);
                 }
                 else
                 {
                     gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-
                     gDPSetEnvColor(gSYTaskmanDLHeads[0]++, 0xB0, 0x00, 0x00, 0xFF);
-
                     gDPSetBlendColor(gSYTaskmanDLHeads[0]++, 0x00, 0x00, 0x00, 0x00);
                 }
                 if (atk_coll->atk_state == nGMAttackStateInterpolate)
@@ -1378,9 +1364,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
                     syMatrixSca(mtx_store.gbi, atk_coll->size / 15.0F, atk_coll->size / 15.0F, atk_coll->size / 15.0F);
 
                     gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-
                     gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionEdgeDL);
-
                     gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
                 }
                 syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
@@ -1400,7 +1384,6 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
                     gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionBlendDL);
                 }
                 gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionCubeDL);
-
                 gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
             }
         }

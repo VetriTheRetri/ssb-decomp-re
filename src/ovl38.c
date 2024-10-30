@@ -238,8 +238,8 @@ void mvOpeningSamusInitFighterStagePanel()
 	{
 		for (j = 0; j < next_dobj->xobjs_num; j++)
 		{
-			if (next_dobj->xobj[j]->kind == 0x30)
-				next_dobj->xobj[j]->kind = 0x25;
+			if (next_dobj->xobjs[j]->kind == 0x30)
+				next_dobj->xobjs[j]->kind = 0x25;
 		}
 
 		next_dobj = lbCommonGetTreeDObjNextFromRoot(next_dobj, stage_dobj);

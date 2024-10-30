@@ -208,30 +208,30 @@ void itMainResetPlayerVars(GObj *item_gobj)
 }
 
 // 0x801725F8
-void itMainClearHitRecord(ITStruct *ip)
+void itMainClearAtkRecord(ITStruct *ip)
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(ip->atk_coll.hit_records); i++)
+    for (i = 0; i < ARRAY_COUNT(ip->atk_coll.atk_records); i++)
     {
-        GMHitRecord *targets = &ip->atk_coll.hit_records[i];
+        GMAttackRecord *record = &ip->atk_coll.atk_records[i];
 
-        targets->victim_gobj = NULL;
+        record->victim_gobj = NULL;
 
-        targets->victim_flags.is_interact_hurt = targets->victim_flags.is_interact_shield = targets->victim_flags.is_interact_reflect = FALSE;
+        record->victim_flags.is_interact_hurt = record->victim_flags.is_interact_shield = record->victim_flags.is_interact_reflect = FALSE;
 
-        targets->victim_flags.timer_rehit = 0;
+        record->victim_flags.timer_rehit = 0;
 
-        targets->victim_flags.group_id = 7;
+        record->victim_flags.group_id = 7;
     }
 }
 
 // 0x8017275C
-void itMainRefreshHit(GObj *item_gobj)
+void itMainRefreshAtk(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    itMainClearHitRecord(ip);
+    itMainClearAtkRecord(ip);
 
     ip->atk_coll.atk_state = nGMAttackStateNew;
 
@@ -356,7 +356,7 @@ void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_fl
     ip->atk_coll.stat_count = stat_count;
 
     ftParamSetHammerParams(fighter_gobj);
-    itMainRefreshHit(item_gobj);
+    itMainRefreshAtk(item_gobj);
 }
 
 // 0x80172AEC

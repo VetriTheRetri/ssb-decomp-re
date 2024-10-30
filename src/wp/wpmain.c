@@ -115,21 +115,21 @@ s32 wpMainGetStaledDamage(WPStruct *wp) // Return final damage after applying st
 }
 
 // 0x80168158
-void wpMainClearHitRecord(WPStruct *wp) // Clear hit victims array
+void wpMainClearAtkRecord(WPStruct *wp) // Clear hit victims array
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(wp->atk_coll.hit_records); i++)
+    for (i = 0; i < ARRAY_COUNT(wp->atk_coll.atk_records); i++)
     {
-        GMHitRecord *targets = &wp->atk_coll.hit_records[i];
+        GMAttackRecord *record = &wp->atk_coll.atk_records[i];
 
-        targets->victim_gobj = NULL;
+        record->victim_gobj = NULL;
 
-        targets->victim_flags.is_interact_hurt = targets->victim_flags.is_interact_shield = targets->victim_flags.is_interact_reflect = targets->victim_flags.is_interact_absorb = FALSE;
+        record->victim_flags.is_interact_hurt = record->victim_flags.is_interact_shield = record->victim_flags.is_interact_reflect = record->victim_flags.is_interact_absorb = FALSE;
 
-        targets->victim_flags.timer_rehit = 0;
+        record->victim_flags.timer_rehit = 0;
 
-        targets->victim_flags.group_id = 7;
+        record->victim_flags.group_id = 7;
     }
 }
 

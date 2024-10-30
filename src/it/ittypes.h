@@ -70,7 +70,7 @@ struct ITSpawnActor
 
 struct ITAttackPos
 {
-	Vec3f pos;
+	Vec3f pos_curr;
 	Vec3f pos_prev;
 	sb32 unk_ithitpos_0x18;
 	Mtx44f mtx;
@@ -84,7 +84,7 @@ struct ITAttackColl
 	f32 throw_mul;										// Might be swapped with stale
 	f32 stale;											// Might be swapped with throw_mul
 	s32 element;										// Hitbox's element
-	Vec3f offset[ITEM_HITCOLL_NUM_MAX];				 	// Hitbox offset from TopN translation vector
+	Vec3f offsets[ITEM_ATKCOLL_NUM_MAX];				// Hitbox offset from TopN translation vector
 	f32 size;											// Hitbox size
 	s32 angle;											// Launch angle
 	u32 knockback_scale;								// Knockback growth
@@ -93,7 +93,7 @@ struct ITAttackColl
 	s32 shield_damage;									// Shield damage
 	s32 priority;										// Priority?
 	u8 interact_mask;									// Mask of object classes hitbox can interact with; 0x1 = fighters, 0x2 = weapons, 0x4 = items
-	u16 hit_sfx;										// Played when hitbox connects with a hurtbox
+	u16 fgm;											// Played when hitbox connects with a hurtbox
 	ub32 can_setoff : 1;								// Item's hitbox can collide with other hitboxes
 	ub32 can_rehit_item : 1;							// Item can rehit item after default rehit cooldown expires
 	ub32 can_rehit_fighter : 1;							// Item can rehit fighter after default rehit cooldown expires
@@ -106,8 +106,8 @@ struct ITAttackColl
 	GMStatFlags stat_flags;								// Item's status flags
 	u16 stat_count;										// Item's status update number
 	s32 atk_count;										// Item's hitbox count, up to two
-	ITAttackPos atk_pos[ITEM_HITCOLL_NUM_MAX];	// Item hitbox positions
-	GMHitRecord hit_records[GMHITRECORD_NUM_MAX];		// Item's record of attacked targets
+	ITAttackPos atk_pos[ITEM_ATKCOLL_NUM_MAX];			// Item hitbox positions
+	GMAttackRecord atk_records[GMATKRECORD_NUM_MAX];	// Item's record of attacked targets
 };
 
 struct ITAttackEvent 	// Miniature hitbox subaction event? Commonly Used by explosions.
@@ -130,7 +130,7 @@ struct ITMonsterEvent	// Full-scale hitbox subaction event? Used by Venusaur and
 	s32 element;
 	ub32 can_setoff : 1;
 	s32 shield_damage;
-	u16 hit_sfx;
+	u16 fgm;
 };
 
 struct ITDamageColl						// DamageColl struct

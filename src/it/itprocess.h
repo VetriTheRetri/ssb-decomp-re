@@ -1,7 +1,7 @@
-#ifndef _ITCOLLISION_H_
-#define _ITCOLLISION_H_
+#ifndef _ITPROCESS_H_
+#define _ITPROCESS_H_
 
-#include "ittypes.h"
+#include <it/ittypes.h>
 #include <wp/wptypes.h>
 #include <ft/fttypes.h>
 
@@ -33,8 +33,8 @@ void itProcessUpdateAttackStatWeapon(WPStruct* wp, WPAttackColl* wp_atk_coll, s3
 void itProcessUpdateDamageStatItem(ITStruct* attack_ip, ITAttackColl* atk_coll, s32 atk_id, ITStruct* defend_ip,
 								   ITDamageColl* dmg_coll, GObj* attack_gobj, GObj* defend_gobj);
 
-// Set  stuff when item's hurtbox gets hit by a weapon's hitbox
-void itProcessUpdateDamageStatWeapon(WPStruct* wp, WPAttackColl* wp_atk_coll, s32 atk_id, ITStruct* ip, ITDamageColl* dmg_coll,
+// Set stuff when item's hurtbox gets hit by a weapon's hitbox
+void itProcessUpdateDamageStatWeapon(WPStruct* wp, WPAttackColl* atk_coll, s32 atk_id, ITStruct* ip, ITDamageColl* dmg_coll,
 									 GObj* weapon_gobj, GObj* item_gobj);
 
 // Search for collision with fighter hitbox

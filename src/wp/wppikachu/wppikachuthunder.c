@@ -236,9 +236,9 @@ GObj* wpPikachuThunderTrailMakeWeapon(GObj *weapon_gobj, Vec3f *pos)
     trail_wp->lifetime = WPPIKACHUTHUNDER_TRAIL_LIFETIME;
     trail_wp->group_id = spawn_wp->group_id;
 
-    for (i = 0; i < ARRAY_COUNT(spawn_wp->atk_coll.hit_records); i++)
+    for (i = 0; i < ARRAY_COUNT(spawn_wp->atk_coll.atk_records); i++)
     {
-        trail_wp->atk_coll.hit_records[i] = spawn_wp->atk_coll.hit_records[i];
+        trail_wp->atk_coll.atk_records[i] = spawn_wp->atk_coll.atk_records[i];
     }
     DObjGetStruct(trail_gobj)->scale.vec.f.x = 0.5F;
     DObjGetStruct(trail_gobj)->scale.vec.f.y = 0.5F;

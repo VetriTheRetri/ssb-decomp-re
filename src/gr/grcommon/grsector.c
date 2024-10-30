@@ -739,7 +739,7 @@ void grSectorArwingWeaponLaserExplodeInitWeaponVars(GObj *weapon_gobj)
 
     DObjGetStruct(weapon_gobj)->display_list = NULL;
 
-    wpMainClearHitRecord(wp);
+    wpMainClearAtkRecord(wp);
 
     wp->proc_update = grSectorArwingWeaponLaserExplodeProcUpdate;
 

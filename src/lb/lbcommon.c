@@ -814,19 +814,19 @@ void lbCommonAddFighterPartsFigatree(DObj *root_dobj, void **figatree, f32 anim_
     while (current_dobj != NULL)
     {
         void *anim = *figatree;
-        FTParts *ft_parts = current_dobj->user_data.p;
+        FTParts *parts = current_dobj->user_data.p;
         
         if (anim != NULL)
         {
             gcAddDObjAnimJoint(current_dobj, anim, anim_frame);
 
-            ft_parts->is_have_anim = TRUE;
+            parts->is_have_anim = TRUE;
         }
         else
         {
             current_dobj->anim_wait = AOBJ_ANIM_NULL;
 
-            ft_parts->is_have_anim = FALSE;
+            parts->is_have_anim = FALSE;
         }
         figatree++;
         
@@ -1369,13 +1369,13 @@ sb32 func_ovl0_800C9714(Mtx *mtx, DObj *dobj, Gfx **dls)
 sb32 lbCommonFighterPartsFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     ub32 flag = ftGetStruct(dobj->parent_gobj)->is_use_animlocks;
-    FTParts *ft_parts = ftGetParts(dobj);
+    FTParts *parts = ftGetParts(dobj);
     
     if (!(flag))
     {
-        if (ft_parts->transform_update_mode != 0)
+        if (parts->transform_update_mode != 0)
         {
-            syMatrixF2LFixedW(&ft_parts->unk_dobjtrans_0x10, mtx);
+            syMatrixF2LFixedW(&parts->unk_dobjtrans_0x10, mtx);
         }
         else
         {
@@ -1409,15 +1409,15 @@ sb32 lbCommonFighterPartsFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
     }
     else
     {
-        if (ft_parts->transform_update_mode != 0)
+        if (parts->transform_update_mode != 0)
         {
-            syMatrixF2LFixedW(&ft_parts->unk_dobjtrans_0x10, mtx);
+            syMatrixF2LFixedW(&parts->unk_dobjtrans_0x10, mtx);
         }
         else
         {
-            ft_parts->vec_scale.x = dobj->scale.vec.f.x * gLBCommonScale.x;
-            ft_parts->vec_scale.y = dobj->scale.vec.f.y * gLBCommonScale.y;
-            ft_parts->vec_scale.z = dobj->scale.vec.f.z * gLBCommonScale.z;
+            parts->vec_scale.x = dobj->scale.vec.f.x * gLBCommonScale.x;
+            parts->vec_scale.y = dobj->scale.vec.f.y * gLBCommonScale.y;
+            parts->vec_scale.z = dobj->scale.vec.f.z * gLBCommonScale.z;
 
             lbCommonMatrixTraRotScaInv
             (
@@ -1431,12 +1431,12 @@ sb32 lbCommonFighterPartsFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
                 gLBCommonScale.x,
                 gLBCommonScale.y,
                 gLBCommonScale.z,
-                ft_parts->vec_scale.x,
-                ft_parts->vec_scale.y,
-                ft_parts->vec_scale.z
+                parts->vec_scale.x,
+                parts->vec_scale.y,
+                parts->vec_scale.z
             );
         }
-        gLBCommonScale = ft_parts->vec_scale;
+        gLBCommonScale = parts->vec_scale;
     }
     return 0;
 }
@@ -1446,11 +1446,11 @@ sb32 func_ovl0_800C994C(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     s32 unused;
     DObj *attach_dobj = dobj->user_data.p;
-    FTParts *ft_parts = attach_dobj->user_data.p;
+    FTParts *parts = attach_dobj->user_data.p;
     Mtx44f f;
     
     func_ovl2_800EDBA4(attach_dobj);
-    gmCollisionCopyMatrix(f, ft_parts->mtx_translate);
+    gmCollisionCopyMatrix(f, parts->mtx_translate);
     gODScaleX = sqrtf(SQUARE(f[0][0]) + SQUARE(f[0][1]) + SQUARE(f[0][2]));
     syMatrixF2LFixedW(&f, mtx);
     
@@ -1476,7 +1476,7 @@ sb32 func_ovl0_800C99CC(Mtx *mtx, DObj *dobj, Gfx **dls)
 // 0x800C9A38
 void func_ovl0_800C9A38(Mtx44f mtx, DObj *dobj)
 {
-    FTParts *ft_parts = ftGetParts(dobj);
+    FTParts *parts = ftGetParts(dobj);
     FTStruct *fp = ftGetStruct(dobj->parent_gobj);
     Mtx44f *p;
     f32 scale;
@@ -1487,7 +1487,7 @@ void func_ovl0_800C9A38(Mtx44f mtx, DObj *dobj)
     {
         func_ovl2_800EDBA4(dobj);
 
-        p = &ft_parts->mtx_translate;
+        p = &parts->mtx_translate;
         
         scale = sqrtf(SQUARE((*p)[0][0]) + SQUARE((*p)[0][1]) + SQUARE((*p)[0][2]));
 
@@ -1527,9 +1527,9 @@ void func_ovl0_800C9A38(Mtx44f mtx, DObj *dobj)
     {
         parent_dobj = dobj->parent;
         
-        gmCollisionTransformMatrixAll(dobj, ft_parts, ft_parts->unk_dobjtrans_0x10);
+        gmCollisionTransformMatrixAll(dobj, parts, parts->unk_dobjtrans_0x10);
 
-        p = &ft_parts->unk_dobjtrans_0x10;
+        p = &parts->unk_dobjtrans_0x10;
 
         scale = sqrtf(SQUARE((*p)[0][0]) + SQUARE((*p)[0][1]) + SQUARE((*p)[0][2]));
 
@@ -1936,7 +1936,7 @@ sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
 {
     CObj *cobj;
     DObj *attach_dobj;
-    FTParts *ft_parts;
+    FTParts *parts;
     Mtx44f f;
     Vec3f sp50;
     Vec3f dist;
@@ -1944,11 +1944,11 @@ sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
     f32 scale;
 
     attach_dobj = dobj->user_data.p;
-    ft_parts = attach_dobj->user_data.p;
+    parts = attach_dobj->user_data.p;
     
     func_ovl2_800EDBA4(attach_dobj);
     
-    scale = sqrtf(SQUARE(ft_parts->mtx_translate[0][0]) + SQUARE(ft_parts->mtx_translate[0][1]) + SQUARE(ft_parts->mtx_translate[0][2]));
+    scale = sqrtf(SQUARE(parts->mtx_translate[0][0]) + SQUARE(parts->mtx_translate[0][1]) + SQUARE(parts->mtx_translate[0][2]));
     
     if (scale == 0.0F)
     {
@@ -1960,9 +1960,9 @@ sb32 func_ovl0_800CB140(Mtx *mtx, DObj *dobj, Gfx **dls)
     }
     scale = 1.0F / scale;
     
-    sp50.x = f[1][0] = ft_parts->mtx_translate[0][0] * scale;
-    sp50.y = f[1][1] = ft_parts->mtx_translate[0][1] * scale;
-    sp50.z = f[1][2] = ft_parts->mtx_translate[0][2] * scale;
+    sp50.x = f[1][0] = parts->mtx_translate[0][0] * scale;
+    sp50.y = f[1][1] = parts->mtx_translate[0][1] * scale;
+    sp50.z = f[1][2] = parts->mtx_translate[0][2] * scale;
     
     cobj = CObjGetStruct(gGCCurrentCamera);
     

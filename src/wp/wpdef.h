@@ -22,7 +22,7 @@
 
 #define WEAPON_MASK_PARENT 0xF                   	// Mask all GObj classes that can spawn weapons?
 
-#define WEAPON_HITCOLL_NUM_MAX 2
+#define WEAPON_ATKCOLL_NUM_MAX 2
 #define WEAPON_REHIT_TIME_DEFAULT 16 // If the weapon is multihit, its hitbox will refresh per victim after this many frames have passed
 
 #define WEAPON_REFLECT_TIME_DEFAULT 100	 // Maximum damage cap for reflected weapons

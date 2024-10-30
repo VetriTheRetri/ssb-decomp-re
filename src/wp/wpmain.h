@@ -35,7 +35,7 @@ void wpMainReflectorSetLR(WPStruct* wp, FTStruct* fp);
 s32 wpMainGetStaledDamage(WPStruct* wp);
 
 // Reset weapon's record of previously hit targets
-void wpMainClearHitRecord(WPStruct* wp);
+void wpMainClearAtkRecord(WPStruct* wp);
 
 // Unknown
 void wpMainReflectorRotateWeaponModel(GObj* weapon_gobj);

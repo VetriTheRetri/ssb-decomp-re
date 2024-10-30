@@ -97,7 +97,7 @@ void itFushigibanaCommonUpdateMonsterEvent(GObj *item_gobj)
         ip->atk_coll.element          = hit_party[ip->item_event_id].element;
         ip->atk_coll.can_setoff       = hit_party[ip->item_event_id].can_setoff;
         ip->atk_coll.shield_damage    = hit_party[ip->item_event_id].shield_damage;
-        ip->atk_coll.hit_sfx          = hit_party[ip->item_event_id].hit_sfx;
+        ip->atk_coll.fgm          = hit_party[ip->item_event_id].fgm;
 
         ip->item_event_id++;
 

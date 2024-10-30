@@ -18,7 +18,7 @@ struct GMHitFlags
 	u32 timer_rehit : 6;
 };
 
-struct GMHitRecord
+struct GMAttackRecord
 {
 	GObj *victim_gobj;
 	GMHitFlags victim_flags;

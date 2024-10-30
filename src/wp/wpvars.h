@@ -168,11 +168,11 @@ typedef struct wpSamusChargeShotAttributes
 	f32 gfx_size;
 	f32 vel_x;
 	s32 damage;
-	s32 hit_size;
+	s32 atk_size;
 	s32 coll_size;
-	u32 shoot_sfx_id;
+	u32 shoot_fgm;
 	u32 charge_sfx_id;
-	u32 hit_sfx_id;
+	u32 atk_fgm;
 	s32 priority;
 
 } wpSamusChargeShotAttributes;

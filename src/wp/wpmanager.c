@@ -198,12 +198,12 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
 
     wp->atk_coll.element = attr->element;
 
-    wp->atk_coll.offset[0].x = attr->atk_offsets[0].x;
-    wp->atk_coll.offset[0].y = attr->atk_offsets[0].y;
-    wp->atk_coll.offset[0].z = attr->atk_offsets[0].z;
-    wp->atk_coll.offset[1].x = attr->atk_offsets[1].x;
-    wp->atk_coll.offset[1].y = attr->atk_offsets[1].y;
-    wp->atk_coll.offset[1].z = attr->atk_offsets[1].z;
+    wp->atk_coll.offsets[0].x = attr->atk_offsets[0].x;
+    wp->atk_coll.offsets[0].y = attr->atk_offsets[0].y;
+    wp->atk_coll.offsets[0].z = attr->atk_offsets[0].z;
+    wp->atk_coll.offsets[1].x = attr->atk_offsets[1].x;
+    wp->atk_coll.offsets[1].y = attr->atk_offsets[1].y;
+    wp->atk_coll.offsets[1].z = attr->atk_offsets[1].z;
 
     wp->atk_coll.size = attr->size * 0.5F;
 
@@ -217,7 +217,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
 
     wp->atk_coll.shield_damage = attr->shield_damage;
 
-    wp->atk_coll.hit_sfx = attr->sfx;
+    wp->atk_coll.fgm = attr->sfx;
 
     wp->atk_coll.priority = attr->priority;
 
@@ -235,7 +235,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
 
     wp->atk_coll.interact_mask = GMHITCOLLISION_FLAG_ALL;
 
-    wpMainClearHitRecord(wp);
+    wpMainClearAtkRecord(wp);
 
     wp->hit_normal_damage = 0;
     wp->hit_refresh_damage = 0;

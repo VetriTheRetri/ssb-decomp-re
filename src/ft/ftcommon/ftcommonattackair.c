@@ -14,7 +14,7 @@ void ftCommonAttackAirLwProcHit(GObj *fighter_gobj)
 
     if ((fp->fkind == nFTKindLink) || (fp->fkind == nFTKindNLink))
     {
-        ftParamClearHitAll(fighter_gobj);
+        ftParamClearAtkAll(fighter_gobj);
 
         fp->is_fast_fall = FALSE;
 
@@ -41,8 +41,8 @@ void ftCommonAttackAirLwProcUpdate(GObj *fighter_gobj)
 
             if ((fp->status_vars.common.attackair.rehit_timer == 0) && (fighter_gobj->anim_frame < FTCOMMON_ATTACKAIRLW_LINK_REHIT_FRAME_END))
             {
-                ftParamRefreshHitID(fighter_gobj, 0);
-                ftParamRefreshHitID(fighter_gobj, 1);
+                ftParamRefreshAtkID(fighter_gobj, 0);
+                ftParamRefreshAtkID(fighter_gobj, 1);
             }
         }
     }
@@ -60,7 +60,7 @@ void ftCommonAttackAirProcMap(GObj *fighter_gobj)
         {
             s32 landing_motion_id = nFTCommonMotionLandingAirStart - nFTCommonMotionAttackAirStart;
 
-            if (fp->ft_data->mainmotion->script_info[fp->motion_id + landing_motion_id].anim_file_id != 0)
+            if (fp->data->mainmotion->script_info[fp->motion_id + landing_motion_id].anim_file_id != 0)
             {
                 ftCommonLandingAirSetStatus(fighter_gobj);
             }

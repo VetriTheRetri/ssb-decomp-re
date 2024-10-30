@@ -207,16 +207,16 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
                 {
                     if ((i != atk_id) && (fp->atk_colls[i].atk_state != nGMAttackStateOff) && (atk_coll->group_id == fp->atk_colls[i].group_id))
                     {
-                        for (j = 0; j < ARRAY_COUNT(atk_coll->hit_records); j++)
+                        for (j = 0; j < ARRAY_COUNT(atk_coll->atk_records); j++)
                         {
-                            atk_coll->hit_records[j] = fp->atk_colls[i].hit_records[j];
+                            atk_coll->atk_records[j] = fp->atk_colls[i].atk_records[j];
                         }
                         break;
                     }
                 }
                 if (i == ARRAY_COUNT(fp->atk_colls))
                 {
-                    ftParamClearHitRecordID(fp, atk_id);
+                    ftParamClearAtkRecordID(fp, atk_id);
                 }
             }
             atk_coll->joint_id = ftParamGetJointID(fp, ftMotionEventCast(ms, FTMotionEventMakeHit1)->joint_id);
@@ -311,15 +311,15 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         ftMotionEventAdvance(ms, FTMotionEventSetHitSound);
         break;
 
-    case nFTMotionEventKindRefreshHitID:
+    case nFTMotionEventKindRefreshAtkID:
         atk_id = ftMotionEventCast(ms, FTMotionEventDefault)->value;
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
 
-        ftParamRefreshHitID(fighter_gobj, atk_id);
+        ftParamRefreshAtkID(fighter_gobj, atk_id);
         break;
 
-    case nFTMotionEventKindClearHitID:
+    case nFTMotionEventKindClearAtkID:
         atk_id = ftMotionEventCast(ms, FTMotionEventDefault)->value;
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
@@ -327,8 +327,8 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         fp->atk_colls[atk_id].atk_state = nGMAttackStateOff;
         break;
 
-    case nFTMotionEventKindClearHitAll:
-        ftParamClearHitAll(fighter_gobj);
+    case nFTMotionEventKindClearAtkAll:
+        ftParamClearAtkAll(fighter_gobj);
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
@@ -780,12 +780,12 @@ void ftMainUpdateMotionEventsDefault(GObj *fighter_gobj)
 
                 switch (ev_kind)
                 {
-                case nFTMotionEventKindClearHitID:
-                case nFTMotionEventKindClearHitAll:
+                case nFTMotionEventKindClearAtkID:
+                case nFTMotionEventKindClearAtkAll:
                 case nFTMotionEventKindSetHitDamage:
                 case nFTMotionEventKindSetHitSize:
                 case nFTMotionEventKindSetHitSoundLevel:
-                case nFTMotionEventKindRefreshHitID:
+                case nFTMotionEventKindRefreshAtkID:
                 case nFTMotionEventKindPlaySFX:
                 case nFTMotionEventKindPlayLoopSFXStoreInfo:
                 case nFTMotionEventKindStopLoopSFX:
@@ -1745,11 +1745,12 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
         }
         vel_damage_air = &fp->physics.vel_damage_air;
 
-        if ((fp->physics.vel_damage_air.x != 0.0F) || (vel_damage_air->y != 0.0F))
+        if ((vel_damage_air->x != 0.0F) || (vel_damage_air->y != 0.0F))
         {
             if (fp->ga == nMPKineticsAir)
             {
                 damage_angle = atan2f(vel_damage_air->y, vel_damage_air->x);
+
                 vel_damage_new.y = vel_damage_air->x;
                 vel_damage_new.x = vel_damage_air->y;
 
@@ -1849,17 +1850,17 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
             break;
 
         case nGMAttackStateNew:
-            atk_coll->pos = atk_coll->offset;
+            atk_coll->pos_curr = atk_coll->offset;
 
             if (atk_coll->is_scale_pos)
             {
                 size_mul = 1.0F / fp->attr->size_mul;
 
-                atk_coll->pos.x *= size_mul;
-                atk_coll->pos.y *= size_mul;
-                atk_coll->pos.z *= size_mul;
+                atk_coll->pos_curr.x *= size_mul;
+                atk_coll->pos_curr.y *= size_mul;
+                atk_coll->pos_curr.z *= size_mul;
             }
-            gmCollisionGetFighterPartsWorldPosition(atk_coll->joint, &atk_coll->pos);
+            gmCollisionGetFighterPartsWorldPosition(atk_coll->joint, &atk_coll->pos_curr);
 
             atk_coll->atk_state = nGMAttackStateTransfer;
 
@@ -1873,18 +1874,18 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
             /* fallthrough */
 
         case nGMAttackStateInterpolate:
-            atk_coll->pos_prev = atk_coll->pos;
-            atk_coll->pos = atk_coll->offset;
+            atk_coll->pos_prev = atk_coll->pos_curr;
+            atk_coll->pos_curr = atk_coll->offset;
 
             if (atk_coll->is_scale_pos)
             {
                 size_mul = 1.0F / fp->attr->size_mul;
 
-                atk_coll->pos.x *= size_mul;
-                atk_coll->pos.y *= size_mul;
-                atk_coll->pos.z *= size_mul;
+                atk_coll->pos_curr.x *= size_mul;
+                atk_coll->pos_curr.y *= size_mul;
+                atk_coll->pos_curr.z *= size_mul;
             }
-            gmCollisionGetFighterPartsWorldPosition(atk_coll->joint, &atk_coll->pos);
+            gmCollisionGetFighterPartsWorldPosition(atk_coll->joint, &atk_coll->pos_curr);
 
             atk_coll->hit_matrix.unk_fthitmtx_0x0 = FALSE;
             atk_coll->hit_matrix.unk_fthitmtx_0x44 = 0.0F;
@@ -1927,22 +1928,22 @@ void ftMainSetHitInteractStats(FTStruct *fp, u32 attack_group_id, GObj *victim_g
 
         if ((fp->atk_colls[i].atk_state != nGMAttackStateOff) && (attack_group_id == fp->atk_colls[i].group_id))
         {
-            for (j = 0; j < ARRAY_COUNT(fp->atk_colls[i].hit_records); j++)
+            for (j = 0; j < ARRAY_COUNT(fp->atk_colls[i].atk_records); j++)
             {
-                if (victim_gobj == fp->atk_colls[i].hit_records[j].victim_gobj)
+                if (victim_gobj == fp->atk_colls[i].atk_records[j].victim_gobj)
                 {
                     switch (atk_type)
                     {
                     case nGMHitTypeDamage:
-                        fp->atk_colls[i].hit_records[j].victim_flags.is_interact_hurt = TRUE;
+                        fp->atk_colls[i].atk_records[j].victim_flags.is_interact_hurt = TRUE;
                         break;
 
                     case nGMHitTypeShield:
-                        fp->atk_colls[i].hit_records[j].victim_flags.is_interact_shield = TRUE;
+                        fp->atk_colls[i].atk_records[j].victim_flags.is_interact_shield = TRUE;
                         break;
 
                     case nGMHitTypeAttack:
-                        fp->atk_colls[i].hit_records[j].victim_flags.group_id = victim_group_id;
+                        fp->atk_colls[i].atk_records[j].victim_flags.group_id = victim_group_id;
                         break;
 
                     default:
@@ -1951,28 +1952,28 @@ void ftMainSetHitInteractStats(FTStruct *fp, u32 attack_group_id, GObj *victim_g
                     break;
                 }
             }
-            if (j == ARRAY_COUNT(fp->atk_colls[i].hit_records))
+            if (j == ARRAY_COUNT(fp->atk_colls[i].atk_records))
             {
-                for (j = 0; j < ARRAY_COUNT(fp->atk_colls[i].hit_records); j++)
+                for (j = 0; j < ARRAY_COUNT(fp->atk_colls[i].atk_records); j++)
                 {
-                    if (fp->atk_colls[i].hit_records[j].victim_gobj == NULL) break;
+                    if (fp->atk_colls[i].atk_records[j].victim_gobj == NULL) break;
                 }
-                if (j == ARRAY_COUNT(fp->atk_colls[i].hit_records)) j = 0;
+                if (j == ARRAY_COUNT(fp->atk_colls[i].atk_records)) j = 0;
 
-                fp->atk_colls[i].hit_records[j].victim_gobj = victim_gobj;
+                fp->atk_colls[i].atk_records[j].victim_gobj = victim_gobj;
 
                 switch (atk_type)
                 {
                 case nGMHitTypeDamage:
-                    fp->atk_colls[i].hit_records[j].victim_flags.is_interact_hurt = TRUE;
+                    fp->atk_colls[i].atk_records[j].victim_flags.is_interact_hurt = TRUE;
                     break;
 
                 case nGMHitTypeShield:
-                    fp->atk_colls[i].hit_records[j].victim_flags.is_interact_shield = TRUE;
+                    fp->atk_colls[i].atk_records[j].victim_flags.is_interact_shield = TRUE;
                     break;
 
                 case nGMHitTypeAttack:
-                    fp->atk_colls[i].hit_records[j].victim_flags.group_id = victim_group_id;
+                    fp->atk_colls[i].atk_records[j].victim_flags.group_id = victim_group_id;
                     break;
 
                 default:
@@ -2358,7 +2359,7 @@ void ftMainUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *wp_atk_coll, s32 w
         ftParamUpdatePlayerBattleStats(wp->player, fp->player, damage);
         ftParamUpdateStaleQueue(wp->player, fp->player, wp_atk_coll->attack_id, wp_atk_coll->motion_count);
     }
-    func_800269C0_275C0(wp_atk_coll->hit_sfx);
+    func_800269C0_275C0(wp_atk_coll->fgm);
 }
 
 // 0x800E35BC
@@ -2545,7 +2546,7 @@ void ftMainUpdateDamageStatItem(ITStruct *ip, ITAttackColl *it_atk_coll, s32 atk
             ftParamUpdatePlayerBattleStats(ip->player, fp->player, damage);
             ftParamUpdateStaleQueue(ip->player, fp->player, it_atk_coll->attack_id, it_atk_coll->motion_count);
         }
-        func_800269C0_275C0(it_atk_coll->hit_sfx);
+        func_800269C0_275C0(it_atk_coll->fgm);
     }
 }
 
@@ -3014,11 +3015,11 @@ void ftMainSearchFighterAttack(GObj *this_gobj)
 
                             these_flags.group_id = 7;
 
-                            for (m = 0; m < ARRAY_COUNT(other_atk_coll->hit_records); m++)
+                            for (m = 0; m < ARRAY_COUNT(other_atk_coll->atk_records); m++)
                             {
-                                if (this_gobj == other_atk_coll->hit_records[m].victim_gobj)
+                                if (this_gobj == other_atk_coll->atk_records[m].victim_gobj)
                                 {
-                                    these_flags = other_atk_coll->hit_records[m].victim_flags;
+                                    these_flags = other_atk_coll->atk_records[m].victim_flags;
 
                                     break;
                                 }
@@ -3059,11 +3060,11 @@ void ftMainSearchFighterAttack(GObj *this_gobj)
 
                                         those_flags.group_id = 7;
 
-                                        for (n = 0; n < ARRAY_COUNT(this_atk_coll->hit_records); n++)
+                                        for (n = 0; n < ARRAY_COUNT(this_atk_coll->atk_records); n++)
                                         {
-                                            if (other_gobj == this_atk_coll->hit_records[n].victim_gobj)
+                                            if (other_gobj == this_atk_coll->atk_records[n].victim_gobj)
                                             {
-                                                those_flags = this_atk_coll->hit_records[n].victim_flags;
+                                                those_flags = this_atk_coll->atk_records[n].victim_flags;
 
                                                 break;
                                             }
@@ -3217,11 +3218,11 @@ void ftMainSearchWeaponAttack(GObj *fighter_gobj)
 
                 weapon_flags.group_id = 7;
 
-                for (m = 0; m < ARRAY_COUNT(wp_atk_coll->hit_records); m++)
+                for (m = 0; m < ARRAY_COUNT(wp_atk_coll->atk_records); m++)
                 {
-                    if (fighter_gobj == wp_atk_coll->hit_records[m].victim_gobj)
+                    if (fighter_gobj == wp_atk_coll->atk_records[m].victim_gobj)
                     {
-                        weapon_flags = wp_atk_coll->hit_records[m].victim_flags;
+                        weapon_flags = wp_atk_coll->atk_records[m].victim_flags;
 
                         break;
                     }
@@ -3243,11 +3244,11 @@ void ftMainSearchWeaponAttack(GObj *fighter_gobj)
                                 {
                                     fighter_flags.group_id = 7;
 
-                                    for (n = 0; n < ARRAY_COUNT(ft_atk_coll->hit_records); n++)
+                                    for (n = 0; n < ARRAY_COUNT(ft_atk_coll->atk_records); n++)
                                     {
-                                        if (weapon_gobj == ft_atk_coll->hit_records[n].victim_gobj)
+                                        if (weapon_gobj == ft_atk_coll->atk_records[n].victim_gobj)
                                         {
-                                            fighter_flags = ft_atk_coll->hit_records[n].victim_flags;
+                                            fighter_flags = ft_atk_coll->atk_records[n].victim_flags;
 
                                             break;
                                         }
@@ -3414,11 +3415,11 @@ void ftMainSearchItemAttack(GObj *fighter_gobj)
 
                 item_flags.group_id = 7;
 
-                for (m = 0; m < ARRAY_COUNT(it_atk_coll->hit_records); m++)
+                for (m = 0; m < ARRAY_COUNT(it_atk_coll->atk_records); m++)
                 {
-                    if (fighter_gobj == it_atk_coll->hit_records[m].victim_gobj)
+                    if (fighter_gobj == it_atk_coll->atk_records[m].victim_gobj)
                     {
-                        item_flags = it_atk_coll->hit_records[m].victim_flags;
+                        item_flags = it_atk_coll->atk_records[m].victim_flags;
 
                         break;
                     }
@@ -3439,11 +3440,11 @@ void ftMainSearchItemAttack(GObj *fighter_gobj)
                                 {
                                     fighter_flags.group_id = 7;
 
-                                    for (n = 0; n < ARRAY_COUNT(ft_atk_coll->hit_records); n++)
+                                    for (n = 0; n < ARRAY_COUNT(ft_atk_coll->atk_records); n++)
                                     {
-                                        if (item_gobj == ft_atk_coll->hit_records[n].victim_gobj)
+                                        if (item_gobj == ft_atk_coll->atk_records[n].victim_gobj)
                                         {
-                                            fighter_flags = ft_atk_coll->hit_records[n].victim_flags;
+                                            fighter_flags = ft_atk_coll->atk_records[n].victim_flags;
 
                                             break;
                                         }
@@ -3697,11 +3698,11 @@ void ftMainSearchFighterCatch(GObj *this_gobj)
 
             catch_mask.group_id = 7;
 
-            for (m = 0; m < ARRAY_COUNT(atk_coll->hit_records); m++)
+            for (m = 0; m < ARRAY_COUNT(atk_coll->atk_records); m++)
             {
-                if (other_gobj == atk_coll->hit_records[m].victim_gobj)
+                if (other_gobj == atk_coll->atk_records[m].victim_gobj)
                 {
-                    catch_mask = atk_coll->hit_records[m].victim_flags;
+                    catch_mask = atk_coll->atk_records[m].victim_flags;
 
                     break;
                 }
@@ -3984,16 +3985,16 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
         case FALSE:
             if ((fp->fkind == nFTKindLink) && (fp->modelpart_status[11 - nFTPartsJointCommonStart].modelpart_id_current == 0))
             {
-                FTParts *ft_parts = fp->joints[11]->user_data.p;
+                FTParts *parts = fp->joints[11]->user_data.p;
 
                 func_ovl2_800EDBA4(fp->joints[11]);
 
-                fp->afterimage.desc[fp->afterimage.desc_index].translate_x = ft_parts->mtx_translate[3][0];
-                fp->afterimage.desc[fp->afterimage.desc_index].translate_y = ft_parts->mtx_translate[3][1];
-                fp->afterimage.desc[fp->afterimage.desc_index].translate_z = ft_parts->mtx_translate[3][2];
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.x = ft_parts->mtx_translate[2][0];
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.y = ft_parts->mtx_translate[2][1];
-                fp->afterimage.desc[fp->afterimage.desc_index].vec.z = ft_parts->mtx_translate[2][2];
+                fp->afterimage.desc[fp->afterimage.desc_index].translate_x = parts->mtx_translate[3][0];
+                fp->afterimage.desc[fp->afterimage.desc_index].translate_y = parts->mtx_translate[3][1];
+                fp->afterimage.desc[fp->afterimage.desc_index].translate_z = parts->mtx_translate[3][2];
+                fp->afterimage.desc[fp->afterimage.desc_index].vec.x = parts->mtx_translate[2][0];
+                fp->afterimage.desc[fp->afterimage.desc_index].vec.y = parts->mtx_translate[2][1];
+                fp->afterimage.desc[fp->afterimage.desc_index].vec.z = parts->mtx_translate[2][2];
 
                 if (fp->afterimage.desc_index == 2)
                 {
@@ -4052,7 +4053,7 @@ void ftMainUpdateWithheldPartID(FTStruct *fp, s32 withheld_part_id)
     FTAttributes *attr;
     FTCommonPart *commonpart;
     DObj *parent_joint;
-    FTParts *ft_parts;
+    FTParts *parts;
 
     attr = fp->attr;
     withheld_part = &attr->withheld_parts[withheld_part_id];
@@ -4148,10 +4149,10 @@ void ftMainUpdateWithheldPartID(FTStruct *fp, s32 withheld_part_id)
     }
     fp->joints[withheld_part->root_joint_id] = root_joint;
 
-    root_joint->user_data.p = ft_parts = ftManagerGetNextPartsAlloc();
+    root_joint->user_data.p = parts = ftManagerGetNextPartsAlloc();
 
-    ft_parts->flags = attr->commonparts_container->commonparts[fp->detail_current - nFTPartsDetailStart].flags;
-    ft_parts->joint_id = withheld_part->root_joint_id;
+    parts->flags = attr->commonparts_container->commonparts[fp->detail_current - nFTPartsDetailStart].flags;
+    parts->joint_id = withheld_part->root_joint_id;
 
     if (withheld_part->partindex_0x8 != 0)
     {
@@ -4265,7 +4266,7 @@ void ftMainEjectWithheldPartID(FTStruct *fp, s32 withheld_part_id)
     DObj *sibling_joint;
     DObj *new_sibling_joint;
 
-    ftManagerSetPrevPartsAlloc(root_joint->user_data.p);
+    ftManagerSetPrevPartsAlloc(ftGetParts(root_joint));
 
     child_joint = root_joint->child;
     parent_joint = root_joint->parent;
@@ -4373,7 +4374,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     }
     if (!(flags & FTSTATUS_PRESERVE_HIT) && (fp->is_atk_active))
     {
-        ftParamClearHitAll(fighter_gobj);
+        ftParamClearAtkAll(fighter_gobj);
     }
     if (!(flags & FTSTATUS_PRESERVE_THROWPOINTER))
     {
@@ -4562,13 +4563,13 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     {
         motion_id = status_struct[status_struct_id].mflags.motion_id;
         fp->motion_id = motion_id;
-        script_array = fp->ft_data->mainmotion;
+        script_array = fp->data->mainmotion;
     }
     else
     {
         motion_id = opening_struct[status_struct_id].motion_id - 0x10000;
         fp->motion_id = motion_id;
-        script_array = fp->ft_data->submotion;
+        script_array = fp->data->submotion;
     }
     if ((motion_id != -1) && (motion_id != -2))
     {
@@ -4576,7 +4577,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
 
         if (script_info->anim_desc.flags.is_use_shieldpose)
         {
-            fp->figatree = (void*)((intptr_t)script_info->anim_file_id + (uintptr_t)fp->ft_data->p_file_shieldpose);
+            fp->figatree = (void*)((intptr_t)script_info->anim_file_id + (uintptr_t)fp->data->p_file_shieldpose);
         }
         else if (script_info->anim_file_id != 0)
         {
@@ -4707,13 +4708,13 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
                 // Actually subaction scripts?
                 if (fp->anim_desc.flags.is_use_submotion_script)
                 {
-                    event_file_head = *fp->ft_data->p_file_submotion;
+                    event_file_head = *fp->data->p_file_submotion;
 
                     event_script_ptr = (void*)((intptr_t)script_info->offset + (intptr_t)event_file_head);
                 }
                 else
                 {
-                    event_file_head = *fp->ft_data->p_file_mainmotion;
+                    event_file_head = *fp->data->p_file_mainmotion;
 
                     event_script_ptr = (void*)((intptr_t)script_info->offset + (intptr_t)event_file_head);
                 }

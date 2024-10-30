@@ -367,7 +367,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
     DObj **p_joint = &fp->joints[nFTPartsJointTopN];
     DObj *joint;
     MObj *mobj;
-    FTParts *ft_parts;
+    FTParts *parts;
     f32 anim_wait_bak;
     s32 i;
 
@@ -439,9 +439,9 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
 
             if (joint != NULL)
             {
-                ft_parts = ftGetParts(joint);
+                parts = ftGetParts(joint);
 
-                if ((ft_parts != NULL) && (ft_parts->is_have_anim != FALSE))
+                if ((parts != NULL) && (parts->is_have_anim != FALSE))
                 {
                     anim_wait_bak = joint->anim_wait;
 
@@ -460,9 +460,9 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
 
         if (joint != NULL)
         {
-            ft_parts = ftGetParts(joint);
+            parts = ftGetParts(joint);
 
-            if ((ft_parts != NULL) && (ft_parts->is_have_anim != FALSE))
+            if ((parts != NULL) && (parts->is_have_anim != FALSE))
             {
                 anim_wait_bak = joint->anim_wait;
 
@@ -477,7 +477,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
 }
 
 // 0x800E8518
-void ftParamClearHitAll(GObj *fighter_gobj)
+void ftParamClearAtkAll(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
@@ -492,26 +492,26 @@ void ftParamClearHitAll(GObj *fighter_gobj)
 }
 
 // 0x800E853C
-void ftParamClearHitRecordID(FTStruct *fp, s32 atk_id)
+void ftParamClearAtkRecordID(FTStruct *fp, s32 atk_id)
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->atk_colls[atk_id].hit_records); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->atk_colls[atk_id].atk_records); i++)
     {
-        GMHitRecord *targets = &fp->atk_colls[atk_id].hit_records[i];
+        GMAttackRecord *record = &fp->atk_colls[atk_id].atk_records[i];
 
-        targets->victim_gobj = NULL;
+        record->victim_gobj = NULL;
 
-        targets->victim_flags.is_interact_hurt = targets->victim_flags.is_interact_shield = FALSE;
+        record->victim_flags.is_interact_hurt = record->victim_flags.is_interact_shield = FALSE;
 
-        targets->victim_flags.timer_rehit = 0;
+        record->victim_flags.timer_rehit = 0;
 
-        targets->victim_flags.group_id = 7;
+        record->victim_flags.group_id = 7;
     }
 }
 
 // 0x800E8668
-void ftParamRefreshHitID(GObj *fighter_gobj, s32 atk_id)
+void ftParamRefreshAtkID(GObj *fighter_gobj, s32 atk_id)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -519,7 +519,7 @@ void ftParamRefreshHitID(GObj *fighter_gobj, s32 atk_id)
 
     fp->is_atk_active = TRUE;
 
-    ftParamClearHitRecordID(fp, atk_id);
+    ftParamClearAtkRecordID(fp, atk_id);
 }
 
 // 0x800E86B4
@@ -753,7 +753,7 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 modelpart_id)
     FTCommonPartContainer *commonparts_container;
     FTModelPart *modelpart;
     FTModelPartStatus *modelpart_status;
-    FTParts *ft_parts;
+    FTParts *parts;
     DObj *joint;
     s32 detail_id;
     AObjEvent32 **costume_matanim_joints;
@@ -762,7 +762,7 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 modelpart_id)
     joint = fp->joints[joint_id];
     commonparts_container = attr->commonparts_container;
     modelpart_status = &fp->modelpart_status[joint_id - nFTPartsJointCommonStart];
-    ft_parts = ftGetParts(joint);
+    parts = ftGetParts(joint);
 
     if (joint != NULL)
     {
@@ -782,7 +782,7 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 modelpart_id)
 
                     lbCommonAddMObjForFighterPartsDObj(joint, modelpart->mobjsubs, modelpart->costume_matanim_joints, modelpart->main_matanim_joints, fp->costume);
 
-                    ft_parts->flags = modelpart->flags;
+                    parts->flags = modelpart->flags;
                 }
                 else
                 {
@@ -808,7 +808,7 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 modelpart_id)
 
                     lbCommonAddMObjForFighterPartsDObj(joint, mobjsubs, costume_matanim_joints, NULL, fp->costume);
 
-                    ft_parts->flags = commonparts_container->commonparts[detail_id].flags;
+                    parts->flags = commonparts_container->commonparts[detail_id].flags;
                 }
             }
             else joint->display_list = NULL;
@@ -836,7 +836,7 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
     FTCommonPartContainer *commonparts_container;
     FTModelPart *modelpart;
     FTModelPartStatus *modelpart_status;
-    FTParts *ft_parts;
+    FTParts *parts;
     DObj *joint;
     s32 detail_id;
     AObjEvent32 **costume_matanim_joints;
@@ -865,7 +865,7 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
                 }
                 else
                 {
-                    ft_parts = ftGetParts(joint);
+                    parts = ftGetParts(joint);
 
                     if (attr->modelparts_container->modelparts_desc[i] != NULL)
                     {
@@ -875,7 +875,7 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
 
                         lbCommonAddMObjForFighterPartsDObj(joint, modelpart->mobjsubs, modelpart->costume_matanim_joints, modelpart->main_matanim_joints, fp->costume);
 
-                        ft_parts->flags = modelpart->flags;
+                        parts->flags = modelpart->flags;
                     }
                     else
                     {
@@ -901,7 +901,7 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
 
                         lbCommonAddMObjForFighterPartsDObj(joint, mobjsubs, costume_matanim_joints, NULL, fp->costume);
 
-                        ft_parts->flags = commonparts_container->commonparts[detail_id].flags;
+                        parts->flags = commonparts_container->commonparts[detail_id].flags;
                     }
                 }
             }
@@ -979,8 +979,8 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTAttributes *attr = fp->attr;
     DObj *joint;
-    GObj *ft_parts_gobj;
-    FTParts *ft_parts;
+    GObj *parts_gobj;
+    FTParts *parts;
     FTCommonPartContainer *commonparts_container;
     FTMesh *ft_mesh;
     FTModelPartStatus *modelpart_status;
@@ -1036,22 +1036,22 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
             }
             if ((ft_mesh != NULL) && ((i + nFTPartsJointCommonStart) == ft_mesh->joint_id))
             {
-                ft_parts = ftGetParts(joint);
+                parts = ftGetParts(joint);
 
-                if (ft_parts->gobj != NULL)
+                if (parts->gobj != NULL)
                 {
-                    gcEjectGObj(ft_parts->gobj);
+                    gcEjectGObj(parts->gobj);
 
-                    ft_parts->gobj = NULL;
+                    parts->gobj = NULL;
                 }
                 if (costume != 0)
                 {
-                    ft_parts_gobj = gcMakeGObjSPAfter(nGCCommonKindFighterParts, NULL, nGCCommonLinkIDFighterParts, GOBJ_LINKORDER_DEFAULT);
-                    ft_parts->gobj = ft_parts_gobj;
+                    parts_gobj = gcMakeGObjSPAfter(nGCCommonKindFighterParts, NULL, nGCCommonLinkIDFighterParts, GOBJ_LINKORDER_DEFAULT);
+                    parts->gobj = parts_gobj;
 
-                    gcAddDObjForGObj(ft_parts_gobj, ft_mesh->dl);
+                    gcAddDObjForGObj(parts_gobj, ft_mesh->dl);
 
-                    lbCommonAddMObjForFighterPartsDObj(DObjGetStruct(ft_parts->gobj), ft_mesh->mobjsubs, ft_mesh->costume_matanim_joints, NULL, costume);
+                    lbCommonAddMObjForFighterPartsDObj(DObjGetStruct(parts->gobj), ft_mesh->mobjsubs, ft_mesh->costume_matanim_joints, NULL, costume);
                 }
             }
         }
@@ -2355,7 +2355,7 @@ void ftParamSetAnimLocks(FTStruct *fp)
     u32 flags0;         // First set of 32-bit mask of joint IDs to avoid animating
     u32 flags1;         // Second set of 32-bit mask of joint IDs to avoid animating
     u32 current_flags;
-    FTParts *ft_parts;
+    FTParts *parts;
     s32 i;
     u32 *animlock;
     FTAttributes *attr = fp->attr;
@@ -2376,12 +2376,12 @@ void ftParamSetAnimLocks(FTStruct *fp)
         {
             if (fp->joints[i] != NULL)
             {
-                ft_parts = fp->joints[i]->user_data.p;
+                parts = fp->joints[i]->user_data.p;
 
-                if (ft_parts != NULL)
+                if (parts != NULL)
                 {
-                    gmCollisionTransformMatrixAll(fp->joints[i], ft_parts, ft_parts->unk_dobjtrans_0x10);
-                    ft_parts->transform_update_mode = 3;
+                    gmCollisionTransformMatrixAll(fp->joints[i], parts, parts->unk_dobjtrans_0x10);
+                    parts->transform_update_mode = 3;
                     fp->joints[i]->xobj[0]->unk05 = 1;
                 }
             }
@@ -2403,13 +2403,13 @@ void ftParamClearAnimLocks(FTStruct *fp)
     {
         if (fp->joints[i] != NULL)
         {
-            FTParts *ft_parts = fp->joints[i]->user_data.p;
+            FTParts *parts = fp->joints[i]->user_data.p;
 
-            if (ft_parts != NULL)
+            if (parts != NULL)
             {
-                if (ft_parts->transform_update_mode == 3)
+                if (parts->transform_update_mode == 3)
                 {
-                    ft_parts->transform_update_mode = 0;
+                    parts->transform_update_mode = 0;
 
                     fp->joints[i]->xobj[0]->unk05 = 0;
                 }

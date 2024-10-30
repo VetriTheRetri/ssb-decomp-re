@@ -105,7 +105,7 @@ void ftManagerSetupFileSize(void)
     s32 i, j;
     size_t largest_size;
     size_t current_anim_size;
-    FTData *ft_data;
+    FTData *data;
     FTFileSize *ft_size;
     LBRelocSetup rl_setup;
     FTMotionDesc *script_info;
@@ -124,17 +124,17 @@ void ftManagerSetupFileSize(void)
     for (i = 0; i < ARRAY_COUNT(dFTManagerDataFiles); i++)
     {
         ft_size = &D_800A50F8[i];
-        ft_data = dFTManagerDataFiles[i];
+        data = dFTManagerDataFiles[i];
 
         largest_size = 0;
 
-        ft_size->main = lbRelocGetFileSize(ft_data->file_main_id);
+        ft_size->main = lbRelocGetFileSize(data->file_main_id);
 
-        for (j = 0; j < ft_data->mainmotion_array_count; j++)
+        for (j = 0; j < data->mainmotion_array_count; j++)
         {
-            script_info = &ft_data->mainmotion->script_info[j];
+            script_info = &data->mainmotion->script_info[j];
 
-            current_anim_size = ft_data->mainmotion->script_info[j].anim_file_id;
+            current_anim_size = data->mainmotion->script_info[j].anim_file_id;
 
             if (script_info->anim_file_id != 0)
             {
@@ -151,11 +151,11 @@ void ftManagerSetupFileSize(void)
         }
         ft_size->mainmotion_largest_anim = largest_size;
 
-        for (j = 0; j < *ft_data->submotion_array_count; j++)
+        for (j = 0; j < *data->submotion_array_count; j++)
         {
-            script_info = &ft_data->submotion->script_info[j];
+            script_info = &data->submotion->script_info[j];
 
-            current_anim_size = ft_data->submotion->script_info[j].anim_file_id;
+            current_anim_size = data->submotion->script_info[j].anim_file_id;
 
             if (script_info->anim_file_id != 0)
             {
@@ -180,7 +180,7 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
     size_t largest_size;
     s32 i;
     size_t current_size;
-    FTData *ft_data;
+    FTData *data;
     FTFileSize *ft_size;
     size_t heap_size;
 
@@ -214,14 +214,14 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
 
     for (i = 0; i < (ARRAY_COUNT(dFTManagerDataFiles) + ARRAY_COUNT(D_800A50F8)) / 2; i++)
     {
-        ft_data = dFTManagerDataFiles[i];
+        data = dFTManagerDataFiles[i];
         ft_size = &D_800A50F8[i];
 
         largest_size = 0;
 
-        *ft_data->p_file_main = NULL;
+        *data->p_file_main = NULL;
 
-        ft_data->file_main_size = ft_size->main;
+        data->file_main_size = ft_size->main;
 
         if (data_flags & FTDATA_FLAG_MAINMOTION)
         {
@@ -241,11 +241,11 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
                 largest_size = current_size;
             }
         }
-        ft_data->file_anim_size = largest_size;
+        data->file_anim_size = largest_size;
 
-        if (heap_size < ft_data->file_anim_size)
+        if (heap_size < data->file_anim_size)
         {
-            heap_size = ft_data->file_anim_size;
+            heap_size = data->file_anim_size;
         }
     }
     gFTManagerFigatreeHeapSize = heap_size;
@@ -316,27 +316,27 @@ FTParts* ftManagerGetNextPartsAlloc(void)
 }
 
 // 0x800D767C
-void ftManagerSetPrevPartsAlloc(FTParts *ft_parts)
+void ftManagerSetPrevPartsAlloc(FTParts *parts)
 {
-    ft_parts->alloc_next = sFTManagerPartsAllocFree;
-    sFTManagerPartsAllocFree = ft_parts;
+    parts->alloc_next = sFTManagerPartsAllocFree;
+    sFTManagerPartsAllocFree = parts;
 }
 
 // 0x800D7694
 void ftManagerSetupFilesMainKind(s32 fkind)
 {
-    FTData *ft_data = dFTManagerDataFiles[fkind];
+    FTData *data = dFTManagerDataFiles[fkind];
 
-    *ft_data->p_file_main = lbRelocGetFileExternHeap(ft_data->file_main_id, syTaskmanMalloc(lbRelocGetFileSize(ft_data->file_main_id), 0x10));
+    *data->p_file_main = lbRelocGetFileExternHeap(data->file_main_id, syTaskmanMalloc(lbRelocGetFileSize(data->file_main_id), 0x10));
 
-    if (ft_data->particles_script_lo != 0)
+    if (data->particles_script_lo != 0)
     {
-        *ft_data->p_particle = efParticleGetLoadBankID
+        *data->p_particle = efParticleGetLoadBankID
         (
-            ft_data->particles_script_lo, 
-            ft_data->particles_script_hi, 
-            ft_data->particles_texture_lo, 
-            ft_data->particles_texture_hi
+            data->particles_script_lo, 
+            data->particles_script_hi, 
+            data->particles_texture_lo, 
+            data->particles_texture_hi
         );
     }
 }
@@ -344,41 +344,41 @@ void ftManagerSetupFilesMainKind(s32 fkind)
 // 0x800D7710
 void ftManagerSetupFilesKind(s32 fkind)
 {
-    FTData *ft_data = dFTManagerDataFiles[fkind];
+    FTData *data = dFTManagerDataFiles[fkind];
 
-    if (ft_data->file_mainmotion_id != 0)
+    if (data->file_mainmotion_id != 0)
     {
-        *ft_data->p_file_mainmotion = lbRelocGetFileStatusBuffer(ft_data->file_mainmotion_id);
+        *data->p_file_mainmotion = lbRelocGetFileStatusBuffer(data->file_mainmotion_id);
     }
-    if (ft_data->file_submotion_id != 0)
+    if (data->file_submotion_id != 0)
     {
-        *ft_data->p_file_submotion = lbRelocGetFileStatusBuffer(ft_data->file_submotion_id);
+        *data->p_file_submotion = lbRelocGetFileStatusBuffer(data->file_submotion_id);
     }
-    *ft_data->p_file_model = lbRelocGetFileStatusBuffer(ft_data->file_model_id);
+    *data->p_file_model = lbRelocGetFileStatusBuffer(data->file_model_id);
 
-    if (ft_data->file_shieldpose_id != 0)
+    if (data->file_shieldpose_id != 0)
     {
-        ft_data->p_file_shieldpose = lbRelocGetFileStatusBuffer(ft_data->file_shieldpose_id);
+        data->p_file_shieldpose = lbRelocGetFileStatusBuffer(data->file_shieldpose_id);
     }
-    if (ft_data->file_special1_id != 0)
+    if (data->file_special1_id != 0)
     {
-        *ft_data->p_file_special1 = lbRelocGetFileStatusBuffer(ft_data->file_special1_id);
+        *data->p_file_special1 = lbRelocGetFileStatusBuffer(data->file_special1_id);
     }
-    if (ft_data->file_special2_id != 0)
+    if (data->file_special2_id != 0)
     {
-        *ft_data->p_file_special2 = lbRelocGetFileStatusBuffer(ft_data->file_special2_id);
+        *data->p_file_special2 = lbRelocGetFileStatusBuffer(data->file_special2_id);
     }
-    if (ft_data->file_special3_id != 0)
+    if (data->file_special3_id != 0)
     {
-        *ft_data->p_file_special3 = lbRelocGetFileStatusBuffer(ft_data->file_special3_id);
+        *data->p_file_special3 = lbRelocGetFileStatusBuffer(data->file_special3_id);
     }
-    if (ft_data->file_special4_id != 0)
+    if (data->file_special4_id != 0)
     {
-        *ft_data->p_file_special4 = lbRelocGetFileStatusBuffer(ft_data->file_special4_id);
+        *data->p_file_special4 = lbRelocGetFileStatusBuffer(data->file_special4_id);
     }
-    if (ft_data->particles_script_lo != 0)
+    if (data->particles_script_lo != 0)
     {
-        *ft_data->p_particle = efParticleGetBankID(ft_data->particles_script_lo);
+        *data->p_particle = efParticleGetBankID(data->particles_script_lo);
     }
 }
 
@@ -396,9 +396,9 @@ void ftManagerSetupFilesPlayablesAll(void)
 // 0x800D786C
 void ftManagerSetupFilesAllKind(s32 fkind)
 {
-    FTData *ft_data = dFTManagerDataFiles[fkind];
+    FTData *data = dFTManagerDataFiles[fkind];
 
-    if (*ft_data->p_file_main == NULL)
+    if (*data->p_file_main == NULL)
     {
         ftManagerSetupFilesMainKind(fkind);
         ftManagerSetupFilesKind(fkind);
@@ -408,9 +408,9 @@ void ftManagerSetupFilesAllKind(s32 fkind)
 // 0x800D78B4
 void* ftManagerAllocFigatreeHeapKind(s32 fkind)
 {
-    FTData *ft_data = dFTManagerDataFiles[fkind];
+    FTData *data = dFTManagerDataFiles[fkind];
 
-    return syTaskmanMalloc(ft_data->file_anim_size, 0x10);
+    return syTaskmanMalloc(data->file_anim_size, 0x10);
 }
 
 // 0x800D78E8
@@ -427,13 +427,13 @@ void ftManagerDestroyFighter(GObj *fighter_gobj)
     {
         if (fp->joints[i] != NULL)
         {
-            FTParts *ft_parts = fp->joints[i]->user_data.p;
+            FTParts *parts = fp->joints[i]->user_data.p;
 
-            if (ft_parts->gobj != NULL)
+            if (parts->gobj != NULL)
             {
-                gcEjectGObj(ft_parts->gobj);
+                gcEjectGObj(parts->gobj);
             }
-            ftManagerSetPrevPartsAlloc(ft_parts);
+            ftManagerSetPrevPartsAlloc(parts);
         }
     }
     ftManagerSetPrevStructAlloc(fp);
@@ -684,7 +684,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
         }
         break;
     }
-    ftParamClearHitAll(fighter_gobj);
+    ftParamClearAtkAll(fighter_gobj);
     ftParamSetHitStatusPartAll(fighter_gobj, nGMHitStatusNormal);
     ftParamResetFighterColAnim(fighter_gobj);
 }
@@ -695,7 +695,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
     FTStruct *fp;
     GObj *fighter_gobj;
     s32 i;
-    FTParts *ft_parts;
+    FTParts *parts;
     FTAttributes *attr;
     s32 unused;
     DObj *topn_joint;
@@ -712,8 +712,8 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
     fp->pkind = ft_desc->pkind;
     fp->fighter_gobj = fighter_gobj;
     fp->fkind = ft_desc->fkind;
-    fp->ft_data = dFTManagerDataFiles[fp->fkind];
-    attr = fp->attr = (FTAttributes*) ((uintptr_t)*fp->ft_data->p_file_main + (intptr_t)fp->ft_data->o_attributes);
+    fp->data = dFTManagerDataFiles[fp->fkind];
+    attr = fp->attr = (FTAttributes*) ((uintptr_t)*fp->data->p_file_main + (intptr_t)fp->data->o_attributes);
     fp->figatree_heap = ft_desc->figatree_heap;
     fp->team = ft_desc->team;
     fp->player = ft_desc->player;
@@ -793,9 +793,9 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
         {
             fp->joints[i]->user_data.p = ftManagerGetNextPartsAlloc();
 
-            ft_parts = fp->joints[i]->user_data.p;
-            ft_parts->flags = attr->commonparts_container->commonparts[fp->detail_current - nFTPartsDetailStart].flags;
-            ft_parts->joint_id = i;
+            parts = fp->joints[i]->user_data.p;
+            parts->flags = attr->commonparts_container->commonparts[fp->detail_current - nFTPartsDetailStart].flags;
+            parts->joint_id = i;
 
             if (fp->costume != 0)
             {
@@ -803,10 +803,10 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
                 {
                     ft_mesh = attr->mesh;
 
-                    ft_parts->gobj = gcMakeGObjSPAfter(nGCCommonKindFighterParts, NULL, nGCCommonLinkIDFighterParts, GOBJ_LINKORDER_DEFAULT);
+                    parts->gobj = gcMakeGObjSPAfter(nGCCommonKindFighterParts, NULL, nGCCommonLinkIDFighterParts, GOBJ_LINKORDER_DEFAULT);
 
-                    gcAddDObjForGObj(ft_parts->gobj, ft_mesh->dl);
-                    lbCommonAddMObjForFighterPartsDObj(DObjGetStruct(ft_parts->gobj), ft_mesh->mobjsubs, ft_mesh->costume_matanim_joints, NULL, fp->costume);
+                    gcAddDObjForGObj(parts->gobj, ft_mesh->dl);
+                    lbCommonAddMObjForFighterPartsDObj(DObjGetStruct(parts->gobj), ft_mesh->mobjsubs, ft_mesh->costume_matanim_joints, NULL, fp->costume);
                 }
             }
         }

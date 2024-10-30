@@ -108,12 +108,12 @@ sb32 itNessPKFireCommonUpdateAllCheckDestroy(GObj *item_gobj)
 
     attr = ip->attr;
 
-    ip->atk_coll.offset[0].x = attr->atk_offset0_x * lifetime_scale;
-    ip->atk_coll.offset[0].y = attr->atk_offset0_y * lifetime_scale;
-    ip->atk_coll.offset[0].z = attr->atk_offset0_z * lifetime_scale;
-    ip->atk_coll.offset[1].x = attr->atk_offset1_x * lifetime_scale;
-    ip->atk_coll.offset[1].y = attr->atk_offset1_y * lifetime_scale;
-    ip->atk_coll.offset[1].z = attr->atk_offset1_z * lifetime_scale;
+    ip->atk_coll.offsets[0].x = attr->atk_offset0_x * lifetime_scale;
+    ip->atk_coll.offsets[0].y = attr->atk_offset0_y * lifetime_scale;
+    ip->atk_coll.offsets[0].z = attr->atk_offset0_z * lifetime_scale;
+    ip->atk_coll.offsets[1].x = attr->atk_offset1_x * lifetime_scale;
+    ip->atk_coll.offsets[1].y = attr->atk_offset1_y * lifetime_scale;
+    ip->atk_coll.offsets[1].z = attr->atk_offset1_z * lifetime_scale;
 
     ip->atk_coll.size = attr->size * 0.5F * lifetime_scale;
 

@@ -70,7 +70,7 @@ struct WPAttributes // Moreso hitbox stuff
 // Current and previous hitbox position are stored here
 struct WPAttackPos
 {
-    Vec3f pos;
+    Vec3f pos_curr;
     Vec3f pos_prev;
     sb32 unk_wphitpos_0x18;
     Mtx44f mtx;
@@ -80,11 +80,11 @@ struct WPAttackPos
 // Weapon's hitbox parameters
 struct WPAttackColl
 {
-    s32 atk_state;                                       // 0 = disabled, 1 = new hitbox, 2 and 3 = interpolate/copy current position to previous
+    s32 atk_state;                                          // 0 = disabled, 1 = new hitbox, 2 and 3 = interpolate/copy current position to previous
     s32 damage;                                             // Hitbox base damage in %
     f32 stale;                                              // Stale move negation multiplier
     s32 element;                                            // Hitbox hit effect
-    Vec3f offset[WEAPON_HITCOLL_NUM_MAX];                  	// Offset from TopN joint; up to two hitboxes by default
+    Vec3f offsets[WEAPON_ATKCOLL_NUM_MAX];                  // Offset from TopN joint; up to two hitboxes by default
     f32 size;                                               // Hitbox size
     s32 angle;                                              // Hitbox angle
     u32 knockback_scale;                                    // Knockback scaling/growth
@@ -93,7 +93,7 @@ struct WPAttackColl
     s32 shield_damage;                                      // Additional shield damage; if (hitbox damage - shield damage) is negative, heals shield
     s32 priority;                                           // Used to determine winner in hitbox vs hitbox interaction?
     u8 interact_mask;                                       // Mask of object classes hitbox can interact with; 0x1 = fighters, 0x2 = weapons, 0x4 = items
-    u16 hit_sfx;                                            // Sound effect to play when colliding with a hurtbox
+    u16 fgm;                                                // Sound effect to play when colliding with a hurtbox
     ub32 can_setoff : 1;                                    // Whether weapon can collide with other hitboxes
     ub32 can_rehit_item : 1;                                // Whether weapon can hit items repeatedly
     ub32 can_rehit_fighter : 1;                             // Whether weapon can hit fighters repeatedly
@@ -108,8 +108,8 @@ struct WPAttackColl
     GMStatFlags stat_flags;                                 // Weapon's status flags
     u16 stat_count;                                         // Weapon's status update count
     s32 atk_count;                                          // Weapon's hitbox count
-    WPAttackPos atk_pos[WEAPON_HITCOLL_NUM_MAX];  	// Weapon's hitbox world positions
-    GMHitRecord hit_records[GMHITRECORD_NUM_MAX];            // Weapon's record of interacted targets
+    WPAttackPos atk_pos[WEAPON_ATKCOLL_NUM_MAX];  	        // Weapon's hitbox world positions
+    GMAttackRecord atk_records[GMATKRECORD_NUM_MAX];        // Weapon's record of interacted targets
 };
 
 // Main weapon struct

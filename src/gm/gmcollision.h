@@ -8,8 +8,8 @@
 #include <it/itdef.h>
 
 extern void gmCollisionCopyMatrix(Mtx44f dst, Mtx44f src);
-extern void gmCollisionTransformMatrixAll(DObj *dobj, FTParts *ft_parts, Mtx44f mtx);
-extern void gmCollisionSetMatrixNcs(DObj *dobj, FTParts *ft_parts, Mtx44f mtx, Vec3f *scale_mul);
+extern void gmCollisionTransformMatrixAll(DObj *dobj, FTParts *parts, Mtx44f mtx);
+extern void gmCollisionSetMatrixNcs(DObj *dobj, FTParts *parts, Mtx44f mtx, Vec3f *scale_mul);
 extern void gmCollisionGetWorldPosition(Mtx44f mtx, Vec3f *vec);
 extern void func_ovl2_800ED490(Mtx44f dst, Mtx44f lhs, Mtx44f rhs);
 extern void gmCollisionSetInvertMatrix(Mtx44f dst, Mtx44f src);
@@ -26,7 +26,7 @@ extern u32 func_ovl2_800EE2C0(Vec3f *lhs, Vec3f *rhs);
 extern sb32 gmCollisionTestRectangle(Vec3f *pos_current, Vec3f *pos_prev, f32 radius, s32 opkind, Mtx44f mtx, Vec3f *offset, Vec3f *size, Vec3f *scale);
 extern sb32 gmCollisionTestSphere(Vec3f *pos_current, Vec3f *pos_prev, f32 hitsize, s32 atk_state, Mtx44f mtx, Vec3f *sphere_offset, Vec3f *sphere_size, Vec3f *arg7, s32 sphit_kind, f32 *p_angle, Vec3f *argA);
 extern sb32 func_ovl2_800EEEAC(Vec3f *arg0, Vec3f *arg1, f32 arg2, s32 opkind, Mtx44f mtx, s32 arg5, Vec3f *arg6, f32 arg7, s32 arg8, f32 arg9);
-extern sb32 gmCollisionCheckAttackInFighterRange(Vec3f *hit_position, Vec3f *obj_position, Vec3f *range, f32 size);
+extern sb32 gmCollisionCheckAttackInFighterRange(Vec3f *atk_position, Vec3f *obj_position, Vec3f *range, f32 size);
 extern sb32 gmCollisionCheckFighterInFighterRange(FTAttackColl *atk_coll, GObj *fighter_gobj);
 extern sb32 gmCollisionCheckWeaponInFighterRange(WPAttackColl *atk_coll, s32 atk_id, GObj *fighter_gobj);
 extern sb32 gmCollisionCheckItemInFighterRange(ITAttackColl *atk_coll, s32 atk_id, GObj *fighter_gobj);

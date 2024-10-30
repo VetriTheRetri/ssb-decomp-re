@@ -440,7 +440,7 @@ sb32 itKamexWeaponHydroProcUpdate(GObj *weapon_gobj)
     WPStruct *wp = wpGetStruct(weapon_gobj);
     DObj *dobj = DObjGetStruct(weapon_gobj);
 
-    wp->atk_coll.offset[0].x = dobj->child->translate.vec.f.x * wp->lr;
+    wp->atk_coll.offsets[0].x = dobj->child->translate.vec.f.x * wp->lr;
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {

@@ -721,17 +721,17 @@ void ftDisplayMainDecideFogDraw(u8 flags, FTStruct *fp)
 }
 
 // 0x800F1D44
-void ftDisplayMainDrawAccessory(FTStruct *fp, DObj *dobj, FTParts *ft_parts)
+void ftDisplayMainDrawAccessory(FTStruct *fp, DObj *dobj, FTParts *parts)
 {
-    DObj *root_dobj = DObjGetStruct(ft_parts->gobj);
+    DObj *root_dobj = DObjGetStruct(parts->gobj);
 
-    switch (ft_parts->flags & 0xF)
+    switch (parts->flags & 0xF)
     {
     case 0:
         if ((dobj->display_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
             gcDrawMObjForDObj(root_dobj, gSYTaskmanDLHeads);
-            ftDisplayMainDecideFogDraw(ft_parts->flags, fp);
+            ftDisplayMainDecideFogDraw(parts->flags, fp);
 
             gSPDisplayList(gSYTaskmanDLHeads[0]++, root_dobj->display_list);
         }
@@ -741,7 +741,7 @@ void ftDisplayMainDrawAccessory(FTStruct *fp, DObj *dobj, FTParts *ft_parts)
         if ((dobj->dl_array != NULL) && (dobj->dl_array[1] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
             gcDrawMObjForDObj(root_dobj, gSYTaskmanDLHeads);
-            ftDisplayMainDecideFogDraw(ft_parts->flags, fp);
+            ftDisplayMainDecideFogDraw(parts->flags, fp);
 
             gSPDisplayList(gSYTaskmanDLHeads[0]++, root_dobj->display_list);
         }
@@ -756,31 +756,31 @@ void ftDisplayMainDrawDefault(DObj *dobj)
     s32 sp58;
     s32 unused;
     Vec3f sp48;
-    FTParts *ft_parts;
+    FTParts *parts;
     DObj *sibling_dobj;
     Gfx **dls;
 
-    ft_parts = ftGetParts(dobj);
+    parts = ftGetParts(dobj);
 
     if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
         sp48 = gLBCommonScale;
 
-        if (ft_parts != NULL)
+        if (parts != NULL)
         {
-            switch (ft_parts->flags & 0xF)
+            switch (parts->flags & 0xF)
             {
             case 0:
                 sp58 = gcPrepDObjMatrix(gSYTaskmanDLHeads, dobj);
 
-                if ((ft_parts != NULL) && (ft_parts->gobj != NULL) && (fp->fkind == nFTKindPurin))
+                if ((parts != NULL) && (parts->gobj != NULL) && (fp->fkind == nFTKindPurin))
                 {
-                    ftDisplayMainDrawAccessory(fp, dobj, ft_parts);
+                    ftDisplayMainDrawAccessory(fp, dobj, parts);
                 }
                 if ((dobj->display_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
                 {
                     gcDrawMObjForDObj(dobj, gSYTaskmanDLHeads);
-                    ftDisplayMainDecideFogDraw(ft_parts->flags, fp);
+                    ftDisplayMainDecideFogDraw(parts->flags, fp);
 
                     gSPDisplayList(gSYTaskmanDLHeads[0]++, dobj->display_list);
                 }
@@ -791,7 +791,7 @@ void ftDisplayMainDrawDefault(DObj *dobj)
 
                 if ((dls != NULL) && (dls[0] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
                 {
-                    ftDisplayMainDecideFogDraw(ft_parts->flags, fp);
+                    ftDisplayMainDecideFogDraw(parts->flags, fp);
 
                     gSPDisplayList(gSYTaskmanDLHeads[0]++, dls[0]);
                 }
@@ -800,7 +800,7 @@ void ftDisplayMainDrawDefault(DObj *dobj)
                 if ((dls != NULL) && (dls[1] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
                 {
                     gcDrawMObjForDObj(dobj, gSYTaskmanDLHeads);
-                    ftDisplayMainDecideFogDraw(ft_parts->flags, fp);
+                    ftDisplayMainDecideFogDraw(parts->flags, fp);
 
                     gSPDisplayList(gSYTaskmanDLHeads[0]++, dls[1]);
                 }
@@ -811,14 +811,14 @@ void ftDisplayMainDrawDefault(DObj *dobj)
         {
             sp58 = gcPrepDObjMatrix(gSYTaskmanDLHeads, dobj);
 
-            if ((ft_parts != NULL) && (ft_parts->gobj != NULL) && (fp->fkind == nFTKindPurin))
+            if ((parts != NULL) && (parts->gobj != NULL) && (fp->fkind == nFTKindPurin))
             {
-                ftDisplayMainDrawAccessory(fp, dobj, ft_parts);
+                ftDisplayMainDrawAccessory(fp, dobj, parts);
             }
         }
-        if ((ft_parts != NULL) && (ft_parts->gobj != NULL) && (fp->fkind == nFTKindPikachu))
+        if ((parts != NULL) && (parts->gobj != NULL) && (fp->fkind == nFTKindPikachu))
         {
-            ftDisplayMainDrawAccessory(fp, dobj, ft_parts);
+            ftDisplayMainDrawAccessory(fp, dobj, parts);
         }
         if (dobj->child != NULL)
         {
@@ -851,20 +851,20 @@ void ftDisplayMainDrawSkeleton(DObj *dobj)
     s32 unused;
     Vec3f sp50;
     Gfx **dls;
-    FTParts *ft_parts;
+    FTParts *parts;
     DObj *sibling_dobj;
     FTSkeleton *skeleton;
 
     fp = ftGetStruct(dobj->parent_gobj);
-    ft_parts = ftGetParts(dobj);
+    parts = ftGetParts(dobj);
 
     if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
         sp50 = gLBCommonScale;
 
-        if ((ft_parts != NULL) && (ft_parts->joint_id >= nFTPartsJointCommonStart))
+        if ((parts != NULL) && (parts->joint_id >= nFTPartsJointCommonStart))
         {
-            skeleton = &fp->attr->skeleton[fp->colanim.skeleton_id][ft_parts->joint_id - nFTPartsJointCommonStart];
+            skeleton = &fp->attr->skeleton[fp->colanim.skeleton_id][parts->joint_id - nFTPartsJointCommonStart];
 
             switch (skeleton->flags & 0xF)
             {
@@ -1385,7 +1385,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
                 }
                 syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                syMatrixTranslate(mtx_store.gbi, atk_coll->pos.x, atk_coll->pos.y, atk_coll->pos.z);
+                syMatrixTranslate(mtx_store.gbi, atk_coll->pos_curr.x, atk_coll->pos_curr.y, atk_coll->pos_curr.z);
 
                 gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 

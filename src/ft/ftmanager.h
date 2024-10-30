@@ -19,7 +19,7 @@ extern void ftManagerAllocFighter(u32 data_flags, s32 allocs_num);
 extern FTStruct* ftManagerGetNextStructAlloc();
 extern void ftManagerSetPrevStructAlloc(FTStruct* fp);
 extern FTParts* ftManagerGetNextPartsAlloc();
-extern void ftManagerSetPrevPartsAlloc(FTParts* ft_parts);
+extern void ftManagerSetPrevPartsAlloc(FTParts* parts);
 extern void ftManagerSetupFilesMainKind(s32 fkind);
 extern void func_ovl2_800D7710(s32 fkind);
 extern void ftManagerSetupFilesPlayablesAll();

@@ -394,7 +394,7 @@ void itMSBombExplodeInITStatusVars(GObj *item_gobj, sb32 is_make_effect)
         ptcl->tfrm->scale.z = ITMSBOMB_EXPLODE_SCALE;
     }
     efManagerQuakeMakeEffect(1);
-    itMainRefreshHit(item_gobj);
+    itMainRefreshAtk(item_gobj);
     itMSBombExplodeSetStatus(item_gobj);
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_HIDDEN;
@@ -573,7 +573,7 @@ void itMSBombExplodeInitItemVars(GObj *item_gobj)
     ip->item_event_id = 0;
 
     ip->atk_coll.throw_mul = ITEM_STALE_DEFAULT;
-    ip->atk_coll.hit_sfx = nSYAudioFGMExplodeL;
+    ip->atk_coll.fgm = nSYAudioFGMExplodeL;
 
     ip->dmg_coll.hitstatus = nGMHitStatusNone;
 

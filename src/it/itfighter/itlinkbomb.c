@@ -194,9 +194,9 @@ void itLinkBombExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 
 	DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_HIDDEN;
 
-	ip->atk_coll.hit_sfx = nSYAudioFGMExplodeL;
+	ip->atk_coll.fgm = nSYAudioFGMExplodeL;
 
-	itMainRefreshHit(item_gobj);
+	itMainRefreshAtk(item_gobj);
 	itLinkBombExplodeSetStatus(item_gobj);
 }
 

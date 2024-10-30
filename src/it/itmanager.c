@@ -323,12 +323,12 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
     ip->atk_coll.throw_mul         = 1.0F;
     ip->atk_coll.stale             = 1.0F;
     ip->atk_coll.element           = attr->element;
-    ip->atk_coll.offset[0].x       = attr->atk_offset0_x;
-    ip->atk_coll.offset[0].y       = attr->atk_offset0_y;
-    ip->atk_coll.offset[0].z       = attr->atk_offset0_z;
-    ip->atk_coll.offset[1].x       = attr->atk_offset1_x;
-    ip->atk_coll.offset[1].y       = attr->atk_offset1_y;
-    ip->atk_coll.offset[1].z       = attr->atk_offset1_z;
+    ip->atk_coll.offsets[0].x       = attr->atk_offset0_x;
+    ip->atk_coll.offsets[0].y       = attr->atk_offset0_y;
+    ip->atk_coll.offsets[0].z       = attr->atk_offset0_z;
+    ip->atk_coll.offsets[1].x       = attr->atk_offset1_x;
+    ip->atk_coll.offsets[1].y       = attr->atk_offset1_y;
+    ip->atk_coll.offsets[1].z       = attr->atk_offset1_z;
     ip->atk_coll.size              = attr->size * 0.5F;
     ip->atk_coll.angle             = attr->angle;
     ip->atk_coll.knockback_scale   = attr->knockback_scale;
@@ -336,7 +336,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
     ip->atk_coll.knockback_base    = attr->knockback_base;
     ip->atk_coll.can_setoff        = attr->can_setoff;
     ip->atk_coll.shield_damage     = attr->shield_damage;
-    ip->atk_coll.hit_sfx           = attr->hit_sfx;
+    ip->atk_coll.fgm           = attr->hit_sfx;
     ip->atk_coll.priority          = attr->priority;
     ip->atk_coll.can_rehit_item    = attr->can_rehit_item;
     ip->atk_coll.can_rehit_fighter = attr->can_rehit_fighter;
@@ -353,7 +353,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
     ip->atk_coll.stat_flags.is_smash_attack = ip->atk_coll.stat_flags.ga = ip->atk_coll.stat_flags.is_projectile = 0;
     ip->atk_coll.stat_count                 = ftParamGetStatUpdateCount();
 
-    itMainClearHitRecord(ip);
+    itMainClearAtkRecord(ip);
 
     ip->dmg_coll.hitstatus     = attr->hitstatus;
     ip->dmg_coll.offset.x      = attr->dmg_coll_offset.x;

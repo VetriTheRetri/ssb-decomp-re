@@ -70,7 +70,7 @@ void wpDisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
             }
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixTranslate(mtx_store.gbi, atk_coll->atk_pos[i].pos.x, atk_coll->atk_pos[i].pos.y, atk_coll->atk_pos[i].pos.z);
+            syMatrixTranslate(mtx_store.gbi, atk_coll->atk_pos[i].pos_curr.x, atk_coll->atk_pos[i].pos_curr.y, atk_coll->atk_pos[i].pos_curr.z);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 

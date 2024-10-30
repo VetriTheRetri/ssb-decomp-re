@@ -13,7 +13,7 @@
 #define GMHITCOLLISION_FLAG_ITEM (1 << 2)	 // Can interact with items
 
 #define GMHITCOLLISION_FLAG_ALL (GMHITCOLLISION_FLAG_FIGHTER | GMHITCOLLISION_FLAG_WEAPON | GMHITCOLLISION_FLAG_ITEM)
-#define GMHITRECORD_NUM_MAX 4
+#define GMATKRECORD_NUM_MAX 4
 
 #define GMSTAFFROLL_COLON_PARA_FONT_INDEX              0x34
 #define GMSTAFFROLL_PERIOD_PARA_FONT_INDEX             0x3F
@@ -251,7 +251,7 @@ typedef enum GMStaffrollCompany
 } GMStaffrollCompany;
 
 typedef struct GMHitFlags          			GMHitFlags;
-typedef struct GMHitRecord                  GMHitRecord;
+typedef struct GMAttackRecord                  GMAttackRecord;
 typedef union  GMStatFlags                  GMStatFlags;
 typedef struct GMColScript                  GMColScript;
 typedef struct GMColKeys                    GMColKeys;

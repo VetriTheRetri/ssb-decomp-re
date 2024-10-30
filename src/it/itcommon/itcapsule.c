@@ -298,7 +298,7 @@ void itCapsuleExplodeInitItemVars(GObj *item_gobj)
 
     ip->multi = 0;
     ip->item_event_id = 0;
-    ip->atk_coll.hit_sfx = nSYAudioFGMExplodeL;
+    ip->atk_coll.fgm = nSYAudioFGMExplodeL;
     ip->atk_coll.throw_mul = ITEM_STALE_DEFAULT;
 
     func_800269C0_275C0(nSYAudioFGMExplodeL);
@@ -314,7 +314,7 @@ void itCapsuleExplodeInitItemVars(GObj *item_gobj)
     ip->dmg_coll.hitstatus = nGMHitStatusNone;
 
     itMainClearOwnerStats(item_gobj);
-    itMainRefreshHit(item_gobj);
+    itMainRefreshAtk(item_gobj);
 
     itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITCapsuleItemDesc, lITCapsuleHitEvents)); // Linker thing
 }

@@ -614,9 +614,9 @@ struct FTAttackColl
     u32 attack_id : 6;
     u16 motion_count;
     u16 stat_count;
-    Vec3f pos;
+    Vec3f pos_curr;
     Vec3f pos_prev;
-    GMHitRecord hit_records[GMHITRECORD_NUM_MAX];
+    GMAttackRecord atk_records[GMATKRECORD_NUM_MAX];
     FTAttackMatrix hit_matrix;
 };
 
@@ -1258,7 +1258,7 @@ struct FTStruct
     FTModelPartStatus modelpart_status[FTPARTS_JOINT_NUM_MAX - nFTPartsJointCommonStart]; // -1 = hidden, 0 and up = draw model part ID
     FTTexturePartStatus texturepart_status[2];
 
-    FTData *ft_data;
+    FTData *data;
     FTAttributes *attr;
 
     void **figatree;                // Main animation bank?

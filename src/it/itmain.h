@@ -22,10 +22,10 @@ void itMainApplyGravityClampTVel(ITStruct* ip, f32 gravity, f32 terminal_velocit
 void itMainResetPlayerVars(GObj* item_gobj);
 
 // Clear item's record of previously hit targets
-void itMainClearHitRecord(ITStruct* ip);
+void itMainClearAtkRecord(ITStruct* ip);
 
 // Renew item's hitbox
-void itMainRefreshHit(GObj* item_gobj);
+void itMainRefreshAtk(GObj* item_gobj);
 
 // Clear item's ownership status
 void itMainClearOwnerStats(GObj* item_gobj);

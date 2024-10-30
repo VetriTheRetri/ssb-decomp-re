@@ -421,7 +421,7 @@ void itTaruExplodeInitItemVars(GObj *item_gobj)
     ip->multi = 0;
     ip->item_event_id = 0;
 
-    ip->atk_coll.hit_sfx = nSYAudioFGMExplodeL;
+    ip->atk_coll.fgm = nSYAudioFGMExplodeL;
 
     ip->atk_coll.can_rehit_item = TRUE;
     ip->atk_coll.can_reflect = FALSE;
@@ -434,7 +434,7 @@ void itTaruExplodeInitItemVars(GObj *item_gobj)
     ip->dmg_coll.hitstatus = nGMHitStatusNone;
 
     itMainClearOwnerStats(item_gobj);
-    itMainRefreshHit(item_gobj);
+    itMainRefreshAtk(item_gobj);
     itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITTaruItemDesc, lITTaruHitEvents));
 }
 

@@ -211,9 +211,9 @@ void itBombHeiCommonSetExplode(GObj *item_gobj, u8 unused_arg)
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_HIDDEN;
 
-    ip->atk_coll.hit_sfx = nSYAudioFGMExplodeL;
+    ip->atk_coll.fgm = nSYAudioFGMExplodeL;
 
-    itMainRefreshHit(item_gobj);
+    itMainRefreshAtk(item_gobj);
     itMainClearOwnerStats(item_gobj);
     itBombHeiExplodeSetStatus(item_gobj);
 }
@@ -532,7 +532,7 @@ void itBombHeiWalkInitItemVars(GObj *item_gobj)
 
     ip->item_vars.bombhei.smoke_delay = ITBOMBHEI_SMOKE_WAIT;
 
-    itMainRefreshHit(item_gobj);
+    itMainRefreshAtk(item_gobj);
 
     matanim_joint = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkMatAnimJoint); // ((uintptr_t)ip->attr->dobj_setup - (uintptr_t)&lITBombHeiDataStart) + &lITBombHeiWalkMatAnimJoint; // Linker thing
 

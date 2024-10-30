@@ -60,7 +60,7 @@ void itDisplayHitCollisions(GObj *item_gobj)
             }
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixTranslate(mtx_store.gbi, it_atk_coll->atk_pos[i].pos.x, it_atk_coll->atk_pos[i].pos.y, it_atk_coll->atk_pos[i].pos.z);
+            syMatrixTranslate(mtx_store.gbi, it_atk_coll->atk_pos[i].pos_curr.x, it_atk_coll->atk_pos[i].pos_curr.y, it_atk_coll->atk_pos[i].pos_curr.z);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 

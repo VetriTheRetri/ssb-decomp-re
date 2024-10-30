@@ -240,7 +240,7 @@ void itPakkunAppearUpdateDamageColl(GObj *item_gobj)
         {
             ip->dmg_coll.hitstatus = nGMHitStatusNormal;
 
-            itMainRefreshHit(item_gobj);
+            itMainRefreshAtk(item_gobj);
         }
         ip->dmg_coll.size.y = (off_y - ITPAKKUN_CLAMP_OFF_Y) * ITPAKKUN_HURT_SIZE_MUL_Y;
         ip->dmg_coll.offset.y = (ip->dmg_coll.size.y + ITPAKKUN_CLAMP_OFF_Y) - pos_y;

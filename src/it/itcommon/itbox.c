@@ -479,7 +479,7 @@ void itBoxExplodeInitItemVars(GObj *item_gobj)
     ip->item_event_id = 0;
     ip->multi = 0;
 
-    ip->atk_coll.hit_sfx = nSYAudioFGMExplodeL;
+    ip->atk_coll.fgm = nSYAudioFGMExplodeL;
 
     ip->atk_coll.can_rehit_item = TRUE;
     ip->atk_coll.can_hop = FALSE;
@@ -493,7 +493,7 @@ void itBoxExplodeInitItemVars(GObj *item_gobj)
     ip->dmg_coll.hitstatus = nGMHitStatusNone;
 
     itMainClearOwnerStats(item_gobj);
-    itMainRefreshHit(item_gobj);
+    itMainRefreshAtk(item_gobj);
     itMainUpdateHitEvent(item_gobj, itGetHitEvent(dITBoxItemDesc, lITBoxHitEvents)); // Linker thing
 }
 

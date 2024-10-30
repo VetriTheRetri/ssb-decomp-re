@@ -1,5 +1,5 @@
-#ifndef _WPEXEC_H_
-#define _WPEXEC_H_
+#ifndef _WPPROCESS_H_
+#define _WPPROCESS_H_
 
 #include "wptypes.h"
 
@@ -19,10 +19,10 @@ void wpProcessProcWeaponMain(GObj* weapon_gobj);
 
 // Set type of interaction and record hit target when weapon's hitbox collides
 // with another GObj
-void wpProcessSetHitInteractStats(WPAttackColl* wp_atk_coll, GObj* victim_gobj, s32 atk_type, u32 interact_mask);
+void wpProcessSetHitInteractStats(WPAttackColl* atk_coll, GObj* victim_gobj, s32 atk_type, u32 interact_mask);
 
 // Unknown
-void wpProcessUpdateHitInteractStatsGroupID(WPStruct* this_wp, WPAttackColl* wp_atk_coll, GObj* target_gobj, s32 atk_type,
+void wpProcessUpdateHitInteractStatsGroupID(WPStruct* this_wp, WPAttackColl* atk_coll, GObj* target_gobj, s32 atk_type,
 										  u32 interact_mask);
 
 // Set weapon VS weapon hitbox detection results

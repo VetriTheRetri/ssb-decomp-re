@@ -56,7 +56,7 @@ sb32 itStarCommonProcUpdate(GObj *item_gobj)
 
     if (ip->multi == 0)
     {
-        itMainRefreshHit(item_gobj);
+        itMainRefreshAtk(item_gobj);
     }
     itVisualsUpdateSpin(item_gobj);
 

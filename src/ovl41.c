@@ -420,7 +420,7 @@ void mvOpeningYoshiInit()
 
 	gBattleState->game_type = nSCBattleGameTypeOpening;
 
-	gBattleState->gr_kind = nGRKindYoster;
+	gBattleState->gkind = nGRKindYoster;
 	gBattleState->pl_count = 1;
 
 	gBattleState->players[0].fkind = nFTKindYoshi;

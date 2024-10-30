@@ -556,7 +556,7 @@ void scAutoDemoInitDemo(void)
 	gBattleState = &sSCAutoDemoBattleState;
 
 	gBattleState->game_type = nSCBattleGameTypeDemo;
-	gBattleState->gr_kind = dSCAutoDemoGroundOrder[gSceneData.demo_ground_order];
+	gBattleState->gkind = dSCAutoDemoGroundOrder[gSceneData.demo_ground_order];
 
 	gSceneData.demo_ground_order++;
 

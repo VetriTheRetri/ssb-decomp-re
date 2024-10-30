@@ -523,11 +523,11 @@ void scVSBattleStartScene(void)
 
 	gBattleState->game_type = nSCBattleGameTypeRoyal;
 
-	gBattleState->gr_kind = gSceneData.gr_kind;
+	gBattleState->gkind = gSceneData.gkind;
 
 	if (gSaveData.error_flags & LBBACKUP_ERROR_VSBATTLECASTLE)
 	{
-		gBattleState->gr_kind = nGRKindCastle;
+		gBattleState->gkind = nGRKindCastle;
 	}
 	dSCVSBattleVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dSCVSBattleVideoSetup);

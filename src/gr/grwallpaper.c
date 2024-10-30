@@ -272,11 +272,11 @@ void grWallpaperMakeDecideKind(void)
         scTrainingMode_SetBackgroundSprite();
         grWallpaperMakeStatic();
     }
-    else if (gBattleState->gr_kind >= nGRKindBonusGameStart)
+    else if (gBattleState->gkind >= nGRKindBonusGameStart)
     {
         grWallpaperMakeStatic();
     }
-    else switch (gBattleState->gr_kind)
+    else switch (gBattleState->gkind)
     {
     case nGRKindYoster:
     case nGRKindYosterSmall:

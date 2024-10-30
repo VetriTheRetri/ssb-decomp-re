@@ -224,8 +224,8 @@ void ftCommonDeadDownSetStatus(GObj *fighter_gobj)
 
     if 
     (
-        ((gBattleState->gr_kind >= nGRKindBonus1Start) && (gBattleState->gr_kind <= nGRKindBonus1End)) ||
-        ((gBattleState->gr_kind >= nGRKindBonus2Start) && (gBattleState->gr_kind <= nGRKindBonus2End))
+        ((gBattleState->gkind >= nGRKindBonus1Start) && (gBattleState->gkind <= nGRKindBonus1End)) ||
+        ((gBattleState->gkind >= nGRKindBonus2Start) && (gBattleState->gkind <= nGRKindBonus2End))
     )
     {
         sfx_id = nSYAudioFGMMapBoundHitS;
@@ -266,8 +266,8 @@ void ftCommonDeadRightSetStatus(GObj *fighter_gobj)
 
     if 
     (
-        ((gBattleState->gr_kind >= nGRKindBonus1Start) && (gBattleState->gr_kind <= nGRKindBonus1End)) ||
-        ((gBattleState->gr_kind >= nGRKindBonus2Start) && (gBattleState->gr_kind <= nGRKindBonus2End))
+        ((gBattleState->gkind >= nGRKindBonus1Start) && (gBattleState->gkind <= nGRKindBonus1End)) ||
+        ((gBattleState->gkind >= nGRKindBonus2Start) && (gBattleState->gkind <= nGRKindBonus2End))
     )
     {
         sfx_id = nSYAudioFGMMapBoundHitS;
@@ -307,8 +307,8 @@ void ftCommonDeadLeftSetStatus(GObj *fighter_gobj)
 
     if 
     (
-        ((gBattleState->gr_kind >= nGRKindBonus1Start) && (gBattleState->gr_kind <= nGRKindBonus1End)) ||
-        ((gBattleState->gr_kind >= nGRKindBonus2Start) && (gBattleState->gr_kind <= nGRKindBonus2End))
+        ((gBattleState->gkind >= nGRKindBonus1Start) && (gBattleState->gkind <= nGRKindBonus1End)) ||
+        ((gBattleState->gkind >= nGRKindBonus2Start) && (gBattleState->gkind <= nGRKindBonus2End))
     )
     {
         sfx_id = nSYAudioFGMMapBoundHitS;
@@ -473,8 +473,8 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
 
             if 
             (
-                ((gBattleState->gr_kind >= nGRKindBonus1Start) && (gBattleState->gr_kind <= nGRKindBonus1End)) ||
-                ((gBattleState->gr_kind >= nGRKindBonus2Start) && (gBattleState->gr_kind <= nGRKindBonus2End))
+                ((gBattleState->gkind >= nGRKindBonus1Start) && (gBattleState->gkind <= nGRKindBonus1End)) ||
+                ((gBattleState->gkind >= nGRKindBonus2Start) && (gBattleState->gkind <= nGRKindBonus2End))
             )
             {
                 sfx_id = nSYAudioFGMMapBoundHitS;

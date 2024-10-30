@@ -169,13 +169,13 @@ void dbStageSelectMain(GObj* arg0)
 	{
 		dbMenuDestroyMenu();
 
-		gSceneData.gr_kind = dMNDebugStageSelectGrKind;
+		gSceneData.gkind = dMNDebugStageSelectGrKind;
 		gSceneData.scene_prev = gSceneData.scene_curr;
 
-		if (gSceneData.gr_kind >= nGRKindBonusGameStart)
+		if (gSceneData.gkind >= nGRKindBonusGameStart)
 		{
 			D_800A4B18 = gTransferBattleState;
-			D_800A4B18.gr_kind = gSceneData.gr_kind;
+			D_800A4B18.gkind = gSceneData.gkind;
 			gSceneData.scene_curr = nSCKind1PBonusGame;
 		}
 		else

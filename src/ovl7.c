@@ -520,7 +520,7 @@ void func_ovl7_8018DA98()
 	gBattleState = &gTrainingModeBattleState;
 
 	gBattleState->game_type = 7;
-	gBattleState->gr_kind = gSceneData.gr_kind;
+	gBattleState->gkind = gSceneData.gkind;
 	gBattleState->time_limit = 100;
 	gBattleState->is_display_score = FALSE;
 	gBattleState->item_toggles = 0;
@@ -592,10 +592,10 @@ void scTrainingMode_SetBackgroundSprite()
 	(
 		(uintptr_t)lbRelocGetFileExternForceStatusBufferHeap
 		(
-			scTrainingMode_Files_BackgroundImageInfo[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]].file_id,
-			(void*)((uintptr_t)gMPCollisionGroundData->wallpaper - (intptr_t)D_ovl7_801907B8[gBattleState->gr_kind])
+			scTrainingMode_Files_BackgroundImageInfo[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gkind]].file_id,
+			(void*)((uintptr_t)gMPCollisionGroundData->wallpaper - (intptr_t)D_ovl7_801907B8[gBattleState->gkind])
 		)
-		+ scTrainingMode_Files_BackgroundImageInfo[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]].addr
+		+ scTrainingMode_Files_BackgroundImageInfo[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gkind]].addr
 	);
 }
 
@@ -603,7 +603,7 @@ void scTrainingMode_SetBackgroundSprite()
 void scTrainingMode_InitMiscVars()
 {
 	gMPCollisionGroundData->fog_color
-		= scTrainingMode_Files_BackgroundImageInfo[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gr_kind]]
+		= scTrainingMode_Files_BackgroundImageInfo[scTrainingMode_Files_BackgroundImageIDs[gBattleState->gkind]]
 			  .fog_color;
 	ifCommonPlayerMagnifyMakeInterface();
 	gIFCommonPlayerInterface.is_magnify_display = TRUE;

@@ -407,7 +407,7 @@ void mvOpeningJungleFuncStart(void)
 
     gBattleState->game_type = nSCBattleGameTypeOpening;
 
-    gBattleState->gr_kind = nGRKindJungle;
+    gBattleState->gkind = nGRKindJungle;
     gBattleState->pl_count = 1;
 
     gBattleState->players[0].fkind = nFTKindDonkey;

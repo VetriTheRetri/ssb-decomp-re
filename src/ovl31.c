@@ -260,7 +260,7 @@ void mnResultsSaveDataToSRAM()
 	u8 fkind, opp_fkind;
 
 	gSaveData.vs_total_battles += 1;
-	gSaveData.unlock_task_inishie |= 1 << gTransferBattleState.gr_kind;
+	gSaveData.unlock_task_inishie |= 1 << gTransferBattleState.gkind;
 
 	if (gSaveData.unlock_task_itemswitch < 0xFF)
 	{

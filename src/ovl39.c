@@ -416,7 +416,7 @@ void mvOpeningFoxInit()
 
 	gBattleState->game_type = nSCBattleGameTypeOpening;
 
-	gBattleState->gr_kind = nGRKindSector;
+	gBattleState->gkind = nGRKindSector;
 	gBattleState->pl_count = 1;
 
 	gBattleState->players[0].fkind = nFTKindFox;

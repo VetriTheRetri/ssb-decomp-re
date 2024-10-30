@@ -501,7 +501,7 @@ void mvOpeningKirbyFuncStart(void)
 
 	gBattleState->game_type = nSCBattleGameTypeOpening;
 
-	gBattleState->gr_kind = nGRKindPupupu;
+	gBattleState->gkind = nGRKindPupupu;
 	gBattleState->pl_count = 1;
 
 	gBattleState->players[0].fkind = nFTKindKirby;

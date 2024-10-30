@@ -434,7 +434,7 @@ void mvOpeningSamusInit()
 
 	gBattleState->game_type = nSCBattleGameTypeOpening;
 
-	gBattleState->gr_kind = nGRKindZebes;
+	gBattleState->gkind = nGRKindZebes;
 	gBattleState->pl_count = 1;
 
 	gBattleState->players[0].fkind = nFTKindSamus;

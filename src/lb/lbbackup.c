@@ -104,13 +104,13 @@ void lbBackupCorrectErrors(void)
     }
     if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_INISHIE))
     {
-        if (gSceneData.stagesel_battle_gr_kind == nGRKindInishie)
+        if (gSceneData.stagesel_battle_gkind == nGRKindInishie)
         {
-            gSceneData.stagesel_battle_gr_kind = gDefaultSceneData.stagesel_battle_gr_kind;
+            gSceneData.stagesel_battle_gkind = gDefaultSceneData.stagesel_battle_gkind;
         }
-        if (gSceneData.stagesel_training_gr_kind == nGRKindInishie)
+        if (gSceneData.stagesel_training_gkind == nGRKindInishie)
         {
-            gSceneData.stagesel_training_gr_kind = gDefaultSceneData.stagesel_training_gr_kind;
+            gSceneData.stagesel_training_gkind = gDefaultSceneData.stagesel_training_gkind;
         }
     }
     if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_ITEMSWITCH))

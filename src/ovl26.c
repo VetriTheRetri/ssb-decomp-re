@@ -3969,9 +3969,9 @@ void mnBattleMain(s32 arg0)
 
 				do
 					stage_id = mtTrigGetRandomTimeUCharRange(max_stage_id);
-				while (stage_id == gSceneData.gr_kind);
+				while (stage_id == gSceneData.gkind);
 
-				gSceneData.gr_kind = stage_id;
+				gSceneData.gkind = stage_id;
 			}
 
 			mnBattleSaveMatchInfo();

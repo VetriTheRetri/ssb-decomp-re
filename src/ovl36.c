@@ -421,7 +421,7 @@ void mvOpeningMarioInit()
 
 	gBattleState->game_type = nSCBattleGameTypeOpening;
 
-	gBattleState->gr_kind = nGRKindCastle;
+	gBattleState->gkind = nGRKindCastle;
 	gBattleState->pl_count = 1;
 
 	gBattleState->players[0].fkind = nFTKindMario;

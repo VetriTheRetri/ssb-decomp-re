@@ -2490,7 +2490,7 @@ void ifCommonTimerFuncRun(GObj *interface_gobj)
                     }
                     else gBattleState->battle_time_remain -= time_update;
 
-                    if ((gBattleState->gr_kind == nGRKindInishie) && (gBattleState->battle_time_remain <= I_SEC_TO_TICS(30)) && (gMPCollisionBGMDefault != nSYAudioBGMInishieHurry))
+                    if ((gBattleState->gkind == nGRKindInishie) && (gBattleState->battle_time_remain <= I_SEC_TO_TICS(30)) && (gMPCollisionBGMDefault != nSYAudioBGMInishieHurry))
                     {
                         gMPCollisionBGMDefault = nSYAudioBGMInishieHurry;
 
@@ -2899,7 +2899,7 @@ void ifCommonBattleGoUpdateInterface(void)
         {
             if (gBattleState->players[player].pkind != nFTPlayerKindNot)
             {
-                if ((gBattleState->gr_kind != nGRKindBonus3) || (gBattleState->players[player].pkind != nFTPlayerKindCom))
+                if ((gBattleState->gkind != nGRKindBonus3) || (gBattleState->players[player].pkind != nFTPlayerKindCom))
                 {
                     fighter_gobj = gBattleState->players[player].fighter_gobj;
 
@@ -3302,7 +3302,7 @@ void ifCommon1PGameInterfaceProcSet(void)
 // 0x80114C80
 void ifCommonAnnounceEndMessage(void)
 {
-    if (gBattleState->gr_kind >= nGRKindBonusGameStart)
+    if (gBattleState->gkind >= nGRKindBonusGameStart)
     {
         ifCommonBattleSetInterface(ifCommonBattleInterfaceProcUpdate, ifCommonBattleInterfaceProcSet, 0x1CC, 90);
         ifCommonAnnounceFailureMakeInterface();

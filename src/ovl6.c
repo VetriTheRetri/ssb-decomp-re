@@ -256,13 +256,13 @@ void func_ovl6_8018D0F0()
 		{
 			if (gSceneData.spgame_time_limit != 0x64)
 				gBattleState->time_limit = 2;
-			gBattleState->gr_kind = fkind + nGRKindBonus1Start;
+			gBattleState->gkind = fkind + nGRKindBonus1Start;
 		}
 		else
 		{
 			if (gSceneData.spgame_time_limit != 0x64)
 				gBattleState->time_limit = 2;
-			gBattleState->gr_kind = fkind + nGRKindBonus2Start;
+			gBattleState->gkind = fkind + nGRKindBonus2Start;
 		}
 	}
 	else
@@ -270,9 +270,9 @@ void func_ovl6_8018D0F0()
 		fkind = gSceneData.bonus_fkind;
 		gBattleState->time_limit = 0x64;
 		if (gSceneData.scene_prev == 0x13)
-			gBattleState->gr_kind = fkind + nGRKindBonus1Start;
+			gBattleState->gkind = fkind + nGRKindBonus1Start;
 		else
-			gBattleState->gr_kind = fkind + nGRKindBonus2Start;
+			gBattleState->gkind = fkind + nGRKindBonus2Start;
 	}
 	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
 	{
@@ -303,7 +303,7 @@ void func_ovl6_8018D330()
 // 0x8018D374
 void scBonusGame_InitBonus1Targets()
 {
-	grBonusDesc* bonus_desc = &scBonusGame_Bonus1_TargetOffsets[gBattleState->gr_kind - nGRKindBonus1Start];
+	grBonusDesc* bonus_desc = &scBonusGame_Bonus1_TargetOffsets[gBattleState->gkind - nGRKindBonus1Start];
 	AObjEvent32 **anim_joints;
 	DObjDesc* dobjdesc;
 	Vec3f pos;
@@ -535,15 +535,15 @@ void scBonusGame_InitBonus2Bumpers()
 	if (gMPCollisionGroundData->map_nodes != NULL)
 	{
 		bonus_desc = ((uintptr_t)gMPCollisionGroundData->map_nodes
-					  - (intptr_t)scBonusGame_Bonus2_BumperOffsets[gBattleState->gr_kind - nGRKindBonus2Start].o_main);
+					  - (intptr_t)scBonusGame_Bonus2_BumperOffsets[gBattleState->gkind - nGRKindBonus2Start].o_main);
 
 		vel.x = vel.y = vel.z = 0.0F;
 		dobjdesc
 			= (DObjDesc*)((uintptr_t)bonus_desc
-						  + (intptr_t)scBonusGame_Bonus2_BumperOffsets[gBattleState->gr_kind - nGRKindBonus2Start]
+						  + (intptr_t)scBonusGame_Bonus2_BumperOffsets[gBattleState->gkind - nGRKindBonus2Start]
 								.o_main);
 		anim_joint = (AObjEvent32**)((uintptr_t)bonus_desc
-							+ (intptr_t)scBonusGame_Bonus2_BumperOffsets[gBattleState->gr_kind - nGRKindBonus2Start]
+							+ (intptr_t)scBonusGame_Bonus2_BumperOffsets[gBattleState->gkind - nGRKindBonus2Start]
 								  .o_anim);
 		dobjdesc++, anim_joint++;
 
@@ -600,7 +600,7 @@ void scBonusGame_InitCameraVars()
 		if (gBattleState->players[player].pkind == nFTPlayerKindNot)
 			continue;
 
-		if (gBattleState->gr_kind >= nGRKindBonus2Start)
+		if (gBattleState->gkind >= nGRKindBonus2Start)
 			func_ovl2_8010CFA8(gBattleState->players[player].fighter_gobj, 0.0F, F_CLC_DTOR32(-15.0F), 9000.0F,
 							   0.3F, 31.5F);
 		else
@@ -660,7 +660,7 @@ void scBonusGame_InitBonus2PlatformSprites()
 // 0x8018E098
 void scBonusGame_InitBonusGameSprites()
 {
-	if (gBattleState->gr_kind >= nGRKindBonus2Start)
+	if (gBattleState->gkind >= nGRKindBonus2Start)
 		scBonusGame_InitBonus2PlatformSprites();
 	else
 		scBonusGame_InitBonus1TargetSprites();
@@ -894,7 +894,7 @@ void scBonusGame_SaveBonusRecordSRAM(sb32 is_tasks_fail, s32 fkind)
 {
 	if (gSceneData.is_reset == FALSE)
 	{
-		if (gBattleState->gr_kind <= nGRKindBonus1End)
+		if (gBattleState->gkind <= nGRKindBonus1End)
 		{
 			if (is_tasks_fail != FALSE)
 			{
@@ -976,7 +976,7 @@ void sc1PBonusGameStartScene()
 
 	if (gBattleState->game_status != nSCBattleGameStatusPause)
 	{
-		task_count = (gBattleState->gr_kind <= nGRKindBonus1End) ? gGRCommonStruct.bonus1.target_count
+		task_count = (gBattleState->gkind <= nGRKindBonus1End) ? gGRCommonStruct.bonus1.target_count
 																  : gGRCommonStruct.bonus2.platform_count;
 
 		tasks_complete = SCBATTLE_BONUSGAME_TASK_MAX - task_count;

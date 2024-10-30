@@ -177,7 +177,7 @@ void scExplainSetBattleState(void)
 
     gBattleState->game_type = nSCBattleGameTypeExplain;
 
-    gBattleState->gr_kind = nGRKindExplain;
+    gBattleState->gkind = nGRKindExplain;
 
     gBattleState->pl_count = 2;
     gBattleState->cp_count = 0;

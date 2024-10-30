@@ -1164,7 +1164,7 @@ GObj* cmManagerMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
 
     gCMManagerCameraStruct.at_move.x = gCMManagerCameraStruct.at_move.y = gCMManagerCameraStruct.at_move.z = 0;
 
-    switch (gBattleState->gr_kind)
+    switch (gBattleState->gkind)
     {
     case nGRKindZebes:
         gCMManagerCameraStruct.status_curr = 6;

@@ -1104,18 +1104,18 @@ void mnStageSaveSceneData()
 		do
 		{
 			stage_id = mtTrigGetRandomTimeUCharRange(9);
-		} while (mnStageGetIsLocked(stage_id) || stage_id == gSceneData.gr_kind);
+		} while (mnStageGetIsLocked(stage_id) || stage_id == gSceneData.gkind);
 
-		gSceneData.gr_kind = stage_id;
+		gSceneData.gkind = stage_id;
 	}
 	else
-		gSceneData.gr_kind = mnStageGetStageID(gMNStageCursorSlotId);
+		gSceneData.gkind = mnStageGetStageID(gMNStageCursorSlotId);
 
 	if (gMNStageIsTrainingMode == FALSE)
-		gSceneData.stagesel_battle_gr_kind = mnStageGetStageID(gMNStageCursorSlotId);
+		gSceneData.stagesel_battle_gkind = mnStageGetStageID(gMNStageCursorSlotId);
 
 	if (gMNStageIsTrainingMode == TRUE)
-		gSceneData.stagesel_training_gr_kind = mnStageGetStageID(gMNStageCursorSlotId);
+		gSceneData.stagesel_training_gkind = mnStageGetStageID(gMNStageCursorSlotId);
 }
 
 // 0x80133C6C
@@ -1137,11 +1137,11 @@ void mnStageLoadSceneData()
 	{
 		case 0x12:
 			gMNStageIsTrainingMode = TRUE;
-			gMNStageCursorSlotId = mnStageGetSlotID(gSceneData.stagesel_training_gr_kind);
+			gMNStageCursorSlotId = mnStageGetSlotID(gSceneData.stagesel_training_gkind);
 			break;
 		case nSCKindVSFighters:
 			gMNStageIsTrainingMode = FALSE;
-			gMNStageCursorSlotId = mnStageGetSlotID(gSceneData.stagesel_battle_gr_kind);
+			gMNStageCursorSlotId = mnStageGetSlotID(gSceneData.stagesel_battle_gkind);
 			break;
 	}
 

@@ -414,7 +414,7 @@ void mvOpeningPikachuInit()
 
 	gBattleState->game_type = nSCBattleGameTypeOpening;
 
-	gBattleState->gr_kind = nGRKindYamabuki;
+	gBattleState->gkind = nGRKindYamabuki;
 	gBattleState->pl_count = 1;
 
 	gBattleState->players[0].fkind = nFTKindPikachu;

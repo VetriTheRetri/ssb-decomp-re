@@ -943,7 +943,7 @@ void sc1PGameSetupStageAll(void)
 
     gSceneData.is_reset = FALSE;
 
-    gBattleState->gr_kind = stagesetup->gr_kind;
+    gBattleState->gkind = stagesetup->gkind;
     gBattleState->is_team_attack = comsetup->is_team_attack;
 
     switch (gSceneData.spgame_stage)

@@ -405,7 +405,7 @@ void mvOpeningLinkInit()
 
 	gBattleState->game_type = nSCBattleGameTypeOpening;
 
-	gBattleState->gr_kind = nGRKindHyrule;
+	gBattleState->gkind = nGRKindHyrule;
 	gBattleState->pl_count = 1;
 
 	gBattleState->players[0].fkind = nFTKindLink;

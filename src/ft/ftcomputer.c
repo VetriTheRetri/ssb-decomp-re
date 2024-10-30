@@ -3934,14 +3934,14 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
     s32 fkind;
     s32 unused[2];
 
-    if (gBattleState->gr_kind == nGRKindInishie)
+    if (gBattleState->gkind == nGRKindInishie)
     {
         if ((this_fp->coll_data.ground_line_id >= 0) && (mpCollisionCheckExistPlatformLineID(this_fp->coll_data.ground_line_id) != FALSE))
         {
             return FALSE;
         }
     }
-    if ((gBattleState->gr_kind == nGRKindYamabuki) && (this_fp->ga != nMPKineticsGround))
+    if ((gBattleState->gkind == nGRKindYamabuki) && (this_fp->ga != nMPKineticsGround))
     {
         if (this_fp->physics.vel_air.x > 0.0F)
         {
@@ -4537,7 +4537,7 @@ sb32 ftComputerCheckSetTargetEdgeRight(FTStruct *fp, sb32 is_find_edge_target)
     {
         edge_offset = 0;
     }
-    if (gBattleState->gr_kind == nGRKindYamabuki)
+    if (gBattleState->gkind == nGRKindYamabuki)
     {
         edge_offset = 0;
     }
@@ -4549,7 +4549,7 @@ sb32 ftComputerCheckSetTargetEdgeRight(FTStruct *fp, sb32 is_find_edge_target)
         {
             mpCollisionGetLREdgeRight(line_ids[i], &edge_pos);
 
-            if (gBattleState->gr_kind == nGRKindZebes)
+            if (gBattleState->gkind == nGRKindZebes)
             {
                 grZebesAcidGetLevelInfo(&acid_level_curr, &acid_level_step);
 
@@ -4558,7 +4558,7 @@ sb32 ftComputerCheckSetTargetEdgeRight(FTStruct *fp, sb32 is_find_edge_target)
                     continue;
                 }
             }
-            if ((gBattleState->gr_kind == nGRKindInishie) && (mpCollisionCheckExistPlatformLineID(line_ids[i]) != FALSE)) 
+            if ((gBattleState->gkind == nGRKindInishie) && (mpCollisionCheckExistPlatformLineID(line_ids[i]) != FALSE)) 
             {
                 continue;
             }
@@ -4631,7 +4631,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(FTStruct *fp, sb32 is_find_edge_target)
     {
         edge_offset = 0;
     }
-    if (gBattleState->gr_kind == nGRKindYamabuki)
+    if (gBattleState->gkind == nGRKindYamabuki)
     {
         edge_offset = 0;
     }
@@ -4643,7 +4643,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(FTStruct *fp, sb32 is_find_edge_target)
         {
             mpCollisionGetLREdgeLeft(line_ids[i], &edge_pos);
 
-            if (gBattleState->gr_kind == nGRKindZebes)
+            if (gBattleState->gkind == nGRKindZebes)
             {
                 grZebesAcidGetLevelInfo(&acid_level_curr, &acid_level_step);
 
@@ -4652,7 +4652,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(FTStruct *fp, sb32 is_find_edge_target)
                     continue;
                 }
             }
-            if ((gBattleState->gr_kind == nGRKindInishie) && (mpCollisionCheckExistPlatformLineID(line_ids[i]) != FALSE))
+            if ((gBattleState->gkind == nGRKindInishie) && (mpCollisionCheckExistPlatformLineID(line_ids[i]) != FALSE))
             {
                 continue;
             }
@@ -4906,7 +4906,7 @@ sb32 ftComputerCheckTargetItemOrTwister(FTStruct *fp)
         }
         item_gobj = item_gobj->link_next;
     }
-    if (gBattleState->gr_kind == nGRKindHyrule)
+    if (gBattleState->gkind == nGRKindHyrule)
     {
         if (grHyruleTwisterCheckGetPosition(&twister_pos) != FALSE)
         {
@@ -6148,7 +6148,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     if
     (
         (func_ovl2_800F8FFC(&this_fp->joints[nFTPartsJointTopN]->translate.vec.f) == FALSE) ||
-        (gBattleState->gr_kind == nGRKindInishie) &&
+        (gBattleState->gkind == nGRKindInishie) &&
         (this_fp->coll_data.ground_line_id >= 0) &&
         (mpCollisionCheckExistPlatformLineID(this_fp->coll_data.ground_line_id) != FALSE) &&
         (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y < -100.0F)
@@ -6162,7 +6162,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
 
         return 1;
     }
-    if (gBattleState->gr_kind == nGRKindZebes)
+    if (gBattleState->gkind == nGRKindZebes)
     {
         grZebesAcidGetLevelInfo(&acid_level_curr, &acid_level_step);
 
@@ -6216,7 +6216,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     {
         com->appeal_attempt_frames--;
 
-        if ((gBattleState->gr_kind == nGRKindInishie) || (gBattleState->gr_kind == nGRKindYoster))
+        if ((gBattleState->gkind == nGRKindInishie) || (gBattleState->gkind == nGRKindYoster))
         {
             if (this_fp->coll_data.ground_line_id >= 0)
             {

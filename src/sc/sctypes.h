@@ -21,7 +21,7 @@ struct SC1PGameComputer
 struct SC1PGameStage
 {
 	u8 screenflash_alpha;
-	u8 gr_kind;
+	u8 gkind;
 	u32 item_toggles;
 	u8 opponent_count;            // Number of enemy players to spawn?
 	u8 fkind[2];
@@ -281,7 +281,7 @@ struct SCPlayerData
 struct SCBattleState
 {
 	u8 game_type;
-	u8 gr_kind;
+	u8 gkind;
 	ub8 is_team_battle;
 	u8 game_rules; 			// Series of flags; 0x1 = time, 0x2 = stock
 	u8 pl_count;			// Number of human players registered
@@ -298,12 +298,10 @@ struct SCBattleState
 	u8 unk_0x12;
 	u8 unk_0x13;
 	u32 battle_time_remain;							// Frames remaining until timeout
-	u32 battle_time_curr; 						// Current match frame, counts up from 0
-	u8 item_appearance_rate;									// Item appearance rate setting 
-													// 0x3 on various stages, 0x4 on Polygon Team?
+	u32 battle_time_curr; 							// Current match frame, counts up from 0
+	u8 item_appearance_rate;						// Item appearance rate setting 
 	ub32 is_display_score : 1;						// Displays score when a fighter falls
-	ub32 is_not_teamshadows : 1;					// If FALSE, shadows are colored based on
-													// players' team affiliation, otherwise use default shadow color
+	ub32 is_not_teamshadows : 1;					// If FALSE, shadows are colored based on players' team affiliation, otherwise use default shadow color
 	SCPlayerData players[GMCOMMON_PLAYERS_MAX]; 	// Holds data for each player
 };
 
@@ -317,7 +315,7 @@ struct SCCommonData
 	u16 demo_mask_prev;
 	u8 demo_first_fkind;
 	u8 demo_fkind[2];
-	u8 gr_kind;
+	u8 gkind;
 	u8 unk10;
 	ub8 is_select_continue;
 	ub8 is_reset; 				// Player did A + B + R + Z button combination
@@ -342,8 +340,8 @@ struct SCCommonData
 	u8 training_com_costume;
 	ub8 is_extend_demo_wait;
 	u8 demo_ground_order;
-	u8 stagesel_battle_gr_kind;
-	u8 stagesel_training_gr_kind;
+	u8 stagesel_battle_gkind;
+	u8 stagesel_training_gkind;
 	u8 challenger_level_drop;	// Subtract from default CP level?
 	ub8 is_title_anim_viewed;
 	u8 unk45;

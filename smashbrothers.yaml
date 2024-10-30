@@ -454,7 +454,7 @@ segments:
     # Rumble manager
       - [0x090630, c, gm/gmrumble]
     # Particle Bank alloc
-      - [0x091090, c, ef/efalloc]
+      - [0x091090, c, ef/efparticle]
     # How to Play input parser
       - [0x091310, c, ft/ftkey]
     # Damage screen flash manager
@@ -547,7 +547,7 @@ segments:
     # Rumble manager
       - [0x0AC4D0, .rodata, gm/gmrumble]
     # Particle Bank alloc
-      - [0x0AC510, .rodata, ef/efalloc]
+      - [0x0AC510, .rodata, ef/efparticle]
     # Stage effect manager
       - [0x0AC530, .rodata, ef/efground]
     # ovl2 bss
@@ -592,7 +592,7 @@ segments:
       - { start: auto, type: .bss, name: cm/cmmanager, vram: 0x80131460 } # 0x801314B0 + 0x118 padded to 0x80131570
       - { start: auto, type: .bss, name: if/ifcommon, vram: 0x80131570 } # actual start is 0x80131598, padded from 1570?
       - { start: auto, type: .bss, name: gm/gmrumble, vram: 0x80131870 }
-      - { start: auto, type: .bss, name: ef/efalloc, vram: 0x80131A10 }
+      - { start: auto, type: .bss, name: ef/efparticle, vram: 0x80131A10 }
       - { start: auto, type: .bss, name: if/ifscreenflash, vram: 0x80131A10 }
       - { start: auto, type: .bss, name: ef/efground, vram: 0x80131AB0 }
 

@@ -3,7 +3,7 @@
 
 #include "efdisplay.h"
 #include "efmanager.h"
-#include "efalloc.h"
+#include "efparticle.h"
 #include "efground.h"
 
 #endif

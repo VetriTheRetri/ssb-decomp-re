@@ -1002,7 +1002,7 @@ struct FTStruct
 {
     FTStruct *alloc_next;
     GObj *fighter_gobj;
-    FTKind fkind;
+    s32 fkind;
     u8 team;
     u8 player;
     u8 detail_current;          // Hi-Poly = 1, Low-Poly = 2
@@ -1019,7 +1019,7 @@ struct FTStruct
 
     u32 status_total_tics;      // Frames spent in this action state
 
-    FTPlayerKind pkind;
+    s32 pkind;                  // Control type: 0 = HMN, 1 = COM, 2 = N/A
 
     s32 status_id;
     s32 motion_id;              // Index of moveset command script to use

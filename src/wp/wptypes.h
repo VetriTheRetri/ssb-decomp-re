@@ -20,7 +20,7 @@
 struct WPCreateDesc
 {
     u8 flags;
-    WPKind kind;
+    s32 kind;
     void **p_weapon;               		    // Pointer to various weapon data
     intptr_t o_attributes;                  // Offset to weapon's attributes
     DObjTransformTypes transform_types;
@@ -118,7 +118,7 @@ struct WPStruct
     WPStruct *alloc_next;               // Memory region allocated for next WPStruct
     GObj *weapon_gobj;                  // Weapon's GObj pointer
     GObj *owner_gobj;                   // Weapon's owner
-    WPKind kind;                     // Weapon ID
+    s32 kind;                           // Weapon ID
     u8 team;                            // Weapon's team
     u8 player;                          // Weapon's port index
     u8 handicap;                        // Weapon's handicap

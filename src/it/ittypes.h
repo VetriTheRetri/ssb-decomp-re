@@ -24,7 +24,7 @@ struct ITMonsterData
 
 struct ITCreateDesc
 {
-	ITKind kind;
+	s32 kind;
 	void **p_file;
 	intptr_t o_attributes;
 	DObjTransformTypes transform_types;
@@ -197,8 +197,8 @@ struct ITStruct 					// Common items, stage hazards, fighter items and Pokémon
 	ITStruct *alloc_next;    		// Memory region allocated for next ITStruct
 	GObj* item_gobj;		 		// Item's GObj pointer
 	GObj* owner_gobj;		 		// Item's owner
-	ITKind kind;			 		// Item ID
-	ITType type;			 		// Item type
+	s32 kind;			 			// Item ID
+	s32 type;			 			// Item type
 	u8 team;				 		// Item's team
 	u8 player;				 		// Item's port index
 	u8 handicap;			 		// Item's handicap

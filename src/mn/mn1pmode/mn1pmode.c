@@ -161,7 +161,7 @@ void mn1PModeSetOptionSpriteColors(GObj *gobj, s32 status, s32 option_id)
 // 0x80131D04
 void mn1PModeMakeOptionTab(GObj *gobj, f32 pos_x, f32 pos_y, s32 lrs)
 {
-    SObj  *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMN1PModeFiles[0], &lMNCommonOptionTabLeftSprite));
+    SObj  *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[0], &lMNCommonOptionTabLeftSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -169,7 +169,7 @@ void mn1PModeMakeOptionTab(GObj *gobj, f32 pos_x, f32 pos_y, s32 lrs)
     sobj->pos.x = pos_x;
     sobj->pos.y = pos_y;
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMN1PModeFiles[0], &lMNCommonOptionTabMiddleSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[0], &lMNCommonOptionTabMiddleSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -186,7 +186,7 @@ void mn1PModeMakeOptionTab(GObj *gobj, f32 pos_x, f32 pos_y, s32 lrs)
     sobj->lrs = lrs * 8;
     sobj->lrt = 29;
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMN1PModeFiles[0], &lMNCommonOptionTabRightSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[0], &lMNCommonOptionTabRightSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -207,7 +207,7 @@ void mn1PModeMake1PGame(void)
     mn1PModeMakeOptionTab(gobj, 124.0F, 42.0F, 16);
     mn1PModeSetOptionSpriteColors(gobj, sMN1PModeOption == nMN1PModeOption1PGame, nMN1PModeOption1PGame);
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMN1PModeFiles[1], &lMN1PModeText1PGameSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[1], &lMN1PModeText1PGameSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -232,7 +232,7 @@ void mn1PModeMakeTrainingMode(void)
     mn1PModeMakeOptionTab(gobj, 99.0F, 84.0F, 16);
     mn1PModeSetOptionSpriteColors(gobj, sMN1PModeOption == nMN1PModeOptionTrainingMode, nMN1PModeOptionTrainingMode);
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMN1PModeFiles[1], &lMN1PModeTextTraningModeSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[1], &lMN1PModeTextTraningModeSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -254,7 +254,7 @@ void mn1PModeMakeBonus1Practice(void)
     sMN1PModeOptionGObjs[nMN1PModeOptionBonus1Practice] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMN1PModeFiles[1], &lMN1PModeOptionTabSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[1], &lMN1PModeOptionTabSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -263,7 +263,7 @@ void mn1PModeMakeBonus1Practice(void)
     sobj->pos.y = 126.0F;
     
     mn1PModeSetOptionSpriteColors(gobj, sMN1PModeOption == nMN1PModeOptionBonus1Practice, nMN1PModeOptionBonus1Practice);
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMN1PModeFiles[1], &lMN1PModeTextBonus1PracticeSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[1], &lMN1PModeTextBonus1PracticeSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -285,7 +285,7 @@ void mn1PModeMakeBonus2Practice(void)
     sMN1PModeOptionGObjs[nMN1PModeOptionBonus2Practice] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMN1PModeFiles[1], &lMN1PModeOptionTabSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[1], &lMN1PModeOptionTabSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -294,7 +294,7 @@ void mn1PModeMakeBonus2Practice(void)
     sobj->pos.y = 148.0F;
     
     mn1PModeSetOptionSpriteColors(gobj, sMN1PModeOption == nMN1PModeOptionBonus2Practice, nMN1PModeOptionBonus2Practice);
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMN1PModeFiles[1], &lMN1PModeTextBonus2PracticeSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[1], &lMN1PModeTextBonus2PracticeSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -354,7 +354,7 @@ void mn1PModeMakeLabels(void)
     gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, mn1PModeLabelsFuncDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMN1PModeFiles[0], &lMNCommonSmashLogoSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[0], &lMNCommonSmashLogoSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -366,7 +366,7 @@ void mn1PModeMakeLabels(void)
     sobj->pos.x = 235.0F;
     sobj->pos.y = 158.0F;
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMN1PModeFiles[1], &lMN1PModeLabel1PSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[1], &lMN1PModeLabel1PSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -378,7 +378,7 @@ void mn1PModeMakeLabels(void)
     sobj->pos.x = 161.0F;
     sobj->pos.y = 194.0F;
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMN1PModeFiles[0], &lMNCommonLabelGameModeSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[0], &lMNCommonLabelGameModeSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -400,12 +400,12 @@ void mn1PModeMakeDecals(void)
     gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMN1PModeFiles[0], &lMNCommonWallpaperSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[0], &lMNCommonWallpaperSprite));
     
     sobj->pos.x = 10.0F;
     sobj->pos.y = 10.0F;
 
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMN1PModeFiles[0], &lMNCommonDecalPaperSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[0], &lMNCommonDecalPaperSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -417,7 +417,7 @@ void mn1PModeMakeDecals(void)
     sobj->pos.x = 140.0F;
     sobj->pos.y = 143.0F;
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMN1PModeFiles[0], &lMNCommonDecalPaperSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[0], &lMNCommonDecalPaperSprite));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -429,7 +429,7 @@ void mn1PModeMakeDecals(void)
     sobj->pos.x = 225.0F;
     sobj->pos.y = 56.0F;
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMN1PModeFiles[1], &lMN1PModeDecalControllerSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[1], &lMN1PModeDecalControllerSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;

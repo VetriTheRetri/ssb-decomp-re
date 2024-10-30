@@ -149,7 +149,7 @@ void mvOpeningRunMakeFighters(void)
 		fighter_proxy_dobj = gcAddDObjForGObj(fighter_proxy_gobj, NULL);
 
 		gcAddXObjForDObjFixed(fighter_proxy_dobj, nGCTransformTraRotRpyRSca, 0);
-		gcAddDObjAnimJoint(fighter_proxy_dobj, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningRunFiles[0], offsets[i]), 0.0F);
+		gcAddDObjAnimJoint(fighter_proxy_dobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRunFiles[0], offsets[i]), 0.0F);
 
 		gcAddGObjProcess(fighter_proxy_gobj, mvOpeningRunFighterProcUpdate, nGCProcessKindProc, 1);
 		gcPlayAnimAll(fighter_proxy_gobj);
@@ -180,7 +180,7 @@ void mvOpeningRunMakeWallpaper(void)
 	gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
 	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-	left_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMVOpeningRunFiles[0], &lMVOpeningRunWallpaperSprite));
+	left_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMVOpeningRunFiles[0], &lMVOpeningRunWallpaperSprite));
 
 	left_sobj->sprite.attr &= ~SP_FASTCOPY;
 
@@ -190,7 +190,7 @@ void mvOpeningRunMakeWallpaper(void)
 	left_sobj->pos.x = -320.0F;
 	left_sobj->pos.y = 0.0F;
 
-	right_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMVOpeningRunFiles[0], &lMVOpeningRunWallpaperSprite));
+	right_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMVOpeningRunFiles[0], &lMVOpeningRunWallpaperSprite));
 
 	right_sobj->sprite.attr &= ~SP_FASTCOPY;
 
@@ -208,7 +208,7 @@ void mvOpeningRunMakeCrash(void)
 {
 	GObj *gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
 
-	gcSetupCommonDObjs(gobj, lbRelocGetDataFromFile(DObjDesc*, sMVOpeningRunFiles[2], &lMVOpeningRunCrashDObjDesc), NULL);
+	gcSetupCommonDObjs(gobj, lbRelocGetFileData(DObjDesc*, sMVOpeningRunFiles[2], &lMVOpeningRunCrashDObjDesc), NULL);
 	gcAddGObjDisplay(gobj, gcDrawDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
 
 	DObjGetStruct(gobj)->translate.vec.f.x = 960.0F;
@@ -221,8 +221,8 @@ void mvOpeningRunMakeCrash(void)
 	DObjGetStruct(gobj)->scale.vec.f.y = 0.9F;
 	DObjGetStruct(gobj)->scale.vec.f.z = 0.9F;
 
-	gcAddMObjAll(gobj, lbRelocGetDataFromFile(MObjSub***, sMVOpeningRunFiles[2], &lMVOpeningRunCrashMObjSub));
-	gcAddMatAnimJointAll(gobj, lbRelocGetDataFromFile(AObjEvent32***, sMVOpeningRunFiles[2], &lMVOpeningRunCrashMatAnimJoint), 0.0F);
+	gcAddMObjAll(gobj, lbRelocGetFileData(MObjSub***, sMVOpeningRunFiles[2], &lMVOpeningRunCrashMObjSub));
+	gcAddMatAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32***, sMVOpeningRunFiles[2], &lMVOpeningRunCrashMatAnimJoint), 0.0F);
 	gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
 	gcPlayAnimAll(gobj);
 }
@@ -232,7 +232,7 @@ void mvOpeningRunInitMainCamera(GObj *camera_gobj)
 {
 	CObj* cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-	gcAddCameraCamAnimJoint(cobj, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningRunFiles[1], &lMVOpeningRunMainCamAnimJoint), 0.0F);
+	gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningRunFiles[1], &lMVOpeningRunMainCamAnimJoint), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
 }
 

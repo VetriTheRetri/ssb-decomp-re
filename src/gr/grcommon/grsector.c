@@ -155,51 +155,51 @@ DObjTransformTypes dGRSectorArwingTransformKinds[/* */] =
 // 0x8012E9F0
 WPCreateDesc dGRSectorArwingWeaponLaser2DWeaponDesc =
 {
-    0,                                                  // Render flags?
-    nWPKindArwingLaser2D,                              // Weapon Kind
-    &gGRCommonStruct.sector.weapon_head,                  // Pointer to character's loaded files?
-    &lGRSectorArwingLaser2DWeaponAttributes,            // Offset of weapon attributes in loaded files
+    0,                                          // Render flags?
+    nWPKindArwingLaser2D,                       // Weapon Kind
+    &gGRCommonStruct.sector.weapon_head,        // Pointer to character's loaded files?
+    &lGRSectorArwingLaser2DWeaponAttributes,    // Offset of weapon attributes in loaded files
     
     // DObj transformation struct
     {
-        nGCTransformTraRotRpyR,                     // Main matrix transformations
-        nGCTransformNull,                           // Secondary matrix transformations?
-        0                                               // ???
+        nGCTransformTraRotRpyR,                 // Main matrix transformations
+        nGCTransformNull,                       // Secondary matrix transformations?
+        0                                       // ???
     },
 
-    NULL,                                               // Proc Update
-    grSectorArwingWeaponLaser2DProcMap,                 // Proc Map
-    grSectorArwingWeaponLaser2DProcHit,                 // Proc Hit
-    grSectorArwingWeaponLaser2DProcHit,                 // Proc Shield
-    grSectorArwingWeaponLaser2DProcHop,                 // Proc Hop
-    grSectorArwingWeaponLaser2DProcHit,                 // Proc Set-Off
-    grSectorArwingWeaponLaser2DProcReflector,           // Proc Reflector
-    grSectorArwingWeaponLaser2DProcHit                  // Proc Absorb
+    NULL,                                       // Proc Update
+    grSectorArwingWeaponLaser2DProcMap,         // Proc Map
+    grSectorArwingWeaponLaser2DProcHit,         // Proc Hit
+    grSectorArwingWeaponLaser2DProcHit,         // Proc Shield
+    grSectorArwingWeaponLaser2DProcHop,         // Proc Hop
+    grSectorArwingWeaponLaser2DProcHit,         // Proc Set-Off
+    grSectorArwingWeaponLaser2DProcReflector,   // Proc Reflector
+    grSectorArwingWeaponLaser2DProcHit          // Proc Absorb
 };
 
 // 0x8012EA24
 WPCreateDesc dGRSectorArwingWeaponLaser3DWeaponDesc =
 {
-    0,                                                  // Render flags?
-    nWPKindArwingLaser3D,                              // Weapon Kind
-    &gGRCommonStruct.sector.weapon_head,                  // Pointer to character's loaded files?
-    &lGRSectorArwingLaser3DWeaponAttributes,            // Offset of weapon attributes in loaded files
+    0,                                          // Render flags?
+    nWPKindArwingLaser3D,                       // Weapon Kind
+    &gGRCommonStruct.sector.weapon_head,        // Pointer to character's loaded files?
+    &lGRSectorArwingLaser3DWeaponAttributes,    // Offset of weapon attributes in loaded files
     
     // DObj transformation struct
     {
-        nGCTransformTraRotRpyR,                     // Main matrix transformations
-        nGCTransformNull,                           // Secondary matrix transformations?
-        0                                               // ???
+        nGCTransformTraRotRpyR,                 // Main matrix transformations
+        nGCTransformNull,                       // Secondary matrix transformations?
+        0                                       // ???
     },
 
-    NULL,                                               // Proc Update
-    grSectorArwingWeaponLaser3DProcMap,                 // Proc Map
-    grSectorArwingWeaponLaser3DProcHit,                 // Proc Hit
-    grSectorArwingWeaponLaser3DProcHit,                 // Proc Shield
-    grSectorArwingWeaponLaser3DProcHit,                 // Proc Hop
-    grSectorArwingWeaponLaser3DProcHit,                 // Proc Set-Off
-    grSectorArwingWeaponLaser3DProcHit,                 // Proc Reflector
-    grSectorArwingWeaponLaser3DProcAbsorb               // Proc Absorb
+    NULL,                                       // Proc Update
+    grSectorArwingWeaponLaser3DProcMap,         // Proc Map
+    grSectorArwingWeaponLaser3DProcHit,         // Proc Hit
+    grSectorArwingWeaponLaser3DProcHit,         // Proc Shield
+    grSectorArwingWeaponLaser3DProcHit,         // Proc Hop
+    grSectorArwingWeaponLaser3DProcHit,         // Proc Set-Off
+    grSectorArwingWeaponLaser3DProcHit,         // Proc Reflector
+    grSectorArwingWeaponLaser3DProcAbsorb       // Proc Absorb
 };
 
 // // // // // // // // // // // //
@@ -230,7 +230,7 @@ void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
 
     while (aobj != NULL)
     {
-        if ((aobj->kind != nGCAnimKindNone) && !(arg0->parent_gobj->flags & GOBJ_FLAG_NOANIM) && (aobj->track == 4))
+        if ((aobj->kind != nGCAnimKindNone) && !(arg0->parent_gobj->flags & GOBJ_FLAG_NOANIM) && (aobj->track == nGCAnimTrackTraI))
         {
             vlen = gcGetAObjValue(aobj);
 
@@ -252,7 +252,7 @@ void func_ovl2_80106730(DObj *arg0, Vec3f *vec1, Vec3f *vec2, Vec3f *vec3)
 
         while (aobj != NULL)
         {
-            if ((aobj->kind != nGCAnimKindNone) && !(arg0->parent_gobj->flags & 2) && (aobj->track == 4))
+            if ((aobj->kind != nGCAnimKindNone) && !(arg0->parent_gobj->flags & GOBJ_FLAG_NOANIM) && (aobj->track == nGCAnimTrackTraI))
             {
                 hal_interpolation_cubic(vec3, aobj->interpolate, vlen);
             }
@@ -309,7 +309,7 @@ sb32 grSectorArwingLaser3DFuncMatrix(Mtx *mtx, DObj *dobj, Gfx **dls)
 
     f[0][3] = f[1][3] = f[2][3] = 0.0F;             // sp34, sp44, sp54
 
-    f[3][0] = tx + gGRCommonStruct.sector.arwing_target_x;    // sp58
+    f[3][0] = tx + gGRCommonStruct.sector.arwing_target_x;   // sp58
     f[3][1] = ty;                                           // sp5C
     f[3][2] = tz;                                           // sp60
 
@@ -327,7 +327,7 @@ void func_ovl2_80106A40(DObj *dobj, AObjEvent32 *anim_joint, f32 arg2)
     {
         gcAddDObjAnimJoint(dobj, anim_joint, 0.0F);
 
-        dobj->is_anim_root = 0;
+        dobj->is_anim_root = FALSE;
 
         gcParseDObjAnimJoint(dobj);
         gcPlayDObjAnim(dobj);
@@ -335,7 +335,7 @@ void func_ovl2_80106A40(DObj *dobj, AObjEvent32 *anim_joint, f32 arg2)
     else
     {
         dobj->anim_wait = AOBJ_ANIM_NULL;
-        dobj->is_anim_root = 0;
+        dobj->is_anim_root = FALSE;
     }
 }
 
@@ -453,7 +453,7 @@ void func_ovl2_80106D00(void)
         gGRCommonStruct.sector.map_dobjs[9]->anim_wait = AOBJ_ANIM_NULL;
         gGRCommonStruct.sector.map_dobjs[9]->flags = DOBJ_FLAG_HIDDEN;
 
-        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobjs[8], (AObjEvent32*) ((uintptr_t)gGRCommonStruct.sector.map_file + (intptr_t)&D_NF_00002EB4), 0.0F);
+        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobjs[8], lbRelocGetFileData(AObjEvent32*, gGRCommonStruct.sector.map_file, &D_NF_00002EB4), 0.0F);
     }
     else if (gGRCommonStruct.sector.map_dobjs[8]->anim_wait == AOBJ_ANIM_NULL)
     {
@@ -941,8 +941,8 @@ void func_ovl2_80107958(void)
             {
                 mh1 = gGRCommonStruct.sector.map_head;
 
-                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobjs[4], lbRelocGetDataFromFile(AObjEvent32*, mh1, &D_NF_00001B84), 0.0F);
-                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobjs[5], lbRelocGetDataFromFile(AObjEvent32*, mh1, &D_NF_00001B84), 0.0F);
+                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobjs[4], lbRelocGetFileData(AObjEvent32*, mh1, &D_NF_00001B84), 0.0F);
+                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobjs[5], lbRelocGetFileData(AObjEvent32*, mh1, &D_NF_00001B84), 0.0F);
 
                 gGRCommonStruct.sector.unk_sector_0x52++;
             }
@@ -952,8 +952,8 @@ void func_ovl2_80107958(void)
 
                 func_ovl2_80107910();
 
-                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobjs[2], lbRelocGetDataFromFile(AObjEvent32*, mh2, &D_NF_00001B34), 0.0F);
-                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobjs[3], lbRelocGetDataFromFile(AObjEvent32*, mh2, &D_NF_00001B34), 0.0F);
+                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobjs[2], lbRelocGetFileData(AObjEvent32*, mh2, &D_NF_00001B34), 0.0F);
+                func_ovl2_80106A40(gGRCommonStruct.sector.map_dobjs[3], lbRelocGetFileData(AObjEvent32*, mh2, &D_NF_00001B34), 0.0F);
 
                 gGRCommonStruct.sector.arwing_laser_timer = 30;
                 gGRCommonStruct.sector.arwing_laser_ammo--;
@@ -975,7 +975,7 @@ void func_ovl2_80107B30(void)
 {
     if ((gGRCommonStruct.sector.map_dobjs[8]->anim_wait == AOBJ_ANIM_NULL) && (gGRCommonStruct.sector.map_dobjs[7]->flags == DOBJ_FLAG_NONE))
     {
-        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobjs[8], lbRelocGetDataFromFile(AObjEvent32*, gGRCommonStruct.sector.map_file, &D_NF_00002EB4), 0.0F);
+        func_ovl2_80106A40(gGRCommonStruct.sector.map_dobjs[8], lbRelocGetFileData(AObjEvent32*, gGRCommonStruct.sector.map_file, &D_NF_00002EB4), 0.0F);
 
         func_800269C0_275C0(nSYAudioFGMSectorAmbient2);
     }
@@ -1094,7 +1094,7 @@ void grSectorInitAll(void)
     gGRCommonStruct.sector.map_gobj = map_gobj;
 
     gcAddGObjDisplay(map_gobj, gcDrawDObjTreeDLLinksForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
-    grModelSetupGroundDObjs(map_gobj, lbRelocGetDataFromFile(DObjDesc*, map_file, &D_NF_00002C30), gGRCommonStruct.sector.map_dobjs, dGRSectorArwingTransformKinds);
+    grModelSetupGroundDObjs(map_gobj, lbRelocGetFileData(DObjDesc*, map_file, &D_NF_00002C30), gGRCommonStruct.sector.map_dobjs, dGRSectorArwingTransformKinds);
     gcAddGObjProcess(map_gobj, gcPlayAnimAll, nGCProcessKindProc, 5);
 
     gGRCommonStruct.sector.arwing_status = 0;
@@ -1107,7 +1107,7 @@ void grSectorInitAll(void)
 
     map_gobj->flags = GOBJ_FLAG_HIDDEN;
 
-    gcAddDObjAnimJoint(gGRCommonStruct.sector.map_dobjs[10], lbRelocGetDataFromFile(AObjEvent32*, map_file, &D_NF_00002E74), 0.0F);
+    gcAddDObjAnimJoint(gGRCommonStruct.sector.map_dobjs[10], lbRelocGetFileData(AObjEvent32*, map_file, &D_NF_00002E74), 0.0F);
     gcPlayAnimAll(map_gobj);
     mpCollisionSetYakumonoOffID(1);
     gGRCommonStruct.sector.weapon_head = (void*) ((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart);

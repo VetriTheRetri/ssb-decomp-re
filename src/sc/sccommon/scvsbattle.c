@@ -146,10 +146,10 @@ void scVSBattleFuncStart(void)
 	{
 		file = lbRelocGetFileExternHeap((u32)&D_NF_000000C7, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000C7), 0x10));
 
-		func_dmem = lbRelocGetDataFromFile(sb32 (*)(void), file, &lSYDmemCheckValidFunc);
+		func_dmem = lbRelocGetFileData(sb32 (*)(void), file, &lSYDmemCheckValidFunc);
 
-		osWritebackDCache(func_dmem, *lbRelocGetDataFromFile(s32*, file, &lSYDmemCheckValidNBytes));
-		osInvalICache(func_dmem, *lbRelocGetDataFromFile(s32*, file, &lSYDmemCheckValidNBytes));
+		osWritebackDCache(func_dmem, *lbRelocGetFileData(s32*, file, &lSYDmemCheckValidNBytes));
+		osInvalICache(func_dmem, *lbRelocGetFileData(s32*, file, &lSYDmemCheckValidNBytes));
 
 		if (func_dmem() == FALSE)
 		{

@@ -264,7 +264,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_DLLINKORDER_DEFAULT,
         -1,
-        lbRelocGetDataFromFile(Sprite*, sMNUnusedFightersFiles[0], &D_NF_00004728),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_00004728),
         nGCProcessKindProc,
         NULL,
         1
@@ -283,7 +283,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_DLLINKORDER_DEFAULT,
         -1,
-        lbRelocGetDataFromFile(Sprite*, sMNUnusedFightersFiles[0], &D_NF_00006978),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_00006978),
         nGCProcessKindProc,
         NULL,
         1
@@ -302,7 +302,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_DLLINKORDER_DEFAULT,
         -1,
-        lbRelocGetDataFromFile(Sprite*, sMNUnusedFightersFiles[0], &D_NF_00008BC8),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_00008BC8),
         nGCProcessKindProc,
         NULL,
         1
@@ -321,7 +321,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_DLLINKORDER_DEFAULT,
         -1,
-        lbRelocGetDataFromFile(Sprite*, sMNUnusedFightersFiles[0], &D_NF_0000AE18),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_0000AE18),
         nGCProcessKindProc,
         NULL,
         1
@@ -340,7 +340,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_DLLINKORDER_DEFAULT,
         -1,
-        lbRelocGetDataFromFile(Sprite*, sMNUnusedFightersFiles[0], &D_NF_0000D068),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_0000D068),
         nGCProcessKindProc,
         NULL,
         1
@@ -359,7 +359,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_DLLINKORDER_DEFAULT,
         -1,
-        lbRelocGetDataFromFile(Sprite*, sMNUnusedFightersFiles[0], &D_NF_0000F2B8),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_0000F2B8),
         nGCProcessKindProc,
         NULL,
         1
@@ -378,7 +378,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_DLLINKORDER_DEFAULT,
         -1,
-        lbRelocGetDataFromFile(Sprite*, sMNUnusedFightersFiles[0], &D_NF_00011508),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_00011508),
         nGCProcessKindProc,
         NULL,
         1
@@ -397,7 +397,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_DLLINKORDER_DEFAULT,
         -1,
-        lbRelocGetDataFromFile(Sprite*, sMNUnusedFightersFiles[0], &D_NF_00013758),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_00013758),
         nGCProcessKindProc,
         NULL,
         1
@@ -416,7 +416,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_DLLINKORDER_DEFAULT,
         -1,
-        lbRelocGetDataFromFile(Sprite*, sMNUnusedFightersFiles[0], &D_NF_000159A8),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_000159A8),
         nGCProcessKindProc,
         NULL,
         1
@@ -435,7 +435,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_DLLINKORDER_DEFAULT,
         -1,
-        lbRelocGetDataFromFile(Sprite*, sMNUnusedFightersFiles[0], &lMNFightersMarioNameSprite),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &lMNFightersMarioNameSprite),
         nGCProcessKindProc,
         NULL,
         1
@@ -457,7 +457,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_DLLINKORDER_DEFAULT,
         -1,
-        lbRelocGetDataFromFile(Sprite*, sMNUnusedFightersFiles[0], &lMNFightersSamusNameSprite),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &lMNFightersSamusNameSprite),
         nGCProcessKindProc,
         NULL,
         1
@@ -479,7 +479,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_DLLINKORDER_DEFAULT,
         -1,
-        lbRelocGetDataFromFile(Sprite*, sMNUnusedFightersFiles[0], &lMNFightersPikachuNameSprite),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &lMNFightersPikachuNameSprite),
         nGCProcessKindProc,
         NULL,
         1
@@ -501,7 +501,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_DLLINKORDER_DEFAULT,
         -1,
-        lbRelocGetDataFromFile(Sprite*, sMNUnusedFightersFiles[0], &lMNFightersLuigiNameSprite),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &lMNFightersLuigiNameSprite),
         nGCProcessKindProc,
         NULL,
         1
@@ -523,7 +523,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_DLLINKORDER_DEFAULT,
         -1,
-        lbRelocGetDataFromFile(Sprite*, sMNUnusedFightersFiles[0], &lMNFightersOptionTimeSprite),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &lMNFightersOptionTimeSprite),
         nGCProcessKindProc,
         mnUnusedFightersTimeProcUpdate,
         1
@@ -544,7 +544,7 @@ void mnUnusedFightersFuncStart(void)
         1,
         GOBJ_DLLINKORDER_DEFAULT,
         -1,
-        lbRelocGetDataFromFile(Sprite*, sMNUnusedFightersFiles[0], &lMNFightersSymbolInfiniteSprite),
+        lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &lMNFightersSymbolInfiniteSprite),
         nGCProcessKindProc,
         NULL,
         1

@@ -149,7 +149,7 @@ void mvOpeningCliffMakeHills(void)
     gcSetupCommonDObjs
     (
         hills_gobj,
-        lbRelocGetDataFromFile
+        lbRelocGetFileData
         (
             DObjDesc*,
             sMVOpeningCliffFiles[0],
@@ -252,7 +252,7 @@ void mvOpeningCliffMakeWallpaper(void)
     gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(wallpaper_gobj, mvOpeningCliffWallpaperFuncDisplay, nGCProcessKindProc, 1);
 
-    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetDataFromFile(Sprite*, sMVOpeningCliffFiles[1], &lMVOpeningCliffWallpaperSprite));
+    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetFileData(Sprite*, sMVOpeningCliffFiles[1], &lMVOpeningCliffWallpaperSprite));
     wallpaper_sobj->sprite.attr &= ~SP_FASTCOPY;
 
     wallpaper_sobj->sprite.scalex = 2.0F;
@@ -261,7 +261,7 @@ void mvOpeningCliffMakeWallpaper(void)
     wallpaper_sobj->pos.x = 0.0F;
     wallpaper_sobj->pos.y = 0.0F;
 
-    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetDataFromFile(Sprite*, sMVOpeningCliffFiles[1], &lMVOpeningCliffWallpaperSprite));
+    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetFileData(Sprite*, sMVOpeningCliffFiles[1], &lMVOpeningCliffWallpaperSprite));
     wallpaper_sobj->sprite.attr &= ~SP_FASTCOPY;
 
     wallpaper_sobj->sprite.scalex = 2.0F;
@@ -280,7 +280,7 @@ void mvOpeningCliffMakeOcarina(void)
     gcSetupCustomDObjs
     (
         ocarina_gobj,
-        lbRelocGetDataFromFile
+        lbRelocGetFileData
         (
             DObjDesc*,
             sMVOpeningCliffFiles[0],
@@ -300,7 +300,7 @@ void mvOpeningCliffMakeOcarina(void)
     gcAddAnimJointAll
     (
         ocarina_gobj,
-        lbRelocGetDataFromFile
+        lbRelocGetFileData
         (
             AObjEvent32**,
             sMVOpeningCliffFiles[0],
@@ -351,7 +351,7 @@ void mvOpeningCliffMakeMainCamera(void)
     gcAddCameraCamAnimJoint
     (
         cobj,
-        lbRelocGetDataFromFile
+        lbRelocGetFileData
         (
             AObjEvent32*,
             sMVOpeningCliffFiles[0],
@@ -390,7 +390,7 @@ void mvOpeningCliffMakeMainCamera(void)
     gcAddCameraCamAnimJoint
     (
         cobj,
-        lbRelocGetDataFromFile
+        lbRelocGetFileData
         (
             AObjEvent32*,
             sMVOpeningCliffFiles[0],

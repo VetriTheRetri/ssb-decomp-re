@@ -204,8 +204,8 @@ void wpPikachuThunderJoltGroundAddAnim(GObj *weapon_gobj)
     gcAddAnimAll
     (
         weapon_gobj, 
-        lbRelocGetDataFromFile(AObjEvent32**, gFTDataPikachuSpecial3, &lWPPikachuThunderJoltAnimJoint), 
-        lbRelocGetDataFromFile(AObjEvent32***, gFTDataPikachuSpecial3, &lWPPikachuThunderJoltMatAnimJoint), 
+        lbRelocGetFileData(AObjEvent32**, gFTDataPikachuSpecial3, &lWPPikachuThunderJoltAnimJoint), 
+        lbRelocGetFileData(AObjEvent32***, gFTDataPikachuSpecial3, &lWPPikachuThunderJoltMatAnimJoint), 
         0.0F
     );
     gcPlayAnimAll(weapon_gobj);

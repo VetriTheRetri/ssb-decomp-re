@@ -173,7 +173,7 @@ void mvOpeningKirbyMakeName(void)
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
-		name_sobj = lbCommonMakeSObjForGObj(name_gobj, lbRelocGetDataFromFile(Sprite*, sMVOpeningKirbyFiles[0], offsets[i]));
+		name_sobj = lbCommonMakeSObjForGObj(name_gobj, lbRelocGetFileData(Sprite*, sMVOpeningKirbyFiles[0], offsets[i]));
 
 		name_sobj->sprite.attr &= ~SP_FASTCOPY;
 		name_sobj->sprite.attr |= SP_TRANSPARENT;
@@ -428,7 +428,7 @@ void mvOpeningKirbyMakePosedFighterCamera(void)
 	
 	cobj->projection.persp.aspect = 5.0F / 11.0F;
 
-	gcAddCameraCamAnimJoint(cobj, lbRelocGetDataFromFile(AObjEvent32*, sMVOpeningKirbyFiles[1], &lMVOpeningKirbyCamAnimJoint), 0.0F);
+	gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningKirbyFiles[1], &lMVOpeningKirbyCamAnimJoint), 0.0F);
 	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
 }
 

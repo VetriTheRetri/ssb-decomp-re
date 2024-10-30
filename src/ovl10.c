@@ -861,7 +861,7 @@ void mnTitleShowFire(GObj *fire_gobj)
 // 0x80132A6C
 void mnTitleUpdateFireSprite(SObj *sobj, sb32 is_next)
 {
-	Sprite *sprite = lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[1], dMNTitleFireSpriteOffsets[sobj->user_data.s]);
+	Sprite *sprite = lbRelocGetFileData(Sprite*, sMNTitleFiles[1], dMNTitleFireSpriteOffsets[sobj->user_data.s]);
 
 	sobj->sprite = *sprite;
 	sobj->sprite.attr = SP_TRANSPARENT;
@@ -909,7 +909,7 @@ void mnTitleMakeFire(void)
 			}
 			else target_texture = 12;
 
-			fire_sobj = lbCommonMakeSObjForGObj(fire_gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[1], dMNTitleFireSpriteOffsets[target_texture]));
+			fire_sobj = lbCommonMakeSObjForGObj(fire_gobj, lbRelocGetFileData(Sprite*, sMNTitleFiles[1], dMNTitleFireSpriteOffsets[target_texture]));
 
 			fire_sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -1016,7 +1016,7 @@ void mnTitleMakeLogoNoOpening(void)
 		0,
 		GOBJ_DLLINKORDER_DEFAULT,
 		-1,
-		lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[8].offset),
+		lbRelocGetFileData(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[8].offset),
 		nGCProcessKindProc,
 		NULL,
 		1
@@ -1050,8 +1050,8 @@ void mnTitleMakeLogo(void)
 	else
 	{
 		animated_logo_gobj = gcMakeGObjSPAfter(7, NULL, 7, GOBJ_LINKORDER_DEFAULT);
-		gcSetupCommonDObjs(animated_logo_gobj, lbRelocGetDataFromFile(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_ANIMATED_LOGO_OFFSET_2), 0);
-		gcAddAnimJointAll(animated_logo_gobj, lbRelocGetDataFromFile(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_ANIMATED_LOGO_OFFSET_1), 0);
+		gcSetupCommonDObjs(animated_logo_gobj, lbRelocGetFileData(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_ANIMATED_LOGO_OFFSET_2), 0);
+		gcAddAnimJointAll(animated_logo_gobj, lbRelocGetFileData(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_ANIMATED_LOGO_OFFSET_1), 0);
 		gcPlayAnimAll(animated_logo_gobj);
 
 		fire_logo_gobj = gcMakeGObjSPAfter(6, NULL, 7, GOBJ_LINKORDER_DEFAULT);
@@ -1063,7 +1063,7 @@ void mnTitleMakeLogo(void)
 
 		for (i = 0; i < ARRAY_COUNT(dMNTitleLogoAnimSprites) - 1; i++)
 		{
-			fire_logo_sobj = lbCommonMakeSObjForGObj(fire_logo_gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleLogoAnimSprites[i]));
+			fire_logo_sobj = lbCommonMakeSObjForGObj(fire_logo_gobj, lbRelocGetFileData(Sprite*, sMNTitleFiles[0], dMNTitleLogoAnimSprites[i]));
 
 			fire_logo_sobj->sprite.attr = SP_TRANSPARENT;
 
@@ -1090,7 +1090,7 @@ void mnTitleMakeLogo(void)
 			0,
 			GOBJ_DLLINKORDER_DEFAULT,
 			-1,
-			lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleLogoAnimSprites[3]),
+			lbRelocGetFileData(Sprite*, sMNTitleFiles[0], dMNTitleLogoAnimSprites[3]),
 			nGCProcessKindProc,
 			mnTitleLogoProcUpdate,
 			1
@@ -1124,7 +1124,7 @@ void mnTitleMakeSprites(void)
 
 	for (i = 0; i < 7; i++)
 	{
-		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[i].offset));
+		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[i].offset));
 		sobj->sprite.attr = SP_TRANSPARENT;
 
 		mnTitleSetPosition(NULL, sobj, i);
@@ -1142,8 +1142,8 @@ void mnTitleMakeLabels(void)
 	DObj* animation_dobj;
 
 	animation_gobj = gcMakeGObjSPAfter(10, NULL, 8, GOBJ_LINKORDER_DEFAULT);
-	gcSetupCommonDObjs(animation_gobj, lbRelocGetDataFromFile(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_ANIMATED_TITLE_HEADER_FOOTER_OFFSET_2), 0);
-	gcAddAnimJointAll(animation_gobj, lbRelocGetDataFromFile(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_ANIMATED_TITLE_HEADER_FOOTER_OFFSET_1), 0);
+	gcSetupCommonDObjs(animation_gobj, lbRelocGetFileData(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_ANIMATED_TITLE_HEADER_FOOTER_OFFSET_2), 0);
+	gcAddAnimJointAll(animation_gobj, lbRelocGetFileData(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_ANIMATED_TITLE_HEADER_FOOTER_OFFSET_1), 0);
 	gcPlayAnimAll(animation_gobj);
 
 	gobj = gcMakeGObjSPAfter(8, NULL, 8, GOBJ_LINKORDER_DEFAULT);
@@ -1155,7 +1155,7 @@ void mnTitleMakeLabels(void)
 
 	for (i = 0; i < 5; i++)
 	{
-		texture_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[i].offset));
+		texture_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[i].offset));
 		texture_sobj->sprite.attr = SP_TRANSPARENT;
 
 		mnTitleSetPosition(animation_dobj, texture_sobj, i);
@@ -1173,7 +1173,7 @@ void mnTitleMakeLabels(void)
 
 	for (i = 5; i < 7; i++)
 	{
-		texture_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[i].offset));
+		texture_sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[i].offset));
 		texture_sobj->sprite.attr = SP_TRANSPARENT;
 
 		mnTitleSetPosition(animation_dobj, texture_sobj, i);
@@ -1193,8 +1193,8 @@ void mnTitleMakePressStart(void)
 	SObj *press_start_sobj;
 
 	press_start_anim_gobj = gcMakeGObjSPAfter(10, NULL, 8, GOBJ_LINKORDER_DEFAULT);
-	gcSetupCommonDObjs(press_start_anim_gobj, lbRelocGetDataFromFile(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_ANIMATED_PRESS_START_OFFSET_2), 0);
-	gcAddAnimJointAll(press_start_anim_gobj, lbRelocGetDataFromFile(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_ANIMATED_PRESS_START_OFFSET_1), 0);
+	gcSetupCommonDObjs(press_start_anim_gobj, lbRelocGetFileData(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_ANIMATED_PRESS_START_OFFSET_2), 0);
+	gcAddAnimJointAll(press_start_anim_gobj, lbRelocGetFileData(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_ANIMATED_PRESS_START_OFFSET_1), 0);
 	gcPlayAnimAll(press_start_anim_gobj);
 
 	press_start_anim_dobj = DObjGetStruct(press_start_anim_gobj)->child;
@@ -1205,7 +1205,7 @@ void mnTitleMakePressStart(void)
 
 	press_start_gobj->user_data.p = press_start_anim_gobj;
 
-	press_start_sobj = lbCommonMakeSObjForGObj(press_start_gobj, lbRelocGetDataFromFile(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[7].offset));
+	press_start_sobj = lbCommonMakeSObjForGObj(press_start_gobj, lbRelocGetFileData(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[7].offset));
 	press_start_sobj->sprite.attr = SP_TRANSPARENT;
 
 	mnTitleSetPosition(press_start_anim_dobj, press_start_sobj, nMNTitleTextureIndexPressStart);
@@ -1241,15 +1241,15 @@ void mnTitleMakeSlash(void)
 		gcSetupCustomDObjsWithMObj
 		(
 			gobj,
-			lbRelocGetDataFromFile(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_2),
-			lbRelocGetDataFromFile(MObjSub***, sMNTitleFiles[0], &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_1),
+			lbRelocGetFileData(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_2),
+			lbRelocGetFileData(MObjSub***, sMNTitleFiles[0], &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_1),
 			NULL,
 			nGCTransformTraRotRpyRSca,
 			nGCTransformNull,
 			nGCTransformNull
 		);
-		gcAddAnimJointAll(gobj, lbRelocGetDataFromFile(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_3), 0.0F);
-		gcAddMatAnimJointAll(gobj, lbRelocGetDataFromFile(AObjEvent32***, sMNTitleFiles[0], &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_4), 0.0F);
+		gcAddAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_3), 0.0F);
+		gcAddMatAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32***, sMNTitleFiles[0], &FILE_0A7_SLASH_EFFECT_GFX_OFFSET_4), 0.0F);
 		gcPlayAnimAll(gobj);
 		gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
 	}
@@ -1409,8 +1409,8 @@ void mnTitleMakeLogoFireParticles(void)
 	{
 		logo_fire_effect_gobj = gcMakeGObjSPAfter(14, NULL, 5, GOBJ_LINKORDER_DEFAULT);
 
-		gcSetupCommonDObjs(logo_fire_effect_gobj, lbRelocGetDataFromFile(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_1), NULL);
-		gcAddAnimJointAll(logo_fire_effect_gobj, lbRelocGetDataFromFile(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_2), 0.0F);
+		gcSetupCommonDObjs(logo_fire_effect_gobj, lbRelocGetFileData(DObjDesc*, sMNTitleFiles[0], &FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_1), NULL);
+		gcAddAnimJointAll(logo_fire_effect_gobj, lbRelocGetFileData(AObjEvent32**, sMNTitleFiles[0], &FILE_0A7_LOGO_FIRE_EFFECT_OFFSET_2), 0.0F);
 		gcPlayAnimAll(logo_fire_effect_gobj);
 		gcAddGObjProcess(logo_fire_effect_gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
 

@@ -132,7 +132,7 @@ void mvOpeningStandoffFuncLights(Gfx **dls)
 void mvOpeningStandoffMakeGround(void)
 {
     GObj *gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
-    gcAddDObjForGObj(gobj, lbRelocGetDataFromFile(void*, sMVOpeningStandoffFiles[0], &lMVOpeningStandoffGroundDisplayList));
+    gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningStandoffFiles[0], &lMVOpeningStandoffGroundDisplayList));
     gcAddXObjForDObjFixed(DObjGetStruct(gobj), nGCTransformTraRotRpyRSca, 0);
     gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 
@@ -287,7 +287,7 @@ void mvOpeningStandoffMakeWallpaper(void)
     gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddGObjProcess(wallpaper_gobj, mvOpeningStandoffWallpaperProcUpdate, nGCProcessKindProc, 1);
 
-    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetDataFromFile(Sprite*, sMVOpeningStandoffFiles[1], &lMVOpeningStandoffWallpaperSprite));
+    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetFileData(Sprite*, sMVOpeningStandoffFiles[1], &lMVOpeningStandoffWallpaperSprite));
     wallpaper_sobj->sprite.attr &= ~SP_FASTCOPY;
 
     wallpaper_sobj->sprite.scalex = 2.0F;
@@ -296,7 +296,7 @@ void mvOpeningStandoffMakeWallpaper(void)
     wallpaper_sobj->pos.x = 0.0F;
     wallpaper_sobj->pos.y = 0.0F;
 
-    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetDataFromFile(Sprite*, sMVOpeningStandoffFiles[1], &lMVOpeningStandoffWallpaperSprite));
+    wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetFileData(Sprite*, sMVOpeningStandoffFiles[1], &lMVOpeningStandoffWallpaperSprite));
     wallpaper_sobj->sprite.attr &= ~SP_FASTCOPY;
 
     wallpaper_sobj->sprite.scalex = 2.0F;
@@ -315,7 +315,7 @@ void mvOpeningStandoffMakeLightning(void)
     gcSetupCustomDObjs
     (
         lightning_gobj,
-        lbRelocGetDataFromFile
+        lbRelocGetFileData
         (
             DObjDesc*,
             sMVOpeningStandoffFiles[0],
@@ -329,7 +329,7 @@ void mvOpeningStandoffMakeLightning(void)
     gcAddMObjAll
     (
         lightning_gobj,
-        lbRelocGetDataFromFile
+        lbRelocGetFileData
         (
             MObjSub***,
             sMVOpeningStandoffFiles[0],
@@ -339,7 +339,7 @@ void mvOpeningStandoffMakeLightning(void)
     gcAddMatAnimJointAll
     (
         lightning_gobj,
-        lbRelocGetDataFromFile
+        lbRelocGetFileData
         (
             AObjEvent32***,
             sMVOpeningStandoffFiles[0],
@@ -356,7 +356,7 @@ void mvOpeningStandoffMakeLightning(void)
     gcAddAnimJointAll
     (
         lightning_gobj,
-        lbRelocGetDataFromFile
+        lbRelocGetFileData
         (
             AObjEvent32**,
             sMVOpeningStandoffFiles[0],
@@ -477,7 +477,7 @@ void mvOpeningStandoffMakeMainCamera(void)
     gcAddCameraCamAnimJoint
     (
         cobj,
-        lbRelocGetDataFromFile
+        lbRelocGetFileData
         (
             AObjEvent32*,
             sMVOpeningStandoffFiles[0],

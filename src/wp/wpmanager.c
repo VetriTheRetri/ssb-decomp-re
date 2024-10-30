@@ -108,7 +108,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
         wpManagerSetPrevStructAlloc(wp);
         return NULL;
     }
-    attr = lbRelocGetDataFromFile(WPAttributes*, *wp_desc->p_weapon, wp_desc->o_attributes); // I hope this is correct?
+    attr = lbRelocGetFileData(WPAttributes*, *wp_desc->p_weapon, wp_desc->o_attributes); // I hope this is correct?
     weapon_gobj->user_data.p = wp;
     wp->weapon_gobj = weapon_gobj;
     wp->kind = wp_desc->kind;

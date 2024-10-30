@@ -165,7 +165,7 @@ void scExplainLoadExplainFiles(void)
             0x10
         )
     );
-    sSCExplainPhase = lbRelocGetDataFromFile(SCExplainPhase*, sSCExplainMainFileHead, &lSCExplainPhases);
+    sSCExplainPhase = lbRelocGetFileData(SCExplainPhase*, sSCExplainMainFileHead, &lSCExplainPhases);
 }
 
 // 0x8018D14C
@@ -374,7 +374,7 @@ GObj* scExplainMakeControlStickInterface(void)
     gcAddMObjAll
     (
         interface_gobj,
-        lbRelocGetDataFromFile
+        lbRelocGetFileData
         (
             MObjSub***, 
             sSCExplainGraphicsFileHead, 
@@ -419,7 +419,7 @@ void scExplainUpdateTapSparkEffect(void)
         dobj->translate.vec.f.x = pos->x + 15.0F;
         dobj->translate.vec.f.y = pos->y + 5.0F;
     }
-    gcAddAnimAll(gobj, NULL, lbRelocGetDataFromFile(AObjEvent32***, sSCExplainGraphicsFileHead, &lSCExplainTapSparkMatAnimJoint), 0.0F);
+    gcAddAnimAll(gobj, NULL, lbRelocGetFileData(AObjEvent32***, sSCExplainGraphicsFileHead, &lSCExplainTapSparkMatAnimJoint), 0.0F);
     gcPlayAnimAll(gobj);
 
     gobj->flags = GOBJ_FLAG_NONE;
@@ -444,7 +444,7 @@ GObj* scExplainMakeTapSpark(void)
     gcAddGObjDisplay(interface_gobj, scExplainTapSparkFuncDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     gcAddDObjForGObj(interface_gobj, (void*) ((uintptr_t)sSCExplainGraphicsFileHead + (intptr_t)&lSCExplainTapSparkDisplayList));
     gcAddXObjForDObjFixed(DObjGetStruct(interface_gobj), nGCTransformTra, 0);
-    gcAddMObjAll(interface_gobj, lbRelocGetDataFromFile(MObjSub***, sSCExplainGraphicsFileHead, &lSCExplainTapSparkMObjSub));
+    gcAddMObjAll(interface_gobj, lbRelocGetFileData(MObjSub***, sSCExplainGraphicsFileHead, &lSCExplainTapSparkMObjSub));
     gcAddGObjProcess(interface_gobj, scExplainTapSparkProcUpdate, nGCProcessKindProc, 5);
 
     interface_gobj->flags = GOBJ_FLAG_HIDDEN;
@@ -485,7 +485,7 @@ GObj* scExplainMakeSpecialMoveRGB(void)
         GOBJ_LINKORDER_DEFAULT
     );
     gcAddGObjDisplay(interface_gobj, scExplainTapSparkFuncDisplay, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddDObjForGObj(interface_gobj, lbRelocGetDataFromFile(void*, sSCExplainGraphicsFileHead, &lSCExplainSpecialMoveRGBDisplayList));
+    gcAddDObjForGObj(interface_gobj, lbRelocGetFileData(void*, sSCExplainGraphicsFileHead, &lSCExplainSpecialMoveRGBDisplayList));
     gcAddXObjForDObjFixed(DObjGetStruct(interface_gobj), nGCTransformTra, 0);
 
     interface_gobj->flags = GOBJ_FLAG_HIDDEN;
@@ -516,7 +516,7 @@ SObj* scExplainMakeSObjOffset(intptr_t offset)
     );
     gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
 
-    sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetDataFromFile(Sprite*, sSCExplainGraphicsFileHead, offset));
+    sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, sSCExplainGraphicsFileHead, offset));
 
     sobj->sprite.attr |= SP_HIDDEN;
 
@@ -569,7 +569,7 @@ void func_ovl63_8018DDBC(void)
         (
             stick_gobj,
             NULL,
-            lbRelocGetDataFromFile(AObjEvent32***, sSCExplainGraphicsFileHead, dSCExplainStickMatAnimJoints[sw]), 
+            lbRelocGetFileData(AObjEvent32***, sSCExplainGraphicsFileHead, dSCExplainStickMatAnimJoints[sw]), 
             0.0F
         );
         gcPlayAnimAll(stick_gobj);
@@ -781,7 +781,7 @@ void scExplainFuncStart(void)
         ftParamSetKey
         (
             fighter_gobj,
-            lbRelocGetDataFromFile
+            lbRelocGetFileData
             (
                 FTKeyCommand*,
                 sSCExplainMainFileHead,

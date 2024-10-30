@@ -121,7 +121,7 @@ void sc1PStageCardMakeSky(void)
     
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardSkySprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardSkySprite));
     
     sobj->pos.x = 10.0F;
     sobj->pos.y = 59.0F;
@@ -135,12 +135,12 @@ void sc1PStageCardMakeBanners(void)
     
     gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardBannerTopSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardBannerTopSprite));
     
     sobj->pos.x = 10.0F;
     sobj->pos.y = 10.0F;
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardBannerBottomSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardBannerBottomSprite));
     sobj->pos.x = 10.0F;
     sobj->pos.y = 182.0F;
 }
@@ -201,7 +201,7 @@ void sc1PStageCardMakeVSDecal(void)
 
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardDecalVSSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardDecalVSSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -255,7 +255,7 @@ void sc1PStageCardMakeLabels(s32 stage)
     
     if (sc1PStageCardCheckNotBonusStage(stage) == FALSE)
     {
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextBonusSprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextBonusSprite));
 
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -269,7 +269,7 @@ void sc1PStageCardMakeLabels(s32 stage)
     }
     if (stage == nSC1PGameStageBoss)
     {
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextFinalSprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextFinalSprite));
         
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -281,7 +281,7 @@ void sc1PStageCardMakeLabels(s32 stage)
         sobj->pos.x = 15.0F;
         sobj->pos.y = 17.0F;
     }
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextStageSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextStageSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -295,7 +295,7 @@ void sc1PStageCardMakeLabels(s32 stage)
     
     if (stage != nSC1PGameStageBoss)
     {
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], number_offsets[stage]));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], number_offsets[stage]));
         
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -368,7 +368,7 @@ void sc1PStageCardMakeFigures(s32 stage)
     {
         if (i >= stage)
         {
-            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], figure_offsets[i]));
+            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], figure_offsets[i]));
 
             sobj->sprite.attr &= ~SP_FASTCOPY;
             sobj->sprite.attr |= SP_TRANSPARENT;
@@ -391,21 +391,21 @@ void sc1PStageCardMakeBonusTasks(s32 stage)
     switch (stage)
     {
     case nSC1PGameStageBonus1:
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardBonus1TaskSprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardBonus1TaskSprite));
 
         sobj->pos.x = 160 - (sobj->sprite.width / 2);
         sobj->pos.y = 197.0F;
         break;
         
     case nSC1PGameStageBonus2:
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardBonus2TaskSprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardBonus2TaskSprite));
         
         sobj->pos.x = 160 - (sobj->sprite.width / 2);
         sobj->pos.y = 197.0F;
         break;
         
     case nSC1PGameStageBonus3:
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardBonus3TaskSprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardBonus3TaskSprite));
         
         sobj->pos.x = 160 - (sobj->sprite.width / 2);
         sobj->pos.y = 197.0F;
@@ -468,7 +468,7 @@ void sc1PStageCardMakeVSName(s32 stage)
     sSC1PStageCardVSNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextVSSprite));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextVSSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -479,9 +479,9 @@ void sc1PStageCardMakeVSName(s32 stage)
     
     if ((stage == nSC1PGameStageLink) || (stage == nSC1PGameStagePikachu))
     {
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[1], opponent_offsets[stage]));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[1], opponent_offsets[stage]));
     }
-    else sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], opponent_offsets[stage]));
+    else sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], opponent_offsets[stage]));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -533,7 +533,7 @@ void sc1PStageCardMakeName(s32 stage)
     sSC1PStageCardNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
     gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
     
-    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[1], name_offsets[sSC1PStageCardPlayerFighterDemoDesc.fkind]));
+    sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[1], name_offsets[sSC1PStageCardPlayerFighterDemoDesc.fkind]));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
     sobj->sprite.attr |= SP_TRANSPARENT;
@@ -544,7 +544,7 @@ void sc1PStageCardMakeName(s32 stage)
     
     if (sc1PStageCardGetAlliesNum(stage) != 0)
     {
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextDashSprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextDashSprite));
         
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -553,7 +553,7 @@ void sc1PStageCardMakeName(s32 stage)
         sobj->sprite.green = 0xFF;
         sobj->sprite.blue = 0xFF;
         
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[1], name_offsets[sSC1PStageCardAlly1FighterDemoDesc.fkind]));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[1], name_offsets[sSC1PStageCardAlly1FighterDemoDesc.fkind]));
         
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -564,7 +564,7 @@ void sc1PStageCardMakeName(s32 stage)
         
         if (sc1PStageCardGetAlliesNum(stage) == 2)
         {
-            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[1], name_offsets[sSC1PStageCardAlly2FighterDemoDesc.fkind]));
+            sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[1], name_offsets[sSC1PStageCardAlly2FighterDemoDesc.fkind]));
             
             sobj->sprite.attr &= ~SP_FASTCOPY;
             sobj->sprite.attr |= SP_TRANSPARENT;
@@ -806,7 +806,7 @@ void sc1PStageCardMakeAllyText(s32 stage)
     
     if (stage == nSC1PGameStageMario)
     {
-        SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextAlly1Sprite));
+        SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextAlly1Sprite));
         
         sobj->pos.x = 80.0F;
         sobj->pos.y = 80.0F;
@@ -815,14 +815,14 @@ void sc1PStageCardMakeAllyText(s32 stage)
     }
     else
     {
-        SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextAlly2Sprite));
+        SObj *sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextAlly2Sprite));
         
         sobj->pos.x = 80.0F;
         sobj->pos.y = 70.0F;
         
         sc1PStageCardInitAllyTextParams(sobj);
         
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextAlly1Sprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextAlly1Sprite));
         
         sobj->pos.x = 90.0F;
         sobj->pos.y = 100.0F;
@@ -1029,7 +1029,7 @@ void sc1PStageCardMakeBonusPicture(s32 stage)
     switch (stage)
     {
     case nSC1PGameStageBonus1:
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[2], &lSC1PStageCardPictureBonus1Sprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[2], &lSC1PStageCardPictureBonus1Sprite));
         
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1039,7 +1039,7 @@ void sc1PStageCardMakeBonusPicture(s32 stage)
         break;
         
     case nSC1PGameStageBonus2:
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[3], &lSC1PStageCardPictureBonus2Sprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[3], &lSC1PStageCardPictureBonus2Sprite));
         
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1049,7 +1049,7 @@ void sc1PStageCardMakeBonusPicture(s32 stage)
         break;
         
     case nSC1PGameStageBonus3:
-        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetDataFromFile(Sprite*, sSC1PStageCardFiles[2], &lSC1PStageCardPictureBonus3Sprite));
+        sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[2], &lSC1PStageCardPictureBonus3Sprite));
         
         sobj->sprite.attr &= ~SP_FASTCOPY;
         sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1162,7 +1162,7 @@ CObj* sc1PStageCardMakeStageCamera(s32 stage, u32 dl_link)
     cobj = CObjGetStruct(gobj);
     
     syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
-    gcAddCameraCamAnimJoint(cobj, lbRelocGetDataFromFile(AObjEvent32*, sSC1PStageCardFiles[0], cobjanim_joints[stage]), 0.0F);
+    gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sSC1PStageCardFiles[0], cobjanim_joints[stage]), 0.0F);
     gcPlayCamAnim(gobj);
     
     switch (stage)
@@ -1542,7 +1542,7 @@ void sc1PStageCardMakeFighterCamera(s32 fkind, s32 cobj_id)
     
     sc1PStageCardGetFighterCObjDesc(&cobj_desc, fkind, cobj_id);
     
-    gcAddCameraCamAnimJoint(cobj, lbRelocGetDataFromFile(AObjEvent32*, sSC1PStageCardFiles[0], cobjanim_joints[fkind]), 0.0F);
+    gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sSC1PStageCardFiles[0], cobjanim_joints[fkind]), 0.0F);
     gcPlayCamAnim(gobj);
     
     cobj->vec.eye.x = cobj_desc.eye.x;

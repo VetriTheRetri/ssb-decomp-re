@@ -257,7 +257,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
 
         return NULL;
     }
-    attr = lbRelocGetDataFromFile(ITAttributes*, *item_desc->p_file, item_desc->o_attributes);
+    attr = lbRelocGetFileData(ITAttributes*, *item_desc->p_file, item_desc->o_attributes);
 
     if (attr->is_display_colanim)
     {

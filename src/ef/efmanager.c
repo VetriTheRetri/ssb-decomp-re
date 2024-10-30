@@ -1767,7 +1767,7 @@ void efManagerInitEffects(void)
     {
         ep[i].alloc_next = NULL;
     }
-    efDisplayMakeBlendCLD();
+    efDisplayMakeCLD();
     efDisplayMakeXLU();
 
     sEFManagerTexturesFile1 = lbRelocGetFileExternHeap(&D_NF_00000053, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_00000053), 0x10));
@@ -4184,7 +4184,7 @@ void efManagerYoshiShieldFuncDisplay(GObj *effect_gobj)
 
     gcDrawDObjDLHead1(effect_gobj);
 
-    efDisplayFuncDisplayBlendCLD(effect_gobj);
+    efDisplayCLDFuncDisplay(effect_gobj);
 }
 
 // 0x80101374

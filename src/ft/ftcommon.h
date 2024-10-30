@@ -434,7 +434,7 @@ typedef struct ftCommonDamageStatusVars
 	s32 hitstun_tics;
 	s32 dust_effect_int;
 	f32 publicity_knockback;
-	u16 coll_mask_current;
+	u16 coll_mask_curr;
 	u16 coll_mask_prev;
 	u16 coll_mask_ignore;
 	Vec3f wall_collide_angle;
@@ -458,7 +458,7 @@ typedef struct ftCommonDokanStatusVars
 {
 	s32 material;	 // Vertex material of pipe player entered
 	s32 mapobj_kind; // Map Point type of pipe player will be sent to
-	Vec3f pos_current;
+	Vec3f pos_curr;
 	Vec3f pos_target;
 	s32 pos_adjust_wait;
 	s32 playertag_wait;

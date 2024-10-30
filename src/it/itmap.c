@@ -139,7 +139,7 @@ sb32 itMapProcAllCheckCollisionFlag(MPCollData *coll_data, GObj *item_gobj, u32 
             coll_data->is_coll_end = TRUE;
         }
     }
-    if (coll_data->coll_mask_current & coll_flags)
+    if (coll_data->coll_mask_curr & coll_flags)
     {
         return TRUE;
     }
@@ -160,7 +160,7 @@ sb32 itMapCheckCollideAllRebound(GObj *item_gobj, u32 check_flags, f32 mod_vel, 
     Vec3f *translate = &DObjGetStruct(item_gobj)->translate.vec.f;
     Vec3f mod_pos;
     sb32 return_bool = FALSE;
-    u16 coll_flags = (ip->coll_data.coll_mask_prev ^ ip->coll_data.coll_mask_current) & ip->coll_data.coll_mask_current & MPCOLL_FLAG_MAIN_MASK;
+    u16 coll_flags = (ip->coll_data.coll_mask_prev ^ ip->coll_data.coll_mask_curr) & ip->coll_data.coll_mask_curr & MPCOLL_FLAG_MAIN_MASK;
 
     if (coll_flags & check_flags & MPCOLL_FLAG_LWALL)
     {
@@ -334,7 +334,7 @@ sb32 itMapCheckMapReboundProcAll(GObj *item_gobj, f32 common_rebound, f32 ground
     {
         itMainVelSetRotateStepLR(item_gobj);
     }
-    if (coll_data->coll_mask_current & MPCOLL_FLAG_GROUND)
+    if (coll_data->coll_mask_curr & MPCOLL_FLAG_GROUND)
     {
         lbCommonReflect2D(&ip->physics.vel_air, &coll_data->ground_angle);
         lbCommonScale2D(&ip->physics.vel_air, ground_rebound);

@@ -1987,28 +1987,28 @@ void GMStaffrollSetupFiles(void)
 void gmStaffrollInitNameAndJobDisplayLists(void)
 {
 	Gfx *dl;
-	Vtx *vtx_base, *vtx_current;
+	Vtx *vtx_base, *vtx_curr;
 	s32 i, j;
 
 	for (i = 0; i < (ARRAY_COUNT(sGMStaffrollNameAndJobDisplayLists) + ARRAY_COUNT(dGMStaffrollNameAndJobSpriteInfo)) / 2; i++)
 	{
-		vtx_base = vtx_current = syTaskmanMalloc(sizeof(Vtx) * 4, 0x8);
+		vtx_base = vtx_curr = syTaskmanMalloc(sizeof(Vtx) * 4, 0x8);
 
-		for (j = 0; j < 4; j++, vtx_current++)
+		for (j = 0; j < 4; j++, vtx_curr++)
 		{
-			vtx_current->v.ob[0] = (j & 2) ? -dGMStaffrollNameAndJobSpriteInfo[i].width : dGMStaffrollNameAndJobSpriteInfo[i].width;
-			vtx_current->v.ob[1] = (j == 0) ? dGMStaffrollNameAndJobSpriteInfo[i].height : (j < 3) ? -dGMStaffrollNameAndJobSpriteInfo[i].height : dGMStaffrollNameAndJobSpriteInfo[i].height;
-			vtx_current->v.ob[2] = 0;
+			vtx_curr->v.ob[0] = (j & 2) ? -dGMStaffrollNameAndJobSpriteInfo[i].width : dGMStaffrollNameAndJobSpriteInfo[i].width;
+			vtx_curr->v.ob[1] = (j == 0) ? dGMStaffrollNameAndJobSpriteInfo[i].height : (j < 3) ? -dGMStaffrollNameAndJobSpriteInfo[i].height : dGMStaffrollNameAndJobSpriteInfo[i].height;
+			vtx_curr->v.ob[2] = 0;
 
-			vtx_current->v.flag = 0;
+			vtx_curr->v.flag = 0;
 
-			vtx_current->v.tc[0] = (j & 2) ? 0 : dGMStaffrollNameAndJobSpriteInfo[i].width * 32;
-			vtx_current->v.tc[1] = (j == 0) ? 0 : (j < 3) ? dGMStaffrollNameAndJobSpriteInfo[i].height * 32 : 0;
+			vtx_curr->v.tc[0] = (j & 2) ? 0 : dGMStaffrollNameAndJobSpriteInfo[i].width * 32;
+			vtx_curr->v.tc[1] = (j == 0) ? 0 : (j < 3) ? dGMStaffrollNameAndJobSpriteInfo[i].height * 32 : 0;
 
-			vtx_current->v.cn[0] = 0x00;
-			vtx_current->v.cn[1] = 0x00;
-			vtx_current->v.cn[2] = 0x7F;
-			vtx_current->v.cn[3] = 0x00;
+			vtx_curr->v.cn[0] = 0x00;
+			vtx_curr->v.cn[1] = 0x00;
+			vtx_curr->v.cn[2] = 0x7F;
+			vtx_curr->v.cn[3] = 0x00;
 		}
 		sGMStaffrollNameAndJobDisplayLists[i] = dl = syTaskmanMalloc(sizeof(Gfx) * 12, 0x8);
 
@@ -2169,7 +2169,7 @@ void gmStaffrollFuncDraw(void)
 	}
 	if (sGMStaffrollStatus == -1)
 	{
-		gSceneData.scene_current = nSCKindN64;
+		gSceneData.scene_curr = nSCKindN64;
 
 		auStopBGM();
 		syVideoSetFlags(SYVIDEO_FLAG_BLACKOUT);

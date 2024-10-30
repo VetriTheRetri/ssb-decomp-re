@@ -1829,8 +1829,8 @@ void sc1PStageCardFuncRun(GObj *gobj)
         {
             func_800266A0_272A0();
             
-            gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = nSCKindTitle;
+            gSceneData.scene_prev = gSceneData.scene_curr;
+            gSceneData.scene_curr = nSCKindTitle;
             
             func_ovl24_801348EC();
             syTaskmanSetLoadScene();
@@ -1847,8 +1847,8 @@ void sc1PStageCardFuncRun(GObj *gobj)
         {
             func_800266A0_272A0();
             
-            gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = nSCKindTitle;
+            gSceneData.scene_prev = gSceneData.scene_curr;
+            gSceneData.scene_curr = nSCKindTitle;
             
             func_ovl24_801348EC();
             syTaskmanSetLoadScene();

@@ -267,7 +267,7 @@ void grWallpaperMakeBonus3(void)
 // 0x80104BDC
 void grWallpaperMakeDecideKind(void)
 {
-    if (gSceneData.scene_current == nSCKind1PTraining)
+    if (gSceneData.scene_curr == nSCKind1PTraining)
     {
         scTrainingMode_SetBackgroundSprite();
         grWallpaperMakeStatic();

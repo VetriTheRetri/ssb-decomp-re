@@ -317,7 +317,7 @@ void ftPikachuSpecialAirLwHitProcPhysics(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTAttributes *attr = fp->attr;
 
-    ftPhysicsApplyGravityClampTVel(fp, FTPIKACHU_THUNDER_HIT_GRAVITY, attr->tvel_default);
+    ftPhysicsApplyGravityClampTVel(fp, FTPIKACHU_THUNDER_HIT_GRAVITY, attr->tvel_base);
 
     if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
     {

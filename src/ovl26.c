@@ -2883,8 +2883,8 @@ void mnRecallToken(s32 port_id)
 // 0x801380F4
 void mnGoBackToVSMenu()
 {
-	gSceneData.scene_previous = gSceneData.scene_current;
-	gSceneData.scene_current = 9;
+	gSceneData.scene_prev = gSceneData.scene_curr;
+	gSceneData.scene_curr = 9;
 
 	mnBattleSaveMatchInfo();
 	mnBattleDestroyCursorAndTokenProcesses();
@@ -3940,8 +3940,8 @@ void mnBattleMain(s32 arg0)
 
 	if (gMnBattleFramesElapsed == gMnBattleMaxFramesElapsed)
 	{
-		gSceneData.scene_previous = gSceneData.scene_current;
-		gSceneData.scene_current = 1;
+		gSceneData.scene_prev = gSceneData.scene_curr;
+		gSceneData.scene_curr = 1;
 
 		mnBattleSaveMatchInfo();
 		syTaskmanSetLoadScene();
@@ -3958,13 +3958,13 @@ void mnBattleMain(s32 arg0)
 
 		if (gMnBattleStartDelayTimer == 0)
 		{
-			gSceneData.scene_previous = gSceneData.scene_current;
+			gSceneData.scene_prev = gSceneData.scene_curr;
 
 			if (gTransferBattleState.is_stage_select != 0)
-				gSceneData.scene_current = 0x15;
+				gSceneData.scene_curr = 0x15;
 			else
 			{
-				gSceneData.scene_current = 0x16;
+				gSceneData.scene_curr = 0x16;
 				max_stage_id = (gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_INISHIE) ? nGRKindInishie + 1 : nGRKindStarterEnd + 1;
 
 				do
@@ -4271,7 +4271,7 @@ void mnBattleInitCSS()
 
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-	if (gSceneData.scene_previous != 0x15)
+	if (gSceneData.scene_prev != 0x15)
 		auPlaySong(0, nSYAudioBGMBattleSelect);
 
 	if (gTransferBattleState.is_team_battle == FALSE)

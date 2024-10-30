@@ -464,42 +464,42 @@ GMRumbleScript* gmRumbleGetEventPriorityRelink(GMRumblePlayer *rplayer, s32 rumb
     GMRumbleScript *p_script;
     GMRumbleLink *rlink_main;
     GMRumbleLink *rprev;
-    GMRumbleLink *rlink_current;
+    GMRumbleLink *rlink_curr;
 
     rlink_main = rplayer->rlink;
     rprev = rlink_main->rprev;
-    rlink_current = rlink_main;
+    rlink_curr = rlink_main;
 
-    while (rlink_current != NULL)
+    while (rlink_curr != NULL)
     {
-        p_script = rlink_current->p_script;
+        p_script = rlink_curr->p_script;
 
         if (p_script->p_event != NULL)
         {
             if (dGMRumblePriorities[rumble_id] >= dGMRumblePriorities[p_script->rumble_id])
             {
-                if (rlink_current == rlink_main)
+                if (rlink_curr == rlink_main)
                 {
                     rprev->rprev->rnext = rprev->rnext;
 
                     rplayer->rlink = rprev;
 
-                    rprev->rnext = rlink_current;
-                    rlink_current->rprev = rprev;
+                    rprev->rnext = rlink_curr;
+                    rlink_curr->rprev = rprev;
 
                     return rprev->p_script;
                 }
-                else if (rlink_current != rprev)
+                else if (rlink_curr != rprev)
                 {
                     rprev->rprev->rnext = rprev->rnext;
 
                     rplayer->rlink->rprev = rprev->rprev;
 
-                    rprev->rprev = rlink_current->rprev;
+                    rprev->rprev = rlink_curr->rprev;
                     rprev->rprev->rnext = rprev;
 
-                    rprev->rnext = rlink_current;
-                    rlink_current->rprev = rprev;
+                    rprev->rnext = rlink_curr;
+                    rlink_curr->rprev = rprev;
 
                     return rprev->p_script;
                 }
@@ -508,7 +508,7 @@ GMRumbleScript* gmRumbleGetEventPriorityRelink(GMRumblePlayer *rplayer, s32 rumb
         }
         else return p_script;
 
-        rlink_current = rlink_current->rnext;
+        rlink_curr = rlink_curr->rnext;
     }
     return NULL;
 }

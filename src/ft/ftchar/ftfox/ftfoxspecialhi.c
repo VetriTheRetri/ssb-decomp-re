@@ -28,7 +28,7 @@ void ftFoxSpecialAirHiStartProcPhysics(GObj *fighter_gobj)
     {
         fp->status_vars.fox.specialhi.gravity_delay--;
     }
-    else ftPhysicsApplyGravityClampTVel(fp, 0.5F, attr->tvel_default);
+    else ftPhysicsApplyGravityClampTVel(fp, 0.5F, attr->tvel_base);
     
     if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
     {
@@ -224,7 +224,7 @@ void ftFoxSpecialAirHiProcMap(GObj *fighter_gobj)
 
     if (mpCommonCheckFighterPass(fighter_gobj, ftFoxSpecialHiProcPass) != FALSE)
     {
-        coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask_current) & fp->coll_data.coll_mask_current & MPCOLL_FLAG_GROUND;
+        coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask_curr) & fp->coll_data.coll_mask_curr & MPCOLL_FLAG_GROUND;
 
         if (!(coll_mask & MPCOLL_FLAG_GROUND) || (lbCommonCheckAdjustSim2D(&fp->physics.vel_air, &fp->coll_data.ground_angle, FTFOX_FIREFOX_BOUND_ANGLE) == FALSE))
         {
@@ -238,7 +238,7 @@ void ftFoxSpecialAirHiProcMap(GObj *fighter_gobj)
         }
         goto coll_end;
     }
-    coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask_current) & fp->coll_data.coll_mask_current & (MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL);
+    coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask_curr) & fp->coll_data.coll_mask_curr & (MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL);
 
     if (coll_mask & MPCOLL_FLAG_CEIL)
     {

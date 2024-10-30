@@ -166,14 +166,14 @@ void mnN64ActorFuncRun(GObj *gobj)
 	}
 	if ((sMNN64SkipAllowWait == 0) && (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE))
 	{
-		gSceneData.scene_previous = gSceneData.scene_current;
-		gSceneData.scene_current = nSCKindTitle;
+		gSceneData.scene_prev = gSceneData.scene_curr;
+		gSceneData.scene_curr = nSCKindTitle;
 		syTaskmanSetLoadScene();
 	}
 	else if (sMNN64IsProceedOpening != FALSE)
 	{
-		gSceneData.scene_previous = gSceneData.scene_current;
-		gSceneData.scene_current = nSCKindOpeningRoom;
+		gSceneData.scene_prev = gSceneData.scene_curr;
+		gSceneData.scene_curr = nSCKindOpeningRoom;
 		syTaskmanSetLoadScene();
 	}
 }

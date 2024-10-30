@@ -345,7 +345,7 @@ void mnTitleInitVars(void)
 {
 	s32 color_id;
 
-	if (gSceneData.scene_previous == nSCKindOpeningNewcomers)
+	if (gSceneData.scene_prev == nSCKindOpeningNewcomers)
 	{
 		sMNTitleLayout = nMNTitleLayoutOpening;
 		sMNTitleTransitionTotalTimeTics = 0;
@@ -382,7 +382,7 @@ void mnTitleSetEndLogoPosition(void)
 
 	smash_logo_gobj = gGCCommonLinks[10];
 
-	if (gSceneData.scene_previous == nSCKindOpeningNewcomers)
+	if (gSceneData.scene_prev == nSCKindOpeningNewcomers)
 	{
 		gcEndProcessAll(smash_logo_gobj);
 	}
@@ -455,28 +455,28 @@ void mnTitleSetEndLayout(void)
 // 0x80131FD0
 void mnTitleProceedDemoNext(void)
 {
-	u8 scene_previous = gSceneData.scene_previous;
+	u8 scene_prev = gSceneData.scene_prev;
 
 	gcMakeDefaultCameraGObj(2, GOBJ_LINKORDER_DEFAULT, 0, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mnTitleSetDemoFighterKinds();
 	func_800266A0_272A0();
 
-	gSceneData.scene_previous = gSceneData.scene_current;
+	gSceneData.scene_prev = gSceneData.scene_curr;
 
-	switch (scene_previous)
+	switch (scene_prev)
 	{
 	case nSCKindExplain:
-		gSceneData.scene_current = nSCKindCharacters;
+		gSceneData.scene_curr = nSCKindCharacters;
 		auPlaySong(0, nSYAudioBGMExplain);
 		break;
 
 	case nSCKindModeSelect:
 	case nSCKindAutoDemo:
-		gSceneData.scene_current = nSCKindN64;
+		gSceneData.scene_curr = nSCKindN64;
 		break;
 
 	default:
-		gSceneData.scene_current = nSCKindExplain;
+		gSceneData.scene_curr = nSCKindExplain;
 		break;
 	}
 	gSceneData.is_extend_demo_wait = TRUE;
@@ -488,8 +488,8 @@ void mnTitleProceedModeSelect(void)
 {
 	gcMakeDefaultCameraGObj(2, GOBJ_LINKORDER_DEFAULT, 0, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
-	gSceneData.scene_previous = gSceneData.scene_current;
-	gSceneData.scene_current = nSCKindModeSelect;
+	gSceneData.scene_prev = gSceneData.scene_curr;
+	gSceneData.scene_curr = nSCKindModeSelect;
 
 	func_800266A0_272A0();
 	func_800269C0_275C0(nSYAudioFGMTitlePressStart);
@@ -607,7 +607,7 @@ void mnTitleShowGObjLinkID(s32 link_id)
 // 0x801323DC
 void mnTitleNextLayout(void)
 {
-	if ((sMNTitleLayout == nMNTitleLayoutOpening) && (gSceneData.scene_previous == nSCKindOpeningNewcomers))
+	if ((sMNTitleLayout == nMNTitleLayoutOpening) && (gSceneData.scene_prev == nSCKindOpeningNewcomers))
 	{
 		gSceneData.is_extend_demo_wait = FALSE;
 	}
@@ -737,7 +737,7 @@ void mnTitleUpdateHeaderAndFooterPosition(GObj *header_footer_gobj)
 {
 	SObj *header_footer_sobj = SObjGetStruct(header_footer_gobj);
 
-	if ((sMNTitleLayout != nMNTitleLayoutOpening) || (gSceneData.scene_previous != nSCKindOpeningNewcomers))
+	if ((sMNTitleLayout != nMNTitleLayoutOpening) || (gSceneData.scene_prev != nSCKindOpeningNewcomers))
 	{
 		mnTitleSetPosition(NULL, header_footer_sobj, nMNTitleTextureIndexFooter);
 		mnTitleSetPosition(NULL, header_footer_sobj->next, nMNTitleTextureIndexHeader);
@@ -943,7 +943,7 @@ void mnTitleMakeFire(void)
 		sMNTitleFireAlpha = sMNTitleFireAlphaUnused = 0;
 		fire_gobj->flags = GOBJ_FLAG_HIDDEN;
 
-		if (gSceneData.scene_previous != nSCKindOpeningNewcomers)
+		if (gSceneData.scene_prev != nSCKindOpeningNewcomers)
 		{
 			mnTitleShowFire(fire_gobj);
 		}
@@ -1043,7 +1043,7 @@ void mnTitleMakeLogo(void)
 	SObj *logo_sobj;
 	DObj *fire_logo_dobj;
 
-	if (gSceneData.scene_previous != nSCKindOpeningNewcomers)
+	if (gSceneData.scene_prev != nSCKindOpeningNewcomers)
 	{
 		mnTitleMakeLogoNoOpening();
 	}
@@ -1234,7 +1234,7 @@ void mnTitleMakeSlash(void)
 {
 	GObj *gobj;
 
-	if (gSceneData.scene_previous == nSCKindOpeningNewcomers)
+	if (gSceneData.scene_prev == nSCKindOpeningNewcomers)
 	{
 		gobj = gcMakeGObjSPAfter(12, NULL, 14, GOBJ_LINKORDER_DEFAULT);
 		gcAddGObjDisplay(gobj, gcDrawDObjTreeDLLinksForGObj, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
@@ -1405,7 +1405,7 @@ void mnTitleMakeLogoFireParticles(void)
 	GObj *logo_fire_effect_gobj;
 	LBGenerator *gtor;
 
-	if (gSceneData.scene_previous == nSCKindOpeningNewcomers)
+	if (gSceneData.scene_prev == nSCKindOpeningNewcomers)
 	{
 		logo_fire_effect_gobj = gcMakeGObjSPAfter(14, NULL, 5, GOBJ_LINKORDER_DEFAULT);
 
@@ -1453,7 +1453,7 @@ void mnTitleFuncStart(void)
 	mnTitleMakeSlash();
 	mnTitleMakeLogoFireParticles();
 
-	if (gSceneData.scene_previous == nSCKindOpeningNewcomers)
+	if (gSceneData.scene_prev == nSCKindOpeningNewcomers)
 	{
 		while (func_8000092C() < 4215)
 		{

@@ -177,7 +177,7 @@ typedef struct GMColEventPlaySFX
 
 typedef union GMColEventAll
 {
-	GMColEventDefault ca_default;
+	GMColEventDefault ca_base;
 	GMColEventGoto1 ca_goto1;
 	GMColEventGoto2 ca_goto2;
 	GMColEventLoopBegin ca_loopstart;

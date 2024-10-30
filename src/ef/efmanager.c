@@ -4491,15 +4491,15 @@ void efManagerPikachuThunderTrailProcUpdate(GObj *effect_gobj)
     }
     else ep->effect_vars.thunder_trail.lifetime--;
 
-    if (DObjGetStruct(effect_gobj)->mobj->texture_id_current != 3)
+    if (DObjGetStruct(effect_gobj)->mobj->texture_id_curr != 3)
     {
         if (ep->effect_vars.thunder_trail.lifetime == 0)
         {
-            DObjGetStruct(effect_gobj)->mobj->texture_id_current = 3;
+            DObjGetStruct(effect_gobj)->mobj->texture_id_curr = 3;
 
             DObjGetStruct(effect_gobj)->rotate.vec.f.z = F_CLC_DTOR32(180.0F);
         }
-        else DObjGetStruct(effect_gobj)->mobj->texture_id_current = mtTrigGetRandomIntRange(3);
+        else DObjGetStruct(effect_gobj)->mobj->texture_id_curr = mtTrigGetRandomIntRange(3);
     }
 }
 
@@ -4546,7 +4546,7 @@ GObj* efManagerPikachuThunderTrailMakeEffect(Vec3f *pos, s32 lifetime, s32 textu
 
     ep->effect_vars.thunder_trail.lifetime = lifetime;
 
-    dobj->mobj->texture_id_current = (texture_index == 3) ? 3 : 0;
+    dobj->mobj->texture_id_curr = (texture_index == 3) ? 3 : 0;
 
     return effect_gobj;
 }

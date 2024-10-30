@@ -274,7 +274,7 @@ void mnResultsSaveDataToSRAM()
 			fkind = gTransferBattleState.players[i].fkind;
 			vs_record = &gSaveData.vs_records[fkind];
 
-			vs_record->time_used += (gTransferBattleState.battle_time_current / 60);
+			vs_record->time_used += (gTransferBattleState.battle_time_curr / 60);
 
 			if (vs_record->time_used >= I_MIN_TO_TICS(1000))
 				vs_record->time_used = I_MIN_TO_TICS(1000) - 1;
@@ -2889,13 +2889,13 @@ void mnResultsMain(s32 arg0)
 
 		if (unlocked_features != 0)
 		{
-			gSceneData.scene_previous = gSceneData.scene_current;
-			gSceneData.scene_current = 0xC;
+			gSceneData.scene_prev = gSceneData.scene_curr;
+			gSceneData.scene_curr = 0xC;
 		}
 		else
 		{
-			gSceneData.scene_previous = gSceneData.scene_current;
-			gSceneData.scene_current = 0x10;
+			gSceneData.scene_prev = gSceneData.scene_curr;
+			gSceneData.scene_curr = 0x10;
 		}
 
 		func_800266A0_272A0();

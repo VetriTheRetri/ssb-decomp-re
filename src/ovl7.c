@@ -1591,8 +1591,8 @@ void scManager_TrainingMode_InitScene()
 		continue;
 	auSetBGMVolume(0, 0x7800);
 
-	gSceneData.scene_previous = gSceneData.scene_current;
-	gSceneData.scene_current = 0x12;
+	gSceneData.scene_prev = gSceneData.scene_curr;
+	gSceneData.scene_curr = 0x12;
 }
 
 // 0x801906D0

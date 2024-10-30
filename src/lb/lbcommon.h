@@ -60,7 +60,7 @@ extern void lbCommonSetupFighterPartsDObjs
 (
     DObj *root_dobj,
     FTCommonPartContainer *commonparts_container,
-    s32 detail_current,
+    s32 detail_curr,
     DObj **dobjs,
     u32 *setup_parts,
     u8 tk1,

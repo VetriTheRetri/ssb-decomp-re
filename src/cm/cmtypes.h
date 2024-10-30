@@ -12,7 +12,7 @@
 
 struct CMStruct
 {
-	s32 status_default;
+	s32 status_base;
 	s32 status_curr;
 	s32 status_prev;
 	void (*func_camera)(GObj*);

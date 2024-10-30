@@ -1312,7 +1312,7 @@ void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)
                     mobj->sub.primcolor.s.b,
                     mobj->sub.primcolor.s.a
                 );
-                mobj->texture_id_current = trunc;
+                mobj->texture_id_curr = trunc;
                 mobj->texture_id_next = trunc + 1;
             }
             else
@@ -1428,7 +1428,7 @@ void gcDrawMObjForDObj(DObj *dobj, Gfx **dl_head)
                 mobj->sub.fmt,
                 mobj->sub.siz,
                 1,
-                mobj->sub.sprites[mobj->texture_id_current]
+                mobj->sub.sprites[mobj->texture_id_curr]
             );
         }
         if (flags & 0x20)
@@ -1643,11 +1643,11 @@ void gcDrawDObjDLLinks(DObj *dobj, DObjDLLink *dl_link)
         {
             if (dl_link->dl != NULL)
             {
-                Gfx *dl_current = dl_start;
+                Gfx *dl_curr = dl_start;
 
-                while (dl_current != dl_end)
+                while (dl_curr != dl_end)
                 {
-                    *gSYTaskmanDLHeads[dl_link->list_id]++ = *dl_current++;
+                    *gSYTaskmanDLHeads[dl_link->list_id]++ = *dl_curr++;
                 }
                 if (dobj->mobj != NULL)
                 {

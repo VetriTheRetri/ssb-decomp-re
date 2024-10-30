@@ -1576,7 +1576,7 @@ void efGroundMakeEffectSpawnActor(void)
 {
     GObj *effect_gobj;
 
-    if ((gBattleState->gr_kind <= nGRKindBattleEnd) && (gSceneData.scene_current != nSCKind1PTraining) && (dEFGroundDatas[gBattleState->gr_kind].effect_params != NULL))
+    if ((gBattleState->gr_kind <= nGRKindBattleEnd) && (gSceneData.scene_curr != nSCKind1PTraining) && (dEFGroundDatas[gBattleState->gr_kind].effect_params != NULL))
     {
         effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, 7, GOBJ_LINKORDER_DEFAULT);
 

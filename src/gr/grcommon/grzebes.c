@@ -65,7 +65,7 @@ enum grZebesStatus
 void grZebesAcidSetLevelStep(void)
 {
     gGRCommonStruct.zebes.acid_level_step = 
-    ((dGRZebesAcidAttributes[gGRCommonStruct.zebes.acid_attr_id].acid_level + (mtTrigGetRandomFloat() * 250.0F)) - gGRCommonStruct.zebes.acid_level_current) / 240.0F;
+    ((dGRZebesAcidAttributes[gGRCommonStruct.zebes.acid_attr_id].acid_level + (mtTrigGetRandomFloat() * 250.0F)) - gGRCommonStruct.zebes.acid_level_curr) / 240.0F;
 }
 
 // 0x80108088
@@ -107,14 +107,14 @@ GObj* grZebesMakeAcid(void)
     gcPlayAnimAll(map_gobj);
 
     gGRCommonStruct.zebes.acid_status = nGRZebesAcidStatusWait;
-    gGRCommonStruct.zebes.acid_level_current = dGRZebesAcidAttributes[ARRAY_COUNT(dGRZebesAcidAttributes) - 1].acid_level;
+    gGRCommonStruct.zebes.acid_level_curr = dGRZebesAcidAttributes[ARRAY_COUNT(dGRZebesAcidAttributes) - 1].acid_level;
     gGRCommonStruct.zebes.acid_attr_id = 0;
 
     gGRCommonStruct.zebes.gr_atk_coll = (void*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRZebesAcidHit);
 
     grZebesAcidSetRandomWait();
 
-    DObjGetStruct(map_gobj)->translate.vec.f.y = gGRCommonStruct.zebes.acid_level_current;
+    DObjGetStruct(map_gobj)->translate.vec.f.y = gGRCommonStruct.zebes.acid_level_curr;
 
     return map_gobj;
 }
@@ -171,9 +171,9 @@ void grZebesAcidUpdateShake(void)
 // 0x8010833C
 void grZebesAcidUpdateRise(void)
 {
-    gGRCommonStruct.zebes.acid_level_current += gGRCommonStruct.zebes.acid_level_step;
+    gGRCommonStruct.zebes.acid_level_curr += gGRCommonStruct.zebes.acid_level_step;
 
-    DObjGetStruct(gGRCommonStruct.zebes.map_gobj)->translate.vec.f.y = gGRCommonStruct.zebes.acid_level_current;
+    DObjGetStruct(gGRCommonStruct.zebes.map_gobj)->translate.vec.f.y = gGRCommonStruct.zebes.acid_level_curr;
 
     gGRCommonStruct.zebes.acid_level_wait--;
 
@@ -249,7 +249,7 @@ sb32 grZebesAcidCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, GRAtta
 // 0x8010850C
 void grZebesAcidGetLevelInfo(f32 *current, f32 *step)
 {
-    *current = gGRCommonStruct.zebes.acid_level_current;
+    *current = gGRCommonStruct.zebes.acid_level_curr;
 
     *step = (gGRCommonStruct.zebes.acid_status == nGRZebesAcidStatusRise) ? gGRCommonStruct.zebes.acid_level_step : 0.0F;
 }

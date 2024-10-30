@@ -175,7 +175,7 @@ struct FTModelPartContainer
 
 struct FTModelPartStatus
 {
-    s8 modelpart_id_default, modelpart_id_current;
+    s8 modelpart_id_base, modelpart_id_curr;
 };
 
 struct FTTexturePart
@@ -191,7 +191,7 @@ struct FTTexturePartContainer
 
 struct FTTexturePartStatus
 {
-    s8 texture_id_default, texture_id_current;
+    s8 texture_id_base, texture_id_curr;
 };
 
 struct FTMotionFlags
@@ -762,7 +762,7 @@ struct FTSprites
 struct FTComputer
 {
     u8 objective;                           // CPU player's current objective
-    u8 objective_default;                   // CPU player's default objective
+    u8 objective_base;                   // CPU player's default objective
     u8 input_kind;                          // Stick + Button combination CPU player is set to execute
     u8 behavior;                            // CPU player's general behavior
     u8 unk_ftcom_0x4;                       // Unused?
@@ -908,7 +908,7 @@ struct FTAttributes
     f32 aerial_speed_max_x;
     f32 aerial_friction;
     f32 gravity;
-    f32 tvel_default;
+    f32 tvel_base;
     f32 tvel_fast;
     s32 jumps_max; // Number of jumps
     f32 weight;
@@ -923,7 +923,7 @@ struct FTAttributes
     f32 cam_offset_y;
     f32 closeup_camera_zoom;
     f32 camera_zoom;
-    f32 camera_zoom_default;
+    f32 camera_zoom_base;
     MPObjectColl obj_coll;
     Vec2f cliffcatch_coll; // Ledge grab box
     u16 dead_sfx[2]; // KO voices
@@ -1005,8 +1005,8 @@ struct FTStruct
     s32 fkind;
     u8 team;
     u8 player;
-    u8 detail_current;          // Hi-Poly = 1, Low-Poly = 2
-    u8 detail_default;          // Hi-Poly = 1, Low-Poly = 2
+    u8 detail_curr;          // Hi-Poly = 1, Low-Poly = 2
+    u8 detail_base;          // Hi-Poly = 1, Low-Poly = 2
     u8 costume;
     u8 shade;                   // i.e. When multiple instances of the same character costume are in-game
     u8 handicap;

@@ -534,7 +534,7 @@ sb32 itRShellSpinProcMap(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    if ((itMapCheckLRWallProcGround(item_gobj, itRShellSpinAirSetStatus) != FALSE) && (ip->coll_data.coll_mask_current & (MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL)))
+    if ((itMapCheckLRWallProcGround(item_gobj, itRShellSpinAirSetStatus) != FALSE) && (ip->coll_data.coll_mask_curr & (MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL)))
     {
         ip->physics.vel_air.x = -ip->physics.vel_air.x;
 

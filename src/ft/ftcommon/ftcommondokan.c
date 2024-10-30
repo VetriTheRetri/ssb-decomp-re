@@ -89,7 +89,7 @@ void ftCommonDokanStartSetStatus(GObj *fighter_gobj, s32 material)
         nMPMapObjKindDokanR,
         &new_point_id
     );
-    mpCollisionGetMapObjPositionID(new_point_id, &fp->status_vars.common.dokan.pos_current);
+    mpCollisionGetMapObjPositionID(new_point_id, &fp->status_vars.common.dokan.pos_curr);
 
     func_800269C0_275C0(nSYAudioFGMMarioDokan);
     ftParamSetPlayerTagWait(fighter_gobj, 1);
@@ -180,8 +180,8 @@ void ftCommonDokanWaitProcMap(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    DObjGetStruct(fighter_gobj)->translate.vec.f.x = gcGetInterpValueCubic(0.033333335F, fp->status_vars.common.dokan.pos_adjust_wait, fp->status_vars.common.dokan.pos_current.x, fp->status_vars.common.dokan.pos_target.x, 0.0F, 0.0F);
-    DObjGetStruct(fighter_gobj)->translate.vec.f.y = gcGetInterpValueCubic(0.033333335F, fp->status_vars.common.dokan.pos_adjust_wait, fp->status_vars.common.dokan.pos_current.y, fp->status_vars.common.dokan.pos_target.y, 0.0F, 0.0F);
+    DObjGetStruct(fighter_gobj)->translate.vec.f.x = gcGetInterpValueCubic(0.033333335F, fp->status_vars.common.dokan.pos_adjust_wait, fp->status_vars.common.dokan.pos_curr.x, fp->status_vars.common.dokan.pos_target.x, 0.0F, 0.0F);
+    DObjGetStruct(fighter_gobj)->translate.vec.f.y = gcGetInterpValueCubic(0.033333335F, fp->status_vars.common.dokan.pos_adjust_wait, fp->status_vars.common.dokan.pos_curr.y, fp->status_vars.common.dokan.pos_target.y, 0.0F, 0.0F);
 }
 
 // 0x801424BC

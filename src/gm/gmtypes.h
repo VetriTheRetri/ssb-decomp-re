@@ -212,7 +212,7 @@ struct GMColEventSetLight
 
 union GMColEventAll
 {
-	GMColEventDefault ca_default;
+	GMColEventDefault ca_base;
 	GMColEventGoto1 ca_goto1;
 	GMColEventGoto2 ca_goto2;
 	GMColEventDefault ca_loopstart;

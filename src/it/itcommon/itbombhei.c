@@ -250,7 +250,7 @@ void itBombHeiCommonCheckMakeDustEffect(GObj *item_gobj, u8 override)
     ITAttributes *attr = ip->attr;
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    if ((ip->coll_data.coll_mask_current & MPCOLL_FLAG_GROUND) || (override != FALSE))
+    if ((ip->coll_data.coll_mask_curr & MPCOLL_FLAG_GROUND) || (override != FALSE))
     {
         Vec3f pos = dobj->translate.vec.f;
 
@@ -505,11 +505,11 @@ sb32 itBombHeiWalkProcMap(GObj *item_gobj)
 
     itMapCheckLRWallProcGround(item_gobj, itBombHeiDroppedSetStatus);
 
-    if (ip->coll_data.coll_mask_current & MPCOLL_FLAG_LWALL)
+    if (ip->coll_data.coll_mask_curr & MPCOLL_FLAG_LWALL)
     {
         itBombHeiCommonSetWalkLR(item_gobj, 0);
     }
-    if (ip->coll_data.coll_mask_current & MPCOLL_FLAG_RWALL)
+    if (ip->coll_data.coll_mask_curr & MPCOLL_FLAG_RWALL)
     {
         itBombHeiCommonSetWalkLR(item_gobj, 1);
     }

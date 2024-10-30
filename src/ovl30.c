@@ -1133,7 +1133,7 @@ void mnStageLoadSceneData()
 		gMNStageHeap1StageInfoArray[i] = NULL;
 	}
 
-	switch (gSceneData.scene_previous)
+	switch (gSceneData.scene_prev)
 	{
 		case 0x12:
 			gMNStageIsTrainingMode = TRUE;
@@ -1170,8 +1170,8 @@ void mnStageHandleButtonPresses(s32 arg0)
 	{
 		if (gMNStageFramesElapsed == gMNStageMaxFramesElapsed)
 		{
-			gSceneData.scene_previous = gSceneData.scene_current;
-			gSceneData.scene_current = nSCKindTitle;
+			gSceneData.scene_prev = gSceneData.scene_curr;
+			gSceneData.scene_curr = nSCKindTitle;
 
 			mnStageSaveSceneData2();
 			syTaskmanSetLoadScene();
@@ -1201,13 +1201,13 @@ void mnStageHandleButtonPresses(s32 arg0)
 
 			if (gMNStageIsTrainingMode == TRUE)
 			{
-				gSceneData.scene_previous = gSceneData.scene_current;
-				gSceneData.scene_current = nSCKind1PTraining;
+				gSceneData.scene_prev = gSceneData.scene_curr;
+				gSceneData.scene_curr = nSCKind1PTraining;
 			}
 			else
 			{
-				gSceneData.scene_previous = gSceneData.scene_current;
-				gSceneData.scene_current = nSCKindVSBattle;
+				gSceneData.scene_prev = gSceneData.scene_curr;
+				gSceneData.scene_curr = nSCKindVSBattle;
 			}
 
 			syTaskmanSetLoadScene();
@@ -1219,13 +1219,13 @@ void mnStageHandleButtonPresses(s32 arg0)
 
 			if (gMNStageIsTrainingMode == TRUE)
 			{
-				gSceneData.scene_previous = gSceneData.scene_current;
-				gSceneData.scene_current = nSCKind1PTrainingFighters;
+				gSceneData.scene_prev = gSceneData.scene_curr;
+				gSceneData.scene_curr = nSCKind1PTrainingFighters;
 			}
 			else
 			{
-				gSceneData.scene_previous = gSceneData.scene_current;
-				gSceneData.scene_current = nSCKindVSFighters;
+				gSceneData.scene_prev = gSceneData.scene_curr;
+				gSceneData.scene_curr = nSCKindVSFighters;
 			}
 
 			syTaskmanSetLoadScene();

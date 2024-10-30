@@ -282,8 +282,8 @@ void mnScreenAdjustFuncRun(GObj *gobj)
         {
             func_800269C0_275C0(nSYAudioFGMMenuSelect);
             
-            gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = nSCKindOption;
+            gSceneData.scene_prev = gSceneData.scene_curr;
+            gSceneData.scene_curr = nSCKindOption;
 
             mnScreenAdjustBackupOffsets();
             syTaskmanSetLoadScene();

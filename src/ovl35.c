@@ -364,8 +364,8 @@ void mvPortraitsMain(GObj* arg0)
 
 		if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON))
 		{
-			gSceneData.scene_previous = gSceneData.scene_current;
-			gSceneData.scene_current = nSCKindTitle;
+			gSceneData.scene_prev = gSceneData.scene_curr;
+			gSceneData.scene_curr = nSCKindTitle;
 			syTaskmanSetLoadScene();
 		}
 
@@ -377,8 +377,8 @@ void mvPortraitsMain(GObj* arg0)
 
 		if (gIntroPotraitsFramesElapsed == 150)
 		{
-			gSceneData.scene_previous = gSceneData.scene_current;
-			gSceneData.scene_current = 0x1E;
+			gSceneData.scene_prev = gSceneData.scene_curr;
+			gSceneData.scene_curr = 0x1E;
 			syTaskmanSetLoadScene();
 		}
 	}

@@ -497,8 +497,8 @@ void mvEndingFuncRun(GObj *gobj)
         }
         if (sMVEndingTotalTimeTics == 660)
         {
-            gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = nSCKindStaffroll;
+            gSceneData.scene_prev = gSceneData.scene_curr;
+            gSceneData.scene_curr = nSCKindStaffroll;
 
             syTaskmanSetLoadScene();
         }

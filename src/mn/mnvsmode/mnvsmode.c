@@ -949,7 +949,7 @@ void mnVSModeMakeBackgroundViewport()
 // 0x801336AC
 void mnVSModeFuncStartVars()
 {
-    if (gSceneData.scene_previous == nSCKindVSOptions)
+    if (gSceneData.scene_prev == nSCKindVSOptions)
     {
         sMNVSModeCursorIndex = nMNVSModeOptionOptions;
     }
@@ -1137,8 +1137,8 @@ void mnVSModeMain(GObj *gobj)
     {
         if (sMNVSModeFramesElapsed == sMNVSModeMaxFramesElapsed)
         {
-            gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = nSCKindTitle;
+            gSceneData.scene_prev = gSceneData.scene_curr;
+            gSceneData.scene_curr = nSCKindTitle;
 
             mnVSModeSaveSettings();
             syTaskmanSetLoadScene();
@@ -1179,8 +1179,8 @@ void mnVSModeMain(GObj *gobj)
 
                     sMNVSModeExitInterrupt = TRUE;
 
-                    gSceneData.scene_previous = gSceneData.scene_current;
-                    gSceneData.scene_current = nSCKindVSFighters;
+                    gSceneData.scene_prev = gSceneData.scene_curr;
+                    gSceneData.scene_curr = nSCKindVSFighters;
 
                     return;
                 case nMNVSModeOptionOptions:
@@ -1190,8 +1190,8 @@ void mnVSModeMain(GObj *gobj)
 
                     sMNVSModeExitInterrupt = TRUE;
 
-                    gSceneData.scene_previous = gSceneData.scene_current;
-                    gSceneData.scene_current = nSCKindVSOptions;
+                    gSceneData.scene_prev = gSceneData.scene_curr;
+                    gSceneData.scene_curr = nSCKindVSOptions;
 
                     return;
             }
@@ -1201,8 +1201,8 @@ void mnVSModeMain(GObj *gobj)
         {
             mnVSModeSaveSettings();
 
-            gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = nSCKindModeSelect;
+            gSceneData.scene_prev = gSceneData.scene_curr;
+            gSceneData.scene_curr = nSCKindModeSelect;
 
             syTaskmanSetLoadScene();
         }
@@ -1515,7 +1515,7 @@ void mnVSModeFuncStart(void)
     mnVSModeMakeVSOptionsButton();
     mnVSModeMakeUnusedGObj();
 
-    if (gSceneData.scene_previous == nSCKindVSFighters)
+    if (gSceneData.scene_prev == nSCKindVSFighters)
     {
         auPlaySong(0, nSYAudioBGMModeSelect);
     }

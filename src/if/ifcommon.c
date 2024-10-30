@@ -1827,7 +1827,7 @@ void ifCommonPlayerTagFuncDisplay(GObj *interface_gobj)
         {
             pos = fp->joints[nFTPartsJointTopN]->translate.vec.f;
 
-            pos.y += fp->attr->camera_zoom_default;
+            pos.y += fp->attr->camera_zoom_base;
 
             func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &pos, &x, &y);
 
@@ -1919,7 +1919,7 @@ GObj* ifCommonItemArrowMakeInterface(ITStruct *ip)
         {
             interface_gobj->user_data.p = ip; // Give it up for... the GObj with the most flexible user_data assignments ever?
 
-            if ((gSceneData.scene_current == nSCKind1PTraining) && (gBattleState->game_status == nSCBattleGameStatusPause))
+            if ((gSceneData.scene_curr == nSCKind1PTraining) && (gBattleState->game_status == nSCBattleGameStatusPause))
             {
                 interface_gobj->flags = GOBJ_FLAG_HIDDEN;
             }
@@ -2478,7 +2478,7 @@ void ifCommonTimerFuncRun(GObj *interface_gobj)
         {
             D_ovl2_801317FC = temp;
 
-            gBattleState->battle_time_current += time_update;
+            gBattleState->battle_time_curr += time_update;
 
             if ((gBattleState->game_rules & SCBATTLE_GAMERULE_TIME) && (gBattleState->time_limit != SCBATTLE_TIMELIMIT_INFINITE))
             {
@@ -2525,7 +2525,7 @@ void ifCommonTimerFuncRun(GObj *interface_gobj)
 void ifCommonTimerMakeInterface(void (*proc)(void))
 {
     gBattleState->battle_time_remain = sIFCommonTimerLimit = I_MIN_TO_TICS(gBattleState->time_limit);
-    gBattleState->battle_time_current = 0;
+    gBattleState->battle_time_curr = 0;
 
     sIFCommonTimerIsStarted = FALSE;
 
@@ -2809,7 +2809,7 @@ void ifCommonBattlePauseMakeSObjsAll(GObj *interface_gobj)
         ifCommonBattlePauseDecalMakeSObjID(interface_gobj, i);
     }
     // If we're in Bonus Practice, display "L: RETRY" in the bottom left corner
-    if ((gSceneData.scene_current == nSCKind1PBonusGame) && (gSceneData.scene_previous != nSCKind1PGame)) 
+    if ((gSceneData.scene_curr == nSCKind1PBonusGame) && (gSceneData.scene_prev != nSCKind1PGame)) 
     {
         // WARNING: This needs to be updated in case the pause menu icon array is expanded
         for (i = 12; i < ARRAY_COUNT(dIFCommonBattlePauseDecalsSpriteData); i++)
@@ -2938,7 +2938,7 @@ void ifCommonBattleGoUpdateInterface(void)
 
                             sIFCommonBattlePauseKindInterface = nIFPauseKindDefault;
 
-                            sIFCommonBattlePausePlayerDetail = fp->detail_current;
+                            sIFCommonBattlePausePlayerDetail = fp->detail_curr;
 
                             ftParamSetModelPartDetailAll(fighter_gobj, nFTPartsDetailHigh);
                         }
@@ -3042,7 +3042,7 @@ void ifCommonBattlePauseUpdateInterface(void)
 
             return;
         }
-        if ((button_tap & L_TRIG) && (gSceneData.scene_current == nSCKind1PBonusGame) && (gSceneData.scene_previous != nSCKind1PGame))
+        if ((button_tap & L_TRIG) && (gSceneData.scene_curr == nSCKind1PBonusGame) && (gSceneData.scene_prev != nSCKind1PGame))
         {
             func_800266A0_272A0();
             gmRumbleInitPlayers();

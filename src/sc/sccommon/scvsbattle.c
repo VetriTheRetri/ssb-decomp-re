@@ -565,6 +565,6 @@ void scVSBattleStartScene(void)
 		func_800266A0_272A0();
 		gmRumbleInitPlayers();
 	}
-	gSceneData.scene_previous = gSceneData.scene_current;
-	gSceneData.scene_current = nSCKindVSResults;
+	gSceneData.scene_prev = gSceneData.scene_curr;
+	gSceneData.scene_curr = nSCKindVSResults;
 }

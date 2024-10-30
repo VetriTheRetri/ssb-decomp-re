@@ -104,8 +104,8 @@ void dbFallsMain(GObj* arg0)
 	{
 		dbMenuDestroyMenu();
 
-		gSceneData.scene_previous = gSceneData.scene_current;
-		gSceneData.scene_current = 4;
+		gSceneData.scene_prev = gSceneData.scene_curr;
+		gSceneData.scene_curr = 4;
 
 		syTaskmanSetLoadScene();
 	}

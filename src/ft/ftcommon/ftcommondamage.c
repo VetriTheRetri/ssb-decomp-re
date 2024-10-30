@@ -272,7 +272,7 @@ void ftCommonDamageAirCommonProcMap(GObj *fighter_gobj)
     (
         (mpCommonCheckFighterDamageCollision(fighter_gobj) != FALSE)        &&
         (ftCommonWallDamageCheckGoto(fighter_gobj) == FALSE)                &&
-        (fp->status_vars.common.damage.coll_mask_current & MPCOLL_FLAG_GROUND) &&
+        (fp->status_vars.common.damage.coll_mask_curr & MPCOLL_FLAG_GROUND) &&
         (ftCommonPassiveStandCheckInterruptDamage(fighter_gobj) == FALSE)   &&
         (ftCommonPassiveCheckInterruptDamage(fighter_gobj) == FALSE)
     )
@@ -336,7 +336,7 @@ s32 ftCommonDamageGetDamageLevel(f32 hitstun)
 void ftCommonDamageSetPublicity(FTStruct *this_fp, f32 knockback, f32 angle)
 {
     GObj *attacker_gobj = ftParamGetPlayerNumGObj(this_fp->damage_player_number);
-    sb32 is_force_current_knockback;
+    sb32 is_force_curr_knockback;
 
     this_fp->status_vars.common.damage.publicity_knockback = knockback;
     this_fp->publicity_knockback = 0.0F;
@@ -348,11 +348,11 @@ void ftCommonDamageSetPublicity(FTStruct *this_fp, f32 knockback, f32 angle)
     }
     if ((attacker_gobj != NULL) && (ftGetStruct(attacker_gobj)->publicity_knockback >= FTCOMMON_DAMAGE_KNOCKBACK_VERYHIGH))
     {
-        is_force_current_knockback = TRUE;
+        is_force_curr_knockback = TRUE;
     }
-    else is_force_current_knockback = FALSE;
+    else is_force_curr_knockback = FALSE;
 
-    ftPublicityCommonCheck(this_fp->fighter_gobj, this_fp->status_vars.common.damage.publicity_knockback, is_force_current_knockback);
+    ftPublicityCommonCheck(this_fp->fighter_gobj, this_fp->status_vars.common.damage.publicity_knockback, is_force_curr_knockback);
 }
 
 // 0x80140BCC
@@ -647,7 +647,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
     {
         ftParamSetPlayerTagWait(this_gobj, FTCOMMON_DAMAGE_FIGHTER_PLAYERTAG_HIDE_FRAMES);
     }
-    this_fp->status_vars.common.damage.coll_mask_current = 0;
+    this_fp->status_vars.common.damage.coll_mask_curr = 0;
 
     attacker_gobj = ftParamGetPlayerNumGObj(damage_player_number);
 

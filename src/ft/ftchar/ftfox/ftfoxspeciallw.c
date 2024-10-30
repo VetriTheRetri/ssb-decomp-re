@@ -68,7 +68,7 @@ void ftFoxSpecialAirLwCommonProcPhysics(GObj *fighter_gobj)
     {
         fp->status_vars.fox.speciallw.gravity_delay--;
     }
-    else ftPhysicsApplyGravityClampTVel(fp, FTFOX_REFLECTOR_GRAVITY, attr->tvel_default);
+    else ftPhysicsApplyGravityClampTVel(fp, FTFOX_REFLECTOR_GRAVITY, attr->tvel_base);
     
     if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
     {

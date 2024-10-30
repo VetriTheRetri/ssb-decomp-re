@@ -756,7 +756,7 @@ void jtgt_ovl2_8010CAE0(GObj *camera_gobj)
 {
     if (cmManagerCheckPausePlayerOutBounds(&DObjGetStruct(gCMManagerCameraStruct.pl_pause_gobj)->translate.vec.f) != FALSE)
     {
-        dCMManagerProcList[gCMManagerCameraStruct.status_default](camera_gobj);
+        dCMManagerProcList[gCMManagerCameraStruct.status_base](camera_gobj);
     }
     else func_ovl2_8010C960(camera_gobj);
 }
@@ -897,7 +897,7 @@ void cmManagerSetCameraStatusID(s32 status_id)
 // 0x8010CF20
 void cmManagerSetCameraStatusDefault(void)
 {
-    cmManagerSetCameraStatusID(gCMManagerCameraStruct.status_default);
+    cmManagerSetCameraStatusID(gCMManagerCameraStruct.status_base);
 }
 
 // 0x8010CF44
@@ -1178,7 +1178,7 @@ GObj* cmManagerMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
         gCMManagerCameraStruct.status_curr = 0;
         // No break? Doesn't match otherwise :brainshock:
     }
-    gCMManagerCameraStruct.status_default = gCMManagerCameraStruct.status_prev = gCMManagerCameraStruct.status_curr;
+    gCMManagerCameraStruct.status_base = gCMManagerCameraStruct.status_prev = gCMManagerCameraStruct.status_curr;
     gCMManagerCameraStruct.func_camera = dCMManagerProcList[gCMManagerCameraStruct.status_curr];
     gCMManagerCameraStruct.fovy = 38.0F;
 

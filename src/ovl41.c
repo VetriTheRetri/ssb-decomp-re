@@ -385,8 +385,8 @@ void mvOpeningYoshiMainProc(GObj* arg0)
 
 	if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON))
 	{
-		gSceneData.scene_previous = gSceneData.scene_current;
-		gSceneData.scene_current = 1U;
+		gSceneData.scene_prev = gSceneData.scene_curr;
+		gSceneData.scene_curr = 1U;
 		syTaskmanSetLoadScene();
 	}
 
@@ -400,8 +400,8 @@ void mvOpeningYoshiMainProc(GObj* arg0)
 
 	if (gMVOpeningYoshiFramesElapsed == 60)
 	{
-		gSceneData.scene_previous = gSceneData.scene_current;
-		gSceneData.scene_current = 0x25;
+		gSceneData.scene_prev = gSceneData.scene_curr;
+		gSceneData.scene_curr = 0x25;
 		syTaskmanSetLoadScene();
 	}
 }

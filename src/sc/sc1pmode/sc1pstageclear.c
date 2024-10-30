@@ -400,7 +400,7 @@ s32 sc1PStageClearGetPowerOf(s32 base, s32 exp)
 }
 
 // 0x80131BF8
-void sc1PStageClearSetDigitSpriteColors(SObj *sobj, s32 digit_kind, syColorRGBPair *colors_default)
+void sc1PStageClearSetDigitSpriteColors(SObj *sobj, s32 digit_kind, syColorRGBPair *colors_base)
 {
 	// 0x80135100
 	syColorRGBPair colors_all[/* */] =
@@ -428,7 +428,7 @@ void sc1PStageClearSetDigitSpriteColors(SObj *sobj, s32 digit_kind, syColorRGBPa
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
 
-	if (colors_default == NULL)
+	if (colors_base == NULL)
 	{
 		sobj->envcolor.r = colors_id->prim.r;
 		sobj->envcolor.g = colors_id->prim.g;
@@ -439,29 +439,29 @@ void sc1PStageClearSetDigitSpriteColors(SObj *sobj, s32 digit_kind, syColorRGBPa
 	}
 	else
 	{
-		sobj->envcolor.r = colors_default->prim.r;
-		sobj->envcolor.g = colors_default->prim.g;
-		sobj->envcolor.b = colors_default->prim.b;
-		sobj->sprite.red = colors_default->env.r;
-		sobj->sprite.green = colors_default->env.g;
-		sobj->sprite.blue = colors_default->env.b;
+		sobj->envcolor.r = colors_base->prim.r;
+		sobj->envcolor.g = colors_base->prim.g;
+		sobj->envcolor.b = colors_base->prim.b;
+		sobj->sprite.red = colors_base->env.r;
+		sobj->sprite.green = colors_base->env.g;
+		sobj->sprite.blue = colors_base->env.b;
 	}
 }
 
 // 0x80131CC4
 s32 sc1PStageClearGetScoreDigitCount(s32 points, s32 digit_count_max)
 {
-	s32 digit_count_current = digit_count_max;
+	s32 digit_count_curr = digit_count_max;
 
-	while (digit_count_current > 0)
+	while (digit_count_curr > 0)
 	{
-		s32 digit = (sc1PStageClearGetPowerOf(10, digit_count_current - 1) != 0) ? points / sc1PStageClearGetPowerOf(10, digit_count_current - 1) : 0;
+		s32 digit = (sc1PStageClearGetPowerOf(10, digit_count_curr - 1) != 0) ? points / sc1PStageClearGetPowerOf(10, digit_count_curr - 1) : 0;
 
 		if (digit != 0)
 		{
-			return digit_count_current;
+			return digit_count_curr;
 		}
-		else digit_count_current--;
+		else digit_count_curr--;
 	}
 	return 0;
 }
@@ -1445,7 +1445,7 @@ void sc1PStageClearInitVars(void)
 	case nSC1PGameStageBonus2:
 	case nSC1PGameStageBonus3:
 		sSC1PStageClearKind = nSC1PStageClearKindResult;
-		sSC1PStageClearBonusObjectivesCleared = gSceneData.bonus_tasks_current;
+		sSC1PStageClearBonusObjectivesCleared = gSceneData.bonus_tasks_curr;
 		break;
 
 	case nSC1PGameStageBoss:
@@ -1882,8 +1882,8 @@ void sc1PStageClearFuncRun(GObj *gobj)
 		{
 			if (sSC1PStageClearIsAllowProceedNext != FALSE)
 			{
-				gSceneData.scene_previous = gSceneData.scene_current;
-				gSceneData.scene_current = nSCKindTitle;
+				gSceneData.scene_prev = gSceneData.scene_curr;
+				gSceneData.scene_curr = nSCKindTitle;
 
 				sc1PStageClearUpdateTotal1PGameScore();
 				
@@ -2006,7 +2006,7 @@ void sc1PStageClearFuncStart(void)
 
 	case nSC1PGameStageBonus1:
 	case nSC1PGameStageBonus2:
-		if (gSceneData.bonus_tasks_current == 10)
+		if (gSceneData.bonus_tasks_curr == 10)
 		{
 			auPlaySong(0, nSYAudioBGM1PBonusGameClear);
 		}

@@ -45,7 +45,7 @@ void ftPikachuSpecialAirHiStartProcPhysics(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTAttributes *attr = fp->attr;
 
-    ftPhysicsApplyGravityClampTVel(fp, 0.8F, attr->tvel_default);
+    ftPhysicsApplyGravityClampTVel(fp, 0.8F, attr->tvel_base);
 
     if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
     {
@@ -181,14 +181,14 @@ void ftPikachuSpecialHiProcMap(GObj *fighter_gobj)
 
     if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
     {
-        if (fp->coll_data.coll_mask_current & (MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL))
+        if (fp->coll_data.coll_mask_curr & (MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL))
         {
             mpCommonSetFighterAir(fp);
             ftPikachuSpecialAirHiEndSetStatus(fighter_gobj);
         }
         else ftPikachuSpecialHiSwitchStatusAir(fighter_gobj);
     }
-    else if (fp->coll_data.coll_mask_current & (MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL))
+    else if (fp->coll_data.coll_mask_curr & (MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL))
     {
         ftPikachuSpecialHiEndSetStatus(fighter_gobj);
     }
@@ -229,15 +229,15 @@ void ftPikachuSpecialAirHiProcMap(GObj *fighter_gobj)
     }
     else
     {
-        if ((fp->coll_data.coll_mask_current & MPCOLL_FLAG_CEIL) && (syVectorAngleDiff3D(&fp->coll_data.ceil_angle, &fp->physics.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE))
+        if ((fp->coll_data.coll_mask_curr & MPCOLL_FLAG_CEIL) && (syVectorAngleDiff3D(&fp->coll_data.ceil_angle, &fp->physics.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE))
         {
             ftPikachuSpecialAirHiEndSetStatus(fighter_gobj);
         }
-        if ((fp->coll_data.coll_mask_current & MPCOLL_FLAG_LWALL) && (syVectorAngleDiff3D(&fp->coll_data.lwall_angle, &fp->physics.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE))
+        if ((fp->coll_data.coll_mask_curr & MPCOLL_FLAG_LWALL) && (syVectorAngleDiff3D(&fp->coll_data.lwall_angle, &fp->physics.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE))
         {
             ftPikachuSpecialAirHiEndSetStatus(fighter_gobj);
         }
-        if ((fp->coll_data.coll_mask_current & MPCOLL_FLAG_RWALL) && (syVectorAngleDiff3D(&fp->coll_data.rwall_angle, &fp->physics.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE))
+        if ((fp->coll_data.coll_mask_curr & MPCOLL_FLAG_RWALL) && (syVectorAngleDiff3D(&fp->coll_data.rwall_angle, &fp->physics.vel_air) > FTPIKACHU_QUICKATTACK_HALT_ANGLE))
         {
             ftPikachuSpecialAirHiEndSetStatus(fighter_gobj);
         }

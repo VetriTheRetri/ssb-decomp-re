@@ -132,7 +132,7 @@ sb32 itHitokageCommonProcUpdate(GObj *item_gobj)
         (dobj->anim_frame <= ITHITOKAGE_FLAME_SPAWN_END)
     )
     {
-        dobj->mobj->texture_id_current = 1;
+        dobj->mobj->texture_id_curr = 1;
 
         if (ip->item_vars.hitokage.flame_spawn_wait <= 0)
         {
@@ -142,7 +142,7 @@ sb32 itHitokageCommonProcUpdate(GObj *item_gobj)
         }
         else ip->item_vars.hitokage.flame_spawn_wait--; 
     }
-    else dobj->mobj->texture_id_current = 0;
+    else dobj->mobj->texture_id_curr = 0;
 
     if (dobj->anim_wait == AOBJ_ANIM_NULL)
     {
@@ -226,7 +226,7 @@ GObj* itHitokageMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         }
         if (ip->item_vars.hitokage.flags == GRYAMABUKI_MONSTER_WEAPON_INSTANT)
         {
-            dobj->mobj->texture_id_current = 1;
+            dobj->mobj->texture_id_curr = 1;
         }
         dGRYamabukiMonsterAttackKind = ip->item_vars.hitokage.flags;
 

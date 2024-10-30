@@ -430,14 +430,14 @@ void mnMessageStartScene(void)
     {
         syTaskmanInit(&dMNMessageTaskmanSetup);
     }
-    if (gSceneData.scene_previous == nSCKindVSResults)
+    if (gSceneData.scene_prev == nSCKindVSResults)
     {
-        gSceneData.scene_previous = gSceneData.scene_current;
-        gSceneData.scene_current = nSCKindVSFighters;
+        gSceneData.scene_prev = gSceneData.scene_curr;
+        gSceneData.scene_curr = nSCKindVSFighters;
     }
     else
     {
-        gSceneData.scene_previous = gSceneData.scene_current;
-        gSceneData.scene_current = nSCKindN64;
+        gSceneData.scene_prev = gSceneData.scene_curr;
+        gSceneData.scene_curr = nSCKindN64;
     }
 }

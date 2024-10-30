@@ -1789,7 +1789,7 @@ void mnCharsInitVars()
 	gMNCharsCurrentActionTrack = 0;
 	gMNCharsUnlockedMask = gSaveData.fighter_mask;
 
-	if (gSceneData.scene_previous == nSCKindData)
+	if (gSceneData.scene_prev == nSCKindData)
 	{
 		gMNCharsCurrentIndex = mnCharsGetIndex(gSaveData.characters_fkind);
 		gMNCharsIsDemoMode = FALSE;
@@ -1895,8 +1895,8 @@ void mnCharsHandleInput()
 
 	if (scSubsysControllerGetPlayerTapButtons(B_BUTTON))
 	{
-		gSceneData.scene_previous = gSceneData.scene_current;
-		gSceneData.scene_current = nSCKindData;
+		gSceneData.scene_prev = gSceneData.scene_curr;
+		gSceneData.scene_curr = nSCKindData;
 
 		mnCharsSaveFtKindToSRAM();
 		syTaskmanSetLoadScene();
@@ -2001,8 +2001,8 @@ void mnCharsHandleInputDemoMode()
 {
 	if (scSubsysControllerGetPlayerTapButtons(START_BUTTON | A_BUTTON | B_BUTTON))
 	{
-		gSceneData.scene_previous = gSceneData.scene_current;
-		gSceneData.scene_current = nSCKindTitle;
+		gSceneData.scene_prev = gSceneData.scene_curr;
+		gSceneData.scene_curr = nSCKindTitle;
 		gSceneData.is_extend_demo_wait = TRUE;
 
 		syTaskmanSetLoadScene();
@@ -2016,8 +2016,8 @@ void mnCharsHandleInputDemoMode()
 
 	if (gMNCharsFramesElapsed == 600)
 	{
-		gSceneData.scene_previous = gSceneData.scene_current;
-		gSceneData.scene_current = nSCKindAutoDemo;
+		gSceneData.scene_prev = gSceneData.scene_curr;
+		gSceneData.scene_curr = nSCKindAutoDemo;
 
 		syTaskmanSetLoadScene();
 	}
@@ -2096,7 +2096,7 @@ void mnCharsInit()
 
 	scSubsysFighterSetLightParams(45.0f, 10.f, 0xFF, 0xFF, 0xFF, 0xFF);
 
-	if (gSceneData.scene_previous == nSCKindData)
+	if (gSceneData.scene_prev == nSCKindData)
 		auPlaySong(0, 0x2B);
 }
 

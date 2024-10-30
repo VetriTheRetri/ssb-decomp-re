@@ -646,7 +646,7 @@ void ftParamSetHitStatusAll(GObj *fighter_gobj, s32 hitstatus)
 s32 ftParamGetBestHitStatusPart(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    s32 hitstatus_default = fp->hitstatus;
+    s32 hitstatus_base = fp->hitstatus;
     s32 hitstatus_best = fp->dmg_colls[0].hitstatus;
     s32 i;
 
@@ -666,11 +666,11 @@ s32 ftParamGetBestHitStatusPart(GObj *fighter_gobj)
             }
         }
     }
-    if (hitstatus_default < hitstatus_best)
+    if (hitstatus_base < hitstatus_best)
     {
-        hitstatus_default = hitstatus_best;
+        hitstatus_base = hitstatus_best;
     }
-    return hitstatus_default;
+    return hitstatus_base;
 }
 
 // 0x800E8AAC - Get overall best collision state
@@ -766,9 +766,9 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 modelpart_id)
 
     if (joint != NULL)
     {
-        if (modelpart_status->modelpart_id_current != modelpart_id)
+        if (modelpart_status->modelpart_id_curr != modelpart_id)
         {
-            modelpart_status->modelpart_id_current = modelpart_id;
+            modelpart_status->modelpart_id_curr = modelpart_id;
 
             gcRemoveMObjAll(joint);
 
@@ -776,7 +776,7 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 modelpart_id)
             {
                 if (fp->attr->modelparts_container->modelparts_desc[joint_id - nFTPartsJointCommonStart] != NULL)
                 {
-                    modelpart = &fp->attr->modelparts_container->modelparts_desc[joint_id - nFTPartsJointCommonStart]->modelparts[modelpart_id][fp->detail_current - nFTPartsDetailStart];
+                    modelpart = &fp->attr->modelparts_container->modelparts_desc[joint_id - nFTPartsJointCommonStart]->modelparts[modelpart_id][fp->detail_curr - nFTPartsDetailStart];
 
                     joint->display_list = modelpart->display_list;
 
@@ -786,7 +786,7 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 modelpart_id)
                 }
                 else
                 {
-                    if ((fp->detail_current == nFTPartsDetailHigh) || (commonparts_container->commonparts[1].dobjdesc[joint_id - nFTPartsJointCommonStart].display_list == NULL))
+                    if ((fp->detail_curr == nFTPartsDetailHigh) || (commonparts_container->commonparts[1].dobjdesc[joint_id - nFTPartsJointCommonStart].display_list == NULL))
                     {
                         detail_id = 0;
                     }
@@ -823,7 +823,7 @@ void ftParamSetModelPartDefaultID(GObj *fighter_gobj, s32 joint_id, s32 modelpar
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->modelpart_status[joint_id - nFTPartsJointCommonStart].modelpart_id_default = modelpart_id;
+    fp->modelpart_status[joint_id - nFTPartsJointCommonStart].modelpart_id_base = modelpart_id;
 
     fp->is_modelpart_modify = TRUE;
 }
@@ -853,13 +853,13 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
         {
             modelpart_status = &fp->modelpart_status[i];
 
-            if (modelpart_status->modelpart_id_current != modelpart_status->modelpart_id_default)
+            if (modelpart_status->modelpart_id_curr != modelpart_status->modelpart_id_base)
             {
-                modelpart_status->modelpart_id_current = modelpart_status->modelpart_id_default;
+                modelpart_status->modelpart_id_curr = modelpart_status->modelpart_id_base;
 
                 gcRemoveMObjAll(joint);
 
-                if (modelpart_status->modelpart_id_current == -1)
+                if (modelpart_status->modelpart_id_curr == -1)
                 {
                     joint->display_list = NULL;
                 }
@@ -869,7 +869,7 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
 
                     if (attr->modelparts_container->modelparts_desc[i] != NULL)
                     {
-                        modelpart = &attr->modelparts_container->modelparts_desc[i]->modelparts[modelpart_status->modelpart_id_current][fp->detail_current - nFTPartsDetailStart];
+                        modelpart = &attr->modelparts_container->modelparts_desc[i]->modelparts[modelpart_status->modelpart_id_curr][fp->detail_curr - nFTPartsDetailStart];
 
                         joint->display_list = modelpart->display_list;
 
@@ -879,7 +879,7 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
                     }
                     else
                     {
-                        if ((fp->detail_current == nFTPartsDetailHigh) || (commonparts_container->commonparts[1].dobjdesc[i].display_list == NULL))
+                        if ((fp->detail_curr == nFTPartsDetailHigh) || (commonparts_container->commonparts[1].dobjdesc[i].display_list == NULL))
                         {
                             detail_id = 0;
                         }
@@ -922,13 +922,13 @@ void ftParamHideModelPartAll(GObj *fighter_gobj)
 
         if (joint != NULL)
         {
-            if (fp->modelpart_status[i - nFTPartsJointCommonStart].modelpart_id_current == -1) 
+            if (fp->modelpart_status[i - nFTPartsJointCommonStart].modelpart_id_curr == -1) 
             {
                 continue;
             }
             else
             {
-                fp->modelpart_status[i - nFTPartsJointCommonStart].modelpart_id_current = -1;
+                fp->modelpart_status[i - nFTPartsJointCommonStart].modelpart_id_curr = -1;
 
                 gcRemoveMObjAll(joint);
 
@@ -945,9 +945,9 @@ void ftParamSetModelPartDetailAll(GObj *fighter_gobj, u8 detail)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
 
-    if (detail != fp->detail_current)
+    if (detail != fp->detail_curr)
     {
-        fp->detail_current = detail;
+        fp->detail_curr = detail;
 
         for (i = nFTPartsJointCommonStart; i < ARRAY_COUNT(fp->joints); i++)
         {
@@ -955,7 +955,7 @@ void ftParamSetModelPartDetailAll(GObj *fighter_gobj, u8 detail)
 
             if (joint != NULL)
             {
-                s32 modelpart_id = fp->modelpart_status[i - nFTPartsJointCommonStart].modelpart_id_current;
+                s32 modelpart_id = fp->modelpart_status[i - nFTPartsJointCommonStart].modelpart_id_curr;
 
                 if (modelpart_id == -1) 
                 {
@@ -963,7 +963,7 @@ void ftParamSetModelPartDetailAll(GObj *fighter_gobj, u8 detail)
                 }
                 else
                 {
-                    fp->modelpart_status[i - nFTPartsJointCommonStart].modelpart_id_current = -1;
+                    fp->modelpart_status[i - nFTPartsJointCommonStart].modelpart_id_curr = -1;
 
                     ftParamSetModelPartID(fighter_gobj, i, modelpart_id);
                 }
@@ -1003,17 +1003,17 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
 
             modelpart_status = &fp->modelpart_status[i];
 
-            if (modelpart_status->modelpart_id_current != -1)
+            if (modelpart_status->modelpart_id_curr != -1)
             {
                 if (attr->modelparts_container->modelparts_desc[i] != NULL)
                 {
-                    modelpart = &attr->modelparts_container->modelparts_desc[i]->modelparts[modelpart_status->modelpart_id_current][fp->detail_current - nFTPartsDetailStart];
+                    modelpart = &attr->modelparts_container->modelparts_desc[i]->modelparts[modelpart_status->modelpart_id_curr][fp->detail_curr - nFTPartsDetailStart];
 
                     lbCommonAddMObjForFighterPartsDObj(joint, modelpart->mobjsubs, modelpart->costume_matanim_joints, modelpart->main_matanim_joints, costume);
                 }
                 else
                 {
-                    if ((fp->detail_current == nFTPartsDetailHigh) || (commonparts_container->commonparts[1].dobjdesc[i].display_list == NULL))
+                    if ((fp->detail_curr == nFTPartsDetailHigh) || (commonparts_container->commonparts[1].dobjdesc[i].display_list == NULL))
                     {
                         detail_id = 0;
                     }
@@ -1080,10 +1080,10 @@ void ftParamInitTexturePartAll(GObj *fighter_gobj)
 
     for (i = 0, texturepart_status = &fp->texturepart_status[i], texturepart = &fp->attr->textureparts_container->textureparts[i]; i < ARRAY_COUNT(fp->texturepart_status); i++, texturepart_status++, texturepart++)
     {
-        if (texturepart_status->texture_id_current != texturepart_status->texture_id_default)
+        if (texturepart_status->texture_id_curr != texturepart_status->texture_id_base)
         {
             joint = fp->joints[texturepart->joint_id];
-            detail = texturepart->detail[fp->detail_current - nFTPartsDetailStart];
+            detail = texturepart->detail[fp->detail_curr - nFTPartsDetailStart];
 
             if (joint != NULL)
             {
@@ -1102,7 +1102,7 @@ void ftParamInitTexturePartAll(GObj *fighter_gobj)
 
                         goto loop;
                     }
-                    else mobj->texture_id_current = texturepart_status->texture_id_current;
+                    else mobj->texture_id_curr = texturepart_status->texture_id_curr;
                 }
             }
         }
@@ -1115,7 +1115,7 @@ void ftParamSetTexturePartID(GObj *fighter_gobj, s32 texturepart_id, s32 texture
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTTexturePart *texturepart = &fp->attr->textureparts_container->textureparts[texturepart_id];
-    s32 detail = texturepart->detail[fp->detail_current - nFTPartsDetailStart];
+    s32 detail = texturepart->detail[fp->detail_curr - nFTPartsDetailStart];
     DObj *joint = fp->joints[texturepart->joint_id];
 
     if (joint != NULL)
@@ -1135,9 +1135,9 @@ void ftParamSetTexturePartID(GObj *fighter_gobj, s32 texturepart_id, s32 texture
 
                 goto loop;
             }
-            mobj->texture_id_current = texture_id;
+            mobj->texture_id_curr = texture_id;
 
-            fp->texturepart_status[texturepart_id].texture_id_current = texture_id;
+            fp->texturepart_status[texturepart_id].texture_id_curr = texture_id;
 
             fp->is_texturepart_modify = TRUE;
         }
@@ -1157,12 +1157,12 @@ void ftParamResetTexturePartAll(GObj *fighter_gobj)
 
     for (i = 0, texturepart_status = &fp->texturepart_status[i], texturepart = &fp->attr->textureparts_container->textureparts[i]; i < ARRAY_COUNT(fp->texturepart_status); i++, texturepart_status++, texturepart++)
     {
-        if (texturepart_status->texture_id_current != texturepart_status->texture_id_default)
+        if (texturepart_status->texture_id_curr != texturepart_status->texture_id_base)
         {
-            texturepart_status->texture_id_current = texturepart_status->texture_id_default;
+            texturepart_status->texture_id_curr = texturepart_status->texture_id_base;
 
             joint = fp->joints[texturepart->joint_id];
-            detail = texturepart->detail[fp->detail_current - nFTPartsDetailStart];
+            detail = texturepart->detail[fp->detail_curr - nFTPartsDetailStart];
 
             if (joint != NULL)
             {
@@ -1181,7 +1181,7 @@ void ftParamResetTexturePartAll(GObj *fighter_gobj)
 
                         goto loop;
                     }
-                    else mobj->texture_id_current = texturepart_status->texture_id_current;
+                    else mobj->texture_id_curr = texturepart_status->texture_id_curr;
                 }
             }
         }
@@ -2110,7 +2110,7 @@ void* ftParamMakeEffect(GObj *fighter_gobj, s32 effect_id, s32 joint_id, Vec3f *
 void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    u16 coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask_current) & fp->coll_data.coll_mask_current & MPCOLL_FLAG_MAIN_MASK;
+    u16 coll_mask = (fp->coll_data.coll_mask_prev ^ fp->coll_data.coll_mask_curr) & fp->coll_data.coll_mask_curr & MPCOLL_FLAG_MAIN_MASK;
     Vec3f pos;
 
     if (coll_mask)

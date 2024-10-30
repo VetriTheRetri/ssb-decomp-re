@@ -400,7 +400,7 @@ void mpProcessSetCollProjectGroundID(MPCollData *coll_data) // Check if object i
 sb32 mpProcessUpdateMapProcMain(MPCollData *coll_data, sb32(*proc_coll)(MPCollData*, GObj*, u32), GObj *gobj, u32 flags)
 {
     Vec3f *translate = coll_data->p_translate;
-    Vec3f *pcurr = &coll_data->pos_current;
+    Vec3f *pcurr = &coll_data->pos_curr;
     f32 project_y;
     f32 project_x;
     f32 add_x;
@@ -469,7 +469,7 @@ sb32 mpProcessCheckTestLWallCollision(MPCollData *coll_data)
     MPObjectColl *obj_coll = &coll_data->obj_coll;
     MPObjectColl *p_obj_coll = coll_data->p_obj_coll;
     Vec3f *translate = coll_data->p_translate;
-    Vec3f *pcurr = &coll_data->pos_current;
+    Vec3f *pcurr = &coll_data->pos_curr;
     Vec3f sp4C;
     Vec3f sp40;
     sb32 is_collide_lwall = FALSE;
@@ -568,7 +568,7 @@ sb32 mpProcessCheckTestLWallCollision(MPCollData *coll_data)
     }
     if (is_collide_lwall != FALSE)
     {
-        coll_data->coll_mask_current |= MPCOLL_FLAG_LWALL;
+        coll_data->coll_mask_curr |= MPCOLL_FLAG_LWALL;
     }
     return is_collide_lwall;
 }
@@ -693,7 +693,7 @@ sb32 mpProcessCheckTestRWallCollision(MPCollData *coll_data)
     MPObjectColl *obj_coll = &coll_data->obj_coll;
     MPObjectColl *p_obj_coll = coll_data->p_obj_coll;
     Vec3f *translate = coll_data->p_translate;
-    Vec3f *pcurr = &coll_data->pos_current;
+    Vec3f *pcurr = &coll_data->pos_curr;
     Vec3f sp4C;
     Vec3f sp40;
     sb32 is_collide_rwall = FALSE;
@@ -792,7 +792,7 @@ sb32 mpProcessCheckTestRWallCollision(MPCollData *coll_data)
     }
     if (is_collide_rwall != FALSE)
     {
-        coll_data->coll_mask_current |= MPCOLL_FLAG_RWALL;
+        coll_data->coll_mask_curr |= MPCOLL_FLAG_RWALL;
     }
     return is_collide_rwall;
 }
@@ -996,8 +996,8 @@ sb32 mpProcessCheckTestGroundCollision(MPCollData *coll_data, s32 line_id)
     u32 ground_flags;
     Vec3f ground_angle;
 
-    sp4C.x = coll_data->pos_current.x;
-    sp4C.y = coll_data->pos_current.y + p_obj_coll->bottom;
+    sp4C.x = coll_data->pos_curr.x;
+    sp4C.y = coll_data->pos_curr.y + p_obj_coll->bottom;
     sp40.x = translate->x;
     sp40.y = translate->y + obj_coll->bottom;
 
@@ -1017,7 +1017,7 @@ sb32 mpProcessCheckTestGroundCollision(MPCollData *coll_data, s32 line_id)
 
     if ((is_collide_ground != FALSE) && (ground_line_id != line_id))
     {
-        coll_data->coll_mask_current |= MPCOLL_FLAG_GROUND;
+        coll_data->coll_mask_curr |= MPCOLL_FLAG_GROUND;
         coll_data->ground_line_id = ground_line_id;
         coll_data->ground_flags = ground_flags;
         coll_data->ground_angle = ground_angle;
@@ -1032,7 +1032,7 @@ sb32 mpProcessCheckTestLCliffCollision(MPCollData *coll_data)
 {
     Vec3f *translate = coll_data->p_translate;
     Vec2f *cliffcatch_coll = &coll_data->cliffcatch_coll;
-    Vec3f *pcurr = &coll_data->pos_current;
+    Vec3f *pcurr = &coll_data->pos_curr;
     Vec3f sp48;
     Vec3f object_pos;
     u32 ground_flags;
@@ -1069,7 +1069,7 @@ sb32 mpProcessCheckTestLCliffCollision(MPCollData *coll_data)
 
         if ((coll_data->line_coll_dist.x - object_pos.x) < 800.0F)
         {
-            coll_data->coll_mask_current |= MPCOLL_FLAG_LCLIFF;
+            coll_data->coll_mask_curr |= MPCOLL_FLAG_LCLIFF;
             coll_data->coll_mask_stat |= MPCOLL_FLAG_LCLIFF;
 
             return TRUE;
@@ -1083,7 +1083,7 @@ sb32 mpProcessCheckTestRCliffCollision(MPCollData *coll_data)
 {
     Vec3f *translate = coll_data->p_translate;
     Vec2f *cliffcatch_coll = &coll_data->cliffcatch_coll;
-    Vec3f *pcurr = &coll_data->pos_current;
+    Vec3f *pcurr = &coll_data->pos_curr;
     Vec3f sp48;
     Vec3f object_pos;
     u32 ground_flags;
@@ -1119,7 +1119,7 @@ sb32 mpProcessCheckTestRCliffCollision(MPCollData *coll_data)
 
         if ((object_pos.x - coll_data->line_coll_dist.x) < 800.0F)
         {
-            coll_data->coll_mask_current |= MPCOLL_FLAG_RCLIFF;
+            coll_data->coll_mask_curr |= MPCOLL_FLAG_RCLIFF;
             coll_data->coll_mask_stat |= MPCOLL_FLAG_RCLIFF;
 
             return TRUE;
@@ -1134,7 +1134,7 @@ sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
     MPObjectColl *obj_coll = &coll_data->obj_coll;
     MPObjectColl *p_obj_coll = coll_data->p_obj_coll;
     Vec3f *translate = coll_data->p_translate;
-    Vec3f *pcurr = &coll_data->pos_current;
+    Vec3f *pcurr = &coll_data->pos_curr;
     Vec3f sp54;
     Vec3f sp48;
     sb32 is_collide_lwall;
@@ -1376,7 +1376,7 @@ sb32 mpProcessCheckTestLWallCollisionAdjNew(MPCollData *coll_data)
     }
     if (is_collide_lwall != FALSE)
     {
-        coll_data->coll_mask_current |= MPCOLL_FLAG_LWALL;
+        coll_data->coll_mask_curr |= MPCOLL_FLAG_LWALL;
     }
     return is_collide_lwall;
 }
@@ -1504,7 +1504,7 @@ sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
     MPObjectColl *obj_coll = &coll_data->obj_coll;
     MPObjectColl *p_obj_coll = coll_data->p_obj_coll;
     Vec3f *translate = coll_data->p_translate;
-    Vec3f *pcurr = &coll_data->pos_current;
+    Vec3f *pcurr = &coll_data->pos_curr;
     Vec3f sp54;
     Vec3f sp48;
     sb32 is_collide_rwall;
@@ -1746,7 +1746,7 @@ sb32 mpProcessCheckTestRWallCollisionAdjNew(MPCollData *coll_data)
     }
     if (is_collide_rwall != FALSE)
     {
-        coll_data->coll_mask_current |= MPCOLL_FLAG_RWALL;
+        coll_data->coll_mask_curr |= MPCOLL_FLAG_RWALL;
     }
     return is_collide_rwall;
 }
@@ -1883,8 +1883,8 @@ sb32 mpProcessCheckTestCeilCollisionAdjNew(MPCollData *coll_data)
 
     coll_data->coll_mask_stat &= ~MPCOLL_FLAG_CEIL;
 
-    sp4C.x = coll_data->pos_current.x;
-    sp4C.y = coll_data->pos_current.y + p_obj_coll->top;
+    sp4C.x = coll_data->pos_curr.x;
+    sp4C.y = coll_data->pos_curr.y + p_obj_coll->top;
 
     sp40.x = translate->x;
     sp40.y = translate->y + obj_coll->top;
@@ -1904,7 +1904,7 @@ sb32 mpProcessCheckTestCeilCollisionAdjNew(MPCollData *coll_data)
 
     if (ceil_collide != FALSE)
     {
-        coll_data->coll_mask_current |= MPCOLL_FLAG_CEIL;
+        coll_data->coll_mask_curr |= MPCOLL_FLAG_CEIL;
 
         return TRUE;
     }
@@ -1915,7 +1915,7 @@ sb32 mpProcessCheckTestCeilCollisionAdjNew(MPCollData *coll_data)
         if ((line_id != -1) && (mpCollisionGetLineTypeID(line_id) == nMPLineKindCeil) && (mpCollisionGetUDCommonDown(line_id, &sp40, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE) && (ceil_dist < 0.0F))
         {
             coll_data->ceil_line_id = line_id;
-            coll_data->coll_mask_current |= MPCOLL_FLAG_CEIL;
+            coll_data->coll_mask_curr |= MPCOLL_FLAG_CEIL;
 
             return TRUE;
         }
@@ -1927,7 +1927,7 @@ sb32 mpProcessCheckTestCeilCollisionAdjNew(MPCollData *coll_data)
         if ((line_id != -1) && (mpCollisionGetLineTypeID(line_id) == nMPLineKindCeil) && (mpCollisionGetUDCommonDown(line_id, &sp40, &ceil_dist, &coll_data->ceil_flags, &coll_data->ceil_angle) != FALSE) && (ceil_dist < 0.0F))
         {
             coll_data->ceil_line_id = line_id;
-            coll_data->coll_mask_current |= MPCOLL_FLAG_CEIL;
+            coll_data->coll_mask_curr |= MPCOLL_FLAG_CEIL;
 
             return TRUE;
         }
@@ -1997,7 +1997,7 @@ sb32 mpProcessCheckTestGroundCollisionAdjNew(MPCollData *coll_data, sb32(*proc_m
     MPObjectColl *p_obj_coll = coll_data->p_obj_coll;
     MPObjectColl *obj_coll = &coll_data->obj_coll;
     Vec3f *translate = coll_data->p_translate;
-    Vec3f *pcurr = &coll_data->pos_current;
+    Vec3f *pcurr = &coll_data->pos_curr;
     Vec3f sp4C;
     Vec3f sp40;
     s32 line_id;
@@ -2028,7 +2028,7 @@ sb32 mpProcessCheckTestGroundCollisionAdjNew(MPCollData *coll_data, sb32(*proc_m
 
     if ((var_v0 != 0) && (!(coll_data->ground_flags & MPCOLL_VERTEX_CLL_PASS) || (coll_data->ground_line_id != coll_data->ignore_line_id)) && ((proc_map == NULL) || (proc_map(gobj) != FALSE)))
     {
-        coll_data->coll_mask_current |= MPCOLL_FLAG_GROUND;
+        coll_data->coll_mask_curr |= MPCOLL_FLAG_GROUND;
 
         return TRUE;
     }
@@ -2046,7 +2046,7 @@ sb32 mpProcessCheckTestGroundCollisionAdjNew(MPCollData *coll_data, sb32(*proc_m
                 {
                     if ((proc_map == NULL) || (proc_map(gobj) != FALSE))
                     {
-                        coll_data->coll_mask_current |= MPCOLL_FLAG_GROUND;
+                        coll_data->coll_mask_curr |= MPCOLL_FLAG_GROUND;
 
                         return TRUE;
                     }
@@ -2068,7 +2068,7 @@ sb32 mpProcessCheckTestGroundCollisionAdjNew(MPCollData *coll_data, sb32(*proc_m
                 {
                     if ((proc_map == NULL) || (proc_map(gobj) != FALSE))
                     {
-                        coll_data->coll_mask_current |= MPCOLL_FLAG_GROUND;
+                        coll_data->coll_mask_curr |= MPCOLL_FLAG_GROUND;
 
                         return TRUE;
                     }

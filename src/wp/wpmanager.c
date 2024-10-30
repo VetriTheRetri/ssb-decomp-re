@@ -297,7 +297,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
     wp->coll_data.rwall_line_id = -1;
 
     wp->coll_data.coll_update_frame = gMPCollisionUpdateFrame;
-    wp->coll_data.coll_mask_current = 0;
+    wp->coll_data.coll_mask_curr = 0;
 
     wp->coll_data.vel_push.x = 0.0F;
     wp->coll_data.vel_push.y = 0.0F;
@@ -317,7 +317,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
     wp->proc_absorb    = wp_desc->proc_absorb;
     wp->proc_dead      = NULL;
 
-    wp->coll_data.pos_current = DObjGetStruct(weapon_gobj)->translate.vec.f = *spawn_pos;
+    wp->coll_data.pos_curr = DObjGetStruct(weapon_gobj)->translate.vec.f = *spawn_pos;
 
     if (flags & WEAPON_FLAG_COLLPROJECT)
     {

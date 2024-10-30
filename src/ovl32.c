@@ -1588,8 +1588,8 @@ void mnVsRecordsMain(GObj* arg0)
 	{
 		if (gMNVsRecordsStatsKind == vsRecordsKindBattleScore)
 		{
-			gSceneData.scene_previous = gSceneData.scene_current;
-			gSceneData.scene_current =  0x3AU;
+			gSceneData.scene_prev = gSceneData.scene_curr;
+			gSceneData.scene_curr =  0x3AU;
 
 			syTaskmanSetLoadScene();
 		}

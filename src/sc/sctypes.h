@@ -298,7 +298,7 @@ struct SCBattleState
 	u8 unk_0x12;
 	u8 unk_0x13;
 	u32 battle_time_remain;							// Frames remaining until timeout
-	u32 battle_time_current; 						// Current match frame, counts up from 0
+	u32 battle_time_curr; 						// Current match frame, counts up from 0
 	u8 item_appearance_rate;									// Item appearance rate setting 
 													// 0x3 on various stages, 0x4 on Polygon Team?
 	ub32 is_display_score : 1;						// Displays score when a fighter falls
@@ -309,8 +309,8 @@ struct SCBattleState
 
 struct SCCommonData
 {
-	u8 scene_current;
-	u8 scene_previous;
+	u8 scene_curr;
+	u8 scene_prev;
 	u8 unlock_messages[2];		// Queued unlock messages?
 	u8 pad04[0x09 - 0x04];
 	u8 challenger_fkind;		// Opponent being fought in "Challenger Approaching" battle
@@ -333,7 +333,7 @@ struct SCCommonData
 	u32 bonus_count;	   		// Number of bonuses player acquired throughout the game
 	u32 bonus_get_mask[3]; 		// Different bonuses the player has accumulated per match;
 								// also includes total Bonus Stage tasks completed in last member
-	u8 bonus_tasks_current;
+	u8 bonus_tasks_curr;
 	u8 bonus_fkind;
 	u8 bonus_costume;
 	u8 training_man_fkind;

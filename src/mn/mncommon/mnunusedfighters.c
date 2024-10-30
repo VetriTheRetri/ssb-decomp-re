@@ -153,8 +153,8 @@ void mnUnusedFightersFuncRun(GObj *gobj)
 {
     if (gSysController.button_tap & START_BUTTON)
     {
-        gSceneData.scene_previous = gSceneData.scene_current;
-        gSceneData.scene_current = nSCKindTitle;
+        gSceneData.scene_prev = gSceneData.scene_curr;
+        gSceneData.scene_curr = nSCKindTitle;
 
         syTaskmanSetLoadScene();
     }

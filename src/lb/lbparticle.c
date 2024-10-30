@@ -2762,10 +2762,10 @@ void lbParticleEjectGeneratorAll(void)
 }
 
 // 0x800D39C0
-void lbParticleSetGeneratorProcs(void (*proc_setup)(LBGenerator*), void (*proc_default)(LBGenerator*, Vec3f*))
+void lbParticleSetGeneratorProcs(void (*proc_setup)(LBGenerator*), void (*proc_base)(LBGenerator*, Vec3f*))
 {
 	sLBParticleGeneratorProcSetup = proc_setup;
-	sLBParticleGeneratorProcDefault = proc_default;
+	sLBParticleGeneratorProcDefault = proc_base;
 }
 
 // 0x800D39D4

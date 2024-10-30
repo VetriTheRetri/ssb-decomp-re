@@ -2411,8 +2411,8 @@ void mn1PRecallToken(s32 port_id)
 // 0x80136CB8
 void mn1PGoBackTo1PMenu()
 {
-	gSceneData.scene_previous = gSceneData.scene_current;
-	gSceneData.scene_current = nSCKind1PMode;
+	gSceneData.scene_prev = gSceneData.scene_curr;
+	gSceneData.scene_curr = nSCKind1PMode;
 
 	mn1PSaveMatchInfo();
 	auStopBGM();
@@ -2956,8 +2956,8 @@ void mn1PMain(s32 arg0)
 
 	if (gMN1PFramesElapsed == gMN1PMaxFramesElapsed)
 	{
-		gSceneData.scene_previous = gSceneData.scene_current;
-		gSceneData.scene_current = nSCKindTitle;
+		gSceneData.scene_prev = gSceneData.scene_curr;
+		gSceneData.scene_curr = nSCKindTitle;
 
 		mn1PSaveMatchInfo();
 		syTaskmanSetLoadScene();
@@ -2974,8 +2974,8 @@ void mn1PMain(s32 arg0)
 
 		if (gMN1PStartDelayTimer == 0)
 		{
-			gSceneData.scene_previous = gSceneData.scene_current;
-			gSceneData.scene_current = nSCKind1PGame;
+			gSceneData.scene_prev = gSceneData.scene_curr;
+			gSceneData.scene_curr = nSCKind1PGame;
 
 			mn1PSaveMatchInfo();
 			syTaskmanSetLoadScene();
@@ -3136,7 +3136,7 @@ void mn1PInitCSS()
 	mn1PCreateReadyToFightObjects();
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-	if (gSceneData.scene_previous != nSCKindVSMaps)
+	if (gSceneData.scene_prev != nSCKindVSMaps)
 		auPlaySong(0, 0xA);
 
 	func_800269C0_275C0(0x1DFU);

@@ -605,7 +605,7 @@ void ftDisplayMainCalcFogColor(FTStruct *fp)
     s32 green;
     s32 blue;
     s32 alpha;
-    s32 shade_default;
+    s32 shade_base;
 
     if (fp->shade == 0)
     {
@@ -619,9 +619,9 @@ void ftDisplayMainCalcFogColor(FTStruct *fp)
         syColorRGBA *attr_shade_color = &fp->attr->shade_color[fp->shade - 1];
         GMColKeys *ck = &fp->colanim.maincolor;
 
-        shade_default = (((0xFF - attr_shade_color->a) * (0xFF - ck->a)) / 0xFF);
+        shade_base = (((0xFF - attr_shade_color->a) * (0xFF - ck->a)) / 0xFF);
 
-        if (shade_default == 0xFF)
+        if (shade_base == 0xFF)
         {
             red = fp->colanim.maincolor.r;
             green = fp->colanim.maincolor.g;
@@ -630,25 +630,25 @@ void ftDisplayMainCalcFogColor(FTStruct *fp)
         }
         else
         {
-            shade_default = (0xFF - shade_default);
+            shade_base = (0xFF - shade_base);
 
             temp_color = (((ck->r - fp->shade_color.r) * ck->a) / 0xFF) + fp->shade_color.r;
 
-            red = (temp_color * 0xFF) / shade_default;
+            red = (temp_color * 0xFF) / shade_base;
 
             if (red != 0)
             {
                 alpha = ((temp_color * 0xFF) / red);
             }
-            else alpha = ((shade_default - temp_color) * 0xFF) / 0xFF;
+            else alpha = ((shade_base - temp_color) * 0xFF) / 0xFF;
 
             temp_color = (((ck->g - fp->shade_color.g) * ck->a) / 0xFF) + fp->shade_color.g;
 
-            green = (temp_color * 0xFF) / shade_default;
+            green = (temp_color * 0xFF) / shade_base;
 
             temp_color = (((ck->b - fp->shade_color.b) * ck->a) / 0xFF) + fp->shade_color.b;
 
-            blue = (temp_color * 0xFF) / shade_default;
+            blue = (temp_color * 0xFF) / shade_base;
         }
     }
 

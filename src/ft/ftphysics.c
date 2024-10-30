@@ -248,7 +248,7 @@ void ftPhysicsCheckSetFastFall(FTStruct *fp)
 // 0x800D8E50
 void ftPhysicsApplyGravityDefault(FTStruct *fp, FTAttributes *attr)
 {
-    ftPhysicsApplyGravityClampTVel(fp, attr->gravity, attr->tvel_default);
+    ftPhysicsApplyGravityClampTVel(fp, attr->gravity, attr->tvel_base);
 }
 
 // 0x800D8E78

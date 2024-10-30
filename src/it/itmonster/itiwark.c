@@ -369,7 +369,7 @@ sb32 itIwarkWeaponRockProcMap(GObj *weapon_gobj)
 
     wpMapTestAllCheckCollEnd(weapon_gobj);
 
-    if (coll_data->coll_mask_current & MPCOLL_FLAG_GROUND)
+    if (coll_data->coll_mask_curr & MPCOLL_FLAG_GROUND)
     {
         if (line_id != coll_data->ground_line_id)
         {
@@ -465,7 +465,7 @@ GObj* itIwarkWeaponRockMakeWeapon(GObj *parent_gobj, Vec3f *pos, u8 random)
 
     dobj->translate.vec.f = *pos;
 
-    dobj->child->mobj->texture_id_current = random;
+    dobj->child->mobj->texture_id_curr = random;
 
     wp->weapon_vars.rock.owner_gobj = parent_gobj;
 

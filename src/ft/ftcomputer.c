@@ -3902,13 +3902,13 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
     f32 this_pos_y;
     f32 this_vel_x;
     f32 this_vel_y;
-    f32 this_tvel_default;
+    f32 this_tvel_base;
     f32 this_gravity;
     f32 target_pos_x;
     f32 target_pos_y;
     f32 target_vel_x;
     f32 target_vel_y;
-    f32 target_tvel_default;
+    f32 target_tvel_base;
     f32 target_gravity;
     void *user_data; // Originally "reflect_fp" but need to rename it appropriately for the silly hack in the item kind check
     f32 hurtbox_detect_width;
@@ -3979,13 +3979,13 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
     target_vel_x = target_fp->physics.vel_air.x;
     target_vel_y = target_fp->physics.vel_air.y;
 
-    target_tvel_default = -target_fp->attr->tvel_default;
+    target_tvel_base = -target_fp->attr->tvel_base;
     target_gravity = target_fp->attr->gravity;
 
     this_vel_x = this_fp->physics.vel_air.x;
     this_vel_y = this_fp->physics.vel_air.y;
 
-    this_tvel_default = -this_fp->attr->tvel_default;
+    this_tvel_base = -this_fp->attr->tvel_base;
     this_gravity = this_fp->attr->gravity;
 
     comattack = dFTComputerAttackList[this_fp->fkind];
@@ -4013,7 +4013,7 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
             predict_pos_x = ((target_pos_x + (target_vel_x * comattack->hit_start_frame)) - (this_pos_x + (this_vel_x * comattack->hit_start_frame))) * this_fp->lr;
             hit_frame = comattack->hit_start_frame;
             is_attempt_cliffcatch = FALSE;
-            this_predict_frame = -(this_tvel_default - this_pos_y) / this_gravity;
+            this_predict_frame = -(this_tvel_base - this_pos_y) / this_gravity;
 
             if ((this_fp->status_id == nFTCommonStatusPass) || (this_predict_frame <= 0))
             {
@@ -4023,11 +4023,11 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
             {
                 predict_adjust_y = ((this_vel_y * hit_frame) - ((this_gravity * SQUARE(hit_frame)) * 0.5F)) + this_pos_y;
             }
-            else predict_adjust_y = (((hit_frame * this_vel_y) - ((this_gravity * SQUARE(this_predict_frame)) * 0.5F)) + (this_tvel_default * (hit_frame - this_predict_frame))) + this_pos_y;
+            else predict_adjust_y = (((hit_frame * this_vel_y) - ((this_gravity * SQUARE(this_predict_frame)) * 0.5F)) + (this_tvel_base * (hit_frame - this_predict_frame))) + this_pos_y;
 
             if ((target_fp->status_id != nFTCommonStatusPass) && (target_fp->ga != nMPKineticsGround))
             {
-                target_predict_frame = -(target_tvel_default - target_vel_y) / target_gravity;
+                target_predict_frame = -(target_tvel_base - target_vel_y) / target_gravity;
 
                 if (target_predict_frame <= 0)
                 {
@@ -4037,7 +4037,7 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
                 {
                     predict_pos_y = (((comattack->hit_start_frame * target_vel_y) + target_pos_y) - ((target_gravity * SQUARE(comattack->hit_start_frame)) * 0.5F)) - predict_adjust_y;
                 }
-                else predict_pos_y = ((((comattack->hit_start_frame * target_vel_y) + target_pos_y) - ((target_gravity * SQUARE(target_predict_frame)) * 0.5F)) + (target_tvel_default * (comattack->hit_start_frame - target_predict_frame))) - predict_adjust_y;
+                else predict_pos_y = ((((comattack->hit_start_frame * target_vel_y) + target_pos_y) - ((target_gravity * SQUARE(target_predict_frame)) * 0.5F)) + (target_tvel_base * (comattack->hit_start_frame - target_predict_frame))) - predict_adjust_y;
             }
             else predict_pos_y = ((comattack->hit_start_frame * target_vel_y) + target_pos_y) - predict_adjust_y;
 
@@ -4518,7 +4518,7 @@ sb32 ftComputerCheckSetTargetEdgeRight(FTStruct *fp, sb32 is_find_edge_target)
     f32 edge_offset;
     s32 fall_predict;
     Vec3f edge_pos;
-    f32 acid_level_current;
+    f32 acid_level_curr;
     f32 acid_level_step;
     s32 edge_predict_x;
     u16 *line_ids;
@@ -4551,9 +4551,9 @@ sb32 ftComputerCheckSetTargetEdgeRight(FTStruct *fp, sb32 is_find_edge_target)
 
             if (gBattleState->gr_kind == nGRKindZebes)
             {
-                grZebesAcidGetLevelInfo(&acid_level_current, &acid_level_step);
+                grZebesAcidGetLevelInfo(&acid_level_curr, &acid_level_step);
 
-                if ((edge_pos.y < (acid_level_current + 500.0F)) || (edge_pos.y < ((5.0F * acid_level_step) + acid_level_current + 500.0F))) 
+                if ((edge_pos.y < (acid_level_curr + 500.0F)) || (edge_pos.y < ((5.0F * acid_level_step) + acid_level_curr + 500.0F))) 
                 {
                     continue;
                 }
@@ -4567,7 +4567,7 @@ sb32 ftComputerCheckSetTargetEdgeRight(FTStruct *fp, sb32 is_find_edge_target)
             if (edge_dist_x > 0.0F)
             {
                 edge_predict_x = (edge_dist_x / fp->attr->aerial_speed_max_x);
-                fall_predict = -(-fp->attr->tvel_default - fp->physics.vel_air.y) / fp->attr->gravity;
+                fall_predict = -(-fp->attr->tvel_base - fp->physics.vel_air.y) / fp->attr->gravity;
 
                 if (fall_predict <= 0)
                 {
@@ -4583,7 +4583,7 @@ sb32 ftComputerCheckSetTargetEdgeRight(FTStruct *fp, sb32 is_find_edge_target)
                 else edge_predict_y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y +
                 (
                     ((fp->physics.vel_air.y * edge_predict_x) - (fp->attr->gravity * SQUARE(fall_predict) * 0.5F)) -
-                    (fp->attr->tvel_default * (edge_predict_x - fall_predict))
+                    (fp->attr->tvel_base * (edge_predict_x - fall_predict))
                 );
                 if ((is_find_edge_target == FALSE) && (edge_predict_y < (edge_pos.y - com->jump_predict)))
                 {
@@ -4612,7 +4612,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(FTStruct *fp, sb32 is_find_edge_target)
     f32 edge_offset;
     s32 fall_predict;
     Vec3f edge_pos;
-    f32 acid_level_current;
+    f32 acid_level_curr;
     f32 acid_level_step;
     s32 edge_predict_x;
     u16 *line_ids;
@@ -4645,9 +4645,9 @@ sb32 ftComputerCheckSetTargetEdgeLeft(FTStruct *fp, sb32 is_find_edge_target)
 
             if (gBattleState->gr_kind == nGRKindZebes)
             {
-                grZebesAcidGetLevelInfo(&acid_level_current, &acid_level_step);
+                grZebesAcidGetLevelInfo(&acid_level_curr, &acid_level_step);
 
-                if ((edge_pos.y < (acid_level_current + 500.0F)) || (edge_pos.y < ((5.0F * acid_level_step) + acid_level_current + 500.0F))) 
+                if ((edge_pos.y < (acid_level_curr + 500.0F)) || (edge_pos.y < ((5.0F * acid_level_step) + acid_level_curr + 500.0F))) 
                 {
                     continue;
                 }
@@ -4661,7 +4661,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(FTStruct *fp, sb32 is_find_edge_target)
             if (edge_dist_x < 0.0F)
             {
                 edge_predict_x = (edge_dist_x / -fp->attr->aerial_speed_max_x);
-                fall_predict = -(-fp->attr->tvel_default - fp->physics.vel_air.y) / fp->attr->gravity;
+                fall_predict = -(-fp->attr->tvel_base - fp->physics.vel_air.y) / fp->attr->gravity;
 
                 if (fall_predict <= 0)
                 {
@@ -4677,7 +4677,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(FTStruct *fp, sb32 is_find_edge_target)
                 else edge_predict_y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y +
                 (
                     ((fp->physics.vel_air.y * edge_predict_x) - (fp->attr->gravity * SQUARE(fall_predict) * 0.5F)) -
-                    (fp->attr->tvel_default * (edge_predict_x - fall_predict))
+                    (fp->attr->tvel_base * (edge_predict_x - fall_predict))
                 );
                 if ((is_find_edge_target == FALSE) && (edge_predict_y < (edge_pos.y - com->jump_predict)))
                 {
@@ -5917,7 +5917,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     FTComputer *com = &this_fp->computer;
     s32 action_wait;
     Vec3f tarucann_pos;
-    f32 acid_level_current;
+    f32 acid_level_curr;
     f32 acid_level_step;
     f32 fvar;
 
@@ -6164,12 +6164,12 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     }
     if (gBattleState->gr_kind == nGRKindZebes)
     {
-        grZebesAcidGetLevelInfo(&acid_level_current, &acid_level_step);
+        grZebesAcidGetLevelInfo(&acid_level_curr, &acid_level_step);
 
         if
         (
-            (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y < (acid_level_current + 500.0F)) ||
-            (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y < (acid_level_current + (5.0F * acid_level_step) + 500.0F))
+            (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y < (acid_level_curr + 500.0F)) ||
+            (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y < (acid_level_curr + (5.0F * acid_level_step) + 500.0F))
         )
         {
             com->objective = nFTComputerObjectiveRecover;
@@ -6344,7 +6344,7 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
             return TRUE;
         }
     }
-    else com->objective = com->objective_default;
+    else com->objective = com->objective_base;
     return TRUE;
 }
 
@@ -7613,52 +7613,52 @@ void ftComputerProcessBehavior(FTStruct *fp)
     {
     case nFTComputerBehaviorDefault:
         com->proc_com = ftComputerProcDefault;
-        com->objective_default = nFTComputerObjectiveAttack;
+        com->objective_base = nFTComputerObjectiveAttack;
         break;
 
     case nFTComputerBehaviorUnk1:
         com->proc_com = ftComputerProcDefault;
-        com->objective_default = nFTComputerObjectiveEvade;
+        com->objective_base = nFTComputerObjectiveEvade;
         break;
 
     case nFTComputerBehaviorUnk2:
         com->proc_com = ftComputerProcDefault;
-        com->objective_default = nFTComputerObjectiveUnknown1;
+        com->objective_base = nFTComputerObjectiveUnknown1;
         break;
 
     case nFTComputerBehaviorAlly:
         com->proc_com = ftComputerProcDefault;
-        com->objective_default = nFTComputerObjectiveAlly;
+        com->objective_base = nFTComputerObjectiveAlly;
         break;
 
     case nFTComputerBehaviorCaptain:
         com->proc_com = ftComputerProcDefault;
-        com->objective_default = nFTComputerObjectivePatrol;
+        com->objective_base = nFTComputerObjectivePatrol;
         break;
 
     case nFTComputerBehaviorUnk3:
         com->proc_com = ftComputerProcDefault;
-        com->objective_default = nFTComputerObjectiveAttack;
+        com->objective_base = nFTComputerObjectiveAttack;
         break;
 
     case nFTComputerBehaviorYoshiTeam:
         com->proc_com = ftComputerProcDefault;
-        com->objective_default = nFTComputerObjectiveAlly;
+        com->objective_base = nFTComputerObjectiveAlly;
         break;
 
     case nFTComputerBehaviorKirbyTeam:
         com->proc_com = ftComputerProcDefault;
-        com->objective_default = nFTComputerObjectivePatrol;
+        com->objective_base = nFTComputerObjectivePatrol;
         break;
 
     case nFTComputerBehaviorPolyTeam:
         com->proc_com = ftComputerProcDefault;
-        com->objective_default = nFTComputerObjectiveAttack;
+        com->objective_base = nFTComputerObjectiveAttack;
         break;
 
     case nFTComputerBehaviorBonus3:
         com->proc_com = ftComputerProcDefault;
-        com->objective_default = nFTComputerObjectiveRush;
+        com->objective_base = nFTComputerObjectiveRush;
         break;
 
     case nFTComputerBehaviorStand:

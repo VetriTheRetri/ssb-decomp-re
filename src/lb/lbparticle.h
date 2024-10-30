@@ -79,7 +79,7 @@ extern LBGenerator* lbParticleGetGenerator(void);
 extern LBGenerator* lbParticleMakeGenerator(s32 bank_id, s32 script_id);
 extern void lbParticleEjectGenerator(LBGenerator *this_gtor);
 extern void lbParticleEjectGeneratorAll(void);
-extern void lbParticleSetGeneratorProcs(void (*proc_setup)(LBGenerator*), void (*proc_default)(LBGenerator*, Vec3f*));
+extern void lbParticleSetGeneratorProcs(void (*proc_setup)(LBGenerator*), void (*proc_base)(LBGenerator*, Vec3f*));
 extern void lbParticleEjectStructID(u16 generator_id, s32 link_id);
 extern void lbParticleEjectStructSelf(LBParticle *ptcl);
 extern void lbParticleEjectStructGenerator(LBGenerator *gtor);

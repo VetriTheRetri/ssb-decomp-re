@@ -69,7 +69,7 @@ sb32 ftCommonWallDamageCheckGoto(GObj *fighter_gobj)
     pos.y = DObjGetStruct(fighter_gobj)->translate.vec.f.y;
     pos.z = 0.0F;
 
-    if (fp->status_vars.common.damage.coll_mask_current & MPCOLL_FLAG_LWALL)
+    if (fp->status_vars.common.damage.coll_mask_curr & MPCOLL_FLAG_LWALL)
     {
         pos.x += fp->coll_data.obj_coll.width;
         pos.y += fp->coll_data.obj_coll.center;
@@ -78,7 +78,7 @@ sb32 ftCommonWallDamageCheckGoto(GObj *fighter_gobj)
 
         return TRUE;
     }
-    else if (fp->status_vars.common.damage.coll_mask_current & MPCOLL_FLAG_RWALL)
+    else if (fp->status_vars.common.damage.coll_mask_curr & MPCOLL_FLAG_RWALL)
     {
         pos.x -= fp->coll_data.obj_coll.width;
         pos.y += fp->coll_data.obj_coll.center;
@@ -87,7 +87,7 @@ sb32 ftCommonWallDamageCheckGoto(GObj *fighter_gobj)
 
         return TRUE;
     }
-    else if (fp->status_vars.common.damage.coll_mask_current & MPCOLL_FLAG_CEIL)
+    else if (fp->status_vars.common.damage.coll_mask_curr & MPCOLL_FLAG_CEIL)
     {
         pos.y += fp->coll_data.obj_coll.top;
 

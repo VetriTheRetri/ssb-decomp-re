@@ -644,8 +644,8 @@ void mnVSItemSwitchFuncRun(GObj *gobj)
         }
         if (scSubsysControllerGetPlayerTapButtons(B_BUTTON) != FALSE)
         {
-            gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = nSCKindVSOptions;
+            gSceneData.scene_prev = gSceneData.scene_curr;
+            gSceneData.scene_curr = nSCKindVSOptions;
             
             mnVSItemSwitchSetItemToggles();
             syTaskmanSetLoadScene();

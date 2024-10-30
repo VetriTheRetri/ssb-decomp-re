@@ -218,17 +218,17 @@ void sc1PContinueScoreDigitInitSprite(SObj *sobj)
 // 0x80131C30
 s32 sc1PContinueGetScoreDigitCount(s32 points, s32 digit_count_max)
 {
-    s32 digit_count_current = digit_count_max;
+    s32 digit_count_curr = digit_count_max;
 
-    while (digit_count_current > 0)
+    while (digit_count_curr > 0)
     {
-        s32 digit = (sc1PContinueGetPowerOf(10, digit_count_current - 1) != 0) ? points / sc1PContinueGetPowerOf(10, digit_count_current - 1) : 0;
+        s32 digit = (sc1PContinueGetPowerOf(10, digit_count_curr - 1) != 0) ? points / sc1PContinueGetPowerOf(10, digit_count_curr - 1) : 0;
 
         if (digit != 0)
         {
-            return digit_count_current;
+            return digit_count_curr;
         }
-        else digit_count_current--;
+        else digit_count_curr--;
     }
     return 0;
 }
@@ -1028,8 +1028,8 @@ void sc1PContinueFuncRun(GObj *gobj)
         if (sSC1PContinueTotalTimeTics == sSC1PContinueOptionYesRetryTic)
         {
             // Why though?
-            gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = nSCKindTitle;
+            gSceneData.scene_prev = gSceneData.scene_curr;
+            gSceneData.scene_curr = nSCKindTitle;
 
             sSC1PContinueIsSelectContinue = TRUE;
 
@@ -1158,8 +1158,8 @@ void sc1PContinueFuncRun(GObj *gobj)
             (scSubsysControllerGetPlayerTapButtons(A_BUTTON | START_BUTTON) != FALSE)
         )
         {
-            gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = nSCKindTitle;
+            gSceneData.scene_prev = gSceneData.scene_curr;
+            gSceneData.scene_curr = nSCKindTitle;
 
         #if !defined(DAIRANTOU_OPT0)
             sc1PContinueUnused0x80133990();
@@ -1169,8 +1169,8 @@ void sc1PContinueFuncRun(GObj *gobj)
         }
         if (sSC1PContinueTotalTimeTics == sSC1PContinueOptionNoGameOverAutoWait)
         {
-            gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = nSCKindTitle;
+            gSceneData.scene_prev = gSceneData.scene_curr;
+            gSceneData.scene_curr = nSCKindTitle;
 
         #if !defined(DAIRANTOU_OPT0)
             sc1PContinueUnused0x80133990();

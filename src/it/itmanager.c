@@ -409,7 +409,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
     ip->coll_data.p_obj_coll        = &ip->coll_data.obj_coll;
     ip->coll_data.ignore_line_id    = -1;
     ip->coll_data.coll_update_frame = gMPCollisionUpdateFrame;
-    ip->coll_data.coll_mask_current = 0;
+    ip->coll_data.coll_mask_curr = 0;
     ip->coll_data.vel_push.x        = 0.0F;
     ip->coll_data.vel_push.y        = 0.0F;
     ip->coll_data.vel_push.z        = 0.0F;
@@ -428,7 +428,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
     ip->proc_damage    = item_desc->proc_damage;
     ip->proc_dead      = NULL;
 
-    ip->coll_data.pos_current = DObjGetStruct(item_gobj)->translate.vec.f = *pos;
+    ip->coll_data.pos_curr = DObjGetStruct(item_gobj)->translate.vec.f = *pos;
 
     if (flags & ITEM_FLAG_COLLPROJECT)
     {

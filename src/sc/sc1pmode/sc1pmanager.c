@@ -255,7 +255,7 @@ void sc1PManagerUpdateScene(void)
     s32 player;
     s32 spgame_stage;
 
-    sSC1PManagerScenePrev = gSceneData.scene_previous;
+    sSC1PManagerScenePrev = gSceneData.scene_prev;
 
     gSCManager1PGameBattleState.is_team_battle = TRUE;
     gSCManager1PGameBattleState.game_rules = (SCBATTLE_GAMERULE_1PGAME | SCBATTLE_GAMERULE_TIME);
@@ -353,8 +353,8 @@ void sc1PManagerUpdateScene(void)
             syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
             syDmaLoadOverlay(&dSC1PManager1PStageCardOverlay);
 
-            gSceneData.scene_previous = nSCKind1PGame;
-            gSceneData.scene_current = nSCKind1PStageCard;
+            gSceneData.scene_prev = nSCKind1PGame;
+            gSceneData.scene_curr = nSCKind1PStageCard;
 
             sc1PStageCardStartScene();
 
@@ -365,8 +365,8 @@ void sc1PManagerUpdateScene(void)
                 syDmaLoadOverlay(&dSC1PManagerObjectsOverlay);
                 syDmaLoadOverlay(&dSC1PManager1PBonusGameOverlay);
 
-                gSceneData.scene_previous = nSCKind1PGame;
-                gSceneData.scene_current = nSCKind1PBonusGame;
+                gSceneData.scene_prev = nSCKind1PGame;
+                gSceneData.scene_curr = nSCKind1PBonusGame;
 
                 sc1PBonusGameStartScene();
                 break;
@@ -388,8 +388,8 @@ void sc1PManagerUpdateScene(void)
             }
             if (gSceneData.is_reset != FALSE)
             {
-                gSceneData.scene_previous = nSCKind1PGame;
-                gSceneData.scene_current = nSCKind1PMode;
+                gSceneData.scene_prev = nSCKind1PGame;
+                gSceneData.scene_curr = nSCKind1PMode;
 
                 return;
             }
@@ -424,8 +424,8 @@ void sc1PManagerUpdateScene(void)
                 {
                     sc1PManagerTrySaveBackup(FALSE);
 
-                    gSceneData.scene_previous = nSCKind1PGame;
-                    gSceneData.scene_current = nSCKindN64;
+                    gSceneData.scene_prev = nSCKind1PGame;
+                    gSceneData.scene_curr = nSCKindN64;
 
                     return;
                 }
@@ -454,8 +454,8 @@ void sc1PManagerUpdateScene(void)
                 syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
                 syDmaLoadOverlay(&dSC1PManager1PStageClearOverlay);
 
-                gSceneData.scene_previous = nSCKind1PGame;
-                gSceneData.scene_current = nSCKind1PStageClear;
+                gSceneData.scene_prev = nSCKind1PGame;
+                gSceneData.scene_curr = nSCKind1PStageClear;
 
                 sc1PStageClearStartScene();
             }
@@ -466,22 +466,22 @@ void sc1PManagerUpdateScene(void)
         syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
         syDmaLoadOverlay(&dSC1PManagerEndingOverlay);
 
-        gSceneData.scene_previous = nSCKind1PGame;
-        gSceneData.scene_current = nSCKindEnding;
+        gSceneData.scene_prev = nSCKind1PGame;
+        gSceneData.scene_curr = nSCKindEnding;
 
         mvEndingStartScene();
 
         syDmaLoadOverlay(&dSC1PManagerStaffrollOverlay);
 
-        gSceneData.scene_previous = nSCKind1PGame;
-        gSceneData.scene_current = nSCKindStaffroll;
+        gSceneData.scene_prev = nSCKind1PGame;
+        gSceneData.scene_curr = nSCKindStaffroll;
 
         gmStaffrollStartScene();
 
         syDmaLoadOverlay(&dSC1PManagerCongraOverlay);
 
-        gSceneData.scene_previous = nSCKind1PGame;
-        gSceneData.scene_current = nSCKindCongra;
+        gSceneData.scene_prev = nSCKind1PGame;
+        gSceneData.scene_curr = nSCKindCongra;
 
         mnCongraStartScene();
 
@@ -497,8 +497,8 @@ skip_main_stages:
         syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
         syDmaLoadOverlay(&dSC1PManager1PChallengerOverlay);
 
-        gSceneData.scene_previous = nSCKind1PGame;
-        gSceneData.scene_current = nSCKind1PChallenger;
+        gSceneData.scene_prev = nSCKind1PGame;
+        gSceneData.scene_curr = nSCKind1PChallenger;
 
         sc1PChallengerStartScene();
 
@@ -511,8 +511,8 @@ skip_main_stages:
 
         if (gSceneData.is_reset != FALSE)
         {
-            gSceneData.scene_previous = nSCKind1PGame;
-            gSceneData.scene_current = nSCKind1PMode;
+            gSceneData.scene_prev = nSCKind1PGame;
+            gSceneData.scene_curr = nSCKind1PMode;
 
             return;
         }
@@ -524,8 +524,8 @@ skip_main_stages:
             syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
             syDmaLoadOverlay(&dSC1PManagerMessageOverlay);
 
-            gSceneData.scene_previous = nSCKind1PGame;
-            gSceneData.scene_current = nSCKindMessage;
+            gSceneData.scene_prev = nSCKind1PGame;
+            gSceneData.scene_curr = nSCKindMessage;
 
             mnMessageStartScene();
         }
@@ -535,8 +535,8 @@ skip_main_stages:
         }
         if (gSceneData.spgame_stage == nSC1PGameStageLuigi)
         {
-            gSceneData.scene_previous = nSCKind1PBonusGame;
-            gSceneData.scene_current = nSCKind1PBonus1Fighters;
+            gSceneData.scene_prev = nSCKind1PBonusGame;
+            gSceneData.scene_curr = nSCKind1PBonus1Fighters;
             return;
         }
     }
@@ -558,13 +558,13 @@ skip_main_stages:
                 syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
                 syDmaLoadOverlay(&dSC1PManagerMessageOverlay);
 
-                gSceneData.scene_previous = nSCKind1PGame;
-                gSceneData.scene_current = nSCKindMessage;
+                gSceneData.scene_prev = nSCKind1PGame;
+                gSceneData.scene_curr = nSCKindMessage;
 
                 mnMessageStartScene();
             }
         }
     }
-    gSceneData.scene_previous = nSCKind1PGame;
-    gSceneData.scene_current = nSCKindN64;
+    gSceneData.scene_prev = nSCKind1PGame;
+    gSceneData.scene_curr = nSCKindN64;
 }

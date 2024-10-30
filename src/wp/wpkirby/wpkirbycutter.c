@@ -90,7 +90,7 @@ sb32 wpKirbyCutterProcMap(GObj *weapon_gobj)
         }
     }
 
-    if (wp->coll_data.coll_mask_current & (MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL))
+    if (wp->coll_data.coll_mask_curr & (MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL))
     {
         efManagerDustExpandSmallMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, 1.0F);
 

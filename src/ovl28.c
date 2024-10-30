@@ -1801,8 +1801,8 @@ void mnTrainingRecallToken(s32 port_id)
 // 0x801357CC
 void mnTrainingGoBackTo1PMenu()
 {
-	gSceneData.scene_previous = gSceneData.scene_current;
-	gSceneData.scene_current = nSCKind1PMode;
+	gSceneData.scene_prev = gSceneData.scene_curr;
+	gSceneData.scene_curr = nSCKind1PMode;
 
 	mnTrainingSaveMatchInfo();
 	auStopBGM();
@@ -2520,8 +2520,8 @@ void mnTrainingMain(s32 arg0)
 
 	if (gMNTrainingFramesElapsed == gMNTrainingMaxFramesElapsed)
 	{
-		gSceneData.scene_previous = gSceneData.scene_current;
-		gSceneData.scene_current = nSCKindTitle;
+		gSceneData.scene_prev = gSceneData.scene_curr;
+		gSceneData.scene_curr = nSCKindTitle;
 
 		mnTrainingSaveMatchInfo();
 		syTaskmanSetLoadScene();
@@ -2538,8 +2538,8 @@ void mnTrainingMain(s32 arg0)
 
 		if (gMNTrainingStartDelayTimer == 0)
 		{
-			gSceneData.scene_previous = gSceneData.scene_current;
-			gSceneData.scene_current = nSCKindVSMaps;
+			gSceneData.scene_prev = gSceneData.scene_curr;
+			gSceneData.scene_curr = nSCKindVSMaps;
 
 			mnTrainingSaveMatchInfo();
 			syTaskmanSetLoadScene();
@@ -2778,7 +2778,7 @@ void mnTrainingInitCSS()
 	mnTrainingCreateReadyToFightObjects();
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-	if (gSceneData.scene_previous != nSCKindVSMaps)
+	if (gSceneData.scene_prev != nSCKindVSMaps)
 		auPlaySong(0, 0xA);
 
 	func_800266A0_272A0();

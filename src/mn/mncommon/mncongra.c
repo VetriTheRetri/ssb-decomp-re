@@ -383,8 +383,8 @@ void mnCongraFuncDraw(void)
 
 		if (sMNCongraSceneChangeWait == 0)
 		{
-			gSceneData.scene_previous = gSceneData.scene_current;
-			gSceneData.scene_current = nSCKindTitle;
+			gSceneData.scene_prev = gSceneData.scene_curr;
+			gSceneData.scene_curr = nSCKindTitle;
 
 			syTaskmanSetLoadScene();
 		}
@@ -407,7 +407,7 @@ void mnCongraStartScene(void)
 
 	while ((uintptr_t)congra_arena_hi < 0x80400000) { *congra_arena_hi++ = GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF); } // WARNING: Newline memes!
 
-	switch (gSceneData.scene_previous)
+	switch (gSceneData.scene_prev)
 	{
 	default:
 		sMNCongraFighterKind = nFTKindMario;

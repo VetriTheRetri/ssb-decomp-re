@@ -286,11 +286,11 @@ void start_scene_manager(u32 set)
 		*(csr++) = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01);
 
 	if (gNumControllers == 0)
-		gSceneData.scene_current = 0;
+		gSceneData.scene_curr = 0;
 
 	while (TRUE)
 	{
-		switch (gSceneData.scene_current) {
+		switch (gSceneData.scene_curr) {
 			case 0:
 				syDmaLoadOverlay(&D_800A3070[11]);
 				mnNoControllerStartScene();

@@ -1005,7 +1005,7 @@ void lbCommonSetupFighterPartsDObjs
 (
     DObj *root_dobj,
     FTCommonPartContainer *commonparts_container,
-    s32 detail_current,
+    s32 detail_curr,
     DObj **dobjs,
     u32 *setup_parts,
     u8 tk1,
@@ -1025,7 +1025,7 @@ void lbCommonSetupFighterPartsDObjs
     DObjDesc *dobjdesc;
     DObj *current_dobj;
 
-    dobjdesc = commonparts_container->commonparts[detail_current - 1].dobjdesc;
+    dobjdesc = commonparts_container->commonparts[detail_curr - 1].dobjdesc;
 
     flags0 = setup_parts[0], flags1 = setup_parts[1];
 
@@ -1043,7 +1043,7 @@ void lbCommonSetupFighterPartsDObjs
             
             if
             (
-                (detail_current == nFTPartsDetailHigh) ||
+                (detail_curr == nFTPartsDetailHigh) ||
                 (commonparts_container->commonparts[nFTPartsDetailLow - nFTPartsDetailStart].dobjdesc[i].display_list == NULL)
             )
             {
@@ -1464,11 +1464,11 @@ sb32 func_ovl0_800C99CC(Mtx *mtx, DObj *dobj, Gfx **dls)
     DObj *attach_dobj = dobj->user_data.p;
     
     // 0x800D5CA0
-    Vec3f translate_default = { 0.0F, 0.0F, 0.0F };
+    Vec3f translate_base = { 0.0F, 0.0F, 0.0F };
 
-    gmCollisionGetFighterPartsWorldPosition(attach_dobj, &translate_default);
+    gmCollisionGetFighterPartsWorldPosition(attach_dobj, &translate_base);
     
-    syMatrixTranslate(mtx, translate_default.x, translate_default.y, translate_default.z);
+    syMatrixTranslate(mtx, translate_base.x, translate_base.y, translate_base.z);
     
     return 0;
 }

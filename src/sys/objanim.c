@@ -1303,7 +1303,7 @@ void gcPlayMObjMatAnim(MObj *mobj)
                     switch (aobj->track) 
                     {
                     case nGCAnimTrackSetTextureIDCurrent: 
-                        mobj->texture_id_current = value; 
+                        mobj->texture_id_curr = value; 
                         break;
                         
                     case nGCAnimTrackTexture14: 
@@ -1948,7 +1948,7 @@ f32 func_8000EC64_F864
 {
     DObj *dobj;
     f32 temp;
-    f32 length_current;
+    f32 length_curr;
     f32 length_max_old;
 
     dobj = DObjGetStruct(gobj);

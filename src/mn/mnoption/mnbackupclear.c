@@ -556,8 +556,8 @@ void mnBackupClearUpdateOptionMainMenu(void)
     }
     if (scSubsysControllerGetPlayerTapButtons(B_BUTTON) != FALSE)
     {
-        gSceneData.scene_previous = gSceneData.scene_current;
-        gSceneData.scene_current = nSCKindOption;
+        gSceneData.scene_prev = gSceneData.scene_curr;
+        gSceneData.scene_curr = nSCKindOption;
 
         func_ovl53_801325CC();
         syTaskmanSetLoadScene();

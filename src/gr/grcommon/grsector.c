@@ -371,7 +371,7 @@ void grSectorArwingUpdateSleep(void)
             }
             gGRCommonStruct.sector.arwing_type_cycle--;
             gGRCommonStruct.sector.arwing_state_timer = mtTrigGetRandomIntRange(540) + 180;
-            gGRCommonStruct.sector.arwing_pilot_current = -1;
+            gGRCommonStruct.sector.arwing_pilot_curr = -1;
         }
         else
         {
@@ -380,7 +380,7 @@ void grSectorArwingUpdateSleep(void)
             gGRCommonStruct.sector.unk_sector_0x4C = ((mtTrigGetRandomUShort() % 2) != 0) ? random - 5 : -1;
 
             gGRCommonStruct.sector.arwing_type_cycle = 3;
-            gGRCommonStruct.sector.arwing_pilot_current = -2;
+            gGRCommonStruct.sector.arwing_pilot_curr = -2;
         }
         gGRCommonStruct.sector.arwing_flight_pattern = random;
         gGRCommonStruct.sector.arwing_status = 2;
@@ -469,11 +469,11 @@ void func_ovl2_80106D00(void)
 // 0x80106DD8
 void func_ovl2_80106DD8(void)
 {
-    if (gGRCommonStruct.sector.arwing_pilot_current != -2)
+    if (gGRCommonStruct.sector.arwing_pilot_curr != -2)
     {
-        if (gGRCommonStruct.sector.arwing_pilot_current >= 0)
+        if (gGRCommonStruct.sector.arwing_pilot_curr >= 0)
         {
-            switch (gGRCommonStruct.sector.arwing_pilot_current)
+            switch (gGRCommonStruct.sector.arwing_pilot_curr)
             {
             case 1:
                 func_ovl2_80106C88();
@@ -489,7 +489,7 @@ void func_ovl2_80106DD8(void)
             }
             if (gGRCommonStruct.sector.map_dobjs[1]->anim_wait == AOBJ_ANIM_NULL)
             {
-                gGRCommonStruct.sector.arwing_pilot_current = -1;
+                gGRCommonStruct.sector.arwing_pilot_curr = -1;
                 gGRCommonStruct.sector.arwing_state_timer = 120;
             }
             else gGRCommonStruct.sector.arwing_state_timer++;
@@ -507,7 +507,7 @@ void func_ovl2_80106DD8(void)
                 {
                     func_ovl2_80106A40(gGRCommonStruct.sector.map_dobjs[1], (AObjEvent32*) ((intptr_t)dGRSectorArwingAnimJoints[pilot_id] + (uintptr_t)gGRCommonStruct.sector.map_head), 0.0F);
                 }
-                gGRCommonStruct.sector.arwing_pilot_prev = gGRCommonStruct.sector.arwing_pilot_current = pilot_id;
+                gGRCommonStruct.sector.arwing_pilot_prev = gGRCommonStruct.sector.arwing_pilot_curr = pilot_id;
             }
         }
     }
@@ -899,7 +899,7 @@ void func_ovl2_80107958(void)
     {
         ammo = 0;
 
-        if (gGRCommonStruct.sector.arwing_pilot_current == -2)
+        if (gGRCommonStruct.sector.arwing_pilot_curr == -2)
         {
             if 
             (
@@ -986,7 +986,7 @@ void grSectorArwingUpdateCollisions(void)
 {
     Vec3f pos;
 
-    if (gGRCommonStruct.sector.arwing_pilot_current != -2)
+    if (gGRCommonStruct.sector.arwing_pilot_curr != -2)
     {
         if ((gGRCommonStruct.sector.is_arwing_line_active) && (gGRCommonStruct.sector.is_arwing_z_near))
         {
@@ -1101,7 +1101,7 @@ void grSectorInitAll(void)
     gGRCommonStruct.sector.arwing_flight_pattern = -1;
     gGRCommonStruct.sector.arwing_appear_timer = 600;
     gGRCommonStruct.sector.arwing_type_cycle = 3;
-    gGRCommonStruct.sector.arwing_pilot_current = -1;
+    gGRCommonStruct.sector.arwing_pilot_curr = -1;
     gGRCommonStruct.sector.arwing_pilot_prev = 0;
     gGRCommonStruct.sector.arwing_target_x = 0.0F;
 

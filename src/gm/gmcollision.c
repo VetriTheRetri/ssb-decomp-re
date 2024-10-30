@@ -658,7 +658,7 @@ u32 func_ovl2_800EE2C0(Vec3f *lhs, Vec3f *rhs)
 }
 
 // 0x800EE300
-sb32 gmCollisionTestRectangle(Vec3f *pos_current, Vec3f *pos_prev, f32 radius, s32 opkind, Mtx44f mtx, Vec3f *offset, Vec3f *size, Vec3f *scale)
+sb32 gmCollisionTestRectangle(Vec3f *pos_curr, Vec3f *pos_prev, f32 radius, s32 opkind, Mtx44f mtx, Vec3f *offset, Vec3f *size, Vec3f *scale)
 {
     // Not sure about the variable names; help from ChatGPT
     Vec3f center;
@@ -679,7 +679,7 @@ sb32 gmCollisionTestRectangle(Vec3f *pos_current, Vec3f *pos_prev, f32 radius, s
 
     if (opkind == 2)
     {
-        sp90 = *pos_current;
+        sp90 = *pos_curr;
 
         if (mtx != NULL)
         {
@@ -695,7 +695,7 @@ sb32 gmCollisionTestRectangle(Vec3f *pos_current, Vec3f *pos_prev, f32 radius, s
         }
         else return FALSE;
     }
-    sp78 = *pos_current;
+    sp78 = *pos_curr;
     sp6C = *pos_prev;
 
     if (mtx != NULL)
@@ -777,7 +777,7 @@ loop:
 }
 
 // 0x800EE750
-sb32 gmCollisionTestSphere(Vec3f *pos_current, Vec3f *pos_prev, f32 hitsize, s32 atk_state, Mtx44f mtx, Vec3f *sphere_offset, Vec3f *sphere_size, Vec3f *arg7, s32 sphit_kind, f32 *p_angle, Vec3f *argA)
+sb32 gmCollisionTestSphere(Vec3f *pos_curr, Vec3f *pos_prev, f32 hitsize, s32 atk_state, Mtx44f mtx, Vec3f *sphere_offset, Vec3f *sphere_size, Vec3f *arg7, s32 sphit_kind, f32 *p_angle, Vec3f *argA)
 {
     // Might be very fake. Maybe not. Spent a whole day trying to match this and finally managed to find a solution using the permuter!
     Vec3f center;
@@ -786,9 +786,9 @@ sb32 gmCollisionTestSphere(Vec3f *pos_current, Vec3f *pos_prev, f32 hitsize, s32
     center.y = sphere_size->y + (hitsize / arg7->y);
     center.z = sphere_size->z + (hitsize / arg7->z);
 
-    if ((atk_state == nGMAttackStateTransfer) || (pos_current->x == pos_prev->x) && (pos_current->y == pos_prev->y) && (pos_current->z == pos_prev->z))
+    if ((atk_state == nGMAttackStateTransfer) || (pos_curr->x == pos_prev->x) && (pos_curr->y == pos_prev->y) && (pos_curr->z == pos_prev->z))
     {
-        Vec3f copy1 = *pos_current;
+        Vec3f copy1 = *pos_curr;
 
         gmCollisionGetWorldPosition(mtx, &copy1);
 
@@ -839,7 +839,7 @@ sb32 gmCollisionTestSphere(Vec3f *pos_current, Vec3f *pos_prev, f32 hitsize, s32
         f32 sp40;
         f32 sp3C;
 
-        copy1 = *pos_current;
+        copy1 = *pos_curr;
         copy2 = *pos_prev;
 
         gmCollisionGetWorldPosition(mtx, &copy1);

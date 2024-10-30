@@ -191,9 +191,9 @@ void ftPublicityDecideChant(GObj *gobj, s32 player_num, f32 knockback)
 }
 
 // 0x80164DED4
-void ftPublicityDecideCommon(GObj *fighter_gobj, s32 player_number, f32 knockback, sb32 is_force_current_knockback)
+void ftPublicityDecideCommon(GObj *fighter_gobj, s32 player_number, f32 knockback, sb32 is_force_curr_knockback)
 {
-    if (is_force_current_knockback != FALSE)
+    if (is_force_curr_knockback != FALSE)
     {
         ftPublicityDecideChant(fighter_gobj, player_number, knockback);
     }
@@ -224,13 +224,13 @@ void ftPublicityDecideCommon(GObj *fighter_gobj, s32 player_number, f32 knockbac
 }
 
 // 0x80164F2C
-void ftPublicityCommonCheck(GObj *fighter_gobj, f32 knockback, sb32 is_force_current_knockback)
+void ftPublicityCommonCheck(GObj *fighter_gobj, f32 knockback, sb32 is_force_curr_knockback)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     if (knockback >= 100.0F) // Check if knockback is over 100 units
     {
-        ftPublicityDecideCommon(fighter_gobj, fp->damage_player_number, knockback, is_force_current_knockback); // Play crowd SFX
+        ftPublicityDecideCommon(fighter_gobj, fp->damage_player_number, knockback, is_force_curr_knockback); // Play crowd SFX
     }
 }
 

@@ -89,7 +89,7 @@ typedef struct grCommonGroundVarsSector
 	u16 unk_sector_0x4E;
 	u16 arwing_laser_timer;
 	u8 unk_sector_0x52;
-	s8 arwing_pilot_current; // Line IDs?
+	s8 arwing_pilot_curr; // Line IDs?
 	u8 arwing_pilot_prev;
 	u8 arwing_laser_count; // Laser shot count? e.g. if set to 2, the arwing
 						   // will fire 2 lasers at once (though this is
@@ -115,7 +115,7 @@ typedef struct grCommonGroundVarsZebes
 	void* map_head;
 	GObj* map_gobj;
 	GRAttackColl* gr_atk_coll;
-	f32 acid_level_current;
+	f32 acid_level_curr;
 	f32 acid_level_step;
 	u16 acid_level_wait;
 	u8 acid_status;

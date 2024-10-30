@@ -345,7 +345,7 @@ struct MObj                         // Material Object
     MObj *next;
     GObj *parent_gobj;              // Unconfirmed
     MObjSub sub;
-    u16 texture_id_current;
+    u16 texture_id_curr;
     u16 texture_id_next;
     f32 lfrac;
     f32 palette_id;

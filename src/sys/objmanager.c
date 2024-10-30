@@ -1323,7 +1323,7 @@ MObj* gcAddMObjForDObj(DObj *dobj, MObjSub* mobjsub)
 
 	mobj->sub.unk24 = mobjsub->unk14;
 	mobj->sub.unk28 = mobjsub->unk1C;
-	mobj->texture_id_current = 0;
+	mobj->texture_id_curr = 0;
 	mobj->texture_id_next = 0;
 	mobj->palette_id = 0;
 	mobj->aobj = NULL;

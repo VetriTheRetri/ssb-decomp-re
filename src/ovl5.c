@@ -170,6 +170,6 @@ void overlay_set23_entry()
 	D_ovl5_8018D5D8.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl5_BSS_END);
 	func_800A2698(&D_ovl5_8018D5D8);
 	auStopBGM();
-	gSceneData.scene_previous = gSceneData.scene_current;
-	gSceneData.scene_current = nSCKindTitle;
+	gSceneData.scene_prev = gSceneData.scene_curr;
+	gSceneData.scene_curr = nSCKindTitle;
 }

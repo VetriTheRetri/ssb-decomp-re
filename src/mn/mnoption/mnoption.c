@@ -734,7 +734,7 @@ void mnOptionMakeDecalsCamera(void)
 // 0x80132D60
 void mnOptionInitVars(void)
 {
-    switch (gSceneData.scene_previous)
+    switch (gSceneData.scene_prev)
     {
     case nSCKindScreenAdjust:
         sMNOptionOption = nMNOptionOptionScreenAdjust;
@@ -785,8 +785,8 @@ void mnOptionFuncRun(GObj *gobj)
     {
         if (sMNOptionTotalTimeTics == sMNOptionReturnTic)
         {
-            gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = nSCKindTitle;
+            gSceneData.scene_prev = gSceneData.scene_curr;
+            gSceneData.scene_curr = nSCKindTitle;
 
             mnOptionWriteBackup();
 
@@ -826,8 +826,8 @@ void mnOptionFuncRun(GObj *gobj)
 
                 mnOptionSetOptionSpriteColors(*option_gobj[sMNOptionOption], nMNOptionTabStatusSelected);
 
-                gSceneData.scene_previous = gSceneData.scene_current;
-                gSceneData.scene_current = nSCKindScreenAdjust;
+                gSceneData.scene_prev = gSceneData.scene_curr;
+                gSceneData.scene_curr = nSCKindScreenAdjust;
 
                 sMNOptionIsProceedScene = TRUE;
                 return;
@@ -839,8 +839,8 @@ void mnOptionFuncRun(GObj *gobj)
 
                 mnOptionSetOptionSpriteColors(*option_gobj[sMNOptionOption], nMNOptionTabStatusSelected);
 
-                gSceneData.scene_previous = gSceneData.scene_current;
-                gSceneData.scene_current = nSCKindBackupClear;
+                gSceneData.scene_prev = gSceneData.scene_curr;
+                gSceneData.scene_curr = nSCKindBackupClear;
 
                 sMNOptionIsProceedScene = TRUE;
                 return;
@@ -851,8 +851,8 @@ void mnOptionFuncRun(GObj *gobj)
         {
             mnOptionWriteBackup();
 
-            gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = nSCKindModeSelect;
+            gSceneData.scene_prev = gSceneData.scene_curr;
+            gSceneData.scene_curr = nSCKindModeSelect;
 
             syTaskmanSetLoadScene();
         }
@@ -1018,7 +1018,7 @@ void mnOptionFuncStart(void)
     mnOptionMakeSoundUnderline();
     mnOptionMakeMenuGObj();
 
-    if (gSceneData.scene_previous == nSCKindScreenAdjust)
+    if (gSceneData.scene_prev == nSCKindScreenAdjust)
     {
         auPlaySong(0, nSYAudioBGMModeSelect);
     }

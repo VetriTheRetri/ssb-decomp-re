@@ -240,8 +240,8 @@ void scAutoDemoDetectExit(void)
 
 		if (button_tap & (A_BUTTON | B_BUTTON | START_BUTTON))
 		{
-			gSceneData.scene_previous = gSceneData.scene_current;
-			gSceneData.scene_current = nSCKindTitle;
+			gSceneData.scene_prev = gSceneData.scene_curr;
+			gSceneData.scene_curr = nSCKindTitle;
 
 			syTaskmanSetLoadScene();
 			break;
@@ -305,7 +305,7 @@ void scAutoDemoSetFocusPlayer1(void)
 		func_ovl64_8018D220(fighter_gobj);
 		ftParamSetModelPartDetailAll(fighter_gobj, nFTPartsDetailHigh);
 
-		fp->detail_default = nFTPartsDetailHigh;
+		fp->detail_base = nFTPartsDetailHigh;
 
 		SObjGetStruct(sSCAutoDemoFighterNameGObj)->sprite.attr &= ~SP_HIDDEN;
 
@@ -332,7 +332,7 @@ void scAutoDemoSetFocusPlayer2(void)
 	SObjGetStruct(sSCAutoDemoFighterNameGObj)->sprite.attr |= SP_HIDDEN;
 
 	ftParamSetModelPartDetailAll(p1_gobj, nFTPartsDetailLow);
-	ftGetStruct(p1_gobj)->detail_default = nFTPartsDetailLow;
+	ftGetStruct(p1_gobj)->detail_base = nFTPartsDetailLow;
 
 	if (scAutoDemoCheckStopFocusPlayer(p2_fp) != FALSE)
 	{
@@ -349,7 +349,7 @@ void scAutoDemoSetFocusPlayer2(void)
 		func_ovl64_8018D220(p2_gobj);
 		ftParamSetModelPartDetailAll(p2_gobj, nFTPartsDetailHigh);
 
-		p2_fp->detail_default = nFTPartsDetailHigh;
+		p2_fp->detail_base = nFTPartsDetailHigh;
 
 		SObjGetStruct(sSCAutoDemoFighterNameGObj)->next->sprite.attr &= ~SP_HIDDEN;
 	}
@@ -378,7 +378,7 @@ void scAutoDemoResetFocusPlayerAll(void)
 
 	ftParamSetModelPartDetailAll(p2_gobj, nFTPartsDetailLow);
 
-	ftGetStruct(p2_gobj)->detail_default = nFTPartsDetailLow;
+	ftGetStruct(p2_gobj)->detail_base = nFTPartsDetailLow;
 
 	SObjGetStruct(sSCAutoDemoFighterNameGObj)->next->sprite.attr |= SP_HIDDEN;
 }
@@ -392,8 +392,8 @@ void scAutoDemoSetMagnifyDisplayOn(void)
 // 0x8018D5F0
 void scAutoDemoExit(void)
 {
-	gSceneData.scene_previous = gSceneData.scene_current;
-	gSceneData.scene_current = nSCKindN64;
+	gSceneData.scene_prev = gSceneData.scene_curr;
+	gSceneData.scene_curr = nSCKindN64;
 
 	syTaskmanSetLoadScene();
 }

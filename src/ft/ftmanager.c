@@ -596,7 +596,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
         fp->ga = nMPKineticsAir;
         fp->jumps_used = 1;
     }
-    fp->coll_data.pos_current = DObjGetStruct(fighter_gobj)->translate.vec.f;
+    fp->coll_data.pos_curr = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     switch (fp->fkind)
     {
@@ -723,7 +723,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
     {
         gBattleState->players[fp->player].stock_count = ft_desc->stock_count;
     }
-    fp->detail_current = fp->detail_default = ft_desc->detail;
+    fp->detail_curr = fp->detail_base = ft_desc->detail;
 
     fp->costume = ft_desc->costume;
     fp->shade = ft_desc->shade;
@@ -785,7 +785,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
 
     fp->joints[nFTPartsJointTopN]->xobjs[0]->unk05 = ft_desc->unk_rebirth_0x1D;
 
-    lbCommonSetupFighterPartsDObjs(DObjGetStruct(fighter_gobj), attr->commonparts_container, fp->detail_current, &fp->joints[nFTPartsJointCommonStart], attr->setup_parts, 0x4B, 0, 0, fp->costume, fp->unk_ft_0x149);
+    lbCommonSetupFighterPartsDObjs(DObjGetStruct(fighter_gobj), attr->commonparts_container, fp->detail_curr, &fp->joints[nFTPartsJointCommonStart], attr->setup_parts, 0x4B, 0, 0, fp->costume, fp->unk_ft_0x149);
 
     for (i = 0; i < ARRAY_COUNT(fp->joints); i++)
     {
@@ -794,7 +794,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
             fp->joints[i]->user_data.p = ftManagerGetNextPartsAlloc();
 
             parts = fp->joints[i]->user_data.p;
-            parts->flags = attr->commonparts_container->commonparts[fp->detail_current - nFTPartsDetailStart].flags;
+            parts->flags = attr->commonparts_container->commonparts[fp->detail_curr - nFTPartsDetailStart].flags;
             parts->joint_id = i;
 
             if (fp->costume != 0)
@@ -815,13 +815,13 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
     {
         if (fp->joints[i] != NULL)
         {
-            fp->modelpart_status[i - nFTPartsJointCommonStart].modelpart_id_default = 
-            fp->modelpart_status[i - nFTPartsJointCommonStart].modelpart_id_current = (fp->joints[i]->display_ptr != NULL) ? 0 : -1;
+            fp->modelpart_status[i - nFTPartsJointCommonStart].modelpart_id_base = 
+            fp->modelpart_status[i - nFTPartsJointCommonStart].modelpart_id_curr = (fp->joints[i]->display_ptr != NULL) ? 0 : -1;
         }
     }
     for (i = 0; i < ARRAY_COUNT(fp->texturepart_status); i++)
     {
-        fp->texturepart_status[i].texture_id_default = fp->texturepart_status[i].texture_id_current = 0;
+        fp->texturepart_status[i].texture_id_base = fp->texturepart_status[i].texture_id_curr = 0;
     }
     ftParamSetAnimLocks(fp);
 
@@ -862,7 +862,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
     fp->coll_data.cliffcatch_coll = attr->cliffcatch_coll;
     fp->coll_data.ignore_line_id = -1;
     fp->coll_data.coll_update_frame = gMPCollisionUpdateFrame;
-    fp->coll_data.coll_mask_current = 0;
+    fp->coll_data.coll_mask_curr = 0;
 
     if (fp->pkind != nFTPlayerKindDemo)
     {

@@ -135,7 +135,7 @@ void ftNessSpecialAirHiProcPhysics(GObj *fighter_gobj)
     {
         fp->status_vars.ness.specialhi.pkthunder_gravity_delay--;
     }
-    else ftPhysicsApplyGravityClampTVel(fp, 0.5F, attr->tvel_default);
+    else ftPhysicsApplyGravityClampTVel(fp, 0.5F, attr->tvel_base);
 
     if (ftPhysicsCheckClampAirVelXDecMax(fp, attr) == FALSE)
     {
@@ -412,7 +412,7 @@ void ftNessSpecialHiCollideWallPhysics(GObj *fighter_gobj, MPCollData *coll_data
         rotation -= F_CST_DTOR32(360.0F);
     }
 
-    if (coll_data->coll_mask_current & MPCOLL_FLAG_LWALL)
+    if (coll_data->coll_mask_curr & MPCOLL_FLAG_LWALL)
     {
         tan_lwall_angle = atan2f(coll_data->lwall_angle.y, coll_data->lwall_angle.x);
 
@@ -425,7 +425,7 @@ void ftNessSpecialHiCollideWallPhysics(GObj *fighter_gobj, MPCollData *coll_data
 
         tangent = ((rotation + F_CST_DTOR32(180.0F)) < tangent) ? (tangent + F_CST_DTOR32(90.0F)) : (tangent + F_CST_DTOR32(-90.0F)); // To fix Ness's janky left wall collision, compare rotation - PI32
     }
-    if (coll_data->coll_mask_current & MPCOLL_FLAG_RWALL)
+    if (coll_data->coll_mask_curr & MPCOLL_FLAG_RWALL)
     {
         tan_rwall_angle = atan2f(coll_data->rwall_angle.y, coll_data->rwall_angle.x);
 
@@ -543,14 +543,14 @@ void ftNessSpecialHiJibakuProcMap(GObj *fighter_gobj)
 
     if (mpCommonCheckFighterOnGround(fighter_gobj) == FALSE)
     {
-        if (fp->coll_data.coll_mask_current & (MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL))
+        if (fp->coll_data.coll_mask_curr & (MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL))
         {
             mpCommonSetFighterAir(fp);
             ftNessSpecialAirHiEndSetStatus(fighter_gobj);
         }
         else ftNessSpecialHiJibakuSwitchStatusAir(fighter_gobj);
     }
-    else if (fp->coll_data.coll_mask_current & (MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL))
+    else if (fp->coll_data.coll_mask_curr & (MPCOLL_FLAG_CEIL | MPCOLL_FLAG_RWALL | MPCOLL_FLAG_LWALL))
     {
         fp->physics.vel_ground.x = 0.0F;
         ftCommonDownBounceSetStatus(fighter_gobj);
@@ -587,7 +587,7 @@ void ftNessSpecialAirHiJibakuProcMap(GObj *fighter_gobj)
     pos.y = DObjGetStruct(fighter_gobj)->translate.vec.f.y;
     pos.z = 0.0F;
 
-    if (fp->coll_data.coll_mask_current & MPCOLL_FLAG_CEIL)
+    if (fp->coll_data.coll_mask_curr & MPCOLL_FLAG_CEIL)
     {
         if (syVectorAngleDiff3D(&fp->coll_data.ceil_angle, &fp->physics.vel_air) > FTNESS_PKJIBAKU_HALT_ANGLE)
         {
@@ -596,7 +596,7 @@ void ftNessSpecialAirHiJibakuProcMap(GObj *fighter_gobj)
             ftNessSpecialAirHiJibakuBoundSetStatus(fighter_gobj, &fp->coll_data.ceil_angle, &pos);
         }
     }
-    if (fp->coll_data.coll_mask_current & MPCOLL_FLAG_LWALL)
+    if (fp->coll_data.coll_mask_curr & MPCOLL_FLAG_LWALL)
     {
         if (syVectorAngleDiff3D(&fp->coll_data.lwall_angle, &fp->physics.vel_air) > FTNESS_PKJIBAKU_HALT_ANGLE)
         {
@@ -607,7 +607,7 @@ void ftNessSpecialAirHiJibakuProcMap(GObj *fighter_gobj)
         }
         else ftNessSpecialHiCollideWallPhysics(fighter_gobj, &fp->coll_data);
     }
-    if (fp->coll_data.coll_mask_current & MPCOLL_FLAG_RWALL)
+    if (fp->coll_data.coll_mask_curr & MPCOLL_FLAG_RWALL)
     {
         if (syVectorAngleDiff3D(&fp->coll_data.rwall_angle, &fp->physics.vel_air) > FTNESS_PKJIBAKU_HALT_ANGLE)
         {

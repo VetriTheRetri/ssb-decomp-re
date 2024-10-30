@@ -286,15 +286,15 @@ void itMSBombAttachedUpdateSurface(GObj *item_gobj)
     Vec3f angle;
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    if ((coll_data->coll_mask_current & MPCOLL_FLAG_CEIL) || (coll_data->coll_mask_current & MPCOLL_FLAG_GROUND))
+    if ((coll_data->coll_mask_curr & MPCOLL_FLAG_CEIL) || (coll_data->coll_mask_curr & MPCOLL_FLAG_GROUND))
     {
-        if (coll_data->coll_mask_current & MPCOLL_FLAG_CEIL)
+        if (coll_data->coll_mask_curr & MPCOLL_FLAG_CEIL)
         {
             angle = coll_data->ceil_angle;
 
             ip->attach_line_id = coll_data->ceil_line_id;
         }
-        if (coll_data->coll_mask_current & MPCOLL_FLAG_GROUND)
+        if (coll_data->coll_mask_curr & MPCOLL_FLAG_GROUND)
         {
             angle = coll_data->ground_angle;
 
@@ -303,13 +303,13 @@ void itMSBombAttachedUpdateSurface(GObj *item_gobj)
     }
     else
     {
-        if (coll_data->coll_mask_current & MPCOLL_FLAG_LWALL)
+        if (coll_data->coll_mask_curr & MPCOLL_FLAG_LWALL)
         {
             angle = coll_data->lwall_angle;
 
             ip->attach_line_id = coll_data->lwall_line_id;
         }
-        if (coll_data->coll_mask_current & MPCOLL_FLAG_RWALL)
+        if (coll_data->coll_mask_curr & MPCOLL_FLAG_RWALL)
         {
             angle = coll_data->rwall_angle;
 
@@ -365,7 +365,7 @@ void itMSBombExplodeMakeEffect(GObj *item_gobj)
     DObj *dobj = DObjGetStruct(item_gobj);
     s32 unused[4];
 
-    if (ip->coll_data.coll_mask_current & MPCOLL_FLAG_GROUND)
+    if (ip->coll_data.coll_mask_curr & MPCOLL_FLAG_GROUND)
     {
         Vec3f translate = dobj->translate.vec.f;
 

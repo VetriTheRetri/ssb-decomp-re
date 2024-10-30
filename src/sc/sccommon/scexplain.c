@@ -609,8 +609,8 @@ void scExplainDetectExit(void)
 
         if (button_tap & (A_BUTTON | B_BUTTON | START_BUTTON))
         {
-            gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = nSCKindTitle;
+            gSceneData.scene_prev = gSceneData.scene_curr;
+            gSceneData.scene_curr = nSCKindTitle;
 
             syTaskmanSetLoadScene();
 
@@ -649,8 +649,8 @@ void scExplainUpdatePhase(void)
 
         if (sSCExplainStruct.phase > 22)
         {
-            gSceneData.scene_previous = gSceneData.scene_current;
-            gSceneData.scene_current = nSCKindCharacters;
+            gSceneData.scene_prev = gSceneData.scene_curr;
+            gSceneData.scene_curr = nSCKindCharacters;
 
             syTaskmanSetLoadScene();
 

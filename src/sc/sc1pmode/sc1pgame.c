@@ -2176,7 +2176,7 @@ void sc1PGameAppendBonusStats(void)
     u8 variation_order[SC1PGAME_STAGE_MAX_VARIATIONS_COUNT]; // Full array of 12? Almost half of this goes unused, but stack suggests this is correct.
     s32 i;
 
-    sSC1PGameStageTimeSec = I_FRAMES_TO_SEC(gBattleState->battle_time_current);
+    sSC1PGameStageTimeSec = I_FRAMES_TO_SEC(gBattleState->battle_time_curr);
     sSC1PGameTotalTimeSec = I_FRAMES_TO_SEC(gSC1PManagerTotalTimeTics);
 
     if (sSC1PGameBonusStatNumPlayerKOs != 0)
@@ -2810,7 +2810,7 @@ void sc1PGameInitBonusStats(void)
 
     gSceneData.spgame_time_seconds = (gBattleState->time_limit == SCBATTLE_TIMELIMIT_INFINITE) ? 0 : I_FRAMES_TO_SEC(gBattleState->battle_time_remain + 59);
 
-    gSC1PManagerTotalTimeTics += gBattleState->battle_time_current;
+    gSC1PManagerTotalTimeTics += gBattleState->battle_time_curr;
     gSC1PManagerTotalFalls += gBattleState->players[gSceneData.spgame_player].falls;
     gSC1PManagerTotalDamage += gBattleState->players[gSceneData.spgame_player].total_damage_all;
 

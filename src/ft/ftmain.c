@@ -1721,7 +1721,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     Vec3f *topn_translate = &fp->joints[nFTPartsJointTopN]->translate.vec.f;
-    Vec3f *coll_translate = &fp->coll_data.pos_current;
+    Vec3f *coll_translate = &fp->coll_data.pos_curr;
     Vec3f *ground_angle = &fp->coll_data.ground_angle;
     Vec3f *vel_damage_air;
     s32 unused[2];
@@ -1795,7 +1795,7 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
 
     ftCommonDeadCheckInterruptCommon(fighter_gobj);
 
-    if ((fp->coll_data.pos_current.y >= gMPCollisionGroundData->alt_warning) && (topn_translate->y < gMPCollisionGroundData->alt_warning) && (fp->fkind != nFTKindBoss))
+    if ((fp->coll_data.pos_curr.y >= gMPCollisionGroundData->alt_warning) && (topn_translate->y < gMPCollisionGroundData->alt_warning) && (fp->fkind != nFTKindBoss))
     {
         func_800269C0_275C0(nSYAudioFGMAltitudeWarn);
     }
@@ -1808,8 +1808,8 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
     }
     if (fp->proc_map != NULL)
     {
-        fp->coll_data.coll_mask_prev = fp->coll_data.coll_mask_current;
-        fp->coll_data.coll_mask_current = 0;
+        fp->coll_data.coll_mask_prev = fp->coll_data.coll_mask_curr;
+        fp->coll_data.coll_mask_curr = 0;
         fp->coll_data.is_coll_end = FALSE;
         fp->coll_data.coll_mask_stat = 0;
         fp->coll_data.coll_mask_unk = 0;
@@ -3983,7 +3983,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
         switch (fp->afterimage.is_itemswing)
         {
         case FALSE:
-            if ((fp->fkind == nFTKindLink) && (fp->modelpart_status[11 - nFTPartsJointCommonStart].modelpart_id_current == 0))
+            if ((fp->fkind == nFTKindLink) && (fp->modelpart_status[11 - nFTPartsJointCommonStart].modelpart_id_curr == 0))
             {
                 FTParts *parts = fp->joints[11]->user_data.p;
 
@@ -4060,7 +4060,7 @@ void ftMainUpdateWithheldPartID(FTStruct *fp, s32 withheld_part_id)
 
     if (withheld_part->root_joint_id >= nFTPartsJointCommonStart)
     {
-        if (fp->detail_current == nFTPartsDetailHigh)
+        if (fp->detail_curr == nFTPartsDetailHigh)
         {
             commonpart = &fp->attr->commonparts_container->commonparts[0];
         }
@@ -4084,7 +4084,7 @@ void ftMainUpdateWithheldPartID(FTStruct *fp, s32 withheld_part_id)
     }
     if (commonpart != NULL)
     {
-        fp->modelpart_status[withheld_part->root_joint_id - nFTPartsJointCommonStart].modelpart_id_default = fp->modelpart_status[withheld_part->root_joint_id - nFTPartsJointCommonStart].modelpart_id_current = (dl != NULL) ? 0 : -1;
+        fp->modelpart_status[withheld_part->root_joint_id - nFTPartsJointCommonStart].modelpart_id_base = fp->modelpart_status[withheld_part->root_joint_id - nFTPartsJointCommonStart].modelpart_id_curr = (dl != NULL) ? 0 : -1;
     }
     parent_joint = fp->joints[withheld_part->parent_joint_id];
 
@@ -4151,7 +4151,7 @@ void ftMainUpdateWithheldPartID(FTStruct *fp, s32 withheld_part_id)
 
     root_joint->user_data.p = parts = ftManagerGetNextPartsAlloc();
 
-    parts->flags = attr->commonparts_container->commonparts[fp->detail_current - nFTPartsDetailStart].flags;
+    parts->flags = attr->commonparts_container->commonparts[fp->detail_curr - nFTPartsDetailStart].flags;
     parts->joint_id = withheld_part->root_joint_id;
 
     if (withheld_part->partindex_0x8 != 0)
@@ -4366,11 +4366,11 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     }
     fp->status_id = status_id;
 
-    if (fp->detail_current != fp->detail_default)
+    if (fp->detail_curr != fp->detail_base)
     {
-        ftParamSetModelPartDetailAll(fighter_gobj, fp->detail_default);
+        ftParamSetModelPartDetailAll(fighter_gobj, fp->detail_base);
         
-        fp->detail_current = fp->detail_default;
+        fp->detail_curr = fp->detail_base;
     }
     if (!(flags & FTSTATUS_PRESERVE_HIT) && (fp->is_atk_active))
     {
@@ -4608,7 +4608,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
                 else ftMainEjectWithheldPartID(fp, i);
             }
 
-            dobjdesc = attr->commonparts_container->commonparts[fp->detail_current - nFTPartsDetailStart].dobjdesc;
+            dobjdesc = attr->commonparts_container->commonparts[fp->detail_curr - nFTPartsDetailStart].dobjdesc;
 
             for (i = nFTPartsJointCommonStart; dobjdesc->index != DOBJ_ARRAY_MAX; i++, dobjdesc++)
             {

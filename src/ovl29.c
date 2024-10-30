@@ -1854,11 +1854,11 @@ void mnBonusRecallToken(s32 port_id)
 void mnBonusGoBackTo1PMenu()
 {
 	if (gMnBonusType == 0)
-		gSceneData.scene_previous = nSCKind1PBonus1Fighters;
+		gSceneData.scene_prev = nSCKind1PBonus1Fighters;
 	else
-		gSceneData.scene_previous = nSCKind1PBonus2Fighters;
+		gSceneData.scene_prev = nSCKind1PBonus2Fighters;
 
-	gSceneData.scene_current = nSCKind1PMode;
+	gSceneData.scene_curr = nSCKind1PMode;
 
 	mnBonusSaveMatchInfo();
 	auStopBGM();
@@ -2377,8 +2377,8 @@ void mnBonusMain(s32 arg0)
 
 	if (gMnBonusFramesElapsed == gMnBonusMaxFramesElapsed)
 	{
-		gSceneData.scene_previous = gSceneData.scene_current;
-		gSceneData.scene_current = nSCKindTitle;
+		gSceneData.scene_prev = gSceneData.scene_curr;
+		gSceneData.scene_curr = nSCKindTitle;
 
 		mnBonusSaveMatchInfo();
 		syTaskmanSetLoadScene();
@@ -2396,11 +2396,11 @@ void mnBonusMain(s32 arg0)
 	{
 
 		if (gMnBonusType == 0)
-			gSceneData.scene_previous = nSCKind1PBonus1Fighters;
+			gSceneData.scene_prev = nSCKind1PBonus1Fighters;
 		else
-			gSceneData.scene_previous = nSCKind1PBonus2Fighters;
+			gSceneData.scene_prev = nSCKind1PBonus2Fighters;
 
-		gSceneData.scene_current = nSCKind1PBonusGame;
+		gSceneData.scene_curr = nSCKind1PBonusGame;
 
 		mnBonusSaveMatchInfo();
 		syTaskmanSetLoadScene();
@@ -2442,7 +2442,7 @@ void mnBonusLoadMatchInfo()
 	gMnBonusPanel.min_frames_elapsed_until_recall = 0;
 	gMnBonusCharacterUnlockedMask = gSaveData.fighter_mask;
 
-	if (gSceneData.scene_current == 0x13)
+	if (gSceneData.scene_curr == 0x13)
 		gMnBonusType = 0;
 	else
 		gMnBonusType = 1;
@@ -2533,7 +2533,7 @@ void mnBonusInitCSS()
 	mnBonusCreateReadyToFightObjects();
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-	if (gSceneData.scene_previous != nSCKindVSMaps)
+	if (gSceneData.scene_prev != nSCKindVSMaps)
 		auPlaySong(0, 0xA);
 }
 

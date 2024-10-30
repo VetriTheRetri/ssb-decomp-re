@@ -256,8 +256,8 @@ struct FTMotionEventMakeHit4
 struct FTMotionEventMakeHit5
 {
 	s32 shield_damage : 8;
-	u32 sfx_level : 3;
-	u32 sfx_kind : 4;
+	u32 fgm_level : 3;
+	u32 fgm_kind : 4;
 	u32 knockback_base : 10;
 };
 
@@ -307,7 +307,7 @@ struct FTMotionEventSetHitSound
 {
 	u32 opcode : 6;
 	u32 atk_id: 3;
-	u32 sfx_level : 3;
+	u32 fgm_level : 3;
 };
 
 struct FTMotionEventSetThrow1
@@ -605,8 +605,8 @@ struct FTAttackColl
     s32 knockback_weight;
     s32 knockback_base;
     s32 shield_damage;
-    u32 sfx_level : 3;
-    u32 sfx_kind : 4;
+    u32 fgm_level : 3;
+    u32 fgm_kind : 4;
     ub32 is_hit_air : 1;
     ub32 is_hit_ground : 1;
     ub32 can_rebound : 1;

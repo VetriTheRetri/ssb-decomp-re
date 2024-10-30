@@ -248,8 +248,8 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
 
             atk_coll->shield_damage = ftMotionEventCast(ms, FTMotionEventMakeHit5)->shield_damage;
 
-            atk_coll->sfx_level = ftMotionEventCast(ms, FTMotionEventMakeHit5)->sfx_level;
-            atk_coll->sfx_kind = ftMotionEventCast(ms, FTMotionEventMakeHit5)->sfx_kind;
+            atk_coll->fgm_level = ftMotionEventCast(ms, FTMotionEventMakeHit5)->fgm_level;
+            atk_coll->fgm_kind = ftMotionEventCast(ms, FTMotionEventMakeHit5)->fgm_kind;
 
             atk_coll->knockback_base = ftMotionEventCast(ms, FTMotionEventMakeHit5)->knockback_base;
 
@@ -306,7 +306,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
     case nFTMotionEventKindSetHitSoundLevel:
         atk_id = ftMotionEventCast(ms, FTMotionEventSetHitSound)->atk_id;
 
-        fp->atk_colls[atk_id].sfx_level = ftMotionEventCast(ms, FTMotionEventSetHitSound)->sfx_level;
+        fp->atk_colls[atk_id].fgm_level = ftMotionEventCast(ms, FTMotionEventSetHitSound)->fgm_level;
 
         ftMotionEventAdvance(ms, FTMotionEventSetHitSound);
         break;
@@ -2090,7 +2090,7 @@ void ftMainPlayHitSFX(FTStruct *fp, FTAttackColl *atk_coll)
     }
     fp->p_sfx = NULL, fp->sfx_id = 0;
 
-    lbCommonMakePositionFGM(dFTMainHitCollisionFGMs[atk_coll->sfx_kind][atk_coll->sfx_level], fp->joints[nFTPartsJointTopN]->translate.vec.f.x);
+    lbCommonMakePositionFGM(dFTMainHitCollisionFGMs[atk_coll->fgm_kind][atk_coll->fgm_level], fp->joints[nFTPartsJointTopN]->translate.vec.f.x);
 }
 
 // 0x800E2CC0
@@ -2696,7 +2696,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
                 }
                 else efManagerDamageNormalHeavyMakeEffect(&pos, hitlog->attacker_player, ft_atk_coll->damage);
 
-                if (ft_atk_coll->sfx_level > 0) // Changed this to > 0 for now, makes a bit more sense to me since it only does this on moves with hit SFX levels greater than weak (0)
+                if (ft_atk_coll->fgm_level > 0) // Changed this to > 0 for now, makes a bit more sense to me since it only does this on moves with hit SFX levels greater than weak (0)
                 {
                     efManagerDamageSpawnOrbsRandgcMakeEffect(&pos);
 

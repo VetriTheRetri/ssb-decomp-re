@@ -88,10 +88,10 @@ GObj* grZebesMakeAcid(void)
     map_head = (void*) ((uintptr_t)gMPCollisionGroundData->map_nodes - (intptr_t)&lGRZebesAcidDObjSetup);
     gGRCommonStruct.zebes.map_head = map_head;
 
-    map_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    map_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_PRIORITY_DEFAULT);
     gGRCommonStruct.zebes.map_gobj = map_gobj;
 
-    gcAddGObjDisplay(map_gobj, gcDrawDObjTreeDLLinksForGObj, 12, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(map_gobj, gcDrawDObjTreeDLLinksForGObj, 12, GOBJ_PRIORITY_DEFAULT, -1);
     gcSetupCustomDObjs
     (
         map_gobj, 
@@ -102,7 +102,7 @@ GObj* grZebesMakeAcid(void)
         nGCMatrixKindNull
     );
     gcAddMObjAll(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000008C0);
-    gcAddGObjProcess(map_gobj, gcPlayAnimAll, nGCProcessKindProc, 5);
+    gcAddGObjProcess(map_gobj, gcPlayAnimAll, nGCProcessKindFunc, 5);
     gcAddAnimAll(map_gobj, (uintptr_t)map_head + (intptr_t)&lGRZebesAcidAnimJoint, (uintptr_t)map_head + (intptr_t)&lGRZebesAcidMatAnimJoint, 0.0F);
     gcPlayAnimAll(map_gobj);
 
@@ -217,10 +217,10 @@ void grZebesProcUpdate(GObj *ground_gobj)
 // 0x80108448
 GObj* grZebesMakeGround(void)
 {
-    GObj *ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_PRIORITY_DEFAULT);
     GObj *acid_gobj = grZebesMakeAcid();
 
-    gcAddGObjProcess(ground_gobj, grZebesProcUpdate, nGCProcessKindProc, 4);
+    gcAddGObjProcess(ground_gobj, grZebesProcUpdate, nGCProcessKindFunc, 4);
     ftMainCheckAddGroundHazard(acid_gobj, grZebesAcidCheckGetDamageKind);
 
     return ground_gobj;

@@ -132,7 +132,7 @@ void gcUpdateDefault(GObj *gobj)
 // 0x8000B1E8
 void gcStopCurrentGObjThread(s32 tics)
 {
-    if (gGCCurrentProcess->gobjthread->stack[7] != 0xFEDCBA98)
+    if (gGCCurrentProcess->exec.gobjthread->stack[7] != 0xFEDCBA98)
     {
         syErrorPrintf("gobjthread stack over  gobjid = %d\n", gGCCurrentProcess->parent_gobj->id);
     }
@@ -201,7 +201,7 @@ void gcResumeGObjProcess(GObjProcess *gobjproc)
 }
 
 // 0x8000B31C
-void gcPauseProcessByProc(GObj *gobj, void (*proc_common)(GObj*))
+void gcPauseProcessByProc(GObj *gobj, void (*func_id)(GObj*))
 {
     GObjProcess *gobjproc;
 
@@ -213,7 +213,7 @@ void gcPauseProcessByProc(GObj *gobj, void (*proc_common)(GObj*))
 
     while (gobjproc != NULL)
     {
-        if (gobjproc->proc_common == proc_common)
+        if (gobjproc->func_id == func_id)
         {
             gobjproc->is_paused = TRUE;
         }
@@ -222,7 +222,7 @@ void gcPauseProcessByProc(GObj *gobj, void (*proc_common)(GObj*))
 }
 
 // 0x8000B35C
-void gcResumeProcessByProc(GObj *gobj, void (*proc_common)(GObj*))
+void gcResumeProcessByProc(GObj *gobj, void (*func_id)(GObj*))
 {
     GObjProcess *gobjproc;
 
@@ -234,7 +234,7 @@ void gcResumeProcessByProc(GObj *gobj, void (*proc_common)(GObj*))
 
     while (gobjproc != NULL)
     {
-        if (gobjproc->proc_common == proc_common)
+        if (gobjproc->func_id == func_id)
         {
             gobjproc->is_paused = FALSE;
         }
@@ -439,10 +439,10 @@ GObj* gcMakeModelGObj
     u32 id,
     void (*func_run)(GObj*),
     s32 link,
-    u32 link_order,
+    u32 link_priority,
     void (*func_display)(GObj*),
     u8 dl_link,
-    u32 dl_link_order,
+    u32 dl_link_priority,
     u32 cobj_tag,
     void *dvar,
     sb32 is_add_default_xobj,
@@ -454,13 +454,13 @@ GObj* gcMakeModelGObj
     GObj *gobj;
     DObj *dobj;
 
-    gobj = gcMakeGObjSPAfter(id, func_run, link, link_order);
+    gobj = gcMakeGObjSPAfter(id, func_run, link, link_priority);
 
     if (gobj == NULL)
     {
         return NULL;
     }
-    gcAddGObjDisplay(gobj, func_display, dl_link, dl_link_order, cobj_tag);
+    gcAddGObjDisplay(gobj, func_display, dl_link, dl_link_priority, cobj_tag);
 
     dobj = gcAddDObjForGObj(gobj, dvar);
 
@@ -481,10 +481,10 @@ GObj* gcMakeSpriteGObj
     u32 id,
     void (*func_run)(GObj*),
     s32 link,
-    u32 link_order,
+    u32 link_priority,
     void (*func_display)(GObj*),
     s32 dl_link,
-    u32 dl_link_order,
+    u32 dl_link_priority,
     u32 cobj_tag,
     Sprite *sprite,
     u8 gobjproc_kind,
@@ -492,13 +492,13 @@ GObj* gcMakeSpriteGObj
     u32 gobjproc_priority
 )
 {
-    GObj *gobj = gcMakeGObjSPAfter(id, func_run, link, link_order);
+    GObj *gobj = gcMakeGObjSPAfter(id, func_run, link, link_priority);
         
     if (gobj == NULL)
     {
         return NULL;
     }
-    gcAddGObjDisplay(gobj, func_display, dl_link, dl_link_order, cobj_tag);
+    gcAddGObjDisplay(gobj, func_display, dl_link, dl_link_priority, cobj_tag);
     
     gcAddSObjForGObj(gobj, sprite);
         
@@ -515,9 +515,9 @@ GObj* gcMakeCameraGObj
     u32 id,
     void (*func_run)(GObj*),
     s32 link,
-    u32 link_order,
+    u32 link_priority,
     void (*func_display)(GObj*),
-    u32 dl_link_order,
+    u32 dl_link_priority,
     u64 cobj_mask,
     u32 cobj_tag,
     sb32 is_add_default_xobj,
@@ -530,13 +530,13 @@ GObj* gcMakeCameraGObj
     GObj *gobj;
     CObj *cobj;
 
-    gobj = gcMakeGObjSPAfter(id, func_run, link, link_order);
+    gobj = gcMakeGObjSPAfter(id, func_run, link, link_priority);
     
     if (gobj == NULL)
     {
         return NULL;
     }
-    func_80009F74(gobj, func_display, dl_link_order, cobj_mask, cobj_tag);
+    func_80009F74(gobj, func_display, dl_link_priority, cobj_mask, cobj_tag);
     
     cobj = gcAddCameraForGObj(gobj);
 
@@ -557,16 +557,16 @@ GObj* gcMakeCameraGObj
 }
 
 // 0x8000B9FC
-GObj* gcMakeDefaultCameraGObj(s32 link, u32 link_order, u32 dl_link_order, u32 flags, u32 color)
+GObj* gcMakeDefaultCameraGObj(s32 link, u32 link_priority, u32 dl_link_priority, u32 flags, u32 color)
 {
     GObj *gobj = gcMakeCameraGObj
     (
         -1,
         gcUpdateDefault,
         link,
-        link_order,
+        link_priority,
         func_80017DBC,
-        dl_link_order,
+        dl_link_priority,
         0,
         0,
         FALSE,

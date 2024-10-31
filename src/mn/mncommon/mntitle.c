@@ -199,7 +199,7 @@ SYTaskmanSetup dMNTitleTaskmanSetup =
     {
         0,                          // ???
         mnTitleFuncUpdate,          // Update function
-        func_8000A340,              // Frame draw function
+        gcDrawAll,                  // Frame draw function
         &ovl10_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???
@@ -446,7 +446,7 @@ void mnTitleProceedDemoNext(void)
 {
 	u8 scene_prev = gSceneData.scene_prev;
 
-	gcMakeDefaultCameraGObj(2, GOBJ_LINKORDER_DEFAULT, 0, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(2, GOBJ_PRIORITY_DEFAULT, 0, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mnTitleSetDemoFighterKinds();
 	func_800266A0_272A0();
 
@@ -475,7 +475,7 @@ void mnTitleProceedDemoNext(void)
 // 0x80132090
 void mnTitleProceedModeSelect(void)
 {
-	gcMakeDefaultCameraGObj(2, GOBJ_LINKORDER_DEFAULT, 0, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(2, GOBJ_PRIORITY_DEFAULT, 0, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	gSceneData.scene_prev = gSceneData.scene_curr;
 	gSceneData.scene_curr = nSCKindModeSelect;
@@ -878,12 +878,12 @@ void mnTitleMakeFire(void)
 	GObj *fire_gobj;
 	SObj *fire_sobj;
 
-	fire_gobj = gcMakeGObjSPAfter(5, mnTitleFireFuncRun, 6, GOBJ_LINKORDER_DEFAULT);
+	fire_gobj = gcMakeGObjSPAfter(5, mnTitleFireFuncRun, 6, GOBJ_PRIORITY_DEFAULT);
 
 	if (fire_gobj != NULL)
 	{
-		gcAddGObjDisplay(fire_gobj, mnTitleFireFuncDisplay, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
-		gcAddGObjProcess(fire_gobj, mnTitleFireProcUpdate, nGCProcessKindProc, 1);
+		gcAddGObjDisplay(fire_gobj, mnTitleFireFuncDisplay, 0, GOBJ_PRIORITY_DEFAULT, -1);
+		gcAddGObjProcess(fire_gobj, mnTitleFireProcUpdate, nGCProcessKindFunc, 1);
 
 		for (i = 0; i < 2; i++)
 		{
@@ -995,13 +995,13 @@ void mnTitleMakeLogoNoOpening(void)
 		11,
 		NULL,
 		10,
-		GOBJ_LINKORDER_DEFAULT,
+		GOBJ_PRIORITY_DEFAULT,
 		mnTitleLogoFuncDisplay,
 		0,
-		GOBJ_DLLINKORDER_DEFAULT,
+		GOBJ_PRIORITY_DEFAULT,
 		-1,
 		lbRelocGetFileData(Sprite*, sMNTitleFiles[0], dMNTitleCommonSpriteDescs[8].offset),
-		nGCProcessKindProc,
+		nGCProcessKindFunc,
 		NULL,
 		1
 	);
@@ -1033,14 +1033,14 @@ void mnTitleMakeLogo(void)
 	}
 	else
 	{
-		animated_logo_gobj = gcMakeGObjSPAfter(7, NULL, 7, GOBJ_LINKORDER_DEFAULT);
+		animated_logo_gobj = gcMakeGObjSPAfter(7, NULL, 7, GOBJ_PRIORITY_DEFAULT);
 		gcSetupCommonDObjs(animated_logo_gobj, lbRelocGetFileData(DObjDesc*, sMNTitleFiles[0], &lMNTitleLogoDObjDesc), 0);
 		gcAddAnimJointAll(animated_logo_gobj, lbRelocGetFileData(AObjEvent32**, sMNTitleFiles[0], &lMNTitleLogoAnimJoint), 0.0F);
 		gcPlayAnimAll(animated_logo_gobj);
 
-		fire_logo_gobj = gcMakeGObjSPAfter(6, NULL, 7, GOBJ_LINKORDER_DEFAULT);
-		gcAddGObjDisplay(fire_logo_gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
-		gcAddGObjProcess(fire_logo_gobj, mnTitlePlayAnim, nGCProcessKindProc, 1);
+		fire_logo_gobj = gcMakeGObjSPAfter(6, NULL, 7, GOBJ_PRIORITY_DEFAULT);
+		gcAddGObjDisplay(fire_logo_gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, -1);
+		gcAddGObjProcess(fire_logo_gobj, mnTitlePlayAnim, nGCProcessKindFunc, 1);
 
 		fire_logo_gobj->user_data.p = animated_logo_gobj;
 		fire_logo_dobj = DObjGetStruct(animated_logo_gobj)->child;
@@ -1069,13 +1069,13 @@ void mnTitleMakeLogo(void)
 			11,
 			mnTitleFadeOutLogoFuncRun,
 			10,
-			GOBJ_LINKORDER_DEFAULT,
+			GOBJ_PRIORITY_DEFAULT,
 			mnTitleLogoFuncDisplay,
 			0,
-			GOBJ_DLLINKORDER_DEFAULT,
+			GOBJ_PRIORITY_DEFAULT,
 			-1,
 			lbRelocGetFileData(Sprite*, sMNTitleFiles[0], dMNTitleLogoAnimSprites[3]),
-			nGCProcessKindProc,
+			nGCProcessKindFunc,
 			mnTitleLogoProcUpdate,
 			1
 		);
@@ -1103,8 +1103,8 @@ void mnTitleMakeSprites(void)
 	SObj *sobj;
 	s32 i;
 
-	gobj = gcMakeGObjSPAfter(8, NULL, 8, GOBJ_LINKORDER_DEFAULT);
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gobj = gcMakeGObjSPAfter(8, NULL, 8, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
 
 	for (i = 0; i < 7; i++)
 	{
@@ -1125,14 +1125,14 @@ void mnTitleMakeLabels(void)
 	SObj *texture_sobj;
 	DObj *animation_dobj;
 
-	animation_gobj = gcMakeGObjSPAfter(10, NULL, 8, GOBJ_LINKORDER_DEFAULT);
+	animation_gobj = gcMakeGObjSPAfter(10, NULL, 8, GOBJ_PRIORITY_DEFAULT);
 	gcSetupCommonDObjs(animation_gobj, lbRelocGetFileData(DObjDesc*, sMNTitleFiles[0], &lMNTitleLabelsDObjDesc), 0);
 	gcAddAnimJointAll(animation_gobj, lbRelocGetFileData(AObjEvent32**, sMNTitleFiles[0], &lMNTitleLabelsAnimJoint), 0.0F);
 	gcPlayAnimAll(animation_gobj);
 
-	gobj = gcMakeGObjSPAfter(8, NULL, 8, GOBJ_LINKORDER_DEFAULT);
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjProcess(gobj, mnTitleProcUpdate, nGCProcessKindProc, 1);
+	gobj = gcMakeGObjSPAfter(8, NULL, 8, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjProcess(gobj, mnTitleProcUpdate, nGCProcessKindFunc, 1);
 
 	gobj->user_data.p = animation_gobj;
 	animation_dobj = DObjGetStruct(animation_gobj)->child;
@@ -1149,9 +1149,9 @@ void mnTitleMakeLabels(void)
 	}
 	gobj->flags = GOBJ_FLAG_HIDDEN;
 
-	gobj = gcMakeGObjSPAfter(9, NULL, 8, GOBJ_LINKORDER_DEFAULT);
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjProcess(gobj, mnTitleUpdateLabelsPosition, nGCProcessKindProc, 1);
+	gobj = gcMakeGObjSPAfter(9, NULL, 8, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjProcess(gobj, mnTitleUpdateLabelsPosition, nGCProcessKindFunc, 1);
 
 	gobj->user_data.p = animation_gobj;
 
@@ -1176,16 +1176,16 @@ void mnTitleMakePressStart(void)
 	DObj *press_start_anim_dobj;
 	SObj *press_start_sobj;
 
-	press_start_anim_gobj = gcMakeGObjSPAfter(10, NULL, 8, GOBJ_LINKORDER_DEFAULT);
+	press_start_anim_gobj = gcMakeGObjSPAfter(10, NULL, 8, GOBJ_PRIORITY_DEFAULT);
 	gcSetupCommonDObjs(press_start_anim_gobj, lbRelocGetFileData(DObjDesc*, sMNTitleFiles[0], &lMNTitlePressStartDObjDesc), 0);
 	gcAddAnimJointAll(press_start_anim_gobj, lbRelocGetFileData(AObjEvent32**, sMNTitleFiles[0], &lMNTitlePressStartAnimJoint), 0.0F);
 	gcPlayAnimAll(press_start_anim_gobj);
 
 	press_start_anim_dobj = DObjGetStruct(press_start_anim_gobj)->child;
 
-	press_start_gobj = gcMakeGObjSPAfter(8, NULL, 9, GOBJ_LINKORDER_DEFAULT);
-	gcAddGObjDisplay(press_start_gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
-	gcAddGObjProcess(press_start_gobj, mnTitlePressStartProcUpdate, nGCProcessKindProc, 1);
+	press_start_gobj = gcMakeGObjSPAfter(8, NULL, 9, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(press_start_gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
+	gcAddGObjProcess(press_start_gobj, mnTitlePressStartProcUpdate, nGCProcessKindFunc, 1);
 
 	press_start_gobj->user_data.p = press_start_anim_gobj;
 
@@ -1220,8 +1220,8 @@ void mnTitleMakeSlash(void)
 
 	if (gSceneData.scene_prev == nSCKindOpeningNewcomers)
 	{
-		gobj = gcMakeGObjSPAfter(12, NULL, 14, GOBJ_LINKORDER_DEFAULT);
-		gcAddGObjDisplay(gobj, gcDrawDObjTreeDLLinksForGObj, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+		gobj = gcMakeGObjSPAfter(12, NULL, 14, GOBJ_PRIORITY_DEFAULT);
+		gcAddGObjDisplay(gobj, gcDrawDObjTreeDLLinksForGObj, 2, GOBJ_PRIORITY_DEFAULT, -1);
 		gcSetupCustomDObjsWithMObj
 		(
 			gobj,
@@ -1235,7 +1235,7 @@ void mnTitleMakeSlash(void)
 		gcAddAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32**, sMNTitleFiles[0], &lMNTitleSlashAnimJoint), 0.0F);
 		gcAddMatAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32***, sMNTitleFiles[0], &lMNTitleSlashMatAnimJoint), 0.0F);
 		gcPlayAnimAll(gobj);
-		gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
+		gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindFunc, 1);
 	}
 }
 
@@ -1304,21 +1304,21 @@ s32 mnTitleMakeCameras(void)
 	s32 unused;
 	CObj *cobj;
 
-	sMNTitleFireCameraGObj = gcMakeDefaultCameraGObj(2, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
-	gcAddGObjProcess(sMNTitleFireCameraGObj, mnTitleFireCameraProcUpdate, nGCProcessKindProc, 1);
+	sMNTitleFireCameraGObj = gcMakeDefaultCameraGObj(2, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcAddGObjProcess(sMNTitleFireCameraGObj, mnTitleFireCameraProcUpdate, nGCProcessKindFunc, 1);
 
 	camera_gobj = gcMakeCameraGObj
 	(
 		2,
 		NULL,
 		3,
-		GOBJ_LINKORDER_DEFAULT,
+		GOBJ_PRIORITY_DEFAULT,
 		lbCommonScissorSpriteCamera,
 		60,
 		COBJ_MASK_DLLINK(1) | COBJ_MASK_DLLINK(0),
 		-1,
 		FALSE,
-		nGCProcessKindProc,
+		nGCProcessKindFunc,
 		NULL,
 		1,
 		FALSE
@@ -1326,7 +1326,7 @@ s32 mnTitleMakeCameras(void)
 	cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-	camera_gobj = gcMakeCameraGObj(3, NULL, 3, GOBJ_LINKORDER_DEFAULT, func_80017EC0, 40, COBJ_MASK_DLLINK(2), -1, FALSE, nGCProcessKindProc, NULL, 1, FALSE);
+	camera_gobj = gcMakeCameraGObj(3, NULL, 3, GOBJ_PRIORITY_DEFAULT, func_80017EC0, 40, COBJ_MASK_DLLINK(2), -1, FALSE, nGCProcessKindFunc, NULL, 1, FALSE);
 	cobj = CObjGetStruct(camera_gobj);
 
 	gcAddXObjForCamera(cobj, nGCMatrixKindOrtho, 0);
@@ -1339,7 +1339,7 @@ s32 mnTitleMakeCameras(void)
 	cobj->vec.eye.x = cobj->vec.eye.y = 0.0F;
 	cobj->vec.eye.z = 2000.0F;
 
-	camera_gobj = gcMakeCameraGObj(3, NULL, 3, GOBJ_LINKORDER_DEFAULT, func_80017EC0, 80, COBJ_MASK_DLLINK(3), -1, TRUE, nGCProcessKindProc, NULL, 1, FALSE);
+	camera_gobj = gcMakeCameraGObj(3, NULL, 3, GOBJ_PRIORITY_DEFAULT, func_80017EC0, 80, COBJ_MASK_DLLINK(3), -1, TRUE, nGCProcessKindFunc, NULL, 1, FALSE);
 	cobj = CObjGetStruct(camera_gobj);
 
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -1375,8 +1375,8 @@ void mnTitleLogoFireFuncDisplay(GObj *gobj)
 // 0x80133DDC
 void mnTitleMakeLogoFire(void)
 {
-	GObj *gobj = gcMakeGObjSPAfter(15, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-	gcAddGObjDisplay(gobj, mnTitleLogoFireFuncDisplay, 3, GOBJ_DLLINKORDER_DEFAULT, -1);
+	GObj *gobj = gcMakeGObjSPAfter(15, NULL, 4, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(gobj, mnTitleLogoFireFuncDisplay, 3, GOBJ_PRIORITY_DEFAULT, -1);
 
 	gobj->cobj_mask = COBJ_MASK_DLLINK(0);
 
@@ -1391,12 +1391,12 @@ void mnTitleMakeLogoFireParticles(void)
 
 	if (gSceneData.scene_prev == nSCKindOpeningNewcomers)
 	{
-		logo_fire_effect_gobj = gcMakeGObjSPAfter(14, NULL, 5, GOBJ_LINKORDER_DEFAULT);
+		logo_fire_effect_gobj = gcMakeGObjSPAfter(14, NULL, 5, GOBJ_PRIORITY_DEFAULT);
 
 		gcSetupCommonDObjs(logo_fire_effect_gobj, lbRelocGetFileData(DObjDesc*, sMNTitleFiles[0], &lMNLogoFireDObjDesc), NULL);
 		gcAddAnimJointAll(logo_fire_effect_gobj, lbRelocGetFileData(AObjEvent32**, sMNTitleFiles[0], &lMNLogoFireAnimJoint), 0.0F);
 		gcPlayAnimAll(logo_fire_effect_gobj);
-		gcAddGObjProcess(logo_fire_effect_gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
+		gcAddGObjProcess(logo_fire_effect_gobj, gcPlayAnimAll, nGCProcessKindFunc, 1);
 
 		gtor = lbParticleMakeGenerator(sMNTitleParticleBankID, 0);
 
@@ -1410,8 +1410,8 @@ void mnTitleMakeLogoFireParticles(void)
 // 0x80133F3C
 void mnTitleMakeActors(void)
 {
-	sMNTitleMainGObj = gcMakeGObjSPAfter(0, mnTitleFuncRun, 1, GOBJ_LINKORDER_DEFAULT);
-	sMNTitleTransitionsGObj = gcMakeGObjSPAfter(0, mnTitleTransitionsFuncRun, 15, GOBJ_LINKORDER_DEFAULT);
+	sMNTitleMainGObj = gcMakeGObjSPAfter(0, mnTitleFuncRun, 1, GOBJ_PRIORITY_DEFAULT);
+	sMNTitleTransitionsGObj = gcMakeGObjSPAfter(0, mnTitleTransitionsFuncRun, 15, GOBJ_PRIORITY_DEFAULT);
 }
 
 // 0x80133F90
@@ -1455,7 +1455,7 @@ void mnTitleFuncLights(Gfx **dls)
 // 0x80134098
 void mnTitleFuncUpdate(void)
 {
-	func_8000A5E4();
+	gcRunAll();
 }
 
 // 0x801340B8

@@ -622,7 +622,7 @@ void func_800A2698(SYTaskmanSetup *arg) // set up gtl and om systems
 // 0x800A26B8
 void func_800A26B8()
 {
-	func_8000A340();
+	gcDrawAll();
 }
 
 extern D_ovl0_800D6448;
@@ -802,11 +802,11 @@ void scManagerProcPrintGObjStatus()
 				switch (gGCCurrentProcess->kind)
 				{
 				case nGCProcessKindThread:
-					syErrorDebugPrintf("thread:%x\n", gGCCurrentProcess->gobjthread->thread.context.pc);
+					syErrorDebugPrintf("thread:%x\n", gGCCurrentProcess->exec.gobjthread->thread.context.pc);
 					break;
 
-				case nGCProcessKindProc:
-					syErrorDebugPrintf("func:%x\n", gGCCurrentProcess->proc_thread);
+				case nGCProcessKindFunc:
+					syErrorDebugPrintf("func:%x\n", gGCCurrentProcess->exec.func);
 					break;
 				}
 			}

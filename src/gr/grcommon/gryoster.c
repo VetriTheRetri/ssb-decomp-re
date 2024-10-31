@@ -225,11 +225,11 @@ void grYosterInitAll(void)
 
     for (i = 0; i < ARRAY_COUNT(gGRCommonStruct.yoster.clouds); i++)
     {
-        map_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+        map_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_PRIORITY_DEFAULT);
 
         gGRCommonStruct.yoster.clouds[i].gobj = map_gobj;
 
-        gcAddGObjDisplay(map_gobj, gcDrawDObjTreeForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
+        gcAddGObjDisplay(map_gobj, gcDrawDObjTreeForGObj, 6, GOBJ_PRIORITY_DEFAULT, -1);
         gcSetupCustomDObjs
         (
             map_gobj, 
@@ -239,7 +239,7 @@ void grYosterInitAll(void)
             nGCMatrixKindNull, 
             nGCMatrixKindNull
         );
-        gcAddGObjProcess(map_gobj, gcPlayAnimAll, nGCProcessKindProc, 5);
+        gcAddGObjProcess(map_gobj, gcPlayAnimAll, nGCProcessKindFunc, 5);
 
         gcAddAnimJointAll(map_gobj, (uintptr_t)map_head + (intptr_t)&D_NF_000001E0, 0);
 
@@ -275,10 +275,10 @@ void grYosterInitAll(void)
 // 0x80108C80
 GObj* grYosterMakeGround(void)
 {
-    GObj *ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_PRIORITY_DEFAULT);
 
     grYosterInitAll();
-    gcAddGObjProcess(ground_gobj, grYosterProcUpdate, nGCProcessKindProc, 4);
+    gcAddGObjProcess(ground_gobj, grYosterProcUpdate, nGCProcessKindFunc, 4);
 
     return ground_gobj;
 }

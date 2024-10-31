@@ -101,7 +101,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
     {
         return NULL;
     }
-    weapon_gobj = gcMakeGObjSPAfter(nGCCommonKindWeapon, NULL, nGCCommonLinkIDWeapon, GOBJ_LINKORDER_DEFAULT);
+    weapon_gobj = gcMakeGObjSPAfter(nGCCommonKindWeapon, NULL, nGCCommonLinkIDWeapon, GOBJ_PRIORITY_DEFAULT);
 
     if (weapon_gobj == NULL)
     {
@@ -271,7 +271,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
 
         func_display = (wp_desc->flags & WEAPON_FLAG_DOBJLINKS) ? wpDisplayDObjDLLinks : wpDisplayDLHead1;
     }
-    gcAddGObjDisplay(weapon_gobj, func_display, 14, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(weapon_gobj, func_display, 14, GOBJ_PRIORITY_DEFAULT, -1);
 
     if (attr->p_mobjsubs != NULL)
     {
@@ -303,9 +303,9 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
     wp->coll_data.vel_push.y = 0.0F;
     wp->coll_data.vel_push.z = 0.0F;
 
-    gcAddGObjProcess(weapon_gobj, wpProcessProcWeaponMain, nGCProcessKindProc, 3);
-    gcAddGObjProcess(weapon_gobj, wpProcessProcSearchHitWeapon, nGCProcessKindProc, 1);
-    gcAddGObjProcess(weapon_gobj, wpProcessProcHitCollisions, nGCProcessKindProc, 0);
+    gcAddGObjProcess(weapon_gobj, wpProcessProcWeaponMain, nGCProcessKindFunc, 3);
+    gcAddGObjProcess(weapon_gobj, wpProcessProcSearchHitWeapon, nGCProcessKindFunc, 1);
+    gcAddGObjProcess(weapon_gobj, wpProcessProcHitCollisions, nGCProcessKindFunc, 0);
 
     wp->proc_update    = wp_desc->proc_update;
     wp->proc_map       = wp_desc->proc_map;

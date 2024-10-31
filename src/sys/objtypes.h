@@ -17,17 +17,16 @@
 #include <sys/objdef.h>
 
 // General OM defines
-#define GC_COMMON_MAX_LINKS     33
-#define GC_COMMON_MAX_DLLINKS  65
+#define GC_COMMON_MAX_LINKS         33
+#define GC_COMMON_MAX_DLLINKS       65
 
 // GObj defines
 #define GOBJ_FLAG_NONE              (0)
 #define GOBJ_FLAG_HIDDEN            (1 << 0)
-#define GOBJ_FLAG_NOANIM            (1 << 1)    // Skip applying aninmation values?
-#define GOBJ_FLAG_NOFUNC            (1 << 6)    // I actually don't know what this really does
+#define GOBJ_FLAG_NOANIM            (1 << 1)            // Skip applying aninmation values?
+#define GOBJ_FLAG_NOFUNC            (1 << 6)            // I actually don't know what this really does
 
-#define GOBJ_LINKORDER_DEFAULT      0x80000000
-#define GOBJ_DLLINKORDER_DEFAULT    0x80000000
+#define GOBJ_PRIORITY_DEFAULT       S32_MIN
 
 // DObj defines
 #define DOBJ_PARENT_NULL            ((DObj*)1)
@@ -157,19 +156,21 @@ struct GObjProcess
 {
     GObjProcess *link_next;
     GObjProcess *link_prev;
-    GObjProcess *priority_next; // This is more than likely not an array, doing this only to get the correct offsets
+    GObjProcess *priority_next;         // This is more than likely not an array, doing this only to get the correct offsets.
     GObjProcess *priority_prev;
     s32 priority;
     u8 kind;
     ub8 is_paused;
     GObj *parent_gobj;
     
-    union // These are based on 0x14
+    union GObjProcessExec               // These are based on kind.
     {
-        GObjThread *gobjthread; // GObjThread
-        void(*proc_thread)(GObj*);
-    };
-    void (*proc_common)(GObj*);
+        GObjThread *gobjthread;
+        void (*func)(GObj*);
+
+    } exec;
+
+    void (*func_id)(GObj*);             // Used to identify GObjProcesses that should be paused by function. So weird.
 };
 
 struct GObjLink
@@ -186,8 +187,8 @@ struct GObj
     u8 link_id;
     u8 dl_link_id;
     u8 frame_draw_last;                 // Last frame drawn?
-    u8 obj_kind;                        // Determines kind of *obj: 0 = NULL, 1 = DObj, 2 = SObj, 3 = Camera
-    u32 link_order;
+    u8 obj_kind;                        // Determines kind of *obj: 0 = NULL, 1 = DObj, 2 = SObj, 3 = CObj
+    u32 link_priority;
     void (*func_run)(GObj*);
     GObjProcess *gobjproc_head;
 
@@ -200,14 +201,14 @@ struct GObj
     
     GObj *dl_link_next;
     GObj *dl_link_prev;
-    u32 dl_link_order;
+    u32 dl_link_priority;
     void (*func_display)(GObj*);
     u64 cobj_mask;
     u32 cobj_tag;                       // Usually 0xFFFFFFFF
     u64 unk_gobj_0x40;
     GObjLink gobjlinks[5];
     s32 gobjlinks_num;                  // Length/number of active members of gobjlinks
-    void *obj;                          // Can be: NULL, DObj, SObj or Camera
+    void *obj;                          // Can be: NULL, DObj, SObj or CObj
     f32 anim_frame;                     // Current frame of animation
     u32 flags;                          // GObj logic flags (e.g. 0x1 = skip rendering)
     void (*func_anim)(DObj*, s32, f32);

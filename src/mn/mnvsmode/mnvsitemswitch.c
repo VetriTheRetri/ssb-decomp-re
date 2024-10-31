@@ -204,9 +204,9 @@ void mnVSItemSwitchMakeLabels(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, mnVSItemSwitchLabelsFuncDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, mnVSItemSwitchLabelsFuncDisplay, 1, GOBJ_PRIORITY_DEFAULT, -1);
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSItemSwitchFiles[0], &lMNVSItemSwitchLabelVSOptionsSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -290,7 +290,7 @@ void func_ovl21_80131F30(s32 option_id)
     
     s32 unused2[2];
     
-    sMNVSItemSwitchUnkGObj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
+    sMNVSItemSwitchUnkGObj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 }
 
 // 0x80131FDC
@@ -299,8 +299,8 @@ void mnVSItemSwitchMakeDecal(void)
     GObj *gobj;
     SObj *sobj;
     
-    gobj = gcMakeGObjSPAfter(0, NULL, 6, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 4, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gobj = gcMakeGObjSPAfter(0, NULL, 6, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 4, GOBJ_PRIORITY_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSItemSwitchFiles[0], &lMNVSItemSwitchDecalButtonSprite));
     
@@ -321,8 +321,8 @@ void mnVSItemSwitchMakeItemList(void)
     GObj *gobj;
     SObj *sobj;
     
-    gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSItemSwitchFiles[0], &lMNVSItemSwitchItemListSprite));
     
@@ -357,9 +357,9 @@ void mnVSItemSwitchMakeCursor(s32 off_y)
     GObj *gobj;
     SObj *sobj;
 
-    sMNVSItemSwitchCursorGObj = gobj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_LINKORDER_DEFAULT);
+    sMNVSItemSwitchCursorGObj = gobj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 3, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 3, GOBJ_PRIORITY_DEFAULT, -1);
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSItemSwitchFiles[0], &lMNVSItemSwitchCursorSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -400,9 +400,9 @@ void mnVSItemSwitchMakeAppearance(s32 rate)
         &lMNVSItemSwitchAppearanceVeryHighSprite
     };
         
-    sMNVSItemSwitchOptionGObjs[0] = gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
+    sMNVSItemSwitchOptionGObjs[0] = gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSItemSwitchFiles[0], rate_offsets[rate]));
     
@@ -427,9 +427,9 @@ void mnVSItemSwitchInitToggles(void)
     
     for (i = 1; i < (ARRAY_COUNT(sMNVSItemSwitchOptionGObjs) + ARRAY_COUNT(sMNVSItemSwitchOptionStatuses)) / 2; i++)
     {
-        sMNVSItemSwitchOptionGObjs[i] = gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
+        sMNVSItemSwitchOptionGObjs[i] = gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 
-        gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+        gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
         mnVSItemSwitchMakeToggle(gobj, 244.0F, i * 10 + 54);
         mnVSItemSwitchSetToggleSpriteColors(gobj, sMNVSItemSwitchOptionStatuses[i]);
     }
@@ -445,13 +445,13 @@ void mnVSItemSwitchMakeCursorCamera(void)
             1,
             NULL,
             1,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             30,
             COBJ_MASK_DLLINK(3),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -470,13 +470,13 @@ void mnVSItemSwitchMakeLabelsCamera(void)
             1,
             NULL,
             1,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             40,
             COBJ_MASK_DLLINK(1),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -501,13 +501,13 @@ void mnVSItemSwitchMakeDecalCamera(void)
             1,
             NULL,
             1,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             60,
             COBJ_MASK_DLLINK(4),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -825,8 +825,8 @@ void mnVSItemSwitchFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mnVSItemSwitchFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeGObjSPAfter(0, mnVSItemSwitchFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     
     mnVSItemSwitchInitVars();
     mnVSItemSwitchMakeCursorCamera();
@@ -850,8 +850,8 @@ SYTaskmanSetup dMNVSItemSwitchTaskmanSetup =
     // Task Logic Buffer Setup
     {
         0,                          // ???
-        func_8000A5E4,              // Update function
-        func_8000A340,              // Frame draw function
+        gcRunAll,              		// Update function
+        gcDrawAll,                  // Frame draw function
         &ovl21_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???

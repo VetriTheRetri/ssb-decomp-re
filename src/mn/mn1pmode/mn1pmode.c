@@ -201,8 +201,8 @@ void mn1PModeMake1PGame(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMN1PModeOptionGObjs[nMN1PModeOption1PGame] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    sMN1PModeOptionGObjs[nMN1PModeOption1PGame] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
     
     mn1PModeMakeOptionTab(gobj, 124.0F, 42.0F, 16);
     mn1PModeSetOptionSpriteColors(gobj, sMN1PModeOption == nMN1PModeOption1PGame, nMN1PModeOption1PGame);
@@ -226,8 +226,8 @@ void mn1PModeMakeTrainingMode(void)
     GObj *gobj;
     SObj *sobj;
     
-    sMN1PModeOptionGObjs[nMN1PModeOptionTrainingMode] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    sMN1PModeOptionGObjs[nMN1PModeOptionTrainingMode] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
     
     mn1PModeMakeOptionTab(gobj, 99.0F, 84.0F, 16);
     mn1PModeSetOptionSpriteColors(gobj, sMN1PModeOption == nMN1PModeOptionTrainingMode, nMN1PModeOptionTrainingMode);
@@ -251,8 +251,8 @@ void mn1PModeMakeBonus1Practice(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMN1PModeOptionGObjs[nMN1PModeOptionBonus1Practice] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    sMN1PModeOptionGObjs[nMN1PModeOptionBonus1Practice] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[1], &lMN1PModeOptionTabSprite));
     
@@ -282,8 +282,8 @@ void mn1PModeMakeBonus2Practice(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMN1PModeOptionGObjs[nMN1PModeOptionBonus2Practice] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    sMN1PModeOptionGObjs[nMN1PModeOptionBonus2Practice] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[1], &lMN1PModeOptionTabSprite));
     
@@ -325,7 +325,7 @@ void func_ovl18_80132208(SObj *sobj)
 // 0x8013223C
 void func_ovl18_8013223C(void)
 {
-    D_801331BC_11F2CC = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_LINKORDER_DEFAULT);
+    D_801331BC_11F2CC = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT);
 }
 
 // 0x8013226C
@@ -351,8 +351,8 @@ void mn1PModeMakeLabels(void)
     GObj *gobj;
     SObj *sobj;
     
-    gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, mn1PModeLabelsFuncDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, mn1PModeLabelsFuncDisplay, 1, GOBJ_PRIORITY_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[0], &lMNCommonSmashLogoSprite));
     
@@ -397,8 +397,8 @@ void mn1PModeMakeDecals(void)
     GObj *gobj;
     SObj *sobj;
     
-    gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMN1PModeFiles[0], &lMNCommonWallpaperSprite));
     
@@ -452,13 +452,13 @@ void mn1PModeMakeLink3Camera(void)
             1,
             NULL,
             1,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             20,
             COBJ_MASK_DLLINK(3),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -477,13 +477,13 @@ void mn1PModeMakeOptionsCamera(void)
             1,
             NULL,
             1,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             40,
             COBJ_MASK_DLLINK(2),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -502,13 +502,13 @@ void mn1PModeMakeLabelsCamera(void)
             1,
             NULL,
             1,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             60,
             COBJ_MASK_DLLINK(1),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -527,13 +527,13 @@ void mn1PModeMakeDecalsCamera(void)
             1,
             NULL,
             1,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             80,
             COBJ_MASK_DLLINK(0),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -769,8 +769,8 @@ void mn1PModeFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mn1PModeFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
+    gcMakeGObjSPAfter(0, mn1PModeFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
     
     mn1PModeInitVars();
     mn1PModeMakeDecalsCamera();
@@ -800,8 +800,8 @@ SYTaskmanSetup dMN1PModeTaskmanSetup =
     // Task Logic Buffer Setup
     {
         0,                          // ???
-        func_8000A5E4,              // Update function
-        func_8000A340,              // Frame draw function
+        gcRunAll,              		// Update function
+        gcDrawAll,                  // Frame draw function
         &ovl18_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???

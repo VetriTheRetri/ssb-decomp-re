@@ -1382,7 +1382,7 @@ GObj* efGroundMakeEffect(EFCreateDesc *effect_desc, s32 lr)
     }
     else ep = NULL;
 
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, efManagerFuncRun, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, efManagerFuncRun, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -1403,7 +1403,7 @@ GObj* efGroundMakeEffect(EFCreateDesc *effect_desc, s32 lr)
     else
     {
         gcAddGObjDisplay(effect_gobj, effect_desc->func_display, effect_desc->dl_link, 2, -1);
-        gcMoveGObjDLHead(effect_gobj, effect_desc->dl_link, GOBJ_DLLINKORDER_DEFAULT);
+        gcMoveGObjDLHead(effect_gobj, effect_desc->dl_link, GOBJ_PRIORITY_DEFAULT);
 
         o_mobsjub = effect_desc->o_mobjsub;
         o_anim_joint = effect_desc->o_anim_joint;
@@ -1578,11 +1578,11 @@ void efGroundMakeEffectSpawnActor(void)
 
     if ((gBattleState->gkind <= nGRKindBattleEnd) && (gSceneData.scene_curr != nSCKind1PTraining) && (dEFGroundDatas[gBattleState->gkind].effect_params != NULL))
     {
-        effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, 7, GOBJ_LINKORDER_DEFAULT);
+        effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, 7, GOBJ_PRIORITY_DEFAULT);
 
         if (effect_gobj != NULL)
         {
-            gcAddGObjProcess(effect_gobj, EFGroundActorProcUpdate, nGCProcessKindProc, 1);
+            gcAddGObjProcess(effect_gobj, EFGroundActorProcUpdate, nGCProcessKindFunc, 1);
 
             effect_gobj->user_data.p = &sEFGroundActor;
 

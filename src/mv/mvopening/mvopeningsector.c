@@ -172,10 +172,10 @@ void mvOpeningSectorMakeWallpaper(void)
     GObj* wallpaper_gobj;
     SObj* wallpaper_sobj;
 
-    sMVOpeningSectorWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
+    sMVOpeningSectorWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjProcess(wallpaper_gobj, mvOpeningSectorWallpaperProcUpdate, nGCProcessKindProc, 1);
+    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjProcess(wallpaper_gobj, mvOpeningSectorWallpaperProcUpdate, nGCProcessKindFunc, 1);
 
     wallpaper_sobj = lbCommonMakeSObjForGObj
     (
@@ -243,7 +243,7 @@ void mvOpeningSectorMakeGreatFox(void)
 {
     GObj* great_fox_gobj;
 
-    sMVOpeningSectorGreatFoxGObj = great_fox_gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
+    sMVOpeningSectorGreatFoxGObj = great_fox_gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
 
     gcSetupCustomDObjs
     (
@@ -259,7 +259,7 @@ void mvOpeningSectorMakeGreatFox(void)
         nGCMatrixKindNull,
         nGCMatrixKindNull
     );
-    gcAddGObjDisplay(great_fox_gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(great_fox_gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_PRIORITY_DEFAULT, -1);
 
     DObjGetStruct(great_fox_gobj)->translate.vec.f.x = 0.0F;
     DObjGetStruct(great_fox_gobj)->translate.vec.f.y = 0.0F;
@@ -276,7 +276,7 @@ void mvOpeningSectorMakeGreatFox(void)
         ),
         0.0F
     );
-    gcAddGObjProcess(great_fox_gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
+    gcAddGObjProcess(great_fox_gobj, gcPlayAnimAll, nGCProcessKindFunc, 1);
 }
 
 // 0x8013202C
@@ -330,10 +330,10 @@ void mvOpeningSectorMakeCockpit(void)
 
     sMVOpeningSectorCockpitAlpha = 0;
 
-    cockpit_gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_LINKORDER_DEFAULT);
+    cockpit_gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(cockpit_gobj, mvOpeningSectorCockpitFuncDisplay, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjProcess(cockpit_gobj, mvOpeningSectorCockpitProcUpdate, nGCProcessKindProc, 1);
+    gcAddGObjDisplay(cockpit_gobj, mvOpeningSectorCockpitFuncDisplay, 29, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjProcess(cockpit_gobj, mvOpeningSectorCockpitProcUpdate, nGCProcessKindFunc, 1);
 
     cockpit_sobj = lbCommonMakeSObjForGObj
     (
@@ -369,7 +369,7 @@ void mvOpeningSectorMakeArwings(void)
 
     for (i = 0; i < (ARRAY_COUNT(sMVOpeningSectorArwingGObjs) + ARRAY_COUNT(anim_joints)) / 2; i++)
     {
-        sMVOpeningSectorArwingGObjs[i] = arwing_gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
+        sMVOpeningSectorArwingGObjs[i] = arwing_gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
         gcSetupCustomDObjs
         (
             arwing_gobj,
@@ -384,9 +384,9 @@ void mvOpeningSectorMakeArwings(void)
             nGCMatrixKindNull,
             nGCMatrixKindNull
         );
-        gcAddGObjDisplay(arwing_gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+        gcAddGObjDisplay(arwing_gobj, gcDrawDObjTreeDLLinksForGObj, 27, GOBJ_PRIORITY_DEFAULT, -1);
         gcAddAnimJointAll(arwing_gobj, lbRelocGetFileData(AObjEvent32**, sMVOpeningSectorFiles[0], anim_joints[i]), 0.0F);
-        gcAddGObjProcess(arwing_gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
+        gcAddGObjProcess(arwing_gobj, gcPlayAnimAll, nGCProcessKindFunc, 1);
     }
 }
 
@@ -404,13 +404,13 @@ void mvOpeningSectorMakeMainCamera(void)
         nGCCommonKindSceneCamera,
         NULL,
         16,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         func_80017EC0,
         40,
         COBJ_MASK_DLLINK(27),
         -1,
         TRUE,
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL, 
         1,
         FALSE
@@ -423,7 +423,7 @@ void mvOpeningSectorMakeMainCamera(void)
     cobj->projection.persp.far = 30000.0F;
 
     gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningSectorFiles[0], &lMVOpeningSectorCamAnimJoint), 0.0F);
-    gcAddGObjProcess(camera_gobj, mvOpeningSectorCameraProcUpdate, nGCProcessKindProc, 1);
+    gcAddGObjProcess(camera_gobj, mvOpeningSectorCameraProcUpdate, nGCProcessKindFunc, 1);
 }
 
 // 0x80132500
@@ -436,13 +436,13 @@ void mvOpeningSectorMakeWallpaperCamera(void)
             nGCCommonKindSceneCamera,
             NULL,
             16,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             90,
             COBJ_MASK_DLLINK(28),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL, 
             1,
             FALSE
@@ -461,13 +461,13 @@ void mvOpeningSectorMakeCockpitCamera(void)
             nGCCommonKindSceneCamera,
             NULL,
             16,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             20,
             COBJ_MASK_DLLINK(29),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL, 
             1,
             FALSE
@@ -553,9 +553,9 @@ void mvOpeningSectorFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mvOpeningSectorFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
+    gcMakeGObjSPAfter(0, mvOpeningSectorFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
+    gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 
     mvOpeningSectorInitTotalTimeTics();
     mvOpeningSectorMakeMainCamera();
@@ -583,8 +583,8 @@ SYTaskmanSetup mvOpeningSectorTaskmanSetup =
     // Task Logic Buffer Setup
     {
         0,                              // ???
-        func_8000A5E4,                  // Update function
-        func_8000A340,                  // Frame draw function
+        gcRunAll,                  // Update function
+        gcDrawAll,                  // Frame draw function
         &ovl50_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???

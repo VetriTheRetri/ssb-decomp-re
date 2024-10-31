@@ -67,7 +67,7 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
     {
         return NULL;
     }
-    twister_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    twister_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_PRIORITY_DEFAULT);
 
     if (twister_gobj != NULL)
     {
@@ -415,9 +415,9 @@ void grHyruleTwisterInitVars(void)
 // 0x8010AB20
 GObj* grHyruleMakeGround(void)
 {
-    GObj *ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjProcess(ground_gobj, grHyruleTwisterProcUpdate, nGCProcessKindProc, 4);
+    gcAddGObjProcess(ground_gobj, grHyruleTwisterProcUpdate, nGCProcessKindFunc, 4);
     grHyruleTwisterInitVars();
 
     return ground_gobj;

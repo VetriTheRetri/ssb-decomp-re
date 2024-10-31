@@ -718,7 +718,7 @@ void lbCommonMatrixRotSca(Mtx *mtx, f32 rotx, f32 roty, f32 rotz, f32 scax, f32 
 // 0x800C8634
 void func_ovl0_800C8634(void)
 {
-	func_8000A5E4();
+	gcRunAll();
 }
 
 // 0x800C8654
@@ -2859,10 +2859,10 @@ GObj* lbCommonMakeSpriteGObj
     u32 id,
     void (*func_run)(GObj*),
     s32 link,
-    u32 link_order,
+    u32 link_priority,
     void (*func_display)(GObj*),
     s32 dl_link,
-    u32 dl_link_order,
+    u32 dl_link_priority,
     u32 cobj_tag,
     Sprite *sprite,
     u8 gobjproc_kind,
@@ -2870,13 +2870,13 @@ GObj* lbCommonMakeSpriteGObj
     u32 gobjproc_priority
 )
 {
-    GObj *gobj = gcMakeGObjSPAfter(id, func_run, link, link_order);
+    GObj *gobj = gcMakeGObjSPAfter(id, func_run, link, link_priority);
         
     if (gobj == NULL)
     {
         return NULL;
     }
-    gcAddGObjDisplay(gobj, func_display, dl_link, dl_link_order, cobj_tag);
+    gcAddGObjDisplay(gobj, func_display, dl_link, dl_link_priority, cobj_tag);
     
     lbCommonMakeSObjForGObj(gobj, sprite);
         

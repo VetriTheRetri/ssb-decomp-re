@@ -432,7 +432,7 @@ void FTShadowFuncDisplay(GObj *shadow_gobj)
 // 0x8013BB88
 GObj* FTShadowMakeShadow(GObj *fighter_gobj)
 {
-    GObj *shadow_gobj = gcMakeGObjSPAfter(nGCCommonKindShadow, NULL, nGCCommonLinkIDShadow, GOBJ_LINKORDER_DEFAULT);
+    GObj *shadow_gobj = gcMakeGObjSPAfter(nGCCommonKindShadow, NULL, nGCCommonLinkIDShadow, GOBJ_PRIORITY_DEFAULT);
     FTStruct *fp;
     FTShadow *fs = syTaskmanMalloc(sizeof(FTShadow), 0x8);
     s32 i;
@@ -460,7 +460,7 @@ GObj* FTShadowMakeShadow(GObj *fighter_gobj)
     }
     shadow_gobj->user_data.p = fs;
 
-    gcAddGObjDisplay(shadow_gobj, FTShadowFuncDisplay, 7, GOBJ_LINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(shadow_gobj, FTShadowFuncDisplay, 7, GOBJ_PRIORITY_DEFAULT, -1);
 
     return shadow_gobj;
 }

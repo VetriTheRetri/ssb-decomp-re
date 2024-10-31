@@ -99,7 +99,7 @@ void func_ovl5_8018D1A0()
 	gBattleState->players[0].pkind = nFTPlayerKindKey;
 
 	func_ovl5_8018D0C0();
-	gcMakeGObjSPAfter(0x3F7U, func_ovl5_8018D160, 0xDU, GOBJ_LINKORDER_DEFAULT);
+	gcMakeGObjSPAfter(0x3F7U, func_ovl5_8018D160, 0xDU, GOBJ_PRIORITY_DEFAULT);
 	gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 1, 0xFF);
 	efParticleInitAll();
 	ftParamInitGame();

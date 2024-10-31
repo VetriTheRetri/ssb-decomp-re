@@ -851,7 +851,7 @@ GObj* mnStageCreateStageGeo(s32 stage_id, MPGroundData* stage_info, MPGroundDesc
 		return NULL;
 	}
 
-	stage_geo_gobj = gcMakeGObjSPAfter(0U, NULL, 5U, GOBJ_LINKORDER_DEFAULT);
+	stage_geo_gobj = gcMakeGObjSPAfter(0U, NULL, 5U, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(stage_geo_gobj, (stage_info->layer_mask & (1 << stage_geo_id)) ? mnStageRenderStagePreviewSecondary : mnStageRenderStagePreviewPrimary, 3U, 0x80000000U, -1);
 	gcSetupCustomDObjs(stage_geo_gobj, stage_geo->dobjdesc, NULL, nGCMatrixKindTraRotRpyRSca, nGCMatrixKindNull, nGCMatrixKindNull);
 

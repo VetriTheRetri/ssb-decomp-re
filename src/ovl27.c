@@ -3158,7 +3158,7 @@ SYVideoSetup D_ovl27_80138C90 = {
 scRuntimeInfo D_ovl27_80138CAC = {
 
 	0x00000000, 0x8000A5E4,
-	func_8000A340, &lOverlay27ArenaLo,
+	gcDrawAll, &lOverlay27ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00004A38, 0x00000200,
 	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x00008000,
 	mn1PFuncLights, update_contdata,

@@ -332,7 +332,7 @@ GObj* itSawamuraMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         func_800269C0_275C0(nSYAudioVoiceMBallSawamuraAppear);
 
-        gcMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_order);
+        gcMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_priority);
     }
     return item_gobj;
 }

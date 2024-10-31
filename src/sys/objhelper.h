@@ -16,8 +16,8 @@ extern void gcPauseProcessAll(GObj *gobj);
 extern void gcResumeProcessAll(GObj *gobj);
 extern void gcPauseGObjProcess(GObjProcess *gobjproc);
 extern void gcResumeGObjProcess(GObjProcess *gobjproc);
-extern void gcPauseProcessByProc(GObj *gobj, void (*proc_common)(GObj*));
-extern void gcResumeProcessByProc(GObj *gobj, void (*proc_common)(GObj*));
+extern void gcPauseProcessByProc(GObj *gobj, void (*func_id)(GObj*));
+extern void gcResumeProcessByProc(GObj *gobj, void (*func_id)(GObj*));
 extern void gcEndProcessAll(GObj *gobj);
 extern void gcAddDObjMatrixSetsRpyD(DObj* dobj);
 extern void gcAddDObjMatrixSetsRpyR(DObj* dobj);
@@ -37,10 +37,10 @@ extern GObj* gcMakeModelGObj
     u32 id,
     void (*func_run)(GObj*),
     s32 link,
-    u32 link_order,
+    u32 link_priority,
     void (*func_display)(GObj*),
     u8 dl_link,
-    u32 dl_link_order,
+    u32 dl_link_priority,
     u32 cobj_tag,
     void *dvar,
     sb32 is_add_default_xobj,
@@ -53,10 +53,10 @@ extern GObj* gcMakeSpriteGObj
     u32 id,
     void (*func_run)(GObj*),
     s32 link,
-    u32 link_order,
+    u32 link_priority,
     void (*func_display)(GObj*),
     s32 dl_link,
-    u32 dl_link_order,
+    u32 dl_link_priority,
     u32 cobj_tag,
     Sprite *sprite,
     u8 gobjproc_kind,
@@ -68,9 +68,9 @@ GObj* gcMakeCameraGObj
     u32 id,
     void (*func_run)(GObj*),
     s32 link,
-    u32 link_order,
+    u32 link_priority,
     void (*func_display)(GObj*),
-    u32 dl_link_order,
+    u32 dl_link_priority,
     u64 cobj_mask,
     u32 cobj_tag,
     sb32 is_add_default_xobj,
@@ -79,6 +79,6 @@ GObj* gcMakeCameraGObj
     u32 gobjproc_priority,
     sb32 argD
 );
-extern GObj* gcMakeDefaultCameraGObj(s32 link, u32 link_order, u32 dl_link_order, u32 flags, u32 color);
+extern GObj* gcMakeDefaultCameraGObj(s32 link, u32 link_priority, u32 dl_link_priority, u32 flags, u32 color);
 
 #endif

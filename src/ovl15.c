@@ -133,7 +133,7 @@ GObj* dbFallsCreateViewport(void (*proc)(GObj*))
 void dbFallsInit()
 {
 	gcMakeGObjSPAfter(0, dbFallsMain, 0, 0x80000000);
-	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	dbFallsCreateViewport(0);
 	dbMenuInitMenu();
 	dbMenuCreateMenu(0x32, 0x32, 0x64, &dMNDebugFallsMenuItems, 0xD);

@@ -635,9 +635,9 @@ void grPupupuProcUpdate(GObj *ground_gobj)
 // 0x801064C8
 GObj* grPupupuMakeMapGObj(intptr_t o_dobjdesc, intptr_t o_mobjsub, void (*func_display)(GObj*), u8 dl_link)
 {
-    GObj *ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(ground_gobj, func_display, dl_link, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(ground_gobj, func_display, dl_link, GOBJ_PRIORITY_DEFAULT, -1);
 
     gcSetupCustomDObjs
     (
@@ -653,7 +653,7 @@ GObj* grPupupuMakeMapGObj(intptr_t o_dobjdesc, intptr_t o_mobjsub, void (*func_d
     {
         gcAddMObjAll(ground_gobj, lbRelocGetFileData(MObjSub***, gGRCommonStruct.pupupu.map_head, o_mobjsub));
     }
-    gcAddGObjProcess(ground_gobj, gcPlayAnimAll, nGCProcessKindProc, 5);
+    gcAddGObjProcess(ground_gobj, gcPlayAnimAll, nGCProcessKindFunc, 5);
 
     return ground_gobj;
 }
@@ -692,9 +692,9 @@ void grPupupuInitAll(void)
 // 0x801066D4
 GObj* grPupupuMakeGround(void)
 {
-    GObj *ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjProcess(ground_gobj, grPupupuProcUpdate, nGCProcessKindProc, 4);
+    gcAddGObjProcess(ground_gobj, grPupupuProcUpdate, nGCProcessKindFunc, 4);
     grPupupuInitAll();
 
     return ground_gobj;

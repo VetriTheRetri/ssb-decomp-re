@@ -713,7 +713,7 @@ void mvOpeningFirstDestinationConfigureFirstSceneViewport(GObj* camera_gobj)
 	cobj->projection.persp.near = 80.0F;
 	cobj->projection.persp.far = 15000.0F;
 	gcAddCameraCamAnimJoint(cobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[2], &FILE_038_CAMERA_PARAMETERS_OFFSET), 0.0F);
-	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
+	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 	cobj->flags |= 4;
 }
 
@@ -737,7 +737,7 @@ void mvOpeningFirstDestinationConfigureSecondSceneViewport(GObj* camera_gobj)
 	CObj *cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 	gcAddCameraCamAnimJoint(cobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[3], &FILE_039_CAMERA_PARAMETERS_OFFSET), 0.0F);
-	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
+	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 	cobj->flags |= 4;
 }
 
@@ -773,7 +773,7 @@ void mvOpeningFirstDestinationConfigureThirdSceneViewport(GObj* camera_gobj)
 	cobj->projection.persp.near = 128.0F;
 	cobj->projection.persp.far = 16384.0F;
 	gcAddCameraCamAnimJoint(cobj, GetAddressFromOffset(gMVOpeningFirstDestinationFiles[4], &FILE_03A_CAMERA_PARAMETERS_OFFSET), 0.0F);
-	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
+	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 	cobj->flags |= 4;
 }
 
@@ -1123,7 +1123,7 @@ void mvOpeningFirstDestinationInit()
 	lbRelocLoadFilesExtern(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20), gMVOpeningFirstDestinationFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl34_80134A20, ARRAY_COUNT(D_ovl34_80134A20)), 0x10));
 
 	gcMakeGObjSPAfter(0, mvOpeningFirstDestinationMainProc, 0, 0x80000000);
-	gMVOpeningFirstDestinationCameraGObj = gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gMVOpeningFirstDestinationCameraGObj = gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efParticleInitAll();
 	mvOpeningFirstDestinationInitGlobals();
 	efManagerInitEffects();

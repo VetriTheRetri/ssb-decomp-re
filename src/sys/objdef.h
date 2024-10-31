@@ -32,7 +32,7 @@ typedef enum GObjKind
 typedef enum GObjProcessKind
 {
     nGCProcessKindThread,
-    nGCProcessKindProc,
+    nGCProcessKindFunc,
     nGCProcessKindEnumMax
 
 } GObjProcessKind;
@@ -238,6 +238,14 @@ typedef enum GCStatus
     nGCStatusDisplaying             // Processing current CObj and DObj's rendering?
 
 } GCStatus;
+
+typedef enum GCRunStatus
+{
+    nGCRunStatusDefault,
+    nGCRunStatusEnd,
+    nGCRunStatusEject
+    
+} GCRunStatus;
 
 typedef union  AObjEvent16          AObjEvent16;
 typedef union  AObjEvent32          AObjEvent32;

@@ -160,11 +160,11 @@ void mvOpeningClashMakeVoid(void)
             0,
             NULL,
             18,
-            GOBJ_LINKORDER_DEFAULT
+            GOBJ_PRIORITY_DEFAULT
         ),
         mvOpeningClashVoidFuncDisplay,
         26,
-        GOBJ_DLLINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         -1
     );
 }
@@ -173,8 +173,8 @@ void mvOpeningClashMakeVoid(void)
 void mvOpeningClashMakeWallpaper(void)
 {
     // lower left quadrant
-    GObj* gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
+    GObj* gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_PRIORITY_DEFAULT, -1);
     gcAddXObjForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLDisplayList)), 0x1C, 0);
     gcAddMObjAll(gobj, lbRelocGetFileData(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLMObjSub));
     gcAddMatAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLMatAnimJoint), 0.0F);
@@ -184,11 +184,11 @@ void mvOpeningClashMakeWallpaper(void)
     DObjGetStruct(gobj)->translate.vec.f.z = 0.0F;
 
     gcAddAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32**, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLLAnimJoint), 0.0F);
-    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
+    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindFunc, 1);
 
     // lower right quadrant
-    gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_PRIORITY_DEFAULT, -1);
     gcAddXObjForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRDisplayList)), 0x1C, 0);
     gcAddMObjAll(gobj, lbRelocGetFileData(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRMObjSub));
     gcAddMatAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRMatAnimJoint), 0.0F);
@@ -198,11 +198,11 @@ void mvOpeningClashMakeWallpaper(void)
     DObjGetStruct(gobj)->translate.vec.f.z = 0.0F;
 
     gcAddAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32**, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperLRAnimJoint), 0.0F);
-    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
+    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindFunc, 1);
 
     // upper left quadrant
-    gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_PRIORITY_DEFAULT, -1);
     gcAddXObjForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULDisplayList)), 0x1C, 0);
     gcAddMObjAll(gobj, lbRelocGetFileData(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULMObjSub));
     gcAddMatAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULMatAnimJoint), 0.0F);
@@ -212,11 +212,11 @@ void mvOpeningClashMakeWallpaper(void)
     DObjGetStruct(gobj)->translate.vec.f.z = 0.0F;
 
     gcAddAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32**, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperULAnimJoint), 0.0F);
-    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
+    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindFunc, 1);
 
     // upper right quadrant
-    gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead0, 29, GOBJ_PRIORITY_DEFAULT, -1);
     gcAddXObjForDObjFixed(gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURDisplayList)), 0x1C, 0);
     gcAddMObjAll(gobj, lbRelocGetFileData(MObjSub***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURMObjSub));
     gcAddMatAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32***, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURMatAnimJoint), 0.0F);
@@ -226,7 +226,7 @@ void mvOpeningClashMakeWallpaper(void)
     DObjGetStruct(gobj)->translate.vec.f.z = 0.0F;
 
     gcAddAnimJointAll(gobj, lbRelocGetFileData(AObjEvent32**, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperURAnimJoint), 0.0F);
-    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
+    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindFunc, 1);
 }
 
 // 0x80132204
@@ -237,14 +237,14 @@ void mvOpeningClashMakeFightersCamera(void)
         nGCCommonKindSceneCamera,
         NULL,
         16,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         func_80017EC0,
         60,
         COBJ_MASK_DLLINK(27) |
         COBJ_MASK_DLLINK(9),
         -1,
         TRUE,
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1,
         FALSE
@@ -259,7 +259,7 @@ void mvOpeningClashMakeFightersCamera(void)
     cobj->projection.persp.far = 16384.0F;
 
     gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningClashFiles[0], &lMVOpeningClashFightersCamAnimJoint), 0.0F);
-    gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
+    gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 
 // 0x80132314
@@ -272,13 +272,13 @@ void mvOpeningClashMakeVoidCamera(void)
             nGCCommonKindSceneCamera,
             NULL,
             16,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             40,
             COBJ_MASK_DLLINK(26),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -309,13 +309,13 @@ void mvOpeningClashMakeWallpaperCamera(void)
         nGCCommonKindSceneCamera,
         NULL,
         16,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         mvOpeningClashWallpaperFuncDisplay,
         90,
         COBJ_MASK_DLLINK(29),
         -1,
         TRUE,
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1,
         FALSE
@@ -325,7 +325,7 @@ void mvOpeningClashMakeWallpaperCamera(void)
     syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
     gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningClashFiles[1], &lMVOpeningClashWallpaperCamAnimJoint), 0.0F);
 
-    gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
+    gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 
 // 0x80132550
@@ -416,8 +416,8 @@ void mvOpeningClashFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mvOpeningClashFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeGObjSPAfter(0, mvOpeningClashFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
     efParticleInitAll();
     mvOpeningClashInitTotalTimeTics();
@@ -462,8 +462,8 @@ SYTaskmanSetup dMVOpeningClashTaskmanSetup =
     // Task Logic Buffer Setup
     {
         0,                              // ???
-        func_8000A5E4,                  // Update function
-        func_8000A340,                  // Frame draw function
+        gcRunAll,                  // Update function
+        gcDrawAll,                  // Frame draw function
         &ovl49_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???

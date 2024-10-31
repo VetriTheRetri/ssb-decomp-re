@@ -140,13 +140,13 @@ void grWallpaperMakeCommon(void)
         nGCCommonKindWallpaper,
         NULL,
         nGCCommonLinkIDWallpaper,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         lbCommonDrawSObjAttr,
         0,
-        GOBJ_DLLINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         -1,
         gMPCollisionGroundData->wallpaper,
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         grWallpaperCommonProcUpdate,
         3
     );
@@ -170,13 +170,13 @@ void grWallpaperMakeStatic(void)
         nGCCommonKindWallpaper, 
         NULL, 
         nGCCommonLinkIDWallpaper,
-        GOBJ_LINKORDER_DEFAULT, 
+        GOBJ_PRIORITY_DEFAULT, 
         lbCommonDrawSObjAttr,
         0, 
-        GOBJ_DLLINKORDER_DEFAULT, 
+        GOBJ_PRIORITY_DEFAULT, 
         -1, 
         gMPCollisionGroundData->wallpaper, 
-        nGCProcessKindProc, 
+        nGCProcessKindFunc, 
         NULL, 
         3
     );
@@ -234,9 +234,9 @@ void grWallpaperMakeSector(void)
     GObj *wallpaper_gobj;
     SObj *wallpaper_sobj;
 
-    sGRWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(nGCCommonKindWallpaper, NULL, nGCCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
+    sGRWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(nGCCommonKindWallpaper, NULL, nGCCommonLinkIDWallpaper, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, -1);
 
     wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, gMPCollisionGroundData->wallpaper);
 
@@ -245,7 +245,7 @@ void grWallpaperMakeSector(void)
 
     wallpaper_sobj->sprite.attr = SP_TEXSHUF;
 
-    gcAddGObjProcess(wallpaper_gobj, grWallpaperSectorProcUpdate, nGCProcessKindProc, 3);
+    gcAddGObjProcess(wallpaper_gobj, grWallpaperSectorProcUpdate, nGCProcessKindFunc, 3);
 }
 
 // 0x80104B58
@@ -259,9 +259,9 @@ void grWallpaperMakeBonus3(void)
 {
     GObj *wallpaper_gobj;
 
-    sGRWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(nGCCommonKindWallpaper, NULL, nGCCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
+    sGRWallpaperGObj = wallpaper_gobj = gcMakeGObjSPAfter(nGCCommonKindWallpaper, NULL, nGCCommonLinkIDWallpaper, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(wallpaper_gobj, grWallpaperBonus3FuncDisplay, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(wallpaper_gobj, grWallpaperBonus3FuncDisplay, 0, GOBJ_PRIORITY_DEFAULT, -1);
 }
 
 // 0x80104BDC
@@ -323,9 +323,9 @@ void grWallpaperRunGObjProcessThreads(void)
     {
         if (gobjproc->is_paused == FALSE)
         {
-            if (gobjproc->proc_thread != NULL)
+            if (gobjproc->exec.func != NULL)
             {
-                gobjproc->proc_thread(gobjproc->parent_gobj);
+                gobjproc->exec.func(gobjproc->parent_gobj);
             }
         }
         gobjproc = gobjproc->link_next;

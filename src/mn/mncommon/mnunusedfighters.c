@@ -70,8 +70,8 @@ SYVideoSetup dMNUnusedFightersVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 scRuntimeInfo dMNUnusedFightersTaskmanSetup =
 {
     0x00000000,
-    func_8000A5E4,
-    func_8000A340,
+    gcRunAll,
+    gcDrawAll,
     &ovl16_BSS_END,
     0,
     1,
@@ -197,8 +197,8 @@ void mnUnusedFightersFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mnUnusedFightersFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(1, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeGObjSPAfter(0, mnUnusedFightersFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeDefaultCameraGObj(1, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     
     cobj = CObjGetStruct
     (
@@ -207,13 +207,13 @@ void mnUnusedFightersFuncStart(void)
             1,
             NULL,
             1,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             50,
             COBJ_MASK_DLLINK(1),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -229,13 +229,13 @@ void mnUnusedFightersFuncStart(void)
             1,
             NULL,
             1,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             func_80017DBC,
             30,
             COBJ_MASK_DLLINK(2),
             -1,
             TRUE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -259,13 +259,13 @@ void mnUnusedFightersFuncStart(void)
         0,
         NULL,
         0,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         lbCommonDrawSObjAttr,
         1,
-        GOBJ_DLLINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         -1,
         lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_00004728),
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1
     );
@@ -278,13 +278,13 @@ void mnUnusedFightersFuncStart(void)
         0,
         NULL,
         0,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         lbCommonDrawSObjAttr,
         1,
-        GOBJ_DLLINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         -1,
         lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_00006978),
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1
     );
@@ -297,13 +297,13 @@ void mnUnusedFightersFuncStart(void)
         0,
         NULL,
         0,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         lbCommonDrawSObjAttr,
         1,
-        GOBJ_DLLINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         -1,
         lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_00008BC8),
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1
     );
@@ -316,13 +316,13 @@ void mnUnusedFightersFuncStart(void)
         0,
         NULL,
         0,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         lbCommonDrawSObjAttr,
         1,
-        GOBJ_DLLINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         -1,
         lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_0000AE18),
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1
     );
@@ -335,13 +335,13 @@ void mnUnusedFightersFuncStart(void)
         0,
         NULL,
         0,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         lbCommonDrawSObjAttr,
         1,
-        GOBJ_DLLINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         -1,
         lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_0000D068),
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1
     );
@@ -354,13 +354,13 @@ void mnUnusedFightersFuncStart(void)
         0,
         NULL,
         0,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         lbCommonDrawSObjAttr,
         1,
-        GOBJ_DLLINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         -1,
         lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_0000F2B8),
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1
     );
@@ -373,13 +373,13 @@ void mnUnusedFightersFuncStart(void)
         0,
         NULL,
         0,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         lbCommonDrawSObjAttr,
         1,
-        GOBJ_DLLINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         -1,
         lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_00011508),
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1
     );
@@ -392,13 +392,13 @@ void mnUnusedFightersFuncStart(void)
         0,
         NULL,
         0,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         lbCommonDrawSObjAttr,
         1,
-        GOBJ_DLLINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         -1,
         lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_00013758),
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1
     );
@@ -411,13 +411,13 @@ void mnUnusedFightersFuncStart(void)
         0,
         NULL,
         0,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         lbCommonDrawSObjAttr,
         1,
-        GOBJ_DLLINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         -1,
         lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &D_NF_000159A8),
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1
     );
@@ -430,13 +430,13 @@ void mnUnusedFightersFuncStart(void)
         0,
         NULL,
         0,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         lbCommonDrawSObjAttr,
         1,
-        GOBJ_DLLINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         -1,
         lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &lMNFightersMarioNameSprite),
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1
     );
@@ -452,13 +452,13 @@ void mnUnusedFightersFuncStart(void)
         0,
         NULL,
         0,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         lbCommonDrawSObjAttr,
         1,
-        GOBJ_DLLINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         -1,
         lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &lMNFightersSamusNameSprite),
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1
     );
@@ -474,13 +474,13 @@ void mnUnusedFightersFuncStart(void)
         0,
         NULL,
         0,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         lbCommonDrawSObjAttr,
         1,
-        GOBJ_DLLINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         -1,
         lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &lMNFightersPikachuNameSprite),
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1
     );
@@ -496,13 +496,13 @@ void mnUnusedFightersFuncStart(void)
         0,
         NULL,
         0,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         lbCommonDrawSObjAttr,
         1,
-        GOBJ_DLLINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         -1,
         lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &lMNFightersLuigiNameSprite),
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1
     );
@@ -518,13 +518,13 @@ void mnUnusedFightersFuncStart(void)
         0,
         NULL,
         0,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         lbCommonDrawSObjAttr,
         1,
-        GOBJ_DLLINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         -1,
         lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &lMNFightersOptionTimeSprite),
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         mnUnusedFightersTimeProcUpdate,
         1
     );
@@ -539,13 +539,13 @@ void mnUnusedFightersFuncStart(void)
         0,
         NULL,
         0,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         lbCommonDrawSObjAttr,
         1,
-        GOBJ_DLLINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         -1,
         lbRelocGetFileData(Sprite*, sMNUnusedFightersFiles[0], &lMNFightersSymbolInfiniteSprite),
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1
     );

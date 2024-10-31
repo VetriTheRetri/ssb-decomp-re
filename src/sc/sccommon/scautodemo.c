@@ -212,7 +212,7 @@ SYTaskmanSetup dSCAutoDemoTaskmanSetup =
 // 0x8018D0C0
 void scAutoDemoFuncUpdate(void)
 {
-	func_8000A5E4();
+	gcRunAll();
 }
 
 // 0x8018D0E0
@@ -434,7 +434,7 @@ void scAutoDemoFuncRun(GObj *gobj)
 // 0x8018D704
 GObj* scAutoDemoMakeFocusInterface(void)
 {
-	GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, scAutoDemoFuncRun, nGCCommonLinkIDInterfaceActor, GOBJ_LINKORDER_DEFAULT);
+	GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, scAutoDemoFuncRun, nGCCommonLinkIDInterfaceActor, GOBJ_PRIORITY_DEFAULT);
 
 	sSCAutoDemoProc = dSCAutoDemoProcList;
 	sSCAutoDemoFocusChangeWait = 0;
@@ -604,9 +604,9 @@ void scAutoDemoInitSObjs(void)
 		nGCCommonKindInterface, 
 		NULL, 
 		nGCCommonLinkIDInterface, 
-		GOBJ_LINKORDER_DEFAULT
+		GOBJ_PRIORITY_DEFAULT
 	);
-	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_PRIORITY_DEFAULT, -1);
 
 	for (player = 0; player < ARRAY_COUNT(gSceneData.demo_fkind); player++)
 	{
@@ -632,7 +632,7 @@ void scAutoDemoFuncStart(void)
 
 	scAutoDemoInitDemo();
 	scAutoDemoSetupFiles();
-	gcMakeDefaultCameraGObj(9, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(9, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efParticleInitAll();
 	ftParamInitGame();
 	mpCollisionInitGroundData();

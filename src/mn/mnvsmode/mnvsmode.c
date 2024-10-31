@@ -312,8 +312,8 @@ void mnVSModeMakeVSStartButton()
     GObj* button_gobj;
     SObj* button_sobj;
 
-    sMNVSModeButtonGObjVSStart = button_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(button_gobj, lbCommonDrawSObjAttr, 2, GOBJ_LINKORDER_DEFAULT, -1);
+    sMNVSModeButtonGObjVSStart = button_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(button_gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
     mnVSModeMakeButton(button_gobj, 120.0F, 31.0F, 17);
 
     mnVSModeUpdateButton(button_gobj, (sMNVSModeCursorIndex == 0) ? nMNOptionTabStatusHighlight : nMNOptionTabStatusNot);
@@ -337,9 +337,9 @@ void mnVSModeMakeRuleValue()
     // 0x80134860
     syColorRGB color = { 0xFF, 0xFF, 0xFF };
 
-    sMNVSModeRuleValueGObj = rule_value_gobj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_LINKORDER_DEFAULT);
+    sMNVSModeRuleValueGObj = rule_value_gobj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(rule_value_gobj, lbCommonDrawSObjAttr, 3, GOBJ_LINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(rule_value_gobj, lbCommonDrawSObjAttr, 3, GOBJ_PRIORITY_DEFAULT, -1);
 
     switch (sMNVSModeRule)
     {
@@ -527,9 +527,9 @@ void mnVSModeMakeRuleArrows()
 
         sMNVSModeRuleArrowsGObj = NULL;
     }
-    sMNVSModeRuleArrowsGObj = rule_arrows_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNVSModeRuleArrowsGObj = rule_arrows_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(rule_arrows_gobj, lbCommonDrawSObjAttr, 2, GOBJ_LINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(rule_arrows_gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
     gcAddGObjProcess(rule_arrows_gobj, mnVSModeAnimateRuleArrows, 0, 1);
 }
 
@@ -571,8 +571,8 @@ void mnVSModeMakeTimeStockArrows()
         sMNVSModeTimeStockArrowsGObj = NULL;
     }
 
-    sMNVSModeTimeStockArrowsGObj = time_stock_arrows_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(time_stock_arrows_gobj, lbCommonDrawSObjAttr, 2, GOBJ_LINKORDER_DEFAULT, -1);
+    sMNVSModeTimeStockArrowsGObj = time_stock_arrows_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(time_stock_arrows_gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
     gcAddGObjProcess(time_stock_arrows_gobj, mnVSModeAnimateTimeStockArrows, nGCProcessKindThread, 1);
 
     if (mnVSModeIsTime() != FALSE)
@@ -593,8 +593,8 @@ void mnVSModeMakeRuleButton()
     GObj* rule_button_gobj;
     SObj* button_sobj;
 
-    sMNVSModeButtonGObjRule = rule_button_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(rule_button_gobj, lbCommonDrawSObjAttr, 2, GOBJ_LINKORDER_DEFAULT, -1);
+    sMNVSModeButtonGObjRule = rule_button_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(rule_button_gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
     mnVSModeMakeButton(rule_button_gobj, 97.0F, 70.0F, 17);
 
     mnVSModeUpdateButton(rule_button_gobj, (sMNVSModeCursorIndex == nMNVSModeOptionRule) ? nMNOptionTabStatusHighlight : nMNOptionTabStatusNot);
@@ -643,8 +643,8 @@ void mnVSModeMakeTimeStockValue()
     // 0x80134864
     u32 colors[/* */] = { 0x000000FF, 0x000000FF, 0x000000FF };
 
-    sMNVSModeTimeStockValueGObj = time_stock_value_gobj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(time_stock_value_gobj, lbCommonDrawSObjAttr, 3, GOBJ_LINKORDER_DEFAULT, -1);
+    sMNVSModeTimeStockValueGObj = time_stock_value_gobj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(time_stock_value_gobj, lbCommonDrawSObjAttr, 3, GOBJ_PRIORITY_DEFAULT, -1);
 
     value = mnVSModeGetTimeStockValue();
 
@@ -679,8 +679,8 @@ void mnVSModeMakeTimeStockButton()
     GObj* time_stock_button_gobj;
     SObj* time_stock_button_sobj;
 
-    sMNVSModeButtonGObjTimeStock = time_stock_button_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(time_stock_button_gobj, lbCommonDrawSObjAttr, 2, GOBJ_LINKORDER_DEFAULT, -1);
+    sMNVSModeButtonGObjTimeStock = time_stock_button_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(time_stock_button_gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
     mnVSModeMakeButton(time_stock_button_gobj, 74.0F, 109.0F, 17);
 
     mnVSModeUpdateButton(time_stock_button_gobj, (sMNVSModeCursorIndex == nMNVSModeOptionTimeStock) ? nMNOptionTabStatusHighlight : nMNOptionTabStatusNot);
@@ -726,8 +726,8 @@ void mnVSModeMakeVSOptionsButton(void)
     GObj* button_gobj;
     SObj* button_sobj;
 
-    sMNVSModeButtonGObjVSOptions = button_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(button_gobj, lbCommonDrawSObjAttr, 2, GOBJ_LINKORDER_DEFAULT, -1);
+    sMNVSModeButtonGObjVSOptions = button_gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(button_gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
     mnVSModeMakeButton(button_gobj, 51.0F, 148.0F, 17);
     mnVSModeUpdateButton(button_gobj, (sMNVSModeCursorIndex == nMNVSModeOptionOptions) ? nMNOptionTabStatusHighlight : nMNOptionTabStatusNot);
 
@@ -757,7 +757,7 @@ void mnVSModeSetColorsUnused(SObj* sobj)
 // 0x80132FD8
 void mnVSModeMakeUnusedGObj(void)
 {
-    sMNVSModeUnusedGObj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_LINKORDER_DEFAULT);
+    sMNVSModeUnusedGObj = gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT);
 }
 
 // 0x80133008
@@ -783,8 +783,8 @@ void mnVSModeMakeMenuName()
     GObj* menu_name_gobj;
     SObj* menu_name_sobj;
 
-    menu_name_gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(menu_name_gobj, mnVSModeRenderMenuName, 1, GOBJ_LINKORDER_DEFAULT, -1);
+    menu_name_gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(menu_name_gobj, mnVSModeRenderMenuName, 1, GOBJ_PRIORITY_DEFAULT, -1);
 
     menu_name_sobj = lbCommonMakeSObjForGObj(menu_name_gobj, lbRelocGetFileData(Sprite*, sMNVSModeFiles[0], &lMNCommonSmashLogoSprite));
     menu_name_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -820,8 +820,8 @@ void mnVSModeMakeBackground(void)
     GObj* bg_gobj;
     SObj* bg_sobj;
 
-    bg_gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(bg_gobj, lbCommonDrawSObjAttr, 0, GOBJ_LINKORDER_DEFAULT, -1);
+    bg_gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(bg_gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, -1);
 
     bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, lbRelocGetFileData(Sprite*, sMNVSModeFiles[0], &lMNCommonWallpaperSprite));
     bg_sobj->pos.x = 10.0F;
@@ -863,13 +863,13 @@ void mnVSModeMakeButtonValuesSYRdpViewport(void)
         1,
         NULL,
         1,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         lbCommonScissorSpriteCamera,
         0x14,
         COBJ_MASK_DLLINK(3),
         -1,
         FALSE,
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1,
         FALSE
@@ -886,7 +886,7 @@ void mnVSModeMakeButtonViewport(void)
         1,
         NULL,
         1,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         lbCommonScissorSpriteCamera,
         40,
         COBJ_MASK_DLLINK(2),
@@ -909,13 +909,13 @@ void mnVSModeMakeMenuNameViewport(void)
         1,
         NULL,
         1,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         lbCommonScissorSpriteCamera,
         60,
         COBJ_MASK_DLLINK(1),
         -1,
         FALSE,
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1,
         FALSE
@@ -931,7 +931,7 @@ void mnVSModeMakeBackgroundViewport()
         1,
         NULL,
         1,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         lbCommonScissorSpriteCamera,
         80,
         COBJ_MASK_DLLINK(0),
@@ -1497,8 +1497,8 @@ void mnVSModeFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mnVSModeMain, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
+    gcMakeGObjSPAfter(0, mnVSModeMain, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 
     mnVSModeFuncStartVars();
     mnVSModeMakeBackgroundViewport();
@@ -1528,8 +1528,8 @@ SYVideoSetup dMNVSModeVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 scRuntimeInfo dMNVSModeTaskmanSetup =
 {
     0x00000000,
-    func_8000A5E4,
-    func_8000A340,
+    gcRunAll,
+    gcDrawAll,
     &ovl19_BSS_END,
     0,
     1,

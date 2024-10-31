@@ -168,8 +168,8 @@ void mvOpeningKirbyMakeName(void)
 
 	s32 i;
 
-	sMVOpeningKirbyNameGObj = name_gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
-	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+	sMVOpeningKirbyNameGObj = name_gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
+	gcAddGObjDisplay(name_gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, -1);
 
 	for (i = 0; offsets[i] != 0; i++)
 	{
@@ -218,7 +218,7 @@ void mvOpeningKirbyMakeMotionCamera(Vec3f vec)
 	cobj->projection.persp.aspect = 10.0F / 11.0F;
 
 	gcEndProcessAll(sMVOpeningKirbyMotionCameraGObj);
-	gcAddGObjProcess(sMVOpeningKirbyMotionCameraGObj, mvOpeningKirbyMotionCameraProcUpdate, nGCProcessKindProc, 1);
+	gcAddGObjProcess(sMVOpeningKirbyMotionCameraGObj, mvOpeningKirbyMotionCameraProcUpdate, nGCProcessKindFunc, 1);
 
 	dMVOpeningKirbyStartAdjustedCObjDesc.eye.x += vec.x;
 	dMVOpeningKirbyStartAdjustedCObjDesc.eye.y += vec.y;
@@ -322,7 +322,7 @@ void mvOpeningKirbyPosedWallpaperFuncDisplay(GObj *gobj)
 // 0x8018D970
 void mvOpeningKirbyMakePosedWallpaper(void)
 {
-	gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT), mvOpeningKirbyPosedWallpaperFuncDisplay, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT), mvOpeningKirbyPosedWallpaperFuncDisplay, 28, GOBJ_PRIORITY_DEFAULT, -1);
 }
 
 // 0x8018D9BC
@@ -371,7 +371,7 @@ void mvOpeningKirbyMakePosedFighter(void)
 	fighter_gobj = ftManagerMakeFighter(&ft_desc);
 	scSubsysFighterSetStatus(fighter_gobj, 0x1000C);
 	gcMoveGObjDL(fighter_gobj, 26, -1);
-	gcAddGObjProcess(fighter_gobj, mvOpeningKirbyPosedFighterProcUpdate, nGCProcessKindProc, 1);
+	gcAddGObjProcess(fighter_gobj, mvOpeningKirbyPosedFighterProcUpdate, nGCProcessKindFunc, 1);
 
 	DObjGetStruct(fighter_gobj)->scale.vec.f.x = 1.0F;
 	DObjGetStruct(fighter_gobj)->scale.vec.f.y = 1.0F;
@@ -388,13 +388,13 @@ void mvOpeningKirbyMakeNameCamera(void)
             nGCCommonKindSceneCamera,
             NULL,
             16,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             80,
             COBJ_MASK_DLLINK(27),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -411,13 +411,13 @@ void mvOpeningKirbyMakePosedFighterCamera(void)
         nGCCommonKindSceneCamera,
         NULL,
         16,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         func_80017EC0,
         10,
         COBJ_MASK_DLLINK(26),
         -1,
         TRUE,
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1,
         FALSE
@@ -429,7 +429,7 @@ void mvOpeningKirbyMakePosedFighterCamera(void)
 	cobj->projection.persp.aspect = 5.0F / 11.0F;
 
 	gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningKirbyFiles[1], &lMVOpeningKirbyCamAnimJoint), 0.0F);
-	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindProc, 1);
+	gcAddGObjProcess(camera_gobj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 }
 
 // 0x8018DD14
@@ -442,13 +442,13 @@ void mvOpeningKirbyMakePosedWallpaperCamera(void)
             nGCCommonKindSceneCamera,
             NULL,
             16,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             func_80017EC0,
             20,
             COBJ_MASK_DLLINK(28),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -509,8 +509,8 @@ void mvOpeningKirbyFuncStart(void)
 
 	mvOpeningKirbySetupFiles();
 
-	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningKirbyFuncRun, 13, GOBJ_LINKORDER_DEFAULT);
-	gcMakeDefaultCameraGObj(9, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningKirbyFuncRun, 13, GOBJ_PRIORITY_DEFAULT);
+	gcMakeDefaultCameraGObj(9, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	mvOpeningKirbyInitVars();
 	efParticleInitAll();
@@ -553,7 +553,7 @@ SYTaskmanSetup dMVOpeningKirbyTaskmanSetup =
     // Task Logic Buffer Setup
     {
         0,                              // ???
-        func_8000A5E4,                  // Update function
+        gcRunAll,                  // Update function
         func_800A26B8,                  // Frame draw function
         &ovl43_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size

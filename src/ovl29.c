@@ -2553,7 +2553,7 @@ SYVideoSetup D_ovl29_80137530 = {
 scRuntimeInfo D_ovl29_8013754C = {
 
 	0x00000000, 0x8000A5E4,
-	func_8000A340, &lOverlay29ArenaLo,
+	gcDrawAll, &lOverlay29ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00004A38, 0x00000200,
 	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x00008000,
 	mnBonusFuncLights, update_contdata,

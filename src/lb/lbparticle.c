@@ -258,7 +258,7 @@ GObj* lbParticleAllocStructs(s32 num)
 	{
 		return NULL;
 	}
-	return gcMakeGObjSPAfter(-6, lbParticleStructFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
+	return gcMakeGObjSPAfter(-6, lbParticleStructFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 }
 
 // 0x800CE4E4
@@ -2160,7 +2160,7 @@ GObj* lbParticleAllocGenerators(s32 num)
 	gLBParticleGeneratorsUsedNum = 0;
 	D_ovl0_800D6450 = 0;
 
-	return gcMakeGObjSPAfter(-7, lbParticleGeneratorFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
+	return gcMakeGObjSPAfter(-7, lbParticleGeneratorFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 }
 
 // 0x800D27F8

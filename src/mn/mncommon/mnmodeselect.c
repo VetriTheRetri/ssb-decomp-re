@@ -96,8 +96,8 @@ SYVideoSetup dMNModeSelectVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 scRuntimeInfo dMNModeSelectTaskmanSetup =
 {
     0x00000000,
-    func_8000A5E4,
-    func_8000A340,
+    gcRunAll,
+    gcDrawAll,
     &ovl17_BSS_END,
     0,
     1,
@@ -150,8 +150,8 @@ void mnModeSelectMake1PMode(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMNModeSelectOption1PModeGObj = gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT); 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    sMNModeSelectOption1PModeGObj = gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT); 
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
     
     if (sMNModeSelectOption == nMNModeSelectOption1PMode)
     {
@@ -193,8 +193,8 @@ void mnModeSelectMakeVSMode(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMNModeSelectOptionVSModeGObj = gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT); 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    sMNModeSelectOptionVSModeGObj = gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT); 
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
     
     if (sMNModeSelectOption == nMNModeSelectOptionVSMode)
     {
@@ -236,8 +236,8 @@ void mnModeSelectMakeOption(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMNModeSelectOptionOptionGObj = gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT); 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    sMNModeSelectOptionOptionGObj = gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT); 
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
     
     if (sMNModeSelectOption == nMNModeSelectOptionOption)
     {
@@ -279,8 +279,8 @@ void mnModeSelectMakeData(void)
     GObj *gobj;
     SObj *sobj;
 
-    sMNModeSelectOptionDataGObj = gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT); 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    sMNModeSelectOptionDataGObj = gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT); 
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
     
     if (sMNModeSelectOption == nMNModeSelectOptionData)
     {
@@ -322,8 +322,8 @@ void mnModeSelectMakeLabels(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNModeSelectFiles[1], &lMNModeSelectLabel1PModeSprite));
     
@@ -380,8 +380,8 @@ void mnModeSelectMakeDecals(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNModeSelectFiles[0], &lMNCommonWallpaperSprite));
     
@@ -460,13 +460,13 @@ void mnModeSelectMakeLabelsCamera(void)
             1,
             NULL,
             1,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             60,
             COBJ_MASK_DLLINK(1),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -485,13 +485,13 @@ void mnModeSelectMakeDecalsCamera(void)
             1,
             NULL,
             1,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             80,
             COBJ_MASK_DLLINK(0),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -743,8 +743,8 @@ void mnModeSelectFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mnModeSelectFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(0, GOBJ_DLLINKORDER_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
+    gcMakeGObjSPAfter(0, mnModeSelectFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
     
     mnModeSelectInitVars();
     mnModeSelectMakeDecalsCamera();

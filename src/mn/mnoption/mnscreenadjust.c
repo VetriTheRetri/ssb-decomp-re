@@ -69,8 +69,8 @@ SYTaskmanSetup dMNScreenAdjustTaskmanSetup =
     // Task Logic Buffer Setup
     {
         0,                          // ???
-        func_8000A5E4,              // Update function
-        func_8000A340,              // Frame draw function
+        gcRunAll,              		// Update function
+        gcDrawAll,                  // Frame draw function
         &ovl25_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???
@@ -142,9 +142,9 @@ void mnScreenAdjustFrameFuncDisplay(GObj *gobj)
 // 0x80131D00
 void mnScreenAdjustMakeFrame(void)
 {
-    GObj *gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
+    GObj *gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
     
-    gcAddGObjDisplay(gobj, mnScreenAdjustFrameFuncDisplay, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, mnScreenAdjustFrameFuncDisplay, 0, GOBJ_PRIORITY_DEFAULT, -1);
 }
 
 // 0x80131D4C
@@ -153,9 +153,9 @@ void mnScreenAdjustMakeGuide(void)
     GObj *gobj;
     SObj *sobj;
     
-    gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNScreenAdjustFiles[0], &lMNScreenAdjustGuideSprite));
     
     sobj->pos.x = 10.0F;
@@ -168,9 +168,9 @@ void mnScreenAdjustMakeInstruction(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 1, GOBJ_PRIORITY_DEFAULT, -1);
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNScreenAdjustFiles[0], &lMNScreenAdjustInstructionSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -194,13 +194,13 @@ void mnScreenAdjustMakeFrameCamera(void)
             1,
             NULL,
             1,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             40,
             COBJ_MASK_DLLINK(0),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -219,13 +219,13 @@ void mnScreenAdjustMakeSpriteCamera(void)
             1,
             NULL,
             1,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             70,
             COBJ_MASK_DLLINK(1),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -443,8 +443,8 @@ void mnScreenAdjustFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mnScreenAdjustFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeGObjSPAfter(0, mnScreenAdjustFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     mnScreenAdjustInitVars();
     mnScreenAdjustMakeFrameCamera();
     mnScreenAdjustMakeSpriteCamera();

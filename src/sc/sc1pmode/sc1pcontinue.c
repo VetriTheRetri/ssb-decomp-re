@@ -303,8 +303,8 @@ void sc1PContinueMakeScoreDisplay(s32 points)
     GObj *gobj;
     SObj *sobj;
 
-    sSC1PContinueScoreGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
+    sSC1PContinueScoreGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, -1);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PContinueFiles[1], &lSC1PContinueTextScore));
 
@@ -392,8 +392,8 @@ void sc1PContinueMakeRoomFadeOut(void)
     GObj *gobj;
 
     sSC1PContinueRoomFadeOutAlpha = 0x00;
-    sSC1PContinueRoomFadeOutGObj = gobj = gcMakeGObjSPAfter(0, NULL, 23, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, sc1PContinueRoomFadeOutFuncDisplay, 32, GOBJ_DLLINKORDER_DEFAULT, -1);
+    sSC1PContinueRoomFadeOutGObj = gobj = gcMakeGObjSPAfter(0, NULL, 23, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, sc1PContinueRoomFadeOutFuncDisplay, 32, GOBJ_PRIORITY_DEFAULT, -1);
 }
 
 // 0x80132338
@@ -424,8 +424,8 @@ void sc1PContinueMakeRoomFadeIn(void)
     GObj *gobj;
 
     sSC1PContinueRoomFadeInAlpha = 0xFF;
-    sSC1PContinueRoomFadeInGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, sc1PContinueRoomFadeInFuncDisplay, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
+    sSC1PContinueRoomFadeInGObj = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, sc1PContinueRoomFadeInFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, -1);
 }
 
 // 0x801324C0
@@ -456,8 +456,8 @@ void sc1PContinueMakeSpotlightFade(void)
     GObj *gobj;
 
     sSC1PContinueSpotlightFadeAlpha = 0xFF;
-    sSC1PContinueSpotlightFadeGObj = gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, sc1PContinueSpotlightFadeFuncDisplay, 31, GOBJ_DLLINKORDER_DEFAULT, -1);
+    sSC1PContinueSpotlightFadeGObj = gobj = gcMakeGObjSPAfter(0, NULL, 22, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, sc1PContinueSpotlightFadeFuncDisplay, 31, GOBJ_PRIORITY_DEFAULT, -1);
 }
 
 // 0x80132648
@@ -466,9 +466,9 @@ void sc1PContinueMakeRoom(void)
     GObj *gobj;
     SObj *sobj;
 
-    sSC1PContinueRoomGObj = gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
+    sSC1PContinueRoomGObj = gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 29, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 29, GOBJ_PRIORITY_DEFAULT, -1);
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueRoom));
 
     sobj->pos.x = 30.0F;
@@ -481,8 +481,8 @@ void sc1PContinueMakeSpotlight(void)
     GObj *gobj;
     SObj *sobj;
 
-    sSC1PContinueShadowGObj = gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 30, GOBJ_DLLINKORDER_DEFAULT, -1);
+    sSC1PContinueShadowGObj = gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 30, GOBJ_PRIORITY_DEFAULT, -1);
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueShadow));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -495,8 +495,8 @@ void sc1PContinueMakeSpotlight(void)
     sobj->pos.x = 80.0F;
     sobj->pos.y = 156.0F;
 
-    sSC1PContinueSpotlightGObj = gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 30, GOBJ_DLLINKORDER_DEFAULT, -1);
+    sSC1PContinueSpotlightGObj = gobj = gcMakeGObjSPAfter(0, NULL, 21, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 30, GOBJ_PRIORITY_DEFAULT, -1);
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueSpotlight));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -516,8 +516,8 @@ void sc1PContinueMakeContinue(void)
     GObj *gobj;
     SObj *sobj;
 
-    sSC1PContinueContinueGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
+    sSC1PContinueContinueGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, -1);
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueTextContinue));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -585,9 +585,9 @@ void sc1PContinueMakeOptions(void)
     GObj *gobj;
     SObj *sobj;
 
-    sSC1PContinueOptionGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjProcess(gobj, SC1PContinueOptionProcUpdate, nGCProcessKindProc, 1);
+    sSC1PContinueOptionGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjProcess(gobj, SC1PContinueOptionProcUpdate, nGCProcessKindFunc, 1);
 
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueTextYes));
 
@@ -637,10 +637,10 @@ void sc1PContinueMakeCursor(void)
     GObj *gobj;
     SObj *sobj;
 
-    sSC1PContinueCursorGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
+    sSC1PContinueCursorGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjProcess(gobj, sc1PContinueCursorProcUpdate, nGCProcessKindProc, 1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjProcess(gobj, sc1PContinueCursorProcUpdate, nGCProcessKindFunc, 1);
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PContinueFiles[0], &lSC1PContinueCursor));
 
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -729,9 +729,9 @@ void sc1PContinueMakeGameOverText(void)
 
     sSC1PContinueGameOverColorStep = 0.0F;
 
-    sSC1PContinueGameOverGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjProcess(gobj, sc1PContinueGameOverTextStepColors, nGCProcessKindProc, 1);
+    sSC1PContinueGameOverGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjProcess(gobj, sc1PContinueGameOverTextStepColors, nGCProcessKindFunc, 1);
 
     for (i = 0; i < (ARRAY_COUNT(letters) + ARRAY_COUNT(positions_x)) / 2; i++)
     {
@@ -777,9 +777,9 @@ void sc1PContinueMakeGameOver(void)
     GObj *gobj;
 
     sSC1PContinueGameOverFadeOutScale = 1.0F;
-    sSC1PContinueGameOverGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_LINKORDER_DEFAULT);
+    sSC1PContinueGameOverGObj = gobj = gcMakeGObjSPAfter(0, NULL, 20, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjProcess(gobj, sc1PContinueGameOverProcUpdate, nGCProcessKindProc, 1);
+    gcAddGObjProcess(gobj, sc1PContinueGameOverProcUpdate, nGCProcessKindFunc, 1);
 }
 
 // 0x801333C4
@@ -792,13 +792,13 @@ void sc1PContinueMakeRoomFadeInCamera(void)
             nGCCommonKindSceneCamera,
             NULL,
             16,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             80,
             COBJ_MASK_DLLINK(26),
 			-1,
 			FALSE,
-			nGCProcessKindProc,
+			nGCProcessKindFunc,
 			NULL,
 			1,
 			FALSE
@@ -819,13 +819,13 @@ void sc1PContinueMakeSpotlightFadeCamera(void)
             nGCCommonKindSceneCamera,
             NULL,
             16,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             60,
             COBJ_MASK_DLLINK(31),
 			-1,
 			FALSE,
-			nGCProcessKindProc,
+			nGCProcessKindFunc,
 			NULL,
 			1,
 			FALSE
@@ -846,13 +846,13 @@ void sc1PContinueMakeRoomFadeOutCamera(void)
             nGCCommonKindSceneCamera,
             NULL,
             16,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             40,
             COBJ_MASK_DLLINK(32),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -898,7 +898,7 @@ void sc1PContinueMakeMainCamera(void)
             nGCCommonKindSceneCamera,
             NULL,
             16,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             func_80017EC0,
             50,
             COBJ_MASK_DLLINK(27) | COBJ_MASK_DLLINK(18) | 
@@ -906,7 +906,7 @@ void sc1PContinueMakeMainCamera(void)
             COBJ_MASK_DLLINK(9),
             -1,
             TRUE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -925,13 +925,13 @@ void sc1PContinueMakeRoomCamera(void)
             nGCCommonKindSceneCamera,
             NULL,
             16,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             90,
             COBJ_MASK_DLLINK(29),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -950,13 +950,13 @@ void sc1PContinueMakeSpotlightCamera(void)
             nGCCommonKindSceneCamera,
             NULL,
             16,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             70,
             COBJ_MASK_DLLINK(30),
 			-1,
 			FALSE,
-			nGCProcessKindProc,
+			nGCProcessKindFunc,
 			NULL,
 			1,
 			FALSE
@@ -977,13 +977,13 @@ void sc1PContinueMakeTextCamera(void)
             nGCCommonKindSceneCamera,
             NULL,
             16,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             30,
             COBJ_MASK_DLLINK(28),
 			-1,
 			FALSE,
-			nGCProcessKindProc,
+			nGCProcessKindFunc,
 			NULL,
 			1,
 			FALSE
@@ -1229,8 +1229,8 @@ void sc1PContinueFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, sc1PContinueFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeGObjSPAfter(0, sc1PContinueFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     efParticleInitAll();
     sc1PContinueInitVars();
     efManagerInitEffects();
@@ -1264,7 +1264,7 @@ SYTaskmanSetup dSC1PContinueTaskmanSetup =
     // Task Logic Buffer Setup
     {
         0,                          // ???
-        func_8000A5E4,              // Update function
+        gcRunAll,              		// Update function
         func_800A26B8,              // Frame draw function
         &ovl55_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size

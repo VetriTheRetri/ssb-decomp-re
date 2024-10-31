@@ -450,9 +450,9 @@ void mnVSOptionsMakeDamageDigits(void)
  
     s32 pos_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 0x97 : 0xA4;
     
-    sMNVSOptionsDamageGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNVSOptionsDamageGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_LINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
     mnVSOptionsMakeDamageDigitSObjs(gobj, sMNVSOptionsDamage, 220.0F, pos_y, colors, 3, FALSE);
 }
 
@@ -465,8 +465,8 @@ void mnVSOptionsMakeDamageOption(void)
 
     pos_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 148 : 161;
 
-    sMNVSOptionsOptionGObjs[nMNVSOptionsOptionDamage] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    sMNVSOptionsOptionGObjs[nMNVSOptionsOptionDamage] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSOptionsFiles[1], &lMNVSOptionsOptionTabSprite));
     
@@ -510,9 +510,9 @@ void mnVSOptionsMakeItemSwitchOption(void)
     SObj *sobj;
     s32 pos_y = 176;
 
-    sMNVSOptionsOptionGObjs[nMNVSOptionsOptionItemSwitch] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNVSOptionsOptionGObjs[nMNVSOptionsOptionItemSwitch] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSOptionsFiles[1], &lMNVSOptionsOptionTabSprite));
     
     sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -545,8 +545,8 @@ void mnVSOptionsMakeStageSelectOption(void)
 
     pos_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 119 : 129;
 
-    sMNVSOptionsOptionGObjs[nMNVSOptionsOptionStageSelect] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    sMNVSOptionsOptionGObjs[nMNVSOptionsOptionStageSelect] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSOptionsFiles[1], &lMNVSOptionsOptionTabSprite));
     
@@ -582,8 +582,8 @@ void mnVSOptionsMakeTeamAttackOption(void)
 
     pos_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 90 : 97;
 
-    sMNVSOptionsOptionGObjs[nMNVSOptionsOptionTeamAttack] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    sMNVSOptionsOptionGObjs[nMNVSOptionsOptionTeamAttack] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSOptionsFiles[1], &lMNVSOptionsOptionTabSprite));
     
@@ -620,8 +620,8 @@ void mnVSOptionsMakeHandicapOption(void)
 
     pos_y = (sMNVSOptionsIsHaveItemSwitch != FALSE) ? 61 : 65;
 
-    sMNVSOptionsOptionGObjs[nMNVSOptionsOptionHandicap] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    sMNVSOptionsOptionGObjs[nMNVSOptionsOptionHandicap] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSOptionsFiles[1], &lMNVSOptionsOptionTabSprite));
     
@@ -671,8 +671,8 @@ void mnVSOptionsMakeLabel(void)
     GObj *gobj;
     SObj *sobj;
     
-    gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, mnVSOptionsLabelFuncDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gobj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, mnVSOptionsLabelFuncDisplay, 1, GOBJ_PRIORITY_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSOptionsFiles[1], &lMNVSOptionsLabelVSOptionsSprite));
 
@@ -719,7 +719,7 @@ void func_ovl20_80132E58(void)
         0x1968
     };
     
-    D_801348F4_1280D4 = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
+    D_801348F4_1280D4 = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 }
 
 // 0x80132EAC
@@ -728,8 +728,8 @@ void mnVSOptionsMakeWallpaper(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSOptionsFiles[0], &lMNCommonWallpaperSprite));
     
@@ -820,7 +820,7 @@ void mnVSOptionsUnderlineFuncDisplay(GObj *gobj)
 // 0x80133300
 void mnVSOptionsMakeUnderline(void)
 {
-    gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT), mnVSOptionsUnderlineFuncDisplay, 1, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT), mnVSOptionsUnderlineFuncDisplay, 1, GOBJ_PRIORITY_DEFAULT, -1);
 }
 
 // 0x8013334C
@@ -841,7 +841,7 @@ void mnVSOptionsTintFuncDisplay(GObj *gobj)
 // 0x80133464
 void mnVSOptionsMakeTint(void)
 {
-    gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 5, GOBJ_LINKORDER_DEFAULT), mnVSOptionsTintFuncDisplay, 3, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(0, NULL, 5, GOBJ_PRIORITY_DEFAULT), mnVSOptionsTintFuncDisplay, 3, GOBJ_PRIORITY_DEFAULT, -1);
 }
 
 // 0x801334B0
@@ -850,8 +850,8 @@ void mnVSOptionsMakeDecal(void)
     GObj *gobj;
     SObj *sobj;
     
-    gobj = gcMakeGObjSPAfter(0, NULL, 6, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 4, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gobj = gcMakeGObjSPAfter(0, NULL, 6, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 4, GOBJ_PRIORITY_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNVSOptionsFiles[1], &lMNVSOptionsDecalN64Sprite));
     
@@ -876,13 +876,13 @@ void mnVSOptionsMakeTintCamera(void)
             1,
             NULL,
             1,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             70,
             COBJ_MASK_DLLINK(3),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -901,13 +901,13 @@ void mnVSOptionsMakeOptionCamera(void)
             1,
             NULL,
             1,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             50,
             COBJ_MASK_DLLINK(2),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -926,13 +926,13 @@ void mnVSOptionsMakeLabelUnderlineCamera(void)
             1,
             NULL,
             1,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             40,
             COBJ_MASK_DLLINK(1),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -951,13 +951,13 @@ void mnVSOptionsMakeWallpaperCamera(void)
             1,
             NULL,
             1,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             80,
             COBJ_MASK_DLLINK(0),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -976,13 +976,13 @@ void mnVSOptionsMakeDecalCamera(void)
             1,
             NULL,
             1,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             60,
             COBJ_MASK_DLLINK(4),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -1387,8 +1387,8 @@ void mnVSOptionsFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mnVSOptionsFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
+    gcMakeGObjSPAfter(0, mnVSOptionsFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
     
     mnVSOptionsInitVars();
     mnVSOptionsMakeWallpaperCamera();
@@ -1423,8 +1423,8 @@ SYTaskmanSetup dMNVSOptionsTaskmanSetup =
     // Task Logic Buffer Setup
     {
         0,                          // ???
-        func_8000A5E4,              // Update function
-        func_8000A340,              // Frame draw function
+        gcRunAll,              		// Update function
+        gcDrawAll,                  // Frame draw function
         &ovl20_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???

@@ -63,8 +63,8 @@ SYTaskmanSetup dMNN64TaskmanSetup =
     // Task Logic Buffer Setup
     {
         0,                          // ???
-        func_8000A5E4,              // Update function
-        func_8000A340,              // Frame draw function
+        gcRunAll,              		// Update function
+        gcDrawAll,                  // Frame draw function
         &ovl58_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???
@@ -202,8 +202,8 @@ void mnN64FuncStart(void)
 
 	lbRelocInitSetup(&rl_setup);
 
-	gcMakeGObjSPAfter(0, mnN64ActorFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeGObjSPAfter(0, mnN64ActorFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 
 	cobj = CObjGetStruct
 	(
@@ -212,13 +212,13 @@ void mnN64FuncStart(void)
 			nGCCommonKindWallpaperCamera,
 			NULL,
 			nGCCommonLinkIDCamera,
-			GOBJ_LINKORDER_DEFAULT,
+			GOBJ_PRIORITY_DEFAULT,
 			lbCommonScissorSpriteCamera,
 			80,
 			COBJ_MASK_DLLINK(0),
 			-1,
 			FALSE,
-			nGCProcessKindProc,
+			nGCProcessKindFunc,
 			NULL,
 			1,
 			FALSE
@@ -226,10 +226,10 @@ void mnN64FuncStart(void)
 	);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-	gobj = gcMakeGObjSPAfter(nGCCommonKindWallpaper, NULL, nGCCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
+	gobj = gcMakeGObjSPAfter(nGCCommonKindWallpaper, NULL, nGCCommonLinkIDWallpaper, GOBJ_PRIORITY_DEFAULT);
 
 	gcAddGObjProcess(gobj, mnN64LogoThreadUpdate, nGCProcessKindThread, 1);
-	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+	gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, -1);
 
 	sprite = lbRelocGetFileData
 	(

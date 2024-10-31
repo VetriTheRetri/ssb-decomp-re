@@ -106,7 +106,7 @@ void itPippiCommonSelectMonster(GObj *item_gobj)
     {
         item_gobj->func_display = itPippiCommonMoveDLFuncDisplay;
 
-        gcMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_order);
+        gcMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_priority);
     }
     if (kind == nITKindLizardon)
     {

@@ -39,15 +39,15 @@ void efDisplayXLUFuncDisplay(GObj *effect_gobj)
 // 0x800FCDEC
 void efDisplayMakeCLD(void)
 {
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayCLDFuncDisplay, 15, 3, -1);
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayCLDFuncDisplay, 18, 3, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT), efDisplayCLDFuncDisplay, 15, 3, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT), efDisplayCLDFuncDisplay, 18, 3, -1);
 }
 
 // 0x800FCE6C
 void efDisplayMakeXLU(void)
 {
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayXLUFuncDisplay, 15, 0, -1);
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT), efDisplayXLUFuncDisplay, 18, 0, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT), efDisplayXLUFuncDisplay, 15, 0, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT), efDisplayXLUFuncDisplay, 18, 0, -1);
 }
 
 // 0x800FCEEC
@@ -97,20 +97,20 @@ void efDisplayInitAll(void)
 {
     GObj *gobj;
 
-    gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, efDisplayZPerspCLDFuncDisplay, 18, 1, -1);
     gobj->cobj_mask = (COBJ_MASK_DLLINK(2) | COBJ_MASK_DLLINK(0));
 
-    gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
     gcAddGObjDisplay(gobj, efDisplayZPerspCLDFuncDisplay, 15, 1, -1);
     gobj->cobj_mask = COBJ_MASK_DLLINK(1);
 
-    gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, efDisplayZPerspXLUFuncDisplay, 25, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, efDisplayZPerspXLUFuncDisplay, 25, GOBJ_PRIORITY_DEFAULT, -1);
     gobj->cobj_mask = COBJ_MASK_DLLINK(3);
 
-    gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, efDisplayZPerspAAXLUFuncDisplay, 10, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, efDisplayZPerspAAXLUFuncDisplay, 10, GOBJ_PRIORITY_DEFAULT, -1);
     gobj->cobj_mask = COBJ_MASK_DLLINK(4);
 
     gEFManagerParticleBankID = efParticleGetLoadBankID

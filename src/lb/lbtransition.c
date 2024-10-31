@@ -124,13 +124,13 @@ void *sLBTransitionPhotoHeap;
 // // // // // // // // // // // //
 
 // 0x800D4130
-GObj* lbTransitionMakeCamera(u32 id, s32 link, u32 link_order, u64 cobj_mask)
+GObj* lbTransitionMakeCamera(u32 id, s32 link, u32 link_priority, u64 cobj_mask)
 {
     GObj *gobj;
     CObj *cobj;
 
-    gobj = gcMakeGObjSPAfter(id, NULL, link, GOBJ_LINKORDER_DEFAULT);
-    func_80009F74(gobj, func_80017DBC, link_order, cobj_mask, -1);
+    gobj = gcMakeGObjSPAfter(id, NULL, link, GOBJ_PRIORITY_DEFAULT);
+    func_80009F74(gobj, func_80017DBC, link_priority, cobj_mask, -1);
     
     cobj = gcAddCameraForGObj(gobj);
     gcAddXObjForCamera(cobj, nGCMatrixKindPerspFastF, 1);
@@ -170,17 +170,17 @@ void lbTransitionProcUpdate(GObj *gobj)
 }
 
 // 0x800D430C
-GObj* lbTransitionMakeTransition(s32 transition_id, u32 id, s32 link, void (*func_display)(GObj*), u8 dl_link_id, void (*proc_common)(GObj*))
+GObj* lbTransitionMakeTransition(s32 transition_id, u32 id, s32 link, void (*func_display)(GObj*), u8 dl_link_id, void (*func)(GObj*))
 {
     LBTransitionDesc *transition_desc = &dLBTransitionDescs[transition_id];
     GObj *gobj;
 
     lbRelocGetFileExternHeap(transition_desc->file_id, sLBTransitionFileHeap);
-    gobj = gcMakeGObjSPAfter(id, NULL, link, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(id, NULL, link, GOBJ_PRIORITY_DEFAULT);
     
     gobj->user_data.s = transition_desc->unk_lbtransition_0xC;
     
-    gcAddGObjDisplay(gobj, func_display, dl_link_id, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, func_display, dl_link_id, GOBJ_PRIORITY_DEFAULT, -1);
     gcSetupCustomDObjs
     (
         gobj, 
@@ -195,7 +195,7 @@ GObj* lbTransitionMakeTransition(s32 transition_id, u32 id, s32 link, void (*fun
         gcAddAnimJointAll(gobj, (AObjEvent32**) (transition_desc->o_anim_joint + (uintptr_t)sLBTransitionFileHeap), 0.0F);
         gcPlayAnimAll(gobj);
     }
-    gcAddGObjProcess(gobj, proc_common, nGCProcessKindProc, 1);
+    gcAddGObjProcess(gobj, func, nGCProcessKindFunc, 1);
     
     return gobj;
 }
@@ -206,7 +206,7 @@ void lbTransitionSetupTransition(void)
     s32 i, j;
     size_t current_size;
     size_t largest_size;
-    u32 *heap_pixels, *framebuf_pixels;
+    u32 *heap_pixels, *framebuffer_pixels;
 
     largest_size = 0;
     
@@ -222,7 +222,7 @@ void lbTransitionSetupTransition(void)
     sLBTransitionFileHeap = syTaskmanMalloc(largest_size, 0x10);
     heap_pixels = sLBTransitionPhotoHeap = syTaskmanMalloc(300 * 220 * sizeof(u16), 0x10);
 
-    framebuf_pixels = (u32*)
+    framebuffer_pixels = (u32*)
 	(
 		(uintptr_t)D_80044FA8_407B8 + SYVIDEO_BORDER_SIZE(320, 10, u16) + 
         SYVIDEO_BORDER_SIZE(320, 220, u16) + SYVIDEO_BORDER_SIZE(1, 10, u16)
@@ -231,8 +231,8 @@ void lbTransitionSetupTransition(void)
     {
         for (j = 0; j < 150; j++)
         {
-            *heap_pixels++ = *framebuf_pixels++;
+            *heap_pixels++ = *framebuffer_pixels++;
         }
-        framebuf_pixels -= 310;
+        framebuffer_pixels -= 310;
     }
 }

@@ -559,7 +559,7 @@ void dbCubeInit()
 	gcMakeDefaultCameraGObj
 	(
 		0,
-		GOBJ_LINKORDER_DEFAULT,
+		GOBJ_PRIORITY_DEFAULT,
 		100,
 		0x2,
 		GPACK_RGBA8888

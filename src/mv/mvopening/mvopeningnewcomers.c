@@ -77,8 +77,8 @@ SYTaskmanSetup dMVOpeningNewcomersTaskmanSetup =
     // Task Logic Buffer Setup
     {
         0,                              // ???
-        func_8000A5E4,                  // Update function
-        func_8000A340,                  // Frame draw function
+        gcRunAll,                  // Update function
+        gcDrawAll,                  // Frame draw function
         &ovl52_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???
@@ -169,7 +169,7 @@ void mvOpeningNewcomersMakePurin(void)
     GObj* gobj;
     DObj* dobj;
 
-    gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
 
     if (mvOpeningNewcomersCheckLocked(nFTKindPurin) != FALSE)
     {
@@ -178,9 +178,9 @@ void mvOpeningNewcomersMakePurin(void)
     else dobj = gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningNewcomersFiles[0], &lMVOpeningNewcomersPurinShowDisplayList));
     
     gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyRSca, 0);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead1, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead1, 27, GOBJ_PRIORITY_DEFAULT, -1);
     gcAddDObjAnimJoint(dobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningNewcomersFiles[0], &lMVOpeningNewcomersPurinAnimJoint), 0.0F);
-    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
+    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindFunc, 1);
 }
 
 // 0x80131D28
@@ -189,7 +189,7 @@ void mvOpeningNewcomersMakeCaptain(void)
     GObj* gobj;
     DObj* dobj;
 
-    gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
 
     if (mvOpeningNewcomersCheckLocked(nFTKindCaptain) != FALSE)
     {
@@ -198,9 +198,9 @@ void mvOpeningNewcomersMakeCaptain(void)
     else dobj = gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningNewcomersFiles[1], &lMVOpeningNewcomersCaptainShowDisplayList));
 
     gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyRSca, 0);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead1, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead1, 27, GOBJ_PRIORITY_DEFAULT, -1);
     gcAddDObjAnimJoint(dobj, lbRelocGetFileData(void*, sMVOpeningNewcomersFiles[1], &lMVOpeningNewcomersCaptainAnimJoint), 0.0F);
-    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
+    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindFunc, 1);
 }
 
 // 0x80131E18
@@ -209,7 +209,7 @@ void mvOpeningNewcomersMakeLuigi(void)
     GObj* gobj;
     DObj* dobj;
 
-    gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
 
     if (mvOpeningNewcomersCheckLocked(nFTKindLuigi) != FALSE)
     {
@@ -218,9 +218,9 @@ void mvOpeningNewcomersMakeLuigi(void)
     else dobj = gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningNewcomersFiles[0], &lMVOpeningNewcomersLuigiShowDisplayList));
     
     gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyRSca, 0);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead1, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead1, 27, GOBJ_PRIORITY_DEFAULT, -1);
     gcAddDObjAnimJoint(dobj, lbRelocGetFileData(void*, sMVOpeningNewcomersFiles[0], &lMVOpeningNewcomersLuigiAnimJoint), 0.0F);
-    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
+    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindFunc, 1);
 }
 
 // 0x80131F08
@@ -229,7 +229,7 @@ void mvOpeningNewcomersMakeNess(void)
     GObj* gobj;
     DObj* dobj;
 
-    gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
 
     if (mvOpeningNewcomersCheckLocked(nFTKindNess) != FALSE)
     {
@@ -238,9 +238,9 @@ void mvOpeningNewcomersMakeNess(void)
     else dobj = gcAddDObjForGObj(gobj, lbRelocGetFileData(void*, sMVOpeningNewcomersFiles[1], &lMVOpeningNewcomersNessShowDisplayList));
 
     gcAddXObjForDObjFixed(dobj, nGCMatrixKindTraRotRpyRSca, 0);
-    gcAddGObjDisplay(gobj, gcDrawDObjDLHead1, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, gcDrawDObjDLHead1, 27, GOBJ_PRIORITY_DEFAULT, -1);
     gcAddDObjAnimJoint(dobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningNewcomersFiles[1], &lMVOpeningNewcomersNessAnimJoint), 0.0F);
-    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
+    gcAddGObjProcess(gobj, gcPlayAnimAll, nGCProcessKindFunc, 1);
 }
 
 // 0x80131FF8
@@ -285,11 +285,11 @@ void mvOpeningNewcomersMakeHide(void)
             0,
             NULL,
             18,
-            GOBJ_LINKORDER_DEFAULT
+            GOBJ_PRIORITY_DEFAULT
         ),
         mvOpeningNewcomersHideFuncDisplay,
         26,
-        GOBJ_DLLINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         -1
     );
 }
@@ -305,13 +305,13 @@ void mvOpeningNewcomersMakeNewcomersCamera(void)
             nGCCommonKindSceneCamera,
             NULL,
             16,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             func_80017EC0,
             40,
             COBJ_MASK_DLLINK(27),
             -1,
             TRUE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL, 
             1,
             FALSE
@@ -346,13 +346,13 @@ void mvOpeningNewcomersMakeHideCamera(void)
             nGCCommonKindSceneCamera,
             NULL,
             16,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             20,
             COBJ_MASK_DLLINK(26),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL, 
             1,
             FALSE
@@ -441,9 +441,9 @@ void mvOpeningNewcomersFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mvOpeningNewcomersFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
+    gcMakeGObjSPAfter(0, mvOpeningNewcomersFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF));
+    gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF));
 
     mvOpeningNewcomersInitVars();
     mvOpeningNewcomersMakeNewcomersCamera();

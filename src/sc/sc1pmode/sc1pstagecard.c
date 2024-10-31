@@ -117,9 +117,9 @@ void sc1PStageCardMakeSky(void)
     GObj *gobj;
     SObj *sobj;
     
-    gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
     
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 26, GOBJ_PRIORITY_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardSkySprite));
     
@@ -133,8 +133,8 @@ void sc1PStageCardMakeBanners(void)
     GObj *gobj;
     SObj *sobj;
     
-    gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 28, GOBJ_PRIORITY_DEFAULT, -1);
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardBannerTopSprite));
     
     sobj->pos.x = 10.0F;
@@ -197,9 +197,9 @@ void sc1PStageCardMakeVSDecal(void)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
+    gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardDecalVSSprite));
     
@@ -250,8 +250,8 @@ void sc1PStageCardMakeLabels(s32 stage)
         0x0
     };
     
-    gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, -1);
     
     if (sc1PStageCardCheckNotBonusStage(stage) == FALSE)
     {
@@ -361,8 +361,8 @@ void sc1PStageCardMakeFigures(s32 stage)
         { 270, 34 }, { 280, 23 }
     };
 
-    gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, -1);
 
     for (i = nSC1PGameStageCommonStart; i <= nSC1PGameStageCommonEnd; i++)
     {
@@ -385,8 +385,8 @@ void sc1PStageCardMakeBonusTasks(s32 stage)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, -1);
     
     switch (stage)
     {
@@ -465,8 +465,8 @@ void sc1PStageCardMakeVSName(s32 stage)
         &lSC1PStageCardVSNameBossSprite,
         0x0
     };
-    sSC1PStageCardVSNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    sSC1PStageCardVSNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[0], &lSC1PStageCardTextVSSprite));
     
@@ -530,8 +530,8 @@ void sc1PStageCardMakeName(s32 stage)
         &lSC1PStageCardNameNessSprite
     };
 
-    sSC1PStageCardNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    sSC1PStageCardNameGObj = gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageCardFiles[1], name_offsets[sSC1PStageCardPlayerFighterDemoDesc.fkind]));
     
@@ -774,8 +774,8 @@ void sc1PStageCardMakeFighter(FTDemoDesc fighter, s32 card_anim_frame_id, void *
     
     fp->card_anim_frame_id = card_anim_frame_id;
     
-    gcMoveGObjDL(fighter_gobj, dl_links[card_anim_frame_id], GOBJ_DLLINKORDER_DEFAULT);
-    gcAddGObjProcess(fighter_gobj, sc1PStageCardUpdateFighterPositionZ, nGCProcessKindProc, 1);
+    gcMoveGObjDL(fighter_gobj, dl_links[card_anim_frame_id], GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjProcess(fighter_gobj, sc1PStageCardUpdateFighterPositionZ, nGCProcessKindFunc, 1);
     
     DObjGetStruct(fighter_gobj)->translate.vec.f.x = 0.0F;
     DObjGetStruct(fighter_gobj)->translate.vec.f.y = 0.0F;
@@ -800,9 +800,9 @@ void sc1PStageCardInitAllyTextParams(SObj *sobj)
 // 0x80132E2C
 void sc1PStageCardMakeAllyText(s32 stage)
 {
-    GObj *gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_LINKORDER_DEFAULT);
+    GObj *gobj = gcMakeGObjSPAfter(0, NULL, 19, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, -1);
     
     if (stage == nSC1PGameStageMario)
     {
@@ -992,8 +992,8 @@ GObj* sc1PStageCardMakeVSFighter(s32 fkind, s32 stage, s32 card_anim_frame_id, v
     fp = ftGetStruct(fighter_gobj);
     fp->card_anim_frame_id = card_anim_frame_id;
     
-    gcMoveGObjDL(fighter_gobj, dl_link, GOBJ_DLLINKORDER_DEFAULT);
-    gcAddGObjProcess(fighter_gobj, sc1PStageCardVSFighterProcUpdate, nGCProcessKindProc, 1);
+    gcMoveGObjDL(fighter_gobj, dl_link, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjProcess(fighter_gobj, sc1PStageCardVSFighterProcUpdate, nGCProcessKindFunc, 1);
     
     DObjGetStruct(fighter_gobj)->translate.vec.f.x = 0.0F;
     DObjGetStruct(fighter_gobj)->translate.vec.f.y = 0.0F;
@@ -1023,8 +1023,8 @@ void sc1PStageCardMakeBonusPicture(s32 stage)
     GObj *gobj;
     SObj *sobj;
 
-    gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 26, GOBJ_PRIORITY_DEFAULT, -1);
     
     switch (stage)
     {
@@ -1145,13 +1145,13 @@ CObj* sc1PStageCardMakeStageCamera(s32 stage, u32 dl_link)
         nGCCommonKindSceneCamera,
         NULL,
         16,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         func_80017EC0,
         40,
         COBJ_MASK_DLLINK(dl_link),
         -1,
         FALSE,
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1,
         FALSE
@@ -1504,7 +1504,7 @@ void sc1PStageCardMakeFighterCamera(s32 fkind, s32 cobj_id)
         &lSC1PStageCardFighterNessCamAnimJoint
     };
 
-    // 0x80135A00 - col 0 is dl_link, col 1 is dl_link_order
+    // 0x80135A00 - col 0 is dl_link, col 1 is dl_link_priority
     s32 dl_links[/* */][2] =
     {
         { 31, 50 },
@@ -1521,14 +1521,14 @@ void sc1PStageCardMakeFighterCamera(s32 fkind, s32 cobj_id)
         nGCCommonKindSceneCamera,
         NULL,
         16,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         func_80017EC0,
         dl_links[cobj_id][1],
         COBJ_MASK_DLLINK(dl_links[cobj_id][0]) | COBJ_MASK_DLLINK(15) |
         COBJ_MASK_DLLINK(10)                  | COBJ_MASK_DLLINK(18),
         -1,
         FALSE,
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1,
         FALSE
@@ -1599,13 +1599,13 @@ void sc1PStageCardMakeBannersCamera(void)
             nGCCommonKindSceneCamera,
             NULL,
             16,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             30,
             COBJ_MASK_DLLINK(28),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -1624,13 +1624,13 @@ void sc1PStageCardMakeDecalsCamera(void)
             nGCCommonKindSceneCamera,
             NULL,
             16,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             20,
             COBJ_MASK_DLLINK(27),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -1649,13 +1649,13 @@ void sc1PStageCardMakePicturesCamera(void)
             nGCCommonKindSceneCamera,
             NULL,
             16,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             80,
             COBJ_MASK_DLLINK(26),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -1941,8 +1941,8 @@ void sc1PStageCardFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, sc1PStageCardFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeGObjSPAfter(0, sc1PStageCardFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     sc1PStageCardInitVars();
     efParticleInitAll();
     efManagerInitEffects();
@@ -1994,7 +1994,7 @@ SYTaskmanSetup dSC1PStageCardTaskmanSetup =
     // Task Logic Buffer Setup
     {
         0,                          // ???
-        func_8000A5E4,              // Update function
+        gcRunAll,              		// Update function
         func_800A26B8,              // Frame draw function
         &ovl24_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size

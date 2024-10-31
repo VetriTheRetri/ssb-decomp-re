@@ -249,7 +249,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
     {
         return NULL;
     }
-    item_gobj = gcMakeGObjSPAfter(nGCCommonKindItem, NULL, nGCCommonLinkIDItem, GOBJ_LINKORDER_DEFAULT);
+    item_gobj = gcMakeGObjSPAfter(nGCCommonKindItem, NULL, nGCCommonLinkIDItem, GOBJ_PRIORITY_DEFAULT);
 
     if (item_gobj == NULL)
     {
@@ -265,7 +265,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
     }
     else func_display = (attr->is_display_xlu) ? itDisplayXLUFuncDisplay : itDisplayOPAFuncDisplay;
 
-    gcAddGObjDisplay(item_gobj, func_display, 11, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(item_gobj, func_display, 11, GOBJ_PRIORITY_DEFAULT, -1);
 
     item_gobj->user_data.p = ip;
 
@@ -414,9 +414,9 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
     ip->coll_data.vel_push.y        = 0.0F;
     ip->coll_data.vel_push.z        = 0.0F;
 
-    gcAddGObjProcess(item_gobj, itProcessProcItemMain, nGCProcessKindProc, 3);
-    gcAddGObjProcess(item_gobj, itProcessProcSearchHitAll, nGCProcessKindProc, 1);
-    gcAddGObjProcess(item_gobj, itProcessProcHitCollisions, nGCProcessKindProc, 0);
+    gcAddGObjProcess(item_gobj, itProcessProcItemMain, nGCProcessKindFunc, 3);
+    gcAddGObjProcess(item_gobj, itProcessProcSearchHitAll, nGCProcessKindFunc, 1);
+    gcAddGObjProcess(item_gobj, itProcessProcHitCollisions, nGCProcessKindFunc, 0);
 
     ip->proc_update    = item_desc->proc_update;
     ip->proc_map       = item_desc->proc_map;
@@ -588,9 +588,9 @@ GObj* itManagerMakeItemSpawnActor(void)
                 {
                     gITManagerSpawnActor.item_mapobjs[i] = item_mapobj_ids[i];
                 }
-                gobj = gcMakeGObjSPAfter(nGCCommonKindItem, NULL, nGCCommonLinkIDItemActor, GOBJ_LINKORDER_DEFAULT);
+                gobj = gcMakeGObjSPAfter(nGCCommonKindItem, NULL, nGCCommonLinkIDItemActor, GOBJ_PRIORITY_DEFAULT);
 
-                gcAddGObjProcess(gobj, itManagerMakeRandomItem, nGCProcessKindProc, 3);
+                gcAddGObjProcess(gobj, itManagerMakeRandomItem, nGCProcessKindFunc, 3);
 
                 item_count_toggles = gBattleState->item_toggles;
 

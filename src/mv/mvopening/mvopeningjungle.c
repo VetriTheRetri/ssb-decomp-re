@@ -153,7 +153,7 @@ SYTaskmanSetup dMVOpeningJungleTaskmanSetup =
     // Task Logic Buffer Setup
     {
         0,                              // ???
-        func_8000A5E4,                  // Update function
+        gcRunAll,                  // Update function
         func_800A26B8,                  // Frame draw function
         &ovl51_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
@@ -258,7 +258,7 @@ void mvOpeningJungleMakeGroundViewport(Vec3f unused)
     cobj->projection.persp.far = 15000.0F;
 
     gcAddCameraCamAnimJoint(cobj, lbRelocGetFileData(AObjEvent32*, sMVOpeningJungleFiles[1], &lMVOpeningJungleCamAnimJoint), 0.0F);
-    gcAddGObjProcess(sMVOpeningJungleStageCameraGObj, gcPlayCamAnim, nGCProcessKindProc, 1);
+    gcAddGObjProcess(sMVOpeningJungleStageCameraGObj, gcPlayCamAnim, nGCProcessKindFunc, 1);
 
     gcPlayCamAnim(sMVOpeningJungleStageCameraGObj);
 }
@@ -416,7 +416,7 @@ void mvOpeningJungleFuncStart(void)
     gBattleState->players[1].pkind = nFTPlayerKindKey;
 
     mvOpeningJungleSetupFiles();
-    gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningJungleFuncRun, 13, GOBJ_LINKORDER_DEFAULT);
+    gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningJungleFuncRun, 13, GOBJ_PRIORITY_DEFAULT);
     gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 3, 0xFF);
     efParticleInitAll();
     ftParamInitGame();

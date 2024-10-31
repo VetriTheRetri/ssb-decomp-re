@@ -355,7 +355,7 @@ void ftParamMoveDLLink(GObj *fighter_gobj, u8 dl_link)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    gcMoveGObjDL(fighter_gobj, dl_link, GOBJ_DLLINKORDER_DEFAULT);
+    gcMoveGObjDL(fighter_gobj, dl_link, GOBJ_PRIORITY_DEFAULT);
 
     fp->dl_link = dl_link;
 }
@@ -1046,7 +1046,7 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
                 }
                 if (costume != 0)
                 {
-                    parts_gobj = gcMakeGObjSPAfter(nGCCommonKindFighterParts, NULL, nGCCommonLinkIDFighterParts, GOBJ_LINKORDER_DEFAULT);
+                    parts_gobj = gcMakeGObjSPAfter(nGCCommonKindFighterParts, NULL, nGCCommonLinkIDFighterParts, GOBJ_PRIORITY_DEFAULT);
                     parts->gobj = parts_gobj;
 
                     gcAddDObjForGObj(parts_gobj, ft_mesh->dl);

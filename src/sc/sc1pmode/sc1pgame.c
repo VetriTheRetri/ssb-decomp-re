@@ -1600,7 +1600,7 @@ void sc1PGameSetGameStatusWait(void)
             nGCCommonKindInterface, 
             NULL, 
             nGCCommonLinkIDInterfaceActor, 
-            GOBJ_LINKORDER_DEFAULT
+            GOBJ_PRIORITY_DEFAULT
         ),     
         sc1PGameWaitThreadUpdate, 
         nGCProcessKindThread, 
@@ -1717,9 +1717,9 @@ void sc1PGameInitTeamStockDisplay(void)
         sprite->attr = SP_TEXSHUF | SP_TRANSPARENT;
 
     make_gobj:
-        interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
+        interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 
-        gcAddGObjDisplay(interface_gobj, sc1PGameTeamStockDisplayFuncDisplay, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+        gcAddGObjDisplay(interface_gobj, sc1PGameTeamStockDisplayFuncDisplay, 23, GOBJ_PRIORITY_DEFAULT, -1);
 
         for (i = 0; i < sSC1PGameEnemyStocksRemaining; i++)
         {

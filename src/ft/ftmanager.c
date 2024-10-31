@@ -701,9 +701,9 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
     DObj *topn_joint;
     FTMesh *ft_mesh;
 
-    fighter_gobj = gcMakeGObjSPAfter(nGCCommonKindFighter, NULL, nGCCommonLinkIDFighter, GOBJ_LINKORDER_DEFAULT);
+    fighter_gobj = gcMakeGObjSPAfter(nGCCommonKindFighter, NULL, nGCCommonLinkIDFighter, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(fighter_gobj, ft_desc->func_display, FTRENDER_DLLINK_DEFAULT, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(fighter_gobj, ft_desc->func_display, FTRENDER_DLLINK_DEFAULT, GOBJ_PRIORITY_DEFAULT, -1);
 
     fp = ftManagerGetNextStructAlloc();
 
@@ -803,7 +803,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
                 {
                     ft_mesh = attr->mesh;
 
-                    parts->gobj = gcMakeGObjSPAfter(nGCCommonKindFighterParts, NULL, nGCCommonLinkIDFighterParts, GOBJ_LINKORDER_DEFAULT);
+                    parts->gobj = gcMakeGObjSPAfter(nGCCommonKindFighterParts, NULL, nGCCommonLinkIDFighterParts, GOBJ_PRIORITY_DEFAULT);
 
                     gcAddDObjForGObj(parts->gobj, ft_mesh->dl);
                     lbCommonAddMObjForFighterPartsDObj(DObjGetStruct(parts->gobj), ft_mesh->mobjsubs, ft_mesh->costume_matanim_joints, NULL, fp->costume);
@@ -866,14 +866,14 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
 
     if (fp->pkind != nFTPlayerKindDemo)
     {
-        gcAddGObjProcess(fighter_gobj, ftMainProcInterruptMain, nGCProcessKindProc, 5);
-        gcAddGObjProcess(fighter_gobj, ftMainProcPhysicsMapDefault, nGCProcessKindProc, 4);
-        gcAddGObjProcess(fighter_gobj, ftMainProcPhysicsMapCapture, nGCProcessKindProc, 3);
-        gcAddGObjProcess(fighter_gobj, ftMainProcSearchAllCatch, nGCProcessKindProc, 2);
-        gcAddGObjProcess(fighter_gobj, ftMainProcSearchAllHit, nGCProcessKindProc, 1);
-        gcAddGObjProcess(fighter_gobj, ftMainProcUpdateMain, nGCProcessKindProc, 0);
+        gcAddGObjProcess(fighter_gobj, ftMainProcInterruptMain, nGCProcessKindFunc, 5);
+        gcAddGObjProcess(fighter_gobj, ftMainProcPhysicsMapDefault, nGCProcessKindFunc, 4);
+        gcAddGObjProcess(fighter_gobj, ftMainProcPhysicsMapCapture, nGCProcessKindFunc, 3);
+        gcAddGObjProcess(fighter_gobj, ftMainProcSearchAllCatch, nGCProcessKindFunc, 2);
+        gcAddGObjProcess(fighter_gobj, ftMainProcSearchAllHit, nGCProcessKindFunc, 1);
+        gcAddGObjProcess(fighter_gobj, ftMainProcUpdateMain, nGCProcessKindFunc, 0);
     }
-    else gcAddGObjProcess(fighter_gobj, scSubsysFighterProcUpdate, nGCProcessKindProc, 5);
+    else gcAddGObjProcess(fighter_gobj, scSubsysFighterProcUpdate, nGCProcessKindFunc, 5);
 
     ftManagerInitFighter(fighter_gobj, ft_desc);
 

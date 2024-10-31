@@ -1124,8 +1124,22 @@ GObj* cmManagerMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
     Vec3f sp4C;
     f32 temp_f0;
 
-    camera_gobj = gcMakeCameraGObj(nGCCommonKindMainCamera, NULL, nGCCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010D4C0, 50, 0, -1, 0, 1, proc, 3, 0);
-
+    camera_gobj = gcMakeCameraGObj
+    (
+        nGCCommonKindMainCamera,
+        NULL,
+        nGCCommonLinkIDCamera,
+        GOBJ_PRIORITY_DEFAULT,
+        func_ovl2_8010D4C0,
+        50,
+        0,
+        -1,
+        FALSE,
+        nGCProcessKindFunc,
+        proc,
+        3,
+        0
+    );
     gCMManagerCameraGObj = camera_gobj;
 
     cobj = CObjGetStruct(camera_gobj);
@@ -1200,11 +1214,32 @@ GObj* func_ovl2_8010DB2C(void (*func_camera)(GObj*))
 // 0x8010DB54
 GObj* cmManagerMakeWallpaperCamera(void)
 {
-    GObj *camera_gobj = gcMakeCameraGObj(nGCCommonKindWallpaperCamera, NULL, nGCCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, lbCommonScissorSpriteCamera, 80, COBJ_MASK_DLLINK(0), -1, 0, 1, 0, 1, 0);
+    GObj *camera_gobj = gcMakeCameraGObj
+    (
+        nGCCommonKindWallpaperCamera,
+        NULL,
+        nGCCommonLinkIDCamera,
+        GOBJ_PRIORITY_DEFAULT,
+        lbCommonScissorSpriteCamera,
+        80,
+        COBJ_MASK_DLLINK(0),
+        -1,
+        FALSE,
+        nGCProcessKindFunc,
+        NULL,
+        1,
+        FALSE
+    );
     CObj *cobj = CObjGetStruct(camera_gobj);
 
-    syRdpSetViewport(&cobj->viewport, (f32)gCMManagerCameraStruct.viewport_ulx, (f32)gCMManagerCameraStruct.viewport_uly, (f32)gCMManagerCameraStruct.viewport_lrx, (f32)gCMManagerCameraStruct.viewport_lry);
-
+    syRdpSetViewport
+    (
+        &cobj->viewport,
+        gCMManagerCameraStruct.viewport_ulx,
+        gCMManagerCameraStruct.viewport_uly,
+        gCMManagerCameraStruct.viewport_lrx,
+        gCMManagerCameraStruct.viewport_lry
+    );
     return camera_gobj;
 }
 
@@ -1244,13 +1279,13 @@ void func_ovl2_8010DDC4(void)
             nGCCommonKindScissorCamera,
             NULL,
             nGCCommonLinkIDCamera,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             func_ovl2_8010DC24,
             20,
             COBJ_MASK_DLLINK(22),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -1347,7 +1382,7 @@ void func_ovl2_8010E134(GObj *camera_gobj)
 // 0x8010E1A4
 void func_ovl2_8010E1A4(void)
 {
-    CObj *cobj = CObjGetStruct(gcMakeCameraGObj(nGCCommonKindUnkCamera1, NULL, nGCCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010E134, 30, COBJ_MASK_DLLINK(9), -1, 0, 1, 0, 1, 0));
+    CObj *cobj = CObjGetStruct(gcMakeCameraGObj(nGCCommonKindUnkCamera1, NULL, nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, func_ovl2_8010E134, 30, COBJ_MASK_DLLINK(9), -1, 0, 1, 0, 1, 0));
 
     lbCommonInitCObjVec(cobj, 0x4D, 0);
     lbCommonInitCameraOrtho(cobj, 0x4E, 1);
@@ -1376,7 +1411,7 @@ void func_ovl2_8010E254(GObj *camera_gobj)
 // 0x8010E2D4
 void func_ovl2_8010E2D4(void)
 {
-    CObj *cobj = CObjGetStruct(gcMakeCameraGObj(nGCCommonKindUnkCamera2, NULL, nGCCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010E254, 35, COBJ_MASK_DLLINK(8), -1, 0, 1, 0, 1, 0));
+    CObj *cobj = CObjGetStruct(gcMakeCameraGObj(nGCCommonKindUnkCamera2, NULL, nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, func_ovl2_8010E254, 35, COBJ_MASK_DLLINK(8), -1, 0, 1, 0, 1, 0));
 
     lbCommonInitCameraOrtho(cobj, 0x54, 1);
 
@@ -1388,7 +1423,7 @@ void func_ovl2_8010E2D4(void)
 // 0x8010E374
 GObj* func_ovl2_8010E374(void)
 {
-    GObj *camera_gobj = gcMakeCameraGObj(nGCCommonKindScissorCamera, NULL, nGCCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, lbCommonScissorSpriteCamera, 20, (COBJ_MASK_DLLINK(24) | COBJ_MASK_DLLINK(23)), -1, 0, 1, 0, 1, 0);
+    GObj *camera_gobj = gcMakeCameraGObj(nGCCommonKindScissorCamera, NULL, nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, lbCommonScissorSpriteCamera, 20, (COBJ_MASK_DLLINK(24) | COBJ_MASK_DLLINK(23)), -1, 0, 1, 0, 1, 0);
     CObj *cobj = CObjGetStruct(camera_gobj);
 
     syRdpSetViewport(&cobj->viewport, (f32)gCMManagerCameraStruct.viewport_ulx, (f32)gCMManagerCameraStruct.viewport_uly, (f32)gCMManagerCameraStruct.viewport_lrx, (f32)gCMManagerCameraStruct.viewport_lry);
@@ -1409,7 +1444,7 @@ void func_ovl2_8010E458(GObj *camera_gobj)
 // 0x8010E498
 GObj* func_ovl2_8010E498(void)
 {
-    GObj *camera_gobj = gcMakeCameraGObj(nGCCommonKindScissorCamera, NULL, nGCCommonLinkIDCamera, GOBJ_LINKORDER_DEFAULT, func_ovl2_8010E458, 15, COBJ_MASK_DLLINK(25), -1, 0, 1, 0, 1, 0);
+    GObj *camera_gobj = gcMakeCameraGObj(nGCCommonKindScissorCamera, NULL, nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, func_ovl2_8010E458, 15, COBJ_MASK_DLLINK(25), -1, 0, 1, 0, 1, 0);
     CObj *cobj = CObjGetStruct(camera_gobj);
 
     syRdpSetViewport(&cobj->viewport, (f32)gCMManagerCameraStruct.viewport_ulx, (f32)gCMManagerCameraStruct.viewport_uly, (f32)gCMManagerCameraStruct.viewport_lrx, (f32)gCMManagerCameraStruct.viewport_lry);

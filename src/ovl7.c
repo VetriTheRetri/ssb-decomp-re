@@ -501,7 +501,7 @@ void scTrainingMode_ProcUpdate()
 	case 2: scTrainingMode_UpdateTrainingMenu(); break;
 	}
 	if (scTrainingMode_CheckSpeedFrameFreeze() == FALSE)
-		func_8000A5E4();
+		gcRunAll();
 	else
 		cmManagerRunGlobalFuncCamera(gCMManagerCameraGObj);
 

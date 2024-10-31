@@ -921,11 +921,11 @@ void ifCommonPlayerDamageInitInterface(void)
         }
         else
         {
-            interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
+            interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 
             sIFCommonPlayerDamageInterface[player].interface_gobj = interface_gobj;
 
-            gcAddGObjDisplay(interface_gobj, ifCommonPlayerDamageFuncDisplay, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+            gcAddGObjDisplay(interface_gobj, ifCommonPlayerDamageFuncDisplay, 23, GOBJ_PRIORITY_DEFAULT, -1);
 
             fp = ftGetStruct(gBattleState->players[player].fighter_gobj);
 
@@ -970,7 +970,7 @@ void ifCommonPlayerDamageInitInterface(void)
             ifSetPlayer(interface_gobj, player); // Cast is probably redundant but I don't want any compilers screaming at me
 
             ifCommonPlayerDamageProcUpdate(interface_gobj);
-            gcAddGObjProcess(interface_gobj, ifCommonPlayerDamageProcUpdate, nGCProcessKindProc, 0);
+            gcAddGObjProcess(interface_gobj, ifCommonPlayerDamageProcUpdate, nGCProcessKindFunc, 0);
         }
     }
 }
@@ -1130,8 +1130,8 @@ void ifCommonPlayerStockMultiMakeInterface(s32 player)
 
     if ((fp->attr->sprites != NULL) && (fp->attr->sprites->stock_sprite != NULL))
     {
-        GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
-        gcAddGObjDisplay(interface_gobj, ifCommonPlayerStockMultiFuncDisplay, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+        GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
+        gcAddGObjDisplay(interface_gobj, ifCommonPlayerStockMultiFuncDisplay, 23, GOBJ_PRIORITY_DEFAULT, -1);
 
         lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
         lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[4], &lIFCommonPlayerStockDigit0));
@@ -1176,9 +1176,9 @@ void ifCommonPlayerStockSingleMakeInterface(s32 player)
 
     if ((fp->attr->sprites != NULL) && (fp->attr->sprites->stock_sprite != NULL))
     {
-        sIFCommonPlayerStocksGObj[player] = interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
+        sIFCommonPlayerStocksGObj[player] = interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 
-        gcAddGObjDisplay(interface_gobj, ifCommonPlayerStockSingleFuncDisplay, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+        gcAddGObjDisplay(interface_gobj, ifCommonPlayerStockSingleFuncDisplay, 23, GOBJ_PRIORITY_DEFAULT, -1);
 
         sobj = lbCommonMakeSObjForGObj(interface_gobj, fp->attr->sprites->stock_sprite);
 
@@ -1235,14 +1235,14 @@ void ifCommonPlayerStockStealProcUpdate(GObj *interface_gobj)
 void ifCommonPlayerStockStealMakeInterface(s32 thief, s32 stolen)
 {
     FTStruct *fp = ftGetStruct(gBattleState->players[stolen].fighter_gobj);
-    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
+    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 
     if (interface_gobj != NULL)
     {
         SObj *check_sobj, *sobj;
 
-        gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
-        gcAddGObjProcess(interface_gobj, ifCommonPlayerStockStealProcUpdate, nGCProcessKindProc, 0);
+        gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_PRIORITY_DEFAULT, -1);
+        gcAddGObjProcess(interface_gobj, ifCommonPlayerStockStealProcUpdate, nGCProcessKindFunc, 0);
 
         check_sobj = lbCommonMakeSObjForGObj(interface_gobj, fp->attr->sprites->stock_sprite);
 
@@ -1609,7 +1609,7 @@ void ifCommonPlayerMagnifyMakeInterface(void)
     while (fighter_gobj != NULL)
     {
         FTStruct *fp = ftGetStruct(fighter_gobj);
-        GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDMagnify, GOBJ_LINKORDER_DEFAULT);
+        GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDMagnify, GOBJ_PRIORITY_DEFAULT);
 
         gcAddXObjForDObjFixed(gcAddDObjForGObj(interface_gobj, (Gfx*) ((uintptr_t)gGMCommonFiles[0] + (intptr_t)&lIFCommonPlayerMagnifyDisplayList)), nGCMatrixKindTraRotRpyRSca, 0);
 
@@ -1683,9 +1683,9 @@ void ifCommonPlayerArrowsRightProcUpdate(GObj *interface_gobj)
 // 0x80111684
 GObj* ifCommonPlayerArrowsMakeInterface(void (*func_display)(GObj*), void (*proc_update)(GObj*))
 {
-    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
+    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, func_display, 8, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, func_display, 8, GOBJ_PRIORITY_DEFAULT, -1);
     gcSetupCustomDObjs
     (
         interface_gobj, 
@@ -1695,7 +1695,7 @@ GObj* ifCommonPlayerArrowsMakeInterface(void (*func_display)(GObj*), void (*proc
         nGCMatrixKindNull, 
         nGCMatrixKindNull
     );
-    gcAddGObjProcess(interface_gobj, proc_update, nGCProcessKindProc, 5);
+    gcAddGObjProcess(interface_gobj, proc_update, nGCProcessKindFunc, 5);
 
     return interface_gobj;
 }
@@ -1773,10 +1773,10 @@ void ifCommonPlayerArrowsInitInterface(void)
 
     gcAddGObjDisplay
     (
-        gcMakeGObjSPAfter(nGCCommonKindInterface, ifCommonPlayerArrowsFuncRun, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT), 
+        gcMakeGObjSPAfter(nGCCommonKindInterface, ifCommonPlayerArrowsFuncRun, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT), 
         ifCommonPlayerArrowsMainFuncDisplay,
         8, 
-        GOBJ_DLLINKORDER_DEFAULT, 
+        GOBJ_PRIORITY_DEFAULT, 
         -1
     );
     dobj = DObjGetStruct(ifCommonPlayerArrowsMakeInterface(ifCommonPlayerArrowsLeftFuncDisplay, ifCommonPlayerArrowsLeftProcUpdate));
@@ -1854,9 +1854,9 @@ void ifCommonPlayerTagMakeInterface(void)
     {
         if (gBattleState->players[player].pkind != nFTPlayerKindNot)
         {
-            interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
+            interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 
-            gcAddGObjDisplay(interface_gobj, ifCommonPlayerTagFuncDisplay, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+            gcAddGObjDisplay(interface_gobj, ifCommonPlayerTagFuncDisplay, 23, GOBJ_PRIORITY_DEFAULT, -1);
 
             sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[6], dIFCommonPlayerTagSpriteOffsets[gBattleState->players[player].tag_kind]));
 
@@ -1909,11 +1909,11 @@ void ifCommonItemArrowFuncDisplay(GObj *interface_gobj)
 // 0x80111EC0
 GObj* ifCommonItemArrowMakeInterface(ITStruct *ip)
 {
-    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
+    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 
     if (interface_gobj != NULL)
     {
-        gcAddGObjDisplay(interface_gobj, ifCommonItemArrowFuncDisplay, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+        gcAddGObjDisplay(interface_gobj, ifCommonItemArrowFuncDisplay, 23, GOBJ_PRIORITY_DEFAULT, -1);
 
         if (lbCommonMakeSObjForGObj(interface_gobj, sIFCommonItemArrowSprite) != NULL)
         {
@@ -1976,10 +1976,10 @@ void ifCommonAnnounceSetAttr(GObj *interface_gobj, s32 file_id, IFACharacter *ch
 void ifCommonAnnounceGoMakeInterface(void)
 {
     void *sprite_head = gGMCommonFiles[1];
-    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
+    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
     s32 i;
 
-    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_PRIORITY_DEFAULT, -1);
     gcAddGObjProcess(interface_gobj, ifCommonAnnounceThread, nGCProcessKindThread, 5);
 
     for (i = 0; i < ARRAY_COUNT(dIFCommonAnnounceGoSpriteData); i++)
@@ -2189,9 +2189,9 @@ SObj* ifCommonCountdownMakeInterface(void)
     SObj *sobj;
     s32 i;
 
-    interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
+    interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_PRIORITY_DEFAULT, -1);
     gcAddGObjProcess(interface_gobj, ifCommonCountdownThread, nGCProcessKindThread, 5);
 
     sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[1], &lIFCommonTrafficRod));
@@ -2236,9 +2236,9 @@ SObj* ifCommonCountdownMakeInterface(void)
 // 0x80112814
 GObj* ifCommonAnnounceTimeUpMakeInterface(void)
 {
-    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
+    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_PRIORITY_DEFAULT, -1);
 
     ifCommonAnnounceSetAttr(interface_gobj, 1, dIFCommonAnnounceTimeUpSpriteData, ARRAY_COUNT(dIFCommonAnnounceTimeUpSpriteData));
 
@@ -2292,7 +2292,7 @@ void ifCommonEntryFocusThread(GObj *interface_gobj)
 // 0x801129DC
 void ifCommonEntryFocusMakeInterface(s32 id)
 {
-    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterfaceActor, GOBJ_LINKORDER_DEFAULT);
+    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterfaceActor, GOBJ_PRIORITY_DEFAULT);
 
     gcAddGObjProcess(interface_gobj, ifCommonEntryFocusThread, nGCProcessKindThread, 5);
 
@@ -2312,7 +2312,7 @@ void ifCommonEntryAllThread(GObj *interface_gobj)
 // 0x80112A80
 void ifCommonEntryAllMakeInterface(void)
 {
-    gcAddGObjProcess(gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterfaceActor, GOBJ_LINKORDER_DEFAULT), ifCommonEntryAllThread, nGCProcessKindThread, 5);
+    gcAddGObjProcess(gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterfaceActor, GOBJ_PRIORITY_DEFAULT), ifCommonEntryAllThread, nGCProcessKindThread, 5);
 
     gBattleState->game_status = nSCBattleGameStatusWait;
 }
@@ -2350,9 +2350,9 @@ void ifCommonAnnounceSetColors(GObj *interface_gobj, syColorRGBPair *colors)
 // 0x80112B74
 void ifCommonSuddenDeathMakeInterface(void)
 {
-    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
+    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_PRIORITY_DEFAULT, -1);
     gcAddGObjProcess(interface_gobj, ifCommonSuddenDeathThread, nGCProcessKindThread, 5);
     ifCommonAnnounceSetAttr(interface_gobj, 7, dIFCommonAnnounceSuddenDeathSpriteData, ARRAY_COUNT(dIFCommonAnnounceSuddenDeathSpriteData));
     ifCommonAnnounceSetColors(interface_gobj, &dIFCommonAnnounceSuddenDeathSpriteColors);
@@ -2443,9 +2443,9 @@ SObj* ifCommonTimerMakeDigits(void)
 
     ifCommonTimerSetAttr();
 
-    interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
+    interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, ifCommonTimerFuncDisplay, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, ifCommonTimerFuncDisplay, 23, GOBJ_PRIORITY_DEFAULT, -1);
 
     lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
     lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, gGMCommonFiles[3], (intptr_t)&lIFCommonTimerDigit0));
@@ -2530,15 +2530,15 @@ void ifCommonTimerMakeInterface(void (*proc)(void))
     sIFCommonTimerIsStarted = FALSE;
 
     ifCommonTimerInitAnnouncedSeconds();
-    ifSetProc(gcMakeGObjSPAfter(nGCCommonKindInterface, ifCommonTimerFuncRun, nGCCommonLinkIDInterfaceActor, GOBJ_LINKORDER_DEFAULT), proc);
+    ifSetProc(gcMakeGObjSPAfter(nGCCommonKindInterface, ifCommonTimerFuncRun, nGCCommonLinkIDInterfaceActor, GOBJ_PRIORITY_DEFAULT), proc);
 }
 
 // 0x8011341C
 GObj* ifCommonAnnounceGameSetMakeInterface(void)
 {
-    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
+    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_PRIORITY_DEFAULT, -1);
 
     ifCommonAnnounceSetAttr(interface_gobj, 1, dIFCommonAnnounceGameSetSpriteData, ARRAY_COUNT(dIFCommonAnnounceGameSetSpriteData));
 
@@ -2824,11 +2824,11 @@ void ifCommonBattlePauseMakeInterface(s32 player)
 {
     GObj *interface_gobj;
 
-    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindPauseMenu, NULL, nGCCommonLinkIDPauseMenu, GOBJ_LINKORDER_DEFAULT), ifCommonBattlePauseFuncDisplay, 24, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gcMakeGObjSPAfter(nGCCommonKindPauseMenu, NULL, nGCCommonLinkIDPauseMenu, GOBJ_PRIORITY_DEFAULT), ifCommonBattlePauseFuncDisplay, 24, GOBJ_PRIORITY_DEFAULT, -1);
 
-    interface_gobj = gcMakeGObjSPAfter(nGCCommonKindPauseMenu, NULL, nGCCommonLinkIDPauseMenu, GOBJ_LINKORDER_DEFAULT);
+    interface_gobj = gcMakeGObjSPAfter(nGCCommonKindPauseMenu, NULL, nGCCommonLinkIDPauseMenu, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 24, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 24, GOBJ_PRIORITY_DEFAULT, -1);
 
     ifCommonBattlePausePlayerNumMakeSObj(interface_gobj, player);
     ifCommonBattlePauseMakeSObjsAll(interface_gobj);
@@ -2955,7 +2955,7 @@ void ifCommonBattleGoUpdateInterface(void)
             return;
         }
     }
-    func_8000A5E4();
+    gcRunAll();
 }
 
 // 0x801142B4
@@ -3091,7 +3091,7 @@ void ifCommonBattlePauseRestoreInterfaceAll(void)
     {
         ftParamSetModelPartDetailAll(gBattleState->players[sIFCommonBattlePausePlayer].fighter_gobj, sIFCommonBattlePausePlayerDetail);
     }
-    func_8000A5E4();
+    gcRunAll();
 }
 
 // 0x801146DC
@@ -3115,7 +3115,7 @@ void ifCommonBattleBossDefeatUpdateInterface(void)
 
     if (D_ovl2_8013185A == 0)
     {
-        func_8000A5E4();
+        gcRunAll();
 
         D_ovl2_8013185A = D_ovl2_80131859;
     }
@@ -3137,7 +3137,7 @@ void ifCommonBattleSetUpdateInterface(void)
     }
     else syTaskmanSetLoadScene();
 
-    func_8000A5E4();
+    gcRunAll();
 }
 
 // 0x80114800
@@ -3168,7 +3168,7 @@ void ifCommonBattleUpdateInterfaceAll(void)
     switch (gBattleState->game_status)
     {
     case nSCBattleGameStatusWait:
-        func_8000A5E4();
+        gcRunAll();
         break;
 
     case nSCBattleGameStatusGo:
@@ -3225,9 +3225,9 @@ void ifCommonPlayerScoreMakeEffect(FTStruct *fp, s32 score)
 // 0x80114A48
 GObj* ifCommonAnnounceFailureMakeInterface(void)
 {
-    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
+    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_PRIORITY_DEFAULT, -1);
     ifCommonAnnounceSetAttr(interface_gobj, 7, dIFCommonAnnounceFailureSpriteData, ARRAY_COUNT(dIFCommonAnnounceFailureSpriteData));
     ifCommonAnnounceSetColors(interface_gobj, &dIFCommonAnnounceFailureSpriteColors);
 
@@ -3237,9 +3237,9 @@ GObj* ifCommonAnnounceFailureMakeInterface(void)
 // 0x8014AC4
 GObj* ifCommonAnnounceCompleteMakeInterface(void)
 {
-    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_LINKORDER_DEFAULT);
+    GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_PRIORITY_DEFAULT, -1);
     ifCommonAnnounceSetAttr(interface_gobj, 7, dIFCommonAnnounceCompleteSpriteData, ARRAY_COUNT(dIFCommonAnnounceCompleteSpriteData));
     ifCommonAnnounceSetColors(interface_gobj, &dIFCommonAnnounceCompleteSpriteColors);
 

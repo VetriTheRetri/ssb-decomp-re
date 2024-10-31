@@ -400,9 +400,9 @@ void ftPublicityMakeActor(void)
 {
     gcAddGObjProcess
     (
-        gcMakeGObjSPAfter(nGCCommonKindPublicity, NULL, 0xD, GOBJ_LINKORDER_DEFAULT), 
+        gcMakeGObjSPAfter(nGCCommonKindPublicity, NULL, 0xD, GOBJ_PRIORITY_DEFAULT), 
         ftPublicityProcUpdate, 
-        nGCProcessKindProc, 
+        nGCProcessKindFunc, 
         0
     );
     sFTPublicityCommonFramesSince = U16_MAX + 1;

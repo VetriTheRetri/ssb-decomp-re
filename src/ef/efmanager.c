@@ -1936,10 +1936,10 @@ void efManagerFuncRun(GObj *effect_gobj)
     {
         if (ep->proc_update != NULL)
         {
-            gcAddGObjProcess(effect_gobj, ep->proc_update, nGCProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, ep->proc_update, nGCProcessKindFunc, 3);
         }
     }
-    else gcAddGObjProcess(effect_gobj, efManagerNoStructProcUpdate, nGCProcessKindProc, 3);
+    else gcAddGObjProcess(effect_gobj, efManagerNoStructProcUpdate, nGCProcessKindFunc, 3);
 
     effect_gobj->func_run = NULL;
 }
@@ -1975,7 +1975,7 @@ GObj* efManagerMakeEffect(EFCreateDesc *effect_desc, sb32 is_force_return)
     }
     else ep = NULL;
 
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, efManagerFuncRun, (effect_flags & EFFECT_FLAG_SPECIALLINK) ? nGCCommonLinkIDSpecialEffect : nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, efManagerFuncRun, (effect_flags & EFFECT_FLAG_SPECIALLINK) ? nGCCommonLinkIDSpecialEffect : nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2147,7 +2147,7 @@ LBParticle* efManagerDamageNormalLightMakeEffect(Vec3f *pos, s32 player, s32 siz
     {
         return NULL;
     }
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2174,7 +2174,7 @@ LBParticle* efManagerDamageNormalLightMakeEffect(Vec3f *pos, s32 player, s32 siz
             {
                 return NULL;
             }
-            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindFunc, 3);
 
             ep->effect_vars.common.tfrm = tfrm;
 
@@ -2223,7 +2223,7 @@ LBParticle* efManagerDamageNormalHeavyMakeEffect(Vec3f *pos, s32 player, s32 siz
     {
         return NULL;
     }
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2291,7 +2291,7 @@ LBParticle* efManagerImpactShockMakeEffect(Vec3f *pos, s32 size)
     {
         return NULL;
     }
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2318,7 +2318,7 @@ LBParticle* efManagerImpactShockMakeEffect(Vec3f *pos, s32 size)
             {
                 return NULL;
             }
-            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindFunc, 3);
 
             ep->effect_vars.common.tfrm = tfrm;
 
@@ -2379,7 +2379,7 @@ LBParticle* efManagerDamageFireMakeEffect(Vec3f *pos, s32 size)
     {
         return NULL;
     }
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2406,7 +2406,7 @@ LBParticle* efManagerDamageFireMakeEffect(Vec3f *pos, s32 size)
             {
                 return NULL;
             }
-            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindFunc, 3);
 
             ep->effect_vars.common.tfrm = tfrm;
 
@@ -2447,7 +2447,7 @@ LBParticle* efManagerDamageElectricMakeEffect(Vec3f *pos, s32 size)
     {
         return NULL;
     }
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2474,7 +2474,7 @@ LBParticle* efManagerDamageElectricMakeEffect(Vec3f *pos, s32 size)
             {
                 return NULL;
             }
-            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindFunc, 3);
 
             ep->effect_vars.common.tfrm = tfrm;
 
@@ -2541,7 +2541,7 @@ LBParticle* efManagerFlameLRMakeEffect(Vec3f *pos, s32 lr)
     {
         return NULL;
     }
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2568,7 +2568,7 @@ LBParticle* efManagerFlameLRMakeEffect(Vec3f *pos, s32 lr)
             {
                 return NULL;
             }
-            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindFunc, 3);
 
             ep->effect_vars.common.tfrm = tfrm;
 
@@ -2608,7 +2608,7 @@ LBParticle* efManagerFlameRandgcMakeEffect(Vec3f *pos)
     {
         return NULL;
     }
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2635,7 +2635,7 @@ LBParticle* efManagerFlameRandgcMakeEffect(Vec3f *pos)
             {
                 return NULL;
             }
-            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindFunc, 3);
 
             ep->effect_vars.common.tfrm = tfrm;
 
@@ -2672,7 +2672,7 @@ LBParticle* efManagerFlameStaticMakeEffect(Vec3f *pos)
     {
         return NULL;
     }
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2699,7 +2699,7 @@ LBParticle* efManagerFlameStaticMakeEffect(Vec3f *pos)
             {
                 return NULL;
             }
-            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindFunc, 3);
 
             ep->effect_vars.common.tfrm = tfrm;
 
@@ -2734,7 +2734,7 @@ LBParticle* efManagerDustCollideMakeEffect(Vec3f *pos)
     {
         return NULL;
     }
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2761,7 +2761,7 @@ LBParticle* efManagerDustCollideMakeEffect(Vec3f *pos)
             {
                 return NULL;
             }
-            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindFunc, 3);
 
             ep->effect_vars.common.tfrm = tfrm;
 
@@ -2871,7 +2871,7 @@ LBParticle* efManagerDustLightMakeEffect(Vec3f *pos, sb32 is_invert_vel, f32 f_i
     {
         return NULL;
     }
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -2898,7 +2898,7 @@ LBParticle* efManagerDustLightMakeEffect(Vec3f *pos, sb32 is_invert_vel, f32 f_i
             {
                 return NULL;
             }
-            gcAddGObjProcess(effect_gobj, efManagerDustLightProcUpdate, nGCProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDustLightProcUpdate, nGCProcessKindFunc, 3);
 
             ep->effect_vars.dust_light.tfrm = tfrm;
 
@@ -2941,7 +2941,7 @@ LBParticle* efManagerDustHeavyMakeEffect(Vec3f *pos, s32 lr)
     f32 vel;
     f32 scale;
 
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -3011,7 +3011,7 @@ LBParticle* efManagerDustHeavyDoubleMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
     {
         return NULL;
     }
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -3029,7 +3029,7 @@ LBParticle* efManagerDustHeavyDoubleMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
 
         if (tfrm != NULL)
         {
-            gcAddGObjProcess(effect_gobj, efManagerDustHeavyDoubleProcUpdate, nGCProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDustHeavyDoubleProcUpdate, nGCProcessKindFunc, 3);
 
             tfrm->effect_gobj = effect_gobj;
 
@@ -3108,7 +3108,7 @@ LBParticle* efManagerDustExpandSmallMakeEffect(Vec3f *pos, f32 f_index)
     {
         return NULL;
     }
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -3135,7 +3135,7 @@ LBParticle* efManagerDustExpandSmallMakeEffect(Vec3f *pos, f32 f_index)
             {
                 return NULL;
             }
-            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindFunc, 3);
 
             ep->effect_vars.common.tfrm = tfrm;
 
@@ -3839,7 +3839,7 @@ GObj* efManagerQuakeMakeEffect(s32 magnitude)
     {
         return NULL;
     }
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, efManagerQuakeAddProcUpdate, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, efManagerQuakeAddProcUpdate, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -3907,7 +3907,7 @@ LBParticle* efManagerDamageCoinMakeEffect(Vec3f *pos)
         return NULL;
     }
 
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -3962,7 +3962,7 @@ LBParticle* efManagerSetOffMakeEffect(Vec3f *pos, s32 size)
     {
         return NULL;
     }
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -3989,7 +3989,7 @@ LBParticle* efManagerSetOffMakeEffect(Vec3f *pos, s32 size)
             {
                 return NULL;
             }
-            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerDefaultProcUpdate, nGCProcessKindFunc, 3);
 
             ep->effect_vars.common.tfrm = tfrm;
 
@@ -6122,7 +6122,7 @@ LBParticle* efManagerKirbyInhaleWindMakeEffect(GObj *fighter_gobj)
     {
         return 0;
     }
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -6159,7 +6159,7 @@ LBParticle* efManagerKirbyInhaleWindMakeEffect(GObj *fighter_gobj)
 
             effect_gobj->user_data.p = ep; // y u do dis again
 
-            gcAddGObjProcess(effect_gobj, efManagerKirbyInhaleWindProcUpdate, nGCProcessKindProc, 3);
+            gcAddGObjProcess(effect_gobj, efManagerKirbyInhaleWindProcUpdate, nGCProcessKindFunc, 3);
 
             ep->tfrm = ptcl->tfrm;
 

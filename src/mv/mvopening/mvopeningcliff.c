@@ -76,8 +76,8 @@ SYTaskmanSetup dMVOpeningCliffTaskmanSetup =
     // Task Logic Buffer Setup
     {
         0,                              // ???
-        func_8000A5E4,                  // Update function
-        func_8000A340,                  // Frame draw function
+        gcRunAll,                  // Update function
+        gcDrawAll,                  // Frame draw function
         &ovl46_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???
@@ -145,7 +145,7 @@ void mvOpeningCliffHillsFuncDisplay(GObj *hills_gobj)
 // 0x80131C34
 void mvOpeningCliffMakeHills(void)
 {
-    GObj* hills_gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
+    GObj* hills_gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
     gcSetupCommonDObjs
     (
         hills_gobj,
@@ -157,7 +157,7 @@ void mvOpeningCliffMakeHills(void)
         ),
         NULL
     );
-    gcAddGObjDisplay(hills_gobj, mvOpeningCliffHillsFuncDisplay, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(hills_gobj, mvOpeningCliffHillsFuncDisplay, 26, GOBJ_PRIORITY_DEFAULT, -1);
 }
 
 // 0x80131CA4 - Unused?
@@ -248,9 +248,9 @@ void mvOpeningCliffMakeWallpaper(void)
     GObj *wallpaper_gobj;
     SObj *wallpaper_sobj;
 
-    wallpaper_gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 27, GOBJ_DLLINKORDER_DEFAULT, -1);
-    gcAddGObjProcess(wallpaper_gobj, mvOpeningCliffWallpaperFuncDisplay, nGCProcessKindProc, 1);
+    wallpaper_gobj = gcMakeGObjSPAfter(0, NULL, 18, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(wallpaper_gobj, lbCommonDrawSObjAttr, 27, GOBJ_PRIORITY_DEFAULT, -1);
+    gcAddGObjProcess(wallpaper_gobj, mvOpeningCliffWallpaperFuncDisplay, nGCProcessKindFunc, 1);
 
     wallpaper_sobj = lbCommonMakeSObjForGObj(wallpaper_gobj, lbRelocGetFileData(Sprite*, sMVOpeningCliffFiles[1], &lMVOpeningCliffWallpaperSprite));
     wallpaper_sobj->sprite.attr &= ~SP_FASTCOPY;
@@ -276,7 +276,7 @@ void mvOpeningCliffMakeOcarina(void)
 {
     GObj *ocarina_gobj;
 
-    sMVOpeningCliffOcarinaGObj = ocarina_gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_LINKORDER_DEFAULT);
+    sMVOpeningCliffOcarinaGObj = ocarina_gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
     gcSetupCustomDObjs
     (
         ocarina_gobj,
@@ -291,7 +291,7 @@ void mvOpeningCliffMakeOcarina(void)
         nGCMatrixKindNull,
         nGCMatrixKindNull
     );
-    gcAddGObjDisplay(ocarina_gobj, gcDrawDObjTreeForGObj, 26, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(ocarina_gobj, gcDrawDObjTreeForGObj, 26, GOBJ_PRIORITY_DEFAULT, -1);
 
     DObjGetStruct(ocarina_gobj)->scale.vec.f.x = DObjGetStruct(sMVOpeningCliffFighterGObj)->scale.vec.f.x;
     DObjGetStruct(ocarina_gobj)->scale.vec.f.y = DObjGetStruct(sMVOpeningCliffFighterGObj)->scale.vec.f.y;
@@ -308,7 +308,7 @@ void mvOpeningCliffMakeOcarina(void)
         ),
         0.0F
     );
-    gcAddGObjProcess(ocarina_gobj, gcPlayAnimAll, nGCProcessKindProc, 1);
+    gcAddGObjProcess(ocarina_gobj, gcPlayAnimAll, nGCProcessKindFunc, 1);
 }
 
 // 0x8013212C
@@ -328,13 +328,13 @@ void mvOpeningCliffMakeMainCamera(void)
         nGCCommonKindSceneCamera,
         NULL,
         16,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         func_80017EC0,
         80,
         COBJ_MASK_DLLINK(26),
         -1,
         FALSE,
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1,
         FALSE
@@ -359,20 +359,20 @@ void mvOpeningCliffMakeMainCamera(void)
         ),
         0.0F
     );
-    gcAddGObjProcess(camera_gobj, mvOpeningCliffCameraProcUpdate, nGCProcessKindProc, 1);
+    gcAddGObjProcess(camera_gobj, mvOpeningCliffCameraProcUpdate, nGCProcessKindFunc, 1);
 
     camera_gobj = gcMakeCameraGObj
     (
         nGCCommonKindSceneCamera,
         NULL,
         16,
-        GOBJ_LINKORDER_DEFAULT,
+        GOBJ_PRIORITY_DEFAULT,
         func_80017EC0,
         70,
         COBJ_MASK_DLLINK(28),
         -1,
         FALSE,
-        nGCProcessKindProc,
+        nGCProcessKindFunc,
         NULL,
         1,
         FALSE
@@ -398,7 +398,7 @@ void mvOpeningCliffMakeMainCamera(void)
         ),
         0.0F
     );
-    gcAddGObjProcess(camera_gobj, mvOpeningCliffCameraProcUpdate, nGCProcessKindProc, 1);
+    gcAddGObjProcess(camera_gobj, mvOpeningCliffCameraProcUpdate, nGCProcessKindFunc, 1);
 }
 
 // 0x80132368
@@ -411,13 +411,13 @@ void mvOpeningCliffMakeWallpaperCamera(void)
             nGCCommonKindSceneCamera,
             NULL,
             16,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             90,
             COBJ_MASK_DLLINK(27),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -499,9 +499,9 @@ void mvOpeningCliffFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mvOpeningCliffFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
+    gcMakeGObjSPAfter(0, mvOpeningCliffFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
+    gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0x00));
 
     efParticleInitAll();
     mvOpeningCliffInitTotalTimeTics();

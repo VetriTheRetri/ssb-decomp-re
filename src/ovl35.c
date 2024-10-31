@@ -101,7 +101,7 @@ void mvPortraitsCreatePortraitsSet1()
 		{ 10.0, 175.0 }
 	};
 
-	gIntroPortraitsPortraitGObj = portraits_gobj = gcMakeGObjSPAfter(0, 0, 0x11, GOBJ_LINKORDER_DEFAULT);
+	gIntroPortraitsPortraitGObj = portraits_gobj = gcMakeGObjSPAfter(0, 0, 0x11, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(portraits_gobj, lbCommonDrawSObjAttr, 0x1B, 0x80000000U, -1);
 
 	for (i = 0; i < ARRAY_COUNT(offsets); i++)
@@ -134,7 +134,7 @@ void mvPortraitsCreatePortraitsSet2()
 		{ 10.0, 175.0 }
 	};
 
-	gIntroPortraitsPortraitGObj = portraits_gobj = gcMakeGObjSPAfter(0, 0, 0x11, GOBJ_LINKORDER_DEFAULT);
+	gIntroPortraitsPortraitGObj = portraits_gobj = gcMakeGObjSPAfter(0, 0, 0x11, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(portraits_gobj, lbCommonDrawSObjAttr, 0x1B, 0x80000000U, -1);
 
 	for (i = 0; i < ARRAY_COUNT(offsets); i++)
@@ -401,8 +401,8 @@ void mvPortraitsInit()
 	lbRelocInitSetup(&rl_setup);
 	lbRelocLoadFilesExtern(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0), gIntroPortraitsFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl35_801328A0, ARRAY_COUNT(D_ovl35_801328A0)), 0x10));
 
-	gcMakeGObjSPAfter(0, mvPortraitsMain, 0, GOBJ_LINKORDER_DEFAULT);
-	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeGObjSPAfter(0, mvPortraitsMain, 0, GOBJ_PRIORITY_DEFAULT);
+	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mvPortraitsInitVariables();
 	mvPortraitsCreatePortraitViewport();
 	mvPortraitsCreatePortraitOverlayViewport();
@@ -429,7 +429,7 @@ SYVideoSetup D_ovl35_80132938 = {
 scRuntimeInfo D_ovl35_80132954 = {
 
 	0x00000000, 0x8000A5E4,
-	func_8000A340, &lOverlay35ArenaLo,
+	gcDrawAll, &lOverlay35ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00009C40, 0x00001000,
 	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000C000,
 	mvPortraitsFuncLights, update_contdata,

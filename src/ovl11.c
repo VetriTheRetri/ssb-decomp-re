@@ -84,7 +84,7 @@ void mnNoControllerCreateNoControllerImage()
 void mnNoControllerInit()
 {
 	mnNoControllerLoadFiles();
-	gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, 0, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	mnNoControllerCreateViewport();
 	mnNoControllerCreateNoControllerImage();
 }

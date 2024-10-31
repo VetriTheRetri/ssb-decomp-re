@@ -137,10 +137,10 @@ extern void func_8000A2B4(GObj *this_gobj, GObj *other_gobj);
 extern void unref_8000A2EC(GObj *this_gobj, GObj *other_gobj);
 extern void gcSetMaxNumGObj(s32 num);
 extern s16 gcGetMaxNumGObj(void);
-extern void func_8000A340(void);
-extern GObj *func_8000A40C(GObj *gobj);
-extern GObjProcess *func_8000A49C(GObjProcess *gobjproc);
-extern void func_8000A5E4(void);
+extern void gcDrawAll(void);
+extern GObj *gcRunGObj(GObj *gobj);
+extern GObjProcess *gcRunGObjProcess(GObjProcess *gobjproc);
+extern void gcRunAll(void);
 extern void gcSetupObjectManager(GCSetup *setup);
 
 #endif

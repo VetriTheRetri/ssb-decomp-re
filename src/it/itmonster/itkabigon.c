@@ -174,7 +174,7 @@ void itKabigonFallInitItemVars(GObj *item_gobj)
     }
     item_gobj->func_display = itKabigonFallFuncDisplay;
 
-    gcMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_order);
+    gcMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_priority);
 }
 
 // 0x8017E350

@@ -246,9 +246,9 @@ void grYamabukiMakeGate(void)
 {
     GObj *gate_gobj;
 
-    gGRCommonStruct.yamabuki.gate_gobj = gate_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    gGRCommonStruct.yamabuki.gate_gobj = gate_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjDisplay(gate_gobj, gcDrawDObjTreeDLLinksForGObj, 6, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gate_gobj, gcDrawDObjTreeDLLinksForGObj, 6, GOBJ_PRIORITY_DEFAULT, -1);
     gcSetupCustomDObjs
     (
         gate_gobj, 
@@ -259,7 +259,7 @@ void grYamabukiMakeGate(void)
         nGCMatrixKindNull, 
         nGCMatrixKindNull
     );
-    gcAddGObjProcess(gate_gobj, gcPlayAnimAll, nGCProcessKindProc, 5);
+    gcAddGObjProcess(gate_gobj, gcPlayAnimAll, nGCProcessKindFunc, 5);
     grYamabukiGateAddAnimClose();
 }
 
@@ -288,9 +288,9 @@ void grYamabukiInitGroundVars(void)
 // 0x8010B2EC
 GObj* grYamabukiMakeGround(void)
 {
-    GObj *ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_LINKORDER_DEFAULT);
+    GObj *ground_gobj = gcMakeGObjSPAfter(nGCCommonKindGround, NULL, nGCCommonLinkIDGround, GOBJ_PRIORITY_DEFAULT);
 
-    gcAddGObjProcess(ground_gobj, grYamabukiGateProcUpdate, nGCProcessKindProc, 4);
+    gcAddGObjProcess(ground_gobj, grYamabukiGateProcUpdate, nGCProcessKindFunc, 4);
     grYamabukiInitGroundVars();
 
     return ground_gobj;

@@ -184,7 +184,7 @@ void mnBackupClearMakeUnused(s32 option)
         { 119.0F, 197.0F },
         { 126.0F, 197.0F }
     };
-    sMNBackupClearUnusedGObj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_LINKORDER_DEFAULT);
+    sMNBackupClearUnusedGObj = gcMakeGObjSPAfter(0, NULL, 3, GOBJ_PRIORITY_DEFAULT);
 }
 
 // 0x80131BC8
@@ -193,8 +193,8 @@ void mnBackupClearMakeHeaderSObjs(void)
     GObj *gobj;
     SObj *sobj;
     
-    gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_LINKORDER_DEFAULT);
-    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gobj = gcMakeGObjSPAfter(0, NULL, 2, GOBJ_PRIORITY_DEFAULT);
+    gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 0, GOBJ_PRIORITY_DEFAULT, -1);
     
     sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNBackupClearFiles[2], &lMNBackupClearHeaderOptionSprite));
     
@@ -288,9 +288,9 @@ void mnBackupClearSetOptionSpriteColors(void)
 
     for (i = 0; i < (ARRAY_COUNT(option_gobj) + ARRAY_COUNT(offsets) + ARRAY_COUNT(pos)) / 3; i++)
     {
-        *option_gobj[i] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
+        *option_gobj[i] = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
 
-        gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+        gcAddGObjDisplay(gobj, lbCommonDrawSObjAttr, 2, GOBJ_PRIORITY_DEFAULT, -1);
         
         sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sMNBackupClearFiles[1], offsets[i]));
 
@@ -350,9 +350,9 @@ void mnBackupClearMakeOptionConfirm(sb32 confirm_kind, sb32 yes_or_no)
     GObj *gobj;
     SObj *sobj;
 
-    sMNBackupClearOptionConfirmGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_LINKORDER_DEFAULT);
+    sMNBackupClearOptionConfirmGObj = gobj = gcMakeGObjSPAfter(0, NULL, 4, GOBJ_PRIORITY_DEFAULT);
     
-    gcAddGObjDisplay(gobj, mnBackupClearOptionConfirmFuncDisplay, 2, GOBJ_DLLINKORDER_DEFAULT, -1);
+    gcAddGObjDisplay(gobj, mnBackupClearOptionConfirmFuncDisplay, 2, GOBJ_PRIORITY_DEFAULT, -1);
     
     if (yes_or_no == 0)
     {
@@ -445,7 +445,7 @@ void mnBackupClearMakeMainCamera(void)
             1,
             NULL,
             1,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             lbCommonScissorSpriteCamera,
             80,
             COBJ_MASK_DLLINK(2) |
@@ -453,7 +453,7 @@ void mnBackupClearMakeMainCamera(void)
             COBJ_MASK_DLLINK(0),
             -1,
             FALSE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -804,8 +804,8 @@ void mnBackupClearFuncStart(void)
             0x10
         )
     );
-    gcMakeGObjSPAfter(0, mnBackupClearFuncRun, 0, GOBJ_LINKORDER_DEFAULT);
-    gcMakeDefaultCameraGObj(0, GOBJ_LINKORDER_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
+    gcMakeGObjSPAfter(0, mnBackupClearFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+    gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
     mnBackupClearInitVars();
     mnBackupClearMakeMainCamera();
     mnBackupClearMakeHeaderSObjs();
@@ -825,8 +825,8 @@ SYTaskmanSetup dMNBackupClearTaskmanSetup =
     // Task Logic Buffer Setup
     {
         0,                          // ???
-        func_8000A5E4,              // Update function
-        func_8000A340,              // Frame draw function
+        gcRunAll,              		// Update function
+        gcDrawAll,                  // Frame draw function
         &ovl53_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???

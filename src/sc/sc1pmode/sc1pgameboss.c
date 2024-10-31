@@ -404,7 +404,7 @@ void sc1PGameBossMakeCamera(void)
             nGCCommonKindUnkCamera3, 
             NULL,
             nGCCommonLinkIDCamera,
-            GOBJ_LINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             func_80017EC0,
             40,
             COBJ_MASK_DLLINK(5),
@@ -433,13 +433,13 @@ void sc1PGameBossMakeCamera(void)
             nGCCommonKindUnkCamera3,
             NULL,
             nGCCommonLinkIDCamera,
-            GOBJ_DLLINKORDER_DEFAULT,
+            GOBJ_PRIORITY_DEFAULT,
             func_80017EC0,
             60,
             COBJ_MASK_DLLINK(5),
             2,
             TRUE,
-            nGCProcessKindProc,
+            nGCProcessKindFunc,
             NULL,
             1,
             FALSE
@@ -861,7 +861,7 @@ GObj* sc1PGameBossMakeWallpaperEffect(s32 effect_id, s32 anim_id, s32 plan_id)
     
     o_matanim_joint = 0x0;
 
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindBossWallpaper, NULL, nGCCommonLinkIDWallpaperEffect, GOBJ_LINKORDER_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindBossWallpaper, NULL, nGCCommonLinkIDWallpaperEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -875,7 +875,7 @@ GObj* sc1PGameBossMakeWallpaperEffect(s32 effect_id, s32 anim_id, s32 plan_id)
         effect_gobj, 
         sSC1PGameBossMain.bosswallpaper->bosseffect[effect_id].func_display, 
         sSC1PGameBossMain.bosswallpaper->bossplan[plan_id].dl_link, 
-        GOBJ_DLLINKORDER_DEFAULT, 
+        GOBJ_PRIORITY_DEFAULT, 
         sSC1PGameBossMain.bosswallpaper->bossplan[plan_id].cobj_tag
     );
     sc1PGameBossSetupBackgroundDObjs
@@ -886,7 +886,7 @@ GObj* sc1PGameBossMakeWallpaperEffect(s32 effect_id, s32 anim_id, s32 plan_id)
         nGCMatrixKindTraRotRpyRSca
     );
     gcSetAllAnimSpeed(effect_gobj, sSC1PGameBossMain.bosswallpaper->bossanim[anim_id].anim_speed);
-    gcAddGObjProcess(effect_gobj, sSC1PGameBossMain.bosswallpaper->bosseffect[effect_id].proc_update, nGCProcessKindProc, 1);
+    gcAddGObjProcess(effect_gobj, sSC1PGameBossMain.bosswallpaper->bosseffect[effect_id].proc_update, nGCProcessKindFunc, 1);
 
     dobj = DObjGetStruct(effect_gobj);
 
@@ -1005,11 +1005,11 @@ void sc1PGameBossInitWallpaper(void)
 {
     GObj *gobj;
 
-    sSC1PGameBossWallpaperGObj = gobj = gcMakeGObjSPAfter(nGCCommonKindWallpaper, NULL, nGCCommonLinkIDWallpaper, GOBJ_LINKORDER_DEFAULT);
+    sSC1PGameBossWallpaperGObj = gobj = gcMakeGObjSPAfter(nGCCommonKindWallpaper, NULL, nGCCommonLinkIDWallpaper, GOBJ_PRIORITY_DEFAULT);
 
     if (gobj != NULL)
     {
-        gcAddGObjProcess(gobj, SC1PGameBossWallpaperProcUpdate, nGCProcessKindProc, 3);
+        gcAddGObjProcess(gobj, SC1PGameBossWallpaperProcUpdate, nGCProcessKindFunc, 3);
 
         sc1PGameBossMakeCamera();
         sc1PGameBossSetBossPlayer();

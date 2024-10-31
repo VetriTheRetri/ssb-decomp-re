@@ -364,7 +364,7 @@ GObj* itStarmieMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITStarmieDataStart), 0.0F);
 
-        gcMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_order);
+        gcMoveGObjDLHead(item_gobj, 18, item_gobj->dl_link_priority);
     }
     return item_gobj;
 }

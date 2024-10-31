@@ -374,7 +374,7 @@ void func_ovl65_801910B0(void)
 {
     GObj *gobj;
 
-    gcResumeProcessAll(sSC1PGameBossWallpaperGObj);
+    gcResumeGObjProcessAll(sSC1PGameBossWallpaperGObj);
 
     gobj = gGCCommonLinks[nGCCommonLinkIDWallpaper];
 
@@ -382,7 +382,7 @@ void func_ovl65_801910B0(void)
     {
         if (gobj->id == nGCCommonKindBossWallpaper)
         {
-            gcResumeProcessAll(gobj);
+            gcResumeGObjProcessAll(gobj);
         }
         gobj = gobj->link_next;
     }
@@ -769,7 +769,7 @@ void SC1PGameBossWallpaper3ProcUpdate1(GObj *gobj)
                 else if (gobj->func_display == sc1PGameBossFuncDisplayFadeColor)
                 {
                     ifCommonBattleEndSetBossDefeat();
-                    gcApplyToAll(func_ovl2_80113638, 0);
+                    gcFuncGObjAll(func_ovl2_80113638, 0);
                 }
             }
         }

@@ -3,21 +3,21 @@
 
 #include <sys/objtypes.h>
 
-extern void gcApplyByLink(s32 link, void (*proc)(GObj*, u32), u32 param);
-extern void gcApplyToAll(void (*proc)(GObj*, u32), u32 param);
-extern GObj* gcApplyByLinkEx(s32 link, GObj* (*proc)(GObj*, u32), u32 param, sb32 is_return_immediate);
-extern GObj* gcApplyToAllEx(GObj* (*proc)(GObj*, u32), u32 param, sb32 is_return_immediate);
+extern void gcFuncGObjByLink(s32 link, void (*func)(GObj*, u32), u32 param);
+extern void gcFuncGObjAll(void (*func)(GObj*, u32), u32 param);
+extern GObj* gcFuncGObjByLinkEx(s32 link, GObj* (*func)(GObj*, u32), u32 param, sb32 is_return_immediate);
+extern GObj* gcFuncGObjAllEx(GObj* (*func)(GObj*, u32), u32 param, sb32 is_return_immediate);
 extern GObj* gcGetGObjByID(GObj *gobj, u32 id);
 extern GObj* gcFindGObjByLinkAndID(s32 link, u32 id);
 extern GObj* gcFindGObjByID(u32 id);
 extern void gcUpdateDefault(GObj *gobj);
 extern void gcStopCurrentGObjThread(s32 tics);
-extern void gcPauseProcessAll(GObj *gobj);
-extern void gcResumeProcessAll(GObj *gobj);
+extern void gcPauseGObjProcessAll(GObj *gobj);
+extern void gcResumeGObjProcessAll(GObj *gobj);
 extern void gcPauseGObjProcess(GObjProcess *gobjproc);
 extern void gcResumeGObjProcess(GObjProcess *gobjproc);
-extern void gcPauseProcessByProc(GObj *gobj, void (*func_id)(GObj*));
-extern void gcResumeProcessByProc(GObj *gobj, void (*func_id)(GObj*));
+extern void gcPauseGObjProcessByProc(GObj *gobj, void (*func_id)(GObj*));
+extern void gcResumeGObjProcessByProc(GObj *gobj, void (*func_id)(GObj*));
 extern void gcEndProcessAll(GObj *gobj);
 extern void gcAddDObjMatrixSetsRpyD(DObj* dobj);
 extern void gcAddDObjMatrixSetsRpyR(DObj* dobj);

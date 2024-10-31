@@ -173,10 +173,10 @@ struct GObjProcess
     void (*func_id)(GObj*);             // Used to identify GObjProcesses that should be paused by function. So weird.
 };
 
-struct GObjLink
+struct GObjScript
 {
-    GObj *next;
-    s32 unk_gobjlink_0x4;
+    GObj *next_gobj;
+    s32 id;
 };
 
 struct GObj
@@ -206,8 +206,8 @@ struct GObj
     u64 cobj_mask;
     u32 cobj_tag;                       // Usually 0xFFFFFFFF
     u64 unk_gobj_0x40;
-    GObjLink gobjlinks[5];
-    s32 gobjlinks_num;                  // Length/number of active members of gobjlinks
+    GObjScript gobjscripts[5];
+    s32 gobjscripts_num;                // Length/number of active members of gobjlinks
     void *obj;                          // Can be: NULL, DObj, SObj or CObj
     f32 anim_frame;                     // Current frame of animation
     u32 flags;                          // GObj logic flags (e.g. 0x1 = skip rendering)

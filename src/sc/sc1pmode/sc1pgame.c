@@ -1929,15 +1929,15 @@ void func_ovl65_8018F5E4(void)
 // 0x8018F5EC
 void sc1PGameBossDefeatInterfaceProcUpdate(void)
 {
-    gcApplyByLink(nGCCommonLinkIDFighter, sc1PGameBossAddBossInterface, 0);
-    gcApplyByLink(nGCCommonLinkIDFighter, sc1PGameBossLockPlayerControl, 0);
-    gcApplyByLink(nGCCommonLinkIDFighter, sc1PGameBossSetIgnorePlayerMapBounds, 0);
-    gcApplyToAll(func_ovl2_80113638, 0);
+    gcFuncGObjByLink(nGCCommonLinkIDFighter, sc1PGameBossAddBossInterface, 0);
+    gcFuncGObjByLink(nGCCommonLinkIDFighter, sc1PGameBossLockPlayerControl, 0);
+    gcFuncGObjByLink(nGCCommonLinkIDFighter, sc1PGameBossSetIgnorePlayerMapBounds, 0);
+    gcFuncGObjAll(func_ovl2_80113638, 0);
 
-    gcApplyByLink(9, func_ovl2_8011366C, 0);
+    gcFuncGObjByLink(9, func_ovl2_8011366C, 0);
     gmRumbleResumeProcessAll();
-    gcApplyByLink(0xB, func_ovl2_8011366C, 0);
-    gcApplyByLink(6, func_ovl2_8011366C, 0);
+    gcFuncGObjByLink(0xB, func_ovl2_8011366C, 0);
+    gcFuncGObjByLink(6, func_ovl2_8011366C, 0);
     func_ovl65_801910B0();
     func_800266A0_272A0();
     auStopBGM();
@@ -1959,7 +1959,7 @@ void func_ovl65_8018F6DC(void)
 // 0x8018F6F0
 void sc1PGameBossDefeatInterfaceProcSet(void)
 {
-    gcApplyToAll(func_ovl2_8011366C, 0);
+    gcFuncGObjAll(func_ovl2_8011366C, 0);
     sc1PGameBossSetChangeWallpaper();
     func_ovl2_8010D030((void*) (((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)&D_NF_00004D48) + (intptr_t)&D_NF_00006450), 0.0F, &sSC1PGameBossDefeatZoomPosition);
     ifCommonBattleBossDefeatSetGameStatus();

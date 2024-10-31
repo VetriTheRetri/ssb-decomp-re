@@ -341,7 +341,7 @@ void grWallpaperResumeAll(void)
     {
         if (gobj->id == nGCCommonKindWallpaper)
         {
-            gcResumeProcessAll(gobj);
+            gcResumeGObjProcessAll(gobj);
         }
         gobj = gobj->link_next;
     }

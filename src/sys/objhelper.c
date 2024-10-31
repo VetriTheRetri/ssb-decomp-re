@@ -7,7 +7,7 @@
 // // // // // // // // // // // //
 
 // 0x8000AEF0
-void gcApplyByLink(s32 link, void (*proc)(GObj*, u32), u32 param)
+void gcFuncGObjByLink(s32 link, void (*func)(GObj*, u32), u32 param)
 {
     GObj *current_gobj = gGCCommonLinks[link];
 
@@ -15,14 +15,14 @@ void gcApplyByLink(s32 link, void (*proc)(GObj*, u32), u32 param)
     {
         GObj *next_gobj = current_gobj->link_next;
 
-        proc(current_gobj, param);
+        func(current_gobj, param);
 
         current_gobj = next_gobj;
     }
 }
 
 // 0x8000AF58
-void gcApplyToAll(void (*proc)(GObj*, u32), u32 param)
+void gcFuncGObjAll(void (*func)(GObj*, u32), u32 param)
 {
     s32 link;
 
@@ -34,7 +34,7 @@ void gcApplyToAll(void (*proc)(GObj*, u32), u32 param)
         {
             GObj *next_gobj = current_gobj->link_next;
 
-            proc(current_gobj, param);
+            func(current_gobj, param);
 
             current_gobj = next_gobj;
         }
@@ -42,11 +42,11 @@ void gcApplyToAll(void (*proc)(GObj*, u32), u32 param)
 }
 
 // 0x8000AFE4
-GObj* gcApplyByLinkEx(s32 link, GObj* (*proc)(GObj*, u32), u32 param, sb32 is_return_immediate)
+GObj* gcFuncGObjByLinkEx(s32 link, GObj* (*func)(GObj*, u32), u32 param, sb32 is_return_immediate)
 {
     GObj *current_gobj;
     GObj *next_gobj;
-    GObj *ret_gobj = NULL;
+    GObj *return_gobj = NULL;
 
     current_gobj = gGCCommonLinks[link];
 
@@ -55,29 +55,29 @@ GObj* gcApplyByLinkEx(s32 link, GObj* (*proc)(GObj*, u32), u32 param, sb32 is_re
         GObj *find_gobj;
 
         next_gobj = current_gobj->link_next;
-        find_gobj = proc(current_gobj, param);
+        find_gobj = func(current_gobj, param);
 
         if (find_gobj != NULL)
         {
-            ret_gobj = find_gobj;
+            return_gobj = find_gobj;
 
             if (is_return_immediate == TRUE)
             {
-                return ret_gobj;
+                return return_gobj;
             }
         }
         current_gobj = next_gobj;
     }
-    return ret_gobj;
+    return return_gobj;
 }
 
 // 0x8000B08C
-GObj* gcApplyToAllEx(GObj* (*proc)(GObj*, u32), u32 param, sb32 is_return_immediate)
+GObj* gcFuncGObjAllEx(GObj* (*func)(GObj*, u32), u32 param, sb32 is_return_immediate)
 {
     GObj *current_gobj;
     GObj *next_gobj;
     s32 link;
-    GObj *ret_gobj = NULL;
+    GObj *return_gobj = NULL;
 
     for (link = 0; link < ARRAY_COUNT(gGCCommonLinks); link++)
     {
@@ -88,21 +88,21 @@ GObj* gcApplyToAllEx(GObj* (*proc)(GObj*, u32), u32 param, sb32 is_return_immedi
             GObj *find_gobj;
 
             next_gobj = current_gobj->link_next;
-            find_gobj = proc(current_gobj, param);
+            find_gobj = func(current_gobj, param);
 
             if (find_gobj != NULL)
             {
-                ret_gobj = find_gobj;
+                return_gobj = find_gobj;
 
                 if (is_return_immediate == TRUE)
                 {
-                    return ret_gobj;
+                    return return_gobj;
                 }
             }
             current_gobj = next_gobj;
         }
     }
-    return ret_gobj;
+    return return_gobj;
 }
 
 // 0x8000B14C
@@ -114,19 +114,19 @@ GObj* gcGetGObjByID(GObj *gobj, u32 id)
 // 0x8000B16C
 GObj* gcFindGObjByLinkAndID(s32 link, u32 id)
 {
-    return gcApplyByLinkEx(link, gcGetGObjByID, id, TRUE);
+    return gcFuncGObjByLinkEx(link, gcGetGObjByID, id, TRUE);
 }
 
 // 0x8000B198
 GObj* gcFindGObjByID(u32 id)
 {
-    return gcApplyToAllEx(gcGetGObjByID, id, TRUE);
+    return gcFuncGObjAllEx(gcGetGObjByID, id, TRUE);
 }
 
 // 0x8000B1C4
 void gcUpdateDefault(GObj *gobj)
 {
-    cmdProcessCommands(NULL);
+    gcParseGObjScript(NULL);
 }
 
 // 0x8000B1E8
@@ -145,7 +145,7 @@ void gcStopCurrentGObjThread(s32 tics)
 }
 
 // 0x8000B284
-void gcPauseProcessAll(GObj *gobj)
+void gcPauseGObjProcessAll(GObj *gobj)
 {
     GObjProcess *gobjproc;
 
@@ -163,7 +163,7 @@ void gcPauseProcessAll(GObj *gobj)
 }
 
 // 0x8000B2B8
-void gcResumeProcessAll(GObj *gobj)
+void gcResumeGObjProcessAll(GObj *gobj)
 {
     GObjProcess *gobjproc;
 
@@ -201,7 +201,7 @@ void gcResumeGObjProcess(GObjProcess *gobjproc)
 }
 
 // 0x8000B31C
-void gcPauseProcessByProc(GObj *gobj, void (*func_id)(GObj*))
+void gcPauseGObjProcessByProc(GObj *gobj, void (*func_id)(GObj*))
 {
     GObjProcess *gobjproc;
 
@@ -222,7 +222,7 @@ void gcPauseProcessByProc(GObj *gobj, void (*func_id)(GObj*))
 }
 
 // 0x8000B35C
-void gcResumeProcessByProc(GObj *gobj, void (*func_id)(GObj*))
+void gcResumeGObjProcessByProc(GObj *gobj, void (*func_id)(GObj*))
 {
     GObjProcess *gobjproc;
 

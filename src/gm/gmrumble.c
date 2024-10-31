@@ -697,7 +697,7 @@ void gmRumbleResumeProcessAll(void)
     {
         if (rumble_gobj->id == nGCCommonKindRumble)
         {
-            gcResumeProcessAll(rumble_gobj);
+            gcResumeGObjProcessAll(rumble_gobj);
         }
         rumble_gobj = rumble_gobj->link_next;
     }

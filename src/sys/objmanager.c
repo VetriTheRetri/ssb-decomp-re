@@ -26,7 +26,7 @@ GObjProcess *sGCProcessQueue[6];
 u32 sGCProcessesActive;
 
 GObj *gGCCommonLinks[GC_COMMON_MAX_LINKS];
-s32 D_80046774_40794; // used by system_03_1
+s32 D_80046774_40794;
 GObj *sGCCommonLinks[GC_COMMON_MAX_LINKS];
 GObj *sGCCommonHead;
 GObj *gGCCommonDLLinks[GC_COMMON_MAX_DLLINKS];
@@ -1706,7 +1706,7 @@ GObj* gcInitGObjCommon(u32 id, void (*func_run)(GObj*), u8 link, u32 order)
 	new_gobj->func_run = func_run;
 	new_gobj->gobjproc_head = NULL;
 	new_gobj->gobjproc_tail = NULL;
-	new_gobj->gobjlinks_num = 0;
+	new_gobj->gobjscripts_num = 0;
 	new_gobj->flags = GOBJ_FLAG_NONE;
 
 	new_gobj->obj_kind = nGCCommonAppendNone;

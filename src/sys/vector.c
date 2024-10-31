@@ -8,12 +8,8 @@
 
 #include <PR/gu.h>
 #include <PR/mbi.h>
-#include <PR/ultratypes.h>
 
 #define VEC_DOT(v, w) ((v->x * w->x) + (v->y * w->y) + (v->z * w->z))
-
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wunknown-pragmas"
 
 f32 syVectorNorm3D(Vec3f *dst)
 {

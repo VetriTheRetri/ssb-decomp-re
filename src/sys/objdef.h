@@ -47,6 +47,16 @@ typedef enum GObjObjKind
 
 } GObjObjKind;
 
+typedef enum GObjCommandKind
+{
+    nGCCommonCommandShow,
+    nGCCommonCommandHide,
+    nGCCommonCommandResume,
+    nGCCommonCommandPause,
+    nGCCommonCommandEnd
+
+} GObjCommandKind;
+
 typedef enum GObjLinkIndex
 {
     // GObj link indexes with ID 1
@@ -251,7 +261,7 @@ typedef union  AObjEvent16          AObjEvent16;
 typedef union  AObjEvent32          AObjEvent32;
 typedef union  AObjScript           AObjScript;
 typedef struct GObj                 GObj;
-typedef struct GObjLink             GObjLink;
+typedef struct GObjScript           GObjScript;
 typedef struct GObjProcess          GObjProcess;
 typedef struct GObjThread           GObjThread;
 typedef struct GObjThreadStack      GObjThreadStack;

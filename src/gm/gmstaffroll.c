@@ -547,13 +547,13 @@ sb32 gmStaffrollGetPauseStatusResume(void)
 
 		if (sGMStaffrollScrollGObj != NULL)
 		{
-			gcResumeProcessAll(sGMStaffrollScrollGObj);
+			gcResumeGObjProcessAll(sGMStaffrollScrollGObj);
 		}
 		name_gobj = gGCCommonLinks[nGCCommonLinkIDCreditsName];
 
 		while (name_gobj != NULL)
 		{
-			gcResumeProcessAll(name_gobj);
+			gcResumeGObjProcessAll(name_gobj);
 
 			name_gobj = name_gobj->link_next;
 		}
@@ -561,7 +561,7 @@ sb32 gmStaffrollGetPauseStatusResume(void)
 
 		while (job_gobj != NULL)
 		{
-			gcResumeProcessAll(job_gobj);
+			gcResumeGObjProcessAll(job_gobj);
 
 			job_gobj = job_gobj->link_next;
 		}
@@ -1282,13 +1282,13 @@ sb32 gmStaffrollGetPauseStatusHighlight(void)
 		{
 			if (sGMStaffrollScrollGObj != NULL)
 			{
-				gcPauseProcessAll(sGMStaffrollScrollGObj);
+				gcPauseGObjProcessAll(sGMStaffrollScrollGObj);
 			}
 			gobj = gGCCommonLinks[nGCCommonLinkIDCreditsName];
 
 			while (gobj != NULL)
 			{
-				gcPauseProcessAll(gobj);
+				gcPauseGObjProcessAll(gobj);
 
 				gobj = gobj->link_next;
 			}
@@ -1296,7 +1296,7 @@ sb32 gmStaffrollGetPauseStatusHighlight(void)
 
 			while (gobj != NULL)
 			{
-				gcPauseProcessAll(gobj);
+				gcPauseGObjProcessAll(gobj);
 
 				gobj = gobj->link_next;
 			}

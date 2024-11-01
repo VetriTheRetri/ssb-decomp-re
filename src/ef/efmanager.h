@@ -276,7 +276,7 @@ extern LBParticle* efManagerSparkleWhiteMultiExplodeMakeEffect(Vec3f *pos);
 extern LBParticle* efManagerSparkleWhiteScaleMakeEffect(Vec3f *pos, f32 scale);
 extern LBParticle* efManagerSparkleWhiteDeadMakeEffect(Vec3f *pos, f32 scale);
 extern void efManagerQuakeProcUpdate(GObj *effect_gobj);
-extern void efManagerQuakeAddProcUpdate(GObj *effect_gobj);
+extern void efManagerQuakeFuncRun(GObj *effect_gobj);
 extern GObj* efManagerQuakeMakeEffect(s32 magnitude);
 extern void efManagerDamageCoinProcDead(LBTransform *tfrm);
 extern LBParticle* efManagerDamageCoinMakeEffect(Vec3f *pos);

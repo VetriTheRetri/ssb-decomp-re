@@ -25,13 +25,7 @@ extern intptr_t D_NF_00000055;
 // // // // // // // // // // // //
 
 // 0x801313B0
-void *sEFManagerTexturesFile1;
-
-// 0x801313B4
-void *sEFManagerTexturesFile2;
-
-// 0x801313B8
-void *sEFManagerTexturesFile3;
+void *gEFManagerFiles[3];
 
 // 0x801313BC
 EFStruct *sEFManagerStructsAllocFree;
@@ -119,7 +113,7 @@ EFCreateDesc dEFManagerDamageSlashEffectDesc =
 {
     0x4 | 0x1,                              // Flags
     18,                                     // DL Link
-    &sEFManagerTexturesFile1,                      // Texture file
+    &gEFManagerFiles[0],                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -149,7 +143,7 @@ EFCreateDesc dEFManagerShockSmallEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     18,                                     // DL Link
-    &sEFManagerTexturesFile2,                      // Texture file
+    &gEFManagerFiles[1],                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -179,7 +173,7 @@ EFCreateDesc dEFManagerDamageFlyOrbsEffectDesc =
 {
     EFFECT_FLAG_USERDATA | 0x1,             // Flags
     15,                                     // DL Link
-    &sEFManagerTexturesFile1,                      // Texture file
+    &gEFManagerFiles[0],                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -209,7 +203,7 @@ EFCreateDesc dEFManagerDamageSpawnOrbsEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     0,                                      // DL Link
-    &sEFManagerTexturesFile1,                      // Texture file
+    &gEFManagerFiles[0],                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -239,7 +233,7 @@ EFCreateDesc dEFManagerImpactWaveEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     10,                                     // DL Link
-    &sEFManagerTexturesFile1,                      // Texture file
+    &gEFManagerFiles[0],                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -269,7 +263,7 @@ EFCreateDesc dEFStarRodSparkEffectDesc =
 {
     EFFECT_FLAG_USERDATA | 0x1,             // Flags
     15,                                     // DL Link
-    &sEFManagerTexturesFile1,                      // Texture file
+    &gEFManagerFiles[0],                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -299,7 +293,7 @@ EFCreateDesc dEFManagerDamageFlySparksEffectDesc =
 {
     EFFECT_FLAG_USERDATA | 0x1,             // Flags
     15,                                     // DL Link
-    &sEFManagerTexturesFile1,                      // Texture file
+    &gEFManagerFiles[0],                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -329,7 +323,7 @@ EFCreateDesc dEFManagerDamageSpawnSparksEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     0,                                      // DL Link
-    &sEFManagerTexturesFile1,                      // Texture file
+    &gEFManagerFiles[0],                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -359,7 +353,7 @@ EFCreateDesc dEFManagerDamageFlyMDustEffectDesc =
 {
     EFFECT_FLAG_USERDATA | 0x1,             // Flags
     15,                                     // DL Link
-    &sEFManagerTexturesFile1,                      // Texture file
+    &gEFManagerFiles[0],                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -389,7 +383,7 @@ EFCreateDesc dEFManagerDamageSpawnMDustEffectDesc =
 {
     EFFECT_FLAG_USERDATA,                   // Flags
     0,                                      // DL Link
-    &sEFManagerTexturesFile1,                      // Texture file
+    &gEFManagerFiles[0],                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -419,7 +413,7 @@ EFCreateDesc dEFFireSparkEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     15,                                     // DL Link
-    &sEFManagerTexturesFile2,                      // Texture file
+    &gEFManagerFiles[1],                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -558,7 +552,7 @@ EFCreateDesc dEFCatchSwirlEffectDesc =
 {
     0x4 | 0x1,                              // Flags
     18,                                     // DL Link
-    &sEFManagerTexturesFile2,                      // Texture file
+    &gEFManagerFiles[1],                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -588,7 +582,7 @@ EFCreateDesc dEFReflectBreakEffectDesc =
 {
     0x4 | 0x1,                              // Flags
     18,                                     // DL Link
-    &sEFManagerTexturesFile2,                      // Texture file
+    &gEFManagerFiles[1],                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -888,7 +882,7 @@ EFCreateDesc dEFManagerDeadExplodeEffectDesc =
 {
     EFFECT_FLAG_SPECIALLINK | 0x4,          // Flags
     18,                                     // DL Link
-    &sEFManagerTexturesFile2,                      // Texture file
+    &gEFManagerFiles[1],                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -1170,7 +1164,7 @@ EFCreateDesc dEFManagerNessPKFlashEffectDesc =
 {
     0x4,                                    // Flags
     18,                                     // DL Link
-    &sEFManagerTexturesFile2,                      // Texture file
+    &gEFManagerFiles[1],                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -1290,7 +1284,7 @@ EFCreateDesc dEFManagerMBallRaysEffectDesc =
 {
     0x4,                                    // Flags
     10,                                     // DL Link
-    &sEFManagerTexturesFile3,                      // Texture file
+    &gEFManagerFiles[2],                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -1686,7 +1680,7 @@ EFCreateDesc dEFManagerRebirthHaloEffectDesc =
 {
     0x4 | EFFECT_FLAG_USERDATA,             // Flags
     10,                                     // DL Link
-    &sEFManagerTexturesFile3,                      // Texture file
+    &gEFManagerFiles[2],                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -1716,7 +1710,7 @@ EFCreateDesc dEFManagerItemGetSwirlEffectDesc =
 {
     0x4 | 0x1,                              // Flags
     18,                                     // DL Link
-    &sEFManagerTexturesFile3,                      // Texture file
+    &gEFManagerFiles[2],                      // Texture file
 
     // DObj transformation struct 1
     {
@@ -1770,9 +1764,9 @@ void efManagerInitEffects(void)
     efDisplayMakeCLD();
     efDisplayMakeXLU();
 
-    sEFManagerTexturesFile1 = lbRelocGetFileExternHeap(&D_NF_00000053, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_00000053), 0x10));
-    sEFManagerTexturesFile2 = lbRelocGetFileExternHeap(&D_NF_00000054, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_00000054), 0x10));
-    sEFManagerTexturesFile3 = lbRelocGetFileExternHeap(&D_NF_00000055, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_00000055), 0x10));
+    gEFManagerFiles[0] = lbRelocGetFileExternHeap(&D_NF_00000053, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_00000053), 0x10));
+    gEFManagerFiles[1] = lbRelocGetFileExternHeap(&D_NF_00000054, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_00000054), 0x10));
+    gEFManagerFiles[2] = lbRelocGetFileExternHeap(&D_NF_00000055, syTaskmanMalloc(lbRelocGetFileSize(&D_NF_00000055), 0x10));
 
     efDisplayInitAll();
 }
@@ -3817,11 +3811,11 @@ void efManagerQuakeProcUpdate(GObj *effect_gobj)
 }
 
 // 0x801008B8
-void efManagerQuakeAddProcUpdate(GObj *effect_gobj)
+void efManagerQuakeFuncRun(GObj *effect_gobj)
 {
     EFStruct *ep = efGetStruct(effect_gobj);
 
-    gcAddGObjProcess(effect_gobj, efManagerQuakeProcUpdate, 1, ep->effect_vars.quake.priority);
+    gcAddGObjProcess(effect_gobj, efManagerQuakeProcUpdate, nGCProcessKindFunc, ep->effect_vars.quake.priority);
 
     effect_gobj->func_run = NULL;
 }
@@ -3839,7 +3833,7 @@ GObj* efManagerQuakeMakeEffect(s32 magnitude)
     {
         return NULL;
     }
-    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, efManagerQuakeAddProcUpdate, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
+    effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, efManagerQuakeFuncRun, nGCCommonLinkIDEffect, GOBJ_PRIORITY_DEFAULT);
 
     if (effect_gobj == NULL)
     {
@@ -3852,19 +3846,19 @@ GObj* efManagerQuakeMakeEffect(s32 magnitude)
     switch (magnitude)
     {
     case 0:
-        gcAddAnimJointAll(effect_gobj, lbRelocGetFileData(AObjEvent32**, sEFManagerTexturesFile1, &lEFManagerQuakeMag0AnimJoint), 0.0F);
+        gcAddAnimJointAll(effect_gobj, lbRelocGetFileData(AObjEvent32**, gEFManagerFiles[0], &lEFManagerQuakeMag0AnimJoint), 0.0F);
         break;
 
     case 1:
-        gcAddAnimJointAll(effect_gobj, lbRelocGetFileData(AObjEvent32**, sEFManagerTexturesFile1, &lEFManagerQuakeMag1AnimJoint), 0.0F);
+        gcAddAnimJointAll(effect_gobj, lbRelocGetFileData(AObjEvent32**, gEFManagerFiles[0], &lEFManagerQuakeMag1AnimJoint), 0.0F);
         break;
 
     case 2:
-        gcAddAnimJointAll(effect_gobj, lbRelocGetFileData(AObjEvent32**, sEFManagerTexturesFile1, &lEFManagerQuakeMag2AnimJoint), 0.0F);
+        gcAddAnimJointAll(effect_gobj, lbRelocGetFileData(AObjEvent32**, gEFManagerFiles[0], &lEFManagerQuakeMag2AnimJoint), 0.0F);
         break;
 
-    case 3: // Used by POW Block 
-        gcAddAnimJointAll(effect_gobj, lbRelocGetFileData(AObjEvent32**, sEFManagerTexturesFile1, &lEFManagerQuakeMag3AnimJoint), 0.0F);
+    case 3:
+        gcAddAnimJointAll(effect_gobj, lbRelocGetFileData(AObjEvent32**, gEFManagerFiles[0], &lEFManagerQuakeMag3AnimJoint), 0.0F);
         break;
 
     default:
@@ -4038,7 +4032,7 @@ GObj* efManagerFireSparkMakeEffect(GObj *fighter_gobj) // I really have no idea 
     dobj->translate.vec.f.y = 160.0F;
     dobj->user_data.p = fp->joints[16];
 
-    lbCommonSetDObjTransformsForTreeDObjs(dobj->child, (uintptr_t)sEFManagerTexturesFile2 + (intptr_t)&lEFManagerFireSparkDObjSetup);
+    lbCommonSetDObjTransformsForTreeDObjs(dobj->child, (uintptr_t)gEFManagerFiles[1] + (intptr_t)&lEFManagerFireSparkDObjSetup);
 
     return effect_gobj;
 }

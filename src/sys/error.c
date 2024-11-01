@@ -315,7 +315,7 @@ void syErrorFillRectangle(Gfx *dl, u32 ulx, u32 uly, u32 lrx, u32 lry)
 }
 
 // 0x80021B30
-void syErrorDrawControllerInputs(GObj *gobj)
+void syErrorControllerFuncDisplay(GObj *gobj)
 {
     gsController *controller = &gSysController;
     s32 offset_x = 60;
@@ -415,27 +415,27 @@ void syErrorDrawControllerInputs(GObj *gobj)
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
-GObj* func_80022368(s32 link, u32 arg1, s32 arg2)
+GObj* syErrorMakeControllerCamera(s32 link, u32 link_priority, u32 dl_link_priority)
 {
-    if (gcFindGObjByID(-2U) != 0)
+    if (gcFindGObjByID(~0x1) != NULL)
     {
         return NULL;
     }
     else return gcMakeCameraGObj
     (
-        -2U, 
-        (void (*)())gcUpdateDefault, 
-        link, 
-        arg1,
-        syErrorDrawControllerInputs, 
-        arg2,
-        0, 
-        0, 
-        0, 
-        0, 
+        ~0x1, 
+        gcDefaultFuncRun,
+        link,
+        link_priority,
+        syErrorControllerFuncDisplay,
+        dl_link_priority,
+        0,
+        0,
+        FALSE,
+        nGCProcessKindThread,
         NULL,
-        0, 
-        0
+        0,
+        FALSE
     );
 }
 

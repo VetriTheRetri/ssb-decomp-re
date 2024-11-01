@@ -242,7 +242,7 @@ GObj* lbParticleAllocStructs(s32 num)
 	}
 	for (i = num - 1; i >= 0; i--)
 	{
-		ptcl = syTaskmanMalloc(sizeof(*ptcl), 4);
+		ptcl = syTaskmanMalloc(sizeof(*ptcl), 0x4);
 
 		if (ptcl == NULL)
 		{
@@ -254,11 +254,11 @@ GObj* lbParticleAllocStructs(s32 num)
 	gLBParticleStructsUsedNum = 0;
 	D_ovl0_800D644E = 0;
 
-	if (gcFindGObjByID(-6) != NULL)
+	if (gcFindGObjByID(~0x5) != NULL)
 	{
 		return NULL;
 	}
-	return gcMakeGObjSPAfter(-6, lbParticleStructFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+	return gcMakeGObjSPAfter(~0x5, lbParticleStructFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 }
 
 // 0x800CE4E4
@@ -2160,7 +2160,7 @@ GObj* lbParticleAllocGenerators(s32 num)
 	gLBParticleGeneratorsUsedNum = 0;
 	D_ovl0_800D6450 = 0;
 
-	return gcMakeGObjSPAfter(-7, lbParticleGeneratorFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
+	return gcMakeGObjSPAfter(~0x6, lbParticleGeneratorFuncRun, 0, GOBJ_PRIORITY_DEFAULT);
 }
 
 // 0x800D27F8

@@ -13,7 +13,7 @@ extern intptr_t D_NF_800A5240;      // 0x800A5240
 extern intptr_t lOverlay14ArenaLo;  // 0x80133130
 extern intptr_t lOverlay14ArenaHi;  // 0x80369240
 
-extern void gcUpdateDefault(UNUSED GObj* arg0);
+extern void gcDefaultFuncRun(UNUSED GObj* arg0);
 extern FTCreateDesc dFTManagerDefaultFighterDesc;
 extern sb32 gMNDebugMenuIsMenuOpen; // isMenuShown
 extern void dbMenuCreateMenu(s32, s32, s32, void*, s32);
@@ -405,7 +405,7 @@ void dbBattleSyncCostumes(s32 arg0)
 // 0x801322DC
 GObj* dbBattleCreateViewport(void (*proc)(GObj*))
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x400, gcUpdateDefault, 0xF, 0x80000000U, func_80017DBC, 0x32, 0x00048600, -1, 1, 0, proc, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x400, gcDefaultFuncRun, 0xF, 0x80000000U, func_80017DBC, 0x32, 0x00048600, -1, 1, 0, proc, 1, 0);
 	CObj *cobj;
 
 	if (camera_gobj == NULL)

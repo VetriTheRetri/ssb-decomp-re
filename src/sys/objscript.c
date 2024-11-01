@@ -38,7 +38,7 @@ void gcAddGObjScriptByLink(s32 link, s32 id, GObj *gobj)
     gcFuncGObjByLinkEx(link, gcAddGObjScript, &gobjscript, FALSE);
 }
 
-s32 gcParseGObjScript(void (*func)(GObjScript))
+sb32 gcParseGObjScript(void (*func)(GObjScript))
 {
     GObj *gobj = gGCCurrentCommon;
 
@@ -67,7 +67,7 @@ s32 gcParseGObjScript(void (*func)(GObjScript))
         {
         case nGCCommonCommandEnd: 
             gcEjectGObj(NULL); 
-            return 1;
+            return TRUE;
             
         case nGCCommonCommandPause: 
             gcPauseGObjProcessAll(NULL); 
@@ -100,5 +100,5 @@ s32 gcParseGObjScript(void (*func)(GObjScript))
     *(s32*)((uintptr_t)gobj + (offsetof(GObj, gobjscripts_num) - offsetof(GObj, gobjscripts))) = 0;
 
 #endif
-    return 0;
+    return FALSE;
 }

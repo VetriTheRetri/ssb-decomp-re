@@ -124,7 +124,7 @@ GObj* gcFindGObjByID(u32 id)
 }
 
 // 0x8000B1C4
-void gcUpdateDefault(GObj *gobj)
+void gcDefaultFuncRun(GObj *gobj)
 {
     gcParseGObjScript(NULL);
 }
@@ -562,7 +562,7 @@ GObj* gcMakeDefaultCameraGObj(s32 link, u32 link_priority, u32 dl_link_priority,
     GObj *gobj = gcMakeCameraGObj
     (
         -1,
-        gcUpdateDefault,
+        gcDefaultFuncRun,
         link,
         link_priority,
         func_80017DBC,

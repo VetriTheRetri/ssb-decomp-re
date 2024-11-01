@@ -1,9 +1,9 @@
 start_scene_manager = 0x800A1980;
 func_800A2698 = 0x800A2698;
 func_800A26B8 = 0x800A26B8;
-func_800A26D8 = 0x800A26D8;
-func_800A2B18 = 0x800A2B18;
-unref_800A2BA8 = 0x800A2BA8;
+scManagerMeterFuncDisplay = 0x800A26D8;
+scManagerMakeMeterCamera = 0x800A2B18;
+scManagerMakeDebugCameras = 0x800A2BA8;
 scManagerInspectGObj = 0x800A2C30;
 scManagerProcPrintGObjStatus = 0x800A2E84;
 scManagerRunPrintGObjStatus = 0x800A3040;

@@ -625,16 +625,14 @@ void func_800A26B8()
 	gcDrawAll();
 }
 
-extern D_ovl0_800D6448;
-
 // 0x800A26D8
-void func_800A26D8(GObj* arg0)
+void scManagerMeterFuncDisplay(GObj *gobj)
 {
 	s32 width; // sp74
 	UNUSED s32 spPad70;
 	s32 barY = 203; // sp6C
 
-	func_80016338(gSYTaskmanDLHeads, arg0->obj, 0);
+	func_80016338(gSYTaskmanDLHeads, CObjGetStruct(gobj), 0);
 	gDPPipeSync((*gSYTaskmanDLHeads)++);
 	gDPSetCycleType((*gSYTaskmanDLHeads)++, G_CYC_FILL);
 	gDPSetRenderMode((*gSYTaskmanDLHeads)++, G_RM_NOOP, G_RM_NOOP2);
@@ -681,30 +679,48 @@ void func_800A26D8(GObj* arg0)
 }
 
 // 0x800A2B18
-GObj* func_800A2B18(s32 link, u32 arg1, s32 arg2)
+GObj* scManagerMakeMeterCamera(s32 link, u32 link_priority, u32 dl_link_priority)
 {
-	if (gcFindGObjByID(0xEFFFFFFF) != NULL)
+	if (gcFindGObjByID(~0x10000000) != NULL)
+	{
 		return NULL;
-
-	return gcMakeCameraGObj(0xEFFFFFFF, NULL, link, arg1, func_800A26D8, arg2, 0, 0, 0, 0, 0, 0, 0);
+	}
+	else return gcMakeCameraGObj
+	(
+		~0x10000000,
+		NULL,
+		link,
+		link_priority,
+		scManagerMeterFuncDisplay,
+		dl_link_priority,
+		0,
+		0,
+		FALSE,
+		nGCProcessKindThread,
+		NULL,
+		0,
+		FALSE
+	);
 }
 
 // 0x800A2BA8
-void unref_800A2BA8(s32 link, u32 arg1, s32 arg2) // set_up_debug_objs ? something like that
+void scManagerMakeDebugCameras(s32 link, u32 link_priority, s32 dl_link_priority) // set_up_debug_objs ? something like that
 {
-	GObj* com;
+	GObj *gobj = gcFindGObjByID(~0x1);
 
-	com = gcFindGObjByID(0xFFFFFFFE);
-	if (com != NULL)
-		gcEjectGObj(com);
-	else
-		func_80022368(link, arg1, arg2);
+	if (gobj != NULL)
+	{
+		gcEjectGObj(gobj);
+	}
+	else syErrorMakeControllerCamera(link, link_priority, dl_link_priority);
 
-	com = gcFindGObjByID(0xEFFFFFFF);
-	if (com != NULL)
-		gcEjectGObj(com);
-	else
-		func_800A2B18(link, arg1, arg2);
+	gobj = gcFindGObjByID(~0x10000000);
+
+	if (gobj != NULL)
+	{
+		gcEjectGObj(gobj);
+	}
+	else scManagerMakeMeterCamera(link, link_priority, dl_link_priority);
 }
 
 // 0x800A2C30

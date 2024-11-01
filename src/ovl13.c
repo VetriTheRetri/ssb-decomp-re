@@ -13,7 +13,7 @@ extern intptr_t D_NF_800A5240;      // 0x800A5240
 extern intptr_t lOverlay13ArenaLo;  // 0x80133170
 extern intptr_t lOverlay13ArenaHi;  // 0x80369240
 
-extern void gcUpdateDefault(UNUSED GObj* arg0);
+extern void gcDefaultFuncRun(UNUSED GObj* arg0);
 extern void* func_800269C0_275C0(u16);
 
 // ovl9
@@ -502,7 +502,7 @@ void dbCubeMain(GObj* arg0)
 		dbMenuCreateMenu(0x32, 0x32, 0x50, &dMNDebugCubeMenuItems, 0xF);
 
 	if (gSysController.button_tap & Z_TRIG)
-		func_80022368(0, 0x80000000, 0);
+		syErrorMakeControllerCamera(0, 0x80000000, 0);
 
 	if (dMNDebugCubeExitInterrupt != 0)
 	{
@@ -518,7 +518,7 @@ void dbCubeMain(GObj* arg0)
 // 0x80131EA0
 GObj* dbCubeCreateGObj(void* ptr, void* dvar)
 {
-	GObj* gobj = gcMakeModelGObj(0x10000000, gcUpdateDefault, 0, 0x80000000, gcDrawDObjDLHead0, 0, 0x80000000, -1, dvar, 1, 0, ptr, 1);
+	GObj* gobj = gcMakeModelGObj(0x10000000, gcDefaultFuncRun, 0, 0x80000000, gcDrawDObjDLHead0, 0, 0x80000000, -1, dvar, 1, 0, ptr, 1);
 
 	return (gobj != NULL) ? gobj : NULL;
 }
@@ -526,7 +526,7 @@ GObj* dbCubeCreateGObj(void* ptr, void* dvar)
 // 0x80131F28
 GObj* dbCubeCreateViewport(void (*proc)(GObj*))
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x10000002, gcUpdateDefault, 0, 0x80000000U, func_80017DBC, 0x32, 0x00000001, -1, 1, 0, proc, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x10000002, gcDefaultFuncRun, 0, 0x80000000U, func_80017DBC, 0x32, 0x00000001, -1, 1, 0, proc, 1, 0);
 
 	if (camera_gobj == NULL)
 		return NULL;

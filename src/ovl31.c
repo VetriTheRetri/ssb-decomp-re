@@ -2800,8 +2800,8 @@ void func_ovl31_80138830()
 	};
 	s32 foo;
 
-	func_ovl2_80104554(sp20, 0);
-	func_ovl2_80104554(sp2C, 1);
+	efManagerConfettiMakeEffect(sp20, 0);
+	efManagerConfettiMakeEffect(sp2C, 1);
 }
 
 // 0x801388A4 - Unused?

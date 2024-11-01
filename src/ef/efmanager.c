@@ -5765,7 +5765,7 @@ void func_ovl2_80103918(f32 arg0, f32 arg1, s32 arg2)
     arg0 *= 4.0F;
     arg1 *= 4.0F;
 
-    lbParticleMakePosVel(gEFManagerParticleBankID | 0x18, arg2, arg0, arg1, 0.0F, 0.0F, 0.0F, 0.0F);
+    lbParticleMakePosVel(gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(2), arg2, arg0, arg1, 0.0F, 0.0F, 0.0F, 0.0F);
 }
 
 // 0x80103974
@@ -6036,7 +6036,7 @@ GObj* efManagerRebirthHaloMakeEffect(GObj *fighter_gobj, f32 scale)
 // 0x801040E0
 LBParticle* efManagerBattleScoreMakeEffect(Vec3f *pos, s32 score)
 {
-    LBParticle *ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | 0x18, (score > 0) ? 0x43 : 0x44);
+    LBParticle *ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(2), (score > 0) ? 0x43 : 0x44);
 
     if (ptcl != NULL)
     {
@@ -6220,9 +6220,11 @@ LBParticle* efManagerItemSpawnSwirlMakeEffect(Vec3f *pos)
 }
 
 // 0x80104554
-LBParticle* func_ovl2_80104554(Vec3f *pos, s32 arg1)
+LBParticle* efManagerConfettiMakeEffect(Vec3f *pos, s32 arg1)
 {
-    LBParticle *ptcl = (arg1 != 0) ? lbParticleMakeScriptID(gEFManagerParticleBankID, 0x70) : lbParticleMakeScriptID(gEFManagerParticleBankID | 0x20, 0x70);
+    LBParticle *ptcl = (arg1 != 0) ? 
+    lbParticleMakeScriptID(gEFManagerParticleBankID, 0x70) :
+    lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(3), 0x70);
 
     if (ptcl != NULL)
     {

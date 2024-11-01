@@ -370,6 +370,6 @@ extern void efManagerKirbyInhaleWindProcUpdate(GObj *effect_gobj);
 extern LBParticle* efManagerKirbyInhaleWindMakeEffect(GObj *fighter_gobj);
 extern GObj* efManagerItemGetSwirlProcUpdate(Vec3f *pos);
 extern LBParticle* efManagerItemSpawnSwirlMakeEffect(Vec3f *pos);
-extern LBParticle* func_ovl2_80104554(Vec3f *pos, s32 arg1);
+extern LBParticle* efManagerConfettiMakeEffect(Vec3f *pos, s32 arg1);
 
 #endif

@@ -392,7 +392,7 @@ void itEggExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 
     if (ep != NULL)
     {
-        ep->tfrm->scale.x = ep->tfrm->scale.y = ep->tfrm->scale.z = ITEGG_EXPLODE_EFFECT_SCALE;
+        ep->tfm->scale.x = ep->tfm->scale.y = ep->tfm->scale.z = ITEGG_EXPLODE_EFFECT_SCALE;
     }
     efManagerQuakeMakeEffect(1);
 

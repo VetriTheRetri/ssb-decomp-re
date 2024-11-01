@@ -73,7 +73,7 @@ struct EFStruct
     GObj *fighter_gobj;
 
     u16 bank_id;
-    LBTransform *tfrm;
+    LBTransform *tfm;
 
     ub32 is_pause_effect : 1;
 

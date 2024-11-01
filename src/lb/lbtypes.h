@@ -122,12 +122,12 @@ struct LBGenerator
     f32 gravity;
     f32 friction;
     f32 size;
-    f32 unk_gtor_0x38;
-    f32 unk_gtor_0x3C;
-    f32 unk_gtor_0x40;
-    f32 unk_gtor_0x44;
+    f32 unk_gen_0x38;
+    f32 unk_gen_0x3C;
+    f32 unk_gen_0x40;
+    f32 unk_gen_0x44;
     DObj *dobj;
-    LBTransform *tfrm;
+    LBTransform *tfm;
 
     union LBGeneratorVars
     {
@@ -144,7 +144,7 @@ struct LBGenerator
             f32 f;
             u16 halfword;
 
-        } unk_gtor_vars;
+        } unk_gen_vars;
 
     } generator_vars;
 };
@@ -195,8 +195,8 @@ struct LBParticle
     syColorRGBA target_primcolor;
     syColorRGBA envcolor;
     syColorRGBA target_envcolor;
-    LBGenerator *gtor;
-    LBTransform *tfrm;
+    LBGenerator *gen;
+    LBTransform *tfm;
 };
 
 struct LBTransitionDesc

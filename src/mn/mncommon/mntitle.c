@@ -1387,7 +1387,7 @@ void mnTitleMakeLogoFire(void)
 void mnTitleMakeLogoFireParticles(void)
 {
 	GObj *logo_fire_effect_gobj;
-	LBGenerator *gtor;
+	LBGenerator *gen;
 
 	if (gSceneData.scene_prev == nSCKindOpeningNewcomers)
 	{
@@ -1398,11 +1398,11 @@ void mnTitleMakeLogoFireParticles(void)
 		gcPlayAnimAll(logo_fire_effect_gobj);
 		gcAddGObjProcess(logo_fire_effect_gobj, gcPlayAnimAll, nGCProcessKindFunc, 1);
 
-		gtor = lbParticleMakeGenerator(sMNTitleParticleBankID, 0);
+		gen = lbParticleMakeGenerator(sMNTitleParticleBankID, 0);
 
-		if (gtor != NULL)
+		if (gen != NULL)
 		{
-			gtor->dobj = DObjGetStruct(logo_fire_effect_gobj)->child->sib_next->child;
+			gen->dobj = DObjGetStruct(logo_fire_effect_gobj)->child->sib_next->child;
 		}
 	}
 }

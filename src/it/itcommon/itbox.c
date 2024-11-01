@@ -507,7 +507,7 @@ void itBoxExplodeSetStatus(GObj *item_gobj)
 // 0x80179B08
 void itBoxExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 {
-    LBParticle *ptcl;
+    LBParticle *ptc;
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
@@ -517,13 +517,13 @@ void itBoxExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
     ip->physics.vel_air.y = 0.0F;
     ip->physics.vel_air.z = 0.0F;
 
-    ptcl = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
+    ptc = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 
-    if (ptcl != NULL)
+    if (ptc != NULL)
     {
-        ptcl->tfrm->scale.x = 
-        ptcl->tfrm->scale.y = 
-        ptcl->tfrm->scale.z = ITBOX_EXPLODE_SCALE;
+        ptc->tfm->scale.x = 
+        ptc->tfm->scale.y = 
+        ptc->tfm->scale.z = ITBOX_EXPLODE_SCALE;
     }
     efManagerQuakeMakeEffect(1);
 

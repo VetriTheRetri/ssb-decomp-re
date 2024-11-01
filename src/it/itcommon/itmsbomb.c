@@ -378,20 +378,20 @@ void itMSBombExplodeMakeEffect(GObj *item_gobj)
 // 0x801769AC
 void itMSBombExplodeInITStatusVars(GObj *item_gobj, sb32 is_make_effect)
 {
-    LBParticle *ptcl;
+    LBParticle *ptc;
     DObj *dobj = DObjGetStruct(item_gobj);
 
     if (is_make_effect != FALSE)
     {
         itMSBombExplodeMakeEffect(item_gobj);
     }
-    ptcl = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
+    ptc = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 
-    if (ptcl != NULL)
+    if (ptc != NULL)
     {
-        ptcl->tfrm->scale.x = ITMSBOMB_EXPLODE_SCALE;
-        ptcl->tfrm->scale.y = ITMSBOMB_EXPLODE_SCALE;
-        ptcl->tfrm->scale.z = ITMSBOMB_EXPLODE_SCALE;
+        ptc->tfm->scale.x = ITMSBOMB_EXPLODE_SCALE;
+        ptc->tfm->scale.y = ITMSBOMB_EXPLODE_SCALE;
+        ptc->tfm->scale.z = ITMSBOMB_EXPLODE_SCALE;
     }
     efManagerQuakeMakeEffect(1);
     itMainRefreshAtk(item_gobj);

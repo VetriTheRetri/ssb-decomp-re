@@ -39,8 +39,8 @@ typedef struct grCommonGroundVarsPupupu
 	void* map_head;
 	GObj* map_gobj[4];
 	s32 particle_bank_id;
-	LBTransform* leaves_tfrm;
-	LBTransform* dust_tfrm;
+	LBTransform* leaves_tfm;
+	LBTransform* dust_tfm;
 	u16 whispy_wind_wait;
 	u16 whispy_wind_duration;
 	s16 whispy_blink_wait;
@@ -193,7 +193,7 @@ typedef struct grCommonGroundVarsHyrule
 {
 	void* map_head;
 	GObj* twister_gobj;
-	LBTransform* twister_tfrm;
+	LBTransform* twister_tfm;
 	f32 twister_leftedge_x;
 	f32 twister_rightedge_x;
 	f32 twister_vel;

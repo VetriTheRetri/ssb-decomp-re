@@ -78,7 +78,7 @@
  * 
  * OR this with a particle bank ID
  */
-#define LBPARTICLE_MASK_LINK(id)				\
+#define LBPARTICLE_MASK_GENLINK(id)				\
 (((id) + 1) * 8)
 
 #define lbGetSinCosUShort(sin, cos, angle, id) 	\

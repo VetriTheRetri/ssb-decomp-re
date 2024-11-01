@@ -288,7 +288,7 @@ GObj* itNessPKFireMakeItem(GObj *weapon_gobj, Vec3f *pos, Vec3f *vel)
 
     if (ptcl != NULL)
     {
-        tfrm = lbParticleAddTransformForStruct(ptcl, 0);
+        tfrm = lbParticleAddTransformForStruct(ptcl, nLBTransformStatusDefault);
 
         if (tfrm != NULL)
         {

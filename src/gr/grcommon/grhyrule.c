@@ -33,7 +33,7 @@ LBParticle* grHyruleTwisterMakeEffect(Vec3f *pos, s32 effect_id)
 
     if (ptcl != NULL)
     {
-        LBTransform *tfrm = lbParticleAddTransformForStruct(ptcl, 0);
+        LBTransform *tfrm = lbParticleAddTransformForStruct(ptcl, nLBTransformStatusDefault);
 
         if (tfrm == NULL)
         {

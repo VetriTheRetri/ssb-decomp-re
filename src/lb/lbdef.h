@@ -1,7 +1,7 @@
 #ifndef _LBDEF_H_
 #define _LBDEF_H_
 
-#define LBRELOC_CACHE_ALIGN(x) (((x) + 0xf) & ~0xf)
+#define LBRELOC_CACHE_ALIGN(x) 			(((x) + 0xF) & ~0xF)
 
 #define LBPARTICLE_BANKS_NUM_MAX        8
 #define LBPARTICLE_ATTACH_DOBJ_NUM_MAX  8
@@ -70,24 +70,35 @@
 #define LBPARTICLE_OPCODE_DEAD          0xFE        // Destroy particle
 #define LBPARTICLE_OPCODE_END           0xFF        // Same as LBPARTICLE_OPCODE_DEAD
 
-#define lbGetSinCosUShort(sin, cos, angle, id)        \
-{                                                     \
-    id = SINTABLE_RAD_TO_ID(angle) & 0xFFF;           \
-                                                      \
-    sin = gSinTable[id & SINTABLE_MASK_ID];           \
-                                                      \
-    if (id & 0x800)                                   \
-    {                                                 \
-        sin = -sin;                                   \
-    }                                                 \
-    id += 0x400;                                      \
-                                                      \
-    cos = gSinTable[id & SINTABLE_MASK_ID];           \
-                                                      \
-    if (id & 0x800)                                   \
-    {                                                 \
-        cos = -cos;                                   \
-    }                                                 \
+/*
+ * Used to define a compound int where lowest 3 bits = bank ID,
+ * and the rest are a mask where each bit is the array index of
+ * an LBGenerator linked list to be skipped over if
+ * the corresponding GObj flag is toggled?
+ * 
+ * OR this with a particle bank ID
+ */
+#define LBPARTICLE_MASK_LINK(id)				\
+(((id) + 1) * 8)
+
+#define lbGetSinCosUShort(sin, cos, angle, id) 	\
+{                                               \
+    id = SINTABLE_RAD_TO_ID(angle) & 0xFFF;     \
+                                                \
+    sin = gSinTable[id & SINTABLE_MASK_ID];     \
+                                                \
+    if (id & 0x800)                             \
+    {                                           \
+        sin = -sin;                             \
+    }                                          	\
+    id += 0x400;                               	\
+                                    			\
+    cos = gSinTable[id & SINTABLE_MASK_ID];     \
+                                                \
+    if (id & 0x800)                             \
+    {                                           \
+        cos = -cos;                             \
+    }                                           \
 }
 
 #define LBBACKUP_MASK_FIGHTER(kind) (1 << (kind))

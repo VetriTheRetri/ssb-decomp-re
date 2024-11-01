@@ -2875,7 +2875,7 @@ LBParticle* efManagerDustLightMakeEffect(Vec3f *pos, sb32 is_invert_vel, f32 f_i
     }
     effect_gobj->user_data.p = ep;
 
-    ptcl = (f_index == 2.0F) ? lbParticleMakeScriptID(gEFManagerParticleBankID | 8, 0x56) : lbParticleMakeScriptID(gEFManagerParticleBankID | 8, 0x55);
+    ptcl = (f_index == 2.0F) ? lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(0), 0x56) : lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(0), 0x55);
 
     if (ptcl != NULL)
     {
@@ -2943,7 +2943,7 @@ LBParticle* efManagerDustHeavyMakeEffect(Vec3f *pos, s32 lr)
     }
     effect_gobj->user_data.p = NULL;
 
-    ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | 8, 0x58);
+    ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(0), 0x58);
 
     if (ptcl != NULL)
     {
@@ -3015,7 +3015,7 @@ LBParticle* efManagerDustHeavyDoubleMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
     }
     effect_gobj->user_data.p = ep;
 
-    ptcl = (f_index == 1.7F) ? lbParticleMakeScriptID(gEFManagerParticleBankID | 8, 0x59) : lbParticleMakeScriptID(gEFManagerParticleBankID | 8, 0x58); // Why such a specific check when a bool could've worked?
+    ptcl = (f_index == 1.7F) ? lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(0), 0x59) : lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(0), 0x58); // Why such a specific check when a bool could've worked?
 
     if (ptcl != NULL)
     {
@@ -3055,7 +3055,7 @@ LBParticle* efManagerDustHeavyDoubleMakeEffect(Vec3f *pos, s32 lr, f32 f_index)
 // 0x800FF590
 LBParticle* efManagerDustExpandLargeMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | 8, 0x57);
+    LBParticle *ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(0), 0x57);
 
     if (ptcl != NULL)
     {
@@ -3112,7 +3112,7 @@ LBParticle* efManagerDustExpandSmallMakeEffect(Vec3f *pos, f32 f_index)
     }
     effect_gobj->user_data.p = ep;
 
-    ptcl = (f_index == 2.0F) ? lbParticleMakeScriptID(gEFManagerParticleBankID | 8, 0x56) : lbParticleMakeScriptID(gEFManagerParticleBankID | 8, 0x55);
+    ptcl = (f_index == 2.0F) ? lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(0), 0x56) : lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(0), 0x55);
 
     if (ptcl != NULL)
     {
@@ -3152,7 +3152,7 @@ LBParticle* efManagerDustDashMakeEffect(Vec3f *pos, s32 lr, f32 scale)
     LBTransform *tfrm;
     EFStruct *ep;
 
-    ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | 8, 0x5A);
+    ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(0), 0x5A);
 
     if (ptcl != NULL)
     {
@@ -3616,7 +3616,7 @@ GObj* efManagerDamageSpawnMDustRandgcMakeEffect(Vec3f *pos, s32 lr)
 // 0x80100480
 LBParticle* efManagerSparkleWhiteMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | 8, 0x73);
+    LBParticle *ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(0), 0x73);
 
     if (ptcl != NULL)
     {
@@ -3645,7 +3645,7 @@ LBParticle* efManagerSparkleWhiteMakeEffect(Vec3f *pos)
 // 0x80100524
 LBParticle* efManagerSparkleWhiteMultiMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | 8, 0x1A);
+    LBParticle *ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(0), 0x1A);
 
     if (ptcl != NULL)
     {
@@ -3674,7 +3674,7 @@ LBParticle* efManagerSparkleWhiteMultiMakeEffect(Vec3f *pos)
 // 0x801005C8
 LBParticle* efManagerSparkleWhiteMultiExplodeMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | 8, 0x22);
+    LBParticle *ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(0), 0x22);
 
     if (ptcl != NULL)
     {
@@ -3736,7 +3736,7 @@ LBParticle* efManagerSparkleWhiteScaleMakeEffect(Vec3f *pos, f32 scale)
 // 0x80100720 - Plays when a fighter is Star KO'd
 LBParticle* efManagerSparkleWhiteDeadMakeEffect(Vec3f *pos, f32 scale)
 {
-    LBParticle *ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | 0x10, 0x5C);
+    LBParticle *ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(1), 0x5C);
 
     if (ptcl != NULL)
     {
@@ -3966,7 +3966,7 @@ LBParticle* efManagerSetOffMakeEffect(Vec3f *pos, s32 size)
     }
     effect_gobj->user_data.p = ep;
 
-    ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | 8, 0x65);
+    ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(0), 0x65);
 
     if (ptcl != NULL)
     {
@@ -4299,7 +4299,7 @@ GObj* efManagerReflectBreakMakeEffect(Vec3f *pos, s32 lr)
 // 0x801015D4
 LBParticle* efManagerFuraSparkleMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptcl = lbParticleMakeCommon(gEFManagerParticleBankID | 8, 0);
+    LBParticle *ptcl = lbParticleMakeCommon(gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(0), 0);
 
     if (ptcl != NULL)
     {
@@ -4798,7 +4798,7 @@ GObj* efManagerDeadExplodeMakeEffect(Vec3f *pos, s32 player, u32 type)
     DObj *sibling_dobj;
     u8 index = ((type % 2) * GMCOMMON_PLAYERS_MAX) + player; // WARNING: dEFManagerDeadExplodeGenID should be u8[2][GMCOMMON_PLAYERS_MAX], but it will not match this way; UB-risk
 
-    ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | 0x10, dEFManagerDeadExplodeGenID[index]);
+    ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(1), dEFManagerDeadExplodeGenID[index]);
 
     if (ptcl != NULL)
     {
@@ -5300,7 +5300,7 @@ GObj* efManagerMBallThrownMakeEffect(Vec3f *pos, s32 lr)
 // 0x80102DEC
 LBParticle* efManagerFireGrindMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | 8, 0xB);
+    LBParticle *ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(0), 0xB);
 
     if (ptcl != NULL)
     {
@@ -5329,7 +5329,7 @@ LBParticle* efManagerFireGrindMakeEffect(Vec3f *pos)
 // 0x80102E90
 LBParticle* efManagerHealSparklesMakeEffect(Vec3f *pos)
 {
-    LBParticle *ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | 8, 0xE);
+    LBParticle *ptcl = lbParticleMakeScriptID(gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(0), 0xE);
 
     if (ptcl != NULL)
     {
@@ -5791,7 +5791,7 @@ LBParticle* efManagerMusicNoteMakeEffect(Vec3f *pos)
 {
     LBParticle *ptcl = lbParticleMakeScriptID
     (
-        gEFManagerParticleBankID | 8, 
+        gEFManagerParticleBankID | LBPARTICLE_MASK_LINK(0), 
         dEFManagerMusicNoteGenIDs[mtTrigGetRandomIntRange(ARRAY_COUNT(dEFManagerMusicNoteGenIDs))]
     );
 
@@ -6126,7 +6126,7 @@ LBParticle* efManagerKirbyInhaleWindMakeEffect(GObj *fighter_gobj)
     }
     effect_gobj->user_data.p = ep;
 
-    ptcl = lbParticleMakeScriptID(gFTDataKirbyParticleBankID | 8, 0xC);
+    ptcl = lbParticleMakeScriptID(gFTDataKirbyParticleBankID | LBPARTICLE_MASK_LINK(0), 0xC);
 
     if (ptcl != NULL)
     {

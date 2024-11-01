@@ -409,8 +409,8 @@ sb32 itLizardonWeaponFlameProcReflector(GObj *weapon_gobj)
 
     translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
 
-    lbParticleMakePosVel(gITManagerParticleBankID | 8, 2, translate->x, translate->y, 0.0F, wp->physics.vel_air.x, wp->physics.vel_air.y, 0.0F);
-    lbParticleMakePosVel(gITManagerParticleBankID | 8, 0, translate->x, translate->y, 0.0F, wp->physics.vel_air.x, wp->physics.vel_air.y, 0.0F);
+    lbParticleMakePosVel(gITManagerParticleBankID | LBPARTICLE_MASK_LINK(0), 2, translate->x, translate->y, 0.0F, wp->physics.vel_air.x, wp->physics.vel_air.y, 0.0F);
+    lbParticleMakePosVel(gITManagerParticleBankID | LBPARTICLE_MASK_LINK(0), 0, translate->x, translate->y, 0.0F, wp->physics.vel_air.x, wp->physics.vel_air.y, 0.0F);
 
     return FALSE;
 }
@@ -431,8 +431,8 @@ GObj* itLizardonWeaponFlameMakeWeapon(GObj *item_gobj, Vec3f *pos, Vec3f *vel)
 
     ip->lifetime = ITLIZARDON_FLAME_LIFETIME;
 
-    lbParticleMakePosVel(gITManagerParticleBankID | 8, 2, pos->x, pos->y, 0.0F, ip->physics.vel_air.x, ip->physics.vel_air.y, 0.0F); // This needs to return something in v0 to match
-    lbParticleMakePosVel(gITManagerParticleBankID | 8, 0, pos->x, pos->y, 0.0F, ip->physics.vel_air.x, ip->physics.vel_air.y, 0.0F);
+    lbParticleMakePosVel(gITManagerParticleBankID | LBPARTICLE_MASK_LINK(0), 2, pos->x, pos->y, 0.0F, ip->physics.vel_air.x, ip->physics.vel_air.y, 0.0F); // This needs to return something in v0 to match
+    lbParticleMakePosVel(gITManagerParticleBankID | LBPARTICLE_MASK_LINK(0), 0, pos->x, pos->y, 0.0F, ip->physics.vel_air.x, ip->physics.vel_air.y, 0.0F);
 
     return weapon_gobj;
 }

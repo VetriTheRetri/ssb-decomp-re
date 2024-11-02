@@ -655,7 +655,7 @@ s32 damage_index, s32 element, s32 damage_player_number, sb32 is_rumble, sb32 is
     {
         FTStruct *attacker_fp = ftGetStruct(attacker_gobj);
 
-        attacker_fp->attack_atk_count++;
+        attacker_fp->attack_attack_count++;
         attacker_fp->attack_knockback = knockback;
     }
 }

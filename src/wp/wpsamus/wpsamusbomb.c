@@ -63,12 +63,12 @@ void wpSamusBombExplodeInitWeaponVars(GObj *weapon_gobj)
 
     wp->lifetime = WPSAMUSBOMB_EXPLODE_LIFETIME;
 
-    wp->atk_coll.can_rehit_item = TRUE;
-    wp->atk_coll.can_hop = FALSE;
+    wp->attack_coll.can_rehit_item = TRUE;
+    wp->attack_coll.can_hop = FALSE;
 
     wp->physics.vel_air.x = wp->physics.vel_air.y = wp->physics.vel_air.z = 0.0F;
 
-    wp->atk_coll.size = WPSAMUSBOMB_EXPLODE_SIZE;
+    wp->attack_coll.size = WPSAMUSBOMB_EXPLODE_SIZE;
 
     DObjGetStruct(weapon_gobj)->display_ptr = NULL;
 

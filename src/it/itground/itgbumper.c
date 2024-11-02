@@ -104,8 +104,8 @@ GObj* itGBumperMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->multi = 0;
 
-        ip->atk_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
-        ip->atk_coll.can_rehit_shield = TRUE;
+        ip->attack_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
+        ip->attack_coll.can_rehit_shield = TRUE;
 
         ip->physics.vel_air.x = 0.0F;
         ip->physics.vel_air.y = 0.0F;
@@ -115,8 +115,8 @@ GObj* itGBumperMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         if (gBattleState->gkind == nGRKindCastle)
         {
-            ip->atk_coll.knockback_weight = ITBUMPER_CASTLE_KNOCKBACK;
-            ip->atk_coll.angle = ITBUMPER_CASTLE_ANGLE;
+            ip->attack_coll.knockback_weight = ITBUMPER_CASTLE_KNOCKBACK;
+            ip->attack_coll.angle = ITBUMPER_CASTLE_ANGLE;
         }
     }
     return item_gobj;

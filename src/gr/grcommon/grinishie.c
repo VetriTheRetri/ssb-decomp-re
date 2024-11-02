@@ -528,7 +528,7 @@ void grInishieMakePowerBlock(void)
         gGRCommonStruct.inishie.pblock_pos_ids[i] = pos_ids[i];
     }
     gGRCommonStruct.inishie.pblock_status = nGRInishiePowerBlockStatusWait;
-    gGRCommonStruct.inishie.gr_atk_coll = (GRAttackColl*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRInishiePowerBlockHit);
+    gGRCommonStruct.inishie.gr_attack_coll = (GRAttackColl*) (((uintptr_t)gMPCollisionGroundData - (intptr_t)&lGRCommonHeaderStart) + (intptr_t)&lGRInishiePowerBlockHit);
 }
 
 // 0x80109B4C
@@ -541,7 +541,7 @@ void grInishiePowerBlockSetDamage(void)
 }
 
 // 0x80109B8C
-sb32 grInishiePowerBlockCheckGetDamageKind(GObj *item_gobj, GObj *fighter_gobj, GRAttackColl **gr_atk_coll, s32 *kind)
+sb32 grInishiePowerBlockCheckGetDamageKind(GObj *item_gobj, GObj *fighter_gobj, GRAttackColl **gr_attack_coll, s32 *kind)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -551,7 +551,7 @@ sb32 grInishiePowerBlockCheckGetDamageKind(GObj *item_gobj, GObj *fighter_gobj, 
 
         if (fighter_gobj != ip->damage_gobj)
         {
-            *gr_atk_coll = gGRCommonStruct.inishie.gr_atk_coll;
+            *gr_attack_coll = gGRCommonStruct.inishie.gr_attack_coll;
             *kind = nGMHitEnvironmentPowerBlock;
 
             return TRUE;

@@ -184,11 +184,11 @@ void itRShellSpinUpdateFollowPlayer(GObj *item_gobj, GObj *fighter_gobj)
                 ip->physics.vel_air.x = ip->lr * ITRSHELL_CLAMP_VEL_X;
             }
         }
-        if (ip->atk_coll.atk_state == nGMAttackStateOff)
+        if (ip->attack_coll.attack_state == nGMAttackStateOff)
         {
             if (ABSF(ip->physics.vel_air.x) <= ITRSHELL_HIT_INITVEL_X)
             {
-                ip->atk_coll.atk_state = nGMAttackStateNew;
+                ip->attack_coll.attack_state = nGMAttackStateNew;
 
                 itProcessUpdateHitPositions(item_gobj);
             }
@@ -243,7 +243,7 @@ void itRShellSpinUpdateGFX(GObj *item_gobj)
     {
         Vec3f pos = dobj->translate.vec.f;
 
-        pos.y += ip->attr->obj_coll_bottom;
+        pos.y += ip->attr->object_coll_bottom;
 
         efManagerDustLightMakeEffect(&pos, ip->lr, 1.0F);
 
@@ -329,15 +329,15 @@ void itRShellCommonSetStatusWaitOrSpin(GObj *item_gobj)
 
         itMainClearOwnerStats(item_gobj);
 
-        ip->dmg_coll.hitstatus = nGMHitStatusNormal;
-        ip->atk_coll.atk_state = nGMAttackStateOff;
+        ip->damage_coll.hitstatus = nGMHitStatusNormal;
+        ip->attack_coll.attack_state = nGMAttackStateOff;
 
         itRShellCommonClearAnim(item_gobj);
         itMainSetItemStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusWait);
     }
     else if (ip->item_vars.shell.is_damage != FALSE)
     {
-        ip->atk_coll.atk_state = nGMAttackStateNew;
+        ip->attack_coll.attack_state = nGMAttackStateNew;
 
         itProcessUpdateHitPositions(item_gobj);
         itRShellSpinSetStatus(item_gobj);
@@ -350,8 +350,8 @@ void itRShellCommonSetStatusWaitOrSpin(GObj *item_gobj)
 
         itMainClearOwnerStats(item_gobj);
 
-        ip->dmg_coll.hitstatus = nGMHitStatusNormal;
-        ip->atk_coll.atk_state = nGMAttackStateOff;
+        ip->damage_coll.hitstatus = nGMHitStatusNormal;
+        ip->attack_coll.attack_state = nGMAttackStateOff;
 
         itRShellCommonClearAnim(item_gobj);
         itMainSetItemStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusWait);
@@ -371,7 +371,7 @@ void itRShellFallSetStatus(GObj *item_gobj)
 
     ip->is_allow_pickup = FALSE;
 
-    ip->dmg_coll.hitstatus = nGMHitStatusNormal;
+    ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
     itMapSetAir(ip);
     itMainSetItemStatus(item_gobj, dITRShellStatusDescs, nITRShellStatusFall);
@@ -388,7 +388,7 @@ sb32 itRShellCommonProcDamage(GObj *item_gobj)
     {
         ip->item_vars.shell.is_damage = TRUE;
 
-        ip->atk_coll.atk_state = nGMAttackStateNew;
+        ip->attack_coll.attack_state = nGMAttackStateNew;
 
         itProcessUpdateHitPositions(item_gobj);
         itMainCopyDamageStats(item_gobj);
@@ -403,7 +403,7 @@ sb32 itRShellCommonProcDamage(GObj *item_gobj)
     {
         ip->physics.vel_air.x = 0.0F;
 
-        ip->atk_coll.atk_state = nGMAttackStateOff;
+        ip->attack_coll.attack_state = nGMAttackStateOff;
     }
     return FALSE;
 }
@@ -494,7 +494,7 @@ void itRShellSpinCheckCollisionEdge(GObj *item_gobj)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x >= (joint->translate.vec.f.x - attr->obj_coll_width))
+            if (pos.x >= (joint->translate.vec.f.x - attr->object_coll_width))
             {
                 itRShellSpinEdgeInvertVelLR(item_gobj, 1);
             }
@@ -503,7 +503,7 @@ void itRShellSpinCheckCollisionEdge(GObj *item_gobj)
         {
             mpCollisionGetLREdgeRight(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x <= (joint->translate.vec.f.x + attr->obj_coll_width))
+            if (pos.x <= (joint->translate.vec.f.x + attr->object_coll_width))
             {
                 itRShellSpinEdgeInvertVelLR(item_gobj, 0);
             }
@@ -557,7 +557,7 @@ sb32 itRShellCommonProcHit(GObj *item_gobj)
     {
         return TRUE;
     }
-    ip->dmg_coll.hitstatus = nGMHitStatusNormal;
+    ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
     ip->item_vars.shell.health = mtTrigGetRandomIntRange(ITRSHELL_HEALTH_MAX);
 
@@ -589,7 +589,7 @@ sb32 itRShellSpinProcDamage(GObj *item_gobj)
 
     if (ABSF(ip->physics.vel_air.x) > ITRSHELL_STOP_VEL_X)
     {
-        ip->atk_coll.atk_state = nGMAttackStateNew;
+        ip->attack_coll.attack_state = nGMAttackStateNew;
 
         itProcessUpdateHitPositions(item_gobj);
         itMainCopyDamageStats(item_gobj);
@@ -597,7 +597,7 @@ sb32 itRShellSpinProcDamage(GObj *item_gobj)
     }
     else
     {
-        ip->atk_coll.atk_state = nGMAttackStateOff;
+        ip->attack_coll.attack_state = nGMAttackStateOff;
     }
     return FALSE;
 }
@@ -703,7 +703,7 @@ GObj* itRShellMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip = itGetStruct(item_gobj);
 
-        ip->atk_coll.can_rehit_shield = TRUE;
+        ip->attack_coll.can_rehit_shield = TRUE;
 
         ip->item_vars.shell.health = 1;
         ip->item_vars.shell.is_setup_vars = FALSE;

@@ -40,11 +40,11 @@ struct WPAttributes // Moreso hitbox stuff
     MObjSub ***p_mobjsubs;                     // Triple pointer???
     AObjEvent32 **anim_joints;
     AObjEvent32 ***p_matanim_joints;
-    Vec3h atk_offsets[2];
-    s16 obj_coll_top;
-    s16 obj_coll_center;
-    s16 obj_coll_bottom;
-    s16 obj_coll_width;
+    Vec3h attack_offsets[2];
+    s16 object_coll_top;
+    s16 object_coll_center;
+    s16 object_coll_bottom;
+    s16 object_coll_width;
     u16 size;
     s32 angle : 10;
     u32 knockback_scale : 10;
@@ -52,7 +52,7 @@ struct WPAttributes // Moreso hitbox stuff
     u32 element : 4;
     u32 knockback_weight : 10;
     s32 shield_damage : 8;
-    u32 atk_count : 2;
+    u32 attack_count : 2;
     ub32 can_setoff : 1;
     u32 sfx : 10;
     u32 priority : 3;
@@ -80,7 +80,7 @@ struct WPAttackPos
 // Weapon's hitbox parameters
 struct WPAttackColl
 {
-    s32 atk_state;                                          // 0 = disabled, 1 = new hitbox, 2 and 3 = interpolate/copy current position to previous
+    s32 attack_state;                                          // 0 = disabled, 1 = new hitbox, 2 and 3 = interpolate/copy current position to previous
     s32 damage;                                             // Hitbox base damage in %
     f32 stale;                                              // Stale move negation multiplier
     s32 element;                                            // Hitbox hit effect
@@ -107,9 +107,9 @@ struct WPAttackColl
     u16 motion_count;                                       // Motion count used for stale move negation queues
     GMStatFlags stat_flags;                                 // Weapon's status flags
     u16 stat_count;                                         // Weapon's status update count
-    s32 atk_count;                                          // Weapon's hitbox count
-    WPAttackPos atk_pos[WEAPON_ATKCOLL_NUM_MAX];  	        // Weapon's hitbox world positions
-    GMAttackRecord atk_records[GMATKRECORD_NUM_MAX];        // Weapon's record of interacted targets
+    s32 attack_count;                                          // Weapon's hitbox count
+    WPAttackPos attack_pos[WEAPON_ATKCOLL_NUM_MAX];  	        // Weapon's hitbox world positions
+    GMAttackRecord attack_records[GMATKRECORD_NUM_MAX];        // Weapon's record of interacted targets
 };
 
 // Main weapon struct
@@ -135,7 +135,7 @@ struct WPStruct
     MPCollData coll_data;               // Weapon's collision data
     sb32 ga;                            // Ground or air bool
 
-    WPAttackColl atk_coll;               // Weapon's hitbox
+    WPAttackColl attack_coll;               // Weapon's hitbox
 
     s32 hit_normal_damage;              // Damage applied to entity this weapon has hit
     s32 hit_refresh_damage;             // Damage applied to entity this item has hit, if rehit is possible?

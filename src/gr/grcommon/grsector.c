@@ -568,7 +568,7 @@ sb32 grSectorArwingWeaponLaser2DProcHit(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->atk_coll.damage);
+    efManagerImpactShockMakeEffect(&DObjGetStruct(weapon_gobj)->translate.vec.f, wp->attack_coll.damage);
 
     return TRUE;
 }
@@ -729,13 +729,13 @@ void grSectorArwingWeaponLaserExplodeInitWeaponVars(GObj *weapon_gobj)
 
     wp->lifetime = 16;
 
-    wp->atk_coll.can_reflect = FALSE;
-    wp->atk_coll.can_absorb = TRUE;
-    wp->atk_coll.can_shield = FALSE;
+    wp->attack_coll.can_reflect = FALSE;
+    wp->attack_coll.can_absorb = TRUE;
+    wp->attack_coll.can_shield = FALSE;
 
     wp->physics.vel_air.x = wp->physics.vel_air.y = wp->physics.vel_air.z = 0.0F;
 
-    wp->atk_coll.size = 200.0F;
+    wp->attack_coll.size = 200.0F;
 
     DObjGetStruct(weapon_gobj)->display_list = NULL;
 

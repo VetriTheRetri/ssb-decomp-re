@@ -87,19 +87,19 @@ void wpBossBulletExplodeInitWeaponVars(GObj *weapon_gobj)
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
 
-    wp->atk_coll.fgm_id = nSYAudioFGMExplodeL;
+    wp->attack_coll.fgm_id = nSYAudioFGMExplodeL;
 
-    wp->atk_coll.can_rehit_item = TRUE;
-    wp->atk_coll.can_hop = FALSE;
-    wp->atk_coll.can_reflect = FALSE;
+    wp->attack_coll.can_rehit_item = TRUE;
+    wp->attack_coll.can_hop = FALSE;
+    wp->attack_coll.can_reflect = FALSE;
 
-    wp->atk_coll.element = nGMHitElementFire;
+    wp->attack_coll.element = nGMHitElementFire;
 
     wp->lifetime = WPYUBIBULLET_EXPLODE_LIFETIME;
 
     wp->physics.vel_air.x = wp->physics.vel_air.y = wp->physics.vel_air.z = 0.0F;
 
-    wp->atk_coll.size = WPYUBIBULLET_EXPLODE_SIZE;
+    wp->attack_coll.size = WPYUBIBULLET_EXPLODE_SIZE;
 
     DObjGetStruct(weapon_gobj)->display_ptr = NULL;
 

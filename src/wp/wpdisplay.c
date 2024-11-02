@@ -28,13 +28,13 @@ syColorRGB dWPRenderPKThunderEnvColors[/* */] = { { 0x3A, 0x00, 0x83 }, { 0x5B, 
 void wpDisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
-    WPAttackColl *atk_coll = &wp->atk_coll;
+    WPAttackColl *attack_coll = &wp->attack_coll;
     gsMtxStore mtx_store;
     s32 i;
 
-    for (i = 0; i < atk_coll->atk_count; i++)
+    for (i = 0; i < attack_coll->attack_count; i++)
     {
-        if ((atk_coll->atk_state != nGMAttackStateOff) && (atk_coll->atk_state != nGMAttackStateNew))
+        if ((attack_coll->attack_state != nGMAttackStateOff) && (attack_coll->attack_state != nGMAttackStateNew))
         {
             gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
@@ -50,17 +50,17 @@ void wpDisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
                 gDPSetEnvColor(gSYTaskmanDLHeads[0]++, 0xB0, 0x00, 0x00, 0xFF);
                 gDPSetBlendColor(gSYTaskmanDLHeads[0]++, 0x00, 0x00, 0x00, 0x00);
             }
-            if (atk_coll->atk_state == nGMAttackStateInterpolate)
+            if (attack_coll->attack_state == nGMAttackStateInterpolate)
             {
                 syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                syMatrixTranslate(mtx_store.gbi, atk_coll->atk_pos[i].pos_prev.x, atk_coll->atk_pos[i].pos_prev.y, atk_coll->atk_pos[i].pos_prev.z);
+                syMatrixTranslate(mtx_store.gbi, attack_coll->attack_pos[i].pos_prev.x, attack_coll->attack_pos[i].pos_prev.y, attack_coll->attack_pos[i].pos_prev.z);
 
                 gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
                 syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-                syMatrixSca(mtx_store.gbi, atk_coll->size / 15.0F, atk_coll->size / 15.0F, atk_coll->size / 15.0F);
+                syMatrixSca(mtx_store.gbi, attack_coll->size / 15.0F, attack_coll->size / 15.0F, attack_coll->size / 15.0F);
 
                 gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -70,17 +70,17 @@ void wpDisplayHitCollisions(GObj *weapon_gobj) // Render weapon hitboxes
             }
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixTranslate(mtx_store.gbi, atk_coll->atk_pos[i].pos_curr.x, atk_coll->atk_pos[i].pos_curr.y, atk_coll->atk_pos[i].pos_curr.z);
+            syMatrixTranslate(mtx_store.gbi, attack_coll->attack_pos[i].pos_curr.x, attack_coll->attack_pos[i].pos_curr.y, attack_coll->attack_pos[i].pos_curr.z);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixSca(mtx_store.gbi, atk_coll->size / 15.0F, atk_coll->size / 15.0F, atk_coll->size / 15.0F);
+            syMatrixSca(mtx_store.gbi, attack_coll->size / 15.0F, attack_coll->size / 15.0F, attack_coll->size / 15.0F);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
-            if (atk_coll->atk_state == nGMAttackStateInterpolate)
+            if (attack_coll->attack_state == nGMAttackStateInterpolate)
             {
                 gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainHitCollisionBlendDL);
             }
@@ -96,20 +96,20 @@ void wpDisplayMapCollisions(GObj *weapon_gobj) // Render weapon ECB?
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f *translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
-    MPObjectColl *obj_coll = &wp->coll_data.obj_coll;
+    MPObjectColl *object_coll = &wp->coll_data.object_coll;
     gsMtxStore mtx_store;
 
     gDPPipeSync(gSYTaskmanDLHeads[1]++);
 
     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-    syMatrixTranslate(mtx_store.gbi, translate->x, translate->y + obj_coll->bottom, translate->z);
+    syMatrixTranslate(mtx_store.gbi, translate->x, translate->y + object_coll->bottom, translate->z);
 
     gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-    syMatrixSca(mtx_store.gbi, obj_coll->width / 30.0F, (obj_coll->center - obj_coll->bottom) / 30.0F, 1.0F);
+    syMatrixSca(mtx_store.gbi, object_coll->width / 30.0F, (object_coll->center - object_coll->bottom) / 30.0F, 1.0F);
 
     gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -119,13 +119,13 @@ void wpDisplayMapCollisions(GObj *weapon_gobj) // Render weapon ECB?
 
     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-    syMatrixTranslate(mtx_store.gbi, translate->x, translate->y + obj_coll->center, translate->z);
+    syMatrixTranslate(mtx_store.gbi, translate->x, translate->y + object_coll->center, translate->z);
 
     gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-    syMatrixSca(mtx_store.gbi, obj_coll->width / 30.0F, (obj_coll->top - obj_coll->center) / 30.0F, 1.0F);
+    syMatrixSca(mtx_store.gbi, object_coll->width / 30.0F, (object_coll->top - object_coll->center) / 30.0F, 1.0F);
 
     gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -169,7 +169,7 @@ void wpDisplayMain(GObj *weapon_gobj, void(*func_display)(GObj*))
 
         wpDisplayMapCollisions(weapon_gobj);
     }
-    else if ((wp->display_mode == nDBDisplayModeMaster) || (wp->atk_coll.atk_state == nGMAttackStateOff))
+    else if ((wp->display_mode == nDBDisplayModeMaster) || (wp->attack_coll.attack_state == nGMAttackStateOff))
     {
         wpDisplayDrawNormal();
 
@@ -226,7 +226,7 @@ void wpDisplayPKThunder(GObj *weapon_gobj)
 
         wpDisplayMapCollisions(weapon_gobj);
     }
-    else if ((wp->display_mode == nDBDisplayModeMaster) || (wp->atk_coll.atk_state == nGMAttackStateOff))
+    else if ((wp->display_mode == nDBDisplayModeMaster) || (wp->attack_coll.attack_state == nGMAttackStateOff))
     {
         wpDisplayDrawNormal();
 

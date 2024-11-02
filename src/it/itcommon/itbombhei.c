@@ -211,7 +211,7 @@ void itBombHeiCommonSetExplode(GObj *item_gobj, u8 unused_arg)
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_HIDDEN;
 
-    ip->atk_coll.fgm_id = nSYAudioFGMExplodeL;
+    ip->attack_coll.fgm_id = nSYAudioFGMExplodeL;
 
     itMainRefreshAtk(item_gobj);
     itMainClearOwnerStats(item_gobj);
@@ -254,7 +254,7 @@ void itBombHeiCommonCheckMakeDustEffect(GObj *item_gobj, u8 override)
     {
         Vec3f pos = dobj->translate.vec.f;
 
-        pos.y += attr->obj_coll_bottom;
+        pos.y += attr->object_coll_bottom;
 
         efManagerDustHeavyDoubleMakeEffect(&pos, ip->lr, 1.0F);
     }
@@ -265,7 +265,7 @@ void itBombHeiCommonSetHitStatusNormal(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->dmg_coll.hitstatus = nGMHitStatusNormal;
+    ip->damage_coll.hitstatus = nGMHitStatusNormal;
 }
 
 // 0x80177218
@@ -273,7 +273,7 @@ void itBombHeiCommonSetHitStatusNone(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->dmg_coll.hitstatus = nGMHitStatusNone;
+    ip->damage_coll.hitstatus = nGMHitStatusNone;
 }
 
 // 0x80177224
@@ -472,7 +472,7 @@ sb32 itBombHeiWalkProcUpdate(GObj *item_gobj)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x >= (dobj->translate.vec.f.x - attr->obj_coll_width))
+            if (pos.x >= (dobj->translate.vec.f.x - attr->object_coll_width))
             {
                 itBombHeiCommonSetWalkLR(item_gobj, 1);
             }
@@ -481,7 +481,7 @@ sb32 itBombHeiWalkProcUpdate(GObj *item_gobj)
         {
             mpCollisionGetLREdgeRight(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x <= (dobj->translate.vec.f.x + attr->obj_coll_width))
+            if (pos.x <= (dobj->translate.vec.f.x + attr->object_coll_width))
             {
                 itBombHeiCommonSetWalkLR(item_gobj, 0);
             }
@@ -545,7 +545,7 @@ void itBombHeiWalkInitItemVars(GObj *item_gobj)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x >= (dobj->translate.vec.f.x - attr->obj_coll_width))
+            if (pos.x >= (dobj->translate.vec.f.x - attr->object_coll_width))
             {
                 itBombHeiCommonSetWalkLR(item_gobj, 1);
             }
@@ -554,7 +554,7 @@ void itBombHeiWalkInitItemVars(GObj *item_gobj)
         {
             mpCollisionGetLREdgeRight(ip->coll_data.ground_line_id, &pos);
 
-            if (pos.x <= (dobj->translate.vec.f.x + attr->obj_coll_width))
+            if (pos.x <= (dobj->translate.vec.f.x + attr->object_coll_width))
             {
                 itBombHeiCommonSetWalkLR(item_gobj, 0);
             }
@@ -593,16 +593,16 @@ void itBombHeiCommonUpdateAttackEvent(GObj *item_gobj)
 
     if (ip->multi == ev[ip->event_id].timer)
     {
-        ip->atk_coll.angle = ev[ip->event_id].angle;
-        ip->atk_coll.damage = ev[ip->event_id].damage;
-        ip->atk_coll.size = ev[ip->event_id].size;
+        ip->attack_coll.angle = ev[ip->event_id].angle;
+        ip->attack_coll.damage = ev[ip->event_id].damage;
+        ip->attack_coll.size = ev[ip->event_id].size;
 
-        ip->atk_coll.can_rehit_item = TRUE;
-        ip->atk_coll.can_hop = FALSE;
-        ip->atk_coll.can_reflect = FALSE;
-        ip->atk_coll.can_setoff = FALSE;
+        ip->attack_coll.can_rehit_item = TRUE;
+        ip->attack_coll.can_hop = FALSE;
+        ip->attack_coll.can_reflect = FALSE;
+        ip->attack_coll.can_setoff = FALSE;
 
-        ip->atk_coll.element = nGMHitElementFire;
+        ip->attack_coll.element = nGMHitElementFire;
 
         ip->event_id++;
 
@@ -645,7 +645,7 @@ void itBombHeiExplodeInitItemVars(GObj *item_gobj)
 
     ip->multi = 0;
 
-    ip->atk_coll.throw_mul = ITEM_THROW_DEFAULT;
+    ip->attack_coll.throw_mul = ITEM_THROW_DEFAULT;
 
     ip->event_id = 0;
 

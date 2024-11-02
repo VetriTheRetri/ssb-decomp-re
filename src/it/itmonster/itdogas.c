@@ -268,7 +268,7 @@ GObj* itDogasMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip = itGetStruct(item_gobj);
 
-        dobj->translate.vec.f.y -= ip->attr->obj_coll_bottom;
+        dobj->translate.vec.f.y -= ip->attr->object_coll_bottom;
 
         ip->multi = ITMONSTER_RISE_STOP_WAIT;
 
@@ -287,7 +287,7 @@ sb32 itDogasWeaponSmogProcUpdate(GObj *weapon_gobj)
     WPStruct *wp = wpGetStruct(weapon_gobj);
     DObj *dobj = DObjGetStruct(weapon_gobj)->child;
 
-    wp->atk_coll.size = dobj->scale.vec.f.x * wp->weapon_vars.smog.attr->size;
+    wp->attack_coll.size = dobj->scale.vec.f.x * wp->weapon_vars.smog.attr->size;
 
     if (wpMainDecLifeCheckExpire(wp) != FALSE)
     {

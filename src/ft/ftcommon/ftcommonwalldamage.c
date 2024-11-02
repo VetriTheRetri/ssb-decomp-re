@@ -71,8 +71,8 @@ sb32 ftCommonWallDamageCheckGoto(GObj *fighter_gobj)
 
     if (fp->status_vars.common.damage.coll_mask_curr & MPCOLL_FLAG_LWALL)
     {
-        pos.x += fp->coll_data.obj_coll.width;
-        pos.y += fp->coll_data.obj_coll.center;
+        pos.x += fp->coll_data.object_coll.width;
+        pos.y += fp->coll_data.object_coll.center;
 
         ftCommonWallDamageSetStatus(fighter_gobj, &fp->coll_data.lwall_angle, &pos);
 
@@ -80,8 +80,8 @@ sb32 ftCommonWallDamageCheckGoto(GObj *fighter_gobj)
     }
     else if (fp->status_vars.common.damage.coll_mask_curr & MPCOLL_FLAG_RWALL)
     {
-        pos.x -= fp->coll_data.obj_coll.width;
-        pos.y += fp->coll_data.obj_coll.center;
+        pos.x -= fp->coll_data.object_coll.width;
+        pos.y += fp->coll_data.object_coll.center;
 
         ftCommonWallDamageSetStatus(fighter_gobj, &fp->coll_data.rwall_angle, &pos);
 
@@ -89,7 +89,7 @@ sb32 ftCommonWallDamageCheckGoto(GObj *fighter_gobj)
     }
     else if (fp->status_vars.common.damage.coll_mask_curr & MPCOLL_FLAG_CEIL)
     {
-        pos.y += fp->coll_data.obj_coll.top;
+        pos.y += fp->coll_data.object_coll.top;
 
         ftCommonWallDamageSetStatus(fighter_gobj, &fp->coll_data.ceil_angle, &pos);
 

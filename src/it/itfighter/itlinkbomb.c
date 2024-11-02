@@ -194,7 +194,7 @@ void itLinkBombExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 
 	DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_HIDDEN;
 
-	ip->atk_coll.fgm_id = nSYAudioFGMExplodeL;
+	ip->attack_coll.fgm_id = nSYAudioFGMExplodeL;
 
 	itMainRefreshAtk(item_gobj);
 	itLinkBombExplodeSetStatus(item_gobj);
@@ -209,7 +209,7 @@ void func_ovl3_80185B18(GObj *item_gobj)
 	DObj *dobj = DObjGetStruct(item_gobj);
 	Vec3f pos = dobj->translate.vec.f;
 
-	pos.y += attr->obj_coll_bottom;
+	pos.y += attr->object_coll_bottom;
 
 	efManagerDustHeavyDoubleMakeEffect(&pos, ip->lr, 1.0F);
 }
@@ -261,7 +261,7 @@ void itLinkBombCommonSetHitStatusNormal(GObj *item_gobj)
 {
 	ITStruct *ip = itGetStruct(item_gobj);
 
-	ip->dmg_coll.hitstatus = nGMHitStatusNormal;
+	ip->damage_coll.hitstatus = nGMHitStatusNormal;
 }
 
 // 0x80185CE4
@@ -269,7 +269,7 @@ void itLinkBombCommonSetHitStatusNone(GObj *item_gobj)
 {
 	ITStruct *ip = itGetStruct(item_gobj);
 
-	ip->dmg_coll.hitstatus = nGMHitStatusNone;
+	ip->damage_coll.hitstatus = nGMHitStatusNone;
 }
 
 // 0x80185CF0
@@ -353,7 +353,7 @@ void itLinkBombWaitSetStatus(GObj *item_gobj)
 {
 	ITStruct *ip = itGetStruct(item_gobj);
 
-	ip->atk_coll.atk_state = nGMAttackStateOff;
+	ip->attack_coll.attack_state = nGMAttackStateOff;
 
 	ip->is_allow_pickup = TRUE;
 
@@ -528,16 +528,16 @@ void itLinkBombExplodeUpdateAttackEvent(GObj *item_gobj)
 
 	if (ip->multi == ev[ip->event_id].timer)
 	{
-		ip->atk_coll.angle = ev[ip->event_id].angle;
-		ip->atk_coll.damage = ev[ip->event_id].damage;
-		ip->atk_coll.size = ev[ip->event_id].size;
+		ip->attack_coll.angle = ev[ip->event_id].angle;
+		ip->attack_coll.damage = ev[ip->event_id].damage;
+		ip->attack_coll.size = ev[ip->event_id].size;
 
-		ip->atk_coll.can_rehit_item = TRUE;
-		ip->atk_coll.can_hop = FALSE;
-		ip->atk_coll.can_reflect = FALSE;
-		ip->atk_coll.can_setoff = FALSE;
+		ip->attack_coll.can_rehit_item = TRUE;
+		ip->attack_coll.can_hop = FALSE;
+		ip->attack_coll.can_reflect = FALSE;
+		ip->attack_coll.can_setoff = FALSE;
 
-		ip->atk_coll.element = nGMHitElementFire;
+		ip->attack_coll.element = nGMHitElementFire;
 
 		ip->event_id++;
 
@@ -571,7 +571,7 @@ void itLinkBombExplodeInITAttackColl(GObj *item_gobj)
 	ip->multi = 0;
 	ip->event_id = 0;
 
-	ip->atk_coll.throw_mul = 1.0F;
+	ip->attack_coll.throw_mul = 1.0F;
 
 	itLinkBombExplodeUpdateAttackEvent(item_gobj);
 }
@@ -621,7 +621,7 @@ GObj *itLinkBombMakeItem(GObj *fighter_gobj, Vec3f *pos, Vec3f *vel)
 		ip->item_vars.link_bomb.scale_id = 0;
 		ip->item_vars.link_bomb.scale_int = ITLINKBOMB_SCALE_INT;
 
-		ip->atk_coll.can_rehit_shield = TRUE;
+		ip->attack_coll.can_rehit_shield = TRUE;
 
 		ip->physics.vel_air.x = ip->physics.vel_air.y = ip->physics.vel_air.z = 0.0F;
 

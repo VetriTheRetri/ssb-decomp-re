@@ -96,7 +96,7 @@ void itPippiCommonSelectMonster(GObj *item_gobj)
     }
     if ((kind == nITKindPippi) || (kind == nITKindTosakinto) || (kind == nITKindMLucky))
     {
-        ip->atk_coll.atk_state = nGMAttackStateOff;
+        ip->attack_coll.attack_state = nGMAttackStateOff;
     }
     if (kind == nITKindSawamura)
     {
@@ -137,7 +137,7 @@ void itPippiCommonFuncDisplay(GObj *item_gobj)
             gcDrawDObjTreeForGObj(item_gobj);
             itDisplayMapCollisions(item_gobj);
         }
-        else if ((ip->dmg_coll.hitstatus == nGMHitStatusNone) && (ip->atk_coll.atk_state == nGMAttackStateOff))
+        else if ((ip->damage_coll.hitstatus == nGMHitStatusNone) && (ip->attack_coll.attack_state == nGMAttackStateOff))
         {
             gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
@@ -170,7 +170,7 @@ void itPippiCommonMoveDLFuncDisplay(GObj *item_gobj)
             gcDrawDObjTreeForGObj(item_gobj);
             itDisplayMapCollisions(item_gobj);
         }
-        else if ((ip->dmg_coll.hitstatus == nGMHitStatusNone) && (ip->atk_coll.atk_state == nGMAttackStateOff))
+        else if ((ip->damage_coll.hitstatus == nGMHitStatusNone) && (ip->attack_coll.attack_state == nGMAttackStateOff))
         {
             gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
@@ -228,7 +228,7 @@ GObj* itPippiMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f = *pos;
 
-        dobj->translate.vec.f.y -= ip->attr->obj_coll_bottom;
+        dobj->translate.vec.f.y -= ip->attr->object_coll_bottom;
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITPippiDataStart), 0.0F);
         func_800269C0_275C0(nSYAudioVoiceMBallPippiAppear);

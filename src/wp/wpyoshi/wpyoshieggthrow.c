@@ -77,12 +77,12 @@ void wpYoshiEggHitInitWeaponVars(GObj *weapon_gobj) // Egg Throw explodes from l
 
     wp->lifetime = WPEGGTHROW_EXPLODE_LIFETIME;
 
-    wp->atk_coll.can_hop = FALSE;
-    wp->atk_coll.can_reflect = FALSE;
+    wp->attack_coll.can_hop = FALSE;
+    wp->attack_coll.can_reflect = FALSE;
 
     wp->physics.vel_air.x = wp->physics.vel_air.y = wp->physics.vel_air.z = 0.0F;
 
-    wp->atk_coll.size = WPEGGTHROW_EXPLODE_SIZE;
+    wp->attack_coll.size = WPEGGTHROW_EXPLODE_SIZE;
 
     DObjGetStruct(weapon_gobj)->display_list = NULL;
 
@@ -102,12 +102,12 @@ void wpYoshiEggExpireInitWeaponVars(GObj *weapon_gobj) // Egg Throw explodes fro
 
     wp->lifetime = WPEGGTHROW_EXPLODE_LIFETIME;
 
-    wp->atk_coll.can_reflect = FALSE;
-    wp->atk_coll.can_shield = FALSE;
+    wp->attack_coll.can_reflect = FALSE;
+    wp->attack_coll.can_shield = FALSE;
 
     wp->physics.vel_air.x = wp->physics.vel_air.y = wp->physics.vel_air.z = 0.0F;
 
-    wp->atk_coll.size = WPEGGTHROW_EXPLODE_SIZE;
+    wp->attack_coll.size = WPEGGTHROW_EXPLODE_SIZE;
 
     DObjGetStruct(weapon_gobj)->display_list = NULL;
 
@@ -149,7 +149,7 @@ void wpYoshiEggThrowInitWeaponVars(GObj *weapon_gobj)
 
     DObjGetStruct(weapon_gobj)->translate.vec.f.z = 0.0F;
 
-    wp->atk_coll.atk_state = nGMAttackStateNew;
+    wp->attack_coll.attack_state = nGMAttackStateNew;
 
     wpProcessUpdateHitPositions(weapon_gobj);
 }
@@ -281,7 +281,7 @@ GObj* wpYoshiEggThrowMakeWeapon(GObj *fighter_gobj, Vec3f *pos)
 
     wp->lifetime = WPEGGTHROW_LIFETIME;
 
-    wp->atk_coll.atk_state = nGMAttackStateOff;
+    wp->attack_coll.attack_state = nGMAttackStateOff;
 
     wp->is_camera_follow = TRUE;
 

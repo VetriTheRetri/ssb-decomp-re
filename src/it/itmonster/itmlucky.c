@@ -126,7 +126,7 @@ void itMLuckyMakeEggInitItemVars(GObj *item_gobj)
         gcAddDObjAnimJoint(dobj->child, itGetPData(ip, lITLuckyDataStart, lITLuckyAnimJoint), 0.0F);
         gcPlayAnimAll(item_gobj);
     }
-    ip->dmg_coll.hitstatus = nGMHitStatusNormal;
+    ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
     ip->item_vars.mlucky.egg_spawn_wait = ITMLUCKY_EGG_SPAWN_WAIT_CONST;
 
@@ -315,7 +315,7 @@ void itMLuckyDisappearSetStatus(GObj *item_gobj)
 
     ip->item_vars.mlucky.lifetime = ITMLUCKY_LIFETIME;
 
-    ip->dmg_coll.hitstatus = nGMHitStatusNone;
+    ip->damage_coll.hitstatus = nGMHitStatusNone;
 
     itMainSetItemStatus(item_gobj, dITMLuckyStatusDescs, nITMLuckyStatusDisappear);
 }
@@ -370,7 +370,7 @@ GObj* itMLuckyMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
         ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        dobj->translate.vec.f.y -= ip->attr->obj_coll_bottom;
+        dobj->translate.vec.f.y -= ip->attr->object_coll_bottom;
 
         gcAddDObjAnimJoint(dobj->child, itGetMonsterAnimNode(ip, lITLuckyDataStart), 0.0F);
     }

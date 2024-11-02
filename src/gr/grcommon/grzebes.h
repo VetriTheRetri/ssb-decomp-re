@@ -15,7 +15,7 @@ extern void grZebesAcidUpdateShake(void);
 extern void grZebesAcidUpdateRise(void);
 extern void grZebesProcUpdate(GObj *ground_gobj);
 extern GObj* grZebesMakeGround(void);
-extern sb32 grZebesAcidCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, GRAttackColl **gr_atk_coll, s32 *kind);
+extern sb32 grZebesAcidCheckGetDamageKind(GObj *ground_gobj, GObj *fighter_gobj, GRAttackColl **gr_attack_coll, s32 *kind);
 extern void grZebesAcidGetLevelInfo(f32 *current, f32 *step);
 
 #endif

@@ -185,7 +185,7 @@ sb32 itSwordThrownProcHit(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->atk_coll.atk_state = nGMAttackStateOff;
+    ip->attack_coll.attack_state = nGMAttackStateOff;
 
     itMainVelSetRebound(item_gobj);
 

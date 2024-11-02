@@ -27,11 +27,11 @@ void ftKirbySpecialNApplyCaptureDamage(GObj *kirby_gobj, GObj *victim_gobj, s32 
 {
     FTStruct *kirby_fp = ftGetStruct(kirby_gobj);
     FTStruct *victim_fp = ftGetStruct(victim_gobj);
-    s32 star_dmg_victim = ftParamGetStaledDamage(kirby_fp->player, damage, kirby_fp->attack_id, kirby_fp->motion_count);
+    s32 star_damage_victim = ftParamGetStaledDamage(kirby_fp->player, damage, kirby_fp->attack_id, kirby_fp->motion_count);
 
-    damage = star_dmg_victim;
+    damage = star_damage_victim;
 
-    ftCommonDamageUpdateDamageColAnim(victim_gobj, ftParamGetCommonKnockback(victim_fp->percent_damage, star_dmg_victim, star_dmg_victim, 0, 100, 0, victim_fp->attr->weight, kirby_fp->handicap, victim_fp->handicap), 0);
+    ftCommonDamageUpdateDamageColAnim(victim_gobj, ftParamGetCommonKnockback(victim_fp->percent_damage, star_damage_victim, star_damage_victim, 0, 100, 0, victim_fp->attr->weight, kirby_fp->handicap, victim_fp->handicap), 0);
     ftParamUpdateDamage(victim_fp, damage);
     ftParamUpdatePlayerBattleStats(kirby_fp->player, victim_fp->player, damage);
     ftParamUpdateStaleQueue(kirby_fp->player, victim_fp->player, kirby_fp->attack_id, kirby_fp->motion_count);

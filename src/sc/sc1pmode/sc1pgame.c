@@ -2172,7 +2172,7 @@ void sc1PGameAppendBonusStats(void)
     s32 damage_jackpot_bak;
     s32 variation;
     s32 special_count;
-    u32 atk_count;
+    u32 attack_count;
     u8 variation_order[SC1PGAME_STAGE_MAX_VARIATIONS_COUNT]; // Full array of 12? Almost half of this goes unused, but stack suggests this is correct.
     s32 i;
 
@@ -2781,17 +2781,17 @@ check_heavy_damage:
         !(gSceneData.bonus_get_mask[1] & SC1PGAME_BONUS_MASK1_SMASHMANIA)
     )
     {
-        atk_count = 0;
+        attack_count = 0;
 
         for (i = nFTStatusAttackIDAttackStart; i < ARRAY_COUNT(gSC1PGameBonusAttackIDCount); i++)
         {
-            atk_count += gSC1PGameBonusAttackIDCount[i];
+            attack_count += gSC1PGameBonusAttackIDCount[i];
         }
-        if (atk_count != 0)
+        if (attack_count != 0)
         {
             for (i = nFTStatusAttackIDAttackStart; i < ARRAY_COUNT(gSC1PGameBonusAttackIDCount); i++)
             {
-                if ((gSC1PGameBonusAttackIDCount[i] / (f32)atk_count) >= F_PCT_TO_DEC(35.0F))
+                if ((gSC1PGameBonusAttackIDCount[i] / (f32)attack_count) >= F_PCT_TO_DEC(35.0F))
                 {
                     // Cheap Shot
                     gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_CHEAPSHOT;

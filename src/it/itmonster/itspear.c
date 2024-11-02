@@ -341,12 +341,12 @@ GObj* itSpearMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ip->atk_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
+        ip->attack_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
 
         ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
         ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;
 
-        dobj->translate.vec.f.y -= ip->attr->obj_coll_bottom;
+        dobj->translate.vec.f.y -= ip->attr->object_coll_bottom;
 
         gcAddDObjAnimJoint(dobj->child, itGetMonsterAnimNode(ip, lITSpearDataStart), 0.0F);
     }

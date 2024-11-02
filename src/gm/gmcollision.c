@@ -777,7 +777,7 @@ loop:
 }
 
 // 0x800EE750
-sb32 gmCollisionTestSphere(Vec3f *pos_curr, Vec3f *pos_prev, f32 hitsize, s32 atk_state, Mtx44f mtx, Vec3f *sphere_offset, Vec3f *sphere_size, Vec3f *arg7, s32 sphit_kind, f32 *p_angle, Vec3f *argA)
+sb32 gmCollisionTestSphere(Vec3f *pos_curr, Vec3f *pos_prev, f32 hitsize, s32 attack_state, Mtx44f mtx, Vec3f *sphere_offset, Vec3f *sphere_size, Vec3f *arg7, s32 sphit_kind, f32 *p_angle, Vec3f *argA)
 {
     // Might be very fake. Maybe not. Spent a whole day trying to match this and finally managed to find a solution using the permuter!
     Vec3f center;
@@ -786,7 +786,7 @@ sb32 gmCollisionTestSphere(Vec3f *pos_curr, Vec3f *pos_prev, f32 hitsize, s32 at
     center.y = sphere_size->y + (hitsize / arg7->y);
     center.z = sphere_size->z + (hitsize / arg7->z);
 
-    if ((atk_state == nGMAttackStateTransfer) || (pos_curr->x == pos_prev->x) && (pos_curr->y == pos_prev->y) && (pos_curr->z == pos_prev->z))
+    if ((attack_state == nGMAttackStateTransfer) || (pos_curr->x == pos_prev->x) && (pos_curr->y == pos_prev->y) && (pos_curr->z == pos_prev->z))
     {
         Vec3f copy1 = *pos_curr;
 
@@ -1116,10 +1116,10 @@ loop:
 }
 
 // 0x800EF2D0
-sb32 gmCollisionCheckAttackInFighterRange(Vec3f *atk_position, Vec3f *obj_position, Vec3f *range, f32 size)
+sb32 gmCollisionCheckAttackInFighterRange(Vec3f *attack_position, Vec3f *obj_position, Vec3f *range, f32 size)
 {
-    f32 distx = atk_position->x - obj_position->x;
-    f32 disty = atk_position->y - obj_position->y;
+    f32 distx = attack_position->x - obj_position->x;
+    f32 disty = attack_position->y - obj_position->y;
 
     if ((distx < (-range->z - size)) || (distx > (range->z + size)) || (disty < (-range->y - size)) || (disty > (range->x + size)))
     {
@@ -1129,19 +1129,19 @@ sb32 gmCollisionCheckAttackInFighterRange(Vec3f *atk_position, Vec3f *obj_positi
 }
 
 // 0x800EF364
-sb32 gmCollisionCheckFighterInFighterRange(FTAttackColl *atk_coll, GObj *fighter_gobj)
+sb32 gmCollisionCheckFighterInFighterRange(FTAttackColl *attack_coll, GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTAttributes *attr = fp->attr;
 
-    if (atk_coll->atk_state == nGMAttackStateTransfer)
+    if (attack_coll->attack_state == nGMAttackStateTransfer)
     {
-        return gmCollisionCheckAttackInFighterRange(&atk_coll->pos_curr, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, atk_coll->size);
+        return gmCollisionCheckAttackInFighterRange(&attack_coll->pos_curr, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, attack_coll->size);
     }
     else if
     (
-        (gmCollisionCheckAttackInFighterRange(&atk_coll->pos_curr, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, atk_coll->size) != FALSE)      ||
-        (gmCollisionCheckAttackInFighterRange(&atk_coll->pos_prev, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, atk_coll->size) != FALSE)
+        (gmCollisionCheckAttackInFighterRange(&attack_coll->pos_curr, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, attack_coll->size) != FALSE)      ||
+        (gmCollisionCheckAttackInFighterRange(&attack_coll->pos_prev, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, attack_coll->size) != FALSE)
     )
     {
         return TRUE;
@@ -1150,19 +1150,19 @@ sb32 gmCollisionCheckFighterInFighterRange(FTAttackColl *atk_coll, GObj *fighter
 }
 
 // 0x800EF414
-sb32 gmCollisionCheckWeaponInFighterRange(WPAttackColl *atk_coll, s32 atk_id, GObj *fighter_gobj)
+sb32 gmCollisionCheckWeaponInFighterRange(WPAttackColl *attack_coll, s32 attack_id, GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTAttributes *attr = fp->attr;
 
-    if (atk_coll->atk_state == nGMAttackStateTransfer)
+    if (attack_coll->attack_state == nGMAttackStateTransfer)
     {
-        return gmCollisionCheckAttackInFighterRange(&atk_coll->atk_pos[atk_id].pos_curr, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, atk_coll->size);
+        return gmCollisionCheckAttackInFighterRange(&attack_coll->attack_pos[attack_id].pos_curr, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, attack_coll->size);
     }
     else if
     (
-        (gmCollisionCheckAttackInFighterRange(&atk_coll->atk_pos[atk_id].pos_curr, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, atk_coll->size) != FALSE)      ||
-        (gmCollisionCheckAttackInFighterRange(&atk_coll->atk_pos[atk_id].pos_prev, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, atk_coll->size) != FALSE)
+        (gmCollisionCheckAttackInFighterRange(&attack_coll->attack_pos[attack_id].pos_curr, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, attack_coll->size) != FALSE)      ||
+        (gmCollisionCheckAttackInFighterRange(&attack_coll->attack_pos[attack_id].pos_prev, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, attack_coll->size) != FALSE)
     )
     {
         return TRUE;
@@ -1171,19 +1171,19 @@ sb32 gmCollisionCheckWeaponInFighterRange(WPAttackColl *atk_coll, s32 atk_id, GO
 }
 
 // 0x800EF4F4
-sb32 gmCollisionCheckItemInFighterRange(ITAttackColl *atk_coll, s32 atk_id, GObj *fighter_gobj)
+sb32 gmCollisionCheckItemInFighterRange(ITAttackColl *attack_coll, s32 attack_id, GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTAttributes *attr = fp->attr;
 
-    if (atk_coll->atk_state == nGMAttackStateTransfer)
+    if (attack_coll->attack_state == nGMAttackStateTransfer)
     {
-        return gmCollisionCheckAttackInFighterRange(&atk_coll->atk_pos[atk_id].pos_curr, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, atk_coll->size);
+        return gmCollisionCheckAttackInFighterRange(&attack_coll->attack_pos[attack_id].pos_curr, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, attack_coll->size);
     }
     else if
     (
-        (gmCollisionCheckAttackInFighterRange(&atk_coll->atk_pos[atk_id].pos_curr, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, atk_coll->size) != FALSE)      ||
-        (gmCollisionCheckAttackInFighterRange(&atk_coll->atk_pos[atk_id].pos_prev, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, atk_coll->size) != FALSE)
+        (gmCollisionCheckAttackInFighterRange(&attack_coll->attack_pos[attack_id].pos_curr, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, attack_coll->size) != FALSE)      ||
+        (gmCollisionCheckAttackInFighterRange(&attack_coll->attack_pos[attack_id].pos_prev, &DObjGetStruct(fighter_gobj)->translate.vec.f, &attr->hit_detect_range, attack_coll->size) != FALSE)
     )
     {
         return TRUE;
@@ -1330,20 +1330,20 @@ sb32 func_ovl2_800EF5D4(Vec3f *arg0, Vec3f *arg1, f32 arg2, s32 arg3, Vec3f *arg
 }
 
 // 0x800EFABC - Check if fighter hitbox intersects with other fighter hitbox
-sb32 gmCollisionCheckFighterAttacksCollide(FTAttackColl *atk_coll1, FTAttackColl *atk_coll2)
+sb32 gmCollisionCheckFighterAttacksCollide(FTAttackColl *attack_coll1, FTAttackColl *attack_coll2)
 {
     if 
     (
         func_ovl2_800EF5D4
         (
-            &atk_coll1->pos_curr, 
-            &atk_coll1->pos_prev, 
-            atk_coll1->size, 
-            atk_coll1->atk_state, 
-            &atk_coll2->pos_curr, 
-            &atk_coll2->pos_prev, 
-            atk_coll2->size, 
-            atk_coll2->atk_state
+            &attack_coll1->pos_curr, 
+            &attack_coll1->pos_prev, 
+            attack_coll1->size, 
+            attack_coll1->attack_state, 
+            &attack_coll2->pos_curr, 
+            &attack_coll2->pos_prev, 
+            attack_coll2->size, 
+            attack_coll2->attack_state
 
         ) == FALSE
     )
@@ -1352,36 +1352,36 @@ sb32 gmCollisionCheckFighterAttacksCollide(FTAttackColl *atk_coll1, FTAttackColl
     }
     else func_ovl2_800EE050
     (
-        atk_coll2->atk_state, 
-        &atk_coll2->pos_curr, 
-        &atk_coll2->pos_prev, 
-        &atk_coll2->hit_matrix.unk_fthitmtx_0x0, 
-        atk_coll2->hit_matrix.mtx, 
-        &atk_coll2->hit_matrix.unk_fthitmtx_0x44
+        attack_coll2->attack_state, 
+        &attack_coll2->pos_curr, 
+        &attack_coll2->pos_prev, 
+        &attack_coll2->hit_matrix.unk_fthitmtx_0x0, 
+        attack_coll2->hit_matrix.mtx, 
+        &attack_coll2->hit_matrix.unk_fthitmtx_0x44
     );
 
     return func_ovl2_800EEEAC
     (
-        &atk_coll1->pos_curr,
-        &atk_coll1->pos_prev,
-        atk_coll1->size,
-        atk_coll1->atk_state,
-        atk_coll2->hit_matrix.mtx,
-        atk_coll2->hit_matrix.unk_fthitmtx_0x0,
-        &atk_coll2->pos_curr,
-        atk_coll2->size,
-        atk_coll2->atk_state,
-        atk_coll2->hit_matrix.unk_fthitmtx_0x44
+        &attack_coll1->pos_curr,
+        &attack_coll1->pos_prev,
+        attack_coll1->size,
+        attack_coll1->attack_state,
+        attack_coll2->hit_matrix.mtx,
+        attack_coll2->hit_matrix.unk_fthitmtx_0x0,
+        &attack_coll2->pos_curr,
+        attack_coll2->size,
+        attack_coll2->attack_state,
+        attack_coll2->hit_matrix.unk_fthitmtx_0x44
     );
 }
 
 // 0x800EFBA4 - Check if fighter hitbox intersects with fighter hurtbox
-sb32 gmCollisionCheckFighterAttackDamageCollide(FTAttackColl *atk_coll, FTDamageColl *dmg_coll)
+sb32 gmCollisionCheckFighterAttackDamageCollide(FTAttackColl *attack_coll, FTDamageColl *damage_coll)
 {
     FTParts *parts;
     DObj *dobj;
 
-    dobj = dmg_coll->joint;
+    dobj = damage_coll->joint;
     parts = ftGetParts(dobj);
 
     func_ovl2_800EDE00(dobj);
@@ -1389,31 +1389,31 @@ sb32 gmCollisionCheckFighterAttackDamageCollide(FTAttackColl *atk_coll, FTDamage
 
     return gmCollisionTestRectangle
     (
-        &atk_coll->pos_curr,
-        &atk_coll->pos_prev,
-        atk_coll->size,
-        atk_coll->atk_state,
+        &attack_coll->pos_curr,
+        &attack_coll->pos_prev,
+        attack_coll->size,
+        attack_coll->attack_state,
         parts->unk_dobjtrans_0x9C,
-        &dmg_coll->offset,
-        &dmg_coll->size,
+        &damage_coll->offset,
+        &damage_coll->size,
         &parts->vec_scale
     );
 }
 
 // 0x800EFC20 - Check if item hurtbox intersects with fighter hitbox
-sb32 gmCollisionCheckFighterAttackItemDamageCollide(FTAttackColl *atk_coll, ITDamageColl *dmg_coll, GObj *item_gobj)
+sb32 gmCollisionCheckFighterAttackItemDamageCollide(FTAttackColl *attack_coll, ITDamageColl *damage_coll, GObj *item_gobj)
 {
-    Vec3f dmg_coll_pos;
+    Vec3f damage_coll_pos;
 
-    dmg_coll_pos.x = DObjGetStruct(item_gobj)->translate.vec.f.x + dmg_coll->offset.x;
-    dmg_coll_pos.y = DObjGetStruct(item_gobj)->translate.vec.f.y + dmg_coll->offset.y;
-    dmg_coll_pos.z = DObjGetStruct(item_gobj)->translate.vec.f.z + dmg_coll->offset.z;
+    damage_coll_pos.x = DObjGetStruct(item_gobj)->translate.vec.f.x + damage_coll->offset.x;
+    damage_coll_pos.y = DObjGetStruct(item_gobj)->translate.vec.f.y + damage_coll->offset.y;
+    damage_coll_pos.z = DObjGetStruct(item_gobj)->translate.vec.f.z + damage_coll->offset.z;
 
-    return gmCollisionTestRectangle(&atk_coll->pos_curr, &atk_coll->pos_prev, atk_coll->size, atk_coll->atk_state, NULL, &dmg_coll_pos, &dmg_coll->size, &DObjGetStruct(item_gobj)->scale.vec.f);
+    return gmCollisionTestRectangle(&attack_coll->pos_curr, &attack_coll->pos_prev, attack_coll->size, attack_coll->attack_state, NULL, &damage_coll_pos, &damage_coll->size, &DObjGetStruct(item_gobj)->scale.vec.f);
 }
 
 // 0x800EFCC0 - Check if fighter hitbox intersects with shield
-sb32 gmCollisionCheckFighterAttackShieldCollide(FTAttackColl *atk_coll, GObj *fighter_gobj, DObj *dobj, f32 *p_angle)
+sb32 gmCollisionCheckFighterAttackShieldCollide(FTAttackColl *attack_coll, GObj *fighter_gobj, DObj *dobj, f32 *p_angle)
 {
     FTParts *parts;
     Vec3f sp48;
@@ -1434,10 +1434,10 @@ sb32 gmCollisionCheckFighterAttackShieldCollide(FTAttackColl *atk_coll, GObj *fi
 
     return gmCollisionTestSphere
     (
-        &atk_coll->pos_curr, 
-        &atk_coll->pos_prev, 
-        atk_coll->size, 
-        atk_coll->atk_state, 
+        &attack_coll->pos_curr, 
+        &attack_coll->pos_prev, 
+        attack_coll->size, 
+        attack_coll->attack_state, 
         parts->unk_dobjtrans_0x9C,
         &sp48, 
         &sp3C, 
@@ -1449,20 +1449,20 @@ sb32 gmCollisionCheckFighterAttackShieldCollide(FTAttackColl *atk_coll, GObj *fi
 }
 
 // 0x800EFD70 - Check if weapon hitbox intersects with fighter hitbox
-sb32 gmCollisionCheckWeaponAttackFighterAttackCollide(WPAttackColl *wp_atk_coll, s32 atk_id, FTAttackColl *ft_atk_coll)
+sb32 gmCollisionCheckWeaponAttackFighterAttackCollide(WPAttackColl *wp_attack_coll, s32 attack_id, FTAttackColl *ft_attack_coll)
 {
     if
     (
         func_ovl2_800EF5D4
         (
-            &wp_atk_coll->atk_pos[atk_id].pos_curr,
-            &wp_atk_coll->atk_pos[atk_id].pos_prev,
-            wp_atk_coll->size,
-            wp_atk_coll->atk_state,
-            &ft_atk_coll->pos_curr,
-            &ft_atk_coll->pos_prev,
-            ft_atk_coll->size,
-            ft_atk_coll->atk_state
+            &wp_attack_coll->attack_pos[attack_id].pos_curr,
+            &wp_attack_coll->attack_pos[attack_id].pos_prev,
+            wp_attack_coll->size,
+            wp_attack_coll->attack_state,
+            &ft_attack_coll->pos_curr,
+            &ft_attack_coll->pos_prev,
+            ft_attack_coll->size,
+            ft_attack_coll->attack_state
 
         ) == FALSE
     )
@@ -1471,36 +1471,36 @@ sb32 gmCollisionCheckWeaponAttackFighterAttackCollide(WPAttackColl *wp_atk_coll,
     }
     else func_ovl2_800EE050
     (
-        ft_atk_coll->atk_state,
-        &ft_atk_coll->pos_curr,
-        &ft_atk_coll->pos_prev,
-        &ft_atk_coll->hit_matrix.unk_fthitmtx_0x0,
-        ft_atk_coll->hit_matrix.mtx,
-        &ft_atk_coll->hit_matrix.unk_fthitmtx_0x44
+        ft_attack_coll->attack_state,
+        &ft_attack_coll->pos_curr,
+        &ft_attack_coll->pos_prev,
+        &ft_attack_coll->hit_matrix.unk_fthitmtx_0x0,
+        ft_attack_coll->hit_matrix.mtx,
+        &ft_attack_coll->hit_matrix.unk_fthitmtx_0x44
     );
 
     return func_ovl2_800EEEAC
     (
-        &wp_atk_coll->atk_pos[atk_id].pos_curr,
-        &wp_atk_coll->atk_pos[atk_id].pos_prev,
-        wp_atk_coll->size,
-        wp_atk_coll->atk_state,
-        ft_atk_coll->hit_matrix.mtx,
-        ft_atk_coll->hit_matrix.unk_fthitmtx_0x0,
-        &ft_atk_coll->pos_curr,
-        ft_atk_coll->size,
-        ft_atk_coll->atk_state,
-        ft_atk_coll->hit_matrix.unk_fthitmtx_0x44
+        &wp_attack_coll->attack_pos[attack_id].pos_curr,
+        &wp_attack_coll->attack_pos[attack_id].pos_prev,
+        wp_attack_coll->size,
+        wp_attack_coll->attack_state,
+        ft_attack_coll->hit_matrix.mtx,
+        ft_attack_coll->hit_matrix.unk_fthitmtx_0x0,
+        &ft_attack_coll->pos_curr,
+        ft_attack_coll->size,
+        ft_attack_coll->attack_state,
+        ft_attack_coll->hit_matrix.unk_fthitmtx_0x44
     );
 }
 
 // 0x800EFE6C
-sb32 gmCollisionCheckWeaponAttackFighterDamageCollide(WPAttackColl *atk_coll, s32 atk_id, FTDamageColl *dmg_coll)
+sb32 gmCollisionCheckWeaponAttackFighterDamageCollide(WPAttackColl *attack_coll, s32 attack_id, FTDamageColl *damage_coll)
 {
     FTParts *parts;
     DObj *dobj;
 
-    dobj = dmg_coll->joint;
+    dobj = damage_coll->joint;
     parts = ftGetParts(dobj);
 
     func_ovl2_800EDE00(dobj);
@@ -1508,19 +1508,19 @@ sb32 gmCollisionCheckWeaponAttackFighterDamageCollide(WPAttackColl *atk_coll, s3
 
     return gmCollisionTestRectangle
     (
-        &atk_coll->atk_pos[atk_id].pos_curr,
-        &atk_coll->atk_pos[atk_id].pos_prev,
-        atk_coll->size,
-        atk_coll->atk_state, 
+        &attack_coll->attack_pos[attack_id].pos_curr,
+        &attack_coll->attack_pos[attack_id].pos_prev,
+        attack_coll->size,
+        attack_coll->attack_state, 
         parts->unk_dobjtrans_0x9C, 
-        &dmg_coll->offset, 
-        &dmg_coll->size, 
+        &damage_coll->offset, 
+        &damage_coll->size, 
         &parts->vec_scale
     );
 }
 
 // 0x800EFF00
-sb32 gmCollisionCheckWeaponAttackShieldCollide(WPAttackColl *atk_coll, s32 atk_id, GObj *fighter_gobj, DObj *dobj, f32 *p_angle, Vec3f *vec)
+sb32 gmCollisionCheckWeaponAttackShieldCollide(WPAttackColl *attack_coll, s32 attack_id, GObj *fighter_gobj, DObj *dobj, f32 *p_angle, Vec3f *vec)
 {
     FTParts *parts;
     Vec3f sp58;
@@ -1542,10 +1542,10 @@ sb32 gmCollisionCheckWeaponAttackShieldCollide(WPAttackColl *atk_coll, s32 atk_i
 
     return gmCollisionTestSphere
     (
-        &atk_coll->atk_pos[atk_id].pos_curr,
-        &atk_coll->atk_pos[atk_id].pos_prev,
-        atk_coll->size,
-        atk_coll->atk_state,
+        &attack_coll->attack_pos[attack_id].pos_curr,
+        &attack_coll->attack_pos[attack_id].pos_prev,
+        attack_coll->size,
+        attack_coll->attack_state,
         parts->unk_dobjtrans_0x9C,
         &sp58,
         &sp4C,
@@ -1557,7 +1557,7 @@ sb32 gmCollisionCheckWeaponAttackShieldCollide(WPAttackColl *atk_coll, s32 atk_i
 }
 
 // 0x800EFFCC
-sb32 gmCollisionCheckWeaponAttackSpecialCollide(WPAttackColl *atk_coll, s32 atk_id, FTStruct *fp, FTSpecialColl *spc_coll)
+sb32 gmCollisionCheckWeaponAttackSpecialCollide(WPAttackColl *attack_coll, s32 attack_id, FTStruct *fp, FTSpecialColl *spc_coll)
 {
     DObj *dobj = fp->joints[spc_coll->joint_id];
     FTParts *parts = ftGetParts(dobj);
@@ -1567,10 +1567,10 @@ sb32 gmCollisionCheckWeaponAttackSpecialCollide(WPAttackColl *atk_coll, s32 atk_
 
     return gmCollisionTestSphere
     (
-        &atk_coll->atk_pos[atk_id].pos_curr,
-        &atk_coll->atk_pos[atk_id].pos_prev,
-        atk_coll->size,
-        atk_coll->atk_state,
+        &attack_coll->attack_pos[attack_id].pos_curr,
+        &attack_coll->attack_pos[attack_id].pos_prev,
+        attack_coll->size,
+        attack_coll->attack_state,
         parts->unk_dobjtrans_0x9C,
         &spc_coll->offset,
         &spc_coll->size,
@@ -1582,20 +1582,20 @@ sb32 gmCollisionCheckWeaponAttackSpecialCollide(WPAttackColl *atk_coll, s32 atk_
 }
 
 // 0x800F007C
-sb32 gmCollisionCheckWeaponAttacksCollide(WPAttackColl *atk_coll1, s32 atk1_id, WPAttackColl *atk_coll2, s32 atk2_id)
+sb32 gmCollisionCheckWeaponAttacksCollide(WPAttackColl *attack_coll1, s32 atk1_id, WPAttackColl *attack_coll2, s32 atk2_id)
 {
     if
     (
         func_ovl2_800EF5D4
         (
-            &atk_coll1->atk_pos[atk1_id].pos_curr,
-            &atk_coll1->atk_pos[atk1_id].pos_prev,
-            atk_coll1->size,
-            atk_coll1->atk_state,
-            &atk_coll2->atk_pos[atk2_id].pos_curr,
-            &atk_coll2->atk_pos[atk2_id].pos_prev,
-            atk_coll2->size,
-            atk_coll2->atk_state
+            &attack_coll1->attack_pos[atk1_id].pos_curr,
+            &attack_coll1->attack_pos[atk1_id].pos_prev,
+            attack_coll1->size,
+            attack_coll1->attack_state,
+            &attack_coll2->attack_pos[atk2_id].pos_curr,
+            &attack_coll2->attack_pos[atk2_id].pos_prev,
+            attack_coll2->size,
+            attack_coll2->attack_state
 
         ) == FALSE
     )
@@ -1604,44 +1604,44 @@ sb32 gmCollisionCheckWeaponAttacksCollide(WPAttackColl *atk_coll1, s32 atk1_id, 
     }
     else func_ovl2_800EE050
     (
-        atk_coll2->atk_state,
-        &atk_coll2->atk_pos[atk2_id].pos_curr,
-        &atk_coll2->atk_pos[atk2_id].pos_prev,
-        &atk_coll2->atk_pos[atk2_id].unk_wphitpos_0x18,
-        atk_coll2->atk_pos[atk2_id].mtx,
-        &atk_coll2->atk_pos[atk2_id].unk_wphitpos_0x5C
+        attack_coll2->attack_state,
+        &attack_coll2->attack_pos[atk2_id].pos_curr,
+        &attack_coll2->attack_pos[atk2_id].pos_prev,
+        &attack_coll2->attack_pos[atk2_id].unk_wphitpos_0x18,
+        attack_coll2->attack_pos[atk2_id].mtx,
+        &attack_coll2->attack_pos[atk2_id].unk_wphitpos_0x5C
     );
 
     return func_ovl2_800EEEAC
     (
-        &atk_coll1->atk_pos[atk1_id].pos_curr,
-        &atk_coll1->atk_pos[atk1_id].pos_prev,
-        atk_coll1->size,
-        atk_coll1->atk_state,
-        atk_coll2->atk_pos[atk2_id].mtx,
-        atk_coll2->atk_pos[atk2_id].unk_wphitpos_0x18,
-        &atk_coll2->atk_pos[atk2_id].pos_curr,
-        atk_coll2->size,
-        atk_coll2->atk_state,
-        atk_coll2->atk_pos[atk2_id].unk_wphitpos_0x5C
+        &attack_coll1->attack_pos[atk1_id].pos_curr,
+        &attack_coll1->attack_pos[atk1_id].pos_prev,
+        attack_coll1->size,
+        attack_coll1->attack_state,
+        attack_coll2->attack_pos[atk2_id].mtx,
+        attack_coll2->attack_pos[atk2_id].unk_wphitpos_0x18,
+        &attack_coll2->attack_pos[atk2_id].pos_curr,
+        attack_coll2->size,
+        attack_coll2->attack_state,
+        attack_coll2->attack_pos[atk2_id].unk_wphitpos_0x5C
     );
 }
 
 // 0x800F019C
-sb32 gmCollisionCheckWeaponAttackItemAttackCollide(WPAttackColl *wp_atk_coll, s32 wp_atk_id, ITAttackColl *it_atk_coll, s32 it_atk_id)
+sb32 gmCollisionCheckWeaponAttackItemAttackCollide(WPAttackColl *wp_attack_coll, s32 wp_attack_id, ITAttackColl *it_attack_coll, s32 it_attack_id)
 {
     if
     (
         func_ovl2_800EF5D4
         (
-            &wp_atk_coll->atk_pos[wp_atk_id].pos_curr,
-            &wp_atk_coll->atk_pos[wp_atk_id].pos_prev,
-            wp_atk_coll->size,
-            wp_atk_coll->atk_state,
-            &it_atk_coll->atk_pos[it_atk_id].pos_curr,
-            &it_atk_coll->atk_pos[it_atk_id].pos_prev,
-            it_atk_coll->size,
-            it_atk_coll->atk_state
+            &wp_attack_coll->attack_pos[wp_attack_id].pos_curr,
+            &wp_attack_coll->attack_pos[wp_attack_id].pos_prev,
+            wp_attack_coll->size,
+            wp_attack_coll->attack_state,
+            &it_attack_coll->attack_pos[it_attack_id].pos_curr,
+            &it_attack_coll->attack_pos[it_attack_id].pos_prev,
+            it_attack_coll->size,
+            it_attack_coll->attack_state
 
         ) == FALSE
     )
@@ -1650,44 +1650,44 @@ sb32 gmCollisionCheckWeaponAttackItemAttackCollide(WPAttackColl *wp_atk_coll, s3
     }
     else func_ovl2_800EE050
     (
-        it_atk_coll->atk_state,
-        &it_atk_coll->atk_pos[it_atk_id].pos_curr,
-        &it_atk_coll->atk_pos[it_atk_id].pos_prev,
-        &it_atk_coll->atk_pos[it_atk_id].unk_ithitpos_0x18,
-        it_atk_coll->atk_pos[it_atk_id].mtx,
-        &it_atk_coll->atk_pos[it_atk_id].unk_ithitpos_0x5C
+        it_attack_coll->attack_state,
+        &it_attack_coll->attack_pos[it_attack_id].pos_curr,
+        &it_attack_coll->attack_pos[it_attack_id].pos_prev,
+        &it_attack_coll->attack_pos[it_attack_id].unk_ithitpos_0x18,
+        it_attack_coll->attack_pos[it_attack_id].mtx,
+        &it_attack_coll->attack_pos[it_attack_id].unk_ithitpos_0x5C
     );
 
     return func_ovl2_800EEEAC
     (
-        &wp_atk_coll->atk_pos[wp_atk_id].pos_curr,
-        &wp_atk_coll->atk_pos[wp_atk_id].pos_prev,
-        wp_atk_coll->size,
-        wp_atk_coll->atk_state,
-        it_atk_coll->atk_pos[it_atk_id].mtx,
-        it_atk_coll->atk_pos[it_atk_id].unk_ithitpos_0x18,
-        &it_atk_coll->atk_pos[it_atk_id].pos_curr,
-        it_atk_coll->size,
-        it_atk_coll->atk_state,
-        it_atk_coll->atk_pos[it_atk_id].unk_ithitpos_0x5C
+        &wp_attack_coll->attack_pos[wp_attack_id].pos_curr,
+        &wp_attack_coll->attack_pos[wp_attack_id].pos_prev,
+        wp_attack_coll->size,
+        wp_attack_coll->attack_state,
+        it_attack_coll->attack_pos[it_attack_id].mtx,
+        it_attack_coll->attack_pos[it_attack_id].unk_ithitpos_0x18,
+        &it_attack_coll->attack_pos[it_attack_id].pos_curr,
+        it_attack_coll->size,
+        it_attack_coll->attack_state,
+        it_attack_coll->attack_pos[it_attack_id].unk_ithitpos_0x5C
     );
 }
 
 // 0x800F02BC
-sb32 gmCollisionCheckItemAttackFighterAttackCollide(ITAttackColl *it_atk_coll, s32 atk_id, FTAttackColl *ft_atk_coll)
+sb32 gmCollisionCheckItemAttackFighterAttackCollide(ITAttackColl *it_attack_coll, s32 attack_id, FTAttackColl *ft_attack_coll)
 {
     if
     (
         func_ovl2_800EF5D4
         (
-            &it_atk_coll->atk_pos[atk_id].pos_curr,
-            &it_atk_coll->atk_pos[atk_id].pos_prev,
-            it_atk_coll->size,
-            it_atk_coll->atk_state,
-            &ft_atk_coll->pos_curr,
-            &ft_atk_coll->pos_prev,
-            ft_atk_coll->size,
-            ft_atk_coll->atk_state
+            &it_attack_coll->attack_pos[attack_id].pos_curr,
+            &it_attack_coll->attack_pos[attack_id].pos_prev,
+            it_attack_coll->size,
+            it_attack_coll->attack_state,
+            &ft_attack_coll->pos_curr,
+            &ft_attack_coll->pos_prev,
+            ft_attack_coll->size,
+            ft_attack_coll->attack_state
 
         ) == FALSE
     )
@@ -1696,36 +1696,36 @@ sb32 gmCollisionCheckItemAttackFighterAttackCollide(ITAttackColl *it_atk_coll, s
     }
     else func_ovl2_800EE050
     (
-        ft_atk_coll->atk_state,
-        &ft_atk_coll->pos_curr,
-        &ft_atk_coll->pos_prev,
-        &ft_atk_coll->hit_matrix.unk_fthitmtx_0x0,
-        ft_atk_coll->hit_matrix.mtx,
-        &ft_atk_coll->hit_matrix.unk_fthitmtx_0x44
+        ft_attack_coll->attack_state,
+        &ft_attack_coll->pos_curr,
+        &ft_attack_coll->pos_prev,
+        &ft_attack_coll->hit_matrix.unk_fthitmtx_0x0,
+        ft_attack_coll->hit_matrix.mtx,
+        &ft_attack_coll->hit_matrix.unk_fthitmtx_0x44
     );
 
     return func_ovl2_800EEEAC
     (
-        &it_atk_coll->atk_pos[atk_id].pos_curr,
-        &it_atk_coll->atk_pos[atk_id].pos_prev,
-        it_atk_coll->size,
-        it_atk_coll->atk_state,
-        ft_atk_coll->hit_matrix.mtx,
-        ft_atk_coll->hit_matrix.unk_fthitmtx_0x0,
-        &ft_atk_coll->pos_curr,
-        ft_atk_coll->size,
-        ft_atk_coll->atk_state,
-        ft_atk_coll->hit_matrix.unk_fthitmtx_0x44
+        &it_attack_coll->attack_pos[attack_id].pos_curr,
+        &it_attack_coll->attack_pos[attack_id].pos_prev,
+        it_attack_coll->size,
+        it_attack_coll->attack_state,
+        ft_attack_coll->hit_matrix.mtx,
+        ft_attack_coll->hit_matrix.unk_fthitmtx_0x0,
+        &ft_attack_coll->pos_curr,
+        ft_attack_coll->size,
+        ft_attack_coll->attack_state,
+        ft_attack_coll->hit_matrix.unk_fthitmtx_0x44
     );
 }
 
 // 0x800F03B8
-sb32 gmCollisionCheckItemAttackFighterDamageCollide(ITAttackColl *atk_coll, s32 atk_id, FTDamageColl *dmg_coll)
+sb32 gmCollisionCheckItemAttackFighterDamageCollide(ITAttackColl *attack_coll, s32 attack_id, FTDamageColl *damage_coll)
 {
     FTParts *parts;
     DObj *dobj;
 
-    dobj = dmg_coll->joint;
+    dobj = damage_coll->joint;
     parts = ftGetParts(dobj);
 
     func_ovl2_800EDE00(dobj);
@@ -1733,19 +1733,19 @@ sb32 gmCollisionCheckItemAttackFighterDamageCollide(ITAttackColl *atk_coll, s32 
 
     return gmCollisionTestRectangle
     (
-        &atk_coll->atk_pos[atk_id].pos_curr,
-        &atk_coll->atk_pos[atk_id].pos_prev,
-        atk_coll->size,
-        atk_coll->atk_state, 
+        &attack_coll->attack_pos[attack_id].pos_curr,
+        &attack_coll->attack_pos[attack_id].pos_prev,
+        attack_coll->size,
+        attack_coll->attack_state, 
         parts->unk_dobjtrans_0x9C,
-        &dmg_coll->offset, 
-        &dmg_coll->size, 
+        &damage_coll->offset, 
+        &damage_coll->size, 
         &parts->vec_scale
     );
 }
 
 // 0x800F044C
-sb32 gmCollisionCheckItemAttackShieldCollide(ITAttackColl *atk_coll, s32 atk_id, GObj *fighter_gobj, DObj *dobj, f32 *p_angle, Vec3f *vec)
+sb32 gmCollisionCheckItemAttackShieldCollide(ITAttackColl *attack_coll, s32 attack_id, GObj *fighter_gobj, DObj *dobj, f32 *p_angle, Vec3f *vec)
 {
     FTParts *parts;
     Vec3f sp58;
@@ -1767,10 +1767,10 @@ sb32 gmCollisionCheckItemAttackShieldCollide(ITAttackColl *atk_coll, s32 atk_id,
 
     return gmCollisionTestSphere
     (
-        &atk_coll->atk_pos[atk_id].pos_curr,
-        &atk_coll->atk_pos[atk_id].pos_prev,
-        atk_coll->size,
-        atk_coll->atk_state,
+        &attack_coll->attack_pos[attack_id].pos_curr,
+        &attack_coll->attack_pos[attack_id].pos_prev,
+        attack_coll->size,
+        attack_coll->attack_state,
         parts->unk_dobjtrans_0x9C,
         &sp58,
         &sp4C,
@@ -1782,7 +1782,7 @@ sb32 gmCollisionCheckItemAttackShieldCollide(ITAttackColl *atk_coll, s32 atk_id,
 }
 
 // 0x800F0518
-sb32 gmCollisionCheckItemAttackSpecialCollide(ITAttackColl *atk_coll, s32 atk_id, FTStruct *fp, FTSpecialColl *spc_coll)
+sb32 gmCollisionCheckItemAttackSpecialCollide(ITAttackColl *attack_coll, s32 attack_id, FTStruct *fp, FTSpecialColl *spc_coll)
 {
     DObj *dobj = fp->joints[spc_coll->joint_id];
     FTParts *parts = ftGetParts(dobj);
@@ -1792,10 +1792,10 @@ sb32 gmCollisionCheckItemAttackSpecialCollide(ITAttackColl *atk_coll, s32 atk_id
 
     return gmCollisionTestSphere
     (
-        &atk_coll->atk_pos[atk_id].pos_curr,
-        &atk_coll->atk_pos[atk_id].pos_prev,
-        atk_coll->size,
-        atk_coll->atk_state,
+        &attack_coll->attack_pos[attack_id].pos_curr,
+        &attack_coll->attack_pos[attack_id].pos_prev,
+        attack_coll->size,
+        attack_coll->attack_state,
         parts->unk_dobjtrans_0x9C,
         &spc_coll->offset,
         &spc_coll->size,
@@ -1807,20 +1807,20 @@ sb32 gmCollisionCheckItemAttackSpecialCollide(ITAttackColl *atk_coll, s32 atk_id
 }
 
 // 0x800F05C8
-sb32 gmCollisionCheckItemAttacksCollide(ITAttackColl *atk_coll1, s32 atk1_id, ITAttackColl *atk_coll2, s32 atk2_id)
+sb32 gmCollisionCheckItemAttacksCollide(ITAttackColl *attack_coll1, s32 atk1_id, ITAttackColl *attack_coll2, s32 atk2_id)
 {
     if
     (
         func_ovl2_800EF5D4
         (
-            &atk_coll1->atk_pos[atk1_id].pos_curr,
-            &atk_coll1->atk_pos[atk1_id].pos_prev,
-            atk_coll1->size,
-            atk_coll1->atk_state,
-            &atk_coll2->atk_pos[atk2_id].pos_curr,
-            &atk_coll2->atk_pos[atk2_id].pos_prev,
-            atk_coll2->size,
-            atk_coll2->atk_state
+            &attack_coll1->attack_pos[atk1_id].pos_curr,
+            &attack_coll1->attack_pos[atk1_id].pos_prev,
+            attack_coll1->size,
+            attack_coll1->attack_state,
+            &attack_coll2->attack_pos[atk2_id].pos_curr,
+            &attack_coll2->attack_pos[atk2_id].pos_prev,
+            attack_coll2->size,
+            attack_coll2->attack_state
 
         ) == FALSE
     )
@@ -1829,115 +1829,115 @@ sb32 gmCollisionCheckItemAttacksCollide(ITAttackColl *atk_coll1, s32 atk1_id, IT
     }
     else func_ovl2_800EE050
     (
-        atk_coll2->atk_state,
-        &atk_coll2->atk_pos[atk2_id].pos_curr,
-        &atk_coll2->atk_pos[atk2_id].pos_prev,
-        &atk_coll2->atk_pos[atk2_id].unk_ithitpos_0x18,
-        atk_coll2->atk_pos[atk2_id].mtx,
-        &atk_coll2->atk_pos[atk2_id].unk_ithitpos_0x5C
+        attack_coll2->attack_state,
+        &attack_coll2->attack_pos[atk2_id].pos_curr,
+        &attack_coll2->attack_pos[atk2_id].pos_prev,
+        &attack_coll2->attack_pos[atk2_id].unk_ithitpos_0x18,
+        attack_coll2->attack_pos[atk2_id].mtx,
+        &attack_coll2->attack_pos[atk2_id].unk_ithitpos_0x5C
     );
 
     return func_ovl2_800EEEAC
     (
-        &atk_coll1->atk_pos[atk1_id].pos_curr,
-        &atk_coll1->atk_pos[atk1_id].pos_prev,
-        atk_coll1->size,
-        atk_coll1->atk_state,
-        atk_coll2->atk_pos[atk2_id].mtx,
-        atk_coll2->atk_pos[atk2_id].unk_ithitpos_0x18,
-        &atk_coll2->atk_pos[atk2_id].pos_curr,
-        atk_coll2->size,
-        atk_coll2->atk_state,
-        atk_coll2->atk_pos[atk2_id].unk_ithitpos_0x5C
+        &attack_coll1->attack_pos[atk1_id].pos_curr,
+        &attack_coll1->attack_pos[atk1_id].pos_prev,
+        attack_coll1->size,
+        attack_coll1->attack_state,
+        attack_coll2->attack_pos[atk2_id].mtx,
+        attack_coll2->attack_pos[atk2_id].unk_ithitpos_0x18,
+        &attack_coll2->attack_pos[atk2_id].pos_curr,
+        attack_coll2->size,
+        attack_coll2->attack_state,
+        attack_coll2->attack_pos[atk2_id].unk_ithitpos_0x5C
     );
 }
 
 // 0x800F06E8
-sb32 gmCollisionCheckItemAttackDamageCollide(ITAttackColl *atk_coll, s32 atk_id, ITDamageColl *dmg_coll, GObj *item_gobj)
+sb32 gmCollisionCheckItemAttackDamageCollide(ITAttackColl *attack_coll, s32 attack_id, ITDamageColl *damage_coll, GObj *item_gobj)
 {
-    Vec3f dmg_coll_pos;
+    Vec3f damage_coll_pos;
 
-    dmg_coll_pos.x = DObjGetStruct(item_gobj)->translate.vec.f.x + dmg_coll->offset.x;
-    dmg_coll_pos.y = DObjGetStruct(item_gobj)->translate.vec.f.y + dmg_coll->offset.y;
-    dmg_coll_pos.z = DObjGetStruct(item_gobj)->translate.vec.f.z + dmg_coll->offset.z;
+    damage_coll_pos.x = DObjGetStruct(item_gobj)->translate.vec.f.x + damage_coll->offset.x;
+    damage_coll_pos.y = DObjGetStruct(item_gobj)->translate.vec.f.y + damage_coll->offset.y;
+    damage_coll_pos.z = DObjGetStruct(item_gobj)->translate.vec.f.z + damage_coll->offset.z;
 
     return gmCollisionTestRectangle
     (
-        &atk_coll->atk_pos[atk_id].pos_curr,
-        &atk_coll->atk_pos[atk_id].pos_prev,
-        atk_coll->size,
-        atk_coll->atk_state,
+        &attack_coll->attack_pos[attack_id].pos_curr,
+        &attack_coll->attack_pos[attack_id].pos_prev,
+        attack_coll->size,
+        attack_coll->attack_state,
         NULL,
-        &dmg_coll_pos,
-        &dmg_coll->size,
+        &damage_coll_pos,
+        &damage_coll->size,
         &DObjGetStruct(item_gobj)->scale.vec.f
     );
 }
 
 // 0x800F079C
-sb32 gmCollisionCheckWeaponAttackItemDamageCollide(WPAttackColl *atk_coll, s32 atk_id, ITDamageColl *dmg_coll, GObj *item_gobj)
+sb32 gmCollisionCheckWeaponAttackItemDamageCollide(WPAttackColl *attack_coll, s32 attack_id, ITDamageColl *damage_coll, GObj *item_gobj)
 {
-    Vec3f dmg_coll_pos;
+    Vec3f damage_coll_pos;
 
-    dmg_coll_pos.x = DObjGetStruct(item_gobj)->translate.vec.f.x + dmg_coll->offset.x;
-    dmg_coll_pos.y = DObjGetStruct(item_gobj)->translate.vec.f.y + dmg_coll->offset.y;
-    dmg_coll_pos.z = DObjGetStruct(item_gobj)->translate.vec.f.z + dmg_coll->offset.z;
+    damage_coll_pos.x = DObjGetStruct(item_gobj)->translate.vec.f.x + damage_coll->offset.x;
+    damage_coll_pos.y = DObjGetStruct(item_gobj)->translate.vec.f.y + damage_coll->offset.y;
+    damage_coll_pos.z = DObjGetStruct(item_gobj)->translate.vec.f.z + damage_coll->offset.z;
 
     return gmCollisionTestRectangle
     (
-        &atk_coll->atk_pos[atk_id].pos_curr,
-        &atk_coll->atk_pos[atk_id].pos_prev,
-        atk_coll->size,
-        atk_coll->atk_state,
+        &attack_coll->attack_pos[attack_id].pos_curr,
+        &attack_coll->attack_pos[attack_id].pos_prev,
+        attack_coll->size,
+        attack_coll->attack_state,
         NULL,
-        &dmg_coll_pos,
-        &dmg_coll->size,
+        &damage_coll_pos,
+        &damage_coll->size,
         &DObjGetStruct(item_gobj)->scale.vec.f
     );
 }
 
 // 0x800F0850
-void gmCollisionGetFighterAttackPosition(Vec3f *dst, FTAttackColl *atk_coll)
+void gmCollisionGetFighterAttackPosition(Vec3f *dst, FTAttackColl *attack_coll)
 {
-    if (atk_coll->atk_state == nGMAttackStateTransfer)
+    if (attack_coll->attack_state == nGMAttackStateTransfer)
     {
-        *dst = atk_coll->pos_curr;
+        *dst = attack_coll->pos_curr;
     }
     else
     {
-        dst->x = (atk_coll->pos_curr.x + atk_coll->pos_prev.x) * 0.5F;
-        dst->y = (atk_coll->pos_curr.y + atk_coll->pos_prev.y) * 0.5F;
-        dst->z = (atk_coll->pos_curr.z + atk_coll->pos_prev.z) * 0.5F;
+        dst->x = (attack_coll->pos_curr.x + attack_coll->pos_prev.x) * 0.5F;
+        dst->y = (attack_coll->pos_curr.y + attack_coll->pos_prev.y) * 0.5F;
+        dst->z = (attack_coll->pos_curr.z + attack_coll->pos_prev.z) * 0.5F;
     }
 }
 
 // 0x800F08C8
-void gmCollisionGetWeaponAttackPosition(Vec3f *dst, WPAttackColl *atk_coll, s32 atk_id)
+void gmCollisionGetWeaponAttackPosition(Vec3f *dst, WPAttackColl *attack_coll, s32 attack_id)
 {
-    if (atk_coll->atk_state == nGMAttackStateTransfer)
+    if (attack_coll->attack_state == nGMAttackStateTransfer)
     {
-        *dst = atk_coll->atk_pos[atk_id].pos_curr;
+        *dst = attack_coll->attack_pos[attack_id].pos_curr;
     }
     else
     {
-        dst->x = (atk_coll->atk_pos[atk_id].pos_curr.x + atk_coll->atk_pos[atk_id].pos_prev.x) * 0.5F;
-        dst->y = (atk_coll->atk_pos[atk_id].pos_curr.y + atk_coll->atk_pos[atk_id].pos_prev.y) * 0.5F;
-        dst->z = (atk_coll->atk_pos[atk_id].pos_curr.z + atk_coll->atk_pos[atk_id].pos_prev.z) * 0.5F;
+        dst->x = (attack_coll->attack_pos[attack_id].pos_curr.x + attack_coll->attack_pos[attack_id].pos_prev.x) * 0.5F;
+        dst->y = (attack_coll->attack_pos[attack_id].pos_curr.y + attack_coll->attack_pos[attack_id].pos_prev.y) * 0.5F;
+        dst->z = (attack_coll->attack_pos[attack_id].pos_curr.z + attack_coll->attack_pos[attack_id].pos_prev.z) * 0.5F;
     }
 }
 
 // 0x800F095C
-void gmCollisionGetItemAttackPosition(Vec3f *dst, ITAttackColl *atk_coll, s32 atk_id)
+void gmCollisionGetItemAttackPosition(Vec3f *dst, ITAttackColl *attack_coll, s32 attack_id)
 {
-    if (atk_coll->atk_state == nGMAttackStateTransfer)
+    if (attack_coll->attack_state == nGMAttackStateTransfer)
     {
-        *dst = atk_coll->atk_pos[atk_id].pos_curr;
+        *dst = attack_coll->attack_pos[attack_id].pos_curr;
     }
     else
     {
-        dst->x = (atk_coll->atk_pos[atk_id].pos_curr.x + atk_coll->atk_pos[atk_id].pos_prev.x) * 0.5F;
-        dst->y = (atk_coll->atk_pos[atk_id].pos_curr.y + atk_coll->atk_pos[atk_id].pos_prev.y) * 0.5F;
-        dst->z = (atk_coll->atk_pos[atk_id].pos_curr.z + atk_coll->atk_pos[atk_id].pos_prev.z) * 0.5F;
+        dst->x = (attack_coll->attack_pos[attack_id].pos_curr.x + attack_coll->attack_pos[attack_id].pos_prev.x) * 0.5F;
+        dst->y = (attack_coll->attack_pos[attack_id].pos_curr.y + attack_coll->attack_pos[attack_id].pos_prev.y) * 0.5F;
+        dst->z = (attack_coll->attack_pos[attack_id].pos_curr.z + attack_coll->attack_pos[attack_id].pos_prev.z) * 0.5F;
     }
 }
 
@@ -1964,211 +1964,211 @@ void gmCollisionGetCommonImpactPosition(Vec3f *dst, Vec3f *pos, Vec3f *offset)
 }
 
 // 0x800F0A90
-void gmCollisionGetFighterAttackDamagePosition(Vec3f *dst, FTAttackColl *atk_coll, FTDamageColl *dmg_coll)
+void gmCollisionGetFighterAttackDamagePosition(Vec3f *dst, FTAttackColl *attack_coll, FTDamageColl *damage_coll)
 {
     FTParts *parts;
-    Vec3f atk_pos;
-    Vec3f dmg_pos;
+    Vec3f attack_pos;
+    Vec3f damage_pos;
 
-    gmCollisionGetFighterAttackPosition(&atk_pos, atk_coll);
+    gmCollisionGetFighterAttackPosition(&attack_pos, attack_coll);
 
-    parts = ftGetParts(dmg_coll->joint);
-    dmg_pos = dmg_coll->offset;
+    parts = ftGetParts(damage_coll->joint);
+    damage_pos = damage_coll->offset;
 
-    gmCollisionGetWorldPosition(parts->mtx_translate, &dmg_pos);
-    gmCollisionGetCommonImpactPosition(dst, &atk_pos, &dmg_pos);
+    gmCollisionGetWorldPosition(parts->mtx_translate, &damage_pos);
+    gmCollisionGetCommonImpactPosition(dst, &attack_pos, &damage_pos);
 }
 
 // 0x800F0AF8
-void gmCollisionGetFighterAttackItemDamagePosition(Vec3f *dst, FTAttackColl *atk_coll, ITDamageColl *dmg_coll, GObj *item_gobj)
+void gmCollisionGetFighterAttackItemDamagePosition(Vec3f *dst, FTAttackColl *attack_coll, ITDamageColl *damage_coll, GObj *item_gobj)
 {
-    Vec3f atk_pos;
-    Vec3f dmg_pos;
+    Vec3f attack_pos;
+    Vec3f damage_pos;
 
-    gmCollisionGetFighterAttackPosition(&atk_pos, atk_coll);
+    gmCollisionGetFighterAttackPosition(&attack_pos, attack_coll);
 
-    dmg_pos.x = DObjGetStruct(item_gobj)->translate.vec.f.x + dmg_coll->offset.x;
-    dmg_pos.y = DObjGetStruct(item_gobj)->translate.vec.f.y + dmg_coll->offset.y;
-    dmg_pos.z = DObjGetStruct(item_gobj)->translate.vec.f.z + dmg_coll->offset.z;
+    damage_pos.x = DObjGetStruct(item_gobj)->translate.vec.f.x + damage_coll->offset.x;
+    damage_pos.y = DObjGetStruct(item_gobj)->translate.vec.f.y + damage_coll->offset.y;
+    damage_pos.z = DObjGetStruct(item_gobj)->translate.vec.f.z + damage_coll->offset.z;
 
-    gmCollisionGetCommonImpactPosition(dst, &atk_pos, &dmg_pos);
+    gmCollisionGetCommonImpactPosition(dst, &attack_pos, &damage_pos);
 }
 
 // 0x800F0B78
-void gmCollisionGetFighterAttackShieldPosition(Vec3f *dst, FTAttackColl *atk_coll, GObj *gobj, DObj *dobj)
+void gmCollisionGetFighterAttackShieldPosition(Vec3f *dst, FTAttackColl *attack_coll, GObj *gobj, DObj *dobj)
 {
     Vec3f pos;
     Vec3f offset;
 
-    gmCollisionGetFighterAttackPosition(&pos, atk_coll);
+    gmCollisionGetFighterAttackPosition(&pos, attack_coll);
     gmCollisionGetShieldPosition(&offset, gobj, dobj);
     gmCollisionGetCommonImpactPosition(dst, &pos, &offset);
 }
 
 // 0x800F0BC4
-void gmCollisionGetFighterAttacksPosition(Vec3f *dst, FTAttackColl *atk_coll1, FTAttackColl *atk_coll2)
+void gmCollisionGetFighterAttacksPosition(Vec3f *dst, FTAttackColl *attack_coll1, FTAttackColl *attack_coll2)
 {
     Vec3f pos1;
     Vec3f pos2;
 
-    gmCollisionGetFighterAttackPosition(&pos1, atk_coll1);
-    gmCollisionGetFighterAttackPosition(&pos2, atk_coll2);
+    gmCollisionGetFighterAttackPosition(&pos1, attack_coll1);
+    gmCollisionGetFighterAttackPosition(&pos2, attack_coll2);
     gmCollisionGetCommonImpactPosition(dst, &pos1, &pos2);
 }
 
 // 0x800F0C08
-void gmCollisionGetWeaponAttackFighterAttackPosition(Vec3f *dst, WPAttackColl *wp_atk_coll, s32 atk_id, FTAttackColl *ft_atk_coll)
+void gmCollisionGetWeaponAttackFighterAttackPosition(Vec3f *dst, WPAttackColl *wp_attack_coll, s32 attack_id, FTAttackColl *ft_attack_coll)
 {
     Vec3f wp_pos;
     Vec3f ft_pos;
 
-    gmCollisionGetWeaponAttackPosition(&wp_pos, wp_atk_coll, atk_id);
-    gmCollisionGetFighterAttackPosition(&ft_pos, ft_atk_coll);
+    gmCollisionGetWeaponAttackPosition(&wp_pos, wp_attack_coll, attack_id);
+    gmCollisionGetFighterAttackPosition(&ft_pos, ft_attack_coll);
     gmCollisionGetCommonImpactPosition(dst, &wp_pos, &ft_pos);
 }
 
 // 0x800F0C4C
-void gmCollisionGetWeaponAttackShieldPosition(Vec3f *dst, WPAttackColl *atk_coll, s32 atk_id, GObj *gobj, DObj *dobj)
+void gmCollisionGetWeaponAttackShieldPosition(Vec3f *dst, WPAttackColl *attack_coll, s32 attack_id, GObj *gobj, DObj *dobj)
 {
     Vec3f wp_pos;
     Vec3f shield_pos;
 
-    gmCollisionGetWeaponAttackPosition(&wp_pos, atk_coll, atk_id);
+    gmCollisionGetWeaponAttackPosition(&wp_pos, attack_coll, attack_id);
     gmCollisionGetShieldPosition(&shield_pos, gobj, dobj);
     gmCollisionGetCommonImpactPosition(dst, &wp_pos, &shield_pos);
 }
 
 // 0x800F0C94
-void gmCollisionGetWeaponAttacksPosition(Vec3f *dst, WPAttackColl *atk_coll1, s32 atk1_id, WPAttackColl *atk_coll2, s32 atk2_id)
+void gmCollisionGetWeaponAttacksPosition(Vec3f *dst, WPAttackColl *attack_coll1, s32 atk1_id, WPAttackColl *attack_coll2, s32 atk2_id)
 {
     Vec3f pos1;
     Vec3f pos2;
 
-    gmCollisionGetWeaponAttackPosition(&pos1, atk_coll1, atk1_id);
-    gmCollisionGetWeaponAttackPosition(&pos2, atk_coll2, atk2_id);
+    gmCollisionGetWeaponAttackPosition(&pos1, attack_coll1, atk1_id);
+    gmCollisionGetWeaponAttackPosition(&pos2, attack_coll2, atk2_id);
     gmCollisionGetCommonImpactPosition(dst, &pos1, &pos2);
 }
 
 // 0x800F0CDC
-void gmCollisionGetWeaponAttackItemAttackPosition(Vec3f *dst, WPAttackColl *wp_atk_coll, s32 wp_atk_id, ITAttackColl *it_atk_coll, s32 it_atk_id)
+void gmCollisionGetWeaponAttackItemAttackPosition(Vec3f *dst, WPAttackColl *wp_attack_coll, s32 wp_attack_id, ITAttackColl *it_attack_coll, s32 it_attack_id)
 {
     Vec3f wp_pos;
     Vec3f it_pos;
 
-    gmCollisionGetWeaponAttackPosition(&wp_pos, wp_atk_coll, wp_atk_id);
-    gmCollisionGetItemAttackPosition(&it_pos, it_atk_coll, it_atk_id);
+    gmCollisionGetWeaponAttackPosition(&wp_pos, wp_attack_coll, wp_attack_id);
+    gmCollisionGetItemAttackPosition(&it_pos, it_attack_coll, it_attack_id);
     gmCollisionGetCommonImpactPosition(dst, &wp_pos, &it_pos);
 }
 
 // 0x800F0D24
-void gmCollisionGetWeaponAttackFighterDamagePosition(Vec3f *dst, WPAttackColl *atk_coll, s32 atk_id, FTDamageColl *dmg_coll)
+void gmCollisionGetWeaponAttackFighterDamagePosition(Vec3f *dst, WPAttackColl *attack_coll, s32 attack_id, FTDamageColl *damage_coll)
 {
     FTParts *parts;
-    Vec3f atk_pos;
-    Vec3f dmg_pos;
+    Vec3f attack_pos;
+    Vec3f damage_pos;
 
-    gmCollisionGetWeaponAttackPosition(&atk_pos, atk_coll, atk_id);
+    gmCollisionGetWeaponAttackPosition(&attack_pos, attack_coll, attack_id);
 
-    parts = ftGetParts(dmg_coll->joint);
-    dmg_pos = dmg_coll->offset;
+    parts = ftGetParts(damage_coll->joint);
+    damage_pos = damage_coll->offset;
 
-    gmCollisionGetWorldPosition(parts->mtx_translate, &dmg_pos);
-    gmCollisionGetCommonImpactPosition(dst, &atk_pos, &dmg_pos);
+    gmCollisionGetWorldPosition(parts->mtx_translate, &damage_pos);
+    gmCollisionGetCommonImpactPosition(dst, &attack_pos, &damage_pos);
 }
 
 // 0x800F0D8C
-void gmCollisionGetWeaponAttackItemDamagePosition(Vec3f *dst, WPAttackColl *atk_coll, s32 atk_id, ITDamageColl *dmg_coll, GObj *item_gobj)
+void gmCollisionGetWeaponAttackItemDamagePosition(Vec3f *dst, WPAttackColl *attack_coll, s32 attack_id, ITDamageColl *damage_coll, GObj *item_gobj)
 {
-    Vec3f atk_pos;
-    Vec3f dmg_pos;
+    Vec3f attack_pos;
+    Vec3f damage_pos;
 
-    gmCollisionGetWeaponAttackPosition(&atk_pos, atk_coll, atk_id);
+    gmCollisionGetWeaponAttackPosition(&attack_pos, attack_coll, attack_id);
 
-    dmg_pos.x = DObjGetStruct(item_gobj)->translate.vec.f.x + dmg_coll->offset.x;
-    dmg_pos.y = DObjGetStruct(item_gobj)->translate.vec.f.y + dmg_coll->offset.y;
-    dmg_pos.z = DObjGetStruct(item_gobj)->translate.vec.f.z + dmg_coll->offset.z;
+    damage_pos.x = DObjGetStruct(item_gobj)->translate.vec.f.x + damage_coll->offset.x;
+    damage_pos.y = DObjGetStruct(item_gobj)->translate.vec.f.y + damage_coll->offset.y;
+    damage_pos.z = DObjGetStruct(item_gobj)->translate.vec.f.z + damage_coll->offset.z;
 
-    gmCollisionGetCommonImpactPosition(dst, &atk_pos, &dmg_pos);
+    gmCollisionGetCommonImpactPosition(dst, &attack_pos, &damage_pos);
 }
 
 // 0x800F0E08
-void gmCollisionGetItemAttackFighterDamagePosition(Vec3f *dst, ITAttackColl *atk_coll, s32 atk_id, FTDamageColl *dmg_coll)
+void gmCollisionGetItemAttackFighterDamagePosition(Vec3f *dst, ITAttackColl *attack_coll, s32 attack_id, FTDamageColl *damage_coll)
 {
     FTParts *parts;
-    Vec3f atk_pos;
-    Vec3f dmg_pos;
+    Vec3f attack_pos;
+    Vec3f damage_pos;
 
-    gmCollisionGetItemAttackPosition(&atk_pos, atk_coll, atk_id);
+    gmCollisionGetItemAttackPosition(&attack_pos, attack_coll, attack_id);
 
-    parts = ftGetParts(dmg_coll->joint);
-    dmg_pos = dmg_coll->offset;
+    parts = ftGetParts(damage_coll->joint);
+    damage_pos = damage_coll->offset;
 
-    gmCollisionGetWorldPosition(parts->mtx_translate, &dmg_pos);
-    gmCollisionGetCommonImpactPosition(dst, &atk_pos, &dmg_pos);
+    gmCollisionGetWorldPosition(parts->mtx_translate, &damage_pos);
+    gmCollisionGetCommonImpactPosition(dst, &attack_pos, &damage_pos);
 }
 
 // 0x800F0E70
-void gmCollisionGetItemAttackFighterAttackPosition(Vec3f *dst, ITAttackColl *it_atk_coll, s32 atk_id, FTAttackColl *ft_atk_coll)
+void gmCollisionGetItemAttackFighterAttackPosition(Vec3f *dst, ITAttackColl *it_attack_coll, s32 attack_id, FTAttackColl *ft_attack_coll)
 {
     Vec3f it_pos;
     Vec3f ft_pos;
 
-    gmCollisionGetItemAttackPosition(&it_pos, it_atk_coll, atk_id);
-    gmCollisionGetFighterAttackPosition(&ft_pos, ft_atk_coll);
+    gmCollisionGetItemAttackPosition(&it_pos, it_attack_coll, attack_id);
+    gmCollisionGetFighterAttackPosition(&ft_pos, ft_attack_coll);
     gmCollisionGetCommonImpactPosition(dst, &it_pos, &ft_pos);
 }
 
 // 0x800F0EB4
-void gmCollisionGetItemAttackShieldPosition(Vec3f *dst, ITAttackColl *atk_coll, s32 atk_id, GObj *gobj, DObj *dobj)
+void gmCollisionGetItemAttackShieldPosition(Vec3f *dst, ITAttackColl *attack_coll, s32 attack_id, GObj *gobj, DObj *dobj)
 {
     Vec3f it_pos;
     Vec3f shield_pos;
 
-    gmCollisionGetItemAttackPosition(&it_pos, atk_coll, atk_id);
+    gmCollisionGetItemAttackPosition(&it_pos, attack_coll, attack_id);
     gmCollisionGetShieldPosition(&shield_pos, gobj, dobj);
     gmCollisionGetCommonImpactPosition(dst, &it_pos, &shield_pos);
 }
 
 // 0x800F0EFC
-void gmCollisionGetItemAttackItemAttackPosition(Vec3f *dst, ITAttackColl *atk_coll1, s32 atk1_id, ITAttackColl *atk_coll2, s32 atk2_id)
+void gmCollisionGetItemAttackItemAttackPosition(Vec3f *dst, ITAttackColl *attack_coll1, s32 atk1_id, ITAttackColl *attack_coll2, s32 atk2_id)
 {
     Vec3f pos1;
     Vec3f pos2;
 
-    gmCollisionGetItemAttackPosition(&pos1, atk_coll1, atk1_id);
-    gmCollisionGetItemAttackPosition(&pos2, atk_coll2, atk2_id);
+    gmCollisionGetItemAttackPosition(&pos1, attack_coll1, atk1_id);
+    gmCollisionGetItemAttackPosition(&pos2, attack_coll2, atk2_id);
     gmCollisionGetCommonImpactPosition(dst, &pos1, &pos2);
 }
 
 // 0x800F0F44
-void gmCollisionGetItemAttackItemDamagePosition(Vec3f *dst, ITAttackColl *atk_coll, s32 atk_id, ITDamageColl *dmg_coll, GObj *item_gobj)
+void gmCollisionGetItemAttackItemDamagePosition(Vec3f *dst, ITAttackColl *attack_coll, s32 attack_id, ITDamageColl *damage_coll, GObj *item_gobj)
 {
-    Vec3f atk_pos;
-    Vec3f dmg_pos;
+    Vec3f attack_pos;
+    Vec3f damage_pos;
 
-    gmCollisionGetItemAttackPosition(&atk_pos, atk_coll, atk_id);
+    gmCollisionGetItemAttackPosition(&attack_pos, attack_coll, attack_id);
 
-    dmg_pos.x = DObjGetStruct(item_gobj)->translate.vec.f.x + dmg_coll->offset.x;
-    dmg_pos.y = DObjGetStruct(item_gobj)->translate.vec.f.y + dmg_coll->offset.y;
-    dmg_pos.z = DObjGetStruct(item_gobj)->translate.vec.f.z + dmg_coll->offset.z;
+    damage_pos.x = DObjGetStruct(item_gobj)->translate.vec.f.x + damage_coll->offset.x;
+    damage_pos.y = DObjGetStruct(item_gobj)->translate.vec.f.y + damage_coll->offset.y;
+    damage_pos.z = DObjGetStruct(item_gobj)->translate.vec.f.z + damage_coll->offset.z;
 
-    gmCollisionGetCommonImpactPosition(dst, &atk_pos, &dmg_pos);
+    gmCollisionGetCommonImpactPosition(dst, &attack_pos, &damage_pos);
 }
 
 // 0x800F0FC0
-f32 gmCollisionGetDamageSlashRotation(FTStruct *fp, FTAttackColl *atk_coll)
+f32 gmCollisionGetDamageSlashRotation(FTStruct *fp, FTAttackColl *attack_coll)
 {
     Vec2f pos;
 
-    if (atk_coll->atk_state == nGMAttackStateTransfer)
+    if (attack_coll->attack_state == nGMAttackStateTransfer)
     {
         pos.x = fp->physics.vel_air.x;
         pos.y = fp->physics.vel_air.y;
     }
     else
     {
-        pos.x = atk_coll->pos_curr.x - atk_coll->pos_prev.x;
-        pos.y = atk_coll->pos_curr.y - atk_coll->pos_prev.y;
+        pos.x = attack_coll->pos_curr.x - attack_coll->pos_prev.x;
+        pos.y = attack_coll->pos_curr.y - attack_coll->pos_prev.y;
     }
     return atan2f(pos.y, pos.x);
 }

@@ -15,36 +15,36 @@ void itProcessUpdateHitPositions(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     s32 i;
 
-    for (i = 0; i < ip->atk_coll.atk_count; i++)
+    for (i = 0; i < ip->attack_coll.attack_count; i++)
     {
-        switch (ip->atk_coll.atk_state)
+        switch (ip->attack_coll.attack_state)
         {
         case nGMAttackStateOff:
             break;
 
         case nGMAttackStateNew:
-            ip->atk_coll.atk_pos[i].pos_curr.x = ip->atk_coll.offsets[i].x + DObjGetStruct(item_gobj)->translate.vec.f.x;
-            ip->atk_coll.atk_pos[i].pos_curr.y = ip->atk_coll.offsets[i].y + DObjGetStruct(item_gobj)->translate.vec.f.y;
-            ip->atk_coll.atk_pos[i].pos_curr.z = ip->atk_coll.offsets[i].z + DObjGetStruct(item_gobj)->translate.vec.f.z;
+            ip->attack_coll.attack_pos[i].pos_curr.x = ip->attack_coll.offsets[i].x + DObjGetStruct(item_gobj)->translate.vec.f.x;
+            ip->attack_coll.attack_pos[i].pos_curr.y = ip->attack_coll.offsets[i].y + DObjGetStruct(item_gobj)->translate.vec.f.y;
+            ip->attack_coll.attack_pos[i].pos_curr.z = ip->attack_coll.offsets[i].z + DObjGetStruct(item_gobj)->translate.vec.f.z;
 
-            ip->atk_coll.atk_state = nGMAttackStateTransfer;
+            ip->attack_coll.attack_state = nGMAttackStateTransfer;
 
-            ip->atk_coll.atk_pos[i].unk_ithitpos_0x18 = FALSE;
-            ip->atk_coll.atk_pos[i].unk_ithitpos_0x5C = 0;
+            ip->attack_coll.attack_pos[i].unk_ithitpos_0x18 = FALSE;
+            ip->attack_coll.attack_pos[i].unk_ithitpos_0x5C = 0;
             break;
 
         case nGMAttackStateTransfer:
-            ip->atk_coll.atk_state = nGMAttackStateInterpolate;
+            ip->attack_coll.attack_state = nGMAttackStateInterpolate;
 
         case nGMAttackStateInterpolate:
-            ip->atk_coll.atk_pos[i].pos_prev = ip->atk_coll.atk_pos[i].pos_curr;
+            ip->attack_coll.attack_pos[i].pos_prev = ip->attack_coll.attack_pos[i].pos_curr;
 
-            ip->atk_coll.atk_pos[i].pos_curr.x = ip->atk_coll.offsets[i].x + DObjGetStruct(item_gobj)->translate.vec.f.x;
-            ip->atk_coll.atk_pos[i].pos_curr.y = ip->atk_coll.offsets[i].y + DObjGetStruct(item_gobj)->translate.vec.f.y;
-            ip->atk_coll.atk_pos[i].pos_curr.z = ip->atk_coll.offsets[i].z + DObjGetStruct(item_gobj)->translate.vec.f.z;
+            ip->attack_coll.attack_pos[i].pos_curr.x = ip->attack_coll.offsets[i].x + DObjGetStruct(item_gobj)->translate.vec.f.x;
+            ip->attack_coll.attack_pos[i].pos_curr.y = ip->attack_coll.offsets[i].y + DObjGetStruct(item_gobj)->translate.vec.f.y;
+            ip->attack_coll.attack_pos[i].pos_curr.z = ip->attack_coll.offsets[i].z + DObjGetStruct(item_gobj)->translate.vec.f.z;
 
-            ip->atk_coll.atk_pos[i].unk_ithitpos_0x18 = FALSE;
-            ip->atk_coll.atk_pos[i].unk_ithitpos_0x5C = 0;
+            ip->attack_coll.attack_pos[i].unk_ithitpos_0x18 = FALSE;
+            ip->attack_coll.attack_pos[i].unk_ithitpos_0x5C = 0;
             break;
         }
     }
@@ -55,16 +55,16 @@ void itProcessUpdateHitRecord(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
     GMAttackRecord *record;
-    ITAttackColl *it_atk_coll;
+    ITAttackColl *it_attack_coll;
     s32 i;
 
-    it_atk_coll = &ip->atk_coll;
+    it_attack_coll = &ip->attack_coll;
 
-    if (it_atk_coll->atk_state != nGMAttackStateOff)
+    if (it_attack_coll->attack_state != nGMAttackStateOff)
     {
-        for (i = 0; i < ARRAY_COUNT(ip->atk_coll.atk_records); i++)
+        for (i = 0; i < ARRAY_COUNT(ip->attack_coll.attack_records); i++)
         {
-            record = &it_atk_coll->atk_records[i];
+            record = &it_attack_coll->attack_records[i];
 
             if (record->victim_gobj != NULL)
             {
@@ -202,41 +202,41 @@ void itProcessProcItemMain(GObj *item_gobj)
 }
 
 // 0x8016F930
-void itProcessSetHitInteractStats(ITAttackColl *it_atk_coll, GObj *victim_gobj, s32 atk_type, u32 interact_mask)
+void itProcessSetHitInteractStats(ITAttackColl *it_attack_coll, GObj *victim_gobj, s32 attack_type, u32 interact_mask)
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(it_atk_coll->atk_records); i++)
+    for (i = 0; i < ARRAY_COUNT(it_attack_coll->attack_records); i++)
     {
-        if (victim_gobj == it_atk_coll->atk_records[i].victim_gobj) // Run this if the victim we're checking has already been hit
+        if (victim_gobj == it_attack_coll->attack_records[i].victim_gobj) // Run this if the victim we're checking has already been hit
         {
-            switch (atk_type)
+            switch (attack_type)
             {
             case nGMHitTypeDamage:
-                it_atk_coll->atk_records[i].victim_flags.is_interact_hurt = TRUE;
+                it_attack_coll->attack_records[i].victim_flags.is_interact_hurt = TRUE;
                 break;
 
             case nGMHitTypeShield:
-                it_atk_coll->atk_records[i].victim_flags.is_interact_shield = TRUE;
+                it_attack_coll->attack_records[i].victim_flags.is_interact_shield = TRUE;
                 break;
 
             case nGMHitTypeShieldRehit:
-                it_atk_coll->atk_records[i].victim_flags.is_interact_shield = TRUE;
-                it_atk_coll->atk_records[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
+                it_attack_coll->attack_records[i].victim_flags.is_interact_shield = TRUE;
+                it_attack_coll->attack_records[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
                 break;
 
             case nGMHitTypeReflect:
-                it_atk_coll->atk_records[i].victim_flags.is_interact_reflect = TRUE;
-                it_atk_coll->atk_records[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
+                it_attack_coll->attack_records[i].victim_flags.is_interact_reflect = TRUE;
+                it_attack_coll->attack_records[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
                 break;
 
             case nGMHitTypeAttack:
-                it_atk_coll->atk_records[i].victim_flags.group_id = interact_mask;
+                it_attack_coll->attack_records[i].victim_flags.group_id = interact_mask;
                 break;
 
             case nGMHitTypeDamageRehit:
-                it_atk_coll->atk_records[i].victim_flags.is_interact_hurt = TRUE;
-                it_atk_coll->atk_records[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
+                it_attack_coll->attack_records[i].victim_flags.is_interact_hurt = TRUE;
+                it_attack_coll->attack_records[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
                 break;
 
             default: 
@@ -245,43 +245,43 @@ void itProcessSetHitInteractStats(ITAttackColl *it_atk_coll, GObj *victim_gobj, 
             break;
         }
     }
-    if (i == ARRAY_COUNT(it_atk_coll->atk_records)) // Check if all victim slots have been filled
+    if (i == ARRAY_COUNT(it_attack_coll->attack_records)) // Check if all victim slots have been filled
     {
-        for (i = 0; i < ARRAY_COUNT(it_atk_coll->atk_records); i++) // Reset hit count and increment until there is an empty slot
+        for (i = 0; i < ARRAY_COUNT(it_attack_coll->attack_records); i++) // Reset hit count and increment until there is an empty slot
         {
-            if (it_atk_coll->atk_records[i].victim_gobj == NULL) break;
+            if (it_attack_coll->attack_records[i].victim_gobj == NULL) break;
         }
-        if (i == ARRAY_COUNT(it_atk_coll->atk_records)) i = 0; // Reset hit count again if all victim slots are full
+        if (i == ARRAY_COUNT(it_attack_coll->attack_records)) i = 0; // Reset hit count again if all victim slots are full
 
-        it_atk_coll->atk_records[i].victim_gobj = victim_gobj; // Store victim's pointer to slot
+        it_attack_coll->attack_records[i].victim_gobj = victim_gobj; // Store victim's pointer to slot
 
-        switch (atk_type)
+        switch (attack_type)
         {
         case nGMHitTypeDamage:
-            it_atk_coll->atk_records[i].victim_flags.is_interact_hurt = TRUE;
+            it_attack_coll->attack_records[i].victim_flags.is_interact_hurt = TRUE;
             break;
 
         case nGMHitTypeShield:
-            it_atk_coll->atk_records[i].victim_flags.is_interact_shield = TRUE;
+            it_attack_coll->attack_records[i].victim_flags.is_interact_shield = TRUE;
             break;
 
         case nGMHitTypeShieldRehit:
-            it_atk_coll->atk_records[i].victim_flags.is_interact_shield = TRUE;
-            it_atk_coll->atk_records[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
+            it_attack_coll->attack_records[i].victim_flags.is_interact_shield = TRUE;
+            it_attack_coll->attack_records[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
             break;
 
         case nGMHitTypeReflect:
-            it_atk_coll->atk_records[i].victim_flags.is_interact_reflect = TRUE;
-            it_atk_coll->atk_records[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
+            it_attack_coll->attack_records[i].victim_flags.is_interact_reflect = TRUE;
+            it_attack_coll->attack_records[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
             break;
 
         case nGMHitTypeAttack:
-            it_atk_coll->atk_records[i].victim_flags.group_id = interact_mask;
+            it_attack_coll->attack_records[i].victim_flags.group_id = interact_mask;
             break;
 
         case nGMHitTypeDamageRehit:
-            it_atk_coll->atk_records[i].victim_flags.is_interact_hurt = TRUE;
-            it_atk_coll->atk_records[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
+            it_attack_coll->attack_records[i].victim_flags.is_interact_hurt = TRUE;
+            it_attack_coll->attack_records[i].victim_flags.timer_rehit = ITEM_REHIT_TIME_DEFAULT;
             break;
 
         default: 
@@ -291,29 +291,29 @@ void itProcessSetHitInteractStats(ITAttackColl *it_atk_coll, GObj *victim_gobj, 
 }
 
 // 0x8016FB18 - Item's hurtbox gets hit by a fighter
-void itProcessUpdateDamageStatFighter(FTStruct *fp, FTAttackColl *atk_coll, ITStruct *ip, ITDamageColl *dmg_coll, GObj *fighter_gobj, GObj *item_gobj)
+void itProcessUpdateDamageStatFighter(FTStruct *fp, FTAttackColl *attack_coll, ITStruct *ip, ITDamageColl *damage_coll, GObj *fighter_gobj, GObj *item_gobj)
 {
     s32 damage;
     f32 damage_knockback;
     Vec3f pos;
 
-    ftMainSetHitInteractStats(fp, atk_coll->group_id, item_gobj, nGMHitTypeDamage, 0, FALSE);
+    ftMainSetHitInteractStats(fp, attack_coll->group_id, item_gobj, nGMHitTypeDamage, 0, FALSE);
 
-    damage = atk_coll->damage;
+    damage = attack_coll->damage;
 
     if (fp->attack_damage < damage)
     {
         fp->attack_damage = damage;
     }
-    if (dmg_coll->hitstatus == nGMHitStatusNormal)
+    if (damage_coll->hitstatus == nGMHitStatusNormal)
     {
         ip->damage_queue += damage;
 
         if (ip->damage_highest < damage)
         {
             ip->damage_highest = damage;
-            ip->damage_angle = atk_coll->angle;
-            ip->damage_element = atk_coll->element;
+            ip->damage_angle = attack_coll->angle;
+            ip->damage_element = attack_coll->element;
 
             ip->damage_lr = (DObjGetStruct(item_gobj)->translate.vec.f.x < DObjGetStruct(fighter_gobj)->translate.vec.f.x) ? +1 : -1;
 
@@ -331,9 +331,9 @@ void itProcessUpdateDamageStatFighter(FTStruct *fp, FTAttackColl *atk_coll, ITSt
                 ip->percent_damage,
                 ip->damage_queue,
                 damage,
-                atk_coll->knockback_weight,
-                atk_coll->knockback_scale,
-                atk_coll->knockback_base,
+                attack_coll->knockback_weight,
+                attack_coll->knockback_scale,
+                attack_coll->knockback_base,
                 1.0F,
                 fp->handicap,
                 ip->handicap
@@ -343,16 +343,16 @@ void itProcessUpdateDamageStatFighter(FTStruct *fp, FTAttackColl *atk_coll, ITSt
                 ip->damage_knockback = damage_knockback;
             }
         }
-        gmCollisionGetFighterAttackItemDamagePosition(&pos, atk_coll, dmg_coll, item_gobj);
+        gmCollisionGetFighterAttackItemDamagePosition(&pos, attack_coll, damage_coll, item_gobj);
 
-        switch (atk_coll->element)
+        switch (attack_coll->element)
         {
         case nGMHitElementFire:
-            efManagerDamageFireMakeEffect(&pos, atk_coll->damage);
+            efManagerDamageFireMakeEffect(&pos, attack_coll->damage);
             break;
 
         case nGMHitElementElectric:
-            efManagerDamageElectricMakeEffect(&pos, atk_coll->damage);
+            efManagerDamageElectricMakeEffect(&pos, attack_coll->damage);
             break;
 
         case nGMHitElementCoin:
@@ -360,26 +360,26 @@ void itProcessUpdateDamageStatFighter(FTStruct *fp, FTAttackColl *atk_coll, ITSt
             break;
 
         case nGMHitElementSlash:
-            efManagerDamageSlashMakeEffect(&pos, atk_coll->damage, gmCollisionGetDamageSlashRotation(fp, atk_coll));
+            efManagerDamageSlashMakeEffect(&pos, attack_coll->damage, gmCollisionGetDamageSlashRotation(fp, attack_coll));
             break;
 
         default:
-            efManagerDamageNormalLightMakeEffect(&pos, fp->player, atk_coll->damage, 0);
+            efManagerDamageNormalLightMakeEffect(&pos, fp->player, attack_coll->damage, 0);
             break;
         }
     }
-    ftMainPlayHitSFX(fp, atk_coll);
+    ftMainPlayHitSFX(fp, attack_coll);
 }
 
 // 0x8016FD4C
-void itProcessUpdateAttackStatItem(ITStruct *this_ip, ITAttackColl *this_hit, s32 this_atk_id, ITStruct *victim_ip, ITAttackColl *victim_hit, s32 victim_atk_id, GObj *this_gobj, GObj *victim_gobj)
+void itProcessUpdateAttackStatItem(ITStruct *this_ip, ITAttackColl *this_hit, s32 this_attack_id, ITStruct *victim_ip, ITAttackColl *victim_hit, s32 victim_attack_id, GObj *this_gobj, GObj *victim_gobj)
 {
     s32 victim_hit_damage = itMainGetDamageOutput(victim_ip);
     s32 this_hit_damage = itMainGetDamageOutput(this_ip);
     Vec3f pos;
     s32 highest_priority;
 
-    gmCollisionGetItemAttackItemAttackPosition(&pos, victim_hit, victim_atk_id, this_hit, this_atk_id);
+    gmCollisionGetItemAttackItemAttackPosition(&pos, victim_hit, victim_attack_id, this_hit, this_attack_id);
 
     highest_priority = this_hit->priority;
 
@@ -408,43 +408,43 @@ void itProcessUpdateAttackStatItem(ITStruct *this_ip, ITAttackColl *this_hit, s3
 }
 
 // 0x8016FE4C
-void itProcessUpdateAttackStatWeapon(WPStruct *wp, WPAttackColl *wp_atk_coll, s32 wp_atk_id, ITStruct *ip, ITAttackColl *it_atk_coll, s32 it_atk_id, GObj *weapon_gobj, GObj *item_gobj)
+void itProcessUpdateAttackStatWeapon(WPStruct *wp, WPAttackColl *wp_attack_coll, s32 wp_attack_id, ITStruct *ip, ITAttackColl *it_attack_coll, s32 it_attack_id, GObj *weapon_gobj, GObj *item_gobj)
 {
-    s32 wp_atk_coll_damage = wpMainGetStaledDamage(wp);
-    s32 it_atk_coll_damage = itMainGetDamageOutput(ip);
+    s32 wp_attack_coll_damage = wpMainGetStaledDamage(wp);
+    s32 it_attack_coll_damage = itMainGetDamageOutput(ip);
     Vec3f pos;
     s32 highest_priority;
 
-    gmCollisionGetWeaponAttackItemAttackPosition(&pos, wp_atk_coll, wp_atk_id, it_atk_coll, it_atk_id);
+    gmCollisionGetWeaponAttackItemAttackPosition(&pos, wp_attack_coll, wp_attack_id, it_attack_coll, it_attack_id);
 
-    highest_priority = wp_atk_coll->priority;
+    highest_priority = wp_attack_coll->priority;
 
-    if (it_atk_coll->priority <= highest_priority)
+    if (it_attack_coll->priority <= highest_priority)
     {
-        itProcessSetHitInteractStats(it_atk_coll, weapon_gobj, nGMHitTypeAttack, 0);
+        itProcessSetHitInteractStats(it_attack_coll, weapon_gobj, nGMHitTypeAttack, 0);
 
-        if (ip->hit_attack_damage < it_atk_coll_damage)
+        if (ip->hit_attack_damage < it_attack_coll_damage)
         {
-            ip->hit_attack_damage = it_atk_coll_damage;
+            ip->hit_attack_damage = it_attack_coll_damage;
         }
-        efManagerSetOffMakeEffect(&pos, it_atk_coll_damage);
+        efManagerSetOffMakeEffect(&pos, it_attack_coll_damage);
     }
-    highest_priority = it_atk_coll->priority;
+    highest_priority = it_attack_coll->priority;
 
-    if (wp_atk_coll->priority <= highest_priority)
+    if (wp_attack_coll->priority <= highest_priority)
     {
-        wpProcessUpdateHitInteractStatsGroupID(wp, wp_atk_coll, item_gobj, nGMHitTypeAttack, 0);
+        wpProcessUpdateHitInteractStatsGroupID(wp, wp_attack_coll, item_gobj, nGMHitTypeAttack, 0);
 
-        if (wp->hit_attack_damage < wp_atk_coll_damage)
+        if (wp->hit_attack_damage < wp_attack_coll_damage)
         {
-            wp->hit_attack_damage = wp_atk_coll_damage;
+            wp->hit_attack_damage = wp_attack_coll_damage;
         }
-        efManagerSetOffMakeEffect(&pos, wp_atk_coll_damage);
+        efManagerSetOffMakeEffect(&pos, wp_attack_coll_damage);
     }
 }
 
 // 0x8016FF4C - Item's hurtbox gets hit by another item
-void itProcessUpdateDamageStatItem(ITStruct *attack_ip, ITAttackColl *atk_coll, s32 atk_id, ITStruct *defend_ip, ITDamageColl *dmg_coll, GObj *attack_gobj, GObj *defend_gobj)
+void itProcessUpdateDamageStatItem(ITStruct *attack_ip, ITAttackColl *attack_coll, s32 attack_id, ITStruct *defend_ip, ITDamageColl *damage_coll, GObj *attack_gobj, GObj *defend_gobj)
 {
     s32 damage;
     f32 knockback;
@@ -456,9 +456,9 @@ void itProcessUpdateDamageStatItem(ITStruct *attack_ip, ITAttackColl *atk_coll, 
 
     damage = itMainGetDamageOutput(attack_ip);
 
-    is_rehit = ((defend_ip->type == nITTypeDamage) && (atk_coll->can_rehit_item)) ? TRUE : FALSE;
+    is_rehit = ((defend_ip->type == nITTypeDamage) && (attack_coll->can_rehit_item)) ? TRUE : FALSE;
 
-    itProcessSetHitInteractStats(atk_coll, defend_gobj, (is_rehit != FALSE) ? nGMHitTypeDamageRehit : nGMHitTypeDamage, 0);
+    itProcessSetHitInteractStats(attack_coll, defend_gobj, (is_rehit != FALSE) ? nGMHitTypeDamageRehit : nGMHitTypeDamage, 0);
 
     if (is_rehit != FALSE)
     {
@@ -483,15 +483,15 @@ void itProcessUpdateDamageStatItem(ITStruct *attack_ip, ITAttackColl *atk_coll, 
 
         attack_ip->attack_lr = lr;
     }
-    if (dmg_coll->hitstatus == nGMHitStatusNormal)
+    if (damage_coll->hitstatus == nGMHitStatusNormal)
     {
         defend_ip->damage_queue += damage;
 
         if (defend_ip->damage_highest < damage)
         {
             defend_ip->damage_highest = damage; // Last source of damage?
-            defend_ip->damage_angle = atk_coll->angle;
-            defend_ip->damage_element = atk_coll->element;
+            defend_ip->damage_angle = attack_coll->angle;
+            defend_ip->damage_element = attack_coll->element;
 
             vel = (attack_ip->physics.vel_air.x < 0.0F) ? -attack_ip->physics.vel_air.x : attack_ip->physics.vel_air.x;
 
@@ -519,9 +519,9 @@ void itProcessUpdateDamageStatItem(ITStruct *attack_ip, ITAttackColl *atk_coll, 
                 defend_ip->percent_damage,
                 defend_ip->damage_queue,
                 damage,
-                atk_coll->knockback_weight,
-                atk_coll->knockback_scale,
-                atk_coll->knockback_base,
+                attack_coll->knockback_weight,
+                attack_coll->knockback_scale,
+                attack_coll->knockback_base,
                 1.0F,
                 attack_ip->handicap,
                 defend_ip->handicap
@@ -533,9 +533,9 @@ void itProcessUpdateDamageStatItem(ITStruct *attack_ip, ITAttackColl *atk_coll, 
         }
         if (attack_ip->is_hitlag_victim)
         {
-            gmCollisionGetItemAttackItemDamagePosition(&pos, atk_coll, atk_id, dmg_coll, defend_gobj);
+            gmCollisionGetItemAttackItemDamagePosition(&pos, attack_coll, attack_id, damage_coll, defend_gobj);
 
-            switch (atk_coll->element)
+            switch (attack_coll->element)
             {
             case nGMHitElementFire:
                 efManagerDamageFireMakeEffect(&pos, damage);
@@ -553,11 +553,11 @@ void itProcessUpdateDamageStatItem(ITStruct *attack_ip, ITAttackColl *atk_coll, 
             }
         }
     }
-    func_800269C0_275C0(atk_coll->fgm_id);
+    func_800269C0_275C0(attack_coll->fgm_id);
 }
 
 // 0x801702C8 - Item's hurtbox gets hit by a weapon
-void itProcessUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *atk_coll, s32 atk_id, ITStruct *ip, ITDamageColl *dmg_coll, GObj *weapon_gobj, GObj *item_gobj)
+void itProcessUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *attack_coll, s32 attack_id, ITStruct *ip, ITDamageColl *damage_coll, GObj *weapon_gobj, GObj *item_gobj)
 {
     s32 damage;
     s32 unused;
@@ -569,9 +569,9 @@ void itProcessUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *atk_coll, s32 a
 
     damage = wpMainGetStaledDamage(wp);
 
-    is_rehit = ((ip->type == nITTypeDamage) && (atk_coll->can_rehit_item)) ? TRUE : FALSE;
+    is_rehit = ((ip->type == nITTypeDamage) && (attack_coll->can_rehit_item)) ? TRUE : FALSE;
 
-    wpProcessUpdateHitInteractStatsGroupID(wp, atk_coll, item_gobj, ((is_rehit != FALSE) ? nGMHitTypeDamageRehit : nGMHitTypeDamage), 0);
+    wpProcessUpdateHitInteractStatsGroupID(wp, attack_coll, item_gobj, ((is_rehit != FALSE) ? nGMHitTypeDamageRehit : nGMHitTypeDamage), 0);
 
     if (is_rehit != FALSE)
     {
@@ -584,15 +584,15 @@ void itProcessUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *atk_coll, s32 a
     {
         wp->hit_normal_damage = damage;
     }
-    if (dmg_coll->hitstatus == nGMHitStatusNormal)
+    if (damage_coll->hitstatus == nGMHitStatusNormal)
     {
         ip->damage_queue += damage;
 
         if (ip->damage_highest < damage)
         {
             ip->damage_highest = damage;
-            ip->damage_angle = atk_coll->angle;
-            ip->damage_element = atk_coll->element;
+            ip->damage_angle = attack_coll->angle;
+            ip->damage_element = attack_coll->element;
 
             vel = (wp->physics.vel_air.x < 0.0F) ? -wp->physics.vel_air.x : wp->physics.vel_air.x;
 
@@ -620,9 +620,9 @@ void itProcessUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *atk_coll, s32 a
                 ip->percent_damage,
                 ip->damage_queue,
                 damage,
-                atk_coll->knockback_weight,
-                atk_coll->knockback_scale,
-                atk_coll->knockback_base,
+                attack_coll->knockback_weight,
+                attack_coll->knockback_scale,
+                attack_coll->knockback_base,
                 1.0F,
                 wp->handicap,
                 ip->handicap
@@ -634,9 +634,9 @@ void itProcessUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *atk_coll, s32 a
         }
         if (wp->is_hitlag_victim)
         {
-            gmCollisionGetWeaponAttackItemDamagePosition(&pos, atk_coll, atk_id, dmg_coll, item_gobj);
+            gmCollisionGetWeaponAttackItemDamagePosition(&pos, attack_coll, attack_id, damage_coll, item_gobj);
 
-            switch (atk_coll->element)
+            switch (attack_coll->element)
             {
             case nGMHitElementFire:
                 efManagerDamageFireMakeEffect(&pos, damage);
@@ -656,7 +656,7 @@ void itProcessUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *atk_coll, s32 a
             }
         }
     }
-    func_800269C0_275C0(atk_coll->fgm_id);
+    func_800269C0_275C0(attack_coll->fgm_id);
 }
 
 // 0x801705C4
@@ -670,13 +670,13 @@ void itProcessSearchFighterAttack(GObj *item_gobj) // Check fighters for hit det
     s32 j;
     GObj *other_gobj;
     u32 team;
-    FTAttackColl *atk_coll;
+    FTAttackColl *attack_coll;
     GMHitFlags fighter_victim_flags;
-    ITDamageColl *dmg_coll;
+    ITDamageColl *damage_coll;
     ITStruct *ip = itGetStruct(item_gobj);
     FTStruct *fp;
 
-    if (ip->dmg_coll.interact_mask & GMHITCOLLISION_FLAG_FIGHTER)
+    if (ip->damage_coll.interact_mask & GMHITCOLLISION_FLAG_FIGHTER)
     {
         fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
@@ -696,21 +696,21 @@ void itProcessSearchFighterAttack(GObj *item_gobj) // Check fighters for hit det
             
             for (i = 0; i < ARRAY_COUNT(gFTMainIsDamageDetect); i++)
             {
-                atk_coll = &fp->atk_colls[i];
+                attack_coll = &fp->attack_colls[i];
 
-                if (atk_coll->atk_state != nGMAttackStateOff)
+                if (attack_coll->attack_state != nGMAttackStateOff)
                 {
-                    if ((ip->ga == nMPKineticsAir) && (atk_coll->is_hit_air) || (ip->ga == nMPKineticsGround) && (atk_coll->is_hit_ground))
+                    if ((ip->ga == nMPKineticsAir) && (attack_coll->is_hit_air) || (ip->ga == nMPKineticsGround) && (attack_coll->is_hit_ground))
                     {
                         fighter_victim_flags.is_interact_hurt = fighter_victim_flags.is_interact_shield = FALSE;
 
                         fighter_victim_flags.group_id = 7;
 
-                        for (j = 0; j < ARRAY_COUNT(atk_coll->atk_records); j++)
+                        for (j = 0; j < ARRAY_COUNT(attack_coll->attack_records); j++)
                         {
-                            if (item_gobj == atk_coll->atk_records[j].victim_gobj)
+                            if (item_gobj == attack_coll->attack_records[j].victim_gobj)
                             {
-                                fighter_victim_flags = atk_coll->atk_records[j].victim_flags;
+                                fighter_victim_flags = attack_coll->attack_records[j].victim_flags;
 
                                 break;
                             }
@@ -728,19 +728,19 @@ void itProcessSearchFighterAttack(GObj *item_gobj) // Check fighters for hit det
             }
             if (k != 0)
             {
-                for (i = 0; i < ARRAY_COUNT(fp->atk_colls); i++)
+                for (i = 0; i < ARRAY_COUNT(fp->attack_colls); i++)
                 {
-                    dmg_coll = &ip->dmg_coll;
+                    damage_coll = &ip->damage_coll;
 
                     if (gFTMainIsDamageDetect[i] != FALSE)
                     {
-                        if (ip->dmg_coll.hitstatus == nGMHitStatusNone) break;
+                        if (ip->damage_coll.hitstatus == nGMHitStatusNone) break;
 
-                        if (dmg_coll->hitstatus == nGMHitStatusIntangible) continue;
+                        if (damage_coll->hitstatus == nGMHitStatusIntangible) continue;
 
-                        if (gmCollisionCheckFighterAttackItemDamageCollide(&fp->atk_colls[i], dmg_coll, item_gobj) != FALSE)
+                        if (gmCollisionCheckFighterAttackItemDamageCollide(&fp->attack_colls[i], damage_coll, item_gobj) != FALSE)
                         {
-                            itProcessUpdateDamageStatFighter(fp, &fp->atk_colls[i], ip, dmg_coll, fighter_gobj, item_gobj);
+                            itProcessUpdateDamageStatFighter(fp, &fp->attack_colls[i], ip, damage_coll, fighter_gobj, item_gobj);
                         }
                     }
                 }
@@ -762,12 +762,12 @@ void itProcessSearchItemAttack(GObj *this_gobj) // Check other items for hit det
     GMHitFlags these_flags, those_flags;
     s32 i, j, m, n;
     sb32 is_check_self;
-    ITDamageColl *dmg_coll;
+    ITDamageColl *damage_coll;
 
     this_ip = itGetStruct(this_gobj);
-    this_hit = &this_ip->atk_coll;
+    this_hit = &this_ip->attack_coll;
 
-    if (this_ip->dmg_coll.interact_mask & GMHITCOLLISION_FLAG_ITEM)
+    if (this_ip->damage_coll.interact_mask & GMHITCOLLISION_FLAG_ITEM)
     {
         other_gobj = gGCCommonLinks[nGCCommonLinkIDItem];
 
@@ -782,13 +782,13 @@ void itProcessSearchItemAttack(GObj *this_gobj) // Check other items for hit det
             else
             {
                 other_ip = itGetStruct(other_gobj);
-                other_hit = &other_ip->atk_coll;
+                other_hit = &other_ip->attack_coll;
 
                 if ((this_ip->owner_gobj == other_ip->owner_gobj) && !(this_ip->is_damage_all)) goto next_gobj;
                 
                 if ((gBattleState->is_team_battle == TRUE) && (gBattleState->is_team_attack == FALSE) && (this_ip->team == other_ip->team) && !(this_ip->is_damage_all)) goto next_gobj;
 
-                if (other_hit->atk_state == nGMAttackStateOff) goto next_gobj;
+                if (other_hit->attack_state == nGMAttackStateOff) goto next_gobj;
                 
                 if (!(other_hit->interact_mask & GMHITCOLLISION_FLAG_ITEM)) goto next_gobj;
                 
@@ -796,11 +796,11 @@ void itProcessSearchItemAttack(GObj *this_gobj) // Check other items for hit det
 
                 those_flags.group_id = 7;
 
-                for (m = 0; m < ARRAY_COUNT(other_hit->atk_records); m++) // IDO will flip you off if you don't use a new iterator here...
+                for (m = 0; m < ARRAY_COUNT(other_hit->attack_records); m++) // IDO will flip you off if you don't use a new iterator here...
                 {
-                    if (this_gobj == other_hit->atk_records[m].victim_gobj)
+                    if (this_gobj == other_hit->attack_records[m].victim_gobj)
                     {
-                        those_flags = other_hit->atk_records[m].victim_flags;
+                        those_flags = other_hit->attack_records[m].victim_flags;
 
                         break;
                     }
@@ -811,7 +811,7 @@ void itProcessSearchItemAttack(GObj *this_gobj) // Check other items for hit det
                 {
                     if ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (this_ip->team != other_ip->team))
                     {
-                        if (this_hit->atk_state != nGMAttackStateOff)
+                        if (this_hit->attack_state != nGMAttackStateOff)
                         {
                             if (this_hit->interact_mask & GMHITCOLLISION_FLAG_ITEM)
                             {
@@ -819,20 +819,20 @@ void itProcessSearchItemAttack(GObj *this_gobj) // Check other items for hit det
 
                                 these_flags.group_id = 7;
 
-                                for (n = 0; n < ARRAY_COUNT(this_hit->atk_records); n++)
+                                for (n = 0; n < ARRAY_COUNT(this_hit->attack_records); n++)
                                 {
-                                    if (other_gobj == this_hit->atk_records[n].victim_gobj)
+                                    if (other_gobj == this_hit->attack_records[n].victim_gobj)
                                     {
-                                        these_flags = this_hit->atk_records[n].victim_flags;
+                                        these_flags = this_hit->attack_records[n].victim_flags;
 
                                         break;
                                     }
                                 }
                                 if ((these_flags.is_interact_hurt) || (these_flags.is_interact_shield) || (these_flags.group_id != 7)) goto hurtbox_check;
 
-                                for (i = 0; i < other_hit->atk_count; i++)
+                                for (i = 0; i < other_hit->attack_count; i++)
                                 {
-                                    for (j = 0; j < this_hit->atk_count; j++)
+                                    for (j = 0; j < this_hit->attack_count; j++)
                                     {
                                         if (gmCollisionCheckItemAttacksCollide(other_hit, i, this_hit, j) != FALSE)
                                         {
@@ -849,17 +849,17 @@ void itProcessSearchItemAttack(GObj *this_gobj) // Check other items for hit det
                     }
                 }
             hurtbox_check:
-                for (i = 0; i < other_hit->atk_count; i++) // ...it also flips you off if you DON'T reuse 'i' here
+                for (i = 0; i < other_hit->attack_count; i++) // ...it also flips you off if you DON'T reuse 'i' here
                 {
-                    dmg_coll = &this_ip->dmg_coll;
+                    damage_coll = &this_ip->damage_coll;
 
-                    if (this_ip->dmg_coll.hitstatus == nGMHitStatusNone) break;
+                    if (this_ip->damage_coll.hitstatus == nGMHitStatusNone) break;
 
-                    if (dmg_coll->hitstatus == nGMHitStatusIntangible) continue;
+                    if (damage_coll->hitstatus == nGMHitStatusIntangible) continue;
 
-                    if (gmCollisionCheckItemAttackDamageCollide(other_hit, i, dmg_coll, this_gobj) != FALSE)
+                    if (gmCollisionCheckItemAttackDamageCollide(other_hit, i, damage_coll, this_gobj) != FALSE)
                     {
-                        itProcessUpdateDamageStatItem(other_ip, other_hit, i, this_ip, dmg_coll, other_gobj, this_gobj);
+                        itProcessUpdateDamageStatItem(other_ip, other_hit, i, this_ip, damage_coll, other_gobj, this_gobj);
 
                         goto next_gobj;
                     }
@@ -874,69 +874,69 @@ void itProcessSearchItemAttack(GObj *this_gobj) // Check other items for hit det
 // 0x80170C84
 void itProcessSearchWeaponAttack(GObj *item_gobj) // Check weapons for hit detection
 {
-    ITAttackColl *it_atk_coll;
+    ITAttackColl *it_attack_coll;
     WPStruct *wp;
     ITStruct *ip;
     GObj *weapon_gobj;
-    WPAttackColl *wp_atk_coll;
+    WPAttackColl *wp_attack_coll;
     GMHitFlags these_flags;
     GMHitFlags those_flags;
     s32 i, j, m, n;
     sb32 is_check_self;
-    ITDamageColl *dmg_coll;
+    ITDamageColl *damage_coll;
 
     ip = itGetStruct(item_gobj);
-    it_atk_coll = &ip->atk_coll;
+    it_attack_coll = &ip->attack_coll;
 
-    if (ip->dmg_coll.interact_mask & GMHITCOLLISION_FLAG_WEAPON)
+    if (ip->damage_coll.interact_mask & GMHITCOLLISION_FLAG_WEAPON)
     {
         weapon_gobj = gGCCommonLinks[nGCCommonLinkIDWeapon];
 
         while (weapon_gobj != NULL)
         {
             wp = wpGetStruct(weapon_gobj);
-            wp_atk_coll = &wp->atk_coll;
+            wp_attack_coll = &wp->attack_coll;
 
             if ((ip->owner_gobj == wp->owner_gobj) && !(ip->is_damage_all)) goto next_gobj;
 
             if ((gBattleState->is_team_battle == TRUE) && (gBattleState->is_team_attack == FALSE) && (ip->team == wp->team) && !(ip->is_damage_all)) goto next_gobj;
 
-            if (wp_atk_coll->atk_state != nGMAttackStateOff)
+            if (wp_attack_coll->attack_state != nGMAttackStateOff)
             {
-                if (wp_atk_coll->interact_mask & GMHITCOLLISION_FLAG_ITEM)
+                if (wp_attack_coll->interact_mask & GMHITCOLLISION_FLAG_ITEM)
                 {
                     those_flags.is_interact_hurt = those_flags.is_interact_shield = FALSE;
 
                     those_flags.group_id = 7;
 
-                    for (m = 0; m < ARRAY_COUNT(wp_atk_coll->atk_records); m++) // IDO will flip you off if you don't use a new iterator here...
+                    for (m = 0; m < ARRAY_COUNT(wp_attack_coll->attack_records); m++) // IDO will flip you off if you don't use a new iterator here...
                     {
-                        if (item_gobj == wp_atk_coll->atk_records[m].victim_gobj)
+                        if (item_gobj == wp_attack_coll->attack_records[m].victim_gobj)
                         {
-                            those_flags = wp_atk_coll->atk_records[m].victim_flags;
+                            those_flags = wp_attack_coll->attack_records[m].victim_flags;
 
                             break;
                         }
                     }
                     if ((those_flags.is_interact_hurt) || (those_flags.is_interact_shield) || (those_flags.group_id != 7)) goto next_gobj;
                     
-                    if ((it_atk_coll->can_setoff) && (wp_atk_coll->can_setoff) && (ip->owner_gobj != wp->owner_gobj))
+                    if ((it_attack_coll->can_setoff) && (wp_attack_coll->can_setoff) && (ip->owner_gobj != wp->owner_gobj))
                     {
                         if ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (ip->team != wp->team))
                         {
-                            if (it_atk_coll->atk_state != nGMAttackStateOff)
+                            if (it_attack_coll->attack_state != nGMAttackStateOff)
                             {
-                                if(it_atk_coll->interact_mask & GMHITCOLLISION_FLAG_WEAPON)
+                                if(it_attack_coll->interact_mask & GMHITCOLLISION_FLAG_WEAPON)
                                 {
                                     these_flags.is_interact_hurt = these_flags.is_interact_shield = FALSE;
 
                                     these_flags.group_id = 7;
 
-                                    for (n = 0; n < ARRAY_COUNT(it_atk_coll->atk_records); n++)
+                                    for (n = 0; n < ARRAY_COUNT(it_attack_coll->attack_records); n++)
                                     {
-                                        if (weapon_gobj == it_atk_coll->atk_records[n].victim_gobj)
+                                        if (weapon_gobj == it_attack_coll->attack_records[n].victim_gobj)
                                         {
-                                            these_flags = it_atk_coll->atk_records[n].victim_flags;
+                                            these_flags = it_attack_coll->attack_records[n].victim_flags;
 
                                             break;
                                         }
@@ -944,13 +944,13 @@ void itProcessSearchWeaponAttack(GObj *item_gobj) // Check weapons for hit detec
 
                                     if ((these_flags.is_interact_hurt) || (these_flags.is_interact_shield) || (these_flags.group_id != 7)) goto hurtbox_check;
 
-                                    else for (i = 0; i < wp_atk_coll->atk_count; i++)
+                                    else for (i = 0; i < wp_attack_coll->attack_count; i++)
                                     {
-                                        for (j = 0; j < it_atk_coll->atk_count; j++)
+                                        for (j = 0; j < it_attack_coll->attack_count; j++)
                                         {
-                                            if (gmCollisionCheckWeaponAttackItemAttackCollide(wp_atk_coll, i, it_atk_coll, j) != FALSE)
+                                            if (gmCollisionCheckWeaponAttackItemAttackCollide(wp_attack_coll, i, it_attack_coll, j) != FALSE)
                                             {
-                                                itProcessUpdateAttackStatWeapon(wp, wp_atk_coll, i, ip, it_atk_coll, j, weapon_gobj, item_gobj);
+                                                itProcessUpdateAttackStatWeapon(wp, wp_attack_coll, i, ip, it_attack_coll, j, weapon_gobj, item_gobj);
 
                                                 if (wp->hit_attack_damage != 0) goto next_gobj;
 
@@ -964,17 +964,17 @@ void itProcessSearchWeaponAttack(GObj *item_gobj) // Check weapons for hit detec
                         }
                     }
                 hurtbox_check:
-                    for (i = 0; i < wp_atk_coll->atk_count; i++) // ...it also flips you off if you DON'T reuse 'i' here
+                    for (i = 0; i < wp_attack_coll->attack_count; i++) // ...it also flips you off if you DON'T reuse 'i' here
                     {
-                        dmg_coll = &ip->dmg_coll;
+                        damage_coll = &ip->damage_coll;
 
-                        if (ip->dmg_coll.hitstatus == nGMHitStatusNone) break;
+                        if (ip->damage_coll.hitstatus == nGMHitStatusNone) break;
 
-                        else if (dmg_coll->hitstatus == nGMHitStatusIntangible) continue;
+                        else if (damage_coll->hitstatus == nGMHitStatusIntangible) continue;
 
-                        else if (gmCollisionCheckWeaponAttackItemDamageCollide(wp_atk_coll, i, dmg_coll, item_gobj) != FALSE)
+                        else if (gmCollisionCheckWeaponAttackItemDamageCollide(wp_attack_coll, i, damage_coll, item_gobj) != FALSE)
                         {
-                            itProcessUpdateDamageStatWeapon(wp, wp_atk_coll, i, ip, dmg_coll, weapon_gobj, item_gobj);
+                            itProcessUpdateDamageStatWeapon(wp, wp_attack_coll, i, ip, damage_coll, weapon_gobj, item_gobj);
 
                             break;
                         }
@@ -1039,7 +1039,7 @@ void itProcessProcHitCollisions(GObj *item_gobj)
     }
     if (ip->hit_shield_damage != 0)
     {
-        if ((ip->atk_coll.can_hop) && (ip->ga == nMPKineticsAir))
+        if ((ip->attack_coll.can_hop) && (ip->ga == nMPKineticsAir))
         {
             if (ip->shield_collide_angle < ITEM_HOP_ANGLE_DEFAULT)
             {
@@ -1093,8 +1093,8 @@ next_check:
         ip->player = fp->player;
         ip->player_number = fp->player_number;
         ip->handicap = fp->handicap;
-        ip->atk_coll.stat_flags = ip->reflect_stat_flags;
-        ip->atk_coll.stat_count = ip->reflect_stat_count;
+        ip->attack_coll.stat_flags = ip->reflect_stat_flags;
+        ip->attack_coll.stat_count = ip->reflect_stat_count;
 
         if (ip->proc_reflector != NULL)
         {
@@ -1106,11 +1106,11 @@ next_check:
         }
         if (!(ip->is_static_damage))
         {
-            ip->atk_coll.damage = (ip->atk_coll.damage * ITEM_REFLECT_MUL_DEFAULT) + ITEM_REFLECT_ADD_DEFAULT;
+            ip->attack_coll.damage = (ip->attack_coll.damage * ITEM_REFLECT_MUL_DEFAULT) + ITEM_REFLECT_ADD_DEFAULT;
 
-            if (ip->atk_coll.damage > ITEM_REFLECT_MAX_DEFAULT)
+            if (ip->attack_coll.damage > ITEM_REFLECT_MAX_DEFAULT)
             {
-                ip->atk_coll.damage = ITEM_REFLECT_MAX_DEFAULT;
+                ip->attack_coll.damage = ITEM_REFLECT_MAX_DEFAULT;
             }
         }
     }

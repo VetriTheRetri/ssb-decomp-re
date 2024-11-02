@@ -54,16 +54,16 @@ void itPorygonCommonUpdateMonsterEvent(GObj *item_gobj)
 
     if (ip->multi == ev[ip->event_id].timer)
     {
-        ip->atk_coll.angle            = ev[ip->event_id].angle;
-        ip->atk_coll.damage           = ev[ip->event_id].damage;
-        ip->atk_coll.size             = ev[ip->event_id].size;
-        ip->atk_coll.knockback_scale  = ev[ip->event_id].knockback_scale;
-        ip->atk_coll.knockback_weight = ev[ip->event_id].knockback_weight;
-        ip->atk_coll.knockback_base   = ev[ip->event_id].knockback_base;
-        ip->atk_coll.element          = ev[ip->event_id].element;
-        ip->atk_coll.can_setoff       = ev[ip->event_id].can_setoff;
-        ip->atk_coll.shield_damage    = ev[ip->event_id].shield_damage;
-        ip->atk_coll.fgm_id          = ev[ip->event_id].fgm_id;
+        ip->attack_coll.angle            = ev[ip->event_id].angle;
+        ip->attack_coll.damage           = ev[ip->event_id].damage;
+        ip->attack_coll.size             = ev[ip->event_id].size;
+        ip->attack_coll.knockback_scale  = ev[ip->event_id].knockback_scale;
+        ip->attack_coll.knockback_weight = ev[ip->event_id].knockback_weight;
+        ip->attack_coll.knockback_base   = ev[ip->event_id].knockback_base;
+        ip->attack_coll.element          = ev[ip->event_id].element;
+        ip->attack_coll.can_setoff       = ev[ip->event_id].can_setoff;
+        ip->attack_coll.shield_damage    = ev[ip->event_id].shield_damage;
+        ip->attack_coll.fgm_id          = ev[ip->event_id].fgm_id;
 
         ip->event_id++;
 

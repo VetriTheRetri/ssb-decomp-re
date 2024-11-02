@@ -202,7 +202,7 @@ void itMainResetPlayerVars(GObj *item_gobj)
     ip->player = ITEM_PORT_DEFAULT;
     ip->handicap = ITEM_HANDICAP_DEFAULT;
     ip->player_number = 0;
-    ip->atk_coll.throw_mul = ITEM_THROW_DEFAULT;
+    ip->attack_coll.throw_mul = ITEM_THROW_DEFAULT;
 
     ip->display_mode = gITManagerDisplayMode;
 }
@@ -212,9 +212,9 @@ void itMainClearAtkRecord(ITStruct *ip)
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(ip->atk_coll.atk_records); i++)
+    for (i = 0; i < ARRAY_COUNT(ip->attack_coll.attack_records); i++)
     {
-        GMAttackRecord *record = &ip->atk_coll.atk_records[i];
+        GMAttackRecord *record = &ip->attack_coll.attack_records[i];
 
         record->victim_gobj = NULL;
 
@@ -233,7 +233,7 @@ void itMainRefreshAtk(GObj *item_gobj)
 
     itMainClearAtkRecord(ip);
 
-    ip->atk_coll.atk_state = nGMAttackStateNew;
+    ip->attack_coll.attack_state = nGMAttackStateNew;
 
     itProcessUpdateHitPositions(item_gobj);
 }
@@ -272,11 +272,11 @@ s32 itMainGetDamageOutput(ITStruct *ip)
     {
         f32 mag = syVectorMag3D(&ip->physics.vel_air) * 0.1F;
 
-        damage = (ip->atk_coll.damage + mag) * ip->atk_coll.throw_mul;
+        damage = (ip->attack_coll.damage + mag) * ip->attack_coll.throw_mul;
     }
-    else damage = ip->atk_coll.damage;
+    else damage = ip->attack_coll.damage;
 
-    return (damage * ip->atk_coll.stale) + 0.999F;
+    return (damage * ip->attack_coll.stale) + 0.999F;
 }
 
 // 0x80172890
@@ -350,10 +350,10 @@ void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_fl
     ip->times_thrown++;
     ip->is_thrown = TRUE;
 
-    ip->atk_coll.throw_mul = stale;
+    ip->attack_coll.throw_mul = stale;
 
-    ip->atk_coll.stat_flags = *(GMStatFlags*)&stat_flags;
-    ip->atk_coll.stat_count = stat_count;
+    ip->attack_coll.stat_flags = *(GMStatFlags*)&stat_flags;
+    ip->attack_coll.stat_count = stat_count;
 
     ftParamSetHammerParams(fighter_gobj);
     itMainRefreshAtk(item_gobj);
@@ -490,7 +490,7 @@ void itMainSetGroundAllowPickup(GObj *item_gobj) // Airborne item becomes ground
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->atk_coll.atk_state = nGMAttackStateOff;
+    ip->attack_coll.attack_state = nGMAttackStateOff;
 
     ip->physics.vel_air.x = ip->physics.vel_air.y = ip->physics.vel_air.z = 0.0F;
 
@@ -518,10 +518,10 @@ void itMainSetItemStatus(GObj *item_gobj, ITStatusDesc *status_desc, s32 status_
 
     ip->is_thrown = FALSE;
 
-    ip->atk_coll.stat_flags.stat_attack_id = nFTStatusAttackIDNull;
-    ip->atk_coll.stat_flags.is_smash_attack = ip->atk_coll.stat_flags.ga = ip->atk_coll.stat_flags.is_projectile = FALSE;
+    ip->attack_coll.stat_flags.stat_attack_id = nFTStatusAttackIDNull;
+    ip->attack_coll.stat_flags.is_smash_attack = ip->attack_coll.stat_flags.ga = ip->attack_coll.stat_flags.is_projectile = FALSE;
 
-    ip->atk_coll.stat_count = ftParamGetStatUpdateCount();
+    ip->attack_coll.stat_count = ftParamGetStatUpdateCount();
 }
 
 // 0x80172F98
@@ -612,9 +612,9 @@ void itMainUpdateAttackEvent(GObj *item_gobj, ITAttackEvent *ev)
 
     if (ip->multi == ev[ip->event_id].timer)
     {
-        ip->atk_coll.angle  = ev[ip->event_id].angle;
-        ip->atk_coll.damage = ev[ip->event_id].damage;
-        ip->atk_coll.size   = ev[ip->event_id].size;
+        ip->attack_coll.angle  = ev[ip->event_id].angle;
+        ip->attack_coll.damage = ev[ip->event_id].damage;
+        ip->attack_coll.size   = ev[ip->event_id].size;
 
         ip->event_id++;
 

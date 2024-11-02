@@ -126,11 +126,11 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
 
         wp->display_mode = fp->display_mode;
 
-        wp->atk_coll.stale = ftParamGetStale(fp->player, fp->attack_id, fp->motion_count);
-        wp->atk_coll.attack_id = fp->attack_id;
-        wp->atk_coll.motion_count = fp->motion_count;
-        wp->atk_coll.stat_flags = fp->stat_flags;
-        wp->atk_coll.stat_count = fp->stat_count;
+        wp->attack_coll.stale = ftParamGetStale(fp->player, fp->attack_id, fp->motion_count);
+        wp->attack_coll.attack_id = fp->attack_id;
+        wp->attack_coll.motion_count = fp->motion_count;
+        wp->attack_coll.stat_flags = fp->stat_flags;
+        wp->attack_coll.stat_count = fp->stat_count;
         break;
 
     case WEAPON_FLAG_PARENT_WEAPON: // Weapons spawned by other weapons
@@ -144,11 +144,11 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
 
         wp->display_mode = owner_wp->display_mode;
 
-        wp->atk_coll.stale = owner_wp->atk_coll.stale;
-        wp->atk_coll.attack_id = owner_wp->atk_coll.attack_id;
-        wp->atk_coll.motion_count = owner_wp->atk_coll.motion_count;
-        wp->atk_coll.stat_flags = owner_wp->atk_coll.stat_flags;
-        wp->atk_coll.stat_count = owner_wp->atk_coll.stat_count;
+        wp->attack_coll.stale = owner_wp->attack_coll.stale;
+        wp->attack_coll.attack_id = owner_wp->attack_coll.attack_id;
+        wp->attack_coll.motion_count = owner_wp->attack_coll.motion_count;
+        wp->attack_coll.stat_flags = owner_wp->attack_coll.stat_flags;
+        wp->attack_coll.stat_count = owner_wp->attack_coll.stat_count;
         break;
 
     case WEAPON_FLAG_PARENT_ITEM: // Weapons spawned by items
@@ -162,11 +162,11 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
 
         wp->display_mode = ip->display_mode;
 
-        wp->atk_coll.stale = ip->atk_coll.stale;
-        wp->atk_coll.attack_id = ip->atk_coll.attack_id;
-        wp->atk_coll.motion_count = ip->atk_coll.motion_count;
-        wp->atk_coll.stat_flags = ip->atk_coll.stat_flags;
-        wp->atk_coll.stat_count = ip->atk_coll.stat_count;
+        wp->attack_coll.stale = ip->attack_coll.stale;
+        wp->attack_coll.attack_id = ip->attack_coll.attack_id;
+        wp->attack_coll.motion_count = ip->attack_coll.motion_count;
+        wp->attack_coll.stat_flags = ip->attack_coll.stat_flags;
+        wp->attack_coll.stat_count = ip->attack_coll.stat_count;
         break;
 
     default: // Weapons spawned independently 
@@ -180,60 +180,60 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
 
         wp->display_mode = sWPManagerDisplayMode;
 
-        wp->atk_coll.attack_id = nFTMotionAttackIDNone;
-        wp->atk_coll.stale = WEAPON_STALE_DEFAULT;
-        wp->atk_coll.motion_count = ftParamGetMotionCount();
-        wp->atk_coll.stat_flags.stat_attack_id = nFTStatusAttackIDNone;
-        wp->atk_coll.stat_flags.is_smash_attack = wp->atk_coll.stat_flags.ga = wp->atk_coll.stat_flags.is_projectile = 0;
-        wp->atk_coll.stat_count = ftParamGetStatUpdateCount();
+        wp->attack_coll.attack_id = nFTMotionAttackIDNone;
+        wp->attack_coll.stale = WEAPON_STALE_DEFAULT;
+        wp->attack_coll.motion_count = ftParamGetMotionCount();
+        wp->attack_coll.stat_flags.stat_attack_id = nFTStatusAttackIDNone;
+        wp->attack_coll.stat_flags.is_smash_attack = wp->attack_coll.stat_flags.ga = wp->attack_coll.stat_flags.is_projectile = 0;
+        wp->attack_coll.stat_count = ftParamGetStatUpdateCount();
         break;
     }
-    wp->atk_coll.atk_state = nGMAttackStateNew;
+    wp->attack_coll.attack_state = nGMAttackStateNew;
     
     wp->physics.vel_air.x = wp->physics.vel_air.y = wp->physics.vel_air.z = 0.0F;
 
     wp->physics.vel_ground = 0.0F;
 
-    wp->atk_coll.damage = attr->damage;
+    wp->attack_coll.damage = attr->damage;
 
-    wp->atk_coll.element = attr->element;
+    wp->attack_coll.element = attr->element;
 
-    wp->atk_coll.offsets[0].x = attr->atk_offsets[0].x;
-    wp->atk_coll.offsets[0].y = attr->atk_offsets[0].y;
-    wp->atk_coll.offsets[0].z = attr->atk_offsets[0].z;
-    wp->atk_coll.offsets[1].x = attr->atk_offsets[1].x;
-    wp->atk_coll.offsets[1].y = attr->atk_offsets[1].y;
-    wp->atk_coll.offsets[1].z = attr->atk_offsets[1].z;
+    wp->attack_coll.offsets[0].x = attr->attack_offsets[0].x;
+    wp->attack_coll.offsets[0].y = attr->attack_offsets[0].y;
+    wp->attack_coll.offsets[0].z = attr->attack_offsets[0].z;
+    wp->attack_coll.offsets[1].x = attr->attack_offsets[1].x;
+    wp->attack_coll.offsets[1].y = attr->attack_offsets[1].y;
+    wp->attack_coll.offsets[1].z = attr->attack_offsets[1].z;
 
-    wp->atk_coll.size = attr->size * 0.5F;
+    wp->attack_coll.size = attr->size * 0.5F;
 
-    wp->atk_coll.angle = attr->angle;
+    wp->attack_coll.angle = attr->angle;
 
-    wp->atk_coll.knockback_scale = attr->knockback_scale;
-    wp->atk_coll.knockback_weight = attr->knockback_weight;
-    wp->atk_coll.knockback_base = attr->knockback_base;
+    wp->attack_coll.knockback_scale = attr->knockback_scale;
+    wp->attack_coll.knockback_weight = attr->knockback_weight;
+    wp->attack_coll.knockback_base = attr->knockback_base;
 
-    wp->atk_coll.can_setoff = attr->can_setoff;
+    wp->attack_coll.can_setoff = attr->can_setoff;
 
-    wp->atk_coll.shield_damage = attr->shield_damage;
+    wp->attack_coll.shield_damage = attr->shield_damage;
 
-    wp->atk_coll.fgm_id = attr->sfx;
+    wp->attack_coll.fgm_id = attr->sfx;
 
-    wp->atk_coll.priority = attr->priority;
+    wp->attack_coll.priority = attr->priority;
 
-    wp->atk_coll.can_rehit_item = attr->can_rehit_item;
-    wp->atk_coll.can_rehit_fighter = attr->can_rehit_fighter;
-    wp->atk_coll.can_rehit_shield = FALSE;
+    wp->attack_coll.can_rehit_item = attr->can_rehit_item;
+    wp->attack_coll.can_rehit_fighter = attr->can_rehit_fighter;
+    wp->attack_coll.can_rehit_shield = FALSE;
 
-    wp->atk_coll.can_hop = attr->can_hop;
-    wp->atk_coll.can_reflect = attr->can_reflect;
-    wp->atk_coll.can_absorb = attr->can_absorb;
-    wp->atk_coll.can_not_heal = FALSE;
-    wp->atk_coll.can_shield = attr->can_shield;
+    wp->attack_coll.can_hop = attr->can_hop;
+    wp->attack_coll.can_reflect = attr->can_reflect;
+    wp->attack_coll.can_absorb = attr->can_absorb;
+    wp->attack_coll.can_not_heal = FALSE;
+    wp->attack_coll.can_shield = attr->can_shield;
     
-    wp->atk_coll.atk_count = attr->atk_count;
+    wp->attack_coll.attack_count = attr->attack_count;
 
-    wp->atk_coll.interact_mask = GMHITCOLLISION_FLAG_ALL;
+    wp->attack_coll.interact_mask = GMHITCOLLISION_FLAG_ALL;
 
     wpMainClearAtkRecord(wp);
 
@@ -284,11 +284,11 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
     wp->coll_data.p_translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
     wp->coll_data.p_lr = &wp->lr;
 
-    wp->coll_data.obj_coll.top = attr->obj_coll_top;
-    wp->coll_data.obj_coll.center = attr->obj_coll_center;
-    wp->coll_data.obj_coll.bottom = attr->obj_coll_bottom;
-    wp->coll_data.obj_coll.width = attr->obj_coll_width;
-    wp->coll_data.p_obj_coll = &wp->coll_data.obj_coll;
+    wp->coll_data.object_coll.top = attr->object_coll_top;
+    wp->coll_data.object_coll.center = attr->object_coll_center;
+    wp->coll_data.object_coll.bottom = attr->object_coll_bottom;
+    wp->coll_data.object_coll.width = attr->object_coll_width;
+    wp->coll_data.p_object_coll = &wp->coll_data.object_coll;
 
     wp->coll_data.ignore_line_id = -1;
     wp->coll_data.ground_line_id = -1;

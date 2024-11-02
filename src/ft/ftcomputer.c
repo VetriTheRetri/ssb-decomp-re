@@ -3915,7 +3915,7 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
     f32 hurtbox_detect_height;
     f32 predict_pos_x;
     f32 predict_pos_y;
-    f32 dmg_coll_size_mul;
+    f32 damage_coll_size_mul;
     f32 detect_far_x;
     f32 detect_near_x;
     f32 detect_near_y;
@@ -3968,10 +3968,10 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
     this_pos_x = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
     this_pos_y = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
 
-    dmg_coll_size_mul = (((mtTrigGetRandomFloat() - 0.5F) * (FTCOMPUTER_LEVEL_MAX - this_fp->cp_level)) * 0.1F) + 1.0F;
+    damage_coll_size_mul = (((mtTrigGetRandomFloat() - 0.5F) * (FTCOMPUTER_LEVEL_MAX - this_fp->cp_level)) * 0.1F) + 1.0F;
 
-    hurtbox_detect_width = target_fp->dmg_coll_size.x * dmg_coll_size_mul;
-    hurtbox_detect_height = target_fp->dmg_coll_size.y * dmg_coll_size_mul;
+    hurtbox_detect_width = target_fp->damage_coll_size.x * damage_coll_size_mul;
+    hurtbox_detect_height = target_fp->damage_coll_size.y * damage_coll_size_mul;
 
     target_pos_x = target_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
     target_pos_y = target_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
@@ -4860,39 +4860,39 @@ sb32 ftComputerCheckTargetItemOrTwister(FTStruct *fp)
                 )
                 ||
                 (
-                    (ip->atk_coll.atk_state != nGMAttackStateOff) && (ip->atk_coll.atk_state != nGMAttackStateNew)
+                    (ip->attack_coll.attack_state != nGMAttackStateOff) && (ip->attack_coll.attack_state != nGMAttackStateNew)
                 )
                 &&
-                (ip->atk_coll.interact_mask & GMHITCOLLISION_FLAG_FIGHTER)
+                (ip->attack_coll.interact_mask & GMHITCOLLISION_FLAG_FIGHTER)
             )
         )
         {
-            ITAttackColl *it_atk_coll = &ip->atk_coll;
-            s32 atk_id = 0;
+            ITAttackColl *it_attack_coll = &ip->attack_coll;
+            s32 attack_id = 0;
 
-            if (it_atk_coll->atk_count > 0)
+            if (it_attack_coll->attack_count > 0)
             {
-                dist_x = (predict_x < it_atk_coll->atk_pos[atk_id].pos_curr.x) ? 
-                        -(predict_x - it_atk_coll->atk_pos[atk_id].pos_curr.x) :    
-                         (predict_x - it_atk_coll->atk_pos[atk_id].pos_curr.x) ;
+                dist_x = (predict_x < it_attack_coll->attack_pos[attack_id].pos_curr.x) ? 
+                        -(predict_x - it_attack_coll->attack_pos[attack_id].pos_curr.x) :    
+                         (predict_x - it_attack_coll->attack_pos[attack_id].pos_curr.x) ;
 
-                if (dist_x < it_atk_coll->size)
+                if (dist_x < it_attack_coll->size)
                 {
-                    dist_y = (predict_y < it_atk_coll->atk_pos[atk_id].pos_curr.y) ? 
-                            -(predict_y - it_atk_coll->atk_pos[atk_id].pos_curr.y) : 
-                             (predict_y - it_atk_coll->atk_pos[atk_id].pos_curr.y) ;
+                    dist_y = (predict_y < it_attack_coll->attack_pos[attack_id].pos_curr.y) ? 
+                            -(predict_y - it_attack_coll->attack_pos[attack_id].pos_curr.y) : 
+                             (predict_y - it_attack_coll->attack_pos[attack_id].pos_curr.y) ;
 
-                    if (dist_y < it_atk_coll->size)
+                    if (dist_y < it_attack_coll->size)
                     {
                         com->ftcom_flags_0x4A_b1 = FALSE;
 
                         if (fp->ga != nMPKineticsGround)
                         {
-                            com->target_pos.x = (com->target_pos.x < it_atk_coll->atk_pos[atk_id].pos_curr.x) ?
-                                                                (it_atk_coll->atk_pos[atk_id].pos_curr.x + 1500.0F) :
-                                                                (it_atk_coll->atk_pos[atk_id].pos_curr.x - 1500.0F) ;
+                            com->target_pos.x = (com->target_pos.x < it_attack_coll->attack_pos[attack_id].pos_curr.x) ?
+                                                                (it_attack_coll->attack_pos[attack_id].pos_curr.x + 1500.0F) :
+                                                                (it_attack_coll->attack_pos[attack_id].pos_curr.x - 1500.0F) ;
 
-                            com->target_pos.y = it_atk_coll->atk_pos[atk_id].pos_curr.y;
+                            com->target_pos.y = it_attack_coll->attack_pos[attack_id].pos_curr.y;
                         }
                         else
                         {
@@ -5294,7 +5294,7 @@ sb32 func_ovl3_80135B78(FTStruct *this_fp)
     GObj *fighter_gobj;
     GObj *weapon_gobj;
     GObj *item_gobj;
-    f32 atk_size;
+    f32 attack_size;
     f32 predict_vel_x;
     f32 predict_div_x;
     f32 this_pos_x;
@@ -5305,10 +5305,10 @@ sb32 func_ovl3_80135B78(FTStruct *this_fp)
     ITStruct *ip;
     FTStruct *other_fp;
     FTComputer *com;
-    WPAttackColl *wp_atk_coll;
-    ITAttackColl *it_atk_coll;
-    ITAttackPos *it_atk_collpos;
-    WPAttackPos *wp_atk_collpos;
+    WPAttackColl *wp_attack_coll;
+    ITAttackColl *it_attack_coll;
+    ITAttackPos *it_attack_collpos;
+    WPAttackPos *wp_attack_collpos;
     s32 i;
 
     com = &this_fp->computer;
@@ -5346,23 +5346,23 @@ sb32 func_ovl3_80135B78(FTStruct *this_fp)
         {
             if ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (wp->team != this_fp->team))
             {
-                if ((wp->atk_coll.atk_state != nGMAttackStateOff) && (wp->atk_coll.atk_state != nGMAttackStateNew) && (wp->atk_coll.interact_mask & GMHITCOLLISION_FLAG_FIGHTER))
+                if ((wp->attack_coll.attack_state != nGMAttackStateOff) && (wp->attack_coll.attack_state != nGMAttackStateNew) && (wp->attack_coll.interact_mask & GMHITCOLLISION_FLAG_FIGHTER))
                 {
-                    wp_atk_coll = &wp->atk_coll;
+                    wp_attack_coll = &wp->attack_coll;
 
-                    for (i = 0; i < wp_atk_coll->atk_count; i++)
+                    for (i = 0; i < wp_attack_coll->attack_count; i++)
                     {
                         predict_vel_x = (wp->physics.vel_air.x - this_fp->physics.vel_air.x) * wp->lr;
 
                         if (predict_vel_x > 0.0F)
                         {
-                            wp_atk_collpos = &wp_atk_coll->atk_pos[i];
+                            wp_attack_collpos = &wp_attack_coll->attack_pos[i];
 
-                            predict_pos_x = (this_pos_x - wp_atk_coll->atk_pos[i].pos_curr.x) * wp->lr;
+                            predict_pos_x = (this_pos_x - wp_attack_coll->attack_pos[i].pos_curr.x) * wp->lr;
 
-                            atk_size = wp_atk_coll->size * 0.5F;
+                            attack_size = wp_attack_coll->size * 0.5F;
 
-                            predict_pos_x -= (this_fp->dmg_coll_size.x + atk_size);
+                            predict_pos_x -= (this_fp->damage_coll_size.x + attack_size);
 
                             if (predict_pos_x > 0.0F)
                             {
@@ -5372,7 +5372,7 @@ sb32 func_ovl3_80135B78(FTStruct *this_fp)
                                 {
                                     predict_pos_y = (this_fp->ga != nMPKineticsGround) ? (this_fp->physics.vel_air.y * predict_div_x) + this_pos_y : this_pos_y;
 
-                                    if ((((wp_atk_coll->atk_pos[i].pos_curr.y - atk_size) - this_fp->dmg_coll_size.y) < predict_pos_y) && (predict_pos_y < (wp_atk_coll->atk_pos[i].pos_curr.y + atk_size)))
+                                    if ((((wp_attack_coll->attack_pos[i].pos_curr.y - attack_size) - this_fp->damage_coll_size.y) < predict_pos_y) && (predict_pos_y < (wp_attack_coll->attack_pos[i].pos_curr.y + attack_size)))
                                     {
                                         com->target_pos.y = predict_pos_y;
                                         com->unk_ftcom_0x38 = predict_div_x;
@@ -5415,21 +5415,21 @@ sb32 func_ovl3_80135B78(FTStruct *this_fp)
         {
             if ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (ip->team != this_fp->team))
             {
-                if ((ip->atk_coll.atk_state != nGMAttackStateOff) && (ip->atk_coll.atk_state != nGMAttackStateNew) && (ip->atk_coll.interact_mask & GMHITCOLLISION_FLAG_FIGHTER))
+                if ((ip->attack_coll.attack_state != nGMAttackStateOff) && (ip->attack_coll.attack_state != nGMAttackStateNew) && (ip->attack_coll.interact_mask & GMHITCOLLISION_FLAG_FIGHTER))
                 {
-                    it_atk_coll = &ip->atk_coll;
+                    it_attack_coll = &ip->attack_coll;
 
-                    for (i = 0; i < it_atk_coll->atk_count; i++)
+                    for (i = 0; i < it_attack_coll->attack_count; i++)
                     {
                         predict_vel_x = (ip->physics.vel_air.x - this_fp->physics.vel_air.x) * ip->lr;
 
                         if (predict_vel_x > 0.0F)
                         {
-                            predict_pos_x = (this_pos_x - it_atk_coll->atk_pos[i].pos_curr.x) * ip->lr;
+                            predict_pos_x = (this_pos_x - it_attack_coll->attack_pos[i].pos_curr.x) * ip->lr;
 
-                            atk_size = it_atk_coll->size * 0.5F;
+                            attack_size = it_attack_coll->size * 0.5F;
 
-                            predict_pos_x -= (this_fp->dmg_coll_size.x + atk_size);
+                            predict_pos_x -= (this_fp->damage_coll_size.x + attack_size);
 
                             if (predict_pos_x > 0.0F)
                             {
@@ -5439,7 +5439,7 @@ sb32 func_ovl3_80135B78(FTStruct *this_fp)
                                 {
                                     predict_pos_y = (this_fp->ga != nMPKineticsGround) ? (this_fp->physics.vel_air.y * predict_div_x) + this_pos_y : this_pos_y;
 
-                                    if ((((it_atk_coll->atk_pos[i].pos_curr.y - atk_size) - this_fp->dmg_coll_size.y) < predict_pos_y) && (predict_pos_y < (it_atk_coll->atk_pos[i].pos_curr.y + atk_size)))
+                                    if ((((it_attack_coll->attack_pos[i].pos_curr.y - attack_size) - this_fp->damage_coll_size.y) < predict_pos_y) && (predict_pos_y < (it_attack_coll->attack_pos[i].pos_curr.y + attack_size)))
                                     {
                                         com->target_pos.y = predict_pos_y;
                                         com->unk_ftcom_0x38 = predict_div_x;
@@ -5491,7 +5491,7 @@ void func_ovl3_801361BC(FTStruct *fp)
         {
             com->target_pos.x = fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
 
-            if (((fp->joints[nFTPartsJointTopN]->translate.vec.f.y + fp->dmg_coll_size.y) < com->target_pos.y) && (fp->physics.vel_air.y <= 0.0F))
+            if (((fp->joints[nFTPartsJointTopN]->translate.vec.f.y + fp->damage_coll_size.y) < com->target_pos.y) && (fp->physics.vel_air.y <= 0.0F))
             {
                 com->target_pos.y = fp->joints[nFTPartsJointTopN]->translate.vec.f.y - 1100.0F;
             }
@@ -5603,7 +5603,7 @@ sb32 ftComputerCheckTargetItemInRange(FTStruct *fp)
     ITStruct *ip = ftGetComTargetItem(&fp->computer);
     Vec3f *ft_pos = &DObjGetStruct(fp->fighter_gobj)->translate.vec.f;
     Vec3f *it_pos = &DObjGetStruct(ip->item_gobj)->translate.vec.f;
-    MPObjectColl *obj_coll = &ip->coll_data.obj_coll;
+    MPObjectColl *object_coll = &ip->coll_data.object_coll;
 
     if (ip->weight == nITWeightLight)
     {
@@ -5612,9 +5612,9 @@ sb32 ftComputerCheckTargetItemInRange(FTStruct *fp)
         range.x = ft_pos->x + (fp->lr * item_pickup->pickup_offset_light.x);
         range.y = ft_pos->y + item_pickup->pickup_offset_light.y;
 
-        if ((((range.x - item_pickup->pickup_range_light.x) - obj_coll->width) < it_pos->x) && (((item_pickup->pickup_range_light.x + range.x) + obj_coll->width) > it_pos->x))
+        if ((((range.x - item_pickup->pickup_range_light.x) - object_coll->width) < it_pos->x) && (((item_pickup->pickup_range_light.x + range.x) + object_coll->width) > it_pos->x))
         {
-            if ((((range.y - item_pickup->pickup_range_light.y) - obj_coll->top) < it_pos->y) && (((item_pickup->pickup_range_light.y + range.y) - obj_coll->bottom) > it_pos->y))
+            if ((((range.y - item_pickup->pickup_range_light.y) - object_coll->top) < it_pos->y) && (((item_pickup->pickup_range_light.y + range.y) - object_coll->bottom) > it_pos->y))
             {
                 return TRUE;
             }
@@ -5627,9 +5627,9 @@ sb32 ftComputerCheckTargetItemInRange(FTStruct *fp)
         range.x = ft_pos->x + (fp->lr * item_pickup->pickup_offset_heavy.x);
         range.y = ft_pos->y + item_pickup->pickup_offset_heavy.y;
 
-        if ((((range.x - item_pickup->pickup_range_heavy.x) - obj_coll->width) < it_pos->x) && (((item_pickup->pickup_range_heavy.x + range.x) + obj_coll->width) > it_pos->x))
+        if ((((range.x - item_pickup->pickup_range_heavy.x) - object_coll->width) < it_pos->x) && (((item_pickup->pickup_range_heavy.x + range.x) + object_coll->width) > it_pos->x))
         {
-            if ((((range.y - item_pickup->pickup_range_heavy.y) - obj_coll->top) < it_pos->y) && (((item_pickup->pickup_range_heavy.y + range.y) - obj_coll->bottom) > it_pos->y))
+            if ((((range.y - item_pickup->pickup_range_heavy.y) - object_coll->top) < it_pos->y) && (((item_pickup->pickup_range_heavy.y + range.y) - object_coll->bottom) > it_pos->y))
             {
                 return TRUE;
             }
@@ -6203,9 +6203,9 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     }
     else com->ftcom_flags_0x49_b3 = FALSE;
 
-    if (this_fp->computer.attack_atk_count != this_fp->attack_atk_count)
+    if (this_fp->computer.attack_attack_count != this_fp->attack_attack_count)
     {
-        this_fp->computer.attack_atk_count = this_fp->attack_atk_count;
+        this_fp->computer.attack_attack_count = this_fp->attack_attack_count;
 
         if (this_fp->attack_knockback > 160.0F)
         {
@@ -7901,10 +7901,10 @@ void ftComputerSetupAll(GObj *fighter_gobj)
 }
 
 // 0x8013AC00
-void ftComputerSetFighterDamageCollSizeInfo(GObj *fighter_gobj)
+void ftComputerSetFighterDamageDetectSize(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTDamageColl *dmg_coll;
+    FTDamageColl *damage_coll;
     FTParts *parts;
     Vec3f joint_world_pos;
     f32 nearest_left;
@@ -7920,13 +7920,13 @@ void ftComputerSetFighterDamageCollSizeInfo(GObj *fighter_gobj)
     nearest_left = nearest_right;
     nearest_bottom = nearest_top;
 
-    for (i = 0; i < ARRAY_COUNT(fp->dmg_colls); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->damage_colls); i++)
     {
-        dmg_coll = &fp->dmg_colls[i];
+        damage_coll = &fp->damage_colls[i];
 
-        if (dmg_coll->hitstatus == nGMHitStatusNormal)
+        if (damage_coll->hitstatus == nGMHitStatusNormal)
         {
-            joint = dmg_coll->joint;
+            joint = damage_coll->joint;
             parts = ftGetParts(joint);
 
             if (parts->unk_dobjtrans_0x5 == 0)
@@ -7935,9 +7935,9 @@ void ftComputerSetFighterDamageCollSizeInfo(GObj *fighter_gobj)
             }
             for (j = 0; j < 8; j++)
             {
-                joint_world_pos.x = (j & 1) ? dmg_coll->offset.x + dmg_coll->size.x : dmg_coll->offset.x - dmg_coll->size.x;
-                joint_world_pos.y = (j & 2) ? dmg_coll->offset.y + dmg_coll->size.y : dmg_coll->offset.y - dmg_coll->size.y;
-                joint_world_pos.z = (j & 4) ? dmg_coll->offset.z + dmg_coll->size.z : dmg_coll->offset.z - dmg_coll->size.z;
+                joint_world_pos.x = (j & 1) ? damage_coll->offset.x + damage_coll->size.x : damage_coll->offset.x - damage_coll->size.x;
+                joint_world_pos.y = (j & 2) ? damage_coll->offset.y + damage_coll->size.y : damage_coll->offset.y - damage_coll->size.y;
+                joint_world_pos.z = (j & 4) ? damage_coll->offset.z + damage_coll->size.z : damage_coll->offset.z - damage_coll->size.z;
 
                 gmCollisionGetWorldPosition(parts->mtx_translate, &joint_world_pos);
 
@@ -7960,6 +7960,6 @@ void ftComputerSetFighterDamageCollSizeInfo(GObj *fighter_gobj)
             }
         }
     }
-    fp->dmg_coll_size.x = (nearest_right - nearest_left) * 0.55F;
-    fp->dmg_coll_size.y = (nearest_top - nearest_bottom) * 0.55F;
+    fp->damage_coll_size.x = (nearest_right - nearest_left) * 0.55F;
+    fp->damage_coll_size.y = (nearest_top - nearest_bottom) * 0.55F;
 }

@@ -192,7 +192,7 @@ void itCapsuleFallSetStatus(GObj *item_gobj)
 
     ip->is_damage_all = TRUE;
 
-    ip->dmg_coll.hitstatus = nGMHitStatusNormal;
+    ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
     itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusFall);
 }
@@ -235,7 +235,7 @@ void itCapsuleThrownSetStatus(GObj *item_gobj)
 
     ip->is_damage_all = TRUE;
 
-    ip->dmg_coll.hitstatus = nGMHitStatusNormal;
+    ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
     itMainSetItemStatus(item_gobj, dITCapsuleStatusDescs, nITCapsuleStatusThrown);
 }
@@ -298,20 +298,20 @@ void itCapsuleExplodeInitItemVars(GObj *item_gobj)
 
     ip->multi = 0;
     ip->event_id = 0;
-    ip->atk_coll.fgm_id = nSYAudioFGMExplodeL;
-    ip->atk_coll.throw_mul = ITEM_THROW_DEFAULT;
+    ip->attack_coll.fgm_id = nSYAudioFGMExplodeL;
+    ip->attack_coll.throw_mul = ITEM_THROW_DEFAULT;
 
     func_800269C0_275C0(nSYAudioFGMExplodeL);
 
-    ip->atk_coll.can_rehit_item = TRUE;
-    ip->atk_coll.can_hop = FALSE;
-    ip->atk_coll.can_reflect = FALSE;
+    ip->attack_coll.can_rehit_item = TRUE;
+    ip->attack_coll.can_hop = FALSE;
+    ip->attack_coll.can_reflect = FALSE;
 
-    ip->atk_coll.element = nGMHitElementFire;
+    ip->attack_coll.element = nGMHitElementFire;
 
-    ip->atk_coll.can_setoff = FALSE;
+    ip->attack_coll.can_setoff = FALSE;
 
-    ip->dmg_coll.hitstatus = nGMHitStatusNone;
+    ip->damage_coll.hitstatus = nGMHitStatusNone;
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshAtk(item_gobj);
@@ -333,7 +333,7 @@ void itCapsuleExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
     DObj *dobj = DObjGetStruct(item_gobj);
     LBParticle *ep;
 
-    ip->atk_coll.atk_state = nGMAttackStateOff;
+    ip->attack_coll.attack_state = nGMAttackStateOff;
 
     ip->physics.vel_air.x = 0.0F;
     ip->physics.vel_air.y = 0.0F;

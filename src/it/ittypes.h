@@ -28,7 +28,7 @@ struct ITCreateDesc
 	void **p_file;
 	intptr_t o_attributes;
 	DObjTransformTypes transform_types;
-	s32 atk_state;
+	s32 attack_state;
 	sb32 (*proc_update)(GObj*);
 	sb32 (*proc_map)(GObj*);
 	sb32 (*proc_hit)(GObj*);
@@ -79,7 +79,7 @@ struct ITAttackPos
 
 struct ITAttackColl
 {
-	s32 atk_state;										// Hitbox's position update mode (0 = disabled, 1 = fresh, 2 = transfer, 3 = interpolate)
+	s32 attack_state;										// Hitbox's position update mode (0 = disabled, 1 = fresh, 2 = transfer, 3 = interpolate)
 	s32 damage;											// Hitbox's base damage output
 	f32 throw_mul;										// Might be swapped with stale
 	f32 stale;											// Might be swapped with throw_mul
@@ -105,9 +105,9 @@ struct ITAttackColl
 	u16 motion_count;									// Item's animation update number?
 	GMStatFlags stat_flags;								// Item's status flags
 	u16 stat_count;										// Item's status update number
-	s32 atk_count;										// Item's hitbox count, up to two
-	ITAttackPos atk_pos[ITEM_ATKCOLL_NUM_MAX];			// Item hitbox positions
-	GMAttackRecord atk_records[GMATKRECORD_NUM_MAX];	// Item's record of attacked targets
+	s32 attack_count;										// Item's hitbox count, up to two
+	ITAttackPos attack_pos[ITEM_ATKCOLL_NUM_MAX];			// Item hitbox positions
+	GMAttackRecord attack_records[GMATKRECORD_NUM_MAX];	// Item's record of attacked targets
 };
 
 struct ITAttackEvent 	// Miniature hitbox subaction event? Commonly Used by explosions.
@@ -152,18 +152,18 @@ struct ITAttributes
 	ub32 is_display_colanim : 1;		// If TRUE, use ColAnim renderer
 	ub32 is_give_hitlag : 1;			// If TRUE, deal hitlag on contact
 	ub32 weight : 1; 					// Heavy = 0, Light = 1
-	s32 atk_offset0_x : 16;				// Hitbox ID0 offset X
-	s32 atk_offset0_y : 16; 			// Hitbox ID0 offset Y
-	s32 atk_offset0_z : 16;				// Hitbox ID0 offset Z
-	s32 atk_offset1_x : 16;				// Hitbox ID1 offset X
-	s32 atk_offset1_y : 16;				// Hitbox ID1 offset Y
-	s32 atk_offset1_z : 16;				// Hitbox ID1 offset Z
-	Vec3h dmg_coll_offset;				// Hurtbox offset
-	Vec3h dmg_coll_size;				// Hurtbox size
-	s16 obj_coll_top;					// Map Collision Box top
-	s16 obj_coll_center;				// Map Collision Box center
-	s16 obj_coll_bottom;				// Map Collision Box bottom
-	s16 obj_coll_width;					// Map Collision Box width
+	s32 attack_offset0_x : 16;				// Hitbox ID0 offset X
+	s32 attack_offset0_y : 16; 			// Hitbox ID0 offset Y
+	s32 attack_offset0_z : 16;				// Hitbox ID0 offset Z
+	s32 attack_offset1_x : 16;				// Hitbox ID1 offset X
+	s32 attack_offset1_y : 16;				// Hitbox ID1 offset Y
+	s32 attack_offset1_z : 16;				// Hitbox ID1 offset Z
+	Vec3h damage_coll_offset;				// Hurtbox offset
+	Vec3h damage_coll_size;				// Hurtbox size
+	s16 object_coll_top;					// Map Collision Box top
+	s16 object_coll_center;				// Map Collision Box center
+	s16 object_coll_bottom;				// Map Collision Box bottom
+	s16 object_coll_width;					// Map Collision Box width
 	u16 size;							// Hitbox size
 	s32 angle : 10;						// Hitbox launch angle
 	u32 knockback_scale : 10;			// Hitbox knockback scale
@@ -171,7 +171,7 @@ struct ITAttributes
 	u32 element : 4;					// Hitbox element
 	u32 knockback_weight : 10;			// Hitbox fixed knockback
 	s32 shield_damage : 8;				// Hitbox shield damage
-	u32 atk_count : 2;					// Number of hitboxes
+	u32 attack_count : 2;					// Number of hitboxes
 	ub32 can_setoff : 1;				// Whether hitbox can clang or not
 	u32 hit_sfx : 10;					// Hitbox FGM
 	u32 priority : 3;					// Hitbox priority
@@ -217,8 +217,8 @@ struct ITStruct 					// Common items, stage hazards, fighter items and Pokémon
 	MPCollData coll_data;	   		// Item's collision data
 	sb32 ga; 						// Ground or air bool
 
-	ITAttackColl atk_coll;	 		// Item's hitbox
-	ITDamageColl dmg_coll; 			// Item's hurtbox
+	ITAttackColl attack_coll;	 		// Item's hitbox
+	ITDamageColl damage_coll; 			// Item's hurtbox
 
 	s32 hit_normal_damage;			// Damage applied to entity this item has hit
 	s32 attack_lr;					// Direction of outgoing attack?

@@ -201,13 +201,13 @@ void ftDonkeySpecialNEndProcUpdate(GObj *fighter_gobj)
     {
         s32 i;
 
-        for (i = 0; i < ARRAY_COUNT(fp->atk_colls); i++)
+        for (i = 0; i < ARRAY_COUNT(fp->attack_colls); i++)
         {
-            FTAttackColl *atk_coll = &fp->atk_colls[i];
+            FTAttackColl *attack_coll = &fp->attack_colls[i];
 
-            if (atk_coll->atk_state == nGMAttackStateNew)
+            if (attack_coll->attack_state == nGMAttackStateNew)
             {
-                atk_coll->damage += fp->status_vars.donkey.specialn.charge_level * FTDONKEY_GIANTPUNCH_CHARGE_DAMAGE_MUL;
+                attack_coll->damage += fp->status_vars.donkey.specialn.charge_level * FTDONKEY_GIANTPUNCH_CHARGE_DAMAGE_MUL;
             }
         }
     }

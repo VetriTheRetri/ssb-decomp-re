@@ -297,8 +297,8 @@ void itTaruThrownInitItemVars(GObj *item_gobj)
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.x = F_CST_DTOR32(90.0F);
 
-    ip->coll_data.obj_coll.top = ip->coll_data.obj_coll.width;
-    ip->coll_data.obj_coll.bottom = -ip->coll_data.obj_coll.width;
+    ip->coll_data.object_coll.top = ip->coll_data.object_coll.width;
+    ip->coll_data.object_coll.bottom = -ip->coll_data.object_coll.width;
 }
 
 // 0x80179F1C
@@ -421,17 +421,17 @@ void itTaruExplodeInitItemVars(GObj *item_gobj)
     ip->multi = 0;
     ip->event_id = 0;
 
-    ip->atk_coll.fgm_id = nSYAudioFGMExplodeL;
+    ip->attack_coll.fgm_id = nSYAudioFGMExplodeL;
 
-    ip->atk_coll.can_rehit_item = TRUE;
-    ip->atk_coll.can_reflect = FALSE;
+    ip->attack_coll.can_rehit_item = TRUE;
+    ip->attack_coll.can_reflect = FALSE;
 
-    ip->atk_coll.throw_mul = ITEM_THROW_DEFAULT;
-    ip->atk_coll.element = nGMHitElementFire;
+    ip->attack_coll.throw_mul = ITEM_THROW_DEFAULT;
+    ip->attack_coll.element = nGMHitElementFire;
 
-    ip->atk_coll.can_setoff = FALSE;
+    ip->attack_coll.can_setoff = FALSE;
 
-    ip->dmg_coll.hitstatus = nGMHitStatusNone;
+    ip->damage_coll.hitstatus = nGMHitStatusNone;
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshAtk(item_gobj);
@@ -452,7 +452,7 @@ void itTaruExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    ip->atk_coll.atk_state = nGMAttackStateOff;
+    ip->attack_coll.attack_state = nGMAttackStateOff;
 
     ip->physics.vel_air.x = 0.0F;
     ip->physics.vel_air.y = 0.0F;

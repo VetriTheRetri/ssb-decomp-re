@@ -251,10 +251,10 @@ void itMSBombThrownSetStatus(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->coll_data.obj_coll.top = ITMSBOMB_COLL_SIZE;
-    ip->coll_data.obj_coll.center = 0.0F;
-    ip->coll_data.obj_coll.bottom = -ITMSBOMB_COLL_SIZE;
-    ip->coll_data.obj_coll.width = ITMSBOMB_COLL_SIZE;
+    ip->coll_data.object_coll.top = ITMSBOMB_COLL_SIZE;
+    ip->coll_data.object_coll.center = 0.0F;
+    ip->coll_data.object_coll.bottom = -ITMSBOMB_COLL_SIZE;
+    ip->coll_data.object_coll.width = ITMSBOMB_COLL_SIZE;
 
     itMainSetItemStatus(item_gobj, dITMSBombStatusDescs, nITMSBombStatusThrown);
 }
@@ -270,10 +270,10 @@ void itMSBombDroppedSetStatus(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->coll_data.obj_coll.top = ITMSBOMB_COLL_SIZE;
-    ip->coll_data.obj_coll.center = 0.0F;
-    ip->coll_data.obj_coll.bottom = -ITMSBOMB_COLL_SIZE;
-    ip->coll_data.obj_coll.width = ITMSBOMB_COLL_SIZE;
+    ip->coll_data.object_coll.top = ITMSBOMB_COLL_SIZE;
+    ip->coll_data.object_coll.center = 0.0F;
+    ip->coll_data.object_coll.bottom = -ITMSBOMB_COLL_SIZE;
+    ip->coll_data.object_coll.width = ITMSBOMB_COLL_SIZE;
 
     itMainSetItemStatus(item_gobj, dITMSBombStatusDescs, nITMSBombStatusDropped);
 }
@@ -325,10 +325,10 @@ void itMSBombAttachedInitItemVars(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    ip->coll_data.obj_coll.top = ITMSBOMB_COLL_SIZE;
-    ip->coll_data.obj_coll.center = 0.0F;
-    ip->coll_data.obj_coll.bottom = -ITMSBOMB_COLL_SIZE;
-    ip->coll_data.obj_coll.width = ITMSBOMB_COLL_SIZE;
+    ip->coll_data.object_coll.top = ITMSBOMB_COLL_SIZE;
+    ip->coll_data.object_coll.center = 0.0F;
+    ip->coll_data.object_coll.bottom = -ITMSBOMB_COLL_SIZE;
+    ip->coll_data.object_coll.width = ITMSBOMB_COLL_SIZE;
 
     ip->physics.vel_air.x = ip->physics.vel_air.y = ip->physics.vel_air.z = 0;
 
@@ -339,9 +339,9 @@ void itMSBombAttachedInitItemVars(GObj *item_gobj)
 
     ip->is_attach_surface = TRUE;
 
-    ip->dmg_coll.hitstatus = nGMHitStatusNormal;
+    ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
-    ip->atk_coll.atk_state = nGMAttackStateOff;
+    ip->attack_coll.attack_state = nGMAttackStateOff;
 
     if ((ip->player != -1) && (ip->player != GMCOMMON_PLAYERS_MAX))
     {
@@ -369,7 +369,7 @@ void itMSBombExplodeMakeEffect(GObj *item_gobj)
     {
         Vec3f translate = dobj->translate.vec.f;
 
-        translate.y += attr->obj_coll_bottom;
+        translate.y += attr->object_coll_bottom;
 
         efManagerDustHeavyDoubleMakeEffect(&translate, ip->lr, 1.0F);
     }
@@ -434,7 +434,7 @@ sb32 itMSBombAttachedProcUpdate(GObj *item_gobj)
         {
             FTStruct *fp = ftGetStruct(fighter_gobj);
             DObj *fighter_dobj = DObjGetStruct(fighter_gobj);
-            f32 var = fp->attr->obj_coll.top * 0.5F;
+            f32 var = fp->attr->object_coll.top * 0.5F;
 
             fighter_pos = fighter_dobj->translate.vec.f;
 
@@ -480,16 +480,16 @@ void itMSBombExplodeUpdateAttackEvent(GObj *item_gobj)
 
     if (ip->multi == ev[ip->event_id].timer)
     {
-        ip->atk_coll.angle  = ev[ip->event_id].angle;
-        ip->atk_coll.damage = ev[ip->event_id].damage;
-        ip->atk_coll.size   = ev[ip->event_id].size;
+        ip->attack_coll.angle  = ev[ip->event_id].angle;
+        ip->attack_coll.damage = ev[ip->event_id].damage;
+        ip->attack_coll.size   = ev[ip->event_id].size;
 
-        ip->atk_coll.can_rehit_item = TRUE;
-        ip->atk_coll.can_hop = FALSE;
-        ip->atk_coll.can_reflect = FALSE;
-        ip->atk_coll.can_setoff = FALSE;
+        ip->attack_coll.can_rehit_item = TRUE;
+        ip->attack_coll.can_hop = FALSE;
+        ip->attack_coll.can_reflect = FALSE;
+        ip->attack_coll.can_setoff = FALSE;
 
-        ip->atk_coll.element = nGMHitElementFire;
+        ip->attack_coll.element = nGMHitElementFire;
 
         ip->event_id++;
 
@@ -505,8 +505,8 @@ void itMSBombDetachedInitItemVars(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->dmg_coll.hitstatus = nGMHitStatusNormal;
-    ip->atk_coll.atk_state = nGMAttackStateOff;
+    ip->damage_coll.hitstatus = nGMHitStatusNormal;
+    ip->attack_coll.attack_state = nGMAttackStateOff;
 
     itMainClearOwnerStats(item_gobj);
 }
@@ -538,7 +538,7 @@ sb32 itMSBombDetachedProcUpdate(GObj *item_gobj)
         {
             FTStruct *fp = ftGetStruct(fighter_gobj);
             DObj *fighter_dobj = DObjGetStruct(fighter_gobj);
-            f32 offset_y = fp->attr->obj_coll.top * 0.5F;
+            f32 offset_y = fp->attr->object_coll.top * 0.5F;
 
             fighter_pos = fighter_dobj->translate.vec.f;
 
@@ -572,10 +572,10 @@ void itMSBombExplodeInitItemVars(GObj *item_gobj)
 
     ip->event_id = 0;
 
-    ip->atk_coll.throw_mul = ITEM_THROW_DEFAULT;
-    ip->atk_coll.fgm_id = nSYAudioFGMExplodeL;
+    ip->attack_coll.throw_mul = ITEM_THROW_DEFAULT;
+    ip->attack_coll.fgm_id = nSYAudioFGMExplodeL;
 
-    ip->dmg_coll.hitstatus = nGMHitStatusNone;
+    ip->damage_coll.hitstatus = nGMHitStatusNone;
 
     itMSBombExplodeUpdateAttackEvent(item_gobj);
 }

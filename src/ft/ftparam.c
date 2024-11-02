@@ -482,23 +482,23 @@ void ftParamClearAtkAll(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->atk_colls); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->attack_colls); i++)
     {
-        FTAttackColl *ft_atk_coll = &fp->atk_colls[i];
+        FTAttackColl *ft_attack_coll = &fp->attack_colls[i];
 
-        ft_atk_coll->atk_state = nGMAttackStateOff;
+        ft_attack_coll->attack_state = nGMAttackStateOff;
     }
-    fp->is_atk_active = FALSE;
+    fp->is_attack_active = FALSE;
 }
 
 // 0x800E853C
-void ftParamClearAtkRecordID(FTStruct *fp, s32 atk_id)
+void ftParamClearAtkRecordID(FTStruct *fp, s32 attack_id)
 {
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->atk_colls[atk_id].atk_records); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->attack_colls[attack_id].attack_records); i++)
     {
-        GMAttackRecord *record = &fp->atk_colls[atk_id].atk_records[i];
+        GMAttackRecord *record = &fp->attack_colls[attack_id].attack_records[i];
 
         record->victim_gobj = NULL;
 
@@ -511,15 +511,15 @@ void ftParamClearAtkRecordID(FTStruct *fp, s32 atk_id)
 }
 
 // 0x800E8668
-void ftParamRefreshAtkID(GObj *fighter_gobj, s32 atk_id)
+void ftParamRefreshAtkID(GObj *fighter_gobj, s32 attack_id)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->atk_colls[atk_id].atk_state = nGMAttackStateNew;
+    fp->attack_colls[attack_id].attack_state = nGMAttackStateNew;
 
-    fp->is_atk_active = TRUE;
+    fp->is_attack_active = TRUE;
 
-    ftParamClearAtkRecordID(fp, atk_id);
+    ftParamClearAtkRecordID(fp, attack_id);
 }
 
 // 0x800E86B4
@@ -590,13 +590,13 @@ void ftParamSetHitStatusPartAll(GObj *fighter_gobj, s32 hitstatus)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->dmg_colls); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->damage_colls); i++)
     {
-        FTDamageColl *dmg_coll = &fp->dmg_colls[i];
+        FTDamageColl *damage_coll = &fp->damage_colls[i];
 
-        if (dmg_coll->hitstatus != nGMHitStatusNone)
+        if (damage_coll->hitstatus != nGMHitStatusNone)
         {
-            dmg_coll->hitstatus = hitstatus;
+            damage_coll->hitstatus = hitstatus;
         }
     }
     fp->is_hitstatus_nodamage = (hitstatus == nGMHitStatusNormal) ? FALSE : TRUE;
@@ -610,15 +610,15 @@ void ftParamSetHitStatusPartID(GObj *fighter_gobj, s32 joint_id, s32 hitstatus)
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->dmg_colls); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->damage_colls); i++)
     {
-        FTDamageColl *dmg_coll = &fp->dmg_colls[i];
+        FTDamageColl *damage_coll = &fp->damage_colls[i];
 
-        if ((dmg_coll->hitstatus != nGMHitStatusNone) && (joint_id == dmg_coll->joint_id))
+        if ((damage_coll->hitstatus != nGMHitStatusNone) && (joint_id == damage_coll->joint_id))
         {
-            dmg_coll->hitstatus = hitstatus;
+            damage_coll->hitstatus = hitstatus;
 
-            if (dmg_coll->hitstatus != nGMHitStatusNormal)
+            if (damage_coll->hitstatus != nGMHitStatusNormal)
             {
                 fp->is_hitstatus_nodamage = TRUE;
             }
@@ -647,22 +647,22 @@ s32 ftParamGetBestHitStatusPart(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 hitstatus_base = fp->hitstatus;
-    s32 hitstatus_best = fp->dmg_colls[0].hitstatus;
+    s32 hitstatus_best = fp->damage_colls[0].hitstatus;
     s32 i;
 
     if (hitstatus_best != nGMHitStatusNormal)
     {
-        for (i = 1; i < ARRAY_COUNT(fp->dmg_colls); i++)
+        for (i = 1; i < ARRAY_COUNT(fp->damage_colls); i++)
         {
-            FTDamageColl *dmg_coll = &fp->dmg_colls[i];
+            FTDamageColl *damage_coll = &fp->damage_colls[i];
 
-            if (dmg_coll->hitstatus == nGMHitStatusNone) 
+            if (damage_coll->hitstatus == nGMHitStatusNone) 
             {
                 break;
             }
-            else if (hitstatus_best > dmg_coll->hitstatus)
+            else if (hitstatus_best > damage_coll->hitstatus)
             {
-                hitstatus_best = dmg_coll->hitstatus;
+                hitstatus_best = damage_coll->hitstatus;
             }
         }
     }
@@ -694,26 +694,26 @@ s32 ftParamGetBestHitStatusAll(GObj *fighter_gobj)
 void ftParamResetFighterDamagePartAll(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTDamageColl *dmg_coll = &fp->dmg_colls[0];
-    FTDamageCollDesc *dmg_coll_desc = &fp->attr->dmg_colls_desc[0];
+    FTDamageColl *damage_coll = &fp->damage_colls[0];
+    FTDamageCollDesc *damage_coll_desc = &fp->attr->damage_colls_desc[0];
     s32 i;
 
-    for (i = 0; i < FTPARTS_HURT_NUM_MAX; i++, dmg_coll++, dmg_coll_desc++)
+    for (i = 0; i < FTPARTS_HURT_NUM_MAX; i++, damage_coll++, damage_coll_desc++)
     {
-        if (dmg_coll_desc->joint_id != -1)
+        if (damage_coll_desc->joint_id != -1)
         {
-            dmg_coll->joint_id = dmg_coll_desc->joint_id;
-            dmg_coll->joint = fp->joints[dmg_coll->joint_id];
+            damage_coll->joint_id = damage_coll_desc->joint_id;
+            damage_coll->joint = fp->joints[damage_coll->joint_id];
 
-            dmg_coll->placement = dmg_coll_desc->placement;
-            dmg_coll->is_grabbable = dmg_coll_desc->is_grabbable;
+            damage_coll->placement = damage_coll_desc->placement;
+            damage_coll->is_grabbable = damage_coll_desc->is_grabbable;
 
-            dmg_coll->offset = dmg_coll_desc->offset;
-            dmg_coll->size = dmg_coll_desc->size;
+            damage_coll->offset = damage_coll_desc->offset;
+            damage_coll->size = damage_coll_desc->size;
 
-            dmg_coll->size.x *= 0.5F;
-            dmg_coll->size.y *= 0.5F;
-            dmg_coll->size.z *= 0.5F;
+            damage_coll->size.x *= 0.5F;
+            damage_coll->size.y *= 0.5F;
+            damage_coll->size.z *= 0.5F;
         }
     }
     fp->is_hurtbox_modify = FALSE;
@@ -725,18 +725,18 @@ void ftParamModifyFighterDamagePartID(GObj *fighter_gobj, s32 joint_id, Vec3f *o
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
 
-    for (i = 0; i < ARRAY_COUNT(fp->dmg_colls); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->damage_colls); i++)
     {
-        FTDamageColl *dmg_coll = &fp->dmg_colls[i];
+        FTDamageColl *damage_coll = &fp->damage_colls[i];
 
-        if (joint_id == dmg_coll->joint_id)
+        if (joint_id == damage_coll->joint_id)
         {
-            dmg_coll->offset = *offset;
-            dmg_coll->size = *size;
+            damage_coll->offset = *offset;
+            damage_coll->size = *size;
 
-            fp->dmg_colls[i].size.x *= 0.5F;
-            fp->dmg_colls[i].size.y *= 0.5F;
-            fp->dmg_colls[i].size.z *= 0.5F;
+            fp->damage_colls[i].size.x *= 0.5F;
+            fp->damage_colls[i].size.y *= 0.5F;
+            fp->damage_colls[i].size.z *= 0.5F;
 
             fp->is_hurtbox_modify = TRUE;
 
@@ -2119,8 +2119,8 @@ void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj)
         {
             pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-            pos.x += fp->coll_data.obj_coll.width;
-            pos.y += fp->coll_data.obj_coll.center;
+            pos.x += fp->coll_data.object_coll.width;
+            pos.y += fp->coll_data.object_coll.center;
 
             efManagerKirbyStarMakeEffect(&pos);
         }
@@ -2128,8 +2128,8 @@ void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj)
         {
             pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-            pos.x -= fp->coll_data.obj_coll.width;
-            pos.y += fp->coll_data.obj_coll.center;
+            pos.x -= fp->coll_data.object_coll.width;
+            pos.y += fp->coll_data.object_coll.center;
 
             efManagerKirbyStarMakeEffect(&pos);
         }
@@ -2137,7 +2137,7 @@ void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj)
         {
             pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-            pos.y += fp->coll_data.obj_coll.top;
+            pos.y += fp->coll_data.object_coll.top;
 
             efManagerKirbyStarMakeEffect(&pos);
         }
@@ -2145,7 +2145,7 @@ void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj)
         {
             pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-            pos.y += fp->coll_data.obj_coll.bottom;
+            pos.y += fp->coll_data.object_coll.bottom;
 
             efManagerKirbyStarMakeEffect(&pos);
         }

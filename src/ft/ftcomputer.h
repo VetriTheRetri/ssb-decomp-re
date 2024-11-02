@@ -57,6 +57,6 @@ extern void ftComputerProcessBehavior(FTStruct *fp);
 extern void ftComputerProcessTrait(FTStruct *fp);
 extern void ftComputerProcessAll(GObj *fighter_gobj);
 extern void ftComputerSetupAll(GObj *fighter_gobj);
-extern void ftComputerSetFighterDamageCollSizeInfo(GObj *fighter_gobj);
+extern void ftComputerSetFighterDamageDetectSize(GObj *fighter_gobj);
 
 #endif

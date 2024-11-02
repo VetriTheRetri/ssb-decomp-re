@@ -265,7 +265,7 @@ sb32 itMBallCommonProcHit(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->atk_coll.atk_state = nGMAttackStateOff;
+    ip->attack_coll.attack_state = nGMAttackStateOff;
 
     ip->item_vars.mball.is_rebound = TRUE;
 
@@ -281,7 +281,7 @@ sb32 itMBallCommonProcReflector(GObj *item_gobj)
     FTStruct *fp;
     GObj *fighter_gobj;
 
-    ip->atk_coll.atk_state = nGMAttackStateOff;
+    ip->attack_coll.attack_state = nGMAttackStateOff;
 
     ip->item_vars.mball.is_rebound = TRUE;
 
@@ -410,8 +410,8 @@ void itMBallOpenInitItemVars(GObj *item_gobj)
 
     itMBallOpenClearAnim(item_gobj);
 
-    ip->atk_coll.atk_state = nGMAttackStateOff;
-    ip->atk_coll.can_reflect = FALSE;
+    ip->attack_coll.attack_state = nGMAttackStateOff;
+    ip->attack_coll.can_reflect = FALSE;
 }
 
 // 0x8017CC88

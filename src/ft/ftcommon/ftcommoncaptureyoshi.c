@@ -312,24 +312,24 @@ void ftCommonYoshiEggProcTrap(GObj *fighter_gobj)
 void ftCommonYoshiEggSetHurtCollisions(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    FTDamageColl *dmg_coll = &fp->dmg_colls[0];
+    FTDamageColl *damage_coll = &fp->damage_colls[0];
     ftCommonYoshiEggDesc *egg = &dFTCommonYoshiEggDamageCollDescs[fp->fkind];
     s32 i;
 
-    dmg_coll->joint = fp->joints[nFTPartsJointTopN];
-    dmg_coll->joint_id = nFTPartsJointTopN;
-    dmg_coll->placement = nFTPartsPlacementMiddle;
-    dmg_coll->is_grabbable = FALSE;
-    dmg_coll->offset = egg->offset;
-    dmg_coll->size = egg->size;
+    damage_coll->joint = fp->joints[nFTPartsJointTopN];
+    damage_coll->joint_id = nFTPartsJointTopN;
+    damage_coll->placement = nFTPartsPlacementMiddle;
+    damage_coll->is_grabbable = FALSE;
+    damage_coll->offset = egg->offset;
+    damage_coll->size = egg->size;
 
-    dmg_coll++;
+    damage_coll++;
 
-    for (i = 1; i < ARRAY_COUNT(fp->dmg_colls); i++, dmg_coll++)
+    for (i = 1; i < ARRAY_COUNT(fp->damage_colls); i++, damage_coll++)
     {
-        if (dmg_coll->hitstatus != nGMHitStatusNone)
+        if (damage_coll->hitstatus != nGMHitStatusNone)
         {
-            dmg_coll->hitstatus = nGMHitStatusIntangible;
+            damage_coll->hitstatus = nGMHitStatusIntangible;
         }
     }
     fp->is_hitstatus_nodamage = TRUE;

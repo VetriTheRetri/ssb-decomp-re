@@ -15,26 +15,26 @@ void itProcessUpdateHitRecord(GObj* item_gobj);
 void itProcessProcItemMain(GObj* item_gobj);
 
 // Set type of interaction and record hit target when item's hitbox collides with another GObj
-void itProcessSetHitInteractStats(ITAttackColl* atk_coll, GObj* victim_gobj, s32 atk_type, u32 interact_mask);
+void itProcessSetHitInteractStats(ITAttackColl* attack_coll, GObj* victim_gobj, s32 attack_type, u32 interact_mask);
 
 // Set stuff when item's hurtbox gets hit by a fighter
-void itProcessUpdateDamageStatFighter(FTStruct* fp, FTAttackColl* ft_atk_coll, ITStruct* ip, ITDamageColl* dmg_coll,
+void itProcessUpdateDamageStatFighter(FTStruct* fp, FTAttackColl* ft_attack_coll, ITStruct* ip, ITDamageColl* damage_coll,
 									  GObj* fighter_gobj, GObj* item_gobj);
 
 // Set stuff when item's hitbox collides with another item's hitbox
-void itProcessUpdateAttackStatItem(ITStruct* this_ip, ITAttackColl* this_hit, s32 this_atk_id, ITStruct* victim_ip,
-								   ITAttackColl* victim_hit, s32 victim_atk_id, GObj* this_gobj, GObj* victim_gobj);
+void itProcessUpdateAttackStatItem(ITStruct* this_ip, ITAttackColl* this_hit, s32 this_attack_id, ITStruct* victim_ip,
+								   ITAttackColl* victim_hit, s32 victim_attack_id, GObj* this_gobj, GObj* victim_gobj);
 
 // Set stuff when item's hitbox collides with a weapon's hitbox
-void itProcessUpdateAttackStatWeapon(WPStruct* wp, WPAttackColl* wp_atk_coll, s32 wp_atk_id, ITStruct* ip, ITAttackColl* it_atk_coll,
-									 s32 it_atk_id, GObj* weapon_gobj, GObj* item_gobj);
+void itProcessUpdateAttackStatWeapon(WPStruct* wp, WPAttackColl* wp_attack_coll, s32 wp_attack_id, ITStruct* ip, ITAttackColl* it_attack_coll,
+									 s32 it_attack_id, GObj* weapon_gobj, GObj* item_gobj);
 
 // Set stuff when item's hurtbox gets hit by another item's hitbox
-void itProcessUpdateDamageStatItem(ITStruct* attack_ip, ITAttackColl* atk_coll, s32 atk_id, ITStruct* defend_ip,
-								   ITDamageColl* dmg_coll, GObj* attack_gobj, GObj* defend_gobj);
+void itProcessUpdateDamageStatItem(ITStruct* attack_ip, ITAttackColl* attack_coll, s32 attack_id, ITStruct* defend_ip,
+								   ITDamageColl* damage_coll, GObj* attack_gobj, GObj* defend_gobj);
 
 // Set stuff when item's hurtbox gets hit by a weapon's hitbox
-void itProcessUpdateDamageStatWeapon(WPStruct* wp, WPAttackColl* atk_coll, s32 atk_id, ITStruct* ip, ITDamageColl* dmg_coll,
+void itProcessUpdateDamageStatWeapon(WPStruct* wp, WPAttackColl* attack_coll, s32 attack_id, ITStruct* ip, ITDamageColl* damage_coll,
 									 GObj* weapon_gobj, GObj* item_gobj);
 
 // Search for collision with fighter hitbox

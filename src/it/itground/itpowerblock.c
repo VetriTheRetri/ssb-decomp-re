@@ -91,7 +91,7 @@ void itPowerBlockWaitSetStatus(GObj *item_gobj)
 
     itMainSetItemStatus(item_gobj, dITPowerBlockStatusDescs, nITPowerBlockStatusWait);
 
-    ip = itGetStruct(item_gobj), ip->dmg_coll.hitstatus = nGMHitStatusNormal;
+    ip = itGetStruct(item_gobj), ip->damage_coll.hitstatus = nGMHitStatusNormal;
 }
 
 // 0x8017C110
@@ -112,7 +112,7 @@ sb32 itPowerBlockWaitProcDamage(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
 
     ip->proc_update = itPowerBlockNDamageProcUpdate;
-    ip->dmg_coll.hitstatus = nGMHitStatusNone;
+    ip->damage_coll.hitstatus = nGMHitStatusNone;
 
     gcAddDObjAnimJoint(DObjGetStruct(item_gobj), itGetPData(ip, lITPowerBlockDataStart, lITPowerBlockAnimJoint), 0.0F);
     gcPlayAnimAll(item_gobj);
@@ -132,7 +132,7 @@ GObj* itPowerBlockMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
     {
         ITStruct *ip = itGetStruct(item_gobj);
 
-        ip->dmg_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
+        ip->damage_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
     }
     return item_gobj;
 }

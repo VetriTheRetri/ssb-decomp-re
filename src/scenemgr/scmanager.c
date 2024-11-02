@@ -749,7 +749,7 @@ void scManagerInspectGObj(GObj *gobj)
 
         syErrorDebugPrintf("weapon\n");
         syErrorDebugPrintf("kind:%d, player:%d\n", wp->kind, wp->player);
-        syErrorDebugPrintf("atk stat:%d\n", wp->atk_coll.atk_state);
+        syErrorDebugPrintf("atk stat:%d\n", wp->attack_coll.attack_state);
         syErrorDebugPrintf("ga:%d\n", wp->ga);
         break;
 
@@ -758,7 +758,7 @@ void scManagerInspectGObj(GObj *gobj)
 
         syErrorDebugPrintf("item\n");
         syErrorDebugPrintf("kind:%d, player:%d\n", ip->kind, ip->player);
-        syErrorDebugPrintf("atk stat:%d\n", ip->atk_coll.atk_state);
+        syErrorDebugPrintf("atk stat:%d\n", ip->attack_coll.attack_state);
         syErrorDebugPrintf("ga:%d\n", ip->ga);
         syErrorDebugPrintf("proc update:%x\n", ip->proc_update);
         syErrorDebugPrintf("proc map:%x\n", ip->proc_map);

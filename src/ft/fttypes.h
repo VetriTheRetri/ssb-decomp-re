@@ -225,7 +225,7 @@ struct FTMotionEventDouble // Event with no arguments
 struct FTMotionEventMakeHit1
 {
 	u32 opcode : 6;
-	u32 atk_id: 3;
+	u32 attack_id: 3;
 	u32 group_id : 3;
 	s32 joint_id : 7;
 	u32 damage : 8;
@@ -273,7 +273,7 @@ struct FTMotionEventMakeHit
 struct FTMotionEventSetHitOffset1
 {
 	u32 opcode : 6;
-	u32 atk_id: 3;
+	u32 attack_id: 3;
 	s32 off_x : 16;
 };
 
@@ -292,21 +292,21 @@ struct FTMotionEventSetHitOffset
 struct FTMotionEventSetHitDamage
 {
 	u32 opcode : 6;
-	u32 atk_id: 3;
+	u32 attack_id: 3;
 	u32 damage : 8;
 };
 
 struct FTMotionEventSetHitSize
 {
 	u32 opcode : 6;
-	u32 atk_id: 3;
+	u32 attack_id: 3;
 	u32 size : 16;
 };
 
 struct FTMotionEventSetHitSound
 {
 	u32 opcode : 6;
-	u32 atk_id: 3;
+	u32 attack_id: 3;
 	u32 fgm_level : 3;
 };
 
@@ -592,7 +592,7 @@ struct FTAttackMatrix
 
 struct FTAttackColl
 {
-    s32 atk_state;
+    s32 attack_state;
     u32 group_id;
     s32 joint_id;
     s32 damage;
@@ -616,7 +616,7 @@ struct FTAttackColl
     u16 stat_count;
     Vec3f pos_curr;
     Vec3f pos_prev;
-    GMAttackRecord atk_records[GMATKRECORD_NUM_MAX];
+    GMAttackRecord attack_records[GMATKRECORD_NUM_MAX];
     FTAttackMatrix hit_matrix;
 };
 
@@ -644,7 +644,7 @@ struct FTHitlog // Might have to return once structs are cleaned up (alas once f
 {
     s32 attacker_object_class;
     void *attacker_hit;
-    s32 atk_id;
+    s32 attack_id;
     GObj *attacker_gobj;
     FTDamageColl *victim_hurt; // Victim fighter's hurtbox
     u8 attacker_player;
@@ -783,7 +783,7 @@ struct FTComputer
     u16 target_find_wait;
     u16 wiggle_wait;                        // CPU player will wait this many frames before finding a new target?
     u16 target_damage_percent;              // ???
-    u16 attack_atk_count;                   // Number of times CPU player successfully dealt damage?
+    u16 attack_attack_count;                   // Number of times CPU player successfully dealt damage?
     u16 appeal_attempt_frames;              // CPU player will attempt to taunt while this is not 0
     u16 stand_stop_wait;                    // CPU player will wait this many frames before breaking out of idle behavior
     GObj *target_gobj;                      // CPU player's target's GObj
@@ -924,7 +924,7 @@ struct FTAttributes
     f32 closeup_camera_zoom;
     f32 camera_zoom;
     f32 camera_zoom_base;
-    MPObjectColl obj_coll;
+    MPObjectColl object_coll;
     Vec2f cliffcatch_coll; // Ledge grab box
     u16 dead_sfx[2]; // KO voices
     u16 deadup_sfx;  // Star-KO voice
@@ -959,7 +959,7 @@ struct FTAttributes
     ub32 is_have_specialairlw: 1;
     ub32 is_have_catch       : 1;   // Whether fighter has a grab
     ub32 is_have_voice       : 1;
-    FTDamageCollDesc dmg_colls_desc[FTPARTS_HURT_NUM_MAX];
+    FTDamageCollDesc damage_colls_desc[FTPARTS_HURT_NUM_MAX];
     Vec3f hit_detect_range;         // This is a radius around the fighter within which hitbox detection can occur
     u32 *setup_parts;               // Pointer to two sets of flags marking joints that should be initialized on fighter creation
     u32 *animlock;                  // Pointer to two sets of flags marking joints that should not be animated;
@@ -1030,13 +1030,13 @@ struct FTStruct
     f32 unk_ft_0x38;
     s32 unk_ft_0x3C;
     u32 hitlag_tics;
-    s32 lr;                     // Facing direction; -1 = -1, 1 = +1
+    s32 lr;                     // Facing direction; -1 = left, 0 = center, 1 = right
 
     struct FTPhysics
     {
-        Vec3f vel_air; // Aerial self-induced velocity
-        Vec3f vel_damage_air; // Aerial knockback velocity
-        Vec3f vel_ground; // Grounded self-induced velocity
+        Vec3f vel_air;          // Aerial self-induced velocity
+        Vec3f vel_damage_air;   // Aerial knockback velocity
+        Vec3f vel_ground;       // Grounded self-induced velocity
         f32 vel_damage_ground;
         f32 vel_jostle_x;
         f32 vel_jostle_z;
@@ -1086,7 +1086,7 @@ struct FTStruct
 
     } motion_vars;
 
-    ub32 is_atk_active : 1;
+    ub32 is_attack_active : 1;
     ub32 is_hitstatus_nodamage : 1;
     ub32 is_hurtbox_modify : 1;
     ub32 is_modelpart_modify : 1;
@@ -1155,7 +1155,7 @@ struct FTStruct
 
     FTComputer computer;
 
-    Vec2f dmg_coll_size;             // Width and height of fighter's hurtbox; calculated from distance of TopN position to farthest hurtbox multiplied by 0.55
+    Vec2f damage_coll_size;             // Width and height of fighter's hurtbox; calculated from distance of TopN position to farthest hurtbox multiplied by 0.55
 
     u8 tap_stick_x;                     // Frames control stick has been tapped
     u8 tap_stick_y;                     // Frames control stick has been tapped
@@ -1182,7 +1182,7 @@ struct FTStruct
     GMStatFlags stat_flags;
     u16 stat_count;
 
-    FTAttackColl atk_colls[4];
+    FTAttackColl attack_colls[4];
 
     s32 invincible_tics;
     s32 intangible_tics;
@@ -1191,7 +1191,7 @@ struct FTStruct
     s32 star_hitstatus;                 // Enemy CPUs avoid player depending on this?
     s32 hitstatus;
 
-    FTDamageColl dmg_colls[FTPARTS_HURT_NUM_MAX];
+    FTDamageColl damage_colls[FTPARTS_HURT_NUM_MAX];
 
     f32 unk_ft_0x7A0;                   // Unused?
     f32 hitlag_mul;
@@ -1200,7 +1200,7 @@ struct FTStruct
 
     s32 attack_damage;
     f32 attack_knockback;
-    u16 attack_atk_count;               // Number of times this fighter successfully dealt damage 
+    u16 attack_attack_count;               // Number of times this fighter successfully dealt damage 
     s32 attack_shield_push;             // Used to calculate shield/rebound pushback
     f32 attack_rebound;                 // Actually 2x staled damage?
     s32 attack_lr;

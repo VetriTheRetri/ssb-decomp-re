@@ -479,18 +479,18 @@ void itBoxExplodeInitItemVars(GObj *item_gobj)
     ip->event_id = 0;
     ip->multi = 0;
 
-    ip->atk_coll.fgm_id = nSYAudioFGMExplodeL;
+    ip->attack_coll.fgm_id = nSYAudioFGMExplodeL;
 
-    ip->atk_coll.can_rehit_item = TRUE;
-    ip->atk_coll.can_hop = FALSE;
-    ip->atk_coll.can_reflect = FALSE;
+    ip->attack_coll.can_rehit_item = TRUE;
+    ip->attack_coll.can_hop = FALSE;
+    ip->attack_coll.can_reflect = FALSE;
 
-    ip->atk_coll.throw_mul = ITEM_THROW_DEFAULT;
-    ip->atk_coll.element = nGMHitElementFire;
+    ip->attack_coll.throw_mul = ITEM_THROW_DEFAULT;
+    ip->attack_coll.element = nGMHitElementFire;
 
-    ip->atk_coll.can_setoff = FALSE;
+    ip->attack_coll.can_setoff = FALSE;
 
-    ip->dmg_coll.hitstatus = nGMHitStatusNone;
+    ip->damage_coll.hitstatus = nGMHitStatusNone;
 
     itMainClearOwnerStats(item_gobj);
     itMainRefreshAtk(item_gobj);
@@ -511,7 +511,7 @@ void itBoxExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    ip->atk_coll.atk_state = nGMAttackStateOff;
+    ip->attack_coll.attack_state = nGMAttackStateOff;
 
     ip->physics.vel_air.x = 0.0F;
     ip->physics.vel_air.y = 0.0F;

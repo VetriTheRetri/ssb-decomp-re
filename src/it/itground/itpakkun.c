@@ -216,8 +216,8 @@ void itPakkunWaitInitItemVars(GObj *item_gobj)
 
     itPakkunWaitSetStatus(item_gobj);
 
-    ip->dmg_coll.hitstatus = nGMHitStatusNone;
-    ip->atk_coll.atk_state = nGMAttackStateOff;
+    ip->damage_coll.hitstatus = nGMHitStatusNone;
+    ip->attack_coll.attack_state = nGMAttackStateOff;
 
     DObjGetStruct(item_gobj)->translate.vec.f.y = ip->item_vars.pakkun.pos.y;
 }
@@ -231,19 +231,19 @@ void itPakkunAppearUpdateDamageColl(GObj *item_gobj)
 
     if (off_y <= ITPAKKUN_CLAMP_OFF_Y)
     {
-        ip->dmg_coll.hitstatus = nGMHitStatusNone;
-        ip->atk_coll.atk_state = nGMAttackStateOff;
+        ip->damage_coll.hitstatus = nGMHitStatusNone;
+        ip->attack_coll.attack_state = nGMAttackStateOff;
     }
     else
     {
-        if (ip->dmg_coll.hitstatus == nGMHitStatusNone)
+        if (ip->damage_coll.hitstatus == nGMHitStatusNone)
         {
-            ip->dmg_coll.hitstatus = nGMHitStatusNormal;
+            ip->damage_coll.hitstatus = nGMHitStatusNormal;
 
             itMainRefreshAtk(item_gobj);
         }
-        ip->dmg_coll.size.y = (off_y - ITPAKKUN_CLAMP_OFF_Y) * ITPAKKUN_HURT_SIZE_MUL_Y;
-        ip->dmg_coll.offset.y = (ip->dmg_coll.size.y + ITPAKKUN_CLAMP_OFF_Y) - pos_y;
+        ip->damage_coll.size.y = (off_y - ITPAKKUN_CLAMP_OFF_Y) * ITPAKKUN_HURT_SIZE_MUL_Y;
+        ip->damage_coll.offset.y = (ip->damage_coll.size.y + ITPAKKUN_CLAMP_OFF_Y) - pos_y;
     }
 }
 
@@ -293,8 +293,8 @@ sb32 itPakkunAppearProcDamage(GObj *item_gobj)
         ip->physics.vel_air.x = __cosf(angle) * ip->damage_knockback * -ip->damage_lr;
         ip->physics.vel_air.y = __sinf(angle) * ip->damage_knockback;
 
-        ip->dmg_coll.hitstatus = nGMHitStatusNone;
-        ip->atk_coll.atk_state = nGMAttackStateOff;
+        ip->damage_coll.hitstatus = nGMHitStatusNone;
+        ip->attack_coll.attack_state = nGMAttackStateOff;
 
         itPakkunDamagedSetStatus(item_gobj);
 
@@ -360,7 +360,7 @@ GObj* itPakkunMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->item_vars.pakkun.is_wait_fighter = FALSE;
 
-        ip->atk_coll.can_rehit_shield = TRUE;
+        ip->attack_coll.can_rehit_shield = TRUE;
     }
     return item_gobj;
 }

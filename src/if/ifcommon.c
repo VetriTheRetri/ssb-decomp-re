@@ -1892,7 +1892,7 @@ void ifCommonItemArrowFuncDisplay(GObj *interface_gobj)
 
         pos = DObjGetStruct(ip->item_gobj)->translate.vec.f;
 
-        pos.y += ip->coll_data.obj_coll.top + 100.0F;
+        pos.y += ip->coll_data.object_coll.top + 100.0F;
 
         func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &pos, &x, &y);
 

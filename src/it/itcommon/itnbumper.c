@@ -320,8 +320,8 @@ void itNBumperThrownSetStatus(GObj *item_gobj)
 
     ip->item_vars.bumper.damage_all_delay = ITBUMPER_DAMAGE_ALL_WAIT;
 
-    ip->coll_data.obj_coll.top = ITBUMPER_COLL_SIZE;
-    ip->coll_data.obj_coll.bottom = -ITBUMPER_COLL_SIZE;
+    ip->coll_data.object_coll.top = ITBUMPER_COLL_SIZE;
+    ip->coll_data.object_coll.bottom = -ITBUMPER_COLL_SIZE;
 
     itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusThrown);
 }
@@ -333,8 +333,8 @@ void itNBumperDroppedSetStatus(GObj *item_gobj)
 
     ip->item_vars.bumper.damage_all_delay = ITBUMPER_DAMAGE_ALL_WAIT;
 
-    ip->coll_data.obj_coll.top = ITBUMPER_COLL_SIZE;
-    ip->coll_data.obj_coll.bottom = -ITBUMPER_COLL_SIZE;
+    ip->coll_data.object_coll.top = ITBUMPER_COLL_SIZE;
+    ip->coll_data.object_coll.bottom = -ITBUMPER_COLL_SIZE;
 
     itMainSetItemStatus(item_gobj, dITNBumperStatusDescs, nITNBumperStatusDropped);
 }
@@ -381,8 +381,8 @@ void itNBumperAttachedInitItemVars(GObj *item_gobj)
 
     dobj->scale.vec.f.x = dobj->scale.vec.f.y = dobj->scale.vec.f.z = 1.0F;
 
-    ip->coll_data.obj_coll.top = ITBUMPER_COLL_SIZE;
-    ip->coll_data.obj_coll.bottom = -ITBUMPER_COLL_SIZE;
+    ip->coll_data.object_coll.top = ITBUMPER_COLL_SIZE;
+    ip->coll_data.object_coll.bottom = -ITBUMPER_COLL_SIZE;
 
     itNBumperAttachedSetModelYaw(item_gobj);
 
@@ -435,7 +435,7 @@ sb32 itNBumperAttachedProcUpdate(GObj *item_gobj)
         {
             mpCollisionGetLREdgeLeft(ip->coll_data.ground_line_id, &edge_pos);
 
-            if (edge_pos.x >= (dobj->translate.vec.f.x - attr->obj_coll_width))
+            if (edge_pos.x >= (dobj->translate.vec.f.x - attr->object_coll_width))
             {
                 ip->physics.vel_air.x = 0.0F;
             }
@@ -444,7 +444,7 @@ sb32 itNBumperAttachedProcUpdate(GObj *item_gobj)
         {
             mpCollisionGetLREdgeRight(ip->coll_data.ground_line_id, &edge_pos);
 
-            if (edge_pos.x <= (dobj->translate.vec.f.x + attr->obj_coll_width))
+            if (edge_pos.x <= (dobj->translate.vec.f.x + attr->object_coll_width))
             {
                 ip->physics.vel_air.x = 0.0F;
             }
@@ -610,7 +610,7 @@ void itNBumperGDisappearSetStatus(GObj *item_gobj)
 
     dobj->flags = DOBJ_FLAG_NONE;
 
-    ip->atk_coll.atk_state = nGMAttackStateOff;
+    ip->attack_coll.attack_state = nGMAttackStateOff;
 
     ip->physics.vel_air.x = 0.0F;
     ip->physics.vel_air.y = 0.0F;
@@ -634,9 +634,9 @@ GObj* itNBumperMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->multi = 0;
 
-        ip->atk_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
+        ip->attack_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
 
-        ip->atk_coll.can_rehit_shield = TRUE;
+        ip->attack_coll.can_rehit_shield = TRUE;
 
         dobj->mobj->palette_id = 0.0F;
 

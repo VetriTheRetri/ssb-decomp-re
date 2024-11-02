@@ -48,7 +48,7 @@ void ftLinkSpecialHiUpdateWeaponAttack(GObj *fighter_gobj, WPStruct *wp)
     /*
      * WARNING: UBs everywhere. Passing a fighter_gobj to wpProcessUpdateHitPositions which expects a weapon_gobj. Quite literally one hair away from breaking the game.
      * If either FTStruct or WPStruct got shifted, this inevitably would crash the game. In base SSB, wpProcessUpdateHitPositions grabs 0x150 from the GObj's user_data,
-     * which happens to be attack1_followup_frames in FTStruct and atk_count in WPStruct. This is bad enough on its own, because attack1_followup_frames is a float,
+     * which happens to be attack1_followup_frames in FTStruct and attack_count in WPStruct. This is bad enough on its own, because attack1_followup_frames is a float,
      * which gets loaded as an integer. Not only that, this would be used as the loop iterator for weapon hitboxes... So not only does it receive the wrong struct, it also
      * could very well iterate out of bounds until it crashes from that instead. The only saving grace of this whole situation is that attack1_followup_frames is 0 outside of jabs.
      * On top of that, fixing this function does yields results in no changes at all, because weapons are updated after fighters, and wpProcessUpdateHitPositions runs regardless.
@@ -61,8 +61,8 @@ void ftLinkSpecialHiUpdateWeaponAttack(GObj *fighter_gobj, WPStruct *wp)
         break;
 
     case 1:
-        wp->atk_coll.atk_state = nGMAttackStateNew;
-        wp->atk_coll.size = FTLINK_SPINATTACK_FLAG_SIZE_1;
+        wp->attack_coll.attack_state = nGMAttackStateNew;
+        wp->attack_coll.size = FTLINK_SPINATTACK_FLAG_SIZE_1;
 
     #if !defined (AVOID_UB)
         wpProcessUpdateHitPositions(fighter_gobj);
@@ -72,8 +72,8 @@ void ftLinkSpecialHiUpdateWeaponAttack(GObj *fighter_gobj, WPStruct *wp)
         break;
 
     case 2:
-        wp->atk_coll.atk_state = nGMAttackStateNew;
-        wp->atk_coll.size = FTLINK_SPINATTACK_FLAG_SIZE_2;
+        wp->attack_coll.attack_state = nGMAttackStateNew;
+        wp->attack_coll.size = FTLINK_SPINATTACK_FLAG_SIZE_2;
 
     #if !defined (AVOID_UB)
         wpProcessUpdateHitPositions(fighter_gobj);
@@ -83,8 +83,8 @@ void ftLinkSpecialHiUpdateWeaponAttack(GObj *fighter_gobj, WPStruct *wp)
         break;
 
     case 3:
-        wp->atk_coll.atk_state = nGMAttackStateNew;
-        wp->atk_coll.size = FTLINK_SPINATTACK_FLAG_SIZE_3;
+        wp->attack_coll.attack_state = nGMAttackStateNew;
+        wp->attack_coll.size = FTLINK_SPINATTACK_FLAG_SIZE_3;
 
     #if !defined (AVOID_UB)
         wpProcessUpdateHitPositions(fighter_gobj);
@@ -94,8 +94,8 @@ void ftLinkSpecialHiUpdateWeaponAttack(GObj *fighter_gobj, WPStruct *wp)
         break;
 
     case 4:
-        wp->atk_coll.atk_state = nGMAttackStateNew;
-        wp->atk_coll.size = FTLINK_SPINATTACK_FLAG_SIZE_4;
+        wp->attack_coll.attack_state = nGMAttackStateNew;
+        wp->attack_coll.size = FTLINK_SPINATTACK_FLAG_SIZE_4;
 
     #if !defined (AVOID_UB)
         wpProcessUpdateHitPositions(fighter_gobj);
@@ -105,11 +105,11 @@ void ftLinkSpecialHiUpdateWeaponAttack(GObj *fighter_gobj, WPStruct *wp)
         break;
 
     case 13:
-        wp->atk_coll.atk_state = nGMAttackStateOff;
+        wp->attack_coll.attack_state = nGMAttackStateOff;
         break;
 
     default:
-        wp->atk_coll.atk_state = nGMAttackStateOff;
+        wp->attack_coll.attack_state = nGMAttackStateOff;
         break;
     }
     fp->motion_vars.flags.flag2 = 0;
@@ -175,7 +175,7 @@ void ftLinkSpecialHiMakeWeapon(GObj *fighter_gobj, sb32 is_skip_gobj)
                 WPStruct *wp = wpGetStruct(fp->status_vars.link.specialhi.spin_attack_gobj);
                 s32 i;
 
-                wp->atk_coll.atk_state = nGMAttackStateOff;
+                wp->attack_coll.attack_state = nGMAttackStateOff;
 
                 for (i = 0; i < WPSPINATTACK_EXTEND_POS_COUNT; i++)
                 {

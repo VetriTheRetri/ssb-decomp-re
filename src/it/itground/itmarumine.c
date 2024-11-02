@@ -81,7 +81,7 @@ void itMarumineExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    ip->dmg_coll.hitstatus = nGMHitStatusNone;
+    ip->damage_coll.hitstatus = nGMHitStatusNone;
 
     ptc = efManagerSparkleWhiteMultiExplodeMakeEffect(&dobj->translate.vec.f);
 
@@ -95,7 +95,7 @@ void itMarumineExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_HIDDEN;
 
-    ip->atk_coll.fgm_id = nSYAudioFGMExplodeL;
+    ip->attack_coll.fgm_id = nSYAudioFGMExplodeL;
 
     itMainRefreshAtk(item_gobj);
     itMarumineExplodeSetStatus(item_gobj);
@@ -109,16 +109,16 @@ void itMarumineExplodeUpdateAttackEvent(GObj *item_gobj)
 
     if (ip->multi == ev[ip->event_id].timer)
     {
-        ip->atk_coll.angle  = ev[ip->event_id].angle;
-        ip->atk_coll.damage = ev[ip->event_id].damage;
-        ip->atk_coll.size   = ev[ip->event_id].size;
+        ip->attack_coll.angle  = ev[ip->event_id].angle;
+        ip->attack_coll.damage = ev[ip->event_id].damage;
+        ip->attack_coll.size   = ev[ip->event_id].size;
 
-        ip->atk_coll.can_reflect = FALSE;
-        ip->atk_coll.can_shield = FALSE;
+        ip->attack_coll.can_reflect = FALSE;
+        ip->attack_coll.can_shield = FALSE;
 
-        ip->atk_coll.element = nGMHitElementFire;
+        ip->attack_coll.element = nGMHitElementFire;
 
-        ip->atk_coll.can_setoff = FALSE;
+        ip->attack_coll.can_setoff = FALSE;
 
         ip->event_id++;
 
@@ -181,7 +181,7 @@ void itMarumineExplodeSetStatus(GObj *item_gobj)
 
     ip->multi = 0;
 
-    ip->atk_coll.throw_mul = 1.0F;
+    ip->attack_coll.throw_mul = 1.0F;
 
     ip->event_id = 0;
 

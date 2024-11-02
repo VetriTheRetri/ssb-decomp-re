@@ -130,7 +130,7 @@ void wpLinkBoomerangSetReturnVars(GObj *weapon_gobj, sb32 angle_max_or_min)
 
     wp->weapon_vars.boomerang.flags |= WPLINK_BOOMERANG_FLAG_RETURN;
 
-    wp->atk_coll.damage = WPBOOMERANG_RETURN_DAMAGE;
+    wp->attack_coll.damage = WPBOOMERANG_RETURN_DAMAGE;
 
     wp->weapon_vars.boomerang.default_angle -= F_CST_DTOR32(180.0F);
 

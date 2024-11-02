@@ -131,7 +131,7 @@ void itKabigonFallFuncDisplay(GObj *item_gobj)
             gcDrawDObjTreeForGObj(item_gobj);
             itDisplayMapCollisions(item_gobj);
         }
-        else if ((ip->dmg_coll.hitstatus == nGMHitStatusNone) && (ip->atk_coll.atk_state == nGMAttackStateOff))
+        else if ((ip->damage_coll.hitstatus == nGMHitStatusNone) && (ip->attack_coll.attack_state == nGMAttackStateOff))
         {
             gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 
@@ -164,13 +164,13 @@ void itKabigonFallInitItemVars(GObj *item_gobj)
 
         dobj->scale.vec.f.x = dobj->scale.vec.f.y = ITKABIGON_DROP_SIZE_KABIGON;
 
-        ip->atk_coll.size *= ITKABIGON_DROP_SIZE_KABIGON;
+        ip->attack_coll.size *= ITKABIGON_DROP_SIZE_KABIGON;
     }
     else
     {
         dobj->scale.vec.f.x = dobj->scale.vec.f.y = ITKABIGON_DROP_SIZE_OTHER;
 
-        ip->atk_coll.size *= ITKABIGON_DROP_SIZE_OTHER;
+        ip->attack_coll.size *= ITKABIGON_DROP_SIZE_OTHER;
     }
     item_gobj->func_display = itKabigonFallFuncDisplay;
 
@@ -239,7 +239,7 @@ void itKabigonCommonFuncDisplay(GObj *item_gobj)
             gcDrawDObjTreeForGObj(item_gobj);
             itDisplayMapCollisions(item_gobj);
         }
-        else if ((ip->dmg_coll.hitstatus == nGMHitStatusNone) && (ip->atk_coll.atk_state == nGMAttackStateOff))
+        else if ((ip->damage_coll.hitstatus == nGMHitStatusNone) && (ip->attack_coll.attack_state == nGMAttackStateOff))
         {
             gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2);
 
@@ -297,7 +297,7 @@ GObj* itKabigonMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         ip->multi = ITMONSTER_RISE_STOP_WAIT;
 
-        ip->atk_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
+        ip->attack_coll.interact_mask = GMHITCOLLISION_FLAG_FIGHTER;
 
         ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
         ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y;

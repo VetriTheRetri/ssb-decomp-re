@@ -409,21 +409,21 @@ void ftCommonThrownCommonStarProcMap(GObj *fighter_gobj)
     {
         angle = &fp->coll_data.ceil_angle;
 
-        pos.y += fp->coll_data.obj_coll.top;
+        pos.y += fp->coll_data.object_coll.top;
     }
     else if (fp->coll_data.coll_mask_curr & MPCOLL_FLAG_LWALL)
     {
         angle = &fp->coll_data.lwall_angle;
 
-        pos.x += fp->coll_data.obj_coll.width;
-        pos.y += fp->coll_data.obj_coll.center;
+        pos.x += fp->coll_data.object_coll.width;
+        pos.y += fp->coll_data.object_coll.center;
     }
     else if (fp->coll_data.coll_mask_curr & MPCOLL_FLAG_RWALL)
     {
         angle = &fp->coll_data.rwall_angle;
 
-        pos.x -= fp->coll_data.obj_coll.width;
-        pos.y += fp->coll_data.obj_coll.center;
+        pos.x -= fp->coll_data.object_coll.width;
+        pos.y += fp->coll_data.object_coll.center;
     }
     if (angle != NULL)
     {
@@ -495,13 +495,13 @@ void ftCommonThrownKirbyStarSetStatus(GObj *fighter_gobj)
 
     fp->proc_hit = ftCommonThrownCommonStarProcHit;
 
-    for (i = 0; i < ARRAY_COUNT(fp->atk_colls); i++)
+    for (i = 0; i < ARRAY_COUNT(fp->attack_colls); i++)
     {
-        FTAttackColl *atk_coll = &fp->atk_colls[i];
+        FTAttackColl *attack_coll = &fp->attack_colls[i];
 
-        if (atk_coll->atk_state == nGMAttackStateNew)
+        if (attack_coll->attack_state == nGMAttackStateNew)
         {
-            atk_coll->damage = copy_data[fp->fkind].star_damage;
+            attack_coll->damage = copy_data[fp->fkind].star_damage;
         }
     }
     fp->is_invisible = fp->is_hide_shadow = TRUE;

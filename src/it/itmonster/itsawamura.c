@@ -199,7 +199,7 @@ void itSawamuraAttackSetFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 
     target_pos = fj->translate.vec.f;
 
-    target_pos.y += ITSAWAMURA_TARGET_POS_OFF_Y - fp->coll_data.obj_coll.bottom;
+    target_pos.y += ITSAWAMURA_TARGET_POS_OFF_Y - fp->coll_data.object_coll.bottom;
 
     syVectorDiff3D(&dist, &target_pos, &ij->translate.vec.f);
 
@@ -267,7 +267,7 @@ void itSawamuraAttackInitItemVars(GObj *item_gobj)
     }
     ip->multi = ITSAWAMURA_LIFETIME;
 
-    ip->atk_coll.size = ITSAWAMURA_KICK_SIZE;
+    ip->attack_coll.size = ITSAWAMURA_KICK_SIZE;
 }
 
 // 0x80182AAC
@@ -326,7 +326,7 @@ GObj* itSawamuraMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f = *pos;
 
-        dobj->translate.vec.f.y -= ip->attr->obj_coll_bottom;
+        dobj->translate.vec.f.y -= ip->attr->object_coll_bottom;
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITSawamuraDataStart), 0.0F);
 

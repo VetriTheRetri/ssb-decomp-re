@@ -89,7 +89,7 @@ void func_ovl5_8018D1A0()
 	FTCreateDesc player_spawn;
 	syColorRGBA color;
 
-	gUnkExplainBattleState = gSCManagerDefaultBattleState;
+	gUnkExplainBattleState = dSCManagerDefaultBattleState;
 	gSCManagerBattleState = &gUnkExplainBattleState;
 
 	gSCManagerBattleState->game_type = nSCBattleGameTypeUnk6;

@@ -171,7 +171,7 @@ void scExplainLoadExplainFiles(void)
 // 0x8018D14C
 void scExplainSetBattleState(void)
 {
-    sSCExplainBattleState = gSCManagerDefaultBattleState;
+    sSCExplainBattleState = dSCManagerDefaultBattleState;
 
     gSCManagerBattleState = &sSCExplainBattleState;
 

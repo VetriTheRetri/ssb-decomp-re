@@ -552,7 +552,7 @@ void scAutoDemoInitDemo(void)
 {
 	s32 i;
 
-	sSCAutoDemoBattleState = gSCManagerDefaultBattleState;
+	sSCAutoDemoBattleState = dSCManagerDefaultBattleState;
 	gSCManagerBattleState = &sSCAutoDemoBattleState;
 
 	gSCManagerBattleState->game_type = nSCBattleGameTypeDemo;

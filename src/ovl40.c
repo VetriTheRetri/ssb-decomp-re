@@ -400,7 +400,7 @@ void mvOpeningLinkInitFramesElapsed()
 // 0x8018DE48
 void mvOpeningLinkInit()
 {
-	gMVOpeningLinkBattleState = gSCManagerDefaultBattleState;
+	gMVOpeningLinkBattleState = dSCManagerDefaultBattleState;
 	gSCManagerBattleState = &gMVOpeningLinkBattleState;
 
 	gSCManagerBattleState->game_type = nSCBattleGameTypeOpening;

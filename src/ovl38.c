@@ -429,7 +429,7 @@ void mvOpeningSamusInitFramesElapsed()
 // 0x8018DED0
 void mvOpeningSamusInit()
 {
-	gMVOpeningSamusBattleState = gSCManagerDefaultBattleState;
+	gMVOpeningSamusBattleState = dSCManagerDefaultBattleState;
 	gSCManagerBattleState = &gMVOpeningSamusBattleState;
 
 	gSCManagerBattleState->game_type = nSCBattleGameTypeOpening;

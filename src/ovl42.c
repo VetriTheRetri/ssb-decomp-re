@@ -409,7 +409,7 @@ void mvOpeningPikachuInitFramesElapsed()
 // 0x8018DE88
 void mvOpeningPikachuInit()
 {
-	gMVOpeningPikachuBattleState = gSCManagerDefaultBattleState;
+	gMVOpeningPikachuBattleState = dSCManagerDefaultBattleState;
 	gSCManagerBattleState = &gMVOpeningPikachuBattleState;
 
 	gSCManagerBattleState->game_type = nSCBattleGameTypeOpening;

@@ -776,7 +776,7 @@ sLBTransitionPhotoHeap = 0x800D6488;
 
 func_ovl2_800E7F68 = 0x800E7F68;
 gGCCommonLinks = 0x800466F0;
-gSCManagerDefaultBattleState = 0x800A3fc8;
+dSCManagerDefaultBattleState = 0x800A3fc8;
 gSCManagerBattleState = 0x800A50E8;
 gSCManagerSceneData = 0x800A4AD0;
 

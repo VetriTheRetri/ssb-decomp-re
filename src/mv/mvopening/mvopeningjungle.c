@@ -402,7 +402,7 @@ void func_ovl51_8018D668(void)
 // 0x8018D670
 void mvOpeningJungleFuncStart(void)
 {
-    sMVOpeningJungleBattleState = gSCManagerDefaultBattleState;
+    sMVOpeningJungleBattleState = dSCManagerDefaultBattleState;
     gSCManagerBattleState = &sMVOpeningJungleBattleState;
 
     gSCManagerBattleState->game_type = nSCBattleGameTypeOpening;

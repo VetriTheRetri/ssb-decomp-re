@@ -416,7 +416,7 @@ void mvOpeningMarioInitFramesElapsed()
 // 0x8018DE64
 void mvOpeningMarioInit()
 {
-	gMVOpeningMarioBattleState = gSCManagerDefaultBattleState;
+	gMVOpeningMarioBattleState = dSCManagerDefaultBattleState;
 	gSCManagerBattleState = &gMVOpeningMarioBattleState;
 
 	gSCManagerBattleState->game_type = nSCBattleGameTypeOpening;

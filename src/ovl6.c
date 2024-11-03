@@ -24,7 +24,7 @@ extern void* gGMCommonFiles[];
 extern intptr_t dIFCommonTimerDigitSpriteOffsets[];
 extern void* D_ovl2_801313F4;
 extern GRStruct gGRCommonStruct;
-extern SCBattleState gSCManagerDefaultBattleState;
+extern SCBattleState dSCManagerDefaultBattleState;
 extern GObj* gGCCommonLinks[GC_COMMON_MAX_LINKS];
 extern FTCreateDesc dFTManagerDefaultFighterDesc; // ovl2 80116DD0
 
@@ -238,7 +238,7 @@ void func_ovl6_8018D0F0()
 	s32 fkind;
 
 	gSCManagerSceneData.is_reset = FALSE;
-	gBonusBattleState = gSCManagerDefaultBattleState;
+	gBonusBattleState = dSCManagerDefaultBattleState;
 
 	gSCManagerBattleState = &gBonusBattleState;
 	gSCManagerBattleState->game_type = nSCBattleGameTypeBonus;

@@ -14,8 +14,14 @@
 #include <sc/sctypes.h> // Temporarily, until ovl defines are fixed
 #include <sys/thread6.h>
 
-// BSS
-u8 D_800A44D0[16];
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x800A44D0
+u8 sSCManagerPad0x800A44D0[16];
 
 // 0x800A44E0
 LBBackupData gSCManagerBackupData;
@@ -553,7 +559,7 @@ SCCommonData dSCManagerDefaultSceneData =
 };
 
 // 0x800A3FC8
-SCBattleState gSCManagerDefaultBattleState =
+SCBattleState dSCManagerDefaultBattleState =
 {
 	nSCBattleGameTypeDemo,							// Game type
 	nGRKindCastle,									// Stage
@@ -637,6 +643,10 @@ SCBattleState gSCManagerDefaultBattleState =
 			TRUE,									// Permanent stock icon?
 			3										// Player tag
 		}
+		/*
+		 * These SCPlayerData sub-structs are not actually this short; 
+		 * they are cut off after the "tag" member to initialize the rest of the struct as 0
+		 */
 	}
 };
 
@@ -708,13 +718,17 @@ void mnSoundTestStartScene();
 void scExplainStartScene();
 void scAutoDemoStartScene();
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
+
 // 0x800A1980
 void scManagerRunLoop(u32 set)
 {
 	u16 *framebuffer;
 	uintptr_t end;
-	SCBattleState battlestate_copy;
-	SCBattleState battlestate_default;
 
 	set_contstatus_delay(60);
 	syErrorSetFuncPrint(scManagerProcPrintGObjStatus);
@@ -726,28 +740,25 @@ void scManagerRunLoop(u32 set)
 	gSCManagerBackupData = dSCManagerDefaultBackupData;
 	gSCManagerSceneData = dSCManagerDefaultSceneData;
 
-#if !defined (DAIRANTOU_OPT0) || !defined(NON_MATCHING)
-	battlestate_default = gSCManagerDefaultBattleState;
-	gSCManagerVSBattleState = battlestate_default;
-
-	// m8 why
-	battlestate_copy = battlestate_default;
-	gSCManagerTransferBattleState = battlestate_copy;
-	gSCManager1PGameBattleState = battlestate_copy;
-#else
-	gSCManager1PGameBattleState   =
-	gSCManagerVSBattleState 	  =
-	gSCManagerTransferBattleState = gSCManagerDefaultBattleState;
-#endif
+	gSCManager1PGameBattleState   = 
+	gSCManagerTransferBattleState =
+	gSCManagerVSBattleState       = dSCManagerDefaultBattleState;
 
 	ftManagerSetupFileSize();
 	D_8003CB6D = 72;
 
 	func_8002102C();
-	while (func_8002103C()) { }
+
+	while (func_8002103C() != FALSE)
+	{
+		continue;
+	}
 
 	auSetReverbType(6);
-	while (func_80021048()) { }
+	while (func_80021048() != FALSE)
+	{
+		continue;
+	}
 
 	lbBackupIsSramValid();
 	lbBackupApplyOptions();
@@ -1331,7 +1342,7 @@ void scManagerInspectGObj(GObj *gobj)
 }
 
 // 0x800A2E84
-void scManagerProcPrintGObjStatus()
+void scManagerProcPrintGObjStatus(void)
 {
 	switch (dGCCurrentStatus)
 	{
@@ -1398,7 +1409,7 @@ void scManagerProcPrintGObjStatus()
 }
 
 // 0x800A3040
-void scManagerRunPrintGObjStatus()
+void scManagerRunPrintGObjStatus(void)
 {
 	syErrorRunFuncPrint(scManagerProcPrintGObjStatus);
 }

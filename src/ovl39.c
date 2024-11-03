@@ -411,7 +411,7 @@ void mvOpeningFoxInitFramesElapsed()
 // 0x8018DE60
 void mvOpeningFoxInit()
 {
-	gMVOpeningFoxBattleState = gSCManagerDefaultBattleState;
+	gMVOpeningFoxBattleState = dSCManagerDefaultBattleState;
 	gSCManagerBattleState = &gMVOpeningFoxBattleState;
 
 	gSCManagerBattleState->game_type = nSCBattleGameTypeOpening;

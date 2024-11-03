@@ -115,8 +115,8 @@ void lbBackupCorrectErrors(void)
     }
     if (!(gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_ITEMSWITCH))
     {
-        gSCManagerTransferBattleState.item_toggles = gSCManagerDefaultBattleState.item_toggles;
-        gSCManagerTransferBattleState.item_appearance_rate  = gSCManagerDefaultBattleState.item_appearance_rate;
+        gSCManagerTransferBattleState.item_toggles = dSCManagerDefaultBattleState.item_toggles;
+        gSCManagerTransferBattleState.item_appearance_rate  = dSCManagerDefaultBattleState.item_appearance_rate;
     }
 }
 

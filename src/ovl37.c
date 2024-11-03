@@ -404,7 +404,7 @@ void mvOpeningDKInitFramesElapsed()
 // 0x8018DE48
 void mvOpeningDKInit()
 {
-	gMVOpeningDKBattleState = gSCManagerDefaultBattleState;
+	gMVOpeningDKBattleState = dSCManagerDefaultBattleState;
 	gSCManagerBattleState = &gMVOpeningDKBattleState;
 
 	gSCManagerBattleState->game_type = nSCBattleGameTypeOpening;

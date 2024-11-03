@@ -516,7 +516,7 @@ void func_ovl7_8018DA98()
 {
 	s32 opponent;
 	s32 player;
-	gTrainingModeBattleState = gSCManagerDefaultBattleState;
+	gTrainingModeBattleState = dSCManagerDefaultBattleState;
 	gSCManagerBattleState = &gTrainingModeBattleState;
 
 	gSCManagerBattleState->game_type = 7;

@@ -3,8 +3,6 @@
 #include <sc/scene.h>
 #include <sys/dma.h>
 
-extern void sc1PStageCardStartScene();
-
 // // // // // // // // // // // //
 //                               //
 //   GLOBAL / STATIC VARIABLES   //

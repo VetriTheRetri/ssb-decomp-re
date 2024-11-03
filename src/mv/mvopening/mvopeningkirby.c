@@ -496,7 +496,7 @@ void mvOpeningKirbyInitVars(void)
 // 0x8018DE84
 void mvOpeningKirbyFuncStart(void)
 {
-	sMVOpeningKirbyBattleState = gSCManagerDefaultBattleState;
+	sMVOpeningKirbyBattleState = dSCManagerDefaultBattleState;
 	gSCManagerBattleState = &sMVOpeningKirbyBattleState;
 
 	gSCManagerBattleState->game_type = nSCBattleGameTypeOpening;

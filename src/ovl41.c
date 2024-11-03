@@ -415,7 +415,7 @@ void mvOpeningYoshiInitFramesElapsed()
 // 0x8018DE88
 void mvOpeningYoshiInit()
 {
-	gMVOpeningYoshiBattleState = gSCManagerDefaultBattleState;
+	gMVOpeningYoshiBattleState = dSCManagerDefaultBattleState;
 	gSCManagerBattleState = &gMVOpeningYoshiBattleState;
 
 	gSCManagerBattleState->game_type = nSCBattleGameTypeOpening;

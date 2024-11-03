@@ -2515,13 +2515,13 @@ check_heavy_damage:
         (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player == gSceneData.spgame_player) &&
         (
             (
-                (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitlogObjectItem) &&
+                (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitLogObjectItem) &&
                 (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind >= nITKindMBallMonsterStart) &&
                 (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind <= nITKindMBallMonsterEnd)
             )
             ||
             (
-                (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitlogObjectWeapon) &&
+                (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitLogObjectWeapon) &&
                 (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind >= nWPKindMonsterStart) &&
                 (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind <= nWPKindMonsterEnd)
             )
@@ -2535,7 +2535,7 @@ check_heavy_damage:
     (
         (sSC1PGameBonusStatNumPlayerKOs != 0) &&
         (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player == gSceneData.spgame_player) &&
-        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitlogObjectItem) &&
+        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitLogObjectItem) &&
         (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == nITKindMSBomb) &&
         (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_stat_flags.stat_attack_id == nFTStatusAttackIDNull)
     )
@@ -2575,7 +2575,7 @@ check_heavy_damage:
     (
         (sSC1PGameBonusStatNumPlayerKOs != 0) &&
         (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player != -1) &&
-        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitlogObjectGround) &&
+        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitLogObjectGround) &&
         (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == nGMHitEnvironmentAcid)
     )
     {
@@ -2587,13 +2587,13 @@ check_heavy_damage:
         (
             (sSC1PGameBonusStatNumPlayerKOs != 0) &&
             (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player != -1) &&
-            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitlogObjectItem) &&
+            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitLogObjectItem) &&
             (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == nITKindGBumper)
         )
         ||
         (
             (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player == gSceneData.spgame_player) &&
-            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitlogObjectItem) &&
+            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitLogObjectItem) &&
             (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == nITKindNBumper)
         )
     )
@@ -2606,7 +2606,7 @@ check_heavy_damage:
     (
         (sSC1PGameBonusStatNumPlayerKOs != 0) &&
         (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player != -1) &&
-        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitlogObjectGround) &&
+        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitLogObjectGround) &&
         (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == nGMHitEnvironmentTwister)
     )
     {
@@ -2617,7 +2617,7 @@ check_heavy_damage:
     (
         (sSC1PGameBonusStatNumPlayerKOs != 0) &&
         (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player != -1) &&
-        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitlogObjectWeapon) &&
+        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitLogObjectWeapon) &&
         (
             (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == nWPKindArwingLaser2D) ||
             (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == nWPKindArwingLaser3D)

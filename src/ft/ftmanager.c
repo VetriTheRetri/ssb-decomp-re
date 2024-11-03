@@ -504,7 +504,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
     fp->damage_object_class = 0;
     fp->damage_object_kind = 0;
     fp->damage_count = 0;
-    fp->damage_kind = 0;
+    fp->damage_kind = nFTDamageKindDefault;
     fp->damage_heal = 0;
     fp->damage_joint_id = 0;
     fp->invincible_tics = 0;

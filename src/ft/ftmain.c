@@ -33,13 +33,13 @@ sb32 gFTMainIsDamageDetect[GMCOMMON_PLAYERS_MAX];
 sb32 gFTMainIsAttackDetect[GMCOMMON_PLAYERS_MAX];
 
 // 0x801311C0
-s32 sFTMainHitlogID;
+s32 sFTMainHitLogID;
 
 // 0x801311C4
 s32 sFTMainPad0x801311C4;
 
 // 0x801311C8 - 0x10 bytes of padding after this, for mpcoll .bss
-FTHitlog sFTMainHitlogs[10];
+FTHitLog sFTMainHitLogs[10];
 
 // 0x801312E0
 s32 sFTMainPad0x801312E0;
@@ -2157,18 +2157,18 @@ void ftMainUpdateDamageStatFighter(FTStruct *attacker_fp, FTAttackColl *attacker
                 attacker_player = attacker_fp->player;
                 attacker_player_number = attacker_fp->player_number;
             }
-            if (sFTMainHitlogID < ARRAY_COUNT(sFTMainHitlogs))
+            if (sFTMainHitLogID < ARRAY_COUNT(sFTMainHitLogs))
             {
-                FTHitlog *hitlog = &sFTMainHitlogs[sFTMainHitlogID];
+                FTHitLog *hitlog = &sFTMainHitLogs[sFTMainHitLogID];
 
-                hitlog->attacker_object_class = nFTHitlogObjectFighter;
+                hitlog->attacker_object_class = nFTHitLogObjectFighter;
                 hitlog->attacker_hit = attacker_hit;
                 hitlog->attacker_gobj = attacker_gobj;
                 hitlog->victim_hurt = victim_hurt;
                 hitlog->attacker_player = attacker_player;
                 hitlog->attacker_player_number = attacker_player_number;
 
-                sFTMainHitlogID++;
+                sFTMainHitLogID++;
             }
             ftParamUpdatePlayerBattleStats(attacker_player, victim_fp->player, damage);
             ftParamUpdateStaleQueue(attacker_player, victim_fp->player, attacker_hit->attack_id, attacker_hit->motion_count);
@@ -2342,11 +2342,11 @@ void ftMainUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *wp_attack_coll, s3
         (ftMainCheckGetUpdateDamage(fp, &damage) != FALSE)
     )
     {
-        if (sFTMainHitlogID < ARRAY_COUNT(sFTMainHitlogs))
+        if (sFTMainHitLogID < ARRAY_COUNT(sFTMainHitLogs))
         {
-            FTHitlog *hitlog = &sFTMainHitlogs[sFTMainHitlogID];
+            FTHitLog *hitlog = &sFTMainHitLogs[sFTMainHitLogID];
 
-            hitlog->attacker_object_class = nFTHitlogObjectWeapon;
+            hitlog->attacker_object_class = nFTHitLogObjectWeapon;
             hitlog->attacker_hit = wp_attack_coll;
             hitlog->attack_id = wp_attack_id;
             hitlog->attacker_gobj = weapon_gobj;
@@ -2354,7 +2354,7 @@ void ftMainUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *wp_attack_coll, s3
             hitlog->attacker_player = wp->player;
             hitlog->attacker_player_number = wp->player_number;
 
-            sFTMainHitlogID++;
+            sFTMainHitLogID++;
         }
         ftParamUpdatePlayerBattleStats(wp->player, fp->player, damage);
         ftParamUpdateStaleQueue(wp->player, fp->player, wp_attack_coll->attack_id, wp_attack_coll->motion_count);
@@ -2529,11 +2529,11 @@ void ftMainUpdateDamageStatItem(ITStruct *ip, ITAttackColl *it_attack_coll, s32 
             (ftMainCheckGetUpdateDamage(fp, &damage) != FALSE)
         )
         {
-            if (sFTMainHitlogID < ARRAY_COUNT(sFTMainHitlogs))
+            if (sFTMainHitLogID < ARRAY_COUNT(sFTMainHitLogs))
             {
-                FTHitlog *hitlog = &sFTMainHitlogs[sFTMainHitlogID];
+                FTHitLog *hitlog = &sFTMainHitLogs[sFTMainHitLogID];
 
-                hitlog->attacker_object_class = nFTHitlogObjectItem;
+                hitlog->attacker_object_class = nFTHitLogObjectItem;
                 hitlog->attacker_hit = it_attack_coll;
                 hitlog->attack_id = attack_id;
                 hitlog->attacker_gobj = item_gobj;
@@ -2541,7 +2541,7 @@ void ftMainUpdateDamageStatItem(ITStruct *ip, ITAttackColl *it_attack_coll, s32 
                 hitlog->attacker_player = ip->player;
                 hitlog->attacker_player_number = ip->player_number;
 
-                sFTMainHitlogID++;
+                sFTMainHitLogID++;
             }
             ftParamUpdatePlayerBattleStats(ip->player, fp->player, damage);
             ftParamUpdateStaleQueue(ip->player, fp->player, it_attack_coll->attack_id, it_attack_coll->motion_count);
@@ -2556,15 +2556,15 @@ void ftMainUpdateDamageStatGround(GObj *special_gobj, GObj *fighter_gobj, FTStru
     s32 damage = ftParamGetCapturedDamage(fp, gr_attack_coll->damage);
     sb32 is_take_damage = ftMainCheckGetUpdateDamage(fp, &damage);
 
-    if ((is_take_damage != FALSE) && (sFTMainHitlogID < ARRAY_COUNT(sFTMainHitlogs)))
+    if ((is_take_damage != FALSE) && (sFTMainHitLogID < ARRAY_COUNT(sFTMainHitLogs)))
     {
-        FTHitlog *hitlog = &sFTMainHitlogs[sFTMainHitlogID];
+        FTHitLog *hitlog = &sFTMainHitLogs[sFTMainHitLogID];
 
-        hitlog->attacker_object_class = nFTHitlogObjectGround;
+        hitlog->attacker_object_class = nFTHitLogObjectGround;
         hitlog->attacker_hit = gr_attack_coll;
         hitlog->attacker_gobj = special_gobj;
 
-        sFTMainHitlogID++;
+        sFTMainHitLogID++;
     }
     switch (kind)
     {
@@ -2631,7 +2631,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
     WPStruct *wp;
     ITStruct *ip;
     FTAttributes *attr = this_fp->attr;
-    FTHitlog *hitlog;
+    FTHitLog *hitlog;
     s32 i, j;
     f32 knockback_temp;
     f32 knockback;
@@ -2647,13 +2647,13 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
 
     knockback = -1.0F;
 
-    for (i = 0; i < sFTMainHitlogID; i++)
+    for (i = 0; i < sFTMainHitLogID; i++)
     {
-        hitlog = &sFTMainHitlogs[i];
+        hitlog = &sFTMainHitLogs[i];
 
         switch (hitlog->attacker_object_class)
         {
-        case nFTHitlogObjectFighter:
+        case nFTHitLogObjectFighter:
             ft_attack_coll = hitlog->attacker_hit;
             attacker_fp = ftGetStruct(hitlog->attacker_gobj);
 
@@ -2717,7 +2717,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
             }
             break;
 
-        case nFTHitlogObjectWeapon:
+        case nFTHitLogObjectWeapon:
             wp_attack_coll = hitlog->attacker_hit;
             wp = wpGetStruct(hitlog->attacker_gobj);
             damage = wpMainGetStaledDamage(wp);
@@ -2753,7 +2753,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
             }
             break;
 
-        case nFTHitlogObjectItem:
+        case nFTHitLogObjectItem:
             it_attack_coll = hitlog->attacker_hit;
             ip = itGetStruct(hitlog->attacker_gobj);
 
@@ -2790,7 +2790,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
             }
             break;
 
-        case nFTHitlogObjectGround:
+        case nFTHitLogObjectGround:
             gr_attack_coll = hitlog->attacker_hit;
 
             if (gr_attack_coll->kind == nGMHitEnvironmentPowerBlock) // POW Block?
@@ -2812,12 +2812,12 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
             j = i;
         }
     }
-    hitlog = &sFTMainHitlogs[j];
+    hitlog = &sFTMainHitLogs[j];
     attacker_gobj = hitlog->attacker_gobj;
 
     switch (hitlog->attacker_object_class)
     {
-    case nFTHitlogObjectFighter:
+    case nFTHitLogObjectFighter:
         ft_attack_coll = hitlog->attacker_hit;
         attacker_fp = ftGetStruct(attacker_gobj);
         this_fp->damage_angle = ft_attack_coll->angle;
@@ -2838,7 +2838,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
         }
         break;
 
-    case nFTHitlogObjectWeapon:
+    case nFTHitLogObjectWeapon:
         wp_attack_coll = hitlog->attacker_hit;
         wp = wpGetStruct(attacker_gobj);
         this_fp->damage_angle = wp_attack_coll->angle;
@@ -2872,7 +2872,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
         ftMainGetBumperDamageAngle(fighter_gobj, attacker_gobj);
         break;
 
-    case nFTHitlogObjectItem:
+    case nFTHitLogObjectItem:
         it_attack_coll = hitlog->attacker_hit;
         ip = itGetStruct(attacker_gobj);
 
@@ -2907,7 +2907,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
         ftMainGetBumperDamageAngle(fighter_gobj, attacker_gobj);
         break;
 
-    case nFTHitlogObjectGround:
+    case nFTHitLogObjectGround:
         gr_attack_coll = hitlog->attacker_hit;
 
         this_fp->damage_angle = gr_attack_coll->angle;
@@ -3759,14 +3759,14 @@ void ftMainProcSearchAllHit(GObj *fighter_gobj)
 
     if (!(fp->is_nullstatus))
     {
-        sFTMainHitlogID = 0;
+        sFTMainHitLogID = 0;
 
         ftMainSearchFighterAttack(fighter_gobj);
         ftMainSearchItemAttack(fighter_gobj);
         ftMainSearchWeaponAttack(fighter_gobj);
         ftMainSearchGroundHit(fighter_gobj);
 
-        if (sFTMainHitlogID != 0)
+        if (sFTMainHitLogID != 0)
         {
             ftMainProcessHitCollisionStatsMain(fighter_gobj);
         }
@@ -3822,7 +3822,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
         }
         if (fp->status_id == nFTCommonStatusTwister)
         {
-            fp->damage_kind = nGMHitEnvironmentTwister;
+            fp->damage_kind = nFTDamageKindColAnim;
         }
         if (fp->knockback_resist_status < fp->knockback_resist_passive)
         {
@@ -3846,19 +3846,19 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
         {
             switch (fp->damage_kind)
             {
-            case 4:
+            case nFTDamageKindNone:
                 break;
 
-            case nGMHitEnvironmentPowerBlock:
+            case nFTDamageKindStatus:
                 ftParamStopVoiceRunProcDamage(fighter_gobj);
                 ftCommonDamageGotoDamageStatus(fighter_gobj);
                 break;
 
-            case nGMHitEnvironmentTwister:
+            case nFTDamageKindColAnim:
                 ftCommonDamageSetDamageColAnim(fighter_gobj);
                 break;
 
-            case nGMHitEnvironmentTaruCann:
+            case nFTDamageKindCatch:
                 ftParamStopVoiceRunProcDamage(fighter_gobj);
                 ftCommonDamageUpdateCatchResist(fighter_gobj);
                 break;
@@ -3966,7 +3966,7 @@ void ftMainProcUpdateMain(GObj *fighter_gobj)
     fp->shield_damage_total = 0;
     fp->damage_lag = 0;
     fp->damage_queue = 0;
-    fp->damage_kind = nGMHitEnvironmentAcid;
+    fp->damage_kind = nFTDamageKindDefault;
 
     fp->reflect_lr = 0;
     fp->reflect_damage = 0;

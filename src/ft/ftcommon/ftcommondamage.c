@@ -715,7 +715,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
 
                     ftCommonDamageUpdateCatchResist(fighter_gobj);
 
-                    grab_fp->damage_kind = 2;
+                    grab_fp->damage_kind = nFTDamageKindColAnim;
                 }
                 else
                 {
@@ -723,7 +723,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
                     ftParamStopVoiceRunProcDamage(fighter_gobj);
                     ftCommonDamageGotoDamageStatus(fighter_gobj);
 
-                    grab_fp->damage_kind = 1;
+                    grab_fp->damage_kind = nFTDamageKindStatus;
                 }
             }
             else ftCommonDamageUpdateCatchResist(fighter_gobj);
@@ -738,7 +738,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
             ftParamStopVoiceRunProcDamage(fighter_gobj);
             ftCommonDamageGotoDamageStatus(fighter_gobj);
 
-            grab_fp->damage_kind = 1;
+            grab_fp->damage_kind = nFTDamageKindStatus;
         }
         else
         {
@@ -766,11 +766,11 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
         {
             if (grab_fp->damage_knockback != 0)
             {
-                if (ftCommonDamageCheckCatchResist(grab_fp) != 0)
+                if (ftCommonDamageCheckCatchResist(grab_fp) != FALSE)
                 {
                     this_fp->damage_lag = grab_fp->damage_lag;
                     this_fp->hitlag_mul = grab_fp->hitlag_mul;
-                    grab_fp->damage_kind = 3;
+                    grab_fp->damage_kind = nFTDamageKindCatch;
 
                     ftCommonDamageSetDamageColAnim(fighter_gobj);
                 }
@@ -781,7 +781,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
                     ftParamStopVoiceRunProcDamage(fighter_gobj);
                     ftCommonDamageGotoDamageStatus(fighter_gobj);
 
-                    grab_fp->damage_kind = 1;
+                    grab_fp->damage_kind = nFTDamageKindStatus;
                 }
             }
             else
@@ -803,7 +803,7 @@ void ftCommonDamageUpdateMain(GObj *fighter_gobj)
             ftParamStopVoiceRunProcDamage(fighter_gobj);
             ftCommonDamageGotoDamageStatus(fighter_gobj);
 
-            grab_fp->damage_kind = 1;
+            grab_fp->damage_kind = nFTDamageKindStatus;
         }
         else
         {

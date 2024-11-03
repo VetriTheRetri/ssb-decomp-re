@@ -1202,7 +1202,7 @@ void lbCommonPlayTreeDObjsAnim(DObj *root_dobj)
     
     while (current_dobj != NULL)
     {
-        gcPlayDObjAnim(current_dobj);
+        gcPlayDObjAnimJoint(current_dobj);
         current_dobj = lbCommonGetTreeDObjNextFromRoot(current_dobj, root_dobj);
     }
 }

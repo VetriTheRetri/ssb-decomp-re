@@ -415,7 +415,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
                 }
                 else ftAnimParseDObjFigatree(joint);
                 
-                gcPlayDObjAnim(joint);
+                gcPlayDObjAnimJoint(joint);
 
                 mobj = joint->mobj;
 
@@ -468,7 +468,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
 
                 joint->anim_wait = AOBJ_ANIM_END;
 
-                gcPlayDObjAnim(joint);
+                gcPlayDObjAnimJoint(joint);
 
                 joint->anim_wait = anim_wait_bak;
             }

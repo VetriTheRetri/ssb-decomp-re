@@ -3773,7 +3773,7 @@ void func_ovl2_800FBAD0(GObj *ground_gobj)
 
                 translate = dobj->translate.vec.f;
 
-                gcPlayDObjAnim(dobj);
+                gcPlayDObjAnimJoint(dobj);
 
                 gMPCollisionDynamics[i].x = dobj->translate.vec.f.x - translate.x;
                 gMPCollisionDynamics[i].y = dobj->translate.vec.f.y - translate.y;
@@ -3799,7 +3799,7 @@ void func_ovl2_800FBAD0(GObj *ground_gobj)
         else
         {
             gcParseDObjAnimJoint(dobj);
-            gcPlayDObjAnim(dobj);
+            gcPlayDObjAnimJoint(dobj);
         }
         mobj = dobj->mobj;
 
@@ -3916,7 +3916,7 @@ void func_ovl2_800FBD14(void)
                             {
                                 dir2.top = vy;
                             }
-                            if (vy < dir2.bottom)
+                            if (dir2.bottom > vy)
                             {
                                 dir2.bottom = vy;
                             }
@@ -3924,7 +3924,7 @@ void func_ovl2_800FBD14(void)
                             {
                                 dir2.right = vx;
                             }
-                            if (vx < dir2.left)
+                            if (dir2.left > vx)
                             {
                                 dir2.left = vx;
                             }
@@ -3936,7 +3936,7 @@ void func_ovl2_800FBD14(void)
                         {
                             dir1.top = vy;
                         }
-                        if (vy < dir1.bottom)
+                        if (dir1.bottom > vy)
                         {
                             dir1.bottom = vy;
                         }
@@ -3944,7 +3944,7 @@ void func_ovl2_800FBD14(void)
                         {
                             dir1.right = vx;
                         }
-                        if (vx < dir1.left)
+                        if (dir1.left > vx)
                         {
                             dir1.left = vx;
                         }

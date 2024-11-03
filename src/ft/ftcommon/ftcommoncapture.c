@@ -28,7 +28,7 @@ void ftCommonCaptureApplyCatchKnockback(GObj *fighter_gobj, FTThrowReleaseDesc *
     f32 knockback = ftParamGetCommonKnockback(this_fp->percent_damage, 0, 0, throw_release->knockback_weight, throw_release->knockback_scale, throw_release->knockback_base, this_fp->attr->weight, catch_fp->handicap, this_fp->handicap);
     
     ftCommonDamageInitDamageVars(fighter_gobj, -1, 0, knockback, throw_release->angle, this_fp->lr, 1, 0, 0, FALSE, FALSE, FALSE);
-    ftParamUpdate1PGameDamageStats(this_fp, GMCOMMON_PLAYERS_MAX, nFTHitlogObjectNone, 0, 0, 0);
+    ftParamUpdate1PGameDamageStats(this_fp, GMCOMMON_PLAYERS_MAX, nFTHitLogObjectNone, 0, 0, 0);
 }
 
 // 0x8014E2A8
@@ -59,7 +59,7 @@ void ftCommonCaptureApplyCaptureKnockback(GObj *fighter_gobj, FTThrowReleaseDesc
     else lr = -1;
 
     ftCommonDamageInitDamageVars(fighter_gobj, -1, 0, knockback, throw_release->angle, lr, 1, 0, 0, FALSE, FALSE, FALSE);
-    ftParamUpdate1PGameDamageStats(this_fp, GMCOMMON_PLAYERS_MAX, nFTHitlogObjectNone, 0, 0, 0);
+    ftParamUpdate1PGameDamageStats(this_fp, GMCOMMON_PLAYERS_MAX, nFTHitLogObjectNone, 0, 0, 0);
 }
 
 // 0x8014E3EC

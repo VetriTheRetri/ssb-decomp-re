@@ -123,7 +123,7 @@ void ftCommonTaruCannShootFighter(GObj *fighter_gobj)
     angle -= (angle / 360) * 360;
 
     ftCommonDamageInitDamageVars(fighter_gobj, nFTCommonStatusDamageFlyRoll, tarucann->damage, knockback, angle, fp->lr, 0, tarucann->element, 0, TRUE, TRUE, FALSE);
-    ftParamUpdate1PGameDamageStats(fp, GMCOMMON_PLAYERS_MAX, nFTHitlogObjectGround, nGMHitEnvironmentTaruCann, 0, 0);
+    ftParamUpdate1PGameDamageStats(fp, GMCOMMON_PLAYERS_MAX, nFTHitLogObjectGround, nGMHitEnvironmentTaruCann, 0, 0);
 
     fp->playertag_wait = 0;
     fp->tarucann_wait = FTCOMMON_TARUCANN_PICKUP_WAIT;

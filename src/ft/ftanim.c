@@ -407,7 +407,7 @@ void func_ovl2_800ECCA4(GObj *gobj)
     while (main_dobj != NULL)
     {
         ftAnimParseDObjFigatree(main_dobj);
-        gcPlayDObjAnim(main_dobj);
+        gcPlayDObjAnimJoint(main_dobj);
 
         mobj = main_dobj->mobj;
 

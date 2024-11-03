@@ -455,7 +455,7 @@ void ftCommonThrownKirbyStarInITStatusVars(GObj *fighter_gobj)
         ftCommonThrownReleaseFighterLoseGrip(fighter_gobj);
         ftParamSetCaptureImmuneMask(this_fp, FTCATCHKIND_MASK_NONE);
         ftParamSetCaptureImmuneMask(capture_fp, FTCATCHKIND_MASK_NONE);
-        ftParamUpdate1PGameDamageStats(this_fp, capture_fp->player, nFTHitlogObjectFighter, capture_fp->fkind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
+        ftParamUpdate1PGameDamageStats(this_fp, capture_fp->player, nFTHitLogObjectFighter, capture_fp->fkind, capture_fp->stat_flags.halfword, capture_fp->stat_count);
 
         this_fp->capture_gobj = NULL;
         this_fp->catch_gobj = NULL;

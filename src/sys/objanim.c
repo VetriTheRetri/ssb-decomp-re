@@ -179,7 +179,7 @@ void gcAddAnimJointAll(GObj *gobj, AObjEvent32 **anim_joints, f32 anim_frame)
         } 
         else 
         {
-            dobj->anim_wait = F32_MIN;
+            dobj->anim_wait = AOBJ_ANIM_NULL;
             dobj->is_anim_root = FALSE;
         }
         anim_joints++;
@@ -237,7 +237,7 @@ void gcAddAnimAll(GObj *gobj, AObjEvent32 **anim_joints, AObjEvent32 ***p_matani
             } 
             else 
             {
-                dobj->anim_wait = F32_MIN;
+                dobj->anim_wait = AOBJ_ANIM_NULL;
                 dobj->is_anim_root = FALSE;
             }
             anim_joints++;
@@ -711,7 +711,7 @@ f32 gcGetAObjRate(AObj *aobj)
 #endif
 }
 
-void gcPlayDObjAnim(DObj *dobj) 
+void gcPlayDObjAnimJoint(DObj *dobj)
 {
     f32 value; // array_dobjs
     AObj *aobj;
@@ -822,7 +822,7 @@ void gcPlayDObjAnim(DObj *dobj)
         }
         if (dobj->anim_wait == AOBJ_ANIM_END) 
         { 
-            dobj->anim_wait = F32_MIN; 
+            dobj->anim_wait = AOBJ_ANIM_NULL;
         }
     }
 }
@@ -891,8 +891,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                 }
                 mobj->anim_frame = mobj->anim_wait;
                 mobj->anim_wait = AOBJ_ANIM_END;
-
-                break; // or return?
+                break;
             }
             command_kind = mobj->matanim_joint.event32->command.opcode;
 
@@ -923,7 +922,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                         mat_aobjs[i]->rate_base = mat_aobjs[i]->rate_target;
                         mat_aobjs[i]->rate_target = 0.0F;
 
-                        mat_aobjs[i]->kind = 3;
+                        mat_aobjs[i]->kind = nGCAnimKindCubic;
 
                         if (payload != 0.0F)
                         {
@@ -1421,7 +1420,7 @@ void gcPlayMObjMatAnim(MObj *mobj)
         }
         if(mobj->anim_wait == AOBJ_ANIM_END)
         {
-            mobj->anim_wait = F32_MIN;
+            mobj->anim_wait = AOBJ_ANIM_NULL;
         }
     }
 }
@@ -1434,7 +1433,7 @@ void gcPlayAnimAll(GObj *gobj)
     while (dobj != NULL) 
     {
         gcParseDObjAnimJoint(dobj);
-        gcPlayDObjAnim(dobj);
+        gcPlayDObjAnimJoint(dobj);
 
         mobj = dobj->mobj;
 

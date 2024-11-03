@@ -241,7 +241,7 @@ void ftCommonGuardUpdateJoints(GObj *fighter_gobj)
         {
             lbCommonPlayTranslateScaledDObjAnim(yrotn_joint, scale);
         }
-        else gcPlayDObjAnim(yrotn_joint);
+        else gcPlayDObjAnimJoint(yrotn_joint);
 
         if (fp->is_have_translate_scale)
         {

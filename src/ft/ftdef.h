@@ -840,15 +840,15 @@ typedef enum FTSlopeContours
 
 } FTSlopeContours;
 
-typedef enum FTHitlogObjectKind
+typedef enum FTHitLogObjectKind
 {
-	nFTHitlogObjectNone,
-	nFTHitlogObjectFighter,
-	nFTHitlogObjectWeapon,
-	nFTHitlogObjectItem,
-	nFTHitlogObjectGround
+	nFTHitLogObjectNone,
+	nFTHitLogObjectFighter,
+	nFTHitLogObjectWeapon,
+	nFTHitLogObjectItem,
+	nFTHitLogObjectGround
 
-} FTHitlogObjectKind;
+} FTHitLogObjectKind;
 
 typedef enum FTItemSwingKind
 {
@@ -896,6 +896,16 @@ typedef enum FTPartsPlacement
     nFTPartsPlacementHigh
 
 } FTPartsPlacement;
+
+typedef enum FTDamageKind
+{
+    nFTDamageKindDefault,                   // Default damage procedure
+    nFTDamageKindStatus,                    // Set damage status
+    nFTDamageKindColAnim,                   // Set damage ColAnim
+    nFTDamageKindCatch,                     // Something with grabs?
+    nFTDamageKindNone                       // No procedure
+
+} FTDamageKind;
 
 typedef enum FTPartsJointLabels
 {
@@ -1205,11 +1215,11 @@ typedef struct FTOpeningDesc		            FTOpeningDesc;
 typedef struct FTThrowHitDesc			        FTThrowHitDesc;
 typedef struct FTThrowReleaseDesc		        FTThrowReleaseDesc;
 typedef struct FTCreateDesc				        FTCreateDesc;
-typedef struct FTAttackMatrix                      FTAttackMatrix;
-typedef struct FTAttackColl					        FTAttackColl;
+typedef struct FTAttackMatrix                   FTAttackMatrix;
+typedef struct FTAttackColl					    FTAttackColl;
 typedef struct FTDamageCollDesc			        FTDamageCollDesc;
 typedef struct FTDamageColl				        FTDamageColl;
-typedef struct FTHitlog		                    FTHitlog;
+typedef struct FTHitLog		                    FTHitLog;
 typedef struct FTItemThrow				        FTItemThrow;
 typedef struct FTItemSwing				        FTItemSwing;
 typedef struct FTParts                          FTParts;
@@ -1225,8 +1235,8 @@ typedef struct FTComputer				        FTComputer;
 typedef struct FTPlayerInput                    FTPlayerInput;
 typedef struct FTComputerInput                  FTComputerInput;
 typedef struct FTComputerAttack                 FTComputerAttack;
-typedef union  FTKeyCommand                 FTKeyCommand;
-typedef struct FTKey                   FTKey;
+typedef union  FTKeyCommand                     FTKeyCommand;
+typedef struct FTKey                            FTKey;
 typedef struct FTAttributes				        FTAttributes;
 typedef struct FTMesh		                    FTMesh;
 

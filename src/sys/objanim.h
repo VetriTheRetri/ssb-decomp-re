@@ -43,7 +43,7 @@ extern f32 gcGetAObjValue(AObj *aobj);
 extern f32 gcGetAObjRate(AObj *aobj);
 
 // Apply AnimJoint values on current frame of animation to specific DObj
-extern void gcPlayDObjAnim(DObj *dobj);
+extern void gcPlayDObjAnimJoint(DObj *dobj);
 
 // Apply MatAnimJoint values on current frame of animation to specific MObj
 extern void gcPlayMObjMatAnim(MObj *mobj);

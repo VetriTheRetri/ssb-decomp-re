@@ -214,7 +214,7 @@ struct LBBackupVSRecord
 	u32 damage_dealt;
 	u32 damage_taken;
 	u16 unk;
-	u16 self_destructs;
+	u16 selfdestructs;
 	u16 games_played;
 	u16 player_count_tally;
 	u16 player_count_tallies[GMCOMMON_FIGHTERS_PLAYABLE_NUM];

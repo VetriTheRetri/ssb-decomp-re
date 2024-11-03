@@ -257,13 +257,13 @@ struct SCPlayerData
 	u8 placement;			                        // Player's placement in battle results
 	s32 falls;
 	s32 score;								        // Caps at positive 999, crashes if way too low in the negatives
-	s32 total_ko_player[GMCOMMON_PLAYERS_MAX];      // KOs scored on other players
+	s32 total_kos_players[GMCOMMON_PLAYERS_MAX];    // KOs scored on other players
 	s32 unk_pblock_0x28;
 	s32 unk_pblock_0x2C;
-	s32 total_self_destruct;					    // Applied when damaging player's ID is -1 or GMCOMMON_PLAYERS_MAX
+	s32 total_selfdestructs;					    // Applied when damaging player's ID is -1 or GMCOMMON_PLAYERS_MAX
 	s32 total_damage_dealt;						    // Total damage dealt to all players
 	s32 total_damage_all;						    // Damage received from all hazards
-	s32 total_damage_player[GMCOMMON_PLAYERS_MAX];  // Total damage received from each player present
+	s32 total_damage_players[GMCOMMON_PLAYERS_MAX]; // Total damage received from each player present
 	s32 stock_damage_all;						    // All damage received per current stock, from any hazard
 	s32 combo_damage_foe;						    // Total damage from consecutive hits dealt by foes (Resets when hitstun ends)
 	s32 combo_count_foe;						    // Number of consecutive hits received from foes (Resets when hitstun ends)

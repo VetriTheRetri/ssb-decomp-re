@@ -595,8 +595,45 @@ SCBattleState dSCManagerDefaultBattleState =
 			0,										// Costume
 			0,										// Shade
 			0,										// Color
-			TRUE,									// Permanent stock icon?
-			0										// Player tag
+			TRUE,									// Is permanent stock icon?
+			0,										// Player tag
+			0,										// Stock count
+			FALSE,									// Is a "VS [Character] Team" member?
+			0,										// Placement
+			0,										// Falls
+			0,										// Score
+
+			// Total number of KOs scored on each player
+			{
+				0, 0, 0, 0
+			},
+
+			0,										// ???
+			0,										// ???
+
+			0,										// Total number of self-destructs
+			0,										// Total damage dealt
+			0,										// Total damage taken from all sources
+
+			// Total damage taken from each player
+			{
+				0, 0, 0, 0
+			},
+
+			0,										// Total damage taken on current stock
+			0,										// Combo damage taken from foes
+			0,										// Combo hits landed by foes
+			NULL,									// Pointer to fighter GObj
+			0,										// Current position in stale moves queue
+			
+			// Stale moves info
+			{
+				{ 0, 0 },
+				{ 0, 0 },
+				{ 0, 0 },
+				{ 0, 0 },
+				{ 0, 0 }
+			}
 		},
 
 		// Player 2
@@ -611,7 +648,44 @@ SCBattleState dSCManagerDefaultBattleState =
 			0,										// Shade
 			0,										// Color
 			TRUE,									// Permanent stock icon?
-			1										// Player tag
+			1,										// Player tag
+			0,										// Stock count
+			FALSE,									// Is a "VS [Character] Team" member?
+			0,										// Placement
+			0,										// Falls
+			0,										// Score
+
+			// Total number of KOs scored on each player
+			{
+				0, 0, 0, 0
+			},
+
+			0,										// ???
+			0,										// ???
+
+			0,										// Total number of self-destructs
+			0,										// Total damage dealt
+			0,										// Total damage taken from all sources
+
+			// Total damage taken from each player
+			{
+				0, 0, 0, 0
+			},
+
+			0,										// Total damage taken on current stock
+			0,										// Combo damage taken from foes
+			0,										// Combo hits landed by foes
+			NULL,									// Pointer to fighter GObj
+			0,										// Current position in stale moves queue
+			
+			// Stale moves info
+			{
+				{ 0, 0 },
+				{ 0, 0 },
+				{ 0, 0 },
+				{ 0, 0 },
+				{ 0, 0 }
+			}
 		},
 
 		// Player 3
@@ -626,7 +700,44 @@ SCBattleState dSCManagerDefaultBattleState =
 			0,										// Shade
 			0,										// Color
 			TRUE,									// Permanent stock icon?
-			2										// Player tag
+			2,										// Player tag
+			0,										// Stock count
+			FALSE,									// Is a "VS [Character] Team" member?
+			0,										// Placement
+			0,										// Falls
+			0,										// Score
+
+			// Total number of KOs scored on each player
+			{
+				0, 0, 0, 0
+			},
+
+			0,										// ???
+			0,										// ???
+
+			0,										// Total number of self-destructs
+			0,										// Total damage dealt
+			0,										// Total damage taken from all sources
+
+			// Total damage taken from each player
+			{
+				0, 0, 0, 0
+			},
+
+			0,										// Total damage taken on current stock
+			0,										// Combo damage taken from foes
+			0,										// Combo hits landed by foes
+			NULL,									// Pointer to fighter GObj
+			0,										// Current position in stale moves queue
+			
+			// Stale moves info
+			{
+				{ 0, 0 },
+				{ 0, 0 },
+				{ 0, 0 },
+				{ 0, 0 },
+				{ 0, 0 }
+			}
 		},
 
 		// Player 4
@@ -641,12 +752,45 @@ SCBattleState dSCManagerDefaultBattleState =
 			0,										// Shade
 			0,										// Color
 			TRUE,									// Permanent stock icon?
-			3										// Player tag
+			3,										// Player tag
+			0,										// Stock count
+			FALSE,									// Is a "VS [Character] Team" member?
+			0,										// Placement
+			0,										// Falls
+			0,										// Score
+
+			// Total number of KOs scored on each player
+			{
+				0, 0, 0, 0
+			},
+
+			0,										// ???
+			0,										// ???
+
+			0,										// Total number of self-destructs
+			0,										// Total damage dealt
+			0,										// Total damage taken from all sources
+
+			// Total damage taken from each player
+			{
+				0, 0, 0, 0
+			},
+
+			0,										// Total damage taken on current stock
+			0,										// Combo damage taken from foes
+			0,										// Combo hits landed by foes
+			NULL,									// Pointer to fighter GObj
+			0,										// Current position in stale moves queue
+			
+			// Stale moves info
+			{
+				{ 0, 0 },
+				{ 0, 0 },
+				{ 0, 0 },
+				{ 0, 0 },
+				{ 0, 0 }
+			}
 		}
-		/*
-		 * These SCPlayerData sub-structs are not actually this short; 
-		 * they are cut off after the "tag" member to initialize the rest of the struct as 0
-		 */
 	}
 };
 

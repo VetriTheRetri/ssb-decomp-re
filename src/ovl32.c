@@ -158,10 +158,10 @@ s32 mnVSRecordGetTKOs(s32 fkind)
 			total_tkos += gSCManagerBackupData.vs_records[i].ko_count[fkind];
 	}
 
-	if (gSCManagerBackupData.vs_records[fkind].self_destructs + total_tkos > 9999)
+	if (gSCManagerBackupData.vs_records[fkind].selfdestructs + total_tkos > 9999)
 		return 9999;
 
-	return gSCManagerBackupData.vs_records[fkind].self_destructs + total_tkos;
+	return gSCManagerBackupData.vs_records[fkind].selfdestructs + total_tkos;
 }
 
 // 0x80131CD4
@@ -1226,10 +1226,10 @@ f32 mnVSRecordGetSDPercentage(s32 fkind)
 {
 	f32 sd_percentage;
 	f32 total_kos = mnVSRecordGetTKOs(fkind);
-	f32 self_destructs = gSCManagerBackupData.vs_records[fkind].self_destructs;
+	f32 selfdestructs = gSCManagerBackupData.vs_records[fkind].selfdestructs;
 
 	if (total_kos != 0.0f)
-		sd_percentage = self_destructs / total_kos;
+		sd_percentage = selfdestructs / total_kos;
 	else
 		sd_percentage = 0.0f;
 

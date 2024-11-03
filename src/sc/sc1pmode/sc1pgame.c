@@ -1766,7 +1766,7 @@ void sc1PGameSetPlayerDefeatStats(s32 player, s32 team_order)
 
         if ((gSCManagerSceneData.spgame_stage == nSC1PGameStageMario) && (fp->fkind == nFTKindLuigi) && (sSC1PGameEnemyStocksRemaining != 0) && (fp->damage_player == gSCManagerSceneData.player))
         {
-            if (gSCManagerBattleState->players[(fp->player == 0) ? (GMCOMMON_PLAYERS_MAX - 1) : fp->player - 1].total_damage_player[gSCManagerSceneData.player] == 0)
+            if (gSCManagerBattleState->players[(fp->player == 0) ? (GMCOMMON_PLAYERS_MAX - 1) : fp->player - 1].total_damage_players[gSCManagerSceneData.player] == 0)
             {
                 gSC1PGameBonusBrosCalamity = TRUE; // Bros. Calamity bonus
             }

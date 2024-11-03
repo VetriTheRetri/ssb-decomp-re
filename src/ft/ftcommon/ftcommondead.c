@@ -60,14 +60,14 @@ void ftCommonDeadUpdateScore(FTStruct *this_fp)
     {
         gSCManagerBattleState->players[this_fp->damage_player].score++;
 
-        gSCManagerBattleState->players[this_fp->damage_player].total_ko_player[this_fp->player]++;
+        gSCManagerBattleState->players[this_fp->damage_player].total_kos_players[this_fp->player]++;
 
         if (gSCManagerBattleState->is_display_score)
         {
             ifCommonPlayerScoreMakeEffect(ftGetStruct(gSCManagerBattleState->players[this_fp->damage_player].fighter_gobj), 1);
         }
     }
-    else gSCManagerBattleState->players[this_fp->player].total_self_destruct++;
+    else gSCManagerBattleState->players[this_fp->player].total_selfdestructs++;
     
     if (gSCManagerBattleState->game_rules & SCBATTLE_GAMERULE_STOCK)
     {

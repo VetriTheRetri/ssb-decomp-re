@@ -289,10 +289,10 @@ void mnVSResultsSaveDataToSRAM()
 			if (vs_record->damage_taken > 999999)
 				vs_record->damage_taken = 999999;
 
-			vs_record->self_destructs += gSCManagerTransferBattleState.players[i].total_self_destruct;
+			vs_record->selfdestructs += gSCManagerTransferBattleState.players[i].total_selfdestructs;
 
-			if (vs_record->self_destructs > 9999)
-				vs_record->self_destructs = 9999;
+			if (vs_record->selfdestructs > 9999)
+				vs_record->selfdestructs = 9999;
 
 			vs_record->games_played += 1;
 			vs_record->player_count_tally += mnVSResultsGetPlayerCount();
@@ -303,7 +303,7 @@ void mnVSResultsSaveDataToSRAM()
 				{
 					opp_fkind = gSCManagerTransferBattleState.players[j].fkind;
 
-					gSCManagerBackupData.vs_records[fkind].ko_count[opp_fkind] += gSCManagerTransferBattleState.players[i].total_ko_player[j];
+					gSCManagerBackupData.vs_records[fkind].ko_count[opp_fkind] += gSCManagerTransferBattleState.players[i].total_kos_players[j];
 
 					if (gSCManagerBackupData.vs_records[fkind].ko_count[opp_fkind] > 9999)
 						gSCManagerBackupData.vs_records[fkind].ko_count[opp_fkind] = 9999;

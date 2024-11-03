@@ -3136,7 +3136,7 @@ void mn1PInitCSS()
 	mn1PCreateReadyToFightObjects();
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-	if (gSCManagerSceneData.scene_prev != nSCKindVSMaps)
+	if (gSCManagerSceneData.scene_prev != nSCKindStages)
 		auPlaySong(0, 0xA);
 
 	func_800269C0_275C0(0x1DFU);

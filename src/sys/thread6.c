@@ -36,7 +36,7 @@ OSContStatus sContStatus[MAXCONTROLLERS];
 OSContPad sContData[MAXCONTROLLERS];
 
 // 0x800451A0
-u32 gNumControllers;
+u32 gSYControllerConnectedNum;
 
 // 0x800451A4
 s8 gPlayerControllerPortStatuses[MAXCONTROLLERS];
@@ -85,7 +85,7 @@ void update_controller_indices(void) {
             gPlayerControllerPortStatuses[v0++] = i;
         }
     }
-    gNumControllers = v0;
+    gSYControllerConnectedNum = v0;
 
     for (i = v0; i < MAXCONTROLLERS; i++) {
         gPlayerControllerPortStatuses[i] = -1;

@@ -650,7 +650,7 @@ void scExplainUpdatePhase(void)
         if (sSCExplainStruct.phase > 22)
         {
             gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-            gSCManagerSceneData.scene_curr = nSCKindCharacters;
+            gSCManagerSceneData.scene_curr = nSCKindDataCharacters;
 
             syTaskmanSetLoadScene();
 

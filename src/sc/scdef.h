@@ -137,7 +137,7 @@ typedef enum SCKind
 	nSCKindDebugSystem,      	  // Debug main menu?
 	nSCKindDebugFighters,      	  // Debug character select
 	nSCKindDebugVSResults,    	  // Debug results screen
-	nSCKindDebugPadTest,      	  // Debug joystick test
+	nSCKindDebugUnknown,      	  // Debug joystick test
 	nSCKindModeSelect,            // Main Menu
 	nSCKind1PMode,            	  // 1P mode menu
 	nSCKindVSMode,        		  // VS mode
@@ -152,11 +152,12 @@ typedef enum SCKind
 	nSCKind1PTrainingFighters,    // Training mode character select
 	nSCKind1PBonus1Fighters,      // Bonus 1 practice character select
 	nSCKind1PBonus2Fighters,      // Bonus 2 practice character select
-	nSCKindVSMaps,     	  		  // VS mode map select
+	nSCKindStages,     	  		  // VS mode map select
 	nSCKindVSBattle,          	  // VS mode in-game
-	nSCKindVSResults = 24,    	  // VS mode results
+	nSCKindUnknownMario,	   	  // Unknown movie sequence with Mario?
+	nSCKindVSResults,    	  	  // VS mode results
 	nSCKindVSRecord,          	  // Records screen
-	nSCKindCharacters,        	  // Character data screen
+	nSCKindDataCharacters,        	  // Character data screen
 	nSCKindN64,               	  // N64 logo
 	nSCKindOpeningRoom,       	  // Room with Master Hand and figures coming to life
 	nSCKindOpeningFox = 33,		  // Fox demo

@@ -665,7 +665,7 @@ void sc1PChallengerStartScene();
 void sc1PStageCardStartScene();
 void mnScreenAdjustStartScene();
 void vs_css_entry();
-void mnStageStartScene();
+void mnStagesStartScene();
 void scVSBattleStartScene();
 void overlay_set23_entry();
 void sc1PManagerUpdateScene();
@@ -711,10 +711,10 @@ void scAutoDemoStartScene();
 // 0x800A1980
 void scManagerRunLoop(u32 set)
 {
-	u16 *csr;
+	u16 *framebuffer;
 	uintptr_t end;
-	SCBattleState sp220;
-	SCBattleState sp30;
+	SCBattleState battlestate_copy;
+	SCBattleState battlestate_default;
 
 	set_contstatus_delay(60);
 	syErrorSetFuncPrint(scManagerProcPrintGObjStatus);
@@ -725,11 +725,20 @@ void scManagerRunLoop(u32 set)
 
 	gSCManagerBackupData = dSCManagerDefaultBackupData;
 	gSCManagerSceneData = dSCManagerDefaultSceneData;
-	sp30       = gSCManagerDefaultBattleState;
-	gSCManagerVSBattleState = sp30;
-	sp220      = sp30;
-	gSCManagerTransferBattleState = sp220;
-	gSCManager1PGameBattleState = sp220;
+
+#if !defined (DAIRANTOU_OPT0) || !defined(NON_MATCHING)
+	battlestate_default = gSCManagerDefaultBattleState;
+	gSCManagerVSBattleState = battlestate_default;
+
+	// m8 why
+	battlestate_copy = battlestate_default;
+	gSCManagerTransferBattleState = battlestate_copy;
+	gSCManager1PGameBattleState = battlestate_copy;
+#else
+	gSCManager1PGameBattleState   =
+	gSCManagerVSBattleState 	  =
+	gSCManagerTransferBattleState = gSCManagerDefaultBattleState;
+#endif
 
 	ftManagerSetupFileSize();
 	D_8003CB6D = 72;
@@ -743,44 +752,50 @@ void scManagerRunLoop(u32 set)
 	lbBackupIsSramValid();
 	lbBackupApplyOptions();
 
-	// it needs to be something like this to match
-	// csr = (void *)_ovl1SegNoloadEnd; // 0x80392A00
-	csr = gSCSubsysFramebuffer0;//(void *)_ovl1SegNoloadEnd; // 0x80392A00
+	framebuffer = gSCSubsysFramebuffer0;
 	end = 0x80400000;
-	while ((uintptr_t)csr < end)
-		*(csr++) = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01);
 
-	if (gNumControllers == 0)
-		gSCManagerSceneData.scene_curr = 0;
-
+	while ((uintptr_t)framebuffer < end)
+	{
+		*framebuffer++ = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01);
+	}
+	if (gSYControllerConnectedNum == 0)
+	{
+		gSCManagerSceneData.scene_curr = nSCKindNoController;
+	}
 	while (TRUE)
 	{
-		switch (gSCManagerSceneData.scene_curr) {
-			case 0:
+		switch (gSCManagerSceneData.scene_curr)
+		{
+			case nSCKindNoController:
 				syDmaLoadOverlay(&dSCManagerOverlays[11]);
 				mnNoControllerStartScene();
 				break;
-			case 1:
+
+			case nSCKindTitle:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[10]);
 				syDmaLoadOverlay(&dSCManagerOverlays[8]);
 				syDmaLoadOverlay(&dSCManagerOverlays[9]);
 				mnTitleStartScene();
 				break;
-			case 2:
+
+			case nSCKindDebugMaps:
 				syDmaLoadOverlay(&dSCManagerOverlays[12]);
 				syDmaLoadOverlay(&dSCManagerOverlays[8]);
 				syDmaLoadOverlay(&dSCManagerOverlays[9]);
 				dbStageSelectStartScene();
 				break;
-			case 3:
+
+			case nSCKindDebugSystem:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[13]);
 				syDmaLoadOverlay(&dSCManagerOverlays[8]);
 				syDmaLoadOverlay(&dSCManagerOverlays[9]);
 				dbCubeStartScene();
 				break;
-			case 4:
+
+			case nSCKindDebugFighters:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[14]);
@@ -788,287 +803,348 @@ void scManagerRunLoop(u32 set)
 				syDmaLoadOverlay(&dSCManagerOverlays[9]);
 				dbBattleStartScene();
 				break;
-			case 5:
+
+			case nSCKindDebugVSResults:
 				syDmaLoadOverlay(&dSCManagerOverlays[15]);
 				dbFallsStartScene();
 				break;
-			case 6:
+
+			case nSCKindDebugUnknown:
 				syDmaLoadOverlay(&dSCManagerOverlays[16]);
 				mnUnusedFightersStartScene();
 				break;
-			case 7:
+
+			case nSCKindModeSelect:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[17]);
 				mnModeSelectStartScene();
 				break;
+
 			case 8:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[18]);
 				mn1PModeStartScene();
 				break;
-			case 57:
+
+			case nSCKindOption:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[60]);
 				mnOptionStartScene();
 				break;
-			case 58:
+
+			case nSCKindData:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[61]);
 				mnDataStartScene();
 				break;
-			case 9:
+
+			case nSCKindVSMode:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[19]);
 				mnVSModeStartScene();
 				break;
-			case 10:
+
+			case nSCKindVSOptions:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[20]);
 				mnVSOptionsStartScene();
 				break;
-			case 11:
+
+			case nSCKindVSItemSwitch:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[21]);
 				mnVSItemSwitchStartScene();
 				break;
-			case 12:
+
+			case nSCKindMessage:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[22]);
 				mnMessageStartScene();
 				break;
-			case 13:
+
+			case nSCKind1PChallenger:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[23]);
 				sc1PChallengerStartScene();
 				break;
-			case 14:
+
+			case nSCKind1PStageCard:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[24]);
 				sc1PStageCardStartScene();
 				break;
-			case 15:
+
+			case nSCKindScreenAdjust:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[25]);
 				mnScreenAdjustStartScene();
 				break;
-			case 16:
+
+			case nSCKindVSFighters:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[26]);
 				vs_css_entry();
 				break;
-			case 21:
+
+			case nSCKindStages:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[30]);
-				mnStageStartScene();
+				mnStagesStartScene();
 				break;
-			case 22:
+
+			case nSCKindVSBattle:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[3]);
 				syDmaLoadOverlay(&dSCManagerOverlays[4]);
 				scVSBattleStartScene();
 				break;
-			case 23:
+
+			case nSCKindUnknownMario:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[3]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[5]);
 				overlay_set23_entry();
 				break;
-			case 52:
+
+			case nSCKind1PGame:
 				sc1PManagerUpdateScene();
 				break;
-			case 53:
+
+			case nSCKind1PBonusGame:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[3]);
 				syDmaLoadOverlay(&dSCManagerOverlays[6]);
 				sc1PBonusGameStartScene();
 				break;
-			case 54:
+
+			case nSCKind1PTraining:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[3]);
 				syDmaLoadOverlay(&dSCManagerOverlays[7]);
 				scManager_TrainingMode_InitScene();
 				break;
-			case 24:
+
+			case nSCKindVSResults:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[31]);
 				vs_results_entry();
 				break;
-			case 25:
+
+			case nSCKindVSRecord:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[32]);
 				vs_records_entry();
 				break;
-			case 26:
+
+			case nSCKindDataCharacters:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[33]);
 				char_bkg_info_entry();
 				break;
-			case 27:
+
+			case nSCKindN64:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[58]);
 				mnN64StartScene();
 				break;
-			case 28:
+
+			case nSCKindOpeningRoom:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[34]);
 				intro_firstscene_entry();
 				break;
+
 			case 29:
 				syDmaLoadOverlay(&dSCManagerOverlays[35]);
 				mvPortraitsStartScene();
 				break;
+
 			case 30:
 				syDmaLoadOverlay(&dSCManagerOverlays[3]);
 				syDmaLoadOverlay(&dSCManagerOverlays[36]);
 				intro_focus_mario_entry();
 				break;
+
 			case 31:
 				syDmaLoadOverlay(&dSCManagerOverlays[37]);
 				intro_focus_dk_entry();
 				break;
+
 			case 32:
 				syDmaLoadOverlay(&dSCManagerOverlays[38]);
 				intro_focus_samus_entry();
 				break;
+
 			case 33:
 				syDmaLoadOverlay(&dSCManagerOverlays[39]);
 				intro_focus_fox_entry();
 				break;
+
 			case 34:
 				syDmaLoadOverlay(&dSCManagerOverlays[40]);
 				intro_focus_link_entry();
 				break;
+
 			case 35:
 				syDmaLoadOverlay(&dSCManagerOverlays[41]);
 				intro_focus_yoshi_entry();
 				break;
+
 			case 36:
 				syDmaLoadOverlay(&dSCManagerOverlays[42]);
 				intro_focus_pikachu_entry();
 				break;
+
 			case 37:
 				syDmaLoadOverlay(&dSCManagerOverlays[43]);
 				mvOpeningKirbyStartScene();
 				break;
+
 			case 38:
 				syDmaLoadOverlay(&dSCManagerOverlays[44]);
 				mvOpeningRunStartScene();
 				break;
-			case 39:
+				
+			case nSCKindOpeningYoster:
 				syDmaLoadOverlay(&dSCManagerOverlays[45]);
 				mvOpeningYosterStartScene();
 				break;
-			case 40:
+
+			case nSCKindOpeningCliff:
 				syDmaLoadOverlay(&dSCManagerOverlays[46]);
 				mvOpeningCliffStartScene();
 				break;
-			case 41:
+
+			case nSCKindOpeningStandoff:
 				syDmaLoadOverlay(&dSCManagerOverlays[47]);
 				mvOpeningStandoffStartScene();
 				break;
-			case 42:
+
+			case nSCKindOpeningYamabuki:
 				syDmaLoadOverlay(&dSCManagerOverlays[48]);
 				mvOpeningYamabukiStartScene();
 				break;
-			case 43:
+
+			case nSCKindOpeningClash:
 				syDmaLoadOverlay(&dSCManagerOverlays[49]);
 				mvOpeningClashStartScene();
 				break;
-			case 44:
+
+			case nSCKindOpeningSector:
 				syDmaLoadOverlay(&dSCManagerOverlays[50]);
 				mvOpeningSectorStartScene();
 				break;
-			case 45:
+
+			case nSCKindOpeningJungle:
 				syDmaLoadOverlay(&dSCManagerOverlays[3]);
 				syDmaLoadOverlay(&dSCManagerOverlays[51]);
 				mvOpeningJungleStartScene();
 				break;
-			case 46:
+
+			case nSCKindOpeningNewcomers:
 				syDmaLoadOverlay(&dSCManagerOverlays[52]);
 				mvOpeningNewcomersStartScene();
 				break;
-			case 17:
+
+			case nSCKind1PGameFighters:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[27]);
 				classic_css_entry();
 				break;
-			case 18:
+
+			case nSCKind1PTrainingFighters:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[28]);
 				training_css_entry();
 				break;
-			case 19:
+				
+			case nSCKind1PBonus1Fighters:
+#ifdef DAIRANTOU_OPT0
+			case nSCKind1PBonus2Fighters:
+#endif
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[29]);
 				bonus_css_entry();
 				break;
-			case 20:
+
+#ifndef DAIRANTOU_OPT0
+			case nSCKind1PBonus2Fighters:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[29]);
 				bonus_css_entry();
 				break;
-			case 47:
+#endif
+			case nSCKindBackupClear:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[53]);
 				mnBackupClearStartScene();
 				break;
-			case 48:
+
+			case nSCKindEnding:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[54]);
 				mvEndingStartScene();
 				break;
-			case 49:
+
+			case nSCKind1PContinue:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[55]);
 				sc1PContinueStartScene();
 				break;
-			case 50:
+
+			case nSCKind1PScoreUnk:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[56]);
 				sc1PStageClearStartScene();
 				break;
-			case 51:
+
+			case nSCKind1PStageClear:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[56]);
 				sc1PStageClearStartScene();
 				break;
-			case 56:
+
+			case nSCKindStaffroll:
 				syDmaLoadOverlay(&dSCManagerOverlays[59]);
 				gmStaffrollStartScene();
 				break;
-			case 55:
+
+			case nSCKindCongra:
 				syDmaLoadOverlay(&dSCManagerOverlays[57]);
 				mnCongraStartScene();
 				break;
-			case 59:
+
+			case nSCKindSoundTest:
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[62]);
 				mnSoundTestStartScene();
 				break;
-			case 60:
+
+			case nSCKindExplain:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[3]);
 				syDmaLoadOverlay(&dSCManagerOverlays[63]);
 				scExplainStartScene();
 				break;
-			case 61:
+
+			case nSCKindAutoDemo:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[3]);
 				syDmaLoadOverlay(&dSCManagerOverlays[64]);

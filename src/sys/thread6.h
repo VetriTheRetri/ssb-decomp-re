@@ -113,7 +113,7 @@ typedef struct Unk80045268
 
 } Unk80045268; // size = 0x18
 
-extern u32 gNumControllers;
+extern u32 gSYControllerConnectedNum;
 extern sb32 gUpdateContData;
 extern s8 gPlayerControllerPortStatuses[MAXCONTROLLERS];
 extern gsController gPlayerControllers[MAXCONTROLLERS];

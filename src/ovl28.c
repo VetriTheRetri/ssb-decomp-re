@@ -2539,7 +2539,7 @@ void mnTrainingMain(s32 arg0)
 		if (gMNTrainingStartDelayTimer == 0)
 		{
 			gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-			gSCManagerSceneData.scene_curr = nSCKindVSMaps;
+			gSCManagerSceneData.scene_curr = nSCKindStages;
 
 			mnTrainingSaveMatchInfo();
 			syTaskmanSetLoadScene();
@@ -2778,7 +2778,7 @@ void mnTrainingInitCSS()
 	mnTrainingCreateReadyToFightObjects();
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-	if (gSCManagerSceneData.scene_prev != nSCKindVSMaps)
+	if (gSCManagerSceneData.scene_prev != nSCKindStages)
 		auPlaySong(0, 0xA);
 
 	func_800266A0_272A0();

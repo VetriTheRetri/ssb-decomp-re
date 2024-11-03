@@ -664,7 +664,7 @@ void mnDataFuncRun(GObj *gobj)
                 auStopBGM();
 
                 gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
-                gSCManagerSceneData.scene_curr = nSCKindCharacters;
+                gSCManagerSceneData.scene_curr = nSCKindDataCharacters;
                 sMNDataIsProceedScene = TRUE;
                 return;
 
@@ -809,7 +809,7 @@ void mnDataFuncStart(void)
     if
     (
         (gSCManagerSceneData.scene_prev == nSCKindVSRecord)  || 
-        (gSCManagerSceneData.scene_prev == nSCKindCharacters)||
+        (gSCManagerSceneData.scene_prev == nSCKindDataCharacters)||
         (gSCManagerSceneData.scene_prev == nSCKindSoundTest)
     )
     {

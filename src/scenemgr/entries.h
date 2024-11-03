@@ -22,7 +22,7 @@ extern void sc1PChallengerStartScene(void);              // ovl 23
 extern void sc1PStageCardStartScene(void);                // ovl 24
 extern void mnScreenAdjustStartScene(void);              // ovl 25
 extern void vs_css_entry(void);                     // ovl 26
-extern void mnStageStartScene(void);               // ovl 30
+extern void mnStagesStartScene(void);               // ovl 30
 extern void scVSBattleStartScene(void);          // ovl 4
 extern void overlay_set23_entry(void);              // ovl 5
 extern void sc1PManagerUpdateScene(void);               // ovl 2

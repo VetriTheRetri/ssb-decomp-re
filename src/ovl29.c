@@ -2533,7 +2533,7 @@ void mnBonusInitCSS()
 	mnBonusCreateReadyToFightObjects();
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-	if (gSCManagerSceneData.scene_prev != nSCKindVSMaps)
+	if (gSCManagerSceneData.scene_prev != nSCKindStages)
 		auPlaySong(0, 0xA);
 }
 

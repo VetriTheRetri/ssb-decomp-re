@@ -342,7 +342,7 @@ void func_ovl2_80106A40(DObj *dobj, AObjEvent32 *anim_joint, f32 arg2)
 // 0x80106A98
 void func_ovl2_80106A98(void)
 {
-    if (gBattleState->game_status != nSCBattleGameStatusWait)
+    if (gSCManagerBattleState->game_status != nSCBattleGameStatusWait)
     {
         gGRCommonStruct.sector.arwing_status = nGRSectorArwingStatusWait;
     }
@@ -837,7 +837,7 @@ void grSectorArwingWeaponLaser3DMakeWeapon(void)
 
     gmCollisionGetWorldPosition(mtx, &wp_pos);
 
-    random = mtTrigGetRandomIntRange(gBattleState->pl_count + gBattleState->cp_count);
+    random = mtTrigGetRandomIntRange(gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count);
 
     fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 

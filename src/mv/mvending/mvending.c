@@ -460,9 +460,9 @@ void mvEndingInitVars(void)
 {
     sMVEndingTotalTimeTics = 0;
 
-    sMVEndingFighterDemoDesc.fkind = gSCManager1PGameBattleState.players[gSceneData.spgame_player].fkind;
-    sMVEndingFighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSceneData.spgame_player].costume;
-    sMVEndingFighterDemoDesc.shade   = gSCManager1PGameBattleState.players[gSceneData.spgame_player].shade;
+    sMVEndingFighterDemoDesc.fkind = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].fkind;
+    sMVEndingFighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].costume;
+    sMVEndingFighterDemoDesc.shade   = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].shade;
 }
 
 // 0x801327C8
@@ -497,8 +497,8 @@ void mvEndingFuncRun(GObj *gobj)
         }
         if (sMVEndingTotalTimeTics == 660)
         {
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindStaffroll;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindStaffroll;
 
             syTaskmanSetLoadScene();
         }

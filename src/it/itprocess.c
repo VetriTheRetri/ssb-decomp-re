@@ -686,7 +686,7 @@ void itProcessSearchFighterAttack(GObj *item_gobj) // Check fighters for hit det
 
             fp = ftGetStruct(fighter_gobj);
 
-            if ((gBattleState->is_team_battle == TRUE) && (gBattleState->is_team_attack == FALSE) && (((fp->throw_gobj != NULL) ? fp->throw_team : fp->team) == ip->team) && !(ip->is_damage_all)) goto next_gobj;
+            if ((gSCManagerBattleState->is_team_battle == TRUE) && (gSCManagerBattleState->is_team_attack == FALSE) && (((fp->throw_gobj != NULL) ? fp->throw_team : fp->team) == ip->team) && !(ip->is_damage_all)) goto next_gobj;
             
             if (fp->is_catchstatus) goto next_gobj;
             
@@ -786,7 +786,7 @@ void itProcessSearchItemAttack(GObj *this_gobj) // Check other items for hit det
 
                 if ((this_ip->owner_gobj == other_ip->owner_gobj) && !(this_ip->is_damage_all)) goto next_gobj;
                 
-                if ((gBattleState->is_team_battle == TRUE) && (gBattleState->is_team_attack == FALSE) && (this_ip->team == other_ip->team) && !(this_ip->is_damage_all)) goto next_gobj;
+                if ((gSCManagerBattleState->is_team_battle == TRUE) && (gSCManagerBattleState->is_team_attack == FALSE) && (this_ip->team == other_ip->team) && !(this_ip->is_damage_all)) goto next_gobj;
 
                 if (other_hit->attack_state == nGMAttackStateOff) goto next_gobj;
                 
@@ -809,7 +809,7 @@ void itProcessSearchItemAttack(GObj *this_gobj) // Check other items for hit det
 
                 if ((is_check_self != FALSE) && (this_hit->can_setoff) && (other_hit->can_setoff) && (this_ip->owner_gobj != other_ip->owner_gobj))
                 {
-                    if ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (this_ip->team != other_ip->team))
+                    if ((gSCManagerBattleState->is_team_battle != TRUE) || (gSCManagerBattleState->is_team_attack != FALSE) || (this_ip->team != other_ip->team))
                     {
                         if (this_hit->attack_state != nGMAttackStateOff)
                         {
@@ -899,7 +899,7 @@ void itProcessSearchWeaponAttack(GObj *item_gobj) // Check weapons for hit detec
 
             if ((ip->owner_gobj == wp->owner_gobj) && !(ip->is_damage_all)) goto next_gobj;
 
-            if ((gBattleState->is_team_battle == TRUE) && (gBattleState->is_team_attack == FALSE) && (ip->team == wp->team) && !(ip->is_damage_all)) goto next_gobj;
+            if ((gSCManagerBattleState->is_team_battle == TRUE) && (gSCManagerBattleState->is_team_attack == FALSE) && (ip->team == wp->team) && !(ip->is_damage_all)) goto next_gobj;
 
             if (wp_attack_coll->attack_state != nGMAttackStateOff)
             {
@@ -922,7 +922,7 @@ void itProcessSearchWeaponAttack(GObj *item_gobj) // Check weapons for hit detec
                     
                     if ((it_attack_coll->can_setoff) && (wp_attack_coll->can_setoff) && (ip->owner_gobj != wp->owner_gobj))
                     {
-                        if ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (ip->team != wp->team))
+                        if ((gSCManagerBattleState->is_team_battle != TRUE) || (gSCManagerBattleState->is_team_attack != FALSE) || (ip->team != wp->team))
                         {
                             if (it_attack_coll->attack_state != nGMAttackStateOff)
                             {

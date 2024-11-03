@@ -128,7 +128,7 @@ void mnDataFuncLights(Gfx **dls)
 // 0x80131B24
 sb32 mnDataCheckSoundTestUnlocked(void)
 {
-    if (gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_SOUNDTEST)
+    if (gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_SOUNDTEST)
     {
         return TRUE;
     }
@@ -574,7 +574,7 @@ void mnDataMakeDecalsCamera(void)
 // 0x801327B4
 void mnDataInitVars(void)
 {
-    switch (gSceneData.scene_prev)
+    switch (gSCManagerSceneData.scene_prev)
     {
     case nSCKindVSRecord:
         sMNDataOption = nMNDataOptionVSRecord;
@@ -623,8 +623,8 @@ void mnDataFuncRun(GObj *gobj)
     {
         if (sMNDataTotalTimeTics == sMNDataReturnTic)
         {
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindTitle;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindTitle;
 
             syTaskmanSetLoadScene();
 
@@ -663,8 +663,8 @@ void mnDataFuncRun(GObj *gobj)
                 mnDataSetOptionSpriteColors(*option_gobj[sMNDataOption], nMNOptionTabStatusSelected);
                 auStopBGM();
 
-                gSceneData.scene_prev = gSceneData.scene_curr;
-                gSceneData.scene_curr = nSCKindCharacters;
+                gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+                gSCManagerSceneData.scene_curr = nSCKindCharacters;
                 sMNDataIsProceedScene = TRUE;
                 return;
 
@@ -673,8 +673,8 @@ void mnDataFuncRun(GObj *gobj)
                 mnDataSetOptionSpriteColors(*option_gobj[sMNDataOption], nMNOptionTabStatusSelected);
                 auStopBGM();
 
-                gSceneData.scene_prev = gSceneData.scene_curr;
-                gSceneData.scene_curr = nSCKindVSRecord;
+                gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+                gSCManagerSceneData.scene_curr = nSCKindVSRecord;
                 sMNDataIsProceedScene = TRUE;
                 return;
 
@@ -683,16 +683,16 @@ void mnDataFuncRun(GObj *gobj)
                 mnDataSetOptionSpriteColors(*option_gobj[sMNDataOption], nMNOptionTabStatusSelected);
                 auStopBGM();
 
-                gSceneData.scene_prev = gSceneData.scene_curr;
-                gSceneData.scene_curr = nSCKindSoundTest;
+                gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+                gSCManagerSceneData.scene_curr = nSCKindSoundTest;
                 sMNDataIsProceedScene = TRUE;
                 return;
             }
         }
         if (scSubsysControllerGetPlayerTapButtons(B_BUTTON) != FALSE)
         {
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindModeSelect;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindModeSelect;
 
             syTaskmanSetLoadScene();
 
@@ -808,9 +808,9 @@ void mnDataFuncStart(void)
 
     if
     (
-        (gSceneData.scene_prev == nSCKindVSRecord)  || 
-        (gSceneData.scene_prev == nSCKindCharacters)||
-        (gSceneData.scene_prev == nSCKindSoundTest)
+        (gSCManagerSceneData.scene_prev == nSCKindVSRecord)  || 
+        (gSCManagerSceneData.scene_prev == nSCKindCharacters)||
+        (gSCManagerSceneData.scene_prev == nSCKindSoundTest)
     )
     {
         auPlaySong(0, nSYAudioBGMModeSelect);

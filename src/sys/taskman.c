@@ -163,7 +163,7 @@ Gfx *gSYTaskmanDLHeads[4];
 // 0x800465C0
 Gfx *sSYTaskmanDLBranches[4];
 
-// 0x800465D0 - Writing 1 to this will load the screen at scene_curr (gSceneData).
+// 0x800465D0 - Writing 1 to this will load the screen at scene_curr (gSCManagerSceneData).
 s32 sSYTaskmanStatus;
 
 // 0x800465D4

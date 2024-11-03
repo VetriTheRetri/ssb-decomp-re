@@ -813,7 +813,7 @@ u32 mnBonusGetBestTime(s32 fkind)
 
 	if (gMnBonusType == 0)
 	{
-		time = gSaveData.spgame_records[fkind].bonus1_time;
+		time = gSCManagerBackupData.spgame_records[fkind].bonus1_time;
 
 		if (time >= 0x34BC0U)
 			return 0x34BBFU;
@@ -822,7 +822,7 @@ u32 mnBonusGetBestTime(s32 fkind)
 	}
 	else
 	{
-		time = gSaveData.spgame_records[fkind].bonus2_time;
+		time = gSCManagerBackupData.spgame_records[fkind].bonus2_time;
 
 		if (time >= 0x34BC0U)
 			return 0x34BBFU;
@@ -974,9 +974,9 @@ void mnBonusDrawBestTime()
 u8 mnBonusGetBestCount(s32 fkind)
 {
 	if (gMnBonusType == 0)
-		return gSaveData.spgame_records[fkind].bonus1_task_count;
+		return gSCManagerBackupData.spgame_records[fkind].bonus1_task_count;
 	else
-		return gSaveData.spgame_records[fkind].bonus2_task_count;
+		return gSCManagerBackupData.spgame_records[fkind].bonus2_task_count;
 }
 
 // 0x801339C8
@@ -1033,9 +1033,9 @@ sb32 mnBonusIsCompleted(s32 fkind)
 	u8 count;
 
 	if (gMnBonusType == 0)
-		count = gSaveData.spgame_records[fkind].bonus1_task_count;
+		count = gSCManagerBackupData.spgame_records[fkind].bonus1_task_count;
 	else
-		count = gSaveData.spgame_records[fkind].bonus2_task_count;
+		count = gSCManagerBackupData.spgame_records[fkind].bonus2_task_count;
 
 	if (count == 10)
 		return TRUE;
@@ -1854,11 +1854,11 @@ void mnBonusRecallToken(s32 port_id)
 void mnBonusGoBackTo1PMenu()
 {
 	if (gMnBonusType == 0)
-		gSceneData.scene_prev = nSCKind1PBonus1Fighters;
+		gSCManagerSceneData.scene_prev = nSCKind1PBonus1Fighters;
 	else
-		gSceneData.scene_prev = nSCKind1PBonus2Fighters;
+		gSCManagerSceneData.scene_prev = nSCKind1PBonus2Fighters;
 
-	gSceneData.scene_curr = nSCKind1PMode;
+	gSCManagerSceneData.scene_curr = nSCKind1PMode;
 
 	mnBonusSaveMatchInfo();
 	auStopBGM();
@@ -2362,9 +2362,9 @@ void func_ovl29_80136990() {}
 // 0x80136998
 void mnBonusSaveMatchInfo()
 {
-	gSceneData.spgame_player = gMnBonusHumanPanelPort;
-	gSceneData.bonus_fkind = gMnBonusPanel.char_id;
-	gSceneData.bonus_costume = gMnBonusPanel.costume_id;
+	gSCManagerSceneData.player = gMnBonusHumanPanelPort;
+	gSCManagerSceneData.bonus_fkind = gMnBonusPanel.char_id;
+	gSCManagerSceneData.bonus_costume = gMnBonusPanel.costume_id;
 }
 
 // 0x801369C8 - Unused?
@@ -2377,8 +2377,8 @@ void mnBonusMain(s32 arg0)
 
 	if (gMnBonusFramesElapsed == gMnBonusMaxFramesElapsed)
 	{
-		gSceneData.scene_prev = gSceneData.scene_curr;
-		gSceneData.scene_curr = nSCKindTitle;
+		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+		gSCManagerSceneData.scene_curr = nSCKindTitle;
 
 		mnBonusSaveMatchInfo();
 		syTaskmanSetLoadScene();
@@ -2396,11 +2396,11 @@ void mnBonusMain(s32 arg0)
 	{
 
 		if (gMnBonusType == 0)
-			gSceneData.scene_prev = nSCKind1PBonus1Fighters;
+			gSCManagerSceneData.scene_prev = nSCKind1PBonus1Fighters;
 		else
-			gSceneData.scene_prev = nSCKind1PBonus2Fighters;
+			gSCManagerSceneData.scene_prev = nSCKind1PBonus2Fighters;
 
-		gSceneData.scene_curr = nSCKind1PBonusGame;
+		gSCManagerSceneData.scene_curr = nSCKind1PBonusGame;
 
 		mnBonusSaveMatchInfo();
 		syTaskmanSetLoadScene();
@@ -2432,7 +2432,7 @@ void mnBonusLoadMatchInfo()
 	gMnBonusMaxFramesElapsed = gMnBonusFramesElapsed + I_MIN_TO_TICS(5);
 	D_ovl29_801376D4 = 5;
 	gMnBonusCharSelected = FALSE;
-	gMnBonusHumanPanelPort = gSceneData.spgame_player;
+	gMnBonusHumanPanelPort = gSCManagerSceneData.player;
 	gMnBonusTotalTimeGobj = NULL;
 	gMnBonusIsTeamBattle = D_800A4B18.is_team_battle;
 	gMnBonusRule = D_800A4B18.game_rules;
@@ -2440,9 +2440,9 @@ void mnBonusLoadMatchInfo()
 	mnBonusInitPort();
 
 	gMnBonusPanel.min_frames_elapsed_until_recall = 0;
-	gMnBonusCharacterUnlockedMask = gSaveData.fighter_mask;
+	gMnBonusCharacterUnlockedMask = gSCManagerBackupData.fighter_mask;
 
-	if (gSceneData.scene_curr == 0x13)
+	if (gSCManagerSceneData.scene_curr == 0x13)
 		gMnBonusType = 0;
 	else
 		gMnBonusType = 1;
@@ -2533,7 +2533,7 @@ void mnBonusInitCSS()
 	mnBonusCreateReadyToFightObjects();
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-	if (gSceneData.scene_prev != nSCKindVSMaps)
+	if (gSCManagerSceneData.scene_prev != nSCKindVSMaps)
 		auPlaySong(0, 0xA);
 }
 

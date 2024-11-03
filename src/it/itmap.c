@@ -277,7 +277,7 @@ sb32 itMapCheckDestroyDropped(GObj *item_gobj, f32 common_rebound, f32 ground_re
         {
             if
             (
-                (gBattleState->game_type != nSCBattleGameTypeExplain)   && 
+                (gSCManagerBattleState->game_type != nSCBattleGameTypeExplain)   && 
                 (ip->times_thrown != 0)                                 && 
                 (
                     (ip->times_thrown == ITEM_THROW_NUM_MAX)            

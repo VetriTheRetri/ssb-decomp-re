@@ -17,20 +17,20 @@ sb32 ftCommonSleepCheckIgnorePauseMenu(GObj *fighter_gobj)
     s32 player;
     s32 stock_count;
 
-    if ((gBattleState->game_rules & SCBATTLE_GAMERULE_STOCK) && (gBattleState->is_team_battle == TRUE) && (fp->status_id == nFTCommonStatusSleep))
+    if ((gSCManagerBattleState->game_rules & SCBATTLE_GAMERULE_STOCK) && (gSCManagerBattleState->is_team_battle == TRUE) && (fp->status_id == nFTCommonStatusSleep))
     {
         if (fp->status_vars.common.sleep.stock_steal_wait == 0)
         {
-            for (active_teammate_count = 0, stock_count = 0, player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
+            for (active_teammate_count = 0, stock_count = 0, player = 0; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)
             {
-                if ((player != fp->player) && (gBattleState->players[player].pkind != nFTPlayerKindNot) && (fp->team == gBattleState->players[player].player))
+                if ((player != fp->player) && (gSCManagerBattleState->players[player].pkind != nFTPlayerKindNot) && (fp->team == gSCManagerBattleState->players[player].player))
                 {
-                    if (gBattleState->players[player].stock_count > 0)
+                    if (gSCManagerBattleState->players[player].stock_count > 0)
                     {
-                        if (stock_count < gBattleState->players[player].stock_count)
+                        if (stock_count < gSCManagerBattleState->players[player].stock_count)
                         {
                             active_teammate_count = 0;
-                            stock_count = gBattleState->players[player].stock_count;
+                            stock_count = gSCManagerBattleState->players[player].stock_count;
                         }
                         steal_from_player[active_teammate_count] = player;
 
@@ -58,7 +58,7 @@ void ftCommonSleepProcUpdate(GObj *fighter_gobj)
     s32 random_steal_target;
     s32 stock_count;
 
-    if ((gBattleState->game_rules & SCBATTLE_GAMERULE_STOCK) && (gBattleState->is_team_battle == TRUE))
+    if ((gSCManagerBattleState->game_rules & SCBATTLE_GAMERULE_STOCK) && (gSCManagerBattleState->is_team_battle == TRUE))
     {
         if (this_fp->status_vars.common.sleep.stock_steal_wait != 0)
         {
@@ -67,7 +67,7 @@ void ftCommonSleepProcUpdate(GObj *fighter_gobj)
             if (this_fp->status_vars.common.sleep.stock_steal_wait == 0)
             {
                 this_fp->stock_count = 0;
-                gBattleState->players[this_fp->player].stock_count = 0;
+                gSCManagerBattleState->players[this_fp->player].stock_count = 0;
 
                 ftCommonRebirthDownSetStatus(fighter_gobj);
             }
@@ -76,16 +76,16 @@ void ftCommonSleepProcUpdate(GObj *fighter_gobj)
         {
             if (this_fp->input.pl.button_tap & START_BUTTON)
             {
-                for (active_teammate_count = 0, stock_count = 0, player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
+                for (active_teammate_count = 0, stock_count = 0, player = 0; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)
                 {
-                    if ((player != this_fp->player) && (gBattleState->players[player].pkind != nFTPlayerKindNot) && (this_fp->team == gBattleState->players[player].player)) 
+                    if ((player != this_fp->player) && (gSCManagerBattleState->players[player].pkind != nFTPlayerKindNot) && (this_fp->team == gSCManagerBattleState->players[player].player)) 
                     {
-                        if (gBattleState->players[player].stock_count > 0)
+                        if (gSCManagerBattleState->players[player].stock_count > 0)
                         {
-                            if (stock_count < gBattleState->players[player].stock_count)
+                            if (stock_count < gSCManagerBattleState->players[player].stock_count)
                             {
                                 active_teammate_count = 0;
-                                stock_count = gBattleState->players[player].stock_count;
+                                stock_count = gSCManagerBattleState->players[player].stock_count;
                             }
                             steal_from_player[active_teammate_count] = player;
                             active_teammate_count++;
@@ -96,15 +96,15 @@ void ftCommonSleepProcUpdate(GObj *fighter_gobj)
                 {
                     random_steal_target = mtTrigGetRandomIntRange(active_teammate_count);
 
-                    gBattleState->players[steal_from_player[random_steal_target]].stock_count--;
+                    gSCManagerBattleState->players[steal_from_player[random_steal_target]].stock_count--;
 
-                    steal_gobj = gBattleState->players[steal_from_player[random_steal_target]].fighter_gobj;
+                    steal_gobj = gSCManagerBattleState->players[steal_from_player[random_steal_target]].fighter_gobj;
 
                     ftGetStruct(steal_gobj)->stock_count--;
 
                     this_fp->stock_count = -2;
 
-                    gBattleState->players[this_fp->player].stock_count = -2;
+                    gSCManagerBattleState->players[this_fp->player].stock_count = -2;
 
                     this_fp->status_vars.common.sleep.stock_steal_wait = FTCOMMON_SLEEP_STOCK_STEAL_WAIT;
 

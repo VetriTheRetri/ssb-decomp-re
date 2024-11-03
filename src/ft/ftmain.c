@@ -1297,7 +1297,7 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
         {
             pl->stick_range.y = -I_CONTROLLER_RANGE_MAX;
         }
-        if (gSaveData.error_flags & LBBACKUP_ERROR_HALFSTICKRANGE)
+        if (gSCManagerBackupData.error_flags & LBBACKUP_ERROR_HALFSTICKRANGE)
         {
             pl->stick_range.x *= 0.5F;
             pl->stick_range.y *= 0.5F;
@@ -1441,7 +1441,7 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
 
             func_800269C0_275C0(nSYAudioFGMPlayerHeal);
 
-            gBattleState->players[this_fp->player].stock_damage_all = this_fp->percent_damage;
+            gSCManagerBattleState->players[this_fp->player].stock_damage_all = this_fp->percent_damage;
         }
         if (this_fp->percent_damage == 0)
         {
@@ -1487,8 +1487,8 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
         }
         if (!(this_fp->is_hitstun))
         {
-            gBattleState->players[this_fp->player].combo_damage_foe = 0;
-            gBattleState->players[this_fp->player].combo_count_foe = 0;
+            gSCManagerBattleState->players[this_fp->player].combo_damage_foe = 0;
+            gSCManagerBattleState->players[this_fp->player].combo_count_foe = 0;
         }
         is_jostle = FALSE;
 
@@ -2018,7 +2018,7 @@ void ftMainUpdateAttackStatFighter(FTStruct *other_fp, FTAttackColl *other_hit, 
         ftMainSetHitRebound(this_gobj, this_fp, this_hit, other_gobj);
         efManagerSetOffMakeEffect(&impact_pos, this_hit->damage);
 
-        if ((gBattleState->game_type == nSCBattleGameType1PGame) && (this_hit->damage >= 20) && (other_fp->player == gSceneData.spgame_player))
+        if ((gSCManagerBattleState->game_type == nSCBattleGameType1PGame) && (this_hit->damage >= 20) && (other_fp->player == gSCManagerSceneData.player))
         {
             gSC1PGameBonusGiantImpact = TRUE;
         }
@@ -2029,7 +2029,7 @@ void ftMainUpdateAttackStatFighter(FTStruct *other_fp, FTAttackColl *other_hit, 
         ftMainSetHitRebound(other_gobj, other_fp, other_hit, this_gobj);
         efManagerSetOffMakeEffect(&impact_pos, other_hit->damage);
 
-        if ((gBattleState->game_type == nSCBattleGameType1PGame) && (other_hit->damage >= 20) && (this_fp->player == gSceneData.spgame_player))
+        if ((gSCManagerBattleState->game_type == nSCBattleGameType1PGame) && (other_hit->damage >= 20) && (this_fp->player == gSCManagerSceneData.player))
         {
             gSC1PGameBonusGiantImpact = TRUE;
         }
@@ -2212,7 +2212,7 @@ void ftMainUpdateAttackStatWeapon(WPStruct *ip, WPAttackColl *wp_attack_coll, s3
         }
         efManagerSetOffMakeEffect(&impact_pos, damage);
 
-        if ((gBattleState->game_type == nSCBattleGameType1PGame) && ((damage - 10) >= 10) && (fp->player == gSceneData.spgame_player))
+        if ((gSCManagerBattleState->game_type == nSCBattleGameType1PGame) && ((damage - 10) >= 10) && (fp->player == gSCManagerSceneData.player))
         {
             gSC1PGameBonusGiantImpact = TRUE;
         }
@@ -2308,7 +2308,7 @@ void ftMainUpdateAbsorbStatWeapon(WPStruct *ip, WPAttackColl *wp_attack_coll, FT
         {
             fp->percent_damage = 0;
         }
-        gBattleState->players[fp->player].stock_damage_all = fp->percent_damage;
+        gSCManagerBattleState->players[fp->player].stock_damage_all = fp->percent_damage;
     }
 }
 
@@ -2386,7 +2386,7 @@ void ftMainUpdateAttackStatItem(ITStruct *ip, ITAttackColl *it_attack_coll, s32 
         }
         efManagerSetOffMakeEffect(&impact_pos, damage);
 
-        if ((gBattleState->game_type == nSCBattleGameType1PGame) && ((damage - 10) >= 10) && (fp->player == gSceneData.spgame_player))
+        if ((gSCManagerBattleState->game_type == nSCBattleGameType1PGame) && ((damage - 10) >= 10) && (fp->player == gSCManagerSceneData.player))
         {
             gSC1PGameBonusGiantImpact = TRUE;
         }
@@ -2484,7 +2484,7 @@ void ftMainUpdateDamageStatItem(ITStruct *ip, ITAttackColl *it_attack_coll, s32 
             ftParamTryPlayItemMusic(nSYAudioBGMStar);
             func_800269C0_275C0(nSYAudioFGMStarGet);
 
-            if ((gBattleState->game_type == nSCBattleGameType1PGame) && (fp->player == gSceneData.spgame_player) && (gSC1PGameBonusStarCount < U8_MAX))
+            if ((gSCManagerBattleState->game_type == nSCBattleGameType1PGame) && (fp->player == gSCManagerSceneData.player) && (gSC1PGameBonusStarCount < U8_MAX))
             {
                 gSC1PGameBonusStarCount++;
             }
@@ -2989,7 +2989,7 @@ void ftMainSearchFighterAttack(GObj *this_gobj)
 
         other_fp = ftGetStruct(other_gobj);
 
-        if (((gBattleState->is_team_battle == TRUE) && (gBattleState->is_team_attack == FALSE)) && (((other_fp->throw_gobj != NULL) ? other_fp->throw_team : other_fp->team) == this_fp->team))
+        if (((gSCManagerBattleState->is_team_battle == TRUE) && (gSCManagerBattleState->is_team_attack == FALSE)) && (((other_fp->throw_gobj != NULL) ? other_fp->throw_team : other_fp->team) == this_fp->team))
         {
             goto next_gobj;
         }
@@ -3044,7 +3044,7 @@ void ftMainSearchFighterAttack(GObj *this_gobj)
 
                     if ((is_check_self != FALSE) && (this_gobj != other_fp->capture_gobj) && (other_fp->ga == nMPKineticsGround) && (this_fp->ga == nMPKineticsGround) && !(this_fp->is_catchstatus))
                     {
-                        if ((this_fp->throw_gobj == NULL) || (other_gobj != this_fp->throw_gobj) && (((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE)) || (((other_fp->throw_gobj != NULL) ? other_fp->throw_team : other_fp->team) != this_fp->throw_team)))
+                        if ((this_fp->throw_gobj == NULL) || (other_gobj != this_fp->throw_gobj) && (((gSCManagerBattleState->is_team_battle != TRUE) || (gSCManagerBattleState->is_team_attack != FALSE)) || (((other_fp->throw_gobj != NULL) ? other_fp->throw_team : other_fp->team) != this_fp->throw_team)))
                         {
                             l = 0;
 
@@ -3210,7 +3210,7 @@ void ftMainSearchWeaponAttack(GObj *fighter_gobj)
         wp = wpGetStruct(weapon_gobj);
         wp_attack_coll = &wp->attack_coll;
 
-        if ((fighter_gobj != wp->owner_gobj) && ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (fp->team != wp->team)) && (wp_attack_coll->attack_state != nGMAttackStateOff))
+        if ((fighter_gobj != wp->owner_gobj) && ((gSCManagerBattleState->is_team_battle != TRUE) || (gSCManagerBattleState->is_team_attack != FALSE) || (fp->team != wp->team)) && (wp_attack_coll->attack_state != nGMAttackStateOff))
         {
             if (wp_attack_coll->interact_mask & GMHITCOLLISION_FLAG_FIGHTER)
             {
@@ -3229,7 +3229,7 @@ void ftMainSearchWeaponAttack(GObj *fighter_gobj)
                 }
                 if (!(weapon_flags.is_interact_hurt) && !(weapon_flags.is_interact_shield) && !(weapon_flags.is_interact_reflect) && !(weapon_flags.is_interact_absorb) && (weapon_flags.group_id == 7))
                 {
-                    if ((wp_attack_coll->can_setoff) && !(fp->is_catchstatus) && ((fp->throw_gobj == NULL) || (fp->throw_gobj != wp->owner_gobj) && ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (fp->throw_team != wp->team))))
+                    if ((wp_attack_coll->can_setoff) && !(fp->is_catchstatus) && ((fp->throw_gobj == NULL) || (fp->throw_gobj != wp->owner_gobj) && ((gSCManagerBattleState->is_team_battle != TRUE) || (gSCManagerBattleState->is_team_attack != FALSE) || (fp->throw_team != wp->team))))
                     {
 
                         if (!(fp->is_reflect) || !(wp_attack_coll->can_reflect))
@@ -3407,7 +3407,7 @@ void ftMainSearchItemAttack(GObj *fighter_gobj)
         ip = itGetStruct(item_gobj);
         it_attack_coll = &ip->attack_coll;
 
-        if ((fighter_gobj != ip->owner_gobj) && ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (fp->team != ip->team)) && (it_attack_coll->attack_state != nGMAttackStateOff))
+        if ((fighter_gobj != ip->owner_gobj) && ((gSCManagerBattleState->is_team_battle != TRUE) || (gSCManagerBattleState->is_team_attack != FALSE) || (fp->team != ip->team)) && (it_attack_coll->attack_state != nGMAttackStateOff))
         {
             if (it_attack_coll->interact_mask & GMHITCOLLISION_FLAG_FIGHTER)
             {
@@ -3426,7 +3426,7 @@ void ftMainSearchItemAttack(GObj *fighter_gobj)
                 }
                 if (!(item_flags.is_interact_hurt) && !(item_flags.is_interact_shield) && !(item_flags.is_interact_reflect) && (item_flags.group_id == 7))
                 {
-                    if ((it_attack_coll->can_setoff) && !(fp->is_catchstatus) && ((fp->throw_gobj == NULL) || (fp->throw_gobj != ip->owner_gobj) && ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (fp->throw_team != ip->team))))
+                    if ((it_attack_coll->can_setoff) && !(fp->is_catchstatus) && ((fp->throw_gobj == NULL) || (fp->throw_gobj != ip->owner_gobj) && ((gSCManagerBattleState->is_team_battle != TRUE) || (gSCManagerBattleState->is_team_attack != FALSE) || (fp->throw_team != ip->team))))
                     {
                         if (!(fp->is_reflect) || !(it_attack_coll->can_reflect))
                         {
@@ -3670,7 +3670,7 @@ void ftMainSearchFighterCatch(GObj *this_gobj)
         {
             goto next_gobj;
         }
-        if ((gBattleState->is_team_battle == TRUE) && (gBattleState->is_team_attack == FALSE) && (this_fp->team == other_fp->team)) 
+        if ((gSCManagerBattleState->is_team_battle == TRUE) && (gSCManagerBattleState->is_team_attack == FALSE) && (this_fp->team == other_fp->team)) 
         {
             goto next_gobj;
         }

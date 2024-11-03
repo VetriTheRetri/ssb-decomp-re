@@ -99,17 +99,17 @@ s32 scVSBattleGetStartPlayerLR(s32 target_player)
 
 	mpCollisionGetPlayerMapObjPosition(target_player, &target_spawn_pos);
 
-	for (loop_player = 0; loop_player < ARRAY_COUNT(gBattleState->players); loop_player++)
+	for (loop_player = 0; loop_player < ARRAY_COUNT(gSCManagerBattleState->players); loop_player++)
 	{
 		if (loop_player == target_player)
 		{
 			continue;
 		}
-		else if (gBattleState->players[loop_player].pkind == nFTPlayerKindNot) 
+		else if (gSCManagerBattleState->players[loop_player].pkind == nFTPlayerKindNot) 
 		{
 			continue;
 		}
-		else if (gBattleState->players[loop_player].player != gBattleState->players[target_player].player)
+		else if (gSCManagerBattleState->players[loop_player].player != gSCManagerBattleState->players[target_player].player)
 		{
 			mpCollisionGetPlayerMapObjPosition(loop_player, &loop_spawn_pos);
 
@@ -137,12 +137,12 @@ void scVSBattleFuncStart(void)
 	FTCreateDesc ft_desc;
 	syColorRGBA color;
 
-	gSceneData.is_reset = FALSE;
-	gSceneData.unk10 = 0;
+	gSCManagerSceneData.is_reset = FALSE;
+	gSCManagerSceneData.is_suddendeath = FALSE;
 
 	scVSBattleSetupFiles();
 
-	if (!(gSaveData.error_flags & LBBACKUP_ERROR_1PGAMEMARIO) && (gSaveData.unk5E3 >= 0x45))
+	if (!(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_1PGAMEMARIO) && (gSCManagerBackupData.unk5E3 >= 0x45))
 	{
 		file = lbRelocGetFileExternHeap((u32)&D_NF_000000C7, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000C7), 0x10));
 
@@ -153,7 +153,7 @@ void scVSBattleFuncStart(void)
 
 		if (func_dmem() == FALSE)
 		{
-			gSaveData.error_flags |= LBBACKUP_ERROR_1PGAMEMARIO;
+			gSCManagerBackupData.error_flags |= LBBACKUP_ERROR_1PGAMEMARIO;
 		}
 	}
 	gcMakeDefaultCameraGObj(9, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
@@ -173,37 +173,37 @@ void scVSBattleFuncStart(void)
 	gmRumbleMakeActor();
 	ftPublicityMakeActor();
 
-	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
+	for (player = 0; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)
 	{
 		ft_desc = dFTManagerDefaultFighterDesc;
 
-		if (gBattleState->players[player].pkind == nFTPlayerKindNot)
+		if (gSCManagerBattleState->players[player].pkind == nFTPlayerKindNot)
 		{
 			continue;
 		}
-		ftManagerSetupFilesAllKind(gBattleState->players[player].fkind);
+		ftManagerSetupFilesAllKind(gSCManagerBattleState->players[player].fkind);
 
-		ft_desc.fkind = gBattleState->players[player].fkind;
+		ft_desc.fkind = gSCManagerBattleState->players[player].fkind;
 
 		mpCollisionGetPlayerMapObjPosition(player, &ft_desc.pos);
 
 		ft_desc.lr_spawn = scVSBattleGetStartPlayerLR(player);
 
-		ft_desc.team = gBattleState->players[player].player;
+		ft_desc.team = gSCManagerBattleState->players[player].player;
 		ft_desc.player = player;
 
-		ft_desc.detail = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
+		ft_desc.detail = ((gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
-		ft_desc.costume = gBattleState->players[player].costume;
-		ft_desc.shade = gBattleState->players[player].shade;
-		ft_desc.handicap = gBattleState->players[player].handicap;
-		ft_desc.cp_level = gBattleState->players[player].level;
-		ft_desc.stock_count = gBattleState->stock_setting;
+		ft_desc.costume = gSCManagerBattleState->players[player].costume;
+		ft_desc.shade = gSCManagerBattleState->players[player].shade;
+		ft_desc.handicap = gSCManagerBattleState->players[player].handicap;
+		ft_desc.cp_level = gSCManagerBattleState->players[player].level;
+		ft_desc.stock_count = gSCManagerBattleState->stocks;
 		ft_desc.damage = 0;
-		ft_desc.pkind = gBattleState->players[player].pkind;
+		ft_desc.pkind = gSCManagerBattleState->players[player].pkind;
 		ft_desc.controller = &gPlayerControllers[player];
 
-		ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[player].fkind);
+		ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[player].fkind);
 
 		ftParamInitPlayerBattleStats(player, ftManagerMakeFighter(&ft_desc));
 	}
@@ -240,32 +240,32 @@ sb32 scVSBattleSetScoreCheckSuddenDeath(void)
 	SCBattleResults winner_results;
 	SCBattleResults player_results[GMCOMMON_PLAYERS_MAX];
 
-	if (!(gBattleState->game_rules & SCBATTLE_GAMERULE_TIME))
+	if (!(gSCManagerBattleState->game_rules & SCBATTLE_GAMERULE_TIME))
 	{
 		return FALSE;
 	}
-	D_800A4EF8 = gTransferBattleState;
-	D_800A4EF8.pl_count = D_800A4EF8.cp_count = 0;
+	gSCManagerVSBattleState = gSCManagerTransferBattleState;
+	gSCManagerVSBattleState.pl_count = gSCManagerVSBattleState.cp_count = 0;
 
-	for (i = 0; i < ARRAY_COUNT(D_800A4EF8.players); i++)
+	for (i = 0; i < ARRAY_COUNT(gSCManagerVSBattleState.players); i++)
 	{
-		D_800A4EF8.players[i].pkind = nFTPlayerKindNot;
+		gSCManagerVSBattleState.players[i].pkind = nFTPlayerKindNot;
 	}
-	switch (gBattleState->is_team_battle)
+	switch (gSCManagerBattleState->is_team_battle)
 	{
 	case FALSE:
-		for (result_count = i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
+		for (result_count = i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
 		{
-			if (gBattleState->players[i].pkind == nFTPlayerKindNot)
+			if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot)
 			{
 				continue;
 			}
-			player_results[result_count].tko = gBattleState->players[i].score - gBattleState->players[i].falls;
-			player_results[result_count].kos = gBattleState->players[i].score;
+			player_results[result_count].tko = gSCManagerBattleState->players[i].score - gSCManagerBattleState->players[i].falls;
+			player_results[result_count].kos = gSCManagerBattleState->players[i].score;
 			player_results[result_count].player_or_team = i;
 			player_results[result_count].unk_battleres_0x9 = FALSE;
 
-			if (gBattleState->players[i].pkind == nFTPlayerKindMan)
+			if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindMan)
 			{
 				player_results[result_count].is_human_player = TRUE;
 			}
@@ -301,36 +301,36 @@ sb32 scVSBattleSetScoreCheckSuddenDeath(void)
 		}
 		for (i = 0; i < tied_players; i++)
 		{
-			D_800A4EF8.players[player_results[i].player_or_team].pkind = gBattleState->players[player_results[i].player_or_team].pkind;
+			gSCManagerVSBattleState.players[player_results[i].player_or_team].pkind = gSCManagerBattleState->players[player_results[i].player_or_team].pkind;
 
-			switch (D_800A4EF8.players[player_results[i].player_or_team].pkind)
+			switch (gSCManagerVSBattleState.players[player_results[i].player_or_team].pkind)
 			{
 			case nFTPlayerKindMan:
-				D_800A4EF8.pl_count++;
+				gSCManagerVSBattleState.pl_count++;
 				break;
 
 			case nFTPlayerKindCom:
-				D_800A4EF8.cp_count++;
+				gSCManagerVSBattleState.cp_count++;
 				break;
 			}
 		}
 		break;
 
 	case TRUE:
-		for (result_count = i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
+		for (result_count = i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
 		{
-			if (gBattleState->players[i].pkind == nFTPlayerKindNot)
+			if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot)
 			{
 				continue;
 			}
 			for (j = 0; j < result_count; j++)
 			{
-				if (gBattleState->players[i].team == player_results[j].player_or_team)
+				if (gSCManagerBattleState->players[i].team == player_results[j].player_or_team)
 				{
-					player_results[j].tko += gBattleState->players[i].score - gBattleState->players[i].falls;
-					player_results[j].kos += gBattleState->players[i].score;
+					player_results[j].tko += gSCManagerBattleState->players[i].score - gSCManagerBattleState->players[i].falls;
+					player_results[j].kos += gSCManagerBattleState->players[i].score;
 
-					if (player_results[j].is_human_player || (gBattleState->players[i].pkind == nFTPlayerKindMan))
+					if (player_results[j].is_human_player || (gSCManagerBattleState->players[i].pkind == nFTPlayerKindMan))
 					{
 						player_results[j].is_human_player = TRUE;
 					}
@@ -339,12 +339,12 @@ sb32 scVSBattleSetScoreCheckSuddenDeath(void)
 					goto l_continue;
 				}
 			}
-			player_results[result_count].tko = gBattleState->players[i].score - gBattleState->players[i].falls;
-			player_results[result_count].kos = gBattleState->players[i].score;
-			player_results[result_count].player_or_team = gBattleState->players[i].team;
+			player_results[result_count].tko = gSCManagerBattleState->players[i].score - gSCManagerBattleState->players[i].falls;
+			player_results[result_count].kos = gSCManagerBattleState->players[i].score;
+			player_results[result_count].player_or_team = gSCManagerBattleState->players[i].team;
 			player_results[result_count].unk_battleres_0x9 = FALSE;
 
-			if (player_results[result_count].is_human_player || (gBattleState->players[i].pkind == nFTPlayerKindMan))
+			if (player_results[result_count].is_human_player || (gSCManagerBattleState->players[i].pkind == nFTPlayerKindMan))
 			{
 				player_results[result_count].is_human_player = TRUE;
 			}
@@ -383,24 +383,24 @@ sb32 scVSBattleSetScoreCheckSuddenDeath(void)
 		}
 		for (i = 0; i < tied_players; i++)
 		{
-			for (j = 0; j < ARRAY_COUNT(gBattleState->players); j++)
+			for (j = 0; j < ARRAY_COUNT(gSCManagerBattleState->players); j++)
 			{
-				if (gBattleState->players[j].pkind == nFTPlayerKindNot)
+				if (gSCManagerBattleState->players[j].pkind == nFTPlayerKindNot)
 				{
 					continue;
 				}
-				if (gBattleState->players[j].team == player_results[i].player_or_team)
+				if (gSCManagerBattleState->players[j].team == player_results[i].player_or_team)
 				{
-					D_800A4EF8.players[j].pkind = gBattleState->players[j].pkind;
+					gSCManagerVSBattleState.players[j].pkind = gSCManagerBattleState->players[j].pkind;
 
-					switch (D_800A4EF8.players[j].pkind)
+					switch (gSCManagerVSBattleState.players[j].pkind)
 					{
 					case nFTPlayerKindMan:
-						D_800A4EF8.pl_count++;
+						gSCManagerVSBattleState.pl_count++;
 						break;
 
 					case nFTPlayerKindCom:
-						D_800A4EF8.cp_count++;
+						gSCManagerVSBattleState.cp_count++;
 						break;
 					}
 				}
@@ -408,10 +408,10 @@ sb32 scVSBattleSetScoreCheckSuddenDeath(void)
 		}
 		break;
 	}
-	D_800A4EF8.game_rules = SCBATTLE_GAMERULE_STOCK;
-	D_800A4EF8.is_display_score = FALSE;
+	gSCManagerVSBattleState.game_rules = SCBATTLE_GAMERULE_STOCK;
+	gSCManagerVSBattleState.is_display_score = FALSE;
 
-	gSceneData.unk10 = 1;
+	gSCManagerSceneData.is_suddendeath = TRUE;
 
 	return TRUE;
 }
@@ -425,7 +425,7 @@ void scVSBattleStartSudddenDeath(void)
 	FTCreateDesc ft_desc;
 	syColorRGBA color;
 
-	gSceneData.is_reset = FALSE;
+	gSCManagerSceneData.is_reset = FALSE;
 
 	scVSBattleSetupFiles();
 	gcMakeDefaultCameraGObj(9, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
@@ -445,44 +445,44 @@ void scVSBattleStartSudddenDeath(void)
 	gmRumbleMakeActor();
 	ftPublicityMakeActor();
 
-	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
+	for (player = 0; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)
 	{
 		ft_desc = dFTManagerDefaultFighterDesc;
 
-		if (gBattleState->players[player].pkind == nFTPlayerKindNot)
+		if (gSCManagerBattleState->players[player].pkind == nFTPlayerKindNot)
 		{
 			continue;
 		}
-		ftManagerSetupFilesAllKind(gBattleState->players[player].fkind);
+		ftManagerSetupFilesAllKind(gSCManagerBattleState->players[player].fkind);
 
-		ft_desc.fkind = gBattleState->players[player].fkind;
+		ft_desc.fkind = gSCManagerBattleState->players[player].fkind;
 
 		mpCollisionGetPlayerMapObjPosition(player, &ft_desc.pos);
 
 		ft_desc.lr_spawn = scVSBattleGetStartPlayerLR(player);
 
-		ft_desc.team = gBattleState->players[player].player;
+		ft_desc.team = gSCManagerBattleState->players[player].player;
 		ft_desc.player = player;
 
-		ft_desc.detail = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
+		ft_desc.detail = ((gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
-		ft_desc.costume = gBattleState->players[player].costume;
-		ft_desc.shade = gBattleState->players[player].shade;
-		ft_desc.handicap = gBattleState->players[player].handicap;
-		ft_desc.cp_level = gBattleState->players[player].level;
+		ft_desc.costume = gSCManagerBattleState->players[player].costume;
+		ft_desc.shade = gSCManagerBattleState->players[player].shade;
+		ft_desc.handicap = gSCManagerBattleState->players[player].handicap;
+		ft_desc.cp_level = gSCManagerBattleState->players[player].level;
 		ft_desc.stock_count = 0;
 		ft_desc.damage = 300;
 		ft_desc.is_skip_entry = TRUE;
-		ft_desc.pkind = gBattleState->players[player].pkind;
+		ft_desc.pkind = gSCManagerBattleState->players[player].pkind;
 		ft_desc.controller = &gPlayerControllers[player];
 
-		ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[player].fkind);
+		ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[player].fkind);
 
 		fighter_gobj = ftManagerMakeFighter(&ft_desc);
 
 		ftParamInitPlayerBattleStats(player, fighter_gobj);
 
-		gBattleState->players[player].is_single_stockicon = FALSE;
+		gSCManagerBattleState->players[player].is_single_stockicon = FALSE;
 	}
 	ftManagerSetupFilesPlayablesAll();
 	ifCommonBattleSetGameStatusWait();
@@ -519,15 +519,15 @@ void scVSBattleFuncLights(Gfx **dls)
 // 0x8018E190
 void scVSBattleStartScene(void)
 {
-	gBattleState = &gTransferBattleState;
+	gSCManagerBattleState = &gSCManagerTransferBattleState;
 
-	gBattleState->game_type = nSCBattleGameTypeRoyal;
+	gSCManagerBattleState->game_type = nSCBattleGameTypeRoyal;
 
-	gBattleState->gkind = gSceneData.gkind;
+	gSCManagerBattleState->gkind = gSCManagerSceneData.gkind;
 
-	if (gSaveData.error_flags & LBBACKUP_ERROR_VSBATTLECASTLE)
+	if (gSCManagerBackupData.error_flags & LBBACKUP_ERROR_VSBATTLECASTLE)
 	{
-		gBattleState->gkind = nGRKindCastle;
+		gSCManagerBattleState->gkind = nGRKindCastle;
 	}
 	dSCVSBattleVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dSCVSBattleVideoSetup);
@@ -546,11 +546,11 @@ void scVSBattleStartScene(void)
 	func_800266A0_272A0();
 	gmRumbleInitPlayers();
 
-	if (!(gSceneData.is_reset) && scVSBattleSetScoreCheckSuddenDeath() != FALSE)
+	if (!(gSCManagerSceneData.is_reset) && scVSBattleSetScoreCheckSuddenDeath() != FALSE)
 	{
-		gBattleState = &D_800A4EF8;
+		gSCManagerBattleState = &gSCManagerVSBattleState;
 
-		gBattleState->game_type = nSCBattleGameTypeRoyal;
+		gSCManagerBattleState->game_type = nSCBattleGameTypeRoyal;
 
 		dSCVSBattleTaskmanSetup.func_start = scVSBattleStartSudddenDeath;
 
@@ -565,6 +565,6 @@ void scVSBattleStartScene(void)
 		func_800266A0_272A0();
 		gmRumbleInitPlayers();
 	}
-	gSceneData.scene_prev = gSceneData.scene_curr;
-	gSceneData.scene_curr = nSCKindVSResults;
+	gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+	gSCManagerSceneData.scene_curr = nSCKindVSResults;
 }

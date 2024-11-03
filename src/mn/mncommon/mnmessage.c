@@ -266,8 +266,8 @@ void mnMessageMakeExclaimCamera(void)
 // 0x80132168
 void mnMessageInitVars(void)
 {
-    sMNMessageUnlockID = gSceneData.unlock_messages[sMNMessageQueueID];
-    gSceneData.unlock_messages[sMNMessageQueueID] = nLBBackupUnlockEnumMax;
+    sMNMessageUnlockID = gSCManagerSceneData.unlock_messages[sMNMessageQueueID];
+    gSCManagerSceneData.unlock_messages[sMNMessageQueueID] = nLBBackupUnlockEnumMax;
     
     sMNMessageUnk0x80132660 = 0;
     sMNMessageTotalTimeTics = 0;
@@ -279,7 +279,7 @@ void mnMessageApplyUnlock(void)
     // 0x8013259C
     u8 fkinds[/* */] = { nFTKindLuigi, nFTKindNess, nFTKindCaptain, nFTKindPurin };
     
-    gSaveData.unlock_mask |= (1 << sMNMessageUnlockID);
+    gSCManagerBackupData.unlock_mask |= (1 << sMNMessageUnlockID);
     
     switch (sMNMessageUnlockID)
     {
@@ -287,8 +287,8 @@ void mnMessageApplyUnlock(void)
     case nLBBackupUnlockNess:
     case nLBBackupUnlockCaptain:
     case nLBBackupUnlockPurin:
-        gSaveData.fighter_mask |= (1 << fkinds[sMNMessageUnlockID]);
-        gSaveData.characters_fkind = fkinds[sMNMessageUnlockID];
+        gSCManagerBackupData.fighter_mask |= (1 << fkinds[sMNMessageUnlockID]);
+        gSCManagerBackupData.characters_fkind = fkinds[sMNMessageUnlockID];
         break;
     }
     lbBackupWrite();
@@ -424,20 +424,20 @@ void mnMessageStartScene(void)
     for
     (
         sMNMessageQueueID = 0;
-        sMNMessageQueueID < nLBBackupUnlockEnumMax && gSceneData.unlock_messages[sMNMessageQueueID] != nLBBackupUnlockEnumMax;
+        sMNMessageQueueID < nLBBackupUnlockEnumMax && gSCManagerSceneData.unlock_messages[sMNMessageQueueID] != nLBBackupUnlockEnumMax;
         sMNMessageQueueID++
     )
     {
         syTaskmanInit(&dMNMessageTaskmanSetup);
     }
-    if (gSceneData.scene_prev == nSCKindVSResults)
+    if (gSCManagerSceneData.scene_prev == nSCKindVSResults)
     {
-        gSceneData.scene_prev = gSceneData.scene_curr;
-        gSceneData.scene_curr = nSCKindVSFighters;
+        gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+        gSCManagerSceneData.scene_curr = nSCKindVSFighters;
     }
     else
     {
-        gSceneData.scene_prev = gSceneData.scene_curr;
-        gSceneData.scene_curr = nSCKindN64;
+        gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+        gSCManagerSceneData.scene_curr = nSCKindN64;
     }
 }

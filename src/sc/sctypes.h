@@ -249,9 +249,9 @@ struct SCPlayerData
 	u8 player; 				                        // Identical to team if team battle is on?
 	u8 costume;
 	u8 shade; 				                        // Fog overlay applied when several players use the same costume
-	u8 player_color;		                        // Used for emblems, player tags, and possibly more
+	u8 color;		                        		// Used for emblems, player tags, and possibly more
 	ub8 is_single_stockicon;                        // Whether player's stock is permanent or a limited amount
-	u8 tag_kind;			                        // Player tag sprite index (i.e. 1P, 2P, 3P, 4P, CP or heart)
+	u8 tag;			                        		// Player tag sprite index (i.e. 1P, 2P, 3P, 4P, CP or heart)
 	s8 stock_count;			                        // -1 = player has no stocks
 	ub8 is_spgame_team;		                        // Respawn flag of multi-man enemy teams (Yoshi, Kirby, Fighting Polygons) in 1P mode
 	u8 placement;			                        // Player's placement in battle results
@@ -270,7 +270,7 @@ struct SCPlayerData
 	GObj *fighter_gobj;							    // Pointer to player's fighter GObj
 	u32 stale_id;							  	    // Current position in stale queue?
 	
-	struct scPlayerStale
+	struct SCPlayerStale
 	{
 		u16 attack_id;
 		u16 motion_count;
@@ -283,22 +283,20 @@ struct SCBattleState
 	u8 game_type;
 	u8 gkind;
 	ub8 is_team_battle;
-	u8 game_rules; 			// Series of flags; 0x1 = time, 0x2 = stock
-	u8 pl_count;			// Number of human players registered
-	u8 cp_count;			// Number of computer players registered
-	u8 time_limit;
-	u8 stock_setting;	 	// Number of stocks set in game rules
-	u8 handicap_setting; 	// 0 = OFF, 1 = ON, 2 = AUTO
-	ub8 is_team_attack;	 	// 0 = OFF, 1 = ON
-	ub8 is_stage_select; 	// 0 = OFF, 1 = ON
+	u8 game_rules; 									// Series of flags; 0x1 = time, 0x2 = stock
+	u8 pl_count;									// Number of human players registered
+	u8 cp_count;									// Number of computer players registered
+	u8 time_limit;									// Time limit (in seconds)
+	u8 stocks;	 									// Number of stocks set in game rules
+	u8 handicap; 									// 0 = OFF, 1 = ON, 2 = AUTO
+	ub8 is_team_attack;	 							// 0 = OFF, 1 = ON
+	ub8 is_stage_select; 							// 0 = OFF, 1 = ON
 	u8 damage_ratio;
-	u32 item_toggles; 		// Bits = item's on/off switch from match settings
+	u32 item_toggles; 								// Bits = item's on/off switch from match settings
 	u8 unk_0x10;
 	u8 game_status;
-	u8 unk_0x12;
-	u8 unk_0x13;
-	u32 battle_time_remain;							// Frames remaining until timeout
-	u32 battle_time_curr; 							// Current match frame, counts up from 0
+	u32 time_remain;								// Tics remaining until timeout
+	u32 time_passed; 								// Current match tic, counts up from 0
 	u8 item_appearance_rate;						// Item appearance rate setting 
 	ub32 is_display_score : 1;						// Displays score when a fighter falls
 	ub32 is_not_teamshadows : 1;					// If FALSE, shadows are colored based on players' team affiliation, otherwise use default shadow color
@@ -307,46 +305,42 @@ struct SCBattleState
 
 struct SCCommonData
 {
-	u8 scene_curr;
-	u8 scene_prev;
-	u8 unlock_messages[2];		// Queued unlock messages?
-	u8 pad04[0x09 - 0x04];
-	u8 challenger_fkind;		// Opponent being fought in "Challenger Approaching" battle
-	u16 demo_mask_prev;
-	u8 demo_first_fkind;
-	u8 demo_fkind[2];
-	u8 gkind;
-	u8 unk10;
-	ub8 is_select_continue;
-	ub8 is_reset; 				// Player did A + B + R + Z button combination
-	u8 spgame_player;
-	u8 fkind;
-	u8 costume;
-	u8 spgame_time_limit;
-	u8 spgame_stage; 			// 1P Game stage (0 = VS Link, 1 = VS Yoshi Team, etc.)
-	u8 ally_players[2];			// CPU player ports
-	u32 spgame_time_seconds; 	// Timer of current match in seconds
-	u32 spgame_score;
-	u32 continues_used;
-	u32 bonus_count;	   		// Number of bonuses player acquired throughout the game
-	u32 bonus_get_mask[3]; 		// Different bonuses the player has accumulated per match;
-								// also includes total Bonus Stage tasks completed in last member
-	u8 bonus_tasks_curr;
-	u8 bonus_fkind;
-	u8 bonus_costume;
-	u8 training_man_fkind;
-	u8 training_man_costume;
-	u8 training_com_fkind;
-	u8 training_com_costume;
-	ub8 is_extend_demo_wait;
-	u8 demo_ground_order;
-	u8 stagesel_battle_gkind;
-	u8 stagesel_training_gkind;
-	u8 challenger_level_drop;	// Subtract from default CP level?
-	ub8 is_title_anim_viewed;
-	u8 unk45;
-	u8 unk46;
-	u8 unk47;
+	u8 scene_curr;									// Current scene
+	u8 scene_prev;									// Previous scene
+	u8 unlock_messages[nLBBackupUnlockEnumMax];		// Queued unlock messages
+	u8 challenger_fkind;							// Opponent being fought in "Challenger Approaching" battle
+	u16 demo_mask_prev;								// Mask of previously demo'd fighters
+	u8 demo_first_fkind;							// First auto-demo fighter to focus on?
+	u8 demo_fkind[2];								// Auto-demo fighters to focus on
+	u8 gkind;										// Stage selected
+	ub8 is_suddendeath;								// Whether current battle is a Sudden Death?
+	ub8 is_continue;								// Whether continue has been selected
+	ub8 is_reset; 									// A + B + R + Z button combination done
+	u8 player;										// 1P Game player port
+	u8 fkind;										// 1P Game player's character
+	u8 costume;										// 1P Game player's costume
+	u8 spgame_time_limit;							// 1P Game global time limit
+	u8 spgame_stage; 								// 1P Game stage (0 = VS Link, 1 = VS Yoshi Team, etc.)
+	u8 ally_players[2];								// Ally player ports
+	u32 spgame_time_remain; 						// Timer of current 1P Game stage in seconds
+	u32 spgame_score;								// 1P Game score
+	u32 continues_used;								// 1P Game number of continues used
+	u32 bonus_count;	   							// Number of bonuses player acquired throughout 1P Game
+	u32 bonus_get_mask[3]; 							// Different bonuses the player has accumulated in current 1P Game Stage
+													// Last member is total Bonus Stage task count
+	u8 bonus_tasks_complete;						// Number of Bonus Stage tasks completed so far in current session
+	u8 bonus_fkind;									// Bonus Stage character
+	u8 bonus_costume;								// Bonus Stage costume
+	u8 training_man_fkind;							// Training Mode player's character
+	u8 training_man_costume;						// Training Mode player's costume
+	u8 training_com_fkind;							// Training Mode CPU character
+	u8 training_com_costume;						// Training Mode CPU costume
+	ub8 is_extend_demo_wait;						// Wait longer for auto-demo to start?
+	u8 demo_gkind_order;							// Current index of stage array to pick for auto-demo
+	u8 stages_vsmode_gkind;							// VS Mode stage selected
+	u8 stages_training_gkind;						// Training Mode stage selected
+	u8 challenger_level_drop;						// Subtract from default CP level
+	ub8 is_title_anim_viewed;						// Has the title screen animation been viewed?
 };
 
 typedef struct scRuntimeInfo

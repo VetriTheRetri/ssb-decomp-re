@@ -521,7 +521,7 @@ void mnModeSelectEjectOptions(void)
 // 0x80132558
 void mnModeSelectInitVars(void)
 {
-    switch (gSceneData.scene_prev)
+    switch (gSCManagerSceneData.scene_prev)
     {
     default:
         sMNModeSelectOption = nMNModeSelectOption1PMode;
@@ -563,8 +563,8 @@ void mnModeSelectFuncRun(GObj *gobj)
     {
         if (sMNModeSelectTotalTimeTics == sMNModeSelectReturnTic)
         {
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindTitle;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindTitle;
 
             syTaskmanSetLoadScene();
             return;
@@ -594,8 +594,8 @@ void mnModeSelectFuncRun(GObj *gobj)
             case nMNModeSelectOption1PMode:
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
                 
-                gSceneData.scene_prev = gSceneData.scene_curr;
-                gSceneData.scene_curr = nSCKind1PMode;
+                gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+                gSCManagerSceneData.scene_curr = nSCKind1PMode;
                 
                 syTaskmanSetLoadScene();
                 return;
@@ -603,8 +603,8 @@ void mnModeSelectFuncRun(GObj *gobj)
             case nMNModeSelectOptionVSMode:
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
                 
-                gSceneData.scene_prev = gSceneData.scene_curr;
-                gSceneData.scene_curr = nSCKindVSMode;
+                gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+                gSCManagerSceneData.scene_curr = nSCKindVSMode;
                 
                 syTaskmanSetLoadScene();
                 return;
@@ -612,8 +612,8 @@ void mnModeSelectFuncRun(GObj *gobj)
             case nMNModeSelectOptionOption:
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
                 
-                gSceneData.scene_prev = gSceneData.scene_curr;
-                gSceneData.scene_curr = nSCKindOption;
+                gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+                gSCManagerSceneData.scene_curr = nSCKindOption;
                 
                 syTaskmanSetLoadScene();
                 return;
@@ -621,8 +621,8 @@ void mnModeSelectFuncRun(GObj *gobj)
             case nMNModeSelectOptionData:
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
                 
-                gSceneData.scene_prev = gSceneData.scene_curr;
-                gSceneData.scene_curr = nSCKindData;
+                gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+                gSCManagerSceneData.scene_curr = nSCKindData;
                 
                 syTaskmanSetLoadScene();
                 return;
@@ -634,8 +634,8 @@ void mnModeSelectFuncRun(GObj *gobj)
             {
                 auStopBGM();
 
-                gSceneData.scene_prev = gSceneData.scene_curr;
-                gSceneData.scene_curr = nSCKindTitle;
+                gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+                gSCManagerSceneData.scene_curr = nSCKindTitle;
             
                 syTaskmanSetLoadScene();
             }
@@ -755,10 +755,10 @@ void mnModeSelectFuncStart(void)
     
     if
     (
-        (gSceneData.scene_prev != nSCKind1PMode) &&
-        (gSceneData.scene_prev != nSCKindVSMode) &&
-        (gSceneData.scene_prev != nSCKindOption) &&
-        (gSceneData.scene_prev != nSCKindData)
+        (gSCManagerSceneData.scene_prev != nSCKind1PMode) &&
+        (gSCManagerSceneData.scene_prev != nSCKindVSMode) &&
+        (gSCManagerSceneData.scene_prev != nSCKindOption) &&
+        (gSCManagerSceneData.scene_prev != nSCKindData)
     )
     {
         auPlaySong(0, nSYAudioBGMModeSelect);

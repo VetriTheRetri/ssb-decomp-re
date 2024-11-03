@@ -508,8 +508,8 @@ void dbCubeMain(GObj* arg0)
 	{
 		dbMenuDestroyMenu();
 
-		gSceneData.scene_prev = gSceneData.scene_curr;
-		gSceneData.scene_curr = 1U;
+		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+		gSCManagerSceneData.scene_curr = 1U;
 
 		syTaskmanSetLoadScene();
 	}

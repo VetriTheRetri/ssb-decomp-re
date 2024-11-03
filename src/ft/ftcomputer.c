@@ -3934,14 +3934,14 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
     s32 fkind;
     s32 unused[2];
 
-    if (gBattleState->gkind == nGRKindInishie)
+    if (gSCManagerBattleState->gkind == nGRKindInishie)
     {
         if ((this_fp->coll_data.ground_line_id >= 0) && (mpCollisionCheckExistPlatformLineID(this_fp->coll_data.ground_line_id) != FALSE))
         {
             return FALSE;
         }
     }
-    if ((gBattleState->gkind == nGRKindYamabuki) && (this_fp->ga != nMPKineticsGround))
+    if ((gSCManagerBattleState->gkind == nGRKindYamabuki) && (this_fp->ga != nMPKineticsGround))
     {
         if (this_fp->physics.vel_air.x > 0.0F)
         {
@@ -4537,7 +4537,7 @@ sb32 ftComputerCheckSetTargetEdgeRight(FTStruct *fp, sb32 is_find_edge_target)
     {
         edge_offset = 0;
     }
-    if (gBattleState->gkind == nGRKindYamabuki)
+    if (gSCManagerBattleState->gkind == nGRKindYamabuki)
     {
         edge_offset = 0;
     }
@@ -4549,7 +4549,7 @@ sb32 ftComputerCheckSetTargetEdgeRight(FTStruct *fp, sb32 is_find_edge_target)
         {
             mpCollisionGetLREdgeRight(line_ids[i], &edge_pos);
 
-            if (gBattleState->gkind == nGRKindZebes)
+            if (gSCManagerBattleState->gkind == nGRKindZebes)
             {
                 grZebesAcidGetLevelInfo(&acid_level_curr, &acid_level_step);
 
@@ -4558,7 +4558,7 @@ sb32 ftComputerCheckSetTargetEdgeRight(FTStruct *fp, sb32 is_find_edge_target)
                     continue;
                 }
             }
-            if ((gBattleState->gkind == nGRKindInishie) && (mpCollisionCheckExistPlatformLineID(line_ids[i]) != FALSE)) 
+            if ((gSCManagerBattleState->gkind == nGRKindInishie) && (mpCollisionCheckExistPlatformLineID(line_ids[i]) != FALSE)) 
             {
                 continue;
             }
@@ -4631,7 +4631,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(FTStruct *fp, sb32 is_find_edge_target)
     {
         edge_offset = 0;
     }
-    if (gBattleState->gkind == nGRKindYamabuki)
+    if (gSCManagerBattleState->gkind == nGRKindYamabuki)
     {
         edge_offset = 0;
     }
@@ -4643,7 +4643,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(FTStruct *fp, sb32 is_find_edge_target)
         {
             mpCollisionGetLREdgeLeft(line_ids[i], &edge_pos);
 
-            if (gBattleState->gkind == nGRKindZebes)
+            if (gSCManagerBattleState->gkind == nGRKindZebes)
             {
                 grZebesAcidGetLevelInfo(&acid_level_curr, &acid_level_step);
 
@@ -4652,7 +4652,7 @@ sb32 ftComputerCheckSetTargetEdgeLeft(FTStruct *fp, sb32 is_find_edge_target)
                     continue;
                 }
             }
-            if ((gBattleState->gkind == nGRKindInishie) && (mpCollisionCheckExistPlatformLineID(line_ids[i]) != FALSE))
+            if ((gSCManagerBattleState->gkind == nGRKindInishie) && (mpCollisionCheckExistPlatformLineID(line_ids[i]) != FALSE))
             {
                 continue;
             }
@@ -4851,7 +4851,7 @@ sb32 ftComputerCheckTargetItemOrTwister(FTStruct *fp)
         (
             (ip->owner_gobj != fp->fighter_gobj) &&
             (
-                (gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (ip->team != fp->team)
+                (gSCManagerBattleState->is_team_battle != TRUE) || (gSCManagerBattleState->is_team_attack != FALSE) || (ip->team != fp->team)
             )
             &&
             (
@@ -4906,7 +4906,7 @@ sb32 ftComputerCheckTargetItemOrTwister(FTStruct *fp)
         }
         item_gobj = item_gobj->link_next;
     }
-    if (gBattleState->gkind == nGRKindHyrule)
+    if (gSCManagerBattleState->gkind == nGRKindHyrule)
     {
         if (grHyruleTwisterCheckGetPosition(&twister_pos) != FALSE)
         {
@@ -5344,7 +5344,7 @@ sb32 func_ovl3_80135B78(FTStruct *this_fp)
 
         if (wp->owner_gobj != this_fp->fighter_gobj)
         {
-            if ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (wp->team != this_fp->team))
+            if ((gSCManagerBattleState->is_team_battle != TRUE) || (gSCManagerBattleState->is_team_attack != FALSE) || (wp->team != this_fp->team))
             {
                 if ((wp->attack_coll.attack_state != nGMAttackStateOff) && (wp->attack_coll.attack_state != nGMAttackStateNew) && (wp->attack_coll.interact_mask & GMHITCOLLISION_FLAG_FIGHTER))
                 {
@@ -5413,7 +5413,7 @@ sb32 func_ovl3_80135B78(FTStruct *this_fp)
 
         if (ip->owner_gobj != this_fp->fighter_gobj)
         {
-            if ((gBattleState->is_team_battle != TRUE) || (gBattleState->is_team_attack != FALSE) || (ip->team != this_fp->team))
+            if ((gSCManagerBattleState->is_team_battle != TRUE) || (gSCManagerBattleState->is_team_attack != FALSE) || (ip->team != this_fp->team))
             {
                 if ((ip->attack_coll.attack_state != nGMAttackStateOff) && (ip->attack_coll.attack_state != nGMAttackStateNew) && (ip->attack_coll.interact_mask & GMHITCOLLISION_FLAG_FIGHTER))
                 {
@@ -5558,7 +5558,7 @@ sb32 ftComputerCheckFindItem(FTStruct *fp)
 
         if (ip->owner_gobj == fp->fighter_gobj) goto next_item;
 
-        if ((gBattleState->is_team_battle == TRUE) && (gBattleState->is_team_attack == FALSE) && (ip->team == fp->team)) goto next_item;
+        if ((gSCManagerBattleState->is_team_battle == TRUE) && (gSCManagerBattleState->is_team_attack == FALSE) && (ip->team == fp->team)) goto next_item;
 
         if ((ip->is_allow_pickup) && (func_ovl2_800F8FFC(&DObjGetStruct(item_gobj)->translate.vec.f) != FALSE))
         {
@@ -6148,7 +6148,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     if
     (
         (func_ovl2_800F8FFC(&this_fp->joints[nFTPartsJointTopN]->translate.vec.f) == FALSE) ||
-        (gBattleState->gkind == nGRKindInishie) &&
+        (gSCManagerBattleState->gkind == nGRKindInishie) &&
         (this_fp->coll_data.ground_line_id >= 0) &&
         (mpCollisionCheckExistPlatformLineID(this_fp->coll_data.ground_line_id) != FALSE) &&
         (this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y < -100.0F)
@@ -6162,7 +6162,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
 
         return 1;
     }
-    if (gBattleState->gkind == nGRKindZebes)
+    if (gSCManagerBattleState->gkind == nGRKindZebes)
     {
         grZebesAcidGetLevelInfo(&acid_level_curr, &acid_level_step);
 
@@ -6216,7 +6216,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     {
         com->appeal_attempt_frames--;
 
-        if ((gBattleState->gkind == nGRKindInishie) || (gBattleState->gkind == nGRKindYoster))
+        if ((gSCManagerBattleState->gkind == nGRKindInishie) || (gSCManagerBattleState->gkind == nGRKindYoster))
         {
             if (this_fp->coll_data.ground_line_id >= 0)
             {
@@ -6314,7 +6314,7 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
     {
         if (com->target_dist < (400.0F * (fp->cp_level + 3)))
         {
-            s32 track_wait = (gBattleState->game_type == nSCBattleGameType1PGame) ? (-fp->cp_level * 35) + 315 : (-fp->cp_level * 25) + 225;
+            s32 track_wait = (gSCManagerBattleState->game_type == nSCBattleGameType1PGame) ? (-fp->cp_level * 35) + 315 : (-fp->cp_level * 25) + 225;
 
             com->item_track_wait++;
 

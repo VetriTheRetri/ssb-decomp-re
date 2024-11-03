@@ -159,26 +159,26 @@ void ftParamInitPlayerBattleStats(s32 player, GObj *fighter_gobj)
 {
     s32 i;
 
-    gBattleState->players[player].placement = 0;
-    gBattleState->players[player].falls = gBattleState->players[player].score = 0;
+    gSCManagerBattleState->players[player].placement = 0;
+    gSCManagerBattleState->players[player].falls = gSCManagerBattleState->players[player].score = 0;
 
-    for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
+    for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
     {
-        gBattleState->players[player].total_ko_player[i] = 0;
-        gBattleState->players[player].total_damage_player[i] = 0;
+        gSCManagerBattleState->players[player].total_ko_player[i] = 0;
+        gSCManagerBattleState->players[player].total_damage_player[i] = 0;
     }
-    gBattleState->players[player].unk_pblock_0x28 = gBattleState->players[player].unk_pblock_0x2C = gBattleState->players[player].total_self_destruct = 0;
-    gBattleState->players[player].total_damage_dealt = gBattleState->players[player].total_damage_all = 0;
-    gBattleState->players[player].combo_damage_foe = gBattleState->players[player].combo_count_foe = 0;
+    gSCManagerBattleState->players[player].unk_pblock_0x28 = gSCManagerBattleState->players[player].unk_pblock_0x2C = gSCManagerBattleState->players[player].total_self_destruct = 0;
+    gSCManagerBattleState->players[player].total_damage_dealt = gSCManagerBattleState->players[player].total_damage_all = 0;
+    gSCManagerBattleState->players[player].combo_damage_foe = gSCManagerBattleState->players[player].combo_count_foe = 0;
 
-    gBattleState->players[player].fighter_gobj = fighter_gobj;
+    gSCManagerBattleState->players[player].fighter_gobj = fighter_gobj;
 
-    gBattleState->players[player].stale_id = 0;
+    gSCManagerBattleState->players[player].stale_id = 0;
 
-    for (i = 0; i < ARRAY_COUNT(gBattleState->players[i].stale_info); i++)
+    for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players[i].stale_info); i++)
     {
-        gBattleState->players[player].stale_info[i].attack_id = 0;
-        gBattleState->players[player].stale_info[i].motion_count = 0;
+        gSCManagerBattleState->players[player].stale_info[i].attack_id = 0;
+        gSCManagerBattleState->players[player].stale_info[i].motion_count = 0;
     }
 }
 
@@ -1455,19 +1455,19 @@ f32 ftParamGetCommonKnockback(s32 percent_damage, s32 recent_damage, s32 hit_dam
 
     if (knockback_weight != 0)
     {
-        knockback = ( ( ( ( ( ( 1 + ( 10.0F * knockback_weight * 0.05F ) ) * weight * 1.4F ) + 18.0F ) * ( knockback_scale * 0.01F ) ) + knockback_base ) * ( gBattleState->damage_ratio * 0.01F ) * dFTCommonDataHandicapTable[attack_handicap - 1][0] ) * dFTCommonDataHandicapTable[defend_handicap - 1][1];
+        knockback = ( ( ( ( ( ( 1 + ( 10.0F * knockback_weight * 0.05F ) ) * weight * 1.4F ) + 18.0F ) * ( knockback_scale * 0.01F ) ) + knockback_base ) * ( gSCManagerBattleState->damage_ratio * 0.01F ) * dFTCommonDataHandicapTable[attack_handicap - 1][0] ) * dFTCommonDataHandicapTable[defend_handicap - 1][1];
     } 
     else 
     {
         f32 damage_add = percent_damage + recent_damage;
 
-        knockback = ( ( ( ( ( ( ( damage_add * 0.1F ) + ( damage_add * hit_damage * 0.05F ) ) * weight * 1.4F ) + 18.0F ) * ( knockback_scale * 0.01F ) ) + knockback_base ) * ( gBattleState->damage_ratio * 0.01F ) * dFTCommonDataHandicapTable[attack_handicap - 1][0] ) * dFTCommonDataHandicapTable[defend_handicap - 1][1];
+        knockback = ( ( ( ( ( ( ( damage_add * 0.1F ) + ( damage_add * hit_damage * 0.05F ) ) * weight * 1.4F ) + 18.0F ) * ( knockback_scale * 0.01F ) ) + knockback_base ) * ( gSCManagerBattleState->damage_ratio * 0.01F ) * dFTCommonDataHandicapTable[attack_handicap - 1][0] ) * dFTCommonDataHandicapTable[defend_handicap - 1][1];
     }
     if (knockback >= 2500.0F)
     {
         knockback = 2500.0F;
     }
-    if (gSaveData.error_flags & LBBACKUP_ERROR_RANDOMKNOCKBACK)
+    if (gSCManagerBackupData.error_flags & LBBACKUP_ERROR_RANDOMKNOCKBACK)
     {
         knockback = mtTrigGetRandomFloat() * 200.0F;
     }
@@ -1493,7 +1493,7 @@ f32 ftParamGetGroundHazardKnockback(s32 percent_damage, s32 recent_damage, s32 h
     {
         knockback = 2500.0F;
     }
-    if (gSaveData.error_flags & LBBACKUP_ERROR_RANDOMKNOCKBACK)
+    if (gSCManagerBackupData.error_flags & LBBACKUP_ERROR_RANDOMKNOCKBACK)
     {
         knockback = mtTrigGetRandomFloat() * 200.0F;
     }
@@ -1523,13 +1523,13 @@ void ftParamUpdateDamage(FTStruct *fp, s32 damage)
 {
     fp->percent_damage += damage;
 
-    gBattleState->players[fp->player].total_damage_all += damage;
+    gSCManagerBattleState->players[fp->player].total_damage_all += damage;
 
     if (fp->percent_damage > 999)
     {
         fp->percent_damage = 999;
     }
-    gBattleState->players[fp->player].stock_damage_all = fp->percent_damage;
+    gSCManagerBattleState->players[fp->player].stock_damage_all = fp->percent_damage;
 
     if (fp->item_gobj != NULL)
     {
@@ -1574,17 +1574,17 @@ f32 ftParamGetStale(s32 player, s32 attack_id, u16 motion_count)
     s32 current_array_id;
     s32 i;
 
-    stale_id = gBattleState->players[player].stale_id;
+    stale_id = gSCManagerBattleState->players[player].stale_id;
 
     if (attack_id != nFTMotionAttackIDNone)
     {
-        current_array_id = start_array_id = (stale_id != 0) ? stale_id - 1 : ARRAY_COUNT(gBattleState->players[player].stale_info) - 1;
+        current_array_id = start_array_id = (stale_id != 0) ? stale_id - 1 : ARRAY_COUNT(gSCManagerBattleState->players[player].stale_info) - 1;
 
         for (i = 0; i < ARRAY_COUNT(dFTParamStaleTable); i++)
         {
-            if (attack_id == gBattleState->players[player].stale_info[current_array_id].attack_id)
+            if (attack_id == gSCManagerBattleState->players[player].stale_info[current_array_id].attack_id)
             {
-                if (motion_count != gBattleState->players[player].stale_info[current_array_id].motion_count)
+                if (motion_count != gSCManagerBattleState->players[player].stale_info[current_array_id].motion_count)
                 {
                     return dFTParamStaleTable[i];
                 }
@@ -1593,7 +1593,7 @@ f32 ftParamGetStale(s32 player, s32 attack_id, u16 motion_count)
                     i--;
                 }
             }
-            current_array_id = (current_array_id != 0) ? current_array_id - 1 : ARRAY_COUNT(gBattleState->players[player].stale_info) - 1;
+            current_array_id = (current_array_id != 0) ? current_array_id - 1 : ARRAY_COUNT(gSCManagerBattleState->players[player].stale_info) - 1;
         }
     }
     return 1.0F;
@@ -1633,29 +1633,29 @@ void ftParamSetMotionID(FTStruct *fp, s32 attack_id)
 // 0x800EA614
 void ftParamUpdateStaleQueue(s32 attack_player, s32 defend_player, s32 attack_id, u16 motion_count)
 {
-    if ((attack_player != ARRAY_COUNT(gBattleState->players)) && (attack_player != defend_player))
+    if ((attack_player != ARRAY_COUNT(gSCManagerBattleState->players)) && (attack_player != defend_player))
     {
-        s32 i, stale_id = gBattleState->players[attack_player].stale_id;
+        s32 i, stale_id = gSCManagerBattleState->players[attack_player].stale_id;
 
-        for (i = 0; i < ARRAY_COUNT(gBattleState->players[attack_player].stale_info); i++)
+        for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players[attack_player].stale_info); i++)
         {
             if
             (
-                (attack_id    == gBattleState->players[attack_player].stale_info[i].attack_id) && 
-                (motion_count == gBattleState->players[attack_player].stale_info[i].motion_count)
+                (attack_id    == gSCManagerBattleState->players[attack_player].stale_info[i].attack_id) && 
+                (motion_count == gSCManagerBattleState->players[attack_player].stale_info[i].motion_count)
             )
             {
                 return;
             }
         }
-        gBattleState->players[attack_player].stale_info[stale_id].attack_id    = attack_id;
-        gBattleState->players[attack_player].stale_info[stale_id].motion_count = motion_count;
+        gSCManagerBattleState->players[attack_player].stale_info[stale_id].attack_id    = attack_id;
+        gSCManagerBattleState->players[attack_player].stale_info[stale_id].motion_count = motion_count;
 
-        if (stale_id == (ARRAY_COUNT(gBattleState->players[attack_player].stale_info) - 1))
+        if (stale_id == (ARRAY_COUNT(gSCManagerBattleState->players[attack_player].stale_info) - 1))
         {
-            gBattleState->players[attack_player].stale_id = 0;
+            gSCManagerBattleState->players[attack_player].stale_id = 0;
         }
-        else gBattleState->players[attack_player].stale_id = stale_id + 1;
+        else gSCManagerBattleState->players[attack_player].stale_id = stale_id + 1;
     }
 }
 
@@ -1683,7 +1683,7 @@ void ftParamUpdate1PGameAttackStats(FTStruct *fp, u16 flags)
 {
     GMStatFlags stat_flags = *(GMStatFlags*)&flags;
 
-    if ((fp->pkind != nFTPlayerKindDemo) && (gBattleState->game_type == nSCBattleGameType1PGame) && (fp->player == gSceneData.spgame_player))
+    if ((fp->pkind != nFTPlayerKindDemo) && (gSCManagerBattleState->game_type == nSCBattleGameType1PGame) && (fp->player == gSCManagerSceneData.player))
     {
         if ((fp->stat_flags.stat_attack_id != nFTStatusAttackIDNone) && (fp->stat_flags.stat_attack_id != stat_flags.stat_attack_id))
         {
@@ -1740,11 +1740,11 @@ void ftParamUpdatePlayerBattleStats(s32 attack_player, s32 defend_player, s32 at
 {
     if ((attack_player != GMCOMMON_PLAYERS_MAX) && (attack_player != defend_player))
     {
-        gBattleState->players[attack_player].total_damage_dealt += attack_damage;
+        gSCManagerBattleState->players[attack_player].total_damage_dealt += attack_damage;
 
-        gBattleState->players[defend_player].total_damage_player[attack_player] += attack_damage;
-        gBattleState->players[defend_player].combo_damage_foe += attack_damage;
-        gBattleState->players[defend_player].combo_count_foe++;
+        gSCManagerBattleState->players[defend_player].total_damage_player[attack_player] += attack_damage;
+        gSCManagerBattleState->players[defend_player].combo_damage_foe += attack_damage;
+        gSCManagerBattleState->players[defend_player].combo_count_foe++;
     }
 }
 
@@ -1761,9 +1761,9 @@ void ftParamUpdate1PGameDamageStats(FTStruct *fp, s32 damage_player, s32 damage_
         fp->damage_stat_flags = *(GMStatFlags*)&flags;
         fp->damage_stat_count = damage_stat_count;
 
-        if (gBattleState->game_type == nSCBattleGameType1PGame)
+        if (gSCManagerBattleState->game_type == nSCBattleGameType1PGame)
         {
-            if ((gSceneData.spgame_player == damage_player) && (fp->damage_stat_flags.stat_attack_id != nFTStatusAttackIDNone))
+            if ((gSCManagerSceneData.player == damage_player) && (fp->damage_stat_flags.stat_attack_id != nFTStatusAttackIDNone))
             {
                 gSC1PGameBonusDefendIDCount[fp->damage_stat_flags.stat_attack_id]++;
                 gSC1PGameBonusDefendIsSmashCount[fp->damage_stat_flags.is_smash_attack]++;

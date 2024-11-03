@@ -999,9 +999,9 @@ void sc1PContinueInitVars(void)
 {
     sSC1PContinueTotalTimeTics = 0;
 
-    sSC1PContinueFighterDemoDesc.fkind = gSCManager1PGameBattleState.players[gSceneData.spgame_player].fkind;
-    sSC1PContinueFighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSceneData.spgame_player].costume;
-    sSC1PContinueFighterDemoDesc.shade   = gSCManager1PGameBattleState.players[gSceneData.spgame_player].shade;
+    sSC1PContinueFighterDemoDesc.fkind = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].fkind;
+    sSC1PContinueFighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].costume;
+    sSC1PContinueFighterDemoDesc.shade   = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].shade;
 
     sSC1PContinueOptionSelect = 0;
     sSC1PContinueStatus = 0;
@@ -1028,8 +1028,8 @@ void sc1PContinueFuncRun(GObj *gobj)
         if (sSC1PContinueTotalTimeTics == sSC1PContinueOptionYesRetryTic)
         {
             // Why though?
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindTitle;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindTitle;
 
             sSC1PContinueIsSelectContinue = TRUE;
 
@@ -1087,10 +1087,10 @@ void sc1PContinueFuncRun(GObj *gobj)
                     gcEjectGObj(sSC1PContinueOptionGObj);
                     gcEjectGObj(sSC1PContinueCursorGObj);
 
-                    gSceneData.spgame_score *= 0.5F;
+                    gSCManagerSceneData.spgame_score *= 0.5F;
 
                     gcEjectGObj(sSC1PContinueScoreGObj);
-                    sc1PContinueMakeScoreDisplay(gSceneData.spgame_score);
+                    sc1PContinueMakeScoreDisplay(gSCManagerSceneData.spgame_score);
 					scSubsysFighterSetStatus(sSC1PContinueFighterGObj, 0x1000A);
 
 					sSC1PContinueStatus = 1;
@@ -1158,8 +1158,8 @@ void sc1PContinueFuncRun(GObj *gobj)
             (scSubsysControllerGetPlayerTapButtons(A_BUTTON | START_BUTTON) != FALSE)
         )
         {
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindTitle;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindTitle;
 
         #if !defined(DAIRANTOU_OPT0)
             sc1PContinueUnused0x80133990();
@@ -1169,8 +1169,8 @@ void sc1PContinueFuncRun(GObj *gobj)
         }
         if (sSC1PContinueTotalTimeTics == sSC1PContinueOptionNoGameOverAutoWait)
         {
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindTitle;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindTitle;
 
         #if !defined(DAIRANTOU_OPT0)
             sc1PContinueUnused0x80133990();
@@ -1247,7 +1247,7 @@ void sc1PContinueFuncStart(void)
     sc1PContinueMakeSpotlightCamera();
     sc1PContinueMakeTextCamera();
     sc1PContinueMakeFighter(sSC1PContinueFighterDemoDesc.fkind);
-    sc1PContinueMakeScoreDisplay(gSceneData.spgame_score);
+    sc1PContinueMakeScoreDisplay(gSCManagerSceneData.spgame_score);
 
     scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
@@ -1314,5 +1314,5 @@ void sc1PContinueStartScene(void)
 
     func_800A2698(&dSC1PContinueTaskmanSetup);
 
-    gSceneData.is_select_continue = sSC1PContinueIsSelectContinue;
+    gSCManagerSceneData.is_continue = sSC1PContinueIsSelectContinue;
 }

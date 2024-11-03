@@ -159,22 +159,22 @@ void sc1PManagerTrySetChallengers(void)
 {
     if
     (
-        !(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_NESS) && 
-        (gSaveData.spgame_difficulty >= nSC1PGameDifficultyNormal) && 
-        (gSceneData.continues_used == 0) &&
-        (gSaveData.spgame_stock_count < 3)
+        !(gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_NESS) && 
+        (gSCManagerBackupData.spgame_difficulty >= nSC1PGameDifficultyNormal) && 
+        (gSCManagerSceneData.continues_used == 0) &&
+        (gSCManagerBackupData.spgame_stock_count < 3)
     )
     {
-        gSceneData.spgame_stage = nSC1PGameStageNess;
+        gSCManagerSceneData.spgame_stage = nSC1PGameStageNess;
     }
-    else if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_CAPTAIN) && (gSC1PManagerTotalTimeTics < I_MIN_TO_TICS(12)))
+    else if (!(gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_CAPTAIN) && (gSC1PManagerTotalTimeTics < I_MIN_TO_TICS(12)))
     {
         // Captain Falcon's unlock criteria is 12 minutes instead of the reported 20???
-        gSceneData.spgame_stage = nSC1PGameStageCaptain;
+        gSCManagerSceneData.spgame_stage = nSC1PGameStageCaptain;
     }
-    else if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_PURIN))
+    else if (!(gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_PURIN))
     {
-        gSceneData.spgame_stage = nSC1PGameStagePurin;
+        gSCManagerSceneData.spgame_stage = nSC1PGameStagePurin;
     }
 }
 
@@ -184,20 +184,20 @@ sb32 sc1PManagerCheckUnlockSoundTest(void)
     s32 fkind;
     u16 bonus_record_count;
 
-    if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_SOUNDTEST))
+    if (!(gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_SOUNDTEST))
     {
-        for (fkind = 0, bonus_record_count = 0; fkind < ARRAY_COUNT(gSaveData.spgame_records); fkind++)
+        for (fkind = 0, bonus_record_count = 0; fkind < ARRAY_COUNT(gSCManagerBackupData.spgame_records); fkind++)
         {
-            if (gSaveData.spgame_records[fkind].bonus1_task_count == SCBATTLE_BONUSGAME_TASK_MAX) // Check if fighter has broken all targets
+            if (gSCManagerBackupData.spgame_records[fkind].bonus1_task_count == SCBATTLE_BONUSGAME_TASK_MAX) // Check if fighter has broken all targets
             {
                 bonus_record_count |= (1 << fkind);
             }
         }
         if ((bonus_record_count & LBBACKUP_CHARACTER_MASK_ALL) == LBBACKUP_CHARACTER_MASK_ALL)
         {
-            for (fkind = 0, bonus_record_count = 0; fkind < ARRAY_COUNT(gSaveData.spgame_records); fkind++)
+            for (fkind = 0, bonus_record_count = 0; fkind < ARRAY_COUNT(gSCManagerBackupData.spgame_records); fkind++)
             {
-                if (gSaveData.spgame_records[fkind].bonus2_task_count == SCBATTLE_BONUSGAME_TASK_MAX) // Check if fighter has boarded all platforms
+                if (gSCManagerBackupData.spgame_records[fkind].bonus2_task_count == SCBATTLE_BONUSGAME_TASK_MAX) // Check if fighter has boarded all platforms
                 {
                     bonus_record_count |= (1 << fkind);
                 }
@@ -216,23 +216,23 @@ void sc1PManagerTrySaveBackup(sb32 is_complete_spgame)
 {
     sb32 is_write_data = FALSE;
 
-    if (gSaveData.spgame_records[gSceneData.fkind].spgame_hiscore < gSceneData.spgame_score)
+    if (gSCManagerBackupData.spgame_records[gSCManagerSceneData.fkind].spgame_hiscore < gSCManagerSceneData.spgame_score)
     {
-        gSaveData.spgame_records[gSceneData.fkind].spgame_hiscore   = gSceneData.spgame_score;
-        gSaveData.spgame_records[gSceneData.fkind].spgame_continues = gSceneData.continues_used;
-        gSaveData.spgame_records[gSceneData.fkind].spgame_bonuses   = gSceneData.bonus_count;
+        gSCManagerBackupData.spgame_records[gSCManagerSceneData.fkind].spgame_hiscore   = gSCManagerSceneData.spgame_score;
+        gSCManagerBackupData.spgame_records[gSCManagerSceneData.fkind].spgame_continues = gSCManagerSceneData.continues_used;
+        gSCManagerBackupData.spgame_records[gSCManagerSceneData.fkind].spgame_bonuses   = gSCManagerSceneData.bonus_count;
 
         if (is_complete_spgame != FALSE)
         {
-            gSaveData.spgame_records[gSceneData.fkind].spgame_best_difficulty = gSaveData.spgame_difficulty + 1;
+            gSCManagerBackupData.spgame_records[gSCManagerSceneData.fkind].spgame_best_difficulty = gSCManagerBackupData.spgame_difficulty + 1;
         }
-        else gSaveData.spgame_records[gSceneData.fkind].spgame_best_difficulty = 0;
+        else gSCManagerBackupData.spgame_records[gSCManagerSceneData.fkind].spgame_best_difficulty = 0;
 
         is_write_data = TRUE;
     }
-    if ((gSaveData.spgame_records[gSceneData.fkind].spgame_complete == FALSE) && (is_complete_spgame != 0))
+    if ((gSCManagerBackupData.spgame_records[gSCManagerSceneData.fkind].is_spgame_complete == FALSE) && (is_complete_spgame != 0))
     {
-        gSaveData.spgame_records[gSceneData.fkind].spgame_complete = TRUE;
+        gSCManagerBackupData.spgame_records[gSCManagerSceneData.fkind].is_spgame_complete = TRUE;
 
         is_write_data = TRUE;
     }
@@ -255,7 +255,7 @@ void sc1PManagerUpdateScene(void)
     s32 player;
     s32 spgame_stage;
 
-    sSC1PManagerScenePrev = gSceneData.scene_prev;
+    sSC1PManagerScenePrev = gSCManagerSceneData.scene_prev;
 
     gSCManager1PGameBattleState.is_team_battle = TRUE;
     gSCManager1PGameBattleState.game_rules = (SCBATTLE_GAMERULE_1PGAME | SCBATTLE_GAMERULE_TIME);
@@ -263,25 +263,25 @@ void sc1PManagerUpdateScene(void)
     gSCManager1PGameBattleState.is_display_score = FALSE;
     gSCManager1PGameBattleState.is_not_teamshadows = TRUE;
 
-    if (gSaveData.error_flags & LBBACKUP_ERROR_1PGAMEMARIO)
+    if (gSCManagerBackupData.error_flags & LBBACKUP_ERROR_1PGAMEMARIO)
     {
-        gSceneData.fkind = nFTKindMario;
-        gSceneData.costume = 0;
+        gSCManagerSceneData.fkind = nFTKindMario;
+        gSCManagerSceneData.costume = 0;
     }
-    gSCManager1PGameBattleState.players[gSceneData.spgame_player].handicap = FTCOMMON_HANDICAP_DEFAULT;
-    gSCManager1PGameBattleState.players[gSceneData.spgame_player].pkind = nFTPlayerKindMan;
-    gSCManager1PGameBattleState.players[gSceneData.spgame_player].team = 0;
-    gSCManager1PGameBattleState.players[gSceneData.spgame_player].shade = 0;
-    gSCManager1PGameBattleState.players[gSceneData.spgame_player].player_color = gSceneData.spgame_player;
-    gSCManager1PGameBattleState.players[gSceneData.spgame_player].tag_kind = gSceneData.spgame_player;
-    gSCManager1PGameBattleState.players[gSceneData.spgame_player].fkind = gSceneData.fkind;
-    gSCManager1PGameBattleState.players[gSceneData.spgame_player].costume = gSceneData.costume;
-    gSCManager1PGameBattleState.players[gSceneData.spgame_player].stock_count = gSaveData.spgame_stock_count;
-    gSCManager1PGameBattleState.players[gSceneData.spgame_player].is_spgame_team = FALSE;
+    gSCManager1PGameBattleState.players[gSCManagerSceneData.player].handicap = FTCOMMON_HANDICAP_DEFAULT;
+    gSCManager1PGameBattleState.players[gSCManagerSceneData.player].pkind = nFTPlayerKindMan;
+    gSCManager1PGameBattleState.players[gSCManagerSceneData.player].team = 0;
+    gSCManager1PGameBattleState.players[gSCManagerSceneData.player].shade = 0;
+    gSCManager1PGameBattleState.players[gSCManagerSceneData.player].color = gSCManagerSceneData.player;
+    gSCManager1PGameBattleState.players[gSCManagerSceneData.player].tag = gSCManagerSceneData.player;
+    gSCManager1PGameBattleState.players[gSCManagerSceneData.player].fkind = gSCManagerSceneData.fkind;
+    gSCManager1PGameBattleState.players[gSCManagerSceneData.player].costume = gSCManagerSceneData.costume;
+    gSCManager1PGameBattleState.players[gSCManagerSceneData.player].stock_count = gSCManagerBackupData.spgame_stock_count;
+    gSCManager1PGameBattleState.players[gSCManagerSceneData.player].is_spgame_team = FALSE;
 
-    gSceneData.spgame_score = 0;
-    gSceneData.continues_used = 0;
-    gSceneData.bonus_count = 0;
+    gSCManagerSceneData.spgame_score = 0;
+    gSCManagerSceneData.continues_used = 0;
+    gSCManagerSceneData.bonus_count = 0;
 
     gSC1PManagerTotalTimeTics = 0;
 
@@ -290,9 +290,9 @@ void sc1PManagerUpdateScene(void)
     gSC1PManagerLevelDrop = 0;
     sSC1PManagerLevelGuard = 2;
 
-    player = gSceneData.spgame_player;
+    player = gSCManagerSceneData.player;
 
-    for (i = 0; i < ARRAY_COUNT(gSceneData.ally_players); i++)
+    for (i = 0; i < ARRAY_COUNT(gSCManagerSceneData.ally_players); i++)
     {
         if (player == (GMCOMMON_PLAYERS_MAX - 1))
         {
@@ -300,50 +300,50 @@ void sc1PManagerUpdateScene(void)
         }
         else player++;
 
-        gSceneData.ally_players[i] = player;
+        gSCManagerSceneData.ally_players[i] = player;
     }
-    if (gSceneData.spgame_stage >= nSC1PGameStageChallengerStart)
+    if (gSCManagerSceneData.spgame_stage >= nSC1PGameStageChallengerStart)
     {
         goto skip_main_stages;
     }
     else
     {
-        while (gSceneData.spgame_stage <= nSC1PGameStageCommonEnd)
+        while (gSCManagerSceneData.spgame_stage <= nSC1PGameStageCommonEnd)
         {
-            this_mask = (gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER) & ~(1 << gSceneData.fkind);
+            this_mask = (gSCManagerBackupData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER) & ~(1 << gSCManagerSceneData.fkind);
 
             is_player_lose = FALSE;
 
-            switch (gSceneData.spgame_stage)
+            switch (gSCManagerSceneData.spgame_stage)
             {
             case nSC1PGameStageMario:
                 this_mask &= ~1;
 
-                gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].fkind = sc1PManagerGetShuffledFighterKind(this_mask, 0, mtTrigGetRandomIntRange(sc1PManagerGetFighterKindsNum(this_mask)));
+                gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[0]].fkind = sc1PManagerGetShuffledFighterKind(this_mask, 0, mtTrigGetRandomIntRange(sc1PManagerGetFighterKindsNum(this_mask)));
 
-                if (gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].fkind == nFTKindLuigi)
+                if (gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[0]].fkind == nFTKindLuigi)
                 {
-                    gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].costume = ftParamGetCostumeCommonID(nFTKindLuigi, 1);
+                    gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[0]].costume = ftParamGetCostumeCommonID(nFTKindLuigi, 1);
                 }
-                else gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].costume = 0;
+                else gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[0]].costume = 0;
 
-                gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].shade = 0;
+                gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[0]].shade = 0;
                 break;
 
             case nSC1PGameStageDonkey:
                 random = sc1PManagerGetFighterKindsNum(this_mask);
 
-                gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].fkind = sc1PManagerGetShuffledFighterKind(this_mask, 0, mtTrigGetRandomIntRange(random));
-                gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].costume = 0;
-                gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].shade = 0;
+                gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[0]].fkind = sc1PManagerGetShuffledFighterKind(this_mask, 0, mtTrigGetRandomIntRange(random));
+                gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[0]].costume = 0;
+                gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[0]].shade = 0;
 
-                gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].fkind = sc1PManagerGetShuffledFighterKind(this_mask, (1 << gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].fkind), mtTrigGetRandomIntRange(random - 1));
-                gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].costume = 0;
-                gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].shade = 0;
+                gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[1]].fkind = sc1PManagerGetShuffledFighterKind(this_mask, (1 << gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[0]].fkind), mtTrigGetRandomIntRange(random - 1));
+                gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[1]].costume = 0;
+                gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[1]].shade = 0;
                 break;
 
             case nSC1PGameStageKirby:
-                this_mask = (gSaveData.fighter_mask | LBBACKUP_MASK_FIGHTER(nFTKindKirby));
+                this_mask = (gSCManagerBackupData.fighter_mask | LBBACKUP_MASK_FIGHTER(nFTKindKirby));
 
                 gSC1PManagerKirbyTeamFinalCopy = sc1PManagerGetShuffledKirbyCopy(this_mask, mtTrigGetRandomIntRange(sc1PManagerGetFighterKindsNum(this_mask)));
 
@@ -353,20 +353,20 @@ void sc1PManagerUpdateScene(void)
             syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
             syDmaLoadOverlay(&dSC1PManager1PStageCardOverlay);
 
-            gSceneData.scene_prev = nSCKind1PGame;
-            gSceneData.scene_curr = nSCKind1PStageCard;
+            gSCManagerSceneData.scene_prev = nSCKind1PGame;
+            gSCManagerSceneData.scene_curr = nSCKind1PStageCard;
 
             sc1PStageCardStartScene();
 
-            switch (gSceneData.spgame_stage)
+            switch (gSCManagerSceneData.spgame_stage)
             {
             case nSC1PGameStageBonus1:
             case nSC1PGameStageBonus2:
                 syDmaLoadOverlay(&dSC1PManagerObjectsOverlay);
                 syDmaLoadOverlay(&dSC1PManager1PBonusGameOverlay);
 
-                gSceneData.scene_prev = nSCKind1PGame;
-                gSceneData.scene_curr = nSCKind1PBonusGame;
+                gSCManagerSceneData.scene_prev = nSCKind1PGame;
+                gSCManagerSceneData.scene_curr = nSCKind1PBonusGame;
 
                 sc1PBonusGameStartScene();
                 break;
@@ -377,19 +377,19 @@ void sc1PManagerUpdateScene(void)
 
                 sc1PGameStartScene();
 
-                if (gSceneData.spgame_stage != nSC1PGameStageBonus3)
+                if (gSCManagerSceneData.spgame_stage != nSC1PGameStageBonus3)
                 {
-                    if((gSCManager1PGameBattleState.players[gSceneData.spgame_player].stock_count == -1) || (gSCManager1PGameBattleState.battle_time_remain == 0))
+                    if((gSCManager1PGameBattleState.players[gSCManagerSceneData.player].stock_count == -1) || (gSCManager1PGameBattleState.time_remain == 0))
                     {
                         is_player_lose = TRUE;
                     }
                 }
                 break;
             }
-            if (gSceneData.is_reset != FALSE)
+            if (gSCManagerSceneData.is_reset != FALSE)
             {
-                gSceneData.scene_prev = nSCKind1PGame;
-                gSceneData.scene_curr = nSCKind1PMode;
+                gSCManagerSceneData.scene_prev = nSCKind1PGame;
+                gSCManagerSceneData.scene_curr = nSCKind1PMode;
 
                 return;
             }
@@ -400,13 +400,13 @@ void sc1PManagerUpdateScene(void)
 
                 sc1PContinueStartScene();
 
-                if (gSceneData.is_select_continue != FALSE)
+                if (gSCManagerSceneData.is_continue != FALSE)
                 {
-                    gSceneData.continues_used++;
+                    gSCManagerSceneData.continues_used++;
 
-                    gSCManager1PGameBattleState.players[gSceneData.spgame_player].stock_count = gSaveData.spgame_stock_count;
+                    gSCManager1PGameBattleState.players[gSCManagerSceneData.player].stock_count = gSCManagerBackupData.spgame_stock_count;
 
-                    gSceneData.spgame_stage--;
+                    gSCManagerSceneData.spgame_stage--;
 
                     if (--sSC1PManagerLevelGuard == 0)
                     {
@@ -424,8 +424,8 @@ void sc1PManagerUpdateScene(void)
                 {
                     sc1PManagerTrySaveBackup(FALSE);
 
-                    gSceneData.scene_prev = nSCKind1PGame;
-                    gSceneData.scene_curr = nSCKindN64;
+                    gSCManagerSceneData.scene_prev = nSCKind1PGame;
+                    gSCManagerSceneData.scene_curr = nSCKindN64;
 
                     return;
                 }
@@ -437,9 +437,9 @@ void sc1PManagerUpdateScene(void)
 
                 bonus_stat_count = 0;
 
-                for (i = 0; i < ARRAY_COUNT(gSceneData.bonus_get_mask); i++)
+                for (i = 0; i < ARRAY_COUNT(gSCManagerSceneData.bonus_get_mask); i++)
                 {
-                    bonus_stat_mask = gSceneData.bonus_get_mask[i];
+                    bonus_stat_mask = gSCManagerSceneData.bonus_get_mask[i];
 
                     for (j = 0; j < (sizeof(u32) * 8); j++, bonus_stat_mask >>= 1)
                     {
@@ -449,122 +449,122 @@ void sc1PManagerUpdateScene(void)
                         }
                     }
                 }
-                gSceneData.bonus_count += bonus_stat_count;
+                gSCManagerSceneData.bonus_count += bonus_stat_count;
 
                 syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
                 syDmaLoadOverlay(&dSC1PManager1PStageClearOverlay);
 
-                gSceneData.scene_prev = nSCKind1PGame;
-                gSceneData.scene_curr = nSCKind1PStageClear;
+                gSCManagerSceneData.scene_prev = nSCKind1PGame;
+                gSCManagerSceneData.scene_curr = nSCKind1PStageClear;
 
                 sc1PStageClearStartScene();
             }
-            gSceneData.spgame_stage++;
+            gSCManagerSceneData.spgame_stage++;
         }
         sc1PManagerTrySaveBackup(TRUE);
 
         syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
         syDmaLoadOverlay(&dSC1PManagerEndingOverlay);
 
-        gSceneData.scene_prev = nSCKind1PGame;
-        gSceneData.scene_curr = nSCKindEnding;
+        gSCManagerSceneData.scene_prev = nSCKind1PGame;
+        gSCManagerSceneData.scene_curr = nSCKindEnding;
 
         mvEndingStartScene();
 
         syDmaLoadOverlay(&dSC1PManagerStaffrollOverlay);
 
-        gSceneData.scene_prev = nSCKind1PGame;
-        gSceneData.scene_curr = nSCKindStaffroll;
+        gSCManagerSceneData.scene_prev = nSCKind1PGame;
+        gSCManagerSceneData.scene_curr = nSCKindStaffroll;
 
         gmStaffrollStartScene();
 
         syDmaLoadOverlay(&dSC1PManagerCongraOverlay);
 
-        gSceneData.scene_prev = nSCKind1PGame;
-        gSceneData.scene_curr = nSCKindCongra;
+        gSCManagerSceneData.scene_prev = nSCKind1PGame;
+        gSCManagerSceneData.scene_curr = nSCKindCongra;
 
         mnCongraStartScene();
 
-        gSceneData.spgame_stage--;
+        gSCManagerSceneData.spgame_stage--;
 
         sc1PManagerTrySetChallengers();
     }
 skip_main_stages:
-    if (gSceneData.spgame_stage >= nSC1PGameStageChallengerStart)
+    if (gSCManagerSceneData.spgame_stage >= nSC1PGameStageChallengerStart)
     {
-        gSceneData.challenger_fkind = dSC1PManagerChallangerFighterKinds[gSceneData.spgame_stage - nSC1PGameStageChallengerStart];
+        gSCManagerSceneData.challenger_fkind = dSC1PManagerChallangerFighterKinds[gSCManagerSceneData.spgame_stage - nSC1PGameStageChallengerStart];
 
         syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
         syDmaLoadOverlay(&dSC1PManager1PChallengerOverlay);
 
-        gSceneData.scene_prev = nSCKind1PGame;
-        gSceneData.scene_curr = nSCKind1PChallenger;
+        gSCManagerSceneData.scene_prev = nSCKind1PGame;
+        gSCManagerSceneData.scene_curr = nSCKind1PChallenger;
 
         sc1PChallengerStartScene();
 
-        gSCManager1PGameBattleState.players[gSceneData.spgame_player].stock_count = 0;
+        gSCManager1PGameBattleState.players[gSCManagerSceneData.player].stock_count = 0;
 
         syDmaLoadOverlay(&dSC1PManagerObjectsOverlay);
         syDmaLoadOverlay(&dSC1PManager1PGameOverlay);
 
         sc1PGameStartScene();
 
-        if (gSceneData.is_reset != FALSE)
+        if (gSCManagerSceneData.is_reset != FALSE)
         {
-            gSceneData.scene_prev = nSCKind1PGame;
-            gSceneData.scene_curr = nSCKind1PMode;
+            gSCManagerSceneData.scene_prev = nSCKind1PGame;
+            gSCManagerSceneData.scene_curr = nSCKind1PMode;
 
             return;
         }
-        if ((gSCManager1PGameBattleState.players[gSceneData.spgame_player].stock_count != -1) && (gSCManager1PGameBattleState.battle_time_remain != 0))
+        if ((gSCManager1PGameBattleState.players[gSCManagerSceneData.player].stock_count != -1) && (gSCManager1PGameBattleState.time_remain != 0))
         {
-            gSceneData.challenger_level_drop = gDefaultSceneData.challenger_level_drop;
-            gSceneData.unlock_messages[0] = dSC1PManagerUnlockNewcomerKinds[gSceneData.spgame_stage - nSC1PGameStageChallengerStart];
+            gSCManagerSceneData.challenger_level_drop = dSCManagerDefaultSceneData.challenger_level_drop;
+            gSCManagerSceneData.unlock_messages[0] = dSC1PManagerUnlockNewcomerKinds[gSCManagerSceneData.spgame_stage - nSC1PGameStageChallengerStart];
 
             syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
             syDmaLoadOverlay(&dSC1PManagerMessageOverlay);
 
-            gSceneData.scene_prev = nSCKind1PGame;
-            gSceneData.scene_curr = nSCKindMessage;
+            gSCManagerSceneData.scene_prev = nSCKind1PGame;
+            gSCManagerSceneData.scene_curr = nSCKindMessage;
 
             mnMessageStartScene();
         }
-        else if (gSceneData.challenger_level_drop < 9)
+        else if (gSCManagerSceneData.challenger_level_drop < 9)
         {
-            gSceneData.challenger_level_drop += 2;
+            gSCManagerSceneData.challenger_level_drop += 2;
         }
-        if (gSceneData.spgame_stage == nSC1PGameStageLuigi)
+        if (gSCManagerSceneData.spgame_stage == nSC1PGameStageLuigi)
         {
-            gSceneData.scene_prev = nSCKind1PBonusGame;
-            gSceneData.scene_curr = nSCKind1PBonus1Fighters;
+            gSCManagerSceneData.scene_prev = nSCKind1PBonusGame;
+            gSCManagerSceneData.scene_curr = nSCKind1PBonus1Fighters;
             return;
         }
     }
-    if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_INISHIE))
+    if (!(gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_INISHIE))
     {
-        if ((gSaveData.unlock_task_inishie & LBBACKUP_GROUND_MASK_ALL) == LBBACKUP_GROUND_MASK_ALL)
+        if ((gSCManagerBackupData.ground_mask & LBBACKUP_GROUND_MASK_ALL) == LBBACKUP_GROUND_MASK_ALL)
         {
-            for (i = 0, spgame_characters_complete = 0; i < ARRAY_COUNT(gSaveData.spgame_records); i++)
+            for (i = 0, spgame_characters_complete = 0; i < ARRAY_COUNT(gSCManagerBackupData.spgame_records); i++)
             {
-                if (gSaveData.spgame_records[i].spgame_complete != FALSE)
+                if (gSCManagerBackupData.spgame_records[i].is_spgame_complete != FALSE)
                 {
                     spgame_characters_complete |= (1 << i);
                 }
             }
             if ((spgame_characters_complete & LBBACKUP_CHARACTER_MASK_STARTER) == LBBACKUP_CHARACTER_MASK_STARTER)
             {
-                gSceneData.unlock_messages[0] = nLBBackupUnlockInishie;
+                gSCManagerSceneData.unlock_messages[0] = nLBBackupUnlockInishie;
 
                 syDmaLoadOverlay(&dSC1PManagerSubsysOverlay);
                 syDmaLoadOverlay(&dSC1PManagerMessageOverlay);
 
-                gSceneData.scene_prev = nSCKind1PGame;
-                gSceneData.scene_curr = nSCKindMessage;
+                gSCManagerSceneData.scene_prev = nSCKind1PGame;
+                gSCManagerSceneData.scene_curr = nSCKindMessage;
 
                 mnMessageStartScene();
             }
         }
     }
-    gSceneData.scene_prev = nSCKind1PGame;
-    gSceneData.scene_curr = nSCKindN64;
+    gSCManagerSceneData.scene_prev = nSCKind1PGame;
+    gSCManagerSceneData.scene_curr = nSCKindN64;
 }

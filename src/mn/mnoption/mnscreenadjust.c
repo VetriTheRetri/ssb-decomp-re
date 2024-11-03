@@ -255,8 +255,8 @@ void mnScreenAdjustInitVars(void)
 // 0x8013204C
 void mnScreenAdjustBackupOffsets(void)
 {
-    gSaveData.screen_adjust_h = sMNScreenAdjustOffsetH;
-    gSaveData.screen_adjust_v = sMNScreenAdjustOffsetV;
+    gSCManagerBackupData.screen_adjust_h = sMNScreenAdjustOffsetH;
+    gSCManagerBackupData.screen_adjust_v = sMNScreenAdjustOffsetV;
     
     lbBackupWrite();
 }
@@ -282,8 +282,8 @@ void mnScreenAdjustFuncRun(GObj *gobj)
         {
             func_800269C0_275C0(nSYAudioFGMMenuSelect);
             
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindOption;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindOption;
 
             mnScreenAdjustBackupOffsets();
             syTaskmanSetLoadScene();

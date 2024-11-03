@@ -122,7 +122,7 @@ GObj* grZebesMakeAcid(void)
 // 0x80108240
 void grZebesAcidUpdateWait(void)
 {
-    if (gBattleState->game_status != nSCBattleGameStatusWait)
+    if (gSCManagerBattleState->game_status != nSCBattleGameStatusWait)
     {
         gGRCommonStruct.zebes.acid_status = nGRZebesAcidStatusNormal;
     }

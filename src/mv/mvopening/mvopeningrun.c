@@ -310,8 +310,8 @@ void mvOpeningRunFuncRun(GObj *gobj)
 		}
 		if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
 		{
-			gSceneData.scene_prev = gSceneData.scene_curr;
-			gSceneData.scene_curr = nSCKindTitle;
+			gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+			gSCManagerSceneData.scene_curr = nSCKindTitle;
 
 			syTaskmanSetLoadScene();
 		}
@@ -326,8 +326,8 @@ void mvOpeningRunFuncRun(GObj *gobj)
 		}
 		if (sMVOpeningRunTotalTimeTics == 220)
 		{
-			gSceneData.scene_prev = gSceneData.scene_curr;
-			gSceneData.scene_curr = nSCKindOpeningCliff;
+			gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+			gSCManagerSceneData.scene_curr = nSCKindOpeningCliff;
 
 			syTaskmanSetLoadScene();
 		}

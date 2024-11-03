@@ -714,7 +714,7 @@ void SC1PGameBossWallpaper2ProcUpdate0(GObj *gobj)
     {
         dobj->scale.vec.f.x = dobj->scale.vec.f.y = dobj->scale.vec.f.z = 0.0F;
     }
-    if (gBattleState->players[sSC1PGameBossMain.bossplayer].stock_damage_all > 270)
+    if (gSCManagerBattleState->players[sSC1PGameBossMain.bossplayer].stock_damage_all > 270)
     {
         dobj->anim_speed += 0.02;
 
@@ -732,7 +732,7 @@ void SC1PGameBossWallpaper2ProcUpdate0(GObj *gobj)
 // 0x80191F28
 void SC1PGameBossWallpaper2ProcUpdate1(GObj *gobj)
 {
-    if (gBattleState->players[sSC1PGameBossMain.bossplayer].stock_damage_all > 270)
+    if (gSCManagerBattleState->players[sSC1PGameBossMain.bossplayer].stock_damage_all > 270)
     {
         gobj->flags = GOBJ_FLAG_NONE;
 
@@ -975,7 +975,7 @@ void SC1PGameBossWallpaperProcUpdate(GObj *gobj)
     }
     if (sSC1PGameBossMain.bosswallpaper->change_damage_min != -1)
     {
-        if (sSC1PGameBossMain.bosswallpaper->change_damage_min < gBattleState->players[sSC1PGameBossMain.bossplayer].stock_damage_all)
+        if (sSC1PGameBossMain.bosswallpaper->change_damage_min < gSCManagerBattleState->players[sSC1PGameBossMain.bossplayer].stock_damage_all)
         {
             sSC1PGameBossMain.is_skip_wallpaper_change = FALSE;
         }
@@ -991,9 +991,9 @@ void sc1PGameBossSetBossPlayer(void)
 {
     s32 player;
 
-    for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
+    for (player = 0; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)
     {
-        if (gBattleState->players[player].fkind == nFTKindBoss)
+        if (gSCManagerBattleState->players[player].fkind == nFTKindBoss)
         {
             sSC1PGameBossMain.bossplayer = player;
         }

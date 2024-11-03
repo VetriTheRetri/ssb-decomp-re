@@ -488,8 +488,8 @@ ITStruct* itManagerGetCurrentAlloc(void)
 void itManagerSetItemSpawnWait(void)
 {
     gITManagerSpawnActor.item_spawn_wait = 
-    dITManagerAppearanceRatesMin[gBattleState->item_appearance_rate] + 
-    mtTrigGetRandomIntRange(dITManagerAppearanceRatesMax[gBattleState->item_appearance_rate] - dITManagerAppearanceRatesMin[gBattleState->item_appearance_rate]);
+    dITManagerAppearanceRatesMin[gSCManagerBattleState->item_appearance_rate] + 
+    mtTrigGetRandomIntRange(dITManagerAppearanceRatesMax[gSCManagerBattleState->item_appearance_rate] - dITManagerAppearanceRatesMin[gSCManagerBattleState->item_appearance_rate]);
 }
 
 // 0x8016EB78
@@ -500,7 +500,7 @@ void itManagerMakeRandomItem(GObj *item_gobj)
     Vec3f pos;
     Vec3f vel;
 
-    if (gBattleState->game_status != nSCBattleGameStatusWait)
+    if (gSCManagerBattleState->game_status != nSCBattleGameStatusWait)
     {
         if (gITManagerSpawnActor.item_spawn_wait > 0)
         {
@@ -540,15 +540,15 @@ GObj* itManagerMakeItemSpawnActor(void)
     MPItemWeights *item_weight_qty;
     u32 item_num_toggles;
 
-    if (gBattleState->item_appearance_rate != nSCBattleItemSwitchNone)
+    if (gSCManagerBattleState->item_appearance_rate != nSCBattleItemSwitchNone)
     {
-        if (gBattleState->item_toggles != 0)
+        if (gSCManagerBattleState->item_toggles != 0)
         {
             if (gMPCollisionGroundData->item_weights != NULL)
             {
                 item_count_qty = gMPCollisionGroundData->item_weights;
 
-                item_num_toggles = gBattleState->item_toggles;
+                item_num_toggles = gSCManagerBattleState->item_toggles;
 
                 item_count = 0;
 
@@ -592,7 +592,7 @@ GObj* itManagerMakeItemSpawnActor(void)
 
                 gcAddGObjProcess(gobj, itManagerMakeRandomItem, nGCProcessKindFunc, 3);
 
-                item_count_toggles = gBattleState->item_toggles;
+                item_count_toggles = gSCManagerBattleState->item_toggles;
 
                 item_weight_qty = gMPCollisionGroundData->item_weights;
 
@@ -607,7 +607,7 @@ GObj* itManagerMakeItemSpawnActor(void)
                 gITManagerSpawnActor.weights.item_kinds = (u8*) syTaskmanMalloc(j * sizeof(*gITManagerSpawnActor.weights.item_kinds), 0x0);
                 gITManagerSpawnActor.weights.item_totals = (u16*) syTaskmanMalloc(j * sizeof(*gITManagerSpawnActor.weights.item_totals), 0x2);
 
-                item_id_toggles = gBattleState->item_toggles;
+                item_id_toggles = gSCManagerBattleState->item_toggles;
 
                 item_weights = 0;
 
@@ -645,9 +645,9 @@ void itManagerSetupContainerDrops(void)
     MPItemWeights *item_weight_qty;
     s32 item_tenth_round;
 
-    if ((gBattleState->item_appearance_rate != nSCBattleItemSwitchNone) && (gBattleState->item_toggles != 0) && (gMPCollisionGroundData->item_weights != NULL))
+    if ((gSCManagerBattleState->item_appearance_rate != nSCBattleItemSwitchNone) && (gSCManagerBattleState->item_toggles != 0) && (gMPCollisionGroundData->item_weights != NULL))
     {
-        item_num_toggles = gBattleState->item_toggles >> nITKindUtilityStart;
+        item_num_toggles = gSCManagerBattleState->item_toggles >> nITKindUtilityStart;
         item_count_qty = gMPCollisionGroundData->item_weights;
 
         item_count = 0;
@@ -663,7 +663,7 @@ void itManagerSetupContainerDrops(void)
 
         if (item_count != 0)
         {
-            item_id_toggles = gBattleState->item_toggles >> nITKindUtilityStart;
+            item_id_toggles = gSCManagerBattleState->item_toggles >> nITKindUtilityStart;
             item_weight_qty = gMPCollisionGroundData->item_weights;
 
             for (j = 0, i = nITKindUtilityStart; i <= nITKindUtilityEnd; i++, item_id_toggles >>= 1)
@@ -679,7 +679,7 @@ void itManagerSetupContainerDrops(void)
             gITManagerRandomWeights.item_kinds = (u8*) syTaskmanMalloc(j * sizeof(*gITManagerRandomWeights.item_kinds), 0x0);
             gITManagerRandomWeights.item_totals = (u16*) syTaskmanMalloc(j * sizeof(*gITManagerRandomWeights.item_totals), 0x2);
 
-            item_id_toggles = gBattleState->item_toggles >> nITKindUtilityStart;
+            item_id_toggles = gSCManagerBattleState->item_toggles >> nITKindUtilityStart;
             item_weights = 0;
 
             for (j = 0, i = nITKindUtilityStart; i <= nITKindUtilityEnd; i++, item_id_toggles >>= 1)

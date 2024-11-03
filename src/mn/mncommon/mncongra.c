@@ -360,7 +360,7 @@ void mnCongraFuncStart(void)
 
 	func_800269C0_275C0
 	(
-		(gSceneData.spgame_score >= 1000000) ? nSYAudioVoiceAnnounceIncredible : nSYAudioVoiceAnnounceCongra
+		(gSCManagerSceneData.spgame_score >= 1000000) ? nSYAudioVoiceAnnounceIncredible : nSYAudioVoiceAnnounceCongra
 	);
 }
 
@@ -383,8 +383,8 @@ void mnCongraFuncDraw(void)
 
 		if (sMNCongraSceneChangeWait == 0)
 		{
-			gSceneData.scene_prev = gSceneData.scene_curr;
-			gSceneData.scene_curr = nSCKindTitle;
+			gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+			gSCManagerSceneData.scene_curr = nSCKindTitle;
 
 			syTaskmanSetLoadScene();
 		}
@@ -407,18 +407,18 @@ void mnCongraStartScene(void)
 
 	while ((uintptr_t)congra_arena_hi < 0x80400000) { *congra_arena_hi++ = GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF); } // WARNING: Newline memes!
 
-	switch (gSceneData.scene_prev)
+	switch (gSCManagerSceneData.scene_prev)
 	{
 	default:
 		sMNCongraFighterKind = nFTKindMario;
 		break;
 
 	case nSCKind1PGame:
-		sMNCongraFighterKind = gSceneData.fkind;
+		sMNCongraFighterKind = gSCManagerSceneData.fkind;
 		break;
 
 	case nSCKindDebugFighters:
-		sMNCongraFighterKind = gTransferBattleState.players[0].fkind;
+		sMNCongraFighterKind = gSCManagerTransferBattleState.players[0].fkind;
 		break;
 	}
 	dMNCongraVideoSetup.zbuffer = syVideoGetZBuffer(6400);

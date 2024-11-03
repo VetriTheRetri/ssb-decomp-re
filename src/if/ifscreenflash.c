@@ -64,7 +64,7 @@ void ifScreenFlashMakeInterface(u8 alpha)
 
     ftParamResetColAnim(&sIFScreenFlashColAnim);
 
-    if (gSaveData.is_allow_screenflash != FALSE)
+    if (gSCManagerBackupData.is_allow_screenflash != FALSE)
     {
         GObj *interface_gobj = gcMakeGObjSPAfter(nGCCommonKindInterface, NULL, nGCCommonLinkIDInterface, GOBJ_PRIORITY_DEFAULT);
 

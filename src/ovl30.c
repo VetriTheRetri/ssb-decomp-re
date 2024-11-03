@@ -1104,18 +1104,18 @@ void mnStageSaveSceneData()
 		do
 		{
 			stage_id = mtTrigGetRandomTimeUCharRange(9);
-		} while (mnStageGetIsLocked(stage_id) || stage_id == gSceneData.gkind);
+		} while (mnStageGetIsLocked(stage_id) || stage_id == gSCManagerSceneData.gkind);
 
-		gSceneData.gkind = stage_id;
+		gSCManagerSceneData.gkind = stage_id;
 	}
 	else
-		gSceneData.gkind = mnStageGetStageID(gMNStageCursorSlotId);
+		gSCManagerSceneData.gkind = mnStageGetStageID(gMNStageCursorSlotId);
 
 	if (gMNStageIsTrainingMode == FALSE)
-		gSceneData.stagesel_battle_gkind = mnStageGetStageID(gMNStageCursorSlotId);
+		gSCManagerSceneData.stages_vsmode_gkind = mnStageGetStageID(gMNStageCursorSlotId);
 
 	if (gMNStageIsTrainingMode == TRUE)
-		gSceneData.stagesel_training_gkind = mnStageGetStageID(gMNStageCursorSlotId);
+		gSCManagerSceneData.stages_training_gkind = mnStageGetStageID(gMNStageCursorSlotId);
 }
 
 // 0x80133C6C
@@ -1133,19 +1133,19 @@ void mnStageLoadSceneData()
 		gMNStageHeap1StageInfoArray[i] = NULL;
 	}
 
-	switch (gSceneData.scene_prev)
+	switch (gSCManagerSceneData.scene_prev)
 	{
 		case 0x12:
 			gMNStageIsTrainingMode = TRUE;
-			gMNStageCursorSlotId = mnStageGetSlotID(gSceneData.stagesel_training_gkind);
+			gMNStageCursorSlotId = mnStageGetSlotID(gSCManagerSceneData.stages_training_gkind);
 			break;
 		case nSCKindVSFighters:
 			gMNStageIsTrainingMode = FALSE;
-			gMNStageCursorSlotId = mnStageGetSlotID(gSceneData.stagesel_battle_gkind);
+			gMNStageCursorSlotId = mnStageGetSlotID(gSCManagerSceneData.stages_vsmode_gkind);
 			break;
 	}
 
-	gMNStageUnlockedMask = gSaveData.unlock_mask;
+	gMNStageUnlockedMask = gSCManagerBackupData.unlock_mask;
 	gMNStageCurrentHeap = 1;
 	gMNStageFramesElapsed = 0;
 	gMNStageMaxFramesElapsed = gMNStageFramesElapsed + I_MIN_TO_TICS(5);
@@ -1170,8 +1170,8 @@ void mnStageHandleButtonPresses(s32 arg0)
 	{
 		if (gMNStageFramesElapsed == gMNStageMaxFramesElapsed)
 		{
-			gSceneData.scene_prev = gSceneData.scene_curr;
-			gSceneData.scene_curr = nSCKindTitle;
+			gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+			gSCManagerSceneData.scene_curr = nSCKindTitle;
 
 			mnStageSaveSceneData2();
 			syTaskmanSetLoadScene();
@@ -1201,13 +1201,13 @@ void mnStageHandleButtonPresses(s32 arg0)
 
 			if (gMNStageIsTrainingMode == TRUE)
 			{
-				gSceneData.scene_prev = gSceneData.scene_curr;
-				gSceneData.scene_curr = nSCKind1PTraining;
+				gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+				gSCManagerSceneData.scene_curr = nSCKind1PTraining;
 			}
 			else
 			{
-				gSceneData.scene_prev = gSceneData.scene_curr;
-				gSceneData.scene_curr = nSCKindVSBattle;
+				gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+				gSCManagerSceneData.scene_curr = nSCKindVSBattle;
 			}
 
 			syTaskmanSetLoadScene();
@@ -1219,13 +1219,13 @@ void mnStageHandleButtonPresses(s32 arg0)
 
 			if (gMNStageIsTrainingMode == TRUE)
 			{
-				gSceneData.scene_prev = gSceneData.scene_curr;
-				gSceneData.scene_curr = nSCKind1PTrainingFighters;
+				gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+				gSCManagerSceneData.scene_curr = nSCKind1PTrainingFighters;
 			}
 			else
 			{
-				gSceneData.scene_prev = gSceneData.scene_curr;
-				gSceneData.scene_curr = nSCKindVSFighters;
+				gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+				gSCManagerSceneData.scene_curr = nSCKindVSFighters;
 			}
 
 			syTaskmanSetLoadScene();

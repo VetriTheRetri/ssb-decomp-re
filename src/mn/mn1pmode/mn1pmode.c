@@ -545,7 +545,7 @@ void mn1PModeMakeDecalsCamera(void)
 // 0x80132910
 void mn1PModeInitVars(void)
 {
-    switch (gSceneData.scene_prev)
+    switch (gSCManagerSceneData.scene_prev)
     {
     case nSCKind1PGameFighters:
         sMN1PModeOption = nMN1PModeOption1PGame;
@@ -595,8 +595,8 @@ void mn1PModeFuncRun(GObj *gobj)
     {
         if (sMN1PModeTotalTimeTics == sMN1PModeReturnTic)
         {
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindTitle;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindTitle;
 
             syTaskmanSetLoadScene();
             return;
@@ -633,9 +633,9 @@ void mn1PModeFuncRun(GObj *gobj)
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
                 mn1PModeSetOptionSpriteColors(sMN1PModeOptionGObjs[nMN1PModeOption1PGame], nMNOptionTabStatusSelected, nMN1PModeOption1PGame);
 
-                gSceneData.scene_prev = gSceneData.scene_curr;
-                gSceneData.scene_curr = nSCKind1PGameFighters;
-                gSceneData.spgame_player = player - 1;
+                gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+                gSCManagerSceneData.scene_curr = nSCKind1PGameFighters;
+                gSCManagerSceneData.player = player - 1;
 
                 sMN1PModeIsProceedScene = TRUE;
                 return;
@@ -644,9 +644,9 @@ void mn1PModeFuncRun(GObj *gobj)
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
                 mn1PModeSetOptionSpriteColors(sMN1PModeOptionGObjs[nMN1PModeOptionTrainingMode], nMNOptionTabStatusSelected, nMN1PModeOptionTrainingMode);
 
-                gSceneData.scene_prev = gSceneData.scene_curr;
-                gSceneData.scene_curr = nSCKind1PTrainingFighters;
-                gSceneData.spgame_player = player - 1;
+                gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+                gSCManagerSceneData.scene_curr = nSCKind1PTrainingFighters;
+                gSCManagerSceneData.player = player - 1;
 
                 sMN1PModeIsProceedScene = TRUE;
                 return;
@@ -655,9 +655,9 @@ void mn1PModeFuncRun(GObj *gobj)
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
                 mn1PModeSetOptionSpriteColors(sMN1PModeOptionGObjs[nMN1PModeOptionBonus1Practice], nMNOptionTabStatusSelected, nMN1PModeOptionBonus1Practice);
 
-                gSceneData.scene_prev = gSceneData.scene_curr;
-                gSceneData.scene_curr = nSCKind1PBonus1Fighters;
-                gSceneData.spgame_player = player - 1;
+                gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+                gSCManagerSceneData.scene_curr = nSCKind1PBonus1Fighters;
+                gSCManagerSceneData.player = player - 1;
 
                 sMN1PModeIsProceedScene = TRUE;
                 return;
@@ -666,9 +666,9 @@ void mn1PModeFuncRun(GObj *gobj)
                 func_800269C0_275C0(nSYAudioFGMMenuSelect);
                 mn1PModeSetOptionSpriteColors(sMN1PModeOptionGObjs[nMN1PModeOptionBonus2Practice], nMNOptionTabStatusSelected, nMN1PModeOptionBonus2Practice);
 
-                gSceneData.scene_prev = gSceneData.scene_curr;
-                gSceneData.scene_curr = nSCKind1PBonus2Fighters;
-                gSceneData.spgame_player = player - 1;
+                gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+                gSCManagerSceneData.scene_curr = nSCKind1PBonus2Fighters;
+                gSCManagerSceneData.player = player - 1;
 
                 sMN1PModeIsProceedScene = TRUE;
                 return;
@@ -676,8 +676,8 @@ void mn1PModeFuncRun(GObj *gobj)
         }
         if (scSubsysControllerGetPlayerTapButtons(B_BUTTON) != FALSE)
         {
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindModeSelect;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindModeSelect;
 
             syTaskmanSetLoadScene();
         }
@@ -750,9 +750,9 @@ void mn1PModeFuncStart(void)
     
     lbRelocInitSetup(&rl_setup);
     
-    if (!(gSaveData.error_flags & LBBACKUP_ERROR_HALFSTICKRANGE) && (gSaveData.unk5E3 > 42) && (gSYMainIsDmemOK == FALSE))
+    if (!(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_HALFSTICKRANGE) && (gSCManagerBackupData.unk5E3 > 42) && (gSYMainIsDmemOK == FALSE))
     {
-        gSaveData.error_flags |= LBBACKUP_ERROR_HALFSTICKRANGE;
+        gSCManagerBackupData.error_flags |= LBBACKUP_ERROR_HALFSTICKRANGE;
     }
     lbRelocLoadFilesExtern
     (
@@ -785,7 +785,7 @@ void mn1PModeFuncStart(void)
     mn1PModeMakeBonus2Practice();
     func_ovl18_8013223C();
     
-    if (gSceneData.scene_prev != nSCKindModeSelect)
+    if (gSCManagerSceneData.scene_prev != nSCKindModeSelect)
     {
         auPlaySong(0, nSYAudioBGMModeSelect);
     }

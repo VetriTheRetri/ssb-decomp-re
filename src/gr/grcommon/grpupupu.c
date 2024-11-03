@@ -204,7 +204,7 @@ void grPupupuWhispySetWindPush(void)
 // 0x80105AF0
 void grPupupuWhispyUpdateSleep(void)
 {
-    if (gBattleState->game_status != nSCBattleGameStatusWait)
+    if (gSCManagerBattleState->game_status != nSCBattleGameStatusWait)
     {
         gGRCommonStruct.pupupu.whispy_status = nGRPupupuWhispyWindStatusWait;
     }

@@ -126,7 +126,7 @@ void mnVSOptionsFuncLights(Gfx **dls)
 // 0x80131B24
 sb32 mnVSOptionsCheckHaveItemSwitch(void)
 {
-    if (gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_ITEMSWITCH)
+    if (gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_ITEMSWITCH)
     {
         return TRUE;
     }
@@ -994,12 +994,12 @@ void mnVSOptionsMakeDecalCamera(void)
 // 0x80133878
 void mnVSOptionsInitVars(void)
 {
-    sMNVSOptionsOption = (gSceneData.scene_prev == nSCKindVSItemSwitch) ? nMNVSOptionsOptionItemSwitch : nMNVSOptionsOptionHandicap;
+    sMNVSOptionsOption = (gSCManagerSceneData.scene_prev == nSCKindVSItemSwitch) ? nMNVSOptionsOptionItemSwitch : nMNVSOptionsOptionHandicap;
 
-    sMNVSOptionsHandicapStatus = gTransferBattleState.handicap_setting;
-    sMNVSOptionsTeamAttackStatus = gTransferBattleState.is_team_attack;
-    sMNVSOptionsStageSelectStatus = gTransferBattleState.is_stage_select;
-    sMNVSOptionsDamage = gTransferBattleState.damage_ratio;
+    sMNVSOptionsHandicapStatus = gSCManagerTransferBattleState.handicap;
+    sMNVSOptionsTeamAttackStatus = gSCManagerTransferBattleState.is_team_attack;
+    sMNVSOptionsStageSelectStatus = gSCManagerTransferBattleState.is_stage_select;
+    sMNVSOptionsDamage = gSCManagerTransferBattleState.damage_ratio;
     
     sMNVSOptionsFirstAvailableOption = nMNVSOptionsOptionHandicap;
     
@@ -1022,18 +1022,18 @@ void mnVSOptionsInitVars(void)
 // 0x8013394C
 void mnVSOptionsSetAllSettings(void)
 {
-    gTransferBattleState.handicap_setting = sMNVSOptionsHandicapStatus;
-    gTransferBattleState.is_team_attack = sMNVSOptionsTeamAttackStatus;
-    gTransferBattleState.is_stage_select = sMNVSOptionsStageSelectStatus;
-    gTransferBattleState.damage_ratio = sMNVSOptionsDamage;
+    gSCManagerTransferBattleState.handicap = sMNVSOptionsHandicapStatus;
+    gSCManagerTransferBattleState.is_team_attack = sMNVSOptionsTeamAttackStatus;
+    gSCManagerTransferBattleState.is_stage_select = sMNVSOptionsStageSelectStatus;
+    gSCManagerTransferBattleState.damage_ratio = sMNVSOptionsDamage;
     
-    if (gTransferBattleState.handicap_setting == nSCBattleHandicapOff)
+    if (gSCManagerTransferBattleState.handicap == nSCBattleHandicapOff)
     {
         s32 i;
 
-        for (i = 0; i < ARRAY_COUNT(gTransferBattleState.players); i++)
+        for (i = 0; i < ARRAY_COUNT(gSCManagerTransferBattleState.players); i++)
         {
-            gTransferBattleState.players[i].handicap = FTCOMMON_HANDICAP_DEFAULT;
+            gSCManagerTransferBattleState.players[i].handicap = FTCOMMON_HANDICAP_DEFAULT;
         }
     }
 }
@@ -1045,14 +1045,14 @@ void mnVSOptionsSetHandicapSettings(void)
     
     if (sMNVSOptionsHandicapStatus == nSCBattleHandicapAuto)
     {
-        for (i = 0; i < ARRAY_COUNT(gTransferBattleState.players); i++)
+        for (i = 0; i < ARRAY_COUNT(gSCManagerTransferBattleState.players); i++)
         {
-            gTransferBattleState.players[i].handicap = 5;
+            gSCManagerTransferBattleState.players[i].handicap = 5;
         }
     }
-    else for (i = 0; i < ARRAY_COUNT(gTransferBattleState.players); i++)
+    else for (i = 0; i < ARRAY_COUNT(gSCManagerTransferBattleState.players); i++)
     {
-        gTransferBattleState.players[i].handicap = FTCOMMON_HANDICAP_DEFAULT;
+        gSCManagerTransferBattleState.players[i].handicap = FTCOMMON_HANDICAP_DEFAULT;
     }
 }
 
@@ -1080,8 +1080,8 @@ void mnVSOptionsFuncRun(GObj *gobj)
     {
         if (sMNVSOptionsTotalTimeTics == sMNVSOptionsReturnTic)
         {
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindTitle;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindTitle;
             
             mnVSOptionsSetAllSettings();
             syTaskmanSetLoadScene();
@@ -1109,16 +1109,16 @@ void mnVSOptionsFuncRun(GObj *gobj)
         {
             func_800269C0_275C0(nSYAudioFGMMenuSelect);
             
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindVSItemSwitch;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindVSItemSwitch;
 
             mnVSOptionsSetAllSettings();
             syTaskmanSetLoadScene();
         }
         if (scSubsysControllerGetPlayerTapButtons(B_BUTTON) != FALSE)
         {
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindVSMode;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindVSMode;
 
             mnVSOptionsSetAllSettings();
             syTaskmanSetLoadScene();

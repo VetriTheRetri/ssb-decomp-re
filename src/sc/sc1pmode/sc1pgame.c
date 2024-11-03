@@ -749,7 +749,7 @@ void sc1PGameSetGameStart(void)
 {
     sSC1PGameIsStartStage = TRUE;
 
-    if ((gSceneData.spgame_stage == nSC1PGameStageMMario) || (gSceneData.spgame_stage == nSC1PGameStageZako))
+    if ((gSCManagerSceneData.spgame_stage == nSC1PGameStageMMario) || (gSCManagerSceneData.spgame_stage == nSC1PGameStageZako))
     {
         mpCollisionSetPlayBGM();
     }
@@ -763,7 +763,7 @@ void sc1PGameSetGameEnd(void)
 
     sSC1PGameIsEndStage = TRUE;
 
-    fighter_gobj = gBattleState->players[gSceneData.spgame_player].fighter_gobj;
+    fighter_gobj = gSCManagerBattleState->players[gSCManagerSceneData.player].fighter_gobj;
     fp = ftGetStruct(fighter_gobj);
 
     sSC1PGameBonusStatEndPlayerStatus = fp->status_id;
@@ -775,11 +775,11 @@ void sc1PGameFuncUpdate(void)
 {
     ifCommonBattleUpdateInterfaceAll();
 
-    if ((sSC1PGameIsStartStage == FALSE) && (gBattleState->game_status == nSCBattleGameStatusGo))
+    if ((sSC1PGameIsStartStage == FALSE) && (gSCManagerBattleState->game_status == nSCBattleGameStatusGo))
     {
         sc1PGameSetGameStart();
     }
-    if ((sSC1PGameIsEndStage == FALSE) && (gBattleState->game_status == nSCBattleGameStatusSet))
+    if ((sSC1PGameIsEndStage == FALSE) && (gSCManagerBattleState->game_status == nSCBattleGameStatusSet))
     {
         sc1PGameSetGameEnd();
     }
@@ -799,27 +799,27 @@ s32 sc1PGameGetNextFreeCostume(s32 com)
     s32 cp_costume;
     s32 cp_fkind;
 
-    cp_fkind = gBattleState->players[com].fkind;
+    cp_fkind = gSCManagerBattleState->players[com].fkind;
 
     // WARNING: Newline memes. get_costume should be on the same line as used_costume = 0, player = 0;
     used_costume = 0, player = 0; get_costume:
 
     cp_costume = ftParamGetCostumeCommonID(cp_fkind, used_costume);
 
-    while (player != ARRAY_COUNT(gBattleState->players))
+    while (player != ARRAY_COUNT(gSCManagerBattleState->players))
     {
         if (player == com) 
         {
             goto l_continue; // This goto is required
         }
-        else if (gBattleState->players[player].pkind == nFTPlayerKindNot) 
+        else if (gSCManagerBattleState->players[player].pkind == nFTPlayerKindNot) 
         {
             goto l_continue; // This one is not
         }
         else if
         (
-            (gBattleState->players[player].fkind == cp_fkind) && 
-            (gBattleState->players[player].costume == cp_costume)
+            (gSCManagerBattleState->players[player].fkind == cp_fkind) && 
+            (gSCManagerBattleState->players[player].costume == cp_costume)
         )
         {
             used_costume++, player = 0;
@@ -903,7 +903,7 @@ void sc1PGameGetRandomSpawnPosition(Vec3f *mapobj_pos, s32 mapobj_kind)
 // 0x8018D4EC
 void sc1PGameSetupEnemyPlayer(SC1PGameStage *stagesetup, SC1PGameComputer *comsetup, s32 player, s32 enemy_player_num)
 {
-    s32 level = comsetup->enemy_level[gSaveData.spgame_difficulty];
+    s32 level = comsetup->enemy_level[gSCManagerBackupData.spgame_difficulty];
 
     level -= gSC1PManagerLevelDrop;
 
@@ -911,18 +911,18 @@ void sc1PGameSetupEnemyPlayer(SC1PGameStage *stagesetup, SC1PGameComputer *comse
     {
         level = 1;
     }
-    gBattleState->players[player].level = level;
-    gBattleState->players[player].handicap = comsetup->enemy_handicap[gSaveData.spgame_difficulty];
-    gBattleState->players[player].fkind = stagesetup->fkind[enemy_player_num];
-    gBattleState->players[player].team = nSCBattleTeamIDCom;
-    gBattleState->players[player].costume = 0;
-    gBattleState->players[player].shade = 0;
-    gBattleState->players[player].player_color = nSCBattlePlayerColorCP;
-    gBattleState->players[player].tag_kind = nIFPlayerTagKindCP;
-    gBattleState->players[player].is_single_stockicon = TRUE;
-    gBattleState->players[player].stock_count = 0;
-    gBattleState->players[player].is_spgame_team = TRUE;
-    gBattleState->players[player].pkind = nFTPlayerKindCom;
+    gSCManagerBattleState->players[player].level = level;
+    gSCManagerBattleState->players[player].handicap = comsetup->enemy_handicap[gSCManagerBackupData.spgame_difficulty];
+    gSCManagerBattleState->players[player].fkind = stagesetup->fkind[enemy_player_num];
+    gSCManagerBattleState->players[player].team = nSCBattleTeamIDCom;
+    gSCManagerBattleState->players[player].costume = 0;
+    gSCManagerBattleState->players[player].shade = 0;
+    gSCManagerBattleState->players[player].color = nSCBattlePlayerColorCP;
+    gSCManagerBattleState->players[player].tag = nIFPlayerTagKindCP;
+    gSCManagerBattleState->players[player].is_single_stockicon = TRUE;
+    gSCManagerBattleState->players[player].stock_count = 0;
+    gSCManagerBattleState->players[player].is_spgame_team = TRUE;
+    gSCManagerBattleState->players[player].pkind = nFTPlayerKindCom;
 
     sSC1PGamePlayerSetups[player].cp_trait = stagesetup->opponent_behavior;
 
@@ -932,8 +932,8 @@ void sc1PGameSetupEnemyPlayer(SC1PGameStage *stagesetup, SC1PGameComputer *comse
 // 0x8018D60C
 void sc1PGameSetupStageAll(void)
 {
-    SC1PGameStage *stagesetup = &dSC1PGameStageDesc[gSceneData.spgame_stage];
-    SC1PGameComputer *comsetup = &dSC1PGameComputerDesc[gSceneData.spgame_stage];
+    SC1PGameStage *stagesetup = &dSC1PGameStageDesc[gSCManagerSceneData.spgame_stage];
+    SC1PGameComputer *comsetup = &dSC1PGameComputerDesc[gSCManagerSceneData.spgame_stage];
     s32 player, com;
     u16 flags;
     s32 i;
@@ -941,36 +941,36 @@ void sc1PGameSetupStageAll(void)
     s32 level;
     s32 costume, kind;
 
-    gSceneData.is_reset = FALSE;
+    gSCManagerSceneData.is_reset = FALSE;
 
-    gBattleState->gkind = stagesetup->gkind;
-    gBattleState->is_team_attack = comsetup->is_team_attack;
+    gSCManagerBattleState->gkind = stagesetup->gkind;
+    gSCManagerBattleState->is_team_attack = comsetup->is_team_attack;
 
-    switch (gSceneData.spgame_stage)
+    switch (gSCManagerSceneData.spgame_stage)
     {
     case nSC1PGameStageBonus3:
-        gBattleState->time_limit = 1;
+        gSCManagerBattleState->time_limit = 1;
         break;
 
     case nSC1PGameStageLuigi:
     case nSC1PGameStageNess:
     case nSC1PGameStagePurin:
     case nSC1PGameStageCaptain:
-        gBattleState->time_limit = SCBATTLE_TIMELIMIT_INFINITE;
+        gSCManagerBattleState->time_limit = SCBATTLE_TIMELIMIT_INFINITE;
         break;
 
     default:
-        gBattleState->time_limit = gSceneData.spgame_time_limit;
+        gSCManagerBattleState->time_limit = gSCManagerSceneData.spgame_time_limit;
         break;
     }
-    gBattleState->item_toggles = stagesetup->item_toggles;
-    gBattleState->item_appearance_rate = comsetup->item_appearance_rate;
+    gSCManagerBattleState->item_toggles = stagesetup->item_toggles;
+    gSCManagerBattleState->item_appearance_rate = comsetup->item_appearance_rate;
 
     sSC1PGameEnemyPlayerCount = sSC1PGameEnemyStocksRemaining = sSC1PGameTeamPlayersRemaining = stagesetup->opponent_count;
 
     sSC1PGameEnemyStockSpriteFlags = 0;
 
-    for (i = 0; i < (ARRAY_COUNT(gBattleState->players) + ARRAY_COUNT(sSC1PGamePlayerSetups)) / 2; i++)
+    for (i = 0; i < (ARRAY_COUNT(gSCManagerBattleState->players) + ARRAY_COUNT(sSC1PGamePlayerSetups)) / 2; i++)
     {
         sSC1PGamePlayerSetups[i].figatree = NULL;
         sSC1PGamePlayerSetups[i].copy_kind = nFTKindKirby;
@@ -980,35 +980,35 @@ void sc1PGameSetupStageAll(void)
         sSC1PGamePlayerSetups[i].cp_trait = nFTComputerTraitDefault;
         sSC1PGamePlayerSetups[i].camera_frame_mul = 1.0F;
 
-        if (i != gSceneData.spgame_player)
+        if (i != gSCManagerSceneData.player)
         {
-            gBattleState->players[i].pkind = nFTPlayerKindNot;
+            gSCManagerBattleState->players[i].pkind = nFTPlayerKindNot;
         }
     }
-    if (gSceneData.spgame_stage <= nSC1PGameStageCommonEnd)
+    if (gSCManagerSceneData.spgame_stage <= nSC1PGameStageCommonEnd)
     {
-        gSCManager1PGameBattleState.players[gSceneData.spgame_player].is_single_stockicon = FALSE;
-        sSC1PGamePlayerSetups[gSceneData.spgame_player].mapobj_kind = nMPMapObjKind1PGamePlayerSpawn;
+        gSCManager1PGameBattleState.players[gSCManagerSceneData.player].is_single_stockicon = FALSE;
+        sSC1PGamePlayerSetups[gSCManagerSceneData.player].mapobj_kind = nMPMapObjKind1PGamePlayerSpawn;
     }
     else
     {
-        gSCManager1PGameBattleState.players[gSceneData.spgame_player].is_single_stockicon = TRUE;
-        sSC1PGamePlayerSetups[gSceneData.spgame_player].mapobj_kind = nMPMapObjKind1PGameChallengerPlayerSpawn;
+        gSCManager1PGameBattleState.players[gSCManagerSceneData.player].is_single_stockicon = TRUE;
+        sSC1PGamePlayerSetups[gSCManagerSceneData.player].mapobj_kind = nMPMapObjKind1PGameChallengerPlayerSpawn;
     }
-    switch (gSceneData.spgame_stage)
+    switch (gSCManagerSceneData.spgame_stage)
     {
     case nSC1PGameStageBoss:
     case nSC1PGameStageBonus3:
-        sSC1PGamePlayerSetups[gSceneData.spgame_player].is_skip_entry = TRUE;
+        sSC1PGamePlayerSetups[gSCManagerSceneData.player].is_skip_entry = TRUE;
         break;
 
     default:
-        sSC1PGamePlayerSetups[gSceneData.spgame_player].is_skip_entry = FALSE;
+        sSC1PGamePlayerSetups[gSCManagerSceneData.player].is_skip_entry = FALSE;
         break;
     }
-    player = gSceneData.spgame_player;
+    player = gSCManagerSceneData.player;
 
-    switch (gSceneData.spgame_stage)
+    switch (gSCManagerSceneData.spgame_stage)
     {
     case nSC1PGameStageLink:
     case nSC1PGameStageFox:
@@ -1024,20 +1024,20 @@ void sc1PGameSetupStageAll(void)
     case nSC1PGameStageCaptain:
         for (i = 0; i < stagesetup->ally_count; i++)
         {
-            gBattleState->players[gSceneData.ally_players[i]].level = comsetup->ally_level[gSaveData.spgame_difficulty];
-            gBattleState->players[gSceneData.ally_players[i]].handicap = comsetup->ally_handicap[gSaveData.spgame_difficulty];
-            gBattleState->players[gSceneData.ally_players[i]].team = 0;
-            gBattleState->players[gSceneData.ally_players[i]].player_color = gSceneData.spgame_player;
-            gBattleState->players[gSceneData.ally_players[i]].tag_kind = nIFPlayerTagKindHeart;
-            gBattleState->players[gSceneData.ally_players[i]].is_single_stockicon = TRUE;
-            gBattleState->players[gSceneData.ally_players[i]].stock_count = 0;
-            gBattleState->players[gSceneData.ally_players[i]].is_spgame_team = FALSE;
-            gBattleState->players[gSceneData.ally_players[i]].pkind = nFTPlayerKindCom;
+            gSCManagerBattleState->players[gSCManagerSceneData.ally_players[i]].level = comsetup->ally_level[gSCManagerBackupData.spgame_difficulty];
+            gSCManagerBattleState->players[gSCManagerSceneData.ally_players[i]].handicap = comsetup->ally_handicap[gSCManagerBackupData.spgame_difficulty];
+            gSCManagerBattleState->players[gSCManagerSceneData.ally_players[i]].team = 0;
+            gSCManagerBattleState->players[gSCManagerSceneData.ally_players[i]].color = gSCManagerSceneData.player;
+            gSCManagerBattleState->players[gSCManagerSceneData.ally_players[i]].tag = nIFPlayerTagKindHeart;
+            gSCManagerBattleState->players[gSCManagerSceneData.ally_players[i]].is_single_stockicon = TRUE;
+            gSCManagerBattleState->players[gSCManagerSceneData.ally_players[i]].stock_count = 0;
+            gSCManagerBattleState->players[gSCManagerSceneData.ally_players[i]].is_spgame_team = FALSE;
+            gSCManagerBattleState->players[gSCManagerSceneData.ally_players[i]].pkind = nFTPlayerKindCom;
 
-            player = gSceneData.ally_players[i];
+            player = gSCManagerSceneData.ally_players[i];
 
-            sSC1PGamePlayerSetups[gSceneData.ally_players[i]].mapobj_kind = i + nMPMapObjKind1PGameAllySpawnStart;
-            sSC1PGamePlayerSetups[gSceneData.ally_players[i]].cp_trait = stagesetup->ally_behavior;
+            sSC1PGamePlayerSetups[gSCManagerSceneData.ally_players[i]].mapobj_kind = i + nMPMapObjKind1PGameAllySpawnStart;
+            sSC1PGamePlayerSetups[gSCManagerSceneData.ally_players[i]].cp_trait = stagesetup->ally_behavior;
         }
         for (i = 0; i < stagesetup->opponent_count; i++)
         {
@@ -1045,9 +1045,9 @@ void sc1PGameSetupStageAll(void)
 
             sc1PGameSetupEnemyPlayer(stagesetup, comsetup, player, i);
 
-            gBattleState->players[player].costume = sc1PGameGetNextFreeCostume(player);
+            gSCManagerBattleState->players[player].costume = sc1PGameGetNextFreeCostume(player);
 
-            if (gSceneData.spgame_stage <= nSC1PGameStageCommonEnd)
+            if (gSCManagerSceneData.spgame_stage <= nSC1PGameStageCommonEnd)
             {
                 sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameEnemySpawnStart;
             }
@@ -1055,11 +1055,11 @@ void sc1PGameSetupStageAll(void)
             {
                 sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameChallengerEnemySpawnStart;
 
-                level = gBattleState->players[player].level - gSceneData.challenger_level_drop;
+                level = gSCManagerBattleState->players[player].level - gSCManagerSceneData.challenger_level_drop;
 
-                gBattleState->players[player].level = (level <= 0) ? 1 : level;
+                gSCManagerBattleState->players[player].level = (level <= 0) ? 1 : level;
             }
-            if (gSceneData.spgame_stage == nSC1PGameStageBoss)
+            if (gSCManagerSceneData.spgame_stage == nSC1PGameStageBoss)
             {
                 sSC1PGamePlayerSetups[player].is_skip_magnify = TRUE;
             }
@@ -1096,13 +1096,13 @@ void sc1PGameSetupStageAll(void)
 
             sc1PGameSetupEnemyPlayer(stagesetup, comsetup, player, 0);
 
-            gBattleState->players[player].costume = sSC1PGameEnemyVariations[sSC1PGameCurrentEnemyVariation];
+            gSCManagerBattleState->players[player].costume = sSC1PGameEnemyVariations[sSC1PGameCurrentEnemyVariation];
 
-            if ((gSceneData.fkind == nFTKindYoshi) && (gSceneData.costume == gBattleState->players[player].costume))
+            if ((gSCManagerSceneData.fkind == nFTKindYoshi) && (gSCManagerSceneData.costume == gSCManagerBattleState->players[player].costume))
             {
-                gBattleState->players[player].shade = 1;
+                gSCManagerBattleState->players[player].shade = 1;
             }
-            else gBattleState->players[player].shade = 0;
+            else gSCManagerBattleState->players[player].shade = 0;
 
             sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameEnemySpawnStart;
             sSC1PGamePlayerSetups[player].team_order = sSC1PGameCurrentEnemyVariation;
@@ -1145,7 +1145,7 @@ void sc1PGameSetupStageAll(void)
 
             sc1PGameSetupEnemyPlayer(stagesetup, comsetup, player, 0);
 
-            gBattleState->players[player].fkind = sSC1PGameEnemyVariations[sSC1PGameCurrentEnemyVariation];
+            gSCManagerBattleState->players[player].fkind = sSC1PGameEnemyVariations[sSC1PGameCurrentEnemyVariation];
 
             sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameEnemySpawnStart;
             sSC1PGamePlayerSetups[player].team_order = sSC1PGameCurrentEnemyVariation;
@@ -1165,9 +1165,9 @@ void sc1PGameSetupStageAll(void)
 
             sc1PGameSetupEnemyPlayer(stagesetup, comsetup, player, 0);
 
-            sSC1PGameEnemyKirbyCostume = gBattleState->players[player].costume =
+            sSC1PGameEnemyKirbyCostume = gSCManagerBattleState->players[player].costume =
 
-            ((gSceneData.fkind == nFTKindKirby) && (gSceneData.costume == gBattleState->players[player].costume)) ? 
+            ((gSCManagerSceneData.fkind == nFTKindKirby) && (gSCManagerSceneData.costume == gSCManagerBattleState->players[player].costume)) ? 
                                                                           ftParamGetCostumeCommonID(nFTKindKirby, 1) : 
                                                                                                                   0 ;
 
@@ -1204,7 +1204,7 @@ void sc1PGameSetupStageAll(void)
 
             sc1PGameSetupEnemyPlayer(stagesetup, comsetup, player, 0);
 
-            gBattleState->players[player].fkind = sSC1PGameEnemyVariations[sSC1PGameCurrentEnemyVariation];
+            gSCManagerBattleState->players[player].fkind = sSC1PGameEnemyVariations[sSC1PGameCurrentEnemyVariation];
 
             sSC1PGamePlayerSetups[player].mapobj_kind = i + nMPMapObjKind1PGameEnemySpawnStart;
             sSC1PGamePlayerSetups[player].is_skip_magnify = sSC1PGamePlayerSetups[player].is_skip_entry = TRUE;
@@ -1216,18 +1216,18 @@ void sc1PGameSetupStageAll(void)
     default:
         break;
     }
-    gBattleState->pl_count = gBattleState->cp_count = 0;
+    gSCManagerBattleState->pl_count = gSCManagerBattleState->cp_count = 0;
 
-    for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
+    for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
     {
-        switch (gBattleState->players[i].pkind)
+        switch (gSCManagerBattleState->players[i].pkind)
         {
         case nFTPlayerKindMan:
-            gBattleState->pl_count++;
+            gSCManagerBattleState->pl_count++;
             break;
 
         case nFTPlayerKindCom:
-            gBattleState->cp_count++;
+            gSCManagerBattleState->cp_count++;
             break;
         }
     }
@@ -1291,20 +1291,20 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
 
         ftManagerDestroyFighter(player_gobj);
 
-        gBattleState->players[player].stock_count = 0;
+        gSCManagerBattleState->players[player].stock_count = 0;
 
-        switch (gSceneData.spgame_stage)
+        switch (gSCManagerSceneData.spgame_stage)
         {
         case nSC1PGameStageYoshi:
-            gBattleState->players[player].costume = sSC1PGameEnemyVariations[sSC1PGameCurrentEnemyVariation];
+            gSCManagerBattleState->players[player].costume = sSC1PGameEnemyVariations[sSC1PGameCurrentEnemyVariation];
 
-            gBattleState->players[player].shade = ((gSceneData.fkind == nFTKindYoshi) && (gSceneData.costume == gBattleState->players[player].costume)) ? 1 : 0;
+            gSCManagerBattleState->players[player].shade = ((gSCManagerSceneData.fkind == nFTKindYoshi) && (gSCManagerSceneData.costume == gSCManagerBattleState->players[player].costume)) ? 1 : 0;
 
-            ifCommonPlayerStockSetLUT(player, gBattleState->players[player].costume, attr);
+            ifCommonPlayerStockSetLUT(player, gSCManagerBattleState->players[player].costume, attr);
             break;
 
         case nSC1PGameStageZako:
-            gBattleState->players[player].fkind = sSC1PGameEnemyVariations[sSC1PGameCurrentEnemyVariation];
+            gSCManagerBattleState->players[player].fkind = sSC1PGameEnemyVariations[sSC1PGameCurrentEnemyVariation];
             break;
 
         case nSC1PGameStageKirby:
@@ -1318,7 +1318,7 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
 
         player_spawn = dFTManagerDefaultFighterDesc;
 
-        player_spawn.fkind = gBattleState->players[player].fkind;
+        player_spawn.fkind = gSCManagerBattleState->players[player].fkind;
 
         sc1PGameGetRandomSpawnPosition(&player_spawn.pos, nMPMapObjKind1PGameEnemyTeamSpawn);
 
@@ -1326,25 +1326,25 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
 
         player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? -1 : +1;
 
-        player_spawn.team = gBattleState->players[player].team;
+        player_spawn.team = gSCManagerBattleState->players[player].team;
 
         player_spawn.player = player;
 
-        player_spawn.detail = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
+        player_spawn.detail = ((gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
-        player_spawn.costume = gBattleState->players[player].costume;
+        player_spawn.costume = gSCManagerBattleState->players[player].costume;
 
-        player_spawn.shade = gBattleState->players[player].shade;
+        player_spawn.shade = gSCManagerBattleState->players[player].shade;
 
-        player_spawn.handicap = gBattleState->players[player].handicap;
+        player_spawn.handicap = gSCManagerBattleState->players[player].handicap;
 
-        player_spawn.cp_level = gBattleState->players[player].level;
+        player_spawn.cp_level = gSCManagerBattleState->players[player].level;
 
-        player_spawn.stock_count = gBattleState->players[player].stock_count;
+        player_spawn.stock_count = gSCManagerBattleState->players[player].stock_count;
 
         player_spawn.damage = 0;
 
-        player_spawn.pkind = gBattleState->players[player].pkind;
+        player_spawn.pkind = gSCManagerBattleState->players[player].pkind;
 
         player_spawn.controller = &gPlayerControllers[player];
 
@@ -1376,11 +1376,11 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
 // 0x8018E598
 void sc1PGameSetPlayerInterfacePositions(void)
 {
-    s32 *pos = dSC1PGameInterfaceCountPositions[(gBattleState->pl_count + gBattleState->cp_count) - 2];
-    s32 player = gSceneData.spgame_player;
+    s32 *pos = dSC1PGameInterfaceCountPositions[(gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count) - 2];
+    s32 player = gSCManagerSceneData.player;
     s32 i;
 
-    for (i = 0; i < (gBattleState->pl_count + gBattleState->cp_count); i++)
+    for (i = 0; i < (gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count); i++)
     {
         sSC1PGamePlayerInterfacePositionsX[player] = *pos;
         player = sc1PGameGetNextFreePlayerPort(player);
@@ -1411,17 +1411,17 @@ void sc1PGameWaitStageCommonUpdate(void)
     {
         gcStopCurrentGObjThread(90);
     }
-    player_count = gBattleState->pl_count + gBattleState->cp_count;
+    player_count = gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count;
 
     if (player_count < 3)
     {
         gcStopCurrentGObjThread(stop_tics);
     }
-    player = gSceneData.spgame_player;
+    player = gSCManagerSceneData.player;
 
     for (i = 0; i < player_count; i++)
     {
-        fighter_gobj = gBattleState->players[player].fighter_gobj;
+        fighter_gobj = gSCManagerBattleState->players[player].fighter_gobj;
 
         ftCommonAppearSetStatus(fighter_gobj);
 
@@ -1453,14 +1453,14 @@ void sc1PGameWaitStageTeamUpdate(void)
     gcStopCurrentGObjThread(90);
     ifCommonCountdownMakeInterface();
 
-    player_count = gBattleState->pl_count + gBattleState->cp_count;
-    player = gSceneData.spgame_player;
+    player_count = gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count;
+    player = gSCManagerSceneData.player;
 
     for (i = 0; i < player_count; i++)
     {
-        fighter_gobj = gBattleState->players[player].fighter_gobj;
+        fighter_gobj = gSCManagerBattleState->players[player].fighter_gobj;
 
-        if (player == gSceneData.spgame_player)
+        if (player == gSCManagerSceneData.player)
         {
             ftCommonAppearSetStatus(fighter_gobj);
         }
@@ -1477,7 +1477,7 @@ void sc1PGameWaitStageBonus3Update(void)
 {
     func_ovl2_8010CFA8
     (
-        gBattleState->players[gSceneData.spgame_player].fighter_gobj, 
+        gSCManagerBattleState->players[gSCManagerSceneData.player].fighter_gobj, 
         0.0F, 
         F_CST_DTOR32(-15.0F), 
         7000.0F, 
@@ -1503,7 +1503,7 @@ void sc1PGameWaitStageBossUpdate(void)
     s32 player;
     Vec3f sp20;
 
-    player_gobj = gBattleState->players[gSceneData.spgame_player].fighter_gobj;
+    player_gobj = gSCManagerBattleState->players[gSCManagerSceneData.player].fighter_gobj;
 
     player_fp = ftGetStruct(player_gobj);
 
@@ -1515,17 +1515,17 @@ void sc1PGameWaitStageBossUpdate(void)
 
     for (player = 0; TRUE; player++) // Wut da haeiyll
     {
-        if (gBattleState->players[player].pkind == nFTPlayerKindNot)
+        if (gSCManagerBattleState->players[player].pkind == nFTPlayerKindNot)
         {
             continue;
         }
-        else if (gBattleState->players[player].is_spgame_team == FALSE)
+        else if (gSCManagerBattleState->players[player].is_spgame_team == FALSE)
         {
             continue;
         }
         else
         {
-            com_gobj = gBattleState->players[player].fighter_gobj;
+            com_gobj = gSCManagerBattleState->players[player].fighter_gobj;
 
             break;
         }
@@ -1542,7 +1542,7 @@ void sc1PGameWaitStageBossUpdate(void)
     player_fp->camera_mode = 0;
     com_fp->camera_mode = 0;
 
-    gBattleState->game_status = nSCBattleGameStatusGo;
+    gSCManagerBattleState->game_status = nSCBattleGameStatusGo;
 
     gIFCommonPlayerInterface.is_magnify_display = TRUE;
 
@@ -1556,7 +1556,7 @@ void sc1PGameWaitStageBossUpdate(void)
 // 0x8018EADC
 void sc1PGameWaitThreadUpdate(GObj *gobj)
 {
-    switch (gSceneData.spgame_stage)
+    switch (gSCManagerSceneData.spgame_stage)
     {
     case nSC1PGameStageLink:
     case nSC1PGameStageFox:
@@ -1606,7 +1606,7 @@ void sc1PGameSetGameStatusWait(void)
         nGCProcessKindThread, 
         5
     );
-    gBattleState->game_status = nSCBattleGameStatusWait;
+    gSCManagerBattleState->game_status = nSCBattleGameStatusWait;
 }
 
 // 0x8018EBB8
@@ -1641,7 +1641,7 @@ void sc1PGameTeamStockDisplayFuncDisplay(GObj *interface_gobj)
                     {
                         ix = 0, iy++;
                     }
-                    switch (gSceneData.spgame_stage)
+                    switch (gSCManagerSceneData.spgame_stage)
                     {
                     case nSC1PGameStageYoshi:
                         sobj->sprite = *sSC1PGameEnemyTeamSprites->stock_sprite;
@@ -1673,23 +1673,23 @@ void sc1PGameInitTeamStockDisplay(void)
     Sprite *sprite;
     s32 i;
 
-    switch (gSceneData.spgame_stage)
+    switch (gSCManagerSceneData.spgame_stage)
     {
     case nSC1PGameStageYoshi:
     case nSC1PGameStageKirby:
-        for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
+        for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
         {
-            if (gBattleState->players[i].pkind == nFTPlayerKindNot)
+            if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot)
             {
                 continue;
             }
-            else if (gBattleState->players[i].is_spgame_team == FALSE)
+            else if (gSCManagerBattleState->players[i].is_spgame_team == FALSE)
             {
                 continue;
             }
             else
             {
-                fp = ftGetStruct(gBattleState->players[i].fighter_gobj);
+                fp = ftGetStruct(gSCManagerBattleState->players[i].fighter_gobj);
 
                 break;
             }
@@ -1734,20 +1734,20 @@ void sc1PGameInitTeamStockDisplay(void)
 // 0x8018EFFC
 void sc1PGameSetPlayerDefeatStats(s32 player, s32 team_order)
 {
-    GObj *fighter_gobj = gBattleState->players[player].fighter_gobj;
+    GObj *fighter_gobj = gSCManagerBattleState->players[player].fighter_gobj;
     FTStruct *fp = ftGetStruct(fighter_gobj);
     SC1PGameStats *enemy_stats;
 
     if 
     (
-        (player == gSceneData.spgame_player) && 
-        (gBattleState->players[player].stock_count == -1) && 
-        (gBattleState->game_status != nSCBattleGameStatusEnd)
+        (player == gSCManagerSceneData.player) && 
+        (gSCManagerBattleState->players[player].stock_count == -1) && 
+        (gSCManagerBattleState->game_status != nSCBattleGameStatusEnd)
     )
     {
         ifCommonAnnounceEndMessage();
     }
-    else if (gBattleState->players[player].is_spgame_team != FALSE)
+    else if (gSCManagerBattleState->players[player].is_spgame_team != FALSE)
     {
         sSC1PGameEnemyStocksRemaining--;
         sSC1PGameEnemyStockSpriteFlags |= (1 << team_order);
@@ -1764,9 +1764,9 @@ void sc1PGameSetPlayerDefeatStats(s32 player, s32 team_order)
 
         sSC1PGameBonusStatNumPlayerKOs++;
 
-        if ((gSceneData.spgame_stage == nSC1PGameStageMario) && (fp->fkind == nFTKindLuigi) && (sSC1PGameEnemyStocksRemaining != 0) && (fp->damage_player == gSceneData.spgame_player))
+        if ((gSCManagerSceneData.spgame_stage == nSC1PGameStageMario) && (fp->fkind == nFTKindLuigi) && (sSC1PGameEnemyStocksRemaining != 0) && (fp->damage_player == gSCManagerSceneData.player))
         {
-            if (gBattleState->players[(fp->player == 0) ? (GMCOMMON_PLAYERS_MAX - 1) : fp->player - 1].total_damage_player[gSceneData.spgame_player] == 0)
+            if (gSCManagerBattleState->players[(fp->player == 0) ? (GMCOMMON_PLAYERS_MAX - 1) : fp->player - 1].total_damage_player[gSCManagerSceneData.player] == 0)
             {
                 gSC1PGameBonusBrosCalamity = TRUE; // Bros. Calamity bonus
             }
@@ -1781,7 +1781,7 @@ void sc1PGameSetPlayerDefeatStats(s32 player, s32 team_order)
 // 0x8018F1C0
 void sc1PGameTryInitPlayerArrows(void)
 {
-    if (gSceneData.spgame_stage != nSC1PGameStageBonus3)
+    if (gSCManagerSceneData.spgame_stage != nSC1PGameStageBonus3)
     {
         func_ovl2_8010E2D4();
         ifCommonPlayerArrowsInitInterface();
@@ -1791,7 +1791,7 @@ void sc1PGameTryInitPlayerArrows(void)
 // 0x8018F1F8
 void sc1PGameInitTimeUpMessage(void)
 {
-    if (gSceneData.spgame_stage != nSC1PGameStageBonus3)
+    if (gSCManagerSceneData.spgame_stage != nSC1PGameStageBonus3)
     {
         ifCommonTimerMakeInterface(ifCommonAnnounceTimeUpInitInterface);
     }
@@ -1814,17 +1814,17 @@ s32 sc1PGameGetEnemySpawnLR(s32 target_player)
 
     sc1PGameGetSpawnPosition(&target_pos, sSC1PGamePlayerSetups[target_player].mapobj_kind);
 
-    for (current_player = 0; current_player < (ARRAY_COUNT(gBattleState->players) + ARRAY_COUNT(sSC1PGamePlayerSetups)) / 2; current_player++)
+    for (current_player = 0; current_player < (ARRAY_COUNT(gSCManagerBattleState->players) + ARRAY_COUNT(sSC1PGamePlayerSetups)) / 2; current_player++)
     {
         if (current_player == target_player)
         {
             continue;
         }
-        else if (gBattleState->players[current_player].pkind == nFTPlayerKindNot)
+        else if (gSCManagerBattleState->players[current_player].pkind == nFTPlayerKindNot)
         {
             continue;
         }
-        else if (gBattleState->players[current_player].team != gBattleState->players[target_player].team)
+        else if (gSCManagerBattleState->players[current_player].team != gSCManagerBattleState->players[target_player].team)
         {
             sc1PGameGetSpawnPosition(&current_pos, sSC1PGamePlayerSetups[current_player].mapobj_kind);
 
@@ -1846,7 +1846,7 @@ s32 sc1PGameGetEnemySpawnLR(s32 target_player)
 // 0x8018F3AC
 void func_ovl65_8018F3AC(void)
 {
-    GObj *fighter_gobj = gBattleState->players[gSceneData.spgame_player].fighter_gobj;
+    GObj *fighter_gobj = gSCManagerBattleState->players[gSCManagerSceneData.player].fighter_gobj;
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     func_ovl2_8010CF44
@@ -1995,7 +1995,7 @@ void sc1PGameFuncStart(void)
     sc1PGameSetupStageAll();
     sc1PGameSetupFiles();
 
-    if (!(gSaveData.error_flags & LBBACKUP_ERROR_VSBATTLECASTLE) && (gSaveData.unk5E3 > 0x5C))
+    if (!(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_VSBATTLECASTLE) && (gSCManagerBackupData.unk5E3 > 0x5C))
     {
         syDmaReadRom(0xF10, spA0, ARRAY_COUNT(spA0));
 
@@ -2008,7 +2008,7 @@ void sc1PGameFuncStart(void)
 
         if (proc(spA0) == FALSE)
         {
-            gSaveData.error_flags |= LBBACKUP_ERROR_VSBATTLECASTLE;
+            gSCManagerBackupData.error_flags |= LBBACKUP_ERROR_VSBATTLECASTLE;
         }
     }
     gcMakeDefaultCameraGObj(9, 0x80000000, 0x64, 1, 0xFF);
@@ -2024,11 +2024,11 @@ void sc1PGameFuncStart(void)
     ftManagerAllocFighter(FTDATA_FLAG_MAINMOTION, 4);
     wpManagerAllocWeapons();
     efManagerInitEffects();
-    ifScreenFlashMakeInterface(dSC1PGameStageDesc[gSceneData.spgame_stage].screenflash_alpha);
+    ifScreenFlashMakeInterface(dSC1PGameStageDesc[gSCManagerSceneData.spgame_stage].screenflash_alpha);
     gmRumbleMakeActor();
     ftPublicityMakeActor();
 
-    switch (gSceneData.spgame_stage)
+    switch (gSCManagerSceneData.spgame_stage)
     {
     case nSC1PGameStageKirby:
         // Need to load PK Fire graphics from Ness' file
@@ -2058,13 +2058,13 @@ void sc1PGameFuncStart(void)
                 largest_size = dFTManagerDataFiles[i]->file_anim_size;
             }
         }
-        for (i = 0; i < (ARRAY_COUNT(gBattleState->players) + ARRAY_COUNT(sSC1PGamePlayerSetups)) / 2; i++)
+        for (i = 0; i < (ARRAY_COUNT(gSCManagerBattleState->players) + ARRAY_COUNT(sSC1PGamePlayerSetups)) / 2; i++)
         {
-            if (gBattleState->players[i].pkind == nFTPlayerKindNot)
+            if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot)
             {
                 continue;
             }
-            else if (gBattleState->players[i].is_spgame_team == FALSE)
+            else if (gSCManagerBattleState->players[i].is_spgame_team == FALSE)
             {
                 continue;
             }
@@ -2072,45 +2072,45 @@ void sc1PGameFuncStart(void)
         }
         break;
     }
-    for (i = 0; i < (ARRAY_COUNT(gBattleState->players) + ARRAY_COUNT(sSC1PGamePlayerSetups)) / 2; i++)
+    for (i = 0; i < (ARRAY_COUNT(gSCManagerBattleState->players) + ARRAY_COUNT(sSC1PGamePlayerSetups)) / 2; i++)
     {
         player_spawn = dFTManagerDefaultFighterDesc;
 
-        if (gBattleState->players[i].pkind == nFTPlayerKindNot)
+        if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot)
         {
             continue;
         }
-        ftManagerSetupFilesAllKind(gBattleState->players[i].fkind);
+        ftManagerSetupFilesAllKind(gSCManagerBattleState->players[i].fkind);
 
-        player_spawn.fkind = gBattleState->players[i].fkind;
+        player_spawn.fkind = gSCManagerBattleState->players[i].fkind;
 
         sc1PGameGetSpawnPosition(&player_spawn.pos, sSC1PGamePlayerSetups[i].mapobj_kind);
 
         player_spawn.lr_spawn = sc1PGameGetEnemySpawnLR(i);
 
-        player_spawn.team = gBattleState->players[i].team;
+        player_spawn.team = gSCManagerBattleState->players[i].team;
 
         player_spawn.player = i;
 
-        player_spawn.detail = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
+        player_spawn.detail = ((gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
-        player_spawn.costume = gBattleState->players[i].costume;
+        player_spawn.costume = gSCManagerBattleState->players[i].costume;
 
-        player_spawn.shade = gBattleState->players[i].shade;
+        player_spawn.shade = gSCManagerBattleState->players[i].shade;
 
-        player_spawn.handicap = gBattleState->players[i].handicap;
+        player_spawn.handicap = gSCManagerBattleState->players[i].handicap;
 
-        player_spawn.cp_level = gBattleState->players[i].level;
+        player_spawn.cp_level = gSCManagerBattleState->players[i].level;
 
-        player_spawn.stock_count = gBattleState->players[i].stock_count;
+        player_spawn.stock_count = gSCManagerBattleState->players[i].stock_count;
 
         player_spawn.damage = 0;
 
-        player_spawn.pkind = gBattleState->players[i].pkind;
+        player_spawn.pkind = gSCManagerBattleState->players[i].pkind;
 
         player_spawn.controller = &gPlayerControllers[i];
 
-        player_spawn.figatree_heap = (sSC1PGamePlayerSetups[i].figatree != NULL) ? sSC1PGamePlayerSetups[i].figatree : ftManagerAllocFigatreeHeapKind(gBattleState->players[i].fkind);
+        player_spawn.figatree_heap = (sSC1PGamePlayerSetups[i].figatree != NULL) ? sSC1PGamePlayerSetups[i].figatree : ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
         player_spawn.copy_kind = sSC1PGamePlayerSetups[i].copy_kind;
 
@@ -2143,7 +2143,7 @@ void sc1PGameFuncStart(void)
     sc1PGameInitTeamStockDisplay();
     sc1PGameSetGameStatusWait();
 
-    if ((gSceneData.spgame_stage == nSC1PGameStageMMario) || (gSceneData.spgame_stage == nSC1PGameStageZako))
+    if ((gSCManagerSceneData.spgame_stage == nSC1PGameStageMMario) || (gSCManagerSceneData.spgame_stage == nSC1PGameStageZako))
     {
         mpCollisionSetBGM();
         func_800269C0_275C0(nSYAudioFGMPublicityPrologue);
@@ -2176,7 +2176,7 @@ void sc1PGameAppendBonusStats(void)
     u8 variation_order[SC1PGAME_STAGE_MAX_VARIATIONS_COUNT]; // Full array of 12? Almost half of this goes unused, but stack suggests this is correct.
     s32 i;
 
-    sSC1PGameStageTimeSec = I_FRAMES_TO_SEC(gBattleState->battle_time_curr);
+    sSC1PGameStageTimeSec = I_FRAMES_TO_SEC(gSCManagerBattleState->time_passed);
     sSC1PGameTotalTimeSec = I_FRAMES_TO_SEC(gSC1PManagerTotalTimeTics);
 
     if (sSC1PGameBonusStatNumPlayerKOs != 0)
@@ -2185,7 +2185,7 @@ void sc1PGameAppendBonusStats(void)
         {
             if
             (
-                (sSC1PGameBonusStatEnemyStats[i].damage_player != gSceneData.spgame_player)     ||
+                (sSC1PGameBonusStatEnemyStats[i].damage_player != gSCManagerSceneData.player)     ||
                 (sSC1PGameBonusStatEnemyStats[i].damage_status_id != nFTCommonStatusDeadUpStar) &&
                 (sSC1PGameBonusStatEnemyStats[i].damage_status_id != nFTCommonStatusDeadUpFall)
             )
@@ -2193,16 +2193,16 @@ void sc1PGameAppendBonusStats(void)
                 goto loop_item_strike;
             }
         }
-        switch (gSceneData.spgame_stage)
+        switch (gSCManagerSceneData.spgame_stage)
         {
         case nSC1PGameStageYoshi:
         case nSC1PGameStageKirby:
         case nSC1PGameStageZako:
-            gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_TRICKSTER;
+            gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_TRICKSTER;
             break;
 
         default:
-            gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_STARFINISH;
+            gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_STARFINISH;
             break;
         }
     }
@@ -2223,12 +2223,12 @@ loop_item_strike:
     if (is_item_strike != FALSE)
     {
         // Item Strike
-        gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_ITEMSTRIKE;
+        gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_ITEMSTRIKE;
     }
 check_item_strike:
-    if (!(gSceneData.bonus_get_mask[0] & SC1PGAME_BONUS_MASK0_ITEMSTRIKE))
+    if (!(gSCManagerSceneData.bonus_get_mask[0] & SC1PGAME_BONUS_MASK0_ITEMSTRIKE))
     {
-        if (gBattleState->item_appearance_rate != nSCBattleItemSwitchNone)
+        if (gSCManagerBattleState->item_appearance_rate != nSCBattleItemSwitchNone)
         {
             if ((gSC1PGameBonusTomatoCount == 0) && (gSC1PGameBonusHeartCount == 0) && (gSC1PGameBonusStarCount == 0))
             {
@@ -2246,7 +2246,7 @@ check_item_strike:
                 else
                 {
                     // No Item
-                    gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_NOITEM;
+                    gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_NOITEM;
 
                     if (sSC1PGameBonusStatNumPlayerKOs); // Bogus, but it matches
                 }
@@ -2256,7 +2256,7 @@ check_item_strike:
 check_shieldbreaker:
     if (gSC1PGameBonusShieldBreaker != FALSE)
     {
-        gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_SHIELDBREAKER;
+        gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_SHIELDBREAKER;
     }
     if ((gSC1PGameBonusDefendIDCount[nFTStatusAttackIDThrowF] != 0) || (gSC1PGameBonusDefendIDCount[nFTStatusAttackIDThrowB] != 0))
     {
@@ -2267,19 +2267,19 @@ check_shieldbreaker:
                 goto check_hawk;
             }
         }
-        gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_JUDOWARRIOR;
+        gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_JUDOWARRIOR;
     }
 check_hawk:
     if ((gSC1PGameBonusDefendGroundAirCount[nMPKineticsAir] != 0) && (gSC1PGameBonusDefendGroundAirCount[nMPKineticsGround] == 0))
     {
         // Hawk
-        gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_HAWK;
+        gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_HAWK;
     }
 
     if ((gSC1PGameBonusDefendIsProjectileCount[TRUE] != 0) && (gSC1PGameBonusDefendIsProjectileCount[FALSE] == 0))
     {
         // Shooter
-        gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_SHOOTER;
+        gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_SHOOTER;
     }
     for (i = nFTStatusAttackIDAttackStart; i < nFTStatusAttackIDJabStart; i++)
     {
@@ -2289,7 +2289,7 @@ check_hawk:
         }
         else goto check_itemthrow;
     }
-    switch (gSceneData.fkind)
+    switch (gSCManagerSceneData.fkind)
     {
     case nFTKindMario:
         if (gSC1PGameBonusDefendIDCount[nFTStatusAttackIDAttack12] == 0)
@@ -2402,7 +2402,7 @@ check_hawk:
         goto check_itemthrow;
     }
     // All Variations
-    gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_ALLVARIATIONS;
+    gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_ALLVARIATIONS;
 
 check_itemthrow:
     is_thrown_item = FALSE;
@@ -2421,19 +2421,19 @@ check_itemthrow:
     if (is_thrown_item != FALSE)
     {
         // Item Throw; why is this checking for Hammer usage?
-        gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_ITEMTHROW;
+        gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_ITEMTHROW;
     }
 check_smash:
     if ((gSC1PGameBonusDefendIsSmashCount[TRUE] != 0) && (gSC1PGameBonusDefendIsSmashCount[FALSE] == 0))
     {
         // Smash Mania
-        gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_SMASHMANIA;
+        gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_SMASHMANIA;
     }
 
     if ((gSC1PGameBonusDefendIsSmashCount[TRUE] == 0) && (gSC1PGameBonusDefendIsSmashCount[FALSE] != 0))
     {
         // Smash-less
-        gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_SMASHLESS;
+        gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_SMASHLESS;
     }
     special_count = 0;
 
@@ -2453,66 +2453,66 @@ check_smash:
         if (special_count == 1)
         {
             // Single Move
-            gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_SINGLEMOVE;
+            gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_SINGLEMOVE;
         }
         else
         {
             // Special Move
-            gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_SPECIALMOVE;
+            gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_SPECIALMOVE;
         }
     }
 check_heavy_damage:
-    if (gBattleState->players[gSceneData.spgame_player].stock_damage_all >= 200)
+    if (gSCManagerBattleState->players[gSCManagerSceneData.player].stock_damage_all >= 200)
     {
-        gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_HEAVYDAMAGE;
+        gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_HEAVYDAMAGE;
     }
     if (sSC1PGameStageTimeSec <= 30)
     {
         // Speedster
-        gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_SPEEDSTER;
+        gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_SPEEDSTER;
     }
-    if (gBattleState->players[gSceneData.spgame_player].total_damage_dealt == 0)
+    if (gSCManagerBattleState->players[gSCManagerSceneData.player].total_damage_dealt == 0)
     {
         // Pacifist
-        gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_PACIFIST;
+        gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_PACIFIST;
     }
     if (gSC1PManagerTotalFalls == 0)
     {
-        gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_NOMISS;
+        gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_NOMISS;
     }
-    if ((gBattleState->players[gSceneData.spgame_player].falls == 0) && (gBattleState->players[gSceneData.spgame_player].total_damage_all == 0))
+    if ((gSCManagerBattleState->players[gSCManagerSceneData.player].falls == 0) && (gSCManagerBattleState->players[gSCManagerSceneData.player].total_damage_all == 0))
     {
         // No Damage?
-        gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_NODAMAGE;
+        gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_NODAMAGE;
     }
-    if (gBattleState->players[gSceneData.spgame_player].stock_damage_all == 0)
+    if (gSCManagerBattleState->players[gSCManagerSceneData.player].stock_damage_all == 0)
     {
         // Full Power?
-        gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_FULLPOWER;
+        gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_FULLPOWER;
     }
     if (sSC1PGameBonusStatInvincibleTimer != 0)
     {
-        gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_STARCLEAR;
+        gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_STARCLEAR;
     }
     if (gSC1PGameBonusTomatoCount >= 3)
     {
         // Vegetarian
-        gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_VEGETARIAN;
+        gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_VEGETARIAN;
     }
     if (gSC1PGameBonusHeartCount >= 3)
     {
         // Heartthrob
-        gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_HEARTTHROB;
+        gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_HEARTTHROB;
     }
     if (gSC1PGameBonusMewCatcher != FALSE)
     {
         // Mew Catcher
-        gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_MEWCATCHER;
+        gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_MEWCATCHER;
     }
     if
     (
         (sSC1PGameBonusStatNumPlayerKOs != 0) &&
-        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player == gSceneData.spgame_player) &&
+        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player == gSCManagerSceneData.player) &&
         (
             (
                 (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitLogObjectItem) &&
@@ -2529,24 +2529,24 @@ check_heavy_damage:
     )
     {
         // Pokémon Finish
-        gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_POKEMONFINISH;
+        gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_POKEMONFINISH;
     }
     if
     (
         (sSC1PGameBonusStatNumPlayerKOs != 0) &&
-        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player == gSceneData.spgame_player) &&
+        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player == gSCManagerSceneData.player) &&
         (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitLogObjectItem) &&
         (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == nITKindMSBomb) &&
         (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_stat_flags.stat_attack_id == nFTStatusAttackIDNull)
     )
     {
         // Booby Trap
-        gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_BOOBYTRAP;
+        gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_BOOBYTRAP;
     }
     if
     (
         (sSC1PGameBonusStatNumPlayerKOs != 0) &&
-        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player == gSceneData.spgame_player) &&
+        (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player == gSCManagerSceneData.player) &&
         (
             (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_stat_flags.stat_attack_id == nFTStatusAttackIDThrowF) ||
             (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_stat_flags.stat_attack_id == nFTStatusAttackIDThrowB)
@@ -2554,22 +2554,22 @@ check_heavy_damage:
     )
     {
         // Throw Down
-        gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_THROWDOWN;
+        gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_THROWDOWN;
     }
     if (sSC1PGameBonusStatEndPlayerStatus == nFTCommonStatusAppeal)
     {
         // Fighter Stance
-        gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_FIGHTERSTANCE;
+        gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_FIGHTERSTANCE;
     }
     if ((sSC1PGameBonusStatEndPlayerStatus == nFTCommonStatusDeadDown) || (sSC1PGameBonusStatEndPlayerStatus == nFTCommonStatusDeadLeftRight))
     {
         // Mystic
-        gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_MYSTIC;
+        gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_MYSTIC;
     }
     if (sSC1PGameBonusStatEndPlayerStatus == nFTCommonStatusDeadUpStar)
     {
         // Comet Mystic
-        gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_COMETMYSTIC;
+        gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_COMETMYSTIC;
     }
     if
     (
@@ -2580,7 +2580,7 @@ check_heavy_damage:
     )
     {
         // Acid Clear
-        gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_ACIDCLEAR;
+        gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_ACIDCLEAR;
     }
     if
     (
@@ -2592,14 +2592,14 @@ check_heavy_damage:
         )
         ||
         (
-            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player == gSceneData.spgame_player) &&
+            (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_player == gSCManagerSceneData.player) &&
             (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_class == nFTHitLogObjectItem) &&
             (sSC1PGameBonusStatEnemyStats[sSC1PGameBonusStatNumPlayerKOs - 1].damage_object_kind == nITKindNBumper)
         )
     )
     {
         // Bumper Clear
-        gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_BUMPERCLEAR;
+        gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_BUMPERCLEAR;
     }
 
     if
@@ -2611,7 +2611,7 @@ check_heavy_damage:
     )
     {
         // Twister Clear
-        gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_TORNADOCLEAR;
+        gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_TORNADOCLEAR;
     }
     if
     (
@@ -2625,19 +2625,19 @@ check_heavy_damage:
     )
     {
         // Arwing Clear
-        gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_ARWINGCLEAR;
+        gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_ARWINGCLEAR;
     }
-    if ((gBattleState->time_limit != SCBATTLE_TIMELIMIT_INFINITE) && (gSceneData.spgame_time_seconds == 1))
+    if ((gSCManagerBattleState->time_limit != SCBATTLE_TIMELIMIT_INFINITE) && (gSCManagerSceneData.spgame_time_remain == 1))
     {
         // Last Second
-        gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_LASTSECOND;
+        gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_LASTSECOND;
     }
-    if ((gBattleState->time_limit != SCBATTLE_TIMELIMIT_INFINITE) && (gSceneData.spgame_time_seconds == 213))
+    if ((gSCManagerBattleState->time_limit != SCBATTLE_TIMELIMIT_INFINITE) && (gSCManagerSceneData.spgame_time_remain == 213))
     {
         // Lucky 3
-        gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_LUCKY3;
+        gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_LUCKY3;
     }
-    damage_jackpot_bak = gBattleState->players[gSceneData.spgame_player].stock_damage_all;
+    damage_jackpot_bak = gSCManagerBattleState->players[gSCManagerSceneData.player].stock_damage_all;
 
     is_jackpot = FALSE;
 
@@ -2667,9 +2667,9 @@ check_heavy_damage:
     if (is_jackpot != FALSE)
     {
         // Jackpot
-        gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_JACKPOT;
+        gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_JACKPOT;
     }
-    if ((gSceneData.spgame_stage == nSC1PGameStageYoshi) && (sSC1PGameEnemyStocksRemaining == 0))
+    if ((gSCManagerSceneData.spgame_stage == nSC1PGameStageYoshi) && (sSC1PGameEnemyStocksRemaining == 0))
     {
         is_ordered_variation = TRUE;
 
@@ -2687,10 +2687,10 @@ check_heavy_damage:
         if (is_ordered_variation != FALSE)
         {
             // Yoshi Rainbow
-            gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_YOSHIRAINBOW;
+            gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_YOSHIRAINBOW;
         }
     }
-    if ((gSceneData.spgame_stage == nSC1PGameStageKirby) && (sSC1PGameEnemyStocksRemaining == 0))
+    if ((gSCManagerSceneData.spgame_stage == nSC1PGameStageKirby) && (sSC1PGameEnemyStocksRemaining == 0))
     {
         is_ordered_variation = TRUE;
 
@@ -2704,81 +2704,81 @@ check_heavy_damage:
         if (is_ordered_variation != FALSE)
         {
             // Kirby Ranks
-            gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_KIRBYRANKS;
+            gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_KIRBYRANKS;
         }
     }
-    if (gSceneData.spgame_stage == nSC1PGameStageMario)
+    if (gSCManagerSceneData.spgame_stage == nSC1PGameStageMario)
     {
-        if (gBattleState->players[gSceneData.ally_players[0]].falls == 0)
+        if (gSCManagerBattleState->players[gSCManagerSceneData.ally_players[0]].falls == 0)
         {
-            if (gBattleState->players[gSceneData.ally_players[0]].total_damage_all == 0)
+            if (gSCManagerBattleState->players[gSCManagerSceneData.ally_players[0]].total_damage_all == 0)
             {
                 // True Friend
-                gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_TRUEFRIEND;
+                gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_TRUEFRIEND;
             }
             else
             {
                 // Good Friend
-                gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_GOODFRIEND;
+                gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_GOODFRIEND;
             }
         }
         if (gSC1PGameBonusBrosCalamity != FALSE)
         {
             // Bros. Calamity
-            gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_BROSCALAMITY;
+            gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_BROSCALAMITY;
         }
     }
-    if ((gSceneData.spgame_stage == nSC1PGameStageDonkey) && (gBattleState->players[gSceneData.ally_players[0]].falls == 0) && (gBattleState->players[gSceneData.ally_players[1]].falls == 0))
+    if ((gSCManagerSceneData.spgame_stage == nSC1PGameStageDonkey) && (gSCManagerBattleState->players[gSCManagerSceneData.ally_players[0]].falls == 0) && (gSCManagerBattleState->players[gSCManagerSceneData.ally_players[1]].falls == 0))
     {
-        if ((gBattleState->players[gSceneData.ally_players[0]].total_damage_all == 0) && (gBattleState->players[gSceneData.ally_players[1]].total_damage_all == 0))
+        if ((gSCManagerBattleState->players[gSCManagerSceneData.ally_players[0]].total_damage_all == 0) && (gSCManagerBattleState->players[gSCManagerSceneData.ally_players[1]].total_damage_all == 0))
         {
             // DK Perfect
-            gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_DKPERFECT;
+            gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_DKPERFECT;
         }
         else
         {
             // DK Defender
-            gSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_DKDEFENDER;
+            gSCManagerSceneData.bonus_get_mask[1] |= SC1PGAME_BONUS_MASK1_DKDEFENDER;
         }
     }
-    if (gSceneData.spgame_stage == nSC1PGameStageBoss)
+    if (gSCManagerSceneData.spgame_stage == nSC1PGameStageBoss)
     {
-        gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_GAMECLEAR;
+        gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_GAMECLEAR;
 
         if (gSC1PManagerTotalFalls == 0)
         {
             // No Miss Clear
-            gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_NOMISSCLEAR;
+            gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_NOMISSCLEAR;
         }
         if (gSC1PManagerTotalDamage == 0)
         {
             // No Damage Clear
-            gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_NODAMAGECLEAR;
+            gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_NODAMAGECLEAR;
         }
         if (sSC1PGameTotalTimeSec <= I_MIN_TO_SEC(8))
         {
             // Speed Demon
-            gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_SPEEDDEMON;
+            gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_SPEEDDEMON;
         }
         else if (sSC1PGameTotalTimeSec <= I_MIN_TO_SEC(12)) // 12 minutes? Wiki claims this should be 20 minutes
         {
             // Speed King
-            gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_SPEEDKING;
+            gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_SPEEDKING;
         }
     }
     if
     (
-        !(gSceneData.bonus_get_mask[1] & SC1PGAME_BONUS_MASK1_SINGLEMOVE)   &&
-        !(gSceneData.bonus_get_mask[1] & SC1PGAME_BONUS_MASK1_SPECIALMOVE)  &&
-        !(gSceneData.bonus_get_mask[0] & SC1PGAME_BONUS_MASK0_HAWK)         &&
-        !(gSceneData.bonus_get_mask[0] & SC1PGAME_BONUS_MASK0_JUDOWARRIOR)  &&
-        !(gSceneData.bonus_get_mask[0] & SC1PGAME_BONUS_MASK0_SHOOTER)      &&
-        !(gSceneData.bonus_get_mask[0] & SC1PGAME_BONUS_MASK0_ALLVARIATIONS)&&
-        !(gSceneData.bonus_get_mask[0] & SC1PGAME_BONUS_MASK0_ITEMSTRIKE)   &&
-        !(gSceneData.bonus_get_mask[0] & SC1PGAME_BONUS_MASK0_TRICKSTER)    &&
-        !(gSceneData.bonus_get_mask[0] & SC1PGAME_BONUS_MASK0_ITEMTHROW)    &&
-        !(gSceneData.bonus_get_mask[0] & SC1PGAME_BONUS_MASK0_PACIFIST)     &&
-        !(gSceneData.bonus_get_mask[1] & SC1PGAME_BONUS_MASK1_SMASHMANIA)
+        !(gSCManagerSceneData.bonus_get_mask[1] & SC1PGAME_BONUS_MASK1_SINGLEMOVE)   &&
+        !(gSCManagerSceneData.bonus_get_mask[1] & SC1PGAME_BONUS_MASK1_SPECIALMOVE)  &&
+        !(gSCManagerSceneData.bonus_get_mask[0] & SC1PGAME_BONUS_MASK0_HAWK)         &&
+        !(gSCManagerSceneData.bonus_get_mask[0] & SC1PGAME_BONUS_MASK0_JUDOWARRIOR)  &&
+        !(gSCManagerSceneData.bonus_get_mask[0] & SC1PGAME_BONUS_MASK0_SHOOTER)      &&
+        !(gSCManagerSceneData.bonus_get_mask[0] & SC1PGAME_BONUS_MASK0_ALLVARIATIONS)&&
+        !(gSCManagerSceneData.bonus_get_mask[0] & SC1PGAME_BONUS_MASK0_ITEMSTRIKE)   &&
+        !(gSCManagerSceneData.bonus_get_mask[0] & SC1PGAME_BONUS_MASK0_TRICKSTER)    &&
+        !(gSCManagerSceneData.bonus_get_mask[0] & SC1PGAME_BONUS_MASK0_ITEMTHROW)    &&
+        !(gSCManagerSceneData.bonus_get_mask[0] & SC1PGAME_BONUS_MASK0_PACIFIST)     &&
+        !(gSCManagerSceneData.bonus_get_mask[1] & SC1PGAME_BONUS_MASK1_SMASHMANIA)
     )
     {
         attack_count = 0;
@@ -2794,7 +2794,7 @@ check_heavy_damage:
                 if ((gSC1PGameBonusAttackIDCount[i] / (f32)attack_count) >= F_PCT_TO_DEC(35.0F))
                 {
                     // Cheap Shot
-                    gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_CHEAPSHOT;
+                    gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_CHEAPSHOT;
 
                     break;
                 }
@@ -2806,25 +2806,25 @@ check_heavy_damage:
 // 0x80190E58
 void sc1PGameInitBonusStats(void)
 {
-    gSceneData.bonus_get_mask[0] = gSceneData.bonus_get_mask[1] = gSceneData.bonus_get_mask[2] = 0;
+    gSCManagerSceneData.bonus_get_mask[0] = gSCManagerSceneData.bonus_get_mask[1] = gSCManagerSceneData.bonus_get_mask[2] = 0;
 
-    gSceneData.spgame_time_seconds = (gBattleState->time_limit == SCBATTLE_TIMELIMIT_INFINITE) ? 0 : I_FRAMES_TO_SEC(gBattleState->battle_time_remain + 59);
+    gSCManagerSceneData.spgame_time_remain = (gSCManagerBattleState->time_limit == SCBATTLE_TIMELIMIT_INFINITE) ? 0 : I_FRAMES_TO_SEC(gSCManagerBattleState->time_remain + 59);
 
-    gSC1PManagerTotalTimeTics += gBattleState->battle_time_curr;
-    gSC1PManagerTotalFalls += gBattleState->players[gSceneData.spgame_player].falls;
-    gSC1PManagerTotalDamage += gBattleState->players[gSceneData.spgame_player].total_damage_all;
+    gSC1PManagerTotalTimeTics += gSCManagerBattleState->time_passed;
+    gSC1PManagerTotalFalls += gSCManagerBattleState->players[gSCManagerSceneData.player].falls;
+    gSC1PManagerTotalDamage += gSCManagerBattleState->players[gSCManagerSceneData.player].total_damage_all;
 
-    switch (gSceneData.spgame_stage)
+    switch (gSCManagerSceneData.spgame_stage)
     {
     case nSC1PGameStageBonus3:
-        if ((gBattleState->players[gSceneData.spgame_player].falls == 0) && (gSceneData.spgame_time_seconds != 0) && (gBattleState->players[gSceneData.spgame_player].total_damage_all == 0))
+        if ((gSCManagerBattleState->players[gSCManagerSceneData.player].falls == 0) && (gSCManagerSceneData.spgame_time_remain != 0) && (gSCManagerBattleState->players[gSCManagerSceneData.player].total_damage_all == 0))
         {
-            gSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_NODAMAGE;
+            gSCManagerSceneData.bonus_get_mask[0] |= SC1PGAME_BONUS_MASK0_NODAMAGE;
         }
         break;
 
     default:
-        gSceneData.spgame_score += gBattleState->players[gSceneData.spgame_player].score * 1000;
+        gSCManagerSceneData.spgame_score += gSCManagerBattleState->players[gSCManagerSceneData.player].score * 1000;
         sc1PGameAppendBonusStats();
         break;
     }
@@ -2841,8 +2841,8 @@ void sc1PGameFuncLights(Gfx **dls)
 // 0x80190FD8
 void sc1PGameStartScene(void)
 {
-    gBattleState = &gSCManager1PGameBattleState;
-    gBattleState->game_type = nSCBattleGameType1PGame;
+    gSCManagerBattleState = &gSCManager1PGameBattleState;
+    gSCManagerBattleState->game_type = nSCBattleGameType1PGame;
 
     dSC1PGameVideoSetup.zbuffer = syVideoGetZBuffer(6400);
     syVideoInit(&dSC1PGameVideoSetup);

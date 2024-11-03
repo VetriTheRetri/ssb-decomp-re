@@ -9,7 +9,7 @@
 //                               //
 // // // // // // // // // // // //
 
-extern FTFileSize D_800A50F8[nFTKindEnumMax];
+extern FTFileSize gSCManagerFighterFileSizes[nFTKindEnumMax];
 
 extern intptr_t D_NF_000000A3;
 extern intptr_t D_NF_000000C9;
@@ -106,7 +106,7 @@ void ftManagerSetupFileSize(void)
     size_t largest_size;
     size_t current_anim_size;
     FTData *data;
-    FTFileSize *ft_size;
+    FTFileSize *file_size;
     LBRelocSetup rl_setup;
     FTMotionDesc *script_info;
 
@@ -123,12 +123,12 @@ void ftManagerSetupFileSize(void)
 
     for (i = 0; i < ARRAY_COUNT(dFTManagerDataFiles); i++)
     {
-        ft_size = &D_800A50F8[i];
+        file_size = &gSCManagerFighterFileSizes[i];
         data = dFTManagerDataFiles[i];
 
         largest_size = 0;
 
-        ft_size->main = lbRelocGetFileSize(data->file_main_id);
+        file_size->main = lbRelocGetFileSize(data->file_main_id);
 
         for (j = 0; j < data->mainmotion_array_count; j++)
         {
@@ -149,7 +149,7 @@ void ftManagerSetupFileSize(void)
                 }
             }
         }
-        ft_size->mainmotion_largest_anim = largest_size;
+        file_size->mainmotion_largest_anim = largest_size;
 
         for (j = 0; j < *data->submotion_array_count; j++)
         {
@@ -170,7 +170,7 @@ void ftManagerSetupFileSize(void)
                 }
             }
         }
-        ft_size->submotion_largest_anim = largest_size;
+        file_size->submotion_largest_anim = largest_size;
     }
 }
 
@@ -181,7 +181,7 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
     s32 i;
     size_t current_size;
     FTData *data;
-    FTFileSize *ft_size;
+    FTFileSize *file_size;
     size_t heap_size;
 
     heap_size = 0;
@@ -212,20 +212,20 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
 
     lbRelocGetFileExternHeap((u32)&D_NF_000000C9, syTaskmanMalloc(lbRelocGetFileSize((u32)&D_NF_000000C9), 0x10));
 
-    for (i = 0; i < (ARRAY_COUNT(dFTManagerDataFiles) + ARRAY_COUNT(D_800A50F8)) / 2; i++)
+    for (i = 0; i < (ARRAY_COUNT(dFTManagerDataFiles) + ARRAY_COUNT(gSCManagerFighterFileSizes)) / 2; i++)
     {
         data = dFTManagerDataFiles[i];
-        ft_size = &D_800A50F8[i];
+        file_size = &gSCManagerFighterFileSizes[i];
 
         largest_size = 0;
 
         *data->p_file_main = NULL;
 
-        data->file_main_size = ft_size->main;
+        data->file_main_size = file_size->main;
 
         if (data_flags & FTDATA_FLAG_MAINMOTION)
         {
-            current_size = ft_size->mainmotion_largest_anim;
+            current_size = file_size->mainmotion_largest_anim;
 
             if (current_size != 0)
             {
@@ -234,7 +234,7 @@ void ftManagerAllocFighter(u32 data_flags, s32 allocs_num)
         }
         if (data_flags & FTDATA_FLAG_SUBMOTION)
         {
-            current_size = ft_size->submotion_largest_anim;
+            current_size = file_size->submotion_largest_anim;
 
             if (largest_size < current_size)
             {
@@ -471,7 +471,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
 
     if (fp->pkind != nFTPlayerKindDemo)
     {
-        gBattleState->players[fp->player].stock_damage_all = fp->percent_damage;
+        gSCManagerBattleState->players[fp->player].stock_damage_all = fp->percent_damage;
     }
     fp->shield_health = (fp->fkind == nFTKindYoshi) ? 55 : 55;
 
@@ -721,7 +721,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
 
     if (fp->pkind != nFTPlayerKindDemo)
     {
-        gBattleState->players[fp->player].stock_count = ft_desc->stock_count;
+        gSCManagerBattleState->players[fp->player].stock_count = ft_desc->stock_count;
     }
     fp->detail_curr = fp->detail_base = ft_desc->detail;
 

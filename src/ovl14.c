@@ -109,20 +109,20 @@ char* dMNDebugBattleStageStrings[18] = {
 // 0x80132780
 dbMenuItem dMNDebugBattleMenuItems[15] = {
 	{ dbMenuItemKindStringByte,  dbBattleStartBattle, (char*) dMNDebugBattleSceneStrings,       (void*) &gMNDebugBattleMenuValueScene,            0.0F, 5.0F,  0 },
-	{ dbMenuItemKindNumericByte, 0,                        (char*) "BattleTime %3d",                 (void*) &gTransferBattleState.time_limit,         1.0F, 60.0F, 0 },
-	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattleStageStrings,       (void*) &gSceneData.spgame_stage,                 0.0F, 17.0F, 0 },
-	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattlePlayerKindStrings,  (void*) &gTransferBattleState.players[0].pkind, 0.0F, 5.0F,  0 },
-	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattleFighterKindStrings, (void*) &gTransferBattleState.players[0].fkind, 0.0F, 26.0F, 0 },
-	{ dbMenuItemKindNumericByte, 0,                        (char*) "  %1d",                          (void*) &gTransferBattleState.players[0].costume, 0.0F, 10.0F, 0 },
-	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattlePlayerKindStrings,  (void*) &gTransferBattleState.players[1].pkind, 0.0F, 5.0F,  0 },
-	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattleFighterKindStrings, (void*) &gTransferBattleState.players[1].fkind, 0.0F, 26.0F, 0 },
-	{ dbMenuItemKindNumericByte, 0,                        (char*) "  %1d",                          (void*) &gTransferBattleState.players[1].costume, 0.0F, 10.0F, 0 },
-	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattlePlayerKindStrings,  (void*) &gTransferBattleState.players[2].pkind, 0.0F, 5.0F,  0 },
-	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattleFighterKindStrings, (void*) &gTransferBattleState.players[2].fkind, 0.0F, 26.0F, 0 },
-	{ dbMenuItemKindNumericByte, 0,                        (char*) "  %1d",                          (void*) &gTransferBattleState.players[2].costume, 0.0F, 10.0F, 0 },
-	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattlePlayerKindStrings,  (void*) &gTransferBattleState.players[3].pkind, 0.0F, 5.0F,  0 },
-	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattleFighterKindStrings, (void*) &gTransferBattleState.players[3].fkind, 0.0F, 26.0F, 0 },
-	{ dbMenuItemKindNumericByte, 0,                        (char*) "  %1d",                          (void*) &gTransferBattleState.players[3].costume, 0.0F, 10.0F, 0 }
+	{ dbMenuItemKindNumericByte, 0,                        (char*) "BattleTime %3d",                 (void*) &gSCManagerTransferBattleState.time_limit,         1.0F, 60.0F, 0 },
+	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattleStageStrings,       (void*) &gSCManagerSceneData.spgame_stage,                 0.0F, 17.0F, 0 },
+	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattlePlayerKindStrings,  (void*) &gSCManagerTransferBattleState.players[0].pkind, 0.0F, 5.0F,  0 },
+	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattleFighterKindStrings, (void*) &gSCManagerTransferBattleState.players[0].fkind, 0.0F, 26.0F, 0 },
+	{ dbMenuItemKindNumericByte, 0,                        (char*) "  %1d",                          (void*) &gSCManagerTransferBattleState.players[0].costume, 0.0F, 10.0F, 0 },
+	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattlePlayerKindStrings,  (void*) &gSCManagerTransferBattleState.players[1].pkind, 0.0F, 5.0F,  0 },
+	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattleFighterKindStrings, (void*) &gSCManagerTransferBattleState.players[1].fkind, 0.0F, 26.0F, 0 },
+	{ dbMenuItemKindNumericByte, 0,                        (char*) "  %1d",                          (void*) &gSCManagerTransferBattleState.players[1].costume, 0.0F, 10.0F, 0 },
+	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattlePlayerKindStrings,  (void*) &gSCManagerTransferBattleState.players[2].pkind, 0.0F, 5.0F,  0 },
+	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattleFighterKindStrings, (void*) &gSCManagerTransferBattleState.players[2].fkind, 0.0F, 26.0F, 0 },
+	{ dbMenuItemKindNumericByte, 0,                        (char*) "  %1d",                          (void*) &gSCManagerTransferBattleState.players[2].costume, 0.0F, 10.0F, 0 },
+	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattlePlayerKindStrings,  (void*) &gSCManagerTransferBattleState.players[3].pkind, 0.0F, 5.0F,  0 },
+	{ dbMenuItemKindStringByte,  0,                        (char*) dMNDebugBattleFighterKindStrings, (void*) &gSCManagerTransferBattleState.players[3].fkind, 0.0F, 26.0F, 0 },
+	{ dbMenuItemKindNumericByte, 0,                        (char*) "  %1d",                          (void*) &gSCManagerTransferBattleState.players[3].costume, 0.0F, 10.0F, 0 }
 };
 
 // 0x80132924
@@ -178,26 +178,26 @@ void dbBattleStartBattle()
 	s32 i;
 
 	gMNDebugBattleExitInterrupt = 1;
-	gTransferBattleState.pl_count = gTransferBattleState.cp_count = 0;
+	gSCManagerTransferBattleState.pl_count = gSCManagerTransferBattleState.cp_count = 0;
 
 	for (i = 0; i < 4; i++)
 	{
-		switch (gTransferBattleState.players[i].pkind)
+		switch (gSCManagerTransferBattleState.players[i].pkind)
 		{
 			case nFTPlayerKindMan:
-				gTransferBattleState.pl_count++;
+				gSCManagerTransferBattleState.pl_count++;
 				break;
 			case nFTPlayerKindCom:
-				gTransferBattleState.cp_count++;
+				gSCManagerTransferBattleState.cp_count++;
 				break;
 		}
 
-		gTransferBattleState.players[i].team = i;
-		gTransferBattleState.players[i].player_color = i;
-		gTransferBattleState.players[i].tag_kind = i;
+		gSCManagerTransferBattleState.players[i].team = i;
+		gSCManagerTransferBattleState.players[i].color = i;
+		gSCManagerTransferBattleState.players[i].tag = i;
 	}
 
-	gTransferBattleState.is_team_battle = FALSE;
+	gSCManagerTransferBattleState.is_team_battle = FALSE;
 }
 
 // 0x80131CD8
@@ -205,7 +205,7 @@ s32 dbBattleSetShade(s32 port_id)
 {
 	s32 i, shade;
 
-	for (i = shade = 0; i != ARRAY_COUNT(gTransferBattleState.players); i++)
+	for (i = shade = 0; i != ARRAY_COUNT(gSCManagerTransferBattleState.players); i++)
 	{
 	loop:
 		if (i == port_id)
@@ -213,16 +213,16 @@ s32 dbBattleSetShade(s32 port_id)
 
 		if
 		(
-			(gTransferBattleState.players[i].fkind == gTransferBattleState.players[port_id].fkind) &&
-			(gTransferBattleState.players[i].costume == gTransferBattleState.players[port_id].costume) &&
-			(gTransferBattleState.players[i].shade == shade)
+			(gSCManagerTransferBattleState.players[i].fkind == gSCManagerTransferBattleState.players[port_id].fkind) &&
+			(gSCManagerTransferBattleState.players[i].costume == gSCManagerTransferBattleState.players[port_id].costume) &&
+			(gSCManagerTransferBattleState.players[i].shade == shade)
 		)
 		{
 			shade++, i = 0;
 			goto loop;
 		}
 	}
-	gTransferBattleState.players[port_id].shade = shade;
+	gSCManagerTransferBattleState.players[port_id].shade = shade;
 	return shade;
 }
 
@@ -263,28 +263,28 @@ s32 dbBattleGetMissingFtKind(u16 mask_1, u16 mask_2, s32 missing_index)
 void dbBattleSetDemoFtKinds()
 {
 	s32 non_recently_demoed_count;
-	u16 unlocked_mask = (gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER);
+	u16 unlocked_mask = (gSCManagerBackupData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER);
 
-	if (unlocked_mask == gSceneData.demo_mask_prev)
-		gSceneData.demo_mask_prev = 0;
+	if (unlocked_mask == gSCManagerSceneData.demo_mask_prev)
+		gSCManagerSceneData.demo_mask_prev = 0;
 
-	non_recently_demoed_count = dbBattleGetUnlockedCharsCountForMask(unlocked_mask) - dbBattleGetUnlockedCharsCountForMask(gSceneData.demo_mask_prev);
+	non_recently_demoed_count = dbBattleGetUnlockedCharsCountForMask(unlocked_mask) - dbBattleGetUnlockedCharsCountForMask(gSCManagerSceneData.demo_mask_prev);
 
-	gSceneData.demo_fkind[0] = dbBattleGetMissingFtKind(unlocked_mask, gSceneData.demo_mask_prev, mtTrigGetRandomIntRange(non_recently_demoed_count));
+	gSCManagerSceneData.demo_fkind[0] = dbBattleGetMissingFtKind(unlocked_mask, gSCManagerSceneData.demo_mask_prev, mtTrigGetRandomIntRange(non_recently_demoed_count));
 
-	if (gSceneData.demo_mask_prev == 0)
-		gSceneData.demo_first_fkind = gSceneData.demo_fkind[0];
+	if (gSCManagerSceneData.demo_mask_prev == 0)
+		gSCManagerSceneData.demo_first_fkind = gSCManagerSceneData.demo_fkind[0];
 
-	gSceneData.demo_mask_prev |= gmSaveChrMask(gSceneData.demo_fkind[0]);
+	gSCManagerSceneData.demo_mask_prev |= gmSaveChrMask(gSCManagerSceneData.demo_fkind[0]);
 
-	non_recently_demoed_count = dbBattleGetUnlockedCharsCountForMask(unlocked_mask) - dbBattleGetUnlockedCharsCountForMask(gSceneData.demo_mask_prev);
+	non_recently_demoed_count = dbBattleGetUnlockedCharsCountForMask(unlocked_mask) - dbBattleGetUnlockedCharsCountForMask(gSCManagerSceneData.demo_mask_prev);
 
 	if (non_recently_demoed_count == 0)
-		gSceneData.demo_fkind[1] = gSceneData.demo_first_fkind;
+		gSCManagerSceneData.demo_fkind[1] = gSCManagerSceneData.demo_first_fkind;
 	else
 	{
-		gSceneData.demo_fkind[1] = dbBattleGetMissingFtKind(unlocked_mask, gSceneData.demo_mask_prev, mtTrigGetRandomIntRange(non_recently_demoed_count));
-		gSceneData.demo_mask_prev |= gmSaveChrMask(gSceneData.demo_fkind[1]);
+		gSCManagerSceneData.demo_fkind[1] = dbBattleGetMissingFtKind(unlocked_mask, gSCManagerSceneData.demo_mask_prev, mtTrigGetRandomIntRange(non_recently_demoed_count));
+		gSCManagerSceneData.demo_mask_prev |= gmSaveChrMask(gSCManagerSceneData.demo_fkind[1]);
 	}
 }
 
@@ -306,7 +306,7 @@ void dbBattleMain(GObj* arg0)
 
 	for (i = 0; i < 4; i++)
 	{
-		if (gTransferBattleState.players[i].fkind != gMNDebugBattleFighters[i].fkind)
+		if (gSCManagerTransferBattleState.players[i].fkind != gMNDebugBattleFighters[i].fkind)
 		{
 			FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 			fighter_gobj = gMNDebugBattleFighters[i].fighter_gobj;
@@ -316,26 +316,26 @@ void dbBattleMain(GObj* arg0)
 
 			ftManagerDestroyFighter(fighter_gobj);
 
-			spawn_info.fkind = gTransferBattleState.players[i].fkind;
+			spawn_info.fkind = gSCManagerTransferBattleState.players[i].fkind;
 			spawn_info.pos.x = (i * 400.0f) - 600.0f;
 
-			if (ftParamGetCostumeDevelop(spawn_info.fkind) < gTransferBattleState.players[i].costume)
-				gTransferBattleState.players[i].costume = ftParamGetCostumeDevelop(gTransferBattleState.players[i].fkind);
+			if (ftParamGetCostumeDevelop(spawn_info.fkind) < gSCManagerTransferBattleState.players[i].costume)
+				gSCManagerTransferBattleState.players[i].costume = ftParamGetCostumeDevelop(gSCManagerTransferBattleState.players[i].fkind);
 
-			spawn_info.costume = gTransferBattleState.players[i].costume;
+			spawn_info.costume = gSCManagerTransferBattleState.players[i].costume;
 			spawn_info.shade = dbBattleSetShade(i);
 			spawn_info.figatree_heap = figatree_heap;
 			gMNDebugBattleFighters[i].fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
-			gMNDebugBattleFighters[i].fkind = gTransferBattleState.players[i].fkind;
-			gMNDebugBattleFighters[i].costume_index = gTransferBattleState.players[i].costume;
+			gMNDebugBattleFighters[i].fkind = gSCManagerTransferBattleState.players[i].fkind;
+			gMNDebugBattleFighters[i].costume_index = gSCManagerTransferBattleState.players[i].costume;
 		}
 
-		if (gTransferBattleState.players[i].costume != gMNDebugBattleFighters[i].costume_index)
+		if (gSCManagerTransferBattleState.players[i].costume != gMNDebugBattleFighters[i].costume_index)
 		{
 			dbBattleSetShade(i);
-			ftParamInitModelTexturePartsAll(gMNDebugBattleFighters[i].fighter_gobj, gTransferBattleState.players[i].costume, gTransferBattleState.players[i].shade);
-			gMNDebugBattleFighters[i].costume_index = gTransferBattleState.players[i].costume;
+			ftParamInitModelTexturePartsAll(gMNDebugBattleFighters[i].fighter_gobj, gSCManagerTransferBattleState.players[i].costume, gSCManagerTransferBattleState.players[i].shade);
+			gMNDebugBattleFighters[i].costume_index = gSCManagerTransferBattleState.players[i].costume;
 		}
 	}
 
@@ -349,33 +349,33 @@ void dbBattleMain(GObj* arg0)
 	{
 		dbMenuDestroyMenu();
 
-		gSceneData.scene_prev = gSceneData.scene_curr;
+		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 
 		switch (gMNDebugBattleMenuValueScene)
 		{
 			case dbBattleSceneVsMode:
-				gSceneData.scene_curr = nSCKindDebugMaps;
+				gSCManagerSceneData.scene_curr = nSCKindDebugMaps;
 				break;
 			case dbBattleScene1PMode:
-				gSceneData.scene_curr = nSCKind1PGame;
-				gSceneData.spgame_player = 0;
-				gSceneData.fkind = gTransferBattleState.players[0].fkind;
-				gSceneData.costume = gTransferBattleState.players[0].costume;
+				gSCManagerSceneData.scene_curr = nSCKind1PGame;
+				gSCManagerSceneData.player = 0;
+				gSCManagerSceneData.fkind = gSCManagerTransferBattleState.players[0].fkind;
+				gSCManagerSceneData.costume = gSCManagerTransferBattleState.players[0].costume;
 				break;
 			case dbBattleSceneStaffroll:
-				gSceneData.scene_curr = nSCKindStaffroll;
+				gSCManagerSceneData.scene_curr = nSCKindStaffroll;
 				break;
 			case dbBattleSceneExplain:
-				gSceneData.scene_curr = nSCKindExplain;
-				gTransferBattleState.is_team_battle = FALSE;
+				gSCManagerSceneData.scene_curr = nSCKindExplain;
+				gSCManagerTransferBattleState.is_team_battle = FALSE;
 				break;
 			case dbBattleSceneAutoDemo:
 				dbBattleSetDemoFtKinds();
-				gSceneData.scene_curr = nSCKindAutoDemo;
-				gTransferBattleState.is_team_battle = FALSE;
+				gSCManagerSceneData.scene_curr = nSCKindAutoDemo;
+				gSCManagerTransferBattleState.is_team_battle = FALSE;
 				break;
 			case dbBattleSceneCongra:
-				gSceneData.scene_curr = nSCKindCongra;
+				gSCManagerSceneData.scene_curr = nSCKindCongra;
 				break;
 		}
 
@@ -391,13 +391,13 @@ void dbBattleSyncCostumes(s32 arg0)
 
 	for (i = 0; i < 4; i++)
 	{
-		if (gTransferBattleState.players[i].costume != gMNDebugBattleFighters[i].costume_index)
+		if (gSCManagerTransferBattleState.players[i].costume != gMNDebugBattleFighters[i].costume_index)
 		{
-			if (gTransferBattleState.players[i].costume == 10)
-				gTransferBattleState.players[i].costume = ftParamGetCostumeDevelop(gTransferBattleState.players[i].fkind);
+			if (gSCManagerTransferBattleState.players[i].costume == 10)
+				gSCManagerTransferBattleState.players[i].costume = ftParamGetCostumeDevelop(gSCManagerTransferBattleState.players[i].fkind);
 
-			else if (ftParamGetCostumeDevelop(gTransferBattleState.players[i].fkind) < gTransferBattleState.players[i].costume)
-				gTransferBattleState.players[i].costume = 0;
+			else if (ftParamGetCostumeDevelop(gSCManagerTransferBattleState.players[i].fkind) < gSCManagerTransferBattleState.players[i].costume)
+				gSCManagerTransferBattleState.players[i].costume = 0;
 		}
 	}
 }
@@ -449,25 +449,25 @@ void dbBattleInit()
 	for (i = nFTKindMario; i <= nFTKindGDonkey; i++)
 		ftManagerSetupFilesAllKind(i);
 
-	for (i = 0; i < ARRAY_COUNT(gTransferBattleState.players); i++)
+	for (i = 0; i < ARRAY_COUNT(gSCManagerTransferBattleState.players); i++)
 	{
-		gTransferBattleState.players[i].team = i;
-		gTransferBattleState.players[i].pkind = 0;
-		gTransferBattleState.players[i].shade = 0;
-		gTransferBattleState.players[i].fkind = dMNDebugBattleInitialFtKinds[i];
+		gSCManagerTransferBattleState.players[i].team = i;
+		gSCManagerTransferBattleState.players[i].pkind = 0;
+		gSCManagerTransferBattleState.players[i].shade = 0;
+		gSCManagerTransferBattleState.players[i].fkind = dMNDebugBattleInitialFtKinds[i];
 	}
 
-	for (i = 0; i < ARRAY_COUNT(gTransferBattleState.players); i++)
+	for (i = 0; i < ARRAY_COUNT(gSCManagerTransferBattleState.players); i++)
 	{
 		FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
-		spawn_info.fkind = gTransferBattleState.players[i].fkind;
-		spawn_info.costume = gTransferBattleState.players[i].costume;
+		spawn_info.fkind = gSCManagerTransferBattleState.players[i].fkind;
+		spawn_info.costume = gSCManagerTransferBattleState.players[i].costume;
 		spawn_info.pos.x = (i * 400.0f) - 600.0f;
 		spawn_info.figatree_heap = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 		gMNDebugBattleFighters[i].fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
-		gMNDebugBattleFighters[i].fkind = gTransferBattleState.players[i].fkind;
-		gMNDebugBattleFighters[i].costume_index = gTransferBattleState.players[i].costume;
+		gMNDebugBattleFighters[i].fkind = gSCManagerTransferBattleState.players[i].fkind;
+		gMNDebugBattleFighters[i].costume_index = gSCManagerTransferBattleState.players[i].costume;
 	}
 
 	dbMenuInitMenu();

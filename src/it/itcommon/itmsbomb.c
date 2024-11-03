@@ -345,7 +345,7 @@ void itMSBombAttachedInitItemVars(GObj *item_gobj)
 
     if ((ip->player != -1) && (ip->player != GMCOMMON_PLAYERS_MAX))
     {
-        GObj *fighter_gobj = gBattleState->players[ip->player].fighter_gobj;
+        GObj *fighter_gobj = gSCManagerBattleState->players[ip->player].fighter_gobj;
 
         if (fighter_gobj != NULL)
         {

@@ -113,7 +113,7 @@ GObj* itGBumperMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->mobj->palette_id = 0;
 
-        if (gBattleState->gkind == nGRKindCastle)
+        if (gSCManagerBattleState->gkind == nGRKindCastle)
         {
             ip->attack_coll.knockback_weight = ITBUMPER_CASTLE_KNOCKBACK;
             ip->attack_coll.angle = ITBUMPER_CASTLE_ANGLE;

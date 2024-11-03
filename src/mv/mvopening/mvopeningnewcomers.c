@@ -365,7 +365,7 @@ void mvOpeningNewcomersMakeHideCamera(void)
 void mvOpeningNewcomersInitVars(void)
 {
     sMVOpeningNewcomersTotalTimeTics = 0;
-    sMVOpeningNewcomersCharacterMask = gSaveData.fighter_mask;
+    sMVOpeningNewcomersCharacterMask = gSCManagerBackupData.fighter_mask;
 }
 
 // 0x801323A4
@@ -391,8 +391,8 @@ void mvOpeningNewcomersFuncRun(GObj *gobj)
         }
         if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
         {
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindTitle;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindTitle;
 
             syTaskmanSetLoadScene();
         }
@@ -402,8 +402,8 @@ void mvOpeningNewcomersFuncRun(GObj *gobj)
         }
         if (sMVOpeningNewcomersTotalTimeTics == 40)
         {
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindTitle;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindTitle;
 
             syTaskmanSetLoadScene();
         }

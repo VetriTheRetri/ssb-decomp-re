@@ -949,7 +949,7 @@ void mnVSModeMakeBackgroundViewport()
 // 0x801336AC
 void mnVSModeFuncStartVars()
 {
-    if (gSceneData.scene_prev == nSCKindVSOptions)
+    if (gSCManagerSceneData.scene_prev == nSCKindVSOptions)
     {
         sMNVSModeCursorIndex = nMNVSModeOptionOptions;
     }
@@ -957,10 +957,10 @@ void mnVSModeFuncStartVars()
 
     sMNVSModeChangeWait = 0;
 
-    switch (gTransferBattleState.is_team_battle)
+    switch (gSCManagerTransferBattleState.is_team_battle)
     {
         case FALSE:
-            if (gTransferBattleState.game_rules == SCBATTLE_GAMERULE_TIME)
+            if (gSCManagerTransferBattleState.game_rules == SCBATTLE_GAMERULE_TIME)
             {
                 sMNVSModeRule = nMNVSModeRuleTime;
             }
@@ -968,7 +968,7 @@ void mnVSModeFuncStartVars()
 
             break;
         case TRUE:
-            if (gTransferBattleState.game_rules == SCBATTLE_GAMERULE_TIME)
+            if (gSCManagerTransferBattleState.game_rules == SCBATTLE_GAMERULE_TIME)
             {
                 sMNVSModeRule = nMNVSModeRuleTimeTeam;
             }
@@ -977,8 +977,8 @@ void mnVSModeFuncStartVars()
             break;
     }
 
-    sMNVSModeTime = gTransferBattleState.time_limit;
-    sMNVSModeStock = gTransferBattleState.stock_setting;
+    sMNVSModeTime = gSCManagerTransferBattleState.time_limit;
+    sMNVSModeStock = gSCManagerTransferBattleState.stocks;
     sMNVSModeTimeStockArrowsGObj = 0;
     sMNVSModeRuleArrowsGObj = 0;
     sMNVSModeInputDirection = nMNVSModeInputDirectionNone;
@@ -992,26 +992,26 @@ void mnVSModeFuncStartVars()
 // 0x801337B8
 void mnVSModeSaveSettings()
 {
-    gTransferBattleState.time_limit = sMNVSModeTime;
-    gTransferBattleState.stock_setting = sMNVSModeStock;
+    gSCManagerTransferBattleState.time_limit = sMNVSModeTime;
+    gSCManagerTransferBattleState.stocks = sMNVSModeStock;
 
     switch (sMNVSModeRule)
     {
         case nMNVSModeRuleStock:
-            gTransferBattleState.is_team_battle = FALSE;
-            gTransferBattleState.game_rules = SCBATTLE_GAMERULE_STOCK;
+            gSCManagerTransferBattleState.is_team_battle = FALSE;
+            gSCManagerTransferBattleState.game_rules = SCBATTLE_GAMERULE_STOCK;
             break;
         case nMNVSModeRuleTime:
-            gTransferBattleState.is_team_battle = FALSE;
-            gTransferBattleState.game_rules = SCBATTLE_GAMERULE_TIME;
+            gSCManagerTransferBattleState.is_team_battle = FALSE;
+            gSCManagerTransferBattleState.game_rules = SCBATTLE_GAMERULE_TIME;
             break;
         case nMNVSModeRuleStockTeam:
-            gTransferBattleState.is_team_battle = TRUE;
-            gTransferBattleState.game_rules = SCBATTLE_GAMERULE_STOCK;
+            gSCManagerTransferBattleState.is_team_battle = TRUE;
+            gSCManagerTransferBattleState.game_rules = SCBATTLE_GAMERULE_STOCK;
             break;
         case nMNVSModeRuleTimeTeam:
-            gTransferBattleState.is_team_battle = TRUE;
-            gTransferBattleState.game_rules = SCBATTLE_GAMERULE_TIME;
+            gSCManagerTransferBattleState.is_team_battle = TRUE;
+            gSCManagerTransferBattleState.game_rules = SCBATTLE_GAMERULE_TIME;
             break;
     }
 }
@@ -1035,11 +1035,11 @@ s32 mnVSModeGetShade(s32 player)
         if
         (
             (player != i) &&
-            (gTransferBattleState.players[player].fkind == gTransferBattleState.players[i].fkind) &&
-            (gTransferBattleState.players[player].team == gTransferBattleState.players[i].team)
+            (gSCManagerTransferBattleState.players[player].fkind == gSCManagerTransferBattleState.players[i].fkind) &&
+            (gSCManagerTransferBattleState.players[player].team == gSCManagerTransferBattleState.players[i].team)
         )
         {
-            is_same_costume[gTransferBattleState.players[i].shade] = TRUE;
+            is_same_costume[gSCManagerTransferBattleState.players[i].shade] = TRUE;
         }
     }
     for (i = 0; i < ARRAY_COUNT(is_same_costume); i++)
@@ -1067,11 +1067,11 @@ s32 mnVSModeGetCostume(s32 fkind, s32 arg1)
     {
         if (i != arg1)
         {
-            if (fkind == gTransferBattleState.players[i].fkind)
+            if (fkind == gSCManagerTransferBattleState.players[i].fkind)
             {
                 for (j = 0; j < ARRAY_COUNT(is_same_costume); j++)
                 {
-                    if (ftParamGetCostumeCommonID(fkind, j) == gTransferBattleState.players[i].costume)
+                    if (ftParamGetCostumeCommonID(fkind, j) == gSCManagerTransferBattleState.players[i].costume)
                     {
                         is_same_costume[j] = TRUE;
                     }
@@ -1097,23 +1097,23 @@ void mnVSModeSetCostumesAndShades(void)
     {
         case nMNVSModeRuleTime:
         case nMNVSModeRuleStock:
-            for (i = 0; i < ARRAY_COUNT(gTransferBattleState.players); i++)
+            for (i = 0; i < ARRAY_COUNT(gSCManagerTransferBattleState.players); i++)
             {
-                if (gTransferBattleState.players[i].fkind != nFTKindNull)
+                if (gSCManagerTransferBattleState.players[i].fkind != nFTKindNull)
                 {
-                    gTransferBattleState.players[i].costume = ftParamGetCostumeCommonID(gTransferBattleState.players[i].fkind, mnVSModeGetCostume(gTransferBattleState.players[i].fkind, i));
-                    gTransferBattleState.players[i].shade = mnVSModeGetShade(i);
+                    gSCManagerTransferBattleState.players[i].costume = ftParamGetCostumeCommonID(gSCManagerTransferBattleState.players[i].fkind, mnVSModeGetCostume(gSCManagerTransferBattleState.players[i].fkind, i));
+                    gSCManagerTransferBattleState.players[i].shade = mnVSModeGetShade(i);
                 }
             }
             break;
         case nMNVSModeRuleTimeTeam:
         case nMNVSModeRuleStockTeam:
-            for (i = 0; i < ARRAY_COUNT(gTransferBattleState.players); i++)
+            for (i = 0; i < ARRAY_COUNT(gSCManagerTransferBattleState.players); i++)
             {
-                if (gTransferBattleState.players[i].fkind != nFTKindNull)
+                if (gSCManagerTransferBattleState.players[i].fkind != nFTKindNull)
                 {
-                    gTransferBattleState.players[i].costume = ftParamGetCostumeTeamID(gTransferBattleState.players[i].fkind, gTransferBattleState.players[i].team);
-                    gTransferBattleState.players[i].shade = mnVSModeGetShade(i);
+                    gSCManagerTransferBattleState.players[i].costume = ftParamGetCostumeTeamID(gSCManagerTransferBattleState.players[i].fkind, gSCManagerTransferBattleState.players[i].team);
+                    gSCManagerTransferBattleState.players[i].shade = mnVSModeGetShade(i);
                 }
             }
             break;
@@ -1137,8 +1137,8 @@ void mnVSModeMain(GObj *gobj)
     {
         if (sMNVSModeFramesElapsed == sMNVSModeMaxFramesElapsed)
         {
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindTitle;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindTitle;
 
             mnVSModeSaveSettings();
             syTaskmanSetLoadScene();
@@ -1179,8 +1179,8 @@ void mnVSModeMain(GObj *gobj)
 
                     sMNVSModeExitInterrupt = TRUE;
 
-                    gSceneData.scene_prev = gSceneData.scene_curr;
-                    gSceneData.scene_curr = nSCKindVSFighters;
+                    gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+                    gSCManagerSceneData.scene_curr = nSCKindVSFighters;
 
                     return;
                 case nMNVSModeOptionOptions:
@@ -1190,8 +1190,8 @@ void mnVSModeMain(GObj *gobj)
 
                     sMNVSModeExitInterrupt = TRUE;
 
-                    gSceneData.scene_prev = gSceneData.scene_curr;
-                    gSceneData.scene_curr = nSCKindVSOptions;
+                    gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+                    gSCManagerSceneData.scene_curr = nSCKindVSOptions;
 
                     return;
             }
@@ -1201,8 +1201,8 @@ void mnVSModeMain(GObj *gobj)
         {
             mnVSModeSaveSettings();
 
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindModeSelect;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindModeSelect;
 
             syTaskmanSetLoadScene();
         }
@@ -1475,12 +1475,12 @@ void mnVSModeFuncStart(void)
 
     if
     (
-        !(gSaveData.error_flags & LBBACKUP_ERROR_RANDOMKNOCKBACK) && 
-        (gSaveData.unk5E3 >= 22)                                  && 
+        !(gSCManagerBackupData.error_flags & LBBACKUP_ERROR_RANDOMKNOCKBACK) && 
+        (gSCManagerBackupData.unk5E3 >= 22)                                  && 
         (gSYMainIsSPImemOK == FALSE)
     )
     {
-        gSaveData.error_flags |= LBBACKUP_ERROR_RANDOMKNOCKBACK;
+        gSCManagerBackupData.error_flags |= LBBACKUP_ERROR_RANDOMKNOCKBACK;
     }
     lbRelocLoadFilesExtern
     (
@@ -1515,7 +1515,7 @@ void mnVSModeFuncStart(void)
     mnVSModeMakeVSOptionsButton();
     mnVSModeMakeUnusedGObj();
 
-    if (gSceneData.scene_prev == nSCKindVSFighters)
+    if (gSCManagerSceneData.scene_prev == nSCKindVSFighters)
     {
         auPlaySong(0, nSYAudioBGMModeSelect);
     }

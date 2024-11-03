@@ -169,17 +169,17 @@ void dbStageSelectMain(GObj* arg0)
 	{
 		dbMenuDestroyMenu();
 
-		gSceneData.gkind = dMNDebugStageSelectGrKind;
-		gSceneData.scene_prev = gSceneData.scene_curr;
+		gSCManagerSceneData.gkind = dMNDebugStageSelectGrKind;
+		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 
-		if (gSceneData.gkind >= nGRKindBonusGameStart)
+		if (gSCManagerSceneData.gkind >= nGRKindBonusGameStart)
 		{
-			D_800A4B18 = gTransferBattleState;
-			D_800A4B18.gkind = gSceneData.gkind;
-			gSceneData.scene_curr = nSCKind1PBonusGame;
+			D_800A4B18 = gSCManagerTransferBattleState;
+			D_800A4B18.gkind = gSCManagerSceneData.gkind;
+			gSCManagerSceneData.scene_curr = nSCKind1PBonusGame;
 		}
 		else
-			gSceneData.scene_curr = nSCKindVSBattle;
+			gSCManagerSceneData.scene_curr = nSCKindVSBattle;
 
 		syTaskmanSetLoadScene();
 	}

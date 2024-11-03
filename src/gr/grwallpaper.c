@@ -267,16 +267,16 @@ void grWallpaperMakeBonus3(void)
 // 0x80104BDC
 void grWallpaperMakeDecideKind(void)
 {
-    if (gSceneData.scene_curr == nSCKind1PTraining)
+    if (gSCManagerSceneData.scene_curr == nSCKind1PTraining)
     {
         scTrainingMode_SetBackgroundSprite();
         grWallpaperMakeStatic();
     }
-    else if (gBattleState->gkind >= nGRKindBonusGameStart)
+    else if (gSCManagerBattleState->gkind >= nGRKindBonusGameStart)
     {
         grWallpaperMakeStatic();
     }
-    else switch (gBattleState->gkind)
+    else switch (gSCManagerBattleState->gkind)
     {
     case nGRKindYoster:
     case nGRKindYosterSmall:

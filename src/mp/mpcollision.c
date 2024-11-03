@@ -4039,14 +4039,14 @@ void mpCollisionInitGroundData(void)
         MPGroundData*,
         (uintptr_t)lbRelocGetFileExternHeap
         (
-            dMPCollisionGroundFileInfos[gBattleState->gkind].file_id, 
+            dMPCollisionGroundFileInfos[gSCManagerBattleState->gkind].file_id, 
             syTaskmanMalloc
             (
-                lbRelocGetFileSize(dMPCollisionGroundFileInfos[gBattleState->gkind].file_id),
+                lbRelocGetFileSize(dMPCollisionGroundFileInfos[gSCManagerBattleState->gkind].file_id),
                 0x10
             )
         ),
-        dMPCollisionGroundFileInfos[gBattleState->gkind].offset
+        dMPCollisionGroundFileInfos[gSCManagerBattleState->gkind].offset
     );
 
     gMPCollisionGeometry = gMPCollisionGroundData->map_geometry;

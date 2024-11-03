@@ -776,13 +776,13 @@ sLBTransitionPhotoHeap = 0x800D6488;
 
 func_ovl2_800E7F68 = 0x800E7F68;
 gGCCommonLinks = 0x800466F0;
-gDefaultBattleState = 0x800A3fc8;
-gBattleState = 0x800A50E8;
-gSceneData = 0x800A4AD0;
+gSCManagerDefaultBattleState = 0x800A3fc8;
+gSCManagerBattleState = 0x800A50E8;
+gSCManagerSceneData = 0x800A4AD0;
 
 menu_zoom = 0x80390D90;
 lbCommonMakeSObjForGObj = 0x800ccfdc;
-gSaveData = 0x800A44E0;
+gSCManagerBackupData = 0x800A44E0;
 D_ovl2_8012EF40 = 0x8012EF40;
 D_ovl2_801313E4 = 0x801313E4;
 func_ovl26_801365D0 = 0x801365D0;
@@ -831,7 +831,7 @@ D_8018E1C0 = 0x8018E1C0;
 D_80134E30 = 0x80134E30;
 D_8018E220 = 0x8018E220;
 
-gTransferBattleState = 0x800A4D08;
+gSCManagerTransferBattleState = 0x800A4D08;
 
 .L80134E84_AF8C4 = 0x80134E84;
 

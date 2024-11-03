@@ -1787,18 +1787,18 @@ void mnCharsInitVars()
 	gMNCharsAutoRotateFighter = TRUE;
 	gMNCharsUnknown = 1;
 	gMNCharsCurrentActionTrack = 0;
-	gMNCharsUnlockedMask = gSaveData.fighter_mask;
+	gMNCharsUnlockedMask = gSCManagerBackupData.fighter_mask;
 
-	if (gSceneData.scene_prev == nSCKindData)
+	if (gSCManagerSceneData.scene_prev == nSCKindData)
 	{
-		gMNCharsCurrentIndex = mnCharsGetIndex(gSaveData.characters_fkind);
+		gMNCharsCurrentIndex = mnCharsGetIndex(gSCManagerBackupData.characters_fkind);
 		gMNCharsIsDemoMode = FALSE;
 	}
 	else
 	{
 		gMNCharsIsDemoMode = TRUE;
-		gMNCharsFirstFtKind = gSceneData.demo_fkind[0];
-		gMNCharsSecondFtKind = gSceneData.demo_fkind[1];
+		gMNCharsFirstFtKind = gSCManagerSceneData.demo_fkind[0];
+		gMNCharsSecondFtKind = gSCManagerSceneData.demo_fkind[1];
 		gMNCharsCurrentIndex = mnCharsGetIndex(gMNCharsFirstFtKind);
 	}
 
@@ -1808,7 +1808,7 @@ void mnCharsInitVars()
 // 0x8013366C
 void mnCharsSaveFtKindToSRAM()
 {
-	gSaveData.characters_fkind = mnCharsGetFtKind(gMNCharsCurrentIndex);
+	gSCManagerBackupData.characters_fkind = mnCharsGetFtKind(gMNCharsCurrentIndex);
 
 	lbBackupWrite();
 }
@@ -1895,8 +1895,8 @@ void mnCharsHandleInput()
 
 	if (scSubsysControllerGetPlayerTapButtons(B_BUTTON))
 	{
-		gSceneData.scene_prev = gSceneData.scene_curr;
-		gSceneData.scene_curr = nSCKindData;
+		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+		gSCManagerSceneData.scene_curr = nSCKindData;
 
 		mnCharsSaveFtKindToSRAM();
 		syTaskmanSetLoadScene();
@@ -2001,9 +2001,9 @@ void mnCharsHandleInputDemoMode()
 {
 	if (scSubsysControllerGetPlayerTapButtons(START_BUTTON | A_BUTTON | B_BUTTON))
 	{
-		gSceneData.scene_prev = gSceneData.scene_curr;
-		gSceneData.scene_curr = nSCKindTitle;
-		gSceneData.is_extend_demo_wait = TRUE;
+		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+		gSCManagerSceneData.scene_curr = nSCKindTitle;
+		gSCManagerSceneData.is_extend_demo_wait = TRUE;
 
 		syTaskmanSetLoadScene();
 	}
@@ -2016,8 +2016,8 @@ void mnCharsHandleInputDemoMode()
 
 	if (gMNCharsFramesElapsed == 600)
 	{
-		gSceneData.scene_prev = gSceneData.scene_curr;
-		gSceneData.scene_curr = nSCKindAutoDemo;
+		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+		gSCManagerSceneData.scene_curr = nSCKindAutoDemo;
 
 		syTaskmanSetLoadScene();
 	}
@@ -2096,7 +2096,7 @@ void mnCharsInit()
 
 	scSubsysFighterSetLightParams(45.0f, 10.f, 0xFF, 0xFF, 0xFF, 0xFF);
 
-	if (gSceneData.scene_prev == nSCKindData)
+	if (gSCManagerSceneData.scene_prev == nSCKindData)
 		auPlaySong(0, 0x2B);
 }
 

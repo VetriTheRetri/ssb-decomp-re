@@ -1788,19 +1788,19 @@ void sc1PStageCardUpdateAnnounce(void)
 // 0x80134810
 void sc1PStageCardInitVars(void)
 {
-    sSC1PStageCardStage = gSceneData.spgame_stage;
+    sSC1PStageCardStage = gSCManagerSceneData.spgame_stage;
 
-    sSC1PStageCardPlayerFighterDemoDesc.fkind = gSCManager1PGameBattleState.players[gSceneData.spgame_player].fkind;
-    sSC1PStageCardPlayerFighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSceneData.spgame_player].costume;
-    sSC1PStageCardPlayerFighterDemoDesc.shade = gSCManager1PGameBattleState.players[gSceneData.spgame_player].shade;
+    sSC1PStageCardPlayerFighterDemoDesc.fkind = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].fkind;
+    sSC1PStageCardPlayerFighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].costume;
+    sSC1PStageCardPlayerFighterDemoDesc.shade = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].shade;
     
-    sSC1PStageCardAlly1FighterDemoDesc.fkind = gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].fkind;
-    sSC1PStageCardAlly1FighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].costume;
-    sSC1PStageCardAlly1FighterDemoDesc.shade = gSCManager1PGameBattleState.players[gSceneData.ally_players[0]].shade;
+    sSC1PStageCardAlly1FighterDemoDesc.fkind = gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[0]].fkind;
+    sSC1PStageCardAlly1FighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[0]].costume;
+    sSC1PStageCardAlly1FighterDemoDesc.shade = gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[0]].shade;
     
-    sSC1PStageCardAlly2FighterDemoDesc.fkind = gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].fkind;
-    sSC1PStageCardAlly2FighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].costume;
-    sSC1PStageCardAlly2FighterDemoDesc.shade = gSCManager1PGameBattleState.players[gSceneData.ally_players[1]].shade;
+    sSC1PStageCardAlly2FighterDemoDesc.fkind = gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[1]].fkind;
+    sSC1PStageCardAlly2FighterDemoDesc.costume = gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[1]].costume;
+    sSC1PStageCardAlly2FighterDemoDesc.shade = gSCManager1PGameBattleState.players[gSCManagerSceneData.ally_players[1]].shade;
     
     sSC1PStageCardIsAnnouncedFighterName = FALSE;
     sSC1PStageCardIsAnnouncedVersus = FALSE;
@@ -1829,8 +1829,8 @@ void sc1PStageCardFuncRun(GObj *gobj)
         {
             func_800266A0_272A0();
             
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindTitle;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindTitle;
             
             func_ovl24_801348EC();
             syTaskmanSetLoadScene();
@@ -1847,8 +1847,8 @@ void sc1PStageCardFuncRun(GObj *gobj)
         {
             func_800266A0_272A0();
             
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindTitle;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindTitle;
             
             func_ovl24_801348EC();
             syTaskmanSetLoadScene();

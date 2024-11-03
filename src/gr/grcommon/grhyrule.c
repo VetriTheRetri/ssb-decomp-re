@@ -117,7 +117,7 @@ GObj* grHyruleMakeTwister(Vec3f *pos)
 // 0x8010A36C
 void grHyruleTwisterUpdateSleep(void)
 {
-    if (gBattleState->game_status != nSCBattleGameStatusWait)
+    if (gSCManagerBattleState->game_status != nSCBattleGameStatusWait)
     {
         gGRCommonStruct.hyrule.twister_status = nGRHyruleTwisterStatusWait;
         gGRCommonStruct.hyrule.twister_wait = mtTrigGetRandomIntRange(1200) + 1600;

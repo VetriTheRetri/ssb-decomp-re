@@ -272,32 +272,32 @@ void mvOpeningKirbyMakeMotionWindow(void)
 	gmRumbleMakeActor();
 	ftPublicityMakeActor();
 
-	for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
+	for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
 	{
 		FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
-		if (gBattleState->players[i].pkind == nFTPlayerKindNot)
+		if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot)
 		{
 			continue;
 		}
-		ftManagerSetupFilesAllKind(gBattleState->players[i].fkind);
+		ftManagerSetupFilesAllKind(gSCManagerBattleState->players[i].fkind);
 
-		ft_desc.fkind = gBattleState->players[i].fkind;
+		ft_desc.fkind = gSCManagerBattleState->players[i].fkind;
 		ft_desc.pos.x = pos.x;
 		ft_desc.pos.y = pos.y;
 		ft_desc.pos.z = pos.z;
 		ft_desc.lr_spawn = +1;
-		ft_desc.team = gBattleState->players[i].team;
+		ft_desc.team = gSCManagerBattleState->players[i].team;
 		ft_desc.player = i;
 		ft_desc.detail = nFTPartsDetailHigh;
-		ft_desc.costume = gBattleState->players[i].costume;
-		ft_desc.handicap = gBattleState->players[i].handicap;
-		ft_desc.cp_level = gBattleState->players[i].level;
-		ft_desc.stock_count = gBattleState->stock_setting;
+		ft_desc.costume = gSCManagerBattleState->players[i].costume;
+		ft_desc.handicap = gSCManagerBattleState->players[i].handicap;
+		ft_desc.cp_level = gSCManagerBattleState->players[i].level;
+		ft_desc.stock_count = gSCManagerBattleState->stocks;
 		ft_desc.damage = 0;
-		ft_desc.pkind = gBattleState->players[i].pkind;
+		ft_desc.pkind = gSCManagerBattleState->players[i].pkind;
 		ft_desc.controller = &gPlayerControllers[i];
-		ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[i].fkind);
+		ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
 		sMVOpeningKirbyStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);
 
@@ -466,8 +466,8 @@ void mvOpeningKirbyFuncRun(GObj *gobj)
 
 	if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
 	{
-		gSceneData.scene_prev = gSceneData.scene_curr;
-		gSceneData.scene_curr = nSCKindTitle;
+		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+		gSCManagerSceneData.scene_curr = nSCKindTitle;
 
 		syTaskmanSetLoadScene();
 	}
@@ -480,8 +480,8 @@ void mvOpeningKirbyFuncRun(GObj *gobj)
 	}
 	if (sMVOpeningKirbyTotalTimeTics == 60)
 	{
-		gSceneData.scene_prev = gSceneData.scene_curr;
-		gSceneData.scene_curr = nSCKindOpeningFox;
+		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+		gSCManagerSceneData.scene_curr = nSCKindOpeningFox;
 
 		syTaskmanSetLoadScene();
 	}
@@ -496,16 +496,16 @@ void mvOpeningKirbyInitVars(void)
 // 0x8018DE84
 void mvOpeningKirbyFuncStart(void)
 {
-	sMVOpeningKirbyBattleState = gDefaultBattleState;
-	gBattleState = &sMVOpeningKirbyBattleState;
+	sMVOpeningKirbyBattleState = gSCManagerDefaultBattleState;
+	gSCManagerBattleState = &sMVOpeningKirbyBattleState;
 
-	gBattleState->game_type = nSCBattleGameTypeOpening;
+	gSCManagerBattleState->game_type = nSCBattleGameTypeOpening;
 
-	gBattleState->gkind = nGRKindPupupu;
-	gBattleState->pl_count = 1;
+	gSCManagerBattleState->gkind = nGRKindPupupu;
+	gSCManagerBattleState->pl_count = 1;
 
-	gBattleState->players[0].fkind = nFTKindKirby;
-	gBattleState->players[0].pkind = nFTPlayerKindKey;
+	gSCManagerBattleState->players[0].fkind = nFTKindKirby;
+	gSCManagerBattleState->players[0].pkind = nFTPlayerKindKey;
 
 	mvOpeningKirbySetupFiles();
 

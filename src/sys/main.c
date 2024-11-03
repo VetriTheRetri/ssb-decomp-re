@@ -131,33 +131,27 @@ void syMainThread5(UNUSED void *arg)
     syDmaSramPiInit();
     osCreatePiManager(OS_PRIORITY_PIMGR, &sSYMainPiCmdQueue, sSYMainPiCmdMesg, ARRAY_COUNT(sSYMainPiCmdMesg));
     syDmaCreateMesgQueue();
-    // load IP3 font? rsp boot text
+
     syDmaReadRom(PHYSICAL_TO_ROM(0xB70), gSYMainRspBootCode, sizeof(gSYMainRspBootCode));
     syMainCheckSPImemOK();
     syMainCheckSPDmemOK();
     osCreateMesgQueue(&sSYMainThreadingQueue, sSYMainBlockMesg, ARRAY_COUNT(sSYMainBlockMesg));
 
     osCreateThread(&sSYMainThread3, 3, &thread3_scheduler, NULL, sSYMainThread3Stack + THREAD3_STACK_SIZE, THREAD3_PRI);
-    // clang-format off
     sSYMainThread3Stack[0] = STACK_PROBE_MAGIC; osStartThread(&sSYMainThread3);
-    // clang-format on
     osRecvMesg(&sSYMainThreadingQueue, NULL, OS_MESG_BLOCK);
 
     osCreateThread(&sSYMainThread4, 4, auThreadMain, NULL, sSYMainThread4Stack + THREAD4_STACK_SIZE, THREAD4_PRI);
-    // clang-format off
     sSYMainThread4Stack[0] = STACK_PROBE_MAGIC; osStartThread(&sSYMainThread4);
-    // clang-format on
     osRecvMesg(&sSYMainThreadingQueue, NULL, OS_MESG_BLOCK);
 
     osCreateThread(&gSYMainThread6, 6, thread6_controllers, NULL, gSYMainThread6Stack + THREAD6_STACK_SIZE, THREAD6_PRI);
-    // clang-format off
     gSYMainThread6Stack[0] = STACK_PROBE_MAGIC; osStartThread(&gSYMainThread6);
-    // clang-format on
     osRecvMesg(&sSYMainThreadingQueue, NULL, OS_MESG_BLOCK);
 
     func_80006B80();
     syDmaLoadOverlay(&OverlayManager);
-    start_scene_manager(0);
+    scManagerRunLoop(0);
 }
 
 void syMainThread1Idle(void *arg) 
@@ -181,7 +175,6 @@ void syMainLoop(void)
     __osSetWatchLo(0x04900000 & WATCHLO_ADDRMASK);
     osInitialize();
     osCreateThread(&sSYMainThread1, 1, syMainThread1Idle, &sSYMainThreadArgBuf, sSYMainThread1Stack + THREAD1_STACK_SIZE, OS_PRIORITY_APPMAX);
-    // clang-format off
+
     sSYMainThread1Stack[0] = STACK_PROBE_MAGIC; osStartThread(&sSYMainThread1);
-    // clang-format on
 }

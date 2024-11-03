@@ -98,7 +98,7 @@ void FTShadowFuncDisplay(GObj *shadow_gobj)
     }
     fs = (FTShadow*)shadow_gobj->user_data.p;
 
-    fighter_gobj = gBattleState->players[fs->player].fighter_gobj;
+    fighter_gobj = gSCManagerBattleState->players[fs->player].fighter_gobj;
 
     fp = ftGetStruct(fighter_gobj);
 
@@ -300,7 +300,7 @@ void FTShadowFuncDisplay(GObj *shadow_gobj)
 
                     gDPPipeSync(gSYTaskmanDLHeads[0]++);
 
-                    if ((gBattleState->is_team_battle == TRUE) && !(gBattleState->is_not_teamshadows))
+                    if ((gSCManagerBattleState->is_team_battle == TRUE) && !(gSCManagerBattleState->is_not_teamshadows))
                     {
                         gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, dFTCommonDataShadowColorTeams[fp->team].r, dFTCommonDataShadowColorTeams[fp->team].g, dFTCommonDataShadowColorTeams[fp->team].b, dFTCommonDataShadowColorTeams[fp->team].a);
                     }

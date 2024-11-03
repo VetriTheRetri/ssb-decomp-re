@@ -197,7 +197,7 @@ f32 cmManagerGetPlayerNumZoomRange(s32 player_num)
 {
     f32 zoom = dCMManagerPlayerZoomRanges[player_num];
 
-    if (gBattleState->game_type == nSCBattleGameTypeExplain)
+    if (gSCManagerBattleState->game_type == nSCBattleGameTypeExplain)
     {
         zoom *= 0.75F;
     }
@@ -301,7 +301,7 @@ void cmManagerUpdateFollowEntities(Vec3f *vec, f32 *hz, f32 *vt)
             }
             ft_cobj[player_num].target_pos.y += fp->attr->cam_offset_y;
 
-            if ((gBattleState->game_type == nSCBattleGameType1PGame) && (gBattleState->players[fp->player].is_spgame_team != FALSE))
+            if ((gSCManagerBattleState->game_type == nSCBattleGameType1PGame) && (gSCManagerBattleState->players[fp->player].is_spgame_team != FALSE))
             {
                 switch (fp->camera_mode)
                 {
@@ -1178,7 +1178,7 @@ GObj* cmManagerMakeBattleCamera(u8 tk1, u8 tk2, void (*proc)(GObj*))
 
     gCMManagerCameraStruct.at_move.x = gCMManagerCameraStruct.at_move.y = gCMManagerCameraStruct.at_move.z = 0;
 
-    switch (gBattleState->gkind)
+    switch (gSCManagerBattleState->gkind)
     {
     case nGRKindZebes:
         gCMManagerCameraStruct.status_curr = 6;

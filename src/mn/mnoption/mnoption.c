@@ -734,7 +734,7 @@ void mnOptionMakeDecalsCamera(void)
 // 0x80132D60
 void mnOptionInitVars(void)
 {
-    switch (gSceneData.scene_prev)
+    switch (gSCManagerSceneData.scene_prev)
     {
     case nSCKindScreenAdjust:
         sMNOptionOption = nMNOptionOptionScreenAdjust;
@@ -752,7 +752,7 @@ void mnOptionInitVars(void)
 
     sMNOptionSoundMonoOrStereo = (auSoundQuality == 1) ? 1 : 0;
 
-    sMNOptionIsScreenFlash = gSaveData.is_allow_screenflash;
+    sMNOptionIsScreenFlash = gSCManagerBackupData.is_allow_screenflash;
     sMNOptionTotalTimeTics = 0;
     D_ovl60_801337D4 = NULL;
     sMNOptionIsProceedScene = FALSE;
@@ -762,8 +762,8 @@ void mnOptionInitVars(void)
 // 0x80132E10
 void mnOptionWriteBackup(void)
 {
-    gSaveData.is_allow_screenflash = sMNOptionIsScreenFlash;
-    gSaveData.sound_mono_or_stereo = sMNOptionSoundMonoOrStereo;
+    gSCManagerBackupData.is_allow_screenflash = sMNOptionIsScreenFlash;
+    gSCManagerBackupData.sound_mono_or_stereo = sMNOptionSoundMonoOrStereo;
 
     lbBackupWrite();
 }
@@ -785,8 +785,8 @@ void mnOptionFuncRun(GObj *gobj)
     {
         if (sMNOptionTotalTimeTics == sMNOptionReturnTic)
         {
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindTitle;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindTitle;
 
             mnOptionWriteBackup();
 
@@ -826,8 +826,8 @@ void mnOptionFuncRun(GObj *gobj)
 
                 mnOptionSetOptionSpriteColors(*option_gobj[sMNOptionOption], nMNOptionTabStatusSelected);
 
-                gSceneData.scene_prev = gSceneData.scene_curr;
-                gSceneData.scene_curr = nSCKindScreenAdjust;
+                gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+                gSCManagerSceneData.scene_curr = nSCKindScreenAdjust;
 
                 sMNOptionIsProceedScene = TRUE;
                 return;
@@ -839,8 +839,8 @@ void mnOptionFuncRun(GObj *gobj)
 
                 mnOptionSetOptionSpriteColors(*option_gobj[sMNOptionOption], nMNOptionTabStatusSelected);
 
-                gSceneData.scene_prev = gSceneData.scene_curr;
-                gSceneData.scene_curr = nSCKindBackupClear;
+                gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+                gSCManagerSceneData.scene_curr = nSCKindBackupClear;
 
                 sMNOptionIsProceedScene = TRUE;
                 return;
@@ -851,8 +851,8 @@ void mnOptionFuncRun(GObj *gobj)
         {
             mnOptionWriteBackup();
 
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindModeSelect;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindModeSelect;
 
             syTaskmanSetLoadScene();
         }
@@ -1018,7 +1018,7 @@ void mnOptionFuncStart(void)
     mnOptionMakeSoundUnderline();
     mnOptionMakeMenuGObj();
 
-    if (gSceneData.scene_prev == nSCKindScreenAdjust)
+    if (gSCManagerSceneData.scene_prev == nSCKindScreenAdjust)
     {
         auPlaySong(0, nSYAudioBGMModeSelect);
     }

@@ -950,25 +950,25 @@ void gmStaffrollTryHideUnlocks(void)
 		GMSTAFFROLL_ASCII_LETTER_TO_FONT_INDEX('o')
 	};
 
-	if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_LUIGI))
+	if (!(gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_LUIGI))
 	{
 		gmStaffrollSetTextQuetions(luigi, ARRAY_COUNT(luigi));
 	}
-	if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_PURIN))
+	if (!(gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_PURIN))
 	{
 		gmStaffrollSetTextQuetions(purin, ARRAY_COUNT(purin));
 	}
-	if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_CAPTAIN))
+	if (!(gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_CAPTAIN))
 	{
 		gmStaffrollSetTextQuetions(captain, ARRAY_COUNT(captain));
 		gmStaffrollSetTextQuetions(fzero, ARRAY_COUNT(fzero));
 	}
-	if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_NESS))
+	if (!(gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_NESS))
 	{
 		gmStaffrollSetTextQuetions(ness, ARRAY_COUNT(ness));
 		gmStaffrollSetTextQuetions(earthbound, ARRAY_COUNT(earthbound));
 	}
-	if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_INISHIE))
+	if (!(gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_INISHIE))
 	{
 		gmStaffrollSetTextQuetions(classicmario, ARRAY_COUNT(classicmario));
 	}
@@ -2047,7 +2047,7 @@ void gmStaffrollInitVars(void)
 	sGMStaffrollNameAnimJoint = lbRelocGetFileData(AObjEvent32*, sGMStaffrollFiles[0], &lGMStaffrollAnimJoint);
 	sGMStaffrollDObjDesc = lbRelocGetFileData(DObjDesc*, sGMStaffrollFiles[0], &lGMStaffrollDObjDesc);
 	sGMStaffrollRollBeginWait = 0;
-	sGMStaffrollPlayer = gSceneData.spgame_player;
+	sGMStaffrollPlayer = gSCManagerSceneData.player;
 	sGMStaffrollRollEndWait = 60;
 }
 
@@ -2169,7 +2169,7 @@ void gmStaffrollFuncDraw(void)
 	}
 	if (sGMStaffrollStatus == -1)
 	{
-		gSceneData.scene_curr = nSCKindN64;
+		gSCManagerSceneData.scene_curr = nSCKindN64;
 
 		auStopBGM();
 		syVideoSetFlags(SYVIDEO_FLAG_BLACKOUT);

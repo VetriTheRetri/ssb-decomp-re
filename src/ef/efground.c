@@ -1576,7 +1576,7 @@ void efGroundMakeEffectSpawnActor(void)
 {
     GObj *effect_gobj;
 
-    if ((gBattleState->gkind <= nGRKindBattleEnd) && (gSceneData.scene_curr != nSCKind1PTraining) && (dEFGroundDatas[gBattleState->gkind].effect_params != NULL))
+    if ((gSCManagerBattleState->gkind <= nGRKindBattleEnd) && (gSCManagerSceneData.scene_curr != nSCKind1PTraining) && (dEFGroundDatas[gSCManagerBattleState->gkind].effect_params != NULL))
     {
         effect_gobj = gcMakeGObjSPAfter(nGCCommonKindEffect, NULL, 7, GOBJ_PRIORITY_DEFAULT);
 
@@ -1588,9 +1588,9 @@ void efGroundMakeEffectSpawnActor(void)
 
             sEFGroundActor.make_wait = mtTrigGetRandomIntRange(10000) + 6000;
             sEFGroundActor.effect_id = 0;
-            sEFGroundActor.effect_data = &dEFGroundDatas[gBattleState->gkind];
+            sEFGroundActor.effect_data = &dEFGroundDatas[gSCManagerBattleState->gkind];
 
-            sEFGroundActor.file_head = (void*) ((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)dEFGroundDatas[gBattleState->gkind].o_data);
+            sEFGroundActor.file_head = (void*) ((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - (intptr_t)dEFGroundDatas[gSCManagerBattleState->gkind].o_data);
             sEFGroundActor.make_queue = 0;
 
             efGroundSetupRandomWeights();

@@ -1801,8 +1801,8 @@ void mnTrainingRecallToken(s32 port_id)
 // 0x801357CC
 void mnTrainingGoBackTo1PMenu()
 {
-	gSceneData.scene_prev = gSceneData.scene_curr;
-	gSceneData.scene_curr = nSCKind1PMode;
+	gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+	gSCManagerSceneData.scene_curr = nSCKind1PMode;
 
 	mnTrainingSaveMatchInfo();
 	auStopBGM();
@@ -2493,11 +2493,11 @@ void func_ovl28_801375D0() {}
 // 0x801375D8
 void mnTrainingSaveMatchInfo()
 {
-	gSceneData.training_man_fkind = gMNTrainingPanels[gMNTrainingHumanPanelPort].char_id;
-	gSceneData.training_man_costume = gMNTrainingPanels[gMNTrainingHumanPanelPort].costume_id;
+	gSCManagerSceneData.training_man_fkind = gMNTrainingPanels[gMNTrainingHumanPanelPort].char_id;
+	gSCManagerSceneData.training_man_costume = gMNTrainingPanels[gMNTrainingHumanPanelPort].costume_id;
 
-	gSceneData.training_com_fkind = gMNTrainingPanels[gMNTrainingCPUPanelPort].char_id;
-	gSceneData.training_com_costume = gMNTrainingPanels[gMNTrainingCPUPanelPort].costume_id;
+	gSCManagerSceneData.training_com_fkind = gMNTrainingPanels[gMNTrainingCPUPanelPort].char_id;
+	gSCManagerSceneData.training_com_costume = gMNTrainingPanels[gMNTrainingCPUPanelPort].costume_id;
 }
 
 // 0x80137638
@@ -2520,8 +2520,8 @@ void mnTrainingMain(s32 arg0)
 
 	if (gMNTrainingFramesElapsed == gMNTrainingMaxFramesElapsed)
 	{
-		gSceneData.scene_prev = gSceneData.scene_curr;
-		gSceneData.scene_curr = nSCKindTitle;
+		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+		gSCManagerSceneData.scene_curr = nSCKindTitle;
 
 		mnTrainingSaveMatchInfo();
 		syTaskmanSetLoadScene();
@@ -2538,8 +2538,8 @@ void mnTrainingMain(s32 arg0)
 
 		if (gMNTrainingStartDelayTimer == 0)
 		{
-			gSceneData.scene_prev = gSceneData.scene_curr;
-			gSceneData.scene_curr = nSCKindVSMaps;
+			gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+			gSCManagerSceneData.scene_curr = nSCKindVSMaps;
 
 			mnTrainingSaveMatchInfo();
 			syTaskmanSetLoadScene();
@@ -2581,8 +2581,8 @@ void mnTrainingInitPort(s32 port_id)
 		panel_info->player_type = mnPanelTypeHuman;
 		panel_info->holder_port_id = 4;
 		panel_info->held_port_id = -1;
-		panel_info->char_id = gSceneData.training_man_fkind;
-		panel_info->costume_id = gSceneData.training_man_costume;
+		panel_info->char_id = gSCManagerSceneData.training_man_fkind;
+		panel_info->costume_id = gSCManagerSceneData.training_man_costume;
 		panel_info->unk_0x88 = TRUE;
 		panel_info->is_selected = TRUE;
 		panel_info->is_recalling = FALSE;
@@ -2649,18 +2649,18 @@ void mnTrainingLoadMatchInfo()
 	gMNTrainingFramesElapsed = 0;
 	gMNTrainingIsStartTriggered = FALSE;
 	gMNTrainingMaxFramesElapsed = gMNTrainingFramesElapsed + I_MIN_TO_TICS(5);
-	gMNTrainingHumanPanelPort = gSceneData.spgame_player;
+	gMNTrainingHumanPanelPort = gSCManagerSceneData.player;
 	gMNTrainingCPUPanelPort = (gMNTrainingHumanPanelPort == 0) ? 1 : 0;
-	gMNTrainingCharacterUnlockedMask = gSaveData.fighter_mask;
+	gMNTrainingCharacterUnlockedMask = gSCManagerBackupData.fighter_mask;
 
-	if (gSceneData.training_man_fkind == nFTKindNull)
+	if (gSCManagerSceneData.training_man_fkind == nFTKindNull)
 		mnTrainingResetPort(gMNTrainingHumanPanelPort);
 	else
 		mnTrainingInitPort(gMNTrainingHumanPanelPort);
 
 	gMNTrainingPanels[gMNTrainingHumanPanelPort].min_frames_elapsed_until_recall = FALSE;
 
-	fkind = gSceneData.training_com_fkind;
+	fkind = gSCManagerSceneData.training_com_fkind;
 
 	if (fkind == nFTKindNull)
 	{
@@ -2678,7 +2678,7 @@ void mnTrainingLoadMatchInfo()
 			costume_id = ftParamGetCostumeCommonID(fkind, 0);
 	}
 	else
-		costume_id = gSceneData.training_com_costume;
+		costume_id = gSCManagerSceneData.training_com_costume;
 
 	gMNTrainingPanels[gMNTrainingCPUPanelPort].char_id = fkind;
 	gMNTrainingPanels[gMNTrainingCPUPanelPort].costume_id = costume_id;
@@ -2778,7 +2778,7 @@ void mnTrainingInitCSS()
 	mnTrainingCreateReadyToFightObjects();
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-	if (gSceneData.scene_prev != nSCKindVSMaps)
+	if (gSCManagerSceneData.scene_prev != nSCKindVSMaps)
 		auPlaySong(0, 0xA);
 
 	func_800266A0_272A0();

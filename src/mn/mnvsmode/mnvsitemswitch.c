@@ -521,11 +521,11 @@ void mnVSItemSwitchGetItemSettings(void)
 {
     s32 i;
     
-    sMNVSItemSwitchOptionStatuses[0] = gTransferBattleState.item_appearance_rate;
+    sMNVSItemSwitchOptionStatuses[0] = gSCManagerTransferBattleState.item_appearance_rate;
 
     for (i = 1; i < (ARRAY_COUNT(dMNVSItemSwitchTogglesItemKinds) + ARRAY_COUNT(sMNVSItemSwitchOptionStatuses)) / 2; i++)
     {
-        if ((1 << dMNVSItemSwitchTogglesItemKinds[i]) & gTransferBattleState.item_toggles)
+        if ((1 << dMNVSItemSwitchTogglesItemKinds[i]) & gSCManagerTransferBattleState.item_toggles)
         {
             sMNVSItemSwitchOptionStatuses[i] = nMNOptionTabStatusOn;
         }
@@ -538,26 +538,26 @@ void mnVSItemSwitchSetItemSettings(void)
 {
     s32 i;
 
-    gTransferBattleState.item_appearance_rate = sMNVSItemSwitchOptionStatuses[0];
+    gSCManagerTransferBattleState.item_appearance_rate = sMNVSItemSwitchOptionStatuses[0];
 
     for (i = 1; i < (ARRAY_COUNT(dMNVSItemSwitchTogglesItemKinds) + ARRAY_COUNT(sMNVSItemSwitchOptionStatuses)) / 2; i++)
     {
         if (sMNVSItemSwitchOptionStatuses[i] != nMNOptionTabStatusOff)
         {
-            gTransferBattleState.item_toggles |= (1 << dMNVSItemSwitchTogglesItemKinds[i]);
+            gSCManagerTransferBattleState.item_toggles |= (1 << dMNVSItemSwitchTogglesItemKinds[i]);
 
             if (dMNVSItemSwitchTogglesItemKinds[i] == nITKindGShell)
             {
-                gTransferBattleState.item_toggles |= (1 << nITKindRShell);
+                gSCManagerTransferBattleState.item_toggles |= (1 << nITKindRShell);
             }
         }
         else
         {
-            gTransferBattleState.item_toggles &= ~(1 << dMNVSItemSwitchTogglesItemKinds[i]);
+            gSCManagerTransferBattleState.item_toggles &= ~(1 << dMNVSItemSwitchTogglesItemKinds[i]);
 
             if (dMNVSItemSwitchTogglesItemKinds[i] == nITKindGShell)
             {
-                gTransferBattleState.item_toggles &= ~(1 << nITKindRShell);
+                gSCManagerTransferBattleState.item_toggles &= ~(1 << nITKindRShell);
             }
         }
     }
@@ -596,13 +596,13 @@ void mnVSItemSwitchSetItemToggles(void)
 {
     if (mnVSItemSwitchCheckAllTogglesOff() != FALSE)
     {
-        gTransferBattleState.item_toggles = 0;
+        gSCManagerTransferBattleState.item_toggles = 0;
     }
     else
     {
         mnVSItemSwitchSetItemSettings();
 
-        gTransferBattleState.item_toggles |= ((1 << nITKindEgg) | (1 << nITKindCapsule) | (1 << nITKindTaru) | (1 << nITKindBox));
+        gSCManagerTransferBattleState.item_toggles |= ((1 << nITKindEgg) | (1 << nITKindCapsule) | (1 << nITKindTaru) | (1 << nITKindBox));
     }
 }
 
@@ -644,8 +644,8 @@ void mnVSItemSwitchFuncRun(GObj *gobj)
         }
         if (scSubsysControllerGetPlayerTapButtons(B_BUTTON) != FALSE)
         {
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindVSOptions;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindVSOptions;
             
             mnVSItemSwitchSetItemToggles();
             syTaskmanSetLoadScene();

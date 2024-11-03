@@ -210,7 +210,7 @@ struct LBTransitionDesc
 struct LBBackupVSRecord
 {
 	u16 ko_count[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
-	u32 time_used;              // In seconds
+	u32 time_used;                                  // In seconds
 	u32 damage_dealt;
 	u32 damage_taken;
 	u16 unk;
@@ -231,7 +231,7 @@ struct LBBackup1PRecord
 	u8 bonus1_task_count;       // Targets broken
 	u32 bonus2_time;	        // Board the Platforms high score
 	u8 bonus2_task_count;       // Platforms boarded
-	u8 spgame_complete;	        // Whether character has completed 1P Game or not
+	ub8 is_spgame_complete;	    // Whether character has completed 1P Game or not
 };
 
 // Save Data structure
@@ -249,8 +249,8 @@ struct LBBackupData
 	u8 spgame_difficulty;       // Last 1P Game difficulty selected
 	u8 spgame_stock_count;      // Last 1P Game stock count selected
 	LBBackup1PRecord spgame_records[GMCOMMON_FIGHTERS_PLAYABLE_NUM];
-	u16 unlock_task_inishie;   	// Records mask of unique stages played in VS mode
-	u8 unlock_task_itemswitch; 	// Records number of VS games played for Item Switch unlock
+	u16 ground_mask;   	        // Records mask of unique stages played in VS mode
+	u8 vs_itemswitch_battles; 	// Records number of VS games played for Item Switch unlock
 	u16 vs_total_battles;		// Total amount of VS games played?
 	u8 error_flags;		   		// Some kind of anti-piracy/anti-tempering measure?
 	u8 unk5E3;

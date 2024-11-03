@@ -1008,8 +1008,8 @@ void mnSoundTestFuncRun(GObj *gobj)
 
     if (scSubsysControllerGetPlayerTapButtons(B_BUTTON) != FALSE)
     {
-        gSceneData.scene_prev = gSceneData.scene_curr;
-        gSceneData.scene_curr = nSCKindData;
+        gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+        gSCManagerSceneData.scene_curr = nSCKindData;
 
         auStopBGM();
         func_800266A0_272A0();

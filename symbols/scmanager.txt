@@ -1,4 +1,4 @@
-start_scene_manager = 0x800A1980;
+scManagerRunLoop = 0x800A1980;
 func_800A2698 = 0x800A2698;
 func_800A26B8 = 0x800A26B8;
 scManagerMeterFuncDisplay = 0x800A26D8;

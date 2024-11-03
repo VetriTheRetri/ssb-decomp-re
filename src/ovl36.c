@@ -244,30 +244,30 @@ void mvOpeningMarioInitFighterStagePanel()
 	gmRumbleMakeActor();
 	ftPublicityMakeActor();
 
-	for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
+	for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
 	{
 		FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
-		if (gBattleState->players[i].pkind == nFTPlayerKindNot) continue;
+		if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot) continue;
 
-		ftManagerSetupFilesAllKind(gBattleState->players[i].fkind);
+		ftManagerSetupFilesAllKind(gSCManagerBattleState->players[i].fkind);
 
-		spawn_info.fkind = gBattleState->players[i].fkind;
+		spawn_info.fkind = gSCManagerBattleState->players[i].fkind;
 		spawn_info.pos.x = spawn_position.x;
 		spawn_info.pos.y = spawn_position.y;
 		spawn_info.pos.z = spawn_position.z;
 		spawn_info.lr_spawn = +1;
-		spawn_info.team = gBattleState->players[i].team;
+		spawn_info.team = gSCManagerBattleState->players[i].team;
 		spawn_info.player = i;
 		spawn_info.detail = nFTPartsDetailHigh;
-		spawn_info.costume = gBattleState->players[i].costume;
-		spawn_info.handicap = gBattleState->players[i].handicap;
-		spawn_info.cp_level = gBattleState->players[i].level;
-		spawn_info.stock_count = gBattleState->stock_setting;
+		spawn_info.costume = gSCManagerBattleState->players[i].costume;
+		spawn_info.handicap = gSCManagerBattleState->players[i].handicap;
+		spawn_info.cp_level = gSCManagerBattleState->players[i].level;
+		spawn_info.stock_count = gSCManagerBattleState->stocks;
 		spawn_info.damage = 0;
-		spawn_info.pkind = gBattleState->players[i].pkind;
+		spawn_info.pkind = gSCManagerBattleState->players[i].pkind;
 		spawn_info.controller = &gPlayerControllers[i];
-		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[i].fkind);
+		spawn_info.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
 		gMVOpeningMarioStageFighterGObj = fighter_gobj = ftManagerMakeFighter(&spawn_info);
 
@@ -386,8 +386,8 @@ void mvOpeningMarioMainProc(GObj* arg0)
 
 	if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
 	{
-		gSceneData.scene_prev = gSceneData.scene_curr;
-		gSceneData.scene_curr = 1U;
+		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+		gSCManagerSceneData.scene_curr = 1U;
 		syTaskmanSetLoadScene();
 	}
 
@@ -401,8 +401,8 @@ void mvOpeningMarioMainProc(GObj* arg0)
 
 	if (gMVOpeningMarioFramesElapsed == 60)
 	{
-		gSceneData.scene_prev = gSceneData.scene_curr;
-		gSceneData.scene_curr = 0x1F;
+		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+		gSCManagerSceneData.scene_curr = 0x1F;
 		syTaskmanSetLoadScene();
 	}
 }
@@ -416,16 +416,16 @@ void mvOpeningMarioInitFramesElapsed()
 // 0x8018DE64
 void mvOpeningMarioInit()
 {
-	gMVOpeningMarioBattleState = gDefaultBattleState;
-	gBattleState = &gMVOpeningMarioBattleState;
+	gMVOpeningMarioBattleState = gSCManagerDefaultBattleState;
+	gSCManagerBattleState = &gMVOpeningMarioBattleState;
 
-	gBattleState->game_type = nSCBattleGameTypeOpening;
+	gSCManagerBattleState->game_type = nSCBattleGameTypeOpening;
 
-	gBattleState->gkind = nGRKindCastle;
-	gBattleState->pl_count = 1;
+	gSCManagerBattleState->gkind = nGRKindCastle;
+	gSCManagerBattleState->pl_count = 1;
 
-	gBattleState->players[0].fkind = nFTKindMario;
-	gBattleState->players[0].pkind = nFTPlayerKindKey;
+	gSCManagerBattleState->players[0].fkind = nFTKindMario;
+	gSCManagerBattleState->players[0].pkind = nFTPlayerKindKey;
 
 	mvOpeningMarioLoadFiles();
 	gcMakeGObjSPAfter(0x3F7, mvOpeningMarioMainProc, 0xD, 0x80000000);

@@ -1432,8 +1432,8 @@ void sc1PStageClearInitVars(void)
 	sSC1PStageClearTotalTimeTics = 0;
 	sSC1PStageClearUnused0x801352D0 = 0;
 
-	sSC1PStageClear1PGameStage = gSceneData.spgame_stage;
-	sSC1PStageClearDifficulty = gSaveData.spgame_difficulty;
+	sSC1PStageClear1PGameStage = gSCManagerSceneData.spgame_stage;
+	sSC1PStageClearDifficulty = gSCManagerBackupData.spgame_difficulty;
 
 	switch (sSC1PStageClear1PGameStage)
 	{
@@ -1445,20 +1445,20 @@ void sc1PStageClearInitVars(void)
 	case nSC1PGameStageBonus2:
 	case nSC1PGameStageBonus3:
 		sSC1PStageClearKind = nSC1PStageClearKindResult;
-		sSC1PStageClearBonusObjectivesCleared = gSceneData.bonus_tasks_curr;
+		sSC1PStageClearBonusObjectivesCleared = gSCManagerSceneData.bonus_tasks_complete;
 		break;
 
 	case nSC1PGameStageBoss:
 		sSC1PStageClearKind = nSC1PStageClearKindGame;
 		break;
 	}
-	sSC1PStageClearSecondsRemain = gSceneData.spgame_time_seconds;
-	sSC1PStageClearDamageDealt = gSCManager1PGameBattleState.players[gSceneData.spgame_player].total_damage_dealt;
-	sSC1PStageClearScoreTotal = gSceneData.spgame_score;
+	sSC1PStageClearSecondsRemain = gSCManagerSceneData.spgame_time_remain;
+	sSC1PStageClearDamageDealt = gSCManager1PGameBattleState.players[gSCManagerSceneData.player].total_damage_dealt;
+	sSC1PStageClearScoreTotal = gSCManagerSceneData.spgame_score;
 
-	sSC1PStageClearBonusFlags[0] = gSceneData.bonus_get_mask[0];
-	sSC1PStageClearBonusFlags[1] = gSceneData.bonus_get_mask[1];
-	sSC1PStageClearBonusFlags[2] = gSceneData.bonus_get_mask[2];
+	sSC1PStageClearBonusFlags[0] = gSCManagerSceneData.bonus_get_mask[0];
+	sSC1PStageClearBonusFlags[1] = gSCManagerSceneData.bonus_get_mask[1];
+	sSC1PStageClearBonusFlags[2] = gSCManagerSceneData.bonus_get_mask[2];
 
 	sSC1PStageClearIsHaveBonusStats = sc1PStageClearCheckHaveBonusStats();
 
@@ -1507,7 +1507,7 @@ void sc1PStageClearInitVars(void)
 // 0x80133EEC
 void sc1PStageClearUpdateTotal1PGameScore(void)
 {
-	gSceneData.spgame_score = sSC1PStageClearScoreTotal;
+	gSCManagerSceneData.spgame_score = sSC1PStageClearScoreTotal;
 }
 
 // 0x80133F00
@@ -1520,7 +1520,7 @@ void sc1PStageClearUpdateBonusScore(void)
 // 0x80133F28
 sb32 sc1PStageClearCheckNoTimer(void)
 {
-	if (gSceneData.spgame_time_limit == SCBATTLE_TIMELIMIT_INFINITE)
+	if (gSCManagerSceneData.spgame_time_limit == SCBATTLE_TIMELIMIT_INFINITE)
 	{
 		return TRUE;
 	}
@@ -1882,8 +1882,8 @@ void sc1PStageClearFuncRun(GObj *gobj)
 		{
 			if (sSC1PStageClearIsAllowProceedNext != FALSE)
 			{
-				gSceneData.scene_prev = gSceneData.scene_curr;
-				gSceneData.scene_curr = nSCKindTitle;
+				gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+				gSCManagerSceneData.scene_curr = nSCKindTitle;
 
 				sc1PStageClearUpdateTotal1PGameScore();
 				
@@ -2006,7 +2006,7 @@ void sc1PStageClearFuncStart(void)
 
 	case nSC1PGameStageBonus1:
 	case nSC1PGameStageBonus2:
-		if (gSceneData.bonus_tasks_curr == 10)
+		if (gSCManagerSceneData.bonus_tasks_complete == 10)
 		{
 			auPlaySong(0, nSYAudioBGM1PBonusGameClear);
 		}
@@ -2014,7 +2014,7 @@ void sc1PStageClearFuncStart(void)
 		break;
 
 	case nSC1PGameStageBonus3:
-		if (gSceneData.spgame_time_seconds != 0)
+		if (gSCManagerSceneData.spgame_time_remain != 0)
 		{
 			auPlaySong(0, nSYAudioBGM1PBonusGameClear);
 		}

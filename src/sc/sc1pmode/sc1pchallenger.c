@@ -295,7 +295,7 @@ void sc1PChallengerMakeDecalsCamera(void)
 // 0x801320E0
 void sc1PChallengerInitVars(void)
 {
-    sSC1PChallengerFighterKind = gSceneData.challenger_fkind;
+    sSC1PChallengerFighterKind = gSCManagerSceneData.challenger_fkind;
     
     sSC1PChallengerUnk0x80132490 = 0.0F;
     
@@ -326,8 +326,8 @@ void sc1PChallengerFuncRun(GObj *gobj)
         }
         if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
         {
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindTitle;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindTitle;
             
             func_ovl23_80132110();
             syTaskmanSetLoadScene();

@@ -89,14 +89,14 @@ void func_ovl5_8018D1A0()
 	FTCreateDesc player_spawn;
 	syColorRGBA color;
 
-	gUnkExplainBattleState = gDefaultBattleState;
-	gBattleState = &gUnkExplainBattleState;
+	gUnkExplainBattleState = gSCManagerDefaultBattleState;
+	gSCManagerBattleState = &gUnkExplainBattleState;
 
-	gBattleState->game_type = nSCBattleGameTypeUnk6;
-	gBattleState->gkind = nGRKindPupupu;
-	gBattleState->pl_count = 1;
-	gBattleState->players[0].fkind = nFTKindMario;
-	gBattleState->players[0].pkind = nFTPlayerKindKey;
+	gSCManagerBattleState->game_type = nSCBattleGameTypeUnk6;
+	gSCManagerBattleState->gkind = nGRKindPupupu;
+	gSCManagerBattleState->pl_count = 1;
+	gSCManagerBattleState->players[0].fkind = nFTKindMario;
+	gSCManagerBattleState->players[0].pkind = nFTPlayerKindKey;
 
 	func_ovl5_8018D0C0();
 	gcMakeGObjSPAfter(0x3F7U, func_ovl5_8018D160, 0xDU, GOBJ_PRIORITY_DEFAULT);
@@ -116,33 +116,33 @@ void func_ovl5_8018D1A0()
 	gmRumbleMakeActor();
 	ftPublicityMakeActor();
 
-	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
+	for (player = 0; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)
 	{
 		player_spawn = dFTManagerDefaultFighterDesc;
 
-		if (gBattleState->players[player].pkind == nFTPlayerKindNot)
+		if (gSCManagerBattleState->players[player].pkind == nFTPlayerKindNot)
 		{
 			continue;
 		}
-		ftManagerSetupFilesAllKind(gBattleState->players[player].fkind);
+		ftManagerSetupFilesAllKind(gSCManagerBattleState->players[player].fkind);
 
-		player_spawn.fkind = gBattleState->players[player].fkind;
+		player_spawn.fkind = gSCManagerBattleState->players[player].fkind;
 		player_spawn.pos.x = 0.0F;
 		player_spawn.pos.y = 150.0F;
 		player_spawn.pos.z = 0.0F;
 		player_spawn.lr_spawn = +1;
-		player_spawn.team = gBattleState->players[player].team;
+		player_spawn.team = gSCManagerBattleState->players[player].team;
 		player_spawn.player = player;
 		player_spawn.detail = nFTPartsDetailHigh;
-		player_spawn.costume = gBattleState->players[player].costume;
-		player_spawn.handicap = gBattleState->players[player].handicap;
-		player_spawn.cp_level = gBattleState->players[player].level;
-		player_spawn.stock_count = gBattleState->stock_setting;
+		player_spawn.costume = gSCManagerBattleState->players[player].costume;
+		player_spawn.handicap = gSCManagerBattleState->players[player].handicap;
+		player_spawn.cp_level = gSCManagerBattleState->players[player].level;
+		player_spawn.stock_count = gSCManagerBattleState->stocks;
 		player_spawn.damage = 0;
-		player_spawn.pkind = gBattleState->players[player].pkind;
+		player_spawn.pkind = gSCManagerBattleState->players[player].pkind;
 		player_spawn.controller = &gPlayerControllers[player];
 
-		player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[player].fkind);
+		player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[player].fkind);
 
 		fighter_gobj = ftManagerMakeFighter(&player_spawn);
 		gUnkExplainFighterGObj = fighter_gobj;
@@ -170,6 +170,6 @@ void overlay_set23_entry()
 	D_ovl5_8018D5D8.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl5_BSS_END);
 	func_800A2698(&D_ovl5_8018D5D8);
 	auStopBGM();
-	gSceneData.scene_prev = gSceneData.scene_curr;
-	gSceneData.scene_curr = nSCKindTitle;
+	gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+	gSCManagerSceneData.scene_curr = nSCKindTitle;
 }

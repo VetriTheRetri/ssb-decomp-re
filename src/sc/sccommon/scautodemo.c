@@ -226,7 +226,7 @@ void scAutoDemoStartBattle(void)
 
 		fighter_gobj = fighter_gobj->link_next;
 	}
-	gBattleState->game_status = nSCBattleGameStatusGo;
+	gSCManagerBattleState->game_status = nSCBattleGameStatusGo;
 }
 
 // 0x8018D134
@@ -240,8 +240,8 @@ void scAutoDemoDetectExit(void)
 
 		if (button_tap & (A_BUTTON | B_BUTTON | START_BUTTON))
 		{
-			gSceneData.scene_prev = gSceneData.scene_curr;
-			gSceneData.scene_curr = nSCKindTitle;
+			gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+			gSCManagerSceneData.scene_curr = nSCKindTitle;
 
 			syTaskmanSetLoadScene();
 			break;
@@ -289,7 +289,7 @@ void func_ovl64_8018D220(GObj *fighter_gobj)
 // 0x8018D2CC
 void scAutoDemoSetFocusPlayer1(void)
 {
-	GObj *fighter_gobj = gBattleState->players[0].fighter_gobj;
+	GObj *fighter_gobj = gSCManagerBattleState->players[0].fighter_gobj;
 	FTStruct *fp = ftGetStruct(fighter_gobj);
 
 	if (scAutoDemoCheckStopFocusPlayer(fp) != FALSE)
@@ -298,9 +298,9 @@ void scAutoDemoSetFocusPlayer1(void)
 	}
 	else
 	{
-		ftGetStruct(gBattleState->players[1].fighter_gobj)->cp_level =
-		ftGetStruct(gBattleState->players[2].fighter_gobj)->cp_level =
-		ftGetStruct(gBattleState->players[3].fighter_gobj)->cp_level = 1;
+		ftGetStruct(gSCManagerBattleState->players[1].fighter_gobj)->cp_level =
+		ftGetStruct(gSCManagerBattleState->players[2].fighter_gobj)->cp_level =
+		ftGetStruct(gSCManagerBattleState->players[3].fighter_gobj)->cp_level = 1;
 
 		func_ovl64_8018D220(fighter_gobj);
 		ftParamSetModelPartDetailAll(fighter_gobj, nFTPartsDetailHigh);
@@ -316,7 +316,7 @@ void scAutoDemoSetFocusPlayer1(void)
 // 0x8018D39C
 void SCAutoDemoProcFocusPlayer1(void)
 {
-	if (scAutoDemoCheckStopFocusPlayer(ftGetStruct(gBattleState->players[0].fighter_gobj)) != FALSE)
+	if (scAutoDemoCheckStopFocusPlayer(ftGetStruct(gSCManagerBattleState->players[0].fighter_gobj)) != FALSE)
 	{
 		sSCAutoDemoFocusChangeWait = 0;
 	}
@@ -325,8 +325,8 @@ void SCAutoDemoProcFocusPlayer1(void)
 // 0x8018D3D4
 void scAutoDemoSetFocusPlayer2(void)
 {
-	GObj *p2_gobj = gBattleState->players[1].fighter_gobj;
-	GObj *p1_gobj = gBattleState->players[0].fighter_gobj;
+	GObj *p2_gobj = gSCManagerBattleState->players[1].fighter_gobj;
+	GObj *p1_gobj = gSCManagerBattleState->players[0].fighter_gobj;
 	FTStruct *p2_fp = ftGetStruct(p2_gobj);
 
 	SObjGetStruct(sSCAutoDemoFighterNameGObj)->sprite.attr |= SP_HIDDEN;
@@ -340,11 +340,11 @@ void scAutoDemoSetFocusPlayer2(void)
 	}
 	else
 	{
-		ftGetStruct(gBattleState->players[1].fighter_gobj)->cp_level = 9;
+		ftGetStruct(gSCManagerBattleState->players[1].fighter_gobj)->cp_level = 9;
 
-		ftGetStruct(gBattleState->players[0].fighter_gobj)->cp_level =
-		ftGetStruct(gBattleState->players[2].fighter_gobj)->cp_level =
-		ftGetStruct(gBattleState->players[3].fighter_gobj)->cp_level = 1;
+		ftGetStruct(gSCManagerBattleState->players[0].fighter_gobj)->cp_level =
+		ftGetStruct(gSCManagerBattleState->players[2].fighter_gobj)->cp_level =
+		ftGetStruct(gSCManagerBattleState->players[3].fighter_gobj)->cp_level = 1;
 
 		func_ovl64_8018D220(p2_gobj);
 		ftParamSetModelPartDetailAll(p2_gobj, nFTPartsDetailHigh);
@@ -358,7 +358,7 @@ void scAutoDemoSetFocusPlayer2(void)
 // 0x8018D4F0
 void SCAutoDemoProcFocusPlayer2(void)
 {
-	if (scAutoDemoCheckStopFocusPlayer(ftGetStruct(gBattleState->players[1].fighter_gobj)) != FALSE)
+	if (scAutoDemoCheckStopFocusPlayer(ftGetStruct(gSCManagerBattleState->players[1].fighter_gobj)) != FALSE)
 	{
 		sSCAutoDemoFocusChangeWait = 0;
 	}
@@ -367,14 +367,14 @@ void SCAutoDemoProcFocusPlayer2(void)
 // 0x8018D528
 void scAutoDemoResetFocusPlayerAll(void)
 {
-	GObj *p2_gobj = gBattleState->players[1].fighter_gobj;
+	GObj *p2_gobj = gSCManagerBattleState->players[1].fighter_gobj;
 
 	cmManagerSetCameraStatusDefault();
 
-	ftGetStruct(gBattleState->players[0].fighter_gobj)->cp_level =
+	ftGetStruct(gSCManagerBattleState->players[0].fighter_gobj)->cp_level =
 	ftGetStruct(p2_gobj)->cp_level =
-	ftGetStruct(gBattleState->players[2].fighter_gobj)->cp_level =
-	ftGetStruct(gBattleState->players[3].fighter_gobj)->cp_level = 9;
+	ftGetStruct(gSCManagerBattleState->players[2].fighter_gobj)->cp_level =
+	ftGetStruct(gSCManagerBattleState->players[3].fighter_gobj)->cp_level = 9;
 
 	ftParamSetModelPartDetailAll(p2_gobj, nFTPartsDetailLow);
 
@@ -392,8 +392,8 @@ void scAutoDemoSetMagnifyDisplayOn(void)
 // 0x8018D5F0
 void scAutoDemoExit(void)
 {
-	gSceneData.scene_prev = gSceneData.scene_curr;
-	gSceneData.scene_curr = nSCKindN64;
+	gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+	gSCManagerSceneData.scene_curr = nSCKindN64;
 
 	syTaskmanSetLoadScene();
 }
@@ -523,9 +523,9 @@ s32 scAutoDemoGetFighterKind(s32 player)
 
 	if (player < 2)
 	{
-		return gSceneData.demo_fkind[player];
+		return gSCManagerSceneData.demo_fkind[player];
 	}
-	character_flag = (gSaveData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER);
+	character_flag = (gSCManagerBackupData.fighter_mask | LBBACKUP_CHARACTER_MASK_STARTER);
 
 	character_count1 = scAutoDemoGetFighterKindsNum(character_flag), 
 	character_count2 = scAutoDemoGetFighterKindsNum(sSCAutoDemoCharacterFlag);
@@ -552,30 +552,30 @@ void scAutoDemoInitDemo(void)
 {
 	s32 i;
 
-	sSCAutoDemoBattleState = gDefaultBattleState;
-	gBattleState = &sSCAutoDemoBattleState;
+	sSCAutoDemoBattleState = gSCManagerDefaultBattleState;
+	gSCManagerBattleState = &sSCAutoDemoBattleState;
 
-	gBattleState->game_type = nSCBattleGameTypeDemo;
-	gBattleState->gkind = dSCAutoDemoGroundOrder[gSceneData.demo_ground_order];
+	gSCManagerBattleState->game_type = nSCBattleGameTypeDemo;
+	gSCManagerBattleState->gkind = dSCAutoDemoGroundOrder[gSCManagerSceneData.demo_gkind_order];
 
-	gSceneData.demo_ground_order++;
+	gSCManagerSceneData.demo_gkind_order++;
 
-	if (gSceneData.demo_ground_order >= ARRAY_COUNT(dSCAutoDemoGroundOrder))
+	if (gSCManagerSceneData.demo_gkind_order >= ARRAY_COUNT(dSCAutoDemoGroundOrder))
 	{
-		gSceneData.demo_ground_order = 0;
+		gSCManagerSceneData.demo_gkind_order = 0;
 	}
-	sSCAutoDemoCharacterFlag = (1 << gSceneData.demo_fkind[0]) | (1 << gSceneData.demo_fkind[1]);
+	sSCAutoDemoCharacterFlag = (1 << gSCManagerSceneData.demo_fkind[0]) | (1 << gSCManagerSceneData.demo_fkind[1]);
 
-	for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
+	for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
 	{
-		gBattleState->players[i].pkind = nFTPlayerKindCom;
-		gBattleState->players[i].fkind = scAutoDemoGetFighterKind(i);
-		gBattleState->players[i].level = 9;
+		gSCManagerBattleState->players[i].pkind = nFTPlayerKindCom;
+		gSCManagerBattleState->players[i].fkind = scAutoDemoGetFighterKind(i);
+		gSCManagerBattleState->players[i].level = 9;
 
-		gBattleState->players[i].stock_damage_all = scAutoDemoGetPlayerDamage(i);
+		gSCManagerBattleState->players[i].stock_damage_all = scAutoDemoGetPlayerDamage(i);
 	}
-	gBattleState->pl_count = 0;
-	gBattleState->cp_count = 4;
+	gSCManagerBattleState->pl_count = 0;
+	gSCManagerBattleState->cp_count = 4;
 
 	for (i = 0; i < ARRAY_COUNT(sSCAutoDemoMapObjs); i++)
 	{
@@ -608,9 +608,9 @@ void scAutoDemoInitSObjs(void)
 	);
 	gcAddGObjDisplay(interface_gobj, lbCommonDrawSObjAttr, 23, GOBJ_PRIORITY_DEFAULT, -1);
 
-	for (player = 0; player < ARRAY_COUNT(gSceneData.demo_fkind); player++)
+	for (player = 0; player < ARRAY_COUNT(gSCManagerSceneData.demo_fkind); player++)
 	{
-		SObj *sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, file, dSCAutoDemoFighterNameSpriteOffsets[gBattleState->players[player].fkind]));
+		SObj *sobj = lbCommonMakeSObjForGObj(interface_gobj, lbRelocGetFileData(Sprite*, file, dSCAutoDemoFighterNameSpriteOffsets[gSCManagerBattleState->players[player].fkind]));
 
 		sobj->sprite.red   = 0xFF;
 		sobj->sprite.green = 0xFF;
@@ -649,48 +649,48 @@ void scAutoDemoFuncStart(void)
 	gmRumbleMakeActor();
 	ftPublicityMakeActor();
 
-	for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
+	for (player = 0; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)
 	{
 		player_spawn = dFTManagerDefaultFighterDesc;
 
-		ftManagerSetupFilesAllKind(gBattleState->players[player].fkind);
+		ftManagerSetupFilesAllKind(gSCManagerBattleState->players[player].fkind);
 
-		player_spawn.fkind = gBattleState->players[player].fkind;
+		player_spawn.fkind = gSCManagerBattleState->players[player].fkind;
 
 		scAutoDemoGetPlayerSpawnPosition(player, &player_spawn.pos);
 
 		player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? -1 : +1;
 
-		player_spawn.team = gBattleState->players[player].team;
+		player_spawn.team = gSCManagerBattleState->players[player].team;
 
 		player_spawn.player = player;
 
-		player_spawn.detail = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
+		player_spawn.detail = ((gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
-		player_spawn.costume = gBattleState->players[player].costume;
+		player_spawn.costume = gSCManagerBattleState->players[player].costume;
 
-		player_spawn.shade = gBattleState->players[player].shade;
+		player_spawn.shade = gSCManagerBattleState->players[player].shade;
 
-		player_spawn.handicap = gBattleState->players[player].handicap;
+		player_spawn.handicap = gSCManagerBattleState->players[player].handicap;
 
-		player_spawn.cp_level = gBattleState->players[player].level;
+		player_spawn.cp_level = gSCManagerBattleState->players[player].level;
 
-		player_spawn.stock_count = gBattleState->stock_setting;
+		player_spawn.stock_count = gSCManagerBattleState->stocks;
 
-		player_spawn.damage = gBattleState->players[player].stock_damage_all;
+		player_spawn.damage = gSCManagerBattleState->players[player].stock_damage_all;
 
-		player_spawn.pkind = gBattleState->players[player].pkind;
+		player_spawn.pkind = gSCManagerBattleState->players[player].pkind;
 
 		player_spawn.controller = &gPlayerControllers[player];
 
-		player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[player].fkind);
+		player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[player].fkind);
 
 		player_spawn.is_skip_entry = TRUE;
 
 		fighter_gobj = ftManagerMakeFighter(&player_spawn);
 
-		gBattleState->players[player].player_color = player;
-		gBattleState->players[player].tag_kind = player;
+		gSCManagerBattleState->players[player].color = player;
+		gSCManagerBattleState->players[player].tag = player;
 
 		ftParamInitPlayerBattleStats(player, fighter_gobj);
 	}

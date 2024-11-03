@@ -65,17 +65,17 @@ extern halAudioUnknown* auBGMPlayers;
 
 
 // Forward declarations
-void mnResultsInit();
-void mnResultsDrawResults0(s32 arg0);
-void mnResultsDrawResults1(s32 arg0);
-void mnResultsDrawResults2(s32 arg0);
-void mnResultsDrawResults3(s32 arg0);
-void mnResultsDrawResultsNoContest(s32 arg0);
-u8 mnResultsGetWinningTeam();
-s32 mnResultsGetWinnerPort();
-s32 mnResultsGetFtKind(s32 port_id);
-s32 mnResultsGetKOsMinusTKOs(s32 port_id);
-s32 mnResultsGetPlayerCountByPlace(s32 place);
+void mnVSResultsInit();
+void mnVSResultsDrawResults0(s32 arg0);
+void mnVSResultsDrawResults1(s32 arg0);
+void mnVSResultsDrawResults2(s32 arg0);
+void mnVSResultsDrawResults3(s32 arg0);
+void mnVSResultsDrawResultsNoContest(s32 arg0);
+u8 mnVSResultsGetWinningTeam();
+s32 mnVSResultsGetWinnerPort();
+s32 mnVSResultsGetFtKind(s32 port_id);
+s32 mnVSResultsGetKOsMinusTKOs(s32 port_id);
+s32 mnVSResultsGetPlayerCountByPlace(s32 place);
 
 
 // Data
@@ -160,70 +160,70 @@ s32 D_ovl31_80138F90[] = {
 s32 D_ovl31_801398A0[182];
 
 // 0x80139B78 frames elapsed on Results screen
-s32 gMNResultsFramesElapsed;
+s32 gMNVSResultsFramesElapsed;
 
 // 0x80139B7C
-s32 gMNResultsHorizontalLineWidth;
+s32 gMNVSResultsHorizontalLineWidth;
 
 // 0x80139B80
-s32 gMNResultsKOs[4];
+s32 gMNVSResultsKOs[4];
 
 // 0x80139B90
-s32 gMNResultsTKOs[4];
+s32 gMNVSResultsTKOs[4];
 
 // 0x80139BA0;
-s32 gMNResultsPoints[4];
+s32 gMNVSResultsPoints[4];
 
 // 0x80139BB0
-s32 gMNResultsPlacement[4];
+s32 gMNVSResultsPlacement[4];
 
 // 0x80139BC0
-u32 gMNResultsOverlayAlpha;
+u32 gMNVSResultsOverlayAlpha;
 
 // 0x80139BC4
-s32 gMNResultsBackgroundOverlayAlpha;
+s32 gMNVSResultsBackgroundOverlayAlpha;
 
 // 0x80139BC8
-s32 gMNResultsBackgroundOverlay2Alpha;
+s32 gMNVSResultsBackgroundOverlay2Alpha;
 
 // 0x80139BD0
-sb32 gMNResultsIsPresent[4];
+sb32 gMNVSResultsIsPresent[4];
 
 // 0x80139BE0
-GObj* gMNResultsFighterGObjs[4];
+GObj* gMNVSResultsFighterGObjs[4];
 
 // 0x80139BF0
-s32 gMNResultsFTKind[4];
+s32 gMNVSResultsFTKind[4];
 
 // 0x80139C00
-void* gMNResultsFigatreeHeaps[4];
+void* gMNVSResultsFigatreeHeaps[4];
 
 // 0x80139C10
-s32 gMNResultsGameRule;
+s32 gMNVSResultsGameRule;
 
 // 0x80139C14
-ub8 gMNResultsIsTeamBattle;
+ub8 gMNVSResultsIsTeamBattle;
 
 // 0x80139C18 frames to wait until pressing start will exit the Results screen
-s32 gMNResultsMinFramesElapsed;
+s32 gMNVSResultsMinFramesElapsed;
 
 // 0x80139C20
-sb32 gMNResultsIsSharedWinner[4];
+sb32 gMNVSResultsIsSharedWinner[4];
 
 // 0x80139C30
 sb32 D_ovl31_80139C30[4];
 
 // 0x80139C40
-s32 gMNResultsCharacterAlpha;
+s32 gMNVSResultsCharacterAlpha;
 
 // 0x80139C44
-s32 gMNResultsDrawBackgroundFrame;
+s32 gMNVSResultsDrawBackgroundFrame;
 
 // 0x80139C48
-s32 gMNResultsDrawWinnerTextFrame;
+s32 gMNVSResultsDrawWinnerTextFrame;
 
 // 0x80139C4C
-s32 gMNResultsDrawFightersFrame;
+s32 gMNVSResultsDrawFightersFrame;
 
 // 0x80139C50
 u32 D_ovl31_80139C50[240];
@@ -235,81 +235,81 @@ LBFileNode D_ovl31_8013A010;
 s32 D_ovl31_8013A018[12];
 
 // 0x8013A048
-s32 gMNResultsFiles[8];
+s32 gMNVSResultsFiles[8];
 
 
 
 // 0x80131B20
-void mnResultsFuncLights(Gfx **display_list)
+void mnVSResultsFuncLights(Gfx **display_list)
 {
 	gSPSetGeometryMode(display_list[0]++, G_LIGHTING);
 	ftDisplayLightsDrawReflect(display_list, scSubsysFighterGetLightAngleX(), scSubsysFighterGetLightAngleY());
 }
 
 // 0x80131B78
-s32 mnResultsGetPlayerCount()
+s32 mnVSResultsGetPlayerCount()
 {
-	return gTransferBattleState.pl_count + gTransferBattleState.cp_count;
+	return gSCManagerTransferBattleState.pl_count + gSCManagerTransferBattleState.cp_count;
 }
 
 // 0x80131B90
-void mnResultsSaveDataToSRAM()
+void mnVSResultsSaveDataToSRAM()
 {
 	LBBackupVSRecord* vs_record;
 	s32 i, j;
 	u8 fkind, opp_fkind;
 
-	gSaveData.vs_total_battles += 1;
-	gSaveData.unlock_task_inishie |= 1 << gTransferBattleState.gkind;
+	gSCManagerBackupData.vs_total_battles++;
+	gSCManagerBackupData.ground_mask |= (1 << gSCManagerTransferBattleState.gkind);
 
-	if (gSaveData.unlock_task_itemswitch < 0xFF)
+	if (gSCManagerBackupData.vs_itemswitch_battles < U8_MAX)
 	{
-		gSaveData.unlock_task_itemswitch += 1;
+		gSCManagerBackupData.vs_itemswitch_battles++;
 	}
 
 	for (i = 0; i < 4; i++)
 	{
-		if (gTransferBattleState.players[i].pkind != 2)
+		if (gSCManagerTransferBattleState.players[i].pkind != 2)
 		{
-			fkind = gTransferBattleState.players[i].fkind;
-			vs_record = &gSaveData.vs_records[fkind];
+			fkind = gSCManagerTransferBattleState.players[i].fkind;
+			vs_record = &gSCManagerBackupData.vs_records[fkind];
 
-			vs_record->time_used += (gTransferBattleState.battle_time_curr / 60);
+			vs_record->time_used += (gSCManagerTransferBattleState.time_passed / 60);
 
-			if (vs_record->time_used >= I_MIN_TO_TICS(1000))
+			if (vs_record->time_used > I_MIN_TO_TICS(1000) - 1)
 				vs_record->time_used = I_MIN_TO_TICS(1000) - 1;
 
-			vs_record->damage_dealt += gTransferBattleState.players[i].total_damage_dealt;
+			vs_record->damage_dealt += gSCManagerTransferBattleState.players[i].total_damage_dealt;
 
-			if (vs_record->damage_dealt >= 1000000)
+			if (vs_record->damage_dealt > 999999)
 				vs_record->damage_dealt = 999999;
 
-			vs_record->damage_taken += gTransferBattleState.players[i].total_damage_all;
+			vs_record->damage_taken += gSCManagerTransferBattleState.players[i].total_damage_all;
 
-			if (vs_record->damage_taken >= 1000000)
+			if (vs_record->damage_taken > 999999)
 				vs_record->damage_taken = 999999;
 
-			vs_record->self_destructs += gTransferBattleState.players[i].total_self_destruct;
+			vs_record->self_destructs += gSCManagerTransferBattleState.players[i].total_self_destruct;
 
-			if (vs_record->self_destructs >= 10000)
+			if (vs_record->self_destructs > 9999)
 				vs_record->self_destructs = 9999;
 
 			vs_record->games_played += 1;
-			vs_record->player_count_tally += mnResultsGetPlayerCount();
+			vs_record->player_count_tally += mnVSResultsGetPlayerCount();
 
 			for (j = 0; j < 4; j++)
 			{
-				if ((i != j) && (gTransferBattleState.players[j].pkind != nFTPlayerKindNot))
+				if ((i != j) && (gSCManagerTransferBattleState.players[j].pkind != nFTPlayerKindNot))
 				{
-					opp_fkind = gTransferBattleState.players[j].fkind;
+					opp_fkind = gSCManagerTransferBattleState.players[j].fkind;
 
-					gSaveData.vs_records[fkind].ko_count[opp_fkind] += gTransferBattleState.players[i].total_ko_player[j];
+					gSCManagerBackupData.vs_records[fkind].ko_count[opp_fkind] += gSCManagerTransferBattleState.players[i].total_ko_player[j];
 
-					if (gSaveData.vs_records[fkind].ko_count[opp_fkind] >= 10000)
-						gSaveData.vs_records[fkind].ko_count[opp_fkind] = 9999;
+					if (gSCManagerBackupData.vs_records[fkind].ko_count[opp_fkind] > 9999)
+						gSCManagerBackupData.vs_records[fkind].ko_count[opp_fkind] = 9999;
 
-					gSaveData.vs_records[fkind].player_count_tallies[opp_fkind] += mnResultsGetPlayerCount();
-					gSaveData.vs_records[fkind].played_against[opp_fkind] += 1;
+					gSCManagerBackupData.vs_records[fkind].player_count_tallies[opp_fkind] += mnVSResultsGetPlayerCount();
+					gSCManagerBackupData.vs_records[fkind].played_against[opp_fkind] += 1;
 				}
 			}
 		}
@@ -319,11 +319,11 @@ void mnResultsSaveDataToSRAM()
 }
 
 // 0x80131E18
-sb32 mnResultsCheckStartPressed()
+sb32 mnVSResultsCheckStartPressed()
 {
 	s32 i;
 
-	if (gMNResultsFramesElapsed >= gMNResultsMinFramesElapsed)
+	if (gMNVSResultsFramesElapsed >= gMNVSResultsMinFramesElapsed)
 	{
 		for (i = 0; i < ARRAY_COUNT(gPlayerControllers); i++)
 		{
@@ -336,7 +336,7 @@ sb32 mnResultsCheckStartPressed()
 }
 
 // 0x80131EB0
-void mnResultsAnnounceWinner()
+void mnVSResultsAnnounceWinner()
 {
 	s32 announcer_names[12] = {
 
@@ -360,10 +360,10 @@ void mnResultsAnnounceWinner()
 		0x1EB
 	};
 
-	if (gMNResultsGameRule == 4)
+	if (gMNVSResultsGameRule == 4)
 	{
 		// No Contest
-		switch (gMNResultsFramesElapsed)
+		switch (gMNVSResultsFramesElapsed)
 		{
 			case 0x2:
 				func_800269C0_275C0(0x1F6U);
@@ -373,16 +373,16 @@ void mnResultsAnnounceWinner()
 				return;
 		}
 	}
-	else if (!gMNResultsIsTeamBattle)
+	else if (!gMNVSResultsIsTeamBattle)
 	{
 		// FFA - "This Game's Winner Is..."
-		switch (gMNResultsFramesElapsed)
+		switch (gMNVSResultsFramesElapsed)
 		{
 			case 0x51:
 				func_800269C0_275C0(0x216U);
 				return;
 			case 0xD2:
-				func_800269C0_275C0(announcer_names[mnResultsGetFtKind(mnResultsGetWinnerPort())]);
+				func_800269C0_275C0(announcer_names[mnVSResultsGetFtKind(mnVSResultsGetWinnerPort())]);
 				return;
 			case 0x10E:
 				func_800269C0_275C0(0x272U);
@@ -392,10 +392,10 @@ void mnResultsAnnounceWinner()
 	else
 	{
 		// Teams - "Red/Blue/Grean Team Wins!"
-		switch (gMNResultsFramesElapsed)
+		switch (gMNVSResultsFramesElapsed)
 		{
 			case 0x51:
-				func_800269C0_275C0(announcer_teams[mnResultsGetWinningTeam()]);
+				func_800269C0_275C0(announcer_teams[mnVSResultsGetWinningTeam()]);
 				return;
 			case 0x82:
 				func_800269C0_275C0(0x215U);
@@ -408,13 +408,13 @@ void mnResultsAnnounceWinner()
 }
 
 // 0x8013205C
-s32 mnResultsGetPresentCount()
+s32 mnVSResultsGetPresentCount()
 {
 	s32 i, sum = 0;
 
-	for (i = 0; i < ARRAY_COUNT(gMNResultsIsPresent); i++)
+	for (i = 0; i < ARRAY_COUNT(gMNVSResultsIsPresent); i++)
 	{
-		if (gMNResultsIsPresent[i] == TRUE)
+		if (gMNVSResultsIsPresent[i] == TRUE)
 			sum += 1;
 	}
 
@@ -422,15 +422,15 @@ s32 mnResultsGetPresentCount()
 }
 
 // 0x801320B8
-s32 mnResultsGetLowerPortCount(s32 port_id) {
+s32 mnVSResultsGetLowerPortCount(s32 port_id) {
 	s32 i;
 	s32 sum = 0;
 
-	for (i = 0; i < ARRAY_COUNT(gMNResultsIsPresent); i++)
+	for (i = 0; i < ARRAY_COUNT(gMNVSResultsIsPresent); i++)
 	{
 		if (port_id != i)
 		{
-			if (gMNResultsIsPresent[i] == TRUE)
+			if (gMNVSResultsIsPresent[i] == TRUE)
 				sum += 1;
 		}
 		else
@@ -441,13 +441,13 @@ s32 mnResultsGetLowerPortCount(s32 port_id) {
 }
 
 // 0x80132100
-s32 mnResultsGetPortByPlace(s32 place)
+s32 mnVSResultsGetPortByPlace(s32 place)
 {
 	s32 i;
 
-	for (i = 0; i < ARRAY_COUNT(gMNResultsIsPresent); i++)
+	for (i = 0; i < ARRAY_COUNT(gMNVSResultsIsPresent); i++)
 	{
-		if ((gMNResultsIsPresent[i]) && (place == gMNResultsPlacement[i]))
+		if ((gMNVSResultsIsPresent[i]) && (place == gMNVSResultsPlacement[i]))
 			return i;
 	}
 
@@ -460,18 +460,18 @@ s32 func_ovl31_801321AC(s32 port_id)
 	s32 num_opponents;
 	s32 num_players;
 
-	num_opponents = mnResultsGetLowerPortCount(port_id);
+	num_opponents = mnVSResultsGetLowerPortCount(port_id);
 
-	if (mnResultsGetPlayerCountByPlace(0) == 1)
+	if (mnVSResultsGetPlayerCountByPlace(0) == 1)
 	{
-		switch (mnResultsGetPresentCount())
+		switch (mnVSResultsGetPresentCount())
 		{
 			case 2:
 				break;
 			case 3:
-				if (gMNResultsPlacement[port_id] == 0)
+				if (gMNVSResultsPlacement[port_id] == 0)
 				{
-					switch (mnResultsGetLowerPortCount(port_id))
+					switch (mnVSResultsGetLowerPortCount(port_id))
 					{
 						case 0:
 							num_opponents = 1;
@@ -483,27 +483,27 @@ s32 func_ovl31_801321AC(s32 port_id)
 				}
 				else
 				{
-					if (mnResultsGetLowerPortCount(port_id) == 1)
-						num_opponents = mnResultsGetLowerPortCount(mnResultsGetPortByPlace(0));
+					if (mnVSResultsGetLowerPortCount(port_id) == 1)
+						num_opponents = mnVSResultsGetLowerPortCount(mnVSResultsGetPortByPlace(0));
 				}
 				break;
 			default:
 				switch (port_id)
 				{
 					case 0:
-						if ((gMNResultsPlacement[0] == 0) && (gMNResultsPlacement[1] != 0))
+						if ((gMNVSResultsPlacement[0] == 0) && (gMNVSResultsPlacement[1] != 0))
 							num_opponents = 1;
 						break;
 					case 1:
-						if ((gMNResultsPlacement[0] == 0) && (gMNResultsPlacement[1] != 0))
+						if ((gMNVSResultsPlacement[0] == 0) && (gMNVSResultsPlacement[1] != 0))
 							num_opponents = 0;
 						break;
 					case 2:
-						if ((gMNResultsPlacement[3] == 0) && (gMNResultsPlacement[2] != 0))
+						if ((gMNVSResultsPlacement[3] == 0) && (gMNVSResultsPlacement[2] != 0))
 							num_opponents = 3;
 						break;
 					case 3:
-						if ((gMNResultsPlacement[3] == 0) && (gMNResultsPlacement[2] != 0))
+						if ((gMNVSResultsPlacement[3] == 0) && (gMNVSResultsPlacement[2] != 0))
 							num_opponents = 2;
 						break;
 				}
@@ -515,7 +515,7 @@ s32 func_ovl31_801321AC(s32 port_id)
 }
 
 // 0x8013234C
-s32 mnResultsGetWinnerPort()
+s32 mnVSResultsGetWinnerPort()
 {
 	s32 i;
 	sb32 potential_first_place[4];
@@ -526,11 +526,11 @@ s32 mnResultsGetWinnerPort()
 	int foo;
 
 	// If FFA, use place
-	if ((gMNResultsGameRule == nSCBattleGameRuleTime) || (gMNResultsGameRule == nSCBattleGameRuleStock))
+	if ((gMNVSResultsGameRule == nSCBattleGameRuleTime) || (gMNVSResultsGameRule == nSCBattleGameRuleStock))
 	{
 		for (i = 0; i < 4; i++)
 		{
-			if ((gMNResultsIsPresent[i] == TRUE) && (gMNResultsPlacement[i] == 0))
+			if ((gMNVSResultsIsPresent[i] == TRUE) && (gMNVSResultsPlacement[i] == 0))
 				return i;
 		}
 	}
@@ -540,12 +540,12 @@ s32 mnResultsGetWinnerPort()
 
 		// Get KOs minus TKOs for each port
 		for (i = 0; i < 4; i++)
-			kos_minus_tkos[i] = mnResultsGetKOsMinusTKOs(i); // gets kos minus tkos
+			kos_minus_tkos[i] = mnVSResultsGetKOsMinusTKOs(i); // gets kos minus tkos
 
 		// Set lowest present port to winner and remember which ports may be the winner
 		for (i = 0; i < 4; i++)
 		{
-			if ((gMNResultsIsPresent[i]) && (gMNResultsPlacement[i] == 0))
+			if ((gMNVSResultsIsPresent[i]) && (gMNVSResultsPlacement[i] == 0))
 			{
 				if (winner_port_id == 0x29A)
 					winner_port_id = i;
@@ -584,21 +584,21 @@ s32 mnResultsGetWinnerPort()
 			// Break the tie based on number of KOs
 			for (i = winner_port_id + 1; i < 4; i++)
 			{
-				if ((multi_winner[i]) && (gMNResultsKOs[winner_port_id] < gMNResultsKOs[i]))
+				if ((multi_winner[i]) && (gMNVSResultsKOs[winner_port_id] < gMNVSResultsKOs[i]))
 					winner_port_id = i;
 			}
 
 			for (i = 0; i < 4; i++)
 			{
-				gMNResultsIsSharedWinner[i] = FALSE;
+				gMNVSResultsIsSharedWinner[i] = FALSE;
 			}
 
 			for (i = winner_port_id + 1; i < 4; i++)
 			{
-				if (gMNResultsKOs[winner_port_id] == gMNResultsKOs[i])
+				if (gMNVSResultsKOs[winner_port_id] == gMNVSResultsKOs[i])
 				{
-					gMNResultsIsSharedWinner[i] = TRUE;
-					gMNResultsIsSharedWinner[winner_port_id] = TRUE;
+					gMNVSResultsIsSharedWinner[i] = TRUE;
+					gMNVSResultsIsSharedWinner[winner_port_id] = TRUE;
 				}
 			}
 		}
@@ -608,19 +608,19 @@ s32 mnResultsGetWinnerPort()
 }
 
 // 0x80132A2C
-u8 mnResultsGetWinningTeam()
+u8 mnVSResultsGetWinningTeam()
 {
-	return gTransferBattleState.players[mnResultsGetWinnerPort()].team;
+	return gSCManagerTransferBattleState.players[mnVSResultsGetWinnerPort()].team;
 }
 
 // 0x80132A68
-void mnResultsAnimateLogo(GObj* logo_gobj)
+void mnVSResultsAnimateLogo(GObj* logo_gobj)
 {
 	f32 new_scale;
 	f32 min_scale = 10.0F;
 	f32 max_y = 1000.0F;
 
-	if (gMNResultsFramesElapsed >= 0x28)
+	if (gMNVSResultsFramesElapsed >= 0x28)
 	{
 		if (min_scale < DObjGetStruct(logo_gobj)->scale.vec.f.x)
 		{
@@ -644,7 +644,7 @@ void mnResultsAnimateLogo(GObj* logo_gobj)
 }
 
 // 0x80132B20
-void mnResultsCreateLogo()
+void mnVSResultsCreateLogo()
 {
 	GObj* logo_gobj;
 	s32 winner_port_id;
@@ -670,27 +670,27 @@ void mnResultsCreateLogo()
 		0, 1, 3
 	};
 
-	if (gMNResultsIsTeamBattle == FALSE)
+	if (gMNVSResultsIsTeamBattle == FALSE)
 	{
-		winner_port_id = mnResultsGetWinnerPort();
-		winner_char_id = mnResultsGetFtKind(winner_port_id);
+		winner_port_id = mnVSResultsGetWinnerPort();
+		winner_char_id = mnVSResultsGetFtKind(winner_port_id);
 		color = winner_port_id;
 	}
 
-	if (gMNResultsIsTeamBattle == TRUE)
+	if (gMNVSResultsIsTeamBattle == TRUE)
 	{
-		winner_char_id = mnResultsGetFtKind(mnResultsGetWinnerPort());
-		color = colors[mnResultsGetWinningTeam()];
+		winner_char_id = mnVSResultsGetFtKind(mnVSResultsGetWinnerPort());
+		color = colors[mnVSResultsGetWinningTeam()];
 	}
 
 	logo_gobj = gcMakeGObjSPAfter(0, 0, 0x17, 0x80000000);
 
-	gcSetupCommonDObjs(logo_gobj, GetAddressFromOffset(gMNResultsFiles[4], offsets1[winner_char_id]), 0);
+	gcSetupCommonDObjs(logo_gobj, GetAddressFromOffset(gMNVSResultsFiles[4], offsets1[winner_char_id]), 0);
 	gcAddGObjDisplay(logo_gobj, gcDrawDObjTreeForGObj, 0x21, 0x80000000, -1);
-	gcAddMObjAll(logo_gobj, GetAddressFromOffset(gMNResultsFiles[4], offsets2[winner_char_id]));
-	gcAddMatAnimJointAll(logo_gobj, GetAddressFromOffset(gMNResultsFiles[4], offsets3[winner_char_id]), color);
+	gcAddMObjAll(logo_gobj, GetAddressFromOffset(gMNVSResultsFiles[4], offsets2[winner_char_id]));
+	gcAddMatAnimJointAll(logo_gobj, GetAddressFromOffset(gMNVSResultsFiles[4], offsets3[winner_char_id]), color);
 	gcPlayAnimAll(logo_gobj);
-	gcAddGObjProcess(logo_gobj, &mnResultsAnimateLogo, 1, 1);
+	gcAddGObjProcess(logo_gobj, &mnVSResultsAnimateLogo, 1, 1);
 
 	DObjGetStruct(logo_gobj)->translate.vec.f.x = 0.0F;
 	DObjGetStruct(logo_gobj)->translate.vec.f.y = 100.0F;
@@ -700,7 +700,7 @@ void mnResultsCreateLogo()
 }
 
 // 0x80132D84
-void mnResultsRenderBackground(GObj* bg_gobj)
+void mnVSResultsRenderBackground(GObj* bg_gobj)
 {
 	SObj* bg_sobj = SObjGetStruct(bg_gobj);
 
@@ -715,7 +715,7 @@ void mnResultsRenderBackground(GObj* bg_gobj)
 }
 
 // 0x80132EA8
-void mnResultsCreateBackground()
+void mnVSResultsCreateBackground()
 {
 	GObj* bg_gobj;
 	SObj* bg_sobj;
@@ -753,21 +753,21 @@ void mnResultsCreateBackground()
 	cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
-	if (gMNResultsGameRule == 4)
+	if (gMNVSResultsGameRule == 4)
 		winner_port_id = mtTrigGetRandomIntRange(4);
 	else
 	{
-		if (gMNResultsIsTeamBattle == FALSE)
-			winner_port_id = mnResultsGetWinnerPort();
+		if (gMNVSResultsIsTeamBattle == FALSE)
+			winner_port_id = mnVSResultsGetWinnerPort();
 
-		if (gMNResultsIsTeamBattle == TRUE)
-			winner_port_id = team_colors[mnResultsGetWinningTeam()];
+		if (gMNVSResultsIsTeamBattle == TRUE)
+			winner_port_id = team_colors[mnVSResultsGetWinningTeam()];
 	}
 
 	bg_gobj = gcMakeGObjSPAfter(0, 0, 0x11, 0x80000000);
-	gcAddGObjDisplay(bg_gobj, mnResultsRenderBackground, 0x1A, 0x80000000, -1);
+	gcAddGObjDisplay(bg_gobj, mnVSResultsRenderBackground, 0x1A, 0x80000000, -1);
 
-	bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, GetAddressFromOffset(gMNResultsFiles[0], &FILE_022_BACKGROUND_IMAGE_OFFSET));
+	bg_sobj = lbCommonMakeSObjForGObj(bg_gobj, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_BACKGROUND_IMAGE_OFFSET));
 
 	SObjGetStruct(bg_gobj)->pos.x = 10.0f;
 	SObjGetStruct(bg_gobj)->pos.y = 10.0f;
@@ -780,31 +780,31 @@ void mnResultsCreateBackground()
 }
 
 // 0x80133134
-s32 mnResultsGetPlacement(s32 port_id)
+s32 mnVSResultsGetPlacement(s32 port_id)
 {
-	return gMNResultsPlacement[port_id];
+	return gMNVSResultsPlacement[port_id];
 }
 
 // 0x80133148
-s32 mnResultsGetFtKind(s32 port_id)
+s32 mnVSResultsGetFtKind(s32 port_id)
 {
-	return gMNResultsFTKind[port_id];
+	return gMNVSResultsFTKind[port_id];
 }
 
 // 0x8013315C
-void mnResultsSetFtKind()
+void mnVSResultsSetFtKind()
 {
 	s32 i;
 
-	for (i = 0; i < ARRAY_COUNT(gMNResultsIsPresent); i++)
+	for (i = 0; i < ARRAY_COUNT(gMNVSResultsIsPresent); i++)
 	{
-		if (gMNResultsIsPresent[i])
-			gMNResultsFTKind[i] = gTransferBattleState.players[i].fkind;
+		if (gMNVSResultsIsPresent[i])
+			gMNVSResultsFTKind[i] = gSCManagerTransferBattleState.players[i].fkind;
 	}
 }
 
 // 0x801331DC
-void mnResultsSetFighterPosition(GObj* fighter_gobj, s32 port_id, s32 place)
+void mnVSResultsSetFighterPosition(GObj* fighter_gobj, s32 port_id, s32 place)
 {
 	f32 x_positions_2p[2][4] = {
 
@@ -832,7 +832,7 @@ void mnResultsSetFighterPosition(GObj* fighter_gobj, s32 port_id, s32 place)
 		{ -900.0, -9000.0 }
 	};
 
-	switch (mnResultsGetPresentCount())
+	switch (mnVSResultsGetPresentCount())
 	{
 		case 2:
 			DObjGetStruct(fighter_gobj)->translate.vec.f.x = x_positions_2p[func_ovl31_801321AC(port_id)][place];
@@ -851,14 +851,14 @@ void mnResultsSetFighterPosition(GObj* fighter_gobj, s32 port_id, s32 place)
 }
 
 // 0x801333E4
-void mnResultsMakeFighterFaceWinner(GObj* fighter_gobj, s32 port_id, s32 place)
+void mnVSResultsMakeFighterFaceWinner(GObj* fighter_gobj, s32 port_id, s32 place)
 {
-	s32 winner_port_id = mnResultsGetWinnerPort();
+	s32 winner_port_id = mnVSResultsGetWinnerPort();
 
 	if (place != 0)
 	{
 		DObj* fighter_dobj = DObjGetStruct(fighter_gobj);
-		DObj* winner_dobj = DObjGetStruct(gMNResultsFighterGObjs[winner_port_id]);
+		DObj* winner_dobj = DObjGetStruct(gMNVSResultsFighterGObjs[winner_port_id]);
 		f32 x1 = fighter_dobj->translate.vec.f.x;
 		f32 z1 = fighter_dobj->translate.vec.f.z;
 		f32 x2 = winner_dobj->translate.vec.f.x;
@@ -869,7 +869,7 @@ void mnResultsMakeFighterFaceWinner(GObj* fighter_gobj, s32 port_id, s32 place)
 }
 
 // 0x8013345C
-s32 mnResultsGetVictoryAnim(s32 fkind)
+s32 mnVSResultsGetVictoryAnim(s32 fkind)
 {
 	s32 victory_anims[3] = {
 
@@ -883,68 +883,68 @@ s32 mnResultsGetVictoryAnim(s32 fkind)
 }
 
 // 0x801334CC
-s32 mnResultsGetDefeatedAnim(s32 fkind)
+s32 mnVSResultsGetDefeatedAnim(s32 fkind)
 {
 	return 0x10005;
 }
 
 // 0x801334DC
-void mnResultsSetAnim(GObj* fighter_gobj, s32 port_id)
+void mnVSResultsSetAnim(GObj* fighter_gobj, s32 port_id)
 {
-	if (gMNResultsGameRule == 4)
+	if (gMNVSResultsGameRule == 4)
 	{
-		scSubsysFighterSetStatus(fighter_gobj, mnResultsGetDefeatedAnim(mnResultsGetFtKind(port_id)));
+		scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetDefeatedAnim(mnVSResultsGetFtKind(port_id)));
 		return;
 	}
 
-	switch (mnResultsGetPresentCount())
+	switch (mnVSResultsGetPresentCount())
 	{
 		case 2:
-			switch (gMNResultsPlacement[port_id])
+			switch (gMNVSResultsPlacement[port_id])
 			{
 				case 0:
-					scSubsysFighterSetStatus(fighter_gobj, mnResultsGetVictoryAnim(mnResultsGetFtKind(port_id)));
+					scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetVictoryAnim(mnVSResultsGetFtKind(port_id)));
 					return;
 				case 1:
-					scSubsysFighterSetStatus(fighter_gobj, mnResultsGetDefeatedAnim(mnResultsGetFtKind(port_id)));
+					scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetDefeatedAnim(mnVSResultsGetFtKind(port_id)));
 					return;
 			}
 			break;
 		case 3:
-			if (gMNResultsPlacement[port_id] == 0)
+			if (gMNVSResultsPlacement[port_id] == 0)
 			{
-				scSubsysFighterSetStatus(fighter_gobj, mnResultsGetVictoryAnim(mnResultsGetFtKind(port_id)));
+				scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetVictoryAnim(mnVSResultsGetFtKind(port_id)));
 				return;
 			}
 			else
 			{
-				scSubsysFighterSetStatus(fighter_gobj, mnResultsGetDefeatedAnim(mnResultsGetFtKind(port_id)));
+				scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetDefeatedAnim(mnVSResultsGetFtKind(port_id)));
 				return;
 			}
 		case 4:
 		default:
-			if (gMNResultsPlacement[port_id] == 0)
+			if (gMNVSResultsPlacement[port_id] == 0)
 			{
-				scSubsysFighterSetStatus(fighter_gobj, mnResultsGetVictoryAnim(mnResultsGetFtKind(port_id)));
+				scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetVictoryAnim(mnVSResultsGetFtKind(port_id)));
 				return;
 			}
 			else
 			{
-				scSubsysFighterSetStatus(fighter_gobj, mnResultsGetDefeatedAnim(mnResultsGetFtKind(port_id)));
+				scSubsysFighterSetStatus(fighter_gobj, mnVSResultsGetDefeatedAnim(mnVSResultsGetFtKind(port_id)));
 				return;
 			}
 	}
 }
 
 // 0x80133684
-s32 mnResultsGetPlayerCountByPlace(s32 place)
+s32 mnVSResultsGetPlayerCountByPlace(s32 place)
 {
 	s32 sum = 0;
 	s32 i;
 
 	for (i = 0; i < 4; i++)
 	{
-		if ((gMNResultsIsPresent[i]) && (place == gMNResultsPlacement[i]))
+		if ((gMNVSResultsIsPresent[i]) && (place == gMNVSResultsPlacement[i]))
 			sum += 1;
 	}
 
@@ -952,14 +952,14 @@ s32 mnResultsGetPlayerCountByPlace(s32 place)
 }
 
 // 0x80133718
-s32 mnResultsGetPlayerCountAhead(s32 port_id)
+s32 mnVSResultsGetPlayerCountAhead(s32 port_id)
 {
 	s32 sum = 0;
 	s32 i;
 
 	for (i = 0; i < 4; i++)
 	{
-		if ((port_id != i) && (gMNResultsIsPresent[i]) && (gMNResultsPlacement[i] < gMNResultsPlacement[port_id]))
+		if ((port_id != i) && (gMNVSResultsIsPresent[i]) && (gMNVSResultsPlacement[i] < gMNVSResultsPlacement[port_id]))
 			sum += 1;
 	}
 
@@ -978,11 +978,11 @@ s32 func_ovl31_80133810(s32 port_id)
 		0, 0, 1, 1, 1
 	};
 
-	return  gMNResultsPlacement[port_id] + sp40[gMNResultsPlacement[port_id] - mnResultsGetPlayerCountAhead(port_id)] + sp2C[mnResultsGetPlayerCountByPlace(gMNResultsPlacement[port_id])];
+	return  gMNVSResultsPlacement[port_id] + sp40[gMNVSResultsPlacement[port_id] - mnVSResultsGetPlayerCountAhead(port_id)] + sp2C[mnVSResultsGetPlayerCountByPlace(gMNVSResultsPlacement[port_id])];
 }
 
 // 0x801338EC
-void mnResultsSetFighterScale(GObj* fighter_gobj, s32 port_id, s32 fkind, s32 place)
+void mnVSResultsSetFighterScale(GObj* fighter_gobj, s32 port_id, s32 fkind, s32 place)
 {
 	DObjGetStruct(fighter_gobj)->scale.vec.f.x = menu_zoom[fkind];
 	DObjGetStruct(fighter_gobj)->scale.vec.f.y = menu_zoom[fkind];
@@ -990,20 +990,20 @@ void mnResultsSetFighterScale(GObj* fighter_gobj, s32 port_id, s32 fkind, s32 pl
 }
 
 // 0x8013392C
-void mnResultsSpawnFighter(s32 port_id)
+void mnVSResultsSpawnFighter(s32 port_id)
 {
 	s32 foo, bar, baz;
 	FTCreateDesc spawn_info = dFTManagerDefaultFighterDesc;
 
-	spawn_info.fkind = mnResultsGetFtKind(port_id);
-	spawn_info.costume = gTransferBattleState.players[port_id].costume;
-	spawn_info.shade = gTransferBattleState.players[port_id].shade;
-	spawn_info.figatree_heap = gMNResultsFigatreeHeaps[port_id];
-	gMNResultsFighterGObjs[port_id] = ftManagerMakeFighter(&spawn_info);
+	spawn_info.fkind = mnVSResultsGetFtKind(port_id);
+	spawn_info.costume = gSCManagerTransferBattleState.players[port_id].costume;
+	spawn_info.shade = gSCManagerTransferBattleState.players[port_id].shade;
+	spawn_info.figatree_heap = gMNVSResultsFigatreeHeaps[port_id];
+	gMNVSResultsFighterGObjs[port_id] = ftManagerMakeFighter(&spawn_info);
 }
 
 // 0x801339F4
-void mnResultsSetIndicatorPosition(GObj* indicator_gobj, s32 port_id)
+void mnVSResultsSetIndicatorPosition(GObj* indicator_gobj, s32 port_id)
 {
 	s32 sp214;
 	s32 temp_s0;
@@ -1044,26 +1044,26 @@ void mnResultsSetIndicatorPosition(GObj* indicator_gobj, s32 port_id)
 	sp214 = func_ovl31_80133810(port_id);
 	temp_s0 = func_ovl31_801321AC(port_id);
 
-	switch (mnResultsGetPresentCount())
+	switch (mnVSResultsGetPresentCount())
 	{
 		case 2:
 			SObjGetStruct(indicator_gobj)->pos.x = xy_positions_2p[temp_s0][sp214].x;
-			SObjGetStruct(indicator_gobj)->pos.y = xy_positions_2p[temp_s0][sp214].y + y_positions_kind[mnResultsGetFtKind(port_id)][temp_s0];
+			SObjGetStruct(indicator_gobj)->pos.y = xy_positions_2p[temp_s0][sp214].y + y_positions_kind[mnVSResultsGetFtKind(port_id)][temp_s0];
 			break;
 		case 3:
 			SObjGetStruct(indicator_gobj)->pos.x = xy_positions_3p[temp_s0][sp214].x;
-			SObjGetStruct(indicator_gobj)->pos.y = xy_positions_3p[temp_s0][sp214].y + y_positions_kind[mnResultsGetFtKind(port_id)][temp_s0];
+			SObjGetStruct(indicator_gobj)->pos.y = xy_positions_3p[temp_s0][sp214].y + y_positions_kind[mnVSResultsGetFtKind(port_id)][temp_s0];
 			break;
 		case 4:
 		default:
 			SObjGetStruct(indicator_gobj)->pos.x = xy_positions_4p[temp_s0][sp214].x;
-			SObjGetStruct(indicator_gobj)->pos.y = xy_positions_4p[temp_s0][sp214].y + y_positions_kind[mnResultsGetFtKind(port_id)][temp_s0]    ;
+			SObjGetStruct(indicator_gobj)->pos.y = xy_positions_4p[temp_s0][sp214].y + y_positions_kind[mnVSResultsGetFtKind(port_id)][temp_s0]    ;
 			break;
 	}
 }
 
 // 0x80133C58
-void mnResultsCreatePlayerIndicator(s32 port_id, s32 color_index)
+void mnVSResultsCreatePlayerIndicator(s32 port_id, s32 color_index)
 {
 	GObj* indicator_gobj;
 	SObj* indicator_sobj;
@@ -1082,9 +1082,9 @@ void mnResultsCreatePlayerIndicator(s32 port_id, s32 color_index)
 	indicator_gobj = gcMakeGObjSPAfter(0, 0, 0x12, 0x80000000);
 	gcAddGObjDisplay(indicator_gobj, lbCommonDrawSObjAttr, 0x1B, 0x80000000, -1);
 
-	if (gTransferBattleState.players[port_id].pkind == 0)
+	if (gSCManagerTransferBattleState.players[port_id].pkind == 0)
 	{
-		indicator_sobj = lbCommonMakeSObjForGObj(indicator_gobj, GetAddressFromOffset(gMNResultsFiles[1], offsets[port_id]));
+		indicator_sobj = lbCommonMakeSObjForGObj(indicator_gobj, GetAddressFromOffset(gMNVSResultsFiles[1], offsets[port_id]));
 		indicator_sobj->sprite.attr &= ~SP_FASTCOPY;
 		indicator_sobj->sprite.attr |= SP_TRANSPARENT;
 		indicator_sobj->envcolor.r = dIFCommonPlayerTagShadowColorsR[color_index];
@@ -1096,7 +1096,7 @@ void mnResultsCreatePlayerIndicator(s32 port_id, s32 color_index)
 	}
 	else
 	{
-		indicator_sobj = lbCommonMakeSObjForGObj(indicator_gobj, GetAddressFromOffset(gMNResultsFiles[1], &FILE_026_INDICATOR_CP_IMAGE_OFFSET));
+		indicator_sobj = lbCommonMakeSObjForGObj(indicator_gobj, GetAddressFromOffset(gMNVSResultsFiles[1], &FILE_026_INDICATOR_CP_IMAGE_OFFSET));
 		indicator_sobj->sprite.attr &= ~SP_FASTCOPY;
 		indicator_sobj->sprite.attr |= SP_TRANSPARENT;
 		indicator_sobj->envcolor.r = dIFCommonPlayerTagShadowColorsR[color_index];
@@ -1107,11 +1107,11 @@ void mnResultsCreatePlayerIndicator(s32 port_id, s32 color_index)
 		indicator_sobj->sprite.blue = dIFCommonPlayerTagSpriteColorsB[color_index];
 	}
 
-	mnResultsSetIndicatorPosition(indicator_gobj, port_id);
+	mnVSResultsSetIndicatorPosition(indicator_gobj, port_id);
 }
 
 // 0x80133E7C
-void mnResultsCreatePlayerIndicatorViewport()
+void mnVSResultsCreatePlayerIndicatorViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x1E, 0x08000000, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
@@ -1119,7 +1119,7 @@ void mnResultsCreatePlayerIndicatorViewport()
 }
 
 // 0x80133F1C
-s32 mnResultsGetChrIndex(char c)
+s32 mnVSResultsGetChrIndex(char c)
 {
 	switch (c)
 	{
@@ -1135,7 +1135,7 @@ s32 mnResultsGetChrIndex(char c)
 }
 
 // 0x80133F6C
-void mnResultsDrawString(const char *str, f32 x, f32 y, s32 color_index, f32 scale)
+void mnVSResultsDrawString(const char *str, f32 x, f32 y, s32 color_index, f32 scale)
 {
 	GObj* string_gobj;
 	SObj* string_sobj;
@@ -1171,14 +1171,14 @@ void mnResultsDrawString(const char *str, f32 x, f32 y, s32 color_index, f32 sca
 			current_x += str[i] - '0';
 		else
 		{
-			char_index = mnResultsGetChrIndex(str[i]);
+			char_index = mnVSResultsGetChrIndex(str[i]);
 
 			if (char_index == 0x1C) // space
 				current_x += 10.0F * scale;
 			else
 			{
 
-				string_sobj = lbCommonMakeSObjForGObj(string_gobj, GetAddressFromOffset(gMNResultsFiles[6], offsets[char_index]));
+				string_sobj = lbCommonMakeSObjForGObj(string_gobj, GetAddressFromOffset(gMNVSResultsFiles[6], offsets[char_index]));
 				string_sobj->sprite.scalex = scale;
 				string_sobj->pos.x = current_x;
 
@@ -1203,7 +1203,7 @@ void mnResultsDrawString(const char *str, f32 x, f32 y, s32 color_index, f32 sca
 }
 
 // 0x8013423C
-void mnResultsDrawWinsText(s32 winner_id)
+void mnVSResultsDrawWinsText(s32 winner_id)
 {
 	char strWin[] = "W1I1N1!";
 	char strWins[] = "W1I1N1S1!";
@@ -1219,21 +1219,21 @@ void mnResultsDrawWinsText(s32 winner_id)
 		180.0
 	};
 
-	if (gMNResultsIsTeamBattle == TRUE)
-		mnResultsDrawString(strWins, x_by_team[winner_id], 180.0F, 3, 1.0F);
+	if (gMNVSResultsIsTeamBattle == TRUE)
+		mnVSResultsDrawString(strWins, x_by_team[winner_id], 180.0F, 3, 1.0F);
 
-	if (gMNResultsIsTeamBattle == FALSE)
-		mnResultsDrawString(strWins, x_by_kind[winner_id], 180.0F, 3, 1.0F);
+	if (gMNVSResultsIsTeamBattle == FALSE)
+		mnVSResultsDrawString(strWins, x_by_kind[winner_id], 180.0F, 3, 1.0F);
 }
 
 // 0x80134364
-s32 mnResultsGetWinnerKind()
+s32 mnVSResultsGetWinnerKind()
 {
-	return mnResultsGetFtKind(mnResultsGetWinnerPort());
+	return mnVSResultsGetFtKind(mnVSResultsGetWinnerPort());
 }
 
 // 0x8013438C
-void mnResultsDrawFighterWins()
+void mnVSResultsDrawFighterWins()
 {
 	s32 fkind;
 	char* name_strings[12] = {
@@ -1262,14 +1262,14 @@ void mnResultsDrawFighterWins()
 		1.0, 0.7, 1.0, 0.7, 0.6, 1.0
 	};
 
-	fkind = mnResultsGetWinnerKind();
+	fkind = mnVSResultsGetWinnerKind();
 
-	mnResultsDrawString(name_strings[fkind], x_positions[fkind], 180.0F, 0, scale[fkind]);
-	mnResultsDrawWinsText(fkind);
+	mnVSResultsDrawString(name_strings[fkind], x_positions[fkind], 180.0F, 0, scale[fkind]);
+	mnVSResultsDrawWinsText(fkind);
 }
 
 // 0x80134480
-void mnResultsDrawTeamWins()
+void mnVSResultsDrawTeamWins()
 {
 	u32 team_id;
 	char* team_strings[9] = {
@@ -1285,35 +1285,35 @@ void mnResultsDrawTeamWins()
 		0.0, 0.0, 0.0
 	};
 
-	team_id = mnResultsGetWinningTeam();
+	team_id = mnVSResultsGetWinningTeam();
 
-	mnResultsDrawString(team_strings[team_id], x_positions[team_id], 180.0F, team_id, 1.0F);
-	mnResultsDrawWinsText(team_id);
+	mnVSResultsDrawString(team_strings[team_id], x_positions[team_id], 180.0F, team_id, 1.0F);
+	mnVSResultsDrawWinsText(team_id);
 }
 
 // 0x80134540
-void mnResultsDrawNoContest()
+void mnVSResultsDrawNoContest()
 {
-	mnResultsDrawString("NO CONTEST", 30.0F, 180.0F, 4, 1.0f);
+	mnVSResultsDrawString("NO CONTEST", 30.0F, 180.0F, 4, 1.0f);
 }
 
 // 0x8013457C
-void mnResultsDrawWinnerText()
+void mnVSResultsDrawWinnerText()
 {
-	if (gMNResultsGameRule == 4)
-		mnResultsDrawNoContest();
+	if (gMNVSResultsGameRule == 4)
+		mnVSResultsDrawNoContest();
 	else
 	{
-		if (gMNResultsIsTeamBattle == FALSE)
-			mnResultsDrawFighterWins();
+		if (gMNVSResultsIsTeamBattle == FALSE)
+			mnVSResultsDrawFighterWins();
 
-		if (gMNResultsIsTeamBattle == TRUE)
-			mnResultsDrawTeamWins();
+		if (gMNVSResultsIsTeamBattle == TRUE)
+			mnVSResultsDrawTeamWins();
 	}
 }
 
 // 0x801345E8
-void mnResultsCreateWinnerTextViewport()
+void mnVSResultsCreateWinnerTextViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x14, 0x20000000, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
@@ -1321,7 +1321,7 @@ void mnResultsCreateWinnerTextViewport()
 }
 
 // 0x80134688
-s32 mnResultsGetHundredsDigit(s32 number)
+s32 mnVSResultsGetHundredsDigit(s32 number)
 {
 	if (number < 0)
 		 return -(number / 100);
@@ -1330,7 +1330,7 @@ s32 mnResultsGetHundredsDigit(s32 number)
 }
 
 // 0x801346C0
-s32 mnResultsGetTensDigit(s32 number)
+s32 mnVSResultsGetTensDigit(s32 number)
 {
 	if (number < 0)
 		return -((number % 100) / 10);
@@ -1339,7 +1339,7 @@ s32 mnResultsGetTensDigit(s32 number)
 }
 
 // 0x80134718
-s32 mnResultsGetOnesDigit(s32 number)
+s32 mnVSResultsGetOnesDigit(s32 number)
 {
 	if (number < 0)
 		return -((number % 100) % 10);
@@ -1348,7 +1348,7 @@ s32 mnResultsGetOnesDigit(s32 number)
 }
 
 // 0x80134770
-void mnResultsSetNumberColor(SObj* number_sobj, s32 color_index)
+void mnVSResultsSetNumberColor(SObj* number_sobj, s32 color_index)
 {
 	syColorRGBPair colors[5] = {
 
@@ -1368,7 +1368,7 @@ void mnResultsSetNumberColor(SObj* number_sobj, s32 color_index)
 }
 
 // 0x80134808
-SObj* mnResultsCreateNumber(GObj* number_gobj, s32 number, s32 color_id)
+SObj* mnVSResultsCreateNumber(GObj* number_gobj, s32 number, s32 color_id)
 {
 	SObj* number_sobj;
 	intptr_t offsets[10] = {
@@ -1384,16 +1384,16 @@ SObj* mnResultsCreateNumber(GObj* number_gobj, s32 number, s32 color_id)
 		{ { 0x00, 0x00, 0x00 }, { 0x4E, 0xB9, 0x4E } }
 	};
 
-	number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMNResultsFiles[5], offsets[number]));
+	number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMNVSResultsFiles[5], offsets[number]));
 	number_sobj->sprite.attr &= ~SP_FASTCOPY;
 	number_sobj->sprite.attr |= SP_TRANSPARENT;
-	mnResultsSetNumberColor(number_sobj, color_id);
+	mnVSResultsSetNumberColor(number_sobj, color_id);
 
 	return number_sobj;
 }
 
 // 0x801348F8
-SObj* mnResultsCreatePlaceNumber(GObj* place_gobj, s32 port_id, s32 place, s32 color_id)
+SObj* mnVSResultsCreatePlaceNumber(GObj* place_gobj, s32 port_id, s32 place, s32 color_id)
 {
 	SObj* place_sobj;
 	intptr_t offsets[10] = {
@@ -1411,23 +1411,23 @@ SObj* mnResultsCreatePlaceNumber(GObj* place_gobj, s32 port_id, s32 place, s32 c
 
 	if (place == 1)
 	{
-		if (gMNResultsIsTeamBattle == TRUE)
+		if (gMNVSResultsIsTeamBattle == TRUE)
 		{
-			if ((mnResultsGetWinnerPort() == port_id) || (gMNResultsIsSharedWinner[port_id]))
+			if ((mnVSResultsGetWinnerPort() == port_id) || (gMNVSResultsIsSharedWinner[port_id]))
 			{
-				place_sobj = lbCommonMakeSObjForGObj(place_gobj, GetAddressFromOffset(gMNResultsFiles[0], &FILE_022_FIRST_PLACE_ICON_IMAGE_OFFSET));
+				place_sobj = lbCommonMakeSObjForGObj(place_gobj, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_FIRST_PLACE_ICON_IMAGE_OFFSET));
 				place_sobj->user_data.s = 1;
 			}
 			else
 			{
-				place_sobj = lbCommonMakeSObjForGObj(place_gobj, GetAddressFromOffset(gMNResultsFiles[3], &FILE_0A4_1_IMAGE_OFFSET));
+				place_sobj = lbCommonMakeSObjForGObj(place_gobj, GetAddressFromOffset(gMNVSResultsFiles[3], &FILE_0A4_1_IMAGE_OFFSET));
 				place_sobj->user_data.s = 0;
-				mnResultsSetNumberColor(place_sobj, color_id);
+				mnVSResultsSetNumberColor(place_sobj, color_id);
 			}
 		}
 		else
 		{
-			place_sobj = lbCommonMakeSObjForGObj(place_gobj, GetAddressFromOffset(gMNResultsFiles[0], &FILE_022_FIRST_PLACE_ICON_IMAGE_OFFSET));
+			place_sobj = lbCommonMakeSObjForGObj(place_gobj, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_FIRST_PLACE_ICON_IMAGE_OFFSET));
 			place_sobj->user_data.s = 1;
 		}
 
@@ -1436,16 +1436,16 @@ SObj* mnResultsCreatePlaceNumber(GObj* place_gobj, s32 port_id, s32 place, s32 c
 	}
 	else
 	{
-		place_sobj = lbCommonMakeSObjForGObj(place_gobj, GetAddressFromOffset(gMNResultsFiles[3], offsets[place]));
+		place_sobj = lbCommonMakeSObjForGObj(place_gobj, GetAddressFromOffset(gMNVSResultsFiles[3], offsets[place]));
 		place_sobj->sprite.attr &= ~SP_FASTCOPY;
 		place_sobj->sprite.attr |= SP_TRANSPARENT;
-		mnResultsSetNumberColor(place_sobj, color_id);
+		mnVSResultsSetNumberColor(place_sobj, color_id);
 	}
 	return place_sobj;
 }
 
 // 0x80134AC4
-void mnResultsDrawNumber(GObj* number_gobj, f32 x, f32 y, s32 number, s32 color_id)
+void mnVSResultsDrawNumber(GObj* number_gobj, f32 x, f32 y, s32 number, s32 color_id)
 {
 	SObj* number_sobj;
 	s32 hundreds_digit;
@@ -1453,13 +1453,13 @@ void mnResultsDrawNumber(GObj* number_gobj, f32 x, f32 y, s32 number, s32 color_
 
 	if (number < 0)
 	{
-		number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMNResultsFiles[5], &FILE_024_DASH_IMAGE_OFFSET));
+		number_sobj = lbCommonMakeSObjForGObj(number_gobj, GetAddressFromOffset(gMNVSResultsFiles[5], &FILE_024_DASH_IMAGE_OFFSET));
 
-		if (mnResultsGetHundredsDigit(number) != 0)
+		if (mnVSResultsGetHundredsDigit(number) != 0)
 			number_sobj->pos.x = x;
 		else
 		{
-			if (mnResultsGetTensDigit(number) != 0)
+			if (mnVSResultsGetTensDigit(number) != 0)
 				number_sobj->pos.x = x + 8.0F;
 			else
 				number_sobj->pos.x = x + 16.0F;
@@ -1468,46 +1468,46 @@ void mnResultsDrawNumber(GObj* number_gobj, f32 x, f32 y, s32 number, s32 color_
 		number_sobj->sprite.attr &= ~SP_FASTCOPY;
 		number_sobj->sprite.attr |= SP_TRANSPARENT;
 
-		mnResultsSetNumberColor(number_sobj, color_id);
+		mnVSResultsSetNumberColor(number_sobj, color_id);
 	}
 
-	hundreds_digit = mnResultsGetHundredsDigit(number);
+	hundreds_digit = mnVSResultsGetHundredsDigit(number);
 
 	if (hundreds_digit != 0)
 	{
-		number_sobj = mnResultsCreateNumber(number_gobj, hundreds_digit, color_id);
+		number_sobj = mnVSResultsCreateNumber(number_gobj, hundreds_digit, color_id);
 		number_sobj->pos.x = x + 8.0F;
 		number_sobj->pos.y = y;
 	}
 
-	tens_digit = mnResultsGetTensDigit(number);
+	tens_digit = mnVSResultsGetTensDigit(number);
 
 	if ((tens_digit != 0) || (hundreds_digit != 0))
 	{
-		number_sobj = mnResultsCreateNumber(number_gobj, tens_digit, color_id);
+		number_sobj = mnVSResultsCreateNumber(number_gobj, tens_digit, color_id);
 		number_sobj->pos.x = x + 16.0F;
 		number_sobj->pos.y = y;
 	}
 
-	number_sobj = mnResultsCreateNumber(number_gobj, mnResultsGetOnesDigit(number), color_id);
+	number_sobj = mnVSResultsCreateNumber(number_gobj, mnVSResultsGetOnesDigit(number), color_id);
 	number_sobj->pos.x = x + 24.0F;
 	number_sobj->pos.y = y;
 }
 
 // 0x80134C5C
-void mnResultsRenderOverlay(GObj* overlay_gobj)
+void mnVSResultsRenderOverlay(GObj* overlay_gobj)
 {
-	if (gMNResultsOverlayAlpha < 0x80)
+	if (gMNVSResultsOverlayAlpha < 0x80)
 	{
-		gMNResultsOverlayAlpha += 9;
+		gMNVSResultsOverlayAlpha += 9;
 
-		if (gMNResultsOverlayAlpha > 0x80)
-			gMNResultsOverlayAlpha = 0x80;
+		if (gMNVSResultsOverlayAlpha > 0x80)
+			gMNVSResultsOverlayAlpha = 0x80;
 	}
 
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0, 0, 0, gMNResultsOverlayAlpha);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0, 0, 0, gMNVSResultsOverlayAlpha);
 	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 230);
@@ -1518,14 +1518,14 @@ void mnResultsRenderOverlay(GObj* overlay_gobj)
 }
 
 // 0x80134DA0
-void mnResultsCreateOverlay()
+void mnVSResultsCreateOverlay()
 {
-	gMNResultsOverlayAlpha = 0;
-	gcAddGObjDisplay(gcMakeGObjSPAfter(0, 0, 0x15, 0x80000000), mnResultsRenderOverlay, 0x1E, 0x80000000, -1);
+	gMNVSResultsOverlayAlpha = 0;
+	gcAddGObjDisplay(gcMakeGObjSPAfter(0, 0, 0x15, 0x80000000), mnVSResultsRenderOverlay, 0x1E, 0x80000000, -1);
 }
 
 // 0x80134DF4
-void mnResultsCreateOverlayViewport()
+void mnVSResultsCreateOverlayViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000, lbCommonScissorSpriteCamera, 0x11, 0x40000000, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
@@ -1533,19 +1533,19 @@ void mnResultsCreateOverlayViewport()
 }
 
 // 0x80134E94
-void mnResultsRenderBackgroundOverlay(GObj* bg_overlay_gobj)
+void mnVSResultsRenderBackgroundOverlay(GObj* bg_overlay_gobj)
 {
-	if (gMNResultsBackgroundOverlayAlpha > 0)
+	if (gMNVSResultsBackgroundOverlayAlpha > 0)
 	{
-		gMNResultsBackgroundOverlayAlpha -= 5;
+		gMNVSResultsBackgroundOverlayAlpha -= 5;
 
-		if (gMNResultsBackgroundOverlayAlpha < 0)
+		if (gMNVSResultsBackgroundOverlayAlpha < 0)
 			gcEjectGObj(bg_overlay_gobj);
 	}
 
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0, 0, 0, gMNResultsBackgroundOverlayAlpha);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0, 0, 0, gMNVSResultsBackgroundOverlayAlpha);
 	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 230);
@@ -1554,14 +1554,14 @@ void mnResultsRenderBackgroundOverlay(GObj* bg_overlay_gobj)
 }
 
 // 0x80134FD0
-void mnResultsCreateBackgroundOverlay()
+void mnVSResultsCreateBackgroundOverlay()
 {
-	gMNResultsBackgroundOverlayAlpha = 0xFF;
-	gcAddGObjDisplay(gcMakeGObjSPAfter(0, 0, 0x19, 0x80000000), mnResultsRenderBackgroundOverlay, 0x23, 0x80000000, -1);
+	gMNVSResultsBackgroundOverlayAlpha = 0xFF;
+	gcAddGObjDisplay(gcMakeGObjSPAfter(0, 0, 0x19, 0x80000000), mnVSResultsRenderBackgroundOverlay, 0x23, 0x80000000, -1);
 }
 
 // 0x80135028
-void mnResultsCreateBackgroundOverlayViewport()
+void mnVSResultsCreateBackgroundOverlayViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000, lbCommonScissorSpriteCamera, 0x37, 0x800000000, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
@@ -1569,19 +1569,19 @@ void mnResultsCreateBackgroundOverlayViewport()
 }
 
 // 0x801350C8
-void mnResultsRenderBackgroundOverlay2(GObj* bg_overlay_gobj)
+void mnVSResultsRenderBackgroundOverlay2(GObj* bg_overlay_gobj)
 {
-	if (gMNResultsBackgroundOverlay2Alpha > 0)
+	if (gMNVSResultsBackgroundOverlay2Alpha > 0)
 	{
-		gMNResultsBackgroundOverlay2Alpha -= 5;
+		gMNVSResultsBackgroundOverlay2Alpha -= 5;
 
-		if (gMNResultsBackgroundOverlay2Alpha < 0)
+		if (gMNVSResultsBackgroundOverlay2Alpha < 0)
 			gcEjectGObj(bg_overlay_gobj);
 	}
 
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
-	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0, 0, 0, gMNResultsBackgroundOverlay2Alpha);
+	gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0, 0, 0, gMNVSResultsBackgroundOverlay2Alpha);
 	gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE,  0, 0, 0, PRIMITIVE);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
 	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 10, 10, 310, 230);
@@ -1590,14 +1590,14 @@ void mnResultsRenderBackgroundOverlay2(GObj* bg_overlay_gobj)
 }
 
 // 0x80135204
-void mnResultsCreateBackgroundOverlay2()
+void mnVSResultsCreateBackgroundOverlay2()
 {
-	gMNResultsBackgroundOverlay2Alpha = 0xFF;
-	gcAddGObjDisplay(gcMakeGObjSPAfter(0, 0, 0x18, 0x80000000), mnResultsRenderBackgroundOverlay2, 0x22, 0x80000000, -1);
+	gMNVSResultsBackgroundOverlay2Alpha = 0xFF;
+	gcAddGObjDisplay(gcMakeGObjSPAfter(0, 0, 0x18, 0x80000000), mnVSResultsRenderBackgroundOverlay2, 0x22, 0x80000000, -1);
 }
 
 // 0x8013525C
-void mnResultsCreateBackgroundOverlay2Viewport()
+void mnVSResultsCreateBackgroundOverlay2Viewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000, lbCommonScissorSpriteCamera, 0x46, 0x400000000, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
@@ -1605,7 +1605,7 @@ void mnResultsCreateBackgroundOverlay2Viewport()
 }
 
 // 0x801352FC
-f32 mnResultsGetColumnX(s32 port_id)
+f32 mnVSResultsGetColumnX(s32 port_id)
 {
 	f32 column_x_2p[2] = {
 
@@ -1620,35 +1620,35 @@ f32 mnResultsGetColumnX(s32 port_id)
 		115.0, 155.0, 195.0, 235.0
 	};
 
-	switch (mnResultsGetPresentCount())
+	switch (mnVSResultsGetPresentCount())
 	{
 		case 2:
-			return column_x_2p[mnResultsGetLowerPortCount(port_id)];
+			return column_x_2p[mnVSResultsGetLowerPortCount(port_id)];
 		case 3:
-			return column_x_3p[mnResultsGetLowerPortCount(port_id)];
+			return column_x_3p[mnVSResultsGetLowerPortCount(port_id)];
 		case 4:
 			/* fallthrough */
 		default:
-			return column_x_4p[mnResultsGetLowerPortCount(port_id)];
+			return column_x_4p[mnVSResultsGetLowerPortCount(port_id)];
 	}
 }
 
 // 0x801353F4
-s32 mnResultsGetNumberColorIndex(s32 port_id)
+s32 mnVSResultsGetNumberColorIndex(s32 port_id)
 {
 	s32 color_ids[3] = {
 
 		0, 1, 3
 	};
 
-	if (gMNResultsIsTeamBattle != TRUE)
+	if (gMNVSResultsIsTeamBattle != TRUE)
 		return 4;
 
-	return color_ids[gTransferBattleState.players[port_id].team];
+	return color_ids[gSCManagerTransferBattleState.players[port_id].team];
 }
 
 // 0x80135468
-void mnResultsSetColumnPortIndicatorColors(SObj* column_port_indicator_sobj)
+void mnVSResultsSetColumnPortIndicatorColors(SObj* column_port_indicator_sobj)
 {
 	column_port_indicator_sobj->sprite.attr &= ~SP_FASTCOPY;
 	column_port_indicator_sobj->sprite.attr |= SP_TRANSPARENT;
@@ -1661,7 +1661,7 @@ void mnResultsSetColumnPortIndicatorColors(SObj* column_port_indicator_sobj)
 }
 
 // 0x8013549C
-void mnResultsCreateColumnHeaders()
+void mnVSResultsCreateColumnHeaders()
 {
 	SObj* column_port_indicator_sobj;
 	SObj* column_stock_icon_sobj;
@@ -1678,14 +1678,14 @@ void mnResultsCreateColumnHeaders()
 
 	for (i = 0; i < 4; i++)
 	{
-		if (gMNResultsIsPresent[i])
+		if (gMNVSResultsIsPresent[i])
 		{
-			column_port_indicator_sobj = lbCommonMakeSObjForGObj(column_header_gobj, GetAddressFromOffset(gMNResultsFiles[0], offsets[i]));
-			column_port_indicator_sobj->pos.x = mnResultsGetColumnX(i) + 17.0F;
+			column_port_indicator_sobj = lbCommonMakeSObjForGObj(column_header_gobj, GetAddressFromOffset(gMNVSResultsFiles[0], offsets[i]));
+			column_port_indicator_sobj->pos.x = mnVSResultsGetColumnX(i) + 17.0F;
 			column_port_indicator_sobj->pos.y = 49.0F;
-			mnResultsSetColumnPortIndicatorColors(column_port_indicator_sobj);
+			mnVSResultsSetColumnPortIndicatorColors(column_port_indicator_sobj);
 
-			ft_struct = ftGetStruct(gMNResultsFighterGObjs[i]);
+			ft_struct = ftGetStruct(gMNVSResultsFighterGObjs[i]);
 
 			column_stock_icon_sobj = lbCommonMakeSObjForGObj(column_header_gobj, FTSpritesGetStruct(AttributesGetStruct(ft_struct))->stock_sprite);
 			column_stock_icon_sobj->sprite.LUT = FTSpritesGetStruct(AttributesGetStruct(ft_struct))->stock_luts[ft_struct->costume];
@@ -1698,20 +1698,20 @@ void mnResultsCreateColumnHeaders()
 }
 
 // 0x80135670
-s32 mnResultsGetKOs(s32 port_id)
+s32 mnVSResultsGetKOs(s32 port_id)
 {
-	if (gMNResultsKOs[port_id] >= 1000)
+	if (gMNVSResultsKOs[port_id] >= 1000)
 		return 999;
 
-	return gMNResultsKOs[port_id];
+	return gMNVSResultsKOs[port_id];
 }
 
 // 0x8013569C
-void mnResultsDrawKOs(s32 y)
+void mnVSResultsDrawKOs(s32 y)
 {
 	GObj* kos_row_gobj;
 
-	kos_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFiles[0], &FILE_022_KOS_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
+	kos_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_KOS_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
 	SObjGetStruct(kos_row_gobj)->pos.x = 26.0F;
 	SObjGetStruct(kos_row_gobj)->pos.y = y;
 	SObjGetStruct(kos_row_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -1723,35 +1723,35 @@ void mnResultsDrawKOs(s32 y)
 	SObjGetStruct(kos_row_gobj)->sprite.green = 0xFF;
 	SObjGetStruct(kos_row_gobj)->sprite.blue = 0xFF;
 
-	if (gMNResultsIsPresent[0])
-		mnResultsDrawNumber(kos_row_gobj, mnResultsGetColumnX(0), y, mnResultsGetKOs(0), mnResultsGetNumberColorIndex(0));
+	if (gMNVSResultsIsPresent[0])
+		mnVSResultsDrawNumber(kos_row_gobj, mnVSResultsGetColumnX(0), y, mnVSResultsGetKOs(0), mnVSResultsGetNumberColorIndex(0));
 
-	if (gMNResultsIsPresent[1])
-		mnResultsDrawNumber(kos_row_gobj, mnResultsGetColumnX(1), y, mnResultsGetKOs(1), mnResultsGetNumberColorIndex(1));
+	if (gMNVSResultsIsPresent[1])
+		mnVSResultsDrawNumber(kos_row_gobj, mnVSResultsGetColumnX(1), y, mnVSResultsGetKOs(1), mnVSResultsGetNumberColorIndex(1));
 
-	if (gMNResultsIsPresent[2])
-		mnResultsDrawNumber(kos_row_gobj, mnResultsGetColumnX(2), y, mnResultsGetKOs(2), mnResultsGetNumberColorIndex(2));
+	if (gMNVSResultsIsPresent[2])
+		mnVSResultsDrawNumber(kos_row_gobj, mnVSResultsGetColumnX(2), y, mnVSResultsGetKOs(2), mnVSResultsGetNumberColorIndex(2));
 
-	if (gMNResultsIsPresent[3])
-		mnResultsDrawNumber(kos_row_gobj, mnResultsGetColumnX(3), y, mnResultsGetKOs(3), mnResultsGetNumberColorIndex(3));
+	if (gMNVSResultsIsPresent[3])
+		mnVSResultsDrawNumber(kos_row_gobj, mnVSResultsGetColumnX(3), y, mnVSResultsGetKOs(3), mnVSResultsGetNumberColorIndex(3));
 }
 
 // 0x801358C4
-s32 mnResultsGetTKOs(s32 port_id)
+s32 mnVSResultsGetTKOs(s32 port_id)
 {
-	if (gMNResultsTKOs[port_id] >= 1000)
+	if (gMNVSResultsTKOs[port_id] >= 1000)
 		return 999;
 
-	return gMNResultsTKOs[port_id];
+	return gMNVSResultsTKOs[port_id];
 }
 
 // 0x801358F0
-void mnResultsDrawTKOs(s32 y)
+void mnVSResultsDrawTKOs(s32 y)
 {
 	GObj* tkos_row_gobj;
 	SObj* negative_symbol_sobj;
 
-	tkos_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFiles[0], &FILE_022_TKO_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
+	tkos_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_TKO_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
 	SObjGetStruct(tkos_row_gobj)->pos.x = 26.0F;
 	SObjGetStruct(tkos_row_gobj)->pos.y = y;
 	SObjGetStruct(tkos_row_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -1763,42 +1763,42 @@ void mnResultsDrawTKOs(s32 y)
 	SObjGetStruct(tkos_row_gobj)->sprite.green = 0xFF;
 	SObjGetStruct(tkos_row_gobj)->sprite.blue = 0xFF;
 
-	if (gMNResultsGameRule != 4)
+	if (gMNVSResultsGameRule != 4)
 	{
-		negative_symbol_sobj = lbCommonMakeSObjForGObj(tkos_row_gobj, GetAddressFromOffset(gMNResultsFiles[5], &FILE_024_DASH_IMAGE_OFFSET));
+		negative_symbol_sobj = lbCommonMakeSObjForGObj(tkos_row_gobj, GetAddressFromOffset(gMNVSResultsFiles[5], &FILE_024_DASH_IMAGE_OFFSET));
 		negative_symbol_sobj->pos.x = 90.0F;
 		negative_symbol_sobj->pos.y = y + 3;
 		negative_symbol_sobj->sprite.attr &= ~SP_FASTCOPY;
 		negative_symbol_sobj->sprite.attr |= SP_TRANSPARENT;
 	}
 
-	if (gMNResultsIsPresent[0])
-		mnResultsDrawNumber(tkos_row_gobj, mnResultsGetColumnX(0), y, mnResultsGetTKOs(0), mnResultsGetNumberColorIndex(0));
+	if (gMNVSResultsIsPresent[0])
+		mnVSResultsDrawNumber(tkos_row_gobj, mnVSResultsGetColumnX(0), y, mnVSResultsGetTKOs(0), mnVSResultsGetNumberColorIndex(0));
 
-	if (gMNResultsIsPresent[1])
-		mnResultsDrawNumber(tkos_row_gobj, mnResultsGetColumnX(1), y, mnResultsGetTKOs(1), mnResultsGetNumberColorIndex(1));
+	if (gMNVSResultsIsPresent[1])
+		mnVSResultsDrawNumber(tkos_row_gobj, mnVSResultsGetColumnX(1), y, mnVSResultsGetTKOs(1), mnVSResultsGetNumberColorIndex(1));
 
-	if (gMNResultsIsPresent[2])
-		mnResultsDrawNumber(tkos_row_gobj, mnResultsGetColumnX(2), y, mnResultsGetTKOs(2), mnResultsGetNumberColorIndex(2));
+	if (gMNVSResultsIsPresent[2])
+		mnVSResultsDrawNumber(tkos_row_gobj, mnVSResultsGetColumnX(2), y, mnVSResultsGetTKOs(2), mnVSResultsGetNumberColorIndex(2));
 
-	if (gMNResultsIsPresent[3])
-		mnResultsDrawNumber(tkos_row_gobj, mnResultsGetColumnX(3), y, mnResultsGetTKOs(3), mnResultsGetNumberColorIndex(3));
+	if (gMNVSResultsIsPresent[3])
+		mnVSResultsDrawNumber(tkos_row_gobj, mnVSResultsGetColumnX(3), y, mnVSResultsGetTKOs(3), mnVSResultsGetNumberColorIndex(3));
 }
 
 // 0x80135B78
-void mnResultsRenderHorizontalLine(GObj* line_gobj)
+void mnVSResultsRenderHorizontalLine(GObj* line_gobj)
 {
 	f32 y = line_gobj->user_data.s;
 
-	gMNResultsHorizontalLineWidth += 10;
-	if (gMNResultsHorizontalLineWidth > 190)
-		gMNResultsHorizontalLineWidth = 190;
+	gMNVSResultsHorizontalLineWidth += 10;
+	if (gMNVSResultsHorizontalLineWidth > 190)
+		gMNVSResultsHorizontalLineWidth = 190;
 
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
 	gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(0xFFFFFFFF));
-	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 87, y, 87 + gMNResultsHorizontalLineWidth, y);
+	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 87, y, 87 + gMNVSResultsHorizontalLineWidth, y);
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 
@@ -1806,27 +1806,27 @@ void mnResultsRenderHorizontalLine(GObj* line_gobj)
 }
 
 // 0x80135D58
-void mnResultsCreateHorizontalLine(s32 y)
+void mnVSResultsCreateHorizontalLine(s32 y)
 {
 	GObj* horizontal_line_gobj;
 
 	horizontal_line_gobj = gcMakeGObjSPAfter(0, 0, 0x16, 0x80000000);
-	gcAddGObjDisplay(horizontal_line_gobj, mnResultsRenderHorizontalLine, 0x1F, 0x80000000, -1);
+	gcAddGObjDisplay(horizontal_line_gobj, mnVSResultsRenderHorizontalLine, 0x1F, 0x80000000, -1);
 	horizontal_line_gobj->user_data.s = y;
 }
 
 // 0x80135DB8
-s32 mnResultsGetPoints(s32 port_id)
+s32 mnVSResultsGetPoints(s32 port_id)
 {
-	return gMNResultsPoints[port_id];
+	return gMNVSResultsPoints[port_id];
 }
 
 // 0x80135DCC
-void mnResultsDrawPointsRow()
+void mnVSResultsDrawPointsRow()
 {
 	GObj* points_row_gobj;
 
-	points_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFiles[0], &FILE_022_POINTS_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
+	points_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_POINTS_TEXTURE_IMAGE_OFFSET), 1, 0, 1);
 	SObjGetStruct(points_row_gobj)->pos.x = 26.0F;
 	SObjGetStruct(points_row_gobj)->pos.y = 104.0F;
 	SObjGetStruct(points_row_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -1838,58 +1838,58 @@ void mnResultsDrawPointsRow()
 	SObjGetStruct(points_row_gobj)->sprite.green = 0xFF;
 	SObjGetStruct(points_row_gobj)->sprite.blue = 0xFF;
 
-	if (gMNResultsIsPresent[0])
-		mnResultsDrawNumber(points_row_gobj, mnResultsGetColumnX(0), 104.0F, mnResultsGetPoints(0), mnResultsGetNumberColorIndex(0));
+	if (gMNVSResultsIsPresent[0])
+		mnVSResultsDrawNumber(points_row_gobj, mnVSResultsGetColumnX(0), 104.0F, mnVSResultsGetPoints(0), mnVSResultsGetNumberColorIndex(0));
 
-	if (gMNResultsIsPresent[1])
-		mnResultsDrawNumber(points_row_gobj, mnResultsGetColumnX(1), 104.0F, mnResultsGetPoints(1), mnResultsGetNumberColorIndex(1));
+	if (gMNVSResultsIsPresent[1])
+		mnVSResultsDrawNumber(points_row_gobj, mnVSResultsGetColumnX(1), 104.0F, mnVSResultsGetPoints(1), mnVSResultsGetNumberColorIndex(1));
 
-	if (gMNResultsIsPresent[2])
-		mnResultsDrawNumber(points_row_gobj, mnResultsGetColumnX(2), 104.0F, mnResultsGetPoints(2), mnResultsGetNumberColorIndex(2));
+	if (gMNVSResultsIsPresent[2])
+		mnVSResultsDrawNumber(points_row_gobj, mnVSResultsGetColumnX(2), 104.0F, mnVSResultsGetPoints(2), mnVSResultsGetNumberColorIndex(2));
 
-	if (gMNResultsIsPresent[3])
-		mnResultsDrawNumber(points_row_gobj, mnResultsGetColumnX(3), 104.0F, mnResultsGetPoints(3), mnResultsGetNumberColorIndex(3));
+	if (gMNVSResultsIsPresent[3])
+		mnVSResultsDrawNumber(points_row_gobj, mnVSResultsGetColumnX(3), 104.0F, mnVSResultsGetPoints(3), mnVSResultsGetNumberColorIndex(3));
 }
 
 // 0x80135FE8 - Unused?
 void func_ovl31_80135FE8() {}
 
 // 0x80135FF0
-void mnResultsPositionPlaceNumber(SObj* number_sobj, s32 port_id, s32 place, f32 y)
+void mnVSResultsPositionPlaceNumber(SObj* number_sobj, s32 port_id, s32 place, f32 y)
 {
 	if ((place == 1) && (number_sobj->user_data.s != 0))
 	{
-		number_sobj->pos.x = mnResultsGetColumnX(port_id) + 2.0F;
+		number_sobj->pos.x = mnVSResultsGetColumnX(port_id) + 2.0F;
 		number_sobj->pos.y = y;
 	}
 	else
 	{
-		number_sobj->pos.x = mnResultsGetColumnX(port_id) + 15.0F;
+		number_sobj->pos.x = mnVSResultsGetColumnX(port_id) + 15.0F;
 		number_sobj->pos.y = y;
 	}
 }
 
 // 0x8013607C
-s32 mnResultsGetPlaceForDisplay(s32 port_id)
+s32 mnVSResultsGetPlaceForDisplay(s32 port_id)
 {
-	if ((mnResultsGetPresentCount() == 4) &&
-		(!gMNResultsIsTeamBattle) &&
-		(mnResultsGetPlayerCountByPlace(1) == 2) &&
-		(gMNResultsPlacement[port_id] == 2))
+	if ((mnVSResultsGetPresentCount() == 4) &&
+		(!gMNVSResultsIsTeamBattle) &&
+		(mnVSResultsGetPlayerCountByPlace(1) == 2) &&
+		(gMNVSResultsPlacement[port_id] == 2))
 	{
 		return 4;
 	}
 	else
-		return gMNResultsPlacement[port_id] + 1;
+		return gMNVSResultsPlacement[port_id] + 1;
 }
 
 // 0x80136100
-void mnResultsDrawPlaceRow(s32 y)
+void mnVSResultsDrawPlaceRow(s32 y)
 {
 	GObj* place_row_gobj;
 	s32 i;
 
-	place_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFiles[0], &FILE_022_PLACE_TEXTURE_IMAGE_OFFSET), 1, NULL, 1);
+	place_row_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, lbCommonDrawSObjAttr, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNVSResultsFiles[0], &FILE_022_PLACE_TEXTURE_IMAGE_OFFSET), 1, NULL, 1);
 	SObjGetStruct(place_row_gobj)->pos.x = 10.0F;
 	SObjGetStruct(place_row_gobj)->pos.y = y;
 	SObjGetStruct(place_row_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -1903,124 +1903,124 @@ void mnResultsDrawPlaceRow(s32 y)
 
 	for (i = 0; i < 4; i++)
 	{
-		if (gMNResultsIsPresent[i]) {
-			mnResultsPositionPlaceNumber(mnResultsCreatePlaceNumber(place_row_gobj, i, mnResultsGetPlaceForDisplay(i), mnResultsGetNumberColorIndex(i)), i, mnResultsGetPlaceForDisplay(i), y);
+		if (gMNVSResultsIsPresent[i]) {
+			mnVSResultsPositionPlaceNumber(mnVSResultsCreatePlaceNumber(place_row_gobj, i, mnVSResultsGetPlaceForDisplay(i), mnVSResultsGetNumberColorIndex(i)), i, mnVSResultsGetPlaceForDisplay(i), y);
 		}
 	}
 }
 
 // 0x80136290
-void mnResultsDrawResults0(s32 arg0)
+void mnVSResultsDrawResults0(s32 arg0)
 {
-	if (gMNResultsFramesElapsed == 0xB4)
-		mnResultsCreateOverlay();
+	if (gMNVSResultsFramesElapsed == 0xB4)
+		mnVSResultsCreateOverlay();
 
-	if (gMNResultsFramesElapsed == 0xD2)
+	if (gMNVSResultsFramesElapsed == 0xD2)
 	{
-		mnResultsCreateColumnHeaders();
-		mnResultsDrawKOs(0x42);
+		mnVSResultsCreateColumnHeaders();
+		mnVSResultsDrawKOs(0x42);
 	}
 
-	if (gMNResultsFramesElapsed == 0xE6)
-		mnResultsDrawTKOs(0x51);
+	if (gMNVSResultsFramesElapsed == 0xE6)
+		mnVSResultsDrawTKOs(0x51);
 
-	if (gMNResultsFramesElapsed == 0xFA)
-		mnResultsCreateHorizontalLine(0x62);
+	if (gMNVSResultsFramesElapsed == 0xFA)
+		mnVSResultsCreateHorizontalLine(0x62);
 
-	if (gMNResultsFramesElapsed == 0x10E)
-		mnResultsDrawPointsRow();
+	if (gMNVSResultsFramesElapsed == 0x10E)
+		mnVSResultsDrawPointsRow();
 
-	if (gMNResultsFramesElapsed == 0x122)
-		mnResultsDrawPlaceRow(0x7C);
+	if (gMNVSResultsFramesElapsed == 0x122)
+		mnVSResultsDrawPlaceRow(0x7C);
 }
 
 // 0x80136358
-void mnResultsDrawResults1(s32 arg0)
+void mnVSResultsDrawResults1(s32 arg0)
 {
-	if (gMNResultsFramesElapsed == 0xB4)
-		mnResultsCreateOverlay();
+	if (gMNVSResultsFramesElapsed == 0xB4)
+		mnVSResultsCreateOverlay();
 
-	if (gMNResultsFramesElapsed == 0xD2)
-		mnResultsDrawPlaceRow(0x42);
+	if (gMNVSResultsFramesElapsed == 0xD2)
+		mnVSResultsDrawPlaceRow(0x42);
 
-	if (gMNResultsFramesElapsed == 0xE6)
-		mnResultsCreateHorizontalLine(0x6E);
+	if (gMNVSResultsFramesElapsed == 0xE6)
+		mnVSResultsCreateHorizontalLine(0x6E);
 
-	if (gMNResultsFramesElapsed == 0xFA)
+	if (gMNVSResultsFramesElapsed == 0xFA)
 	{
-		mnResultsCreateColumnHeaders();
-		mnResultsDrawKOs(0x7C);
+		mnVSResultsCreateColumnHeaders();
+		mnVSResultsDrawKOs(0x7C);
 	}
 }
 
 // 0x801363E8
-void mnResultsDrawResults2(s32 arg0)
+void mnVSResultsDrawResults2(s32 arg0)
 {
-	if (gMNResultsFramesElapsed == 0xB4)
-		mnResultsCreateOverlay();
+	if (gMNVSResultsFramesElapsed == 0xB4)
+		mnVSResultsCreateOverlay();
 
-	if (gMNResultsFramesElapsed == 0xD2)
+	if (gMNVSResultsFramesElapsed == 0xD2)
 	{
-		mnResultsCreateColumnHeaders();
-		mnResultsDrawKOs(0x42);
+		mnVSResultsCreateColumnHeaders();
+		mnVSResultsDrawKOs(0x42);
 	}
 
-	if (gMNResultsFramesElapsed == 0xE6)
-		mnResultsDrawTKOs(0x51);
+	if (gMNVSResultsFramesElapsed == 0xE6)
+		mnVSResultsDrawTKOs(0x51);
 
-	if (gMNResultsFramesElapsed == 0xFA)
-		mnResultsCreateHorizontalLine(0x62);
+	if (gMNVSResultsFramesElapsed == 0xFA)
+		mnVSResultsCreateHorizontalLine(0x62);
 
-	if (gMNResultsFramesElapsed == 0x10E)
-		mnResultsDrawPointsRow();
+	if (gMNVSResultsFramesElapsed == 0x10E)
+		mnVSResultsDrawPointsRow();
 
-	if (gMNResultsFramesElapsed == 0x122)
-		mnResultsDrawPlaceRow(0x7C);
+	if (gMNVSResultsFramesElapsed == 0x122)
+		mnVSResultsDrawPlaceRow(0x7C);
 }
 
 // 0x801364B0
-void mnResultsDrawResults3(s32 arg0)
+void mnVSResultsDrawResults3(s32 arg0)
 {
-	if (gMNResultsFramesElapsed == 0xB4)
-		mnResultsCreateOverlay();
+	if (gMNVSResultsFramesElapsed == 0xB4)
+		mnVSResultsCreateOverlay();
 
-	if (gMNResultsFramesElapsed == 0xD2)
-		mnResultsDrawPlaceRow(0x42);
+	if (gMNVSResultsFramesElapsed == 0xD2)
+		mnVSResultsDrawPlaceRow(0x42);
 
-	if (gMNResultsFramesElapsed == 0xE6)
-		mnResultsCreateHorizontalLine(0x6E);
+	if (gMNVSResultsFramesElapsed == 0xE6)
+		mnVSResultsCreateHorizontalLine(0x6E);
 
-	if (gMNResultsFramesElapsed == 0xFA)
+	if (gMNVSResultsFramesElapsed == 0xFA)
 	{
-		mnResultsCreateColumnHeaders();
-		mnResultsDrawKOs(0x7C);
+		mnVSResultsCreateColumnHeaders();
+		mnVSResultsDrawKOs(0x7C);
 	}
 }
 
 // 0x80136540
-void mnResultsDrawResultsNoContest(s32 arg0)
+void mnVSResultsDrawResultsNoContest(s32 arg0)
 {
-	if (gMNResultsFramesElapsed == 0x1E)
-		mnResultsCreateOverlay();
+	if (gMNVSResultsFramesElapsed == 0x1E)
+		mnVSResultsCreateOverlay();
 
-	if (gMNResultsFramesElapsed == 0x3C)
+	if (gMNVSResultsFramesElapsed == 0x3C)
 	{
-		mnResultsCreateColumnHeaders();
-		mnResultsDrawKOs(0x42);
+		mnVSResultsCreateColumnHeaders();
+		mnVSResultsDrawKOs(0x42);
 	}
 
-	if (gMNResultsFramesElapsed == 0x50)
-		mnResultsDrawTKOs(0x51);
+	if (gMNVSResultsFramesElapsed == 0x50)
+		mnVSResultsDrawTKOs(0x51);
 }
 
 // 0x801365B4
-u8 mnResultsGetIsTeamBattle()
+u8 mnVSResultsGetIsTeamBattle()
 {
-	return gMNResultsIsTeamBattle;
+	return gMNVSResultsIsTeamBattle;
 }
 
 // 0x801365C0
-void mnResultsRenderScreenTitle(s32 screen_title_gobj)
+void mnVSResultsRenderScreenTitle(s32 screen_title_gobj)
 {
 	gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
@@ -2043,7 +2043,7 @@ f32 D_ovl31_801396B8[] = {
 };
 
 // 0x801366F0
-void mnResultsCreateScreenTitle()
+void mnVSResultsCreateScreenTitle()
 {
 	GObj* screen_title_gobj;
 	intptr_t offsets[2] = {
@@ -2052,14 +2052,14 @@ void mnResultsCreateScreenTitle()
 	};
 	uintptr_t results_routines[5] = {
 
-		mnResultsDrawResults0,
-		mnResultsDrawResults1,
-		mnResultsDrawResults2,
-		mnResultsDrawResults3,
-		mnResultsDrawResultsNoContest
+		mnVSResultsDrawResults0,
+		mnVSResultsDrawResults1,
+		mnVSResultsDrawResults2,
+		mnVSResultsDrawResults3,
+		mnVSResultsDrawResultsNoContest
 	};
 
-	screen_title_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, mnResultsRenderScreenTitle, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNResultsFiles[2], offsets[mnResultsGetIsTeamBattle()]), 1, results_routines[gMNResultsGameRule], 1);
+	screen_title_gobj = lbCommonMakeSpriteGObj(0, 0, 0x16, 0x80000000, mnVSResultsRenderScreenTitle, 0x1F, 0x80000000, -1, GetAddressFromOffset(gMNVSResultsFiles[2], offsets[mnVSResultsGetIsTeamBattle()]), 1, results_routines[gMNVSResultsGameRule], 1);
 	SObjGetStruct(screen_title_gobj)->pos.x = 32.0f;
 	SObjGetStruct(screen_title_gobj)->pos.y = 29.0f;
 	SObjGetStruct(screen_title_gobj)->sprite.attr &= ~SP_FASTCOPY;
@@ -2070,7 +2070,7 @@ void mnResultsCreateScreenTitle()
 }
 
 // 0x80136830
-void mnResultsCreateResultsSYRdpViewport()
+void mnVSResultsCreateResultsSYRdpViewport()
 {
 	GObj *camera_gobj = gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0xF, 0x80000000, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
@@ -2078,7 +2078,7 @@ void mnResultsCreateResultsSYRdpViewport()
 }
 
 // 0x801368D0
-void mnResultsCreateLogoViewport()
+void mnVSResultsCreateLogoViewport()
 {
 	CObj *cobj = CObjGetStruct((GObj*)gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000, func_80017DBC, 0x3C, 0x200000000, -1, 1, 1, 0, 1, 0));
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -2095,7 +2095,7 @@ void mnResultsCreateLogoViewport()
 }
 
 // 0x801369B4
-void mnResultsCreateFighterViewport()
+void mnVSResultsCreateFighterViewport()
 {
 	CObj *cobj = CObjGetStruct((GObj*)gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000, func_80017DBC, 0x32, 0x00048600, -1, 1, 1, 0, 1, 0));
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
@@ -2112,47 +2112,47 @@ void mnResultsCreateFighterViewport()
 }
 
 // 0x80136A9C
-void mnResultsSetKOs()
+void mnVSResultsSetKOs()
 {
 	s32 i;
 
 	for (i = 0; i < 4; i++)
 	{
-		if (gMNResultsIsPresent[i])
-			gMNResultsKOs[i] = gTransferBattleState.players[i].score;
+		if (gMNVSResultsIsPresent[i])
+			gMNVSResultsKOs[i] = gSCManagerTransferBattleState.players[i].score;
 	}
 }
 
 // 0x80136B1C
-void mnResultsSetTKOs()
+void mnVSResultsSetTKOs()
 {
 	s32 i;
 
 	for (i = 0; i < 4; i++)
 	{
-		if (gMNResultsIsPresent[i]) {
-			gMNResultsTKOs[i] = gTransferBattleState.players[i].falls;
+		if (gMNVSResultsIsPresent[i]) {
+			gMNVSResultsTKOs[i] = gSCManagerTransferBattleState.players[i].falls;
 		}
 	}
 }
 
 // 0x80136B9C
-void mnResultsSetPoints()
+void mnVSResultsSetPoints()
 {
 	s32 i;
 
 	for (i = 0; i < 4; i++)
-		gMNResultsPoints[i] = mnResultsGetKOs(i) - mnResultsGetTKOs(i);
+		gMNVSResultsPoints[i] = mnVSResultsGetKOs(i) - mnVSResultsGetTKOs(i);
 }
 
 // 0x80136C08
-s32 mnResultsGetKOsMinusTKOs(s32 port_id)
+s32 mnVSResultsGetKOsMinusTKOs(s32 port_id)
 {
-	return gMNResultsKOs[port_id] - gMNResultsTKOs[port_id];
+	return gMNVSResultsKOs[port_id] - gMNVSResultsTKOs[port_id];
 }
 
 // 0x80136C2C
-void mnResultsOrderResults(gmResultsTemp *results, s32 num_players)
+void mnVSResultsOrderResults(gmResultsTemp *results, s32 num_players)
 {
 	gmResultsTemp temp;
 	s32 i, j;
@@ -2163,7 +2163,7 @@ void mnResultsOrderResults(gmResultsTemp *results, s32 num_players)
 		{
 			if ((results[i].kos_minus_tkos < results[j].kos_minus_tkos) ||
 				(
-					(gSceneData.unk10) &&
+					(gSCManagerSceneData.is_suddendeath) &&
 					(results[i].kos_minus_tkos == results[j].kos_minus_tkos) &&
 					(results[j].placement < results[i].placement)
 				)
@@ -2178,7 +2178,7 @@ void mnResultsOrderResults(gmResultsTemp *results, s32 num_players)
 }
 
 // 0x80136D28
-void mnResultsSetPlacementFFA()
+void mnVSResultsSetPlacementFFA()
 {
 	gmResultsTemp results[4];
 	s32 place;
@@ -2187,66 +2187,66 @@ void mnResultsSetPlacementFFA()
 	s32 num_players;
 	s32 i;
 
-	for (i = 0, num_players = 0; i < ARRAY_COUNT(gMNResultsIsPresent); i++)
+	for (i = 0, num_players = 0; i < ARRAY_COUNT(gMNVSResultsIsPresent); i++)
 	{
-		if (gMNResultsIsPresent[i])
+		if (gMNVSResultsIsPresent[i])
 		{
-			results[num_players].kos_minus_tkos = mnResultsGetKOsMinusTKOs(i);
-			results[num_players].placement = D_800A4EF8.players[i].placement;
+			results[num_players].kos_minus_tkos = mnVSResultsGetKOsMinusTKOs(i);
+			results[num_players].placement = gSCManagerVSBattleState.players[i].placement;
 			results[num_players].port_id = i;
 			num_players += 1;
 		}
 	}
 
-	mnResultsOrderResults(results, num_players);
+	mnVSResultsOrderResults(results, num_players);
 
 	for (i = 0, place = 0, score = results[0].kos_minus_tkos, winner = results[0].placement; i < num_players; i++)
 	{
-		if (score != results[i].kos_minus_tkos || ((gSceneData.unk10) && (winner != results[i].placement)))
+		if (score != results[i].kos_minus_tkos || ((gSCManagerSceneData.is_suddendeath) && (winner != results[i].placement)))
 		{
 			place += 1;
 			score = results[i].kos_minus_tkos;
 			winner = results[i].placement;
 		}
-		gMNResultsPlacement[results[i].port_id] = place;
+		gMNVSResultsPlacement[results[i].port_id] = place;
 	}
 }
 
 // 0x80136FB8
-s32 mnResultsGetTeamKOsMinusTKOs(s32 team_id)
+s32 mnVSResultsGetTeamKOsMinusTKOs(s32 team_id)
 {
 	s32 i;
 	s32 total = 0;
 
-	for (i = 0; i < ARRAY_COUNT(gMNResultsIsPresent); i++)
+	for (i = 0; i < ARRAY_COUNT(gMNVSResultsIsPresent); i++)
 	{
-		if ((gMNResultsIsPresent[i]) && (team_id == gTransferBattleState.players[i].team))
-			total += mnResultsGetKOsMinusTKOs(i);
+		if ((gMNVSResultsIsPresent[i]) && (team_id == gSCManagerTransferBattleState.players[i].team))
+			total += mnVSResultsGetKOsMinusTKOs(i);
 	}
 
 	return total;
 }
 
 // 0x80137068
-void mnResultsSetTeamPlacement(s32 team_index, s32 placement)
+void mnVSResultsSetTeamPlacement(s32 team_index, s32 placement)
 {
 	s32 i;
 
-	for (i = 0; i < ARRAY_COUNT(gMNResultsIsPresent); i++)
+	for (i = 0; i < ARRAY_COUNT(gMNVSResultsIsPresent); i++)
 	{
-		if ((gMNResultsIsPresent[i]) && (team_index == gTransferBattleState.players[i].team))
-			gMNResultsPlacement[i] = placement;
+		if ((gMNVSResultsIsPresent[i]) && (team_index == gSCManagerTransferBattleState.players[i].team))
+			gMNVSResultsPlacement[i] = placement;
 	}
 }
 
 // 0x80137108
-s32 mnResultsGetFirstPortForTeam(s32 team_id)
+s32 mnVSResultsGetFirstPortForTeam(s32 team_id)
 {
 	s32 i;
 
 	for (i = 0; i < 4; i++)
 	{
-		if ((team_id == gTransferBattleState.players[i].team) && (gTransferBattleState.players[i].pkind != nFTPlayerKindNot))
+		if ((team_id == gSCManagerTransferBattleState.players[i].team) && (gSCManagerTransferBattleState.players[i].pkind != nFTPlayerKindNot))
 			return i + 1;
 	}
 
@@ -2254,7 +2254,7 @@ s32 mnResultsGetFirstPortForTeam(s32 team_id)
 }
 
 // 0x801371B8
-void mnResultsSetPlacementTeam()
+void mnVSResultsSetPlacementTeam()
 {
 	gmResultsTemp results[4];
 	s32 place;
@@ -2265,179 +2265,179 @@ void mnResultsSetPlacementTeam()
 
 	for (i = 0, num_players = 0; i < 3; i++)
 	{
-		s32 j = mnResultsGetFirstPortForTeam(i);
+		s32 j = mnVSResultsGetFirstPortForTeam(i);
 
 		if (j != 0)
 		{
-			results[num_players].kos_minus_tkos = mnResultsGetTeamKOsMinusTKOs(i);
-			results[num_players].placement = D_800A4EF8.players[j - 1].placement;
+			results[num_players].kos_minus_tkos = mnVSResultsGetTeamKOsMinusTKOs(i);
+			results[num_players].placement = gSCManagerVSBattleState.players[j - 1].placement;
 			results[num_players].port_id = i;
 			num_players += 1;
 		}
 	}
 
-	mnResultsOrderResults(results, num_players);
+	mnVSResultsOrderResults(results, num_players);
 
 	for (i = 0, place = 0, score = results[0].kos_minus_tkos, winner = results[0].placement; i < num_players; i++)
 	{
-		if (score != results[i].kos_minus_tkos || ((gSceneData.unk10) && (winner != results[i].placement)))
+		if (score != results[i].kos_minus_tkos || ((gSCManagerSceneData.is_suddendeath) && (winner != results[i].placement)))
 		{
 			place += 1;
 			score = results[i].kos_minus_tkos;
 			winner = results[i].placement;
 		}
-		mnResultsSetTeamPlacement(results[i].port_id, place);
+		mnVSResultsSetTeamPlacement(results[i].port_id, place);
 	}
 }
 
 // 0x801372F4
-void mnResultsSetPlacementTime()
+void mnVSResultsSetPlacementTime()
 {
-	if (!gMNResultsIsTeamBattle)
-		mnResultsSetPlacementFFA();
+	if (!gMNVSResultsIsTeamBattle)
+		mnVSResultsSetPlacementFFA();
 	else
-		mnResultsSetPlacementTeam();
+		mnVSResultsSetPlacementTeam();
 }
 
 // 0x80137334
-void mnResultsSetPlacementStock()
+void mnVSResultsSetPlacementStock()
 {
 	s32 i;
 
-	for (i = 0; i < ARRAY_COUNT(gMNResultsIsPresent); i++)
+	for (i = 0; i < ARRAY_COUNT(gMNVSResultsIsPresent); i++)
 	{
-		if (gMNResultsIsPresent[i])
-			gMNResultsPlacement[i] = gTransferBattleState.players[i].placement;
+		if (gMNVSResultsIsPresent[i])
+			gMNVSResultsPlacement[i] = gSCManagerTransferBattleState.players[i].placement;
 	}
 }
 
 // 0x801373B4
-void mnResultsSetArrays()
+void mnVSResultsSetArrays()
 {
-	if (gTransferBattleState.game_rules == SCBATTLE_GAMERULE_STOCK)
+	if (gSCManagerTransferBattleState.game_rules == SCBATTLE_GAMERULE_STOCK)
 	{
-		mnResultsSetKOs();
-		mnResultsSetTKOs();
-		mnResultsSetPoints();
-		mnResultsSetPlacementStock();
+		mnVSResultsSetKOs();
+		mnVSResultsSetTKOs();
+		mnVSResultsSetPoints();
+		mnVSResultsSetPlacementStock();
 	}
 	else
 	{
-		mnResultsSetKOs();
-		mnResultsSetTKOs();
-		mnResultsSetPoints();
-		mnResultsSetPlacementTime();
+		mnVSResultsSetKOs();
+		mnVSResultsSetTKOs();
+		mnVSResultsSetPoints();
+		mnVSResultsSetPlacementTime();
 	}
 
-	if (gMNResultsGameRule == 4)
+	if (gMNVSResultsGameRule == 4)
 	{
 		s32 i, j;
 
-		for (i = 0; i < ARRAY_COUNT(gMNResultsPlacement); i++)
-			gMNResultsPlacement[i] = 0;
+		for (i = 0; i < ARRAY_COUNT(gMNVSResultsPlacement); i++)
+			gMNVSResultsPlacement[i] = 0;
 	}
 
-	mnResultsSetFtKind();
+	mnVSResultsSetFtKind();
 }
 
 // 0x80137454
-void mnResultsSetIsPresent()
+void mnVSResultsSetIsPresent()
 {
 	s32 i;
 
-	for (i = 0; i < ARRAY_COUNT(gMNResultsIsPresent); i++)
+	for (i = 0; i < ARRAY_COUNT(gMNVSResultsIsPresent); i++)
 	{
-		if (gTransferBattleState.players[i].pkind == nFTPlayerKindNot)
-			gMNResultsIsPresent[i] = FALSE;
+		if (gSCManagerTransferBattleState.players[i].pkind == nFTPlayerKindNot)
+			gMNVSResultsIsPresent[i] = FALSE;
 		else
-			gMNResultsIsPresent[i] = TRUE;
+			gMNVSResultsIsPresent[i] = TRUE;
 	}
 }
 
 // 0x801374F4
-void mnResultsDrawFighter(s32 port_id)
+void mnVSResultsDrawFighter(s32 port_id)
 {
-	mnResultsSpawnFighter(port_id);
-	mnResultsSetFighterPosition(gMNResultsFighterGObjs[port_id], port_id, func_ovl31_80133810(port_id));
-	mnResultsSetFighterScale(gMNResultsFighterGObjs[port_id], port_id, mnResultsGetFtKind(port_id), func_ovl31_80133810(port_id));
-	mnResultsCreatePlayerIndicator(port_id, gTransferBattleState.players[port_id].player_color);
-	mnResultsSetAnim(gMNResultsFighterGObjs[port_id], port_id);
+	mnVSResultsSpawnFighter(port_id);
+	mnVSResultsSetFighterPosition(gMNVSResultsFighterGObjs[port_id], port_id, func_ovl31_80133810(port_id));
+	mnVSResultsSetFighterScale(gMNVSResultsFighterGObjs[port_id], port_id, mnVSResultsGetFtKind(port_id), func_ovl31_80133810(port_id));
+	mnVSResultsCreatePlayerIndicator(port_id, gSCManagerTransferBattleState.players[port_id].color);
+	mnVSResultsSetAnim(gMNVSResultsFighterGObjs[port_id], port_id);
 }
 
 // 0x801375AC
-void mnResultsDrawFighters()
+void mnVSResultsDrawFighters()
 {
 	s32 i;
 
-	if (gMNResultsIsPresent[0])
-		mnResultsDrawFighter(0);
+	if (gMNVSResultsIsPresent[0])
+		mnVSResultsDrawFighter(0);
 
-	if (gMNResultsIsPresent[1])
-		mnResultsDrawFighter(1);
+	if (gMNVSResultsIsPresent[1])
+		mnVSResultsDrawFighter(1);
 
-	if (gMNResultsIsPresent[2])
-		mnResultsDrawFighter(2);
+	if (gMNVSResultsIsPresent[2])
+		mnVSResultsDrawFighter(2);
 
-	if (gMNResultsIsPresent[3])
-		mnResultsDrawFighter(3);
+	if (gMNVSResultsIsPresent[3])
+		mnVSResultsDrawFighter(3);
 
-	if (gMNResultsGameRule != 4)
+	if (gMNVSResultsGameRule != 4)
 	{
-		for (i = 0; i < ARRAY_COUNT(gMNResultsIsPresent); i++)
+		for (i = 0; i < ARRAY_COUNT(gMNVSResultsIsPresent); i++)
 		{
-			if (gMNResultsIsPresent[i])
-				mnResultsMakeFighterFaceWinner(gMNResultsFighterGObjs[i], i, mnResultsGetPlacement(i));
+			if (gMNVSResultsIsPresent[i])
+				mnVSResultsMakeFighterFaceWinner(gMNVSResultsFighterGObjs[i], i, mnVSResultsGetPlacement(i));
 		}
 	}
 }
 
 // 0x80137698
-void mnResultsLoadMatchInfo()
+void mnVSResultsLoadMatchInfo()
 {
 	s32 i;
 
-	gMNResultsFramesElapsed = 0;
-	gMNResultsHorizontalLineWidth = 0;
-	gMNResultsCharacterAlpha = 0;
-	gMNResultsIsTeamBattle = gTransferBattleState.is_team_battle;
+	gMNVSResultsFramesElapsed = 0;
+	gMNVSResultsHorizontalLineWidth = 0;
+	gMNVSResultsCharacterAlpha = 0;
+	gMNVSResultsIsTeamBattle = gSCManagerTransferBattleState.is_team_battle;
 
-	for (i = 0; i < ARRAY_COUNT(gMNResultsIsSharedWinner); i++)
-		gMNResultsIsSharedWinner[i] = 0;
+	for (i = 0; i < ARRAY_COUNT(gMNVSResultsIsSharedWinner); i++)
+		gMNVSResultsIsSharedWinner[i] = 0;
 
-	if (gTransferBattleState.game_rules == SCBATTLE_GAMERULE_TIME)
+	if (gSCManagerTransferBattleState.game_rules == SCBATTLE_GAMERULE_TIME)
 	{
-		if (gMNResultsIsTeamBattle == FALSE)
-			gMNResultsGameRule = 0;
+		if (gMNVSResultsIsTeamBattle == FALSE)
+			gMNVSResultsGameRule = 0;
 		else
-			gMNResultsGameRule = 2;
+			gMNVSResultsGameRule = 2;
 
-		gMNResultsMinFramesElapsed = 0x19A;
+		gMNVSResultsMinFramesElapsed = 0x19A;
 	}
 	else
 	{
-		if (gMNResultsIsTeamBattle == FALSE)
-			gMNResultsGameRule = 1;
+		if (gMNVSResultsIsTeamBattle == FALSE)
+			gMNVSResultsGameRule = 1;
 		else
-			gMNResultsGameRule = 3;
+			gMNVSResultsGameRule = 3;
 
-		gMNResultsMinFramesElapsed = 0x172;
+		gMNVSResultsMinFramesElapsed = 0x172;
 	}
 
 
-	if (gSceneData.is_reset)
+	if (gSCManagerSceneData.is_reset)
 	{
-		gMNResultsGameRule = 4;
-		gMNResultsMinFramesElapsed = 0xC8;
+		gMNVSResultsGameRule = 4;
+		gMNVSResultsMinFramesElapsed = 0xC8;
 
-		gMNResultsDrawBackgroundFrame = 1;
-		gMNResultsDrawWinnerTextFrame = 1;
-		gMNResultsDrawFightersFrame = 1;
+		gMNVSResultsDrawBackgroundFrame = 1;
+		gMNVSResultsDrawWinnerTextFrame = 1;
+		gMNVSResultsDrawFightersFrame = 1;
 	}
 	else
 	{
-		gMNResultsDrawBackgroundFrame = 0x50;
-		gMNResultsDrawWinnerTextFrame = 0x78;
-		gMNResultsDrawFightersFrame = 0x78;
+		gMNVSResultsDrawBackgroundFrame = 0x50;
+		gMNVSResultsDrawWinnerTextFrame = 0x78;
+		gMNVSResultsDrawFightersFrame = 0x78;
 	}
 }
 
@@ -2468,7 +2468,7 @@ void func_ovl31_80137854()
 void func_ovl31_80137898(s32 arg0)
 {
 	s32 frame = 0;
-	s32 winner = mnResultsGetWinnerPort();
+	s32 winner = mnVSResultsGetWinnerPort();
 
 	while (TRUE)
 	{
@@ -2510,13 +2510,13 @@ void func_ovl31_8013797C()
 }
 
 // 0x801379C4
-s32 mnResultsGetHumanCount()
+s32 mnVSResultsGetHumanCount()
 {
 	s32 i, total = 0;
 
 	for (i = 0; i < 4; i++)
 	{
-		if (gTransferBattleState.players[i].pkind == nFTPlayerKindMan)
+		if (gSCManagerTransferBattleState.players[i].pkind == nFTPlayerKindMan)
 			total += 1;
 	}
 
@@ -2524,7 +2524,7 @@ s32 mnResultsGetHumanCount()
 }
 
 // 0x80137A1C
-s32 mnResultsGetBestHuman()
+s32 mnVSResultsGetBestHuman()
 {
 	s32 i;
 	sb32 is_human[4];
@@ -2533,7 +2533,7 @@ s32 mnResultsGetBestHuman()
 
 	// determine if human or cpu
 	for (i = 0; i < 4; i++)
-		is_human[i] = (gTransferBattleState.players[i].pkind == nFTPlayerKindMan) ? TRUE : FALSE;
+		is_human[i] = (gSCManagerTransferBattleState.players[i].pkind == nFTPlayerKindMan) ? TRUE : FALSE;
 
 	// determine port_id of first human
 	for (i = 0; i < 4; i++)
@@ -2552,10 +2552,10 @@ s32 mnResultsGetBestHuman()
 	{
 		if (is_human[i])
 		{
-			if (gMNResultsPoints[first_human] == gMNResultsPoints[i])
+			if (gMNVSResultsPoints[first_human] == gMNVSResultsPoints[i])
 				tie_exists = TRUE;
 
-			if (gMNResultsPoints[first_human] < gMNResultsPoints[i])
+			if (gMNVSResultsPoints[first_human] < gMNVSResultsPoints[i])
 				first_human = i;
 		}
 	}
@@ -2567,8 +2567,8 @@ s32 mnResultsGetBestHuman()
 		{
 			if (
 				(is_human[i]) &&
-				(gMNResultsPoints[first_human] == gMNResultsPoints[i]) &&
-				(gTransferBattleState.players[first_human].handicap < gTransferBattleState.players[i].handicap)
+				(gMNVSResultsPoints[first_human] == gMNVSResultsPoints[i]) &&
+				(gSCManagerTransferBattleState.players[first_human].handicap < gSCManagerTransferBattleState.players[i].handicap)
 			)
 			{
 				first_human = i;
@@ -2580,7 +2580,7 @@ s32 mnResultsGetBestHuman()
 }
 
 // 0x80137E34
-s32 mnResultsGetBestHumanOtherThan(s32 port_id)
+s32 mnVSResultsGetBestHumanOtherThan(s32 port_id)
 {
 	s32 i;
 	sb32 is_human[4];
@@ -2590,7 +2590,7 @@ s32 mnResultsGetBestHumanOtherThan(s32 port_id)
 	// determine if human or cpu
 	for (i = 0; i < 4; i++)
 	{
-		is_human[i] = (gTransferBattleState.players[i].pkind == nFTPlayerKindMan) ? TRUE : FALSE;
+		is_human[i] = (gSCManagerTransferBattleState.players[i].pkind == nFTPlayerKindMan) ? TRUE : FALSE;
 	}
 
 	// determine port_id of first human - shouldn't have been commented out! first_human is undefined below!
@@ -2606,7 +2606,7 @@ s32 mnResultsGetBestHumanOtherThan(s32 port_id)
 	// if a human exists with the same score, return that one
 	for (i = first_human; i < 4; i++)
 	{
-		if (is_human[i] && port_id != i && gMNResultsPoints[port_id] == gMNResultsPoints[i])
+		if (is_human[i] && port_id != i && gMNVSResultsPoints[port_id] == gMNVSResultsPoints[i])
 			return i;
 	}
 
@@ -2626,7 +2626,7 @@ s32 mnResultsGetBestHumanOtherThan(s32 port_id)
 	// return the other human with the highest score
 	for (i = 0; i < 4; i++)
 	{
-		if (is_human[i] && port_id != i && var_a1 != i && gMNResultsPoints[var_a1] < gMNResultsPoints[i])
+		if (is_human[i] && port_id != i && var_a1 != i && gMNVSResultsPoints[var_a1] < gMNVSResultsPoints[i])
 			var_a1 = i;
 	}
 
@@ -2634,7 +2634,7 @@ s32 mnResultsGetBestHumanOtherThan(s32 port_id)
 }
 
 // 0x80138130
-s32 mnResultsGetWorstHuman()
+s32 mnVSResultsGetWorstHuman()
 {
 	s32 i;
 	sb32 is_human[4];
@@ -2643,7 +2643,7 @@ s32 mnResultsGetWorstHuman()
 
 	// determine if human or cpu
 	for (i = 0; i < 4; i++)
-		is_human[i] = (gTransferBattleState.players[i].pkind == nFTPlayerKindMan) ? TRUE : FALSE;
+		is_human[i] = (gSCManagerTransferBattleState.players[i].pkind == nFTPlayerKindMan) ? TRUE : FALSE;
 
 	// determine port_id of first human
 	for (i = 0; i < 4; i++)
@@ -2662,10 +2662,10 @@ s32 mnResultsGetWorstHuman()
 	{
 		if (is_human[i])
 		{
-			if (gMNResultsPoints[first_human] == gMNResultsPoints[i])
+			if (gMNVSResultsPoints[first_human] == gMNVSResultsPoints[i])
 				tie_exists = TRUE;
 
-			if (gMNResultsPoints[first_human] > gMNResultsPoints[i])
+			if (gMNVSResultsPoints[first_human] > gMNVSResultsPoints[i])
 				first_human = i;
 		}
 	}
@@ -2677,8 +2677,8 @@ s32 mnResultsGetWorstHuman()
 		{
 			if (
 				(is_human[i]) &&
-				(gMNResultsPoints[first_human] == gMNResultsPoints[i]) &&
-				(gTransferBattleState.players[first_human].handicap > gTransferBattleState.players[i].handicap)
+				(gMNVSResultsPoints[first_human] == gMNVSResultsPoints[i]) &&
+				(gSCManagerTransferBattleState.players[first_human].handicap > gSCManagerTransferBattleState.players[i].handicap)
 			)
 			{
 				first_human = i;
@@ -2690,10 +2690,10 @@ s32 mnResultsGetWorstHuman()
 }
 
 // 0x80138548
-void mnResultsSetAutoHandicaps(s32 best_human_port_id, s32 worst_human_port_id)
+void mnVSResultsSetAutoHandicaps(s32 best_human_port_id, s32 worst_human_port_id)
 {
-	s32 handicap_0 = gTransferBattleState.players[best_human_port_id].handicap;
-	s32 handicap_1 = gTransferBattleState.players[worst_human_port_id].handicap;
+	s32 handicap_0 = gSCManagerTransferBattleState.players[best_human_port_id].handicap;
+	s32 handicap_1 = gSCManagerTransferBattleState.players[worst_human_port_id].handicap;
 	s32 other_human_port_id;
 
 	if ((handicap_0 == 1) && (handicap_1 == 9))
@@ -2702,52 +2702,52 @@ void mnResultsSetAutoHandicaps(s32 best_human_port_id, s32 worst_human_port_id)
 	}
 	else if ((handicap_0 > 1) && (handicap_1 < 9))
 	{
-		gTransferBattleState.players[best_human_port_id].handicap--;
-		gTransferBattleState.players[worst_human_port_id].handicap++;
+		gSCManagerTransferBattleState.players[best_human_port_id].handicap--;
+		gSCManagerTransferBattleState.players[worst_human_port_id].handicap++;
 	}
 	else if ((handicap_0 == 1) && (handicap_1 < 8))
 	{
-		gTransferBattleState.players[worst_human_port_id].handicap += 2;
+		gSCManagerTransferBattleState.players[worst_human_port_id].handicap += 2;
 	}
 	else if ((handicap_0 > 2) && (handicap_1 == 9))
 	{
-		gTransferBattleState.players[best_human_port_id].handicap -= 2;
+		gSCManagerTransferBattleState.players[best_human_port_id].handicap -= 2;
 	}
 	else if ((handicap_0 == 1) && (handicap_1 == 8))
 	{
-		other_human_port_id = mnResultsGetBestHumanOtherThan(best_human_port_id);
+		other_human_port_id = mnVSResultsGetBestHumanOtherThan(best_human_port_id);
 
 		if (other_human_port_id != 0x29A)
 		{
-			gTransferBattleState.players[other_human_port_id].handicap--;
-			gTransferBattleState.players[worst_human_port_id].handicap++;
+			gSCManagerTransferBattleState.players[other_human_port_id].handicap--;
+			gSCManagerTransferBattleState.players[worst_human_port_id].handicap++;
 		}
 	}
 	else if ((handicap_0 == 2) && (handicap_1 == 9))
 	{
-		other_human_port_id = mnResultsGetBestHumanOtherThan(best_human_port_id);
+		other_human_port_id = mnVSResultsGetBestHumanOtherThan(best_human_port_id);
 
 		if (other_human_port_id != 0x29A)
 		{
-			gTransferBattleState.players[best_human_port_id].handicap--;
-			gTransferBattleState.players[other_human_port_id].handicap--;
+			gSCManagerTransferBattleState.players[best_human_port_id].handicap--;
+			gSCManagerTransferBattleState.players[other_human_port_id].handicap--;
 		}
 	}
 }
 
 // 0x801386BC
-void mnResultsAutoHandicap()
+void mnVSResultsAutoHandicap()
 {
-	if ((gMNResultsGameRule != 4) && (mnResultsGetHumanCount() >= 2))
+	if ((gMNVSResultsGameRule != 4) && (mnVSResultsGetHumanCount() >= 2))
 	{
-		mnResultsSetAutoHandicaps(mnResultsGetBestHuman(), mnResultsGetWorstHuman());
+		mnVSResultsSetAutoHandicaps(mnVSResultsGetBestHuman(), mnVSResultsGetWorstHuman());
 	}
 }
 
 // 0x80138714
-void mnResultsPlayVictoryTheme()
+void mnVSResultsPlayVictoryTheme()
 {
-	switch (mnResultsGetFtKind(mnResultsGetWinnerPort()))
+	switch (mnVSResultsGetFtKind(mnVSResultsGetWinnerPort()))
 	{
 		case nFTKindMario:
 		case nFTKindLuigi:
@@ -2808,80 +2808,80 @@ void func_ovl31_80138830()
 void func_ovl31_801388A4() {}
 
 // 0x801388AC
-void mnResultsMain(s32 arg0)
+void mnVSResultsMain(s32 arg0)
 {
 	s32 unlocked_features;
 	u16 sp_game_complete_mask;
 	s32 i;
 
-	gMNResultsFramesElapsed += 1;
+	gMNVSResultsFramesElapsed += 1;
 
-	if (gMNResultsFramesElapsed == gMNResultsDrawBackgroundFrame)
+	if (gMNVSResultsFramesElapsed == gMNVSResultsDrawBackgroundFrame)
 	{
-		if (gMNResultsGameRule != 4)
-			mnResultsCreateBackgroundOverlay2();
+		if (gMNVSResultsGameRule != 4)
+			mnVSResultsCreateBackgroundOverlay2();
 
-		mnResultsCreateBackground();
+		mnVSResultsCreateBackground();
 	}
 
-	if (gMNResultsFramesElapsed == gMNResultsDrawWinnerTextFrame)
+	if (gMNVSResultsFramesElapsed == gMNVSResultsDrawWinnerTextFrame)
 	{
-		mnResultsDrawWinnerText();
-		mnResultsCreateScreenTitle();
+		mnVSResultsDrawWinnerText();
+		mnVSResultsCreateScreenTitle();
 
-		if (gMNResultsGameRule != 4)
+		if (gMNVSResultsGameRule != 4)
 			func_ovl31_80138830();
 	}
 
-	if (gMNResultsFramesElapsed == gMNResultsDrawFightersFrame)
+	if (gMNVSResultsFramesElapsed == gMNVSResultsDrawFightersFrame)
 	{
-		mnResultsDrawFighters();
+		mnVSResultsDrawFighters();
 	}
 
-	if (gMNResultsDrawFightersFrame < gMNResultsFramesElapsed)
+	if (gMNVSResultsDrawFightersFrame < gMNVSResultsFramesElapsed)
 	{
-		if (gMNResultsCharacterAlpha < 0xFF)
+		if (gMNVSResultsCharacterAlpha < 0xFF)
 		{
-			gMNResultsCharacterAlpha += 0x16;
+			gMNVSResultsCharacterAlpha += 0x16;
 
-			if (gMNResultsCharacterAlpha >= 0x100)
-				gMNResultsCharacterAlpha = 0xFF;
+			if (gMNVSResultsCharacterAlpha >= 0x100)
+				gMNVSResultsCharacterAlpha = 0xFF;
 		}
 
-		scSubsysFighterSetLightParams(10.0F, 10.0F, 0xFF, 0xFF, 0xFF, gMNResultsCharacterAlpha);
+		scSubsysFighterSetLightParams(10.0F, 10.0F, 0xFF, 0xFF, 0xFF, gMNVSResultsCharacterAlpha);
 	}
 
-	mnResultsAnnounceWinner();
+	mnVSResultsAnnounceWinner();
 
-	if ((gMNResultsGameRule != 4) && (gMNResultsFramesElapsed == 0x78))
+	if ((gMNVSResultsGameRule != 4) && (gMNVSResultsFramesElapsed == 0x78))
 	{
-		mnResultsPlayVictoryTheme();
+		mnVSResultsPlayVictoryTheme();
 		func_ovl31_80137854();
 	}
 
-	if (mnResultsCheckStartPressed())
+	if (mnVSResultsCheckStartPressed())
 	{
 		unlocked_features = 0;
 
-		if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_ITEMSWITCH) && (gSaveData.unlock_task_itemswitch >= 100))
+		if (!(gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_ITEMSWITCH) && (gSCManagerBackupData.vs_itemswitch_battles >= 100))
 		{
-			gSceneData.unlock_messages[unlocked_features] = nLBBackupUnlockItemSwitch;
+			gSCManagerSceneData.unlock_messages[unlocked_features] = nLBBackupUnlockItemSwitch;
 			unlocked_features = 1;
 		}
 
-		if (!(gSaveData.unlock_mask & LBBACKUP_UNLOCK_MASK_INISHIE))
+		if (!(gSCManagerBackupData.unlock_mask & LBBACKUP_UNLOCK_MASK_INISHIE))
 		{
-			if ((gSaveData.unlock_task_inishie & LBBACKUP_GROUND_MASK_ALL) == LBBACKUP_GROUND_MASK_ALL)
+			if ((gSCManagerBackupData.ground_mask & LBBACKUP_GROUND_MASK_ALL) == LBBACKUP_GROUND_MASK_ALL)
 			{
 				for (i = 0, sp_game_complete_mask = 0; i < 12; i++)
 				{
-					if (gSaveData.spgame_records[i].spgame_complete)
+					if (gSCManagerBackupData.spgame_records[i].is_spgame_complete)
 						sp_game_complete_mask |= (1 << i);
 				}
 
 				if ((sp_game_complete_mask & LBBACKUP_CHARACTER_MASK_STARTER) == LBBACKUP_CHARACTER_MASK_STARTER)
 				{
-					gSceneData.unlock_messages[unlocked_features] = nLBBackupUnlockInishie;
+					gSCManagerSceneData.unlock_messages[unlocked_features] = nLBBackupUnlockInishie;
 					unlocked_features += 1;
 				}
 			}
@@ -2889,13 +2889,13 @@ void mnResultsMain(s32 arg0)
 
 		if (unlocked_features != 0)
 		{
-			gSceneData.scene_prev = gSceneData.scene_curr;
-			gSceneData.scene_curr = 0xC;
+			gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+			gSCManagerSceneData.scene_curr = 0xC;
 		}
 		else
 		{
-			gSceneData.scene_prev = gSceneData.scene_curr;
-			gSceneData.scene_curr = 0x10;
+			gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+			gSCManagerSceneData.scene_curr = 0x10;
 		}
 
 		func_800266A0_272A0();
@@ -2923,17 +2923,17 @@ scRuntimeInfo D_ovl31_8013972C = {
 	0x800A26B8, &lOverlay31ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00004E20, 0x00000400,
 	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x0000C000,
-	mnResultsFuncLights, update_contdata,
+	mnVSResultsFuncLights, update_contdata,
 	0x00000000, 0x00000600, 0x00000000, 0x00000000,
 	0x00000000, 0x00000000, 0x00000088, 0x00000000,
 	0x800D5CAC, 0x00000000, 0x00000000, 0x00000000,
 	0x00000000, 0x00000088, 0x00000000, 0x0000006C,
 	0x00000000, 0x00000090,
-	mnResultsInit,
+	mnVSResultsInit,
 };
 
 // 0x80138B70
-void mnResultsInit()
+void mnVSResultsInit()
 {
 	LBRelocSetup rl_setup;
 	s32 i;
@@ -2947,9 +2947,9 @@ void mnResultsInit()
 	rl_setup.force_status_buffer = (LBFileNode*) &D_ovl31_8013A010;
 	rl_setup.force_status_buffer_size = 7;
 	lbRelocInitSetup(&rl_setup);
-	lbRelocLoadFilesExtern(D_ovl31_80138F70, ARRAY_COUNT(D_ovl31_80138F70), gMNResultsFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl31_80138F70, ARRAY_COUNT(D_ovl31_80138F70)), 0x10));
+	lbRelocLoadFilesExtern(D_ovl31_80138F70, ARRAY_COUNT(D_ovl31_80138F70), gMNVSResultsFiles, syTaskmanMalloc(lbRelocGetAllocSize(D_ovl31_80138F70, ARRAY_COUNT(D_ovl31_80138F70)), 0x10));
 
-	gcMakeGObjSPAfter(0, mnResultsMain, 0, 0x80000000U);
+	gcMakeGObjSPAfter(0, mnVSResultsMain, 0, 0x80000000U);
 	gcMakeDefaultCameraGObj(0, GOBJ_PRIORITY_DEFAULT, 100, COBJ_FLAG_FILLCOLOR | COBJ_FLAG_ZBUFFER, GPACK_RGBA8888(0x00, 0x00, 0x00, 0xFF));
 	efParticleInitAll();
 	efManagerInitEffects();
@@ -2958,45 +2958,45 @@ void mnResultsInit()
 	for (i = 0; i < 12; i++)
 		ftManagerSetupFilesAllKind(i);
 
-	for (i = 0; i < ARRAY_COUNT(gMNResultsFigatreeHeaps); i++)
-		gMNResultsFigatreeHeaps[i] = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
+	for (i = 0; i < ARRAY_COUNT(gMNVSResultsFigatreeHeaps); i++)
+		gMNVSResultsFigatreeHeaps[i] = syTaskmanMalloc(gFTManagerFigatreeHeapSize, 0x10);
 
-	mnResultsSaveDataToSRAM();
-	mnResultsLoadMatchInfo();
-	mnResultsSetIsPresent();
-	mnResultsSetArrays();
+	mnVSResultsSaveDataToSRAM();
+	mnVSResultsLoadMatchInfo();
+	mnVSResultsSetIsPresent();
+	mnVSResultsSetArrays();
 
-	if (gTransferBattleState.handicap_setting == 2) // AUTO
-		mnResultsAutoHandicap();
+	if (gSCManagerTransferBattleState.handicap == 2) // AUTO
+		mnVSResultsAutoHandicap();
 
-	if (gMNResultsGameRule != 4)
+	if (gMNVSResultsGameRule != 4)
 	{
 		lbTransitionSetupTransition();
 		lbTransitionMakeCamera(0x20000002, 0, 0xA, 0x100000000);
 		lbTransitionMakeTransition(mtTrigGetRandomIntRange(0xB), 0x20000000, 0, lbTransitionFuncDisplay, 0x20, lbTransitionProcUpdate);
 	}
 
-	mnResultsCreateLogoViewport();
-	mnResultsCreateFighterViewport();
-	mnResultsCreatePlayerIndicatorViewport();
-	mnResultsCreateWinnerTextViewport();
-	mnResultsCreateOverlayViewport();
-	mnResultsCreateResultsSYRdpViewport();
-	mnResultsCreateBackgroundOverlayViewport();
-	mnResultsCreateBackgroundOverlay2Viewport();
+	mnVSResultsCreateLogoViewport();
+	mnVSResultsCreateFighterViewport();
+	mnVSResultsCreatePlayerIndicatorViewport();
+	mnVSResultsCreateWinnerTextViewport();
+	mnVSResultsCreateOverlayViewport();
+	mnVSResultsCreateResultsSYRdpViewport();
+	mnVSResultsCreateBackgroundOverlayViewport();
+	mnVSResultsCreateBackgroundOverlay2Viewport();
 
-	if (gMNResultsGameRule != 4)
-		mnResultsCreateLogo();
+	if (gMNVSResultsGameRule != 4)
+		mnVSResultsCreateLogo();
 
-	mnResultsCreateBackgroundOverlay();
+	mnVSResultsCreateBackgroundOverlay();
 	func_ovl31_8013797C();
 
-	if ((gMNResultsGameRule != 4) && (gTransferBattleState.players[mnResultsGetWinnerPort()].pkind == nFTPlayerKindMan))
+	if ((gMNVSResultsGameRule != 4) && (gSCManagerTransferBattleState.players[mnVSResultsGetWinnerPort()].pkind == nFTPlayerKindMan))
 		func_ovl31_80137938();
 
-	scSubsysFighterSetLightParams(10.0F, 10.0F, 0xFF, 0xFF, 0xFF, gMNResultsCharacterAlpha);
+	scSubsysFighterSetLightParams(10.0F, 10.0F, 0xFF, 0xFF, 0xFF, gMNVSResultsCharacterAlpha);
 
-	if (gMNResultsGameRule != 4)
+	if (gMNVSResultsGameRule != 4)
 		func_800269C0_275C0(0x26D);
 }
 

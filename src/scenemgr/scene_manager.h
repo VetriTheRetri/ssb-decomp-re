@@ -611,7 +611,7 @@ enum PlayerControlledBy { PLAYER_CONTROL_MAN, PLAYER_CONTROL_CPU, PLAYER_NOT_PRE
 #define _ovl64SegNoloadStart 0x8018e2f0
 #define _ovl64SegNoloadEnd 0x8018e860
 
-// Macro for creating array at D_800A3070 inserting all the data above
+// Macro for creating array at dSCManagerOverlays inserting all the data above
 #define GENERATE_OVERLAY_SECTION_DATA(OVL_NUM) { (u32)_ovl##OVL_NUM##SegRomStart, (u32)_ovl##OVL_NUM##SegRomEnd, _ovl##OVL_NUM##SegStart, _ovl##OVL_NUM##TextStart, _ovl##OVL_NUM##TextEnd, _ovl##OVL_NUM##DataStart, _ovl##OVL_NUM##DataEnd, _ovl##OVL_NUM##SegNoloadStart, _ovl##OVL_NUM##SegNoloadEnd, }
 
 #endif /* SCENEMGR_SCENE_MANGAGER_H */

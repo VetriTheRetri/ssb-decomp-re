@@ -1297,7 +1297,7 @@ void mn1PCreateTitleOptionsAndBackViewport()
 // 0x80134758
 u32 mn1PGetHighscore(s32 fkind)
 {
-	return gSaveData.spgame_records[fkind].spgame_hiscore;
+	return gSCManagerBackupData.spgame_records[fkind].spgame_hiscore;
 }
 
 // 0x8013476C
@@ -1339,7 +1339,7 @@ void mn1PDrawHighscore()
 		mn1PDrawString(highscore_gobj, "HIGH SCORE", 142.0F, 201.0F, text_color);
 		mn1PCreateSmallerNumber(highscore_gobj, mn1PGetHighscore(fkind), 256.0F, 198.0F, number_color, 8, 1);
 
-		best_difficulty = gSaveData.spgame_records[fkind].spgame_best_difficulty;
+		best_difficulty = gSCManagerBackupData.spgame_records[fkind].spgame_best_difficulty;
 
 		if (best_difficulty != 0)
 		{
@@ -1358,7 +1358,7 @@ void mn1PDrawHighscore()
 // 0x80134968
 s32 mn1PGetBonuses(s32 fkind)
 {
-	return gSaveData.spgame_records[fkind].spgame_bonuses;
+	return gSCManagerBackupData.spgame_records[fkind].spgame_bonuses;
 }
 
 // 0x8013497C
@@ -2411,8 +2411,8 @@ void mn1PRecallToken(s32 port_id)
 // 0x80136CB8
 void mn1PGoBackTo1PMenu()
 {
-	gSceneData.scene_prev = gSceneData.scene_curr;
-	gSceneData.scene_curr = nSCKind1PMode;
+	gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+	gSCManagerSceneData.scene_curr = nSCKind1PMode;
 
 	mn1PSaveMatchInfo();
 	auStopBGM();
@@ -2926,18 +2926,18 @@ sb32 mn1PIsReadyToFight()
 // 0x80137F10
 void mn1PSaveMatchInfo()
 {
-	gSceneData.spgame_time_limit = gMN1PTimerValue;
-	gSceneData.spgame_player = gMN1PHumanPanelPort;
-	gSaveData.spgame_difficulty = gMN1PLevelValue;
-	gSceneData.spgame_stage = 0;
-	gSaveData.spgame_stock_count = gMN1PStockValue;
+	gSCManagerSceneData.spgame_time_limit = gMN1PTimerValue;
+	gSCManagerSceneData.player = gMN1PHumanPanelPort;
+	gSCManagerBackupData.spgame_difficulty = gMN1PLevelValue;
+	gSCManagerSceneData.spgame_stage = 0;
+	gSCManagerBackupData.spgame_stock_count = gMN1PStockValue;
 
 	if (gMN1PPanel.unk_0x88 != 0)
-		gSceneData.fkind = gMN1PPanel.char_id;
+		gSCManagerSceneData.fkind = gMN1PPanel.char_id;
 	else
-		gSceneData.fkind = nFTKindNull;
+		gSCManagerSceneData.fkind = nFTKindNull;
 
-	gSceneData.costume = gMN1PPanel.costume_id;
+	gSCManagerSceneData.costume = gMN1PPanel.costume_id;
 
 	lbBackupWrite();
 }
@@ -2956,8 +2956,8 @@ void mn1PMain(s32 arg0)
 
 	if (gMN1PFramesElapsed == gMN1PMaxFramesElapsed)
 	{
-		gSceneData.scene_prev = gSceneData.scene_curr;
-		gSceneData.scene_curr = nSCKindTitle;
+		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+		gSCManagerSceneData.scene_curr = nSCKindTitle;
 
 		mn1PSaveMatchInfo();
 		syTaskmanSetLoadScene();
@@ -2974,8 +2974,8 @@ void mn1PMain(s32 arg0)
 
 		if (gMN1PStartDelayTimer == 0)
 		{
-			gSceneData.scene_prev = gSceneData.scene_curr;
-			gSceneData.scene_curr = nSCKind1PGame;
+			gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+			gSCManagerSceneData.scene_curr = nSCKind1PGame;
 
 			mn1PSaveMatchInfo();
 			syTaskmanSetLoadScene();
@@ -3017,8 +3017,8 @@ void mn1PInitPort(s32 port_id)
 	gMN1PPanel.p_sfx = NULL;
 	gMN1PPanel.sfx_id = 0;
 	gMN1PPanel.player = NULL;
-	gMN1PPanel.char_id = gSceneData.fkind;
-	gMN1PPanel.costume_id = gSceneData.costume;
+	gMN1PPanel.char_id = gSCManagerSceneData.fkind;
+	gMN1PPanel.costume_id = gSCManagerSceneData.costume;
 
 	if (gMN1PPanel.char_id == nFTKindNull)
 	{
@@ -3049,12 +3049,12 @@ void mn1PLoadMatchInfo()
 	gMN1PFramesElapsed = 0;
 	gMN1PMaxFramesElapsed = gMN1PFramesElapsed + I_MIN_TO_TICS(5);
 	gMN1PIsStartTriggered = 0;
-	gMN1PTimerValue = gSceneData.spgame_time_limit;
-	gMN1PHumanPanelPort = gSceneData.spgame_player;
-	gMN1PLevelValue = gSaveData.spgame_difficulty;
-	gMN1PStockValue = gSaveData.spgame_stock_count;
-	gMN1PFtKind = gSceneData.fkind;
-	gMN1PCostumeId[0] = gSceneData.costume;
+	gMN1PTimerValue = gSCManagerSceneData.spgame_time_limit;
+	gMN1PHumanPanelPort = gSCManagerSceneData.player;
+	gMN1PLevelValue = gSCManagerBackupData.spgame_difficulty;
+	gMN1PStockValue = gSCManagerBackupData.spgame_stock_count;
+	gMN1PFtKind = gSCManagerSceneData.fkind;
+	gMN1PCostumeId[0] = gSCManagerSceneData.costume;
 	gMN1PHighscoreGObj = NULL;
 	gMN1PBonusesGObj = NULL;
 	gMN1PLevelGObj = NULL;
@@ -3065,7 +3065,7 @@ void mn1PLoadMatchInfo()
 	mn1PInitPort(gMN1PHumanPanelPort);
 
 	gMN1PPanel.min_frames_elapsed_until_recall = 0;
-	gMN1PCharacterUnlockedMask = gSaveData.fighter_mask;
+	gMN1PCharacterUnlockedMask = gSCManagerBackupData.fighter_mask;
 }
 
 // 0x801382C8
@@ -3136,7 +3136,7 @@ void mn1PInitCSS()
 	mn1PCreateReadyToFightObjects();
 	scSubsysFighterSetLightParams(45.0F, 45.0F, 0xFF, 0xFF, 0xFF, 0xFF);
 
-	if (gSceneData.scene_prev != nSCKindVSMaps)
+	if (gSCManagerSceneData.scene_prev != nSCKindVSMaps)
 		auPlaySong(0, 0xA);
 
 	func_800269C0_275C0(0x1DFU);

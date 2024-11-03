@@ -305,19 +305,19 @@ void mvOpeningJungleMakeFighters(void)
     gmRumbleMakeActor();
     ftPublicityMakeActor();
 
-    for (i = 0; i < ARRAY_COUNT(gBattleState->players); i++)
+    for (i = 0; i < ARRAY_COUNT(gSCManagerBattleState->players); i++)
     {
         FTCreateDesc ft_desc = dFTManagerDefaultFighterDesc;
 
-        if (gBattleState->players[i].pkind == nFTPlayerKindNot)
+        if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot)
         {
             continue;
         }
-        ftManagerSetupFilesAllKind(gBattleState->players[i].fkind);
+        ftManagerSetupFilesAllKind(gSCManagerBattleState->players[i].fkind);
 
-        ft_desc.fkind = gBattleState->players[i].fkind;
+        ft_desc.fkind = gSCManagerBattleState->players[i].fkind;
 
-        if (gBattleState->players[i].fkind == nFTKindDonkey)
+        if (gSCManagerBattleState->players[i].fkind == nFTKindDonkey)
         {
             ft_desc.pos.x = spawn_position[1].x;
             ft_desc.pos.y = spawn_position[1].y;
@@ -337,20 +337,20 @@ void mvOpeningJungleMakeFighters(void)
 
             ft_desc.damage = 40;
         }
-        ft_desc.team = gBattleState->players[i].team;
+        ft_desc.team = gSCManagerBattleState->players[i].team;
         ft_desc.player = i;
         ft_desc.detail = nFTPartsDetailHigh;
-        ft_desc.costume = gBattleState->players[i].costume;
-        ft_desc.handicap = gBattleState->players[i].handicap;
-        ft_desc.cp_level = gBattleState->players[i].level;
-        ft_desc.stock_count = gBattleState->stock_setting;
-        ft_desc.pkind = gBattleState->players[i].pkind;
+        ft_desc.costume = gSCManagerBattleState->players[i].costume;
+        ft_desc.handicap = gSCManagerBattleState->players[i].handicap;
+        ft_desc.cp_level = gSCManagerBattleState->players[i].level;
+        ft_desc.stock_count = gSCManagerBattleState->stocks;
+        ft_desc.pkind = gSCManagerBattleState->players[i].pkind;
         ft_desc.controller = &gPlayerControllers[i];
-        ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[i].fkind);
+        ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
         sMVOpeningJungleFighterGObj = fighter_gobj = ftManagerMakeFighter(&ft_desc);
 
-        if (gBattleState->players[i].fkind == nFTKindDonkey)
+        if (gSCManagerBattleState->players[i].fkind == nFTKindDonkey)
         {
             fp = ftGetStruct(fighter_gobj);
 
@@ -364,7 +364,7 @@ void mvOpeningJungleMakeFighters(void)
         }
         ftParamInitPlayerBattleStats(i, fighter_gobj);
 
-        if (gBattleState->players[i].fkind == nFTKindDonkey)
+        if (gSCManagerBattleState->players[i].fkind == nFTKindDonkey)
         {
             ftParamSetKey(fighter_gobj, dMVOpeningJungleDonkeyInputSeq);
         }
@@ -379,15 +379,15 @@ void mvOpeningJungleFuncRun(GObj *gobj)
 
     if (scSubsysControllerGetPlayerTapButtons(A_BUTTON | B_BUTTON | START_BUTTON) != FALSE)
     {
-        gSceneData.scene_prev = gSceneData.scene_curr;
-        gSceneData.scene_curr = nSCKindTitle;
+        gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+        gSCManagerSceneData.scene_curr = nSCKindTitle;
 
         syTaskmanSetLoadScene();
     }
     if (sMVOpeningJungleTotalTimeTics == 320)
     {
-        gSceneData.scene_prev = gSceneData.scene_curr;
-        gSceneData.scene_curr = nSCKindOpeningYoster;
+        gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+        gSCManagerSceneData.scene_curr = nSCKindOpeningYoster;
 
         syTaskmanSetLoadScene();
     }
@@ -402,18 +402,18 @@ void func_ovl51_8018D668(void)
 // 0x8018D670
 void mvOpeningJungleFuncStart(void)
 {
-    sMVOpeningJungleBattleState = gDefaultBattleState;
-    gBattleState = &sMVOpeningJungleBattleState;
+    sMVOpeningJungleBattleState = gSCManagerDefaultBattleState;
+    gSCManagerBattleState = &sMVOpeningJungleBattleState;
 
-    gBattleState->game_type = nSCBattleGameTypeOpening;
+    gSCManagerBattleState->game_type = nSCBattleGameTypeOpening;
 
-    gBattleState->gkind = nGRKindJungle;
-    gBattleState->pl_count = 1;
+    gSCManagerBattleState->gkind = nGRKindJungle;
+    gSCManagerBattleState->pl_count = 1;
 
-    gBattleState->players[0].fkind = nFTKindDonkey;
-    gBattleState->players[0].pkind = nFTPlayerKindKey;
-    gBattleState->players[1].fkind = nFTKindSamus;
-    gBattleState->players[1].pkind = nFTPlayerKindKey;
+    gSCManagerBattleState->players[0].fkind = nFTKindDonkey;
+    gSCManagerBattleState->players[0].pkind = nFTPlayerKindKey;
+    gSCManagerBattleState->players[1].fkind = nFTKindSamus;
+    gSCManagerBattleState->players[1].pkind = nFTPlayerKindKey;
 
     mvOpeningJungleSetupFiles();
     gcMakeGObjSPAfter(nGCCommonKindMovie, mvOpeningJungleFuncRun, 13, GOBJ_PRIORITY_DEFAULT);

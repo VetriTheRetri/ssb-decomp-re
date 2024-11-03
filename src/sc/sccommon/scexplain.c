@@ -171,22 +171,22 @@ void scExplainLoadExplainFiles(void)
 // 0x8018D14C
 void scExplainSetBattleState(void)
 {
-    sSCExplainBattleState = gDefaultBattleState;
+    sSCExplainBattleState = gSCManagerDefaultBattleState;
 
-    gBattleState = &sSCExplainBattleState;
+    gSCManagerBattleState = &sSCExplainBattleState;
 
-    gBattleState->game_type = nSCBattleGameTypeExplain;
+    gSCManagerBattleState->game_type = nSCBattleGameTypeExplain;
 
-    gBattleState->gkind = nGRKindExplain;
+    gSCManagerBattleState->gkind = nGRKindExplain;
 
-    gBattleState->pl_count = 2;
-    gBattleState->cp_count = 0;
+    gSCManagerBattleState->pl_count = 2;
+    gSCManagerBattleState->cp_count = 0;
 
-    gBattleState->players[0].fkind = nFTKindMario;
-    gBattleState->players[1].fkind = nFTKindLuigi;
+    gSCManagerBattleState->players[0].fkind = nFTKindMario;
+    gSCManagerBattleState->players[1].fkind = nFTKindLuigi;
 
-    gBattleState->players[0].pkind = nFTPlayerKindGameKey;
-    gBattleState->players[1].pkind = nFTPlayerKindGameKey;
+    gSCManagerBattleState->players[0].pkind = nFTPlayerKindGameKey;
+    gSCManagerBattleState->players[1].pkind = nFTPlayerKindGameKey;
 }
 
 // 0x8018D1D4
@@ -205,7 +205,7 @@ void scExplainStartBattle(void)
 
         fighter_gobj = fighter_gobj->link_next;
     }
-    gBattleState->game_status = nSCBattleGameStatusGo;
+    gSCManagerBattleState->game_status = nSCBattleGameStatusGo;
 }
 
 // 0x8018D248
@@ -609,8 +609,8 @@ void scExplainDetectExit(void)
 
         if (button_tap & (A_BUTTON | B_BUTTON | START_BUTTON))
         {
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindTitle;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindTitle;
 
             syTaskmanSetLoadScene();
 
@@ -649,8 +649,8 @@ void scExplainUpdatePhase(void)
 
         if (sSCExplainStruct.phase > 22)
         {
-            gSceneData.scene_prev = gSceneData.scene_curr;
-            gSceneData.scene_curr = nSCKindCharacters;
+            gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
+            gSCManagerSceneData.scene_curr = nSCKindCharacters;
 
             syTaskmanSetLoadScene();
 
@@ -733,48 +733,48 @@ void scExplainFuncStart(void)
     gmRumbleMakeActor();
     ftPublicityMakeActor();
 
-    for (player = 0; player < ARRAY_COUNT(gBattleState->players); player++)
+    for (player = 0; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)
     {
         player_spawn = dFTManagerDefaultFighterDesc;
 
-        if (gBattleState->players[player].pkind == nFTPlayerKindNot)
+        if (gSCManagerBattleState->players[player].pkind == nFTPlayerKindNot)
         {
             continue;
         }
-        ftManagerSetupFilesAllKind(gBattleState->players[player].fkind);
+        ftManagerSetupFilesAllKind(gSCManagerBattleState->players[player].fkind);
 
-        player_spawn.fkind = gBattleState->players[player].fkind;
+        player_spawn.fkind = gSCManagerBattleState->players[player].fkind;
 
         mpCollisionGetPlayerMapObjPosition(player, &player_spawn.pos);
 
         player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? -1 : +1;
 
-        player_spawn.team = gBattleState->players[player].team;
+        player_spawn.team = gSCManagerBattleState->players[player].team;
 
         player_spawn.player = player;
 
-        player_spawn.detail = ((gBattleState->pl_count + gBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
+        player_spawn.detail = ((gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
-        player_spawn.costume = gBattleState->players[player].costume;
+        player_spawn.costume = gSCManagerBattleState->players[player].costume;
 
-        player_spawn.handicap = gBattleState->players[player].handicap;
+        player_spawn.handicap = gSCManagerBattleState->players[player].handicap;
 
-        player_spawn.cp_level = gBattleState->players[player].level;
+        player_spawn.cp_level = gSCManagerBattleState->players[player].level;
 
-        player_spawn.stock_count = gBattleState->stock_setting;
+        player_spawn.stock_count = gSCManagerBattleState->stocks;
 
         player_spawn.damage = 0;
 
-        player_spawn.pkind = gBattleState->players[player].pkind;
+        player_spawn.pkind = gSCManagerBattleState->players[player].pkind;
 
         player_spawn.controller = &gPlayerControllers[player];
 
-        player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gBattleState->players[player].fkind);
+        player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[player].fkind);
 
         fighter_gobj = ftManagerMakeFighter(&player_spawn);
 
-        gBattleState->players[player].player_color = player;
-        gBattleState->players[player].tag_kind = player;
+        gSCManagerBattleState->players[player].color = player;
+        gSCManagerBattleState->players[player].tag = player;
 
         ftParamInitPlayerBattleStats(player, fighter_gobj);
 

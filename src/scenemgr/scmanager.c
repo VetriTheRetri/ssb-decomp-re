@@ -16,24 +16,49 @@
 
 // BSS
 u8 D_800A44D0[16];
-LBBackupData gSaveData;
-// current screen info
-SCCommonData gSceneData;
+
+// 0x800A44E0
+LBBackupData gSCManagerBackupData;
+
+// 0x800A4AD0
+SCCommonData gSCManagerSceneData;
+
+// 0x800A4B18
 SCBattleState gSCManager1PGameBattleState;
-SCBattleState gTransferBattleState;
-SCBattleState D_800A4EF8;
-// pointer to battle settings, probably has to be moved here from battle.h
-SCBattleState *_gBattleState;
-u32 D_800A50EC;
-u8 D_800A50F0[8];
-u8 D_800A50F8[324];
-u32 D_800A523C;
+
+// 0x800A4D08
+SCBattleState gSCManagerTransferBattleState;
+
+// 0x800A4EF8
+SCBattleState gSCManagerVSBattleState;
+
+// 0x800A50E8
+SCBattleState *gSCManagerBattleState;
+
+// 0x800A50EC
+u32 sSCManagerUnk0x800A50EC;
+
+// 0x800A50F0
+s32 D_800A50F0;
+
+// 0x800A50F8
+FTFileSize gSCManagerFighterFileSizes[nFTKindEnumMax];
+
+// 0x800A523C
+s32 sSCManagerUnk0x800A523C;
 
 // Forward declarations
 extern void scManagerProcPrintGObjStatus();
 
-// DATA
-syOverlay D_800A3070[65] = {
+// // // // // // // // // // // //
+//                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
+
+// 0x800A3070
+syOverlay dSCManagerOverlays[/* */] =
+{
 	GENERATE_OVERLAY_SECTION_DATA(0),
 	GENERATE_OVERLAY_SECTION_DATA(1),
 	GENERATE_OVERLAY_SECTION_DATA(2),
@@ -101,77 +126,517 @@ syOverlay D_800A3070[65] = {
 	GENERATE_OVERLAY_SECTION_DATA(64)
 };
 
-LBBackupData gDefaultSaveData = {
-	{{{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, 0, 0, 0, 0, 0, 0, 0,
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-		}}, 1, 1, 0, 0, 0, 0, 0, 1, 2, {
-		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
-		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
-		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
-		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
-		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
-		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
-		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
-		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
-		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
-		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
-		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0},
-		{0, 0, 0, 0, I_MIN_TO_TICS(60), 0, I_MIN_TO_TICS(60), 0, 0}}, 0, 0, 0, 0, 0, 0x029a, 0, 0, 0
+// 0x800A3994
+LBBackupData dSCManagerDefaultBackupData =
+{ 
+	// VS Records
+	{
+		// Mario VS Records
+		{
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// KO count on each character
+			0,										// Time used
+			0,										// Damage dealt
+			0,										// Damage taken
+			0,										// ???
+			0,										// Self-destructs
+			0,										// Games played with this character present
+			0,										// Avg. player count of this character in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Avg. player count with other characters in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }	// Number of times played against other characters
+		},
+
+		// Fox VS Records
+		{
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// KO count on each character
+			0,										// Time used
+			0,										// Damage dealt
+			0,										// Damage taken
+			0,										// ???
+			0,										// Self-destructs
+			0,										// Games played with this character present
+			0,										// Avg. player count of this character in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Avg. player count with other characters in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }	// Number of times played against other characters
+		},
+
+		// Donkey Kong VS Records
+		{
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// KO count on each character
+			0,										// Time used
+			0,										// Damage dealt
+			0,										// Damage taken
+			0,										// ???
+			0,										// Self-destructs
+			0,										// Games played with this character present
+			0,										// Avg. player count of this character in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Avg. player count with other characters in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }	// Number of times played against other characters
+		},
+
+		// Samus VS Records
+		{
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// KO count on each character
+			0,										// Time used
+			0,										// Damage dealt
+			0,										// Damage taken
+			0,										// ???
+			0,										// Self-destructs
+			0,										// Games played with this character present
+			0,										// Avg. player count of this character in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Avg. player count with other characters in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }	// Number of times played against other characters
+		},
+
+		// Luigi VS Records
+		{
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// KO count on each character
+			0,										// Time used
+			0,										// Damage dealt
+			0,										// Damage taken
+			0,										// ???
+			0,										// Self-destructs
+			0,										// Games played with this character present
+			0,										// Avg. player count of this character in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Avg. player count with other characters in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }	// Number of times played against other characters
+		},
+
+		// Link VS Records
+		{
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// KO count on each character
+			0,										// Time used
+			0,										// Damage dealt
+			0,										// Damage taken
+			0,										// ???
+			0,										// Self-destructs
+			0,										// Games played with this character present
+			0,										// Avg. player count of this character in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Avg. player count with other characters in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }	// Number of times played against other characters
+		},
+
+		// Yoshi VS Records
+		{
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// KO count on each character
+			0,										// Time used
+			0,										// Damage dealt
+			0,										// Damage taken
+			0,										// ???
+			0,										// Self-destructs
+			0,										// Games played with this character present
+			0,										// Avg. player count of this character in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Avg. player count with other characters in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }	// Number of times played against other characters
+		},
+
+		// Captain Falcon VS Records
+		{
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// KO count on each character
+			0,										// Time used
+			0,										// Damage dealt
+			0,										// Damage taken
+			0,										// ???
+			0,										// Self-destructs
+			0,										// Games played with this character present
+			0,										// Avg. player count of this character in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Avg. player count with other characters in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }	// Number of times played against other characters
+		},
+
+		// Kirby VS Records
+		{
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// KO count on each character
+			0,										// Time used
+			0,										// Damage dealt
+			0,										// Damage taken
+			0,										// ???
+			0,										// Self-destructs
+			0,										// Games played with this character present
+			0,										// Avg. player count of this character in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Avg. player count with other characters in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }	// Number of times played against other characters
+		},
+
+		// Pikachu VS Records
+		{
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// KO count on each character
+			0,										// Time used
+			0,										// Damage dealt
+			0,										// Damage taken
+			0,										// ???
+			0,										// Self-destructs
+			0,										// Games played with this character present
+			0,										// Avg. player count of this character in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Avg. player count with other characters in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }	// Number of times played against other characters
+		},
+
+		// Jigglypuff VS Records
+		{
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// KO count on each character
+			0,										// Time used
+			0,										// Damage dealt
+			0,										// Damage taken
+			0,										// ???
+			0,										// Self-destructs
+			0,										// Games played with this character present
+			0,										// Avg. player count of this character in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Avg. player count with other characters in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }	// Number of times played against other characters
+		},
+
+		// Ness VS Records
+		{
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// KO count on each character
+			0,										// Time used
+			0,										// Damage dealt
+			0,										// Damage taken
+			0,										// ???
+			0,										// Self-destructs
+			0,										// Games played with this character present
+			0,										// Avg. player count of this character in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },	// Avg. player count with other characters in-game
+			{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }	// Number of times played against other characters
+		}
+	},
+
+	TRUE,											// Are screen flashes allowed?
+	1, 												// 0 = Mono, 1 = Stereo
+	0,												// Vertical screen adjust offset
+	0,												// Horizontal screen adjust offset
+	nFTKindMario,									// Last character viewed on Character Data menu
+	0,												// Mask of unlocked features
+	0,												// Mask of available characters
+	nSC1PGameDifficultyEasy,						// Last 1P Game difficulty setting
+	2,												// Last 1P Game stocks setting
+
+	// 1P Records
+	{
+		// Mario 1P Records
+		{
+			0,										// 1P Game High-Score
+			0,										// 1P Game number of continues used
+			0,										// 1P Game humber of bonuses earned
+			0,										// 1P Game highest difficulty cleared
+			I_MIN_TO_TICS(60),						// Break the Targets best time
+			0,										// Break the Targets number of targets broken
+			I_MIN_TO_TICS(60),						// Board the Platforms best time
+			0,										// Board the Platforms number of platforms boarded
+			FALSE									// Has this character cleared 1P Game?
+		},
+
+		// Fox 1P Records
+		{
+			0,										// 1P Game High-Score
+			0,										// 1P Game number of continues used
+			0,										// 1P Game humber of bonuses earned
+			0,										// 1P Game highest difficulty cleared
+			I_MIN_TO_TICS(60),						// Break the Targets best time
+			0,										// Break the Targets number of targets broken
+			I_MIN_TO_TICS(60),						// Board the Platforms best time
+			0,										// Board the Platforms number of platforms boarded
+			FALSE									// Has this character cleared 1P Game?
+		},
+
+		// Donkey Kong 1P Records
+		{
+			0,										// 1P Game High-Score
+			0,										// 1P Game number of continues used
+			0,										// 1P Game humber of bonuses earned
+			0,										// 1P Game highest difficulty cleared
+			I_MIN_TO_TICS(60),						// Break the Targets best time
+			0,										// Break the Targets number of targets broken
+			I_MIN_TO_TICS(60),						// Board the Platforms best time
+			0,										// Board the Platforms number of platforms boarded
+			FALSE									// Has this character cleared 1P Game?
+		},
+
+		// Samus 1P Records
+		{
+			0,										// 1P Game High-Score
+			0,										// 1P Game number of continues used
+			0,										// 1P Game humber of bonuses earned
+			0,										// 1P Game highest difficulty cleared
+			I_MIN_TO_TICS(60),						// Break the Targets best time
+			0,										// Break the Targets number of targets broken
+			I_MIN_TO_TICS(60),						// Board the Platforms best time
+			0,										// Board the Platforms number of platforms boarded
+			FALSE									// Has this character cleared 1P Game?
+		},
+
+		// Luigi 1P Records
+		{
+			0,										// 1P Game High-Score
+			0,										// 1P Game number of continues used
+			0,										// 1P Game humber of bonuses earned
+			0,										// 1P Game highest difficulty cleared
+			I_MIN_TO_TICS(60),						// Break the Targets best time
+			0,										// Break the Targets number of targets broken
+			I_MIN_TO_TICS(60),						// Board the Platforms best time
+			0,										// Board the Platforms number of platforms boarded
+			FALSE									// Has this character cleared 1P Game?
+		},
+
+		// Link 1P Records
+		{
+			0,										// 1P Game High-Score
+			0,										// 1P Game number of continues used
+			0,										// 1P Game humber of bonuses earned
+			0,										// 1P Game highest difficulty cleared
+			I_MIN_TO_TICS(60),						// Break the Targets best time
+			0,										// Break the Targets number of targets broken
+			I_MIN_TO_TICS(60),						// Board the Platforms best time
+			0,										// Board the Platforms number of platforms boarded
+			FALSE									// Has this character cleared 1P Game?
+		},
+
+		// Yoshi 1P Records
+		{
+			0,										// 1P Game High-Score
+			0,										// 1P Game number of continues used
+			0,										// 1P Game humber of bonuses earned
+			0,										// 1P Game highest difficulty cleared
+			I_MIN_TO_TICS(60),						// Break the Targets best time
+			0,										// Break the Targets number of targets broken
+			I_MIN_TO_TICS(60),						// Board the Platforms best time
+			0,										// Board the Platforms number of platforms boarded
+			FALSE									// Has this character cleared 1P Game?
+		},
+
+		// Captain Falcon 1P Records
+		{
+			0,										// 1P Game High-Score
+			0,										// 1P Game number of continues used
+			0,										// 1P Game humber of bonuses earned
+			0,										// 1P Game highest difficulty cleared
+			I_MIN_TO_TICS(60),						// Break the Targets best time
+			0,										// Break the Targets number of targets broken
+			I_MIN_TO_TICS(60),						// Board the Platforms best time
+			0,										// Board the Platforms number of platforms boarded
+			FALSE									// Has this character cleared 1P Game?
+		},
+
+		// Kirby 1P Records
+		{
+			0,										// 1P Game High-Score
+			0,										// 1P Game number of continues used
+			0,										// 1P Game humber of bonuses earned
+			0,										// 1P Game highest difficulty cleared
+			I_MIN_TO_TICS(60),						// Break the Targets best time
+			0,										// Break the Targets number of targets broken
+			I_MIN_TO_TICS(60),						// Board the Platforms best time
+			0,										// Board the Platforms number of platforms boarded
+			FALSE									// Has this character cleared 1P Game?
+		},
+
+		// Pikachu 1P Records
+		{
+			0,										// 1P Game High-Score
+			0,										// 1P Game number of continues used
+			0,										// 1P Game humber of bonuses earned
+			0,										// 1P Game highest difficulty cleared
+			I_MIN_TO_TICS(60),						// Break the Targets best time
+			0,										// Break the Targets number of targets broken
+			I_MIN_TO_TICS(60),						// Board the Platforms best time
+			0,										// Board the Platforms number of platforms boarded
+			FALSE									// Has this character cleared 1P Game?
+		},
+
+		// Jigglypuff 1P Records
+		{
+			0,										// 1P Game High-Score
+			0,										// 1P Game number of continues used
+			0,										// 1P Game humber of bonuses earned
+			0,										// 1P Game highest difficulty cleared
+			I_MIN_TO_TICS(60),						// Break the Targets best time
+			0,										// Break the Targets number of targets broken
+			I_MIN_TO_TICS(60),						// Board the Platforms best time
+			0,										// Board the Platforms number of platforms boarded
+			FALSE									// Has this character cleared 1P Game?
+		},
+
+		// Ness 1P Records
+		{
+			0,										// 1P Game High-Score
+			0,										// 1P Game number of continues used
+			0,										// 1P Game humber of bonuses earned
+			0,										// 1P Game highest difficulty cleared
+			I_MIN_TO_TICS(60),						// Break the Targets best time
+			0,										// Break the Targets number of targets broken
+			I_MIN_TO_TICS(60),						// Board the Platforms best time
+			0,										// Board the Platforms number of platforms boarded
+			FALSE									// Has this character cleared 1P Game?
+		}
+	},
+
+	0,												// Mask of unique stages played in VS Mode (for Mushroom Kingdom)
+	0,												// Number of games played in VS Mode to unlock Item Switch
+	0,												// Total number of games played in VS Mode
+	0,												// Memory corruption mask? This is where the "penalties" are stored
+	0,												// ???
+	666,											// ???
+	0,												// ???
+	0,												// ???
+	0												// Checksum of all previous save data struct members' values
 };
 
-SCCommonData gDefaultSceneData =
+// 0x800A3F80
+SCCommonData dSCManagerDefaultSceneData =
 {
-	0x1B, 0x1B,
-	{ nLBBackupUnlockEnumMax, nLBBackupUnlockEnumMax },
-	{ nLBBackupUnlockEnumMax, nLBBackupUnlockEnumMax, nLBBackupUnlockEnumMax, nLBBackupUnlockEnumMax, nLBBackupUnlockEnumMax },
-	0x04, 0x00,
-	0x001C,
-	{0x1C, 0x1C},
-	0x00, 0x00, 0x00, 0x00, 0x00, 0x1C, 0x00, 0x05, 0x00,
-	{0x00, 0x00},
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	0x00000000,
-	{0x00000000, 0x00000000, 0x00000000},
-	0x00, 0x1C, 0x00, 0x1C, 0x00, 0x1C, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
- };
+	nSCKindN64,										// Current scene
+	nSCKindN64,										// Previous scene
 
-SCBattleState gDefaultBattleState = {
-	0, 0, 0, TIMESTOCK_TIME_ON,
-	0, 0, 3, 2,
-	HANDICAP_MODE_OFF, FALSE, 1, 100,
-	0xFFFFFFFF,
-	1, 0, 0, 0,
-	0, 0,
-	3,
-	1, 0,
+	// Queued unlock messages
 	{
+		nLBBackupUnlockEnumMax,
+		nLBBackupUnlockEnumMax,
+		nLBBackupUnlockEnumMax,
+		nLBBackupUnlockEnumMax,
+		nLBBackupUnlockEnumMax,
+		nLBBackupUnlockEnumMax,
+		nLBBackupUnlockEnumMax
+	},
+
+	nFTKindLuigi,									// Challanger approaching character
+	0,												// Mask of previously demo'd characters
+	nFTKindNull,									// First demo character?
+
+	// Demo characters
+	{
+		nFTKindNull,
+		nFTKindNull
+	},
+
+	nGRKindCastle,									// Stage selected
+
+	FALSE,											// Is Sudden Death?
+	FALSE,											// Has "continue" been selected?
+	FALSE,											// Has A + B + Z + R been input?
+
+	0,												// 1P Game player's port
+	nFTKindNull,									// 1P Game player's character
+	0,												// 1P Game player's costume
+	5,												// 1P Game time limit (in seconds, 100 = infinite)
+	0,												// 1P Game current stage
+	
+	// 1P Game ally characters
+	{
+		nFTKindMario,
+		nFTKindMario
+	},
+
+	0,												// 1P Game time remaining (in seconds)
+	0,												// 1P Game score
+	0,												// 1P Game continues used
+	0,												// 1P Game total bonuses acquired
+	
+	// Bonus masks
+	{
+		0,
+		0,
+		0
+	},
+	0,												// Bonus stage tasks completed
+	nFTKindNull,									// Bonus stage character
+	0,												// Bonus stage costume
+
+	nFTKindNull,									// Training mode player's character
+	0,												// Training mode player's costume
+	nFTKindNull,									// Training mode player's character
+	0,												// Training mode player's costume
+	TRUE,											// Extend time until auto-demo starts?
+	0,												// Auto-demo current stage order index
+	nGRKindCastle,									// VS Mode stage selected
+	nGRKindCastle,									// Training Mode stage selected
+	0,												// Levels to subtract from challenger's CPU level
+	FALSE											// Has the title screen animation been viewed?
+};
+
+// 0x800A3FC8
+SCBattleState gSCManagerDefaultBattleState =
+{
+	nSCBattleGameTypeDemo,							// Game type
+	nGRKindCastle,									// Stage
+	FALSE,											// Is team battle?
+	SCBATTLE_GAMERULE_TIME,							// Game rule
+	0,												// Total players in-game
+	0,												// Total CPUs in-game
+	3,												// Time limit (in seconds)
+	2,												// Stocks
+	nSCBattleHandicapOff,							// Handicap setting
+	FALSE,											// Is team attack enabled?
+	TRUE,											// Is stage select enabled?
+	100,											// Damage ratio
+	0xFFFFFFFF,										// Item Switch mask
+	TRUE,											// ???
+	nSCBattleGameStatusWait,						// Status of current match
+	0,												// Time remaining (in tics)
+	0,												// Time passed (in tics)
+	nSCBattleItemSwitchMiddle,						// Item appearance rate
+	TRUE,											// Display score?
+	0,												// Shadow colors based on team or use default black?
+
+	// Player Data
+	{
+		// Player 1
 		{
-			3, 9, PLAYER_NOT_PRESENT, 0x1C,
-			0, 0, 0,
-			0, 0, 1, 0,
-			// rest is zero
+			3,										// CPU level
+			9,										// Handicap
+			nFTPlayerKindNot,						// Player type
+			nFTKindNull,							// Character
+			0,										// Team
+			0,										// Port
+			0,										// Costume
+			0,										// Shade
+			0,										// Color
+			TRUE,									// Permanent stock icon?
+			0										// Player tag
 		},
+
+		// Player 2
 		{
-			3, 9, PLAYER_NOT_PRESENT, 0x1C,
-			0, 0, 0,
-			0, 0, 1, 1,
-			// rest is zero
+			3,										// CPU level
+			9,										// Handicap
+			nFTPlayerKindNot,						// Player type
+			nFTKindNull,							// Character
+			0,										// Team
+			0,										// Port
+			0,										// Costume
+			0,										// Shade
+			0,										// Color
+			TRUE,									// Permanent stock icon?
+			1										// Player tag
 		},
+
+		// Player 3
 		{
-			3, 9, PLAYER_NOT_PRESENT, 0x1C,
-			1, 0, 0,
-			0, 0, 1, 2,
-			// rest is zero
+			3,										// CPU level
+			9,										// Handicap
+			nFTPlayerKindNot,						// Player type
+			nFTKindNull,							// Character
+			1,										// Team
+			0,										// Port
+			0,										// Costume
+			0,										// Shade
+			0,										// Color
+			TRUE,									// Permanent stock icon?
+			2										// Player tag
 		},
+
+		// Player 4
 		{
-			3, 9, PLAYER_NOT_PRESENT, 0x1C,
-			1, 0, 0,
-			0, 0, 1, 3,
-			// rest is zero
-		},
+			3,										// CPU level
+			9,										// Handicap
+			nFTPlayerKindNot,						// Player type
+			nFTKindNull,							// Character
+			1,										// Team
+			0,										// Port
+			0,										// Costume
+			0,										// Shade
+			0,										// Color
+			TRUE,									// Permanent stock icon?
+			3										// Player tag
+		}
 	}
 };
 
@@ -244,9 +709,9 @@ void scExplainStartScene();
 void scAutoDemoStartScene();
 
 // 0x800A1980
-void start_scene_manager(u32 set)
+void scManagerRunLoop(u32 set)
 {
-	u16* csr;
+	u16 *csr;
 	uintptr_t end;
 	SCBattleState sp220;
 	SCBattleState sp30;
@@ -254,16 +719,16 @@ void start_scene_manager(u32 set)
 	set_contstatus_delay(60);
 	syErrorSetFuncPrint(scManagerProcPrintGObjStatus);
 	syErrorStartRmonThread5Hang();
-	syDmaLoadOverlay(&D_800A3070[0]);
-	syDmaLoadOverlay(&D_800A3070[2]);
-	syDmaLoadOverlay(&D_800A3070[1]);
+	syDmaLoadOverlay(&dSCManagerOverlays[0]);
+	syDmaLoadOverlay(&dSCManagerOverlays[2]);
+	syDmaLoadOverlay(&dSCManagerOverlays[1]);
 
-	gSaveData  = gDefaultSaveData;
-	gSceneData = gDefaultSceneData;
-	sp30       = gDefaultBattleState;
-	D_800A4EF8 = sp30;
+	gSCManagerBackupData = dSCManagerDefaultBackupData;
+	gSCManagerSceneData = dSCManagerDefaultSceneData;
+	sp30       = gSCManagerDefaultBattleState;
+	gSCManagerVSBattleState = sp30;
 	sp220      = sp30;
-	gTransferBattleState = sp220;
+	gSCManagerTransferBattleState = sp220;
 	gSCManager1PGameBattleState = sp220;
 
 	ftManagerSetupFileSize();
@@ -286,327 +751,327 @@ void start_scene_manager(u32 set)
 		*(csr++) = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01);
 
 	if (gNumControllers == 0)
-		gSceneData.scene_curr = 0;
+		gSCManagerSceneData.scene_curr = 0;
 
 	while (TRUE)
 	{
-		switch (gSceneData.scene_curr) {
+		switch (gSCManagerSceneData.scene_curr) {
 			case 0:
-				syDmaLoadOverlay(&D_800A3070[11]);
+				syDmaLoadOverlay(&dSCManagerOverlays[11]);
 				mnNoControllerStartScene();
 				break;
 			case 1:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[10]);
-				syDmaLoadOverlay(&D_800A3070[8]);
-				syDmaLoadOverlay(&D_800A3070[9]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[10]);
+				syDmaLoadOverlay(&dSCManagerOverlays[8]);
+				syDmaLoadOverlay(&dSCManagerOverlays[9]);
 				mnTitleStartScene();
 				break;
 			case 2:
-				syDmaLoadOverlay(&D_800A3070[12]);
-				syDmaLoadOverlay(&D_800A3070[8]);
-				syDmaLoadOverlay(&D_800A3070[9]);
+				syDmaLoadOverlay(&dSCManagerOverlays[12]);
+				syDmaLoadOverlay(&dSCManagerOverlays[8]);
+				syDmaLoadOverlay(&dSCManagerOverlays[9]);
 				dbStageSelectStartScene();
 				break;
 			case 3:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[13]);
-				syDmaLoadOverlay(&D_800A3070[8]);
-				syDmaLoadOverlay(&D_800A3070[9]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[13]);
+				syDmaLoadOverlay(&dSCManagerOverlays[8]);
+				syDmaLoadOverlay(&dSCManagerOverlays[9]);
 				dbCubeStartScene();
 				break;
 			case 4:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[14]);
-				syDmaLoadOverlay(&D_800A3070[8]);
-				syDmaLoadOverlay(&D_800A3070[9]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[14]);
+				syDmaLoadOverlay(&dSCManagerOverlays[8]);
+				syDmaLoadOverlay(&dSCManagerOverlays[9]);
 				dbBattleStartScene();
 				break;
 			case 5:
-				syDmaLoadOverlay(&D_800A3070[15]);
+				syDmaLoadOverlay(&dSCManagerOverlays[15]);
 				dbFallsStartScene();
 				break;
 			case 6:
-				syDmaLoadOverlay(&D_800A3070[16]);
+				syDmaLoadOverlay(&dSCManagerOverlays[16]);
 				mnUnusedFightersStartScene();
 				break;
 			case 7:
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[17]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[17]);
 				mnModeSelectStartScene();
 				break;
 			case 8:
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[18]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[18]);
 				mn1PModeStartScene();
 				break;
 			case 57:
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[60]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[60]);
 				mnOptionStartScene();
 				break;
 			case 58:
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[61]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[61]);
 				mnDataStartScene();
 				break;
 			case 9:
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[19]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[19]);
 				mnVSModeStartScene();
 				break;
 			case 10:
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[20]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[20]);
 				mnVSOptionsStartScene();
 				break;
 			case 11:
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[21]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[21]);
 				mnVSItemSwitchStartScene();
 				break;
 			case 12:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[22]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[22]);
 				mnMessageStartScene();
 				break;
 			case 13:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[23]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[23]);
 				sc1PChallengerStartScene();
 				break;
 			case 14:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[24]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[24]);
 				sc1PStageCardStartScene();
 				break;
 			case 15:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[25]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[25]);
 				mnScreenAdjustStartScene();
 				break;
 			case 16:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[26]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[26]);
 				vs_css_entry();
 				break;
 			case 21:
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[30]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[30]);
 				mnStageStartScene();
 				break;
 			case 22:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[3]);
-				syDmaLoadOverlay(&D_800A3070[4]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[3]);
+				syDmaLoadOverlay(&dSCManagerOverlays[4]);
 				scVSBattleStartScene();
 				break;
 			case 23:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[3]);
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[5]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[3]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[5]);
 				overlay_set23_entry();
 				break;
 			case 52:
 				sc1PManagerUpdateScene();
 				break;
 			case 53:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[3]);
-				syDmaLoadOverlay(&D_800A3070[6]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[3]);
+				syDmaLoadOverlay(&dSCManagerOverlays[6]);
 				sc1PBonusGameStartScene();
 				break;
 			case 54:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[3]);
-				syDmaLoadOverlay(&D_800A3070[7]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[3]);
+				syDmaLoadOverlay(&dSCManagerOverlays[7]);
 				scManager_TrainingMode_InitScene();
 				break;
 			case 24:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[31]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[31]);
 				vs_results_entry();
 				break;
 			case 25:
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[32]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[32]);
 				vs_records_entry();
 				break;
 			case 26:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[33]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[33]);
 				char_bkg_info_entry();
 				break;
 			case 27:
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[58]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[58]);
 				mnN64StartScene();
 				break;
 			case 28:
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[34]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[34]);
 				intro_firstscene_entry();
 				break;
 			case 29:
-				syDmaLoadOverlay(&D_800A3070[35]);
+				syDmaLoadOverlay(&dSCManagerOverlays[35]);
 				mvPortraitsStartScene();
 				break;
 			case 30:
-				syDmaLoadOverlay(&D_800A3070[3]);
-				syDmaLoadOverlay(&D_800A3070[36]);
+				syDmaLoadOverlay(&dSCManagerOverlays[3]);
+				syDmaLoadOverlay(&dSCManagerOverlays[36]);
 				intro_focus_mario_entry();
 				break;
 			case 31:
-				syDmaLoadOverlay(&D_800A3070[37]);
+				syDmaLoadOverlay(&dSCManagerOverlays[37]);
 				intro_focus_dk_entry();
 				break;
 			case 32:
-				syDmaLoadOverlay(&D_800A3070[38]);
+				syDmaLoadOverlay(&dSCManagerOverlays[38]);
 				intro_focus_samus_entry();
 				break;
 			case 33:
-				syDmaLoadOverlay(&D_800A3070[39]);
+				syDmaLoadOverlay(&dSCManagerOverlays[39]);
 				intro_focus_fox_entry();
 				break;
 			case 34:
-				syDmaLoadOverlay(&D_800A3070[40]);
+				syDmaLoadOverlay(&dSCManagerOverlays[40]);
 				intro_focus_link_entry();
 				break;
 			case 35:
-				syDmaLoadOverlay(&D_800A3070[41]);
+				syDmaLoadOverlay(&dSCManagerOverlays[41]);
 				intro_focus_yoshi_entry();
 				break;
 			case 36:
-				syDmaLoadOverlay(&D_800A3070[42]);
+				syDmaLoadOverlay(&dSCManagerOverlays[42]);
 				intro_focus_pikachu_entry();
 				break;
 			case 37:
-				syDmaLoadOverlay(&D_800A3070[43]);
+				syDmaLoadOverlay(&dSCManagerOverlays[43]);
 				mvOpeningKirbyStartScene();
 				break;
 			case 38:
-				syDmaLoadOverlay(&D_800A3070[44]);
+				syDmaLoadOverlay(&dSCManagerOverlays[44]);
 				mvOpeningRunStartScene();
 				break;
 			case 39:
-				syDmaLoadOverlay(&D_800A3070[45]);
+				syDmaLoadOverlay(&dSCManagerOverlays[45]);
 				mvOpeningYosterStartScene();
 				break;
 			case 40:
-				syDmaLoadOverlay(&D_800A3070[46]);
+				syDmaLoadOverlay(&dSCManagerOverlays[46]);
 				mvOpeningCliffStartScene();
 				break;
 			case 41:
-				syDmaLoadOverlay(&D_800A3070[47]);
+				syDmaLoadOverlay(&dSCManagerOverlays[47]);
 				mvOpeningStandoffStartScene();
 				break;
 			case 42:
-				syDmaLoadOverlay(&D_800A3070[48]);
+				syDmaLoadOverlay(&dSCManagerOverlays[48]);
 				mvOpeningYamabukiStartScene();
 				break;
 			case 43:
-				syDmaLoadOverlay(&D_800A3070[49]);
+				syDmaLoadOverlay(&dSCManagerOverlays[49]);
 				mvOpeningClashStartScene();
 				break;
 			case 44:
-				syDmaLoadOverlay(&D_800A3070[50]);
+				syDmaLoadOverlay(&dSCManagerOverlays[50]);
 				mvOpeningSectorStartScene();
 				break;
 			case 45:
-				syDmaLoadOverlay(&D_800A3070[3]);
-				syDmaLoadOverlay(&D_800A3070[51]);
+				syDmaLoadOverlay(&dSCManagerOverlays[3]);
+				syDmaLoadOverlay(&dSCManagerOverlays[51]);
 				mvOpeningJungleStartScene();
 				break;
 			case 46:
-				syDmaLoadOverlay(&D_800A3070[52]);
+				syDmaLoadOverlay(&dSCManagerOverlays[52]);
 				mvOpeningNewcomersStartScene();
 				break;
 			case 17:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[27]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[27]);
 				classic_css_entry();
 				break;
 			case 18:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[28]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[28]);
 				training_css_entry();
 				break;
 			case 19:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[29]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[29]);
 				bonus_css_entry();
 				break;
 			case 20:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[29]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[29]);
 				bonus_css_entry();
 				break;
 			case 47:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[53]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[53]);
 				mnBackupClearStartScene();
 				break;
 			case 48:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[54]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[54]);
 				mvEndingStartScene();
 				break;
 			case 49:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[55]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[55]);
 				sc1PContinueStartScene();
 				break;
 			case 50:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[56]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[56]);
 				sc1PStageClearStartScene();
 				break;
 			case 51:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[56]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[56]);
 				sc1PStageClearStartScene();
 				break;
 			case 56:
-				syDmaLoadOverlay(&D_800A3070[59]);
+				syDmaLoadOverlay(&dSCManagerOverlays[59]);
 				gmStaffrollStartScene();
 				break;
 			case 55:
-				syDmaLoadOverlay(&D_800A3070[57]);
+				syDmaLoadOverlay(&dSCManagerOverlays[57]);
 				mnCongraStartScene();
 				break;
 			case 59:
-				syDmaLoadOverlay(&D_800A3070[1]);
-				syDmaLoadOverlay(&D_800A3070[62]);
+				syDmaLoadOverlay(&dSCManagerOverlays[1]);
+				syDmaLoadOverlay(&dSCManagerOverlays[62]);
 				mnSoundTestStartScene();
 				break;
 			case 60:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[3]);
-				syDmaLoadOverlay(&D_800A3070[63]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[3]);
+				syDmaLoadOverlay(&dSCManagerOverlays[63]);
 				scExplainStartScene();
 				break;
 			case 61:
-				syDmaLoadOverlay(&D_800A3070[2]);
-				syDmaLoadOverlay(&D_800A3070[3]);
-				syDmaLoadOverlay(&D_800A3070[64]);
+				syDmaLoadOverlay(&dSCManagerOverlays[2]);
+				syDmaLoadOverlay(&dSCManagerOverlays[3]);
+				syDmaLoadOverlay(&dSCManagerOverlays[64]);
 				scAutoDemoStartScene();
 				break;
 		}

@@ -7,9 +7,9 @@
 
 extern f32 dSCSubsysFighterScales[/* */];
 
-extern SCBattleState *gBattleState, gDefaultBattleState, gSCManager1PGameBattleState, gTransferBattleState, D_800A4EF8;
-extern SCCommonData gSceneData, gDefaultSceneData;
-extern LBBackupData gSaveData, gDefaultSaveData;
+extern SCBattleState *gSCManagerBattleState, gSCManagerDefaultBattleState, gSCManager1PGameBattleState, gSCManagerTransferBattleState, gSCManagerVSBattleState;
+extern SCCommonData gSCManagerSceneData, dSCManagerDefaultSceneData;
+extern LBBackupData gSCManagerBackupData, dSCManagerDefaultBackupData;
 
 extern char dSCManagerBuildDate[/* */];
 

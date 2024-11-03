@@ -3,29 +3,29 @@
 
 typedef enum GObjKind
 {
-    nGCCommonKindFighter = 1000,             // 1000
-    nGCCommonKindFighterParts,               // 1001
-    nGCCommonKindMainCamera = 1002,          // 1002
-    nGCCommonKindWallpaperCamera,            // 1003 - Used to render stage backgrounds?
-    nGCCommonKindScissorCamera,              // 1004 - Camera scissor?
-    nGCCommonKindUnkCamera1,                 // 1005 - ???
-    nGCCommonKindUnkCamera2,                 // 1006 - ???
-    nGCCommonKindUnkCamera3,                 // 1007
-    nGCCommonKindWallpaper = 1008,           // 1008 - Stage background?
-    nGCCommonKindGroundDisplay,                   // 1009 - Stage renderer?
-    nGCCommonKindGround,                     // 1010
-    nGCCommonKindEffect,                     // 1011
-    nGCCommonKindWeapon,                     // 1012
-    nGCCommonKindItem,                       // 1013
-    nGCCommonKindMovie = 1015,               // 1015 - Opening movie?
-    nGCCommonKindInterface = 1016,           // 1016
-    nGCCommonKindRumble,                     // 1017
-    nGCCommonKindPublicity,                  // 1018 - Audience reaction
-    nGCCommonKindPauseMenu = 1019,           // 1019
-    nGCCommonKindShadow,                     // 1020
-    nGCCommonKindTransition,                 // 1021 - Screen fadeout actor?
-    nGCCommonKindBossWallpaper = 1023,       // 1023
-    nGCCommonKindSceneCamera = 1025          // 1025
+    nGCCommonKindFighter = 1000,            // 1000
+    nGCCommonKindFighterParts,              // 1001
+    nGCCommonKindMainCamera = 1002,         // 1002
+    nGCCommonKindWallpaperCamera,           // 1003 - Used to render stage backgrounds?
+    nGCCommonKindScissorCamera,             // 1004 - Camera scissor?
+    nGCCommonKindUnkCamera1,                // 1005 - ???
+    nGCCommonKindUnkCamera2,                // 1006 - ???
+    nGCCommonKindUnkCamera3,                // 1007
+    nGCCommonKindWallpaper = 1008,          // 1008 - Stage background?
+    nGCCommonKindGroundDisplay,             // 1009 - Stage renderer?
+    nGCCommonKindGround,                    // 1010
+    nGCCommonKindEffect,                    // 1011
+    nGCCommonKindWeapon,                    // 1012
+    nGCCommonKindItem,                      // 1013
+    nGCCommonKindMovie = 1015,              // 1015 - Opening movie?
+    nGCCommonKindInterface = 1016,          // 1016
+    nGCCommonKindRumble,                    // 1017
+    nGCCommonKindPublicity,                 // 1018 - Audience reaction
+    nGCCommonKindPauseMenu,                 // 1019
+    nGCCommonKindShadow,                    // 1020
+    nGCCommonKindTransition,                // 1021 - Screen fadeout actor?
+    nGCCommonKindBossWallpaper = 1023,      // 1023
+    nGCCommonKindSceneCamera = 1025         // 1025
 
 } GObjKind;
 
@@ -157,34 +157,54 @@ typedef enum AObjAnimKind
 
 } AObjAnimKind;
 
-typedef enum AObjCommandKind
+typedef enum AObjEvent16Kind
 {
-    nGCAnimCommandEnd,
-    nGCAnimCommandJump,
-    nGCAnimCommandWait,
-    nGCAnimCommandSetValBlock,
-    nGCAnimCommandSetVal,
-    nGCAnimCommandSetValRateBlock,
-    nGCAnimCommandSetValRate,
-    nGCAnimCommandSetTargetRate,
-    nGCAnimCommandSetVal0RateBlock,
-    nGCAnimCommandSetVal0Rate,
-    nGCAnimCommandSetValAfterBlock,
-    nGCAnimCommandSetValAfter,
+    nGCAnimEvent16End,
+    nGCAnimEvent16Block,
+    nGCAnimEvent16SetValBlock,
+    nGCAnimEvent16SetVal,
+    nGCAnimEvent16SetValRateBlock,
+    nGCAnimEvent16SetValRate,
+    nGCAnimEvent16SetTargetRate,
+    nGCAnimEvent16SetVal0RateBlock,
+    nGCAnimEvent16SetVal0Rate,
+    nGCAnimEvent16SetValAfterBlock,
+    nGCAnimEvent16SetValAfter,
+    nGCAnimEvent1611,
+    nGCAnimEvent16SetTranslateInterp,
+    nGCAnimEvent16Loop,
+    nGCAnimEvent16SetFlags
+
+} AObjEvent16Kind;
+
+typedef enum AObjEvent32Kind
+{
+    nGCAnimEvent32End,
+    nGCAnimEvent32Jump,
+    nGCAnimEvent32Wait,
+    nGCAnimEvent32SetValBlock,
+    nGCAnimEvent32SetVal,
+    nGCAnimEvent32SetValRateBlock,
+    nGCAnimEvent32SetValRate,
+    nGCAnimEvent32SetTargetRate,
+    nGCAnimEvent32SetVal0RateBlock,
+    nGCAnimEvent32SetVal0Rate,
+    nGCAnimEvent32SetValAfterBlock,
+    nGCAnimEvent32SetValAfter,
     ANIM_CMD_12 = 12,
-    nGCAnimCommandSetInterp = 13,
-    nGCAnimCommandSetAnim,
-    nGCAnimCommandSetFlags,
+    nGCAnimEvent32SetInterp = 13,
+    nGCAnimEvent32SetAnim,
+    nGCAnimEvent32SetFlags,
     ANIM_CMD_16 = 16,
     ANIM_CMD_17 = 17,
-    nGCAnimCommandSetExtValAfterBlock,
-    nGCAnimCommandSetExtValAfter,
-    nGCAnimCommandSetExtValBlock,
-    nGCAnimCommandSetExtVal,
+    nGCAnimEvent32SetExtValAfterBlock,
+    nGCAnimEvent32SetExtValAfter,
+    nGCAnimEvent32SetExtValBlock,
+    nGCAnimEvent32SetExtVal,
     ANIM_CMD_22 = 22,
     ANIM_CMD_23 = 23
 
-} AObjCommandKind;
+} AObjEvent32Kind;
 
 typedef enum AObjTrackKind
 {

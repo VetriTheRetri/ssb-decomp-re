@@ -126,8 +126,8 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
 
             switch (command_kind)
             {
-            case nFTFigatreeCommandSetVal0RateBlock:
-            case nFTFigatreeCommandSetVal0Rate:
+            case nGCAnimEvent16SetVal0RateBlock:
+            case nGCAnimEvent16SetVal0Rate:
                 flags = root_dobj->anim_joint.event16->command.flags;
                 payload = (AObjAnimAdvance(root_dobj->anim_joint.event16)->command.toggle) ? AObjAnimAdvance(root_dobj->anim_joint.event16)->u : 0.0F;
 
@@ -158,14 +158,14 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                         track_aobjs[i]->length = -root_dobj->anim_wait - root_dobj->anim_speed;
                     }
                 }
-                if (command_kind == nFTFigatreeCommandSetVal0RateBlock)
+                if (command_kind == nGCAnimEvent16SetVal0RateBlock)
                 {
                     root_dobj->anim_wait += payload;
                 }
                 break;
 
-            case nFTFigatreeCommandSetValBlock:
-            case nFTFigatreeCommandSetVal:
+            case nGCAnimEvent16SetValBlock:
+            case nGCAnimEvent16SetVal:
                 flags = root_dobj->anim_joint.event16->command.flags;
                 payload = (AObjAnimAdvance(root_dobj->anim_joint.event16)->command.toggle) ? AObjAnimAdvance(root_dobj->anim_joint.event16)->u : 0.0F;
 
@@ -195,14 +195,14 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                         track_aobjs[i]->rate_target = 0.0F;
                     }
                 }
-                if (command_kind == nFTFigatreeCommandSetValBlock)
+                if (command_kind == nGCAnimEvent16SetValBlock)
                 {
                     root_dobj->anim_wait += payload;
                 }
                 break;
 
-            case nFTFigatreeCommandSetValRateBlock:
-            case nFTFigatreeCommandSetValRate:
+            case nGCAnimEvent16SetValRateBlock:
+            case nGCAnimEvent16SetValRate:
                 flags = root_dobj->anim_joint.event16->command.flags;
                 payload = (AObjAnimAdvance(root_dobj->anim_joint.event16)->command.toggle) ? AObjAnimAdvance(root_dobj->anim_joint.event16)->u : 0.0F;
 
@@ -235,13 +235,13 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                         track_aobjs[i]->length = -root_dobj->anim_wait - root_dobj->anim_speed;
                     }
                 }
-                if (command_kind == nFTFigatreeCommandSetValRateBlock)
+                if (command_kind == nGCAnimEvent16SetValRateBlock)
                 {
                     root_dobj->anim_wait += payload;
                 }
                 break;
 
-            case nFTFigatreeCommandSetTargetRate:
+            case nGCAnimEvent16SetTargetRate:
                 flags = root_dobj->anim_joint.event16->command.flags;
 
                 payload = (AObjAnimAdvance(root_dobj->anim_joint.event16)->command.toggle) ? AObjAnimAdvance(root_dobj->anim_joint.event16)->u : 0.0F;
@@ -263,15 +263,15 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                 }
                 break;
 
-            case nFTFigatreeCommandBlock:
+            case nGCAnimEvent16Block:
                 if (AObjAnimAdvance(root_dobj->anim_joint.event16)->command.toggle)
                 {
                     root_dobj->anim_wait += AObjAnimAdvance(root_dobj->anim_joint.event16)->u;
                 }
                 break;
 
-            case nFTFigatreeCommandSetValAfterBlock:
-            case nFTFigatreeCommandSetValAfter:
+            case nGCAnimEvent16SetValAfterBlock:
+            case nGCAnimEvent16SetValAfter:
                 flags = root_dobj->anim_joint.event16->command.flags;
                 payload = (AObjAnimAdvance(root_dobj->anim_joint.event16)->command.toggle) ? AObjAnimAdvance(root_dobj->anim_joint.event16)->u : 0.0F;
 
@@ -300,13 +300,13 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                         track_aobjs[i]->rate_target = 0.0F;
                     }
                 }
-                if (command_kind == nFTFigatreeCommandSetValAfterBlock)
+                if (command_kind == nGCAnimEvent16SetValAfterBlock)
                 {
                     root_dobj->anim_wait += payload;
                 }
                 break;
 
-            case nFTFigatreeCommandLoop:
+            case nGCAnimEvent16Loop:
                 AObjAnimAdvance(root_dobj->anim_joint.event16);
 
                 root_dobj->anim_joint.event16 += root_dobj->anim_joint.event16->s / 2;
@@ -323,7 +323,7 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                 }
                 break;
 
-            case nFTFigatreeCommand11:
+            case nGCAnimEvent1611:
                 flags = root_dobj->anim_joint.event16->command.flags;
 
                 payload = (AObjAnimAdvance(root_dobj->anim_joint.event16)->command.toggle) ? AObjAnimAdvance(root_dobj->anim_joint.event16)->u : 0.0F;
@@ -345,7 +345,7 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                 }
                 break;
 
-            case nFTFigatreeCommandSetTranslateInterp:
+            case nGCAnimEvent16SetTranslateInterp:
                 AObjAnimAdvance(root_dobj->anim_joint.event16);
 
                 if (track_aobjs[nGCAnimTrackTraI - nGCAnimTrackJointStart] == NULL)
@@ -357,7 +357,7 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                 AObjAnimAdvance(root_dobj->anim_joint.event16);
                 break;
 
-            case nGCAnimCommandEnd:
+            case nGCAnimEvent32End:
                 current_aobj = root_dobj->aobj;
 
                 while (current_aobj != NULL)
@@ -381,7 +381,7 @@ void ftAnimParseDObjFigatree(DObj *root_dobj)
                 }
                 return;
 
-            case nFTFigatreeCommandSetFlags:
+            case nGCAnimEvent16SetFlags:
                 root_dobj->flags = root_dobj->anim_joint.event16->command.flags;
 
                 if (AObjAnimAdvance(root_dobj->anim_joint.event16)->command.toggle)

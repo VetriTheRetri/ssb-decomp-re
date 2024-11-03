@@ -160,10 +160,10 @@ struct ITAttributes
 	s32 attack_offset1_z : 16;				// Hitbox ID1 offset Z
 	Vec3h damage_coll_offset;				// Hurtbox offset
 	Vec3h damage_coll_size;				// Hurtbox size
-	s16 object_coll_top;					// Map Collision Box top
-	s16 object_coll_center;				// Map Collision Box center
-	s16 object_coll_bottom;				// Map Collision Box bottom
-	s16 object_coll_width;					// Map Collision Box width
+	s16 map_coll_top;					// Map Collision Box top
+	s16 map_coll_center;				// Map Collision Box center
+	s16 map_coll_bottom;				// Map Collision Box bottom
+	s16 map_coll_width;					// Map Collision Box width
 	u16 size;							// Hitbox size
 	s32 angle : 10;						// Hitbox launch angle
 	u32 knockback_scale : 10;			// Hitbox knockback scale

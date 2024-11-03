@@ -924,7 +924,7 @@ struct FTAttributes
     f32 closeup_camera_zoom;
     f32 camera_zoom;
     f32 camera_zoom_base;
-    MPObjectColl object_coll;
+    MPObjectColl map_coll;
     Vec2f cliffcatch_coll; // Ledge grab box
     u16 dead_sfx[2]; // KO voices
     u16 deadup_sfx;  // Star-KO voice

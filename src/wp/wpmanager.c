@@ -259,7 +259,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
 
     wp->shield_collide_dir.x = wp->shield_collide_dir.y = wp->shield_collide_dir.z = 0.0F;
 
-    if (wp_desc->flags & WEAPON_FLAG_DOBJSETUP)
+    if (wp_desc->flags & WEAPON_FLAG_DOBJDESC)
     {
         gcSetupCustomDObjs(weapon_gobj, attr->dobj_setup, NULL, wp_desc->transform_types.tk1, wp_desc->transform_types.tk2, wp_desc->transform_types.tk3);
 
@@ -284,11 +284,11 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
     wp->coll_data.p_translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
     wp->coll_data.p_lr = &wp->lr;
 
-    wp->coll_data.object_coll.top = attr->object_coll_top;
-    wp->coll_data.object_coll.center = attr->object_coll_center;
-    wp->coll_data.object_coll.bottom = attr->object_coll_bottom;
-    wp->coll_data.object_coll.width = attr->object_coll_width;
-    wp->coll_data.p_object_coll = &wp->coll_data.object_coll;
+    wp->coll_data.map_coll.top = attr->map_coll_top;
+    wp->coll_data.map_coll.center = attr->map_coll_center;
+    wp->coll_data.map_coll.bottom = attr->map_coll_bottom;
+    wp->coll_data.map_coll.width = attr->map_coll_width;
+    wp->coll_data.p_map_coll = &wp->coll_data.map_coll;
 
     wp->coll_data.ignore_line_id = -1;
     wp->coll_data.ground_line_id = -1;

@@ -297,8 +297,8 @@ void itTaruThrownInitItemVars(GObj *item_gobj)
 
     DObjGetStruct(item_gobj)->child->rotate.vec.f.x = F_CST_DTOR32(90.0F);
 
-    ip->coll_data.object_coll.top = ip->coll_data.object_coll.width;
-    ip->coll_data.object_coll.bottom = -ip->coll_data.object_coll.width;
+    ip->coll_data.map_coll.top = ip->coll_data.map_coll.width;
+    ip->coll_data.map_coll.bottom = -ip->coll_data.map_coll.width;
 }
 
 // 0x80179F1C

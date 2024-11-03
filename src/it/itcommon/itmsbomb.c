@@ -251,10 +251,10 @@ void itMSBombThrownSetStatus(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->coll_data.object_coll.top = ITMSBOMB_COLL_SIZE;
-    ip->coll_data.object_coll.center = 0.0F;
-    ip->coll_data.object_coll.bottom = -ITMSBOMB_COLL_SIZE;
-    ip->coll_data.object_coll.width = ITMSBOMB_COLL_SIZE;
+    ip->coll_data.map_coll.top = ITMSBOMB_COLL_SIZE;
+    ip->coll_data.map_coll.center = 0.0F;
+    ip->coll_data.map_coll.bottom = -ITMSBOMB_COLL_SIZE;
+    ip->coll_data.map_coll.width = ITMSBOMB_COLL_SIZE;
 
     itMainSetItemStatus(item_gobj, dITMSBombStatusDescs, nITMSBombStatusThrown);
 }
@@ -270,10 +270,10 @@ void itMSBombDroppedSetStatus(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    ip->coll_data.object_coll.top = ITMSBOMB_COLL_SIZE;
-    ip->coll_data.object_coll.center = 0.0F;
-    ip->coll_data.object_coll.bottom = -ITMSBOMB_COLL_SIZE;
-    ip->coll_data.object_coll.width = ITMSBOMB_COLL_SIZE;
+    ip->coll_data.map_coll.top = ITMSBOMB_COLL_SIZE;
+    ip->coll_data.map_coll.center = 0.0F;
+    ip->coll_data.map_coll.bottom = -ITMSBOMB_COLL_SIZE;
+    ip->coll_data.map_coll.width = ITMSBOMB_COLL_SIZE;
 
     itMainSetItemStatus(item_gobj, dITMSBombStatusDescs, nITMSBombStatusDropped);
 }
@@ -325,10 +325,10 @@ void itMSBombAttachedInitItemVars(GObj *item_gobj)
     ITStruct *ip = itGetStruct(item_gobj);
     DObj *dobj = DObjGetStruct(item_gobj);
 
-    ip->coll_data.object_coll.top = ITMSBOMB_COLL_SIZE;
-    ip->coll_data.object_coll.center = 0.0F;
-    ip->coll_data.object_coll.bottom = -ITMSBOMB_COLL_SIZE;
-    ip->coll_data.object_coll.width = ITMSBOMB_COLL_SIZE;
+    ip->coll_data.map_coll.top = ITMSBOMB_COLL_SIZE;
+    ip->coll_data.map_coll.center = 0.0F;
+    ip->coll_data.map_coll.bottom = -ITMSBOMB_COLL_SIZE;
+    ip->coll_data.map_coll.width = ITMSBOMB_COLL_SIZE;
 
     ip->physics.vel_air.x = ip->physics.vel_air.y = ip->physics.vel_air.z = 0;
 
@@ -369,7 +369,7 @@ void itMSBombExplodeMakeEffect(GObj *item_gobj)
     {
         Vec3f translate = dobj->translate.vec.f;
 
-        translate.y += attr->object_coll_bottom;
+        translate.y += attr->map_coll_bottom;
 
         efManagerDustHeavyDoubleMakeEffect(&translate, ip->lr, 1.0F);
     }
@@ -434,7 +434,7 @@ sb32 itMSBombAttachedProcUpdate(GObj *item_gobj)
         {
             FTStruct *fp = ftGetStruct(fighter_gobj);
             DObj *fighter_dobj = DObjGetStruct(fighter_gobj);
-            f32 var = fp->attr->object_coll.top * 0.5F;
+            f32 var = fp->attr->map_coll.top * 0.5F;
 
             fighter_pos = fighter_dobj->translate.vec.f;
 
@@ -538,7 +538,7 @@ sb32 itMSBombDetachedProcUpdate(GObj *item_gobj)
         {
             FTStruct *fp = ftGetStruct(fighter_gobj);
             DObj *fighter_dobj = DObjGetStruct(fighter_gobj);
-            f32 offset_y = fp->attr->object_coll.top * 0.5F;
+            f32 offset_y = fp->attr->map_coll.top * 0.5F;
 
             fighter_pos = fighter_dobj->translate.vec.f;
 

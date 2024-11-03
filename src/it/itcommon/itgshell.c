@@ -163,7 +163,7 @@ void itGShellSpinUpdateEffect(GObj *item_gobj)
     {
         pos = dobj->translate.vec.f;
 
-        pos.y += ip->attr->object_coll_bottom;
+        pos.y += ip->attr->map_coll_bottom;
 
         efManagerDustLightMakeEffect(&pos, ip->lr, 1.0F);
 

@@ -3,27 +3,6 @@
 
 #include <PR/ultratypes.h>
 
-// types
-// the fields are only here to faciliate the entry of the raw data
-// change as needed to fit the actual shape of the struct
-
-#define SSB64_NUM_PLAYABLE_CHARACTERS 12
-
-enum TimeStockFlag { TIMESTOCK_TIME_ON = 1 << 0, TIMESTOCK_STOCK_ON = 1 << 1 };
-
-enum HandicapMode { HANDICAP_MODE_OFF, HANDICAP_MODE_MANUAL, HANDICAP_MODE_AUTO };
-
-enum ItemAppearanceRate {
-	ITEM_RATE_NONE,
-	ITEM_RATE_VERY_LOW,
-	ITEM_RATE_LOW,
-	ITEM_RATE_MIDDLE,
-	ITEM_RATE_HIGH,
-	ITEM_RATE_VERY_HIGH
-};
-
-enum PlayerControlledBy { PLAYER_CONTROL_MAN, PLAYER_CONTROL_CPU, PLAYER_NOT_PRESENT };
-
 // overlay defines
 #define _ovl0SegRomStart 0x00043220
 #define _ovl0SegRomEnd 0x00051c90
@@ -612,25 +591,17 @@ enum PlayerControlledBy { PLAYER_CONTROL_MAN, PLAYER_CONTROL_CPU, PLAYER_NOT_PRE
 #define _ovl64SegNoloadEnd 0x8018e860
 
 // Macro for creating array at dSCManagerOverlays inserting all the data above
-#define GENERATE_OVERLAY_SECTION_DATA(OVL_NUM) { (u32)_ovl##OVL_NUM##SegRomStart, (u32)_ovl##OVL_NUM##SegRomEnd, _ovl##OVL_NUM##SegStart, _ovl##OVL_NUM##TextStart, _ovl##OVL_NUM##TextEnd, _ovl##OVL_NUM##DataStart, _ovl##OVL_NUM##DataEnd, _ovl##OVL_NUM##SegNoloadStart, _ovl##OVL_NUM##SegNoloadEnd, }
+#define GENERATE_OVERLAY_SECTION_DATA(OVL_NUM) 	\
+{												\
+	_ovl##OVL_NUM##SegRomStart,					\
+	_ovl##OVL_NUM##SegRomEnd,					\
+	_ovl##OVL_NUM##SegStart,					\
+	_ovl##OVL_NUM##TextStart,					\
+	_ovl##OVL_NUM##TextEnd,						\
+	_ovl##OVL_NUM##DataStart,					\
+	_ovl##OVL_NUM##DataEnd,						\
+	_ovl##OVL_NUM##SegNoloadStart,				\
+	_ovl##OVL_NUM##SegNoloadEnd					\
+}
 
 #endif /* SCENEMGR_SCENE_MANGAGER_H */
-
-//------- Potentially outdated structs -------//
-
-// struct RecordCharCombo {
-//     /* 0x00 */ u16 gamesWith;
-//     /* 0x02 */ u16 playedAgainst;
-// }; // size == 4
-
-// struct BattlePlayerState {
-//     /* 0x00 */ u8 cpuLevel;
-//     /* 0x01 */ u8 handicapLevel;
-//     /* 0x02 */ u8 controlledBy;
-//     /* 0x03 */ u8 character;
-//     /* 0x04 */ u8 team;
-//     /* 0x05 */ u8 unk05;
-//     /* 0x06 */ u8 charColor;
-//     /* 0x08 */ u16 unk08[(0x74 - 0x8) / 2];
-// }; // size == 0x74
-

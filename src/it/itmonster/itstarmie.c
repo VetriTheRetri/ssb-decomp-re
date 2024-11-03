@@ -228,9 +228,9 @@ void itStarmieNFollowFindFollowPlayerLR(GObj *item_gobj, GObj *fighter_gobj)
 
     dist.x = fighter_dobj->translate.vec.f.x - item_dobj->translate.vec.f.x;
 
-    target_pos.y += ITSTARMIE_TARGET_POS_OFF_Y - fp->coll_data.object_coll.bottom;
+    target_pos.y += ITSTARMIE_TARGET_POS_OFF_Y - fp->coll_data.map_coll.bottom;
 
-    target_pos.x -= (fp->coll_data.object_coll.width + ITSTARMIE_TARGET_POS_OFF_X) * ((dist.x < 0.0F) ? -1 : +1);
+    target_pos.x -= (fp->coll_data.map_coll.width + ITSTARMIE_TARGET_POS_OFF_X) * ((dist.x < 0.0F) ? -1 : +1);
 
     victim_pos = &fighter_dobj->translate.vec.f;
 
@@ -360,7 +360,7 @@ GObj* itStarmieMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
 
         dobj->translate.vec.f = *pos;
 
-        dobj->translate.vec.f.y -= ip->attr->object_coll_bottom;
+        dobj->translate.vec.f.y -= ip->attr->map_coll_bottom;
 
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITStarmieDataStart), 0.0F);
 

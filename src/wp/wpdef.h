@@ -11,7 +11,7 @@
 #define WEAPON_PORT_DEFAULT GMCOMMON_PLAYERS_MAX
 #define WEAPON_HANDICAP_DEFAULT 9
 
-#define WEAPON_FLAG_DOBJSETUP 0x1                   // Weapon has a DObj node tree that needs to be set up
+#define WEAPON_FLAG_DOBJDESC 0x1                   // Weapon has a DObj node tree that needs to be set up
 #define WEAPON_FLAG_DOBJLINKS 0x2                   // Use DObjDLLink renderers or single DisplayList stream?
 #define WEAPON_FLAG_COLLPROJECT (1 << 31)           // Perform initial collision check when spawning weapon?
 

@@ -5,7 +5,7 @@ scManagerMeterFuncDisplay = 0x800A26D8;
 scManagerMakeMeterCamera = 0x800A2B18;
 scManagerMakeDebugCameras = 0x800A2BA8;
 scManagerInspectGObj = 0x800A2C30;
-scManagerProcPrintGObjStatus = 0x800A2E84;
+scManagerFuncPrint = 0x800A2E84;
 scManagerRunPrintGObjStatus = 0x800A3040;
 
 dGMCommonFileIDs = 0x80116BD0;

@@ -5603,7 +5603,7 @@ sb32 ftComputerCheckTargetItemInRange(FTStruct *fp)
     ITStruct *ip = ftGetComTargetItem(&fp->computer);
     Vec3f *ft_pos = &DObjGetStruct(fp->fighter_gobj)->translate.vec.f;
     Vec3f *it_pos = &DObjGetStruct(ip->item_gobj)->translate.vec.f;
-    MPObjectColl *object_coll = &ip->coll_data.object_coll;
+    MPObjectColl *map_coll = &ip->coll_data.map_coll;
 
     if (ip->weight == nITWeightLight)
     {
@@ -5612,9 +5612,9 @@ sb32 ftComputerCheckTargetItemInRange(FTStruct *fp)
         range.x = ft_pos->x + (fp->lr * item_pickup->pickup_offset_light.x);
         range.y = ft_pos->y + item_pickup->pickup_offset_light.y;
 
-        if ((((range.x - item_pickup->pickup_range_light.x) - object_coll->width) < it_pos->x) && (((item_pickup->pickup_range_light.x + range.x) + object_coll->width) > it_pos->x))
+        if ((((range.x - item_pickup->pickup_range_light.x) - map_coll->width) < it_pos->x) && (((item_pickup->pickup_range_light.x + range.x) + map_coll->width) > it_pos->x))
         {
-            if ((((range.y - item_pickup->pickup_range_light.y) - object_coll->top) < it_pos->y) && (((item_pickup->pickup_range_light.y + range.y) - object_coll->bottom) > it_pos->y))
+            if ((((range.y - item_pickup->pickup_range_light.y) - map_coll->top) < it_pos->y) && (((item_pickup->pickup_range_light.y + range.y) - map_coll->bottom) > it_pos->y))
             {
                 return TRUE;
             }
@@ -5627,9 +5627,9 @@ sb32 ftComputerCheckTargetItemInRange(FTStruct *fp)
         range.x = ft_pos->x + (fp->lr * item_pickup->pickup_offset_heavy.x);
         range.y = ft_pos->y + item_pickup->pickup_offset_heavy.y;
 
-        if ((((range.x - item_pickup->pickup_range_heavy.x) - object_coll->width) < it_pos->x) && (((item_pickup->pickup_range_heavy.x + range.x) + object_coll->width) > it_pos->x))
+        if ((((range.x - item_pickup->pickup_range_heavy.x) - map_coll->width) < it_pos->x) && (((item_pickup->pickup_range_heavy.x + range.x) + map_coll->width) > it_pos->x))
         {
-            if ((((range.y - item_pickup->pickup_range_heavy.y) - object_coll->top) < it_pos->y) && (((item_pickup->pickup_range_heavy.y + range.y) - object_coll->bottom) > it_pos->y))
+            if ((((range.y - item_pickup->pickup_range_heavy.y) - map_coll->top) < it_pos->y) && (((item_pickup->pickup_range_heavy.y + range.y) - map_coll->bottom) > it_pos->y))
             {
                 return TRUE;
             }

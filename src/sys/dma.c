@@ -67,7 +67,7 @@ void syDmaCopy(OSPiHandle *handle, uintptr_t physAddr, uintptr_t virtual, size_t
     }
 }
 
-void syDmaLoadOverlay(struct syOverlay *ovl)
+void syDmaLoadOverlay(struct SYOverlay *ovl)
 {
     if (((uintptr_t)ovl->ram_text_end - (uintptr_t)ovl->ram_text_start) != 0)
     {

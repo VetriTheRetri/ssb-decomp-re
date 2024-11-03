@@ -1120,26 +1120,6 @@ typedef enum FTKeyCommandKind
 
 } FTKeyCommandKind;
 
-typedef enum FTAnimCommandKind
-{
-    nFTFigatreeCommandEnd,
-    nFTFigatreeCommandBlock,
-    nFTFigatreeCommandSetValBlock,
-    nFTFigatreeCommandSetVal,
-    nFTFigatreeCommandSetValRateBlock,
-    nFTFigatreeCommandSetValRate,
-    nFTFigatreeCommandSetTargetRate,
-    nFTFigatreeCommandSetVal0RateBlock,
-    nFTFigatreeCommandSetVal0Rate,
-    nFTFigatreeCommandSetValAfterBlock,
-    nFTFigatreeCommandSetValAfter,
-    nFTFigatreeCommand11,
-    nFTFigatreeCommandSetTranslateInterp,
-    nFTFigatreeCommandLoop,
-    nFTFigatreeCommandSetFlags
-
-} FTAnimCommandKind;
-
 // Structs
 typedef struct FTStruct					        FTStruct;
 typedef struct FTSpecialColl				    FTSpecialColl;

@@ -1258,7 +1258,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
             (
                 mtx_store.gbi,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.x,
-                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attr->object_coll.bottom,
+                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attr->map_coll.bottom,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.z
             );
 
@@ -1266,7 +1266,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixSca(mtx_store.gbi, attr->object_coll.width / 30.0F, attr->object_coll.center / 30.0F, 1.0F);
+            syMatrixSca(mtx_store.gbi, attr->map_coll.width / 30.0F, attr->map_coll.center / 30.0F, 1.0F);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
             gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainMapCollisionBottomDL);
@@ -1278,7 +1278,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
             (
                 mtx_store.gbi,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.x,
-                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attr->object_coll.center,
+                DObjGetStruct(fighter_gobj)->translate.vec.f.y + attr->map_coll.center,
                 DObjGetStruct(fighter_gobj)->translate.vec.f.z
             );
 
@@ -1286,7 +1286,7 @@ void ftDisplayMainFuncDisplay(GObj *fighter_gobj)
 
             syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-            syMatrixSca(mtx_store.gbi, attr->object_coll.width / 30.0F, (attr->object_coll.top - attr->object_coll.center) / 30.0F, 1.0F);
+            syMatrixSca(mtx_store.gbi, attr->map_coll.width / 30.0F, (attr->map_coll.top - attr->map_coll.center) / 30.0F, 1.0F);
 
             gSPMatrix(gSYTaskmanDLHeads[0]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
             gSPDisplayList(gSYTaskmanDLHeads[0]++, dFTDisplayMainMapCollisionTopDL);

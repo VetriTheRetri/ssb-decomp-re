@@ -70,7 +70,7 @@ void ftCommonCliffCatchSetStatus(GObj *fighter_gobj)
 void ftCommonCliffCommonProcDamage(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
-    MPObjectColl *object_coll = &fp->coll_data.object_coll;
+    MPObjectColl *map_coll = &fp->coll_data.map_coll;
     Vec3f vel;
 
     if (fp->lr == +1)
@@ -79,8 +79,8 @@ void ftCommonCliffCommonProcDamage(GObj *fighter_gobj)
     }
     else mpCollisionGetLREdgeRight(fp->coll_data.cliff_id, &vel);
 
-    vel.x -= ((object_coll->width + 30.0F) * fp->lr);
-    vel.y -= object_coll->center;
+    vel.x -= ((map_coll->width + 30.0F) * fp->lr);
+    vel.y -= map_coll->center;
 
     mpCommonRunFighterCollisionDefault(fighter_gobj, &vel, &fp->coll_data);
 }

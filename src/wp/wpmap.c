@@ -182,8 +182,8 @@ sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f
 
             return_bool = TRUE;
 
-            mod_pos.x = translate->x + coll_data->object_coll.width;
-            mod_pos.y = translate->y + coll_data->object_coll.center;
+            mod_pos.x = translate->x + coll_data->map_coll.width;
+            mod_pos.y = translate->y + coll_data->map_coll.center;
         }
     }
     if (coll_flags & check_flags & MPCOLL_FLAG_RWALL)
@@ -194,8 +194,8 @@ sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f
 
             lbCommonReflect2D(&wp->physics.vel_air, &coll_data->rwall_angle);
 
-            mod_pos.x = translate->x - coll_data->object_coll.width;
-            mod_pos.y = translate->y + coll_data->object_coll.center;
+            mod_pos.x = translate->x - coll_data->map_coll.width;
+            mod_pos.y = translate->y + coll_data->map_coll.center;
         }
     }
     if (coll_flags & check_flags & MPCOLL_FLAG_CEIL)
@@ -207,7 +207,7 @@ sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f
             lbCommonReflect2D(&wp->physics.vel_air, &coll_data->ceil_angle);
 
             mod_pos.x = translate->x;
-            mod_pos.y = translate->y + coll_data->object_coll.top;
+            mod_pos.y = translate->y + coll_data->map_coll.top;
         }
     }
     if (coll_flags & check_flags & MPCOLL_FLAG_GROUND)
@@ -219,7 +219,7 @@ sb32 wpMapCheckAllRebound(GObj *weapon_gobj, u32 check_flags, f32 mod_vel, Vec3f
             lbCommonReflect2D(&wp->physics.vel_air, &coll_data->ground_angle);
 
             mod_pos.x = translate->x;
-            mod_pos.y = translate->y + coll_data->object_coll.bottom;
+            mod_pos.y = translate->y + coll_data->map_coll.bottom;
         }
     }
     if (return_bool != FALSE)

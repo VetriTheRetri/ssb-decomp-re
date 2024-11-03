@@ -7,7 +7,7 @@
 
 // loadovl.h? or a generic overlay header?
 // all ends are exclusive (start..end)
-typedef struct syOverlay
+typedef struct SYOverlay
 {
     uintptr_t rom_start;
     uintptr_t rom_end;
@@ -19,7 +19,7 @@ typedef struct syOverlay
     void *ram_noload_start;
     void *ram_noload_end;
 
-} syOverlay;
+} SYOverlay;
 
 typedef struct syHuffman
 {
@@ -33,7 +33,7 @@ extern OSPiHandle *gRomPiHandle;
 
 extern void syDmaCreateMesgQueue(void);
 extern void syDmaCopy(OSPiHandle *handle, uintptr_t phys_addr, uintptr_t virtual, size_t size, u8 direction);
-extern void syDmaLoadOverlay(struct syOverlay *ovl);
+extern void syDmaLoadOverlay(struct SYOverlay *ovl);
 extern void syDmaReadRom(uintptr_t rom_src, void *ram_src, size_t size);
 extern void syDmaWriteRom(void *ram_src, uintptr_t rom_dst, size_t size);
 extern OSPiHandle* syDmaSramPiInit(void);

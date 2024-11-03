@@ -209,7 +209,7 @@ void func_ovl3_80185B18(GObj *item_gobj)
 	DObj *dobj = DObjGetStruct(item_gobj);
 	Vec3f pos = dobj->translate.vec.f;
 
-	pos.y += attr->object_coll_bottom;
+	pos.y += attr->map_coll_bottom;
 
 	efManagerDustHeavyDoubleMakeEffect(&pos, ip->lr, 1.0F);
 }

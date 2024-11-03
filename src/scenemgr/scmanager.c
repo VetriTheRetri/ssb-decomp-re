@@ -1,10 +1,7 @@
-#include "common.h"
 #include "scene_manager.h"
-#include <sys/obj.h>
 #include <ft/fighter.h>
 #include <wp/weapon.h>
 #include <it/item.h>
-#include <lb/lbparticle.h>
 #include "scenemgr/entries.h"
 #include <sys/error.h>
 #include <sys/dma.h>
@@ -54,7 +51,7 @@ FTFileSize gSCManagerFighterFileSizes[nFTKindEnumMax];
 s32 sSCManagerUnk0x800A523C;
 
 // Forward declarations
-extern void scManagerProcPrintGObjStatus();
+extern void scManagerFuncPrint();
 
 // // // // // // // // // // // //
 //                               //
@@ -63,7 +60,7 @@ extern void scManagerProcPrintGObjStatus();
 // // // // // // // // // // // //
 
 // 0x800A3070
-syOverlay dSCManagerOverlays[/* */] =
+SYOverlay dSCManagerOverlays[/* */] =
 {
 	GENERATE_OVERLAY_SECTION_DATA(0),
 	GENERATE_OVERLAY_SECTION_DATA(1),
@@ -542,6 +539,7 @@ SCCommonData dSCManagerDefaultSceneData =
 		0,
 		0
 	},
+
 	0,												// Bonus stage tasks completed
 	nFTKindNull,									// Bonus stage character
 	0,												// Bonus stage costume
@@ -800,68 +798,6 @@ s32 dSCManagerPad0x800A41B8[/* */] = { 0, 0 };
 // 0x800A41C0 (.rodata) - use { __DATE__ " " __TIME__ } in a real setting
 char dSCManagerBuildDate[/* */] = { "Mar 16 1999 18:26:57" };
 
-void mnNoControllerStartScene();
-void mnTitleStartScene();
-void dbStageSelectStartScene();
-void dbCubeStartScene();
-void dbBattleStartScene();
-void dbFallsStartScene();
-void mnUnusedFightersStartScene();
-void mnModeSelectStartScene();
-void mn1PModeStartScene();
-void mnOptionStartScene();
-void mnDataStartScene();
-void mnVSModeStartScene();
-void mnVSOptionsStartScene();
-void mnVSItemSwitchStartScene();
-void mnMessageStartScene();
-void sc1PChallengerStartScene();
-void sc1PStageCardStartScene();
-void mnScreenAdjustStartScene();
-void vs_css_entry();
-void mnStagesStartScene();
-void scVSBattleStartScene();
-void overlay_set23_entry();
-void sc1PManagerUpdateScene();
-void sc1PBonusGameStartScene();
-void scManager_TrainingMode_InitScene();
-void vs_results_entry();
-void vs_records_entry();
-void char_bkg_info_entry();
-void mnN64StartScene();
-void intro_firstscene_entry();
-void mvPortraitsStartScene();
-void intro_focus_mario_entry();
-void intro_focus_dk_entry();
-void intro_focus_samus_entry();
-void intro_focus_fox_entry();
-void intro_focus_link_entry();
-void intro_focus_yoshi_entry();
-void intro_focus_pikachu_entry();
-void mvOpeningKirbyStartScene();
-void mvOpeningRunStartScene();
-void mvOpeningYosterStartScene();
-void mvOpeningCliffStartScene();
-void mvOpeningStandoffStartScene();
-void mvOpeningYamabukiStartScene();
-void mvOpeningClashStartScene();
-void mvOpeningSectorStartScene();
-void mvOpeningJungleStartScene();
-void mvOpeningNewcomersStartScene();
-void classic_css_entry();
-void training_css_entry();
-void bonus_css_entry();
-void bonus_css_entry();
-void mnBackupClearStartScene();
-void mvEndingStartScene();
-void sc1PContinueStartScene();
-void sc1PStageClearStartScene();
-void gmStaffrollStartScene();
-void mnCongraStartScene();
-void mnSoundTestStartScene();
-void scExplainStartScene();
-void scAutoDemoStartScene();
-
 // // // // // // // // // // // //
 //                               //
 //           FUNCTIONS           //
@@ -869,14 +805,16 @@ void scAutoDemoStartScene();
 // // // // // // // // // // // //
 
 // 0x800A1980
-void scManagerRunLoop(u32 set)
+void scManagerRunLoop(sb32 arg)
 {
 	u16 *framebuffer;
 	uintptr_t end;
 
 	set_contstatus_delay(60);
-	syErrorSetFuncPrint(scManagerProcPrintGObjStatus);
+
+	syErrorSetFuncPrint(scManagerFuncPrint);
 	syErrorStartRmonThread5Hang();
+
 	syDmaLoadOverlay(&dSCManagerOverlays[0]);
 	syDmaLoadOverlay(&dSCManagerOverlays[2]);
 	syDmaLoadOverlay(&dSCManagerOverlays[1]);
@@ -897,13 +835,12 @@ void scManagerRunLoop(u32 set)
 	{
 		continue;
 	}
-
 	auSetReverbType(6);
+
 	while (func_80021048() != FALSE)
 	{
 		continue;
 	}
-
 	lbBackupIsSramValid();
 	lbBackupApplyOptions();
 
@@ -1310,7 +1247,7 @@ void scManagerRunLoop(u32 set)
 }
 
 // 0x800A2698
-void func_800A2698(SYTaskmanSetup *arg) // set up gtl and om systems
+void func_800A2698(SYTaskmanSetup *arg) //  up gtl and om systems
 {
 	syTaskmanInit(arg);
 }
@@ -1324,54 +1261,76 @@ void func_800A26B8()
 // 0x800A26D8
 void scManagerMeterFuncDisplay(GObj *gobj)
 {
-	s32 width; // sp74
-	UNUSED s32 spPad70;
-	s32 barY = 203; // sp6C
+	s32 width;
+	s32 unused;
+	s32 pos_y = 203;
 
 	func_80016338(gSYTaskmanDLHeads, CObjGetStruct(gobj), 0);
-	gDPPipeSync((*gSYTaskmanDLHeads)++);
-	gDPSetCycleType((*gSYTaskmanDLHeads)++, G_CYC_FILL);
-	gDPSetRenderMode((*gSYTaskmanDLHeads)++, G_RM_NOOP, G_RM_NOOP2);
-	width = ((gLBParticleStructsUsedNum / 112.0f) * 256.0f);
-	if (width < 0)
-		width = 0;
-	if (width > 256)
-		width = 256;
-	gDPSetFillColor((*gSYTaskmanDLHeads)++, syVideoGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF)));
-	gDPFillRectangle((*gSYTaskmanDLHeads)++, 30, barY, width + 30, barY + 1);
 
-	barY += 2;
-	gDPPipeSync((*gSYTaskmanDLHeads)++);
-	width = ((gLBParticleGeneratorsUsedNum / 24.0f) * 256.0f);
-	if (width < 0)
-		width = 0;
-	if (width > 256)
-		width = 256;
-	gDPSetFillColor((*gSYTaskmanDLHeads)++, syVideoGetFillColor(GPACK_RGBA8888(0xFF, 0x40, 0x00, 0xFF)));
-	gDPFillRectangle((*gSYTaskmanDLHeads)++, 30, barY, width + 30, barY + 1);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_FILL);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_NOOP, G_RM_NOOP2);
 
-	barY += 2;
-	gDPPipeSync((*gSYTaskmanDLHeads)++);
-	width = ((gLBParticleTransformsUsedNum / 80.0f) * 256.0f);
+	width = ((gLBParticleStructsUsedNum / 112.0F) * 256.0F);
+
 	if (width < 0)
+	{
 		width = 0;
+	}
 	if (width > 256)
+	{
 		width = 256;
-	gDPSetFillColor((*gSYTaskmanDLHeads)++, syVideoGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
-	gDPFillRectangle((*gSYTaskmanDLHeads)++, 30, barY, width + 30, barY + 1);
-	gDPPipeSync((*gSYTaskmanDLHeads)++);
+	}
+	gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0x00, 0x00, 0xFF, 0xFF)));
+	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 30, pos_y, width + 30, pos_y + 1);
+
+	pos_y += 2;
+
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+
+	width = ((gLBParticleGeneratorsUsedNum / 24.0F) * 256.0F);
+
+	if (width < 0)
+	{
+		width = 0;
+	}
+	if (width > 256)
+	{
+		width = 256;
+	}
+	gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0xFF, 0x40, 0x00, 0xFF)));
+	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 30, pos_y, width + 30, pos_y + 1);
+
+	pos_y += 2;
+
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+
+	width = ((gLBParticleTransformsUsedNum / 80.0F) * 256.0F);
+
+	if (width < 0)
+	{
+		width = 0;
+	}
+	if (width > 256)
+	{
+		width = 256;
+	}
+	gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
+	gDPFillRectangle(gSYTaskmanDLHeads[0]++, 30, pos_y, width + 30, pos_y + 1);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+
 	// this needs to be in its own block to match. macro?
 	// could explain the double sync
 	{
-		size_t freeSpace = (uintptr_t)gSYTaskmanGeneralHeap.end - (uintptr_t)gSYTaskmanGeneralHeap.ptr;
+		size_t mem_free = (uintptr_t)gSYTaskmanGeneralHeap.end - (uintptr_t)gSYTaskmanGeneralHeap.ptr;
 
-		gDPSetFillColor((*gSYTaskmanDLHeads)++, syVideoGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
-		func_800218E0(0x14, 0x14, freeSpace, 7, 1);
-		gDPPipeSync((*gSYTaskmanDLHeads)++);
+		gDPSetFillColor(gSYTaskmanDLHeads[0]++, syVideoGetFillColor(GPACK_RGBA8888(0xFF, 0xFF, 0xFF, 0xFF)));
+		func_800218E0(0x14, 0x14, mem_free, 7, 1);
+		gDPPipeSync(gSYTaskmanDLHeads[0]++);
 	}
-	gDPPipeSync((*gSYTaskmanDLHeads)++);
-	gDPSetCycleType((*gSYTaskmanDLHeads)++, G_CYC_1CYCLE);
-	gDPSetRenderMode((*gSYTaskmanDLHeads)++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
+	gDPPipeSync(gSYTaskmanDLHeads[0]++);
+	gDPSetCycleType(gSYTaskmanDLHeads[0]++, G_CYC_1CYCLE);
+	gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
 }
 
 // 0x800A2B18
@@ -1400,7 +1359,7 @@ GObj* scManagerMakeMeterCamera(s32 link, u32 link_priority, u32 dl_link_priority
 }
 
 // 0x800A2BA8
-void scManagerMakeDebugCameras(s32 link, u32 link_priority, s32 dl_link_priority) // set_up_debug_objs ? something like that
+void scManagerMakeDebugCameras(s32 link, u32 link_priority, s32 dl_link_priority)
 {
 	GObj *gobj = gcFindGObjByID(~0x1);
 
@@ -1486,7 +1445,7 @@ void scManagerInspectGObj(GObj *gobj)
 }
 
 // 0x800A2E84
-void scManagerProcPrintGObjStatus(void)
+void scManagerFuncPrint(void)
 {
 	switch (dGCCurrentStatus)
 	{
@@ -1555,5 +1514,5 @@ void scManagerProcPrintGObjStatus(void)
 // 0x800A3040
 void scManagerRunPrintGObjStatus(void)
 {
-	syErrorRunFuncPrint(scManagerProcPrintGObjStatus);
+	syErrorRunFuncPrint(scManagerFuncPrint);
 }

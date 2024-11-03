@@ -175,7 +175,7 @@ GObj* itMewMakeItem(GObj *parent_gobj, Vec3f *pos, Vec3f *vel, u32 flags)
         ip->physics.vel_air.x = ip->physics.vel_air.z = 0.0F;
         ip->physics.vel_air.y = ITMONSTER_RISE_VEL_Y; // Starting to think this is a macro
 
-        dobj->translate.vec.f.y -= ip->attr->object_coll_bottom;
+        dobj->translate.vec.f.y -= ip->attr->map_coll_bottom;
             
         // This ptr stuff is likely also a macro
         gcAddDObjAnimJoint(dobj, itGetMonsterAnimNode(ip, lITMewDataStart), 0.0F);

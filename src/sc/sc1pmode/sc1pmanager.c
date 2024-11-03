@@ -40,40 +40,40 @@ u8 gSC1PManagerKirbyTeamModelPartID;
 // // // // // // // // // // // //
 
 // 0x80116BF0
-syOverlay dSC1PManagerSubsysOverlay = SCMANAGER_OVERLAY_DEFINE(1);
+SYOverlay dSC1PManagerSubsysOverlay = SCMANAGER_OVERLAY_DEFINE(1);
 
 // 0x80116C14
-syOverlay dSC1PManager1PStageCardOverlay = SCMANAGER_OVERLAY_DEFINE(24);
+SYOverlay dSC1PManager1PStageCardOverlay = SCMANAGER_OVERLAY_DEFINE(24);
 
 // 0x80116C38
-syOverlay dSC1PManager1PStageClearOverlay = SCMANAGER_OVERLAY_DEFINE(56);
+SYOverlay dSC1PManager1PStageClearOverlay = SCMANAGER_OVERLAY_DEFINE(56);
 
 // 0x80116C5C
-syOverlay dSC1PManager1PChallengerOverlay = SCMANAGER_OVERLAY_DEFINE(23);
+SYOverlay dSC1PManager1PChallengerOverlay = SCMANAGER_OVERLAY_DEFINE(23);
 
 // 0x80116C80
-syOverlay dSC1PManagerEndingOverlay = SCMANAGER_OVERLAY_DEFINE(54);
+SYOverlay dSC1PManagerEndingOverlay = SCMANAGER_OVERLAY_DEFINE(54);
 
 // 0x80116CA4
-syOverlay dSC1PManagerMessageOverlay = SCMANAGER_OVERLAY_DEFINE(22);
+SYOverlay dSC1PManagerMessageOverlay = SCMANAGER_OVERLAY_DEFINE(22);
 
 // 0x80116CC8
-syOverlay dSC1PManagerCongraOverlay = SCMANAGER_OVERLAY_DEFINE(57);
+SYOverlay dSC1PManagerCongraOverlay = SCMANAGER_OVERLAY_DEFINE(57);
 
 // 0x80116CEC
-syOverlay dSC1PManagerStaffrollOverlay = SCMANAGER_OVERLAY_DEFINE(59);
+SYOverlay dSC1PManagerStaffrollOverlay = SCMANAGER_OVERLAY_DEFINE(59);
 
 // 0x80116D10
-syOverlay dSC1PManager1PGameOverlay = SCMANAGER_OVERLAY_DEFINE(65);
+SYOverlay dSC1PManager1PGameOverlay = SCMANAGER_OVERLAY_DEFINE(65);
 
 // 0x80116D34
-syOverlay dSC1PManagerObjectsOverlay = SCMANAGER_OVERLAY_DEFINE(3);
+SYOverlay dSC1PManagerObjectsOverlay = SCMANAGER_OVERLAY_DEFINE(3);
 
 // 0x80116D58
-syOverlay dSC1PManager1PBonusGameOverlay = SCMANAGER_OVERLAY_DEFINE(6);
+SYOverlay dSC1PManager1PBonusGameOverlay = SCMANAGER_OVERLAY_DEFINE(6);
 
 // 0x80116D7C
-syOverlay dSC1PManager1PContinueOverlay = SCMANAGER_OVERLAY_DEFINE(55);
+SYOverlay dSC1PManager1PContinueOverlay = SCMANAGER_OVERLAY_DEFINE(55);
 
 // 0x80116DA0
 u8 dSC1PManagerKirbyTeamModelPartIDs[/* */] =

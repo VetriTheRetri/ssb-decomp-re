@@ -96,20 +96,20 @@ void wpDisplayMapCollisions(GObj *weapon_gobj) // Render weapon ECB?
 {
     WPStruct *wp = wpGetStruct(weapon_gobj);
     Vec3f *translate = &DObjGetStruct(weapon_gobj)->translate.vec.f;
-    MPObjectColl *object_coll = &wp->coll_data.object_coll;
+    MPObjectColl *map_coll = &wp->coll_data.map_coll;
     gsMtxStore mtx_store;
 
     gDPPipeSync(gSYTaskmanDLHeads[1]++);
 
     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-    syMatrixTranslate(mtx_store.gbi, translate->x, translate->y + object_coll->bottom, translate->z);
+    syMatrixTranslate(mtx_store.gbi, translate->x, translate->y + map_coll->bottom, translate->z);
 
     gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-    syMatrixSca(mtx_store.gbi, object_coll->width / 30.0F, (object_coll->center - object_coll->bottom) / 30.0F, 1.0F);
+    syMatrixSca(mtx_store.gbi, map_coll->width / 30.0F, (map_coll->center - map_coll->bottom) / 30.0F, 1.0F);
 
     gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
@@ -119,13 +119,13 @@ void wpDisplayMapCollisions(GObj *weapon_gobj) // Render weapon ECB?
 
     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-    syMatrixTranslate(mtx_store.gbi, translate->x, translate->y + object_coll->center, translate->z);
+    syMatrixTranslate(mtx_store.gbi, translate->x, translate->y + map_coll->center, translate->z);
 
     gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 
     syMatrixStoreGbi(mtx_store, gSYTaskmanGraphicsHeap);
 
-    syMatrixSca(mtx_store.gbi, object_coll->width / 30.0F, (object_coll->top - object_coll->center) / 30.0F, 1.0F);
+    syMatrixSca(mtx_store.gbi, map_coll->width / 30.0F, (map_coll->top - map_coll->center) / 30.0F, 1.0F);
 
     gSPMatrix(gSYTaskmanDLHeads[1]++, mtx_store.gbi, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
 

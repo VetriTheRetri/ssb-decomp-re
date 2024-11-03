@@ -329,8 +329,8 @@ void gcParseDObjAnimJoint(DObj *dobj)
 
             switch (command_kind)
             {
-            case nGCAnimCommandSetVal0RateBlock:
-            case nGCAnimCommandSetVal0Rate:
+            case nGCAnimEvent32SetVal0RateBlock:
+            case nGCAnimEvent32SetVal0Rate:
                 payload = dobj->anim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(dobj->anim_joint.event32)->command.flags;
 
@@ -362,14 +362,14 @@ void gcParseDObjAnimJoint(DObj *dobj)
                         track_aobjs[i]->length = -dobj->anim_wait - dobj->anim_speed;
                     }
                 }
-                if (command_kind == nGCAnimCommandSetVal0RateBlock)
+                if (command_kind == nGCAnimEvent32SetVal0RateBlock)
                 {
                     dobj->anim_wait += payload;
                 }
                 break;
 
-            case nGCAnimCommandSetValBlock:
-            case nGCAnimCommandSetVal:
+            case nGCAnimEvent32SetValBlock:
+            case nGCAnimEvent32SetVal:
                 payload = dobj->anim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(dobj->anim_joint.event32)->command.flags;
 
@@ -400,14 +400,14 @@ void gcParseDObjAnimJoint(DObj *dobj)
                         track_aobjs[i]->rate_target = 0.0F;
                     }
                 }
-                if (command_kind == nGCAnimCommandSetValBlock)
+                if (command_kind == nGCAnimEvent32SetValBlock)
                 {
                     dobj->anim_wait += payload;
                 }
                 break;
 
-            case nGCAnimCommandSetValRateBlock:
-            case nGCAnimCommandSetValRate:
+            case nGCAnimEvent32SetValRateBlock:
+            case nGCAnimEvent32SetValRate:
                 payload = dobj->anim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(dobj->anim_joint.event32)->command.flags;
 
@@ -442,13 +442,13 @@ void gcParseDObjAnimJoint(DObj *dobj)
                         track_aobjs[i]->length = -dobj->anim_wait - dobj->anim_speed;
                     }
                 }
-                if (command_kind == nGCAnimCommandSetValRateBlock)
+                if (command_kind == nGCAnimEvent32SetValRateBlock)
                 {
                     dobj->anim_wait += payload;
                 }
                 break;
 
-            case nGCAnimCommandSetTargetRate:
+            case nGCAnimEvent32SetTargetRate:
                 flags = AObjAnimAdvance(dobj->anim_joint.event32)->command.flags;
 
                 for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
@@ -470,12 +470,12 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 }
                 break;
 
-            case nGCAnimCommandWait:
+            case nGCAnimEvent32Wait:
                 dobj->anim_wait += AObjAnimAdvance(dobj->anim_joint.event32)->command.payload;
                 break;
 
-            case nGCAnimCommandSetValAfterBlock:
-            case nGCAnimCommandSetValAfter:
+            case nGCAnimEvent32SetValAfterBlock:
+            case nGCAnimEvent32SetValAfter:
                 payload = dobj->anim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(dobj->anim_joint.event32)->command.flags;
 
@@ -502,13 +502,13 @@ void gcParseDObjAnimJoint(DObj *dobj)
                         track_aobjs[i]->rate_target = 0.0F;
                     }
                 }
-                if (command_kind == nGCAnimCommandSetValAfterBlock)
+                if (command_kind == nGCAnimEvent32SetValAfterBlock)
                 {
                     dobj->anim_wait += payload;
                 }
                 break;
 
-            case nGCAnimCommandSetAnim:
+            case nGCAnimEvent32SetAnim:
                 AObjAnimAdvance(dobj->anim_joint.event32);
                 dobj->anim_joint.event32 = dobj->anim_joint.event32->p;
                 dobj->anim_frame = -dobj->anim_wait;
@@ -520,7 +520,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 }
                 break;
 
-            case nGCAnimCommandJump:
+            case nGCAnimEvent32Jump:
                 AObjAnimAdvance(dobj->anim_joint.event32);
                 dobj->anim_joint.event32 = dobj->anim_joint.event32->p;
 
@@ -551,7 +551,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 }
                 break;
 
-            case nGCAnimCommandSetInterp:
+            case nGCAnimEvent32SetInterp:
                 AObjAnimAdvance(dobj->anim_joint.event32);
 
                 if (track_aobjs[nGCAnimTrackTraI - nGCAnimTrackJointStart] == NULL) 
@@ -563,7 +563,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 AObjAnimAdvance(dobj->anim_joint.event32);
                 break;
 
-            case nGCAnimCommandEnd:
+            case nGCAnimEvent32End:
                 aobj = dobj->aobj;
 
                 while (aobj != NULL)
@@ -584,7 +584,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
                 }
                 return; // not break
 
-            case nGCAnimCommandSetFlags:
+            case nGCAnimEvent32SetFlags:
                 dobj->flags = dobj->anim_joint.event32->command.flags;
                 dobj->anim_wait += AObjAnimAdvance(dobj->anim_joint.event32)->command.payload;
                 break;
@@ -897,8 +897,8 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
 
             switch (command_kind)
             {
-            case nGCAnimCommandSetVal0RateBlock:
-            case nGCAnimCommandSetVal0Rate:
+            case nGCAnimEvent32SetVal0RateBlock:
+            case nGCAnimEvent32SetVal0Rate:
                 payload = mobj->matanim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(mobj->matanim_joint.event32)->command.flags;
 
@@ -931,14 +931,14 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                         mat_aobjs[i]->length = -mobj->anim_wait - mobj->anim_speed;
                     }
                 }
-                if (command_kind == nGCAnimCommandSetVal0RateBlock)
+                if (command_kind == nGCAnimEvent32SetVal0RateBlock)
                 {
                     mobj->anim_wait += payload;
                 }
                 break;
 
-            case nGCAnimCommandSetValBlock:
-            case nGCAnimCommandSetVal:
+            case nGCAnimEvent32SetValBlock:
+            case nGCAnimEvent32SetVal:
                 payload = mobj->matanim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(mobj->matanim_joint.event32)->command.flags;
 
@@ -970,14 +970,14 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                     }
                 }
 
-                if (command_kind == nGCAnimCommandSetValBlock)
+                if (command_kind == nGCAnimEvent32SetValBlock)
                 {
                     mobj->anim_wait += payload;
                 }
                 break;
 
-            case nGCAnimCommandSetValRateBlock:
-            case nGCAnimCommandSetValRate:
+            case nGCAnimEvent32SetValRateBlock:
+            case nGCAnimEvent32SetValRate:
                 payload = mobj->matanim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(mobj->matanim_joint.event32)->command.flags;
 
@@ -1012,13 +1012,13 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                         mat_aobjs[i]->length = -mobj->anim_wait - mobj->anim_speed;
                     }
                 }
-                if (command_kind == nGCAnimCommandSetValRateBlock)
+                if (command_kind == nGCAnimEvent32SetValRateBlock)
                 {
                     mobj->anim_wait += payload;
                 }
                 break;
 
-            case nGCAnimCommandSetTargetRate:
+            case nGCAnimEvent32SetTargetRate:
                 flags = AObjAnimAdvance(mobj->matanim_joint.event32)->command.flags;
 
                 for (i = 0; i < ARRAY_COUNT(mat_aobjs); i++, flags = flags >> 1)
@@ -1040,14 +1040,14 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                 }
                 break;
 
-            case nGCAnimCommandWait:
+            case nGCAnimEvent32Wait:
                 mobj->anim_wait += mobj->matanim_joint.event32->command.payload;
 
                 AObjAnimAdvance(mobj->matanim_joint.event32);
                 break;
 
-            case nGCAnimCommandSetValAfterBlock:
-            case nGCAnimCommandSetValAfter:
+            case nGCAnimEvent32SetValAfterBlock:
+            case nGCAnimEvent32SetValAfter:
                 payload = mobj->matanim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(mobj->matanim_joint.event32)->command.flags;
 
@@ -1076,20 +1076,20 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                         mat_aobjs[i]->rate_target = 0.0F;
                     }
                 }
-                if (command_kind == nGCAnimCommandSetValAfterBlock)
+                if (command_kind == nGCAnimEvent32SetValAfterBlock)
                 {
                     mobj->anim_wait += payload;
                 }
                 break;
 
-            case nGCAnimCommandSetAnim:
+            case nGCAnimEvent32SetAnim:
                 AObjAnimAdvance(mobj->matanim_joint.event32);
 
                 mobj->matanim_joint.event32 = mobj->matanim_joint.event32->p;
                 mobj->anim_frame = -mobj->anim_wait;
                 break;
 
-            case nGCAnimCommandJump:
+            case nGCAnimEvent32Jump:
                 AObjAnimAdvance(mobj->matanim_joint.event32);
 
                 mobj->matanim_joint.event32 = mobj->matanim_joint.event32->p;
@@ -1116,7 +1116,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                 }
                 break;
 
-            case nGCAnimCommandEnd:
+            case nGCAnimEvent32End:
                 aobj = mobj->aobj;
 
                 while (aobj != NULL)
@@ -1131,8 +1131,8 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                 mobj->anim_wait = AOBJ_ANIM_END;
                 return; // not break
 
-            case nGCAnimCommandSetExtValAfterBlock:
-            case nGCAnimCommandSetExtValAfter:
+            case nGCAnimEvent32SetExtValAfterBlock:
+            case nGCAnimEvent32SetExtValAfter:
                 payload = mobj->matanim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(mobj->matanim_joint.event32)->command.flags;
 
@@ -1159,14 +1159,14 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                         matspecial_aobjs[i]->length = -mobj->anim_wait - mobj->anim_speed;
                     }
                 }
-                if (command_kind == nGCAnimCommandSetExtValAfterBlock)
+                if (command_kind == nGCAnimEvent32SetExtValAfterBlock)
                 {
                     mobj->anim_wait += payload;
                 }
                 break;
 
-            case nGCAnimCommandSetExtValBlock:
-            case nGCAnimCommandSetExtVal:
+            case nGCAnimEvent32SetExtValBlock:
+            case nGCAnimEvent32SetExtVal:
                 payload = mobj->matanim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(mobj->matanim_joint.event32)->command.flags;
 
@@ -1196,7 +1196,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
                         matspecial_aobjs[i]->length = -mobj->anim_wait - mobj->anim_speed;
                     }
                 }
-                if (command_kind == nGCAnimCommandSetExtValBlock)
+                if (command_kind == nGCAnimEvent32SetExtValBlock)
                 {
                     mobj->anim_wait += payload;
                 }
@@ -2548,8 +2548,8 @@ void gcParseCameraCamAnimJoint(CObj *cobj)
 
             switch (command_kind)
             {
-            case nGCAnimCommandSetVal0RateBlock:
-            case nGCAnimCommandSetVal0Rate:
+            case nGCAnimEvent32SetVal0RateBlock:
+            case nGCAnimEvent32SetVal0Rate:
                 payload = cobj->cobjanim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(cobj->cobjanim_joint.event32)->command.flags;
 
@@ -2581,14 +2581,14 @@ void gcParseCameraCamAnimJoint(CObj *cobj)
                         track_aobjs[i]->length = -cobj->anim_wait - cobj->anim_speed;
                     }
                 }
-                if (command_kind == nGCAnimCommandSetVal0RateBlock)
+                if (command_kind == nGCAnimEvent32SetVal0RateBlock)
                 {
                     cobj->anim_wait += payload;
                 }
                 break;
 
-            case nGCAnimCommandSetValBlock:
-            case nGCAnimCommandSetVal:
+            case nGCAnimEvent32SetValBlock:
+            case nGCAnimEvent32SetVal:
                 payload = cobj->cobjanim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(cobj->cobjanim_joint.event32)->command.flags;
 
@@ -2619,14 +2619,14 @@ void gcParseCameraCamAnimJoint(CObj *cobj)
                         track_aobjs[i]->rate_target = 0.0F;
                     }
                 }
-                if (command_kind == nGCAnimCommandSetValBlock)
+                if (command_kind == nGCAnimEvent32SetValBlock)
                 {
                     cobj->anim_wait += payload;
                 }
                 break;
 
-            case nGCAnimCommandSetValRateBlock:
-            case nGCAnimCommandSetValRate:
+            case nGCAnimEvent32SetValRateBlock:
+            case nGCAnimEvent32SetValRate:
                 payload = cobj->cobjanim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(cobj->cobjanim_joint.event32)->command.flags;
 
@@ -2661,13 +2661,13 @@ void gcParseCameraCamAnimJoint(CObj *cobj)
                         track_aobjs[i]->length = -cobj->anim_wait - cobj->anim_speed;
                     }
                 }
-                if (command_kind == nGCAnimCommandSetValRateBlock)
+                if (command_kind == nGCAnimEvent32SetValRateBlock)
                 {
                     cobj->anim_wait += payload;
                 }
                 break;
 
-            case nGCAnimCommandSetTargetRate:
+            case nGCAnimEvent32SetTargetRate:
                 flags = AObjAnimAdvance(cobj->cobjanim_joint.event32)->command.flags;
 
                 for (i = 0; i < ARRAY_COUNT(track_aobjs); i++, flags = flags >> 1)
@@ -2689,12 +2689,12 @@ void gcParseCameraCamAnimJoint(CObj *cobj)
                 }
                 break;
 
-            case nGCAnimCommandWait:
+            case nGCAnimEvent32Wait:
                 cobj->anim_wait += AObjAnimAdvance(cobj->cobjanim_joint.event32)->command.payload;
                 break;
 
-            case nGCAnimCommandSetValAfterBlock:
-            case nGCAnimCommandSetValAfter:
+            case nGCAnimEvent32SetValAfterBlock:
+            case nGCAnimEvent32SetValAfter:
                 payload = cobj->cobjanim_joint.event32->command.payload;
                 flags = AObjAnimAdvance(cobj->cobjanim_joint.event32)->command.flags;
 
@@ -2721,20 +2721,20 @@ void gcParseCameraCamAnimJoint(CObj *cobj)
                         track_aobjs[i]->rate_target = 0.0F;
                     }
                 }
-                if (command_kind == nGCAnimCommandSetValAfterBlock)
+                if (command_kind == nGCAnimEvent32SetValAfterBlock)
                 {
                     cobj->anim_wait += payload;
                 }
                 break;
 
-            case nGCAnimCommandSetAnim:
+            case nGCAnimEvent32SetAnim:
                 AObjAnimAdvance(cobj->cobjanim_joint.event32);
                 cobj->cobjanim_joint.event32 = cobj->cobjanim_joint.event32->p;
                 cobj->anim_frame = -cobj->anim_wait;
                 cobj->parent_gobj->anim_frame = -cobj->anim_wait;
                 break;
 
-            case nGCAnimCommandJump:
+            case nGCAnimEvent32Jump:
                 AObjAnimAdvance(cobj->cobjanim_joint.event32);
                 cobj->cobjanim_joint.event32 = cobj->cobjanim_joint.event32->p;
                 break;
@@ -2760,7 +2760,7 @@ void gcParseCameraCamAnimJoint(CObj *cobj)
                 }
                 break;
 
-            case nGCAnimCommandSetInterp:
+            case nGCAnimEvent32SetInterp:
                 flags = AObjAnimAdvance(cobj->cobjanim_joint.event32)->command.flags;
 
                 if (flags & 0x08)
@@ -2793,7 +2793,7 @@ void gcParseCameraCamAnimJoint(CObj *cobj)
                 }
                 break;
 
-            case nGCAnimCommandEnd:
+            case nGCAnimEvent32End:
                 aobj = cobj->aobj;
 
                 while (aobj != NULL)
@@ -2937,17 +2937,17 @@ s32 gcGetAnimTotalLength(AObjEvent32 **anim_joints)
     {
         switch (anim_joint->command.opcode)
         {
-            case nGCAnimCommandSetValBlock:
-            case nGCAnimCommandSetVal0RateBlock:
-            case nGCAnimCommandSetValAfterBlock:
+            case nGCAnimEvent32SetValBlock:
+            case nGCAnimEvent32SetVal0RateBlock:
+            case nGCAnimEvent32SetValAfterBlock:
                 total += anim_joint->command.payload;
 
                 /* fallthrough */
 
-            case nGCAnimCommandSetVal:
-            case nGCAnimCommandSetTargetRate:
-            case nGCAnimCommandSetVal0Rate:
-            case nGCAnimCommandSetValAfter:
+            case nGCAnimEvent32SetVal:
+            case nGCAnimEvent32SetTargetRate:
+            case nGCAnimEvent32SetVal0Rate:
+            case nGCAnimEvent32SetValAfter:
                 flags = AObjAnimAdvance(anim_joint)->command.flags;
 
                 for (i = 0; i < 10; i++, flags = flags >> 1)
@@ -2963,12 +2963,12 @@ s32 gcGetAnimTotalLength(AObjEvent32 **anim_joints)
                 }
                 break;
 
-            case nGCAnimCommandSetValRateBlock:
+            case nGCAnimEvent32SetValRateBlock:
                 total += anim_joint->command.payload;
 
                 /* fallthrough */
 
-            case nGCAnimCommandSetValRate:
+            case nGCAnimEvent32SetValRate:
                 flags = AObjAnimAdvance(anim_joint)->command.flags;
 
                 for (i = 0; i < 10; i++, flags = flags >> 1)
@@ -2984,8 +2984,8 @@ s32 gcGetAnimTotalLength(AObjEvent32 **anim_joints)
                 }
                 break;
 
-            case nGCAnimCommandWait:
-            case nGCAnimCommandSetFlags:
+            case nGCAnimEvent32Wait:
+            case nGCAnimEvent32SetFlags:
                 total += AObjAnimAdvance(anim_joint)->command.payload;
                 break;
 
@@ -2993,7 +2993,7 @@ s32 gcGetAnimTotalLength(AObjEvent32 **anim_joints)
                 AObjAnimAdvance(anim_joint);
                 break;
 
-            case nGCAnimCommandSetInterp:
+            case nGCAnimEvent32SetInterp:
                 anim_joint += 2;
                 break;
 
@@ -3014,11 +3014,11 @@ s32 gcGetAnimTotalLength(AObjEvent32 **anim_joints)
                 }
                 break;
 
-            case nGCAnimCommandEnd:
+            case nGCAnimEvent32End:
                 return total;
 
-            case nGCAnimCommandJump:
-            case nGCAnimCommandSetAnim:
+            case nGCAnimEvent32Jump:
+            case nGCAnimEvent32SetAnim:
                 return -total;
 
             case ANIM_CMD_16:

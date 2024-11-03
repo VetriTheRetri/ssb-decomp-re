@@ -2119,8 +2119,8 @@ void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj)
         {
             pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-            pos.x += fp->coll_data.object_coll.width;
-            pos.y += fp->coll_data.object_coll.center;
+            pos.x += fp->coll_data.map_coll.width;
+            pos.y += fp->coll_data.map_coll.center;
 
             efManagerKirbyStarMakeEffect(&pos);
         }
@@ -2128,8 +2128,8 @@ void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj)
         {
             pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-            pos.x -= fp->coll_data.object_coll.width;
-            pos.y += fp->coll_data.object_coll.center;
+            pos.x -= fp->coll_data.map_coll.width;
+            pos.y += fp->coll_data.map_coll.center;
 
             efManagerKirbyStarMakeEffect(&pos);
         }
@@ -2137,7 +2137,7 @@ void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj)
         {
             pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-            pos.y += fp->coll_data.object_coll.top;
+            pos.y += fp->coll_data.map_coll.top;
 
             efManagerKirbyStarMakeEffect(&pos);
         }
@@ -2145,7 +2145,7 @@ void ftParamKirbyTryMakeMapStarEffect(GObj *fighter_gobj)
         {
             pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-            pos.y += fp->coll_data.object_coll.bottom;
+            pos.y += fp->coll_data.map_coll.bottom;
 
             efManagerKirbyStarMakeEffect(&pos);
         }

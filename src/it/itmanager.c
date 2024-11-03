@@ -402,11 +402,11 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
     
     ip->coll_data.p_translate       = &DObjGetStruct(item_gobj)->translate.vec.f;
     ip->coll_data.p_lr              = &ip->lr;
-    ip->coll_data.object_coll.top      = attr->object_coll_top;
-    ip->coll_data.object_coll.center   = attr->object_coll_center;
-    ip->coll_data.object_coll.bottom   = attr->object_coll_bottom;
-    ip->coll_data.object_coll.width    = attr->object_coll_width;
-    ip->coll_data.p_object_coll        = &ip->coll_data.object_coll;
+    ip->coll_data.map_coll.top      = attr->map_coll_top;
+    ip->coll_data.map_coll.center   = attr->map_coll_center;
+    ip->coll_data.map_coll.bottom   = attr->map_coll_bottom;
+    ip->coll_data.map_coll.width    = attr->map_coll_width;
+    ip->coll_data.p_map_coll        = &ip->coll_data.map_coll;
     ip->coll_data.ignore_line_id    = -1;
     ip->coll_data.coll_update_frame = gMPCollisionUpdateFrame;
     ip->coll_data.coll_mask_curr = 0;

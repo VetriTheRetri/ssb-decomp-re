@@ -353,7 +353,7 @@ GObj* itManagerMakeItem(GObj *parent_gobj, ITCreateDesc *item_desc, Vec3f *pos, 
     ip->attack_coll.stat_flags.is_smash_attack = ip->attack_coll.stat_flags.ga = ip->attack_coll.stat_flags.is_projectile = 0;
     ip->attack_coll.stat_count                 = ftParamGetStatUpdateCount();
 
-    itMainClearAtkRecord(ip);
+    itMainClearAttackRecord(ip);
 
     ip->damage_coll.hitstatus     = attr->hitstatus;
     ip->damage_coll.offset.x      = attr->damage_coll_offset.x;

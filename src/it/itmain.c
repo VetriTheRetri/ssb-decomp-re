@@ -208,7 +208,7 @@ void itMainResetPlayerVars(GObj *item_gobj)
 }
 
 // 0x801725F8
-void itMainClearAtkRecord(ITStruct *ip)
+void itMainClearAttackRecord(ITStruct *ip)
 {
     s32 i;
 
@@ -227,11 +227,11 @@ void itMainClearAtkRecord(ITStruct *ip)
 }
 
 // 0x8017275C
-void itMainRefreshAtk(GObj *item_gobj)
+void itMainRefreshAttackColl(GObj *item_gobj)
 {
     ITStruct *ip = itGetStruct(item_gobj);
 
-    itMainClearAtkRecord(ip);
+    itMainClearAttackRecord(ip);
 
     ip->attack_coll.attack_state = nGMAttackStateNew;
 
@@ -356,7 +356,7 @@ void itMainSetFighterRelease(GObj *item_gobj, Vec3f *vel, f32 stale, u16 stat_fl
     ip->attack_coll.stat_count = stat_count;
 
     ftParamSetHammerParams(fighter_gobj);
-    itMainRefreshAtk(item_gobj);
+    itMainRefreshAttackColl(item_gobj);
 }
 
 // 0x80172AEC

@@ -566,7 +566,7 @@ void ftCommonYoshiEggProcInterrupt(GObj* fighter_gobj);
 void ftCommonYoshiEggProcPhysics(GObj* fighter_gobj);
 void ftCommonYoshiEggProcMap(GObj* fighter_gobj);
 void ftCommonYoshiEggProcTrap(GObj* fighter_gobj);
-void ftCommonYoshiEggSetHurtCollisions(GObj* fighter_gobj);
+void ftCommonYoshiEggSetDamageCollCollisions(GObj* fighter_gobj);
 void ftCommonYoshiEggProcStatus(GObj* fighter_gobj);
 void ftCommonYoshiEggSetStatus(GObj* fighter_gobj);
 

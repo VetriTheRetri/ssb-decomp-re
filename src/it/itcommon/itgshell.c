@@ -500,7 +500,7 @@ void itGShellSpinInitItemVars(GObj *item_gobj)
 
     ip->is_damage_all = FALSE;
 
-    itMainRefreshAtk(item_gobj);
+    itMainRefreshAttackColl(item_gobj);
     func_800269C0_275C0(nSYAudioFGMBombHeiWalkStart);
 }
 
@@ -532,7 +532,7 @@ void itGShellSpinAirInitItemVars(GObj *item_gobj)
 
     ip->is_damage_all = FALSE;
 
-    itMainRefreshAtk(item_gobj);
+    itMainRefreshAttackColl(item_gobj);
 }
 
 // 0x80178FA8

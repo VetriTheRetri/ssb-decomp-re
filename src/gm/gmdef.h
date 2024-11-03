@@ -58,67 +58,67 @@
 // (https://www.coranac.com/documents/working-with-bits-and-bitfields/)
 
 // Now watch me make dollar store display list commands like a clown
-#define gmColCommandEndS1() GC_FIELDSET(nGMColEventKindEnd, 26, 6)
+#define gmColCommandEndS1() GC_FIELDSET(nGMColEventEnd, 26, 6)
 
-#define gmColCommandWaitS1(frames) (GC_FIELDSET(nGMColEventKindWait, 26, 6) | GC_FIELDSET(frames, 0, 26))
+#define gmColCommandWaitS1(frames) (GC_FIELDSET(nGMColEventWait, 26, 6) | GC_FIELDSET(frames, 0, 26))
 
-#define gmColCommandGotoS1() GC_FIELDSET(nGMColEventKindGoto, 26, 6)
+#define gmColCommandGotoS1() GC_FIELDSET(nGMColEventGoto, 26, 6)
 #define gmColCommandGotoS2(addr) ((uintptr_t)addr)
 
-#define gmColCommandLoopBeginS1(count) (GC_FIELDSET(nGMColEventKindLoopBegin, 26, 6) | GC_FIELDSET(count, 0, 26))
-#define gmColCommandLoopEndS1() GC_FIELDSET(nGMColEventKindLoopEnd, 26, 6)
+#define gmColCommandLoopBeginS1(count) (GC_FIELDSET(nGMColEventLoopBegin, 26, 6) | GC_FIELDSET(count, 0, 26))
+#define gmColCommandLoopEndS1() GC_FIELDSET(nGMColEventLoopEnd, 26, 6)
 
-#define gmColCommandSubroutineS1() GC_FIELDSET(nGMColEventKindSubroutine, 26, 6)
+#define gmColCommandSubroutineS1() GC_FIELDSET(nGMColEventSubroutine, 26, 6)
 #define gmColCommandSubroutineS2(addr) ((uintptr_t)addr)
 
-#define gmColCommandReturnS1() GC_FIELDSET(nGMColEventKindReturn, 26, 6)
+#define gmColCommandReturnS1() GC_FIELDSET(nGMColEventReturn, 26, 6)
 
-#define gmColCommandParallelS1() GC_FIELDSET(nGMColEventKindSetParallelScript, 26, 6)
+#define gmColCommandParallelS1() GC_FIELDSET(nGMColEventSetParallelScript, 26, 6)
 #define gmColCommandParallelS2(addr) ((uintptr_t)addr)
 
-#define gmColCommandToggleColorOffS1() GC_FIELDSET(nGMColEventKindToggleColorOff, 26, 6)
+#define gmColCommandToggleColorOffS1() GC_FIELDSET(nGMColEventToggleColorOff, 26, 6)
 
-#define gmColCommandSetColor1S1() GC_FIELDSET(nGMColEventKindSetColor1, 26, 6)
+#define gmColCommandSetColor1S1() GC_FIELDSET(nGMColEventSetColor1, 26, 6)
 #define gmColCommandSetColor1S2(r, g, b, a)                                                                          \
 	(GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
 
 #define gmColCommandBlendColor1S1(frames)                                                                            \
-	(GC_FIELDSET(nGMColEventKindBlendColor1, 26, 6) | GC_FIELDSET(frames, 0, 26))
+	(GC_FIELDSET(nGMColEventBlendColor1, 26, 6) | GC_FIELDSET(frames, 0, 26))
 #define gmColCommandBlendColor1S2(r, g, b, a)                                                                        \
 	(GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
 
-#define gmColCommandSetColor2S1() GC_FIELDSET(nGMColEventKindSetColor2, 26, 6)
+#define gmColCommandSetColor2S1() GC_FIELDSET(nGMColEventSetColor2, 26, 6)
 #define gmColCommandSetColor2S2(r, g, b, a)                                                                          \
 	(GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
 
 #define gmColCommandBlendColor2S1(frames)                                                                            \
-	(GC_FIELDSET(nGMColEventKindBlendColor1, 26, 6) | GC_FIELDSET(frames, 0, 26))
+	(GC_FIELDSET(nGMColEventBlendColor1, 26, 6) | GC_FIELDSET(frames, 0, 26))
 #define gmColCommandBlendColor2S2(r, g, b, a)                                                                        \
 	(GC_FIELDSET(r, 24, 8) | GC_FIELDSET(g, 16, 8) | GC_FIELDSET(b, 8, 8) | GC_FIELDSET(a, 0, 8))
 
 #define gmColCommandEffectS1(joint, effect_id, flag)                                                                    \
-	(GC_FIELDSET(nGMColEventKindEffect, 26, 6) | GC_FIELDSET(joint, 19, 7) | GC_FIELDSET(effect_id, 10, 9)             \
+	(GC_FIELDSET(nGMColEventEffect, 26, 6) | GC_FIELDSET(joint, 19, 7) | GC_FIELDSET(effect_id, 10, 9)             \
 	 | GC_FIELDSET(flag, 0, 10))
 #define gmColCommandEffectS2(off_x, off_y) (GC_FIELDSET(off_x, 16, 16) | GC_FIELDSET(off_y, 0, 16))
 #define gmColCommandEffectS3(off_z, rng_x) (GC_FIELDSET(off_z, 16, 16) | GC_FIELDSET(rng_x, 0, 16))
 #define gmColCommandEffectS4(rng_y, rng_z) (GC_FIELDSET(rng_y, 16, 16) | GC_FIELDSET(rng_z, 0, 16))
 
 #define gmColCommandEffectScaleS1(joint, effect_id, flag)                                                               \
-	(GC_FIELDSET(nGMColEventKindEffectScaleOffset, 26, 6) | GC_FIELDSET(joint, 19, 7) | GC_FIELDSET(effect_id, 10, 9)  \
+	(GC_FIELDSET(nGMColEventEffectScaleOffset, 26, 6) | GC_FIELDSET(joint, 19, 7) | GC_FIELDSET(effect_id, 10, 9)  \
 	 | GC_FIELDSET(flag, 0, 10))
 #define gmColCommandEffectScaleS2(off_x, off_y) (GC_FIELDSET(off_x, 16, 16) | GC_FIELDSET(off_y, 0, 16))
 #define gmColCommandEffectScaleS3(off_z, rng_x) (GC_FIELDSET(off_z, 16, 16) | GC_FIELDSET(rng_x, 0, 16))
 #define gmColCommandEffectSScale4(rng_y, rng_z) (GC_FIELDSET(rng_y, 16, 16) | GC_FIELDSET(rng_z, 0, 16))
 
 #define gmColCommandSetLightS1(angle1, angle2)                                                                       \
-	(GC_FIELDSET(nGMColEventKindSetLight, 26, 6) | GC_FIELDSET(angle1, 13, 13) | GC_FIELDSET(angle2, 0, 13))
+	(GC_FIELDSET(nGMColEventSetLight, 26, 6) | GC_FIELDSET(angle1, 13, 13) | GC_FIELDSET(angle2, 0, 13))
 
-#define gmColCommandToggleLightOff() GC_FIELDSET(nGMColEventKindToggleLightOff, 26, 6)
+#define gmColCommandToggleLightOff() GC_FIELDSET(nGMColEventToggleLightOff, 26, 6)
 
-#define gmColCommandPlaySFX(sfx_id) (GC_FIELDSET(nGMColEventKindPlaySFX, 26, 6) | GC_FIELDSET(sfx_id, 0, 26))
+#define gmColCommandPlaySFX(sfx_id) (GC_FIELDSET(nGMColEventPlaySFX, 26, 6) | GC_FIELDSET(sfx_id, 0, 26))
 
 #define gmColCommandSetSkeletonID(skeleton_id)                                                                       \
-	(GC_FIELDSET(nGMColEventKindSetSkeletonID, 26, 6) | GC_FIELDSET(skeleton_id, 0, 26))
+	(GC_FIELDSET(nGMColEventSetSkeletonID, 26, 6) | GC_FIELDSET(skeleton_id, 0, 26))
 
 typedef enum GMHitStatus
 {
@@ -199,39 +199,39 @@ typedef enum GMHitEnvironment
 
 } GMHitEnvironment;
 
-typedef enum GMColEventKind
+typedef enum GMColEvent
 {
-	nGMColEventKindEnd,
-	nGMColEventKindWait,
-	nGMColEventKindGoto,
-	nGMColEventKindLoopBegin,
-	nGMColEventKindLoopEnd,
-	nGMColEventKindSubroutine,
-	nGMColEventKindReturn,
-	nGMColEventKindSetParallelScript,
-	nGMColEventKindToggleColorOff,
-	nGMColEventKindSetColor1,
-	nGMColEventKindBlendColor1,
-	nGMColEventKindSetColor2,
-	nGMColEventKindBlendColor2,
-	nGMColEventKindEffect,
-	nGMColEventKindEffectScaleOffset, // ???
-	nGMColEventKindSetLight,
-	nGMColEventKindToggleLightOff,
-	nGMColEventKindPlaySFX,
-	nGMColEventKindSetSkeletonID
+	nGMColEventEnd,
+	nGMColEventWait,
+	nGMColEventGoto,
+	nGMColEventLoopBegin,
+	nGMColEventLoopEnd,
+	nGMColEventSubroutine,
+	nGMColEventReturn,
+	nGMColEventSetParallelScript,
+	nGMColEventToggleColorOff,
+	nGMColEventSetColor1,
+	nGMColEventBlendColor1,
+	nGMColEventSetColor2,
+	nGMColEventBlendColor2,
+	nGMColEventEffect,
+	nGMColEventEffectScaleOffset, // ???
+	nGMColEventSetLight,
+	nGMColEventToggleLightOff,
+	nGMColEventPlaySFX,
+	nGMColEventSetSkeletonID
 
-} GMColEventKind;
+} GMColEvent;
 
-typedef enum GMRumbleEventKind
+typedef enum GMRumbleEvent
 {
-	nGMRumbleEventKindEnd,
-	nGMRumbleEventKindStartRumble,
-	nGMRumbleEventKindStopRumble,
-	nGMRumbleEventKindLoopBegin,
-	nGMRumbleEventKindLoopEnd
+	nGMRumbleEventEnd,
+	nGMRumbleEventStartRumble,
+	nGMRumbleEventStopRumble,
+	nGMRumbleEventLoopBegin,
+	nGMRumbleEventLoopEnd
 
-} GMRumbleEventKind;
+} GMRumbleEvent;
 
 typedef enum GMStaffrollCompany
 {

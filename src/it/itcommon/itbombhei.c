@@ -213,7 +213,7 @@ void itBombHeiCommonSetExplode(GObj *item_gobj, u8 unused_arg)
 
     ip->attack_coll.fgm_id = nSYAudioFGMExplodeL;
 
-    itMainRefreshAtk(item_gobj);
+    itMainRefreshAttackColl(item_gobj);
     itMainClearOwnerStats(item_gobj);
     itBombHeiExplodeSetStatus(item_gobj);
 }
@@ -532,7 +532,7 @@ void itBombHeiWalkInitItemVars(GObj *item_gobj)
 
     ip->item_vars.bombhei.smoke_delay = ITBOMBHEI_SMOKE_WAIT;
 
-    itMainRefreshAtk(item_gobj);
+    itMainRefreshAttackColl(item_gobj);
 
     matanim_joint = itGetPData(ip, lITBombHeiDataStart, lITBombHeiWalkMatAnimJoint);
 

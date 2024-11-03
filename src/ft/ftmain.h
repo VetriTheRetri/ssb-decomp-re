@@ -33,14 +33,14 @@ extern void ftMainSetHitInteractStats(FTStruct* fp, u32 attack_group_id, GObj* v
 extern void ftMainSetHitRebound(GObj* attacker_gobj, FTStruct* fp, FTAttackColl* attack_coll, GObj* victim_gobj);
 extern void ftMainUpdateAttackStatFighter(FTStruct* other_fp, FTAttackColl* other_hit, FTStruct* this_fp, FTAttackColl* this_hit,
 									GObj* other_gobj, GObj* this_gobj);
-extern void ftMainUpdateShieldStatFighter(FTStruct* attacker_fp, FTAttackColl* attacker_hit, FTStruct* victim_fp,
+extern void ftMainUpdateShieldStatFighter(FTStruct* attacker_fp, FTAttackColl* attack_coll, FTStruct* victim_fp,
 									GObj* attacker_gobj, GObj* victim_gobj);
-extern void ftMainUpdateCatchStatFighter(FTStruct* attacker_fp, FTAttackColl* attacker_hit, FTStruct* victim_fp,
+extern void ftMainUpdateCatchStatFighter(FTStruct* attacker_fp, FTAttackColl* attack_coll, FTStruct* victim_fp,
 								   GObj* attacker_gobj, GObj* victim_gobj);
 extern void ftMainPlayHitSFX(FTStruct* fp, FTAttackColl* attack_coll);
 extern sb32 ftMainCheckGetUpdateDamage(FTStruct* fp, s32* damage);
-extern void ftMainUpdateDamageStatFighter(FTStruct* attacker_fp, FTAttackColl* attacker_hit, FTStruct* victim_fp,
-									FTDamageColl* victim_hurt, GObj* attacker_gobj, GObj* victim_gobj);
+extern void ftMainUpdateDamageStatFighter(FTStruct* attacker_fp, FTAttackColl* attack_coll, FTStruct* victim_fp,
+									FTDamageColl* damage_coll, GObj* attacker_gobj, GObj* victim_gobj);
 extern void ftMainUpdateAttackStatWeapon(WPStruct* ip, WPAttackColl* wp_attack_coll, s32 attack_id, FTStruct* fp, FTAttackColl* ft_attack_coll,
 								   GObj* weapon_gobj, GObj* fighter_gobj);
 extern void ftMainUpdateShieldStatWeapon(WPStruct* wp, WPAttackColl* wp_attack_coll, s32 attack_id, FTStruct* fp, GObj* weapon_gobj,

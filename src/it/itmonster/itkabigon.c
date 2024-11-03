@@ -152,7 +152,7 @@ void itKabigonFallInitItemVars(GObj *item_gobj)
 
     dobj->translate.vec.f.x += ((ITKABIGON_DROP_OFF_X_MUL * mtTrigGetRandomFloat()) + ITKABIGON_DROP_OFF_X_ADD);
 
-    itMainRefreshAtk(item_gobj);
+    itMainRefreshAttackColl(item_gobj);
 
     ip->item_vars.kabigon.rumble_wait = 0;
 

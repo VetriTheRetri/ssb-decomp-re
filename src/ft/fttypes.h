@@ -97,7 +97,7 @@ struct FTMotionDesc
 
 struct FTMotionDescArray
 {
-    FTMotionDesc script_info[1]; // Array size = last animation ID?
+    FTMotionDesc motion_desc[1]; // Array size = last animation ID?
 };
 
 struct FTFileSize
@@ -202,7 +202,7 @@ struct FTMotionFlags
 
 struct FTMotionScript
 {
-	f32 frame_timer;
+	f32 script_wait;
 	u32* p_script;
 	s32 script_id;
 	void* p_goto[1];
@@ -222,7 +222,7 @@ struct FTMotionEventDouble // Event with no arguments
 	u32 pad2 : 32;
 };
 
-struct FTMotionEventMakeHit1
+struct FTMotionEventMakeAttack1
 {
 	u32 opcode : 6;
 	u32 attack_id: 3;
@@ -233,19 +233,19 @@ struct FTMotionEventMakeHit1
 	u32 element : 4;
 };
 
-struct FTMotionEventMakeHit2
+struct FTMotionEventMakeAttack2
 {
 	u32 size : 16;
 	s32 off_x : 16;
 };
 
-struct FTMotionEventMakeHit3
+struct FTMotionEventMakeAttack3
 {
 	s32 off_y : 16;
 	s32 off_z : 16;
 };
 
-struct FTMotionEventMakeHit4
+struct FTMotionEventMakeAttack4
 {
 	s32 angle : 10;
 	u32 knockback_scale : 10;
@@ -253,7 +253,7 @@ struct FTMotionEventMakeHit4
 	u32 is_hit_ground_air : 2;  // This should really be two separate bits, but it doesn't match that way
 };
 
-struct FTMotionEventMakeHit5
+struct FTMotionEventMakeAttack5
 {
 	s32 shield_damage : 8;
 	u32 fgm_level : 3;
@@ -261,49 +261,49 @@ struct FTMotionEventMakeHit5
 	u32 knockback_base : 10;
 };
 
-struct FTMotionEventMakeHit
+struct FTMotionEventMakeAttack
 {
-	FTMotionEventMakeHit1 s1;
-	FTMotionEventMakeHit2 s2;
-	FTMotionEventMakeHit3 s3;
-	FTMotionEventMakeHit4 s4;
-	FTMotionEventMakeHit5 s5;
+	FTMotionEventMakeAttack1 s1;
+	FTMotionEventMakeAttack2 s2;
+	FTMotionEventMakeAttack3 s3;
+	FTMotionEventMakeAttack4 s4;
+	FTMotionEventMakeAttack5 s5;
 };
 
-struct FTMotionEventSetHitOffset1
+struct FTMotionEventSetAttackOffset1
 {
 	u32 opcode : 6;
 	u32 attack_id: 3;
 	s32 off_x : 16;
 };
 
-struct FTMotionEventSetHitOffset2
+struct FTMotionEventSetAttackOffset2
 {
 	s32 off_y : 16;
 	s32 off_z : 16;
 };
 
-struct FTMotionEventSetHitOffset
+struct FTMotionEventSetAttackOffset
 {
-	FTMotionEventSetHitOffset1 s1;
-	FTMotionEventSetHitOffset2 s2;
+	FTMotionEventSetAttackOffset1 s1;
+	FTMotionEventSetAttackOffset2 s2;
 };
 
-struct FTMotionEventSetHitDamage
+struct FTMotionEventSetAttackCollDamage
 {
 	u32 opcode : 6;
 	u32 attack_id: 3;
 	u32 damage : 8;
 };
 
-struct FTMotionEventSetHitSize
+struct FTMotionEventSetAttackCollSize
 {
 	u32 opcode : 6;
 	u32 attack_id: 3;
 	u32 size : 16;
 };
 
-struct FTMotionEventSetHitSound
+struct FTMotionEventSetAttackCollSound
 {
 	u32 opcode : 6;
 	u32 attack_id: 3;
@@ -367,36 +367,36 @@ struct FTMotionEventSetHitStatusPartID
 	u32 hitstatus : 19;
 };
 
-struct FTMotionEventModifyHurtPartID1
+struct FTMotionEventSetDamageCollPartID1
 {
 	u32 opcode : 6;
 	s32 joint_id : 7;
 };
 
-struct FTMotionEventModifyHurtPartID2
+struct FTMotionEventSetDamageCollPartID2
 {
 	s32 off_x : 16;
 	s32 off_y : 16;
 };
 
-struct FTMotionEventModifyHurtPartID3
+struct FTMotionEventSetDamageCollPartID3
 {
 	s32 off_z : 16;
 	s32 size_x : 16;
 };
 
-struct FTMotionEventModifyHurtPartID4
+struct FTMotionEventSetDamageCollPartID4
 {
 	s32 size_y : 16;
 	s32 size_z : 16;
 };
 
-struct FTMotionEventModifyHurtPartID
+struct FTMotionEventSetDamageCollPartID
 {
-	FTMotionEventModifyHurtPartID1 s1;
-	FTMotionEventModifyHurtPartID2 s2;
-	FTMotionEventModifyHurtPartID3 s3;
-	FTMotionEventModifyHurtPartID4 s4;
+	FTMotionEventSetDamageCollPartID1 s1;
+	FTMotionEventSetDamageCollPartID2 s2;
+	FTMotionEventSetDamageCollPartID3 s3;
+	FTMotionEventSetDamageCollPartID4 s4;
 };
 
 struct FTMotionEventSubroutine1
@@ -617,7 +617,7 @@ struct FTAttackColl
     Vec3f pos_curr;
     Vec3f pos_prev;
     GMAttackRecord attack_records[GMATKRECORD_NUM_MAX];
-    FTAttackMatrix hit_matrix;
+    FTAttackMatrix attack_matrix;
 };
 
 struct FTDamageCollDesc
@@ -643,10 +643,10 @@ struct FTDamageColl
 struct FTHitLog // Might have to return once structs are cleaned up (alas once forward declarations are implemented to replace void* with struct*)
 {
     s32 attacker_object_class;
-    void *attacker_hit;
+    void *attack_coll;
     s32 attack_id;
     GObj *attacker_gobj;
-    FTDamageColl *victim_hurt; // Victim fighter's hurtbox
+    FTDamageColl *damage_coll; // Victim fighter's hurtbox
     u8 attacker_player;
     s32 attacker_player_number;
 };

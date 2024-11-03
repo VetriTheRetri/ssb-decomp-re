@@ -73,7 +73,7 @@ void ftCommonAttackS4SetStatus(GObj *fighter_gobj)
     f32 stick_angle;
     s32 status_id;
 
-    if (fp->data->mainmotion->script_info[nFTCommonMotionAttackS4HiS].anim_file_id != 0)
+    if (fp->data->mainmotion->motion_desc[nFTCommonMotionAttackS4HiS].anim_file_id != 0)
     {
         stick_angle = ftParamGetStickAngleRads(fp);
 
@@ -83,7 +83,7 @@ void ftCommonAttackS4SetStatus(GObj *fighter_gobj)
                     (stick_angle < FTCOMMON_ATTACKS4_5ANGLE_LWS_MIN) ? nFTCommonStatusAttackS4LwS :
                                                                        nFTCommonStatusAttackS4;
     }
-    else if (fp->data->mainmotion->script_info[nFTCommonMotionAttackS4Hi].anim_file_id != 0)
+    else if (fp->data->mainmotion->motion_desc[nFTCommonMotionAttackS4Hi].anim_file_id != 0)
     {
         stick_angle = ftParamGetStickAngleRads(fp);
 

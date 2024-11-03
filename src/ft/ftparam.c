@@ -477,7 +477,7 @@ void ftParamUpdateAnimKeys(GObj *fighter_gobj)
 }
 
 // 0x800E8518
-void ftParamClearAtkAll(GObj *fighter_gobj)
+void ftParamClearAttackCollAll(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;
@@ -492,7 +492,7 @@ void ftParamClearAtkAll(GObj *fighter_gobj)
 }
 
 // 0x800E853C
-void ftParamClearAtkRecordID(FTStruct *fp, s32 attack_id)
+void ftParamClearAttackRecordID(FTStruct *fp, s32 attack_id)
 {
     s32 i;
 
@@ -511,7 +511,7 @@ void ftParamClearAtkRecordID(FTStruct *fp, s32 attack_id)
 }
 
 // 0x800E8668
-void ftParamRefreshAtkID(GObj *fighter_gobj, s32 attack_id)
+void ftParamRefreshAttackCollID(GObj *fighter_gobj, s32 attack_id)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -519,7 +519,7 @@ void ftParamRefreshAtkID(GObj *fighter_gobj, s32 attack_id)
 
     fp->is_attack_active = TRUE;
 
-    ftParamClearAtkRecordID(fp, attack_id);
+    ftParamClearAttackRecordID(fp, attack_id);
 }
 
 // 0x800E86B4
@@ -720,7 +720,7 @@ void ftParamResetFighterDamagePartAll(GObj *fighter_gobj)
 }
 
 // 0x800E8BC8
-void ftParamModifyFighterDamagePartID(GObj *fighter_gobj, s32 joint_id, Vec3f *offset, Vec3f *size)
+void ftParamModifyDamageCollID(GObj *fighter_gobj, s32 joint_id, Vec3f *offset, Vec3f *size)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     s32 i;

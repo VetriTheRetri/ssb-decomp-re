@@ -394,7 +394,7 @@ void itMSBombExplodeInITStatusVars(GObj *item_gobj, sb32 is_make_effect)
         ptc->tfm->scale.z = ITMSBOMB_EXPLODE_SCALE;
     }
     efManagerQuakeMakeEffect(1);
-    itMainRefreshAtk(item_gobj);
+    itMainRefreshAttackColl(item_gobj);
     itMSBombExplodeSetStatus(item_gobj);
 
     DObjGetStruct(item_gobj)->flags = DOBJ_FLAG_HIDDEN;

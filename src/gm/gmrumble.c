@@ -25,97 +25,97 @@ GMRumblePlayer sGMRumblePlayers[GMCOMMON_PLAYERS_MAX];
 // 0x8012F1A0
 GMRumbleEventDefault dGMRumbleEvent0[/* */] =
 {
-    { nGMRumbleEventKindStartRumble, 8000 }
+    { nGMRumbleEventStartRumble, 8000 }
 };
 
 // 0x8012F1A4
 GMRumbleEventDefault dGMRumbleEvent1[/* */] = 
 { 
-    { nGMRumbleEventKindLoopBegin, 8000 },
-    { nGMRumbleEventKindStartRumble,  2 },
-    { nGMRumbleEventKindStopRumble,   2 },
-    { nGMRumbleEventKindLoopEnd,      0 },
-    { nGMRumbleEventKindEnd,          0 } // Needed for 0-pad?
+    { nGMRumbleEventLoopBegin, 8000 },
+    { nGMRumbleEventStartRumble,  2 },
+    { nGMRumbleEventStopRumble,   2 },
+    { nGMRumbleEventLoopEnd,      0 },
+    { nGMRumbleEventEnd,          0 } // Needed for 0-pad?
 };
 
 // 0x8012F1B0
 GMRumbleEventDefault dGMRumbleEvent2[/* */] =
 {
-    { nGMRumbleEventKindLoopBegin, 8000 },
-    { nGMRumbleEventKindStartRumble,  2 },
-    { nGMRumbleEventKindStopRumble,   4 },
-    { nGMRumbleEventKindLoopEnd,      0 },
-    { nGMRumbleEventKindEnd,    0 }
+    { nGMRumbleEventLoopBegin, 8000 },
+    { nGMRumbleEventStartRumble,  2 },
+    { nGMRumbleEventStopRumble,   4 },
+    { nGMRumbleEventLoopEnd,      0 },
+    { nGMRumbleEventEnd,    0 }
 };
 
 // 0x8012F1BC
 GMRumbleEventDefault dGMRumbleEvent3[/* */] =
 {
-    { nGMRumbleEventKindLoopBegin, 8000 },
-    { nGMRumbleEventKindStartRumble,  2 },
-    { nGMRumbleEventKindStopRumble,   8 },
-    { nGMRumbleEventKindLoopEnd,      0 },
-    { nGMRumbleEventKindEnd,          0 }
+    { nGMRumbleEventLoopBegin, 8000 },
+    { nGMRumbleEventStartRumble,  2 },
+    { nGMRumbleEventStopRumble,   8 },
+    { nGMRumbleEventLoopEnd,      0 },
+    { nGMRumbleEventEnd,          0 }
 };
 
 // 0x8012F1C8
 GMRumbleEventDefault dGMRumbleEvent4[/* */] =
 {
-    { nGMRumbleEventKindStartRumble, 12 }
+    { nGMRumbleEventStartRumble, 12 }
 };
 
 // 0x8012F1CC
 GMRumbleEventDefault dGMRumbleEvent5[/* */] =
 {
-    { nGMRumbleEventKindLoopBegin, 8000 },
-    { nGMRumbleEventKindStartRumble,  2 },
-    { nGMRumbleEventKindStopRumble,   1 },
-    { nGMRumbleEventKindLoopEnd,      0 },
-    { nGMRumbleEventKindEnd,          0 }
+    { nGMRumbleEventLoopBegin, 8000 },
+    { nGMRumbleEventStartRumble,  2 },
+    { nGMRumbleEventStopRumble,   1 },
+    { nGMRumbleEventLoopEnd,      0 },
+    { nGMRumbleEventEnd,          0 }
 };
 
 // 0x8012F1D8
 GMRumbleEventDefault dGMRumbleEvent6[/* */] =
 {
-    { nGMRumbleEventKindStartRumble, 3 }
+    { nGMRumbleEventStartRumble, 3 }
 };
 
 // 0x8012F1DC
 GMRumbleEventDefault dGMRumbleEvent7[/* */] =
 {
-    { nGMRumbleEventKindLoopBegin, 8000 },
-    { nGMRumbleEventKindStartRumble,  2 },
-    { nGMRumbleEventKindStopRumble,   3 },
-    { nGMRumbleEventKindLoopEnd,      0 },
-    { nGMRumbleEventKindEnd,          0 }
+    { nGMRumbleEventLoopBegin, 8000 },
+    { nGMRumbleEventStartRumble,  2 },
+    { nGMRumbleEventStopRumble,   3 },
+    { nGMRumbleEventLoopEnd,      0 },
+    { nGMRumbleEventEnd,          0 }
 };
 
 // 0x8012F1E8
 GMRumbleEventDefault dGMRumbleEvent8[/* */] =
 {
-    { nGMRumbleEventKindLoopBegin, 8000 },
-    { nGMRumbleEventKindStartRumble,  1 },
-    { nGMRumbleEventKindStopRumble,   3 },
-    { nGMRumbleEventKindLoopEnd,      0 },
-    { nGMRumbleEventKindEnd,          0 }
+    { nGMRumbleEventLoopBegin, 8000 },
+    { nGMRumbleEventStartRumble,  1 },
+    { nGMRumbleEventStopRumble,   3 },
+    { nGMRumbleEventLoopEnd,      0 },
+    { nGMRumbleEventEnd,          0 }
 };
 
 // 0x8012F1F4
 GMRumbleEventDefault dGMRumbleEvent9[/* */] =
 {
-    { nGMRumbleEventKindStartRumble,  8 }
+    { nGMRumbleEventStartRumble,  8 }
 };
 
 // 0x8012F1F8
 GMRumbleEventDefault dGMRumbleEvent10[/* */] =
 {
-    { nGMRumbleEventKindStartRumble, 16 }
+    { nGMRumbleEventStartRumble, 16 }
 };
 
 // 0x8012F1FC - padding?
 GMRumbleEventDefault dGMRumbleEvent11[/* */] =
 {
-    { nGMRumbleEventKindEnd,          0 }
+    { nGMRumbleEventEnd,          0 }
 };
 
 // 0x8012F200
@@ -158,11 +158,11 @@ sb32 gmRumbleUpdateEventExecute(ub8 *is_active, GMRumbleScript *p_script, s32 pl
     {
         switch (gmRumbleEventCast(p_script->p_event, GMRumbleEventDefault)->opcode)
         {
-        case nGMRumbleEventKindEnd:
+        case nGMRumbleEventEnd:
             p_script->p_event = dGMRumbleEventList[p_script->rumble_id];
             break;
 
-        case nGMRumbleEventKindStartRumble:
+        case nGMRumbleEventStartRumble:
             p_script->rumble_status = gmRumbleEventCast(p_script->p_event, GMRumbleEventDefault)->param;
 
             gmRumbleEventAdvance(p_script->p_event, GMRumbleEventDefault);
@@ -175,7 +175,7 @@ sb32 gmRumbleUpdateEventExecute(ub8 *is_active, GMRumbleScript *p_script, s32 pl
             }
             break;
 
-        case nGMRumbleEventKindStopRumble:
+        case nGMRumbleEventStopRumble:
             p_script->rumble_status = gmRumbleEventCast(p_script->p_event, GMRumbleEventDefault)->param;
 
             gmRumbleEventAdvance(p_script->p_event, GMRumbleEventDefault);
@@ -188,7 +188,7 @@ sb32 gmRumbleUpdateEventExecute(ub8 *is_active, GMRumbleScript *p_script, s32 pl
             }
             break;
 
-        case nGMRumbleEventKindLoopBegin:
+        case nGMRumbleEventLoopBegin:
             p_script->loop_count = gmRumbleEventCast(p_script->p_event, GMRumbleEventDefault)->param;
 
             gmRumbleEventAdvance(p_script->p_event, GMRumbleEventDefault);
@@ -196,7 +196,7 @@ sb32 gmRumbleUpdateEventExecute(ub8 *is_active, GMRumbleScript *p_script, s32 pl
             p_script->p_goto = p_script->p_event;
             break;
 
-        case nGMRumbleEventKindLoopEnd:
+        case nGMRumbleEventLoopEnd:
             if (--p_script->loop_count != 0)
             {
                 p_script->p_event = p_script->p_goto;
@@ -214,11 +214,11 @@ sb32 gmRumbleUpdateEventQueue(ub8 *is_active, GMRumbleScript *p_script)
     {
         switch (gmRumbleEventCast(p_script->p_event, GMRumbleEventDefault)->opcode)
         {
-        case nGMRumbleEventKindEnd:
+        case nGMRumbleEventEnd:
             p_script->p_event = dGMRumbleEventList[p_script->rumble_id];
             break;
 
-        case nGMRumbleEventKindStartRumble:
+        case nGMRumbleEventStartRumble:
             p_script->rumble_status = gmRumbleEventCast(p_script->p_event, GMRumbleEventDefault)->param;
 
             gmRumbleEventAdvance(p_script->p_event, GMRumbleEventDefault);
@@ -226,7 +226,7 @@ sb32 gmRumbleUpdateEventQueue(ub8 *is_active, GMRumbleScript *p_script)
             p_script->is_rumble_active = TRUE;
             break;
 
-        case nGMRumbleEventKindStopRumble:
+        case nGMRumbleEventStopRumble:
             p_script->rumble_status = gmRumbleEventCast(p_script->p_event, GMRumbleEventDefault)->param;
 
             gmRumbleEventAdvance(p_script->p_event, GMRumbleEventDefault);
@@ -234,7 +234,7 @@ sb32 gmRumbleUpdateEventQueue(ub8 *is_active, GMRumbleScript *p_script)
             p_script->is_rumble_active = FALSE;
             break;
 
-        case nGMRumbleEventKindLoopBegin:
+        case nGMRumbleEventLoopBegin:
             p_script->loop_count = gmRumbleEventCast(p_script->p_event, GMRumbleEventDefault)->param;
 
             gmRumbleEventAdvance(p_script->p_event, GMRumbleEventDefault);
@@ -242,7 +242,7 @@ sb32 gmRumbleUpdateEventQueue(ub8 *is_active, GMRumbleScript *p_script)
             p_script->p_goto = p_script->p_event;
             break;
 
-        case nGMRumbleEventKindLoopEnd:
+        case nGMRumbleEventLoopEnd:
             if (--p_script->loop_count != 0)
             {
                 p_script->p_event = p_script->p_goto;
@@ -289,20 +289,20 @@ sb32 gmRumbleUpdateEventCheckEnd(GMRumbleScript *p_script)
     {
         switch (gmRumbleEventCast(p_event, GMRumbleEventDefault)->opcode)
         {
-        case nGMRumbleEventKindEnd:
+        case nGMRumbleEventEnd:
             return TRUE;
             break;
 
-        case nGMRumbleEventKindStartRumble:
-        case nGMRumbleEventKindStopRumble:
+        case nGMRumbleEventStartRumble:
+        case nGMRumbleEventStopRumble:
             is_terminate = TRUE;
             break;
 
-        case nGMRumbleEventKindLoopBegin:
+        case nGMRumbleEventLoopBegin:
             gmRumbleEventAdvance(p_event, GMRumbleEventDefault);
             break;
 
-        case nGMRumbleEventKindLoopEnd:
+        case nGMRumbleEventLoopEnd:
             if (p_script->loop_count == 1)
             {
                 gmRumbleEventAdvance(p_event, GMRumbleEventDefault);

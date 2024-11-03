@@ -309,7 +309,7 @@ void ftCommonYoshiEggProcTrap(GObj *fighter_gobj)
 }
 
 // 0x8014CDFC
-void ftCommonYoshiEggSetHurtCollisions(GObj *fighter_gobj)
+void ftCommonYoshiEggSetDamageCollCollisions(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     FTDamageColl *damage_coll = &fp->damage_colls[0];
@@ -364,7 +364,7 @@ void ftCommonYoshiEggSetStatus(GObj *fighter_gobj)
 
     this_fp->is_invisible = TRUE;
 
-    ftCommonYoshiEggSetHurtCollisions(fighter_gobj);
+    ftCommonYoshiEggSetDamageCollCollisions(fighter_gobj);
     ftCommonCaptureTrappedInitBreakoutVars(this_fp, FTCOMMON_YOSHIEGG_BREAKOUT_INPUTS_MIN);
     ftKirbySpecialNApplyCaptureDamage(this_fp->capture_gobj, fighter_gobj, 5); // Br0h why
     ftParamSetPlayerTagWait(fighter_gobj, 1);

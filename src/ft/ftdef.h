@@ -765,62 +765,62 @@ typedef enum FTStatusAttackIndex
 
 } FTStatusAttackIndex;
 
-typedef enum FTMotionEventKind
+typedef enum FTMotionEvent
 {
-	nFTMotionEventKindEnd,
-	nFTMotionEventKindSyncWait,
-	nFTMotionEventKindAsyncWait,
-	nFTMotionEventKindMakeHit,
-	nFTMotionEventKindMakeHitScaleOffset,
-	nFTMotionEventKindClearAtkID,
-	nFTMotionEventKindClearAtkAll,
-	nFTMotionEventKindSetHitOffset,
-	nFTMotionEventKindSetHitDamage,
-	nFTMotionEventKindSetHitSize,
-	nFTMotionEventKindSetHitSoundLevel,
-	nFTMotionEventKindRefreshAtkID,
-	nFTMotionEventKindSetThrow,
-	nFTMotionEventKindSetDamageThrown,
-	nFTMotionEventKindPlaySFX,
-	nFTMotionEventKindPlayLoopSFXStoreInfo,
-	nFTMotionEventKindStopLoopSFX,
-	nFTMotionEventKindPlayVoiceStoreInfo,
-	nFTMotionEventKindPlayLoopVoiceStoreInfo,
-	nFTMotionEventKindPlaySFXStoreInfo,
-	nFTMotionEventKindPlaySmashVoice,
-	nFTMotionEventKindSetFlag0,
-	nFTMotionEventKindSetFlag1,
-	nFTMotionEventKindSetFlag2,
-	nFTMotionEventKindSetFlag3,
-	nFTMotionEventKindSetAirJumpAdd,
-	nFTMotionEventKindSetAirJumpMax,
-	nFTMotionEventKindSetHitStatusPartAll,
-	nFTMotionEventKindSetHitStatusPartID,
-	nFTMotionEventKindSetHitStatusAll,
-	nFTMotionEventKindResetHurtPartAll,
-	nFTMotionEventKindSetHurtPartID,
-	nFTMotionEventKindLoopBegin,
-	nFTMotionEventKindLoopEnd,
-	nFTMotionEventKindSubroutine,
-	nFTMotionEventKindReturn,
-	nFTMotionEventKindGoto,
-	nFTMotionEventKindPauseScript,
-	nFTMotionEventKindEffect,
-	nFTMotionEventKindEffectScaleOffset, // ???
-	nFTMotionEventKindSetModelPartID,
-	nFTMotionEventKindResetModelPartAll,
-	nFTMotionEventKindHideModelPartAll,
-	nFTMotionEventKindSetTexturePartID,
-	nFTMotionEventKindSetColAnim,
-	nFTMotionEventKindResetColAnim,
-	nFTMotionEventKindSetParallelScript, // What
-	nFTMotionEventKindSetSlopeContour,
-	nFTMotionEventKindHideItem,
-	nFTMotionEventKindMakeRumble,
-	nFTMotionEventKindStopRumble,
-	nFTMotionEventKindSetAfterImage // Sword Trail
+	nFTMotionEventEnd,
+	nFTMotionEventSyncWait,
+	nFTMotionEventAsyncWait,
+	nFTMotionEventMakeAttackColl,
+	nFTMotionEventMakeAttackCollScaled,
+	nFTMotionEventClearAttackCollID,
+	nFTMotionEventClearAttackCollAll,
+	nFTMotionEventSetAttackCollOffset,
+	nFTMotionEventSetAttackCollDamage,
+	nFTMotionEventSetAttackCollSize,
+	nFTMotionEventSetAttackCollSoundLevel,
+	nFTMotionEventRefreshAttackCollID,
+	nFTMotionEventSetThrow,
+	nFTMotionEventSetDamageThrown,
+	nFTMotionEventPlaySFX,
+	nFTMotionEventPlayLoopSFXStoreInfo,
+	nFTMotionEventStopLoopSFX,
+	nFTMotionEventPlayVoiceStoreInfo,
+	nFTMotionEventPlayLoopVoiceStoreInfo,
+	nFTMotionEventPlaySFXStoreInfo,
+	nFTMotionEventPlaySmashVoice,
+	nFTMotionEventSetFlag0,
+	nFTMotionEventSetFlag1,
+	nFTMotionEventSetFlag2,
+	nFTMotionEventSetFlag3,
+	nFTMotionEventSetAirJumpAdd,
+	nFTMotionEventSetAirJumpMax,
+	nFTMotionEventSetHitStatusPartAll,
+	nFTMotionEventSetHitStatusPartID,
+	nFTMotionEventSetHitStatusAll,
+	nFTMotionEventResetDamageCollPartAll,
+	nFTMotionEventSetDamageCollPartID,
+	nFTMotionEventLoopBegin,
+	nFTMotionEventLoopEnd,
+	nFTMotionEventSubroutine,
+	nFTMotionEventReturn,
+	nFTMotionEventGoto,
+	nFTMotionEventPauseScript,
+	nFTMotionEventEffect,
+	nFTMotionEventEffectScaled, // ???
+	nFTMotionEventSetModelPartID,
+	nFTMotionEventResetModelPartAll,
+	nFTMotionEventHideModelPartAll,
+	nFTMotionEventSetTexturePartID,
+	nFTMotionEventSetColAnim,
+	nFTMotionEventResetColAnim,
+	nFTMotionEventSetParallelScript, // What
+	nFTMotionEventSetSlopeContour,
+	nFTMotionEventHideItem,
+	nFTMotionEventMakeRumble,
+	nFTMotionEventStopRumble,
+	nFTMotionEventSetAfterImage // Sword Trail
 
-} FTMotionEventKind;
+} FTMotionEvent;
 
 typedef enum FTCameraModes
 {
@@ -1144,18 +1144,18 @@ typedef struct FTMotionFlags		            FTMotionFlags;
 typedef struct FTMotionScript                   FTMotionScript;
 typedef struct FTMotionEventDefault             FTMotionEventDefault;
 typedef struct FTMotionEventDouble              FTMotionEventDouble;
-typedef struct FTMotionEventMakeHit1            FTMotionEventMakeHit1;
-typedef struct FTMotionEventMakeHit2            FTMotionEventMakeHit2;
-typedef struct FTMotionEventMakeHit3            FTMotionEventMakeHit3;
-typedef struct FTMotionEventMakeHit4            FTMotionEventMakeHit4;
-typedef struct FTMotionEventMakeHit5            FTMotionEventMakeHit5;
-typedef struct FTMotionEventMakeHit             FTMotionEventMakeHit;
-typedef struct FTMotionEventSetHitOffset1       FTMotionEventSetHitOffset1;
-typedef struct FTMotionEventSetHitOffset2       FTMotionEventSetHitOffset2;
-typedef struct FTMotionEventSetHitOffset        FTMotionEventSetHitOffset;
-typedef struct FTMotionEventSetHitDamage        FTMotionEventSetHitDamage;
-typedef struct FTMotionEventSetHitSize          FTMotionEventSetHitSize;
-typedef struct FTMotionEventSetHitSound         FTMotionEventSetHitSound;
+typedef struct FTMotionEventMakeAttack1            FTMotionEventMakeAttack1;
+typedef struct FTMotionEventMakeAttack2            FTMotionEventMakeAttack2;
+typedef struct FTMotionEventMakeAttack3            FTMotionEventMakeAttack3;
+typedef struct FTMotionEventMakeAttack4            FTMotionEventMakeAttack4;
+typedef struct FTMotionEventMakeAttack5            FTMotionEventMakeAttack5;
+typedef struct FTMotionEventMakeAttack             FTMotionEventMakeAttack;
+typedef struct FTMotionEventSetAttackOffset1       FTMotionEventSetAttackOffset1;
+typedef struct FTMotionEventSetAttackOffset2       FTMotionEventSetAttackOffset2;
+typedef struct FTMotionEventSetAttackOffset        FTMotionEventSetAttackOffset;
+typedef struct FTMotionEventSetAttackCollDamage        FTMotionEventSetAttackCollDamage;
+typedef struct FTMotionEventSetAttackCollSize          FTMotionEventSetAttackCollSize;
+typedef struct FTMotionEventSetAttackCollSound         FTMotionEventSetAttackCollSound;
 typedef struct FTMotionEventSetThrow1           FTMotionEventSetThrow1;
 typedef struct FTMotionEventSetThrow2           FTMotionEventSetThrow2;
 typedef struct FTMotionEventSetThrow            FTMotionEventSetThrow;
@@ -1165,11 +1165,11 @@ typedef struct FTMotionEventMakeEffect3         FTMotionEventMakeEffect3;
 typedef struct FTMotionEventMakeEffect4         FTMotionEventMakeEffect4;
 typedef struct FTMotionEventMakeEffect          FTMotionEventMakeEffect;
 typedef struct FTMotionEventSetHitStatusPartID  FTMotionEventSetHitStatusPartID;
-typedef struct FTMotionEventModifyHurtPartID1   FTMotionEventModifyHurtPartID1;
-typedef struct FTMotionEventModifyHurtPartID2   FTMotionEventModifyHurtPartID2;
-typedef struct FTMotionEventModifyHurtPartID3   FTMotionEventModifyHurtPartID3;
-typedef struct FTMotionEventModifyHurtPartID4   FTMotionEventModifyHurtPartID4;
-typedef struct FTMotionEventModifyHurtPartID    FTMotionEventModifyHurtPartID;
+typedef struct FTMotionEventSetDamageCollPartID1   FTMotionEventSetDamageCollPartID1;
+typedef struct FTMotionEventSetDamageCollPartID2   FTMotionEventSetDamageCollPartID2;
+typedef struct FTMotionEventSetDamageCollPartID3   FTMotionEventSetDamageCollPartID3;
+typedef struct FTMotionEventSetDamageCollPartID4   FTMotionEventSetDamageCollPartID4;
+typedef struct FTMotionEventSetDamageCollPartID    FTMotionEventSetDamageCollPartID;
 typedef struct FTMotionEventSubroutine1         FTMotionEventSubroutine1;
 typedef struct FTMotionEventSubroutine2         FTMotionEventSubroutine2;
 typedef struct FTMotionEventSubroutine          FTMotionEventSubroutine;

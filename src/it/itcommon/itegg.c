@@ -364,7 +364,7 @@ void itEggExplodeInitItemVars(GObj *item_gobj)
     ip->damage_coll.hitstatus = nGMHitStatusNone;
 
     itMainClearOwnerStats(item_gobj);
-    itMainRefreshAtk(item_gobj);
+    itMainRefreshAttackColl(item_gobj);
     itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITEggItemDesc, lITCapsuleAttackEvents)); // Should this be lITEggAttackEvents?
 }
 

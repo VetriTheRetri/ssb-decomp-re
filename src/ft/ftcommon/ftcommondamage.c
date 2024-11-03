@@ -231,7 +231,7 @@ void ftCommonDamageCommonProcPhysics(GObj *fighter_gobj)
     }
     if ((fp->throw_gobj != NULL) && (syVectorMag3D(&fp->physics.vel_damage_air) < 70.0F))
     {
-        ftParamClearAtkAll(fighter_gobj);
+        ftParamClearAttackCollAll(fighter_gobj);
     }
 }
 

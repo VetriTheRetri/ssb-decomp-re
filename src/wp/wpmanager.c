@@ -235,7 +235,7 @@ GObj* wpManagerMakeWeapon(GObj *parent_gobj, WPCreateDesc *wp_desc, Vec3f *spawn
 
     wp->attack_coll.interact_mask = GMHITCOLLISION_FLAG_ALL;
 
-    wpMainClearAtkRecord(wp);
+    wpMainClearAttackRecord(wp);
 
     wp->hit_normal_damage = 0;
     wp->hit_refresh_damage = 0;

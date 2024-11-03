@@ -196,7 +196,7 @@ void itLinkBombExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 
 	ip->attack_coll.fgm_id = nSYAudioFGMExplodeL;
 
-	itMainRefreshAtk(item_gobj);
+	itMainRefreshAttackColl(item_gobj);
 	itLinkBombExplodeSetStatus(item_gobj);
 }
 

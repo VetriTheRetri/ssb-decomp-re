@@ -1355,9 +1355,9 @@ sb32 gmCollisionCheckFighterAttacksCollide(FTAttackColl *attack_coll1, FTAttackC
         attack_coll2->attack_state, 
         &attack_coll2->pos_curr, 
         &attack_coll2->pos_prev, 
-        &attack_coll2->hit_matrix.unk_fthitmtx_0x0, 
-        attack_coll2->hit_matrix.mtx, 
-        &attack_coll2->hit_matrix.unk_fthitmtx_0x44
+        &attack_coll2->attack_matrix.unk_fthitmtx_0x0, 
+        attack_coll2->attack_matrix.mtx, 
+        &attack_coll2->attack_matrix.unk_fthitmtx_0x44
     );
 
     return func_ovl2_800EEEAC
@@ -1366,12 +1366,12 @@ sb32 gmCollisionCheckFighterAttacksCollide(FTAttackColl *attack_coll1, FTAttackC
         &attack_coll1->pos_prev,
         attack_coll1->size,
         attack_coll1->attack_state,
-        attack_coll2->hit_matrix.mtx,
-        attack_coll2->hit_matrix.unk_fthitmtx_0x0,
+        attack_coll2->attack_matrix.mtx,
+        attack_coll2->attack_matrix.unk_fthitmtx_0x0,
         &attack_coll2->pos_curr,
         attack_coll2->size,
         attack_coll2->attack_state,
-        attack_coll2->hit_matrix.unk_fthitmtx_0x44
+        attack_coll2->attack_matrix.unk_fthitmtx_0x44
     );
 }
 
@@ -1474,9 +1474,9 @@ sb32 gmCollisionCheckWeaponAttackFighterAttackCollide(WPAttackColl *wp_attack_co
         ft_attack_coll->attack_state,
         &ft_attack_coll->pos_curr,
         &ft_attack_coll->pos_prev,
-        &ft_attack_coll->hit_matrix.unk_fthitmtx_0x0,
-        ft_attack_coll->hit_matrix.mtx,
-        &ft_attack_coll->hit_matrix.unk_fthitmtx_0x44
+        &ft_attack_coll->attack_matrix.unk_fthitmtx_0x0,
+        ft_attack_coll->attack_matrix.mtx,
+        &ft_attack_coll->attack_matrix.unk_fthitmtx_0x44
     );
 
     return func_ovl2_800EEEAC
@@ -1485,12 +1485,12 @@ sb32 gmCollisionCheckWeaponAttackFighterAttackCollide(WPAttackColl *wp_attack_co
         &wp_attack_coll->attack_pos[attack_id].pos_prev,
         wp_attack_coll->size,
         wp_attack_coll->attack_state,
-        ft_attack_coll->hit_matrix.mtx,
-        ft_attack_coll->hit_matrix.unk_fthitmtx_0x0,
+        ft_attack_coll->attack_matrix.mtx,
+        ft_attack_coll->attack_matrix.unk_fthitmtx_0x0,
         &ft_attack_coll->pos_curr,
         ft_attack_coll->size,
         ft_attack_coll->attack_state,
-        ft_attack_coll->hit_matrix.unk_fthitmtx_0x44
+        ft_attack_coll->attack_matrix.unk_fthitmtx_0x44
     );
 }
 
@@ -1699,9 +1699,9 @@ sb32 gmCollisionCheckItemAttackFighterAttackCollide(ITAttackColl *it_attack_coll
         ft_attack_coll->attack_state,
         &ft_attack_coll->pos_curr,
         &ft_attack_coll->pos_prev,
-        &ft_attack_coll->hit_matrix.unk_fthitmtx_0x0,
-        ft_attack_coll->hit_matrix.mtx,
-        &ft_attack_coll->hit_matrix.unk_fthitmtx_0x44
+        &ft_attack_coll->attack_matrix.unk_fthitmtx_0x0,
+        ft_attack_coll->attack_matrix.mtx,
+        &ft_attack_coll->attack_matrix.unk_fthitmtx_0x44
     );
 
     return func_ovl2_800EEEAC
@@ -1710,12 +1710,12 @@ sb32 gmCollisionCheckItemAttackFighterAttackCollide(ITAttackColl *it_attack_coll
         &it_attack_coll->attack_pos[attack_id].pos_prev,
         it_attack_coll->size,
         it_attack_coll->attack_state,
-        ft_attack_coll->hit_matrix.mtx,
-        ft_attack_coll->hit_matrix.unk_fthitmtx_0x0,
+        ft_attack_coll->attack_matrix.mtx,
+        ft_attack_coll->attack_matrix.unk_fthitmtx_0x0,
         &ft_attack_coll->pos_curr,
         ft_attack_coll->size,
         ft_attack_coll->attack_state,
-        ft_attack_coll->hit_matrix.unk_fthitmtx_0x44
+        ft_attack_coll->attack_matrix.unk_fthitmtx_0x44
     );
 }
 

@@ -108,7 +108,7 @@ void ftManagerSetupFileSize(void)
     FTData *data;
     FTFileSize *file_size;
     LBRelocSetup rl_setup;
-    FTMotionDesc *script_info;
+    FTMotionDesc *motion_desc;
 
     rl_setup.table_addr = (uintptr_t)&lLBRelocTableAddr;
     rl_setup.table_files_num = (uintptr_t)&lLBRelocTableFilesNum;
@@ -132,15 +132,15 @@ void ftManagerSetupFileSize(void)
 
         for (j = 0; j < data->mainmotion_array_count; j++)
         {
-            script_info = &data->mainmotion->script_info[j];
+            motion_desc = &data->mainmotion->motion_desc[j];
 
-            current_anim_size = data->mainmotion->script_info[j].anim_file_id;
+            current_anim_size = data->mainmotion->motion_desc[j].anim_file_id;
 
-            if (script_info->anim_file_id != 0)
+            if (motion_desc->anim_file_id != 0)
             {
-                if (!(script_info->anim_desc.flags.is_use_shieldpose))
+                if (!(motion_desc->anim_desc.flags.is_use_shieldpose))
                 {
-                    current_anim_size = lbRelocGetFileSize(script_info->anim_file_id);
+                    current_anim_size = lbRelocGetFileSize(motion_desc->anim_file_id);
 
                     if (largest_size < current_anim_size)
                     {
@@ -153,15 +153,15 @@ void ftManagerSetupFileSize(void)
 
         for (j = 0; j < *data->submotion_array_count; j++)
         {
-            script_info = &data->submotion->script_info[j];
+            motion_desc = &data->submotion->motion_desc[j];
 
-            current_anim_size = data->submotion->script_info[j].anim_file_id;
+            current_anim_size = data->submotion->motion_desc[j].anim_file_id;
 
-            if (script_info->anim_file_id != 0)
+            if (motion_desc->anim_file_id != 0)
             {
-                if (!(script_info->anim_desc.flags.is_use_shieldpose))
+                if (!(motion_desc->anim_desc.flags.is_use_shieldpose))
                 {
-                    current_anim_size = lbRelocGetFileSize(script_info->anim_file_id);
+                    current_anim_size = lbRelocGetFileSize(motion_desc->anim_file_id);
 
                     if (largest_size < current_anim_size)
                     {
@@ -684,7 +684,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
         }
         break;
     }
-    ftParamClearAtkAll(fighter_gobj);
+    ftParamClearAttackCollAll(fighter_gobj);
     ftParamSetHitStatusPartAll(fighter_gobj, nGMHitStatusNormal);
     ftParamResetFighterColAnim(fighter_gobj);
 }

@@ -174,32 +174,32 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
 
     switch (ev_kind)
     {
-    case nFTMotionEventKindEnd:
+    case nFTMotionEventEnd:
         ms->p_script = NULL;
         break;
 
-    case nFTMotionEventKindSyncWait:
-        ms->frame_timer += ftMotionEventCast(ms, FTMotionEventDefault)->value;
+    case nFTMotionEventSyncWait:
+        ms->script_wait += ftMotionEventCast(ms, FTMotionEventDefault)->value;
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindAsyncWait:
-        ms->frame_timer = ftMotionEventCast(ms, FTMotionEventDefault)->value - fighter_gobj->anim_frame;
+    case nFTMotionEventAsyncWait:
+        ms->script_wait = ftMotionEventCast(ms, FTMotionEventDefault)->value - fighter_gobj->anim_frame;
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindMakeHit:
-    case nFTMotionEventKindMakeHitScaleOffset:
+    case nFTMotionEventMakeAttackColl:
+    case nFTMotionEventMakeAttackCollScaled:
         if (fp->pkind != nFTPlayerKindDemo)
         {
-            attack_id = ftMotionEventCast(ms, FTMotionEventMakeHit1)->attack_id;
+            attack_id = ftMotionEventCast(ms, FTMotionEventMakeAttack1)->attack_id;
             attack_coll = &fp->attack_colls[attack_id];
 
-            if ((attack_coll->attack_state == nGMAttackStateOff) || (attack_coll->group_id != ftMotionEventCast(ms, FTMotionEventMakeHit1)->group_id))
+            if ((attack_coll->attack_state == nGMAttackStateOff) || (attack_coll->group_id != ftMotionEventCast(ms, FTMotionEventMakeAttack1)->group_id))
             {
-                attack_coll->group_id = ftMotionEventCast(ms, FTMotionEventMakeHit1)->group_id;
+                attack_coll->group_id = ftMotionEventCast(ms, FTMotionEventMakeAttack1)->group_id;
                 attack_coll->attack_state = nGMAttackStateNew;
                 fp->is_attack_active = TRUE;
 
@@ -216,46 +216,46 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
                 }
                 if (i == ARRAY_COUNT(fp->attack_colls))
                 {
-                    ftParamClearAtkRecordID(fp, attack_id);
+                    ftParamClearAttackRecordID(fp, attack_id);
                 }
             }
-            attack_coll->joint_id = ftParamGetJointID(fp, ftMotionEventCast(ms, FTMotionEventMakeHit1)->joint_id);
+            attack_coll->joint_id = ftParamGetJointID(fp, ftMotionEventCast(ms, FTMotionEventMakeAttack1)->joint_id);
             attack_coll->joint = fp->joints[attack_coll->joint_id];
-            attack_coll->damage = ftMotionEventCast(ms, FTMotionEventMakeHit1)->damage;
-            attack_coll->can_rebound = ftMotionEventCast(ms, FTMotionEventMakeHit1)->can_rebound;
-            attack_coll->element = ftMotionEventCast(ms, FTMotionEventMakeHit1)->element;
+            attack_coll->damage = ftMotionEventCast(ms, FTMotionEventMakeAttack1)->damage;
+            attack_coll->can_rebound = ftMotionEventCast(ms, FTMotionEventMakeAttack1)->can_rebound;
+            attack_coll->element = ftMotionEventCast(ms, FTMotionEventMakeAttack1)->element;
 
-            ftMotionEventAdvance(ms, FTMotionEventMakeHit1);
+            ftMotionEventAdvance(ms, FTMotionEventMakeAttack1);
 
-            attack_coll->size = ftMotionEventCast(ms, FTMotionEventMakeHit2)->size * 0.5F;
-            attack_coll->offset.x = ftMotionEventCast(ms, FTMotionEventMakeHit2)->off_x;
+            attack_coll->size = ftMotionEventCast(ms, FTMotionEventMakeAttack2)->size * 0.5F;
+            attack_coll->offset.x = ftMotionEventCast(ms, FTMotionEventMakeAttack2)->off_x;
 
-            ftMotionEventAdvance(ms, FTMotionEventMakeHit2);
+            ftMotionEventAdvance(ms, FTMotionEventMakeAttack2);
 
-            attack_coll->offset.y = ftMotionEventCast(ms, FTMotionEventMakeHit3)->off_y;
-            attack_coll->offset.z = ftMotionEventCast(ms, FTMotionEventMakeHit3)->off_z;
+            attack_coll->offset.y = ftMotionEventCast(ms, FTMotionEventMakeAttack3)->off_y;
+            attack_coll->offset.z = ftMotionEventCast(ms, FTMotionEventMakeAttack3)->off_z;
 
-            ftMotionEventAdvance(ms, FTMotionEventMakeHit3);
+            ftMotionEventAdvance(ms, FTMotionEventMakeAttack3);
 
-            attack_coll->angle = ftMotionEventCast(ms, FTMotionEventMakeHit4)->angle;
-            attack_coll->knockback_scale = ftMotionEventCast(ms, FTMotionEventMakeHit4)->knockback_scale;
-            attack_coll->knockback_weight = ftMotionEventCast(ms, FTMotionEventMakeHit4)->knockback_weight;
+            attack_coll->angle = ftMotionEventCast(ms, FTMotionEventMakeAttack4)->angle;
+            attack_coll->knockback_scale = ftMotionEventCast(ms, FTMotionEventMakeAttack4)->knockback_scale;
+            attack_coll->knockback_weight = ftMotionEventCast(ms, FTMotionEventMakeAttack4)->knockback_weight;
 
-            attack_coll->is_hit_air = ftMotionEventCast(ms, FTMotionEventMakeHit4)->is_hit_ground_air & 1;           // Why?
-            attack_coll->is_hit_ground = (ftMotionEventCast(ms, FTMotionEventMakeHit4)->is_hit_ground_air & 2) >> 1; // ???
+            attack_coll->is_hit_air = ftMotionEventCast(ms, FTMotionEventMakeAttack4)->is_hit_ground_air & 1;           // Why?
+            attack_coll->is_hit_ground = (ftMotionEventCast(ms, FTMotionEventMakeAttack4)->is_hit_ground_air & 2) >> 1; // ???
 
-            ftMotionEventAdvance(ms, FTMotionEventMakeHit4);
+            ftMotionEventAdvance(ms, FTMotionEventMakeAttack4);
 
-            attack_coll->shield_damage = ftMotionEventCast(ms, FTMotionEventMakeHit5)->shield_damage;
+            attack_coll->shield_damage = ftMotionEventCast(ms, FTMotionEventMakeAttack5)->shield_damage;
 
-            attack_coll->fgm_level = ftMotionEventCast(ms, FTMotionEventMakeHit5)->fgm_level;
-            attack_coll->fgm_kind = ftMotionEventCast(ms, FTMotionEventMakeHit5)->fgm_kind;
+            attack_coll->fgm_level = ftMotionEventCast(ms, FTMotionEventMakeAttack5)->fgm_level;
+            attack_coll->fgm_kind = ftMotionEventCast(ms, FTMotionEventMakeAttack5)->fgm_kind;
 
-            attack_coll->knockback_base = ftMotionEventCast(ms, FTMotionEventMakeHit5)->knockback_base;
+            attack_coll->knockback_base = ftMotionEventCast(ms, FTMotionEventMakeAttack5)->knockback_base;
 
-            ftMotionEventAdvance(ms, FTMotionEventMakeHit5);
+            ftMotionEventAdvance(ms, FTMotionEventMakeAttack5);
 
-            attack_coll->is_scale_pos = (ev_kind == nFTMotionEventKindMakeHitScaleOffset) ? TRUE : FALSE;
+            attack_coll->is_scale_pos = (ev_kind == nFTMotionEventMakeAttackCollScaled) ? TRUE : FALSE;
 
             attack_coll->attack_id = fp->attack_id;
 
@@ -263,63 +263,63 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
 
             attack_coll->damage = ftParamGetStaledDamage(fp->player, attack_coll->damage, attack_coll->attack_id, attack_coll->motion_count);
         }
-        else ftMotionEventAdvance(ms, FTMotionEventMakeHit);
+        else ftMotionEventAdvance(ms, FTMotionEventMakeAttack);
         break;
 
-    case nFTMotionEventKindSetHitOffset:
-        attack_id = ftMotionEventCast(ms, FTMotionEventSetHitOffset1)->attack_id;
+    case nFTMotionEventSetAttackCollOffset:
+        attack_id = ftMotionEventCast(ms, FTMotionEventSetAttackOffset1)->attack_id;
 
         attack_coll = &fp->attack_colls[attack_id];
 
-        attack_coll->offset.x = ftMotionEventCast(ms, FTMotionEventSetHitOffset1)->off_x;
+        attack_coll->offset.x = ftMotionEventCast(ms, FTMotionEventSetAttackOffset1)->off_x;
 
-        ftMotionEventAdvance(ms, FTMotionEventSetHitOffset1);
+        ftMotionEventAdvance(ms, FTMotionEventSetAttackOffset1);
 
-        attack_coll->offset.y = ftMotionEventCast(ms, FTMotionEventSetHitOffset2)->off_y;
-        attack_coll->offset.z = ftMotionEventCast(ms, FTMotionEventSetHitOffset2)->off_z;
+        attack_coll->offset.y = ftMotionEventCast(ms, FTMotionEventSetAttackOffset2)->off_y;
+        attack_coll->offset.z = ftMotionEventCast(ms, FTMotionEventSetAttackOffset2)->off_z;
 
-        ftMotionEventAdvance(ms, FTMotionEventSetHitOffset2);
+        ftMotionEventAdvance(ms, FTMotionEventSetAttackOffset2);
         break;
 
-    case nFTMotionEventKindSetHitDamage:
+    case nFTMotionEventSetAttackCollDamage:
         if (fp->pkind != nFTPlayerKindDemo)
         {
-            attack_id = ftMotionEventCast(ms, FTMotionEventSetHitDamage)->attack_id;
+            attack_id = ftMotionEventCast(ms, FTMotionEventSetAttackCollDamage)->attack_id;
 
-            fp->attack_colls[attack_id].damage = ftMotionEventCast(ms, FTMotionEventSetHitDamage)->damage;
+            fp->attack_colls[attack_id].damage = ftMotionEventCast(ms, FTMotionEventSetAttackCollDamage)->damage;
 
-            ftMotionEventAdvance(ms, FTMotionEventSetHitDamage);
+            ftMotionEventAdvance(ms, FTMotionEventSetAttackCollDamage);
 
             fp->attack_colls[attack_id].damage = ftParamGetStaledDamage(fp->player, fp->attack_colls[attack_id].damage, fp->attack_colls[attack_id].attack_id, fp->attack_colls[attack_id].motion_count);
         }
-        else ftMotionEventAdvance(ms, FTMotionEventSetHitDamage);
+        else ftMotionEventAdvance(ms, FTMotionEventSetAttackCollDamage);
         break;
 
-    case nFTMotionEventKindSetHitSize:
-        attack_id = ftMotionEventCast(ms, FTMotionEventSetHitSize)->attack_id;
+    case nFTMotionEventSetAttackCollSize:
+        attack_id = ftMotionEventCast(ms, FTMotionEventSetAttackCollSize)->attack_id;
 
-        fp->attack_colls[attack_id].size = ftMotionEventCast(ms, FTMotionEventSetHitSize)->size * 0.5F;
+        fp->attack_colls[attack_id].size = ftMotionEventCast(ms, FTMotionEventSetAttackCollSize)->size * 0.5F;
 
-        ftMotionEventAdvance(ms, FTMotionEventSetHitSize);
+        ftMotionEventAdvance(ms, FTMotionEventSetAttackCollSize);
         break;
 
-    case nFTMotionEventKindSetHitSoundLevel:
-        attack_id = ftMotionEventCast(ms, FTMotionEventSetHitSound)->attack_id;
+    case nFTMotionEventSetAttackCollSoundLevel:
+        attack_id = ftMotionEventCast(ms, FTMotionEventSetAttackCollSound)->attack_id;
 
-        fp->attack_colls[attack_id].fgm_level = ftMotionEventCast(ms, FTMotionEventSetHitSound)->fgm_level;
+        fp->attack_colls[attack_id].fgm_level = ftMotionEventCast(ms, FTMotionEventSetAttackCollSound)->fgm_level;
 
-        ftMotionEventAdvance(ms, FTMotionEventSetHitSound);
+        ftMotionEventAdvance(ms, FTMotionEventSetAttackCollSound);
         break;
 
-    case nFTMotionEventKindRefreshAtkID:
+    case nFTMotionEventRefreshAttackCollID:
         attack_id = ftMotionEventCast(ms, FTMotionEventDefault)->value;
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
 
-        ftParamRefreshAtkID(fighter_gobj, attack_id);
+        ftParamRefreshAttackCollID(fighter_gobj, attack_id);
         break;
 
-    case nFTMotionEventKindClearAtkID:
+    case nFTMotionEventClearAttackCollID:
         attack_id = ftMotionEventCast(ms, FTMotionEventDefault)->value;
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
@@ -327,13 +327,13 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         fp->attack_colls[attack_id].attack_state = nGMAttackStateOff;
         break;
 
-    case nFTMotionEventKindClearAtkAll:
-        ftParamClearAtkAll(fighter_gobj);
+    case nFTMotionEventClearAttackCollAll:
+        ftParamClearAttackCollAll(fighter_gobj);
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindSetThrow:
+    case nFTMotionEventSetThrow:
         ftMotionEventAdvance(ms, FTMotionEventSetThrow1);
 
         fp->fighter_throw = ftMotionEventCast(ms, FTMotionEventSetThrow2)->fighter_throw;
@@ -341,7 +341,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         ftMotionEventAdvance(ms, FTMotionEventSetThrow2);
         break;
 
-    case nFTMotionEventKindPlaySFXStoreInfo:
+    case nFTMotionEventPlaySFXStoreInfo:
         if (!(fp->is_playing_sfx))
         {
             fp->p_sfx = func_800269C0_275C0(ftMotionEventCastAdvance(ms, FTMotionEventDefault)->value);
@@ -351,7 +351,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         else ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindPlaySFX:
+    case nFTMotionEventPlaySFX:
         if (!(fp->is_playing_sfx))
         {
             func_800269C0_275C0(ftMotionEventCastAdvance(ms, FTMotionEventDefault)->value);
@@ -359,7 +359,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         else ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindPlayLoopSFXStoreInfo:
+    case nFTMotionEventPlayLoopSFXStoreInfo:
         if (!(fp->is_playing_sfx))
         {
             ftParamPlayLoopSFX(fp, ftMotionEventCastAdvance(ms, FTMotionEventDefault)->value);
@@ -367,11 +367,11 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         else ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindStopLoopSFX:
+    case nFTMotionEventStopLoopSFX:
         ftParamStopLoopSFX(fp), ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindPlayVoiceStoreInfo:
+    case nFTMotionEventPlayVoiceStoreInfo:
         if (!(fp->is_playing_sfx) && (fp->attr->is_have_voice))
         {
             ftParamPlayVoice(fp, ftMotionEventCastAdvance(ms, FTMotionEventDefault)->value);
@@ -379,7 +379,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         else ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindPlayLoopVoiceStoreInfo:
+    case nFTMotionEventPlayLoopVoiceStoreInfo:
         if (!(fp->is_playing_sfx) && (fp->attr->is_have_voice))
         {
             ftParamPlayLoopSFX(fp, ftMotionEventCastAdvance(ms, FTMotionEventDefault)->value);
@@ -387,7 +387,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         else ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindPlaySmashVoice:
+    case nFTMotionEventPlaySmashVoice:
         if (!(fp->is_playing_sfx))
         {
             ftParamPlayVoice(fp, fp->attr->smash_sfx[mtTrigGetRandomIntRange(ARRAY_COUNT(fp->attr->smash_sfx))]);
@@ -397,7 +397,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         else ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindSetAirJumpAdd:
+    case nFTMotionEventSetAirJumpAdd:
         fp->ga = nMPKineticsAir;
 
         fp->physics.vel_air.z = DObjGetStruct(fighter_gobj)->translate.vec.f.z = 0.0F;
@@ -407,7 +407,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindSetAirJumpMax:
+    case nFTMotionEventSetAirJumpMax:
         attr = fp->attr;
 
         fp->ga = nMPKineticsAir;
@@ -419,8 +419,8 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindEffect:
-    case nFTMotionEventKindEffectScaleOffset:
+    case nFTMotionEventEffect:
+    case nFTMotionEventEffectScaled:
         if (!(fp->is_playing_effect))
         {
             joint_id = ftParamGetJointID(fp, ftMotionEventCast(ms, FTMotionEventMakeEffect1)->joint_id);
@@ -444,59 +444,59 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
 
             ftMotionEventAdvance(ms, FTMotionEventMakeEffect4);
 
-            ftParamMakeEffect(fighter_gobj, effect_id, joint_id, &effect_offset, &effect_scatter, fp->lr, (ev_kind == nFTMotionEventKindEffectScaleOffset) ? TRUE : FALSE, flag);
+            ftParamMakeEffect(fighter_gobj, effect_id, joint_id, &effect_offset, &effect_scatter, fp->lr, (ev_kind == nFTMotionEventEffectScaled) ? TRUE : FALSE, flag);
         }
         else ftMotionEventAdvance(ms, FTMotionEventMakeEffect);
         break;
 
-    case nFTMotionEventKindSetHitStatusPartAll:
+    case nFTMotionEventSetHitStatusPartAll:
         ftParamSetHitStatusPartAll(fighter_gobj, ftMotionEventCast(ms, FTMotionEventDefault)->value);
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindSetHitStatusPartID:
+    case nFTMotionEventSetHitStatusPartID:
         ftParamSetHitStatusPartID(fighter_gobj, ftParamGetJointID(fp, ftMotionEventCast(ms, FTMotionEventSetHitStatusPartID)->joint_id), ftMotionEventCast(ms, FTMotionEventSetHitStatusPartID)->hitstatus);
 
         ftMotionEventAdvance(ms, FTMotionEventSetHitStatusPartID);
         break;
 
-    case nFTMotionEventKindSetHitStatusAll:
+    case nFTMotionEventSetHitStatusAll:
         ftParamSetHitStatusAll(fighter_gobj, ftMotionEventCast(ms, FTMotionEventDefault)->value);
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindResetHurtPartAll:
+    case nFTMotionEventResetDamageCollPartAll:
         ftParamResetFighterDamagePartAll(fighter_gobj);
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindSetHurtPartID:
-        joint_id = ftParamGetJointID(fp, ftMotionEventCast(ms, FTMotionEventModifyHurtPartID1)->joint_id);
+    case nFTMotionEventSetDamageCollPartID:
+        joint_id = ftParamGetJointID(fp, ftMotionEventCast(ms, FTMotionEventSetDamageCollPartID1)->joint_id);
 
-        ftMotionEventAdvance(ms, FTMotionEventModifyHurtPartID1);
+        ftMotionEventAdvance(ms, FTMotionEventSetDamageCollPartID1);
 
-        damage_coll_offset.x = ftMotionEventCast(ms, FTMotionEventModifyHurtPartID2)->off_x;
-        damage_coll_offset.y = ftMotionEventCast(ms, FTMotionEventModifyHurtPartID2)->off_y;
+        damage_coll_offset.x = ftMotionEventCast(ms, FTMotionEventSetDamageCollPartID2)->off_x;
+        damage_coll_offset.y = ftMotionEventCast(ms, FTMotionEventSetDamageCollPartID2)->off_y;
 
-        ftMotionEventAdvance(ms, FTMotionEventModifyHurtPartID2);
+        ftMotionEventAdvance(ms, FTMotionEventSetDamageCollPartID2);
 
-        damage_coll_offset.z = ftMotionEventCast(ms, FTMotionEventModifyHurtPartID3)->off_z;
-        damage_coll_size.x = ftMotionEventCast(ms, FTMotionEventModifyHurtPartID3)->size_x;
+        damage_coll_offset.z = ftMotionEventCast(ms, FTMotionEventSetDamageCollPartID3)->off_z;
+        damage_coll_size.x = ftMotionEventCast(ms, FTMotionEventSetDamageCollPartID3)->size_x;
 
-        ftMotionEventAdvance(ms, FTMotionEventModifyHurtPartID3);
+        ftMotionEventAdvance(ms, FTMotionEventSetDamageCollPartID3);
 
-        damage_coll_size.y = ftMotionEventCast(ms, FTMotionEventModifyHurtPartID4)->size_y;
-        damage_coll_size.z = ftMotionEventCast(ms, FTMotionEventModifyHurtPartID4)->size_z;
+        damage_coll_size.y = ftMotionEventCast(ms, FTMotionEventSetDamageCollPartID4)->size_y;
+        damage_coll_size.z = ftMotionEventCast(ms, FTMotionEventSetDamageCollPartID4)->size_z;
 
-        ftMotionEventAdvance(ms, FTMotionEventModifyHurtPartID4);
+        ftMotionEventAdvance(ms, FTMotionEventSetDamageCollPartID4);
 
-        ftParamModifyFighterDamagePartID(fighter_gobj, joint_id, &damage_coll_offset, &damage_coll_size);
+        ftParamModifyDamageCollID(fighter_gobj, joint_id, &damage_coll_offset, &damage_coll_size);
         break;
 
-    case nFTMotionEventKindLoopBegin:
+    case nFTMotionEventLoopBegin:
         ms->p_goto[ms->script_id] = (void*) ((uintptr_t)ms->p_script + sizeof(FTMotionEventDefault));
 
         ms->script_id++;
@@ -504,7 +504,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         ms->loop_count[ms->script_id++ - 1] = ftMotionEventCast(ms, FTMotionEventDefault)->value, ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindLoopEnd:
+    case nFTMotionEventLoopEnd:
         if (--ms->loop_count[ms->script_id - 2] != 0)
         {
             ms->p_script = ms->p_goto[ms->script_id - 2];
@@ -512,7 +512,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         else ftMotionEventAdvance(ms, FTMotionEventDefault), ms->script_id -= 2; // Seems fake, but also impossible to match otherwise???
         break;
 
-    case nFTMotionEventKindSubroutine:
+    case nFTMotionEventSubroutine:
         ftMotionEventAdvance(ms, FTMotionEventSubroutine1);
 
         ms->p_goto[ms->script_id] = (void*) ((uintptr_t)ms->p_script + sizeof(FTMotionEventSubroutine2));
@@ -522,7 +522,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         ms->p_script = ftMotionEventCast(ms, FTMotionEventSubroutine2)->p_goto;
         break;
 
-    case nFTMotionEventKindSetDamageThrown:
+    case nFTMotionEventSetDamageThrown:
         if (fp->throw_gobj != NULL)
         {
             fkind = fp->throw_fkind;
@@ -544,37 +544,37 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         else ftMotionEventAdvance(ms, FTMotionEventSetDamageThrown);
         break;
 
-    case nFTMotionEventKindReturn:
+    case nFTMotionEventReturn:
         ms->p_script = ms->p_goto[--ms->script_id];
         break;
 
-    case nFTMotionEventKindGoto:
+    case nFTMotionEventGoto:
         ftMotionEventAdvance(ms, FTMotionEventGoto1);
 
         ms->p_script = ftMotionEventCast(ms, FTMotionEventGoto2)->p_goto;
         break;
 
-    case nFTMotionEventKindSetParallelScript:
+    case nFTMotionEventSetParallelScript:
         ftMotionEventAdvance(ms, FTMotionEventParallel1);
 
         if (fp->motion_script[0][1].p_script == NULL)
         {
             fp->motion_script[0][1].p_script = fp->motion_script[1][1].p_script = ftMotionEventCast(ms, FTMotionEventParallel2)->p_goto;
 
-            fp->motion_script[0][1].frame_timer = fp->motion_script[1][1].frame_timer = DObjGetStruct(fighter_gobj)->anim_speed - fighter_gobj->anim_frame;
+            fp->motion_script[0][1].script_wait = fp->motion_script[1][1].script_wait = DObjGetStruct(fighter_gobj)->anim_speed - fighter_gobj->anim_frame;
 
             fp->motion_script[0][1].script_id = fp->motion_script[1][1].script_id = 0;
         }
         ftMotionEventAdvance(ms, FTMotionEventParallel2);
         break;
 
-    case nFTMotionEventKindPauseScript:
+    case nFTMotionEventPauseScript:
         ftMotionEventAdvance(ms, FTMotionEventDefault);
 
-        ms->frame_timer = F32_MAX;
+        ms->script_wait = F32_MAX;
         break;
 
-    case nFTMotionEventKindSetModelPartID:
+    case nFTMotionEventSetModelPartID:
         ftParamSetModelPartID
         (
             fighter_gobj, 
@@ -584,19 +584,19 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         ftMotionEventAdvance(ms, FTMotionEventSetModelPartID);
         break;
 
-    case nFTMotionEventKindResetModelPartAll:
+    case nFTMotionEventResetModelPartAll:
         ftParamResetModelPartAll(fighter_gobj);
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindHideModelPartAll:
+    case nFTMotionEventHideModelPartAll:
         ftParamHideModelPartAll(fighter_gobj);
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindSetTexturePartID:
+    case nFTMotionEventSetTexturePartID:
         ftParamSetTexturePartID
         (
             fighter_gobj, 
@@ -606,7 +606,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         ftMotionEventAdvance(ms, FTMotionEventSetTexturePartID);
         break;
 
-    case nFTMotionEventKindSetColAnim:
+    case nFTMotionEventSetColAnim:
         ftParamCheckSetFighterColAnimID
         (
             fighter_gobj, 
@@ -616,37 +616,37 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         ftMotionEventAdvance(ms, FTMotionEventSetColAnimID);
         break;
 
-    case nFTMotionEventKindResetColAnim:
+    case nFTMotionEventResetColAnim:
         ftParamResetStatUpdateColAnim(fighter_gobj);
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindSetFlag0:
+    case nFTMotionEventSetFlag0:
         fp->motion_vars.flags.flag0 = ftMotionEventCast(ms, FTMotionEventDefault)->value;
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindSetFlag1:
+    case nFTMotionEventSetFlag1:
         fp->motion_vars.flags.flag1 = ftMotionEventCast(ms, FTMotionEventDefault)->value;
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindSetFlag2:
+    case nFTMotionEventSetFlag2:
         fp->motion_vars.flags.flag2 = ftMotionEventCast(ms, FTMotionEventDefault)->value;
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindSetFlag3:
+    case nFTMotionEventSetFlag3:
         fp->motion_vars.flags.flag3 = ftMotionEventCast(ms, FTMotionEventDefault)->value;
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindSetSlopeContour:
+    case nFTMotionEventSetSlopeContour:
         slope_contour = fp->slope_contour;
 
         fp->slope_contour = ftMotionEventCastAdvance(ms, FTMotionEventSetSlopeContour)->flags;
@@ -657,20 +657,20 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         }
         break;
 
-    case nFTMotionEventKindHideItem:
+    case nFTMotionEventHideItem:
         fp->is_show_item = ftMotionEventCast(ms, FTMotionEventDefault)->value;
 
         ftMotionEventAdvance(ms, FTMotionEventDefault);
         break;
 
-    case nFTMotionEventKindSetAfterImage:
+    case nFTMotionEventSetAfterImage:
         fp->afterimage.is_itemswing = ftMotionEventCast(ms, FTMotionEventSetAfterImage)->is_itemswing;
         fp->afterimage.drawstatus = ftMotionEventCast(ms, FTMotionEventSetAfterImage)->drawstatus;
 
         ftMotionEventAdvance(ms, FTMotionEventSetAfterImage);
         break;
 
-    case nFTMotionEventKindMakeRumble:
+    case nFTMotionEventMakeRumble:
         if (fp->pkind != nFTPlayerKindDemo)
         {
             ftParamMakeRumble
@@ -683,7 +683,7 @@ void ftMainParseMotionEvent(GObj *fighter_gobj, FTStruct *fp, FTMotionScript *ms
         ftMotionEventAdvance(ms, FTMotionEventMakeRumble);
         break;
 
-    case nFTMotionEventKindStopRumble:
+    case nFTMotionEventStopRumble:
         if (fp->pkind != nFTPlayerKindDemo)
         {
             gmRumbleSetRumbleID(fp->player, ftMotionEventCast(ms, FTMotionEventStopRumble)->rumble_id);
@@ -707,28 +707,28 @@ void ftMainUpdateMotionEventsNoEffect(GObj *fighter_gobj)
 
         if (ms->p_script != NULL)
         {
-            if (ms->frame_timer != F32_MAX)
+            if (ms->script_wait != F32_MAX)
             {
-                ms->frame_timer -= DObjGetStruct(fighter_gobj)->anim_speed;
+                ms->script_wait -= DObjGetStruct(fighter_gobj)->anim_speed;
             }
         loop:
             if (ms->p_script != NULL)
             {
-                if (ms->frame_timer == F32_MAX)
+                if (ms->script_wait == F32_MAX)
                 {
                     if ((DObjGetStruct(fighter_gobj)->anim_speed <= fighter_gobj->anim_frame)) 
                     {
                         continue;
                     }
-                    else ms->frame_timer = -fighter_gobj->anim_frame;
+                    else ms->script_wait = -fighter_gobj->anim_frame;
                 }
-                else if (ms->frame_timer > 0.0F) 
+                else if (ms->script_wait > 0.0F) 
                 {
                     continue;
                 }
                 ev_kind = ftMotionEventCast(ms, FTMotionEventMakeEffect1)->opcode;
 
-                if (((ev_kind == nFTMotionEventKindEffect) || (ev_kind == nFTMotionEventKindEffectScaleOffset)) && (fp->is_effect_interrupt))
+                if (((ev_kind == nFTMotionEventEffect) || (ev_kind == nFTMotionEventEffectScaled)) && (fp->is_effect_interrupt))
                 {
                     ftMotionEventAdvance(ms, FTMotionEventMakeEffect);
                 }
@@ -761,63 +761,63 @@ void ftMainUpdateMotionEventsDefault(GObj *fighter_gobj)
 
         if (ms->p_script != NULL)
         {
-            if (ms->frame_timer != F32_MAX)
+            if (ms->script_wait != F32_MAX)
             {
-                ms->frame_timer -= DObjGetStruct(fighter_gobj)->anim_speed;
+                ms->script_wait -= DObjGetStruct(fighter_gobj)->anim_speed;
             }
         loop:
             if (ms->p_script != NULL)
             {
-                if (ms->frame_timer == F32_MAX)
+                if (ms->script_wait == F32_MAX)
                 {
                     if ((DObjGetStruct(fighter_gobj)->anim_speed <= fighter_gobj->anim_frame)) continue;
 
-                    else ms->frame_timer = -fighter_gobj->anim_frame;
+                    else ms->script_wait = -fighter_gobj->anim_frame;
                 }
-                else if (ms->frame_timer > 0.0F) continue;
+                else if (ms->script_wait > 0.0F) continue;
 
                 ev_kind = ftMotionEventCast(ms, FTMotionEventDefault)->opcode;
 
                 switch (ev_kind)
                 {
-                case nFTMotionEventKindClearAtkID:
-                case nFTMotionEventKindClearAtkAll:
-                case nFTMotionEventKindSetHitDamage:
-                case nFTMotionEventKindSetHitSize:
-                case nFTMotionEventKindSetHitSoundLevel:
-                case nFTMotionEventKindRefreshAtkID:
-                case nFTMotionEventKindPlaySFX:
-                case nFTMotionEventKindPlayLoopSFXStoreInfo:
-                case nFTMotionEventKindStopLoopSFX:
-                case nFTMotionEventKindPlayVoiceStoreInfo:
-                case nFTMotionEventKindPlayLoopVoiceStoreInfo:
-                case nFTMotionEventKindPlaySFXStoreInfo:
-                case nFTMotionEventKindPlaySmashVoice:
-                case nFTMotionEventKindSetFlag0:
-                case nFTMotionEventKindSetFlag1:
-                case nFTMotionEventKindSetFlag2:
-                case nFTMotionEventKindSetAirJumpAdd:
-                case nFTMotionEventKindSetAirJumpMax:
-                case nFTMotionEventKindSetColAnim:
-                case nFTMotionEventKindResetColAnim:
-                case nFTMotionEventKindMakeRumble:
-                case nFTMotionEventKindStopRumble:
-                case nFTMotionEventKindSetAfterImage:
+                case nFTMotionEventClearAttackCollID:
+                case nFTMotionEventClearAttackCollAll:
+                case nFTMotionEventSetAttackCollDamage:
+                case nFTMotionEventSetAttackCollSize:
+                case nFTMotionEventSetAttackCollSoundLevel:
+                case nFTMotionEventRefreshAttackCollID:
+                case nFTMotionEventPlaySFX:
+                case nFTMotionEventPlayLoopSFXStoreInfo:
+                case nFTMotionEventStopLoopSFX:
+                case nFTMotionEventPlayVoiceStoreInfo:
+                case nFTMotionEventPlayLoopVoiceStoreInfo:
+                case nFTMotionEventPlaySFXStoreInfo:
+                case nFTMotionEventPlaySmashVoice:
+                case nFTMotionEventSetFlag0:
+                case nFTMotionEventSetFlag1:
+                case nFTMotionEventSetFlag2:
+                case nFTMotionEventSetAirJumpAdd:
+                case nFTMotionEventSetAirJumpMax:
+                case nFTMotionEventSetColAnim:
+                case nFTMotionEventResetColAnim:
+                case nFTMotionEventMakeRumble:
+                case nFTMotionEventStopRumble:
+                case nFTMotionEventSetAfterImage:
                     ftMotionEventAdvance(ms, FTMotionEventDefault);
                     break;
 
-                case nFTMotionEventKindEffect:
-                case nFTMotionEventKindEffectScaleOffset:
+                case nFTMotionEventEffect:
+                case nFTMotionEventEffectScaled:
                     ftMotionEventAdvance(ms, FTMotionEventMakeEffect);
                     break;
 
-                case nFTMotionEventKindMakeHit:
-                case nFTMotionEventKindMakeHitScaleOffset:
-                    ftMotionEventAdvance(ms, FTMotionEventMakeHit);
+                case nFTMotionEventMakeAttackColl:
+                case nFTMotionEventMakeAttackCollScaled:
+                    ftMotionEventAdvance(ms, FTMotionEventMakeAttack);
                     break;
 
-                case nFTMotionEventKindSetHitOffset:
-                    ftMotionEventAdvance(ms, FTMotionEventSetHitOffset);
+                case nFTMotionEventSetAttackCollOffset:
+                    ftMotionEventAdvance(ms, FTMotionEventSetAttackOffset);
                     break;
 
                 default:
@@ -848,53 +848,53 @@ void ftMainUpdateMotionEventsDefaultEffect(GObj *fighter_gobj)
 
         if (ms->p_script != NULL)
         {
-            if (ms->frame_timer != F32_MAX)
+            if (ms->script_wait != F32_MAX)
             {
-                ms->frame_timer -= DObjGetStruct(fighter_gobj)->anim_speed;
+                ms->script_wait -= DObjGetStruct(fighter_gobj)->anim_speed;
             }
         loop:
             if (ms->p_script != NULL)
             {
-                if (ms->frame_timer == F32_MAX)
+                if (ms->script_wait == F32_MAX)
                 {
                     if ((DObjGetStruct(fighter_gobj)->anim_speed <= fighter_gobj->anim_frame)) continue;
 
-                    else ms->frame_timer = -fighter_gobj->anim_frame;
+                    else ms->script_wait = -fighter_gobj->anim_frame;
                 }
-                else if (ms->frame_timer > 0.0F) continue;
+                else if (ms->script_wait > 0.0F) continue;
 
                 ev_kind = ftMotionEventCast(ms, FTMotionEventDefault)->opcode;
 
                 switch (ev_kind)
                 {
-                case nFTMotionEventKindEnd:
-                case nFTMotionEventKindSyncWait:
-                case nFTMotionEventKindAsyncWait:
-                case nFTMotionEventKindSetDamageThrown:
-                case nFTMotionEventKindLoopBegin:
-                case nFTMotionEventKindLoopEnd:
-                case nFTMotionEventKindSubroutine:
-                case nFTMotionEventKindReturn:
-                case nFTMotionEventKindGoto:
-                case nFTMotionEventKindPauseScript:
-                case nFTMotionEventKindEffect:
-                case nFTMotionEventKindEffectScaleOffset:
+                case nFTMotionEventEnd:
+                case nFTMotionEventSyncWait:
+                case nFTMotionEventAsyncWait:
+                case nFTMotionEventSetDamageThrown:
+                case nFTMotionEventLoopBegin:
+                case nFTMotionEventLoopEnd:
+                case nFTMotionEventSubroutine:
+                case nFTMotionEventReturn:
+                case nFTMotionEventGoto:
+                case nFTMotionEventPauseScript:
+                case nFTMotionEventEffect:
+                case nFTMotionEventEffectScaled:
                     ftMainParseMotionEvent(fighter_gobj, fp, ms, ev_kind);
                     break;
 
-                case nFTMotionEventKindMakeHit:
-                case nFTMotionEventKindMakeHitScaleOffset:
-                    ftMotionEventAdvance(ms, FTMotionEventMakeHit);
+                case nFTMotionEventMakeAttackColl:
+                case nFTMotionEventMakeAttackCollScaled:
+                    ftMotionEventAdvance(ms, FTMotionEventMakeAttack);
                     break;
 
-                case nFTMotionEventKindSetHitOffset:
-                case nFTMotionEventKindSetThrow:
-                case nFTMotionEventKindSetParallelScript:
+                case nFTMotionEventSetAttackCollOffset:
+                case nFTMotionEventSetThrow:
+                case nFTMotionEventSetParallelScript:
                     ftMotionEventAdvance(ms, FTMotionEventDouble);
                     break;
 
-                case nFTMotionEventKindSetHurtPartID:
-                    ftMotionEventAdvance(ms, FTMotionEventModifyHurtPartID);
+                case nFTMotionEventSetDamageCollPartID:
+                    ftMotionEventAdvance(ms, FTMotionEventSetDamageCollPartID);
                     break;
 
                 default:
@@ -964,7 +964,7 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_playing
 
             switch (ev_kind)
             {
-            case nGMColEventKindEnd:
+            case nGMColEventEnd:
                 for (j = 0; j < ARRAY_COUNT(colanim->cs); j++)
                 {
                     if ((j != i) && (colanim->cs[j].p_script != NULL)) break;
@@ -977,22 +977,22 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_playing
                 else colanim->cs[i].p_script = NULL;
                 break;
 
-            case nGMColEventKindWait:
+            case nGMColEventWait:
                 colanim->cs[i].color_event_timer = GMColEventCast(colanim->cs[i].p_script, GMColEventDefault)->value, GMColEventAdvance(colanim->cs[i].p_script, GMColEventDefault);
                 break;
 
-            case nGMColEventKindGoto:
+            case nGMColEventGoto:
                 GMColEventAdvance(colanim->cs[i].p_script, GMColEventGoto1);
 
                 colanim->cs[i].p_script = GMColEventCast(colanim->cs[i].p_script, GMColEventGoto2)->p_goto;
                 break;
 
-            case nGMColEventKindLoopBegin:
+            case nGMColEventLoopBegin:
                 colanim->cs[i].p_subroutine[colanim->cs[i].script_id++] = (void*) ((uintptr_t)colanim->cs[i].p_script + sizeof(GMColEventDefault));
                 colanim->cs[i].p_subroutine[colanim->cs[i].script_id++] = GMColEventCast(colanim->cs[i].p_script, GMColEventDefault)->value, GMColEventAdvance(colanim->cs[i].p_script, GMColEventDefault);
                 break;
 
-            case nGMColEventKindLoopEnd:
+            case nGMColEventLoopEnd:
                 if (--colanim->cs[i].loop_count[colanim->cs[i].script_id - 2] != 0)
                 {
                     colanim->cs[i].p_script = colanim->cs[i].p_subroutine[colanim->cs[i].script_id - 2];
@@ -1000,7 +1000,7 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_playing
                 else GMColEventAdvance(colanim->cs[i].p_script, GMColEventDefault), colanim->cs[i].script_id -= 2;
                 break;
 
-            case nGMColEventKindSubroutine:
+            case nGMColEventSubroutine:
                 GMColEventAdvance(colanim->cs[i].p_script, GMColEventSubroutine1);
 
                 colanim->cs[i].p_subroutine[colanim->cs[i].script_id++] = (void*) ((uintptr_t)colanim->cs[i].p_script + sizeof(GMColEventSubroutine1));
@@ -1008,11 +1008,11 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_playing
                 colanim->cs[i].p_script = GMColEventCast(colanim->cs[i].p_script, GMColEventSubroutine2)->p_subroutine;
                 break;
 
-            case nGMColEventKindReturn:
+            case nGMColEventReturn:
                 colanim->cs[i].p_script = colanim->cs[i].p_subroutine[--colanim->cs[i].script_id];
                 break;
 
-            case nGMColEventKindSetParallelScript:
+            case nGMColEventSetParallelScript:
                 GMColEventAdvance(colanim->cs[i].p_script, GMColEventParallel1);
 
                 if (colanim->cs[1].p_script == NULL)
@@ -1024,13 +1024,13 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_playing
                 GMColEventAdvance(colanim->cs[i].p_script, GMColEventParallel2);
                 break;
 
-            case nGMColEventKindToggleColorOff:
+            case nGMColEventToggleColorOff:
                 colanim->is_use_maincolor = colanim->is_use_blendcolor = colanim->skeleton_id = 0;
 
                 GMColEventAdvance(colanim->cs[i].p_script, GMColEventDefault);
                 break;
 
-            case nGMColEventKindSetColor1:
+            case nGMColEventSetColor1:
                 colanim->is_use_maincolor = TRUE;
 
                 GMColEventAdvance(colanim->cs[i].p_script, GMColEventSetRGBA1);
@@ -1045,7 +1045,7 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_playing
                 GMColEventAdvance(colanim->cs[i].p_script, GMColEventSetRGBA2);
                 break;
 
-            case nGMColEventKindSetColor2:
+            case nGMColEventSetColor2:
                 colanim->is_use_blendcolor = TRUE;
 
                 GMColEventAdvance(colanim->cs[i].p_script, GMColEventSetRGBA1);
@@ -1060,7 +1060,7 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_playing
                 GMColEventAdvance(colanim->cs[i].p_script, GMColEventSetRGBA2);
                 break;
 
-            case nGMColEventKindBlendColor1:
+            case nGMColEventBlendColor1:
                 blend_frames = GMColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA1)->blend_frames;
 
                 GMColEventAdvance(colanim->cs[i].p_script, GMColEventBlendRGBA1);
@@ -1073,7 +1073,7 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_playing
                 GMColEventAdvance(colanim->cs[i].p_script, GMColEventBlendRGBA2);
                 break;
 
-            case nGMColEventKindBlendColor2:
+            case nGMColEventBlendColor2:
                 blend_frames = GMColEventCast(colanim->cs[i].p_script, GMColEventBlendRGBA1)->blend_frames;
 
                 GMColEventAdvance(colanim->cs[i].p_script, GMColEventBlendRGBA1);
@@ -1086,8 +1086,8 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_playing
                 GMColEventAdvance(colanim->cs[i].p_script, GMColEventBlendRGBA2);
                 break;
 
-            case nGMColEventKindEffect:
-            case nGMColEventKindEffectScaleOffset:
+            case nGMColEventEffect:
+            case nGMColEventEffectScaleOffset:
                 if (is_playing_effect == FALSE)
                 {
                     fp = ftGetStruct(fighter_gobj);
@@ -1113,12 +1113,12 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_playing
 
                     GMColEventAdvance(colanim->cs[i].p_script, GMColEventMakeEffect4);
 
-                    ftParamMakeEffect(fighter_gobj, effect_id, joint_id, &effect_offset, &effect_scatter, fp->lr, (ev_kind == nGMColEventKindEffectScaleOffset) ? TRUE : FALSE, flag);
+                    ftParamMakeEffect(fighter_gobj, effect_id, joint_id, &effect_offset, &effect_scatter, fp->lr, (ev_kind == nGMColEventEffectScaleOffset) ? TRUE : FALSE, flag);
                 }
                 else GMColEventAdvance(colanim->cs[i].p_script, GMColEventMakeEffect);
                 break;
 
-            case nGMColEventKindSetLight:
+            case nGMColEventSetLight:
                 colanim->is_use_light = TRUE;
 
                 colanim->light_angle_x = GMColEventCast(colanim->cs[i].p_script, GMColEventSetLight)->light1;
@@ -1127,13 +1127,13 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_playing
                 GMColEventAdvance(colanim->cs[i].p_script, GMColEventSetLight);
                 break;
 
-            case nGMColEventKindToggleLightOff:
+            case nGMColEventToggleLightOff:
                 colanim->is_use_light = FALSE;
 
                 GMColEventAdvance(colanim->cs[i].p_script, GMColEventDefault);
                 break;
 
-            case nGMColEventKindPlaySFX:
+            case nGMColEventPlaySFX:
                 if (is_playing_sfx == FALSE)
                 {
                     func_800269C0_275C0(GMColEventCastAdvance(colanim->cs[i].p_script, GMColEventDefault)->value);
@@ -1141,7 +1141,7 @@ sb32 ftMainUpdateColAnim(GMColAnim *colanim, GObj *fighter_gobj, sb32 is_playing
                 else GMColEventAdvance(colanim->cs[i].p_script, GMColEventDefault);
                 break;
 
-            case nGMColEventKindSetSkeletonID:
+            case nGMColEventSetSkeletonID:
                 colanim->skeleton_id = GMColEventCastAdvance(colanim->cs[i].p_script, GMColEventDefault)->value;
                 break;
 
@@ -1864,8 +1864,8 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
 
             attack_coll->attack_state = nGMAttackStateTransfer;
 
-            attack_coll->hit_matrix.unk_fthitmtx_0x0 = FALSE;
-            attack_coll->hit_matrix.unk_fthitmtx_0x44 = 0.0F;
+            attack_coll->attack_matrix.unk_fthitmtx_0x0 = FALSE;
+            attack_coll->attack_matrix.unk_fthitmtx_0x44 = 0.0F;
             break;
 
         case nGMAttackStateTransfer:
@@ -1887,8 +1887,8 @@ void ftMainProcPhysicsMap(GObj *fighter_gobj)
             }
             gmCollisionGetFighterPartsWorldPosition(attack_coll->joint, &attack_coll->pos_curr);
 
-            attack_coll->hit_matrix.unk_fthitmtx_0x0 = FALSE;
-            attack_coll->hit_matrix.unk_fthitmtx_0x44 = 0.0F;
+            attack_coll->attack_matrix.unk_fthitmtx_0x0 = FALSE;
+            attack_coll->attack_matrix.unk_fthitmtx_0x44 = 0.0F;
 
             break;
         }
@@ -2037,36 +2037,36 @@ void ftMainUpdateAttackStatFighter(FTStruct *other_fp, FTAttackColl *other_hit, 
 }
 
 // 0x800E2A90
-void ftMainUpdateShieldStatFighter(FTStruct *attacker_fp, FTAttackColl *attacker_hit, FTStruct *victim_fp, GObj *attacker_gobj, GObj *victim_gobj)
+void ftMainUpdateShieldStatFighter(FTStruct *attacker_fp, FTAttackColl *attack_coll, FTStruct *victim_fp, GObj *attacker_gobj, GObj *victim_gobj)
 {
     Vec3f impact_pos;
 
-    ftMainSetHitInteractStats(attacker_fp, attacker_hit->group_id, victim_gobj, nGMHitTypeShield, 0, 0);
+    ftMainSetHitInteractStats(attacker_fp, attack_coll->group_id, victim_gobj, nGMHitTypeShield, 0, 0);
 
-    if (attacker_fp->attack_shield_push < attacker_hit->damage)
+    if (attacker_fp->attack_shield_push < attack_coll->damage)
     {
-        attacker_fp->attack_shield_push = attacker_hit->damage;
+        attacker_fp->attack_shield_push = attack_coll->damage;
     }
-    victim_fp->shield_damage_total += (attacker_hit->damage + attacker_hit->shield_damage);
+    victim_fp->shield_damage_total += (attack_coll->damage + attack_coll->shield_damage);
 
-    if (victim_fp->shield_damage < attacker_hit->damage)
+    if (victim_fp->shield_damage < attack_coll->damage)
     {
-        victim_fp->shield_damage = attacker_hit->damage;
+        victim_fp->shield_damage = attack_coll->damage;
 
         victim_fp->shield_lr = (DObjGetStruct(victim_gobj)->translate.vec.f.x < DObjGetStruct(attacker_gobj)->translate.vec.f.x) ? +1 : -1;
 
         victim_fp->shield_player = attacker_fp->player;
     }
-    gmCollisionGetFighterAttackShieldPosition(&impact_pos, attacker_hit, victim_gobj, victim_fp->joints[nFTPartsJointYRotN]);
-    efManagerSetOffMakeEffect(&impact_pos, attacker_hit->damage);
+    gmCollisionGetFighterAttackShieldPosition(&impact_pos, attack_coll, victim_gobj, victim_fp->joints[nFTPartsJointYRotN]);
+    efManagerSetOffMakeEffect(&impact_pos, attack_coll->damage);
 }
 
 // 0x800E2B88
-void ftMainUpdateCatchStatFighter(FTStruct *attacker_fp, FTAttackColl *attacker_hit, FTStruct *victim_fp, GObj *attacker_gobj, GObj *victim_gobj)
+void ftMainUpdateCatchStatFighter(FTStruct *attacker_fp, FTAttackColl *attack_coll, FTStruct *victim_fp, GObj *attacker_gobj, GObj *victim_gobj)
 {
     f32 dist;
 
-    ftMainSetHitInteractStats(attacker_fp, attacker_hit->group_id, victim_gobj, nGMHitTypeDamage, 0, 1);
+    ftMainSetHitInteractStats(attacker_fp, attack_coll->group_id, victim_gobj, nGMHitTypeDamage, 0, 1);
 
     if (DObjGetStruct(victim_gobj)->translate.vec.f.x < DObjGetStruct(attacker_gobj)->translate.vec.f.x)
     {
@@ -2121,7 +2121,7 @@ sb32 ftMainCheckGetUpdateDamage(FTStruct *fp, s32 *damage)
 }
 
 // 0x800E2D44
-void ftMainUpdateDamageStatFighter(FTStruct *attacker_fp, FTAttackColl *attacker_hit, FTStruct *victim_fp, FTDamageColl *victim_hurt, GObj *attacker_gobj, GObj *victim_gobj)
+void ftMainUpdateDamageStatFighter(FTStruct *attacker_fp, FTAttackColl *attack_coll, FTStruct *victim_fp, FTDamageColl *damage_coll, GObj *attacker_gobj, GObj *victim_gobj)
 {
     s32 damage;
     s32 attacker_player;
@@ -2129,9 +2129,9 @@ void ftMainUpdateDamageStatFighter(FTStruct *attacker_fp, FTAttackColl *attacker
     s32 unused;
     Vec3f impact_pos;
 
-    ftMainSetHitInteractStats(attacker_fp, attacker_hit->group_id, victim_gobj, nGMHitTypeDamage, 0, FALSE);
+    ftMainSetHitInteractStats(attacker_fp, attack_coll->group_id, victim_gobj, nGMHitTypeDamage, 0, FALSE);
 
-    damage = ftParamGetCapturedDamage(victim_fp, attacker_hit->damage);
+    damage = ftParamGetCapturedDamage(victim_fp, attack_coll->damage);
 
     if (attacker_fp->attack_damage < damage)
     {
@@ -2142,7 +2142,7 @@ void ftMainUpdateDamageStatFighter(FTStruct *attacker_fp, FTAttackColl *attacker
         (victim_fp->special_hitstatus == nGMHitStatusNormal) &&
         (victim_fp->star_hitstatus == nGMHitStatusNormal)    &&
         (victim_fp->hitstatus == nGMHitStatusNormal)         &&
-        (victim_hurt->hitstatus == nGMHitStatusNormal)
+        (damage_coll->hitstatus == nGMHitStatusNormal)
     )
     {
         if (ftMainCheckGetUpdateDamage(victim_fp, &damage) != FALSE)
@@ -2162,29 +2162,29 @@ void ftMainUpdateDamageStatFighter(FTStruct *attacker_fp, FTAttackColl *attacker
                 FTHitLog *hitlog = &sFTMainHitLogs[sFTMainHitLogID];
 
                 hitlog->attacker_object_class = nFTHitLogObjectFighter;
-                hitlog->attacker_hit = attacker_hit;
+                hitlog->attack_coll = attack_coll;
                 hitlog->attacker_gobj = attacker_gobj;
-                hitlog->victim_hurt = victim_hurt;
+                hitlog->damage_coll = damage_coll;
                 hitlog->attacker_player = attacker_player;
                 hitlog->attacker_player_number = attacker_player_number;
 
                 sFTMainHitLogID++;
             }
             ftParamUpdatePlayerBattleStats(attacker_player, victim_fp->player, damage);
-            ftParamUpdateStaleQueue(attacker_player, victim_fp->player, attacker_hit->attack_id, attacker_hit->motion_count);
+            ftParamUpdateStaleQueue(attacker_player, victim_fp->player, attack_coll->attack_id, attack_coll->motion_count);
         }
         else
         {
-            gmCollisionGetFighterAttackDamagePosition(&impact_pos, attacker_hit, victim_hurt);
+            gmCollisionGetFighterAttackDamagePosition(&impact_pos, attack_coll, damage_coll);
             efManagerSetOffMakeEffect(&impact_pos, damage);
         }
     }
     else
     {
-        gmCollisionGetFighterAttackDamagePosition(&impact_pos, attacker_hit, victim_hurt);
+        gmCollisionGetFighterAttackDamagePosition(&impact_pos, attack_coll, damage_coll);
         efManagerSetOffMakeEffect(&impact_pos, damage);
     }
-    ftMainPlayHitSFX(attacker_fp, attacker_hit);
+    ftMainPlayHitSFX(attacker_fp, attack_coll);
 }
 
 // 0x800E2F04
@@ -2347,10 +2347,10 @@ void ftMainUpdateDamageStatWeapon(WPStruct *wp, WPAttackColl *wp_attack_coll, s3
             FTHitLog *hitlog = &sFTMainHitLogs[sFTMainHitLogID];
 
             hitlog->attacker_object_class = nFTHitLogObjectWeapon;
-            hitlog->attacker_hit = wp_attack_coll;
+            hitlog->attack_coll = wp_attack_coll;
             hitlog->attack_id = wp_attack_id;
             hitlog->attacker_gobj = weapon_gobj;
-            hitlog->victim_hurt = damage_coll;
+            hitlog->damage_coll = damage_coll;
             hitlog->attacker_player = wp->player;
             hitlog->attacker_player_number = wp->player_number;
 
@@ -2534,10 +2534,10 @@ void ftMainUpdateDamageStatItem(ITStruct *ip, ITAttackColl *it_attack_coll, s32 
                 FTHitLog *hitlog = &sFTMainHitLogs[sFTMainHitLogID];
 
                 hitlog->attacker_object_class = nFTHitLogObjectItem;
-                hitlog->attacker_hit = it_attack_coll;
+                hitlog->attack_coll = it_attack_coll;
                 hitlog->attack_id = attack_id;
                 hitlog->attacker_gobj = item_gobj;
-                hitlog->victim_hurt = damage_coll;
+                hitlog->damage_coll = damage_coll;
                 hitlog->attacker_player = ip->player;
                 hitlog->attacker_player_number = ip->player_number;
 
@@ -2561,7 +2561,7 @@ void ftMainUpdateDamageStatGround(GObj *special_gobj, GObj *fighter_gobj, FTStru
         FTHitLog *hitlog = &sFTMainHitLogs[sFTMainHitLogID];
 
         hitlog->attacker_object_class = nFTHitLogObjectGround;
-        hitlog->attacker_hit = gr_attack_coll;
+        hitlog->attack_coll = gr_attack_coll;
         hitlog->attacker_gobj = special_gobj;
 
         sFTMainHitLogID++;
@@ -2654,7 +2654,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
         switch (hitlog->attacker_object_class)
         {
         case nFTHitLogObjectFighter:
-            ft_attack_coll = hitlog->attacker_hit;
+            ft_attack_coll = hitlog->attack_coll;
             attacker_fp = ftGetStruct(hitlog->attacker_gobj);
 
             knockback_temp = ftParamGetCommonKnockback
@@ -2669,7 +2669,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
                 this_fp->handicap
             );
 
-            gmCollisionGetFighterAttackDamagePosition(&pos, ft_attack_coll, hitlog->victim_hurt);
+            gmCollisionGetFighterAttackDamagePosition(&pos, ft_attack_coll, hitlog->damage_coll);
 
             switch (ft_attack_coll->element)
             {
@@ -2718,7 +2718,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
             break;
 
         case nFTHitLogObjectWeapon:
-            wp_attack_coll = hitlog->attacker_hit;
+            wp_attack_coll = hitlog->attack_coll;
             wp = wpGetStruct(hitlog->attacker_gobj);
             damage = wpMainGetStaledDamage(wp);
 
@@ -2726,7 +2726,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
 
             if (wp->is_hitlag_victim)
             {
-                gmCollisionGetWeaponAttackFighterDamagePosition(&pos, wp_attack_coll, hitlog->attack_id, hitlog->victim_hurt);
+                gmCollisionGetWeaponAttackFighterDamagePosition(&pos, wp_attack_coll, hitlog->attack_id, hitlog->damage_coll);
 
                 switch (wp_attack_coll->element)
                 {
@@ -2754,7 +2754,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
             break;
 
         case nFTHitLogObjectItem:
-            it_attack_coll = hitlog->attacker_hit;
+            it_attack_coll = hitlog->attack_coll;
             ip = itGetStruct(hitlog->attacker_gobj);
 
             damage = itMainGetDamageOutput(ip);
@@ -2763,7 +2763,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
 
             if (ip->is_hitlag_victim)
             {
-                gmCollisionGetItemAttackFighterDamagePosition(&pos, it_attack_coll, hitlog->attack_id, hitlog->victim_hurt);
+                gmCollisionGetItemAttackFighterDamagePosition(&pos, it_attack_coll, hitlog->attack_id, hitlog->damage_coll);
 
                 switch (it_attack_coll->element)
                 {
@@ -2791,7 +2791,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
             break;
 
         case nFTHitLogObjectGround:
-            gr_attack_coll = hitlog->attacker_hit;
+            gr_attack_coll = hitlog->attack_coll;
 
             if (gr_attack_coll->kind == nGMHitEnvironmentPowerBlock) // POW Block?
             {
@@ -2818,7 +2818,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
     switch (hitlog->attacker_object_class)
     {
     case nFTHitLogObjectFighter:
-        ft_attack_coll = hitlog->attacker_hit;
+        ft_attack_coll = hitlog->attack_coll;
         attacker_fp = ftGetStruct(attacker_gobj);
         this_fp->damage_angle = ft_attack_coll->angle;
         this_fp->damage_element = ft_attack_coll->element;
@@ -2829,8 +2829,8 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
 
         ftParamUpdate1PGameDamageStats(this_fp, hitlog->attacker_player, hitlog->attacker_object_class, attacker_fp->fkind, attacker_fp->stat_flags.halfword & ~0x400, attacker_fp->stat_count);
 
-        this_fp->damage_joint_id = hitlog->victim_hurt->joint_id;
-        this_fp->damage_index = hitlog->victim_hurt->placement;
+        this_fp->damage_joint_id = hitlog->damage_coll->joint_id;
+        this_fp->damage_index = hitlog->damage_coll->placement;
 
         if (this_fp->damage_element == nGMHitElementElectric)
         {
@@ -2839,7 +2839,7 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
         break;
 
     case nFTHitLogObjectWeapon:
-        wp_attack_coll = hitlog->attacker_hit;
+        wp_attack_coll = hitlog->attack_coll;
         wp = wpGetStruct(attacker_gobj);
         this_fp->damage_angle = wp_attack_coll->angle;
         this_fp->damage_element = wp_attack_coll->element;
@@ -2866,14 +2866,14 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
 
             ftParamUpdate1PGameDamageStats(this_fp, hitlog->attacker_player, hitlog->attacker_object_class, wp->kind, wp_attack_coll->stat_flags.halfword, wp_attack_coll->stat_count);
         }
-        this_fp->damage_joint_id = hitlog->victim_hurt->joint_id;
-        this_fp->damage_index = hitlog->victim_hurt->placement;
+        this_fp->damage_joint_id = hitlog->damage_coll->joint_id;
+        this_fp->damage_index = hitlog->damage_coll->placement;
 
         ftMainGetBumperDamageAngle(fighter_gobj, attacker_gobj);
         break;
 
     case nFTHitLogObjectItem:
-        it_attack_coll = hitlog->attacker_hit;
+        it_attack_coll = hitlog->attack_coll;
         ip = itGetStruct(attacker_gobj);
 
         this_fp->damage_angle = it_attack_coll->angle;
@@ -2901,14 +2901,14 @@ void ftMainProcessHitCollisionStatsMain(GObj *fighter_gobj)
             this_fp->damage_player_number = hitlog->attacker_player_number;
             ftParamUpdate1PGameDamageStats(this_fp, hitlog->attacker_player, hitlog->attacker_object_class, ip->kind, it_attack_coll->stat_flags.halfword, it_attack_coll->stat_count);
         }
-        this_fp->damage_joint_id = hitlog->victim_hurt->joint_id;
-        this_fp->damage_index = hitlog->victim_hurt->placement;
+        this_fp->damage_joint_id = hitlog->damage_coll->joint_id;
+        this_fp->damage_index = hitlog->damage_coll->placement;
 
         ftMainGetBumperDamageAngle(fighter_gobj, attacker_gobj);
         break;
 
     case nFTHitLogObjectGround:
-        gr_attack_coll = hitlog->attacker_hit;
+        gr_attack_coll = hitlog->attack_coll;
 
         this_fp->damage_angle = gr_attack_coll->angle;
         this_fp->damage_element = gr_attack_coll->element;
@@ -4344,7 +4344,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     s32 unused3;
     FTStatusDesc *status_desc;
     FTMotionDescArray *script_array;
-    FTMotionDesc *script_info;
+    FTMotionDesc *motion_desc;
     DObj *joint;
     DObj *transn_parent;                // Parent of TrasnN_Joint
     DObj *transn_child;                 // Child of TransN_Joint
@@ -4374,7 +4374,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     }
     if (!(flags & FTSTATUS_PRESERVE_HIT) && (fp->is_attack_active))
     {
-        ftParamClearAtkAll(fighter_gobj);
+        ftParamClearAttackCollAll(fighter_gobj);
     }
     if (!(flags & FTSTATUS_PRESERVE_THROWPOINTER))
     {
@@ -4573,15 +4573,15 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
     }
     if ((motion_id != -1) && (motion_id != -2))
     {
-        script_info = &script_array->script_info[motion_id];
+        motion_desc = &script_array->motion_desc[motion_id];
 
-        if (script_info->anim_desc.flags.is_use_shieldpose)
+        if (motion_desc->anim_desc.flags.is_use_shieldpose)
         {
-            fp->figatree = (void*)((intptr_t)script_info->anim_file_id + (uintptr_t)fp->data->p_file_shieldpose);
+            fp->figatree = (void*)((intptr_t)motion_desc->anim_file_id + (uintptr_t)fp->data->p_file_shieldpose);
         }
-        else if (script_info->anim_file_id != 0)
+        else if (motion_desc->anim_file_id != 0)
         {
-            lbRelocGetFileExternForceStatusBufferHeap(script_info->anim_file_id, (void*)fp->figatree_heap);
+            lbRelocGetFileExternForceStatusBufferHeap(motion_desc->anim_file_id, (void*)fp->figatree_heap);
             fp->figatree = fp->figatree_heap;
         }
         else fp->figatree = NULL;
@@ -4589,7 +4589,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
         if (fp->figatree != NULL)
         {
             anim_desc_bak = fp->anim_desc.word & 0xFFFFFFE0;
-            fp->anim_desc.word = script_info->anim_desc.word;
+            fp->anim_desc.word = motion_desc->anim_desc.word;
             anim_desc_update = fp->anim_desc.word & 0xFFFFFFE0;
 
             for (i = 0; ((anim_desc_bak != 0) || (anim_desc_update != 0)); i++, anim_desc_update <<= 1, anim_desc_bak <<= 1)
@@ -4703,20 +4703,20 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
         }
         if (status_struct != NULL)
         {
-            if (script_info->offset != 0x80000000)
+            if (motion_desc->offset != 0x80000000)
             {
                 // Actually subaction scripts?
                 if (fp->anim_desc.flags.is_use_submotion_script)
                 {
                     event_file_head = *fp->data->p_file_submotion;
 
-                    event_script_ptr = (void*)((intptr_t)script_info->offset + (intptr_t)event_file_head);
+                    event_script_ptr = (void*)((intptr_t)motion_desc->offset + (intptr_t)event_file_head);
                 }
                 else
                 {
                     event_file_head = *fp->data->p_file_mainmotion;
 
-                    event_script_ptr = (void*)((intptr_t)script_info->offset + (intptr_t)event_file_head);
+                    event_script_ptr = (void*)((intptr_t)motion_desc->offset + (intptr_t)event_file_head);
                 }
             }
             else event_script_ptr = NULL;
@@ -4725,9 +4725,9 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
         }
         else
         {
-            if (script_info->offset != 0x80000000)
+            if (motion_desc->offset != 0x80000000)
             {
-                event_script_ptr = (void*)script_info->offset;
+                event_script_ptr = (void*)motion_desc->offset;
             }
             else event_script_ptr = NULL;
 
@@ -4735,7 +4735,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
         }
         anim_frame = DObjGetStruct(fighter_gobj)->anim_speed - frame_begin;
 
-        fp->motion_script[0][0].frame_timer = fp->motion_script[1][0].frame_timer = anim_frame;
+        fp->motion_script[0][0].script_wait = fp->motion_script[1][0].script_wait = anim_frame;
 
         fp->motion_script[0][0].script_id = fp->motion_script[1][0].script_id = 0;
 

@@ -376,7 +376,7 @@ void itTaruBombExplodeInitItemVars(GObj *item_gobj)
 
     ip->damage_coll.hitstatus = nGMHitStatusNone;
 
-    itMainRefreshAtk(item_gobj);
+    itMainRefreshAttackColl(item_gobj);
     itMainUpdateAttackEvent(item_gobj, itGetAttackEvent(dITTaruBombItemDesc, lITTaruBombAttackEvents));
 }
 

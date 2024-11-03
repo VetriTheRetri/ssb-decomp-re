@@ -97,7 +97,7 @@ void itMarumineExplodeMakeEffectGotoSetStatus(GObj *item_gobj)
 
     ip->attack_coll.fgm_id = nSYAudioFGMExplodeL;
 
-    itMainRefreshAtk(item_gobj);
+    itMainRefreshAttackColl(item_gobj);
     itMarumineExplodeSetStatus(item_gobj);
 }
 
@@ -140,7 +140,7 @@ sb32 itMarumineCommonProcUpdate(GObj *item_gobj)
 
     if (dobj->anim_wait == AOBJ_ANIM_NULL)
     {
-        itMainRefreshAtk(item_gobj);
+        itMainRefreshAttackColl(item_gobj);
         itMainClearOwnerStats(item_gobj);
 
         ip->item_vars.marumine.offset.x = 0.0F;

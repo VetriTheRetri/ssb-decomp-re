@@ -202,50 +202,50 @@ typedef union GMColEventAll
 
 // // 0x8012CA90 - ColAnim Script 1
 // GMColEventSetRGBA     GMColEvents_Col1_Ev0 = {
-// nGMColEventKindSetColor1, 0xFF, 0xFF, 0xFF, 0x30 }; GMColEventDefault
-// GMColEvents_Col1_Ev1 = { nGMColEventKindWait, 65535 }; GMColEventGoto
-// GMColEvents_Col1_Ev2 = { nGMColEventKindGoto, &GMColEvents_Col1_Ev0 };
+// nGMColEventSetColor1, 0xFF, 0xFF, 0xFF, 0x30 }; GMColEventDefault
+// GMColEvents_Col1_Ev1 = { nGMColEventWait, 65535 }; GMColEventGoto
+// GMColEvents_Col1_Ev2 = { nGMColEventGoto, &GMColEvents_Col1_Ev0 };
 
 // // 0x8012CAA4 - ColAnim Script 2
 // GMColEventDefault     GMColEvents_Col2_Ev0 = {
-// nGMColEventKindToggleColorOff }; GMColEventDefault
-// GMColEvents_Col2_Ev1 = { nGMColEventKindEnd };
+// nGMColEventToggleColorOff }; GMColEventDefault
+// GMColEvents_Col2_Ev1 = { nGMColEventEnd };
 
 // // 0x8012CAAC - ColAnim Script 3
 // GMColEventSetRGBA     GMColEvents_Col3_Ev0 = {
-// nGMColEventKindSetColor1, 0xFF, 0xFF, 0xFF, 0x82 }; GMColEventBlendRGBA
-// GMColEvents_Col3_Ev1 = { nGMColEventKindBlendColor1, 3, 0xFF, 0xFF,
+// nGMColEventSetColor1, 0xFF, 0xFF, 0xFF, 0x82 }; GMColEventBlendRGBA
+// GMColEvents_Col3_Ev1 = { nGMColEventBlendColor1, 3, 0xFF, 0xFF,
 // 0xFF, 0x32 }; GMColEventDefault     GMColEvents_Col3_Ev2 = {
-// nGMColEventKindWait, 3 }; GMColEventDefault     GMColEvents_Col3_Ev3
-// = { nGMColEventKindToggleColorOff }; GMColEventDefault
-// GMColEvents_Col3_Ev4 = { nGMColEventKindWait, 1 }; GMColEventGoto
-// GMColEvents_Col3_Ev5 = { nGMColEventKindGoto, &GMColEvents_Col3_Ev0
+// nGMColEventWait, 3 }; GMColEventDefault     GMColEvents_Col3_Ev3
+// = { nGMColEventToggleColorOff }; GMColEventDefault
+// GMColEvents_Col3_Ev4 = { nGMColEventWait, 1 }; GMColEventGoto
+// GMColEvents_Col3_Ev5 = { nGMColEventGoto, &GMColEvents_Col3_Ev0
 // };
 
 // // 0x8012CAD0 - ColAnim Script 4
 // GMColEventSetRGBA     GMColEvents_Col4_Ev0 = {
-// nGMColEventKindSetColor1, 0x80, 0xFF, 0x80, 0x50 }; GMColEventBlendRGBA
-// GMColEvents_Col4_Ev1 = { nGMColEventKindBlendColor1, 3, 0x80, 0xFF,
+// nGMColEventSetColor1, 0x80, 0xFF, 0x80, 0x50 }; GMColEventBlendRGBA
+// GMColEvents_Col4_Ev1 = { nGMColEventBlendColor1, 3, 0x80, 0xFF,
 // 0x80, 0x14 }; GMColEventDefault     GMColEvents_Col4_Ev2 = {
-// nGMColEventKindWait, 3 }; GMColEventDefault     GMColEvents_Col4_Ev3
-// = { nGMColEventKindToggleColorOff }; GMColEventDefault
-// GMColEvents_Col4_Ev4 = { nGMColEventKindWait, 1 }; GMColEventGoto
-// GMColEvents_Col4_Ev5 = { nGMColEventKindGoto, &GMColEvents_Col4_Ev0
+// nGMColEventWait, 3 }; GMColEventDefault     GMColEvents_Col4_Ev3
+// = { nGMColEventToggleColorOff }; GMColEventDefault
+// GMColEvents_Col4_Ev4 = { nGMColEventWait, 1 }; GMColEventGoto
+// GMColEvents_Col4_Ev5 = { nGMColEventGoto, &GMColEvents_Col4_Ev0
 // };
 
 // // 0x8012CAF4 - ColAnim Script 5
 // GMColEventSetLight    GMColEvents_Col5_Ev0 = {
-// nGMColEventKindSetLight, 90, 0 }; GMColEventDefault
-// GMColEvents_Col5_Ev1 = { nGMColEventKindToggleColorOff };
-// GMColEventDefault     GMColEvents_Col5_Ev2 = { nGMColEventKindWait, 1
+// nGMColEventSetLight, 90, 0 }; GMColEventDefault
+// GMColEvents_Col5_Ev1 = { nGMColEventToggleColorOff };
+// GMColEventDefault     GMColEvents_Col5_Ev2 = { nGMColEventWait, 1
 // }; GMColEventSetRGBA     GMColEvents_Col5_Ev3 = {
-// nGMColEventKindSetColor1, 0xFF, 0xFF, 0xFF, 0xE6 }; GMColEventDefault
-// GMColEvents_Col5_Ev4 = { nGMColEventKindWait, 1 }; GMColEventBlendRGBA
-// GMColEvents_Col5_Ev5 = { nGMColEventKindBlendColor1, 6, 0xFF, 0xFF,
+// nGMColEventSetColor1, 0xFF, 0xFF, 0xFF, 0xE6 }; GMColEventDefault
+// GMColEvents_Col5_Ev4 = { nGMColEventWait, 1 }; GMColEventBlendRGBA
+// GMColEvents_Col5_Ev5 = { nGMColEventBlendColor1, 6, 0xFF, 0xFF,
 // 0xFF, 0x1E }; GMColEventDefault     GMColEvents_Col5_Ev6 = {
-// nGMColEventKindWait, 6 }; GMColEventDefault     GMColEvents_Col5_Ev7
-// = { nGMColEventKindToggleColorOff }; GMColEventDefault
-// GMColEvents_Col5_Ev8 = { nGMColEventKindEnd };
+// nGMColEventWait, 6 }; GMColEventDefault     GMColEvents_Col5_Ev7
+// = { nGMColEventToggleColorOff }; GMColEventDefault
+// GMColEvents_Col5_Ev8 = { nGMColEventEnd };
 
 // // Next: 8012CB20
 

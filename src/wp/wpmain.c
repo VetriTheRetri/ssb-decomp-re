@@ -115,7 +115,7 @@ s32 wpMainGetStaledDamage(WPStruct *wp) // Return final damage after applying st
 }
 
 // 0x80168158
-void wpMainClearAtkRecord(WPStruct *wp) // Clear hit victims array
+void wpMainClearAttackRecord(WPStruct *wp) // Clear hit victims array
 {
     s32 i;
 

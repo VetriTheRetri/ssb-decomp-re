@@ -145,5 +145,5 @@ void dbFallsStartScene()
 	D_ovl15_800D68A4.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl15_800D68A4);
 	D_ovl15_800D68C0.arena_size = (u32) ((uintptr_t)&lOverlay15ArenaHi - (uintptr_t)&lOverlay15ArenaLo);
-	syTaskmanInit(&D_ovl15_800D68C0);
+	syTaskmanRun(&D_ovl15_800D68C0);
 }

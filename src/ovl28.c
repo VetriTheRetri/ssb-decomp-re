@@ -43,7 +43,7 @@ extern intptr_t FILE_016_WHITE_CIRCLE_OFFSET_2; // DObjDesc for white circle
 
 extern intptr_t FILE_017_PANEL_IMAGE_OFFSET;
 extern intptr_t FILE_017_CPU_PANEL_LUT_OFFSET; // D_NF_00003238; // CPU panel LUT
-extern void func_800A26B8();
+extern void scManagerFuncDraw();
 
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
@@ -1014,7 +1014,7 @@ void mnTrainingRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state)
 {
 	SObj* cursor_sobj;
 	f32 current_x, current_y;
-	syColorRGBPair type_colors[4] = {
+	SYColorRGBPair type_colors[4] = {
 
 		{ { 0xE0, 0x15, 0x15 }, { 0x5B, 0x00, 0x00 } },
 		{ { 0x00, 0x00, 0xFB }, { 0x00, 0x00, 0x52 } },
@@ -2801,7 +2801,7 @@ SYVideoSetup D_ovl28_8013842C = {
 scRuntimeInfo D_ovl28_80138448 = {
 
 	0x00000000, 0x8000A5E4,
-	func_800A26B8, &lOverlay28ArenaLo,
+	scManagerFuncDraw, &lOverlay28ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x000055F0, 0x00000200,
 	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x00008000,
 	mnTrainingFuncLights, update_contdata,
@@ -2819,5 +2819,5 @@ void training_css_entry()
 	D_ovl28_8013842C.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl28_8013842C);
 	D_ovl28_80138448.arena_size = (u32) ((uintptr_t)&lOverlay28ArenaHi - (uintptr_t)&lOverlay28ArenaLo);
-	func_800A2698(&D_ovl28_80138448);
+	scManagerFuncUpdate(&D_ovl28_80138448);
 }

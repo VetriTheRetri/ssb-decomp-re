@@ -209,7 +209,7 @@ MPMapObjContainer *gMPCollisionMapObjs;
 s32 gMPCollisionLinesNum;
 
 // 0x80131388
-syColorRGBA gMPCollisionLightColor;
+SYColorRGBA gMPCollisionLightColor;
 
 // 0x8013138C
 s32 gMPCollisionYakumonosNum;

@@ -8,7 +8,7 @@
 extern uintptr_t D_NF_00000025;
 extern uintptr_t D_NF_00000041;
 
-extern void func_800A26B8(void);
+extern void scManagerFuncDraw(void);
 extern u32 func_8000092C();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
@@ -286,13 +286,13 @@ void mvOpeningKirbyMakeMotionWindow(void)
 		ft_desc.pos.x = pos.x;
 		ft_desc.pos.y = pos.y;
 		ft_desc.pos.z = pos.z;
-		ft_desc.lr_spawn = +1;
+		ft_desc.lr = +1;
 		ft_desc.team = gSCManagerBattleState->players[i].team;
 		ft_desc.player = i;
 		ft_desc.detail = nFTPartsDetailHigh;
 		ft_desc.costume = gSCManagerBattleState->players[i].costume;
 		ft_desc.handicap = gSCManagerBattleState->players[i].handicap;
-		ft_desc.cp_level = gSCManagerBattleState->players[i].level;
+		ft_desc.level = gSCManagerBattleState->players[i].level;
 		ft_desc.stock_count = gSCManagerBattleState->stocks;
 		ft_desc.damage = 0;
 		ft_desc.pkind = gSCManagerBattleState->players[i].pkind;
@@ -554,7 +554,7 @@ SYTaskmanSetup dMVOpeningKirbyTaskmanSetup =
     {
         0,                              // ???
         gcRunAll,                  // Update function
-        func_800A26B8,                  // Frame draw function
+        scManagerFuncDraw,                  // Frame draw function
         &ovl43_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???
@@ -599,5 +599,5 @@ void mvOpeningKirbyStartScene(void)
 	syVideoInit(&dMVOpeningKirbyVideoSetup);
 
 	dMVOpeningKirbyTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl43_BSS_END);
-	syTaskmanInit(&dMVOpeningKirbyTaskmanSetup);
+	syTaskmanRun(&dMVOpeningKirbyTaskmanSetup);
 }

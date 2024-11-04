@@ -256,13 +256,13 @@ void mvOpeningYoshiInitFighterStagePanel()
 		spawn_info.pos.x = spawn_position.x;
 		spawn_info.pos.y = spawn_position.y;
 		spawn_info.pos.z = spawn_position.z;
-		spawn_info.lr_spawn = +1;
+		spawn_info.lr = +1;
 		spawn_info.team = gSCManagerBattleState->players[i].team;
 		spawn_info.player = i;
 		spawn_info.detail = nFTPartsDetailHigh;
 		spawn_info.costume = gSCManagerBattleState->players[i].costume;
 		spawn_info.handicap = gSCManagerBattleState->players[i].handicap;
-		spawn_info.cp_level = gSCManagerBattleState->players[i].level;
+		spawn_info.level = gSCManagerBattleState->players[i].level;
 		spawn_info.stock_count = gSCManagerBattleState->stocks;
 		spawn_info.damage = 0;
 		spawn_info.pkind = gSCManagerBattleState->players[i].pkind;
@@ -491,5 +491,5 @@ void intro_focus_yoshi_entry()
 	D_ovl41_8018E13C.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl41_8018E13C);
 	D_ovl41_8018E158.arena_size = (u32) ((uintptr_t)&lOverlay41ArenaHi - (uintptr_t)&lOverlay41ArenaLo);
-	syTaskmanInit(&D_ovl41_8018E158);
+	syTaskmanRun(&D_ovl41_8018E158);
 }

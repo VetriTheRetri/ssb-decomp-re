@@ -77,31 +77,31 @@ enum nSYColorRGBAIndex
     nSYColorRGBAIndexA
 };
 
-typedef struct syColorRGB
+typedef struct SYColorRGB
 {
     u8 r, g, b;
 
-} syColorRGB;
+} SYColorRGB;
 
-typedef struct syColorRGBA
+typedef struct SYColorRGBA
 {
     u8 r, g, b, a;
 
-} syColorRGBA;
+} SYColorRGBA;
 
-typedef struct syColorRGBPair
+typedef struct SYColorRGBPair
 {
-    syColorRGB prim, env;
+    SYColorRGB prim, env;
 
-} syColorRGBPair;
+} SYColorRGBPair;
 
-// Like syColorRGBA, but it includes a packed u32
-typedef union syColorPack
+// Like SYColorRGBA, but it includes a packed u32
+typedef union SYColorPack
 {
-    syColorRGBA s;
+    SYColorRGBA s;
     u32 pack;
 
-} syColorPack;
+} SYColorPack;
 
 typedef struct syRectangle
 {

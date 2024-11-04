@@ -269,7 +269,7 @@ void unref_80004934(u16 arg0, u16 arg1)
 }
 
 // 0x80004950
-void syTaskmanInitGeneralHeap(void *start, u32 size)
+void syTaskmanRunGeneralHeap(void *start, u32 size)
 {
 	syMallocInit(&gSYTaskmanGeneralHeap, 0x10000, start, size);
 }
@@ -1230,18 +1230,18 @@ void func_80006548(syTaskmanBufferSetup *arg0, void (*arg1)())
 // 0x800067E4
 void unref_800067E4(syTaskmanBufferSetup *arg)
 {
-	syTaskmanInitGeneralHeap(arg->arena_start, arg->arena_size);
+	syTaskmanRunGeneralHeap(arg->arena_start, arg->arena_size);
 	D_800465F8.func_update = func_800062B4;
 	D_800465F8.func_draw = func_800062EC;
 	func_80006548(arg, NULL);
 }
 
 // 0x8000683C
-void syTaskmanInit(SYTaskmanSetup *ts)
+void syTaskmanRun(SYTaskmanSetup *ts)
 {
 	GCSetup omsetup;
 
-	syTaskmanInitGeneralHeap(ts->buffer_setup.arena_start, ts->buffer_setup.arena_size);
+	syTaskmanRunGeneralHeap(ts->buffer_setup.arena_start, ts->buffer_setup.arena_size);
 
 	omsetup.gobjthreads      = syTaskmanMalloc(sizeof(GObjThread) * ts->gobjthreads_num, 0x8);
 	omsetup.gobjthreads_num  = ts->gobjthreads_num;

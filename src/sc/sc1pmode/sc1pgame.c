@@ -6,7 +6,7 @@
 #include <sys/video.h>
 #include <lb/library.h>
 
-extern void func_800A26B8();
+extern void scManagerFuncDraw();
 
 // // // // // // // // // // // //
 //                               //
@@ -656,7 +656,7 @@ s32 *dSC1PGameInterfaceCountPositions[/* */] =
 u16 dSC1PGameStageCommonStopTics[/* */] = { 22, 15, 60 };
 
 // 0x80192B14
-syColorRGBA dSC1PGameFadeColor = { 0x00, 0x00, 0x00, 0x00 };
+SYColorRGBA dSC1PGameFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x80192B18
 SYVideoSetup dSC1PGameVideoSetup = SYVIDEO_DEFINE_DEFAULT();
@@ -668,7 +668,7 @@ SYTaskmanSetup dSC1PGameTaskmanSetup =
     {
         0,                          // ???
         sc1PGameFuncUpdate,          // Update function
-        func_800A26B8,              // Frame draw function
+        scManagerFuncDraw,              // Frame draw function
         &ovl65_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???
@@ -1270,7 +1270,7 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
     FTStruct *fp;
     FTAttributes *attr;
     void *unused2;
-    FTCreateDesc player_spawn;
+    FTCreateDesc ft_desc;
     void **figatree;
     GObj *com_gobj;
     s32 player;
@@ -1316,49 +1316,49 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
         }
         sSC1PGamePlayerSetups[player].team_order = sSC1PGameCurrentEnemyVariation++;
 
-        player_spawn = dFTManagerDefaultFighterDesc;
+        ft_desc = dFTManagerDefaultFighterDesc;
 
-        player_spawn.fkind = gSCManagerBattleState->players[player].fkind;
+        ft_desc.fkind = gSCManagerBattleState->players[player].fkind;
 
-        sc1PGameGetRandomSpawnPosition(&player_spawn.pos, nMPMapObjKind1PGameEnemyTeamSpawn);
+        sc1PGameGetRandomSpawnPosition(&ft_desc.pos, nMPMapObjKind1PGameEnemyTeamSpawn);
 
-        player_spawn.pos.y = (gMPCollisionGroundData->cobj_bound_top + gMPCollisionGroundData->map_bound_top) * 0.5F;
+        ft_desc.pos.y = (gMPCollisionGroundData->cobj_bound_top + gMPCollisionGroundData->map_bound_top) * 0.5F;
 
-        player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? -1 : +1;
+        ft_desc.lr = (ft_desc.pos.x >= 0.0F) ? -1 : +1;
 
-        player_spawn.team = gSCManagerBattleState->players[player].team;
+        ft_desc.team = gSCManagerBattleState->players[player].team;
 
-        player_spawn.player = player;
+        ft_desc.player = player;
 
-        player_spawn.detail = ((gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
+        ft_desc.detail = ((gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
-        player_spawn.costume = gSCManagerBattleState->players[player].costume;
+        ft_desc.costume = gSCManagerBattleState->players[player].costume;
 
-        player_spawn.shade = gSCManagerBattleState->players[player].shade;
+        ft_desc.shade = gSCManagerBattleState->players[player].shade;
 
-        player_spawn.handicap = gSCManagerBattleState->players[player].handicap;
+        ft_desc.handicap = gSCManagerBattleState->players[player].handicap;
 
-        player_spawn.cp_level = gSCManagerBattleState->players[player].level;
+        ft_desc.level = gSCManagerBattleState->players[player].level;
 
-        player_spawn.stock_count = gSCManagerBattleState->players[player].stock_count;
+        ft_desc.stock_count = gSCManagerBattleState->players[player].stock_count;
 
-        player_spawn.damage = 0;
+        ft_desc.damage = 0;
 
-        player_spawn.pkind = gSCManagerBattleState->players[player].pkind;
+        ft_desc.pkind = gSCManagerBattleState->players[player].pkind;
 
-        player_spawn.controller = &gPlayerControllers[player];
+        ft_desc.controller = &gPlayerControllers[player];
 
-        player_spawn.figatree_heap = figatree;
+        ft_desc.figatree_heap = figatree;
 
-        player_spawn.copy_kind = sSC1PGamePlayerSetups[player].copy_kind;
+        ft_desc.copy_kind = sSC1PGamePlayerSetups[player].copy_kind;
 
-        player_spawn.team_order = sSC1PGamePlayerSetups[player].team_order;
+        ft_desc.team_order = sSC1PGamePlayerSetups[player].team_order;
 
-        player_spawn.is_skip_entry = TRUE;
-        player_spawn.is_skip_magnify = sSC1PGamePlayerSetups[player].is_skip_magnify;
-        player_spawn.is_skip_shadow_setup = TRUE;
+        ft_desc.is_skip_entry = TRUE;
+        ft_desc.is_skip_magnify = sSC1PGamePlayerSetups[player].is_skip_magnify;
+        ft_desc.is_skip_shadow_setup = TRUE;
 
-        com_gobj = ftManagerMakeFighter(&player_spawn);
+        com_gobj = ftManagerMakeFighter(&ft_desc);
 
         fp = ftGetStruct(com_gobj);
 
@@ -1989,8 +1989,8 @@ void sc1PGameFuncStart(void)
     void *addr;
     u8 spA0[0x10];
     s32 i;
-    FTCreateDesc player_spawn;
-    syColorRGBA color;
+    FTCreateDesc ft_desc;
+    SYColorRGBA color;
 
     sc1PGameSetupStageAll();
     sc1PGameSetupFiles();
@@ -2074,7 +2074,7 @@ void sc1PGameFuncStart(void)
     }
     for (i = 0; i < (ARRAY_COUNT(gSCManagerBattleState->players) + ARRAY_COUNT(sSC1PGamePlayerSetups)) / 2; i++)
     {
-        player_spawn = dFTManagerDefaultFighterDesc;
+        ft_desc = dFTManagerDefaultFighterDesc;
 
         if (gSCManagerBattleState->players[i].pkind == nFTPlayerKindNot)
         {
@@ -2082,45 +2082,45 @@ void sc1PGameFuncStart(void)
         }
         ftManagerSetupFilesAllKind(gSCManagerBattleState->players[i].fkind);
 
-        player_spawn.fkind = gSCManagerBattleState->players[i].fkind;
+        ft_desc.fkind = gSCManagerBattleState->players[i].fkind;
 
-        sc1PGameGetSpawnPosition(&player_spawn.pos, sSC1PGamePlayerSetups[i].mapobj_kind);
+        sc1PGameGetSpawnPosition(&ft_desc.pos, sSC1PGamePlayerSetups[i].mapobj_kind);
 
-        player_spawn.lr_spawn = sc1PGameGetEnemySpawnLR(i);
+        ft_desc.lr = sc1PGameGetEnemySpawnLR(i);
 
-        player_spawn.team = gSCManagerBattleState->players[i].team;
+        ft_desc.team = gSCManagerBattleState->players[i].team;
 
-        player_spawn.player = i;
+        ft_desc.player = i;
 
-        player_spawn.detail = ((gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
+        ft_desc.detail = ((gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
-        player_spawn.costume = gSCManagerBattleState->players[i].costume;
+        ft_desc.costume = gSCManagerBattleState->players[i].costume;
 
-        player_spawn.shade = gSCManagerBattleState->players[i].shade;
+        ft_desc.shade = gSCManagerBattleState->players[i].shade;
 
-        player_spawn.handicap = gSCManagerBattleState->players[i].handicap;
+        ft_desc.handicap = gSCManagerBattleState->players[i].handicap;
 
-        player_spawn.cp_level = gSCManagerBattleState->players[i].level;
+        ft_desc.level = gSCManagerBattleState->players[i].level;
 
-        player_spawn.stock_count = gSCManagerBattleState->players[i].stock_count;
+        ft_desc.stock_count = gSCManagerBattleState->players[i].stock_count;
 
-        player_spawn.damage = 0;
+        ft_desc.damage = 0;
 
-        player_spawn.pkind = gSCManagerBattleState->players[i].pkind;
+        ft_desc.pkind = gSCManagerBattleState->players[i].pkind;
 
-        player_spawn.controller = &gPlayerControllers[i];
+        ft_desc.controller = &gPlayerControllers[i];
 
-        player_spawn.figatree_heap = (sSC1PGamePlayerSetups[i].figatree != NULL) ? sSC1PGamePlayerSetups[i].figatree : ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
+        ft_desc.figatree_heap = (sSC1PGamePlayerSetups[i].figatree != NULL) ? sSC1PGamePlayerSetups[i].figatree : ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[i].fkind);
 
-        player_spawn.copy_kind = sSC1PGamePlayerSetups[i].copy_kind;
+        ft_desc.copy_kind = sSC1PGamePlayerSetups[i].copy_kind;
 
-        player_spawn.team_order = sSC1PGamePlayerSetups[i].team_order;
+        ft_desc.team_order = sSC1PGamePlayerSetups[i].team_order;
 
-        player_spawn.is_skip_entry = sSC1PGamePlayerSetups[i].is_skip_entry;
+        ft_desc.is_skip_entry = sSC1PGamePlayerSetups[i].is_skip_entry;
 
-        player_spawn.is_skip_magnify = sSC1PGamePlayerSetups[i].is_skip_magnify;
+        ft_desc.is_skip_magnify = sSC1PGamePlayerSetups[i].is_skip_magnify;
 
-        fighter_gobj = ftManagerMakeFighter(&player_spawn), fp = ftGetStruct(fighter_gobj);
+        fighter_gobj = ftManagerMakeFighter(&ft_desc), fp = ftGetStruct(fighter_gobj);
 
         ftParamInitPlayerBattleStats(i, fighter_gobj);
 
@@ -2849,7 +2849,7 @@ void sc1PGameStartScene(void)
 
     dSC1PGameTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl65_BSS_END);
     dSC1PGameTaskmanSetup.func_start = sc1PGameFuncStart;
-    func_800A2698(&dSC1PGameTaskmanSetup);
+    scManagerFuncUpdate(&dSC1PGameTaskmanSetup);
     
     sc1PGameInitBonusStats();
     auStopBGM();

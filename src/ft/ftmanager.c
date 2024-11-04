@@ -466,7 +466,7 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
     FTAttributes *attr = fp->attr;
     f32 scale;
 
-    fp->lr = ft_desc->lr_spawn;
+    fp->lr = ft_desc->lr;
     fp->percent_damage = ft_desc->damage;
 
     if (fp->pkind != nFTPlayerKindDemo)
@@ -733,7 +733,7 @@ GObj* ftManagerMakeFighter(FTCreateDesc *ft_desc) // Create fighter
     fp->shade_color.b = (attr->shade_color[fp->shade - 1].b * attr->shade_color[fp->shade - 1].a) / 0xFF;
 
     fp->handicap = ft_desc->handicap;
-    fp->cp_level = ft_desc->cp_level;
+    fp->level = ft_desc->level;
 
     fp->card_anim_frame_id = 0;
     fp->unk_ft_0x3C = 0;

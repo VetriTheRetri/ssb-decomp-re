@@ -1001,7 +1001,7 @@ void scManagerRunLoop(sb32 arg)
 				syDmaLoadOverlay(&dSCManagerOverlays[3]);
 				syDmaLoadOverlay(&dSCManagerOverlays[1]);
 				syDmaLoadOverlay(&dSCManagerOverlays[5]);
-				overlay_set23_entry();
+				mvUnknownMarioStartScene();
 				break;
 
 			case nSCKind1PGame:
@@ -1247,13 +1247,13 @@ void scManagerRunLoop(sb32 arg)
 }
 
 // 0x800A2698
-void func_800A2698(SYTaskmanSetup *arg) //  up gtl and om systems
+void scManagerFuncUpdate(SYTaskmanSetup *arg)
 {
-	syTaskmanInit(arg);
+	syTaskmanRun(arg);
 }
 
 // 0x800A26B8
-void func_800A26B8()
+void scManagerFuncDraw(void)
 {
 	gcDrawAll();
 }

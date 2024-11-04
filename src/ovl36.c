@@ -256,13 +256,13 @@ void mvOpeningMarioInitFighterStagePanel()
 		spawn_info.pos.x = spawn_position.x;
 		spawn_info.pos.y = spawn_position.y;
 		spawn_info.pos.z = spawn_position.z;
-		spawn_info.lr_spawn = +1;
+		spawn_info.lr = +1;
 		spawn_info.team = gSCManagerBattleState->players[i].team;
 		spawn_info.player = i;
 		spawn_info.detail = nFTPartsDetailHigh;
 		spawn_info.costume = gSCManagerBattleState->players[i].costume;
 		spawn_info.handicap = gSCManagerBattleState->players[i].handicap;
-		spawn_info.cp_level = gSCManagerBattleState->players[i].level;
+		spawn_info.level = gSCManagerBattleState->players[i].level;
 		spawn_info.stock_count = gSCManagerBattleState->stocks;
 		spawn_info.damage = 0;
 		spawn_info.pkind = gSCManagerBattleState->players[i].pkind;
@@ -491,5 +491,5 @@ void intro_focus_mario_entry()
 	D_ovl36_8018E11C.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl36_8018E11C);
 	D_ovl36_8018E138.arena_size = (u32) ((uintptr_t)&lOverlay36ArenaHi - (uintptr_t)&lOverlay36ArenaLo);
-	syTaskmanInit(&D_ovl36_8018E138);
+	syTaskmanRun(&D_ovl36_8018E138);
 }

@@ -245,7 +245,7 @@ IFACharacter dIFCommonAnnounceSuddenDeathSpriteData[/* */] =
 };
 
 // 0x8012EDDC
-syColorRGBPair dIFCommonAnnounceSuddenDeathSpriteColors = { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0x00 } };
+SYColorRGBPair dIFCommonAnnounceSuddenDeathSpriteColors = { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0x00 } };
 
 // 0x8012EDE4
 IFACharacter dIFCommonAnnounceTimeUpSpriteData[/* */] =
@@ -459,7 +459,7 @@ IFACharacter dIFCommonAnnounceFailureSpriteData[/* */] =
 };
 
 // 0x8012F12C
-syColorRGBPair dIFCommonAnnounceFailureSpriteColors = { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0xFF } };
+SYColorRGBPair dIFCommonAnnounceFailureSpriteColors = { { 0xFF, 0xFF, 0xFF }, { 0x00, 0x00, 0xFF } };
 
 // 0x8012F134
 IFACharacter dIFCommonAnnounceCompleteSpriteData[/* */] =
@@ -476,7 +476,7 @@ IFACharacter dIFCommonAnnounceCompleteSpriteData[/* */] =
 };
 
 // 0x8012F17C
-syColorRGBPair dIFCommonAnnounceCompleteSpriteColors = { { 0xFF, 0xFF, 0xFF }, { 0xFF, 0x00, 0x00 } };
+SYColorRGBPair dIFCommonAnnounceCompleteSpriteColors = { { 0xFF, 0xFF, 0xFF }, { 0xFF, 0x00, 0x00 } };
 
 // 0x8012F184
 u16 dIFCommonAnnounceDefeatedVoiceIDs[/* */] =
@@ -1390,7 +1390,7 @@ void ifCommonPlayerMagnifyGetPosition(f32 player_pos_x, f32 player_pos_y, Vec2f 
 void ifCommonPlayerMagnifyUpdateRender(Gfx **dls, s32 color_id, f32 ulx, f32 uly)
 {
     Gfx *dl = dls[0];
-    syColorRGB *color;
+    SYColorRGB *color;
     f32 temp_f0;
     s32 var_uly;
     s32 var_lrx;
@@ -2330,7 +2330,7 @@ void ifCommonSuddenDeathThread(GObj *interface_gobj)
 }
 
 // 0x80112B24
-void ifCommonAnnounceSetColors(GObj *interface_gobj, syColorRGBPair *colors)
+void ifCommonAnnounceSetColors(GObj *interface_gobj, SYColorRGBPair *colors)
 {
     SObj *sobj = SObjGetStruct(interface_gobj);
 

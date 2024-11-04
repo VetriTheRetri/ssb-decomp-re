@@ -556,14 +556,14 @@ struct FTCreateDesc
 {
     s32 fkind;
     Vec3f pos;
-    s32 lr_spawn;
+    s32 lr;
     u8 team;
     u8 player;
     u8 detail;
     u8 costume;
     u8 shade;
     u8 handicap;
-    u8 cp_level;
+    u8 level;
     u8 stock_count;
     u8 unk_rebirth_0x1C;
     u8 unk_rebirth_0x1D;
@@ -935,8 +935,8 @@ struct FTAttributes
     u16 item_throw_mul;
     u16 heavyget_sfx;
     f32 halo_size; // Respawn platform size?
-    syColorRGBA shade_color[3];
-    syColorRGBA fog_color;
+    SYColorRGBA shade_color[3];
+    SYColorRGBA fog_color;
     ub32 is_have_attack11    : 1;
     ub32 is_have_attack12    : 1;
     ub32 is_have_attackdash  : 1;
@@ -1010,7 +1010,7 @@ struct FTStruct
     u8 costume;
     u8 shade;                   // i.e. When multiple instances of the same character costume are in-game
     u8 handicap;
-    u8 cp_level;
+    u8 level;
     s8 stock_count;
     u8 team_order;              // Order number if this fighter is a "VS *character* Team" member; used to check for bonuses such as Yoshi Rainbow
     u8 dl_link;
@@ -1289,8 +1289,8 @@ struct FTStruct
 
     GMColAnim colanim;
 
-    syColorRGBA fog_color;      // Used only by Master Hand, when in the background on the -Z plane?
-    syColorRGBA shade_color;    // Shade colors of character costume
+    SYColorRGBA fog_color;      // Used only by Master Hand, when in the background on the -Z plane?
+    SYColorRGBA shade_color;    // Shade colors of character costume
 
     FTKey key;                  // Automatic input sequence struct
 

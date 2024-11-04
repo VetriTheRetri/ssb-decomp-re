@@ -353,7 +353,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
 
                         track_aobjs[i]->rate_base = track_aobjs[i]->rate_target;
                         track_aobjs[i]->rate_target = 0.0F;
-                        track_aobjs[i]->kind = 3;
+                        track_aobjs[i]->kind = nGCAnimKindCubic;
 
                         if (payload != 0.0F)
                         {
@@ -390,7 +390,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
 
                         AObjAnimAdvance(dobj->anim_joint.event32);
 
-                        track_aobjs[i]->kind = 2;
+                        track_aobjs[i]->kind = nGCAnimKindLinear;
 
                         if (payload != 0.0F)
                         {
@@ -433,7 +433,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
 
                         AObjAnimAdvance(dobj->anim_joint.event32);
 
-                        track_aobjs[i]->kind = 3;
+                        track_aobjs[i]->kind = nGCAnimKindCubic;
 
                         if (payload != 0.0F)
                         {
@@ -496,7 +496,7 @@ void gcParseDObjAnimJoint(DObj *dobj)
 
                         AObjAnimAdvance(dobj->anim_joint.event32);
 
-                        track_aobjs[i]->kind = 1;
+                        track_aobjs[i]->kind = nGCAnimKindStep;
                         track_aobjs[i]->length_invert = payload;
                         track_aobjs[i]->length = -dobj->anim_wait - dobj->anim_speed;
                         track_aobjs[i]->rate_target = 0.0F;
@@ -959,7 +959,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
 
                         AObjAnimAdvance(mobj->matanim_joint.event32);
 
-                        mat_aobjs[i]->kind = 2;
+                        mat_aobjs[i]->kind = nGCAnimKindLinear;
 
                         if (payload != 0.0F)
                         {
@@ -1003,7 +1003,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
 
                         AObjAnimAdvance(mobj->matanim_joint.event32);
 
-                        mat_aobjs[i]->kind = 3;
+                        mat_aobjs[i]->kind = nGCAnimKindCubic;
 
                         if (payload != 0.0F)
                         {
@@ -1068,7 +1068,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
 
                         AObjAnimAdvance(mobj->matanim_joint.event32);
 
-                        mat_aobjs[i]->kind = 1;
+                        mat_aobjs[i]->kind = nGCAnimKindStep;
 
                         mat_aobjs[i]->length_invert = payload;
                         mat_aobjs[i]->length = -mobj->anim_wait - mobj->anim_speed;
@@ -1153,7 +1153,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
 
                         AObjAnimAdvance(mobj->matanim_joint.event32);
 
-                        matspecial_aobjs[i]->kind = 1;
+                        matspecial_aobjs[i]->kind = nGCAnimKindStep;
 
                         matspecial_aobjs[i]->length_invert = payload;
                         matspecial_aobjs[i]->length = -mobj->anim_wait - mobj->anim_speed;
@@ -1187,7 +1187,7 @@ void gcParseMObjMatAnimJoint(MObj *mobj)
 
                         AObjAnimAdvance(mobj->matanim_joint.event32);
 
-                        matspecial_aobjs[i]->kind = 2;
+                        matspecial_aobjs[i]->kind = nGCAnimKindLinear;
 
                         if (payload != 0.0F)
                         {
@@ -1251,11 +1251,11 @@ void gcPlayMObjMatAnim(MObj *mobj)
     f32 temp_f14;
     f32 temp_f20;
     f32 temp_f22;
-    syColorPack color; // color
+    SYColorPack color; // color
     f32 temp_f24;
     s32 interp;
-    syColorPack sp38; // sp38
-    syColorPack sp34; // sp34
+    SYColorPack sp38; // sp38
+    SYColorPack sp34; // sp34
 
     if (mobj->anim_wait != AOBJ_ANIM_NULL) 
     {
@@ -1389,7 +1389,7 @@ void gcPlayMObjMatAnim(MObj *mobj)
                         break;
                     
                     case nGCAnimKindStep:
-                        color = (aobj->length_invert <= aobj->length) ? *(syColorPack*)&aobj->value_target : *(syColorPack*)&aobj->value_base;
+                        color = (aobj->length_invert <= aobj->length) ? *(SYColorPack*)&aobj->value_target : *(SYColorPack*)&aobj->value_base;
                         break;
                     }
                     switch(aobj->track)
@@ -2572,7 +2572,7 @@ void gcParseCameraCamAnimJoint(CObj *cobj)
 
                         track_aobjs[i]->rate_base = track_aobjs[i]->rate_target;
                         track_aobjs[i]->rate_target = 0.0F;
-                        track_aobjs[i]->kind = 3;
+                        track_aobjs[i]->kind = nGCAnimKindCubic;
 
                         if (payload != 0.0F)
                         {
@@ -2609,7 +2609,7 @@ void gcParseCameraCamAnimJoint(CObj *cobj)
 
                         AObjAnimAdvance(cobj->cobjanim_joint.event32);
 
-                        track_aobjs[i]->kind = 2;
+                        track_aobjs[i]->kind = nGCAnimKindLinear;
 
                         if (payload != 0.0F)
                         {
@@ -2652,7 +2652,7 @@ void gcParseCameraCamAnimJoint(CObj *cobj)
 
                         AObjAnimAdvance(cobj->cobjanim_joint.event32);
 
-                        track_aobjs[i]->kind = 3;
+                        track_aobjs[i]->kind = nGCAnimKindCubic;
 
                         if (payload != 0.0F)
                         {
@@ -2715,7 +2715,7 @@ void gcParseCameraCamAnimJoint(CObj *cobj)
 
                         AObjAnimAdvance(cobj->cobjanim_joint.event32);
 
-                        track_aobjs[i]->kind = 1;
+                        track_aobjs[i]->kind = nGCAnimKindStep;
                         track_aobjs[i]->length_invert = payload;
                         track_aobjs[i]->length = -cobj->anim_wait - cobj->anim_speed;
                         track_aobjs[i]->rate_target = 0.0F;

@@ -38,10 +38,10 @@ sb32 sMNN64IsProceedOpening;
 // // // // // // // // // // // //
 
 // 0x80131F50
-syColorRGBA dMNN64EndFadeColor = { 0x00, 0x00, 0x00, 0xFF };
+SYColorRGBA dMNN64EndFadeColor = { 0x00, 0x00, 0x00, 0xFF };
 
 // 0x80131F54
-syColorRGBA dMNN64StartFadeColor = { 0x00, 0x00, 0x00, 0x00 };
+SYColorRGBA dMNN64StartFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x80131F58
 Lights1 dMNN64Lights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x0A, 0x32, 0x32);
@@ -114,7 +114,7 @@ void mnN64LogoThreadUpdate(GObj *gobj)
 	f32 step;
 	s32 i;
 	SObj *sobj;
-	syColorRGBA color;
+	SYColorRGBA color;
 
 	sobj = SObjGetStruct(gobj);
 
@@ -186,7 +186,7 @@ void mnN64FuncStart(void)
 	GObj *gobj;
 	SObj *sobj;
 	Sprite *sprite;
-	syColorRGBA color;
+	SYColorRGBA color;
 
 	sMNN64SkipAllowWait = 8;
 	sMNN64IsProceedOpening = FALSE;
@@ -275,5 +275,5 @@ void mnN64StartScene(void)
 	syVideoInit(&dMNN64VideoSetup);
 
 	dMNN64TaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl58_BSS_END);
-	syTaskmanInit(&dMNN64TaskmanSetup);
+	syTaskmanRun(&dMNN64TaskmanSetup);
 }

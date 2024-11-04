@@ -253,12 +253,12 @@ void mnVSOptionsMakeDamageDigitSObjs(GObj *gobj, s32 damage, f32 pos_x, f32 pos_
 void mnVSOptionsSetOptionSpriteColors(GObj *gobj, s32 status)
 {
     // 0x80134758
-    syColorRGBPair notcolors = { { 0x00, 0x00, 0x00 }, { 0x82, 0x82, 0xAA } };
+    SYColorRGBPair notcolors = { { 0x00, 0x00, 0x00 }, { 0x82, 0x82, 0xAA } };
 
     // 0x80134760
-    syColorRGBPair hicolors = { { 0xFA, 0x8C, 0x00 }, { 0xF4, 0xC8, 0x0A } };
+    SYColorRGBPair hicolors = { { 0xFA, 0x8C, 0x00 }, { 0xF4, 0xC8, 0x0A } };
 
-    syColorRGBPair *colors;
+    SYColorRGBPair *colors;
     
     SObj *sobj = SObjGetStruct(gobj);
     
@@ -1469,5 +1469,5 @@ void mnVSOptionsStartScene(void)
     syVideoInit(&dMNVSOptionsVideoSetup);
     
     dMNVSOptionsTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl20_BSS_END);
-    syTaskmanInit(&dMNVSOptionsTaskmanSetup);
+    syTaskmanRun(&dMNVSOptionsTaskmanSetup);
 }

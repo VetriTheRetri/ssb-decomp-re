@@ -65,23 +65,23 @@ sb32 gcParseGObjScript(void (*func)(GObjScript))
     {
         switch (gobjscript[i].id + ARRAY_COUNT(gobj->gobjscripts)) 
         {
-        case nGCCommonCommandEnd: 
+        case nGCCommonEventEnd: 
             gcEjectGObj(NULL); 
             return TRUE;
             
-        case nGCCommonCommandPause: 
+        case nGCCommonEventPause: 
             gcPauseGObjProcessAll(NULL); 
             break;
             
-        case nGCCommonCommandResume: 
+        case nGCCommonEventResume: 
             gcResumeGObjProcessAll(NULL); 
             break;
             
-        case nGCCommonCommandHide: 
+        case nGCCommonEventHide: 
             gGCCurrentCommon->flags |= GOBJ_FLAG_HIDDEN; 
             break;
             
-        case nGCCommonCommandShow:
+        case nGCCommonEventShow:
             gGCCurrentCommon->flags &= ~GOBJ_FLAG_HIDDEN; 
             break;
             

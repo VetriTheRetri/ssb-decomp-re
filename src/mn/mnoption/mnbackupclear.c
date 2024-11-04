@@ -229,12 +229,12 @@ void mnBackupClearMakeHeaderSObjs(void)
 void mnBackupClearUpdateOptionTabColors(GObj *gobj, s32 status)
 {
     // 0x80132F38
-    syColorRGB notcolors = { 0x7D, 0x45, 0x07 };
+    SYColorRGB notcolors = { 0x7D, 0x45, 0x07 };
 
     // 0x80132F3C
-    syColorRGB hicolors = { 0xFF, 0xA8, 0x00 };
+    SYColorRGB hicolors = { 0xFF, 0xA8, 0x00 };
 
-    syColorRGB *colors;
+    SYColorRGB *colors;
 
     SObj *sobj = SObjGetStruct(gobj);
 
@@ -871,5 +871,5 @@ void mnBackupClearStartScene(void)
     syVideoInit(&dMNBackupClearVideoSetup);
     
     dMNBackupClearTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl53_BSS_END);
-    syTaskmanInit(&dMNBackupClearTaskmanSetup);
+    syTaskmanRun(&dMNBackupClearTaskmanSetup);
 }

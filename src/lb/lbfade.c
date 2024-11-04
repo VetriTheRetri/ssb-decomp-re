@@ -16,7 +16,7 @@ s32 sLBFadeAlphaCurrent;
 s32 sLBFadeLength;
 
 // 0x800D646C
-syColorRGBA sLBFadeColor;
+SYColorRGBA sLBFadeColor;
 
 // 0x800D6470
 sb32* sLBFadeIsProceedScene;
@@ -74,7 +74,7 @@ void lbFadeFuncDisplay(GObj *gobj)
 }
 
 // 0x800D4060
-void lbFadeMakeActor(u32 id, s32 link, u32 link_priority, syColorRGBA *color, s32 fade_length, sb32 is_eject_gobj, sb32 *is_proceed_scene)
+void lbFadeMakeActor(u32 id, s32 link, u32 link_priority, SYColorRGBA *color, s32 fade_length, sb32 is_eject_gobj, sb32 *is_proceed_scene)
 {
     GObj *gobj = gcMakeGObjSPAfter(id, NULL, link, GOBJ_PRIORITY_DEFAULT);
 

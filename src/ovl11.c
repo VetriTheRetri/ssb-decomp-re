@@ -95,5 +95,5 @@ void mnNoControllerStartScene()
 	D_ovl11_800D6700.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl11_800D6700);
 	D_ovl11_800D671C.arena_size = (u32) ((uintptr_t)&lOverlay11ArenaHi - (uintptr_t)&lOverlay11ArenaLo);
-	syTaskmanInit(&D_ovl11_800D671C);
+	syTaskmanRun(&D_ovl11_800D671C);
 }

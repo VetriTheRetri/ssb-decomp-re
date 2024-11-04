@@ -1470,7 +1470,7 @@ void mnTitleStartScene(void)
 		lbBackupWrite();
 	}
 	dMNTitleTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl9_VRAM - (uintptr_t)&ovl10_BSS_END);
-	syTaskmanInit(&dMNTitleTaskmanSetup);
+	syTaskmanRun(&dMNTitleTaskmanSetup);
 }
 
 // 0x80134140

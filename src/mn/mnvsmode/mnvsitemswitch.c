@@ -896,5 +896,5 @@ void mnVSItemSwitchStartScene(void)
     syVideoInit(&dMNVSItemSwitchVideoSetup);
     
     dMNVSItemSwitchTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl21_BSS_END);
-    syTaskmanInit(&dMNVSItemSwitchTaskmanSetup);
+    syTaskmanRun(&dMNVSItemSwitchTaskmanSetup);
 }

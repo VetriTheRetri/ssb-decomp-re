@@ -3518,7 +3518,7 @@ void ftComputerUpdateInputs(FTStruct *this_fp)
                         dist_x = com->target_pos.x - this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
                         dist_y = com->target_pos.y - this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
 
-                        if ((this_fp->ga == nMPKineticsGround) && (this_fp->cp_level < 5))
+                        if ((this_fp->ga == nMPKineticsGround) && (this_fp->level < 5))
                         {
                             stick_range_x = (ABSF(dist_x) > 100.0F) ? (I_CONTROLLER_RANGE_MAX / 2) : 0;
                         }
@@ -3682,9 +3682,9 @@ void ftComputerSetCommandWaitShort(FTStruct *fp, s32 index)
 
     if (fp->ga == nMPKineticsGround)
     {
-        com->input_wait = ((2.0F * (mtTrigGetRandomFloat() * (FTCOMPUTER_LEVEL_MAX - fp->cp_level))) + ((FTCOMPUTER_LEVEL_MAX - fp->cp_level) * 2) + 1.0F);
+        com->input_wait = ((2.0F * (mtTrigGetRandomFloat() * (FTCOMPUTER_LEVEL_MAX - fp->level))) + ((FTCOMPUTER_LEVEL_MAX - fp->level) * 2) + 1.0F);
     }
-    else com->input_wait = ((mtTrigGetRandomFloat() * (FTCOMPUTER_LEVEL_MAX - fp->cp_level)) + ((FTCOMPUTER_LEVEL_MAX - fp->cp_level) / 2) + 1.0F);
+    else com->input_wait = ((mtTrigGetRandomFloat() * (FTCOMPUTER_LEVEL_MAX - fp->level)) + ((FTCOMPUTER_LEVEL_MAX - fp->level) / 2) + 1.0F);
     
     com->p_command = dFTComputerPlayerInputScripts[index];
 }
@@ -3705,9 +3705,9 @@ void ftComputerSetCommandWaitLong(FTStruct *fp, s32 index)
 
     if (fp->ga == nMPKineticsGround)
     {
-        com->input_wait = ((4 * (mtTrigGetRandomFloat() * (FTCOMPUTER_LEVEL_MAX - fp->cp_level))) + ((FTCOMPUTER_LEVEL_MAX - fp->cp_level) * 4) + 1.0F);
+        com->input_wait = ((4 * (mtTrigGetRandomFloat() * (FTCOMPUTER_LEVEL_MAX - fp->level))) + ((FTCOMPUTER_LEVEL_MAX - fp->level) * 4) + 1.0F);
     }
-    else com->input_wait = ((mtTrigGetRandomFloat() * (FTCOMPUTER_LEVEL_MAX - fp->cp_level)) + (FTCOMPUTER_LEVEL_MAX - fp->cp_level) + 1.0F);
+    else com->input_wait = ((mtTrigGetRandomFloat() * (FTCOMPUTER_LEVEL_MAX - fp->level)) + (FTCOMPUTER_LEVEL_MAX - fp->level) + 1.0F);
     
     com->p_command = dFTComputerPlayerInputScripts[index];
 }
@@ -3968,7 +3968,7 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
     this_pos_x = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x;
     this_pos_y = this_fp->joints[nFTPartsJointTopN]->translate.vec.f.y;
 
-    damage_coll_size_mul = (((mtTrigGetRandomFloat() - 0.5F) * (FTCOMPUTER_LEVEL_MAX - this_fp->cp_level)) * 0.1F) + 1.0F;
+    damage_coll_size_mul = (((mtTrigGetRandomFloat() - 0.5F) * (FTCOMPUTER_LEVEL_MAX - this_fp->level)) * 0.1F) + 1.0F;
 
     hurtbox_detect_width = target_fp->damage_coll_size.x * damage_coll_size_mul;
     hurtbox_detect_height = target_fp->damage_coll_size.y * damage_coll_size_mul;
@@ -4243,7 +4243,7 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
                     case nFTComputerInputStickSmashAutoXButtonB:
                         user_data = com->target_user;
 
-                        if (this_fp->cp_level >= 5)
+                        if (this_fp->level >= 5)
                         {
                             if (user_data != NULL)
                             {
@@ -4347,9 +4347,9 @@ sb32 ftComputerCheckDetectTarget(FTStruct *this_fp, f32 detect_range_base)
                 return FALSE;
             }
         }
-        if (this_fp->cp_level < 3)
+        if (this_fp->level < 3)
         {
-            if ((this_fp->percent_damage + 5.0F) < (mtTrigGetRandomFloat() * (200.0F - (this_fp->cp_level * 50.0F))))
+            if ((this_fp->percent_damage + 5.0F) < (mtTrigGetRandomFloat() * (200.0F - (this_fp->level * 50.0F))))
             {
                 com->fighter_follow_since = 0;
                 return FALSE;
@@ -5126,7 +5126,7 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
                             {
                                 com->is_attempt_specialhi_recovery = TRUE;
 
-                                if ((fp->fkind == nFTKindGDonkey) || (mtTrigGetRandomFloat() < (fp->cp_level + 2) / 9.0F))
+                                if ((fp->fkind == nFTKindGDonkey) || (mtTrigGetRandomFloat() < (fp->level + 2) / 9.0F))
                                 {
                                     ftComputerSetCommandImmediate(fp, nFTComputerInputStickSmashHiButtonB);
                                     return;
@@ -5148,8 +5148,8 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
 
                             if 
                             (
-                                (fp->cp_level > 5) && 
-                                (mtTrigGetRandomFloat() * (550 - (fp->cp_level * 50)) < 70.0F) || 
+                                (fp->level > 5) && 
+                                (mtTrigGetRandomFloat() * (550 - (fp->level * 50)) < 70.0F) || 
                                 (com->behavior == nFTComputerBehaviorYoshiTeam)             ||
                                 (com->behavior == nFTComputerBehaviorKirbyTeam)             ||
                                 (com->behavior == nFTComputerBehaviorPolyTeam)
@@ -5181,7 +5181,7 @@ void ftComputerFollowObjectiveWalk(FTStruct *fp)
             }
             if
             (
-                (fp->cp_level >= 5)                                                                     && 
+                (fp->level >= 5)                                                                     && 
                 (com->ftcom_flags_0x4A_b1)                                                           && 
                 ((com->target_pos.y + 1100.0F) < fp->joints[nFTPartsJointTopN]->translate.vec.f.y)   && 
                 (fp->physics.vel_air.y < 0.0F)
@@ -5330,7 +5330,7 @@ sb32 func_ovl3_80135B78(FTStruct *this_fp)
         {
             if (other_fp->fighter_vars.donkey.charge_level == FTDONKEY_GIANTPUNCH_CHARGE_MAX)
             {
-                if (this_fp->cp_level && this_fp->cp_level); // WTF???
+                if (this_fp->level && this_fp->level); // WTF???
             }
         }
     next_fighter:
@@ -5377,7 +5377,7 @@ sb32 func_ovl3_80135B78(FTStruct *this_fp)
                                         com->target_pos.y = predict_pos_y;
                                         com->unk_ftcom_0x38 = predict_div_x;
 
-                                        if (mtTrigGetRandomFloat() < ((this_fp->cp_level + 2) / 9.0F))
+                                        if (mtTrigGetRandomFloat() < ((this_fp->level + 2) / 9.0F))
                                         {
                                             if (!(com->ftcom_flags_0x49_b2))
                                             {
@@ -5444,7 +5444,7 @@ sb32 func_ovl3_80135B78(FTStruct *this_fp)
                                         com->target_pos.y = predict_pos_y;
                                         com->unk_ftcom_0x38 = predict_div_x;
 
-                                        if (mtTrigGetRandomFloat() < ((this_fp->cp_level + 2) / 9.0F))
+                                        if (mtTrigGetRandomFloat() < ((this_fp->level + 2) / 9.0F))
                                         {
                                             if (!(com->ftcom_flags_0x49_b2))
                                             {
@@ -5931,7 +5931,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
         {
             action_wait *= 2;
         }
-        if (((FTCOMPUTER_LEVEL_MAX - this_fp->cp_level) * 15) < action_wait)
+        if (((FTCOMPUTER_LEVEL_MAX - this_fp->level) * 15) < action_wait)
         {
             if (mtTrigGetRandomFloat() < 0.4F)
             {
@@ -5954,13 +5954,13 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     {
         action_wait = 180 - this_fp->status_vars.common.downwait.stand_wait;
 
-        if (((FTCOMPUTER_LEVEL_MAX - this_fp->cp_level) * 25) < action_wait)
+        if (((FTCOMPUTER_LEVEL_MAX - this_fp->level) * 25) < action_wait)
         {
             ftComputerCheckFindTarget(this_fp);
 
-            if ((this_fp->fkind != nFTKindGDonkey) && (com->target_dist < 800.0F) && (this_fp->cp_level >= 4))
+            if ((this_fp->fkind != nFTKindGDonkey) && (com->target_dist < 800.0F) && (this_fp->level >= 4))
             {
-                if ((mtTrigGetRandomFloat() * (11 - this_fp->cp_level)) < 1.0F)
+                if ((mtTrigGetRandomFloat() * (11 - this_fp->level)) < 1.0F)
                 {
                     if (com->target_pos.x < this_fp->joints[nFTPartsJointTopN]->translate.vec.f.x)
                     {
@@ -6030,7 +6030,7 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
     {
         com->target_find_wait++;
 
-        if (((FTCOMPUTER_LEVEL_MAX - this_fp->cp_level) * 15) < com->target_find_wait)
+        if (((FTCOMPUTER_LEVEL_MAX - this_fp->level) * 15) < com->target_find_wait)
         {
             ftComputerSetCommandWaitShort(this_fp, nFTComputerInputWiggle);
 
@@ -6125,20 +6125,20 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
         switch (com->behavior)
         {
         case nFTComputerBehaviorYoshiTeam:
-            if (((this_fp->cp_level - 4) * 0.01F) <= mtTrigGetRandomFloat())
+            if (((this_fp->level - 4) * 0.01F) <= mtTrigGetRandomFloat())
             {
                 return -1;
             }
             /* fallthrough */
         case nFTComputerBehaviorKirbyTeam:
-            if (((this_fp->cp_level - 3) * 0.03F) <= mtTrigGetRandomFloat())
+            if (((this_fp->level - 3) * 0.03F) <= mtTrigGetRandomFloat())
             {
                 return -1;
             }
             break;
 
         case nFTComputerBehaviorPolyTeam:
-            if ((this_fp->cp_level * 0.04F) <= mtTrigGetRandomFloat())
+            if ((this_fp->level * 0.04F) <= mtTrigGetRandomFloat())
             {
                 return -1;
             }
@@ -6189,9 +6189,9 @@ s32 ftComputerGetObjectiveStatus(GObj *this_gobj)
         {
             com->ftcom_flags_0x49_b3 = TRUE;
 
-            if (this_fp->cp_level >= 3)
+            if (this_fp->level >= 3)
             {
-                if ((mtTrigGetRandomFloat() * (325 - (this_fp->cp_level * 25))) < 70.0F)
+                if ((mtTrigGetRandomFloat() * (325 - (this_fp->level * 25))) < 70.0F)
                 {
                     com->objective = nFTComputerObjectiveCounterAttack;
                     com->is_counterattack = TRUE;
@@ -6312,9 +6312,9 @@ s32 ftComputerProcDefault(GObj *fighter_gobj)
     }
     else if (ftComputerCheckFindItem(fp) != FALSE)
     {
-        if (com->target_dist < (400.0F * (fp->cp_level + 3)))
+        if (com->target_dist < (400.0F * (fp->level + 3)))
         {
-            s32 track_wait = (gSCManagerBattleState->game_type == nSCBattleGameType1PGame) ? (-fp->cp_level * 35) + 315 : (-fp->cp_level * 25) + 225;
+            s32 track_wait = (gSCManagerBattleState->game_type == nSCBattleGameType1PGame) ? (-fp->level * 35) + 315 : (-fp->level * 25) + 225;
 
             com->item_track_wait++;
 
@@ -6619,7 +6619,7 @@ void ftComputerFollowObjectiveUseItem(FTStruct *fp)
             ftComputerCheckFindTarget(fp);
             target_fp = ftGetComTargetFighter(com);
 
-            if ((fp->cp_level >= 5) && (target_fp != NULL))
+            if ((fp->level >= 5) && (target_fp != NULL))
             {
                 if ((target_fp->fkind == nFTKindNess) || (target_fp->fkind == nFTKindFox))
                 {
@@ -6708,8 +6708,8 @@ s32 func_ovl3_8013837C(FTStruct *this_fp)
     {
         com->fighter_follow_since = 1;
 
-        // NOTE: This only trims the (mtTrigGetRandomFloat() * (FTCOMPUTER_LEVEL_MAX - this_fp->cp_level) * 4.0F) part to 8-bits.
-        com->fighter_follow_wait = (u8)(mtTrigGetRandomFloat() * (FTCOMPUTER_LEVEL_MAX - this_fp->cp_level) * 4.0F) + ((FTCOMPUTER_LEVEL_MAX - this_fp->cp_level) * 16);
+        // NOTE: This only trims the (mtTrigGetRandomFloat() * (FTCOMPUTER_LEVEL_MAX - this_fp->level) * 4.0F) part to 8-bits.
+        com->fighter_follow_wait = (u8)(mtTrigGetRandomFloat() * (FTCOMPUTER_LEVEL_MAX - this_fp->level) * 4.0F) + ((FTCOMPUTER_LEVEL_MAX - this_fp->level) * 16);
 
         if (com->behavior == nFTComputerBehaviorYoshiTeam)
         {
@@ -6820,7 +6820,7 @@ void func_ovl3_8013877C(FTStruct *this_fp)
         com->input_wait = 1;
         com->p_command = dFTComputerPlayerInputScripts[nFTComputerInputStickN];
 
-        if ((com->walk_stop_wait == ((-this_fp->cp_level * 2) + 18)) && (this_fp->ga == nMPKineticsGround))
+        if ((com->walk_stop_wait == ((-this_fp->level * 2) + 18)) && (this_fp->ga == nMPKineticsGround))
         {
             ftComputerCheckTryChargeSpecialN(this_fp);
 
@@ -6863,9 +6863,9 @@ sb32 func_ovl3_80138AA8(FTStruct *this_fp, sb32 is_delay)
     {
         if (com->unk_ftcom_0x35 == 0)
         {
-            com->unk_ftcom_0x35 = 2.0F * (mtTrigGetRandomFloat() * (FTCOMPUTER_LEVEL_MAX - this_fp->cp_level));
+            com->unk_ftcom_0x35 = 2.0F * (mtTrigGetRandomFloat() * (FTCOMPUTER_LEVEL_MAX - this_fp->level));
         }
-        if ((mtTrigGetRandomFloat() < ((this_fp->cp_level - 1) / 9.0F)) && (target_fp != NULL))
+        if ((mtTrigGetRandomFloat() < ((this_fp->level - 1) / 9.0F)) && (target_fp != NULL))
         {
             if ((target_fp->fkind == nFTKindNess) || (target_fp->fkind == nFTKindFox))
             {
@@ -7028,10 +7028,10 @@ sb32 func_ovl3_80138EE4(FTStruct *fp)
                 (com->target_dist < ((random * 450.0F) + 350.0F) &&
                 (
                     (
-                        (fp->cp_level >= 4) &&
-                        (mtTrigGetRandomFloat() * (11 - fp->cp_level)) < 1.0F) ||
+                        (fp->level >= 4) &&
+                        (mtTrigGetRandomFloat() * (11 - fp->level)) < 1.0F) ||
                         (
-                            (fp->cp_level >= 3) &&
+                            (fp->level >= 3) &&
                             (((com->target_pos.x - fp->joints[nFTPartsJointTopN]->translate.vec.f.x) * fp->lr) < 0.0F)
                         )
                     )
@@ -7039,8 +7039,8 @@ sb32 func_ovl3_80138EE4(FTStruct *fp)
                 ||
                 (
                     (com->target_dist < 800.0F) &&
-                    (fp->cp_level >= 7) &&
-                    ((mtTrigGetRandomFloat() * (10 - fp->cp_level)) < 1.0F) &&
+                    (fp->level >= 7) &&
+                    ((mtTrigGetRandomFloat() * (10 - fp->level)) < 1.0F) &&
                     (((com->target_pos.x - fp->joints[nFTPartsJointTopN]->translate.vec.f.x) * ftGetComTargetFighter(com)->lr) < 0.0F)
                 )
             )
@@ -7113,7 +7113,7 @@ void ftComputerFollowObjectiveAttack(FTStruct *fp)
                 }
                 if (ftGetComTargetFighter(com)->physics.vel_air.y > 30.0F)
                 {
-                    if (mtTrigGetRandomFloat() < ((fp->cp_level + 2) / 9.0F))
+                    if (mtTrigGetRandomFloat() < ((fp->level + 2) / 9.0F))
                     {
                         if
                         (
@@ -7244,7 +7244,7 @@ void func_ovl3_801397F4(FTStruct *fp)
                 }
                 if (ftGetComTargetFighter(com)->physics.vel_air.y > 30.0F)
                 {
-                    if (mtTrigGetRandomFloat() < ((fp->cp_level + 5) / 9.0F))
+                    if (mtTrigGetRandomFloat() < ((fp->level + 5) / 9.0F))
                     {
                         if
                         (
@@ -7413,7 +7413,7 @@ void ftComputerFollowObjectivePatrol(FTStruct *fp)
                 }
                 if (ftGetComTargetFighter(com)->physics.vel_air.y > 30.0F)
                 {
-                    if (mtTrigGetRandomFloat() < ((fp->cp_level + 2) / 9.0F))
+                    if (mtTrigGetRandomFloat() < ((fp->level + 2) / 9.0F))
                     {
                         if
                         (
@@ -7820,7 +7820,7 @@ void ftComputerSetupAll(GObj *fighter_gobj)
         com->trait = 0;
         com->behavior = 0;
 
-        i = 1440 - (fp->cp_level * 240);
+        i = 1440 - (fp->level * 240);
 
         if (i < 0)
         {

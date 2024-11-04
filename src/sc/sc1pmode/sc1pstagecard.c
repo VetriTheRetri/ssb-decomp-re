@@ -2,7 +2,7 @@
 #include <sc/scene.h>
 #include <sys/video.h>
 
-extern void func_800A26B8();
+extern void scManagerFuncDraw();
 extern void func_800266A0_272A0();
 extern void* func_800269C0_275C0(u16);
 extern u32 func_8000092C();
@@ -1995,7 +1995,7 @@ SYTaskmanSetup dSC1PStageCardTaskmanSetup =
     {
         0,                          // ???
         gcRunAll,              		// Update function
-        func_800A26B8,              // Frame draw function
+        scManagerFuncDraw,              // Frame draw function
         &ovl24_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???
@@ -2040,5 +2040,5 @@ void sc1PStageCardStartScene(void)
     syVideoInit(&dSC1PStageCardVideoSetup);
     
     dSC1PStageCardTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl24_BSS_END);
-    func_800A2698(&dSC1PStageCardTaskmanSetup);
+    scManagerFuncUpdate(&dSC1PStageCardTaskmanSetup);
 }

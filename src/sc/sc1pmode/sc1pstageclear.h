@@ -131,7 +131,7 @@ extern intptr_t lSC1PStageClearBonusVeryHardClear;        	// 0x00014788
 
 extern void sc1PStageClearFuncLights(Gfx **dls);
 extern s32 sc1PStageClearGetPowerOf(s32 base, s32 exp);
-extern void sc1PStageClearSetDigitSpriteColors(SObj *sobj, s32 digit_kind, syColorRGBPair *colors_base);
+extern void sc1PStageClearSetDigitSpriteColors(SObj *sobj, s32 digit_kind, SYColorRGBPair *colors_base);
 extern s32 sc1PStageClearGetScoreDigitCount(s32 points, s32 digit_count_max);
 extern Sprite* sc1PStageClearGetScoreDigitSprite(s32 digit_kind, s32 digit);
 extern void sc1PStageClearMakeScoreDigits
@@ -140,7 +140,7 @@ extern void sc1PStageClearMakeScoreDigits
 	s32 points,
 	f32 x,
 	f32 y,
-	syColorRGBPair *colors,
+	SYColorRGBPair *colors,
 	s32 offset_x,
 	s32 digit_kind,
 	s32 sub,

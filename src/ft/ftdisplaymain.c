@@ -27,7 +27,7 @@ u8 sFTDisplayMainSkyFogAlpha;
 ub8 sFTDisplayMainIsShadeFog;
 
 // 0x801312F4
-syColorRGBA sFTDisplayMainFogColor;
+SYColorRGBA sFTDisplayMainFogColor;
 
 // // // // // // // // // // // //
 //                               //
@@ -376,16 +376,16 @@ Gfx dFTDisplayMainAfterImageTriangleDL[/* */] =
 };
 
 // 0x8012C4C8
-syColorRGBA dFTDisplayMainDefaultAfterImageColor1 = { 0x00, 0xFF, 0xFF, 0x00 };
+SYColorRGBA dFTDisplayMainDefaultAfterImageColor1 = { 0x00, 0xFF, 0xFF, 0x00 };
 
 // 0x8012C4CC
-syColorRGBA dFTDisplayMainDefaultAfterImageColor2 = { 0xFF, 0xFF, 0xFF, 0x00 };
+SYColorRGBA dFTDisplayMainDefaultAfterImageColor2 = { 0xFF, 0xFF, 0xFF, 0x00 };
 
 // 0x8012C4D0
-syColorRGBA dFTDisplayMainItemAfterImageColor1 = { 0xFF, 0x40, 0xC0, 0x00 };
+SYColorRGBA dFTDisplayMainItemAfterImageColor1 = { 0xFF, 0x40, 0xC0, 0x00 };
 
 // 0x8012C4D4
-syColorRGBA dFTDisplayMainItemAfterImageColor2 = { 0xFF, 0xFF, 0xFF, 0x00 };
+SYColorRGBA dFTDisplayMainItemAfterImageColor2 = { 0xFF, 0xFF, 0xFF, 0x00 };
 
 // // // // // // // // // // // //
 //                               //
@@ -407,7 +407,7 @@ void ftDisplayMainDrawAfterImage(FTStruct *fp)
     f32 var_f20;
     f32 var_f22;
     f32 rotate;
-    syColorRGBA *color1, *color2;
+    SYColorRGBA *color1, *color2;
     Gfx *vtx_dl, *tri_dl;
     FTAfterImage *afterimage;
     Vec3f spC8;
@@ -616,7 +616,7 @@ void ftDisplayMainCalcFogColor(FTStruct *fp)
     }
     else
     {
-        syColorRGBA *attr_shade_color = &fp->attr->shade_color[fp->shade - 1];
+        SYColorRGBA *attr_shade_color = &fp->attr->shade_color[fp->shade - 1];
         GMColKeys *ck = &fp->colanim.maincolor;
 
         shade_base = (((0xFF - attr_shade_color->a) * (0xFF - ck->a)) / 0xFF);
@@ -677,7 +677,7 @@ void ftDisplayMainDecideFogColor(FTStruct *fp)
     }
     else
     {
-        syColorRGBA *fog_color = &fp->attr->shade_color[fp->shade - 1];
+        SYColorRGBA *fog_color = &fp->attr->shade_color[fp->shade - 1];
 
         gDPSetFogColor(gSYTaskmanDLHeads[0]++, fog_color->r, fog_color->g, fog_color->b, fog_color->a);
     }
@@ -933,11 +933,11 @@ void ftDisplayMainDrawAll(GObj *fighter_gobj)
 
     if
     (
-        (fp->colanim.skeleton_id)                                           &&
-        (attr->skeleton != NULL)                                      &&
-        (attr->skeleton[fp->colanim.skeleton_id] != NULL)             &&
-        (fp->joints[(s32)(attr->skeleton[0])] != NULL)                &&  // ???
-        (fp->joints[(s32)(attr->skeleton[0])]->display_list != NULL)      // What kind of Flintstones gummies were you on I need them right now
+        (fp->colanim.skeleton_id)                                   &&
+        (attr->skeleton != NULL)                                    &&
+        (attr->skeleton[fp->colanim.skeleton_id] != NULL)           &&
+        (fp->joints[(s32)(attr->skeleton[0])] != NULL)              &&  // ???
+        (fp->joints[(s32)(attr->skeleton[0])]->display_list != NULL)    // What kind of Flintstones gummies were you on I need them right now
     )
     {
         ftDisplayMainDrawSkeleton(DObjGetStruct(fighter_gobj));

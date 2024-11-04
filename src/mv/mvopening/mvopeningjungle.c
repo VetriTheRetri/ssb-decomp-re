@@ -7,7 +7,7 @@
 
 extern void syTaskmanSetLoadScene();
 extern u32 func_8000092C();
-extern void func_800A26B8();
+extern void scManagerFuncDraw();
 extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
 // // // // // // // // // // // //
@@ -154,7 +154,7 @@ SYTaskmanSetup dMVOpeningJungleTaskmanSetup =
     {
         0,                              // ???
         gcRunAll,                  // Update function
-        func_800A26B8,                  // Frame draw function
+        scManagerFuncDraw,                  // Frame draw function
         &ovl51_BSS_END,                 // Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???
@@ -323,7 +323,7 @@ void mvOpeningJungleMakeFighters(void)
             ft_desc.pos.y = spawn_position[1].y;
             ft_desc.pos.z = spawn_position[1].z;
 
-            ft_desc.lr_spawn = +1;
+            ft_desc.lr = +1;
 
             ft_desc.damage = 200;
         }
@@ -333,7 +333,7 @@ void mvOpeningJungleMakeFighters(void)
             ft_desc.pos.y = spawn_position[0].y;
             ft_desc.pos.z = spawn_position[0].z;
 
-            ft_desc.lr_spawn = -1;
+            ft_desc.lr = -1;
 
             ft_desc.damage = 40;
         }
@@ -342,7 +342,7 @@ void mvOpeningJungleMakeFighters(void)
         ft_desc.detail = nFTPartsDetailHigh;
         ft_desc.costume = gSCManagerBattleState->players[i].costume;
         ft_desc.handicap = gSCManagerBattleState->players[i].handicap;
-        ft_desc.cp_level = gSCManagerBattleState->players[i].level;
+        ft_desc.level = gSCManagerBattleState->players[i].level;
         ft_desc.stock_count = gSCManagerBattleState->stocks;
         ft_desc.pkind = gSCManagerBattleState->players[i].pkind;
         ft_desc.controller = &gPlayerControllers[i];
@@ -450,5 +450,5 @@ void mvOpeningJungleStartScene(void)
     syVideoInit(&dMVOpeningJungleVideoSetup);
 
     dMVOpeningJungleTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl51_BSS_END);
-    syTaskmanInit(&dMVOpeningJungleTaskmanSetup);
+    syTaskmanRun(&dMVOpeningJungleTaskmanSetup);
 }

@@ -117,10 +117,10 @@ MNCongraPicture dMNCongraPictures[/* */] =
 };
 
 // 0x801321C0
-syColorRGBA dMNCongraFadeColor = { 0x00, 0x00, 0x00, 0xFF };
+SYColorRGBA dMNCongraFadeColor = { 0x00, 0x00, 0x00, 0xFF };
 
 // 0x801321C4
-syColorRGBA D_ovl57_801321C4 = { 0x00, 0x00, 0x00, 0x00 };
+SYColorRGBA D_ovl57_801321C4 = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x801321C8
 Lights1 dMNCongraLights1 = gdSPDefLights1(0x20, 0x20, 0x20, 0xFF, 0xFF, 0xFF, 0x0A, 0x32, 0x32);
@@ -235,7 +235,7 @@ s32 mnCongraGetPlayerTapButtons(u32 buttons)
 // 0x80131C04
 void mnCongraActorFuncRun(GObj *gobj)
 {
-	syColorRGBA color;
+	SYColorRGBA color;
 
 	if (sMNCongraSkipWait != 0)
 	{
@@ -425,7 +425,7 @@ void mnCongraStartScene(void)
 	syVideoInit(&dMNCongraVideoSetup);
 
 	dMNCongraTaskmanSetup.buffer_setup.arena_size = (size_t) (SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(320, 230, 0, 10, u32, 0) - (uintptr_t)&ovl57_BSS_END);
-	syTaskmanInit(&dMNCongraTaskmanSetup); subsys_arena_lo = gSCSubsysFramebuffer0; // WARNING: Newline memes!
+	syTaskmanRun(&dMNCongraTaskmanSetup); subsys_arena_lo = gSCSubsysFramebuffer0; // WARNING: Newline memes!
 
 	while ((uintptr_t)subsys_arena_lo < 0x80400000) { *subsys_arena_lo++ = GPACK_RGBA5551(0x00, 0x00, 0x00, 0x01); }
 }

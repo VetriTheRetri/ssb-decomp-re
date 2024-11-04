@@ -124,7 +124,7 @@ struct SCTrainingFiles
 {
 	s32 file_id;
 	uintptr_t addr;
-	syColorRGB fog_color;
+	SYColorRGB fog_color;
 };
 
 struct scTrainingStruct

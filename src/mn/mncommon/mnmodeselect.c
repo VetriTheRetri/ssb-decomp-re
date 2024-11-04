@@ -772,5 +772,5 @@ void mnModeSelectStartScene(void)
     syVideoInit(&dMNModeSelectVideoSetup);
     
     dMNModeSelectTaskmanSetup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl17_BSS_END);
-    syTaskmanInit(&dMNModeSelectTaskmanSetup);
+    syTaskmanRun(&dMNModeSelectTaskmanSetup);
 }

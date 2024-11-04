@@ -447,5 +447,5 @@ void mvPortraitsStartScene()
 	D_ovl35_80132938.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl35_80132938);
 	D_ovl35_80132954.arena_size = (u32) ((uintptr_t)&lOverlay35ArenaHi - (uintptr_t)&lOverlay35ArenaLo);
-	syTaskmanInit(&D_ovl35_80132954);
+	syTaskmanRun(&D_ovl35_80132954);
 }

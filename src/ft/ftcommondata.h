@@ -24,10 +24,10 @@ extern FTItemThrow dFTCommonDataItemThrowDescs[/* */];
 extern FTItemSwing dFTCommonDataItemSwingAnimRates[/* */];
 
 // 0x8012CA78
-extern syColorRGBA dFTCommonDataShadowColorDefault;
+extern SYColorRGBA dFTCommonDataShadowColorDefault;
 
 // 0x8012CA7C
-extern syColorRGBA dFTCommonDataShadowColorTeams[/* */];
+extern SYColorRGBA dFTCommonDataShadowColorTeams[/* */];
 
 // 0x8012DBD0
 extern GMColDesc dFTCommonDataColAnimDescs[/* */]; // 0x8012DBD0

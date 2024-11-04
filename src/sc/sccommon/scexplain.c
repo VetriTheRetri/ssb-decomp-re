@@ -76,7 +76,7 @@ intptr_t dSCExplainKeyInputSequences[/* */] =
 };
 
 // 0x8018E720
-syColorRGBA dSCExplainFadeColor = { 0x00, 0x00, 0x00, 0x00 };
+SYColorRGBA dSCExplainFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x8018E724
 s32 dSCExplainRandomSeed1 = 0x00000001;
@@ -710,8 +710,8 @@ void scExplainFuncStart(void)
     s32 unused[3];
     GObj *fighter_gobj;
     s32 player;
-    FTCreateDesc player_spawn;
-    syColorRGBA color;
+    FTCreateDesc ft_desc;
+    SYColorRGBA color;
 
     scExplainSetBattleState();
     scExplainSetupFiles();
@@ -735,7 +735,7 @@ void scExplainFuncStart(void)
 
     for (player = 0; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)
     {
-        player_spawn = dFTManagerDefaultFighterDesc;
+        ft_desc = dFTManagerDefaultFighterDesc;
 
         if (gSCManagerBattleState->players[player].pkind == nFTPlayerKindNot)
         {
@@ -743,35 +743,35 @@ void scExplainFuncStart(void)
         }
         ftManagerSetupFilesAllKind(gSCManagerBattleState->players[player].fkind);
 
-        player_spawn.fkind = gSCManagerBattleState->players[player].fkind;
+        ft_desc.fkind = gSCManagerBattleState->players[player].fkind;
 
-        mpCollisionGetPlayerMapObjPosition(player, &player_spawn.pos);
+        mpCollisionGetPlayerMapObjPosition(player, &ft_desc.pos);
 
-        player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? -1 : +1;
+        ft_desc.lr = (ft_desc.pos.x >= 0.0F) ? -1 : +1;
 
-        player_spawn.team = gSCManagerBattleState->players[player].team;
+        ft_desc.team = gSCManagerBattleState->players[player].team;
 
-        player_spawn.player = player;
+        ft_desc.player = player;
 
-        player_spawn.detail = ((gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
+        ft_desc.detail = ((gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
 
-        player_spawn.costume = gSCManagerBattleState->players[player].costume;
+        ft_desc.costume = gSCManagerBattleState->players[player].costume;
 
-        player_spawn.handicap = gSCManagerBattleState->players[player].handicap;
+        ft_desc.handicap = gSCManagerBattleState->players[player].handicap;
 
-        player_spawn.cp_level = gSCManagerBattleState->players[player].level;
+        ft_desc.level = gSCManagerBattleState->players[player].level;
 
-        player_spawn.stock_count = gSCManagerBattleState->stocks;
+        ft_desc.stock_count = gSCManagerBattleState->stocks;
 
-        player_spawn.damage = 0;
+        ft_desc.damage = 0;
 
-        player_spawn.pkind = gSCManagerBattleState->players[player].pkind;
+        ft_desc.pkind = gSCManagerBattleState->players[player].pkind;
 
-        player_spawn.controller = &gPlayerControllers[player];
+        ft_desc.controller = &gPlayerControllers[player];
 
-        player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[player].fkind);
+        ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[player].fkind);
 
-        fighter_gobj = ftManagerMakeFighter(&player_spawn);
+        fighter_gobj = ftManagerMakeFighter(&ft_desc);
 
         gSCManagerBattleState->players[player].color = player;
         gSCManagerBattleState->players[player].tag = player;
@@ -838,7 +838,7 @@ void scExplainFuncUpdate(void)
 void scExplainFuncDraw(void)
 {
     set_lcg_seed_ptr(&dSCExplainRandomSeed2);
-    func_800A26B8();
+    scManagerFuncDraw();
 }
 
 // 0x8018E5C0
@@ -853,7 +853,7 @@ void scExplainStartScene(void)
     dSCExplainTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl63_BSS_END);
     dSCExplainTaskmanSetup.func_start = scExplainFuncStart;
 
-    func_800A2698(&dSCExplainTaskmanSetup);
+    scManagerFuncUpdate(&dSCExplainTaskmanSetup);
     gmRumbleInitPlayers();
     set_lcg_seed_ptr(NULL);
 }

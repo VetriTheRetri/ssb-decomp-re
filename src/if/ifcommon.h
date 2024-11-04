@@ -190,7 +190,7 @@ extern void ifCommonEntryFocusMakeInterface(s32 id);
 extern void ifCommonEntryAllThread(GObj *interface_gobj);
 extern void ifCommonEntryAllMakeInterface(void);
 extern void ifCommonSuddenDeathThread(GObj *interface_gobj);
-extern void ifCommonAnnounceSetColors(GObj *interface_gobj, syColorRGBPair *colors);
+extern void ifCommonAnnounceSetColors(GObj *interface_gobj, SYColorRGBPair *colors);
 extern void ifCommonSuddenDeathMakeInterface(void);
 extern void ifCommonTimerFuncDisplay(GObj *interface_gobj);
 extern void ifCommonTimerSetAttr(void);

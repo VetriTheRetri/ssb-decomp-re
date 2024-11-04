@@ -400,10 +400,10 @@ s32 sc1PStageClearGetPowerOf(s32 base, s32 exp)
 }
 
 // 0x80131BF8
-void sc1PStageClearSetDigitSpriteColors(SObj *sobj, s32 digit_kind, syColorRGBPair *colors_base)
+void sc1PStageClearSetDigitSpriteColors(SObj *sobj, s32 digit_kind, SYColorRGBPair *colors_base)
 {
 	// 0x80135100
-	syColorRGBPair colors_all[/* */] =
+	SYColorRGBPair colors_all[/* */] =
 	{
 		// Damage / Timer digits
 		{
@@ -423,7 +423,7 @@ void sc1PStageClearSetDigitSpriteColors(SObj *sobj, s32 digit_kind, syColorRGBPa
 			{ 0xFF, 0xEC, 0x00 }
 		}
 	};
-	syColorRGBPair *colors_id = &colors_all[digit_kind];
+	SYColorRGBPair *colors_id = &colors_all[digit_kind];
 
 	sobj->sprite.attr &= ~SP_FASTCOPY;
 	sobj->sprite.attr |= SP_TRANSPARENT;
@@ -502,7 +502,7 @@ void sc1PStageClearMakeScoreDigits
 	s32 points,
 	f32 x,
 	f32 y,
-	syColorRGBPair *colors,
+	SYColorRGBPair *colors,
 	s32 offset_x,
 	s32 digit_kind,
 	s32 sub,
@@ -1127,7 +1127,7 @@ s32 sc1PStageClearGetAppendBonusStatPoints(s32 bonus_id, s32 bonus_num, f32 x, f
 	};
 
 	// 0x801351E4
-	syColorRGBPair colors = { { 0x00, 0x00, 0x00 }, { 0xFF, 0xFF, 0x00 } };
+	SYColorRGBPair colors = { { 0x00, 0x00, 0x00 }, { 0xFF, 0xFF, 0x00 } };
 
 	sSC1PStageClearBonusStatGObjs[bonus_num] = gobj = gcMakeGObjSPAfter(0, NULL, 17, GOBJ_PRIORITY_DEFAULT);
 
@@ -2082,5 +2082,5 @@ void sc1PStageClearStartScene(void)
 	syVideoInit(&dGM1PStageClearVideoSetup);
 
 	dGM1PStageClearTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl56_BSS_END);
-	syTaskmanInit(&dGM1PStageClearTaskmanSetup);
+	syTaskmanRun(&dGM1PStageClearTaskmanSetup);
 }

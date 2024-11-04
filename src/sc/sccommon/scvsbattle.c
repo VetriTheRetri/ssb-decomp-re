@@ -15,7 +15,7 @@ extern intptr_t lSYDmemCheckValidNBytes;	// 0x00000030
 
 extern intptr_t D_NF_000000C7;
 
-extern void func_800A26B8();
+extern void scManagerFuncDraw();
 
 // // // // // // // // // // // //
 //                               //
@@ -24,10 +24,10 @@ extern void func_800A26B8();
 // // // // // // // // // // // //
 
 // 0x8018E3D0
-syColorRGBA dSCVSBattleCommonFadeColor = { 0x00, 0x00, 0x00, 0x00 };
+SYColorRGBA dSCVSBattleCommonFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x8018E3D4
-syColorRGBA dSCVSBattleSuddenDeathFadeColor = { 0x00, 0x00, 0x00, 0x00 };
+SYColorRGBA dSCVSBattleSuddenDeathFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x8018E3D8
 SYVideoSetup dSCVSBattleVideoSetup = SYVIDEO_DEFINE_DEFAULT();
@@ -39,7 +39,7 @@ SYTaskmanSetup dSCVSBattleTaskmanSetup =
     {
         0,                              // ???
         scVSBattleFuncUpdate,           // Update function
-        func_800A26B8,                  // Frame draw function
+        scManagerFuncDraw,                  // Frame draw function
         &ovl4_BSS_END,                 	// Allocatable memory pool start
         0,                              // Allocatable memory pool size
         1,                              // ???
@@ -135,7 +135,7 @@ void scVSBattleFuncStart(void)
 	sb32 (*func_dmem)(void);
 	void *file;
 	FTCreateDesc ft_desc;
-	syColorRGBA color;
+	SYColorRGBA color;
 
 	gSCManagerSceneData.is_reset = FALSE;
 	gSCManagerSceneData.is_suddendeath = FALSE;
@@ -187,7 +187,7 @@ void scVSBattleFuncStart(void)
 
 		mpCollisionGetPlayerMapObjPosition(player, &ft_desc.pos);
 
-		ft_desc.lr_spawn = scVSBattleGetStartPlayerLR(player);
+		ft_desc.lr = scVSBattleGetStartPlayerLR(player);
 
 		ft_desc.team = gSCManagerBattleState->players[player].player;
 		ft_desc.player = player;
@@ -197,7 +197,7 @@ void scVSBattleFuncStart(void)
 		ft_desc.costume = gSCManagerBattleState->players[player].costume;
 		ft_desc.shade = gSCManagerBattleState->players[player].shade;
 		ft_desc.handicap = gSCManagerBattleState->players[player].handicap;
-		ft_desc.cp_level = gSCManagerBattleState->players[player].level;
+		ft_desc.level = gSCManagerBattleState->players[player].level;
 		ft_desc.stock_count = gSCManagerBattleState->stocks;
 		ft_desc.damage = 0;
 		ft_desc.pkind = gSCManagerBattleState->players[player].pkind;
@@ -423,7 +423,7 @@ void scVSBattleStartSudddenDeath(void)
 	GObj *fighter_gobj;
 	s32 player;
 	FTCreateDesc ft_desc;
-	syColorRGBA color;
+	SYColorRGBA color;
 
 	gSCManagerSceneData.is_reset = FALSE;
 
@@ -459,7 +459,7 @@ void scVSBattleStartSudddenDeath(void)
 
 		mpCollisionGetPlayerMapObjPosition(player, &ft_desc.pos);
 
-		ft_desc.lr_spawn = scVSBattleGetStartPlayerLR(player);
+		ft_desc.lr = scVSBattleGetStartPlayerLR(player);
 
 		ft_desc.team = gSCManagerBattleState->players[player].player;
 		ft_desc.player = player;
@@ -469,7 +469,7 @@ void scVSBattleStartSudddenDeath(void)
 		ft_desc.costume = gSCManagerBattleState->players[player].costume;
 		ft_desc.shade = gSCManagerBattleState->players[player].shade;
 		ft_desc.handicap = gSCManagerBattleState->players[player].handicap;
-		ft_desc.cp_level = gSCManagerBattleState->players[player].level;
+		ft_desc.level = gSCManagerBattleState->players[player].level;
 		ft_desc.stock_count = 0;
 		ft_desc.damage = 300;
 		ft_desc.is_skip_entry = TRUE;
@@ -534,7 +534,7 @@ void scVSBattleStartScene(void)
 
 	dSCVSBattleTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl4_BSS_END);
 	dSCVSBattleTaskmanSetup.func_start = scVSBattleFuncStart;
-	func_800A2698(&dSCVSBattleTaskmanSetup);
+	scManagerFuncUpdate(&dSCVSBattleTaskmanSetup);
 
 	auStopBGM();
 
@@ -554,7 +554,7 @@ void scVSBattleStartScene(void)
 
 		dSCVSBattleTaskmanSetup.func_start = scVSBattleStartSudddenDeath;
 
-		func_800A2698(&dSCVSBattleTaskmanSetup);
+		scManagerFuncUpdate(&dSCVSBattleTaskmanSetup);
 		auStopBGM();
 
 		while (auIsBGMPlaying(0))

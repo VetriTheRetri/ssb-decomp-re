@@ -428,7 +428,7 @@ void mnMessageStartScene(void)
         sMNMessageQueueID++
     )
     {
-        syTaskmanInit(&dMNMessageTaskmanSetup);
+        syTaskmanRun(&dMNMessageTaskmanSetup);
     }
     if (gSCManagerSceneData.scene_prev == nSCKindVSResults)
     {

@@ -533,5 +533,5 @@ void mvOpeningCliffStartScene(void)
     syVideoInit(&dMVOpeningCliffVideoSetup);
 
     dMVOpeningCliffTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl46_BSS_END);
-    syTaskmanInit(&dMVOpeningCliffTaskmanSetup);
+    syTaskmanRun(&dMVOpeningCliffTaskmanSetup);
 }

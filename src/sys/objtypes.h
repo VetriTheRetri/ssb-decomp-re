@@ -284,18 +284,12 @@ struct GCScale
     } vec;
 };
 
-/// This stores up to 3 `Mtx3Int`/`Mtx3Float`/`Mtx4Float` structures in the VLA data
-/// based on the kind id in the `kinds` arrays:
-/// Kind 1 - `struct Mtx3Int` or `union Mtx3fi`
-/// Kind 2 - `struct Mtx4Float`
-/// Kind 3 - `struct Mtx3Float`
-
 struct DObjVec
 {
-    /* 0x00 */ u8 kinds[3];
-    /* 0x03 */ u8 pad;
-    /* 0x04 */ u8 data[1];
-}; // size == 4 + VLA
+    u8 kinds[3];
+    u8 pad;
+    u8 data[1];
+};
 
 struct MObjSub
 {
@@ -327,14 +321,14 @@ struct MObjSub
     f32 unk44;
     u8 pad48[0x4C - 0x48];
     u32 unk4C;
-    syColorPack primcolor;
+    SYColorPack primcolor;
     u8 prim_l;
     u8 prim_m;
     u8 prim_pad[2];
-    syColorPack envcolor;
-    syColorPack blendcolor;
-    syColorPack light1color;
-    syColorPack light2color;
+    SYColorPack envcolor;
+    SYColorPack blendcolor;
+    SYColorPack light1color;
+    SYColorPack light2color;
     s32 unk68;
     s32 unk6C;
     s32 unk70;
@@ -350,7 +344,7 @@ struct MObj                         // Material Object
     u16 texture_id_next;
     f32 lfrac;
     f32 palette_id;
-    u8 filler_0x8C[0x90 - 0x8C];
+    s32 unk_mobj_0x8C;
     AObj *aobj;
     AObjScript matanim_joint;
     f32 anim_wait;                  // Animation frames remaining until next command(s) are parsed
@@ -473,7 +467,7 @@ struct SObj                     // Sprite object
     Sprite sprite;              // Sprite data
     GCUserData user_data;       // Custom parameters attached to SObj
     Vec2f pos;                  // Position on screen; ghosting effect if out of camera scissor bounds?
-    syColorRGBA envcolor;       // Color of outline around / under sprite?
+    SYColorRGBA envcolor;       // Color of outline around / under sprite?
     u8 cmt, cms;                // t-axis and s-axis mirror, no-mirror, wrap and clamp flags
     u8 maskt, masks;            // t-axis and s-axis mask
     u16 lrs, lrt;               // lower right s and t - used for wrap/mirror boundary

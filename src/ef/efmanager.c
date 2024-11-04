@@ -478,7 +478,7 @@ EFCreateDesc dEFManagerFoxReflectorEffectDesc =
 };
 
 // 0x8012E114
-syColorRGBPair dEFManagerShieldColors[/* */] =
+SYColorRGBPair dEFManagerShieldColors[/* */] =
 {
     { { 0xFF, 0xFF, 0xFF }, { 0xFF, 0x00, 0x00 } }, // Player 1
     { { 0xFF, 0xFF, 0xFF }, { 0x00, 0xFF, 0x00 } }, // Player 2

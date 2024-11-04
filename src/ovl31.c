@@ -722,7 +722,7 @@ void mnVSResultsCreateBackground()
 	GObj *camera_gobj;
 	s32 stack_fix_1, stack_fix_2;
 	s32 winner_port_id;
-	syColorRGBPair unused_colors[4] = {
+	SYColorRGBPair unused_colors[4] = {
 
 		{{ 0xAB, 0x31, 0x25 }, { 0xAF, 0x56, 0x4E }},
 		{{ 0x00, 0x3F, 0xFF }, { 0x39, 0x6A, 0xFF }},
@@ -740,7 +740,7 @@ void mnVSResultsCreateBackground()
 
 		0, 1, 3
 	};
-	syColorRGBPair colors[4] = {
+	SYColorRGBPair colors[4] = {
 
 		{{ 0x5C, 0x2B, 0x27 }, { 0x98, 0x6F, 0x6C }},
 		{{ 0x39, 0x39, 0x99 }, { 0x86, 0x86, 0xD1 }},
@@ -1067,7 +1067,7 @@ void mnVSResultsCreatePlayerIndicator(s32 port_id, s32 color_index)
 {
 	GObj* indicator_gobj;
 	SObj* indicator_sobj;
-	syColorRGBPair colors[4] = {
+	SYColorRGBPair colors[4] = {
 
 		{ { 0x00, 0x00, 0x00 }, { 0xED, 0x36, 0x36 } },
 		{ { 0x00, 0x00, 0x00 }, { 0x4E, 0x4E, 0xE9 } },
@@ -1152,7 +1152,7 @@ void mnVSResultsDrawString(const char *str, f32 x, f32 y, s32 color_index, f32 s
 		0x05E0, 0x09A8, 0x0D80, 0x1268, 0x1628, 0x1A00, 0x1F08, 0x2408, 0x26B8, 0x2A90, 0x2F98, 0x3358, 0x3980, 0x3E88,
 		0x44B0, 0x4890, 0x4F10, 0x5418, 0x57F0, 0x5BD0, 0x60D8, 0x65D8, 0x6C00, 0x7108, 0x7608, 0x7AE8, 0x7D98, 0x7E50
 	};
-	syColorRGBPair colors[5] = {
+	SYColorRGBPair colors[5] = {
 
 		{ { 0xFF, 0x00, 0x00 }, { 0xFF, 0xFF, 0xFF } },
 		{ { 0x12, 0x00, 0xD9 }, { 0xFF, 0xFF, 0xFF } },
@@ -1350,7 +1350,7 @@ s32 mnVSResultsGetOnesDigit(s32 number)
 // 0x80134770
 void mnVSResultsSetNumberColor(SObj* number_sobj, s32 color_index)
 {
-	syColorRGBPair colors[5] = {
+	SYColorRGBPair colors[5] = {
 
 		{ { 0x00, 0x00, 0x00 }, { 0xFF, 0x82, 0x82 } },
 		{ { 0x00, 0x00, 0x00 }, { 0x91, 0xC0, 0xFF } },
@@ -1375,7 +1375,7 @@ SObj* mnVSResultsCreateNumber(GObj* number_gobj, s32 number, s32 color_id)
 
 		0x068, 0x118, 0x1C8, 0x278, 0x328, 0x3D8, 0x488, 0x538, 0x5E8, 0x698
 	};
-	syColorRGBPair unused_colors[5] = {
+	SYColorRGBPair unused_colors[5] = {
 
 		{ { 0x00, 0x00, 0x00 }, { 0xED, 0x36, 0x36 } },
 		{ { 0x00, 0x00, 0x00 }, { 0x4E, 0x4E, 0xE9 } },
@@ -1400,7 +1400,7 @@ SObj* mnVSResultsCreatePlaceNumber(GObj* place_gobj, s32 port_id, s32 place, s32
 
 		0x0148, 0x02D8, 0x0500, 0x0698, 0x08C0, 0x0A58, 0x0C80, 0x0E18, 0x1040, 0x1270
 	};
-	syColorRGBPair unused_colors[5] = {
+	SYColorRGBPair unused_colors[5] = {
 
 		{ { 0x00, 0x00, 0x00 }, { 0xED, 0x36, 0x36 } },
 		{ { 0x00, 0x00, 0x00 }, { 0x4E, 0x4E, 0xE9 } },
@@ -3008,7 +3008,7 @@ void vs_results_entry()
 	D_ovl31_80139710.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl31_80139710);
 	D_ovl31_8013972C.arena_size = (u32) ((uintptr_t)&lOverlay31ArenaHi - (uintptr_t)&lOverlay31ArenaLo);
-	func_800A2698(&D_ovl31_8013972C);
+	scManagerFuncUpdate(&D_ovl31_8013972C);
 
 	for (i = 0; i < 4; i++)
 	{

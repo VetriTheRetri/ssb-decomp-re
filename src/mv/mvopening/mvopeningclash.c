@@ -7,7 +7,7 @@
 
 extern void syTaskmanSetLoadScene();
 extern u32 func_8000092C();
-extern void func_800A26B8();
+extern void scManagerFuncDraw();
 extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
 // // // // // // // // // // // //
@@ -508,5 +508,5 @@ void mvOpeningClashStartScene(void)
     syVideoInit(&dMVOpeningClashVideoSetup);
 
     dMVOpeningClashTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl49_BSS_END);
-    syTaskmanInit(&dMVOpeningClashTaskmanSetup);
+    syTaskmanRun(&dMVOpeningClashTaskmanSetup);
 }

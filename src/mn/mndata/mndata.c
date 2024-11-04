@@ -139,15 +139,15 @@ sb32 mnDataCheckSoundTestUnlocked(void)
 void mnDataSetOptionSpriteColors(GObj *gobj, s32 status)
 {
     // 0x80132F68
-    syColorRGBPair selcolors = { { 0x00, 0x00, 0x00 }, { 0xFF, 0xFF, 0xFF } };
+    SYColorRGBPair selcolors = { { 0x00, 0x00, 0x00 }, { 0xFF, 0xFF, 0xFF } };
 
     // 0x80132F70
-    syColorRGBPair hicolors  = { { 0x82, 0x00, 0x28 }, { 0xFF, 0x00, 0x28 } };
+    SYColorRGBPair hicolors  = { { 0x82, 0x00, 0x28 }, { 0xFF, 0x00, 0x28 } };
 
     // 0x80132F78
-    syColorRGBPair notcolors = { { 0x00, 0x00, 0x00 }, { 0x82, 0x82, 0xAA } };
+    SYColorRGBPair notcolors = { { 0x00, 0x00, 0x00 }, { 0x82, 0x82, 0xAA } };
     
-    syColorRGBPair *colors;
+    SYColorRGBPair *colors;
     SObj *sobj;
     s32 i;
 
@@ -872,5 +872,5 @@ void mnDataStartScene(void)
     syVideoInit(&dMNDataVideoSetup);
 
     dMNDataTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl61_BSS_END);
-    syTaskmanInit(&dMNDataTaskmanSetup);
+    syTaskmanRun(&dMNDataTaskmanSetup);
 }

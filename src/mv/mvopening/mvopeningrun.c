@@ -454,5 +454,5 @@ void mvOpeningRunStartScene(void)
 	syVideoInit(&dMVOpeningRunVideoSetup);
 
 	dMVOpeningRunTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl44_BSS_END);
-	syTaskmanInit(&dMVOpeningRunTaskmanSetup);
+	syTaskmanRun(&dMVOpeningRunTaskmanSetup);
 }

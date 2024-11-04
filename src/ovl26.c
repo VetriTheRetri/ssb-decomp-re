@@ -818,7 +818,7 @@ void mnUpdatePanel(GObj* panel_gobj, s32 color_id, s32 player_type)
 
 		0x00011378, 0x000113A0, 0x000113F0, 0x000113C8
 	};
-	syColorRGB colors[4] = {
+	SYColorRGB colors[4] = {
 
 		{ 0xFF, 0x7E, 0x7E },
 		{ 0xB3, 0xB3, 0xFF },
@@ -1184,7 +1184,7 @@ void mnBattleDrawTitleAndBack()
 
 		0x00000280, 0x000004E0
 	};
-	syColorRGB title_colors[2] = {
+	SYColorRGB title_colors[2] = {
 
 		{ 0xE3, 0xAC, 0x04 },
 		{ 0x61, 0xAD, 0x49 }
@@ -1413,7 +1413,7 @@ void mnBattleRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state)
 {
 	SObj* cursor_sobj;
 	f32 current_x, current_y;
-	syColorRGBPair type_colors[4] = {
+	SYColorRGBPair type_colors[4] = {
 
 		{ { 0xE0, 0x15, 0x15 }, { 0x5B, 0x00, 0x00 } },
 		{ { 0x00, 0x00, 0xFB }, { 0x00, 0x00, 0x52 } },
@@ -1589,7 +1589,7 @@ void mnHandleFFATeamBattleTogglePress()
 
 		0x280, 0x4e0
 	};
-	syColorRGB colors[2] = {
+	SYColorRGB colors[2] = {
 
 		{ 0xe3, 0xac, 0x04 },
 		{ 0x61, 0xad, 0x49 }
@@ -4314,5 +4314,5 @@ void vs_css_entry()
 	D_ovl26_8013B980.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl26_8013B980);
 	D_ovl26_8013B99C.arena_size = (size_t) ((uintptr_t)&lOverlay26ArenaHi - (uintptr_t)&lOverlay26ArenaLo);
-	func_800A2698(&D_ovl26_8013B99C);
+	scManagerFuncUpdate(&D_ovl26_8013B99C);
 }

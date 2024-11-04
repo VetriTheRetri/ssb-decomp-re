@@ -152,7 +152,7 @@ void ftBossCommonSetNextAttackWait(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    fp->fighter_vars.boss.p->wait_timer = ((mtTrigGetRandomIntRange(FTBOSS_ATTACK_WAIT_MAX) + (FTBOSS_ATTACK_WAIT_LEVEL_DIV / fp->cp_level)) / fp->fighter_vars.boss.p->wait_div);
+    fp->fighter_vars.boss.p->wait_timer = ((mtTrigGetRandomIntRange(FTBOSS_ATTACK_WAIT_MAX) + (FTBOSS_ATTACK_WAIT_LEVEL_DIV / fp->level)) / fp->fighter_vars.boss.p->wait_div);
 }
 
 // 0x80158528

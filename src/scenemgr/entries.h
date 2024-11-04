@@ -24,7 +24,7 @@ void mnScreenAdjustStartScene();
 void vs_css_entry();
 void mnStagesStartScene();
 void scVSBattleStartScene();
-void overlay_set23_entry();
+void mvUnknownMarioStartScene();
 void sc1PManagerUpdateScene();
 void sc1PBonusGameStartScene();
 void scManager_TrainingMode_InitScene();

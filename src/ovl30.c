@@ -22,7 +22,7 @@ extern intptr_t FILE_01E_STAGE_PREVIEW_PATTERNED_BG_IMAGE_OFFSET; // file 0x1E i
 extern intptr_t FILE_01E_RANDOM_IMAGE_OFFSET; // file 0x1E image offset for Random stage image
 extern intptr_t FILE_01E_RANDOM_STAGE_PREVIEW_BG_IMAGE_OFFSET; // file 0x1E image offset for Random stage image
 
-extern void func_800A26B8();
+extern void scManagerFuncDraw();
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 
@@ -1396,7 +1396,7 @@ SYVideoSetup D_ovl30_8013490C = {
 // 0x80134928
 scRuntimeInfo D_ovl30_80134928 = {
 	0x00000000, 0x8000A5E4,
-	func_800A26B8, &lOverlay30ArenaLo,
+	scManagerFuncDraw, &lOverlay30ArenaLo,
 	0x00000000, 0x00000001, 0x00000002, 0x00004268, 0x00001000,
 	0x00000000, 0x00000000, 0x00008000, 0x00020000, 0x00008000,
 	mnStagesSetLighting, update_contdata,
@@ -1414,5 +1414,5 @@ void mnStagesStartScene()
 	D_ovl30_8013490C.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl30_8013490C);
 	D_ovl30_80134928.arena_size = (u32) ((uintptr_t)&lOverlay30ArenaHi - (uintptr_t)&lOverlay30ArenaLo);
-	func_800A2698(&D_ovl30_80134928);
+	scManagerFuncUpdate(&D_ovl30_80134928);
 }

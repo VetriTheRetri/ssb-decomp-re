@@ -104,15 +104,15 @@ void mn1PModeFuncLights(Gfx **dls)
 void mn1PModeSetOptionSpriteColors(GObj *gobj, s32 status, s32 option_id)
 {
     // 0x801330C8
-    syColorRGBPair selcolors = { { 0x00, 0x00, 0x00 }, { 0xFF, 0xFF, 0xFF } };
+    SYColorRGBPair selcolors = { { 0x00, 0x00, 0x00 }, { 0xFF, 0xFF, 0xFF } };
 
     // 0x801330D0
-    syColorRGBPair hicolors  = { { 0x82, 0x00, 0x28 }, { 0xFF, 0x00, 0x28 } };
+    SYColorRGBPair hicolors  = { { 0x82, 0x00, 0x28 }, { 0xFF, 0x00, 0x28 } };
 
     // 0x801330D8
-    syColorRGBPair notcolors = { { 0x00, 0x00, 0x00 }, { 0x82, 0x82, 0xAA } };
+    SYColorRGBPair notcolors = { { 0x00, 0x00, 0x00 }, { 0x82, 0x82, 0xAA } };
     
-    syColorRGBPair *colors;
+    SYColorRGBPair *colors;
     SObj *sobj;
     s32 count;
     s32 i;
@@ -846,5 +846,5 @@ void mn1PModeStartScene(void)
     syVideoInit(&dMN1PModeVideoSetup);
     
     dMN1PModeTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl18_BSS_END);
-    syTaskmanInit(&dMN1PModeTaskmanSetup);
+    syTaskmanRun(&dMN1PModeTaskmanSetup);
 }

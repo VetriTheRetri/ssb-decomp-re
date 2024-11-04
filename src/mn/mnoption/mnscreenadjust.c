@@ -461,5 +461,5 @@ void mnScreenAdjustStartScene(void)
     syVideoInit(&dMNScreenAdjustVideoSetup);
     
     dMNScreenAdjustTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl25_BSS_END);
-    syTaskmanInit(&dMNScreenAdjustTaskmanSetup);
+    syTaskmanRun(&dMNScreenAdjustTaskmanSetup);
 }

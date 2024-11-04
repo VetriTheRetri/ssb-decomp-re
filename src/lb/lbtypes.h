@@ -191,10 +191,10 @@ struct LBParticle
     f32 friction;               // Friction?
     f32 size;
     f32 size_target;
-    syColorRGBA primcolor;
-    syColorRGBA target_primcolor;
-    syColorRGBA envcolor;
-    syColorRGBA target_envcolor;
+    SYColorRGBA primcolor;
+    SYColorRGBA target_primcolor;
+    SYColorRGBA envcolor;
+    SYColorRGBA target_envcolor;
     LBGenerator *gen;
     LBTransform *tfm;
 };

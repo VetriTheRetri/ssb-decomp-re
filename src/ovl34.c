@@ -1191,6 +1191,6 @@ void intro_firstscene_entry()
 	D_ovl34_80134BD0.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl34_80134BD0);
 	D_ovl34_80134BEC.arena_size = (u32) ((uintptr_t)&lOverlay34ArenaHi - (uintptr_t)&lOverlay34ArenaLo);
-	func_800A2698(&D_ovl34_80134BEC);
+	scManagerFuncUpdate(&D_ovl34_80134BEC);
 	func_800048D0(0);
 }

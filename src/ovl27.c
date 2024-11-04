@@ -1077,7 +1077,7 @@ void gMN1PDrawLevel(s32 level)
 		{ 219.0, 159.0 },
 		{ 205.0, 159.0 }
 	};
-	syColorRGB colors[5] = {
+	SYColorRGB colors[5] = {
 
 		{ 0x41, 0x6F, 0xE4 },
 		{ 0x8D, 0xBB, 0x5A },
@@ -1314,7 +1314,7 @@ void mn1PDrawHighscore()
 
 		0x00, 0x00, 0x00, 0x7E, 0x7C, 0x77
 	};
-	syColorRGB colors[5] = {
+	SYColorRGB colors[5] = {
 
 		{ 0x41, 0x6F, 0xE4 },
 		{ 0x8D, 0xBB, 0x5A },
@@ -1634,7 +1634,7 @@ void mn1PRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state)
 {
 	SObj* cursor_sobj;
 	f32 current_x, current_y;
-	syColorRGBPair type_colors[4] = {
+	SYColorRGBPair type_colors[4] = {
 
 		{ { 0xE0, 0x15, 0x15 }, { 0x5B, 0x00, 0x00 } },
 		{ { 0x00, 0x00, 0xFB }, { 0x00, 0x00, 0x52 } },
@@ -3176,5 +3176,5 @@ void classic_css_entry()
 	D_ovl27_80138C90.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl27_80138C90);
 	D_ovl27_80138CAC.arena_size = (u32) ((uintptr_t)&lOverlay27ArenaHi - (uintptr_t)&lOverlay27ArenaLo);
-	syTaskmanInit(&D_ovl27_80138CAC);
+	syTaskmanRun(&D_ovl27_80138CAC);
 }

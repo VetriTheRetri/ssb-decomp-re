@@ -2259,7 +2259,7 @@ void gmStaffrollStartScene(void)
 	syVideoInit(&dGMStaffrollVideoSetup);
 
 	dGMStaffrollTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)SYVIDEO_DEFINE_FRAMEBUFFER_ADDR(640, 480, 0, 0, u16, 0) - (uintptr_t)&ovl59_BSS_END);
-	syTaskmanInit(&dGMStaffrollTaskmanSetup);
+	syTaskmanRun(&dGMStaffrollTaskmanSetup);
 
 	arena16 = gSCSubsysFramebuffer0;
 

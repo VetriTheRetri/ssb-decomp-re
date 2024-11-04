@@ -1855,5 +1855,5 @@ void vs_records_entry()
 	D_ovl32_801369CC.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl32_801369CC);
 	D_ovl32_801369E8.arena_size = (u32) ((uintptr_t)&lOverlay32ArenaHi - (uintptr_t)&lOverlay32ArenaLo);
-	syTaskmanInit(&D_ovl32_801369E8);
+	syTaskmanRun(&D_ovl32_801369E8);
 }

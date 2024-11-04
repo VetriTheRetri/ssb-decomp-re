@@ -16,7 +16,7 @@ f32 sSCSubsysFighterLightAngleX;
 f32 sSCSubsysFighterLightAngleY;
 
 // 0x803929E0
-syColorRGBA sSCSubsysLightsColor;
+SYColorRGBA sSCSubsysLightsColor;
 
 // // // // // // // // // // // //
 //                               //

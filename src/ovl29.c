@@ -1257,7 +1257,7 @@ void mnBonusRedrawCursor(GObj* cursor_gobj, s32 port_id, s32 cursor_state)
 {
 	SObj* cursor_sobj;
 	f32 current_x, current_y;
-	syColorRGBPair type_colors[4] = {
+	SYColorRGBPair type_colors[4] = {
 
 		{ { 0xE0, 0x15, 0x15 }, { 0x5B, 0x00, 0x00 } },
 		{ { 0x00, 0x00, 0xFB }, { 0x00, 0x00, 0x52 } },
@@ -2571,5 +2571,5 @@ void bonus_css_entry()
 	D_ovl29_80137530.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl29_80137530);
 	D_ovl29_8013754C.arena_size = (u32) ((uintptr_t)&lOverlay29ArenaHi - (uintptr_t)&lOverlay29ArenaLo);
-	syTaskmanInit(&D_ovl29_8013754C);
+	syTaskmanRun(&D_ovl29_8013754C);
 }

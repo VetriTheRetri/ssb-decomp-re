@@ -468,5 +468,5 @@ void mvOpeningNewcomersStartScene(void)
     syVideoInit(&dMVOpeningNewcomersVideoSetup);
 
     dMVOpeningNewcomersTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl52_BSS_END);
-    syTaskmanInit(&dMVOpeningNewcomersTaskmanSetup);
+    syTaskmanRun(&dMVOpeningNewcomersTaskmanSetup);
 }

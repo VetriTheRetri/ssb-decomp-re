@@ -121,7 +121,7 @@ s32 scTrainingMode_Files_BackgroundImageIDs[] = {
 };
 
 // 0x8019086C
-syColorRGBA dSCTrainingFadeColor = { 0x00, 0x00, 0x00, 0x00 };
+SYColorRGBA dSCTrainingFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 SYVideoSetup D_ovl7_80190870 = SYVIDEO_DEFINE_DEFAULT();
 
@@ -1484,9 +1484,9 @@ void scTrainingMode_UpdateOpponentBehavior()
 void scTrainingMode_InitTrainingMode()
 {
 	GObj* fighter_gobj;
-	FTCreateDesc player_spawn;
+	FTCreateDesc ft_desc;
 	s32 player;
-	syColorRGBA color;
+	SYColorRGBA color;
 
 	func_ovl7_8018DA98();
 	scTrainingMode_LoadFiles();
@@ -1510,30 +1510,30 @@ void scTrainingMode_InitTrainingMode()
 
 	for (player = 0; player < ARRAY_COUNT(gSCManagerBattleState->players); player++)
 	{
-		player_spawn = dFTManagerDefaultFighterDesc;
+		ft_desc = dFTManagerDefaultFighterDesc;
 
 		if (gSCManagerBattleState->players[player].pkind == nFTPlayerKindNot)
 			continue;
 
 		ftManagerSetupFilesAllKind(gSCManagerBattleState->players[player].fkind);
-		player_spawn.fkind = gSCManagerBattleState->players[player].fkind;
-		mpCollisionGetPlayerMapObjPosition(player, &player_spawn.pos);
-		player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? -1 : +1;
-		player_spawn.team = gSCManagerBattleState->players[player].team;
-		player_spawn.player = player;
-		player_spawn.detail
+		ft_desc.fkind = gSCManagerBattleState->players[player].fkind;
+		mpCollisionGetPlayerMapObjPosition(player, &ft_desc.pos);
+		ft_desc.lr = (ft_desc.pos.x >= 0.0F) ? -1 : +1;
+		ft_desc.team = gSCManagerBattleState->players[player].team;
+		ft_desc.player = player;
+		ft_desc.detail
 			= ((gSCManagerBattleState->pl_count + gSCManagerBattleState->cp_count) < 3) ? nFTPartsDetailHigh : nFTPartsDetailLow;
-		player_spawn.costume = gSCManagerBattleState->players[player].costume;
-		player_spawn.shade = gSCManagerBattleState->players[player].shade;
-		player_spawn.handicap = gSCManagerBattleState->players[player].handicap;
-		player_spawn.cp_level = gSCManagerBattleState->players[player].level;
-		player_spawn.stock_count = gSCManagerBattleState->stocks;
-		player_spawn.damage = 0;
-		player_spawn.pkind = gSCManagerBattleState->players[player].pkind;
-		player_spawn.controller = &gPlayerControllers[player];
-		player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[player].fkind);
-		player_spawn.is_skip_entry = TRUE;
-		fighter_gobj = ftManagerMakeFighter(&player_spawn);
+		ft_desc.costume = gSCManagerBattleState->players[player].costume;
+		ft_desc.shade = gSCManagerBattleState->players[player].shade;
+		ft_desc.handicap = gSCManagerBattleState->players[player].handicap;
+		ft_desc.level = gSCManagerBattleState->players[player].level;
+		ft_desc.stock_count = gSCManagerBattleState->stocks;
+		ft_desc.damage = 0;
+		ft_desc.pkind = gSCManagerBattleState->players[player].pkind;
+		ft_desc.controller = &gPlayerControllers[player];
+		ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[player].fkind);
+		ft_desc.is_skip_entry = TRUE;
+		fighter_gobj = ftManagerMakeFighter(&ft_desc);
 		ftParamInitPlayerBattleStats(player, fighter_gobj);
 	}
 	scTrainingMode_UpdateOpponentBehavior();
@@ -1581,7 +1581,7 @@ void scManager_TrainingMode_InitScene()
 
 	do
 	{
-		func_800A2698(&D_ovl7_8019088C);
+		scManagerFuncUpdate(&D_ovl7_8019088C);
 		gmRumbleInitPlayers();
 	} while (gTrainingModeStruct.exit_or_reset != 0);
 

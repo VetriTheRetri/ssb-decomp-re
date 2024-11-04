@@ -175,7 +175,7 @@ s32 scBonusGame_Player_InterfacePositions[] = {
 };
 
 // 0x8018F03C
-syColorRGBA dSCBonusGameFadeColor = { 0x00, 0x00, 0x00, 0x00 };
+SYColorRGBA dSCBonusGameFadeColor = { 0x00, 0x00, 0x00, 0x00 };
 
 // 0x8018F040
 s32 D_ovl6_8018F040[16] = {
@@ -791,8 +791,8 @@ void scBonusGame_InitBonusGame()
 	s32 unused[3];
 	s32 player;
 	GObj* fighter_gobj;
-	FTCreateDesc player_spawn;
-	syColorRGBA color;
+	FTCreateDesc ft_desc;
+	SYColorRGBA color;
 
 	func_ovl6_8018D0F0();
 	func_ovl6_8018ED70();
@@ -814,7 +814,7 @@ void scBonusGame_InitBonusGame()
 	gmRumbleMakeActor();
 	ftPublicityMakeActor();
 
-	for (player = 0, player_spawn = dFTManagerDefaultFighterDesc; player < ARRAY_COUNT(gSCManagerBattleState->players);
+	for (player = 0, ft_desc = dFTManagerDefaultFighterDesc; player < ARRAY_COUNT(gSCManagerBattleState->players);
 		 player++)
 	{
 		if (gSCManagerBattleState->players[player].pkind == nFTPlayerKindNot)
@@ -822,24 +822,24 @@ void scBonusGame_InitBonusGame()
 
 		ftManagerSetupFilesAllKind(gSCManagerBattleState->players[player].fkind);
 
-		player_spawn.fkind = gSCManagerBattleState->players[player].fkind;
+		ft_desc.fkind = gSCManagerBattleState->players[player].fkind;
 
-		scBonusGame_GetPlayerSpawnPosition(&player_spawn.pos);
+		scBonusGame_GetPlayerSpawnPosition(&ft_desc.pos);
 
-		player_spawn.lr_spawn = (player_spawn.pos.x >= 0.0F) ? -1 : +1;
+		ft_desc.lr = (ft_desc.pos.x >= 0.0F) ? -1 : +1;
 
-		player_spawn.team = 0;
-		player_spawn.player = player;
-		player_spawn.detail = nFTPartsDetailHigh;
-		player_spawn.costume = gSCManagerBattleState->players[player].costume;
+		ft_desc.team = 0;
+		ft_desc.player = player;
+		ft_desc.detail = nFTPartsDetailHigh;
+		ft_desc.costume = gSCManagerBattleState->players[player].costume;
 
-		player_spawn.pkind = gSCManagerBattleState->players[player].pkind;
-		player_spawn.controller = &gPlayerControllers[player];
+		ft_desc.pkind = gSCManagerBattleState->players[player].pkind;
+		ft_desc.controller = &gPlayerControllers[player];
 
-		player_spawn.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[player].fkind);
-		player_spawn.is_skip_entry = TRUE;
+		ft_desc.figatree_heap = ftManagerAllocFigatreeHeapKind(gSCManagerBattleState->players[player].fkind);
+		ft_desc.is_skip_entry = TRUE;
 
-		fighter_gobj = ftManagerMakeFighter(&player_spawn);
+		fighter_gobj = ftManagerMakeFighter(&ft_desc);
 
 		ftParamInitPlayerBattleStats(player, fighter_gobj);
 
@@ -963,7 +963,7 @@ void sc1PBonusGameStartScene()
 	D_ovl6_8018F09C.arena_size = (size_t) ((uintptr_t)&lOverlay6ArenaHi - (uintptr_t)&lOverlay6ArenaLo);
 	D_ovl6_8018F09C.func_start = scBonusGame_InitBonusGame;
 
-	syTaskmanInit(&D_ovl6_8018F09C);
+	syTaskmanRun(&D_ovl6_8018F09C);
 	auStopBGM();
 
 	while (auIsBGMPlaying(0) != FALSE)

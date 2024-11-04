@@ -4,7 +4,7 @@
 #include <sc/scene.h>
 #include <sys/video.h>
 
-extern void func_800A26B8();
+extern void scManagerFuncDraw();
 extern void syRdpSetViewport(Vp *vp, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
 // // // // // // // // // // // //
@@ -541,12 +541,12 @@ void SC1PContinueOptionSetHighlightColors(GObj *gobj, s32 option)
     SObj *sobj;
 
     // 0x801341D0
-    syColorRGBPair not = { { 0x00, 0x00, 0x00 }, { 0xFF, 0x00, 0x00 } };
+    SYColorRGBPair not = { { 0x00, 0x00, 0x00 }, { 0xFF, 0x00, 0x00 } };
 
     // 0x801341D8
-    syColorRGBPair highlight = { { 0x00, 0x00, 0x00 }, { 0x4C, 0x47, 0x5F } };
+    SYColorRGBPair highlight = { { 0x00, 0x00, 0x00 }, { 0x4C, 0x47, 0x5F } };
 
-    syColorRGBPair *color;
+    SYColorRGBPair *color;
 
     sobj = SObjGetStruct(gobj);
 
@@ -1265,7 +1265,7 @@ SYTaskmanSetup dSC1PContinueTaskmanSetup =
     {
         0,                          // ???
         gcRunAll,              		// Update function
-        func_800A26B8,              // Frame draw function
+        scManagerFuncDraw,              // Frame draw function
         &ovl55_BSS_END,             // Allocatable memory pool start
         0,                          // Allocatable memory pool size
         1,                          // ???
@@ -1312,7 +1312,7 @@ void sc1PContinueStartScene(void)
 
     dSC1PContinueTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&ovl1_VRAM - (uintptr_t)&ovl55_BSS_END);
 
-    func_800A2698(&dSC1PContinueTaskmanSetup);
+    scManagerFuncUpdate(&dSC1PContinueTaskmanSetup);
 
     gSCManagerSceneData.is_continue = sSC1PContinueIsSelectContinue;
 }

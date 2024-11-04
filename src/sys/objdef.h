@@ -47,17 +47,17 @@ typedef enum GObjObjKind
 
 } GObjObjKind;
 
-typedef enum GObjCommandKind
+typedef enum GObjEventKind
 {
-    nGCCommonCommandShow,
-    nGCCommonCommandHide,
-    nGCCommonCommandResume,
-    nGCCommonCommandPause,
-    nGCCommonCommandEnd
+    nGCCommonEventShow,
+    nGCCommonEventHide,
+    nGCCommonEventResume,
+    nGCCommonEventPause,
+    nGCCommonEventEnd
 
-} GObjCommandKind;
+} GObjEventKind;
 
-typedef enum GObjLinkIndex
+typedef enum GObjLinkID
 {
     // GObj link indexes with ID 1
     nGCCommonLinkIDGround = 1,         // ID 1: Stage object
@@ -83,6 +83,7 @@ typedef enum GObjLinkIndex
     nGCCommonLinkIDInterface = 11,     // ID 11: HUD elements object
     nGCCommonLinkIDMagnify = 12,       // ID 12: HUD magnifying glass
 
+    nGCCommonLinkIDMovie = 13,         // ID 13: Movie?
     nGCCommonLinkIDRumble = 13,        // ID 13: Rumble object?
     nGCCommonLinkIDWallpaper = 13,     // ID 13: Stage background object?
     nGCCommonLinkIDWallpaperEffect=13, // ID 13: Stage background effect
@@ -92,7 +93,7 @@ typedef enum GObjLinkIndex
 
     nGCCommonLinkIDPauseMenu           // ID 14: Pause menu object?
 
-} GObjLinkIndex;
+} GObjLinkID;
 
 typedef enum DObjVecKind
 {

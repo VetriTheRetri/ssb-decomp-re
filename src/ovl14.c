@@ -481,5 +481,5 @@ void dbBattleStartScene()
 	D_ovl14_80132934.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl14_80132934);
 	D_ovl14_80132950.arena_size = (u32) ((uintptr_t)&lOverlay14ArenaHi - (uintptr_t)&lOverlay14ArenaLo);
-	syTaskmanInit(&D_ovl14_80132950);
+	syTaskmanRun(&D_ovl14_80132950);
 }

@@ -184,9 +184,9 @@ struct MPGroundData
 	MPGeometryData *map_geometry;
 	u8 layer_mask; // render mask which determines render type for each geo layer (gr_desc) - 0 = primary, 1 = secondary (more alpha control w/2 display lists)
 	Sprite *wallpaper; 								// Background image?
-	syColorRGB fog_color;
+	SYColorRGB fog_color;
 	u8 fog_alpha;								 	// Unused padding?
-	syColorRGB emblem_colors[GMCOMMON_PLAYERS_MAX]; 	// What's this doing here?
+	SYColorRGB emblem_colors[GMCOMMON_PLAYERS_MAX]; 	// What's this doing here?
 	s32 unk_0x5C;
 	Vec3f light_angle;
 	s16 cobj_bound_top;				// Normal bounds

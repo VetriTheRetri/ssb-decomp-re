@@ -591,7 +591,7 @@ void dbCubeStartScene()
 	{
 		dMNDebugCubeExitInterrupt = 0;
 		dMNDebugCubeTransitionInterrupt = 0;
-		syTaskmanInit(&D_ovl13_80132F88);
+		syTaskmanRun(&D_ovl13_80132F88);
 	}
 	while (dMNDebugCubeTransitionInterrupt != 0);
 }

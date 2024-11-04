@@ -200,5 +200,5 @@ void dbStageSelectStartScene()
 	D_ovl12_800D6764.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&D_ovl12_800D6764);
 	D_ovl12_800D6780.arena_size = (u32) ((uintptr_t)&lOverlay12ArenaHi - (uintptr_t)&lOverlay12ArenaLo);
-	syTaskmanInit(&D_ovl12_800D6780);
+	syTaskmanRun(&D_ovl12_800D6780);
 }

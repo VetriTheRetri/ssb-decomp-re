@@ -83,7 +83,7 @@ extern void syTaskmanAppendGfxUcodeLoad(Gfx **dlist, u32 ucodeIdx);
 extern void func_800053CC(void);
 extern void syTaskmanUpdateDLBuffers(void);
 extern void syTaskmanSetLoadScene(void);
-extern void syTaskmanInit(SYTaskmanSetup *arg);
+extern void syTaskmanRun(SYTaskmanSetup *arg);
 extern void func_80006B80(void);
 
 #endif

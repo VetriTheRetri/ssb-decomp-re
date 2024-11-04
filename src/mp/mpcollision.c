@@ -3660,23 +3660,23 @@ void func_ovl2_800FB554(void)
 }
 
 // 0x800FB584
-void mpCollisionAllocYakumono(DObjDesc *gr_yakumono)
+void mpCollisionAllocYakumono(DObjDesc *dobjdesc)
 {
-    s32 yakumono_count;
+    s32 yakumonos_num;
     s32 i;
 
-    for (yakumono_count = 0; gr_yakumono->index != DOBJ_ARRAY_MAX; yakumono_count++)
+    for (yakumonos_num = 0; dobjdesc->id != DOBJ_ARRAY_MAX; yakumonos_num++)
     {
-        gr_yakumono++;
+        dobjdesc++;
     }
-    gMPCollisionYakumonoDObjs = syTaskmanMalloc(yakumono_count * sizeof(gMPCollisionYakumonoDObjs), 0x4);
-    gMPCollisionDynamics = syTaskmanMalloc(yakumono_count * sizeof(Vec3f), 0x4);
+    gMPCollisionYakumonoDObjs = syTaskmanMalloc(yakumonos_num * sizeof(gMPCollisionYakumonoDObjs), 0x4);
+    gMPCollisionDynamics = syTaskmanMalloc(yakumonos_num * sizeof(Vec3f), 0x4);
 
-    for (i = 0; i < yakumono_count; i++)
+    for (i = 0; i < yakumonos_num; i++)
     {
         gMPCollisionDynamics[i].x = gMPCollisionDynamics[i].y = gMPCollisionDynamics[i].z = 0.0F;
     }
-    gMPCollisionYakumonosNum = yakumono_count;
+    gMPCollisionYakumonosNum = yakumonos_num;
 }
 
 // 0x800FB808
@@ -4103,7 +4103,7 @@ void mpCollisionClearYakumonoAll(void)
     DObjDesc *dobjdesc = gMPCollisionGroundData->gr_desc[1].dobjdesc;
     s32 i;
 
-    for (i = 0; dobjdesc->index != DOBJ_ARRAY_MAX; i++, dobjdesc++)
+    for (i = 0; dobjdesc->id != DOBJ_ARRAY_MAX; i++, dobjdesc++)
     {
         gMPCollisionYakumonoDObjs->yakumono_dobj[i]->user_data.s = nMPYakumonoStatusNone;
     }

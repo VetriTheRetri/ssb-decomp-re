@@ -43,7 +43,7 @@ void grBonus3MakeBumpers(void)
 
     anim_joint++, dobjdesc++;
 
-    for (i = 0; dobjdesc->index != DOBJ_ARRAY_MAX; i++, dobjdesc++, anim_joint++)
+    for (i = 0; dobjdesc->id != DOBJ_ARRAY_MAX; i++, dobjdesc++, anim_joint++)
     {
         item_gobj = itManagerMakeItemSetupCommon(NULL, nITKindGBumper, &dobjdesc->translate, &vel, ITEM_FLAG_PARENT_GROUND);
 

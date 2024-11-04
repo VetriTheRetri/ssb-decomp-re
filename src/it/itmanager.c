@@ -207,15 +207,15 @@ void itManagerSetupItemDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs, u8 tr
     {
         array_dobjs[i] = NULL;
     }
-    for (i = 0; dobjdesc->index != ARRAY_COUNT(array_dobjs); i++, dobjdesc++)
+    for (i = 0; dobjdesc->id != ARRAY_COUNT(array_dobjs); i++, dobjdesc++)
     {
-        id = dobjdesc->index & 0xFFF;
+        id = dobjdesc->id & 0xFFF;
 
         if (id != 0)
         {
-            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->display_list);
+            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->dl);
         }
-        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobjdesc->display_list);
+        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobjdesc->dl);
         
         if (i == 1)
         {

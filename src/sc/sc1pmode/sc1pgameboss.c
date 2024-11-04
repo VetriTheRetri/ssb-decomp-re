@@ -788,17 +788,17 @@ void sc1PGameBossSetupBackgroundDObjs(GObj *gobj, DObjDesc *dobjdesc, MObjSub **
     {
         array_dobjs[i] = NULL;
     }
-    id = (dobjdesc->index & 0xFFF);
+    id = (dobjdesc->id & 0xFFF);
 
     while ((id ^ 0) != ARRAY_COUNT(array_dobjs)) // Ewwwww... we meet again, XOR hack.
     {
         if (id != 0)
         {
-            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->display_list);
+            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->dl);
         }
-        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobjdesc->display_list);
+        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobjdesc->dl);
         
-        id = dobjdesc->index & 0xF000;
+        id = dobjdesc->id & 0xF000;
 
         if (id != 0)
         {
@@ -830,7 +830,7 @@ void sc1PGameBossSetupBackgroundDObjs(GObj *gobj, DObjDesc *dobjdesc, MObjSub **
             }
             p_mobjsubs++;
         }
-        dobjdesc++, id = dobjdesc->index & 0xFFF;
+        dobjdesc++, id = dobjdesc->id & 0xFFF;
     }
 }
 

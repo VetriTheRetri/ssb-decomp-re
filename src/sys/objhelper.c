@@ -354,7 +354,7 @@ DObj* gcAddDObjChildRpyR(DObj *dobj, void *dvar)
 }
 
 // 0x8000B618
-void unref_8000B618(GObj *gobj, DObjTraDesc *dobj_tra, DObj **dobjs)
+void unref_8000B618(GObj *gobj, DObjTraDesc *dobjtra, DObj **dobjs)
 {
     s32 i;
     DObj *dobj, *array_dobjs[18];
@@ -363,25 +363,25 @@ void unref_8000B618(GObj *gobj, DObjTraDesc *dobj_tra, DObj **dobjs)
     {
         array_dobjs[i] = NULL;
     }
-    while (dobj_tra->index != 18)
+    while (dobjtra->id != 18)
     {
-        if (dobj_tra->index != 0)
+        if (dobjtra->id != 0)
         {
-            dobj = array_dobjs[dobj_tra->index] = gcAddDObjChildRpyD
+            dobj = array_dobjs[dobjtra->id] = gcAddDObjChildRpyD
             (
-                array_dobjs[dobj_tra->index - 1],
-                dobj_tra->display_list
+                array_dobjs[dobjtra->id - 1],
+                dobjtra->dl
             );
         }
-        else dobj = array_dobjs[0] = gcAddDObjRpyD(gobj, dobj_tra->display_list);
+        else dobj = array_dobjs[0] = gcAddDObjRpyD(gobj, dobjtra->dl);
         
-        dobj->translate.vec.f = dobj_tra->translate;
+        dobj->translate.vec.f = dobjtra->translate;
 
         if (dobjs != NULL)
         {
             *dobjs++ = dobj;
         }
-        dobj_tra++;
+        dobjtra++;
     }
 }
 

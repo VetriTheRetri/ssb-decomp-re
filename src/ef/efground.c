@@ -1312,19 +1312,19 @@ void efGroundSetupEffectDObjs(GObj *effect_gobj, DObjDesc *dobjdesc, DObj **dobj
         array_dobjs[i] = NULL;
     }
 
-    while (dobjdesc->index != ARRAY_COUNT(array_dobjs))
+    while (dobjdesc->id != ARRAY_COUNT(array_dobjs))
     {
-        id = dobjdesc->index & 0xFFF;
+        id = dobjdesc->id & 0xFFF;
 
         if (id != 0)
         {
-            current_dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->display_list);
+            current_dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->dl);
         }
-        else current_dobj = array_dobjs[0] = gcAddChildForDObj(effect_dobj, dobjdesc->display_list);
+        else current_dobj = array_dobjs[0] = gcAddChildForDObj(effect_dobj, dobjdesc->dl);
 
         gcAddDObjTriTransformKind(current_dobj, tk1, tk2, arg5);
 
-        index2 = dobjdesc->index & 0xF000;
+        index2 = dobjdesc->id & 0xF000;
 
         if (index2 != 0)
         {

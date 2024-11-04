@@ -640,7 +640,7 @@ struct FTDamageColl
     Vec3f size;
 };
 
-struct FTHitLog // Might have to return once structs are cleaned up (alas once forward declarations are implemented to replace void* with struct*)
+struct FTHitLog
 {
     s32 attacker_object_class;
     void *attack_coll;

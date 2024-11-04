@@ -367,8 +367,8 @@ struct DObjTransformTypes
 
 struct DObjDesc
 {
-    s32 index;
-    void *display_list;
+    s32 id;
+    void *dl;
     Vec3f translate;
     Vec3f rotate;
     Vec3f scale;
@@ -376,8 +376,8 @@ struct DObjDesc
 
 struct DObjTraDesc
 {
-    s32 index;
-    void *display_list;
+    s32 id;
+    void *dl;
     Vec3f translate;
 };
 

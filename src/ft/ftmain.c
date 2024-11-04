@@ -4064,7 +4064,7 @@ void ftMainUpdateWithheldPartID(FTStruct *fp, s32 withheld_part_id)
         {
             commonpart = &fp->attr->commonparts_container->commonparts[0];
         }
-        else if (attr->commonparts_container->commonparts[1].dobjdesc[withheld_part->root_joint_id - nFTPartsJointCommonStart].display_list != NULL)
+        else if (attr->commonparts_container->commonparts[1].dobjdesc[withheld_part->root_joint_id - nFTPartsJointCommonStart].dl != NULL)
         {
             commonpart = &attr->commonparts_container->commonparts[1];
         }
@@ -4072,7 +4072,7 @@ void ftMainUpdateWithheldPartID(FTStruct *fp, s32 withheld_part_id)
     }
     else commonpart = NULL;
 
-    dl = (commonpart != NULL) ? commonpart->dobjdesc[withheld_part->root_joint_id - nFTPartsJointCommonStart].display_list : NULL;
+    dl = (commonpart != NULL) ? commonpart->dobjdesc[withheld_part->root_joint_id - nFTPartsJointCommonStart].dl : NULL;
 
     root_joint = gcAddDObjForGObj(fp->fighter_gobj, dl);
     root_joint->sib_prev->sib_next = NULL;
@@ -4610,7 +4610,7 @@ void ftMainSetFighterStatus(GObj *fighter_gobj, s32 status_id, f32 frame_begin, 
 
             dobjdesc = attr->commonparts_container->commonparts[fp->detail_curr - nFTPartsDetailStart].dobjdesc;
 
-            for (i = nFTPartsJointCommonStart; dobjdesc->index != DOBJ_ARRAY_MAX; i++, dobjdesc++)
+            for (i = nFTPartsJointCommonStart; dobjdesc->id != DOBJ_ARRAY_MAX; i++, dobjdesc++)
             {
                 joint = fp->joints[i];
 

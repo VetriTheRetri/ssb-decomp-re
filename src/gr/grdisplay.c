@@ -165,7 +165,7 @@ void grDisplayDObjSetNoAnimMtx(GObj *ground_gobj, DObjDesc *dobjdesc)
 
     while (next_dobj != NULL)
     {
-        if ((next_dobj->aobj == NULL) && !(dobjdesc->index & 0xF000))
+        if ((next_dobj->aobj == NULL) && !(dobjdesc->id & 0xF000))
         {
             for (i = 0; i < next_dobj->xobjs_num; i++)
             {

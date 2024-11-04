@@ -318,7 +318,7 @@ void scBonusGame_InitBonus1Targets()
 	gGRCommonStruct.bonus1.target_count = 0;
 	dobjdesc++, anim_joints++;
 
-	while (dobjdesc->index != DOBJ_ARRAY_MAX)
+	while (dobjdesc->id != DOBJ_ARRAY_MAX)
 	{
 		GObj* item_gobj = itManagerMakeItemSetupCommon(NULL, nITKindTarget, &dobjdesc->translate, &pos, 1);
 
@@ -547,7 +547,7 @@ void scBonusGame_InitBonus2Bumpers()
 								  .o_anim);
 		dobjdesc++, anim_joint++;
 
-		while (dobjdesc->index != 0x12)
+		while (dobjdesc->id != 0x12)
 		{
 			item_gobj = itManagerMakeItemSetupCommon(NULL, nITKindGBumper, &dobjdesc->translate, &vel,
 													  ITEM_FLAG_PARENT_GROUND);

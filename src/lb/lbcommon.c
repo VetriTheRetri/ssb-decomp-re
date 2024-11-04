@@ -923,19 +923,19 @@ void lbCommonSetupTreeDObjs(DObj *root_dobj, DObjDesc *dobjdesc, DObj **dobjs, u
     {
         array_dobjs[i] = NULL;
     }
-    while (dobjdesc->index != ARRAY_COUNT(array_dobjs)) 
+    while (dobjdesc->id != ARRAY_COUNT(array_dobjs)) 
     {
-        id = dobjdesc->index & 0xFFF;
+        id = dobjdesc->id & 0xFFF;
 
         if (id != 0)
         {
-            current_dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->display_list);
+            current_dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->dl);
         } 
-        else current_dobj = array_dobjs[0] = gcAddChildForDObj(root_dobj, dobjdesc->display_list);
+        else current_dobj = array_dobjs[0] = gcAddChildForDObj(root_dobj, dobjdesc->dl);
         
-        if (dobjdesc->index & 0xF000) 
+        if (dobjdesc->id & 0xF000) 
         {
-            gcDecideDObjTriTransformKind(current_dobj, tk1, tk2, tk3, dobjdesc->index & 0xF000);
+            gcDecideDObjTriTransformKind(current_dobj, tk1, tk2, tk3, dobjdesc->id & 0xF000);
         } 
         else gcAddDObjTriTransformKind(current_dobj, tk1, tk2, tk3);
         
@@ -1033,18 +1033,18 @@ void lbCommonSetupFighterPartsDObjs
     {
         array_dobjs[i] = NULL;
     }
-    for (i = 0; ((flags0 != 0) || (flags1 != 0)) && (dobjdesc->index != ARRAY_COUNT(array_dobjs)); i++)
+    for (i = 0; ((flags0 != 0) || (flags1 != 0)) && (dobjdesc->id != ARRAY_COUNT(array_dobjs)); i++)
     {
         current_flags = (i < GS_BITCOUNT(u32)) ? flags0 : flags1;
 
         if (current_flags & (1 << 31))
         {
-            id = dobjdesc->index & 0xFFF;
+            id = dobjdesc->id & 0xFFF;
             
             if
             (
                 (detail_curr == nFTPartsDetailHigh) ||
-                (commonparts_container->commonparts[nFTPartsDetailLow - nFTPartsDetailStart].dobjdesc[i].display_list == NULL)
+                (commonparts_container->commonparts[nFTPartsDetailLow - nFTPartsDetailStart].dobjdesc[i].dl == NULL)
             )
             {
                 detail_id = 0;
@@ -1056,15 +1056,15 @@ void lbCommonSetupFighterPartsDObjs
                 current_dobj = array_dobjs[id] = gcAddChildForDObj
                 (
                     array_dobjs[id - 1],
-                    commonparts_container->commonparts[detail_id].dobjdesc[i].display_list
+                    commonparts_container->commonparts[detail_id].dobjdesc[i].dl
                 );
             }
             else current_dobj = array_dobjs[0] = gcAddChildForDObj
             (
                 root_dobj,
-                commonparts_container->commonparts[detail_id].dobjdesc[i].display_list
+                commonparts_container->commonparts[detail_id].dobjdesc[i].dl
             );
-            if (dobjdesc->index & 0x8000)
+            if (dobjdesc->id & 0x8000)
             {
                 gcDecideDObjTriTransformKind(current_dobj, tk1, tk2, tk3, 0x8000);
             }
@@ -1121,17 +1121,17 @@ void lbCommonSetupCustomTreeDObjsWithMObj
     {
         array_dobjs[i] = NULL;
     }
-    while (dobjdesc->index != ARRAY_COUNT(array_dobjs)) 
+    while (dobjdesc->id != ARRAY_COUNT(array_dobjs)) 
     {
-        id = dobjdesc->index & 0xFFF;
+        id = dobjdesc->id & 0xFFF;
 
         if (id != 0)
         {
-            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->display_list);
+            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->dl);
         } 
-        else dobj = array_dobjs[0] = gcAddChildForDObj(root_dobj, dobjdesc->display_list);
+        else dobj = array_dobjs[0] = gcAddChildForDObj(root_dobj, dobjdesc->dl);
         
-        if (dobjdesc->index & 0x8000) 
+        if (dobjdesc->id & 0x8000) 
         {
             gcDecideDObjTriTransformKind(dobj, tk1, tk2, tk3, 0x8000);
         } 
@@ -1212,7 +1212,7 @@ void lbCommonSetDObjTransformsForTreeDObjs(DObj *root_dobj, DObjDesc *dobjdesc)
 {
     DObj *current_dobj = root_dobj;
     
-    while ((current_dobj != NULL) && (dobjdesc->index != DOBJ_ARRAY_MAX))
+    while ((current_dobj != NULL) && (dobjdesc->id != DOBJ_ARRAY_MAX))
     {
         current_dobj->translate.vec.f = dobjdesc->translate;
         current_dobj->rotate.vec.f = dobjdesc->rotate;

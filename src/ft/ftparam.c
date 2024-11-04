@@ -786,13 +786,13 @@ void ftParamSetModelPartID(GObj *fighter_gobj, s32 joint_id, s32 modelpart_id)
                 }
                 else
                 {
-                    if ((fp->detail_curr == nFTPartsDetailHigh) || (commonparts_container->commonparts[1].dobjdesc[joint_id - nFTPartsJointCommonStart].display_list == NULL))
+                    if ((fp->detail_curr == nFTPartsDetailHigh) || (commonparts_container->commonparts[1].dobjdesc[joint_id - nFTPartsJointCommonStart].dl == NULL))
                     {
                         detail_id = 0;
                     }
                     else detail_id = 1;
 
-                    joint->display_list = commonparts_container->commonparts[detail_id].dobjdesc[joint_id - nFTPartsJointCommonStart].display_list;
+                    joint->display_list = commonparts_container->commonparts[detail_id].dobjdesc[joint_id - nFTPartsJointCommonStart].dl;
 
                     if (commonparts_container->commonparts[detail_id].p_mobjsubs != NULL)
                     {
@@ -879,13 +879,13 @@ void ftParamResetModelPartAll(GObj *fighter_gobj)
                     }
                     else
                     {
-                        if ((fp->detail_curr == nFTPartsDetailHigh) || (commonparts_container->commonparts[1].dobjdesc[i].display_list == NULL))
+                        if ((fp->detail_curr == nFTPartsDetailHigh) || (commonparts_container->commonparts[1].dobjdesc[i].dl == NULL))
                         {
                             detail_id = 0;
                         }
                         else detail_id = 1;
 
-                        joint->display_list = commonparts_container->commonparts[detail_id].dobjdesc[i].display_list;
+                        joint->display_list = commonparts_container->commonparts[detail_id].dobjdesc[i].dl;
 
                         if (commonparts_container->commonparts[detail_id].p_mobjsubs != NULL)
                         {
@@ -1013,7 +1013,7 @@ void ftParamInitModelTexturePartsAll(GObj *fighter_gobj, s32 costume, s32 shade)
                 }
                 else
                 {
-                    if ((fp->detail_curr == nFTPartsDetailHigh) || (commonparts_container->commonparts[1].dobjdesc[i].display_list == NULL))
+                    if ((fp->detail_curr == nFTPartsDetailHigh) || (commonparts_container->commonparts[1].dobjdesc[i].dl == NULL))
                     {
                         detail_id = 0;
                     }

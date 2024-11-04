@@ -2161,33 +2161,33 @@ void gcSetupCommonDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs)
     {
         array_dobjs[i] = NULL;
     }
-    while (dobjdesc->index != ARRAY_COUNT(array_dobjs))
+    while (dobjdesc->id != ARRAY_COUNT(array_dobjs))
     {
-        id = dobjdesc->index & 0xFFF;
+        id = dobjdesc->id & 0xFFF;
 
         if (id != 0)
         {
-            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->display_list);
+            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->dl);
         }
-        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobjdesc->display_list);
+        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobjdesc->dl);
         
-        if (dobjdesc->index & 0xF000)
+        if (dobjdesc->id & 0xF000)
         {
             gcAddXObjForDObjFixed(dobj, nGCMatrixKindTra, 0);
         }
-        if (dobjdesc->index & 0x8000)
+        if (dobjdesc->id & 0x8000)
         {
             gcAddXObjForDObjFixed(dobj, nGCMatrixKindRecalcRotRpyRSca, 0);
         } 
-        else if (dobjdesc->index & 0x4000)
+        else if (dobjdesc->id & 0x4000)
         {
             gcAddXObjForDObjFixed(dobj, nGCMatrixKind46, 0);
         }
-        else if (dobjdesc->index & 0x2000)
+        else if (dobjdesc->id & 0x2000)
         {
             gcAddXObjForDObjFixed(dobj, nGCMatrixKind48, 0);
         }
-        else if (dobjdesc->index & 0x1000)
+        else if (dobjdesc->id & 0x1000)
         {
             gcAddXObjForDObjFixed(dobj, nGCMatrixKind50, 0);
         }
@@ -2340,19 +2340,19 @@ void gcSetupCustomDObjs(GObj *gobj, DObjDesc *dobjdesc, DObj **dobjs, u8 tk1, u8
     {
         array_dobjs[i] = NULL;
     }
-    while (dobjdesc->index != ARRAY_COUNT(array_dobjs)) 
+    while (dobjdesc->id != ARRAY_COUNT(array_dobjs)) 
     {
-        id = dobjdesc->index & 0xFFF;
+        id = dobjdesc->id & 0xFFF;
 
         if (id != 0)
         {
-            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->display_list);
+            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->dl);
         } 
-        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobjdesc->display_list);
+        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobjdesc->dl);
         
-        if (dobjdesc->index & 0xF000) 
+        if (dobjdesc->id & 0xF000) 
         {
-            gcDecideDObjTriTransformKind(dobj, tk1, tk2, tk3, dobjdesc->index & 0xF000);
+            gcDecideDObjTriTransformKind(dobj, tk1, tk2, tk3, dobjdesc->id & 0xF000);
         } 
         else gcAddDObjTriTransformKind(dobj, tk1, tk2, tk3);
         
@@ -2380,19 +2380,19 @@ void gcSetupCustomDObjsWithMObj(GObj *gobj, DObjDesc *dobjdesc, MObjSub ***p_mob
     {
         array_dobjs[i] = NULL;
     }
-    while (dobjdesc->index != ARRAY_COUNT(array_dobjs)) 
+    while (dobjdesc->id != ARRAY_COUNT(array_dobjs)) 
     {
-        id = dobjdesc->index & 0xFFF;
+        id = dobjdesc->id & 0xFFF;
 
         if (id != 0)
         {
-            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->display_list);
+            dobj = array_dobjs[id] = gcAddChildForDObj(array_dobjs[id - 1], dobjdesc->dl);
         } 
-        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobjdesc->display_list);
+        else dobj = array_dobjs[0] = gcAddDObjForGObj(gobj, dobjdesc->dl);
         
-        if (dobjdesc->index & 0xF000) 
+        if (dobjdesc->id & 0xF000) 
         {
-            gcDecideDObjTriTransformKind(dobj, tk1, tk2, tk3, dobjdesc->index & 0xF000);
+            gcDecideDObjTriTransformKind(dobj, tk1, tk2, tk3, dobjdesc->id & 0xF000);
         } 
         else gcAddDObjTriTransformKind(dobj, tk1, tk2, tk3);
         
@@ -2458,7 +2458,7 @@ void gcSetDObjTransformsForGObj(GObj *gobj, DObjDesc *dobjdesc)
 {
     DObj *dobj = DObjGetStruct(gobj);
 
-    while ((dobj != NULL) && (dobjdesc->index != DOBJ_ARRAY_MAX))
+    while ((dobj != NULL) && (dobjdesc->id != DOBJ_ARRAY_MAX))
     {
         dobj->translate.vec.f = dobjdesc->translate;
         dobj->rotate.vec.f = dobjdesc->rotate;

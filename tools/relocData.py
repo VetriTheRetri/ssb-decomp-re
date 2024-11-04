@@ -125,11 +125,34 @@ def printExcess(fileSuffix=".manually_compressed"):
 			print(f"{i} - {f.read().hex()}")
 
 
+def relocateFile(inputBinaryPath, outputBinaryPath, relocInternOffset, relocExternOffset):
+
+	with open(inputBinaryPath, 'rb') as inputFile:
+		print("Internal Relocations")
+		currentOffset = relocInternOffset
+		while currentOffset != 0xffff:
+			currentOffsetInBytes = currentOffset * 4
+			inputFile.seek(currentOffsetInBytes, 0)
+			currentOffset = int.from_bytes(inputFile.read(2), ENDIANNESS)
+			bytesNum = int.from_bytes(inputFile.read(2), ENDIANNESS) * 4
+			print(f"{hex(currentOffsetInBytes)} -> {hex(bytesNum)}")
+
+		print("External Relocations")
+		currentOffset = relocExternOffset
+		while currentOffset != 0xffff:
+			currentOffsetInBytes = currentOffset * 4
+			inputFile.seek(currentOffsetInBytes, 0)
+			currentOffset = int.from_bytes(inputFile.read(2), ENDIANNESS)
+			bytesNum = int.from_bytes(inputFile.read(2), ENDIANNESS) * 4
+			print(f"{hex(currentOffsetInBytes)} -> {hex(bytesNum)}")
+
+
 if __name__ == "__main__":
 	if len(sys.argv) < 2:
 		print("Usage:")
 		print("Extract:  relocData extractAll")
 		print("Compress: relocData compress <binInputPath> <vpk0OutputPath>")
+		print("Relocate: relocData relocate <binInputPath> <binOutputPath> <relocInternOffset> <relocExternOffset>")
 		print("Make bin: relocData makeBin")
 		sys.exit(1)
 
@@ -137,5 +160,7 @@ if __name__ == "__main__":
 		extract()
 	elif sys.argv[1] == 'compress':
 		compressFile(sys.argv[2], sys.argv[3])
+	elif sys.argv[1] == 'relocate':
+		relocateFile(sys.argv[2], sys.argv[3], eval(sys.argv[4]), eval(sys.argv[5]))
 	elif sys.argv[1] == 'makeBin':
 		makeBin()

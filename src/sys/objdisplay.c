@@ -70,7 +70,7 @@ Gfx *D_800472C0;
 //                               //
 // // // // // // // // // // // //
 
-// Belongs to objdraw?
+// Belongs to objdisplay?
 
 // 0x8003B930
 s32 dGCCameraScissorTop = 10;
@@ -1198,7 +1198,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
     return sp2CC;
 }
 #else
-#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdraw/gcPrepDObjMatrix.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/sys/objdisplay/gcPrepDObjMatrix.s")
 #endif
 
 // 0x80012D90

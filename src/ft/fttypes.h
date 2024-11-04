@@ -3,7 +3,7 @@
 
 #include <ssb_types.h>
 #include <macros.h>
-// #include <sys/objdraw.h> // Probably shouldn't be included
+// #include <sys/objdisplay.h> // Probably shouldn't be included
 // #include <PR/ultratypes.h>
 #include <sys/obj.h>
 #include <sys/thread6.h>

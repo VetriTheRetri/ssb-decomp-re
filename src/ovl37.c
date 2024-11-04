@@ -5,7 +5,7 @@
 #include <sc/scene.h>
 #include <lb/library.h>
 #include <sys/video.h>
-#include <sys/objdraw.h>
+#include <sys/objdisplay.h>
 
 // Externs
 extern intptr_t D_NF_800A5240;      // 0x800A5240

@@ -100,7 +100,7 @@ segments:
       - [0x00B8D0, c, sys/objscript]
       - [0x00BAF0, c, sys/objhelper]
       - [0x00C7B0, c, sys/objanim]
-      - [0x011970, c, sys/objdraw]
+      - [0x011970, c, sys/objdisplay]
       - [0x0190E0, c, sys/trig_rand]
       - [0x019AE0, c, sys/vector]
       - [0x01A870, c, sys/hal_gu]
@@ -258,7 +258,7 @@ segments:
       - [0x03C2E0, .data, sys/taskman]
       - [0x03C350, .data, sys/rdp]
       - [0x03C470, .data, sys/objmanager]
-      - [0x03C530, .data, sys/objdraw]
+      - [0x03C530, .data, sys/objdisplay]
       - [0x03C540, .data, sys/trig_rand]
       - [0x03C550, .data, sys/sintable]
       - [0x03D550, data, sys/hal_audio]
@@ -293,7 +293,7 @@ segments:
       - [0x03E980, .rodata, sys/objscript]
       - [0x03E9A0, .rodata, sys/objhelper]
       - [0x03E9D0, .rodata, sys/objanim]
-      - [0x03ED10, .rodata, sys/objdraw]
+      - [0x03ED10, .rodata, sys/objdisplay]
       - [0x03EF50, .rodata, sys/trig_rand]
       - [0x03EFA0, .rodata, sys/hal_gu]
       - [0x03EFF0, .rodata, sys/interpolation]
@@ -322,7 +322,7 @@ segments:
       - { start: auto, type: .bss, name: sys/video,                vram: 0x80046670 }
       - { start: auto, type: .bss, name: sys/rdp,                  vram: 0x800466A0 }
       - { start: auto, type: .bss, name: sys/objmanager,           vram: 0x800466B0 }
-      - { start: auto, type: .bss, name: sys/objdraw,              vram: 0x80046FA0 }
+      - { start: auto, type: .bss, name: sys/objdisplay,              vram: 0x80046FA0 }
       - { start: auto, type:  bss, name: sys/hal_audio,            vram: 0x800472D0 }
       - { start: auto, type: .bss, name: sys/error,                vram: 0x8009DA00 }
       - { start: auto, type: .bss, name: libultra/sp/sprite,       vram: 0x8009EDC0 }

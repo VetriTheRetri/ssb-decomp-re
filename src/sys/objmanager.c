@@ -3,7 +3,7 @@
 #include <sys/objtypes.h>
 #include <sys/error.h>
 #include <sys/taskman.h>
-#include <sys/objdraw.h>
+#include <sys/objdisplay.h>
 #include <sys/rdp.h>
 #include <stddef.h>
 

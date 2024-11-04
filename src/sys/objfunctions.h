@@ -5,6 +5,6 @@
 #include <sys/objhelper.h>
 #include <sys/objscript.h>
 #include <sys/objanim.h>
-#include <sys/objdraw.h>
+#include <sys/objdisplay.h>
 
 #endif

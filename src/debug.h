@@ -2,7 +2,7 @@
 #define _DEBUG_H_
 
 #include <ssb_types.h>
-#include <sys/objdraw.h>
+#include <sys/objdisplay.h>
 #include <sys/thread6.h>
 
 typedef enum dbMenuItemKind

@@ -2,7 +2,7 @@
 #define _CSSVS_H_
 
 #include <ssb_types.h>
-#include <sys/objdraw.h>
+#include <sys/objdisplay.h>
 
 typedef struct mnCharPanel1P
 {

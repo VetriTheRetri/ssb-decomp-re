@@ -1673,7 +1673,7 @@ void LBParticleDrawTextures(GObj *gobj)
     
     for (j = 0; j < ARRAY_COUNT(sLBParticleStructsAllocLinks); j++)
     {
-        if (gobj->cobj_mask & (1 << j))
+        if (gobj->camera_mask & (1 << j))
         {
             for (ptc = sLBParticleStructsAllocLinks[j]; ptc != NULL; ptc = ptc->next)
             {

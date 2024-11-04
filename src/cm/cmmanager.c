@@ -5,7 +5,7 @@
 #include <sc/scene.h>
 #include <sys/malloc.h>
 
-extern Mtx44f gODMatrixPerspF;
+extern Mtx44f gGCMatrixPerspF;
 extern syMallocRegion gSYTaskmanGraphicsHeap;
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
@@ -1006,25 +1006,25 @@ sb32 cmManagerLookAtFuncMatrix(Mtx *mtx, CObj *cobj, Gfx **dls)
     temp_mtx = gSYTaskmanGraphicsHeap.ptr;
     gSYTaskmanGraphicsHeap.ptr = (Mtx*)gSYTaskmanGraphicsHeap.ptr + 1;
 
-    syMatrixPerspFastF(gODMatrixPerspF, &cobj->projection.persp.norm, cobj->projection.persp.fovy, cobj->projection.persp.aspect, cobj->projection.persp.near, cobj->projection.persp.far, cobj->projection.persp.scale);
-    syMatrixF2L(gODMatrixPerspF, temp_mtx);
+    syMatrixPerspFastF(gGCMatrixPerspF, &cobj->projection.persp.norm, cobj->projection.persp.fovy, cobj->projection.persp.aspect, cobj->projection.persp.near, cobj->projection.persp.far, cobj->projection.persp.scale);
+    syMatrixF2L(gGCMatrixPerspF, temp_mtx);
 
-    sODMatrixProjectL = temp_mtx;
+    sGCMatrixProjectL = temp_mtx;
 
     syMatrixLookAtReflectF(&sp5C, &gCMManagerCameraStruct.look_at, cobj->vec.eye.x, cobj->vec.eye.y, cobj->vec.eye.z, cobj->vec.at.x, cobj->vec.at.y, cobj->vec.at.z, cobj->vec.up.x, cobj->vec.up.y, cobj->vec.up.z);
-    guMtxCatF(sp5C, gODMatrixPerspF, gCMManagerMtx);
+    guMtxCatF(sp5C, gGCMatrixPerspF, gCMManagerMtx);
 
     max = cmManagerGetMtxMaxValue();
 
     if (max > 32000.0F)
     {
-        syMatrixPerspFastF(gODMatrixPerspF, &cobj->projection.persp.norm, cobj->projection.persp.fovy, cobj->projection.persp.aspect, cobj->projection.persp.near, cobj->projection.persp.far, 32000.0F / max);
-        syMatrixF2L(gODMatrixPerspF, temp_mtx);
+        syMatrixPerspFastF(gGCMatrixPerspF, &cobj->projection.persp.norm, cobj->projection.persp.fovy, cobj->projection.persp.aspect, cobj->projection.persp.near, cobj->projection.persp.far, 32000.0F / max);
+        syMatrixF2L(gGCMatrixPerspF, temp_mtx);
 
-        sODMatrixProjectL = temp_mtx;
+        sGCMatrixProjectL = temp_mtx;
 
         syMatrixLookAtReflectF(&sp5C, &gCMManagerCameraStruct.look_at, cobj->vec.eye.x, cobj->vec.eye.y, cobj->vec.eye.z, cobj->vec.at.x, cobj->vec.at.y, cobj->vec.at.z, cobj->vec.up.x, cobj->vec.up.y, cobj->vec.up.z);
-        guMtxCatF(sp5C, gODMatrixPerspF, gCMManagerMtx);
+        guMtxCatF(sp5C, gGCMatrixPerspF, gCMManagerMtx);
     }
     syMatrixF2L(gCMManagerMtx, mtx);
 
@@ -1068,51 +1068,51 @@ void func_ovl2_8010D4C0(GObj *camera_gobj)
 
     gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    camera_gobj->cobj_mask = COBJ_MASK_DLLINK(2) | COBJ_MASK_DLLINK(1);
+    camera_gobj->camera_mask = COBJ_MASK_DLLINK(2) | COBJ_MASK_DLLINK(1);
 
-    func_80017B80(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+    gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
     syTaskmanUpdateDLBuffers();
 
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    camera_gobj->cobj_mask = COBJ_MASK_DLLINK(4);
+    camera_gobj->camera_mask = COBJ_MASK_DLLINK(4);
 
-    func_80017B80(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+    gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
     syTaskmanUpdateDLBuffers();
 
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    camera_gobj->cobj_mask = COBJ_MASK_DLLINK(12) | COBJ_MASK_DLLINK(11) | 
+    camera_gobj->camera_mask = COBJ_MASK_DLLINK(12) | COBJ_MASK_DLLINK(11) | 
                             COBJ_MASK_DLLINK(10) | COBJ_MASK_DLLINK(9)  |
                             COBJ_MASK_DLLINK(7)  | COBJ_MASK_DLLINK(6);
 
-    func_80017B80(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+    gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
     syTaskmanUpdateDLBuffers();
 
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    camera_gobj->cobj_mask = COBJ_MASK_DLLINK(15) | COBJ_MASK_DLLINK(14) | COBJ_MASK_DLLINK(13);
+    camera_gobj->camera_mask = COBJ_MASK_DLLINK(15) | COBJ_MASK_DLLINK(14) | COBJ_MASK_DLLINK(13);
 
-    func_80017B80(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+    gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
     syTaskmanUpdateDLBuffers();
 
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    camera_gobj->cobj_mask = COBJ_MASK_DLLINK(18) | COBJ_MASK_DLLINK(17) | COBJ_MASK_DLLINK(16);
+    camera_gobj->camera_mask = COBJ_MASK_DLLINK(18) | COBJ_MASK_DLLINK(17) | COBJ_MASK_DLLINK(16);
 
-    func_80017B80(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+    gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
     syTaskmanUpdateDLBuffers();
 
     gDPSetRenderMode(gSYTaskmanDLHeads[0]++, G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF2);
     gDPSetRenderMode(gSYTaskmanDLHeads[1]++, G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF2);
 
-    camera_gobj->cobj_mask = COBJ_MASK_DLLINK(20) | COBJ_MASK_DLLINK(19);
+    camera_gobj->camera_mask = COBJ_MASK_DLLINK(20) | COBJ_MASK_DLLINK(19);
 
-    func_80017B80(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+    gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
     syTaskmanUpdateDLBuffers();
 }
 
@@ -1220,7 +1220,7 @@ GObj* cmManagerMakeWallpaperCamera(void)
         NULL,
         nGCCommonLinkIDCamera,
         GOBJ_PRIORITY_DEFAULT,
-        lbCommonScissorSpriteCamera,
+        lbCommonDrawSprite,
         80,
         COBJ_MASK_DLLINK(0),
         -1,
@@ -1265,7 +1265,7 @@ void func_ovl2_8010DC24(GObj *camera_gobj)
 
         gDPSetScissor(gSYTaskmanDLHeads[0]++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
     }
-    func_80017B80(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+    gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
     func_80017CC8(cobj);
 }
 
@@ -1316,7 +1316,7 @@ sb32 cmManagerPlayerMagnifyFuncMatrix(Mtx *mtx, CObj *cobj, Gfx **dls)
     var_z = eye->z - at->z;
 
     syMatrixLookAtF(&sp64, 0.0F, 300.0F, sqrtf(SQUARE(var_x) + SQUARE(var_y) + SQUARE(var_z)), 0.0F, 300.0F, 0.0F, 0.0F, 1.0F, 0.0F);
-    guMtxCatF(sp64, gODMatrixPerspF, spA4);
+    guMtxCatF(sp64, gGCMatrixPerspF, spA4);
 
     sp50.z = 0.0F;
     sp50.y = 900.0F;
@@ -1374,7 +1374,7 @@ void func_ovl2_8010E134(GObj *camera_gobj)
 
         gcPrepCameraMatrix(gSYTaskmanDLHeads, cobj);
 
-        func_80017B80(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+        gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
         func_80017CC8(cobj);
     }
 }
@@ -1384,7 +1384,7 @@ void func_ovl2_8010E1A4(void)
 {
     CObj *cobj = CObjGetStruct(gcMakeCameraGObj(nGCCommonKindUnkCamera1, NULL, nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, func_ovl2_8010E134, 30, COBJ_MASK_DLLINK(9), -1, 0, 1, 0, 1, 0));
 
-    lbCommonInitCObjVec(cobj, 0x4D, 0);
+    lbCommonInitCameraVec(cobj, 0x4D, 0);
     lbCommonInitCameraOrtho(cobj, 0x4E, 1);
 
     cobj->flags |= COBJ_FLAG_DLBUFFERS;
@@ -1403,7 +1403,7 @@ void func_ovl2_8010E254(GObj *camera_gobj)
 
         gcPrepCameraMatrix(gSYTaskmanDLHeads, cobj);
 
-        func_80017B80(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+        gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
         func_80017CC8(cobj);
     }
 }
@@ -1423,7 +1423,7 @@ void func_ovl2_8010E2D4(void)
 // 0x8010E374
 GObj* func_ovl2_8010E374(void)
 {
-    GObj *camera_gobj = gcMakeCameraGObj(nGCCommonKindScissorCamera, NULL, nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, lbCommonScissorSpriteCamera, 20, (COBJ_MASK_DLLINK(24) | COBJ_MASK_DLLINK(23)), -1, 0, 1, 0, 1, 0);
+    GObj *camera_gobj = gcMakeCameraGObj(nGCCommonKindScissorCamera, NULL, nGCCommonLinkIDCamera, GOBJ_PRIORITY_DEFAULT, lbCommonDrawSprite, 20, (COBJ_MASK_DLLINK(24) | COBJ_MASK_DLLINK(23)), -1, 0, 1, 0, 1, 0);
     CObj *cobj = CObjGetStruct(camera_gobj);
 
     syRdpSetViewport(&cobj->viewport, (f32)gCMManagerCameraStruct.viewport_ulx, (f32)gCMManagerCameraStruct.viewport_uly, (f32)gCMManagerCameraStruct.viewport_lrx, (f32)gCMManagerCameraStruct.viewport_lry);
@@ -1438,7 +1438,7 @@ void func_ovl2_8010E458(GObj *camera_gobj)
 {
     CObj *cobj = CObjGetStruct(camera_gobj);
 
-    func_80017B80(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+    gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
 }
 
 // 0x8010E498

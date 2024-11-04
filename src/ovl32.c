@@ -1495,7 +1495,7 @@ void mnVSRecordCreateStats(s32 stats_kind)
 // 0x801359EC
 void mnVSRecordCreateTableValuesSYRdpViewport()
 {
-	GObj *camera_gobj = gcMakeCameraGObj(1, NULL, 1, GOBJ_PRIORITY_DEFAULT, lbCommonScissorSpriteCamera, 0x28, 0x00000020, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(1, NULL, 1, GOBJ_PRIORITY_DEFAULT, lbCommonDrawSprite, 0x28, 0x00000020, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1503,7 +1503,7 @@ void mnVSRecordCreateTableValuesSYRdpViewport()
 // 0x80135A8C
 void mnVSRecordCreateTableHeadersSYRdpViewport()
 {
-	GObj *camera_gobj = gcMakeCameraGObj(1, NULL, 1, GOBJ_PRIORITY_DEFAULT, lbCommonScissorSpriteCamera, 0x14, 0x00000010, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(1, NULL, 1, GOBJ_PRIORITY_DEFAULT, lbCommonDrawSprite, 0x14, 0x00000010, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1511,7 +1511,7 @@ void mnVSRecordCreateTableHeadersSYRdpViewport()
 // 0x80135B2C
 void mnVSRecordCreateTableGridViewport()
 {
-	GObj *camera_gobj = gcMakeCameraGObj(1, NULL, 1, GOBJ_PRIORITY_DEFAULT, lbCommonScissorSpriteCamera, 0x3C, 0x00000008, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(1, NULL, 1, GOBJ_PRIORITY_DEFAULT, lbCommonDrawSprite, 0x3C, 0x00000008, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1519,7 +1519,7 @@ void mnVSRecordCreateTableGridViewport()
 // 0x80135BCC
 void mnVSRecordCreateRankingRowHighlightViewport()
 {
-	GObj *camera_gobj = gcMakeCameraGObj(1, NULL, 1, GOBJ_PRIORITY_DEFAULT, lbCommonScissorSpriteCamera, 0x46, 0x00000004, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(1, NULL, 1, GOBJ_PRIORITY_DEFAULT, lbCommonDrawSprite, 0x46, 0x00000004, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1527,7 +1527,7 @@ void mnVSRecordCreateRankingRowHighlightViewport()
 // 0x80135C6C
 void mnVSRecordCreateTitleViewport()
 {
-	GObj *camera_gobj = gcMakeCameraGObj(1, NULL, 1, GOBJ_PRIORITY_DEFAULT, lbCommonScissorSpriteCamera, 0x50, 0x00000002, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(1, NULL, 1, GOBJ_PRIORITY_DEFAULT, lbCommonDrawSprite, 0x50, 0x00000002, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }

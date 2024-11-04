@@ -20,7 +20,7 @@ extern Vec3f* lbCommonAdd2D(Vec3f *dst, Vec3f *p);
 extern Vec3f* lbCommonScale2D(Vec3f *dst, f32 scale);
 extern Vec3f* lbCommonReflect2D(Vec3f *dst, Vec3f *p);
 extern f32 lbCommonSim3D(Vec3f *a, Vec3f *b);
-extern f32 lbCommonSim2D(Vec3f*, Vec3f*);
+extern f32 lbCommonSim2D(Vec3f *a, Vec3f *b);
 extern sb32 lbCommonCheckAdjustSim2D(Vec3f *a, Vec3f *b, f32 angle);
 extern void lbCommonMatrixTraRotScaInv
 (
@@ -119,7 +119,7 @@ extern void lbCommonDrawSObjBitmap
     s32 fs, s32 ft,
     s32 sx, s32 sy
 );
-extern void lbCommonPrepSObjSpriteAttrs(Gfx **dls, SObj *sobj);
+extern void lbCommonPrepSObjAttr(Gfx **dls, SObj *sobj);
 extern void lbCommonPrepSObjDraw(Gfx **dls, SObj *sobj);
 extern void lbCommonClearExternSpriteParams(void);
 extern void lbCommonSetExternSpriteParams(Sprite *sprite);
@@ -135,7 +135,7 @@ extern GObj* lbCommonMakeSpriteGObj
     void (*func_display)(GObj*),
     s32 dl_link,
     u32 dl_link_priority,
-    u32 cobj_tag,
+    u32 camera_tag,
     Sprite *sprite,
     u8 gobjproc_kind,
     void (*proc)(GObj*),
@@ -144,10 +144,10 @@ extern GObj* lbCommonMakeSpriteGObj
 extern void lbCommonStartSprite(Gfx **dls);
 extern void lbCommonSetSpriteScissor(s32 xmin, s32 xmax, s32 ymin, s32 ymax);
 extern void lbCommonFinishSprite(Gfx **dls);
-extern void lbCommonScissorSpriteCamera(GObj *gobj);
+extern void lbCommonDrawSprite(GObj *camera_gobj);
 extern void lbCommonInitCameraOrtho(CObj *cobj, u8 tk, u8 arg2);
 extern void lbCommonInitCameraPersp(CObj *cobj, u8 tk, u8 arg2);
-extern void lbCommonInitCObjVec(CObj *cobj, u8 tk, u8 arg2);
+extern void lbCommonInitCameraVec(CObj *cobj, u8 tk, u8 arg2);
 extern void lbCommonCross3D(Vec3f *a, Vec3f *b, Vec3f *out);
 
 #endif

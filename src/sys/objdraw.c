@@ -23,16 +23,16 @@
 // // // // // // // // // // // //
 
 // 0x80046FA0 - gbi Mtx* ? pointer to some sort of matrix
-Mtx *sODMatrixProjectL;
+Mtx *sGCMatrixProjectL;
 
 // 0x80046FA4
-f32 gODScaleX; // Sprite scale / depth? Appears to overlap objects in its own DLLink, so maybe depth?
+f32 gGCScaleX; // Sprite scale / depth? Appears to overlap objects in its own DLLink, so maybe depth?
 
 // 0x80046FA8
-Mtx44f gODMatrixPerspF;
+Mtx44f gGCMatrixPerspF;
 
 // 0x80046FE8
-Mtx44f sODMatrixMvpF;
+Mtx44f sGCMatrixMvpF;
 
 // 0x80047028
 Mtx44f D_80047028;
@@ -41,10 +41,10 @@ Mtx44f D_80047028;
 Mtx44f D_80047068;
 
 // 0x800470A8
-s32 sODCameraMatrixMode;
+s32 sGCCameraMatrixMode;
 
 // 0x800470AC
-syMtxProcess *sODMatrixProcess;
+syMtxProcess *sGCMatrixProcess;
 
 // 0x800470B0
 Gfx *D_800470B0;
@@ -56,7 +56,7 @@ Gfx *D_800470B8[4];
 Gfx D_800470C8[60];
 
 // 0x800472A8
-s32 sODDetailLevel;
+s32 sGCDetailLevel;
 
 // 0x800472B0 - the first pointer in the set of four doesn't seem to be used too much
 Gfx *D_800472B0[4];
@@ -73,16 +73,16 @@ Gfx *D_800472C0;
 // Belongs to objdraw?
 
 // 0x8003B930
-s32 dODCameraScissorTop = 10;
+s32 dGCCameraScissorTop = 10;
 
 // 0x8003B934
-s32 dODCameraScissorBottom = 10;
+s32 dGCCameraScissorBottom = 10;
 
 // 0x8003B938
-s32 dODCameraScissorLeft = 10;
+s32 dGCCameraScissorLeft = 10;
 
 // 0x8003B93C
-s32 dODCameraScissorRight = 10;
+s32 dGCCameraScissorRight = 10;
 
 // // // // // // // // // // // //
 //                               //
@@ -93,15 +93,15 @@ s32 dODCameraScissorRight = 10;
 // New file here?
 void gcSetCameraScissor(s32 top, s32 bottom, s32 left, s32 right)
 {
-    dODCameraScissorTop = top;
-    dODCameraScissorBottom = bottom;
-    dODCameraScissorLeft = left;
-    dODCameraScissorRight = right;
+    dGCCameraScissorTop = top;
+    dGCCameraScissorBottom = bottom;
+    dGCCameraScissorLeft = left;
+    dGCCameraScissorRight = right;
 }
 
 void gcSetMatrixProcess(syMtxProcess *proc_mtx)
 {
-    sODMatrixProcess = proc_mtx;
+    sGCMatrixProcess = proc_mtx;
 }
 
 void unref_80010740(void)
@@ -588,7 +588,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                         dobj->scale.vec.f.y,
                         dobj->scale.vec.f.z
                     );
-                    gODScaleX *= dobj->scale.vec.f.x;
+                    gGCScaleX *= dobj->scale.vec.f.x;
                     break;
                 }
                 case nGCMatrixKindRotRpyR:
@@ -625,7 +625,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                         dobj->scale.vec.f.y,
                         dobj->scale.vec.f.z
                     );
-                    gODScaleX *= dobj->scale.vec.f.x;
+                    gGCScaleX *= dobj->scale.vec.f.x;
                     break;
                 }
                 case nGCMatrixKindRotPyrR:
@@ -662,13 +662,13 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                         dobj->scale.vec.f.y,
                         dobj->scale.vec.f.z
                     );
-                    gODScaleX *= dobj->scale.vec.f.x;
+                    gGCScaleX *= dobj->scale.vec.f.x;
                     break;
                 }
                 case nGCMatrixKindSca:
                 {
                     syMatrixSca(mtx_store.gbi, dobj->scale.vec.f.x, dobj->scale.vec.f.y, dobj->scale.vec.f.z);
-                    gODScaleX *= dobj->scale.vec.f.x;
+                    gGCScaleX *= dobj->scale.vec.f.x;
                     break;
                 }
                 case 33:
@@ -729,7 +729,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 case nGCMatrixKindVecSca:
                 {
                     syMatrixSca(mtx_store.gbi, scale->vec.f.x, scale->vec.f.y, scale->vec.f.z);
-                    gODScaleX *= scale->vec.f.x;
+                    gGCScaleX *= scale->vec.f.x;
                     break;
                 }
                 case nGCMatrixKindVecTraRotR:
@@ -763,7 +763,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                         scale->vec.f.y,
                         scale->vec.f.z
                     );
-                    gODScaleX *= scale->vec.f.x;
+                    gGCScaleX *= scale->vec.f.x;
                     break;
                 }
                 case nGCMatrixKindVecTraRotRpyR:
@@ -795,67 +795,67 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                         scale->vec.f.y,
                         scale->vec.f.z
                     );
-                    gODScaleX *= scale->vec.f.x;
+                    gGCScaleX *= scale->vec.f.x;
                     break;
                 }
                 case 41:
                 {
                     gSPMvpRecalc(current_dl++);
                     // gSPInsertMatrix?
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, sODMatrixProjectL->m[0][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, sODMatrixProjectL->m[0][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, sODMatrixProjectL->m[0][2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, sODMatrixProjectL->m[0][3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, sODMatrixProjectL->m[1][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, sODMatrixProjectL->m[1][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, sODMatrixProjectL->m[2][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, sODMatrixProjectL->m[2][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, sODMatrixProjectL->m[2][2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, sODMatrixProjectL->m[2][3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, sODMatrixProjectL->m[3][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, sODMatrixProjectL->m[3][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, sGCMatrixProjectL->m[0][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, sGCMatrixProjectL->m[0][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, sGCMatrixProjectL->m[0][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, sGCMatrixProjectL->m[0][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, sGCMatrixProjectL->m[1][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, sGCMatrixProjectL->m[1][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, sGCMatrixProjectL->m[2][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, sGCMatrixProjectL->m[2][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, sGCMatrixProjectL->m[2][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, sGCMatrixProjectL->m[2][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, sGCMatrixProjectL->m[3][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, sGCMatrixProjectL->m[3][1]);
                     // this is different
                     continue;
                 }
                 case 42:
                 {
                     gSPMvpRecalc(current_dl++);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, sODMatrixProjectL->m[0][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, sODMatrixProjectL->m[0][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, sODMatrixProjectL->m[0][2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, sODMatrixProjectL->m[0][3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, sODMatrixProjectL->m[1][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, sODMatrixProjectL->m[1][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, sODMatrixProjectL->m[2][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, sODMatrixProjectL->m[2][1]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, sODMatrixProjectL->m[2][2]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, sODMatrixProjectL->m[2][3]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, sODMatrixProjectL->m[3][0]);
-                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, sODMatrixProjectL->m[3][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, sGCMatrixProjectL->m[0][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_I, sGCMatrixProjectL->m[0][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, sGCMatrixProjectL->m[0][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_I, sGCMatrixProjectL->m[0][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_I, sGCMatrixProjectL->m[1][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_I, sGCMatrixProjectL->m[1][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_F, sGCMatrixProjectL->m[2][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XZ_XW_F, sGCMatrixProjectL->m[2][1]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_F, sGCMatrixProjectL->m[2][2]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YZ_YW_F, sGCMatrixProjectL->m[2][3]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZX_ZY_F, sGCMatrixProjectL->m[3][0]);
+                    gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_ZZ_ZW_F, sGCMatrixProjectL->m[3][1]);
 
                     continue;
                 }
                 case 43:
                 {
-                    f12 = dobj->scale.vec.f.y * gODScaleX;
+                    f12 = dobj->scale.vec.f.y * gGCScaleX;
 
-                    gODScaleX *= dobj->scale.vec.f.x;
+                    gGCScaleX *= dobj->scale.vec.f.x;
 
-                    sODMatrixMvpF[0][0] = gODMatrixPerspF[0][0] * gODScaleX;
-                    sODMatrixMvpF[1][1] = gODMatrixPerspF[1][1] * f12;
-                    sODMatrixMvpF[2][2] = gODMatrixPerspF[2][2] * gODScaleX;
-                    sODMatrixMvpF[2][3] = gODMatrixPerspF[2][3] * gODScaleX;
+                    sGCMatrixMvpF[0][0] = gGCMatrixPerspF[0][0] * gGCScaleX;
+                    sGCMatrixMvpF[1][1] = gGCMatrixPerspF[1][1] * f12;
+                    sGCMatrixMvpF[2][2] = gGCMatrixPerspF[2][2] * gGCScaleX;
+                    sGCMatrixMvpF[2][3] = gGCMatrixPerspF[2][3] * gGCScaleX;
 
-                    sODMatrixMvpF[0][1] = 0.0F;
-                    sODMatrixMvpF[0][2] = 0.0F;
-                    sODMatrixMvpF[0][3] = 0.0F;
-                    sODMatrixMvpF[1][0] = 0.0F;
-                    sODMatrixMvpF[1][2] = 0.0F;
-                    sODMatrixMvpF[1][3] = 0.0F;
-                    sODMatrixMvpF[2][0] = 0.0F;
-                    sODMatrixMvpF[2][1] = 0.0F;
+                    sGCMatrixMvpF[0][1] = 0.0F;
+                    sGCMatrixMvpF[0][2] = 0.0F;
+                    sGCMatrixMvpF[0][3] = 0.0F;
+                    sGCMatrixMvpF[1][0] = 0.0F;
+                    sGCMatrixMvpF[1][2] = 0.0F;
+                    sGCMatrixMvpF[1][3] = 0.0F;
+                    sGCMatrixMvpF[2][0] = 0.0F;
+                    sGCMatrixMvpF[2][1] = 0.0F;
 
-                    syMatrixF2L(&sODMatrixMvpF, mtx_store.gbi);
+                    syMatrixF2L(&sGCMatrixMvpF, mtx_store.gbi);
 
                     gSPMvpRecalc(current_dl++);
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][0]);
@@ -876,25 +876,25 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 case 44:
                 {
-                    f12 = dobj->scale.vec.f.y * gODScaleX;
+                    f12 = dobj->scale.vec.f.y * gGCScaleX;
 
-                    gODScaleX *= dobj->scale.vec.f.x;
+                    gGCScaleX *= dobj->scale.vec.f.x;
 
-                    sODMatrixMvpF[0][0] = gODMatrixPerspF[0][0] * gODScaleX;
-                    sODMatrixMvpF[1][1] = gODMatrixPerspF[1][1] * f12;
-                    sODMatrixMvpF[2][2] = gODMatrixPerspF[2][2] * gODScaleX;
-                    sODMatrixMvpF[2][3] = gODMatrixPerspF[2][3] * gODScaleX;
+                    sGCMatrixMvpF[0][0] = gGCMatrixPerspF[0][0] * gGCScaleX;
+                    sGCMatrixMvpF[1][1] = gGCMatrixPerspF[1][1] * f12;
+                    sGCMatrixMvpF[2][2] = gGCMatrixPerspF[2][2] * gGCScaleX;
+                    sGCMatrixMvpF[2][3] = gGCMatrixPerspF[2][3] * gGCScaleX;
 
-                    sODMatrixMvpF[0][1] = 0.0F;
-                    sODMatrixMvpF[0][2] = 0.0F;
-                    sODMatrixMvpF[0][3] = 0.0F;
-                    sODMatrixMvpF[1][0] = 0.0F;
-                    sODMatrixMvpF[1][2] = 0.0F;
-                    sODMatrixMvpF[1][3] = 0.0F;
-                    sODMatrixMvpF[2][0] = 0.0F;
-                    sODMatrixMvpF[2][1] = 0.0F;
+                    sGCMatrixMvpF[0][1] = 0.0F;
+                    sGCMatrixMvpF[0][2] = 0.0F;
+                    sGCMatrixMvpF[0][3] = 0.0F;
+                    sGCMatrixMvpF[1][0] = 0.0F;
+                    sGCMatrixMvpF[1][2] = 0.0F;
+                    sGCMatrixMvpF[1][3] = 0.0F;
+                    sGCMatrixMvpF[2][0] = 0.0F;
+                    sGCMatrixMvpF[2][1] = 0.0F;
 
-                    syMatrixF2L(&sODMatrixMvpF, mtx_store.gbi);
+                    syMatrixF2L(&sGCMatrixMvpF, mtx_store.gbi);
 
                     gSPMvpRecalc(current_dl++);
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[0][0]);
@@ -921,25 +921,25 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     cosx = cosf(dobj->rotate.vec.f.x); // sp1C8 ?
 
                     // f2 * f8 -> f12
-                    f12 = dobj->scale.vec.f.y * gODScaleX;
+                    f12 = dobj->scale.vec.f.y * gGCScaleX;
                     // f2 * f10 -> f4 store reload -> f2
-                    gODScaleX *= dobj->scale.vec.f.x;
+                    gGCScaleX *= dobj->scale.vec.f.x;
 
-                    sODMatrixMvpF[0][2] = 0.0F;
-                    sODMatrixMvpF[1][2] = 0.0F;
-                    sODMatrixMvpF[0][3] = 0.0F;
-                    sODMatrixMvpF[1][3] = 0.0F;
-                    sODMatrixMvpF[2][0] = 0.0F;
-                    sODMatrixMvpF[2][1] = 0.0F;
+                    sGCMatrixMvpF[0][2] = 0.0F;
+                    sGCMatrixMvpF[1][2] = 0.0F;
+                    sGCMatrixMvpF[0][3] = 0.0F;
+                    sGCMatrixMvpF[1][3] = 0.0F;
+                    sGCMatrixMvpF[2][0] = 0.0F;
+                    sGCMatrixMvpF[2][1] = 0.0F;
 
-                    sODMatrixMvpF[0][0] = gODMatrixPerspF[0][0] * gODScaleX * cosx;
-                    sODMatrixMvpF[1][0] = gODMatrixPerspF[0][0] * gODScaleX * -sinx;
-                    sODMatrixMvpF[0][1] = gODMatrixPerspF[1][1] * f12 * sinx;
-                    sODMatrixMvpF[1][1] = gODMatrixPerspF[1][1] * f12 * cosx;
-                    sODMatrixMvpF[2][2] = gODMatrixPerspF[2][2] * gODScaleX;
-                    sODMatrixMvpF[2][3] = gODMatrixPerspF[2][3] * gODScaleX;
+                    sGCMatrixMvpF[0][0] = gGCMatrixPerspF[0][0] * gGCScaleX * cosx;
+                    sGCMatrixMvpF[1][0] = gGCMatrixPerspF[0][0] * gGCScaleX * -sinx;
+                    sGCMatrixMvpF[0][1] = gGCMatrixPerspF[1][1] * f12 * sinx;
+                    sGCMatrixMvpF[1][1] = gGCMatrixPerspF[1][1] * f12 * cosx;
+                    sGCMatrixMvpF[2][2] = gGCMatrixPerspF[2][2] * gGCScaleX;
+                    sGCMatrixMvpF[2][3] = gGCMatrixPerspF[2][3] * gGCScaleX;
 
-                    syMatrixF2L(&sODMatrixMvpF, mtx_store.gbi);
+                    syMatrixF2L(&sGCMatrixMvpF, mtx_store.gbi);
 
                     gSPMvpRecalc(current_dl++);
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[0][0]);
@@ -965,25 +965,25 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     sinz = __sinf(dobj->rotate.vec.f.z); // sp190
                     cosz = cosf(dobj->rotate.vec.f.z); // sp188 ?
 
-                    f12 = dobj->scale.vec.f.y * gODScaleX;
+                    f12 = dobj->scale.vec.f.y * gGCScaleX;
 
-                    gODScaleX *= dobj->scale.vec.f.x;
+                    gGCScaleX *= dobj->scale.vec.f.x;
 
-                    sODMatrixMvpF[0][2] = 0.0F;
-                    sODMatrixMvpF[1][2] = 0.0F;
-                    sODMatrixMvpF[0][3] = 0.0F;
-                    sODMatrixMvpF[1][3] = 0.0F;
-                    sODMatrixMvpF[2][0] = 0.0F;
-                    sODMatrixMvpF[2][1] = 0.0F;
+                    sGCMatrixMvpF[0][2] = 0.0F;
+                    sGCMatrixMvpF[1][2] = 0.0F;
+                    sGCMatrixMvpF[0][3] = 0.0F;
+                    sGCMatrixMvpF[1][3] = 0.0F;
+                    sGCMatrixMvpF[2][0] = 0.0F;
+                    sGCMatrixMvpF[2][1] = 0.0F;
 
-                    sODMatrixMvpF[0][0] = gODMatrixPerspF[0][0] * gODScaleX * cosz;
-                    sODMatrixMvpF[1][0] = gODMatrixPerspF[0][0] * gODScaleX * -sinz;
-                    sODMatrixMvpF[0][1] = gODMatrixPerspF[1][1] * f12 * sinz;
-                    sODMatrixMvpF[1][1] = gODMatrixPerspF[1][1] * f12 * cosz;
-                    sODMatrixMvpF[2][2] = gODMatrixPerspF[2][2] * gODScaleX;
-                    sODMatrixMvpF[2][3] = gODMatrixPerspF[2][3] * gODScaleX;
+                    sGCMatrixMvpF[0][0] = gGCMatrixPerspF[0][0] * gGCScaleX * cosz;
+                    sGCMatrixMvpF[1][0] = gGCMatrixPerspF[0][0] * gGCScaleX * -sinz;
+                    sGCMatrixMvpF[0][1] = gGCMatrixPerspF[1][1] * f12 * sinz;
+                    sGCMatrixMvpF[1][1] = gGCMatrixPerspF[1][1] * f12 * cosz;
+                    sGCMatrixMvpF[2][2] = gGCMatrixPerspF[2][2] * gGCScaleX;
+                    sGCMatrixMvpF[2][3] = gGCMatrixPerspF[2][3] * gGCScaleX;
 
-                    syMatrixF2L(&sODMatrixMvpF, mtx_store.gbi);
+                    syMatrixF2L(&sGCMatrixMvpF, mtx_store.gbi);
 
                     gSPMvpRecalc(current_dl++);
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[0][0]);
@@ -1004,24 +1004,24 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 case 47:
                 {
-                    f12 = gODScaleX * dobj->scale.vec.f.y;
+                    f12 = gGCScaleX * dobj->scale.vec.f.y;
 
-                    gODScaleX *= dobj->scale.vec.f.x;
+                    gGCScaleX *= dobj->scale.vec.f.x;
 
-                    sODMatrixMvpF[0][0] = D_80047028[0][0] * gODScaleX;
-                    sODMatrixMvpF[0][1] = D_80047028[0][1] * gODScaleX;
-                    sODMatrixMvpF[0][2] = D_80047028[0][2] * gODScaleX;
-                    sODMatrixMvpF[0][3] = D_80047028[0][3] * gODScaleX;
-                    sODMatrixMvpF[1][0] = D_80047028[1][0] * f12;
-                    sODMatrixMvpF[1][1] = D_80047028[1][1] * f12;
-                    sODMatrixMvpF[1][2] = D_80047028[1][2] * f12;
-                    sODMatrixMvpF[1][3] = D_80047028[1][3] * f12;
-                    sODMatrixMvpF[2][0] = D_80047028[2][0] * gODScaleX;
-                    sODMatrixMvpF[2][1] = D_80047028[2][1] * gODScaleX;
-                    sODMatrixMvpF[2][2] = D_80047028[2][2] * gODScaleX;
-                    sODMatrixMvpF[2][3] = D_80047028[2][3] * gODScaleX;
+                    sGCMatrixMvpF[0][0] = D_80047028[0][0] * gGCScaleX;
+                    sGCMatrixMvpF[0][1] = D_80047028[0][1] * gGCScaleX;
+                    sGCMatrixMvpF[0][2] = D_80047028[0][2] * gGCScaleX;
+                    sGCMatrixMvpF[0][3] = D_80047028[0][3] * gGCScaleX;
+                    sGCMatrixMvpF[1][0] = D_80047028[1][0] * f12;
+                    sGCMatrixMvpF[1][1] = D_80047028[1][1] * f12;
+                    sGCMatrixMvpF[1][2] = D_80047028[1][2] * f12;
+                    sGCMatrixMvpF[1][3] = D_80047028[1][3] * f12;
+                    sGCMatrixMvpF[2][0] = D_80047028[2][0] * gGCScaleX;
+                    sGCMatrixMvpF[2][1] = D_80047028[2][1] * gGCScaleX;
+                    sGCMatrixMvpF[2][2] = D_80047028[2][2] * gGCScaleX;
+                    sGCMatrixMvpF[2][3] = D_80047028[2][3] * gGCScaleX;
 
-                    syMatrixF2L(&sODMatrixMvpF, mtx_store.gbi);
+                    syMatrixF2L(&sGCMatrixMvpF, mtx_store.gbi);
 
                     gSPMvpRecalc(current_dl++);
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][0]);
@@ -1042,24 +1042,24 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 case 48:
                 {
-                    f12 = gODScaleX * dobj->scale.vec.f.y;
+                    f12 = gGCScaleX * dobj->scale.vec.f.y;
 
-                    gODScaleX *= dobj->scale.vec.f.x;
+                    gGCScaleX *= dobj->scale.vec.f.x;
 
-                    sODMatrixMvpF[0][0] = D_80047028[0][0] * gODScaleX;
-                    sODMatrixMvpF[0][1] = D_80047028[0][1] * gODScaleX;
-                    sODMatrixMvpF[0][2] = D_80047028[0][2] * gODScaleX;
-                    sODMatrixMvpF[0][3] = D_80047028[0][3] * gODScaleX;
-                    sODMatrixMvpF[1][0] = D_80047028[1][0] * f12;
-                    sODMatrixMvpF[1][1] = D_80047028[1][1] * f12;
-                    sODMatrixMvpF[1][2] = D_80047028[1][2] * f12;
-                    sODMatrixMvpF[1][3] = D_80047028[1][3] * f12;
-                    sODMatrixMvpF[2][0] = D_80047028[2][0] * gODScaleX;
-                    sODMatrixMvpF[2][1] = D_80047028[2][1] * gODScaleX;
-                    sODMatrixMvpF[2][2] = D_80047028[2][2] * gODScaleX;
-                    sODMatrixMvpF[2][3] = D_80047028[2][3] * gODScaleX;
+                    sGCMatrixMvpF[0][0] = D_80047028[0][0] * gGCScaleX;
+                    sGCMatrixMvpF[0][1] = D_80047028[0][1] * gGCScaleX;
+                    sGCMatrixMvpF[0][2] = D_80047028[0][2] * gGCScaleX;
+                    sGCMatrixMvpF[0][3] = D_80047028[0][3] * gGCScaleX;
+                    sGCMatrixMvpF[1][0] = D_80047028[1][0] * f12;
+                    sGCMatrixMvpF[1][1] = D_80047028[1][1] * f12;
+                    sGCMatrixMvpF[1][2] = D_80047028[1][2] * f12;
+                    sGCMatrixMvpF[1][3] = D_80047028[1][3] * f12;
+                    sGCMatrixMvpF[2][0] = D_80047028[2][0] * gGCScaleX;
+                    sGCMatrixMvpF[2][1] = D_80047028[2][1] * gGCScaleX;
+                    sGCMatrixMvpF[2][2] = D_80047028[2][2] * gGCScaleX;
+                    sGCMatrixMvpF[2][3] = D_80047028[2][3] * gGCScaleX;
 
-                    syMatrixF2L(&sODMatrixMvpF, mtx_store.gbi);
+                    syMatrixF2L(&sGCMatrixMvpF, mtx_store.gbi);
 
                     gSPMvpRecalc(current_dl++);
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[0][0]);
@@ -1080,24 +1080,24 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 case 49:
                 {
-                    f12 = gODScaleX * dobj->scale.vec.f.y;
+                    f12 = gGCScaleX * dobj->scale.vec.f.y;
 
-                    gODScaleX *= dobj->scale.vec.f.x;
+                    gGCScaleX *= dobj->scale.vec.f.x;
 
-                    sODMatrixMvpF[0][0] = D_80047068[0][0] * gODScaleX;
-                    sODMatrixMvpF[0][1] = D_80047068[0][1] * gODScaleX;
-                    sODMatrixMvpF[0][2] = D_80047068[0][2] * gODScaleX;
-                    sODMatrixMvpF[0][3] = D_80047068[0][3] * gODScaleX;
-                    sODMatrixMvpF[1][0] = D_80047068[1][0] * f12;
-                    sODMatrixMvpF[1][1] = D_80047068[1][1] * f12;
-                    sODMatrixMvpF[1][2] = D_80047068[1][2] * f12;
-                    sODMatrixMvpF[1][3] = D_80047068[1][3] * f12;
-                    sODMatrixMvpF[2][0] = D_80047068[2][0] * gODScaleX;
-                    sODMatrixMvpF[2][1] = D_80047068[2][1] * gODScaleX;
-                    sODMatrixMvpF[2][2] = D_80047068[2][2] * gODScaleX;
-                    sODMatrixMvpF[2][3] = D_80047068[2][3] * gODScaleX;
+                    sGCMatrixMvpF[0][0] = D_80047068[0][0] * gGCScaleX;
+                    sGCMatrixMvpF[0][1] = D_80047068[0][1] * gGCScaleX;
+                    sGCMatrixMvpF[0][2] = D_80047068[0][2] * gGCScaleX;
+                    sGCMatrixMvpF[0][3] = D_80047068[0][3] * gGCScaleX;
+                    sGCMatrixMvpF[1][0] = D_80047068[1][0] * f12;
+                    sGCMatrixMvpF[1][1] = D_80047068[1][1] * f12;
+                    sGCMatrixMvpF[1][2] = D_80047068[1][2] * f12;
+                    sGCMatrixMvpF[1][3] = D_80047068[1][3] * f12;
+                    sGCMatrixMvpF[2][0] = D_80047068[2][0] * gGCScaleX;
+                    sGCMatrixMvpF[2][1] = D_80047068[2][1] * gGCScaleX;
+                    sGCMatrixMvpF[2][2] = D_80047068[2][2] * gGCScaleX;
+                    sGCMatrixMvpF[2][3] = D_80047068[2][3] * gGCScaleX;
 
-                    syMatrixF2L(&sODMatrixMvpF, mtx_store.gbi);
+                    syMatrixF2L(&sGCMatrixMvpF, mtx_store.gbi);
 
                     gSPMvpRecalc(current_dl++);
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_YX_YY_I, mtx_store.gbi->m[0][0]);
@@ -1118,24 +1118,24 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 }
                 case 50:
                 {
-                    f12 = gODScaleX * dobj->scale.vec.f.y;
+                    f12 = gGCScaleX * dobj->scale.vec.f.y;
 
-                    gODScaleX *= dobj->scale.vec.f.x;
+                    gGCScaleX *= dobj->scale.vec.f.x;
 
-                    sODMatrixMvpF[0][0] = D_80047068[0][0] * gODScaleX;
-                    sODMatrixMvpF[0][1] = D_80047068[0][1] * gODScaleX;
-                    sODMatrixMvpF[0][2] = D_80047068[0][2] * gODScaleX;
-                    sODMatrixMvpF[0][3] = D_80047068[0][3] * gODScaleX;
-                    sODMatrixMvpF[1][0] = D_80047068[1][0] * f12;
-                    sODMatrixMvpF[1][1] = D_80047068[1][1] * f12;
-                    sODMatrixMvpF[1][2] = D_80047068[1][2] * f12;
-                    sODMatrixMvpF[1][3] = D_80047068[1][3] * f12;
-                    sODMatrixMvpF[2][0] = D_80047068[2][0] * gODScaleX;
-                    sODMatrixMvpF[2][1] = D_80047068[2][1] * gODScaleX;
-                    sODMatrixMvpF[2][2] = D_80047068[2][2] * gODScaleX;
-                    sODMatrixMvpF[2][3] = D_80047068[2][3] * gODScaleX;
+                    sGCMatrixMvpF[0][0] = D_80047068[0][0] * gGCScaleX;
+                    sGCMatrixMvpF[0][1] = D_80047068[0][1] * gGCScaleX;
+                    sGCMatrixMvpF[0][2] = D_80047068[0][2] * gGCScaleX;
+                    sGCMatrixMvpF[0][3] = D_80047068[0][3] * gGCScaleX;
+                    sGCMatrixMvpF[1][0] = D_80047068[1][0] * f12;
+                    sGCMatrixMvpF[1][1] = D_80047068[1][1] * f12;
+                    sGCMatrixMvpF[1][2] = D_80047068[1][2] * f12;
+                    sGCMatrixMvpF[1][3] = D_80047068[1][3] * f12;
+                    sGCMatrixMvpF[2][0] = D_80047068[2][0] * gGCScaleX;
+                    sGCMatrixMvpF[2][1] = D_80047068[2][1] * gGCScaleX;
+                    sGCMatrixMvpF[2][2] = D_80047068[2][2] * gGCScaleX;
+                    sGCMatrixMvpF[2][3] = D_80047068[2][3] * gGCScaleX;
 
-                    syMatrixF2L(&sODMatrixMvpF, mtx_store.gbi);
+                    syMatrixF2L(&sGCMatrixMvpF, mtx_store.gbi);
 
                     gSPMvpRecalc(current_dl++);
                     gMoveWd(current_dl++, G_MW_MATRIX, G_MWO_MATRIX_XX_XY_I, mtx_store.gbi->m[0][0]);
@@ -1157,9 +1157,9 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 default:
                     if (xobj->kind >= 66)
                     {
-                        if (sODMatrixProcess != NULL)
+                        if (sGCMatrixProcess != NULL)
                         {
-                            sb32(*proc)(Mtx*, DObj*, Gfx**) = (dobj->parent_gobj->frame_draw_last != (u8)dSYTaskmanFrameDrawCount) ? sODMatrixProcess[xobj->kind - 66].proc_diff : sODMatrixProcess[xobj->kind - 66].proc_same;
+                            sb32(*proc)(Mtx*, DObj*, Gfx**) = (dobj->parent_gobj->frame_draw_last != (u8)dSYTaskmanFrameDrawCount) ? sGCMatrixProcess[xobj->kind - 66].proc_diff : sGCMatrixProcess[xobj->kind - 66].proc_same;
 
                             // If proc's return value uses up a GPR and is assigned to a variable, IDO refuses to free up v0 later down.
                             ret = proc(mtx_store.gbi, dobj, &current_dl);
@@ -1510,7 +1510,7 @@ void gcDrawDObjForGObj(GObj *gobj, Gfx **dl_head)
     s32 num;
     DObj *dobj = DObjGetStruct(gobj);
 
-    gODScaleX = 1.0F;
+    gGCScaleX = 1.0F;
 
     if (dobj->display_list != NULL)
     {
@@ -1564,7 +1564,7 @@ void gcDrawDObjTree(DObj *this_dobj)
 
     if (!(this_dobj->flags & DOBJ_FLAG_HIDDEN))
     {
-        bak = gODScaleX;
+        bak = gGCScaleX;
         num = gcPrepDObjMatrix(gSYTaskmanDLHeads, this_dobj);
 
         if ((this_dobj->display_list != NULL) && !(this_dobj->flags & DOBJ_FLAG_NOTEXTURE))
@@ -1583,7 +1583,7 @@ void gcDrawDObjTree(DObj *this_dobj)
                 gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
             }
         }
-        gODScaleX = bak;
+        gGCScaleX = bak;
     }
     if (this_dobj->sib_prev == NULL) 
     {
@@ -1600,7 +1600,7 @@ void gcDrawDObjTree(DObj *this_dobj)
 // 0x80014038
 void gcDrawDObjTreeForGObj(GObj *gobj) 
 {
-    gODScaleX = 1.0F;
+    gGCScaleX = 1.0F;
     gcDrawDObjTree(DObjGetStruct(gobj));
 }
 
@@ -1678,7 +1678,7 @@ void gcDrawDObjDLLinksForGObj(GObj *gobj)
 {
     DObj *dobj;
 
-    gODScaleX = 1.0F;
+    gGCScaleX = 1.0F;
     dobj = DObjGetStruct(gobj);
     gcDrawDObjDLLinks(dobj, dobj->dl_link);
 }
@@ -1708,7 +1708,7 @@ void gcDrawDObjTreeDLLinks(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
-        bak = gODScaleX;
+        bak = gGCScaleX;
         dl_link = dobj->dl_link;
         dl = D_800470B0;
         num = gcPrepDObjMatrix(&D_800470B0, dobj);
@@ -1762,7 +1762,7 @@ void gcDrawDObjTreeDLLinks(DObj *dobj)
             }
             continue; // Required!
         }
-        gODScaleX = bak;
+        gGCScaleX = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -1779,7 +1779,7 @@ void gcDrawDObjTreeDLLinks(DObj *dobj)
 // 0x80014768
 void gcDrawDObjTreeDLLinksForGObj(GObj *gobj)
 {
-    gODScaleX = 1.0F;
+    gGCScaleX = 1.0F;
     gcDrawDObjTreeDLLinks(DObjGetStruct(gobj));
 }
 
@@ -1815,7 +1815,7 @@ void unref_800147E0(GObj *gobj)
         { 
             dist_dl++;
         }
-        gODScaleX = 1.0F;
+        gGCScaleX = 1.0F;
 
         if (dist_dl->dl != NULL) 
         {
@@ -1846,15 +1846,15 @@ void gcDrawDObjTreeMultiList(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
-        bak = gODScaleX;
+        bak = gGCScaleX;
         num = gcPrepDObjMatrix(gSYTaskmanDLHeads, dobj);
 
-        if ((dls != NULL) && (dls[sODDetailLevel] != NULL)) 
+        if ((dls != NULL) && (dls[sGCDetailLevel] != NULL)) 
         {
             if (!(dobj->flags & DOBJ_FLAG_NOTEXTURE))
             {
                 gcDrawMObjForDObj(dobj, gSYTaskmanDLHeads);
-                gSPDisplayList(gSYTaskmanDLHeads[0]++, dls[sODDetailLevel]);
+                gSPDisplayList(gSYTaskmanDLHeads[0]++, dls[sGCDetailLevel]);
             }
         }
         if (dobj->child != NULL) 
@@ -1868,7 +1868,7 @@ void gcDrawDObjTreeMultiList(DObj *dobj)
                 gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
             }
         }
-        gODScaleX = bak;
+        gGCScaleX = bak;
     }
     if (dobj->sib_prev == NULL) 
     {
@@ -1893,7 +1893,7 @@ void unref_80014A84(GObj *gobj)
     DObj *current_dobj;
 
     dobj = DObjGetStruct(gobj);
-    gODScaleX = 1.0F;
+    gGCScaleX = 1.0F;
 
     if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
@@ -1901,12 +1901,12 @@ void unref_80014A84(GObj *gobj)
 
         if (dist_dl != NULL)
         {
-            sODDetailLevel = 0;
+            sGCDetailLevel = 0;
             dist = gcGetDObjDistFromEye(dobj);
             while (dist < dist_dl->target_dist)
             {
                 dist_dl++;
-                sODDetailLevel++;
+                sGCDetailLevel++;
             }
             num = gcPrepDObjMatrix(gSYTaskmanDLHeads, dobj);
 
@@ -1950,7 +1950,7 @@ void unref_80014C38(GObj *gobj)
     DObj *dobj;
 
     dobj = DObjGetStruct(gobj);
-    gODScaleX = 1.0F;
+    gGCScaleX = 1.0F;
 
     if (dobj->flags == DOBJ_FLAG_NONE) 
     {
@@ -1985,11 +1985,11 @@ void func_80014CD0(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
-        bak = gODScaleX;
+        bak = gGCScaleX;
         s0 = (DObjDLLink**)dobj->display_ptr;
         if (s0 != NULL)
         {
-            dl_link = s0[sODDetailLevel];
+            dl_link = s0[sGCDetailLevel];
         }
         dl = D_800470B0;
         num = gcPrepDObjMatrix(&D_800470B0, dobj);
@@ -2043,7 +2043,7 @@ void func_80014CD0(DObj *dobj)
             }
             else continue; // Required! Both the "else" and the "continue"!
         }
-        gODScaleX = bak;
+        gGCScaleX = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -2071,7 +2071,7 @@ void unref_80014FFC(GObj *gobj)
     DObj *current_dobj;
 
     dobj = DObjGetStruct(gobj);
-    gODScaleX = 1.0F;
+    gGCScaleX = 1.0F;
     ptr = NULL;
 
     if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
@@ -2080,13 +2080,13 @@ void unref_80014FFC(GObj *gobj)
 
         if (dist_dl_link != NULL)
         {
-            sODDetailLevel = 0;
+            sGCDetailLevel = 0;
 
             dist = gcGetDObjDistFromEye(dobj);
 
             while (dist < dist_dl_link->target_dist)
             {
-                sODDetailLevel++;
+                sGCDetailLevel++;
                 dist_dl_link++;
             }
             dl_link = dist_dl_link->dl_link;
@@ -2171,7 +2171,7 @@ void gcDrawDObjTreeDLArray(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
-        bak = gODScaleX;
+        bak = gGCScaleX;
 
         if ((dls != NULL) && (dls[0] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
@@ -2195,7 +2195,7 @@ void gcDrawDObjTreeDLArray(DObj *dobj)
                 gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
             }
         }
-        gODScaleX = bak;
+        gGCScaleX = bak;
     }
     if (dobj->sib_prev == NULL) 
     {
@@ -2212,7 +2212,7 @@ void gcDrawDObjTreeDLArray(DObj *dobj)
 // 0x800154F0
 void unref_800154F0(GObj *gobj) 
 {
-    gODScaleX = 1.0F;
+    gGCScaleX = 1.0F;
     gcDrawDObjTreeDLArray(DObjGetStruct(gobj));
 }
 
@@ -2232,7 +2232,7 @@ void func_80015520(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
-        bak = gODScaleX;
+        bak = gGCScaleX;
         multi_list = dobj->multi_list;
         dl = D_800470B0;
         num = gcPrepDObjMatrix(&D_800470B0, dobj);
@@ -2290,7 +2290,7 @@ void func_80015520(DObj *dobj)
                 else continue;
             }
         }
-        gODScaleX = bak;
+        gGCScaleX = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -2307,7 +2307,7 @@ void func_80015520(DObj *dobj)
 // 0x80015860
 void unref_80015860(GObj *gobj) 
 {
-    gODScaleX = 1.0F;
+    gGCScaleX = 1.0F;
     func_80015520(DObjGetStruct(gobj));
 }
 
@@ -2324,11 +2324,11 @@ void gcDrawDObjTreeDLDoubleArray(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_HIDDEN)) 
     {
-        bak = gODScaleX;
+        bak = gGCScaleX;
 
         if (p_dls != NULL)
         { 
-            dls = p_dls[sODDetailLevel]; 
+            dls = p_dls[sGCDetailLevel]; 
         }
         if ((p_dls != NULL) && (dls[0] != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
         {
@@ -2352,7 +2352,7 @@ void gcDrawDObjTreeDLDoubleArray(DObj *dobj)
                 gSPPopMatrix(gSYTaskmanDLHeads[0]++, G_MTX_MODELVIEW);
             }
         }
-        gODScaleX = bak;
+        gGCScaleX = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -2383,14 +2383,14 @@ void unref_80015A58(GObj *gobj)
 
         if (dist_dl != NULL)
         {
-            gODScaleX = 1.0F;
-            sODDetailLevel = 0;
+            gGCScaleX = 1.0F;
+            sGCDetailLevel = 0;
 
             dist = gcGetDObjDistFromEye(dobj);
 
             while (dist < dist_dl->target_dist)
             {
-                sODDetailLevel++;
+                sGCDetailLevel++;
                 dist_dl++;
             }
             num = gcPrepDObjMatrix(gSYTaskmanDLHeads, dobj);
@@ -2443,12 +2443,12 @@ void func_80015C0C(DObj *dobj)
 
     if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
-        bak = gODScaleX;
+        bak = gGCScaleX;
         p_multi_list = (DObjMultiList**)dobj->display_ptr;
 
         if (p_multi_list != NULL) 
         {
-            multi_list = p_multi_list[sODDetailLevel]; 
+            multi_list = p_multi_list[sGCDetailLevel]; 
         }
         dl = D_800470B0;
         num  = gcPrepDObjMatrix(&D_800470B0, dobj);
@@ -2506,7 +2506,7 @@ void func_80015C0C(DObj *dobj)
                 continue; // Not required this time; this is for the sake of consistency.
             }
         }
-        gODScaleX = bak;
+        gGCScaleX = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -2543,14 +2543,14 @@ void unref_80015F6C(GObj *gobj)
 
         if (dist_dl_link != NULL)
         {
-            gODScaleX = 1.0F;
-            sODDetailLevel = 0;
+            gGCScaleX = 1.0F;
+            sGCDetailLevel = 0;
             dist = gcGetDObjDistFromEye(dobj);
 
             while (dist < dist_dl_link->target_dist)
             {
                 dist_dl_link++;
-                sODDetailLevel++;
+                sGCDetailLevel++;
             }
             dl_link = dist_dl_link->dl_link;
             dl = D_800470B0;
@@ -2663,21 +2663,21 @@ void func_80016338(Gfx **dls, CObj *cobj, s32 buffer_id)
     lrx = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
     lry = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
 
-    if (ulx < (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorLeft)
+    if (ulx < (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dGCCameraScissorLeft)
     {
-        ulx = (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorLeft;
+        ulx = (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dGCCameraScissorLeft;
     }
-    if (uly < (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorTop)
+    if (uly < (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dGCCameraScissorTop)
     {
-        uly = (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorTop;
+        uly = (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dGCCameraScissorTop;
     }
-    if (lrx > gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorRight))
+    if (lrx > gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dGCCameraScissorRight))
     {
-        lrx = gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorRight);
+        lrx = gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dGCCameraScissorRight);
     }
-    if (lry > gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorBottom))
+    if (lry > gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dGCCameraScissorBottom))
     {
-        lry = gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorBottom);
+        lry = gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dGCCameraScissorBottom);
     }
     gDPSetScissor(dl++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
     gDPPipeSync(dl++);
@@ -2717,21 +2717,21 @@ void func_8001663C(Gfx **dls, CObj *cobj, s32 buffer_id)
     lrx = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
     lry = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
 
-    if (ulx < (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorLeft)
+    if (ulx < (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dGCCameraScissorLeft)
     {
-        ulx = (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorLeft;
+        ulx = (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dGCCameraScissorLeft;
     }
-    if (uly < (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorTop)
+    if (uly < (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dGCCameraScissorTop)
     {
-        uly = (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorTop;
+        uly = (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dGCCameraScissorTop;
     }
-    if (lrx > gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorRight))
+    if (lrx > gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dGCCameraScissorRight))
     {
-        lrx = gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorRight);
+        lrx = gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dGCCameraScissorRight);
     }
-    if (lry > gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorBottom))
+    if (lry > gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dGCCameraScissorBottom))
     {
-        lry = gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorBottom);
+        lry = gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dGCCameraScissorBottom);
     }
     gDPSetScissor(dl++, G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
 
@@ -2877,7 +2877,7 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                     case nGCMatrixKindPerspFastF:
                         syMatrixPerspFastF
                         (
-                            gODMatrixPerspF,
+                            gGCMatrixPerspF,
                             &cobj->projection.persp.norm,
                             cobj->projection.persp.fovy,
                             cobj->projection.persp.aspect,
@@ -2885,14 +2885,14 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                             cobj->projection.persp.far,
                             cobj->projection.persp.scale
                         );
-                        syMatrixF2L(&gODMatrixPerspF, mtx_store.gbi);
-                        sODMatrixProjectL = mtx_store.gbi;
+                        syMatrixF2L(&gGCMatrixPerspF, mtx_store.gbi);
+                        sGCMatrixProjectL = mtx_store.gbi;
                         break;
 
                     case nGCMatrixKindPerspF:
                         syMatrixPerspF
                         (
-                            gODMatrixPerspF,
+                            gGCMatrixPerspF,
                             &cobj->projection.persp.norm,
                             cobj->projection.persp.fovy,
                             cobj->projection.persp.aspect,
@@ -2900,8 +2900,8 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                             cobj->projection.persp.far,
                             cobj->projection.persp.scale
                         );
-                        syMatrixF2L(&gODMatrixPerspF, mtx_store.gbi);
-                        sODMatrixProjectL = mtx_store.gbi;
+                        syMatrixF2L(&gGCMatrixPerspF, mtx_store.gbi);
+                        sGCMatrixProjectL = mtx_store.gbi;
                         break;
 
                     case nGCMatrixKindOrtho:
@@ -2916,7 +2916,7 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                             cobj->projection.ortho.f,
                             cobj->projection.ortho.scale
                         );
-                        sODMatrixProjectL = mtx_store.gbi;
+                        sGCMatrixProjectL = mtx_store.gbi;
                         break;
 
                     case 6:
@@ -2985,11 +2985,11 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                         break;
 
                     default:
-                        if ((xobj->kind >= 66) && (sODMatrixProcess != NULL))
+                        if ((xobj->kind >= 66) && (sGCMatrixProcess != NULL))
                         {
-                            if (sODMatrixProcess[xobj->kind - 66].proc_diff != NULL)
+                            if (sGCMatrixProcess[xobj->kind - 66].proc_diff != NULL)
                             {
-                                sODMatrixProcess[xobj->kind - 66].proc_diff(mtx_store.gbi, cobj, &dl);
+                                sGCMatrixProcess[xobj->kind - 66].proc_diff(mtx_store.gbi, cobj, &dl);
                             }
                         }
                         break;
@@ -3042,11 +3042,11 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
                     break;
 
                 default:
-                    if ((xobj->kind >= 66) && (sODMatrixProcess != NULL))
+                    if ((xobj->kind >= 66) && (sGCMatrixProcess != NULL))
                     {
-                        if (sODMatrixProcess[xobj->kind - 66].proc_same != NULL)
+                        if (sGCMatrixProcess[xobj->kind - 66].proc_same != NULL)
                         {
-                            sODMatrixProcess[xobj->kind - 66].proc_same(mtx_store.gbi, cobj, &dl);
+                            sGCMatrixProcess[xobj->kind - 66].proc_same(mtx_store.gbi, cobj, &dl);
                         }
                     }
                     break;
@@ -3054,7 +3054,7 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
             }
 
         }
-        switch (sODCameraMatrixMode)
+        switch (sGCCameraMatrixMode)
         {
         case 0:
             spC8 = var_s3;
@@ -3117,7 +3117,7 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
             else
             {
                 syMatrixLookAtF(&D_80047028, 0.0F, eye_y, eye_z, 0.0F, at_y, 0.0F, 0.0F, 1.0F, 0.0F);
-                guMtxCatF(D_80047028, gODMatrixPerspF, D_80047028);
+                guMtxCatF(D_80047028, gGCMatrixPerspF, D_80047028);
             }
         }
         if (spC8 != 0)
@@ -3145,7 +3145,7 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
             else
             {
                 syMatrixLookAtF(&D_80047068, eye_x, 0.0F, eye_z, at_x, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
-                guMtxCatF(D_80047068, gODMatrixPerspF, D_80047068);
+                guMtxCatF(D_80047068, gGCMatrixPerspF, D_80047068);
             }
         }
         dls[0] = dl;
@@ -3155,11 +3155,11 @@ void gcPrepCameraMatrix(Gfx **dls, CObj *cobj)
 // 0x80017830
 void gcSetCameraMatrixMode(s32 val)
 {
-    sODCameraMatrixMode = val;
+    sGCCameraMatrixMode = val;
 }
 
 // the second arg may just be unused
-void gcRunFuncCamera(CObj *cobj, s32 dl_id) 
+void gcRunFuncCamera(CObj *cobj, s32 dl_id)
 {
     if (cobj->func_camera != NULL)
     { 
@@ -3168,7 +3168,7 @@ void gcRunFuncCamera(CObj *cobj, s32 dl_id)
 }
 
 // 0x80017868
-void func_80017868(GObj *this_gobj, s32 link_id, sb32 is_tag_mask_or_id)
+void gcCaptureTaggedGObjs(GObj *camera_gobj, s32 link_id, sb32 is_tag_mask_or_id)
 {
     GObj *current_gobj = gGCCommonDLLinks[link_id];
 
@@ -3178,14 +3178,16 @@ void func_80017868(GObj *this_gobj, s32 link_id, sb32 is_tag_mask_or_id)
         {
             if
             (
-                ((is_tag_mask_or_id == 0) && (this_gobj->cobj_tag &  current_gobj->cobj_tag)) ||
-                ((is_tag_mask_or_id == 1) && (this_gobj->cobj_tag == current_gobj->cobj_tag))
+                ((is_tag_mask_or_id == 0) && (camera_gobj->camera_tag &  current_gobj->camera_tag)) ||
+                ((is_tag_mask_or_id == 1) && (camera_gobj->camera_tag == current_gobj->camera_tag))
             )
             {
                 dGCCurrentStatus = nGCStatusDisplaying;
                 gGCCurrentDisplay = current_gobj;
+
                 current_gobj->func_display(current_gobj);
                 dGCCurrentStatus = nGCStatusCapturing;
+
                 current_gobj->frame_draw_last = dSYTaskmanFrameDrawCount;
             }
         }
@@ -3194,80 +3196,83 @@ void func_80017868(GObj *this_gobj, s32 link_id, sb32 is_tag_mask_or_id)
 }
 
 // 0x80017978
-void func_80017978(GObj *gobj, s32 index, s32 arg2)
+void gcCaptureDoubleBufferGObjs(GObj *camera_gobj, s32 id, sb32 is_tag_mask_or_id)
 {
-    Gfx *sp38[4];
+    Gfx *dls[ARRAY_COUNT(gSYTaskmanDLHeads)];
     s32 i;
 
     for (i = 0; i < ARRAY_COUNT(gSYTaskmanDLHeads); i++)
     {
-        sp38[i] = gSYTaskmanDLHeads[i];
+        dls[i] = gSYTaskmanDLHeads[i];
+
+        // Reserve space for 2 commands: gSPDisplayList and gSPBranchList
         gSYTaskmanDLHeads[i] += 2;
     }
-    func_80017868(gobj, index, arg2);
+    gcCaptureTaggedGObjs(camera_gobj, id, is_tag_mask_or_id);
 
     for (i = 0; i < ARRAY_COUNT(gSYTaskmanDLHeads); i++)
     {
-        if (gSYTaskmanDLHeads[i] == sp38[i] + 2)
+        if (gSYTaskmanDLHeads[i] == dls[i] + 2)
         {
+            // Nothing added to this Display List
             gSYTaskmanDLHeads[i] -= 2;
-            D_80046A88[index].dls[i] = NULL;
+            D_80046A88[id].dls[i] = NULL;
         }
         else
         {
             gSPEndDisplayList(gSYTaskmanDLHeads[i]++);
 
-            gSPDisplayList(sp38[i], sp38[i] + 2);
-            sp38[i]++;
-            gSPBranchList(sp38[i]++, gSYTaskmanDLHeads[i]);
-            D_80046A88[index].dls[i] = sp38[i];
+            gSPDisplayList(dls[i], dls[i] + 2);
+            dls[i]++;
+            gSPBranchList(dls[i]++, gSYTaskmanDLHeads[i]);
+            D_80046A88[id].dls[i] = dls[i];
         }
     }
-    D_80046A88[index].id = dSYTaskmanFrameDrawCount;
+    D_80046A88[id].id = dSYTaskmanFrameDrawCount;
 }
 
 // 0x80017AAC
-void func_80017AAC(s32 index)
+void gcAddLinkedDL(s32 id)
 {
     s32 i;
 
     for (i = 0; i < ARRAY_COUNT(gSYTaskmanDLHeads); i++) 
     {
-        if (D_80046A88[index].dls[i] != NULL)
+        if (D_80046A88[id].dls[i] != NULL)
         {
-            gSPDisplayList(gSYTaskmanDLHeads[i]++, D_80046A88[index].dls[i]);
+            gSPDisplayList(gSYTaskmanDLHeads[i]++, D_80046A88[id].dls[i]);
         }
     }
 }
 
 // 0x80017B80
-void func_80017B80(GObj *gobj, s32 arg1)
+void gcCaptureAll(GObj *camera_gobj, sb32 is_tag_mask_or_id)
 {
     s32 id;
-    u64 cobj_mask;
-    u64 sp30;
+    u64 camera_mask;
+    u64 buffer_mask;
 
-    cobj_mask = gobj->cobj_mask;
-    sp30 = gobj->unk_gobj_0x40;
+    camera_mask = camera_gobj->camera_mask;
+    buffer_mask = camera_gobj->buffer_mask;
 
     id = 0;
 
-    while (cobj_mask) 
+    while (camera_mask)
     {
-        if (cobj_mask & 1) 
+        if (camera_mask & 1)
         {
-            if (sp30 & 1)
+            if (buffer_mask & 1)
             {
                 if ((u8)dSYTaskmanFrameDrawCount == D_80046A88[id].id)
                 {
-                    func_80017AAC(id);
+                    gcAddLinkedDL(id);
                 } 
-                else func_80017978(gobj, id, arg1);
+                else gcCaptureDoubleBufferGObjs(camera_gobj, id, is_tag_mask_or_id);
             } 
-            else func_80017868(gobj, id, arg1);
+            else gcCaptureTaggedGObjs(camera_gobj, id, is_tag_mask_or_id);
         }
-        cobj_mask >>= 1;
-        sp30 >>= 1;
+        camera_mask >>= 1;
+        buffer_mask >>= 1;
         id++;
     }
 }
@@ -3297,7 +3302,7 @@ void func_80017D3C(GObj *gobj, Gfx **dls, s32 index)
     func_8001663C(dls, cobj, index);
     gcPrepCameraMatrix(dls, cobj);
     gcRunFuncCamera(cobj, index);
-    func_80017B80(gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? TRUE : FALSE);
+    gcCaptureAll(gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? TRUE : FALSE);
     func_80017CC8(cobj);
 }
 
@@ -3362,7 +3367,7 @@ void func_80017EC0(GObj *gobj)
     {
         D_800472B0[i] = ++gSYTaskmanDLHeads[i];
     }
-    func_80017B80(gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? TRUE : FALSE);
+    gcCaptureAll(gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? TRUE : FALSE);
 
     for (i = 1; i < (ARRAY_COUNT(gSYTaskmanDLHeads) + ARRAY_COUNT(D_800472B0)) / 2; i++)
     {
@@ -3444,26 +3449,26 @@ void func_80018300(GObj *gobj)
     s32 xmax = (viewport->vtrans[0] / 4) + (viewport->vscale[0] / 4);
     s32 ymax = (viewport->vtrans[1] / 4) + (viewport->vscale[1] / 4);
 
-    if (xmin < (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorLeft)
+    if (xmin < (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dGCCameraScissorLeft)
     {
-        xmin = (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorLeft;
+        xmin = (gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dGCCameraScissorLeft;
     }
-    if (ymin < (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorTop)
+    if (ymin < (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dGCCameraScissorTop)
     {
-        ymin = (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorTop;
+        ymin = (gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dGCCameraScissorTop;
     }
-    if (xmax > gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorRight))
+    if (xmax > gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dGCCameraScissorRight))
     {
-        xmax = gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dODCameraScissorRight);
+        xmax = gSYVideoResWidth - ((gSYVideoResWidth / GS_SCREEN_WIDTH_DEFAULT) * dGCCameraScissorRight);
     }
-    if (ymax > gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorBottom))
+    if (ymax > gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dGCCameraScissorBottom))
     {
-        ymax = gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dODCameraScissorBottom);
+        ymax = gSYVideoResHeight - ((gSYVideoResHeight / GS_SCREEN_HEIGHT_DEFAULT) * dGCCameraScissorBottom);
     }
     func_8001663C(gSYTaskmanDLHeads, cobj, 0);
     spInit(gSYTaskmanDLHeads);
     spScissor(xmin, xmax, ymin, ymax);
-    func_80017B80(gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? TRUE : FALSE);
+    gcCaptureAll(gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? TRUE : FALSE);
     spFinish(gSYTaskmanDLHeads);
 
     gSYTaskmanDLHeads[0]--;

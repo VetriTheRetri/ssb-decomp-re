@@ -446,7 +446,7 @@ void mnBackupClearMakeMainCamera(void)
             NULL,
             1,
             GOBJ_PRIORITY_DEFAULT,
-            lbCommonScissorSpriteCamera,
+            lbCommonDrawSprite,
             80,
             COBJ_MASK_DLLINK(2) |
             COBJ_MASK_DLLINK(1) |

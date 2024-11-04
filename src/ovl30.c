@@ -972,7 +972,7 @@ void mnStagesCreateStagePreview(s32 stage_id)
 // 0x801334AC
 void mnStagesCreateBackgroundViewport()
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x00000001, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonDrawSprite, 0x50, 0x00000001, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -980,7 +980,7 @@ void mnStagesCreateBackgroundViewport()
 // 0x8013354C
 void mnStagesCreateWoodenCircleViewport()
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x28, 0x00000040, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonDrawSprite, 0x28, 0x00000040, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -988,7 +988,7 @@ void mnStagesCreateWoodenCircleViewport()
 // 0x801335EC
 void mnStagesCreateStagePreviewBackgroundViewport()
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x46, 0x00000080, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonDrawSprite, 0x46, 0x00000080, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -996,7 +996,7 @@ void mnStagesCreateStagePreviewBackgroundViewport()
 // 0x8013368C
 void mnStagesCreateStageSelectGfxViewport()
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x1E, 0x00000010, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonDrawSprite, 0x1E, 0x00000010, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1004,7 +1004,7 @@ void mnStagesCreateStageSelectGfxViewport()
 // 0x8013372C
 void mnStagesCreateStageImagesSYRdpViewport()
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x3C, 0x00000002, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonDrawSprite, 0x3C, 0x00000002, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1012,7 +1012,7 @@ void mnStagesCreateStageImagesSYRdpViewport()
 // 0x801337CC
 void mnStagesCreateStageNameAndLogoViewport()
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x14, 0x00000004, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonDrawSprite, 0x14, 0x00000004, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1020,7 +1020,7 @@ void mnStagesCreateStageNameAndLogoViewport()
 // 0x8013386C
 void mnStagesCreateCursorViewport()
 {
-	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonScissorSpriteCamera, 0x32, 0x00000020, -1, 0, 1, 0, 1, 0);
+	GObj *camera_gobj = gcMakeCameraGObj(0x1, NULL, 0x1, 0x80000000U, lbCommonDrawSprite, 0x32, 0x00000020, -1, 0, 1, 0, 1, 0);
 	CObj *cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }

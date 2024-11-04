@@ -876,7 +876,7 @@ GObj* sc1PGameBossMakeWallpaperEffect(s32 effect_id, s32 anim_id, s32 plan_id)
         sSC1PGameBossMain.bosswallpaper->bosseffect[effect_id].func_display, 
         sSC1PGameBossMain.bosswallpaper->bossplan[plan_id].dl_link, 
         GOBJ_PRIORITY_DEFAULT, 
-        sSC1PGameBossMain.bosswallpaper->bossplan[plan_id].cobj_tag
+        sSC1PGameBossMain.bosswallpaper->bossplan[plan_id].camera_tag
     );
     sc1PGameBossSetupBackgroundDObjs
     (

@@ -272,7 +272,7 @@ GObj* scExplainMakeTextCamera(void)
         NULL,
         9,
         GOBJ_PRIORITY_DEFAULT,
-        lbCommonScissorSpriteCamera,
+        lbCommonDrawSprite,
         15,
         COBJ_MASK_DLLINK(26), 
         -1,

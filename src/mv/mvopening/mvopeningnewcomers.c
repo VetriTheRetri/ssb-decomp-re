@@ -347,7 +347,7 @@ void mvOpeningNewcomersMakeHideCamera(void)
             NULL,
             16,
             GOBJ_PRIORITY_DEFAULT,
-            lbCommonScissorSpriteCamera,
+            lbCommonDrawSprite,
             20,
             COBJ_MASK_DLLINK(26),
             -1,

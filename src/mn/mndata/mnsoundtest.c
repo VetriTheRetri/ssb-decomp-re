@@ -1684,7 +1684,7 @@ void mnSoundTestMakeCameras(void)
             NULL,
             4,
             GOBJ_PRIORITY_DEFAULT,
-            lbCommonScissorSpriteCamera,
+            lbCommonDrawSprite,
             30,
             COBJ_MASK_DLLINK(1),
             -1,

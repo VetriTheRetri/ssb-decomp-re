@@ -797,7 +797,7 @@ void ifCommonPlayerDamageFuncDisplay(GObj *interface_gobj)
 
     sobj = SObjGetStruct(interface_gobj);
 
-    lbCommonPrepSObjSpriteAttrs(gSYTaskmanDLHeads, sobj);
+    lbCommonPrepSObjAttr(gSYTaskmanDLHeads, sobj);
     lbCommonPrepSObjDraw(gSYTaskmanDLHeads, sobj);
 
     lbCommonSetExternSpriteParams(&sobj->sprite);
@@ -842,7 +842,7 @@ void ifCommonPlayerDamageFuncDisplay(GObj *interface_gobj)
         sobj->sprite.green = color_g;
         sobj->sprite.blue = color_b;
 
-        lbCommonPrepSObjSpriteAttrs(gSYTaskmanDLHeads, sobj);
+        lbCommonPrepSObjAttr(gSYTaskmanDLHeads, sobj);
 
         if (color_id == GMCOMMON_PLAYERS_MAX)
         {

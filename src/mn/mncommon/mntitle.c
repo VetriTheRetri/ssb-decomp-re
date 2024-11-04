@@ -808,7 +808,7 @@ void mnTitleFireFuncDisplay(GObj *fire_gobj)
 
 	for (i = 0; i < 2; i++)
 	{
-		lbCommonPrepSObjSpriteAttrs(gSYTaskmanDLHeads, fire_sobj);
+		lbCommonPrepSObjAttr(gSYTaskmanDLHeads, fire_sobj);
 
 		gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, 0x00, 0x00, 0x00, sMNTitleFireAlpha);
 		gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, TEXEL0,  TEXEL0, 0, PRIMITIVE, 0,  0, 0, 0, TEXEL0,  TEXEL0, 0, PRIMITIVE, 0);
@@ -958,7 +958,7 @@ void mnTitleLogoFuncDisplay(GObj *gobj)
 	}
 	else
 	{
-		lbCommonPrepSObjSpriteAttrs(gSYTaskmanDLHeads, sobj);
+		lbCommonPrepSObjAttr(gSYTaskmanDLHeads, sobj);
 
 		gDPSetPrimColor(gSYTaskmanDLHeads[0]++, 0, 0, sobj->sprite.red, sobj->sprite.green, sobj->sprite.blue, sMNTitleLogoAlpha);
 		gDPSetCombineLERP(gSYTaskmanDLHeads[0]++, 0, 0, 0, PRIMITIVE,  TEXEL0, 0, PRIMITIVE, 0,  0, 0, 0, PRIMITIVE,  TEXEL0, 0, PRIMITIVE, 0);
@@ -1313,7 +1313,7 @@ s32 mnTitleMakeCameras(void)
 		NULL,
 		3,
 		GOBJ_PRIORITY_DEFAULT,
-		lbCommonScissorSpriteCamera,
+		lbCommonDrawSprite,
 		60,
 		COBJ_MASK_DLLINK(1) | COBJ_MASK_DLLINK(0),
 		-1,
@@ -1378,7 +1378,7 @@ void mnTitleMakeLogoFire(void)
 	GObj *gobj = gcMakeGObjSPAfter(15, NULL, 4, GOBJ_PRIORITY_DEFAULT);
 	gcAddGObjDisplay(gobj, mnTitleLogoFireFuncDisplay, 3, GOBJ_PRIORITY_DEFAULT, -1);
 
-	gobj->cobj_mask = COBJ_MASK_DLLINK(0);
+	gobj->camera_mask = COBJ_MASK_DLLINK(0);
 
 	sMNTitleParticleBankID = efParticleGetLoadBankID(&lMNTitleParticleBankScriptsLo, &lMNTitleParticleBankScriptsHi, &lMNTitleParticleBankTexturesLo, &lMNTitleParticleBankTexturesHi);
 }

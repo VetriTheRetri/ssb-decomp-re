@@ -278,7 +278,7 @@ void sc1PChallengerMakeDecalsCamera(void)
             NULL,
             1,
             GOBJ_PRIORITY_DEFAULT,
-            lbCommonScissorSpriteCamera,
+            lbCommonDrawSprite,
             70,
             COBJ_MASK_DLLINK(0),
             -1,

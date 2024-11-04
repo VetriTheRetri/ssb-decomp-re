@@ -2071,7 +2071,7 @@ void gmStaffrollMakeCamera(void)
 			NULL,
 			12,
 			GOBJ_PRIORITY_DEFAULT,
-			lbCommonScissorSpriteCamera,
+			lbCommonDrawSprite,
 			30,
 			COBJ_MASK_DLLINK(7) | COBJ_MASK_DLLINK(6) | 
 			COBJ_MASK_DLLINK(5) | COBJ_MASK_DLLINK(4),

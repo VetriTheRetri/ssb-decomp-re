@@ -208,7 +208,7 @@ void mnUnusedFightersFuncStart(void)
             NULL,
             1,
             GOBJ_PRIORITY_DEFAULT,
-            lbCommonScissorSpriteCamera,
+            lbCommonDrawSprite,
             50,
             COBJ_MASK_DLLINK(1),
             -1,

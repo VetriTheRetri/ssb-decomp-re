@@ -213,7 +213,7 @@ void mnN64FuncStart(void)
 			NULL,
 			nGCCommonLinkIDCamera,
 			GOBJ_PRIORITY_DEFAULT,
-			lbCommonScissorSpriteCamera,
+			lbCommonDrawSprite,
 			80,
 			COBJ_MASK_DLLINK(0),
 			-1,

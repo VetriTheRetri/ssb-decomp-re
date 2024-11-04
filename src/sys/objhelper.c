@@ -443,7 +443,7 @@ GObj* gcMakeModelGObj
     void (*func_display)(GObj*),
     u8 dl_link,
     u32 dl_link_priority,
-    u32 cobj_tag,
+    u32 camera_tag,
     void *dvar,
     sb32 is_add_default_xobj,
     u8 gobjproc_kind,
@@ -460,7 +460,7 @@ GObj* gcMakeModelGObj
     {
         return NULL;
     }
-    gcAddGObjDisplay(gobj, func_display, dl_link, dl_link_priority, cobj_tag);
+    gcAddGObjDisplay(gobj, func_display, dl_link, dl_link_priority, camera_tag);
 
     dobj = gcAddDObjForGObj(gobj, dvar);
 
@@ -485,7 +485,7 @@ GObj* gcMakeSpriteGObj
     void (*func_display)(GObj*),
     s32 dl_link,
     u32 dl_link_priority,
-    u32 cobj_tag,
+    u32 camera_tag,
     Sprite *sprite,
     u8 gobjproc_kind,
     void (*proc)(GObj*),
@@ -498,7 +498,7 @@ GObj* gcMakeSpriteGObj
     {
         return NULL;
     }
-    gcAddGObjDisplay(gobj, func_display, dl_link, dl_link_priority, cobj_tag);
+    gcAddGObjDisplay(gobj, func_display, dl_link, dl_link_priority, camera_tag);
     
     gcAddSObjForGObj(gobj, sprite);
         
@@ -518,8 +518,8 @@ GObj* gcMakeCameraGObj
     u32 link_priority,
     void (*func_display)(GObj*),
     u32 dl_link_priority,
-    u64 cobj_mask,
-    u32 cobj_tag,
+    u64 camera_mask,
+    u32 camera_tag,
     sb32 is_add_default_xobj,
     u8 gobjproc_kind,
     void (*proc)(GObj*),
@@ -536,7 +536,7 @@ GObj* gcMakeCameraGObj
     {
         return NULL;
     }
-    func_80009F74(gobj, func_display, dl_link_priority, cobj_mask, cobj_tag);
+    func_80009F74(gobj, func_display, dl_link_priority, camera_mask, camera_tag);
     
     cobj = gcAddCameraForGObj(gobj);
 

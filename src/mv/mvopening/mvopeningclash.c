@@ -273,7 +273,7 @@ void mvOpeningClashMakeVoidCamera(void)
             NULL,
             16,
             GOBJ_PRIORITY_DEFAULT,
-            lbCommonScissorSpriteCamera,
+            lbCommonDrawSprite,
             40,
             COBJ_MASK_DLLINK(26),
             -1,

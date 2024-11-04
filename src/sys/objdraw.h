@@ -17,10 +17,10 @@ typedef struct syMtxProcess
 } syMtxProcess;
 
 // gbi Mtx * ? pointer to some sort of matrix
-extern Mtx *sODMatrixProjectL;
-extern f32 gODScaleX;
-extern Mtx44f gODMatrixPerspF;
-extern syMtxProcess *sODMatrixProcess;
+extern Mtx *sGCMatrixProjectL;
+extern f32 gGCScaleX;
+extern Mtx44f gGCMatrixPerspF;
+extern syMtxProcess *sGCMatrixProcess;
 
 extern void gcSetCameraScissor(s32 top, s32 bottom, s32 left, s32 right);
 extern void gcSetMatrixProcess(syMtxProcess *proc_mtx);
@@ -65,10 +65,10 @@ extern void unref_80016AE4(Gfx **dls, CObj *cobj, s32 arg2, void *image, s32 max
 extern void gcPrepCameraMatrix(Gfx **dls, CObj *cobj);
 extern void gcSetCameraMatrixMode(s32 val);
 extern void gcRunFuncCamera(CObj *cobj, s32 arg);
-extern void func_80017868(GObj *this_gobj, s32 link_id, s32 arg2);
-extern void func_80017978(GObj *gobj, s32 index, s32 arg2);
-extern void func_80017AAC(s32 index);
-extern void func_80017B80(GObj *gobj, s32 arg1);
+extern void gcCaptureTaggedGObjs(GObj *camera_gobj, s32 link_id, sb32 is_tag_mask_or_id);
+extern void gcCaptureDoubleBufferGObjs(GObj *camera_gobj, s32 id, sb32 is_tag_mask_or_id);
+extern void gcAddLinkedDL(s32 id);
+extern void gcCaptureAll(GObj *camera_gobj, sb32 is_tag_mask_or_id);
 extern void func_80017CC8(CObj *cobj);
 extern void func_80017D3C(GObj *gobj, Gfx **dls, s32 index);
 extern void func_80017DBC(GObj *gobj);

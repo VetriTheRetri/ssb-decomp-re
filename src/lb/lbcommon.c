@@ -1451,7 +1451,7 @@ sb32 func_ovl0_800C994C(Mtx *mtx, DObj *dobj, Gfx **dls)
     
     func_ovl2_800EDBA4(attach_dobj);
     gmCollisionCopyMatrix(f, parts->mtx_translate);
-    gODScaleX = sqrtf(SQUARE(f[0][0]) + SQUARE(f[0][1]) + SQUARE(f[0][2]));
+    gGCScaleX = sqrtf(SQUARE(f[0][0]) + SQUARE(f[0][1]) + SQUARE(f[0][2]));
     syMatrixF2LFixedW(&f, mtx);
     
     return 0;
@@ -1713,38 +1713,38 @@ sb32 func_ovl0_800CA194(Mtx *mtx, DObj *dobj, Gfx **dls)
     sinz = __sinf(dobj->rotate.vec.f.z);
     cosz = __cosf(dobj->rotate.vec.f.z);
 
-    e1 = FTOFIX32(gODMatrixPerspF[0][0] * cosz + gODMatrixPerspF[1][0] * sinz);
-    e2 = FTOFIX32(gODMatrixPerspF[0][1] * cosz + gODMatrixPerspF[1][1] * sinz);
+    e1 = FTOFIX32(gGCMatrixPerspF[0][0] * cosz + gGCMatrixPerspF[1][0] * sinz);
+    e2 = FTOFIX32(gGCMatrixPerspF[0][1] * cosz + gGCMatrixPerspF[1][1] * sinz);
 
     *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
     *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32(gODMatrixPerspF[0][2] * cosz + gODMatrixPerspF[1][2] * sinz);
-    e2 = FTOFIX32(gODMatrixPerspF[0][3] * cosz + gODMatrixPerspF[1][3] * sinz);
+    e1 = FTOFIX32(gGCMatrixPerspF[0][2] * cosz + gGCMatrixPerspF[1][2] * sinz);
+    e2 = FTOFIX32(gGCMatrixPerspF[0][3] * cosz + gGCMatrixPerspF[1][3] * sinz);
 
     *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
     *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32(gODMatrixPerspF[0][0] * -sinz + gODMatrixPerspF[1][0] * cosz);
-    e2 = FTOFIX32(gODMatrixPerspF[0][1] * -sinz + gODMatrixPerspF[1][1] * cosz);
+    e1 = FTOFIX32(gGCMatrixPerspF[0][0] * -sinz + gGCMatrixPerspF[1][0] * cosz);
+    e2 = FTOFIX32(gGCMatrixPerspF[0][1] * -sinz + gGCMatrixPerspF[1][1] * cosz);
 
     *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
     *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32(gODMatrixPerspF[0][2] * -sinz + gODMatrixPerspF[1][2] * cosz);
-    e2 = FTOFIX32(gODMatrixPerspF[0][3] * -sinz + gODMatrixPerspF[1][3] * cosz);
+    e1 = FTOFIX32(gGCMatrixPerspF[0][2] * -sinz + gGCMatrixPerspF[1][2] * cosz);
+    e2 = FTOFIX32(gGCMatrixPerspF[0][3] * -sinz + gGCMatrixPerspF[1][3] * cosz);
 
     *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
     *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32(gODMatrixPerspF[2][0]);
-    e2 = FTOFIX32(gODMatrixPerspF[2][1]);
+    e1 = FTOFIX32(gGCMatrixPerspF[2][0]);
+    e2 = FTOFIX32(gGCMatrixPerspF[2][1]);
     
     *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
     *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
     
-    e1 = FTOFIX32(gODMatrixPerspF[2][2]);
-    e2 = FTOFIX32(gODMatrixPerspF[2][3]);
+    e1 = FTOFIX32(gGCMatrixPerspF[2][2]);
+    e2 = FTOFIX32(gGCMatrixPerspF[2][3]);
     
     *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
     *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
@@ -1790,38 +1790,38 @@ sb32 func_ovl0_800CA5C8(Mtx *mtx, DObj *dobj, Gfx **dls)
     siny = __sinf(dobj->rotate.vec.f.y);
     cosy = __cosf(dobj->rotate.vec.f.y);
 
-    e1 = FTOFIX32(gODMatrixPerspF[0][0] * cosy + gODMatrixPerspF[2][0] * -siny);
-    e2 = FTOFIX32(gODMatrixPerspF[0][1] * cosy + gODMatrixPerspF[2][1] * -siny);
+    e1 = FTOFIX32(gGCMatrixPerspF[0][0] * cosy + gGCMatrixPerspF[2][0] * -siny);
+    e2 = FTOFIX32(gGCMatrixPerspF[0][1] * cosy + gGCMatrixPerspF[2][1] * -siny);
 
     *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
     *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32(gODMatrixPerspF[0][2] * cosy + gODMatrixPerspF[2][2] * -siny);
-    e2 = FTOFIX32(gODMatrixPerspF[0][3] * cosy + gODMatrixPerspF[2][3] * -siny);
+    e1 = FTOFIX32(gGCMatrixPerspF[0][2] * cosy + gGCMatrixPerspF[2][2] * -siny);
+    e2 = FTOFIX32(gGCMatrixPerspF[0][3] * cosy + gGCMatrixPerspF[2][3] * -siny);
 
     *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
     *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32(gODMatrixPerspF[0][0] * sinx * siny + gODMatrixPerspF[1][0] * cosx + gODMatrixPerspF[2][0] * sinx * cosy);
-    e2 = FTOFIX32(gODMatrixPerspF[0][1] * sinx * siny + gODMatrixPerspF[1][1] * cosx + gODMatrixPerspF[2][1] * sinx * cosy);
+    e1 = FTOFIX32(gGCMatrixPerspF[0][0] * sinx * siny + gGCMatrixPerspF[1][0] * cosx + gGCMatrixPerspF[2][0] * sinx * cosy);
+    e2 = FTOFIX32(gGCMatrixPerspF[0][1] * sinx * siny + gGCMatrixPerspF[1][1] * cosx + gGCMatrixPerspF[2][1] * sinx * cosy);
 
     *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
     *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32(gODMatrixPerspF[0][2] * sinx * siny + gODMatrixPerspF[1][2] * cosx + gODMatrixPerspF[2][2] * sinx * cosy);
-    e2 = FTOFIX32(gODMatrixPerspF[0][3] * sinx * siny + gODMatrixPerspF[1][3] * cosx + gODMatrixPerspF[2][3] * sinx * cosy);
+    e1 = FTOFIX32(gGCMatrixPerspF[0][2] * sinx * siny + gGCMatrixPerspF[1][2] * cosx + gGCMatrixPerspF[2][2] * sinx * cosy);
+    e2 = FTOFIX32(gGCMatrixPerspF[0][3] * sinx * siny + gGCMatrixPerspF[1][3] * cosx + gGCMatrixPerspF[2][3] * sinx * cosy);
 
     *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
     *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32(gODMatrixPerspF[0][0] * cosx * siny + gODMatrixPerspF[1][0] * -sinx + gODMatrixPerspF[2][0] * cosx * cosy);
-    e2 = FTOFIX32(gODMatrixPerspF[0][1] * cosx * siny + gODMatrixPerspF[1][1] * -sinx + gODMatrixPerspF[2][1] * cosx * cosy);
+    e1 = FTOFIX32(gGCMatrixPerspF[0][0] * cosx * siny + gGCMatrixPerspF[1][0] * -sinx + gGCMatrixPerspF[2][0] * cosx * cosy);
+    e2 = FTOFIX32(gGCMatrixPerspF[0][1] * cosx * siny + gGCMatrixPerspF[1][1] * -sinx + gGCMatrixPerspF[2][1] * cosx * cosy);
 
     *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
     *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32(gODMatrixPerspF[0][2] * cosx * siny + gODMatrixPerspF[1][2] * -sinx + gODMatrixPerspF[2][2] * cosx * cosy);
-    e2 = FTOFIX32(gODMatrixPerspF[0][3] * cosx * siny + gODMatrixPerspF[1][3] * -sinx + gODMatrixPerspF[2][3] * cosx * cosy);
+    e1 = FTOFIX32(gGCMatrixPerspF[0][2] * cosx * siny + gGCMatrixPerspF[1][2] * -sinx + gGCMatrixPerspF[2][2] * cosx * cosy);
+    e2 = FTOFIX32(gGCMatrixPerspF[0][3] * cosx * siny + gGCMatrixPerspF[1][3] * -sinx + gGCMatrixPerspF[2][3] * cosx * cosy);
 
     *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
     *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
@@ -1871,41 +1871,41 @@ sb32 func_ovl0_800CAB48(Mtx *mtx, DObj *dobj, Gfx **dls)
     siny = __sinf(dobj->rotate.vec.f.y);
     cosy = __cosf(dobj->rotate.vec.f.y);
 
-    scaley = (dobj->scale.vec.f.y * gODScaleX);
-    scalex = gODScaleX *= *p;
+    scaley = (dobj->scale.vec.f.y * gGCScaleX);
+    scalex = gGCScaleX *= *p;
 
-    e1 = FTOFIX32((gODMatrixPerspF[0][0] * cosy + gODMatrixPerspF[2][0] * -siny) * scalex);
-    e2 = FTOFIX32((gODMatrixPerspF[0][1] * cosy + gODMatrixPerspF[2][1] * -siny) * scalex);
-
-    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
-    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
-
-    e1 = FTOFIX32((gODMatrixPerspF[0][2] * cosy + gODMatrixPerspF[2][2] * -siny) * scalex);
-    e2 = FTOFIX32((gODMatrixPerspF[0][3] * cosy + gODMatrixPerspF[2][3] * -siny) * scalex);
+    e1 = FTOFIX32((gGCMatrixPerspF[0][0] * cosy + gGCMatrixPerspF[2][0] * -siny) * scalex);
+    e2 = FTOFIX32((gGCMatrixPerspF[0][1] * cosy + gGCMatrixPerspF[2][1] * -siny) * scalex);
 
     *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
     *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32((gODMatrixPerspF[0][0] * sinx * siny + gODMatrixPerspF[1][0] * cosx + gODMatrixPerspF[2][0] * sinx * cosy) * scaley);
-    e2 = FTOFIX32((gODMatrixPerspF[0][1] * sinx * siny + gODMatrixPerspF[1][1] * cosx + gODMatrixPerspF[2][1] * sinx * cosy) * scaley);
+    e1 = FTOFIX32((gGCMatrixPerspF[0][2] * cosy + gGCMatrixPerspF[2][2] * -siny) * scalex);
+    e2 = FTOFIX32((gGCMatrixPerspF[0][3] * cosy + gGCMatrixPerspF[2][3] * -siny) * scalex);
 
     *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
     *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32((gODMatrixPerspF[0][2] * sinx * siny + gODMatrixPerspF[1][2] * cosx + gODMatrixPerspF[2][2] * sinx * cosy) * scaley);
-    e2 = FTOFIX32((gODMatrixPerspF[0][3] * sinx * siny + gODMatrixPerspF[1][3] * cosx + gODMatrixPerspF[2][3] * sinx * cosy) * scaley);
+    e1 = FTOFIX32((gGCMatrixPerspF[0][0] * sinx * siny + gGCMatrixPerspF[1][0] * cosx + gGCMatrixPerspF[2][0] * sinx * cosy) * scaley);
+    e2 = FTOFIX32((gGCMatrixPerspF[0][1] * sinx * siny + gGCMatrixPerspF[1][1] * cosx + gGCMatrixPerspF[2][1] * sinx * cosy) * scaley);
 
     *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
     *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32((gODMatrixPerspF[0][0] * cosx * siny + gODMatrixPerspF[1][0] * -sinx + gODMatrixPerspF[2][0] * cosx * cosy) * scalex);
-    e2 = FTOFIX32((gODMatrixPerspF[0][1] * cosx * siny + gODMatrixPerspF[1][1] * -sinx + gODMatrixPerspF[2][1] * cosx * cosy) * scalex);
+    e1 = FTOFIX32((gGCMatrixPerspF[0][2] * sinx * siny + gGCMatrixPerspF[1][2] * cosx + gGCMatrixPerspF[2][2] * sinx * cosy) * scaley);
+    e2 = FTOFIX32((gGCMatrixPerspF[0][3] * sinx * siny + gGCMatrixPerspF[1][3] * cosx + gGCMatrixPerspF[2][3] * sinx * cosy) * scaley);
 
     *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
     *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
 
-    e1 = FTOFIX32((gODMatrixPerspF[0][2] * cosx * siny + gODMatrixPerspF[1][2] * -sinx + gODMatrixPerspF[2][2] * cosx * cosy) * scalex);
-    e2 = FTOFIX32((gODMatrixPerspF[0][3] * cosx * siny + gODMatrixPerspF[1][3] * -sinx + gODMatrixPerspF[2][3] * cosx * cosy) * scalex);
+    e1 = FTOFIX32((gGCMatrixPerspF[0][0] * cosx * siny + gGCMatrixPerspF[1][0] * -sinx + gGCMatrixPerspF[2][0] * cosx * cosy) * scalex);
+    e2 = FTOFIX32((gGCMatrixPerspF[0][1] * cosx * siny + gGCMatrixPerspF[1][1] * -sinx + gGCMatrixPerspF[2][1] * cosx * cosy) * scalex);
+
+    *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
+    *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
+
+    e1 = FTOFIX32((gGCMatrixPerspF[0][2] * cosx * siny + gGCMatrixPerspF[1][2] * -sinx + gGCMatrixPerspF[2][2] * cosx * cosy) * scalex);
+    e2 = FTOFIX32((gGCMatrixPerspF[0][3] * cosx * siny + gGCMatrixPerspF[1][3] * -sinx + gGCMatrixPerspF[2][3] * cosx * cosy) * scalex);
 
     *(ai++) = (e1 & 0xffff0000) | ((e2 >> 16) & 0xffff);
     *(af++) = ((e1 << 16) & 0xffff0000) | (e2 & 0xffff);
@@ -2021,7 +2021,7 @@ void lbCommonDrawDObjScaleX(DObj *dobj)
     
     if (!(dobj->flags & DOBJ_FLAG_HIDDEN))
     {
-        f32 bak = gODScaleX;
+        f32 bak = gGCScaleX;
         s32 status = gcPrepDObjMatrix(&gSYTaskmanDLHeads[1], dobj);
         
         if ((dobj->display_list != NULL) && !(dobj->flags & DOBJ_FLAG_NOTEXTURE))
@@ -2041,7 +2041,7 @@ void lbCommonDrawDObjScaleX(DObj *dobj)
                 gSPPopMatrix(gSYTaskmanDLHeads[1]++, G_MTX_MODELVIEW);
             }
         }
-        gODScaleX = bak;
+        gGCScaleX = bak;
     }
     if (dobj->sib_prev == NULL)
     {
@@ -2059,7 +2059,7 @@ void lbCommonDrawDObjScaleX(DObj *dobj)
 // 0x800CB4B0
 void lbCommonDObjScaleXFuncDisplay(GObj *gobj)
 {
-    gODScaleX = 1.0F;
+    gGCScaleX = 1.0F;
     
     lbCommonDrawDObjScaleX(DObjGetStruct(gobj));
 }
@@ -2204,8 +2204,6 @@ void lbCommonDecodeSpriteBitmapsSiz4b(Sprite *sprite)
     }
     sprite->bmsiz = G_IM_SIZ_4b;
 }
-
-// #pragma GLOBAL_ASM("asm/nonmatchings/lb/lbcommon/D_ovl0_800D5E10.s")
 
 // 0x800CB7D4
 void lbCommonDrawSObjBitmap
@@ -2482,7 +2480,6 @@ void lbCommonDrawSObjBitmap
             sLBCommonPrevBitmapBuf = bitmap->buf;
         }        
         gSPTextureRectangle(dl++, rxh, ryh, rxl, ryl, 0, rs, rt, sx, sy);
-
         gDPPipeSync(dl++);
         
         dls[0] = dl;
@@ -2490,7 +2487,7 @@ void lbCommonDrawSObjBitmap
 }
 
 // 0x800CC118
-void lbCommonPrepSObjSpriteAttrs(Gfx **dls, SObj *sobj)
+void lbCommonPrepSObjAttr(Gfx **dls, SObj *sobj)
 {
     Gfx *dl = dls[0];
     Sprite *sprite = &sobj->sprite;
@@ -2806,7 +2803,7 @@ void lbCommonDrawSObjAttr(GObj *gobj)
     {
         if (!(sobj->sprite.attr & SP_HIDDEN))
         {
-            lbCommonPrepSObjSpriteAttrs(gSYTaskmanDLHeads, sobj);
+            lbCommonPrepSObjAttr(gSYTaskmanDLHeads, sobj);
             lbCommonPrepSObjDraw(gSYTaskmanDLHeads, sobj);
             lbCommonSetExternSpriteParams(&sobj->sprite);
         }
@@ -2863,7 +2860,7 @@ GObj* lbCommonMakeSpriteGObj
     void (*func_display)(GObj*),
     s32 dl_link,
     u32 dl_link_priority,
-    u32 cobj_tag,
+    u32 camera_tag,
     Sprite *sprite,
     u8 gobjproc_kind,
     void (*proc)(GObj*),
@@ -2876,7 +2873,7 @@ GObj* lbCommonMakeSpriteGObj
     {
         return NULL;
     }
-    gcAddGObjDisplay(gobj, func_display, dl_link, dl_link_priority, cobj_tag);
+    gcAddGObjDisplay(gobj, func_display, dl_link, dl_link_priority, camera_tag);
     
     lbCommonMakeSObjForGObj(gobj, sprite);
         
@@ -2939,9 +2936,9 @@ void lbCommonFinishSprite(Gfx **dls)
 }
 
 // 0x800CD2CC
-void lbCommonScissorSpriteCamera(GObj *gobj)
+void lbCommonDrawSprite(GObj *camera_gobj)
 {
-    CObj *cobj = CObjGetStruct(gobj);
+    CObj *cobj = CObjGetStruct(camera_gobj);
     Vp_t *viewport = &cobj->viewport.vp;
     s32 ulx = (viewport->vtrans[0] / 4) - (viewport->vscale[0] / 4);
     s32 uly = (viewport->vtrans[1] / 4) - (viewport->vscale[1] / 4);
@@ -2967,7 +2964,7 @@ void lbCommonScissorSpriteCamera(GObj *gobj)
     lbCommonStartSprite(gSYTaskmanDLHeads);
     lbCommonSetSpriteScissor(ulx, lrx, uly, lry);
 
-    func_80017B80(gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
+    gcCaptureAll(camera_gobj, (cobj->flags & COBJ_FLAG_IDENTIFIER) ? 1 : 0);
     lbCommonFinishSprite(gSYTaskmanDLHeads);
 }
 
@@ -2990,7 +2987,7 @@ void lbCommonInitCameraPersp(CObj *cobj, u8 tk, u8 arg2)
 }
 
 // 0x800CD538
-void lbCommonInitCObjVec(CObj *cobj, u8 tk, u8 arg2)
+void lbCommonInitCameraVec(CObj *cobj, u8 tk, u8 arg2)
 {
     XObj *xobj = gcAddXObjForCamera(cobj, tk, arg2);
     

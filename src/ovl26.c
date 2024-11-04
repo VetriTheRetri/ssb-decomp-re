@@ -715,7 +715,7 @@ void mnUpdatePanelDoors(GObj* panel_doors)
 void mnBattleCreatePortraitViewport()
 {
 	GObj* camera_gobj
-		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x46, 0x08000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x46, 0x08000000, -1, 0, 1, 0, 1, 0);
 	CObj* cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -724,7 +724,7 @@ void mnBattleCreatePortraitViewport()
 void mnBattleCreatePortraitBackgroundViewport()
 {
 	GObj* camera_gobj
-		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x4B, 0x1000000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x4B, 0x1000000000, -1, 0, 1, 0, 1, 0);
 	CObj* cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -733,7 +733,7 @@ void mnBattleCreatePortraitBackgroundViewport()
 void mnBattleCreatePortraitWhiteBackgroundViewport()
 {
 	GObj* camera_gobj
-		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x49, 0x2000000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x49, 0x2000000000, -1, 0, 1, 0, 1, 0);
 	CObj* cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -742,7 +742,7 @@ void mnBattleCreatePortraitWhiteBackgroundViewport()
 void mnBattleCreatePanelDoorsSYRdpViewport()
 {
 	GObj* camera_gobj
-		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x28, 0x20000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x28, 0x20000000, -1, 0, 1, 0, 1, 0);
 	CObj* cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -751,7 +751,7 @@ void mnBattleCreatePanelDoorsSYRdpViewport()
 void mnBattleCreateTypeButtonViewport()
 {
 	GObj* camera_gobj
-		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x23, 0x40000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x23, 0x40000000, -1, 0, 1, 0, 1, 0);
 	CObj* cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -760,7 +760,7 @@ void mnBattleCreateTypeButtonViewport()
 void mnBattleCreatePanelViewport()
 {
 	GObj* camera_gobj
-		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x32, 0x10000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x32, 0x10000000, -1, 0, 1, 0, 1, 0);
 	CObj* cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -769,7 +769,7 @@ void mnBattleCreatePanelViewport()
 void mnBattleCreateTeamButtonViewPort()
 {
 	GObj* camera_gobj
-		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x2D, 0x400000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x2D, 0x400000000, -1, 0, 1, 0, 1, 0);
 	CObj* cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -1156,7 +1156,7 @@ void mnBattleCreateBackground()
 	SObj* background_sobj;
 
 	GObj* camera_gobj
-		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x50, 0x04000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x50, 0x04000000, -1, 0, 1, 0, 1, 0);
 	CObj* cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 
@@ -3190,7 +3190,7 @@ void mnBattleSyncTokenAndFighter(GObj* token_gobj)
 void mnBattleCreateCursorViewport()
 {
 	GObj* camera_gobj
-		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x14, 0x100000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x14, 0x100000000, -1, 0, 1, 0, 1, 0);
 	CObj* cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -3199,7 +3199,7 @@ void mnBattleCreateCursorViewport()
 void mnBattleCreateDroppedTokenViewport()
 {
 	GObj* camera_gobj
-		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x19, 0x200000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x19, 0x200000000, -1, 0, 1, 0, 1, 0);
 	CObj* cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -3208,7 +3208,7 @@ void mnBattleCreateDroppedTokenViewport()
 void mnBattleCreateHandicapCPULevelViewport()
 {
 	GObj* camera_gobj
-		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0x2B, 0x800000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0x2B, 0x800000000, -1, 0, 1, 0, 1, 0);
 	CObj* cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }
@@ -3217,7 +3217,7 @@ void mnBattleCreateHandicapCPULevelViewport()
 void mnBattleCreateReadyToFightViewport()
 {
 	GObj* camera_gobj
-		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonScissorSpriteCamera, 0xA, 0x4000000000, -1, 0, 1, 0, 1, 0);
+		= gcMakeCameraGObj(0x401, NULL, 0x10, 0x80000000U, lbCommonDrawSprite, 0xA, 0x4000000000, -1, 0, 1, 0, 1, 0);
 	CObj* cobj = CObjGetStruct(camera_gobj);
 	syRdpSetViewport(&cobj->viewport, 10.0F, 10.0F, 310.0F, 230.0F);
 }

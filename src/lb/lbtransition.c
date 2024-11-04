@@ -124,13 +124,13 @@ void *sLBTransitionPhotoHeap;
 // // // // // // // // // // // //
 
 // 0x800D4130
-GObj* lbTransitionMakeCamera(u32 id, s32 link, u32 link_priority, u64 cobj_mask)
+GObj* lbTransitionMakeCamera(u32 id, s32 link, u32 link_priority, u64 camera_mask)
 {
     GObj *gobj;
     CObj *cobj;
 
     gobj = gcMakeGObjSPAfter(id, NULL, link, GOBJ_PRIORITY_DEFAULT);
-    func_80009F74(gobj, func_80017DBC, link_priority, cobj_mask, -1);
+    func_80009F74(gobj, func_80017DBC, link_priority, camera_mask, -1);
     
     cobj = gcAddCameraForGObj(gobj);
     gcAddXObjForCamera(cobj, nGCMatrixKindPerspFastF, 1);

@@ -273,7 +273,7 @@ void mvOpeningRunMakeWallpaperCamera(void)
             NULL,
             16,
             GOBJ_PRIORITY_DEFAULT,
-            lbCommonScissorSpriteCamera,
+            lbCommonDrawSprite,
             80,
             COBJ_MASK_DLLINK(28),
             -1,

@@ -3,18 +3,18 @@
 
 #include <PR/ultratypes.h>
 
-// syMallocRegion?
-typedef struct syMallocRegion 
+// SYMallocRegion?
+typedef struct SYMallocRegion 
 {
     u32 id;
     void *start;
     void *end;
     void *ptr;
 
-} syMallocRegion;
+} SYMallocRegion;
 
-extern void syMallocInit(syMallocRegion *buf, u32 id, void *start, size_t size);
-extern void* syMallocSet(syMallocRegion *buf, size_t size, u32 alignment);
-extern void syMallocReset(syMallocRegion *buf);
+extern void syMallocInit(SYMallocRegion *buf, u32 id, void *start, size_t size);
+extern void* syMallocSet(SYMallocRegion *buf, size_t size, u32 alignment);
+extern void syMallocReset(SYMallocRegion *buf);
 
 #endif /* _ML_H_ */

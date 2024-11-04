@@ -4,12 +4,12 @@
 #include <ssb_types.h>
 #include <PR/ultratypes.h>
 
-void syMallocReset(syMallocRegion *bp)
+void syMallocReset(SYMallocRegion *bp)
 {
     bp->ptr = bp->start;
 }
 
-void* syMallocSet(syMallocRegion *bp, size_t size, u32 alignment)
+void* syMallocSet(SYMallocRegion *bp, size_t size, u32 alignment)
 {
     u8 *aligned;
     u32 offset;
@@ -32,7 +32,7 @@ void* syMallocSet(syMallocRegion *bp, size_t size, u32 alignment)
     return (void*)aligned;
 }
 
-void syMallocInit(syMallocRegion *bp, u32 id, void *start, size_t size)
+void syMallocInit(SYMallocRegion *bp, u32 id, void *start, size_t size)
 {
     bp->id    = id;
     bp->ptr   = start;

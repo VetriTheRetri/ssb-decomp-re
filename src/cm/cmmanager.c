@@ -6,7 +6,7 @@
 #include <sys/malloc.h>
 
 extern Mtx44f gGCMatrixPerspF;
-extern syMallocRegion gSYTaskmanGraphicsHeap;
+extern SYMallocRegion gSYTaskmanGraphicsHeap;
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 

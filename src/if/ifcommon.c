@@ -19,7 +19,7 @@ extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
 extern intptr_t D_NF_00000057;                              // 0x00000057
 
-extern syMallocRegion gSYTaskmanGeneralHeap;
+extern SYMallocRegion gSYTaskmanGeneralHeap;
 
 extern GObj *gEFParticleStructsHead; // I don't think these belong in this file
 extern GObj *gEFParticleGeneratorsHead;

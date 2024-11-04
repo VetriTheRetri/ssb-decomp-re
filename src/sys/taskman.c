@@ -56,10 +56,10 @@ typedef struct FnBundle
 // 0x8003B6E0
 s32 D_8003B6E0 = 0;
 
-// 0x8003B6E4
+// 0x8003B6E4 - Total number of game updates
 u32 sSYTaskmanUpdateCount = 0;
 
-// 0x8003B6E8
+// 0x8003B6E8 - Total number of drawn frames
 u32 dSYTaskmanFrameDrawCount = 0;
 
 // match Nintendo's name to make the text and data symbols
@@ -170,10 +170,10 @@ s32 sSYTaskmanStatus;
 s32 D_800465D4;
 
 // 0x800465D8
-syMallocRegion gSYTaskmanGraphicsHeap;
+SYMallocRegion gSYTaskmanGraphicsHeap;
 
 // 0x800465E8
-syMallocRegion gSYTaskmanGeneralHeap;
+SYMallocRegion gSYTaskmanGeneralHeap;
 
 // 0x800465F8
 FnBundle D_800465F8;
@@ -224,7 +224,7 @@ s32 sSYTaskmanCount;
 UNUSED s32 unref80046644;
 
 // 0x80046648
-syMallocRegion sSYTaskmanDefaultGraphicsHeap[2];
+SYMallocRegion sSYTaskmanDefaultGraphicsHeap[2];
 
 // 0x80046668
 void (*D_80046668)(void *); // takes function bundle struct?
@@ -269,7 +269,7 @@ void unref_80004934(u16 arg0, u16 arg1)
 }
 
 // 0x80004950
-void syTaskmanRunGeneralHeap(void *start, u32 size)
+void syTaskmanInitGeneralHeap(void *start, u32 size)
 {
 	syMallocInit(&gSYTaskmanGeneralHeap, 0x10000, start, size);
 }
@@ -1008,7 +1008,7 @@ void func_80005DA0(FnBundle *arg0)
 
 			arg0->func_update(arg0);
 
-			sSYTaskmanUpdateCount++; // += 1
+			sSYTaskmanUpdateCount++;
 
 			sSYTaskmanUpdateDeltaTime = (osGetCount() - sSYTaskmanTimeStart) / 2971; // what is this constant?
 
@@ -1023,7 +1023,7 @@ void func_80005DA0(FnBundle *arg0)
 
 				arg0->func_draw(arg0);
 
-				dSYTaskmanFrameDrawCount++; // += 1
+				dSYTaskmanFrameDrawCount++;
 				sSYTaskmanFrameDeltaTime = (osGetCount() - sSYTaskmanTimeStart) / 2971;
 
 				if (syTaskmanCheckBreakLoop() != FALSE)
@@ -1165,7 +1165,7 @@ void unref_8000641C(GObj *gobj)
 	}
 	while (D_80046638[gSYTaskmanTaskID] != 0);
 
-	dSYTaskmanFrameDrawCount++; // += 1
+	dSYTaskmanFrameDrawCount++;
 }
 
 // 0x80006548
@@ -1230,7 +1230,7 @@ void func_80006548(syTaskmanBufferSetup *arg0, void (*arg1)())
 // 0x800067E4
 void unref_800067E4(syTaskmanBufferSetup *arg)
 {
-	syTaskmanRunGeneralHeap(arg->arena_start, arg->arena_size);
+	syTaskmanInitGeneralHeap(arg->arena_start, arg->arena_size);
 	D_800465F8.func_update = func_800062B4;
 	D_800465F8.func_draw = func_800062EC;
 	func_80006548(arg, NULL);
@@ -1241,7 +1241,7 @@ void syTaskmanRun(SYTaskmanSetup *ts)
 {
 	GCSetup omsetup;
 
-	syTaskmanRunGeneralHeap(ts->buffer_setup.arena_start, ts->buffer_setup.arena_size);
+	syTaskmanInitGeneralHeap(ts->buffer_setup.arena_start, ts->buffer_setup.arena_size);
 
 	omsetup.gobjthreads      = syTaskmanMalloc(sizeof(GObjThread) * ts->gobjthreads_num, 0x8);
 	omsetup.gobjthreads_num  = ts->gobjthreads_num;

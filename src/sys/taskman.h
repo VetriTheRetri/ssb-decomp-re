@@ -65,8 +65,8 @@ extern u32 sSYTaskmanUpdateCount;
 extern u32 dSYTaskmanFrameDrawCount;
 extern Gfx *gSYTaskmanDLHeads[4];
 extern Gfx *sSYTaskmanDLBranches[4];
-extern syMallocRegion gSYTaskmanGraphicsHeap;
-extern syMallocRegion gSYTaskmanGeneralHeap;
+extern SYMallocRegion gSYTaskmanGraphicsHeap;
+extern SYMallocRegion gSYTaskmanGeneralHeap;
 // Gfx *? Gfx
 extern u32 sSYTaskmanUpdateDeltaTime;
 // Gfx *? Gfx

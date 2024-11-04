@@ -12,7 +12,7 @@
 //                               //
 // // // // // // // // // // // //
 
-extern syMallocRegion gSYTaskmanGraphicsHeap;
+extern SYMallocRegion gSYTaskmanGraphicsHeap;
 
 // // // // // // // // // // // //
 //                               //

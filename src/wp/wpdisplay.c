@@ -4,7 +4,7 @@
 #include <sys/hal_gu.h>
 #include <sys/malloc.h>
 
-extern syMallocRegion gSYTaskmanGraphicsHeap;
+extern SYMallocRegion gSYTaskmanGraphicsHeap;
 
 // // // // // // // // // // // //
 //                               //

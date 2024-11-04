@@ -4,11 +4,31 @@
 #include <sys/video.h>
 
 extern void scManagerFuncDraw(void);
-extern uintptr_t ovl5_BSS_END;
 
 // // // // // // // // // // // //
 //                               //
 //   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
+// 0x8018D670
+s32 sMVUnknownMarioPad0x8018D670[2];
+
+// 0x8018D678
+LBFileNode sMVUnkownMarioStatusBuffer[20];
+
+// 0x8018D718
+LBFileNode sMVUnkownMarioForceStatusBuffer[7];
+
+// 0x8018D750
+GObj *sMVUnkownMarioFighterGObj;
+
+// 0x8018D758
+SCBattleState sMVUnkownMarioBattleState;
+
+// // // // // // // // // // // //
+//                               //
+//       INITIALIZED DATA        //
 //                               //
 // // // // // // // // // // // //
 
@@ -82,22 +102,11 @@ SYTaskmanSetup dMVUnknownMarioTaskmanSetup =
     mvUnknownMarioFuncStart         // Task start function
 };
 
-// BSS
-
-// 0x8018D670
-s32 sMVUnknownMarioPad0x8018D670[2];
-
-// 0x8018D678
-LBFileNode sMVUnkownMarioStatusBuffer[20];
-
-// 0x8018D718
-LBFileNode sMVUnkownMarioForceStatusBuffer[7];
-
-// 0x8018D750
-GObj *sMVUnkownMarioFighterGObj;
-
-// 0x8018D758
-SCBattleState sMVUnkownMarioBattleState;
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8018D0C0
 void mvUnknownMarioSetupFiles(void)

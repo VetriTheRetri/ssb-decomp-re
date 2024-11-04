@@ -255,6 +255,8 @@ extract:
 	rm -r -f assets
 	$(SPLAT) $(SPLAT_YAML) $(SPLAT_FLAGS)
 	$(PYTHON) tools/relocData.py extractAll
+	@mkdir -p relocAssets
+	tools/halAssetTool x tools/relocFileDescriptions.txt assets/relocData/ relocAssets
 
 init:
 	${MAKE} clean

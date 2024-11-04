@@ -66,5 +66,10 @@ then
 	curl https://github.com/santaclose/vpk0cmd/releases/download/0.1/vpk0cmd -L --output tools/vpk0cmd
 	chmod +x tools/vpk0cmd
 fi
+if [ ! -f "tools/halAssetTool" ]
+then
+	curl https://github.com/santaclose/halAssetTool/releases/download/0.1/halAssetTool_linux_x86 -L --output tools/halAssetTool
+	chmod +x tools/halAssetTool
+fi
 
 printf "${GREEN}All requirements satisfied${ENDCOLOR}\n"

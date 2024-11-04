@@ -68,7 +68,7 @@ SYVideoSetup dSC1PChallengerVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x801323D4
 SYTaskmanSetup dSC1PChallengerTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                          // ???
         gcRunAll,              		// Update function

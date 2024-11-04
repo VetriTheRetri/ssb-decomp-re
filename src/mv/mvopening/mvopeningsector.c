@@ -580,7 +580,7 @@ SYVideoSetup dMVOpeningSectorVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x80132958
 SYTaskmanSetup mvOpeningSectorTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                              // ???
         gcRunAll,                  // Update function

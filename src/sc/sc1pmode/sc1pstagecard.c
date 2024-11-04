@@ -1991,7 +1991,7 @@ SYVideoSetup dSC1PStageCardVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x80135B54
 SYTaskmanSetup dSC1PStageCardTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                          // ???
         gcRunAll,              		// Update function

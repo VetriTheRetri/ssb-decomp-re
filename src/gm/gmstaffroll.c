@@ -2195,7 +2195,7 @@ SYVideoSetup dGMStaffrollVideoSetup =
 // 0x8013A724
 SYTaskmanSetup dGMStaffrollTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                          // ???
         gcRunAll,              		// Update function

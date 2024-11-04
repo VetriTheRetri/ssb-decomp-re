@@ -847,7 +847,7 @@ SYVideoSetup dMNVSItemSwitchVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x8013333C
 SYTaskmanSetup dMNVSItemSwitchTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                          // ???
         gcRunAll,              		// Update function

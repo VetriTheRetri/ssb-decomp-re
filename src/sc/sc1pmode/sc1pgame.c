@@ -664,7 +664,7 @@ SYVideoSetup dSC1PGameVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x80132B34
 SYTaskmanSetup dSC1PGameTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                          // ???
         sc1PGameFuncUpdate,          // Update function

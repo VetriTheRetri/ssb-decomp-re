@@ -73,7 +73,7 @@ SYVideoSetup dMVOpeningStandoffVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x80132924
 SYTaskmanSetup dMVOpeningStandoffTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                              // ???
         gcRunAll,                  // Update function

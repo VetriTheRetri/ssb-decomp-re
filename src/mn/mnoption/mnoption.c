@@ -1030,7 +1030,7 @@ SYVideoSetup dMNOptionVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x80133714
 SYTaskmanSetup dMNOptionTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                          // ???
         gcRunAll,              		// Update function

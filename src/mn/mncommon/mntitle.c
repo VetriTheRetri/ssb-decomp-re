@@ -195,7 +195,7 @@ SYVideoSetup dMNTitleVideoSetup =
 // 0x8013438C
 SYTaskmanSetup dMNTitleTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                          // ???
         mnTitleFuncUpdate,          // Update function

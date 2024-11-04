@@ -370,7 +370,7 @@ SYVideoSetup dMNMessageVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x801325BC
 SYTaskmanSetup dMNMessageTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                          // ???
         gcRunAll,              		// Update function

@@ -361,7 +361,7 @@ SYVideoSetup dMVOpeningYosterVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x80132394
 SYTaskmanSetup dMVOpeningYosterTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                              // ???
         gcRunAll,                  // Update function

@@ -90,7 +90,7 @@ SYVideoSetup dSCExplainVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x8018E748
 SYTaskmanSetup dSCExplainTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                          // ???
         scExplainFuncUpdate,        // Update function

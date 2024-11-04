@@ -698,7 +698,7 @@ SYVideoSetup dMNSoundTestVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x8013425C
 SYTaskmanSetup dMNSoundTestTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                          // ???
         gcRunAll,              		// Update function

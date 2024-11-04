@@ -150,7 +150,7 @@ SYVideoSetup dMVOpeningJungleVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x8018D958
 SYTaskmanSetup dMVOpeningJungleTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                              // ???
         gcRunAll,                  // Update function

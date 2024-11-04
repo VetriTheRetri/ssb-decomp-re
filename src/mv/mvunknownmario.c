@@ -60,7 +60,7 @@ SYVideoSetup dMVUnknownMarioVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x8018D5D8
 SYTaskmanSetup dMVUnknownMarioTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                          // ???
         gcRunAll,              		// Update function

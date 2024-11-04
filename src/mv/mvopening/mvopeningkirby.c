@@ -550,7 +550,7 @@ SYVideoSetup dMVOpeningKirbyVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x8018E158
 SYTaskmanSetup dMVOpeningKirbyTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                              // ???
         gcRunAll,                  // Update function

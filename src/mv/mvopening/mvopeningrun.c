@@ -405,7 +405,7 @@ SYVideoSetup dMVOpeningRunVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x8013266C
 SYTaskmanSetup dMVOpeningRunTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                              // ???
         gcRunAll,                  // Update function

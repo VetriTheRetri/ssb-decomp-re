@@ -150,7 +150,7 @@ SYVideoSetup dMNCongraVideoSetup =
 // 0x80132224
 SYTaskmanSetup dMNCongraTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                          // ???
         gcRunAll,              		// Update function

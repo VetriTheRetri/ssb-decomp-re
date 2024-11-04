@@ -161,7 +161,7 @@ SYVideoSetup dSCAutoDemoVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x8018E250
 SYTaskmanSetup dSCAutoDemoTaskmanSetup = 
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                          // ???
         scAutoDemoFuncUpdate,       // Update function

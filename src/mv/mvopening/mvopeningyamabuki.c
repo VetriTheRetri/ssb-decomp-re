@@ -72,7 +72,7 @@ SYVideoSetup dMVOpeningYamabukiVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x801323F4
 SYTaskmanSetup dMVOpeningYamabukiTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                              // ???
         gcRunAll,                  // Update function

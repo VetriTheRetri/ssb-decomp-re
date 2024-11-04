@@ -35,7 +35,7 @@ SYVideoSetup dSCVSBattleVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x8018E3F4
 SYTaskmanSetup dSCVSBattleTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                              // ???
         scVSBattleFuncUpdate,           // Update function

@@ -1261,7 +1261,7 @@ SYVideoSetup dSC1PContinueVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x80134254
 SYTaskmanSetup dSC1PContinueTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                          // ???
         gcRunAll,              		// Update function

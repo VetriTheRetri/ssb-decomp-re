@@ -99,7 +99,7 @@ SYVideoSetup dMVEndingVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x80132B24
 SYTaskmanSetup dMVEndingTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                          // ???
         gcRunAll,              		// Update function

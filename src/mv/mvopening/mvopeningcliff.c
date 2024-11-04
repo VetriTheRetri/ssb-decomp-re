@@ -73,7 +73,7 @@ SYVideoSetup dMVOpeningCliffVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x80132724
 SYTaskmanSetup dMVOpeningCliffTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                              // ???
         gcRunAll,                  // Update function

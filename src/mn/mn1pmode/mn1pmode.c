@@ -797,7 +797,7 @@ SYVideoSetup dMN1PModeVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x8013310C
 SYTaskmanSetup dMN1PModeTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                          // ???
         gcRunAll,              		// Update function

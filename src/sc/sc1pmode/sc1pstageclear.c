@@ -2033,7 +2033,7 @@ SYVideoSetup dGM1PStageClearVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 // 0x80135208
 SYTaskmanSetup dGM1PStageClearTaskmanSetup =
 {
-    // Task Logic Buffer Setup
+    // Task Manager Buffer Setup
     {
         0,                          // ???
         gcRunAll,              		// Update function

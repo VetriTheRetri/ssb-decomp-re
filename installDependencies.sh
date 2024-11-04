@@ -66,9 +66,10 @@ then
 	curl https://github.com/santaclose/vpk0cmd/releases/download/0.1/vpk0cmd -L --output tools/vpk0cmd
 	chmod +x tools/vpk0cmd
 fi
-if [ ! -f "tools/halAssetTool" ]
+
+if [ ! -f "tools/halAssetTool" ] || [ `md5sum tools/halAssetTool | grep -c 9ea6058141c97a1fbaddfe28176d5fed` -eq 0 ]
 then
-	curl https://github.com/santaclose/halAssetTool/releases/download/0.1/halAssetTool_linux_x86 -L --output tools/halAssetTool
+	curl https://github.com/santaclose/halAssetTool/releases/download/0.11/halAssetTool_linux_x86 -L --output tools/halAssetTool
 	chmod +x tools/halAssetTool
 fi
 

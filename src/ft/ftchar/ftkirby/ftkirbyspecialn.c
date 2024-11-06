@@ -57,7 +57,7 @@ void ftKirbySpecialNAddCaptureDistance(FTStruct *fp, GObj *fighter_gobj, Vec3f *
 }
 
 // 0x80161E08
-void ftKirbySpecialNInITStatusVars(GObj *fighter_gobj, sb32 unused)
+void ftKirbySpecialNInitStatusVars(GObj *fighter_gobj, sb32 unused)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -798,7 +798,7 @@ void ftKirbySpecialNCatchEatSetStatusParam(GObj *fighter_gobj, s32 status_id)
 void ftKirbySpecialNStartSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialNStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftKirbySpecialNInITStatusVars(fighter_gobj, FALSE);
+    ftKirbySpecialNInitStatusVars(fighter_gobj, FALSE);
     ftKirbySpecialNGotoSetCatchParams(fighter_gobj);
     ftMainPlayAnimNoEffect(fighter_gobj);
 }
@@ -874,7 +874,7 @@ void ftKirbySpecialNEndSetStatus(GObj *fighter_gobj)
 void ftKirbySpecialAirNStartSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusSpecialAirNStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftKirbySpecialNInITStatusVars(fighter_gobj, TRUE);
+    ftKirbySpecialNInitStatusVars(fighter_gobj, TRUE);
     ftKirbySpecialNGotoSetCatchParams(fighter_gobj);
     ftMainPlayAnimNoEffect(fighter_gobj);
 }

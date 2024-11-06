@@ -14,7 +14,7 @@
 // // // // // // // // // // // //
 
 // 0x80151260
-void ftPurinSpecialNInITStatusVars(GObj *fighter_gobj)
+void ftPurinSpecialNInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -117,7 +117,7 @@ void ftPurinSpecialNSwitchStatusAir(GObj *fighter_gobj)
 void ftPurinSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftPurinSpecialNInITStatusVars(fighter_gobj);
+    ftPurinSpecialNInitStatusVars(fighter_gobj);
     ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
@@ -125,6 +125,6 @@ void ftPurinSpecialNSetStatus(GObj *fighter_gobj)
 void ftPurinSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTPurinStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftPurinSpecialNInITStatusVars(fighter_gobj);
+    ftPurinSpecialNInitStatusVars(fighter_gobj);
     ftMainPlayAnimNoEffect(fighter_gobj);
 }

@@ -131,7 +131,7 @@ void ftMarioSpecialHiProcMap(GObj *fighter_gobj)
 }
 
 // 0x80156418
-void ftMarioSpecialHiInITStatusVars(GObj *fighter_gobj)
+void ftMarioSpecialHiInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -143,7 +143,7 @@ void ftMarioSpecialHiSetStatus(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMarioSpecialHiInITStatusVars(fighter_gobj);
+    ftMarioSpecialHiInitStatusVars(fighter_gobj);
 
     fp->status_vars.mario.specialhi.is_air_bool = FALSE;
 
@@ -156,7 +156,7 @@ void ftMarioSpecialAirHiSetStatus(GObj* fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
-    ftMarioSpecialHiInITStatusVars(fighter_gobj);
+    ftMarioSpecialHiInitStatusVars(fighter_gobj);
 
     fp->status_vars.mario.specialhi.is_air_bool = TRUE;
 

@@ -376,7 +376,7 @@ void itMSBombExplodeMakeEffect(GObj *item_gobj)
 }
 
 // 0x801769AC
-void itMSBombExplodeInITStatusVars(GObj *item_gobj, sb32 is_make_effect)
+void itMSBombExplodeInitStatusVars(GObj *item_gobj, sb32 is_make_effect)
 {
     LBParticle *ptc;
     DObj *dobj = DObjGetStruct(item_gobj);
@@ -404,7 +404,7 @@ void itMSBombExplodeInITStatusVars(GObj *item_gobj, sb32 is_make_effect)
 sb32 itMSBombCommonProcDamage(GObj *item_gobj)
 {
     func_800269C0_275C0(nSYAudioFGMExplodeL);
-    itMSBombExplodeInITStatusVars(item_gobj, FALSE);
+    itMSBombExplodeInitStatusVars(item_gobj, FALSE);
 
     return FALSE;
 }
@@ -444,7 +444,7 @@ sb32 itMSBombAttachedProcUpdate(GObj *item_gobj)
 
             if ((SQUARE(dist.x) + SQUARE(dist.y) + SQUARE(dist.z)) < ITMSBOMB_DETECT_FIGHTER_RADIUS)
             {
-                itMSBombExplodeInITStatusVars(item_gobj, TRUE); // We might want to break out of the loop here
+                itMSBombExplodeInitStatusVars(item_gobj, TRUE); // We might want to break out of the loop here
             }
             fighter_gobj = fighter_gobj->link_next;
         }
@@ -548,7 +548,7 @@ sb32 itMSBombDetachedProcUpdate(GObj *item_gobj)
 
             if ((SQUARE(dist.x) + SQUARE(dist.y) + SQUARE(dist.z)) < ITMSBOMB_DETECT_FIGHTER_RADIUS)
             {
-                itMSBombExplodeInITStatusVars(item_gobj, FALSE); // We might want to break out of the loop here
+                itMSBombExplodeInitStatusVars(item_gobj, FALSE); // We might want to break out of the loop here
             }
             fighter_gobj = fighter_gobj->link_next;
         }

@@ -155,7 +155,7 @@ void ftCommonAppearProcPhysics(GObj *fighter_gobj)
 }
 
 // 0x8013DBAC
-void ftCommonAppearInITStatusVars(GObj *fighter_gobj)
+void ftCommonAppearInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -253,7 +253,7 @@ void ftCommonAppearSetStatus(GObj *fighter_gobj)
     }
     mpCommonSetFighterAir(fp);
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftCommonAppearInITStatusVars(fighter_gobj);
+    ftCommonAppearInitStatusVars(fighter_gobj);
 
     fp->status_vars.common.entry.entry_wait = FTCOMMON_ENTRY_WAIT;
 
@@ -276,7 +276,7 @@ void ftCommonAppearSetPosition(GObj *fighter_gobj)
 
     fp->entry_pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
-    DObjGetStruct(fighter_gobj)->translate.vec.f.y = (gMPCollisionGroundData->cobj_bound_top + gMPCollisionGroundData->map_bound_top) * 0.5F;
+    DObjGetStruct(fighter_gobj)->translate.vec.f.y = (gMPCollisionGroundData->camera_bound_top + gMPCollisionGroundData->map_bound_top) * 0.5F;
 
     ftCommonFallSetStatus(fighter_gobj);
 }
@@ -301,7 +301,7 @@ void ftNessAppearWaitSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, nFTNessStatusAppearWait, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_COLANIM));
-    ftCommonAppearInITStatusVars(fighter_gobj);
+    ftCommonAppearInitStatusVars(fighter_gobj);
 
     fp->is_hide_shadow = FALSE;
 }
@@ -312,7 +312,7 @@ void ftNessAppearEndSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, ((fp->status_vars.common.entry.lr_entry == +1) ? nFTNessStatusAppearREnd : nFTNessStatusAppearLEnd), 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_COLANIM));
-    ftCommonAppearInITStatusVars(fighter_gobj);
+    ftCommonAppearInitStatusVars(fighter_gobj);
 
     fp->is_hide_shadow = FALSE;
 }
@@ -337,7 +337,7 @@ void ftCaptainAppearEndSetStatus(GObj *fighter_gobj)
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
     ftMainSetFighterStatus(fighter_gobj, ((fp->status_vars.common.entry.lr_entry == +1) ? nFTCaptainStatusAppearREnd : nFTCaptainStatusAppearLEnd), 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftCommonAppearInITStatusVars(fighter_gobj);
+    ftCommonAppearInitStatusVars(fighter_gobj);
 
     fp->is_hide_shadow = FALSE;
 }

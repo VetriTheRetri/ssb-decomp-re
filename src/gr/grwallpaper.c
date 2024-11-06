@@ -272,7 +272,7 @@ void grWallpaperMakeDecideKind(void)
         scTrainingMode_SetBackgroundSprite();
         grWallpaperMakeStatic();
     }
-    else if (gSCManagerBattleState->gkind >= nGRKindBonusGameStart)
+    else if (gSCManagerBattleState->gkind >= nGRKindBonusStageStart)
     {
         grWallpaperMakeStatic();
     }

@@ -76,7 +76,7 @@ void ftPikachuSpecialNSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x80151D0C
-void ftPikachuSpecialNInITStatusVars(GObj *fighter_gobj)
+void ftPikachuSpecialNInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -89,7 +89,7 @@ void ftPikachuSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftPikachuSpecialNInITStatusVars(fighter_gobj);
+    ftPikachuSpecialNInitStatusVars(fighter_gobj);
 }
 
 // 0x80151D64
@@ -97,5 +97,5 @@ void ftPikachuSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftPikachuSpecialNInITStatusVars(fighter_gobj);
+    ftPikachuSpecialNInitStatusVars(fighter_gobj);
 }

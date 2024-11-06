@@ -172,11 +172,11 @@ void dbStageSelectMain(GObj* arg0)
 		gSCManagerSceneData.gkind = dMNDebugStageSelectGrKind;
 		gSCManagerSceneData.scene_prev = gSCManagerSceneData.scene_curr;
 
-		if (gSCManagerSceneData.gkind >= nGRKindBonusGameStart)
+		if (gSCManagerSceneData.gkind >= nGRKindBonusStageStart)
 		{
 			D_800A4B18 = gSCManagerTransferBattleState;
 			D_800A4B18.gkind = gSCManagerSceneData.gkind;
-			gSCManagerSceneData.scene_curr = nSCKind1PBonusGame;
+			gSCManagerSceneData.scene_curr = nSCKind1PBonusStage;
 		}
 		else
 			gSCManagerSceneData.scene_curr = nSCKindVSBattle;

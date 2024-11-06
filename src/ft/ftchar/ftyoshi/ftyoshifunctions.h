@@ -23,7 +23,7 @@ extern void ftYoshiSpecialAirHiSwitchStatusGround(GObj* fighter_gobj);
 extern void ftYoshiSpecialHiSwitchStatusAir(GObj* fighter_gobj);
 extern void ftYoshiSpecialHiProcMap(GObj* fighter_gobj);
 extern void ftYoshiSpecialAirHiProcMap(GObj* fighter_gobj);
-extern void ftYoshiSpecialHiInITStatusVars(GObj* fighter_gobj);
+extern void ftYoshiSpecialHiInitStatusVars(GObj* fighter_gobj);
 extern void ftYoshiSpecialHiSetStatus(GObj* fighter_gobj);
 extern void ftYoshiSpecialAirHiSetStatus(GObj* fighter_gobj);
 
@@ -51,10 +51,10 @@ extern void ftYoshiSpecialAirNReleaseSwitchStatusGround(GObj* fighter_gobj);
 extern void ftYoshiSpecialNReleaseSwitchStatusAir(GObj* fighter_gobj);
 extern void ftYoshiSpecialNSetStatus(GObj* fighter_gobj);
 extern void ftYoshiSpecialAirNSetStatus(GObj* fighter_gobj);
-extern void ftYoshiSpecialNCatchInITStatusVars(GObj* fighter_gobj);
+extern void ftYoshiSpecialNCatchInitStatusVars(GObj* fighter_gobj);
 extern void ftYoshiSpecialNCatchProcCatch(GObj* fighter_gobj);
 extern void ftYoshiSpecialAirNCatchProcCatch(GObj* fighter_gobj);
-extern void ftYoshiSpecialNReleaseInITStatusVars(GObj* fighter_gobj);
+extern void ftYoshiSpecialNReleaseInitStatusVars(GObj* fighter_gobj);
 extern void ftYoshiSpecialNReleaseSetStatus(GObj* fighter_gobj);
 extern void ftYoshiSpecialAirNReleaseSetStatus(GObj* fighter_gobj);
 

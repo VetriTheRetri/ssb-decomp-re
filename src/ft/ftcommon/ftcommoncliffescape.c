@@ -61,7 +61,7 @@ void ftCommonCliffEscapeQuick2SetStatus(GObj *fighter_gobj)
 {
     ftCommonCliffCommon2UpdateCollData(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffEscapeQuick2, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftCommonCliffCommon2InITStatusVars(fighter_gobj);
+    ftCommonCliffCommon2InitStatusVars(fighter_gobj);
 }
 
 // 0x8014594C
@@ -69,5 +69,5 @@ void ftCommonCliffEscapeSlow2SetStatus(GObj *fighter_gobj)
 {
     ftCommonCliffCommon2UpdateCollData(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffEscapeSlow2, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftCommonCliffCommon2InITStatusVars(fighter_gobj);
+    ftCommonCliffCommon2InitStatusVars(fighter_gobj);
 }

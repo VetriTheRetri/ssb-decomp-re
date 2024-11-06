@@ -94,7 +94,7 @@ void ftPikachuSpecialLwStartSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x80151FA8
-void ftPikachuSpecialLwStartInITStatusVars(GObj *fighter_gobj)
+void ftPikachuSpecialLwStartInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -109,7 +109,7 @@ void ftPikachuSpecialLwStartSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftPikachuSpecialLwStartInITStatusVars(fighter_gobj);
+    ftPikachuSpecialLwStartInitStatusVars(fighter_gobj);
 }
 
 // 0x80151FFC
@@ -117,7 +117,7 @@ void ftPikachuSpecialAirLwStartSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftPikachuSpecialLwStartInITStatusVars(fighter_gobj);
+    ftPikachuSpecialLwStartInitStatusVars(fighter_gobj);
 }
 
 // 0x8015203C
@@ -355,7 +355,7 @@ void ftPikachuSpecialLwHitSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x80152578
-void ftPikachuSpecialLwHitInITStatusVars(GObj *fighter_gobj)
+void ftPikachuSpecialLwHitInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -369,7 +369,7 @@ void ftPikachuSpecialLwHitSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialLwHit, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftPikachuSpecialLwHitInITStatusVars(fighter_gobj);
+    ftPikachuSpecialLwHitInitStatusVars(fighter_gobj);
 }
 
 // 0x801525C8
@@ -379,7 +379,7 @@ void ftPikachuSpecialAirLwHitSetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirLwHit, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftPikachuSpecialLwHitInITStatusVars(fighter_gobj);
+    ftPikachuSpecialLwHitInitStatusVars(fighter_gobj);
 
     fp->physics.vel_air.y = FTPIKACHU_THUNDER_HITVEL_Y;
 }

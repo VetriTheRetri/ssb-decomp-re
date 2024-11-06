@@ -443,7 +443,7 @@ void ftCommonThrownCommonStarProcMap(GObj *fighter_gobj)
 }
 
 // 0x8014C424
-void ftCommonThrownKirbyStarInITStatusVars(GObj *fighter_gobj)
+void ftCommonThrownKirbyStarInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *this_fp = ftGetStruct(fighter_gobj);
     GObj *capture_gobj = this_fp->capture_gobj;
@@ -474,7 +474,7 @@ void ftCommonThrownKirbyStarProcStatus(GObj *fighter_gobj)
     fp->motion_vars.flags.flag1 = 30;
     fp->motion_vars.flags.flag2 = 2;
 
-    ftCommonThrownKirbyStarInITStatusVars(fighter_gobj);
+    ftCommonThrownKirbyStarInitStatusVars(fighter_gobj);
 }
 
 // 0x8014C508
@@ -531,7 +531,7 @@ void ftCommonThrownCopyStarProcStatus(GObj *fighter_gobj)
     fp->motion_vars.flags.flag1 = 10;
     fp->motion_vars.flags.flag2 = 1;
 
-    ftCommonThrownKirbyStarInITStatusVars(fighter_gobj);
+    ftCommonThrownKirbyStarInitStatusVars(fighter_gobj);
 }
 
 // 0x8014C6AC

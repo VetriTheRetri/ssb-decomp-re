@@ -8,7 +8,7 @@
 // SpecialN / SpecialAirN
 extern void ftFoxSpecialNProcUpdate(GObj* fighter_gobj);
 extern void ftFoxSpecialNProcInterrupt(GObj* fighter_gobj);
-extern void ftFoxSpecialNInITStatusVars(GObj* fighter_gobj);
+extern void ftFoxSpecialNInitStatusVars(GObj* fighter_gobj);
 extern void ftFoxSpecialNSetStatus(GObj* fighter_gobj);
 extern void ftFoxSpecialAirNSetStatus(GObj* fighter_gobj);
 
@@ -25,7 +25,7 @@ extern void ftFoxSpecialHiHoldProcMap(GObj* fighter_gobj);
 extern void ftFoxSpecialAirHiHoldProcMap(GObj* fighter_gobj);
 extern void ftFoxSpecialAirHiHoldSwitchStatusGround(GObj* fighter_gobj);
 extern void ftFoxSpecialHiHoldSwitchStatusAir(GObj* fighter_gobj);
-extern void ftFoxSpecialHiHoldInITStatusVars(GObj* fighter_gobj);
+extern void ftFoxSpecialHiHoldInitStatusVars(GObj* fighter_gobj);
 extern void ftFoxSpecialHiHoldSetStatus(GObj* fighter_gobj);
 extern void ftFoxSpecialAirHiHoldSetStatus(GObj* fighter_gobj);
 extern void ftFoxSpecialHiUpdateModelPitch(GObj* fighter_gobj);
@@ -36,7 +36,7 @@ extern void ftFoxSpecialHiProcMap(GObj* fighter_gobj);
 extern sb32 ftFoxSpecialHiProcPass(GObj* fighter_gobj);
 extern void ftFoxSpecialAirHiProcMap(GObj* fighter_gobj);
 extern void ftFoxSpecialAirHiSetStatus(GObj* fighter_gobj);
-extern void ftFoxSpecialHiInITStatusVars(FTStruct* fp);
+extern void ftFoxSpecialHiInitStatusVars(FTStruct* fp);
 extern void ftFoxSpecialHiDecideSetStatus(GObj* fighter_gobj);
 extern void ftFoxSpecialAirHiSetStatusFromGround(GObj* fighter_gobj);
 extern void ftFoxSpecialAirHiEndProcUpdate(GObj* fighter_gobj);
@@ -69,14 +69,14 @@ extern void ftFoxSpecialLwHitProcUpdate(GObj* fighter_gobj);
 extern void ftFoxSpecialLwHitSetStatus(GObj* fighter_gobj);
 extern void ftFoxSpecialLwTurnDecTurnFrames(GObj* fighter_gobj);
 extern void ftFoxSpecialLwTurnProcUpdate(GObj* fighter_gobj);
-extern void ftFoxSpecialLwTurnInITStatusVars(GObj* fighter_gobj);
+extern void ftFoxSpecialLwTurnInitStatusVars(GObj* fighter_gobj);
 extern void ftFoxSpecialLwTurnSetStatus(GObj* fighter_gobj);
 extern void ftFoxSpecialAirLwTurnSetStatus(GObj* fighter_gobj);
 extern sb32 ftFoxSpecialLwTurnCheckInterruptLoop(GObj* fighter_gobj);
 extern void ftFoxSpecialLwEndProcUpdate(GObj* fighter_gobj);
 extern void ftFoxSpecialLwEndSetStatus(GObj* fighter_gobj);
 extern void ftFoxSpecialAirLwEndSetStatus(GObj* fighter_gobj);
-extern void ftFoxSpecialLwStartInITStatusVars(GObj* fighter_gobj);
+extern void ftFoxSpecialLwStartInitStatusVars(GObj* fighter_gobj);
 extern void ftFoxSpecialLwStartSetStatus(GObj* fighter_gobj);
 extern void ftFoxSpecialAirLwStartSetStatus(GObj* fighter_gobj);
 

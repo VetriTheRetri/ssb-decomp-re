@@ -59,7 +59,7 @@
 #define COBJ_FLAG_FILLCOLOR         (1 << 1)    // Use camera's packed RRGGBBAA `color` variable
 #define COBJ_FLAG_DLBUFFERS         (1 << 2)    // Update DLBuffers and DisplayList branches?
 #define COBJ_FLAG_IDENTIFIER        (1 << 3)    // If the 0x8 bit is 0, camera_tag is treated as a mask; if 1, it is treated as an ID
-#define COBJ_FLAG_GFXEND            (1 << 4)    // Run SCTaskGfxEnd task type?
+#define COBJ_FLAG_GFXEND            (1 << 4)    // Run SYTaskGfxEnd task type?
 #define COBJ_FLAG_BRANCHSYNC        (1 << 6)    // Sync all Branch DLs with main DL buffers?
 
 union GCUserData

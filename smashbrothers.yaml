@@ -1147,13 +1147,14 @@ segments:
     vram: 0x8018D0C0
     exclusive_ram_id: overlay_8018D0C0
     subsegments:
-      - [0x111800, c, ovl6]
-      - [0x1134B0, c, ovl6_1]
-      - [0x113600, .data, ovl6]
-      - [0x113870, .data, ovl6_1]
-      - [0x1138B0, .rodata, ovl6]
-      - { start: 0x1138E0, type: .bss, vram: 0x8018F1A0, name: ovl6 }
-      - { start: 0x1138E0, type: .bss, vram: 0x8018F3B0, name: ovl6_1 }
+      - [0x111800, c, sc/sc1pmode/sc1pbonusstage]
+      - [0x1134B0, c, sc/sc1pmode/sc1pbonusstagefiles]
+      - [0x113550, c, it/itground/ittarget]
+      - [0x113600, .data, sc/sc1pmode/sc1pbonusstage]
+      - [0x113870, .data, it/itground/ittarget]
+      - [0x1138B0, .rodata, sc/sc1pmode/sc1pbonusstage]
+      - { start: 0x1138E0, type: .bss, name: sc/sc1pmode/sc1pbonusstage, vram: 0x8018F1A0 }
+      - { start: 0x1138E0, type: .bss, name: sc/sc1pmode/sc1pbonusstagefiles, vram: 0x8018F3B0 }
 
   - name: ovl7
     type: code

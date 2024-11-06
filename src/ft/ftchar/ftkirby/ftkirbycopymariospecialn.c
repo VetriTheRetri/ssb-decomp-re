@@ -100,7 +100,7 @@ void ftKirbyCopyMarioSpecialNSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x80156BB8
-void ftKirbyCopyMarioSpecialNInITStatusVars(GObj *fighter_gobj)
+void ftKirbyCopyMarioSpecialNInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -115,7 +115,7 @@ void ftKirbyCopyMarioSpecialNSetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, nFTKirbyStatusCopyMarioSpecialN, nFTKirbyStatusCopyLuigiSpecialN), 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftKirbyCopyMarioSpecialNInITStatusVars(fighter_gobj);
+    ftKirbyCopyMarioSpecialNInitStatusVars(fighter_gobj);
 }
 
 // 0x80156C38
@@ -125,5 +125,5 @@ void ftKirbyCopyMarioSpecialAirNSetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, FTKIRBY_COPYMARIO_FIREBALL_CHECK_FTKIND(fp, nFTKirbyStatusCopyMarioSpecialAirN, nFTKirbyStatusCopyLuigiSpecialAirN), 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftKirbyCopyMarioSpecialNInITStatusVars(fighter_gobj);
+    ftKirbyCopyMarioSpecialNInitStatusVars(fighter_gobj);
 }

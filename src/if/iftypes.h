@@ -14,8 +14,8 @@ struct IFPlayerCommon
 	ub8 is_magnify_display;
 	u8 magnify_mode;
 	f32 magnify_scale;
-	s32* ifplayers_pos_x; // Pointer to each player's HUD X-position
-	u16 ifplayers_pos_y;  // Player HUD's Y-positions - subtracted from center
+	s32* player_pos_x; // Pointer to each player's HUD X-position
+	u16 player_pos_y;  // Player HUD's Y-positions - subtracted from center
 						  // Y-position?
 	u8 arrows_flags;
 	u8 arrows_left_status;

@@ -475,6 +475,17 @@ void ftManagerInitFighter(GObj *fighter_gobj, FTCreateDesc *ft_desc)
     }
     fp->shield_health = (fp->fkind == nFTKindYoshi) ? 55 : 55;
 
+#ifdef BUGFIX_CRASH_SELFDESTRUCT
+    /*
+     * shield_player is never explicitly initialized during creation, so its value is 0.
+     * This can result in a crash if a player other than P1 self-destructs
+     * without getting their shield hit, as shield_player is moved to damage_player,
+     * which is then used to award points the player who caused the shield break.
+     * This results in an invalid GObj* being accessed without a NULL check, crashing the game.
+     */
+    fp->shield_player = -1;
+#endif
+
     fp->unk_ft_0x38 = 0.0F;
     fp->hitlag_tics = 0;
     fp->is_knockback_paused = FALSE;

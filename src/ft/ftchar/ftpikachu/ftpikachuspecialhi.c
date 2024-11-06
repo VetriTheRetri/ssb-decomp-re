@@ -80,7 +80,7 @@ void ftPikachuSpecialHiStartSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x80152934
-void ftPikachuSpecialHiStartInITStatusVars(GObj *fighter_gobj)
+void ftPikachuSpecialHiStartInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -106,7 +106,7 @@ void ftPikachuSpecialHiInitMiscVars(GObj *fighter_gobj)
 // 0x801529A0
 void ftPikachuSpecialHiStartSetStatus(GObj *fighter_gobj)
 {
-    ftPikachuSpecialHiStartInITStatusVars(fighter_gobj);
+    ftPikachuSpecialHiStartInitStatusVars(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialHiStart, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftPikachuSpecialHiInitMiscVars(fighter_gobj);
@@ -115,7 +115,7 @@ void ftPikachuSpecialHiStartSetStatus(GObj *fighter_gobj)
 // 0x801529EC
 void ftPikachuSpecialAirHiStartSetStatus(GObj *fighter_gobj)
 {
-    ftPikachuSpecialHiStartInITStatusVars(fighter_gobj);
+    ftPikachuSpecialHiStartInitStatusVars(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, nFTPikachuStatusSpecialAirHiStart, 0.0F, 0.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
     ftPikachuSpecialHiInitMiscVars(fighter_gobj);
@@ -263,7 +263,7 @@ void ftPikachuSpecialHiSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x80152E2C
-void ftPikachuSpecialHiInITStatusVarsZip(GObj *fighter_gobj)
+void ftPikachuSpecialHiInitStatusVarsZip(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -301,7 +301,7 @@ void ftPikachuSpecialHiSetStatus(GObj *fighter_gobj)
         fp->status_vars.pikachu.specialhi.stick_range.y = stick_range.y;
 
         ftParamSetStickLR(fp);
-        ftPikachuSpecialHiInITStatusVarsZip(fighter_gobj);
+        ftPikachuSpecialHiInitStatusVarsZip(fighter_gobj);
 
         fp->physics.vel_ground.x = (FTPIKACHU_QUICKATTACK_VEL_BASE * sqrt_stick_range) + FTPIKACHU_QUICKATTACK_VEL_ADD;
 
@@ -349,7 +349,7 @@ void ftPikachuSpecialAirHiSetStatus(GObj *fighter_gobj)
         fp->status_vars.pikachu.specialhi.stick_range.y = I_CONTROLLER_RANGE_MAX;
     }
 
-    ftPikachuSpecialHiInITStatusVarsZip(fighter_gobj);
+    ftPikachuSpecialHiInitStatusVarsZip(fighter_gobj);
 
     fp->physics.vel_air.x = __cosf(tangent) * ((FTPIKACHU_QUICKATTACK_VEL_BASE * sqrt_stick_range) + FTPIKACHU_QUICKATTACK_VEL_ADD) * fp->lr;
     fp->physics.vel_air.y = __sinf(tangent) * ((FTPIKACHU_QUICKATTACK_VEL_BASE * sqrt_stick_range) + FTPIKACHU_QUICKATTACK_VEL_ADD);

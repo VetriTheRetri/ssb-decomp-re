@@ -1322,7 +1322,7 @@ void sc1PGameSpawnEnemyTeamNext(GObj *player_gobj)
 
         sc1PGameGetRandomSpawnPosition(&ft_desc.pos, nMPMapObjKind1PGameEnemyTeamSpawn);
 
-        ft_desc.pos.y = (gMPCollisionGroundData->cobj_bound_top + gMPCollisionGroundData->map_bound_top) * 0.5F;
+        ft_desc.pos.y = (gMPCollisionGroundData->camera_bound_top + gMPCollisionGroundData->map_bound_top) * 0.5F;
 
         ft_desc.lr = (ft_desc.pos.x >= 0.0F) ? -1 : +1;
 
@@ -1387,8 +1387,8 @@ void sc1PGameSetPlayerInterfacePositions(void)
 
         pos++;
     }
-    gIFCommonPlayerInterface.ifplayers_pos_x = sSC1PGamePlayerInterfacePositionsX;
-    gIFCommonPlayerInterface.ifplayers_pos_y = 210;
+    gIFCommonPlayerInterface.player_pos_x = sSC1PGamePlayerInterfacePositionsX;
+    gIFCommonPlayerInterface.player_pos_y = 210;
 }
 
 // 0x8018E670
@@ -2176,8 +2176,8 @@ void sc1PGameAppendBonusStats(void)
     u8 variation_order[SC1PGAME_STAGE_MAX_VARIATIONS_COUNT]; // Full array of 12? Almost half of this goes unused, but stack suggests this is correct.
     s32 i;
 
-    sSC1PGameStageTimeSec = I_FRAMES_TO_SEC(gSCManagerBattleState->time_passed);
-    sSC1PGameTotalTimeSec = I_FRAMES_TO_SEC(gSC1PManagerTotalTimeTics);
+    sSC1PGameStageTimeSec = I_TICS_TO_SEC(gSCManagerBattleState->time_passed);
+    sSC1PGameTotalTimeSec = I_TICS_TO_SEC(gSC1PManagerTotalTimeTics);
 
     if (sSC1PGameBonusStatNumPlayerKOs != 0)
     {
@@ -2808,7 +2808,7 @@ void sc1PGameInitBonusStats(void)
 {
     gSCManagerSceneData.bonus_get_mask[0] = gSCManagerSceneData.bonus_get_mask[1] = gSCManagerSceneData.bonus_get_mask[2] = 0;
 
-    gSCManagerSceneData.spgame_time_remain = (gSCManagerBattleState->time_limit == SCBATTLE_TIMELIMIT_INFINITE) ? 0 : I_FRAMES_TO_SEC(gSCManagerBattleState->time_remain + 59);
+    gSCManagerSceneData.spgame_time_remain = (gSCManagerBattleState->time_limit == SCBATTLE_TIMELIMIT_INFINITE) ? 0 : I_TICS_TO_SEC(gSCManagerBattleState->time_remain + 59);
 
     gSC1PManagerTotalTimeTics += gSCManagerBattleState->time_passed;
     gSC1PManagerTotalFalls += gSCManagerBattleState->players[gSCManagerSceneData.player].falls;

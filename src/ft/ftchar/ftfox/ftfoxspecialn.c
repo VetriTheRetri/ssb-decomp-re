@@ -50,7 +50,7 @@ void ftFoxSpecialNProcInterrupt(GObj *fighter_gobj)
 }
 
 // 0x8015BC68
-void ftFoxSpecialNInITStatusVars(GObj *fighter_gobj)
+void ftFoxSpecialNInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -63,7 +63,7 @@ void ftFoxSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftFoxSpecialNInITStatusVars(fighter_gobj);
+    ftFoxSpecialNInitStatusVars(fighter_gobj);
 }
 
 // 0x8015BCB8
@@ -71,5 +71,5 @@ void ftFoxSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_FASTFALL);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftFoxSpecialNInITStatusVars(fighter_gobj);
+    ftFoxSpecialNInitStatusVars(fighter_gobj);
 }

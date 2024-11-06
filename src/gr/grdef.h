@@ -34,9 +34,9 @@ typedef enum GRKind
 	nGRKindCommonEnd = nGRKindLast,				// End of common stages
 
 
-	nGRKindBonusGameStart,						// Start of bonus stages
+	nGRKindBonusStageStart,						// Start of bonus stages
 
-	nGRKindBonus1Start = nGRKindBonusGameStart, // Start of Target Test stages
+	nGRKindBonus1Start = nGRKindBonusStageStart, // Start of Target Test stages
 	nGRKindBonus1Mario = nGRKindBonus1Start,
 	nGRKindBonus1Fox,
 	nGRKindBonus1Donkey,
@@ -66,7 +66,7 @@ typedef enum GRKind
 	nGRKindBonus2Ness,
 	nGRKindBonus2End = nGRKindBonus2Ness,
 
-	nGRKindBonusGameEnd = nGRKindBonus2End		// End of bonus stages
+	nGRKindBonusStageEnd = nGRKindBonus2End		// End of bonus stages
 
 } GRKind;
 

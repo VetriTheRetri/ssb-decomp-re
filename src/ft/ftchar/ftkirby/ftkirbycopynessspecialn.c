@@ -90,7 +90,7 @@ void ftKirbyCopyNessSpecialNSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x80155DA4
-void ftKirbyCopyNessSpecialNInITStatusVars(GObj *fighter_gobj)
+void ftKirbyCopyNessSpecialNInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -104,7 +104,7 @@ void ftKirbyCopyNessSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyNessSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftKirbyCopyNessSpecialNInITStatusVars(fighter_gobj);
+    ftKirbyCopyNessSpecialNInitStatusVars(fighter_gobj);
 }
 
 // 0x80155DFC
@@ -112,5 +112,5 @@ void ftKirbyCopyNessSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyNessSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftKirbyCopyNessSpecialNInITStatusVars(fighter_gobj);
+    ftKirbyCopyNessSpecialNInitStatusVars(fighter_gobj);
 }

@@ -167,7 +167,7 @@ void ftCommonDeadCommonProcUpdate(GObj *fighter_gobj)
 }
 
 // 0x8013C120
-void ftCommonDeadInITStatusVars(GObj *fighter_gobj)
+void ftCommonDeadInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -203,20 +203,19 @@ void ftCommonDeadDownSetStatus(GObj *fighter_gobj)
     ftCommonDeadResetCommonVars(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadDown, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftCommonDeadClearSpecialStats(fighter_gobj);
-    ftCommonDeadInITStatusVars(fighter_gobj);
+    ftCommonDeadInitStatusVars(fighter_gobj);
 
     pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     if (gSCManagerBattleState->game_type != nSCBattleGameTypeBonus)
     {
-        if (pos.x > gMPCollisionGroundData->cobj_bound_right)
+        if (pos.x > gMPCollisionGroundData->camera_bound_right)
         {
-            pos.x = gMPCollisionGroundData->cobj_bound_right;
+            pos.x = gMPCollisionGroundData->camera_bound_right;
         }
-
-        if (pos.x < gMPCollisionGroundData->cobj_bound_left)
+        if (pos.x < gMPCollisionGroundData->camera_bound_left)
         {
-            pos.x = gMPCollisionGroundData->cobj_bound_left;
+            pos.x = gMPCollisionGroundData->camera_bound_left;
         }
     }
     efManagerDeadExplodeMakeEffect(&pos, fp->player, 0);
@@ -245,20 +244,20 @@ void ftCommonDeadRightSetStatus(GObj *fighter_gobj)
     ftCommonDeadResetCommonVars(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadLeftRight, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftCommonDeadClearSpecialStats(fighter_gobj);
-    ftCommonDeadInITStatusVars(fighter_gobj);
+    ftCommonDeadInitStatusVars(fighter_gobj);
 
     pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     if (gSCManagerBattleState->game_type != nSCBattleGameTypeBonus)
     {
-        if (pos.y > gMPCollisionGroundData->cobj_bound_top)
+        if (pos.y > gMPCollisionGroundData->camera_bound_top)
         {
-            pos.y = gMPCollisionGroundData->cobj_bound_top;
+            pos.y = gMPCollisionGroundData->camera_bound_top;
         }
 
-        if (pos.y < gMPCollisionGroundData->cobj_bound_bottom)
+        if (pos.y < gMPCollisionGroundData->camera_bound_bottom)
         {
-            pos.y = gMPCollisionGroundData->cobj_bound_bottom;
+            pos.y = gMPCollisionGroundData->camera_bound_bottom;
         }
     }
     efManagerDeadExplodeMakeEffect(&pos, fp->player, 1);
@@ -287,19 +286,19 @@ void ftCommonDeadLeftSetStatus(GObj *fighter_gobj)
     ftCommonDeadResetCommonVars(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusDeadLeftRight, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftCommonDeadClearSpecialStats(fighter_gobj);
-    ftCommonDeadInITStatusVars(fighter_gobj);
+    ftCommonDeadInitStatusVars(fighter_gobj);
 
     pos = DObjGetStruct(fighter_gobj)->translate.vec.f;
 
     if (gSCManagerBattleState->game_type != nSCBattleGameTypeBonus)
     {
-        if (pos.y > gMPCollisionGroundData->cobj_bound_top)
+        if (pos.y > gMPCollisionGroundData->camera_bound_top)
         {
-            pos.y = gMPCollisionGroundData->cobj_bound_top;
+            pos.y = gMPCollisionGroundData->camera_bound_top;
         }
-        if (pos.y < gMPCollisionGroundData->cobj_bound_bottom)
+        if (pos.y < gMPCollisionGroundData->camera_bound_bottom)
         {
-            pos.y = gMPCollisionGroundData->cobj_bound_bottom;
+            pos.y = gMPCollisionGroundData->camera_bound_bottom;
         }
     }
     efManagerDeadExplodeMakeEffect(&pos, fp->player, 3);
@@ -341,7 +340,7 @@ void ftCommonDeadUpStarProcUpdate(GObj *fighter_gobj)
         switch (fp->motion_vars.flags.flag1)
         {
         case 0:
-            fp->physics.vel_air.y = ((gMPCollisionGroundData->cobj_bound_top * 0.6F) - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
+            fp->physics.vel_air.y = ((gMPCollisionGroundData->camera_bound_top * 0.6F) - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
             fp->physics.vel_air.z = FTCOMMON_DEADUPFALL_VEL_Z;
 
             fp->colanim.is_use_maincolor = TRUE;
@@ -439,7 +438,7 @@ void ftCommonDeadUpFallProcUpdate(GObj *fighter_gobj)
         switch (fp->motion_vars.flags.flag1)
         {
         case 0:
-            fp->physics.vel_air.y = (gMPCollisionGroundData->cobj_bound_bottom - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
+            fp->physics.vel_air.y = (gMPCollisionGroundData->camera_bound_bottom - DObjGetStruct(fighter_gobj)->translate.vec.f.y) / 180.0F;
 
             DObjGetStruct(fighter_gobj)->translate.vec.f.z = CObjGetStruct(gCMManagerCameraGObj)->vec.eye.z - 3000.0F;
 

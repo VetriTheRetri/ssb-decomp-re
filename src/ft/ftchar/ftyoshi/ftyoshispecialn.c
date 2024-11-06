@@ -208,7 +208,7 @@ void ftYoshiSpecialAirNSetStatus(GObj *fighter_gobj)
 }
 
 // 0x8015E7F8
-void ftYoshiSpecialNCatchInITStatusVars(GObj *fighter_gobj)
+void ftYoshiSpecialNCatchInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -223,7 +223,7 @@ void ftYoshiSpecialNCatchProcCatch(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftYoshiSpecialNCatchInITStatusVars(fighter_gobj);
+    ftYoshiSpecialNCatchInitStatusVars(fighter_gobj);
 }
 
 // 0x8015E880
@@ -231,11 +231,11 @@ void ftYoshiSpecialAirNCatchProcCatch(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialAirNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftYoshiSpecialNCatchInITStatusVars(fighter_gobj);
+    ftYoshiSpecialNCatchInitStatusVars(fighter_gobj);
 }
 
 // 0x8015E8C4
-void ftYoshiSpecialNReleaseInITStatusVars(GObj *fighter_gobj)
+void ftYoshiSpecialNReleaseInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -250,7 +250,7 @@ void ftYoshiSpecialNReleaseSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialNRelease, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftYoshiSpecialNReleaseInITStatusVars(fighter_gobj);
+    ftYoshiSpecialNReleaseInitStatusVars(fighter_gobj);
 }
 
 // 0x8015E93C
@@ -258,5 +258,5 @@ void ftYoshiSpecialAirNReleaseSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialAirNRelease, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftYoshiSpecialNReleaseInITStatusVars(fighter_gobj);
+    ftYoshiSpecialNReleaseInitStatusVars(fighter_gobj);
 }

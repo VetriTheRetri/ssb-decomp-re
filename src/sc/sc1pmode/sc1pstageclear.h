@@ -87,7 +87,7 @@ extern intptr_t lSC1PStageClearBonusPerfect;                // 0x0000F6E8
 extern intptr_t lSC1PStageClearBonusNoMiss;                 // 0x0000F8C8
 extern intptr_t lSC1PStageClearBonusNoDamage;               // 0x0000FAA8
 extern intptr_t lSC1PStageClearBonusFullPower;              // 0x0000FC88
-extern intptr_t lSC1PStageClearBonusGameClear;              // 0x00014008
+extern intptr_t lSC1PStageClearBonusStageClear;              // 0x00014008
 extern intptr_t lSC1PStageClearBonusNoMissClear;            // 0x00013888
 extern intptr_t lSC1PStageClearBonusNoDamageClear;          // 0x00013A68
 extern intptr_t lSC1PStageClearBonusSpeedKing;              // 0x00013C48

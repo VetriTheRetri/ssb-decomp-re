@@ -30,7 +30,7 @@ extern void itLinkBombExplodeInitItemVars(GObj* item_gobj);
 extern void itLinkBombExplodeUpdateAttackEvent(GObj* item_gobj);
 extern sb32 itLinkBombCommonProcShield(GObj* item_gobj);
 extern sb32 func_ovl3_801864BC(GObj* item_gobj);
-extern void itLinkBombExplodeInITAttackColl(GObj* item_gobj);
+extern void itLinkBombExplodeInitAttackColl(GObj* item_gobj);
 extern sb32 itLinkBombExplodeProcUpdate(GObj* item_gobj);
 extern void itLinkBombExplodeSetStatus(GObj* item_gobj);
 extern GObj* itLinkBombMakeItem(GObj* fighter_gobj, Vec3f* pos, Vec3f* vel);

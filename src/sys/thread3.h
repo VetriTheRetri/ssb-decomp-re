@@ -7,23 +7,23 @@
 #include <PR/sptask.h>
 #include <PR/ultratypes.h>
 
-enum SCTaskType
+enum SYTaskType
 {
-    nSYScheduleTaskNone,
-    nSYScheduleTaskGfx,
-    nSYScheduleTaskAudio,
-    nSYScheduleTaskAddClient,
-    nSYScheduleTaskVi,
-    nSYScheduleTaskFramebuffers,
-    nSYScheduleTaskGfxEnd,
-    nSYScheduleTaskNoOp,
-    nSYScheduleTaskRdpBuffer,
-    nSYScheduleTaskCustomBuffer,
-    nSYScheduleTaskDefaultBuffer,
+    nSYTaskTypeNone,
+    nSYTaskTypeGfx,
+    nSYTaskTypeAudio,
+    nSYTaskTypeAddClient,
+    nSYTaskTypeVi,
+    nSYTaskTypeFramebuffers,
+    nSYTaskTypeGfxEnd,
+    nSYTaskTypeNoOp,
+    nSYTaskTypeRdpBuffer,
+    nSYTaskTypeCustomBuffer,
+    nSYTaskTypeDefaultBuffer,
     SC_TASK_TYPE_11
 };
 
-enum SCTaskState
+enum SYTaskState
 {
     nSYScheduleStatusDefault,
     nSYScheduleStatusTaskQueued,
@@ -34,11 +34,11 @@ enum SCTaskState
     nSYScheduleStatusTaskStopped
 };
 
-struct SCTaskInfo;
-struct SCTaskGfx;
+struct SYTaskInfo;
+struct SYTaskGfx;
 
-typedef s32 (*SCTaskCallback)(struct SCTaskInfo *);
-typedef s32 (*SCTaskGfxCallback)(struct SCTaskGfx *);
+typedef s32 (*SYTaskCallback)(struct SYTaskInfo *);
+typedef s32 (*SYTaskGfxCallback)(struct SYTaskGfx *);
 
 typedef struct SCClient
 {
@@ -48,34 +48,34 @@ typedef struct SCClient
 
 // This may be the real form of `struct SpMqInfo`, but I'll have to double check
 // thread3.c to see if I can replace all forms...
-typedef struct SCTaskInfo {
-    /* 0x00 */ s32 type; // SCTaskType
+typedef struct SYTaskInfo {
+    /* 0x00 */ s32 type; // SYTaskType
     /* 0x04 */ s32 priority;
-    /* 0x08 */ s32 state; // SCTaskState
-    /* 0x0C */ struct SCTaskInfo *next;
-    /* 0x10 */ struct SCTaskInfo *prev;
-    /* 0x14 */ SCTaskCallback fnCheck; // if set, the task is not executed until this function returns TRUE
+    /* 0x08 */ s32 state; // SYTaskState
+    /* 0x0C */ struct SYTaskInfo *next;
+    /* 0x10 */ struct SYTaskInfo *prev;
+    /* 0x14 */ SYTaskCallback fnCheck; // if set, the task is not executed until this function returns TRUE
     /* 0x18 */ s32 unk18;
     /* 0x1C */ s32 retVal;
     /* 0x20 */ OSMesgQueue *mq;
-} SCTaskInfo; // size == 0x24
+} SYTaskInfo; // size == 0x24
 
 // Task SubTypes:
-// 1  - OSTask (struct SCTaskGfx )
-// 2  - Also something with an OSTask (using struct SCTaskGfx for now)
+// 1  - OSTask (struct SYTaskGfx )
+// 2  - Also something with an OSTask (using struct SYTaskGfx for now)
 // 3  - Something with Mesq queueing?
 // 4  - OsViMode changing?
 // 5  - frame buffer pointers?
-// 6  - SCTaskGfxEnd
+// 6  - SYTaskGfxEnd
 // 7  - nop?
 // 8  - ?
 // 9  - passed an OSMesgQueue
 // 10 - Sets D_80045010..? no special fields
 // 11 - Remove all Type1 and Type4 from D_80044EC4 queue
 
-typedef struct SCTaskGfx
+typedef struct SYTaskGfx
 {
-    /* 0x00 */ SCTaskInfo info;
+    /* 0x00 */ SYTaskInfo info;
     /* 0x28 */ OSTask task;
     /* 0x68 */ u32 *unk68;
     /* 0x6C */ s32 *fb; // checked type? (-1 is meaningful)
@@ -86,17 +86,17 @@ typedef struct SCTaskGfx
     /* 0x80 */ u32 task_id;
     /* 0x84 */ s32 unk_84;
 
-} SCTaskGfx; // size = 0x84
+} SYTaskGfx; // size = 0x84
 
 typedef struct
 {
-    /* 0x00 */ SCTaskInfo info;
+    /* 0x00 */ SYTaskInfo info;
     /* 0x28 */ OSTask task;
-} SCTaskAudio; // size = 0x68
+} SYTaskAudio; // size = 0x68
 
 typedef struct
 {
-    /* 0x00 */ SCTaskInfo info;
+    /* 0x00 */ SYTaskInfo info;
     /* 0x24 */ s32 width;
     /* 0x28 */ s32 height;
     /* 0x2C */ s32 flags;
@@ -104,53 +104,53 @@ typedef struct
     /* 0x32 */ s16 edgeOffsetRight;
     /* 0x34 */ s16 edgeOffsetTop;
     /* 0x36 */ s16 edgeOffsetBottom;
-} SCTaskVi; // size == 0x38
+} SYTaskVi; // size == 0x38
 
 typedef struct
 {
-    /* 0x00 */ SCTaskInfo info;
+    /* 0x00 */ SYTaskInfo info;
     /* 0x24 */ void *framebuffers[3]; // frame buffer pointers
-} SCTaskFramebuffer;                    // size == 0x30
+} SYTaskFramebuffer;                    // size == 0x30
 
 typedef struct
 {
-    /* 0x00 */ SCTaskInfo info;
+    /* 0x00 */ SYTaskInfo info;
     /* 0x24 */ void* buffer;
     /* 0x28 */ s32 size;
-} SCTaskRDPBuffer; // size >= 0x2C
+} SYTaskRdpBuffer; // size >= 0x2C
 
 typedef struct
 {
-    /* 0x00 */ SCTaskInfo info;
+    /* 0x00 */ SYTaskInfo info;
     /* 0x24 */ SCClient* client;
-} SCTaskAddClient; // size == 0x28
+} SYTaskAddClient; // size == 0x28
 
-typedef struct SCTaskGfxEnd
+typedef struct SYTaskGfxEnd
 {
-    /* 0x00 */ SCTaskInfo info;
+    /* 0x00 */ SYTaskInfo info;
     /* 0x24 */ void* fb;
     /* 0x28 */ u32 task_id;
 
-} SCTaskGfxEnd; /* size == 0x2C */
+} SYTaskGfxEnd; /* size == 0x2C */
 
-typedef struct SCTaskType9
+typedef struct SYTaskType9
 {
-    /* 0x00 */ SCTaskInfo info;
+    /* 0x00 */ SYTaskInfo info;
     /* 0x24 */ OSMesgQueue *unk24;
 
-} SCTaskType9; // size >= 0x28
+} SYTaskType9; // size >= 0x28
 
 extern OSMesgQueue scTaskQueue;
 extern u32 D_80044FA4_407B4;
 extern u32 D_80044FB4_407C4;
 extern u32 scTimeSpentAudio;
-extern u64 scUnknownU64;
+extern u64 sSYSchedulerRdpCache;
 extern s32 D_80045020_40830;
 
-extern void func_80000970(SCTaskInfo *arg0);
+extern void func_80000970(SYTaskInfo *arg0);
 extern void scAddClient(SCClient *arg0, OSMesgQueue *mq, OSMesg *msg, u32 count);
-extern s32 scCheckGfxTaskDefault(SCTaskGfx *t);
+extern s32 scCheckGfxTaskDefault(SYTaskGfx *t);
 extern void thread3_scheduler(void *arg);
-extern s32 func_80000B54(UNUSED SCTaskInfo *t);
+extern s32 func_80000B54(UNUSED SYTaskInfo *t);
 
 #endif /* SYS_THREAD_3_H */

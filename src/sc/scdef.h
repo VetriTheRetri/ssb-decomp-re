@@ -34,7 +34,7 @@
 #define SC1PGAME_BONUS_MASK0_NOMISS			(1 << nSC1PGameBonusNoMiss)		        // Cleared stage without falling once throughout 1P Game progress; multiplied each time it is earned, lost after first fall
 #define SC1PGAME_BONUS_MASK0_NODAMAGE		(1 << nSC1PGameBonusNoDamage)	        // Cleared stage without falling and taking any damage
 #define SC1PGAME_BONUS_MASK0_FULLPOWER		(1 << nSC1PGameBonusFullPower)	        // Cleared stage with 0% damage (does not yield No Damage)
-#define SC1PGAME_BONUS_MASK0_GAMECLEAR		(1 << nSC1PGameBonusGameClear)	        // Cleared Final Stage (number of bonus points depends on difficulty?)
+#define SC1PGAME_BONUS_MASK0_GAMECLEAR		(1 << nSC1PGameBonusStageClear)	        // Cleared Final Stage (number of bonus points depends on difficulty?)
 #define SC1PGAME_BONUS_MASK0_NOMISSCLEAR	(1 << nSC1PGameBonusNoMissClear)	    // Cleared all stages without falling once (except Bonus Stages?)
 #define SC1PGAME_BONUS_MASK0_NODAMAGECLEAR	(1 << nSC1PGameBonusNoDamageClear)	    // Cleared all stages without taking any damage
 #define SC1PGAME_BONUS_MASK0_SPEEDKING		(1 << nSC1PGameBonusSpeedKing)	        // Cleared all stages in under 12 minutes (not earned if Speed Demon criteria is met)
@@ -175,7 +175,7 @@ typedef enum SCKind
 	nSCKind1PScoreUnk,   	  	  // Stage clear bonus thing?
 	nSCKind1PStageClear, 		  // Stage clear bonus score
 	nSCKind1PGame,            	  // 1P Game logic loop
-	nSCKind1PBonusGame,       	  // Bonus game in-game
+	nSCKind1PBonusStage,       	  // Bonus game in-game
 	nSCKind1PTraining,    		  // Training mode in-game
 	nSCKindCongra,	 		  	  // Congratulations screen
 	nSCKindStaffroll,             // Credits scene
@@ -323,7 +323,7 @@ typedef enum SC1PGameBonus
 	nSC1PGameBonusNoMiss,
 	nSC1PGameBonusNoDamage,
 	nSC1PGameBonusFullPower,
-	nSC1PGameBonusGameClear,
+	nSC1PGameBonusStageClear,
 	nSC1PGameBonusNoMissClear,
 	nSC1PGameBonusNoDamageClear,
 	nSC1PGameBonusSpeedKing,

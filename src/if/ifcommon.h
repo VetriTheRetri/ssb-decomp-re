@@ -134,6 +134,8 @@ extern intptr_t lIFCommonBattlePauseDecalControlStick;      // 0x000017A8
 extern intptr_t lIFCommonBattlePauseDecalLTrigger;          // 0x000018C8
 extern intptr_t lIFCommonBattlePauseDecalRetry;             // 0x00000828
 
+extern intptr_t dIFCommonTimerDigitSpriteOffsets[/* */];
+
 extern void ifCommonPlayerDamageSetShowInterface(void);
 extern s32 ifCommonPlayerDamageGetSpecialArrayID(s32 damage, u8 *digits);
 extern s32 ifCommonPlayerDamageGetPercentArrayID(s32 damage, u8 *digits);

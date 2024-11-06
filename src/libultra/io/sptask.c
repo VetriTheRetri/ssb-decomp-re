@@ -23,8 +23,8 @@ static OSTask* _VirtualToPhysicalTask(OSTask* intp) {
 	_osVirtualToPhysical(tp->t.ucode);
 	_osVirtualToPhysical(tp->t.ucode_data);
 	_osVirtualToPhysical(tp->t.dram_stack);
-	_osVirtualToPhysical(tp->t.output_buff);
-	_osVirtualToPhysical(tp->t.output_buff_size);
+	_osVirtualToPhysical(tp->t.output_buffer);
+	_osVirtualToPhysical(tp->t.output_buffer_size);
 	_osVirtualToPhysical(tp->t.data_ptr);
 	_osVirtualToPhysical(tp->t.yield_data_ptr);
 	return tp;
@@ -38,12 +38,12 @@ void osSpTaskLoad(OSTask* intp) {
 		__osError(ERR_OSSPTASKLOAD_DRAM, 1, intp->t.dram_stack);
 		return;
 	}
-	if ((intp->t.output_buff != 0x0) && ((u32)intp->t.output_buff & 0xf)) {
-		__osError(ERR_OSSPTASKLOAD_OUT, 1, intp->t.output_buff);
+	if ((intp->t.output_buffer != 0x0) && ((u32)intp->t.output_buffer & 0xf)) {
+		__osError(ERR_OSSPTASKLOAD_OUT, 1, intp->t.output_buffer);
 		return;
 	}
-	if ((intp->t.output_buff_size != 0x0) && ((u32)intp->t.output_buff_size & 0xf)) {
-		__osError(ERR_OSSPTASKLOAD_OUTSIZE, 1, intp->t.output_buff_size);
+	if ((intp->t.output_buffer_size != 0x0) && ((u32)intp->t.output_buffer_size & 0xf)) {
+		__osError(ERR_OSSPTASKLOAD_OUTSIZE, 1, intp->t.output_buffer_size);
 		return;
 	}
 	if ((intp->t.yield_data_ptr != 0x0) && ((u32)intp->t.yield_data_ptr & 0xf)) {

@@ -134,7 +134,7 @@ void ftMarioSpecialLwSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x8015686C
-void ftMarioSpecialLwInITStatusVars(GObj *fighter_gobj)
+void ftMarioSpecialLwInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -158,7 +158,7 @@ void ftMarioSpecialLwSetStatus(GObj *fighter_gobj)
     fp->physics.vel_air.y = -7.0F;
 
     ftPhysicsClampAirVelX(fp, FTMARIO_TORNADO_VEL_X_CLAMP);
-    ftMarioSpecialLwInITStatusVars(fighter_gobj);
+    ftMarioSpecialLwInitStatusVars(fighter_gobj);
 
     fp->stat_flags.ga = nMPKineticsGround;
 }
@@ -178,5 +178,5 @@ void ftMarioSpecialAirLwSetStatus(GObj *fighter_gobj)
     fp->physics.vel_air.y = (FTMARIO_TORNADO_VEL_Y_BASE - tornado_vel_y);
 
     ftPhysicsClampAirVelX(fp, FTMARIO_TORNADO_VEL_X_CLAMP);
-    ftMarioSpecialLwInITStatusVars(fighter_gobj);
+    ftMarioSpecialLwInitStatusVars(fighter_gobj);
 }

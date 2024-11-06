@@ -26,7 +26,7 @@ void mnStagesStartScene();
 void scVSBattleStartScene();
 void mvUnknownMarioStartScene();
 void sc1PManagerUpdateScene();
-void sc1PBonusGameStartScene();
+void sc1PBonusStageStartScene();
 void scManager_TrainingMode_InitScene();
 void vs_results_entry();
 void vs_records_entry();

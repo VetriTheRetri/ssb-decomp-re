@@ -221,6 +221,9 @@ lLBTransitionCurtainAnimJoint = 0x00007C98;
 
 lGRWallpaperTraining0Sprite = 0x00020718;
 
+lSC1PBonusStagePlatformSprite = 0x000000C0;
+lSC1PBonusStageTargetSprite = 0x000001D0;
+
 lMNFightersMarioNameSprite = 0x00001838;
 lMNFightersLuigiNameSprite = 0x00001B18;
 lMNFightersSamusNameSprite = 0x00002358;
@@ -1646,7 +1649,7 @@ lSC1PStageClearBonusPerfect = 0x0000F6E8;
 lSC1PStageClearBonusNoMiss = 0x0000F8C8;
 lSC1PStageClearBonusNoDamage = 0x0000FAA8;
 lSC1PStageClearBonusFullPower = 0x0000FC88;
-lSC1PStageClearBonusGameClear = 0x00014008;
+lSC1PStageClearBonusStageClear = 0x00014008;
 lSC1PStageClearBonusNoMissClear = 0x00013888;
 lSC1PStageClearBonusNoDamageClear = 0x00013A68;
 lSC1PStageClearBonusSpeedKing = 0x00013C48;

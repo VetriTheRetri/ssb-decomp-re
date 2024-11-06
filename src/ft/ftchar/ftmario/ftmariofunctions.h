@@ -12,7 +12,7 @@ extern void ftMarioSpecialNProcMap(GObj* fighter_gobj);
 extern void ftMarioSpecialAirNProcMap(GObj* fighter_gobj);
 extern void ftMarioSpecialAirNSwitchStatusGround(GObj* fighter_gobj);
 extern void ftMarioSpecialNSwitchStatusAir(GObj* fighter_gobj);
-extern void ftMarioSpecialNInITStatusVars(GObj* fighter_gobj);
+extern void ftMarioSpecialNInitStatusVars(GObj* fighter_gobj);
 extern void ftMarioSpecialNSetStatus(GObj* fighter_gobj);
 extern void ftMarioSpecialAirNSetStatus(GObj* fighter_gobj);
 
@@ -22,7 +22,7 @@ extern void ftMarioSpecialHiProcInterrupt(GObj* fighter_gobj);
 extern void ftMarioSpecialHiProcPhysics(GObj* fighter_gobj);
 extern sb32 ftMarioSpecialHiProcPass(GObj* fighter_gobj);
 extern void ftMarioSpecialHiProcMap(GObj* fighter_gobj);
-extern void ftMarioSpecialHiInITStatusVars(GObj* fighter_gobj);
+extern void ftMarioSpecialHiInitStatusVars(GObj* fighter_gobj);
 extern void ftMarioSpecialHiSetStatus(GObj* fighter_gobj);
 extern void ftMarioSpecialAirHiSetStatus(GObj* fighter_gobj);
 
@@ -37,7 +37,7 @@ extern void ftMarioSpecialAirLwProcMap(GObj* fighter_gobj);
 extern void ftMarioSpecialAirLwSetDisableRise(GObj* fighter_gobj);
 extern void ftMarioSpecialAirLwSwitchStatusGround(GObj* fighter_gobj);
 extern void ftMarioSpecialLwSwitchStatusAir(GObj* fighter_gobj);
-extern void ftMarioSpecialLwInITStatusVars(GObj* fighter_gobj);
+extern void ftMarioSpecialLwInitStatusVars(GObj* fighter_gobj);
 extern void ftMarioSpecialLwSetStatus(GObj* fighter_gobj);
 extern void ftMarioSpecialAirLwSetStatus(GObj* fighter_gobj);
 

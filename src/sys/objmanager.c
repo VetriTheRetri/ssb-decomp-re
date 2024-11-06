@@ -1889,7 +1889,7 @@ void gcLinkGObjDLCommon(GObj *gobj, void (*func_display)(GObj*), u8 dl_link, u32
 	gobj->dl_link_priority = dl_order;
 	gobj->func_display = func_display;
 	gobj->camera_tag = camera_tag;
-	gobj->frame_draw_last = dSYTaskmanFrameDrawCount - 1;
+	gobj->frame_draw_last = dSYTaskmanFrameCount - 1;
 }
 
 // 0x80009DF4
@@ -1942,7 +1942,7 @@ void func_80009F28(GObj *gobj, void (*func_display)(GObj*), u32 order, u64 arg3,
 	gobj->camera_mask = arg3;
 	gobj->camera_tag = camera_tag;
 	gobj->buffer_mask = 0;
-	gobj->frame_draw_last = dSYTaskmanFrameDrawCount - 1;
+	gobj->frame_draw_last = dSYTaskmanFrameCount - 1;
 }
 
 // 0x80009F74
@@ -2091,7 +2091,7 @@ void gcDrawAll(void)
 	gGCCurrentCamera = NULL;
 	gGCCurrentDisplay = NULL;
 
-	for (i = 0, frame_count = dSYTaskmanFrameDrawCount - 1; i < ARRAY_COUNT(D_80046A88); i++)
+	for (i = 0, frame_count = dSYTaskmanFrameCount - 1; i < ARRAY_COUNT(D_80046A88); i++)
 	{
 		D_80046A88[i].id = frame_count;
 	}

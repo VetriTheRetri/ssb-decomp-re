@@ -112,7 +112,7 @@ void ftFoxSpecialHiHoldSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x8015BFBC
-void ftFoxSpecialHiHoldInITStatusVars(GObj *fighter_gobj)
+void ftFoxSpecialHiHoldInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     fp->status_vars.fox.specialhi.launch_delay = FTFOX_FIREFOX_LAUNCH_DELAY;
@@ -123,7 +123,7 @@ void ftFoxSpecialHiHoldSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialHiHold, 0.0F, 1.0F, FTSTATUS_PRESERVE_COLANIM);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftFoxSpecialHiHoldInITStatusVars(fighter_gobj);
+    ftFoxSpecialHiHoldInitStatusVars(fighter_gobj);
 }
 
 // 0x8015C010
@@ -131,7 +131,7 @@ void ftFoxSpecialAirHiHoldSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialAirHiHold, 0.0F, 1.0F, FTSTATUS_PRESERVE_COLANIM);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftFoxSpecialHiHoldInITStatusVars(fighter_gobj);
+    ftFoxSpecialHiHoldInitStatusVars(fighter_gobj);
 }
 
 // 0x8015C054
@@ -280,7 +280,7 @@ void ftFoxSpecialAirHiSetStatus(GObj *fighter_gobj)
 }
 
 // 0x8015C4C8
-void ftFoxSpecialHiInITStatusVars(FTStruct *fp)
+void ftFoxSpecialHiInitStatusVars(FTStruct *fp)
 {
     fp->status_vars.fox.specialhi.anim_frames = FTFOX_FIREFOX_TRAVEL_TIME;
     fp->status_vars.fox.specialhi.decelerate_wait = 0;
@@ -336,7 +336,7 @@ void ftFoxSpecialHiDecideSetStatus(GObj *fighter_gobj)
         {
             ftParamSetStickLR(fp);
             ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_COLANIM);
-            ftFoxSpecialHiInITStatusVars(fp);
+            ftFoxSpecialHiInitStatusVars(fp);
 
             fp->physics.vel_ground.x = 115.0F;
             fp->status_vars.fox.specialhi.angle = atan2f(-fp->coll_data.ground_angle.x * fp->lr, fp->coll_data.ground_angle.y);
@@ -367,7 +367,7 @@ void ftFoxSpecialAirHiSetStatusFromGround(GObj *fighter_gobj)
         fp->status_vars.fox.specialhi.angle = F_CST_DTOR32(90.0F);
     }
     ftMainSetFighterStatus(fighter_gobj, nFTFoxStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_COLANIM);
-    ftFoxSpecialHiInITStatusVars(fp);
+    ftFoxSpecialHiInitStatusVars(fp);
 
     fp->physics.vel_air.x = (__cosf(fp->status_vars.fox.specialhi.angle) * FTFOX_FIREFOX_VEL_XY * fp->lr);
     fp->physics.vel_air.y = (__sinf(fp->status_vars.fox.specialhi.angle) * FTFOX_FIREFOX_VEL_XY);

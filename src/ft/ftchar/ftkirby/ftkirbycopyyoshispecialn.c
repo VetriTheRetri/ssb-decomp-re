@@ -202,7 +202,7 @@ void ftKirbyCopyYoshiSpecialAirNSetStatus(GObj *fighter_gobj)
 }
 
 // 0x8015F668
-void ftKirbyCopyYoshiSpecialNCatchInITStatusVars(GObj *fighter_gobj)
+void ftKirbyCopyYoshiSpecialNCatchInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -217,7 +217,7 @@ void ftKirbyCopyYoshiSpecialNCatchProcCatch(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftKirbyCopyYoshiSpecialNCatchInITStatusVars(fighter_gobj);
+    ftKirbyCopyYoshiSpecialNCatchInitStatusVars(fighter_gobj);
 }
 
 // 0x8015F6F0
@@ -225,11 +225,11 @@ void ftKirbyCopyYoshiSpecialAirNCatchProcCatch(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialAirNCatch, fighter_gobj->anim_frame, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftKirbyCopyYoshiSpecialNCatchInITStatusVars(fighter_gobj);
+    ftKirbyCopyYoshiSpecialNCatchInitStatusVars(fighter_gobj);
 }
 
 // 0x8015F734
-void ftKirbyCopyYoshiSpecialNReleaseInITStatusVars(GObj *fighter_gobj)
+void ftKirbyCopyYoshiSpecialNReleaseInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -244,7 +244,7 @@ void ftKirbyCopyYoshiSpecialNReleaseSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialNRelease, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftKirbyCopyYoshiSpecialNReleaseInITStatusVars(fighter_gobj);
+    ftKirbyCopyYoshiSpecialNReleaseInitStatusVars(fighter_gobj);
 }
 
 // 0x8015F7AC
@@ -252,5 +252,5 @@ void ftKirbyCopyYoshiSpecialAirNReleaseSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyYoshiSpecialAirNRelease, 0.0F, 1.0F, (FTSTATUS_PRESERVE_MODELPART | FTSTATUS_PRESERVE_EFFECT));
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftKirbyCopyYoshiSpecialNReleaseInITStatusVars(fighter_gobj);
+    ftKirbyCopyYoshiSpecialNReleaseInitStatusVars(fighter_gobj);
 }

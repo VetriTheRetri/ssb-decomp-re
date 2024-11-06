@@ -2400,7 +2400,7 @@ void mnBonusMain(s32 arg0)
 		else
 			gSCManagerSceneData.scene_prev = nSCKind1PBonus2Fighters;
 
-		gSCManagerSceneData.scene_curr = nSCKind1PBonusGame;
+		gSCManagerSceneData.scene_curr = nSCKind1PBonusStage;
 
 		mnBonusSaveMatchInfo();
 		syTaskmanSetLoadScene();

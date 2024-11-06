@@ -639,7 +639,7 @@ void ifCommonPlayerDamageUpdateDigits(GObj *interface_gobj)
 
     pos_x = (ifCommonPlayerDamageGetDigitOffset(char_count, digits) * scale * 0.5F);
 
-    pos_x = gIFCommonPlayerInterface.ifplayers_pos_x[player] + pos_x;
+    pos_x = gIFCommonPlayerInterface.player_pos_x[player] + pos_x;
 
     if ((scale > 1.0F) && (pos_adjust_wait == 0))
     {
@@ -670,7 +670,7 @@ void ifCommonPlayerDamageUpdateDigits(GObj *interface_gobj)
             offset = dIFCommonPlayerDamageDigitWidths[sprite_id] * scale;
 
             ifchar->pos.x = (pos_x - (offset * 0.5F));
-            ifchar->pos.y = gIFCommonPlayerInterface.ifplayers_pos_y;
+            ifchar->pos.y = gIFCommonPlayerInterface.player_pos_y;
 
             pos_x -= offset;
 
@@ -897,8 +897,8 @@ void ifCommonPlayerDamageSetDigitAttr(void)
 // 0x8010F3A0
 void ifCommonPlayerDamageSetDigitPositions(void)
 {
-    gIFCommonPlayerInterface.ifplayers_pos_x = dIFCommonPlayerDamagePositionOffsetsX;
-    gIFCommonPlayerInterface.ifplayers_pos_y = 210;
+    gIFCommonPlayerInterface.player_pos_x = dIFCommonPlayerDamagePositionOffsetsX;
+    gIFCommonPlayerInterface.player_pos_y = 210;
 }
 
 // 0x8010F3C0
@@ -935,8 +935,8 @@ void ifCommonPlayerDamageInitInterface(void)
             {
                 sobj = lbCommonMakeSObjForGObj(interface_gobj, ft_sprites->emblem);
 
-                sobj->pos.x = (s32)((gIFCommonPlayerInterface.ifplayers_pos_x[player] - (sobj->sprite.width  * dIFCommonPlayerDamageEmblemScales[player] * 0.5F)) + dIFCommonPlayerDamageEmblemOffsetsX[player]);
-                sobj->pos.y = (s32)((gIFCommonPlayerInterface.ifplayers_pos_y         - (sobj->sprite.height * dIFCommonPlayerDamageEmblemScales[player] * 0.5F)) + dIFCommonPlayerDamageEmblemOffsetsY[player]);
+                sobj->pos.x = (s32)((gIFCommonPlayerInterface.player_pos_x[player] - (sobj->sprite.width  * dIFCommonPlayerDamageEmblemScales[player] * 0.5F)) + dIFCommonPlayerDamageEmblemOffsetsX[player]);
+                sobj->pos.y = (s32)((gIFCommonPlayerInterface.player_pos_y         - (sobj->sprite.height * dIFCommonPlayerDamageEmblemScales[player] * 0.5F)) + dIFCommonPlayerDamageEmblemOffsetsY[player]);
 
                 sobj->sprite.scalex = sobj->sprite.scaley = dIFCommonPlayerDamageEmblemScales[player];
 
@@ -1045,8 +1045,8 @@ void ifCommonPlayerStockMultiFuncDisplay(GObj *interface_gobj)
 
                         lt_sobj->sprite.LUT = fp->attr->sprites->stock_luts[fp->costume];
 
-                        lt_sobj->pos.x = ((gIFCommonPlayerInterface.ifplayers_pos_x[player] + dIFCommonPlayerStocksIconOffsetsX[player] + (stock_order * 10)) - (lt_sobj->sprite.width * 0.5F));
-                        lt_sobj->pos.y = ((gIFCommonPlayerInterface.ifplayers_pos_y - (s32)(lt_sobj->sprite.height * 0.5F)) - 20);
+                        lt_sobj->pos.x = ((gIFCommonPlayerInterface.player_pos_x[player] + dIFCommonPlayerStocksIconOffsetsX[player] + (stock_order * 10)) - (lt_sobj->sprite.width * 0.5F));
+                        lt_sobj->pos.y = ((gIFCommonPlayerInterface.player_pos_y - (s32)(lt_sobj->sprite.height * 0.5F)) - 20);
 
                         lt_sobj->sprite.attr &= ~SP_HIDDEN;
                     }
@@ -1061,7 +1061,7 @@ void ifCommonPlayerStockMultiFuncDisplay(GObj *interface_gobj)
             {
                 digit_count = ifCommonPlayerDamageGetSpecialArrayID(stock_count, digits);
 
-                trunc_pos_x = gIFCommonPlayerInterface.ifplayers_pos_x[player] + dIFCommonPlayerStocksDigitOffsetsX[player];
+                trunc_pos_x = gIFCommonPlayerInterface.player_pos_x[player] + dIFCommonPlayerStocksDigitOffsetsX[player];
 
                 gt_sobj = SObjGetStruct(interface_gobj);
 
@@ -1070,7 +1070,7 @@ void ifCommonPlayerStockMultiFuncDisplay(GObj *interface_gobj)
                 gt_sobj->sprite.LUT = fp->attr->sprites->stock_luts[fp->costume];
 
                 gt_sobj->pos.x = ((trunc_pos_x - 22) - (gt_sobj->sprite.width * 0.5F));
-                gt_sobj->pos.y = ((gIFCommonPlayerInterface.ifplayers_pos_y - (s32)(gt_sobj->sprite.height * 0.5F)) - 20);
+                gt_sobj->pos.y = ((gIFCommonPlayerInterface.player_pos_y - (s32)(gt_sobj->sprite.height * 0.5F)) - 20);
 
                 gt_sobj->sprite.attr &= ~SP_HIDDEN;
 
@@ -1079,7 +1079,7 @@ void ifCommonPlayerStockMultiFuncDisplay(GObj *interface_gobj)
                 gt_sobj->sprite = *lbRelocGetFileData(Sprite*, gGMCommonFiles[4], dIFCommonPlayerStockDigitSpriteOffsets[10]);
 
                 gt_sobj->pos.x = ((trunc_pos_x + -10.5F) - (gt_sobj->sprite.width * 0.5F));
-                gt_sobj->pos.y = ((gIFCommonPlayerInterface.ifplayers_pos_y - 20) - (gt_sobj->sprite.height * 0.5F));
+                gt_sobj->pos.y = ((gIFCommonPlayerInterface.player_pos_y - 20) - (gt_sobj->sprite.height * 0.5F));
 
                 gt_sobj->sprite.attr &= ~SP_HIDDEN;
 
@@ -1094,7 +1094,7 @@ void ifCommonPlayerStockMultiFuncDisplay(GObj *interface_gobj)
                         gt_sobj->sprite = *lbRelocGetFileData(Sprite*, gGMCommonFiles[4], dIFCommonPlayerStockDigitSpriteOffsets[digits[digit_order]]);
 
                         gt_sobj->pos.x = ((trunc_pos_x + (digit_order * 8)) - (gt_sobj->sprite.width * 0.5F));
-                        gt_sobj->pos.y = ((gIFCommonPlayerInterface.ifplayers_pos_y - 20) - (gt_sobj->sprite.height * 0.5F));
+                        gt_sobj->pos.y = ((gIFCommonPlayerInterface.player_pos_y - 20) - (gt_sobj->sprite.height * 0.5F));
 
                         gt_sobj->sprite.attr &= ~SP_HIDDEN;
                     }
@@ -1185,8 +1185,8 @@ void ifCommonPlayerStockSingleMakeInterface(s32 player)
         sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
         sobj->sprite.LUT = fp->attr->sprites->stock_luts[fp->costume];
 
-        sobj->pos.x = ((gIFCommonPlayerInterface.ifplayers_pos_x[player] + dIFCommonPlayerStocksIconOffsetsX[player]) - (s32)(sobj->sprite.width * 0.5F));
-        sobj->pos.y = ((gIFCommonPlayerInterface.ifplayers_pos_y - (s32)(sobj->sprite.height * 0.5F)) - 20);
+        sobj->pos.x = ((gIFCommonPlayerInterface.player_pos_x[player] + dIFCommonPlayerStocksIconOffsetsX[player]) - (s32)(sobj->sprite.width * 0.5F));
+        sobj->pos.y = ((gIFCommonPlayerInterface.player_pos_y - (s32)(sobj->sprite.height * 0.5F)) - 20);
 
         ifSetPlayer(interface_gobj, player);
     }
@@ -1207,9 +1207,9 @@ void ifCommonPlayerStockStealProcUpdate(GObj *interface_gobj)
     {
         func_ovl2_801039B4
         (
-            gIFCommonPlayerInterface.ifplayers_pos_x[ifGetPlayer(interface_gobj)] + 
+            gIFCommonPlayerInterface.player_pos_x[ifGetPlayer(interface_gobj)] + 
             dIFCommonPlayerStocksIconOffsetsX[ifGetPlayer(interface_gobj)], 
-            gIFCommonPlayerInterface.ifplayers_pos_y - 20
+            gIFCommonPlayerInterface.player_pos_y - 20
         );
         gcEjectGObj(interface_gobj);
 
@@ -1259,10 +1259,10 @@ void ifCommonPlayerStockStealMakeInterface(s32 thief, s32 stolen)
             sobj->sprite.attr = SP_TEXSHUF | SP_TRANSPARENT;
             sobj->sprite.LUT = fp->attr->sprites->stock_luts[fp->costume];
 
-            sIFCommonPlayerStealInterface[thief].steal_pos_x = ((gIFCommonPlayerInterface.ifplayers_pos_x[stolen] + dIFCommonPlayerStocksIconOffsetsX[stolen]) - (s32)(sobj->sprite.width * 0.5F));
-            sIFCommonPlayerStealInterface[thief].steal_pos_y = ((gIFCommonPlayerInterface.ifplayers_pos_y - (s32)(sobj->sprite.height * 0.5F)) - 20);
+            sIFCommonPlayerStealInterface[thief].steal_pos_x = ((gIFCommonPlayerInterface.player_pos_x[stolen] + dIFCommonPlayerStocksIconOffsetsX[stolen]) - (s32)(sobj->sprite.width * 0.5F));
+            sIFCommonPlayerStealInterface[thief].steal_pos_y = ((gIFCommonPlayerInterface.player_pos_y - (s32)(sobj->sprite.height * 0.5F)) - 20);
 
-            sIFCommonPlayerStealInterface[thief].target_pos_x = ((gIFCommonPlayerInterface.ifplayers_pos_x[thief] + dIFCommonPlayerStocksIconOffsetsX[thief]) - (s32)(sobj->sprite.width * 0.5F));
+            sIFCommonPlayerStealInterface[thief].target_pos_x = ((gIFCommonPlayerInterface.player_pos_x[thief] + dIFCommonPlayerStocksIconOffsetsX[thief]) - (s32)(sobj->sprite.width * 0.5F));
 
             sobj->pos.x = sIFCommonPlayerStealInterface[thief].steal_pos_x;
             sobj->pos.y = sIFCommonPlayerStealInterface[thief].steal_pos_y;
@@ -1271,7 +1271,7 @@ void ifCommonPlayerStockStealMakeInterface(s32 thief, s32 stolen)
 
             ifSetPlayer(interface_gobj, thief);
 
-            func_ovl2_80103994(gIFCommonPlayerInterface.ifplayers_pos_x[stolen] + dIFCommonPlayerStocksIconOffsetsX[stolen], gIFCommonPlayerInterface.ifplayers_pos_y - 20);
+            func_ovl2_80103994(gIFCommonPlayerInterface.player_pos_x[stolen] + dIFCommonPlayerStocksIconOffsetsX[stolen], gIFCommonPlayerInterface.player_pos_y - 20);
         }
     }
 }
@@ -2809,7 +2809,7 @@ void ifCommonBattlePauseMakeSObjsAll(GObj *interface_gobj)
         ifCommonBattlePauseDecalMakeSObjID(interface_gobj, i);
     }
     // If we're in Bonus Practice, display "L: RETRY" in the bottom left corner
-    if ((gSCManagerSceneData.scene_curr == nSCKind1PBonusGame) && (gSCManagerSceneData.scene_prev != nSCKind1PGame)) 
+    if ((gSCManagerSceneData.scene_curr == nSCKind1PBonusStage) && (gSCManagerSceneData.scene_prev != nSCKind1PGame)) 
     {
         // WARNING: This needs to be updated in case the pause menu icon array is expanded
         for (i = 12; i < ARRAY_COUNT(dIFCommonBattlePauseDecalsSpriteData); i++)
@@ -3042,7 +3042,7 @@ void ifCommonBattlePauseUpdateInterface(void)
 
             return;
         }
-        if ((button_tap & L_TRIG) && (gSCManagerSceneData.scene_curr == nSCKind1PBonusGame) && (gSCManagerSceneData.scene_prev != nSCKind1PGame))
+        if ((button_tap & L_TRIG) && (gSCManagerSceneData.scene_curr == nSCKind1PBonusStage) && (gSCManagerSceneData.scene_prev != nSCKind1PGame))
         {
             func_800266A0_272A0();
             gmRumbleInitPlayers();
@@ -3207,7 +3207,7 @@ void ifCommonBattleSetGameStatusWait(void)
 // 0x80114968
 void ifCommonPlayerInterfaceAddToViewport(FTStruct *fp)
 {
-    func_ovl2_80103974(gIFCommonPlayerInterface.ifplayers_pos_x[fp->player], gIFCommonPlayerInterface.ifplayers_pos_y);
+    func_ovl2_80103974(gIFCommonPlayerInterface.player_pos_x[fp->player], gIFCommonPlayerInterface.player_pos_y);
 }
 
 // 0x801149CC
@@ -3215,8 +3215,8 @@ void ifCommonPlayerScoreMakeEffect(FTStruct *fp, s32 score)
 {
     Vec3f pos;
 
-    pos.x = ((gIFCommonPlayerInterface.ifplayers_pos_x[fp->player] + dIFCommonPlayerScorePositionOffsetsX[fp->player]) << 2);
-    pos.y = ((gIFCommonPlayerInterface.ifplayers_pos_y + 13) << 2); // ??? Can't get this one to match unless we do bitwise instead of literal multiplication
+    pos.x = ((gIFCommonPlayerInterface.player_pos_x[fp->player] + dIFCommonPlayerScorePositionOffsetsX[fp->player]) << 2);
+    pos.y = ((gIFCommonPlayerInterface.player_pos_y + 13) << 2); // ??? Can't get this one to match unless we do bitwise instead of literal multiplication
     pos.z = 0.0F;
 
     efManagerBattleScoreMakeEffect(&pos, score);
@@ -3302,7 +3302,7 @@ void ifCommon1PGameInterfaceProcSet(void)
 // 0x80114C80
 void ifCommonAnnounceEndMessage(void)
 {
-    if (gSCManagerBattleState->gkind >= nGRKindBonusGameStart)
+    if (gSCManagerBattleState->gkind >= nGRKindBonusStageStart)
     {
         ifCommonBattleSetInterface(ifCommonBattleInterfaceProcUpdate, ifCommonBattleInterfaceProcSet, 0x1CC, 90);
         ifCommonAnnounceFailureMakeInterface();

@@ -70,7 +70,7 @@ SYOverlay dSC1PManager1PGameOverlay = SCMANAGER_OVERLAY_DEFINE(65);
 SYOverlay dSC1PManagerObjectsOverlay = SCMANAGER_OVERLAY_DEFINE(3);
 
 // 0x80116D58
-SYOverlay dSC1PManager1PBonusGameOverlay = SCMANAGER_OVERLAY_DEFINE(6);
+SYOverlay dSC1PManager1PBonusStageOverlay = SCMANAGER_OVERLAY_DEFINE(6);
 
 // 0x80116D7C
 SYOverlay dSC1PManager1PContinueOverlay = SCMANAGER_OVERLAY_DEFINE(55);
@@ -361,12 +361,12 @@ void sc1PManagerUpdateScene(void)
             case nSC1PGameStageBonus1:
             case nSC1PGameStageBonus2:
                 syDmaLoadOverlay(&dSC1PManagerObjectsOverlay);
-                syDmaLoadOverlay(&dSC1PManager1PBonusGameOverlay);
+                syDmaLoadOverlay(&dSC1PManager1PBonusStageOverlay);
 
                 gSCManagerSceneData.scene_prev = nSCKind1PGame;
-                gSCManagerSceneData.scene_curr = nSCKind1PBonusGame;
+                gSCManagerSceneData.scene_curr = nSCKind1PBonusStage;
 
-                sc1PBonusGameStartScene();
+                sc1PBonusStageStartScene();
                 break;
 
             default:
@@ -533,7 +533,7 @@ skip_main_stages:
         }
         if (gSCManagerSceneData.spgame_stage == nSC1PGameStageLuigi)
         {
-            gSCManagerSceneData.scene_prev = nSCKind1PBonusGame;
+            gSCManagerSceneData.scene_prev = nSCKind1PBonusStage;
             gSCManagerSceneData.scene_curr = nSCKind1PBonus1Fighters;
             return;
         }

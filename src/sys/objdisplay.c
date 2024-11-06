@@ -401,7 +401,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
             {
                 if (xobj->unk05 == 4)
                 {
-                    if (dobj->parent_gobj->frame_draw_last != (u8)dSYTaskmanFrameDrawCount)
+                    if (dobj->parent_gobj->frame_draw_last != (u8)dSYTaskmanFrameCount)
                     {
                         *mtx_store.p = gSYTaskmanGraphicsHeap.ptr;
                         gSYTaskmanGraphicsHeap.ptr = (mtx_store.f = gSYTaskmanGraphicsHeap.ptr) + 1;
@@ -450,7 +450,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                 {
                     gSYTaskmanGraphicsHeap.ptr = (mtx_store.f = gSYTaskmanGraphicsHeap.ptr) + 1;
                 }
-                else if (dobj->parent_gobj->frame_draw_last == (u8)dSYTaskmanFrameDrawCount)
+                else if (dobj->parent_gobj->frame_draw_last == (u8)dSYTaskmanFrameCount)
                 {
                     switch (xobj->kind)
                     {
@@ -1159,7 +1159,7 @@ s32 gcPrepDObjMatrix(Gfx **dl, DObj *dobj)
                     {
                         if (sGCMatrixProcess != NULL)
                         {
-                            sb32(*proc)(Mtx*, DObj*, Gfx**) = (dobj->parent_gobj->frame_draw_last != (u8)dSYTaskmanFrameDrawCount) ? sGCMatrixProcess[xobj->kind - 66].proc_diff : sGCMatrixProcess[xobj->kind - 66].proc_same;
+                            sb32(*proc)(Mtx*, DObj*, Gfx**) = (dobj->parent_gobj->frame_draw_last != (u8)dSYTaskmanFrameCount) ? sGCMatrixProcess[xobj->kind - 66].proc_diff : sGCMatrixProcess[xobj->kind - 66].proc_same;
 
                             // If proc's return value uses up a GPR and is assigned to a variable, IDO refuses to free up v0 later down.
                             ret = proc(mtx_store.gbi, dobj, &current_dl);
@@ -3188,7 +3188,7 @@ void gcCaptureTaggedGObjs(GObj *camera_gobj, s32 link_id, sb32 is_tag_mask_or_id
                 current_gobj->func_display(current_gobj);
                 dGCCurrentStatus = nGCStatusCapturing;
 
-                current_gobj->frame_draw_last = dSYTaskmanFrameDrawCount;
+                current_gobj->frame_draw_last = dSYTaskmanFrameCount;
             }
         }
         current_gobj = current_gobj->dl_link_next;
@@ -3228,7 +3228,7 @@ void gcCaptureDoubleBufferGObjs(GObj *camera_gobj, s32 id, sb32 is_tag_mask_or_i
             D_80046A88[id].dls[i] = dls[i];
         }
     }
-    D_80046A88[id].id = dSYTaskmanFrameDrawCount;
+    D_80046A88[id].id = dSYTaskmanFrameCount;
 }
 
 // 0x80017AAC
@@ -3263,7 +3263,7 @@ void gcCaptureAll(GObj *camera_gobj, sb32 is_tag_mask_or_id)
         {
             if (buffer_mask & 1)
             {
-                if ((u8)dSYTaskmanFrameDrawCount == D_80046A88[id].id)
+                if ((u8)dSYTaskmanFrameCount == D_80046A88[id].id)
                 {
                     gcAddLinkedDL(id);
                 } 

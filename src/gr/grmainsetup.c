@@ -40,10 +40,10 @@ void grMainSetupMakeGround(void) // New file
     }
     else if (gSCManagerBattleState->gkind >= nGRKindBonus2Start)
     {
-        func_ovl6_8018DC38();
+        sc1PBonusStageInitBonus2();
     }
     else if (gSCManagerBattleState->gkind >= nGRKindBonus1Start)
     {
-        func_ovl6_8018D5C8();
+        sc1PBonusStageMakeBonus1Ground();
     }
 }

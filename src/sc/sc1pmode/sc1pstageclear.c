@@ -252,7 +252,7 @@ SC1PStageClearScore dSC1PStageClearBonusData[/* */] =
 	{ &lSC1PStageClearBonusFullPower, 5000 },
 
 	// Final Stage Clear
-	{ &lSC1PStageClearBonusGameClear, 70000 },
+	{ &lSC1PStageClearBonusStageClear, 70000 },
 
 	// No Miss Clear
 	{ &lSC1PStageClearBonusNoMissClear, 70000 },
@@ -1078,7 +1078,7 @@ sb32 sc1PStageClearCheckGameClearBonus(s32 bonus_id)
 {
 	switch (bonus_id)
 	{
-	case nSC1PGameBonusGameClear:
+	case nSC1PGameBonusStageClear:
 	case nSC1PGameBonusNoMissClear:
 	case nSC1PGameBonusNoDamageClear:
 	case nSC1PGameBonusSpeedKing:
@@ -1136,7 +1136,7 @@ s32 sc1PStageClearGetAppendBonusStatPoints(s32 bonus_id, s32 bonus_num, f32 x, f
 
 	gobj->user_data.u = (bonus_num * 10) + sSC1PStageClearTotalTimeTics;
 
-	if (bonus_id == nSC1PGameBonusGameClear)
+	if (bonus_id == nSC1PGameBonusStageClear)
 	{
 		sobj = lbCommonMakeSObjForGObj(gobj, lbRelocGetFileData(Sprite*, sSC1PStageClearFiles[0], offsets[sSC1PStageClearDifficulty]));
 	}
@@ -1194,7 +1194,7 @@ s32 sc1PStageClearGetAppendBonusStatPoints(s32 bonus_id, s32 bonus_num, f32 x, f
 		points = dSC1PStageClearBonusData[bonus_id].points * sc1PStageClearGetNoMissMultiplier(sSC1PStageClear1PGameStage);
 		break;
 
-	case nSC1PGameBonusGameClear:
+	case nSC1PGameBonusStageClear:
 		points = dSC1PStageClearBonusData[bonus_id].points * (sSC1PStageClearDifficulty + 1);
 		break;
 
@@ -2008,17 +2008,17 @@ void sc1PStageClearFuncStart(void)
 	case nSC1PGameStageBonus2:
 		if (gSCManagerSceneData.bonus_tasks_complete == 10)
 		{
-			auPlaySong(0, nSYAudioBGM1PBonusGameClear);
+			auPlaySong(0, nSYAudioBGM1PBonusStageClear);
 		}
-		else auPlaySong(0, nSYAudioBGM1PBonusGameFailure);
+		else auPlaySong(0, nSYAudioBGM1PBonusStageFailure);
 		break;
 
 	case nSC1PGameStageBonus3:
 		if (gSCManagerSceneData.spgame_time_remain != 0)
 		{
-			auPlaySong(0, nSYAudioBGM1PBonusGameClear);
+			auPlaySong(0, nSYAudioBGM1PBonusStageClear);
 		}
-		else auPlaySong(0, nSYAudioBGM1PBonusGameFailure);
+		else auPlaySong(0, nSYAudioBGM1PBonusStageFailure);
 		break;
 
 	default:

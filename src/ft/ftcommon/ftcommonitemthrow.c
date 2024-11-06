@@ -134,7 +134,7 @@ void ftCommonItemThrowInitCommandVars(FTStruct *fp)
 }
 
 // 0x80146670
-void ftCommonItemThrowInITStatusVars(FTStruct *fp)
+void ftCommonItemThrowInitStatusVars(FTStruct *fp)
 {
     fp->status_vars.common.itemthrow.turn_frames = 0;
     fp->status_vars.common.itemthrow.throw_angle = 361;
@@ -152,7 +152,7 @@ void ftCommonItemThrowSetStatus(GObj *fighter_gobj, s32 status_id)
     ftMainSetFighterStatus(fighter_gobj, status_id, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
 
-    ftCommonItemThrowInITStatusVars(fp);
+    ftCommonItemThrowInitStatusVars(fp);
     ftCommonItemThrowUpdateModelPitch(fighter_gobj);
 }
 

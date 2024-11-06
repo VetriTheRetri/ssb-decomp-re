@@ -44,7 +44,7 @@ sb32 ftCommonAttackLw3CheckInterruptSelf(GObj *fighter_gobj)
 }
 
 // 0x8014FCCC
-void ftCommonAttackLw3InITStatusVars(GObj *fighter_gobj)
+void ftCommonAttackLw3InitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -64,7 +64,7 @@ void ftCommonAttackLw3SetStatus(GObj *fighter_gobj)
 
     if (ftCommonGetCheckInterruptCommon(fighter_gobj) == FALSE)
     {
-        fp->proc_status = ftCommonAttackLw3InITStatusVars;
+        fp->proc_status = ftCommonAttackLw3InitStatusVars;
 
         ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusAttackLw3, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
         ftMainPlayAnimNoEffect(fighter_gobj);

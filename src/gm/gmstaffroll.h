@@ -177,7 +177,7 @@ extern void GMStaffrollNameSetPrevAlloc(GMStaffrollName *cn);
 extern void GMStaffrollJobAndNameThreadUpdate(GObj *gobj);
 extern void GMStaffrollJobFuncDisplay(GObj *gobj);
 extern void GMStaffrollNameFuncDisplay(GObj *gobj);
-extern void GMStaffrollJobAndNameInITStruct(GObj *gobj, DObj *first_dobj, DObj *second_dobj, sb32 job_or_name);
+extern void GMStaffrollJobAndNameInitStruct(GObj *gobj, DObj *first_dobj, DObj *second_dobj, sb32 job_or_name);
 extern GMStaffrollSetup* gmStaffrollMakeJobDObjs(GMStaffrollSetup *name_setup, DObj *dobj, s32 name_id, f32 wbase);
 extern GObj* gmStaffrollMakeJobGObj(GMStaffrollJob *job);
 extern GObj* gmStaffrollMakeNameGObjAndDObjs(void);

@@ -14,7 +14,7 @@
 // // // // // // // // // // // //
 
 // 0x80151860
-void ftKirbyCopyPurinSpecialNInITStatusVars(GObj *fighter_gobj)
+void ftKirbyCopyPurinSpecialNInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
     
@@ -115,7 +115,7 @@ void ftKirbyCopyPurinSpecialNSwitchStatusAir(GObj *fighter_gobj)
 void ftKirbyCopyPurinSpecialNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyPurinSpecialN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftKirbyCopyPurinSpecialNInITStatusVars(fighter_gobj);
+    ftKirbyCopyPurinSpecialNInitStatusVars(fighter_gobj);
     ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
@@ -123,6 +123,6 @@ void ftKirbyCopyPurinSpecialNSetStatus(GObj *fighter_gobj)
 void ftKirbyCopyPurinSpecialAirNSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopyPurinSpecialAirN, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftKirbyCopyPurinSpecialNInITStatusVars(fighter_gobj);
+    ftKirbyCopyPurinSpecialNInitStatusVars(fighter_gobj);
     ftMainPlayAnimNoEffect(fighter_gobj);
 }

@@ -260,7 +260,7 @@ void ftCommonCliffCommon2UpdateCollData(GObj *fighter_gobj)
 }
 
 // 0x8014557C
-void ftCommonCliffCommon2InITStatusVars(GObj *fighter_gobj)
+void ftCommonCliffCommon2InitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -275,7 +275,7 @@ void ftCommonCliffClimbQuick2SetStatus(GObj *fighter_gobj)
 {
     ftCommonCliffCommon2UpdateCollData(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffClimbQuick2, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftCommonCliffCommon2InITStatusVars(fighter_gobj);
+    ftCommonCliffCommon2InitStatusVars(fighter_gobj);
 }
 
 // 0x801455E0
@@ -283,5 +283,5 @@ void ftCommonCliffClimbSlow2SetStatus(GObj *fighter_gobj)
 {
     ftCommonCliffCommon2UpdateCollData(fighter_gobj);
     ftMainSetFighterStatus(fighter_gobj, nFTCommonStatusCliffClimbSlow2, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftCommonCliffCommon2InITStatusVars(fighter_gobj);
+    ftCommonCliffCommon2InitStatusVars(fighter_gobj);
 }

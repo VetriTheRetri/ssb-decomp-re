@@ -162,7 +162,7 @@ void ftYoshiSpecialAirHiProcMap(GObj *fighter_gobj)
 }
 
 // 0x8015ED18
-void ftYoshiSpecialHiInITStatusVars(GObj *fighter_gobj)
+void ftYoshiSpecialHiInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -177,7 +177,7 @@ void ftYoshiSpecialHiInITStatusVars(GObj *fighter_gobj)
 void ftYoshiSpecialHiSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftYoshiSpecialHiInITStatusVars(fighter_gobj);
+    ftYoshiSpecialHiInitStatusVars(fighter_gobj);
     ftMainPlayAnimNoEffect(fighter_gobj);
 }
 
@@ -185,6 +185,6 @@ void ftYoshiSpecialHiSetStatus(GObj *fighter_gobj)
 void ftYoshiSpecialAirHiSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTYoshiStatusSpecialAirHi, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
-    ftYoshiSpecialHiInITStatusVars(fighter_gobj);
+    ftYoshiSpecialHiInitStatusVars(fighter_gobj);
     ftMainPlayAnimNoEffect(fighter_gobj);
 }

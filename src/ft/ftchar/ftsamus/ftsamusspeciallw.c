@@ -122,7 +122,7 @@ void ftSamusSpecialLwSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x8015E218
-void ftSamusSpecialLwInITStatusVars(FTStruct *fp)
+void ftSamusSpecialLwInitStatusVars(FTStruct *fp)
 {
     fp->motion_vars.flags.flag0 = FALSE;
 }
@@ -136,7 +136,7 @@ void ftSamusSpecialLwSetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftSamusSpecialLwInITStatusVars(fp);
+    ftSamusSpecialLwInitStatusVars(fp);
 
     fp->status_vars.samus.speciallw.unused = FALSE;
 }
@@ -149,7 +149,7 @@ void ftSamusSpecialAirLwSetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirLw, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftSamusSpecialLwInITStatusVars(fp);
+    ftSamusSpecialLwInitStatusVars(fp);
 
     fp->physics.vel_air.y = FTSAMUS_BOMB_VEL_Y_BASE - FTSAMUS_BOMB_VEL_Y_SUB;
 

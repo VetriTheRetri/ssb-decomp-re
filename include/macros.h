@@ -73,11 +73,11 @@
 #define GC_FIELDSET(x, start, len)                                                                                     \
 	(0 & ~GC_FIELDMASK(start, len) | GC_FIELDPREP(x, start, len)) // I'm too dumb to do it without the 0
 
-#define GS_FRAMERATE_DEFAULT (60)
+#define UPDATE_INTERVAL (60)
 
-#define GS_TIME_SEC (GS_FRAMERATE_DEFAULT * 1)
-#define GS_TIME_MIN (GS_TIME_SEC * 60)
-#define GS_TIME_HRS (GS_TIME_MIN * 60)
+#define TIME_SEC (UPDATE_INTERVAL * 1)
+#define TIME_MIN (TIME_SEC * 60)
+#define TIME_HRS (TIME_MIN * 60)
 
 /* Count how many bits are in a type of a certain number
 (WARNING: includes padding in structs that are not byte-aligned) */
@@ -85,21 +85,19 @@
 
 #define DISTANCE(a, b) (((a) < (b)) ? -((a) - (b)) : ((a) - (b)))
 
-#define I_GS_TIME_TO_TICS(q, u) ((int)((q) * (u)))
+#define I_SEC_TO_TICS(q) ((int)((q)*TIME_SEC))
+#define I_TICS_TO_SEC(q) ((int)((q) / TIME_SEC))
+#define I_MIN_TO_SEC(q) ((int)((q)*TIME_SEC))
+#define I_MIN_TO_TICS(q) ((int)((q)*TIME_MIN))
+#define I_HRS_TO_TICS(q) ((int)((q)*TIME_HRS))
 
-#define I_SEC_TO_TICS(q) ((int)((q)*GS_TIME_SEC))
-#define I_FRAMES_TO_SEC(q) ((int)((q) / GS_TIME_SEC))
-#define I_MIN_TO_SEC(q) ((int)((q)*GS_TIME_SEC))
-#define I_MIN_TO_TICS(q) ((int)((q)*GS_TIME_MIN))
-#define I_HRS_TO_TICS(q) ((int)((q)*GS_TIME_HRS))
+#define F_TIME_TO_TICS(q, u) ((int)((q) * (u)))
 
-#define F_GS_TIME_TO_TICS(q, u) ((int)((q) * (u)))
-
-#define F_SEC_TO_TICS(q) ((float)((q)*GS_TIME_SEC))
-#define F_FRAMES_TO_SEC(q) ((float)((q) / GS_TIME_SEC))
-#define F_MIN_TO_SEC(q) ((float)((q)*GS_TIME_SEC))
-#define F_MIN_TO_TICS(q) ((float)((q)*GS_TIME_MIN))
-#define F_HRS_TO_TICS(q) ((float)((q)*GS_TIME_HRS))
+#define F_SEC_TO_TICS(q) ((float)((q)*TIME_SEC))
+#define F_FRAMES_TO_SEC(q) ((float)((q) / TIME_SEC))
+#define F_MIN_TO_SEC(q) ((float)((q)*TIME_SEC))
+#define F_MIN_TO_TICS(q) ((float)((q)*TIME_MIN))
+#define F_HRS_TO_TICS(q) ((float)((q)*TIME_HRS))
 
 #define I_TIME_TO_TICS(h, m, s, f) (I_HRS_TO_TICS(h) + I_MIN_TO_TICS(m) + I_SEC_TO_TICS(s) + (f))
 

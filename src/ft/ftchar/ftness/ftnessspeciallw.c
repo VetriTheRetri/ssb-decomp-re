@@ -124,7 +124,7 @@ void ftNessSpecialLwStartSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x80155454
-void ftNessSpecialLw_InITStatusVars(GObj *fighter_gobj)
+void ftNessSpecialLw_InitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -138,7 +138,7 @@ void ftNessSpecialLwStartSetStatus(GObj *fighter_gobj)
 {
     ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftNessSpecialLw_InITStatusVars(fighter_gobj);
+    ftNessSpecialLw_InitStatusVars(fighter_gobj);
 }
 
 // 0x801554B0
@@ -148,7 +148,7 @@ void ftNessSpecialAirLwStartSetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, nFTNessStatusSpecialAirLwStart, 0.0F, 1.0F, FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftNessSpecialLw_InITStatusVars(fighter_gobj);
+    ftNessSpecialLw_InitStatusVars(fighter_gobj);
 
     fp->physics.vel_air.x /= 2;
     fp->physics.vel_air.y = 0.0F;

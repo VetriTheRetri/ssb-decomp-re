@@ -279,7 +279,7 @@ void ftCommonFireFlowerShootSwitchStatusAir(GObj *fighter_gobj)
 }
 
 // 0x80147824
-void ftCommonFireFlowerShootInITStatusVars(FTStruct *fp)
+void ftCommonFireFlowerShootInitStatusVars(FTStruct *fp)
 {
     fp->status_vars.common.fireflower.flame_vel_index = 0;
     fp->status_vars.common.fireflower.ammo_sub = 1;
@@ -316,7 +316,7 @@ void ftCommonItemShootSetStatus(GObj *fighter_gobj)
 
     fp->proc_accessory = proc_accessory;
 
-    ftCommonFireFlowerShootInITStatusVars(fp);
+    ftCommonFireFlowerShootInitStatusVars(fp);
 }
 
 // 0x801478EC
@@ -347,5 +347,5 @@ void ftCommonItemShootAirSetStatus(GObj *fighter_gobj)
     fp->proc_accessory = proc_accessory;
 
     ftPhysicsClampAirVelXMax(fp);
-    ftCommonFireFlowerShootInITStatusVars(fp);
+    ftCommonFireFlowerShootInitStatusVars(fp);
 }

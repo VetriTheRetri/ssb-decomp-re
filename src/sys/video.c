@@ -67,9 +67,9 @@ u32 syVideoGetFillColor(u32 color)
 // Set new framebuffers
 void syVideoSetFramebuffers(void *fb0, void *fb1, void *fb2)
 {
-    SCTaskFramebuffer mesg;
+    SYTaskFramebuffer mesg;
 
-    mesg.info.type = nSYScheduleTaskFramebuffers;
+    mesg.info.type = nSYTaskTypeFramebuffers;
     mesg.info.priority = 100;
 
     sSYVideoFramebuffers[0] = mesg.framebuffers[0] = fb0;
@@ -121,7 +121,7 @@ void syVideoSetCenterOffsets(s16 left, s16 right, s16 top, s16 bottom)
 }
 
 // Initialize video task
-void syVideoInitViTask(SCTaskVi *task)
+void syVideoInitViTask(SYTaskVi *task)
 {
     task->width = gSYVideoResWidth;
     task->height = gSYVideoResHeight;
@@ -136,11 +136,11 @@ void syVideoInitViTask(SCTaskVi *task)
 }
 
 // Apply non-blocking settings
-void syVideoApplySettingsNoBlock(SCTaskVi *task)
+void syVideoApplySettingsNoBlock(SYTaskVi *task)
 {
     if (sSYVideoIsSettingsChanged != FALSE) 
     {
-        task->info.type     = nSYScheduleTaskVi;
+        task->info.type     = nSYTaskTypeVi;
         task->info.priority = 50;
         task->info.fnCheck  = NULL;
         task->info.mq       = NULL;
@@ -152,7 +152,7 @@ void syVideoApplySettingsNoBlock(SCTaskVi *task)
 // Set various video output settings
 void syVideoSetScreenSettings(s32 width, s32 height, u32 flags)
 {
-    SCTaskVi task;
+    SYTaskVi task;
 
     sSYVideoFlags = SYVIDEO_FLAG_NONE;
     gSYVideoColorDepth = G_IM_SIZ_16b;
@@ -161,7 +161,7 @@ void syVideoSetScreenSettings(s32 width, s32 height, u32 flags)
     syVideoSetResWidth(width);
     syVideoSetResHeight(height);
 
-    task.info.type = nSYScheduleTaskVi;
+    task.info.type = nSYTaskTypeVi;
     task.info.priority = 100;
 
     syVideoInitViTask(&task);

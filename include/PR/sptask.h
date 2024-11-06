@@ -64,7 +64,7 @@ extern "C"
 	 * IMPORTANT!!! Watch alignment issues.
 	 *
 	 * IMPORTANT!!! Watch data cache issues.  The RCP may write data into the
-	 * dram_stack, output_buff, output_buff_size, and the yield_data_ptr areas.
+	 * dram_stack, output_buffer, output_buffer_size, and the yield_data_ptr areas.
 	 * These buffers should be cache aligned and use the entire line (16 bytes)
 	 *to avoid corruption by writebacks by the CPU (cache tearing).
 	 *
@@ -89,8 +89,8 @@ extern "C"
 		u64* dram_stack;
 		u32 dram_stack_size;
 
-		u64* output_buff;
-		u64* output_buff_size;
+		u64* output_buffer;
+		u64* output_buffer_size;
 
 		u64* data_ptr;
 		u32 data_size;

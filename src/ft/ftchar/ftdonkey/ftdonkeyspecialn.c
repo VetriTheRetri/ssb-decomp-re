@@ -269,7 +269,7 @@ void ftDonkeySpecialAirNEndSetStatus(GObj *fighter_gobj)
 }
 
 // 0x8015B5EC
-void ftDonkeySpecialNInITStatusVars(GObj *fighter_gobj)
+void ftDonkeySpecialNInitStatusVars(GObj *fighter_gobj)
 {
     FTStruct *fp = ftGetStruct(fighter_gobj);
 
@@ -289,7 +289,7 @@ void ftDonkeySpecialNStartSetStatus(GObj *fighter_gobj)
     fp->proc_damage = ftDonkeySpecialNProcDamage;
 
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftDonkeySpecialNInITStatusVars(fighter_gobj);
+    ftDonkeySpecialNInitStatusVars(fighter_gobj);
 }
 
 // 0x8015B674
@@ -302,5 +302,5 @@ void ftDonkeySpecialAirNStartSetStatus(GObj *fighter_gobj)
     fp->proc_damage = ftDonkeySpecialNProcDamage;
 
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftDonkeySpecialNInITStatusVars(fighter_gobj);
+    ftDonkeySpecialNInitStatusVars(fighter_gobj);
 }

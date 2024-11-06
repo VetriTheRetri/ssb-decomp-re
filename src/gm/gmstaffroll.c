@@ -1458,7 +1458,7 @@ void GMStaffrollNameFuncDisplay(GObj *gobj)
 }
 
 // 0x80133A0C
-void GMStaffrollJobAndNameInITStruct(GObj *gobj, DObj *first_dobj, DObj *second_dobj, sb32 job_or_name)
+void GMStaffrollJobAndNameInitStruct(GObj *gobj, DObj *first_dobj, DObj *second_dobj, sb32 job_or_name)
 {
 	GMStaffrollName *cn = GMStaffrollNameUpdateAlloc(gobj);
 
@@ -1636,7 +1636,7 @@ GObj* gmStaffrollMakeJobGObj(GMStaffrollJob *job)
 		wbase = 16.0F + job_setup.spacing;
 	}
 	gmStaffrollMakeJobDObjs(&job_setup, dobj, job->job_id, wbase);
-	GMStaffrollJobAndNameInITStruct(gobj, dobj, job_setup.dobj, 0);
+	GMStaffrollJobAndNameInitStruct(gobj, dobj, job_setup.dobj, 0);
 	gcAddGObjProcess(gobj, GMStaffrollJobAndNameThreadUpdate, nGCProcessKindThread, 1);
 
 	return gobj;
@@ -1792,7 +1792,7 @@ GObj* gmStaffrollMakeNameGObjAndDObjs(void)
 		}
 
 	}
-	GMStaffrollJobAndNameInITStruct(gobj, dobj, new_dobj, 1);
+	GMStaffrollJobAndNameInitStruct(gobj, dobj, new_dobj, 1);
 	gcAddGObjProcess(gobj, GMStaffrollJobAndNameThreadUpdate, 0, 1);
 
 	return gobj;

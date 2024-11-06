@@ -29,7 +29,7 @@ extern void ftDonkeySpecialAirNEndSwitchStatusGround(GObj* fighter_gobj);
 extern void ftDonkeySpecialNGetStatusChargeLevelReset(GObj* fighter_gobj);
 extern void ftDonkeySpecialNEndSetStatus(GObj* fighter_gobj);
 extern void ftDonkeySpecialAirNEndSetStatus(GObj* fighter_gobj);
-extern void ftDonkeySpecialNInITStatusVars(GObj* fighter_gobj);
+extern void ftDonkeySpecialNInitStatusVars(GObj* fighter_gobj);
 extern void ftDonkeySpecialNStartSetStatus(GObj* fighter_gobj);
 extern void ftDonkeySpecialAirNStartSetStatus(GObj* fighter_gobj);
 

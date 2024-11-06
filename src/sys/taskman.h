@@ -62,20 +62,20 @@ typedef struct SYTaskmanSetup
 } SYTaskmanSetup; // size >= 0x8C
 
 extern u32 sSYTaskmanUpdateCount;
-extern u32 dSYTaskmanFrameDrawCount;
+extern u32 dSYTaskmanFrameCount;
 extern Gfx *gSYTaskmanDLHeads[4];
 extern Gfx *sSYTaskmanDLBranches[4];
 extern SYMallocRegion gSYTaskmanGraphicsHeap;
 extern SYMallocRegion gSYTaskmanGeneralHeap;
 // Gfx *? Gfx
-extern u32 sSYTaskmanUpdateDeltaTime;
+extern u32 sSYTaskmanUpdateTimeDelta;
 // Gfx *? Gfx
-extern u32 sSYTaskmanFrameDeltaTime;
+extern u32 sSYTaskmanFrameTimeDelta;
 extern u16 D_80046626;
 extern u16 D_80046628;
 extern s32 gSYTaskmanTaskID;
 
-extern void func_800048D0(SCTaskGfxCallback arg0);
+extern void func_800048D0(SYTaskGfxCallback arg0);
 extern void func_800048F8(Gfx **dl);
 extern void* syTaskmanMalloc(size_t size, u32 alignment);
 extern void func_80004F78(void);

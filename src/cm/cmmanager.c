@@ -82,19 +82,19 @@ u32 cmManagerGetCamBoundsMask(Vec3f *pos)
 {
     u32 bounds = 0;
 
-    if (pos->x < gMPCollisionGroundData->cobj_bound_left)
+    if (pos->x < gMPCollisionGroundData->camera_bound_left)
     {
         bounds |= CAMERA_FLAG_BOUND_LEFT;
     }
-    if (pos->x > gMPCollisionGroundData->cobj_bound_right)
+    if (pos->x > gMPCollisionGroundData->camera_bound_right)
     {
         bounds |= CAMERA_FLAG_BOUND_RIGHT;
     }
-    if (pos->y < gMPCollisionGroundData->cobj_bound_bottom)
+    if (pos->y < gMPCollisionGroundData->camera_bound_bottom)
     {
         bounds |= CAMERA_FLAG_BOUND_BOTTOM;
     }
-    if (pos->y > gMPCollisionGroundData->cobj_bound_top)
+    if (pos->y > gMPCollisionGroundData->camera_bound_top)
     {
         bounds |= CAMERA_FLAG_BOUND_TOP;
     }
@@ -112,19 +112,19 @@ void cmManagerSetCameraBoundsPos(Vec3f *pos)
         {
             if (bounds & CAMERA_FLAG_BOUND_LEFT)
             {
-                pos->x = gMPCollisionGroundData->cobj_bound_left;
+                pos->x = gMPCollisionGroundData->camera_bound_left;
             }
             else if (bounds & CAMERA_FLAG_BOUND_RIGHT)
             {
-                pos->x = gMPCollisionGroundData->cobj_bound_right;
+                pos->x = gMPCollisionGroundData->camera_bound_right;
             }
             else if (bounds & CAMERA_FLAG_BOUND_BOTTOM)
             {
-                pos->y = gMPCollisionGroundData->cobj_bound_bottom;
+                pos->y = gMPCollisionGroundData->camera_bound_bottom;
             }
             else if (bounds & CAMERA_FLAG_BOUND_TOP)
             {
-                pos->y = gMPCollisionGroundData->cobj_bound_top;
+                pos->y = gMPCollisionGroundData->camera_bound_top;
             }
         }
         else break;
@@ -136,19 +136,19 @@ u32 cmManagerGetCamTeamBoundsMask(Vec3f *pos)
 {
     u32 bounds = 0;
 
-    if (pos->x < gMPCollisionGroundData->cobj_bound_team_left)
+    if (pos->x < gMPCollisionGroundData->camera_bound_team_left)
     {
         bounds |= CAMERA_FLAG_BOUND_LEFT;
     }
-    if (pos->x > gMPCollisionGroundData->cobj_bound_team_right)
+    if (pos->x > gMPCollisionGroundData->camera_bound_team_right)
     {
         bounds |= CAMERA_FLAG_BOUND_RIGHT;
     }
-    if (pos->y < gMPCollisionGroundData->cobj_bound_team_bottom)
+    if (pos->y < gMPCollisionGroundData->camera_bound_team_bottom)
     {
         bounds |= CAMERA_FLAG_BOUND_BOTTOM;
     }
-    if (pos->y > gMPCollisionGroundData->cobj_bound_team_top)
+    if (pos->y > gMPCollisionGroundData->camera_bound_team_top)
     {
         bounds |= CAMERA_FLAG_BOUND_TOP;
     }
@@ -166,19 +166,19 @@ void cmManagerSetCameraTeamBoundsPos(Vec3f *pos)
         {
             if (bounds & CAMERA_FLAG_BOUND_LEFT)
             {
-                pos->x = gMPCollisionGroundData->cobj_bound_team_left;
+                pos->x = gMPCollisionGroundData->camera_bound_team_left;
             }
             else if (bounds & CAMERA_FLAG_BOUND_RIGHT)
             {
-                pos->x = gMPCollisionGroundData->cobj_bound_team_right;
+                pos->x = gMPCollisionGroundData->camera_bound_team_right;
             }
             else if (bounds & CAMERA_FLAG_BOUND_BOTTOM)
             {
-                pos->y = gMPCollisionGroundData->cobj_bound_team_bottom;
+                pos->y = gMPCollisionGroundData->camera_bound_team_bottom;
             }
             else if (bounds & CAMERA_FLAG_BOUND_TOP)
             {
-                pos->y = gMPCollisionGroundData->cobj_bound_team_top;
+                pos->y = gMPCollisionGroundData->camera_bound_team_top;
             }
         }
         else break;
@@ -188,8 +188,8 @@ void cmManagerSetCameraTeamBoundsPos(Vec3f *pos)
 // 0x8010BB08
 void cmManagerSetCameraDeadUpStarPos(Vec3f *pos)
 {
-    pos->x = (gMPCollisionGroundData->cobj_bound_top * pos->x) / gMPCollisionGroundData->map_bound_top;
-    pos->y = gMPCollisionGroundData->cobj_bound_top;
+    pos->x = (gMPCollisionGroundData->camera_bound_top * pos->x) / gMPCollisionGroundData->map_bound_top;
+    pos->y = gMPCollisionGroundData->camera_bound_top;
 }
 
 // 0x8010BB58

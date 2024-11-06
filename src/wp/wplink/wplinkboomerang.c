@@ -94,8 +94,8 @@ sb32 wpLinkBoomerangCheckOffCamera(GObj *weapon_gobj)
     WPStruct *wp = wpGetStruct(weapon_gobj);
     f32 pos_x;
     f32 pos_y;
-    f32 cobj_bound_x;
-    f32 cobj_bound_y;
+    f32 camera_bound_x;
+    f32 camera_bound_y;
 
     if (wp->weapon_vars.boomerang.homing_delay > 0)
     {
@@ -111,10 +111,10 @@ sb32 wpLinkBoomerangCheckOffCamera(GObj *weapon_gobj)
 
             func_ovl2_800EB924(CObjGetStruct(gCMManagerCameraGObj), gCMManagerMtx, &DObjGetStruct(weapon_gobj)->translate.vec.f, &pos_x, &pos_y);
 
-            cobj_bound_x = (gCMManagerCameraStruct.viewport_width / 2) + 40.0F;
-            cobj_bound_y = (gCMManagerCameraStruct.viewport_height / 2) + 40.0F;
+            camera_bound_x = (gCMManagerCameraStruct.viewport_width / 2) + 40.0F;
+            camera_bound_y = (gCMManagerCameraStruct.viewport_height / 2) + 40.0F;
 
-            if ((pos_x < -cobj_bound_x) || (pos_x > cobj_bound_x) || (pos_y < -cobj_bound_y) || (pos_y > cobj_bound_y))
+            if ((pos_x < -camera_bound_x) || (pos_x > camera_bound_x) || (pos_y < -camera_bound_y) || (pos_y > camera_bound_y))
             {
                 return TRUE;
             }

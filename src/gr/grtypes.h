@@ -61,7 +61,7 @@ union GRStruct
 
 	// Bonus stages
 	grBonusGroundVarsBonus1 bonus1;
-	grBonusGroundVarsBonus2 bonus2;
+	GRBonusGroundVarsBonus2 bonus2;
 	grBonusGroundVarsBonus3 bonus3;
 };
 

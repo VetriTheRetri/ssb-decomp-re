@@ -328,7 +328,7 @@ f32 ftSamusSpecialNStartGetAnimSpeed(FTStruct *fp)
 }
 
 // 0x8015DB4C
-void ftSamusSpecialNStartInITStatusVars(FTStruct *fp)
+void ftSamusSpecialNStartInitStatusVars(FTStruct *fp)
 {
     fp->proc_damage = ftSamusSpecialNProcDamage;
     fp->status_vars.samus.specialn.charge_gobj = NULL;
@@ -342,7 +342,7 @@ void ftSamusSpecialNStartSetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialNStart, 0.0F, ftSamusSpecialNStartGetAnimSpeed(fp), FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftSamusSpecialNStartInITStatusVars(fp);
+    ftSamusSpecialNStartInitStatusVars(fp);
 
     fp->status_vars.samus.specialn.is_release = (fp->fighter_vars.samus.charge_level == FTSAMUS_CHARGE_MAX) ? TRUE : FALSE;
 }
@@ -354,7 +354,7 @@ void ftSamusSpecialAirNStartSetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, nFTSamusStatusSpecialAirNStart, 0.0F, ftSamusSpecialNStartGetAnimSpeed(fp), FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftSamusSpecialNStartInITStatusVars(fp);
+    ftSamusSpecialNStartInitStatusVars(fp);
 
     fp->status_vars.samus.specialn.is_release = TRUE;
 }

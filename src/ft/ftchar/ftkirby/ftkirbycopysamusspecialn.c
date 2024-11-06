@@ -333,7 +333,7 @@ f32 ftKirbyCopySamusSpecialNStartGetAnimSpeed(FTStruct *fp)
 }
 
 // 0x801576B4
-void ftKirbyCopySamusSpecialNInITStatusVars(FTStruct *fp)
+void ftKirbyCopySamusSpecialNInitStatusVars(FTStruct *fp)
 {
     fp->proc_damage = ftKirbyCopySamusSpecialNProcDamage;
     fp->status_vars.kirby.copysamus_specialn.charge_gobj = NULL;
@@ -347,7 +347,7 @@ void ftKirbyCopySamusSpecialNStartSetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopySamusSpecialNStart, 0.0F, ftKirbyCopySamusSpecialNStartGetAnimSpeed(fp), FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftKirbyCopySamusSpecialNInITStatusVars(fp);
+    ftKirbyCopySamusSpecialNInitStatusVars(fp);
 
     fp->status_vars.kirby.copysamus_specialn.is_release = (fp->fighter_vars.kirby.copysamus_charge_level == FTKIRBY_COPYSAMUS_CHARGE_MAX) ? TRUE : FALSE;
 }
@@ -359,7 +359,7 @@ void ftKirbyCopySamusSpecialAirNStartSetStatus(GObj *fighter_gobj)
 
     ftMainSetFighterStatus(fighter_gobj, nFTKirbyStatusCopySamusSpecialAirNStart, 0.0F, ftKirbyCopySamusSpecialNStartGetAnimSpeed(fp), FTSTATUS_PRESERVE_NONE);
     ftMainPlayAnimNoEffect(fighter_gobj);
-    ftKirbyCopySamusSpecialNInITStatusVars(fp);
+    ftKirbyCopySamusSpecialNInitStatusVars(fp);
 
     fp->status_vars.kirby.copysamus_specialn.is_release = TRUE;
 }

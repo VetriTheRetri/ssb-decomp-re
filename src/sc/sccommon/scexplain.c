@@ -259,8 +259,8 @@ void scExplainMakeWindowCamera(void)
 // 0x8018D440
 void scExplainSetPlayerInterfacePositions(void)
 {
-    gIFCommonPlayerInterface.ifplayers_pos_x = dSCExplainInterfacePositions;
-    gIFCommonPlayerInterface.ifplayers_pos_y = 150;
+    gIFCommonPlayerInterface.player_pos_x = dSCExplainInterfacePositions;
+    gIFCommonPlayerInterface.player_pos_y = 150;
 }
 
 // 0x8018D460

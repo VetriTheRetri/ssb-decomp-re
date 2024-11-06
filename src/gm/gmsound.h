@@ -55,11 +55,11 @@ typedef enum gmMusicID
 	nSYAudioBGMBossStage,					// Final Stage Card (VS. Master Hand)
 	nSYAudioBGMBossEntry,					// Master Hand Appears
 	nSYAudioBGMLast,						// Final Destination
-	nSYAudioBGM1PBonusGame,					// Bonus Stage
+	nSYAudioBGM1PBonusStage,					// Bonus Stage
 	nSYAudioBGM1PStageClear,				// 1P Game Stage Cleared
-	nSYAudioBGM1PBonusGameClear,			// Bonus Stage Cleared
+	nSYAudioBGM1PBonusStageClear,			// Bonus Stage Cleared
 	nSYAudioBGM1PGameClear,					// Final Stage Cleared
-	nSYAudioBGM1PBonusGameFailure,			// Bonus Stage Failed
+	nSYAudioBGM1PBonusStageFailure,			// Bonus Stage Failed
 	nSYAudioBGM1PGameEndChoice,				// Continue or Game Over?
 	nSYAudioBGM1PGameOver,					// Game Over
 	nSYAudioBGMOpening,						// Opening Movie

@@ -1008,11 +1008,11 @@ void scManagerRunLoop(sb32 arg)
 				sc1PManagerUpdateScene();
 				break;
 
-			case nSCKind1PBonusGame:
+			case nSCKind1PBonusStage:
 				syDmaLoadOverlay(&dSCManagerOverlays[2]);
 				syDmaLoadOverlay(&dSCManagerOverlays[3]);
 				syDmaLoadOverlay(&dSCManagerOverlays[6]);
-				sc1PBonusGameStartScene();
+				sc1PBonusStageStartScene();
 				break;
 
 			case nSCKind1PTraining:

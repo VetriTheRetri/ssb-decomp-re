@@ -564,7 +564,7 @@ sb32 func_ovl3_801864BC(GObj *item_gobj) // Unused
 }
 
 // 0x801864E8
-void itLinkBombExplodeInITAttackColl(GObj *item_gobj)
+void itLinkBombExplodeInitAttackColl(GObj *item_gobj)
 {
 	ITStruct *ip = itGetStruct(item_gobj);
 
@@ -595,7 +595,7 @@ sb32 itLinkBombExplodeProcUpdate(GObj *item_gobj)
 // 0x8018656C
 void itLinkBombExplodeSetStatus(GObj *item_gobj)
 {
-	itLinkBombExplodeInITAttackColl(item_gobj);
+	itLinkBombExplodeInitAttackColl(item_gobj);
 	itMainSetItemStatus(item_gobj, dItLinkBombStatusDescs, nITLinkBombStatusExplode);
 }
 

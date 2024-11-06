@@ -84,8 +84,8 @@ extern void syVideoSetFlags(u32 flags);
 extern void syVideoSetResWidth(s32 width);
 extern void syVideoSetResHeight(s32 height);
 extern void syVideoSetCenterOffsets(s16 left, s16 right, s16 top, s16 bottom);
-extern void syVideoInitViTask(SCTaskVi *task);
-extern void syVideoApplySettingsNoBlock(SCTaskVi *task);
+extern void syVideoInitViTask(SYTaskVi *task);
+extern void syVideoApplySettingsNoBlock(SYTaskVi *task);
 extern void syVideoSetScreenSettings(s32 width, s32 height, u32 flags);
 extern void syVideoInit(SYVideoSetup *video_setup);
 

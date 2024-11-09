@@ -76,8 +76,8 @@ typedef enum MPLineType
 
 typedef enum MPMapObjKind
 {
-    nMPMapObjKindBattlePlayerSpawnStart,
-    nMPMapObjKindBattlePlayer1Spawn = nMPMapObjKindBattlePlayerSpawnStart,                      // 0x0
+    nMPMapObjKindBattlePlayerStartStart,
+    nMPMapObjKindBattlePlayer1Spawn = nMPMapObjKindBattlePlayerStartStart,                      // 0x0
     nMPMapObjKindBattlePlayer2Spawn,                                                            // 0x1
     nMPMapObjKindBattlePlayer3Spawn,                                                            // 0x2
     nMPMapObjKindBattlePlayer4Spawn,                                                            // 0x3
@@ -112,7 +112,7 @@ typedef enum MPMapObjKind
     nMPMapObjKindAutoDemoSpawn7,                                                                // 0x1E
     nMPMapObjKindAutoDemoSpawn8,                                                                // 0x1F
     nMPMapObjKindRebirth,                                                                       // 0x20
-    nMPMapObjKind1PGamePlayerSpawn,                                                             // 0x21
+    nMPMapObjKind1PGamePlayerStart,                                                             // 0x21
 
     nMPMapObjKind1PGameAllySpawnStart,                                                          // 0x22
     nMPMapObjKind1PGameAlly1Spawn = nMPMapObjKind1PGameAllySpawnStart,                          // 0x22
@@ -130,7 +130,7 @@ typedef enum MPMapObjKind
     nMPMapObjKind1PGameBonus3TaruBomb,                                                          // 0x29
     nMPMapObjKind1PGameUnknown,                                                                 // 0x2A
     nMPMapObjKind1PGameEnemyTeamSpawn,                                                          // 0x2B
-    nMPMapObjKind1PGameChallengerPlayerSpawn,                                                   // 0x2C
+    nMPMapObjKind1PGameChallengerPlayerStart,                                                   // 0x2C
 
     nMPMapObjKind1PGameChallengerEnemySpawnStart,                                               // 0x2D
     nMPMapObjKind1PGameChallengerEnemySpawn = nMPMapObjKind1PGameChallengerEnemySpawnStart,     // 0x2D

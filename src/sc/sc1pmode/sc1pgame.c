@@ -988,12 +988,12 @@ void sc1PGameSetupStageAll(void)
     if (gSCManagerSceneData.spgame_stage <= nSC1PGameStageCommonEnd)
     {
         gSCManager1PGameBattleState.players[gSCManagerSceneData.player].is_single_stockicon = FALSE;
-        sSC1PGamePlayerSetups[gSCManagerSceneData.player].mapobj_kind = nMPMapObjKind1PGamePlayerSpawn;
+        sSC1PGamePlayerSetups[gSCManagerSceneData.player].mapobj_kind = nMPMapObjKind1PGamePlayerStart;
     }
     else
     {
         gSCManager1PGameBattleState.players[gSCManagerSceneData.player].is_single_stockicon = TRUE;
-        sSC1PGamePlayerSetups[gSCManagerSceneData.player].mapobj_kind = nMPMapObjKind1PGameChallengerPlayerSpawn;
+        sSC1PGamePlayerSetups[gSCManagerSceneData.player].mapobj_kind = nMPMapObjKind1PGameChallengerPlayerStart;
     }
     switch (gSCManagerSceneData.spgame_stage)
     {

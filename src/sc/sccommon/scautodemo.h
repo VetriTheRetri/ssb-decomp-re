@@ -35,7 +35,7 @@ extern void scAutoDemoChangeFocus(void);
 extern void scAutoDemoUpdateFocus(void);
 extern void scAutoDemoFuncRun(GObj *gobj);
 extern GObj* scAutoDemoMakeFocusInterface(void);
-extern void scAutoDemoGetPlayerSpawnPosition(s32 mapobj_kind, Vec3f *mapobj_pos);
+extern void scAutoDemoGetPlayerStartPosition(s32 mapobj_kind, Vec3f *mapobj_pos);
 extern s32 scAutoDemoGetFighterKindsNum(u16 flag);
 extern s32 scAutoDemoGetShuffledFighterKind(u16 this_mask, u16 prev_mask, s32 random);
 extern s32 scAutoDemoGetPlayerDamage(s32 player);

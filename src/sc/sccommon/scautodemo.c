@@ -445,7 +445,7 @@ GObj* scAutoDemoMakeFocusInterface(void)
 }
 
 // 0x8018D758
-void scAutoDemoGetPlayerSpawnPosition(s32 mapobj_kind, Vec3f *mapobj_pos)
+void scAutoDemoGetPlayerStartPosition(s32 mapobj_kind, Vec3f *mapobj_pos)
 {
 	s32 i, j;
 	s32 mapobj_random;
@@ -657,7 +657,7 @@ void scAutoDemoFuncStart(void)
 
 		ft_desc.fkind = gSCManagerBattleState->players[player].fkind;
 
-		scAutoDemoGetPlayerSpawnPosition(player, &ft_desc.pos);
+		scAutoDemoGetPlayerStartPosition(player, &ft_desc.pos);
 
 		ft_desc.lr = (ft_desc.pos.x >= 0.0F) ? -1 : +1;
 

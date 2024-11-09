@@ -5,131 +5,233 @@
 #include <sc/scene.h>
 #include <sys/video.h>
 
-// Externs
 extern intptr_t D_NF_00000088;
 extern intptr_t D_NF_00000097;
-extern intptr_t lSC1PBonusStagePlatformSprite;					// 0x000000B0
 extern intptr_t D_NF_000000FD;
-extern intptr_t D_NF_00000138;
-extern intptr_t lSC1PBonusStageTargetSprite;					// 0x000001D0
-extern intptr_t D_NF_00001140;
-extern intptr_t D_NF_00001238;
 
-extern void func_ovl2_8010CFA8(GObj*, f32, f32, f32, f32, f32);
-extern void sc1PBonusStageSetupFiles();
+extern void scManagerFuncDraw(void);
 
-// Forward declarations
-void sc1PBonusStageFuncStart(void);
-void sc1PBonusStageFuncLights(Gfx** display_list);
+// // // // // // // // // // // //
+//                               //
+//       INITIALIZED DATA        //
+//                               //
+// // // // // // // // // // // //
 
-// Data
 // 0x8018EEC0
-s32 D_ovl6_8018EEC0 = 0;
+s32 dSC1PBonusStageUnused0x8018EEC0 = 0;
 
-// 0x8018EEC4 - column 0 = main, column 1 = DObjDesc*, column 2 = AObjEvent32**
+// 0x8018EEC4 - column 0 = start offset, column 1 = DObjDesc*, column 2 = AObjEvent32**
 GRBonusTarget dSC1PBonusStageTargetDescs[/* */] =
 {
 	// Bonus1Mario
-	{ 0x1EB0, 0x2150, 0x2360 },
+	{ 
+		&lGRBonus1MarioTargetsStart,
+		&lGRBonus1MarioTargetsDObjDesc,
+		&lGRBonus1MarioTargetsAnimJoint
+	},
 
 	// Bonus1Fox
-	{ 0x2068, 0x24B0, 0x26C0 },
+	{ 
+		&lGRBonus1FoxTargetsStart,
+		&lGRBonus1FoxTargetsDObjDesc,
+		&lGRBonus1FoxTargetsAnimJoint,
+	},
 
 	// Bonus1Donkey
-	{ 0x1F20, 0x2250, 0x2460 },
+	{ 
+		&lGRBonus1DonkeyTargetsStart,
+		&lGRBonus1DonkeyTargetsDObjDesc,
+		&lGRBonus1DonkeyTargetsAnimJoint
+	},
 
 	// Bonus1Samus
-	{ 0x1868, 0x1B30, 0x1D40 },
+	{ 
+		&lGRBonus1SamusTargetsStart,
+		&lGRBonus1SamusTargetsDObjDesc,
+		&lGRBonus1SamusTargetsAnimJoint
+	},
 
 	// Bonus1Luigi
-	{ 0x1BA0, 0x2020, 0x2230 },
+	{ 
+		&lGRBonus1LuigiTargetsStart,
+		&lGRBonus1LuigiTargetsDObjDesc,
+		&lGRBonus1LuigiTargetsAnimJoint
+	},
 
 	// Bonus1Link
-	{ 0x2378, 0x2770, 0x2980 },
+	{ 
+		&lGRBonus1LinkTargetsStart,
+		&lGRBonus1LinkTargetsDObjDesc,
+		&lGRBonus1LinkTargetsAnimJoint
+	},
 
 	// Bonus1Yoshi
-	{ 0x2D68, 0x3290, 0x34A0 },
+	{ 
+		&lGRBonus1YoshiTargetsStart,
+		&lGRBonus1YoshiTargetsDObjDesc,
+		&lGRBonus1YoshiTargetsAnimJoint
+	},
 
 	// Bonus1Captain
-	{ 0x1888, 0x1B70, 0x1D80 },
+	{ 
+		&lGRBonus1CaptainTargetsStart,
+		&lGRBonus1CaptainTargetsDObjDesc,
+		&lGRBonus1CaptainTargetsAnimJoint
+	},
 
 	// Bonus1Kirby
-	{ 0x2150, 0x2510, 0x2720 },
+	{ 
+		&lGRBonus1KirbyTargetsStart,
+		&lGRBonus1KirbyTargetsDObjDesc,
+		&lGRBonus1KirbyTargetsAnimJoint
+	},
 
 	// Bonus1Pikachu
-	{ 0x2658, 0x2A70, 0x2C80 },
+	{ 
+		&lGRBonus1PikachuTargetsStart,
+		&lGRBonus1PikachuTargetsDObjDesc,
+		&lGRBonus1PikachuTargetsAnimJoint
+	},
 
 	// Bonus1Purin
-	{ 0x1FF8, 0x23A0, 0x25B0 },
+	{ 
+		&lGRBonus1PurinTargetsStart,
+		&lGRBonus1PurinTargetsDObjDesc,
+		&lGRBonus1PurinTargetsAnimJoint
+	},
 
 	// Bonus1Ness
-	{ 0x2940, 0x2E60, 0x3070 }
+	{ 
+		&lGRBonus1NessTargetsStart,
+		&lGRBonus1NessTargetsDObjDesc,
+		&lGRBonus1NessTargetsAnimJoint
+	}
 };
 
 // 0x8018EF54 - column 0 = DObjDesc offset, column 1 = AObjEvent32 offset
 intptr_t dSC1PBonusStageBumperDescs[/* */][2] =
 {
 	// Mario
-	{ 0x0, 0x0 },
+	{
+		0x0,
+		0x0
+	},
 
 	// Fox
-	{ 0xE160, 0xE350 },
+	{
+		&lGRBonus2FoxBumpersDObjDesc,
+		&lGRBonus2FoxBumpersAnimJoint
+	},
 
 	// Donkey
-	{ 0x0, 0x0 },
+	{
+		0x0,
+		0x0
+	},
 
 	// Samus
-	{ 0x2910, 0x29C0 },
+	{
+		&lGRBonus2SamusBumpersDObjDesc,
+		&lGRBonus2SamusBumpersAnimJoint
+	},
 
 	// Luigi
-	{ 0x0000, 0x0000 },
+	{
+		0x0,
+		0x0
+	},
 
 	// Link
-	{ 0x0000, 0x0000 },
+	{
+		0x0,
+		0x0
+	},
 
 	// Yoshi
-	{ 0x0000, 0x0000 },
+	{
+		0x0,
+		0x0
+	},
 
 	// Captain
-	{ 0x0000, 0x0000 },
+	{
+		0x0,
+		0x0
+	},
 
 	// Kirby
-	{ 0x3920, 0x3A60 },
+	{
+		&lGRBonus2KirbyBumpersDObjDesc,
+		&lGRBonus2KirbyBumpersAnimJoint
+	},
 
 	// Pikachu
-	{ 0x0000, 0x0000 },
+	{
+		0x0,
+		0x0
+	},
 
 	// Purin
-	{ 0x4FE0, 0x5120 },
+	{
+		&lGRBonus2PurinBumpersDObjDesc,
+		&lGRBonus2PurinBumpersAnimJoint
+	},
 
 	// Ness
-	{ 0x3FE0, 0x4090 }
+	{
+		&lGRBonus2NessBumpersDObjDesc,
+		&lGRBonus2NessBumpersAnimJoint
+	}
 };
 
 // 0x8018EFB4 - column 0 = DObjDesc***, column 1 = AObjEvent32**, column 2 = MObjSub***, column 3 = AObjEvent32***
 intptr_t dSC1PBonusStagePlatformDescs[/* */][4] =
 {
-	// Narrow
-	{ 0x3DA8, 0x3E60, 0x3720, 0x3F00 },
+	// Small
+	{
+		&lGRBonus2PlatformSmallDObjDesc,
+		&lGRBonus2PlatformSmallAnimJoint,
+		&lGRBonus2PlatformSmallMObjSub,
+		&lGRBonus2PlatformSmallMatAnimJoint
+	},
 
 	// Medium
-	{ 0x45D8, 0x4690, 0x3F70, 0x4730 },
+	{
+		&lGRBonus2PlatformMediumDObjDesc,
+		&lGRBonus2PlatformMediumAnimJoint,
+		&lGRBonus2PlatformMediumMObjSub,
+		&lGRBonus2PlatformMediumMatAnimJoint
+	},
 
-	// Wide
-	{ 0x4E08, 0x4EC0, 0x47A0, 0x4F70 }
+	// Large
+	{
+		&lGRBonus2PlatformLargeDObjDesc,
+		&lGRBonus2PlatformLargeAnimJoint,
+		&lGRBonus2PlatformLargeMObjSub,
+		&lGRBonus2PlatformLargeMatAnimJoint
+	}
 };
 
 // 0x8018EFE4 - column 0 = DObjDesc*, column 1 = AObjEvent32**
 intptr_t dSC1PBonusStageBoardedPlatformDescs[/* */][2] =
 {
-	// Narrow
-	{ 0x5520, 0x55D0 },
+	// Small
+	{
+		&lGRBonus2BoardedPlatformSmallDObjDesc,
+		&lGRBonus2BoardedPlatformSmallAnimJoint
+	},
 
 	// Medium
-	{ 0x5B80, 0x5C30 },
+	{
+		&lGRBonus2BoardedPlatformMediumDObjDesc,
+		&lGRBonus2BoardedPlatformMediumAnimJoint
+	},
 
-	// Wide
-	{ 0x61E0, 0x6290 }
+	// Large
+	{
+		&lGRBonus2BoardedPlatformLargeDObjDesc,
+		&lGRBonus2BoardedPlatformLargeAnimJoint
+	}
 };
 
 // 0x8018EFFC - last one is apparently 0.554000020027F but precision is lost
@@ -167,23 +269,56 @@ Gfx dSC1PBonusStageDisplayList[/* */] =
 SYVideoSetup dSC1PBonusStageVideoSetup = SYVIDEO_DEFINE_DEFAULT();
 
 // 0x8018F09C
-scRuntimeInfo dSC1PBonusStageTaskmanSetup =
+SYTaskmanSetup dSC1PBonusStageTaskmanSetup =
 {
+    // Task Manager Buffer Setup
+    {
+        0,                          // ???
+        sc1PBonusStageFuncUpdate,   // Update function
+        scManagerFuncDraw,          // Frame draw function
+        &ovl6_BSS_END,             	// Allocatable memory pool start
+        0,                          // Allocatable memory pool size
+        1,                          // ???
+        2,                          // Number of contexts?
+        sizeof(Gfx) * 7680,         // Display List Buffer 0 Size
+        sizeof(Gfx) * 2560,         // Display List Buffer 1 Size
+        0,                          // Display List Buffer 2 Size
+        0,                          // Display List Buffer 3 Size
+        0xD000,                     // Graphics Heap Size
+        2,                          // ???
+        0xC000,                     // RDP Output Buffer Size
+        sc1PBonusStageFuncLights,   // Pre-render function
+        update_contdata,            // Controller I/O function
+    },
 
-	0x00000000, 0x8018d0d0,
-	0x800a26b8, &ovl6_BSS_END,
-	0x00000000, 0x00000001, 0x00000002, 0x0000f000, 0x00005000,
-	0x00000000, 0x00000000, 0x0000d000, 0x00020000, 0x0000c000,
-	sc1PBonusStageFuncLights, update_contdata,
-	0x00000000, 0x00000600, 0x00000000, 0x00000000,
-	0x00000000, 0x00000000, 0x00000088, 0x00000000,
-	0x800d5cac, 0x00000000, 0x00000000, 0x00000000,
-	0x00000000, 0x00000088, 0x00000000, 0x0000006c,
-	0x00000000, 0x00000090,
-	sc1PBonusStageFuncStart
+    0,                              // Number of GObjThreads
+    sizeof(u64) * 192,              // Thread stack size
+    0,                              // Number of thread stacks
+    0,                              // ???
+    0,                              // Number of GObjProcesses
+    0,                              // Number of GObjs
+    sizeof(GObj),                   // GObj size
+    0,                              // Number of Object Manager Matrices
+    dLBCommonFuncMatrixList,        // Matrix function list
+    NULL,                           // Function for ejecting DObjVec?
+    0,                              // Number of AObjs
+    0,                              // Number of MObjs
+    0,                              // Number of DObjs
+    sizeof(DObj),                   // DObj size
+    0,                              // Number of SObjs
+    sizeof(SObj),                   // SObj size
+    0,                              // Number of Cameras
+    sizeof(CObj),                 	// CObj size
+    
+    sc1PBonusStageFuncStart         // Task start function
 };
 
-// BSS
+// // // // // // // // // // // //
+//                               //
+//   GLOBAL / STATIC VARIABLES   //
+//                               //
+// // // // // // // // // // // //
+
 // 0x8018F1A0
 void *gSC1PBonusStageFiles[4];
 
@@ -196,6 +331,11 @@ u8 sSC1PBonusStageTimerDigits[6];
 // 0x8018F3A8
 sb32 sSC1PBonusStageIsTimeUp;
 
+// // // // // // // // // // // //
+//                               //
+//           FUNCTIONS           //
+//                               //
+// // // // // // // // // // // //
 
 // 0x8018D0C0
 void func_ovl6_8018D0C0(void)
@@ -302,8 +442,8 @@ void sc1PBonusStageMakeTargets(void)
 
 	vel.x = vel.y = vel.z = 0.0F;
 
-	dobjdesc = lbRelocGetFileData(DObjDesc*, ((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - target->main), target->dobjdesc);
-	anim_joints = lbRelocGetFileData(AObjEvent32**, ((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - target->main), target->anim_joint);
+	dobjdesc = lbRelocGetFileData(DObjDesc*, ((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - target->start), target->dobjdesc);
+	anim_joints = lbRelocGetFileData(AObjEvent32**, ((uintptr_t)gMPCollisionGroundData->gr_desc[1].dobjdesc - target->start), target->anim_joint);
 
 	gGRCommonStruct.bonus1.target_count = 0;
 
@@ -388,19 +528,19 @@ s32 sc1PBonusStageGetPlatformKind(s32 line_id)
 
 	if ((pos_right.x - pos_left.x) <= 750.0F)
 	{
-		return grBonus_PlatformKind_Narrow;
+		return 0;
 	}
 	else if ((pos_right.x - pos_left.x) <= 1050.0F)
 	{
-		return grBonus_PlatformKind_Medium;
+		return 1;
 	}
-	else return grBonus_PlatformKind_Wide;
+	else return 2;
 }
 
 // 0x8018D6A8
 void sc1PBonusStageInitPlatforms(s32 line_id)
 {
-	DObj* dobj;
+	DObj *dobj;
 	s32 id;
 
 	id = mpCollisionSetDObjNoID(line_id);
@@ -473,7 +613,7 @@ void sc1PBonusStageUpdatePlatformInterface(void)
 }
 
 // 0x8018D8DC
-void sc1PBonusStageUpdatePlatformCount(DObj* dobj)
+void sc1PBonusStageUpdatePlatformCount(DObj *dobj)
 {
 	s32 id = dobj->child->user_data.s & ~0x8000;
 
@@ -519,7 +659,7 @@ void sc1PBonusStageUpdatePlatformCount(DObj* dobj)
 }
 
 // 0x8018DA2C
-void sc1PBonusStageBonus2ProcUpdate(GObj* ground_gobj)
+void sc1PBonusStageBonus2ProcUpdate(GObj *ground_gobj)
 {
 	GObj *fighter_gobj = gGCCommonLinks[nGCCommonLinkIDFighter];
 
@@ -699,7 +839,7 @@ void sc1PBonusStageMakePlatformSprites(void)
 }
 
 // 0x8018E098
-void sc1PBonusStageMakeTasks(void)
+void sc1PBonusStageMakeTaskSprites(void)
 {
 	if (gSCManagerBattleState->gkind >= nGRKindBonus2Start)
 	{
@@ -713,7 +853,7 @@ void sc1PBonusStageGetPlayerStartPosition(Vec3f *pos)
 {
 	s32 mapobj;
 
-	mpCollisionGetMapObjIDsKind(nMPMapObjKind1PGamePlayerSpawn, &mapobj);
+	mpCollisionGetMapObjIDsKind(nMPMapObjKind1PGamePlayerStart, &mapobj);
 	mpCollisionGetMapObjPositionID(mapobj, pos);
 }
 
@@ -919,7 +1059,7 @@ void sc1PBonusStageFuncStart(void)
 	sc1PBonusStageSetPlayerInterfacePositions();
 	ifCommonPlayerDamageInitInterface();
 	ifCommonPlayerStockInitInterface();
-	sc1PBonusStageMakeTasks();
+	sc1PBonusStageMakeTaskSprites();
 	sc1PBonusStageMakeInterface();
 	mpCollisionSetPlayBGM();
 	func_800269C0_275C0(nSYAudioVoicePublicityExcited);
@@ -1023,7 +1163,7 @@ void sc1PBonusStageStartScene(void)
 	dSC1PBonusStageVideoSetup.zbuffer = syVideoGetZBuffer(6400);
 	syVideoInit(&dSC1PBonusStageVideoSetup);
 
-	dSC1PBonusStageTaskmanSetup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl6_BSS_END);
+	dSC1PBonusStageTaskmanSetup.buffer_setup.arena_size = (size_t) ((uintptr_t)&gSCSubsysFramebuffer0 - (uintptr_t)&ovl6_BSS_END);
 	dSC1PBonusStageTaskmanSetup.func_start = sc1PBonusStageFuncStart;
 
 	syTaskmanRun(&dSC1PBonusStageTaskmanSetup);
@@ -1032,7 +1172,8 @@ void sc1PBonusStageStartScene(void)
 	while (auIsBGMPlaying(0) != FALSE)
 	{
 		continue;
-	};
+	}
+
 	auSetBGMVolume(0, 0x7800);
 	func_800266A0_272A0();
 	gmRumbleInitPlayers();
@@ -1102,7 +1243,6 @@ void sc1PBonusStageStartScene(void)
 					gSCManagerSceneData.unlock_messages[0] = nLBBackupUnlockSoundTest;
 					gSCManagerSceneData.scene_curr = nSCKindMessage;
 				}
-				break;
 			}
 			break;
 		}

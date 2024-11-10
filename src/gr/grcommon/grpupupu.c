@@ -217,7 +217,7 @@ void grPupupuWhispyLeavesMakeEffect(void)
     LBTransform *tfm;
 
     tfm = NULL;
-    ptc = lbParticleMakeScriptID(gGRCommonStruct.pupupu.particle_bank_id | 8, 0);
+    ptc = lbParticleMakeScriptID(gGRCommonStruct.pupupu.particle_bank_id | LBPARTICLE_MASK_GENLINK(0), 0);
 
     if (ptc != NULL)
     {
@@ -476,7 +476,7 @@ void grPupupuWhispyDustMakeEffect(void)
     LBTransform *tfm;
 
     tfm = NULL;
-    ptc = lbParticleMakeScriptID(gGRCommonStruct.pupupu.particle_bank_id | 8, 1);
+    ptc = lbParticleMakeScriptID(gGRCommonStruct.pupupu.particle_bank_id | LBPARTICLE_MASK_GENLINK(0), 1);
 
     if (ptc != NULL)
     {

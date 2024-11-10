@@ -29,7 +29,7 @@ enum grHyruleTwisterStatus
 // 0x8010A140
 LBParticle* grHyruleTwisterMakeEffect(Vec3f *pos, s32 effect_id)
 {
-    LBParticle *ptc = lbParticleMakeScriptID(gGRCommonStruct.hyrule.particle_bank_id | 8, effect_id);
+    LBParticle *ptc = lbParticleMakeScriptID(gGRCommonStruct.hyrule.particle_bank_id | LBPARTICLE_MASK_GENLINK(0), effect_id);
 
     if (ptc != NULL)
     {

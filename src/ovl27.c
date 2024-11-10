@@ -2084,7 +2084,7 @@ s32 mn1PGetFtKindFromTokenPosition(s32 port_id)
 // 0x801361C8
 void mn1PAutoPositionCursor(GObj* cursor_gobj, s32 port_id)
 {
-	gsController* controller;
+	SYController* controller;
 	Vec2i coords[3] = {
 
 		{ 0x7, 0xF },
@@ -2423,7 +2423,7 @@ void mn1PGoBackTo1PMenu()
 // 0x80136D04
 void mn1PExitIfBButtonPressed(s32 port_id)
 {
-	gsController* controller = &gSYControllerDevices[port_id];
+	SYController* controller = &gSYControllerDevices[port_id];
 
 	if ((gMN1PFramesElapsed >= 10) && (controller->button_tap & B_BUTTON))
 	{
@@ -2435,7 +2435,7 @@ void mn1PExitIfBButtonPressed(s32 port_id)
 // 0x80136D58
 void mn1PHandleButtonPresses(GObj* cursor_gobj)
 {
-	gsController* controller = &gSYControllerDevices[cursor_gobj->user_data.s];
+	SYController* controller = &gSYControllerDevices[cursor_gobj->user_data.s];
 	mnCharPanel1P* panel_info;
 	s32 foo, bar, baz;
 	s32 port_id = cursor_gobj->user_data.s;

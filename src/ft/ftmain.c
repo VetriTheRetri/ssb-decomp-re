@@ -1196,7 +1196,7 @@ void ftMainProcInterruptMain(GObj *fighter_gobj)
     FTAttributes *other_attr;
     FTPlayerInput *pl;
     FTComputerInput *cp;
-    gsController *controller;
+    SYController *controller;
     GObj *other_gobj;
     f32 jostle_dist_x;
     f32 dist_z;

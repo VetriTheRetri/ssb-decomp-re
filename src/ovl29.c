@@ -1682,7 +1682,7 @@ s32 mnBonusGetFtKindFromTokenPosition(s32 port_id)
 // 0x801350E4
 void mnBonusAutoPositionCursor(GObj* cursor_gobj, s32 port_id)
 {
-	gsController* controller;
+	SYController* controller;
 	Vec2i coords[3] = {
 
 		{ 0x7, 0xF },
@@ -1869,7 +1869,7 @@ void mnBonusGoBackTo1PMenu()
 // 0x801357AC
 void mnBonusExitIfBButtonPressed(s32 port_id)
 {
-	gsController* controller = &gSYControllerDevices[port_id];
+	SYController* controller = &gSYControllerDevices[port_id];
 
 	if ((gMnBonusFramesElapsed >= 10) && (controller->button_tap & B_BUTTON))
 		mnBonusGoBackTo1PMenu();
@@ -1925,7 +1925,7 @@ void mnBonusHandleTitlePress()
 void mnBonusHandleButtonPresses(GObj* cursor_gobj)
 {
 	s32 port_id = cursor_gobj->user_data.s;
-	gsController* controller = &gSYControllerDevices[port_id];
+	SYController* controller = &gSYControllerDevices[port_id];
 	mnCharPanelBonus* panel_info;
 	s32 foo, bar, baz;
 

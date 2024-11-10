@@ -16,7 +16,7 @@ typedef struct ControllerInput
 
 } ControllerInput; // size = 0x0A
 
-typedef struct gsController
+typedef struct SYController
 {
     /* 0x00 */ u16 button_hold; // button
     /* 0x02 */ u16 button_tap; // new button presses?
@@ -24,7 +24,7 @@ typedef struct gsController
     /* 0x06 */ u16 button_release; // released buttons?
     Vec2b stick_range;
 
-} gsController; // size = 0x0A
+} SYController; // size = 0x0A
 
 typedef struct ControllerInfo
 {
@@ -116,8 +116,8 @@ typedef struct Unk80045268
 extern u32 gSYControllerConnectedNum;
 extern sb32 gUpdateContData;
 extern s8 gPlayerControllerPortStatuses[MAXCONTROLLERS];
-extern gsController gSYControllerDevices[MAXCONTROLLERS];
-extern gsController gSysController;
+extern SYController gSYControllerDevices[MAXCONTROLLERS];
+extern SYController gSysController;
 
 extern void schedule_contread(void);
 extern void update_contdata(void);

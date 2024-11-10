@@ -574,7 +574,7 @@ struct FTCreateDesc
     s32 copy_kind;                  // Kirby's copy ID on spawn
     s32 damage;
     s32 pkind;
-    gsController *controller;       // Pointer to player's controller input struct
+    SYController *controller;       // Pointer to player's controller input struct
     u16 button_mask_a;
     u16 button_mask_b;
     u16 button_mask_z;

@@ -45,7 +45,7 @@ s8 gPlayerControllerPortStatuses[MAXCONTROLLERS];
 ControllerInfo sContInfo[MAXCONTROLLERS];
 
 // 0x80045228
-gsController gSYControllerDevices[MAXCONTROLLERS];
+SYController gSYControllerDevices[MAXCONTROLLERS];
 
 // 0x80045250
 sb32 gUpdateContData;
@@ -72,7 +72,7 @@ OSPfs sMotorPfs[MAXCONTROLLERS];
 UNUSED u32 unref80045468[2];
 
 // 0x80045470
-gsController _gSysController; // needs to be plugged to linker manually (linker_constants.txt) otherwise this file doesn't match
+SYController _gSysController; // needs to be plugged to linker manually (linker_constants.txt) otherwise this file doesn't match
 
 
 // 0x80003C00
@@ -161,7 +161,7 @@ void read_controller_data(void) {
 void update_global_contdata(void)
 {
     s32 i;
-    gsController *players, *sys = &gSysController;
+    SYController *players, *sys = &gSysController;
 
     for (i = 0; i < 4; i++)
     {

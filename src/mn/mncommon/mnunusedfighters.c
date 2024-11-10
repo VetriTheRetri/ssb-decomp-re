@@ -5,7 +5,7 @@
 
 extern void syRdpSetViewport(void*, f32, f32, f32, f32);
 
-extern gsController gSysController;
+extern SYController gSysController;
 
 extern uintptr_t D_NF_00000011;
 

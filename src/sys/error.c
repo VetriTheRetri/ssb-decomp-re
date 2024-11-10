@@ -317,7 +317,7 @@ void syErrorFillRectangle(Gfx *dl, u32 ulx, u32 uly, u32 lrx, u32 lry)
 // 0x80021B30
 void syErrorControllerFuncDisplay(GObj *gobj)
 {
-    gsController *controller = &gSysController;
+    SYController *controller = &gSysController;
     s32 offset_x = 60;
     s32 offset_y = 210;
     s32 i;

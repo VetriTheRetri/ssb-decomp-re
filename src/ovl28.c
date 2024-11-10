@@ -1624,7 +1624,7 @@ s32 mnTrainingGetFtKindFromTokenPosition(s32 port_id)
 // 0x80135074
 void mnTrainingAutoPositionCursor(GObj* cursor_gobj, s32 port_id)
 {
-	gsController* controller;
+	SYController* controller;
 	Vec2i coords[3] = {
 
 		{ 0x7, 0xF },
@@ -1813,7 +1813,7 @@ void mnTrainingGoBackTo1PMenu()
 // 0x80135818
 void mnTrainingExitIfBButtonPressed(s32 port_id)
 {
-	gsController* controller = &gSYControllerDevices[port_id];
+	SYController* controller = &gSYControllerDevices[port_id];
 
 	if ((gMNTrainingFramesElapsed >= 10) && (controller->button_tap & B_BUTTON))
 		mnTrainingGoBackTo1PMenu();
@@ -1846,7 +1846,7 @@ sb32 mnTrainingCheckBackButtonPress(GObj* cursor_gobj)
 // 0x80135934
 void mnTrainingHandleButtonPresses(GObj* cursor_gobj)
 {
-	gsController* controller = &gSYControllerDevices[gMNTrainingHumanPanelPort];
+	SYController* controller = &gSYControllerDevices[gMNTrainingHumanPanelPort];
 	mnCharPanelTraining* panel_info;
 	s32 foo, bar, baz;
 	s32 port_id = cursor_gobj->user_data.s;

@@ -225,7 +225,7 @@ char gMNDebugMenuStringBuffer[0x38];
 void dbMenuUpdateMenuInputs()
 {
 	u16 inputs = 0;
-	gsController *controller = &gSysController;
+	SYController *controller = &gSysController;
 
 	if (gSysController.stick_range.x > 40)
 		inputs |= R_JPAD;
@@ -388,7 +388,7 @@ void gMNDebugMenuRenderMenu(s32 arg0)
 // 0x8036975C
 void dbMenuHandleInputs(GObj *gobj)
 {
-	gsController *controller = &gSysController;
+	SYController *controller = &gSysController;
 	s32 stick_x;
 	f32 temp;
 

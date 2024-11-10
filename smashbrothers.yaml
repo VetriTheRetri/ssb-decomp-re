@@ -26,8 +26,6 @@ options:
   symbol_addrs_path:
     - symbols/libultra.txt
     - symbols/system.txt
-    
-    - symbols/scmanager.txt
 
     - symbols/ovl0.txt
     - symbols/ovl1.txt
